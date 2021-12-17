@@ -4,21 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Visual Studio Code を使用して Azure Machine Learning のコード、パイプライン、およびデプロイを対話形式でデバッグします
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
+ms.subservice: mlops
+ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 09/30/2020
-ms.openlocfilehash: 783b5afdaef369582614cde3525f7968fdb5e567
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.openlocfilehash: eb1f4fb0e3f833bdcc9631f72c6ffe127005a0e3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508641"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556485"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
-
-
 
 Visual Studio Code (VS Code) および [debugpy](https://github.com/microsoft/debugpy/) を使用して Azure Machine Learning の実験、パイプライン、およびデプロイを対話形式でデバッグする方法について説明します。
 
@@ -28,22 +26,30 @@ Azure Machine Learning 拡張機能を使用して、クラウドに送信する
 
 ### <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning VS Code 拡張機能 (プレビュー)。 詳しくは、[Azure Machine Learning VS Code 拡張機能の設定](tutorial-setup-vscode-extension.md)に関するページを参照してください。
+* Azure Machine Learning VS Code 拡張機能 (プレビュー)。 詳しくは、[Azure Machine Learning VS Code 拡張機能の設定](how-to-setup-vs-code.md)に関するページを参照してください。
+
+    > [!IMPORTANT]
+    > Azure Machine Learning VS Code 拡張機能では、既定で CLI (v2) を使用しています。 このガイドの手順では、1.0 CLI を使用します。 1\.0 CLI に切り替えるには、Visual Studio Code の `azureML.CLI Compatibility Mode` 設定を `1.0` に設定します。 Visual Studio Code の設定の変更について詳しくは、[ユーザーとワークスペースの設定に関するドキュメント](https://code.visualstudio.com/docs/getstarted/settings)を参照してください。
+
 * [Docker](https://www.docker.com/get-started)
   * Mac および Windows 用の Docker デスクトップ
   * Linux 用 Docker エンジン。
+
+    > [!NOTE]
+    > Windows では、[Linux コンテナーを使用するように Docker を構成](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)してください。
+
+    > [!TIP]
+    > 必須ではありませんが、Windows の場合は [Linux 用 Windows サブシステム (WSL) 2 で Docker を使用する](/windows/wsl/tutorials/wsl-containers#install-docker-desktop)ことを強くお勧めします。
+
 * [Python 3](https://www.python.org/downloads/)
 
-> [!NOTE]
-> Windows では、[Linux コンテナーを使用するように Docker を構成](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)してください。
-
-> [!TIP]
-> 必須ではありませんが、Windows の場合は [Linux 用 Windows サブシステム (WSL) 2 で Docker を使用する](/windows/wsl/tutorials/wsl-containers#install-docker-desktop)ことを強くお勧めします。
+### <a name="debug-experiment-locally"></a>ローカルで実験をデバッグする
 
 > [!IMPORTANT]
-> 実験をローカルで実行する前に、Docker が実行されていることを確認してください。
-
-### <a name="debug-experiment-locally"></a>ローカルで実験をデバッグする
+> 実験をローカルで実行する前に、次のことを確認してください。
+>
+> * Docker は実行中です。
+> * 前提条件で指定されているように、Visual Studio Code の `azureML.CLI Compatibility Mode` 設定は `1.0` に設定します。
 
 1. VS Code で、Azure Machine Learning 拡張機能ビューを開きます。
 1. ワークスペースが含まれているサブスクリプション ノードを展開します。 既存のものがない場合は、拡張機能を使用して [Azure Machine Learning ワークスペースを作成](how-to-manage-resources-vscode.md#create-a-workspace)できます。
@@ -278,7 +284,7 @@ ip_address: 10.3.0.5
 `ip_address` の値を保存します。 次のセクションで使用します。
 
 > [!TIP]
-> IP アドレスは、このパイプライン ステップの子実行に対する実行ログからも見つけることができます。 この情報を表示する方法の詳細については、「[Azure ML の実験の実行とメトリックを監視する](how-to-track-experiments.md)」を参照してください。
+> IP アドレスは、このパイプライン ステップの子実行に対する実行ログからも見つけることができます。 この情報を表示する方法の詳細については、「[Azure ML の実験の実行とメトリックを監視する](how-to-log-view-metrics.md)」を参照してください。
 
 ### <a name="configure-development-environment"></a>開発環境の設定
 
@@ -337,6 +343,9 @@ ip_address: 10.3.0.5
 ## <a name="debug-and-troubleshoot-deployments"></a>デプロイのデバッグとトラブルシューティング
 
 場合によっては、モデル デプロイに含まれる Python コードを対話的にデバッグする必要が生じることがあります。 たとえば、エントリ スクリプトが失敗し、追加のログ記録によっても理由を特定できない場合がこれにあたります。 VS Code と debugpy を使用すると、Docker コンテナー内で実行されているコードにアタッチできます。
+
+> [!TIP]
+> 管理されたオンライン エンドポイントとデプロイをローカルでデバッグして、時間を節約し、バグを早期に発見します。 詳細については、[Visual Studio Code でマネージド オンライン エンドポイントをローカルでデバッグする (プレビュー)](how-to-debug-managed-online-endpoints-visual-studio-code.md) 方法に関する記事を参照してください。
 
 > [!IMPORTANT]
 > このデバッグ方法は、`Model.deploy()` と `LocalWebservice.deploy_configuration` を使用してローカルでモデルをデプロイしている場合は機能しません。 代わりに、[Model.package()](/python/api/azureml-core/azureml.core.model.model#package-workspace--models--inference-config-none--generate-dockerfile-false-) クラスを使用してイメージを作成する必要があります。
@@ -459,7 +468,7 @@ ip_address: 10.3.0.5
 
     myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
     myenv.docker.base_image = None
-    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04"
+    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210615.v1"
     inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     package = Model.package(ws, [model], inference_config)
     package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.

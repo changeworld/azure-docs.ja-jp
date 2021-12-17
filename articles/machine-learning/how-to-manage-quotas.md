@@ -5,29 +5,27 @@ description: Azure Machine Learning のリソースにおけるクォータと�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 author: SimranArora904
 ms.author: siarora
-ms.date: 12/1/2020
-ms.topic: conceptual
+ms.date: 10/21/2021
+ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 4e61a15b86d1d2d05889253f615eec0865c87a70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 224ee0d4cc789349151bdc75ab164cc123119105
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520389"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564862"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用するリソースのクォータの管理と引き上げ
 
 Azure では、不正による予算超過を防ぎ、Azure の容量の制約を尊重するために制限とクォータを使用しています。 運用環境のワークロードに合わせてスケーリングするときは、これらの制限事項について考慮してください。 この記事では、次の内容について説明します。
 
 > [!div class="checklist"]
-> + [Azure Machine Learning](overview-what-is-azure-ml.md) に関連する Azure リソースの既定の制限事項。
+> + [Azure Machine Learning](overview-what-is-azure-machine-learning.md) に関連する Azure リソースの既定の制限事項。
 > + ワークスペースレベルのクォータを作成する。
 > + クォータと制限を表示する。
 > + クォータの引き上げを依頼する。
-> + プライベート エンドポイントと DNS クォータ。
 
 クォータの管理に加えて、[Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)方法や、[Azure Machine Learning のサービスの制限値](resource-limits-quotas-capacity.md)について説明します。
 
@@ -101,9 +99,35 @@ Azure では、不正による予算超過を防ぎ、Azure の容量の制約�
 | ノードあたりのパラメーター サーバー数 | 1 |
 
 <sup>1</sup> 最大有効期間は、実行が開始されてから完了するまでの期間です。 完了した実行は無期限に保持されます。 最大有効期間内に完了しなかった実行のデータにはアクセスできません。
+
 <sup>2</sup> 容量の制約がある場合は、優先度の低いノードのジョブをいつでも横取りできます。 ジョブにチェックポイントを実装することをお勧めします。
 
-#### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning パイプライン
+### <a name="azure-machine-learning-managed-online-endpoints-preview"></a>Azure Machine Learning マネージド オンライン エンドポイント (プレビュー)
+[!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
+
+Azure Machine Learning マネージド オンライン エンドポイントには、次の表に記載されている制限があります。 
+
+エンドポイントの現在の使用状況を確認するには、[メトリックを表示](how-to-monitor-online-endpoints.md#view-metrics)します。 Azure Machine Learning の製品チームに例外を要求するには、テクニカル サポート チケットを開いてください。
+
+| **リソース** | **制限** |
+| --- | --- |
+| エンドポイント名| エンドポイント名は以下に従う必要があります <li> アルファベットで始める <li> 3 から 32 文字  <li> アルファベットと数字のみで構成される <sup>1</sup> |
+| デプロイ名| デプロイ名は以下に従う必要があります <li> アルファベットで始める <li> 3 から 32 文字  <li>  アルファベットと数字のみで構成される <sup>1</sup> |
+| サブスクリプションあたりのエンドポイントの数 | 50 |
+| サブスクリプションあたりのデプロイの数 | 200 |
+| エンドポイントあたりのデプロイの数 | 20 |
+| デプロイあたりのインスタンスの数 | 20 |
+| エンドポイント レベルでの最大要求タイムアウト  | 90 秒 |
+| すべてのデプロイに対するエンドポイント レベルでの 1 秒あたりの要求の合計数  | 500 <sup>2</sup> |
+| すべてのデプロイに対するエンドポイント レベルでの 1 秒あたりの接続の合計数  | 100 <sup>2</sup> |
+| すべてのデプロイに対するエンドポイント レベルでのアクティブな接続の合計数  | 100 <sup>2</sup> |
+| すべてのデプロイのエンドポイント レベルでの帯域幅合計  | 5 MBPS <sup>2</sup> |
+
+<sup>1</sup> エンドポイント名とデプロイ名で、`my-endpoint-name` のような単一のダッシュを使用できます。
+
+<sup>2</sup> 制限の引き上げを要求する場合は、必要に応じて、関連する制限値を計算してください。 たとえば、1 秒あたりの要求数の増加を要求した場合、必要な接続と帯域幅の制限を計算し、同じ要求でこれらの制限を増やすことが必要になる場合があります。
+
+### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning パイプライン
 [Azure Machine Learning パイプライン](concept-ml-pipelines.md)には次の制限事項があります。
 
 | **リソース** | **制限** |
@@ -184,3 +208,7 @@ Azure Storage では、サブスクリプションおよびリージョンあた
 
 + [Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)
 + [Azure Machine Learning のサービスの制限値](resource-limits-quotas-capacity.md)
+<<<<<<< HEAD
+=======
++ [マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](./how-to-troubleshoot-online-endpoints.md)
+>>>>>>> repo_sync_working_branch

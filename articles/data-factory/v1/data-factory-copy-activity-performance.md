@@ -3,16 +3,17 @@ title: コピー アクティビティのパフォーマンスとチューニン
 description: コピー アクティビティを使用する場合に、Azure Data Factory でのデータ移動のパフォーマンスに影響する主な要因について説明します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 05/25/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9a890719de39a71d8336d39f9932e73f7baccf87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ab968ca009a270cb058756dbb7c746c706f71ca
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377212"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235679"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 
@@ -45,7 +46,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 参考として、社内テストに基づく特定のソースとシンクのペアにおけるコピーのスループット (Mbps 単位) を次の表に示します。 比較のために、[クラウド データの移動単位](#cloud-data-movement-units)または [Data Management Gateway のスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md) (複数のゲートウェイ ノード) の異なる設定によってコピーのパフォーマンスがどのように変化するかも示しています。
 
-![パフォーマンス マトリックス](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/CopyPerfRef.png" alt-text="パフォーマンス マトリックス":::
 
 >[!IMPORTANT]
 >Azure Data Factory バージョン 1 では、クラウド間のコピーの最小のクラウドデータ移動単位は 2 です。 指定しない場合、[クラウド データ移動単位](#cloud-data-movement-units)で使用されている既定のデータ移動単位を参照してください。
@@ -187,11 +188,11 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 (ソース データ ストアとシンク データ ストアの両方がクラウドにある) クラウド コピーのシナリオでは、ゲートウェイは使用されません。 コピー操作は、Data Factory サービスによって実行されます。
 
-![ステージング コピー:クラウド シナリオ](media/data-factory-copy-activity-performance/staged-copy-cloud-scenario.png)
+:::image type="content" source="media/data-factory-copy-activity-performance/staged-copy-cloud-scenario.png" alt-text="ステージング コピー:クラウド シナリオ":::
 
 (ソースがオンプレミスにあり、シンクがクラウドにある) ハイブリッド コピーのシナリオでは、ゲートウェイが、ソース データ ストアのデータをステージング データ ストアに移動します。 Data Factory サービスは、データをステージング データ ストアからシンク データ ストアにコピーします。 ステージングによるクラウド データ ストアからオンプレミス データ ストアへのデータのコピーも逆のフローでサポートされています。
 
-![ステージング コピー:ハイブリッド シナリオ](media/data-factory-copy-activity-performance/staged-copy-hybrid-scenario.png)
+:::image type="content" source="media/data-factory-copy-activity-performance/staged-copy-hybrid-scenario.png" alt-text="ステージング コピー:ハイブリッド シナリオ":::
 
 ステージング ストアを使用したデータ移動を有効にすると、ソース データ ストアから中間またはステージング データ ストアにデータを移動する前にデータを圧縮し、中間またはステージング データ ストアからシンク データ ストアにデータを移動する前にそのデータの圧縮を解除するかどうかを指定できます。
 
@@ -247,7 +248,7 @@ Data Factory サービスとコピー アクティビティのパフォーマン
 
    **監視と管理アプリ** を使用して、実行時間とパフォーマンス特性を収集します。 Data Factory のホーム ページで、 **[監視と管理]** を選択します。 ツリー ビューで、 **出力データセット** を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** の一覧で、コピー アクティビティの実行を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** には、コピー アクティビティの期間とコピーされるデータのサイズが表示されます。 スループットは、 **[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]** に一覧表示されます。 このアプリの詳細については、 [新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
 
-   ![アクティビティ実行の詳細](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
+   :::image type="content" source="./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png" alt-text="アクティビティ実行の詳細":::
 
    この記事の後半で、自分のシナリオのパフォーマンスと構成を、当社のテストに基づくコピー アクティビティの [パフォーマンス リファレンス](#performance-reference) と比較できます。
 2. **パフォーマンスを診断して最適化する**。 観測したパフォーマンスが予測どおりでない場合は、パフォーマンスのボトルネックを特定する必要があります。 次に、パフォーマンスを最適化して、ボトルネックの影響を除去するか軽減します。 この記事では、パフォーマンスの診断に関する詳細な説明は省略しますが、いくつかの一般的な考慮事項を次に示します。
@@ -374,7 +375,7 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 
 ご覧のとおり、データは次のようにストリーミングで順次処理および移動されています: SQL Server > LAN > ゲートウェイ > WAN > Blob Storage。 **全体的なパフォーマンスは、パイプラインを通じて最低のスループットが上限となっています**。
 
-![Data flow](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/case-study-pic-1.png" alt-text="データ フロー":::
 
 次に示す要因の 1 つ以上がパフォーマンスのボトルネックの原因である可能性があります。
 
@@ -394,19 +395,19 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 
 **分析とパフォーマンスのチューニング**: たとえば、クアッド コア マシン上にゲートウェイをインストール済みの場合、Data Factory は 16 の並列コピーを使用して、ファイル システムから Blob Storage にファイルを同時に移動します。 この並列実行では、高いスループットが得られます。 並列コピーの数を明示的に指定することもできます。 多数の小さなファイルをコピーする場合、並列コピーではリソースがより効果的に活用されるため、スループットが大幅に向上します。
 
-![シナリオ 1](./media/data-factory-copy-activity-performance/scenario-1.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/scenario-1.png" alt-text="シナリオ 1":::
 
 **シナリオ II**: Blob Storage から Data Lake Store Analytics にそれぞれ 500 MB の BLOB を 20 個コピーして、パフォーマンスを調整する。
 
 **分析とパフォーマンスのチューニング**: このシナリオでは、Data Factory は単一のコピー (**parallelCopies** を 1 に設定) と単一クラウド データ移動単位を使用して、データを Blob Storage から Data Lake Store にコピーします。 観察されるスループットは、「 [パフォーマンス リファレンス](#performance-reference)」セクションで説明されているスループットに近くなります。
 
-![シナリオ 2](./media/data-factory-copy-activity-performance/scenario-2.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/scenario-2.png" alt-text="シナリオ 2":::
 
 **シナリオ III**: 個々のファイル サイズが数十 MB より大きく、総量が巨大である。
 
 **分析とパフォーマンスのチューニング**: **parallelCopies** を増やしても、単一クラウド DMU のリソース制限があるため、コピーのパフォーマンスは向上しません。 代わりに、より多くのクラウド DMU を指定して、データ移動を実行するリソースをより多く取得する必要があります。 **parallelCopies** プロパティの値は指定しないでください。 Data Factory が自動的に並列処理を行います。 この場合、 **cloudDataMovementUnits** を 4 に設定すると、スループットが約 4 倍になります。
 
-![シナリオ 3](./media/data-factory-copy-activity-performance/scenario-3.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/scenario-3.png" alt-text="シナリオ 3":::
 
 ## <a name="reference"></a>リファレンス
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報をいくつか示します。

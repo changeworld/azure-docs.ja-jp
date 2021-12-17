@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, sstein
-ms.date: 04/23/2020
-ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: vanto
+ms.date: 08/11/2021
+ms.openlocfilehash: 51494c02ea56c68945377b50869a1bad2be6718f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96454293"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735584"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory 認証を使用する
 
@@ -152,6 +152,7 @@ Azure AD サーバー プリンシパル (ログイン) では、次の認証方
 - SQL Database または Azure Synapse のサーバー用にいつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。
   - SQL Managed Instance 用の Azure AD サーバー プリンシパル (ログイン) の追加により、`sysadmin` ロールに追加できる複数の Azure AD サーバー プリンシパル (ログイン) を作成できる可能性があります。
 - Azure Active Directory アカウントを使用して最初に サーバーまたはマネージド インスタンスに接続できるのは、サーバーの Azure AD 管理者だけです。 Active Directory 管理者は、それ以降の Azure AD のデータベース ユーザーを構成できます。
+- 2048 を超える Azure AD のセキュリティ グループに属する Azure AD のユーザーとサービス プリンシパル (Azure AD アプリケーション) は、SQL Database、Managed Instance、または Azure Synapse でデータベースにログインすることはできません。
 - 接続のタイムアウトを 30 秒に設定することをお勧めします。
 - SQL Server 2016 Management Studio と SQL Server Data Tools for Visual Studio 2015 (バージョン 14.0.60311.1April 2016 以降) では、Azure Active Directory 認証がサポートされています (Azure AD 認証は、 **.NET Framework Data Provider for SqlServer** (.NET Framework 4.6 以降のバージョン) でサポートされています)。 したがって、これらのツールとデータ層アプリケーション (DAC および BACPAC) の最新のバージョンでは、Azure AD 認証を使用できます。
 - バージョン 15.0.1 以降では、[sqlcmd ユーティリティ](/sql/tools/sqlcmd-utility)と [bcp ユーティリティ](/sql/tools/bcp-utility)は Multi-Factor Authentication を使用した Active Directory 対話型認証をサポートしています。

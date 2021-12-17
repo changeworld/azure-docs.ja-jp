@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: e4ae8a09a554afe232091b68888af17dfa096771
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7d71c5a42f93edd833effed90dcbe80a1861ec2
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102426471"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510702"
 ---
 # <a name="what-is-custom-commands"></a>カスタム コマンドとは
 
@@ -23,10 +23,7 @@ ms.locfileid: "102426471"
 
 **カスタム コマンド** を使用すると、音声優先の対話操作を行うために最適化された、リッチな音声コマンド処理アプリを簡単に構築できます。 これにより、統一された作成エクスペリエンス、自動ホスティング モデル、比較的低い複雑性が実現し、音声コマンドのシナリオに最適なソリューションの構築に専念できるようになります。
 
-カスタム コマンドは、タスクの完了やコマンドと制御のシナリオに最適です。特に、モノのインターネット (IoT) デバイスや、アンビエントおよびヘッドレス デバイスに適しています。 例としては、サービス業、小売業、自動車業界向けのソリューションがあります。顧客向けの最適な室内音声コントロール エクスペリエンスの構築、店舗在庫の管理、移動中の車内機能の制御などが実現できます。
-
-> [!TIP]
-> Microsoft のランディング ページ ([https://speech.microsoft.com/customcommands](https://speech.microsoft.com/customcommands)) でサンプル デモをご覧ください。
+Custom Commands は、タスクの完了やコマンドと制御のシナリオに最適です。モノのインターネット (IoT) デバイスや、アンビエントおよびヘッドレス デバイスに適しています。 たとえば、お客様に機械音声でサービスを提供する接待、小売、自動車産業向けのソリューション、店舗内の在庫管理、車載機能です。
 
 複雑な会話アプリの構築に関心をお持ちの場合は、[仮想アシスタント ソリューション](/azure/bot-service/bot-builder-enterprise-template-overview)を使用して Bot Framework を試すことをお勧めします。 Direct Line Speech を使用すると、任意の Bot Framework ボットに音声を追加できます。
 

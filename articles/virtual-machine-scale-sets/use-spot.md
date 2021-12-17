@@ -1,35 +1,28 @@
 ---
 title: Azure Spot Virtual Machines を使用するスケール セットを作成する
 description: コスト削減のために Azure Spot Virtual Machines を使用する Azure 仮想マシン スケール セットを作成する方法を説明します。
-author: JagVeerappan
-ms.author: jagaveer
+author: mimckitt
+ms.author: mimckitt
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
-ms.date: 02/26/2021
+ms.date: 10/22/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 61bb87d84b96f988ae065a70b85d445fc8b96ccf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 842394ed341da88fdb37ff6deb7ccdc519ac2f8e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762949"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060511"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用の Azure Spot Virtual Machines 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
 
 スケール セットで Azure Spot Virtual Machines を使用すると、大幅にコストを削減して未使用の容量を利用できます。 Azure で容量の回復が必要になると、Azure インフラストラクチャによって Azure Spot Virtual Machine インスタンスが削除されます。 したがって、Azure Spot Virtual Machine インスタンスは、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断に対応できるワークロードに最適です。
 
 利用可能な容量は、サイズ、リージョン、時刻などによって異なります。 スケール セットに Azure Spot Virtual Machine インスタンスをデプロイすると、利用可能な容量がある場合にのみ Azure によってインスタンスが割り当てられますが、このようなインスタンスには SLA がありません。 Azure スポット仮想マシン スケール セットは 1 つの障害ドメインにデプロイされ、高可用性の保証はありません。
-
-
-## <a name="pricing"></a>価格
-
-Azure Spot Virtual Machine インスタンスの価格は、リージョンと SKU に基づいて変動します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) および [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/) での価格を参照してください。 
-
-
-変動する価格に対して、小数点以下最大 5 桁を使用して、最大価格を米ドル (USD) で設定することができます。 たとえば、`0.98765` の値は、1 時間あたり $0.98765 米ドルの最大価格になります。 最大価格を `-1` に設定した場合、インスタンスは価格に基づいて排除されません。 インスタンスの価格は、使用可能な容量とクォータがある限り、現在の Azure Spot Virtual Machine の価格または標準インスタンスの価格のいずれか低い方になります。
-
 
 ## <a name="limitations"></a>制限事項
 
@@ -39,14 +32,21 @@ Azure Spot Virtual Machine インスタンスの価格は、リージョンと S
 
 Azure Spot Virtual Machine は、Microsoft Azure China 21Vianet を除き、任意のリージョンにデプロイできます。
 
-<a name="channel"></a>
-
 現在サポートされている[オファーの種類](https://azure.microsoft.com/support/legal/offer-details/)は次のとおりです。
 
 -   Enterprise Agreement
 -   従量課金制プラン コード ( 003P)
 -   スポンサー (0036P および 0136P)
 - クラウド サービス プロバイダー (CSP) については、[パートナー センター](/partner-center/azure-plan-get-started)を参照するか、パートナーに直接お問い合わせください。
+
+## <a name="pricing"></a>価格
+
+Azure Spot Virtual Machine インスタンスの価格は、リージョンと SKU に基づいて変動します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) および [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/) での価格を参照してください。 
+
+
+変動する価格に対して、小数点以下最大 5 桁を使用して、最大価格を米ドル (USD) で設定することができます。 たとえば、`0.98765` の値は、1 時間あたり $0.98765 米ドルの最大価格になります。 最大価格を `-1` に設定した場合、インスタンスは価格に基づいて排除されません。 インスタンスの価格は、使用可能な容量とクォータがある限り、現在の Azure Spot Virtual Machine の価格または標準インスタンスの価格のいずれか低い方になります。
+
+
 
 ## <a name="eviction-policy"></a>削除ポリシー
 
@@ -58,14 +58,20 @@ Azure Spot Virtual Machines を使用してスケール セットを作成する
 
 ユーザーは、[Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md) を通じて VM 内通知を受け取ることができます。 これにより、VM が排除されつつある場合には通知が送られ、排除される前にジョブを完了し、タスクのシャットダウンを実行するために 30 秒が与えられます。 
 
-<a name="bkmk_try"></a>
-## <a name="try--restore-preview"></a>試行と復元 (プレビュー)
+## <a name="eviction-history"></a>削除履歴
+ポータルでは、あるリージョンの価格と削除率の履歴をサイズ別に表示できます。 **[View pricing history and compare prices in nearby regions]\(価格履歴を表示し、近くのリージョンの価格を比較する\)** を選択すると、特定のサイズに対して価格のテーブルまたはグラフが表示されます。  次の画像の価格と削除率は単なる例です。 
+
+**グラフ**:
+
+:::image type="content" source="../virtual-machines/media/spot-chart.png" alt-text="リージョン オプションのスクリーンショット。グラフの価格と削除率に違いがあります。":::
+
+**テーブル**:
+
+:::image type="content" source="../virtual-machines/media/spot-table.png" alt-text="リージョン オプションのスクリーンショット。テーブルの価格と削除率に違いがあります。":::
+
+## <a name="try--restore"></a>試行と復元 
 
 この新しいプラットフォーム レベルの機能では、AI を使用して、ターゲットのインスタンス数を維持するために、スケール セット内の削除された Azure Spot Virtual Machine のインスタンスの自動的な復元を試行します。 
-
-> [!IMPORTANT]
-> 現在、試行と復元はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 試行と復元のメリット:
 - 容量が原因で削除された Azure スポット仮想マシンの復元を試行します。
@@ -75,49 +81,6 @@ Azure Spot Virtual Machines を使用してスケール セットを作成する
 
 試行と復元は、[自動スケーリング](virtual-machine-scale-sets-autoscale-overview.md)を使用するスケール セットでは無効になっています。 スケール セット内の VM の数は、自動スケーリング規則によって決まります。
 
-### <a name="register-for-try--restore"></a>試行と復元のための登録
-
-試行と復元機能を使用する前に、プレビューのサブスクリプションを登録する必要があります。 登録が完了するまでに数分かかる場合があります。 Azure CLI または PowerShell を使用して、機能の登録を完了することができます。
-
-
-**CLI の使用**
-
-[az feature register](/cli/azure/feature#az_feature_register) を使用して、サブスクリプションでのプレビューを有効にします。 
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name SpotTryRestore 
-```
-
-機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには: 
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name SpotTryRestore 
-```
-
-サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。 
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute 
-```
-**PowerShell の使用** 
-
-[Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドレットを使用して、サブスクリプションでのプレビューを有効にします。 
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
-```
-
-機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには: 
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
-```
-
-サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。 
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
-```
 
 ## <a name="placement-groups"></a>配置グループ
 
@@ -136,7 +99,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
 ## <a name="portal"></a>ポータル
 
-Azure Spot Virtual Machines を使用するスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-portal.md)で詳しく説明されているものと同じです。 スケール セットをデプロイするときに､Spot フラグと排除ポリシーを設定することができます｡![Azure Spot Virtual Machines を使用するスケール セットを作成する](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
+Azure Spot Virtual Machines を使用するスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-portal.md)で詳しく説明されているものと同じです。 スケールセットをデプロイするときに、スポットフラグ、エビクションタイプ、エビクションポリシーを設定することを選択できます。有効にする場合は、インスタンスの復元を試みます:![Azure Spot Virtual Machinesを使用してスケールセットを作成する](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-1.png)
 
 
 ## <a name="azure-cli"></a>Azure CLI
@@ -153,7 +116,10 @@ az vmss create \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
-    --max-price -1 
+    --eviction-policy Deallocate \
+    --max-price -1 \
+    --enable-spot-restore True \
+    --spot-restore-timeout PT1H
 ```
 
 ## <a name="powershell"></a>PowerShell
@@ -168,7 +134,10 @@ $vmssConfig = New-AzVmssConfig `
     -SkuName "Standard_DS2" `
     -UpgradePolicyMode Automatic `
     -Priority "Spot" `
-    -max-price -1
+    -max-price -1 `
+    -EnableSpotRestore `
+    -SpotRestoreTimeout 60 `
+    -EvictionPolicy delete
 ```
 
 ## <a name="resource-manager-templates"></a>Resource Manager テンプレート
@@ -177,7 +146,7 @@ Azure Spot Virtual Machines を使用するスケール セットを作成する
 
 Azure Spot Virtual Machine テンプレートのデプロイの場合は、`"apiVersion": "2019-03-01"` 以降を使用してください。 
 
-テンプレートで `"virtualMachineProfile":` セクションに `priority`、`evictionPolicy`、`billingProfile` の各プロパティ、および `"Microsoft.Compute/virtualMachineScaleSets"` セクションに `"singlePlacementGroup": false,` を追加します。
+テンプレートの`"virtualMachineProfile":`セクションに`priority`、`evictionPolicy`、`billingProfile`、`spotRestoryPolicy`プロパティを追加し、`"Microsoft.Compute/virtualMachineScaleSets"`セクションに`"singlePlacementGroup": false,`プロパティを追加します:
 
 ```json
 
@@ -193,7 +162,11 @@ Azure Spot Virtual Machine テンプレートのデプロイの場合は、`"api
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
-                }
+                },
+                "spotRestorePolicy": {
+                  "enabled": "bool",
+                  "restoreTimeout": "string"
+    },
             },
 ```
 
@@ -216,6 +189,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 ```
 
 `Response Code: 204` は、シミュレートされた削除が成功したことを意味します。 
+
+詳細については、[削除通知のシミュレーション テスト](../virtual-machines/windows/spot-powershell.md#simulate-an-eviction)に関するセクションを参照してください。
 
 ## <a name="faq"></a>よく寄せられる質問
 

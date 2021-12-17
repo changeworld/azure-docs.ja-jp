@@ -4,12 +4,12 @@ description: Application Insights では、依存関係が自動的に収集さ�
 ms.topic: reference
 ms.custom: devx-track-dotnet
 ms.date: 05/06/2020
-ms.openlocfilehash: 8a4d79e52465e93fb4db2625217cb37a06917218
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c81be9762af658d0149dd6547f50aa9a7503601d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91930868"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097284"
 ---
 # <a name="dependency-auto-collection"></a>依存関係の自動収集
 
@@ -24,7 +24,7 @@ ms.locfileid: "91930868"
 | ASP.NET WebAPI | 4.5 以降 |
 | ASP.NET Core | 1.1 以降 |
 | <b> 通信ライブラリ</b> |
-| [HttpClient](https://www.microsoft.com/net/) | 4.5 以降、.NET Core 1.1 以降 |
+| [HttpClient](https://dotnet.microsoft.com) | 4.5 以降、.NET Core 1.1 以降 |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 以降、NuGet 4.3.0 |
 | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0 - 最新の安定版リリース (下記の「注」を参照)。
 | [EventHubs Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 |
@@ -61,7 +61,7 @@ ms.locfileid: "91930868"
 
 > [!NOTE]
 > *リアクティブ プログラミング サポートを除く。
-> <br>†[JVM エージェント](./java-agent.md#install-the-application-insights-agent-for-java)のインストールが必要。
+> <br>†[JVM エージェント](java-2x-agent.md#install-the-application-insights-agent-for-java)のインストールが必要。
 
 ## <a name="nodejs"></a>Node.js
 
@@ -88,7 +88,7 @@ ms.locfileid: "91930868"
 ## <a name="next-steps"></a>次のステップ
 
 - [.NET](./asp-net-dependencies.md) のカスタム依存関係追跡を設定します。
-- [Java](./java-agent.md) のカスタム依存関係追跡を設定します。
+- [Java](java-2x-agent.md) のカスタム依存関係追跡を設定します。
 - [OpenCensus Python](./opencensus-python-dependency.md) のカスタム依存関係追跡を設定します。
 - [カスタム依存関係テレメトリを記述します](./api-custom-events-metrics.md#trackdependency)。
 - Application Insights の型とデータ モデルについては、[データ モデル](./data-model.md)に関するページを参照してください。

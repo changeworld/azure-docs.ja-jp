@@ -5,8 +5,6 @@
   items:
     - name: Cognitive Services とは
       href: what-are-cognitive-services.md
-    - name: Cognitive Services ドキュメントの新着情報
-      href: whats-new-docs.md
     - name: 言語のサポート
       href: language-support.md
     - name: 価格
@@ -22,12 +20,16 @@
     - name: ARM テンプレートを使用して新しいリソースを作成する
       displayName: Resource Manager
       href: create-account-resource-manager-template.md
+    - name: コミットメント レベルの価格で新しいリソースを作成する
+      href: commitment-tier.md
 - name: 操作方法
   items:
     - name: コストの計画と管理
       href: plan-manage-costs.md
     - name: 診断ログ
       href: diagnostic-logging.md
+    - name: リソースの管理
+      href: manage-resources.md
     - name: デプロイ
       items:
         - name: コンテナー
@@ -68,8 +70,10 @@
           href: ./encryption/cognitive-services-encryption-keys-portal.md
         - name: Cognitive Services に対する要求の認証
           href: authentication.md
+        - name: データ損失防止を構成する
+          href: cognitive-services-data-loss-prevention.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/cognitive-services-security-baseline?toc=/azure/cognitive-services/TOC.json
         - name: Azure Policy によるセキュリティ制御
           href: ./security-controls-policy.md
     - name: ビッグ データと共に使用する
@@ -127,6 +131,8 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?query=cognitive%20services'
+    - name: AI の責任ある使用
+      href: responsible-use-of-ai-overview.md
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: コンプライアンス
@@ -134,7 +140,7 @@
     - name: サービス レベル アグリーメント (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
     - name: Azure Government
-      href: 'https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure'
+      href: ../azure-government/compare-azure-government-global-azure.md
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
     - name: Azure のブログ

@@ -4,12 +4,13 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: 0f560e292ecba8a1186a400e4a40b0552c394298
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 50d9e0e8ed9e6ac3d406570aa25d3a14cedab9b5
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93424854"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110721492"
 ---
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

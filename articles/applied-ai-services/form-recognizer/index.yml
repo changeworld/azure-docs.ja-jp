@@ -1,0 +1,275 @@
+### YamlMime:Landing
+title: Azure Form Recognizer のドキュメント
+summary: Azure Form Recognizer は、機械学習モデルを使用してドキュメントからフォーム フィールド、テキスト、テーブルを抽出して分析するクラウドベースの Azure Applied AI Service です。 Form Recognizer は、フォームとドキュメントを分析し、テキストとデータを抽出して、フィールドのリレーションシップをキーと値のペアとしてマップし、構造化された JSON 出力を返します。 過剰な手動操作を行うことなく、広範なデータ サイエンスに関する専門知識なしで、特定のコンテンツに合わせた正確な結果をすばやく得られます。 Form Recognizer を使用して、アプリケーションとワークフローでのデータ処理を自動化し、データドリブン戦略を強化し、ドキュメント検索機能を強化します。
+metadata:
+  title: Form Recognizer のドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Applied AI Services | Microsoft Docs
+  description: Azure Form Recognizer は、機械学習モデルを使用してドキュメントからフォーム フィールド、テキスト、テーブルを抽出して分析するクラウドベースの Azure Applied AI Service です。 Form Recognizer は、フォームとドキュメントを分析し、テキストとデータを抽出して、フィールドのリレーションシップをキーと値のペアとしてマップし、構造化された JSON 出力を返します。 過剰な手動操作を行うことなく、広範なデータ サイエンスに関する専門知識なしで、特定のコンテンツに合わせた正確な結果をすばやく得られます。 Form Recognizer を使用して、アプリケーションとワークフローでのデータ処理を自動化し、データドリブン戦略を強化し、ドキュメント検索機能を強化します。
+  ms.service: applied-ai-services
+  ms.subservice: forms-recognizer
+  ms.topic: landing-page
+  author: laujan
+  ms.author: lajanuar
+  ms.date: 11/02/2021
+  ms.openlocfilehash: 908a5f3254c99da37aaabd895504f876bd5a7ace
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131026925"
+landingContent:
+- title: Azure From Recognizer について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Form Recognizer とは?
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Azure Form Recognizer の新機能
+      url: whats-new.md
+  - linkListType: reference
+    links:
+    - text: 言語のサポート
+      url: language-support.md
+    - text: データのプライバシー、コンプライアンス、セキュリティ
+      url: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/applied-ai-services/form-recognizer/context/context
+    - text: ヘルプとサポート
+      url: ../../cognitive-services/cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
+- title: Form Recognizer の特徴を表示
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: "\U0001F195一般的なドキュメント モデル (プレビュー)"
+      url: concept-general-document.md
+    - text: レイアウト モデル
+      url: concept-layout.md
+    - text: カスタム モデル
+      url: concept-custom.md
+    - text: 請求書モデル
+      url: concept-invoice.md
+    - text: レシート モデル
+      url: concept-receipt.md
+    - text: 身分証明書モデル
+      url: concept-id-document.md
+    - text: 名刺モデル
+      url: concept-business-card.md
+- title: 開発オプションの探索
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: "\U0001F195Form Recognizer Studio (プレビュー)"
+      url: concept-form-recognizer-studio.md
+    - text: Form Recognizer サンプル ラベル付けツール
+      url: quickstarts/try-sample-label-tool.md
+    - text: REST API
+      url: quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api
+    - text: C# SDK
+      url: quickstarts/try-sdk-rest-api.md?pivots=programming-language-csharp
+    - text: Java SDK
+      url: quickstarts/try-sdk-rest-api.md?pivots=programming-language-java
+    - text: JavaScript SDK
+      url: quickstarts/try-sdk-rest-api.md?pivots=programming-language-javascript
+    - text: Python SDK
+      url: quickstarts/try-sdk-rest-api.md?pivots=programming-language-python
+  - linkListType: video
+    links:
+    - text: OCR と Form Recognizer を使用したドキュメントとフォームからのデータの抽出
+      url: https://channel9.msdn.com/Shows/AI-Show/Extracting-Data-From-Documents-and-Forms-with-OCR-and-Form-Recognizer
+    - text: AI を利用したプロセスの自動化
+      url: https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer
+- title: サンプル ラベル付けツールを試す
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: サンプル ラベル付けツールのデプロイ
+      url: deploy-label-tool.md
+  - linkListType: get-started
+    links:
+    - text: はじめに
+      url: quickstarts/try-sample-label-tool.md
+    - text: レイアウト モデルを使用する
+      url: concept-layout.md#sample-labeling-tool
+    - text: 請求書モデルを使用する
+      url: concept-invoice.md#sample-labeling-tool
+    - text: レシート モデルを使用する
+      url: concept-receipt.md#sample-labeling-tool
+    - text: 身分証明書モデルを使用する
+      url: concept-id-document.md#sample-labeling-tool
+    - text: 名刺モデルを使用する
+      url: concept-business-card.md#sample-labeling-tool
+    - text: カスタム モデルを使用する
+      url: concept-custom.md#sample-labeling-tool
+- title: "\U0001F195Form Recognizer Studio を試す"
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Studio の概要 | プレビュー
+      url: concept-form-recognizer-studio.md
+  - linkListType: get-started
+    links:
+    - text: 一般的なドキュメント モデルを使用する (プレビュー)
+      url: quickstarts/try-v3-form-recognizer-studio.md#prebuilt-models
+    - text: レイアウト モデルを使用する
+      url: quickstarts/try-v3-form-recognizer-studio.md#layout
+    - text: カスタム モデルを使用する
+      url: quickstarts/try-v3-form-recognizer-studio.md#custom-model-basics
+    - text: 請求書モデルを使用する
+      url: quickstarts/try-v3-form-recognizer-studio.md#prebuilt-models
+    - text: レシート モデルを使用する
+      url: quickstarts/try-v3-form-recognizer-studio.md#prebuilt-models
+    - text: 身分証明書モデルを使用する
+      url: quickstarts/try-v3-form-recognizer-studio.md#prebuilt-models
+    - text: 名刺モデルを使用する
+      url: quickstarts/try-v3-form-recognizer-studio.md#prebuilt-models
+- title: "\U0001F195一般的なドキュメント モデルを試す"
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: モデルの概要 | プレビュー
+      url: concept-general-document.md
+  - linkListType: get-started
+    links:
+    - text: .NET SDK
+      url: quickstarts/try-v3-csharp-sdk.md#try-it-general-document-model
+    - text: Python SDK
+      url: quickstarts/try-v3-python-sdk.md#try-it-general-document-model
+    - text: Java SDK
+      url: quickstarts/try-v3-java-sdk.md#try-it-general-document-model
+    - text: JavaScript SDK
+      url: quickstarts/try-v3-javascript-sdk.md#try-it-general-document-model
+    - text: REST API (cURL)
+      url: quickstarts/try-v3-rest-api.md#try-it-general-document-model
+    - text: Form Recognizer Studio
+      url: quickstarts/try-v3-form-recognizer-studio.md#prebuilt-models
+- title: レイアウト モデルを試す
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: モデルの概要
+      url: concept-layout.md
+  - linkListType: get-started
+    links:
+    - text: .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-layout
+    - text: Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-layout
+    - text: Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-layout
+    - text: JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-layout
+    - text: REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-layout
+    - text: Form Recognizer Studio
+      url: quickstarts/try-v3-form-recognizer-studio.md#layout
+    - text: サンプル ラベル付けツール
+      url: concept-layout.md#sample-labeling-tool
+- title: カスタム モデルを試す
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: モデルの概要
+      url: concept-custom.md
+  - linkListType: get-started
+    links:
+    - text: .NET SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: Python SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: Java SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: JavaScript SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: REST API の使用する (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: Form Recognizer Studio
+      url: quickstarts/try-v3-form-recognizer-studio.md#custom-model-basics
+    - text: サンプル ラベル付けツール
+      url: concept-custom.md#sample-labeling-tool
+- title: 請求書モデルを試す
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: モデルの概要
+      url: concept-invoice.md
+  - linkListType: get-started
+    links:
+    - text: .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-invoices
+    - text: Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-invoices
+    - text: Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-invoices
+    - text: JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-invoices
+    - text: REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-invoices
+    - text: Form Recognizer Studio
+      url: quickstarts/try-v3-form-recognizer-studio.md#prebuilt-models
+    - text: サンプル ラベル付けツール
+      url: concept-business-card.md#sample-labeling-tool
+- title: レシート モデルを試す
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: モデルの概要
+      url: concept-receipt.md
+  - linkListType: get-started
+    links:
+    - text: .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-receipts
+    - text: Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-receipts
+    - text: Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-receipts
+    - text: JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-receipts
+    - text: REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-receipts
+    - text: Form Recognizer Studio
+      url: quickstarts/try-v3-form-recognizer-studio.md#prebuilt-models
+    - text: サンプル ラベル付けツール
+      url: concept-receipt.md#sample-labeling-tool
+- title: 身分証明書モデルを試す
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: モデルの概要
+      url: concept-id-document.md
+  - linkListType: get-started
+    links:
+    - text: .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: Form Recognizer Studio
+      url: quickstarts/try-v3-form-recognizer-studio.md#prebuilt-models
+    - text: サンプル ラベル付けツール
+      url: concept-id-document.md#sample-labeling-tool
+- title: 名刺モデルを試す
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: モデルの概要
+      url: concept-business-card.md
+  - linkListType: get-started
+    links:
+    - text: .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: Form Recognizer Studio
+      url: quickstarts/try-v3-form-recognizer-studio.md#prebuilt-models
+    - text: サンプル ラベル付けツール
+      url: concept-business-card.md#sample-labeling-tool

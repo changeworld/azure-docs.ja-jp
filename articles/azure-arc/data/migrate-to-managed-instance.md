@@ -4,25 +4,24 @@ description: SQL Server から Azure Arc 対応 SQL Managed Instance にデー�
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: dnethi
+ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 86563b0a44bade2cedaf76af3c247821756111fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d93fa1d16366ee131d98aebe2ab8e3e040949d72
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90931498"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752346"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>移行する:SQL Server から Azure Arc 対応 SQL Managed Instance
 
 このシナリオでは、2 つの異なるバックアップ方法と復元方法を使用して、Azure Arc で SQL Server インスタンスから Azure SQL Managed Instance にデータベースを移行する手順について説明します。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="use-azure-blob-storage"></a>Azure Blob Storage を使用する 
+## <a name="use-azure-blob-storage"></a>Azure Blob Storage を使用する
 
 Azure Arc 対応 SQL Managed Instance に移行する場合は、Azure Blob Storage を使用します。
 
@@ -31,12 +30,17 @@ Azure Arc 対応 SQL Managed Instance に移行する場合は、Azure Blob Stor
 ### <a name="prerequisites"></a>前提条件
 
 - [Azure Data Studio をインストールする](install-client-tools.md)
+
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
 - [Azure Storage Explorer をインストールする](https://azure.microsoft.com/features/storage-explorer/)
 - Azure サブスクリプション
 
+
+
 ### <a name="step-1-provision-azure-blob-storage"></a>手順 1:Azure Blob Storage をプロビジョニングする
 
-1. [Azure Blob Storage アカウントの作成](../../storage/blobs/storage-blob-create-account-block-blob.md?tabs=azure-portal)に関するページで説明されている手順に従います。
+1. [Azure Blob Storage アカウントの作成](../../storage/common/storage-account-create.md?tabs=azure-portal)に関するページで説明されている手順に従います。
 1. Azure Storage Explorer を起動する
 1. [Azure にサインインして](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure)、前の手順で作成した Blob Storage にアクセスします。
 1. Blob Storage アカウントを右クリックし、 **[Blob コンテナーの作成]** を選択して、バックアップ ファイルが格納される新しいコンテナーを作成します。
@@ -133,10 +137,10 @@ Azure Arc 対応 SQL Managed Instance に移行する場合は、Azure Blob Stor
 
 ディスクへの一般的な SQL Server バックアップと同様に、SQL Server データベースをローカル ファイル パスにバックアップします。
 
- ```sql
+```sql
 BACKUP DATABASE Test
 TO DISK = 'c:\tmp\test.bak'
-WITH FORMAT, MEDIANAME = 'Test’ ;
+WITH FORMAT, MEDIANAME = 'Test' ;
 GO
 ```
 
@@ -146,7 +150,7 @@ SQL インスタンスがデプロイされているポッドの名前を検索�
 
 次のように実行して、すべてのポッドのリストを取得します。
 
- ```console
+```console
 kubectl get pods -n <namespace of data controller>
 ```
 
@@ -154,7 +158,7 @@ kubectl get pods -n <namespace of data controller>
 
 ローカル ストレージからクラスター内の SQL ポッドにバックアップ ファイルをコピーします。
 
- ```console
+```console
 kubectl cp <source file location> <pod name>:var/opt/mssql/data/<file name> -n <namespace name>
 
 #Example:
@@ -187,11 +191,10 @@ WITH MOVE 'test' to '/var/opt/mssql/data/test.mdf'
 GO
 ```
 
-
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Arc 対応 SQL Managed Instance の機能の詳細を確認する](managed-instance-features.md)
 
 [データ コントローラーの作成から開始する](create-data-controller.md)
 
-[データ コントローラーが既に作成されている場合: Azure Arc 対応 SQL Managed Instance を作成する](create-sql-managed-instance.md)
+[データ コントローラーが既に作成されている場合 Azure Arc 対応 SQL Managed Instance を作成する](create-sql-managed-instance.md)

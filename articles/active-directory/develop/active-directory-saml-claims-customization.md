@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/09/2020
+ms.date: 07/20/2021
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 25e737afb524cb8c6f45ac8e99f46a8064ae7855
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: f4ef55cd1a780612647e5e39eb13eed84fdead42
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598841"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032171"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
+# <a name="customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
 現在、Microsoft ID プラットフォームによるシングル サインオン (SSO) は、Azure AD アプリ ギャラリー内の事前統合済みアプリケーションと、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでサポートされています。 ユーザーが Microsoft ID プラットフォームで SAML 2.0 プロトコルを使ってアプリケーションへのユーザー認証を行うと、Microsoft ID プラットフォームは、(HTTP POST を使用して) アプリケーションにトークンを送信します。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、"*要求*" と呼ばれる、ユーザーに関する情報が含まれています。
 
@@ -50,7 +50,7 @@ NameID (名前識別子の値) を編集するには:
 
 特定の形式の NameIDPolicy 要素が SAML 要求に含まれている場合、その要求の形式が Microsoft ID プラットフォームで使用されます。
 
-SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した形式の NameID がMicrosoft ID プラットフォームによって発行されます。 形式を指定しないと、Microsoft ID プラットフォームでは、選択した要求ソースに関連付けられている既定のソース形式が使用されます。
+SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した形式の NameID がMicrosoft ID プラットフォームによって発行されます。 形式を指定しないと、Microsoft ID プラットフォームでは、選択した要求ソースに関連付けられている既定のソース形式が使用されます。 変換によって null または無効な値が生成された場合、Azure AD によって nameIdentifier 内の永続的なペアワイズ識別子が送信されます。 
 
 **[名前識別子の形式の選択]** ドロップダウンで、次のオプションのいずれかを選択できます。
 
@@ -58,8 +58,9 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 |---------------|-------------|
 | **[Default]** | 既定のソース形式が使用されます。 |
 | **永続的** | NameID 形式として Persistent が使用されます。 |
-| **EmailAddress** | NameID 形式として EmailAddress が使用されます。 |
+| **電子メール アドレス** | NameID 形式として EmailAddress が使用されます。 |
 | **未指定** | NameID 形式として Unspecified が使用されます。 |
+|**Windows ドメインの修飾名**| Microsoft ID プラットフォームでは WindowsDomainQualifiedName 形式が使用されます。|
 
 一時的な NameID もサポートされていますが、ドロップダウンでは選択できず、また、Azure 側で構成できません。 NameIDPolicy 属性について詳しくは、「[シングル サインオンの SAML プロトコル](single-sign-on-saml-protocol.md)」をご覧ください。
 
@@ -98,7 +99,6 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 | 機能 | 説明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | メール アドレスまたはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
-| **Join()** | 属性を検証済みドメインと結合します。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |
 | **ToLower()** | 選択した属性の文字を小文字に変換します。 |
 | **ToUpper()** | 選択した属性の文字を大文字に変換します。 |
 
@@ -125,7 +125,7 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 | 機能 | 説明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | メール アドレスまたはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
-| **Join()** | 2 つの属性を結合することで、新しい値を作成します。 必要に応じて、2 つの属性の間に区切り記号を使用できます。 NameID 要求の変換では、結合は検証済みドメインに制限されます。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |
+| **Join()** | 2 つの属性を結合することで、新しい値を作成します。 必要に応じて、2 つの属性の間に区切り記号を使用できます。 |
 | **ToLowercase()** | 選択した属性の文字を小文字に変換します。 |
 | **ToUppercase()** | 選択した属性の文字を大文字に変換します。 |
 | **Contains()** | 入力が指定した値と一致する場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーのメール アドレスに "@contoso.com" が含まれる場合はメール アドレスを値とする要求を出力し、それ以外の場合はユーザー プリンシパル名を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.email<br/>*Value*: "@contoso.com"<br/>Parameter 2 (出力): user.email<br/>Parameter 3 (一致しない場合の出力): user.userprincipalname |
@@ -141,7 +141,14 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 | **IfEmpty()** | 入力が null または空の場合、属性または定数を出力します。<br/>たとえば、特定のユーザーの従業員 ID が空の場合は、extensionattribute に格納されている属性を出力するものとします。 これを行うには、次の値を構成します。<br/>Parameter 1 (入力): user.employeeid<br/>Parameter 2 (出力): user.extensionattribute1<br/>Parameter 3 (一致しない場合の出力): user.employeeid |
 | **IfNotEmpty()** | 入力が null または空ではない場合、属性または定数を出力します。<br/>たとえば、特定のユーザーの従業員 ID が空ではない場合は、extensionattribute に格納されている属性を出力するものとします。 これを行うには、次の値を構成します。<br/>Parameter 1 (入力): user.employeeid<br/>Parameter 2 (出力): user.extensionattribute1 |
 
-他の変換が必要な場合は、[Azure AD のフィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599)の *SaaS アプリケーション* カテゴリで、アイデアをお送りください。
+他の変換が必要な場合は、[Azure AD のフィードバック フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)の *SaaS アプリケーション* カテゴリで、アイデアをお送りください。
+
+## <a name="add-the-upn-claim-to-saml-tokens"></a>SAML トークンへの UPN 要求の追加
+
+`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn` 要求は [SAML 制限付き要求セット](reference-claims-mapping-policy-type.md#table-2-saml-restricted-claim-set)の一部なので、 **[User Attributes & Claims]\(ユーザー属性とクレーム\)** セクションで追加できません。  回避策として、Azure portal 内の **[アプリの登録]** を使用して、[オプションの要求](active-directory-optional-claims.md)として追加できます。 
+
+アプリを **[アプリの登録]** で開き、 **[トークン構成]** 、 **[オプションの要求の追加]** の順に選択します。 **[SAML]** トークンの種類を選択し、一覧から **[UPN]** を選択し、 **[追加]** をクリックしてトークン内の要求を取得します。
+
 
 ## <a name="emitting-claims-based-on-conditions"></a>条件に基づいた要求の出力
 

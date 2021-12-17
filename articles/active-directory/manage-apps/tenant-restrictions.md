@@ -1,25 +1,25 @@
 ---
-title: テナント制限を使用して SaaS アプリへのアクセスを管理する - Azure AD
+title: テナント制限を使用して SaaS アプリへのアクセスを管理する
 description: テナント制限を使用して、どのユーザーが自分の Azure AD テナントに基づいてアプリにアクセスできるかを管理する方法。
-services: active-directory
-author: iantheninja
+titleSuffix: Azure AD
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 4/6/2021
-ms.author: iangithinji
-ms.reviewer: hpsin
+ms.date: 7/30/2021
+ms.author: davidmu
+ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 941bf61f3387abf19be58bdd4d8861ab123e244f
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: d3dc75a0c9d5f47d7f415a5df29398e8d407d7cf
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376581"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546541"
 ---
-# <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
+# <a name="restrict-access-to-a-tenant"></a>アクセスをテナントに制限する
 
 セキュリティを重視する大規模な組織は、Microsoft 365 などのクラウド サービスへの移行を望んでいますが、ユーザーが承認済みリソースにしかアクセスできないことを認識しておく必要があります。 従来より、企業ではアクセスを管理するときにドメイン名や IP アドレスを制限しています。 この方法は、SaaS (サービスとしてのソフトウェア) アプリがパブリック クラウドでホストされ、[outlook.office.com](https://outlook.office.com/) や [login.microsoftonline.com](https://login.microsoftonline.com/) などの共有ドメイン名で実行されている環境では失敗します。 これらのアドレスをブロックすると、ユーザーを承認済みの ID やリソースに単に制限するのではなく、ユーザーは Web 上の Outlook にまったくアクセスできなくなります。
 
@@ -29,7 +29,7 @@ ms.locfileid: "107376581"
 
 この記事では Microsoft 365 のテナント制限に重点を置いていますが、この機能は、シングル サインオンのためにユーザーを Azure AD に送信するすべてのアプリを保護します。 Microsoft 365 で使用される Azure AD テナントとは異なるテナントで SaaS アプリを使用する場合は、必要なすべてのテナントが許可されていることをご確認ください (たとえば、B2B コラボレーション シナリオ内など)。 SaaS クラウド アプリの詳細については、[Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) をご覧ください。
 
-さらに、テナント制限機能では、OneDrive、Hotmail、Xbox.com などの[すべての Microsoft コンシューマー アプリケーション (MSA アプリ) の使用をブロック](#blocking-consumer-applications-public-preview)できるようになりました。  これは、`login.live.com` エンドポイントに対して別のヘッダーを使用します。これについては、ドキュメントの最後で詳細に説明します。
+さらに、テナント制限機能では、OneDrive、Hotmail、Xbox.com などの[すべての Microsoft コンシューマー アプリケーション (MSA アプリ) の使用をブロック](#blocking-consumer-applications)できるようになりました。  これは、`login.live.com` エンドポイントに対して別のヘッダーを使用します。これについては、ドキュメントの最後で詳細に説明します。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -41,7 +41,7 @@ ms.locfileid: "107376581"
 
 3. **クライアント ソフトウェア**: テナント制限をサポートするには、プロキシ インフラストラクチャがトラフィックをインターセプトできるように、クライアント ソフトウェアはトークンを直接 Azure AD に要求する必要があります。 先進認証 (OAuth 2.0 など) を使用する Office クライアントと同様に、ブラウザー ベースの Microsoft 365 アプリケーションは現在、テナント制限をサポートしています。
 
-4. **先進認証**: テナント制限を使用し、許可されていないすべてのテナントへのアクセスをブロックするには、クラウド サービスは先進認証を使用する必要があります。 既定で先進認証プロトコルを使用するように Microsoft 365 クラウド サービスを構成する必要があります。 Microsoft 365 による最新の認証のサポートに関する最新情報については、[Office 365 の最新の認証の更新](https://www.microsoft.com/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)に関するページをご覧ください。
+4. **先進認証**: テナント制限を使用し、許可されていないすべてのテナントへのアクセスをブロックするには、クラウド サービスは先進認証を使用する必要があります。 既定で先進認証プロトコルを使用するように Microsoft 365 クラウド サービスを構成する必要があります。 Microsoft 365 による最新の認証のサポートに関する最新情報については、[Office 365 の最新の認証の更新](/microsoft-365/enterprise/modern-auth-for-office-2013-and-2016)に関するページをご覧ください。
 
 次の図は、おおまかなトラフィック フローを示しています。 テナント制限では、TLS 検査は Microsoft 365 クラウド サービスではなく、Azure AD へのトラフィック上でのみ必要です。 Azure AD への認証のためのトラフィック量は一般に、Exchange Online や SharePoint Online などの SaaS アプリケーションへのトラフィック量よりはるかに少ないため、この区別が重要です。
 
@@ -53,7 +53,7 @@ ms.locfileid: "107376581"
 
 ### <a name="urls-and-ip-addresses"></a>URL と IP アドレス
 
-テナント制限を使用するには、クライアントは、認証のために [login.microsoftonline.com](https://login.microsoftonline.com/)、[login.microsoft.com](https://login.microsoft.com/)、および [login.windows.net](https://login.windows.net/) の Azure AD URL に接続できる必要があります。 さらに、Office 365 にアクセスするために、クライアントは「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」で定義されている完全修飾ドメイン名 (FQDN)、URL、および IP アドレスにも接続できる必要があります。 
+テナント制限を使用するには、クライアントは、認証のために [login.microsoftonline.com](https://login.microsoftonline.com/)、[login.microsoft.com](https://login.microsoft.com/)、および [login.windows.net](https://login.windows.net/) の Azure AD URL に接続できる必要があります。 さらに、Office 365 にアクセスするために、クライアントは「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」で定義されている完全修飾ドメイン名 (FQDN)、URL、および IP アドレスにも接続できる必要があります。
 
 ### <a name="proxy-configuration-and-requirements"></a>プロキシの構成と要件
 
@@ -78,12 +78,12 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net への各送
 
 - *Restrict-Access-To-Tenants* には、ユーザーにアクセスを許可するテナントのコンマ区切りリストである、\<permitted tenant list\> の値を使用します。 テナントに登録されているドメインを使用して、このリストのテナントとディレクトリ ID 自体を識別できます。 テナントを記述する 3 つのすべての方法の例として、Contoso、Fabrikam、および Microsoft を許可する名前と値のペアは、`Restrict-Access-To-Tenants: contoso.com,fabrikam.onmicrosoft.com,72f988bf-86f1-41af-91ab-2d7cd011db47` のようになります。
 
-- *Restrict-Access-Context* には、どのテナントでテナント制限を設定するかを宣言している、1 つのディレクトリ ID の値を使用します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言するには、名前と値のペアは `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。  これらの認証のログを取得するには、このスポットで独自のディレクトリ ID を使用する **必要があります**。
+- *Restrict-Access-Context* には、どのテナントでテナント制限を設定するかを宣言している、1 つのディレクトリ ID の値を使用します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言するには、名前と値のペアは `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。 これらの認証のログを取得するには、ここで独自のディレクトリ ID を使用する *必要があります*。 独自のディレクトリ ID 以外の ID を使用する場合、これらのサインインログは他のユーザーのテナントに表示 *され*、すべての個人情報が削除されます。 詳細については、[管理者向けエクスペリエンス](#admin-experience)に関する記事を参照してください。
 
 > [!TIP]
-> ディレクトリ ID は、[Azure Active Directory ポータル](https://aad.portal.azure.com/)で見つけることができます。 管理者としてサインインし、 **[Azure Active Directory]** を選択して、 **[プロパティ]** を選択します。 
+> ディレクトリ ID は、[Azure Active Directory ポータル](https://aad.portal.azure.com/)で見つけることができます。 管理者としてサインインし、 **[Azure Active Directory]** を選択して、 **[プロパティ]** を選択します。
 >
-> ディレクトリ ID またはドメイン名が同じテナントを参照していることを検証するには、URL `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration` で <tenant> の代わりにその ID またはドメインを使用します。  ドメインと ID の結果が同じであれば、同じテナントを参照しています。 
+> ディレクトリ ID またはドメイン名が同じテナントを参照していることを検証するには、URL `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration` で \<tenant\> の代わりにその ID またはドメインを使用します。  ドメインと ID の結果が同じであれば、同じテナントを参照しています。
 
 ユーザーが未承認のテナントを含む独自の HTTP ヘッダーを挿入できないようにするために、受信要求に *Restrict-Access-To-Tenants* ヘッダーが既に存在する場合、プロキシはそのヘッダーを置き換える必要があります。
 
@@ -111,11 +111,11 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net へのすべ
 
 Restricted-Access-Context テナントとして指定されたテナントの管理者は、このレポートを使用して、テナント制限ポリシーのためにブロックされたサインイン (使用された ID やターゲット ディレクトリ ID を含む) を確認できます。 制限を設定するテナントがサインインのユーザー テナントまたはリソース テナントのいずれかである場合は、サインインが含まれます。
 
-Restricted-Access-Context テナント以外のテナントに属するユーザーがサインインする場合、ターゲット ディレクトリ ID などの限られた情報がレポートに含まれる可能性があります。 この場合、名前やユーザー プリンシパル名などのユーザー識別情報はマスクされ、他のテナントのユーザー データは保護されます (必要に応じて、ユーザー名とオブジェクト ID の代わりに "{PII Removed}@domain.com" または 00000000-0000-0000-0000-000000000000)。 
+Restricted-Access-Context テナント以外のテナントに属するユーザーがサインインする場合、ターゲット ディレクトリ ID などの限られた情報がレポートに含まれる可能性があります。 この場合、名前やユーザー プリンシパル名などのユーザー識別情報はマスクされ、他のテナントのユーザー データは保護されます (必要に応じて、ユーザー名とオブジェクト ID の代わりに "{PII Removed}@domain.com" または 00000000-0000-0000-0000-000000000000)。
 
 Azure Portal の他のレポートと同様に、フィルターを使用してレポートの範囲を指定できます。 特定の時間間隔、ユーザー、アプリケーション、クライアント、または状態についてフィルター処理できます。 **[列]** ボタンを選択すると、次のフィールドの任意の組み合わせでデータを表示することを選択できます。
 
-- **ユーザー** - このフィールドでは、個人データを削除することができます。これは、`00000000-0000-0000-0000-000000000000` に設定されます。 
+- **ユーザー** - このフィールドでは、個人データを削除することができます。これは、`00000000-0000-0000-0000-000000000000` に設定されます。
 - **Application**
 - **状態**
 - **Date**
@@ -133,7 +133,7 @@ Azure Portal の他のレポートと同様に、フィルターを使用して�
 1. 使用されるクライアントが先進認証をサポートしている。
 2. クラウド サービスの既定の認証プロトコルとして最新の認証が有効になっている。
 
-最新の認証を現在サポートしている Office クライアントに関する最新情報については、「[Updated Office 365 modern authentication (Office 365 の最新の認証の更新)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。 このページには、特定の Exchange Online テナントと Skype for Business Online テナントで最新の認証を有効にする手順へのリンクも含まれています。 SharePoint Online では、先進認証が既定で有効になっています。
+最新の認証を現在サポートしている Office クライアントに関する最新情報については、「[Updated Office 365 modern authentication (Office 365 の最新の認証の更新)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。 このページには、特定の Exchange Online テナントと Skype for Business Online テナントで最新の認証を有効にする手順へのリンクも含まれています。 SharePoint Online では、先進認証が既定で有効になっています。 Teams は最新の認証のみをサポートしており、レガシ認証はサポートしていないため、このバイパスの問題は Teams には適用されません。 
 
 Microsoft 365 ブラウザー ベースのアプリケーション (Office ポータル、Yammer、SharePoint サイト、Outlook on the Web など) は現在、テナント制限をサポートしています。 シック クライアント (Outlook、Skype for Business、Word、Excel、PowerPoint など) は、先進認証を使用している場合にのみテナント制限を適用できます。  
 
@@ -157,7 +157,7 @@ Fiddler は無料の Web デバッグ プロキシです。Fiddler を使用し�
 
    1. Fiddler Web Debugger ツールで、 **[Rules]** メニューを選択し、 **[Customize Rules…]** を選択して CustomRules ファイルを開きます。
 
-   2. `OnBeforeRequest` 関数の先頭に次の行を追加します。 \<List of tenant identifiers\> をテナントに登録されているドメイン (`contoso.onmicrosoft.com` など) に置き換えます。 \<directory ID\> を、テナントの Azure AD GUID 識別子に置き換えます。  テナントでログ表示するには、正しい GUID 識別子を含める **必要があります**。 
+   2. `OnBeforeRequest` 関数の先頭に次の行を追加します。 \<List of tenant identifiers\> をテナントに登録されているドメイン (`contoso.onmicrosoft.com` など) に置き換えます。 \<directory ID\> を、テナントの Azure AD GUID 識別子に置き換えます。  テナントでログ表示するには、正しい GUID 識別子を含める **必要があります**。
 
    ```JScript.NET
     // Allows access to the listed tenants.
@@ -197,7 +197,7 @@ Fiddler を構成したら、 **[File]** メニューに移動し、 **[Capture 
 
 具体的な詳細については、ご使用のプロキシ サーバーのドキュメントを参照してください。
 
-## <a name="blocking-consumer-applications-public-preview"></a>コンシューマー アプリケーションのブロック (パブリック プレビュー)
+## <a name="blocking-consumer-applications"></a>顧客のアプリケーションをブロックする
 
 [OneDrive](https://onedrive.live.com/) または [Microsoft Learn](/learn/) など、コンシューマー アカウントと組織アカウントの両方をサポートする Microsoft のアプリケーションは、同じ URL でホストされる場合があります。  これは、仕事の目的でその URL にアクセスする必要があるユーザーは、個人的な使用のためにもアクセスできることを意味しますが、運用上のガイドラインでは、許可されない場合があります。
 
@@ -225,5 +225,5 @@ Fiddler を構成したら、 **[File]** メニューに移動し、 **[Capture 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Office 365 の最新の認証の更新](https://www.microsoft.com/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)について確認する
+- [Office 365 の最新の認証の更新](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)について確認する
 - [Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)を確認する

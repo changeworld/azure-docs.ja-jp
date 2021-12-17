@@ -3,15 +3,15 @@ title: Azure Kubernetes Service (AKS) で Ultra Disk のサポートを有効に
 description: Azure Kubernetes Service (AKS) クラスターで Ultra Disks を有効化し、構成する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 07/10/2020
-ms.openlocfilehash: 7dbe0a75ce2079bdec752f7fee0c3e97e3ae2ffa
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 10/12/2021
+ms.openlocfilehash: 07d43fc72d10f1739fb67124feadacc9632206be
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767351"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984860"
 ---
-# <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes Service での Azure Ultra Disks の使用 (プレビュー)
+# <a name="use-azure-ultra-disks-on-azure-kubernetes-service"></a>Azure Kubernetes Service での Azure Ultra Disks の使用
 
 [Azure Ultra Disks](../virtual-machines/disks-enable-ultra-ssd.md) は、ステートフル アプリケーションに高スループット、高 IOPS、および一貫性のある低待機時間のディスク ストレージを提供します。 Ultra Disks の主なメリットの 1 つが、エージェント ノードを再起動することなく、SSD のパフォーマンスをワークロードと共に動的に変更する機能です。 Ultra Disks は、データ量の多いワークロードに適しています。
 
@@ -22,49 +22,13 @@ ms.locfileid: "107767351"
 > [!IMPORTANT]
 > Azure Ultra Disks では、特定の VM シリーズだけでなく、これらのディスクをサポートする可用性ゾーンとリージョンにデプロイされたノードプールが必要です。 [**Ultra Disks の GA の範囲と制限事項**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)に関する説明を参照してください。
 
-### <a name="register-the-enableultrassd-preview-feature"></a>`EnableUltraSSD` プレビュー機能を登録する
-
-Ultra Disks を活用できる AKS クラスターまたはノード プールを作成するには、サブスクリプションで `EnableUltraSSD` 機能フラグを有効にする必要があります。
-
-次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`EnableUltraSSD` 機能フラグを登録します。
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "EnableUltraSSD"
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableUltraSSD')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
-
-Ultra Disks を使用できる AKS クラスターまたはノード プールを作成するには、最新の *aks-preview* CLI 拡張機能が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールするか、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムをインストールします。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-``` 
-
 ### <a name="limitations"></a>制限事項
 - [**Ultra Disks の GA の範囲と制限事項**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)に関する説明を参照してください
 - Ultra Disks でサポートされているサイズの範囲は 100 から 1500 です
 
 ## <a name="create-a-new-cluster-that-can-use-ultra-disks"></a>Ultra Disks を使用できる新しいクラスターを作成する
 
-次の CLI コマンドを使用して、Ultra Disks を活用できる AKS クラスターを作成します。 `--aks-custom-headers` フラグを使用して `EnableUltraSSD` 機能を設定します。
+次の CLI コマンドを使用して、Ultra Disks を活用できる AKS クラスターを作成します。 `--enable-ultra-ssd` フラグを使用して `EnableUltraSSD` 機能を設定します。
 
 Azure リソース グループを作成します。
 
@@ -77,20 +41,20 @@ Ultra Disks をサポートする AKS クラスターを作成します。
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
-az aks create -g MyResourceGroup -n MyManagedCluster -l westus2 --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
+az aks create -g MyResourceGroup -n MyManagedCluster -l westus2 --node-vm-size Standard_D2s_v3 --zones 1 2 --node-count 2 --enable-ultra-ssd
 ```
 
-Ultra Disks のサポートを使用せずにクラスターを作成する場合は、カスタムの `--aks-custom-headers` パラメーターを省略できます。
+Ultra Disks のサポートを使用せずにクラスターを作成するには、`--enable-ultra-ssd` パラメーターを省略します。
 
 ## <a name="enable-ultra-disks-on-an-existing-cluster"></a>既存のクラスターでの Ultra Disks の有効化
 
-新しいノード プールを Ultra Disks がサポートされるクラスターに追加することによって、既存のクラスターで Ultra Disks を有効にできます。 `--aks-custom-headers` フラグを使用して、Ultra ディスクを使用するように新しいノード プールを構成します。
+新しいノード プールを Ultra Disks がサポートされるクラスターに追加することによって、既存のクラスターで Ultra Disks を有効にできます。 `--enable-ultra-ssd` フラグを使用して、Ultra ディスクを使用するように新しいノード プールを構成します。
 
 ```azurecli
-az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
+az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_D2s_v3 --zones 1 2 --node-count 2 --enable-ultra-ssd
 ```
 
-Ultra Disks のサポートを使用せずに新しいノード プールを作成する場合は、カスタムの `--aks-custom-headers` パラメーターを省略して作成できます。
+Ultra Disks のサポートを使用せずに新しいノード プールを作成するには、`--enable-ultra-ssd` パラメーターを省略します。
 
 ## <a name="use-ultra-disks-dynamically-with-a-storage-class"></a>ストレージ クラスで Ultra Disks を動的に使用する
 

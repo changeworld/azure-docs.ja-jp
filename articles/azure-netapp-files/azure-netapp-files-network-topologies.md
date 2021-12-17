@@ -12,20 +12,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/09/2021
+ms.date: 10/04/2021
 ms.author: ramakk
-ms.openlocfilehash: d002932bca51300fa6a031ce7ab0d69186afe9c3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 09f09b5c50dd04f39f95405df9875d458a258b25
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311687"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545965"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files のネットワーク計画のガイドライン
 
 ネットワーク アーキテクチャの計画は、あらゆるアプリケーション インフラストラクチャ設計の重要な要素です。 この記事は、お客様のワークロードに有効なネットワーク アーキテクチャを設計し、Azure NetApp Files の豊富な機能からベネフィットを得るために役立ちます。
 
-Azure NetApp Files のボリュームは、Azure Virtual Network 内の[委任されたサブネット](../virtual-network/virtual-network-manage-subnet.md)と呼ばれる特別な目的のサブネットに含まれるように設計されています。 そのため、必要に応じて、お客様の VNet から直接、同じリージョン内のピアリングされた VNet から、またはオンプレミスから、Virtual Network Gateway (ExpressRoute または VPN Gateway) 経由でボリュームにアクセスできます。 サブネットは Azure NetApp Files 専用であり、他の Azure サービスまたはインターネットへの接続はありません。
+Azure NetApp Files のボリュームは、Azure Virtual Network 内の[委任されたサブネット](../virtual-network/virtual-network-manage-subnet.md)と呼ばれる特別な目的のサブネットに含まれるように設計されています。 そのため、必要に応じて、VNet ピアリング経由で Azure 内から直接、またはオンプレミスから仮想ネットワーク ゲートウェイ (ExpressRoute または VPN Gateway) 経由で、ボリュームにアクセスできます。 サブネットは Azure NetApp Files 専用であり、インターネットへの接続はありません。 
+
+## <a name="configurable-network-features"></a>構成可能なネットワーク機能  
+
+ Azure NetApp Files 用の [**Standard ネットワーク機能**](configure-network-features.md)の構成は、パブリック プレビューで利用できます。 お使いのサブスクリプションでこの機能に登録した後は、サポートされているリージョンの *Standard* または *Basic* ネットワーク機能を選択して、新しいボリュームを作成することができます。 Standard ネットワーク機能がサポートされていないリージョンでは、ボリュームは既定で Basic ネットワーク機能を使用します。  
+
+* ***Standard***  
+    この設定を選択すると、より高い IP 制限と、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)や[ユーザー定義ルート](../virtual-network/virtual-networks-udr-overview.md#user-defined)などの標準 VNet 機能が委任されたサブネット上で有効になり、この記事で説明されているように追加の接続パターンも有効になります。
+
+* ***Basic***  
+    この設定を選択すると、「[考慮事項](#considerations)」セクションで説明されているように、選択的な接続パターンと制限付き IP スケールが有効になります。 この設定では、すべての[制約](#constraints)が適用されます。 
 
 ## <a name="considerations"></a>考慮事項  
 
@@ -33,37 +43,38 @@ Azure NetApp Files ネットワークを計画するときは、いくつかの�
 
 ### <a name="constraints"></a>制約
 
-次の機能は、Azure NetApp Files では現在サポートされていません。 
+次の表では、各ネットワーク機能構成でサポートされるものについて説明します。
 
-* 委任されたサブネットに適用されるネットワーク セキュリティ グループ (NSG)
-* 委任されたサブネットに適用されるユーザー定義ルート (UDR)
-* Azure NetApp Files インターフェイス上の (カスタム名前付けポリシーなどの) Azure ポリシー
-* Azure NetApp Files トラフィック用のロード バランサー
-* Azure Virtual WAN 
-* ゾーン冗長仮想ネットワーク ゲートウェイ (Az が名前に含まれるゲートウェイ SKU) 
-* アクティブ/アクティブの仮想ネットワーク GW 
-* デュアル スタック (IPv4 および IPv6) VNet
-
-Azure NetApp Files には、次のネットワーク制限が適用されます。
-
-* Azure NetApp Files で使用される VNet の IP の数は (*今すぐ* ピアリングされた VNet も含めて) 1,000 を超えることはできません。 Microsoft では、お客様のスケール ニーズに合わせてこの制限を引き上げることに取り組んでいます。 
-* 各 Azure Virtual Network (VNet) で、1 つのサブネットだけを Azure NetApp Files に委任できます。
-
+|      特徴     |      Standard ネットワーク機能     |      Basic ネットワーク機能     |
+|---|---|---|
+|     Azure NetApp Files の VNet で使用される IP の数 (すぐにピアリングされる VNet を含む)    |     [VM としての Standard の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)    |     1000    |
+|     VNet ごとの ANF の委任されたサブネット    |     1    |     1    |
+|     Azure NetApp Files の委任されたサブネット上の[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md) (NSG)    |     はい    |     いいえ    |
+|     Azure NetApp Files の委任されたサブネット上の[ユーザー定義ルート](../virtual-network/virtual-networks-udr-overview.md#user-defined) (UDR)    |     はい    |     いいえ    |
+|     [プライベート エンドポイント](../private-link/private-endpoint-overview.md)への接続    |     いいえ    |     いいえ    |
+|     [サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)への接続    |     いいえ    |     いいえ    |
+|     Azure NetApp Files インターフェイス上の Azure ポリシー (カスタム名前付けポリシーなど)    |     いいえ    |     いいえ    |
+|     Azure NetApp Files トラフィック用のロード バランサー    |     いいえ    |     いいえ    |
+|     デュアル スタック (IPv4 と IPv6) VNet    |     いいえ <br> (IPv4 のみサポート)    |     いいえ <br> (IPv4 のみサポート)    |
 
 ### <a name="supported-network-topologies"></a>サポートされているネットワーク トポロジ
 
-次の表では、Azure NetApp Files でサポートされているネットワーク トポロジについて説明します。  サポートされていないトポロジの回避策についても説明します。 
+次の表では、Azure NetApp Files の各ネットワーク機能構成によってサポートされているネットワーク トポロジについて説明します。 
 
-|    トポロジ    |    サポートされているか    |     回避策    |
-|-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    ローカル VNet 内のボリュームへの接続    |    はい    |         |
-|    ピアリングされた VNet 内のボリュームへの接続 (同じリージョン)    |    はい    |         |
-|    ピアリングされた VNet 内のボリュームへの接続 (クロス リージョンまたはグローバル ピアリング)    |    いいえ    |    なし    |
-|    ExpressRoute ゲートウェイ経由でのボリュームへの接続    |    はい    |         |
-|    ExpressRoute ゲートウェイ経由で、ゲートウェイ トランジットとの VNet ピアリングを使用して、スポーク VNet 内のボリュームにオンプレミスから接続    |    はい    |        |
-|    VPN ゲートウェイ経由で、スポーク VNet 内のボリュームにオンプレミスから接続    |    はい    |         |
-|    VPN ゲートウェイ経由で、ゲートウェイ トランジットとの VNet ピアリングを使用して、スポーク VNet 内のボリュームにオンプレミスから接続    |    はい    |         |
-
+|      トポロジ     |      Standard ネットワーク機能     |      Basic ネットワーク機能     |
+|---|---|---|
+|     ローカル VNet 内のボリュームへの接続    |     はい    |     はい    |
+|     ピアリングされた VNet 内のボリュームへの接続 (同じリージョン)    |     はい    |     はい    |
+|     ピアリングされた VNet 内のボリュームへの接続 (クロス リージョンまたはグローバル ピアリング)    |     いいえ    |     いいえ    |
+|     ExpressRoute ゲートウェイ経由でのボリュームへの接続    |     はい    |     はい    |
+|     ExpressRoute (ER) FastPath    |     はい    |     いいえ    |
+|     ExpressRoute ゲートウェイおよびゲートウェイ トランジットとの VNet ピアリングを経由した、オンプレミスからスポーク VNet 内のボリュームへの接続    |     はい    |     はい    |
+|     VPN ゲートウェイを経由した、オンプレミスからスポーク VNet 内のボリュームへの接続    |     はい    |     はい    |
+|     VPN ゲートウェイおよびゲートウェイ トランジットとの VNet ピアリングを経由した、オンプレミスからスポーク VNet 内のボリュームへの接続    |     はい    |     はい    |
+|     アクティブ/パッシブ VPN ゲートウェイを経由した接続    |     はい    |     はい    |
+|     アクティブ/アクティブ VPN ゲートウェイを経由した接続    |     はい    |     いいえ    |
+|     アクティブ/アクティブ ゾーン冗長ゲートウェイを経由した接続    |     いいえ    |     いいえ    |
+|     Virtual WAN (VWAN) を経由した接続    |     いいえ    |     いいえ    |
 
 ## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Azure NetApp Files ボリューム用の仮想ネットワーク
 
@@ -85,10 +96,14 @@ VNet が別の VNet とピアリングされている場合、VNet アドレス�
 
 ### <a name="udrs-and-nsgs"></a>UDR と NSG
 
-Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルート (UDR) とネットワーク セキュリティ グループ (NSG) はサポートされていません。 しかし、UDR と NSG を他のサブネットに適用することはできます。これは、Azure NetApp Files に委任されたサブネットと同じ VNet 内であっても同様です。
+ユーザー定義ルート (UDR) とネットワーク セキュリティ グループ (NSG) は、Standard ネットワーク機能で少なくとも 1 つのボリュームが作成されている、Azure NetApp Files の委任されたサブネットでのみサポートされます。  
 
-* このようにすると、UDR により、それらの他のサブネットから Azure NetApp Files の委任サブネットに向かうトラフィック フローが定義されます。 これは、Azure NetApp Files からそれらの他のサブネットに向かう、システム ルートを使用した逆方向のトラフィック フローと対応させるうえで役立ちます。  
-* 次に、NSG により、Azure NetApp Files の委任サブネットとの間のトラフィックが許可または拒否されます。 
+> [!NOTE]
+> ネットワーク インターフェイス レベルでの NSG の関連付けは、Azure NetApp Files のネットワーク インターフェイスではサポートされていません。 
+
+サブネットに Standard と Basic のネットワーク機能を使用するボリュームの組み合わせがある場合 (または、機能プレビューに登録されていない既存のボリュームの場合)、委任されたサブネットで適用される UDR と NSG は、Standard ネットワーク機能を持つボリュームのみに適用されます。
+
+委任されたサブネットのアドレス プレフィックスと NVA としてのネクスト ホップを使用した、ソース VM サブネットでのユーザー定義ルート (UDR) の構成は、Basic ネットワーク機能を使用するボリュームではサポートされていません。 そのような設定を行うと、接続の問題が発生します。
 
 ## <a name="azure-native-environments"></a>Azure ネイティブ環境
 
@@ -125,7 +140,7 @@ Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルー�
 上に示したトポロジでは、オンプレミス ネットワークは Azure のハブ VNet に接続されており、ハブ VNet とピアリングされているのと同じリージョンに 2 つのスポーク VNet があります。  このシナリオで、Azure NetApp Files ボリュームに対してサポートされている接続オプションは次のとおりです。
 
 * オンプレミス リソース VM 1 および VM 2 は、サイト間 VPN または ExpressRoute 回線経由でハブのボリューム 1 に接続できます。 
-* オンプレミス リソースの VM 1 と VM 2 を、サイト間 VPN とリージョンの VNet ピアリング経由でハブのボリューム 2 とボリューム 3 に接続できます。
+* オンプレミス リソース VM 1 と VM 2 は、サイト間 VPN とリージョンの VNet ピアリング経由で、ボリューム 2 またはボリューム 3 に接続できます。
 * ハブ VNet 内の VM 3 は、スポーク VNet 1 内のボリューム 2 と、スポーク VNet 2 内のボリューム 3 に接続できます。
 * スポーク VNet 1 の VM 4 と、スポーク VNet 2 の VM 5 は、ハブ VNet 内のボリューム 1 に接続できます。
 * スポーク VNet 1 内の VM 4 は、スポーク VNet 2 内のボリューム 3 に接続できません。 また、スポーク VNet 2 内の VM 5 は、スポーク VNet 1 内のボリューム 2 に接続できません。 これは、スポーク VNet がピアリングされておらず、_トランジット ルーティングは VNet ピアリング経由ではサポートされていない_ からです。
@@ -133,4 +148,5 @@ Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルー�
 
 ## <a name="next-steps"></a>次のステップ
 
-[サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)
+* [サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)
+* [Azure NetApp Files ボリュームのネットワーク機能を構成する](configure-network-features.md) 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/14/2020
+ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 20f49c174dde90bc7f1a9b34f3dea3132e9b177e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c628e67b258d3d51b5f7b05b08c0ac0b2accb9a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644699"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304095"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Splan Visitor を統合する
 
@@ -33,11 +33,14 @@ ms.locfileid: "101644699"
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Splan Visitor でのシングル サインオン (SSO) が有効なサブスクリプション。
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-Splan Visitor では、IdP Initiated SSO がサポートされます。
+* Splan Visitor では、IdP Initiated SSO がサポートされます。
 
 ## <a name="add-splan-visitor-from-the-gallery"></a>ギャラリーからの Splan Visitor の追加
 
@@ -69,7 +72,7 @@ Splan Visitor に対して Azure AD SSO を構成してテストするには、�
 
 1. Azure portal の **Splan Visitor** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の **編集 (ペン)** アイコンを選択して設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の **鉛筆アイコン** を選択して設定を編集します。
 
    ![[基本的な SAML 構成] の編集 (ペン) アイコンが強調表示されたスクリーンショット。](common/edit-urls.png)
 
@@ -120,8 +123,8 @@ Splan Visitor で **Britta Simon** というテスト ユーザーを作成し�
 次のオプションのいずれかを使用して Azure AD のシングル サインオン構成をテストします。
 
 * **Azure ポータル**: **[このアプリケーションをテストします]** を選択すると、SSO を設定する Splan Visitor に自動的にサインインします。
-* **Microsoft マイ アプリ ポータル**: **[Splan Visitor]** タイルを選択すると、SSO を設定する Splan Visitor に自動的にサインインします。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+* **Microsoft マイ アプリ ポータル**: **[Splan Visitor]** タイルを選択すると、SSO を設定する Splan Visitor に自動的にサインインします。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Splan Visitor を構成したら、[Microsoft Cloud App Security でセッション制御を強制する方法を確認](/cloud-app-security/proxy-deployment-any-app)できます。 セッション制御により、組織の機密データの流出と侵入をリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。
+Splan Visitor を構成したら、[Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご確認いただけます](/cloud-app-security/proxy-deployment-any-app)。 セッション制御により、組織の機密データの流出と侵入をリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。

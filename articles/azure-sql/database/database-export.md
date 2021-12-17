@@ -5,18 +5,18 @@ description: Azure portal を使用して BACPAC ファイルにデータベー�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: data-movement
-author: stevestein
+author: cawrites
 ms.custom: sqldbrb=2
-ms.author: sstein
+ms.author: chadam
 ms.reviewer: ''
-ms.date: 01/11/2021
+ms.date: 11/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 14854f839d6dfe3c8a08a4a1453fd78e389fe8d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 52342bded2ac0af55dd0cdd4b7670b05f5f0b249
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568734"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710503"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC ファイルへのエクスポート - Azure SQL Database および Azure SQL Managed Instance
 
@@ -30,6 +30,7 @@ ms.locfileid: "105568734"
 - Blob Storage にエクスポートする場合、BACPAC ファイルの最大サイズは 200 GB です。 大きな BACPAC ファイルをアーカイブするには、ローカル ストレージにエクスポートします。
 - この記事で説明されている方法を用いた Azure Premium Storage への BACPAC ファイルのエクスポートはサポートされていません。
 - ファイアウォールの背後にある Storage は現在サポートされていません。
+- 不変ストレージは現在サポートされていません。
 - Storage のファイル名または StorageURI の入力値は 128 文字未満の長さにする必要があり、かつ '.' で終了したり、空白文字や '<,>,*,%,&,:,\,/,?' などの特殊文字を含んでいたりすることはできません。 
 - エクスポート操作が 20 時間を超える場合は取り消されることがあります。 エクスポート中にパフォーマンスを向上させるには、次の操作を実行します。
 
@@ -47,7 +48,7 @@ Azure portal を使用して [Azure SQL Managed Instance](../managed-instance/sq
 > [!NOTE]
 > Azure portal または PowerShell から送信されたインポート/エクスポート要求を処理するマシンは、BACPAC ファイルとデータ層アプリケーション フレームワーク (DacFX) によって生成された一時ファイルを格納する必要があります。 必要なディスク領域は、同じサイズのデータベースでも大きく異なります。データベースのサイズの最大 3 倍のディスク領域が必要になることがあります。 インポート/エクスポート要求を実行するマシンには、450 GB のローカル ディスク領域しかありません。 その結果、一部の要求がエラー `There is not enough space on the disk` で失敗することがあります。 この場合の回避策は、十分なローカル ディスク領域を持つマシンで sqlpackage.exe を実行することです。 150 GB を超えるデータベースをインポート/エクスポートする場合は、[SqlPackage](#sqlpackage-utility) を使用してこの問題を回避することをお勧めします。
 
-1. [Azure Portal](https://portal.azure.com) を使用してデータベースをエクスポートするには、データベースのページを開き、ツールバーの **[エクスポート]** をクリックします。
+1. [Azure portal](https://portal.azure.com) を使用してデータベースをエクスポートするには、データベースのページを開き、ツール バーの **[エクスポート]** を選択します。
 
    ![[エクスポート] ボタンが強調表示されているスクリーンショット。](./media/database-export/database-export1.png)
 
@@ -55,15 +56,13 @@ Azure portal を使用して [Azure SQL Managed Instance](../managed-instance/sq
 
     ![データベースのエクスポート](./media/database-export/database-export2.png)
 
-3. **[OK]** をクリックします。
+3. **[OK]** を選択します。
 
-4. エクスポート操作の進行状況を監視するには、エクスポートされたデータベースを含むサーバーのページを開きます。 **[設定]** の下で、 **[インポート/エクスポート履歴]** をクリックします。
-
-   ![エクスポート履歴](./media/database-export/export-history.png)
+4. エクスポート操作の進行状況を監視するには、エクスポートされたデータベースを含むサーバーのページを開きます。 **[データ管理]** で **[インポート/エクスポート履歴]** を選択します。
 
 ## <a name="sqlpackage-utility"></a>SQLPackage ユーティリティ
 
-[SqlPackage](/sql/tools/sqlpackage) コマンドライン ユーティリティを使用して SQL Database のデータベースをエクスポートするには、「[エクスポートのパラメーターとプロパティ](/sql/tools/sqlpackage#export-parameters-and-properties)」を参照してください。 SQLPackage ユーティリティは、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) および [SQL Server Data Tools for Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) に付属しています。また、Microsoft ダウンロード センターから最新バージョンの [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) を直接ダウンロードすることもできます。
+[SqlPackage](/sql/tools/sqlpackage) コマンドライン ユーティリティを使用して SQL Database のデータベースをエクスポートするには、「[エクスポートのパラメーターとプロパティ](/sql/tools/sqlpackage#export-parameters-and-properties)」を参照してください。 SQLPackage ユーティリティは、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) および [SQL Server Data Tools for Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) に付属しています。また、Microsoft ダウンロード センターから最新バージョンの [SqlPackage](/sql/tools/sqlpackage/sqlpackage-download) を直接ダウンロードすることもできます。
 
 ほとんどの運用環境では、スケールとパフォーマンスのために、SQLPackage ユーティリティの使用をお勧めします。 BACPAC ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files)」を参照してください。
 

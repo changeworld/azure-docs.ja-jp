@@ -6,22 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 08/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 2d2e7d403ab3e9cc7e8e17de53b6e821ec24caa1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6ed084e26b12851985e2b3b906be1367b7b4a437
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438014"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736770"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスで実行されている VM にカスタム スクリプト拡張機能をデプロイする
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-カスタム スクリプト拡張機能では、Azure Stack Edge Pro デバイスで実行されている仮想マシンにスクリプトまたはコマンドをダウンロードし、それらを実行できます。 この記事では、Azure Resource Manager テンプレートを使ってカスタム スクリプト拡張機能をインストールし、実行する方法について説明します。 
-
-この記事は、Azure Stack Edge Pro GPU、Azure Stack Edge Pro R、および Azure Stack Edge Mini R デバイスに適用されます。
+カスタム スクリプト拡張機能では、Azure Stack Edge Pro デバイスで実行されている仮想マシンにスクリプトまたはコマンドをダウンロードし、それらを実行できます。 この記事では、Azure Resource Manager テンプレートを使ってカスタム スクリプト拡張機能をインストールし、実行する方法について説明します。
 
 ## <a name="about-custom-script-extension"></a>カスタム スクリプト拡張機能について
 
@@ -72,7 +70,7 @@ If your script is on a local server, then you may still need additional firewall
 
     次の例では、ポート 2 がインターネットに接続され、コンピューティング ネットワークを有効にするために使用されています。 前の手順で Kubernetes が不要であることがわかっている場合は、Kubernetes ノード IP と外部サービス IP の割り当てをスキップできます。
 
-    ![インターネットに接続されているポートでのコンピューティング設定の有効化](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
+    ![Azure Stack Edge デバイスのコンピューティング ウィンドウのスクリーンショット。 ポート 2 のコンピューティング設定が強調表示されています。](media/azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension/enable-compute-network-1.png)
 
 ## <a name="install-custom-script-extension"></a>カスタム スクリプト拡張機能のインストール
 
@@ -239,7 +237,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension
 ```cmd
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
-<n> は 10 進整数であり、拡張機能の実行間で変わる可能性があります。 1\.* の値は、拡張機能の実際の現在の `typeHandlerVersion` の値と一致します。 たとえば、この例での実際のディレクトリは `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.9\Downloads\0` でした。 
+*n* は 10 進整数であり、拡張機能の実行間で変わる可能性があります。 1\.* の値は、拡張機能の実際の現在の `typeHandlerVersion` の値と一致します。 たとえば、この例での実際のディレクトリは `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.9\Downloads\0` でした。 
 
 
 この例の場合、カスタム拡張機能に対して実行するコマンドは `md C:\\Users\\Public\\Documents\\test` でした。 拡張機能が正常にインストールされたら、コマンドで指定したパスにある VM にディレクトリが作成されたことを確認できます。 

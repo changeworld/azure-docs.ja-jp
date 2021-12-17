@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4218b4c00b79d78965eaf6e73028e63f52b1ff17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdf8798839eb71f652ae7b8a45ac317882887b9e
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673624"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754598"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -148,11 +148,11 @@ ms.locfileid: "101673624"
 [sap-ha-guide-figure-6003]:./media/virtual-machines-shared-sap-high-availability-guide/6003-sap-multi-sid-full-landscape.png
 
 [sap-templates-3-tier-multisid-xscs-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-db-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
@@ -161,18 +161,12 @@ ms.locfileid: "101673624"
 
 > ![Windows OS][Logo_Windows] Windows
 
-
-この記事では、SAP ASCS インスタンスのクラスタリングのオプションとして "*クラスター共有ディスク*" を使うことで、Windows フェールオーバー クラスター上に高可用性の SAP ASCS/SCS システムをインストールして構成するための Azure インフラストラクチャを準備する手順について説明します。
-"*クラスター共有ディスク*" の 2 つの代替手段については、次のドキュメントを参照してください。
+この記事では、SAP ASCS インスタンスのクラスタリングのオプションとして "*クラスター共有ディスク*" を使うことで、Windows フェールオーバー クラスター上に高可用性の SAP ASCS/SCS システムをインストールして構成するための Azure インフラストラクチャを準備する手順について説明します。 "*クラスター共有ディスク*" の 2 つの代替手段については、次のドキュメントを参照してください。
 
 - [Azure 共有ディスク](../../disks-shared.md)
 - クラスター化された共有ディスクをシミュレートする、[SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) を使用したミラー化ストレージの作成 
 
-示される構成は、SAP ワークロードの最適なネットワーク待機時間を実現するための [Azure 近接配置グループ (PPG)](./sap-proximity-placement-scenarios.md) に依存します。 このドキュメントでは、データベース層については説明していません。  
-
-> [!NOTE]
-> 近接配置グループは、Azure 共有ディスクを使用するための前提条件です。
- 
+このドキュメントでは、データベース層については説明していません。  
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -182,20 +176,37 @@ ms.locfileid: "101673624"
 
 ## <a name="create-the-ascs-vms"></a>ASCS VM を作成する
 
-SAP ASCS/SCS クラスターの場合、Azure 可用性セットに 2 つの VM をデプロイします。 VM は同じ近接配置グループにデプロイします。 VM がデプロイされたら、次のようにします。  
-- SAP ASCS/SCS インスタンスの Azure 内部ロード バランサーを作成する 
-- AD ドメインに Windows VM を追加する
+SAP ASCS/SCS クラスターの場合、デプロイの種類に基づいて、Azure 可用性セットまたは Azure 可用性ゾーンに 2 つの VM をデプロイします。 [Azure 近接配置グループ (PPG)](./sap-proximity-placement-scenarios.md) を使用している場合は、ディスクを共有するすべての仮想マシンが同じ PPG に含まれるようにします。 VM がデプロイされたら、次のようにします。
 
-示されるシナリオのホスト名と IP アドレスは次のとおりです。
+- SAP ASCS/SCS インスタンスの Azure 内部ロード バランサーを作成します。
+- AD ドメインに Windows VM を追加します。
 
-| ホスト名の役割 | ホスト名 | 静的 IP アドレス | 可用性セット | 近接配置グループ |
-| --- | --- | --- |---| ---|
-| 最初のクラスター ノードの ASCS/SCS クラスター |pr1-ascs-10 |10.0.0.4 |pr1-ascs-avset |PR1PPG |
-| 2 番目のクラスター ノードの ASCS/SCS クラスター |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
-| クラスター ネットワーク名 | pr1clust |10.0.0.42 (Win 2016 クラスターの場合 **のみ**) | 該当なし | 該当なし |
-| ASCS クラスター ネットワーク名 | pr1-ascscl |10.0.0.43 | 該当なし | 該当なし |
-| ERS クラスター ネットワーク名 (ERS2 の場合 **のみ**) | pr1-erscl |10.0.0.44 | 該当なし | 該当なし |
+デプロイの種類に基づいて、シナリオのホスト名と IP アドレスは次のようになります。
 
+**Azure 可用性セットでの SAP のデプロイ**
+
+| ホスト名の役割                               | ホスト名   | 静的 IP アドレス                        | 可用性セット | ディスクの SkuName |
+| -------------------------------------------- | ----------- | ---------------------------------------- | ---------------- | ------------ |
+| 最初のクラスター ノードの ASCS/SCS クラスター            | pr1-ascs-10 | 10.0.0.4                                 | pr1-ascs-avset   | Premium_LRS  |
+| 2 番目のクラスター ノードの ASCS/SCS クラスター            | pr1-ascs-11 | 10.0.0.5                                 | pr1-ascs-avset   |              |
+| クラスター ネットワーク名                         | pr1clust    | 10.0.0.42 (Win 2016 クラスターの場合 **のみ**) | 該当なし              |              |
+| ASCS クラスター ネットワーク名                    | pr1-ascscl  | 10.0.0.43                                | 該当なし              |              |
+| ERS クラスター ネットワーク名 (ERS2 の場合 **のみ**) | pr1-erscl   | 10.0.0.44                                | 該当なし              |              |
+
+**Azure 可用性ゾーンでの SAP のデプロイ**
+
+| ホスト名の役割                               | ホスト名   | 静的 IP アドレス                        | 可用性ゾーン | ディスクの SkuName |
+| -------------------------------------------- | ----------- | ---------------------------------------- | ----------------- | ------------ |
+| 最初のクラスター ノードの ASCS/SCS クラスター            | pr1-ascs-10 | 10.0.0.4                                 | AZ01              | Premium_ZRS  |
+| 2 番目のクラスター ノードの ASCS/SCS クラスター            | pr1-ascs-11 | 10.0.0.5                                 | AZ02              |              |
+| クラスター ネットワーク名                         | pr1clust    | 10.0.0.42 (Win 2016 クラスターの場合 **のみ**) | 該当なし               |              |
+| ASCS クラスター ネットワーク名                    | pr1-ascscl  | 10.0.0.43                                | 該当なし               |              |
+| ERS クラスター ネットワーク名 (ERS2 の場合 **のみ**) | pr1-erscl   | 10.0.0.44                                | 該当なし               |              |
+
+ドキュメントに記載されている手順は、どちらのデプロイの種類でも同じです。 ただし、クラスターが可用性セットで実行されている場合は Azure Premium 共有ディスク用に LRS をデプロイする必要があり (Premium_LRS)、クラスターが可用性ゾーンで実行されている場合は Azure Premium 共有ディスク用に ZRS をデプロイする必要があります (Premium_ZRS)。
+
+> [!Note]
+> SAP システムに [Azure 近接配置グループ](../../windows/proximity-placement-groups.md)を使用する場合は、ディスクを共有するすべての仮想マシンが同じ PPG に含まれている必要があります。
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Azure 内部ロード バランサーを作成する
 
@@ -203,7 +214,6 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
 
 > [!IMPORTANT]
 > フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](../../../load-balancer/load-balancer-multivip-overview.md#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。    
-
 
 次の一覧には、(A)SCS および ERS ロード バランサーの構成が示されています。 SAP ASCS と ERS2 の両方の構成は、同じ Azure ロード バランサーで実行されています。  
 
@@ -216,7 +226,7 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
     - ポート 620 **nr** プロトコル (TCP)、間隔 (5)、異常しきい値 (2) の既定のオプションはそのままにしておきます
 - 負荷分散規則
     - Standard Load Balancer を使用する場合は、 [HA ポート] を選択します
-    - Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
+    - Basic Load Balancer を使用する場合は、次のポート用の負荷分散規則を作成します
         - 32 **nr** TCP
         - 36 **nr** TCP
         - 39 **nr** TCP
@@ -242,7 +252,7 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
 
 - 2 番目の負荷分散規則
     - Standard Load Balancer を使用する場合は、 [HA ポート] を選択します
-    - Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
+    - Basic Load Balancer を使用する場合は、次のポート用の負荷分散規則を作成します
         - 32 **nr** TCP
         - 33 **nr** TCP
         - 5 **nr** 13 TCP
@@ -281,16 +291,16 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
 
 クラスター ノードのいずれかでこのコマンドを実行します。
 
-   ```powershell
-    # Hostnames of the Win cluster for SAP ASCS/SCS
-    $SAPSID = "PR1"
-    $ClusterNodes = ("pr1-ascs-10","pr1-ascs-11")
-    $ClusterName = $SAPSID.ToLower() + "clust"
-    
-    # Install Windows features.
-    # After the feature installs, manually reboot both nodes
-    Invoke-Command $ClusterNodes {Install-WindowsFeature Failover-Clustering, FS-FileServer -IncludeAllSubFeature -IncludeManagementTools }
-   ```
+```powershell
+# Hostnames of the Win cluster for SAP ASCS/SCS
+$SAPSID = "PR1"
+$ClusterNodes = ("pr1-ascs-10","pr1-ascs-11")
+$ClusterName = $SAPSID.ToLower() + "clust"
+
+# Install Windows features.
+# After the feature installs, manually reboot both nodes
+Invoke-Command $ClusterNodes {Install-WindowsFeature Failover-Clustering, FS-FileServer -IncludeAllSubFeature -IncludeManagementTools }
+```
 
 機能のインストールが完了したら、両方のクラスター ノードを再起動します。  
 
@@ -300,42 +310,42 @@ Windows 2019 では、クラスターにより、Azure で実行されている�
 
 詳細については、「[Windows Server 2019 フェールオーバー クラスタリングの新機能](https://techcommunity.microsoft.com/t5/failover-clustering/windows-server-2019-failover-clustering-new-features/ba-p/544029)」を参照してください。クラスター ノードのいずれかでこのコマンドを実行します。
 
-   ```powershell
-    # Hostnames of the Win cluster for SAP ASCS/SCS
-    $SAPSID = "PR1"
-    $ClusterNodes = ("pr1-ascs-10","pr1-ascs-11")
-    $ClusterName = $SAPSID.ToLower() + "clust"
-    
-    # IP adress for cluster network name is needed ONLY on Windows Server 2016 cluster
-    $ClusterStaticIPAddress = "10.0.0.42"
-        
-    # Test cluster
-    Test-Cluster –Node $ClusterNodes -Verbose
-    
-    $ComputerInfo = Get-ComputerInfo
-    
-    $WindowsVersion = $ComputerInfo.WindowsProductName
-    
-    if($WindowsVersion -eq "Windows Server 2019 Datacenter"){
-        write-host "Configuring Windows Failover Cluster on Windows Server 2019 Datacenter..."
-        New-Cluster –Name $ClusterName –Node  $ClusterNodes -Verbose
-    }elseif($WindowsVersion -eq "Windows Server 2016 Datacenter"){
-        write-host "Configuring Windows Failover Cluster on Windows Server 2016 Datacenter..."
-        New-Cluster –Name $ClusterName –Node  $ClusterNodes –StaticAddress $ClusterStaticIPAddress -Verbose 
-    }else{
-        Write-Error "Not supported Windows version!"
-    }
-   ```
+```powershell
+# Hostnames of the Win cluster for SAP ASCS/SCS
+$SAPSID = "PR1"
+$ClusterNodes = ("pr1-ascs-10","pr1-ascs-11")
+$ClusterName = $SAPSID.ToLower() + "clust"
+
+# IP adress for cluster network name is needed ONLY on Windows Server 2016 cluster
+$ClusterStaticIPAddress = "10.0.0.42"
+
+# Test cluster
+Test-Cluster –Node $ClusterNodes -Verbose
+
+$ComputerInfo = Get-ComputerInfo
+
+$WindowsVersion = $ComputerInfo.WindowsProductName
+
+if($WindowsVersion -eq "Windows Server 2019 Datacenter"){
+    write-host "Configuring Windows Failover Cluster on Windows Server 2019 Datacenter..."
+    New-Cluster –Name $ClusterName –Node  $ClusterNodes -Verbose
+}elseif($WindowsVersion -eq "Windows Server 2016 Datacenter"){
+    write-host "Configuring Windows Failover Cluster on Windows Server 2016 Datacenter..."
+    New-Cluster –Name $ClusterName –Node  $ClusterNodes –StaticAddress $ClusterStaticIPAddress -Verbose 
+}else{
+    Write-Error "Not supported Windows version!"
+}
+```
 
 ### <a name="configure-cluster-cloud-quorum"></a>クラスター クラウド クォーラムを構成する
 Windows Server 2016 または 2019 を使用するときは、クラスター クォーラムとして、[Azure クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)を構成することをお勧めします。
 
 クラスター ノードのいずれかでこのコマンドを実行します。
 
-   ```powershell
-    $AzureStorageAccountName = "cloudquorumwitness"
-    Set-ClusterQuorum –CloudWitness –AccountName $AzureStorageAccountName -AccessKey <YourAzureStorageAccessKey> -Verbose
-   ```
+```powershell
+$AzureStorageAccountName = "cloudquorumwitness"
+Set-ClusterQuorum –CloudWitness –AccountName $AzureStorageAccountName -AccessKey <YourAzureStorageAccessKey> -Verbose
+```
 
 ### <a name="tuning-the-windows-failover-cluster-thresholds"></a>Windows フェールオーバー クラスターのしきい値の調整
  
@@ -347,48 +357,53 @@ Windows フェールオーバー クラスターを正しくインストール�
 これらの設定はお客様とテストしたものであり、適切な妥協が提供されます。 十分な回復力がある一方で、SAP ワークロードの実際のエラー状態または VM の障害において十分に高速なフェールオーバーも提供されます。  
 
 ## <a name="configure-azure-shared-disk"></a>Azure 共有ディスクを構成する
-このセクションは、Azure 共有ディスクを使用している場合にのみ適用されます。 
+このセクションは、Azure 共有ディスクを使用している場合にのみ適用されます。
 
 ### <a name="create-and-attach-azure-shared-disk-with-powershell"></a>PowerShell を使用して Azure 共有ディスクを作成および接続する
 クラスター ノードのいずれかでこのコマンドを実行します。 リソース グループ、Azure リージョン、SAPSID などの値を調整する必要があります。  
 
-   ```powershell
-    #############################
-    # Create Azure Shared Disk
-    #############################
-    
-    $ResourceGroupName = "MyResourceGroup"
-    $location = "MyAzureRegion"
-    $SAPSID = "PR1"
-    
-    $DiskSizeInGB = 512
-    $DiskName = "$($SAPSID)ASCSSharedDisk"
-    
-    # With parameter '-MaxSharesCount', we define the maximum number of cluster nodes to attach the shared disk
-    $NumberOfWindowsClusterNodes = 2
+```powershell
+#############################
+# Create Azure Shared Disk
+#############################
+
+$ResourceGroupName = "MyResourceGroup"
+$location = "MyAzureRegion"
+$SAPSID = "PR1"
+
+$DiskSizeInGB = 512
+$DiskName = "$($SAPSID)ASCSSharedDisk"
+
+# With parameter '-MaxSharesCount', we define the maximum number of cluster nodes to attach the shared disk
+$NumberOfWindowsClusterNodes = 2
+
+# For SAP deployment in availability set, use below storage SkuName
+$SkuName = "Premium_LRS"
+# For SAP deployment in availability zone, use below storage SkuName
+$SkuName = "Premium_ZRS"
             
-    $diskConfig = New-AzDiskConfig -Location $location -SkuName Premium_LRS  -CreateOption Empty  -DiskSizeGB $DiskSizeInGB -MaxSharesCount $NumberOfWindowsClusterNodes
-    $dataDisk = New-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName -Disk $diskConfig
-    
-    ##################################
-    ## Attach the disk to cluster VMs
-    ##################################
-    # ASCS Cluster VM1
-    $ASCSClusterVM1 = "$SAPSID-ascs-10"
-    
-    # ASCS Cluster VM2
-    $ASCSClusterVM2 = "$SAPSID-ascs-11"
-    
-    # Add the Azure Shared Disk to Cluster Node 1
-    $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM1 
-    $vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 0
-    Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
-    
-    # Add the Azure Shared Disk to Cluster Node 2
-    $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM2
-    $vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 0
-    Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
-   ```
+$diskConfig = New-AzDiskConfig -Location $location -SkuName $SkuName  -CreateOption Empty  -DiskSizeGB $DiskSizeInGB -MaxSharesCount $NumberOfWindowsClusterNodes
+$dataDisk = New-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName -Disk $diskConfig
+
+##################################
+## Attach the disk to cluster VMs
+##################################
+# ASCS Cluster VM1
+$ASCSClusterVM1 = "$SAPSID-ascs-10"
+
+# ASCS Cluster VM2
+$ASCSClusterVM2 = "$SAPSID-ascs-11"
+
+# Add the Azure Shared Disk to Cluster Node 1
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM1 
+$vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 0
+Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
+
+# Add the Azure Shared Disk to Cluster Node 2
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM2
+$vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 0
+Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
+```
 
 ### <a name="format-the-shared-disk-with-powershell"></a>PowerShell を使用して共有ディスクをフォーマットする
 1. ディスク番号を取得します。 クラスター ノードのいずれかでこれらの PowerShell コマンドを実行します。
@@ -417,7 +432,7 @@ Windows フェールオーバー クラスターを正しくインストール�
     # S           PR1SAP          ReFS       Fixed     Healthy      OK                    504.98 GB 511.81 GB
    ```
 
-3. ディスクがクラスター ディスクとして表示されるようになったことを確認します。  
+3. ディスクがクラスター ディスクとして表示されるようになったことを確認します。
    ```powershell
     # List all disks
     Get-ClusterAvailableDisk -All
@@ -445,7 +460,7 @@ Windows フェールオーバー クラスターを正しくインストール�
 これで、Azure に機能する Windows Server フェールオーバー クラスタリング構成が完了しました。 SAP ASCS/SCS インスタンスをインストールするには、共有ディスク リソースが必要です。 オプションの 1 つは、SIOS DataKeeper Cluster Edition を使用することです。これは、共有ディスク リソースを作成するために使用できるサードパーティ製のソリューションです。  
 
 SAP ASCS/SCS クラスター共有ディスク用の SIOS DataKeeper Cluster Edition のインストールには、次のタスクが含まれます。
-- 必要に応じて、Microsoft .NET Framework を追加します。 最新の .NET Framework の要件については、[SIOS のドキュメント](https://us.sios.com/products/datakeeper-cluster/) を参照してください 
+- 必要に応じて、Microsoft .NET Framework を追加します。 最新の .NET Framework の要件については、[SIOS のドキュメント](https://us.sios.com/products/datakeeper-cluster/)を参照してください 
 -  SIOS DataKeeper のインストール
 - SIOS DataKeeper を構成する
 

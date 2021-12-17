@@ -1,19 +1,20 @@
 ---
 title: Microsoft 顧客契約の請求先の設定 - Azure
 description: Microsoft 顧客契約の請求先アカウントの設定方法について説明します。 設定の前提条件を参照して、使用可能なその他のリソースを確認してください。
-author: amberbhargava
+author: bandersmsft
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 7e930ca938b2531fb001c327132f79f703b2ea74
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 74f49b2df909c157555390fedd280d1d51615530
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316410"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433954"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
 
@@ -27,7 +28,7 @@ ms.locfileid: "92316410"
 請求先アカウント設定を完了するには、Azure サブスクリプションの請求先を Enterprise Agreement 加入契約から新しいアカウントに切り替える必要があります。 セットアップは、サブスクリプションで実行されている Azure サービスに影響しません。 ただし、サブスクリプションに対する課金を管理する方法は変更されます。
 
 - [EA ポータル](https://ea.azure.com)の代わりに、[Azure portal](https://portal.azure.com) 上で Azure サービスと課金を管理します。
-- 料金に対して月単位のデジタル請求書を受け取ります。 [Azure Cost Management + Billing (Azure Cost Management + 請求)] ページで、請求書を確認して分析します。
+- 料金に対して月単位のデジタル請求書を受け取ります。 [Cost Management + Billing] ページで、請求書を確認して分析します。
 - Enterprise Agreement 加入契約での部署とアカウントの代わりに、新しいアカウントの課金の体系とスコープを使用して課金を管理および整理します。
 
 セットアップを開始する前に、次の操作を行うことをお勧めします。
@@ -49,31 +50,90 @@ ms.locfileid: "92316410"
 
 セットアップを完了するには、以下のアクセス権が必要です。
 
-- Microsoft 顧客契約に署名したときに作成された課金プロファイルの所有者。 課金プロファイルについて詳しくは、「[課金プロファイルを理解する」](../understand/mca-overview.md#billing-profiles)をご覧ください。
-
+- Microsoft 顧客契約に署名したときに作成された課金プロファイルの所有者。 課金プロファイルについて詳しくは、「[課金プロファイルを理解する」](../understand/mca-overview.md#billing-profiles)をご覧ください。  
+&mdash; および &mdash;
 - 更新される加入契約のエンタープライズ管理者。
 
-### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>加入契約のエンタープライズ管理者でない場合
+### <a name="start-migration-and-get-permission-needed-to-complete-setup"></a>移行を開始し、セットアップを実行するために必要なアクセス許可を取得する
 
-加入契約のエンタープライズ管理者に、請求先アカウントのセットアップを完了するよう要求することができます。
+EA 加入契約から Microsoft 顧客契約への移行エクスペリエンスを開始するにあたっては、次の選択肢があります。
 
-1. Microsoft 顧客契約に署名したときに送信された電子メール内のリンクを使用して、Azure portal にサインインします。
 
-2. メールがない場合は、次のリンクを使用してサインインします。 `<enrollmentNumber>` を、更新された Enterprise Agreement の加入契約番号に置き換えます。
+- Microsoft 顧客契約に署名したときに送信された電子メール内のリンクを使用して、Azure portal にサインインします。
 
-   `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
+- メールがない場合は、次のリンクを使用してサインインします。
 
-3. 要求を送信するエンタープライズ管理者を選択します。
+  `https://portal.azure.com/#blade/Microsoft_Azure_SubscriptionManagement/TransitionEnrollment`
 
-   ![エンタープライズ管理者の招待を示すスクリーンショット](./media/mca-setup-account/ea-mca-invite-admins.png)
+エンタープライズ管理者ロールに加え、課金アカウント所有者ロールまたは課金プロファイル ロールが割り当てられている場合、Azure portal に次のページが表示されます。 引き続き、EA 加入契約と Microsoft 顧客契約の課金アカウントの切り替えを設定できます。
 
-4. **[要求の送信]** をクリックします。
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-page.png" alt-text="[課金アカウントのセットアップ] ページのスクリーンショット" lightbox="./media/mca-setup-account/setup-billing-account-page.png" :::
 
-   管理者は、セットアップを完了する手順を示す電子メールを受け取ります。
+Enterprise Agreement のエンタープライズ管理者ロールも Microsoft 顧客契約の課金プロファイル所有者ロールもない場合は、以下の情報を使用して、セットアップの実行に必要なアクセス権を取得してください。
 
-### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>課金プロファイルの所有者でない場合
+#### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>加入契約のエンタープライズ管理者でない場合
 
-Microsoft 顧客契約に署名した組織内のユーザーが課金プロファイルに所有者として追加されます。 セットアップを完了できるように、そのユーザーに依頼して、自分を所有者として追加してもらいます。
+課金アカウント所有者ロールまたは課金プロファイル所有者ロールは割り当てられているものの、エンタープライズ管理者ではない場合、Azure portal に次のページが表示されます。
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-page-not-ea-administrator.png" alt-text="[課金アカウントのセットアップ] ページのスクリーンショット - [Prepare your Enterprise Agreement enrollments for transition]\(Enterprise Agreement 加入契約の切り替えを準備する\)" lightbox="./media/mca-setup-account/setup-billing-account-page-not-ea-administrator.png" :::
+
+2 つのオプションがあります。
+
+- 加入契約のエンタープライズ管理者に依頼してエンタープライズ管理者ロールを割り当ててもらいます。 詳細については、「[別のエンタープライズ管理者を作成する](ea-portal-administration.md#create-another-enterprise-administrator)」を参照してください。
+-  エンタープライズ管理者に、課金アカウント所有者ロールまたは課金プロファイル所有者ロールを割り当てることができます。 詳細については、「[Azure portal での組み込みロールを管理する](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)」を参照してください。
+
+エンタープライズ管理者ロールを割り当ててもらった場合は、[課金アカウントのセットアップ] ページにあるリンクをコピーします。 それを Web ブラウザーで開いて、Microsoft 顧客契約のセットアップを続行してください。 それ以外の場合は、エンタープライズ管理者にそれを送信します。
+
+#### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>課金プロファイルの所有者でない場合
+
+エンタープライズ管理者ではあるものの、課金アカウントをお持ちでない場合、Azure portal に以下のエラーが表示されて切り替えができません。
+
+適切な Microsoft 顧客契約に対する課金プロファイル所有者のアクセス権があるにもかかわらず次のメッセージが表示される場合は、現在のテナントが、所属組織の正しいテナントであることを確認してください。 ディレクトリの変更が必要になる場合があります。
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-page-not-billing-account-profile-owner.png" alt-text="[課金アカウントのセットアップ] ページのスクリーンショット - [Microsoft Customer Agreement billing account]\(Microsoft 顧客契約の課金アカウント\)。" lightbox="./media/mca-setup-account/setup-billing-account-page-not-billing-account-profile-owner.png" :::
+
+2 つのオプションがあります。
+
+- 既存の課金アカウント所有者に依頼して、課金アカウント所有者ロールまたは課金プロファイル所有者ロールを割り当ててもらいます。 詳細については、「[Azure portal での組み込みロールを管理する](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)」を参照してください。
+- 既存の課金アカウント所有者にエンタープライズ管理者ロールを割り当てます。 詳細については、「[別のエンタープライズ管理者を作成する](ea-portal-administration.md#create-another-enterprise-administrator)」を参照してください。
+
+課金アカウント所有者ロールまたは課金プロファイル所有者ロールを割り当ててもらった場合は、[課金アカウントのセットアップ] ページにあるリンクをコピーします。 それを Web ブラウザーで開いて、Microsoft 顧客契約のセットアップを続行してください。 それ以外の場合は、課金アカウント所有者にリンクを送信します。
+
+#### <a name="prepare-enrollment-for-transition"></a>切り替えに向けて加入契約を準備する
+
+EA 加入契約と課金プロファイルの両方について所有者アクセス権を取得したら、切り替えに向けた準備を行います。
+
+以前に提示された移行 (メールで送信されたリンク) を開きます。 リンクは `https://portal.azure.com/#blade/Microsoft_Azure_SubscriptionManagement/TransitionEnrollment` です。
+
+次の画像は、[Prepare your enterprise agreement enrollments for transition]\(Enterprise Agreement 加入契約の切り替えを準備する\) ウィンドウの例です。
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition.png" alt-text="[課金アカウントのセットアップ] ページのスクリーンショット - [Prepare your Enterprise Agreement enrollments for transition]\(Enterprise Agreement 加入契約の切り替えを準備する\) の選択前。" lightbox="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition.png" :::
+
+次に、切り替え元の加入契約を選択します。 さらに、課金アカウントと課金プロファイルを選択します。 問題が生じることなく検証にパスした場合 (次の画面を参照)、 **[Continue]\(続行\)** を選択して続行します。
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition-continue.png" alt-text="[課金アカウントのセットアップ] ページのスクリーンショット - [Prepare your Enterprise Agreement enrollments for transition]\(Enterprise Agreement 加入契約の切り替えを準備する\) と検証済みの選択肢。" lightbox="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition-continue.png" :::
+
+**エラー条件**
+
+エンタープライズ管理者 (読み取り専用) ロールが割り当てられている場合、以下のエラーが表示されて切り替えができません。 加入契約を切り替えるには、エンタープライズ管理者ロールが必要です。
+
+`Select another enrollment. You do not hve Enterprise Administrator write permission to the enrollment.`
+
+加入契約の終了日までの日数が 60 日を超える場合、以下のエラーが表示されて切り替えができません。 加入契約を切り替えるには、現在の日付が、加入契約の終了日の 60 日以内である必要があります。
+
+`Select another enrollment. This enrollment has more than 60 days before its end date.`
+
+加入契約にクレジットが残っている場合、以下のエラーが表示されて切り替えができません。 加入契約を切り替えるには、クレジットをすべて使い切る必要があります。
+
+`Select another enrollment. This enrollment still has credits and can't be transitioned to a billing account.`
+
+課金プロファイルに対する所有者アクセス許可がない場合、以下のエラーが表示されて切り替えができません。 加入契約を切り替えるには、課金プロファイル所有者ロールが必要です。
+
+`Select another Billing Profile. You do not have owner permission to this profile.`
+
+新しい課金プロファイルで新しいプランが有効になっていない場合は、以下のエラーが表示されます。 加入契約を切り替えるには、プランを有効にする必要があります。
+
+`Select another Billing Profile. The current selection does not have Azure Plan and Azure dev test plan enabled on it.`
 
 ## <a name="understand-changes-to-your-billing-hierarchy"></a>課金階層に対する変更を確認する
 
@@ -174,9 +234,9 @@ Enterprise Agreement 加入契約が期限切れになる前に、請求先ア�
 
 1. Microsoft 顧客契約に署名したときに送信された電子メール内のリンクを使用して、Azure portal にサインインします。
 
-2. メールがない場合は、次のリンクを使用してサインインします。 `<enrollmentNumber>` を、更新された Enterprise Agreement の加入契約番号に置き換えます。
+2. メールがない場合は、次のリンクを使用してサインインします。
 
-   `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
+   `https://portal.azure.com/#blade/Microsoft_Azure_SubscriptionManagement/TransitionEnrollment`
 
 3. セットアップの最後の手順で **[切り替えを開始]** を選択します。 [切り替えを開始] を選択した後で、次の操作を行います。
 
@@ -184,7 +244,7 @@ Enterprise Agreement 加入契約が期限切れになる前に、請求先ア�
 
     - Enterprise Agreement 階層に対応する課金階層は、新しい請求先アカウントに作成されます。 詳しくは、「[課金階層に対する変更を確認する](#understand-changes-to-your-billing-hierarchy)」をご覧ください。
     - Enterprise Agreement 加入契約の管理者には、新しい請求先アカウントへのアクセス権が付与されるので、引き続き組織の課金を管理できます。
-    - Azure サブスクリプションの請求先は、新しいアカウントに切り替えられます。 **この切り替え中に Azure サービスは影響を受けません。中断なく稼働し続けます** 。
+    - Azure サブスクリプションの請求先は、新しいアカウントに切り替えられます。 **この切り替え中に Azure サービスは影響を受けません。中断なく稼働し続けます**。
     - Azure の予約がある場合は、特典や条件の変更なしで新しい課金アカウントに移行されます。
 
 4. 切り替えの状態は、 **[切り替え状態]** ページで監視することができます。
@@ -199,11 +259,11 @@ Enterprise Agreement 加入契約が期限切れになる前に、請求先ア�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. " **コスト管理 + 請求** " を検索します。
+2. "**コスト管理 + 請求**" を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/mca-setup-account/search-cmb.png)
 
-3. 請求先アカウントを選択します。 課金アカウントの種類は、 **Microsoft 顧客契約** です。
+3. 請求先アカウントを選択します。 課金アカウントの種類は、**Microsoft 顧客契約** です。
 
 4. 左側の **[Azure サブスクリプション]** を選択します。
 
@@ -219,7 +279,7 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. " **コスト管理 + 請求** " を検索します。
+2. "**コスト管理 + 請求**" を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/mca-setup-account/search-cmb.png)
 
@@ -235,7 +295,7 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. " **コスト管理 + 請求** " を検索します。
+2. "**コスト管理 + 請求**" を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/mca-setup-account/search-cmb.png)
 
@@ -251,7 +311,7 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. " **コスト管理 + 請求** " を検索します。
+2. "**コスト管理 + 請求**" を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/mca-setup-account/search-cmb.png).
 
@@ -272,7 +332,5 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 ## <a name="next-steps"></a>次のステップ
 
 - [新しい請求先アカウントを開始する](../understand/mca-overview.md)
-
 - [Microsoft 顧客契約用の課金アカウントでの Enterprise Agreement タスクを実行する](mca-enterprise-operations.md)
-
 - [請求先アカウントへのアクセスを管理する](understand-mca-roles.md)

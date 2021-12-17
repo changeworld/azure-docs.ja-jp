@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 0fa6777dc5b587150f630ed8ccc110d16448cc21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a26537090dc2913ee83027c66ddc3c3416d03e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602249"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063691"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure Synapse の専用 SQL プールにおけるバックアップと復元
 
@@ -26,7 +26,7 @@ Azure Synapse の専用 SQL プールにおけるバックアップと復元の�
 
 "*データ ウェアハウスのスナップショット*" では、データ ウェアハウスの以前の状態を復旧またはコピーするために利用できる復元ポイントが作成されます。  専用 SQL プールは分散システムなので、データ ウェアハウスのスナップショットは Azure Storage に配置されている多くのファイルで構成されます。 スナップショットでは、データ ウェアハウスに格納されたデータの増分の変更がキャプチャされます。
 
-"*データ ウェアハウスの復元*" とは、既存または削除済みのデータ ウェアハウスの復元ポイントから作成された新しいデータ ウェアハウスのことです。 偶発的な破損や削除が起きた後にデータを再作成するデータウェアハウスの復元は、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 データ ウェアハウスは、テストまたは開発用にデータ ウェアハウスのコピーを作成する強力なメカニズムでもあります。 専用 SQL プールの復元速度は、データベースのサイズと、ソースとターゲットのデータ ウェアハウスの場所によって異なる場合があります。
+"*データ ウェアハウスの復元*" とは、既存または削除済みのデータ ウェアハウスの復元ポイントから作成された新しいデータ ウェアハウスのことです。 偶発的な破損や削除が起きた後にデータを再作成するデータウェアハウスの復元は、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 データ ウェアハウス スナップショットは、テストまたは開発用にデータ ウェアハウスのコピーを作成する強力なメカニズムでもあります。 専用 SQL プールの復元速度は、データベースのサイズと、ソースとターゲットのデータ ウェアハウスの場所によって異なる場合があります。
 
 ## <a name="automatic-restore-points"></a>自動復元ポイント
 
@@ -48,7 +48,7 @@ order by run_id desc
 ユーザーは、この機能を使用して、大規模な変更の前後に、スナップショットを手動でトリガーしてデータ ウェアハウスの復元ポイントを作成できます。 この機能により、復元ポイントの論理的な一貫性が保証され、ワークロードの中断やユーザー エラーが発生して迅速に復旧する必要がある場合に、追加のデータ保護が提供されます。 ユーザー定義の復元ポイントは、7 日間使用でき、自動的に削除されます。 ユーザー定義の復元ポイントの保持期間を変更することはできません。 任意の時点で **42 個のユーザー定義の復元ポイント** が保証されているため、別の復元ポイントを作成する前に [削除](/powershell/module/azurerm.sql/remove-azurermsqldatabaserestorepoint)する必要があります。 ユーザー定義の復元ポイントを作成するスナップショットのトリガーは、[PowerShell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) または Azure portal で行うことができます。
 
 > [!NOTE]
-> 7 日より長い復元ポイントが必要な場合は、[こちら](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points)でこの機能に投票してください。 ユーザー定義の復元ポイントを作成し、新しく作成された復元ポイントを新しいデータ ウェアハウスに復元することもできます。 復元が済むと、専用 SQL プールはオンラインになるので、無期限に一時停止してコンピューティング コストを節約することができます。 一時停止したデータベースについては、Azure Synapse レートでストレージに対して課金されます。 復元されたデータ ウェアハウスのアクティブなコピーが必要な場合は、わずか数分で再開できます。
+> 7 日より長い復元ポイントが必要な場合は、[こちら](https://feedback.azure.com/d365community/idea/4c446fd9-0b25-ec11-b6e6-000d3a4f07b8)でこの機能に投票してください。 ユーザー定義の復元ポイントを作成し、新しく作成された復元ポイントを新しいデータ ウェアハウスに復元することもできます。 復元が済むと、専用 SQL プールはオンラインになるので、無期限に一時停止してコンピューティング コストを節約することができます。 一時停止したデータベースについては、Azure Synapse レートでストレージに対して課金されます。 復元されたデータ ウェアハウスのアクティブなコピーが必要な場合は、わずか数分で再開できます。
 
 ### <a name="restore-point-retention"></a>復元ポイントのリテンション期間
 
@@ -57,7 +57,7 @@ order by run_id desc
 1. 専用 SQL プールは、7 日間の保有期間に達したとき **と**、復元ポイントの合計数が少なくとも 42 個ある場合 (ユーザー定義と自動の両方を含む) に、復元ポイントを削除します。
 2. 専用 SQL プールが一時停止しているときはスナップショットは取得されません。
 3. 復元ポイントの経過時間は、復元ポイントが取得された時点 (SQL プールが一時停止された時点を含む) からのカレンダーの絶対日数によって測定されます。
-4. 任意の時点で、復元ポイントが 7 日間の保有期間に達していない限り、専用 SQL プールは最大 42 個のユーザー定義の復元ポイントと 42 個の自動復元ポイントを格納できることが保証されています。
+4. 任意の時点で、復元ポイントが 7 日間の保有期間に達していない限り、専用 SQL プールは最大 42 個のユーザー定義の復元ポイントまたは 42 個の自動復元ポイントを格納できることが保証されています
 5. スナップショットが取得され、専用 SQL プールが 7 日間を超えて一時停止されてから再開した場合、復元ポイントの数が合計で 42 になるまで (ユーザー定義と自動の両方を含む)、復元ポイントが維持されます。
 
 ### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>SQL プールが停止しているときのスナップショットのリテンション期間
@@ -74,11 +74,11 @@ order by run_id desc
 専用 SQL プールの geo バックアップが不要な場合は、それを無効にして、ディザスター リカバリー ストレージのコストを節約できます。 これを行うには、[方法ガイド:専用 SQL プール (以前の SQL DW) の geo バックアップの無効化](disable-geo-backup.md)に関する記事を参照してください。 geo バックアップを無効にすると、プライマリ Azure データ センターが使用できなくなった場合に、ペアになっている Azure リージョンに専用 SQL プールを復旧できなくなることに注意してください。 
 
 > [!NOTE]
-> geo バックアップ用にさらに短い RPO が必要な場合は、[こちら](https://feedback.azure.com/forums/307516-sql-data-warehouse)でこの機能に投票してください。 ユーザー定義の復元ポイントを作成し、新しく作成された復元ポイントを異なるリージョンの新しいデータ ウェアハウスに復元することもできます。 復元が済むと、データ ウェアハウスはオンラインになるので、無期限に一時停止してコンピューティング コストを節約することができます。 一時停止したデータベースについては、Azure Premium Storage レートでストレージに対して課金されます。 データ ウェアハウスのアクティブなコピーが必要な場合は、わずか数分で再開できます。
+> geo バックアップ用にさらに短い RPO が必要な場合は、[こちら](https://feedback.azure.com/d365community/idea/dc4975e5-0b25-ec11-b6e6-000d3a4f07b8)でこの機能に投票してください。 ユーザー定義の復元ポイントを作成し、新しく作成された復元ポイントを異なるリージョンの新しいデータ ウェアハウスに復元することもできます。 復元後、データ ウェアハウスはオンライン状態になり、コンピューティング コストを節約するために無期限に一時停止することもできます。 一時停止したデータベースについては、Azure Premium Storage レートでストレージに対して課金されます。 復旧ポイントの間隔を短くするためによく利用されるもう 1 つの方法は、データ ウェアハウスのプライマリおよびセカンダリ インスタンスに並列でデータを取り込むことです。 このシナリオでは、1 つまたは複数のソースから取り込んだデータが、データ ウェアハウスの 2 つの別個のインスタンス (プライマリとセカンダリ) に残ります。 ウェアハウスのセカンダリ インスタンスは、コンピューティング コストを節約するために一時停止できます。 データ ウェアハウスのアクティブなコピーが必要な場合は、わずか数分で再開できます。
 
 ## <a name="data-residency"></a>データの保存場所 
 
-ペアになっているデータ センターが地理的な境界の外側に配置されている場合は、geo 冗長ストレージを使用しないことで、データを地理的な境界内に確実にとどめておくことができます。 これは、専用 SQL プール (以前の SQL DW) の作成または復元時、geo 冗長ストレージ オプションを使用して専用 SQL プール (以前の SQL DW) をプロビジョニングするときに実行できます。 
+ペアになっているデータセンターがお住まいの国の外にある場合は、ローカル冗長ストレージ (LRS) 上にデータベースをプロビジョニングすることで、使用するデータを、ご利用のリージョン内に確実にとどめておくことができます。 ご利用のデータベースが既に RA-GRS (読み取り専用の geo 冗長ストレージ: 現在の既定値) 上にプロビジョニングされている場合は、geo バックアップを無効にすることができますが、ご利用のデータベースは、リージョン ペアにレプリケートされたストレージ上に存在し続けます。 ご利用のリージョン内に顧客データが確実にとどまるようにするには、専用の SQL プールをローカル冗長ストレージにプロビジョニングまたは復元します。 ローカル冗長ストレージへのプロビジョニングまたは復元の方法の詳細については、[Azure Synapse Analytics で専用 SQL プール (以前の SQL DW) の単一リージョンの所在地を構成するためのハウツーガイド](single-region-residency.md)に関するページを参照してください。
 
 ペアになっているデータ センターが別の国にあることを確認するには、[Azure でペアになっているリージョン](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関する記事を参照してください。
 
@@ -104,7 +104,7 @@ Azure Synapse の価格の詳細については、[Azure Synapse の価格](http
 
 ## <a name="cross-subscription-restore"></a>クロス サブスクリプションの復元
 
-サブスクリプション間で直接復元する必要がある場合は、その機能について、[こちら](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)で投票を行ってください。 クロス サブスクリプションの復元を実行するには、別のサーバーに復元し、そのサーバーをサブスクリプション間で ['移動'](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) します。
+サブスクリプション間で直接復元する必要がある場合は、その機能について、[こちら](https://feedback.azure.com/d365community/idea/dea9ea22-0a25-ec11-b6e6-000d3a4f07b8)で投票を行ってください。 クロス サブスクリプションの復元を実行するには、別のサーバーに復元し、そのサーバーをサブスクリプション間で ['移動'](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) します。
 
 ## <a name="geo-redundant-restore"></a>geo 冗長復元
 

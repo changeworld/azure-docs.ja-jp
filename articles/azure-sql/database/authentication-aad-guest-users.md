@@ -5,37 +5,36 @@ ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse
 ms.topic: how-to
-author: shohamMSFT
-ms.author: shohamd
+author: GithubMirek
+ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: 7a4d9fb9f803a497e84fa189d9a89c2d9097bb70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: 91c6893320273ae29cb504715b5f27365a0161be
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92675046"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434234"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Azure AD ゲスト ユーザーを作成し、Azure AD 管理者として設定する
 
-[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-> [!NOTE]
-> この記事は **パブリック プレビュー** 段階です。
+Azure Active Directory (Azure AD) のゲスト ユーザーは、他の Azure Active Directory またはその外部から現在の Azure AD にインポートされているユーザーです。 たとえば、ゲスト ユーザーには、他の Azure Active Directory から、または *\@outlook.com*、 *\@hotmail.com*、 *\@live.com*、 *\@gmail.com* などのアカウントからのユーザーを含めることができます。 
 
-Azure Active Directory (Azure AD) のゲスト ユーザーは、他の Azure Active Directory またはその外部から現在の Azure AD にインポートされているユーザーです。 たとえば、ゲスト ユーザーには、他の Azure Active Directory から、または *\@outlook.com*、 *\@hotmail.com*、 *\@live.com*、 *\@gmail.com* などのアカウントからのユーザーを含めることができます。 この記事では、Azure AD ゲスト ユーザーを作成し、Azure AD 内のグループにそのゲスト ユーザーを含める必要なしに、そのユーザーを Azure SQL 論理サーバーの Azure AD 管理者として設定する方法について説明します。
+この記事では、Azure AD ゲスト ユーザーを作成し、Azure AD 内のグループにゲスト ユーザーを追加する必要なく、そのユーザーを、Azure SQL Database および Azure Synapse Analytics によって使用される Azure SQL Managed Instance または [Azure 内の論理サーバー](logical-servers.md)の Azure AD 管理者として設定する方法について説明します。
 
 ## <a name="feature-description"></a>機能の説明
 
-この機能により、ゲスト ユーザーが、Azure AD で作成されたグループのメンバーである場合にのみ、Azure SQL Database、SQL Managed Instance、または Azure Synapse Analytics に接続できるという現在の制限が解除されます。 グループは、特定のデータベースで [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) ステートメントを使用して、手動でユーザーにマップする必要がありました。 ゲスト ユーザーを含む Azure AD グループに対してデータベース ユーザーが作成されると、ゲスト ユーザーは、Azure Active Directory を使用して MFA 認証でデータベースにサインインできます。 この **パブリック プレビュー** の一部として、ゲスト ユーザーを作成して SQL Database、SQL Managed Instance、または Azure Synapse に直接接続することができ、最初に Azure AD グループに追加してから、その Azure AD グループのデータベース ユーザーを作成する必要はありません。
+この機能により、ゲスト ユーザーが、Azure AD で作成されたグループのメンバーである場合にのみ、Azure SQL Database、SQL Managed Instance、または Azure Synapse Analytics に接続できるという現在の制限が解除されます。 グループは、特定のデータベースで [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) ステートメントを使用して、手動でユーザーにマップする必要がありました。 ゲスト ユーザーを含む Azure AD グループに対してデータベース ユーザーが作成されると、ゲスト ユーザーは、Azure Active Directory を使用して MFA 認証でデータベースにサインインできます。 ゲスト ユーザーを作成して SQL Database、SQL Managed Instance、または Azure Synapse に直接接続することができ、最初に Azure AD グループに追加してから、その Azure AD グループのデータベース ユーザーを作成する必要はありません。
 
-この機能の一部として、Azure AD ゲスト ユーザーを Azure SQL 論理サーバーの AD 管理者として直接設定する機能もあります。 ゲスト ユーザーを Azure AD グループに含めてから、そのグループを Azure SQL 論理サーバーの Azure AD 管理者として設定できる既存の機能には影響ありません。 Azure AD グループに含まれているデータベース内のゲスト ユーザーにも、この変更による影響はありません。
+この機能の一部として、Azure AD ゲスト ユーザーを論理サーバーまたはマネージド インスタンスの AD 管理者として直接設定する機能もあります。 既存の機能 (ゲスト ユーザーを Azure AD グループに含めてから、そのグループを論理サーバーまたはマネージド インスタンスの Azure AD 管理者として設定できる) には影響 *ありません*。 Azure AD グループに含まれているデータベース内のゲスト ユーザーにも、この変更による影響はありません。
 
 Azure AD グループを使用するゲスト ユーザーに対する既存のサポートの詳細については、「[Azure Active Directory の多要素認証の使用](authentication-mfa-ssms-overview.md)」を参照してください。
 
 ## <a name="prerequisite"></a>前提条件
 
-- PowerShell を使用して、ゲスト ユーザーを Azure SQL 論理サーバーの Azure AD 管理者として設定する場合、[Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) 以上のモジュールが必要です。
+- PowerShell を使用して、ゲスト ユーザーを論理サーバーまたはマネージド インスタンスの Azure AD 管理者として設定する場合、[Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) 以上のモジュールが必要です。
 
 ## <a name="create-database-user-for-azure-ad-guest-user"></a>Azure AD ゲスト ユーザーのデータベース ユーザーを作成する 
 
@@ -94,25 +93,42 @@ Azure AD ゲスト ユーザーを使用してデータベース ユーザーを
 
 ## <a name="setting-a-guest-user-as-an-azure-ad-admin"></a>ゲスト ユーザーを Azure AD 管理者として設定する
 
-SQL 論理サーバーの Azure AD 管理者として Azure AD ゲスト ユーザーを設定するには、これらの手順に従います。
+Azure AD 管理者を設定するには、Azure portal、Azure PowerShell、または Azure CLI を使用します。 
 
-### <a name="set-azure-ad-admin-for-sql-database-and-azure-synapse"></a>SQL Database と Azure Synapse 用の Azure AD 管理者を設定する
+### <a name="azure-portal"></a>Azure portal 
+
+Azure portal を使用して論理サーバーまたはマネージド インスタンスの Azure AD 管理者を設定するには、次の手順に従います。 
+
+1. [Azure portal](https://portal.azure.com) を開きます。 
+1. SQL サーバーまたはマネージド インスタンスの **Azure Active Directory** 設定に移動します。 
+1. **[管理者の設定]** を選択します。 
+1. Azure AD ポップアップ プロンプトで、`guestuser@gmail.com` などのゲスト ユーザーを入力します。 
+1. この新しいユーザーを選択してから、操作を保存します。 
+
+詳細については、[Azure AD 管理者の設定](authentication-aad-configure.md#azure-ad-admin-with-a-server-in-sql-database)に関するページを参照してください。 
+
+
+### <a name="azure-powershell-sql-database-and-azure-synapse"></a>Azure PowerShell (SQL Database と Azure Synapse)
+
+論理サーバーの Azure AD ゲスト ユーザーを設定するには、次の手順に従います。  
 
 1. ゲスト ユーザー (`user1@gmail.com`など) が既に Azure AD に追加されていることを確認します。
 
-1. 次の PowerShell コマンドを実行して、ゲスト ユーザーを Azure SQL 論理サーバーの Azure AD 管理者として追加します。
+1. 次の PowerShell コマンドを実行して、ゲスト ユーザーを論理サーバーの Azure AD 管理者として追加します。
 
-    - `<ResourceGroupName>` は、Azure SQL 論理サーバーを含む Azure リソース グループ名に置き換えます。
-    - `<ServerName>` は、実際の Azure SQL 論理サーバーの名前に置き換えます。 実際のサーバー名が `myserver.database.windows.net` の場合、`<Server Name>` を `myserver` に置き換えます。
+    - `<ResourceGroupName>` は、論理サーバーを含む Azure リソース グループ名に置き換えます。
+    - `<ServerName>` は、論理サーバーの名前に置き換えます。 実際のサーバー名が `myserver.database.windows.net` の場合、`<Server Name>` を `myserver` に置き換えます。
     - `<DisplayNameOfGuestUser>` は、実際のゲスト ユーザー名に置き換えます。
 
     ```powershell
     Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName <ResourceGroupName> -ServerName <ServerName> -DisplayName <DisplayNameOfGuestUser>
     ```
 
-    また、Azure CLI コマンド [az sql server ad-admin](/cli/azure/sql/server/ad-admin) を使用して、ゲスト ユーザーを Azure SQL 論理サーバーの Azure AD 管理者として設定することもできます。
+また、Azure CLI コマンド [az sql server ad-admin](/cli/azure/sql/server/ad-admin) を使用して、ゲスト ユーザーを論理サーバーの Azure AD 管理者として設定することもできます。
 
-### <a name="set-azure-ad-admin-for-sql-managed-instance"></a>SQL Managed Instance の Azure AD 管理者を設定する
+### <a name="azure-powershell-sql-managed-instance"></a>Azure PowerShell (SQL Managed Instance)
+
+マネージド インスタンスの Azure AD ゲストユーザーを設定するには、次の手順に従います。  
 
 1. ゲスト ユーザー (`user1@gmail.com`など) が既に Azure AD に追加されていることを確認します。
 
@@ -129,13 +145,8 @@ SQL 論理サーバーの Azure AD 管理者として Azure AD ゲスト ユー�
     Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName <ResourceGroupName> -InstanceName "<ManagedInstanceName>" -DisplayName <DisplayNameOfGuestUser> -ObjectId <AADObjectIDOfGuestUser>
     ```
 
-    また、Azure CLI コマンド [az sql mi ad-admin](/cli/azure/sql/mi/ad-admin) を使用して、ゲスト ユーザーを SQL Managed Instance の Azure AD 管理者として設定することもできます。
+また、Azure CLI コマンド [az sql mi ad-admin](/cli/azure/sql/mi/ad-admin) を使用して、ゲスト ユーザーをマネージド インスタンスの Azure AD 管理者として設定することもできます。
 
-## <a name="limitations"></a>制限事項
-
-Azure portal には、Azure AD ゲストユーザーを SQL Managed Instance の Azure AD 管理者として選択できない制限があります。 *\@outlook.com*、 *\@hotmail.com*、 *\@live.com*、 *\@gmail.com* など、Azure AD 外部のゲスト アカウントの場合、AD 管理者セレクターにはこれらのアカウントは表示されますが、グレー表示され、選択することはできません。 上記の [PowerShell または CLI コマンド](#setting-a-guest-user-as-an-azure-ad-admin)を使用して Azure AD 管理者を設定します。または、ゲスト ユーザーを含む Azure AD グループを SQL Managed Instance の Azure AD 管理者として設定することもできます。
-
-この機能の一般提供が開始される前に、この機能は SQL Managed Instance に対して有効になります。
 
 ## <a name="next-steps"></a>次のステップ
 

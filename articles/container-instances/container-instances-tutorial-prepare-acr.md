@@ -4,12 +4,12 @@ description: Azure Container Instances チュートリアル 2/3 - Azure Contain
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 36c2e6cda728a85ccab080bbbb6f1a0b74824f2d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 513db28ebe4ed87429fffe2faa75c2859b988efe
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786983"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220887"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>チュートリアル:Azure Container Registry を作成してコンテナー イメージをプッシュする
 
@@ -132,7 +132,6 @@ az acr repository show-tags --name <acrName> --repository aci-tutorial-app --out
 次のような出力が表示されます。
 
 ```console
-az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
 Result
 --------
 v1

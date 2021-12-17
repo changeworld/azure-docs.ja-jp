@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 9f2ca089a6d885227bd61940d71ec7bb7960fbd6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3bef3700cd6bdaf000f222736b63e8fda24e1602
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043157"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226207"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -67,7 +67,7 @@ IoT Edge デバイスが Windows または Linux のどちらで動作してい�
 
 ### <a name="linux-devices"></a>Linux デバイス
 
-Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり「[Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge.md)」の手順に従います。
+Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり「[Azure IoT Edge ランタイムをインストールする](how-to-provision-single-device-linux-symmetric.md)」の手順に従います。
 
 ### <a name="windows-devices-using-iot-edge-for-linux-on-windows"></a>IoT Edge for Linux on Windows を使用する Windows デバイス
 
@@ -137,7 +137,7 @@ sudo systemctl edit iotedge
 
 ```ini
 [Service]
-Environment="https_proxy=<proxy URL>"
+Environment=https_proxy=<proxy URL>
 ```
 
 サービス マネージャーを更新して、IoT Edge 用の新しい構成を選択します。
@@ -173,7 +173,7 @@ sudo systemctl edit aziot-edged
 
 ```ini
 [Service]
-Environment="https_proxy=<proxy URL>"
+Environment=https_proxy=<proxy URL>
 ```
 
 バージョン 1.2 以降の IoT Edge では、IoT Hub または IoT Hub Device Provisioning Service でのデバイスのプロビジョニングを処理するために、IoT ID サービスが使用されます。 ターミナルでエディターを開き、IoT ID サービス デーモンを構成します。
@@ -186,7 +186,7 @@ sudo systemctl edit aziot-identityd
 
 ```ini
 [Service]
-Environment="https_proxy=<proxy URL>"
+Environment=https_proxy=<proxy URL>
 ```
 
 サービス マネージャーを更新して、新しい構成を選択します。
@@ -214,8 +214,8 @@ systemctl show --property=Environment aziot-identityd
 
 IoT Edge for Linux on Windows 仮想マシンにログインします。
 
-```azurepowershell-interactive
-Ssh-EflowVm
+```powershell
+Connect-EflowVm
 ```
 
 上記の Linux セクションと同じ手順に従って、IoT Edge デーモンを構成します。
@@ -357,7 +357,7 @@ Visual Studio Code のテンプレートを使用するか、または手動で 
     "type": "docker",
     "settings": {
         "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
-        "createOptions": ""
+        "createOptions": "{}"
     },
     "env": {
         "https_proxy": {

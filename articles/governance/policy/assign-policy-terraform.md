@@ -1,14 +1,14 @@
 ---
 title: 'クイックスタート: Terraform を使用した新しいポリシーの割り当て'
 description: このクイックスタートでは、Terraform と HCL 構文を使用して、ポリシー割り当てを作成し、非準拠リソースを特定します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: 6c1a43010c48f71872d935a8fb52f608b479da8a
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 09e36e8b73fd224d7ab9c94dceaa7e02b34c9b8b
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092349"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323451"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>クイックスタート: Terraform を使用してポリシー割り当てを作成し、非準拠リソースを特定する
 
@@ -39,7 +39,7 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
        version = "~>2.0"
        features {}
    }
-   
+
    resource "azurerm_policy_assignment" "auditvms" {
        name = "audit-vm-manageddisks"
        scope = var.cust_scope
@@ -48,6 +48,7 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
        display_name = "Audit VMs without managed disks Assignment"
    }
    ```
+
 1. 次のコードを使用して `variables.tf` を作成します。
 
    ```hcl
@@ -84,7 +85,7 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
 
 1. [Azure CLI](/cli/azure/) で Terraform に対して認証します。 詳細については、「[Azure プロバイダー: Azure CLI を使用した認証](https://www.terraform.io/docs/providers/azurerm/guides/azure_cli.html)」を参照してください。
 
-   ```bash
+   ```azurecli
    az login
    ```
 

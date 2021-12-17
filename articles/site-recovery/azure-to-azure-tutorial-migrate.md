@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 076adbfd4cecf7dae9ffc490e911fcb7ffce48e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53554e49c9e237f44d73238ca0e78385f66ca875
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93394834"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019383"
 ---
 # <a name="move-vms-to-another-azure-region"></a>VM を別の Azure リージョンに移動する
 
@@ -84,7 +84,7 @@ ms.locfileid: "93394834"
     実際の環境に適した、最も一般的に使用されるネットワーク リソースをソース VM の構成に基づいて作成する場合は、次のドキュメントを参照してください。
     - [ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)
     - [ロード バランサー](../load-balancer/index.yml)
-    -  [パブリック IP](../virtual-network/virtual-network-public-ip-address.md)
+    -  [パブリック IP](../virtual-network/ip-services/virtual-network-public-ip-address.md)
     - その他のネットワーク コンポーネントについては、[ネットワークに関するドキュメント](../index.yml?pivot=products&panel=network)を参照してください。
 
 

@@ -1,20 +1,20 @@
 ---
 title: Android マップにイメージ レイヤーを追加する | Microsoft Azure Maps
 description: マップに画像を追加する方法について説明します。 Azure Maps Android SDK を使用し、固定の座標セット上でイメージ レイヤーやオーバーレイ画像をカスタマイズする方法について説明します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: e1d99297c0357039606149bdf7e5a526258fc7c5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d90771a639cbd904c3c61412b511d764d2d37ae8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054142"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432740"
 ---
 # <a name="add-an-image-layer-to-a-map-android-sdk"></a>マップにイメージ レイヤーを追加する (Android SDK)
 
@@ -30,7 +30,7 @@ ms.locfileid: "102054142"
 
 ## <a name="add-an-image-layer"></a>イメージ レイヤーを追加する
 
-次のコードでは、[1922 年のニュージャージー州ニューアークの地図](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)の画像がマップにオーバーレイされています。 このイメージはプロジェクトの `drawable` フォルダーに追加されます。 イメージ レイヤーは、形式 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` で四隅に画像と座標を設定することで作成されます。 多くの場合、`label` レイヤーの下にイメージ レイヤーを追加することが推奨されます。
+次のコードでは、1922 年のニュージャージー州ニューアークの地図の画像がマップにオーバーレイされています。 このイメージはプロジェクトの `drawable` フォルダーに追加されます。 イメージ レイヤーは、形式 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` で四隅に画像と座標を設定することで作成されます。 多くの場合、`label` レイヤーの下にイメージ レイヤーを追加することが推奨されます。
 
 ::: zone pivot="programming-language-java-android"
 

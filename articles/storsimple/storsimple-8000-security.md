@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 72bf252488878c8b6fabb2ea2d61658a2cd87e14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ecfeffb490c54d24a6254961cf17b13f0b6a34bc
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966209"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076673"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple のセキュリティとデータの保護
 
@@ -269,7 +269,7 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 **A:** 新しい証明書を StorSimple デバイス マネージャー サービスからダウンロードできます。その後、リモート アクセス クライアントの証明書ストアに新しい証明書をインストールしてください。 手順については、次をご覧ください。
 
-* [Import-Certificate コマンドレット](/powershell/module/pkiclient/import-certificate)
+* [Import-Certificate コマンドレット](/powershell/module/pki/import-certificate)
 
 **Q:** StorSimple デバイス マネージャー サービスのセキュリティが侵害されてもデータは保護されますか。
 

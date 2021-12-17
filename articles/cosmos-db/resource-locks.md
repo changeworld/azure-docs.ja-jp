@@ -5,17 +5,18 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: 1c8c766208132aec115e1fbeb15af3a057c3de3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 02bcfa765f9047e3d633402840a37cccc8ada867
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94636709"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110680722"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>Azure Cosmos DB リソースが削除または変更されないようにする
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 管理者は、Azure Cosmos アカウント、データベース、またはコンテナーをロックし、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止しなければならないことがあります。 ロック レベルは CanNotDelete または ReadOnly に設定できます。
 
@@ -37,7 +38,7 @@ Resource Manager のロックは、管理ウィンドウで実行され、https:
 
 ### <a name="powershell"></a>PowerShell
 
-```powershell
+```powershell-interactive
 $resourceGroupName = "myResourceGroup"
 $accountName = "my-cosmos-account"
 $lockName = "$accountName-Lock"
@@ -57,7 +58,7 @@ New-AzResourceLock `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-```bash
+```azurecli-interactive
 resourceGroupName='myResourceGroup'
 accountName='my-cosmos-account'
 $lockName="$accountName-Lock"

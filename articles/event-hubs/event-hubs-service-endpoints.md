@@ -2,13 +2,13 @@
 title: 仮想ネットワーク サービス エンドポイント - Azure Event Hubs | Microsoft Docs
 description: この記事では、Microsoft.EventHub サービス エンドポイントを仮想ネットワークに追加する方法について説明します。
 ms.topic: article
-ms.date: 03/29/2021
-ms.openlocfilehash: f7f0f3ff480018c9bfc5d9c6f34cf7e2935f8d6a
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.date: 05/10/2021
+ms.openlocfilehash: 33ae280b49b4f2afca39e8de8954f836737c9d7c
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959961"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416220"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>特定の仮想ネットワークから Azure Event Hubs 名前空間へのアクセスを許可する 
 
@@ -19,9 +19,9 @@ Event Hubs と[仮想ネットワーク (VNet) サービス エンドポイン�
 その結果、メッセージング サービス エンドポイントの監視可能なネットワーク アドレスがパブリック IP 範囲内にあるにもかかわらず、サブネットにバインドされたワークロードとそれぞれの Event Hubs 名前空間の間にプライベートな分離された関係が確立されます。 この動作には例外があります。 サービス エンドポイントを有効にすると、既定では、仮想ネットワークに関連付けられた [IP ファイアウォール](event-hubs-ip-filtering.md)で `denyall` 規則が有効になります。 イベント ハブ パブリック エンドポイントへのアクセスを有効にするために、IP ファイアウォールで特定の IP アドレスを追加できます。 
 
 ## <a name="important-points"></a>重要なポイント
-- この機能は、**Standard** と **Dedicated** レベルの両方でサポートされています。 **Basic** レベルではサポートされません。
+- この機能は **Basic** サービス レベルではサポートされていません。
 - 許可されている仮想ネットワークで稼働中のサービスから要求が送信される場合を除き、Event Hubs 名前空間に対して仮想ネットワークを有効にすると、着信要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。 例外として、仮想ネットワークが有効になっている場合でも、特定の **信頼できるサービス** からの Event Hubs リソースへのアクセスを許可できます。 信頼できるサービスの一覧については、[信頼できるサービス](#trusted-microsoft-services)に関するセクションを参照してください。
-- 指定された IP アドレスまたはある仮想ネットワークのサブネットからのトラフィックのみを許可するには、名前空間に **少なくとも 1 つの IP 規則または仮想ネットワーク規則** を指定します。 IP 規則も仮想ネットワーク規則も指定しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。  
+- 指定した IP アドレスまたは仮想ネットワークのサブネットからのトラフィックのみを許可するには、名前空間に **少なくとも 1 つの IP 規則または仮想ネットワーク規則** を指定します。 IP 規則も仮想ネットワーク規則も指定しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。  
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet の統合によって有効になる高度なセキュリティのシナリオ 
 
@@ -43,7 +43,7 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 このセクションでは、Azure portal を使用して仮想ネットワーク サービス エンドポイントを追加する方法を示します。 アクセスを制限するには、この Event Hubs 名前空間に対して仮想ネットワーク サービス エンドポイントを統合する必要があります。
 
 1. [Azure portal](https://portal.azure.com) で **Event Hubs 名前空間** に移動します。
-4. 左側のメニューの **[設定]** で **[ネットワーク]** を選択します。 **Standard** または **Dedicated** 名前空間のみの **[ネットワーク]** タブが表示されます。 
+4. 左側のメニューの **[設定]** で **[ネットワーク]** を選択します。 
 
     > [!WARNING]
     > このページで **[選択されたネットワーク]** オプションを選択し、1 つ以上の IP ファイアウォール規則または仮想ネットワークを追加しない場合は、**パブリック インターネット** 経由で (アクセス キーを使用して) 名前空間にアクセスできます。 
@@ -78,7 +78,7 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
     > [!NOTE]
     > 特定の IP アドレスまたは範囲にアクセスを制限する方法については、[特定の IP アドレスまたは範囲からのアクセスの許可](event-hubs-ip-filtering.md)に関するページを参照してください。
 
-[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+[!INCLUDE [event-hubs-trusted-services](./includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
 次の Resource Manager テンプレートの例では、既存の Event Hubs 名前空間に仮想ネットワーク規則を追加します。 ネットワーク規則では、仮想ネットワーク内のサブネットの ID を指定します。 

@@ -1,18 +1,19 @@
 ---
 title: 委任へのアクセスを削除する
 description: Azure Lighthouse のためにサービス プロバイダーに委任されたリソースへのアクセスを削除する方法について説明します。
-ms.date: 02/16/2021
+ms.date: 09/08/2021
 ms.topic: how-to
-ms.openlocfilehash: c53b678ba6e37ece1bcaf2860abceb9eea980532
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 16d92c58e08e06832781ff7d5095039cedbb344f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555777"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736604"
 ---
 # <a name="remove-access-to-a-delegation"></a>委任へのアクセスを削除する
 
-顧客のサブスクリプションまたはリソース グループが、[Azure Lighthouse](../overview.md) のためにサービス プロバイダーに委任された後、必要に応じて委任を削除できます。 委任が削除されると、サービス プロバイダー テナントのユーザーに以前付与されていた、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)アクセスは適用されなくなります。
+顧客のサブスクリプションまたはリソース グループが、[Azure Lighthouse](../overview.md) のためにサービス プロバイダーに委任された後、必要に応じて委任を削除できます。 委任が削除されると、サービス プロバイダー テナントのユーザーに以前付与されていた、[Azure の委任されたリソース管理](../concepts/architecture.md)アクセスは適用されなくなります。
 
 委任の削除は、ユーザーが適切なアクセス許可を持っている限り、顧客テナントまたはサービス プロバイダー テナントのユーザーが行うことができます。
 
@@ -21,7 +22,7 @@ ms.locfileid: "100555777"
 
 ## <a name="customers"></a>顧客
 
-`Microsoft.Authorization/roleAssignments/write` のアクセス許可を持つ[所有者](../../role-based-access-control/built-in-roles.md#owner)などのロールが割り当てられている、顧客のテナント内のユーザーは、そのサブスクリプション (またはそのサブスクリプション内のリソース グループ) へのサービス プロバイダー アクセスを削除できます。 これを行うには、ユーザーは、Azure portal の [[サービス プロバイダー]](view-manage-service-providers.md#add-or-remove-service-provider-offers) ページに移動し、 **[サービス プロバイダーのオファー]** 画面でオファーを見つけ、そのオファーの行のごみ箱アイコンを選択します。
+`Microsoft.Authorization/roleAssignments/write` のアクセス許可を持つ[所有者](../../role-based-access-control/built-in-roles.md#owner)などのロールが割り当てられている、顧客のテナント内のユーザーは、そのサブスクリプション (またはそのサブスクリプション内のリソース グループ) へのサービス プロバイダー アクセスを削除できます。 これを行うには、ユーザーは、Azure portal の [[サービス プロバイダー]](view-manage-service-providers.md#remove-service-provider-offers) ページに移動し、 **[サービス プロバイダーのオファー]** 画面でオファーを見つけ、そのオファーの行のごみ箱アイコンを選択します。
 
 削除を確定すると、サービス プロバイダーのテナント内のユーザーは、以前に委任されたリソースにアクセスできなくなります。
 
@@ -97,6 +98,6 @@ az managedservices assignment delete --assignment <id or full resourceId>
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)について学習してください。
+- [Azure Lighthouse のアーキテクチャ](../concepts/architecture.md)について学習してください。
 - Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](view-manage-customers.md)します。
 - [以前の委任を更新する](update-delegation.md)方法について説明します。

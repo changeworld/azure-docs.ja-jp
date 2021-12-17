@@ -1,40 +1,71 @@
 ---
-title: クイック スタート:Visual Studio を使用して Azure で初めての関数を作成する
-description: このクイックスタートでは、Visual Studio を使用して、HTTP によってトリガーされる Azure Function を作成して発行する方法について学習します。
+title: 'クイック スタート: Visual Studio を使用して Azure で初めての C# 関数を作成する'
+description: このクイックスタートでは、Visual Studio を使用して、.NET Core 3.1 で実行されて C# HTTP でトリガーされる関数を作成し、Azure Functions に発行する方法について説明します。
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 09/30/2020
-ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
+ms.date: 11/03/2021
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f, contperf-fy21q3-portal
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
-ms.openlocfilehash: d691ee60f624f75c89e44e905e5343bf9c71fd4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60e40b675ac8bc32328ea68786329b372f91d056
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101701417"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028213"
 ---
-# <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure で初めての関数を作成する
+# <a name="quickstart-create-your-first-c-function-in-azure-using-visual-studio"></a>クイック スタート: Visual Studio を使用して Azure で初めての C# 関数を作成する
 
-この記事では、Visual Studio を使用して、HTTP 要求に応答する C# クラス ライブラリベースの関数を作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。  
+Azure Functions を使用すると、Azure のサーバーレス環境で C# コードを実行できます。 
+
+この記事では、次のことについて説明します。
+
+> [!div class="checklist"]
+> * Visual Studio を使用して、.NET 6.0 の C# クラス ライブラリ プロジェクトを作成します。
+> * HTTP 要求に応答する関数を作成します。 
+> * コードをローカル環境で実行して、関数の動作を確認します。
+> * コード プロジェクトを Azure Functions にデプロイします。
+ 
+[!INCLUDE [functions-dotnet-execution-model](../../includes/functions-dotnet-execution-model.md)]
 
 このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
 
+また、この記事の [Visual Studio Code ベースのバージョン](create-first-function-vs-code-csharp.md)も存在します。
+
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、まず、[Visual Studio 2019](https://azure.microsoft.com/downloads/) をインストールします。 インストール時に **[Azure の開発]** ワークロードを確実に選択してください。 代わりに Visual Studio 2017 を使用して Azure Functions プロジェクトを作成する場合は、まず、[最新の Azure Functions ツール](functions-develop-vs.md#check-your-tools-version)をインストールする必要があります。
++ .NET 6.0 をサポートする [Visual Studio 2022](https://azure.microsoft.com/downloads/)。 インストール時に必ず **[Azure の開発]** ワークロードを選択してください。 
 
-![Azure 開発ワークロードと共に Visual Studio をインストールする](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
-
-[Azure サブスクリプション](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/dotnet/)を作成してください。
++ [Azure サブスクリプション](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)。 アカウントをまだ持っていない場合は、始める前に[無料アカウントを作成](https://azure.microsoft.com/free/dotnet/)してください。
 
 ## <a name="create-a-function-app-project"></a>関数アプリ プロジェクトを作成する
 
-[!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
+Visual Studio の Azure Functions プロジェクト テンプレートを使用すると、Azure の関数アプリに発行できる C# クラス ライブラリ プロジェクトを作成できます。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
-Visual Studio によってプロジェクトとクラスが作成されます。クラスの中には、HTTP トリガー関数型のスケルトン コードが含まれています。 スケルトン コードは、要求本文またはクエリ文字列の値を含む HTTP 応答を送信します。 `HttpTrigger`属性は、関数が HTTP 要求によってトリガーされることを指定します。 
+1. Visual Studio メニューで、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。
+
+1. **[新しいプロジェクトの作成]** の検索ボックスに「*functions*」と入力し、**Azure Functions** テンプレートを選択してから、 **[次へ]** を選択します。
+
+1. **[新しいプロジェクトの構成]** で、プロジェクトの **プロジェクト名** を入力し、 **[作成]** を選択します。 関数アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
+
+1. **[新しい Azure Functions アプリケーションの作成]** 設定で、次の表の値を使用します。
+
+    | 設定      | 値  | 説明                      |
+    | ------------ |  ------- |----------------------------------------- |
+    | **.NET のバージョン** | **.NET 6** | この値により、Azure Functions ランタイムのバージョン 4.x でインプロセスを実行する関数プロジェクトが作成されます。 **[.NET 6 (isolated)]\(.NET 6 (分離)\)** を選択して、別のワーカー プロセスで実行されるプロジェクトを作成することもできます。 Azure Functions 1.x では、.NET Framework がサポートされます。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](./functions-versions.md)」をご覧ください。   |
+    | **関数テンプレート** | **HTTP トリガー** | この値は、HTTP 要求によってトリガーされる関数を作成します。 |
+    | **ストレージ アカウント (AzureWebJobsStorage)**  | **ストレージ エミュレーター** | Azure の関数アプリにはストレージ アカウントが必要であるため、プロジェクトを Azure に発行する際に割り当てられるか、作成されます。 HTTP トリガーによって、Azure Storage アカウントの接続文字列が使用されることはありません。その他のすべてのトリガーの種類には、有効な Azure Storage アカウントの接続文字列が必要です。 このオプションを選択すると、Azurite エミュレーターが使用されます。 |
+    | **承認レベル** | **Anonymous** | 作成される関数を、すべてのクライアントがキーを使用せずにトリガーできます。 この承認設定により、新しい関数のテストが容易になります。 キーと承認の詳細については、「[承認キー](./functions-bindings-http-webhook-trigger.md#authorization-keys)」と [HTTP と Webhook のバインド](./functions-bindings-http-webhook.md)に関するページをご覧ください。 |
+    
+    :::image type="content" source="../../includes/media/functions-vs-tools-create/functions-project-settings-v4.png" alt-text="Azure Functions プロジェクトの設定":::
+
+    **[承認レベル]** を **[匿名]** に設定していることを確認します。 **関数** の既定のレベルを選択した場合、関数エンドポイントにアクセスする要求で、[関数キー](./functions-bindings-http-webhook-trigger.md#authorization-keys)を提示する必要があります。
+
+1. **[作成]** を選択して、関数プロジェクトと HTTP トリガー関数を作成します。
+
+Visual Studio によってプロジェクトとクラスが作成されます。クラスの中には、HTTP トリガー関数型のスケルトン コードが含まれています。 スケルトン コードは、要求本文またはクエリ文字列の値を含む HTTP 応答を送信します。 `HttpTrigger`属性は、関数が HTTP 要求によってトリガーされることを指定します。
 
 ## <a name="rename-the-function"></a>フォルダーの名前を変更する
 
@@ -42,9 +73,13 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 1. **エクスプローラー** で Function1.cs ファイルを右クリックし、`HttpExample.cs` という名前に変更します。
 
-1. コードで Function1 クラスの名前を "HttpExample" に変更します。
+1. コードで、Function1 クラスの名前を `HttpExample` に変更します。
 
-1. `Run` という名前の `HttpTrigger` メソッドで、`FunctionName` メソッド属性の名前を `HttpExample` に変更します。
+1. `Run` という名前の `HttpTrigger` メソッドで、`FunctionName` メソッド属性の名前を `HttpExample` に変更します。 
+
+関数の定義は次のコードのようになります。
+
+:::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs" range="15-18"::: 
 
 関数の名前の変更が済んだので、この関数をローカル コンピューターでテストできるようになりました。
 
@@ -62,13 +97,13 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="test-your-function-in-azure"></a>Azure で関数をテストする
+## <a name="verify-your-function-in-azure"></a>Azure 内で関数を確認する
 
 1. Cloud Explorer では、新しい関数アプリが選択されているはずです。 そうでない場合は、自分のサブスクリプション > **[App Services]** の順に展開して、新しい関数アプリを選択します。
 
 1. 関数アプリを右クリックし、 **[ブラウザーで開く]** を選択します。 これにより、関数アプリのルートが既定の Web ブラウザーで開かれ、関数アプリが実行されていることを示すページが表示されます。 
 
-    :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure.png" alt-text="実行されている関数アプリ":::
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure-v4.png" alt-text="実行されている関数アプリ":::
 
 1. ブラウザーのアドレス バーで、ベース URL に文字列 `/api/HttpExample?name=Functions` を追加し、要求を実行します。
 
@@ -76,7 +111,7 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
     `http://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`
 
-2. この URL に移動し、関数によって返されたリモート GET 要求に対する応答がブラウザーに表示されます。次の例のような内容です。
+1. この URL に移動し、関数によって返されたリモート GET 要求に対する応答がブラウザーに表示されます。次の例のような内容です。
 
     :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="ブラウザーでの関数の応答":::
 
@@ -86,19 +121,9 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 Azure の "*リソース*" とは、関数アプリ、関数、ストレージ アカウントなどのことを指します。 これらは "*リソース グループ*" に分類されており、グループを削除することでグループ内のすべてのものを削除できます。 
 
-これらのクイックスタートを完了するためにリソースを作成しました。 これらのリソースには、[アカウントの状態](https://azure.microsoft.com/account/)と[サービスの価格](https://azure.microsoft.com/pricing/)に応じて課金される場合があります。 リソースの必要がなくなった場合にそれらを削除する方法を、次に示します。
+これらのクイックスタートを完了するためにリソースを作成しました。 これらのリソースには、[アカウントの状態](https://azure.microsoft.com/account/)と[サービスの価格](https://azure.microsoft.com/pricing/)に応じて課金される場合があります。 
 
-1. Cloud Explorer で、自分のサブスクリプション > **[App Services]** の順に展開し、関数アプリを右クリックして、 **[ポータルで開く]** を選択します。 
-
-1. 関数アプリのページで、 **[概要]** タブを選択してから、 **[リソース グループ]** の下にあるリンクを選択します。
-
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="関数アプリのページで削除するリソース グループを選択する":::
-
-2. **[リソース グループ]** ページで、含まれているリソースの一覧を確認し、削除するものであることを確認します。
- 
-3. **[リソース グループの削除]** を選択し、指示に従います。
-
-   削除には数分かかることがあります。 実行されると、通知が数秒間表示されます。 ページの上部にあるベルのアイコンを選択して、通知を表示することもできます。
+[!INCLUDE [functions-vstools-cleanup](../../includes/functions-vstools-cleanup.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

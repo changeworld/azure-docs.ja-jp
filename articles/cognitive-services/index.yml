@@ -11,24 +11,24 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.custom: custom-portals-hub
-  ms.date: 08/28/2020
+  ms.date: 10/08/2021
 highlightedContent:
   items:
     - title: Cognitive Services とは
       itemType: overview
       url: ./what-are-cognitive-services.md
-    - title: ドキュメントの最新情報
-      itemType: whats-new
-      url: whats-new-docs.md
+    - title: Cognitive Services のオンプレミス コンテナー
+      itemType: concept
+      url: ./containers/index.yml
+    - title: AI の責任ある使用
+      itemType: concept
+      url: responsible-use-of-ai-overview.md
     - title: 開発オプション
       itemType: concept
       url: ./cognitive-services-development-options.md
     - title: Cognitive Services と機械学習
       itemType: concept
       url: ./cognitive-services-and-machine-learning.md
-    - title: Cognitive Services のオンプレミス コンテナー
-      itemType: concept
-      url: ./containers/index.yml
     - title: データベースでの Cognitive Services
       itemType: concept
       url: ./big-data/cognitive-services-for-big-data.md
@@ -52,30 +52,21 @@ conceptualContent:
         - url: ./face/index.yml
           itemType: overview
           text: Face
-        - url: ./form-recognizer/index.yml
-          itemType: overview
-          text: Form Recognizer
-        - url: ../media-services/video-indexer/index.yml
-          itemType: overview
-          text: Video Indexer
     - title: Language
       summary: お使いのアプリが、構築済みスクリプトで自然言語を処理し、センチメントを評価し、ユーザーの求めるものを認識する方法を学習できるようにします。
       links:
-        - url: ./immersive-reader/index.yml
+        - url: ./language-service/index.yml
           itemType: overview
-          text: イマーシブ リーダー
+          text: Azure Cognitive Service for Language
         - url: ./luis/index.yml
           itemType: overview
           text: Language Understanding (LUIS)
         - url: ./qnamaker/index.yml
           itemType: overview
           text: QnA Maker
-        - url: ./text-analytics/index.yml
-          itemType: overview
-          text: Text Analytics
         - url: ./translator/index.yml
           itemType: overview
-          text: Translator
+          text: '[変換者]'
     - title: 音声
       summary: 音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。
       links:
@@ -94,9 +85,6 @@ conceptualContent:
         - url: ./content-moderator/index.yml
           itemType: overview
           text: Content Moderator
-        - url: ./metrics-advisor/index.yml
-          itemType: overview
-          text: Metrics Advisor (プレビュー)
         - url: ./personalizer/index.yml
           itemType: overview
           text: Personalizer
@@ -176,6 +164,12 @@ additionalContent:
               url: ./big-data/cognitive-services-for-big-data.md
             - text: Cognitive Services Management REST API
               url: /rest/api/cognitiveservices/
+        - title: その他の Azure AI サービスを探索する
+          links:
+            - text: Azure Applied AI Services
+              url: ../applied-ai-services/index.yml
+            - text: Azure Machine Learning
+              url: ../machine-learning/index.yml
         - title: ツール
           links:
             - text: Azure CLI

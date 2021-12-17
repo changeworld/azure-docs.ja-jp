@@ -1,21 +1,23 @@
 ---
 title: Azure 上の Red Hat Enterprise Linux イメージのインプレース アップグレード
 description: Red Hat Enterprise 7.x イメージから最新の 8.x バージョンへのインプレース アップグレードを実行する方法について説明します。
-author: mathapli
+author: mamccrea
 ms.service: virtual-machines
 ms.subservice: redhat
 ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
-ms.author: alsin
-ms.openlocfilehash: 1be0904cc640eff5af7a77bba3abd6aa062991a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mamccrea
+ms.openlocfilehash: e127ec753a6db0556c901aff737656da47883c7a
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676069"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129454869"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>インプレース アップグレードの Red Hat Enterprise Linux
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 この記事では、Red Hat Enterprise Linux (RHEL) 7 から Red Hat Enterprise Linux 8 へのインプレース アップグレードを実行する手順を説明します。 この手順では Azure の `leapp` ツールを使用します。 インプレース アップグレード中に、既存の RHEL 7 オペレーティング システムが RHEL 8 バージョンに置き換えられます。
 

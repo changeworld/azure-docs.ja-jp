@@ -13,6 +13,10 @@
         - name: ARM テンプレート
           displayName: Resource Manager
           href: alerts-activity-log-service-notifications-arm.md
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
 - name: 概念
   items:
     - name: Azure の状態のページ
@@ -46,7 +50,7 @@
     - name: リソースの正常性の種類とチェック
       href: resource-health-checks-resource-types.md
     - name: Resource Health に関する FAQ
-      href: resource-health-faq.md
+      href: resource-health-faq.yml
 - name: リソース
   items:
     - name: Azure のロードマップ

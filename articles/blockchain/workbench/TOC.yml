@@ -23,6 +23,8 @@
   items:
     - name: Workbench をデプロイする
       href: deploy.md
+    - name: 別の台帳に移行する
+      href: 'https://github.com/Azure-Samples/blockchain/blob/caleteet-migration/migration/abw-migration.md'
     - name: Workbench ユーザーを管理する
       href: manage-users.md
     - name: アプリのバージョン管理
@@ -52,7 +54,7 @@
     - name: メッセージング API
       href: messages-overview.md
     - name: REST API
-      href: /rest/api/azure-blockchain-workbench
+      href: /rest/api/azure-blockchain-workbench/
 - name: リソース
   items:
     - name: コード サンプル
@@ -67,9 +69,3 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-workbench'
     - name: 製品フィードバック
       href: 'https://aka.ms/blockchainuservoice'
-- name: ソリューション テンプレート
-  items:
-    - name: Ethereum Proof-of-Authority Consortium
-      href: ../templates/ethereum-poa-deployment.md
-    - name: Hyperledger Fabric コンソーシアム Azure Kubernetes Service
-      href: ../templates/hyperledger-fabric-consortium-azure-kubernetes-service.md

@@ -8,12 +8,12 @@ metadata:
   ms.date: 08/30/2019
   ms.service: data-catalog
   ms.topic: landing-page
-  ms.openlocfilehash: 3b5e88b17136852129a408dff5c4f4fbf304c23a
-  ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+  ms.openlocfilehash: c504ae99742cded058809a38de64cfcf02500ccf
+  ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/22/2020
-  ms.locfileid: "97732905"
+  ms.lasthandoff: 06/06/2021
+  ms.locfileid: "111539151"
 landingContent:
 - title: Azure Data Catalog について
   linkLists:
@@ -32,7 +32,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: よく寄せられる質問
-      url: data-catalog-frequently-asked-questions.md
+      url: data-catalog-frequently-asked-questions.yml
 - title: データ資産の登録
   linkLists:
   - linkListType: tutorial

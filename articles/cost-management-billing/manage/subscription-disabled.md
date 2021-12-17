@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 07/15/2021
 ms.author: banders
-ms.openlocfilehash: d7b5f1ae6db633bd1af10b1a0de1392c2a1fbcef
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1e669a794abe848d326a6d08156621dcf3883ec5
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685538"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292232"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>無効な Azure サブスクリプションを再度有効にする
 
@@ -23,7 +23,7 @@ Azure サブスクリプションは、クレジットの有効期限が切れ�
 
 ## <a name="your-credit-is-expired"></a>クレジットの有効期限が切れている
 
-Azure 無料アカウントにサインアップすると、30 日間試用できる 200 ドルの Azure クレジットと 12 か月の無料サービスを提供する無料試用版のサブスクリプションを入手できます。 30 日目の終了時点で、Azure はサブスクリプションを無効にします。 サブスクリプションに含まれるクレジットと無料サービスを超えた使用による意図しない料金の発生を防止するために、お使いのサブスクリプションは無効になります。 Azure サービスを引き続き使用するには、[サブスクリプションをアップグレードする](upgrade-azure-subscription.md)必要があります。 サブスクリプションのアップグレード後も、12 か月間の無料サービスを利用できます。 無料サービスの数量の限度を超えた使用分にのみ課金されます。
+Azure 無料アカウントにサインアップすると、無料試用版のサブスクリプションを入手でき、30 日間試用できる 200 ドルの Azure クレジットが請求通貨で付与されるほか、12 か月間の無料サービスが提供されます。 30 日目の終了時点で、Azure はサブスクリプションを無効にします。 サブスクリプションに含まれるクレジットと無料サービスを超えた使用による意図しない料金の発生を防止するために、お使いのサブスクリプションは無効になります。 Azure サービスを引き続き使用するには、[サブスクリプションをアップグレードする](upgrade-azure-subscription.md)必要があります。 サブスクリプションのアップグレード後も、12 か月間の無料サービスを利用できます。 無料サービスの数量の限度を超えた使用分にのみ課金されます。
 
 ## <a name="you-reached-your-spending-limit"></a>使用制限に達している
 
@@ -60,6 +60,10 @@ Azure の課金アクティビティの監視および管理については、�
 ## <a name="after-reactivation"></a>再度有効にした後
 
 サブスクリプションを再度有効にした後、リソースの作成または管理に遅延が発生する可能性があります。 遅延が 30 分を超えた場合は、[Azure の課金サポート](https://go.microsoft.com/fwlink/?linkid=2083458)にお問い合わせください。 ほとんどの Azure リソースは自動的に再開され、対処は必要ありません。 しかし、Azure サービス リソースを確認し、自動的に再開されていないものは再起動することをお勧めします。
+
+## <a name="upgrade-a-disabled-free-account"></a>無効になった無料アカウントをアップグレードする
+
+無料ではないリソースを使用していて、クレジットを使い果たしたために、サブスクリプションが無効になり、その後サブスクリプションをアップグレードした場合、アップグレード後にリソースが有効になります。 この状況により、使用されたリソースに対して課金されます。 無料アカウントのアップグレードの詳細については、「[Azure アカウントをアップグレードする](upgrade-azure-subscription.md)」を参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

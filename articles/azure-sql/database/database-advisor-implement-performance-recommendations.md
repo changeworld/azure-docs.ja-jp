@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: fasttrack-edit, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: danimir
-ms.author: danil
-ms.reviewer: wiassaf, sstein
+author: NikaKinska
+ms.author: nnikolic
+ms.reviewer: mathoma, wiassaf
 ms.date: 03/10/2020
-ms.openlocfilehash: 79ccf0f8aae7e915601081f875cea294de52d787
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4959d2f7f65d4a9896a2e293f47a00ed84b1acd
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96500854"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590938"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Azure SQL Database のデータベース アドバイザーのパフォーマンスに関する推奨事項
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

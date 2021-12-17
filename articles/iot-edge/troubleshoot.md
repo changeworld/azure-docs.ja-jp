@@ -2,18 +2,17 @@
 title: Azure IoT Edge のトラブルシューティング | Microsoft Docs
 description: この記事を使用して、コンポーネントの状態およびログの取得など、Azure IoT Edge 用の標準的な診断スキルについて学習します
 author: kgremban
-manager: philmea
 ms.author: kgremban
-ms.date: 04/01/2021
+ms.date: 05/04/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6fa49af946a1e5fc631eeb1ee9b9c7c99d3adff8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3bca470114b5fb22409d86c333e92f93155759f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308270"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735151"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge デバイスのトラブルシューティング
 
@@ -113,10 +112,24 @@ sudo iotedge support-bundle --since 6h
 :::moniker-end
 <!-- end 1.2 -->
 
-また、デバイスへの[ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)の呼び出しを使用して、support-bundle コマンドの出力を Azure Blob Storage にアップロードすることもできます。
+既定では、 `support-bundle` コマンドにより、コマンドが呼び出されるディレクトリに **support_bundle.zip** という名前の zip ファイルが作成されます。 出力に別のパスまたはファイル名を指定するには、フラグ `--output` を使用します。
+
+コマンドの詳細については、ヘルプ情報を参照してください。
+
+```bash/cmd
+iotedge support-bundle --help
+```
+
+また、組み込みのダイレクト メソッド呼び出し [UploadSupportBundle](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) を使用して、support-bundle コマンドの出力を Azure Blob Storage にアップロードすることもできます。
 
 > [!WARNING]
 > `support-bundle` コマンドからの出力には、ホスト、デバイス名とモジュール名、モジュールによってログに記録された情報などが含まれる場合があります。パブリック フォーラムで出力を共有する場合は、この点に注意してください。
+
+## <a name="review-metrics-collected-from-the-runtime"></a>ランタイムから収集されたメトリックを確認する
+
+IoT Edge ランタイム モジュールでは、IoT エッジ デバイスの正常性を監視して把握するのに役立つメトリックが生成されます。 監視しやすくするために、**metrics-collector** モジュールをデプロイに追加して、これらのメトリックの収集とクラウドへの送信を処理します。
+
+詳細については、「[メトリックの収集と転送](how-to-collect-and-transport-metrics.md)」を参照してください。
 
 ## <a name="check-your-iot-edge-version"></a>IoT Edge のバージョンを確認する
 
@@ -131,7 +144,7 @@ sudo iotedge support-bundle --since 6h
 最新の edgeAgent モジュール ツインを取得するには、[Azure Cloud Shell](https://shell.azure.com/) から次のコマンドを実行します。
 
    ```azurecli-interactive
-   az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
+   az iot hub module-twin show --device-id <edge_device_id> --module-id '$edgeAgent' --hub-name <iot_hub_name>
    ```
 
 このコマンドは、edgeAgent の[報告されるプロパティ](./module-edgeagent-edgehub.md)すべてを出力します。 次に、デバイスの状態を監視する便利な方法を示します。
@@ -259,11 +272,32 @@ Windows の場合:
 
 IoT Edge セキュリティ デーモンが実行されている場合は、コンテナーのログを参照して問題を検出します。 デプロイされたコンテナーから開始して、IoT Edge ランタイムを形成しているコンテナーである edgeAgent および edgeHub を確認します。 通常、IoT Edge エージェントのログでは、各コンテナーのライフサイクルについての情報が提供されます。 IoT Edge ハブのログでは、メッセージングとルーティングについての情報が提供されます。
 
+コンテナーのログは、いくつかの場所から取得できます。
+
+* IoT Edge デバイスで、次のコマンドを実行してログを表示します。
+
+  ```cmd
+  iotedge logs <container name>
+  ```
+
+* Azure portal では、組み込みのトラブルシューティング ツールを使用します。 [Azure portal から IoT Edge デバイスを監視しトラブルシューティングを行う](troubleshoot-in-portal.md)
+
+* [Uploadmodulelogs ダイレクトメソッド](how-to-retrieve-iot-edge-logs.md#upload-module-logs)を使用して、モジュールのログを Azure Blob Storage にアップロードします。
+
+## <a name="clean-up-container-logs"></a>コンテナー ログをクリーンナップする
+
+既定では、Moby コンテナー エンジンでは、コンテナー ログ サイズの制限が設定されません。 これにより、時間の経過と共に、デバイスがログでいっぱいになり、ディスク容量が不足する可能性があります。 大きなコンテナー ログが IoT Edge デバイスのパフォーマンスに影響を与える場合は、次のコマンドを使用して、コンテナーとそれに関連するログを強制的に削除します。
+
+引き続きトラブルシューティングを行う場合は、コンテナー ログを検査してからこの手順を実行します。
+
+>[!WARNING]
+>未配信メッセージ バックログがあり、 [ホスト ストレージ](how-to-access-host-storage-from-module.md) がセットアップされていないときに edgeHub コンテナーを強制的に削除すると、配信されていないメッセージは失われます。
+
 ```cmd
-iotedge logs <container name>
+docker rm --force <container name>
 ```
 
-また、デバイス上のモジュールへの[ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-module-logs)の呼び出しを使用して、そのモジュールのログを Azure Blob Storage にアップロードすることもできます。
+進行中のログの保守と運用のシナリオにおいては、[ログのサイズに制限をかけます](production-checklist.md#place-limits-on-log-size)。
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>IoT Edge ハブを通過するメッセージを表示する
 
@@ -336,6 +370,8 @@ IoT Hub デバイスと IoT デバイスの間で送信されたメッセージ�
 
 ログとメッセージの情報を調べた後は、コンテナーの再起動を試みることもできます。
 
+IoT Edge デバイスで、次のコマンドを使用してモジュールを再起動します。
+
 ```cmd
 iotedge restart <container name>
 ```
@@ -345,6 +381,8 @@ IoT Edge ランタイム コンテナーを再起動する:
 ```cmd
 iotedge restart edgeAgent && iotedge restart edgeHub
 ```
+
+Azure portal からリモートでモジュールを再起動することもできます。 詳細については、[「Azure portal から IoT Edge デバイスを監視およびトラブルシューティングする」](troubleshoot-in-portal.md)を参照してください。
 
 ## <a name="check-your-firewall-and-port-configuration-rules"></a>ファイアウォール規則とポート構成規則を確認する
 

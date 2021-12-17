@@ -9,15 +9,16 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: a1009d24c1fb8712e88075097460ad179629f478
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: a4fe089672b1d62d321c1306983acfb66f5c0579
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557405"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688618"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>チュートリアル:Key Vault に格納されている TLS/SSL 証明書を使用して、Azure 内の Windows 仮想マシン上の Web サーバーをセキュリティで保護します
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 > [!NOTE]
 > 現在、このドキュメントは一般化されたイメージにのみ適用できます。 特殊化されたディスクを使用してこのチュートリアルを実行しようとすると、エラーが発生します。 

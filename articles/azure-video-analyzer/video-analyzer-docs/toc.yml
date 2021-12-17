@@ -1,0 +1,229 @@
+- name: Azure Video Analyzer (プレビュー) のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Video Analyzer について
+      href: overview.md
+    - name: Video Analyzer for Media について
+      href: ../video-analyzer-for-media-docs/video-indexer-overview.md
+    - name: 用語
+      href: terminology.md
+    - name: 新機能
+      items:
+        - name: リリース ノート
+          href: release-notes.md
+- name: クイックスタート
+  items:
+    - name: Edge モジュール
+      items:
+        - name: はじめに
+          items:
+            - name: ポータルの使用
+              href: edge/get-started-detect-motion-emit-events-portal.md
+            - name: Resource Manager テンプレートの使用
+              href: edge/get-started-detect-motion-emit-events.md
+        - name: モーションの検出とイベントの生成
+          href: edge/detect-motion-emit-events-quickstart.md
+        - name: モーションの検出、ビデオの録画
+          items:
+            - name: エッジのローカル環境に記録する
+              href: edge/detect-motion-record-video-edge-devices.md
+            - name: クラウドに記録する
+              href: edge/detect-motion-record-video-clips-cloud.md
+        - name: ライブ ビデオの分析
+          items:
+            - name: gRPC を使用する
+              displayName: analyze live video
+              href: edge/analyze-live-video-use-your-model-grpc.md
+            - name: HTTP を使用する
+              displayName: analyze live video
+              href: edge/analyze-live-video-use-your-model-http.md
+        - name: ライブ ビデオでオブジェクトを追跡する
+          href: edge/track-objects-live-video.md
+    - name: サービス
+      items:
+        - name: はじめに
+          items:
+            - name: ポータルの使用
+              href: cloud/get-started-livepipelines-portal.md
+- name: チュートリアル
+  items:
+    - name: Edge モジュール
+      items:
+        - name: クラウドへの継続的なビデオ記録
+          href: edge/use-continuous-video-recording.md
+        - name: イベントベースのビデオ記録
+          href: edge/record-event-based-live-video.md
+        - name: ビデオを使用して推論データを記録およびストリーム配信する
+          href: edge/record-stream-inference-data-with-video.md
+        - name: 線の交差を使用する
+          href: edge/use-line-crossing.md
+        - name: ライブ ビデオの分析
+          items:
+            - name: HTTP 拡張機能を使用した OVMS の使用
+              displayName: 'analyze live video, intel, OpenVINO'
+              href: edge/use-intel-openvino-tutorial.md
+            - name: gRPC 拡張機能を使用した OV DL Streamer の使用
+              displayName: 'analyze live video, intel, OpenVINO, DL Streamer, VAS'
+              href: edge/use-intel-grpc-video-analytics-serving-tutorial.md
+            - name: Custom Vision の仕様
+              displayName: analyze live video
+              href: edge/analyze-live-video-custom-vision.md
+            - name: 空間分析の使用
+              href: edge/computer-vision-for-spatial-analysis.md
+        - name: AI 推論イベントを視覚化する
+          href: visualize-ai-events-power-bi.md
+    - name: サービス
+      items:
+        - name: ポータルでビデオ クリップをエクスポートする
+          href: cloud/export-portion-of-video-as-mp4.md
+- name: GitHub のサンプル
+  items:
+    - name: C# サンプル リポジトリ
+      href: 'https://go.microsoft.com/fwlink/?linkid=2163551'
+    - name: Python サンプル リポジトリ
+      href: 'https://go.microsoft.com/fwlink/?linkid=2163454'
+    - name: ウィジェット サンプル リポジトリ
+      href: 'https://go.microsoft.com/fwlink/?linkid=2173229'
+    - name: Postman サンプル リポジトリ
+      href: 'https://github.com/Azure-Samples/video-analyzer-postman'
+- name: 概念
+  items:
+    - name: パイプライン
+      href: pipeline.md
+    - name: パイプライン拡張
+      href: pipeline-extension.md
+    - name: ビデオ記録
+      href: video-recording.md
+    - name: カメラをクラウドに接続する
+      href: cloud/connect-cameras-to-cloud.md
+    - name: シナリオ
+      items:
+        - name: ライブ ビデオを分析する
+          href: analyze-live-video-without-recording.md
+        - name: AI コンポジション
+          href: ai-composition-overview.md
+        - name: イベントベースのビデオ記録
+          href: event-based-video-recording-concept.md
+        - name: 継続的なビデオ記録
+          href: continuous-video-recording.md
+- name: 操作方法ガイド
+  items:
+    - name: セットアップ
+      items:
+        - name: 新しいアカウントを作成する
+          href: create-video-analyzer-account.md
+        - name: マネージド ID
+          href: managed-identity.md
+        - name: 顧客管理キー
+          href: customer-managed-keys.md
+    - name: エッジにデプロイする
+      items:
+        - name: IoT Edge デバイスへのデプロイ
+          href: edge/deploy-iot-edge-device.md
+        - name: Windows デバイスにデプロイする
+          href: edge/deploy-iot-edge-linux-on-windows.md
+        - name: Azure Stack Edge へのデプロイ
+          href: edge/deploy-on-stack-edge.md
+    - name: 再生
+      items:
+        - name: 記録されたビデオ
+          href: playback-recordings-how-to.md
+        - name: 再生用のアクセス ポリシーを作成する
+          href: access-policies.md
+        - name: ビデオ プレビュー画像を有効にする
+          href: edge/enable-video-preview-images.md
+    - name: Record
+      items:
+        - name: アイテム保持ポリシーを管理する
+          href: manage-retention-policy.md
+    - name: エッジで AI を適用する
+      items:
+        - name: シグナル ゲートの構成
+          href: edge/configure-signal-gate.md
+        - name: gRPC 推論サーバーの開発とデプロイ
+          href: edge/develop-deploy-grpc-inference-srv.md
+        - name: AI コンポジションを使用した分析
+          href: edge/analyze-ai-composition.md
+    - name: エッジ モジュールを操作する
+      items:
+        - name: ダイレクト メソッドを呼び出す
+          href: edge/use-azure-portal-to-invoke-direct-methods.md
+        - name: ONVIF 対応カメラを検出する
+          href: edge/camera-discovery.md
+        - name: Visual Studio Code 拡張機能の使用
+          href: edge/use-visual-studio-code-extension.md
+        - name: 監視とログ記録
+          href: edge/monitor-log-edge.md
+        - name: トラブルシューティング
+          href: edge/troubleshoot.md
+    - name: サービスを操作する
+      items:
+        - name: デバイスの接続
+          href: cloud/connect-devices.md
+        - name: リモート デバイス アダプター経由でカメラを接続する
+          href: cloud/use-remote-device-adapter.md
+        - name: 監視とログ記録
+          href: cloud/monitor-log-cloud.md
+        - name: トラブルシューティング
+          href: cloud/troubleshoot.md
+    - name: ネットワーク
+      items:
+        - name: パブリック エンドポイント
+          href: access-public-endpoints-networking.md
+    - name: 視覚化する
+      items:
+        - name: Web アプリにプレーヤー ウィジェットを埋め込む
+          href: player-widget.md
+        - name: プレーヤー ウィジェットのサンプル アプリを使用する
+          href: sample-player-widget.md
+        - name: Power BI にプレーヤー ウィジェットを埋め込む
+          href: embed-player-in-power-bi.md
+- name: リファレンス
+  items:
+    - name: Developer SDK
+      href: sdk.md
+    - name: REST API
+      href: /rest/api/videoanalyzer/
+    - name: 空間分析操作
+      href: spatial-analysis-operations.md
+    - name: Visual Studio Code 拡張機能
+      href: visual-studio-code-extension.md
+    - name: 透明性と責任ある AI の原則
+      href: 'https://go.microsoft.com/fwlink/?linkid=2163476'
+    - name: Edge モジュール
+      items:
+        - name: ダイレクト メソッド
+          href: edge/direct-methods.md
+        - name: gRPC 拡張プロトコル
+          href: edge/grpc-extension-protocol.md
+        - name: HTTP 拡張プロトコル
+          href: edge/http-extension-protocol.md
+        - name: 推論メタデータ スキーマ
+          href: edge/inference-metadata-schema.md
+        - name: モジュール ツインの構成
+          href: edge/module-twin-configuration-schema.md
+        - name: 運用環境の準備状況とベスト プラクティス
+          href: edge/production-readiness.md
+- name: リソース
+  items:
+    - name: 対応リージョン
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=video-analyzer&regions=all'
+    - name: Azure サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/'
+    - name: よくあるご質問
+      items:
+        - name: Edge モジュールに関する FAQ
+          href: edge/faq.yml
+        - name: サービスに関する FAQ
+          href: cloud/faq.yml
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/video-analyzer/'
+    - name: クォータと制限
+      href: quotas-limitations.md
+    - name: Terraform リソース
+      href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/video_analyzer'
+    - name: Video Analyzer エッジ
+      href: 'https://aka.ms/ava-marketplace'
+    - name: Video Analyzer サービス
+      href: 'https://aka.ms/ava-service'

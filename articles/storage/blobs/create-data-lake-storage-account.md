@@ -4,48 +4,59 @@ description: Azure Data Lake Storage Gen2 で使用するストレージ アカ�
 author: normesta
 ms.topic: how-to
 ms.author: normesta
-ms.date: 08/31/2020
+ms.date: 10/14/2021
 ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 712f1dc0679ee49791831e782fb68c39a757870a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35761e10cecf1cb209f004f99f773c09d91dc0e5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624339"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046869"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する
 
 Data Lake Storage Gen2 の機能を使用するには、階層型名前空間を持つストレージ アカウントを作成します。
 
+ステップ形式のガイドについては、「[ストレージ アカウントを作成する](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json)」を参照してください。
+
+アカウントを作成するときは、この記事で説明するオプションを必ず選択してください。
+
 ## <a name="choose-a-storage-account-type"></a>ストレージ アカウントの種類を選択する
 
 Data Lake Storage 機能は、次の種類のストレージ アカウントでサポートされています。
 
-- 汎用 v2
-- BlockBlobStorage
+- Standard 汎用 v2
+- Premium ブロック BLOB
 
-これらのいずれかを選択する方法の詳細については、「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
+これらのいずれかを選択する方法の詳細については、「[ストレージ アカウントの概要](../common/storage-account-overview.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json)」を参照してください。
 
-## <a name="create-a-storage-account-with-a-hierarchical-namespace"></a>階層型名前空間を持つストレージ アカウントを作成する
+**[ストレージ アカウントの作成]** ページの **[基本]** タブで、これらの 2 種類のアカウントから選択できます。
 
-[汎用 V2 アカウント](../common/storage-account-create.md)、または **階層型名前空間** の設定が有効になっている [BlockBlobStorage](storage-blob-create-account-block-blob.md) アカウントのいずれかを作成します。
+標準の汎用 v2 アカウントを作成するには、 **[標準]** を選択します。
 
-アカウントを作成するときに Data Lake Storage 機能のロックを解除するには、 **[ストレージ アカウントの作成]** ページの **[詳細]** タブにある **階層型名前空間** の設定を有効にします。 この設定は、アカウントを作成するときに有効にする必要があります。 後で有効にすることはできません。
+Premium ブロック BLOB アカウントを作成するには、 **[Premium]** を選択します。 次に、 **[Premium アカウントの種類]** ドロップダウン リストで **[ブロック BLOB]** を選択します。
+
+> [!div class="mx-imgBorder"]
+> ![Premium ブロック BLOB オプション](./media/create-data-lake-storage-account/premium-block-blob-option.png)
+
+## <a name="enable-the-hierarchical-namespace"></a>階層型名前空間を有効にする
+
+**[ストレージ アカウントの作成]** ページの **[詳細設定]** タブで **[階層型名前空間を有効にする]** 設定を選択して、Data Lake Storage 機能のロックを解除します。 
 
 次の図は、 **[ストレージ アカウントの作成]** ページのこの設定を示しています。
 
 > [!div class="mx-imgBorder"]
 > ![階層型名前空間の設定](./media/create-data-lake-storage-account/hierarchical-namespace-feature.png)
 
-Data Lake Storage で使用する既存のストレージ アカウントがあり、階層型名前空間の設定が無効になっている場合は、この設定が有効になっている新しいストレージ アカウントにデータを移行する必要があります。
+既存のアカウントで Data Lake Storage 機能を有効にするには、「[Azure Data Lake Storage Gen2 の機能で Azure Blob Storage をアップグレードする](upgrade-to-data-lake-storage-gen2-how-to.md)」を参照してください。
 
 > [!NOTE]
-> **データ保護** と **階層型名前空間** を同時に有効にすることはできません。
+> **データ保護** と階層型名前空間を同時に有効にすることはできません。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [ストレージ アカウントの概要](../common/storage-account-overview.md)
-- [Data Lake Storage Gen2 を使用してビッグ データの要件に対応する](data-lake-storage-data-scenarios.md)
+- [Azure Data Lake Storage Gen2 の機能で Azure Blob Storage をアップグレードする](upgrade-to-data-lake-storage-gen2-how-to.md)
 - [Azure Data Lake Storage Gen2 のアクセス制御](data-lake-storage-access-control.md)

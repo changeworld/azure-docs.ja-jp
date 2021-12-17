@@ -3,17 +3,18 @@ title: App Service URL へのリダイレクトのトラブルシューティン
 titleSuffix: Azure Application Gateway
 description: この記事では、Azure Application Gateway を Azure App Service と共に使用した場合のリダイレクトの問題のトラブルシューティング方法について説明します。
 services: application-gateway
-author: abshamsft
+author: jaesoni
 ms.service: application-gateway
 ms.topic: troubleshooting
-ms.date: 11/14/2019
-ms.author: absha
-ms.openlocfilehash: 1cc7df755198461643703cac988c8c31f2ac25db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/15/2021
+ms.author: jaysoni
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 83ad2e7a8f138451063eef1746555563970e125e
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96182888"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681814"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway での App Service に関する問題のトラブルシューティング
 
@@ -80,37 +81,35 @@ X-Powered-By: ASP.NET
 
 ## <a name="solution-rewrite-the-location-header"></a>ソリューション: location ヘッダーを書き換える
 
-location ヘッダーのホスト名をアプリケーション ゲートウェイのドメイン名に設定します。 これを行うには、応答の location ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件で書き換え[規則](./rewrite-http-headers.md)を作成します。 また、location ヘッダーを書き換えてアプリケーション ゲートウェイのホスト名を含めるようにするアクションも、これによって実行する必要があります。 詳細は、[location ヘッダーの書き換え方法](./rewrite-http-headers.md#modify-a-redirection-url)に関する記事の手順を参照してください。
+location ヘッダーのホスト名をアプリケーション ゲートウェイのドメイン名に設定します。 これを行うには、応答の location ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件で書き換え[規則](./rewrite-http-headers-url.md)を作成します。 また、location ヘッダーを書き換えてアプリケーション ゲートウェイのホスト名を含めるようにするアクションも、これによって実行する必要があります。 詳細は、[location ヘッダーの書き換え方法](./rewrite-http-headers-url.md#modify-a-redirection-url)に関する記事の手順を参照してください。
 
 > [!NOTE]
-> HTTP ヘッダーの書き換えのサポートは、Application Gateway の [Standard_v2 と WAF_v2 SKU](./application-gateway-autoscaling-zone-redundant.md) でのみ利用できます。 v1 SKU を使用する場合、[v1 から v2 に移行する](./migrate-v1-v2.md)ことをお勧めします。 v2 SKU で利用できる書き換えやその他の[高度な機能](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)を使用することがあります。
+> HTTP ヘッダーの書き換えのサポートは、Application Gateway の [Standard_v2 と WAF_v2 SKU](./application-gateway-autoscaling-zone-redundant.md) でのみ利用できます。 v2 SKU で利用可能なヘッダーの書き換えやその他の[高度な機能](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)を使用するには、[v2 に移行する](./migrate-v1-v2.md)ことをお勧めします。
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>代替ソリューション: カスタム ドメイン名を使用する
 
-v1 SKU を使用する場合、location ヘッダーを書き換えることはできません。 この機能は v2 SKU でのみ利用できます。 リダイレクトの問題を解決するには、ホストのオーバーライドの代わりに、Application Gateway で受信されるのと同じホスト名を App Service に渡します。
+App Service のカスタム ドメイン機能を使用することは、トラフィックを Application Gateway のドメイン名 (この例では `www.contoso.com`) に常にリダイレクトするためのもう 1 つのソリューションです。 この構成は、ARR Affinity Cookie の問題の解決策としても機能します。 既定では、ARRAffinity Cookie ドメインは、Application Gateway のドメイン名ではなく、App Service の既定のホスト名 (example.azurewebsites.net) に設定されます。 そのため、そのような場合、ブラウザーでは、要求と Cookie のドメイン名の違いによって Cookie が拒否されます。
 
-(リダイレクトがある場合) App Service は、Application Gateway を指し、自ホストではない、元の同じホスト ヘッダーに対してリダイレクトを行うようになります。
+リダイレクトと ARRAffinity の Cookie ドメイン不一致の両方の問題については、所定の方法に従うことができます。 この方法では、カスタム ドメインの DNS ゾーンへのアクセス権が必要になります。
 
-カスタム ドメインを所有していることと、このプロセスに従うことが必要になります。
+**手順 1**: App Service でカスタム ドメインを設定し、[CNAME および TXT DNS レコード](../app-service/app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id)を追加してドメインの所有権を確認します。
+レコードは次のようになります。
+-  `www.contoso.com` IN CNAME `contoso.azurewebsite.net`
+-  `asuid.www.contoso.com` IN TXT "`<verification id string>`"
 
-- App Service のカスタム ドメイン一覧にドメインを登録します。 App Service の FQDN を指す CNAME がカスタム ドメインに必要です。 詳細については、「[既存のカスタム DNS 名を Azure App Service にマップする](../app-service/app-service-web-tutorial-custom-domain.md)」を参照してください。
 
-    ![App Service のカスタムドメインの一覧](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
+**手順 2**: 前の手順の CNAME レコードは、ドメインの検証にのみ必要でした。 最終的には、Application Gateway 経由でトラフィックをルーティングする必要があります。 したがって、`www.contoso.com` の CNAME を、Application Gateway の FQDN を指すように変更できます。 Application Gateway の FQDN を設定するには、そのパブリック IP アドレス リソースに移動し、それに "DNS 名ラベル" を割り当てます。 更新された CNAME レコードは次のようになります。 
+-  `www.contoso.com` IN CNAME `contoso.eastus.cloudapp.azure.com`
 
-- App Service では、ホスト名 `www.contoso.com` を受け取る準備ができています。 DNS の CNAME エントリを変更して Application Gateway の FQDN (例えば `appgw.eastus.cloudapp.azure.com`) を指すようにします。
 
-- DNS クエリの実行時、ドメイン `www.contoso.com` が Application Gateway の FQDN に解決されることを確認します。
+**手順 3**: 関連する HTTP 設定の [Pick Hostname from Backend Address]\(バックエンド アドレスからホスト名を選択する\) を無効にします。
 
-- **[Pick Hostname from Backend HTTP Settings]\(バックエンド HTTP 設定からホスト名を選択する\)** を無効にするようにカスタム プローブを設定します。 Azure portal で、プローブ設定でこのチェック ボックスをオフにします。 PowerShell では、**Set-AzApplicationGatewayProbeConfig** コマンドで **-PickHostNameFromBackendHttpSettings** スイッチを使用しないでください。 プローブのホスト名フィールドに、App Service の FQDN、example.azurewebsites.net を入力します。 Application Gateway から送信されたプローブ要求のホスト ヘッダーにこの FQDN が含まれます。
+PowerShell では、`Set-AzApplicationGatewayBackendHttpSettings` コマンドで `-PickHostNameFromBackendAddress` スイッチを使用しないでください。
 
-  > [!NOTE]
-  > 次の手順のために、カスタム プローブがバックエンド HTTP 設定に関連付けられていないことを確認します。 HTTP 設定では、この時点で **[Pick Hostname from Backend Address]\(バックエンド アドレスからホスト名を選択する\)** スイッチはまだ有効です。
 
-- **[Pick Hostname from Backend Address] (バックエンド アドレスからホスト名を選択する)** を無効にするように Application Gateway の HTTP 設定を指定します。 Azure portal でこのチェック ボックスをオフにします。 PowerShell では、**Set-AzApplicationGatewayBackendHttpSettings** コマンドで **-PickHostNameFromBackendAddress** スイッチを使用しないでください。
+**手順 4**: プローブによって、バックエンドが正常で、運用可能なトラフィックであると判断されるためには、ホスト フィールドを App Service のカスタムまたは既定のドメインに指定して、カスタムの正常性プローブを設定します。
 
-- カスタム プローブを元どおりバックエンドの HTTP 設定に関連付け、バックエンドが正常であることを確認します。
-
-- Application Gateway からは同じホスト名 (`www.contoso.com`) が App Service に転送されるようになったはずです。 リダイレクトは同じホスト名で行われます。 次の要求と応答のヘッダー例を参照してください。
+PowerShell では、`Set-AzApplicationGatewayProbeConfig` コマンドで `-PickHostNameFromBackendHttpSettings` スイッチを使用せずに、プローブの -HostName スイッチで App Service のカスタムまたは既定のドメインを使用してください。
 
 既存の構成に対し、PowerShell を使用して前述の手順を実装するには、下のサンプル PowerShell スクリプトを使用します。 Probe と HTTP Settings の構成に **-PickHostname** スイッチを使用していないことに注目してください。
 

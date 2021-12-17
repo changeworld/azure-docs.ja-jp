@@ -10,14 +10,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 30a02a79e5e6e063c3d21e6626ed1a75c0f61133
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 701265ced0d7c2c50aee4c4ac4a533e20c9b8898
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676095"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318211"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM
 
 > [!IMPORTANT]
 > 現在、IaaS VM の約 90% で [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) が使用されています。 2020 年 2 月 28 日の時点で、クラシック VM は非推奨とされており、2023 年 3 月 1 日に完全に廃止されます。 この非推奨についての[詳細]( https://aka.ms/classicvmretirement)および[それが与える影響](classic-vm-deprecation.md#how-does-this-affect-me)について確認してください。
@@ -60,7 +62,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 * [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](migration-classic-resource-manager-cli.md)
 * [クラシックから Azure Resource Manager への IaaS リソースの移行を支援するコミュニティ ツール](migration-classic-resource-manager-community-tools.md)
 * [Review most common migration errors](migration-classic-resource-manager-errors.md) (移行の一般的なエラーを確認する)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行に関してよく寄せられる質問を確認する](migration-classic-resource-manager-faq.md)
+* [クラシックから Azure Resource Manager への IaaS リソースの移行に関してよく寄せられる質問を確認する](migration-classic-resource-manager-faq.yml)
 
 ### <a name="pitfalls-to-avoid"></a>回避すべき問題
 
@@ -94,14 +96,14 @@ Azure Resource Manager には多くの優れた機能が用意されています
 - **ExpressRoute 回線と VPN** - 現在、承認リンクを使用する ExpressRoute ゲートウェイをダウンタイムなしで移行することはできません。 回避策については、[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../expressroute/expressroute-migration-classic-resource-manager.md)に関する記事をご覧ください。
 
 - **VM 拡張機能** - 仮想マシン拡張機能は、実行中の VM を移行する際の最も大きな障害の 1 つとなる可能性があります。 VM 拡張機能の修復には 1 ～ 2 日かかる可能性があるため、それに応じた計画を行ってください。  動作中の VM の VM 拡張機能の状態を報告するには、Azure エージェントを稼働させておく必要があります。 実行中の VM について不適切な状態が返された場合は、移行が停止します。 移行を可能にするためにエージェント自体が正常に動作している必要はありませんが、VM に拡張機能が存在する場合は、移行を進めるために、動作中のエージェントと送信インターネット接続 (DNS を使用) の両方が必要になります。
-  - 移行中に DNS サーバーへの接続が失われた場合は、移行準備前のすべての VM から BGInfo v1.\* を除くすべての VM 拡張機能を削除し、Azure Resource Managerの移行後に VM に追加し直す必要があります。  **これは実行中の VM の場合のみです。**  VM が割り当てを解除した状態で停止している場合、VM 拡張機能を削除する必要はありません。 **注:** Azure Diagnostics やセキュリティ センターの監視などの多くの拡張機能は、移行後に再インストールされるため、削除しても問題ありません。
+  - 移行中に DNS サーバーへの接続が失われた場合は、移行準備前のすべての VM から BGInfo v1.\* を除くすべての VM 拡張機能を削除し、Azure Resource Managerの移行後に VM に追加し直す必要があります。  **これは実行中の VM の場合のみです。**  VM が割り当てを解除した状態で停止している場合、VM 拡張機能を削除する必要はありません。 **注:** Azure Diagnostics や Defender for Cloud の監視などの多くの拡張機能は、移行後に再インストールされるため、削除しても問題ありません。
   - また、ネットワーク セキュリティ グループが送信インターネット アクセスを制限していないことを確認してください。 これは、一部のネットワーク セキュリティ グループ構成で発生することがあります。 VM 拡張機能を Azure Resource Manager に移行するには、送信インターネット アクセス (および DNS) が必要です。
   - BGInfo 拡張機能には 2 つのバージョン (v1 と v2) があります。  VM が Azure Portal または PowerShell を使って作成された場合は、VM に v1 拡張機能が搭載される可能性があります。 この拡張機能を削除する必要はありません。この拡張機能は、移行 API によってスキップされます (移行されません)。 ただし、クラシック VM が新しい Azure Portal で作成された場合は、JSON ベースの v2 バージョンの BGInfo が搭載される可能性があります。エージェントが動作しており、送信インターネット アクセス (および DNS) を使用している場合は、この拡張機能を Azure Resource Manager に移行できます。
   - **修復オプション 1**。 送信インターネット アクセス、動作中の DNS サービス、および動作中の Azure エージェントが VM にないことがわかっている場合は、準備の前に、移行の一環としてすべての VM 拡張機能をアンインストールしてから、移行後に VM 拡張機能を再インストールしてください。
   - **修復オプション 2**。 VM 拡張機能が大きな障害になる場合は、別のオプションとして、移行前にすべての VM をシャットダウン/割り当て解除します。 割り当てを解除した VM を移行し、Azure Resource Manager 側でそれらを再起動します。 このオプションのメリットは、VM 拡張機能を移行できる点です。 デメリットは、すべての公開仮想 IP が失われ (これにより移行が失敗に終わる可能性があります)、VM がシャットダウンされて動作中のアプリケーションに大きく影響する点です。
 
     > [!NOTE]
-    > 移行対象である実行中の VM に対して Azure Security Center ポリシーが構成されている場合は、拡張機能を削除する前にセキュリティ ポリシーを停止する必要があります。それ以外の場合は、セキュリティ監視拡張機能の削除後に、VM にその拡張機能が自動的に再インストールされます。
+    > 移行対象である実行中の VM に対して Microsoft Defender for Cloud ポリシーが構成されている場合、拡張機能を削除する前にセキュリティ ポリシーを停止する必要があります。停止しない場合、セキュリティ監視拡張機能は削除後、VM に自動的に再インストールされます。
 
 - **可用性セット** - Azure Resource Manager に移行する仮想ネットワーク (vNet) では、クラシック デプロイメント (クラウド サービス) に含まれている VM がすべて 1 つの可用性セットに属しているか、または VM がどの可用性セットにも属していません。 クラウド サービスに複数の可用性セットがある場合は、Azure Resource Manager との互換性がなく、移行が停止します。  また、1 つの可用性セットに複数の VM を含めることはできず、1 つの可用性セットに複数の VM が含まれることもありません。 この問題を解決するには、クラウド サービスを修復または再シャッフルする必要があります。  この処理には時間がかかる可能性があるため、状況に応じた計画を行ってください。
 
@@ -194,7 +196,7 @@ Azure Resource Manager で有効にするサービスを、目的を持って選
 - [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)。
 - [より詳細に制御されたデプロイを簡単に行うための Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)。
 - [タグ](../azure-resource-manager/management/tag-resources.md)。
-- [アクティビティ コントロール](../azure-resource-manager/management/view-activity-logs.md)
+- [アクティビティ コントロール](../azure-monitor/essentials/activity-log.md)
 - [Azure のポリシー](../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>回避すべき問題
@@ -210,4 +212,4 @@ Azure Resource Manager で有効にするサービスを、目的を持って選
 * [PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](migration-classic-resource-manager-ps.md)
 * [クラシックから Azure Resource Manager への IaaS リソースの移行を支援するコミュニティ ツール](migration-classic-resource-manager-community-tools.md)
 * [Review most common migration errors](migration-classic-resource-manager-errors.md) (移行の一般的なエラーを確認する)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行に関してよく寄せられる質問を確認する](migration-classic-resource-manager-faq.md)
+* [クラシックから Azure Resource Manager への IaaS リソースの移行に関してよく寄せられる質問を確認する](migration-classic-resource-manager-faq.yml)

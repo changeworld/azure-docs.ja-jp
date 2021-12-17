@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/26/2020
+ms.date: 08/25/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0620304de1866d24719b137836419502cd25bee9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bdf8f914aaebff678d0d4e1a30823c18460f3d8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98682239"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018302"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットの書き戻しをトラブルシューティングする
 
@@ -49,6 +49,18 @@ Azure [GOV エンドポイント](../../azure-government/compare-azure-governmen
 * *\*.servicebus.usgovcloudapi.net*
 
 より高い細分性が必要な場合は、[Microsoft Azure データセンターの IP 範囲の一覧](https://www.microsoft.com/download/details.aspx?id=41653)を参照してください。 この一覧は毎週水曜日に更新され、翌週の月曜日に有効になります。
+
+環境内で URL とポートへのアクセスが制限されているかどうかを判断するには、次のコマンドレットを実行します。
+
+```powershell
+Test-NetConnection -ComputerName ssprdedicatedsbprodscu.servicebus.windows.net -Port 443
+```
+
+または以下を実行します。
+
+```powershell
+Invoke-WebRequest -Uri https://ssprdedicatedsbprodscu.servicebus.windows.net -Verbose
+```
 
 詳細については、[Azure AD Connect の接続の前提条件](../hybrid/how-to-connect-install-prerequisites.md)に関するページを参照してください。
 
@@ -147,7 +159,8 @@ Azure AD Connect を再インストールすると、Azure AD とローカルの
 | 自分のパスワードのリセットを試みるフェデレーション、パススルー認証、またはパスワード ハッシュ同期されたユーザーには、パスワード送信後にエラーが表示されます。 このエラーは、サービスに問題があったことを示しています。 <br ><br> この問題に加えて、パスワードのリセット操作中に、管理エージェントがオンプレミスのイベント ログでアクセスを拒否されたというエラーが表示されることがあります。 | イベント ログにこのようなエラーが表示された場合は、構成時にウィザードで指定した Active Directory 管理エージェント (ADMA) アカウントに、パスワード ライトバックのために必要なアクセス許可があることを確認します。 <br> <br> このアクセス許可が付与された後、ドメイン コントローラー (DC) の `sdprop` バックグラウンド タスクを介して、アクセス許可が適用されるのに最大 1 時間かかることがあります。 <br> <br> パスワードのリセットが機能するには、パスワードがリセットされるユーザー オブジェクトのセキュリティ記述子に権限を設定する必要があります。 このアクセス許可がユーザー オブジェクトに表示されるまでは、引き続きアクセス拒否メッセージが表示されてパスワードのリセットが失敗します。 |
 | 自分のパスワードのリセットを試みるフェデレーション、パススルー認証、またはパスワード ハッシュ同期されたユーザーには、パスワード送信後にエラーが表示されます。 このエラーは、サービスに問題があったことを示しています。 <br> <br> この問題に加えて、パスワードのリセット操作中、Azure AD Connect サービスからのイベント ログに、"Object could not be found (オブジェクトが見つかりませんでした)" というエラーを示すエラーが表示されることがあります。 | このエラーは通常、Azure AD コネクタ スペース内またはリンクされたメタバース (MV) 内のユーザー オブジェクトか、Azure AD コネクタ スペース オブジェクトのいずれかを、同期エンジンが検索できないことを示しています。 <br> <br> この問題をトラブルシューティングするには、Azure AD Connect の現在のインスタンスを介してオンプレミスから Azure AD にユーザーが実際に同期されていることを確認し、コネクタ スペースと MV 内のオブジェクトの状態を検査します。 Active Directory 証明書サービス (AD CS) オブジェクトが "Microsoft.InfromADUserAccountEnabled.xxx" 規則によって MV オブジェクトに接続されていることを確認してください。|
 | 自分のパスワードのリセットを試みるフェデレーション、パススルー認証、またはパスワード ハッシュ同期されたユーザーには、パスワード送信後にエラーが表示されます。 このエラーは、サービスに問題があったことを示しています。 <br> <br> この問題に加えて、パスワードのリセット操作中、Azure AD Connect サービスからのイベント ログに、"Multiple matches found (複数の一致が見つかりました)" というエラーが発生したことを示すエラーが表示されることがあります。 | これは、MV オブジェクトが "Microsoft.InfromADUserAccountEnabled.xxx" によって複数の AD CS オブジェクトに接続されていることを同期エンジンが検出したことを示します。 これは、ユーザーが複数のフォレストに有効なアカウントを持っていることを意味します。 このシナリオでは、パスワード ライトバックがサポートされません。 |
-| パスワード操作は構成エラーにより失敗しました アプリケーション イベント ログには、Azure AD Connect エラー 6329 と、テキスト "0x8023061f (この管理エージェントではパスワード同期が無効になっているため操作に失敗しました)" が記録されています。 | このエラーは、パスワード ライトバック機能を有効にした後、新しい Active Directory フォレストを追加する (または既存のフォレストを削除して再度追加する) ために、 Azure AD Connect の構成が変更された場合に発生します。 このような最近追加されたフォレスト内のユーザーのパスワード操作は失敗します。 問題を解決するには、フォレスト構成の変更が完了した後に、パスワード ライトバック機能を無効にしてから再び有効にします。 |
+| パスワード操作は構成エラーにより失敗しました アプリケーション イベント ログには、Azure AD Connect エラー 6329 と、テキスト "0x8023061f (この管理エージェントではパスワード同期が無効になっているため操作に失敗しました)" が記録されています。 | このエラーは、パスワード ライトバック機能を有効にした後、新しい Active Directory フォレストを追加する (または既存のフォレストを削除して再度追加する) ために、 Azure AD Connect の構成が変更された場合に発生します。 このような最近追加されたフォレスト内のユーザーのパスワード操作は失敗します。 問題を解決するには、フォレスト構成の変更が完了した後に、パスワード ライトバック機能を無効にしてから再び有効にします。
+| SSPR_0029: オンプレミス構成でのエラーのため、パスワードをリセットすることができません。 管理者に連絡して、調査するように依頼してください。 | 問題: パスワード ライトバックが必要なすべての手順に従って有効になっていますが、パスワードを変更しようとすると、"SSPR_0029: Your organization hasn’t properly set up the on-premises configuration for password reset" (組織でパスワードのリセットのためのオンプレミスの構成が正しく設定されていません) というメッセージが表示されます。 Azure AD Connect システムのイベント ログを調べると、管理エージェントの資格情報がアクセスを拒否されたことが示されています。考えられる解決方法: Azure AD Connect システムとドメイン コントローラーで RSOP を使用して、[コンピューターの構成] > [Windows の設定] > [セキュリティ設定] > [ローカル ポリシー] > [セキュリティ オプション] の下にある "ネットワーク アクセス - SAM をリモート呼び出しできるクライアントを制限します" ポリシーが有効になっているか調べます。 このポリシーを編集して MSOL_XXXXXXX 管理アカウントを許可されたユーザーとして含めます。 |
 
 ## <a name="password-writeback-event-log-error-codes"></a>パスワード ライトバックのイベント ログのエラー コード
 
@@ -184,6 +197,7 @@ Azure AD Connect を再インストールすると、Azure AD とローカルの
 | 31017| AuthTokenSuccess| このイベントは、オフボードまたはオンボード プロセスを開始するために、Azure AD Connect のセットアップ時に指定されたグローバル管理者の承認トークンを正常に取得したことを示します。|
 | 31018| KeyPairCreationSuccess| このイベントは、パスワード暗号化キーが正常に作成されたことを示します。 このキーは、クラウドからのパスワードを暗号化してご利用のオンプレミス環境に送信するために使用されます。|
 | 31034| ServiceBusListenerError| このイベントは、テナントの Service Bus リスナーへの接続中にエラーが発生したことを示します。 エラー メッセージに "リモート証明書が無効です" と表示される場合は、「[Azure TLS 証明書の変更](../../security/fundamentals/tls-certificate-changes.md)」で説明されているように、すべての必要なルート CA が Azure AD Connect サーバーに存在していることを確認してください。 |
+| 31044| PasswordResetService| このイベントは、パスワード ライトバックが機能していないことを示します。 Service Bus は、冗長性を確保するために 2 つの異なるリレーで要求をリッスンします。 それぞれのリレー接続は、独自のサービス ホストによって管理されます。 どちらかのサービス ホストが実行されていない場合、ライトバック クライアントからエラーが返されます。|
 | 32000| UnknownError| このイベントは、パスワード管理操作中に発生した原因不明のエラーを示します。 詳細については、イベントの例外の説明をご覧ください。 問題が発生した場合は、パスワード ライトバックを無効にしてから再び有効にしてみてください。 これで解決されない場合は、サポート リクエストを開いたときに指定される追跡 ID と共にイベント ログのコピーを含めてください。|
 | 32001| ServiceError| このイベントは、クラウド パスワード リセット サービスへの接続中にエラーが発生したことを示します。 このエラーは通常、オンプレミスのサービスがパスワード リセット Web サービスに接続できない場合に発生します。|
 | 32002| ServiceBusError| このイベントは、テナントの Service Bus インスタンスへの接続中にエラーが発生したことを示します。 これは、オンプレミス環境で発信接続をブロックしている場合に発生する可能性があります。 ファイアウォールで TCP 443 経由の https://ssprdedicatedsbprodncu.servicebus.windows.net への接続が許可されていることを確認してから、やり直してください。 問題が解決しない場合は、パスワード ライトバックを無効にしてから再び有効にしてみてください。|

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 3341f290a5a5bb169b6e70ea22459a2afafedbbc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 487befb0e0d48a1ccf61a38af29c17c596fa70b8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103198952"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350094"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインでアカウントがロックアウトされる問題を解決する
 
@@ -97,9 +97,12 @@ AADDomainServicesAccountManagement
 
 03/04 19:07:35 [LOGON] [10753] contoso: SamLogon: Transitive Network logon of contoso\Nagappan.Veerappan from  (via LOB11-RADIUS) Returns 0xC000006A
 
-NSG からバックエンドへの DC に対する RDP を有効にして、診断キャプチャ ( netlogon) を構成します。 https://docs.microsoft.com/azure/active-directory-domain-services/alert-nsg#inbound-security-rules 既定の NSG がすでに変更されている場合は、PSlet の方法に従って有効にしてください https://docs.microsoft.com/azure/active-directory-domain-services/network-considerations#port-3389---management-using-remote-desktop
+NSG からバックエンドへの DC に対する RDP を有効にして、診断キャプチャ ( 例: netlogon) を構成します。
+[[受信セキュリティ規則]](alert-nsg.md#inbound-security-rules)
 
-任意のサーバーで Netlogon ログを有効にするには: https://docs.microsoft.com/troubleshoot/windows-client/windows-security/enable-debug-logging-netlogon-service
+既定の NSG を既に変更している場合は、[ポート 3389 - リモート デスクトップを使用した管理](network-considerations.md#port-3389---management-using-remote-desktop)に関する説明の手順に従います。
+
+任意のサーバーで Netlogon ログを有効にするには、[Netlogon サービスでのデバッグ ログ有効化](/troubleshoot/windows-client/windows-security/enable-debug-logging-netlogon-service)に関する説明の手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,13 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 610bac5c08d7f3aa3c93e273bc6573a08ca1239f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f7e9b1ed926918496e1205f4a9e642f1cb59522d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81680825"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909841"
 ---
 次の例は、シアトルで 10 Gbps Direct ピアリングを作成する方法を示しています。
 
@@ -32,7 +33,7 @@ $connection1 = New-AzPeeringDirectConnectionObject `
 ```
 
 > [!NOTE]
-> 前の例にある <index> **$peeringLocation[]** <index> の値は、選択したピアリングの場所に対応している必要があります。
+> 前の例にある  **$peeringLocation[]** の値は、選択したピアリングの場所に対応している必要があります。
 
 指定されたピアリングの場所で冗長性が必要な場合に備えて、別の接続を作成します。
 

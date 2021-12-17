@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 018315b7ed468e24fb922337848d14703ffdcd4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b521427b5fc3fd0eb3f0e91e8122d3da543296f
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89003628"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027662"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
 
@@ -72,48 +72,46 @@ ms.locfileid: "89003628"
 
 1. **EnterprisePushBackendSystem**
 
-    a. このプロジェクトは **WindowsAzure.ServiceBus** NuGet パッケージを使用し、「[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]」に基づいています。
+    a. このプロジェクトは **Azure.Messaging.ServiceBus** NuGet パッケージを使用し、「[Service Bus パブリッシュ/サブスクライブ プログラミング]」に基づいています。
 
     b. このアプリケーションは、LoB システムをシミュレートする単純な C# コンソール アプリであり、メッセージのモバイル アプリへの配信を開始します。
 
     ```csharp
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         string connectionString =
-            CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
+            ConfigurationManager.AppSettings.Get("Azure.ServiceBus.ConnectionString");
 
         // Create the topic
-        CreateTopic(connectionString);
+        await CreateTopicAsync(connectionString);
 
         // Send message
-        SendMessage(connectionString);
+        await SendMessageAsync(connectionString);
     }
     ```
 
-    c. `CreateTopic` は、Service Bus トピックを作成するために使用されます。
+    c. `CreateTopicAsync` は、Service Bus トピックを作成するために使用されます。
 
     ```csharp
-    public static void CreateTopic(string connectionString)
+    public static async Task CreateTopicAsync(string connectionString)
     {
         // Create the topic if it does not exist already
+        ServiceBusAdministrationClient client = new ServiceBusAdministrationClient(connectionString);
 
-        var namespaceManager =
-            NamespaceManager.CreateFromConnectionString(connectionString);
-
-        if (!namespaceManager.TopicExists(sampleTopic))
+        if (!await client.TopicExistsAsync(topicName))
         {
-            namespaceManager.CreateTopic(sampleTopic);
+            await client.CreateTopicAsync(topicName);
         }
     }
     ```
 
-    d. `SendMessage` は、この Service Bus のトピックにメッセージを送信するために使用します。 このコードは単純に、このサンプルの目的として、一連のランダムなメッセージを定期的にトピックに送信します。 通常は、イベントの発生時にメッセージを送信するバックエンド システムが存在します。
+    d. `SendMessageAsync` は、この Service Bus のトピックにメッセージを送信するために使用します。 このコードは単純に、このサンプルの目的として、一連のランダムなメッセージを定期的にトピックに送信します。 通常は、イベントの発生時にメッセージを送信するバックエンド システムが存在します。
 
     ```csharp
-    public static void SendMessage(string connectionString)
+    public static sync Task SendMessageAsync(string connectionString)
     {
-        TopicClient client =
-            TopicClient.CreateFromConnectionString(connectionString, sampleTopic);
+        await using var client = new ServiceBusClient(connectionString);
+        ServiceBusSender sender = client.CreateSender(topicName);
 
         // Sends random messages every 10 seconds to the topic
         string[] messages =
@@ -130,8 +128,8 @@ ms.locfileid: "89003628"
             string notification = String.Format(messages[rnd.Next(0,messages.Length)], employeeId);
 
             // Send Notification
-            BrokeredMessage message = new BrokeredMessage(notification);
-            client.Send(message);
+            ServiceBusMessage message = new ServiceBusMessage(notification);
+            await sender.SendMessageAsync(message);
 
             Console.WriteLine("{0} Message sent - '{1}'", DateTime.Now, notification);
 
@@ -139,63 +137,60 @@ ms.locfileid: "89003628"
         }
     }
     ```
+
 2. **ReceiveAndSendNotification**
 
-    a. このプロジェクトは *WindowsAzure.ServiceBus* および **Microsoft.Web.WebJobs.Publish** NuGet パッケージを使用し、「[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]」に基づいています。
+    a. このプロジェクトは *Azure.Messaging.ServiceBus* および **Microsoft.Web.WebJobs.Publish** NuGet パッケージを使用し、「[Service Bus パブリッシュ/サブスクライブ プログラミング]」に基づいています。
 
     b. 次のコンソール アプリは、LoB/バックエンド システム メッセージをリッスンするために継続的に実行する必要があるため、[Azure WebJob] として実行されます。 このアプリケーションは、モバイル バックエンドの一部です。
 
     ```csharp
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         string connectionString =
-                 CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
+                 ConfigurationManager.AppSettings.Get("Azure.ServiceBus.ConnectionString");
 
         // Create the subscription that receives messages
-        CreateSubscription(connectionString);
+        await CreateSubscriptionAsync(connectionString);
 
         // Receive message
-        ReceiveMessageAndSendNotification(connectionString);
+        await ReceiveMessageAndSendNotificationAsync(connectionString);
     }
     ```
 
-    c. `CreateSubscription` は、バックエンド システムがメッセージを送信するトピックの Service Bus サブスクリプションを作成するために使用されます。 ビジネス シナリオに応じて、このコンポーネントは対応するトピックへの 1 つ以上のサブスクリプションを作成します (たとえば、一部は人事システムから、また一部は財務システムからメッセージを受信するなど)。
+    c. `CreateSubscriptionAsync` は、バックエンド システムがメッセージを送信するトピックの Service Bus サブスクリプションを作成するために使用されます。 ビジネス シナリオに応じて、このコンポーネントは対応するトピックへの 1 つ以上のサブスクリプションを作成します (たとえば、一部は人事システムから、また一部は財務システムからメッセージを受信するなど)。
 
     ```csharp
-    static void CreateSubscription(string connectionString)
+    static async Task CreateSubscriptionAsync(string connectionString)
     {
         // Create the subscription if it does not exist already
-        var namespaceManager =
-            NamespaceManager.CreateFromConnectionString(connectionString);
+        ServiceBusAdministrationClient client = new ServiceBusAdministrationClient(connectionString);
 
-        if (!namespaceManager.SubscriptionExists(sampleTopic, sampleSubscription))
+        if (!await client.SubscriptionExistsAsync(topicName, subscriptionName))
         {
-            namespaceManager.CreateSubscription(sampleTopic, sampleSubscription);
+            await client.CreateSubscriptionAsync(topicName, subscriptionName);
         }
     }
     ```
 
-    d. `ReceiveMessageAndSendNotification` は、サブスクリプションを使用してトピックからメッセージを読み取り、読み取りが正常に実行された場合に、Azure Notification Hubs を使用してモバイル アプリケーションに送信する通知 (サンプル シナリオでは Windows ネイティブのトースト通知) を作成するために使用します。
+    d. `ReceiveMessageAndSendNotificationAsync` は、サブスクリプションを使用してトピックからメッセージを読み取り、読み取りが正常に実行された場合に、Azure Notification Hubs を使用してモバイル アプリケーションに送信する通知 (サンプル シナリオでは Windows ネイティブのトースト通知) を作成するために使用します。
 
     ```csharp
-    static void ReceiveMessageAndSendNotification(string connectionString)
+    static async Task ReceiveMessageAndSendNotificationAsync(string connectionString)
     {
         // Initialize the Notification Hub
-        string hubConnectionString = CloudConfigurationManager.GetSetting
+        string hubConnectionString = ConfigurationManager.AppSettings.Get
                 ("Microsoft.NotificationHub.ConnectionString");
         hub = NotificationHubClient.CreateClientFromConnectionString
                 (hubConnectionString, "enterprisepushservicehub");
 
-        SubscriptionClient Client =
-            SubscriptionClient.CreateFromConnectionString
-                    (connectionString, sampleTopic, sampleSubscription);
-
-        Client.Receive();
+        ServiceBusClient Client = new ServiceBusClient(connectionString);
+        ServiceBusReceiver receiver = Client.CreateReceiver(topicName, subscriptionName);
 
         // Continuously process messages received from the subscription
         while (true)
         {
-            BrokeredMessage message = Client.Receive();
+            ServiceBusReceivedMessage message = await receiver.ReceiveMessageAsync();
             var toastMessage = @"<toast><visual><binding template=""ToastText01""><text id=""1"">{messagepayload}</text></binding></visual></toast>";
 
             if (message != null)
@@ -204,19 +199,19 @@ ms.locfileid: "89003628"
                 {
                     Console.WriteLine(message.MessageId);
                     Console.WriteLine(message.SequenceNumber);
-                    string messageBody = message.GetBody<string>();
+                    string messageBody = message.Body.ToString();
                     Console.WriteLine("Body: " + messageBody + "\n");
 
                     toastMessage = toastMessage.Replace("{messagepayload}", messageBody);
                     SendNotificationAsync(toastMessage);
 
                     // Remove message from subscription
-                    message.Complete();
+                    await receiver.CompleteMessageAsync(message);
                 }
                 catch (Exception)
                 {
                     // Indicate a problem, unlock message in subscription
-                    message.Abandon();
+                    await receiver.AbandonMessageAsync(message);
                 }
             }
         }
@@ -289,7 +284,7 @@ ms.locfileid: "89003628"
 
 <!-- Links -->
 [Notification Hubs のサンプル (英語)]: https://github.com/Azure/azure-notificationhubs-samples
-[Azure Mobile Service]: https://azure.microsoft.com/documentation/services/mobile-services/
+[Azure Mobile Service]: https://azure.microsoft.com/services/app-service/mobile/
 [Azure Service Bus]: ../service-bus-messaging/service-bus-messaging-overview.md
 [Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
 [Azure WebJob]: ../app-service/webjobs-create.md

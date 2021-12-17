@@ -1,0 +1,70 @@
+### YamlMime:Landing
+title: Azure Chaos Studio のドキュメント
+summary: Azure Chaos Studio は、リージョンがダウンした場合やアプリケーションの障害によって VM で100% の CPU 使用率が発生した場合など、実際のインシデントに対するアプリケーションとサービスの回復性を測定、理解、構築するのに役立つ Azure サービスです。 Chaos Studio を使用すると、サービスに対してフォールトを挿入し、そのサービスが中断にどのように対応するかを監視するカオス エンジニアリング実験を実行できます。 Chaos の実験は、アーキテクチャの選択を検証し、サービスの信頼性を向上させるのに役立ちます。 Chaos の実験は、手動の BCDR ドリルや "ゲームの日" を実行するためにアドホックで実行することも、プログラムでコード フローをゲートするための CI/CD パイプラインの一部として実行することもできます。
+metadata:
+  title: Azure Chaos Studio のドキュメント - チュートリアル、API リファレンス
+  description: Azure でカオス エンジニアリングとフォールト挿入を使用して、サービスの回復性を構築するためのソリューションである Azure Chaos Studio について説明します。
+  ms.service: chaos-studio
+  ms.topic: landing-page
+  author: johnkemnetz
+  ms.author: johnkem
+  ms.date: 08/24/2021
+  ms.openlocfilehash: 58cd0ace885b8f7852fd13e0612d71e3b77b1b8b
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132715342"
+landingContent:
+- title: Azure Chaos Studio について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Chaos Studio とは
+      url: chaos-studio-overview.md
+    - text: カオス エンジニアリングとは
+      url: chaos-studio-chaos-engineering-overview.md
+  - linkListType: concept
+    links:
+    - text: カオス実験
+      url: chaos-studio-chaos-experiments.md
+    - text: ターゲットと機能
+      url: chaos-studio-targets-capabilities.md
+    - text: 許可とセキュリティ
+      url: chaos-studio-permissions-security.md
+- title: はじめに
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Chaos Studio の概要
+      url: https://channel9.msdn.com/Shows/Azure-Videos/Azure-Chaos-Studio-Curious-to-control-chaos
+  - linkListType: how-to-guide
+    links:
+    - text: サービスダイレクト フォールトを使用するカオス実験を作成して、Azure Cosmos DB インスタンスをフェールオーバーする
+      url: chaos-studio-tutorial-service-direct-portal.md
+    - text: Azure Chaos Studio でエージェントベース フォールトを使用する実験を作成する
+      url: chaos-studio-tutorial-agent-based-portal.md
+    - text: Azure Chaos Studio で AKS Chaos Mesh フォールトを使用する実験を作成する
+      url: chaos-studio-tutorial-aks-portal.md
+- title: 関連項目
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 障害ライブラリ
+      url: chaos-studio-fault-library.md
+    - text: フォールト プロバイダー
+      url: chaos-studio-fault-providers.md
+    - text: REST API のドキュメント
+      url: /rest/api/chaosstudio
+    - text: Python SDK
+      url: /python/api/azure-mgmt-chaos/?view=azure-python-preview
+- title: サンプル
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: ARM テンプレートを使用して実験を作成する
+      url: sample-template-experiment.md
+    - text: ARM テンプレートを使用してリソースをオンボードする
+      url: sample-template-targets.md
+    - text: REST API のサンプル
+      url: chaos-studio-samples-rest-api.md

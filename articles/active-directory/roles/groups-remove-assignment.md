@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory でグループからロールの割り当てを削除する | Microsoft Docs
-description: ID 管理を委任するためのカスタム Azure AD ロールをプレビューします。 Azure portal、PowerShell、または Graph API で Azure ロールを管理します。
+title: Azure Active Directory でグループからロールの割り当てを削除する
+description: Azure portal、PowerShell、または Microsoft Graph API を使用して、Azure Active Directory のグループからロールの割り当てを削除します。
 services: active-directory
 author: rolyon
 manager: daveba
@@ -8,27 +8,36 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 07/30/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ed23f563fce9760768a99e5bbf58f68500d665
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: add87a653c977c1378feeaa6d204a7bce0184431
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103012022"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732328"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>Azure Active Directory でグループからロールの割り当てを削除する
 
 この記事では、グループに割り当てられている Azure AD ロールを IT 管理者が削除する方法について説明します。 Azure portal で、ユーザーに対する直接的と間接的なロールの割り当ての両方を削除できるようになりました。 ユーザーにグループ メンバーシップによってロールが割り当てられている場合は、そのユーザーをグループから削除してロールの割り当てを削除します。
 
-## <a name="using-azure-admin-center"></a>Azure 管理センターの使用
+## <a name="prerequisites"></a>前提条件
 
-1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して [Azure AD 管理センター](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
+- Azure AD Premium P1 または P2 ライセンス
+- 特権ロール管理者または全体管理者
+- PowerShell を使用する場合は、AzureAD モジュール
+- Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
-1. **[ロールと管理者]**  >  **" _<ロール名>_ "** の順に選択します。
+詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
+
+## <a name="azure-portal"></a>Azure portal
+
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[ロールと管理者]**  > <*ロール名*> を選択します。
 
 1. ロールの割り当てを削除するグループを選択し、 **[割り当ての削除]** を選択します。
 
@@ -36,7 +45,7 @@ ms.locfileid: "103012022"
 
 1. アクションを確認するよう求められたら、 **[はい]** を選択します。
 
-## <a name="using-powershell"></a>PowerShell の使用
+## <a name="powershell"></a>PowerShell
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>ロールに割り当てることができるグループを作成する
 
@@ -62,7 +71,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope '/' -RoleDefinition
 Remove-AzureAdMSRoleAssignment -Id $roleAssignment.Id 
 ```
 
-## <a name="using-microsoft-graph-api"></a>Microsoft Graph API の使用
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 ### <a name="create-a-group-that-can-be-assigned-an-azure-ad-role"></a>Azure AD ロールを割り当てることができるグループを作成する
 
@@ -106,5 +115,5 @@ DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クラウド グループを使用してロールの割り当てを管理する](groups-concept.md)
-- [クラウド グループに割り当てられているロールのトラブルシューティング](groups-faq-troubleshooting.md)
+- [Azure AD グループを使用してロールの割り当てを管理する](groups-concept.md)
+- [グループに割り当てられている Azure AD ロールをトラブルシューティングする](groups-faq-troubleshooting.yml)

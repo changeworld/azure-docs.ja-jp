@@ -4,13 +4,13 @@ description: PowerShell を使用して App Service アプリを新しいアプ�
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
-ms.custom: seodec18
-ms.openlocfilehash: e3ae342e7cbd8a9c2e126de7666d07f0664be407
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 50d924dcb0a6d30b57ab80ab5ea718167a6acf38
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573644"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524210"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>PowerShell を使用した Azure App Service アプリの複製
 
@@ -124,6 +124,7 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * 異なるスケール ユニットにクローニングした場合に送信 IP アドレスは変更される
 * Linux アプリでは利用できない
 * マネージド ID は複製されない
+* 関数アプリでは使用できない
 
 ### <a name="references"></a>References
 * [App Service の複製](app-service-web-app-cloning.md)

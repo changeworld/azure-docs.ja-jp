@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/22/2019
+ms.date: 09/21/2021
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 09c4dadd7a6560bd5163d623dd8a7f247b57860e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b8ae31aa2af84a6f8dfd4f93c90a09e58805f73
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100102497"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598802"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>国内クラウド環境で MSAL を使用する
 
@@ -26,13 +26,20 @@ ms.locfileid: "100102497"
 
 Microsoft の世界的なクラウドに加え、Microsoft Authentication Library (MSAL) では、国内クラウドのアプリケーション開発者が、セキュリティで保護された Web API を認証して呼び出すためのトークンを取得できます。 これらの Web API には、Microsoft Graph またはその他の Microsoft API が可能です。
 
-Azure Active Directory (Azure AD) は、グローバル クラウドの他に、次の国内クラウドにデプロイされます。  
+グローバル Azure クラウドを含め、Azure Active Directory (Azure AD) は次の各国のクラウドにデプロイされています。 
 
 - Azure Government
 - Azure China 21Vianet
-- Azure Germany
+- Azure Germany ([2021 年 10 月 29 日に終了](https://www.microsoft.com/cloud-platform/germany-cloud-regions))
 
 このガイドでは、[Azure Government クラウド](https://azure.microsoft.com/global-infrastructure/government/)環境で、職場および学校アカウントにサインインし、アクセス トークンを取得し、Microsoft Graph API を呼び出す方法を示します。
+
+## <a name="azure-germany-microsoft-cloud-deutschland"></a>Azure Germany (Microsoft Cloud Deutschland)
+
+> [!WARNING]
+> Azure Germany (Microsoft Cloud Deutschland) は [2021 年 10 月 29 日に終了します](https://www.microsoft.com/cloud-platform/germany-cloud-regions)。 その日より前にグローバル Azure のリージョンに移行 "_しない_" サービスとアプリケーションにはアクセスできなくなります。
+
+アプリケーションを Azure Germany から移行していない場合は、[Azure Germany からの移行に関する Azure Active Directory の情報](/microsoft-365/enterprise/ms-cloud-germany-transition-azure-ad)に関するページに従って行うようにしてください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,75 +75,59 @@ MSAL.NET を使用して、国内クラウドへのユーザーのサインイ�
 
 ソブリン クラウド用の MSAL.js アプリケーションを有効にするには、次のようにします。
 
-### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
+- クラウドに応じて、特定のポータルでアプリケーションを登録します。 ポータルの選択方法の詳細については「[アプリ登録エンドポイント](authentication-national-cloud.md#app-registration-endpoints)」を参照してください
+- リポジトリにある[サンプル](https://github.com/Azure-Samples/ms-identity-javascript-tutorial)のいずれかを、クラウドに応じて構成にいくつかの変更を加えて使用します (次で説明します)。
+- アプリケーションを登録したクラウドに応じて、特定の機関を使用します。 さまざまなクラウド用の機関の詳細については、「[Azure AD 認証エンドポイント](authentication-national-cloud.md#azure-ad-authentication-endpoints)」を参照してください。
+- Microsoft Graph API を呼び出すには、使用しているクラウドに固有のエンドポイント URL が必要です。 すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、「[Microsoft Graph および Graph エクスプローラー サービスのルート エンドポイント](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)」を参照してください。
 
-1. <a href="https://portal.azure.us/" target="_blank">Azure portal</a> にサインインします。
+機関の例は次のとおりです。
 
-   他の国内クラウドの Azure portal エンドポイントを見つけるには、「[アプリ登録エンドポイント](authentication-national-cloud.md#app-registration-endpoints)」を参照してください。
+```json
+"authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
+```
 
-1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
-1. **Azure Active Directory** を検索して選択します。
-1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
-1. アプリケーションの **[名前]** を入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
-1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
-1. **[リダイレクト URI]** セクションで、**Web** プラットフォームを選択し、ご使用の Web サーバーに基づいてアプリケーションの URL に値を設定します。 Visual Studio と Node でリダイレクト URL を設定および取得する方法の手順については、次のセクションを参照してください。
-1. **[登録]** を選択します。
-1. **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を、後で使用するために書き留めます。
-    このチュートリアルでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。 
-1. **[管理]** で、 **[認証]** を選択します。
-1. **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** で、 **[ID トークン]** と **[アクセス トークン]** を選択します。 このアプリでは、ユーザーのサインインを実行して API を呼び出す必要があるため、ID トークンとアクセス トークンが必要です。
-1. **[保存]** を選択します。
+次に示すのは、Microsoft Graph エンドポイントとスコープの例です。
 
-### <a name="step-2--set-up-your-web-server-or-project"></a>手順 2:Web サーバーまたはプロジェクトの設定
+```json
+"endpoint" : "https://graph.microsoft.us/v1.0/me"
+"scope": "User.Read"
+```
 
-- Node などのローカル Web サーバー向けの[プロジェクト ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)する。
-
-  or
-
-- [Visual Studio プロジェクトをダウンロードする](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)。
-
-次に、「[JavaScript SPA の構成](#step-4-configure-your-javascript-spa)」に進み、コード サンプルを構成してから実行します。
-
-### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>手順 3:ユーザーのサインインに Microsoft Authentication Library を使用する
-
-[Javascript チュートリアル](tutorial-v2-javascript-spa.md#create-your-project)の手順に従ってプロジェクトを作成し、ユーザーのサインインを実行するために MSAL と統合します。
-
-### <a name="step-4-configure-your-javascript-spa"></a>手順 4:JavaScript SPA の構成
-
-プロジェクトの設定中に作成された `index.html` ファイルで、アプリケーション登録情報を追加します。 `index.html` ファイルの本文の `<script></script>` タグ内で、先頭に次のコードを追加します。
+ソブリン クラウドでユーザーを認証し、Microsoft Graph を呼び出すための最小限のコードは次のようになります。
 
 ```javascript
 const msalConfig = {
-    auth:{
-        clientId: "Enter_the_Application_Id_here",
+    auth: {
+        clientId: "Enter_the_Application_Id_Here",
         authority: "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here",
-        }
+        redirectUri: "/",
+    }
+};
+
+// Initialize MSAL
+const msalObj = new PublicClientApplication(msalConfig);
+
+// Get token using popup experience
+try {
+    const graphToken = await msalObj.acquireTokenPopup({
+        scopes: ["User.Read"]
+    });
+} catch(error) {
+    console.log(error)
 }
 
-const graphConfig = {
-        graphEndpoint: "https://graph.microsoft.us",
-        graphScopes: ["user.read"],
-}
+// Call the Graph API
+const headers = new Headers();
+const bearer = `Bearer ${graphToken}`;
 
-// create UserAgentApplication instance
-const myMSALObj = new UserAgentApplication(msalConfig);
+headers.append("Authorization", bearer);
+
+fetch("https://graph.microsoft.us/v1.0/me", {
+    method: "GET",
+    headers: headers
+})
 ```
 
-このコードでは:
-
-- `Enter_the_Application_Id_here` は、登録したアプリケーションの **アプリケーション (クライアント) ID** の値です。
-- `Enter_the_Tenant_Info_Here` には、次のオプションのいずれかが設定されます。
-    - アプリケーションで **この組織のディレクトリ内のアカウント** がサポートされる場合は、この値をテナント ID またはテナント名 (例: contoso.microsoft.com) に置き換えます。
-    - アプリケーションで **任意の組織のディレクトリ内のアカウント** がサポートされる場合は、この値を `organizations` に置き換えます。
-
-    すべての国内クラウドの認証エンドポイントを見つけるには、「[Azure AD 認証エンドポイント](./authentication-national-cloud.md#azure-ad-authentication-endpoints)」を参照してください。
-
-    > [!NOTE]
-    > 個人用 Microsoft アカウントは、国内クラウドではサポートされません。
-
-- `graphEndpoint` は、米国政府機関向け Microsoft クラウド用の Microsoft Graph エンドポイントです。
-
-   すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、[国内クラウド内の Microsoft Graph エンドポイント](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)に関する記事を参照してください。
 
 ## <a name="python"></a>[Python](#tab/python)
 
@@ -230,4 +221,4 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 - [Azure Government](../../azure-government/index.yml)
 - [Azure China 21Vianet](/azure/china/)
-- [Azure Germany](../../germany/index.yml)
+- [Azure Germany (2021 年 10 月 29 日に終了)](../../germany/index.yml)

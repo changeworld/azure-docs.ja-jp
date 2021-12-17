@@ -3,20 +3,20 @@ title: カスタム ポリシーで JWT 発行者用の技術プロファイル�
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 内のカスタム ポリシーで JSON Web トークン (JWT) 発行者用の技術プロファイルを定義します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/04/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 4faa7e68b50b83368837b75cd04be566d816f6d3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4e25a64d628b5d36176921bbe28cc40417333f2f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102119809"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131036373"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで JWT トークン発行者用の技術プロファイルを定義する
 
@@ -73,8 +73,8 @@ CryptographicKeys 要素には次の属性が存在します。
 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| issuer_secret | はい | JWT トークンを署名するために使用する X509 証明書 (RSA キー セット)。 これは、「[カスタム ポリシーの概要](custom-policy-get-started.md)」で構成した `B2C_1A_TokenSigningKeyContainer` キーです。 |
-| issuer_refresh_token_key | はい | 更新トークンを暗号化するために使用する X509 証明書 (RSA キー セット)。 「[カスタム ポリシー作業の開始](custom-policy-get-started.md)」で `B2C_1A_TokenEncryptionKeyContainer` キーを構成しました。 |
+| issuer_secret | はい | JWT トークンを署名するために使用する X509 証明書 (RSA キー セット)。 これは、「[カスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)」で構成した `B2C_1A_TokenSigningKeyContainer` キーです。 |
+| issuer_refresh_token_key | はい | 更新トークンを暗号化するために使用する X509 証明書 (RSA キー セット)。 「[カスタム ポリシー作業の開始](tutorial-create-user-flows.md?pivots=b2c-custom-policy)」で `B2C_1A_TokenEncryptionKeyContainer` キーを構成しました。 |
 
 ## <a name="session-management"></a>セッションの管理
 

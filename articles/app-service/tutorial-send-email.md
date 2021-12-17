@@ -4,12 +4,12 @@ description: App Service アプリからビジネス プロセスを呼び出す
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 8072a941cd89290af3e25cc63c4fccccce705df9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 567bf62d2f78074cef331aeedcfd29bc382e79c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95014664"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752430"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>チュートリアル:App Service からメールを送信したり他のビジネス プロセスを呼び出したりする
 
@@ -52,9 +52,9 @@ ms.locfileid: "95014664"
 
 ---
 
-## <a name="create-the-logic-app"></a>ロジック アプリを作成する
+## <a name="create-the-logic-app"></a>ロジック アプリの作成
 
-1. [Azure portal](https://portal.azure.com) で、「[ロジック アプリを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)」の手順に従って、空のロジック アプリを作成します。 **Logic Apps デザイナー** が表示されたら、このチュートリアルに戻ります。
+1. [Azure portal](https://portal.azure.com) で、[初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事の手順に従って、空のロジック アプリを作成します。 **Logic Apps デザイナー** が表示されたら、このチュートリアルに戻ります。
 1. Logic Apps デザイナーのスプラッシュ ページで、 **[一般的なトリガーで開始する]** の **[HTTP 要求の受信時]** を選択します。
 
     ![Logic Apps Designer のスプラッシュ ページのスクリーンショット。[HTTP 要求の受信時] が強調表示されています。](./media/tutorial-send-email/receive-http-request.png)
@@ -81,7 +81,7 @@ ms.locfileid: "95014664"
 
     この HTTP 要求定義は、Gmail であるかそれ以外の何かであるかにかかわらず、このロジック アプリで実行するすべての処理のトリガーです。 後で、App Service アプリでこの URL を呼び出します。 要求トリガーの詳細については、[HTTP 要求と応答のリファレンス](../connectors/connectors-native-reqres.md)を参照してください。
 
-1. デザイナーの下部にある **[新しいステップ]** をクリックし、アクション検索ボックスに「**Gmail**」と入力して、 **[メールの送信 (V2)]** を見つけて選択します。
+1. デザイナーの下部にある **[新しいステップ]** をクリックし、アクション検索ボックスに「**Gmail**」と入力します。 **[メールの送信 (V2)]** を見つけて選択します。
     
     > [!TIP]
     > SendGrid、MailChimp、Microsoft 365、SalesForce など、他の種類の統合を検索することができます。 詳細については、[Logic Apps のドキュメント](../logic-apps/index.yml)を参照してください。
@@ -270,13 +270,14 @@ Python では、[requests](https://pypi.org/project/requests/) を使用して�
 ```python
 # Requires pip install requests && pip freeze > requirements.txt
 import requests
+import os
 ...
 payload = {
     "email": "a-valid@emailaddress.com",
     "due": "4/1/2020",
     "task": "My new task!"
 }
-response = requests.post("https://prod-112.westeurope.logic.azure.com:443/workfl$
+response = requests.post(os.environ['LOGIC_APP_URL'], data = payload)
 print(response.status_code)
 ```
 <!-- ```python
@@ -318,3 +319,4 @@ connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 [チュートリアル:Azure App Service で CORS を使用して RESTful API をホストする](app-service-web-tutorial-rest-api.md)  
 [Logic Apps の HTTP 要求および応答のリファレンス](../connectors/connectors-native-reqres.md)  
 [クイック スタート: Azure Logic Apps を使用して初めてのワークフローを作成する - Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+- [環境変数とアプリ設定のリファレンス](reference-app-settings.md)

@@ -3,7 +3,7 @@ title: SQL Server 仮想マシンへの接続 (リソース マネージャー) 
 description: Azure 上にあるご自分の SQL Server 仮想マシンに接続する方法を説明します。 このトピックでは、クラシック デプロイ モデルを使用します。 シナリオは、ネットワーク構成とクライアントの場所によって異なります。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 37cb8f5a2ff0916f53ae50f5750664204ab1ba75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: 5b970883dbcf8e3c9d19c082622e67a6877fa957
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737491"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165956"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure 上にある SQL Server 仮想マシンへの接続
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -93,8 +93,6 @@ Server=mysqlvm;Integrated Security=true
 ```
 
 ## <a name="change-sql-connectivity-settings"></a><a id="change"></a>SQL 接続の設定を変更する
-
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
 Azure Portal で、SQL Server 仮想マシンの接続設定を変更できます。
 

@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: fc2667dfddf4442acaf39f6783190e8640b22a89
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6b95e471d3ac003991a131cf1e04b1384a7454e3
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561731"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296615"
 ---
-# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>チュートリアル:バッチ検出と Power BI を使用して異常を視覚化する
+# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi-univariate"></a>チュートリアル: バッチ検出と Power BI (一変量) を使用して異常を視覚化する
 
 このチュートリアルを使用して、時系列データ セット内の異常をバッチとして検出します。 Power BI Desktop を使用して、Excel ファイルを取得し、Anomaly Detector API のデータを準備して、全体を通しての統計的異常を視覚化します。
 
@@ -171,8 +171,3 @@ Power BI ウィンドウの右側にある **[フィールド]** ウィンドウ
 **[形式]** ツールで **[データの色]** をクリックして、グラフに色を適用します。 次のようなグラフが表示されます。
 
 ![完成したグラフの画像](../media/tutorials/final-chart.png)
-
-## <a name="next-steps"></a>次のステップ
-
-> [!div class="nextstepaction"]
->[Azure Databricks を使用した異常検出のストリーム配信](../overview.md)

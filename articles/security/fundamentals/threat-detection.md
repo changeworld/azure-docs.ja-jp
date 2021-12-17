@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 81b2227ac519de4d03bb63907d14c23b9c34dc64
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f47fce4dea6f03b61c3b300b8932c6ee3260982e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101037"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336988"
 ---
 # <a name="azure-threat-protection"></a>Azure 脅威防止
 
-Azure では、Azure Active Directory (Azure AD)、Azure Monitor ログ、Azure Security Center などのサービスを通じて、脅威を防止する組み込み機能を提供しています。 このセキュリティ サービスと機能のコレクションにより、Azure デプロイの内部で起きている事象をシンプルかつ迅速に把握する方法が提供されます。
+Azure では、Azure Active Directory (Azure AD)、Azure Monitor ログ、Microsoft Defender for Cloud などのサービスを通じて、脅威を防止する組み込み機能を提供しています。 このセキュリティ サービスと機能のコレクションにより、Azure デプロイの内部で起きている事象をシンプルかつ迅速に把握する方法が提供されます。
 
 Azure では、アプリのデプロイ要件を満たすセキュリティを構成およびカスタマイズするための幅広いオプションを提供します。 この記事では、これらの要件を満たす方法について説明します。
 
@@ -84,7 +84,7 @@ Azure Monitor ログは、価値のある独自のサービスに加え、[Syste
 
 ### <a name="holistic-security-and-compliance-posture"></a>包括的なセキュリティおよびコンプライアンスの体制
 
-[Azure Security Center](../../security-center/security-center-introduction.md) では、注意を必要とする重要な問題向けの組み込みの検索クエリと共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 この画面では、コンピューターのセキュリティの状態について大まかな情報を得ることができます。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示することができます。
+[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) では、注意を必要とする重要な問題向けの組み込みの検索クエリと共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 この画面では、コンピューターのセキュリティの状態について大まかな情報を得ることができます。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示することができます。
 
 Azure Monitor ログのダッシュボードは、あらゆる環境における包括的なセキュリティ体制をすばやく簡単に理解するのに役立ちます。これはすべて、ソフトウェアの更新プログラムの評価、マルウェア対策の評価、構成基準などを含む IT オペレーションのコンテキストの中で行われます。 セキュリティ ログ データに容易にアクセスできるため、セキュリティとコンプライアンスを目的とする監査プロセスが合理化されます。
 
@@ -104,7 +104,7 @@ Azure Monitor ログとのやり取りのほとんどは、任意のブラウザ
 
 ソリューションにより、Azure Monitor ログに機能が追加されます。 これらは主にクラウドで実行し、Log Analytics リポジトリで収集されたデータの分析を提供します。 また、ソリューションでは、新しいレコードの種類を収集対象として定義することもできます。それらは Log Analytics ダッシュボード内でソリューションによって提供される追加のユーザー インターフェイスを使用するか、ログ検索を使用して分析できます。
 
-Security Center はこうした種類のソリューションの一例です。
+Defender for Cloud はこうした種類のソリューションの一例です。
 
 ### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automation and Control: セキュリティ構成の誤差に関するアラート
 
@@ -114,27 +114,32 @@ Azure Automation は、PowerShell に基づいた Runbook を使用して管理�
 
 Azure でホストされる DSC リソースを作成して管理し、クラウドやオンプレミス システムに適用できます。 そのためには、その構成を定義して自動的に適用するか、セキュリティ構成がポリシー内に確実に留まるようにするのに役立つ誤差に関するレポートを取得することができます。
 
-## <a name="azure-security-center"></a>Azure Security Center
+## <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-Azure Security Center を使用することで、ハイブリッド クラウド環境を保護することができます。 接続されたリソースの継続的なセキュリティ評価を行うことで、検出された脆弱性に関する詳細なセキュリティに関する推奨事項を提供することができます。
+Microsoft Defender for Cloud を使用することで、ハイブリッド クラウド環境を保護することができます。 接続されたリソースの継続的なセキュリティ評価を行うことで、検出された脆弱性に関する詳細なセキュリティに関する推奨事項を提供することができます。
 
-Security Center の推奨事項は、[Azure セキュリティ ベンチマーク](../benchmarks/introduction.md)に基づいており、これは、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Microsoft 製の Azure 固有の一連のガイドラインです。 このベンチマークは、クラウド中心のセキュリティに重点を置いた、[Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) および[米国国立標準技術研究所 (NIST)](https://www.nist.gov/) の管理に基づいて構築されており、広く評価されています。
+Defender for Cloud の推奨事項は、[Azure セキュリティ ベンチマーク](../benchmarks/introduction.md)に基づいており、これは、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Microsoft 製の Azure 固有の一連のガイドラインです。 このベンチマークは、クラウド中心のセキュリティに重点を置いた、[Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) および[米国国立標準技術研究所 (NIST)](https://www.nist.gov/) の管理に基づいて構築されており、広く評価されています。
 
-Security Center の統合クラウド ワークロード保護プラットフォーム (CWPP) である **Azure Defender** は、Azure およびハイブリッド リソースおよびワークロードの高度でインテリジェントな保護を実現します。 Azure Defender を有効にすると、さまざまな追加のセキュリティ機能をご利用いただけます (「[Azure Defender の概要](../../security-center/azure-defender.md)」を参照してください)。 Security Center の Azure Defender ダッシュボードにより、環境の CWP 機能を可視化し、制御できます。
+Defender for Cloud の強化されたセキュリティ機能を有効にすると、Azure、ハイブリッドおよびマルチクラウドのリソースとワークロードに対する高度でインテリジェントな保護が実現されます。 詳細については、「[Microsoft Defender for Cloud の強化されたセキュリティ機能](../../defender-for-cloud/enhanced-security-features-overview.md)」を参照してください。 
 
-:::image type="content" source="../../security-center/media/azure-defender/sample-defender-dashboard.png" alt-text="Azure Defender ダッシュボードの例" lightbox="../../security-center/media/azure-defender/sample-defender-dashboard.png":::
+Defender for Cloud のワークロード保護ダッシュボードにより、一連の **Microsoft Defender** プランによって提供される統合クラウド ワークロード保護機能を可視化し、制御できます。
+
+:::image type="content" source="../../defender-for-cloud/media/workload-protections-dashboard/sample-defender-dashboard-numbered.png" alt-text="Defender for Cloud のワークロード保護ダッシュボードの例" lightbox="../../defender-for-cloud/media/workload-protections-dashboard/sample-defender-dashboard-numbered.png":::
+
+> [!TIP]
+> 詳細については、「[ワークロード保護ダッシュボード](../../defender-for-cloud/workload-protections-dashboard.md)」の番号付きセクションを参照してください。
 
 マイクロソフトのセキュリティ研究員は、絶えず脅威に目を光らせています。 クラウドやオンプレミスにおけるマイクロソフトのグローバル プレゼンスから得た広範なテレメトリにアクセスすることが彼らには許されています。 この広範かつ多様なデータセットのコレクションによって、マイクロソフトは、そのオンプレミスの消費者向け/企業向け製品からオンライン サービスに至るまで、攻撃の新しいパターンや傾向を把握することができます。
 
-このため、Security Center は、攻撃者が新たにより高度な攻撃を仕掛けてくるたびに検出アルゴリズムを迅速に更新することができます。 この方法は、刻々と進化する脅威の環境に後れを取らないように対処するのに役立ちます。
+したがって、Defender for Cloud は、攻撃者によって脆弱性の悪用手法が次々に生み出され、しだいに複雑化する中で、その検出アルゴリズムを迅速に更新することができるのです。 この方法は、刻々と進化する脅威の環境に後れを取らないように対処するのに役立ちます。
 
-:::image type="content" source="../../security-center/media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center のセキュリティ アラートの一覧":::
+:::image type="content" source="../../defender-for-cloud/media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Microsoft Defender for Cloud のセキュリティ アラート一覧":::
 
-Azure Defender は、リソースやネットワーク、接続されているパートナー ソリューションからセキュリティ情報を自動的に収集します。 これは、複数のソースからの情報を関連付けることで情報を分析して脅威を識別します。
+Microsoft Defender for Cloud は、リソースやネットワーク、接続されているパートナー ソリューションからセキュリティ情報を自動的に収集します。 これは、複数のソースからの情報を関連付けることで情報を分析して脅威を識別します。
 
-Azure Defender のアラートは、脅威に対処するための推奨事項とともに、Security Center で優先されます。
+Defender for Cloud では、セキュリティの警告に優先順位が、脅威に対処するための推奨事項と共に割り当てられます。
 
-Security Center には、シグネチャ ベースの手法とは比較にならない高度なセキュリティ分析が採用されています。 ビッグ データおよび[機械学習](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)における革新的なテクノロジを使用して、クラウド全体でイベントが評価されます。 高度な分析では、手作業に頼った手法では特定できない脅威も検出でき、攻撃の進化を予測することができます。 こうしたセキュリティ分析の種類については次のセクションで説明します。
+Defender for Cloud には、シグネチャ ベースの手法とは比較にならない高度なセキュリティ分析が採用されています。 ビッグ データおよび[機械学習](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)における革新的なテクノロジを使用して、クラウド全体でイベントが評価されます。 高度な分析では、手作業に頼った手法では特定できない脅威も検出でき、攻撃の進化を予測することができます。 こうしたセキュリティ分析の種類については次のセクションで説明します。
 
 ### <a name="threat-intelligence"></a>脅威インテリジェンス
 
@@ -144,9 +149,9 @@ Azure、Microsoft 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.c
 
 ![脅威インテリジェンスの検索結果](./media/threat-detection/azure-threat-detection-fig10.jpg)
 
-また研究員も、大手クラウド サービス プロバイダー間で共有されている脅威インテリジェンス情報を入手しているほか、サード パーティから脅威インテリジェンス フィードをサブスクライブしています。 Azure Security Center はこの情報を基に、既知の有害因子から生じる脅威について利用者に警告を発することができます。 次に例をいくつか示します。
+また研究員も、大手クラウド サービス プロバイダー間で共有されている脅威インテリジェンス情報を入手しているほか、サード パーティから脅威インテリジェンス フィードをサブスクライブしています。 Microsoft Defender for Cloud はこの情報を基に、既知の有害因子から生じる脅威について利用者に警告を発することができます。 次に例をいくつか示します。
 
--   **機械学習の力の利用**: Azure Security Center は、クラウド ネットワークのアクティビティに関する大量のデータにアクセスし、このデータを使用して Azure のデプロイを対象とする脅威を検出することができます。
+-   **機械学習の力を利用する**: Microsoft Defender for Cloud は、クラウド ネットワークのアクティビティに関する大量のデータにアクセスし、このデータを使用して Azure のデプロイを対象とする脅威を検出することができます。
 
 -   **ブルート フォース検出**: 機械学習を使用してリモート アクセスが試行された履歴のパターンを作成します。これによって Secure Shell (SSH)、Remote Desktop Protocol (RDP)、および SQL の各ポートに対するブルート フォース攻撃を検出できます。
 
@@ -162,30 +167,30 @@ Azure、Microsoft 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.c
 
 ![行動分析の検索結果](./media/threat-detection/azure-threat-detection-fig11.jpg)
 
-また、パターンの特定にあたっては、専門のアナリストによって悪質な行動が緻密に分析されます。 Azure Security Center は、行動分析を使用して仮想マシンのログ、仮想ネットワーク デバイスのログ、ファブリック ログ、クラッシュ ダンプ、およびその他のソースを分析し、これに基づいて侵害されたリソースを識別することができます。
+また、パターンの特定にあたっては、専門のアナリストによって悪質な行動が緻密に分析されます。 Microsoft Defender for Cloud は、行動分析を使用して仮想マシンのログ、仮想ネットワーク デバイスのログ、ファブリック ログ、クラッシュ ダンプおよびその他のソースを分析し、これに基づいて侵害されたリソースを識別することができます。
 
 また、他のシグナルとの間には、蔓延している攻撃の裏付けとなる兆候を確認できるパターンが関連付けられています。 この相関関係によって、セキュリティ侵害の証拠として確立されたインジケーターと一致しているイベントが特定されます。
 
 次に例をいくつか示します。
--   **疑わしいプロセスの実行**:攻撃者は、悪質なソフトウェアを秘かに実行するためにいくつかの手法を用います。 たとえば、マルウェアに対して正規のシステム ファイルと同じ名前を付けて本来とは異なる場所に配置したり、無害なファイルの名前に類似した名前を使用したり、ファイルの本当の拡張子を隠したりすることが考えられます。 Security Center はプロセスの動作をモデル化し、そのプロセスの実行を監視することで、こうした異常を検出します。
+-   **疑わしいプロセスの実行**:攻撃者は、悪質なソフトウェアを秘かに実行するためにいくつかの手法を用います。 たとえば、マルウェアに対して正規のシステム ファイルと同じ名前を付けて本来とは異なる場所に配置したり、無害なファイルの名前に類似した名前を使用したり、ファイルの本当の拡張子を隠したりすることが考えられます。 Defender for Cloud はプロセスの動作をモデル化し、そのプロセスの実行を監視することで、こうした異常を検出します。
 
--   **マルウェアおよび脆弱性の悪用の試行を非表示にする**:巧妙なマルウェアは、ディスクへの書き込みやディスクに格納されているソフトウェア コンポーネントの暗号化をまったくしないために、従来のマルウェア対策製品から逃れることができます。 しかし、マルウェアは動作するためにメモリにトレースを残すので、メモリを分析するとこのようなマルウェアを検出できます。 ソフトウェアがクラッシュすると、クラッシュ時のメモリが部分的にクラッシュ ダンプにキャプチャされます。 クラッシュ ダンプにメモリを分析することで、Azure Security Center は、ソフトウェアの脆弱性を悪用したり、機密データにアクセスしたり、侵害したマシン内部でひそかに生き残るために使用されたテクニックを、マシンのパフォーマンスに影響を与えずに検出することができます。
+-   **マルウェアおよび脆弱性の悪用の試行を非表示にする**:巧妙なマルウェアは、ディスクへの書き込みやディスクに格納されているソフトウェア コンポーネントの暗号化をまったくしないために、従来のマルウェア対策製品から逃れることができます。 しかし、マルウェアは動作するためにメモリにトレースを残すので、メモリを分析するとこのようなマルウェアを検出できます。 ソフトウェアがクラッシュすると、クラッシュ時のメモリが部分的にクラッシュ ダンプにキャプチャされます。 クラッシュ ダンプにメモリを分析することで、Microsoft Defender for Cloud は、ソフトウェアの脆弱性を悪用したり、機密データにアクセスしたり、侵害したマシン内部でひそかに生き残るために使用されたテクニックを、マシンのパフォーマンスに影響を与えずに検出することができます。
 
--   **水平移動と内部偵察:** 攻撃者は、侵害したネットワーク内にとどまったり、貴重なデータを探して奪取したりするために、侵害したマシンから同一ネットワーク内の他のマシンに水平移動を試みることがよくあります。 Security Center は、攻撃者がネットワーク内部で足がかりを拡大するために試行するリモート コマンドの実行、ネットワーク プローブ、アカウントの列挙などを見つけるために、プロセスとログインのアクティビティを監視します。
+-   **水平移動と内部偵察:** 攻撃者は、侵害したネットワーク内にとどまったり、貴重なデータを探して奪取したりするために、侵害したマシンから同一ネットワーク内の他のマシンに水平移動を試みることがよくあります。 Defender for Cloud は、攻撃者がネットワーク内部で足がかりを拡大するために試行するリモート コマンドの実行、ネットワーク プローブ、アカウントの列挙などを見つけるために、プロセスとログインのアクティビティを監視します。
 
--   **悪質な PowerShell スクリプト**: 攻撃者が標的の仮想マシン上で悪質なコードを実行するために、さまざまな目的で PowerShell を使用することがあります。 疑わしい活動の兆候がないか、PowerShell のアクティビティは Security Center によって調査されます。
+-   **悪質な PowerShell スクリプト**: 攻撃者が標的の仮想マシン上で悪質なコードを実行するために、さまざまな目的で PowerShell を使用することがあります。 疑わしい活動の兆候がないか、PowerShell のアクティビティは Defender for Cloud によって調査されます。
 
--   **送信方向の攻撃**:攻撃の踏み台として利用するために、クラウド リソースを攻撃者が標的にすることは少なくありません。 たとえば、侵入した仮想マシンを利用して、他の仮想マシンにブルート フォース攻撃を仕掛けたり、スパムを送信したり、開放ポートやインターネット上の他のデバイスをスキャンしたりする場合があります。 Security Center では、ネットワーク トラフィックに機械学習を適用することで、正常な範囲を逸脱した送信ネットワーク通信を検出することができます。 スパムが検出された場合、Security Center では、普通ではない電子メール トラフィックと Microsoft 365 から得られたインテリジェンスとの相関を明らかにすることで、不正目的のメールであるか、正当な電子メール キャンペーンによるものであるかも判断します。
+-   **送信方向の攻撃**:攻撃の踏み台として利用するために、クラウド リソースを攻撃者が標的にすることは少なくありません。 たとえば、侵入した仮想マシンを利用して、他の仮想マシンにブルート フォース攻撃を仕掛けたり、スパムを送信したり、開放ポートやインターネット上の他のデバイスをスキャンしたりする場合があります。 Defender for Cloud では、ネットワーク トラフィックに機械学習を適用することで、正常な範囲を逸脱した送信ネットワーク通信を検出することができます。 スパムが検出された場合、Defender for Cloud では、普通ではない電子メール トラフィックと Microsoft 365 から得られたインテリジェンスとの相関を明らかにすることで、不正目的のメールであるか、正当な電子メール キャンペーンによるものであるかも判断します。
 
 ### <a name="anomaly-detection"></a>異常検出
 
-Azure Security Center での脅威の特定には、異常検出も使用されます。 行動分析は、大規模なデータセットから導いた既知のパターンに依存します。これとは対照的に、異常検出は "独自色" が強く、個々の環境に固有の基準に重点が置かれます。 機械学習を適用して個々の環境の正常なアクティビティを突き止めたうえで、セキュリティ イベントの可能性を示す異常な条件とは何かを定義する規則を作成します。 次に例を示します。
+Microsoft Defender for Cloud では、脅威を特定するために異常検出も使用されます。 行動分析は、大規模なデータセットから導いた既知のパターンに依存します。これとは対照的に、異常検出は "独自色" が強く、個々の環境に固有の基準に重点が置かれます。 機械学習を適用して個々の環境の正常なアクティビティを突き止めたうえで、セキュリティ イベントの可能性を示す異常な条件とは何かを定義する規則を作成します。 次に例を示します。
 
--   **受信方向の RDP/SSH ブルート フォース攻撃**:同じ環境でも、日々数多くのユーザーがログインする稼働率の高い仮想マシンもあれば、ほとんどまたはまったくログインされない仮想マシンもあります。 Azure Security Center は、これらの仮想マシンにおける基準となるログイン アクティビティを決定したり、機械学習で通常のログイン アクティビティの範囲を定義することができます。 ログインに関連する特性で基準との不一致がある場合は、アラートが生成される場合があります。 前述のように、何をもって有意とするかは、機械学習によって突き止められます。
+-   **受信方向の RDP/SSH ブルート フォース攻撃**:同じ環境でも、日々数多くのユーザーがログインする稼働率の高い仮想マシンもあれば、ほとんどまたはまったくログインされない仮想マシンもあります。 Microsoft Defender for Cloud は、これらの仮想マシンにおける基準となるログイン アクティビティを決定したり、機械学習で通常のログイン アクティビティの範囲を定義することができます。 ログインに関連する特性で基準との不一致がある場合は、アラートが生成される場合があります。 前述のように、何をもって有意とするかは、機械学習によって突き止められます。
 
 ### <a name="continuous-threat-intelligence-monitoring"></a>脅威インテリジェンスの継続的監視
 
-Azure Security Center は、世界中のセキュリティ リサーチ チームやデータ サイエンス チームと連携して脅威に関する状況の変化を絶えず監視しています。 たとえば次のような取り組みが行われています。
+Microsoft Defender for Cloud は、世界中のセキュリティ リサーチ チームやデータ サイエンス チームと連携して脅威に関する状況の変化を絶えず監視しています。 たとえば次のような取り組みが行われています。
 
 -   **脅威インテリジェンスの監視**:脅威インテリジェンスには、既存の脅威や新たに発生した脅威に関するメカニズム、インジケーター、示唆、即時に利用可能なアドバイスが含まれます。 こうした情報はセキュリティ コミュニティから得られるほか、Microsoft も、社内や社外のソースから提供される脅威インテリジェンスを絶えず監視しています。
 
@@ -253,7 +258,7 @@ SQL Database の脅威検出機能では、次の検出手法のいずれかが�
 
 ### <a name="application-gateway-web-application-firewall"></a>Application Gateway の Web アプリケーション ファイアウォール
 
-[Web アプリケーション ファイアウォール (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) は、[Azure Application Gateway](../../web-application-firewall/ag/ag-overview.md) の機能で、標準の[アプリケーション配信コントロール](https://kemptechnologies.com/in/application-delivery-controllers)機能に対してアプリケーション ゲートウェイを使用して、Web アプリケーションを保護します。 Web アプリケーション ファイアウォールは、[Open Web Application Security Project (OWASP) の上位 10 件の一般的 Web 脆弱性](https://owasp.org/www-project-top-ten/)の大部分に対する保護を提供することで、これを実現します。
+[Web アプリケーション ファイアウォール (WAF)](../../app-service/environment/integrate-with-application-gateway.md) は、[Azure Application Gateway](../../web-application-firewall/ag/ag-overview.md) の機能で、標準の[アプリケーション配信コントロール](https://kemptechnologies.com/in/application-delivery-controllers)機能に対してアプリケーション ゲートウェイを使用して、Web アプリケーションを保護します。 Web アプリケーション ファイアウォールは、[Open Web Application Security Project (OWASP) の上位 10 件の一般的 Web 脆弱性](https://owasp.org/www-project-top-ten/)の大部分に対する保護を提供することで、これを実現します。
 
 ![Application Gateway の Web アプリケーション ファイアウォールの図](./media/threat-detection/azure-threat-detection-fig13.png)
 
@@ -287,7 +292,7 @@ SQL Database の脅威検出機能では、次の検出手法のいずれかが�
 
 異常検出 API は、時系列データ内のさまざまな異常パターンを検出するために役立つ API です。 API は、時系列の各データ ポイントに異常なスコアを割り当てます。これを使用してアラート生成、ダッシュボード内の監視、チケット発行システムとの接続ができます。
 
-[異常検出 API](../../machine-learning/team-data-science-process/apps-anomaly-detection-api.md) が検出できる時系列の異常のタイプには次のものがあります。
+[異常検出 API](/azure/architecture/data-science-process/apps-anomaly-detection-api) が検出できる時系列の異常のタイプには次のものがあります。
 
 -   **急増と急減**: サービスへのログインの失敗数や電子商取引サイトのチェックアウトの数を監視している場合、急増や急減はセキュリティ攻撃やサービス障害を示している可能性があります。
 
@@ -319,24 +324,24 @@ API に基づいた機械学習では、次のことができます。
 
 -   ビジネス分析グループは、事業 KPI (売上高、顧客センチメント、価格設定など)、異常な動作をリアルタイムで監視する必要があります。
 
-### <a name="cloud-app-security"></a>Cloud App Security
+### <a name="defender-for-cloud-apps"></a>Defender for Cloud Apps
 
-[Cloud App Security](/cloud-app-security/what-is-cloud-app-security) は、Microsoft Cloud のセキュリティ スタックの重要なコンポーネントです。 これは、企業がクラウド アプリケーションの可能性を最大限に活用できるように行動するのに役立つ包括的なソリューションです。 アクティビティのさらなる詳細を把握することで制御は維持されます。 また、重要なデータの保護をクラウド アプリケーション全体で強化するうえでも役立ちます。
+[Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security) は、Microsoft Cloud のセキュリティ スタックの重要なコンポーネントです。 これは、企業がクラウド アプリケーションの可能性を最大限に活用できるように行動するのに役立つ包括的なソリューションです。 アクティビティのさらなる詳細を把握することで制御は維持されます。 また、重要なデータの保護をクラウド アプリケーション全体で強化するうえでも役立ちます。
 
 企業は、shadow IT の発見、リスクの評価、ポリシーの適用、アクティビティの調査、および驚異の停止に役立つツールを使用して、重要なデータの制御を維持しながらもより安全にクラウドに移行できるようにします。
 
 | カテゴリ | 説明 |
 | -------- | ----------- |
-| 発見 | Cloud App Security を使用して shodow IT を発見します。 クラウド環境でアプリ、アクティビティ、ユーザー、データ、およびファイルを発見して可視性を獲得します。 クラウドに接続しているサード パーティのアプリを検出します。|
+| 発見 | Defender for Cloud Apps でシャドウ IT を見つけます。 クラウド環境でアプリ、アクティビティ、ユーザー、データ、およびファイルを発見して可視性を獲得します。 クラウドに接続しているサード パーティのアプリを検出します。|
 |調査 | クラウド フォレンジック ツールを使用してクラウド アプリケーションを調査します。具体的には、ネットワーク内の高リスク アプリケーション、特定のユーザー、およびファイルに関する詳しい調査を行います。 クラウドから収集されたデータのパターンを検索します。 クラウドを監視するレポートを生成します。 |
-| コントロール | ネットワーク クラウドのトラフィック全体を最大限に制御するためのポリシーとアラートを設定してリスクを軽減します。 Cloud App Security を使用して、安全で承認された代替クラウド アプリにユーザーが移行できるようにします。 |
-| 保護 | Cloud App Security を使用して、アプリケーションの承認と禁止、データ損失の防止、アクセスと共有の制御、およびカスタム レポートやアラートの生成を行います。 |
-| コントロール | ネットワーク クラウドのトラフィック全体を最大限に制御するためのポリシーとアラートを設定してリスクを軽減します。 Cloud App Security を使用して、安全で承認された代替クラウド アプリにユーザーが移行できるようにします。 |
+| コントロール | ネットワーク クラウドのトラフィック全体を最大限に制御するためのポリシーとアラートを設定してリスクを軽減します。 Defender for Cloud Apps を使用して、安全で承認された代替クラウド アプリにユーザーが移行できるようにします。 |
+| 保護 | Defender for Cloud Apps を使用して、アプリケーションの承認と禁止、データ損失の防止、アクセスと共有の制御、およびカスタム レポートやアラートの生成を行います。 |
+| コントロール | ネットワーク クラウドのトラフィック全体を最大限に制御するためのポリシーとアラートを設定してリスクを軽減します。 Defender for Cloud Apps を使用して、安全で承認された代替クラウド アプリにユーザーが移行できるようにします。 |
 
 
-![Cloud App Security の図](./media/threat-detection/azure-threat-detection-fig14.png)
+![Defender for Cloud Apps の図](./media/threat-detection/azure-threat-detection-fig14.png)
 
-Cloud App Security は、次の作業によってクラウドの詳細を把握します。
+Defender for Cloud Apps は、次の作業によってクラウドの詳細を把握します。
 
 -   Cloud Discovery を使用して、組織が使用しているクラウド環境とクラウド アプリをマップおよび識別します。
 
@@ -346,7 +351,7 @@ Cloud App Security は、次の作業によってクラウドの詳細を把握�
 
 -   ポリシーを設定して、その後の微調整を行うことで、継続的に制御できるようにします。
 
-Cloud App Security は、これらのソースからデータを収集することでデータに対する高度な分析を実行します。 Cloud App Security は、異常なアクティビティに迅速に通知し、クラウド環境をさらに詳しく把握できるようにします。 Cloud App Security にポリシーを構成することができ、これを使用して、クラウド環境内のすべてを保護することができます。
+Defender for Cloud Apps は、これらのソースからデータを収集することでデータに対する高度な分析を実行します。 Cloud App Security は、異常なアクティビティに迅速に通知し、クラウド環境をさらに詳しく把握できるようにします。 Defender for Cloud Apps にポリシーを構成することができ、これを使用して、クラウド環境内のすべてを保護することができます。
 
 ## <a name="third-party-threat-protection-capabilities-through-the-azure-marketplace"></a>Azure Marketplace から入手できるサードパーティ製の脅威防止機能
 

@@ -1,23 +1,23 @@
 ---
-title: Arc 対応 PostgreSQL Hyperscale サーバー グループの構成を表示する
-titleSuffix: Azure Arc enabled data services
-description: Arc 対応 PostgreSQL Hyperscale サーバー グループの構成を表示する
+title: Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの構成を表示する
+titleSuffix: Azure Arc-enabled data services
+description: Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの構成を表示する
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: a268cd6b2fa3da6846554e3d1b170298abec7f18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0789e9bb28868ce4d75aa48beb956fcb4dd74031
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93279403"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345805"
 ---
-# <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>Arc 対応 PostgreSQL Hyperscale サーバー グループの構成を表示する
+# <a name="show-the-configuration-of-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの構成を表示する
 
 この記事では、サーバー グループの構成を表示する方法について説明します。 そのために、あなたが自問する可能性がある質問をいくつか予測し、それらに答えます。 場合によっては、複数の有効な答えがあることがあります。 この記事では、最も一般的または有益なものを紹介します。 それらの質問をテーマ別にグループ化します。
 
@@ -28,78 +28,76 @@ ms.locfileid: "93279403"
 
 ## <a name="from-a-kubernetes-point-of-view"></a>Kubernetes の観点から
 
-### <a name="how-many-pods-are-used-by-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale で使用されるポッドの数はいくつですか?
+### <a name="what-are-the-postgres-server-groups-deployed-and-how-many-pods-are-they-using"></a>Postgres サーバー グループはどのようにデプロイされていますか? また、使用しているポッドの数はどのくらいですか?
 
 Postgres の種類の Kubernetes リソースを一覧表示します。 次のコマンドを実行します。
 
 ```console
-kubectl get postgresqls [-n <namespace name>]
+kubectl get postgresqls -n <namespace>
 ```
 
 このコマンドの出力では、作成されたサーバー グループの一覧が表示されます。 それぞれにポッド数が示されます。 次に例を示します。
 
 ```output
-NAME                                             STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
-postgresql-12.arcdata.microsoft.com/postgres01   Ready   3/3          10.0.0.4:30499      6h34m
-postgresql-12.arcdata.microsoft.com/postgres02   Ready   3/3          10.0.0.4:31066      6d7h
+NAME         STATE   READY-PODS   PRIMARY-ENDPOINT     AGE
+postgres01   Ready   5/5          20.101.12.221:5432   12d
 ```
 
-この例では、2 つのサーバー グループが作成され、それぞれが 3 つのポッド (1 コーディネーター + 2 ワーカー) 上で実行されていることが示されています。 つまり、この Azure Arc データ コントローラーに作成されたサーバー グループでは、6 つのポッドが使用されています。
+この例は、1つのサーバー グループが作成されていることを示しています。 5つのポッドで実行されます。1 つがコーディネーターで 4 つがワーカーです。
 
 ### <a name="what-pods-are-used-by-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループで使用されているポットは何ですか?
 
 次を実行します。
 
 ```console
-kubectl get pods [-n <namespace name>]
+kubectl get pods -n <namespace>
 ```
 
-これにより、ポッドの一覧が返されます。 サーバー グループによって使用されているポッドが、それらのサーバー グループに付けた名前に基づいて表示されます。 次に例を示します。
+コマンドによって、ポッドの一覧が返されます。 サーバー グループによって使用されているポッドが、それらのサーバー グループに付けた名前に基づいて表示されます。 次に例を示します。
 
-```console 
+```console
 NAME                 READY   STATUS    RESTARTS   AGE
-bootstrapper-vdltm   1/1     Running   0          6d8h
-control-h6kc9        2/2     Running   0          6d8h
-controldb-0          2/2     Running   0          6d8h
-controlwd-96sbn      1/1     Running   0          6d8h
-logsdb-0             1/1     Running   0          6d8h
-logsui-7wkg2         1/1     Running   0          6d8h
-metricsdb-0          1/1     Running   0          6d8h
-metricsdc-28ffl      1/1     Running   0          6d8h
-metricsui-k7qsh      1/1     Running   0          6d8h
-mgmtproxy-gd84z      2/2     Running   0          6d8h
-postgres01-0         3/3     Running   0          6h50m
-postgres01-1         3/3     Running   0          6h50m
-postgres01-2         3/3     Running   0          6h50m
-postgres02-0         3/3     Running   0          22h
-postgres02-1         3/3     Running   0          22h
-postgres02-2         3/3     Running   0          22h
+bootstrapper-4jrtl   1/1     Running   0          12d
+control-kz8gh        2/2     Running   0          12d
+controldb-0          2/2     Running   0          12d
+logsdb-0             3/3     Running   0          12d
+logsui-qjkgz         3/3     Running   0          12d
+metricsdb-0          2/2     Running   0          12d
+metricsdc-4jslw      2/2     Running   0          12d
+metricsdc-4tl2g      2/2     Running   0          12d
+metricsdc-fkxv2      2/2     Running   0          12d
+metricsdc-hs4h5      2/2     Running   0          12d
+metricsdc-tvz22      2/2     Running   0          12d
+metricsui-7pcch      2/2     Running   0          12d
+postgres01c0-0       3/3     Running   0          2d19h
+postgres01w0-0       3/3     Running   0          2d19h
+postgres01w0-1       3/3     Running   0          2d19h
+postgres01w0-2       3/3     Running   0          2d19h
+postgres01w0-3       3/3     Running   0          2d19h
 ```
 
-この例で、作成される 2 つのサーバー グループがホストされる 6 つのポッドは次のようになります。
-- `postgres01-0`
-- `postgres01-1`
-- `postgres01-2`
-- `postgres02-0`
-- `postgres02-1`
-- `postgres02-2`  
+### <a name="what-pod-is-used-for-what-role-in-the-server-group"></a>サーバー グループ内のどのロールに対してどのようなポッドが使用されますか?
 
-### <a name="what-server-group-pod-is-used-for-what-role-the-server-group"></a>どのサーバー グループ ポッドがどのサーバー グループのロールに使用されていますか?
+`c` でサフィックスが付けられたポッド名はすべて、コーディネーター ノードを表します。 `w` でサフィックスが付けられたノード名はすべてワーカー ノードで、たとえばサーバー グループをホストする 5 つのポッドなどがあります。
 
-`-0` でサフィックスが付けられたポッド名はすべて、コーディネーター ノードを表します。 1 以上の `-x` でサフィックスが付けられたノード名はすべて、ワーカー ノードです。 上の例について説明します。
-- コーディネーターは、`postgres01-0`、`postgres02-0` です
-- ワーカーは `postgres01-2`、`postgres01-2`、`postgres02-1`、`postgres02-2` です
+- `postgres01c0-0`: コーディネーター ノード
+- `postgres01w0-0`: ワーカー ノード
+- `postgres01w0-1`: ワーカー ノード
+- `postgres01w0-2`: ワーカー ノード
+- `postgres01w0-3`: ワーカー ノード
+
+ここでは、`c` と `w` の後に表示されている文字 `0` は無視できます (ServerGroupName`c0`-x または ServerGroupName`w0`-x)。 これは、製品が高可用性エクスペリエンスを提供するときに使用される表記です。
 
 ### <a name="what-is-the-status-of-the-pods"></a>ポッドの状態は何ですか?
 
-`kubectl get pods` を実行して、`STATUS` 列を確認します
+`kubectl get pods -n <namespace>` を実行して、`STATUS` 列を確認します
 
-### <a name="what-persistent-volume-claims-pvcs-are-being-used"></a>どのような永続ボリューム要求 (PVC) が使用されていますか? 
+### <a name="what-persistent-volume-claims-pvcs-are-being-used"></a>どのような永続ボリューム要求 (PVC) が使用されていますか?
 
-使用される PVC と、どれがデータ、ログ、およびバックアップに使用されるかを理解するには、次を実行します。 
+使用される PVC と、どれがデータ、ログ、およびバックアップに使用されるかを理解するには、次を実行します。
 
 ```console
-kubectl get pvc [-n <namespace name>]
+kubectl get pvc -n <namespace>
 ```
 
 既定で、PVC の名前のプレフィックスはその使用法を示しています。
@@ -126,245 +124,375 @@ logs-few7hh0k4npx9phsiobdc3hq-postgres01-2      Bound    local-pv-5ccd02e6   193
 ...
 ```
 
+### <a name="how-much-memory-and-vcores-are-being-used-and-what-extensions-were-created-for-a-server-group"></a>使用されているメモリと仮想コアの量はどれくらいですか、およびサーバー グループに対してどのような拡張機能が作成されましたか?
 
-## <a name="from-an-azure-arc-enabled-data-services-point-of-view"></a>Azure Arc 対応データ サービスの観点から:
+Kubectl を使用して Postgres リソースを記述します。 これを行うには、その種類 (Azure Arc の Postgres の Kubernetes リソース (CRD) の名前) とサーバーグループの名前が必要です。
 
-* Arc データ コントローラーに作成されるサーバー グループの数はいくつですか?
-* それらの名前は何ですか?
-* それらが使用するワーカー ノードの数はいくつですか?
-* それらが実行する Postgres のバージョンは何ですか?
-
-次のいずれかのコマンドを使用します。
-- **Kubectl を使用する:**
-
-   ```console
-   kubectl get postgresqls [-n <namespace name>]
-   ``` 
-
-   たとえば、次の出力が生成されます。ここで各行が `servergroup` です。 下の表示の名前の構造は、次のように形成されています。
-
-   `<Name-Of-Custom-Resource-Definition>`/`<Server-Group-Name>`
-
-   ```output
-   NAME                                             STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
-   postgresql-12.arcdata.microsoft.com/postgres01   Ready   3/3          10.0.0.4:30499      7h15m
-   postgresql-12.arcdata.microsoft.com/postgres02   Ready   3/3          10.0.0.4:31066      6d7h
-   ```
-
-   上記の出力は、Postgres バージョン 12 の 2 つのサーバー グループを示しています。 代わりに、バージョンが Postgres 11 の場合、CRD の名前は postgresql-11.arcdata.microsoft.com になります。
-
-   それらはそれぞれ、3 つのノード/ポッド(1 コーディネーターと 2 ワーカー) で実行されます。
-
-- **azdata を使用する:**
-
-次のコマンドを実行します。 出力には、kubectl で示される同様の情報が示されます。
-
-   ```console
-   azdata arc postgres server list
-
-   `output
-   Name        State    Workers
-   ----------  -------  ---------
-   postgres01  Ready    2
-   postgres02  Ready    2
-   ```
-
-
-### <a name="how-much-memory-and-vcores-are-being-used-and-what-extensions-were-created-for-a-group"></a>使用されているメモリと仮想コアの量はどれくらいですか、およびグループに対してどのような拡張機能が作成されましたか?
-
-次のコマンドのいずれかを実行します
-
-**Kubectl を使用する:**
-
-Kubectl を使用して Postgres リソースを記述します。 これを行うには、その種類 (先述のように、対応する Postgres バージョンの Kubernetes リソースの名前 (CRD)) とサーバー グループの名前が必要です。
 このコマンドの一般的な形式は次のとおりです。
 
 ```console
-kubectl describe <CRD name>/<server group name> [-n <namespace name>]
+kubectl describe <CRD name>/<server group name> -n <namespace>
 ```
 
 次に例を示します。
 
 ```console
-kubectl describe postgresql-12/postgres02
+kubectl describe postgresql/postgres01 -n arc
 ```
 
 このコマンドによって、サーバー グループの構成が示されます。
 
 ```output
-Name:         postgres02
+Name:         postgres01
 Namespace:    arc
 Labels:       <none>
 Annotations:  <none>
-API Version:  arcdata.microsoft.com/v1alpha1
-Kind:         postgresql-12
+API Version:  arcdata.microsoft.com/v1beta2
+Kind:         PostgreSql
 Metadata:
-  Creation Timestamp:  2020-08-31T21:01:07Z
-  Generation:          10
-  Resource Version:    569516
-  Self Link:           /apis/arcdata.microsoft.com/v1alpha1/namespaces/arc/postgresql-12s/postgres02
-  UID:                 8a9cd118-361b-4a2e-8a9d-5f9257bf6abb
+  Creation Timestamp:  2021-10-13T01:09:25Z
+  Generation:          29
+  Managed Fields:
+    API Version:  arcdata.microsoft.com/v1beta2
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:spec:
+        .:
+        f:dev:
+        f:engine:
+          .:
+          f:extensions:
+          f:version:
+        f:scale:
+          .:
+          f:replicas:
+          f:workers:
+        f:scheduling:
+          .:
+          f:default:
+            .:
+            f:resources:
+              .:
+              f:requests:
+                .:
+                f:memory:
+          f:roles:
+            .:
+            f:coordinator:
+              .:
+              f:resources:
+                .:
+                f:limits:
+                  .:
+                  f:cpu:
+                  f:memory:
+                f:requests:
+                  .:
+                  f:cpu:
+                  f:memory:
+            f:worker:
+              .:
+              f:resources:
+                .:
+                f:limits:
+                  .:
+                  f:cpu:
+                  f:memory:
+                f:requests:
+                  .:
+                  f:cpu:
+                  f:memory:
+        f:services:
+          .:
+          f:primary:
+            .:
+            f:port:
+            f:type:
+        f:storage:
+          .:
+          f:backups:
+            .:
+            f:volumes:
+          f:data:
+            .:
+            f:volumes:
+          f:logs:
+            .:
+            f:volumes:
+    Manager:      OpenAPI-Generator
+    Operation:    Update
+    Time:         2021-10-22T22:37:51Z
+    API Version:  arcdata.microsoft.com/v1beta2
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:IsValid:
+      f:spec:
+        f:scale:
+          f:syncReplicas:
+      f:status:
+        .:
+        f:logSearchDashboard:
+        f:metricsDashboard:
+        f:observedGeneration:
+        f:podsStatus:
+        f:primaryEndpoint:
+        f:readyPods:
+        f:state:
+    Manager:         unknown
+    Operation:       Update
+    Time:            2021-10-22T22:37:53Z
+  Resource Version:  1541521
+  UID:               23565e53-2e7a-4cd6-8f80-3a79397e1d7a
 Spec:
+  Dev:  false
   Engine:
     Extensions:
-      Name:  citus
-      Name:  pg_stat_statements
+      Name:   citus
+    Version:  12
   Scale:
-    Workers:  2
+    Replicas:       1
+    Sync Replicas:  0
+    Workers:        4
   Scheduling:
     Default:
       Resources:
-        Limits:
-          Cpu:     4
-          Memory:  1024Mi
         Requests:
-          Cpu:     1
-          Memory:  512Mi
-  Service:
-    Type:  NodePort
+          Memory:  256Mi
+    Roles:
+      Coordinator:
+        Resources:
+          Limits:
+            Cpu:     2
+            Memory:  1Gi
+          Requests:
+            Cpu:     1
+            Memory:  256Mi
+      Worker:
+        Resources:
+          Limits:
+            Cpu:     2
+            Memory:  1Gi
+          Requests:
+            Cpu:     1
+            Memory:  256Mi
+  Services:
+    Primary:
+      Port:  5432
+      Type:  LoadBalancer
   Storage:
+    Backups:
+      Volumes:
+        Size:  5Gi
     Data:
-      Class Name:  local-storage
-      Size:        5Gi
+      Volumes:
+        Class Name:  managed-premium
+        Size:        5Gi
     Logs:
-      Class Name:  local-storage
-      Size:        5Gi
+      Volumes:
+        Class Name:  managed-premium
+        Size:        5Gi
 Status:
-  External Endpoint:  10.0.0.4:31066
-  Ready Pods:         3/3
-  State:              Ready
-Events:               <none>
+  Log Search Dashboard:  https://12.235.78.99:5601/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:postgres01'))
+  Metrics Dashboard:     https://12.346.578.99:3000/d/postgres-metrics?var-Namespace=arc&var-Name=postgres01
+  Observed Generation:   29
+  Pods Status:
+    Conditions:
+      Last Transition Time:  2021-10-22T22:37:53.000000Z
+      Status:                True
+      Type:                  Initialized
+      Last Transition Time:  2021-10-22T22:40:55.000000Z
+      Status:                True
+      Type:                  Ready
+      Last Transition Time:  2021-10-22T22:40:55.000000Z
+      Status:                True
+      Type:                  ContainersReady
+      Last Transition Time:  2021-10-22T22:37:53.000000Z
+      Status:                True
+      Type:                  PodScheduled
+    Name:                    postgres01w0-1
+    Role:                    worker
+    Conditions:
+      Last Transition Time:  2021-10-22T22:37:53.000000Z
+      Status:                True
+      Type:                  Initialized
+      Last Transition Time:  2021-10-22T22:42:41.000000Z
+      Status:                True
+      Type:                  Ready
+      Last Transition Time:  2021-10-22T22:42:41.000000Z
+      Status:                True
+      Type:                  ContainersReady
+      Last Transition Time:  2021-10-22T22:37:53.000000Z
+      Status:                True
+      Type:                  PodScheduled
+    Name:                    postgres01c0-0
+    Role:                    coordinator
+    Conditions:
+      Last Transition Time:  2021-10-22T22:37:54.000000Z
+      Status:                True
+      Type:                  Initialized
+      Last Transition Time:  2021-10-22T22:40:52.000000Z
+      Status:                True
+      Type:                  Ready
+      Last Transition Time:  2021-10-22T22:40:52.000000Z
+      Status:                True
+      Type:                  ContainersReady
+      Last Transition Time:  2021-10-22T22:37:54.000000Z
+      Status:                True
+      Type:                  PodScheduled
+    Name:                    postgres01w0-3
+    Role:                    worker
+    Conditions:
+      Last Transition Time:  2021-10-22T22:37:53.000000Z
+      Status:                True
+      Type:                  Initialized
+      Last Transition Time:  2021-10-22T22:38:35.000000Z
+      Status:                True
+      Type:                  Ready
+      Last Transition Time:  2021-10-22T22:38:35.000000Z
+      Status:                True
+      Type:                  ContainersReady
+      Last Transition Time:  2021-10-22T22:37:53.000000Z
+      Status:                True
+      Type:                  PodScheduled
+    Name:                    postgres01w0-0
+    Role:                    worker
+    Conditions:
+      Last Transition Time:  2021-10-22T22:37:53.000000Z
+      Status:                True
+      Type:                  Initialized
+      Last Transition Time:  2021-10-22T22:42:40.000000Z
+      Status:                True
+      Type:                  Ready
+      Last Transition Time:  2021-10-22T22:42:40.000000Z
+      Status:                True
+      Type:                  ContainersReady
+      Last Transition Time:  2021-10-22T22:37:53.000000Z
+      Status:                True
+      Type:                  PodScheduled
+    Name:                    postgres01w0-2
+    Role:                    worker
+  Primary Endpoint:          20.101.12.221:5432
+  Ready Pods:                5/5
+  Running Version:           v1.1.0_2021-10-12_patching_0bcb7bcaf
+  State:                     Ready
+Events:                      <none>
 ```
 
->[!NOTE]
->2020 年 10 月のリリースより前では、前の例の `Workers` は `Shards` でした。 詳細については、「[リリースノート - Azure Arc 対応データ サービス (プレビュー)](release-notes.md)」を参照してください。
+#### <a name="interpret-the-configuration-information"></a>構成情報を解釈する
 
 先述の `servergroup` の説明のいくつかの特定の重要ポイントに注目してみましょう。 それにより、このサーバー グループについて何がわかりますか?
 
-- これは Postgres のバージョン 12 です。 
-   > ```json
-   > Kind:         `postgresql-12`
-   > ```
-- 2020 年 8 月中に作成されました。
-   > ```json
-   > Creation Timestamp:  `2020-08-31T21:01:07Z`
-   > ```
-- このサーバー グループには、2 つの Postgres 拡張 `citus` と `pg_stat_statements` が作成されました。
-   > ```json
-   > Engine:
-   >    Extensions:
-   >      Name:  `citus`
-   >      Name:  `pg_stat_statements`
-   > ```
-- それは 2 つのワーカー ノードを使用しています
-   > ```json
-   > Scale:
-   >    Workers:  `2`
-   > ```
-- ノードあたり 1 CPU/仮想コアと 512 MB の RAM の使用が保証されています。 4 つ以上の CPU/仮想コアと 1024 MB のメモリを使用します。
-   > ```json
-   > Scheduling:
-   >    Default: 
-   >      Resources:
-   >        Limits:
-   >          Cpu:     4
-   >          Memory:  1024Mi
-   >        Requests:
-   >          Cpu:     1
-   >          Memory:  512Mi
-   > ```
- - クエリに使用でき、問題ありません。 すべてのノードが稼働しています。
-   > ```json
-   > Status:
-   >  ...
-   >  Ready Pods:         3/3
-   >  State:              Ready
-   > ```
+- これは Postgres のバージョン 12 のものであり、Citus 拡張機能を実行します。
 
-**azdata を使用する:**
+   ```output
+   Spec:
+     Dev:  false
+     Engine:
+       Extensions:
+         Name:   citus
+       Version:  12
+   ```
 
-コマンドの一般的な形式は次のとおりです。
+- 2021 年 10 月 13 日に作成されました。
 
-```console
-azdata arc postgres server show -n <server group name>
+   ```output
+     Metadata:
+     Creation Timestamp:  2021-10-13T01:09:25Z
+   ```
+
+- 4 つのワーカー ノードを使用します。
+
+   ```output
+        Scale:
+          Replicas:       1
+          Sync Replicas:  0
+          Workers:        4
+   ```
+
+- リソース構成: この例では、コーディネーターとワーカーで 256 Mi のメモリが保証されています。 コーディネーターとワーカー ノードで、1Gi を超えるメモリを使用することはできません。 コーディネーターとワーカーは両方とも 1 つの仮想コアが保証されており、3 つ以上の仮想コアを使用することはできません。
+
+   ```console
+        Scheduling:
+       Default:
+         Resources:
+           Requests:
+             Memory:  256Mi
+       Roles:
+         Coordinator:
+           Resources:
+             Limits:
+               Cpu:     2
+               Memory:  1Gi
+             Requests:
+               Cpu:     1
+               Memory:  256Mi
+         Worker:
+           Resources:
+             Limits:
+               Cpu:     2
+               Memory:  1Gi
+             Requests:
+               Cpu:     1
+               Memory:  256Mi
+   ```
+
+- サーバー グループはどのような状態ですか? 自分のアプリケーションで使用できますか?
+
+   はい、すべてのポッド (コーディネーター ノードと 4 つすべてのワーカーノード) の準備ができています
+
+   ```console
+   Ready Pods:                5/5
+   ```
+
+## <a name="from-an-azure-arc-enabled-data-services-point-of-view"></a>Azure Arc 対応データ サービスの観点から
+
+Az CLI コマンドを使用します。
+
+### <a name="what-are-the-postgres-server-groups-deployed-and-how-many-workers-are-they-using"></a>Postgres サーバー グループはどのようにデプロイされていますか? また、使用しているワーカーの数はどのくらいですか?
+
+次のコマンドを実行します。
+
+   ```azurecli
+   az postgres arc-server list --k8s-namespace <namespace> --use-k8s
+   ```
+
+デプロイされているサーバー グループが一覧表示されます。
+
+   ```output
+   [
+     {
+       "name": "postgres01",
+       "replicas": 1,
+       "state": "Ready",
+       "workers": 4
+     }
+   ]
+   ```
+
+また、サーバー グループが使用するワーカー ノードの数も示されます。 各ワーカー ノードは 1 つのポッドにデプロイされます。また、コーディネーター ノードをホストするために使用されるポッドを1つ追加する必要があります。
+
+### <a name="how-much-memory-and-vcores-are-being-used-and-what-extensions-were-created-for-a-group"></a>使用されているメモリと仮想コアの量はどれくらいですか、およびグループに対してどのような拡張機能が作成されましたか?
+
+次のコマンドのいずれかを実行します
+
+```azurecli
+az postgres arc-server show -n <server group name>  --k8s-namespace <namespace> --use-k8s
 ```
 
 次に例を示します。
 
-```console
-azdata arc postgres server show -n postgres02
+```azurecli
+az postgres arc-server show -n postgres01 --k8s-namespace arc --use-k8s
 ```
 
-kubectl によって返されるものとよく似た形式と内容で、以下の出力が返されます。
-
-```console
-{
-  "apiVersion": "arcdata.microsoft.com/v1alpha1",
-  "kind": "postgresql-12",
-  "metadata": {
-    "creationTimestamp": "2020-08-31T21:01:07Z",
-    "generation": 10,
-    "name": "postgres02",
-    "namespace": "arc",
-    "resourceVersion": "569516",
-    "selfLink": "/apis/arcdata.microsoft.com/v1alpha1/namespaces/arc/postgresql-12s/postgres02",
-    "uid": "8a9cd118-361b-4a2e-8a9d-5f9257bf6abb"
-  },
-  "spec": {
-    "engine": {
-      "extensions": [
-        {
-          "name": "citus"
-        },
-        {
-          "name": "pg_stat_statements"
-        }
-      ]
-    },
-    "scale": {
-      "workers": 2
-    },
-    "scheduling": {
-      "default": {
-        "resources": {
-          "limits": {
-            "cpu": "4",
-            "memory": "1024Mi"
-          },
-          "requests": {
-            "cpu": "1",
-            "memory": "512Mi"
-          }
-        }
-      }
-    },
-    "service": {
-      "type": "NodePort"
-    },
-    "storage": {
-      "data": {
-        "className": "local-storage",
-        "size": "5Gi"
-      },
-      "logs": {
-        "className": "local-storage",
-        "size": "5Gi"
-      }
-    }
-  },
-  "status": {
-    "externalEndpoint": "10.0.0.4:31066",
-    "readyPods": "3/3",
-    "state": "Ready"
-  }
-}
-```
+kubectl によって返されるものとよく似た形式と内容で、以下の情報が返されます。 任意のツールを使用して、システムと対話します。
 
 ## <a name="next-steps"></a>次のステップ
+
 - [Azure Arc 対応 PostgreSQL Hyperscale の概念を確認する](concepts-distributed-postgres-hyperscale.md)
-- [サーバー グループをスケールアウト (ワーカーノードを追加) する方法について確認する](scale-out-postgresql-hyperscale-server-group.md)
+- [サーバー グループをスケールアウト (ワーカーノードを追加) する方法について確認する](scale-out-in-postgresql-hyperscale-server-group.md)
 - [サーバー グループのスケールアップ/スケールダウン (メモリや仮想コアの増減) の方法について確認する](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)
 - [ストレージ構成について確認する](storage-configuration.md)
 - [データベース インスタンスを監視する方法を確認する](monitor-grafana-kibana.md)
 - [Azure Arc 対応の PostgreSQL Hyperscale サーバー グループで PostgreSQL 拡張機能を使用する](using-extensions-in-postgresql-hyperscale-server-group.md)
-- [Azure Arc 対応の PostgreSQL Hyperscale サーバー グループのセキュリティを構成する](configure-security-postgres-hyperscale.md)
+- [Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのセキュリティを構成する](configure-security-postgres-hyperscale.md)

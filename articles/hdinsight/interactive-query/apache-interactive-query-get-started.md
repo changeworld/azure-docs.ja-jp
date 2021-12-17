@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
-ms.openlocfilehash: ec5d63c18e8fb3a353de334ae571c730f9b0d3d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 464521cee3242859294de42d2086e1bea33bb4c4
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869805"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290912"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Azure HDInsight での対話型クエリとは
 
 対話型クエリ (別名 Apache Hive LLAP または [Low Latency Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの一種](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Apache Hive クエリの速度と対話性が向上します。 顧客は、対話型クエリを使用して、Azure ストレージと Azure Data Lake Storage に格納されているデータに対するクエリを超高速で実行します。 対話型クエリにより、開発者およびデータ サイエンティストは、お気に入りの BI ツールを使用して容易にビッグ データを操作できるようになります。 HDInsight の対話型クエリは、簡単な方法でビッグ データにアクセスするためにいくつかのツールをサポートします。
 
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
+[!INCLUDE [hdinsight-price-change](../includes/hdinsight-enhancements.md)]
 
 対話型クエリ クラスターは、Apache Hadoop クラスターとは異なり、 Hive サービスのみが含まれます。
 

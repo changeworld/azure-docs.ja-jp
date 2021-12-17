@@ -1,29 +1,29 @@
 ---
-title: Azure Arc 対応 Managed Instance の高可用性
-titleSuffix: Deploy Azure Arc enabled Managed Instance with high availability
-description: 高可用性を備えた Azure Arc 対応 Managed Instance をデプロイする方法について説明します。
-author: vin-yu
-ms.author: vinsonyu
+title: 高可用性を備えた Azure Arc 対応 SQL Managed Instance
+titleSuffix: Deploy Azure Arc-enabled SQL Managed Instance with high availability
+description: 高可用性を備えた Azure Arc 対応 SQL Managed Instance をデプロイする方法について説明します。
+author: dnethi
+ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 07/30/2021
 ms.topic: conceptual
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.openlocfilehash: 92f5c900238fc5d40e22870e2f00f8adeb5d335f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 89cce59f1e68d1398a6907c3a4b2b3bee50502cd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032196"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737143"
 ---
-# <a name="azure-arc-enabled-managed-instance-high-availability"></a>Azure Arc 対応 Managed Instance の高可用性
+# <a name="azure-arc-enabled-sql-managed-instance-high-availability"></a>高可用性を備えた Azure Arc 対応 SQL Managed Instance
 
-Azure Arc 対応 Managed Instance は、コンテナー化されたアプリケーションとして Kubernetes にデプロイされ、ステートフル セットや永続ストレージなどの Kubernetes コンストラクトを使用して、サービスの正常性を維持するための組み込みの稼働状況の監視、障害検出、フェールオーバー メカニズムが提供されます。 信頼性を向上させるために、高可用性構成で追加のレプリカと共にデプロイするように Azure Arc 対応 Managed Instance を構成することもできます。 監視、障害検出、自動フェールオーバーは、Arc データ サービスのデータ コントローラーによって管理されます。 このサービスでは、可用性グループのセットアップ、データベース ミラーリング エンドポイントの構成から、可用性グループへのデータベースの追加またはフェールオーバーとアップグレードの調整まですべて、ユーザーの介入なしで提供されます。 このドキュメントでは、両方の種類の高可用性について説明します。
+Azure Arc 対応 SQL Managed Instance は、コンテナー化されたアプリケーションとして Kubernetes にデプロイされ、ステートフル セットや永続ストレージなどの Kubernetes コンストラクトを使用して、稼働状況の監視、障害検出、フェールオーバー メカニズムを組み込みで提供し、サービスの正常性を維持します。 高可用性構成でさらに信頼性を向上させるには、Azure Arc 対応 SQL Managed Instance を構成して、追加のレプリカと共にデプロイします。 監視、障害検出、自動フェールオーバーは、Arc データ サービスのデータ コントローラーによって管理されます。 このサービスでは、可用性グループのセットアップ、データベース ミラーリング エンドポイントの構成から、可用性グループへのデータベースの追加またはフェールオーバーとアップグレードの調整まですべて、ユーザーの介入なしで提供されます。 このドキュメントでは、両方の種類の高可用性について説明します。
 
 ## <a name="built-in-high-availability"></a>組み込みの高可用性 
 
-リモートの永続ストレージが構成され、Arc データ サービスのデプロイで使用されるノードと共有される場合は、Kubernetes によって組み込みの高可用性が提供されます。 この構成では、Kubernetes はクラスター オーケストレーターの役割を果たします。 コンテナー内のマネージド インスタンスまたは基になるノードで障害が発生すると、オーケストレーターにより、そのコンテナーの別のインスタンスがブートストラップされて同じ永続ストレージに接続されます。 Azure Arc 対応 Managed Instance をデプロイすると、このタイプが既定で有効になります。
+リモートの永続ストレージが構成され、Arc データ サービスのデプロイで使用されるノードと共有される場合は、Kubernetes によって組み込みの高可用性が提供されます。 この構成では、Kubernetes はクラスター オーケストレーターの役割を果たします。 コンテナー内のマネージド インスタンスまたは基になるノードで障害が発生すると、オーケストレーターにより、そのコンテナーの別のインスタンスがブートストラップされて同じ永続ストレージに接続されます。 このタイプは、Azure Arc 対応 SQL Managed Instance をデプロイすると既定で有効になります。
 
 ### <a name="verify-built-in-high-availability"></a>組み込みの高可用性を検証する
 
@@ -32,7 +32,7 @@ Azure Arc 対応 Managed Instance は、コンテナー化されたアプリケ�
 ### <a name="prerequisites"></a>前提条件
 
 - Kubernetes クラスターには、[共有されたリモート記憶域](storage-configuration.md#factors-to-consider-when-choosing-your-storage-configuration)がある必要があります 
-- 1 つのレプリカ (既定) を使用してデプロイされた Azure Arc 対応 Managed Instance
+- 1 つのレプリカ (既定) を使用してデプロイされた Azure Arc 対応 SQL Managed Instance
 
 1. ポッドを表示します。 
 
@@ -71,41 +71,41 @@ Azure Arc 対応 Managed Instance は、コンテナー化されたアプリケ�
 
 ## <a name="deploy-with-always-on-availability-groups"></a>Always On 可用性グループを使用してデプロイする
 
-信頼性を向上させるために、高可用性構成で追加のレプリカと共にデプロイするように Azure Arc 対応 Managed Instance を構成できます。 
+高可用性構成でさらに信頼性を向上させるには、Azure Arc 対応 SQL Managed Instance を構成して、追加のレプリカと共にデプロイします。 
 
 可用性グループによって有効になる機能は次のとおりです。
 
-- 複数のレプリカと共にデプロイすると、`containedag` という名前の単一の可用性グループが作成されます。 既定では、`containedag` に、プライマリを含む、3 つのレプリカがあります。 可用性グループの CRUD 操作はすべて内部的に管理されます。これには、可用性グループの作成や作成された可用性グループへのレプリカの参加が含まれます。 Azure Arc 対応 Managed Instance に追加の可用性グループを作成することはできません。
+- 複数のレプリカと共にデプロイすると、`containedag` という名前の単一の可用性グループが作成されます。 既定では、`containedag` に、プライマリを含む、3 つのレプリカがあります。 可用性グループの CRUD 操作はすべて内部的に管理されます。これには、可用性グループの作成や作成された可用性グループへのレプリカの参加が含まれます。 Azure Arc 対応 SQL Managed Instance には、追加の可用性グループは作成できません。
 
 - データベースはすべて可用性グループに自動的に追加されます。これには、すべてのユーザーおよびシステム データベース (`master` や `msdb` など) が含まれます。 この機能により、可用性グループ レプリカ全体で単一システム ビューが提供されます。 インスタンスに直接接続する場合は、`containedag_master` データベースと `containedag_msdb` データベースの両方に注意してください。 `containedag_*` データベースは、可用性グループ内の `master` と `msdb` を表します。
 
-- 外部エンドポイントは、可用性グループ内のデータベースへの接続用に自動的にプロビジョニングされます。 このエンドポイント `<managed_instance_name>-svc-external` は、可用性グループ リスナーの役割を果たします。
+- 外部エンドポイントは、可用性グループ内のデータベースへの接続用に自動的にプロビジョニングされます。 このエンドポイント `<managed_instance_name>-external-svc` は、可用性グループ リスナーの役割を果たします。
 
 ### <a name="deploy"></a>配置
 
 可用性グループを使用してマネージド インスタンスをデプロイするには、次のコマンドを実行します。
 
-```console
-azdata arc sql mi create -n <name of instance> --replicas 3
+```azurecli
+az sql mi-arc create -n <name of instance> --replicas 3 --k8s-namespace <namespace> --use-k8s
 ```
 
 ### <a name="check-status"></a>状態の確認
 インスタンスがデプロイされたら、次のコマンドを実行してインスタンスの状態を確認します。
 
-```console
-azdata arc sql mi list
-azdata arc sql mi show -n <name of instance>
+```azurecli
+az sql mi-arc list --k8s-namespace <namespace> --use-k8s
+az sql mi-arc show -n <name of instance> --k8s-namespace <namespace> --use-k8s
 ```
 
 出力例:
 
 ```output
-user@pc:/# azdata arc sql mi list
+user@pc:/# az sql mi-arc list --k8s-namespace <namespace> --use-k8s
 ExternalEndpoint    Name    Replicas    State
 ------------------  ------  ----------  -------
 20.131.31.58,1433   sql2    3/3         Ready
 
-user@pc:/#  azdata arc sql mi show -n sql2
+user@pc:/#  az sql mi-arc show -n sql2 --k8s-namespace <namespace> --use-k8s
 {
 ...
   "status": {
@@ -219,7 +219,7 @@ user@pc:/#  azdata arc sql mi show -n sql2
 
 ### <a name="limitations"></a>制限事項
 
-Azure Arc 対応 Managed Instance の可用性グループには、[ビッグ データ クラスターの可用性グループと同じ制限があります。詳細については、ここをクリックしてください。](/sql/big-data-cluster/deployment-high-availability#known-limitations)
+Azure Arc 対応 SQL Managed Instance の可用性グループには、[ビッグ データ クラスターの可用性グループと同じ制限があります。詳細については、こちらをクリックしてください。](/sql/big-data-cluster/deployment-high-availability#known-limitations)
 
 ## <a name="next-steps"></a>次のステップ
 

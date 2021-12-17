@@ -2,19 +2,17 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Web Apps について
+    - name: App Service について
       href: overview.md
-    - name: App Service Environment について
-      href: environment/intro.md
+    - name: App Service 環境について
+      href: environment/overview.md
     - name: ホスティング オプションの比較
       href: /azure/architecture/guide/technology-choices/compute-decision-tree
 - name: クイックスタート
   expanded: true
   items:
-    - name: ASP.NET Core
-      href: quickstart-dotnetcore.md
     - name: ASP.NET
-      href: quickstart-dotnet-framework.md
+      href: quickstart-dotnetcore.md
     - name: Node.js
       href: quickstart-nodejs.md
     - name: PHP
@@ -34,22 +32,14 @@
       href: quickstart-custom-container.md
     - name: 複数コンテナー アプリ
       href: quickstart-multi-container.md
+    - name: Azure Arc のアプリ (プレビュー)
+      href: quickstart-arc.md
 - name: チュートリアル
   items:
-    - name: アプリ アクセス ストレージと Microsoft Graph をセキュリティで保護する
-      items:
-        - name: 概要
-          href: scenario-secure-app-overview.md
-        - name: App Service 認証を設定する
-          href: scenario-secure-app-authentication-app-service.md
-        - name: アプリ アクセス ストレージをセキュリティで保護する
-          href: scenario-secure-app-access-storage.md
-        - name: アプリ アクセス Microsoft Graph をユーザーとしてセキュリティで保護する
-          href: scenario-secure-app-access-microsoft-graph-as-user.md
-        - name: アプリ アクセス Microsoft Graph をアプリとしてセキュリティで保護する
-          href: scenario-secure-app-access-microsoft-graph-as-app.md
-        - name: リソースをクリーンアップする
-          href: scenario-secure-app-clean-up-resources.md
+    - name: カスタム ドメインのマップ
+      href: app-service-web-tutorial-custom-domain.md
+    - name: TLS/SSL を使用してドメインをセキュリティで保護する
+      href: configure-ssl-bindings.md
     - name: アプリと DB
       items:
         - name: ASP.NET Core と SQL DB
@@ -72,22 +62,44 @@
           href: tutorial-custom-container.md
         - name: 複数コンテナー アプリ
           href: tutorial-multi-container-app.md
-    - name: SQL DB への安全なアクセス
-      href: app-service-web-tutorial-connect-msi.md
-    - name: RESTful API のホスト
-      href: app-service-web-tutorial-rest-api.md
-    - name: カスタム ドメインのマップ
-      href: app-service-web-tutorial-custom-domain.md
-    - name: SSL を使用したドメインのセキュリティ保護
-      href: configure-ssl-bindings.md
-    - name: CDN の追加
-      href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
+    - name: シークレットを使用しないバックエンド接続
+      items:
+        - name: マネージド ID を使用して SQL DB にアクセスする
+          href: tutorial-connect-msi-sql-database.md
+        - name: マネージド ID がサポートされていないサービスにアクセスする
+          href: tutorial-connect-msi-key-vault.md
     - name: ユーザーを認証する
       href: tutorial-auth-aad.md
+    - name: アプリ アクセスのストレージ、Microsoft Graph をセキュリティで保護する
+      items:
+        - name: 概要
+          href: scenario-secure-app-overview.md
+        - name: App Service 認証を設定する
+          href: scenario-secure-app-authentication-app-service.md
+        - name: アプリ アクセス ストレージをセキュリティで保護する
+          href: scenario-secure-app-access-storage.md
+        - name: アプリ アクセス Microsoft Graph をユーザーとしてセキュリティで保護する
+          href: scenario-secure-app-access-microsoft-graph-as-user.md
+        - name: アプリ アクセス Microsoft Graph をアプリとしてセキュリティで保護する
+          href: scenario-secure-app-access-microsoft-graph-as-app.md
+        - name: リソースをクリーンアップする
+          href: scenario-secure-app-clean-up-resources.md
+    - name: ネットワーク トラフィックを分離する
+      href: tutorial-networking-isolate-vnet.md
+    - name: RESTful API のホスト
+      href: app-service-web-tutorial-rest-api.md
+    - name: CDN の追加
+      href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: メール/ツイートの送信
       href: tutorial-send-email.md
     - name: エラーをトラブルシューティングする
       href: tutorial-troubleshoot-monitor.md
+    - name: GitHub のアクション
+      items:
+        - name: コンテナーを使用した ASP.NET Core
+          href: app-service-sql-github-actions.md
+        - name: ASP.NET
+          href: app-service-sql-asp-github-actions.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -98,6 +110,8 @@
       href: samples-resource-manager-templates.md
     - name: Terraform
       href: samples-terraform.md
+    - name: Bicep
+      href: samples-bicep.md
 - name: 概念
   items:
     - name: App Service プラン
@@ -108,37 +122,41 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
+    - name: Azure Arc ホスティング (プレビュー)
+      href: overview-arc-integration.md
     - name: セキュリティ
       items:
-        - name: 推奨事項
+        - name: Recommendations
           href: security-recommendations.md
         - name: 認証と権限承認
           href: overview-authentication-authorization.md
         - name: OS とランタイムの修正プログラムの適用
           href: overview-patch-os-runtime.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/app-service-security-baseline?toc=/azure/app-service/toc.json
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: セキュリティの概要
           href: overview-security.md
-    - name: ネットワーク機能
+    - name: ネットワーク
       items:
         - name: 概要
           href: networking-features.md
-        - name: Application Gateway とサービス エンドポイントの併用
-          href: networking/app-gateway-with-service-endpoints.md
+        - name: 受信 IP と送信 IP
+          href: overview-inbound-outbound-ips.md
         - name: プライベート エンドポイント
           href: networking/private-endpoint.md
-    - name: 受信 IP と送信 IP
-      href: overview-inbound-outbound-ips.md
-    - name: Virtual Network 統合
-      href: web-sites-integrate-with-vnet.md
-    - name: Hybrid Connections (ハイブリッド接続)
-      href: app-service-hybrid-connections.md
-    - name: Traffic Manager 統合
-      href: web-sites-traffic-manager.md
+        - name: Hybrid Connections (ハイブリッド接続)
+          href: app-service-hybrid-connections.md
+        - name: 仮想ネットワークの統合
+          href: overview-vnet-integration.md
+        - name: Application Gateway の統合
+          href: networking/app-gateway-with-service-endpoints.md
+        - name: NAT ゲートウェイの統合
+          href: networking/nat-gateway-integration.md
+        - name: Traffic Manager 統合
+          href: web-sites-traffic-manager.md
     - name: ローカル キャッシュ
       href: overview-local-cache.md
     - name: 診断
@@ -165,8 +183,6 @@
           href: configure-language-ruby.md
         - name: カスタム コンテナーの構成
           href: configure-custom-container.md
-        - name: オンプレミスのリソースへの接続
-          href: web-sites-integrate-with-vnet.md
         - name: Azure Storage (コンテナー) の構成
           href: configure-connect-to-azure-storage.md
     - name: Deploy to Azure (Azure へのデプロイ)
@@ -187,7 +203,9 @@
               href: deploy-ci-cd-custom-container.md
             - name: ローカル Git からのデプロイ
               href: deploy-local-git.md
-            - name: コンテナーの GitHub アクション
+            - name: GitHub のアクション
+              href: deploy-github-actions.md
+            - name: コンテナーの GitHub Actions
               href: deploy-container-github-action.md
             - name: テンプレートを使用したデプロイ
               href: deploy-complex-application-predictably.md
@@ -205,11 +223,9 @@
           href: configure-domain-traffic-manager.md
         - name: アクティブなドメインの移行
           href: manage-custom-dns-migrate-domain.md
-    - name: アプリのセキュリティ保護
+    - name: ユーザーを認証する
       items:
-        - name: SSL 証明書の追加
-          href: configure-ssl-certificate.md
-        - name: ユーザーを認証する
+        - name: ID プロバイダーの構成
           items:
             - name: Azure AD による認証
               href: configure-authentication-provider-aad.md
@@ -217,23 +233,33 @@
               href: configure-authentication-provider-facebook.md
             - name: Google による認証
               href: configure-authentication-provider-google.md
-            - name: Microsoft アカウントによる認証
-              href: configure-authentication-provider-microsoft.md
             - name: Twitter による認証
               href: configure-authentication-provider-twitter.md
-            - name: OpenID Connect プロバイダーを使用した認証 (プレビュー)
+            - name: OpenID Connect プロバイダーを使用した認証
               href: configure-authentication-provider-openid-connect.md
             - name: Apple でのサインインを使用した認証 (プレビュー)
               href: configure-authentication-provider-apple.md
-        - name: 高度な認証
-          href: app-service-authentication-how-to.md
+        - name: サインインまたはサインアウトをカスタマイズする
+          href: configure-authentication-customize-sign-in-out.md
+        - name: ユーザー ID にアクセスする
+          href: configure-authentication-user-identities.md
+        - name: トークンを操作する
+          href: configure-authentication-oauth-tokens.md
+        - name: API のバージョンを管理する
+          href: configure-authentication-api-version.md
+        - name: ファイルベースの構成
+          href: configure-authentication-file-based.md
+    - name: アプリのセキュリティ保護
+      items:
+        - name: TLS/SSL 証明書の追加
+          href: configure-ssl-certificate.md
         - name: アクセスを制限する
           href: app-service-ip-restrictions.md
         - name: マネージド ID の使用
           href: overview-managed-identity.md
         - name: キー コンテナーからのシークレットの参照
           href: app-service-key-vault-references.md
-        - name: コード内での SSL 証明書の使用
+        - name: コード内で TLS/SSL 証明書を使用する
           href: configure-ssl-certificate-in-code.md
         - name: TLS 相互認証の構成
           href: app-service-web-configure-tls-mutual-auth.md
@@ -251,6 +277,8 @@
           href: manage-scale-per-app.md
     - name: アプリの監視
       items:
+        - name: Azure Monitor を使用して App Service を監視する
+          href: monitor-app-service.md
         - name: クォータとアラート
           href: web-sites-monitor.md
         - name: ログの有効化
@@ -277,6 +305,12 @@
           href: app-service-undelete.md
         - name: 停止したリージョンからの復元
           href: manage-disaster-recovery.md
+        - name: Azure Arc で有効にする
+          href: manage-create-arc-environment.md
+        - name: VNet 統合を有効にする
+          href: configure-vnet-integration-enable.md
+        - name: VNet 統合ルーティングを構成する
+          href: configure-vnet-integration-routing.md
     - name: アプリの移動
       items:
         - name: リージョン間の移動
@@ -293,8 +327,20 @@
           href: webjobs-sdk-get-started.md
         - name: WebJobs SDK の使用
           href: webjobs-sdk-how-to.md
+    - name: 高可用性
+      items:
+        - name: 高可用性の構成
+          href: how-to-zone-redundancy.md
+    - name: プロビジョニングを自動化する
+      items:
+        - name: Bicep
+          href: provision-resource-bicep.md
+        - name: Terraform
+          href: provision-resource-terraform.md
 - name: リファレンス
   items:
+    - name: データの監視
+      href: monitor-app-service-reference.md
     - name: Azure CLI
       href: /cli/azure/appservice
     - name: Azure PowerShell
@@ -303,6 +349,8 @@
       href: /rest/api/appservice/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.web/allversions
+    - name: アプリ設定のリファレンス
+      href: reference-app-settings.md
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
@@ -320,8 +368,12 @@
       href: ../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=app-service'
-    - name: Migration Assistant のガイド
-      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
+    - name: Kudu サービス
+      href: resources-kudu.md
+    - name: ASP.NET を移行する
+      href: app-service-asp-net-migration.md
+    - name: Java を移行する
+      href: app-service-java-migration.md
     - name: ベスト プラクティス
       href: app-service-best-practices.md
     - name: サンプル
@@ -333,7 +385,7 @@
         - name: 参照アーキテクチャ
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: デプロイ スクリプト
-          href: 'https://azure.microsoft.com/documentation/scripts/'
+          href: /azure/automation/automation-runbook-gallery
     - name: トラブルシューティング
       items:
         - name: 断続的な送信接続エラーのトラブルシューティング
@@ -348,21 +400,23 @@
           href: troubleshoot-performance-degradation.md
         - name: ドメインと証明書に関する問題のトラブルシューティング
           href: troubleshoot-domain-ssl-certificates.md
-        - name: よく寄せられる質問
-          items:
-            - name: 可用性、パフォーマンス、アプリケーションに関する FAQ
-              href: faq-availability-performance-application-issues.md
-            - name: デプロイに関する FAQ
-              href: faq-deployment.md
-            - name: オープンソース テクノロジに関する FAQ
-              href: faq-open-source-technologies.md
-            - name: 構成と管理に関する FAQ
-              href: faq-configuration-and-management.md
+    - name: よく寄せられる質問
+      items:
+        - name: 可用性、パフォーマンス、アプリケーションに関する FAQ
+          href: faq-availability-performance-application-issues.yml
+        - name: デプロイに関する FAQ
+          href: faq-deployment.yml
+        - name: オープンソース テクノロジに関する FAQ
+          href: faq-open-source-technologies.yml
+        - name: 構成と管理に関する FAQ
+          href: faq-configuration-and-management.yml
+        - name: App Service on Linux
+          href: faq-app-service-linux.yml
     - name: IP アドレスの変更
       items:
         - name: 受信 IP アドレス
           href: ip-address-change-inbound.md
         - name: 発信 IP アドレス
           href: ip-address-change-outbound.md
-        - name: SSL アドレス
+        - name: TLS/SSL アドレス
           href: ip-address-change-ssl.md

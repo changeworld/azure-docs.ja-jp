@@ -1,18 +1,17 @@
 ---
-title: Data Catalog の系列のユーザー ガイド (プレビュー)
+title: データ カタログ系列のユーザー ガイド
 description: この記事では、Azure Purview のカタログ系列機能の概要について説明します。
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/29/2020
-ms.openlocfilehash: 8b08a60d484aa3d52600b8aef2f53d6ca8a04f9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: e2923e29652a92de188366168140bf9def43c082
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952169"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209472"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview Data Catalog の系列のユーザー ガイド
 
@@ -28,10 +27,10 @@ Azure Purview のプラットフォーム機能の 1 つに、データ プロ�
 ### <a name="data-processing-system"></a>データ処理システム
 データ統合と ETL ツールでは、実行時に Azure Purview に系列をプッシュできます。 Data Factory、Data Share、Synapse、Azure Databricks などのツールは、このカテゴリのデータ システムに属します。 データ処理システムでは、さまざまなデータベースおよびストレージ ソリューションからのデータセットをソースとして参照して、ターゲット データセットが作成されます。 系列のために Purview と現在統合されるデータ処理システムの一覧を次の表に示します。
 
-
 | データ処理システム | サポートされるスコープ |
 | ---------------------- | ------------|
-| Azure Data Factory | [コピー アクティビティ](how-to-link-azure-data-factory.md#data-factory-copy-activity-support) <br> [データ フロー アクティビティ](how-to-link-azure-data-factory.md#data-factory-data-flow-support) <br> [SSIS パッケージの実行アクティビティ](how-to-link-azure-data-factory.md#data-factory-execute-ssis-package-support) |
+| Azure Data Factory | [コピー アクティビティ](how-to-link-azure-data-factory.md#copy-activity-support) <br> [データ フロー アクティビティ](how-to-link-azure-data-factory.md#data-flow-support) <br> [SSIS パッケージの実行アクティビティ](how-to-link-azure-data-factory.md#execute-ssis-package-support) |
+| Azure Synapse Analytics | [コピー アクティビティ](how-to-lineage-azure-synapse-analytics.md#copy-activity-support) <br> [データ フロー アクティビティ](how-to-lineage-azure-synapse-analytics.md#data-flow-support) |
 | Azure Data Share | [スナップショットの共有](how-to-link-azure-data-share.md) |
  
 ### <a name="data-storage-systems"></a>データ ストレージ システム
@@ -112,7 +111,7 @@ Azure Purview では、データセットとプロセスの資産レベルの系
 
    :::image type="content" source="./media/catalog-lineage-user-guide/select-switch-to-asset.png" alt-text="系列データ資産で [資産に切り替え] を選択する方法を示すスクリーンショット。" lightbox="./media/catalog-lineage-user-guide/select-switch-to-asset.png":::
 
-2. 系列の多いデータセットでは、系列キャンバスが複雑になることがあります。 見やすくするために、既定のビューには、フォーカスされている資産の 5 レベルの系列のみが表示されます。 系列の残りの部分は、系列キャンバスのバブルをクリックすると展開できます。 データ コンシューマーは、キャンバス内の不要な資産を非表示にすることもできます。 さらに見やすくするには、系列キャンバスの上部にある **[より多くの系列]** のトグルをオフにします。 この操作により、系列キャンバスのすべてのバブルが非表示になります。
+2. 系列の多いデータセットでは、系列キャンバスが複雑になることがあります。 見やすくするために、既定のビューには、フォーカスされている資産の 5 レベルの系列のみが表示されます。 系列の残りの部分は、系列キャンバスのバブルを選択すると展開できます。 データ コンシューマーは、キャンバス内の不要な資産を非表示にすることもできます。 さらに見やすくするには、系列キャンバスの上部にある **[より多くの系列]** のトグルをオフにします。 この操作により、系列キャンバスのすべてのバブルが非表示になります。
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png" alt-text="[より多くの系列] を切り替える方法を示すスクリーンショット。" lightbox="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png":::
 

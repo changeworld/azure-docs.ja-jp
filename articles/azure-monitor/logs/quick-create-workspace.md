@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/18/2021
-ms.openlocfilehash: 7d3ffd754959c59fb34f326473247d836871ea75
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3d9e075e50b4be0a21f4138a49faf8309474ad9c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106821"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440053"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Azure Portal で Log Analytics ワークスペースを作成する
 Azure portal で、 **[Log Analytics ワークスペース]** メニューを使用して、Log Analytics ワークスペースを作成します。 Log Analytics ワークスペースは、Azure Monitor ログ データ用の一意の環境です。 各ワークスペースには、独自のデータ リポジトリと構成があり、データ ソースとソリューションは、特定のワークスペースにデータを格納するように構成されます。 次のソースからデータを収集しようとする場合、Log Analytics ワークスペースが必要です。
@@ -19,12 +19,6 @@ Azure portal で、 **[Log Analytics ワークスペース]** メニューを使
 * System Center Operations Manager によって監視されているオンプレミスのコンピューター
 * Configuration Manager のデバイス コレクション 
 * Azure ストレージからの診断またはログ データ
-
-環境内の Azure VM、Windows VM、Linux VM などの他のソースについては、次のトピックを参照してください。
-
-*  [Azure Virtual Machines に関するデータの収集](../vm/quick-collect-azurevm.md) 
-*  [ハイブリッド Linux コンピューターからのデータの収集](../vm/quick-collect-linux-computer.md)
-*  [ハイブリッド Windows コンピューターからのデータの収集](../vm/quick-collect-windows-computer.md)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -47,14 +41,14 @@ Azure Portal で、 **[すべてのサービス]** をクリックします。 �
         ![Log Analytics リソース ブレードの作成](media/quick-create-workspace/create-workspace.png)  
 
 
-**[確認および作成]** をクリックして設定を見直し、 **[作成]** をクリックしてワークスペースを作成します。 これによって従量課金制という既定の価格レベルが選択され、課金対象となる量のデータを収集され始めるまでは何の料金も発生しません。 その他の価格レベルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
+**[確認および作成]** をクリックして設定を見直し、 **[作成]** をクリックしてワークスペースを作成します。 これによって従量課金制という既定の価格レベルが選択され、課金対象となる量のデータが収集され始めるまで料金は一切発生しません。 その他の価格レベルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
 
 
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 過去 14 日間に削除され、[論理的な削除状態](../logs/delete-workspace.md#soft-delete-behavior)になっているワークスペースを作成した場合は、ワークスペースの構成に応じて、操作の結果が異なる可能性があります。
 1. 削除されたワークスペースと同じワークスペース名、リソース グループ、サブスクリプション、リージョンを指定した場合は、データ、構成、および接続されたエージェントを含むワークスペースが復旧されます。
-2. 同じワークスペース名を使用していても、リソース グループ、サブスクリプション、またはリージョンが異なる場合は、エラー "*このワークスペース名は既に使用されています。別の名前を試してください*" を受け取ります。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。
+2. ワークスペース名は、各リソース グループ内で一意である必要があります。 既に存在しているワークスペース名を使用する場合は、リソース グループ内の論理的な削除でも、ワークスペース名 'workspace-name' が一意ではない、または競合しているというエラーが表示されます。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。
    - ワークスペースを[回復します](../logs/delete-workspace.md#recover-workspace)
    - ワークスペースを[完全に削除](../logs/delete-workspace.md#permanent-workspace-delete)します
    - 同じワークスペース名を使用して新しいワークスペースを作成します

@@ -1,14 +1,14 @@
 ---
 title: エンタープライズ シナリオにおける Azure Lighthouse
 description: Azure Lighthouse の機能を使用すると、複数の Azure AD テナントを使用するエンタープライズ内のクロステナント管理を簡略化できます。
-ms.date: 03/12/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: 97b44f71750bdb533e889546f370a9b36ea5d3b4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7d0accd765049c671d8d61a76d7c6449260b0140
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103419356"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249649"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>エンタープライズ シナリオにおける Azure Lighthouse
 
@@ -20,7 +20,7 @@ ms.locfileid: "103419356"
 
 組織によっては、複数の Azure AD テナントを使用する必要がある場合があります。 これは一時的な状況の場合があります。買収が行われ、長期的なテナント統合戦略がまだ定義されていない場合などです。 また、場合によっては、組織が複数のテナントを継続的に管理する必要があります (完全に独立した子会社、地理的または法的な要件や、その他の考慮事項のため)。
 
-マルチテナント アーキテクチャが必要な場合は、Azure Lighthouse を利用することで管理操作の一元化と合理化が容易になります。 「[Azure の委任されたリソース管理](azure-delegated-resource-management.md)」を使用して、1 つの管理側テナントのユーザーが、一元管理されたスケーラブルな方法で[クロステナント管理機能](cross-tenant-management-experience.md)を実行できます。
+マルチテナント アーキテクチャが必要な場合は、Azure Lighthouse を利用することで管理操作の一元化と合理化が容易になります。 Azure Lighthouse を使用すると、ある管理テナント内のユーザーが、一元管理されたスケーラブルな方法で[テナントにまたがる管理機能](cross-tenant-management-experience.md)を実行できます。
 
 ## <a name="tenant-management-architecture"></a>テナント管理のアーキテクチャ
 
@@ -38,7 +38,7 @@ ms.locfileid: "103419356"
 
 いずれの場合も、[委任されたリソースにアクセスできるユーザーを定義する際には、必ず最小限の特権の原則に従ってください](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege)。 こうすることで、ユーザーが必要なタスクを実行するために必要なアクセス許可のみを持ち、不注意によるエラーが発生する可能性を減らすことができます。
 
-Azure Lighthouse では、データやリソースを物理的に移動するのではなく、管理側テナントと管理対象テナントの間に論理的なリンクのみを提供します。 さらに、アクセスは、常に管理側テナントから管理対象テナントへの一方向のみです。  管理対象テナントのリソースに対して管理操作を実行する場合は、管理側テナントのユーザーとグループが引き続き多要素認証を使用する必要があります。
+Azure Lighthouse では、データやリソースを物理的に移動するのではなく、管理側テナントと管理対象テナントの間に論理的なリンクのみを提供します。 さらに、アクセスは、常に管理側テナントから管理対象テナントへの一方向のみです。 管理対象テナントのリソースに対して管理操作を実行する場合は、管理側テナントのユーザーとグループが引き続き多要素認証を使用する必要があります。
 
 内部または外部のガバナンスとコンプライアンスのガードレールを持つ企業の場合、[Azure アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)を使用して透過性の要件を満たすことができます。 エンタープライズのテナントが管理側と管理対象のテナントのリレーションシップを確立すると、各テナントのユーザーは、ログに記録されたアクティビティを表示することで、管理側テナントのユーザーが実行したアクションを確認できます。
 
@@ -49,6 +49,12 @@ Azure Lighthouse では、データやリソースを物理的に移動するの
 通常、エンタープライズ ユーザーはエンタープライズのテナントに直接アクセスでき、管理オファリングを市場に投入したり宣伝したりする必要がないので、通常は、Azure Resource Manager テンプレートをデプロイする方がより高速で簡単です。 [オンボード ガイダンス](../how-to/onboard-customer.md)ではサービス プロバイダーと顧客の場合について説明していますが、エンタープライズは同じプロセスを使用してテナントをオンボードできます。
 
 必要に応じて、[マネージド サービス オファーを Azure Marketplace に公開](../how-to/publish-managed-services-offers.md)して、企業内のテナントをオンボーディングすることもできます。 オファーが適切なテナントでのみ利用できるようにするには、必ずプランを非公開とマークします。 非公開プランの場合、オンボードする予定の各テナントのサブスクリプション ID を指定します。また、他のユーザーはあなたのプランを取得できなくなります。
+
+## <a name="azure-ad-b2c"></a>Azure AD B2C
+
+[Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) は、サービスとしての企業-消費者間 (B2C) ID が提供されます。 Azure Lighthouse を使用してリソース グループを委任すると、Azure Monitor を使用して、Azure Active Directory B2C (Azure AD B2C) のサインインと監査ログをさまざまな監視ソリューションにルーティングできます。 そのログを、長期的な使用のために保持したり、サードパーティのセキュリティ情報およびイベント管理 (SIEM) ツールと統合して環境の分析情報を取得したりすることができます。
+
+詳細については、「[Azure Monitor で Azure AD B2C を監視する](../../active-directory-b2c/azure-monitor.md)」を参照してください。
 
 ## <a name="terminology-notes"></a>用語に関する注意事項
 
@@ -61,4 +67,4 @@ Azure Lighthouse では、データやリソースを物理的に移動するの
 ## <a name="next-steps"></a>次のステップ
 
 - [テナント間の管理エクスペリエンス](cross-tenant-management-experience.md)について学習します。
-- [Azure の委任されたリソース管理](azure-delegated-resource-management.md)について学習してください。
+- Azure Lighthouse の動作に関する詳細については、[こちら](architecture.md)を参照してください。

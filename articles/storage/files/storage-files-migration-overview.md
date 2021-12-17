@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: a6335d90625f860984ccbfd224955a97a32b731f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a18421163e39fbcf5c1081c79cf06d982613fafb
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785219"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769113"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure ファイル共有への移行
 
@@ -45,7 +45,7 @@ Azure には、複数の種類のクラウド ストレージが用意されて�
 
 - ソースについての該当するすべてのファイル情報を格納する。
 - 移行ツールを使用してファイルを転送する。
-- 移行先のターゲット ストレージにファイルを格納する。
+- 移行先のターゲット ストレージにファイルを格納する。 </br> 最終的には、このページの移行ガイドのターゲットは、1 つ以上の Azure ファイル共有です。 こちらの [Azure ファイル共有ではサポートされていない機能とファイルの忠実性の一覧](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)を考慮に入れてください。
 
 移行を円滑に進めるために、[ニーズに合った最適なコピー ツール](#migration-toolbox)を特定し、ストレージ ターゲットをソースと一致させます。
 
@@ -57,7 +57,7 @@ Azure BLOB のオブジェクト ストレージとは異なり、Azure ファ�
 
 現時点で Azure ファイル共有のファイルに保存できないファイルの忠実性の主な側面が、代替データ ストリームです。 これは、Azure File Sync が使用されているときはオンプレミスで保持されます。
 
-Azure ファイル共有の [Azure AD 認証](storage-files-identity-auth-active-directory-enable.md)および [Azure AD DS 認証](storage-files-identity-auth-active-directory-domain-service-enable.md)に関する記事を参照してください。
+Azure ファイル共有の[オンプレミスの Active Directory 認証](storage-files-identity-auth-active-directory-enable.md)と [Azure AD DS 認証](storage-files-identity-auth-active-directory-domain-service-enable.md)に関する記事を参照してください。
 
 ## <a name="migration-guides"></a>移行ガイド
 
@@ -81,12 +81,12 @@ Azure ファイル共有の [Azure AD 認証](storage-files-identity-auth-active
 | source | ターゲット: </br>ハイブリッド デプロイ | ターゲット: </br>クラウドのみのデプロイ |
 |:---|:--|:--|
 | | ツールの組み合わせ:| ツールの組み合わせ: |
-| Windows Server 2012 R2 以降 | <ul><li>[Azure File Sync](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure File Sync と Azure DataBox](../file-sync/file-sync-offline-data-transfer.md)</li></ul> | <ul><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li><li>Azure File Sync の使用</li></ul> |
-| Windows Server 2012 以前 | <ul><li>DataBox と Azure File Sync を使用して最近のサーバー OS へ</li><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ、その後アップロード</li></ul> | <ul><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ</li><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
-| ネットワーク接続ストレージ (NAS) | <ul><li>[Azure File Sync のアップロードの使用](storage-files-migration-nas-hybrid.md)</li><li>[DataBox および Azure File Sync の使用](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[DataBox 経由](storage-files-migration-nas-cloud-databox.md)</li><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
-| Linux/Samba | <ul><li>[Azure File Sync と RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
-| Microsoft Azure StorSimple クラウド アプライアンス 8100 または StorSimple クラウド アプライアンス 8600 | <ul><li>[専用のデータ移行クラウド サービスの使用](storage-files-migration-storsimple-8000.md)</li></ul> | |
-| StorSimple クラウド アプライアンス 1200 | <ul><li>[Azure File Sync の使用](storage-files-migration-storsimple-1200.md)</li></ul> | |
+| Windows Server 2012 R2 以降 | <ul><li>[Azure File Sync](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure File Sync と Azure DataBox](storage-files-migration-server-hybrid-databox.md)</li></ul> | <ul><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li><li>Azure File Sync の使用</li></ul> |
+| Windows Server 2012 以前 | <ul><li>DataBox と Azure File Sync を使用して最近のサーバー OS へ</li><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ、その後アップロード</li></ul> | <ul><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ</li><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li></ul> |
+| ネットワーク接続ストレージ (NAS) | <ul><li>[Azure File Sync のアップロードの使用](storage-files-migration-nas-hybrid.md)</li><li>[DataBox および Azure File Sync の使用](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[DataBox 経由](storage-files-migration-nas-cloud-databox.md)</li><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li></ul> |
+| Linux/Samba | <ul><li>[Azure File Sync と RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li></ul> |
+| Microsoft Azure StorSimple 8100 または 8600 シリーズのアプライアンス | <ul><li>[専用のデータ移行クラウド サービスの使用](storage-files-migration-storsimple-8000.md)</li></ul> | <ul><li>[専用のデータ移行クラウド サービスの使用](storage-files-migration-storsimple-8000.md)</li></ul> |
+| StorSimple 1200 仮想アプライアンス | <ul><li>[Azure File Sync の使用](storage-files-migration-storsimple-1200.md)</li></ul> | |
 
 ## <a name="migration-toolbox"></a>移行ツールボックス
 
@@ -119,9 +119,13 @@ Microsoft およびその他のファイル コピー ツールがいくつか�
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | サポートされています。 Azure ファイル共有は、ネットワーク ドライブとしてマウントできます。 | 完全な忠実性。* |
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Azure ファイル共有にネイティブに統合されます。 | 完全な忠実性。* |
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| 記憶域移行サービス | 間接的にサポートされています。 Azure ファイル共有は、SMS ターゲット サーバーでネットワーク ドライブとしてマウントできます。 | 完全な忠実性。* |
-|![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy </br>バージョン 10.6 | サポートされています。 | ソース ルート ACL のコピーはサポートされていません。その他の点では、完全な忠実性があります。 * </br>[Azure ファイル共有で AzCopy を使用する方法を確認する](../common/storage-use-azcopy-files.md) |
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | サポートされています。 | DataBox では、メタデータが完全にサポートされています。 |
+<<<<<<< HEAD
 |![完全にはお勧めできません](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer </br>バージョン 1.14 | サポートされています。 | ACL はコピーされません。 タイムスタンプがサポートされます。  |
+=======
+|![完全にはお勧めできません](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| AzCopy </br>最新バージョン | サポートされていますが、完全には推奨されません。 | 大規模な差分コピーはサポートされていないため、一部のファイルの忠実性が失われる可能性があります。 </br>[Azure ファイル共有で AzCopy を使用する方法を確認する](../common/storage-use-azcopy-files.md) |
+|![完全にはお勧めできません](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure ストレージ エクスプローラー </br>最新バージョン | サポートはされますが、推奨はされません。 | ACL など、ほとんどのファイルの忠実性が失われます。 タイムスタンプがサポートされます。 |
+>>>>>>> repo_sync_working_branch
 |![推奨されません](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | サポートされています。 | メタデータがコピーされません。 |
 |||||
 

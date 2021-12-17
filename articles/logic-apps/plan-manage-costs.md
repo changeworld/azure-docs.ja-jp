@@ -5,13 +5,13 @@ ms.service: logic-apps
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
-ms.date: 03/24/2021
-ms.openlocfilehash: ec2e1098df4c21704ee7c17852b893630cd3fd27
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/25/2021
+ms.openlocfilehash: b6e23d008a0171e8b71c032349943b809b4bfc92
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761819"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113667097"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>Azure Logic Apps のコストを計画および管理する
 
@@ -39,23 +39,31 @@ Azure Logic Apps は、新しいリソースをデプロイすると[コスト�
 
 ### <a name="costs-that-typically-accrue-with-azure-logic-apps"></a>Azure Logic Apps で通常発生するコスト
 
-Logic Apps サービスでは、作成および使用するリソースに基づいて、さまざまな価格モデルが適用されます。
+Azure Logic Apps サービスでは、作成および使用するリソースに基づいて、さまざまな価格モデルが適用されます。
 
-* マルチテナント Logic Apps サービスで作成して実行するロジック アプリのリソースでは、[従量課金モデル](../logic-apps/logic-apps-pricing.md#consumption-pricing)が使用されます。
+* マルチテナントの Azure Logic Apps で作成して実行するロジック アプリのリソースでは、[従量課金モデル](../logic-apps/logic-apps-pricing.md#consumption-pricing)が使用されます。
 
-* [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) で作成して実行するロジック アプリのリソースでは、[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)が使用されます。
+* シングルテナントの Azure Logic Apps で作成して実行するロジック アプリのリソースでは、[ホスティング プラン価格モデル](../logic-apps/logic-apps-pricing.md#standard-pricing)を使用します。
+
+* [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) で作成して実行するロジック アプリのリソースでは、[ISE 価格モデル](../logic-apps/logic-apps-pricing.md#ise-pricing)を使用します。
 
 ロジック アプリで使用するために作成するとコストが発生する、その他のリソースを次に示します。
 
 * [統合アカウント](../logic-apps/logic-apps-pricing.md#integration-accounts)は、B2B 統合を構築するために作成してロジック アプリにリンクする別個のリソースです。 統合アカウントでは [固定価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts)が使用されます。この場合の料金は、使用する統合アカウントの種類または "*層*" に基づきます。
 
-* [ISE](../logic-apps/logic-apps-pricing.md#fixed-pricing) は、仮想ネットワーク内のリソースに直接アクセスする必要があるロジック アプリの配置場所として作成する別個のリソースです。 ISE では[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)が使用されます。この場合の料金は、作成した ISE SKU とその他の設定に基づきます。
+* [ISE](../logic-apps/logic-apps-pricing.md#ise-pricing) は、仮想ネットワーク内のリソースに直接アクセスする必要があるロジック アプリの配置場所として作成する別個のリソースです。 ISE では [ISE 価格モデル](../logic-apps/logic-apps-pricing.md#ise-pricing)を使用します。この場合の料金は、作成した ISE SKU とその他の設定に基づきます。 ただし、データ保持とストレージ消費によってコストは発生しません。
 
 * [カスタム コネクタ](../logic-apps/logic-apps-pricing.md#consumption-pricing)は、ロジック アプリで使用するコネクタが事前に構築されていない REST API 用に作成する別個のリソースです。 カスタム コネクタの実行では、ISE で使用する場合を除き、[従量課金モデル](../logic-apps/logic-apps-pricing.md#consumption-pricing)が使用されます。
 
-* マルチテナント Logic Apps サービスでは、[データ保持とストレージ消費](../logic-apps/logic-apps-pricing.md#data-retention)によって[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)を使用するコストが発生します。 たとえば、実行履歴からの入力と出力はバックグラウンド ストレージに保持されます。これは、ロジック アプリから独立して作成、管理、アクセスするストレージ リソースとは異なります。
+<a name="storage-operations-costs"></a>
 
-  ISE では、データ保持とストレージ消費によってコストは発生しません。
+#### <a name="storage-operations-and-costs"></a>ストレージ操作とコスト
+
+Azure Logic Apps では、すべてのストレージ操作に [Azure Storage](../storage/index.yml) を使用します。 マルチテナントの Azure Logic Apps では、すべてのストレージの使用およびコストがロジック アプリに関連付けられます。 [データ保持とストレージ消費](../logic-apps/logic-apps-pricing.md#storage-operations)によって[固定価格モデル](../logic-apps/logic-apps-pricing.md#storage-operations)を使用するコストが発生します。 たとえば、実行履歴からの入力と出力はバックグラウンド ストレージに保持されます。これは、ロジック アプリから独立して作成、管理、アクセスするストレージ リソースとは異なります。
+
+シングルテナントの Azure Logic Apps では、独自の Azure [ストレージ アカウント](../azure-functions/storage-considerations.md#storage-account-requirements)を使用できます。 この機能により、Logic Apps のデータの管理のしやすさと柔軟性が向上します。 "*ステートフル*" ワークフローで操作を実行すると、Azure Logic Apps ランタイムによってストレージ トランザクションが作成されます。 たとえば、キューはスケジュール設定に使用され、テーブルと BLOB はワークフローの状態の格納に使用されます。 ストレージのコストは、ワークフローのコンテンツに基づいて変化します。 トリガー、アクション、ペイロードが異なると、ストレージ操作とニーズも異なります。 ストレージ トランザクションは、[Azure Storage の価格モデル](https://azure.microsoft.com/pricing/details/storage/)に従います。 ストレージ コストは、Azure の請求書に個別に一覧表示されます。
+
+シングルテナントの Azure Logic Apps では、[Logic Apps ストレージ計算ツール](https://logicapps.azure.com/calculator)を使用して、ワークフローで実行される可能性があるストレージ操作の数とそのコストをいくらか把握できます。 サンプル ワークフローを選択するか、既存のワークフロー定義を使用することができます。 最初の計算では、ワークフロー内のストレージ操作の数を推定します。 その後、これらの数値を使用して、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用して考えられるコストを見積もることができます。 詳細については、[シングルテナントの Azure Logic Apps でのワークフローのストレージ ニーズとコストの推定](estimate-storage-costs.md)に関する記事を参照してください。
 
 <a name="costs-after-resource-deletion"></a>
 
@@ -113,13 +121,13 @@ Azure アカウントまたはサブスクリプションのコストを事前�
 
 Azure で作成または使用開始したリソースに対するコストの発生が始まったら、こちらの方法でそれらのコストを確認および監視できます。
 
-* Azure Monitor を使用して、[ロジック アプリの実行とストレージの消費を監視する](#monitor-billing-metrics)
+* Azure Monitor を使用して、[ロジック アプリの実行とストレージの使用を監視する](#monitor-billing-metrics)
 
 * [Azure Cost Management and Billing](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) を使用して[コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を実行する
 
 <a name="monitor-billing-metrics"></a>
 
-### <a name="monitor-logic-app-executions-and-storage-consumption"></a>ロジック アプリの実行とストレージの消費を監視する
+### <a name="monitor-logic-app-executions-and-storage-usage"></a>ロジック アプリの実行とストレージの使用を監視する
 
 Azure Monitor を使用すると、特定のロジック アプリの、これらのメトリックを表示できます。
 

@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と PureCloud by Genesys の統合 | Microsoft Docs
-description: Azure Active Directory と PureCloud by Genesys の間でシングル サインオンを構成する方法について説明します。
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Genesys Cloud for Azure の統合 | Microsoft Docs'
+description: Azure Active Directory と Genesys Cloud for Azure の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 7c6f84ee3bb4920dbe57221b8b0bbf9f5880742b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3e5cc70f889eb24d50e67beb95a1e6324cecb02
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653017"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341732"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PureCloud by Genesys の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-genesys-cloud-for-azure"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Genesys Cloud for Azure の統合
 
-このチュートリアルでは、PureCloud by Genesys と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と PureCloud by Genesys を統合すると、次のことができます。
+このチュートリアルでは、Genesys Cloud for Azure と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Genesys Cloud for Azure を統合すると、次のことができます。
 
-* PureCloud by Genesys にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して PureCloud by Genesys に自動的にサインインできるように設定できます。
+* Genesys Cloud for Azure にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Genesys Cloud for Azure に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -31,90 +31,95 @@ ms.locfileid: "101653017"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 お持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* PureCloud by Genesys でのシングル サインオン (SSO) が有効なサブスクリプション。
+* Genesys Cloud for Azure でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* PureCloud by Genesys では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* Genesys Cloud for Azure では、**SP および IDP** Initiated SSO がサポートされます。
+
+* Genesys Cloud for Azure では、[自動化されたユーザー プロビジョニング](purecloud-by-genesys-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
-## <a name="add-purecloud-by-genesys-from-the-gallery"></a>ギャラリーからの PureCloud by Genesys の追加
+## <a name="add-genesys-cloud-for-azure-from-the-gallery"></a>ギャラリーからの Genesys Cloud for Azure の追加
 
-Azure AD への PureCloud by Genesys の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に PureCloud by Genesys を追加する必要があります。 そのためには、次の手順に従います。
+Azure AD への Genesys Cloud for Azure の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Genesys Cloud for Azure を追加する必要があります。 そのためには、次の手順に従います。
 
 1. 職場または学校アカウントを使用するか、個人用 Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**PureCloud by Genesys**」と入力します。
-1. 結果のパネルから **[PureCloud by Genesys]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに **[Genesys Cloud for Azure]** と入力します。
+1. 結果のパネルから **[Genesys Cloud for Azure]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-sso-for-purecloud-by-genesys"></a>PureCloud by Genesys の Azure AD SSO の構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-genesys-cloud-for-azure"></a>Genesys Cloud for Azure の Azure AD SSO の構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、PureCloud by Genesys に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと PureCloud by Genesys の関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、Genesys Cloud for Azure で Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Genesys Cloud for Azure の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-PureCloud by Genesys で Azure AD SSO を構成してテストするには、次の手順に従います。
+Genesys Cloud for Azure で Azure AD SSO を構成してテストするには、次の手順に従います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[PureCloud by Genesys の SSO の構成](#configure-purecloud-by-genesys-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[PureCloud by Genesys のテスト ユーザーの作成](#create-purecloud-by-genesys-test-user)** - PureCloud by Genesys で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[Genesys Cloud for Azure SSO の構成](#configure-genesys-cloud-for-azure-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[Genesys Cloud for Azure のテスト ユーザーの作成](#create-genesys-cloud-for-azure-test-user)** - Genesys Cloud for Azure で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 Azure portal で Azure AD SSO を有効にするには、これらの手順を実行します。
 
-1. Azure portal の **PureCloud by Genesys** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Genesys Cloud for Azure** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンを選択して設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** Initiated モードで構成する場合は、次の手順を行います。
 
     a. **[識別子]** ボックスに、自分のリージョンに対応する URL を入力します。
-
-    ```http
-    https://login.mypurecloud.com/saml
-    https://login.mypurecloud.de/saml
-    https://login.mypurecloud.jp/saml
-    https://login.mypurecloud.ie/saml
-    https://login.mypurecloud.au/saml
-    ```
+    
+    | 識別子 |
+    |---|
+    | https://login.mypurecloud.com/saml |
+    | https://login.mypurecloud.de/saml |
+    | https://login.mypurecloud.jp/saml |
+    | https://login.mypurecloud.ie/saml |
+    | https://login.mypurecloud.com.au/saml |
+    |
 
     b. **[応答 URL]** ボックスに、自分のリージョンに対応する URL を入力します。
 
-    ```http
-    https://login.mypurecloud.com/saml
-    https://login.mypurecloud.de/saml
-    https://login.mypurecloud.jp/saml
-    https://login.mypurecloud.ie/saml
-    https://login.mypurecloud.com.au/saml
-    ```
+    | [応答 URL] |
+    |---|
+    | https://login.mypurecloud.com/saml |
+    | https://login.mypurecloud.de/saml |
+    | https://login.mypurecloud.jp/saml |
+    | https://login.mypurecloud.ie/saml |
+    | https://login.mypurecloud.com.au/saml |
+    |
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** を選択して次の手順を実行します。
 
     **[サインオン URL]** ボックスに、自分のリージョンに対応する URL を入力します。
     
-    ```http
-    https://login.mypurecloud.com
-    https://login.mypurecloud.de
-    https://login.mypurecloud.jp
-    https://login.mypurecloud.ie
-    https://login.mypurecloud.com.au
-    ```
+    |[サインオン URL] |
+    |---|
+    | https://login.mypurecloud.com |
+    | https://login.mypurecloud.de |
+    | https://login.mypurecloud.jp |
+    | https://login.mypurecloud.ie |
+    | https://login.mypurecloud.com.au |
+    |
 
-1. PureCloud by Genesys アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+1. Genesys Cloud for Azure アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![image](common/default-attributes.png)
 
-1. その他に、PureCloud by Genesys アプリケーションでは、次の表に示すとおり、いくつかの属性が SAML 応答で返されることが想定されています。 これらの属性も値が事前に設定されますが、必要に応じてそれらの値を確認することができます。
+1. その他に、Genesys Cloud for Azure アプリケーションでは、次の表に示すとおり、いくつかの属性が SAML 応答で返されることが想定されています。 これらの属性も値が事前に設定されますが、必要に応じてそれらの値を確認することができます。
 
     | 名前 | ソース属性|
     | ---------------| --------------- |
@@ -125,7 +130,7 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-1. **[PureCloud by Genesys のセットアップ]** セクションで、要件に基づいて適切な 1 つ以上の URL をコピーします。
+1. **[Genesys Cloud for Azure のセットアップ]** セクションで、要件に基づいて適切な 1 つ以上の URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -143,19 +148,19 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、PureCloud by Genesys へのアクセスを許可して、B.Simon が Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に Genesys Cloud for Azure へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で、 **[PureCloud by Genesys]** を選択します。
+1. アプリケーションの一覧で **[Genesys Cloud for Azure]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-purecloud-by-genesys-sso"></a>PureCloud by Genesys の SSO の構成
+## <a name="configure-genesys-cloud-for-azure-sso"></a>Genesys Cloud for Azure SSO の構成
 
-1. 別の Web ブラウザー ウィンドウで、PureCloud by Genesys に管理者としてサインインします。
+1. 別の Web ブラウザー ウィンドウで、Genesys Cloud for Azure に管理者としてサインインします。
 
 1. 上部の **[Admin] (管理)** を選択し、 **[Integrations] (統合)** の **[Single Sign-on] (シングル サインオン)** に移動します。
 
@@ -171,19 +176,19 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
     c. **[Target URI] (ターゲット URI)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    d. **[Relying Party Identifier] (証明書利用者識別子)** の値については、Azure portal に移動し、**PureCloud by Genesys** アプリケーション統合ページで **[プロパティ]** タブを選択して、 **[アプリケーション ID]** の値をコピーします。 それを **[Relying Party Identifier] (証明書利用者識別子)** ボックスに貼り付けます。
+    d. **[証明書利用者 ID ]** の値については、Azure portal に移動し、**Genesys Cloud for Azure** アプリケーション統合ページで **[プロパティ]** タブを選択して、 **[アプリケーション ID]** の値をコピーします。 それを **[Relying Party Identifier] (証明書利用者識別子)** ボックスに貼り付けます。
 
-    ![アプリケーション I D の値が表示される [プロパティ] ペインのスクリーンショット。](./media/purecloud-by-genesys-tutorial/configure-6.png)
+    ![アプリケーション ID の値が表示される [プロパティ] ペインのスクリーンショット。](./media/purecloud-by-genesys-tutorial/configuration.png)
 
     e. **[保存]** を選択します。
 
-### <a name="create-purecloud-by-genesys-test-user"></a>PureCloud by Genesys のテスト ユーザーの作成
+### <a name="create-genesys-cloud-for-azure-test-user"></a>Genesys Cloud for Azure のテスト ユーザーを作成する
 
-Azure AD ユーザーが PureCloud by Genesys にサインインできるようにするには、それらを PureCloud by Genesys にプロビジョニングする必要があります。 PureCloud by Genesys では、プロビジョニングは手動のタスクです。
+Azure AD ユーザーを Genesys Cloud for Azure にサインインできるようにするには、そのユーザーを Genesys Cloud for Azure にプロビジョニングする必要があります。 Genesys Cloud for Azure では、プロビジョニングは手動で行います。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順のようにします。**
 
-1. PureCloud by Genesys に管理者としてログインします。
+1. 管理者として Genesys Cloud for Azure にログインします。
 
 1. 上部の **[Admin] (管理)** を選択し、 **[People & Permissions] (ユーザーとアクセス許可)** の **[People] (ユーザー)** に移動します。
 
@@ -203,22 +208,25 @@ Azure AD ユーザーが PureCloud by Genesys にサインインできるよう�
 
     c. **［作成］** を選択します
 
+> [!NOTE]
+> Genesys Cloud for Azure では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./purecloud-by-genesys-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
 #### <a name="sp-initiated"></a>SP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる PureCloud by Genesys のサインオン URL にリダイレクトされます。  
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Genesys Cloud for Azure のサインオン URL にリダイレクトされます。  
 
-* PureCloud by Genesys のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Genesys Cloud for Azure のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した PureCloud by Genesys に自動的にサインインされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Genesys Cloud for Azure に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [PureCloud by Genesys] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した PureCloud by Genesys に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Genesys Cloud for Azure] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Genesys Cloud for Azure に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-PureCloud by Genesys を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Genesys Cloud for Azure を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

@@ -71,7 +71,7 @@
         - name: Azure Policy によるセキュリティ制御
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/api-management-security-baseline?toc=/azure/api-management/TOC.json
     - name: バックエンド
       href: backends.md
     - name: サブスクリプション
@@ -84,6 +84,8 @@
       href: automation-manage-api-management.md
     - name: API のインポートに関する制限事項
       href: api-management-api-import-restrictions.md
+    - name: 仮想ネットワークの概要
+      href: virtual-network-concepts.md
     - name: セルフホステッド ゲートウェイの概要
       href: self-hosted-gateway-overview.md
     - name: 可観測性
@@ -92,6 +94,8 @@
       href: devops-api-development-templates.md
     - name: 論理的な削除
       href: soft-delete.md
+    - name: コンピューティング プラットフォーム
+      href: compute-infrastructure.md
 - name: 操作方法ガイド
   items:
     - name: API の定義
@@ -104,9 +108,15 @@
           href: import-soap-api.md
         - name: SOAP API のインポートと REST への変換
           href: restify-soap-api.md
-        - name: API アプリのインポート
-          href: import-api-app-as-api.md
-        - name: 関数アプリのインポート
+        - name: Websocket API のインポート
+          href: websocket-api.md
+        - name: GraphQL API のインポート
+          href: graphql-api.md
+        - name: App Service Web API をインポートする
+          href: import-app-service-as-api.md
+        - name: コンテナー アプリ Web API をインポートする
+          href: import-container-app-with-oas.md
+        - name: 関数アプリ Web API をインポートする
           href: import-function-app-as-api.md
         - name: ロジック アプリのインポート
           href: import-logic-app-as-api.md
@@ -128,8 +138,13 @@
           href: configure-custom-domain.md
         - name: 複数の Azure リージョンにデプロイする
           href: api-management-howto-deploy-multi-region.md
+        - name: ゾーン冗長性を有効にする
+          displayName: Availability zones
+          href: zone-redundancy.md
         - name: セルフホステッド ゲートウェイをプロビジョニングする
           href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Azure API Management ゲートウェイを Azure Arc にデプロイする
+          href: how-to-deploy-self-hosted-gateway-azure-arc.md
         - name: Azure Kubernetes Service にセルフホステッド ゲートウェイをデプロイする
           href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
         - name: Kubernetes にセルフホステッド ゲートウェイをデプロイする
@@ -160,7 +175,7 @@
           href: api-management-using-with-vnet.md
         - name: 内部仮想ネットワークに接続する
           href: api-management-using-with-internal-vnet.md
-        - name: 内部 VNET で Application Gateway を統合する
+        - name: 内部仮想ネットワークで Application Gateway を統合する
           href: api-management-howto-integrate-internal-vnet-appgateway.md
         - name: 相互証明書認証
           href: api-management-howto-mutual-certificates.md
@@ -170,48 +185,80 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: 開発者エクスペリエンスのカスタマイズ
       items:
-        - name: 開発者ポータルについて
-          href: api-management-howto-developer-portal.md
-        - name: 非推奨から新しい開発者ポータルへの移行
-          href: developer-portal-deprecated-migration.md
-        - name: Azure AD による認証
-          href: api-management-howto-aad.md
-        - name: Azure AD B2C による認証
-          href: api-management-howto-aad-b2c.md
-        - name: 委任された認証
-          href: api-management-howto-setup-delegation.md
-        - name: 電子メール通知とテンプレート
-          href: api-management-howto-configure-notifications.md
-        - name: コンソール OAuth サポートを有効にする
-          href: api-management-howto-oauth2.md
-        - name: 非推奨のポータル - ポータルのカスタマイズ
-          href: api-management-customize-styles.md
-        - name: 非推奨のポータル - ページとレイアウトの変更
-          href: api-management-modify-content-layout.md
-        - name: 非推奨のポータル - テンプレートを使用したカスタマイズ
-          href: api-management-developer-portal-templates.md
-    - name: 非推奨のポータルのテンプレート
-      items:
-        - name: データ モデル リファレンス
-          href: api-management-template-data-model-reference.md
-        - name: ページ コントロール
-          href: api-management-page-controls.md
-        - name: テンプレート
-          href: api-management-developer-portal-templates-reference.md
-        - name: API
-          href: api-management-api-templates.md
-        - name: 製品
-          href: api-management-product-templates.md
-        - name: アプリケーション
-          href: api-management-application-templates.md
-        - name: 発行
-          href: api-management-issue-templates.md
-        - name: User Profile
-          href: api-management-user-profile-templates.md
-        - name: ページ
-          href: api-management-page-templates.md
-        - name: Template resources
-          href: api-management-template-resources.md
+        - name: 開発者ポータルを使用する
+          items:
+            - name: 開発者ポータルについて
+              href: api-management-howto-developer-portal.md
+            - name: よく寄せられる質問
+              href: developer-portal-faq.md
+            - name: ポータルのデプロイを自動化する
+              href: automate-portal-deployments.md
+            - name: 非推奨から新しい開発者ポータルへの移行
+              href: developer-portal-deprecated-migration.md
+            - name: Azure AD による認証
+              href: api-management-howto-aad.md
+            - name: Azure AD B2C による認証
+              href: api-management-howto-aad-b2c.md
+            - name: 認証を委任する
+              href: api-management-howto-setup-delegation.md
+            - name: コンソール OAuth サポートを有効にする
+              href: api-management-howto-oauth2.md
+            - name: 電子メール通知とテンプレート
+              href: api-management-howto-configure-notifications.md
+            - name: Application Insights を統合する
+              href: developer-portal-integrate-application-insights.md
+            - name: Google タグマネージャを統合する
+              href: developer-portal-integrate-google-tag-manager.md
+        - name: 開発者ポータルをセルフホストする
+          items:
+            - name: セルフホステッド ポータルを作成する
+              href: developer-portal-self-host.md
+            - name: セルフホストの代替アプローチ
+              href: developer-portal-alternative-processes-self-host.md
+            - name: ウィジェットを実装する
+              href: developer-portal-implement-widgets.md
+            - name: ウィジェットを提供する
+              href: developer-portal-widget-contribution-guidelines.md
+            - name: コミュニティ ウイジェットを使用する
+              href: developer-portal-use-community-widgets.md
+            - name: セルフホステッド ポータルをテストする
+              href: developer-portal-testing.md
+        - name: 収益化 API
+          items:
+            - name: Azure API Management による収益化
+              href: monetization-overview.md
+            - name: API Management での収益化のサポート方法
+              href: monetization-support.md
+        - name: 非推奨のポータル
+          items:
+            - name: 非推奨のポータル - ポータルのカスタマイズ
+              href: api-management-customize-styles.md
+            - name: 非推奨のポータル - ページとレイアウトの変更
+              href: api-management-modify-content-layout.md
+            - name: 非推奨のポータル - テンプレートを使用したカスタマイズ
+              href: api-management-developer-portal-templates.md
+        - name: 非推奨のポータルのテンプレート
+          items:
+            - name: データ モデル リファレンス
+              href: api-management-template-data-model-reference.md
+            - name: ページ コントロール
+              href: api-management-page-controls.md
+            - name: テンプレート
+              href: api-management-developer-portal-templates-reference.md
+            - name: API
+              href: api-management-api-templates.md
+            - name: 製品
+              href: api-management-product-templates.md
+            - name: アプリケーション
+              href: api-management-application-templates.md
+            - name: 発行
+              href: api-management-issue-templates.md
+            - name: User Profile
+              href: api-management-user-profile-templates.md
+            - name: ページ
+              href: api-management-page-templates.md
+            - name: Template resources
+              href: api-management-template-resources.md
     - name: ポリシーの定義
       items:
         - name: ポリシーの設定または編集
@@ -245,6 +292,10 @@
           href: api-management-transformation-policies.md
         - name: 分散型アプリケーション ランタイム (Dapr) 統合ポリシー
           href: api-management-dapr-policies.md
+        - name: 検証ポリシー
+          href: validation-policies.md
+        - name: GraphQL 検証ポリシー
+          href: graphql-validation-policies.md
     - name: 運用環境でテストする
       items:
         - name: API を Power Platform にエクスポートする
@@ -257,6 +308,8 @@
           href: howto-use-analytics.md
         - name: イベントを Azure Event Hubs にログ記録する
           href: api-management-howto-log-event-hubs.md
+        - name: Event Grid にイベントを送信する
+          href: how-to-event-grid.md
         - name: Azure Application Insights でログを要求する
           href: api-management-howto-app-insights.md
         - name: セルフホステッド ゲートウェイにクラウド メトリックとログを構成する
@@ -271,7 +324,7 @@
           href: api-management-configuration-repository-git.md
         - name: ロールベースのアクセス制御を使用する
           href: api-management-role-based-access-control.md
-        - name: API Management インスタンスを移行する
+        - name: リージョン間でインスタンスを移動する
           href: api-management-howto-migrate.md
         - name: Azure リソースのマネージド ID を使用する
           href: api-management-howto-use-managed-service-identity.md
@@ -300,24 +353,28 @@
       href: ./policy-reference.md
     - name: リソース ログ スキーマ
       href: gateway-log-schema-reference.md
+    - name: Event Grid スキーマ
+      href: ../event-grid/event-schema-api-management.md?toc=/azure/api-management/toc.json&bc=/azure/api-management/breadcrumb/toc.json
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: api-management-faq.md
+      href: api-management-faq.yml
     - name: 価格
       href: 'https://aka.ms/apimpricing'
+    - name: 製品の更新
+      href: 'https://aka.ms/apimupdates'
+    - name: リリース ノート
+      href: 'https://aka.ms/apim/releases'
     - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: ロードマップ
-      href: 'https://aka.ms/apimroadmap'
-    - name: 機能のリクエスト
-      href: 'https://aka.ms/apimwish'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: ビデオ
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=api-management'
+      href: 'https://azure.microsoft.com/documentation/videos/index/?service=api-management'
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-api-management.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-api-management'
+    - name: その他のリソース
+      href: 'https://aka.ms/apimlove'
     - name: API 設計ガイダンス
       href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API 実装ガイダンス

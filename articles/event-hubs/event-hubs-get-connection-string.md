@@ -2,13 +2,13 @@
 title: 接続文字列を取得する - Azure Event Hubs | Microsoft Docs
 description: この記事では、クライアントが Azure Event Hubs への接続に使用できる接続文字列を取得する方法について説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/23/2021
+ms.openlocfilehash: 67a20adb89ffe67546e9704896542f308a243dc3
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86537192"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665410"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs の接続文字列の取得
 
@@ -35,14 +35,12 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 3. **[分析]** セクションで **[Event Hubs]** を選択します。 
 4. イベント ハブの一覧で、自分のイベント ハブを選択します。
 6. **[Event Hubs 名前空間]** ページで、左側のメニューの **[共有アクセス ポリシー]** を選択します。
-
-    ![[共有アクセス ポリシー] メニュー項目](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
 7. ポリシーの一覧で **共有アクセス ポリシー** を選択します。 既定のポリシーの名前は **RootManageSharedAccessPolicy** です。 適切なアクセス許可 (読み取り、書き込み) を持つポリシーを追加し、そのポリシーを使用できます。 
 
-    ![Event Hubs の共有アクセス ポリシー](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
+    :::image type="content" source="./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png" alt-text="Event Hubs の共有アクセス ポリシー":::
 8. **[接続文字列 - 主キー]** フィールドの隣にある **コピー** ボタンを選択します。 
 
-    ![Event Hubs - 接続文字列の取得](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
+    :::image type="content" source="./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png" alt-text="Event Hubs - 接続文字列の取得":::
 
 ## <a name="getting-the-connection-string-with-azure-powershell"></a>Azure PowerShell を使用した接続文字列の取得
 
@@ -51,20 +49,20 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 以下に示すように、[Get-AzEventHubKey](/powershell/module/az.eventhub/get-azeventhubkey)を使用して、指定するポリシーまたはルール名の接続文字列を取得することができます。
 
 ```azurepowershell-interactive
-Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
+Get-AzEventHubKey -ResourceGroupName MYRESOURCEGROUP -NamespaceName MYEHUBNAMESPACE -AuthorizationRuleName RootManageSharedAccessKey
 ```
 
 ## <a name="getting-the-connection-string-with-azure-cli"></a>Azure CLI を使用した接続文字列の取得
 次を使用して、名前空間の接続文字列を取得できます。
 
 ```azurecli-interactive
-az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
+az eventhubs namespace authorization-rule keys list --resource-group MYRESOURCEGROUP --namespace-name MYEHUBNAMESPACE --name RootManageSharedAccessKey
 ```
 
 また、次を使用して、EventHub エンティティの接続文字列を取得することもできます。
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --eventhub-name dummyeventhub --name RootManageSharedAccessKey
+az eventhubs eventhub authorization-rule keys list --resource-group MYRESOURCEGROUP --namespace-name MYEHUBNAMESPACE --eventhub-name MYEHUB --name RootManageSharedAccessKey
 ```
 
 Event Hubs 用の Azure CLI コマンドについて詳しくは、[Event Hubs 用の Azure CLI](/cli/azure/eventhubs) に関する記事をご覧ください。

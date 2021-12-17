@@ -1,33 +1,28 @@
 ---
-title: Java で Azure Service Bus キューを使用する
-description: このチュートリアルでは、Java アプリケーションを作成して、Azure Service Bus キューとの間でメッセージを送受信する方法を学習します。
-ms.date: 06/23/2020
-ms.topic: quickstart
+title: Java で Azure Service Bus キューを使用する (古いバージョン)
+description: この記事では、Java アプリケーションを作成して、Azure Service Bus キューとの間でメッセージを送受信する方法を学習します。
+ms.date: 07/27/2021
+ms.topic: how-to
 ms.devlang: Java
-ms.custom:
-- seo-java-july2019
-- seo-java-august2019
-- seo-java-september2019
-- devx-track-java
-- mode-api
-ms.openlocfilehash: 38657f333fea4ca18fb76eb5832649067bfd01b4
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
+ms.openlocfilehash: 2382a45b73f3961053e870c15b99f3ef5746f966
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538244"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056684"
 ---
-# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>クイック スタート:Java で Azure Service Bus キューを使用してメッセージを送受信する
+# <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages-old-package"></a>Java で Azure Service Bus キューを使用してメッセージを送受信する (古いパッケージ)
 
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-このチュートリアルでは、Java アプリケーションを作成して、Azure Service Bus キューとの間でメッセージを送受信する方法を学習します。 
+[!INCLUDE [service-bus-selector-queues](./includes/service-bus-selector-queues.md)]
+この記事では、Java アプリケーションを作成して、Azure Service Bus キューとの間でメッセージを送受信する方法を学習します。 
 
 > [!WARNING]
->  このクイックスタートでは、古い `azure-servicebus` パッケージを使用します。 最新の `azure-messaging-servicebus` パッケージを使用するクイックスタートについては、[`azure-messaging-servicebus` を使用したメッセージの送受信](service-bus-java-how-to-use-queues.md)に関する記事をご覧ください。 
+>  この記事では、古い `azure-servicebus` パッケージを使用しています。 最新の `azure-messaging-servicebus` パッケージを使用する記事については、[`azure-messaging-servicebus` を使用したメッセージの送受信](service-bus-java-how-to-use-queues.md)に関するページを参照してください。 
 
 
 ## <a name="prerequisites"></a>前提条件
-1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+1. Azure サブスクリプション。 この記事の手順を完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
 2. 使用するキューがない場合は、「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の記事にある手順に従って、キューを作成します。
     1. Service Bus **キュー** の **概要** をお読みください。 
     2. Service Bus **名前空間** を作成します。 
@@ -115,7 +110,7 @@ public void run() throws Exception {
 Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、[Message](/java/api/com.microsoft.azure.servicebus.message) クラスのインスタンスになります。 Message オブジェクトには、(Label、TimeToLive などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。 アプリケーションでは、Message のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切なシリアライザーを使用してオブジェクトをシリアル化します。 または、**java.IO.InputStream** オブジェクトを提供することもできます。
 
 
-Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。
+Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 100 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。
 
 ## <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
 キューからメッセージを受信する主な方法は、**ServiceBusContract** オブジェクトを使用することです。 メッセージは 2 つの異なるモードで受信できます。**ReceiveAndDelete** と **PeekLock** です。

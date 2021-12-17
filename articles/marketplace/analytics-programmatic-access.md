@@ -4,15 +4,16 @@ description: プログラムによる分析のための API 呼び出しパタ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 8e0b94a46e96dd8ba16040e16b421520eb67de19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ed2be363a9e50184d79c4f9870942030fd485eb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583612"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748276"
 ---
 # <a name="programmatic-access-paradigm"></a>プログラムによるアクセスのパラダイム
 
@@ -283,7 +284,7 @@ ms.locfileid: "102583612"
 
 *Query parameter (クエリ パラメーター)*
 
-| パラメーター名 | 必須 | Type | 説明 |
+| パラメーター名 | 必須 | 型 | 説明 |
 | ------------ | ------------- | ------------- | ------------- |
 | `reportId` | はい | string | この引数で指定された `reportId` を持つレポートのみの実行の詳細を取得するフィルター。 複数の `reportIds` を指定する場合は、セミコロン ";" で区切ります。 |
 | `executionId` | いいえ | string | この引数で指定された `executionId` を持つレポートのみの詳細を取得するフィルター。 複数の `executionIds` を指定する場合は、セミコロン ";" で区切ります。 |
@@ -350,4 +351,4 @@ ms.locfileid: "102583612"
 
 ## <a name="next-steps"></a>次のステップ
 - [Swagger API URL](https://api.partnercenter.microsoft.com/insights/v1/cmp/swagger/index.html) を使用して API を試すことができます
-- 分析データへのプログラムによるアクセスの概要
+- [分析データへのプログラムによるアクセスの概要](analytics-get-started.md)

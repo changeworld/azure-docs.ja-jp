@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: ffa52805a5e2680d534b2b24a210465cb3fc7cac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, has-adal-ref
+ms.openlocfilehash: 1c2d35709ab512eb27579db6991567cd27b23376
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100557861"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044556"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
 
@@ -127,17 +127,17 @@ Microsoft ID プラットフォームでは、これらのアプリ アーキテ
 
 ![Web API を呼び出すデスクトップ アプリ](media/scenarios/desktop-app.svg)
 
-Windows ドメインに参加しているか、Azure Active Directory (Azure AD) を使って参加しているコンピューターで稼働している Windows ホスト アプリケーションについては、もう 1 つ選択肢があります。 このようなアプリケーションでは、[統合 Windows 認証](https://aka.ms/msal-net-iwa)を使用するとトークンを自動的に取得できます。
+Windows ドメインに参加しているか、Azure Active Directory (Azure AD) を使って参加しているコンピューターで稼働している Windows ホスト アプリケーションについては、もう 1 つ選択肢があります。 このようなアプリケーションでは、[統合 Windows 認証](https://aka.ms/msal-net-iwa)を使用すると、確認を表示せずにトークンを取得します。
 
 ブラウザーがインストールされていないデバイス上で稼働しているアプリケーションであっても、ユーザーのために API を呼び出すことは可能です。 認証するには、Web ブラウザーがインストールされている別のデバイス上でユーザーがサインインする必要があります。 このシナリオでは、[デバイス コード フロー](https://aka.ms/msal-net-device-code-flow)を使用する必要があります。
 
 ![デバイス コード フロー](media/scenarios/device-code-flow-app.svg)
 
-パブリック クライアント アプリケーションであれば[ユーザー名とパスワードを使ったフロー](scenario-desktop-acquire-token.md#username-and-password)を使用することもできますが、お勧めはしません。 もっとも、DevOps などの一部のシナリオではこのフローが必要になります。
+パブリック クライアント アプリケーションであれば[ユーザー名とパスワードを使ったフロー](scenario-desktop-acquire-token-username-password.md)を使用することもできますが、お勧めはしません。 もっとも、DevOps などの一部のシナリオではこのフローが必要になります。
 
 ユーザー名とパスワードを使ったフローを使用すると、アプリケーションに制約が発生します。 たとえば、アプリケーションでは、Azure AD の多要素認証や条件付きアクセス ツールを使用する必要があるユーザーをサインインさせることができなくなります。 また、アプリケーションでシングル サインオン (SSO) のメリットを享受することもできません。 ユーザー名とパスワードを使った認証は先進認証の原則に反しており、レガシへの対応のためにのみ提供されています。
 
-デスクトップ アプリでトークン キャッシュを永続的にする場合は、[トークン キャッシュのシリアル化](scenario-desktop-acquire-token.md#file-based-token-cache)をカスタマイズすることができます。 [デュアル トークン キャッシュのシリアル化](scenario-desktop-acquire-token.md#dual-token-cache-serialization-msal-unified-cache--adal-v3)を実装すると、後方互換性と前方互換性を備えたトークン キャッシュを利用できるようになります。 これらのトークンでは、以前の世代の認証ライブラリがサポートされます。 ライブラリの具体例としては、.NET 用 Azure AD 認証ライブラリ (ADAL.NET) のバージョン 3 とバージョン 4 などがあります。
+デスクトップ アプリでトークン キャッシュを永続的にする場合は、[トークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)をカスタマイズすることができます。 [デュアル トークン キャッシュのシリアル化](msal-net-token-cache-serialization.md#dual-token-cache-serialization-msal-unified-cache-and-adal-v3)を実装すると、後方互換性と前方互換性を備えたトークン キャッシュを利用できるようになります。 これらのトークンでは、以前の世代の認証ライブラリがサポートされます。 ライブラリの具体例としては、.NET 用 Azure AD 認証ライブラリ (ADAL.NET) のバージョン 3 とバージョン 4 などがあります。
 
 詳細については、[Web API を呼び出すデスクトップ アプリ](scenario-desktop-overview.md)に関するページを参照してください。
 
@@ -160,7 +160,7 @@ MSAL iOS と MSAL Android では、既定でシステム Web ブラウザーが�
 
 ### <a name="protected-web-api"></a>保護された Web API
 
-Microsoft ID プラットフォーム エンドポイントを使用すると、アプリの RESTful Web API などの Web サービスをセキュリティで保護できます。 保護された Web API は、アクセス トークンを使用して呼び出されます。 トークンは、API のデータの保護と受信要求の認証に役立てられます。 Web API の呼び出し元によって、HTTP 要求の Authorization ヘッダーにアクセス トークンが付加されます。
+Microsoft ID プラットフォーム エンドポイントを使用すると、アプリの RESTful API などの Web サービスをセキュリティで保護できます。 保護された Web API は、アクセス トークンを使用して呼び出されます。 トークンは、API のデータの保護と受信要求の認証に役立てられます。 Web API の呼び出し元によって、HTTP 要求の Authorization ヘッダーにアクセス トークンが付加されます。
 
 ASP.NET または ASP.NET Core Web API を保護する場合は、アクセス トークンを検証します。 この検証には、ASP.NET JWT ミドルウェアを使用します。 検証は MSAL.NET ではなく、[.NET ライブラリ用の IdentityModel 拡張機能](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)によって行われます。
 
@@ -224,7 +224,7 @@ ASP.NET または ASP.NET Core Web API を保護する場合は、アクセス �
  </tr>
 
   <tr>
-   <td rowspan="3"><a href="scenario-desktop-overview.md"><img alt=Desktop app that calls web APIs" src="media/scenarios/desktop-app.svg"></a></td>
+   <td rowspan="3"><a href="scenario-desktop-overview.md"><img alt="Desktop app that calls web APIs" src="media/scenarios/desktop-app.svg"></a></td>
    <td rowspan="4"><a href="scenario-desktop-overview.md">Web API を呼び出すデスクトップ アプリ</a></td>
    <td>対話型 (PKCE を使用した<a href="v2-oauth2-auth-code-flow.md">認可コード</a>を利用)</td>
    <td>職場または学校アカウント、個人用アカウント、Azure AD B2C</td>
@@ -241,9 +241,9 @@ ASP.NET または ASP.NET Core Web API を保護する場合は、アクセス �
  </tr>
 
   <tr>
-   <td><a href="scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
+   <td><a href="scenario-desktop-acquire-token-device-code-flow.md"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
    <td><a href="v2-oauth2-device-code.md">デバイス コード</a></td>
-   <td>職場または学校アカウント、個人用アカウント、Azure AD B2C</td>
+   <td>Azure AD B2C でない職場または学校アカウント、個人用アカウント</td>
  </tr>
 
  <tr>
@@ -277,7 +277,7 @@ ASP.NET または ASP.NET Core Web API を保護する場合は、アクセス �
 
 ## <a name="scenarios-and-supported-platforms-and-languages"></a>シナリオとサポートされているプラットフォームと言語
 
-Microsoft の認証ライブラリは、さまざまなプラットフォームをサポートしています。
+Microsoft 認証ライブラリでは、さまざまなプラットフォームをサポートしています。
 
 - .NET Core
 - .NET Framework

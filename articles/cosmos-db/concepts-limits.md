@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: f6416a688c7f1c94d7d8a90b0531b1ccd684ee29
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 10/25/2021
+ms.openlocfilehash: ebd95ba1f4853f649fcdba2190e1bc8b816e201f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031105"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031007"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -25,7 +25,7 @@ ms.locfileid: "107031105"
 
 ### <a name="provisioned-throughput"></a>プロビジョニング スループット
 
-スループットは、[要求ユニット (RU/秒 または RU)](request-units.md) の単位で、コンテナー レベルまたはデータベース レベルでプロビジョニングできます。 次の表は、コンテナー/データベースあたりのストレージとスループットの制限の一覧を示しています。
+スループットは、[要求ユニット (RU/秒 または RU)](request-units.md) の単位で、コンテナー レベルまたはデータベース レベルでプロビジョニングできます。 次の表は、コンテナー/データベースあたりのストレージとスループットの制限の一覧を示しています。 ストレージはデータとインデックス ストレージの量を組み合わせたものになります。
 
 | リソース | 既定の制限 |
 | --- | --- |
@@ -56,7 +56,7 @@ Cosmos コンテナー (または共有スループット データベース) �
 
 * 400 RU/秒 
 * 現在のストレージ (GB 単位) × 10 RU/秒
-* コンテナーでプロビジョニングされた最高 RU ÷ 100
+* コンテナーで今までプロビジョニングされた最高 RU/秒 ÷ 100
 
 例:400 RU/秒と 0 GB のストレージでプロビジョニングされたコンテナーがあるとします。 スループットを 50,000 RU/秒に増やし、20 GB のデータをインポートします。 この時点で、最小 RU/秒は `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 RU/秒になります。 時間の経過と共に、ストレージは 200 GB まで増えました。 この時点で、最小 RU/秒は `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 RU/秒になります。 
 
@@ -67,7 +67,7 @@ Cosmos コンテナー (または共有スループット データベース) �
 
 * 400 RU/秒 
 * 現在のストレージ (GB 単位) × 10 RU/秒
-* データベースでプロビジョニングされた最高 RU ÷ 100
+* データベースで今までプロビジョニングされた最高 RU/秒 ÷ 100
 * 400 + MAX(コンテナー数 - 25, 0) * 100 RU/秒
 
 例:400 RU/秒、15 GB のストレージ、10 個のコンテナーでプロビジョニングされたデータベースがあるとします。 この時点で、最小 RU/秒は `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/秒になります。 データベースに 30 個のコンテナーがあった場合、最小 RU/秒は `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 RU/秒になります。 
@@ -91,7 +91,7 @@ Cosmos DB は、SDK またはポータルを経由した、コンテナーまた
 
 | リソース | 制限 |
 | --- | --- |
-| (論理) パーティションあたりの最大 RU | 5,000 |
+| コンテナーあたりの最大 RU/秒 | 5,000 |
 | すべての項目にわたる、(論理) パーティションあたりの最大ストレージ | 20 GB |
 | 個別の (論理) パーティション キーの最大数 | 無制限 |
 | コンテナーあたりの最大ストレージ | 50 GB |
@@ -102,7 +102,7 @@ Azure portal、Azure PowerShell、Azure CLI、および Azure Resource Manager �
 
 | リソース | 既定の制限 |
 | --- | --- |
-| サブスクリプションあたりの最大データベース アカウント | 既定では 50。 これは、[Azure サポート チケットを提出する](create-support-request-quota-increase.md)ことによって増やすことができます|
+| サブスクリプションあたりの最大データベース アカウント | 既定では 50。 これは、[Azure サポート チケットを提出する](create-support-request-quota-increase.md)ことによって最大 1,000 まで増やすことができます。|
 | リージョン内フェールオーバーの最大数 | 既定では 1 回/時間。 これは、[Azure サポート チケットを提出する](create-support-request-quota-increase.md)ことによって増やすことができます|
 
 > [!NOTE]
@@ -116,16 +116,15 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 
 | リソース | 既定の制限 |
 | --- | --- |
-| データベースの最大数 | 無制限 |
+| データベースの最大数 | 500 |
 | データベースあたりのコンテナーの最大数 (共有スループット) |25 |
-| データベースまたはアカウントあたりのコンテナーの最大数 (専用スループット)  |無制限 |
+| データベースまたはアカウントあたりのコンテナーの最大数 (専用スループット)  | 500 |
 | リージョンの最大数 | 制限なし (すべての Azure リージョン) |
 
 ### <a name="serverless"></a>サーバーレス
 
 | リソース | 制限 |
 | --- | --- |
-| データベースの最大数 | 無制限 |
 | アカウントあたりのコンテナーの最大数  | 100 |
 | リージョンの最大数 | 1 (任意の Azure リージョン) |
 
@@ -197,10 +196,11 @@ Azure Cosmos DB は、各アカウントのシステム メタデータを保持
 |1 分あたりの最大コレクション作成レート|    100|
 |1 分あたりの最大データベース作成レート|    100|
 |1 分あたりのプロビジョニングされたスループットの最大更新レート|    5|
+|アカウントでサポートされているメタデータ操作の最大スループット | 240 RU/秒 |
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>自動スケーリングでプロビジョニングされたスループットの制限
 
-自動スケーリングでのスループットとストレージの制限の詳細については、[自動スケーリング](provision-throughput-autoscale.md#autoscale-limits)および [FAQ](autoscale-faq.md#lowering-the-max-rus) に関する記事をご覧ください。
+自動スケーリングでのスループットとストレージの制限の詳細については、[自動スケーリング](provision-throughput-autoscale.md#autoscale-limits)および [FAQ](autoscale-faq.yml#lowering-the-max-ru-s) に関する記事をご覧ください。
 
 | リソース | 既定の制限 |
 | --- | --- |
@@ -229,15 +229,16 @@ Cosmos DB は、[SQL](./sql-query-getting-started.md) を使用した項目の�
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB API に固有の制限
 
-Cosmos DB は、MongoDB に対して記述されたアプリケーションのための MongoDB ワイヤ プロトコルをサポートしています。 サポートされるコマンドおよびプロトコル バージョンは、[サポートされる MongoDB の機能と構文](mongodb-feature-support.md)に関するページで見つけることができます。
+Cosmos DB は、MongoDB に対して記述されたアプリケーションのための MongoDB ワイヤ プロトコルをサポートしています。 サポートされるコマンドおよびプロトコル バージョンは、[サポートされる MongoDB の機能と構文](mongodb/feature-support-32.md)に関するページで見つけることができます。
 
 次の表は、MongoDB 機能のサポートに固有の制限の一覧を示しています。 SQL (コア) API に関して説明されているその他のサービス制限も MongoDB API に適用されます。
 
 | リソース | 既定の制限 |
 | --- | --- |
 | MongoDB クエリの最大メモリ サイズ (この制限は 3.2 サーバー バージョンにのみ適用されます) | 40 MB |
-|MongoDB 操作の最大実行時間 (3.2 サーバー バージョンの場合)| 15 秒|
-|MongoDB 操作の最大実行時間 (3.6 サーバー バージョンの場合)| 60 秒|
+| MongoDB 操作の最大実行時間 (3.2 サーバー バージョンの場合)| 15 秒|
+| MongoDB 操作の最大実行時間 (3.6 および 4.0 サーバー バージョンの場合)| 60 秒|
+| インデックス定義の埋め込みオブジェクトまたは配列の入れ子の最大レベル | 6 |
 | サーバー側の接続を終了するためのアイドル状態の接続のタイムアウト* | 30 分 |
 
 \* クライアント アプリケーションではドライバー設定内のアイドル状態の接続のタイムアウトを 2 から 3 分に設定することをお勧めします。これは、[Azure LoadBalancer の既定のタイムアウトが 4 分である](../load-balancer/load-balancer-tcp-idle-timeout.md)ためです。  このタイムアウトにより、クライアント マシンと Azure Cosmos DB 間の中間ロード バランサーによってアイドル状態の接続が閉じられないようになります。
@@ -265,15 +266,12 @@ Cosmos DB 試用版は、米国中部、北ヨーロッパ、および東南ア�
 | --- | --- |
 | Azure サブスクリプションあたりの Free レベルのアカウント数 | 1 |
 | Free レベル割引の期間 | アカウントの有効期間。 アカウントの作成時にオプトインする必要があります。 |
-| Free の最大 RU/秒 | 400 RU/秒 |
-| Free の最大ストレージ | 5 GB |
+| Free の最大 RU/秒 | 1000 RU/秒 |
+| Free の最大ストレージ | 25 GB |
 | 共有スループット データベースの最大数 | 5 |
 | 共有スループット データベース内のコンテナーの最大数 | 25 <br>Free レベルのアカウントでは、最大 25 個のコンテナーを使用する共有スループット データベースの最小 RU/秒は 400 RU/秒です。 |
 
-上記に加えて、[アカウントあたりの制限](#per-account-limits)も、Free レベルのアカウントに適用されます。
-
-> [!NOTE]
-> Azure Cosmos DB Free レベルは、Azure 無料アカウントとは異なります。 Azure 無料アカウントでは、Azure クレジットおよびリソースが一定の期間無料で提供されます。 この無料アカウントの一部として Azure Cosmos DB を使用する場合、25 GB のストレージと 400 RU/秒のプロビジョニング済みスループットが 12 か月間利用できます。
+上記に加えて、[アカウントあたりの制限](#per-account-limits)も、Free レベルのアカウントに適用されます。 詳細については、[Free レベル アカウント](free-tier.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -282,10 +280,13 @@ Cosmos DB の中心概念である[グローバル分散](distribute-data-global
 以下のクイック スタートのいずれかに従って、実際に Azure Cosmos DB を使ってみましょう。
 
 * [Azure Cosmos DB SQL API を使ってみる](create-sql-api-dotnet.md)
-* [Azure Cosmos DB の MongoDB 用 API の概要](create-mongodb-nodejs.md)
-* [Azure Cosmos DB Cassandra API を使ってみる](create-cassandra-dotnet.md)
+* [Azure Cosmos DB の MongoDB 用 API の概要](mongodb/create-mongodb-nodejs.md)
+* [Azure Cosmos DB Cassandra API を使ってみる](cassandra/manage-data-dotnet.md)
 * [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
-* [Azure Cosmos DB Table API を使ってみる](create-table-dotnet.md)
+* [Azure Cosmos DB Table API を使ってみる](table/create-table-dotnet.md)
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)

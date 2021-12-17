@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: gatharej
-ms.openlocfilehash: ff6750883a904ff5ddbddd3ddfd1ed82e72aebbc
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: d17ae08067568098fffcdd443ba196c0023fbd42
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498873"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519347"
 ---
 # <a name="azure-internet-peering-for-communications-services-walkthrough"></a>Communication Services のための Azure インターネット ピアリングのチュートリアル
 
@@ -47,16 +47,16 @@ Azure インターネット ピアリングを使用して直接相互接続を�
 
 Peer によりパブリック ASN が Azure サブスクリプションに既に関連付けられている場合は、この手順を無視してください。
 
-[ポータルを使用してピア ASN を Azure サブスクリプションに関連付ける - Azure | Microsoft Docs](https://docs.microsoft.com/azure/internet-peering/howto-subscription-association-portal)
+[ポータルを使用してピア ASN を Azure サブスクリプションに関連付ける - Azure | Microsoft Docs](./howto-subscription-association-portal.md)
 
 次の手順では、Peering Service のための Direct ピアリング接続を作成します。
 
 > [!NOTE]
-> ASN の関連付けが承認されたら、ご利用の ASN とサブスクリプション ID で peeringservices@microsoft.com 宛てに電子メールを送信し、サブスクリプションを Communication Services に関連付けます。 
+> ASN の関連付けが承認されたら、ご利用の ASN とサブスクリプション ID で peeringservice@microsoft.com 宛てに電子メールを送信し、サブスクリプションを Communication Services に関連付けます。 
 
 **2.    Peering Service のための Direct ピアリング接続を作成する:**
 
-指示に従い、[ポータルを使用して Direct ピアリングを作成または変更します](https://docs.microsoft.com/azure/internet-peering/howto-direct-portal)
+指示に従い、[ポータルを使用して Direct ピアリングを作成または変更します](./howto-direct-portal.md)
 
 高可用性の要件を満たしていることを確認してください。
 
@@ -64,7 +64,7 @@ Peer によりパブリック ASN が Azure サブスクリプションに既に
 
 ピアリングの種類:   **Direct**
 
-Microsoft Network:  **8075**
+Microsoft ネットワーク: **8075 (音声付き)**
 
 SKU:        **Premium Free**
 
@@ -83,10 +83,10 @@ Use for Peering Services (Peering Service に使用):   **有効**
   **2a. Peering Service に既存の Direct ピアリング接続を使用する**
 
 Peering Service をサポートするために使用する既存の Direct ピアリングがある場合は、Azure portal でアクティブにすることができます。
-1.  指示に従い、[ポータルを使用してレガシの Direct ピアリングを Azure リソースに変換します](https://docs.microsoft.com/azure/internet-peering/howto-legacy-direct-portal)。
+1.  指示に従い、[ポータルを使用してレガシの Direct ピアリングを Azure リソースに変換します](./howto-legacy-direct-portal.md)。
 必要に応じて、高可用性の要件を満たす追加の回線を注文します。
 
-2.  手順に従い、ポータルを使用して Direct ピアリングで [Peering Service を有効にします](https://docs.microsoft.com/azure/internet-peering/howto-peering-service-portal)。
+2.  手順に従い、ポータルを使用して Direct ピアリングで [Peering Service を有効にします](./howto-peering-service-portal.md)。
 
 
 
@@ -94,7 +94,7 @@ Peering Service をサポートするために使用する既存の Direct ピ�
 **3.    最適化されたルーティングにプレフィックスを登録する**
 
 Communication Services のインフラストラクチャ プレフィックスに対して最適化されたルーティングを行うには、すべてのプレフィックスをピアリング相互接続に登録する必要があります。
-[Azure Peering Service を登録する - Azure portal | Microsoft Docs](https://docs.microsoft.com/azure/peering-service/azure-portal)
+[Azure Peering Service を登録する - Azure portal | Microsoft Docs](../peering-service/azure-portal.md)
 
 プレフィックス キーは、Communications Service パートナーに対して自動的に設定されるので、そのパートナーが登録にプレフィックス キーを使用する必要はありません。 
 
@@ -141,4 +141,4 @@ Communication Services のインフラストラクチャ プレフィックス�
 
 **Q.** オンボードに API を使用できますか?
 
-**A.** 現在、API はサポートされていません。構成は Web ポータル経由で行う必要があります。 
+**A.** 現在、API はサポートされていません。構成は Web ポータル経由で行う必要があります。

@@ -3,13 +3,13 @@ title: Azure で Windows を実行する Service Fabric クラスターを作成
 description: このチュートリアルでは、PowerShell を使用して Windows Service Fabric クラスターを Azure 仮想ネットワークやネットワーク セキュリティ グループにデプロイする方法を学習します。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 2c719569fc97121a935c3dcbd4945e50863ecf80
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86245043"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082021"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>チュートリアル:Azure 仮想ネットワークに Windows を実行する Service Fabric クラスターをデプロイする
 
@@ -145,8 +145,8 @@ ms.locfileid: "86245043"
 
 **パラメーター** | **値の例** | **メモ** 
 |---|---|---|
-|adminUserName|vmadmin| クラスター VM の管理者ユーザー名。 [VM のユーザー名要件](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。 |
-|adminPassword|Password#1234| クラスター VM の管理者パスワード。 [VM のパスワード要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
+|adminUserName|vmadmin| クラスター VM の管理者ユーザー名。 [VM のユーザー名要件](../virtual-machines/windows/faq.yml#what-are-the-username-requirements-when-creating-a-vm-)。 |
+|adminPassword|Password#1234| クラスター VM の管理者パスワード。 [VM のパスワード要件](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。|
 |clusterName|mysfcluster123| クラスターの名前。 使用できる文字はアルファベットと数字のみです。 長さは 3 から 23 文字で指定できます。|
 |location|southcentralus| クラスターの場所。 |
 |certificateThumbprint|| <p>自己署名証明書を作成する場合または証明書ファイルを提供する場合は、値を空にする必要があります。</p><p>以前にキー コンテナーにアップロードされた既存の証明書を使用するには、証明書の SHA1 サムプリントの値を入力します。 例: "6190390162C988701DB5676EB81083EA608DCCF3"。</p> |

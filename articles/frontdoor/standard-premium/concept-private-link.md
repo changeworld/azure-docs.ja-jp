@@ -7,14 +7,14 @@ author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.author: tyao
+ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: c927682231bab1fc92f198c56a2f6aeff2f4c516
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 53c719bb451b6bc8239fbd0f68bb6ad423b37b11
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553534"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607140"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) で Private Link を使用して配信元をセキュリティで保護する
 
@@ -51,5 +51,6 @@ Azure Front Door プライベート エンドポイントは、プラットフ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Private Link サービスを介して Azure Front Door Premium を Web アプリに接続するには、「[プライベート エンドポイントを使用して Web アプリに接続する](../../private-link/tutorial-private-endpoint-webapp-portal.md)」を参照してください。
-* Private Link サービスを介して Azure Front Door Premium をストレージ アカウントに接続する方法については、[プライベート エンドポイントを使用したストレージ アカウントへの接続](../../private-link/tutorial-private-endpoint-storage-portal.md)に関する記事を参照してください。
+* Azure Front Door Premium を Private Link サービス経由で Web アプリに接続するには、「[Private Link を使用して Azure Front Door Premium を Web アプリの配信元に接続する](../../frontdoor/standard-premium/how-to-enable-private-link-web-app.md)」を参照してください。
+* Azure Front Door Premium を Private Link サービス経由でストレージ アカウントに接続するには、「[Private Link を使用して Azure Front Door Premium をストレージ アカウントの配信元に接続する](../../frontdoor/standard-premium/how-to-enable-private-link-storage-account.md)」を参照してください。
+* Azure Front Door Premium を Private Link サービスを使用して内部ロード バランサーの配信元に接続するには、「[プライベート リンクを使用して Azure Front Door Premium を配信元に接続する](../../frontdoor/standard-premium/how-to-enable-private-link-internal-load-balancer.md)」を参照してください。

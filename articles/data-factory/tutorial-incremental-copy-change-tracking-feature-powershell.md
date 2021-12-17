@@ -4,15 +4,16 @@ description: このチュートリアルでは、SQL Server データベース�
 ms.author: yexu
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell
 ms.date: 02/18/2021
-ms.openlocfilehash: a31f8ce227175e65f7119c25dcc575dc6fafdcd4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c7235336f00e681ecd2d35a80afb9f0d1db0609
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727738"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086350"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>PowerShell を使用して、変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
@@ -56,13 +57,13 @@ ms.locfileid: "101727738"
 
 1. **初回読み込み:** ソース データ ストア (Azure SQL Database) からターゲット データ ストア (Azure Blob Storage) にデータ全体をコピーするコピー アクティビティを含んだパイプラインを作成します。
 
-    ![データ全体の読み込み](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-load-flow-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/full-load-flow-diagram.png" alt-text="データ全体の読み込み":::
 1.  **増分読み込み:** 次のアクティビティを含んだパイプラインを作成して定期的に実行します。
     1. **2 つのルックアップ アクティビティ** を作成します。これらのアクティビティによって Azure SQL Database から新旧の SYS_CHANGE_VERSION を取得してコピー アクティビティに渡すことになります。
     2. 2 つの SYS_CHANGE_VERSION 値の間に存在する挿入/更新/削除されたデータを Azure SQL Database から Azure Blob Storage にコピーする **コピー アクティビティを 1 つ** 作成します。
     3. 次回のパイプライン実行に備えて SYS_CHANGE_VERSION の値を更新する **ストアド プロシージャ アクティビティを 1 つ** 作成します。
 
-    ![増分読み込みのフロー図](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-load-flow-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-load-flow-diagram.png" alt-text="増分読み込みのフロー図":::
 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
@@ -150,13 +151,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
+
 1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
    
-     ```powershell
+    ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 
     リソース グループが既に存在する場合、上書きしないようお勧めします。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
+
 2. データ ファクトリの場所の変数を定義します。
 
     ```powershell
@@ -440,26 +443,26 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 1. [Azure Portal](https://portal.azure.com) にログインします。
 2. **[すべてのサービス]** をクリックし、キーワード「`data factories`」で検索して、 **[データ ファクトリ]** を選択します。
 
-    ![[データ ファクトリ] メニュー](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png" alt-text="[データ ファクトリ] メニュー":::
 3. データ ファクトリの一覧から **目的のデータ ファクトリ** を探して選択し、[データ ファクトリ] ページを起動します。
 
-    ![目的のデータ ファクトリの検索](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png" alt-text="目的のデータ ファクトリの検索":::
 4. [データ ファクトリ] ページの **[監視と管理]** タイルをクリックします。
 
-    ![Monitor & Manage tile](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png" alt-text="[監視と管理] タイル":::    
 5. 独立したタブで **データ統合アプリケーション** が起動します。すべての **パイプラインの実行** とその状態を確認できます。 次の例では、パイプラインの実行が、**成功** 状態であることに注目してください。 **[パラメーター]** 列のリンクをクリックすると、パイプラインに渡されたパラメーターを確認できます。 エラーが発生した場合は、 **[エラー]** 列にリンクが表示されます。 **[アクション]** 列のリンクをクリックします。
 
-    ![データ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png" alt-text="データ ファクトリのパイプライン実行を示すスクリーンショット。":::    
 6. **[アクション]** 列のリンクをクリックすると、以下のページが開いて、そのパイプラインに関するすべての **アクティビティの実行** が表示されます。
 
-    ![[パイプライン] リンクが呼び出された、データ ファクトリのアクティビティの実行を示すスクリーンショット。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png" alt-text="[パイプライン] リンクが呼び出された、データ ファクトリのアクティビティの実行を示すスクリーンショット。":::
 7. 再度 **パイプラインの実行** ビューに切り替えるには、この画像に示した **[パイプライン]** をクリックします。
 
 
 ### <a name="review-the-results"></a>結果の確認
 `adftutorial` コンテナーの `incchgtracking` フォルダーに、`incremental-<GUID>.txt` という名前のファイルが確認できます。
 
-![フル コピーからの出力ファイル](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-copy-output-file.png)
+:::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/full-copy-output-file.png" alt-text="フル コピーからの出力ファイル":::
 
 このファイルには、データベースからのデータが存在します。
 
@@ -625,16 +628,16 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 ### <a name="monitor-the-incremental-copy-pipeline"></a>増分コピー パイプラインを監視する
 1. **データ統合アプリケーション** で、**パイプラインの実行** ビューを最新の情報に更新します。 その一覧に IncrementalCopyPipeline があることを確認してください。 **[アクション]** 列のリンクをクリックします。  
 
-    ![パイプラインを含むデータ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png" alt-text="パイプラインを含むデータ ファクトリのパイプライン実行を示すスクリーンショット。":::    
 2. **[アクション]** 列のリンクをクリックすると、以下のページが開いて、そのパイプラインに関するすべての **アクティビティの実行** が表示されます。
 
-    ![いくつかが成功としてマークされている、データ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png" alt-text="いくつかが成功としてマークされている、データ ファクトリのパイプライン実行を示すスクリーンショット。":::
 3. 再度 **パイプラインの実行** ビューに切り替えるには、この画像に示した **[パイプライン]** をクリックします。
 
 ### <a name="review-the-results"></a>結果の確認
 `adftutorial` コンテナーの `incchgtracking` フォルダーにもう 1 つファイルが確認できます。
 
-![増分コピーからの出力ファイル](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-copy-output-file.png)
+:::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-copy-output-file.png" alt-text="増分コピーからの出力ファイル":::
 
 このファイルに含まれているのは、データベースからの差分データのみです。 `U` と記録されているレコードはデータベース内の更新された行で、`I` は追加された行です。
 

@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Logic Apps とは
+    - name: Azure Logic Apps について
       href: logic-apps-overview.md
 - name: クイックスタート
   expanded: true
@@ -18,6 +18,8 @@
       href: quickstart-create-deploy-azure-resource-manager-template.md
     - name: ロジック アプリを作成して管理する - Azure CLI
       href: quickstart-logic-apps-azure-cli.md
+    - name: ロジック アプリを作成して管理する - Azure PowerShell
+      href: quickstart-logic-apps-azure-powershell.md
 - name: チュートリアル
   items:
     - name: スケジュールベースのワークフローの作成
@@ -36,9 +38,15 @@
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
 - name: 概念
   items:
-    - name: Logic Apps のコネクタ
-      href: ../connectors/apis-list.md
-    - name: 定期的なワークフローをスケジュール設定する
+    - name: コネクタと組み込み操作
+      items:
+        - name: コネクタの概要
+          href: ../connectors/apis-list.md
+        - name: マネージド コネクタ
+          href: ../connectors/managed.md
+        - name: 組み込み操作
+          href: ../connectors/built-in.md
+    - name: スケジュールされた定期的なワークフロー
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Azure でのサーバーレス
       href: logic-apps-serverless-overview.md
@@ -54,17 +62,39 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/logic-apps-security-baseline?toc=/azure/logic-apps/toc.json
 - name: 操作方法ガイド
   items:
-    - name: Azure Logic Apps プレビュー
+    - name: シングルテナントの Azure Logic Apps
       items:
-        - name: Azure Logic Apps プレビューの概要
-          href: logic-apps-overview-preview.md
-        - name: ステートフルとステートレス ワークフローの作成 - Azure portal
-          href: create-stateful-stateless-workflows-azure-portal.md
-        - name: ステートフルとステートレス ワークフローの作成 - Visual Studio Code
-          href: create-stateful-stateless-workflows-visual-studio-code.md
+        - name: シングルテナントの概要
+          href: single-tenant-overview-compare.md
+        - name: ワークフロー デザイナーについて (シングルテナント)
+          href: designer-overview.md
+        - name: シングルテナント ワークフローの作成 - ポータル
+          href: create-single-tenant-workflows-azure-portal.md
+        - name: シングルテナント ワークフローの作成 - Visual Studio Code
+          href: create-single-tenant-workflows-visual-studio-code.md
+        - name: シングルテナント ワークフロー用の SQL ストレージの設定
+          href: set-up-sql-db-storage-single-tenant-standard-workflows.md
+        - name: シングルテナントでロジック アプリのホストとアプリの設定を編集する
+          href: edit-app-settings-host-settings.md
+        - name: シングルテナント ワークフローのパラメーターを作成する
+          href: parameterize-workflow-app.md
+        - name: シングルテナント用の DevOps デプロイ
+          href: devops-deployment-single-tenant-azure-logic-apps.md
+        - name: シングルテナント用の DevOps デプロイを設定する
+          href: set-up-devops-deployment-single-tenant-azure-logic-apps.md
+        - name: シングルテナント ワークフローと仮想ネットワーク間のトラフィックをセキュリティで保護する
+          href: secure-single-tenant-workflow-virtual-network-private-endpoint.md
+        - name: シングルテナント ワークフローのストレージ コストを見積もる
+          href: estimate-storage-costs.md
+    - name: Azure Arc 対応 Logic Apps
+      items:
+        - name: Azure Arc 対応 Logic Apps について
+          href: azure-arc-enabled-logic-apps-overview.md
+        - name: Azure Arc 対応のロジック アプリを作成してデプロイする
+          href: azure-arc-enabled-logic-apps-create-deploy-workflows.md
     - name: 開発
       items:
         - name: あらかじめ用意されているテンプレートから作成する
@@ -129,6 +159,8 @@
               href: logic-apps-custom-api-authentication.md
             - name: カスタム API をデプロイして呼び出す
               href: logic-apps-custom-api-host-deploy-call.md
+        - name: ロジック アプリでの UTF-8 以外の文字エンコードのサポート
+          href: support-non-unicode-character-encoding.md
         - name: エラーをトラブルシューティングする
           href: logic-apps-diagnosing-failures.md
     - name: Azure 仮想ネットワークにアクセスする
@@ -151,61 +183,72 @@
           href: logic-apps-gateway-connection.md
     - name: B2B シナリオの開発
       items:
-        - name: 統合アカウントを作成する
-          href: logic-apps-enterprise-integration-create-integration-account.md
-          displayName: 'Azure CLI, az logic integration-account create, integration-account'
-        - name: 取引先
-          href: logic-apps-enterprise-integration-partners.md
-        - name: アグリーメント
-          href: logic-apps-enterprise-integration-agreements.md
-        - name: XML 検証用のスキーマ
-          href: logic-apps-enterprise-integration-schemas.md
-        - name: XML 変換用のマップ
-          href: logic-apps-enterprise-integration-maps.md
-        - name: 証明書
-          href: logic-apps-enterprise-integration-certificates.md
-        - name: アーティファクト メタデータ
-          href: logic-apps-enterprise-integration-metadata.md
+        - name: 統合アカウントおよびアーティファクト
+          items:
+            - name: 統合アカウントを作成する
+              href: logic-apps-enterprise-integration-create-integration-account.md
+            - name: 取引先
+              href: logic-apps-enterprise-integration-partners.md
+            - name: アグリーメント
+              href: logic-apps-enterprise-integration-agreements.md
+            - name: XML 検証用のスキーマ
+              href: logic-apps-enterprise-integration-schemas.md
+            - name: XML 変換用のマップ
+              href: logic-apps-enterprise-integration-maps.md
+            - name: 証明書
+              href: logic-apps-enterprise-integration-certificates.md
+            - name: アーティファクト メタデータ
+              href: logic-apps-enterprise-integration-metadata.md
         - name: B2B メッセージの送受信
           href: logic-apps-enterprise-integration-b2b.md
-        - name: AS2 メッセージの交換
-          href: logic-apps-enterprise-integration-as2.md
-        - name: AS2 メッセージの設定
-          href: logic-apps-enterprise-integration-as2-message-settings.md
-        - name: EDIFACT メッセージの交換
-          href: logic-apps-enterprise-integration-edifact.md
+        - name: AS2 メッセージング
           items:
-            - name: EDIFACT のエンコード
-              href: logic-apps-enterprise-integration-edifact-encode.md
-            - name: EDIFACT のデコード
-              href: logic-apps-enterprise-integration-edifact-decode.md
-            - name: UNH2.5 セグメントが含まれた EDIFACT ファイルの処理
-              href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
+            - name: AS2 メッセージの交換
+              href: logic-apps-enterprise-integration-as2.md
+            - name: AS2 メッセージの設定
+              href: logic-apps-enterprise-integration-as2-message-settings.md
+            - name: AS2 MDN 受信確認
+              href: logic-apps-enterprise-integration-as2-mdn-acknowledgment.md
+        - name: EDIFACT メッセージング
+          items:
+            - name: EDIFACT メッセージの交換
+              href: logic-apps-enterprise-integration-edifact.md
+            - name: EDIFACT メッセージの設定
+              href: logic-apps-enterprise-integration-edifact-message-settings.md
+            - name: EDIFACT CONTRL 受信確認とエラー コード
+              href: logic-apps-enterprise-integration-edifact-contrl-acknowledgment.md
+        - name: RosettaNet メッセージング
+          items:
             - name: RosettaNet メッセージの交換
               href: logic-apps-enterprise-integration-rosettanet.md
-        - name: X12 メッセージの交換
-          href: logic-apps-enterprise-integration-x12.md
+        - name: X12 メッセージング
           items:
+            - name: X12 メッセージの交換
+              href: logic-apps-enterprise-integration-x12.md
             - name: X12 のエンコード
               href: logic-apps-enterprise-integration-x12-encode.md
             - name: X12 のデコード
               href: logic-apps-enterprise-integration-x12-decode.md
+            - name: X12 TA1 確認
+              href: logic-apps-enterprise-integration-x12-ta1-acknowledgment.md
+            - name: X12 997 確認
+              href: logic-apps-enterprise-integration-x12-997-acknowledgment.md
         - name: EDI メッセージのバッチ処理と送信
           href: logic-apps-scenario-edi-send-batch-messages.md
         - name: フラット ファイルの処理
           href: logic-apps-enterprise-integration-flatfile.md
-        - name: XML の変換
-          href: logic-apps-enterprise-integration-transform.md
-        - name: XML の処理
-          href: logic-apps-enterprise-integration-xml.md
-        - name: XML の検証
-          href: logic-apps-enterprise-integration-xml-validation.md
-        - name: JSON の変換
-          href: logic-apps-enterprise-integration-liquid-transform.md
+        - name: XML および JSON の変換
+          items:
+            - name: XML の変換
+              href: logic-apps-enterprise-integration-transform.md
+            - name: XML の処理
+              href: logic-apps-enterprise-integration-xml.md
+            - name: XML の検証
+              href: logic-apps-enterprise-integration-xml-validation.md
+            - name: JSON の変換
+              href: logic-apps-enterprise-integration-liquid-transform.md
         - name: B2B エラーのトラブルシューティング
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
-        - name: ディザスター リカバリー プランの構築
-          href: logic-apps-enterprise-integration-b2b-business-continuity.md
     - name: コネクタ - 詳細のトピック
       items:
         - name: AS2
@@ -214,6 +257,10 @@
           href: ../connectors/connectors-create-api-azureblobstorage.md
         - name: Azure Container Instances
           href: ../connectors/connectors-create-api-container-instances.md
+        - name: Azure Cosmos DB
+          href: ../connectors/connectors-create-api-cosmos-db.md
+        - name: Azure Event Grid
+          href: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md
         - name: Azure Event Hubs
           href: ../connectors/connectors-create-api-azure-event-hubs.md
         - name: Azure Functions
@@ -236,8 +283,6 @@
           href: ../connectors/connectors-create-api-crmonline.md
         - name: EDIFACT
           href: logic-apps-enterprise-integration-edifact.md
-        - name: Excel Online (Business または OneDrive)
-          href: ../connectors/connectors-create-api-excel.md
         - name: ファイル システム
           href: logic-apps-using-file-connector.md
         - name: フラット ファイル
@@ -284,7 +329,7 @@
           href: logic-apps-enterprise-integration-rosettanet.md
         - name: Salesforce
           href: ../connectors/connectors-create-api-salesforce.md
-        - name: SAP (新規)
+        - name: SAP
           href: logic-apps-using-sap-connector.md
         - name: SendGrid
           href: ../connectors/connectors-create-api-sendgrid.md
@@ -306,8 +351,6 @@
           href: logic-apps-enterprise-integration-transform.md
         - name: Twilio
           href: ../connectors/connectors-create-api-twilio.md
-        - name: Wunderlist
-          href: ../connectors/connectors-create-api-wunderlist.md
         - name: X12
           href: logic-apps-enterprise-integration-x12.md
         - name: XML 検証
@@ -342,7 +385,7 @@
           href: test-logic-apps-mock-data-static-results.md
     - name: 配置
       items:
-        - name: 概要 - ロジック アプリ デプロイの自動化
+        - name: 自動デプロイについて (マルチテナント)
           href: logic-apps-azure-resource-manager-templates-overview.md
         - name: Logic Apps テンプレートの作成
           href: logic-apps-create-azure-resource-manager-templates.md
@@ -354,12 +397,18 @@
           href: monitor-logic-apps.md
         - name: Azure Monitor ログでロジック アプリを監視する
           href: monitor-logic-apps-log-analytics.md
-        - name: Azure Security Center でロジック アプリを監視する
+        - name: Microsoft Defender for Cloud でロジックアプリを監視する
           href: healthy-unhealthy-resource.md
         - name: Azure Monitor ログで B2B メッセージを監視する
           href: monitor-b2b-messages-log-analytics.md
         - name: 監視と追跡クエリを作成する
           href: create-monitoring-tracking-queries.md
+    - name: 事業継続とディザスター リカバリー
+      items:
+        - name: 事業継続とディザスター リカバリーのために Azure リソースをレプリケートする
+          href: create-replication-tasks-azure-resources.md
+        - name: B2B の事業継続とディザスター リカバリー プランを作成する
+          href: logic-apps-enterprise-integration-b2b-business-continuity.md
     - name: 例、シナリオ、チュートリアル
       href: logic-apps-examples-and-scenarios.md
       items:
@@ -367,14 +416,16 @@
           href: logic-apps-data-operations-code-samples.md
         - name: ソーシャル メディアの監視
           href: logic-apps-scenario-social-serverless.md
-        - name: サーバーレス アプリの構築 - Visual Studio
-          href: logic-apps-serverless-get-started-vs.md
+        - name: サーバーレス アプリの作成 - Visual Studio
+          href: create-serverless-apps-visual-studio.md
         - name: エラーと例外の処理の追加
           href: logic-apps-scenario-error-and-exception-handling.md
         - name: B2B の処理
           href: logic-apps-enterprise-integration-b2b.md
 - name: リファレンス
   items:
+    - name: 課金と価格のモデル
+      href: logic-apps-pricing.md
     - name: アーキテクチャのパターン
       items:
         - name: 基本的なエンタープライズ統合
@@ -385,10 +436,8 @@
       href: /connectors/
     - name: サービスの制限と構成
       href: logic-apps-limits-and-config.md
-    - name: 価格モデルと使用量の測定
-      href: logic-apps-pricing.md
     - name: Azure CLI
-      href: /cli/azure/ext/logic/logic
+      href: /cli/azure/logic
     - name: Azure PowerShell
       href: /powershell/module/az.logicapp
     - name: REST API
@@ -423,7 +472,7 @@
       href: 'https://aka.ms/logicappsroadmap/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 価格
+    - name: Azure Logic Apps の価格
       href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
@@ -438,6 +487,6 @@
     - name: Twitter
       href: 'https://twitter.com/logicappsio'
     - name: 製品フィードバックの提供
-      href: 'https://feedback.azure.com/forums/287593-logic-apps'
+      href: 'https://feedback.azure.com/d365community/forum/cb47c115-7926-ec11-b6e6-000d3a4f032c'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=logic-apps'

@@ -2,21 +2,21 @@
 title: チュートリアル:Snowflake を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Snowflake に対するユーザー アカウントのプロビジョニングおよびプロビジョニング解除を自動的に実行するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 06f11763498e3e8393d688a71e1c37b466be3f6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: c7eced7fb6c073eece1edbee93da0d9f33e3ed27
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539537"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690291"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>チュートリアル:Snowflake を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -44,8 +44,8 @@ ms.locfileid: "99539537"
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1:プロビジョニングのデプロイを計画する
 1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
-2. [プロビジョニングの対象](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)となるユーザーを決定します。
-3. [Azure AD と Snowflake の間でマップする](../app-provisioning/customize-application-attributes.md)データを決定します。 
+1. [プロビジョニングの対象](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)となるユーザーを決定します。
+1. [Azure AD と Snowflake の間でマップする](../app-provisioning/customize-application-attributes.md)データを決定します。 
 
 ## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>手順 2:Azure AD でのプロビジョニングをサポートするように Snowflake を構成する
 
@@ -53,15 +53,27 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Snowfl
 
 1. Snowflake 管理コンソールにサインインします。 強調表示されているワークシートに次のクエリを入力し、 **[Run]\(実行\)** を選択します。
 
-    ![クエリと [Run]\(実行\) ボタンが表示された Snowflake 管理コンソールのスクリーンショット。](media/Snowflake-provisioning-tutorial/image00.png)
+   ![クエリと [Run]\(実行\) ボタンが表示された Snowflake 管理コンソールのスクリーンショット。](media/Snowflake-provisioning-tutorial/image00.png)
+    
+   ```
+   use role accountadmin;
+   
+   create or replace role aad_provisioner;
+   grant create user on account to aad_provisioner;
+   grant create role on account to aad_provisioner;
+   grant role aad_provisioner to role accountadmin;
+   create or replace security integration aad_provisioning type=scim scim_client=azure run_as_role='AAD_PROVISIONER';
+   
+   select SYSTEM$GENERATE_SCIM_ACCESS_TOKEN('AAD_PROVISIONING');
+   ```
 
-2.  Snowflake テナントに対して SCIM アクセス トークンが生成されます。 これを取得するには、次のスクリーンショットで強調表示されているリンクを選択します。
+1.  Snowflake テナントに対して SCIM アクセス トークンが生成されます。 これを取得するには、次のスクリーンショットで強調表示されているリンクを選択します。
 
-    ![S C I M アクセス トークンが強調表示された、Snowflake U I のワークシートのスクリーンショット。](media/Snowflake-provisioning-tutorial/image01.png)
+   ![S C I M アクセス トークンが強調表示された、Snowflake U I のワークシートのスクリーンショット。](media/Snowflake-provisioning-tutorial/image01.png)
 
-3. 生成されたトークンの値をコピーし、 **[Done]\(完了\)** を選択します。 この値は、Azure portal の Snowflake アプリケーションの **[プロビジョニング]** タブにある **[シークレット トークン]** ボックスに入力します。
+1. 生成されたトークンの値をコピーし、 **[Done]\(完了\)** を選択します。 この値は、Azure portal の Snowflake アプリケーションの **[プロビジョニング]** タブにある **[シークレット トークン]** ボックスに入力します。
 
-    ![テキスト フィールドにコピーされたトークンと、強調表示された [Done]\(完了\) オプションを示す [Details]\(詳細\) セクションのスクリーンショット。](media/Snowflake-provisioning-tutorial/image02.png)
+   ![テキスト フィールドにコピーされたトークンと、強調表示された [Done]\(完了\) オプションを示す [Details]\(詳細\) セクションのスクリーンショット。](media/Snowflake-provisioning-tutorial/image02.png)
 
 ## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>手順 3: Azure AD アプリケーション ギャラリーから Snowflake を追加する
 

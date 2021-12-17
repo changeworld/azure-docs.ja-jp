@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: troubleshooting
-author: danimir
-ms.author: danil
-ms.reviewer: wiassaf, sstein
-ms.date: 1/14/2021
-ms.openlocfilehash: 17ea6716f090144e8dfef16721bfb69dc23e9912
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: AlainDormehlMSFT
+ms.author: aldorme
+ms.reviewer: mathoma, wiassaf
+ms.date: 11/04/2021
+ms.openlocfilehash: 215cd52bf5f0272884364f2070985459937ccdc8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589321"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853018"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Azure SQL Database と Azure SQL Managed Instance のパフォーマンスに関する問題を Intelligent Insights でトラブルシューティングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -110,7 +110,7 @@ Intelligent Insights は、クエリ実行の待機時間、エラー、また�
 
 最適化したり、複数のデータベースに分散させたりすることで、ワークロードを減らすこともできます。 または、ワークロードを複数のデータベースに分散させることができます。 これらの解決策が不可能な場合は、データベースの価格レベルを上げて、データベースで使用可能なメモリ リソースの量を増やすことを検討します。
 
-トラブルシューティングのその他の提案については、[Memory grants meditation:The mysterious SQL Server memory consumer with many names](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994)」(メモリ許可に関する考察: さまざまな名前を持つ、SQL Server の不可解なメモリ コンシューマー) をご覧ください。
+トラブルシューティングのその他の提案については、[Memory grants meditation:The mysterious SQL Server memory consumer with many names](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994)」(メモリ許可に関する考察: さまざまな名前を持つ、SQL Server の不可解なメモリ コンシューマー) をご覧ください。 Azure SQL Database のメモリ不足エラーについて詳しくは、「[Azure SQL Database によるメモリ不足エラーのトラブルシューティング](troubleshoot-memory-errors-issues.md)」を参照してください。
 
 ## <a name="locking"></a>ロック
 

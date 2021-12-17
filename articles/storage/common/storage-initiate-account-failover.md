@@ -6,17 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/29/2020
+ms.date: 05/07/2021
 ms.author: tamram
-ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 93bcbab9445d83bf17b37b6affc1d2bc70703bbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab764fd95168fef768efd0687adb5e2841bfb140
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97814331"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609291"
 ---
 # <a name="initiate-a-storage-account-failover"></a>ストレージ アカウントのフェールオーバーを開始する
 
@@ -41,9 +40,9 @@ Azure Storage の冗長性の詳細については、「[Azure Storage の冗長
 次の機能とサービスは、アカウントのフェールオーバーではサポートされていないことに注意してください。
 
 - Azure File Sync では、ストレージ アカウントのフェールオーバーはサポートされていません。 Azure File Sync でクラウド エンドポイントとして使用されている Azure ファイル共有を含むストレージ アカウントは、フェールオーバーしないでください。 それを行うと、同期の動作が停止し、新しく階層化されたファイルの場合は予期せずデータが失われる可能性があります。
-- ADLS Gen2 ストレージ アカウント (階層型名前空間が有効になっているアカウント) は、現時点ではサポートされていません。
+- 階層型名前空間が有効になっているストレージ アカウント (Data Lake Storage Gen2 など) は、現時点ではサポートされていません。
 - Premium ブロック BLOB 含むストレージ アカウントは、フェールオーバーできません。 現在、Premium ブロック BLOB をサポートするストレージ アカウントでは、geo 冗長がサポートされていません。
-- 任意の [WORM 不変ポリシー](../blobs/storage-blob-immutable-storage.md)対応コンテナーを含むストレージ アカウントをフェール オーバーすることはできません。 ロックされていない、またはロックされている時間ベースのリテンション期間または訴訟ホールド ポリシーでは、コンプライアンスを維持するためにフェール オーバーが防止されます。
+- 任意の [WORM 不変ポリシー](../blobs/immutable-storage-overview.md)対応コンテナーを含むストレージ アカウントをフェール オーバーすることはできません。 ロックされていない、またはロックされている時間ベースのリテンション期間または訴訟ホールド ポリシーでは、コンプライアンスを維持するためにフェール オーバーが防止されます。
 
 ## <a name="initiate-the-failover"></a>フェールオーバーを開始する
 
@@ -117,9 +116,14 @@ az storage account failover \ --name accountName
 
 開始後のフェールオーバーにかかる時間は異なりますが、通常 1 時間未満です。
 
-フェールオーバーの後、新しいプライマリ リージョンでのストレージ アカウントの種類は、ローカル冗長ストレージ (LRS) に自動的に変換されます。 アカウントに対して geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS) を再び有効にすることができます。 LRS から GRS または RA-GRS に変換すると、追加コストが発生することに注意してください。 詳しくは、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。
+フェールオーバーの後、新しいプライマリ リージョンでのストレージ アカウントの種類は、ローカル冗長ストレージ (LRS) に自動的に変換されます。 アカウントに対して geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS) を再び有効にすることができます。 LRS から GRS または RA-GRS に変換すると、追加コストが発生することに注意してください。 このコストは、データを新しいセカンダリ リージョンにレプリケートするためのネットワーク エグレス料金によるものです。 詳しくは、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。
 
-ストレージ アカウントの GRS を再度有効にすると、アカウント内のデータの新しいセカンダリ リージョンへのレプリケートが開始されます。 レプリケーションにかかる時間は、レプリケートされるデータの量に依存します。  
+ストレージ アカウントの GRS を再度有効にすると、アカウント内のデータの新しいセカンダリ リージョンへのレプリケートが開始されます。 レプリケーション時間は、次のような多くの要因に依存します。
+
+- ストレージ アカウント内のオブジェクトの数とサイズ。 数の多くい小さなオブジェクトは、数の少ない大きなオブジェクトよりも時間がかかる場合があります。
+- CPU、メモリ、ディスク、WAN の容量など、バックグラウンド レプリケーションに使用できるリソース。 ライブ トラフィックは geo レプリケーションよりも優先されます。
+- BLOB ストレージを使用している場合は、BLOB ごとのスナップショットの数。
+- Table ストレージを使用する場合は、 [データのパーティション分割戦略](/rest/api/storageservices/designing-a-scalable-partitioning-strategy-for-azure-table-storage)。 レプリケーション プロセスでは、使用するパーティション キーの数を超えて拡張することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

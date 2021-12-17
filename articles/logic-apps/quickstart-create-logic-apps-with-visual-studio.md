@@ -1,22 +1,22 @@
 ---
-title: Visual Studio を使用してタスクとワークフローを自動化する
-description: Azure Logic Apps と Visual Studio を使用して、エンタープライズ統合のための自動化されたワークフローを作成、スケジュール設定、および実行します
+title: 'クイックスタート: Visual Studio においてマルチテナント Azure Logic Apps で統合ワークフローを作成する'
+description: Visual Studio Code においてマルチテナント Azure Logic Apps で自動統合ワークフローを作成する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/24/2021
-ms.openlocfilehash: 5ae67e5708a7298385a4e27d612566008884b972
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/25/2021
+ms.openlocfilehash: 8aa96455eba49dd624f1ced469d34f0cf0f48757
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790061"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372500"
 ---
-# <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio
+# <a name="quickstart-create-automated-integration-workflows-with-multi-tenant-azure-logic-apps-and-visual-studio"></a>クイックスタート: マルチテナント Azure Logic Apps と Visual Studio で自動統合ワークフローを作成する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio を使用して、企業および組織の間でアプリ、データ、システム、サービスを統合するタスクとプロセスを自動化するワークフローを作成できます。 このクイック スタートでは、Visual Studio でロジック アプリを作成し、そのアプリを Azure にデプロイすることによってこれらのワークフローを設計および構築する方法を示します。 これらのタスクは Azure portal でも実行できます。しかし、Visual Studio を使用すれば、ロジック アプリをソース管理に追加したり、さまざまなバージョンを発行したり、異なるデプロイ環境用の Azure Resource Manager テンプレートを作成したりできます。
+このクイックスタートでは、マルチテナント [Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio を使用して、企業と組織の間でアプリ、データ、システム、サービスを統合する自動ワークフローを設計、開発、デプロイする方法を示します。 これらのタスクは Azure portal でも実行できます。しかし、Visual Studio を使用すれば、ロジック アプリをソース管理に追加したり、さまざまなバージョンを発行したり、異なるデプロイ環境用の Azure Resource Manager テンプレートを作成したりできます。 マルチテナントとシングルテナントのモデルの比較の詳細については、「[シングルテナントとマルチテナント、および統合サービス環境](single-tenant-overview-compare.md)」を参照してください。
 
 Azure Logic Apps が初めてであり、その基本的な概念だけを必要としている場合は、[Azure Portal でのロジック アプリの作成に関するクイック スタート](../logic-apps/quickstart-create-first-logic-app-workflow.md)をお試しください。 ロジック アプリ デザイナーは、Azure Portal と Visual Studio の両方で同じように動作します。
 

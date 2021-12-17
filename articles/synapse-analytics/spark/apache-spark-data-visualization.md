@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 7e57cdca1d212e6077d685d95a8f869c12e546a8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b52f599dd3430f963b03b5fdba41f71abf11ee43
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627950"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707668"
 ---
 # <a name="visualize-data"></a>データの視覚化
 Azure Synapse は、データ ウェアハウスやビッグ データ分析システム全体にわたって分析情報を取得する時間を早める統合分析サービスです。 データの視覚化は、ご利用のデータに関する分析情報を取得するうえで重要なコンポーネントです。 大規模および小規模のデータを、人間が理解しやすくするのに役立ちます。 また、データのグループ内のパターン、傾向、および外れ値を容易に検出できるようになります。 
@@ -38,7 +38,7 @@ Azure Synapse notebook を使用する場合は、グラフのオプションを
    | 構成 | 説明 |
    |--|--| 
    | [グラフの種類] | ```display``` 関数では、横棒グラフ、散布図、折れ線グラフなど、さまざまな種類のグラフがサポートされています。 |
-   | Key | X 軸の値の範囲を指定します|
+   | キー | X 軸の値の範囲を指定します|
    | 値 | Y 軸の値の範囲を指定します |
    | 系列グループ | 集計のグループを決定するために使用されます。 | 
    | 集計 | 視覚化でデータを集計する方法| 
@@ -53,7 +53,7 @@ Azure Synapse notebook を使用する場合は、グラフのオプションを
 <code>display(df, summary = true)</code> を使用すると、各列の列名、列の種類、一意の値、欠損値など、特定の Apache Spark DataFrame の統計の概要を確認できます。 また、特定の列を選択して、その最小値、最大値、平均値、および標準偏差を表示することもできます。
     ![built-in-charts-summary](./media/apache-spark-development-using-notebooks/synapse-built-in-charts-summary.png#lightbox)
    
-### <a name="displayhtmldf-option"></a>displayHTML(df) オプション
+### <a name="displayhtml-option"></a>displayHTML() option
 Azure Synapse Analytics ノートブックでは、```displayHTML``` 関数を使用した HTML グラフィックスがサポートされています。
 
 次の図は、[D3.js](https://d3js.org/) を使用して視覚化を作成する例です。
@@ -63,14 +63,14 @@ Azure Synapse Analytics ノートブックでは、```displayHTML``` 関数を�
 上の視覚化を作成するには、次のコードを実行します。
 
 ```python
-displayHTML("&quot;&quot;<!DOCTYPE html>
-<meta charset=&quot;utf-8&quot;>
+displayHTML("""<!DOCTYPE html>
+<meta charset="utf-8">
 
 <!-- Load d3.js -->
-<script src=&quot;https://d3js.org/d3.v4.js&quot;></script>
+<script src="https://d3js.org/d3.v4.js"></script>
 
 <!-- Create a div where the graph will take place -->
-<div id=&quot;my_dataviz&quot;></div>
+<div id="my_dataviz"></div>
 <script>
 
 // set the dimensions and margins of the graph
@@ -79,7 +79,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 40},
   height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select(&quot;#my_dataviz")
+var svg = d3.select("#my_dataviz")
 .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
@@ -200,7 +200,7 @@ tile_provider = get_provider(Vendors.CARTODBPOSITRON)
 
 # range bounds supplied in web mercator coordinates
 p = figure(x_range=(-9000000,-8000000), y_range=(4000000,5000000),
-           x_axis_type="mercator&quot;, y_axis_type=&quot;mercator")
+           x_axis_type="mercator", y_axis_type="mercator")
 p.add_tile(tile_provider)
 
 # plot datapoints on the map
@@ -237,6 +237,7 @@ import pandas as pd
 df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
                    dtype={"fips": str})
 
+import plotly
 import plotly.express as px
 
 fig = px.choropleth(df, geojson=counties, locations='fips', color='unemp',
@@ -253,14 +254,30 @@ h = plotly.offline.plot(fig, output_type='div')
 # display this html
 displayHTML(h)
 ```
+### <a name="pandas"></a>Pandas
+
+pandas データフレーム の html 出力を既定の出力として表示することができます。スタイル指定された html コンテンツが、ノートブックによって自動的に表示されます。 
+
+   ![Panda グラフの例。](./media/apache-spark-data-viz/support-panda.png#lightbox)
+
+```python
+import pandas as pd 
+import numpy as np 
+
+df = pd.DataFrame([[38.0, 2.0, 18.0, 22.0, 21, np.nan],[19, 439, 6, 452, 226,232]], 
+
+                  index=pd.Index(['Tumour (Positive)', 'Non-Tumour (Negative)'], name='Actual Label:'), 
+
+                  columns=pd.MultiIndex.from_product([['Decision Tree', 'Regression', 'Random'],['Tumour', 'Non-Tumour']], names=['Model:', 'Predicted:'])) 
+
+df 
+```
 
 
 ### <a name="additional-libraries"></a>その他のライブラリ 
 これらのライブラリ以外に、Azure Synapse Analytics ランタイムには、データの視覚化によく使用される、次のライブラリのセットも含まれています。
-- [Matplotlib](https://matplotlib.org/)
-- [Bokeh](https://bokeh.org/)
+
 - [Seaborn](https://seaborn.pydata.org/) 
-- [Plotly](https://plotly.com/)
 
 利用可能なライブラリとバージョンの最新情報については、Azure Synapse Analytics ランタイムの[ドキュメント](./spark/../apache-spark-version-support.md)を参照してください。
 

@@ -9,70 +9,28 @@
   items:
     - name: ファイル共有の作成および使用 - Windows
       href: storage-files-quick-create-use-windows.md
-    - name: ファイル共有の作成 - ポータル
+    - name: ファイル共有を作成する
       href: storage-how-to-use-files-portal.md
-    - name: ファイル共有の作成 - PowerShell
-      href: storage-how-to-use-files-powershell.md
-    - name: ファイル共有の作成 - CLI
-      href: storage-how-to-use-files-cli.md
-    - name: ファイル共有の作成 - Storage Explorer
-      href: storage-how-to-use-files-storage-explorer.md
 - name: チュートリアル
   items:
     - name: Azure File Sync を使用して Windows ファイル サーバーを拡張する
-      href: storage-sync-files-extend-servers.md
+      href: ../file-sync/file-sync-extend-servers.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 - name: 概念
   items:
-    - name: Azure Files
-      items:
-        - name: Azure Files のデプロイの計画
-          href: storage-files-planning.md
-        - name: 使用可能なファイル共有プロトコル
-          href: storage-files-compare-protocols.md
-        - name: ID ベースの認証と承認
-          href: storage-files-active-directory-overview.md
-        - name: 直接アクセスに関するネットワークの考慮事項
-          href: storage-files-networking-overview.md
-        - name: ディザスター リカバリーとフェールオーバー
-          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure ファイル共有スナップショット
-          href: storage-snapshots-files.md
-        - name: 開発
-          items:
-            - name: 共有キー認証
-              href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
-            - name: Shared Access Signatures (SAS)
-              href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 監視とトラブルシューティング
-          items:
-            - name: クラシック メトリックからの移行
-              href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: 監視 (クラシック)
-              items:
-                - name: Storage Analytics
-                  href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-                - name: メトリック
-                  href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-                - name: ログ
-                  href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-                - name: 監視、診断、およびトラブルシューティング
-                  href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Azure File Sync
-      items:
-        - name: Azure File Sync のデプロイの計画
-          href: storage-sync-files-planning.md
-        - name: ハイブリッド アクセスに関するネットワークの考慮事項
-          href: storage-sync-files-networking-overview.md
-        - name: クラウドの階層化
-          items:
-            - name: クラウドの階層化の概要
-              href: storage-sync-cloud-tiering-overview.md
-            - name: クラウドの階層化ポリシーの概要
-              href: storage-sync-cloud-tiering-policy.md
-            - name: クラウドの階層化ポリシーを選択する
-              href: storage-sync-choose-cloud-tiering-policies.md
-            - name: クラウドの階層化を監視する
-              href: storage-sync-monitor-cloud-tiering.md
+    - name: Azure Files のデプロイの計画
+      href: storage-files-planning.md
+    - name: SMB ファイル共有
+      href: files-smb-protocol.md
+    - name: NFS ファイル共有
+      href: files-nfs-protocol.md
+    - name: ID ベースの認証と承認
+      href: storage-files-active-directory-overview.md
+    - name: 直接アクセスに関するネットワークの考慮事項
+      href: storage-files-networking-overview.md
+    - name: ディザスター リカバリーとフェールオーバー
+      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Azure ファイル共有スナップショット
+      href: storage-snapshots-files.md
     - name: パフォーマンスとスケール
       items:
         - name: SMB マルチチャネルのパフォーマンス
@@ -85,26 +43,32 @@
       href: storage-files-prevent-file-share-deletion.md
     - name: ファイル共有をバックアップする
       href: ../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 保存時の暗号化
-      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: カスタマー マネージド キーを使用した保存時の暗号化
-      href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: 暗号化
+      items:
+        - name: 保存時の暗号化
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: カスタマー マネージド キーを使用した保存時の暗号化
+          href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: コンプライアンス認証
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: よく寄せられる質問
       href: storage-files-faq.md
+    - name: Azure Files の新機能
+      href: files-whats-new.md
 - name: 操作方法ガイド
   items:
     - name: 配置
       items:
         - name: SMB ファイル共有を作成する」を参照してください。
           href: storage-how-to-create-file-share.md
-        - name: Azure File Sync のデプロイ
-          href: storage-sync-files-deployment-guide.md
-        - name: NFS 共有を作成する
+        - name: NFS ファイル共有を作成する
           href: storage-files-how-to-create-nfs-shares.md
+        - name: Azure Files で DFS-N を使用する
+          href: files-manage-namespaces.md
         - name: Premium ファイル共有を使用した SQL Server FCI
           href: ../../azure-sql/virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: ストレージ予約を購入する
+          href: files-reserve-capacity.md
     - name: マウントする
       items:
         - name: Windows への SMB ファイル共有のマウント
@@ -117,18 +81,10 @@
           href: storage-how-to-use-files-mac.md
     - name: ネットワーク
       items:
-        - name: Azure Files
-          items:
-            - name: Azure Files ネットワーク エンドポイントの構成
-              href: storage-files-networking-endpoints.md
-            - name: Azure Files の DNS 転送の構成
-              href: storage-files-networking-dns.md
-        - name: Azure File Sync
-          items:
-            - name: Azure File Sync ネットワーク エンドポイントの構成
-              href: storage-sync-files-networking-endpoints.md
-            - name: File Sync のプロキシとファイアウォールの設定
-              href: storage-sync-files-firewall-and-proxy.md
+        - name: Azure Files ネットワーク エンドポイントの構成
+          href: storage-files-networking-endpoints.md
+        - name: Azure Files の DNS 転送の構成
+          href: storage-files-networking-dns.md
         - name: サイト間 VPN を構成する
           href: storage-files-configure-s2s-vpn.md
         - name: Windows でポイント対サイト VPN を構成する
@@ -155,22 +111,14 @@
           href: storage-files-identity-auth-active-directory-domain-service-enable.md
     - name: 管理する
       items:
-        - name: Azure File Sync でのサーバーの登録
-          href: storage-sync-files-server-registration.md
-        - name: Azure File Sync の Server エンドポイントの追加
-          href: storage-sync-files-server-endpoint.md
         - name: Azure の独立したクラウドでのストレージの管理
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: アカウントのフェールオーバーを開始する
           href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 階層化ファイルの管理方法
-          href: storage-sync-how-to-manage-tiered-files.md
     - name: データ保護
       items:
         - name: 論理的な削除を有効にする
           href: storage-files-enable-soft-delete.md
-        - name: データのレプリケート方法の変更
-          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: データの冗長性を管理する
           items:
             - name: データのレプリケート方法の変更
@@ -217,16 +165,18 @@
       items:
         - name: Azure Files の監視
           href: storage-files-monitoring.md
-        - name: Azure File Sync の監視
-          href: storage-sync-files-monitoring.md
     - name: 移行
       items:
         - name: Azure ファイル共有への移行
           href: storage-files-migration-overview.md
+        - name: クラウドのみのデプロイをターゲットにする
+          items:
+            - name: RoboCopy を使用して Azure ファイル共有に移行する
+              href: storage-files-migration-robocopy.md
+            - name: DataBox を使用してオンプレミスの NAS から Azure ファイル共有に移行する
+              href: storage-files-migration-nas-cloud-databox.md
         - name: ハイブリッド デプロイをターゲットにする
           items:
-            - name: Azure Data Box を使用して Azure File Sync に大量のデータを移行する
-              href: storage-sync-offline-data-transfer.md
             - name: Azure File Sync を使用して Linux からハイブリッド ファイル サーバーに移行する
               href: storage-files-migration-linux-hybrid.md
             - name: Azure File Sync を使用してオンプレミスの NAS からハイブリッド ファイル サーバーに移行する
@@ -239,12 +189,6 @@
               href: storage-files-migration-storsimple-8000.md
             - name: StorSimple 1200 の移行ガイド
               href: storage-files-migration-storsimple-1200.md
-    - name: パフォーマンスの向上
-      items:
-        - name: SMB マルチチャネルを有効にする
-          href: storage-files-enable-smb-multichannel.md
-        - name: 大型ファイル共有を有効にする
-          href: storage-files-how-to-create-large-file-share.md
     - name: 開発
       items:
         - name: 接続文字列の構成
@@ -271,12 +215,16 @@
                   href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: アカウントのインフラストラクチャ暗号化を有効にする
           href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 脅威保護のために Azure Defender を構成する
+        - name: Microsoft Defender for Storage を使用して脅威保護を有効にする
           href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: ファイアウォールと仮想ネットワークの構成
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 安全な転送が必要
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Windows SMB クライアントで SMB 1 を無効にする
+          href: /windows-server/storage/file-server/troubleshoot/detect-enable-and-disable-smbv1-v2-v3?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Linux SMB クライアントで SMB を無効にする
+          href: files-remove-smb1-linux.md
         - name: トランスポート層セキュリティ (TLS) を管理する
           items:
             - name: 受信要求に TLS の最小バージョンを適用する
@@ -301,15 +249,11 @@
           href: storage-troubleshooting-files-performance.md
         - name: Azure Files のトラブルシューティング - Linux (NFS)
           href: storage-troubleshooting-files-nfs.md
-        - name: Azure File Sync のトラブルシューティング
-          href: storage-sync-files-troubleshoot.md
-        - name: Azure ファイル共有の削除に関するトラブルシューティング
-          href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
         - name: ファイル共有のバックアップに関するトラブルシューティング
           href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 - name: リファレンス
   items:
-    - name: Azure Files のリファレンス
+    - name: Azure Files の API リファレンス
       href: ../files/reference.md
     - name: Azure Files のリファレンスの監視
       href: storage-files-monitoring-reference.md
@@ -322,8 +266,6 @@
   items:
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?category=storage'
-    - name: Azure File Sync のリリース ノート
-      href: storage-files-release-notes.md
     - name: Microsoft Q&A の Azure Files
       href: /answers/topics/azure-files.html
     - name: Stack Overflow の Azure Files
@@ -334,6 +276,10 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
+    - name: Azure Files と Azure NetApp Files の比較
+      href: storage-files-netapp-comparison.md
+    - name: NFS を使用した Azure Files、Blob Storage、および NetApp Files へのアクセスを比較する
+      href: ../common/nfs-comparison.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: NuGet パッケージ (.NET)
       items:
         - name: Microsoft.Azure.Storage.Common (バージョン 11.x)

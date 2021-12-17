@@ -2,411 +2,566 @@
   href: index.yml
 - name: 概要
   href: media-services-overview.md
+  displayName: 'media services v2, v2, version 2'
   items:
     - name: 一般的なシナリオ
       href: scenarios-and-availability.md
+      displayName: 'media services v2, v2, version 2'
     - name: リージョン別の提供状況
       href: availability-regions-v-2.md
+      displayName: 'media services v2, v2, version 2'
     - name: 概念
       href: media-services-concepts.md
+      displayName: 'media services v2, v2, version 2'
 - name: はじめに
   items:
     - name: アカウントを作成して管理する
       href: media-services-portal-create-account.md
+      displayName: 'media services v2, v2, version 2'
     - name: 開発環境を設定する
       href: media-services-set-up-computer.md
+      displayName: 'media services v2, v2, version 2'
       items:
         - name: .NET
           href: media-services-dotnet-how-to-use.md
+          displayName: 'media services v2, v2, version 2'
         - name: REST
           href: media-services-rest-how-to-use.md
+          displayName: 'media services v2, v2, version 2'
     - name: Azure AD 認証を使用して API にアクセスする
       href: media-services-use-aad-auth-to-access-ams-api.md
+      displayName: 'media services v2, v2, version 2'
       items:
         - name: ポータルを使用して Azure AD 認証を管理する
           href: media-services-portal-get-started-with-aad.md
+          displayName: 'media services v2, v2, version 2'
         - name: .NET で API にアクセスする
           href: media-services-dotnet-get-started-with-aad.md
+          displayName: 'media services v2, v2, version 2'
         - name: REST で API にアクセスする
           href: media-services-rest-connect-with-aad.md
+          displayName: 'media services v2, v2, version 2'
         - name: Azure CLI を使用して Azure AD アプリを作成および構成する
           href: media-services-cli-create-and-configure-aad-app.md
+          displayName: 'media services v2, v2, version 2'
         - name: Azure PowerShell を使用して Azure AD アプリを作成および構成する
           href: media-services-powershell-create-and-configure-aad-app.md
+          displayName: 'media services v2, v2, version 2'
     - name: ビデオ オン デマンドの配信
       items:
         - name: Azure portal
           href: media-services-portal-vod-get-started.md
+          displayName: 'media services v2, v2, version 2'
         - name: .NET SDK
           href: media-services-dotnet-get-started.md
+          displayName: 'media services v2, v2, version 2'
         - name: Java
           href: media-services-java-how-to-use.md
+          displayName: 'media services v2, v2, version 2'
         - name: REST
           href: media-services-rest-get-started.md
+          displayName: 'media services v2, v2, version 2'
     - name: ライブ ストリーミングの実行
       items:
         - name: Azure portal
           href: media-services-portal-live-passthrough-get-started.md
+          displayName: 'media services v2, v2, version 2'
         - name: .NET
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
+          displayName: 'media services v2, v2, version 2'
 - name: 操作方法
   items:
     - name: レガシ コンポーネント
-      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      displayName: 'deprecated, deprecation, retired, retirement, legacy, media services v2, v2, version 2'
       href: legacy-components.md
       items:
         - name: Azure Media Encoder から移行する
           href: migrate-azure-media-encoder.md
-          displayName: AME
+          displayName: 'AME, media services v2, v2, version 2'
         - name: Windows Azure Media Encoder から移行する
           href: migrate-windows-azure-media-encoder.md
-          displayName: WAME
+          displayName: 'WAME, media services v2, v2, version 2'
         - name: インデクサー v1 および v2 から移行する
           href: migrate-indexer-v1-v2.md
+          displayName: 'media services v2, v2, version 2'
     - name: 管理する
       items:
         - name: アカウント
-          displayName: subscription
           href: media-services-account-concept.md
+          displayName: 'media services v2, v2, version 2, subscription, account'
         - name: エンティティ
           items:
             - name: .NET
               href: media-services-dotnet-manage-entities.md
+              displayName: 'media services v2, v2, version 2'
             - name: REST
               href: media-services-rest-manage-entities.md
+              displayName: 'media services v2, v2, version 2'
         - name: ストリーミング エンドポイント
           href: media-services-streaming-endpoints-overview.md
+          displayName: 'media services v2, v2, version 2'
           items:
             - name: Azure portal
               href: media-services-portal-manage-streaming-endpoints.md
+              displayName: 'media services v2, v2, version 2'
             - name: .NET
               href: media-services-dotnet-manage-streaming-endpoints.md
+              displayName: 'media services v2, v2, version 2'
         - name: ストレージ
           items:
             - name: ストレージ アクセス キーをローリングした後に Media Services を更新する
               href: media-services-roll-storage-access-keys.md
+              displayName: 'media services v2, v2, version 2'
             - name: 複数のストレージ アカウントにわたって資産を管理する
               href: media-services-managing-multiple-storage-accounts.md
+              displayName: 'media services v2, v2, version 2'
         - name: クォータと制限
           href: media-services-quotas-and-limitations.md
+          displayName: 'media services v2, v2, version 2'
     - name: Postman を構成する
       href: media-rest-apis-with-postman.md
+      displayName: 'media services v2, v2, version 2'
       items:
         - name: オンデマンド ストリーミングのコレクション
           href: postman-collection.md
+          displayName: 'media services v2, v2, version 2'
         - name: ライブ ストリーミングのコレクション
           href: postman-live-streaming-collection.md
+          displayName: 'media services v2, v2, version 2'
         - name: 環境
           href: postman-environment.md
+          displayName: 'media services v2, v2, version 2'
     - name: コンテンツをアップロードする
       items:
         - name: ファイルをアカウントにアップロードする
           items:
             - name: Azure portal
               href: media-services-portal-upload-files.md
+              displayName: 'media services v2, v2, version 2'
             - name: .NET
               href: media-services-dotnet-upload-files.md
-              displayName: invalid character
+              displayName: 'invalid character, media services v2, v2, version 2'
             - name: REST
               href: media-services-rest-upload-files.md
-              displayName: invalid character
+              displayName: 'media services v2, v2, version 2, invalid character'
         - name: StorSimple を使用したファイルのアップロード
           href: media-services-upload-files-from-storsimple.md
+          displayName: 'media services v2, v2, version 2'
         - name: 既存の BLOB をコピーする
           href: media-services-copying-existing-blob.md
+          displayName: 'media services v2, v2, version 2'
     - name: コンテンツのエンコード
       href: media-services-encode-asset.md
+      displayName: 'media services v2, v2, version 2'
       items:
         - name: エンコードの速度とコンカレンシーの管理
           href: media-services-manage-encoding-speed.md
+          displayName: 'media services v2, v2, version 2'
         - name: Media Encoder Standard (MES)
           items:
             - name: Media Encoder Standard の形式とコーデック
               href: media-services-media-encoder-standard-formats.md
+              displayName: 'media services v2, v2, version 2'
             - name: MES を使用したビットレート ラダーの自動生成
               href: media-services-autogen-bitrate-ladder-with-mes.md
+              displayName: 'media services v2, v2, version 2'
             - name: Media Encoder Standard を使用したエンコード
               items:
                 - name: Azure portal
                   href: media-services-portal-encode.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: .NET
                   href: media-services-dotnet-encode-with-media-encoder-standard.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: REST
                   href: media-services-rest-encode-asset.md
+                  displayName: 'media services v2, v2, version 2'
             - name: MES による高度なエンコード
               href: media-services-advanced-encoding-with-mes.md
+              displayName: 'media services v2, v2, version 2'
               items:
                 - name: Media Encoder Standard のプリセットのカスタマイズ
                   href: media-services-custom-mes-presets-with-dotnet.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: .NET で Media Encoder Standard を使用してサムネイルを生成する方法
                   href: media-services-dotnet-generate-thumbnail-with-mes.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: Media Encoder Standard を使用してビデオをトリミングする
                   href: media-services-crop-video.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: サムネイル スプライトを生成する
                   href: generate-thumbnail-sprite.md
+                  displayName: 'media services v2, v2, version 2'
             - name: MES スキーマ
               items:
                 - name: Media Encoder Standard スキーマ
                   href: media-services-mes-schema.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: 入力メタデータ
                   href: media-services-input-metadata-schema.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: 出力メタデータ
                   href: media-services-output-metadata-schema.md
+                  displayName: 'media services v2, v2, version 2'
             - name: MES のプリセット
               href: media-services-mes-presets-overview.md
+              displayName: 'media services v2, v2, version 2'
               items:
                 - name: H264 Multiple Bitrate 1080p Audio 5.1
                   href: media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Multiple Bitrate 1080p
                   href: media-services-mes-preset-H264-Multiple-Bitrate-1080p.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Multiple Bitrate 16x9 SD Audio 5.1
                   href: media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Multiple Bitrate 16x9 SD
                   href: media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Multiple Bitrate 16x9 for iOS
                   href: media-services-mes-preset-H264-Multiple-Bitrate-16x9-for-iOS.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Multiple Bitrate 4K Audio 5.1
                   href: media-services-mes-preset-H264-Multiple-Bitrate-4K-Audio-5.1.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Multiple Bitrate 4K
                   href: media-services-mes-preset-H264-Multiple-Bitrate-4K.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Multiple Bitrate 4x3 SD Audio 5.1
                   href: media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD-Audio-5.1.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Multiple Bitrate 4x3 SD
                   href: media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Multiple Bitrate 4x3 for iOS
                   href: media-services-mes-preset-H264-Multiple-Bitrate-4x3-for-iOS.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Multiple Bitrate 720p Audio 5.1
                   href: media-services-mes-preset-H264-Multiple-Bitrate-720p-Audio-5.1.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Multiple Bitrate 720p
                   href: media-services-mes-preset-H264-Multiple-Bitrate-720p.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate 1080p Audio 5.1
                   href: media-services-mes-preset-H264-Single-Bitrate-1080p-Audio-5.1.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate 1080p
                   href: media-services-mes-preset-H264-Single-Bitrate-1080p.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate 16x9 SD Audio 5.1
                   href: media-services-mes-preset-H264-Single-Bitrate-16x9-SD-Audio-5.1.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate 16x9 SD
                   href: media-services-mes-preset-H264-Single-Bitrate-16x9-SD.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate 4K Audio 5.1
                   href: media-services-mes-preset-H264-Single-Bitrate-4K-Audio-5.1.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate 4K
                   href: media-services-mes-preset-H264-Single-Bitrate-4K.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate 4x3 SD Audio 5.1
                   href: media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate 4x3 SD
                   href: media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate 720p Audio 5.1
                   href: media-services-mes-preset-H264-Single-Bitrate-720p-Audio-5.1.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate 720p
                   href: media-services-mes-preset-H264-Single-Bitrate-720p.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate 720p for Android
                   href: media-services-mes-preset-H264-Single-Bitrate-720p-for-Android.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate High Quality SD for Android
                   href: media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md
+                  displayName: 'media services v2, v2, version 2'
                 - name: H264 Single Bitrate Low Quality SD for Android
                   href: media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md
+                  displayName: 'media services v2, v2, version 2'
         - name: fMP4 チャンクを生成するタスクの作成
           href: media-services-generate-fmp4-chunks.md
+          displayName: 'media services v2, v2, version 2'
         - name: メディア プロセッサ
           items:
             - name: .NET
               href: media-services-get-media-processor.md
+              displayName: 'media services v2, v2, version 2'
             - name: REST
               href: media-services-rest-get-media-processor.md
+              displayName: 'media services v2, v2, version 2'
         - name: エラー コード
           href: media-services-encoding-error-codes.md
+          displayName: 'media services v2, v2, version 2'
         - name: 非推奨
           items:
             - name: 静的パッケージと暗号化
               href: media-services-static-packaging.md
+              displayName: 'media services v2, v2, version 2'
     - name: ライブ ストリーム配信
       href: media-services-manage-channels-overview.md
+      displayName: 'media services v2, v2, version 2'
       items:
         - name: オンプレミス エンコーダー
           href: media-services-live-streaming-with-onprem-encoders.md
+          displayName: 'media services v2, v2, version 2'
           items:
             - name: 推奨のオンプレミス エンコーダー
               href: media-services-recommended-encoders.md
+              displayName: 'media services v2, v2, version 2'
             - name: Azure portal
               href: media-services-portal-live-passthrough-get-started.md
+              displayName: 'media services v2, v2, version 2'
             - name: .NET
               href: media-services-dotnet-live-encode-with-onpremises-encoders.md
+              displayName: 'media services v2, v2, version 2'
         - name: クラウド エンコーダーを使用したライブ ストリーミング
           href: media-services-manage-live-encoder-enabled-channels.md
+          displayName: 'media services v2, v2, version 2'
           items:
             - name: Azure portal
               href: media-services-portal-creating-live-encoder-enabled-channel.md
+              displayName: 'media services v2, v2, version 2'
             - name: .NET
               href: media-services-dotnet-creating-live-encoder-enabled-channel.md
+              displayName: 'media services v2, v2, version 2'
         - name: オンプレミス エンコーダーをクラウド エンコーダーと使用するための構成
           href: media-services-live-encoders-overview.md
+          displayName: 'media services v2, v2, version 2'
           items:
             - name: Haivision KB エンコーダー
               href: media-services-configure-kb-live-encoder.md
+              displayName: 'media services v2, v2, version 2'
             - name: Wirecast エンコーダー
               href: media-services-configure-wirecast-live-encoder.md
+              displayName: 'media services v2, v2, version 2'
         - name: 長時間実行される操作を処理する
           href: media-services-dotnet-long-operations.md
+          displayName: 'media services v2, v2, version 2'
         - name: フラグメント化 MP4 ライブ取り込みの仕様
-          href: ../media-services-fmp4-live-ingest-overview.md
+          href: media-services-fmp4-live-ingest-overview.md
+          displayName: 'media services v2, v2, version 2'
     - name: コンテンツの保護
       href: media-services-content-protection-overview.md
+      displayName: 'media services v2, v2, version 2'
       items:
         - name: ストレージ暗号化
           href: media-services-rest-storage-encryption.md
+          displayName: 'media services v2, v2, version 2'
         - name: AES-128 暗号化
           href: media-services-protect-with-aes128.md
+          displayName: 'media services v2, v2, version 2'
         - name: ストリーミング用 PlayReady および Widevine
           href: media-services-protect-with-playready-widevine.md
+          displayName: 'media services v2, v2, version 2'
         - name: ストリーミング用 FairPlay
           href: media-services-protect-hls-with-fairplay.md
+          displayName: 'media services v2, v2, version 2'
         - name: Windows 10 用のオフラインの PlayReady
           href: offline-playready-streaming-windows-10.md
+          displayName: 'media services v2, v2, version 2'
         - name: iOS 用のオフラインの FairPlay
           href: media-services-protect-hls-with-offline-fairplay.md
+          displayName: 'media services v2, v2, version 2'
         - name: Android 用のオフラインの Widevine
           href: offline-widevine-for-android.md
+          displayName: 'media services v2, v2, version 2'
         - name: Azure Portal での構成
           href: media-services-portal-protect-content.md
+          displayName: 'media services v2, v2, version 2'
         - name: DRM ライセンスの配布
           href: media-services-deliver-keys-and-licenses.md
+          displayName: 'media services v2, v2, version 2'
         - name: ContentKeys を作成する
           items:
             - name: .NET
               href: media-services-dotnet-create-contentkey.md
+              displayName: 'media services v2, v2, version 2'
             - name: REST
               href: media-services-rest-create-contentkey.md
+              displayName: 'media services v2, v2, version 2'
         - name: ライセンス テンプレートの概要
           items:
             - name: PlayReady ライセンス テンプレート
               href: media-services-playready-license-template-overview.md
+              displayName: 'media services v2, v2, version 2'
             - name: Widevine ライセンス テンプレート
               href: media-services-widevine-license-template-overview.md
+              displayName: 'media services v2, v2, version 2'
         - name: 資産配信ポリシーを構成する
           items:
             - name: .NET
               href: media-services-dotnet-configure-asset-delivery-policy.md
+              displayName: 'media services v2, v2, version 2'
             - name: REST
               href: media-services-rest-configure-asset-delivery-policy.md
+              displayName: 'media services v2, v2, version 2'
         - name: コンテンツ キー承認ポリシーを構成する
           items:
             - name: Azure portal
               href: media-services-portal-configure-content-key-auth-policy.md
+              displayName: 'media services v2, v2, version 2'
             - name: .NET
               href: media-services-dotnet-configure-content-key-auth-policy.md
+              displayName: 'media services v2, v2, version 2'
             - name: REST
               href: media-services-rest-configure-content-key-auth-policy.md
+              displayName: 'media services v2, v2, version 2'
         - name: 認証トークンを AMS に渡す
           href: media-services-pass-authentication-tokens.md
+          displayName: 'media services v2, v2, version 2'
         - name: 参照設計
           items:
             - name: DRM システムのハイブリッド設計
               href: hybrid-design-drm-sybsystem.md
+              displayName: 'media services v2, v2, version 2'
             - name: マルチ DRM の参照設計
               href: media-services-cenc-with-multidrm-access-control.md
+              displayName: 'media services v2, v2, version 2'
     - name: コンテンツの分析
       items:
         - name: Indexer で処理する
           href: media-services-index-content.md
+          displayName: 'media services v2, v2, version 2'
         - name: タスク プリセット
           href: indexer-task-preset.md
+          displayName: 'media services v2, v2, version 2'
         - name: Face Redactor で処理する
           href: media-services-face-redaction.md
+          displayName: 'media services v2, v2, version 2'
         - name: Face Redactor のチュートリアル
           href: media-services-redactor-walkthrough.md
+          displayName: 'media services v2, v2, version 2'
     - name: テレメトリの構成
       href: media-services-telemetry-overview.md
+      displayName: 'media services v2, v2, version 2'
       items:
         - name: .NET
           href: media-services-dotnet-telemetry.md
+          displayName: 'media services v2, v2, version 2'
         - name: REST
           href: media-services-rest-telemetry.md
+          displayName: 'media services v2, v2, version 2'
     - name: スケール
       items:
         - name: メディア処理
           href: media-services-scale-media-processing-overview.md
+          displayName: 'media services v2, v2, version 2'
           items:
             - name: Azure portal
               href: media-services-portal-scale-media-processing.md
+              displayName: 'media services v2, v2, version 2'
             - name: .NET
               href: media-services-dotnet-encoding-units.md
+              displayName: 'media services v2, v2, version 2'
         - name: ストリーミング エンドポイント
           items:
             - name: Azure portal
               href: media-services-portal-scale-streaming-endpoints.md
+              displayName: 'media services v2, v2, version 2'
     - name: コンテンツを配信する
       href: media-services-deliver-content-overview.md
+      displayName: 'media services v2, v2, version 2'
       items:
         - name: 動的パッケージ
           href: media-services-dynamic-packaging-overview.md
+          displayName: 'media services v2, v2, version 2'
         - name: フィルターと動的マニフェストの概要
           href: media-services-dynamic-manifest-overview.md
+          displayName: 'media services v2, v2, version 2'
           items:
             - name: .NET を使用したフィルターの作成
               href: media-services-dotnet-dynamic-manifest.md
+              displayName: 'media services v2, v2, version 2'
             - name: REST を使用したフィルターの作成
               href: media-services-rest-dynamic-manifest.md
+              displayName: 'media services v2, v2, version 2'
         - name: Media Services Extension での CDN キャッシュ ポリシー
           href: ../../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json
+          displayName: 'media services v2, v2, version 2'
         - name: コンテンツを発行する
           items:
             - name: Azure portal
               href: media-services-portal-publish.md
+              displayName: 'media services v2, v2, version 2'
             - name: .NET
               href: media-services-deliver-streaming-content.md
+              displayName: 'media services v2, v2, version 2'
             - name: REST
               href: media-services-rest-deliver-streaming-content.md
+              displayName: 'media services v2, v2, version 2'
         - name: ダウンロードで配信する
           href: media-services-deliver-asset-download.md
+          displayName: 'media services v2, v2, version 2'
         - name: フェールオーバー ストリーミング シナリオ
           href: media-services-implement-failover.md
-          displayName: 'HA, high availability'
+          displayName: 'media services v2, v2, version 2, HA, high availability'
     - name: 使用
       items:
         - name: 既存のプレーヤーを使用したメディアの再生
           href: media-services-playback-content-with-existing-players.md
+          displayName: 'media services v2, v2, version 2'
         - name: その他の再生オプション
           items:
             - name: Smooth Streaming Windows ストア アプリケーション
               href: media-services-build-smooth-streaming-apps.md
+              displayName: 'media services v2, v2, version 2'
             - name: DASH.js を使用した HTML5 アプリケーション
               href: media-services-embed-mpeg-dash-in-html5.md
+              displayName: 'media services v2, v2, version 2'
             - name: Adobe Open Source Media Framework プレーヤー
               href: media-services-use-osmf-smooth-streaming-client-plugin.md
+              displayName: 'media services v2, v2, version 2'
         - name: クライアント側で広告を挿入する
           href: media-services-inserting-ads-on-client-side.md
+          displayName: 'media services v2, v2, version 2'
         - name: Microsoft Smooth Streaming Client Porting Kit のライセンス
           href: media-services-sspk.md
+          displayName: 'media services v2, v2, version 2'
     - name: 統合
       items:
         - name: Media Services と共に Azure Functions を使用する
           href: media-services-dotnet-how-to-use-azure-functions.md
+          displayName: 'media services v2, v2, version 2'
         - name: Media Services と Azure Functions の併用の例
           href: 'https://github.com/Azure-Samples/media-services-dotnet-functions-integration'
+          displayName: 'media services v2, v2, version 2'
     - name: モニター
       items:
         - name: ジョブの進行状況をチェックする
           items:
             - name: REST
               href: media-services-rest-check-job-progress.md
+              displayName: 'media services v2, v2, version 2'
             - name: Azure portal
               href: media-services-portal-check-job-progress.md
+              displayName: 'media services v2, v2, version 2'
             - name: .NET
               href: media-services-check-job-progress.md
+              displayName: 'media services v2, v2, version 2'
         - name: Queue Storage を使用したジョブ通知の監視
           href: media-services-dotnet-check-job-progress-with-queues.md
+          displayName: 'media services v2, v2, version 2'
         - name: Webhook を使用したジョブ通知の監視
           href: media-services-dotnet-check-job-progress-with-webhooks.md
+          displayName: 'media services v2, v2, version 2'
     - name: トラブルシューティング
       items:
         - name: よく寄せられる質問
-          href: media-services-frequently-asked-questions.md
+          href: media-services-frequently-asked-questions.yml
+          displayName: 'media services v2, v2, version 2'
         - name: ライブ ストリーミングのトラブルシューティング ガイド
           href: media-services-troubleshooting-live-streaming.md
+          displayName: 'media services v2, v2, version 2'
         - name: エラー コード
           href: media-services-error-codes.md
+          displayName: 'media services v2, v2, version 2'
         - name: 再試行ロジック
           href: media-services-retry-logic-in-dotnet-sdk.md
+          displayName: 'media services v2, v2, version 2'
 - name: リファレンス
   items:
     - name: コード サンプル
@@ -414,7 +569,7 @@
     - name: Azure PowerShell (Resource Manager)
       href: /powershell/module/az.media
     - name: Azure PowerShell
-      href: /powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0
+      href: /powershell/module/servicemanagement/azure.service/
     - name: .NET
       href: /dotnet/api/microsoft.windowsazure.mediaservices.client
     - name: REST
@@ -422,11 +577,11 @@
     - name: 仕様
       items:
         - name: ライブ取り込み - フラグメント化 MP4 ライブ取り込みの仕様
-          href: ../media-services-fmp4-live-ingest-overview.md
+          href: media-services-fmp4-live-ingest-overview.md
         - name: ライブ取り込み - ライブ ストリーミングでの時限メタデータのシグナル発信
-          href: ../media-services-specifications-live-timed-metadata.md
+          href: media-services-specifications-live-timed-metadata.md
         - name: スムーズ ストリーミング HEVC
-          href: ../media-services-specifications-ms-sstr-amendment-hevc.md
+          href: media-services-specifications-ms-sstr-amendment-hevc.md
     - name: レガシ コンポーネント
       displayName: 'deprecated, deprecation, retired, retirement, legacy'
       href: legacy-components.md

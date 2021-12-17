@@ -6,14 +6,14 @@ author: duongau
 ms.service: frontdoor
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/18/2021
+ms.date: 08/26/2021
 ms.author: amsriva
-ms.openlocfilehash: 3f3b4d3e431d9e24549bdb8caa4b2d17f547c82c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 79674febe7f43f8ae57d8c0420d6c8500506506e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064054"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965676"
 ---
 # <a name="configure-https-on-a-front-door-standardpremium-sku-preview-custom-domain-using-the-azure-portal"></a>Azure portal を使用して Front Door Standard/Premium SKU (プレビュー) のカスタム ドメインで HTTPS を構成する
 
@@ -49,11 +49,11 @@ Azure Front Door Standard/Premium では Azure マネージド証明書とカス
 
 1. [カスタム ドメイン](how-to-add-custom-domain.md)を有効にする手順に従って、カスタム ドメインを検証してエンドポイントに関連付けます。
 
-1. カスタム ドメインがエンドポイントに正常に関連付けられると、Azure マネージド証明書が Front Door にデプロイされます。 このプロセスが完了するまでに数分かかることがあります。
+1. カスタム ドメインがエンドポイントに正常に関連付けられると、Azure マネージド証明書が Front Door にデプロイされます。 このプロセスは、完了するまでに数分から 1 時間かかる可能性があります。
 
 ## <a name="using-your-own-certificate"></a>独自の証明書の使用
 
-独自の TLS 証明書を使用するように選択することもできます。 この証明書は、Azure Front Door Standard/Premium で使用する前に、Azure Key Vault にインポートする必要があります。 Azure Key Vault への[証明書のインポート](../../key-vault/certificates/tutorial-import-certificate.md)に関する記事を参照してください。 
+独自の TLS 証明書を使用するように選択することもできます。  TLS/SSL 証明書を作成する場合は、[Microsoft の信頼された CA リスト](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)の一部である許可された証明機関 (CA) を使用した完全な証明書チェーンを作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。  証明書にはリーフと中間の証明書を含む完全な証明書チェーンが必要であり、ルート CA は [Microsoft の信頼された CA リスト](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)の一部である必要があります。 完全なチェーンを持たない証明書が提示された場合、その証明書が関係する要求は、期待通り動作することが保証されません。 この証明書は、Azure Front Door Standard/Premium で使用する前に、Azure Key Vault にインポートする必要があります。 Azure Key Vault への[証明書のインポート](../../key-vault/certificates/tutorial-import-certificate.md)に関する記事を参照してください。
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Azure Key Vault のアカウントと証明書を準備する
  
@@ -65,7 +65,7 @@ Azure Front Door Standard/Premium では Azure マネージド証明書とカス
 1. 証明書を既にお持ちの場合には、Azure Key Vault アカウントに直接アップロードできます。 それ以外の場合は、Azure Key Vault が統合されているいずれかのパートナー証明機関から Azure Key Vault を介して、新しい証明書を直接作成します。 証明書は、**シークレット** ではなく **証明書** オブジェクトとしてアップロードします。
 
     > [!NOTE]
-    > 独自の TLS/SSL 証明書については、Front Door は EC 暗号化アルゴリズムを使用した証明書をサポートしていません。
+    > 独自の TLS/SSL 証明書については、Front Door は EC 暗号化アルゴリズムを使用した証明書をサポートしていません。 証明書にはリーフと中間の証明書を含む完全な証明書チェーンが必要であり、ルート CA は [Microsoft の信頼された CA リスト](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)の一部である必要があります。 
 
 #### <a name="register-azure-front-door"></a>Azure Front Door を登録する
 
@@ -86,7 +86,7 @@ Azure Key Vault アカウント内の証明書にアクセスするには、Azur
 
 1. Key Vault アカウントで、[設定] の下の **[アクセス ポリシー]** を選択します。 次に、 **[新規作成]** を選択して新しいポリシーを作成します。
 
-1. **[プリンシパルの選択]** で、**205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** を検索し、**[Microsoft.AzureFrontDoor-Cdn]** を選択します。 **[選択]** をクリックします。
+1. **[プリンシパルの選択]** で、「**205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**」を検索し、 **[Microsoft.AzureFrontDoor-Cdn]** を選択します。 **[選択]** をクリックします。
 
 1. **[シークレットのアクセス許可]** で **[取得]** を選択して、Front Door に証明書の取得を許可します。
 

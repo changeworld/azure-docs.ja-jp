@@ -1,17 +1,17 @@
 ---
-author: trevorbye
+author: eric-urban
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.date: 04/04/2020
 ms.topic: include
-ms.author: trbye
+ms.author: eur
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f98adc762e13da4b80e4eb7930334d17a54e9d08
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: a096819c0b9173ba7d301cdd6523a171264392a3
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444125"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507524"
 ---
 ## <a name="prerequisites"></a>前提条件
 

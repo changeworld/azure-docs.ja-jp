@@ -9,20 +9,26 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 07/21/2021
 ms.author: justinha
-ms.openlocfilehash: 5fa19e23767af0e121d07872970199a2a1705ea8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fe8f41c2ecf92034f81f2332aabee5a55df66a92
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951940"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439256"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインをセキュリティで保護するために、弱い暗号およびパスワード ハッシュ同期を無効にする
+# <a name="harden-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインの強化
 
 既定では、Azure Active Directory Domain Services (Azure AD DS) で、NTLM v1 や TLS v1 などの暗号が使用できます。 これらの暗号は、一部のレガシ アプリケーションで必要になる場合がありますが、脆弱と見なされており、不要であれば無効にできます。 Azure AD Connect を使用したオンプレミスのハイブリッド接続がある場合は、NTLM パスワード ハッシュ同期も無効にできます。
 
-この記事では、NTLM v1 と TLS v1 の暗号を無効にする方法と、NTLM パスワード ハッシュ同期を無効にする方法について説明します。
+この記事では、次のような設定を使用してマネージド ドメインを強化する方法について説明します。 
+
+- NTLM v1 および TLS v1 暗号を無効にする
+- NTLM パスワード ハッシュ同期を無効にする
+- RC4 暗号化を使用したパスワード変更ができないようにする
+- Kerberos 防御を有効にする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,20 +41,36 @@ ms.locfileid: "104951940"
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要に応じて、[Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance]します。
 
-## <a name="use-security-settings-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>セキュリティ設定を使用して脆弱な暗号と NTLM パスワード ハッシュ同期を無効します
+## <a name="use-security-settings-to-harden-your-domain"></a>セキュリティ設定を使用してドメインを強化する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **Azure AD Domain Services** を検索して選択します。
 1. 目的のマネージド ドメインを選択します (例: *aaddscontoso.com* )。
 1. 左側で、**セキュリティの設定** を選択します。
-1. 次の設定に対して **無効** をクリックします。
+1. 次の設定に対して **[有効]** または **[無効]** をクリックします。
    - **TLS 1.2 のみモード**
    - **NTLM 認証**
+   - **オンプレミスからのパスワード同期**
    - **オンプレミスからの NTLM パスワード同期**
+   - **RC4 暗号化**
+   - **Kerberos 防御**
 
    ![脆弱な暗号と NTLM パスワード ハッシュ同期を無効するセキュリティの設定のスクリーンショット](media/secure-your-domain/security-settings.png)
 
-## <a name="use-powershell-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>PowerShell を使用して脆弱な暗号と NTLM パスワード ハッシュ同期を無効にします
+## <a name="assign-azure-policy-compliance-for-tls-12-usage"></a>TLS 1.2 Azure Policy のコンプライアンスを割り当てる
+
+**セキュリティ設定** に加えて、Microsoft Azure Policy には、TLS 1.2 の使用を強制する **コンプライアンス** 設定があります。 ポリシーは、割り当てられるまで影響を受けません。 ポリシーが割り当てられると、 **[コンプライアンス]** に表示されます。
+
+- 割り当てが **[監査]** の場合、Azure AD DS インスタンスが準拠すればコンプライアンスが報告されます。
+- 割り当てが **[拒否]** の場合、TLS 1.2 が必要ない場合、コンプライアンスにより Azure AD DS インスタンスが作成されず、TLS 1.2 が必要になるまで Azure AD DS インスタンスを更新できません。
+
+![コンプライアンス設定のスクリーンショット](media/secure-your-domain/policy-tls.png)
+
+## <a name="audit-ntlm-failures"></a>NTLM の失敗を監査する
+
+NTLM パスワード同期を無効にするとセキュリティが向上しますが、多くのアプリケーションとサービスは、それを使用しないで動作するようには設計されていません。 たとえば、DNS サーバー管理や RDP など、リソースに IP アドレスを使用して接続しようとすると、アクセスが拒否されて失敗します。 NTLM パスワード同期を無効にし、アプリケーションまたはサービスが想定どおりに動作していない場合は、 **[ログオン/ログオフ]**  >  **[ログオンの監査]** イベント カテゴリのセキュリティ監査を有効にすることで、NTLM 認証の失敗を確認できます。この場合、NTLM は、イベントの詳細で **認証パッケージ** として指定されます。 詳細については、「[Azure Active Directory Domain Services でセキュリティ監査を有効にする](security-audit-events.md)」をご覧ください。
+
+## <a name="use-powershell-to-harden-your-domain"></a>PowerShell を使用してドメインを強化する
 
 必要に応じて、[Azure PowerShell をインストールして構成します](/powershell/azure/install-az-ps)。 必ず [Connect-AzAccount][Connect-AzAccount] コマンドレットを使用して Azure サブスクリプションにサインインしてください。 
 
@@ -75,13 +97,13 @@ $DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServ
 > Azure AD DS マネージド ドメインで NTLM パスワード ハッシュ同期を無効にしている場合、ユーザーおよびサービス アカウントは LDAP 簡易バインドを実行できません。 LDAP 簡易バインドを実行する必要がある場合は、次のコマンドで、 *"SyncNtlmPasswords"="Disabled";* セキュリティ構成オプションを設定しないでください。
 
 ```powershell
-$securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
+$securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled";"KerberosRc4Encryption"="Disabled";"KerberosArmoring"="Disabled"}}
 ```
 
 最後に、[Set-AzResource][Set-AzResource] コマンドレットを使用して、定義済みのセキュリティ設定をマネージド ドメインに適用します。 最初の手順の Azure AD DS リソースと、前の手順のセキュリティ設定を指定します。
 
 ```powershell
-Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
+Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -ApiVersion “2021-03-01” -Verbose -Force
 ```
 
 セキュリティ設定がマネージド ドメインに適用されるまでに、しばらく時間がかかります。

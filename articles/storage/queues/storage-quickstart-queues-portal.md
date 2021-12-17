@@ -1,21 +1,20 @@
 ---
 title: クイック スタート:ポータルで Azure Storage キューを作成する
 description: Azure portal を使用してキューを作成します。 その後、Azure portal を使用して、メッセージを追加し、メッセージのプロパティを表示し、メッセージをデキューします。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 08/13/2020
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.custom:
-- mode-portal
-ms.openlocfilehash: f0e7a5a514f2d68fce025ea9fb354f29fa068561
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mode-portal
+ms.openlocfilehash: 2786440ba94ab467714a490d29fd77fdbf1ef588
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534388"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063843"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>クイック スタート:Azure portal でキューを作成してメッセージを追加する
 

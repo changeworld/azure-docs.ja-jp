@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 01/03/2019
-ms.openlocfilehash: 148c4828309738a18dbda5fd35ea634e8384bfde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df1f74bbd875a3ae4dee608129a6c93df20506bf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792108"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751343"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体をレポートする (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -51,9 +51,8 @@ ms.locfileid: "92792108"
 
 ```sql
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
-CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
-SECRET = '<password>'
-[;]
+CREATE DATABASE SCOPED CREDENTIAL [<credential_name>]  WITH IDENTITY = '<username>',  
+SECRET = '<password>';
 ```
 
 > [!NOTE]
@@ -63,7 +62,7 @@ SECRET = '<password>'
 
 構文:
 
-```sql
+```syntaxsql
 <External_Data_Source> ::=
     CREATE EXTERNAL DATA SOURCE <data_source_name> WITH
         (TYPE = SHARD_MAP_MANAGER,
@@ -101,7 +100,7 @@ select * from sys.external_data_sources;
 
 構文:  
 
-```sql
+```syntaxsql
 CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name  
     ( { <column_definition> } [ ,...n ])
     { WITH ( <sharded_external_table_options> ) }
@@ -147,7 +146,7 @@ SELECT * from sys.external_tables;
 
 外部テーブルを削除するには
 
-```sql
+```syntaxsql
 DROP EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name[;]
 ```
 

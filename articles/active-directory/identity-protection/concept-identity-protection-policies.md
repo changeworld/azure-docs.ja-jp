@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28a9080ce878e262573adf0b3c79394079c09ca2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f1b31c8f7698e395c4944d0c6283e6e6257c2d2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94835970"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727656"
 ---
 # <a name="identity-protection-policies"></a>Identity Protection ポリシー
 

@@ -5,15 +5,15 @@ services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: 34993ad3d3d0494f89bd264a8b7194f52129ad7c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56f540e103cc3392cc4e73777dd49d5d7faf266d
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555059"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984610"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してプライベート リンク サービスを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "102555059"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fprivatelink-service%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,9 +35,9 @@ ms.locfileid: "102555059"
 
 このテンプレートは、プライベート リンク サービスを作成します。
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-privatelink-service/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/privatelink-service/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/privatelink-service/azuredeploy.json":::
 
 このテンプレートには、次の複数の Azure リソースが定義されています。
 
@@ -56,7 +56,7 @@ ARM テンプレートを Azure にデプロイする方法を次に示します
 
 1. Azure にサインインしてテンプレートを開くために、 **[Azure に配置する]** を選択します。 テンプレートは、仮想マシン、標準ロード バランサー、プライベート リンク サービス、プライベート エンドポイント、ネットワーク、および検証する仮想マシンを作成します。
 
-   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fprivatelink-service%2Fazuredeploy.json)
 
 2. リソース グループを選択または作成します。
 3. 仮想マシン管理者のユーザー名とパスワードを入力します。
@@ -82,7 +82,7 @@ ARM テンプレートを Azure にデプロイする方法を次に示します
     a. メッセージが表示されたら、 **[Connect]** を選択します。
 
     b. VM の作成時に指定したユーザー名とパスワードを入力します。
-    
+
     > [!NOTE]
     > 場合によっては、 **[その他]**  >  **[別のアカウントを使用する]** の順に選択して、VM の作成時に入力した資格情報を指定する必要があります。
 

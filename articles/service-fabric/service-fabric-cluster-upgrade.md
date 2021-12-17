@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターのアップグレード
 description: Azure Service Fabric クラスターを更新するオプションについて説明します
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 636d4cb11f7cc6780d560d3d0043a89c69840a4f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7fad28e0357b26b0b8753496310c7788f6dbb0c8
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731116"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401150"
 ---
 # <a name="upgrading-and-updating-azure-service-fabric-clusters"></a>Azure Service Fabric クラスターのアップグレードと更新
 
@@ -27,6 +27,9 @@ Service Fabric クラスターで[サポートされているランタイム バ
 また、[Resource Manager テンプレートを使用して](service-fabric-cluster-upgrade-version-azure.md#resource-manager-template)、クラスターのアップグレード モードの設定とランタイム バージョンの選択をすることもできます。
 
 自動アップグレードが推奨されるアップグレード モードである理由は、このオプションによってクラスターがサポートされている状態に維持され、最新の修正プログラムや機能を利用できるようになるためです。また、[Wave デプロイ](#wave-deployment-for-automatic-upgrades)方式を使用して、ワークロードの中断を最小限にする方法で更新をスケジュールすることもできます。
+
+> [!NOTE]
+> 既存のクラスターを自動モードに変更すると、クラスターは新しいリリースから始まる次のアップグレード期間に登録されます。 新しいリリースは、[Service Fabric チーム ブログ](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)で発表されます。 アップグレード期間ごとに、可能な限り高いアップグレード パスが選択されます。[サポートされているバージョン](service-fabric-versions.md)を参照してください。 手動アップグレード モードでは、即時アップグレードがトリガーされます。 
 
 ## <a name="wave-deployment-for-automatic-upgrades"></a>Wave デプロイによる自動アップグレード
 
@@ -116,7 +119,7 @@ Service Fabric では、クラスターの作成時に指定した [X.509 server
 
 ### <a name="upgrading-os-images-for-cluster-nodes"></a>クラスター ノードの OS イメージのアップグレード
 
-Service Fabric クラスター ノードの OS イメージの自動アップグレードを有効にすることをお勧めします。 そのためには、いくつかのクラスター要件と実行手順があります。 もう 1 つのオプションは、パッチ オーケストレーション アプリケーション (POA) を使用することです。これは、ダウンタイムなしで、Service Fabric クラスターでのオペレーティング システムへのパッチの適用を自動化する Service Fabric アプリケーションです。 これらのオプションについて詳しくは、「[Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用](service-fabric-patch-orchestration-application.md)」を参照してください。
+Service Fabric クラスター ノードの OS イメージの自動アップグレードを有効にすることをお勧めします。 そのためには、いくつかのクラスター要件と実行手順があります。 もう 1 つのオプションは、パッチ オーケストレーション アプリケーション (POA) を使用することです。これは、ダウンタイムなしで、Service Fabric クラスターでのオペレーティング システムへのパッチの適用を自動化する Service Fabric アプリケーションです。 これらのオプションについて詳しくは、「[Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用](how-to-patch-cluster-nodes-windows.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

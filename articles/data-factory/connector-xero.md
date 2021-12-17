@@ -1,23 +1,26 @@
 ---
-title: Azure Data Factory を使用して Xero からデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Xero のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-author: linda33wj
+title: Xero からデータをコピーする
+description: Azure Data Factory または Azure Synapse Analytics パイプラインで Copy アクティビティを使用して、Xero からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.author: jingwang
-ms.openlocfilehash: d795f8355943032751b911423b8aaa93b2df3206
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.author: jianleishen
+ms.openlocfilehash: 17b92068145ac07833f7e73cc4d694a89f39ad7f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100366910"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779846"
 ---
-# <a name="copy-data-from-xero-using-azure-data-factory"></a>Azure Data Factory を使用して Xero からデータをコピーする
+# <a name="copy-data-from-xero-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して Xero からデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Xero からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory および Azure Synapse Analytics パイプラインで Copy アクティビティを使用して、Xero からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -35,7 +38,32 @@ Xero から、サポートされている任意のシンク データ ストア�
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-xero-using-ui"></a>UI を使用して Xero のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Xero のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用して新しいリンク サービスを作成します。":::
+
+2. Xero を検索し、Xero コネクタを選択します。
+
+   :::image type="content" source="media/connector-xero/xero-connector.png" alt-text="Xero コネクタを選択します。":::    
+
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+   :::image type="content" source="media/connector-xero/configure-xero-linked-service.png" alt-text="Xero のリンク サービスを構成します。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 次のセクションでは、Xero コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -50,10 +78,10 @@ Xero のリンクされたサービスでは、次のプロパティがサポー
 | ***`connectionProperties` の下:*** | | |
 | host | Xero サーバーのエンドポイント (`api.xero.com`)。  | はい |
 | authenticationType | 使用できる値は `OAuth_2.0` と `OAuth_1.0` です。 | はい |
-| consumerKey | OAuth 2.0 の場合は、Xero アプリケーションの **クライアント ID** を指定します。<br>OAuth 1.0 の場合は、Xero アプリケーションに関連付けられているコンシューマー キーを指定します。<br>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
-| privateKey | OAuth 2.0 の場合は、Xero アプリケーションの **クライアント シークレット** を指定します。<br>OAuth 1.0 の場合は、Xero プライベート アプリケーション用に生成された .pem ファイルの秘密キーを指定します ([公開/秘密キー ペアの作成](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key)に関するページを参照)。 `openssl genrsa -out privatekey.pem 512` を使用し、numbits に 512 を指定して、**privatekey.pem を生成します。** 1024 はサポートされていません。 Unix の改行文字 (\n) も含め、.pem ファイルのすべてのテキストを含めます (以下のサンプルを参照してください)。<br/><br>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| consumerKey | OAuth 2.0 の場合は、Xero アプリケーションの **クライアント ID** を指定します。<br>OAuth 1.0 の場合は、Xero アプリケーションに関連付けられているコンシューマー キーを指定します。<br>このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| privateKey | OAuth 2.0 の場合は、Xero アプリケーションの **クライアント シークレット** を指定します。<br>OAuth 1.0 の場合は、Xero プライベート アプリケーション用に生成された .pem ファイルの秘密キーを指定します ([公開/秘密キー ペアの作成](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key)に関するページを参照)。 `openssl genrsa -out privatekey.pem 512` を使用し、numbits に 512 を指定して、**privatekey.pem を生成します。** 1024 はサポートされていません。 Unix の改行文字 (\n) も含め、.pem ファイルのすべてのテキストを含めます (以下のサンプルを参照してください)。<br/><br>このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | tenantId | Xero アプリケーションに関連付けられているテナント ID。 OAuth 2.0 認証に適用されます。<br>[アクセスを許可されているテナントの確認](https://developer.xero.com/documentation/oauth2/auth-flow)セクションで、テナント ID の取得方法を確認してください。 | OAuth 2.0 認証の場合、はい |
-| refreshToken | OAuth 2.0 認証に適用されます。<br/>OAuth 2.0 更新トークンが Xero アプリケーションに関連付けられ、アクセス トークンを更新するために使用されます。アクセス トークンは 30 分後に有効期限が切れます。 Xero 承認フローのしくみと更新トークンの取得方法については、[こちらの記事](https://developer.xero.com/documentation/oauth2/auth-flow)を参照してください。 更新トークンを取得するには、[offline_access スコープ](https://developer.xero.com/documentation/oauth2/scopes)を要求する必要があります。 <br/>**既知の制限**:Xero では、更新トークンは、アクセス トークンを更新するために使用された後でリセットされることに注意してください。 運用ワークロードの場合、各コピー アクティビティを実行する前に、ADF で使用するための有効な更新トークンを設定する必要があります。<br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | OAuth 2.0 認証の場合、はい |
+| refreshToken | OAuth 2.0 認証に適用されます。<br/>OAuth 2.0 更新トークンが Xero アプリケーションに関連付けられ、アクセス トークンを更新するために使用されます。アクセス トークンは 30 分後に有効期限が切れます。 Xero 承認フローのしくみと更新トークンの取得方法については、[こちらの記事](https://developer.xero.com/documentation/oauth2/auth-flow)を参照してください。 更新トークンを取得するには、[offline_access スコープ](https://developer.xero.com/documentation/oauth2/scopes)を要求する必要があります。 <br/>**既知の制限**:Xero では、更新トークンは、アクセス トークンを更新するために使用された後でリセットされることに注意してください。 運用ワークロードの場合、各コピー アクティビティを実行する前に、サービスで使用するための有効な更新トークンを設定する必要があります。<br/>このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 | OAuth 2.0 認証の場合、はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は、true です。  | いいえ |
 | useHostVerification | TLS 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は、true です。  | いいえ |
 | usePeerVerification | TLS 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は、true です。  | いいえ |

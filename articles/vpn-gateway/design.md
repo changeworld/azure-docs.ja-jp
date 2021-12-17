@@ -1,18 +1,18 @@
 ---
-title: Azure VPN Gateway の設計について
-description: Azure 仮想ネットワークに接続するように VPN ゲートウェイ トポロジを設計する方法について説明します。
+title: Azure VPN Gateway のトポロジと設計
+description: オンプレミスの場所を仮想ネットワークに接続するための VPN Gateway トポロジと設計について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 99b8cdbb1528caefd30fb11c9702dff1e817c0ab
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 49969f4f404670961cf0ba35765c149fee134d62
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061810"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108802668"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway の設計
 
@@ -108,4 +108,4 @@ ExpressRoute 用にセキュリティで保護されたフェールオーバー 
 
 * [サブスクリプションとサービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関するページを参照してください。
 
-* Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
+* Azure のその他の重要な[ネットワーク機能](../networking/fundamentals/networking-overview.md)について参照してください。

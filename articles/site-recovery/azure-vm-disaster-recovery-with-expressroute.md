@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 07/25/2021
 ms.author: mayg
-ms.openlocfilehash: 0e1f670f2ba5ad31f29d56b2de40acd6e2bf18a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c6e5bfb3e014540f4b23438cfe4869ace1f1345
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88654380"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742962"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>ExpressRoute を Azure VM のディザスター リカバリーと統合する
 
@@ -166,7 +166,7 @@ Site Recovery を使用してターゲット Azure リージョンに Azure VM �
 
 この構成では、Expressroute 回線は 1 つだけです。 回線は 1 つがダウンした場合に冗長接続されますが、ピアリング リージョンでダウンした場合、単一のルート回線では回復させることはできません。 以下の点に注意してください。
 
-- [同じ地理的場所](azure-to-azure-support-matrix.md#region-support)の任意の Azure リージョンには、Azure VM をレプリケーションすることができます。 ターゲット Azure リージョンがソースと同じ場所にない状態で、単一の ExpressRoute 回線を使用している場合は、ExpressRoute Premium を有効にする必要があります。 詳細については、[ExpressRoute の場所](../expressroute/expressroute-locations.md)に関する記述と「[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
+- ターゲット Azure リージョンがソースと同じ場所にない状態で、単一の ExpressRoute 回線を使用している場合は、ExpressRoute Premium を有効にする必要があります。 詳細については、[ExpressRoute の場所](../expressroute/expressroute-locations.md)に関する記述と「[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
 - ターゲット リージョンで同じ IP アドレス空間が使用されている場合、回線にソースとターゲットの vNet を同時に接続することはできません。 このシナリオでは:    
     -  ソース側の接続を切断し、ターゲット側の接続を確立します。 この接続変更は、Site Recovery の復旧計画の一部としてスクリプト化することができます。 以下の点に注意してください。
         - 地域障害の発生時には、プライマリ リージョン へのアクセスができないと、切断操作が失敗する可能性があります。 これが、ターゲット リージョンへの接続の作成に影響する可能性があります。

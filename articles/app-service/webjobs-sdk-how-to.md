@@ -5,48 +5,49 @@ author: ggailey777
 ms.devlang: dotnet
 ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 02/18/2019
+ms.date: 06/24/2021
 ms.author: glenga
-ms.openlocfilehash: 063924dccb7d7b95b962b24ecc1af1870a855194
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b39e73f1920c653f653b686ac50aa1e4253c555
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102617133"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "122652557"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
-この記事は、Azure WebJobs SDK を使用する方法のガイダンスを提供します。 WebJobs をすぐに使い始めたい場合は、「[イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する](webjobs-sdk-get-started.md)」をご覧ください。 
+この記事は、Azure WebJobs SDK を使用する方法のガイダンスを提供します。 WebJobs をすぐに使い始めたい場合は、「[Azure WebJobs SDK の概要](webjobs-sdk-get-started.md)」をご覧ください。 
 
 ## <a name="webjobs-sdk-versions"></a>WebJobs SDK のバージョン
 
 WebJobs SDK のバージョン 3.*x* とバージョン 2.*x* には、重要な違いがあります。
 
 * バージョン 3.*x* では、.NET Core のサポートが追加されています。
-* バージョン 3.*x* では、WebJobs SDK で必要となるストレージ バインディング拡張機能を明示的にインストールする必要があります。 バージョン 2.*x* では、ストレージのバインドは SDK に含まれていました。
-* .NET Core (3.*x*) プロジェクト用の Visual Studio のツールは、.NET Framework (2.*x*) プロジェクト用のツールと異なります。 詳しくは、「[Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」をご覧ください。
+* バージョン 3.*x* では、WebJobs SDK で必要となるストレージ バインディング拡張機能をインストールします。 バージョン 2.*x* では、ストレージのバインドは SDK に含まれています。
+* .NET Core (3.*x*) プロジェクト用の Visual Studio 2019 のツールは、.NET Framework (2.*x*) プロジェクト用のツールと異なります。 詳しくは、「[Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」をご覧ください。
 
-可能な場合は、バージョン 3.*x* とバージョン 2.*x* 両方の例が提供されています。
+この記事では、WebJobs バージョン 3.*x* および WebJobs バージョン 2.*x* の両方のバージョンの例について説明します。
 
-> [!NOTE]
-> [Azure Functions](../azure-functions/functions-overview.md) は WebJobs SDK でビルドされており、この記事では Azure Functions ドキュメントの一部のトピックへのリンクが提供されています。 Functions と WebJobs SDK の以下の違いに注意してください。
-> * Azure Functions バージョン 2.*x* は WebJobs SDK バージョン 3.*x* に対応しており、Azure Functions 1.*x* は WebJobs SDK 2.*x* に対応しています。 ソース コード リポジトリでは、WebJobs SDK の番号付けが使用されています。
-> * Azure Functions C# クラス ライブラリのサンプル コードは、WebJobs SDK プロジェクトに `FunctionName` 属性が必要ないということ以外は、WebJobs SDK コードに類似しています。
-> * バインドの種類の一部は、HTTP (Webhook) や (HTTP に基づく) Event Grid などの Functions でのみサポートされます。
->
-> 詳しくは、[WebJobs SDK と Azure Functions の比較](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs)に関するページをご覧ください。
+[Azure Functions](../azure-functions/functions-overview.md) は WebJobs SDK 上に構築されています。 
+  
+ * Azure Functions バージョン 2.*x* は、WebJobs SDK バージョン 3.*x* 上に構築されています。
+ * Azure Functions バージョン 1.*x* は、WebJobs SDK バージョン 2.*x* 上に構築されています。
+  
+Azure Functions と WebJobs SDK の両方のソース コード リポジトリでは、WebJobs SDK の番号付けが使用されます。 このハウツー記事のいくつかのセクションは、Azure Functions ドキュメントにリンクしています。 
+
+詳しくは、[WebJobs SDK と Azure Functions の比較](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs)に関するページをご覧ください。 
 
 ## <a name="webjobs-host"></a>WebJobs ホスト
 
-このホストは、関数のランタイム コンテナーです。  トリガーをリッスンして関数を呼び出します。 バージョン 3.*x* では、ホストは `IHost` の実装です。 バージョン 2.*x* では、`JobHost` オブジェクトを使用します。 コードでホスト インスタンスを作成し、その動作をカスタマイズするコードを書きます。
+このホストは、関数のランタイム コンテナーです。 このホストは、トリガーをリッスンして関数を呼び出します。 バージョン 3.*x* では、ホストは `IHost` の実装です。 バージョン 2.*x* では、`JobHost` オブジェクトを使用します。 コードでホスト インスタンスを作成し、その動作をカスタマイズするコードを書きます。
 
-これが、直接 WebJobs SDK を使用することと、Azure Functions によって間接的に使用することの主な違いです。 Azure Functions では、サービスがホストを制御するので、コードを書いてホストをカスタマイズすることはできません。 Azure Functions では、host.json ファイルの設定を使用してホスト動作をカスタマイズできます。 これらの設定はコードではなく文字列なので、行うことができるカスタマイズの種類が制限されます。
+これが、直接 WebJobs SDK を使用することと、Azure Functions によって間接的に使用することの主な違いです。 Azure Functions では、サービスがホストを制御するので、コードを書いてホストをカスタマイズすることはできません。 Azure Functions では、host.json ファイルの設定を使用してホスト動作をカスタマイズできます。 これらの設定はコードではなく文字列なので、これらの文字列の使用によって、実行できるカスタマイズの種類が制限されます。
 
 ### <a name="host-connection-strings"></a>ホスト接続文字列
 
-WebJobs SDK では、Azure Storage と Azure Service Bus の接続文字列は、ローカルで実行するときは local.settings.json ファイルで検索され、Azure で実行するときは WebJob の環境で検索されます。 既定で、`AzureWebJobsStorage` という名前のストレージ接続文字列設定が必要です。  
+WebJobs SDK では、Azure Storage と Azure Service Bus の接続文字列は、ローカルで実行するときは local.settings.json ファイルで検索され、Azure で実行するときは WebJob の環境で検索されます。 既定では、WebJobs SDK には `AzureWebJobsStorage` という名前のストレージ接続文字列設定が必要です。  
 
-SDK のバージョン 2.*x* を使用すると、これらの接続文字列に独自の名前を使用したり、それらを他の場所に格納したりできます。 次に示すように、[`JobHostConfiguration`] を使用してコードで名前を設定できます。
+SDK のバージョン 2.*x* は、特定の名前を必要としません。 バージョン 2.*x* を使用すると、これらの接続文字列に独自の名前を使用でき、それらを他の場所に格納できます。 次に示すように、[`JobHostConfiguration`] を使用してコードで名前を設定できます。
 
 ```cs
 static void Main(string[] args)
@@ -71,7 +72,7 @@ static void Main(string[] args)
 
 ### <a name="host-development-settings"></a>ホスト開発設定
 
-ローカル開発をより効率的にするために、開発モードでホストを実行できます。 開発モードで実行しているときに変更されるいくつかの設定を以下に示します。
+ローカル開発をより効率的にするために、開発モードでホストを実行できます。 開発モードで実行しているときに自動的に変更されるいくつかの設定を以下に示します。
 
 | プロパティ | 開発設定 |
 | ------------- | ------------- |
@@ -104,7 +105,7 @@ static async Task Main()
 
 #### <a name="version-2x"></a>バージョン 2.*x*
 
-`JobHostConfiguration` クラスには、開発モードを有効にする `UseDevelopmentSettings` メソッドがあります。  次の例では、開発設定を使用する方法を示します。 ローカル環境で実行したときは `config.IsDevelopment` が `true` を返すようにするには、`AzureWebJobsEnv` という名前で値が `Development` のローカル環境変数を設定します。
+`JobHostConfiguration` クラスには、開発モードを有効にする `UseDevelopmentSettings` メソッドがあります。 次の例では、開発設定を使用する方法を示します。 ローカル環境で実行したときは `config.IsDevelopment` が `true` を返すようにするには、`AzureWebJobsEnv` という名前で値が `Development` のローカル環境変数を設定します。
 
 ```cs
 static void Main()
@@ -129,7 +130,7 @@ static void Main()
 
 `HttpClient` を使用することで関数から送信するすべての HTTP 要求は、`ServicePointManager` を通過します。 `DefaultConnectionLimit` で設定されている値に達した後は、`ServicePointManager` では送信する前に要求をキューに格納するようになります。 たとえば、`DefaultConnectionLimit` が 2 に設定されていて、コードが 1,000 個の HTTP 要求を行ったとします。 最初、OS への送信が許可されるのは 2 個の要求のみです。 その他の 998 個は、余裕ができるまでキューされたままになります。 つまり、要求を行ったように見えても、OS によって宛先サーバーに要求が送信されなかったため、`HttpClient` がタイムアウトする可能性があります。 従って、ローカルの `HttpClient` は、要求を完了するのに 10 秒間かかっているのに、サービスはどの要求も 200 ミリ秒で返しているというような、あまり意味をなさないように見える動作が目撃されることがあります。 
 
-ASP.NET アプリケーションの既定値は `Int32.MaxValue` であり、これは Basic またはそれ以降の App Service プランで実行されている WebJobs で適切に動作します。 WebJobs は通常、Always On の設定を必要としており、これは Basic またはそれ以降の App Service プランでのみサポートされています。
+ASP.NET アプリケーションの既定値は `Int32.MaxValue` であり、これは Basic またはそれ以降の App Service プランで実行されている WebJobs で適切に動作します。 WebJobs は通常、**Always On** の設定を必要としており、これは Basic またはそれ以降の App Service プランでのみサポートされています。
 
 Web ジョブが Free または Shared App Service プランで実行されている場合、アプリケーションは、現在 [300 の接続制限](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits)を持つ App Service サンドボックスにより制限されています。 `ServicePointManager` の設定がバインドなしの接続制限の場合、サンドボックスの接続がしきい値に達し、サイトがシャット ダウンする可能性が高くなります。 その場合は、`DefaultConnectionLimit`の設定を 50 または 100 のようにより低いものにすることで、これを防ぎつつ十分なスループットを可能にします。
 
@@ -148,11 +149,13 @@ static void Main(string[] args)
 
 ## <a name="triggers"></a>トリガー
 
+WebJobs SDK では、[Azure Functions](../azure-functions/functions-triggers-bindings.md) で使用されるのと同じトリガーとバインドのセットがサポートされます。 WebJobs SDK では、トリガーは関数固有であり、WebJob デプロイの種類には関係しないことに注意してください。 SDK を使用して作成されたイベントトリガー関数を持つ WebJobs は、常に "_Always On_" が有効になっている _継続的な_ WebJobs として発行する必要があります。   
+
 関数は、パブリック メソッドである必要があり、1 つのトリガー属性または [`NoAutomaticTrigger`](#manual-triggers) 属性を必要とします。
 
 ### <a name="automatic-triggers"></a>自動トリガー
 
-自動トリガーは、イベントに応答して関数を呼び出します。 Azure Queue Storage に追加されるメッセージによってトリガーされる次の例のような関数について考えます。 それは、Azure Blob Storage から BLOB を読み取ることで応答します。
+自動トリガーは、イベントに応答して関数を呼び出します。 Azure Queue Storage に追加されるメッセージによってトリガーされる次の例のような関数について考えます。 関数は、Azure Blob Storage から BLOB を読み取ることで応答します。
 
 ```cs
 public static void Run(
@@ -164,7 +167,7 @@ public static void Run(
 }
 ```
 
-`QueueTrigger` 属性は、キュー メッセージが `myqueue-items` キューに出現するたびに関数を呼び出すようランタイムに通知します。 `Blob` 属性は、キュー メッセージを使用して *sample-workitems* コンテナー内の BLOB を読み取るようランタイムに通知します。 `samples-workitems` コンテナー内の BLOB 項目の名前は、キュー トリガーからバインド式 (`{queueTrigger}`) として直接取得されます。
+`QueueTrigger` 属性は、キュー メッセージが `myqueue-items` に出現するたびに関数を呼び出すようランタイムに通知します。 `Blob` 属性は、キュー メッセージを使用して *sample-workitems* コンテナー内の BLOB を読み取るようランタイムに通知します。 `samples-workitems` コンテナー内の BLOB 項目の名前は、キュー トリガーからバインド式 (`{queueTrigger}`) として直接取得されます。
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
@@ -229,7 +232,7 @@ static void Main(string[] args)
 
 出力バインドに対してメソッドの戻り値を使用するには、属性をメソッドの戻り値に適用します。 「[Azure 関数の戻り値の使用](../azure-functions/functions-bindings-return-value.md)」の例をご覧ください。
 
-## <a name="binding-types"></a>バインドの種類
+### <a name="binding-types"></a>バインドの種類
 
 バインドの種類をインストールして管理するプロセスは、バージョン 3.*x* またはバージョン 2.*x* のどちらの SDK を使用しているかによって異なります。 特定のバインドの種類用にインストールするパッケージは、Azure Functions のそのバインドの種類の[参照資料](#binding-reference-information)の「パッケージ」セクションで見つけることができます。 例外は (ローカル ファイル システム用の) Files トリガーとバインドで、これは Azure Functions ではサポートされていません。
 
@@ -273,7 +276,7 @@ static async Task Main()
 }
 ```
 
-コア サービスの一部である Timer トリガーまたは Files バインドを使用するには、それぞれ `AddTimers` 拡張メソッドまたは `AddFiles` 拡張メソッドを呼び出します。
+コア サービスの一部である Timer トリガーまたは Files バインドを使用するには、`AddTimers` 拡張メソッドまたは `AddFiles` 拡張メソッドを呼び出します。
 
 #### <a name="version-2x"></a>バージョン 2.*x*
 
@@ -353,7 +356,7 @@ class Program
 }
 ```
 
-## <a name="binding-configuration"></a>バインド構成
+### <a name="binding-configuration"></a>バインド構成
 
 一部のトリガーとバインドの動作を構成することができます。 それらを構成するプロセスは、SDK のバージョンによって異なります。
 
@@ -370,7 +373,7 @@ class Program
 * [SendGrid バインド](#sendgrid-binding-configuration-version-3x)
 * [Service Bus トリガー](#service-bus-trigger-configuration-version-3x)
 
-### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Azure CosmosDB トリガーの構成 (バージョン 3.*x*)
+#### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Azure CosmosDB トリガーの構成 (バージョン 3.*x*)
 
 次の例では、Azure Cosmos DB トリガーを構成する方法を示します。
 
@@ -399,7 +402,7 @@ static async Task Main()
 
 詳しくは、[Azure CosmosDB のバインド](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)に関する記事をご覧ください。
 
-### <a name="event-hubs-trigger-configuration-version-3x"></a>Event Hubs トリガーの構成 (バージョン 3.*x*)
+#### <a name="event-hubs-trigger-configuration-version-3x"></a>Event Hubs トリガーの構成 (バージョン 3.*x*)
 
 次の例では、Event Hubs トリガーを構成する方法を示します。
 
@@ -425,11 +428,11 @@ static async Task Main()
 }
 ```
 
-詳しくは、[Event Hubs のバインド](../azure-functions/functions-bindings-event-hubs.md#host-json)に関する記事をご覧ください。
+詳細については、[Event Hubs バインディング](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings)に関する記事を参照してください。
 
 ### <a name="queue-storage-trigger-configuration"></a>Queue Storage トリガーの構成
 
-以下の例では、Queue Storage トリガーを構成する方法を示します。
+次の例では、Queue Storage トリガーを構成する方法を示します。
 
 #### <a name="version-3x"></a>バージョン 3.*x*
 
@@ -472,7 +475,7 @@ static void Main(string[] args)
 }
 ```
 
-詳しくは、[host.json v1.x のリファレンス](../azure-functions/functions-host-json-v1.md#queues)をご覧ください。
+詳細については、[host.json v1.x のリファレンス](../azure-functions/functions-host-json-v1.md#queues)を参照してください。
 
 ### <a name="sendgrid-binding-configuration-version-3x"></a>SendGrid バインドの構成 (バージョン 3.*x*)
 
@@ -499,7 +502,7 @@ static async Task Main()
 }
 ```
 
-詳しくは、[SendGrid のバインド](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings)に関する記事をご覧ください。
+詳細については、[SendGrid バインディング](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings)に関する記事を参照してください。
 
 ### <a name="service-bus-trigger-configuration-version-3x"></a>Service Bus トリガーの構成 (バージョン 3.*x*)
 
@@ -526,7 +529,7 @@ static async Task Main()
 }
 ```
 
-詳しくは、[Service Bus のバインド](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings)に関する記事をご覧ください。
+詳しくは、[Service Bus のバインド](../azure-functions/functions-bindings-service-bus.md#hostjson-settings)に関する記事をご覧ください。
 
 ### <a name="configuration-for-other-bindings"></a>その他のバインドの構成
 
@@ -567,7 +570,7 @@ static void Main()
 }
 ```
 
-## <a name="binding-expressions"></a>バインド式
+### <a name="binding-expressions"></a>バインド式
 
 属性コンス トラクターのパラメーターでは、さまざまなソースからの値に解決する式を使用することができます。 たとえば、次のコードで `BlobTrigger` 属性のパスは、`filename` という名前の式を作成します。 これが出力バインドに使用されると、`filename` はトリガーする BLOB の名前に解決します。
 
@@ -658,7 +661,7 @@ static async Task Main(string[] args)
 
 Azure Functions では、次の例に示すように、アプリの設定から値を取得するために `INameResolver` が実装されます。 WebJobs SDK を直接使用する場合は、お好みのソースからプレースホルダーの置換値を取得するカスタム実装を記述できます。
 
-## <a name="binding-at-runtime"></a>実行時のバインド
+### <a name="binding-at-runtime"></a>実行時のバインド
 
 `Queue`、`Blob`、`Table` などのバインド属性を使用する前に関数で何らかの処理を行う必要がある場合は、`IBinder` インターフェイスを使用できます。
 
@@ -678,7 +681,7 @@ public static void CreateQueueMessage(
 
 詳細については、Azure Functions ドキュメント内の[実行時のバインド](../azure-functions/functions-dotnet-class-library.md#binding-at-runtime)を参照してください。
 
-## <a name="binding-reference-information"></a>バインド参照情報
+### <a name="binding-reference-information"></a>バインド参照情報
 
 Azure Functions のドキュメントでは、各バインドの種類に関する参照情報が提供されています。 各バインド参照記事には、以下の情報が記載されています。 (この例は、Storage キューに基づいています。)
 
@@ -687,10 +690,16 @@ Azure Functions のドキュメントでは、各バインドの種類に関す�
 * [属性](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations)。 バインドの種類に使用する属性です。
 * [構成](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration)。 属性のプロパティとコンストラクターのパラメーターの説明です。
 * [使用方法](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)。 どの種類にバインドできるかとバインドの動作方法に関する情報です。 例: ポーリング アルゴリズム、有害キュー処理。
-  
-バインドの参照記事の一覧については、Azure Functions の[トリガーとバインド](../azure-functions/functions-triggers-bindings.md#supported-bindings)に関する記事の「サポートされるバインディング」をご覧ください。 その一覧では、HTTP、Webhook、Event Grid のバインドは、Azure Functions でのみサポートされており、WebJobs SDK ではサポートされていません。
 
-## <a name="disable-attribute"></a>Disable 属性 
+> [!NOTE]
+> HTTP、Webhook、Event Grid のバインドは、Azure Functions でのみサポートされており、WebJobs SDK ではサポートされていません。
+  
+Azure Functions ランタイムでサポートされるバインディングの完全な一覧については、「[サポートされるバインディング](../azure-functions/functions-triggers-bindings.md#supported-bindings)」を参照してください。  
+
+## <a name="attributes-for-disable-timeout-and-singleton"></a>Disable、Timeout、Singleton の属性
+これらの属性を使用すると、関数のトリガーを制御し、関数を取り消し、関数のインスタンスが 1 つのみ実行されるようにできます。
+
+### <a name="disable-attribute"></a>Disable 属性 
 
 [`Disable`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) 属性は、関数がトリガーされるかどうかを制御します。 
 
@@ -708,7 +717,7 @@ Azure portal でアプリ設定の値を変更すると、WebJobs が再起動�
 
 属性は、パラメーター、メソッド、またはクラス レベルで宣言できます。 設定名には、バインド式を含めることもできます。
 
-## <a name="timeout-attribute"></a>Timeout 属性
+### <a name="timeout-attribute"></a>Timeout 属性
 
 [`Timeout`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs) 属性は、関数が指定した時間内に完了しない場合にキャンセルします。 次の例では、関数は Timeout 属性なしで 1 日間実行されます。 Timeout があると、関数は 15 秒後に取り消されます。
 
@@ -727,9 +736,9 @@ public static async Task TimeoutJob(
 
 クラスまたはメソッド レベルで Timeout 属性を適用し、`JobHostConfiguration.FunctionTimeout` を使用してグローバル タイムアウトを指定することができます。 クラス レベルまたはメソッド レベルのタイムアウトは、グローバル タイムアウトをオーバーライドします。
 
-## <a name="singleton-attribute"></a>Singleton 属性
+### <a name="singleton-attribute"></a>Singleton 属性
 
-[`Singleton`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonAttribute.cs) 属性を使用すると、ホスト Web アプリの複数のインスタンスがある場合でも、関数の 1 つのインスタンスのみが実行されます。 これは、[分散ロック](#viewing-lease-blobs)を使用することにより行われます。
+[`Singleton`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonAttribute.cs) 属性を使用すると、ホスト Web アプリの複数のインスタンスがある場合でも、関数の 1 つのインスタンスのみが実行されます。 Singleton 属性は[分散ロック](#viewing-lease-blobs)を使用して、1 つのインスタンスが実行されることを保証できます。
 
 次の例では、常に `ProcessImage` 関数の単一のインスタンスのみが実行されます。
 
@@ -741,7 +750,7 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 }
 ```
 
-### <a name="singletonmodelistener"></a>SingletonMode.Listener
+#### <a name="singletonmodelistener"></a>SingletonMode.Listener
 
 一部のトリガーには、コンカレンシー管理の組み込みサポートがあります。
 
@@ -754,9 +763,9 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 > [!NOTE]
 > SingletonMode.Function の機能の詳細については、この [GitHub リポジトリ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonMode.cs)を参照してください。
 
-### <a name="scope-values"></a>スコープ値
+#### <a name="scope-values"></a>スコープ値
 
-シングルトンで "*スコープ式/値*" を指定することができます。 式/値により、特定スコープでの関数のすべての実行がシリアル化されることが保証されます。 この方法で詳細なロックを実装すると、要件によって指示されたように他の呼び出しをシリアル化すると同時に、関数のある程度の並列処理が可能になります。 たとえば、次のコードでは、スコープ式は、受信メッセージの `Region` 値 にバインドしています。 キューに 3 つのメッセージが含まれ、それぞれ East、East、West リージョンである場合、East リージョンのメッセージは順次実行されますが、West リージョンのメッセージは East のメッセージと並列に実行されます。
+シングルトンで "*スコープ式/値*" を指定することができます。 式/値により、特定スコープでの関数のすべての実行がシリアル化されることが保証されます。 この方法で詳細なロックを実装すると、要件によって指示されたように他の呼び出しをシリアル化すると同時に、関数のある程度の並列処理が可能になります。 たとえば、次のコードでは、スコープ式は、受信メッセージの `Region` 値 にバインドしています。 キューに East、East、および West のリージョンの 3 つのメッセージが含まれている場合、リージョン East を持つメッセージは連続して実行されます。 リージョン West のメッセージは、リージョン East のメッセージと並行して実行されます。
 
 ```csharp
 [Singleton("{Region}")]
@@ -774,7 +783,7 @@ public class WorkItem
 }
 ```
 
-### <a name="singletonscopehost"></a>SingletonScope.Host
+#### <a name="singletonscopehost"></a>SingletonScope.Host
 
 ロックの既定スコープは `SingletonScope.Function` です。つまり、ロック スコープ (BLOB のリース パス) は、関数の完全修飾名に関連付けられています。 複数の関数にわたってロックするには、`SingletonScope.Host` を指定して、同時に実行したくない関数すべてと同じスコープ ID 名を使用します。 次の例では、  `AddItem` または `RemoveItem`の1 つのみのインスタンス が一度に実行されます。
 
@@ -792,7 +801,7 @@ public static void RemoveItem([QueueTrigger("remove-item")] string message)
 }
 ```
 
-### <a name="viewing-lease-blobs"></a>リース BLOB のビュー
+## <a name="viewing-lease-blobs"></a>リース BLOB のビュー
 
 WebJobs SDK は、バックグラウンドで [Azure BLOB リース](../storage/blobs/concurrency-manage.md#pessimistic-concurrency-for-blobs)を使用して、分散ロックを実装します。 Singleton により使用されるリース BLOB は、パス "locks" にある `AzureWebJobsStorage` ストレージ アカウント内の `azure-webjobs-host` コンテナーにあります。 たとえば、先に示した最初の `ProcessImage` の例のリース BLOB パスは、`locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` です。 どのパスにも JobHost ID が含まれています。この場合は、061851c758f04938a4426aa9ab3869c0 になります。
 
@@ -897,7 +906,7 @@ config.LoggerFactory = new LoggerFactory()
 
 ### <a name="custom-telemetry-for-application-insights"></a>Application Insights のカスタム テレメトリ
 
-[Application Insights](../azure-monitor/app/app-insights-overview.md) 用のカスタム テレメトリを実装するプロセスは、SDK のバージョンによって異なります。 Application Insights の構成方法については、「[Application Insights ログの追加](webjobs-sdk-get-started.md#add-application-insights-logging)」を参照してください。
+[Application Insights](../azure-monitor/app/app-insights-overview.md) 用のカスタム テレメトリを実装するプロセスは、SDK のバージョンによって異なります。 Application Insights の構成方法については、「[Application Insights ログの追加](webjobs-sdk-get-started.md#enable-application-insights-logging)」を参照してください。
 
 #### <a name="version-3x"></a>バージョン 3.*x*
 

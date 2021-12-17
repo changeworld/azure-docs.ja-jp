@@ -1,18 +1,18 @@
 ---
 title: SAP R3 のメタデータ抽出 ABAP 関数モジュール - Azure Purview
 description: この記事では、SAP サーバーに ABAP 関数モジュールをデプロイする手順の概要について説明します
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/13/2020
-ms.openlocfilehash: 9bd3c315fcc15317a9fa483289fdc326ca6aa47f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/07/2021
+ms.openlocfilehash: 7894e187efedf91e3c586dd0d8caaf35e753be3c
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614362"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028585"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>SAP R3 ブリッジ ファミリ用のメタデータ抽出 ABAP 関数モジュールをデプロイする
 
@@ -32,6 +32,12 @@ Sap Business Suite 4 HANA (S/4HANA)、ECC、R/3 ERP ブリッジを使用して�
 
 > [!Note]
 > 以下の手順は、SAP GUI v.7.2 に基づいてコンパイルされました
+
+## <a name="prerequisites"></a>前提条件
+
+Purview Studio から ABAP 関数モジュールのソース コードをダウンロードします。 ソースを登録した後、[SAP ECC](register-scan-sapecc-source.md) または [SAP S/4HANA](register-scan-saps4hana-source.md) のスキャンを新規に登録すると、次のようにダウンロード リンクが上部に表示されます。 
+
+:::image type="content" source="media/abap-functions-deployment-guide/download-abap-code.png" alt-text="Purview Studio から ABAP 関数モジュールのソース コードをダウンロードする" border="true":::
 
 ## <a name="deployment-of-the-module"></a>モジュールのデプロイ
 
@@ -65,7 +71,7 @@ Sap Business Suite 4 HANA (S/4HANA)、ECC、R/3 ERP ブリッジを使用して�
 
 1. 関数グループが作成されたら選択します。
 
-2. リポジトリ ブラウザーで関数グループ名を右クリックし、 **[作成]** を選択して、次に **[関数モジュール]** を選択します。
+2. リポジトリ ブラウザーで関数グループ名を選択したままにし (または右クリックし)、 **[作成]** を選択して、次に **[関数モジュール]** を選択します。
 
 3. **[関数モジュール]** フィールドに「`Z_MITI_DOWNLOAD`」と入力します。 **[短いテキスト]** の入力項目に適切な説明を入力します。
 
@@ -79,7 +85,7 @@ Sap Business Suite 4 HANA (S/4HANA)、ECC、R/3 ERP ブリッジを使用して�
 
 3. **[Source code]\(ソース コード\)** タブに移動します。関数のコードをデプロイするには 2 つの方法があります。
 
-   a. メイン メニューから、テキスト ファイル [Z\_MITI\_DOWNLOAD](https://github.com/Azure/Purview-Samples/tree/master/connectors/sap) ファイルをアップロードします。 これを行うには、 **[ユーティリティ]** 、 **[その他のユーティリティ]** 、 **[アップロード/ダウンロード]** 、 **[アップロード]** の順に選択します。
+   a. メイン メニューから、[[前提条件]](#prerequisites) にある説明に従って、Purview Studio からダウンロードしたテキスト ファイルをアップロードします。 これを行うには、 **[ユーティリティ]** 、 **[その他のユーティリティ]** 、 **[アップロード/ダウンロード]** 、 **[アップロード]** の順に選択します。
 
    b. または、ファイルを開き、その内容をコピーして、**[Source code]\(ソース コード\)** 領域に貼り付けます。
 
@@ -112,7 +118,7 @@ Sap Business Suite 4 HANA (S/4HANA)、ECC、R/3 ERP ブリッジを使用して�
 
 7. 関数を保存します (Ctrl + S キーを押すか、メイン メニューの **[関数モジュール]** を選択して **[保存]** を選択します)。
 
-8. ツール バーの **[アクティブ化]** アイコンをクリックし (Ctrl + F3 キー)、ダイアログ ウィンドウの **[続行]** ボタンを選択します。 プロンプトが表示されたら、メイン関数モジュールと共にアクティブにする、生成されたインクルードを選択する必要があります。
+8. ツール バーの **[アクティブ化]** アイコンを選択し (Ctrl + F3 キー)、ダイアログ ウィンドウの **[続行]** ボタンを選択します。 プロンプトが表示されたら、メイン関数モジュールと共にアクティブにする、生成されたインクルードを選択する必要があります。
 
 ### <a name="testing-the-function"></a>関数のテスト
 

@@ -1,0 +1,90 @@
+- name: デプロイのトラブルシューティングに関するドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: デプロイのトラブルシューティングとは
+      href: overview.md
+- name: クイックスタート
+  items:
+    - name: ARM のデプロイのトラブルシューティング
+      href: quickstart-troubleshoot-arm-deployment.md
+    - name: Bicep のデプロイのトラブルシューティング
+      href: quickstart-troubleshoot-bicep-deployment.md
+- name: 方法
+  items:
+    - name: エラー コードを見つける
+      href: find-error-code.md
+    - name: デバッグ ログの有効化
+      href: enable-debug-logging.md
+    - name: トラブルシューティング テンプレートを作成する
+      href: create-troubleshooting-template.md
+    - name: エラー コードで解決策を見つける
+      items:
+        - name: 一般的なデプロイのエラー
+          href: common-deployment-errors.md
+        - name: アカウント名が無効
+          href: error-storage-account-name.md
+        - name: デプロイ クォータの超過
+          href: deployment-quota-exceeded.md
+        - name: 無効なテンプレート
+          href: error-invalid-template.md
+        - name: ジョブのサイズ超過
+          href: error-job-size-exceeded.md
+        - name: No registered provider found (登録済みのプロバイダーが見つかりません)
+          href: error-register-resource-provider.md
+        - name: 見つかりません
+          href: error-not-found.md
+        - name: 親リソースが見つからない
+          href: error-parent-resource.md
+        - name: Linux のプロビジョニングと割り当ての問題
+          href: /troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux
+        - name: Windows のプロビジョニングと割り当ての問題
+          href: /troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows
+        - name: 要求がポリシーにより許可されない
+          href: error-policy-requestdisallowedbypolicy.md
+        - name: 予約されたリソース名
+          href: error-reserved-resource-name.md
+        - name: リソースの名前と種類の形式
+          href: error-invalid-name-segments.md
+        - name: リソース クォータを超過しました
+          href: error-resource-quota.md
+        - name: SKU not available (SKU が利用できません)
+          href: error-sku-not-available.md
+- name: リファレンス
+  items:
+    - name: Bicep および ARM テンプレート参照
+      href: /azure/templates/
+    - name: 関数
+      items:
+        - name: ARM テンプレート関数
+          href: ../templates/template-functions.md
+        - name: Bicep 関数
+          href: ../bicep/bicep-functions.md
+    - name: REST
+      href: /rest/api/resources/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources/
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: /python/api/overview/azure/resources
+- name: リソース
+  items:
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/paths/deploy-manage-resource-manager-templates/
+    - name: Azure のクイック スタート テンプレート
+      href: 'https://azure.microsoft.com/resources/templates/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

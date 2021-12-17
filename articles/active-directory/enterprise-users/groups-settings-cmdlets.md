@@ -4,22 +4,22 @@ description: Azure Active Directory コマンドレットを使用して、グ�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 07/19/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ad70aff7e1673681541a1b6b37a0bd50d822fed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6453e5599ebc8ab5a28f94fe3f7c69c3615eb63b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97954407"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052543"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -33,6 +33,9 @@ ms.locfileid: "97954407"
 Microsoft 365 グループの設定は、Settings オブジェクトおよび SettingsTemplate オブジェクトを使用して構成されます。 最初は、ディレクトリには Settings オブジェクトが表示されません。これは、ディレクトリが既定の設定で構成されているためです。 既定の設定を変更するには、Settings テンプレートを使用して新しい Settings オブジェクトを作成する必要があります。 Settings テンプレートは、Microsoft によって定義されます。 複数の Settings テンプレートがサポートされています。 ディレクトリの Microsoft 365 グループ設定を構成するには、"Group.Unified" という名前のテンプレートを使用します。 1 つのグループの Microsoft 365 グループ設定を構成するには、"Group.Unified.Guest" という名前のテンプレートを使用します。 このテンプレートは、Microsoft 365 グループへのゲスト アクセスを管理するために使用されます。 
 
 コマンドレットは、Azure Active Directory PowerShell V2 モジュールの一部です。 モジュールをダウンロードしてお使いのコンピューターにインストールする手順については、「[Azure Active Directory PowerShell Version 2](/powershell/azure/active-directory/overview)」を参照してください。 公開版のバージョン 2 モジュールは、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureAD/)からインストールできます。
+
+>[!Note]
+>Microsoft 365 にゲストの追加を制限する設定が設定されていても、管理者は引き続きゲスト ユーザーを Microsoft 365 グループに追加できます。 この設定では、管理者以外のユーザーの Microsoft 365 グループへのゲスト ユーザーの追加を制限します。
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell コマンドレットのインストール
 
@@ -153,11 +156,11 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 |  <ul><li>EnableGroupCreation<li>型: Boolean<li>既定値はTrue |ディレクトリで管理者以外のユーザーによる Microsoft 365 グループの作成を許可するかどうかを示すフラグ。 この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
 |  <ul><li>GroupCreationAllowedGroupId<li>型: String<li>既定値: "" |EnableGroupCreation == false の場合でも Microsoft 365 グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
 |  <ul><li>UsageGuidelinesUrl<li>型: String<li>既定値: "" |グループ使用ガイドラインへのリンク。 |
-|  <ul><li>ClassificationDescriptions<li>型: String<li>既定値: "" | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>ここで、分類は ClassificationList 内のエントリと一致します。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
+|  <ul><li>ClassificationDescriptions<li>型: String<li>既定値: "" | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>ここで、分類は ClassificationList 内のエントリと一致します。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。<br>プロパティ ClassificationDescriptions の文字制限は 300 です。コンマをエスケープすることはできません。
 |  <ul><li>DefaultClassification<li>型: String<li>既定値: "" | 何も指定されていない場合にグループの既定の分類として使用される分類。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
 |  <ul><li>PrefixSuffixNamingRequirement<li>型: String<li>既定値: "" | Microsoft 365 グループ用に構成された名前付け規則を定義する、最大文字数 64 文字の文字列。 詳細については、[Microsoft 365 グループの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
 | <ul><li>CustomBlockedWordsList<li>型: String<li>既定値: "" | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Microsoft 365 グループの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
-| <ul><li>EnableMSStandardBlockedWords<li>型: Boolean<li>既定値は"False" | 使用しない
+| <ul><li>EnableMSStandardBlockedWords<li>型: Boolean<li>既定値は"False" | 非推奨。 使用しないでください。
 |  <ul><li>AllowGuestsToBeGroupOwner<li>型: Boolean<li>既定値はFalse | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>型: Boolean<li>既定値はTrue | ゲスト ユーザーが Microsoft 365 グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>型: String<li>既定値: "" | ゲストの使用ガイドラインへのリンクの URL。 |

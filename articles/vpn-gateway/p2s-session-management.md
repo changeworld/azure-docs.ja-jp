@@ -1,28 +1,30 @@
 ---
-title: Azure VPN Gateway:ポイント対サイト VPN セッションの管理
-description: この記事は、ポイント対サイト VPN セッションの表示と切断に役立ちます。
+title: ポイント対サイト VPN セッションの管理
+titleSuffix: Azure VPN Gateway
+description: ポイント対サイト VPN セッションを表示および切断する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 04/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: b55fe0bf404ecb8a81e3fe1975dfa9f5ba5dfb06
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 79432bfd65feeae79017a883be990d88134cbb10
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103353"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202535"
 ---
 # <a name="point-to-site-vpn-session-management"></a>ポイント対サイト VPN セッションの管理
 
-Azure 仮想ネットワーク ゲートウェイを使用すると、現在のポイント対サイト VPN セッションを簡単に表示したり切断したりすることができます。 この記事は、現在のセッションの表示と切断に役立ちます。
+Azure 仮想ネットワーク ゲートウェイを使用すると、現在のポイント対サイト VPN セッションを簡単に表示したり切断したりすることができます。 この記事は、現在のセッションの表示と切断に役立ちます。 セッションの状態は、5 分ごとに更新されます。 すぐには更新されません。 
 
->[!NOTE]
->セッションの状態は、5 分ごとに更新されます。 すぐには更新されません。
->
 
 ## <a name="portal"></a>ポータル
+
+>[!NOTE]
+> 接続ソースの情報を利用できるのは、IKEv2 および OpenVPN 接続のみです。
+> 
 
 ポータルでセッションを表示および切断するには、次の操作を行います。
 

@@ -1,22 +1,32 @@
 - name: 概要
   href: overview.md
-- name: Red Hat Enterprise Linux イメージ
+- name: Azure 上の Red Hat Enterprise Linux イメージ
   items:
-    - name: RHEL イメージの概要
-      href: redhat-images.md
+    - name: RHEL の一括アップグレード
+      href: redhat-in-place-upgrade.md
+    - name: RHEL の BYOS イメージ オファー
+      href: byos.md
+    - name: RHEL の拡張ライフサイクル サポート
+      href: redhat-extended-lifecycle-support.md
     - name: RHEL イメージ リスト
       href: redhat-imagelist.md
-- name: Red Hat Java クイックスタート
+    - name: RHEL イメージの概要
+      href: redhat-images.md
+    - name: Azure 内の RHUI
+      href: redhat-rhui.md
+- name: Azure での Red Hat Enterprise Java
   items:
-    - name: VM/VMSS での JBoss EAP と RHEL
+    - name: Azure での JBoss EAP
+      href: 'https://docs.microsoft.com/azure/developer/java/ee/jboss-on-azure'
+    - name: VM での JBoss EAP と RHEL
       href: jboss-eap-on-rhel.md
+    - name: JBoss EAP マーケットプレース イメージ
+      href: jboss-eap-marketplace-image.md
+    - name: Azure での JBoss EAP のベスト プラクティス
+      href: jboss-eap-on-azure-best-practices.md
+    - name: JBoss EAP を Azure VM に移行する
+      href: jboss-eap-on-azure-migration.md
+    - name: JBoss EAP を App Service に移行する
+      href: 'https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview'
     - name: VM での WildFly と CentOS
       href: wildfly-on-centos.md
-- name: Azure の Red Hat Update Infrastructure
-  href: redhat-rhui.md
-- name: Red Hat Enterprise Linux BYOS イメージ プラン
-  href: byos.md
-- name: Red Hat Enterprise Linux 延長ライフサイクル サポート
-  href: redhat-extended-lifecycle-support.md
-- name: Azure 上の Red Hat Enterprise イメージの一括アップグレード
-  href: redhat-in-place-upgrade.md

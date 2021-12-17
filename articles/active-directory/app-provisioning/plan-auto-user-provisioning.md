@@ -1,24 +1,24 @@
 ---
 title: Azure Active Directory の自動ユーザー プロビジョニングのデプロイを計画する
-description: 自動ユーザー プロビジョニングの計画と実行に関するガイダンス
+description: Azure Active Directory の自動ユーザー プロビジョニングの計画と実行に関するガイド
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/31/2020
+ms.date: 07/13/2021
 ms.author: kenwith
-ms.reviewer: arvindha, celested
-ms.openlocfilehash: f29bf3fc347fa453dd2d7ebd1f10b3f0e07fac10
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.reviewer: arvinh
+ms.openlocfilehash: deac46666be5c77d48597d2e75838c167040badf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059294"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059530"
 ---
-# <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
+# <a name="plan-an-automatic-user-provisioning-deployment-in-azure-active-directory"></a>Azure Active Directory で自動ユーザー プロビジョニングの展開を計画する
 
 多くの組織は、エンドユーザーの生産性に関して、ServiceNow、Zscaler、Slack などのサービスとしてのソフトウェア (SaaS) アプリケーションに依存しています。 従来、IT スタッフは、各 SaaS アプリケーションのユーザー ID を安全に管理するために、CSV ファイルをアップロードしたりカスタム スクリプトを使用したりするなどの手動のプロビジョニング方法に依存してきました。 これらのプロセスは、エラーが発生しやすく、安全でなく、管理が困難です。
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) の自動ユーザープロビジョニング�
 
 ### <a name="licensing"></a>ライセンス
 
-Azure AD は、アプリケーション ギャラリー メニューに用意されているテンプレートを使用して、任意のアプリケーションのセルフサービス統合を提供します。 ライセンス要件の完全な一覧については、[Azure AD のライセンスに関するページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+Azure AD は、アプリケーション ギャラリー メニューに用意されているテンプレートを使用して、任意のアプリケーションのセルフサービス統合を提供します。 ライセンス要件の完全な一覧については、[Azure AD の価格に関するページ](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)を参照してください。
 
 #### <a name="application-licensing"></a>アプリケーションのライセンス
 
@@ -99,7 +99,7 @@ Azure AD プロビジョニング サービスは、各アプリケーション 
 
 この例では、ユーザーの作成は Azure AD で行われ、Azure AD プロビジョニング サービスは、ターゲット (SaaS) アプリケーションへの自動ユーザー プロビジョニングを管理します。
 
-![Azure AD プロビジョニング サービスを使用したオンプレミス HR アプリケーションからターゲット SaaS アプリケーションまでのユーザーおよびグループの作成プロセスを示す図。](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![Azure AD プロビジョニング サービスを使用したオンプレミス HR アプリケーションからターゲット S A A S アプリケーションまでのユーザーおよびグループの作成プロセスを示す図。](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **ワークフローの説明:**
 
@@ -318,7 +318,7 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 
 #### <a name="resources"></a>リソース
 
-* [製品フィードバックの提供](https://feedback.azure.com/forums/169401-azure-active-directory)
+* [製品フィードバックの提供](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)
 
 * [Azure AD の更新情報](https://azure.microsoft.com/updates/?product=active-directory)
 

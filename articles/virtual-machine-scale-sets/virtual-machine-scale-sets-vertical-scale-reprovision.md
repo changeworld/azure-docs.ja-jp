@@ -8,15 +8,17 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: b172f1f7137b53e98384d92c9c709694eaf0b7e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: avverma, devx-track-azurepowershell
+ms.openlocfilehash: da9bc6e9a5d8dbef843a2c6894a95285cfca4534
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594496"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694496"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットを使用した垂直方向の自動スケール
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 均一のスケール セット
 
 この記事では、再プロビジョニングありまたはなしで Azure [仮想マシン スケール セット](https://azure.microsoft.com/services/virtual-machine-scale-sets/) を垂直方向にスケーリングする方法について説明します。 
 

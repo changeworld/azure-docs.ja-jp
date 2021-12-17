@@ -7,15 +7,15 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: e2ab7a007a92bd2306a7a97781af5653f932d0b7
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 08/12/2021
+ms.openlocfilehash: 21b12da25ae2baf7e31ad12af7b5c346b64bc3ac
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580611"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577234"
 ---
-# <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスのコストの見積りと管理を行う方法
+# <a name="estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure CognitiveSearch サービスのコストの見積りと管理を行う
 
 この記事では、Azure Cognitive Search サービスの実行コストを管理するための価格モデル、課金対象のイベント、およびヒントについて説明します。
 
@@ -48,13 +48,14 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 
 + 帯域幅料金 (送信データ転送)
 
-+ 特定の機能に必要なアドオンサービス:
++ 特定の機能やプレミアム機能に必要なアドオン サービス:
 
-  + AI エンリッチメント ([Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) が必要)
-  + ナレッジ ストア ([Azure Storage](https://azure.microsoft.com/pricing/details/storage/) が必要)
-  + インクリメンタル エンリッチメント ([Azure Storage](https://azure.microsoft.com/pricing/details/storage/) が必要。AI エンリッチメントに適用される)
+  + 課金対象のスキルを使用した AI エンリッチメント ([Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) が必要)。 画像抽出も課金対象です。
+  + ナレッジ ストア ([Azure Storage](https://azure.microsoft.com/pricing/details/storage/) が必要) インデクサーによるストレージに対する操作は、課金対象です。
+  + 増分エンリッチメント ([Azure Storage](https://azure.microsoft.com/pricing/details/storage/) が必要。AI エンリッチメントに適用される)
   + カスタマー マネージド キーと二重暗号化 ([Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) が必要)
-  + インターネットにアクセスできないモデル用のプライベート エンドポイント ([Azure Private Link が必要](https://azure.microsoft.com/pricing/details/private-link/))
+  + インターネットにアクセスできないモデル用のプライベート エンドポイント ([Azure Private Link](https://azure.microsoft.com/pricing/details/private-link/) が必要)
+  + セマンティック検索は、Standard レベルのプレミアム機能です (料金については、[Cognitive Search 価格ページ](https://azure.microsoft.com/pricing/details/search/)をご覧ください)。 予想外の使用を避けるため、[セマンティック検索を無効にする](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#searchsemanticsearch)ことができます。
 
 ### <a name="service-costs"></a>サービスのコスト
 
@@ -80,16 +81,19 @@ Azure Cognitive Search サービスをデータと同じリージョンに作成
 
 ### <a name="ai-enrichment-with-cognitive-services"></a>Cognitive Services を使用する AI エンリッチメント
 
-[AI エンリッチメント](cognitive-search-concept-intro.md)の場合は、従量課金制の処理について、Azure Cognitive Search と同じリージョンの S0 価格レベルで、[有料の Azure Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)ように計画することをお勧めします。 Cognitive Services のアタッチには、関連する固定コストはありません。 課金の対象となるのは、必要な処理の分だけです。
+課金対象のスキルを使用した [AI エンリッチメント](cognitive-search-concept-intro.md)については、従量課金処理のため、Azure Cognitive Search と同じリージョンの S0 価格レベルで、[課金対象の Azure Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)ように計画することをお勧めします。 Cognitive Services のアタッチには、関連する固定コストはありません。 課金の対象となるのは、必要な処理の分だけです。
 
 | 操作 | 課金への影響 |
 |-----------|----------------|
 | ドキュメント解析、テキスト抽出 | Free |
-| ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成** で、[imageAction](/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出のレートは、Azure Cognitive Search の[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページに記載されています。|
-| [組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md) | Cognitive Services を直接使用してそのタスクを実行した場合と同じレートで課金されます。 |
-| カスタム スキル | カスタム スキルは、自分が提供する機能です。 カスタム スキルを使用した場合のコストは、カスタム コードで他の従量制サービスを呼び出しているかどうかによって決まります。 |
+| ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成** で、[imageAction](/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出の料金については、[価格ページ](https://azure.microsoft.com/pricing/details/search/)をご覧ください。 |
+| Cognitive Services に基づく[組み込みのスキル](cognitive-search-predefined-skills.md) | Cognitive Services を直接使用してそのタスクを実行した場合と同じレートで課金されます。 インデクサーごとに 1 日あたり 20 件のドキュメントを無料で処理できます。 大きなワークロードやより頻繁なワークロードにはキーが必要です。 |
+| エンリッチメントを追加しない[組み込みのスキル](cognitive-search-predefined-skills.md) | [なし] : 課金対象でないユーティリティ スキルには、条件付き、シェ―パー、テキスト結合、テキスト分割が含まれます。 課金への影響はありません。また、Cognitive Services キーの要件も、20 件のドキュメント制限もありません。 |
+| カスタム スキル | カスタム スキルは、自分が提供する機能です。 カスタム スキルを使用した場合のコストは、カスタム コードで他の従量制サービスを呼び出しているかどうかによって決まります。  カスタム スキルでは、Cognitive Services キー要件や、20 件のドキュメント制限はありません。|
+| [カスタム エンティティの参照](cognitive-search-skill-custom-entity-lookup.md) | Azure Cognitive Search によって測定されます。 詳細については、[価格ページ](https://azure.microsoft.com/pricing/details/search/#pricing)を参照してください。 |
 
-[インクリメンタル エンリッチメント (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) 機能を使用するとキャッシュを提供でき、インデクサーがコグニティブ スキル (将来、スキルセットを変更する場合に必要) のみを効率的に実行できるようになり、時間とコストが節約されます。
+> [!TIP]
+> [増分エンリッチ (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) は、スキルセットに行われた変更の影響を受けないエンリッチメントをキャッシュして再利用することにより、スキルセット処理のコストを削減します。 キャッシュには Azure Storage が必要です ([価格](https://azure.microsoft.com/pricing/details/storage/blobs/)を参照してください)。ただし、既存のエンリッチメントを再利用できる場合は、スキルセットの実行の累積コストが低くなります。
 
 ## <a name="tips-for-managing-costs"></a>コスト管理のヒント
 
@@ -111,7 +115,7 @@ Azure Cognitive Search サービスをデータと同じリージョンに作成
 
 ## <a name="next-steps"></a>次の手順
 
-Azure サブスクリプション全体のコストを監視および管理する方法について説明します。
+クラウドの支出を最適化して節約しますか?
 
 > [!div class="nextstepaction"]
-> [Azure Cost Management および Billing のドキュメント](../cost-management-billing/cost-management-billing-overview.md)
+> <bpt id="p1">[</bpt>Cost Management を使用してコスト分析を開始する<ept id="p1">](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)</ept>

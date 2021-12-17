@@ -1,24 +1,25 @@
 ---
-title: 'ルートベースの Azure VPN Gateway を作成する: CLI'
-description: Azure CLI を使用して、オンプレミス ネットワークへの VPN 接続のため、または仮想ネットワークに接続するために、ルート ベースの Azure VPN ゲートウェイをすばやく作成します。
+title: 'ルートベースの仮想ネットワーク ゲートウェイを作成する: CLI'
+titleSuffix: Azure VPN Gateway
+description: オンプレミス ネットワークへの VPN 接続用に、または仮想ネットワークどうしを接続するために、ルートベースの仮想ネットワーク ゲートウェイを作成する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 87e3490711990944e017d2d463090f3c8697956c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 63c8187e8ca5e7d7c17016159e4751299359dddf
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484225"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720348"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>CLI を使用してルートベースの VPN ゲートウェイを作成する
 
 この記事では、Azure CLI を使用して、ルートベースの Azure VPN ゲートウェイをすばやく作成する方法について説明します。 VPN ゲートウェイが使用されるのは、ご利用のオンプレミスのネットワークへの VPN 接続を作成するときです。 また、VNet への接続に VPN ゲートウェイを使用することもできます。
 
-この記事の手順では、VNet、サブネット、ゲートウェイ サブネット、およびルートベースの VPN ゲートウェイ (仮想ネットワーク ゲートウェイ) を作成します。 仮想ネットワーク ゲートウェイの作成には 45 分以上かかる場合があります。 ゲートウェイの作成が完了すると、接続を作成できます。 これらの手順には、Azure サブスクリプションが必要です。
+この記事の手順では、VNet、サブネット、ゲートウェイ サブネット、およびルートベースの VPN ゲートウェイ (仮想ネットワーク ゲートウェイ) を作成します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。 ゲートウェイの作成が完了すると、接続を作成できます。 これらの手順には、Azure サブスクリプションが必要です。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

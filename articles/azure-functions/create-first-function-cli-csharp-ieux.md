@@ -6,13 +6,14 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
+- devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 2d03f8c820e0a8b6a19394649db66f8028b62781
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dc1f05ad07d9349b7b4906e60fcaf5b671435959
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768797"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039413"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>クイックスタート: Azure でコマンド ラインから C# 関数を作成する
 
@@ -34,7 +35,7 @@ ms.locfileid: "107768797"
 
 + アクティブなサブスクリプションが含まれる Azure アカウントを取得します。 <abbr title="Azure の使用に関する課金情報を保持するプロファイル。">account</abbr> アクティブ <abbr title="Azure でのリソース管理に使用される基本的な組織構造。通常、組織内の部門または個人に関連付けられます。">subscription</abbr>. [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [.NET Core SDK 3.1](https://www.microsoft.com/net/download) をインストールします
++ [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download) をインストールします
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x をインストールします。
 
@@ -42,7 +43,7 @@ ms.locfileid: "107768797"
 
     + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps) バージョン 5.0 以降。
+    + Azure [Az PowerShell モジュール](/powershell/azure/install-az-ps) バージョン 5.9.0 以降。
 
 ---
 
@@ -64,7 +65,7 @@ ms.locfileid: "107768797"
 
 +`func --version` を **実行** して、Azure Functions Core Tools のバージョンが 3.x であることを確認します。
 
-+ `(Get-Module -ListAvailable Az).Version` を **実行** し、バージョン 5.0 以降であることを確認します。 
++ `(Get-Module -ListAvailable Az).Version` を **実行** し、バージョン 5.0 以降であることを確認します。
 
 + `Connect-AzAccount` を **実行** して Azure にサインインし、アクティブなサブスクリプションを確認します。
 
@@ -76,7 +77,7 @@ ms.locfileid: "107768797"
 
 このセクションでは、ローカル <abbr title="個別に存在する 1 つまたは複数の関数に使用される論理上のコンテナー。これらをまとめてデプロイして管理することができます。">Azure Functions プロジェクト</abbr> を C# で作成します。 プロジェクト内の各関数は、特定のトリガーに応答します。 <abbr title="HTTP 要求、キュー メッセージ、特定の時刻など、関数のコードを呼び出すイベント。">トリガー (trigger)</abbr>.
 
-1. `func init` コマンドを実行して、特定のランタイムを含んだ *LocalFunctionProj* という名前のフォルダーに関数プロジェクトを作成します。  
+1. `func init` コマンドを実行して、特定のランタイムを含んだ *LocalFunctionProj* という名前のフォルダーに関数プロジェクトを作成します。
 
     ```csharp
     func init LocalFunctionProj --dotnet
@@ -90,24 +91,24 @@ ms.locfileid: "107768797"
     <br/>
 
 1. 次のコマンドを使用して、プロジェクトに関数を追加します。
-    
+
     ```console
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
-    ``` 
+    ```
     `--name` 引数は、関数の一意の名前です (HttpExample)。
 
     `--template` 引数で、関数のトリガー (HTTP) を指定します。
 
-    
-    <br/>   
-    <details>  
-    <summary><strong>省略可: HttpExample.cs のコード</strong></summary>  
-    
+
+    <br/>
+    <details>
+    <summary><strong>省略可: HttpExample.cs のコード</strong></summary>
+
     *HttpExample.cs* には、`Run` メソッドが含まれています。これは、トリガー動作を定義する **HttpTriggerAttribute** で装飾された [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) 内の `req` 変数で要求データを受け取ります。
 
     :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
-        
-    返されるオブジェクトは、[OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) または [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400) として応答メッセージを返す [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) です。 詳細については、「[Azure Functions の HTTP トリガーとバインド](./functions-bindings-http-webhook.md?tabs=csharp)」を参照してください。  
+
+    返されるオブジェクトは、[OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) または [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400) として応答メッセージを返す [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) です。 詳細については、「[Azure Functions の HTTP トリガーとバインド](./functions-bindings-http-webhook.md?tabs=csharp)」を参照してください。
     </details>
 
 <br/>
@@ -122,7 +123,7 @@ ms.locfileid: "107768797"
     func start
     ```
 
-    出力の最後の方に、次の行があります。 
+    出力の最後の方に、次の行があります。
 
     <pre class="is-monospace is-size-small has-padding-medium has-background-tertiary has-text-tertiary-invert">
     ...
@@ -154,7 +155,7 @@ ms.locfileid: "107768797"
 <br/>
 
 ---
-    
+
 ## <a name="5-create-supporting-azure-resources-for-your-function"></a>5.関数用の関連 Azure リソースを作成する
 
 関数コードを Azure にデプロイする前に、次のコマンドを使用してリソース グループ、ストレージ アカウント、関数アプリを作成する必要があります。 <abbr title="1 つの単位として管理できる関連する Azure リソースの論理コンテナー。">resource group</abbr>、 <abbr title="すべての Azure Storage データ オブジェクトを含むアカウント。 ストレージ アカウントによって、ストレージ データ用の一意の名前空間が提供されます。">ストレージ アカウント</abbr>、および <abbr title="Azure でサーバーレス関数をホストするクラウド リソース。関数の実行基盤となるコンピューティング環境を提供します。">関数アプリ</abbr> (次のコマンドを使用します)。
@@ -167,7 +168,7 @@ ms.locfileid: "107768797"
     ```
 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     ```azurepowershell
     Connect-AzAccount
     ```
@@ -175,7 +176,7 @@ ms.locfileid: "107768797"
 
     ---
 
-1. `westeurope` リージョンに `AzureFunctionsQuickstart-rg` という名前のリソース グループを作成します。 
+1. `westeurope` リージョンに `AzureFunctionsQuickstart-rg` という名前のリソース グループを作成します。
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -195,7 +196,7 @@ ms.locfileid: "107768797"
     ---
 
     Linux と Windows のアプリを同じリソース グループ内でホストすることはできません。 Windows の関数アプリまたは Web アプリで `AzureFunctionsQuickstart-rg` という名前のリソース グループが存在する場合、別のリソース グループを使用する必要があります。
-    
+
 1. リソース グループとリージョン内に汎用 Azure ストレージ アカウントを作成します。
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -222,24 +223,24 @@ ms.locfileid: "107768797"
 "<APP_NAME>" は、グローバルに一意の名前に **置き換え** てください。
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-        
+
     ```azurecli
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
-    
-    
+
+
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-    
+
     ```azurepowershell
     New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime dotnet -FunctionsVersion 3 -Location 'West Europe'
     ```
-    
-    
+
+
     ---
-    
+
     `<STORAGE_NAME>` は、前の手順で使用したアカウントの名前に置き換えてください。
 
-    `<APP_NAME>` は <abbr title="Azure ユーザー全体でグローバルに一意であるべき名前。 たとえば、contoso-bizapp-func-20 のように、個人名または組織名、アプリケーション名、数値 ID の組み合わせを使用できます。"><一意の名前></abbr>. `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 
+    `<APP_NAME>` は <abbr title="Azure ユーザー全体でグローバルに一意であるべき名前。 たとえば、contoso-bizapp-func-20 のように、個人名または組織名、アプリケーション名、数値 ID の組み合わせを使用できます。"><一意の名前></abbr>. `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。
 
     <br/>
     <details>
@@ -287,7 +288,7 @@ Functions in msdocs-azurefunctions-qs:
 
 ## <a name="7-invoke-the-function-on-azure"></a>7.Azure 上の関数を呼び出す
 
-`publish` コマンドの出力に表示されている完全な **呼び出し URL** をブラウザーのアドレス バーにコピーします。 クエリ パラメーター **&name=Functions** を **追加** します。 
+`publish` コマンドの出力に表示されている完全な **呼び出し URL** をブラウザーのアドレス バーにコピーします。 クエリ パラメーター **&name=Functions** を **追加** します。
 
 ![Azure 上で実行された関数の出力をブラウザーで表示したところ](../../includes/media/functions-run-remote-azure-cli/function-test-cloud-browser.png)
 

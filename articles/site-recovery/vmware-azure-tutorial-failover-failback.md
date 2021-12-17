@@ -1,22 +1,22 @@
 ---
-title: Site Recovery を使用して VMware VM を Azure にフェールオーバーする
-description: Azure Site Recovery で VMware VM を Azure にフェールオーバーする方法について説明します
+title: Site Recovery を使用して VMware VM を Azure にフェールオーバーする - クラシック
+description: Azure Site Recovery (クラシック) で VMware VM を Azure にフェールオーバーする方法について説明します
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/16/2019
+ms.date: 08/19/2021
 ms.custom: MVC
-ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c1de30fee09da94546ea0f8b5835477e0f83a2a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86131995"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445307"
 ---
-# <a name="fail-over--vmware-vms"></a>VMware VM をフェールオーバーする
+# <a name="fail-over-vmware-vms---classic"></a>VMware VM をフェールオーバーする - クラシック
 
-この記事では、オンプレミスの VMware 仮想マシン (VM) を [Azure Site Recovery](site-recovery-overview.md) を使用して Azure にフェールオーバーする方法について説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) (クラシック) を使用して、オンプレミスの VMware 仮想マシン (VM) を Azure にフェールオーバーする方法について説明します。
 
-これは、オンプレミスのマシンを対象に Azure へのディザスター リカバリーを設定する方法について説明するシリーズの 5 番目のチュートリアルです。
+プレビュー リリースでのフェールオーバーの詳細については、[この記事](vmware-azure-tutorial-failover-failback-preview.md)を参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -34,7 +34,7 @@ ms.locfileid: "86131995"
 前のチュートリアルを完了します。
 
 1. VMware VM、Hyper-V VM、および物理マシンから Azure へのオンプレミス ディザスター リカバリー用に [Azure を設定](tutorial-prepare-azure.md)したことを確認します。
-2. ディザスター リカバリーのためにオンプレミスの [VMware](vmware-azure-tutorial-prepare-on-premises.md) 環境を準備します。 
+2. ディザスター リカバリーのためにオンプレミスの [VMware](vmware-azure-tutorial-prepare-on-premises.md) 環境を準備します。
 3. [VMware VM](vmware-azure-tutorial.md) のディザスター リカバリーを設定します。
 4. [ディザスター リカバリー訓練](tutorial-dr-drill-azure.md)を実行して、すべてが予想どおりに動作することを確認します。
 
@@ -95,6 +95,7 @@ ms.locfileid: "86131995"
 
 >[!TIP]
 > フェールオーバー後に接続の問題が発生した場合は、[トラブルシューティング ガイド](site-recovery-failover-to-azure-troubleshoot.md)に従ってください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

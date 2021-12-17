@@ -3,12 +3,12 @@ title: ガイダンスとベスト プラクティス
 description: クラウドとオンプレミスのワークロードをクラウドにバックアップするためのベストプラクティスとガイダンスについて説明します
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 14476533cf896434182e1d63f89c6a1279b36362
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 462b71170bbd0534a15a54f0eacc53ff08e09f69
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519065"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439388"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>クラウドとオンプレミスのワークロードをクラウドにバックアップする
 
@@ -73,7 +73,7 @@ Azure Backup では、コンテナー (Recovery Services コンテナーとバ�
 * ワークロードが複数のサブスクリプションに分散している場合は、複数のコンテナー (サブスクリプションごとに 1 つまたは複数) を作成できます。
   * バックアップ センターでは、Backup に関連するすべてのタスクを 1 つのウィンドウで管理できます。 [こちら]()を参照してください。
   * ブック テンプレートを使用して、ビューをカスタマイズできます。 バックアップ エクスプローラーは、Azure VM 用のそのようなテンプレートの 1 つです。 [こちら](monitor-azure-backup-with-backup-explorer.md)を参照してください。
-  * コンテナー間で一貫したポリシーが必要な場合は、Azure policy を使用して、複数のコンテナーにバックアップ ポリシーを伝達できます。 ['deployifnotexists'](../governance/policy/concepts/effects.md#deployifnotexists) 効果を使用して複数のコンテナーにバックアップ ポリシーを伝達するカスタムの [Azure Policy 定義](../governance/policy/concepts/definition-structure.md)を作成できます。 この Azure Policy 定義を特定のスコープ (サブスクリプションまたは RG) に[割り当てる](../governance/policy/assign-policy-portal.md)こともでき、それによって Azure Policy 割り当てのスコープ内にあるすべての Recovery Services コンテナーに "バックアップ ポリシー" リソースがデプロイされます。 バックアップ ポリシーの設定 (バックアップ頻度、保有期間など) は、Azure Policy 割り当てのパラメーターとしてユーザーが指定する必要があります。
+  * コンテナー間で一貫したポリシーが必要な場合は、Azure Policy を使用して、複数のコンテナーにバックアップ ポリシーを伝達できます。 ['deployifnotexists'](../governance/policy/concepts/effects.md#deployifnotexists) 効果を使用して複数のコンテナーにバックアップ ポリシーを伝達するカスタムの [Azure Policy 定義](../governance/policy/concepts/definition-structure.md)を作成できます。 この Azure Policy 定義を特定のスコープ (サブスクリプションまたは RG) に[割り当てる](../governance/policy/assign-policy-portal.md)こともでき、それによって Azure Policy 割り当てのスコープ内にあるすべての Recovery Services コンテナーに "バックアップ ポリシー" リソースがデプロイされます。 バックアップ ポリシーの設定 (バックアップ頻度、保有期間など) は、Azure Policy 割り当てのパラメーターとしてユーザーが指定する必要があります。
 
 * 組織のフットプリントが増加するにつれ、次のような理由により、サブスクリプション間でワークロードを移動することが必要になる場合があります。バックアップ ポリシー別の配置、コンテナーの統合、コスト削減のための低い冗長性に基づいたトレードオフ (GRS から LRS への移行) です。  Azure Backup では、Recovery Services コンテナーを Azure のサブスクリプション間で移動することも、同じサブスクリプション内の別のリソース グループに移動することもできます。 [こちら](backup-azure-move-recovery-services-vault.md)を参照してください。
 
@@ -178,13 +178,13 @@ Azure Backup では、ワークロードのデータを Recovery Services コン
 
 * *Azure VM 上の SAP HANA データベース、Azure VM 上の SQL Server データベース* - Azure Backup サービス、Azure Storage、Azure Active Directory への接続が必要です。 これは、プライベート エンドポイントを使用するか、必要なパブリック IP アドレスまたは FQDN へのアクセスを許可することによって実現できます。 必要な Azure サービスへの適切な接続を許可しないと、データベースの検出、バックアップの構成、バックアップの実行、データの復元などの操作の失敗につながる可能性があります。 NSG タグ、Azure Firewall、HTTP プロキシを使用しているときのネットワークの完全なガイダンスについては、これらの [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) と [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity) の記事をご覧ください。
 
-* *ハイブリッド* - MARS (Microsoft Azure Recovery Services) エージェントでは、すべての重要な操作 (インストール、構成、バックアップ、復元) にネットワーク アクセスが必要です。 MARS エージェントは、パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用して [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) 経由で、[プライベート エンドポイント](install-mars-agent.md#private-endpoints)を使用して、または[適切なアクセス制御によるプロキシ/ファイアウォール](install-mars-agent.md#verify-internet-access)経由で、Azure Backup サービスに接続できます。
+* *ハイブリッド* - MARS (Microsoft Azure Recovery Services) エージェントでは、すべての重要な操作 (インストール、構成、バックアップ、復元) にネットワーク アクセスが必要です。 MARS エージェントは、パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用して [Azure ExpressRoute](install-mars-agent.md#azure-expressroute-support) 経由で、[プライベート エンドポイント](install-mars-agent.md#private-endpoint-support)を使用して、または[適切なアクセス制御によるプロキシ/ファイアウォール](install-mars-agent.md#verify-internet-access)経由で、Azure Backup サービスに接続できます。
 
 ### <a name="private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイント
 
 Azure [プライベート エンドポイント](../private-link/private-endpoint-overview.md)は、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 Azure Backup でプライベート エンドポイントを使用して、Recovery Services コンテナーから安全にデータをバックアップおよび復元できます。
 
-* プライベート エンドポイントは、コンテナーに対して有効にした場合、Azure VM と MARS エージェントのバックアップにおける SQL および SAP HANA ワークロードのバックアップと復元にのみ使用されます。  コンテナーは、他のワークロードのバックアップにも使用できます (ただし、プライベート エンドポイントは必要ありません)。 SQL および SAP HANA ワークロードのバックアップと、MARS エージェントを使用したバックアップに加えて、Azure VM バックアップの場合に、プライベート エンドポイントを使用してファイルの復旧を実行することもできます。 [こちら](private-endpoints.md#recommended-and-supported-scenarios)を参照してください。
+* プライベート エンドポイントは、コンテナーに対して有効にした場合、Azure VM と MARS エージェントのバックアップにおける SQL および SAP HANA ワークロードのバックアップと復元にのみ使用されます。  コンテナーは、他のワークロードのバックアップにも使用できます (ただし、プライベート エンドポイントは必要ありません)。 SQL および SAP HANA ワークロードのバックアップと、MARS エージェントを使用したバックアップに加えて、Azure VM バックアップの場合に、プライベート エンドポイントを使用してファイルの復旧を実行することもできます。 [こちら](private-endpoints-overview.md#recommended-and-supported-scenarios)を参照してください。
 
 * Azure Active Directory では、現在、プライベート エンドポイントがサポートされていません。 したがって、Azure Active Directory に必要な IP と FQDN には、Azure VM でのデータベースのバックアップおよび MARS エージェントを使用したバックアップを実行するときに、セキュリティで保護されたネットワークからの発信アクセスが許可される必要があります。 また、必要に応じて、NSG タグと Azure Firewall タグを使用して、Azure AD へのアクセスを許可することもできます。 前提条件の詳細については[こちら](./private-endpoints.md#before-you-start)を参照してください。
 
@@ -225,7 +225,7 @@ Azure Backup サービスの機能には、コストを効果的に管理しな�
 
 ### <a name="monitoring"></a>監視
 
-* Azure Backup では、バックアップの構成、バックアップ、復元、バックアップの削除などの操作について、**組み込みのジョブ監視** を提供しています。 これはコンテナーを対象としており、1 つのコンテナーの監視に最適です。 [こちら](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault)を参照してください。
+* Azure Backup では、バックアップの構成、バックアップ、復元、バックアップの削除などの操作について、**組み込みのジョブ監視** を提供しています。 これはコンテナーを対象としており、1 つのコンテナーの監視に最適です。 [こちら](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-backup-center)を参照してください。
 
 * 操作アクティビティを大規模に監視する必要がある場合は、**バックアップ エクスプローラー** によってバックアップ資産全体の集約ビューが提供され、詳細なドリルダウン分析やトラブルシューティングが可能になります。 これは、単一の一元化された場所を提供する組み込み型の Azure Monitor ブックであり、テナント、場所、サブスクリプション、リソース グループ、コンテナーにわたる Azure 上のバックアップ資産全体で操作アクティビティを監視するのに役立ちます。 [こちら](monitor-azure-backup-with-backup-explorer.md)を参照してください。
   * これを使用すると、バックアップ用に構成されていないリソースを特定し、増大する資産に含まれている重要なデータの保護を欠かさずに実行できるようになります。
@@ -240,7 +240,7 @@ Azure Backup サービスの機能には、コストを効果的に管理しな�
 * さらに、次の点も考慮する必要があります。
   * データ (ジョブ、ポリシーなど) を **Log Analytics** ワークスペースに送信できます。 これにより、Azure Monitor ログの機能が有効になり、データを Azure Monitor で収集されたその他の監視データと関連付けたり、複数の Azure サブスクリプションおよびテナントのログ エントリを 1 か所に統合して、まとめて分析できるようにしたり、ログ クエリを使用して複雑な分析を実行したり、ログ エントリに関する詳細な分析情報を取得したりすることができます。 [こちら](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)を参照してください。
   * イベント ハブにデータを送信して、サードパーティの SIEM (セキュリティ情報イベント管理) やその他のログ分析ソリューションなど、Azure の外部にエントリを送信できます。 [こちら](../azure-monitor/essentials/activity-log.md#send-to-azure-event-hubs)を参照してください。
-  * 監査、静的分析、またはバックアップのためにログ データを 90 日より長く保持する場合は、Azure ストレージ アカウントにデータを送信できます。 90 日以内でイベントを保持する必要があるだけの場合は、ストレージ アカウントへのアーカイブを設定する必要はありません (アクティビティ ログのイベントは Azure プラットフォームに 90 日間保持されるため)。 [詳細については、こちらを参照してください](../azure-monitor/essentials/activity-log.md#send-to--azure-storage)。
+  * 監査、静的分析、またはバックアップのためにログ データを 90 日より長く保持する場合は、Azure ストレージ アカウントにデータを送信できます。 90 日以内でイベントを保持する必要があるだけの場合は、ストレージ アカウントへのアーカイブを設定する必要はありません (アクティビティ ログのイベントは Azure プラットフォームに 90 日間保持されるため)。 [詳細については、こちらを参照してください](../azure-monitor/essentials/activity-log.md#send-to-azure-storage)。
 
 ### <a name="alerting"></a>アラート
 

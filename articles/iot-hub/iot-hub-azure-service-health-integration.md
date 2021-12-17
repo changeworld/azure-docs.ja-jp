@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Hub サービスとリソース正常性を確認する | Microsoft Docs
 description: Azure Service Health と Azure Resource Health を使用して IoT Hub を監視する
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - amqp
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: 27fca7b76ab148fc355eb7d52ee0cbcbd3540458
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f370d87f2c17185fb4c340dc0da4f2f7d9027264
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92548414"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555302"
 ---
 # <a name="check-iot-hub-service-and-resource-health"></a>IoT Hub サービスとリソース正常性を確認する
 

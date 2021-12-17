@@ -8,13 +8,13 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: monitoring
-ms.openlocfilehash: 0c182e1093c29206d27a0e55a46dd9a5607fa6ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: monitoring, devx-track-azurepowershell
+ms.openlocfilehash: a5e23ed381ad1e973e0ae6343fb3c0566aac6a7d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101701707"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673257"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>Azure Storage Analytics ログを有効にして管理する (クラシック)
 
@@ -50,8 +50,7 @@ BLOB、テーブル、およびキューごとに、読み取り要求、書き�
 3. **[ステータス]** を **[オン]** に設定して、ログを有効にする **サービス** を選択します。
 
    > [!div class="mx-imgBorder"]
-   > ![Azure Portal でログを構成する。](./media/manage-storage-analytics-logs/enable-diagnostics.png)    
-
+   > ![Azure Portal でログを構成する。](./media/manage-storage-analytics-logs/enable-diagnostics.png)
 
 4. **[データの削除]** チェック ボックスがオンになっていることを確認します。  次に、チェック ボックスの下にあるスライダー コントロールを動かすか、スライダー コントロールの横にあるテキスト ボックスに表示される値を直接変更して、ログ データを保持する日数を設定します。 新しいストレージ アカウントの既定値は 7 日間です。 保有ポリシーを設定しない場合は、「0」(ゼロ) を入力します。 保持ポリシーがない場合、ログ データを削除する責任はユーザーが負います。
 
@@ -90,45 +89,45 @@ BLOB、テーブル、およびキューごとに、読み取り要求、書き�
    $ctx = $storageAccount.Context
    ```
 
-   * `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
+   - `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
 
-   * `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。 
+   - `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
-6. **Set-AzStorageServiceLoggingProperty** を使用して現在のログ設定を変更します。 ストレージ ログを制御するコマンドレットでは、**LoggingOperations** パラメーターが使用されます。このパラメーターは文字列で、記録する要求の種類がコンマ区切り形式で含まれています。 指定できる要求の種類には、**read**、**write**、および **delete** の 3 つがあります。 ログをオフにするには、**LoggingOperations** パラメーターに **none** の値を指定します。  
+6. **Set-AzStorageServiceLoggingProperty** を使用して現在のログ設定を変更します。 ストレージ ログを制御するコマンドレットでは、**LoggingOperations** パラメーターが使用されます。このパラメーターは文字列で、記録する要求の種類がコンマ区切り形式で含まれています。 指定できる要求の種類には、**read**、**write**、および **delete** の 3 つがあります。 ログをオフにするには、**LoggingOperations** パラメーターに **none** の値を指定します。
 
-   以下のコマンドでは、既定のストレージ アカウント内の Queue サービスで read、write、および delete の各要求に対するログがオンにされます。リテンション期間は 5 日間に設定されています。  
+   以下のコマンドでは、既定のストレージ アカウント内の Queue サービスで read、write、および delete の各要求に対するログがオンにされます。リテンション期間は 5 日間に設定されています。
 
    ```powershell
    Set-AzStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5 -Context $ctx
-   ```  
+   ```
 
    > [!WARNING]
    > ログは、アカウントにデータとして格納されます。 ログ データは時間の経過と共にアカウントに蓄積されるため、ストレージのコストが増加するおそれがあります。 ログ データが必要なのが短期間のみである場合は、データ保持ポリシーを変更することでコストを削減できます。 古いログ データ (保持ポリシーよりも古いデータ) はシステムによって削除されます。 アカウントのログ データを保持する必要がある期間に基づいて、保持ポリシーを設定することをお勧めします。 詳細については、「[Billing on storage metrics](storage-analytics-metrics.md#billing-on-storage-metrics)」 (ストレージ メトリックへの課金) を参照してください。
-   
-   以下のコマンドでは、既定のストレージ アカウント内の Table サービスに対するログがオフにされます。  
+
+   以下のコマンドでは、既定のストレージ アカウント内の Table サービスに対するログがオフにされます。
 
    ```powershell
    Set-AzStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none -Context $ctx 
-   ```  
+   ```
 
-   Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/)に関する記事をご覧ください。  
+   Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/)に関する記事をご覧ください。
 
-### <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_EnableDiagnosticLogs":::
 
-### <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
 var queueClient = storageAccount.CreateCloudQueueClient();  
-var serviceProperties = queueClient.GetServiceProperties();  
+var serviceProperties = queueClient.GetServiceProperties();
 
 serviceProperties.Logging.LoggingOperations = LoggingOperations.All;  
-serviceProperties.Logging.RetentionDays = 2;  
+serviceProperties.Logging.RetentionDays = 2;
 
 queueClient.SetServiceProperties(serviceProperties);  
-``` 
+```
 
 ---
 
@@ -154,7 +153,7 @@ queueClient.SetServiceProperties(serviceProperties);
    > ![Azure portal で保持期間を変更する](./media/manage-storage-analytics-logs/modify-retention-period.png)
 
    新しいストレージ アカウントの既定の日数は 7 日間です。 保有ポリシーを設定しない場合は、「0」(ゼロ) を入力します。 保有ポリシーがない場合、監視データを削除する責任はユーザーが負います。
-   
+
 4. **[保存]** をクリックします。
 
    診断ログは、ストレージ アカウントの *$logs* という名前の BLOB コンテナーに保存されます。 ログ データを表示するには、[Microsoft Azure Storage Explorer](https://storageexplorer.com) などのストレージ エクスプローラーを使用するか、プログラムによってストレージ クライアント ライブラリまたは PowerShell を使用します。
@@ -187,40 +186,40 @@ queueClient.SetServiceProperties(serviceProperties);
    $ctx = $storageAccount.Context
    ```
 
-   * `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
+   - `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
 
-   * `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。 
+   - `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
 6. [Get-AzStorageServiceLoggingProperty](/powershell/module/az.storage/get-azstorageserviceloggingproperty) を使用して現在のログ保持ポリシーを表示します。 次の例では、BLOB とキューのストレージ サービスの保持期間をコンソールに出力します。
 
    ```powershell
    Get-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -Context $ctx
-   ```  
+   ```
 
    コンソール出力では、保持期間は `RetentionDays` という列見出しの下に表示されます。
 
    > [!div class="mx-imgBorder"]
    > ![PowerShell の出力の保持ポリシー](./media/manage-storage-analytics-logs/retention-period-powershell.png)
 
-7. [Set-AzStorageServiceLoggingProperty](/powershell/module/az.storage/set-azstorageserviceloggingproperty) を使用して保持期間を変更します。 次の例では、保持期間を 4 日に変更します。  
+7. [Set-AzStorageServiceLoggingProperty](/powershell/module/az.storage/set-azstorageserviceloggingproperty) を使用して保持期間を変更します。 次の例では、保持期間を 4 日に変更します。
 
    ```powershell
    Set-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -RetentionDays 4 -Context $ctx
-   ```  
+   ```
 
-   Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/)に関する記事をご覧ください。  
+   Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/)に関する記事をご覧ください。
 
-### <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 次の例では、BLOB とキューのストレージ サービスの保持期間をコンソールに出力します。
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_ViewRetentionPeriod":::
 
-次の例では、保持期間を 4 日に変更します。 
+次の例では、保持期間を 4 日に変更します。
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_ModifyRetentionPeriod":::
 
-### <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 次の例では、BLOB とキューのストレージ サービスの保持期間をコンソールに出力します。
 
@@ -240,7 +239,7 @@ Console.WriteLine("Retention period for logs from the queue service is: " +
    queueserviceProperties.Logging.RetentionDays.ToString());
 ```
 
-次の例では、BLOB とキューのストレージ サービスのログの保持期間を 4 日に変更します。 
+次の例では、BLOB とキューのストレージ サービスのログの保持期間を 4 日に変更します。
 
 ```csharp
 
@@ -249,7 +248,7 @@ queueserviceProperties.Logging.RetentionDays = 4;
 
 blobClient.SetServiceProperties(blobserviceProperties);
 queueClient.SetServiceProperties(queueserviceProperties);  
-``` 
+```
 
 ---
 
@@ -264,18 +263,18 @@ queueClient.SetServiceProperties(queueserviceProperties);
 
 ## <a name="view-log-data"></a>ログ データを表示する
 
- ログ データを表示して分析するには、対象のログ データを含む BLOB をローカル マシンにダウンロードする必要があります。 多くのストレージ閲覧ツールを使用して、ストレージ アカウントから BLOB をダウンロードできます。また、Azure Storage チームが提供するコマンドライン用の Azure Copy Tool ([AzCopy](storage-use-azcopy-v10.md)) を使用して、ログ データをダウンロードすることもできます。  
- 
->[!NOTE]
-> `$logs` コンテナーは Event Grid と統合されていないため、ログ ファイルが書き込まれたときにユーザーは通知を受信しません。 
+ ログ データを表示して分析するには、対象のログ データを含む BLOB をローカル マシンにダウンロードする必要があります。 多くのストレージ閲覧ツールを使用して、ストレージ アカウントから BLOB をダウンロードできます。また、Azure Storage チームが提供するコマンドライン用の Azure Copy Tool ([AzCopy](storage-use-azcopy-v10.md)) を使用して、ログ データをダウンロードすることもできます。
 
- 対象のログ データをダウンロードし、同じログ データを複数回ダウンロードしないためには、以下のようにします。  
+> [!NOTE]
+> `$logs` コンテナーは Event Grid と統合されていないため、ログ ファイルが書き込まれたときにユーザーは通知を受信しません。
 
--   同じデータを複数回ダウンロードしないようにするには、ログ データを含む BLOB に対して日付と時刻の名前付け規則を使用し、既にダウンロードしている分析対象の BLOB を追跡します。  
+ 対象のログ データをダウンロードし、同じログ データを複数回ダウンロードしないためには、以下のようにします。
 
--   ダウンロードする必要がある BLOB を正確に識別するには、ログ データを含む BLOB のメタデータを使用して、BLOB がログ データを保持する期間を確認します。  
+-   同じデータを複数回ダウンロードしないようにするには、ログ データを含む BLOB に対して日付と時刻の名前付け規則を使用し、既にダウンロードしている分析対象の BLOB を追跡します。
 
-AzCopy の使用を開始するには、「[AzCopy を使ってみる](storage-use-azcopy-v10.md)」を参照してください。 
+-   ダウンロードする必要がある BLOB を正確に識別するには、ログ データを含む BLOB のメタデータを使用して、BLOB がログ データを保持する期間を確認します。
+
+AzCopy の使用を開始するには、「[AzCopy を使ってみる](storage-use-azcopy-v10.md)」を参照してください。
 
 次の例は、2014 年 5 月 20 日の午前 09 時、午前 10 時、および午前 11 時から Queue サービスのログ データをダウンロードする方法を示しています。
 
@@ -289,7 +288,7 @@ azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Log
 
 ## <a name="next-steps"></a>次のステップ
 
-* Storage Analytics の詳細については、Storage Analytics の「[Storage Analytics](storage-analytics.md)」を参照してください。
-* .NET 言語を使用してストレージ ログを構成する方法の詳細については、「[Storage Client Library Reference (ストレージ クライアント ライブラリ リファレンス)](/previous-versions/azure/dn261237(v=azure.100))」を参照してください。 
-* REST API を使用してストレージ ログを構成する方法の概要については、「[Enabling and Configuring Storage Analytics (Storage Analytics の有効化および構成)](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)」を参照してください。
-* Storage Analytics ログの形式の詳細について学習します。 「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」を参照してください。
+- Storage Analytics の詳細については、Storage Analytics の「[Storage Analytics](storage-analytics.md)」を参照してください。
+- .NET 言語を使用してストレージ ログを構成する方法の詳細については、「[Storage Client Library Reference (ストレージ クライアント ライブラリ リファレンス)](/previous-versions/azure/dn261237(v=azure.100))」を参照してください。
+- REST API を使用してストレージ ログを構成する方法の概要については、「[Enabling and Configuring Storage Analytics (Storage Analytics の有効化および構成)](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)」を参照してください。
+- Storage Analytics ログの形式の詳細について学習します。 「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」を参照してください。

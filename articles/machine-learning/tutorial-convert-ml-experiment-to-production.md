@@ -5,20 +5,20 @@ description: MLOpsPython コード テンプレートを使用して、機械学
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 10/21/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: cdfeb2fdeefabb0d2d4af2fb63222adda5d023fb
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: caaaf01d8b1baa5a36726996f24b244f0d9afb46
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576027"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555668"
 ---
-# <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>チュートリアル:ML 実験を運用 Python コードに変換する
+# <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>チュートリアル: ML 実験を運用 Python コードに変換する
 
-このチュートリアルでは、MLOpsPython コード テンプレートと Azure Machine Learning を使用して、Juptyer ノートブックを Python スクリプトに変換し、テストと自動化を容易にする方法について学習します。 通常、このプロセスは、Juptyer ノートブックから実験またはトレーニング コードを取得して Python スクリプトに変換するために使用されます。 これらのスクリプトは、運用環境でのテストおよび CI/CD 自動化に使用できます。 
+このチュートリアルでは、MLOpsPython コード テンプレートと Azure Machine Learning を使用して、Jupyter ノートブックを Python スクリプトに変換し、テストと自動化を容易にする方法について学習します。 通常、このプロセスは、Jupyter ノートブックから実験またはトレーニング コードを取得して Python スクリプトに変換するために使用されます。 これらのスクリプトは、運用環境でのテストおよび CI/CD 自動化に使用できます。 
 
 機械学習プロジェクトでは、実際のデータセットを使用して Jupyter Notebook などのアジャイル ツールで仮説をテストする実験が必要です。 運用のためのモデルの準備ができたら、モデル コードを運用コード リポジトリに配置する必要があります。 場合によっては、モデル コードを Python スクリプトに変換して、運用コード リポジトリに配置する必要があります。 このチュートリアルでは、実験コードを Python スクリプトにエクスポートする方法について、推奨される方法を説明します。
 
@@ -527,5 +527,5 @@ def test_train_model():
 ここでは、実験コードから運用環境のコードへの変換方法について説明しました。さらに詳しい情報と次のステップについては、次のリンクを参照してください。
 
 + [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md): Azure Pipelines と Azure Machine Learning を使用して独自のモデルをトレーニング、評価、デプロイする CI/CD パイプラインを作成します。
-+ [Azure ML の実験の実行とメトリックを監視する](./how-to-track-experiments.md)
++ [Azure ML の実験の実行とメトリックを監視する](./how-to-log-view-metrics.md)
 + [ML Web サービス エンドポイントからのデータを監視および収集する](./how-to-enable-app-insights.md)

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee483872535c58bde521cf0a751058fdc2fecd40
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 114ff5b5b0d23ed9f9ec519dd6874a14066c6fb7
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871454"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286288"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)
 
@@ -104,7 +104,7 @@ topologyBuilder.SetJavaBolt(
 
 * [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
-* Java JDK 1.8 以降がインストールされている開発環境。 JDK は [Oracle](/azure/developer/java/fundamentals/java-jdk-long-term-support) からダウンロードできます。
+* Java JDK 1.8 以降がインストールされている開発環境。 JDK は [Oracle](/azure/developer/java/fundamentals/java-support-on-azure) からダウンロードできます。
 
   * **JAVA_HOME** 環境変数は、Java があるディレクトリを指している必要があります。
   * **%JAVA_HOME%/bin** ディレクトリはパス内にある必要があります。
@@ -204,7 +204,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 ## <a name="delete-your-cluster"></a>クラスターを削除する
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
+[!INCLUDE [delete-cluster-warning](../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

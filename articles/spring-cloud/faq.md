@@ -1,19 +1,19 @@
 ---
 title: Azure Spring Cloud についてよく寄せられる質問 | Microsoft Docs
 description: この記事では、Azure Spring Cloud についてよく寄せられる質問に回答します。
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f28ddfc272e6f95106595958cacfe732b2bfc3cc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ecc563cfc400fcf0e90320cb5c2436fe84cfa0d0
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258692"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704004"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -29,41 +29,52 @@ Azure Spring Cloud は、Azure Monitor、Application Insights、および Log An
 
 ### <a name="how-secure-is-azure-spring-cloud"></a>Azure Spring Cloud のセキュリティはどの程度でしょうか?
 
-セキュリティとプライバシーは、Azure や Azure Spring Cloud のお客様にとっての最優先事項です。 Azure では、アプリケーション データ、ログ、または構成を確実に暗号化することにより、お客様だけがこれらのすべてのデータにアクセスできるようにしています。 
+セキュリティとプライバシーは、Azure や Azure Spring Cloud のお客様にとっての最優先事項です。 Azure では、アプリケーション データ、ログ、または構成を確実に暗号化することにより、お客様だけがこれらのすべてのデータにアクセスできるようにしています。
 
 * Azure Spring Cloud のサービス インスタンスは、相互に分離されています。
 * Azure Spring Cloud には、TLS/SSL と証明書の包括的な管理機能が用意されています。
 * OpenJDK と Spring Cloud のランタイムに重要なセキュリティ パッチがあるときは、可能な限り早期に Azure Spring Cloud に適用されます。
 
+### <a name="how-does-azure-spring-cloud-host-my-applications"></a>Azure Spring Cloud はアプリケーションをホストするにはどうすればよいですか。
+
+Azure Spring Cloud の各サービスインスタンスは、複数のワーカーノードを持つ完全に専用の Kubernetes クラスターによって支えられています。 Azure Spring Cloud は、高可用性やスケーラビリティやKubernetes バージョンのアップグレードなど基になる Kubernetes クラスターを管理します。
+
+Azure Spring Cloud は、基になる Kubernetes worker ノードでアプリケーションをインテリジェントにスケジュールします。 高可用性を実現するために、Azure Spring Cloud は異なるノードに2つ以上のインスタンスを持つアプリケーションを配布します。
+
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure Spring Cloud はどのリージョンで使用できますか?
 
-米国東部、米国東部 2、米国中部、米国中南部、米国中北部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国南部、東南アジア、オーストラリア東部、カナダ中部、アラブ首長国連邦北部、インド中部、韓国中部、東アジア、東日本、南アフリカ北部、中国東部 2 (Mooncake)。 [詳細情報](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
+米国東部、米国東部 2、米国中部、米国中南部、米国中北部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国南部、東南アジア、オーストラリア東部、カナダ中部、アラブ首長国連邦北部、インド中部、韓国中部、東アジア、東日本、南アフリカ北部、ブラジル南部、フランス中部、中国東部 2 (Mooncake)。 [詳細情報](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>指定されたリージョン外に格納されている顧客データはありますか?
 
-Azure Spring Cloud はリージョン サービスです。 Azure Spring Cloud のすべての顧客データは、冗長性を確保するために、指定されたリージョンの同じ地域内の複数のリージョンに格納されます。 地域とリージョンの詳細については、「[Azure でのデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/)」を参照してください。
+Azure Spring Cloud はリージョン サービスです。 Azure Spring Cloud の顧客データは全て、指定された 1 つのリージョンに格納されます。 地域とリージョンの詳細については、「[Azure でのデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/)」を参照してください。
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud の既知の制限事項はどのようなものですか?
 
 Azure Spring Cloud には、次の既知の制限があります。
-    
+
 * `spring.application.name` が、各アプリケーションを作成するために使用されるアプリケーション名によって上書きされます。
 * `server.port` の既定のポートは 1025 です。 他の値が適用されている場合は上書きされます。 また、この設定を尊重するようにして、コードでサーバーのポートを指定しないでください。
-* Azure portal と Azure Resource Manager テンプレートがアプリケーション パッケージのアップロードをサポートしていません。 Azure CLI 経由でアプリケーションをデプロイすることによってのみ、アプリケーション パッケージをアップロードできます。
+* Azure portal、Azure Resource Manager テンプレート、および Terraform は、アプリケーションパッケージのアップロードをサポートしていません。 アプリケーション パッケージをアップロードするには、Azure CLI、Azure DevOps、Azure Spring Cloud 用の Maven プラグイン、Azure Toolkit for IntelliJ、Azure Spring cloud の Visual Studio Code 拡張機能を使用してアプリケーションをデプロイします。
 
-### <a name="what-pricing-tiers-are-available"></a>利用可能な価格レベルを教えてください。 
+### <a name="what-pricing-tiers-are-available"></a>利用可能な価格レベルを教えてください。
+
 どれを使用すればよいでしょうか? また、各レベルにはどのような制限がありますか?
+
 * Azure Spring Cloud には、2 つの価格レベルがあります。Basic と Standard です。 Basic レベルは、Dev/Test、および Azure Spring Cloud の試用を目的としています。 Standard レベルは、汎用の運用トラフィックを実行するために最適化されています。 制限と機能レベルの比較については、[Azure Spring Cloud の価格の詳細](https://azure.microsoft.com/pricing/details/spring-cloud/)に関する記事を参照してください。
+
+### <a name="whats-the-difference-between-service-binding-and-service-connector"></a>サービスバインドと Service Connector の違いは何ですか?
+[Service Connector](../service-connector/overview.md) という新しい Azure を優先するソリューションを使用して、サービスバインドの追加機能を積極的に開発していません。 一方、新しいソリューションでは、App Service のように、Azure 上のアプリホスティングサービス間に一貫性のある統合エクスペリエンスを提供します。 これに対して、MySQLやSQL DBやCosmos DB、Postgres DBやRedisやStorage など使用されている対象の Azure サービスのうち、最も多くのものを10⁺サポートすることから始めて、ニーズにも対応できます。 Service Connector は現在パブリックプレビュー中です。新しいエクスペリエンスをお試し頂き、どうぞよろしくお願いいたします。
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>フィードバックの提供や問題の報告はどのようにするのでしょうか?
 
-Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求](../azure-portal/supportability/how-to-create-azure-support-request.md)を作成してください。 機能要求を送信するか、またはフィードバックを提供するには、[Azure フィードバック](https://feedback.azure.com/forums/34192--general-feedback)に移動してください。
+Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求](../azure-portal/supportability/how-to-create-azure-support-request.md)を作成してください。 機能要求を送信するか、またはフィードバックを提供するには、[Azure フィードバック](https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4)に移動してください。
 
 ## <a name="development"></a>開発
 
-### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>私は Spring Cloud 開発者ですが、Azure は初めてです。 Azure Spring Cloud アプリケーションの開発方法を学習するための最もすばやい方法は何ですか?
+### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-application-in-azure-spring-cloud"></a>私は Spring Cloud 開発者ですが、Azure は初めてです。 Azure Spring Cloud におけるアプリケーションの開発方法を学習する最短の方法は何ですか?
 
-Azure Spring Cloud の使用を開始するための最もすばやい方法として、「[クイック スタート: Azure portal を使用して Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」の手順に従ってください。
+Azure Spring Cloud を最短で始める方法については、[Azure portal を使用して Azure Spring Cloud のアプリケーションを立ち上げる方法についてのクイックスタート](./quickstart.md)の手順に従ってください。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud はどの Java ランタイムをサポートしていますか?
@@ -74,7 +85,7 @@ Azure Spring Cloud は、Java 8 および 11 をサポートしています。 �
 Microsoft は、Spring Boot 2.4 の問題を特定しました。現在、Spring コミュニティと協力してその解決に取り組んでいます。 その間は、アプリと Eureka の間で TLS 認証を有効にするために、これらの 2 つの依存関係を含めてください。
 
 ```xml
-<dependency> 
+<dependency>
     <groupId>com.sun.jersey</groupId>
     <artifactId>jersey-client</artifactId>
     <version>1.19.4</version>
@@ -92,16 +103,17 @@ Microsoft は、Spring Boot 2.4 の問題を特定しました。現在、Spring
 
 [アプリの概要] タブと [[Azure Monitor]](../azure-monitor/essentials/data-platform-metrics.md#metrics-explorer) タブでメトリックを探してください。
 
-Azure Spring Cloud は、Spring Cloud アプリケーションのログとメトリックの Azure Storage、EventHub、および [Log Analytics](../azure-monitor/logs/data-platform-logs.md) へのエクスポートをサポートしています。 Log Analytics でのテーブル名は *AppPlatformLogsforSpring* です。 これを有効にする方法については、[診断サービス](diagnostic-services.md)に関するページを参照してください。
+Azure Spring Cloud は、Spring Cloud アプリケーションのログとメトリックの Azure Storage、Event Hub、および [Log Analytics](../azure-monitor/logs/data-platform-logs.md) へのエクスポートをサポートしています。 Log Analytics でのテーブル名は *AppPlatformLogsforSpring* です。 これを有効にする方法については、[診断サービス](diagnostic-services.md)に関するページを参照してください。
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud は分散トレースをサポートしていますか?
 
-はい。 詳細については、[Azure Spring Cloud で分散トレースを使用する](spring-cloud-howto-distributed-tracing.md)」を参照してください。
+はい。 詳細については、[Azure Spring Cloud で分散トレースを使用する](./how-to-distributed-tracing.md)」を参照してください。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>サービス バインディングでサポートされるリソースの種類は何ですか?
 
 現時点でサポートされているサービスは次の 3 種類です:
+
 * Azure Cosmos DB
 * Azure Database for MySQL
 * Azure Cache for Redis
@@ -113,14 +125,13 @@ Azure Spring Cloud は、Spring Cloud アプリケーションのログとメト
 
 ### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Azure Spring Cloud インスタンスには、送信パブリック IP アドレスはいくつありますか?
 
-送信パブリック IP アドレスの数は、レベルやその他の要因によって異なる場合があります。 
+送信パブリック IP アドレスの数は、レベルやその他の要因によって異なる場合があります。
 
 | Azure Spring Cloud インスタンスの種類 | 送信パブリック IP アドレスの既定の数 |
 | -------------------------------- | ---------------------------------------------- |
 | Basic レベルのインスタンス             | 1                                              |
 | Standard レベルのインスタンス          | 2                                              |
 | VNet インジェクション インスタンス         | 1                                              |
-
 
 ### <a name="can-i-increase-the-number-of-outbound-public-ip-addresses"></a>送信パブリック IP アドレスの数を増やすことはできますか?
 
@@ -153,7 +164,7 @@ LTS と MTS の JDK リリースには、四半期ごとのセキュリティ更
 
 ### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Java 8 LTS バージョンと Java 11 LTS バージョンのサポート期間を教えてください。
 
-[Azure および Azure Stack の Java 長期サポート](/azure/developer/java/fundamentals/java-jdk-long-term-support)に関する記事を参照してください。
+[Azure および Azure Stack の Java 長期サポート](/azure/developer/java/fundamentals/java-support-on-azure)に関する記事を参照してください。
 
 * Java 8 LTS は 2030 年 12 月までサポートされます。
 * Java 11 LTS は 2027 年 9 月までサポートされます。
@@ -186,7 +197,8 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 ## <a name="deployment"></a>デプロイ
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure Spring Cloud はブルーグリーン デプロイをサポートしていますか?
-はい。 詳細については、[ステージング環境の設定](spring-cloud-howto-staging-environment.md)に関するページを参照してください。
+
+はい。 詳細については、[ステージング環境の設定](./how-to-staging-environment.md)に関するページを参照してください。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Kubernetes にアクセスしてアプリケーション コンテナーを操作することはできるのでしょうか?
 
@@ -194,23 +206,27 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud でソースからコンテナーを構築することはできますか?
 
-はい。 詳細については、「[ソース コードから Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」を参照してください。
+はい。 詳細については、「[ソース コードから Spring Cloud アプリケーションを起動する](./quickstart.md)」を参照してください。
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud はアプリ インスタンス内での自動スケーリングをサポートしていますか?
 
-はい。  詳細については、[自動スケーリングの設定](spring-cloud-tutorial-setup-autoscale.md)に関するページを参照してください。
+はい。 詳細については、[マイクロサービスアプリケーションの自動スケールの設定](./how-to-setup-autoscale.md)を参照してください。
+
+### <a name="how-does-azure-spring-cloud-monitor-the-health-status-of-my-application"></a>Azure Spring Cloud はアプリケーションの正常性状態をどのように監視しますか。
+
+Azure Spring Cloud は、お客様のアプリケーションのポート1025を継続的に調査します。 これのプローブは、アプリケーションコンテナーがトラフィックの受け入れを開始する準備ができているかどうか、および Azure Spring Cloud でアプリケーションコンテナーを再起動する必要があるかどうかを判断します。 内部的には、Azure Spring Cloud は Kubernetes の活性および準備プローブを使用して、状態の監視を実現します。
+
+>[!NOTE]
+> これらのプローブにより、現在、ポート1025を公開せずに Azure Spring Cloud でアプリケーションを起動することはできません。
+
+### <a name="whether-and-when-will-my-application-be-restarted"></a>アプリケーションを再起動するかどうかを指定します。
+
+はい。 詳細について[Azure のアクティビティログと Azure Service Health を使用したアプリのライフサイクルイベントの監視](./monitor-app-lifecycle-events.md)を参照してください。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行するためのベスト プラクティスはどのようなものですか?
 
-既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行しようとしている場合は、次のベスト プラクティスを確認することをお勧めします。
-* アプリケーションの依存関係をすべて解決しておく必要があります。
-* 構成エントリ、環境変数、および JVM パラメーターを準備しておき、それらを Azure Spring Cloud でのデプロイと比較できるようにします。
-* サービス バインドを使用する場合は、Azure サービスをチェックし、適切なアクセス許可を設定していることを確認してください。
-* Azure Spring Cloud によって管理されるサービスと競合する可能性のある組み込みサービス (サービス検出サービスや構成サーバーなど) をすべて削除するか、または無効にすることをお勧めします。
-* 公式の、安定した Pivotal Spring ライブラリを使用することをお勧めします。 非公式版、ベータ版、またはフォーク済みバージョンの Pivotal Spring ライブラリにはサービス レベル アグリーメント (SLA) のサポートがありません。
-
-移行したら、CPU/RAM のメトリックやネットワーク トラフィックを監視して、アプリケーション インスタンスが適切にスケーリングされていることを確認します。
+詳細については、[アプリケーションの移行をSpring Cloudを参照Azure Spring Cloud](/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-cloud)。
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"
@@ -225,22 +241,22 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 2022 年 12 月 3 日までです。 「[.NET Core サポート ポリシー](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)」を参照してください。
 ::: zone-end
 
-
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>サービス レジストリがまれに利用できなくなると、どのような影響がありますか?
 
-あまり起こることではありませんが、次のようなエラーが発生することがあります。 
-```
+あまり起こることではありませんが、アプリケーション ログに次のようなエラーが表示されることがあります。
+
+```output
 RetryableEurekaHttpClient: Request execution failure with status code 401; retrying on another server if available
 ```
-これはアプリケーションのログに記録されたエラーです。 ネットワークが不安定などの問題により、速度が極端に低下した Spring フレームワークによって発生した問題です。 
+
+この問題は、ネットワークの不安定性またはその他のネットワークの問題により、速度が極端に低下した Spring フレームワークによって発生します。
 
 Eureka クライアントには、それに対処するハートビートと再試行ポリシーの両方が備わっているため、ユーザー エクスペリエンスに影響はありません。 一時的なエラーと考えられるので、無視してかまいません。
 
 この点については、今後ユーザーのアプリケーションからこのエラーが返されないよう改善する予定です。
 
-
 ## <a name="next-steps"></a>次のステップ
 
-さらに質問がある場合は、[Azure Spring Cloud のトラブルシューティング ガイド](spring-cloud-troubleshoot.md)に関するページを参照してください。
+さらに質問がある場合は、[Azure Spring Cloud のトラブルシューティング ガイド](./troubleshoot.md)に関するページを参照してください。

@@ -3,49 +3,24 @@ title: Datadog を作成する - Azure パートナー ソリューション
 description: この記事では、Azure portal を使用して Datadog のインスタンスを作成する方法について説明します。
 ms.service: partner-services
 ms.topic: quickstart
-ms.date: 02/19/2021
+ms.date: 05/28/2021
 author: tfitzmac
 ms.author: tomfitz
 ms.custom: references_regions
-ms.openlocfilehash: 7af8b82c5da6c60527b45b6e8e292b9f067016ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b2737877ecc550540761bfb704aee98f6e7c2f4
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101747587"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655257"
 ---
-# <a name="quickstart-get-started-with-datadog"></a>クイックスタート: Datadog の使用を開始する
+# <a name="quickstart-get-started-with-datadog-by-creating-new-instance"></a>クイックスタート: 新しいインスタンスを作成して Datadog の使用を開始する
 
-このクイックスタートでは、Datadog のインスタンスを作成します。 新しい Datadog 組織を作成することも、既存の Datadog 組織にリンクすることもできます。
+このクイックスタートでは、Datadog の新しいインスタンスを作成します。 新しい Datadog 組織を作成することも、[既存の Datadog 組織にリンク](link-to-existing-organization.md)することもできます。
 
-## <a name="pre-requisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
-Azure Datadog 統合を設定するには、Azure サブスクリプションに対する **所有者** アクセス権が必要です。 設定を開始する前に、適切なアクセス権があることをご確認ください。
-
-Datadog リソース内で Security Assertion Markup Language (SAML) シングル サインオン (SSO) 機能を使用するには、エンタープライズ アプリケーションを設定する必要があります。 エンタープライズ アプリケーションを追加するには、グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、サービス プリンシパル所有者のいずれかのロールが必要です。
-
-エンタープライズ アプリケーションを設定するには、次の手順を実行します。
-
-1. [Azure ポータル](https://portal.azure.com)に移動します。 **[Azure Active Directory]** を選択します。
-1. 左側のウィンドウで、**[エンタープライズ アプリケーション]** を選択します。
-1. **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** で、「*Datadog*」を検索します。 検索結果を選択し、 **[追加]** を選択します。
-
-   :::image type="content" source="media/create/datadog-azure-ad-app-gallery.png" alt-text="AAD エンタープライズ ギャラリー内の Datadog アプリケーション。" border="true":::
-
-1. アプリが作成されたら、サイド パネルからプロパティに移動します。 **[ユーザーの割り当てが必要ですか?]** を **[いいえ]** に設定し、 **[保存]** を選択します。
-
-   :::image type="content" source="media/create/user-assignment-required.png" alt-text="Datadog アプリケーションのプロパティを設定する" border="true":::
-
-1. サイド パネルから **[シングル サインオン]** に移動します。 **[SAML]** を選択します。
-
-   :::image type="content" source="media/create/saml-sso.png" alt-text="SAML 認証。" border="true":::
-
-1. **シングル サインオン設定を保存** するかどうかを確認するメッセージが表示されたら、 **[はい]** を選択します。
-
-   :::image type="content" source="media/create/save-sso.png" alt-text="Datadog アプリのシングル サインオンを保存する" border="true":::
-
-1. これで、シングル サインオンの設定が完了しました。
+Azure で Datadog の最初のインスタンスを作成する前に、[環境を構成](prerequisites.md)します。 これらの手順は、このクイックスタートの次の手順に進む前に完了しておく必要があります。
 
 ## <a name="find-offer"></a>プランを探す
 
@@ -61,9 +36,15 @@ Datadog を検索するには、Azure portal を使用します。
 
 1. プランの概要画面で、 **[Set up + subscribe]\(設定 + 登録\)** を選択します。
 
-   :::image type="content" source="media/create/datadog-app.png" alt-text="Azure Marketplace 内の Datadog アプリケーション。":::
+   :::image type="content" source="media/create/datadog-app-2.png" alt-text="Azure Marketplace 内の Datadog アプリケーション。":::
 
 ## <a name="create-a-datadog-resource-in-azure"></a>Azure に Datadog リソースを作成する
+
+Datadog 組織を作成するか、Azure サブスクリプションを既存の Datadog 組織にリンクするかを尋ねる選択項目がポータルに表示されます。
+
+新しい Datadog 組織を作成する場合は、 **[新しい Datadog 組織の作成]** で **[作成]** を選択します。
+
+:::image type="content" source="media/create/datadog-create-link-selection.png" alt-text="Datadog 組織を作成またはリンクする" border="true":::
 
 Datadog リソースを作成するためのフォームがポータルに表示されます。
 
@@ -77,25 +58,8 @@ Datadog リソースを作成するためのフォームがポータルに表示
 | リソース グループ | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 [リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)は、Azure ソリューション用に関連するリソースを保持するコンテナーです。 |
 | リソース名 | Datadog リソースの名前を指定します。 新しい Datadog 組織を作成する場合は、この名前が新しい Datadog 組織の名前となります。 |
 | 場所 | [米国西部 2] を選択します。 現在、サポートされているリージョンは、米国西部 2 のみです。 |
-| Datadog 組織 | 新しい Datadog 組織を作成するには、 **[新規]** を選択します。 既存の Datadog 組織にリンクするには、 **[既存]** を選択します。 |
 | 料金プラン | 新しい組織を作成する場合は、利用可能な Datadog プランの一覧から選択します。 |
 | [請求期間] | 月単位。 |
-
-既存の Datadog 組織にリンクする場合は、次のセクションを参照してください。 それ以外の場合は、 **[Next: Metrics and logs]\(次へ: メトリックとログ\)** を選択し、次のセクションをスキップします。
-
-## <a name="link-to-existing-datadog-organization"></a>既存の Datadog 組織にリンクする
-
-Azure 内の新しい Datadog リソースを既存の Datadog 組織にリンクすることができます。
-
-[データ組織] で **[既存]** を選択し、 **[Link to Datadog org]\(Datadog 組織にリンク\)** を選択します。
-
-:::image type="content" source="media/create/link-to-existing.png" alt-text="既存の Datadog 組織にリンクする。" border="true":::
-
-このリンクを通じて、Datadog 認証ウィンドウが開きます。 Datadog にサインインします。
-
-既定では、Azure によって現在の Datadog 組織が自分の Datadog リソースにリンクされます。 別の組織にリンクする場合は、次に示すように、認証ウィンドウで適切な組織を選択します。
-
-:::image type="content" source="media/create/select-datadog-organization.png" alt-text="リンクする適切な Datadog 組織を選択する" border="true":::
 
 ## <a name="configure-metrics-and-logs"></a>メトリックとログを構成する
 
@@ -127,7 +91,7 @@ Azure から Datadog に出力できるログには 2 種類あります。
 
 サブスクリプション レベルのログを Datadog に送信するには、 **[Send subscription activity logs]\(サブスクリプションのアクティビティ ログを送信する\)** を選択します。 このオプションをオフのままにすると、サブスクリプション レベルのログは Datadog に送信されません。
 
-Azure リソース ログを Datadog に送信するには、 **[Send Azure resource logs for all defined resources]\(すべての定義済みリソースについて Azure リソース ログを送信する\)** を選択します。 Azure リソース ログの種類は、[[Azure Monitor Resource Log categories]\(Azure Monitor リソース ログのカテゴリ\)](../../azure-monitor/essentials/resource-logs-categories.md) に一覧表示されます。  Datadog にログを送信する Azure リソースのセットをフィルター処理するには、Azure リソース タグを使用します。  
+Azure リソース ログを Datadog に送信するには、 **[Send Azure resource logs for all defined resources]\(すべての定義済みリソースについて Azure リソース ログを送信する\)** を選択します。 Azure リソース ログの種類は、[[Azure Monitor Resource Log categories]\(Azure Monitor リソース ログのカテゴリ\)](../../azure-monitor/essentials/resource-logs-categories.md) に一覧表示されます。  Datadog にログを送信する Azure リソースのセットをフィルター処理するには、Azure リソース タグを使用します。
 
 Datadog に送信されるログには、Azure によって課金されます。 詳細については、Azure Marketplace パートナーに送信される[プラットフォーム ログの価格](https://azure.microsoft.com/pricing/details/monitor/)をご確認ください。
 
@@ -136,10 +100,6 @@ Datadog に送信されるログには、Azure によって課金されます。
 ## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 組織で Azure Active Directory を ID プロバイダーとして使用している場合は、Azure portal から Datadog へのシングル サインオンを確立できます。 組織で別の ID プロバイダーを使用している場合、またはこの時点でシングル サインオンを確立しない場合は、このセクションをスキップできます。
-
-Datadog リソースを既存の Datadog 組織にリンクする場合は、この手順でシングル サインオンを設定することはできません。 代わりに、Datadog リソースを作成した後でシングル サインオンを設定します。 詳細については、「[シングル サインオンを再構成する](manage.md#reconfigure-single-sign-on)」を参照してください。
-
-:::image type="content" source="media/create/linking-sso.png" alt-text="既存の Datadog 組織にリンクする場合のシングル サインオン。" border="true":::
 
 Azure Active Directory でシングル サインオンを確立するには、 **[Azure Active Directory を使用したシングル サインオンを有効にする]** のチェック ボックスをオンにします。
 

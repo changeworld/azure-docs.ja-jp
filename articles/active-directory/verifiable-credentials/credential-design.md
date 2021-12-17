@@ -3,18 +3,18 @@ title: Azure Active Directory Verifiable Credentials (プレビュー) をカス
 description: この記事では、独自の検証可能な資格情報を作成する方法について説明します
 services: active-directory
 author: barclayn
-manager: davba
-ms.service: identity
+manager: karenh444
+ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: a43e734c0a5bfa7c3698dcde5cb5b17f15575d90
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 1a42387be183d1fa2263e609bcbfed5f388e901c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222930"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004086"
 ---
 # <a name="how-to-customize-your-verifiable-credentials-preview"></a>Verifiable Credentials (プレビュー) をカスタマイズする方法
 

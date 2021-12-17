@@ -1,0 +1,50 @@
+### YamlMime:FAQ
+metadata:
+  title: Virtual Network NAT のよくあるご質問
+  description: Azure Virtual Network NAT の使用に関する一般的な質問への回答。
+  ms.openlocfilehash: f704faf4dbd391ffaadfa7c633f88758345d66dc
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132731195"
+title: Azure Virtual Network NAT のよくあるご質問
+summary: >
+  Azure Virtual Network NAT の使用に関する一般的な質問への回答を以下に示します。
+sections:
+- name: 1 つのセクション - 無視
+  questions:
+  - question: Virtual Network NAT のパブリック IP アドレスは静的ですか?
+    answer: "はい。 サブネットに対して Virtual Network NAT を構成すると、指定した静的パブリック IP アドレスがすべてのアウトバウンド接続で使用されます。  \n"
+  - question: Virtual Network NAT で使用できるパブリック IP アドレスの最大数はいくつですか?
+    answer: "Virtual Network NAT のゲートウェイ リソースでは、最大 16 のパブリック IP アドレスを使用できます。 Virtual Network NAT では、パブリック IP アドレスとパブリック IP アドレス プレフィックスの任意の組み合わせを、合計で 16 個のアドレスまで使用できます。 Virtual Network NAT で使用できるプレフィックスの最大サイズは /28 (16 個のアドレス) です。  \n"
+  - question: 既存の Virtual Network NAT の IP は変更できますか?
+    answer: >
+      いいえ。Virtual Network NAT にアタッチされた既存の IP を変更することはできません。 新しいパブリック IP アドレスを作成することで別の IP アドレスを Virtual Network NAT にアタッチできます。  新しいパブリック IP アドレスを NAT ゲートウェイ リソースに関連付けます。  古い IP アドレスの関連付けを解除します。
+  - question: NAT ゲートウェイ リソースに複数のパブリック IP アドレスが割り当てられている場合、IP アドレスの 1 つが削除されると、トラフィックが中断されますか?
+    answer: >
+      いいえ。 Virtual Network NAT のゲートウェイ リソースに複数のパブリック IP がある場合、割り当てられた IP 間でトラフィックが負荷分散されます。 IP のいずれかを削除してもダウンタイムは発生しません。 NAT ゲートウェイ リソースからパブリック IP アドレスの 1 つを削除する場合は、メンテナンス期間に削除を行うことをお勧めします。
+  - question: Virtual Network NAT を複数の仮想ネットワークに接続できますか?
+    answer: "いいえ。 Virtual Network NAT を複数の仮想ネットワークに接続することはできません。  \n"
+  - question: Virtual Network NAT を複数のサブネットに接続できますか?
+    answer: "はい。 Virtual Network NAT は、仮想ネットワーク内の複数のサブネットに関連付けることができます。 仮想ネットワーク内のすべてのサブネットに関連付けられている必要はありません。 仮想ネットワーク内の各サブネットは、独自の Virtual Network NAT を使用して構成できます。 \n"
+  - question: Virtual Network NAT をゲートウェイ サブネットに関連付けることはできますか?
+    answer: >
+      いいえ。 Virtual Network NAT を[ゲートウェイ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsub) サブネットに関連付けることはできません。
+  - question: Virtual Network NAT は可用性ゾーンでどのように動作しますか?
+    answer: "Virtual Network NAT は非ゾーンまたはゾーンのみにすることができます。  \n\n非ゾーンの Virtual Network NAT は、特定のゾーンに関連付けられていないものを指します。 非ゾーンの Virtual Network NAT も、仮想ネットワーク内の 1 つのゾーンには割り当てられます。 この場合、Azure によって、Virtual Network NAT 対して選択するゾーンが決定されます。 \n\nゾーン Virtual Network NAT は、作成時にユーザーによって特定のゾーンに関連付けられます。 \n"
+  - question: Virtual Network NAT リソースのログを取得する方法
+    answer: "ネットワーク セキュリティ グループ (NSG) を構成して、サブネットまたは仮想ネットワーク内のリソースから送信されるトラフィックを Virtual Network NAT ゲートウェイ リソースを介して送信することができます。 \n\nネットワーク セキュリティ グループのフロー ログを使用すると、Virtual Network NAT ゲートウェイ リソースを経由した送信トラフィックを監視できます。  \n\nAzure Security Center を使用し、ネットワークの保護に関する推奨事項に従って、Azure のネットワーク リソースを保護します。 ネットワーク セキュリティ グループ フロー ログを有効にし、監査のためにログを Azure Storage アカウントに送信します。 また、フロー ログを Log Analytics ワークスペースに送信してから、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化したり、ホット スポットやセキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。\n"
+  - question: Virtual Network NAT ゲートウェイ リソースを削除するにはどうすればよいですか?
+    answer: >
+      Virtual Network NAT ゲートウェイ リソースを削除するには、最初にサブネットからリソースの関連付けを解除する必要があります。 NAT ゲートウェイ リソースがすべてのサブネットから関連付け解除されたら、それを削除できます。
+  - question: Azure App Service で Virtual Network NAT ゲートウェイ リソースを使用できますか?
+    answer: >
+      はい。 Virtual Network NAT と Azure App Service の統合の詳細については、「[Virtual Network NAT ゲートウェイの統合](https://docs.microsoft.com/azure/app-service/networking/nat-gateway-integration)」を参照してください。
+  - question: Azure Kubernetes Service で Virtual Network NAT ゲートウェイ リソースを使用できますか?
+    answer: >
+      はい。 Virtual Network NAT と Azure Kubernetes Service の統合の詳細については、「[マネージド NAT Gateway (プレビュー)](https://docs.microsoft.com/azure/aks/nat-gateway)」をご覧ください。
+additionalContent: >-
+  ## <a name="next-steps"></a>次のステップ
+
+  ご不明な点が上記の一覧にない場合は、このページに関するフィードバックにご質問を添えてお送りください。 お送りいただくと、製品チームでは、お客様からの貴重なご質問すべてにお答えできるよう、GitHub 問題を作成しています。

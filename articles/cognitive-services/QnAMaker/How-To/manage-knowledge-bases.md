@@ -5,20 +5,22 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: c7bb79cbd67ba2fb151641ddeeb31b54e399b906
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 1b3ee4c693193457e3369a12936ee46d90bf225d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96938258"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131038824"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>ナレッジ ベースを作成して設定を管理する
 
 QnA Maker を使うと、ナレッジ ベースの設定とデータ ソースにアクセスして、ナレッジ ベースを管理できます。
 
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
-> [!div class="checklist"]
 > * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください。
 > * Azure portal で作成された [QnA Maker リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
 
@@ -30,7 +32,7 @@ QnA Maker を使うと、ナレッジ ベースの設定とデータ ソース�
 
 1. QnA Maker リソースが既にある場合は、 **[Create]\(作成\)** ページで、 **[Step 1]\(手順 1\)** をスキップします。
 
-    リソースをまだ作成していない場合は、 **[Create a QnA service]\(QnA サービスの作成\)** を選択します。 サブスクリプションで QnA Maker サービスを設定するため、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) にリダイレクトされます。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
+    リソースをまだ作成していない場合は、 **[Stable]\(安定\)** と **[Create a QnA service]\(QnA サービスの作成\)** を選択します。 サブスクリプションで QnA Maker サービスを設定するため、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) にリダイレクトされます。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
 
     Azure portal でリソースの作成が完了したら、QnA Maker ポータルに戻り、ブラウザー ページを最新の状態に更新して、 **[Step 2]\(手順 2\)** を続けます。
 
@@ -41,13 +43,14 @@ QnA Maker を使うと、ナレッジ ベースの設定とデータ ソース�
 1. **[Step 3]\(手順 3\)** で、ナレッジ ベースの名前を `My Sample QnA KB` に設定します。
 
 1. **[Step 4]\(手順 4\)** で、次の表を使用して設定を構成します。
-
+    
     |設定|値|
     |--|--|
     |**Enable multi-turn extraction from URLs, .pdf or .docx files (URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする)**|オン|
     |**Default answer text (既定の回答テキスト)**| `Quickstart - default answer not found.`|
     |**+ Add URL (+ URL の追加)**|`https://azure.microsoft.com/en-us/support/faq/`|
-    |**Chit-chat (おしゃべり)**|**[Professional]\(専門家\)** を選択します|
+    |**Chit-chat (おしゃべり)**|**[Professional]\(専門家\)** を選択します|  
+
 
 1. **[Step 5]\(手順 5\)** で、 **[Create your KB]\(KB の作成\)** を選択します。
 
@@ -71,19 +74,18 @@ QnA Maker を使うと、ナレッジ ベースの設定とデータ ソース�
        |--|--|
        |URL の追加|**[Manage knowledgebase]\(ナレッジ ベースの管理\) -> [+ Add URL]\(+ URL の追加\)** リンクをクリックして、新しい FAQ コンテンツをナレッジ ベースに追加するために新しい URL を追加できます。|
        |URL の削除|既存の URL を削除するには、ごみ箱の削除アイコンを選択します。|
-       |コンテンツを最新の情報に更新|既存の URL の最新のコンテンツをクロールするためのナレッジ ベースが必要な場合は、 **[更新]** チェック ボックスをオンにします。 これにより、最新の URL コンテンツでナレッジ ベースが 1 回更新されます。 この操作では、定期的な更新スケジュールが設定されません。|
+       |コンテンツを最新の情報に更新|既存の URL の最新のコンテンツをクロールするためのナレッジ ベースが必要な場合は、 **[更新]** チェック ボックスをオンにします。 このアクションにより、最新の URL コンテンツでナレッジ ベースが 1 回更新されます。 このアクションでは、定期的な更新スケジュールは設定されません。|
        |ファイルの追加|**[Manage knowledge base]\(ナレッジ ベースの管理\)** を選択してから **[+ ファイルの追加]** を選択し、サポートされているファイル ドキュメントを追加してナレッジ ベースに含めることができます。|
     |[インポート]|**[Import Knowledge base]\(ナレッジ ベースのインポート\)** ボタンを選択して、既存のナレッジ ベースをインポートすることもできます。 |
     |更新|ナレッジ ベースの更新は、ナレッジ ベースと関連付けられた QnA Maker サービスの作成中に使用している **管理価格レベル** によって異なります。 必要な場合、Azure portal から管理レベルを更新することもできます。
 
+    <br/>
   1. ナレッジ ベースを変更した後、その変更を保持するには、ページの右上隅にある **[保存してトレーニング]** を選択します。
 
        ![[Save and train]\(保存してトレーニング\)](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
        >[!CAUTION]
        >**[Save and train]\(保存してトレーニング\)** を選択する前にページを閉じると、すべての変更が失われます。
-
-
 
 ## <a name="manage-large-knowledge-bases"></a>大きなナレッジ ベースの管理
 
@@ -104,10 +106,3 @@ QnA Maker を使うと、ナレッジ ベースの設定とデータ ソース�
 ナレッジ ベース (KB) の削除は永続的な操作です。 この操作を元に戻すことはできません。 ナレッジ ベースを削除する前に、QnA Maker ポータルの **[設定]** ページからナレッジ ベースをエクスポートする必要があります。
 
 ナレッジ ベースをコラボレーター (collaborate-knowledge-base.md) と共有している場合、削除すると、すべてのユーザーが KB にアクセスできなくなります。
-
-## <a name="next-steps"></a>次のステップ
-
-リソース内のすべてのナレッジ ベースの[言語の管理](../index.yml)について学習します。
-
-* QnA ペアの編集
-* QnA Maker によって使用される Azure リソースを管理する

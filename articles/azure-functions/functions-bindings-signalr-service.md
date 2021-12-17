@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34460fb0076c4cb666242d996add913cc2b74d22
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97763491"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108641"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR サービスのバインド
 
@@ -28,7 +28,7 @@ ms.locfileid: "97763491"
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| Language                                        | 追加手段                                   | 解説 
+| 言語                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン 3.x をインストールする | |
 | C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能]をお勧めします。 |
@@ -53,6 +53,10 @@ SignalR Service の注釈を Java 関数で使用するには、*azure-functions
     <version>1.0.0</version>
 </dependency>
 ```
+
+## <a name="connection-string-settings"></a>接続文字列の設定
+
+接続文字列を含んだアプリケーション設定を指す `AzureSignalRConnectionString` キーを _host.json_ ファイルに追加します。 ローカル開発の場合、この値は _local.settings.json_ ファイルに存在します。
 
 ## <a name="next-steps"></a>次のステップ
 

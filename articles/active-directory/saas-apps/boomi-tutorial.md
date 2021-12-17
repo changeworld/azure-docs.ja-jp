@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: c58566c628eedd1dbc3d86ae6a142156cbf31211
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be2284e88a8de6f1bf050167fdf15342ef4e1909
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585198"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324376"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Boomi の統合
 
@@ -155,17 +155,17 @@ Boomi に対して Azure AD SSO を構成してテストするには、次の手
 
     f. **[保存]** ボタンをクリックします。
 
-### <a name="create-boomi-test-user&quot;></a>Boomi のテスト ユーザーの作成
+### <a name="create-boomi-test-user"></a>Boomi のテスト ユーザーの作成
 
 Azure AD ユーザーが Boomi にサインインできるようにするには、ユーザーを Boomi にプロビジョニングする必要があります。 Boomi の場合、プロビジョニングは手動で行います。
 
-### <a name=&quot;to-provision-a-user-account-perform-the-following-steps&quot;></a>ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+### <a name="to-provision-a-user-account-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
 
 1. Boomi 企業サイトに管理者としてサインインします。
 
 1. **[ユーザー管理]**、**[ユーザー]** の順に進みます。
 
-    ![スクリーンショットは、[ユーザー] が選択されている [ユーザー管理] ページを示しています。](./media/boomi-tutorial/user.png &quot;ユーザー")
+    ![スクリーンショットは、[ユーザー] が選択されている [ユーザー管理] ページを示しています。](./media/boomi-tutorial/user.png "ユーザー")
 
 1. **+** アイコンをクリックすると **[Add/Maintain User Roles]\(ユーザーの役割の追加と管理)** ダイアログが開きます。
 
@@ -194,9 +194,9 @@ Azure AD ユーザーが Boomi にサインインできるようにするには�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Boomi に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Boomi] タイルをクリックすると、SSO を設定した Boomi に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Boomi] タイルをクリックすると、SSO を設定した Boomi に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Boomi を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Boomi を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

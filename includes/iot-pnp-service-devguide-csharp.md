@@ -1,25 +1,25 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: a92e37326cf9db0eba186b2bdca44c452c02ea91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2c6093d1d8d4f1a46f69489d30d003e45ea7173
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92521397"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516574"
 ---
 次のリソースも使用できます。
 
 - [.Net SDK のリファレンス ドキュメント](/dotnet/api/microsoft.azure.devices)
-- [サービス クライアントのサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)
-- [Digital Twins のサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples)
+- [サービス クライアントのサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Samples/service/PnpServiceSamples)
+- [Digital Twins のサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Samples/service/DigitalTwinClientSamples)
 
 ## <a name="iot-hub-service-client-examples"></a>IoT Hub サービス クライアントの例
 
-このセクションでは、IoT Hub サービス クライアントと **RegistryManager** および **ServiceClient** クラスを使用した C# の例を示します。 **RegistryManager** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 **RegistryManager** クラスを使用して、IoT ハブ内の [デバイス登録のクエリ](../articles/iot-hub/iot-hub-devguide-query-language.md)を行うこともできます。 デバイス上でコマンドを呼び出すには、**ServiceClient** クラスを使用します。 デバイスの [DTDL](../articles/iot-pnp/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`deviceTwinId` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
+このセクションでは、IoT Hub サービス クライアントと **RegistryManager** および **ServiceClient** クラスを使用した C# の例を示します。 **RegistryManager** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 **RegistryManager** クラスを使用して、IoT ハブ内の [デバイス登録のクエリ](../articles/iot-hub/iot-hub-devguide-query-language.md)を行うこともできます。 デバイス上でコマンドを呼び出すには、**ServiceClient** クラスを使用します。 デバイスの [DTDL](../articles/iot-develop/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`deviceTwinId` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
 
 ### <a name="get-the-device-twin-and-model-id"></a>デバイス ツインとモデル ID を取得する
 
@@ -141,7 +141,7 @@ catch (DeviceNotFoundException)
 
 ## <a name="iot-hub-digital-twin-examples"></a>IoT Hub デジタル ツインの例
 
-**DigitalTwinClient** クラスを使用し、デジタル ツインを使用してデバイスの状態を操作します。 デバイスの [DTDL](../articles/iot-pnp/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。
+**DigitalTwinClient** クラスを使用し、デジタル ツインを使用してデバイスの状態を操作します。 デバイスの [DTDL](../articles/iot-develop/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。
 
 このセクションでは、Digital Twins API を使用した C# の例を示します。 次のスニペットでは、サーモスタットと温度コントローラー デバイスのデジタル ツインを表すために、次のクラスを使用しています。
 
@@ -353,7 +353,7 @@ catch (HttpOperationException e)
 
 IoT プラグ アンド プレイ デバイスにより、DTDL モデル内で定義されているテレメトリが IoT Hub に送信されます。 既定では、IoT Hub により、テレメトリが Event Hubs エンドポイントにルーティングされ、そこで使用できます。 詳細については、「[IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)」を参照してください。
 
-次のコード スニペットは、既定の Event Hubs エンドポイントからテレメトリを読み取る方法を示しています。 このスニペットのコードは、IoT Hub クイックスタート「[デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)」から取得したものです。
+次のコード スニペットは、既定の Event Hubs エンドポイントからテレメトリを読み取る方法を示しています。 このスニペットのコードは、IoT Hub クイックスタート「[デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る](../articles/iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)」から取得したものです。
 
 ```csharp
 await using EventHubConsumerClient consumer = new EventHubConsumerClient(EventHubConsumerClient.DefaultConsumerGroupName, connectionString, EventHubName);

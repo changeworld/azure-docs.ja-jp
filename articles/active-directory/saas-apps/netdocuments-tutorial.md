@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 48ba2810c0aaf304042580cdf6579df54fd9ccd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79c3252155f1821d8927134a723ed62aa09df00f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645676"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307481"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NetDocuments の統合
 
@@ -144,29 +144,31 @@ NetDocuments での Azure AD SSO を構成してテストするには、次の�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
+<!-- docutune:ignore "Security Center" -->
+
 ## <a name="configure-netdocuments-sso"></a>NetDocuments の SSO の構成
 
 1. 別の Web ブラウザーのウィンドウで、管理者として NetDocuments 企業サイトにサインインします。
 
-2. 右上隅から自分の名前を選択し、 **[Admin]\(管理者\)** を選択します。
+2. 右上隅から自分の名前を選択し、 **[管理者]** を選択します。
 
-3. **[セキュリティ センター]** を選択します。
-   
-    ![リポジトリ](./media/netdocuments-tutorial/security-center.png "Security Center")
+3. **[Security Center]** を選択します。
+
+    ![セキュリティ センター](./media/netdocuments-tutorial/security-center.png "Security Center")
 
 4. **[Advanced Authentication]\(高度な認証\)** を選択します。
-    
+
     ![[Configure advanced authentication options]\(認証オプションの詳細な構成\)](./media/netdocuments-tutorial/advance-authentication.png "[認証オプションの詳細な構成]")
 
-5.  **[フェデレーション ID]** タブで次の手順に従います。   
-   
-    [ ![フェデレーション ID](./media/netdocuments-tutorial/federated-id.png "フェデレーション ID")](./media/netdocuments-tutorial/federated-id.png#lightbox)
-   
-    a. **[フェデレーション ID のサーバーの種類]** で、 **[Windows Azure Active Directory]** を選択します。
-    
-    b.  **[ファイルの選択]** を選択して、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
-    
-    c.  **[SAVE]\(保存\)** を選択します。
+5. **[フェデレーション ID]** タブで次の手順に従います。  
+
+    [![フェデレーション ID](./media/netdocuments-tutorial/federated-id.png "フェデレーション ID")](./media/netdocuments-tutorial/federated-id.png#lightbox)
+
+    1. **[フェデレーション ID のサーバーの種類]** で、 **[Windows Azure Active Directory]** を選択します。
+
+    1. **[ファイルの選択]** を選択して、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
+
+    1. **[SAVE]\(保存\)** を選択します。
 
 ### <a name="create-netdocuments-test-user"></a>NetDocuments のテスト ユーザーの作成
 
@@ -176,18 +178,18 @@ Azure AD ユーザーが NetDocuments にサインインできるようにする
 
 1. **NetDocuments** 企業サイトに管理者としてサインオンします。
 
-2. 右上隅から自分の名前を選択し、 **[Admin]\(管理者\)** を選択します。
-   
+2. 右上隅から自分の名前を選択し、 **[管理者]** を選択します。
+
     ![管理者](./media/netdocuments-tutorial/user-admin.png "[Admin]")
 
 3. **[ユーザーとグループ]** を選択します。
-   
-    ![ユーザーとグループ](./media/netdocuments-tutorial/users-groups.png "リポジトリ")
+
+    ![ユーザーとグループ](./media/netdocuments-tutorial/users-groups.png "ユーザーおよびグループ")
 
 4. **[電子メール アドレス]** テキストボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力して、 **[ユーザーの追加]** をクリックします。
-   
+
     ![メール アドレス](./media/netdocuments-tutorial/user-mail.png "電子メール アドレス")
-   
+
     > [!NOTE]
     > Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。 他の NetDocuments ユーザー アカウントの作成ツールまたは NetDocuments から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
@@ -199,9 +201,8 @@ Azure AD ユーザーが NetDocuments にサインインできるようにする
 
 * NetDocuments のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [NetDocuments] タイルをクリックすると、SSO を設定した NetDocuments に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [NetDocuments] タイルをクリックすると、SSO を設定した NetDocuments に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-NetDocuments を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+NetDocuments を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

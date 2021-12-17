@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 06/23/2020
-  ms.openlocfilehash: 06cce3f999b329d41c7ef7e5f381f55fdaee8054
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 07/23/2021
+  ms.openlocfilehash: fcda8ee1157d1aa8c9c7de1ee1bb219019ba738d
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88933751"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121728863"
 landingContent:
 - title: Event Hubs について
   linkLists:
@@ -29,6 +29,8 @@ landingContent:
       url: event-hubs-for-kafka-ecosystem-overview.md
     - text: Event Hubs Capture とは
       url: event-hubs-capture-overview.md
+    - text: Event Hubs Premium とは
+      url: event-hubs-premium-overview.md
     - text: Event Hubs Dedicated とは
       url: event-hubs-dedicated-overview.md
 - title: イベント ハブの作成
@@ -148,10 +150,8 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Azure Monitor を使用して Event Hubs を監視する
-      url: event-hubs-metrics-azure-monitor.md
-    - text: 診断ログの設定
-      url: event-hubs-diagnostic-logs.md
-    - text: スループット ユニットを自動的にスケールアップする
+      url: monitor-event-hubs.md
+    - text: 自動スケールアップ
       url: event-hubs-auto-inflate.md
     - text: 例外のトラブルシューティング
       url: event-hubs-messaging-exceptions.md

@@ -1,20 +1,21 @@
 ---
-title: 検索インデックス作成のための Azure SQL VM 接続
+title: Azure VM 上の SQL Server へのインデクサー接続
 titleSuffix: Azure Cognitive Search
 description: 暗号化された接続を有効にして、Azure Cognitive Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。
-author: markheff
-ms.author: maheff
+author: gmndrg
+ms.author: gimondra
+manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 23c5d138463a52f4ff4c52b4a919b71a87b7fd6d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ec637058810e5e195569db6a568d5c794b3df1f4
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802881"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892706"
 ---
-# <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure VM で Azure Cognitive Search インデクサーから SQL Server への接続を構成する
+# <a name="indexer-connections-to-sql-server-on-an-azure-virtual-machine"></a>Azure 仮想マシン上の SQL Server へのインデクサー接続
 
 Azure 仮想マシン上のデータベースからコンテンツを抽出するように [Azure SQL インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)を構成する場合は、セキュリティで保護された接続を行うために追加の手順が必要になります。 
 
@@ -83,13 +84,13 @@ SQL Azure VM をすべての接続要求に開放するのではなく、ACL で
 
 IP アドレスは、Search サービスの FQDN (`<your-search-service-name>.search.windows.net` など) に ping を実行することで確認できます。 Search サービスの IP アドレスを変更することはできますが、変更される可能性はほとんどありません。 この IP アドレスがサービスの有効期間中に変わることはほとんどありません。
 
-`AzureCognitiveSearch` [サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags)の IP アドレス範囲を確認するには、[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)または [Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用します。 IP アドレス範囲は毎週更新されます。
+`AzureCognitiveSearch` [サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags)の IP アドレス範囲を確認するには、[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)または [Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) を使用します。 IP アドレス範囲は毎週更新されます。
 
 ### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Azure Cognitive Search ポータルの IP アドレスを含める
 
 Azure portal を使用してインデクサーを作成する場合は、ポータルに SQL Azure 仮想マシンへの受信アクセスを付与する必要があります。 ファイアウォールの受信規則では、ポータルの IP アドレスを指定する必要があります。
 
-ポータルの IP アドレスを取得するには、ping `stamp2.ext.search.windows.net` を使用します。これはトラフィック マネージャーのドメインです。 要求はタイムアウトになりますが、IP アドレスはステータス メッセージに表示されます。 たとえば、"Pinging azsyrie.northcentralus.cloudapp.azure.com [52.252.175.48]" というメッセージでは、IP アドレスは "52.252.175.48" になります。
+ポータルの IP アドレスを取得するには、ping `stamp2.ext.search.windows.net` を使用します。これはトラフィック マネージャーのドメインです。 要求はタイムアウトになりますが、IP アドレスはステータス メッセージに表示されます。 たとえば、"Ping azsyrie.northcentralus.cloudapp.azure.com [52.252.175.48]" というメッセージでは、IP アドレスは "52.252.175.48" になります。
 
 > [!NOTE]
 > 異なるリージョンのクラスターは、異なるトラフィック マネージャーに接続します。 ドメイン名に関係なく、ping から返された IP アドレスは正しいもので、リージョン内の Azure portal で受信ファイアウォール規則を定義するときに使用します。

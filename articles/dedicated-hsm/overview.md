@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 0e07839c3c5ce542335eeadc92e6a3c98fe87856
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d4c21835cfb9d3e665f3617047c6934282282c1e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606982"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125951"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Azure Dedicated HSM とは何か
 
@@ -32,7 +32,7 @@ Azure Dedicated HSM は、Azure 内に暗号化キーの保管場所を提供す
 
 ### <a name="fips-140-2-level-3-compliance"></a>FIPS 140-2 レベル 3 準拠
 
-多くの組織には、[FIPS 140-2 レベル 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) 認証済みの HSM に暗号化キーを格納することを義務付ける厳しい業界規制が存在します。 Azure Dedicated HSM と、新しいシングルテナント オファリングである [Azure Key Vault Managed HSM (プレビュー)](https://docs.microsoft.com/azure/key-vault/managed-hsm) により、金融サービス業界、行政機関など、さまざまな業界のユーザーが FIPS 140-2 レベル 3 の要件を満たすことができます。 Microsoft のマルチテナント [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) サービスでは現在、FIPS 140-2 レベル 2 認証済み HSM が使用されています。 
+多くの組織には、[FIPS 140-2 レベル 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) 認証済みの HSM に暗号化キーを格納することを義務付ける厳しい業界規制が存在します。 Azure Dedicated HSM と、新しいシングルテナント オファリングである [Azure Key Vault Managed HSM](../key-vault/managed-hsm/index.yml) により、金融サービス業界、行政機関など、さまざまな業界のユーザーが FIPS 140-2 レベル 3 の要件を満たすことができます。 Microsoft のマルチテナント [Azure Key Vault](../key-vault/index.yml) サービスでは現在、FIPS 140-2 レベル 2 認証済み HSM が使用されています。 
 
 ### <a name="single-tenant-devices"></a>シングルテナント デバイス
 
@@ -72,7 +72,7 @@ Azure Dedicated HSM は、次のようなシナリオには適していません
 
 ### <a name="it-depends"></a>場合による
 
-Azure Dedicated HSM が適しているかどうかは、発生し得る複雑な要件の組み合わせや、妥協できる点とできない点によって左右されます。 その例が FIPS 140-2 レベル 3 要件です。 これは一般的な要件であり、現在それを満たすための選択肢は、Azure Dedicated HSM と、新しいシングル テナント オファリングである [Azure Key Vault Managed HSM (プレビュー)](https://docs.microsoft.com/azure/key-vault/managed-hsm) のみです。 こうした義務付けられている要件が該当しないようであれば、たいていは、Azure Key Vault か Azure Dedicated HSM のどちらかを選ぶことになります。 意思決定を行う前にお客様自身の要件を評価してください。
+Azure Dedicated HSM が適しているかどうかは、発生し得る複雑な要件の組み合わせや、妥協できる点とできない点によって左右されます。 その例が FIPS 140-2 レベル 3 要件です。 これは一般的な要件であり、現在それを満たすための選択肢は、Azure Dedicated HSM と、新しいシングル テナント オファリングである [Azure Key Vault Managed HSM](../key-vault/managed-hsm/index.yml) のみです。 こうした義務付けられている要件が該当しないようであれば、たいていは、Azure Key Vault か Azure Dedicated HSM のどちらかを選ぶことになります。 意思決定を行う前にお客様自身の要件を評価してください。
 
 次のような状況に該当する場合は、選択肢を比較検討する必要があります。 
 

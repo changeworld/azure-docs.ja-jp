@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: e1a4fb52a5f9622758e9ed805bf9380f5f608870
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2f5ac3579489637e5adcdfaa40fac90b5ff6e8b4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068254"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427154"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプッシュする
 
@@ -24,41 +24,16 @@ ms.locfileid: "106068254"
 - App Configuration リソース - [Azure portal](https://portal.azure.com)で無料リソースを作成する。
 - Azure DevOps プロジェクト - [無料プロジェクトを作成する](https://go.microsoft.com/fwlink/?LinkId=2014881)
 - Azure App Configuration Push タスク - [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) から無料でダウンロードする。
+- [ノード 10](https://nodejs.org/en/blog/release/v10.21.0/) - セルフホステッド エージェントでタスクを実行しているユーザーの場合。
 
 ## <a name="create-a-service-connection"></a>サービス接続を作成する
 
-[サービス接続](/azure/devops/pipelines/library/service-endpoints)により、Azure DevOps プロジェクトから Azure サブスクリプション内のリソースにアクセスできます。
-
-1. Azure DevOps で、ターゲットのパイプラインを含むプロジェクトに移動し、左下にある **[プロジェクトの設定]** を開きます。
-1. **[パイプライン]** で、 **[サービス接続]** を選択し、右上にある **[新しいサービス接続]** を選択します。
-1. **[Azure Resource Manager]** を選択します。
-![[新しいサービス接続] ドロップダウン リストからの [Azure Resource Manager] の選択を示すスクリーンショット。](./media/new-service-connection.png)
-1. **[認証方法]** ダイアログで、 **[サービス プリンシパル (自動)]** を選択します。
-    > [!NOTE]
-    > **[マネージド ID]** 認証は、App Configuration タスクでは現在サポートされていません。
-1. サブスクリプションとリソースを入力します。 サービス接続に名前を付けます。
-
-サービス接続が作成されたので、それに割り当てるサービス プリンシパルの名前を見つけます。 次の手順では、このサービス プリンシパルに新しいロールの割り当てを追加します。
-
-1. **[プロジェクトの設定]**  >  **[サービス接続]** の順に移動します。
-1. 前のセクションで作成したサービス接続を選択します。
-1. **[サービス プリンシパルの管理]** を選択します。
-1. 一覧表示された **[表示名]** をメモします。
-![サービス プリンシパルの表示名を示すスクリーンショット。](./media/service-principal-display-name.png)
+[!INCLUDE [azure-app-configuration-service-connection](../../includes/azure-app-configuration-service-connection.md)]
 
 ## <a name="add-role-assignment"></a>ロールの割り当ての追加
 
-タスクで App Configuration ストアにアクセスできるように、タスク内で使用する資格情報に、適切な App Configuration のロールの割り当てを割り当てます。
+[!INCLUDE [azure-app-configuration-role-assignment](../../includes/azure-app-configuration-role-assignment.md)]
 
-1. ターゲットの App Configuration ストアに移動します。 
-1. 左側で、 **[アクセス制御 (IAM)]** を選択します。
-1. 右側で、 **[ロールの割り当ての追加]** ボタンをクリックします。
-![[ロールの割り当ての追加] ボタンを示すスクリーンショット。](./media/add-role-assignment-button.png)
-1. **[ロール]** で、 **[App Configuration データ所有者]** を選択します。 このロールを使用すると、タスクで App Configuration ストアに対して読み取りや書き込みを行うことができます。 
-1. 前のセクションで作成したサービス接続に関連付けるサービス プリンシパルを選択します。
-![[ロールの割り当ての追加] ダイアログを示すスクリーンショット。](./media/add-role-assignment.png)
-
-  
 ## <a name="use-in-builds"></a>ビルドでの使用
 
 このセクションでは、Azure DevOps ビルド パイプラインで Azure App Configuration Push タスクを使用する方法について説明します。
@@ -125,6 +100,10 @@ App Configuration Push タスクによって、次のパラメーターが使用
 **複数の構成ファイルをアップロードするには、どうすればよいですか?**
 
 同じパイプライン内で Azure App Configuration Push タスクの複数のインスタンスを作成して、複数の構成ファイルを App Configuration ストアにプッシュします。
+
+**このタスクを使用して Key Vault 参照を作成するにはそうすればよいですか?**
+
+Key Vault 参照を作成するには、"Content Type" パラメーターを *application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8* に設定します。 構成ファイルに含まれているキーと値の一部が Key Vault 参照でない場合は、Key Vault 参照および通常のキーと値を別々の構成ファイルに格納して、それらを個別にプッシュしてください。
 
 **キー値を Configuration ストアにプッシュしようとすると、409 エラーが発生するのはなぜですか?**
 

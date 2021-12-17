@@ -4,18 +4,18 @@ description: .NET と ML.NET で AutoML ONNX モデルを使用して予測を�
 titleSuffix: Azure Machine Learning
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 10/30/2020
-ms.topic: conceptual
+ms.date: 10/21/2021
+ms.topic: how-to
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.custom: how-to, automl
-ms.openlocfilehash: 4fb147dc5c57c3a98607a025f566fa583bf87460
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: automl
+ms.custom: automl
+ms.openlocfilehash: e58b962e9c37d292790097953f8e6ce85ba0ed06
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93358815"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564691"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>.NET で AutoML ONNX モデルを使用して予測を行う
 

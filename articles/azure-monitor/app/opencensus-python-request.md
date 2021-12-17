@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 3b029a9cb14a81c80072847dc17d6b71f480743f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 093a31991300867e2598cabacbef7f56dfe890e9
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585677"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472719"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python を使用した受信要求の追跡
 
@@ -87,7 +87,10 @@ ms.locfileid: "100585677"
         }
     }
     ```
-
+    
+    > [!NOTE]
+    > Docker 環境で uWSGI 下の Flask を実行するには、まず uWSGI 設定ファイル (uwsgi.ini) に `lazy-apps = true` を追加する必要があります。 詳細については、「[問題の説明](https://github.com/census-instrumentation/opencensus-python/issues/660)」を参照してください。 
+    
 ## <a name="tracking-pyramid-applications"></a>Pyramid アプリケーションの追跡
 
 1. [PyPI](https://pypi.org/project/opencensus-ext-pyramid/) から `opencensus-ext-django` をダウンロードしてインストールし、`pyramid` tween でアプリケーションをインストルメント化します。 `pyramid` アプリケーションに送信された受信要求が追跡されます。

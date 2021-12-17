@@ -1,0 +1,88 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Kubernetes Service (AKS) での機密ノードのサポートに関してよく寄せられる質問
+  description: Azure Kubernetes Service (AKS) および Azure Confidential Computing (ACC) ノードのサポートについてよく寄せられる質問の一部に対する回答が見つかります。
+  author: agowdamsft
+  ms.service: container-service
+  ms.subservice: confidential-computing
+  ms.topic: conceptual
+  ms.date: 06/30/2021
+  ms.author: amgowda
+  ms.openlocfilehash: 96e478b61630b90f0253b65b54968f5f05aa1fe3
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131086547"
+title: Azure Kubernetes Service (AKS) 上の Confidential Computing ノードについてよく寄せられる質問
+summary: >
+  この記事では、Azure Kubernetes Service (AKS) 上の Intel SGX ベースの Confidential Computing ノードについてよく寄せられる質問にお答えします。 他に質問がある場合は、 **acconaks@microsoft.com** にメールを送信してください。
+sections:
+- name: Product
+  questions:
+  - question: AKS 上の Confidential Computing ノードは、運用環境で使用できますか?
+    answer: >
+      はい (Intel SGX エンクレーブ ノードの場合)。
+  - question: Azure Confidential Computing AKS クラスターで高速ネットワークを有効にできますか。
+    answer: >
+      いいえ。 高速ネットワークは、AKS の Confidential Computing ノードを構成する DCSv2 仮想マシンではサポートされていません。
+  - question: Confidential ノードの AKS イメージには、どのバージョンの Intel SGX ドライバーがありますか。
+    answer: "現在、Azure Confidential Computing DCSv2 VM は、Intel SGX DCAP 1.33 と共にインストールされています。 \n"
+  - question: AKS によってプロビジョニングされたノードに対してインストール後のスクリプトを挿入することや、ドライバーをカスタマイズすることはできますか。
+    answer: >
+      いいえ。 [AKS エンジン ベースの Confidential Computing ノード](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md)では、カスタム インストールを実行でき、かつ Kubernetes コントロール プレーンをフル制御できる Confidential Computing ノードがサポートされています。
+  - question: 他の Standard AKS SKU で ACC ノードを実行する (異種ノード プール クラスターを構築する) ことはできますか。
+    answer: >
+      はい。ACC ノードを含む同じ AKS クラスター内で異なるノード プールを実行できます。 特定のノード プール上のエンクレーブ アプリケーションをターゲットにするには、ノード セレクターを追加するか、EPC 制限を適用することを検討してください。 機密ノードのクイック スタートの詳細については、[こちら](confidential-enclave-nodes-aks-get-started.md)を参照してください。
+  - question: ACC で Windows ノードと Windows コンテナーを実行できますか。
+    answer: >
+      現時点ではありません。 Windows ノードまたはコンテナーを必要とする場合は、製品チーム ( *acconaks@microsoft.com* ) にお問い合わせください。
+  - question: Confidential Computing ノード上で非エンクレーブ コンテナーをスケジュールして実行することはできますか。
+    answer: >
+      はい。 VM には、標準のコンテナー ワークロードを実行できる通常のメモリもあります。 デプロイ モデルを決定する前に、アプリケーションのセキュリティと脅威モデルを検討してください。
+  - question: Confidential Computing ノードには、どのような VM SKU を選択する必要がありますか。
+    answer: "DCSv2 と DCSv3 の SKU。 [DCSv2](../virtual-machines/dcv2-series.md) と [DCSv3](../virtual-machines/dcv3-series.md) の詳細については、[サポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)を参照してください。      \n"
+  - question: Azure portal を使用して DCSv2 ノード プールで AKS をプロビジョニングすることはできますか。
+    answer: >
+      はい。 Azure CLI は、[こちら](confidential-enclave-nodes-aks-get-started.md)に記載されている代替手段として使用することもできます。
+  - question: どの Ubuntu バージョンと VM 生成がサポートされていますか。
+    answer: "Gen 2 上の 18.04。 \n"
+  - question: 製品の現在における既知の制限は何ですか。
+    answer: "- Ubuntu 18.04 Gen 2 VM ノードのみをサポートします \n- Windows ノードのサポートまたは Windows コンテナーのサポートがありません\n- EPC メモリ ベースの水平ポッド自動スケーリングはサポートされていません。 CPU と通常のメモリベースのスケーリングはサポートされています。\n- 機密アプリ用の AKS 上の Dev Spaces は現在サポートされていません   \n"
+  - question: Azure portal を使用して DCSv2 または DCSv3 ノード プールで AKS をプロビジョニングできますか?
+    answer: >
+      はい。 Azure CLI は、[こちら](confidential-enclave-nodes-aks-get-started.md)に記載されている代替手段として使用することもできます。
+  - question: どの Ubuntu バージョンと VM 生成がサポートされていますか。
+    answer: "Gen 2 上の 18.04。 \n"
+- name: 開発とデプロイ
+  questions:
+  - question: 既存のコンテナー化されたアプリケーションを持ち込み、Azure Confidential Computing を使用する AKS 上で実行できますか。
+    answer: >
+      はい。SGX ラッパー ソフトウェアを Intel SGX エンクレーブで実行します。プラットフォーム イネーブラーの詳細については、[機密コンテナー](confidential-containers.md)に関するページを参照してください。
+  - question: エンクレーブ アプリケーションを開始するには、Docker ベース イメージを使用する必要がありますか。
+    answer: >
+      さまざまなイネーブラー (ISV および OSS プロジェクト) には、機密コンテナーを有効にする方法が用意されています。 詳細と実装への個々の参照については、[「機密コンテナー」ページ](confidential-containers.md)を参照してください。
+- name: 機密コンテナーの概念
+  questions:
+  - question: 構成証明とは何ですか。エンクレーブで実行されているアプリの構成証明を実行するにはどうすればよいですか。
+    answer: >
+      構成証明は、ソフトウェアの一部が特定のハードウェア プラットフォームで適切にインスタンス化されていることを実証および検証するプロセスです。 これにより、セキュリティで保護されたプラットフォームで実行されており、改ざんされていないことを保証する証拠が検証可能であることも確保されます。 エンクレーブ アプリの構成証明の実行方法の[詳細について参照してください](attestation.md)。
+  - question: コンテナー サイズが使用可能な EPC メモリを超えている場合はどうすればよいですか。
+    answer: "EPC メモリは、エンクレーブで実行するようにプログラムされているアプリケーションの部分に適用されます。 コンテナーの合計サイズは、使用可能な最大 EPC メモリと比較する場合に適した方法ではありません。 実際、SGX が搭載された DCSv2 マシンでは、アプリケーションの信頼されていない部分で使用される最大 32GB の VM メモリが許可されています。 ただし、コンテナーに使用可能な EPC メモリを超える量が消費される場合、エンクレーブで実行されているプログラムの部分のパフォーマンスが影響を受ける可能性があります。\n\nワーカー ノードの EPC メモリをより適切に管理するには、Kubernetes を介した EPC メモリベースの制限管理を検討してください。 以下の例を参考にしてください。\n\n> [!NOTE] \n> 次の例では、パブリック コンテナー イメージを Docker Hub からプルします。 匿名の pull request を行うのではなく、Docker Hub アカウントを使用して認証するようにプル シークレットを設定することをお勧めします。 パブリック コンテンツを操作するときの信頼性を向上させるために、プライベートの Azure Container Registry にイメージをインポートして管理します。 [パブリック イメージの操作に関する詳細を参照してください](../container-registry/buffer-gate-public-content.md)。\n\n```yaml\napiVersion: batch/v1\nkind: Job\nmetadata:\n  name: sgx-test\n  labels:\n    app: sgx-test\nspec:\n  template:\n    metadata:\n      labels:\n        app: sgx-test\n    spec:\n      containers:\n      - name: sgxtest\n        image: oeciteam/sgx-test: 1.0\n        resources:\n          limits:\n            sgx.intel.com/sgx_epc_mem_in_MiB: 10 # This limit will automatically place the job into confidential computing node. Alternatively, you can target deployment to node pools\n      restartPolicy: Never\n  backoffLimit: 0\n```\n"
+  - question: エンクレーブに使用可能な最大 EPC メモリを超える量が消費されるとどうなりますか。
+    answer: "使用可能な EPC メモリの合計は、同じ VM またはワーカー ノード内のエンクレーブ アプリケーション間で共有されます。 アプリケーションに使用可能な EPC メモリを超える量が使用されている場合、アプリケーションのパフォーマンスが影響を受ける可能性があります。 このため、上の例で示すように、デプロイの yaml ファイルでアプリケーションごとの許容値を設定して、ワーカー ノードごとに使用可能な EPC メモリをより適切に管理することをお勧めします。 または、ワーカー ノード プールの VM サイズの上限を引き上げるか、ノードを追加することをいつでも選択できます。 \n"
+  - question: エンクレーブ アプリケーションで複数のプロセスを実行するために forks () と exec を実行できないのはなぜですか。
+    answer: >
+      現在、Azure Confidential Computing DCsv2 SKU VM は、エンクレーブで実行されているプログラムに対して 1 つのアドレス空間をサポートしています。 1 つのプロセスは、高度なセキュリティを中心に設計された現在の制限です。 ただし、機密コンテナー イネーブラーには、この制限を克服できる代替実装が存在する場合があります。
+  - question: デプロイの yaml でドライバー ボリュームをマウントする必要がありますか?
+    answer: "不正解です。 製品には、これに役立つ (confcom) を含む ACC アドオンが提供されています。 デプロイの詳細については、[こちら](confidential-enclave-nodes-aks-get-started.md)をご覧ください。  \n        \n"
+  - question: AKS 上で現在の Intel SGX DCAP ダイバーのバージョンを変更できますか。
+    answer: "いいえ。 カスタム インストールを実行するには、[AKS-Engine Confidential Computing ワーカー ノード](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md)のデプロイを選択することをお勧めします。 \n"
+  - question: Confidential Computing では、署名され、信頼されたイメージのみがエンクレーブに読み込まれますか。
+    answer: "エンクレーブの初期化中はネイティブで行われませんが、構成証明プロセスを通じて署名を検証できるので、「はい」です。 [こちらを](../attestation/basic-concepts.md#benefits-of-policy-signing)参照してください。 \n"
+  - question: 機密コンテナーにコード整合性保護をもたらすコンテナー署名は可能ですか?
+    answer: "機密コンテナーを使用すると、エンクレーブ コードには署名できますが、Docker コンテナー自体にはできません。 エンクレーブ コード (通常は Java や Python などのコア アプリケーション コード) の署名を使用すると、構成証明フローを通じてコードと実行環境を信頼する前に、エンクレーブ コードの MRSIGNER の詳細を構成証明を通じて検証できます。 \n"
+additionalContent: >-
+  ## <a name="next-steps"></a>次の手順
+
+  機密コンテナーの詳細について、[「機密コンテナー」ページ](confidential-containers.md)を確認します。

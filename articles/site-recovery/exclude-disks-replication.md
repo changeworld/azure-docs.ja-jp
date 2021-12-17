@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用したレプリケーションからディ�
 description: Azure Site Recovery を使用したレプリケーションから Azure にディスクを除外する方法。
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45ee7b23d01ff80bcb2e090688626f3f7fccb146
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008261"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131120"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>ディザスター リカバリーからディスクを除外する
 
@@ -267,5 +267,5 @@ Azure VM におけるページング ファイルの設定は次のとおりで�
 
 - 一時記憶域ディスクのガイドラインの詳細を確認します。
     - Azure VM で SSD を使用した SQL Server TempDB とバッファー プール拡張機能の保存の[詳細を確認](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)します
-    - Azure VM における SQL Server のパフォーマンスに関するベスト プラクティスを[確認](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)します。
+    - Azure VM における SQL Server のパフォーマンスに関するベスト プラクティスを[確認](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)します。
 - デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの [詳細を確認](failover-failback-overview.md) します。

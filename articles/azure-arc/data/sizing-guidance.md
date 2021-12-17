@@ -7,18 +7,17 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bbd778eabf150b734b04e004006dfeea2254ec4
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 6ac2397823dffd2c31cbe534c8fea1886e84558d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077484"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733495"
 ---
 # <a name="sizing-guidance"></a>サイズ設定のガイダンス
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="overview-of-sizing-guidance"></a>サイズ設定のガイダンスの概要
 
@@ -31,7 +30,7 @@ Azure Arc データ サービスのデプロイを計画する場合は、Azure 
 
 コア数の値は 1 以上の整数値である必要があります。
 
-デプロイに azdata を使用する場合、メモリの値は 2 つの数値の積で、つまり Ki、Mi、または Gi のサフィックスを使用して指定する必要があります。
+デプロイに Azure CLI (az) を使用する場合、メモリの値は 2 つの数値の積で、つまり Ki、Mi、または Gi のサフィックスを使用して指定する必要があります。
 
 制限値は常に、要求値 (指定されている場合) を超えている必要があります。
 
@@ -47,18 +46,16 @@ Azure Arc 対応データ サービスの最小デプロイ サイズは、Azure
 
 データ コントローラーは、API、コントローラー サービス、ブートストラップ、監視データベースおよびダッシュボードを提供するために Kubernetes クラスターにデプロイされるポッドのコレクションです。  次の表は、メモリおよび CPU 要求の既定値と制限を示しています。
 
-|ポッド名|CPU 要求|メモリ要求|CPU の制限|メモリの制限|メモ|
+|ポッド名|CPU 要求|メモリ要求|CPU 制限|メモリ制限|メモ|
 |---|---|---|---|---|---|
 |**bootstrapper**|100m|100Mi|200m|200Mi||
 |**control**|400m|2Gi|1800m|2Gi||
 |**controldb**|200m|3Gi|800m|6Gi||
-|**controlwd**|10m|100Mi|100m|200Mi||
 |**logsdb**|200m|1600Mi|2|1600Mi||
 |**logsui**|100m|500Mi|2|2Gi||
 |**metricsdb**|200m|800Mi|400m|2Gi||
 |**metricsdc**|100m|200Mi|200m|300Mi|metricsdc は、クラスター内の各 Kubernetes ノード上に作成されるデーモンセットです。  この表に示されている数値は _ノードあたり_ です。 データ コントローラーを作成する前にデプロイ プロファイル ファイルで allowNodeMetricsCollection = false を設定した場合、metricsdc デーモンセットは作成されません。|
 |**metricsui**|20m|200Mi|500m|200Mi||
-|**mgmtproxy**|200m|250Mi|500m|500Mi||
 
 デプロイ プロファイル ファイルまたはデータ コントローラー YAML ファイルで controldb の既定の設定をオーバーライドし、ポッドを制御できます。  例:
 
@@ -84,9 +81,14 @@ Azure Arc 対応データ サービスの最小デプロイ サイズは、Azure
 
 ## <a name="sql-managed-instance-sizing-details"></a>SQL Managed Instance のサイズ設定の詳細
 
-各 SQL Managed Instance には、次の最小リソース要求が必要です。
-- メモリ:2Gi
-- コア:1
+各 SQL マネージド インスタンスには、次の最小リソース要求と制限が必要です。
+
+|サービス レベル|汎用|Business Critical (プレビュー)|
+|---|---|---|
+|CPU 要求|最小値: 1、最大値: 24、既定値: 2|最小値: 1、最大値: 無制限、既定値: 4|
+|CPU 制限|最小値: 1、最大値: 24、既定値: 2|最小値: 1、最大値: 無制限、既定値: 4|
+|メモリ要求|最小値: 2 Gi、最大値: 128 Gi、既定値: 4 Gi|最小値: 2 Gi、最大値: 無制限、既定値: 4 Gi|
+|メモリ制限|最小値: 2 Gi、最大値: 128 Gi、既定値: 4 Gi|最小値: 2 Gi、最大値: 無制限、既定値: 4 Gi|
 
 作成される各 SQL Managed Instance ポッドには、次の 3 つのコンテナーがあります。
 
@@ -146,7 +148,7 @@ Azure Arc 対応データ サービスに必要な環境の全体的なサイズ
 
 特定のデータベース インスタンスのコアまたは RAM に対するサイズ要求は、クラスター内の Kubernetes ノードの使用可能な容量を超えることができない点に注意してください。  たとえば、Kubernetes クラスター内にある最大の Kubernetes ノードが 256 GB RAM と 24 コアである場合は、512 GB RAM と 48 コアの要求でデータベース インスタンスを作成することができません。  
 
-作成されるポッドを Kubernetes が効率的にスケジュールできるようにしたり、必要に応じてエラスティック スケーリングやより長期間の拡張を可能にしたりするために、Kubernetes ノードにわたって使用可能な容量の少なくとも 25% を保持することをお勧めします。  
+作成されるポッドを Kubernetes が効率的にスケジュールできるようにしたり、必要に応じてエラスティック スケーリング、Kubernetes ノードのローリング アップグレード、より長期間の拡張を可能にしたりするために、Kubernetes ノードにわたって使用可能な容量の少なくとも 25% を保持することをお勧めします。
 
 サイズ計算では、Kubernetes システム ポッドのリソース要件や、同じ Kubernetes クラスター上で Azure Arc 対応データ サービスと容量を共有している可能性があるその他のすべてのワークロードを忘れずに追加してください。
 

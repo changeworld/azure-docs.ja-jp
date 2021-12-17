@@ -1,14 +1,14 @@
 ---
 title: Windows Admin Center からハイブリッド マシンを Azure に接続する
 description: この記事では、Windows Admin Center から Azure Arc 対応サーバーを使用して、エージェントをインストールし、マシンを Azure に接続する方法について説明します。
-ms.date: 10/12/2020
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5fa7a61b1e3b22503377cbcbe308a82be89dac72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc5e47c1f52f0a35048cc796015184d2a0d2dda7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584781"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788954"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>Windows Admin Center からハイブリッド マシンを Azure に接続する
 
@@ -16,7 +16,7 @@ ms.locfileid: "100584781"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Arc 対応サーバー - [前提条件](agent-overview.md#prerequisites)を確認し、ご利用のサブスクリプション、Azure アカウント、リソースが要件を満たしていることを確認します。
+* Azure Arc 対応サーバー - [前提条件](agent-overview.md#prerequisites)を確認し、ご利用のサブスクリプション、Azure アカウント、リソースが要件を満たしていることを確認します。
 
 * Windows Admin Center - [Azure の統合をデプロイおよび構成](/windows-server/manage/windows-admin-center/azure/azure-integration)するように[環境を準備する](/windows-server/manage/windows-admin-center/deploy/prepare-environment)ための要件を確認します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "100584781"
 
 ## <a name="deploy"></a>デプロイ
 
-Arc 対応サーバーを使用して Windows サーバーを構成するには、次の手順を実行します。
+Azure Arc 対応サーバーを使用して Windows サーバーを構成するには、次の手順を実行します。
 
 1. Windows Admin Center にサインインします。
 
@@ -49,9 +49,9 @@ Arc 対応サーバーを使用して Windows サーバーを構成するには�
     1. **[Azure サブスクリプション]** ドロップダウン リストで Azure サブスクリプションを選択します。
     1. **[Resource group]\(リソース グループ\)** で、 **[New]\(新規\)** を選択して新しいリソース グループを作成するか、 **[Resource group]\(リソース グループ\)** ドロップダウン リストで、マシンを登録して管理する既存のリソース グループを選択します。
     1. **[リージョン]** ドロップダウンの一覧で、サーバーのメタデータを格納する Azure リージョンを選択します。
-    1. マシンまたはサーバーがインターネットに接続するためにプロキシ サーバー経由で通信している場合は、オプション **[Use proxy server]\(プロキシ サーバーを使用する\)** を選択します。 プロキシ サーバーの IP アドレスか、マシンがプロキシ サーバーとの通信に使用する名前およびポート番号を指定します。
+    1. マシンまたはサーバーがインターネットに接続するためにプロキシ サーバー経由で通信している場合は、オプション **[Use proxy server]\(プロキシ サーバーを使用する\)** を選択します。 この構成を利用して、エージェントは HTTP プロトコルを使用してプロキシ サーバー経由で通信します。 プロキシ サーバーの IP アドレスか、マシンがプロキシ サーバーとの通信に使用する名前およびポート番号を指定します。
 
-1. **[Set up]\(設定\)** を選択して、Azure Arc 対応サーバーを使用した Windows サーバーの構成を続けます。
+1. **[Set up]\(設定\)** を選択して、Azure Arc 対応サーバーを使用した Windows サーバーの構成を進めます。
 
 Windows サーバーは Azure に接続し、Connected Machine エージェントをダウンロードしてインストールし、Azure Arc 対応サーバーに登録します。 進行状況を追跡するには、メニューの **[通知]** を選択します。
 
@@ -67,6 +67,6 @@ Connected Machine エージェントのインストールを確認するには�
 
 * トラブルシューティング情報は、[Connected Machine エージェントの問題解決ガイド](troubleshoot-agent-onboard.md)を参照してください。
 
-* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
+* [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。
 
-* [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)の詳細を確認します。 Windows および Linux 用の Log Analytics エージェントは、オペレーティング システムやワークロードの監視データを収集し、Automation Runbook や Update Management などの機能を使用してそれを管理するか、または [Azure Security Center](../../security-center/security-center-introduction.md) などの他の Azure サービスを使用する場合に必要になります。
+* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM 分析情報](../../azure-monitor/vm/vminsights-enable-policy.md)を使用した監視の有効化などの方法です。

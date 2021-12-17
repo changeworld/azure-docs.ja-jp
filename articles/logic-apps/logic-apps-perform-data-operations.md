@@ -3,15 +3,15 @@ title: データの操作の実行
 description: Azure Logic Apps でデータの出力と形式に対する変換、管理、操作を行います
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 09/20/2019
-ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.openlocfilehash: cc4952acd8d5949485b9bd1fe5fac91296839493
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84710373"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753653"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps でデータの操作を実行する
 
@@ -22,33 +22,6 @@ ms.locfileid: "84710373"
 * JavaScript Object Notation (JSON) オブジェクトのプロパティからわかりやすいトークンを作成し、ワークフローでこれらのプロパティを簡単に使用できるようにします。
 
 必要なアクションがここで見つからない場合は、Azure Logic Apps で提供されている多くの[データ操作関数](../logic-apps/workflow-definition-language-functions-reference.md)を参照してみてください。
-
-使用できるデータ操作をまとめた次の表は、操作が使用するソース データの種類を基に整理されていますが、各説明はアルファベット順になっています。
-
-**配列アクション** 
-
-これらのアクションは、配列内のデータを操作するのに役立ちます。
-
-| アクション | 説明 |
-|--------|-------------|
-| [**CSV テーブルの作成**](#create-csv-table-action) | 配列からコンマ区切り値 (CSV) テーブルを作成します。 |
-| [**HTML テーブルの作成**](#create-html-table-action) | 配列から HTML テーブルを作成します。 |
-| [**配列のフィルター処理**](#filter-array-action) | 指定したフィルターまたは条件に基づいて、配列から配列のサブセットを作成します。 |
-| [**結合**](#join-action) | 配列内のすべての項目から 1 つの文字列を作成し、指定した文字で各項目を区切ります。 |
-| [**選択**](#select-action) | 異なる配列のすべての項目に対して指定されているプロパティから配列を作成します。 |
-||| 
-
-**JSON アクション**
-
-これらのアクションは、JavaScript Object Notation (JSON) 形式のデータを操作するのに役立ちます。
-
-| アクション | 説明 |
-|--------|-------------|
-| [**作成**](#compose-action) | さまざまなデータ型を含むことができる複数の入力からメッセージまたは文字列を作成します。 その後は、同じ入力を繰り返し入力するのではなく、この文字列を 1 つの入力として使用できます。 たとえば、さまざまな入力から 1 つの JSON メッセージを作成できます。 |
-| [**Parse JSON**](#parse-json-action) | ロジック アプリでプロパティを簡単に使用できるように、JSON コンテンツのプロパティに対するわかりやすいデータ トークンを作成します。 |
-|||
-
-さらに複雑な JSON 変換を作成する場合は、「[Liquid テンプレートを使用して高度な JSON 変換を実行する](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,6 +34,35 @@ ms.locfileid: "84710373"
 * ロジック アプリの最初のステップになる[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts) 
 
   データ操作はアクションとしてのみ使用できるので、これらのアクションを使用するには、その前に、トリガーでロジック アプリを開始し、目的の出力を作成するために必要な他のアクションを含める必要があります。
+
+## <a name="data-operation-actions"></a>データ操作アクション
+
+使用できるデータ操作をまとめた次の表は、操作が使用するソース データの種類を基に整理されていますが、各説明はアルファベット順になっています。
+
+### <a name="array-actions"></a>配列アクション
+
+これらのアクションは、配列内のデータを操作するのに役立ちます。
+
+| アクション | 説明 |
+|--------|-------------|
+| [**CSV テーブルの作成**](#create-csv-table-action) | 配列からコンマ区切り値 (CSV) テーブルを作成します。 |
+| [**HTML テーブルの作成**](#create-html-table-action) | 配列から HTML テーブルを作成します。 |
+| [**配列のフィルター処理**](#filter-array-action) | 指定したフィルターまたは条件に基づいて、配列から配列のサブセットを作成します。 |
+| [**結合**](#join-action) | 配列内のすべての項目から 1 つの文字列を作成し、指定した文字で各項目を区切ります。 |
+| [**選択**](#select-action) | 異なる配列のすべての項目に対して指定されているプロパティから配列を作成します。 |
+||| 
+
+### <a name="json-actions"></a>JSON アクション
+
+これらのアクションは、JavaScript Object Notation (JSON) 形式のデータを操作するのに役立ちます。
+
+| アクション | 説明 |
+|--------|-------------|
+| [**作成**](#compose-action) | さまざまなデータ型を含むことができる複数の入力からメッセージまたは文字列を作成します。 その後は、同じ入力を繰り返し入力するのではなく、この文字列を 1 つの入力として使用できます。 たとえば、さまざまな入力から 1 つの JSON メッセージを作成できます。 |
+| [**Parse JSON**](#parse-json-action) | ロジック アプリでプロパティを簡単に使用できるように、JSON コンテンツのプロパティに対するわかりやすいデータ トークンを作成します。 |
+|||
+
+さらに複雑な JSON 変換を作成する場合は、「[Liquid テンプレートを使用して高度な JSON 変換を実行する](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md)」をご覧ください。
 
 <a name="compose-action"></a>
 
@@ -273,6 +275,9 @@ Oranges,2
 
    !["CSV テーブルの作成" アクションの "出力" フィールド](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
 
+   > [!NOTE]
+    > 正しくない形式でテーブルが返される場合は、[テーブル データの形式を確認する方法](#format-table-data)に関するページを参照してください。
+
 1. ロジック アプリを手動で実行します。 デザイナーのツール バーで、 **[実行]** を選択します。
 
    使用したメール コネクタをに基づいて、次のような結果が表示されます。
@@ -426,6 +431,9 @@ Oranges,2
 
    > [!NOTE]
    > HTML テーブルの出力をメール アクションに含めるときは、メール アクションの詳細オプションで **[HTML です]** プロパティを **[はい]** に設定してください。 これにより、メール アクションは HTML テーブルを正しく書式設定します。
+
+   > [!NOTE]
+   > 正しくない形式でテーブルが返される場合は、[テーブル データの形式を確認する方法](#format-table-data)に関するページを参照してください。
 
 1. ロジック アプリを手動で実行します。 デザイナーのツール バーで、 **[実行]** を選択します。
 
@@ -707,6 +715,51 @@ JavaScript Object Notation (JSON) のコンテンツのプロパティを参照�
 
    !["選択" アクションの結果を含むメール](./media/logic-apps-perform-data-operations/select-email-results.png)
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="format-table-data"></a>テーブル データの形式の設定
+
+[CSV テーブル](#create-csv-table-action)や [HTML](#create-html-table-action) テーブルが正しくない形式で返される場合は、入力データの行間に改行があることを確認してください。 
+
+正しくない形式:
+
+```text
+Fruit,Number Apples,1 Oranges,2
+```
+
+正しい形式:
+
+```text
+Fruit,Number
+Apples,1
+Oranges,2
+```
+
+行間に改行を追加するには、次のいずれかの式をテーブルに追加します。
+
+```text
+replace(body('Create_CSV_table'),'','<br/>')
+```
+
+```text
+replace(body('Create_HTML_table'),'','<br/>')
+```
+
+次に例を示します。 
+
+```json
+{
+    "Send_an_email_": {
+        "inputs": {
+            "body": {
+                "Body": "<p>Results from Create CSV table action:<br/>\n<br/>\n<br/>\n@{replace(body('Create_CSV_table'),'\r\n','<br/>')}</p>",
+                "Subject": "Create CSV table results",
+                "To": "sophia.owen@fabrikam.com"
+            }
+        }
+    }
+}
+```
 ## <a name="next-steps"></a>次のステップ
 
 * [Logic Apps のコネクタ](../connectors/apis-list.md)について確認します。

@@ -1,19 +1,19 @@
 ---
 title: チュートリアル - Azure IoT Hub のメッセージ エンリッチメントを使用する
 description: Azure IoT Hub のメッセージに対してメッセージ エンリッチメントを使用する方法を紹介するチュートリアル
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 12/20/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 0d6c90120d050b6896161f50332faf447c3ed67b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 21d377a0e6e4972dd14d492a09f3636b4a65a00b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788873"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551541"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>チュートリアル: Azure IoT Hub のメッセージ エンリッチメントを使用する
 
@@ -48,7 +48,7 @@ ms.locfileid: "107788873"
 
 ## <a name="retrieve-the-iot-c-samples-repository"></a>IoT C# サンプル リポジトリを取得する
 
-GitHub から [IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)をダウンロードして解凍します。 このリポジトリには、いくつかのアプリケーション、スクリプト、および Resource Manager テンプレートが含まれています。 このチュートリアルで使用するものは次のとおりです。
+GitHub から [IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)をダウンロードして解凍します。 このリポジトリには、いくつかのアプリケーション、スクリプト、および Resource Manager テンプレートが含まれています。 このチュートリアルで使用するものは次のとおりです。
 
 * 手動による方法では、リソースの作成に使用される CLI スクリプトがあります。 このスクリプトは /azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli にあります。 このスクリプトは、リソースを作成し、メッセージ ルーティングを構成します。 このスクリプトを実行した後、[Azure portal](https://portal.azure.com) を使用して、手動でメッセージ エンリッチメントを作成します。
 * 自動化された方法では、Azure Resource Manager テンプレートがあります。 テンプレートは /azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments.json にあります。 このテンプレートは、リソースを作成し、メッセージ ルーティングを構成した後、メッセージ エンリッチメントを構成します。
@@ -251,7 +251,7 @@ az iot hub route create \
 
 1. **[リソース グループ]** を選択して、お使いの IoT ハブに移動します。 このチュートリアル用に設定されたリソース グループ (**ContosoResourcesMsgEn**) を選択します。 一覧で IoT ハブを探して選択します。 IoT ハブの **[メッセージ ルーティング]** を選択します。
 
-   ![メッセージのルーティングを選択する](./media/tutorial-message-enrichments/select-iot-hub.png)
+   :::image type="content" source="./media/tutorial-message-enrichments/select-iot-hub.png" alt-text="ルーティングの選択方法を示すスクリーンショット。" border="true":::
 
    メッセージ ルーティング ペインには、**[ルート]**、**[カスタム エンドポイント]**、**[メッセージのエンリッチ]** の 3 つのタブがあります。 スクリプトによって設定された構成を確認するには、最初の 2 つのタブを参照します。 メッセージ エンリッチメントは、3 つ目のタブを使用して追加します。 **enriched** というストレージ コンテナーのエンドポイントに向かうメッセージをエンリッチしてみましょう。 名前と値を入力した後、ドロップダウン リストからエンドポイント **ContosoStorageEndpointEnriched** を選択します。 IoT ハブの名前をメッセージに追加するエンリッチメントを設定する例を次に示します。
 

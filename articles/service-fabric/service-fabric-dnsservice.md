@@ -4,17 +4,17 @@ description: Service Fabric の DNS サービスを使用して、クラスタ�
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f7f06920820cdc73f8d3101ab24ee46625931ee4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3227881e544893dece9f3cd5b288f5e8dc46cc59
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91268045"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088590"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric の DNS サービス
-オプションのシステム サービスである DNS サービスをクラスターで有効にし、DNS プロトコルを使用して他のサービスを検出できます。 
+オプションのシステム サービスである DNS サービスをクラスターで有効にし、DNS プロトコルを使用して他のサービスを検出できます。
 
-多くのサービス、特にコンテナー化されたサービスは、既存の URL を使ってアドレス指定することができます。 これらのサービスは、Service Fabric Naming Service プロトコルではなく標準の DNS プロトコルを使って解決できることが望まれます。 DNS サービスを使用すると、DNS 名をサービス名にマップして、エンドポイントの IP アドレスを解決できます。 異なるプラットフォームにまたがるコンテナー化されたサービスの可搬性は、こうした機能により確保されています。Naming Service を利用するようにコードを書き換える必要がなく、既存のサービスの URL を使用できることから、"リフトアンドシフト" のシナリオが実現しやすくなっているのです。 
+多くのサービス、特にコンテナー化されたサービスは、既存の URL を使ってアドレス指定することができます。 これらのサービスは、Service Fabric Naming Service プロトコルではなく標準の DNS プロトコルを使って解決できることが望まれます。 DNS サービスを使用すると、DNS 名をサービス名にマップして、エンドポイントの IP アドレスを解決できます。 異なるプラットフォームにまたがるコンテナー化されたサービスの可搬性は、こうした機能により確保されています。Naming Service を利用するようにコードを書き換える必要がなく、既存のサービスの URL を使用できることから、"リフトアンドシフト" のシナリオが実現しやすくなっているのです。
 
 DNS サービスによって DNS 名はサービス名にマップされ、ネーム サービスによって解決され、サービス エンドポイントに返されます。 サービスの DNS 名は、作成時に提供されます。 次の図は、ステートレス サービスでの DNS サービスの動作を示しています。
 
@@ -42,7 +42,7 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
 
 ポータルを使用してクラスターを作成していないか、または既存のクラスターを更新している場合は、テンプレートで DNS サービスを有効にする必要があります。
 
-- 新しいクラスターをデプロイするには、[サンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)を使用するか、または独自の Resource Manager テンプレートを作成できます。 
+- 新しいクラスターをデプロイするには、[サンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.servicefabric/service-fabric-secure-cluster-5-node-1-nodetype)を使用するか、または独自の Resource Manager テンプレートを作成できます。
 - 既存のクラスターを更新するには、ポータルでそのクラスターのリソース グループに移動し、 **[Automation スクリプト]** をクリックして、グループ内のクラスターやその他のリソースの現在の状態が反映されたテンプレートを操作できます。 詳細については、「[リソース グループからのテンプレートのエクスポート](../azure-resource-manager/templates/export-template-portal.md)」を参照してください。
 
 テンプレートが用意されたら、次の手順で DNS サービスを有効にできます。
@@ -77,7 +77,7 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
 
        ```json
            "properties": {
-             ...  
+             ...
              "fabricSettings": [
                ...
                {
@@ -101,7 +101,7 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
               ]
             }
        ```
-3. 必要な変更でクラスター テンプレートを更新したら、変更を適用してアップグレードを完了します。 アップグレードが完了すると、DNS システム サービスはクラスター内で実行を開始します。 サービス名は `fabric:/System/DnsService` であり、それは Service Fabric Explorer の **[システム]** サービス セクションで見つかります。 
+3. 必要な変更でクラスター テンプレートを更新したら、変更を適用してアップグレードを完了します。 アップグレードが完了すると、DNS システム サービスはクラスター内で実行を開始します。 サービス名は `fabric:/System/DnsService` であり、それは Service Fabric Explorer の **[システム]** サービス セクションで見つかります。
 
 > [!NOTE]
 > DNS を無効から有効にアップグレードしたときに、Service Fabric Explorer に新しい状態が反映されない場合があります。 解決するには、Azure Resource Manager テンプレート内で UpgradePolicy を変更して、ノードを再起動します。 詳細については、[Service Fabric テンプレート リファレンス](/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)に関するページを参照してください。
@@ -112,7 +112,7 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
 ## <a name="setting-the-dns-name-for-your-service"></a>サービスの DNS 名を設定する
 ApplicationManifest.xml ファイルで既定のサービスに対して宣言的に、または PowerShell コマンドを使用してサービスの DNS 名を設定できます。
 
-サービスの DNS 名は、クラスターの全体にわたって解決可能です。したがってクラスター全体で DNS 名の一意性を確保することが重要となります。 
+サービスの DNS 名は、クラスターの全体にわたって解決可能です。したがってクラスター全体で DNS 名の一意性を確保することが重要となります。
 
 `<ServiceDnsName>.<AppInstanceName>` (`service1.application1` など) の名前付けスキームを使用することを強くお勧めします。 アプリケーションが Docker Compose を使用してデプロイされる場合、サービスには、この名前付けスキームを使用した DNS 名が自動的に割り当てられます。
 
@@ -126,7 +126,7 @@ Visual Studio またはお好みのエディターでプロジェクトを開い
       </StatelessService>
     </Service>
 ```
-アプリケーションをデプロイすると、Service Fabric Explorer のサービス インスタンスに、このインスタンスの DNS 名が次の図のように表示されます。 
+アプリケーションをデプロイすると、Service Fabric Explorer のサービス インスタンスに、このインスタンスの DNS 名が次の図のように表示されます。
 
 ![サービス エンドポイント](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
@@ -175,11 +175,11 @@ DNS クエリで使用されるパーティションについては、名前付�
 
 - <*First-Label-Of-Partitioned-Service-DNSName*> は、サービスの DNS 名の最初の部分です。
 - <*PartitionPrefix*> は、クラスター マニフェストの DnsService セクションで設定できる値、またはクラスターの Resource Manager テンプレートで設定できる値です。 既定値は "--" です。 詳細については、[DNS サービスの設定](./service-fabric-cluster-fabric-settings.md#dnsservice)に関するページを参照してください。
-- <*Target-Partition-Name*> は、パーティションの名前です。 
+- <*Target-Partition-Name*> は、パーティションの名前です。
 - <*PartitionSuffix*> は、クラスター マニフェストの DnsService セクションで設定できる値、またはクラスターの Resource Manager テンプレートで設定できる値です。 既定値は空の文字列です。 詳細については、[DNS サービスの設定](./service-fabric-cluster-fabric-settings.md#dnsservice)に関するページを参照してください。
 - <*Remaining-Partitioned-Service-DNSName*> は、サービスの DNS 名の残りの部分です。
 
-次の例は、`PartitionPrefix` と `PartitionSuffix` が既定値に設定されたクラスター上で実行されているパーティション分割型サービスの DNS クエリを示しています。 
+次の例は、`PartitionPrefix` と `PartitionSuffix` が既定値に設定されたクラスター上で実行されているパーティション分割型サービスの DNS クエリを示しています。
 
 - 範囲パーティション分割構成を使用した、DNS 名が `backendrangedschemesvc.application` であるサービスのパーティション "0" を解決するには、`backendrangedschemesvc-0.application` を使用します。
 - 名前付きパーティション構成を使用した、DNS 名が `backendnamedschemesvc.application` であるサービスのパーティション "first" を解決するには、`backendnamedschemesvc-first.application` を使用します。
@@ -187,7 +187,7 @@ DNS クエリで使用されるパーティションについては、名前付�
 DNS サービスからは、パーティションのプライマリ レプリカの IP アドレスが返されます。 パーティションを指定しなかった場合は、ランダムに選択されたパーティションのプライマリ レプリカの IP アドレスが返されます。
 
 ## <a name="using-dns-in-your-services"></a>サービスで DNS を使用する
-複数のサービスをデプロイした場合は、DNS 名を使用して、通信する他のサービスのエンドポイントを検索できます。 DNS サービスは、ステートレス サービスで機能するほか、Service Fabric バージョン 6.3 以降では、ステートフル サービスでも機能します。 Service Fabric のバージョン 6.3 未満で実行されているステートフル サービスの場合、特定のサービス パーティションを呼び出すための HTTP 呼び出しには、ビルトインの[リバース プロキシ サービス](./service-fabric-reverseproxy.md)を使用してください。 
+複数のサービスをデプロイした場合は、DNS 名を使用して、通信する他のサービスのエンドポイントを検索できます。 DNS サービスは、ステートレス サービスで機能するほか、Service Fabric バージョン 6.3 以降では、ステートフル サービスでも機能します。 Service Fabric のバージョン 6.3 未満で実行されているステートフル サービスの場合、特定のサービス パーティションを呼び出すための HTTP 呼び出しには、ビルトインの[リバース プロキシ サービス](./service-fabric-reverseproxy.md)を使用してください。
 
 動的ポートは、DNS サービスではサポートされていません。 動的ポートを使用するサービスを解決するには、リバース プロキシ サービスを使用してください。
 
@@ -207,7 +207,7 @@ public class ValuesController : Controller
             HttpClient client = new HttpClient();
             var response = await client.GetAsync(uri);
             result = await response.Content.ReadAsStringAsync();
-            
+
         }
         catch (Exception e)
         {
@@ -235,7 +235,7 @@ public class ValuesController : Controller
             HttpClient client = new HttpClient();
             var response = await client.GetAsync(uri);
             result = await response.Content.ReadAsStringAsync();
-            
+
         }
         catch (Exception e)
         {
@@ -248,7 +248,7 @@ public class ValuesController : Controller
 ```
 
 ## <a name="known-issues"></a>既知の問題
-* Service Fabric バージョン 6.3 以降では、DNS 名にハイフンを含むサービス名に対する DNS 参照に関して問題があります。 この問題について詳しくは、こちらの [GitHub の問題](https://github.com/Azure/service-fabric-issues/issues/1197)をご覧ください。 この問題は次の 6.3 更新プログラムで修正される予定です。 
+* Service Fabric バージョン 6.3 以降では、DNS 名にハイフンを含むサービス名に対する DNS 参照に関して問題があります。 この問題について詳しくは、こちらの [GitHub の問題](https://github.com/Azure/service-fabric-issues/issues/1197)をご覧ください。 この問題は次の 6.3 更新プログラムで修正される予定です。
 
 * Service Fabric サービス用の DNS サービスは UNIX ではまだサポートされていません。 DNS サービスは Linux 上のコンテナーに対してサポートされています。 Fabric クライアント/ServicePartitionResolver を使用した手動による解決方法を代わりに使用できます。
 

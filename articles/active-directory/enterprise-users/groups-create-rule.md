@@ -4,27 +4,27 @@ description: Azure portal でグループ メンバーシップ ルールを作�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 09/02/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8525e9a76fa2439692cdb26b36c0bb761d63177c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 538f1ee86927c5d2c7e3db4fd3b0dc5c44726c2d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550231"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129986570"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory で動的グループを作成または更新する
 
 Azure Active Directory (Azure AD) では、ユーザーまたはデバイスのプロパティに基づいてグループ メンバーシップを決定するルールを使用できます。 この記事では、Azure portal で動的グループのルールを設定する方法について説明します。
-セキュリティ グループまたは Microsoft 365 グループに対して、動的メンバーシップがサポートされています。 グループ メンバーシップのルールが適用されるときに、ユーザーとデバイスの属性がメンバーシップのルールと一致するかどうかが評価されます。 ユーザーまたはデバイスの属性が変更されると、組織内のすべての動的グループ ルールが、メンバーシップの変更のために処理されます。 ユーザーとデバイスは、グループの条件を満たす場合に、追加または削除されます。 セキュリティ グループはデバイスとユーザーのどちらにも使用できますが、Microsoft 365 グループはユーザー グループのみが可能です。 動的グループを使用するには、Azure AD プレミアム P1 ライセンスが必要です。 詳細については、[グループの動的メンバーシップ ルール](./groups-dynamic-membership.md)に関するページを参照してください。 
+セキュリティ グループまたは Microsoft 365 グループに対して、動的メンバーシップがサポートされています。 グループ メンバーシップのルールが適用されるときに、ユーザーとデバイスの属性がメンバーシップのルールと一致するかどうかが評価されます。 ユーザーまたはデバイスの属性が変更されると、組織内のすべての動的グループ ルールが、メンバーシップの変更のために処理されます。 ユーザーとデバイスは、グループの条件を満たす場合に、追加または削除されます。 セキュリティ グループはデバイスとユーザーのどちらにも使用できますが、Microsoft 365 グループはユーザー グループのみが可能です。 動的グループを使用するには、Azure AD Premium P1 ライセンスまたは Intune for Education ライセンスが必要です。 詳細については、[グループの動的メンバーシップ ルール](./groups-dynamic-membership.md)に関するページを参照してください。 
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure portal のルール ビルダー
 

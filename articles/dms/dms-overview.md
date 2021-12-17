@@ -9,17 +9,19 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.topic: overview
-ms.date: 02/20/2020
-ms.openlocfilehash: 328c29afee3752ecb11b83f22d67f20aa3a2c93e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/01/2021
+ms.openlocfilehash: 68d462a93d891c25602bb305417ddeb64f5f02a1
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94963013"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123317284"
 ---
 # <a name="what-is-azure-database-migration-service"></a>Azure Database Migration Service とは何ですか。
 
 Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、フル マネージド サービスです (オンライン移行)。
+
+[!INCLUDE [database-migration-services-sql-mi-sql-vm](../../includes/database-migration-services-sql-mi-sql-vm.md)]
 
 ## <a name="migrate-databases-to-azure-with-familiar-tools"></a>使い慣れたツールによる Azure へのデータベースの移行
 
@@ -42,5 +44,5 @@ Azure Database Migration Service の料金に関する最新情報について�
 * [Azure portal を使用して Azure Database Migration Service のインスタンスを作成する](quickstart-create-data-migration-service-portal.md)。
 * [SQL Server を Azure SQL Database に移行する](tutorial-sql-server-to-azure-sql.md)
 * [Azure Database Migration Service を使用するための前提条件の概要](pre-reqs.md)。
-* [Azure Database Migration Service の使用に関する FAQ](faq.md)。
+* [Azure Database Migration Service の使用に関する FAQ](faq.yml)。
 * [データ移行のシナリオで利用できるサービスとツール](dms-tools-matrix.md)。

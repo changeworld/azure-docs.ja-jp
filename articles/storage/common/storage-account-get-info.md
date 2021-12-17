@@ -1,76 +1,104 @@
 ---
-title: .NET を使用してストレージ アカウントの種類と SKU 名を取得する
+title: ストレージ アカウントの構成情報を取得する
 titleSuffix: Azure Storage
-description: .NET クライアント ライブラリを使用して Azure Storage アカウントの種類と SKU 名を取得する方法について説明します。
+description: Azure portal、PowerShell、または Azure CLI を使用して、ストレージ アカウントの構成プロパティを取得します。これには、Azure Resource Manager リソース ID、アカウントの場所、アカウントの種類、レプリケーション SKU などが含まれます。
 services: storage
-author: twooley
-ms.author: twooley
-ms.date: 11/12/2020
+author: tamram
+ms.author: tamram
+ms.date: 06/23/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 26ce4a77e02e62a1a204529ce8652fbba3aab2c9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: f3f94dda19f11b1a0aad9a84e7ae624e41c5015c
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277149"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112573654"
 ---
-# <a name="get-storage-account-type-and-sku-name-with-net"></a>.NET を使用してストレージ アカウントの種類と SKU 名を取得する
+# <a name="get-storage-account-configuration-information"></a>ストレージ アカウントの構成情報を取得する
 
-この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)を使用して、BLOB の Azure Storage アカウントの種類と SKU 名を取得する方法について説明します。
+この記事では、Azure portal、PowerShell、または Azure CLI を使用して、Azure ストレージ アカウントの構成情報とプロパティを取得する方法について説明します。
 
-## <a name="about-account-type-and-sku-name"></a>アカウントの種類と SKU 名の概要
+## <a name="get-the-resource-id-for-a-storage-account"></a>ストレージ アカウントのリソース ID を取得する
 
-**アカウントの種類**:有効なアカウントの種類には、`BlobStorage`、`BlockBlobStorage`、`FileStorage`、`Storage`、および `StorageV2` があります。 「[Azure ストレージ アカウントの概要](storage-account-overview.md)」には、さまざまなストレージ アカウントの説明などの詳細情報が記載されています。
+すべての Azure Resource Manager リソースには、それを一意に識別するためのリソース ID が関連付けられています。 一部の操作では、このリソース ID を指定する必要があります。 ストレージ アカウントのリソース ID は、Azure portal、PowerShell、または Azure CLI を使用して取得することができます。
 
-**SKU 名**:有効な SKU 名 には、`Premium_LRS`、`Premium_ZRS`、`Standard_GRS`、`Standard_GZRS`、`Standard_LRS`、`Standard_RAGRS`、`Standard_RAGZRS`、および `Standard_ZRS` があります。 SKU 名は、[SkuName クラス](/dotnet/api/microsoft.azure.management.storage.models.skuname)の大文字と小文字が区別される文字列フィールドです。
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
-## <a name="retrieve-account-information"></a>アカウント情報を取得する
+Azure portal でストレージ アカウントの Azure Resource Manager リソース ID を表示するには、次の手順を行います。
 
-次のコード例では、読み取り専用のアカウントプロパティを取得して表示します。
+1. Azure Portal のストレージ アカウントに移動します。
+1. **[概要]** ページの **[要点]** セクションで、 **[JSON ビュー]** リンクを選択します。
+1. ストレージ アカウントのリソース ID は、ページの上部に表示されます。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+    :::image type="content" source="media/storage-account-get-info/resource-id-portal.png" alt-text="ストレージ アカウントのリソース ID をポータルからコピーする方法を示すスクリーンショット":::
 
-BLOB に関連付けられているストレージ アカウントの種類と SKU 名を取得するには、[GetAccountInfo](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfo) メソッド、または [GetAccountInfoAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfoasync) メソッドを呼び出します。
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Account.cs" id="Snippet_GetAccountInfo":::
+PowerShell を使用してストレージ アカウントの Azure Resource Manager リソース ID を取得するには、[Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) モジュールがインストールされていることを確認します。 次に、[Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) コマンドを呼び出し、ストレージ アカウントが返されたら、そのリソース ID を取得します。
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+```azurepowershell
+(Get-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account>).Id
+```
 
-BLOB に関連付けられているストレージ アカウントの種類と SKU 名を取得するには、[GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties) または [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync) メソッドを呼び出します。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```csharp
-private static async Task GetAccountInfoAsync(CloudBlob blob)
-{
-    try
-    {
-        // Get the blob's storage account properties.
-        AccountProperties acctProps = await blob.GetAccountPropertiesAsync();
+Azure CLI を使用してストレージ アカウントの Azure Resource Manager リソース ID を取得するには、[az storage account show](/cli/azure/storage/account#az_storage_account_show) コマンドを呼び出して、リソース ID をクエリします。
 
-        // Display the properties.
-        Console.WriteLine("Account properties");
-        Console.WriteLine("  AccountKind: {0}", acctProps.AccountKind);
-        Console.WriteLine("      SkuName: {0}", acctProps.SkuName);
-    }
-    catch (StorageException e)
-    {
-        Console.WriteLine("HTTP error code {0}: {1}",
-                            e.RequestInformation.HttpStatusCode,
-                            e.RequestInformation.ErrorCode);
-        Console.WriteLine(e.Message);
-        Console.ReadLine();
-    }
-}
+```azurecli
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query id \
+    --output tsv
 ```
 
 ---
 
-[!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
+また、REST API で[ストレージ アカウント - プロパティの取得](/rest/api/storagerp/storage-accounts/get-properties)操作を呼び出して、ストレージ アカウントのリソース ID を取得することもできます。
+
+Azure Resource Manager によって管理されるリソースの種類の詳細については、[リソース プロバイダーとリソースの種類](../../azure-resource-manager/management/resource-providers-and-types.md)に関するページを参照してください。
+
+## <a name="get-the-account-type-location-or-replication-sku-for-a-storage-account"></a>ストレージ アカウントのアカウントの種類、場所、またはレプリケーション SKU を取得する
+
+アカウントの種類、場所、およびレプリケーション SKU は、ストレージ アカウントで使用可能なプロパティの一部です。 これらの値は、Azure portal、PowerShell、または Azure CLI を使用して表示できます。
+
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+Azure portal で、ストレージ アカウントのアカウントの種類、場所、またはレプリケーション SKU を表示するには、次の手順を行います。
+
+1. Azure Portal のストレージ アカウントに移動します。
+1. **[概要]** ページの **[要点]** セクションで、目的のプロパティを見つけます。
+
+    :::image type="content" source="media/storage-account-get-info/account-configuration-portal.png" alt-text="ポータルでのアカウント構成を示すスクリーンショット":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell を使用してストレージ アカウントのアカウントの種類、場所、またはレプリケーション SKU を表示するには、[Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) コマンドを呼び出してストレージ アカウントを取得してから、プロパティを確認します。
+
+```azurepowershell
+$account = Get-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account>
+$account.Location
+$account.Sku
+$account.Kind
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+PowerShell を使用してストレージ アカウントのアカウントの種類、場所、またはレプリケーション SKU を表示するには、[az storage account show](/cli/azure/storage/account#az_storage_account_show) コマンドを呼び出してプロパティをクエリします。
+
+```azurecli
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query '[location,sku,kind]' \
+    --output tsv
+```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure portal](https://portal.azure.com) と Azure REST API を使用してストレージ アカウントに対して実行できるその他の操作について学習します。
-
-- [アカウント情報の取得操作 (REST)](/rest/api/storageservices/get-account-information)
+- [ストレージ アカウントの概要](storage-account-overview.md)
+- [ストレージ アカウントの作成](storage-account-create.md)

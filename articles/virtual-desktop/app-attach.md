@@ -1,17 +1,17 @@
 ---
-title: Windows Virtual Desktop の MSIX アプリのアタッチ PowerShell スクリプトを構成する - Azure
-description: Windows Virtual Desktop の MSIX アプリのアタッチ用の PowerShell スクリプトを作成する方法。
+title: Azure Virtual Desktop の MSIX アプリのアタッチ PowerShell スクリプトを構成する - Azure
+description: Azure Virtual Desktop の MSIX アプリのアタッチ用の PowerShell スクリプトを作成する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d1ca4a843c6731cde7ed70d65fc230a21ef6e7c4
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 6b54afdb77bd1fc3a958b959dad4fcb030e1fe2f
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389436"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228780"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach"></a>MSIX アプリのアタッチ用の PowerShell スクリプトを作成する
 
@@ -24,7 +24,7 @@ MSIX アプリのアタッチ パッケージからのアプリをホストす�
 アプリが、公的に信頼されていない証明書、または自己署名された証明書を使用している場合は、次のようにインストールします。
 
 1. パッケージを右クリックし、 **[プロパティ]** を選択します。
-2. 表示されるウィンドウで、 **[デジタル署名]** タブを選択します。次の図に示すように、タブの一覧には項目が 1 つだけ表示されます。 その項目を選択して強調表示した後、 **[削除]** を選択します。
+2. 表示されるウィンドウで、 **[デジタル署名]** タブを選択します。タブの一覧には項目が 1 つだけ表示されます。その項目を選択して強調表示した後、 **[詳細]** を選択します。
 3. デジタル署名の詳細ウィンドウが表示されたら、 **[全般]** タブを選択し、 **[証明書の表示]** を選択して、 **[証明書のインストール]** を選択します。
 4. インストーラーが開いたら、保存場所として **[ローカル コンピューター]** を選択し、 **[次へ]** を選択します。
 5. アプリがデバイスに変更を加えることを許可するかどうかを確認するメッセージが表示されたら、 **[はい]** を選択します。
@@ -135,7 +135,7 @@ PowerShell スクリプトを更新する前に、VHD にボリュームのボ�
     $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where { $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult] AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
     $asTaskAsyncOperation = $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult], [Windows.Management.Deployment.DeploymentProgress])
     $packageManager = [Windows.Management.Deployment.PackageManager]::new()
-    $path = $msixJunction + $parentFolder + $packageName # needed if we do the pbisigned.vhd
+    $path = $msixJunction + $parentFolder + $packageName 
     $path = ([System.Uri]$path).AbsoluteUri
     $asyncOperation = $packageManager.StagePackageAsync($path, $null, "StageInPlace")
     $task = $asTaskAsyncOperation.Invoke($null, @($asyncOperation))
@@ -200,6 +200,9 @@ Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 #endregion
 ```
 
+>[!NOTE]
+>ステージング解除スクリプトの実行後に **$volumeGuid** ポイントが残っても、デバイスをシャットダウンできます。
+
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>MSIX アプリのアタッチ エージェントのシミュレーション スクリプトを設定する
 
 作成したスクリプトは、手動で実行するか、起動、ログオン、ログオフ、およびシャットダウン スクリプトとして自動的に実行するように設定することができます。 これらの種類のスクリプトの詳細については、[グループ ポリシーでの起動、シャットダウン、ログオン、およびログオフのスクリプトの使用](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)に関するページを参照してください。
@@ -210,6 +213,9 @@ Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 - ログオン スクリプトによって、登録スクリプトが実行されます。
 - ログオフ スクリプトによって、登録解除スクリプトが実行されます。
 - シャットダウン スクリプトによって、ステージング解除スクリプトが実行されます。
+
+>[!NOTE]
+>タスク スケジューラは、ステージ スクリプトを使用して実行できます。 スクリプトを実行するには、タスク トリガーを **[コンピューターの起動時]** に設定し、 **[最上位の特権で実行する]** を有効にします。
 
 ## <a name="use-packages-offline"></a>パッケージをオフラインで使用する
 
@@ -261,6 +267,6 @@ catch [Exception]
 
 ## <a name="next-steps"></a>次のステップ
 
-この機能は現在サポートされていませんが、[Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) でコミュニティに質問することができます。
+この機能は現在サポートされていませんが、[Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) でコミュニティに質問することができます。
 
-また、Windows Virtual Desktop についてのフィードバックは、[Windows Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。
+また、Azure Virtual Desktop についてのフィードバックは、[Azure Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。

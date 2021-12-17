@@ -3,20 +3,20 @@ title: SQL データ同期の設定
 description: このチュートリアルでは、Azure の SQL データ同期を設定する方法を示します
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 01/14/2019
-ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: a2e5727f0c3057b27200bf7f080bb9f5b9c09a1a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968613"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707838"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>チュートリアル:Azure SQL Database と SQL Server のデータベース間の SQL データ同期を設定する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,9 +49,9 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
     :::image type="content" source="./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png" alt-text = "Sync to other databases, Microsoft Azure portal":::
 
-1. **[別のデータベースに同期]** ページで、 **[新しい同期グループ]** を選択します。 **[新しい同期グループ]** ページが開かれ、 **[同期グループの作成] (手順 1)** が表示されます。
+1. **[別のデータベースに同期]** ページで、 **[新しい同期グループ]** を選択します。 **[新しい同期グループ]** ページが開かれ、 **[同期グループの作成]** が表示されます。
 
-   :::image type="content" source="./media/sql-data-sync-sql-server-configure/new-sync-group-private-link.png" alt-text = "Set up new sync group with private link":::
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/create-sync-group.png" alt-text = "Set up new sync group with private link":::
 
    **[データ同期グループの作成]** ページで、次の設定を変更します。
 
@@ -70,19 +70,23 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
    
 1. **[新しい同期グループ]** ページで、 **[Use private link]\(Private Link を使用する\)** を選択した場合は、プライベート エンドポイント接続を承認する必要があります。 情報メッセージ内のリンクを使用すると、プライベート エンドポイント接続のエクスペリエンスに移動し、そこで接続を承認できます。 
 
-   :::image type="content" source="./media/sql-data-sync-sql-server-configure/approve-private-link.png" alt-text = "Approve private link":::
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/approve-private-link-update.png" alt-text = "Approve private link":::
+   
+   > [!NOTE]
+   > 同期グループと同期メンバーのプライベート リンクは、個別に作成、承認、および無効化する必要があります。 
 
 ## <a name="add-sync-members"></a>同期メンバーを追加する
 
-新しい同期グループが作成されてデプロイされると、 **[新しい同期グループ]** ページで **[同期メンバーの追加] (手順 2)** が強調表示されます。
+新しい同期グループが作成およびデプロイされたら、同期グループを開き、 **[データベース]** ページにアクセスします。ここで、同期メンバーを選択します。
 
-**[ハブ データベース]** セクションで、ハブ データベースが配置されているサーバーの既存の資格情報を入力します。 このセクションでは、"*新しい*" 資格情報を入力しないでください。
-
-   :::image type="content" source="./media/sql-data-sync-sql-server-configure/steptwo.png" alt-text = "Enter existing credentials for the hub database server":::
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/add-sync-members.png" alt-text = "Select sync members":::
+   
+   > [!NOTE]
+   > ユーザー名とパスワードを更新するか、ハブ データベースに挿入するには、 **[同期メンバーの選択]** ページの **[ハブ データベース]** セクションに移動します。 
 
 ### <a name="to-add-a-database-in-azure-sql-database"></a>Azure SQL Database にデータベースを追加するには
 
-**[メンバー データベース]** セクションで、必要に応じて **[Add an Azure SQL Database]\(Azure SQL Database を追加\)** を選択して、Azure SQL Database 内のデータベースを同期グループに追加します。 **[Configure Azure SQL Database]\(Azure SQL Database の構成\)** ページが開きます。
+**[同期メンバーの選択]** セクションで、必要に応じて **[Azure データベースを追加]** を選択して、Azure SQL Database 内のデータベースを同期グループに追加します。 **[Azure データベースの構成]** ページが開きます。
   
    :::image type="content" source="./media/sql-data-sync-sql-server-configure/step-two-configure.png" alt-text = "Add a database to the sync group":::
    
@@ -163,11 +167,11 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
 ## <a name="configure-sync-group"></a>同期グループを構成する
 
-新しい同期グループ メンバーが作成されてデプロイされると、 **[新しい同期グループ]** ページで **[同期グループの構成] (手順 3)** が強調表示されます。
+新しい同期グループ メンバーが作成およびデプロイされたら、 **[データベース同期グループ]** ページの **[テーブル]** セクションに移動します。
 
-![手順 3 の設定](./media/sql-data-sync-sql-server-configure/stepthree.png)
+![手順 3 の設定](./media/sql-data-sync-sql-server-configure/configure-sync-group.png)
 
-1. **[テーブル]** ページで、同期グループ メンバーの一覧からデータベースを選択し、 **[スキーマの更新]** を選択します。
+1. **[テーブル]** ページで、同期グループ メンバーの一覧からデータベースを選択し、 **[スキーマの更新]** を選択します。 スキーマの更新には数分の遅延が生じることがあります。また、プライベート リンクを使用している場合は遅延時間が長くなる可能性があります。
 
 1. 一覧から、同期するテーブルを選択します。既定では、すべての列が選択されているため、同期しない列のチェック ボックスをオフにします。主キー列は、選択されたままにしておいてください。
 
@@ -233,9 +237,14 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
 クライアント エージェントについてよく寄せられる質問については、[エージェントに関する FAQ](sql-data-sync-agent-overview.md#agent-faq) のセクションを参照してください。
 
-**プライベート リンクは、使用を開始する前に手動で承認する必要がありますか?**
+**リンクは、使用を開始する前に手動で承認する必要がありますか?**
 
 はい。同期グループのデプロイ中に Azure portal の [プライベート エンドポイント接続] ページで、または PowerShell を使用して、サービス マネージド プライベート エンドポイントを手動で承認する必要があります。
+
+**同期ジョブによって Azure データベースがプロビジョニングされているときにファイアウォール エラーが発生するのはなぜですか?**
+
+これは、Azure リソースにサーバーへのアクセスが許可されていないことが原因で発生する可能性があります。 Azure データベースのファイアウォールで [Azure サービスおよびリソースにこのサーバーへのアクセスを許可する] 設定が [はい] に設定されていることを確認します。
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,25 +1,25 @@
 ---
 title: Azure サブスクリプションのサインインに関する問題のトラブルシューティング
-description: Azure portal または Azure アカウント センターにサインインできない問題の解決について説明します。
+description: Azure portal にサインインできないという問題を解決するのに役立ちます。
 services: cost-management-billing
-author: v-miegge
-manager: dcscontentpm
+author: bandersmsft
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
-ms.author: v-miegge
-ms.openlocfilehash: 915b4fb289b6af6f4aac84d8bfa4d491a7f77efe
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 07/16/2021
+ms.author: banders
+ms.openlocfilehash: 7fad89f2ef4898e3fb790860abbb56593e9d06f1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050472"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423130"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Azure サブスクリプションのサインインに関する問題のトラブルシューティング
 
-このガイドでは、Azure portal または Azure アカウント センターにサインインできない問題の解決について説明します。
+このガイドは、Azure portal にサインインできないという問題を解決するのに役立ちます。
 
 > [!NOTE]
 > 新しい Azure アカウントへのサインアップで問題が発生した場合は、[Azure サブスクリプションのサインインの問題のトラブルシューティング](./troubleshoot-azure-sign-up.md)に関するページを参照してください。
@@ -61,20 +61,12 @@ ms.locfileid: "99050472"
 
 この問題は、誤ったディレクトリで選択した場合、または、自分のアカウントに十分なアクセス許可がない場合に発生します。
 
-**シナリオ 1:** [Azure portal](https://portal.azure.com/) へのサインインでエラーが発生した
+**シナリオ:** [Azure portal](https://portal.azure.com/) へのサインインでエラーが発生した
 
 この問題を解決するには、次の手順に従います。
 
 - 右上隅にある自分のアカウントをクリックして、適切な Azure ディレクトリが選択されていることを確認します。
 - 正しい Azure ディレクトリが選択されていてもエラー メッセージが表示される場合は、ご自分のアカウントを[所有者として追加](./add-change-subscription-administrator.md)します。
-
-**シナリオ 2:** [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)へのサインインでエラーが発生した
-
-使用しているアカウントがアカウント管理者であるかどうかを確認します。 どのアカウントがアカウント管理者であるかを確認するには、以下の手順に従ってください。
-
-1.  Azure Portal の[サブスクリプション ビュー](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にサインインします。
-1.  確認するサブスクリプションを選択し、 **[設定]** を選択します。
-1.  **[プロパティ]** を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。
 
 ## <a name="additional-help-resources"></a>その他のヘルプ リソース
 
@@ -88,4 +80,4 @@ Azure の請求とサブスクリプションに関するその他のトラブ�
 
 ## <a name="contact-us-for-help"></a>お問い合わせ
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+質問があるか、またはサポートを必要としているが、Azure portal にサインインできない場合は、[サポート リクエストを作成](https://support.microsoft.com/oas/?prid=15470)してください。

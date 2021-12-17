@@ -22,6 +22,12 @@
           href: quickstarts/get-started-unity-hololens.md
         - name: HoloLens と MRTK
           href: quickstarts/get-started-unity-hololens-mrtk.md
+        - name: 詳細な MRTK チュートリアル
+          href: quickstarts/in-depth-mrtk-walkthrough.md
+        - name: Unity 2020 にアップグレードする
+          href: quickstarts/upgrade-unity-quickstart-to-2020.md
+        - name: 新しい Unity HoloLens アプリの開始
+          href: quickstarts/new-unity-hololens-app.md
     - name: HoloLens DirectX アプリを作成する
       href: quickstarts/get-started-hololens-directx.md
 - name: サンプル
@@ -30,17 +36,29 @@
       href: 'https://github.com/Azure/azure-object-anchors'
 - name: References
   items:
+    - name: .NET 用変換 SDK
+      href: /dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre
     - name: Unity 用ランタイム SDK
-      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.ObjectAnchors/'
+      href: /dotnet/api/Microsoft.Azure.ObjectAnchors/
     - name: HoloLens C++/WinRT 用ランタイム SDK
-      href: 'https://docs.microsoft.com/cpp/api/object-anchors/winrt/'
+      href: /cpp/api/object-anchors/winrt/
 - name: リソース
   items:
-    - name: リリース ノート
-      href: 'https://github.com/Azure/azure-object-anchors/releases'
     - name: Azure Mixed Reality Resource Management REST API
-      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+      href: /rest/api/mixedreality/
     - name: よく寄せられる質問
       href: faq.md
+    - name: モデル変換のエラー コード
+      href: model-conversion-error-codes.md
+    - name: リリース ノート
+      href: 'https://github.com/Azure/azure-object-anchors/releases'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-object-anchors'
+    - name: 変換されたモデルを視覚化する
+      href: visualize-converted-model.md
+- name: トラブルシューティング
+  items:
+    - name: 難しいオブジェクトを検出する
+      href: detect-difficult-object.md
+    - name: オブジェクト検出のトラブルシューティング
+      href: troubleshoot/object-detection.md

@@ -1,18 +1,18 @@
 ---
 title: CMMC レベル 3 ブループリント サンプル
 description: CMMC レベル 3 ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定のコントロールを評価するのに役立ちます。
-ms.date: 03/24/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 950c6064ce8b3d9973ac08e5895a4b6f48e37d6a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2925acf75ada0bd950ca52e3fe63b9c97b5e34ad
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572145"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632331"
 ---
 # <a name="cmmc-level-3-blueprint-sample"></a>CMMC レベル 3 ブループリント サンプル
 
-CMMC レベル 3 のブループリント サンプルでは、特定の[Cybersecurity Maturity Model Certification (CMMC) フレームワーク](https://www.acq.osd.mil/cmmc/index.html) コントロールの評価に役立つ、[Azure Policy](../../policy/overview.md) を使用したガバナンス ガードレールが提供されます。 このブループリントは、CMMC レベル 3 コントロールの実施が必要とされる、Azure でデプロイされたアーキテクチャのために、一連の主要なポリシーをデプロイするのに役立ちます。
+CMMC レベル 3 のブループリント サンプルでは、特定の [Cybersecurity Maturity Model Certification (CMMC) フレームワーク](https://www.acq.osd.mil/cmmc/index.html) コントロールの評価に役立つ、[Azure Policy](../../policy/overview.md) を使用したガバナンス ガードレールが提供されます。 このブループリントは、CMMC レベル 3 コントロールの実施が必要とされる、Azure でデプロイされたアーキテクチャのために、一連の主要なポリシーをデプロイするのに役立ちます。
 
 ## <a name="control-mapping"></a>コントロール マッピング
 
@@ -101,7 +101,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 |アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
-|CMMC レベル 3|ポリシーの割り当て|ゲスト構成ポリシーを評価するときに Arc に接続されたサーバーを含める|'true' を選択すると、Arc に接続されたマシンごとに毎月課金されることに同意したことになります。詳細については、 https://aka.ms/policy-pricing にアクセスしてください|
+|CMMC レベル 3|ポリシーの割り当て|ゲスト構成ポリシーを評価するときに Arc に接続されたサーバーを含める|"true" を選択すると、Arc に接続されたマシンごとに毎月課金されることに同意したことになります。詳細については、 https://aka.ms/policy-pricing にアクセスしてください|
 |CMMC レベル 3|ポリシーの割り当て|Windows VM の Administrators グループから除外する必要があるユーザーの一覧|ローカルの Administrators グループで除外する必要があるユーザーのセミコロン区切りリスト。例: Administrator; myUser1; myUser2|
 |CMMC レベル 3|ポリシーの割り当て|Windows VM の Administrators グループに含める必要があるユーザーの一覧|ローカルの Administrators グループに含める必要があるユーザーのセミコロン区切りリスト。例: Administrator; myUser1; myUser2|
 |CMMC レベル 3|ポリシーの割り当て|VM エージェント レポート用の Log Analytics ワークスペース ID|VM エージェントからレポートする必要のある Log Analytics ワークスペースの ID (GUID)|
@@ -110,178 +110,178 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |CMMC レベル 3|ポリシーの割り当て|Kubernetes クラスター ポッドに対してホスト ネットワークの使用を許可する|ポッドがホスト ネットワークを使用できる場合はこの値を true に設定し、それ以外の場合は false に設定します。|
 |CMMC レベル 3|ポリシーの割り当て|認証ポリシーの変更の監査|認証ポリシーに変更が加えられたときに監査イベントを生成するかどうかを指定します。 この設定は、ユーザー アカウントまたはグループに付与されている、ドメイン レベルとフォレスト レベルの信頼関係と特権の変更を追跡するために便利です。|
 |CMMC レベル 3|ポリシーの割り当て|承認ポリシーの変更の監査|ユーザー権利ポリシーでのユーザー権利の割り当てと削除、セキュリティ トークン オブジェクトのアクセス許可の変更、ファイル システム オブジェクトのリソース属性の変更と集約型アクセス ポリシーの変更について監査イベントを生成するかどうかを指定します。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: 仮想マシンに対して Azure Backup を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Cognitive Services アカウントでネットワーク アクセスを制限する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL マネージド インスタンスでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure API for FHIR での保存データの暗号化には、カスタマー マネージド キー (CMK) を使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Azure Front Door Service に対して Web アプリケーション ファイアウォール (WAF) を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL サーバーの脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Cognitive Services アカウントに対してパブリック ネットワーク アクセスを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: CORS で関数アプリへのアクセスをすべてのリソースには許可しない|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: アダプティブ ネットワーク強化の推奨事項をインターネット接続仮想マシンに適用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 複数の所有者がサブスクリプションに割り当てられている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 仮想マシンでディスク暗号化を適用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: サブスクリプション所有者に対する重要度 - 高のアラートのメール通知を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: キー コンテナーでは消去保護を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL サーバーでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 関数アプリでリモート デバッグを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for Key Vault を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Database for MariaDB に対して geo 冗長バックアップを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: CORS で API for FHIR へのアクセスをすべてのドメインには許可しない|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Windows マシンでは [セキュリティ オプション - ネットワーク セキュリティ] の要件を満たしている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 適応型アプリケーション制御ポリシーの許可リスト ルールを更新する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Web アプリケーション ファイアウォール (WAF) で Application Gateway の指定されたモードを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: キーには有効期限が設定されている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL データベースで Transparent Data Encryption を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Monitor ログ プロファイルでは、'書き込み'、'削除'、'アクション' の各カテゴリのログを収集する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL Managed Instance で脆弱性評価を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリの一部として使用された "PHP のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: キー コンテナーでは論理的な削除を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Azure Cache for Redis に対しては安全な接続のみを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Database for PostgreSQL サーバーに対してインフラストラクチャ暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: エンドポイント保護ソリューションを仮想マシン スケール セットにインストールする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for App Service を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Windows マシンでは [システム監査ポリシー - ポリシーの変更] の要件を満たしている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Cognitive Services アカウントではデータ暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: インターネットからの SSH アクセスをブロックする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: アタッチされていないディスクを暗号化する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for Storage を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: ストレージ アカウントではネットワーク アクセスを制限する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: CORS で API アプリへのアクセスをすべてのリソースには許可しない|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: ストレージ アカウントで Advanced Threat Protection をデプロイする|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Automation アカウント変数を暗号化する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: IoT Hub の診断ログを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Database for MySQL サーバーに対してインフラストラクチャ暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 特定のセキュリティ操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.Security/securitySolutions/delete)|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Windows マシンでは [セキュリティ オプション - ネットワーク アクセス] の要件を満たしている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: ストレージ アカウントへの安全な転送を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Monitor では、すべてのリージョンからアクティビティ ログを収集する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Web アプリケーション ファイアウォール (WAF) で Azure Front Door Service の指定されたモードを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: ストレージ アカウントにはインフラストラクチャの暗号化が必要|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: 安全なアプリケーションの定義のために適応型アプリケーション制御をマシンで有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Database for PostgreSQL の geo 冗長バックアップを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Windows マシンでは [セキュリティ オプション - ユーザー アカウント制御] の要件を満たす必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for servers を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 最大 3 人の所有者をサブスクリプションに対して指定する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: サブスクリプションには、セキュリティの問題に備えて連絡先メール アドレスが用意されている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: ストレージ アカウントのパブリック アクセスを禁止する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: 脆弱性評価ソリューションを仮想マシンで有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for Kubernetes を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: キー コンテナーでファイアウォールを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: アプリケーション ゲートウェイに対して Web アプリケーション ファイアウォール (WAF) を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: CORS で、Web アプリケーションへのアクセスをすべてのリソースには許可しない|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 過去 24 個分のパスワードの再利用が可能な Windows マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: コンテナー レジストリは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: PostgreSQL フレキシブル サーバーに対して公衆ネットワーク アクセスを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Azure Container Registry イメージの脆弱性を修復する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Service Fabric クラスターでは ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for SQL servers on machines を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Cognitive Services アカウントでカスタマー マネージド キーによるデータ暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 非推奨のアカウントをサブスクリプションから削除する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Function App には HTTPS 経由でのみアクセスできるようにする|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 重要度が高いアラートのメール通知を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: ストレージ アカウントでは暗号化にカスタマー マネージド キーを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリの一部として使用された "Python のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリの一部として使用された "Python のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: キーは指定された暗号化の種類 RSA または EC である必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Azure サブスクリプションにはアクティビティ ログのログ プロファイルが必要|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Kubernetes Service クラスター内のオペレーティング システムとデータ ディスクの両方がカスタマー マネージド キーによって暗号化されている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for Azure SQL Database servers を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Data Explorer における保存時の暗号化でカスタマー マネージド キーを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: RSA 暗号を使用するキーにキーの最小サイズを指定する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Database for MySQL の geo 冗長バックアップを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Kubernetes クラスター ポッドでは承認されたホスト ネットワークとポート範囲のみを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: システム更新プログラムをマシンにインストールする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Windows マシンでは [システム監査ポリシー - 特権の使用] の要件を満たしている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Stream Analytics ジョブでは、データの暗号化にカスタマー マネージド キーを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリの一部として使用された "Java のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリでは最新の TLS バージョンを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Microsoft IaaSAntimalware 拡張機能は Windows Server 上にデプロイする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: 仮想マシンに関連付けられたネットワーク セキュリティ グループでは、すべてのネットワーク ポートを制限する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Security Center の Standard 価格レベルを選択する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: パスワードの最小長が 14 文字に制限されていない Windows マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: カスタム RBAC 規則の使用監査|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリケーションには HTTPS を介してのみアクセスできるようにする|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL Server の監査を有効にする必要があります|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 仮想マシンに Log Analytics エージェントをインストールする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Advanced Data Security を、SQL Server 上で有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL Managed Instance で Advanced Data Security を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Kubernetes サービスではロールベースのアクセス制御 (RBAC) を使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 仮想マシンではゲスト構成拡張機能が必要|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Endpoint Protection の欠落の Azure Security Center での監視|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: アクティビティ ログは 1 年以上保持する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: 仮想マシンの管理ポートは Just-In-Time のネットワーク アクセス制御で保護する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: PostgreSQL サーバーに対してパブリック ネットワーク アクセスを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Cosmos DB アカウントに Advanced Threat Protection をデプロイする|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: App Services の診断ログを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリには HTTPS を介してのみアクセスできるようにする|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 特定の管理操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.ClassicNetwork/networkSecurityGroups/delete)|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 特定の管理操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/delete)|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 特定の管理操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.Network/networkSecurityGroups/delete)|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 特定の管理操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.Network/networkSecurityGroups/securityRules/delete)|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 特定の管理操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.Sql/servers/firewallRules/delete)|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: インターネットに接続されていない仮想マシンをネットワーク セキュリティ グループで保護する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: パスワードの複雑さ設定が有効になっていない Windows マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for container registries を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Data Box ジョブで、デバイス上の保存データについて二重暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 仮想マシン スケール セットにシステムの更新プログラムをインストールする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure 向け Microsoft Antimalware では保護定義を自動的に更新するように構成する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 特定のポリシー操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.Authorization/policyAssignments/delete)|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: MySQL フレキシブル サーバーに対して公衆ネットワーク アクセスを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: ストレージ アカウントでは、信頼された Microsoft サービスからのアクセスを許可する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリケーションのリモート デバッグを無効にする|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: RSA 暗号を使用する証明書に、キーの最小サイズを指定する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: コンテナー レジストリでは無制限のネットワーク アクセスを許可しない|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: PostgreSQL データベース サーバーでは [SSL 接続を強制する] が有効でなければならない|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: システム割り当てマネージド ID を持つ Azure 仮想マシンにゲスト構成拡張機能がデプロイされている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure SQL データベースの長期的な geo 冗長バックアップを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: MySQL サーバーに対してパブリック ネットワーク アクセスを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 暗号化を元に戻せる状態でパスワードを保存していない Windows マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Windows マシンでは [ユーザー権利の割り当て] の要件を満たしている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: サブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: インターネットからの RDP アクセスをブロックする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: passwd ファイルへのアクセス許可が 0644 に設定されていない Linux マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: サブネットはネットワーク セキュリティ グループに関連付けられている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: MySQL データベース サーバーでは [SSL 接続を強制する] が有効でなければならない|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: コンテナーのセキュリティ構成の脆弱性を修復する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリでリモート デバッグを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: パスワードなしのアカウントからのリモート接続が可能な Linux マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Data Explorer で二重暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 脆弱性評価を SQL Server 上で有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 仮想マシン スケール セットに Log Analytics エージェントをインストールする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリでは最新の TLS バージョンを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Data Explorer でディスク暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: インターネットに接続されている仮想マシンをネットワーク セキュリティ グループで保護する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: パスワードなしのアカウントがある Linux マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Synapse ワークスペースでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 関数アプリでは最新の TLS バージョンを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: すべてのインターネット トラフィックはデプロイされた Azure ファイアウォールを介してルーティングする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Linux マシンでは Azure セキュリティ ベースラインの要件を満たしている必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: MariaDB サーバーに対してパブリック ネットワーク アクセスを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL データベースの脆弱性を修復する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
-|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 楕円曲線暗号を使用するキーに曲線名を指定する必要がある|効果の詳細については、[https://aka.ms/policyeffects](https://aka.ms/policyeffects) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: 仮想マシンに対して Azure Backup を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Cognitive Services アカウントでネットワーク アクセスを制限する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL マネージド インスタンスでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure API for FHIR での保存データの暗号化には、カスタマー マネージド キー (CMK) を使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Azure Front Door Service に対して Web アプリケーション ファイアウォール (WAF) を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL サーバーの脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Cognitive Services アカウントに対してパブリック ネットワーク アクセスを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: CORS で関数アプリへのアクセスをすべてのリソースには許可しない|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: アダプティブ ネットワーク強化の推奨事項をインターネット接続仮想マシンに適用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 複数の所有者がサブスクリプションに割り当てられている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 仮想マシンでディスク暗号化を適用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: サブスクリプション所有者に対する重要度 - 高のアラートのメール通知を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: キー コンテナーでは消去保護を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL サーバーでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 関数アプリでリモート デバッグを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for Key Vault を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Database for MariaDB に対して geo 冗長バックアップを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: CORS で API for FHIR へのアクセスをすべてのドメインには許可しない|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Windows マシンでは [セキュリティ オプション - ネットワーク セキュリティ] の要件を満たしている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 適応型アプリケーション制御ポリシーの許可リスト ルールを更新する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Web アプリケーション ファイアウォール (WAF) で Application Gateway の指定されたモードを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: キーには有効期限が設定されている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL データベースで Transparent Data Encryption を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Monitor ログ プロファイルでは、'書き込み'、'削除'、'アクション' の各カテゴリのログを収集する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL Managed Instance で脆弱性評価を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリの一部として使用された "PHP のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: キー コンテナーでは論理的な削除を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Azure Cache for Redis に対しては安全な接続のみを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Database for PostgreSQL サーバーに対してインフラストラクチャ暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: エンドポイント保護ソリューションを仮想マシン スケール セットにインストールする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for App Service を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Windows マシンでは [システム監査ポリシー - ポリシーの変更] の要件を満たしている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Cognitive Services アカウントではデータ暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: インターネットからの SSH アクセスをブロックする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: アタッチされていないディスクを暗号化する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for Storage を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: ストレージ アカウントではネットワーク アクセスを制限する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: CORS で API アプリへのアクセスをすべてのリソースには許可しない|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: ストレージ アカウントで Advanced Threat Protection をデプロイする|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Automation アカウント変数を暗号化する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: IoT Hub の診断ログを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Database for MySQL サーバーに対してインフラストラクチャ暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 特定のセキュリティ操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.Security/securitySolutions/delete)|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Windows マシンでは [セキュリティ オプション - ネットワーク アクセス] の要件を満たしている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: ストレージ アカウントへの安全な転送を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Monitor では、すべてのリージョンからアクティビティ ログを収集する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Web アプリケーション ファイアウォール (WAF) で Azure Front Door Service の指定されたモードを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: ストレージ アカウントにはインフラストラクチャの暗号化が必要|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: 安全なアプリケーションの定義のために適応型アプリケーション制御をマシンで有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Database for PostgreSQL の geo 冗長バックアップを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Windows マシンでは [セキュリティ オプション - ユーザー アカウント制御] の要件を満たす必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for servers を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 最大 3 人の所有者をサブスクリプションに対して指定する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: サブスクリプションには、セキュリティの問題に備えて連絡先メール アドレスが用意されている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: ストレージ アカウントのパブリック アクセスを禁止する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: 脆弱性評価ソリューションを仮想マシンで有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for Kubernetes を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: キー コンテナーでファイアウォールを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: アプリケーション ゲートウェイに対して Web アプリケーション ファイアウォール (WAF) を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: CORS で、Web アプリケーションへのアクセスをすべてのリソースには許可しない|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 過去 24 個分のパスワードの再利用が可能な Windows マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: コンテナー レジストリは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: PostgreSQL フレキシブル サーバーに対して公衆ネットワーク アクセスを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Azure Container Registry イメージの脆弱性を修復する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Service Fabric クラスターでは ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for SQL servers on machines を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Cognitive Services アカウントでカスタマー マネージド キーによるデータ暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 非推奨のアカウントをサブスクリプションから削除する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Function App には HTTPS 経由でのみアクセスできるようにする|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 重要度が高いアラートのメール通知を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: ストレージ アカウントでは暗号化にカスタマー マネージド キーを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリの一部として使用された "Python のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリの一部として使用された "Python のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: キーは指定された暗号化の種類 RSA または EC である必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Azure サブスクリプションにはアクティビティ ログのログ プロファイルが必要|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Kubernetes Service クラスター内のオペレーティング システムとデータ ディスクの両方がカスタマー マネージド キーによって暗号化されている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for Azure SQL Database servers を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Data Explorer における保存時の暗号化でカスタマー マネージド キーを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: RSA 暗号を使用するキーにキーの最小サイズを指定する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Database for MySQL の geo 冗長バックアップを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: Kubernetes クラスター ポッドでは承認されたホスト ネットワークとポート範囲のみを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: システム更新プログラムをマシンにインストールする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Windows マシンでは [システム監査ポリシー - 特権の使用] の要件を満たしている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Stream Analytics ジョブでは、データの暗号化にカスタマー マネージド キーを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリの一部として使用された "Java のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリでは最新の TLS バージョンを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Microsoft IaaSAntimalware 拡張機能は Windows Server 上にデプロイする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: 仮想マシンに関連付けられたネットワーク セキュリティ グループでは、すべてのネットワーク ポートを制限する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Security Center の Standard 価格レベルを選択する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: パスワードの最小長が 14 文字に制限されていない Windows マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: カスタム RBAC 規則の使用監査|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリケーションには HTTPS を介してのみアクセスできるようにする|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL Server の監査を有効にする必要があります|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 仮想マシンに Log Analytics エージェントをインストールする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Advanced Data Security を、SQL Server 上で有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL Managed Instance で Advanced Data Security を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Kubernetes サービスではロールベースのアクセス制御 (RBAC) を使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 仮想マシンではゲスト構成拡張機能が必要|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Endpoint Protection の欠落の Azure Security Center での監視|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: アクティビティ ログは 1 年以上保持する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: 仮想マシンの管理ポートは Just-In-Time のネットワーク アクセス制御で保護する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: PostgreSQL サーバーに対してパブリック ネットワーク アクセスを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Cosmos DB アカウントに Advanced Threat Protection をデプロイする|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: App Services の診断ログを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリには HTTPS を介してのみアクセスできるようにする|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 特定の管理操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.ClassicNetwork/networkSecurityGroups/delete)|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 特定の管理操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/delete)|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 特定の管理操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.Network/networkSecurityGroups/delete)|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 特定の管理操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.Network/networkSecurityGroups/securityRules/delete)|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 特定の管理操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.Sql/servers/firewallRules/delete)|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: インターネットに接続されていない仮想マシンをネットワーク セキュリティ グループで保護する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: パスワードの複雑さ設定が有効になっていない Windows マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure Defender for container registries を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Data Box ジョブで、デバイス上の保存データについて二重暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 仮想マシン スケール セットにシステムの更新プログラムをインストールする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure 向け Microsoft Antimalware では保護定義を自動的に更新するように構成する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 特定のポリシー操作のアクティビティ ログ アラートが存在する必要がある (Microsoft.Authorization/policyAssignments/delete)|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: MySQL フレキシブル サーバーに対して公衆ネットワーク アクセスを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: ストレージ アカウントでは、信頼された Microsoft サービスからのアクセスを許可する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリケーションのリモート デバッグを無効にする|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: RSA 暗号を使用する証明書に、キーの最小サイズを指定する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: コンテナー レジストリでは無制限のネットワーク アクセスを許可しない|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: PostgreSQL データベース サーバーでは [SSL 接続を強制する] が有効でなければならない|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: システム割り当てマネージド ID を持つ Azure 仮想マシンにゲスト構成拡張機能がデプロイされている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Azure SQL データベースの長期的な geo 冗長バックアップを有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: MySQL サーバーに対してパブリック ネットワーク アクセスを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 暗号化を元に戻せる状態でパスワードを保存していない Windows マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Windows マシンでは [ユーザー権利の割り当て] の要件を満たしている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: サブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: インターネットからの RDP アクセスをブロックする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: passwd ファイルへのアクセス許可が 0644 に設定されていない Linux マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: サブネットはネットワーク セキュリティ グループに関連付けられている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: MySQL データベース サーバーでは [SSL 接続を強制する] が有効でなければならない|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: コンテナーのセキュリティ構成の脆弱性を修復する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: API アプリでリモート デバッグを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: パスワードなしのアカウントからのリモート接続が可能な Linux マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Data Explorer で二重暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 脆弱性評価を SQL Server 上で有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 仮想マシン スケール セットに Log Analytics エージェントをインストールする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: Web アプリでは最新の TLS バージョンを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Data Explorer でディスク暗号化を有効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: インターネットに接続されている仮想マシンをネットワーク セキュリティ グループで保護する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: パスワードなしのアカウントがある Linux マシンを監査する|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Azure Synapse ワークスペースでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: 関数アプリでは最新の TLS バージョンを使用する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: すべてのインターネット トラフィックはデプロイされた Azure ファイアウォールを介してルーティングする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: Linux マシンでは Azure セキュリティ ベースラインの要件を満たしている必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーに対する効果: MariaDB サーバーに対してパブリック ネットワーク アクセスを無効にする必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの効果: SQL データベースの脆弱性を修復する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ポリシーの結果: 楕円曲線暗号を使用するキーに曲線名を指定する必要がある|効果の詳細については、[https://aka.ms/policyeffects](../../policy/concepts/effects.md) を参照してください。|
 |CMMC レベル 3|ポリシーの割り当て|ポリシーの評価から除外する名前空間: Kubernetes クラスター ポッドでは承認されたホスト ネットワークとポート範囲のみを使用する必要がある|ポリシー評価から除外する Kubernetes 名前空間の一覧。|
 |CMMC レベル 3|ポリシーの割り当て|App Services に対する最新の Java バージョン|App Services に対してサポートされる最新の Java バージョン|
 |CMMC レベル 3|ポリシーの割り当て|App Services に対する Linux 用の最新の Python バージョン|App Services に対してサポートされる最新の Python バージョン|
-|CMMC レベル 3|ポリシーの割り当て|省略可能: Log Analytics エージェントのデプロイを監査するときにスコープに追加する、Linux OS をサポートしている VM イメージのリスト|値の例: '/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage'|
-|CMMC レベル 3|ポリシーの割り当て|省略可能: Log Analytics エージェントのデプロイを監査するときにスコープに追加する、Windows OS をサポートしている VM イメージのリスト|値の例: '/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage'|
+|CMMC レベル 3|ポリシーの割り当て|省略可能: Log Analytics エージェントのデプロイを監査するときにスコープに追加する、Linux OS をサポートしている VM イメージのリスト|値の例: `/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage`|
+|CMMC レベル 3|ポリシーの割り当て|省略可能: Log Analytics エージェントのデプロイを監査するときにスコープに追加する、Windows OS をサポートしている VM イメージのリスト|値の例: `/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage`|
 |CMMC レベル 3|ポリシーの割り当て|Network Watcher を有効にする必要があるリージョンの一覧|Network Watcher がリージョンに対して有効になっていない場合に監査します。|
 |CMMC レベル 3|ポリシーの割り当て|診断ログを有効にする必要のあるリソースの種類の一覧||
 |CMMC レベル 3|ポリシーの割り当て|ポッドがホスト ネットワーク名前空間で使用可能な、許容されるホスト ポート範囲内の最大値|ポッドがホスト ネットワーク名前空間で使用可能な、許容されるホスト ポート範囲内の最大値です。|
@@ -298,7 +298,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |CMMC レベル 3|ポリシーの割り当て|ネットワーク セキュリティ: Kerberos で許可する暗号化の種類を構成する|Kerberos で使用できる暗号化の種類を指定します。|
 |CMMC レベル 3|ポリシーの割り当て|ネットワーク セキュリティ: LAN Manager 認証レベル|ネットワーク ログオンに使用するチャレンジレスポンス認証プロトコルを指定します。 この認証レベルを選択すると、クライアントが使用する認証プロトコル、ネゴシエートされるセッション セキュリティ、およびサーバーで受け付けられる認証レベルが影響を受けます。|
 |CMMC レベル 3|ポリシーの割り当て|ネットワーク セキュリティ: 必須の署名をしている LDAP クライアント|LDAP BIND 要求を発行するクライアントの代理として要求されるデータ署名のレベルを指定します。|
-|CMMC レベル 3|ポリシーの割り当て|ネットワーク セキュリティ: NTLM SSP ベース (セキュア RPC を含む) のクライアント向け最小セッション セキュリティ|NTLM セキュリティ サポート プロバイダー (SSP) を使用するアプリケーションに対してクライアントが許可する動作を指定します。 SSP インターフェイス (SSPI) は認証サービスが必要なアプリケーションに使用されます。 詳細については、「[https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-minimum-session-security-for-ntlm-ssp-based-including-secure-rpc-servers](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-minimum-session-security-for-ntlm-ssp-based-including-secure-rpc-servers)」を参照してください。|
+|CMMC レベル 3|ポリシーの割り当て|ネットワーク セキュリティ: NTLM SSP ベース (セキュア RPC を含む) のクライアント向け最小セッション セキュリティ|NTLM セキュリティ サポート プロバイダー (SSP) を使用するアプリケーションに対してクライアントが許可する動作を指定します。 SSP インターフェイス (SSPI) は認証サービスが必要なアプリケーションに使用されます。 詳細については、「[https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-minimum-session-security-for-ntlm-ssp-based-including-secure-rpc-servers](/windows/security/threat-protection/security-policy-settings/network-security-minimum-session-security-for-ntlm-ssp-based-including-secure-rpc-servers)」を参照してください。|
 |CMMC レベル 3|ポリシーの割り当て|ネットワーク セキュリティ: NTLM SSP ベース (セキュア RPC を含む) のサーバー向け最小セッション セキュリティ|NTLM セキュリティ サポート プロバイダー (SSP) を使用するアプリケーションに対してサーバーが許可する動作を指定します。 SSP インターフェイス (SSPI) は認証サービスが必要なアプリケーションに使用されます。|
 |CMMC レベル 3|ポリシーの割り当て|App Services に対する最新の PHP バージョン|App Services に対してサポートされる最新の PHP バージョン|
 |CMMC レベル 3|ポリシーの割り当て|IoT Hub の診断ログの必須の保持期間 (日数)||

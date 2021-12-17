@@ -7,16 +7,16 @@ ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: scoriani
+ms.author: scoriani
+ms.reviewer: mathoma
 ms.date: 12/04/2018
-ms.openlocfilehash: 166e365a4ead8ad6d0f7e543c081161ebff5f027
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afa692b5dd71b43adff0eabb717409aff831d8da
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92330463"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690310"
 ---
 # <a name="elastic-database-tools-glossary"></a>Elastic Database ツールの用語集
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

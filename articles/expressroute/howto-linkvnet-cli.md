@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/08/2020
+ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: 90676b134d06af7ef088b2041116b17022da2700
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: b7a6cf1bdb490683faa5285811c83d220ac80cca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110225"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662884"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>チュートリアル:CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -46,6 +46,8 @@ ms.locfileid: "106110225"
 * 単一の VNet を最大 16 本の ExpressRoute 回線にリンクできます。 次のプロセスを使用して、接続先の各 ExpressRoute 回線の新しい接続オブジェクトを作成します。 ExpressRoute 回線は、同じサブスクリプション、異なるサブスクリプション、または両方の組み合わせにすることができます。
 * ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線の地理的リージョンの外部にある仮想ネットワークをリンクすることができます。 Premium アドオンを使用すると、選択した帯域幅に応じて、10 を超える仮想ネットワークを ExpressRoute 回線に接続することもできます。 Premium アドオンの詳細については、 [FAQ](expressroute-faqs.md) を確認してください。
 
+* ExpressRoute 回線からターゲットの ExpressRoute 仮想ネットワーク ゲートウェイへの接続を作成するために、ローカルまたはピアリングされた仮想ネットワークからアドバタイズされるアドレス空間の数は **200** 個以下である必要があります。 接続が正常に作成されたら、ローカルまたはピアリングされた仮想ネットワークにアドレス空間をさらに追加できます (最大 1,000 個)。
+
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>同じサブスクリプション内の仮想ネットワークを回線に接続する
 
 次のコマンドを使用して、ExpressRoute 回線に仮想ネットワーク ゲートウェイを接続できます。 コマンドを実行する前に、仮想ネットワーク ゲートウェイが作成されており、リンクの準備ができていることを確認してください。
@@ -57,6 +59,9 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>別のサブスクリプション内の仮想ネットワークを回線に接続する
 
 複数のサブスクリプションで ExpressRoute 回線を共有できます。 下図に、複数のサブスクリプションで ExpressRoute 回線を共有するしくみについて概略を示します。
+
+> [!NOTE]
+> Azure ソブリン クラウドとパブリック Azure クラウドの間での仮想ネットワーク接続はサポートされていません。 仮想ネットワークのリンクは、同じクラウド内の異なるサブスクリプション間に限られます。
 
 大規模クラウド内のそれぞれの小規模クラウドは、組織内のさまざまな部門に属するサブスクリプションを表すために使用されています。 組織内の各部門は、サービスのデプロイを目的として、固有のサブスクリプションを使用できますが、1 つの ExpressRoute 回線を共有することで、オンプレミス ネットワークに接続し直すことができます。 1 つの部門 (この例では IT) で ExpressRoute 回線を所有できます。 組織内の他のサブスクリプションを使用する場合も、ExpressRoute 回線を使用できます。
 
@@ -168,6 +173,21 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 ```azurecli-interactive
 az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true
 ```
+
+> [!NOTE]
+> [接続モニター](how-to-configure-connection-monitor.md)を使用して、FastPath を使用してトラフィックが宛先に到達していることを確認できます。
+>
+
+## <a name="enroll-in-expressroute-fastpath-features-preview"></a>ExpressRoute の FastPath 機能に登録する (プレビュー)
+
+FastPath の仮想ネットワーク ピアリングのサポートは、現在パブリック プレビュー中です。 登録は Azure PowerShell を通じてのみ可能です。 登録方法については、[FastPath プレビュー機能](expressroute-howto-linkvnet-arm.md#enroll-in-expressroute-fastpath-features-preview)に関するページを参照してください。
+
+> [!NOTE] 
+> ターゲット サブスクリプションで FastPath 用に構成されたすべての接続が、このプレビューに登録されます。 実稼働サブスクリプションでこのプレビューを有効にすることはお勧めしません。
+> FastPath が既に構成されていて、プレビュー機能への登録を希望される場合は、次の手順を実行する必要があります。
+> 1. 上の Azure PowerShell コマンドを使用して、FastPath プレビュー機能に登録します。
+> 1. ターゲット接続で FastPath を無効にしてから再度有効にします。
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ExpressRoute 接続が不要になった場合は、ゲートウェイが配置されているサブスクリプションから、`az network vpn-connection delete` コマンドを使用して、ゲートウェイと回線の間のリンクを削除します。

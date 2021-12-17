@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 435b27255ce58a3541d6b0d3a76bdf4080aa3962
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70230b5324d94065e414e0bc76d7e2f092369ba9
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648782"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431984"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad"></a>Azure AD での FIDO2 セキュリティ キーのハイブリッド デプロイに関するトラブルシューティング 
 
@@ -145,7 +145,7 @@ Azure AD Kerberos サーバー オブジェクトを表示し、正常な状態�
 | Id                 | AD DS ドメイン コントローラー オブジェクトの一意の *ID*。 |
 | DomainDnsName      | AD DS ドメインの DNS ドメイン名。 |
 | ComputerAccount    | Azure AD Kerberos サーバー オブジェクト (DC) のコンピューター アカウント オブジェクト。 |
-| UserAccount        | Azure AD Kerberos サーバーの TGT 暗号化キーを保持する、無効なユーザー アカウント オブジェクト。 このアカウントの DN は *CN=krbtgt_AzureAD,CN=Users,<Domain-DN>* です。 |
+| UserAccount        | Azure AD Kerberos サーバーの TGT 暗号化キーを保持する、無効なユーザー アカウント オブジェクト。 このアカウントの DN は *CN=krbtgt_AzureAD,CN=Users,\<Domain-DN\>* です。 |
 | KeyVersion         | Azure AD Kerberos サーバーの TGT 暗号化キーのキー バージョン。 バージョンは、キーの作成時に割り当てられます。 バージョンは、キーがローテーションされるたびに増やされます。 増分はレプリケーション メタデータに基づいており、多くの場合に 1 より大きい値になります。<br /><br /> たとえば、初期の *KeyVersion* が *192272* だったとします。 キーが最初にローテーションされると、バージョンは *212621* に進む可能性があります。<br /><br /> 確認すべき重要な点は、オンプレミスのオブジェクトの *KeyVersion* とクラウド オブジェクトの *CloudKeyVersion* が同じであることです。 |
 | KeyUpdatedOn       | Azure AD Kerberos サーバーの TGT 暗号化キーが更新または作成された日時。 |
 | KeyUpdatedFrom     | Azure AD Kerberos サーバーの TGT 暗号化キーが最後に更新された DC。 |

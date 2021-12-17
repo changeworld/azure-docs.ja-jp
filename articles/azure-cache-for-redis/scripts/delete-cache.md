@@ -1,20 +1,20 @@
 ---
 title: Azure Cache for Redis を削除する - Azure CLI
 description: この Azure CLI のコード サンプルでは、az redis delete コマンドを使用して Azure Cache for Redis インスタンスを削除する方法を示します。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 tags: azure-service-management
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9ce6e20e5e4866bc4daa3f331fa2a8612ac6c260
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93c929d03ef94561ce00479bddbdd2d71fc062ff
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96184163"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536345"
 ---
 # <a name="delete-an-azure-cache-for-redis"></a>Azure Cache for Redis を削除する
 
@@ -26,7 +26,7 @@ ms.locfileid: "96184163"
 
 [!code-azurecli[main](../../../cli_scripts/redis-cache/delete-cache/delete-cache.sh "Azure Cache for Redis")]
 
-[!INCLUDE [cli-script-clean-up](../../../includes/redis-cli-script-clean-up.md)]
+[!INCLUDE [cli-script-clean-up](../includes/redis-cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>スクリプトの説明
 

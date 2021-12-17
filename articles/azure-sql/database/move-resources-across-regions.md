@@ -8,16 +8,16 @@ ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
+author: rothja
+ms.author: jroth
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: ae6c87c9eabea837ba9c43676d4ca712caa385cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75f30fe7263d14538ad14588a56aafecde96a126
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94594166"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739638"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>新しいリージョンへのリソースの移動 - Azure SQL Database および Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,6 +40,9 @@ ms.locfileid: "94594166"
 > [!NOTE]
 > この記事は、Azure パブリック クラウド内または同じソブリン クラウド内での移行に適用されます。
 
+> [!NOTE]
+> Azure SQL データベースとエラスティック プールを別の Azure リージョンに移動する場合、Azure Resource Mover (プレビュー段階) を使用することもできます。 これを行う詳細な手順については、この[チュートリアル](../../resource-mover/tutorial-move-region-sql.md)を参照してください。
+
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="move-a-database"></a>データベースの移動
@@ -49,7 +52,13 @@ ms.locfileid: "94594166"
 1. 各ソース サーバーにターゲット サーバーを作成します。
 1. [PowerShell](scripts/create-and-configure-database-powershell.md) を使用して、適切な例外でファイアウォールを構成します。  
 1. 正しいログインを使用してサーバーを構成します。 サブスクリプション管理者または SQL サーバー管理者でない場合は、管理者に協力を求め、必要なアクセス許可を割り当てます。 詳細については、[ディザスター リカバリーの後に Azure SQL Database セキュリティを管理する方法](active-geo-replication-security-configure.md)に関する記事を参照してください。
-1. データベースが透過的なデータ暗号化で暗号化されていて、Azure Key Vault で独自の暗号化キーを使用している場合は、ターゲット リージョンで適切な暗号化マテリアルがプロビジョニングされていることを確認してください。 詳細については、[Azure Key Vault のカスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption](transparent-data-encryption-byok-overview.md) に関する記事を参照してください。
+1. データベースが透過的なデータ暗号化 (TDE) で暗号化されていて、Azure Key Vault で独自の暗号化キー (BYOK またはカスタマー マネージド キー) を使用している場合は、ターゲット リージョンで適切な暗号化マテリアルがプロビジョニングされていることを確認してください。 
+    - これを行う最も簡単な方法は、(ソース サーバーで TDE プロテクターとして使用されている) 既存のキー コンテナーからターゲット サーバーに暗号化キーを追加し、そのキーをターゲット サーバーの TDE プロテクターとして設定することです。
+      > [!NOTE]
+      > 1 つのリージョンのサーバーまたはマネージド インスタンスを、他のリージョンのキー コンテナーに接続できるようになりました。
+    - ターゲット サーバーが古い暗号化キー (データベースのバックアップの復元に必要) にアクセスできるようにするためのベスト プラクティスとして、ソース サーバーで [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) コマンドレットを実行するか、ソースのマネージド インスタンスで [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) コマンドレットを実行して使用可能なキーの一覧を取得し、それらのキーをターゲット サーバーに追加します。
+    - ターゲット サーバーで顧客が管理する TDE を構成する方法の詳細とベスト プラクティスについては、[Azure Key Vault でのカスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption](transparent-data-encryption-byok-overview.md)に関する記事を参照してください。
+    - キー コンテナーを新しいリージョンに移動するには、「[リージョン間で Azure キー コンテナーを移動する](../../key-vault/general/move-region.md)」を参照してください。 
 1. データベース レベルの監査が有効になっている場合は、無効にし、代わりにサーバー レベルの監査を有効にします。 フェールオーバー後、データベース レベルの監査では、リージョン間のトラフィックが必要になります。これは、移動後には不要となり、不可能になります。
 1. サーバー レベルの監査では、次のことを確認します。
    - 既存の監査ログを含むストレージ コンテナー、Log Analytics、またはイベント ハブが、ターゲット リージョンに移動されていること。

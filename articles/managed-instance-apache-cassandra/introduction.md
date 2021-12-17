@@ -5,22 +5,18 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: overview
-ms.date: 03/02/2021
-ms.openlocfilehash: d99c62e7d88510c351f87d85b4f8c5c271767cb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 91af4ca87c2363220081fe5e4912a26a764e85d1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101747626"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844393"
 ---
-# <a name="what-is-azure-managed-instance-for-apache-cassandra-preview"></a>Azure Managed Instance for Apache Cassandra とは (プレビュー)
+# <a name="what-is-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra とは
 
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-Azure Managed Instance for Apache Cassandra サービスでは、マネージド オープンソースの Apache Cassandra データセンターに対して、デプロイとスケーリングの自動化された操作を提供します。 このサービスは、ハイブリッド シナリオの推進と継続的なメンテナンスの削減に役立ちます。 一般リリース時には、[Azure Cosmos DB Cassandra API](../cosmos-db/cassandra-introduction.md) による緊密な統合とデータ移動の機能が与えられます。
+Azure Managed Instance for Apache Cassandra サービスでは、マネージド オープンソースの Apache Cassandra データセンターに対して、デプロイとスケーリングの自動化された操作を提供します。 このサービスは、ハイブリッド シナリオの推進と継続的なメンテナンスの削減に役立ちます。
 
 :::image type="content" source="./media/introduction/icon.gif" alt-text="Azure Managed Instance for Apache Cassandra は Apache Cassandra 向けの管理サービスです。" border="false":::
 
@@ -28,10 +24,10 @@ Azure Managed Instance for Apache Cassandra サービスでは、マネージド
 
 ### <a name="hybrid-deployments"></a>ハイブリッド デプロイ
 
-仮想マシン スケール セットとして自動的にデプロイされる Apache Cassandra データセンターのマネージド インスタンスを新規または既存の Azure Virtual Network にこのサービスを利用して簡単に配置できます。 これらのデータセンターは、Azure または別のクラウド環境にある [Azure ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) 経由で、オンプレミスで実行されている既存の Apache Cassandra リングに追加できます。
+仮想マシン スケール セットとして自動的にデプロイされる Apache Cassandra データセンターのマネージド インスタンスを新規または既存の Azure Virtual Network にこのサービスを利用して簡単に配置できます。 これらのデータセンターは、Azure または別のクラウド環境にある [Azure ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) 経由で、オンプレミスで実行されている既存の Apache Cassandra リングに追加できます。 これは、[ハイブリッド構成](configure-hybrid-cluster.md)によって実現されます。
 
 - **簡略化デプロイ:** ハイブリッド接続の確立後、ゴシップ プロトコルによりデプロイが簡単になります。
-- **ホストされたメトリック:** クラスター全体のアクティビティを監視するために、[Prometheus](https://prometheus.io/docs/introduction/overview/) でメトリックがホストされます。
+- **ホストされたメトリック:** クラスター全体のアクティビティを監視するために、[Prometheus](https://prometheus.io/docs/introduction/overview/) でメトリックがホストされます。 サービスは、[メトリックおよび診断ログの Azure Monitor](monitor-clusters.md) とも統合されています。
 
 ### <a name="simplified-scaling"></a>簡素化スケーリング
 
@@ -45,11 +41,10 @@ Azure Managed Instance for Apache Cassandra サービスでは、マネージド
 - データセンターのプロビジョニング
 - データセンターのスケーリング
 - データセンターの削除
-- キースペースでの修復操作の開始
 - データセンターの構成の変更
 - バックアップの設定
 
-価格モデルは柔軟であり、オンデマンドであり、インスタンスベースです。ライセンス料金はありません。 この価格モデルでは、特定のワークロード ニーズに合わせて調整できます。 必要なコアの数、VM SKU、メモリ サイズ、ディスク領域を選択します。
+価格モデルは柔軟であり、オンデマンドであり、インスタンスベースです。ライセンス料金はありません。 この価格モデルでは、特定のワークロード ニーズに合わせて調整できます。 コアの数、VM SKU、メモリ サイズ、ノードあたりの P30 ディスクの数を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

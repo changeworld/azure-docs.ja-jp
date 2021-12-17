@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/08/2020
-ms.openlocfilehash: a7a7bbb8b911f86b81cdeafe3fe57e1fdf820681
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 3582bb71c51923ee64d5ea24c329da475dfdd9a2
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228284"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293937"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Cognitive Services で Language Understanding (LUIS) 内の顧客データをエクスポートおよび削除する
 
@@ -30,7 +30,7 @@ Language Understanding Intelligent Service (LUIS) はサービスを運用する
 - 登録時に収集されたユーザー アカウントのコンテンツ
 - モデルの構築に必要なトレーニング データ
 - モデルの改善に役立つ[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md)で使用される、記録されるユーザー クエリ
-  - ユーザーは、要求に `&log=false` を追加することによってクエリのログ記録を無効にできます。詳しくは、[こちら](troubleshooting.md#how-can-i-disable-the-logging-of-utterances)をご覧ください。
+  - ユーザーは、要求に `&log=false` を追加することによってクエリのログ記録を無効にできます。詳しくは、[こちら](./troubleshooting.yml#how-can-i-disable-the-logging-of-utterances-)をご覧ください。
 
 ## <a name="deleting-customer-data"></a>顧客データの削除
 LUIS ユーザーは、LUIS Web ポータルまたは LUIS Authoring (Programmatic とも呼ばれる) API を使用して、ユーザー コンテンツの削除を完全に制御できます。 次の表では、両方を支援するリンクを示します。

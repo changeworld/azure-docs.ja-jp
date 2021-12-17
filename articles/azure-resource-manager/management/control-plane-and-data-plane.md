@@ -3,12 +3,12 @@ title: コントロール プレーンとデータ プレーンの操作
 description: コントロール プレーンとデータ プレーンの操作の違いについて説明します。 コントロール プレーンの操作は、Azure Resource Manager によって処理されます。 データ プレーンの操作は、サービスによって処理されます。
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: 76304c81a1af1eef87d12cfd4130867851a61d28
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c5e72693c751086f17958c39c96d12624e478b99
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105544096"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893407"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure コントロール プレーンとデータ プレーン
 
@@ -33,7 +33,7 @@ Azure の操作は、コントロール プレーンとデータ プレーンの
 * Azure Germany の場合、URL は `https://management.microsoftazure.de/` です。
 * Microsoft Azure China 21Vianet の場合、URL は `https://management.chinacloudapi.cn` です。
 
-Azure Resource Manager URL を使用する操作を確認するには、[Azure REST API](/rest/api/azure/) を参照してください。 たとえば、MySql の[作成または更新操作](/rest/api/mysql/databases/createorupdate)は、要求 URL が次のようになっているため、コントロール プレーン操作です。
+Azure Resource Manager URL を使用する操作を確認するには、[Azure REST API](/rest/api/azure/) を参照してください。 たとえば、MySql の[作成または更新操作](/rest/api/mysql/singleserver/databases/create-or-update)は、要求 URL が次のようになっているため、コントロール プレーン操作です。
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases/{databaseName}?api-version=2017-12-01
@@ -44,7 +44,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 * [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md)
 * [Azure Policy](../../governance/policy/overview.md)
 * [管理ロック](lock-resources.md)
-* [アクティビティ ログ](view-activity-logs.md)
+* [アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)
 
 要求が認証されると、Azure Resource Manager によって要求がリソース プロバイダーに送信され、そこで操作が完了します。
 
@@ -52,13 +52,13 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="data-plane"></a>データ プレーン
 
-データ プレーン操作の要求は、インスタンスに固有のエンドポイントに送信されます。 たとえば、Cognitive Services の[言語の検出操作](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection)は、要求 URL が次のようになっているため、データ プレーン操作です。
+データ プレーン操作の要求は、インスタンスに固有のエンドポイントに送信されます。 たとえば、Cognitive Services の[言語の検出操作](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md)は、要求 URL が次のようになっているため、データ プレーン操作です。
 
 ```http
 POST {Endpoint}/text/analytics/v2.0/languages
 ```
 
-データ プレーン操作は REST API に限定されません。 仮想マシンやデータベース サーバーへのログインなど、追加の資格情報が必要になる場合があります。
+データ プレーン操作は REST API に限定されません。 仮想マシンやデータベース サーバーへのログインなど、他の資格情報が必要になる場合があります。
 
 管理とガバナンスを適用する機能は、データ プレーンの操作には適用されない可能性があります。 ユーザーがソリューションとやりとりするさまざまな方法を検討する必要があります。 たとえば、ユーザーがデータベースを削除できないようにするロックは、ユーザーがクエリを使用してデータを削除するのを防ぐことはできません。
 
@@ -68,4 +68,4 @@ POST {Endpoint}/text/analytics/v2.0/languages
 
 * Azure Resource Manager の概要については、「[Azure Resource Manager とは](overview.md)」を参照してください。
 
-* ポリシー定義が新しいリソースと既存のリソースに与える影響の詳細については、[「新しい Azure Policy 定義の影響を評価する](../../governance/policy/concepts/evaluate-impact.md)」を参照してください。
+* ポリシー定義が新しいリソースと既存のリソースに与える影響の詳細については、「[新しい Azure Policy 定義の影響を評価する](../../governance/policy/concepts/evaluate-impact.md)」を参照してください。

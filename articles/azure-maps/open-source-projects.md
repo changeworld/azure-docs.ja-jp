@@ -1,20 +1,20 @@
 ---
 title: Azure Maps コミュニティのオープンソース プロジェクト | Microsoft Azure Maps
 description: Microsoft Azure Maps プラットフォーム用に調整されたオープンソース プロジェクト。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8be747d2027291203272a960efe6b26368471a50
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: df126e2c2b0903fd23eeea45930e4e1e5eaffb6f
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735048"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429534"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps コミュニティ - オープンソース プロジェクト
 
@@ -59,7 +59,7 @@ ms.locfileid: "101735048"
 |-|-|
 | [Azure Maps のコード サンプル](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Web ベースのアプリで Azure Maps を使用するためのコード サンプルのコレクション。 |
 | [Azure Maps Gov Cloud のコード サンプル](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Azure Government Cloud 経由で Azure Maps を使用するためのコード サンプルのコレクション。 |
-| [Azure Maps および Azure Active Directory のサンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Azure Maps と Azure Active Directory を使用する方法を示すサンプルのコレクション。 | 
+| [Azure Maps および Azure Active Directory のサンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Azure Maps と Azure Active Directory を使用する方法を示すサンプルのコレクション。 |
 | [LiveMaps](https://github.com/Azure-Samples/LiveMaps) | Azure Maps Creator を使用して Azure Maps 上に IoT データをライブの室内マップで視覚化するサンプル アプリケーション |
 | [Azure Maps の Jupyter Notebook サンプル](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Azure Maps REST サービスを使用した python サンプルのコレクション。 |
 | [Azure Maps .NET UWP IoT リモート コントロール](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | これは、Azure Maps サービスと IoT Hub サービスを使用して、リモートで制御される地図を構築する方法を示すサンプル アプリケーションです。 |
@@ -70,16 +70,16 @@ ms.locfileid: "101735048"
 
 | プロジェクト名 | 説明 |
 |-|-|
-| [Azure Maps Cesium プラグイン](https://github.com/azure-samples/azure-maps-cesium) | [タイル レイヤー](/rest/api/maps/renderv2/getmaptilepreview)や[ジオコーディング サービス](/rest/api/maps/search)など、Azure Maps サービスを簡単に統合できる [Cesium JS](https://cesium.com/cesiumjs/) プラグイン。 |
-| [Azure Maps Leaflet プラグイン](https://github.com/azure-samples/azure-maps-leaflet) | [Azure Maps タイル サービス](/rest/api/maps/renderv2/getmaptilepreview)からのタイル レイヤーを簡単にオーバーレイできる [Leaflet](https://leafletjs.com/) JavaScript プラグイン。 |
- | [Azure Maps OpenLayers プラグイン](https://github.com/azure-samples/azure-maps-openlayers) | [Azure Maps タイル サービス](/rest/api/maps/renderv2/getmaptilepreview)からのタイル レイヤーを簡単にオーバーレイできる [OpenLayers](https://www.openlayers.org/) JavaScript プラグイン。 |
+| [Azure Maps Cesium プラグイン](https://github.com/azure-samples/azure-maps-cesium) | [タイル レイヤー](/rest/api/maps/render-v2/get-map-tile)や[ジオコーディング サービス](/rest/api/maps/search)など、Azure Maps サービスを簡単に統合できる [Cesium JS](https://cesium.com/cesiumjs/) プラグイン。 |
+| [Azure Maps Leaflet プラグイン](https://github.com/azure-samples/azure-maps-leaflet) | [Azure Maps タイル サービス](/rest/api/maps/render-v2/get-map-tile)からのタイル レイヤーを簡単にオーバーレイできる [Leaflet](https://leafletjs.com/) JavaScript プラグイン。 |
+ | [Azure Maps OpenLayers プラグイン](https://github.com/azure-samples/azure-maps-openlayers) | [Azure Maps タイル サービス](/rest/api/maps/render-v2/get-map-tile)からのタイル レイヤーを簡単にオーバーレイできる [OpenLayers](https://www.openlayers.org/) JavaScript プラグイン。 |
 
 **ツールとリソース**
 
 | プロジェクト名 | 説明 |
 |-|-|
 | [Azure Maps Docs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | すべての Azure Location Based Services ドキュメントのソース。 |
-| [Azure Maps Creator (プレビュー) ツール](https://github.com/Azure-Samples/AzureMapsCreator) | Azure Maps Creator (プレビュー) ツール用の Python ツール。 |
+| [Azure Maps Creator ツール](https://github.com/Azure-Samples/AzureMapsCreator) | Azure Maps Creator ツール用の Python ツール。 |
 
 コミュニティによって作成されたプロジェクトを含む Azure Maps のオープンソース プロジェクトのより詳細な一覧については、[こちら](https://github.com/microsoft/Maps/blob/master/AzureMaps.md)を参照してください。
 

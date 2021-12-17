@@ -1,24 +1,25 @@
 ---
-title: ホーム領域検出ポリシーを使用して Azure AD でのサインインの自動高速化を防ぐ
+title: ホーム領域検出ポリシーを使用してサインインの自動アクセラレーションを防ぐ
+titleSuffix: Azure AD
 description: フェデレーション IDP への domain_hint の自動高速化を防ぐ方法について説明します。
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.author: iangithinji
+ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: b89e0e1c8bd8109fac8b4b7c05a845a3e234b617
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 912299553e48bbaec6c815e44f91a6ac0b42441e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375552"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547471"
 ---
-# <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用してユーザー サインイン時のフェデレーション IDP への自動高速化を無効にする
+# <a name="disable-auto-acceleration-sign-in"></a>自動高速化サインインを無効にする
 
 [ホーム領域検出ポリシー](/graph/api/resources/homeRealmDiscoveryPolicy) (HRD) により、管理者がユーザー認証の方法と場所を制御するための複数の方法が提供されます。 HRD ポリシーの `domainHintPolicy` セクションを使用すると、フェデレーション ユーザーを常に Azure AD のサインイン ページにアクセスさせ、ドメイン ヒントによってフェデレーション IDP に自動高速化されないようにすることで、[FIDO](../authentication/howto-authentication-passwordless-security-key.md) などのクラウドで管理されている資格情報に移行させるのに役立ちます。
 
@@ -41,7 +42,7 @@ HRD ポリシーの DomainHintPolicy セクションは JSON オブジェクト�
 
 DomainHintPolicy ロジックは、ドメイン ヒントを含む受信要求ごとに実行され、要求に含まれる 2 つのデータ、つまりドメイン ヒント内のドメインと、クライアント ID (アプリ) に基づいて高速化されます。 要するに、ドメインまたはアプリを "優先" する方が、特定のドメインまたはアプリケーションに関するドメイン ヒントを "無視" する命令よりも優先されます。
 
-1. ドメイン ヒント ポリシーがない場合、あるいは 4 つのセクションのいずれにおいてもアプリまたはドメイン ヒントが参照されていない場合は、[HRD ポリシーの残りの部分が評価されます](configure-authentication-for-federated-users-portal.md#priority-and-evaluation-of-hrd-policies)。
+1. ドメイン ヒント ポリシーがない場合、あるいは 4 つのセクションのいずれにおいてもアプリまたはドメイン ヒントが参照されていない場合は、[HRD ポリシーの残りの部分が評価されます](home-realm-discovery-policy.md#priority-and-evaluation-of-hrd-policies)。
 1. 要求で `RespectDomainHintForApps` または `RespectDomainHintForDomains` セクションのどちらか一方 (または両方) にアプリまたはドメイン ヒントが含まれている場合、ユーザーは要求どおりにフェデレーション IDP に自動高速化されます。
 1. 要求の `IgnoreDomainHintsForApps` または `IgnoreDomainHintsForDomains` のどちらか一方 (または両方) でアプリまたはドメイン ヒントが参照されていて、"Respect" セクションでは参照されていない場合、要求は自動高速化されず、ユーザーは Azure AD のログイン ページにとどまってユーザー名を指定します。
 

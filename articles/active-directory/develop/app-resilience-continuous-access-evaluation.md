@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/06/2020
+ms.date: 07/09/2021
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: f6ce792b3db0100d7356884bbc6ee2696580df10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 816975db5ee6fd613e077dd7d268825c6601b3fe
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652060"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444447"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>継続的アクセス評価が有効になった API をアプリケーションで使用する方法
 
-[継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md) (CAE) とは、有効期間に基づくトークンの有効期限に依存するのではなく、[重大なイベント](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation)および[ポリシーの評価](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview)に基づいてアクセス トークンを取り消すことを可能にする新たな業界標準です。 一部のリソース API については、リスクとポリシーがリアルタイムで評価されるため、トークンの有効期間を最大 28 時間まで延長することができます。 このような有効期間が長いトークンは Microsoft Authentication Library (MSAL) によって事前に更新されるため、アプリケーションの復元性が向上します。
+[継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md) (CAE) は、トークンの有効期間ではなく[重要なイベント](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation)と[ポリシー評価](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview)に基づいてアクセス トークンを破棄できる、Azure AD の機能です。 一部のリソース API については、リスクとポリシーがリアルタイムで評価されるため、トークンの有効期間を最大 28 時間まで延長することができます。 このような有効期間が長いトークンは Microsoft Authentication Library (MSAL) によって事前に更新されるため、アプリケーションの復元性が向上します。
 
-この記事では、CAE 対応 API をアプリケーションで使用する方法について説明します。
+この記事では、CAE 対応 API をアプリケーションで使用する方法について説明します。 MSAL を使用していないアプリケーションでは、CAE を使用するための [要求のチャレンジ、要求要求、およびクライアント機能](claims-challenge.md) のサポートを追加できます。
 
 ## <a name="implementation-considerations"></a>実装時の注意事項
 
@@ -52,7 +52,7 @@ WWW-Authenticate=Bearer
   - "insufficient_claims" という値を含む "error" パラメーター
   - "claims" パラメーター
 
-これらの条件が満たされると、アプリによる要求チャレンジの抽出およびデコードができるようになります。
+これらの条件が満たされると、アプリは MSAL.NET `WwwAuthenticateParameters` クラスを使用してクレーム チャレンジを抽出およびデコードできます。
 
 ```csharp
 if (APIresponse.IsSuccessStatusCode)
@@ -64,19 +64,7 @@ else
     if (APIresponse.StatusCode == System.Net.HttpStatusCode.Unauthorized
         && APIresponse.Headers.WwwAuthenticate.Any())
     {
-        AuthenticationHeaderValue bearer = APIresponse.Headers.WwwAuthenticate.First
-            (v => v.Scheme == "Bearer");
-        IEnumerable<string> parameters = bearer.Parameter.Split(',').Select(v => v.Trim()).ToList();
-        var error = GetParameter(parameters, "error");
-
-        if (null != error && "insufficient_claims" == error)
-        {
-            var claimChallengeParameter = GetParameter(parameters, "claims");
-            if (null != claimChallengeParameter)
-            {
-                var claimChallengebase64Bytes = System.Convert.FromBase64String(claimChallengeParameter);
-                var claimChallenge = System.Text.Encoding.UTF8.GetString(claimChallengebase64Bytes);
-                var newAccessToken = await GetAccessTokenWithClaimChallenge(scopes, claimChallenge);
+        string claimChallenge = WwwAuthenticateParameters.GetClaimChallengeFromResponseHeaders(APIresponse.Headers);
 ```
 
 そして、アプリでは要求チャレンジを使用して、リソースに対する新しいアクセス トークンを取得します。
@@ -114,6 +102,7 @@ _clientApp = PublicClientApplicationBuilder.Create(App.ClientId)
 
 ユーザーをアプリケーションにサインインさせてから、Azure portal を使用してユーザーのセッションを取り消すことで、アプリケーションをテストできます。 CAE 対応の API が次にアプリで呼び出されたとき、ユーザーは再認証を行うように求められます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-詳細については、「[継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md)」を参照してください。
+- [継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md)の概念の概要
+- [要求のチャレンジ、クレーム要求、およびクライアントの能力](claims-challenge.md)

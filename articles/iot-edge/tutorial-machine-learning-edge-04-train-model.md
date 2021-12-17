@@ -2,18 +2,17 @@
 title: チュートリアル:モデルのトレーニングとデプロイ - Azure IoT Edge での Machine Learning
 description: このチュートリアルでは、Azure Machine Learning を使用して機械学習モデルをトレーニングし、そのモデルを、Azure IoT Edge モジュールとしてデプロイできるコンテナー イメージとしてパッケージ化します。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16d5fe90be71f39d448e4c1ce10c0373f6bfc86c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7dcc92244e858a475e6ef06ba08b14f0e433dc62
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463104"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726386"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>チュートリアル:Azure Machine Learning モデルをトレーニングしてデプロイする
 
@@ -45,14 +44,14 @@ Machine Learning スタジオは、機械学習モデルの実験、トレーニ
 Machine Learning スタジオを使用して、2 つの Jupyter ノートブックとサポート ファイルをホストします。 ここでは、Machine Learning プロジェクトを作成して構成します。 Jupyter や Machine Learning スタジオを使用したことがない方のために、2 つの入門用ドキュメントをご紹介します。
 
 * **Jupyter ノートブック:** [Visual Studio Code での Jupyter ノートブックの使用](https://code.visualstudio.com/docs/python/jupyter-support)
-* **Azure Machine Learning:** [Jupyter ノートブックで Azure Machine Learning の作業を開始する](../machine-learning/tutorial-1st-experiment-sdk-setup.md)
+* **Azure Machine Learning:** [Jupyter ノートブックで Azure Machine Learning の作業を開始する](../machine-learning/quickstart-create-resources.md)
 
 > [!NOTE]
 > サービスの設定後は、任意のマシンから Machine Learning にアクセスできるようになります。 設定中は、必要なファイルが揃った開発用 VM を使用する必要があります。
 
 ### <a name="install-azure-machine-learning-visual-studio-code-extension"></a>Visual Studio Code の Azure Machine Learning 拡張機能をインストールする
 
-開発用 VM 上の Visual Studio Code には、この拡張機能がインストールされている必要があります。 別のインスタンスで実行している場合は、[Visual Studio Code 拡張機能の設定](../machine-learning/tutorial-setup-vscode-extension.md)に関する記事の説明に従って、拡張機能を再インストールします。
+開発用 VM 上の Visual Studio Code には、この拡張機能がインストールされている必要があります。 別のインスタンスで実行している場合は、[Visual Studio Code 拡張機能の設定](../machine-learning/how-to-setup-vs-code.md)に関する記事の説明に従って、拡張機能を再インストールします。
 
 ### <a name="create-an-azure-machine-learning-account"></a>Azure Machine Learning アカウントを作成する
 

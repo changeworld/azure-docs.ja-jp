@@ -1,420 +1,469 @@
-- name: Azure Maps のドキュメント
-  href: index.yml
-- name: 概要
-  items:
-    - name: Azure Maps とは
-      href: about-azure-maps.md
-- name: クイックスタート
-  expanded: true
-  items:
-    - name: Web アプリを作成する
-      href: quick-demo-map-app.md
-    - name: Android アプリの作成
-      href: quick-android-map.md
-- name: チュートリアル
-  items:
-    - name: Web SDK のチュートリアル
-      items:
-        - name: 目的地を検索する
-          href: tutorial-search-location.md
-        - name: 行き先へのルートを検索する
-          href: tutorial-route-location.md
-        - name: 移動モード別の複数のルート
-          href: tutorial-prioritized-routes.md
-        - name: ストア ロケーターを作成する
-          href: tutorial-create-store-locator.md
-    - name: Android SDK のチュートリアル
-      items:
-        - name: GeoJSON データをマップに読み込む
-          href: tutorial-load-geojson-file-android.md
-    - name: REST API のチュートリアル
-      items:
-        - name: 屋内マップの作成
-          href: tutorial-creator-indoor-maps.md
-        - name: ジオフェンスを設定する
-          href: tutorial-geofence.md
-        - name: 空間分析
-          href: tutorial-iot-hub-maps.md
-        - name: Azure Notebooks (Python) を使用した EV ルーティング
-          href: tutorial-ev-routing.md
-        - name: Azure Notebooks (Python) を使用した気象データの分析
-          href: weather-service-tutorial.md
-    - name: Bing Maps から移行する
-      items:
-        - name: Bing Maps から移行する
-          href: migrate-from-bing-maps.md
-        - name: Web アプリを移行する
-          href: migrate-from-bing-maps-web-app.md
-        - name: Web サービスを移行する
-          href: migrate-from-bing-maps-web-services.md
-    - name: Google Maps から移行する
-      items:
-        - name: Google Maps から移行する
-          href: migrate-from-google-maps.md
-        - name: Web アプリを移行する
-          href: migrate-from-google-maps-web-app.md
-        - name: Android アプリを移行する
-          href: migrate-from-google-maps-android-app.md
-        - name: Web サービスを移行する
-          href: migrate-from-google-maps-web-services.md
-- name: 概念
-  items:
-    - name: Azure Maps による認証
-      href: azure-maps-authentication.md
-    - name: Azure Maps と Event Grid の統合
-      href: azure-maps-event-grid-integration.md
-    - name: 適切な価格レベルの選択
-      href: choose-pricing-tier.md
-    - name: 屋内マップ用の Creator
-      items:
-        - name: 屋内マップの概念
-          href: creator-indoor-maps.md
-        - name: 変換エラーと警告の描画
-          href: drawing-conversion-error-codes.md
-    - name: 対象範囲
-      items:
-        - name: 対象範囲
-          href: geographic-coverage.md
-        - name: ジオコーディングの対象範囲
-          href: geocoding-coverage.md
-        - name: トラフィックの対象範囲
-          href: traffic-coverage.md
-        - name: レンダーの対象範囲
-          href: render-coverage.md
-        - name: ルーティングの対象範囲
-          href: routing-coverage.md
-        - name: モビリティの対象範囲
-          href: mobility-coverage.md
-        - name: 天気の対象範囲
-          href: weather-coverage.md
-    - name: ローカライズ サポート
-      href: supported-languages.md
-    - name: サポートされているマップ スタイル
-      href: supported-map-styles.md
-    - name: ズーム レベルとタイル グリッド
-      href: zoom-levels-and-tile-grid.md
-    - name: モビリティ サービス
-      href: mobility-service-data-structure.md
-    - name: Weather Service の概念
-      href: weather-services-concepts.md
-    - name: Weather Service の FAQ
-      href: weather-services-faq.md
-- name: 操作方法ガイド
-  items:
-    - name: Maps のアカウントを管理する
-      items:
-        - name: Resource Manager テンプレートを使用してアカウントを作成する
-          href: how-to-create-template.md
-        - name: アカウントの管理
-          href: how-to-manage-account-keys.md
-        - name: 認証を管理する
-          href: how-to-manage-authentication.md
-          items:
-            - name: デーモン アプリケーションをセキュリティで保護する方法
-              href: how-to-secure-daemon-app.md
-            - name: 対話型サインインのシングル ページ アプリケーションをセキュリティで保護する方法
-              href: how-to-secure-spa-users.md
-            - name: Web アプリをセキュリティで保護する方法
-              href: how-to-secure-webapp-users.md
-            - name: 非対話型サインインのシングル ページ アプリケーションをセキュリティで保護する方法
-              href: how-to-secure-spa-app.md
-            - name: 入力の制約付きアプリケーションをセキュリティで保護する方法
-              href: how-to-secure-device-code.md
-        - name: 価格レベルを管理する
-          href: how-to-manage-pricing-tier.md
-        - name: Creator の管理
-          href: how-to-manage-creator.md
-        - name: 使用状況メトリックを表示する
-          href: how-to-view-api-usage.md
-    - name: REST API からマップ データを取得する
-      items:
-        - name: 住所を検索する
-          href: how-to-search-for-address.md
-        - name: Search Service の使用に関するベスト プラクティス
-          href: how-to-use-best-practices-for-search.md
-        - name: Route Service の使用に関するベスト プラクティス
-          href: how-to-use-best-practices-for-routing.md
-        - name: 静的マップ上にカスタム データをレンダリングする
-          href: how-to-render-custom-data.md
-        - name: 公共輸送機関のルートを要求する
-          href: how-to-request-transit-data.md
-        - name: 公共輸送機関のリアルタイム データを要求する
-          href: how-to-request-real-time-data.md
-        - name: リアルタイムの天気予報データを要求する
-          href: how-to-request-weather-data.md
-        - name: 標高データを要求する
-          href: how-to-request-elevation-data.md
-    - name: Web SDK を使った開発
-      items:
-        - name: マップ コントロール
-          items:
-            - name: Azure Maps のマップ コントロールを使用する
-              href: how-to-use-map-control.md
-            - name: マップを作成する
-              href: map-create.md
-            - name: マップのスタイルを変更する
-              href: choose-map-style.md
-            - name: マップにコントロールを追加する
-              href: map-add-controls.md
-            - name: データ ソースを作成する
-              href: create-data-source-web-sdk.md
-            - name: シンボル レイヤーを追加する
-              href: map-add-pin.md
-            - name: バブル レイヤーを追加する
-              href: map-add-bubble-layer.md
-            - name: ポップアップを追加する
-              href: map-add-popup.md
-            - name: HTML マーカーを追加する
-              href: map-add-custom-html.md
-            - name: 線レイヤーを追加する
-              href: map-add-line-layer.md
-            - name: 多角形レイヤーを追加する
-              href: map-add-shape.md
-            - name: 多角形浮き出しレイヤーを追加する
-              href: map-extruded-polygon.md
-            - name: ヒート マップ レイヤーを追加する
-              href: map-add-heat-map-layer.md
-            - name: イメージ レイヤーを追加する
-              href: map-add-image-layer.md
-            - name: タイル レイヤーを追加する
-              href: map-add-tile-layer.md
-            - name: 交通情報を表示する
-              href: map-show-traffic.md
-            - name: ポイント データのクラスタリング
-              href: clustering-point-data-web-sdk.md
-            - name: データドリブンのスタイルの式を使用する
-              href: data-driven-style-expressions-web-sdk.md
-            - name: イメージ テンプレートの使用方法
-              href: how-to-use-image-templates-web-sdk.md
-            - name: イベントへの反応
-              href: map-events.md
-            - name: アプリをアクセス可能にする
-              href: map-accessibility.md
-        - name: 描画ツール
-          items:
-            - name: 描画ツール モジュールを使用する
-              href: set-drawing-options.md
-            - name: 描画ツールバーを追加する
-              href: map-add-drawing-toolbar.md
-            - name: 図形データを取得する
-              href: map-get-shape-data.md
-            - name: 描画イベントに応答する
-              href: drawing-tools-events.md
-            - name: 相互作用の種類とキーボード ショートカット
-              href: drawing-tools-interactions-keyboard-shortcuts.md
-        - name: サービス モジュール
-          items:
-            - name: サービス モジュールの使用
-              href: how-to-use-services-module.md
-            - name: 検索結果を表示する
-              href: map-search-location.md
-            - name: 座標から情報を取得する
-              href: map-get-information-from-coordinate.md
-            - name: A から B までのルートを表示する
-              href: map-route.md
-        - name: Indoor Maps モジュール
-          items:
-            - name: Indoor Maps モジュール
-              href: how-to-use-indoor-module.md
-            - name: 屋内マップの動的スタイル
-              href: indoor-map-dynamic-styling.md
-            - name: 描画エラー ビジュアライザー
-              href: drawing-error-visualizer.md
-        - name: 空間 IO モジュール
-          items:
-            - name: 空間 IO モジュールの使用
-              href: how-to-use-spatial-io-module.md
-            - name: シンプルなデータ レイヤーの追加
-              href: spatial-io-add-simple-data-layer.md
-            - name: 空間データの読み取りと書き込み
-              href: spatial-io-read-write-spatial-data.md
-            - name: OGC マップ レイヤーの追加
-              href: spatial-io-add-ogc-map-layer.md
-            - name: WFS サービスへの接続
-              href: spatial-io-connect-wfs-service.md
-            - name: コア操作の活用
-              href: spatial-io-core-operations.md
-            - name: サポートされるデータ形式の詳細
-              href: spatial-io-supported-data-format-details.md
-        - name: Web SDK でサポートされているブラウザー
-          href: supported-browsers.md
-    - name: Android SDK を使った開発
-      items:
-        - name: Android マップ コントロールの概要
-          href: how-to-use-android-map-control-library.md
-        - name: マップのスタイルを変更する
-          href: set-android-map-styles.md
-        - name: マップにコントロールを追加する
-          href: map-add-controls-android.md
-        - name: データ ソースを作成する
-          href: create-data-source-android-sdk.md
-        - name: シンボル レイヤーを追加する
-          href: how-to-add-symbol-to-android-map.md
-        - name: バブル レイヤーを追加する
-          href: map-add-bubble-layer-android.md
-        - name: 機能情報を表示する
-          href: display-feature-information-android.md
-        - name: 線レイヤーを追加する
-          href: android-map-add-line-layer.md
-        - name: 多角形レイヤーを追加する
-          href: how-to-add-shapes-to-android-map.md
-        - name: 多角形浮き出しレイヤーを追加する
-          href: map-extruded-polygon-android.md
-        - name: ヒート マップ レイヤーを追加する
-          href: map-add-heat-map-layer-android.md
-        - name: イメージ レイヤーを追加する
-          href: map-add-image-layer-android.md
-        - name: タイル レイヤーを追加する
-          href: how-to-add-tile-layer-android-map.md
-        - name: トラフィック データを表示する
-          href: how-to-show-traffic-android.md
-        - name: データドリブンの式を使用する
-          href: data-driven-style-expressions-android-sdk.md
-        - name: イベントへの反応
-          href: android-map-events.md
-    - name: Power BI で Azure Maps を使用する
-      items:
-        - name: 作業の開始
-          href: power-bi-visual-getting-started.md
-        - name: レイヤーの理解
-          href: power-bi-visual-understanding-layers.md
-        - name: バブル レイヤーを追加する
-          href: power-bi-visual-add-bubble-layer.md
-        - name: 横棒グラフ レイヤーを追加する
-          href: power-bi-visual-add-bar-chart-layer.md
-        - name: 参照レイヤーを追加する
-          href: power-bi-visual-add-reference-layer.md
-        - name: タイル レイヤーを追加する
-          href: power-bi-visual-add-tile-layer.md
-        - name: リアルタイム トラフィックを表示する
-          href: power-bi-visual-show-real-time-traffic.md
-        - name: アクセスを管理する
-          href: power-bi-visual-manage-access.md
-    - name: データのフィードバックを提供する
-      href: how-to-use-feedback-tool.md
-- name: リファレンス
-  items:
-    - name: API とパラメーターの拡張子
-      items:
-        - name: Drawing パッケージの要件
-          href: drawing-requirements.md
-        - name: 動的マップの StylesObject
-          href: schema-stateset-stylesobject.md
-        - name: 車両消費モデル
-          href: consumption-model.md
-        - name: 拡張された GeoJSON 形式
-          href: extend-geojson.md
-        - name: ジオフェンスの GeoJSON 形式
-          href: geofence-geojson.md
-        - name: サポートされている検索カテゴリ
-          href: supported-search-categories.md
-    - name: REST
-      items:
-        - name: データ サービス
-          href: /rest/api/maps/data
-        - name: 標高サービス
-          href: /rest/api/maps/elevation
-        - name: 位置情報サービス
-          href: /rest/api/maps/geolocation
-        - name: モビリティ サービス
-          href: /rest/api/maps/mobility
-        - name: Render Service
-          href: /rest/api/maps/render
-        - name: Render Service V2
-          href: /rest/api/maps/renderv2
-        - name: Route Service
-          href: /rest/api/maps/route
-        - name: 検索サービス
-          href: /rest/api/maps/search
-        - name: 空間サービス
-          href: /rest/api/maps/spatial
-        - name: タイムゾーン サービス
-          href: /rest/api/maps/timezone
-        - name: Traffic Service
-          href: /rest/api/maps/traffic
-        - name: Weather Service
-          href: /rest/api/maps/weather
-        - name: Maps Creator サービス
-          items:
-            - name: エイリアス サービス
-              href: /rest/api/maps/alias
-            - name: 変換サービス
-              href: /rest/api/maps/conversion
-            - name: データセット サービス
-              href: /rest/api/maps/dataset
-            - name: 機能の状態サービス
-              href: /rest/api/maps/featurestate
-            - name: タイルセット サービス
-              href: /rest/api/maps/tileset
-            - name: WFS サービス
-              href: /rest/api/maps/wfs
-        - name: Maps アカウント管理
-          href: /rest/api/maps-management
-    - name: JavaScript
-      items:
-        - name: マップ コントロール
-          href: /javascript/api/azure-maps-javascript/
-        - name: 描画ツール
-          href: /javascript/api/azure-maps-drawing-tools/
-        - name: サービス モジュール
-          href: /javascript/api/azure-maps-rest/
-        - name: 空間 IO モジュール
-          href: /javascript/api/azure-maps-spatial-io/
-        - name: 屋内モジュール
-          href: /javascript/api/azure-maps-indoor/
-    - name: Resource Manager テンプレート
-      href: /azure/templates/microsoft.maps/accounts
-    - name: Azure CLI
-      href: /cli/azure/maps
-- name: リソース
-  items:
-    - name: サポート オプションとヘルプ オプション
-      href: ../iot-fundamentals/iot-support-help.md
-    - name: Azure IoT のサービス
-      items:
-        - name: IoT Hub
-          href: ../iot-hub/index.yml
-        - name: IoT Hub Device Provisioning Service
-          href: ../iot-dps/index.yml
-        - name: IoT Central
-          href: /microsoft-iot-central/
-        - name: IoT Edge
-          href: ../iot-edge/index.yml
-        - name: IoT ソリューション アクセラレータ
-          href: ../iot-accelerators/index.yml
-        - name: IoT プラグ アンド プレイ
-          href: ../iot-pnp/index.yml
-        - name: Azure Maps
-          href: ./index.yml
-        - name: Time Series Insights
-          href: ../time-series-insights/index.yml
-    - name: Azure IoT SDK
-      items:
-        - name: IoT サービスの SDK
-          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
-        - name: IoT デバイス SDK
-          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
-    - name: Azure Maps の使用条件
-      href: 'https://azure.microsoft.com/support/legal/'
-    - name: Azure Maps の価格
-      href: 'https://azure.microsoft.com/pricing/details/azure-maps'
-    - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Azure Maps のビデオ
-      href: 'https://aka.ms/AzureMapsVideos'
-    - name: オープン ソース プロジェクト
-      href: open-source-projects.md
-    - name: Azure Maps のケース スタディ
-      href: 'https://aka.ms/AzureMapsCaseStudies'
-    - name: Azure Maps の用語集
-      href: glossary.md
-    - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates'
-    - name: Azure IoT デベロッパー センター
-      href: 'https://azure.microsoft.com/develop/iot/'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: 技術的なケース スタディ
-      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
-    - name: IoT School での Azure Maps
-      href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'
+items:
+  - name: Azure Maps のドキュメント
+    href: index.yml
+  - name: 概要
+    items:
+      - name: Azure Maps とは
+        href: about-azure-maps.md
+  - name: クイックスタート
+    expanded: true
+    items:
+      - name: Web アプリを作成する
+        href: quick-demo-map-app.md
+      - name: Android アプリの作成
+        href: quick-android-map.md
+      - name: iOS アプリの作成
+        href: quick-ios-app.md
+  - name: チュートリアル
+    items:
+      - name: Web SDK のチュートリアル
+        items:
+          - name: 目的地を検索する
+            href: tutorial-search-location.md
+          - name: 行き先へのルートを検索する
+            href: tutorial-route-location.md
+          - name: 移動モード別の複数のルート
+            href: tutorial-prioritized-routes.md
+          - name: ストア ロケーターを作成する
+            href: tutorial-create-store-locator.md
+      - name: Android SDK のチュートリアル
+        items:
+          - name: GeoJSON データをマップに読み込む
+            href: tutorial-load-geojson-file-android.md
+      - name: REST API のチュートリアル
+        items:
+          - name: 屋内マップの作成
+            href: tutorial-creator-indoor-maps.md
+          - name: ジオフェンスを設定する
+            href: tutorial-geofence.md
+          - name: 空間分析
+            href: tutorial-iot-hub-maps.md
+          - name: Azure Notebooks (Python) を使用した EV ルーティング
+            href: tutorial-ev-routing.md
+          - name: Azure Notebooks (Python) を使用した気象データの分析
+            href: weather-service-tutorial.md
+      - name: Bing Maps から移行する
+        items:
+          - name: Bing Maps から移行する
+            href: migrate-from-bing-maps.md
+          - name: Web アプリを移行する
+            href: migrate-from-bing-maps-web-app.md
+          - name: Web サービスを移行する
+            href: migrate-from-bing-maps-web-services.md
+      - name: Google Maps から移行する
+        items:
+          - name: Google Maps から移行する
+            href: migrate-from-google-maps.md
+          - name: Web アプリを移行する
+            href: migrate-from-google-maps-web-app.md
+          - name: Android アプリを移行する
+            href: migrate-from-google-maps-android-app.md
+          - name: Web サービスを移行する
+            href: migrate-from-google-maps-web-services.md
+  - name: 概念
+    items:
+      - name: Azure Maps による認証
+        href: azure-maps-authentication.md
+      - name: Azure Maps と Event Grid の統合
+        href: azure-maps-event-grid-integration.md
+      - name: 適切な価格レベルの選択
+        href: choose-pricing-tier.md
+      - name: 屋内マップ用の Creator
+        items:
+          - name: 屋内マップの概念
+            href: creator-indoor-maps.md
+          - name: Creator サービスの地理的スコープ
+            href: creator-geographic-scope.md
+          - name: 変換エラーと警告の描画
+            href: drawing-conversion-error-codes.md
+      - name: 保存データの暗号化
+        href: ../security/fundamentals/encryption-atrest.md
+      - name: 対象範囲
+        items:
+          - name: 対象範囲
+            href: geographic-coverage.md
+          - name: ジオコーディングの対象範囲
+            href: geocoding-coverage.md
+          - name: トラフィックの対象範囲
+            href: traffic-coverage.md
+          - name: レンダーの対象範囲
+            href: render-coverage.md
+          - name: ルーティングの対象範囲
+            href: routing-coverage.md
+          - name: 天気の対象範囲
+            href: weather-coverage.md
+      - name: ローカライズ サポート
+        href: supported-languages.md
+      - name: サポートされているマップ スタイル
+        href: supported-map-styles.md
+      - name: ズーム レベルとタイル グリッド
+        href: zoom-levels-and-tile-grid.md
+      - name: Weather Service の概念
+        href: weather-services-concepts.md
+      - name: Weather Service の FAQ
+        href: weather-services-faq.yml
+  - name: 操作方法ガイド
+    items:
+      - name: Maps のアカウントを管理する
+        items:
+          - name: Resource Manager テンプレートを使用してアカウントを作成する
+            href: how-to-create-template.md
+          - name: アカウントの管理
+            href: how-to-manage-account-keys.md
+          - name: 認証を管理する
+            href: how-to-manage-authentication.md
+            items:
+              - name: デーモン アプリケーションをセキュリティで保護する方法
+                href: how-to-secure-daemon-app.md
+              - name: 対話型サインインのシングル ページ アプリケーションをセキュリティで保護する方法
+                href: how-to-secure-spa-users.md
+              - name: Web アプリをセキュリティで保護する方法
+                href: how-to-secure-webapp-users.md
+              - name: 非対話型サインインのシングル ページ アプリケーションをセキュリティで保護する方法
+                href: how-to-secure-spa-app.md
+              - name: 入力の制約付きアプリケーションをセキュリティで保護する方法
+                href: how-to-secure-device-code.md
+          - name: 価格レベルを管理する
+            href: how-to-manage-pricing-tier.md
+          - name: Creator の管理
+            href: how-to-manage-creator.md
+          - name: 使用状況メトリックを表示する
+            href: how-to-view-api-usage.md
+      - name: REST API からマップ データを取得する
+        items:
+          - name: 住所を検索する
+            href: how-to-search-for-address.md
+          - name: Search Service の使用に関するベスト プラクティス
+            href: how-to-use-best-practices-for-search.md
+          - name: Route Service の使用に関するベスト プラクティス
+            href: how-to-use-best-practices-for-routing.md
+          - name: 静的マップ上にカスタム データをレンダリングする
+            href: how-to-render-custom-data.md
+          - name: リアルタイムの天気予報データを要求する
+            href: how-to-request-weather-data.md
+          - name: 標高データを要求する
+            href: how-to-request-elevation-data.md
+      - name: Web SDK を使った開発
+        items:
+          - name: マップ コントロール
+            items:
+              - name: Azure Maps のマップ コントロールを使用する
+                href: how-to-use-map-control.md
+              - name: マップを作成する
+                href: map-create.md
+              - name: マップのスタイルを変更する
+                href: choose-map-style.md
+              - name: マップにコントロールを追加する
+                href: map-add-controls.md
+              - name: データ ソースを作成する
+                href: create-data-source-web-sdk.md
+              - name: シンボル レイヤーを追加する
+                href: map-add-pin.md
+              - name: バブル レイヤーを追加する
+                href: map-add-bubble-layer.md
+              - name: ポップアップを追加する
+                href: map-add-popup.md
+              - name: HTML マーカーを追加する
+                href: map-add-custom-html.md
+              - name: 線レイヤーを追加する
+                href: map-add-line-layer.md
+              - name: 多角形レイヤーを追加する
+                href: map-add-shape.md
+              - name: 多角形浮き出しレイヤーを追加する
+                href: map-extruded-polygon.md
+              - name: ヒート マップ レイヤーを追加する
+                href: map-add-heat-map-layer.md
+              - name: イメージ レイヤーを追加する
+                href: map-add-image-layer.md
+              - name: タイル レイヤーを追加する
+                href: map-add-tile-layer.md
+              - name: 交通情報を表示する
+                href: map-show-traffic.md
+              - name: ポイント データのクラスタリング
+                href: clustering-point-data-web-sdk.md
+              - name: データドリブンのスタイルの式を使用する
+                href: data-driven-style-expressions-web-sdk.md
+              - name: イメージ テンプレートの使用方法
+                href: how-to-use-image-templates-web-sdk.md
+              - name: イベントへの反応
+                href: map-events.md
+              - name: アプリをアクセス可能にする
+                href: map-accessibility.md
+          - name: 描画ツール
+            items:
+              - name: 描画ツール モジュールを使用する
+                href: set-drawing-options.md
+              - name: 描画ツールバーを追加する
+                href: map-add-drawing-toolbar.md
+              - name: 図形データを取得する
+                href: map-get-shape-data.md
+              - name: スナップ グリッドを追加する
+                href: map-add-snap-grid.md
+              - name: 描画イベントに応答する
+                href: drawing-tools-events.md
+              - name: 相互作用の種類とキーボード ショートカット
+                href: drawing-tools-interactions-keyboard-shortcuts.md
+          - name: サービス モジュール
+            items:
+              - name: サービス モジュールの使用
+                href: how-to-use-services-module.md
+              - name: 検索結果を表示する
+                href: map-search-location.md
+              - name: 座標から情報を取得する
+                href: map-get-information-from-coordinate.md
+              - name: A から B までのルートを表示する
+                href: map-route.md
+          - name: Indoor Maps モジュール
+            items:
+              - name: Indoor Maps モジュール
+                href: how-to-use-indoor-module.md
+              - name: 屋内マップの動的スタイル
+                href: indoor-map-dynamic-styling.md
+              - name: 描画エラー ビジュアライザー
+                href: drawing-error-visualizer.md
+          - name: 空間 IO モジュール
+            items:
+              - name: 空間 IO モジュールの使用
+                href: how-to-use-spatial-io-module.md
+              - name: シンプルなデータ レイヤーの追加
+                href: spatial-io-add-simple-data-layer.md
+              - name: 空間データの読み取りと書き込み
+                href: spatial-io-read-write-spatial-data.md
+              - name: OGC マップ レイヤーの追加
+                href: spatial-io-add-ogc-map-layer.md
+              - name: WFS サービスへの接続
+                href: spatial-io-connect-wfs-service.md
+              - name: コア操作の活用
+                href: spatial-io-core-operations.md
+              - name: サポートされるデータ形式の詳細
+                href: spatial-io-supported-data-format-details.md
+          - name: Web SDK でサポートされているブラウザー
+            href: supported-browsers.md
+          - name: ベスト プラクティス
+            href: web-sdk-best-practices.md
+      - name: Android SDK を使った開発
+        items:
+          - name: Android マップ コントロールの概要
+            href: how-to-use-android-map-control-library.md
+          - name: マップのスタイルを変更する
+            href: set-android-map-styles.md
+          - name: マップにコントロールを追加する
+            href: map-add-controls-android.md
+          - name: データ ソースを作成する
+            href: create-data-source-android-sdk.md
+          - name: シンボル レイヤーを追加する
+            href: how-to-add-symbol-to-android-map.md
+          - name: バブル レイヤーを追加する
+            href: map-add-bubble-layer-android.md
+          - name: 機能情報を表示する
+            href: display-feature-information-android.md
+          - name: 線レイヤーを追加する
+            href: android-map-add-line-layer.md
+          - name: 多角形レイヤーを追加する
+            href: how-to-add-shapes-to-android-map.md
+          - name: 多角形浮き出しレイヤーを追加する
+            href: map-extruded-polygon-android.md
+          - name: ヒート マップ レイヤーを追加する
+            href: map-add-heat-map-layer-android.md
+          - name: イメージ レイヤーを追加する
+            href: map-add-image-layer-android.md
+          - name: タイル レイヤーを追加する
+            href: how-to-add-tile-layer-android-map.md
+          - name: トラフィック データを表示する
+            href: how-to-show-traffic-android.md
+          - name: ポイント データのクラスタリング
+            href: clustering-point-data-android-sdk.md
+          - name: データドリブンの式を使用する
+            href: data-driven-style-expressions-android-sdk.md
+          - name: イベントへの反応
+            href: android-map-events.md
+      - name: iOS SDK を使った開発
+        items:
+          - name: iOS マップ コントロールの概要
+            href: how-to-use-ios-map-control-library.md
+          - name: マップのスタイルを変更する
+            href: set-map-style-ios-sdk.md
+          - name: マップにコントロールを追加する
+            href: add-controls-map-ios.md
+          - name: データ ソースを作成する
+            href: create-data-source-ios-sdk.md
+          - name: シンボル レイヤーを追加する
+            href: add-symbol-layer-ios.md
+          - name: バブル レイヤーを追加する
+            href: add-bubble-layer-map-ios.md
+          - name: 機能情報を表示する
+            href: display-feature-information-ios-sdk.md
+          - name: 線レイヤーを追加する
+            href: add-line-layer-map-ios.md
+          - name: 多角形レイヤーを追加する
+            href: add-polygon-layer-map-ios.md
+          - name: 多角形浮き出しレイヤーを追加する
+            href: add-polygon-extrusion-layer-map-ios.md
+          - name: ヒート マップ レイヤーを追加する
+            href: add-heat-map-layer-ios.md
+          - name: イメージ レイヤーを追加する
+            href: add-image-layer-map-ios.md
+          - name: タイル レイヤーを追加する
+            href: add-tile-layer-map-ios.md
+          - name: トラフィック データを表示する
+            href: show-traffic-data-map-ios-sdk.md
+          - name: ポイント データのクラスタリング
+            href: clustering-point-data-ios-sdk.md
+          - name: データドリブンの式を使用する
+            href: data-driven-style-expressions-ios-sdk.md
+          - name: Reactへのアクセス
+            href: interact-map-ios-sdk.md
+          - name: Azure Maps の Indoor Maps モジュールを使用する
+            href: how-to-use-indoor-module-ios.md
+      - name: Power BI で Azure Maps を使用する
+        items:
+          - name: 作業の開始
+            href: power-bi-visual-getting-started.md
+          - name: レイヤーの理解
+            href: power-bi-visual-understanding-layers.md
+          - name: バブル レイヤーを追加する
+            href: power-bi-visual-add-bubble-layer.md
+          - name: 横棒グラフ レイヤーを追加する
+            href: power-bi-visual-add-bar-chart-layer.md
+          - name: ヒート マップ レイヤーを追加する
+            href: power-bi-visual-add-heat-map-layer.md
+          - name: 参照レイヤーを追加する
+            href: power-bi-visual-add-reference-layer.md
+          - name: タイル レイヤーを追加する
+            href: power-bi-visual-add-tile-layer.md
+          - name: リアルタイム トラフィックを表示する
+            href: power-bi-visual-show-real-time-traffic.md
+          - name: アクセスを管理する
+            href: power-bi-visual-manage-access.md
+          - name: Power Apps で Azure Maps を使用する
+            href: /powerapps/maker/canvas-apps/geospatial-component-map
+      - name: データのフィードバックを提供する
+        href: how-to-use-feedback-tool.md
+  - name: リファレンス
+    items:
+      - name: API とパラメーターの拡張子
+        items:
+          - name: Drawing パッケージの要件
+            href: drawing-requirements.md
+          - name: 描画パッケージ ガイド
+            href: drawing-package-guide.md
+          - name: 動的マップの StylesObject
+            href: schema-stateset-stylesobject.md
+          - name: 車両消費モデル
+            href: consumption-model.md
+          - name: 拡張された GeoJSON 形式
+            href: extend-geojson.md
+          - name: ジオフェンスの GeoJSON 形式
+            href: geofence-geojson.md
+          - name: サポートされている検索カテゴリ
+            href: supported-search-categories.md
+          - name: Facility Ontology
+            href: creator-facility-ontology.md
+      - name: REST
+        items:
+          - name: データ サービス
+            href: /rest/api/maps/data-v2
+          - name: 標高サービス
+            href: /rest/api/maps/elevation
+          - name: 位置情報サービス
+            href: /rest/api/maps/geolocation
+          - name: Render Service
+            href: /rest/api/maps/render
+          - name: Render Service V2
+            href: /rest/api/maps/render-v2
+          - name: Route Service
+            href: /rest/api/maps/route
+          - name: 検索サービス
+            href: /rest/api/maps/search
+          - name: 空間サービス
+            href: /rest/api/maps/spatial
+          - name: タイムゾーン サービス
+            href: /rest/api/maps/timezone
+          - name: Traffic Service
+            href: /rest/api/maps/traffic
+          - name: Weather Service
+            href: /rest/api/maps/weather
+          - name: Maps Creator サービス
+            items:
+              - name: エイリアス サービス
+                href: /rest/api/maps/v2/alias
+              - name: 変換サービス
+                href: /rest/api/maps/v2/conversion
+              - name: データセット サービス
+                href: /rest/api/maps/v2/dataset
+              - name: 機能の状態サービス
+                href: /rest/api/maps/v2/feature-state
+              - name: タイルセット サービス
+                href: /rest/api/maps/v2/tileset
+              - name: WFS サービス
+                href: /rest/api/maps/v2/wfs
+          - name: Maps アカウント管理
+            href: /rest/api/maps-management/
+      - name: JavaScript
+        items:
+          - name: マップ コントロール
+            href: /javascript/api/azure-maps-control/
+          - name: 描画ツール
+            href: /javascript/api/azure-maps-drawing-tools/
+          - name: サービス モジュール
+            href: /javascript/api/azure-maps-rest/
+          - name: 空間 IO モジュール
+            href: /javascript/api/azure-maps-spatial-io/
+          - name: 屋内モジュール
+            href: /javascript/api/azure-maps-indoor/
+      - name: Resource Manager テンプレート
+        href: /azure/templates/microsoft.maps/accounts
+      - name: Azure CLI
+        href: /cli/azure/maps
+  - name: リソース
+    items:
+      - name: サポート オプションとヘルプ オプション
+        href: ../iot-fundamentals/iot-support-help.md?toc=/azure/azure-maps/toc.json&bc=/azure/azure-maps/breadcrumb/toc.json
+      - name: Azure Maps QPS レート制限
+        href: azure-maps-qps-rate-limits.md
+      - name: Azure IoT のサービス
+        items:
+          - name: IoT Hub
+            href: ../iot-hub/index.yml
+          - name: IoT Hub Device Provisioning Service
+            href: ../iot-dps/index.yml
+          - name: IoT Central
+            href: /azure/iot-central/
+          - name: IoT Edge
+            href: ../iot-edge/index.yml
+          - name: IoT プラグ アンド プレイ
+            href: ../iot-develop/index.yml
+          - name: Azure Maps
+            href: ./index.yml
+          - name: Time Series Insights
+            href: ../time-series-insights/index.yml
+      - name: Azure IoT SDK
+        items:
+          - name: IoT サービスの SDK
+            href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
+          - name: IoT デバイス SDK
+            href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
+      - name: Azure Maps の使用条件
+        href: 'https://azure.microsoft.com/support/legal/'
+      - name: Azure Maps の価格
+        href: 'https://azure.microsoft.com/pricing/details/azure-maps/'
+      - name: 料金計算ツール
+        href: 'https://azure.microsoft.com/pricing/calculator/'
+      - name: Azure Maps のビデオ
+        href: 'https://aka.ms/AzureMapsVideos'
+      - name: オープン ソース プロジェクト
+        href: open-source-projects.md
+      - name: Azure Maps のケース スタディ
+        href: 'https://aka.ms/AzureMapsCaseStudies'
+      - name: Azure Maps の用語集
+        href: glossary.md
+      - name: サービスの更新情報
+        href: 'https://azure.microsoft.com/updates/'
+      - name: Azure IoT デベロッパー センター
+        href: 'https://azure.microsoft.com/overview/iot/'
+      - name: Azure のロードマップ
+        href: 'https://azure.microsoft.com/roadmap/?category=iot'
+      - name: 技術的なケース スタディ
+        href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+      - name: IoT School での Azure Maps
+        href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'

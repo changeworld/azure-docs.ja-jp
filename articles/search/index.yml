@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 03/02/2021
-  ms.openlocfilehash: f514b33bb39db2732053102bd69cb853477f67f1
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: ebe6f6d4ce0df3bfc38db012c2f7cdf720f21467
+  ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101677819"
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130066131"
 landingContent:
 - title: Cognitive Search について
   linkLists:
@@ -30,25 +30,31 @@ landingContent:
       url: cognitive-search-concept-intro.md
     - text: インデクサーとは
       url: search-indexer-overview.md
+    - text: Azure Applied AI Services とは
+      url: ../applied-ai-services/what-are-applied-ai-services.md
   - linkListType: video
     links:
     - text: 検索ソリューションで AI を使用する
       url: https://youtu.be/M4Rf1s0WcWQ?t=19
-- title: Azure データのインデックス作成
+- title: アプリの開発
   linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Azure Blob Storage のインデックス
-      url: search-blob-storage-integration.md
-    - text: Azure SQL Database のインデックス
-      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-    - text: Cosmos DB のインデックス
-      url: search-howto-index-cosmosdb.md
   - linkListType: tutorial
     links:
-    - text: 半構造化 BLOB データのインデックスを作成する
-      url: search-semi-structured-data.md
-- title: 10 分間のクイック スタート
+    - text: Web アプリに検索を追加する
+      url: tutorial-csharp-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: .NET での開発
+      url: search-howto-dotnet-sdk.md
+    - text: Postman で REST API を呼び出す
+      url: search-get-started-rest.md
+  - linkListType: reference
+    links:
+    - text: Azure SDK for .NET
+      url: /dotnet/api/overview/azure/search.documents-readme
+    - text: Azure SDK for Python
+      url: /python/api/overview/azure/search-documents-readme
+- title: 開始
   linkLists:
   - linkListType: quickstart
     links:
@@ -58,32 +64,38 @@ landingContent:
       url: search-get-started-portal.md
     - text: デモ アプリを作成する
       url: search-create-app-portal.md
-    - text: 画像およびアプリ ファイルからテキストを抽出する
+    - text: テキストを翻訳してエンティティを認識する
       url: cognitive-search-quickstart-blob.md
-- title: 任意のデータのインデックス作成
+    - text: OCR と画像分析を適用する
+      url: cognitive-search-quickstart-ocr.md
+- title: データのインデックス作成
   linkLists:
-  - linkListType: concept
+  - linkListType: overview
     links:
-    - text: インデックスを定義する
+    - text: データ ソース ギャラリー
+      url: search-data-sources-gallery.md
+    - text: インデックスの作成
       url: search-what-is-an-index.md
     - text: データのインポート
       url: search-what-is-data-import.md
-  - linkListType: reference
+  - linkListType: how-to-guide
     links:
-    - text: インデックスを作成する (REST)
-      url: /rest/api/searchservice/create-index
-    - text: インデクサーを作成する (REST)
-      url: /rest/api/searchservice/create-indexer
+    - text: Azure Blob Storage のインデックス
+      url: search-blob-storage-integration.md
+    - text: Azure SQL Database のインデックス
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: Cosmos DB のインデックス
+      url: search-howto-index-cosmosdb.md
 - title: AI によるエンリッチ
   linkLists:
   - linkListType: concept
     links:
     - text: スキルセット
-      url: cognitive-search-defining-skillset.md
+      url: cognitive-search-working-with-skillsets.md
     - text: ナレッジ ストア
       url: knowledge-store-concept-intro.md
     - text: プロジェクション
-      url: knowledge-store-projections-examples.md
+      url: knowledge-store-projection-overview.md
   - linkListType: how-to-guide
     links:
     - text: Cognitive Services をアタッチする
@@ -92,10 +104,6 @@ landingContent:
       url: cognitive-search-defining-skillset.md
     - text: ナレッジ ストアの作成
       url: knowledge-store-create-portal.md
-  - linkListType: reference
-    links:
-    - text: 組み込みのスキル
-      url: cognitive-search-predefined-skills.md
 - title: クエリ データ
   linkLists:
   - linkListType: concept
@@ -118,13 +126,3 @@ landingContent:
       url: query-odata-filter-orderby-syntax.md
     - text: ドキュメントを検索する (REST)
       url: /rest/api/searchservice/search-documents
-- title: ヘルプとフィードバック
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: よく寄せられる質問
-      url: search-faq-frequently-asked-questions.md
-    - text: Stack Overflow で質問する
-      url: https://stackoverflow.com/questions/tagged/azure-search
-    - text: 機能をリクエストする
-      url: https://feedback.azure.com/forums/263029-azure-search

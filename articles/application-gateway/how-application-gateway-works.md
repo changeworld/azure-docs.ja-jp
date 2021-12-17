@@ -2,17 +2,17 @@
 title: アプリケーション ゲートウェイの動作
 description: この記事では、アプリケーション ゲートウェイが受信要求をどのように受け付け、それらをどのようにバックエンドにルーティングするかについて情報を提供します。
 services: application-gateway
-author: abshamsft
+author: KumudD
 ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
-ms.author: absha
-ms.openlocfilehash: d2055bf812c3dc986a907d4358fa0e74e8af20fa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: kumud
+ms.openlocfilehash: 594bc177afc0de7703ce12ae9e8a1e831431f176
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599665"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124751225"
 ---
 # <a name="how-an-application-gateway-works"></a>アプリケーション ゲートウェイの動作
 

@@ -1,17 +1,18 @@
 ---
 title: パイプライン アクティビティでの Azure Key Vault シークレットの使用
 description: Data Factory パイプラインの実行中に、Azure Key Vault から格納済みの資格情報をフェッチして使用する方法について説明します。
-author: ChrisLound
-ms.author: chlound
+author: nabhishek
+ms.author: abnarain
 ms.service: data-factory
+ms.subservice: security
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: d7e1133b8f3880c4c1616ef5ca955ed014348935
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/22/2021
+ms.openlocfilehash: 09a2c057cbefefc02e40d326eea094e37b092cc5
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383961"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851156"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>パイプライン アクティビティでの Azure Key Vault シークレットの使用
 
@@ -27,19 +28,19 @@ ms.locfileid: "100383961"
 
 1. データ ファクトリのプロパティを開き、マネージド ID アプリケーション ID の値をコピーします。
 
-    ![マネージド ID の値](media/how-to-use-azure-key-vault-secrets-pipeline-activities/managedidentity.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/managedidentity.png" alt-text="マネージド ID の値":::
 
 2. キー コンテナー アクセス ポリシーを開き、シークレットの取得および一覧表示のためのマネージド ID アクセス許可を追加します。
 
-    ![[アクセス ポリシーの追加] 操作が強調して示されている [アクセス ポリシー] ページを示すスクリーンショット。](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png" alt-text="&quot;[アクセス ポリシーの追加]&quot; 操作が強調して示されている &quot;[アクセス ポリシー]&quot; ページを示すスクリーンショット。":::
 
-    ![キー コンテナー アクセス ポリシー](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png" alt-text="キー コンテナー アクセス ポリシー":::
 
     **[追加]** をクリックし、 **[保存]** をクリックします。
 
 3. キー コンテナー シークレットに移動し、シークレット識別子をコピーします。
 
-    ![シークレット識別子](media/how-to-use-azure-key-vault-secrets-pipeline-activities/secretidentifier.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/secretidentifier.png" alt-text="シークレット識別子":::
 
     データ ファクトリ パイプラインの実行中に取得するシークレットの URI をメモしておきます。
 
@@ -53,7 +54,7 @@ ms.locfileid: "100383961"
     |認証     |MSI         |
     |リソース        |https://vault.azure.net       |
 
-    ![Web アクティビティ](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png" alt-text="Web アクティビティ":::
 
     > [!IMPORTANT]
     > シークレットの URI の末尾に **? api-version = 7.0** を追加する必要があります。  
@@ -63,7 +64,7 @@ ms.locfileid: "100383961"
 
 5. この値を別のアクティビティで使用するには、コード式 **@activity('Web1').output.value** を使用します。
 
-    ![コード式](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png" alt-text="コード式":::
 
 ## <a name="next-steps"></a>次のステップ
 

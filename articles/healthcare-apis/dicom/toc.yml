@@ -1,0 +1,49 @@
+items:
+  - name: DICOM サービス
+    href: index.yml
+  - name: 概要
+    expanded: true
+    items:
+      - name: DICOM サービスについて
+        href: dicom-services-overview.md
+  - name: クイックスタート
+    expanded: true
+    items:
+      - name: DICOM サービスを使ってみる
+        href: get-started-with-dicom.md
+      - name: Azure portal を使用して DICOM サービスをデプロイする
+        href: deploy-dicom-services-in-azure.md
+  - name: チュートリアル
+    expanded: true
+    items:
+      - name: C での DICOMweb Standard Api の使用#
+        href: dicomweb-standard-apis-c-sharp.md
+      - name: CURL での DICOMweb Standard Api の使用
+        href: dicomweb-standard-apis-curl.md
+      - name: Python での DICOMweb Standard Api の使用
+        href: dicomweb-standard-apis-python.md
+  - name: 概念
+    expanded: true
+    items:
+      - name: DICOM サービスでの DICOMweb Standard Api の使用
+        href: dicomweb-standard-apis-with-dicom-services.md
+      - name: DICOM 変更フィードの概要
+        href: dicom-change-feed-overview.md
+      - name: DICOM サービス用に Azure Active Directory アプリケーションを登録する
+        href: dicom-register-azure-active-directory-applications.md
+      - name: DICOM サービスで診断ログを有効にする
+        href: enable-diagnostic-logging.md
+  - name: 操作方法ガイド
+    expanded: true
+    items:
+      - name: 変更フィードを使用して DICOM の変更をプルする
+        href: pull-dicom-changes-from-change-feed.md
+  - name: リソース
+    expanded: true
+    items:
+      - name: DICOM サービスの API バージョン管理
+        href: api-versioning-dicom-service.md
+      - name: DICOM 適合性宣言書
+        href: dicom-services-conformance-statement.md
+      - name: FAQ
+        href: dicom-services-faqs.yml

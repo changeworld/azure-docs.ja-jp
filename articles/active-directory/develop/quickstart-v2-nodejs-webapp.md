@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: f7f14b91dc69eeba4ac06f6608f6151634dc38d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0b75b49ce36ef4fb3e45b76ace5402dd5c39efe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103500"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456197"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>クイック スタート:OpenID Connect を使用したサインインを Node.js Web アプリに追加する
 
@@ -31,7 +31,7 @@ ms.locfileid: "100103500"
 ## <a name="register-your-application"></a>アプリケーションの登録
 
 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 1. アプリケーションの **名前** を入力します (例: `MyWebApp`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
@@ -47,7 +47,7 @@ ms.locfileid: "100103500"
 1. **[Front-channel logout URL]\(フロントチャネル ログアウト URL\)** に「`https://localhost:3000`」を入力します。
 1. このサンプルでは、ユーザーをサインインさせるために [暗黙的な許可のフロー](./v2-oauth2-implicit-grant-flow.md)が有効になっている必要があるため、 **[暗黙的な許可およびハイブリッド フロー]** セクションで **[ID トークン]** を選択します。
 1. **[構成]** をクリックします。
-1. **[管理]** で、 **[Certificates & secrets]\(証明書およびシークレット\)**  >  **[新しいクライアント シークレット]** の順に選択します。
+1. **[管理]** で、 **[証明書とシークレット]**  >  **[Client secrets]\(クライアント シークレット\)**  >  **[新しいクライアント シークレット]** の順に選択します。
 1. キーの説明 (インスタンス アプリ シークレット用) を入力します。
 1. キーの有効期間として **[1 年]、[2 年]** 、または **[有効期限なし]** を選択します。
 1. **[追加]** を選択します。 キー値が表示されます。 キー値をコピーし、後で使用できるように安全な場所に保存します。

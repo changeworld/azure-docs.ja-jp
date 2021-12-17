@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - ファイアウォールのテーブルとルールの設定
 description: プライベート クラウド ファイアウォールのテーブルとルールを設定し、サブネットと VLAN でトラフィックを制限する方法について説明します。
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 32dcfb0c6cd26b5f34afad328db8f383fa1c2a6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3629a6e351e5a2769afa8e26a1b7175f50a58700
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895633"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345018"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>プライベート クラウドのファイアウォールのテーブルとルールの設定
 

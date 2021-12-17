@@ -2,18 +2,17 @@
 title: 条件付きコグニティブ スキル
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search の条件付きスキルを使用すると、スキルセット定義でフィルター処理、既定値の作成、値のマージができます。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: f47ca56fa1b40422edeb0d4e11c24be6f60e49e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: acd3a42051fa42821013424ab0410814968b6131
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666355"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860564"
 ---
 # <a name="conditional-cognitive-skill"></a>条件付きコグニティブ スキル
 
@@ -29,7 +28,7 @@ else
 ```
 
 > [!NOTE]
-> このスキルは Azure Cognitive Services API にバインドされていないため、使用しても課金は発生しません。 ただし、1 日あたりのエンリッチメントの数を少数に制限する "無料" リソース オプションをオーバーライドするには、引き続き [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。
+> このスキルは Cognitive Services にバインドされていません。 これは課金対象外で、Cognitive Services の重要な要件はありません。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ConditionalSkill

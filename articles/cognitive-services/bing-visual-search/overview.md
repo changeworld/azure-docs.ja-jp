@@ -3,19 +3,17 @@ title: Bing Visual Search API とは
 titleSuffix: Azure Cognitive Services
 description: Bing Visual Search は、似た画像やショッピング ソースなど、画像に関する詳細または分析情報を提供します。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 12/19/2019
-ms.author: scottwhi
-ms.openlocfilehash: 7dfc704fb38550993adb7835d4500dee890117a8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8574a1272615cb72722e735373bc6609b2890d81
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486982"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669514"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Bing Visual Search API とは
 

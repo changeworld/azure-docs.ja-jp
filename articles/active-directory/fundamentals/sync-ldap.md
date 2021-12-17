@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f34e734b315c7c05ce77f5e168a452fc1c1c547
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61703654b11543f2c0f41fa68964cae287d940b8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96168680"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563751"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>Azure Active Directory との LDAP 同期
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) によって、LDAP 同期を Azure AD Connect
 
 * **Web アプリ**:LDAP v3 ディレクトリに依存しているアプリケーションです。
 
-* **Azure AD**:Azure AD は、Azure AD Connect 経由で組織のオンプレミス LDAP ディレクトリから ID 情報 (ユーザー、グループ、パスワード) を同期します。 
+* **Azure AD**: Azure AD は、Azure AD Connect 経由で組織のオンプレミス LDAP ディレクトリから ID 情報 (ユーザー、グループ) を同期します。 
 
 * **Azure AD Connect**: オンプレミスの ID インフラストラクチャを Microsoft Azure AD に接続するためのツールです。 ウィザードとガイド付きエクスペリエンスは、接続に必要な前提条件とコンポーネントをデプロイおよび構成するのに役立ちます。 
 
@@ -59,5 +59,6 @@ Azure Active Directory (Azure AD) によって、LDAP 同期を Azure AD Connect
 * [LDAP コネクタの概要と作成](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap) 
 
    > [!NOTE]
-   > LDAP コネクタは、Forefront Identity Manager や Microsoft Identity Manager に関する知識を必要とする高度な構成です。 運用環境で使用されている場合、この構成に関するご質問については、[Premier サポート](https://support.microsoft.com/premier)または Microsoft Partner Network を使ってお問い合わせください。
-
+   > LDAP コネクタをデプロイするには詳細な構成が必要であり、このコネクタは制限付きサポートの下で提供されます。 このコネクタを構成するには、Microsoft Identity Manager と特定の LDAP ディレクトリについて理解している必要があります。 
+   >
+   > この構成を運用環境にデプロイする必要があるお客様は、この構成に関する支援、ガイダンス、サポートが得られるよう、Microsoft コンサルティング サービスなどのパートナーと一緒に作業することをお勧めします。

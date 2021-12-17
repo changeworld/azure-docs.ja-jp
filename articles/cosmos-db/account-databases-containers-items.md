@@ -5,19 +5,19 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 07/12/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 4ed881b74f240946d98d9868344c898d3e9a9dad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55ec61dc83aa9821433cd3a53230d9e5c5d545ec
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99627350"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113664910"
 ---
 # <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB リソース モデル
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB はフルマネージドのサービスとしてのプラットフォーム (PaaS) です。 Azure Cosmos DB の使用を開始するには、最初に、Azure サブスクリプション内に Azure Cosmos アカウントを作成し、その下にデータベース、コンテナー、項目を作成する必要があります。 この記事では、Azure Cosmos DB リソース モデルと、リソース モデル階層内のさまざまなエンティティについて説明します。
+Azure Cosmos DB はフルマネージドのサービスとしてのプラットフォーム (PaaS) です。 Azure Cosmos DB を使用するには、最初に、必要なサブスクリプションの Azure リソース グループに Azure Cosmos アカウントを作成してから、その下にデータベース、コンテナー、項目を作成する必要があります。 この記事では、Azure Cosmos DB リソース モデルと、リソース モデル階層内のさまざまなエンティティについて説明します。
 
 Azure Cosmos アカウントは、グローバルな分散と高可用性の基本単位です。 Azure Cosmos アカウントには固有の DNS 名が含まれており、Azure portal または Azure CLI を使用するか、別の言語固有の SDK を使用してアカウントを管理できます。 詳細については、[Azure Cosmos アカウントの管理方法](how-to-manage-database-account.md)に関するページを参照してください。 データやスループットを複数の Azure リージョンにグローバルに分散させる場合は、お使いのアカウントに、いつでも Azure リージョンを追加したり、削除したりすることができます。 アカウントは、単一リージョンまたは複数の書き込みリージョンを持つように構成できます。 詳細については、[アカウントに Azure リージョンを追加および削除する方法](how-to-manage-database-account.md)に関するページを参照してください。 アカウントに対して[既定の一貫性](consistency-levels.md)レベルを構成できます。
 
@@ -155,6 +155,7 @@ Azure Cosmos 項目では、次の操作をサポートします。 Azure Cosmos
 
 Azure Cosmos アカウントの管理方法とその他の概念を確認します。
 
+* 詳細については、Learn モジュール「[Azure Cosmos DB SQL API](/learn/modules/intro-to-azure-cosmos-db-core-api/)」を参照してください。
 * [Azure Cosmos アカウントを管理する方法](how-to-manage-database-account.md)
 * [グローバル配信](distribute-data-globally.md)
 * [一貫性レベル](consistency-levels.md)

@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 09/08/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9b2b97f11c1493deca9b79907e894efbb7b9c456
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: 0bf9eb2eab829e22e72f19fc4da4575166ea2755
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920995"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743348"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>チュートリアル:Azure Data Box Heavy を注文する
 
@@ -60,65 +61,9 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
 
 ## <a name="order-data-box-heavy"></a>Data Box Heavy を注文する
 
-デバイスを注文するには、Azure portal で次の手順を実行します。
+[!INCLUDE [order-data-box-via-portal](../../includes/data-box-order-portal.md)]
 
-1. Microsoft Azure 資格情報を使用して、次の URL にサインインします。[https://portal.azure.com](https://portal.azure.com)
-2. **[+ リソースの作成]** を選択し、*Azure Data Box* を検索します。 **[Azure Data Box]** を選択します。
-    
-   [![Azure Data Box 1 を検索する](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
-
-3. **［作成］** を選択します
-
-4. ご利用のリージョンで Data Box サービスが利用可能かどうかを確認します。 次の情報を入力または選択し、 **[適用]** を選択します。
-
-    |設定  |値  |
-    |---------|---------|
-    |サブスクリプション     | Data Box サービス用の EA、CSP、または Azure スポンサー サブスクリプションを選択します。 <br> サブスクリプションは、課金アカウントにリンクされます。       |
-    |転送の種類     | **[Azure へインポート]** を選択します。        |
-    |ソースの国/地域     | データが現在存在する国/地域を選択します。         |
-    |宛先 Azure リージョン     | データを転送する Azure リージョンを選択します。        |
-
-    [![Data Box ファミリの使用可能性の選択](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
-
-5. **[Data Box Heavy]** を選択します。 1 つの注文での使用可能な最大容量は 770 TB です。
-
-    [![Data Box Heavy の選択](media/data-box-heavy-deploy-ordered/select-data-box-heavy.png)
-
-6. **[注文]** で**注文の詳細**を指定します。 次の情報を入力または選択し、 **[次へ]** を選択します。
-    
-    |設定  |値  |
-    |---------|---------|
-    |名前     | 注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。      |
-    |Resource group     | 既存のグループを使用するか、新しいグループを作成します。 <br> リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。         |
-    |宛先 Azure リージョン     | ストレージ アカウントのリージョンを選択します。 <br> 詳細については、[利用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=databox)に関する記事をご覧ください。        |
-    |保存先     | ストレージ アカウント、マネージド ディスク、またはその両方から選択します。 <br> 指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から 1 つまたは複数のストレージ アカウントを選択します。 <br>Data Box Heavy は、最大 10 個のストレージ アカウントにリンクできます。 <br> 新しい**汎用 v1 アカウント**、**汎用 v2 アカウント**、または **Blob Storage アカウント**を作成することもできます。 <br>[デバイスでサポートされるストレージ アカウント](data-box-heavy-system-requirements.md#supported-storage-accounts)に関する記事を参照してください。 <br>仮想ネットワークに対するストレージ アカウントがサポートされます。 セキュリティで保護されたストレージ アカウントと Data Box サービスとを連携させるには、ストレージ アカウントのネットワーク ファイアウォール設定内で、信頼できるサービスを有効にします。 詳細については、[Azure Data Box サービスを信頼できるサービスとして追加する](../storage/common/storage-network-security.md#exceptions)方法に関する記事を参照してください。|
-
-    保存先としてストレージ アカウントを使用している場合は、以下のようなスクリーンショットが表示されます。
-
-    ![ストレージ アカウントの Data Box Heavy 注文](media/data-box-heavy-deploy-ordered/order-storage-account.png)
-
-    保存先としてのストレージ アカウントに加えて、オンプレミス VHD からマネージド ディスクを作成するために Data Box Heavy を使用している場合は、次の情報を提供する必要があります。
-
-    |設定  |値  |
-    |---------|---------|
-    |リソース グループ     | オンプレミスの VHD からマネージド ディスクを作成する場合は、新しい リソース グループを作成します。 既存のリソース グループを使用できるのは、Data Box サービスでマネージド ディスクの Data Box Heavy 注文を作成するときに、そのリソース グループがすでに作成されていた場合に限られます。 <br> 複数のリソース グループを指定するときは、各リソース グループをセミコロンで区切ります。 サポートされるリソース グループは、最大 10 個です。|
-
-    ![マネージド ディスクの Data Box Heavy 注文](media/data-box-heavy-deploy-ordered/order-managed-disks.png)
-
-    マネージド ディスクに指定されたストレージ アカウントは、ステージング ストレージ アカウントとして使用されます。 VHD は、Data Box サービスにより、ページ BLOB としてステージング ストレージ アカウントにアップロードされた後、マネージド ディスクに変換され、リソース グループに移動されます。 詳細については、「[Azure へのデータのアップロードを確認する](data-box-deploy-picked-up.md#verify-data-upload-to-azure)」を参照してください。
-
-7. **[配送先住所]** に、お客様の氏名、会社の名前と郵送先住所、および有効な電話番号を入力します。 **[住所の確認]** を選択します。 
-
-    配送先住所でサービスが利用可能かどうかが確認されます。 指定した配送先住所でサービスを利用できる場合は、その旨が通知されます。 **[次へ]** を選択します。
-
-8. **[通知の詳細]** で、電子メール アドレスを指定します。 指定した電子メール アドレスに、注文の状態の更新に関する電子メール通知が送信されます。
-
-    グループの管理者が辞めた場合も引き続き通知を受け取ることができるように、グループ メールを使用することをお勧めします。
-
-9. 注文、連絡先、通知、プライバシー条項に関する情報の**概要**を確認します。 プライバシー条項への同意に対応するボックスをオンにします。
-
-10. **[注文]** を選択します。 注文が作成されるまで数分かかります。
-
+お客様の要件について詳しい情報を把握し、Data Box Heavy サービスが目的の場所で利用できるかどうかを確認するために、Data Box チームから連絡を差し上げます。 注文はその確認中、 **[Ordered]\(注文済み\)** 状態のままとなります。 何かの理由で注文を履行できない場合はお客様に通知が届きます。
 
 ## <a name="track-the-order"></a>注文を追跡する
 
@@ -135,7 +80,7 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
 
 ![処理された Data Box Heavy の注文](media/data-box-overview/data-box-order-status-processed.png)
 
-次に、Microsoft は、デバイスを準備して地域の運送業者を通じて発送します。 デバイスが出荷されると、お客様に追跡番号が送信されます。 ポータルには、**出荷済み**状態の注文が表示されます。
+次に、Microsoft は、デバイスを準備して地域の運送業者を通じて発送します。 デバイスが出荷されると、お客様に追跡番号が送信されます。 ポータルには、**出荷済み** 状態の注文が表示されます。
 
 ![発送された Data Box Heavy の注文](media/data-box-overview/data-box-order-status-dispatched.png)
 

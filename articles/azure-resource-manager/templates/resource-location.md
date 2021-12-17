@@ -3,13 +3,13 @@ title: テンプレート リソースの場所
 description: Azure Resource Manager テンプレート (ARM テンプレート) でリソースの場所を設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.custom: ''
-ms.openlocfilehash: 84a818109e6681b8d0e18de4d2d7969310582818
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 686975b73ee2ad0e487fad278f872e7d31753041
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96922395"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960041"
 ---
 # <a name="set-resource-location-in-arm-template"></a>ARM テンプレートでリソースの場所を設定する
 
@@ -97,4 +97,4 @@ az provider show \
 ## <a name="next-steps"></a>次のステップ
 
 * テンプレート関数の完全な一覧については、「[ARM テンプレート関数](template-functions.md)」を参照してください。
-* テンプレート ファイルの詳細については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+* テンプレート ファイルの詳細については、「[ARM テンプレートの構造と構文の詳細](./syntax.md)」を参照してください。

@@ -7,16 +7,16 @@ ms.subservice: migration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: rothja
+ms.author: jroth
+ms.reviewer: mathoma
 ms.date: 01/08/2020
-ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 27ec1843960fc6af057c5b9516e69ec1b484a9df
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724171"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445542"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure サービスのサーバーへのアクセスを許可せずに Azure SQL Database をインポートまたはエクスポートする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,9 +34,9 @@ ms.locfileid: "98724171"
 このテンプレートでは、修正プログラムが適用された最新バージョンを使用して、Windows バージョンのいくつかの異なるオプションを使用して単純な Windows 仮想マシンをデプロイできます。 これにより、A2 サイズの VM がリソース グループの場所にデプロイされ、その VM の完全修飾ドメイン名が返されます。
 <br><br>
 
-[![[Deploy to Azure]\(Azure にデプロイ\) というラベルが付けられたボタンが表示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
+[![[Deploy to Azure]\(Azure にデプロイ\) というラベルが付けられたボタンが表示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-simple-windows%2Fazuredeploy.json)
 
-詳細については、[Windows VM の非常に単純なデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)に関するページを参照してください。
+詳細については、[Windows VM の非常に単純なデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows)に関するページを参照してください。
 
 ## <a name="connect-to-the-virtual-machine"></a>仮想マシンへの接続
 
@@ -44,13 +44,13 @@ ms.locfileid: "98724171"
 
 1. デプロイが完了したら、仮想マシン リソースに移動します。
 
-   ![仮想マシンの [概要] ページ ([接続] ボタンを含む) を示すスクリーンショット。](./media/database-import-export-azure-services-off/vm.png)  
+   ![仮想マシンの [概要] ページ ([接続] ボタンを含む) を示すスクリーンショット。](./media/database-import-export-azure-services-off/vm.png)
 
 2. **[接続]** を選択します。
 
    リモート デスクトップ プロトコル ファイル (.rdp ファイル) のフォームが表示され、仮想マシンのパブリック IP アドレスとポート番号が示されます。
 
-   ![RDP フォーム](./media/database-import-export-azure-services-off/rdp.png)  
+   ![RDP フォーム](./media/database-import-export-azure-services-off/rdp.png)
 
 3. **[RDP ファイルのダウンロード]** を選択します。
 

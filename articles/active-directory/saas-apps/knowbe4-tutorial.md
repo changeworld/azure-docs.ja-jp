@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と KnowBe4 Security Awareness Training の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と KnowBe4 Security Awareness Training の統合'
 description: Azure Active Directory と KnowBe4 Security Awareness Training の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,43 +9,42 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/22/2020
+ms.date: 09/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 77d810fc8327e3777102f2a09f0ca32835aad4b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ccc0d20937fb3986ccfb26ec179cc2f310a32ec
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180763"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310859"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>チュートリアル: Azure Active Directory と KnowBe4 Security Awareness Training の統合
+# <a name="tutorial-azure-ad-sso-integration-with-knowbe4-security-awareness-training"></a>チュートリアル: Azure AD SSO と KnowBe4 Security Awareness Training の統合
 
-このチュートリアルでは、KnowBe4 Security Awareness Training と Azure Active Directory (Azure AD) を統合する方法について説明します。
-KnowBe4 Security Awareness Training と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、KnowBe4 Security Awareness Training と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と KnowBe4 Security Awareness Training を統合すると、次のことが可能になります。
 
-* KnowBe4 Security Awareness Training にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して KnowBe4 Security Awareness Training に自動的にサインイン (シングル サインオン) できるようにすることができます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* KnowBe4 Security Awareness Training にアクセスできる Azure AD ユーザーを制御する。
+* ユーザーが自分の Azure AD アカウントを使用して KnowBe4 Security Awareness Training に自動的にサインインできるようにする。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と KnowBe4 Security Awareness Training の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* KnowBe4 Security Awareness Training シングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* KnowBe4 Security Awareness Training シングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* KnowBe4 Security Awareness Training では、**SP** によって開始される SSO がサポートされます
+* KnowBe4 Security Awareness Training では、**SP** によって開始される SSO がサポートされます。
 
-* KnowBe4 Security Awareness Training では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* KnowBe4 Security Awareness Training では、**Just In Time** ユーザー プロビジョニングがサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
-## <a name="adding-knowbe4-from-the-gallery"></a>ギャラリーから KnowBe4 を追加する
+## <a name="add-knowbe4-from-the-gallery"></a>ギャラリーから KnowBe4 を追加する
 
 Azure AD への KnowBe4 の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に KnowBe4 を追加する必要があります。
 
@@ -56,7 +55,7 @@ Azure AD への KnowBe4 の統合を構成するには、ギャラリーから�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**KnowBe4**」と入力します。
 1. 結果のパネルから **[KnowBe4]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-knowbe4-security-awareness-training"></a>KnowBe4 Security Awareness Training のための Azure AD SSO の構成とテスト
 
 このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、KnowBe4 で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと KnowBe4 内の関連ユーザーの間にリンク関係が確立されている必要があります。
@@ -64,23 +63,23 @@ Azure AD への KnowBe4 の統合を構成するには、ギャラリーから�
 KnowBe4 で Azure AD シングル サインオンを構成してテストするには、次の手順に従います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon を使用して Azure AD SSO をテストします。
-    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD SSO を使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon を使用して Azure AD SSO をテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD SSO を使用できるようにします。
 2. **[KnowBe4 Security Awareness Training の SSO の構成](#configure-knowbe4-security-awareness-training-sso)** - アプリケーション側で SSO 設定を構成します。
-    * **[KnowBe4 Security Awareness Training テスト ユーザーの作成](#create-knowbe4-security-awareness-training-test-user)** - KnowBe4 Security Awareness Training で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+    1. **[KnowBe4 Security Awareness Training テスト ユーザーの作成](#create-knowbe4-security-awareness-training-test-user)** - KnowBe4 Security Awareness Training で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. Azure portal の **KnowBe4** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
     **[サインオン URL]** ボックスに、`https://<companyname>.KnowBe4.com/auth/saml/<instancename>` の形式で URL を入力します。
 
@@ -127,16 +126,16 @@ KnowBe4 で Azure AD シングル サインオンを構成してテストする�
 
 このセクションでは、Britta Simon というユーザーを KnowBe4 内に作成します。 KnowBe4 では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 KnowBe4 にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる KnowBe4 のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる KnowBe4 Security Awareness Training のサインオン URL にリダイレクトされます。 
 
-2. KnowBe4 のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* KnowBe4 Security Awareness Training のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [KnowBe4] タイルをクリックすると、KnowBe4 サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリ で [KnowBe4 Security Awareness Training] タイルをクリックすると、KnowBe4 Security Awareness Training のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-KnowBe4 を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+KnowBe4 Security Awareness Training を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

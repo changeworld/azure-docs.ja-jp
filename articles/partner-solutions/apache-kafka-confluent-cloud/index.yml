@@ -1,0 +1,51 @@
+### YamlMime:Landing
+title: Apache Kafka for Confluent Cloud と Azure の統合
+summary: Apache Kafka をサービスとして利用できるようになります。
+metadata:
+  title: Confluent Cloud と Azure のドキュメント
+  description: Confluent Cloud は Azure と統合され、Apache Kafka がサービスとして提供されます。
+  ms.service: partner-services
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 10/22/2021
+  ms.openlocfilehash: 415012ddb93d0f64e89b82ce6d822b0fd128ce63
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130269124"
+landingContent:
+- title: Azure 上の Confluent Cloud について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Apache Kafka on Confluent Cloud とは
+      url: overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Confluent Cloud リソースを管理する
+      url: manage.md
+- title: Confluent リソースを作成する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Apache Kafka for Confluent Cloud の概要 - Azure portal
+      url: create.md
+    - text: Apache Kafka for Confluent Cloud の概要 - Azure CLI
+      url: create-cli.md
+  - linkListType: how-to-guide
+    links:
+    - text: Confluent Cloud 用のコネクタを追加する
+      url: add-connectors.md
+    - text: Apache Kafka for Confluent Cloud ソリューションのトラブルシューティング
+      url: troubleshoot.md
+- title: リファレンス コンテンツの確認
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/confluent
+    - text: Azure PowerShell
+      url: /powershell/module/az.confluent/#confluent

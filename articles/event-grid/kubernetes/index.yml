@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Azure Arc を使用した Kubernetes 上の Event Grid (プレビュー) のドキュメント
+summary: Kubernetes 上の Event Grid を使用して、Azure Arc に接続されている Kubernetes クラスターで生成された関連イベントに、ほぼリアルタイムで対応する方法について説明します。
+metadata:
+  title: Azure Arc を使用した Kubernetes 上の Event Grid (プレビュー) のドキュメント
+  description: Kubernetes 上の Event Grid を使用して、Azure Arc に接続されている Kubernetes クラスターで生成された関連イベントに、ほぼリアルタイムで対応する方法について説明します。
+  services: event-grid
+  ms.service: event-grid
+  ms.subservice: kubernetes
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 05/25/2021
+  ms.openlocfilehash: 6403b71a1b29a41b47915e8d76cff75535a92066
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110383590"
+landingContent:
+- title: Kubernetes 上の Event Grid について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Kubernetes 上の Event Grid とは
+      url: overview.md
+    - text: 機能
+      url: features.md
+- title: 概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Kubernetes 上の Event Grid の概念
+      url: concepts.md
+    - text: イベント ハンドラー
+      url: event-handlers.md
+    - text: イベント スキーマ
+      url: event-schemas.md
+    - text: イベント スキーマ
+      url: event-schemas.md
+    - text: バッチ イベントの配信
+      url: batch-event-delivery.md
+    - text: バッチ イベントの配信
+      url: delivery-retry.md
+    - text: イベントのフィルター処理
+      url: filter-events.md
+- title: クイックスタートと操作方法
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: トピックとサブスクリプションを作成する
+      url: create-topic-subscription.md
+    - text: Kubernetes クラスターに Event Grid 拡張機能をインストールする
+      url: install-k8s-extension.md
+    - text: サポートを受ける
+      url: get-support.md

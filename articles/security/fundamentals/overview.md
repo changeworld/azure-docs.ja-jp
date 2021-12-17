@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f5438d471b9f203761a1e2237e5a4c4f944c7043
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047781"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337059"
 ---
 # <a name="introduction-to-azure-security"></a>Azure のセキュリティの概要
 
@@ -54,11 +54,11 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 
 このセクションでは、セキュリティ操作を行う上で重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-[Security Center](../../security-center/security-center-introduction.md) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+[Defender for Cloud](../../security-center/security-center-introduction.md) は、Azure リソースのセキュリティを可視化して制御することで、脅威の防止、検出、対応を行うのに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-さらに、Security Center は、すぐに対応できるようにアラートや推奨事項が表示された単一のダッシュ ボードを提供することで、セキュリティ操作に役立てることができます。 多くの場合、Security Center コンソール内で 1 回クリックすれば問題を修復することができます。
+さらに、Defender for Cloud は、すぐに対応できるようにアラートや推奨事項が表示された単一のダッシュ ボードを提供することで、セキュリティ操作に役立てることができます。 多くの場合、Defender for Cloud コンソール内で 1 回クリックすれば問題を修復することができます。
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -86,7 +86,7 @@ Azure Monitor ログは、フォレンジック分析などのセキュリティ
 
 ### <a name="azure-advisor"></a>Azure Advisor
 
-[Azure Advisor](../../advisor/advisor-overview.md) は、Azure のデプロイの最適化に役立つ、個人用に設定されたクラウド コンサルタントです。 Azure Advisor では、リソース構成と使用量テレメトリを分析します。 次に、[Azure の全体的な使用量を削減する](../../advisor/advisor-cost-recommendations.md)機会を探すと同時に、[パフォーマンス](../../advisor/advisor-performance-recommendations.md)、[セキュリティ](../../advisor/advisor-security-recommendations.md)、リソースの[信頼性](../../advisor/advisor-high-availability-recommendations.md)の向上に役立つソリューションを提案します。 Azure Advisor では、Azure にデプロイするソリューションの全体的なセキュリティの状況を大幅に改善することができる提案を行います。 これらの提案は [Azure Security Center](../../security-center/security-center-introduction.md) で実施されるセキュリティ分析に基づいています。
+[Azure Advisor](../../advisor/advisor-overview.md) は、Azure のデプロイの最適化に役立つ、個人用に設定されたクラウド コンサルタントです。 Azure Advisor では、リソース構成と使用量テレメトリを分析します。 次に、[Azure の全体的な使用量を削減する](../../advisor/advisor-cost-recommendations.md)機会を探すと同時に、[パフォーマンス](../../advisor/advisor-performance-recommendations.md)、[セキュリティ](../../advisor/advisor-security-recommendations.md)、リソースの[信頼性](../../advisor/advisor-high-availability-recommendations.md)の向上に役立つソリューションを提案します。 Azure Advisor では、Azure にデプロイするソリューションの全体的なセキュリティの状況を大幅に改善することができる提案を行います。 これらの提案は [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) で実施されるセキュリティ分析に基づいています。
 
 ## <a name="applications"></a>アプリケーション
 
@@ -288,15 +288,15 @@ NSG に対して、以下の診断ログ カテゴリを有効にできます。
 
 - ルール カウンター:トラフィックを拒否または許可するために各 NSG ルールが適用された回数に関するエントリが含まれます。
 
-### <a name="security-center"></a>Security Center
+### <a name="defender-for-cloud"></a>Defender for Cloud
 
-[Azure Security Center](../../security-center/security-center-introduction.md) では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/security-center-recommendations.md)が作成されます。
+[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) により、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Defender for Cloud によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/security-center-recommendations.md)が作成されます。
 
 ## <a name="compute"></a>Compute
 このセクションでは、この領域の重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="antimalware--antivirus"></a>マルウェア対策とウイルス対策ソフトウェア
-Azure IaaS では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。 Azure Cloud Services および Azure Virtual Machines に対する [Microsoft Antimalware](antimalware.md)は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つ保護機能です。 Microsoft Antimalware は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。 Microsoft Antimalwareは、Azure Security Center を使用してデプロイすることもできます。
+Azure IaaS では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。 Azure Cloud Services および Azure Virtual Machines に対する [Microsoft Antimalware](antimalware.md)は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つ保護機能です。 Microsoft Antimalware は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。 Microsoft Antimalware は、Microsoft Defender for Cloud を使用してデプロイすることもできます。
 
 ### <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
 暗号化と認証は、キー自体が保護されない限り、セキュリティを向上させません。 大切な秘密情報とキーを [Azure Key Vault](../../key-vault/general/overview.md) に格納することで、それらの管理とセキュリティ保護をシンプルにできます。 Key Vault では、オプションとして、キーを保管するためのハードウェア セキュリティ モジュール (HSM) が提供されています。HSM は FIPS 140-2 レベル 2 標準に準拠しています。 バックアップまたは [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) 用の SQL Server 暗号化キーに加えて、アプリケーションのすべてのキーや秘密情報を Key Vault に格納できます。 保護されたこれらのアイテムに対するアクセス許可とアクセスは、[Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) を通して管理されます。
@@ -324,7 +324,7 @@ SQL Server をオンプレミス マシンで実行している場合、いく�
 修正プログラムは潜在的な問題を見つけて修正するための基盤となるだけでなく、社内でデプロイする必要のあるソフトウェア更新プログラムの数を削減し、コンプライアンスを監視する機能を強化することにより、ソフトウェア更新管理プロセスを簡略化します。
 
 ### <a name="security-policy-management-and-reporting"></a>セキュリティ ポリシーの管理とレポート
-[Security Center](../../security-center/security-center-introduction.md) は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+[Defender for Cloud](../../security-center/security-center-introduction.md) は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
 システム、アプリケーション、およびデータのセキュリティ保護は、ID ベースのアクセス制御から始まります。 Microsoft のビジネス製品およびサービスに組み込まれている ID およびアクセス管理機能は、正規ユーザーが必要とするときはいつでもどこでも利用できるようにする一方で、組織および個人情報を不正アクセスから保護します。
@@ -363,10 +363,10 @@ Microsoft では、複数のセキュリティ上の方法およびテクノロ�
 
 - [Azure Active Directory の参加](../../active-directory/devices/overview.md)によって、クラウド機能を Windows 10 デバイスに拡張し、集中管理することができます。 ユーザーが Azure Active Directory を介して企業や組織のクラウドに接続できるようになり、アプリやリソースへのアクセスが簡略化されます。
 
-- [Azure Active Directory アプリケーション プロキシ](../../active-directory/manage-apps/application-proxy.md)は、オンプレミスでホストされた Web アプリケーションに対する SSO およびセキュリティ保護されたリモート アクセスを提供します。
+- [Azure Active Directory アプリケーション プロキシ](../../active-directory/app-proxy/application-proxy.md)は、オンプレミスでホストされた Web アプリケーションに対する SSO およびセキュリティ保護されたリモート アクセスを提供します。
 
 ## <a name="next-steps"></a>次の手順
 
 - [クラウドにおける共同責任](shared-responsibility.md)について理解します。
 
-- [Azure Security Center](../../security-center/security-center-introduction.md) で、Azure リソースのセキュリティを高度に視覚化して制御することで、脅威の回避、検出、対応を支援する方法について確認します。
+- [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) を使用して、Azure リソースのセキュリティを可視化して制御することで、脅威の防止、検出、対応を行う方法について学習します。

@@ -3,14 +3,14 @@ title: Azure Functions で Function App の設定を構成する
 description: Azure Functions で Function App の設定を構成する方法について説明します。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: ed87a5a744defb15d4a898aeabdce5267b7431fe
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 01/21/2021
+ms.custom: cc996988-fb4f-47, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: aac032247383fe1e0b1e181c0d78864ecda778e7
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775657"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831370"
 ---
 # <a name="manage-your-function-app"></a>お使いの Function App の管理 
 
@@ -32,9 +32,11 @@ Azure Functions では、 Function App に個々の関数の実行コンテキ�
 
 ## <a name="work-with-application-settings"></a><a name="settings"></a>アプリケーション設定を操作する
 
-[Azure portal](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) から、および [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) や [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings) を使用して、アプリケーション設定を管理することができます。 アプリケーション設定は [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) から、および [Visual Studio](functions-develop-vs.md#function-app-settings) から管理することもできます。 
+関数コードに必要なアプリケーション設定は、いくつでも作成できます。 Functions で使用される定義済みのアプリケーション設定もあります。 詳細については、「[Azure Functions のアプリケーション設定のリファレンス](functions-app-settings.md)」を参照してください。
 
 これらの設定は暗号化されて格納されます。 詳細については、[アプリケーション設定のセキュリティ](security-concepts.md#application-settings)に関する記述を参照してください。
+
+[Azure portal](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) から、および [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) や [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings) を使用して、アプリケーション設定を管理することができます。 アプリケーション設定は [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) から、および [Visual Studio](functions-develop-vs.md#function-app-settings) から管理することもできます。 
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
@@ -44,7 +46,7 @@ Azure Functions では、 Function App に個々の関数の実行コンテキ�
 
 ![Azure portal の Function App の設定。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_list) コマンドでは、次の例のように、既存のアプリケーションの設定を返します。
 
@@ -62,7 +64,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --settings CUSTOM_FUNCTION_APP_SETTING=12345
 ```
 
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 [`Get-AzFunctionAppSetting`](/powershell/module/az.functions/get-azfunctionappsetting) コマンドレットからは、次の例のように、既存のアプリケーション設定が返されます。 
 
@@ -82,7 +84,7 @@ Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOUR
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-ローカルで Function App を開発する場合、これらの値を、local.settings.json プロジェクト ファイルにローカルのコピーとして保持する必要があります。 詳細については、[ローカルの設定ファイル](functions-run-local.md#local-settings-file)に関するページを参照してください。
+ローカルで Function App を開発する場合、これらの値を、local.settings.json プロジェクト ファイルにローカルのコピーとして保持する必要があります。 詳細については、[ローカルの設定ファイル](functions-develop-local.md#local-settings-file)に関するページを参照してください。
 
 ## <a name="hosting-plan-type"></a>ホスティング プランの種類
 
@@ -104,7 +106,7 @@ Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOUR
 
 ![ポータルでのスケーリング プランの表示](./media/functions-scale/function-app-overview-portal.png)
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 次の Azure CLI コマンドを実行して、ホスティング プランの種類を取得します。
 
@@ -118,7 +120,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 前の例で、`<RESOURCE_GROUP>` と `<FUNCTION_APP_NAME>` はリソース グループと Function App の名前にそれぞれ置き換えてください。 
 
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 次の Azure PowerShell コマンドを実行して、ホスティング プランの種類を取得します。
 
@@ -202,6 +204,52 @@ Windows で Premium プランから従量課金プランに移行するには、
     ```azurecli-interactive
     az functionapp plan delete --name <PREMIUM_PLAN> --resource-group <MY_RESOURCE_GROUP>
     ```
+
+## <a name="get-your-function-access-keys"></a>関数のアクセス キーを取得する
+
+HTTP によってトリガーされる関数は、`https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>` という形式の URL を使用して呼び出すのが一般的です。 関数に対する承認を `anonymous` 以外の値に設定する場合は、要求にアクセス キーも指定する必要があります。 アクセス キーは URL の中で `?code=` クエリ文字列を使用して指定するか、または要求ヘッダーで指定することができます。 詳細については、「[関数のアクセス キー](functions-bindings-http-webhook-trigger.md#authorization-keys)」を参照してください。 アクセス キーは、いくつかの方法で取得できます。 
+
+# <a name="portal"></a>[ポータル](#tab/portal)
+
+1. Azure portal にサインインし、"**関数アプリ**" を検索して選択します。
+
+1. 検証する関数を選択します。
+
+1. 左側のナビゲーションの **[Functions]\(関数\)** で、 **[アプリ キー]** を選択します。
+
+    これによってホスト キーが返されます。ホスト キーを使用すると、アプリ内の任意の関数にアクセスすることができます。 また、システム キーも返されます。システム キーは、すべての関数アプリの API に対する管理者レベルのアクセスを提供します。   
+
+HTTP によってトリガーされる関数の **[開発者]** で **[関数キー]** を選択し、特定の関数キーのためだけのキーを使用することによって、最小限の特権を実践することもできます。 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure Cloud Shell で次のスクリプトを実行します。関数アプリ内の、HTTP によってトリガーされるすべての関数へのアクセスに使用できる[既定の (ホスト) キー](functions-bindings-http-webhook-trigger.md#authorization-scopes-function-level)が出力として得られます。
+
+```azurecli-interactive
+subName='<SUBSCRIPTION_ID>'
+resGroup=AzureFunctionsContainers-rg
+appName=glengagtestdocker
+path=/subscriptions/$subName/resourceGroups/$resGroup/providers/Microsoft.Web/sites/$appName/host/default/listKeys?api-version=2018-11-01
+az rest --method POST --uri $path --query functionKeys.default --output tsv
+```
+
+このスクリプトの `<SUBSCRIPTION_ID>` と `<APP_NAME>` は、それぞれ実際のサブスクリプションの ID と関数アプリの名前に置き換えてください。 このスクリプトは、Cloud Shell の Bash で動作します。 Windows コマンド プロンプトから実行するためには変更を加える必要があります。  
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+次のスクリプトを実行すると、関数アプリ内の、HTTP によってトリガーされるすべての関数へのアクセスに使用できる[既定の (ホスト) キー](functions-bindings-http-webhook-trigger.md#authorization-scopes-function-level)が出力として得られます。 
+
+```powershell-interactive
+$subName = '<SUBSCRIPTION_ID>'
+$rGroup = 'AzureFunctionsContainers-rg'
+$appName = '<APP_NAME>'
+$path = "/subscriptions/$subName/resourceGroups/$rGroup/providers/Microsoft.Web/sites/$appName/host/default/listKeys?api-version=2018-11-01"
+((Invoke-AzRestMethod -Path $path -Method POST).Content | ConvertFrom-JSON).functionKeys.default
+```
+
+このスクリプトの `<SUBSCRIPTION_ID>` と `<APP_NAME>` は、それぞれ実際のサブスクリプションの ID と関数アプリの名前に置き換えてください。 
+
+---
 
 ## <a name="platform-features"></a>プラットフォーム機能
 

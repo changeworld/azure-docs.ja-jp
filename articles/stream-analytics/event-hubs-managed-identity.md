@@ -1,28 +1,25 @@
 ---
-title: Azure Stream Analytics ジョブからマネージド ID を使用してイベント ハブにアクセスする (プレビュー)
+title: Azure Stream Analytics ジョブからマネージド ID を使用してイベント ハブにアクセスする
 description: この記事では、マネージド ID を使用して、Azure Event Hubs の入力と出力に対して Azure Stream Analytics ジョブの認証を行う方法について説明します。
-author: sidramadoss
-ms.author: sidram
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 01/04/2021
-ms.openlocfilehash: 4dc718f21f2ef3beabc31821bd60b571ac07be05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/07/2021
+ms.openlocfilehash: 4b470ff5336807fd92ae14af2548cd3a4305c6ed
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018753"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113485907"
 ---
-# <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics ジョブからマネージド ID を使用してイベント ハブにアクセスする (プレビュー)
+# <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブからマネージド ID を使用してイベント ハブにアクセスする
 
 Azure Stream Analytics では、Azure Event Hubs の入力と出力の両方に対してマネージド ID 認証がサポートされています。 マネージド ID を使用すると、パスワードの変更や 90 日ごとに発生するユーザー トークンの有効期限切れによる再認証の必要性など、ユーザー ベースの認証方法の制限がなくなります。 手動による認証の必要がなくなると、Stream Analytics のデプロイを完全に自動化できます。  
 
 マネージド ID は、特定の Stream Analytics ジョブを表す、Azure Active Directory に登録済みのマネージド アプリケーションです。 ファイアウォールや仮想ネットワーク (VNet) の背後にある Event Hubs など、対象のリソースに対して認証を行うためにマネージド アプリケーションが使用されます。 ファイアウォールをバイパスする方法の詳細については、「[プライベート エンドポイント経由での Azure Event Hubs 名前空間へのアクセスを許可する](../event-hubs/private-link-service.md#trusted-microsoft-services)」を参照してください。
 
 この記事では、Azure portal を使用して、Stream Analytics ジョブの Event Hubs の入力または出力に対してマネージド ID を有効にする方法を示します。 マネージド ID を有効にする前に、まず Stream Analytics ジョブと イベント ハブ リソースを用意する必要があります。
-
-### <a name="limitation"></a>制限事項
-プレビュー期間中にマネージド ID 認証モードを使用すると、Azure portal にある Event Hubs からのサンプリング入力が機能しなくなります。
 
 ## <a name="create-a-managedidentity"></a>マネージド ID を作成する  
 
@@ -63,6 +60,9 @@ Stream Analytics ジョブでマネージド ID を使用してイベント ハ�
 1. **[保存]** を選択し、変更が伝搬されるまで 1 分ほど待機します。
 
 また、このロールをイベント ハブ名前空間レベルで付与することもできます。これにより、その下に作成されたすべてのイベント ハブにアクセス許可が自然に伝搬されます。 つまり、名前空間の下にあるすべてのイベント ハブを、Stream Analytics ジョブでマネージド ID 認証リソースとして使用できます。
+
+> [!NOTE]
+> グローバル レプリケーションまたはキャッシュの待機時間が原因で、アクセス許可が取り消されたり付与されたりすると、遅延が発生することがあります。 変更は 8 分以内に反映される必要があります。
 
 ## <a name="create-anevent-hub-input-or-output"></a>イベント ハブの入力または出力を作成する  
 

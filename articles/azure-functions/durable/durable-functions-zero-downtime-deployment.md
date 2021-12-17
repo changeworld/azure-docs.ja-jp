@@ -3,15 +3,15 @@ title: Durable Functions のためのゼロダウンタイムのデプロイ
 description: ゼロダウンタイムのデプロイのために Durable Functions オーケストレーションを有効にする方法について説明します。
 author: tsushi
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 05/11/2021
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 707d624c47c536e00e98910a8902772703733515
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39f05737b84676fc4e993293c06a87d3b35a4ca5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558765"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332442"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions のためのゼロダウンタイムのデプロイ
 
@@ -29,6 +29,11 @@ Durable Functions の[信頼性の高い実行モデル](./durable-functions-orc
 | [スロットでの状態チェック](#status-check-with-slot) | 24 時間以上続く長時間のオーケストレーションまたは頻繁に重複するオーケストレーションが存在しないシステム。 | シンプルなコード ベース。<br/>追加の関数アプリ管理が不要。 | 追加のストレージ アカウントまたはタスク ハブの管理が必要である。<br/>オーケストレーションが実行されていない時間帯が必要である。 |
 | [アプリケーション ルーティング](#application-routing) | 24 時間以上続くオーケストレーションや、頻繁に重複するオーケストレーションの期間など、オーケストレーションが実行されていない期間がないシステム。 | 破壊的変更を伴うオーケストレーションが継続的に実行されている新しいバージョンのシステムを処理する。 | インテリジェントなアプリケーション ルーターが必要。<br/>サブスクリプションで許可されている関数アプリの最大数を超える可能性。 既定値は、100 です。 |
 
+このドキュメントの残りの部分では、これらの戦略について詳しく説明します。
+
+> [!NOTE]
+> これらのゼロダウンタイム デプロイ戦略の説明では、Durable Functions に既定の Azure Storage プロバイダーを使用していることを前提としています。 既定の Azure Storage プロバイダー以外のストレージ プロバイダーを使用している場合は、ガイダンスが適切でないことがあります。 さまざまなストレージ プロバイダーのオプションとその比較については、[Durable Functions ストレージ プロバイダー](durable-functions-storage-providers.md)に関するドキュメントを参照してください。
+
 ## <a name="versioning"></a>バージョン管理
 
 関数の新しいバージョンを定義し、関数アプリでは古いバージョンのままにします。 図を見るとわかるように、関数のバージョンが名前の一部になります。 以前のバージョンの関数が保持されるため、実行中のオーケストレーション インスタンスは引き続きそれらを参照できます。 一方で、新しいオーケストレーション インスタンスに対する要求では最新バージョンが呼び出され、オーケストレーション クライアント関数はアプリ設定から参照できます。
@@ -37,8 +42,8 @@ Durable Functions の[信頼性の高い実行モデル](./durable-functions-orc
 
 この戦略では、すべての関数をコピーし、他の関数への参照を更新する必要があります。 スクリプトを記述することで簡単にできます。 次に示すのは、移行スクリプトを使用した[サンプル プロジェクト](https://github.com/TsuyoshiUshio/DurableVersioning)です。
 
->[!NOTE]
->この戦略では、デプロイ スロットを使用して、デプロイ時のダウンタイムが回避されます。 新しいデプロイ スロットを作成して使用する方法の詳細については、「[Azure Functions デプロイ スロット](../functions-deployment-slots.md)」を参照してください。
+> [!NOTE]
+> この戦略では、デプロイ スロットを使用して、デプロイ時のダウンタイムが回避されます。 新しいデプロイ スロットを作成して使用する方法の詳細については、「[Azure Functions デプロイ スロット](../functions-deployment-slots.md)」を参照してください。
 
 ## <a name="status-check-with-slot"></a>スロットでの状態チェック
 
@@ -50,7 +55,7 @@ Durable Functions の[信頼性の高い実行モデル](./durable-functions-orc
 
 1. ステージングと運用のために、関数アプリに[デプロイ スロットを追加します](../functions-deployment-slots.md#add-a-slot)。
 
-1. スロットごとに、共有ストレージ アカウントの接続文字列に [AzureWebJobsStorage アプリケーション設定](../functions-app-settings.md#azurewebjobsstorage)を設定します。 このストレージ アカウント接続文字列は Azure Functions ランタイムで使用されます。 このアカウントは Azure Functions ランタイムによって使用され、このアカウントで関数のキーを管理します。
+1. スロットごとに、共有ストレージ アカウントの接続文字列に [AzureWebJobsStorage アプリケーション設定](../functions-app-settings.md#azurewebjobsstorage)を設定します。 このストレージ アカウント接続文字列は、[関数のアクセス キー](../security-concepts.md#function-access-keys)を安全に格納するために Azure Functions ランタイムによって使用されます。
 
 1. スロットごとに、新しいアプリ設定を作成します (例: `DurableManagementStorage`)。 その値を異なるストレージ アカウントの接続文字列に設定します。 これらのストレージ アカウントは、[信頼性の高い実行](./durable-functions-orchestrations.md)のために Durable Functions 拡張機能によって使用されます。 スロットごとに個別のストレージ アカウントを使用します。 この設定をデプロイ スロットの設定としてマークしないでください。
 
@@ -60,42 +65,42 @@ Durable Functions の[信頼性の高い実行モデル](./durable-functions-orc
 
 ![デプロイ スロットとストレージ アカウント](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples&quot;></a>host.json の例
+### <a name="hostjson-examples"></a>host.json の例
 
 次の JSON フラグメントは、*host.json* ファイルでの接続文字列の設定の例です。
 
-#### <a name=&quot;functions-20&quot;></a>Functions 2.0
+#### <a name="functions-20"></a>Functions 2.0
 
 ```json
 {
-  &quot;version&quot;: 2.0,
-  &quot;extensions&quot;: {
-    &quot;durableTask&quot;: {
-      &quot;hubName&quot;: &quot;MyTaskHub&quot;,
-      &quot;storageProvider&quot;: {
-        &quot;connectionStringName&quot;: &quot;DurableManagementStorage&quot;
+  "version": 2.0,
+  "extensions": {
+    "durableTask": {
+      "hubName": "MyTaskHub",
+      "storageProvider": {
+        "connectionStringName": "DurableManagementStorage"
       }
     }
   }
 }
 ```
 
-#### <a name=&quot;functions-1x&quot;></a>Functions 1.x
+#### <a name="functions-1x"></a>Functions 1.x
 
 ```json
 {
-  &quot;durableTask&quot;: {
-    &quot;azureStorageConnectionStringName&quot;: &quot;DurableManagementStorage&quot;
+  "durableTask": {
+    "azureStorageConnectionStringName": "DurableManagementStorage"
   }
 }
 ```
 
-### <a name=&quot;cicd-pipeline-configuration&quot;></a>CI/CD パイプラインの構成
+### <a name="cicd-pipeline-configuration"></a>CI/CD パイプラインの構成
 
 関数アプリに保留中または実行中のオーケストレーション インスタンスがない場合にのみデプロイするように、CI/CD パイプラインを構成します。 Azure Pipelines を使用する場合は、次の例のように、これらの条件がチェックされる関数を作成できます。
 
 ```csharp
-[FunctionName(&quot;StatusCheck")]
+[FunctionName("StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
     [DurableClient] IDurableOrchestrationClient client,

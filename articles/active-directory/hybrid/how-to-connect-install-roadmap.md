@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae575aa6544a174a70eb8ea4749566e8660280e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bf80f24aca889a57896bcb0768d4727cae9440a
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94873269"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110225"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect と Azure AD Connect Health のインストール ロードマップ
 
@@ -155,7 +155,7 @@ Azure AD Connect Health の使用を開始するには、次の手順に従い�
 Azure AD Connect Health ポータルでは、アラート、パフォーマンスの監視、使用状況の分析に関するビューが表示されます。 [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth ) URL で Azure AD Connect Health のメイン ブレードに移動することができます。 ブレードは、ウィンドウと考えることができます。 メイン ブレードでは、 **[クイック スタート]** 、Azure AD Connect Health で提供されるサービス、その他の構成オプションが表示されます。 次のスクリーンショットとそれに続く簡単な説明をご覧ください。 エージェントのデプロイ後、Azure AD Connect Health で監視されているサービスが、Health サービスによって自動的に識別されます。
 
 > [!NOTE]
-> ライセンスの情報については、[Azure AD Connect Health の FAQ](reference-connect-health-faq.md) または [Azure AD の価格に関するページ](https://aka.ms/aadpricing)を参照してください。
+> ライセンスの情報については、[Azure AD Connect Health の FAQ](reference-connect-health-faq.yml) または [Azure AD の価格に関するページ](https://aka.ms/aadpricing)を参照してください。
     
 ![Azure AD Connect Health ポータル](./media/whatis-hybrid-identity-health/portalsidebar.png)
 

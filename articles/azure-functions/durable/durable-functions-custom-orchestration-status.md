@@ -2,29 +2,29 @@
 title: Durable Functions でのカスタムオーケストレーションの状態 - Azure
 description: Durable Functions 用のカスタム オーケストレーションの状態を構成し使用する方法を説明します。
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 05/10/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 4a95e7c74fac7043d0adb5f31d2bdcdd73b9577a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de74c2d8c4e7abf5735dad0b1c04f2cce88aa2c1
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97766330"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370928"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions でのカスタムオーケストレーションの状態 (Azure Functions)
 
-カスタムオーケストレーションの状態を使用すると、オーケストレーター関数のカスタム状態値を設定できます。 この状態は、オーケストレーション クライアントで [HTTP GetStatus API](durable-functions-http-api.md#get-instance-status) または [`GetStatusAsync` API](durable-functions-instance-management.md#query-instances) を通して提供されます。
+カスタムオーケストレーションの状態を使用すると、オーケストレーター関数のカスタム状態値を設定できます。 この状態は、オーケストレーション クライアント オブジェクトで [HTTP GetStatus API](durable-functions-http-api.md#get-instance-status) または同等の [SDK API](durable-functions-instance-management.md#query-instances) を通して提供されます。
 
 ## <a name="sample-use-cases"></a>サンプル ユース ケース
-
-> [!NOTE]
-> 次のサンプルでは、C#、JavaScript、Python でカスタム ステータス機能を使用する方法を示しています。 C# の例は Durable Functions 2.x 用に記述されており、Durable Functions 1.x とは互換性がありません。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 ### <a name="visualize-progress"></a>進行状況を視覚化
 
 クライアントは、状態の終了点をポーリングし、進行状況の現在の実行のステージを視覚化する UI を表示できます。 次の例では、進行状況の共有を示しています:
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+> [!NOTE]
+> これらの C# の例は Durable Functions 2.x 用に記述されており、Durable Functions 1.x とは互換性がありません。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -108,7 +108,33 @@ def main(name: str) -> str:
     return f"Hello {name}!"
 
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
+### <a name="e1_hellosequence-orchestrator-function"></a>`E1_HelloSequence` オーケストレーター関数
+```powershell
+param($Context)
+
+$output = @()
+
+$output += Invoke-DurableActivity -FunctionName 'E1_SayHello' -Input 'Tokyo'
+Set-DurableCustomStatus -CustomStatus 'Tokyo'
+
+$output += Invoke-DurableActivity -FunctionName 'E1_SayHello' -Input 'Seattle'
+Set-DurableCustomStatus -CustomStatus 'Seattle'
+
+$output += Invoke-DurableActivity -FunctionName 'E1_SayHello' -Input 'London'
+Set-DurableCustomStatus -CustomStatus 'London'
+
+
+return $output
+```
+
+### <a name="e1_sayhello-activity-function"></a>`E1_SayHello` アクティビティ関数
+```powershell
+param($name)
+
+"Hello $name"
+```
 ---
 
 `CustomStatus`フィールドが"London"に設定されている時のみ、クライアントは、オーケストレーションの出力を受け取ります:
@@ -202,6 +228,10 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 > [!NOTE]
 > Python では、`custom_status` フィールドは次の `yield` または `return` アクションがスケジュールされたときに設定されます。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+この機能は現在 PowerShell では実装されていません
 
 ---
 
@@ -315,6 +345,36 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
 main = df.Orchestrator.create(orchestrator_function)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+#### <a name="cityrecommender-orchestrator"></a>`CityRecommender` オーケストレーター
+
+```powershell
+param($Context)
+
+$userChoice = $Context.Input -as [int]
+
+if ($userChoice -eq 1) {
+    Set-DurableCustomStatus -CustomStatus @{ recommendedCities = @('Tokyo', 'Seattle'); 
+                                             recommendedSeasons = @('Spring', 'Summer') 
+                                            }  
+}
+
+if ($userChoice -eq 2) {
+    Set-DurableCustomStatus -CustomStatus @{ recommendedCities = @('Seattle', 'London'); 
+                                             recommendedSeasons = @('Summer') 
+                                            }  
+}
+
+if ($userChoice -eq 3) {
+    Set-DurableCustomStatus -CustomStatus @{ recommendedCities = @('Tokyo', 'London'); 
+                                             recommendedSeasons = @('Spring', 'Summer') 
+                                            }  
+}
+
+# Wait for user selection and refine the recommendation
+```
 ---
 
 ### <a name="instruction-specification"></a>手順の仕様
@@ -399,7 +459,33 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
 main = df.Orchestrator.create(orchestrator_function)
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
+```powershell
+param($Context)
+
+$userId = $Context.Input -as [int]
+
+$discount = Invoke-DurableActivity -FunctionName 'CalculateDiscount' -Input $userId
+
+$status = @{
+            discount = $discount;
+            discountTimeout = 60;
+            bookingUrl = "https://www.myawesomebookingweb.com"
+            }
+
+Set-DurableCustomStatus -CustomStatus $status
+
+$isBookingConfirmed = Invoke-DurableActivity -FunctionName 'BookingConfirmed'
+
+if ($isBookingConfirmed) {
+    Set-DurableCustomStatus -CustomStatus @{message = 'Thank you for confirming your booking.'}
+} else {
+    Set-DurableCustomStatus -CustomStatus @{message = 'The booking was not confirmed on time. Please try again.'}
+}
+
+return $isBookingConfirmed
+```
 ---
 
 ## <a name="sample"></a>サンプル
@@ -453,6 +539,20 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
 main = df.Orchestrator.create(orchestrator_function)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+# ...do work...
+
+Set-DurableCustomStatus -CustomStatus @{ nextActions = @('A', 'B', 'C'); 
+                                         foo = 2 
+                                        }  
+
+# ...do more work...
+```
 ---
 
 オーケストレーションの実行中に、外部クライアントはこのカスタム状態を取り込むことができます:
@@ -475,7 +575,7 @@ GET /runtime/webhooks/durabletask/instances/instance123
 ```
 
 > [!WARNING]
-> カスタム状態ペイロードは、Azure Table Storage の列に収まる必要があるため、16 KB の UTF-16 JSON テキストに制限されています。 これより大きなペイロードが必要な場合は、外部ストレージを使用することをお勧めします。
+> カスタム状態ペイロードは 16 KB の UTF-16 JSON テキストに制限されています。 これより大きなペイロードが必要な場合は、外部ストレージを使用することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

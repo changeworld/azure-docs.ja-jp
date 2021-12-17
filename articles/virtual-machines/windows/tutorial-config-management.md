@@ -8,15 +8,16 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: db7c0f2dbc547d78e3caa9ab37450c86278929bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: c31c77fee8f4a9706f4c7d2ad0c39d89d1327d78
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555943"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689290"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Windows 仮想マシンを更新する
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure [Change Tracking](../../automation/change-tracking/overview.md) と [Update Management](../../automation/update-management/overview.md) を使用すると、Azure の Windows 仮想マシンの変更を簡単に識別し、それらの VM のオペレーティング システムの更新を管理できます。
 
@@ -178,7 +179,7 @@ Windows 用の使用できる設定オプションは次のとおりです。
 * Windows レジストリ
 * Windows ファイル
 
-変更の追跡の詳細については、[VM に対する変更のトラブルシューティング](../../automation/automation-tutorial-troubleshoot-changes.md)に関するページをご覧ください。
+変更の追跡の詳細については、[VM に対する変更のトラブルシューティング](../../automation/troubleshoot/change-tracking.md)に関するページをご覧ください。
 
 ### <a name="view-inventory"></a>インベントリを表示する
 

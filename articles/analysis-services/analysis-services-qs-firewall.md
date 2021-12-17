@@ -7,14 +7,13 @@ ms.reviewer: minewiskan
 ms.date: 08/12/2020
 ms.topic: quickstart
 ms.service: azure-analysis-services
-ms.custom:
-- mode-portal
-ms.openlocfilehash: dd8324607667c6d1f5e397a3266026cf7f2dcc93
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mode-portal
+ms.openlocfilehash: fe774818a1f28d76d35d2771513f91aff785be41
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536729"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031843"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>クイック スタート:サーバーのファイアウォールの構成 - ポータル
 

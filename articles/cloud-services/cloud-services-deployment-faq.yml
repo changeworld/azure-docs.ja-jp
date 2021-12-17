@@ -1,0 +1,100 @@
+### YamlMime:FAQ
+metadata:
+  title: Microsoft Azure Cloud Services のデプロイの問題についてよくあるご質問 | Microsoft Docs
+  description: この記事では、Microsoft Azure Cloud Services のデプロイについてよくあるご質問を紹介します。
+  ms.topic: article
+  ms.service: cloud-services
+  ms.date: 10/14/2020
+  author: hirenshah1
+  ms.author: hirshah
+  ms.reviewer: mimckitt
+  ms.custom: 
+  ms.openlocfilehash: bf9d6d6616ce4a84a9457eef92b6dfe7b1e0ca39
+  ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122824504"
+title: 'Azure Cloud Services (クラシック) のデプロイの問題: よく寄せられる質問 (FAQ)'
+summary: >
+  [!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
+
+
+  この記事では、[Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services) のデプロイの問題についてよくあるご質問を紹介します。 サイズについては、 [Cloud Services VM サイズのページ](cloud-services-sizes-specs.md) を参照してください。
+
+
+  [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+sections:
+- name: 無視
+  questions:
+  - question: >
+      運用スロットに既存のデプロイが既に存在する場合に、ステージング スロットにクラウド サービスをデプロイすると、リソースの割り当てエラーが原因でデプロイが失敗することがあるのはなぜですか。
+    answer: >
+      どちらかのスロットに既にクラウド サービスのデプロイがあると、クラウド サービス全体が特定のクラスターに固定されます。 したがって、運用スロットにデプロイが既に存在する場合、新しいステージング環境のデプロイは、運用スロットと同じクラスターにしか割り当てることができません。
+
+
+      クラウド サービスが存在するクラスターに、デプロイ要求を満たすための物理的なコンピューティング リソースが不足していると、割り当てエラーが発生します。
+
+
+      このような割り当てエラーを軽減する方法については、[クラウド サービスの割り当てエラーに関するページの「解決方法」](cloud-services-allocation-failures.md#solutions)を参照してください。
+  - question: >
+      クラウド サービスのデプロイのスケールアップまたはスケールアウトを実行すると割り当てエラーが発生することがあるのはなぜですか。
+    answer: >
+      クラウド サービスをデプロイすると、通常、そのクラウド サービスは特定のクラスターに固定されます。 したがって、スケールアップ/アウトを実行する場合、既存のクラウド サービスは新しいインスタンスを同じクラスター内に割り当てる必要があります。 クラスターの容量が満杯に近づいている場合や、必要なサイズ/種類の VM を利用できない場合、要求は失敗します。
+
+
+      このような割り当てエラーを軽減する方法については、[クラウド サービスの割り当てエラーに関するページの「解決方法」](cloud-services-allocation-failures.md#solutions)を参照してください。
+  - question: >
+      クラウド サービスをアフィニティ グループにデプロイすると割り当てエラーが発生することがあるのはなぜですか。
+    answer: >
+      空のクラウド サービスに対する新しいデプロイは、そのクラウド サービスがアフィニティ グループに固定されている場合を除き、Microsoft Azure のファブリックによって、そのリージョン内の任意のクラスターに割り当てられます。 同じアフィニティ グループへのデプロイは、同じクラスターで試行されます。 クラスターが限界に近づくと、要求が失敗する場合があります。
+
+
+      このような割り当てエラーを軽減する方法については、[クラウド サービスの割り当てエラーに関するページの「解決方法」](cloud-services-allocation-failures.md#solutions)を参照してください。
+  - question: >
+      VM サイズを変更したり、既存のクラウド サービスに新しい VM を追加したりすると割り当てエラーが発生することがあるのなぜですか。
+    answer: >
+      データセンター内のクラスターには、マシンの種類が異なるさまざまな構成があります (A シリーズ、Av2 シリーズ、D シリーズ、Dv2 シリーズ、G シリーズ、H シリーズなど)。 ただし、すべてのクラスターにすべての種類の VM が含まれているとは限りません。 たとえば、A シリーズ専用クラスターに既にデプロイされているクラウド サービスに D シリーズ VM を追加しようとすると、割り当てエラーが発生します。 これは、VM の SKU サイズを変更しようとする (たとえば、A シリーズから D シリーズに切り替える) 場合にも発生します。
+
+
+      このような割り当てエラーを軽減する方法については、[クラウド サービスの割り当てエラーに関するページの「解決方法」](cloud-services-allocation-failures.md#solutions)を参照してください。
+
+
+      お住まいの地域で使用できるサイズについては、[Microsoft Azure のリージョン別の利用可能な製品](https://azure.microsoft.com/regions/services)に関するページを参照してください。
+  - question: >
+      サブスクリプションまたはサービスの制限/クォータ/制約が原因でクラウド サービスのデプロイが失敗することがあるのはなぜですか。
+    answer: >
+      クラウド サービスのデプロイは、割り振る必要のあるリソースが、リージョン/データセンター レベルでサービスに提供できる既定または最大のクォータを超えた場合に、失敗することがあります。 詳細については、「[Cloud Services の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits)」を参照してください。
+
+
+      ポータルでサブスクリプションの現在の使用量/クォータを追跡することもできます:Azure portal  => [サブスクリプション]  => \<appropriate subscription> => [Usage + quota]\(使用量 + クォータ\)。
+
+
+      リソース使用量/消費量に関連する情報は、Azure 課金 API を使用して取得することもできます。 「[Azure Consumption API の概要](../cost-management-billing/manage/consumption-api-overview.md)」を参照してください。
+  - question: >
+      デプロイしたクラウド サービス VM のサイズを、再デプロイせずに変更するにはどうしたらよいですか。
+    answer: >
+      デプロイしたクラウド サービスの VM サイズを、再デプロイせずに変更することはできません。 VM サイズは CSDEF に組み込まれており、これを更新するには再デプロイが必要です。
+
+
+      詳細については、「[クラウド サービスの更新方法](cloud-services-update-azure-service.md)」を参照してください。
+  - question: >
+      **Service Management API** または PowerShell から Azure Resource Manager ストレージ アカウントを使用して Cloud Services をデプロイすることができません。なぜでしょうか? 
+    answer: >
+      Cloud Services はクラシック リソースです。クラシック リソースは Azure Resource Manager モデルと直接の互換性がないため、Azure Resource Manager のストレージ アカウントに関連付けることができません。 いくつかの選択肢を次に示します。 
+
+
+      - REST API を使用してデプロイする。
+
+          Service Management REST API を使用してデプロイすれば、クラシックと Azure Resource Manager の両方のストレージ アカウントに対応した Blob Storage への SAS URL を指定することでこの制限を回避できます。 "PackageUrl" プロパティの詳細については、[こちら](/previous-versions/azure/reference/ee460813(v=azure.100))を参照してください。
+
+      - [Azure Portal](https://portal.azure.com) を使用してデプロイする。
+
+          [Azure Portal](https://portal.azure.com) からデプロイすれば、Azure Resource Manager リソースとクラシック リソースとの間の通信を可能にするプロキシ/shim を経由して呼び出しが行われるため正常に実行できます。 
+  - question: >
+      Azure Portal がデプロイ用のストレージ アカウントの提供を要求するのはなぜですか。
+    answer: >-
+      クラシック ポータルでは、パッケージは管理 API レイヤーに直接アップロードされてから、API レイヤーがパッケージを内部ストレージ アカウントに一時的に格納しました。  API レイヤーはファイル アップロード サービスとして設計されていないため、このプロセスはパフォーマンスとスケーラビリティの問題の原因となります。  Azure Portal (Resource Manager デプロイ モデル) では、 API レイヤーへの最初のアップロードの中間手順をバイパスしているため、デプロイの速度と信頼性が向上しています。
+
+
+      コストはとても低く、すべてのデプロイに同じストレージ アカウントを再利用できます。 [ストレージのコスト計算ツール](https://azure.microsoft.com/pricing/calculator/#storage1)を使用して、サービス パッケージ (CSPKG) のアップロード、CSPKG のダウンロード、CSPKG の削除にかかるコストを判断できます。

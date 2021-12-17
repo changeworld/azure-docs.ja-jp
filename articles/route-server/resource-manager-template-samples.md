@@ -6,13 +6,13 @@ author: duongau
 ms.author: duau
 ms.service: route-server
 ms.topic: sample
-ms.date: 04/09/2021
-ms.openlocfilehash: 1b5141bea71e44b746801841526d96a01fa064fc
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 09/01/2021
+ms.openlocfilehash: fac66a63deb52c952ddb90a81edac114f0dcd55d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315123"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123423936"
 ---
 # <a name="azure-resource-manager-templates-for-azure-route-server"></a>Azure Route Server 用 Azure Resource Manager テンプレート
 
@@ -20,4 +20,4 @@ ms.locfileid: "107315123"
 
 | タイトル | 説明 |
 | ------ | ----------- |
-| [Route Server と Quagga](https://github.com/Azure/azure-quickstart-templates/tree/master/101-route-server-quagga) | Azure Route Server と Quagga (NVA) を仮想ネットワークにデプロイします。 |
+| [Route Server と Quagga](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/route-server-quagga) | Azure Route Server と Quagga (NVA) を仮想ネットワークにデプロイします。 |

@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用した VMware ディザスター リカバリーについての Deployment Planner レポートを分析する
 description: この記事では、Azure Site Recovery を使用した Azure への VMware ディザスター リカバリーについて Recovery Deployment Planner によって生成されるレポートを分析する方法を説明します。
-author: rajeswari-mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/4/2019
-ms.author: ramamill
-ms.openlocfilehash: 7e2db720bb37a25b8511bd1c42c0c18e139aa216
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: f41c06014aea251896af11201175819abfc7fa78
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93186605"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577243"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーについての Deployment Planner レポートを分析する
 

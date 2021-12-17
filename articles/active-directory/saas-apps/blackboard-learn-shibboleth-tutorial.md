@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/19/2021
+ms.date: 06/04/2021
 ms.author: jeedes
-ms.openlocfilehash: b1b3f265d0e1fcad2953292c5227c2630c6df229
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42a0123cc7993f8b0412d90dd6c67cf2928ffeb8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649903"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>チュートリアル: Azure Active Directory と Blackboard Learn - Shibboleth との統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "101649903"
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Blackboard Learn - Shibboleth では、**SP** Initiated SSO がサポートされます
+* Blackboard Learn - Shibboleth では、**SP** Initiated SSO がサポートされます。
 
 ## <a name="add-blackboard-learn---shibboleth-from-the-gallery"></a>ギャラリーからの Blackboard Learn - Shibboleth の追加
 
@@ -63,7 +63,7 @@ Blackboard Learn - Shibboleth で Azure AD SSO を構成およびテストする
     1. **[Blackboard Learn - Shibboleth のテスト ユーザーの作成](#create-blackboard-learn---shibboleth-test-user)** - Blackboard Learn - Shibboleth で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
@@ -86,7 +86,7 @@ Blackboard Learn - Shibboleth で Azure AD シングル サインオンを構成
     c. **[応答 URL]** ボックスに、`https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/SAML2/POST` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Blackboard Learn - Shibboleth クライアント サポート チーム](https://www.blackboard.com/forms/contact-us_form.aspx)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Blackboard Learn - Shibboleth クライアント サポート チーム](https://www.blackboard.com/contact-us)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -121,15 +121,15 @@ Blackboard Learn - Shibboleth で Azure AD シングル サインオンを構成
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="configure-blackboard-learn---shibboleth-sso"></a>Blackboard Learn - Shibboleth SSO の構成
+## <a name="configure-blackboard-learn---shibboleth-sso"></a>Blackboard Learn - Shibboleth SSO の構成
 
-**Blackboard Learn - Shibboleth** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Blackboard Learn - Shibboleth サポート チーム](https://www.blackboard.com/forms/contact-us_form.aspx)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+Blackboard Learn - Shibboleth シングル サインオンを構成するには、この[ドキュメント](https://help.blackboard.com/Learn/Administrator/SaaS/Authentication/Implement_Authentication/SAML_Authentication_Provider_Type)を参照してください。
 
 ### <a name="create-blackboard-learn---shibboleth-test-user"></a>Blackboard Learn - Shibboleth のテスト ユーザーの作成
 
-このセクションでは、Blackboard Learn - Shibboleth で Britta Simon というユーザーを作成します。 [Blackboard Learn - Shibboleth サポート チーム](https://www.blackboard.com/forms/contact-us_form.aspx)と協力して、Blackboard Learn - Shibboleth プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Blackboard Learn - Shibboleth で Britta Simon というユーザーを作成します。 [Blackboard Learn - Shibboleth サポート チーム](https://www.blackboard.com/contact-us)と協力して、Blackboard Learn - Shibboleth プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
@@ -137,8 +137,8 @@ Blackboard Learn - Shibboleth で Azure AD シングル サインオンを構成
 
 * Blackboard Learn - Shibboleth のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Blackboard Learn - Shibboleth] タイルをクリックすると、SSO を設定した Blackboard Learn - Shibboleth に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Blackboard Learn - Shibboleth] タイルをクリックすると、SSO を設定した Blackboard Learn - Shibboleth に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Blackboard Learn - Shibboleth を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Blackboard Learn - Shibboleth を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

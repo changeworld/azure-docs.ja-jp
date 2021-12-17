@@ -2,17 +2,19 @@
 title: 'チュートリアル: Azure HDInsight の Spark コンピューティング コンテキストで R を使用する'
 description: チュートリアル - Azure HDInsight Machine Learning service クラスター上で R と Spark の使用を開始します。
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 07c004fa5f03c53ed0778613a0c16a0ba2aff11f
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ROBOTS: NOINDEX
+ms.openlocfilehash: 58c407478432cab5d63bf06ae0c41779c2d78dde
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869499"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299377"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>チュートリアル: Azure HDInsight の Spark コンピューティング コンテキストで R を使用する
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 このチュートリアルでは、Azure HDInsight Machine Learning service クラスター上で実行される Apache Spark 内で R 関数を使用する方法をステップバイステップで説明します。
 
@@ -229,7 +231,7 @@ rxSetComputeContext(mySparkCluster)
     DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 *** | 732944
     DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 *** | 858366
     ---
-    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     
     Residual standard error: 35.48 on 6005374 degrees of freedom
     Multiple R-squared: 0.001827 (as if intercept included)

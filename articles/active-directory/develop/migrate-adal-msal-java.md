@@ -3,7 +3,7 @@ title: ADAL から MSAL への移行ガイド (MSAL4j) | Azure
 titleSuffix: Microsoft identity platform
 description: Azure Active Directory Authentication Library (ADAL) Java アプリを Microsoft Authentication Library (MSAL) に移行する方法について説明します。
 services: active-directory
-author: sangonzal
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: Java
 ms.workload: identity
 ms.date: 11/04/2019
-ms.author: sagonzal
+ms.author: marsma
 ms.reviewer: nacanuma, twhitney
-ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 620f77655f8281919ba0831a7e53af8cd28bc5f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, devx-track-java, has-adal-ref
+ms.openlocfilehash: 1465daedf710fa39648a1b303cdbaedf4e2d3f51
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583995"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444233"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java 用 ADAL から MSAL への移行ガイド
 
@@ -34,6 +34,8 @@ MSAL には、次のような利点があります。
 - アプリケーションでは、増分同意を有効にできるほか、条件付きアクセスのサポートがより簡単になります。
 
 MSAL for Java は、Microsoft ID プラットフォームで使用することをお勧めする認証ライブラリです。 ADAL4J には新しい機能は実装されません。 今後のすべての取り組みは、MSAL の向上に重点が置かれます。
+
+MSAL の詳細と、[Microsoft Authentication Library の概要](msal-overview.md)を確認することができます。
 
 ## <a name="differences"></a>相違点
 

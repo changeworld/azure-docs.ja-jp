@@ -2,7 +2,7 @@
 title: Azure CDN の使用パターンを分析する
 description: この記事では、Azure CDN 製品で使用可能なさまざまな種類の分析レポートについて説明します。
 services: cdn
-author: asudbring
+author: duongau
 manager: KumudD
 ms.service: azure-cdn
 ms.workload: tbd
@@ -10,13 +10,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2020
-ms.author: allensu
-ms.openlocfilehash: 2c593cda7761ce1defa6bdb31e0dbb528b9e5eca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: 09ad5d0ed882b5c6f8eece565d3977acb39b3a19
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96483990"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426565"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Azure CDN の使用パターンを分析する
 

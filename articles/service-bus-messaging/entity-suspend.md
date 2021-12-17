@@ -2,13 +2,14 @@
 title: Azure Service Bus - メッセージング エンティティを一時停止する
 description: この記事では、Azure Service Bus メッセージ エンティティ (キュー、トピック、およびサブスクリプション) を一時停止し、再アクティブ化する方法について説明します。
 ms.topic: article
-ms.date: 09/29/2020
-ms.openlocfilehash: ea1acab3d0a86b0064f8b3eef7bfd1496bd17041
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f22e3bcfbd423541508faffdb7983d30ba3bbf3a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94543053"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472069"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>メッセージ エンティティの一時停止と再アクティブ化 (無効化)
 
@@ -67,7 +68,7 @@ Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueu
 :::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="サブスクリプションの状態を変更する":::
 
 **サブスクリプション** に設定できる状態は次のとおりです。
-- **[アクティブ]** : サブスクリプションがアクティブである。 サブスクリプションからメッセージを受信することができます。
+- **[アクティブ]** : サブスクリプションがアクティブである。 サブスクリプションからメッセージを受信できます。
 - **Disabled**: サブスクリプションが中断されました。 サブスクリプションからメッセージを受信することはできません。 
 - **ReceiveDisabled**: **Disabled** と同じ効果があります。 サブスクリプションからメッセージを受信することはできません。 サブスクリプションからメッセージを受信しようとすると、例外が発生します。
 

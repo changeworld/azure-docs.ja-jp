@@ -1,26 +1,27 @@
 ---
-title: Azure VPN Gateway:P2S VPN クライアント用のカスタム ルートをアドバタイズする
-description: ポイント対サイト クライアントにカスタム ルートをアドバタイズするための手順
+title: ポイント対サイト VPN ゲートウェイ クライアントのカスタム ルートをアドバタイズする
+titleSuffix: Azure VPN Gateway
+description: VPN ゲートウェイ ポイント対サイト クライアントにカスタム ルートをアドバタイズする方法について説明します。 この記事では、VPN クライアント強制トンネリングの手順について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 07/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: a02bd5519b776a063646c11be2a34366fe429f99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cefbd6d014dda28a5e88a41a0131eeb92fc5f311
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89392393"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440724"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>P2S VPN クライアント用のカスタム ルートをアドバタイズする
 
-すべてのポイント対サイト VPN クライアントへのカスタム ルートをアドバタイズできます。 たとえば、VNet でストレージ エンドポイントを有効にしているときに、リモート ユーザーが VPN 接続経由でこれらのストレージ アカウントにアクセスできるようにすることができます。 ストレージ エンドポイントの IP アドレスをすべてのリモート ユーザーにアドバタイズして、ストレージ アカウントへのトラフィックをパブリック インターネットではなく VPN トンネル経由にすることができます。
+すべてのポイント対サイト VPN クライアントへのカスタム ルートをアドバタイズできます。 たとえば、VNet でストレージ エンドポイントを有効にしているときに、リモート ユーザーが VPN 接続経由でこれらのストレージ アカウントにアクセスできるようにすることができます。 ストレージ エンドポイントの IP アドレスをすべてのリモート ユーザーにアドバタイズして、ストレージ アカウントへのトラフィックをパブリック インターネットではなく VPN トンネル経由にすることができます。 VPN クライアントの強制トンネリングを構成するために、カスタム ルートを使用することもできます。
 
-![Azure VPN Gateway マルチサイト接続の例](./media/vpn-gateway-p2s-advertise-custom-routes/custom-routes.png)
+:::image type="content" source="./media/vpn-gateway-p2s-advertise-custom-routes/custom-routes.png" alt-text="カスタム ルート公開の図。":::
 
-## <a name="to-advertise-custom-routes"></a>カスタム ルートをアドバタイズするには
+## <a name="advertise-custom-routes"></a><a name="advertise"></a>カスタム ルートを公開する
 
 カスタム ルートをアドバタイズするには、`Set-AzVirtualNetworkGateway cmdlet` を使用します。 次の例では、[Contoso ストレージ アカウント テーブル](https://contoso.table.core.windows.net)の IP をアドバタイズする方法を示します。
 
@@ -43,7 +44,23 @@ ms.locfileid: "89392393"
     ```azurepowershell-interactive
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute x.x.x.x/xx , y.y.y.y/yy
     ```
-## <a name="to-view-custom-routes"></a>カスタム ルートを表示するには
+
+## <a name="advertise-custom-routes---forced-tunneling"></a><a name="forced-tunneling"></a>カスタム ルートを公開する - 強制トンネリング
+
+すべてのトラフィックを VPN トンネルに誘導するには、クライアントへのカスタム ルートとして 0.0.0.0/1 と 128.0.0.0/1 を公開します。 0\.0.0.0/0 を 2 つの小さなサブネットに分割する理由は、これらの小さなプレフィックスは、ローカル ネットワーク アダプター上で既に構成されている可能性がある既定のルートより具体的で、トラフィックをルーティングするときに優先されるためです。
+
+> [!NOTE]
+> VPN ゲートウェイ経由でインターネット接続は提供されません。 その結果、インターネット向けのすべてのトラフィックが削除されます。
+>
+
+1. 強制トンネリングを有効にするには、次のコマンドを使用します。
+
+    ```azurepowershell-interactive    
+    $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute 0.0.0.0/1 , 128.0.0.0/1
+    ```
+
+## <a name="view-custom-routes"></a><a name="view"></a>カスタム ルートを表示する
 
 カスタム ルートを表示するには、次の例を使用します。
 
@@ -51,7 +68,7 @@ ms.locfileid: "89392393"
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
   $gw.CustomRoutes | Format-List
   ```
-## <a name="to-delete-custom-routes"></a>カスタム ルートを削除するには
+## <a name="delete-custom-routes"></a><a name="delete"></a>カスタム ルートを削除する
 
 カスタム ルートを削除するには、次の例を使用します。
 
@@ -61,4 +78,4 @@ ms.locfileid: "89392393"
   ```
 ## <a name="next-steps"></a>次のステップ
 
-その他の P2S ルーティング情報については、「[ポイント対サイト VPN ルーティングについて](vpn-gateway-about-point-to-site-routing.md)」を参照してください。
+詳細な P2S ルーティング情報については、[ポイント対サイト ルーティング](vpn-gateway-about-point-to-site-routing.md)に関するページをご覧ください。

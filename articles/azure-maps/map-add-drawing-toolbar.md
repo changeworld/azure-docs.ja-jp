@@ -7,14 +7,13 @@ ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: b00628ec5a9f41b027bf90b93421f3aa1404e97a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca69b0cb282dd376c546bdbe4dcd68bd049e478d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896397"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429732"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>描画ツールのツールバーをマップに追加する
 
@@ -38,7 +37,7 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="描画ツール バーの追加" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="描画ツール バーの追加" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>描画ツールの追加</a>」 Pen を参照してください。
 </iframe>
 
@@ -62,14 +61,14 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="多角形描画ツールの追加" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="多角形描画ツールの追加" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>多角形描画ツールの追加</a>」 Pen を参照してください。
 </iframe>
 
 
 ## <a name="change-drawing-rendering-style"></a>描画のレンダリング スタイルの変更
 
-描画される図形のスタイルは、`drawingManager.getLayers()` 関数を使用し、個々のレイヤーのオプションを設定することによって、描画マネージャーの基になるレイヤーを取得することによりカスタマイズできます。 図形の編集時に座標に表示されるドラッグ ハンドルは HTML マーカーです。 ドラッグ ハンドルのスタイルは、描画マネージャーの `dragHandleStyle` オプションおよび `secondaryDragHandleStyle` オプションに HTML マーカー オプションを渡すことによってカスタマイズできます。  
+描画される図形のスタイルは、`drawingManager.getLayers()` および `drawingManager.getPreviewLayers()` 関数を使用し、個々のレイヤーのオプションを設定することによって、描画マネージャーの基になるレイヤーを取得することによりカスタマイズできます。 図形の編集時に座標に表示されるドラッグ ハンドルは HTML マーカーです。 ドラッグ ハンドルのスタイルは、描画マネージャーの `dragHandleStyle` オプションおよび `secondaryDragHandleStyle` オプションに HTML マーカー オプションを渡すことによってカスタマイズできます。  
 
 次のコードでは、描画マネージャーからレンダリング レイヤーを取得し、それらのオプションを変更することで、描画のレンダリング スタイルを変更します。 この場合、ポイントは青いマーカー アイコンで描画されます。 線は、赤色の 4 ピクセル幅になります。 多角形は、緑色で塗りつぶされ、枠線がオレンジ色になります。 次に、ドラッグ ハンドルのスタイルが四角形のアイコンに変更されます。 
 
@@ -100,6 +99,12 @@ layers.polygonOutlineLayer.setOptions({
     strokeColor: 'orange'
 });
 
+
+//Get preview rendering layers from the drawing manager and modify line styles to be dashed.
+var previewLayers = drawingManager.getPreviewLayers();
+previewLayers.lineLayer.setOptions({ strokeColor: 'red', strokeWidth: 4, strokeDashArray: [3,3] });
+previewLayers.polygonOutlineLayer.setOptions({ strokeColor: 'orange', strokeDashArray: [3, 3] });
+
 //Update the style of the drag handles that appear when editting.
 drawingManager.setOptions({
     //Primary drag handle that represents coordinates in the shape.
@@ -122,10 +127,12 @@ drawingManager.setOptions({
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="描画のレンダリング スタイルの変更" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="描画のレンダリング スタイルの変更" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>描画のレンダリング スタイルの変更</a>」 Pen を参照してください。
 </iframe>
 
+> [!NOTE]
+> 編集モードでは、図形を回転できます。 回転は、MultiPoint、LineString、MultiLineString、Polygon、MultiPolygon、Rectangle の各ジオメトリからサポートされています。 Point および Circle ジオメトリは回転できません。 
 
 ## <a name="next-steps"></a>次のステップ
 

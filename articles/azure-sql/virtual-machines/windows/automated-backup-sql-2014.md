@@ -3,7 +3,7 @@ title: Azure 仮想マシンでの SQL Server 2014 の自動バックアップ
 description: Azure で実行されている SQL Server 2014 VM の自動バックアップ機能について説明します。 この記事は、Resource Manager を使用する VM のみにあてはまります。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.assetid: bdc63fd1-db49-4e76-87d5-b5c6a890e53c
 ms.service: virtual-machines-sql
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 41add54ce767413982ab0503f7263c58aed4d4e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: pamela
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 76f5b375453f598ae74410b6d77695f1ac54654a
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359287"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166307"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 仮想マシンの自動バックアップ (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -77,11 +78,9 @@ Resource Manager デプロイ モデルで新しい SQL Server 2014 Virtual Mach
 
 ## <a name="configure-existing-vms"></a>既存の VM を構成する
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
 既存の SQL Server 仮想マシンの場合、Azure portal から自動バックアップを有効または無効にしたり、保有期間を変更したり、ストレージ アカウントを指定したり、暗号化を有効にしたりすることができます。 
 
-SQL Server 2014 仮想マシン用の [SQL 仮想マシンのリソース](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)に移動し、 **[バックアップ]** を選択します。 
+SQL Server 2014 仮想マシン用の [SQL 仮想マシンのリソース](manage-sql-vm-portal.md#access-the-resource)に移動し、 **[バックアップ]** を選択します。 
 
 ![既存の VM の SQL 自動バックアップ](./media/automated-backup-sql-2014/azure-sql-rm-autobackup-existing-vms.png)
 
@@ -90,7 +89,7 @@ SQL Server 2014 仮想マシン用の [SQL 仮想マシンのリソース](manag
 自動バックアップを初めて有効にすると、バックグラウンドで SQL Server IaaS エージェントが構成されます。 この間、自動バックアップが構成されていることは、Azure ポータルに示されない可能性があります。 エージェントがインストールされ、構成されるまで数分待ちます。 その後、Azure ポータルに新しい設定が反映されます。
 
 > [!NOTE]
-> テンプレートを使用して自動バックアップを構成することもできます。 詳細については、 [自動バックアップ用の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autobackup-update)に関するページをご覧ください。
+> テンプレートを使用して自動バックアップを構成することもできます。 詳細については、 [自動バックアップ用の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-sql-existing-autobackup-update)に関するページをご覧ください。
 
 ## <a name="configure-with-powershell"></a>PowerShell での構成
 
@@ -101,28 +100,6 @@ PowerShell を使用して自動バックアップを構成できます。 開�
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
-### <a name="install-the-sql-server-iaas-extension"></a>SQL Server IaaS 拡張機能のインストール
-SQL Server 仮想マシンを Azure portal からプロビジョニングした場合は、SQL Server IaaS 拡張機能は既にインストールされています。 これがお使いの仮想マシンにインストール済みかどうかを確認するには、**Get-AzVM** コマンドを呼び出して **Extensions** プロパティを調べます。
-
-```powershell
-$vmname = "vmname"
-$resourcegroupname = "resourcegroupname"
-
-(Get-AzVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions
-```
-
-SQL Server IaaS Agent 拡張機能がインストールされている場合、それは "SqlIaaSAgent" または "SQLIaaSExtension" と表示されます。 また、拡張機能の **ProvisioningState** も "Succeeded" と表示されるはずです。
-
-インストールされていない場合、またはプロビジョニングに失敗した場合は、次のコマンドを使ってインストールできます。 VM 名とリソース グループのほかに、VM が配置されているリージョン ( **$region**) を指定する必要があります。 SQL Server VM のライセンスの種類を指定し、[[Azure ハイブリッド特典]](https://azure.microsoft.com/pricing/hybrid-benefit/) を使用して従量課金制またはライセンス持ち込みを選択します。 ライセンスの詳細については、「[ライセンス モデル](licensing-model-azure-hybrid-benefit-ahb-change.md)」を参照してください。 
-
-```powershell
-New-AzSqlVM  -Name $vmname `
-    -ResourceGroupName $resourcegroupname `
-    -Location $region -LicenseType <PAYG/AHUB>
-```
-
-> [!IMPORTANT]
-> 拡張機能がまだインストールされていない場合、拡張機能をインストールすると、SQL Server が再起動されます。
 
 ### <a name="verify-current-settings"></a><a id="verifysettings"></a> 現在の設定の確認
 
@@ -267,7 +244,7 @@ SQL Server 2014 での Automated Backup の監視には､大きく 2 つの選�
 もう 1 つのオプションは、通知に組み込みのデータベース メール機能を利用する方法です。
 
 1. [msdb.smart_admin.sp_set_parameter](/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) ストアド プロシージャを呼び出して､**SSMBackup2WANotificationEmailIds** パラメーターに電子メール アドレスを設定します｡ 
-1. [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md) が Azure VM から電子メールを送信できるようにします。
+1. [SendGrid](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-twilio-sendgrid-accountcreate-a-twilio-sendgrid-account) が Azure VM から電子メールを送信できるようにします。
 1. SMTP サーバーとユーザー名を使用してデータベース メールを構成します。 データベース メールは、SQL Server Management Studio または Transact-SQL コマンドで構成できます。 詳細については、「[データベース メール](/sql/relational-databases/database-mail/database-mail)」を参照してください。
 1. [データベース メールを使用するように SQL Server エージェントを構成します](/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail)。
 1. SMTP ポートがローカルの VM ファイアウォールと、その VM のネットワーク セキュリティ グループの両方で許可されていることを確認します。

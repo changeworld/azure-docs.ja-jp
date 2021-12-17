@@ -3,16 +3,18 @@ title: ODBC データ ストアからデータを移動する
 description: Azure Data Factory を使用して ODBC データ ストアからデータを移動する方法を説明します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 10/22/2021
 ms.author: jingwang
+ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: e847592127d19eba3370255385f5b969b87e886e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0bf20ef43fe828a1bdd78c28a99484a758bf583
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380102"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264030"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -354,10 +356,10 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 1. **Data Management Gateway 構成マネージャー** を起動します。 "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe" を直接実行することも、次の図に示すように、**Gateway** を検索して **Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。
 
-    ![Search gateway](./media/data-factory-odbc-connector/search-gateway.png)
+    :::image type="content" source="./media/data-factory-odbc-connector/search-gateway.png" alt-text="Search gateway":::
 2. **[診断]** タブに切り替えます。
 
-    ![Gateway diagnostics](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
+    :::image type="content" source="./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png" alt-text="Gateway diagnostics":::
 3. データ ストアの **種類** (リンクされたサービス) を選択します。
 4. **認証方法** を指定し、**資格情報** を入力します。または、データ ストアへの接続に使用する **接続文字列** を入力します。
 5. **[接続テスト]** をクリックして、データ ストアへの接続をテストします。

@@ -4,29 +4,35 @@ titleSuffix: Azure Machine Learning
 description: 分離された Azure Virtual Network を使用して、Azure Machine Learning ワークスペースおよび関連付けられているリソースを保護します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
-ms.author: peterlu
-author: peterclu
-ms.date: 03/17/2021
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 20f75580c425cee9128f9c94123dcf902642eac4
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.author: jhirono
+author: jhirono
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, security
+ms.openlocfilehash: 11e501615e10ccd3bfb407e12f1839d27e81e337
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531026"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562304"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning ワークスペースをセキュリティで保護する
 
 この記事では、仮想ネットワーク内の Azure Machine Learning ワークスペースとそれに関連付けられているリソースをセキュリティで保護する方法について説明します。
 
-この記事は、Azure Machine Learning ワークフローをセキュリティで保護する手順を説明する全 5 パートのシリーズのパート 2 です。 まずは[パート 1:VNet の概要](how-to-network-security-overview.md)に関するページを読んで、アーキテクチャ全体を理解することを強くお勧めします。 
-
-このシリーズの他の記事は次のとおりです。
-
-[1.VNet の概要](how-to-network-security-overview.md) > **2.ワークスペースをセキュリティで保護する** > [3.トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md) > [4.推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md) > [5.スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+> [!TIP]
+> この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
+>
+> * [Virtual Network の概要](how-to-network-security-overview.md)
+> * [トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
+> * [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
+> * [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+> * [カスタム DNS を使用する](how-to-custom-dns.md)
+> * [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)
+>
+> セキュリティで保護されたワークスペースの作成に関するチュートリアルについては、「[チュートリアル: セキュリティで保護されたワークスペースを作成する](tutorial-create-secure-workspace.md)」を参照してください。
 
 この記事では、仮想ネットワークで次のワークスペース リソースを有効にする方法について説明します。
 > [!div class="checklist"]
@@ -40,7 +46,12 @@ ms.locfileid: "107531026"
 
 + 一般的な仮想ネットワークのシナリオと全体的な仮想ネットワーク アーキテクチャについては、[ネットワーク セキュリティの概要](how-to-network-security-overview.md)に関するページを参照してください。
 
++ ベスト プラクティスについては、「[Azure Machine Learning のエンタープライズ セキュリティに関するベスト プラクティス](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-enterprise-security)」の記事を参照してください。
+
 + コンピューティング リソースで使用する既存の仮想ネットワークとサブネット。
+
+    > [!TIP]
+    > 仮想ネットワークで (モデルをデプロイするために) Azure Container Instances を使用することを計画している場合は、ワークスペースと仮想ネットワークが同じリソース グループに存在する必要があります。 それ以外の場合は、異なるグループに配置できます。
 
 + リソースを仮想ネットワークまたはサブネットにデプロイするには、ご利用のユーザー アカウントが、Azure ロールベースのアクセス制御 (Azure RBAC) で次のアクションへのアクセス許可を保持している必要があります。
 
@@ -49,81 +60,201 @@ ms.locfileid: "107531026"
 
     ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](../role-based-access-control/built-in-roles.md#networking)に関するページを参照してください
 
+### <a name="azure-container-registry"></a>Azure Container Registry
+
+* Azure Container Registry が Premium バージョンである必要があります。 アップグレードの詳細については、「[SKU の変更](../container-registry/container-registry-skus.md#changing-tiers)」を参照してください。
+
+* トレーニングまたは推論に使用されるストレージ アカウントとコンピューティング ターゲットと同じ仮想ネットワークとサブネット内に Azure Container Registry が存在している必要があります。
+
+* Azure Machine Learning ワークスペースに、[Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-cluster.md)が含まれている必要があります。
+
+## <a name="limitations"></a>制限事項
+
+### <a name="azure-storage-account"></a>Azure Storage アカウント
+
+Azure Machine Learning ワークスペースと Azure ストレージ アカウントがどちらもプライベート エンドポイントを使用して VNet に接続する場合、その両方が同じサブネット内に存在する必要があります。
+
+### <a name="azure-container-registry"></a>Azure Container Registry
+
+ACR が仮想ネットワークの背後にある場合、Azure Machine Learning でそれを使用して Docker イメージを直接構築することはできません。 代わりに、コンピューティング クラスターを使用してイメージが構築されます。
+
+> [!IMPORTANT]
+> Docker イメージの作成に使用されるコンピューティング クラスターは、モデルのトレーニングとデプロイに使用されるパッケージ リポジトリにアクセスできる必要があります。 パブリック リポジトリへのアクセスを許可するネットワーク セキュリティ規則の追加、[プライベート Python パッケージの使用](how-to-use-private-python-packages.md)、またはパッケージが既に含まれている [カスタム Docker イメージ](how-to-train-with-custom-image.md) の使用が必要になる場合があります。
+
+> [!WARNING]
+> 仮想ネットワークと通信するために、お使いの Azure Container Registry によって使用されているのがプライベート エンドポイントの場合、Azure Machine Learning コンピューティング クラスターでマネージド ID を使用することはできません。 コンピューティング クラスターでマネージド ID を使用するには、ワークスペースの Azure Container Registry でサービス エンドポイントを使用します。
+
+## <a name="required-public-internet-access"></a>必要なパブリック インターネット アクセス
+
+[!INCLUDE [machine-learning-required-public-internet-access](../../includes/machine-learning-public-internet-access.md)]
+
+ファイアウォール ソリューションの使用に関する詳細については、[Azure Machine Learning でのファイアウォールの使用](how-to-access-azureml-behind-firewall.md)に関するページを参照してください。
 
 ## <a name="secure-the-workspace-with-private-endpoint"></a>プライベート エンドポイントを使用してワークスペースをセキュリティで保護する
 
-Azure Private Link では、プライベート エンドポイントを使用してワークスペースに接続できます。 プライベート エンドポイントは、仮想ネットワーク内にある一組のプライベート IP アドレスです。 これにより、ワークスペースへのアクセスが、プライベート IP アドレスでのみ行われるように制限できます。 Private Link を使用すると、データ窃盗のリスクを軽減できます。
+Azure Private Link では、プライベート エンドポイントを使用してワークスペースに接続できます。 プライベート エンドポイントは、仮想ネットワーク内にある一組のプライベート IP アドレスです。 これにより、ワークスペースへのアクセスが、プライベート IP アドレスでのみ行われるように制限できます。 プライベート エンドポイントを使用すると、データ流出のリスクを軽減できます。
 
-プライベート リンク ワークスペースの設定の詳細については、「[Private Link を構成する方法](how-to-configure-private-link.md)」を参照してください。
+ワークスペースのプライベート エンドポイントの構成の詳細については、[プライベート エンドポイントの構成方法](how-to-configure-private-link.md)に関する記事を参照してください。
 
-> [!Warning]
-> プライベート エンドポイントを使用してワークスペースをセキュリティで保護しても、エンドツーエンドのセキュリティは保証されません。 ソリューションの個々のコンポーネントをセキュリティで保護するには、この記事の残りの手順と VNet シリーズの手順に従う必要があります。
+> [!WARNING]
+> プライベート エンドポイントを使用してワークスペースをセキュリティで保護しても、エンドツーエンドのセキュリティは保証されません。 ソリューションの個々のコンポーネントをセキュリティで保護するには、この記事の残りの手順と VNet シリーズの手順に従う必要があります。 たとえば、ワークスペースでプライベート エンドポイントを使用していても、Azure Storage アカウントが VNet の内側にない場合、ワークスペースとストレージの間のトラフィックでは、セキュリティのために VNet は使用されません。
 
-## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Azure のストレージ アカウントをサービス エンドポイントで保護する
+## <a name="secure-azure-storage-accounts"></a>Azure Storage アカウントをセキュリティで保護する
 
-Azure Machine Learning では、サービス エンドポイントまたはプライベート エンドポイントを使用するようにストレージ アカウントを構成できます。 このセクションでは、サービス エンドポイントを使用して Azure ストレージ アカウントをセキュリティで保護する方法について説明します。 プライベート エンドポイントについては、次のセクションを参照してください。
+Azure Machine Learning では、プライベート エンドポイントまたはサービス エンドポイントを使用するようにストレージ アカウントを構成できます。 
 
-仮想ネットワーク内のワークスペースに Azure ストレージ アカウントを使用するには、次の手順を使用します。
+# <a name="private-endpoint"></a>[プライベート エンドポイント](#tab/pe)
 
-1. Azure portal で、ワークスペースで使用するストレージ サービスに移動します。
+1. Azure portal で、Azure Storage アカウントストレージ アカウントを選択します。
+1. 「[Azure Storage のプライベート エンドポイントを使用する](../storage/common/storage-private-endpoints.md#creating-a-private-endpoint)」の情報を利用し、次のストレージ サブリソースのプライベート エンドポイントを追加します。
 
-   [![Azure Machine Learning のワークスペースにアタッチされているストレージ](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
+    * **BLOB**
+    * **[最近使ったファイル]**
+    * **キュー** - Azure Machine Learning パイプラインで [ParallelRunStep](./tutorial-pipeline-batch-scoring-classification.md) を使用する予定の場合にのみ必要です。
+    * **テーブル** - Azure Machine Learning パイプラインで [ParallelRunStep](./tutorial-pipeline-batch-scoring-classification.md) を使用する予定の場合にのみ必要です。
 
-1. ストレージのサービス アカウント ページで、 __[ネットワーク]__ を選択します。
+    :::image type="content" source="./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png" alt-text="プライベート エンドポイント構成ページのスクリーンショット。BLOB オプションとファイル オプションを確認できます。":::
 
-   ![Azure portal 内の Azure Storage ページの [ネットワーク] 領域](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+    > [!TIP]
+    > 既定のストレージでは **ない** ストレージ アカウントを構成するとき、追加するストレージ アカウントに相当する **ターゲット サブリソース** タイプを選択します。
 
-1. __[ファイアウォールと仮想ネットワーク]__ タブで、次の操作を行います。
-    1. __[選択されたネットワーク]__ を選択します。
-    1. __[仮想ネットワーク]__ で、 __[Add existing virtual network]\(既存の仮想ネットワークを追加\)__ というリンクを選択します。 この操作により、コンピューティングが置かれている仮想ネットワークが追加されます (手順 1 参照)。
+1. サブリソースのプライベート エンドポイントを作成した後、ストレージ アカウントの __[ネットワーク]__ の下で __[ファイアウォールと仮想ネットワーク]__ タブを選択します。
+1. __[選択されたネットワーク]__ を選択し、 __[リソース インスタンス]__ の下で __[リソースの種類]__ として `Microsoft.MachineLearningServices/Workspace` を選択します。 __インスタンス名__ を使用してワークスペースを選択します。 詳細については、「[システム割り当てマネージド ID に基づく信頼されたアクセス](../storage/common/storage-network-security.md#trusted-access-based-on-system-assigned-managed-identity)」を参照してください。
 
-        > [!IMPORTANT]
-        > ストレージ アカウントは、トレーニングまたは推論に使用されるコンピューティング インスタンスまたはクラスターと同じ仮想ネットワークとサブネット内に存在する必要があります。
+    > [!TIP]
+    > あるいは、 __[信頼されたサービスの一覧にある Azure サービスがこのストレージ アカウントにアクセスすることを許可します]__ を選択し、信頼されたサービスからのアクセスをもっと広範囲で許可できます。 詳細については、[Azure Storage ファイアウォールおよび仮想ネットワークの構成](../storage/common/storage-network-security.md#trusted-microsoft-services)に関する記事を参照してください。
 
-    1. __[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]__ チェック ボックスをオンにします。 この変更は、すべての Azure サービスにユーザーのストレージ アカウントへのアクセス許可を与えるものではありません。
-    
-        * 一部のサービスのリソースは、**ユーザーのサブスクリプションで登録されている場合に**、特定の操作のために **同じサブスクリプション内の** ストレージ アカウントにアクセスできます。 たとえば、ログの書き込みやバックアップの作成などです。
-        * 一部のサービスのリソースでは、そのシステム割り当てマネージド ID に __Azure ロールを割り当てる__ ことで、ストレージ アカウントへのアクセスを明示的に許可できます。
+    :::image type="content" source="./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-no-vnet.png" alt-text="プライベート エンドポイントの使用時の Azure portal 内の Azure Storage ページの [ネットワーク] 領域":::
 
-        詳細については、[Azure Storage ファイアウォールおよび仮想ネットワークの構成](../storage/common/storage-network-security.md#trusted-microsoft-services)に関する記事を参照してください。
+1. __[保存]__ を選んで構成を保存します。
+
+> [!TIP]
+> プライベート エンドポイントを使用する場合は、パブリック アクセスを無効にすることもできます。 詳細については、[パブリック読み取りアクセスの禁止](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account)に関するページをご覧ください。
+
+# <a name="service-endpoint"></a>[サービス エンドポイント](#tab/se)
+
+1. Azure portal で、Azure Storage アカウントストレージ アカウントを選択します。
+
+1. ページの左側にある __[セキュリティとネットワーク]__ セクションで、 __[ネットワーク]__ を選択し、 __[ファイアウォールと仮想ネットワーク]__ タブを選択します。
+
+1. __[選択されたネットワーク]__ を選択します。 __[仮想ネットワーク]__ の __[既存の仮想ネットワークの追加]__ リンクを選択し、ご自身のワークスペースで使用する仮想ネットワークを選択します。
 
     > [!IMPORTANT]
-    > Azure Machine Learning SDK を使用する場合は、開発環境を Azure Storage アカウントに接続できる必要があります。 ストレージ アカウントが仮想ネットワーク内にある場合、ファイアウォールでは開発環境の IP アドレスからのアクセスを許可する必要があります。
-    >
-    > ストレージ アカウントへのアクセスを有効にするには、*開発クライアントの Web ブラウザーから* ストレージ アカウントの __[ファイアウォールと仮想ネットワーク]__ にアクセスします。 次に、 __[クライアント IP アドレスを追加する]__ チェック ボックスを使用して、クライアントの IP アドレスを __[アドレス範囲]__ に追加します。 また、 __[アドレス範囲]__ フィールドを使用して、開発環境の IP アドレスを手動で入力することもできます。 クライアントの IP アドレスが追加されると、SDK を使用してストレージ アカウントにアクセスできるようになります。
+    > ストレージ アカウントは、トレーニングまたは推論に使用されるコンピューティング インスタンスまたはクラスターと同じ仮想ネットワークとサブネット内に存在する必要があります。
 
-   [![Azure portal 内の [ファイアウォールと仮想ネットワーク] ウィンドウ](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
+1. __[リソース インスタンス]__ で、 __[リソースの種類]__ として `Microsoft.MachineLearningServices/Workspace` を選択し、 __[インスタンス名]__ を使用してご自身のワークスペースを選択します。 詳細については、「[システム割り当てマネージド ID に基づく信頼されたアクセス](../storage/common/storage-network-security.md#trusted-access-based-on-system-assigned-managed-identity)」を参照してください。
 
-## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>Azure のストレージ アカウントをプライベート エンドポイントで保護する
+    > [!TIP]
+    > あるいは、 __[信頼されたサービスの一覧にある Azure サービスがこのストレージ アカウントにアクセスすることを許可します]__ を選択し、信頼されたサービスからのアクセスをもっと広範囲で許可できます。 詳細については、[Azure Storage ファイアウォールおよび仮想ネットワークの構成](../storage/common/storage-network-security.md#trusted-microsoft-services)に関する記事を参照してください。
 
-Azure Machine Learning では、サービス エンドポイントまたはプライベート エンドポイントを使用するようにストレージ アカウントを構成できます。 ストレージ アカウントでプライベート エンドポイントが使用される場合、既定のストレージ アカウントにプライベート エンドポイントを 2 つ構成する必要があります。
-1. **BLOB** ターゲット サブリソースのあるプライベート エンドポイント。
-1. **ファイル** ターゲット サブリソースのあるプライベート エンドポイント (ファイル共有)。
+    :::image type="content" source="./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png" alt-text="Azure portal 内の Azure Storage ページの [ネットワーク] 領域":::
 
-![プライベート エンドポイント構成ページのスクリーンショット。BLOB オプションとファイル オプションを確認できます。](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
+1. __[保存]__ を選んで構成を保存します。
 
-既定のストレージでは **ない** ストレージ アカウントにプライベート エンドポイントを構成するには、追加するストレージ アカウントに相当する **ターゲット サブリソース** タイプを選択します。
+> [!TIP]
+> サービス エンドポイントを使用する場合は、パブリック アクセスを無効にすることもできます。 詳細については、[パブリック読み取りアクセスの禁止](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account)に関するページをご覧ください。
 
-詳細については、「[Azure Storage のプライベート エンドポイントを使用する](../storage/common/storage-private-endpoints.md)」を参照してください。
+---
 
-## <a name="secure-datastores-and-datasets"></a>データストアとデータセットをセキュリティで保護する
+## <a name="secure-azure-key-vault"></a>Azure Key Vault をセキュリティで保護する
 
-このセクションでは、仮想ネットワークの SDK エクスペリエンスでデータストアとデータセットを使用する方法について説明します。 スタジオ エクスペリエンスの詳細については、[仮想ネットワークで Azure Machine Learning スタジオを使用する](how-to-enable-studio-virtual-network.md)方法に関するページを参照してください。
+Azure Machine Learning では、関連付けられた Key Vault インスタンスを使用して、次の資格情報が格納されます。
+* 関連付けられたストレージ アカウントの接続文字列
+* Azure コンテナー リポジトリ インスタンスへのパスワード
+* データ ストアへの接続文字列
 
-SDK を使用してデータにアクセスするには、データが格納されている個々のサービスで求められる認証方法を使用する必要があります。 たとえば、Azure Data Lake Store Gen2 にアクセスするためにデータストアを登録する場合は、「[Azure Storage サービスに接続する](how-to-access-data.md#azure-data-lake-storage-generation-2)」に記載されているサービス プリンシパルを引き続き使用する必要があります。
+Azure キー コンテナーは、プライベート エンドポイントまたはサービス エンドポイントのいずれかを使用するように構成できます。 仮想ネットワークの内側で、Azure Machine Learning 実験機能を Azure Key Vault で使用するには、次の手順を使用します。
 
-### <a name="disable-data-validation"></a>データの検証を無効にする
+> [!TIP]
+> プライベート エンドポイントとサービスエンド ポイント、どちらを使用する場合でも、キー コンテナーは、ワークスペースのプライベート エンドポイントと同じネットワーク内にある必要があります。
 
-既定では、SDK を使用してデータにアクセスしようとすると、Azure Machine Learning によってデータの有効性と資格情報のチェックが実行されます。 データが仮想ネットワークの背後にある場合、Azure Machine Learning はこれらのチェックを完了できません。 このチェックを回避するには、検証をスキップするデータストアとデータセットを作成する必要があります。
+# <a name="private-endpoint"></a>[プライベート エンドポイント](#tab/pe)
 
-### <a name="use-datastores"></a>データストアを使用する
+Azure Key Vault でプライベート エンドポイントを使用する方法については、[Azure Private Link への Key Vault の統合](../key-vault/general/private-link-service.md#establish-a-private-link-connection-to-key-vault-using-the-azure-portal)に関するページをご覧ください。
 
- Azure Data Lake Store Gen1 および Azure Data Lake Store Gen2 では、既定で検証がスキップされるため、特別な操作は必要ありません。 ただし、次のサービスでは、類似の構文を使用してデータストアの検証をスキップできます。
 
-- Azure BLOB ストレージ
-- Azure ファイル共有
-- PostgreSQL
-- Azure SQL データベース
+# <a name="service-endpoint"></a>[サービス エンドポイント](#tab/se)
+
+1. ワークスペースに関連付けられている Key Vault に移動します。
+
+1. __[Key Vault]__ ページの左側のウィンドウで、 __[ネットワーク]__ を選択します。
+
+1. __[ファイアウォールと仮想ネットワーク]__ タブで、次の操作を行います。
+    1. __[許可するアクセス元]__ で __[プライベート エンドポイントと選択されたネットワーク]__ を選択します。
+    1. __[仮想ネットワーク]__ で、 __[既存の仮想ネットワークを追加]__ を選択して、実験のコンピューティングが存在する仮想ネットワークを追加します。
+    1. __[Allow trusted Microsoft services to bypass this firewall]\(信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する\)__ で、 __[はい]__ を選択します。
+
+    :::image type="content" source="./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png" alt-text="[Key Vault] ウィンドウの [ファイアウォールと仮想ネットワーク] セクション":::
+
+詳細については、「[Azure Key Vault のネットワーク設定を構成する](../key-vault/general/how-to-azure-key-vault-network-security.md)」を参照してください。
+
+---
+
+## <a name="enable-azure-container-registry-acr"></a>Azure Container Registry (ACR) の有効化
+
+> [!TIP]
+> ワークスペースの作成時に既存の Azure Container Registry を使用しなかった場合、それが存在しない可能性があります。 既定では、必要になるまで、ワークスペースによって ACR インスタンスが作成されることはありません。 強制的に作成するには、このセクションの手順を使用する前に、ワークスペースを使用してモデルをトレーニングまたはデプロイします。
+
+プライベート エンドポイントを使用するように Azure Container Registry を構成できます。 次の手順を使用して、仮想ネットワーク内にあるときに ACR を使用するようにワークスペースを構成します。
+
+1. 次の方法のいずれかを使用して、お使いのワークスペースの Azure Container Registry の名前を見つけます。
+
+    __Azure Portal__
+
+    ワークスペースの [概要] セクションの Azure Container Registry への __[レジストリ]__ 値のリンク。
+
+    :::image type="content" source="./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png" alt-text="ワークスペースの Azure Container Registry" border="true":::
+
+    __Azure CLI__
+
+    [Azure CLI 用の Machine Learning 拡張機能をインストールしている](reference-azure-machine-learning-cli.md)場合は、`az ml workspace show` コマンドを使用して、ワークスペースの情報を表示できます。
+
+    ```azurecli-interactive
+    az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
+    ```
+
+    このコマンドでは `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"` のような値が返されます。 文字列の最後の部分がワークスペースの Azure Container Registry の名前です。
+
+1. 仮想ネットワークへのアクセスを制限するには、[Azure Container Registry へのプライベート接続](../container-registry/container-registry-private-link.md)に関するページの手順に従います。 仮想ネットワークを追加するときに、Azure Machine Learning リソースの仮想ネットワークとサブネットを選択します。
+
+1. ワークスペースの ACR を構成し、[信頼されたサービスによるアクセスを許可](../container-registry/allow-access-trusted-services.md)します。
+
+1. Azure Machine Learning コンピューティング クラスターを作成する。 これは、ACR が VNet の背後にある場合に Docker イメージをビルドするために使用されます。 詳細については、[コンピューティング クラスターの作成](how-to-create-attach-compute-cluster.md)に関するページを参照してください。
+
+1. Azure Machine Learning Python SDK を使用して、コンピューティング インスタンスを使用して Docker イメージをビルドするようにワークスペースを構成します。 次のコード スニペットは、ビルド コンピューティングを設定するためにワークスペースを更新する方法を示しています。 `mycomputecluster` を、使用するクラスターの名前に置き換えてください。
+
+    ```python
+    from azureml.core import Workspace
+    # Load workspace from an existing config file
+    ws = Workspace.from_config()
+    # Update the workspace to use an existing compute cluster
+    ws.update(image_build_compute = 'mycomputecluster')
+    # To switch back to using ACR to build (if ACR is not in the VNet):
+    # ws.update(image_build_compute = '')
+    ```
+
+    > [!IMPORTANT]
+    > ストレージ アカウント、コンピューティング クラスター、および Azure Container Registry のすべてが、仮想ネットワークと同じサブネット内に存在する必要があります。
+    
+    詳細については、[update()](/python/api/azureml-core/azureml.core.workspace.workspace#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) メソッド リファレンスを参照してください。
+
+> [!TIP]
+> ACR が VNet の背後にある場合は、その ACR への[パブリック アクセスを無効](../container-registry/container-registry-access-selected-networks.md#disable-public-network-access)にすることもできます。
+
+## <a name="datastores-and-datasets"></a>データストアとデータセット
+次の表に、検証をスキップする必要があるサービスの一覧を示します。
+
+| サービス | 検証をスキップする必要があるか |
+| ----- |:-----:|
+| Azure BLOB ストレージ | はい |
+| Azure ファイル共有 | はい |
+| Azure Data Lake Store Gen1 | いいえ |
+| Azure Data Lake Store Gen2 | いいえ |
+| Azure SQL Database | はい |
+| PostgreSQL | はい |
+
+> [!NOTE]
+> Azure Data Lake Store Gen1 および Azure Data Lake Store Gen2 では、既定で検証がスキップされるため、何の操作も必要ありません。
 
 次のコード サンプルでは、新しい Azure BLOB データストアが作成され、`skip_validation=True` が設定されます。
 
@@ -156,95 +287,23 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 json_ds = Dataset.Tabular.from_json_lines_files(path=datastore_paths, 
 
 validate=False) 
-
 ```
 
-## <a name="secure-azure-key-vault"></a>Azure Key Vault をセキュリティで保護する
+## <a name="securely-connect-to-your-workspace"></a>ワークスペースに安全に接続する
 
-Azure Machine Learning では、関連付けられた Key Vault インスタンスを使用して、次の資格情報が格納されます。
-* 関連付けられたストレージ アカウントの接続文字列
-* Azure コンテナー リポジトリ インスタンスへのパスワード
-* データ ストアへの接続文字列
+[!INCLUDE [machine-learning-connect-secure-workspace](../../includes/machine-learning-connect-secure-workspace.md)]
 
-仮想ネットワークの内側で、Azure Machine Learning 実験機能を Azure Key Vault で使用するには、次の手順を使用します。
+## <a name="workspace-diagnostics"></a>ワークスペース診断
 
-1. ワークスペースに関連付けられている Key Vault に移動します。
-
-1. __[Key Vault]__ ページの左側のウィンドウで、 __[ネットワーク]__ を選択します。
-
-1. __[ファイアウォールと仮想ネットワーク]__ タブで、次の操作を行います。
-    1. __[許可するアクセス元]__ で __[プライベート エンドポイントと選択されたネットワーク]__ を選択します。
-    1. __[仮想ネットワーク]__ で、 __[既存の仮想ネットワークを追加]__ を選択して、実験のコンピューティングが存在する仮想ネットワークを追加します。
-    1. __[Allow trusted Microsoft services to bypass this firewall]\(信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する\)__ で、 __[はい]__ を選択します。
-
-   [![[キー コンテナー] ウィンドウの [ファイアウォールと仮想ネットワーク] セクション](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
-
-## <a name="enable-azure-container-registry-acr"></a>Azure Container Registry (ACR) の有効化
-
-仮想ネットワーク内で Azure Container Registry を使用するには、次の要件を満たしている必要があります。
-
-* Azure Container Registry が Premium バージョンである必要があります。 アップグレードの詳細については、「[SKU の変更](../container-registry/container-registry-skus.md#changing-tiers)」を参照してください。
-
-* トレーニングまたは推論に使用されるストレージ アカウントとコンピューティング ターゲットと同じ仮想ネットワークとサブネット内に Azure Container Registry が存在している必要があります。
-
-* Azure Machine Learning ワークスペースに、[Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-cluster.md)が含まれている必要があります。
-
-    ACR が仮想ネットワークの背後にある場合、Azure Machine Learning でそれを使用して Docker イメージを直接構築することはできません。 代わりに、コンピューティング クラスターを使用してイメージが構築されます。
-
-    > [!IMPORTANT]
-    > Docker イメージの作成に使用されるコンピューティング クラスターは、モデルのトレーニングとデプロイに使用されるパッケージ リポジトリにアクセスできる必要があります。 パブリック リポジトリへのアクセスを許可するネットワーク セキュリティ規則の追加、[プライベート Python パッケージの使用](how-to-use-private-python-packages.md)、またはパッケージが既に含まれている [カスタム Docker イメージ](how-to-train-with-custom-image.md) の使用が必要になる場合があります。
-
-これらの要件が満たされたら、次の手順を使用して Azure Container Registry を有効にします。
-
-> [!TIP]
-> ワークスペースの作成時に既存の Azure Container Registry を使用しなかった場合、それが存在しない可能性があります。 既定では、必要になるまで、ワークスペースによって ACR インスタンスが作成されることはありません。 強制的に作成するには、このセクションの手順を使用する前に、ワークスペースを使用してモデルをトレーニングまたはデプロイします。
-
-1. 次の方法のいずれかを使用して、お使いのワークスペースの Azure Container Registry の名前を見つけます。
-
-    __Azure Portal__
-
-    ワークスペースの [概要] セクションの Azure Container Registry への __[レジストリ]__ 値のリンク。
-
-    :::image type="content" source="./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png" alt-text="ワークスペースの Azure Container Registry" border="true":::
-
-    __Azure CLI__
-
-    [Azure CLI 用の Machine Learning 拡張機能をインストールしている](reference-azure-machine-learning-cli.md)場合は、`az ml workspace show` コマンドを使用して、ワークスペースの情報を表示できます。
-
-    ```azurecli-interactive
-    az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
-    ```
-
-    このコマンドでは `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"` のような値が返されます。 文字列の最後の部分がワークスペースの Azure Container Registry の名前です。
-
-1. 仮想ネットワークへのアクセスを制限するには、「[レジストリのネットワーク アクセスを構成する](../container-registry/container-registry-vnet.md#configure-network-access-for-registry)」の手順に従います。 仮想ネットワークを追加するときに、Azure Machine Learning リソースの仮想ネットワークとサブネットを選択します。
-
-1. ワークスペースの ACR を構成し、[信頼されたサービスによるアクセスを許可](../container-registry/allow-access-trusted-services.md)します。
-
-1. Azure Machine Learning Python SDK を使用して、Docker イメージを構築するようにコンピューティング クラスターを構成します。 次のコード スニペットで、これを実行する方法を示します。
-
-    ```python
-    from azureml.core import Workspace
-    # Load workspace from an existing config file
-    ws = Workspace.from_config()
-    # Update the workspace to use an existing compute cluster
-    ws.update(image_build_compute = 'mycomputecluster')
-    # To switch back to using ACR to build (if ACR is not in the VNet):
-    # ws.update(image_build_compute = '')
-    ```
-
-    > [!IMPORTANT]
-    > ストレージ アカウント、コンピューティング クラスター、および Azure Container Registry のすべてが、仮想ネットワークと同じサブネット内に存在する必要があります。
-    
-    詳細については、[update()](/python/api/azureml-core/azureml.core.workspace.workspace#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) メソッド リファレンスを参照してください。
+[!INCLUDE [machine-learning-workspace-diagnostics](../../includes/machine-learning-workspace-diagnostics.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事は、全 5 パートからなる仮想ネットワーク シリーズのパート 2 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
+この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
 
-* [パート 1: 仮想ネットワークの概要](how-to-network-security-overview.md)
-* [パート 3: トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
-* [パート 4: 推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
-* [パート 5: スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
-
-名前の解決については、[カスタム DNS](how-to-custom-dns.md) の使用に関する記事も参照してください。
+* [Virtual Network の概要](how-to-network-security-overview.md)
+* [トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
+* [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
+* [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+* [カスタム DNS を使用する](how-to-custom-dns.md)
+* [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)

@@ -1,20 +1,20 @@
 ---
-title: 検証可能な資格情報を発行者として失効させる方法 - Azure Active Directory Verifiable Credentials
+title: 検証可能な資格情報を発行者として失効させる方法 - Azure Active Directory Verifiable Credentials (プレビュー)
 description: 発行済みの検証可能な資格情報を失効させる方法について説明します
 documentationCenter: ''
 author: barclayn
-manager: daveba
-ms.service: identity
+manager: karenh444
+ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 50f270dde59860e7c9dd2ac1b35039d5855859e5
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 8548410c2df423f8635092002401501705fb24a8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222845"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006833"
 ---
 # <a name="revoke-a-previously-issued-verifiable-credential-preview"></a>以前に発行された検証可能な資格情報を失効させる (プレビュー)
 

@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 01/29/2021
+ms.date: 09/28/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Content Moderator, コンテンツ モデレーション
-ms.openlocfilehash: f8ad9c135fea4e582e6ba47764d0401936f8c295
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 0f600e2c0a7364088e68c70cd6eac90ee31c1b70
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221178"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361152"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>クイック スタート:Web 上で Content Moderator を試す
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 このクイックスタートでは、オンライン Content Moderator レビュー ツールを使用して、コードを記述せずに Content Moderator の基本的な機能をテストします。 このサービスをより迅速にご利用のコンテンツ モデレーション アプリに統合する場合は、[次のステップ](#next-steps)のセクションのその他のクイック スタートを参照してください。
 

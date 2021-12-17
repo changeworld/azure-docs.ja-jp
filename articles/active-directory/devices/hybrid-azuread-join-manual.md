@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 04/16/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28cc8a858d1779e17c893d64eda5f907bb4c808e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: aec31961b3ee9df699f08b8ee6bd2322f9f75f44
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577990"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044935"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル:ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する
 
@@ -76,7 +76,7 @@ Azure AD にコンピューターを登録するため、組織ネットワー�
 Windows 10 1803 以降では、フェデレーション ドメイン内のデバイスが AD FS を使用して試みた Hybrid Azure AD 参加が失敗しても、コンピューターまたはデバイス オブジェクトを Azure AD と同期するように Azure AD Connect が構成されていれば、そのデバイスは、同期されたコンピューターまたはデバイスを使用して Hybrid Azure AD 参加を完了しようと試みます。
 
 > [!NOTE]
-> デバイス登録構成の過程でデバイス登録の同期参加を成功させるには、Azure AD Connect 同期構成から既定のデバイス属性を除外しないでください。 Azure AD と同期される既定のデバイスの属性について詳しくは、[Azure AD Connect によって同期される属性](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10)に関するセクションを参照してください。
+> デバイス登録構成の過程でデバイス登録の同期参加を成功させるには、Azure AD Connect 同期構成から既定のデバイス属性を除外しないでください。 Azure AD と同期される既定のデバイスの属性について詳しくは、[Azure AD Connect によって同期される属性](../hybrid/reference-connect-sync-attributes-synchronized.md#windows-10)に関するセクションを参照してください。
 
 デバイスがシステム アカウントで上記の Microsoft リソースにアクセスできるかどうかを確認するには、「[デバイス登録接続のテスト](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/)」スクリプトを使用できます。
 
@@ -145,7 +145,7 @@ Azure AD Connect のデプロイ方法によっては、SCP オブジェクト�
 
 `Initialize-ADSyncDomainJoinedComputerSync` コマンドレットは、
 
-* Active Directory PowerShell モジュールと Azure Active Directory Domain Services (Azure AD DS) のツールを使用します。 これらのツールは、ドメイン コントローラーで実行されている Active Directory Web サービスに依存しています。 Active Directory Web サービスは、Windows Server 2008 R2 以降が実行されているドメイン コントローラーでサポートされています。
+* Active Directory PowerShell モジュールと Active Directory Domain Services (AD DS) のツールを使用します。 これらのツールは、ドメイン コントローラーで実行されている Active Directory Web サービスに依存しています。 Active Directory Web サービスは、Windows Server 2008 R2 以降が実行されているドメイン コントローラーでサポートされています。
 * MSOnline PowerShell モジュールのバージョン 1.1.166.0 でのみサポートされます。 このモジュールをダウンロードするには、[こちらのリンク](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)を使用してください。
 * AD DS ツールがインストールされていない場合、`Initialize-ADSyncDomainJoinedComputerSync` は失敗します。 AD DS のツールをインストールするには、 **[機能]**  >  **[リモート サーバー管理ツール]**  >  **[役割管理ツール]** の下のサーバー マネージャーを使用します。
 
@@ -567,7 +567,7 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
 1. [直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用して、デバイス ページに移動します。
-2. デバイスを特定する方法については、[Azure portal を使用してデバイス ID を管理する方法](./device-management-azure-portal.md#manage-devices)に関するページをご覧ください。
+2. デバイスを特定する方法については、「[Azure portal を使用してデバイス ID を管理する](./device-management-azure-portal.md)」をご覧ください。
 3. **[登録済み]** 列に **[保留中]** と表示されている場合、Hybrid Azure AD Join は完了していません。 フェデレーション環境では、登録に失敗し、デバイスを同期するように AAD Connect が構成されている場合にのみ、この問題が発生する可能性があります。
 4. **[登録済み]** 列に **日付/時刻** が含まれている場合、Hybrid Azure AD Join は完了しています。
 

@@ -16,11 +16,15 @@
 - name: 概念
   items:
     - name: セキュリティ ベースライン
-      href: security-baseline.md
+      href: /security/benchmark/azure/baselines/advisor-security-baseline?toc=/azure/advisor/toc.json
 - name: チュートリアル
   items:
     - name: Advisor の使用を開始する
       href: advisor-get-started.md
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
 - name: 操作方法ガイド
   items:
     - name: '[信頼性]'
@@ -49,7 +53,7 @@
       href: azure-advisor-score.md
 - name: リファレンス
   items:
-    - name: Security Center
+    - name: Defender for Cloud
       href: 'https://azure.microsoft.com/services/security-center/'
     - name: '[SQL Database Advisor]'
       href: ../azure-sql/database/database-advisor-implement-performance-recommendations.md
@@ -66,7 +70,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/advisor'
+      href: 'https://azure.microsoft.com/pricing/details/advisor/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
@@ -78,4 +82,4 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=azure+advisor'
     - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=advisor'
+      href: /samples/browse/?products=azure

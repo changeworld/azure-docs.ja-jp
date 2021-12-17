@@ -1,14 +1,15 @@
 ---
 title: Azure Arc 対応サーバー エージェントの新機能
 description: この記事には、Azure Arc 対応サーバー エージェントのリリース ノートが含まれています。 まとめられている問題の多くについては、追加詳細のリンクがあります。
-ms.topic: conceptual
-ms.date: 03/31/2021
-ms.openlocfilehash: ecff23225f4d482cc1e9a4f7b7724c8ffe0a1d73
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.topic: overview
+ms.date: 09/01/2021
+ms.custom: references_regions
+ms.openlocfilehash: 027d682a6f9727edb7ce39ac1eeea9947b2e4957
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109069"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628536"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの新機能
 
@@ -18,91 +19,80 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 - 既知の問題
 - バグの修正
 
-## <a name="march-2021"></a>2021 年 3 月
+このページは毎月更新されるため、定期的にアクセスしてご確認ください。 6 か月以上前の項目を探す場合は、「[Azure Arc 対応サーバー エージェントの新着情報のアーカイブ](agent-release-notes-archive.md)」を参照してください。
 
-バージョン 1.4
+## <a name="september-2021"></a>2021 年 9 月
 
-## <a name="new-feature"></a>新機能
-
-- 現在限定プレビュー段階にあるプライベート エンドポイントのサポートを追加しました。
-- azcmagent 用の終了コードの詳細な一覧。
-- エージェントの構成パラメーターを、`--config` パラメーターを使用してファイルから読み取れるようになりました。
-
-## <a name="fixed"></a>固定
-
-ネットワーク エンドポイントのチェックが高速になりました。
-
-## <a name="december-2020"></a>2020 年 12 月
-
-バージョン:1.3
-
-### <a name="new-feature"></a>新機能
-
-Windows Server 2008 R2 のサポートを追加。
+バージョン 1.11
 
 ### <a name="fixed"></a>固定
 
-Linux にカスタム スクリプト拡張機能を正常にインストールできない問題を解決しました。
+- エージェントは、[System objects: Require case insensitivity for non-Windows subsystems](/windows/security/threat-protection/security-policy-settings/system-objects-require-case-insensitivity-for-non-windows-subsystems) (システム オブジェクト: Windows 以外のサブシステムに対して大文字小文字を区別しないことを要求する) ポリシーを [無効] に設定して、Windows システムにインストールできるようになりました。
+- サービスの開始または再起動イベント中にエラーが発生した場合、ゲスト構成ポリシー エージェントで自動的に再試行が行われるようになりました。
+- Linux マシンでゲスト構成の監査ポリシーを正常に実行できない問題を修正しました。
 
-## <a name="november-2020"></a>2020 年 11 月
+## <a name="august-2021"></a>2021 年 8 月
 
-バージョン:1.2
-
-### <a name="fixed"></a>固定
-
-RPM ベースのディストリビューションでアップグレード後にプロキシ構成が失われる可能性がある問題が解決されました。
-
-## <a name="october-2020"></a>2020 年 10 月
-
-Version: 1.1
+バージョン 1.10
 
 ### <a name="fixed"></a>固定
 
-- 代替 GC デーモンのユニット ファイルの場所を処理するようにプロキシ スクリプトが修正されました。
-- GuestConfig エージェントの信頼性が変更されています。
-- GuestConfig エージェントで US Gov バージニア リージョンがサポートされます。
-- GuestConfig エージェント拡張機能によって、エラー発生時により詳細なメッセージが報告されます。
+- ゲスト構成ポリシー エージェントで、システム設定を構成および修復できるようになりました。 既存のポリシーの割り当ては、引き続き監査のみとなります。 Azure Policy の[ゲスト構成の修復オプション](../../governance/policy/concepts/guest-configuration-policy-effects.md)について詳細を確認してください。
+- 現在、ゲスト構成ポリシー エージェントは、6 時間ごとではなく、48 時間ごとに再起動されます。
 
-## <a name="september-2020"></a>2020 年 9 月
+## <a name="july-2021"></a>2021 年 7 月
 
-バージョン:1.0 (一般提供)
+バージョン 1.9
 
-### <a name="plan-for-change"></a>変更の計画
+## <a name="new-features"></a>新機能
 
-- プレビュー エージェント (1.0 より前のすべてのバージョン) のサポートは、将来のサービス更新プログラムで削除される予定です。
-- フォールバック エンドポイント `.azure-automation.net` のサポートが削除されました。 プロキシを使用している場合は、エンドポイント `*.his.arc.azure.com` を許可する必要があります。
-- Connected Machine エージェントが Azure でホストされている仮想マシンにインストールされている場合は、Arc 対応サーバーのリソースから VM 拡張機能をインストールまたは変更できません。 これは、仮想マシンの **Microsoft.Compute** および **Microsoft.HybridCompute** リソースから競合する拡張機能の操作が実行されることを回避するためです。 マシンの **Microsoft.Compute** リソースをすべての拡張機能の操作に使用します。
-- ゲスト構成プロセスの名前が Linux では *gcd* から *gcad* に、Windows では *gcarcservice* から *gcservice* に変更されました。
-
-### <a name="new-feature"></a>新機能
-
-- サポートに関する情報を収集する `azcmagent logs` オプションが追加されました。
-- EULA を表示する `azcmagent license` オプションが追加されました。
-- エージェントの状態を簡単に解析可能な形式で出力する `azcmagent show --json` オプションが追加されました。
-- `azcmagent show` の出力に、Azure でホストされている仮想マシン上にサーバーが存在するかどうかを示すフラグが追加されました。
-- Azure サービスに到達できない場合にローカル エージェントの状態のリセットを許可する `azcmagent disconnect --force-local-only` オプションが追加されました。
-- 他のクラウドをサポートするために `azcmagent connect --cloud` オプションが追加されました。 このリリースでは、エージェントのリリース時に Azure のみがサービスでサポートされます。
-- エージェントは、Azure でサポートされている言語にローカライズされています。
+インドネシア語のサポートを追加しました
 
 ### <a name="fixed"></a>固定
 
-- 接続チェックの機能強化。
-- Linux でエージェントをアップグレードしたときにプロキシ サーバーの設定が失われる問題が修正されました。
-- Windows Server 2012 R2 を実行しているサーバーにエージェントをインストールしようとするときの問題が解決されました。
-- 拡張機能のインストールの信頼性の向上
+米国西部 3 リージョンで拡張機能の管理ができないバグを修正しました
 
-## <a name="august-2020"></a>2020 年 8 月
+バージョン 1.8
 
-バージョン:0.11
+### <a name="new-features"></a>新機能
 
-- このリリースでは、以前に Ubuntu 20.04 のサポートが発表されました。 一部の Azure VM 拡張機能では Ubuntu 20.04 がサポートされないため、このバージョンでの Ubuntu のサポートは削除されます。
+- Red Hat および CentOS システムに Azure Monitor Agent 拡張機能をインストールする際の信頼性が向上しました
+- リソース名の最大長 (54 文字) をエージェント側で強制する機能を追加しました
+- ゲスト構成ポリシーの機能強化:
+  - Linux オペレーティング システム上で PowerShell ベースのゲスト構成ポリシーのサポートを追加しました
+  - 同一サーバー上で同じゲスト構成ポリシーを複数回割り当てることができるようになりました
+  - Windows オペレーティング システム上の PowerShell Core をバージョン 7.1 にアップグレードしました
 
-- 拡張機能のデプロイの信頼性向上。
+### <a name="fixed"></a>固定
 
-### <a name="known-issues"></a>既知の問題
+- Windows アプリケーションのイベント ログにサービスの開始または停止イベントを書き込むことができない場合、エージェントの実行が継続されるようになります。
 
-古いバージョンの Linux エージェントを使用しており、プロキシ サーバーを使用するようにエージェントを構成している場合、アップグレード後にプロキシ サーバーの設定を再構成する必要があります。 これを行うには、`sudo azcmagent_proxy add http://proxyserver.local:83` を実行します。
+## <a name="june-2021"></a>2021 年 6 月
+
+バージョン 1.7
+
+### <a name="new-features"></a>新機能
+
+- オンボード時の信頼性が向上しました。
+  - HIMDS を使用できない場合の再試行ロジックが向上しました
+  - OS 情報を取得できない場合、オンボードを中断せずに継続するようになります
+- Red Hat および CentOS システムに OMS エージェント拡張機能をインストールする際の信頼性が向上しました
+
+## <a name="may-2021"></a>2021 年 5 月
+
+バージョン 1.6
+
+### <a name="new-features"></a>新機能
+
+- SUSE Enterprise Linux 12 のサポートを追加しました
+- ゲスト構成エージェントがバージョン 1.26.12.0 に更新され、次のものが含まれるようになりました。
+
+   - ポリシーは個別のプロセスで実行されます。
+   - 拡張機能検証用の V2 署名サポートが追加されました。
+   - データ ログのマイナーな更新。
 
 ## <a name="next-steps"></a>次のステップ
 
-複数のハイブリッド マシン間で Arc 対応サーバーを評価または有効化する前に、[Connected Machine エージェントの概要](agent-overview.md)を確認し、要件、エージェントに関する技術的な詳細、およびデプロイ方法を把握してください。
+- 複数のハイブリッド マシンにまたがって Azure Arc 対応サーバーを評価または有効にする前に、[Connected Machine エージェントの概要](agent-overview.md)に関するページを確認して、要件、エージェントに関する技術的な詳細、デプロイ方法を理解してください。
+
+- [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。

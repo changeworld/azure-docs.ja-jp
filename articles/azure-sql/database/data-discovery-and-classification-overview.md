@@ -11,21 +11,21 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/17/2021
+ms.date: 08/24/2021
 tags: azure-synapse
-ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fd6360d1d549cd5c184dd5a1f3105d238ab9319
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690806"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335805"
 ---
 # <a name="data-discovery--classification"></a>データの検出と分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 データの検出と分類は、Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics に組み込まれています。 これにより、データベース内の機密データの検出、分類、ラベル付け、およびレポート作成を行うための基本的な機能が提供されます。
 
-最も機密性の高いデータには、ビジネス、財務、医療、個人情報などが含まれる場合があります。 このようなデータの検出と分類は、組織の情報保護アプローチにおいて極めて重要な役割を果たすことができます。 次のような場合にインフラストラクチャとして使用できます。
+最も機密性の高いデータには、ビジネス、財務、医療、個人情報などが含まれる場合があります。 次のような場合にインフラストラクチャとして使用できます。
 
 - データのプライバシーと規制コンプライアンスの要件への基準を満たすための支援。
 - さまざまなセキュリティ シナリオ (機密データに対するアクセスの監視 (監査) など)。
@@ -36,11 +36,11 @@ ms.locfileid: "101690806"
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>データの検出と分類とは
 
-データの検出と分類には、Azure の一連の基本的なサービスと新機能が導入されています。 これにより、データベースだけでなくデータの保護も目的として、SQL Database、SQL Managed Instance、および Azure Synapse の新しい情報保護パラダイムが形成されます。 このパラダイムには次のものが含まれます。
+現在、データの検出と分類は以下の機能をサポートしています。
 
 - **検出と推奨事項:** 分類エンジンは、データベースをスキャンして、機密データが含まれる可能性のある列を識別します。 その後、Azure portal を使って、推奨される分類を確認して適用するための簡単な方法を提供します。
 
-- **ラベル付け:** SQL Server データベース エンジンに追加された新しいメタデータ属性を使用して、機密度の分類ラベルを列に永続的に適用できます。 このメタデータは、機密度に基づく監査と保護のシナリオに利用できます。
+- **ラベル付け:** SQL Server データベース エンジンに追加された新しいメタデータ属性を使用して、機密度の分類ラベルを列に永続的に適用できます。 このメタデータは、機密度に基づく監査のシナリオに利用できます。
 
 - **クエリ結果セットの機密度:** 監査のため、クエリ結果セットの機密度がリアルタイムで計算されます。
 
@@ -60,13 +60,13 @@ ms.locfileid: "101690806"
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>分類法を定義してカスタマイズする
 
-データの検出と分類には、組み込みの機密ラベル セット、および組み込みの情報の種類と検出ロジック セットが付属しています。 この分類法をカスタマイズし、一連の分類コンストラクトとその優先度をお使いの環境に合わせて定義できるようになりました。
+データの検出と分類には、組み込みの機密ラベル セット、および組み込みの情報の種類と検出ロジック セットが付属しています。 この分類法をカスタマイズし、一連の分類コンストラクトとその優先度をお使いの環境に合わせて定義できます。
 
-Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行われます。 この処理は、[Azure Security Center](../../security-center/security-center-introduction.md) で、セキュリティ ポリシーの一環として実施されます。 このタスクは、組織のルート管理グループの管理者権限を持つユーザーのみが実行できます。
+Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行われます。 この場所は、セキュリティ ポリシーの一環として、[Microsoft Defender For Cloud](../../security-center/security-center-introduction.md) にあります。 このタスクは、組織のルート管理グループの管理者権限を持つユーザーのみが実行できます。
 
-情報保護のポリシー管理の一環として、カスタム ラベルを定義し、優先度を設定し、選択した一連の情報の種類に関連付けることができます。 独自のカスタム情報の種類を追加し、文字列パターンで構成することもできます。 パターンは、データベース内のこの種類のデータを識別するための検出ロジックに追加されます。
+ポリシー管理の一環として、カスタム ラベルを定義し、優先度を設定し、そのラベルを、選択した一連の情報の種類に関連付けることができます。 独自のカスタム情報の種類を追加し、文字列パターンで構成することもできます。 パターンは、データベース内のこの種類のデータを識別するための検出ロジックに追加されます。
 
-詳細については、「[Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする (プレビュー)](../../security-center/security-center-info-protection-policy.md)」を参照してください。
+詳細については、[Microsoft Defender for Cloud 上での SQL 情報保護ポリシーのカスタマイズ (プレビュー)](../../security-center/security-center-info-protection-policy.md) に関する記事を参照してください。
 
 組織全体のポリシーを定義したら、カスタマイズしたポリシーを使用して個別のデータベースの分類を続行できます。
 
@@ -112,9 +112,29 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>機密データへのアクセスを監査する
 
-機密データへのアクセスを監視できることは、情報保護パラダイムの重要な要素の 1 つです。 [Azure SQL Auditing](../../azure-sql/database/auditing-overview.md) は拡張され、`data_sensitivity_information` という新しいフィールドが監査ログに追加されました。 このフィールドには、クエリーによって返されたデータの機密度の分類 (ラベル) が記録されます。 次に例を示します。
+分類の重要な点は、機密データへのアクセスを監視できることです。 [Azure SQL Auditing](../../azure-sql/database/auditing-overview.md) は拡張され、`data_sensitivity_information` という新しいフィールドが監査ログに追加されました。 このフィールドには、クエリーによって返されたデータの機密度の分類 (ラベル) が記録されます。 次に例を示します。
 
-![監査ログ](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
+[![監査ログ](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png#lightbox)
+
+これらは、実際に感度情報を使用して監査できるアクティビティです。
+- ALTER TABLE ... DROP COLUMN
+- BULK INSERT
+- DELETE
+- INSERT
+- MERGE
+- UPDATE
+- UPDATETEXT
+- WRITETEXT
+- DROP TABLE
+- BACKUP
+- DBCC CloneDatabase
+- SELECT INTO
+- INSERT INTO EXEC
+- TRUNCATE TABLE
+- DBCC SHOW_STATISTICS
+- sys.dm_db_stats_histogram
+
+[sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) を使用して、Azure Storage アカウントに格納されている監査ファイルから情報を返します。
 
 ## <a name="permissions"></a><a id="permissions"></a>アクセス許可
 
@@ -126,15 +146,25 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 - SQL Security Manager
 - User Access Administrator
 
+データベースのデータ分類を読み取るには、次の操作を行う必要があります。
+
+- Microsoft.Sql/servers/databases/currentSensitivityLabels/*
+- Microsoft.Sql/servers/databases/recommendedSensitivityLabels/*
+- Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/*
+
 次の組み込みロールでは、データベースのデータ分類を変更できます。
 
 - 所有者
 - Contributor
 - SQL Security Manager
 
+データベースのデータ分類を変更するには、次の操作を行う必要があります。
+
+- Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/*
+
 ロールベースのアクセス許可の詳細については、[Azure RBAC](../../role-based-access-control/overview.md) に関する記事を参照してください。
 
-## <a name="manage-classifications"></a><a id="manage-classification"></a>分類の管理
+## <a name="manage-classifications"></a>分類の管理
 
 分類の管理には、T-SQL、REST API、または PowerShell を使用できます。
 
@@ -184,14 +214,21 @@ REST API を使用して、分類および推奨事項をプログラムで管�
 - [現在の内容をデータベース別に一覧表示](/rest/api/sql/sensitivitylabels/listcurrentbydatabase):指定されたデータベースの現在の機密ラベルを取得します。
 - [推奨される内容をデータベース別に一覧表示](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase):指定されたデータベースの推奨される機密ラベルを取得します。
 
+## <a name="retrieve-classifications-metadata-using-sql-drivers"></a>SQL ドライバーを使用して分類メタデータを取得する
+
+次の SQL ドライバーを使用して、分類メタデータを取得できます。
+
+- [ODBC ドライバー](/sql/connect/odbc/data-classification)
+- [OLE DB ドライバー](/sql/connect/oledb/features/using-data-classification)
+- [JDBC ドライバー](/sql/connect/jdbc/data-discovery-classification-sample)
+- [Microsoft SQL Server 用 Drivers for PHP](/sql/connect/php/release-notes-php-sql-driver)
 
 ## <a name="faq---advanced-classification-capabilities"></a>FAQ - 高度な分類機能
 
 **質問**: SQL データの検出と分類は [Azure Purview](../../purview/overview.md) によって置き換えられますか、または SQL データの検出と分類は間もなく廃止されますか?
 **回答**: SQL データ検出と分類は引き続きサポートされます。また、高度な分類機能とデータ ガバナンスを推進するための、より豊富な機能を備えた [Azure Purview](../../purview/overview.md) を導入することをお勧めします。 サービス、機能、API、または SKU の廃止が決定された場合は、移行または切り替えパスを含む事前通知がお客様に送信されます。 Microsoft ライフサイクル ポリシーの詳細については、こちらをご覧ください。
 
-
-## <a name="next-steps"></a><a id="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 分類済みの機密データへのアクセスを監視および監査するように [Azure SQL Auditing](../../azure-sql/database/auditing-overview.md) を構成することを検討します。
 - データの検出と分類に関するプレゼンテーションについては、「[SQL データの検出、分類、ラベル付け、保護 | | Data Exposed](https://www.youtube.com/watch?v=itVi9bkJUNc)」を参照してください。

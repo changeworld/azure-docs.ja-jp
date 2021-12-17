@@ -2,26 +2,29 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: azure-communication-services
-author: mikben
+author: probableprime
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: 4c8bd66dde54ff90ea2191fba58f10c87c45cf68
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: rifox
+ms.openlocfilehash: e1962ebc42c688adfecd18f7d46ce4957147ac7e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958235"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967910"
 ---
+## <a name="sample-code"></a>サンプル コード
+このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/add-chat) にあります。
+
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
 - アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。
 - [Visual Studio](https://visualstudio.microsoft.com/downloads/)
-- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイント** を記録する必要があります。
+- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication Services リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイント** を記録する必要があります。
 - [ユーザー アクセス トークン](../../access-tokens.md)。 スコープは必ず "chat" に設定し、トークン文字列と userId 文字列をメモしてください。
 
 ## <a name="setting-up"></a>設定
@@ -46,7 +49,7 @@ dotnet build
 .NET 用 Azure Communication Chat SDK をインストールします
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0
+dotnet add package Azure.Communication.Chat
 ```
 
 ## <a name="object-model"></a>オブジェクト モデル
@@ -133,9 +136,19 @@ await foreach (ChatThreadItem chatThreadItem in chatThreadItems)
 - メッセージのコンテンツは、`content` を使用して設定します (必須)。
 - "Text" や "Html" などのメッセージのコンテンツの種類には `type` を使用します。 指定しない場合は、"Text" が設定されます。
 - 送信者の表示名を指定するには、`senderDisplayName` を使用します。 指定しない場合は、空の文字列が設定されます。
+- メッセージと共に送信する追加データを含めるには、必要に応じて `metadata` を使用します。 このフィールドは、開発者がチャット メッセージ機能を拡張し、ユース ケースに応じたカスタム情報を追加するためのメカニズムを提供します。 たとえば、メッセージ内でファイル リンクを共有する場合、'hasAttachment:true' をメタデータに追加することで、受信者のアプリケーションがそれを解析して適切に表示できます。
 
 ```csharp
-SendChatMessageResult sendChatMessageResult = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
+SendChatMessageOptions sendChatMessageOptions = new SendChatMessageOptions()
+{
+    Content = "Please take a look at the attachment",
+    MessageType = ChatMessageType.Text
+};
+sendChatMessageOptions.Metadata["hasAttachment"] = "true";
+sendChatMessageOptions.Metadata["attachmentUrl"] = "https://contoso.com/files/attachment.docx";
+
+SendChatMessageResult sendChatMessageResult = await chatThreadClient.SendMessageAsync(sendChatMessageOptions);
+
 string messageId = sendChatMessageResult.Id;
 ```
 

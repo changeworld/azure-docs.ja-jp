@@ -1,24 +1,19 @@
 ---
 title: Azure のトラフィック分析スキーマ | Microsoft Docs
 description: Azure ネットワーク セキュリティ グループのフロー ログを分析するための、Traffic Analytics のスキーマについて説明します。
-services: network-watcher
-documentationcenter: na
 author: vinynigam
 manager: agummadi
-editor: ''
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 765a2728c5de49787a64fff723625e53e100e450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ec8f1df778a95b571f89f3213c2cc71163de955
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98017784"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597229"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Traffic Analytics のスキーマとデータ集計
 
@@ -121,10 +116,10 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 | NSGRule_s | NSG_RULENAME |  このフローを許可または拒否した NSG ルール |
 | NSGRuleType_s | * User Defined *  Default |   フローによって使用された NSG ルールの種類 |
 | MACAddress_s | MAC アドレス | フローがキャプチャされた NIC の MAC アドレス |
-| Subscription_s | このフィールドには、Azure 仮想ネットワーク/ネットワーク インターフェイス/仮想マシンのサブスクリプションが入力されます | フローの種類が S2S、P2S、AzurePublic、ExternalPublic、MaliciousFlow、および UnknownPrivate の場合 (片側だけが Azure の場合) にのみ適用されます |
+| Subscription_s | このフィールドには、Azure 仮想ネットワーク/ネットワーク インターフェイス/仮想マシンのサブスクリプションが入力されます | FlowType が S2S、P2S、AzurePublic、ExternalPublic、MaliciousFlow、および UnknownPrivate の場合 (片側だけが Azure の場合) にのみ適用されます |
 | Subscription1_s | サブスクリプション ID | フロー内のソース IP が属している仮想ネットワーク/ネットワーク インターフェイス/仮想マシンのサブスクリプション ID |
 | Subscription2_s | サブスクリプション ID | フロー内の宛先 IP が属している仮想ネットワーク/ネットワーク インターフェイス/仮想マシンのサブスクリプション ID |
-| Region_s | フロー内の IP が属している仮想ネットワーク/ネットワーク インターフェイス/仮想マシンの Azure リージョン | フローの種類が S2S、P2S、AzurePublic、ExternalPublic、MaliciousFlow、および UnknownPrivate の場合 (片側だけが Azure の場合) にのみ適用されます |
+| Region_s | フロー内の IP が属している仮想ネットワーク/ネットワーク インターフェイス/仮想マシンの Azure リージョン | FlowType が S2S、P2S、AzurePublic、ExternalPublic、MaliciousFlow、および UnknownPrivate の場合 (片側だけが Azure の場合) にのみ適用されます |
 | Region1_s | Azure リージョン | フロー内のソース IP が属している仮想ネットワーク/ネットワーク インターフェイス/仮想マシンの Azure リージョン |
 | Region2_s | Azure リージョン | フロー内の宛先 IP が属している仮想ネットワークの Azure リージョン |
 | NIC_s | \<resourcegroup_Name>\/\<NetworkInterfaceName> |  トラフィックを送信または受信している VM に関連付けられた NIC |
@@ -143,7 +138,7 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 | LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | フロー内のソース ID アドレスに関連付けられたローカル ネットワーク ゲートウェイ |
 | LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | フロー内の宛先 ID アドレスに関連付けられたローカル ネットワーク ゲートウェイ |
 | ConnectionType_s | 可能な値は、VNetPeering、VpnGateway、および ExpressRoute です |    接続の種類 |
-| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | 接続名。 flowtype P2S の場合、これは <gateway name>_<VPN Client IP> として書式設定されます |
+| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | 接続名。 フローの種類が P2S の場合、これは \<gateway name\>_\<VPN Client IP\> として書式設定されます |
 | ConnectingVNets_s | 仮想ネットワーク名のスペース区切りリスト | ハブとスポークのトポロジの場合は、ハブの仮想ネットワークがここに入力されます |
 | Country_s | 2 文字の国コード (ISO 3166-1 alpha-2) | フローの種類が ExternalPublic の場合に入力されます。 PublicIPs_s フィールド内のすべての IP アドレスは、同じ国コードになります |
 | AzureRegion_s | Azure リージョンの場所 | フローの種類が AzurePublic の場合に入力されます。 PublicIPs_s フィールド内のすべての IP アドレスは、同じ Azure リージョンになります |
@@ -152,14 +147,52 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 | AllowedOutFlows_d | | 許可された送信フローの数 (フローがキャプチャされたネットワーク インターフェイスへの送信) |
 | DeniedOutFlows_d  | | 拒否された送信フローの数 (フローがキャプチャされたネットワーク インターフェイスへの送信) |
 | FlowCount_d | 非推奨になりました。 同じ 4 タプルに一致したフローの合計数。 フローの種類が ExternalPublic または AzurePublic の場合、さまざまなパブリック IP アドレスからのフローもカウントに含められます。
-| InboundPackets_d | 受信されたパケット数 (NSG ルールが適用されたネットワーク インターフェイスでキャプチャされたもの) | これは、NSG のフロー ログ スキーマがバージョン 2 の場合にのみ入力されます |
-| OutboundPackets_d  | 送信されたパケット数 (NSG ルールが適用されたネットワーク インターフェイスでキャプチャされたもの) | これは、NSG のフロー ログ スキーマがバージョン 2 の場合にのみ入力されます |
-| InboundBytes_d |  受信されたバイト数 (NSG ルールが適用されたネットワーク インターフェイスでキャプチャされたもの) | これは、NSG のフロー ログ スキーマがバージョン 2 の場合にのみ入力されます |
-| OutboundBytes_d | 送信されたバイト数 (NSG ルールが適用されたネットワーク インターフェイスでキャプチャされたもの) | これは、NSG のフロー ログ スキーマがバージョン 2 の場合にのみ入力されます |
+| InboundPackets_d | フローの宛先からソースに送信されたパケットを表します | これは、NSG のフロー ログ スキーマがバージョン 2 の場合にのみ入力されます |
+| OutboundPackets_d  | フローのソースから宛先に送信されたパケットを表します | これは、NSG のフロー ログ スキーマがバージョン 2 の場合にのみ入力されます |
+| InboundBytes_d |  フローの宛先からソースに送信されたバイト数を表します | これは、NSG のフロー ログ スキーマがバージョン 2 の場合にのみ入力されます |
+| OutboundBytes_d |フローのソースから宛先に送信されたバイト数を表します | これは、NSG のフロー ログ スキーマがバージョン 2 の場合にのみ入力されます |
 | CompletedFlows_d  |  | このフィールドには、NSG のフロー ログ スキーマがバージョン 2 の場合にのみ、ゼロ以外の値が入力されます |
 | PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | バーで区切られたエントリ |
 | SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | バーで区切られたエントリ |
 | DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | バーで区切られたエントリ |
+
+### <a name="public-ip-details-schema"></a>パブリック IP の詳細のスキーマ
+
+Traffic Analytics を使用すると、お客様の環境内のすべてのパブリック IP についての WHOIS データと地理的な場所を取得できます。 悪意のある IP の場合は、Microsoft セキュリティ インテリジェンス ソリューションによって識別される DNS ドメイン、脅威の種類、スレッドの説明が表示されます。 IP の詳細は Log Analytics ワークスペースに発行されるため、カスタム クエリを作成してアラートを設定できます。 トラフィック分析ダッシュボードから事前に設定されたクエリにアクセスすることもできます。
+
+パブリック IP の詳細のスキーマを次に示します。
+
+| フィールド | Format | 説明 |
+|:---   |:---    |:---  |
+| TableName | AzureNetworkAnalyticsIPDetails_CL | Traffic Analytics の IP の詳細のデータを含むテーブル |
+| SubType_s | FlowLog | フロー ログのサブタイプ。 **"FlowLog" のみを使用します**。SubType_s の他の値は製品の内部動作用です |
+| FASchemaVersion_s | 2 | スキーマ バージョン。 NSG フロー ログ バージョンは反映されません |
+| FlowIntervalStartTime_t | 日付と時刻 (UTC) | フロー ログ処理間隔の開始時刻。 これは、フロー間隔の計測が開始される時刻です |
+| FlowIntervalEndTime_t | 日付と時刻 (UTC) | フロー ログ処理間隔の終了時刻 |
+| FlowType_s | * AzurePublic <br> * ExternalPublic <br> * MaliciousFlow | この表の下の注記で説明しています |
+| IP | パブリック IP | レコード内に情報が示されるパブリック IP |
+| 場所 | IP の場所 | - Azure Public IP の場合: IP が属している仮想ネットワーク、ネットワーク インターフェイス、仮想マシンの Azure リージョン <br> - External Public IP と悪意のある IP の場合: IP が位置する 2 文字の国番号 (ISO 3166-1 alpha-2) |
+| PublicIPDetails | IP に関する情報 | - AzurePublic IP の場合: IP の背後にある Azure サービス <br> - ExternalPublic/Malicious IP: IP の WhoIS 情報 |
+| ThreatType | 悪意のある IP によってもたらされる脅威 | **悪意のある IP のみ**: 脅威の一覧から現在有効な値のいずれか (以下で説明します) |
+| ThreatDescription | 脅威の説明 | **悪意のある IP のみ**: 悪意のある IP によってもたらされる脅威の説明 |
+| DNSDomain | DNS ドメイン | **悪意のある IP のみ**: この IP に関連付けられているドメイン名 |
+
+脅威の種類の一覧:
+
+| 値 | 説明 |
+|:---   |:---    |
+| ボットネット | インジケーターは、ボットネット ノードとメンバーの詳細を示しています。 |
+| C2 | インジケーターは、ボットネットのコマンド アンド コントロール ノードの詳細を示しています。 |
+| CryptoMining | このネットワーク アドレスと URL に関連するトラフィックは、CyrptoMining とリソースの不正使用を示します。 |
+| DarkNet | Darknet ノードとネットワークのインジケーターです。 |
+| DDos | アクティブまたは今後の DDoS キャンペーンに関連するインジケーター。 |
+| MaliciousUrl | マルウェアを配信している URL。 |
+| マルウェア | 悪意のあるファイルを記述するインジケーター。 |
+| フィッシング | フィッシング キャンペーンに関連するインジケーター。 |
+| プロキシ | プロキシ サービスのインジケーターです。 |
+| PUA | 望ましくない可能性のあるアプリケーション。 |
+| WatchList | これは、脅威が何であるかを正確に判断できない場合、または手動の解釈を必要とする場合にインジケーターが配置される一般バケットです。 これは通常、システムにデータを送信するパートナーが使用すべきではありません。 |
+
 
 ### <a name="notes"></a>Notes
 
@@ -177,4 +210,4 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 1. 一部のフィールド名は、\_s または \_d が付加されます。 これらは、送信先と送信元を示すものではなく、それぞれデータ型としての string と decimal を示しています。
 
 ### <a name="next-steps"></a>次の手順
-よく寄せられる質問への回答を確認するには、[トラフィック分析に関する FAQ](traffic-analytics-faq.md) をご覧ください。機能に関する詳細を確認するには、[Traffic Analytics のドキュメント](traffic-analytics.md)をご覧ください
+よく寄せられる質問への回答を確認するには、[トラフィック分析に関する FAQ](traffic-analytics-faq.yml) をご覧ください。機能に関する詳細を確認するには、[Traffic Analytics のドキュメント](traffic-analytics.md)をご覧ください

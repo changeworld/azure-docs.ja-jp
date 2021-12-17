@@ -1,0 +1,179 @@
+- name: アプリケーション プロキシのドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: アプリケーション プロキシとは
+      href: what-is-application-proxy.md
+    - name: ドキュメントの最新情報
+      href: whats-new-docs.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: アプリの統合に関するチュートリアル リスト
+      href: /azure/active-directory/saas-apps/tutorial-list
+    - name: アプリケーション プロキシを使用してオンプレミス アプリを追加する
+      href: application-proxy-add-on-premises-application.md
+- name: サンプル
+  expanded: false
+  items:
+    - name: アプリ プロキシ サンプルの概要
+      href: application-proxy-powershell-samples.md
+    - name: アプリに関する基本情報を一覧表示する
+      href: ./scripts/powershell-get-all-app-proxy-apps-basic.md
+    - name: アプリに関する拡張情報を一覧表示する
+      href: ./scripts/powershell-get-all-app-proxy-apps-extended.md
+    - name: コネクタ グループごとにアプリを一覧表示する
+      href: ./scripts/powershell-get-all-app-proxy-apps-by-connector-group.md
+    - name: トークンの有効期間ポリシーを使用してアプリを一覧表示する
+      href: ./scripts/powershell-get-all-app-proxy-apps-with-policy.md
+    - name: コネクタ グループとコネクタを一覧表示する
+      href: ./scripts/powershell-get-all-connectors.md
+    - name: コネクタ グループ間でアプリを移動する
+      href: ./scripts/powershell-move-all-apps-to-connector-group.md
+    - name: アプリに割り当てられているユーザーとグループを一覧表示する
+      href: ./scripts/powershell-display-users-group-of-app.md
+    - name: アプリにユーザーを割り当てる
+      href: ./scripts/powershell-assign-user-to-app.md
+    - name: アプリにグループを割り当てる
+      href: ./scripts/powershell-assign-group-to-app.md
+    - name: 既定のドメインを使用してアプリを一覧表示する
+      href: ./scripts/powershell-get-all-default-domain-apps.md
+    - name: ワイルドカード発行を使用してアプリを一覧表示する
+      href: ./scripts/powershell-get-all-wildcard-apps.md
+    - name: すべてのカスタム ドメインと証明書を一覧表示する
+      href: ./scripts/powershell-get-all-custom-domains-and-certs.md
+    - name: 証明書を持たないアプリを一覧表示する
+      href: ./scripts/powershell-get-all-custom-domain-no-cert.md
+    - name: 同じ証明書を持つアプリを一覧表示する
+      href: ./scripts/powershell-get-custom-domain-identical-cert.md
+    - name: 同一の証明書を置き換える
+      href: ./scripts/powershell-get-custom-domain-replace-cert.md
+- name: 概念
+  expanded: true
+  items:
+    - name: アプリケーション プロキシ
+      href: application-proxy.md
+    - name: オンプレミス アプリでのシングル サインオン
+      href: application-proxy-config-sso-how-to.md
+    - name: アプリケーション プロキシのデプロイ計画
+      href: application-proxy-deployment-plan.md
+    - name: Connectors
+      href: application-proxy-connectors.md
+    - name: コネクタ グループ
+      href: application-proxy-connector-groups.md
+    - name: 高可用性と負荷分散
+      href: application-proxy-high-availability-load-balancing.md
+    - name: SAML ベースの SSO (オンプレミス アプリ)
+      href: application-proxy-configure-single-sign-on-on-premises-apps.md
+    - name: ヘッダーベースの SSO
+      href: application-proxy-configure-single-sign-on-with-headers.md
+    - name: Kerberos ベースの SSO
+      href: application-proxy-configure-single-sign-on-with-kcd.md
+    - name: パスワードベースの SSO
+      href: application-proxy-configure-single-sign-on-password-vaulting.md
+    - name: ネットワーク トポロジ
+      href: application-proxy-network-topology.md
+    - name: Security
+      href: application-proxy-security.md
+- name: 操作方法ガイド
+  expanded: true
+  items:
+    - name: プロキシ サーバーを使用した構成
+      href: application-proxy-configure-connectors-with-proxy-servers.md
+    - name: モバイル アプリとデスクトップ アプリにオンプレミス API へのアクセスを付与する
+      href: application-proxy-secure-api-access.md
+    - name: カスタム ホーム ページの構成
+      href: application-proxy-configure-custom-home-page.md
+    - name: Cookie の設定の構成
+      href: application-proxy-configure-cookie-settings.md
+    - name: ワイルドカードを使用した発行
+      href: application-proxy-wildcard.md
+    - name: カスタム ドメインの構成
+      href: application-proxy-configure-custom-domain.md
+    - name: インライン リンクの変換
+      href: application-proxy-configure-hard-coded-link-translation.md
+    - name: 要求に対応するアプリの構成
+      href: application-proxy-configure-for-claims-aware-applications.md
+    - name: モバイルとデスクトップのクライアント アプリの構成
+      href: application-proxy-configure-native-client-application.md
+    - name: コネクタの登録 - サイレント インストール
+      href: application-proxy-register-connector-powershell.md
+    - name: 個人データの削除
+      href: application-proxy-remove-personal-data.md
+    - name: 発行に関するチュートリアル
+      items:
+        - name: NDES サーバー上のアプリケーション プロキシとの統合
+          href: active-directory-app-proxy-protect-ndes.md
+        - name: PingAccess を使用してアプリケーション プロキシと統合する
+          href: application-proxy-ping-access-publishing-guide.md
+        - name: Azure AD Domain Services との統合
+          href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=%2fazure%2factive-directory%2fapp-proxy%2fcontext%2fapp-proxy-context
+        - name: Power BI との統合
+          href: application-proxy-integrate-with-power-bi.md
+        - name: Defender for Cloud Apps との統合
+          href: application-proxy-integrate-with-microsoft-cloud-application-security.md
+        - name: リモート デスクトップとの統合
+          href: application-proxy-integrate-with-remote-desktop-services.md
+        - name: SharePoint との統合 (Kerberos)
+          href: application-proxy-integrate-with-sharepoint-server.md
+        - name: SharePoint との統合 (SAML)
+          href: application-proxy-integrate-with-sharepoint-server-saml.md
+        - name: Teams との統合
+          href: application-proxy-integrate-with-teams.md
+        - name: Tableau との統合
+          href: application-proxy-integrate-with-tableau.md
+        - name: Qlik との統合
+          href: application-proxy-qlik.md
+    - name: トラブルシューティング
+      items:
+        - name: アプリケーション プロキシのトラブルシューティング
+          href: application-proxy-troubleshoot.md
+        - name: 管理ポータルでの構成
+          href: application-proxy-config-how-to.md
+        - name: コネクタのトラブルシューティングのフローチャート
+          href: application-proxy-debug-connectors.md
+        - name: アプリケーションのトラブルシューティングのフローチャート
+          href: application-proxy-debug-apps.md
+        - name: アプリ ページを表示できない
+          href: application-proxy-page-appearance-broken-problem.md
+        - name: アプリケーション読み込みに時間がかかりすぎる
+          href: application-proxy-page-load-speed-problem.md
+        - name: アプリケーション ページ上のリンクが動作しない
+          href: application-proxy-page-links-broken-problem.md
+        - name: 管理ポータルでのアプリの作成に関する問題
+          href: application-proxy-config-problem.md
+        - name: Kerberos の制約付き委任を構成する
+          href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
+        - name: '"この企業アプリケーションにアクセスできない" というエラー'
+          href: application-proxy-sign-in-bad-gateway-timeout-error.md
+        - name: アプリケーション プロキシ エージェント コネクタのインストール時の問題
+          href: application-proxy-connector-installation-problem.md
+        - name: アプリのコネクタ グループに動作するコネクタがない
+          href: application-proxy-connectivity-no-working-connector.md
+        - name: サインインの問題
+          href: application-sign-in-problem-on-premises-application-proxy.md
+        - name: アプリケーション プロキシでの CORS の問題
+          href: application-proxy-understand-cors-issues.md
+- name: リファレンス
+  items:
+    - name: アプリ プロキシに関する FAQ
+      href: application-proxy-faq.yml
+    - name: アプリケーション プロキシのバージョン履歴
+      href: application-proxy-release-version-history.md
+- name: リソース
+  items:
+    - name: 開発者向けのサポート オプションとヘルプ オプション
+      href: ../develop/developer-support-help-options.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
+    - name: Azure フィードバック フォーラム
+      href: 'https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789'
+    - name: Microsoft Q&A 質問ページ
+      href: /answers/topics/azure-active-directory.html
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

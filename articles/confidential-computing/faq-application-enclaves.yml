@@ -1,0 +1,64 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Confidential Computing FAQ
+  description: Confidential Computing についてよく寄せられる質問の回答です。
+  author: stempesta
+  ms.topic: troubleshooting
+  ms.workload: infrastructure
+  ms.service: virtual-machines
+  ms.subservice: confidential-computing
+  ms.date: 11/1/2021
+  ms.author: stempesta
+  ms.openlocfilehash: 26f08798cc0ab80bcf205bef8da91e97a5fb48d8
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132309979"
+title: Intel SGX の機密 VM でのアプリケーション エンクレーブに関してよく寄せられる質問
+summary: >
+  この記事では、[Intel SGX Azure 仮想マシンで Confidential Computing ワークロード](overview.md)を実行することに関して特に多く寄せられる質問への回答を示します。
+
+
+  この記事で Azure の問題に対処できない場合は、[MSDN および Stack Overflow の Azure 関連フォーラム](https://azure.microsoft.com/support/forums/)を参照してください。 問題をこれらのフォーラムまたは [Twitter の @AzureSupport](https://twitter.com/AzureSupport) に投稿できます。 Azure サポート要求を送信することもできます。 サポート要求を送信するには、[[Azure サポート]](https://azure.microsoft.com/support/options/) ページで [サポートを受ける] を選択します。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      DCsv2 シリーズの VM を Azure にデプロイするにはどうすればよいですか。
+    answer: "DCsv2 VM は次のような方法でデプロイできます。\n   - [Azure Resource Manager テンプレート](../virtual-machines/windows/template-description.md)の使用\n   - [Azure Portal](https://portal.azure.com/#create/hub) から\n   - [Azure Confidential Computing (仮想マシン)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) マーケットプレース ソリューション テンプレートで。 サポートされているシナリオ (リージョン、イメージ、可用性、ディスク暗号化) だけを顧客に利用してもらうとき、マーケットプレース ソリューション テンプレートが役立ちます。 \n"
+  - question: >
+      DCsv3 または DCdsv3 シリーズの VM を Azure にデプロイするにはどうすればよいですか。
+    answer: "v3 Intel SGX VM は現在プレビュー中です。 v2 Intel SGX VM をデプロイするのと同じ方法でデプロイできます。\n   - [Azure Resource Manager テンプレート](../virtual-machines/windows/template-description.md)の使用\n   - [Azure Portal](https://portal.azure.com/#create/hub) から\n   - [Azure Confidential Computing (仮想マシン)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) マーケットプレース ソリューション テンプレートで。 サポートされているシナリオ (リージョン、イメージ、可用性、ディスク暗号化) だけを顧客に利用してもらうとき、マーケットプレース ソリューション テンプレートが役立ちます。 \n"
+  - question: >
+      すべての OS イメージは Intel SGX 仮想マシンで動作しますか?
+    answer: >
+      不正解です。 仮想マシンをデプロイできるのは、Ubuntu Server 18.04、Ubuntu Server 20.04、Windows Server 2019 Datacenter を搭載した第 2 世代のオペレーティング マシン上だけです。 [Linux](../virtual-machines/generation-2.md) と [Windows](../virtual-machines/generation-2.md) の Gen 2 VM に関する詳細をご覧ください。
+  - question: >
+      Intel SGX 仮想マシンがポータルで淡色表示され、選択できません
+    answer: "VM の横に付いている情報バブルに基づき、さまざまなアクションを行います。\n   -    **UnsupportedGeneration**:仮想マシン イメージの生成を \"Gen2\" に変更します。\n   -    **NotAvailableForSubscription**: お使いのサブスクリプションではこのリージョンを利用できません。 使用可能なリージョンを選択します。\n   -    **InsufficientQuota**:[クォータを増やすためのサポート要求を作成します](../azure-portal/supportability/per-vm-quota-requests.md)。 無料試用版サブスクリプションの場合、いくつかの Confidential Computing VM のクォータがありません \n"
+  - question: >
+      ポータルのサイズ セレクターで見つけようとしても、Intel SGX 仮想マシンが表示されません
+    answer: "[利用できるリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)を選択していることを確認してください。 また、サイズ セレクターでは必ず \"すべてのフィルターをクリア\" を選択してください。 \n"
+  - question: >
+      Azure Confidential Computing で Intel SGX を使用した高速ネットワークを有効にできますか?
+    answer: 一概には言えません。 - 高速ネットワークは、DC シリーズおよび DCsv2 シリーズの仮想マシンではサポートされていません。 Confidential Computing 仮想マシンのデプロイ、および これらの VM サイズで実行されている Azure Kubernetes Service クラスターのデプロイでは、高速ネットワークは有効にできません。 - 高速ネットワークは、CLI プロビジョニングと ARM テンプレートのみを介して DCdsv3 シリーズおよび DCsv3 シリーズ VM でサポートされています。
+  - question: >
+      これらのマシンで Azure Dedicated Host を使用できますか?
+    answer: "Azure Dedicated Host は、DCsv2 シリーズの仮想マシンをサポートします。 Azure Dedicated Host は、仮想マシンを実行するためのシングル テナントの物理サーバーを提供します。 ユーザーは通常、物理的なセキュリティ、データの整合性、監視に関するコンプライアンス要件に対応するために、Azure Dedicated Host を使用します。 \n"
+  - question: >
+      Azure Resource Manager テンプレートのデプロイ エラー "Operation could not be completed as it results in exceeding approved standard DC Family Cores Quota (操作結果が、承認されている Standard DC ファミリのコア クォータを超えるため、操作を完了できませんでした)" が表示されます。
+    answer: "[クォータを増やすためのサポート要求を作成します](../azure-portal/supportability/per-vm-quota-requests.md)。 無料試用版サブスクリプションの場合、いくつかの Confidential Computing VM のクォータがありません \n"
+  - question: >
+      DCsv2 シリーズ、DC シリーズ、DCdsv3 シリーズ、DCsv3 シリーズの VM の違いは何ですか?
+    answer: "- DC-Series VM は、より古い Intel SGX を搭載した 6 コア Intel プロセッサ上で動作し、メモリの合計や Enclave Page Cache (EPC) のメモリが少なく、2 つのリージョン (米国東部とヨーロッパ西部での Standard_DC2s と Standard_DC4s サイズ) でのみ利用できます。 これらの VM を一般提供する予定はありません。また、運用環境での使用はお勧めできません。 これらの VM をデプロイするには、[Confidential Compute DC-Series VM [プレビュー]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Marketplace インスタンスを使用してください。\n- DCsv2 シリーズ VMは、8 コア Intel プロセッサ上で実行され、合計メモリと EPC サイズが大きく、より多くのリージョンで使用できます。 これらのマシンは一般提供されています。 \n- DCsv3 シリーズと DCdsv3 シリーズの VM は、Intel SGX マシンの最新世代です。 この世代では、CPU コアが 6 倍 (最大 48 コア)、暗号化メモリ (EPC) が 1500 倍の 256 GB に、標準メモリが 12 倍の 384 GB に増加しました。 これらすべての変更により、Gen-on-Gen のパフォーマンスが大幅に向上し、全く新しいシナリオが展開されます。 これらの VM では、Intel Total Memory Encryption (TME) もサポートされています。 2021 年 11 月 1 日現在、これらの VM は引き続きパブリック プレビュー中であり、実稼働環境での使用には適していません。 \n- DCdsv3 シリーズ VM はローカル ディスクをサポートするので、DCsv3 シリーズ VM とは異なります。\n"
+  - question: >
+      Intel SGX 仮想マシンは世界中で利用できますか?
+    answer: "いいえ。 現時点では、これらの仮想マシンは一部のリージョンでのみ利用できます。 利用できるリージョンの最新情報については、[リージョン別製品ページ](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)をご覧ください。 \n"
+  - question: >
+      これらのマシンではハイパースレッディングは無効にされますか?
+    answer: >
+      すべての Azure Confidential Computing Intel SGX マシンでは、ハイパースレッディングが無効にされます。
+  - question: >
+      Open Enclave SDK を Intel SGX 仮想マシンにインストールするにはどうすればよいですか?
+    answer: "Azure マシンまたはオンプレミス マシンに OE SDK をインストールする方法については、[Open Enclave SDK GitHub](https://github.com/openenclave/openenclave) の手順に従ってください。\n     \nOS 固有のインストール手順については、Open Enclave SDK GitHub も参照できます。\n   - [Windows に OE SDK をインストールする](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)\n   - [Ubuntu 18.04 に OE SDK をインストールする](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)"

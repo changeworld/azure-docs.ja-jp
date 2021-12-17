@@ -1,27 +1,27 @@
 ---
 title: ヒューマン ラベル付け文字起こしのガイドライン - Speech Service
 titleSuffix: Azure Cognitive Services
-description: 単語が削除されたり、誤って置き換えられたりする場合など、音声認識の精度を向上させるには、音声データと共にヒューマン ラベル付け文字起こしを使用します。 ヒューマン ラベル付け文字起こしとは、音声ファイルを逐語的に文字起こしたものです。
+description: 音声認識の精度を向上させるには、音声データと共に、人間によってラベル付けされた文字起こしを使用します。 単語が削除されていたり、間違った単語に置き換えられたりしている場合に特に役立ちます。
 services: cognitive-services
-author: erhopf
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: erhopf
-ms.openlocfilehash: af6ced49071b7fbae983508e68964aa064ef38e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: eur
+ms.openlocfilehash: 913d8e0ef9a0ae74db2530167e99cefc92e75bb5
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101700033"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397246"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>ヒューマン ラベル付け文字起こしの作成方法
 
-認識の正確性の問題、特に単語が削除されたり誤って置き換えられたりする問題を改善したい場合は、音声データと共にヒューマン ラベル付け文字起こしを使用することがあります。 ヒューマン ラベル付け文字起こしとは これは簡単で、音声ファイルを逐語的に書き写したもののことです。
+人間によってラベル付けされた文字起こしとは、オーディオ ファイルからの逐語的な文字起こしをいいます。 単語が削除されていたり、間違った単語に置き換えられたりしているときには特に、人間によってラベル付けされた文字起こしを使用することで認識の精度が向上します。
 
-認識能力を向上させるには、大量の文字起こしデータが必要です。1 時間から 20 時間分の文字起こしデータを用意することをお勧めします。 音声サービスでは、トレーニングのために最大 20 時間分の音声が使用されます。 このページでは、質の高い文字起こしを作成するために役立つガイドラインについて説明します。 このガイドは、ロケールごとに分かれており、米国英語、標準中国語、およびドイツ語のセクションで構成されています。
+認識精度を向上させるには、文字起こしデータのサンプルが大量に必要です。 1 時間から 20 時間分の文字起こしデータを用意することをお勧めします。 音声サービスでは、トレーニングのために最大 20 時間分の音声が使用されます。 このページでは、質の高い文字起こしを作成するために役立つガイドラインについて説明します。 このガイドは、ロケールごとに分かれており、米国英語、標準中国語、およびドイツ語のセクションで構成されています。
 
 > [!NOTE]
 > すべての基本モデルでオーディオ ファイルのカスタマイズがサポートされているわけではありません。 基本モデルでサポートされていない場合、トレーニングでは、関連するテキストが使用されるのと同じ方法で文字起こしテキストが使用されます。 オーディオ データを使用したトレーニングをサポートする基本モデルの一覧については、「[言語のサポート](language-support.md#speech-to-text)」を参照してください。
@@ -41,7 +41,7 @@ ms.locfileid: "101700033"
 | ------------------- | ------------ | ----- |
 | “Hello world” | "Hello world" | 開始と終了の引用符が、適切な ASCII 文字に置き換えられています。 |
 | John’s day | John's day | アポストロフィが、適切な ASCII 文字に置き換えられています。 |
-| it was good—no, it was great! | it was good--no, it was great! | em ダッシュが、2 つのハイフンに置き換えられています。 |
+| It was good—no, it was great! | it was good--no, it was great! | em ダッシュが、2 つのハイフンに置き換えられています。 |
 
 ### <a name="text-normalization-for-us-english"></a>米国英語用のテキスト正規化
 
@@ -57,7 +57,7 @@ ms.locfileid: "101700033"
 
 次に、文字起こしに対して行う必要がある正規化の例をいくつか示します。
 
-| 元のテキスト               | 正規化後のテキスト              |
+| 元のテキスト               | 正規化後のテキスト (人間)      |
 | --------------------------- | ------------------------------------- |
 | Dr.Bruce Banner            | Doctor Bruce Banner                   |
 | James Bond, 007             | James Bond, double oh seven           |
@@ -68,6 +68,7 @@ ms.locfileid: "101700033"
 | Water is H20                | Water is H 2 O                        |
 | Play OU812 by Van Halen     | Play O U 8 1 2 by Van Halen           |
 | UTF-8 with BOM              | U T F 8 with BOM                      |
+| It costs \$3.14             | It costs three fourteen               |
 
 次の正規化規則は、文字起こしに自動的に適用されます。
 
@@ -77,7 +78,7 @@ ms.locfileid: "101700033"
 
 次に、文字起こしに対して自動的に行われる正規化の例をいくつか示します。
 
-| 元のテキスト                          | 正規化後のテキスト          |
+| 元のテキスト                          | 正規化後のテキスト (自動) |
 | -------------------------------------- | --------------------------------- |
 | "Holy cow!" said Batman.               | holy cow said batman              |
 | "What?" said Batman's sidekick, Robin. | what said batman's sidekick robin |
@@ -86,7 +87,6 @@ ms.locfileid: "101700033"
 | 104 Elm Street                         | one oh four Elm street            |
 | Tune to 102.7                          | tune to one oh two point seven    |
 | Pi is about 3.14                       | pi is about three point one four  |
-| It costs \$3.14                        | it costs three fourteen           |
 
 ## <a name="mandarin-chinese-zh-cn"></a>標準中国語 (zh-CN)
 
@@ -120,7 +120,7 @@ ms.locfileid: "101700033"
 - 全角文字を半角文字に変換します
 - すべての英単語に大文字を使用する
 
-次に、文字起こしに対して自動的に行われる正規化の例をいくつか示します。
+次に、文字起こしに自動的に適用される正規化の例をいくつか示します。
 
 | 元のテキスト | 正規化後のテキスト |
 | ------------- | ------------------------ |
@@ -170,7 +170,7 @@ ms.locfileid: "101700033"
 | ---------------- | ------------------------ |
 | Frankfurter Ring | frankfurter ring         |
 | ¡Eine Frage!     | eine frage               |
-| wir, haben       | wir haben                |
+| Wir, haben       | wir haben                |
 
 ### <a name="text-normalization-for-japanese"></a>日本語のテキストの正規化
 

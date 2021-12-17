@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Azure SQL Database と Azure SQL Managed Instance の Business Critical サービス レベルについて説明します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein
+author: danimir
+ms.author: danil
+ms.reviewer: mathoma, urmilano
 ms.date: 12/04/2018
-ms.openlocfilehash: 830ecc44d0def13e51cb06704bef429bb8860cd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c4ea72c94e71e0c57c0d88e5f8324111ae151c2
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92780225"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119704"
 ---
 # <a name="business-critical-tier---azure-sql-database-and-azure-sql-managed-instance"></a>Business Critical レベル - Azure SQL Database と Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -49,11 +49,11 @@ SQL Server データベース エンジン プロセスと、基礎となる .md
 Business Critical サービス レベルの対象となるアプリケーションは、基盤となる SSD ストレージからの応答の待機時間が短い (平均 1 - 2 ミリ秒)、基盤となるインフラストラクチャに障害が発生した場合に迅速に復旧するという要件があるか、レポート、分析、および読み取り専用のクエリをプライマリ データベースの無料で読み取り可能なセカンダリ レプリカにオフロードする必要があります。
 
 General Purpose レベルではなく、Business Critical サービス レベルを選択すべき主な理由は、次のとおりです。
--   **短いI/O 待機時間の要件**。ストレージ レイヤーから迅速な応答が必要なワークロード (平均 1 - 2 ミリ秒) では、Business Critical レベルを使用する必要があります。 
--   **アプリケーションとデータベース間に頻繁に通信がある**。 アプリケーション レイヤーのキャッシュまたは[要求のバッチ処理](../performance-improve-use-batching.md)を利用できない、迅速に処理する必要のある SQL クエリを多数送信する必要のあるアプリケーションには、Business Critical レベルが必要です。
--   **多数の更新**。挿入、更新および削除操作により、メモリ内のデータ ページが変更された場合 (ダーティ ページ)、これらは、`CHECKPOINT` 操作でデータ ファイルに保存される必要があります。 ダーティ ページが多いことにより、データベース エンジンのプロセスがクラッシュしたり、データベースがフェールオーバーする場合、General Purpose レベルの復旧に時間がかかる場合があります。 メモリ内で変更が多く発生するワークロードでは、Business Critical レベルを使用します。 
--   **データが変更する長期実行されるトランザクション**。 長期間開かれているトランザクションでは、ログ ファイルの切り捨てが行われません。その結果、ログ サイズと[仮想ログ ファイル (VLF)](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch) 数が増加する可能性があります。 VLF が多数ある場合、フェールオーバー後のデータベースの復旧が遅くなる場合があります。
--   **レポートと分析クエリを使用したワークロード**。これにより、無料の読み取り専用のセカンダリ レプリカにリダイレクトされる可能性があります。
+-    **短いI/O 待機時間の要件**。ストレージ レイヤーから迅速な応答が必要なワークロード (平均 1 - 2 ミリ秒) では、Business Critical レベルを使用する必要があります。 
+-    **アプリケーションとデータベース間に頻繁に通信がある**。 アプリケーション レイヤーのキャッシュまたは[要求のバッチ処理](../performance-improve-use-batching.md)を利用できない、迅速に処理する必要のある SQL クエリを多数送信する必要のあるアプリケーションには、Business Critical レベルが必要です。
+-    **多数の更新**。挿入、更新および削除操作により、メモリ内のデータ ページが変更された場合 (ダーティ ページ)、これらは、`CHECKPOINT` 操作でデータ ファイルに保存される必要があります。 ダーティ ページが多いことにより、データベース エンジンのプロセスがクラッシュしたり、データベースがフェールオーバーする場合、General Purpose レベルの復旧に時間がかかる場合があります。 メモリ内で変更が多く発生するワークロードでは、Business Critical レベルを使用します。 
+-    **データが変更する長期実行されるトランザクション**。 長期間開かれているトランザクションでは、ログ ファイルの切り捨てが行われません。その結果、ログ サイズと[仮想ログ ファイル (VLF)](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch) 数が増加する可能性があります。 VLF が多数ある場合、フェールオーバー後のデータベースの復旧が遅くなる場合があります。
+-    **レポートと分析クエリを使用したワークロード**。これにより、無料の読み取り専用のセカンダリ レプリカにリダイレクトされる可能性があります。
 - **障害からのより高い回復性とより早い復旧**。 システムで障害が発生した場合、プライマリ インスタンス上のデータベースは無効になり、セカンダリ レプリカの 1 つが、クエリを処理できる新しい読み取りまたは書き込みプライマリ データベースに直ちになります。 データベース エンジンは、ログ ファイルを分析し、トランザクションを再実行し、メモリ バッファーのすべてのデータを読み込む必要はありません。
 - **データの破損からの高度な保護**。 Business Critical レベルでは、事業継続のためにデータベース レプリカがバックグラウンドで活用されます。また、サービスでは、SQL Server データベースの[ミラーリングおよび可用性グループ](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)で使用されるものと同じテクノロジであるページの自動修復が活用されます。 データの整合性の問題が原因で、レプリカがページを読み取ることができない場合、読み取り不可能なページは、データの損失や顧客のダウンタイムなしで、別のレプリカから新しいコピーが取得され、置き換えられます。 この機能は、データベースに geo セカンダリ レプリカがある場合、General Purpose レベルに適用されます。
 - **高可用性**。Multi-AZ 構成の Business Critical レベルでは、General Purpose レベルの 99.99% と比較して、99.995% の高可用性が保証されます。

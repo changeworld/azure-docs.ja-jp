@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 4fb4981925593a22ed65df9d3ed0da5f45062f23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a62e6d5b9450ded54d4dce51cbd4469abbbdcd3b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578938"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297375"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 
@@ -79,13 +79,17 @@ NSG はアプリケーション層検査も、認証済みのアクセス制御�
 
 * [ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md)
 
-#### <a name="asc-just-in-time-vm-access"></a>ASC Just In Time VM アクセス
+#### <a name="defender-for-cloud-just-in-time-vm-access"></a>Defender for Cloud Just-In-Time VM アクセス
 
+<<<<<<< HEAD
 [Azure Security Center (ASC)](../../security-center/security-center-introduction.md) は、VM の NSG を管理し、適切な Azure ロール ベースのアクセス制御 ([Azure RBAC](../../role-based-access-control/overview.md)) のアクセス許可を持つユーザーがアクセスを要求するまで、VM へのアクセスをロックします。 ユーザーが正常に承認されると、ASC は、選択されたポートに対して指定された時間にわたってアクセスできるように NSG を変更します。 時間切れになると、NSG は、前のセキュリティで保護された状態に戻ります。
+=======
+[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) は、VM の NSG を管理し、適切な Azure ロール ベースのアクセス制御 ([Azure RBAC](../../role-based-access-control/overview.md)) のアクセス許可を持つユーザーがアクセスを要求するまで、VM へのアクセスをロックします。 ユーザーが正常に承認されると、Defender for Cloud は、選択されたポートに対して指定された時間にわたってアクセスできるように NSG を変更します。 時間切れになると、NSG は、前のセキュリティで保護された状態に戻ります。
+>>>>>>> repo_sync_working_branch
 
 詳細情報:
 
-* [Azure Security Center の Just In Time アクセス](../../security-center/security-center-just-in-time.md)
+* [Microsoft Defender for Cloud Just-In-Time VM アクセス](../../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>サービス エンドポイント
 
@@ -369,11 +373,11 @@ Network Watcher と、ラボで機能の一部のテストを開始する方法�
 > [!NOTE]
 > このサービスの可用性とステータスに関する最新の通知については、[Azure の更新情報](https://azure.microsoft.com/updates/?product=network-watcher)に関するページをご覧ください。
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-Azure Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、多数のセキュリティ ソリューションと連動します。
+Microsoft Defender for Cloud は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、多数のセキュリティ ソリューションと連動します。
 
-Security Center は、ネットワーク セキュリティの最適化と監視に役立つ次の機能を備えています。
+Defender for Cloud は、ネットワーク セキュリティの最適化と監視に役立つ次の機能を備えています。
 
 * ネットワーク セキュリティに関する推奨事項を提供する。
 * ネットワーク セキュリティ構成の状態を監視する。
@@ -381,7 +385,7 @@ Security Center は、ネットワーク セキュリティの最適化と監視
 
 詳細情報:
 
-* [Azure Security Center 入門](../../security-center/security-center-introduction.md)
+* [Microsoft Defender for Cloud の概要](../../security-center/security-center-introduction.md)
 
 ### <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 

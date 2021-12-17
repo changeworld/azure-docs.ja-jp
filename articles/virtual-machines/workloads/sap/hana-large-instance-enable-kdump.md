@@ -1,34 +1,31 @@
 ---
-title: SAP HANA (L インスタンス) で Kdump を有効にするスクリプト | Microsoft Docs
-description: SAP HANA (L インスタンス) HLI Type I、HLI Type II で Kdump を有効にするスクリプト
+title: SAP HANA (Large Instances) で kdump を有効にするスクリプト | Microsoft Docs
+description: Azure HANA Large Instances Type I と Type II で kdump サービスを有効にする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: prtyag
-manager: hrushib
+author: Ajayan1008
+manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/30/2020
-ms.author: prtyag
+ms.date: 06/22/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4b06cbcbef79e243116bddb33adbcf6476fac8a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 272ac309629c62ee9fc7d12236aac4b2c3106b8a
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213370"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540926"
 ---
-# <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>SAP HANA on Azure Large Instances (HLI) の Kdump
+# <a name="kdump-for-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure Large Instances の kdump
 
-kdump の構成と有効化は、明確な原因がないシステム クラッシュのトラブルシューティングを行うために必要な手順です。
-システムが突然クラッシュし、ハードウェアやインフラストラクチャの問題によって説明できない場合があります。
-このような場合は、オペレーティング システムまたはアプリケーションの問題である可能性があります。kdump を使用すると、SUSE でシステムがクラッシュした原因を突き止めることができます。
+この記事では、Azure HANA Large Instances (HLI) **Type I と Type II** で kdump サービスを有効にする方法について説明します。
 
-## <a name="enable-kdump-service"></a>Kdump サービスを有効にする
-
-このドキュメントでは、Azure HANA L インスタンス (**Type I および Type II**) で Kdump サービスを有効にする方法の詳細について説明します
+明確な原因がないシステム クラッシュのトラブルシューティングを行うためには、kdump を構成して有効にすることが必要です。 時々、ハードウェアやインフラストラクチャの問題ではシステム クラッシュの説明がつけられないことがあります。 そのようなケースでは、オペレーティング システムやアプリケーションが問題の原因である場合があります。 kdump を使用すると、SUSE ではシステム クラッシュの理由を判断できます。
 
 ## <a name="supported-skus"></a>サポートされている SKU
 
@@ -63,17 +60,18 @@ kdump の構成と有効化は、明確な原因がないシステム クラッ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Kdump サービスでは、ダンプの書き込みに `/var/crash` ディレクトリが使用されます。このディレクトリに対応するパーティションに、ダンプを格納できる十分なスペースがあることを確認してください。
+- kdump サービスでは、`/var/crash` ディレクトリを使用してダンプが書き込まれます。 このディレクトリに対応するパーティションに、ダンプを格納できる十分なスペースがあることを確認してください。
 
 ## <a name="setup-details"></a>セットアップの詳細
 
-- Kdump を有効にするスクリプトについては、[こちら](https://github.com/Azure/sap-hana-tools/blob/master/tools/enable-kdump.sh)を参照してください。
-> [!NOTE]
-> このスクリプトは、ラボのセットアップに基づいて作成されたものです。さらにチューニングを行う場合、OS ベンダーにお問い合わせください。
-> 個別の LUN が、ダンプの保存のために新規および既存のサーバー用にプロビジョニングされ、スクリプトがその LUN からのファイル システムの構成を処理します。
-> Microsoft はダンプを分析する責任を負いません。 お客様は OS ベンダーでチケットを開き、分析を行ってもらう必要があります。
+- kdump を有効にするスクリプトは、[GitHub の Azure sap-hana-tools](https://github.com/Azure/sap-hana-tools/blob/master/tools/enable-kdump.sh) にあります。
 
-- 次のコマンドを使用して、HANA L インスタンス上でこのスクリプトを実行します
+> [!NOTE]
+> このスクリプトは、ラボの設定に基づいて作成されています。 さらにチューニングを行う場合は、OS ベンダーに問い合わせる必要があります。
+> ダンプを保存する新規と既存のサーバーに対して、別々の論理ユニット番号 (LUN) がプロビジョニングされます。 LUN からのファイル システムの構成は、スクリプトによって行われます。
+> Microsoft はダンプを分析する責任を負いません。 OS ベンダーでチケットを開いて、分析してもらう必要があります。
+
+- HANA Large Instance でこのスクリプトを実行するには、次のコマンドを使用します。
 
     > [!NOTE]
     > このコマンドを実行するには、sudo 特権が必要です。
@@ -82,11 +80,11 @@ kdump の構成と有効化は、明確な原因がないシステム クラッ�
     sudo bash enable-kdump.sh
     ```
 
-- Kdump が正常に有効になったというコマンド出力の場合は、システムを再起動して変更を適用してください。
+- コマンドの出力に、kdump が正常に有効化されたと表示されたら、システムを再起動して変更を適用します。
 
-- 特定の操作の実行に失敗したというコマンド出力の場合は、Kdump サービスは有効になっていません。 「[サポートの問題](#support-issue)」セクションを参照してください。
+- コマンドの出力に、操作が失敗したと表示された場合、kdump サービスは有効になっていません。 「[サポートに関する問題](#support-issues)」セクションを参照してください。
 
-## <a name="test-kdump"></a>Kdump をテストする
+## <a name="test-kdump"></a>kdump をテストする
 
 > [!NOTE]
 >  以下の操作によって、カーネルのクラッシュとシステムの再起動がトリガーされます。
@@ -99,11 +97,11 @@ kdump の構成と有効化は、明確な原因がないシステム クラッ�
 
 - システムが正常に再起動したら、`/var/crash` ディレクトリでカーネルのクラッシュ ログを確認します。
 
-- `/var/crash` に現在の日付のディレクトリがある場合、Kdump は正常に有効になっています。
+- `/var/crash` に本日の日付のディレクトリがあれば、kdump は正常に有効化されています。
 
-## <a name="support-issue"></a>サポートの問題
+## <a name="support-issues"></a>サポートに関する問題
 
-スクリプトがエラーで失敗した場合、または Kdump が有効になっていない場合は、Microsoft サポート チームにサービス要求を提出し、次の詳細を伝えます。
+スクリプトがエラーで失敗した場合、または kdump が有効になっていない場合は、Microsoft サポート チームにサービス要求を提出してください。 次の詳細を記載してください。
 
 * HLI サブスクリプション ID
 
@@ -115,5 +113,11 @@ kdump の構成と有効化は、明確な原因がないシステム クラッ�
 
 * カーネル バージョン
 
-## <a name="related-documents"></a>関連ドキュメント
-- [kdump の構成](https://www.suse.com/support/kb/doc/?id=3374462)の詳細
+詳細については、[kdump の構成](https://www.suse.com/support/kb/doc/?id=3374462)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+HANA Large Instances でのオペレーティング システムのアップグレードについて説明します。
+
+> [!div class="nextstepaction"]
+> [オペレーティング システムのアップグレード](os-upgrade-hana-large-instance.md)

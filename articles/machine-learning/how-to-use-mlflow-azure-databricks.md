@@ -1,33 +1,32 @@
 ---
 title: Azure Databricks ML 実験用の MLflow Tracking
 titleSuffix: Azure Machine Learning
-description: Azure Databricks Ml 実験のメトリックと成果物をログに記録するために、Azure Machine Learning で MLflow を設定します。
+description: Azure Databricks ML 実験のメトリックと成果物をログに記録するために、Azure Machine Learning で MLflow を設定します。
 services: machine-learning
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
-ms.date: 09/22/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a894a46ce7c78b65dde80c52f9516fcbe4d27bcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python
+ms.openlocfilehash: 3face1aa4cb16f13275053b6b5320d4aff1ccdfe
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521001"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716374"
 ---
-# <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用した Azure Databricks ML 実験の追跡 (プレビュー)
+# <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning"></a>MLflow と Azure Machine Learning を使用した Azure Databricks ML 実験の追跡
 
 この記事では、MLflow の追跡 URI とログ API (まとめて [MLflow Tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) と呼ばれる) を有効にして、Azure Databricks (ADB) 実験、MLflow、および Azure Machine Learning を接続する方法について説明します。
 
 [MLflow](https://www.mlflow.org) は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 MLflow Tracking は、トレーニング実行のメトリックとモデル成果物のログ記録と追跡を行う、MLflow のコンポーネントです。 [Azure Databricks と MLflow](/azure/databricks/applications/mlflow/)の詳細を参照してください。 
 
-MLflow と Azure Machine Learning のその他の機能統合については、[MLflow と Azure Machine Learning を使用した実験実行の追跡](how-to-use-mlflow.md)に関する記事をご覧ください。
+MLflow と Azure Machine Learning のその他の機能統合については、「[MLflow と Azure Machine Learning](concept-mlflow.md)」をご覧ください。
 
->[!NOTE]
-> オープン ソース ライブラリである MLflow は頻繁に変更されます。 そのため、Azure Machine Learning と MLflow の統合によって利用できるようになる機能はプレビューとして見なす必要があり、Microsoft は完全にサポートしていません。
+MLflow プロジェクトを Azure Machine Learning でトレーニングする場合は、「[MLflow プロジェクトと Azure Machine Learning を使用して ML モデルをトレーニングする (プレビュー)](how-to-train-mlflow-projects.md)」を参照してください。
 
 > [!TIP]
 > このドキュメントの情報は主に、モデルのトレーニング プロセスを監視したいデータ サイエンティストや開発者を対象としています。 Azure Machine Learning からリソース使用状況やイベント (クォータ、トレーニング実行の完了、モデル デプロイの完了など) を監視することに関心がある管理者の方は、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
@@ -215,7 +214,9 @@ display(preds)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-ログに記録されたメトリックと成果物をワークスペースで使用する予定がない場合、現時点では、それらを個別に削除する機能は提供されていません。 代わりに、ストレージ アカウントとワークスペースを含むリソース グループを削除すれば、課金は発生しません。
+お使いの Azure Databricks ワークスペースを残したいが、Azure ML ワークスペースが不要になった場合は、Azure ML ワークスペースを削除できます。 この操作により、お使いの Azure Databricks ワークスペースと Azure ML ワークスペースのリンクが解除されます。 
+
+ログに記録されたメトリックと成果物をワークスペースで使用する予定がない場合、それらを個別に削除する機能は現時点では用意されていません。 代わりに、ストレージ アカウントとワークスペースを含むリソース グループを削除すれば、課金は発生しません。
 
 1. Azure Portal で、左端にある **[リソース グループ]** を選択します。
 

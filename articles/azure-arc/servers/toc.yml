@@ -6,6 +6,8 @@
       href: overview.md
     - name: Connected Machine エージェントの新機能
       href: agent-release-notes.md
+    - name: Connected Machine エージェントのリリース ノートのアーカイブ
+      href: agent-release-notes-archive.md
 - name: クイックスタート
   items:
     - name: Arc 対応サーバー エージェントを有効にする
@@ -16,8 +18,14 @@
       href: ./learn/tutorial-assign-policy-portal.md
     - name: マシンの監視
       href: ./learn/tutorial-enable-vm-insights.md
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
 - name: 概念
   items:
+    - name: Log Analytics エージェントのデプロイ オプション
+      href: concept-log-analytics-extension-deployment.md
     - name: セキュリティ
       items:
         - name: Azure Policy によるセキュリティ制御
@@ -25,24 +33,32 @@
           href: security-controls-policy.md
         - name: セキュリティの概要
           href: security-overview.md
+        - name: Private Link ネットワーク
+          href: private-link-security.md
 - name: 操作方法ガイド
   items:
-    - name: Azure Arc への接続
+    - name: 配置
       items:
         - name: Connected Machine エージェントの概要
           href: agent-overview.md
-        - name: 大規模なデプロイを計画する
+        - name: 展開を計画する
           href: plan-at-scale-deployment.md
-        - name: Azure portal から Azure Arc へのマシンの接続
+        - name: デプロイ スクリプトを使用してマシンを接続する
           href: onboard-portal.md
         - name: サービス プリンシパルを使用したマシンの大規模な接続
           href: onboard-service-principal.md
+        - name: Automation Update Management からマシンを接続する
+          href: onboard-update-management-machines.md
         - name: PowerShell DSC を使用してマシンを Azure Arc に接続する
           href: onboard-dsc.md
         - name: Windows Admin Center からマシンを接続する
           href: onboard-windows-admin-center.md
         - name: PowerShell を使用してマシンを Azure Arc に接続する
           href: onboard-powershell.md
+    - name: 移行
+      items:
+        - name: マシンを Azure に移行する
+          href: scenario-migrate-to-azure.md
     - name: 管理する
       items:
         - name: VM 拡張機能
@@ -57,6 +73,8 @@
               href: manage-vm-extensions-powershell.md
             - name: Resource Manager テンプレートを使用して拡張機能をデプロイする
               href: manage-vm-extensions-template.md
+            - name: 拡張機能の自動アップグレード
+              href: manage-automatic-vm-extension-upgrade.md
         - name: サーバーでマネージド ID を使用する
           href: managed-identity-authentication.md
         - name: エージェントの管理
@@ -65,10 +83,12 @@
           href: manage-howto-migrate.md
     - name: シナリオ
       items:
-        - name: Azure Sentinel にオンボードする
+        - name: Azure VM を使用して Arc 対応サーバーをテストする
+          href: plan-evaluate-on-azure-virtual-machine.md
+        - name: Microsoft Sentinel にオンボードする
           href: scenario-onboard-azure-sentinel.md
-        - name: Azure Security Center にオンボードする
-          href: ../../security-center/quickstart-onboard-machines.md
+        - name: Microsoft Defender for Cloud にオンボードする
+          href: ../../defender-for-cloud/quickstart-onboard-machines.md
     - name: トラブルシューティング
       items:
         - name: エージェントの接続に関する問題
@@ -80,15 +100,15 @@
     - name: データの保存場所
       href: data-residency.md
     - name: Azure CLI
-      href: /cli/azure/ext/connectedmachine/connectedmachine
+      href: /cli/azure/connectedmachine
     - name: Azure PowerShell
-      href: /powershell/module/az.connectedmachine
+      href: /powershell/module/az.connectedmachine/
     - name: .NET
       href: /dotnet/api/overview/azure/hybridcompute/management
     - name: Azure Stack HCI REST
-      href: /rest/api/stackhci
+      href: /rest/api/stackhci/
     - name: REST
-      href: /rest/api/hybridcompute
+      href: /rest/api/hybridcompute/
     - name: Go
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/hybridcompute/mgmt/2020-08-02/hybridcompute'
     - name: Java

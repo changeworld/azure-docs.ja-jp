@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: c99ad16e119c4262aa6d9d645b2457cdd46061b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7e5690e95bdc3f55a108fdc7c09e4d6e21b9c2b
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101700679"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968070"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Monitor で Active Directory のレプリケーション状態を監視する
 
@@ -23,6 +23,7 @@ AD レプリケーションの状態ソリューションは、レプリケー�
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
+
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
 ### <a name="prerequisites"></a>前提条件
@@ -33,9 +34,11 @@ AD レプリケーションの状態ソリューションは、レプリケー�
 
 
 ### <a name="install-agents-on-domain-controllers"></a>ドメイン コントローラーにエージェントをインストールする
+
 評価されるドメインのメンバーであるドメイン コントローラーに、エージェントをインストールする必要があります。 または、メンバー サーバーにエージェントをインストールし、AD レプリケーションのデータを Azure Monitor に送信するように、そのエージェントを構成する必要があります。 Windows コンピューターを Azure Monitor に接続する方法について詳しくは、[Azure Monitor への Windows コンピューターの接続](../agents/agent-windows.md)に関する記事をご覧ください。 ドメイン コントローラーが、Azure Monitor に接続する既存の System Center Operations Manager 環境の一部である場合は、[Azure Monitor への Operations Manager の接続](../agents/om-agents.md)に関する記事をご覧ください。
 
 ### <a name="enable-non-domain-controller"></a>非ドメイン コントローラーを有効にする
+
 いずれのドメイン コントローラーも直接 Azure Monitor に接続しない場合、Azure Monitor に接続されているドメイン内の他の任意のコンピューターを使用して AD Replication Status ソリューション パック用にデータを収集し、そのデータを送信させることができます。
 
 1. コンピューターが、AD レプリケーションの状態ソリューションを使用して監視するドメインのメンバーであることを確認します。

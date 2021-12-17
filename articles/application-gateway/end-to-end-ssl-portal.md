@@ -7,14 +7,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
-ms.author: absha
+ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6e2d1828acefacb03cc2f42193b8cd8897578b6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d19ccb3ea40d916ba6fbf53e87a3d9f2f2e1c2a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397503"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744831"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する
 

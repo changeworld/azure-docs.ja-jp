@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - サービス
 description: この概要で、CloudSimple サービスについて説明します。 このサービスを作成することで、ノードの購入、予約、プライベート クラウドの作成が可能になります。
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8f32197eda4fc7632e883fd21dd6e1caa0dbd24b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 940b9e67bb10c33a76f6b854d7cf03f3a7a6ee49
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97898744"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315123"
 ---
 # <a name="cloudsimple-service-overview"></a>CloudSimple サービスの概要
 

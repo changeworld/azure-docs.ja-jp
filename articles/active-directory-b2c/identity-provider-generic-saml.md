@@ -3,22 +3,22 @@ title: SAML ID プロバイダーでのサインアップおよびサインイ�
 titleSuffix: Azure Active Directory B2C
 description: Azure Active Directory B2C で任意の SAML ID プロバイダー (IdP) でのサインアップとサインインを設定します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 944eff6e76f4e5759f70105fe9d09aa61093917f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: e76176c74405422fc871bc2bfb05e4dada01774d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028300"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "132133778"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して SAML ID プロバイダーでのサインアップとサインインを設定する
 
@@ -56,7 +56,8 @@ Azure Active Directory B2C (Azure AD B2C) では、SAML 2.0 ID プロバイダ�
 * Azure AD B2C から SAML 要求を受信、デコード、応答する機能を持つ SAML **ID プロバイダー**。
 * お使いの ID プロバイダー向けに公開されている SAML **メタデータ エンドポイント**。
 * [Azure AD B2C テナント](tutorial-create-tenant.md)。
- 
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
@@ -73,7 +74,8 @@ Azure AD B2C と SAML ID プロバイダー間の信頼関係を確立するに�
 証明書を Azure AD B2C テナントに格納する必要があります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
@@ -223,7 +225,8 @@ https://your-domain-name/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/
 ## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[ポリシー]** で **[Identity Experience Framework]** を選択します。
 1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。

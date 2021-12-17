@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 10/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 7f999dbf7a4e0262e36181a98560931d32d3296b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 583ed98980ae2ac5e8f3bddd7c3267c3400b85a5
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612502"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006149"
 ---
 # <a name="azure-data-box-system-requirements"></a>Data Box のシステム要件
 

@@ -1,18 +1,22 @@
 ---
-title: Azure マネージド ID を使用して DevTest Labs で環境を作成する | Microsoft Docs
+title: Azure マネージド ID を使用した環境の作成
 description: Azure でマネージ ID を使用して、Azure DevTest Labs のラボに環境をデプロイする方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 0f3e4b4d7030eb26c25b291e03caaa430d1979c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 220937d20c63420501e3ef6bb1b6c5f8a820613d
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98185786"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400321"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Azure マネージド ID を使用してラボに環境をデプロイする 
 
-ラボの所有者は、マネージド ID を使用してラボに環境をデプロイできます。 この機能は、環境にキー コンテナー、共有イメージ ギャラリー、ネットワークなど、環境のリソース グループの外部にある Azure リソースが含まれている場合、またはそれらのリソースを参照している場合に役立ちます。 これにより、その環境のリソース グループに限定されないサンドボックス環境を作成できるようになります。
+ラボの所有者は、マネージド ID を使用してラボに環境をデプロイできます。 この機能は、環境のリソース グループの外部にある Azure リソースが環境に含まれる、または環境に参照されるシナリオで役立ちます。 これらのリソースには、キー コンテナー、共有イメージ ギャラリー、ネットワークなどがあります。 マネージド ID は、その環境のリソース グループに限定されないサンドボックス環境の作成を可能にします。 
+
+既定では、環境を作成すると、ラボは Azure Resource Manager テンプレート (ARM テンプレート) のデプロイ中に、システム割り当て id を作成します。 システム割り当て id は、ラボ ユーザーの代わりに Azure リソースとサービスにアクセスします。 DevTest Labs では、既定ではラボ環境を初めて作成するときに、システムによって割り当てられる id が作成されます。 [ラボによりシステムによって割り当てられた ID が作成される理由](configure-lab-identity.md#scenarios-for-using-labs-system-assigned-identity)について説明します。 
+
+ラボの所有者は、ラボのシステム割り当て id に、ラボの外部にある Azure リソースへのアクセスの許可を与えるかどうかを選べます。 そのシナリオではユーザー割り当て id を使うこともできます。 ラボのシステム割り当て ID は、ラボの有効期間中のみ有効です。 システムによって割り当てられた ID は、ラボを削除すると削除されます。 ID を使用する必要がある環境が複数のラボにある場合は、ユーザー割り当て ID の使用を検討してください。  
 
 > [!NOTE]
 > 現在、単一のユーザー割り当て ID がラボごとにサポートされています。 
@@ -21,7 +25,7 @@ ms.locfileid: "98185786"
 
 - [Azure portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 
     
-    ラボと同じリージョンおよびサブスクリプションでマネージド ID が作成されたことを確認します。 マネージド ID のリソース グループは同じである必要がありません。
+    ラボと同じリージョンおよびサブスクリプションでマネージド ID が作成されたことを確認します。 マネージド ID は同じリソース グループである必要はありません。
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 
@@ -40,7 +44,7 @@ ms.locfileid: "98185786"
 
     保存すると、ラボはすべてのラボ環境をデプロイするときにこの ID を使用します。 一覧から ID を選択することで、Azure の ID リソースにアクセスすることもできます。 
 
-ラボに追加された ID が、環境でアクセスする必要がある外部リソースへのアクセス許可を持っている限り、ラボ所有者は、環境のデプロイ時に特別な操作を行う必要はありません。 
+ラボの所有者は、環境を展開するために特別なことをする必要はありません。 ラボに追加された id には、環境によるアクセスが必要となる外部リソースへのアクセスが許可されている必要があります。 
 
 ラボに割り当てられているユーザー マネージド ID を変更するには、最初にラボに関連付けられている ID を削除してから、ラボに別の ID を追加します。 ラボに関連付けられている ID を削除するには、**[...] (省略記号)** を選択し、**[削除]** をクリックします。 
 
@@ -48,44 +52,30 @@ ms.locfileid: "98185786"
 
 1. ID を作成したら、この ID のリソース ID をメモしておきます。 これは次のサンプルのようになります。 
 
-    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
-1. 次の例のように、新しい `ServiceRunner` リソースをラボに追加するには、PUT Https メソッドを実行します。 サービス ランナー リソースは、DevTest Labs でマネージド ID を管理および制御するためのプロキシ リソースです。 サービス ランナー名は任意の有効な名前にすることができますが、マネージド ID リソースの名前を使用することをお勧めします。 
+    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/{rg}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}`.
+
+1. ラボ リソースに対して PUT HTTPS メソッドを実行し、ユーザー割り当ての ID を追加するか、ラボのシステムによって割り当てられた ID を有効にします。
+
+   > [!NOTE]
+   > ユーザー割り当て ID を作成するかどうかに関係なく、ラボでは、ラボ環境が初めて作成されたときに、システムによって割り当てられた ID が自動的に作成されます。 ただし、ユーザーが割り当てた ID がラボ用に既に構成されている場合、DevTest Lab サービスは引き続きその ID を使用してラボ環境をデプロイします。 
  
     ```json
-    PUT https://management.azure.com/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Devtestlab/labs/{yourlabname}/serviceRunners/{serviceRunnerName}
+    
+    PUT https://management.azure.com/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Devtestlab/labs/{labname}
 
     {
         "location": "{location}",
+        "properties": {
+          **lab properties**
+         } 
         "identity":{
-            "type": "userAssigned",
+            "type": "SystemAssigned,UserAssigned",
             "userAssignedIdentities":{
-                "[userAssignedIdentityResourceId]":{}
+                "/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/{rg}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}":{}
             }
-        }
-        "properties":{
-            "identityUsageType":"Environment"
-                     }
-          
+        } 
     }
+    
     ```
  
-    次に例を示します。 
-
-    ```json
-    PUT https://management.azure.com/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/exampleRG/providers/Microsoft.Devtestlab/labs/mylab/serviceRunners/sampleuseridentity
-
-    {
-        "location": "eastus",
-        "identity":{
-            "type": "userAssigned",
-            "userAssignedIdentities":{
-                "/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/exampleRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuseridentity":{}
-            }
-        }
-        "properties":{
-            "identityUsageType":"Environment"
-                     }
-    }
-    ```
- 
-ユーザー割り当て ID がラボに追加されると、Azure DevTest Labs サービスは Azure Resource Manager 環境をデプロイするときにそれを使用します。 たとえば、Resource Manager テンプレートで外部の共有イメージ ギャラリーのイメージにアクセスする必要がある場合は、ラボに追加した ID に、共有イメージ ギャラリー リソースに最低限必要なアクセス許可があることを確認してください。 
+ユーザー割り当て id をラボに追加すると、DevTest Labs サービスは Azure Resource Manager 環境をデプロイするときに id を使います。 たとえば、Shared Image Gallery のイメージにアクセスするために、Resource Manager テンプレートが必要になる場合は、その id が Shared Image Gallery リソースへの必要なアクセス許可があることを確認してください。 

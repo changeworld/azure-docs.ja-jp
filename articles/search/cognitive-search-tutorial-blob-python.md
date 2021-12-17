@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ea1cc022cbea7dbf3d1fa12cb83cfe3084b28560
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51d3fd3f8da5c8d92b2b02205a607eb96882bfb9
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92788084"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708415"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:Python と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
@@ -196,7 +196,7 @@ Azure portal 内の Search サービスのダッシュボード ページに戻�
 
 この手順では、データに適用するエンリッチメント ステップのセットを定義します。 それぞれのエンリッチメント ステップを *スキル* と呼び、エンリッチメント ステップのセットを *スキルセット* と呼びます。 このチュートリアルでは、スキルセット用に次の[ビルトイン コグニティブ スキル](cognitive-search-predefined-skills.md)を使用します。
 
-+ [エンティティの認識](cognitive-search-skill-entity-recognition.md)。BLOB コンテナーのコンテンツから組織の名前を抽出します。
++ [エンティティの認識](cognitive-search-skill-entity-recognition-v3.md)。BLOB コンテナーのコンテンツから組織の名前を抽出します。
 
 + [言語検出](cognitive-search-skill-language-detection.md)。コンテンツの言語を識別します。
 
@@ -215,7 +215,7 @@ skillset_payload = {
     "skills":
     [
         {
-            "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+            "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
             "categories": ["Organization"],
             "defaultLanguageCode": "en",
             "inputs": [
@@ -315,7 +315,7 @@ print(r.status_code)
 
 この演習では、次のフィールドとフィールドの型を使用します。
 
-| field-names: | ID         | content   | languageCode | keyPhrases         | organizations     |
+| field-names: | id         | content   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 

@@ -1,0 +1,133 @@
+### YamlMime:FAQ
+metadata:
+  title: FAQ - Windows VM 用の Azure Disk Encryption
+  description: この記事では、Windows IaaS VM 用の Microsoft Azure Disk Encryption についてよく寄せられる質問への回答を示します。
+  author: msmbaldwin
+  ms.service: virtual-machines
+  ms.subservice: disks
+  ms.collection: windows
+  ms.topic: conceptual
+  ms.author: mbaldwin
+  ms.date: 11/01/2019
+  ms.custom: seodec18
+  ms.openlocfilehash: add854c34ccce78dcd8af98a1f62ea089fad197a
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130262947"
+title: Windows 仮想マシン用の Azure Disk Encryption に関する FAQ
+summary: >
+  この記事では、Windows VM 用の Azure Disk Encryption についてよく寄せられる質問 (FAQ) への回答を示します。 このサービスの詳細については、「[Azure Disk Encryption の概要](disk-encryption-overview.md)」をご覧ください。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      Windows VM 用の Azure Disk Encryption とは何ですか。
+    answer: "Windows VM 用の Azure Disk Encryption では、Windows の BitLocker 機能を使用して、OS ディスク とデータ ディスクの完全なディスク暗号化を提供します。 また、[VolumeType パラメーターが ALL](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk) の場合、一時的なディスクの暗号化を行うことができます。  コンテンツは、暗号化された VM からストレージ バックエンドにフローします。 これにより、カスタマー マネージド キーを使用してエンド ツー エンドの暗号化を行うことができます。\n \n「[サポートされている VM とオペレーティング システム](disk-encryption-overview.md#supported-vms-and-operating-systems)」を参照してください。\n \n"
+  - question: >
+      Azure Disk Encryption はどこで一般公開 (GA) されていますか。
+    answer: >
+      Azure Disk Encryption は、すべての Azure パブリック リージョンで一般公開されています。
+  - question: >
+      Azure Disk Encryption では、どのようなユーザー エクスペリエンスを利用できますか。
+    answer: >
+      Azure Disk Encryption GA は、Azure Resource Manager テンプレート、Azure PowerShell、および Azure CLI をサポートしています。 異なるユーザー エクスペリエンスによって柔軟性が得られます。 VM のディスク暗号化を有効にするオプションは 3 つあります。 Azure Disk Encryption で利用可能なユーザー エクスペリエンスとステップ バイ ステップ ガイダンスの詳細については、「[Azure Disk Encryption scenarios for Windows](disk-encryption-windows.md)」 (Windows 用の Azure Disk Encryption シナリオ) を参照してください。
+  - question: >
+      Azure Disk Encryption の価格はどれくらいですか。
+    answer: >
+      Azure Disk Encryption を使用して VM ディスクを暗号化するための料金は発生しませんが、Azure Key Vault の使用に関連する料金が発生します。 Azure Key Vault のコストの詳細については、「[Key Vault の価格](https://azure.microsoft.com/pricing/details/key-vault/)」ページを参照してください。
+  - question: >
+      Azure Disk Encryption の使用を開始するにはどうすればよいですか。
+    answer: >
+      最初に、[Azure Disk Encryption の概要](disk-encryption-overview.md)をお読みください。
+  - question: >
+      Azure Disk Encryption がサポートされる VM サイズとオペレーティングシステムを教えてください。
+    answer: >
+      [Azure Disk Encryption の概要](disk-encryption-overview.md)の記事には、Azure Disk Encryption をサポートする [VM のサイズ](disk-encryption-overview.md#supported-vms)と [VM オペレーティング システム](disk-encryption-overview.md#supported-operating-systems)の一覧が記載されています。
+  - question: >
+      Azure Disk Encryption でブート ボリュームとデータ ボリュームの両方を暗号化できますか。
+    answer: >
+      ブート ボリュームとデータ ボリュームの両方を暗号化できます。ただし、先に OS ボリュームを暗号化しなければ、データは暗号化できません。
+  - question: >
+      Azure Disk Encryption を使用して、マウント解除されたボリュームを暗号化することはできますか。
+    answer: >
+      いいえ、Azure Disk Encryption で暗号化されるのは、マウントされたボリュームのみになります。
+  - question: >
+      Storage のサーバー側の暗号化とはなんですか。
+    answer: "Storage のサーバー側の暗号化では、Azure Storage で Azure Managed Disks が暗号化されます。 マネージド ディスクは既定で、プラットフォーム マネージド キーを使用したサーバー側の暗号化 (2017 年6 月 10 日以降) で暗号化されます。 カスタマー マネージド キーを指定することによって、独自のキーを使用してマネージド ディスクの暗号化を管理できます。 詳細については、「[Azure Managed Disks のサーバー側暗号化](../disk-encryption.md)」を参照してください。\n \n"
+  - question: >
+      Azure Disk Encryption とカスタマー マネージド キーを使用したStorage のサーバー側の暗号化の違いはなんですか。また、これらのソリューションはどのようなときに使用すべきでしょうか。
+    answer: "Azure Disk Encryption は、カスタマー マネージド キーを使用して、OS ディスク、データ ディスク、および一時的なディスクをエンド ツー エンドで暗号化します。\n\n- 上記とエンド ツー エンドの暗号化をすべて暗号化する必要がある場合は、Azure Disk Encryption を使用します。 \n- カスタマー マネージド キーを使用して保存データのみを暗号化することが要件に含まれている場合は、[カスタマー マネージド キーを使用したサーバー側の暗号化](../disk-encryption.md)を使用します。 Azure Disk Encryption と、カスタマー マネージド キーを使用したStorage サーバー側暗号化の両方でディスクを暗号化することはできません。\n- [Windows でサポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に示されているシナリオを使用している場合は、[カスタマー マネージド キーによるサーバー側暗号化](../disk-encryption.md)を検討してください。 \n- 組織のポリシーにより、保存されているコンテンツを Azure マネージド キーを使用して暗号化できる場合、操作は必要ありません。コンテンツは既定で暗号化されます。 マネージド ディスクの場合、ストレージ内のコンテンツは、プラットフォーム マネージド キーを使用したサーバー側の暗号化で、既定で暗号化されます。 キーは Azure Storage サービスによって管理されます。 \n"
+  - question: >
+      シークレットまたは暗号化キーを切り替えるにはどうすればいいですか。
+    answer: "シークレットを切り替えるには、別のキー コンテナーを指定して、最初に使用したのと同じコマンドを呼び出してディスクの暗号化を有効にするだけです。 キーの暗号化キーを切り替えるには、新しいキーの暗号化を指定して、最初に使用したのと同じコマンドを呼び出してディスク暗号化を有効にします。 \n\n>[!WARNING]\n> - これまで、[Azure AD アプリで Azure AD の資格情報を指定することで Azure Disk Encryption](disk-encryption-windows-aad.md) を使用してこの VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 この暗号化された VM に対して Azure Disk Encryption を使用することはできません。それはサポートされていないシナリオであり、暗号化された VM 用の AAD アプリケーションからの切り替えはまだサポートされていないことを意味します。\n"
+  - question: >
+      最初にキー暗号化キー (KEK) を使用していなかった場合は、どのようにしてキー暗号化キーを追加または削除すればいいですか。
+    answer: >
+      キー暗号化キーを追加するには、キー暗号化キーのパラメーターを渡して、有効化コマンドをもう一度呼び出します。 キー暗号化キーを削除するには、キー暗号化キーのパラメーターを指定せずに、有効化コマンドをもう一度呼び出します。
+  - question: >
+      キー暗号化キー (KEK) にはどのサイズを使用すべきですか?
+    answer: >
+      Windows サーバー 2022 には、新しいバージョンの BitLocker が含まれています。前提条件ページで説明されているとおり、3072 または 4096 ビットのキー サイズから始めることをお勧めします。 以前のバージョンの Windows では、2048 ビットも使用できます。
+  - question: >
+      Azure Disk Encryption では、Bring Your Own Key (BYOK) を実施できますか。
+    answer: >
+      はい。独自のキー暗号化キーを指定できます。 これらのキーは、Azure Disk Encryption のキー ストアである Azure Key Vault で保護されます。 キー暗号化キーのサポート シナリオの詳細については、「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」を参照してください。
+  - question: >
+      Azure によって作成されたキー暗号化キーを使用できますか。
+    answer: >
+      はい。Azure Key Vault を使用して、Azure Disk Encryption で使用するキー暗号化キーを生成できます。 これらのキーは、Azure Disk Encryption のキー ストアである Azure Key Vault で保護されます。 キー暗号化キーの詳細については、「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」を参照してください。
+  - question: >
+      オンプレミスのキー管理サービスまたは HSM を使用して暗号化キーを保護できますか。
+    answer: >
+      Azure Disk Encryption では、オンプレミスのキー管理サービスまたは HSM を使用して暗号化キーを保護することはできません。 暗号化キーを保護するために使用できるのは、Azure Key Vault サービスのみです。 キー暗号化キーのサポート シナリオの詳細については、「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」を参照してください。
+  - question: >
+      Azure Disk Encryption を構成するための前提条件は何ですか。
+    answer: >
+      Azure Disk Encryption の前提条件があります。 新しいキー コンテナーを作成するか、既存のキー コンテナーを暗号化できるようにディスク暗号化アクセス用に設定して、シークレットとキーを保護するには、「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」の記事を参照してください。 キー暗号化キーのサポート シナリオの詳細については、「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」を参照してください。
+  - question: >
+      Azure AD アプリ (以前のリリース) で Azure Disk Encryption を構成するための前提条件は何ですか。
+    answer: >
+      Azure Disk Encryption の前提条件があります。 Azure Active Directory アプリケーションを作成するか、新しいキー コンテナーを作成するか、既存のキー コンテナーをディスク暗号化アクセス用に設定してシークレットとキーの暗号化と保護を実行できるようにするには、「[Azure AD を使用した Azure Disk Encryption](disk-encryption-windows-aad.md)」を参照してください。 キー暗号化キーのサポート シナリオの詳細については、「[Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault-aad.md)」を参照してください。
+  - question: >
+      Azure AD アプリ (以前のリリース) を使用した Azure Disk Encryption は、まだサポートされていますか。
+    answer: "はい。 Azure AD アプリを使用したディスク暗号化は、まだサポートされています。 ただし、新しい VM を暗号化する場合は、Azure AD アプリを使用して暗号化するのではなく、新しい方法を使用することをお勧めします。 \n"
+  - question: >
+      Azure AD アプリで暗号化された VM を、Azure AD アプリがない暗号化に移行することはできますか。
+    answer: 現時点では、Azure AD アプリで暗号化されたマシンを、Azure AD アプリがない暗号化に直接移行するパスはありません。 また、Azure AD アプリがない暗号化から AD アプリによる暗号化への直接的なパスはありません。
+  - question: >
+      Azure Disk Encryption は、どのバージョンの Azure PowerShell をサポートしていますか。
+    answer: >
+      Azure Disk Encryption を構成するには、最新バージョンの Azure PowerShell SDK を使用してください。 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) の最新バージョンをダウンロードしてください。 Azure Disk Encryption は、Azure SDK Version 1.1.0 では *サポートされていません*。
+  - question: >
+      ディスク "Bek ボリューム" または "/mnt/azure_bek_disk" とは何ですか。
+    answer: "\"Bek ボリューム\" は、暗号化された Azure VM の暗号化キーを安全に格納するローカルのデータ ボリュームです。\n\n> [!NOTE]\n> このディスクのコンテンツの削除や編集はしないでください。 IaaS VM 上のすべての暗号化操作に暗号化キーが必要なため、ディスクのマウントを解除しないでください。\n"
+  - question: >
+      Azure Disk Encryption はどのような暗号化方法を使用しますか。
+    answer: >
+      Azure Disk Encryption は、次の BitLocker での暗号化方法を Windows のバージョンに基づき選択します。
+
+
+      | Windows バージョン                 | Version | 暗号化方法        |
+
+      |----------------------------------|--------|--------------------------|
+
+      | Windows Server 2012、Windows 10 以降  | >=1511 |XTS-AES 256 ビット           |
+
+      | Windows Server 2012、Windows 8、8.1、10 以降 | < 1511 |AES 256 ビット *              |
+
+      | Windows Server 2008R2            |        |ディフューザー付き AES 256 ビット |
+
+
+      \* ディフューザー付き AES 256 ビットは、Windows 2012 以降ではサポートされていません。
+
+
+      Windows OS のバージョンを確認するには、お使いの仮想マシンで "winver" ツールを実行します。
+  - question: "暗号化された VM をバックアップおよび復元することはできますか。 \n"
+    answer: "Azure Backup には、同じサブスクリプションおよびリージョン内の暗号化された VM をバックアップおよび復元するメカニズムが用意されています。  手順については、「[暗号化された仮想マシンを Azure Backup でバックアップおよび復元する](../../backup/backup-azure-vms-encryption.md)」をご覧ください。  暗号化された VM を別のリージョンに復元することは、現在サポートされていません。  \n"
+  - question: >
+      質問したり、フィードバックを提供したりするにはどこに移動すればよいですか。
+    answer: >
+      ご質問やフィードバックは、[Azure Disk Encryption についての Microsoft Q&A 質問ページ](/answers/topics/azure-disk-encryption.html)に投稿してください。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nこのドキュメントでは、Azure Disk Encryption に関して最もよく寄せられるご質問について説明しました。 このサービスの詳細については、以下の記事を参照してください。\n        \n- [Azure Disk Encryption の概要](disk-encryption-overview.md)\n- [Azure Security Center でディスクの暗号化を適用する](../../security-center/asset-inventory.md)\n- [保存時の Azure データの暗号化](../../security/fundamentals/encryption-atrest.md)"

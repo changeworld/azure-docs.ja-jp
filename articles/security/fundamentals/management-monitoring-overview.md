@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: f87ea1e1c9f43de4e9e0f94d1cd855615a0a880c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81306e06d4ac6d0168215cebe7d45b4fb4c051de
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712047"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305790"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 この記事では、Azure クラウド サービスと仮想マシンの管理と監視を支援するために Azure が提供するセキュリティ機能とサービスの概要を説明します。
@@ -115,13 +115,13 @@ Identity Protection は、通知と推奨される修復を提供することで
 * [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 * [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
-## <a name="security-center"></a>Security Center
+## <a name="defender-for-cloud"></a>Defender for Cloud
 
-Azure Security Center は、脅威の防御、検出、対応を可能にする機能です。 Security Center により、Azure リソースやハイブリッド クラウド環境内のリソースのセキュリティの可視性が向上すると共に、そのきめ細かい制御が可能になります。 
+Microsoft Defender for Cloud は、脅威の防御、検出、対応に役立ちます。 Defender for Cloud により、Azure リソースやハイブリッド クラウド環境内のリソースのセキュリティの可視性が向上すると共に、そのきめ細かい制御が可能になります。 
 
-Security Center では、接続されているリソースの継続的なセキュリティ評価を実行し、それらの構成やデプロイを [Azure セキュリティ ベンチマーク](../benchmarks/introduction.md)と比較して、その環境向けに調整されたセキュリティに関する詳細な推奨事項を提供します。
+Defender for Cloud では、接続されているリソースの継続的なセキュリティ評価を実行し、それらの構成やデプロイを [Azure セキュリティ ベンチマーク](../benchmarks/introduction.md)と比較して、その環境向けに調整されたセキュリティに関する詳細な推奨事項を提供します。
 
-Security Center は、Azure リソースのセキュリティの最適化と監視に役立つ次の機能を備えています。
+Defender for Cloud は、Azure リソースのセキュリティの最適化と監視に役立つ次の機能を備えています。
 
 - 以下に従って、Azure サブスクリプション リソースに対するポリシーを定義できるようにします。
     - 組織のセキュリティ ニーズ。
@@ -132,8 +132,8 @@ Security Center は、Azure リソースのセキュリティの最適化と監�
 
 詳細情報:
 
-* [Azure Security Center 入門](../../security-center/security-center-introduction.md)
-* [Azure Security Center 上のセキュリティ スコアの向上](../../security-center/secure-score-security-controls.md)
+* [Microsoft Defender for Cloud の概要](../../security-center/security-center-introduction.md)
+* [Microsoft Defender for Cloud でのセキュリティ スコアの改善](../../security-center/secure-score-security-controls.md)
 
 ## <a name="intelligent-security-graph"></a>インテリジェント セキュリティ グラフ
 

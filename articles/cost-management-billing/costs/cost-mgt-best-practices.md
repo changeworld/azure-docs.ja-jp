@@ -3,22 +3,22 @@ title: Azure Cost Management でクラウド投資を最適化する
 description: この記事は、クラウドへの投資から最大限の価値を得て、コストを削減し、コストのかかる部分を評価するのに役立ちます。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: fc9b6c4edc5d08c30b1eadb5084155b10d0e55a3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5ea9f5a857c28195d0aa82a1314df839ab2236e8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601517"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705899"
 ---
-# <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Cost Management を使用してクラウドへの投資を最適化する方法
+# <a name="how-to-optimize-your-cloud-investment-with-cost-management"></a>Cost Management でクラウド投資を最適化する方法
 
-Azure Cost Management には、クラウドへの投資を最大化するために支出を計画、分析、削減するツールが用意されています。 このドキュメントでは、コスト管理のための系統的なアプローチを示し、組織のコストに関する課題に対処するために使用できるツールについて説明します。 Azure では、クラウド ソリューションを簡単に構築してデプロイすることができます。 しかし、組織のコストを最小限に抑えるために、それらのソリューションが最適化されていることが重要です。 このドキュメントで概説されている原則に従い、ツールを使用することは、組織が成功するための準備ができていることを確認するのに役立ちます。
+Cost Management には、クラウドへの投資を最大化するために支出を計画、分析、削減するツールが用意されています。 このドキュメントでは、コスト管理のための系統的なアプローチを示し、組織のコストに関する課題に対処するために使用できるツールについて説明します。 Azure では、クラウド ソリューションを簡単に構築してデプロイすることができます。 しかし、組織のコストを最小限に抑えるために、それらのソリューションが最適化されていることが重要です。 このドキュメントで概説されている原則に従い、ツールを使用することは、組織が成功するための準備ができていることを確認するのに役立ちます。
 
 ## <a name="methodology"></a>手法
 
@@ -91,7 +91,7 @@ Cost Management 内でのエクスペリエンスを最大化する最初の手�
 #### <a name="free"></a>[Free](https://azure.microsoft.com/free/)
 
 - 12 か月間の人気の無料サービス
-- $200 のクレジットで 30 日間サービス群をじっくり検討
+- 200 ドルのクレジットが請求通貨で付与され、30 日間サービスを体験可能
 - 25 個以上のサービスがいつでも無料
 
 #### <a name="pay-as-you-go"></a>[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p)
@@ -162,7 +162,7 @@ Azure のプランの種類を調べて、自分の組織に合った課金方�
 
 同様に、Web アプリまたは環境 (テスト環境、運用環境など) で使用されているリソースが、別々のチームによって所有されている複数のサブスクリプションにまたがることもあるでしょう。 ワークロードのコスト全体を把握しやすくするためには、使用されているリソースにタグを付けます。 タグが適切に適用されていれば、コスト分析で、それらのタグをフィルターとして適用することで傾向を把握しやすくなります。
 
-リソースにタグを付けるよう計画した後、リソースへのタグ付けを強制する Azure Policy を構成することができます。 スケーラブルなリソースへのタグ付けを遵守させるために利用できるツールについては、「[Azure Cost Management を使用してタグ ポリシーを確認する方法](https://www.youtube.com/watch?v=nHQYcYGKuyw)」のビデオをご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
+リソースにタグを付けるよう計画した後、リソースへのタグ付けを強制する Azure Policy 定義を構成することができます。 スケーラブルなリソースへのタグ付けを遵守させるために利用できるツールについては、[Cost Management を使用してタグ ポリシーを確認する方法](https://www.youtube.com/watch?v=nHQYcYGKuyw)のビデオをご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
 
@@ -231,4 +231,4 @@ Azure の予約では、仮想マシンまたは SQL Database の計算キャパ
 Azure には、料金割引のために Azure の余剰容量を活用するサービスを構築できるようにするサービスもあります。 詳細については、「[Use low priority VMs with Batch](../../batch/batch-low-pri-vms.md)」 (優先順位の低い VM で Batch を使用する) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-- Cost Management を初めてご利用の場合は、「[Azure Cost Management とは](../cost-management-billing-overview.md)」をお読みになり、Azure の支出を監視して制御するのにどのように役立つかと、リソースの使用の最適化について確認してください。
+- Cost Management を初めて利用する場合は、[Cost Management とは何か](../cost-management-billing-overview.md)に関するページをお読みになり、Azure の支出を監視して制御し、リソースの使用を最適化するために、それがどのように役立つかを確認してください。

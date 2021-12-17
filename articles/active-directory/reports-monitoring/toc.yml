@@ -8,15 +8,17 @@
       href: overview-monitoring.md
     - name: サインイン診断とは
       href: overview-sign-in-diagnostics.md
+    - name: フラグが設定されたサインインとは
+      href: overview-flagged-sign-ins.md
 - name: クイックスタート
   expanded: true
   items:
-    - name: サインイン レポートのダウンロード
-      href: quickstart-download-sign-in-report.md
-    - name: 監査レポートのダウンロード
-      href: quickstart-download-audit-report.md
-    - name: ネームド ロケーションの構成
-      href: quickstart-configure-named-locations.md
+    - name: 監査ログのフィルター処理
+      href: quickstart-filter-audit-log.md
+    - name: サインインの分析
+      href: quickstart-analyze-sign-in.md
+    - name: Graph API を使用したログへのアクセス
+      href: quickstart-access-log-with-graph-api.md
     - name: ストレージ アカウントへのログのルーティング
       href: quickstart-azure-monitor-route-logs-to-storage-account.md
 - name: チュートリアル
@@ -29,41 +31,39 @@
       href: tutorial-log-analytics-wizard.md
 - name: 概念
   items:
-    - name: レポートと監視のデプロイを計画する
-      href: plan-monitoring-and-reporting.md
     - name: 監査ログ
       href: concept-audit-logs.md
     - name: 新しいサインイン ログ - プレビュー
       href: concept-all-sign-ins.md
     - name: サインイン ログ
       href: concept-sign-ins.md
-    - name: 使用状況と分析情報のレポート
-      href: concept-usage-insights-report.md
-    - name: リスクの高いサインイン
-      href: ../identity-protection/overview-identity-protection.md
-    - name: リスク検出
-      href: ../identity-protection/overview-identity-protection.md
-    - name: リスクのあるユーザー
-      href: ../identity-protection/overview-identity-protection.md
     - name: プロビジョニング ログ
       href: concept-provisioning-logs.md
+    - name: 使用状況と分析情報のレポート
+      href: concept-usage-insights-report.md
     - name: レポート API
       href: concept-reporting-api.md
     - name: Azure Monitor での Azure AD ログ
       href: concept-activity-logs-azure-monitor.md
+    - name: レポートと監視のデプロイを計画する
+      href: plan-monitoring-and-reporting.md
+    - name: サインイン診断のシナリオ
+      href: concept-sign-in-diagnostics-scenarios.md
 - name: 操作方法ガイド
   expanded: true
   items:
     - name: Reports
       items:
+        - name: アクセスのアクティビティ ログ
+          href: howto-access-activity-logs.md
+        - name: ログをダウンロードする
+          href: howto-download-logs.md
         - name: Azure AD での非アクティブなユーザー アカウントの管理
           href: howto-manage-inactive-user-accounts.md
         - name: アクティビティ レポートの検出
           href: howto-find-activity-reports.md
         - name: ユーザーのサインイン エラーのトラブルシューティング
           href: howto-troubleshoot-sign-in-errors.md
-        - name: リスクのフラグ付きユーザーの修復
-          href: howto-remediate-users-flagged-for-risk.md
         - name: レポート API の構成の前提条件
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: Azure AD ブックの使用方法
@@ -95,6 +95,8 @@
 - name: リファレンス
   expanded: true
   items:
+    - name: サインイン ログの基本情報識別子
+      href: reference-basic-info-identifiers.md
     - name: レポート用の Azure AD PowerShell コマンドレット
       href: reference-powershell-reporting.md
     - name: 監査ログの API リファレンス
@@ -107,11 +109,13 @@
       href: reference-reports-data-retention.md
     - name: レポート待機時間
       href: reference-reports-latencies.md
-    - name: サインイン エラー コード
-      href: reference-sign-ins-error-codes.md
     - name: よく寄せられる質問
-      href: reports-faq.md
-    - name: 監査ログのスキーマ
-      href: reference-azure-monitor-audit-log-schema.md
+      href: reports-faq.yml
     - name: サインイン ログのスキーマ
       href: reference-azure-monitor-sign-ins-log-schema.md
+    - name: Workbooks
+      items:
+        - name: 条件付きアクセス ギャップ アナライザー
+          href: workbook-conditional-access-gap-analyzer.md
+        - name: 機密性の高い操作のレポート
+          href: workbook-sensitive-operations-report.md

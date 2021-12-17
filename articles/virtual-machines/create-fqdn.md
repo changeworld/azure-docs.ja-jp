@@ -6,19 +6,21 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/01/2021
+ms.date: 05/07/2021
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b010070b7a45c24037c6de4648574c01b017d759
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: ad48a8d4c2f10bab26e04bcb105747e7a7c474f9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107399"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696514"
 ---
-# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Linux VM 用の Azure Portal での完全修飾ドメイン名の作成
+# <a name="create-a-fully-qualified-domain-name-for-a-vm-in-the-azure-portal"></a>Azure portal で VM の完全修飾ドメイン名を作成する
 
-[Azure ポータル](https://portal.azure.com)で仮想マシン (VM) を作成すると、仮想マシン用のパブリック IP リソースが自動的に作成されます。 この IP アドレスを使用して、VM にリモートでアクセスします。 ポータルでは[完全修飾ドメイン名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) は作成されませんが、VM の作成後に追加できます。 この記事では、DNS 名または FQDN を作成する手順を示します。 
+**適用対象:** **適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM
+
+[Azure ポータル](https://portal.azure.com)で仮想マシン (VM) を作成すると、仮想マシン用のパブリック IP リソースが自動的に作成されます。 このパブリック IP アドレスを使用して、VM にリモートでアクセスします。 ポータルでは[完全修飾ドメイン名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) は作成されませんが、VM の作成後に追加できます。 この記事では、DNS 名または FQDN を作成する手順を示します。 パブリック IP アドレスなしで VM を作成する場合、FQDN を作成することはできません。
 
 ## <a name="create-a-fqdn"></a>FQDN の作成
 この記事では、既に VM が作成されていることを前提としています。 必要に応じて、ポータルで [Linux](./linux/quick-create-portal.md) または [Windows](./windows/quick-create-portal.md) の VM を作成することができます。 VM が起動したら、次の手順を実行します。

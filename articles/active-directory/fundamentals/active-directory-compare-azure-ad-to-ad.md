@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: 64a8dabaedc3922ebd8d163b1ea162b7d1584de2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bca37a0e30240732443bcc08ca76dc9b875af37d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92371921"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955010"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Active Directory と Azure Active Directory の比較
 
@@ -36,7 +36,7 @@ Azure AD では、クラウドとオンプレミス全体のすべてのアプ�
 | 資格情報の管理| Active Directory での資格情報は、パスワード、証明書の認証、およびスマートカード認証に基づいています。 パスワードは、パスワードの長さ、有効期限、および複雑さに基づくパスワード ポリシーを使用して、管理されます。|Azure AD では、クラウドとオンプレミスに対してインテリジェントな[パスワード保護](../authentication/concept-password-ban-bad.md)を使用します。 保護には、スマート ロックアウトに加えて、共通およびカスタムのパスワード フレーズと代替のブロック機能が含まれます。 </br>Azure AD では、[多要素認証](../authentication/concept-mfa-howitworks.md)と FIDO2 のような[パスワードレス](../authentication/concept-authentication-passwordless.md)の技術を使用して、セキュリティを大幅に向上させています。 </br>Azure AD では、ユーザーに[セルフサービス パスワード リセット](../authentication/concept-sspr-howitworks.md)のシステムを提供することで、サポートのコストを削減しています。 |
 | **Apps (アプリ)**|||
 | インフラストラクチャ アプリ|Active Directory では、DNS、DHCP、IPSec、WiFi、NPS、VPN アクセスなど、多くのインフラストラクチャのオンプレミス コンポーネントの基礎を形成します|新しいクラウド環境では、Azure AD は、アプリにアクセスするためと、ネットワーク コントロールに依存するための新しいコントロール プレーンです。 ユーザーが認証を行うときに、[条件付きアクセス (CA)](../conditional-access/overview.md)では、必要な条件下でどのユーザーがどのアプリへのアクセス権を持つかを制御します。|
-| 従来のアプリとレガシ アプリ| ほとんどのオンプレミス アプリでは、LDAP、Windows 統合認証 (NTLM と Kerberos)、またはヘッダーベースの認証を使用して、ユーザーへのアクセスを制御します。| Azure AD では、オンプレミスで実行されている [Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md) エージェントを使用して、これらの種類のオンプレミス アプリへのアクセスを提供できます。 この方法を利用して、Azure AD では、移行しているとき、またはレガシ アプリと共存する必要があるときに、Kerberos を使ってオンプレミスで Active Directory ユーザーを認証できます。 |
+| 従来のアプリとレガシ アプリ| ほとんどのオンプレミス アプリでは、LDAP、Windows 統合認証 (NTLM と Kerberos)、またはヘッダーベースの認証を使用して、ユーザーへのアクセスを制御します。| Azure AD では、オンプレミスで実行されている [Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md) エージェントを使用して、これらの種類のオンプレミス アプリへのアクセスを提供できます。 この方法を利用して、Azure AD では、移行しているとき、またはレガシ アプリと共存する必要があるときに、Kerberos を使ってオンプレミスで Active Directory ユーザーを認証できます。 |
 | SaaS アプリ|Active Directory では、SaaS アプリがネイティブでサポートされず、AD FS などのフェデレーション システムを必要とします。|OAuth2、SAML、および WS-\* 認証をサポートしている SaaS アプリは、認証に Azure AD を使用するように統合できます。 |
 | 先進認証を使用した基幹業務 (LOB) アプリ|組織では Active Directory と共に AD FS を使用して、先進認証を必要とする LOB アプリをサポートできます。| 先進認証を必要とする LOB アプリは、認証に Azure AD を使用するように構成できます。 |
 | 中間層/デーモン サービス|オンプレミス環境で実行されているサービスは通常、AD サービス アカウントまたはグループ管理サービス アカウント (gMSA) を使用して実行されます。 これらのアプリでは、サービス アカウントのアクセス許可を継承します。| Azure AD には、クラウド内の他のワークロードを実行するための[マネージド ID](../managed-identities-azure-resources/index.yml) が用意されています。 これらの ID のライフサイクルは Azure AD によって管理され、リソース プロバイダーに関連付けられているため、他の目的でバックドア アクセスを取得するために使用することはできません。|
@@ -50,5 +50,5 @@ Azure AD では、クラウドとオンプレミス全体のすべてのアプ�
 
 - [Azure Active Directory とは](./active-directory-whatis.md)
 - [自己管理型の Active Directory Domain Services、Azure Active Directory、およびマネージド Azure Active Directory Domain Services の比較](../../active-directory-domain-services/compare-identity-solutions.md)
-- [Azure Active Directory についてよくあるご質問](./active-directory-faq.md)
+- [Azure Active Directory についてよくあるご質問](./active-directory-faq.yml)
 - [Azure Active Directory の新着情報](./whats-new.md)

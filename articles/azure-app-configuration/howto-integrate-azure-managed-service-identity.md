@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 591f767fe0ef2150f7fe180108f207b56f7c915f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ff7c2b6ced87c8254283923a9163e51f06ae6ef6
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764310"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114298176"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>マネージド ID を使用して App Configuration にアクセスする
 
@@ -23,10 +23,8 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
 この記事では、マネージド ID を活用して App Configuration にアクセスする方法について説明します。 これは、クイック スタートで紹介されている Web アプリに基づいています。 先に進む前に、[App Configuration を使用して ASP.NET Core アプリを作成します](./quickstart-aspnet-core-app.md)。
 
-> [!NOTE]
-> この記事では例として Azure App Service を使用しますが、同じ概念は、マネージド ID をサポートする他の Azure サービス ([Azure Kubernetes Service](../aks/use-azure-ad-pod-identity.md)、[Azure 仮想マシン](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)、[Azure Container Instances](../container-instances/container-instances-managed-identity.md) など) にも当てはまります。 ワークロードがこれらのサービスのいずれかでホストされている場合は、そのサービスのマネージド ID サポートも利用できます。
-
-この記事では、App Configuration の Key Vault 参照と共にマネージド ID を使用する方法についても説明します。 1つのマネージド ID を使用して、Key Vault のシークレットと App Configuration の構成値の両方にシームレスにアクセスできます。 この機能を確認する場合は、[ASP.NET Core の Key Vault 参照の使用](./use-key-vault-references-dotnet-core.md)に関するページの手順を最初に完了します。
+> [!IMPORTANT]
+> マネージド ID を使用して、ローカルで実行されているアプリケーションを認証することはできません。 アプリケーションは、マネージド ID をサポートする Azure サービスにデプロイする必要があります。 この記事では例として Azure App Service を使用しますが、同じ概念は、マネージド ID をサポートする他の Azure サービス ([Azure Kubernetes Service](../aks/use-azure-ad-pod-identity.md)、[Azure 仮想マシン](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)、[Azure Container Instances](../container-instances/container-instances-managed-identity.md) など) にも当てはまります。 ワークロードがこれらのサービスのいずれかでホストされている場合は、そのサービスのマネージド ID サポートも利用できます。
 
 このチュートリアルの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
 
@@ -35,13 +33,13 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 > [!div class="checklist"]
 > * App Configuration へのマネージド ID アクセスを許可する。
 > * App Configuration に接続する際にマネージド ID を使用するようにアプリを構成する。
-> * 必要に応じて、App Configuration Key Vault 参照を使用して Key Vault に接続するときに、マネージド ID を使用するようにアプリを構成します。
+
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows)。
+* [.NET Core SDK](https://dotnet.microsoft.com/download)。
 * [構成済みの Azure Cloud Shell](../cloud-shell/quickstart.md)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -50,7 +48,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
 ポータルでマネージド ID を設定するには、最初にアプリケーションを作成した後、フィーチャーを有効にします。
 
-1. 通常どおりに、[Azure portal](https://portal.azure.com) で App Services インスタンスを作成します。 ポータルでそのアプリに移動します。
+1. [Microsoft Azure portal](https://portal.azure.com)で App Services リソースに移動します。 既存の App Services リソースがない場合は、作成してください。 
 
 1. 左側のウィンドウで **[設定]** グループまで下へスクロールして、 **[ID]** を選択します。
 
@@ -76,7 +74,6 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
     ![マネージド ID の追加](./media/add-managed-identity.png)
 
-1. 省略可能:Key Vault へのアクセスも許可する場合は、「[Key Vault アクセス ポリシーを割り当てる](../key-vault/general/assign-access-policy-portal.md)」の指示に従ってください。
 
 ## <a name="use-a-managed-identity"></a>マネージド ID の使用
 
@@ -107,6 +104,36 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
     > [!IMPORTANT]
     > `CreateHostBuilder` により、.NET Core 3.0 の `CreateWebHostBuilder` が置き換えられます。  お使いの環境に応じて適切な構文を選択します。
 
+    ### <a name="net-core-5x"></a>[.NET Core 5.x](#tab/core5x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
+                })
+                .UseStartup<Startup>());
+    ```
+
+    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
+                })
+                .UseStartup<Startup>());
+    ```
+
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
@@ -121,170 +148,25 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
                .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-
-    ```csharp
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    var settings = config.Build();
-                    config.AddAzureAppConfiguration(options =>
-                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                });
-            })
-            .UseStartup<Startup>());
-    ```
     ---
 
     > [!NOTE]
-    > **ユーザー割り当てのマネージド ID** を使用する場合、[ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) の作成時、必ず clientId を指定してください。
-    >```
+    > **ユーザー割り当てのマネージド ID** を使用する場合、[ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) の作成時に必ず clientId を指定してください。
+    >```csharp
     >config.AddAzureAppConfiguration(options =>
-    >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
+    >       {
+    >           options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential("<your_clientId>"))
+    >        });
     >```
-    >[Azure リソースのマネージド ID に関する FAQ](../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request) で説明したように、使用されるマネージド ID を解決する既定の方法があります。 この場合、将来的にありえるランタイム問題 (たとえば、新しいユーザー割り当てマネージド ID が追加された場合やシステム割り当てマネージド ID が有効になった場合) を回避する目的で、望ましい ID を指定するように Azure ID ライブラリから強制されます。 そのため、ユーザー割り当てマネージド ID が 1 つだけ定義されており、システム割り当てマネージド ID がない場合であっても、clientId を指定する必要があります。
+    >[Azure リソースのマネージド ID に関する FAQ](../active-directory/managed-identities-azure-resources/known-issues.md) で説明したように、使用されるマネージド ID を解決する既定の方法があります。 この場合、将来的にありえるランタイム問題 (たとえば、新しいユーザー割り当てマネージド ID が追加された場合やシステム割り当てマネージド ID が有効になった場合) を回避する目的で、望ましい ID を指定するように Azure ID ライブラリから強制されます。 そのため、ユーザー割り当てマネージド ID が 1 つだけ定義されており、システム割り当てマネージド ID がない場合であっても、clientId を指定する必要があります。
+ 
+    
 
+## <a name="deploy-your-application"></a>アプリケーションをデプロイする
 
-1. App Configuration と Key Vault 参照の両方を使用するには、以下に示すように、*Program.cs* を更新します。 このコードは `ConfigureKeyVault` の一部として `SetCredential` を呼び出し、Key Vault に対する認証時に使用する資格情報を構成プロバイダーに伝えます。
+マネージド ID を使用するには、アプリを Azure サービスにデプロイする必要があります。 マネージド ID は、ローカルで実行されているアプリの認証には使用できません。 「[Create an ASP.NET Core app with App Configuration](./quickstart-aspnet-core-app.md) (App Configuration を使用して ASP.NET Core アプリを作成する)」クイックスタートで作成し、マネージド ID を使用するように修正した .NET Core アプリを展開するには、「[Publish your web app](../app-service/quickstart-dotnetcore.md?pivots=development-environment-vs&tabs=netcore31#publish-your-web-app) (Web アプリを発行する)」ガイダンスに従います。
 
-    ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
-
-    ```csharp
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-               .ConfigureAppConfiguration((hostingContext, config) =>
-               {
-                   var settings = config.Build();
-                   var credentials = new ManagedIdentityCredential();
-
-                   config.AddAzureAppConfiguration(options =>
-                   {
-                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                              .ConfigureKeyVault(kv =>
-                              {
-                                 kv.SetCredential(credentials);
-                              });
-                   });
-               })
-               .UseStartup<Startup>();
-    ```
-
-    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-
-    ```csharp
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    var settings = config.Build();
-                    var credentials = new ManagedIdentityCredential();
-
-                    config.AddAzureAppConfiguration(options =>
-                    {
-                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                               .ConfigureKeyVault(kv =>
-                               {
-                                   kv.SetCredential(credentials);
-                               });
-                    });
-                });
-            })
-            .UseStartup<Startup>());
-    ```
-    ---
-
-    他の App Configuration キーと同様に Key Vault 参照にアクセスできるようになりました。 構成プロバイダーは、`ManagedIdentityCredential` を使用して Key Vault に対して認証し、値を取得します。
-
-    > [!NOTE]
-    > `ManagedIdentityCredential` が機能するのは、マネージド ID 認証をサポートするサービスの Azure 環境内のみです。 ローカル環境では機能しません。 コードをローカルと Azure の両方の環境で動作させるには、[`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) を使用します。これは、マネージド ID を含むいくつかの認証オプションにフォールバックするからです。
-    > 
-    > Azure にデプロイするとき、**ユーザー割り当てマネージド ID** を `DefaultAzureCredential` と共に使用する場合、[clientId を指定してください](/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential)。
-
-[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
-
-## <a name="deploy-from-local-git"></a>ローカル Git からのデプロイ
-
-Kudu ビルド サーバーを使用したアプリへのローカル Git のデプロイを有効にする最も簡単な方法は、[Azure Cloud Shell](https://shell.azure.com) を使用することです。
-
-### <a name="configure-a-deployment-user"></a>デプロイ ユーザーを構成する
-
-[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
-
-### <a name="enable-local-git-with-kudu"></a>Kudu を使用するローカル Git を有効にする
-アプリのローカル Git リポジトリがない場合は、初期化する必要があります。 ローカル Git リポジトリを初期化するには、アプリのプロジェクト　ディレクトリから次のコマンドを実行します。
-
-```cmd
-git init
-git add .
-git commit -m "Initial version"
-```
-
-Kudu ビルド サーバーを使用したアプリへのローカル Git のデプロイを有効にするには、Cloud Shell で [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/#az_webapp_deployment_source_config_local_git) を実行します。
-
-```azurecli-interactive
-az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
-```
-
-このコマンドを実行すると、次のような出力が表示されます。
-
-```json
-{
-  "url": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git"
-}
-```
-
-### <a name="deploy-your-project"></a>プロジェクトのデプロイ
-
-_ローカル ターミナル ウィンドウ_ で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、「[Kudu でローカル Git を有効にする](#enable-local-git-with-kudu)」で取得した Git リモートの URL に置換します。
-
-```bash
-git remote add azure <url>
-```
-
-アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 パスワードの入力を求められたら、「[デプロイ ユーザーを構成する](#configure-a-deployment-user)」で作成したパスワードを入力します。 Azure portal へのサインインに使用しているパスワードは使用しないでください。
-
-```bash
-git push azure main
-```
-
-出力には、MSBuild (ASP.NET 向け)、`npm install` (Node.js 向け)、`pip install` (Python 向け) など、ランタイム固有のオートメーションが表示される場合があります。
-
-### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリの参照
-
-ブラウザーを使用して自分の Web アプリに移動し、コンテンツがデプロイされていることを確認します。
-
-```bash
-http://<app_name>.azurewebsites.net
-```
-
-## <a name="use-managed-identity-in-other-languages"></a>他の言語におけるマネージド ID の使用
-
-.NET Framework 用および Java Spring 用の App Configuration プロバイダーにも、マネージド ID に対する組み込みサポートがあります。 これらのプロバイダーのいずれかを構成するとき、完全な接続文字列の代わりに、ご自分のストアの URL エンドポイントを使用できます。
-
-たとえば、クイックスタートで作成された .NET Framework コンソールアプリを更新して、*App.config* ファイルで次の設定を指定できます。
-
-```xml
-    <configSections>
-        <section name="configBuilders" type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" restartOnExternalChanges="false" requirePermission="false" />
-    </configSections>
-
-    <configBuilders>
-        <builders>
-            <add name="MyConfigStore" mode="Greedy" endpoint="${Endpoint}" type="Microsoft.Configuration.ConfigurationBuilders.AzureAppConfigurationBuilder, Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration" />
-            <add name="Environment" mode="Greedy" type="Microsoft.Configuration.ConfigurationBuilders.EnvironmentConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Environment" />
-        </builders>
-    </configBuilders>
-
-    <appSettings configBuilders="Environment,MyConfigStore">
-        <add key="AppName" value="Console App Demo" />
-        <add key="Endpoint" value ="Set via an environment variable - for example, dev, test, staging, or production endpoint." />
-    </appSettings>
-```
+App Service の他にも、多くの Azure サービスがマネージド ID をサポートしています。 詳細については、「[Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

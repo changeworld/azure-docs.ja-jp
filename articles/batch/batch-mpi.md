@@ -3,12 +3,12 @@ title: マルチインスタンス タスクを使用した MPI アプリケー�
 description: Azure Batch でマルチインスタンス タスクを使用して、Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。
 ms.topic: how-to
 ms.date: 04/13/2021
-ms.openlocfilehash: e96cfb89b186d69f6ad969949b8df609956114d2
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: b25008e4001676d1289f8a035cad972084d025bc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389402"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126239"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行
 
@@ -310,5 +310,5 @@ Sample complete, hit ENTER to exit...
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Batch での Linux 向けの MPI サポート](https://docs.microsoft.com/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch)の詳細を確認します。
+- [Azure Batch での Linux 向けの MPI サポート](/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch)の詳細を確認します。
 - [Linux コンピューティング ノードのプールを作成](batch-linux-nodes.md)して Azure Batch MPI ソリューションで使用する方法を確認します。

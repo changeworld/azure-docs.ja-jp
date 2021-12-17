@@ -8,46 +8,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 09/07/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f0fb81a4daa57b473e8b2b4b937426eafbf903d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 348f862c97b62ed4f1bab8bcf6aa418aaa43e7da
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103014538"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057307"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Azure Active Directory で PowerShell を使用してリソース スコープのカスタム ロールを割り当てる
 
 この記事では、Azure Active Directory (Azure AD) でロールの割り当てを組織全体のスコープで作成する方法について説明します。 組織全体のスコープでロールを割り当てると、Azure AD 組織全体のアクセス権が付与されます。 1 つの Azure AD リソースのスコープでロールの割り当てを作成する場合は、[カスタム ロールを作成してリソース スコープで割り当てる方法](custom-create.md)に関する記事を参照してください。 この記事では、[Azure Active Directory PowerShell バージョン 2](/powershell/module/azuread/#directory_roles) モジュールを使います。
 
-Azure AD 管理者ロールの詳細については、[Azure Active Directory での管理者ロールの割り当て](permissions-reference.md)に関する記事を参照してください。
+Azure AD ロールの詳細については、「[Azure AD の組み込みロール](permissions-reference.md)」を参照してください。
 
-## <a name="required-permissions"></a>必要なアクセス許可
+## <a name="prerequisites"></a>前提条件
 
-ロールの割り当てまたは削除を行うには、グローバル管理者アカウントを使って Azure AD 組織に接続します。
+- Azure AD Premium P1 または P2 ライセンス
+- 特権ロール管理者またはグローバル管理者
+- PowerShell を使用する場合の AzureADPreview モジュール
 
-## <a name="prepare-powershell"></a>PowerShell を準備する
-
-[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureADPreview)から Azure AD PowerShell モジュールをインストールします。 その後、次のコマンドを使用して、Azure AD PowerShell プレビュー モジュールをインポートします。
-
-``` PowerShell
-Import-Module -Name AzureADPreview
-```
-
-モジュールが使用できる状態であることを確認するには、次のコマンドによって返されたバージョンを次に示されているものと照合します。
-
-``` PowerShell
-Get-Module -Name AzureADPreview
-  ModuleType Version      Name                         ExportedCommands
-  ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    AzureADPreview               {Add-AzureADMSAdministrati...}
-```
-
-これで、モジュールのコマンドレットの使用を開始できます。 Azure AD モジュールのコマンドレットの詳細については、[Azure AD プレビュー モジュール](https://www.powershellgallery.com/packages/AzureADPreview)のオンライン リファレンス ドキュメントをご覧ください。
+詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
 
 ## <a name="assign-a-directory-role-to-a-user-or-service-principal-with-resource-scope"></a>リソース スコープでユーザーまたはサービス プリンシパルにディレクトリ ロールを割り当てる
 
@@ -63,10 +48,10 @@ $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Applicati
 
 # Get app registration and construct resource scope for assignment.
 $appRegistration = Get-AzureADApplication -Filter "displayName eq 'f/128 Filter Photos'"
-$resourceScope = '/' + $appRegistration.objectId
+$directoryScope = '/' + $appRegistration.objectId
 
 # Create a scoped role assignment
-$roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
+$roleAssignment = New-AzureADMSRoleAssignment -DirectoryScopeId $directoryScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
 ユーザーではなくサービス プリンシパルにロールを割り当てるには、[Get-AzureADMSServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) コマンドレットを使用します。
@@ -137,10 +122,10 @@ $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Applicati
 
 # Get app registration and construct resource scope for assignment.
 $appRegistration = Get-AzureADApplication -Filter "displayName eq 'f/128 Filter Photos'"
-$resourceScope = '/' + $appRegistration.objectId
+$directoryScope = '/' + $appRegistration.objectId
 
 # Create a scoped role assignment
-$roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
+$roleAssignment = New-AzureADMSRoleAssignment -DirectoryScopeId $directoryScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
 ### <a name="read-and-list-role-assignments"></a>ロールの割り当てを読み取るおよび一覧表示する
@@ -162,6 +147,6 @@ Remove-AzureADMSRoleAssignment -Id 'qiho4WOb9UKKgng_LbPV7tvKaKRCD61PkJeKMh7Y458-
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD 管理ロール フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)でご意見をお寄せください。
+- [Azure AD 管理ロール フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)でご意見をお寄せください。
 - ロールと Azure AD 管理者ロールの割り当ての詳細については、「[管理者ロールを割り当てる](permissions-reference.md)」を参照してください。
 - 既定のユーザー アクセス許可については、[アクセス許可に関する既定のゲストとメンバー ユーザーの比較](../fundamentals/users-default-permissions.md)に関する記事を参照してください。

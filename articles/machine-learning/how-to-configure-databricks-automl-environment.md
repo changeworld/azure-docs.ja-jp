@@ -6,17 +6,17 @@ services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.reviewer: larryfr
-ms.date: 10/21/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 9bf167f5be9aeb65f0d7c1d69e6687589ebea8a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python
+ms.openlocfilehash: 0e3270c827e25ff13bd53c5a7d7d2610ce36c921
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102498882"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286180"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Azure Machine Learning 内に Azure Databricks と AutoML を含む開発環境をセットアップする 
 
@@ -53,7 +53,7 @@ Azure Databricks は、以下のように使用できます。
 | 設定 |適用対象| 値 |
 |----|---|---|
 | クラスター名 |常時| yourclustername |
-| Databricks Runtime のバージョン |常時| Runtime 7.1 (scala 2.21、spark 3.0.0) - ML 以外|
+| Databricks Runtime のバージョン |常時| Runtime 7.3 LTS - ML 以外|
 | Python バージョン |常時| 3 |
 | worker の種類 <br>(同時実行反復処理の最大数を決定) |自動化された ML<br>のみ| メモリ最適化 VM 優先 |
 | ワーカー |常時| 2 以上 |
@@ -97,12 +97,11 @@ Azure Databricks は、以下のように使用できます。
   ![Databricks 用の Azure Machine Learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg) 
 
 ## <a name="add-the-azure-ml-sdk-with-automl-to-databricks"></a>AutoML を含む Azure ML SDK を Databricks に追加する
-クラスターが Databricks Runtime 7.1 以降 (ML *以外*) で作成された場合は、ノートブックの最初のセルで次のコマンドを実行し、AML SDK をインストールします。
+クラスターが Databricks Runtime 7.3 LTS (ML *以外*) で作成された場合は、ノートブックの最初のセルで次のコマンドを実行して AML SDK をインストールします。
 
 ```
 %pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
 ```
-Databricks Runtime 7.0 以前の場合は、[init スクリプト](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md)を使用して Azure Machine Learning SDK をインストールします。
 
 ### <a name="automl-config-settings"></a>AutoML 構成の設定
 

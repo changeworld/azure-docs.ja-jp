@@ -2,18 +2,17 @@
 title: Azure IoT Edge のモジュールを開発する | Microsoft Docs
 description: ランタイムおよび IoT Hub と通信できる Azure IoT Edge 用のカスタム モジュールを開発する
 author: kgremban
-manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 09/03/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6274d0f0265220877938775ab6efd72ff22b84e4
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: affbabcb036e789975fdeb51f032e8c90861fac0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031129"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234588"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>独自の IoT Edge モジュールを開発する
 
@@ -82,7 +81,7 @@ IoT Edge モジュールにより、ローカル ブローカーとして機能�
 <!-- <1.2> -->
 ::: moniker range=">=iotedge-2020-11"
 
-MQTT ブローカーでデバイスからクラウドへのテレメトリ メッセージを送信することは、ユーザー定義のトピックのメッセージの発行と似ていますが、モジュールの IoT Hub の特別なトピック `devices/<device_name>/<module_name>/messages/events` を使用します。 認可を適切に設定する必要があります。 このトピックのメッセージをクラウドに転送するように、MQTT ブリッジを構成する必要もあります。
+MQTT ブローカーでデバイスからクラウドへのテレメトリ メッセージを送信することは、ユーザー定義のトピックのメッセージの発行と似ていますが、モジュールの IoT Hub の特別なトピック `devices/<device_name>/modules/<module_name>/messages/events` を使用します。 認可を適切に設定する必要があります。 このトピックのメッセージをクラウドに転送するように、MQTT ブリッジを構成する必要もあります。
 
 ::: moniker-end
 
@@ -91,7 +90,7 @@ MQTT ブローカーでデバイスからクラウドへのテレメトリ メ�
 <!-- <1.2> -->
 ::: moniker range=">=iotedge-2020-11"
 
-MQTT ブローカーを使用してメッセージを処理することは、ユーザー定義のトピックのメッセージをサブスクライブすることと似ていますが、モジュールの出力キューの IoT Edge の特別なトピック `devices/<device_name>/<module_name>/messages/events` を使用します。 認可を適切に設定する必要があります。 必要に応じて、任意のトピックの新しいメッセージを送信できます。
+MQTT ブローカーを使用してメッセージを処理することは、ユーザー定義のトピックのメッセージをサブスクライブすることと似ていますが、モジュールの出力キューの IoT Edge の特別なトピック `devices/<device_name>/modules/<module_name>/messages/events` を使用します。 認可を適切に設定する必要があります。 必要に応じて、任意のトピックの新しいメッセージを送信できます。
 
 ::: moniker-end
 
@@ -104,7 +103,7 @@ Azure IoT SDK でモジュール ツインを取得するには、`ModuleClient.
 <!-- <1.2> -->
 ::: moniker range=">=iotedge-2020-11"
 
-MQTT クライアントでモジュール ツインを取得するには、ツインの取得が一般的な MQTT パターンではないため、少し手間が伴います。 モジュールで、まず IoT Hub の特別なトピック `$iothub/twin/res/#` をサブスクライブする必要があります。 このトピック名は IoT Hub から継承され、すべてのデバイス/モジュールで同じトピックをサブスクライブする必要があります。 それは、デバイスが相互のツインを受け取るという意味ではありません。 IoT Hub と edgeHub では、すべてのデバイスで同じトピック名がリッスンされている場合でも、どのツインがどこに配信されるべきかを認識しています。 サブスクリプションが行われたら、モジュールでは、要求 ID を持つ IoT Hub の特別なトピック `$iothub/twin/GET/?$rid=1234` にメッセージを発行することによって、ツインを要求する必要があります。 この要求 ID は任意の ID (つまり、GUID) であり、IoT Hub によって、要求されたデータと共に返送されます。 これは、クライアントが要求を応答とペアにできる方法です。 結果コードは HTTP に似た状態コードであり、成功が 200 としてエンコードされます。
+MQTT クライアントでモジュール ツインを取得するには、ツインの取得が一般的な MQTT パターンではないため、少し手間が増えます。 モジュールで、まず IoT Hub の特別なトピック `$iothub/twin/res/#` をサブスクライブする必要があります。 このトピック名は IoT Hub から継承され、すべてのデバイス/モジュールで同じトピックをサブスクライブする必要があります。 それは、デバイスが相互のツインを受け取るという意味ではありません。 IoT Hub と edgeHub では、すべてのデバイスで同じトピック名がリッスンされている場合でも、どのツインがどこに配信されるべきかを認識しています。 サブスクリプションが行われたら、モジュールでは、要求 ID を持つ IoT Hub の特別なトピック `$iothub/twin/GET/?$rid=1234` にメッセージを発行することによって、ツインを要求する必要があります。 この要求 ID は任意の ID (つまり、GUID) であり、IoT Hub によって、要求されたデータと共に返送されます。 これは、クライアントが要求を応答とペアにできる方法です。 結果コードは HTTP に似た状態コードであり、成功が 200 としてエンコードされます。
 
 ::: moniker-end
 
@@ -113,7 +112,7 @@ Azure IoT SDK によってモジュール ツイン パッチを受け取るに�
 <!-- <1.2> -->
 ::: moniker range=">=iotedge-2020-11"
 
-任意の MQTT クライアントでモジュール ツイン パッチを受け取る場合、このプロセスは完全なツインの受け取りとよく似ています。クライアントでは、特別な IoT Hub のトピック `$iothub/twin/PATCH/properties/desired/#` をサブスクライブする必要があります。 サブスクリプションが行われた後に、IoT Hub によってツインの目的のセクションの変更が送信されると、クライアントがそれを受信します。
+任意の MQTT クライアントでモジュール ツイン パッチを受け取る場合、このプロセスは完全なツインの受け取りと似ています。クライアントでは、特別な IoT Hub のトピック `$iothub/twin/PATCH/properties/desired/#` をサブスクライブする必要があります。 サブスクリプションが行われた後に、IoT Hub によってツインの目的のセクションの変更が送信されると、クライアントがそれを受信します。
 
 ::: moniker-end
 
@@ -169,6 +168,25 @@ Windows コンテナーを使用した開発の詳細については、この記
 
 :::moniker-end
 <!-- end 1.2 -->
+
+## <a name="module-security"></a>モジュールのセキュリティ
+
+モジュールは、セキュリティを考慮して開発する必要があります。 モジュールをセキュリティで保護する方法の詳細については、[Docker のセキュリティ](https://docs.docker.com/engine/security/)に関するページを参照してください。
+
+モジュールのセキュリティを向上させるために、IoT Edge は一部のコンテナー機能を既定で無効にします。 必要に応じて、既定値をオーバーライドして、モジュールに特権機能を提供することができます。
+
+### <a name="allow-elevated-docker-permissions"></a>管理者特権での Docker アクセス許可を許可する
+
+IoT Edge デバイス上の構成ファイルには、`allow_elevated_docker_permissions` というパラメーターがあります。 **true** に設定すると、このフラグによって、[コンテナー作成オプション](how-to-use-create-options.md)の Docker HostConfig の `CapAdd` フィールドで定義した追加の機能に加えて、`--privileged` フラグが許可されます。
+
+>[!NOTE]
+>現時点では、このフラグは既定で **true** に設定されています。これにより、デプロイでモジュールに特権アクセス許可を与えることができます。 デバイスのセキュリティを向上させるには、このフラグを false に設定することをお勧めします。 将来的に、このフラグは既定で **false** に設定されます。
+
+### <a name="enable-cap_chown-and-cap_setuid"></a>CAP_CHOWN と CAP_SETUID を有効にする
+
+Docker の機能 **CAP_CHOWN** と **CAP_SETUID** は、既定で無効になっています。 これらの機能は、ホスト デバイス上のセキュリティで保護されたファイルに書き込むために使用でき、ルート アクセスを取得できる可能性があります。
+
+これらの機能が必要な場合は、コンテナーの作成オプションの CapADD を使用して、手動で再度有効にできます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,8 +3,8 @@ title: チュートリアル:Azure Active Directory を使用した自動ユー�
 description: Azure AD から Global Relay Identity Sync に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 0c4a3bf0-d0a6-4eab-909b-6cf9f9234e4c
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/22/2020
-ms.author: Zhchia
-ms.openlocfilehash: d003a512ebde626b8726dfccc58110e53f1cd467
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 01311d9e8a72f057c00196dd229ae0a1cf69a537
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180916"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040230"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Global Relay Identity Sync を構成する
 

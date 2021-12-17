@@ -1,21 +1,21 @@
 ---
 title: Azure 課金アカウントの連絡先情報を変更する
 description: Azure 課金アカウントの連絡先情報を変更する方法について説明します
-author: genlin
-ms.reviewer: dcscontentpm
+author: bandersmsft
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 04/08/2021
 ms.author: banders
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 776c207387ee55b998615131baf77e6c13655b49
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: 72b1429ac93defd32510ab973697a0f2d5492999
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033939"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289767"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Azure 課金アカウントの連絡先情報を変更する
 
@@ -64,6 +64,35 @@ Azure Active Directory のユーザー プロファイル情報を更新する�
     ![住所を更新する場所を示すスクリーンショット](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
 1. 新しい住所を入力して **[保存]** を選択します。  
     ![住所の更新を示すスクリーンショット](./media/change-azure-account-profile/update-bill-to-save-mca.png)
+
+## <a name="update-a-po-number"></a>発注番号を更新する
+
+課金プロファイルの請求書には、既定では発注番号が関連付けられません。 課金プロファイルの請求書に発注番号が表示されるのは、課金プロファイルの発注番号を追加した後になります。
+
+課金プロファイルの発注番号を追加または変更するには、次の手順に従います。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 「**コストの管理と請求**」を検索し、 **[課金スコープ]** を選択します。
+1. ご使用の課金スコープを選択します。
+1. 左側のメニューで、 **[課金]** の **[課金プロファイル]** を選択します。
+1. 適切な課金プロファイルを選択します。
+1. 左側のメニューの **[設定]** で、 **[プロパティ]** を選択します。
+1. **[発注番号の更新]** を選択します。
+1. 発注番号を入力し、 **[更新]** を選択します。
+
+## <a name="update-your-tax-id"></a>税 ID を更新する
+
+サブスクリプションの移動後は、必ず税 ID を更新してください。 この税 ID は、免税の計算に使用され、請求書に表示されます。
+
+**課金アカウントの情報を更新するには**
+
+1. [ビジネス向け Microsoft Store](https://businessstore.microsoft.com/) または[教育機関向け Microsoft Store](https://educationstore.microsoft.com/) にサインインします。
+1. **[管理]** を選択し、 **[Billing accounts]\(課金アカウント\)** を選択します。
+1. **[概要]** で **[Edit billing account information]\(課金アカウント情報の編集\)** を選択します。
+1. 更新後、 **[保存]** を選択します。
+
+[課金アカウントの設定を更新する方法の詳細](/microsoft-store/update-microsoft-store-for-business-account-settings)をご覧ください。
+
 
 ## <a name="service-and-marketing-emails"></a>サービスおよびマーケティングのメール
 

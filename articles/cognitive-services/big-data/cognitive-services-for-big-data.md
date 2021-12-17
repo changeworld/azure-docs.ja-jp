@@ -6,14 +6,14 @@ author: mhamilton723
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: overview
-ms.date: 07/09/2020
+ms.date: 10/28/2021
 ms.author: marhamil
-ms.openlocfilehash: aaade03edbbb109656fb7371a063cdc2512c5a20
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 71b89cc6b54ff99864bdd0f15ebcee472a36cd70
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461630"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434486"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>ビッグ データ向けの Azure Cognitive Services
 
@@ -54,7 +54,7 @@ API および SDK 経由でアクセスする [Cognitive Services](../index.yml)
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
-|[Text Analytics](../text-analytics/index.yml "Text Analytics")| Text Analytics サービスは、未加工のテキストに、センチメント分析、キー フレーズ抽出、および言語検出のための自然言語処理を提供します。|
+|[言語サービス](../language-service/index.yml "言語サービス")| 言語サービスでは、センチメント分析、キー フレーズ抽出、および言語検出を行うために未加工のテキストに対する自然言語処理が提供されます。|
 
 ### <a name="search"></a>検索
 

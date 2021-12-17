@@ -1,128 +1,114 @@
 ---
-title: クイック スタート:Automation アカウントを作成する - Azure テンプレート
+title: Resource Manager テンプレートを使用して Azure Automation アカウントを作成する
 titleSuffix: Azure Automation
-description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して Automation アカウントを作成する方法について説明します。
+description: この記事では、Azure Resource Manager テンプレートを使用して Automation アカウントを作成する方法について説明します。
 services: automation
-ms.author: magoedte
-ms.date: 01/07/2021
-ms.topic: quickstart
+ms.date: 08/27/2021
+ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.custom:
-- mvc
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 50a8c057a6fdf6350a18225cd2dc538942d6686d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mvc, subject-armqs, mode-arm
+ms.openlocfilehash: 66fb9a88761b47f0cc704fcf20dd29dd7768777a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538399"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487877"
 ---
-# <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Automation アカウントを作成する
+# <a name="create-an-azure-automation-account-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Automation アカウントを作成する
 
-Azure Automation は、Azure 環境と非 Azure 環境を一貫性をもって管理するクラウドベースのオートメーションと構成サービスを提供します。 このクイックスタートでは、Automation アカウントを作成する Azure Resource Manager テンプレート (ARM テンプレート) をデプロイする方法について説明します。 ARM テンプレートを使用すると、他のデプロイ方法より手順が減ります。
+Azure Automation は、Azure 環境と非 Azure 環境を一貫性をもって管理するクラウドベースのオートメーションと構成サービスを提供します。 この記事では、Automation アカウントを作成する Azure Resource Manager テンプレート (ARM テンプレート) をデプロイする方法について説明します。 ARM テンプレートを使用すると、他のデプロイ方法より手順が減ります。 JSON テンプレートでは、環境で標準構成として使用される可能性のあるパラメーターの既定値を指定します。 このテンプレートは、組織内の共有アクセス用に Azure ストレージ アカウントに格納できます。 テンプレートの操作の詳細については、[ARM テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-cli.md)に関するページを参照してください。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
-
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-automation%2Fazuredeploy.json)
-
-## <a name="prerequisites"></a>前提条件
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-## <a name="review-the-template"></a>テンプレートを確認する
-
-このサンプル テンプレートでは、次のことを実行します。
+サンプル テンプレートを使用すると、次の手順が実行されます。
 
 * Azure Monitor Log Analytics ワークスペースの作成を自動化します。
 * Azure Automation アカウントの作成を自動化します。
 * Automation アカウントを Log Analytics ワークスペースにリンクします。
 * サンプルの Automation Runbook をアカウントに追加します。
 
->[!NOTE]
->ARM テンプレートを使用する場合、Automation の実行アカウントの作成はサポートされません。 ポータルからまたは PowerShell を使用して実行アカウントを手動で作成するには、[実行アカウントの作成](create-run-as-account.md)に関するページを参照してください。
+> [!NOTE]
+> ARM テンプレートを使用する場合、Automation の実行アカウントの作成はサポートされません。 ポータルからまたは PowerShell を使用して実行アカウントを手動で作成するには、[実行アカウントの作成](create-run-as-account.md)に関するページを参照してください。
 
-これらの手順を完了したら、Runbook ジョブの状態とジョブ ストリームを、リンクされた Log Analytics ワークスペースに送信するために、Automation アカウントの[診断設定を構成する](automation-manage-send-joblogs-log-analytics.md)必要があります。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-automation/)からのものです。
+## <a name="prerequisites"></a>前提条件
 
-:::code language="json" source="~/quickstart-templates/101-automation/azuredeploy.json":::
-
-### <a name="api-versions"></a>API のバージョン
-
-次の表は、この例で使用されているリソースの API バージョンの一覧です。
-
-| リソース | リソースの種類 | API バージョン |
-|:---|:---|:---|
-| [ワークスペース](/azure/templates/microsoft.operationalinsights/workspaces) | workspaces | 2020-03-01-preview |
-| [Automation アカウント](/azure/templates/microsoft.automation/automationaccounts) | automation | 2020-01-13-preview |
-| [ワークスペースのリンクされたサービス](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | workspaces | 2020-03-01-preview |
-
-### <a name="before-you-use-the-template"></a>テンプレートを使用する前に
-
-次の項目を指定する JSON パラメーター テンプレートが構成されています。
-
-* ワークスペースの名前。
-* ワークスペースを作成するリージョン。
-* Automation アカウントの名前。
-* Automation アカウントを作成するリージョン。
-
-テンプレートの次のパラメーターには、Log Analytics ワークスペースの既定値が設定されます。
-
-* *sku* の既定値は、2018 年 4 月の価格モデルでリリースされた 1 GB あたりの価格レベルです。
-* *dataRetention* の既定値は 30 日です。
-
->[!WARNING]
->2018 年 4 月の価格モデルを選択したサブスクリプションで Log Analytics ワークスペースを作成または構成する場合、有効な Log Analytics 価格レベルは *PerGB2018* のみです。
->
-
-JSON テンプレートでは、環境で標準構成として使用される可能性のある他のパラメーターの既定値を指定します。 このテンプレートは、組織内の共有アクセス用に Azure ストレージ アカウントに格納できます。 テンプレートの操作の詳細については、[ARM テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-cli.md)に関するページを参照してください。
-
-Azure Automation と Azure Monitor を初めて使用する場合は、次の構成の詳細を理解しておくことが重要です。 これは、新しい Automation アカウントにリンクされた Log Analytics ワークスペースを作成、構成、および使用するときに、エラーを回避するのに役立ちます。
+Azure Automation と Azure Monitor を初めて使用する場合は、構成の詳細を理解しておくことが重要です。 理解することで、新しい Automation アカウントにリンクされた Log Analytics ワークスペースを作成、構成、および使用するときに、エラーを回避するのに役立ちます。
 
 * [追加の詳細](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)を確認し、アクセス制御モード、価格レベル、保有期間、容量予約レベルなどのワークスペースの構成オプションについて十分に理解します。
 
 * [ワークスペース マッピング](how-to/region-mappings.md)を確認し、サポートされているリージョンを、インラインまたはパラメーター ファイルで指定します。 サブスクリプション内で Log Analytics ワークスペースと Automation アカウントをリンクすることは、特定のリージョンでのみサポートされています。
 
-* Azure Monitor ログを初めて使用し、ワークスペースをまだデプロイしていない場合は、[ワークスペースの設計ガイダンス](../azure-monitor/logs/design-logs-deployment.md)を確認してください。 これは、アクセスの制御について学習し、組織に推奨される設計の実装戦略を理解するのに役立ちます。
+* Azure Monitor ログを初めて使用し、ワークスペースをまだデプロイしていない場合は、[ワークスペースの設計ガイダンス](../azure-monitor/logs/design-logs-deployment.md)を確認してください。 このドキュメントは、アクセス制御について学習し、組織に推奨される設計実装戦略を理解するのに役立ちます。
+
+## <a name="review-the-template"></a>テンプレートを確認する
+
+この記事で使用されているテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-automation/)からのものです。
+
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.automation/101-automation/azuredeploy.json":::
+
+テンプレート内に定義されている Azure リソース:
+
+* [**Microsoft.OperationalInsights/workspaces**](/azure/templates/microsoft.operationalinsights/workspaces): Azure Log Analytics ワークスペースを作成します。
+* [**Microsoft.Automation/automationAccounts**](/azure/templates/microsoft.automation/automationaccounts): Azure Automation アカウントを作成します。
+* [**Microsoft.Automation/automationAccounts/runbooks**](/azure/templates/microsoft.automation/automationaccounts/runbooks): Azure Automation アカウント Runbook を作成します。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートでは、Azure Automation アカウントと Log Analytics ワークスペースを作成し、Automation アカウントをワークスペースにリンクします。
+1. 下の **[Azure に配置する]** ボタンを選択して Azure にサインインし、ARM テンプレートを開きます。
 
-    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-automation%2Fazuredeploy.json)
+    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.automation%2F101-automation%2Fazuredeploy.json)
 
-2. 値を入力します。
+1. 次の値を入力または選択します。
 
-3. デプロイが完了するまでに数分かかる場合があります。 完了すると、次のように出力されます。
+    |プロパティ |説明 |
+    |---|---|
+    |サブスクリプション |ドロップダウン リストから Azure サブスクリプションを選択します。|
+    |Resource group |ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** を選択します。|
+    |リージョン |この値は自動的に設定されます。|
+    |ワークスペース名 |新しい Log Analytics ワークスペースの名前を入力します。|
+    |Sku | 既定値は、2018 年 4 月の価格モデルでリリースされた 1 GB あたりの価格レベルです。 2018 年 4 月の価格モデルを選択したサブスクリプションで Log Analytics ワークスペースを作成または構成する場合、有効な Log Analytics 価格レベルは `PerGB2018` のみです。|
+    |データの保持 |既定値は 30 日です。|
+    |場所 |この値には、リソース グループに使用される場所が自動入力されます。|
+    |Automation アカウント名 | 新しい Automation アカウントの名前を入力します。|
+    |サンプルのグラフィカル Runbook 名 | 現状のままにします。|
+    |サンプルのグラフィカル Runbook の説明 | 現状のままにします。|
+    |サンプルの PowerShell Runbook 名 | 現状のままにします。|
+    |サンプルの PowerShell Runbook の説明 | 現状のままにします。|
+    |サンプルの Python2Runbook 名 |現状のままにします。|
+    |サンプルの Python2Runbook の説明 |現状のままにします。|
+    |_artifacts の場所 |そのままにしてください。<sup>*</sup> 成果物の場所の URI。|
+    |Sas トークンとしての _artifacts の場所 | 空白のままにします。 `_artifactsLocation` にアクセスするために必要な sasToken。 付属のスクリプトを使用してテンプレートをデプロイする場合は、`sasToken` が自動的に生成されます。|
+
+    <sup>*</sup> PowerShell、CLI から ARM テンプレート、またはテンプレート機能をポータルで実行しようとすると、`_artifactsLocation` パラメーターが正しく設定されていない場合は、次のようなエラー メッセージが表示されます。
+    
+    `"message": "Deployment template validation failed: 'The template resource '_artifactsLocation' at line '96' and column '31' is not valid: The language expression property 'templateLink' doesn't exist, available properties are 'template, templateHash, parameters, mode, debugSetting, provisioningState'.. Please see https://aka.ms/arm-template-expressions for usage details.'."`
+    
+    このエラーを防ぐには、ポータルのテンプレート機能から実行するときに、`_artifactsLocation` パラメーターに `https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.automation/101-automation/azuredeploy.json` の値を指定します。
+    
+    PowerShell から実行するときは、このパラメーターとその値 `-TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.automation/101-automation/azuredeploy.json` を含めます。
+    
+    Azure CLI から実行するときは、このパラメーターとその値 `--template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.automation/101-automation/azuredeploy.json` を含めます。
+    
+    PowerShell または CLI の詳細については、「**テンプレートを使用する**」セクションの「[Azure Automation アカウントを作成する (microsoft.com)](https://azure.microsoft.com/resources/templates/101-automation/)」を参照してください。
+
+1. **[確認および作成]** 、 **[作成]** の順に選択します。 デプロイが完了するまでに数分かかる場合があります。 完了すると、次の画像のように出力されます。
 
     ![デプロイ完了時の結果の例](media/quickstart-create-automation-account-template/template-output.png)
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. デプロイが完了すると、 **[リソースに移動]** リンクを含む **デプロイ成功** 通知を受け取ります。 **[リソース グループ]** ページに新しいリソースが一覧表示されます。 一覧から、新しい Automation アカウントを選択します。
 
-2. Azure portal で、先ほど作成した Automation アカウントを開きます。 
-
-3. 左側のペインから、 **[Runbook]** を選択します。 **[Runbook]** ページに、Automation アカウントで作成された 3 つのチュートリアル Runbook が表示されています。
+1. 左側の **[プロセス オートメーション]** の **[Runbook]** を選択します。 **[Runbook]** ページには、Automation アカウントを使用して作成された 3 つのサンプル Runbook が一覧表示されます。
 
     ![Automation アカウントで作成されたチュートリアル Runbook](./media/quickstart-create-automation-account-template/automation-sample-runbooks.png)
 
-4. 左側のペインから、 **[リンクされたワークスペース]** を選択します。 **[リンクされたワークスペース]** ページに、先ほど指定した対象の Automation アカウントにリンクされている Log Analytics ワークスペースが表示されます。
+1. 左側の **[関連リソース]** から **[Linked workspace]\(リンクされたワークスペース\)** を選択します。 **[Linked workspace]\(リンクされたワークスペース\)** ページに、先ほど指定した対象の Automation アカウントにリンクされている Log Analytics ワークスペースが表示されます。
 
     ![Log Analytics ワークスペースにリンクされた Automation アカウント](./media/quickstart-create-automation-account-template/automation-account-linked-workspace.png)
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-必要がなくなったら、Log Analytics ワークスペースから Automation アカウントのリンクを解除し、Automation アカウントとワークスペースを削除します。
-
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Automation アカウントと Log Analytics ワークスペースを作成し、それらをリンクしました。
-
-さらに学習するには、Azure Automation のチュートリアルに進みます。
-
-> [!div class="nextstepaction"]
-> [Azure Automation のチュートリアル](learn/automation-tutorial-runbook-graphical.md)
+Runbook ジョブの状態とジョブ ストリームを、リンクされた Log Analytics ワークスペースに送信するために、Automation アカウントの[診断設定を構成します](automation-manage-send-joblogs-log-analytics.md)。

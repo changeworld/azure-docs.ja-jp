@@ -3,12 +3,12 @@ title: Azure Monitor で使用される IP アドレス
 description: Application Insights で必要なサーバー ファイアウォール例外
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 56ff33cc0a34cb254ca88f96d69a07bc131bebf4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7516cdc5fcb605415ef009e7b5f1d5da195ba1c9
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714036"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858369"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>Azure Monitor で使用される IP アドレス
 
@@ -18,7 +18,7 @@ ms.locfileid: "101714036"
 > これらは静的アドレスですが、しばしば変更の必要が生じることがあります。 Application Insights のトラフィックは、受信ファイアウォール規則を必要とする可用性の監視と webhook を除き、すべて送信トラフィックです。
 
 > [!TIP]
-> Azure ネットワーク セキュリティ グループを使用している場合は、Azure [ネットワーク サービス タグ](../../virtual-network/service-tags-overview.md)を使用してアクセスを管理できます。 ハイブリッド/オンプレミスのリソースのアクセスを管理している場合は、対応する IP アドレス リストを [JSON ファイル](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)としてダウンロードできます。これは毎週更新されます。 この記事のすべての例外に対応するには、サービス タグ `ActionGroup`、`ApplicationInsightsAvailability`、および `AzureMonitor` を使用する必要があります。
+> Azure ネットワーク セキュリティ グループを使用している場合は、Azure [ネットワーク サービス タグ](../../virtual-network/service-tags-overview.md)を使用してアクセスを管理できます。 ハイブリッドまたはオンプレミスのリソースのアクセスを管理している場合は、対応する IP アドレス リストを [JSON ファイル](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)としてダウンロードできます。これは毎週更新されます。 この記事のすべての例外に対応するには、サービス タグ `ActionGroup`、`ApplicationInsightsAvailability`、および `AzureMonitor` を使用する必要があります。
 
 または、 https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom をお気に入りの RSS/ATOM リーダーに追加してこのページを RSS フィードとしてサブスクライブすると、最新の変更に関する通知を受け取ることができます。
 
@@ -29,7 +29,7 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 
 | 目的 | URL | IP | Port |
 | --- | --- | --- | --- |
-| テレメトリ |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23<br/>20.44.17.0<br/>20.36.114.207 <br/>51.116.155.246 <br/>51.107.155.178 <br/>51.140.212.64 <br/>13.86.218.255 <br/>20.37.74.240 <br/>65.52.250.236 <br/>13.69.229.240 <br/>52.236.186.210<br/>52.167.107.65<br/>40.71.12.237<br/>40.78.229.32<br/>40.78.229.33<br/>51.105.67.161<br/>40.124.64.192<br/>20.44.12.194<br/>20.189.172.0<br/>13.69.106.208<br/>40.78.253.199<br/>40.78.253.198<br/>40.78.243.19 | 443 |
+| テレメトリ |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com<br/>*.in.applicationinsights.azure.com | | 443 |
 | ライブ メトリック ストリーム | live.applicationinsights.azure.com<br/>rt.applicationinsights.microsoft.com<br/>rt.services.visualstudio.com|23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207<br/>157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113| 443 |
 
 ## <a name="status-monitor"></a>Status Monitor
@@ -67,10 +67,25 @@ Azure ネットワーク セキュリティ グループを使用している場
 
 これらのアドレスからの着信トラフィック用にポート 80 (http) と 443 (https) を開きます （IP アドレスは場所別にグループ化されます）。
 
-### <a name="addresses-grouped-by-location"></a>場所別にグループ化されたアドレス
+### <a name="ip-addresses"></a>IP アドレス
+
+ファイアウォールで許可されている IP 一覧に追加できるように、実際の IP アドレスを探している場合は、Azure の IP 範囲を記述した JSON ファイルをダウンロードしてください。 これらのファイルには最新の情報が含まれています。 Azure パブリック クラウドの場合は、以下の表を使用し、場所に基づいて IP アドレス範囲を調べることもできます。
+
+適切なファイルをダウンロードした後、任意のテキスト エディターを使用してファイルを開き、"ApplicationInsightsAvailability" を検索して、可用性テストのサービス タグを記述したファイルのセクションに直接進みます。
 
 > [!NOTE]
 > これらのアドレスは、クラスレス ドメイン間ルーティング (CIDR) 表記を使用して一覧表示されます。 つまり、`51.144.56.112/28` のようなエントリは、`51.144.56.112` で始まり、`51.144.56.127`で終わる 16 IP に相当します。
+
+#### <a name="azure-public-cloud"></a>Azure パブリック クラウド
+[パブリッククラウドの IP アドレス](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードします。
+
+#### <a name="azure-us-government-cloud"></a>Azure US Government クラウド
+[Government Cloud の IP アドレス](https://www.microsoft.com/download/details.aspx?id=57063)をダウンロードします。
+
+#### <a name="azure-china-cloud"></a>Azure China Cloud
+[China Cloud の IP アドレス](https://www.microsoft.com/download/details.aspx?id=57062)をダウンロードします。
+
+#### <a name="addresses-grouped-by-location-azure-public-cloud"></a>場所ごとにグループ化されたアドレス (Azure パブリック クラウド)
 
 ```
 Australia East
@@ -178,33 +193,10 @@ East US
 20.42.35.112/28
 20.42.35.128/28
 
-```  
-
-#### <a name="azure-government"></a>Azure Government
-
-Azure パブリック クラウドのお客様の場合は必要ありません。
-
 ```
-USGov Virginia
-52.227.229.80/31
 
-
-USGov Arizona
-52.244.35.112/31
-
-
-USGov Texas
-52.243.157.80/31
-
-
-USDoD Central
-52.182.23.96/31
-
-
-USDoD East
-52.181.33.96/31
-
-```
+### <a name="discovery-api"></a>API を検出する
+サービス タグの現在の一覧を IP アドレス範囲の詳細と共[にプログラムで取得](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api)することも可能です。
 
 ## <a name="application-insights--log-analytics-apis"></a>Application Insights および Log Analytics API
 

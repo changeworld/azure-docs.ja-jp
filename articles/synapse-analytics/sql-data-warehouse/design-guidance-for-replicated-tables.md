@@ -2,31 +2,29 @@
 title: レプリケートされたテーブルの設計ガイダンス
 description: Synapse SQL プールでのレプリケート テーブルの設計に関する推奨事項
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/19/2019
-ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7dcb884d8eafdfa5218e96d63f62a5d462d20cf8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2dd2b937029d240ac28904cc346d2211cab99ac1
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98679932"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506355"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Synapse SQL プールでレプリケート テーブルを使用するための設計ガイダンス
 
 この記事では、Synapse SQL プール スキーマでレプリケート テーブルを設計するための推奨事項を紹介します。 これらの推奨事項を使用すると、データの移動が少なくなり、クエリの複雑さが軽減されることでクエリ パフォーマンスが向上します。
 
-> [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
-
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、SQL プールのデータ分散とデータ移動の概念を理解していることを前提としています。    詳細については、[アーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。
+この記事では、SQL プールのデータ分散とデータ移動の概念を理解していることを前提としています。   詳細については、[アーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。
 
 テーブル設計の一環として、ご利用のデータと、そのデータを照会する方法についてできる限り理解してください。    たとえば、次のような質問を考えてみます。
 
@@ -36,11 +34,11 @@ ms.locfileid: "98679932"
 
 ## <a name="what-is-a-replicated-table"></a>レプリケート テーブルとは
 
-レプリケート テーブルには、各コンピューティング ノード上でアクセスできるテーブルの完全なコピーがあります。 テーブルをレプリケートすると、結合または集計の前に、コンピューティング ノード内のデータを転送する必要がなくなります。 テーブルには複数のコピーが含まれているため、テーブルのサイズが 2 GB 未満に圧縮されている場合にレプリケート テーブルが最も効果的に機能します。  2 GB はハード制限ではありません。  データが静的で変化しない場合は、さらに大きなテーブルをレプリケートできます。
+レプリケート テーブルには、各コンピューティング ノード上でアクセスできるテーブルの完全なコピーがあります。 テーブルをレプリケートすると、結合または集計の前に、コンピューティング ノード内のデータを転送する必要がなくなります。 テーブルには複数のコピーが含まれているため、テーブルのサイズが 2 GB 未満に圧縮されている場合にレプリケート テーブルが最も効果的に機能します。 2 GB はハード制限ではありません。  データが静的で変化しない場合は、さらに大きなテーブルをレプリケートできます。
 
 次の図は、各コンピューティング ノード上でアクセスできるレプリケート テーブルを示したものです。 SQL プールでは、レプリケート テーブルは各コンピューティング ノード上のディストリビューション データベースに完全にコピーされます。
 
-![レプリケート テーブル](./media/design-guidance-for-replicated-tables/replicated-table.png "レプリケート テーブル")  
+:::image type="content" source="./media/design-guidance-for-replicated-tables/replicated-table.png" alt-text="レプリケート テーブル" lightbox="./media/design-guidance-for-replicated-tables/replicated-table.png":::
 
 レプリケート テーブルは、スター スキーマのディメンションのテーブルに適しています。 通常、ディメンション テーブルが結合されるファクト テーブルは、ディメンション テーブルとは異なる方法で分散されます。  ディメンションは、通常、複数のコピーの格納および保持を可能にするサイズです。 ディメンションは、顧客名、住所、製品の詳細など、変更頻度の低い説明的なデータを格納します。 変更頻度が低いというデータの性質により、レプリケート テーブルのメンテナンス回数は少なくなります。
 
@@ -67,24 +65,22 @@ CPU を集中的に使用するクエリでは、作業がすべてのコンピ�
 たとえば、次のクエリには、複雑な述語が使用されています。  データがレプリケート テーブルではなく分散テーブルにある場合、処理速度が速くなります。 この例では､データをラウンド ロビン方式で分散できます｡
 
 ```sql
-
 SELECT EnglishProductName
 FROM DimProduct
-WHERE EnglishDescription LIKE '%frame%comfortable%'
-
+WHERE EnglishDescription LIKE '%frame%comfortable%';
 ```
 
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>既存のラウンド ロビン テーブルをレプリケート テーブルに変換する
 
 既にラウンド ロビン テーブルがある場合、この記事に記載されている条件を満たしているのであれば、レプリケート テーブルに変換することをお勧めします。 レプリケート テーブルは、データ移動の必要がなくなるため、ラウンド ロビン テーブルよりもパフォーマンスが高くなります。  ラウンド ロビン テーブルでは、常に、結合のためにデータ移動が必要になります。
 
-この例では [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して、DimSalesTerritory テーブルをレプリケート テーブルに変更します。 この例は、DimSalesTerritory がハッシュ分散かラウンド ロビンかに関係なく動作します。
+この例では [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して、`DimSalesTerritory` テーブルをレプリケート テーブルに変更します。 この例は、`DimSalesTerritory` がハッシュ分散かラウンド ロビンかに関係なく動作します。
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]
 WITH
   (
-    CLUSTERED COLUMNSTORE INDEX,  
+    HEAP,  
     DISTRIBUTION = REPLICATE  
   )  
 AS SELECT * FROM [dbo].[DimSalesTerritory]
@@ -101,7 +97,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 レプリケート テーブルでは、結合のためのデータ移動は必要ありません。これは、テーブル全体が既に各コンピューティング ノード上に存在するためです。 ディメンション テーブルがラウンド ロビン分散の場合、結合によって、ディメンション テーブル全体が各コンピューティング ノードにコピーされます。 データを移動するために、クエリ プランには BroadcastMoveOperation と呼ばれる操作が含まれています。 この種類のデータ移動操作では、クエリのパフォーマンスが低下します。レプリケート テーブルを使用すると、この操作は使用されなくなります。 クエリ プランのステップを表示するには、[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) システム カタログ ビューを使用します。  
 
-たとえば、AdventureWorks スキーマに対する次のクエリでは、`FactInternetSales` テーブルがハッシュ分散です。 `DimDate` テーブルと `DimSalesTerritory` テーブルは、小さいディメンション テーブルです。 このクエリでは、会計年度 2004 年の北米における売上合計が返されます。
+たとえば、`AdventureWorks` スキーマに対する次のクエリでは、`FactInternetSales` テーブルがハッシュ分散です。 `DimDate` テーブルと `DimSalesTerritory` テーブルは、小さいディメンション テーブルです。 このクエリでは、会計年度 2004 年の北米における売上合計が返されます。
 
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)

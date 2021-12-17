@@ -3,16 +3,17 @@ title: Azure Data Factory を使用して FTP サーバーからデータを移�
 description: Azure Data Factory を使用して FTP サーバーからデータを移動する方法を説明します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 05/02/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a8a8ca44fbdb7610f85bc53c23d502d2efb01c8b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94cb4f6a3429084fe555f1d2a54ab80f7c230a36
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363952"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260001"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

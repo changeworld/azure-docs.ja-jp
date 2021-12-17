@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 07/30/2018
+ms.date: 06/15/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e4d20cd39d2a843ee1ab57a412ac668b3495fdb1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b77128033cbe0f99023dbee8a5a15e06820399b1
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "67180999"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112255102"
 ---
 >[!NOTE]
 >2018 年 7 月 1 日以降、Azure VPN Gateway では TLS 1.0 および 1.1 のサポートが終了します。 VPN Gateway では、TLS 1.2 のみがサポートされるようになります。 サポートを維持するには、[TLS1.2 のサポートを有効にする更新プログラム](#tls1)に関するページを参照してください。
@@ -25,6 +25,6 @@ ms.locfileid: "67180999"
 * 3DES (トリプル データ暗号化アルゴリズム)
 * MD5 (Message Digest 5)
 
-### <a name="how-do-i-enable-support-for-tls-12-in-windows-7-and-windows-81"></a><a name="tls1"></a>Windows 7 および Windows 8.1 で TLS 1.2 のサポートを有効にするにはどうすればよいですか。
+### <a name="how-do-i-enable-support-for-tls-12-in-windows-81"></a><a name="tls1"></a>Windows 8.1 で TLS 1.2 のサポートを有効にするにはどうすればよいですか。
 
 [!INCLUDE [tls 1.2](vpn-gateway-tls-include.md)]

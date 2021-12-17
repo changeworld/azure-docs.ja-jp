@@ -3,25 +3,24 @@ title: コンテナー分析情報を有効にする | Microsoft Docs
 description: この記事では、コンテナーのパフォーマンスと特定されたパフォーマンスに関する問題を把握できるように、コンテナー分析情報を有効にして構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e0544232f40e93cce0705fff6814d29697a96218
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 2d47ea7f2f2f0dadfd979a42b0b0e9125d4bebde
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782119"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455114"
 ---
 # <a name="enable-container-insights"></a>コンテナー分析情報を有効にする
 
 この記事では、Kubernetes 環境にデプロイされ、以下でホストされているワークロードのパフォーマンスを監視することを目的として、コンテナー分析情報を設定するために使用できるオプションの概要について説明します。
 
 - [Azure Kubernetes Service (AKS)](../../aks/index.yml)  
-- [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) バージョン 3.x、4.x  
-- [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) バージョン 4.x  
-- [Arc 対応 Kubernetes クラスター](../../azure-arc/kubernetes/overview.md)
+- [Azure Arc 対応 Kubernetes クラスター](../../azure-arc/kubernetes/overview.md)
+   - [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) またはオンプレミス
+   - [AKS エンジン](https://github.com/Azure/aks-engine)
+   - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) バージョン 4.x  
+   - [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) バージョン 4.x  
 
-また、以下でホストされている自己管理型 Kubernetes クラスターにデプロイされているワークロードのパフォーマンスを監視することもできます。
-- Azure ([AKS エンジン](https://github.com/Azure/aks-engine)を使用)
-- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) またはオンプレミス (AKS エンジンを使用)。
 
 次のいずれかのサポートされている方法を使用して、Kubernetes の新しいデプロイまたは 1 つ以上の既存のデプロイに対して、コンテナー分析情報を有効にできます。
 
@@ -29,6 +28,8 @@ ms.locfileid: "107782119"
 - Azure PowerShell
 - Azure CLI
 - [Terraform と AKS](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks)
+
+非 AKS Kubernetes クラスターの場合は、監視を有効にする前に、まずクラスターを [Azure Arc](../../azure-arc/kubernetes/overview.md) に接続する必要があります。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -50,7 +51,7 @@ ms.locfileid: "107782119"
    
    自分でワークスペースを作成する場合は、次を使用して作成できます。 
    - [Azure Resource Manager](../logs/resource-manager-workspace.md)
-   - [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+   - [PowerShell](../logs/powershell-workspace-configuration.md?toc=%2fpowershell%2fmodule%2ftoc.json)
    - [Azure ポータル](../logs/quick-create-workspace.md) 
    
    既定のワークスペースに使用する、サポートされているマッピング ペアの一覧については、[コンテナー分析情報のリージョンのマッピング](container-insights-region-mapping.md)に関するページを参照してください。
@@ -71,7 +72,11 @@ ms.locfileid: "107782119"
 コンテナー分析情報では、次の構成が正式にサポートされています。
 
 - 環境:Azure Red Hat OpenShift、オンプレミスの Kubernetes、Azure および Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)に関するページを参照してください。
-- Kubernetes のバージョンとサポート ポリシーは、[Azure Kubernetes Service (AKS) でサポートされている](../../aks/supported-kubernetes-versions.md)ものと同じです。 
+- Kubernetes のバージョンとサポート ポリシーは、[Azure Kubernetes Service (AKS) でサポートされている](../../aks/supported-kubernetes-versions.md)ものと同じです。
+- クラスターを [Azure Arc](../../azure-arc/kubernetes/overview.md) に接続し、Azure Arc を介した Container Insights による監視を有効にすることをお勧めします。
+
+> [!IMPORTANT]
+> 監視アドオンは、[HTTP プロキシ (プレビュー)](../../aks/http-proxy.md) で構成された AKS クラスターでは現在サポートされていないので注意してください
 
 ## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
 
@@ -125,15 +130,14 @@ ms.locfileid: "107782119"
 | | [Terraform を使用して AKS クラスターを作成する](container-insights-enable-new-cluster.md#enable-using-terraform)| オープンソースのツールである Terraform を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
 | | [Azure Resource Manager テンプレートを使用して OpenShift クラスターを作成する](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | 事前構成済みの Azure Resource Manager テンプレートを使用して作成した新しい OpenShift クラスターの監視を有効にできます。 |
 | | [Azure CLI を使用して OpenShift クラスターを作成する](/cli/azure/openshift#az_openshift_create) | Azure CLI を使用して新しい OpenShift クラスターをデプロイするときに、監視を有効にすることができます。 |
-| 既存の Kubernetes クラスター | [Azure CLI を使用して AKS クラスターの監視を有効にする](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Azure CLI を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
+| 既存の AKS クラスター | [Azure CLI を使用して AKS クラスターの監視を有効にする](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Azure CLI を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
 | |[Terraform を使用して AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-using-terraform) | オープンソースのツールである Terraform を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
 | | [Azure Monitor から AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Azure Monitor のマルチクラスター ページから、既にデプロイされている 1 つまたは複数の AKS クラスターの監視を有効にできます。 |
 | | [AKS クラスターから有効にする](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| Azure portal の AKS クラスターから直接監視を有効にできます。 |
 | | [Azure Resource Manager テンプレートを使用して AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| 事前構成済みの Azure Resource Manager テンプレートを使用して AKS クラスターの監視を有効にできます。 |
-| | [ハイブリッド Kubernetes クラスターの場合に有効にする](container-insights-hybrid-setup.md) | Azure Stack でホストされている AKS エンジン、またはオンプレミスでホストされている Kubernetes クラスターの監視を有効にすることができます。 |
-| | [Arc 対応の Kubernetes クラスターに対して有効にする](container-insights-enable-arc-enabled-clusters.md) | Azure の外部でホストされ、Azure Arc で有効にされている Kubernetes クラスターの監視を有効にすることができます。 |
-| | [Azure Resource Manager テンプレートを使用して OpenShift クラスターを有効にする](container-insights-azure-redhat-setup.md#enable-using-an-azure-resource-manager-template) | 事前構成済みの Azure Resource Manager テンプレートを使用して既存の OpenShift クラスターの監視を有効にすることができます。 |
-| | [Azure Monitor から OpenShift クラスターを有効にする](container-insights-azure-redhat-setup.md#from-the-azure-portal) | Azure Monitor のマルチクラスター ページから、既にデプロイされている 1 つまたは複数の OpenShift クラスターの監視を有効にすることができます。 |
+| 既存の非 AKS Kubernetes クラスター | [Azure CLI を使用して非 AKS Kubernetes クラスターを有効にする](container-insights-enable-arc-enabled-clusters.md#create-extension-instance-using-azure-cli)。 | Azure の外部でホストされ、Azure Arc で有効になっている Kubernetes クラスターの監視を有効にできます。これには、Azure CLI を使用したハイブリッド、OpenShift、マルチクラウドが含まれます。 |
+| | [Azure Resource Manager テンプレートを使用して非 AKS Kubernetes クラスターを有効にする](container-insights-enable-arc-enabled-clusters.md#create-extension-instance-using-azure-resource-manager) | 事前構成済みの Azure Resource Manager テンプレートを使用して Arc 対応クラスターの監視を有効にすることができます。 |
+| | [Azure Monitor から非 AKS Kubernetes クラスターを有効にする](container-insights-enable-arc-enabled-clusters.md#create-extension-instance-using-azure-portal) | Azure Monitor のマルチクラスター ページから、既にデプロイされている 1 つ以上の Arc 対応クラスターの監視を有効にすることができます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

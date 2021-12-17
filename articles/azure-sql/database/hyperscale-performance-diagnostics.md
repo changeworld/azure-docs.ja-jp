@@ -3,19 +3,19 @@ title: Hyperscale でのパフォーマンス診断
 description: この記事では、Azure SQL Database での Hyperscale のパフォーマンスの問題をトラブルシューティングする方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: performance
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.topic: troubleshooting
 author: denzilribeiro
 ms.author: denzilr
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 10/18/2019
-ms.openlocfilehash: ed31ff5d77b258d141a77fc174c2d5452adf7d01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 116212ff082a2d21e8609c41af82e8325c78156c
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92791717"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110704316"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL Hyperscale のパフォーマンスのトラブルシューティング診断
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,7 +33,9 @@ Hyperscale データベースでのパフォーマンスの問題のトラブル
 |RBIO_RG_STORAGE        | ページ サーバーでのログ使用の遅延が原因で Hyperscale データベースのプライマリ 計算ノードのログ生成速度が調整されているときに発生します。         |
 |RBIO_RG_DESTAGE        | 長期ログ ストレージによるログ使用の遅延が原因で Hyperscale データベースの計算ノードのログ生成速度が調整されているときに発生します。         |
 |RBIO_RG_REPLICA        | 読み取り可能なセカンダリ レプリカによるログ使用の遅延が原因で、Hyperscale データベースの計算ノードのログ生成速度が調整されているときに発生します。         |
+|RBIO_RG_GEOREPLICA    | geo セカンダリ レプリカによるログ使用の遅延が原因で、Hyperscale データベースの計算ノードのログ生成速度が調整されているときに発生します。         |
 |RBIO_RG_LOCALDESTAGE   | ログ サービスによるログ使用の遅延が原因で Hyperscale データベースの計算ノードのログ生成速度が調整されているときに発生します。         |
+
 
 ## <a name="page-server-reads"></a>ページ サーバーの読み取り
 
@@ -75,7 +77,7 @@ Azure SQL Database では、SQL Database IO を監視する主な方法は、[sy
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
-RBPEX で実行された読み取りと、他のすべてのデータ ファイルに対して行われた集約読み取りとの比率から、RBPEX キャッシュ ヒット率が得られます。
+RBPEX で実行された読み取りと、他のすべてのデータ ファイルに対して行われた集約読み取りとの比率から、RBPEX キャッシュ ヒット率が得られます。 カウンター `RBPEX cache hit ratio` は、パフォーマンス カウンター DMV `sys.dm_os_performance_counters` でも公開されています。                                                                        
 
 ### <a name="data-reads"></a>データ読み取り
 
@@ -106,6 +108,7 @@ Hyperscale データベースでは、この列は、データ IOPS の使用率
 ## <a name="additional-resources"></a>その他のリソース
 
 - Hyperscale の単一データベースに対する仮想コア リソースの制限については、[Hyperscale サービス レベルの仮想コアの制限](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5) に関する記事を参照してください
+- Azure SQL Database を監視するには、[Azure Monitor SQL 分析情報](../../azure-monitor/insights/sql-insights-overview.md)を有効にします
 - Azure SQL Database のパフォーマンスのチューニングについては、[Azure SQL Database でのクエリのパフォーマンス](performance-guidance.md)に関する記事を参照してください
 - クエリ ストアを使用したパフォーマンスのチューニングについては、[クエリ ストアを使用したパフォーマンス監視](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store/)に関する記事を参照してください
 - DMV の監視スクリプトについては、「[動的管理ビューを使用して Azure SQL Database のパフォーマンスを監視する](monitoring-with-dmvs.md)」を参照してください

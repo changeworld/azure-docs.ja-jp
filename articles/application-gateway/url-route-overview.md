@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: a9b2e8148586ec58ea6a7a033099e726920857b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e84ee56b57c4e97e2fd77e38acf45fc0d426fb58
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84987938"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277083"
 ---
 # <a name="url-path-based-routing-overview"></a>URL パス ベースのルーティングの概要
 
@@ -27,7 +27,7 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 http\://contoso.com/video/* に対する要求は VideoServerPool に、http\://contoso.com/images/* に対する要求は ImageServerPool に、それぞれルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
 
 > [!IMPORTANT]
-> v1 SKU では、規則はポータルで表示される順序で処理されます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。 v2 SKU では、完全一致の優先順位が高くなります。 ただし、基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。 そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。
+> v1、v2 どちらの SKU でも、ポータルに一覧表示される順番でルールを処理します。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。 ただし、基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。 そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。
 
 ## <a name="urlpathmap-configuration-element"></a>UrlPathMap 構成要素
 
@@ -64,7 +64,7 @@ urlPathMap 要素は、パス パターンのバックエンド サーバー プ
 
 ### <a name="pathpattern"></a>PathPattern
 
-PathPattern は照合するパス パターンの一覧です。 それぞれ / で始まる必要があり、"*" が許可されるのは末尾の "/" の後だけです。 パス照合に渡される文字列の最初の ?  または # の後にテキストは含まれず、これらの文字はここでは許可されません。 それ以外の場合、URL で許可される文字はすべて PathPattern で許可されます。
+PathPattern は照合するパス パターンの一覧です。 各パスは / で始まる必要があります。ワイルドカード文字として \* を使用できます。 パス照合に渡される文字列の最初の ?  または # の後にテキストは含まれず、これらの文字はここでは許可されません。 それ以外の場合、URL で許可される文字はすべて PathPattern で許可されます。
 
 Application Gateway v1 と v2 のいずれをデプロイしているかによって、サポートされるパターンは異なります。
 
@@ -94,7 +94,7 @@ Application Gateway v1 と v2 のいずれをデプロイしているかによ�
 |`/Repos/*/Comments/*`     |no|
 |`/CurrentUser/Comments/*`     |はい|
 
-詳しくは、「 [Resource Manager template using URL-based routing (URL ベースのルーティングを使用した Resource Manager テンプレート)](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) 」をご覧ください。
+詳しくは、「 [Resource Manager template using URL-based routing (URL ベースのルーティングを使用した Resource Manager テンプレート)](https://azure.microsoft.com/resources/templates/application-gateway-url-path-based-routing) 」をご覧ください。
 
 ## <a name="pathbasedrouting-rule"></a>PathBasedRouting ルール
 

@@ -6,12 +6,13 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: article
 ms.date: 07/07/2019
-ms.openlocfilehash: 5f75894094fa2a15dbc9e2809ed6c3631df96c3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0b39c31271a0382cce3388e9c8176ba943bc43e6
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92221215"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703880"
 ---
 # <a name="use-powershell-to-get-a-data-share-invitation"></a>PowerShell を使用してデータ共有の招待を取得する
 
@@ -35,7 +36,7 @@ Get-AzDataShareInvitation -location -invitationId
 
 このスクリプトでは以下のコマンドを使用します。 
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation) | 送信されたデータ共有の招待を取得して一覧表示します。 |
 |||

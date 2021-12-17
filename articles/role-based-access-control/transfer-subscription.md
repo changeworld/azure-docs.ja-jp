@@ -8,20 +8,22 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/06/2021
+ms.date: 09/04/2021
 ms.author: rolyon
-ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 19e9d6c76e30828b0aac0fba139963ff25ae2cba
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580123"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542316"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 
 組織には複数の Azure サブスクリプションがある場合があります。 各サブスクリプションは、特定の Azure Active Directory (Azure AD) ディレクトリと関連付けられています。 管理を容易にするために、サブスクリプションを別の Azure AD ディレクトリに移転することが必要になる場合があります。 サブスクリプションを別の Azure AD ディレクトリに移転する場合、一部のリソースはターゲット ディレクトリに移転されません。 たとえば、Azure のロールベースのアクセス制御 (Azure RBAC) でのすべてのロールの割り当てとカスタム ロールは、ソース ディレクトリからは **完全に** 削除され、ターゲット ディレクトリには移転されません。
 
 この記事では、サブスクリプションを別の Azure AD ディレクトリに移転し、移転後にいくつかのリソースを再作成するために実行できる基本的な手順について説明します。
+
+代わりに、ご自身の組織内のさまざまなディレクトリに対するサブスクリプションの転送を **ブロック** する必要がある場合は、サブスクリプション ポリシーを構成できます。 詳細については、「[Azure サブスクリプションのポリシーを管理する](../cost-management-billing/manage/manage-azure-subscription-policy.md)」を参照してください。
 
 > [!NOTE]
 > Azure クラウド ソリューション プロバイダー (CSP) のサブスクリプションでは、サブスクリプションに対する Azure AD ディレクトリの変更はサポートされていません。
@@ -82,11 +84,13 @@ ms.locfileid: "106580123"
 | Azure Managed Disks | はい | はい |  |  ディスク暗号化セットを使用して、カスタマー マネージド キーで Managed Disks を暗号化する場合は、ディスク暗号化セットに関連付けられているシステム割り当て ID を無効にしてから、再度有効にする必要があります。 また、ロールの割り当てを再作成する必要があります。つまり、Key Vault 内にあるディスク暗号化セットに対し、必要なアクセス許可を再度付与します。 |
 | Azure Kubernetes Service | はい | いいえ |  | AKS クラスターとそれに関連付けられているリソースを別のディレクトリに転送することはできません。 詳細については、「[Azure Kubernetes Service (AKS) についてよく寄せられる質問](../aks/faq.md)」を参照してください。 |
 | Azure Policy | はい | いいえ | カスタム定義、割り当て、除外、コンプライアンス データなど、すべての Azure Policy オブジェクト。 | 定義を[エクスポート](../governance/policy/how-to/export-resources.md)、インポート、および再割り当てする必要があります。 次に、新しいポリシー割り当てと、必要な[ポリシーの除外](../governance/policy/concepts/exemption-structure.md)を作成します。 |
-| Azure Active Directory Domain Services | はい | いいえ |  | Azure AD Domain Services の管理対象ドメインを別のディレクトリに転送することはできません。 詳細については、「[Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)](../active-directory-domain-services/faqs.md)」を参照してください。 |
+| Azure Active Directory Domain Services | はい | いいえ |  | Azure AD Domain Services の管理対象ドメインを別のディレクトリに転送することはできません。 詳細については、「[Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)](../active-directory-domain-services/faqs.yml)」を参照してください。 |
 | アプリの登録 | はい | はい |  |  |
 
 > [!WARNING]
 > ストレージ アカウントや SQL データベースなどのリソースに対して保存時の暗号化を使用していて、それが移転されるの **ではない** サブスクリプションのキー コンテナーに依存している場合、復旧不可能なシナリオが発生する可能性があります。 このような状況が発生した場合は、別のキー コンテナーを使用するか、ユーザーが管理するキーを一時的に無効にして、この復旧不可能なシナリオを回避する必要があります。
+
+サブスクリプションを譲渡するとき、影響を受ける一部の Azure リソースの一覧を取得するには、[Azure Resource Graph](../governance/resource-graph/overview.md) でクエリを実行することもできます。 サンプル クエリについては、[Azure サブスクリプションの譲渡時に影響を受けるリソースの一覧](../governance/resource-graph/samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -94,7 +98,7 @@ ms.locfileid: "106580123"
 
 - [Azure Cloud Shell の Bash](../cloud-shell/overview.md) または [Azure CLI](/cli/azure)
 - ソース ディレクトリ内の移転するサブスクリプションのアカウント管理者
-- ターゲット ディレクトリの[所有者](built-in-roles.md#owner) ロール
+- ディレクトリを変更するユーザーのソース ディレクトリおよびターゲット ディレクトリ内のユーザー アカウント
 
 ## <a name="step-1-prepare-for-the-transfer"></a>手順 1:移転を準備する
 
@@ -116,7 +120,7 @@ ms.locfileid: "106580123"
 
 ### <a name="install-the-azure-resource-graph-extension"></a>Azure Resource Graph 拡張機能をインストールする
 
- [Azure Resource Graph](../governance/resource-graph/index.yml) の Azure CLI 拡張機能である *resource-graph* を使用すると、[az graph](/cli/azure/ext/resource-graph/graph) コマンドを使用して、Azure Resource Manager によって管理されているリソースを照会できます。 このコマンドは、後の手順で使用します。
+ [Azure Resource Graph](../governance/resource-graph/index.yml) の Azure CLI 拡張機能である *resource-graph* を使用すると、[az graph](/cli/azure/graph) コマンドを使用して、Azure Resource Manager によって管理されているリソースを照会できます。 このコマンドは、後の手順で使用します。
 
 1. [az extension list](/cli/azure/extension#az_extension_list) を使用して、*resource-graph* 拡張機能がインストールされているかどうかを確認します。
 
@@ -233,7 +237,7 @@ ms.locfileid: "106580123"
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure SQL データベースと Azure AD 認証の一覧を表示する
 
-- Azure AD 認証が統合されている Azure SQL データベースを使用しているかどうかを確認するには、[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) と [az graph](/cli/azure/ext/resource-graph/graph) 拡張機能を使用します。 詳細については、「[SQL による Azure Active Directory 認証の構成と管理](../azure-sql/database/authentication-aad-configure.md)」を参照してください。
+- Azure AD 認証が統合されている Azure SQL データベースを使用しているかどうかを確認するには、[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) と [az graph](/cli/azure/graph) 拡張機能を使用します。 詳細については、「[SQL による Azure Active Directory 認証の構成と管理](../azure-sql/database/authentication-aad-configure.md)」を参照してください。
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -249,18 +253,19 @@ ms.locfileid: "106580123"
 
 ### <a name="list-other-known-resources"></a>他の既知のリソースの一覧を表示する
 
-1. [az account show](/cli/azure/account#az_account_show) を使用して、サブスクリプション ID を取得します。
+1. [az account show](/cli/azure/account#az_account_show) を使用して、サブスクリプション IDを取得します (`bash` 内)。
 
     ```azurecli
-    subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
+    subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"//' -e 's/\r$//')
     ```
-
-1. [az graph](/cli/azure/ext/resource-graph/graph) 拡張機能を使用して、Azure AD ディレクトリの既知の依存関係がある他の Azure リソースの一覧を表示します。
+    
+1. [az graph](/cli/azure/graph) 拡張機能を使用して、Azure AD ディレクトリの既知の依存関係がある他の Azure リソースの一覧を表示します (`bash` 内)。
 
     ```azurecli
-    az graph query -q \
-    'resources | where type != "microsoft.azureactivedirectory/b2cdirectories" | where  identity <> "" or properties.tenantId <> "" or properties.encryptionSettingsCollection.enabled == true | project name, type, kind, identity, tenantId, properties.tenantId' \
-    --subscriptions $subscriptionId --output table
+    az graph query -q 'resources 
+        | where type != "microsoft.azureactivedirectory/b2cdirectories" 
+        | where  identity <> "" or properties.tenantId <> "" or properties.encryptionSettingsCollection.enabled == true 
+        | project name, type, kind, identity, tenantId, properties.tenantId' --subscriptions $subscriptionId --output yaml
     ```
 
 ## <a name="step-2-transfer-the-subscription"></a>手順 2:サブスクリプションを移転する

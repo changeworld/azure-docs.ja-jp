@@ -6,23 +6,25 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: bed0ccbc25c6fcc43d8fb0948182f229bce63edf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6d2fca3ed64711133f1701446ebea61c28a3dcab
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764713"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674316"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure Database for MySQL のデータの暗号化
 
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 Azure Database for MySQL のカスタマーマネージド キーによるデータ暗号化では、保存データの保護に Bring Your Own Key (BYOK) を使用できます。 また、組織でキーとデータの管理における職務の分離を実装することもできます。 カスタマーマネージド暗号化を使用する場合、キーのライフサイクル、キーの使用アクセス許可、およびキーに対する操作の監査については、お客様の責任となり、お客様が完全に制御できます。
 
-Azure Database for MySQL のカスタマーマネージド キーによるデータ暗号化は、サーバーレベルで設定されます。 特定のサーバーについては、キー暗号化キー (KEK) と呼ばれる、カスタマーマネージド キーを使用して、サービスによって使用されるデータ暗号化キー (DEK) を暗号化します。 KEK は、顧客が所有する、カスタマーマネージド [Azure Key Vault](../key-vault/general/security-overview.md) インスタンスに格納される非対称キーです。 キー暗号化キー (KEK) とデータ暗号化キー (DEK) については、この記事の後半で詳しく説明します。
+Azure Database for MySQL のカスタマーマネージド キーによるデータ暗号化は、サーバーレベルで設定されます。 特定のサーバーについては、キー暗号化キー (KEK) と呼ばれる、カスタマーマネージド キーを使用して、サービスによって使用されるデータ暗号化キー (DEK) を暗号化します。 KEK は、顧客が所有する、カスタマーマネージド [Azure Key Vault](../key-vault/general/security-features.md) インスタンスに格納される非対称キーです。 キー暗号化キー (KEK) とデータ暗号化キー (DEK) については、この記事の後半で詳しく説明します。
 
 Key Vault は、クラウドベースの外部キー管理システムです。 可用性が高く、FIPS 140-2 レベル 2 で検証されたハードウェア セキュリティ モジュール (HSM) によって必要に応じてサポートされる、スケーラブルで安全な RSA 暗号化キー向けストレージが提供されます。 格納されているキーに直接アクセスすることはできませんが、承認されたエンティティに対する暗号化とその解除のサービスが提供されます。 Key Vault では、キーの生成、インポート、または[オンプレミス HSM デバイスからの転送](../key-vault/keys/hsm-protected-keys.md)を行うことができます。
 
 > [!NOTE]
-> この機能は、Azure Database for MySQL で "汎用" および "メモリ最適化" の価格レベルがサポートされているすべての Azure リージョンで使用できます。 その他の制限事項については、「[制限事項](concepts-data-encryption-mysql.md#limitations)」セクションを参照してください。
+> この機能は、General Purpose およびメモリ最適化価格レベルで使用できる "General Purpose ストレージ v2 (最大 16 TB をサポート)" ストレージでのみサポートされます。 詳細については、[ストレージの概念](concepts-pricing-tiers.md#storage)に関するセクションを参照してください。 その他の制限事項については、「[制限事項](concepts-data-encryption-mysql.md#limitations)」セクションを参照してください。
 
 ## <a name="benefits"></a>メリット
 
@@ -70,7 +72,7 @@ Key Vault を構成するための要件を以下に示します。
 * DEK の暗号化に使用されるカスタマーマネージド キーは、非対称の RSA 2048 のみです。
 * キーがアクティブ化された日時 (設定する場合) は、過去の日付と時刻にする必要があります。 有効期限は設定しません。
 * キーは、"*有効*" 状態になっている必要があります。
-* キーには、保有期間を **90 日** に設定した [論理的な削除](../key-vault/general/soft-delete-overview.md)が必要です。これにより、必要なキー属性 recoveryLevel: "Recoverable" が暗黙的に設定されます。 保有期間を 90 日未満に設定すると、recoveryLevel: "CustomizedRecoverable" となります。これは、要件を持たないので、保有期間を確実に **90 日** に設定するようにしてください。
+* キーには、保有期間を **90 日** に設定した [論理的な削除](../key-vault/general/soft-delete-overview.md)が必要です。これにより、必要なキー属性 recoveryLevel: "Recoverable" が暗黙的に設定されます。 保有期間を 90 日未満に設定すると、recoveryLevel: "CustomizedRecoverable" となります。これは、要件を持たないので、保有期間を必ず **90 日** に設定してください。
 * キーで[消去保護が有効](../key-vault/general/soft-delete-overview.md#purge-protection)になっている必要があります。
 * Key Vault に[既存のキーをインポート](/rest/api/keyvault/ImportKey/ImportKey)する場合は、サポートされているファイル形式 (`.pfx`、`.byok`、`.backup`) で提供してください。
 
@@ -105,7 +107,7 @@ Key Vault でカスタマー マネージド キーを使用してデータ暗�
 
 Key Vault に対する十分なアクセス権を持つユーザーが、次のことを行うことで、キーへのサーバー アクセスを誤って無効にしてしまうことがあります。
 
-* サーバーから Key Vault の get、wrapKey、unwrapKey アクセス許可を取り消す。
+* サーバーからキー コンテナーの `get`、`wrapKey`、および `unwrapKey` のアクセス許可を取り消す。
 * キーを削除する。
 * Key Vault を削除する。
 * Key Vault のファイアウォール規則を変更する。
@@ -135,14 +137,15 @@ Key Vault に格納されている顧客のマネージド キーで Azure Datab
 Azure Database for MySQL の場合、カスタマー マネージド キー (CMK) を使用した保存データの暗号化のサポートには、いくつかの制限があります。
 
 * この機能のサポートは、**General Purpose** および **Memory Optimized** 価格レベルに限定されています。
-* この機能は、16 TB までのストレージをサポートしているリージョンとサーバーでのみサポートされています。 最大 16 TB のストレージをサポートする Azure リージョンの一覧については、[こちらの](concepts-pricing-tiers.md#storage)ドキュメントにあるストレージのセクションを参照してください
+* この機能は、汎用ストレージ v2 (最大 16 TB) をサポートしているリージョンとサーバーでのみサポートされています。 最大 16 TB のストレージをサポートする Azure リージョンの一覧については、[こちらの](concepts-pricing-tiers.md#storage)ドキュメントにあるストレージのセクションを参照してください
 
     > [!NOTE]
-    > - 上記のリージョンで作成されたすべての新しい MySQL サーバーで、カスタマー マネージャー キーによる暗号化のサポートを **利用できます**。 ポイント イン タイム リストア (PITR) サーバーまたは読み取りレプリカは、理論的には "新規" に適合しません。
-    > - プロビジョニングされたサーバーによって最大 16 TB がサポートされているかどうかを検証するには、ポータルの [価格レベル] ブレードにアクセスして、プロビジョニング済みのサーバーでサポートされる最大ストレージ サイズを確認できます。 スライダーを最大 4 TB まで動かすことができる場合、サーバーでは、カスタマー マネージド キーを使用した暗号化がサポートされていない可能性があります。 ただし、データは常にサービス マネージド キーを使用して暗号化されます。 質問がある場合は、AskAzureDBforMySQL@service.microsoft.com までご連絡ください。
+    > - 汎用ストレージ v2 をサポートしている [Azure リージョン](concepts-pricing-tiers.md#storage)で作成されたすべての新しい MySQL サーバーで、カスタマー マネージド キーによる暗号化のサポートを **利用できます**。 ポイント イン タイム リストア (PITR) サーバーまたは読み取りレプリカは、理論上 ' 新規 ' には該当しません。
+    > - プロビジョニングされたサーバーによって汎用ストレージ v2 がサポートされているかどうかを検証するには、ポータルの [価格レベル] ブレードにアクセスして、プロビジョニング済みのサーバーでサポートされる最大ストレージ サイズを確認します。 スライダーを最大 4 TB まで動かすことができる場合、お使いのサーバーは汎用ストレージ v1 上にあり、カスタマー マネージド キーを使用した暗号化はサポートされません。 ただし、データは常にサービス マネージド キーを使用して暗号化されます。 質問がある場合は、AskAzureDBforMySQL@service.microsoft.com までご連絡ください。
 
 * RSA 2048 暗号化キーを使用した暗号化のみがサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure portal](howto-data-encryption-portal.md) と [Azure CLI](howto-data-encryption-cli.md) を使用して Azure Database for MySQL のカスタマー マネージド キーによるデータ暗号化を設定する方法について学習します。
+* [Azure portal](howto-data-encryption-portal.md) と [Azure CLI](howto-data-encryption-cli.md) を使用して Azure Database for MySQL のカスタマー マネージド キーによるデータ暗号化を設定する方法について学習します。
+* [Azure Database for MySQL - シングル サーバー](concepts-pricing-tiers.md#storage)のストレージの種類のサポートについて学習します

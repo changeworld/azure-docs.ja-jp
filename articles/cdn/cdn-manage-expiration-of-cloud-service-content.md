@@ -3,7 +3,7 @@ title: Azure CDN での Web コンテンツ有効期限の管理 | Microsoft Doc
 description: Azure CDN で Azure Web Apps/Cloud Services、ASP.NET、または IIS コンテンツの有効期限を管理する方法について説明します。
 services: cdn
 documentationcenter: .NET
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp
 ms.topic: how-to
 ms.date: 02/15/2018
-ms.author: allensu
-ms.openlocfilehash: d8eb450d2010bf2a525a26f1c5ff48f59732ce43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: 1430cb9f6d683f97b568502871b256be666dd0ca
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93240972"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458591"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Azure CDN で Web コンテンツ有効期限を管理する
 > [!div class="op_single_selector"]
@@ -79,7 +79,7 @@ Web サーバーの `Cache-Control` ヘッダーを設定するための推奨�
 
     ![CDN カスタム キャッシュ規則の例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 
-    最初のカスタム キャッシュ規則は、エンドポイントで指定された配信元サーバー上の `/webfolder1` フォルダー内のすべてのファイルに対して 4 時間のキャッシュ有効期間を設定します。 2 番目の規則は `file1.txt` ファイルについてのみ最初の規則をオーバーライドし、そのファイルに対して 2 時間のキャッシュ有効期間を設定します。
+    最初のカスタム キャッシュ規則は、エンドポイントで指定された配信元サーバー上の `/webfolder1` フォルダー内のすべてのファイルに対して 4 日間のキャッシュ有効期間を設定します。 2 番目の規則は `file1.txt` ファイルについてのみ最初の規則をオーバーライドし、そのファイルに対して 2 日間のキャッシュ有効期間を設定します。
 
 1. **[保存]** を選択します。
 

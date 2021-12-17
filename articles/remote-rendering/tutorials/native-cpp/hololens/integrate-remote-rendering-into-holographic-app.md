@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: a07a8a9c50e0f71daa48f65ebf8c2e7a7f166cc5
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 2f3f5c48614abe4157d706ea0cef3f88a91119ca
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594301"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223591"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>チュートリアル:Remote Rendering を HoloLens Holographic アプリに統合する
 
@@ -33,7 +33,7 @@ ms.locfileid: "99594301"
 * アカウント情報 (アカウント ID、アカウント キー、アカウント ドメイン、サブスクリプション ID)。 アカウントをお持ちでない場合は、[アカウントを作成](../../../how-tos/create-an-account.md)してください。
 * Windows SDK 10.0.18362.0 [(ダウンロード)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)。
 * 最新バージョンの Visual Studio 2019 [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)。
-* [Visual Studio tools for Mixed Reality](/windows/mixed-reality/install-the-tools)。 具体的には、次の "*ワークロード*" のインストールが必須です。
+* [Visual Studio tools for Mixed Reality](/windows/mixed-reality/install-the-tools)。 特に、次の *ワークロード* のインストールは必須です。
   * **C++ によるデスクトップ開発**
   * **ユニバーサル Windows プラットフォーム (UWP) の開発**
 * Visual Studio 用の Windows Mixed Reality アプリ テンプレート [(ダウンロード)](https://marketplace.visualstudio.com/items?itemName=WindowsMixedRealityteam.WindowsMixedRealityAppTemplatesVSIX)。
@@ -322,10 +322,13 @@ void HolographicAppMain::StartModelLoading()
         [this](RR::Status status, RR::ApiHandle<RR::LoadModelResult> result)
         {
             m_modelLoadResult = RR::StatusToResult(status);
-            m_modelLoadFinished = true; // successful if m_modelLoadResult==RR::Result::Success
-            char buffer[1024];
-            sprintf_s(buffer, "Remote Rendering: Model loading completed. Result: %s\n", RR::ResultToString(m_modelLoadResult));
-            OutputDebugStringA(buffer);
+            m_modelLoadFinished = true;
+
+            if (m_modelLoadResult == RR::Result::Success)
+            {
+                RR::Double3 pos = { 0.0, 0.0, -2.0 };
+                result->GetRoot()->SetPosition(pos);
+            }
         },
         // progress update callback
             [this](float progress)

@@ -3,12 +3,12 @@ title: Azure Event Grid のイベント ドメイン
 description: この記事では、イベント ドメインを使用して、さまざまなビジネス組織、顧客、アプリケーションへのカスタム イベントのフローを管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/13/2021
-ms.openlocfilehash: 32c06ac55f667ec9807c7952127c2cf0f0384024
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: a8f9b21b84b2c764d25943af8988e40672dccd31
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374711"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112413546"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid トピックを管理するためのイベント ドメインについて
 
@@ -26,7 +26,7 @@ ms.locfileid: "107374711"
 イベント ドメインでは、イベントを発行するために Storage や IoT Hub などの Azure サービスで使用されているものと同じアーキテクチャが提供されます。 数千のトピックにイベントを発行できます。 また、ドメインでは、テナントをパーティション分割できるように各トピックの承認と認証を制御できます。
 
 ## <a name="example-use-case"></a>ユース ケースの例
-[!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
+[!INCLUDE [event-grid-domain-example-use-case.md](./includes/event-grid-domain-example-use-case.md)]
 
 ## <a name="access-management"></a>アクセス管理
 
@@ -45,7 +45,7 @@ Event Grid には、Azure RBAC がイベント ドメインでより簡単に動
 イベント ドメイン内のトピックでイベントをサブスクライブすることは、[カスタム トピックでイベント サブスクリプションを作成](./custom-event-quickstart.md)したり、Azure サービスからイベントをサブスクライブしたりすることと同じです。
 
 > [!IMPORTANT]
-> ドメイン トピックは、Event Grid の **自動管理** されたリソースと見なされます。 イベント サブスクリプションは、ドメイン トピックを作成せずに、ドメイン トピック スコープで作成できます。 この場合、Event Grid によって自動的にドメイン トピックが作成されます。 もちろん、ドメイン トピックを手動で作成することもできます。 この動作により、多数のドメイン トピックを扱うときに注意する必要があるリソースが 1 つ少なくなります。 ドメイン トピックに対する最後のサブスクリプションが削除されると、ドメイン トピックが手動で作成されたか自動作成されたかに関係なく、ドメイン トピックも削除されます。 
+> ドメイン トピックは、Event Grid の **自動管理** されたリソースと見なされます。 イベント サブスクリプションは、ドメイン トピックを作成せずに、[ドメイン スコープ](#domain-scope-subscriptions)で作成できます。 この場合、Event Grid によって自動的にドメイン トピックが作成されます。 もちろん、ドメイン トピックを手動で作成することもできます。 この動作により、多数のドメイン トピックを扱うときに注意する必要があるリソースが 1 つ少なくなります。 ドメイン トピックに対する最後のサブスクリプションが削除されると、ドメイン トピックが手動で作成されたか自動作成されたかに関係なく、ドメイン トピックも削除されます。 
 
 ### <a name="domain-scope-subscriptions"></a>ドメイン スコープ サブスクリプション
 

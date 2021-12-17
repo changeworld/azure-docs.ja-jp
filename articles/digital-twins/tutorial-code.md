@@ -1,22 +1,22 @@
 ---
 title: チュートリアル:クライアント アプリをコーディングする
 titleSuffix: Azure Digital Twins
-description: .NET (C#) SDK を使用してクライアント アプリの最小限のコードを記述するチュートリアル。
+description: このチュートリアルでは、.NET (C#) SDK を使用して、Azure Digital Twins クライアント アプリの最小限のコードを記述する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 11/02/2020
+ms.date: 10/18/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: bd3ba88650161bd11a24697b4ff8575d307120e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df99bfd1dfd07749b4906e9bd7f9f62ece68066b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102424463"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501706"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
-Azure Digital Twins を使用する開発者は、Azure Digital Twins サービスのインスタンスとのやり取りのために、クライアント アプリケーションを作成するのが一般的です。 この開発者向けのチュートリアルでは、[.NET 用 Azure Digital Twins SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client) を使用した、Azure Digital Twins サービスに対するプログラミングの概要を説明します。 C# コンソール クライアント アプリの作成手順を最初から順を追って説明します。
+Azure Digital Twins を使用する開発者は一般的に、Azure Digital Twins サービスのインスタンスとのやり取りのためにクライアント アプリケーションを作成します。 この開発者向けのチュートリアルでは、[.NET 用 Azure Digital Twins SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) を使用した、Azure Digital Twins サービスに対するプログラミングの概要を説明します。 C# コンソール クライアント アプリの作成手順を最初から順を追って説明します。
 
 > [!div class="checklist"]
 > * プロジェクトの設定
@@ -27,7 +27,7 @@ Azure Digital Twins を使用する開発者は、Azure Digital Twins サービ�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、セットアップとプロジェクトの作業にコマンド ラインを使用します。 そのため、任意のコード エディターを使用して演習を進めることができます。
+この Azure Digital Twins のチュートリアルでは、セットアップとプロジェクトの作業にコマンド ラインを使用します。 そのため、任意のコード エディターを使用して演習を進めることができます。
 
 開始するために必要なもの:
 * 任意のコード エディター
@@ -43,7 +43,7 @@ Azure Digital Twins を使用する開発者は、Azure Digital Twins サービ�
 
 Azure Digital Twins インスタンスを使用する準備ができたら、クライアント アプリ プロジェクトの設定を開始します。 
 
-ご使用のコンピューターでコマンド プロンプトまたはその他のコンソール ウィンドウを開き、このチュートリアルでの作業を格納する空のプロジェクト ディレクトリを作成します。 ディレクトリに任意の名前を指定します (たとえば、*DigitalTwinsCodeTutorial*)。
+ご使用のマシンでコマンド プロンプトまたはその他のコンソール ウィンドウを開き、このチュートリアルでの作業を格納する空のプロジェクト ディレクトリを作成します。 ディレクトリに任意の名前を指定します (たとえば、*DigitalTwinsCodeTutorial*)。
 
 その新しいディレクトリに移動します。
 
@@ -53,11 +53,11 @@ Azure Digital Twins インスタンスを使用する準備ができたら、ク
 dotnet new console
 ```
 
-これにより、コードの大部分を記述する *Program.cs* と呼ばれるものを含む、いくつかのファイルがこのディレクトリ内に作成されます。
+このコマンドにより、コードの大部分を記述する *Program.cs* を含む、いくつかのファイルがこのディレクトリ内に作成されます。
 
 コマンド ウィンドウは、チュートリアル全体を通して使用するため、開いたままにしておきます。
 
-次に、Azure Digital Twins を操作するために必要な **2 つの依存関係をプロジェクトに追加** します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client) パッケージであり、2 つ目は Azure に対する認証に役立つツールを提供します。
+次に、Azure Digital Twins を操作するために必要な **2 つの依存関係をプロジェクトに追加** します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) パッケージであり、2 つ目は Azure に対する認証に役立つツールを提供します。
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core
@@ -74,13 +74,13 @@ dotnet add package Azure.Identity
 * リレーションシップの作成
 * デジタル ツインのクエリ
 
-チュートリアルの最後にコード全体を示すセクションもあります。 これを参考にして、ご自分のプログラムを確認しながら進めることができます。
+チュートリアルの最後にコード全体を示すセクションもあります。 このセクションを参考にして、ご自分のプログラムを確認しながら進めることができます。
 
 最初に、任意のコード エディターで *Program.cs* ファイルを開きます。 次のような最小限のコードのテンプレートが表示されます。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="サンプル コードのスニペット。&quot;using System;&quot; ステートメントが 1 つあり、DigitalTwinsCodeTutorial という名前空間があり、その名前空間に Program というクラスがあり、そのクラスに Main メソッドがあり、&quot;static void Main(string[] args)&quot; という標準シグネチャが使用されています。Main メソッドには Hello World 出力ステートメントが含まれています。" lightbox="media/tutorial-code/starter-template.png":::
+        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="コード エディターでのサンプル コードのスニペットのスクリーンショット。" lightbox="media/tutorial-code/starter-template.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -96,9 +96,9 @@ dotnet add package Azure.Identity
 
 アプリで最初に行う必要があるのは、Azure Digital Twins サービスに対して認証することです。 その後、SDK 関数にアクセスするためのサービス クライアント クラスを作成できます。
 
-認証するには、Azure Digital Twins インスタンスの *hostName* が必要です。
+認証するには、Azure Digital Twins インスタンスの "*ホスト名*" が必要です。
 
-*Program.cs* で、次のコードを "Hello, World!" の 出力行 (`Main` メソッド内) の下に貼り付けます。 `adtInstanceUrl` の値を Azure Digital Twins インスタンスの *hostName* に設定します。
+*Program.cs* で、次のコードを "Hello, World!" の 出力行 (`Main` メソッド内) の下に貼り付けます。 `adtInstanceUrl` の値を Azure Digital Twins インスタンスの "*ホスト名*" に設定します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Authentication_code":::
 
@@ -110,7 +110,7 @@ dotnet add package Azure.Identity
 dotnet run
 ```
 
-これにより、最初の実行での依存関係が復元されてから、プログラムが実行されます。 
+このコマンドにより、最初の実行での依存関係が復元されてから、プログラムが実行されます。 
 * エラーが発生しなかった場合は、プログラムで "*Service client created - ready to go*" が出力されます。
 * このプロジェクトにはまだエラー処理がないため、何らかの問題が発生すると、コードによってスローされた例外が表示されます。
 
@@ -120,7 +120,7 @@ Azure Digital Twins には、組み込みのドメイン ボキャブラリは�
 
 Azure Digital Twins ソリューションを作成するにあたり最初にすべきことは、DTDL ファイル内に少なくとも 1 つのモデルを定義することです。
 
-プロジェクトを作成したディレクトリに、*SampleModel.json* という名前の新しい *.json* ファイルを作成します。 次のファイル本文を貼り付けます。 
+プロジェクトを作成したディレクトリに、SampleModel.json という名前の新しい *.json* ファイルを作成します。 次のファイル本文を貼り付けます。 
 
 :::code language="json" source="~/digital-twins-docs-samples/models/SampleModel.json":::
 
@@ -128,9 +128,9 @@ Azure Digital Twins ソリューションを作成するにあたり最初にす
 > このチュートリアルのために Visual Studio を使用している場合は、新しく作成した JSON ファイルを選択し、プロパティ インスペクターで *[出力ディレクトリにコピー]* プロパティを *[新しい場合はコピーする]* または *[常にコピーする]* に設定することができます。 これにより、チュートリアルの残りの部分で **F5** キーを使用してプログラムを実行するときに、Visual Studio の既定のパスで JSON ファイルが検出されるようになります。
 
 > [!TIP] 
-> あらゆる言語に対応した [DTDL Validator サンプル](/samples/azure-samples/dtdl-validator/dtdl-validator)でモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-parse-models.md)" に関するページを参照してください。
+> あらゆる言語に対応した [DTDL Validator サンプル](/samples/azure-samples/dtdl-validator/dtdl-validator)でモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、[モデルの解析および検証](how-to-parse-models.md)に関するページを参照してください。
 
-次に、先ほど作成したモデルを Azure Digital Twins インスタンスにアップロードするためのコードを *Program.cs* に追加します。
+次に、作成したモデルを Azure Digital Twins インスタンスにアップロードするためのコードを *Program.cs* に追加します。
 
 まず、いくつかの `using` ステートメントをファイルの先頭に追加します。
 
@@ -147,7 +147,7 @@ Azure Digital Twins ソリューションを作成するにあたり最初にす
 
 前の手順で追加した承認コードの下に、次のコードを貼り付けます。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp_excerpt_model.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp_excerpt_model.cs" id="ClientExcerptModel":::
 
 コマンド ウィンドウで、次のコマンドを使用してプログラムを実行します。 
 
@@ -160,9 +160,9 @@ dotnet run
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Print_model":::
 
-**この新しいコードをテストするためにプログラムをもう一度実行する前に**、前回のプログラム実行時にモデルを既にアップロードしたことを思い出してください。 Azure Digital Twins によって、同じモデルを 2 回アップロードすることはできません。そのため、同じモデルを再度アップロードしようとすると、プログラムから例外がスローされます。
+**この新しいコードをテストするためにプログラムをもう一度実行する前に**、前回のプログラム実行時にモデルを既にアップロードしたことを思い出してください。 Azure Digital Twins では、同じモデルを 2 回アップロードすることはできません。そのため、同じモデルを再度アップロードしようとすると、プログラムから例外がスローされます。
 
-この点を考慮して、コマンド ウィンドウでこのコマンドを使用してプログラムを再度実行します。
+この情報を考慮して、コマンド ウィンドウでこのコマンドを使用してプログラムを再度実行します。
 
 ```cmd/sh
 dotnet run
@@ -180,7 +180,7 @@ dotnet run
 
 これで、コマンド ウィンドウで `dotnet run` を使用してプログラムを実行すると、エラー コードが返されることがわかります。 モデル作成コードからの出力には、このエラーが表示されます。
 
-:::image type="content" source= "media/tutorial-code/model-error.png" alt-text="プログラムの出力。&quot;409:Service request failed.状態:409 (Conflict).&quot; (409: サービス要求が失敗しました。状態: 409 (競合)) というメッセージが表示され、その後に、dtmi:example:SampleModel;1 が既に存在することを示すエラー出力が続きます":::
+:::image type="content" source= "media/tutorial-code/model-error.png" alt-text="プログラム出力が示されているコンソールのスクリーンショット。エラー &quot;409: サービスへの要求が失敗しました。状態: 409 (競合)。&quot; になります。":::
 
 この時点以降、このチュートリアルでは、サービス メソッドへのすべての呼び出しを try/catch ハンドラー内にラップします。
 
@@ -192,11 +192,11 @@ dotnet run
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Initialize_twins":::
 
-コマンド ウィンドウで、`dotnet run` を使用してプログラムを実行します。 出力で、*sampleTwin-0*、*sampleTwin-1*、および *sampleTwin-2* が作成されたことを示す出力メッセージを探します。 
+コマンド ウィンドウで、`dotnet run` を使用してプログラムを実行します。 出力で、sampleTwin-0、sampleTwin-1、および sampleTwin-2 が作成されたことを示す出力メッセージを探します。 
 
 次に、プログラムを再度実行します。 
 
-最初の実行後にツインが既に存在していても、ツインを 2 回目に作成したときにエラーがスローされないことに注意してください。 モデルの作成とは異なり、ツインの作成では、REST レベルで *upsert* セマンティクスを使用して *PUT* 呼び出しを行います。 つまり、ツインが既に存在する場合、同じツインを再び作成しようとすると、単に元のツインが置き換えられます。 エラーはスローされません。
+最初の実行後にツインが既に存在していても、ツインを 2 回目に作成したときにエラーがスローされないことに注意してください。 モデルの作成とは異なり、ツインの作成では、REST レベルで *upsert* セマンティクスを使用して *PUT* 呼び出しを行います。 この種の REST 呼び出しを使用すると、ツインが既に存在する場合、同じツインを再び作成しようとすると、単に元のツインが置き換えられます。 エラーはスローされません。
 
 ### <a name="create-relationships"></a>リレーションシップの作成
 
@@ -212,7 +212,7 @@ dotnet run
 
 コマンド ウィンドウで、`dotnet run` を使用してプログラムを実行します。 出力で、2 つのリレーションシップが正常に作成されたことを示す出力ステートメントを探します。
 
-同じ ID を持つ別のリレーションシップが既に存在する場合、Azure Digital Twins ではリレーションシップを作成できないことに注意してください。そのため、プログラムを複数回実行すると、リレーションシップの作成時に例外が表示されます。 このコードでは、例外をキャッチして無視します。 
+同じ ID を持つ別のリレーションシップが既に存在する場合、Azure Digital Twins ではリレーションシップを作成できません。そのため、プログラムを複数回実行すると、リレーションシップの作成時に例外が表示されます。 このコードでは、例外をキャッチして無視します。 
 
 ### <a name="list-relationships"></a>リレーションシップの一覧表示
 
@@ -228,7 +228,7 @@ dotnet run
 
 コマンド ウィンドウで、`dotnet run` を使用してプログラムを実行します。 このような出力ステートメントで、作成したすべてのリレーションシップの一覧が表示されます。
 
-:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="&quot;Twin sampleTwin-0 is connected to: contains->sampleTwin-1, -contains->sampleTwin-2&quot; (ツイン サンプル Twin-0 が接続されています: contains->sampleTwin-1, -contains->sampleTwin-2) というメッセージを示すプログラム出力" lightbox="media/tutorial-code/list-relationships.png":::
+:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="プログラムの出力を示すコンソールのスクリーンショット。ツインのリレーションシップの一覧のメッセージが表示されます。" lightbox="media/tutorial-code/list-relationships.png":::
 
 ### <a name="query-digital-twins"></a>デジタル ツインのクエリ
 
@@ -246,9 +246,11 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 コマンド ウィンドウで、`dotnet run` を使用してプログラムを実行します。 出力には、このインスタンスのすべてのデジタル ツインが表示されます。
 
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
+
 ## <a name="complete-code-example"></a>完全なコード例
 
-このチュートリアルのこの時点で、Azure Digital Twins に対して基本的なアクションを実行できる完全なクライアント アプリができました。 参照用に、*Program.cs* 内のプログラムの完全なコードを次に示します。
+チュートリアルのこの時点で、Azure Digital Twins に対して基本的なアクションを実行できる完全なクライアント アプリができました。 参照用に、*Program.cs* 内のプログラムの完全なコードを次に示します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 
@@ -271,4 +273,4 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 次のチュートリアルに進み、このようなサンプル クライアント アプリを使用して実行できることを確認してください。 
 
 > [!div class="nextstepaction"]
-> [*チュートリアル:サンプル クライアント アプリを使用した基本事項の確認*](tutorial-command-line-app.md)"
+> [サンプル クライアント アプリを使用して基本事項を確認する](tutorial-command-line-app.md)

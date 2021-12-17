@@ -4,8 +4,8 @@ description: Azure Active Directory で Azure portal、PowerShell、または Mi
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: daveba
-ms.date: 01/14/2020
+manager: KarenH444
+ms.date: 06/01/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,28 +13,28 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2d0d3335468147575eb53a99940866baa18375
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ca9c66216f56c46e4232ef688641941e47f1072
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222523"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985240"
 ---
-# <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Azure Active Directory でゲストのアクセス許可を制限する (プレビュー)
+# <a name="restrict-guest-access-permissions-in-azure-active-directory"></a>Azure Active Directory でゲストのアクセス許可を制限する
 
-Azure Active Directory (Azure AD) を使用すると、Azure AD 内の組織で外部のゲスト ユーザーに表示される内容を制限することができます。 既定では、ゲスト ユーザーは Azure AD で制限されたアクセス許可レベルに設定されますが、メンバー ユーザーの既定値は、既定のユーザー アクセス許可の完全なセットになります。 これは、Azure AD 組織の外部コラボレーション設定における新しいゲスト ユーザーのアクセス許可レベルのプレビューであり、さらに制限されたアクセスが可能になります。そのため、ゲスト アクセスの選択肢は次のようになります。
+Azure Active Directory (Azure AD) を使用すると、Azure AD 内の組織で外部のゲスト ユーザーに表示される内容を制限することができます。 既定では、ゲスト ユーザーは Azure AD で制限されたアクセス許可レベルに設定されますが、メンバー ユーザーの既定値は、ユーザー アクセス許可の完全なセットになります。 これは、Azure AD 組織の外部コラボレーション設定における新しいゲスト ユーザーのアクセス許可レベルであり、さらに制限されたアクセスが可能になります。そのため、ゲスト アクセスのレベルは次のようになります。
 
-アクセス許可レベル         | アクセス レベル
-----------------         | ------------
-メンバー ユーザーと同じ     | ゲストは、Azure AD リソースに対してメンバー ユーザーと同じアクセス権を持っています
-制限付きアクセス (既定) | ゲストは、非表示でないすべてのグループのメンバーシップを表示できます
-**制限付きアクセス (新規)**  | **ゲストは、どのグループのメンバーシップも表示できません**
+アクセス許可レベル         | アクセス レベル | 値
+----------------         | ------------ | -----
+メンバー ユーザーと同じ     | ゲストは、Azure AD リソースに対してメンバー ユーザーと同じアクセス権を持っています | a0b1b346-4d3e-4e8b-98f8-753987be4970
+制限付きアクセス (既定) | ゲストは、非表示でないすべてのグループのメンバーシップを表示できます | 10dae51f-b6af-4016-8d66-8c2a99b929b3
+**制限付きアクセス (新規)**  | **ゲストは、どのグループのメンバーシップも表示できません** | **2af84b1e-32c8-42b7-82bc-daa82404023b**
 
 ゲスト アクセスが制限されている場合、ゲストは自分のユーザー プロファイルのみを表示できます。 ゲストがユーザー プリンシパル名または objectId で検索している場合でも、他のユーザーを表示するアクセス許可は許可されません。 制限付きアクセスでは、ゲスト ユーザーが所属しているグループのメンバーシップも表示できないように制限されます。 ゲスト ユーザーのアクセス許可を含めた全体的な既定のユーザー アクセス許可については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../fundamentals/users-default-permissions.md)」をご覧ください。
 
 ## <a name="permissions-and-licenses"></a>アクセス許可とライセンス
 
-外部コラボレーション設定を構成するには、全体管理者ロールである必要があります。 ゲスト アクセスを制限するための追加のライセンス要件はありません。
+ゲストユーザーアクセスを構成するには、全体管理者または特権ロール管理者ロールである必要があります。 ゲスト アクセスを制限するための追加のライセンス要件はありません。
 
 ## <a name="update-in-the-azure-portal"></a>Azure portal で更新する
 

@@ -3,21 +3,18 @@ title: Azure API Management のポリシー | Microsoft Docs
 description: Azure API Management で使用できるポリシーについて説明します。 ポリシーを使用すると、発行者は構成を通じて API の動作を変更できます。
 services: api-management
 documentationcenter: ''
-author: vladvino
-manager: cfowler
-editor: ''
+author: dlepow
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/17/2021
-ms.author: apimpm
-ms.openlocfilehash: e809efa9da32da5fe9ca296608c602e770f78265
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/19/2021
+ms.author: danlep
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e5eda2df72afd7fa82a63dcd31adbf117d58bfe2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562350"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340345"
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
 このセクションでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。
@@ -36,11 +33,13 @@ ms.locfileid: "103562350"
     -   [使用量のクォータをサブスクリプション別に設定する](api-management-access-restriction-policies.md#SetUsageQuota) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをサブスクリプションに基づいて適用できます。
     -   [使用量のクォータをキー別に設定する](api-management-access-restriction-policies.md#SetUsageQuotaByKey) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用できます。
     -   [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT) - 指定された HTTP ヘッダーまたは指定されたクエリ パラメーターから抽出した JWT の存在と有効性を適用します。
+    -   [クライアント証明書の検証](api-management-access-restriction-policies.md#validate-client-certificate) -クライアントから API Management インスタンスに提示された証明書が、指定された検証規則と要求に一致することを強制します。
 -   [高度なポリシー](api-management-advanced-policies.md#AdvancedPolicies)
     -   [制御フロー](api-management-advanced-policies.md#choose) - ブール式の評価に基づいてポリシー ステートメントを条件付きで適用します。
     -   [要求を転送する](api-management-advanced-policies.md#ForwardRequest) - バックエンド サービスに要求を転送します。
     -   [コンカレンシーを制限する](api-management-advanced-policies.md#LimitConcurrency) - 含まれているポリシーが指定された数を超える要求によって同時に実行されないようにします。
     -   [Event Hub にログを記録する](api-management-advanced-policies.md#log-to-eventhub) - Logger エンティティによって定義されたメッセージ ターゲットに、指定された形式でメッセージを送信します。
+    -   [メトリックを送信する](api-management-advanced-policies.md#emit-metrics) - 実行時にカスタム メトリックを Application Insights に送信します。
     -   [Mock response (モック応答)](api-management-advanced-policies.md#mock-response) - パイプラインの実行を中止し、モック応答を呼び出し元に直接返します。
     -   [再試行](api-management-advanced-policies.md#Retry) - 条件が満たされるまで、囲まれたポリシー ステートメントの実行を再試行します。 実行は、指定された間隔で、指定された最大試行回数まで繰り返されます。
     -   [応答を返す](api-management-advanced-policies.md#ReturnResponse) - パイプラインの実行を中止し、指定された応答を呼び出し元に直接返します。
@@ -87,6 +86,8 @@ ms.locfileid: "103562350"
     - [パラメーターを検証する](validation-policies.md#validate-parameters) - API スキーマに対して要求ヘッダー、クエリ、またはパス パラメーターを検証します。
     - [ヘッダーを検証する](validation-policies.md#validate-headers) - API スキーマに対して応答ヘッダーを検証します。
     - [状態コードを検証する](validation-policies.md#validate-status-code) - API スキーマに対して応答の HTTP 状態コードを検証します。
+- [GraphQL 検証ポリシー](graphql-validation-policies.md)
+    - [GraphQL 要求を検証する](graphql-validation-policies.md#validate-graphql-request) - GraphQL API への要求を検証して承認します。
 
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。

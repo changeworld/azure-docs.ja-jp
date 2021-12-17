@@ -1,26 +1,22 @@
 ---
 title: SLES での HSR と Pacemaker を使用した SAP HANA スケールアウト | Microsoft Docs
 description: SLES での HSR と Pacemaker を使用した SAP HANA スケールアウト。
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/12/2021
+ms.date: 05/26/2021
 ms.author: radeltch
-ms.openlocfilehash: 637616c3698cc9ec0cd13a4584bad24b6ed02c34
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ab66bcdc834fd894d7d258ab9c7c08a0049b07ed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315199"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673143"
 ---
 # <a name="high-availability-for-sap-hana-scale-out-system-with-hsr-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server での HSR を使用した SAP HANA スケールアウト システムの高可用性 
 
@@ -28,9 +24,8 @@ ms.locfileid: "107315199"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-azure-doc]:../../../azure-netapp-files/index.yml
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all 
-[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -105,7 +100,7 @@ HANA スケールアウトのインストールで HANA の高可用性を実現
 
 `/hana/data` と `/hana/log` はローカル ディスク上に展開されるため、ストレージとの通信用に別のサブネットと仮想ネットワーク カードを展開する必要はありません。  
 
-Azure NetApp ボリュームは、[Azure NetApp Files に委任された](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)別のサブネットにデプロイされます: `anf` 10.23.1.0/26。   
+Azure NetApp ボリュームは、[Azure NetApp Files に委任された](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)別のサブネットにデプロイされます: `anf` 10.23.1.0/26。   
 
 > [!IMPORTANT]
 > 3 番目のサイトへのシステム レプリケーションはサポートされていません。 詳細については、「[SLES - SAP HANA システム レプリケーションのスケールアウトでのパフォーマンス最適化シナリオ](https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-12/index.html#_important_prerequisites)」の「重要な前提条件」のセクションを参照してください。     
@@ -275,6 +270,49 @@ Azure NetApp ボリュームは、[Azure NetApp Files に委任された](https:
      10.23.1.200     hana-s2-db2-hsr
      10.23.1.201     hana-s2-db3-hsr
     ```
+
+3. **[A]** 「[Azure NetApp Files を使用した Microsoft Azure 上での NetApp SAP アプリケーション][anf-sap-applications-azure]」で説明されているように、NFS を使用して NetApp システムで SAP HANA を実行できるよう OS を準備します。 NetApp 構成設定用の構成ファイル */etc/sysctl.d/netapp-hana.conf* を作成します。  
+
+    <pre><code>
+    vi /etc/sysctl.d/netapp-hana.conf
+    # Add the following entries in the configuration file
+    net.core.rmem_max = 16777216
+    net.core.wmem_max = 16777216
+    net.core.rmem_default = 16777216
+    net.core.wmem_default = 16777216
+    net.core.optmem_max = 16777216
+    net.ipv4.tcp_rmem = 65536 16777216 16777216
+    net.ipv4.tcp_wmem = 65536 16777216 16777216
+    net.core.netdev_max_backlog = 300000
+    net.ipv4.tcp_slow_start_after_idle=0
+    net.ipv4.tcp_no_metrics_save = 1
+    net.ipv4.tcp_moderate_rcvbuf = 1
+    net.ipv4.tcp_window_scaling = 1
+    net.ipv4.tcp_sack = 1
+    </code></pre>
+
+4. **[A]** Azure 用の Microsoft の構成設定を使用して、構成ファイル */etc/sysctl.d/ms-az.conf* を作成します。  
+
+    <pre><code>
+    vi /etc/sysctl.d/ms-az.conf
+    # Add the following entries in the configuration file
+    net.ipv6.conf.all.disable_ipv6 = 1
+    net.ipv4.tcp_max_syn_backlog = 16348
+    net.ipv4.conf.all.rp_filter = 0
+    sunrpc.tcp_slot_table_entries = 128
+    vm.swappiness=10
+    </code></pre>
+
+    > [!TIP]
+    > SAP ホスト エージェントからポート範囲を管理できるように、sysctl 構成ファイルで明示的に net.ipv4.ip_local_port_range と net.ipv4.ip_local_reserved_ports を設定しないようにしてください。 詳細については、SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421) を参照してください。  
+
+4. **[A]** 「[Azure NetApp Files を使用した Microsoft Azure 上での NetApp SAP アプリケーション][anf-sap-applications-azure]」で推奨されているように、sunrpc 設定を調整します。  
+
+    <pre><code>
+    vi /etc/modprobe.d/sunrpc.conf
+    # Insert the following line
+    options sunrpc tcp_max_slot_table_entries=128
+    </code></pre>
 
 2. **[A]** SUSE では SAP HANA 用の特別なリソース エージェントが提供され、既定では SAP HANA ScaleUp のエージェントがインストールされます。 ScaleUp 用のパッケージがインストールされている場合はアンインストールし、SAP HANAScaleOut シナリオ用のパッケージをインストールします。 この手順は、マジョリティ メーカーを含むすべてのクラスター VM で実行する必要があります。   
 
@@ -579,11 +617,11 @@ Azure NetApp ボリュームは、[Azure NetApp Files に委任された](https:
      * **[Enter Root User Name]\(ルート ユーザー名を入力\) [root]** : Enter キーを押して既定値をそのまま使用します
      * **[Select roles for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のロールを選択\) [1]** :1 (worker)
      * **[Enter Host Failover Group for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のホスト フェールオーバー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
-     * **[Enter Storage Partition Number for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のストレージ パーティション番号を入力\) [<<assign automatically>>]** : Enter キーを押して既定値をそのまま使用します
+     * **[Enter Storage Partition Number for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のストレージ パーティション番号を入力\) [\<\<assign automatically\>\>]** : Enter キーを押して既定値をそのまま使用します
      * **[Enter Worker Group for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のワーカー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
      * **[Select roles for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のロールを選択\) [1]** :1 (worker)
      * **[Enter Host Failover Group for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のホスト フェールオーバー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
-     * **[Enter Storage Partition Number for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のストレージ パーティション番号を入力\) [<<assign automatically>>]** : Enter キーを押して既定値をそのまま使用します
+     * **[Enter Storage Partition Number for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のストレージ パーティション番号を入力\) [\<\<assign automatically\>\>]** : Enter キーを押して既定値をそのまま使用します
      * **[Enter Worker Group for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のワーカー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
      * **[System Administrator (hn1adm) Password]\(システム管理者 (hn1adm) のパスワード\)** : パスワードを入力します
      * **[Enter SAP Host Agent User (sapadm) Password]\(SAP ホスト エージェント ユーザー (sapadm) のパスワードを入力\)** : パスワードを入力します

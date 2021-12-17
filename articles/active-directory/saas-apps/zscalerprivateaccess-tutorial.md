@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/03/2021
+ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 58e2a19f2d57eafc7d2967141d584dc7a22fe76c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1b2add9dc2c5cc2ce8cd629786af578bd5268a7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955671"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132302351"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Zscaler Private Access (ZPA) の統合
 
@@ -41,6 +41,9 @@ ms.locfileid: "104955671"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
 
 * Zscaler Private Access (ZPA) では **SP** Initiated SSO がサポートされます。
+* Zscaler Private Access (ZPA) では、[**自動化** されたユーザー プロビジョニング](zscaler-private-access-provisioning-tutorial.md)がサポートされます。
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="add-zscaler-private-access-zpa-from-the-gallery"></a>ギャラリーから Zscaler Private Access (ZPA) を追加する
 
@@ -53,7 +56,7 @@ Azure AD への Zscaler Private Access (ZPA) の統合を構成するには、�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Zscaler Private Access (ZPA)** 」と入力します。
 1. 結果のパネルから **[Zscaler Private Access (ZPA)]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-zscaler-private-access-zpa"></a>Zscaler Private Access (ZPA) の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Zscaler Private Access (ZPA) に対する Azure AD SSO を構成し、テストします。 SSO が機能するために、Azure AD ユーザーと Zscaler Private Access (ZPA) の関連ユーザーの間で、リンク関係を確立する必要があります。
 
@@ -76,11 +79,11 @@ Zscaler Private Access (ZPA) に対する Azure AD SSO を構成してテスト�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** ページで、次のフィールドの値を入力します。
-
-    1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
+1. **[基本的な SAML 構成]** ページで、次の手順を実行します。
 
     1. **[識別子 (エンティティ ID)]** ボックスに `https://samlsp.private.zscaler.com/auth/metadata` という URL を入力します。
+
+    1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://samlsp.private.zscaler.com/auth/login?domain=<DOMAIN_NAME>`
 
     > [!NOTE]
     > **サインオン URL** は実際の値ではありません。 実際のサインオン URL で値を更新する必要があります。 値を取得するには、[Zscaler Private Access (ZPA) サポート チーム](https://help.zscaler.com/zpa-submit-ticket)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -155,6 +158,8 @@ Zscaler Private Access (ZPA) に対する Azure AD SSO を構成してテスト�
 
 このセクションでは、Zscaler Private Access (ZPA) で Britta Simon というユーザーを作成します。 [Zscaler Private Access (ZPA) のサポート チーム](https://help.zscaler.com/zpa-submit-ticket)に問い合わせて、Zscaler Private Access (ZPA) プラットフォームでユーザーを追加します。
 
+Zscaler Private Access (ZPA) は、自動ユーザー プロビジョニングもまた、サポートしています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](zscaler-private-access-provisioning-tutorial.md)を参照してください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -163,8 +168,8 @@ Zscaler Private Access (ZPA) に対する Azure AD SSO を構成してテスト�
 
 * Zscaler Private Access (ZPA) のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler Private Access (ZPA)] タイルをクリックすると、Zscaler Private Access (ZPA) のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler Private Access (ZPA)] タイルをクリックすると、Zscaler Private Access (ZPA) のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Zscaler Private Access (ZPA) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Zscaler Private Access (ZPA) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

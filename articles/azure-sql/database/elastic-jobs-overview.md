@@ -3,20 +3,20 @@ title: Elastic Database ジョブ (プレビュー)
 description: Azure SQL Database で 1 つ以上のデータベースのセット間で Transact-SQL (T-SQL) スクリプトを実行するには、エラスティック データベース ジョブ (プレビュー) を構成します
 services: sql-database
 ms.service: sql-database
-ms.subservice: scale-out
+ms.subservice: elastic-jobs
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: srinia
 ms.author: srinia
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aacb8863fcb26f5551459e0fe7ad2d4faeede4e0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792176"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744883"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>エラスティック ジョブの作成、構成、および管理 (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,25 +78,25 @@ ms.locfileid: "92792176"
 
 SQL エラスティック プール内のデータベースにジョブを実行しているときにリソースに対する負荷が大きくなりすぎないようにするために、ジョブを構成して同時にジョブの実行対象とするデータベースの数に制限を設けることができます。
 
-`sp_add_jobstep`ストアド プロシージャの`@max_parallelism`パラメーターを T-SQL または `Add-AzSqlElasticJobStep -MaxParallelism`PowerShell で設定することで、ジョブが実行する同時実行データベースの数を設定します。
+`sp_add_jobstep` ストアド プロシージャの `@max_parallelism` パラメーターを T-SQL で設定することで、ジョブが実行する同時実行データベースの数を設定します。
 
 ## <a name="best-practices-for-creating-jobs"></a>ジョブ作成のベスト プラクティス
 
 ### <a name="idempotent-scripts"></a>べき等スクリプト
 ジョブの T-SQL スクリプトは [べき等](https://en.wikipedia.org/wiki/Idempotence)にする必要があります。 **べき等** とは、実行に成功したスクリプトを再度実行した場合に、結果が同じになることを意味します。 一時的なネットワークの問題により、スクリプトが失敗することがあります。 その場合、ジョブは事前に設定した回数に達するまで自動的にスクリプトを再試行します。 べき等スクリプトは、2 回 (以上) 実行して成功した場合、結果が同じになります。
 
-単純な方法として、作成前に、オブジェクトの存在をテストします。
-
+単純な方法として、作成前に、オブジェクトの存在をテストします。 仮定の例を以下に示します。
 
 ```sql
-IF NOT EXISTS (some_object)
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE [name] = N'some_object')
+    print 'Object does not exist'
     -- Create the object
+ELSE
+    print 'Object exists'
     -- If it exists, drop the object before recreating it.
 ```
 
 同様に、スクリプトは、それが検出する条件を論理的に試験し、対処することで正常に実行できる必要があります。
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

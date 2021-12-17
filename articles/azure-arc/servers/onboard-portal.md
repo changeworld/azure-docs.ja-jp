@@ -1,16 +1,16 @@
 ---
-title: Azure portal からハイブリッド マシンを Azure に接続する
-description: この記事では、Azure portal から Azure Arc 対応サーバーを使用して、エージェントをインストールし、マシンを Azure に接続する方法について説明します。
-ms.date: 11/05/2020
+title: デプロイ スクリプトを使用してハイブリッド マシンを Azure に接続する
+description: この記事では、Azure Arc 対応サーバーと、Azure portal で作成したデプロイ スクリプトを使用して、エージェントをインストールし、マシンを Azure に接続する方法を説明します。
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: d7a89db7b8a42476a312a8f9a96c5ad230b140a2
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 832e54538c6eb44e90dbd7ccb8ef804e0b0c45b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183150"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651980"
 ---
-# <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Azure portal からハイブリッド マシンを Azure に接続する
+# <a name="connect-hybrid-machines-to-azure-using-a-deployment-script"></a>デプロイ スクリプトを使用してハイブリッド マシンを Azure に接続する
 
 手動で一連の手順を実行することで、環境内の 1 つまたは少数の Windows マシンまたは Linux マシン用に、Azure Arc 対応サーバーを有効にすることができます。 または、提供されているテンプレート スクリプトを実行することで、自動化された方法を使用することもできます。 このスクリプトは、両方のエージェントのダウンロードとインストールを自動化するものです。
 
@@ -58,7 +58,7 @@ Windows インストーラー パッケージ *AzureConnectedMachineAgent.msi* �
 >* エージェントをインストールまたはアンインストールするには、"*管理者*" アクセス許可が必要です。
 >* まず、インストーラー パッケージをダウンロードし、ターゲット サーバー上のフォルダーにコピーするか、共有ネットワーク フォルダーからコピーする必要があります。 オプションを指定せずにこのインストーラー パッケージを実行すると、セットアップ ウィザードが起動します。ここで、指示に従って対話形式でエージェントをインストールできます。
 
-マシンがプロキシ サーバーを介してサービスと通信する必要がある場合は、エージェントをインストールした後、以下の手順で説明するコマンドを実行する必要があります。 このコマンドにより、プロキシ サーバーのシステム環境変数 `https_proxy` が設定されます。
+マシンがプロキシ サーバーを介してサービスと通信する必要がある場合は、エージェントをインストールした後、以下の手順で説明するコマンドを実行する必要があります。 このコマンドにより、プロキシ サーバーのシステム環境変数 `https_proxy` が設定されます。 この構成を利用して、エージェントは HTTP プロトコルを使用してプロキシ サーバー経由で通信します。
 
 Windows インストーラー パッケージのコマンドライン オプションに詳しくない場合は、[Msiexec の標準コマンドライン オプション](/windows/win32/msi/standard-installer-command-line-options)と [Msiexec のコマンドライン オプション](/windows/win32/msi/command-line-options)に関するページを参照してください。
 
@@ -86,7 +86,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
     ```
 
     >[!NOTE]
-    >このプレビューでは、エージェントでプロキシ認証の設定はサポートされていません。
+    >エージェントでプロキシ認証の設定はサポートされていません。
     >
 
 3. エージェントをインストールしたら、次のコマンドを実行して、Azure Arc サービスと通信するようにエージェントを構成する必要があります。
@@ -117,7 +117,7 @@ Linux 用の Connected Machine エージェントは、Microsoft [パッケー�
 
 * ハイブリッド リソース プロバイダー パッケージをインストールします。
 
-必要に応じて、`--proxy "{proxy-url}:{proxy-port}"` パラメーターを含めることで、プロキシ情報を使用してエージェントを構成できます。
+必要に応じて、`--proxy "{proxy-url}:{proxy-port}"` パラメーターを含めることで、プロキシ情報を使用してエージェントを構成できます。 この構成を利用して、エージェントは HTTP プロトコルを使用してプロキシ サーバー経由で通信します。
 
 このスクリプトには、サポートされているディストリビューションとサポートされていないディストリビューションを識別するロジックも含まれており、インストールの実行に必要なアクセス許可が検証されます。
 
@@ -131,7 +131,7 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh
 ```
 
-1. プロキシ サーバー経由で通信するようにエージェントを構成するための `--proxy` パラメーターを含めてエージェントをダウンロードし、インストールするには、次のコマンドを実行します。
+1. エージェントをダウンロードしてインストールするには、次のコマンドを実行します。 自分のマシンがインターネットに接続するためにプロキシ サーバー経由で通信する必要がある場合は、`--proxy` パラメーターを含めます。 
 
     ```bash
     # Download the installation package.
@@ -166,6 +166,6 @@ bash ~/Install_linux_azcmagent.sh
 
 - トラブルシューティング情報は、[Connected Machine エージェントの問題解決ガイド](troubleshoot-agent-onboard.md)を参照してください。
 
-- [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
+- [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。
 
-- [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)の詳細を確認します。 Azure Monitor for VMs を使用してオペレーティング システムとワークロードの監視データを収集したい場合、それを Automation Runbook や機能 (Update Management など) を使用して管理したい場合、または他の Azure サービス ([Azure Security Center](../../security-center/security-center-introduction.md) など) を使用したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。
+- [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM 分析情報](../../azure-monitor/vm/vminsights-enable-policy.md)を使用した監視の有効化などの方法です。

@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 10/14/2021
 ms.author: cherylmc
-ms.custom: include file
-ms.openlocfilehash: a3c10ca35ee2f085d4ce41e862a895ff17ff63a0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: include file, devx-track-azurepowershell
+ms.openlocfilehash: 6f24b40f91c3b06e30bbea7ffc09a288a60d36b5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "84317710"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130050760"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
 
@@ -23,7 +23,6 @@ ms.locfileid: "84317710"
 
 次のクライアント オペレーティング システムがサポートされています。
 
-* Windows 7 (32 ビットと 64 ビット)
 * Windows Server 2008 R2 (64 ビットのみ)
 * Windows 8.1 (32 ビットと 64 ビット)
 * Windows Server 2012 (64 ビットのみ)
@@ -31,7 +30,8 @@ ms.locfileid: "84317710"
 * Windows Server 2016 (64 ビットのみ)
 * Windows Server 2019 (64 ビットのみ)
 * Windows 10
-* Mac OS X バージョン 10.11 以降
+* Windows 11 
+* macOS バージョン 10.11 以上
 * Linux (StrongSwan)
 * iOS
 
@@ -65,7 +65,7 @@ Azure では、次の 3 種類のポイント対サイト VPN オプションを
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワークに接続するように構成することはできますか。
 
-はい。他の VNet とピアリングされている VNet にデプロイされている Virtual Network ゲートウェイへのポイント対サイト接続は、ピアリングされた他の VNet にアクセスできる可能性があります。  ピアリングされた VNet が UseRemoteGateway/AllowGatewayTransit 機能を使用している場合、ポイント対サイトクライアントは、ピアリングされた VNet に接続できます。  詳しくは、[こちら](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md)の記事を参照してください。
+はい。他の VNet とピアリングされている VNet にデプロイされている仮想ネットワーク ゲートウェイへのポイント対サイト クライアント接続は、ピアリングされた他の VNet にアクセスできる可能性があります。 ピアリングされた VNet が UseRemoteGateway または AllowGatewayTransit 機能を使用している場合、ポイント対サイト クライアントは、ピアリングされた VNet に接続できます。 詳細については、[ポイント対サイト ルーティング](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md)に関する記事を参照してください。
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>サイト間接続またはポイント対サイト接続ではどの程度のスループットが得られますか。
 
@@ -73,15 +73,21 @@ VPN トンネルのスループットを正確に一定レベルに維持する�
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>SSTP や IKEv2 をサポートしているポイント対サイト接続では、ソフトウェア VPN クライアントを使用できますか。
 
-いいえ。 SSTP については Windows のネイティブ VPN クライアント、IKEv2 については Mac のネイティブ VPN クライアントのみ使用できます。 ただし、すべてのプラットフォーム上で OpenVPN クライアントを使用して、OpenVPN プロトコル経由で接続できます。 サポートされているクライアント オペレーティング システムの一覧を参照してください。
+いいえ。 SSTP については Windows のネイティブ VPN クライアント、IKEv2 については Mac のネイティブ VPN クライアントのみ使用できます。 ただし、すべてのプラットフォーム上で OpenVPN クライアントを使用して、OpenVPN プロトコル経由で接続できます。 [サポートされているクライアント オペレーティング システム](#supportedclientos)の一覧を参照してください。
+
+### <a name="can-i-change-the-authentication-type-for-a-point-to-site-connection"></a>ポイント対サイト接続の認証の種類は変更できますか。
+
+はい。 ポータルで、 **[VPN ゲートウェイ] -> [ポイント対サイトの構成]** ページに移動します。 **[認証の種類]** で、使用する認証の種類を選択します。 認証の種類を変更した後、新しい VPN クライアント構成プロファイルが生成され、ダウンロードされて、各 VPN クライアントに適用されるまで、現在のクライアントが接続できない場合があることに注意してください。
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure は、Windows で IKEv2 VPN をサポートしていますか。
 
-IKEv2 は、Windows 10 および Windows Server 2016 でサポートされています。 ただし、IKEv2 を使用するには、更新プログラムをインストールして、ローカルでレジストリ キーの値を設定する必要があります。 Windows 10 以前の OS バージョンはサポートされておらず、それらのバージョンで使用できるのは SSTP または **OpenVPN® プロトコル** のみです。
+IKEv2 は、Windows 10 および Windows Server 2016 でサポートされています。 ただし、特定の OS バージョンで IKEv2 を使用するには、更新プログラムをインストールして、ローカルでレジストリ キーの値を設定する必要があります。 Windows 10 以前の OS バージョンはサポートされておらず、それらのバージョンで使用できるのは SSTP または **OpenVPN® プロトコル** のみであることに注意してください。
+
+> 注: Windows 10 バージョン 1709 および Windows Server 2016 バージョン 1607 よりも新しい Windows OS ビルドでは、これらの手順は不要です。
 
 Windows 10 または Windows Server 2016 を IKEv2 用に準備するには:
 
-1. 更新プログラムをインストールします。
+1. OS のバージョンに基づいて更新プログラムをインストールします。
 
    | OS バージョン | Date | 数/リンク |
    |---|---|---|
@@ -98,11 +104,11 @@ Windows デバイスと Mac デバイスが混在する環境で SSTP と IKEv2 
 
 ### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>Windows と Mac 以外に、Azure が P2S VPN 向けにサポートしている他のプラットフォームはありますか。
 
-Azure では、P2S VPN 向けに Windows、Mac、および Linux をサポートしています。
+Azure では、P2S VPN 向けに Windows、Mac、および Linux がサポートされています。
 
 ### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Azure VPN Gateway を既にデプロイしています。 ここで RADIUS または IKEv2 VPN または両方を有効にできますか。
 
-はい。Powershell または Azure Portal を使用して、既にデプロイされているゲートウェイでこれらの新機能を有効にできます。ただし、ご利用のゲートウェイ SKU が、RADIUS と IKEv2 のいずれかまたは両方をサポートしている必要があります。 たとえば VPN Gateway Basic SKU は、RADIUS と IKEv2 のどちらもサポートしていません。
+はい。使用しているゲートウェイ SKU で RADIUS または IKEv2 (あるいはその両方) がサポートされている場合は、PowerShell または Azure portal を使用して既にデプロイしたゲートウェイでこれらの機能を有効にすることができます。 Basic SKU では RADIUS も IKEv2 もサポートされていないことに注意してください。
 
 ### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>P2S 接続の構成を削除するにはどうすればよいですか。
 

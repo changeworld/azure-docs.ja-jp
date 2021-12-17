@@ -2,18 +2,16 @@
 title: Azure Monitor ブックのツリーの視覚化
 description: Azure Monitor ブックのツリーのすべての視覚化について説明します。
 services: azure-monitor
-author: lgayhardt
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.author: lagayhar
-ms.openlocfilehash: a815f4dcf7c76d4c11b4f2e227802b15f9c92a54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2c15eaac298795bfb96466959a77d6840e80936
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100604351"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131602"
 ---
 # <a name="tree-visualizations"></a>ツリーの視覚化
 

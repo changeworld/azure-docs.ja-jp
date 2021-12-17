@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7deba32eb9d0e098b75f98cc81fac2c01b8bb7f8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4740a4b4aac59ac2e0e57797f39c489c6beaf75c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567255"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252170"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Azure Stack Edge BLOB ストレージの要件
 
@@ -25,12 +25,17 @@ Azure Stack Edge BLOB ストレージに接続する前にこの情報をよく�
 
 |     機能                                             |     Azure Storage                                     |     Azure Stack Edge BLOB ストレージ |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
+<<<<<<< HEAD
 |    Azure File Storage                                   |    クラウド ベースの SMB ファイル共有のサポート              |    サポートされていません      |
 |    ストレージ アカウントの種類                                 |    汎用アカウントと Azure Blob ストレージ アカウント    |    汎用 v1 のみ|
+=======
+|    Azure Files                                   |    クラウド ベースの SMB および NFS ファイル共有がサポートされています              |    サポートされていません      |
+|    ストレージ アカウントの種類                                 |    汎用アカウントと Azure Blob Storage アカウント    |    汎用 v1 のみ|
+>>>>>>> repo_sync_working_branch
 |    BLOB 名                                            |    1,024 文字 (2,048 バイト)                     |    880 文字 (1,760 バイト)|
-|    ブロック BLOB の最大サイズ                              |    4.75 TB (100 MB X 50,000 ブロック)                   |    Azure Stack Edge の場合、4.75 TB (100 MB x 50,000 ブロック)|
-|    ページ BLOB の最大サイズ                               |    8 TB                                               |    1 TB (テラバイト)                   |
-|    ページ BLOB のページ サイズ                                  |    512 バイト                                          |    4 KB                   |
+|    ブロック BLOB の最大サイズ                              |    4.75 TiB (100 MiB X 50,000 ブロック)                   |    Azure Stack Edge の場合、4.75 TiB (100 MiB x 50,000 ブロック)|
+|    ページ BLOB の最大サイズ                               |    8 TiB                                               |    1 TiB                   |
+|    ページ BLOB のページ サイズ                                  |    512 バイト                                          |    4 KiB                   |
 
 ## <a name="supported-api-versions"></a>サポートされる API バージョン
 

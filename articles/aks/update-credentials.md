@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスター用のサービス �
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 0b750eb9af7dfd7bcbada7500b6ef71b015db11f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 72cc0c6ab369b035df8c4a29c89be74fa9102cc5
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767477"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101519"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 用の資格情報を更新またはローテーションする
 
@@ -32,7 +32,7 @@ AKS クラスターの資格情報を更新するときは、以下のどちら�
 * 新しいサービス プリンシパルを作成し、それらの新しい資格情報を使用するようにクラスターを更新します。 
 
 > [!WARNING]
-> "*新しい*" サービス プリンシパルの作成を選択する場合、これらの資格情報を使用するための大規模な AKS クラスターの更新には、完了までに時間がかかることがあります。
+> "*新しい*" サービス プリンシパルを作成する場合、サービス プリンシパルの権限がすべてのリージョンに行き渡るまで 30 分程度待ちます。 これらの認証情報を使用するように規模の大きい AKS クラスターを更新する際は、完了までに時間がかかる場合があります。
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>サービス プリンシパルの有効期限を確認する
 
@@ -41,7 +41,7 @@ AKS クラスターの資格情報を更新するときは、以下のどちら�
 ```azurecli
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
     --query servicePrincipalProfile.clientId -o tsv)
-az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
+az ad sp credential list --id "$SP_ID" --query "[].endDate" -o tsv
 ```
 
 ### <a name="reset-the-existing-service-principal-credential"></a>既存のサービス プリンシパルの資格情報をリセットする
@@ -59,7 +59,7 @@ SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
 サービス プリンシパル ID を含む変数セットを指定し、[az ad sp credential reset][az-ad-sp-credential-reset] を使用して資格情報をリセットします。 以下の例では、Azure プラットフォームがサービス プリンシパルの新しいセキュア シークレットを生成できます。 この新しいセキュア シークレットは、変数としても保管されます。
 
 ```azurecli-interactive
-SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
+SP_SECRET=$(az ad sp credential reset --name "$SP_ID" --query password -o tsv)
 ```
 
 次に、[新しいサービス プリンシパル資格情報での AKS クラスターの更新](#update-aks-cluster-with-new-service-principal-credentials)に進みます。 このステップは、サービス プリンシパルの変更を AKS クラスターに反映させるために必要です。
@@ -97,7 +97,7 @@ SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>新しいサービス プリンシパル資格情報で AKS クラスターを更新する
 
 > [!IMPORTANT]
-> 大規模なクラスターでは、新しいサービス プリンシパルによる AKS クラスターの更新が完了するまでに、時間がかかることがあります。
+> 大規模なクラスターでは、新しいサービス プリンシパルによる AKS クラスターの更新が完了するまでに、時間がかかることがあります。 クラスターの更新中やアップグレード中の中断を最小限に抑えるために、[ノード サージ アップグレード設定][node-surge-upgrade]を確認してカスタマイズすることを検討してください。
 
 既存のサービス プリンシパル資格情報の更新を選択したか、サービス プリンシパルの作成を選択したかに関係なく、ここで [az aks update-credentials][az-aks-update-credentials] コマンドを使用して、新しい資格情報で AKS クラスターを更新します。 *--service-principal* と *--client-secret* の変数が使用されます。
 
@@ -106,8 +106,8 @@ az aks update-credentials \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --reset-service-principal \
-    --service-principal $SP_ID \
-    --client-secret $SP_SECRET
+    --service-principal "$SP_ID" \
+    --client-secret "$SP_SECRET"
 ```
 
 小規模および中規模のクラスターの場合は、AKS でサービス プリンシパルの資格情報の更新にかかる時間はそれほど長くありません。
@@ -142,3 +142,4 @@ az aks update-credentials \
 [az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az_ad_sp_credential_list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az_ad_sp_credential_reset
 [node-image-upgrade]: ./node-image-upgrade.md
+[node-surge-upgrade]: upgrade-cluster.md#customize-node-surge-upgrade

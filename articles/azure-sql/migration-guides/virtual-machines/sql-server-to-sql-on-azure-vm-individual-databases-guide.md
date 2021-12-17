@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
-ms.reviewer: mathoma
+ms.reviewer: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: e7fc4bacd73cec0fdab3117ada190fb7964b4282
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 4c6e1f052dd23621e269b59fb573216f68e49cfb
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550899"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784387"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-virtual-machines"></a>移行ガイド:SQL Server から Azure Virtual Machines 上の SQL Server
 
@@ -30,7 +30,7 @@ ms.locfileid: "106550899"
 - Amazon Relational Database Service (AWS RDS)。
 - Compute Engine (Google Cloud Platform (GCP))。
 
-その他の移行戦略の詳細については、[SQL Server VM 移行の概要](sql-server-to-sql-on-azure-vm-migration-overview.md)に関するページを参照してください。 その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。
+その他の移行戦略の詳細については、[SQL Server VM 移行の概要](sql-server-to-sql-on-azure-vm-migration-overview.md)に関するページを参照してください。 その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。
 
 :::image type="content" source="media/sql-server-to-sql-on-azure-vm-migration-overview/migration-process-flow-small.png" alt-text="移行プロセス フローを示す図。":::
 
@@ -53,7 +53,7 @@ Azure Virtual Machines 上の SQL Server への移行には、次のリソース
 Azure Migrate では、オンプレミス コンピューターの移行適合性を評価し、パフォーマンスに基づくサイズ設定を行い、オンプレミスでの実行にかかるコストを見積もります。 移行の計画を立てるために、Azure Migrate を使って、自分の SQL Server インスタンスで使用される[既存のデータ ソースと機能の詳細を特定](../../../migrate/concepts-assessment-calculation.md)します。 このプロセスには、ネットワークをスキャンし、組織内のすべての SQL Server インスタンス、さらにバージョンと使用中の機能を特定することが含まれます。
 
 > [!IMPORTANT]
-> SQL Server インスタンスのターゲット Azure 仮想マシンを選択する際は、[Azure Virtual Machines 上の SQL Server のパフォーマンス ガイドライン](../../virtual-machines/windows/performance-guidelines-best-practices.md)を考慮するようにしてください。
+> SQL Server インスタンスのターゲット Azure 仮想マシンを選択する際は、[Azure Virtual Machines 上の SQL Server のパフォーマンス ガイドライン](../../virtual-machines/windows/performance-guidelines-best-practices-checklist.md)を考慮するようにしてください。
 
 その他の検出ツールについては、「データ移行のシナリオで利用できる[サービスとツール](../../../dms/dms-tools-matrix.md#business-justification-phase)」を参照してください。
 
@@ -146,7 +146,7 @@ Data Migration Assistant の評価の結果に応じて、移行後にユーザ�
 | **機能** | **コンポーネント** | **移行の方法** |
 | --- | --- | --- |
 | **データベース** | モデル | SQL Server Management Studio でスクリプトを使用します。 |
-|| TempDB | 最善のパフォーマンスが得られるように、[Azure VM 一時ディスク (SSD](../../virtual-machines/windows/performance-guidelines-best-practices.md#temporary-disk)) への tempDB の移行を計画します。 自分の tempDB に合わせて、十分なローカル SSD を備えた VM サイズを選択してください。 |
+|| TempDB | 最善のパフォーマンスが得られるように、[Azure VM 一時ディスク (SSD](../../virtual-machines/windows/performance-guidelines-best-practices-checklist.md#storage)) への tempDB の移行を計画します。 自分の tempDB に合わせて、十分なローカル SSD を備えた VM サイズを選択してください。 |
 || FileStream を使用したユーザー データベース | [バックアップと復元](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#back-up-and-restore)の方法を使用して移行します。 Data Migration Assistant では、FileStream を使用したデータベースはサポートされません。 |
 | **Security** | SQL Server と Windows のログイン | Data Migration Assistant を使用して、[ユーザー ログインを移行](/sql/dma/dma-migrateserverlogins)します。 |
 || SQL Server ロール | SQL Server Management Studio でスクリプトを使用します。 |
@@ -193,7 +193,7 @@ Data Migration Assistant で推奨されている修正をユーザー　デー�
 それらの問題と、軽減する手順の詳細については、こちらを参照してください。
 
 - [移行後の検証および最適化ガイド](/sql/relational-databases/post-migration-validation-and-optimization-guide)
-- [Azure SQL 仮想マシンにおけるパフォーマンスのチューニング](../../virtual-machines/windows/performance-guidelines-best-practices.md)
+- [Azure SQL 仮想マシンにおけるパフォーマンスのチューニング](../../virtual-machines/windows/performance-guidelines-best-practices-checklist.md)
 - [Azure コストの最適化センター](https://azure.microsoft.com/overview/cost-optimization/)
 
 ## <a name="next-steps"></a>次の手順

@@ -5,22 +5,22 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 846446b4c19c066afe789bf636d68ad37b20709e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 77bdfb4ed75b9287b911a6b0d2742c235b37e297
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779563"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122325071"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) のアップタイム SLA
 
-アップタイム SLA は、クラスターに対して利用料金に基づく高い SLA を実現するためのオプションの機能です。 アップタイム SLA は、[可用性ゾーン][availability-zones]を使用するクラスターに対しては Kubernetes API サーバー エンドポイントの 99.95% の可用性を保証し、可用性ゾーンを使用しないクラスターに対しては 99.9% の可用性を保証します。 AKS は、更新ドメインおよび障害ドメイン全体でマスター ノード レプリカを使用して、SLA 要件が満たされるようにします。
+アップタイム SLA は、利用料金に応じて AKS クラスターの SLA を向上させるサービス レベルです。 アップタイム SLA があるクラスターは、AKS REST API の Paid サービス レベルとも見なされ、コントロール プレーン リソースの増量に加えて、クラスターの負荷に合わせて自動的にスケーリングされます。 アップタイム SLA は、[可用性ゾーン][availability-zones]を使用するクラスターに対しては Kubernetes API サーバー エンドポイントの 99.95% の可用性を保証し、可用性ゾーンを使用しないクラスターに対しては 99.9% の可用性を保証します。 AKS は、更新ドメインおよび障害ドメイン全体でマスター ノード レプリカを使用して、SLA 要件が満たされるようにします。
 
-コンプライアンス要件を満たす SLA が必要なお客様や、SLA をエンドユーザーに拡張する必要があるお客様は、この機能を有効にする必要があります。 アップタイム SLA の向上によるメリットが得られる重要なワークロードを持つお客様にもメリットがあります。 可用性ゾーンでアップタイム SLA 機能を使用すると、Kubernetes API サーバーのアップタイムの可用性を高めることができます。  
+AKS では、コントロール プレーン コンポーネントの可用性を確保するために、実稼働ワークロードでアップタイム SLA の使用を推奨しています。 対照的に、Free サービス レベルのクラスターは、レプリカが少なく、コントロール プレーンのリソースが限られており、実稼働ワークロードには適していません。
 
-お客様は今まで通り、サービス レベル目標 (SLO) が 99.5% の無制限の無料クラスターを作成することができ、必要に応じて、優先の SLO または SLA アップタイムを選択できます。
+お客様は今まで通り、サービス レベル目標 (SLO) が 99.5% の無料クラスターを個数無制限で作成し、優先 SLO を選択することができます。 
 
-> [!Important]
+> [!IMPORTANT]
 > エグレス ロックダウンを使用するクラスターの場合、[エグレス トラフィックの制限](limit-egress-traffic.md)に関するページを参照して、適切なポートを開きます。
 
 ## <a name="region-availability"></a>利用可能なリージョン
@@ -46,12 +46,14 @@ ms.locfileid: "107779563"
 # Create a resource group
 az group create --name myResourceGroup --location eastus
 ```
+
 AKS クラスターを作成するには、[`az aks create`][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 この操作は、完了するまでに数分かかります。
 
 ```azurecli-interactive
 # Create an AKS cluster with uptime SLA
 az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1
 ```
+
 数分後、コマンドが完了し、クラスターに関する情報が JSON 形式で返されます。 次の JSON スニペットは SKU の有料レベルを示し、クラスターでアップタイム SLA が有効になっていることを示します。
 
 ```output
@@ -91,18 +93,18 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
 
 ```azurecli-interactive
 # Update an existing cluster to use Uptime SLA
- az aks update --resource-group myResourceGroup --name myAKSCluster --uptime-sla
- ```
+az aks update --resource-group myResourceGroup --name myAKSCluster --uptime-sla
+```
 
- 次の JSON スニペットは SKU の有料レベルを示し、クラスターでアップタイム SLA が有効になっていることを示します。
+次の JSON スニペットは SKU の有料レベルを示し、クラスターでアップタイム SLA が有効になっていることを示します。
 
- ```output
+```output
   },
   "sku": {
     "name": "Basic",
     "tier": "Paid"
   },
-  ```
+```
 
 ## <a name="opt-out-of-uptime-sla"></a>アップタイム SLA のオプト アウト
 
@@ -111,7 +113,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
 ```azurecli-interactive
 # Update an existing cluster to opt out of Uptime SLA
  az aks update --resource-group myResourceGroup --name myAKSCluster --no-uptime-sla
- ```
+```
 
 ## <a name="clean-up"></a>クリーンアップ
 
@@ -120,7 +122,6 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
-
 
 ## <a name="next-steps"></a>次のステップ
 

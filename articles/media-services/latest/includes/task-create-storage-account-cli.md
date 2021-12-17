@@ -5,23 +5,94 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
 ms.custom: CLI, devx-track-azurecli
-ms.openlocfilehash: ff8bfbeea8bd22619375e88081da0cf9c0770fc9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 6f6209eaee172ece5000d48c48b6cc38e4385017
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107511628"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060111"
 ---
 <!-- ### Create a storage account -->
 
-Media Services アカウントの作成では、Azure Storage アカウント リソースの名前を指定する必要があります。 指定されたストレージ アカウントは、Media Services アカウントに関連付けられます。 Media Services で使用されるストレージ アカウントの使用方法について詳しくは、「[ストレージ アカウント](../storage-account-concept.md)」をご覧ください。
+Media Services アカウントに関連付けるストレージ アカウントは、次のコマンドで作成します。 
 
-1 つの **プライマリ** ストレージ アカウントを持つ必要があります。Media Services アカウントに関連付けられた任意の数の **セカンダリ** ストレージ アカウントを持つことができます。 Media Services は、**汎用 v2** (GPv2) アカウントまたは **汎用 v1** (GPv1) アカウントをサポートします。 BLOB のみのアカウントを **プライマリ** として使用することはできません。 ストレージ アカウントについて詳しくは、「[Azure Storage アカウントの種類](../../../storage/common/storage-account-overview.md)」をご覧ください。 
+`your-storage-account-name` を、長さが 24 文字未満の一意の名前に変更します。 このコマンドは、リソース グループが既に作成済みであることを前提としています。  そのリソース グループの名前を `your-resource-group-name` に使用します。 希望するリージョンの名前を `your-region` に使用します。
 
-この例では、General Purpose v2、Standard LRS アカウントを作成します。 ストレージ アカウントで実験する場合は、`--sku Standard_LRS` を使用します。 ただし、運用環境用の SKU を選択する場合は、ビジネス継続性のために地理的レプリケーションを提供する `--sku Standard_RAGRS` を検討してください。 詳細については、[ストレージ アカウント](/cli/azure/storage/account)に関するページを参照してください。
+```azurecli-interactive
+az storage account create --name <your-storage-account-name> --kind StorageV2 --sku Standard_LRS -l <your-region> -g <your-resource-group-name>
+```
 
-Media Services アカウントに関連付けるストレージ アカウントは、以下のコマンドで作成します。 次のスクリプトで、`storageaccountforams` を 24 文字未満の一意の名前に置き換えます。 `amsResourceGroup` は、前の手順で、リソース グループに指定した値と一致させる必要があります。
+JSON の応答例:
 
-```azurecli
-az storage account create --name storageaccountforams --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
+```json
+{
+  "accessTier": "Hot",
+  "allowBlobPublicAccess": null,
+  "azureFilesIdentityBasedAuthentication": null,
+  "blobRestoreStatus": null,
+  "creationTime": "2021-05-12T22:10:22.058640+00:00",
+  "customDomain": null,
+  "enableHttpsTrafficOnly": true,
+  "encryption": {
+    "keySource": "Microsoft.Storage",
+    "keyVaultProperties": null,
+    "requireInfrastructureEncryption": null,
+    "services": {
+      "blob": {
+        "enabled": true,
+        "keyType": "Account",
+        "lastEnabledTime": "2021-05-12T22:10:22.152394+00:00"
+      },
+      "file": {
+        "enabled": true,
+        "keyType": "Account",
+        "lastEnabledTime": "2021-05-12T22:10:22.152394+00:00"
+      },
+      "queue": null,
+      "table": null
+    }
+  },
+  "failoverInProgress": null,
+  "geoReplicationStats": null,
+  "id": "/subscriptions/00000000-0000-0000-000000000000/resourceGroups/your-resource-group-name/providers/Microsoft.Storage/storageAccounts/your-storage-account-name",
+  "identity": null,
+  "isHnsEnabled": null,
+  "kind": "StorageV2",
+  "largeFileSharesState": null,
+  "lastGeoFailoverTime": null,
+  "location": "your-region",
+  "minimumTlsVersion": null,
+  "name": "your-storage-account-name",
+  "networkRuleSet": {
+    "bypass": "AzureServices",
+    "defaultAction": "Allow",
+    "ipRules": [],
+    "virtualNetworkRules": []
+  },
+  "primaryEndpoints": {
+    "blob": "https://your-storage-account-name.blob.core.windows.net/",
+    "dfs": "https://your-storage-account-name.dfs.core.windows.net/",
+    "file": "https://your-storage-account-name.file.core.windows.net/",
+    "internetEndpoints": null,
+    "microsoftEndpoints": null,
+    "queue": "https://your-storage-account-name.queue.core.windows.net/",
+    "table": "https://your-storage-account-name.table.core.windows.net/",
+    "web": "your-storage-account-name.z5.web.core.windows.net/"
+  },
+  "primaryLocation": "your-region",
+  "privateEndpointConnections": [],
+  "provisioningState": "Succeeded",
+  "resourceGroup": "your-resource-group-name",
+  "routingPreference": null,
+  "secondaryEndpoints": null,
+  "secondaryLocation": null,
+  "sku": {
+    "name": "Standard_LRS",
+    "tier": "Standard"
+  },
+  "statusOfPrimary": "available",
+  "statusOfSecondary": null,
+  "tags": {},
+  "type": "Microsoft.Storage/storageAccounts"
+}
 ```

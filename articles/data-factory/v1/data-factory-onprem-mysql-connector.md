@@ -3,16 +3,17 @@ title: Azure Data Factory を使用して MySQL からデータを移動する
 description: Azure Data Factory を使用して MySQL データベースからデータを移動する方法を説明します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 83c39435d2249981a45798ffe0717054fa7b0717
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6bd3494dcda84423f818dcff817718bb3f81c397
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387327"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242761"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -299,7 +300,7 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 | bigint |Int64 |
 | bit |Decimal |
 | blob (blob) |Byte[] |
-| [bool] |Boolean |
+| [bool] |ブール型 |
 | char |String |
 | date |Datetime |
 | DATETIME |Datetime |

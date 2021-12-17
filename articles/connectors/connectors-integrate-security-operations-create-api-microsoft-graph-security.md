@@ -9,16 +9,16 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6661a794e03bdeb1069b0f04a25d8bf8abdcdc1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888540"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297679"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>セキュリティ操作を Microsoft Graph Security および Azure Logic Apps と統合することで脅威の防止能力を強化する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Microsoft Graph Security](/graph/security-concept-overview) コネクタを使用して、Microsoft のセキュリティ製品、サービス、およびパートナーを統合する自動化されたワークフローを作成することで、アプリによる脅威の検出、防止、および対応方法を強化できます。 たとえば、アラートなどの Microsoft Graph Security エンティティを監視して管理する [Azure Security Center プレイブック](../security-center/workflow-automation.md)を作成できます。 Microsoft Graph Security コネクタによってサポートされるいくつかのシナリオを以下に示します。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Microsoft Graph Security](/graph/security-concept-overview) コネクタを使用して、Microsoft のセキュリティ製品、サービス、およびパートナーを統合する自動化されたワークフローを作成することで、アプリによる脅威の検出、防止、および対応方法を強化できます。 たとえば、アラートなどの Microsoft Graph Security エンティティを監視して管理する [Microsoft Defender for Cloud プレイブック](../security-center/workflow-automation.md)を作成できます。 Microsoft Graph Security コネクタによってサポートされるいくつかのシナリオを以下に示します。
 
 * クエリまたはアラート ID に基づいてアラートを取得する。 たとえば、重大度が高いアラートを含む一覧を取得できます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "94888540"
 
 ロジック アプリのワークフローでは、Microsoft Graph Security コネクタから応答を取得するアクションを使用して、その出力をワークフローの他のアクションで使用できるようにすることができます。 Microsoft Graph Security コネクタのアクションからの出力を、ワークフローの他のアクションで使用することもできます。 たとえば、Microsoft Graph Security コネクタを通して重大度が高いアラートを取得したら、これらのアラートを Outlook コネクタを使用して電子メール メッセージで送信できます。 
 
-Microsoft Graph Security の詳細については、「[Microsoft Graph Security API の概要](/graph/security-concept-overview)」を参照してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。 Power Automate または PowerApps について詳しい情報をお探しの場合は、[Power Automate](https://flow.microsoft.com/) または [Power Apps](https://powerapps.microsoft.com/) のサイトをご覧ください。
+Microsoft Graph Security の詳細については、「[Microsoft Graph Security API の概要](/graph/security-concept-overview)」を参照してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。 Power Automate または Power Apps について詳しい情報をお探しの場合は、[Power Automate](https://flow.microsoft.com/) または [Power Apps](https://powerapps.microsoft.com/) のサイトをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -91,7 +91,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 1.  トリガーには、監視するアラートに関する情報を提供します。 その他のプロパティについては、 **[新しいパラメーターの追加]** 一覧を開き、パラメーターを選択して、そのプロパティをトリガーに追加します。
 
-   | プロパティ | プロパティ (JSON) | 必須 | Type | 説明 |
+   | プロパティ | プロパティ (JSON) | 必須 | 型 | 説明 |
    |----------|-----------------|----------|------|-------------|
    | **間隔** | `interval` | はい | Integer | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 間隔の最小値と最大値は次のとおりです。 <p><p>- Month: 1 から 16 か月 <br>- Day: 1 から 500 日 <br>- Hour: 1 から 12,000 時間 <br>- Minute: 1 から 72,000 分 <br>- Second: 1 から 9,999,999 秒 <p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 |
    | **頻度** | `frequency` | はい | String | 繰り返しの時間の単位: **[秒]** 、 **[分]** 、 **[時間]** 、 **[日]** 、 **[週]** 、または **[月]** |
@@ -117,8 +117,8 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 | アクション | 説明 |
 |--------|-------------|
-| **アラートの取得** | 1 つまたは複数の[アラートのプロパティ](/graph/api/resources/alert)に基づいてフィルター処理されたアラートを取得します。例: `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`。 | 
-| **ID によるアラートの取得** | アラート ID に基づいて特定のアラートを取得します。 | 
+| **アラートの取得** | 1 つまたは複数の[アラートのプロパティ](/graph/api/resources/alert)に基づいてフィルター処理されたアラートを取得します。例: `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`。 |
+| **ID によるアラートの取得** | アラート ID に基づいて特定のアラートを取得します。 |
 | **アラートの更新** | アラート ID に基づいて特定のアラートを更新します。 必須のプロパティと編集可能なプロパティを要求に確実に渡すには、[アラートの編集可能なプロパティ](/graph/api/alert-update)を参照してください。 たとえば、アラートをセキュリティ分析に割り当てて調査できるようにするには、アラートの **Assigned to** プロパティを更新できます。 |
 |||
 

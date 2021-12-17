@@ -4,16 +4,16 @@ description: Azure HDInsight での Apache Ambari の使用方法について説
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2021
-ms.openlocfilehash: 6233c42d7fbf8dc7821d26f77171c44485fb8d34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a630d8cebf0c683a94e809269dcaef1df55c06e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946935"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112293466"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Azure HDInsight での Apache Ambari の使用法
 
-HDInsight は、クラスターのデプロイと管理に Apache Ambari を使用します。 Ambari エージェントは、ヘッド ノード、ワーカー ノード、Zookeeper、エッジ ノード (存在する場合) といったすべてのノードで実行されます。 Ambari サーバーは、ヘッド ノード (hn0 または hn1) でのみ実行されます。 Ambari サーバーのインスタンスは、一度に 1 つしか実行できません。 これは、HDInsight フェールオーバー コントローラーによって制御されます。 ヘッド ノードの 1 つが再起動またはメンテナンスのために停止している場合は、もう 1 つのヘッド ノードがアクティブになり、2 番目のヘッド ノードの Ambari サーバーが開始されます。
+HDInsight は、クラスターのデプロイと管理に Apache Ambari を使用します。 Ambari エージェントは、ヘッド ノード、ワーカー ノード、Zookeeper、エッジ ノード (存在する場合) といったすべてのノードで実行されます。 Ambari サーバーは、ヘッド ノードでのみ実行されます。 Ambari サーバーのインスタンスは、一度に 1 つしか実行できません。 これは、HDInsight フェールオーバー コントローラーによって制御されます。 ヘッド ノードの 1 つが再起動またはメンテナンスのために停止している場合は、もう 1 つのヘッド ノードがアクティブになり、2 番目のヘッド ノードの Ambari サーバーが開始されます。
 
 すべてのクラスター構成は、[Ambari UI](./hdinsight-hadoop-manage-ambari.md) を通じて実行する必要があります。ローカルの変更はすべて、ノードの再起動時に上書きされます。
 
@@ -77,4 +77,4 @@ Property Value: environment|env|dl_data_dt
 * [Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari-rest-api.md)
 
-[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](includes/hdinsight-troubleshooting-next-steps.md)]

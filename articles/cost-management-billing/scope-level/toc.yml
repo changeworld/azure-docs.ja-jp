@@ -1,0 +1,30 @@
+- name: 一元管理された Azure ハイブリッド特典のドキュメント
+  href: index.yml?toc=/azure/cost-management-billing/scope-level/toc.json
+- name: 概要
+  expanded: true
+  items:
+    - name: 一元管理された Azure ハイブリッド特典とは
+      href: overview-azure-hybrid-benefit-scope.md?toc=/azure/cost-management-billing/scope-level/toc.json
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: 一元管理された Azure ハイブリッド特典を最適化する
+      href: tutorial-azure-hybrid-benefits-sql.md?toc=/azure/cost-management-billing/scope-level/toc.json
+- name: 概念
+  expanded: false
+  items:
+    - name: Azure で一元的に割り当てられたライセンスが適用される方法
+      href: manage-licenses-centrally.md?toc=/azure/cost-management-billing/scope-level/toc.json
+    - name: SQL Server HADR と Azure ハイブリッド特典
+      href: sql-server-hadr-licenses.md?toc=/azure/cost-management-billing/scope-level/toc.json
+- name: 操作方法ガイド
+  expanded: false
+  items:
+    - name: SQL Server ライセンスの割り当てを作成する
+      href: create-sql-license-assignments.md?toc=/azure/cost-management-billing/scope-level/toc.json
+    - name: 一元管理された Azure ハイブリッド特典への移行
+      href: transition-existing.md?toc=/azure/cost-management-billing/scope-level/toc.json
+- name: リソース
+  items:
+    - name: よく寄せられる質問
+      href: faq-azure-hybrid-benefit-scope.yml?toc=/azure/cost-management-billing/scope-level/toc.json

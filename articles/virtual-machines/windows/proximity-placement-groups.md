@@ -5,19 +5,20 @@ services: virtual-machines
 ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
 ms.topic: how-to
-ms.workload: infrastructure-services
 ms.date: 3/8/2021
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 26921b3d102032cb36f47c3be7a79c2b596a1d0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cad5029c88c3444ab42a53af950d78a4167ea878
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503676"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697170"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-powershell"></a>Azure PowerShell を使用して近接通信配置グループに VM をデプロイする
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM 
 
 各 VM をできるだけ近くに配置して、可能性のある最も短い待ち時間を実現するには、それらを[近接通信配置グループ](../co-location.md#proximity-placement-groups)内にデプロイするようにしてください。
 

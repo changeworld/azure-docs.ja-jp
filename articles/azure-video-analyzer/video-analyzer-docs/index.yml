@@ -1,0 +1,126 @@
+### YamlMime:Landing
+title: Azure Video Analyzer のドキュメント
+summary: Azure Video Analyzer の使用方法の説明
+metadata:
+  title: Azure Video Analyzer のドキュメント
+  description: Azure Video Analyzer の使用方法の説明
+  services: azure-video-analyzer
+  ms.service: azure-video-analyzer
+  ms.topic: landing-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 11/04/2021
+  ms.openlocfilehash: bcea52bd5cabdf6322c784c6014f708d59be475d
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132714164"
+landingContent:
+- title: Azure Video Analyzer の概要
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Video Analyzer について (プレビュー段階)
+      url: overview.md
+    - text: 用語
+      url: terminology.md
+  - linkListType: quickstart
+    links:
+    - text: ポータルの使用を開始する
+      url: get-started-detect-motion-emit-events-portal.md
+    - text: ARM テンプレートの使用を開始する
+      url: get-started-detect-motion-emit-events.md
+  - linkListType: concept
+    links:
+    - text: ライブ ビデオの分析
+      url: analyze-live-video-without-recording.md
+- title: パイプラインとトポロジを作成してデプロイする
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ビデオ パイプライン
+      url: pipeline.md
+  - linkListType: tutorial
+    links:
+    - text: 仮想線を越えたオブジェクトを検出する
+      url: edge/use-line-crossing.md
+    - text: Open VINO DL Streamer を使用しているオブジェクトを検出する
+      url: edge/use-intel-openvino-tutorial.md
+- title: エッジでインテリジェントなビデオ アプリケーションを作成する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: イベントベースのビデオ記録
+      url: event-based-video-recording-concept.md
+  - linkListType: quickstart
+    links:
+    - text: 独自のモデルを使用してライブ ビデオを分析する - HTTP
+      url: edge/analyze-live-video-use-your-model-http.md
+    - text: モーションの検出とエッジ デバイス上でのビデオの記録
+      url: edge/detect-motion-record-video-edge-devices.md
+  - linkListType: tutorial
+    links:
+    - text: イベントベースのビデオ記録と再生
+      url: edge/record-event-based-live-video.md
+- title: サービスでビデオ アプリケーションを作成する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: カメラ ビデオのクラウドへの記録を有効にする
+      url: cloud/connect-cameras-to-cloud.md
+  - linkListType: quickstart
+    links:
+    - text: サービスでのビルド パイプライン
+      url: cloud/get-started-livepipelines-portal.md
+  - linkListType: tutorial
+    links:
+    - text: ポータルでビデオ クリップをエクスポートする
+      url: cloud/export-portion-of-video-as-mp4.md
+- title: コミュニティに参加する
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: GitHub コミュニティ
+      url: https://github.com/Azure/video-analyzer
+    - text: 技術コミュニティのブログ
+      url: https://techcommunity.microsoft.com/t5/azure-video-analyzer/bg-p/AzureVideoAnalyzerBlog
+- title: パイプラインとトポロジの監視とトラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: エッジ ビデオ パイプラインの監視とログ記録
+      url: edge/monitor-log-edge.md
+    - text: サービスでのビデオ パイプラインの監視とログ記録
+      url: cloud/monitor-log-cloud.md
+    - text: エッジ ビデオ パイプラインのトラブルシューティング
+      url: edge/troubleshoot.md
+    - text: サービスでのビデオ パイプラインのトラブルシューティング
+      url: cloud/troubleshoot.md
+- title: API を検出する
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: C# リポジトリ
+      url: https://go.microsoft.com/fwlink/?linkid=2163551
+    - text: Python リポジトリ
+      url: https://go.microsoft.com/fwlink/?linkid=2163454
+    - text: REST API
+      url: /rest/api/videoanalyzer/
+    - text: SDK
+      url: sdk.md
+    - text: ダイレクト メソッドの VS Code
+      url: edge/direct-methods.md
+- title: リソース
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: リリース ノート
+      url: release-notes.md
+    - text: 価格
+      url: https://azure.microsoft.com/pricing/details/video-analyzer/
+    - text: Edge モジュールに関する FAQ
+      url: edge/faq.yml
+    - text: サービスに関する FAQ
+      url: cloud/faq.yml

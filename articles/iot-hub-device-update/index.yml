@@ -7,16 +7,15 @@ metadata:
   services: iot-hub
   ms.service: iot-hub
   ms.topic: landing-page
-  author: philmea
-  ms.author: philmea
-  manager: philmea
+  author: vimeht
+  ms.author: vimeht
   ms.date: 2/17/2021
-  ms.openlocfilehash: 2b47f8b51cf4150659c1d5b8ed1dc145997252ef
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: bd4a5e0053499f38e1c119bccff4ab50bfad2abd
+  ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101677961"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121860453"
 landingContent:
 - title: Device Update について
   linkLists:
@@ -24,53 +23,69 @@ landingContent:
     links:
     - text: Device Update for IoT Hub とは?
       url: understand-device-update.md
+- title: 詳細情報
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Device Update アカウントの作成
+      url: create-device-update-account.md
+    - text: Device Update エージェントのプロビジョニング
+      url: device-update-agent-provisioning.md
+    - text: 更新プログラムの追加
+      url: import-update.md
+    - text: 更新グループの作成
+      url: create-update-group.md
+    - text: 更新プログラムの展開
+      url: deploy-update.md
   - linkListType: concept
     links:
     - text: デバイス更新でのプラグ アンド プレイの使用方法
       url: device-update-plug-and-play.md
     - text: デバイス更新の認証と認可について
       url: device-update-control-access.md
-    - text: デバイス更新エージェントについて
+    - text: Device Update エージェントについて
       url: device-update-agent-overview.md
-    - text: デバイス更新のインポートについて
+    - text: Device Update のインポートについて
       url: import-concepts.md
-    - text: デバイス更新のグループについて
+    - text: Device Update のグループについて
       url: device-update-groups.md
-- title: チュートリアルの実践
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Raspberry Pi でのデバイス更新
-      url: device-update-raspberry-pi.md
-  - linkListType: tutorial
-    links:
-    - text: シミュレーターでのデバイス更新
-      url: device-update-simulator.md
-  - linkListType: tutorial
-    links:
-    - text: Ubuntu Server 18.04 x64 Package エージェントでのデバイス更新
-      url: device-update-ubuntu-agent.md
-- title: デバイスを更新する方法について
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Device Update アカウントの作成
-      url: create-device-update-account.md
-  - linkListType: how-to-guide
-    links:
-    - text: 更新プログラムのインポート
-      url: import-update.md
-  - linkListType: how-to-guide
-    links:
-    - text: 更新グループの作成
-      url: create-update-group.md
-  - linkListType: how-to-guide
-    links:
-    - text: 更新プログラムのデプロイ
-      url: deploy-update.md
+    - text: Device Update の制限について
+      url: device-update-limits.md
 - title: 開発者ガイド
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: デバイス更新エージェントのビルド、実行、修正
-      url: device-update-agent-provisioning.md
+    - text: デバイス更新エージェントをビルドして実行する方法
+      url: device-update-agent-provisioning.md#how-to-build-and-run-device-update-agent
+- title: はじめに
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: シミュレーターでのデバイス更新
+      url: device-update-simulator.md
+    - text: Raspberry Pi でのデバイス更新
+      url: device-update-raspberry-pi.md
+    - text: Ubuntu Server 18.04 x64 Package エージェントでのデバイス更新
+      url: device-update-ubuntu-agent.md
+- title: API および SDK のリファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: /rest/api/deviceupdate/
+  - linkListType: reference
+    links:
+    - text: コントロール プレーン - .NET
+      url: /dotnet/api/overview/azure/iot/management
+    - text: コントロール プレーン - Python
+      url: /python/api/azure-mgmt-deviceupdate/
+  - linkListType: reference
+    links:
+    - text: データ プレーン - .NET
+      url: /dotnet/api/azure.iot.deviceupdate?view=azure-dotnet-preview&preserve-view=true
+    - text: データ プレーン - JavaScript
+      url: /javascript/api/@azure/iot-device-update/?view=azure-node-preview&preserve-view=true
+    - text: データ プレーン - Java
+      url: /java/api/com.azure.iot.deviceupdate?view=azure-java-preview&preserve-view=true
+    - text: データ プレーン - Python
+      url: /python/api/azure-mgmt-deviceupdate/azure.mgmt.deviceupdate?view=azure-python-preview&preserve-view=true

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 86874a60d48ddcbdaca5ae779ad554ee58cc233b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79c8fadfc7662438f5820e92cfd0c71a9b346ba9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498848"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132326875"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -90,39 +90,39 @@ Azure の登録ポータルで、管理者の連絡先情報にセキュリテ�
 [Azure Storage Analytics](../../storage/common/storage-analytics.md) では、ログが記録され、Azure ストレージ アカウントのメトリック データを得ることができます。 このデータを使用して、要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断をすることをお勧めします。
 
 ## <a name="prevent-detect-and-respond-to-threats"></a>脅威の防止、検出、および対応
-[Azure Security Center](../../security-center/security-center-introduction.md) を使用すると、Azure リソースのセキュリティを高度に視覚化 (および制御) しながら、脅威を回避し、検出し、それらに対応することができます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、さまざまなセキュリティ ソリューションと連動します。
+[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) を使用すると、Azure リソースのセキュリティの可視性を高める (および制御する) ことで、脅威の防止、検出、対応を行うことができます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、さまざまなセキュリティ ソリューションと連動します。
 
-Security Center の Free レベルでは、Azure リソースに対してのみ限定的なセキュリティを提供します。 Standard レベルでは、オンプレミスおよび他のクラウドにこれらの機能を拡張します。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用して、脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は最初の 60 日間、無料でお試しいただけます。 [Azure サブスクリプションの Security Center Standard へのアップグレード](../../security-center/security-center-get-started.md)をお勧めします。
+Defender for Cloud の Free レベルでは、Azure リソースのみを対象とする限定的なセキュリティが提供されます。 Standard レベルでは、オンプレミスおよび他のクラウドにこれらの機能を拡張します。 Defender for Cloud Standard を使用すると、セキュリティの脆弱性を検出して修正し、悪意のあるアクティビティをブロックするためにアクセスとアプリケーション制御を適用し、分析とインテリジェンスを使用して脅威を検出し、攻撃を受けたときにすばやく対応できます。 Defender for Cloud Standard は、最初の 60 日間無料で試用できます。 [Azure サブスクリプションを Defender for Cloud Standard にアップグレード](../../security-center/security-center-get-started.md)することをお勧めします。
 
-Security Center では、すべての Azure リソースのセキュリティの状態を一元的に把握できます。 セキュリティの制御が適切かつ正しく構成されているかを一目で確認し、注意が必要なリソースを素早く特定できます。
+Defender for Cloud を使用すると、すべての Azure リソースのセキュリティ状態を一元的に把握できます。 セキュリティの制御が適切かつ正しく構成されているかを一目で確認し、注意が必要なリソースを素早く特定できます。
 
-Security Center は、包括的な Endpoint Detection and Response (EDR) 機能を提供する [Microsoft Defender Advanced Threat Protection (ATP)](../../security-center/security-center-wdatp.md) とも統合されます。 Microsoft Defender ATP の統合により、異常を見つけることができます。 また、Security Center によって監視されているサーバー エンドポイントでの高度な攻撃を検出して対応することもできます。
+Defender for Cloud は、包括的なエンドポイントでの検出と対応 (EDR) 機能を提供する [Microsoft Defender Advanced Threat Protection (ATP)](../../security-center/security-center-wdatp.md) とも統合されます。 Microsoft Defender ATP の統合により、異常を見つけることができます。 また、Defender for Cloud によって監視されているサーバー エンドポイントに対する高度な攻撃を検出して対応することもできます。
 
 ほぼすべてのエンタープライズ組織には、多様なシグナル収集デバイスからログ情報を統合することで新たな脅威を識別することに役立つ、セキュリティ情報およびイベント管理 (SIEM) システムがあります。 ログはその後データ分析システムにより分析され、すべてのログ収集および分析ソリューションで避けることのできないノイズから、"興味を引く" ものが何であるかを識別するのに役立ちます。
 
-[Azure Sentinel](../../sentinel/overview.md) は、スケーラブルでクラウドネイティブ型のセキュリティ情報およびイベント管理 (SIEM) およびセキュリティ オーケストレーション自動応答 (SOAR) ソリューションです。 Azure Sentinel では、アラートの検出、脅威の可視性、予防的な捜索、および脅威への自動対応により、高度なセキュリティ分析と脅威インテリジェンスが提供されます。
+[Microsoft Sentinel](../../sentinel/overview.md) は、スケーラブルでクラウドネイティブのセキュリティ情報イベント管理 (SIEM) およびセキュリティ オーケストレーション自動応答 (SOAR) ソリューションです。 Microsoft Sentinel では、アラートの検出、脅威の可視性、予防的な捜索、および脅威への自動対応により、インテリジェントなセキュリティ分析と脅威インテリジェンスが提供されます。
 
 脅威に対する保護、検出、および対応に関するベスト プラクティスを次にいくつか示します。
 
 **ベスト プラクティス**: クラウドベースの SIEM を使用して SIEM ソリューションの速度とスケーラビリティを向上させます。   
-**詳細**: [Azure Sentinel](../../sentinel/overview.md) の特徴と機能を調査して、現在オンプレミスで使用しているものの機能と比較します。 Azure Sentinel が組織の SIEM の要件を満たす場合は、採用を検討します。
+**詳細**: [Microsoft Sentinel](../../sentinel/overview.md) の特徴と機能を調査して、現在オンプレミスで使用しているものの機能と比較します。 Microsoft Sentinel が組織の SIEM 要件を満たしている場合は、採用を検討してください。
 
 **ベスト プラクティス**: 調査に優先順位を付けることができるよう、最も重大なセキュリティの脆弱性を見つけます。   
-**詳細**: [Azure のセキュリティ スコア](../../security-center/secure-score-security-controls.md)をレビューして、Azure Security Center に組み込まれた Azure ポリシーとイニシアティブから導き出される推奨事項を確認します。 これらの推奨事項は、セキュリティ更新プログラム、エンドポイント保護、暗号化、セキュリティ構成、WAF の欠落、インターネットに接続された VM など、最大の危険への対応に役立ちます。
+**詳細**: [Azure のセキュリティ スコア](../../security-center/secure-score-security-controls.md)を調べ、Microsoft Defender for Cloud に組み込まれた Azure ポリシーとイニシアティブの結果として生じる推奨事項を確認します。 これらの推奨事項は、セキュリティ更新プログラム、エンドポイント保護、暗号化、セキュリティ構成、WAF の欠落、インターネットに接続された VM など、最大の危険への対応に役立ちます。
 
 Center for Internet Security (CIS) コントロールを基にしたセキュリティ スコアにより、組織の Azure セキュリティを外部ソースに対してベンチマークすることができます。 外部検証は、チームのセキュリティ戦略を検証し強化することに役立ちます。
 
 **ベスト プラクティス**: マシン、ネットワーク、ストレージおよびデータ サービス、アプリケーションのセキュリティ体制を監視して、潜在的なセキュリティの問題を検出し優先順位を付けます。  
-**詳細**: 最も優先順位が高い項目から、Security Center の [セキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)に従います。
+**詳細**: 最も優先順位が高い項目から、Defender for Cloud の[セキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)に従います。
 
-**ベスト プラクティス**: Security Center のアラートを、セキュリティ情報およびイベント管理 (SIEM) ソリューションに統合します。   
-**詳細**: SIEM を使用している組織のほどんとは、アナリストの応答を必要とするセキュリティ アラートに関する中央情報センターとして SIEM を使用しています。 Security Center によって生成されて処理されたイベントは、Azure Monitor で利用可能なログの 1 つである Azure アクティビティ ログに発行されます。 Azure Monitor では、任意の監視データを SIEM ツールにルーティングするための統合パイプラインが提供されています。 手順については、「[SIEM、SOAR、または IT Service Management ソリューションへのアラートのストリーミング](../../security-center/export-to-siem.md)」を参照してください。 Azure Sentinel を使用している場合は、[Azure Security Center への接続](../../sentinel/connect-azure-security-center.md)に関する記事を参照してください。
+**ベスト プラクティス**: Defender for Cloud のアラートをセキュリティ情報とイベント管理 (SIEM) ソリューションに統合します。   
+**詳細**: SIEM を使用している組織のほどんとは、アナリストの応答を必要とするセキュリティ アラートに関する中央情報センターとして SIEM を使用しています。 Defender for Cloud によって生成された処理済みイベントは、Azure Monitor で利用可能なログの 1 つである Azure アクティビティ ログに発行されます。 Azure Monitor では、任意の監視データを SIEM ツールにルーティングするための統合パイプラインが提供されています。 手順については、「[SIEM、SOAR、または IT Service Management ソリューションへのアラートのストリーミング](../../security-center/export-to-siem.md)」を参照してください。 Microsoft Sentinel を使用している場合は、[Microsoft Defender for Cloud の接続](../../sentinel/connect-azure-security-center.md)に関する記事を参照してください。
 
 **ベスト プラクティス**: Azure ログを SIEM に統合します。   
-**詳細**: [データの収集とエクスポートに Azure Monitor](../../azure-monitor/overview.md#integrate-and-export-data) を使用します。 この方法はセキュリティ インシデントの調査を可能にするために重要であり、オンライン ログのリテンションは制限されます。 Azure Sentinel を使用している場合、「[データ ソースの接続](../../sentinel/connect-data-sources.md)」を参照してください。
+**詳細**: [データの収集とエクスポートに Azure Monitor](../../azure-monitor/overview.md#integrate-and-export-data) を使用します。 この方法はセキュリティ インシデントの調査を可能にするために重要であり、オンライン ログのリテンションは制限されます。 Microsoft Sentinel を使用している場合は、[データ ソースの接続](../../sentinel/connect-data-sources.md)に関する記事を参照してください。
 
 **ベスト プラクティス**: Endpoint Detection and Response (EDR) 機能を攻撃の調査に統合することで、調査と検出プロセスを高速化し、誤検出を減らします。   
-**詳細**: Security Center のセキュリティ ポリシーを使用して、[エンドポイント統合用に Microsoft Defender を有効](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration)にします。 脅威の検出とインシデント対応には、Azure Sentinel の使用を検討してください。
+**詳細**: Defender for Cloud のセキュリティ ポリシーを使用して [Microsoft Defender for Endpoint の統合を有効](../../security-center/security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration)にします。 脅威の検出とインシデント対応に Microsoft Sentinel を使用することを検討してください。
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>エンド ツー エンドのシナリオ ベースのネットワーク監視
 お客様は、仮想ネットワーク、ExpressRoute、Application Gateway、ロード バランサーなどのネットワーク リソースを組み合わせて Azure にエンド ツー エンド ネットワークを構築します。 各ネットワーク リソースは監視することができます。
@@ -144,9 +144,9 @@ Center for Internet Security (CIS) コントロールを基にしたセキュリ
 次の DevOps のベスト プラクティスを使用して、エンタープライズとチームが、生産性と効率性があることを確認します。
 
 **ベスト プラクティス**: サービスのビルドとデプロイを自動化する。  
-**詳細**: [コードとしてのインフラストラクチャ](/azure/devops/learn/what-is-infrastructure-as-code)は、モジュール式インフラストラクチャの構築と管理に関連する IT 担当者の日常作業の負担を軽減する、一連の技法とプラクティスです。 これにより、ソフトウェア開発者がアプリケーション コードを構築し保守するように、IT 担当者は最新のサーバー環境を構築、維持できます。
+**詳細**: [コードとしてのインフラストラクチャ](/devops/deliver/what-is-infrastructure-as-code)は、モジュール式インフラストラクチャの構築と管理に関連する IT 担当者の日常作業の負担を軽減する、一連の技法とプラクティスです。 これにより、ソフトウェア開発者がアプリケーション コードを構築し保守するように、IT 担当者は最新のサーバー環境を構築、維持できます。
 
-[Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) を使用して、宣言型のテンプレートを使ってアプリケーションをプロビジョニングすることができます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
+[Azure Resource Manager](../../azure-resource-manager/templates/syntax.md) を使用して、宣言型のテンプレートを使ってアプリケーションをプロビジョニングすることができます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
 
 **ベスト プラクティス**: Azure Web アプリまたはクラウド サービスに自動的にビルドし、デプロイする。  
 **詳細**: Azure DevOps Projects を Azure Web アプリまたはクラウド サービスに [自動的にビルドしてデプロイ](/azure/devops/pipelines/index)するように構成できます。 コードをチェックインするたびに、Azure DevOps により、Azure へビルドが実行され、バイナリが自動的にデプロイされます。 パッケージのビルド プロセスは、Visual Studio の Package コマンドに相当し、発行手順は Visual Studio の Publish コマンドに相当します。

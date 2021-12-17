@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 7dcc0f916a15598060e034dcf62536ee13e2672e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1849e317c4245eb1aa96ff96f0ffac8bd8425299
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92320234"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750265"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Data Studio を使用して、Azure Arc 対応の PostgreSQL Hyperscale サーバー グループを管理する
 
@@ -29,7 +29,10 @@ ms.locfileid: "92320234"
 
 - [azdata、Azure Data Studio、Azure CLI をインストールする](install-client-tools.md)
 - Azure Data Studio に、 **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** および **Azure Arc** および **PostgreSQL** 拡張機能をインストールする
-- [Azure Arc データ コントローラー](create-data-controller-using-azdata.md)を作成する
+
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
+- [Azure Arc データ コントローラー](./create-data-controller-indirect-cli.md)を作成する
 - Azure Data Studio を起動する
 
 ## <a name="connect-to-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーに接続する
@@ -47,7 +50,7 @@ Azure データ コントローラーへの接続情報を入力します。
     ```
 - **ユーザー名:**
 
-    コントローラーへの接続に使用するユーザー アカウントの名前。 `azdata login` を実行する際に通常使用する名前を使用します。 これは、一般に psql から PostgreSQL データベース エンジンに接続するために使用する PostgreSQL ユーザーの名前ではありません。
+    コントローラーへの接続に使用するユーザー アカウントの名前。 `az login` を実行する際に通常使用する名前を使用します。 これは、一般に psql から PostgreSQL データベース エンジンに接続するために使用する PostgreSQL ユーザーの名前ではありません。
 - **パスワード:** コントローラーへの接続に使用するユーザー アカウントのパスワード
 
 
@@ -75,13 +78,13 @@ PostgreSQL ダッシュボード ビュー:
 - **サーバー名:** PostgreSQL インスタンスの名前を入力します。 例: postgres01
 - **認証の種類:** Password
 - **ユーザー名:** たとえば、標準/既定の PostgreSQL 管理者ユーザー名を使用できます。 このフィールドでは、大文字と小文字が区別されることに注意してください。
-- **パスワード:** `azdata postgres server endpoint -n postgres01` コマンドの出力の psql 接続文字列に、PostgreSQL ユーザー名のパスワードがあります
+- **パスワード:** `az postgres arc-server endpoint -n postgres01` コマンドの出力の psql 接続文字列に、PostgreSQL ユーザー名のパスワードがあります
 - **データベース名:** 接続先のデータベースの名前を設定します。 __既定__ に設定できます
 - **サーバー グループ:** __既定__ に設定できます
 - **名前 (省略可能):** 空白のままにすることができます
 - **詳細:**
     - **ホスト IP アドレス:** Kubernetes クラスターのパブリック IP アドレスです
-    - **ポート:** PostgreSQL インスタンスがリッスンしているポートです。 このポートは、`azdata postgres server endpoint -n postgres01` コマンドの出力の psql 接続文字列の末尾にあります。 Kubernetes がリッスンしていて、Azure Data Studio で Azure データ コントローラーに接続する際に入力したポート 30080 ではありません。
+    - **ポート:** PostgreSQL インスタンスがリッスンしているポートです。 このポートは、`az postgres arc-server endpoint -n postgres01` コマンドの出力の psql 接続文字列の末尾にあります。 Kubernetes がリッスンしていて、Azure Data Studio で Azure データ コントローラーに接続する際に入力したポート 30080 ではありません。
     - **その他のパラメーター:** これらの値は自明である必要があり、それらに表示された既定/空白値でも問題ありません。
 
 **[OK] と [接続]** を選択して、サーバーに接続します。

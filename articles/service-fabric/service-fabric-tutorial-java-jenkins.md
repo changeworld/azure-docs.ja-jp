@@ -4,12 +4,12 @@ description: このチュートリアルでは、Jenkins を使用して Java Se
 ms.topic: tutorial
 ms.date: 08/27/2018
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 4e29104f0586a8e18afb7a640903c57ce988b692
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f09472d52faa4fd9147fb3f660467218f3b032b
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91531974"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983765"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>チュートリアル:Service Fabric 上の Java アプリケーションに対して CI/CD を有効にするように Jenkins 環境を構成する
 
@@ -40,7 +40,9 @@ ms.locfileid: "91531974"
 
 Jenkins は、Service Fabric クラスター内外でセットアップできます。 以下の手順では、提供されている Docker イメージを使用して、クラスターの外部でセットアップする方法について説明します。 ただし、事前に構成された Jenkins ビルド環境を使用することもできます。 次のコンテナー イメージは、Service Fabric プラグインと共にインストールされるため、すぐに Service Fabric で使用できます。
 
-1. Service Fabric Jenkins コンテナー イメージを取得します``docker pull rapatchi/jenkins:v10``。 このイメージは、プリインストールされた Service Fabric Jenkins プラグインから取得されます。
+[!INCLUDE [pull-image-include](../../includes/pull-image-include.md)]
+
+1. Service Fabric Jenkins コンテナー イメージを取得します`docker pull rapatchi/jenkins:v10`。 このイメージは、プリインストールされた Service Fabric Jenkins プラグインから取得されます。
 
 1. ローカル マシン上の証明書が格納されている場所で、コンテナー イメージを実行します。
 

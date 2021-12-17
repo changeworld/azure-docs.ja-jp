@@ -1,23 +1,23 @@
 ---
-title: Azure DevTest Labs で VM のリソース グループを指定する | Microsoft Docs
+title: DevTest Labs で Azure VM のリソース グループを指定する
 description: Azure DevTest Labs でラボの VM に対するリソース グループを指定する方法について説明します。
-ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: c6f576a20fc8fada9dd515e8ba2a266761a3e586
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.topic: how-to
+ms.date: 10/18/2021
+ms.openlocfilehash: baeab2c54ae594cf9ecb70ae8c4ec7dd2b66588f
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377490"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178901"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボの仮想マシンのリソース グループを指定する
 
-ラボの所有者は、ラボの仮想マシンが特定のリソース グループに作成されるように構成することができます。 この機能は、次のシナリオで役立ちます。
+既定では、新しい仮想マシンが作成されるたびに、Azure DevTest Labs によって新しいリソース グループが作成されます。 ラボの所有者は、ラボの仮想マシンが特定のリソース グループに作成されるように構成することができます。 この機能は、次のシナリオで役立ちます。
 
 - サブスクリプション内のリソース グループのうち、ラボによって作成されたものが少ない。
 - 自分で構成した一連の固定のリソース グループ内でラボを運用する。
 - Azure サブスクリプション内でリソース グループを作成するために必要な制限および承認を回避する。
-- ラボのすべてのリソースを単一のリソース グループ内に統合し、それらのリソースの追跡と[ポリシー](../governance/policy/overview.md)の適用を簡素化して、リソースをリソース グループ レベルで管理する。
+- ラボのすべてのリソースを単一のリソース グループにまとめ、それらのリソースの追跡と[ポリシー](../governance/policy/overview.md)の適用を簡素化して、リソースをリソース グループ レベルで管理する。
 
 この機能では、スクリプトを使用して、すべてのラボ VM に対して、Azure サブスクリプション内の新規または既存のリソース グループを指定できます。 現在、Azure DevTest Labs では、この機能は API を使用することによってサポートされています。
 
@@ -112,4 +112,4 @@ Azure Resource Manager テンプレートを使用してラボを作成する場
 次の記事をご覧ください。 
 
 - [ラボのポリシーを設定する](devtest-lab-set-lab-policy.md)
-- [よく寄せられる質問](devtest-lab-faq.md)
+- [よく寄せられる質問](devtest-lab-faq.yml)

@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel ワークスペースの大規模な管理を行う
-description: 委任された顧客リソースで Azure Sentinel を効果的に管理する方法を学習します。
-ms.date: 03/02/2021
+description: Azure Lighthouse を使用すると、委任された顧客リソース全体で Azure Sentinel を効果的に管理できます。
+ms.date: 11/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 009edaefe021dedb5d9a40a8cc3bac2c2974ae10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51dab03ae91d61979f2f84bac57fb96adad9fea7
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101702523"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867040"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel ワークスペースの大規模な管理を行う
 
@@ -21,11 +21,14 @@ Azure Sentinel によって、セキュリティ分析と脅威インテリジ�
 > [!TIP]
 > このトピックではサービスのプロバイダーと顧客について触れますが、このガイドラインは、[Azure Lighthouse を使用して複数のテナントを管理する企業](../concepts/enterprise.md)にも当てはまります。
 
+> [!NOTE]
+> 別の[リージョン](../../availability-zones/az-overview.md#regions)にある委任されたリソースを管理することができます。 ただし、[各国のクラウド](../../active-directory/develop/authentication-national-cloud.md)と Azure パブリック クラウドにわたって行われる、または 2 つの独立した国内クラウドにわたって行われるサブスクリプションの委任はサポートされていません。
+
 ## <a name="architectural-considerations"></a>アーキテクチャに関する考慮事項
 
 Azure Sentinel を使用してサービスとしてのセキュリティ オファリングを構築する必要があるマネージド セキュリティ サービス プロバイダー (MSSP) の場合、個々の顧客テナント内にデプロイされた複数の Azure Sentinel ワークスペースを一元的に監視、管理、構成するために単一のセキュリティ オペレーション センター (SOC) が必要になることがあります。 同様に、複数の Azure AD テナントを持つ企業では、テナントにまたがってデプロイされた複数の Azure Sentinel ワークスペースを一元的に管理することが必要になる場合があります。
 
-このデプロイの一元化されたモデルには、次の利点があります。
+このデプロイ モデルには、次の利点があります。
 
 - データの所有権は管理対象の各テナントに残ります。
 - 地理的境界内にデータを格納するための要件がサポートされます。
@@ -35,9 +38,13 @@ Azure Sentinel を使用してサービスとしてのセキュリティ オフ�
 - Azure Sentinel と統合されているすべてのデータ ソースとデータ コネクタからのデータ (Azure AD のアクティビティ ログ、Office 365 のログ、Microsoft Threat Protection のアラートなど) は、各顧客のテナント内に残ります。
 - ネットワーク待機時間が短縮されます。
 - 新しい子会社または顧客を簡単に追加または削除できます。
+- Azure Lighthouse を通じて作業するときに、複数のワークスペース ビューを使用できます。
+- 知的財産を保護するために、プレイブックとブックを使用して、顧客と直接コードを共有せずにテナント間で作業できます。 各顧客のテナントに直接保存する必要があるのは、分析と検出のルールのみです。
 
-> [!NOTE]
-> 別の[リージョン](../../availability-zones/az-overview.md#regions)にある委任されたリソースを管理することができます。 ただし、[各国のクラウド](../../active-directory/develop/authentication-national-cloud.md)と Azure パブリック クラウドにわたって行われる、または 2 つの独立した国内クラウドにわたって行われるサブスクリプションの委任はサポートされていません。
+> [!IMPORTANT]
+> すべてのワークスペースが顧客テナントに作成されている場合、管理テナントのサブスクリプションには、Microsoft.SecurityInsights および Microsoft.OperationalInsights リソース プロバイダーも[登録する](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)必要があります。
+
+代替のデプロイ モデルは、管理テナントに 1 つの Azure Sentinel ワークスペースを作成することです。 このモデルでは、Azure Lighthouse を使用して、管理対象テナント全体でデータ ソースからログを収集できます。 ただし、Microsoft Defender など、テナント間で接続できないデータ ソースがいくつかあります。 この制限のため、このモデルは多くのサービス プロバイダーのシナリオには適していません。
 
 ## <a name="granular-azure-role-based-access-control-azure-rbac"></a>詳細な Azure ロールベースのアクセス制御 (Azure RBAC)
 
@@ -68,7 +75,7 @@ MSSP によって管理される各顧客サブスクリプションは、[Azure
 
 [Azure Sentinel の Azure Monitor ブック](../../sentinel/overview.md#workbooks)は、接続されたデータ ソースからのデータを視覚化および監視して洞察を得るのに役立ちます。 Azure Sentinel で組み込みのブック テンプレートを使用することも、シナリオに合わせてカスタム ブックを作成することもできます。
 
-管理テナントでブックをデプロイし、顧客テナント全体のデータを監視およびクエリするために大規模なダッシュボードを作成することができます。 詳細については、[ワークスペース間の監視](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks)に関するセクションを参照してください。 
+管理テナントでブックをデプロイし、顧客テナント全体のデータを監視およびクエリするために大規模なダッシュボードを作成することができます。 詳細については、[ワークスペース間の監視](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks)に関するセクションを参照してください。
 
 また、ブックは、その顧客に固有のシナリオ用に管理する個々のテナントに直接配置することもできます。
 
@@ -82,15 +89,21 @@ MSSP によって管理される各顧客サブスクリプションは、[Azure
 
 ## <a name="monitor-security-of-office-365-environments"></a>Office 365 環境のセキュリティを監視する
 
-複数のテナントにまたがる Office 365 環境のセキュリティを監視するには、Azure Lighthouse と Azure Sentinel を組み合わせて使用します。 まず、すぐに使える [Office 365 データ コネクタを管理対象テナントで有効にする必要があります](../../sentinel/connect-office-365.md)。これによって、Exchange と SharePoint (OneDrive を含む) でのユーザーと管理者のアクティビティに関する情報を、管理対象テナント内の Azure Sentinel ワークスペースに取り込めるようにします。 これには、ファイルのダウンロードなどのアクション、送信されたアクセス要求、グループ イベントへの変更、メールボックスの操作に関する詳細と、アクションを実行したユーザーの情報が含まれます。 [Office 365 DLP アラート](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820)も、組み込みの Office 365 コネクタの一部としてサポートされています。
+複数のテナントにまたがる Office 365 環境のセキュリティを監視するには、Azure Lighthouse と Azure Sentinel を組み合わせて使用します。 まず、すぐに使える [Office 365 データ コネクタを管理対象テナントで有効にする必要があります](../../sentinel/data-connectors-reference.md#microsoft-office-365)。これによって、Exchange と SharePoint (OneDrive を含む) でのユーザーと管理者のアクティビティに関する情報を、管理対象テナント内の Azure Sentinel ワークスペースに取り込めるようにします。 これには、ファイルのダウンロードなどのアクション、送信されたアクセス要求、グループ イベントへの変更、メールボックスの操作に関する詳細と、アクションを実行したユーザーの情報が含まれます。 [Office 365 DLP アラート](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820)も、組み込みの Office 365 コネクタの一部としてサポートされています。
 
-[Microsoft Cloud App Security (MCAS) コネクタ](../../sentinel/connect-cloud-app-security.md)を有効にすると、アラートと Cloud Discovery のログを Azure Sentinel にストリーミングできます。 これにより、クラウド アプリを可視化し、サイバー脅威を特定して対処するための高度な分析を入手し、データの移動を制御できるようになります。 MCAS のアクティビティ ログは [Common Event Format (CEF) を使用して処理する](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849)ことができます。
+[Microsoft Cloud App Security (MCAS) コネクタ](../../sentinel/data-connectors-reference.md#microsoft-cloud-app-security-mcas)を有効にすると、アラートと Cloud Discovery のログを Azure Sentinel にストリーミングできます。 これにより、クラウド アプリを可視化し、サイバー脅威を特定して対処するための高度な分析を入手し、データの移動を制御できるようになります。 MCAS のアクティビティ ログは [Common Event Format (CEF) を使用して処理する](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849)ことができます。
 
 Office 365 データ コネクタのセットアップが完了したら、ワークブック内のデータの表示と分析、クエリを使用してカスタム アラートを作成する、脅威に対応するためのプレイブックを構成するなど、クロステナントの Azure Sentinel 機能を使用できるようになります。
+
+## <a name="protect-intellectual-property"></a>知的財産を保護する
+
+お客様と共に作業するときに、Azure Sentinel で開発した知的財産 (Azure Sentinel 分析ルール、ハンティング クエリ、プレイブック、ブックなど) を保護することが必要になる場合があります。 これらのリソースで使用されているコードに対して、お客様が完全なアクセス権を持たないようにするために、さまざまな方法を使用できます。
+
+詳細については、「[Azure Sentinel で MSSP の知的財産権を保護する](../../sentinel/mssp-protect-intellectual-property.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Sentinel](../../sentinel/overview.md) について学習します。
 - [Azure Sentinel の価格ページ](https://azure.microsoft.com/pricing/details/azure-sentinel/)を確認します。
+- Azure Sentinel 環境のデプロイおよび初期構成タスクを高速化するためのプロジェクトである [Azure Sentinel All in One](https://github.com/Azure/Azure-Sentinel/tree/master/Tools/Sentinel-All-In-One) について説明します。
 - [テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。
-

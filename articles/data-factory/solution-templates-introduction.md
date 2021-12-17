@@ -2,17 +2,18 @@
 title: テンプレートの概要
 description: 定義済みのテンプレートを使用して Azure Data Factory の使用をすぐに開始する方法について説明します。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
-ms.author: weetok
-author: dcstwh
+ms.author: susabat
+author: ssabat
 ms.custom: seo-lt-2019
-ms.date: 01/04/2019
-ms.openlocfilehash: 511c8851a39d283bd69215216f5ec4a4e77653d1
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 09/09/2021
+ms.openlocfilehash: c384985ae178f22c15c4a408d7a2cd42d0fbf416
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219809"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743390"
 ---
 # <a name="templates"></a>テンプレート
 
@@ -24,17 +25,17 @@ ms.locfileid: "106219809"
 
 次の 2 つの方法で、テンプレートから Data Factory パイプラインの作成を開始できます。
 
-1.  [概要] ページで **[Create pipeline from template]\(テンプレートからパイプラインを作成する\)** を選択し、テンプレート ギャラリーを開きます。
+1.  Data Factory のホーム ページの **[その他を参照]** セクションで、 **[パイプラインのテンプレート]** を選択してテンプレート ギャラリーを開きます。
 
-    ![[概要] ページからテンプレート ギャラリーを開く](media/solution-templates-introduction/templates-intro-image1.png)
+    :::image type="content" source="media/doc-common-process/home-page-pipeline-templates-tile.png" alt-text="Data Factory ホームページからテンプレート ギャラリーを開くスクリーンショット。":::
 
-1.  リソース エクスプローラーの [作成者] タブで、[ **+** ] を選択し、 **[Pipeline from template]\(テンプレートのパイプライン\)** を選択してテンプレート ギャラリーを開きます。
+1.  リソース エクスプローラーの [作成者] タブで、 **+** を選択し、**テンプレートからのパイプライン** を選択してテンプレート ギャラリーを開きます。
 
-    ![[作成者] タブからテンプレート ギャラリーを開く](media/solution-templates-introduction/templates-intro-image2.png)
+    :::image type="content" source="media/solution-templates-introduction/templates-introduction-image-2.png" alt-text="[作成者] タブからテンプレート ギャラリーを開くスクリーンショット。":::
 
 ## <a name="template-gallery"></a>テンプレート ギャラリー
 
-![テンプレート ギャラリー](media/solution-templates-introduction/templates-intro-image3.png)
+:::image type="content" source="media/solution-templates-introduction/templates-introduction-image-3.png" alt-text="テンプレート ギャラリー ページのスクリーンショット。":::
 
 ### <a name="out-of-the-box-data-factory-templates"></a>すぐに利用できる Data Factory テンプレート
 
@@ -80,11 +81,11 @@ Data Factory では、データ ファクトリ パイプライン テンプレ�
 
 [パイプライン] タブで **[テンプレートとして保存]** を選択することで、パイプラインをテンプレートとして保存できます。
 
-![パイプラインをテンプレートとして保存する](media/solution-templates-introduction/templates-intro-image4.png)
+:::image type="content" source="media/solution-templates-introduction/templates-introduction-image-4.png" alt-text="パイプラインをテンプレートとして保存する方法を示すスクリーンショット。":::
 
-テンプレート ギャラリーの **[マイ テンプレート]** セクションに、テンプレートとして保存されているパイプラインを表示できます。 リソース エクスプローラーの **[テンプレート]** セクションでも確認できます。
+**テンプレート ギャラリー** ページで **[マイ テンプレート]** にチェックを入れると、このページの右ペインにテンプレートとして保存されたパイプラインが表示されるようになります。 
 
-![マイ テンプレート](media/solution-templates-introduction/templates-intro-image5.png)
+:::image type="content" source="media/solution-templates-introduction/templates-introduction-image-5.png" alt-text="[マイ テンプレート] ウィンドウのスクリーンショット。":::
 
 > [!NOTE]
 > マイ テンプレート機能を使用するには、Git 統合を有効にする必要があります。 Azure DevOps Git と GitHub の両方がサポートされています。

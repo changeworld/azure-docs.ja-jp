@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: alkemper
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 7c5534ab836968bc4e72a54db1ddb9667d366558
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 956aa33f8152c8e07ebc8d04a91242eba88362cf
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768851"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441446"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>チュートリアル:Java Spring アプリで Key Vault 参照を使用する
 
@@ -152,16 +152,14 @@ App Configuration に格納されているその他のキーの場合と同様�
     export AZURE_TENANT_ID ='tenantId'
     ```
 
-
 > [!NOTE]
 > これらの Key Vault 資格情報は、お使いのアプリケーション内でのみ使用されます。  アプリケーションの認証は、App Configuration サービスを必要とせず、これらの資格情報を使用して Key Vault に対して直接行われます。  Key Vault は、キーを共有したり公開したりすることなく、アプリケーションと App Configuration サービスの両方の認証を提供します。
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Key Vault 参照を使用するようコードを更新する
 
-1. **APP_CONFIGURATION_ENDPOINT** という環境変数を作成します。 その値を App Configuration ストアのエンドポイントに設定します。 エンドポイントは、Azure portal の **[アクセス キー]** ブレードで確認できます。 変更を有効にするために、コマンド プロンプトを再起動します。 
+1. **APP_CONFIGURATION_ENDPOINT** という環境変数を作成します。 その値を App Configuration ストアのエンドポイントに設定します。 エンドポイントは、Azure portal の **[アクセス キー]** ブレードで確認できます。 変更を有効にするために、コマンド プロンプトを再起動します。
 
-
-1. *resources* フォルダー内の *bootstrap.properties* を開きます。 **APP_CONFIGURATION_ENDPOINT** 値を使用するようにこのファイルを更新します。 このファイル内の接続文字列への参照をすべて削除します。 
+1. *resources* フォルダー内の *bootstrap.properties* を開きます。 **APP_CONFIGURATION_ENDPOINT** 値を使用するようにこのファイルを更新します。 このファイル内の接続文字列への参照をすべて削除します。
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
@@ -197,8 +195,8 @@ App Configuration に格納されているその他のキーの場合と同様�
 
     import com.azure.core.credential.TokenCredential;
     import com.azure.identity.EnvironmentCredentialBuilder;
-    import com.microsoft.azure.spring.cloud.config.AppConfigurationCredentialProvider;
-    import com.microsoft.azure.spring.cloud.config.KeyVaultCredentialProvider;
+    import com.azure.spring.cloud.config.AppConfigurationCredentialProvider;
+    import com.azure.spring.cloud.config.KeyVaultCredentialProvider;
 
     public class AzureCredentials implements AppConfigurationCredentialProvider, KeyVaultCredentialProvider{
 

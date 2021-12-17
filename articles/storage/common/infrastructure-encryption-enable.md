@@ -1,94 +1,36 @@
 ---
-title: データの二重暗号化のためにインフラストラクチャ暗号化を有効にしてストレージ アカウントを作成する
+title: データの二重暗号化のためのインフラストラクチャ暗号化を有効にする
 titleSuffix: Azure Storage
-description: データのセキュリティ保護についてより高いレベルの保証が必要なお客様は、Azure Storage インフラストラクチャ レベルで 256 ビットの AES 暗号化を有効にすることもできます。 インフラストラクチャ暗号化が有効な場合、ストレージ アカウントのデータは、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用して 2 回暗号化されます。
+description: データのセキュリティ保護についてより高いレベルの保証が必要なお客様は、Azure Storage インフラストラクチャ レベルで 256 ビットの AES 暗号化を有効にすることもできます。 インフラストラクチャ暗号化が有効になっている場合、ストレージ アカウントまたは暗号化スコープ内のデータは、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用して 2 回暗号化されます。
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 06/01/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 23b3ca919be030490cca06f31dac623d7f80be44
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c4dca05b855666a04d1def09228c596eb931bbf5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790385"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607009"
 ---
-# <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>データの二重暗号化のためにインフラストラクチャ暗号化を有効にしてストレージ アカウントを作成する
+# <a name="enable-infrastructure-encryption-for-double-encryption-of-data"></a>データの二重暗号化のためのインフラストラクチャ暗号化を有効にする
 
-Azure Storage では、使用可能なブロック暗号の中でも最強クラスの 1 つである 256 ビット AES 暗号化を使用して、サービス レベルでストレージ アカウントのすべてのデータが自動的に暗号化されています。また、FIPS 140-2 に準拠しています。 データのセキュリティ保護についてより高いレベルの保証が必要なお客様は、Azure Storage インフラストラクチャ レベルで 256 ビットの AES 暗号化を有効にすることもできます。 インフラストラクチャ暗号化が有効な場合、ストレージ アカウントのデータは、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用して、2 回 &mdash; サービス レベルで 1 回、インフラストラクチャ レベルで 1 回 &mdash; 暗号化されます。 Azure Storage データの二重暗号化を使用すると、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。 このシナリオでは、追加の暗号化レイヤーによって引き続きデータが保護されます。
+Azure Storage では、使用可能なブロック暗号の中でも最強クラスの 1 つである 256 ビット AES 暗号化を使用して、サービス レベルでストレージ アカウントのすべてのデータが自動的に暗号化されています。また、FIPS 140-2 に準拠しています。 データのセキュリティ保護についてより高いレベルの保証が必要なお客様は、二重暗号化のために、Azure Storage インフラストラクチャ レベルで 256 ビットの AES 暗号化を有効にすることもできます。 Azure Storage データの二重暗号化を使用すると、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。 このシナリオでは、追加の暗号化レイヤーによって引き続きデータが保護されます。
+
+インフラストラクチャ暗号化は、ストレージ アカウント全体、またはアカウント内の暗号化スコープに対して有効にできます。 ストレージ アカウントまたは暗号化スコープに対してインフラストラクチャ暗号化が有効になっている場合、データは、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用して、2 回 &mdash; サービス レベルで 1 回、インフラストラクチャ レベルで 1 回 &mdash; 暗号化されます。
 
 サービスレベルの暗号化は、Azure Key Vault または Key Vault Managed Hardware Security Model (HSM) (プレビュー) での Microsoft マネージド キーまたはカスタマーマネージド キーの使用をサポートしています。 インフラストラクチャレベルの暗号化は Microsoft マネージド キーに依存し、常に別のキーが使用されます。 Azure Storage 暗号化によるキー管理の詳細については、「[暗号化キーの管理について](storage-service-encryption.md#about-encryption-key-management)」を参照してください。
 
-データを二重に暗号化するには、まずインフラストラクチャ暗号化用に構成されたストレージ アカウントを作成する必要があります。 この記事では、インフラストラクチャ暗号化を有効にするストレージ アカウントを作成する方法について説明します。
-
-## <a name="register-to-use-infrastructure-encryption"></a>インフラストラクチャ暗号化を使用するための登録
-
-インフラストラクチャ暗号化が有効なストレージ アカウントを作成するには、まず PowerShell または Azure CLI を使用してこの特徴を Azure で使用するために登録する必要があります。
-
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
-
-該当なし
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-PowerShell を使用して登録を行うには、[Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドを呼び出します。
-
-```powershell
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowRequireInfraStructureEncryption
-```
-
-PowerShell での登録の状態を確認するには、[Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) コマンドを呼び出します。
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowRequireInfraStructureEncryption
-```
-
-登録が承認されたら、Azure Storage リソース プロバイダーを再登録する必要があります。 PowerShell でリソース プロバイダーを再登録するには、[Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) コマンドを呼び出します。
-
-```powershell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Azure CLI を使用して登録を行うには、[az feature register](/cli/azure/feature#az_feature_register) コマンドを呼び出します。
-
-```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name AllowRequireInfraStructureEncryption
-```
-
-Azure CLI での登録の状態を確認するには、[az feature](/cli/azure/feature#az_feature_show) コマンドを呼び出します。
-
-```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name AllowRequireInfraStructureEncryption
-```
-
-登録が承認されたら、Azure Storage リソース プロバイダーを再登録する必要があります。 Azure CLI でリソース プロバイダーを再登録するには、[az provider register](/cli/azure/provider#az_provider_register) コマンドを呼び出します。
-
-```azurecli
-az provider register --namespace 'Microsoft.Storage'
-```
-
-# <a name="template"></a>[テンプレート](#tab/template)
-
-該当なし
-
----
+データを二重に暗号化するには、インフラストラクチャ暗号化用に構成されたストレージ アカウントまたは暗号化スコープを最初に作成する必要があります。 この記事では、インフラストラクチャ暗号化を有効にする方法について説明します。
 
 ## <a name="create-an-account-with-infrastructure-encryption-enabled"></a>インフラストラクチャ暗号化を有効にしてアカウントを作成する
 
-アカウントの作成時に、インフラストラクチャ暗号化を使用するようにストレージ アカウントを構成する必要があります。 ストレージ アカウントの種類は汎用 v2 にする必要があります。
-
-アカウントの作成後にインフラストラクチャ暗号化を有効または無効にすることはできません。
+ストレージ アカウントに対してインフラストラクチャ暗号化を有効にするには、アカウントの作成時にインフラストラクチャ暗号化を使用するようにストレージ アカウントを構成する必要があります。 アカウントの作成後にインフラストラクチャ暗号化を有効または無効にすることはできません。 ストレージ アカウントの種類は汎用 v2 にする必要があります。
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -100,6 +42,13 @@ PowerShell を使用してインフラストラクチャ暗号化が有効なス
 1. **[確認と作成]** を選択し、ストレージ アカウントの作成を完了します。
 
     :::image type="content" source="media/infrastructure-encryption-enable/create-account-infrastructure-encryption-portal.png" alt-text="アカウントを作成するときにインフラストラクチャ暗号化を有効にする方法を示すスクリーンショット":::
+
+Azure portal でストレージ アカウントのインフラストラクチャ暗号化が有効なことを確認するには、次の手順を実行します。
+
+1. Azure Portal のストレージ アカウントに移動します。
+1. **[設定]** で、 **[暗号化]** を選択します。
+
+    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="[アカウント] でインフラストラクチャ暗号化が有効なことを確認する方法を示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -118,6 +67,16 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
     -RequireInfrastructureEncryption
 ```
 
+ストレージ アカウントでインフラストラクチャ暗号化が有効なことを確認するには、[Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `Encryption` プロパティ内の `RequireInfrastructureEncryption` フィールドを取得し、それが `True` に設定されていることを確認します。
+
+次の例では、`RequireInfrastructureEncryption` プロパティの値を取得します。 山かっこ内のプレースホルダー値は、実際の値に置き換えてください。
+
+```powershell
+$account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account>
+$account.Encryption.RequireInfrastructureEncryption
+```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用して、インフラストラクチャ暗号化が有効なストレージ アカウントを作成するには、Azure CLI バージョン 2.8.0 以降がインストールされていることを確認します。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
@@ -134,6 +93,16 @@ az storage account create \
     --sku Standard_RAGRS \
     --kind StorageV2 \
     --require-infrastructure-encryption
+```
+
+ストレージ アカウントでインフラストラクチャ暗号化が有効なことを確認するには、[az storage account show](/cli/azure/storage/account#az-storage-account-show) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `encryption` プロパティ内の `requireInfrastructureEncryption` フィールドを探し、それが `true` に設定されていることを確認します。
+
+次の例では、`requireInfrastructureEncryption` プロパティの値を取得します。 山かっこ内のプレースホルダー値は、実際の値に置き換えてください。
+
+```azurecli-interactive
+az storage account show /
+    --name <storage-account> /
+    --resource-group <resource-group>
 ```
 
 # <a name="template"></a>[テンプレート](#tab/template)
@@ -172,48 +141,14 @@ az storage account create \
 
 ---
 
-## <a name="verify-that-infrastructure-encryption-is-enabled"></a>インフラストラクチャ暗号化が有効であることを確認します
+Azure Policy には、ストレージ アカウントに対してインフラストラクチャの暗号化を有効にすることを要求する組み込みポリシーが用意されています。 詳細については、[「Azure Policy の組み込みポリシー定義」](../../governance/policy/samples/built-in-policies.md#storage)の「**ストレージ**」セクションを参照してください。
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+## <a name="create-an-encryption-scope-with-infrastructure-encryption-enabled"></a>インフラストラクチャ暗号化を有効にして暗号化スコープを作成する
 
-Azure portal でストレージ アカウントのインフラストラクチャ暗号化が有効なことを確認するには、次の手順を実行します。
-
-1. Azure Portal のストレージ アカウントに移動します。
-1. **[設定]** で、 **[暗号化]** を選択します。
-
-    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="[アカウント] でインフラストラクチャ暗号化が有効なことを確認する方法を示すスクリーンショット":::
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-PowerShell を使用してストレージ アカウントでインフラストラクチャ暗号化が有効なことを確認するには、[Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `Encryption` プロパティ内の `RequireInfrastructureEncryption` フィールドを取得し、それが `True` に設定されていることを確認します。
-
-次の例では、`RequireInfrastructureEncryption` プロパティの値を取得します。 山かっこ内のプレースホルダー値は、実際の値に置き換えてください。
-
-```powershell
-$account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
-    -StorageAccountName <storage-account>
-$account.Encryption.RequireInfrastructureEncryption
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Azure CLI を使用してストレージ アカウントでインフラストラクチャ暗号化が有効なことを確認するには、[az storage account show](/cli/azure/storage/account#az_storage_account_show) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `encryption` プロパティ内の `requireInfrastructureEncryption` フィールドを探し、それが `true` に設定されていることを確認します。
-
-次の例では、`requireInfrastructureEncryption` プロパティの値を取得します。 山かっこ内のプレースホルダー値は、実際の値に置き換えてください。
-
-```azurecli-interactive
-az storage account show /
-    --name <storage-account> /
-    --resource-group <resource-group>
-```
-
-# <a name="template"></a>[テンプレート](#tab/template)
-
-該当なし
-
----
+アカウントに対してインフラストラクチャ暗号化が有効になっている場合、そのアカウントで作成された暗号化スコープでは、インフラストラクチャ暗号化が自動的に使用されます。 アカウント レベルでインフラストラクチャ暗号化が有効になっていない場合、暗号化スコープ作成時にそのスコープに対してそれを有効にするオプションがあります。 暗号化スコープに対するインフラストラクチャ暗号化の設定は、スコープ作成後には変更できません。 詳細については、「[暗号化スコープの作成](../blobs/encryption-scope-manage.md#create-an-encryption-scope)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [保存データに対する Azure Storage 暗号化](storage-service-encryption.md)
 - [Azure Storage の暗号化のためのカスタマー マネージド キー](customer-managed-keys-overview.md)
+- [BLOB ストレージの暗号化スコープ](../blobs/encryption-scope-overview.md)

@@ -6,18 +6,18 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 4/30/2020
-author: anumjs
-ms.author: anjangsh
+author: rothja
+ms.author: jroth
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: f6431328a0969ced0d98cbc7ff047cc0673ecb91
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 931f5da55cd487b829fe39fabc73902d7d53950a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074558"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083158"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のリリース ノート
 
@@ -67,7 +67,7 @@ ms.locfileid: "106074558"
 | --- | --- |
 |**列レベルの暗号化 (パブリック プレビュー)**|Transact-SQL を使用してデータの列に対称暗号化を適用することで、Azure Synapse Analytics 内の機密情報を保護します。 列レベルの暗号化には、証明書、パスワード、対称キー、または非対称キーでさらに保護される対称キーを使用してデータを暗号化するために使用できる、組み込み関数が用意されています。 詳細については、「[データの列の暗号化](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest&preserve-view=true)」を参照してください。|
 |**互換性レベルのサポート (GA)**|ユーザーはこのリリースで、Synapse SQL エンジンの特定のバージョンの Transact-SQL 言語とクエリ処理の動作を使用できるよう、データベースの互換性レベルを設定できるようになりました。 詳細については、「[sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」と「[データベース スコープ構成の変更](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。|
-|**行レベルのセキュリティ**|このリリースには、RLS が適用された行に対する更新および削除の操作の改善が含まれています。 このリリースでは、組み込み関数で DML ターゲット テーブルの列が参照されていない場合、"is_rolemember" のような組み込み関数での更新操作と削除操作は成功します。 この改善の前は、これらの操作は、基になる DML 操作での制限のために失敗しました。|
+|**行レベルのセキュリティ**|このリリースには、RLS が適用された行に対する更新および削除の操作の改善が含まれています。 このリリースで、組み込み関数が DML ターゲット テーブル内の列を参照しない場合は、「is_rolemember」のような組み込み関数を使用した更新操作と削除操作が成功します。 この改善の前は、これらの操作は、基になる DML 操作での制限のために失敗しました。|
 |**DBCC SHRINKDATABASE (GA)**|指定したデータベース内のデータ ファイルとログ ファイルのサイズを圧縮できるようになりました。 詳細については、この[ドキュメント](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=azure-sqldw-latest&preserve-view=true)を参照してください。|
 
 ## <a name="may-2020"></a>2020 年 5 月
@@ -118,7 +118,7 @@ ms.locfileid: "106074558"
 |**Copy (プレビュー)**|データ インジェストのためのシンプルで柔軟な COPY ステートメントのパブリック プレビューが発表されました。 高い特権を持つユーザーを必要とせずに、1 つのステートメントを使用するだけで、非常に柔軟かつシームレスにデータを取り込めるようになりました。 詳細については、[COPY コマンドのドキュメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を参照してください。|
 |**ワークロードの分離 (プレビュー)**|データ ウェアハウスを民主化するお客様をサポートするために、インテリジェントなワークロード管理のための新機能が発表されました。 新しい[ワークロードの分離](sql-data-warehouse-workload-isolation.md)機能では、データ ウェアハウスのリソースへの柔軟性と制御を提供しながら、異種ワークロードの実行を管理できるようにします。 これにより、実行の予測可能性が向上し、定義済みの SLA を満たすための機能が強化されます。 </br>ワークロードの分離に加えて、[ワークロード分類](sql-data-warehouse-workload-classification.md)で追加のオプションを使用できるようになりました。  ログイン分類を超えて、[Create Workload Classifier](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 構文により、クエリ ラベル、セッション コンテキスト、および時刻に基づいて要求を分類する機能が提供されます。|
 |**PREDICT (プレビュー)**|データ ウェアハウス内の機械学習モデルをスコア付けすることで、大規模で複雑なデータ移動を回避できるようになりました。 T-SQL PREDICT 関数は、オープン モデル フレームワークに基づき、データと機械学習モデルを入力として受け取り、予測を生成します。
-|**SSDT CI/CD (GA)**|SQL Analytics の[最も要望の多い機能](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247--in-preview-database-project-from-visual-studio-t)である、SQL Server Data Tools (SSDT) データベース プロジェクトが一般提供されることが発表されました。 このリリースには、Visual Studio 2019 での SSDT のサポートと、Azure DevOps とのネイティブ プラットフォーム統合が含まれており、エンタープライズ レベルのデプロイ用に組み込みの継続的インテグレーションとデプロイ (CI/CD) 機能が用意されています。 |
+|**SSDT CI/CD (GA)**|本日は、SQL Analytics – SQL Server Data Tools (SSDT) データベース プロジェクトで最も要求されている機能の一般提供をお知らせします。 このリリースには、Visual Studio 2019 での SSDT のサポートと、Azure DevOps とのネイティブ プラットフォーム統合が含まれており、エンタープライズ レベルのデプロイ用に組み込みの継続的インテグレーションとデプロイ (CI/CD) 機能が用意されています。 |
 |**マテリアライズドビュー (GA)**|具体化されたビューでは、ビュー定義クエリから返されるデータを保持し、基になるテーブルのデータが変更されると自動的に更新されます。 これによって、複雑なクエリ (一般に結合と集計を含むクエリ) のパフォーマンスが向上すると共に、メンテナンス操作が簡単になります。 詳細については、「[マテリアライズドビューを使用したパフォーマンス チューニング](performance-tuning-materialized-views.md)」を参照してください。  マテリアライズドビューのスクリプトを作成するために、[SQL Server Management Studio 18.4 以降](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)をインストールします。|
 |**動的データ マスク (GA)**|動的データ マスク (DDM) は、定義されたマスキング規則に基づいて、クエリ結果内で機密データを即座に難読化することにより、データ ウェアハウス内の機密データへの未承認アクセスを防止します。 詳細情報については、[SQL Database の動的データ マスク](../../azure-sql/database/dynamic-data-masking-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関する記事をご覧ください。|
 |**Read Committed スナップショット分離 (GA)**|ALTER DATABASE を使用して、ユーザー データベースのスナップショット分離を有効または無効にすることができます。 現在のワークロードへの影響を回避するには、データベースのメンテナンス期間中にこのオプションを設定するか、データベースへの他のアクティブな接続がなくなるまで待機します。 詳細については、[ALTER DATABASE SET オプション](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)に関するページを参照してください。|

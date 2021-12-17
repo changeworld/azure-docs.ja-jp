@@ -3,19 +3,19 @@ title: チュートリアル:Electron デスクトップ アプリでユーザ�
 titleSuffix: Microsoft identity platform
 description: このチュートリアルでは、ユーザーのサインインを処理すると共に、認証コード フローを使用して Microsoft ID プラットフォームからアクセス トークンを取得し、Microsoft Graph API を呼び出すことができる Electron デスクトップ アプリを構築します。
 services: active-directory
-author: derisen
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 02/17/2021
-ms.author: v-doeris
-ms.openlocfilehash: e9e36a3ed2cab05eb63168452bc8472656ab5efb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: marsma
+ms.openlocfilehash: 083c31b427c0f3d8cc261af7c9033d4ec1ffbeae
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644291"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500471"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-in-an-electron-desktop-app"></a>チュートリアル:Electron デスクトップ アプリでユーザーのサインインと Microsoft Graph API の呼び出しを行う
 

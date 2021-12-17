@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d22f2fb0bb550d966cbc5e181882552514513b2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 92e9c22712fdbfae5ab13a23cf72e282a225288a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936582"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733242"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
 
@@ -39,7 +39,7 @@ AI による顔の検出と識別の概念を理解している必要があり�
 
 * [顔検出の概念](../concepts/face-detection.md)
 * [顔認識の概念](../concepts/face-recognition.md)
-* [画像内の顔を検出する方法](HowtoDetectFacesinImage.md)
+* [検出 API を呼び出す](HowtoDetectFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>指定されたモデルで顔を検出する
 
@@ -74,12 +74,12 @@ Face サービスは画像から顔データを抽出し、([Add face](https://w
 .NET クライアント ライブラリの次のコード例を参照してください。
 
 ```csharp
-// Create an empty PersonGroup with "recognition_02" model
+// Create an empty PersonGroup with "recognition_04" model
 string personGroupId = "mypersongroupid";
-await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_04");
 ```
 
-このコードでは、`mypersongroupid` という ID の **PersonGroup** を作成し、_recognition_02_ モデルを使用して顔の特徴を抽出するように設定します。
+このコードでは、`mypersongroupid` という ID の **PersonGroup** を作成し、_recognition_04_ モデルを使用して顔の特徴を抽出するように設定します。
 
 それに対応して、顔検出時に ([Face - Detect] API によって) この **PersonGroup** と比較するために使用するモデルを指定する必要があります。 使用するモデルは常に **PersonGroup** の設定と一致している必要があります。していない場合、互換性のないモデルが原因で操作が失敗します。
 
@@ -116,7 +116,7 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、さまざまな Face サービスの API で使用する認識モデルを指定する方法について説明しました。 次は、クイック スタートに従って顔検出を使い始めてみましょう。
+この記事では、さまざまな Face サービスの API で使用する認識モデルを指定する方法について説明しました。 次は、クイックスタートに従って顔検出を使い始めてみましょう。
 
 * [Face .NET SDK](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [Face Python SDK](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)

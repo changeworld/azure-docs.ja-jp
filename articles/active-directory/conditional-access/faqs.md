@@ -8,16 +8,16 @@ ms.topic: troubleshooting
 ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8043e85db1ee1aadc814e98db12cab10ec17e129
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 906425fc1f221a39ae5523a96ebf4d358a54153c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92145225"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637857"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory の条件付きアクセスに関する FAQ
 
@@ -57,7 +57,7 @@ Windows 版および Mac 版の Microsoft Teams デスクトップ クライア�
 
 ## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>条件付きアクセス ポリシーを有効にした後、Microsoft Teams で一部のタブが機能しないのはなぜですか?
 
-Microsoft Teams のテナントでいくつかの条件付きアクセス ポリシーを有効にした後、特定のタブがデスクトップ クライアントで期待どおりに機能しなくなる可能性があります。 ただし、この影響を受けたタブは、Microsoft Teams Web クライアントを使用すると機能します。 影響を受けるタブには、Power BI、フォーム、VSTS、PowerApps、SharePoint リストなどがあります。
+Microsoft Teams のテナントでいくつかの条件付きアクセス ポリシーを有効にした後、特定のタブがデスクトップ クライアントで期待どおりに機能しなくなる可能性があります。 ただし、この影響を受けたタブは、Microsoft Teams Web クライアントを使用すると機能します。 影響を受けるタブには、Power BI、フォーム、VSTS、Power Apps、SharePoint リストなどがあります。
 
 影響を受けたタブを表示するには、Windows 10 アカウント拡張機能がインストールされている Edge、Internet Explorer、または Chrome の Teams Web クライアントを使用する必要があります。 一部のタブは Web 認証に依存しており、条件付きアクセスが有効な場合、Microsoft Teams デスクトップ クライアントでは機能しません。 Microsoft はパートナーと連携して、このようなシナリオの実現に取り組んでいます。 これまでに、Planner、OneNote、Stream に関連するシナリオを実現しています。
 

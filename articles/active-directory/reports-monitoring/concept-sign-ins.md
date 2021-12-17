@@ -1,10 +1,10 @@
 ---
-title: Azure Active Directory ポータルのサインイン アクティビティ レポート | Microsoft Docs
-description: Azure Active Directory ポータルのサインイン アクティビティ レポートの概要
+title: Azure Active Directory のサインイン ログ | Microsoft Docs
+description: Azure Active Directory のサインイン ログの概要。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,63 +13,75 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/24/2020
+ms.date: 10/25/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d783fcd44fac0c22b83023e1e50b24c209fed8c
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93122845"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577189"
 ---
-# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
+# <a name="sign-in-logs-in-azure-active-directory"></a>Azure Active Directory のサインイン ログ
 
-Azure Active Directory (Azure AD) のレポート アーキテクチャは、次のコンポーネントで構成されます。
+IT 管理者は、IT 環境がどのように動作しているかを知る必要があります。 システムの正常性に関する情報を使用すると、潜在的な問題に対処する必要があるかどうか、およびその方法を評価できます。 
 
-- **アクティビティ** 
-    - **サインイン** – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報。
-    - **監査ログ** - [監査ログ](concept-audit-logs.md)は、ユーザーとグループの管理や、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報を提供します。
-    - **プロビジョニング ログ** - [プロビジョニング ログ](./concept-provisioning-logs.md)によって、プロビジョニング サービスによるアクティビティの監視 (ServiceNow のグループや Workday からインポートされたユーザーの作成など) が可能になります。 
-- **Security** 
-    - **リスクの高いサインイン** - [リスクの高いサインイン](../identity-protection/overview-identity-protection.md)は、ユーザー アカウントの正当な所有者ではないユーザーによるサインイン試行の指標です。
-    - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](../identity-protection/overview-identity-protection.md)は、侵害された可能性があるユーザー アカウントの指標です。
+この目標を達成するために、Azure Active Directory ポータルでは、次の 3 つのアクティビティ ログにアクセスできます。
+
+- **[サインイン](concept-sign-ins.md)** - サインインとユーザーのリソース使用状況に関する情報。
+- **[監査](concept-audit-logs.md)** - ユーザーやグループの管理、テナントのリソースに適用された更新など、テナントに適用された変更に関する情報。
+- **[プロビジョニング](concept-provisioning-logs.md)** - ServiceNow でのグループの作成や、Workday からインポートされたユーザーなど、プロビジョニング サービスによって実行されるアクティビティ。
 
 この記事では、サインイン レポートの概要について説明します。
 
-## <a name="prerequisites"></a>前提条件
 
-### <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
+## <a name="what-can-you-do-with-it"></a>できること
 
-* セキュリティ管理者、セキュリティ閲覧者、グローバル閲覧者、およびレポート閲覧者ロールのユーザー
-* グローバル管理者
-* 任意のユーザー (非管理者) が自分のサインインにアクセス可能 
+サインイン ログを見れば、例えば次のことが分かります。
 
-### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>サインイン アクティビティにアクセスするために必要な Azure AD ライセンスを教えてください。
+- ユーザーのサインインにどのようなパターンがあるか。
 
-サインイン アクティビティ レポートは、[Azure AD のすべてのエディション](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)で使用でき、Microsoft Graph API を使用してアクセスすることもできます。
+- 1 週間で何人のユーザーがサインインを行ったか。
 
-## <a name="sign-ins-report"></a>サインイン レポート
+- これらのサインインはどのような状態か。
 
-ユーザーのサインイン レポートは、次の質問に対する回答を提示します。
 
-* ユーザーのサインインにどのようなパターンがあるか。
-* 1 週間で何人のユーザーがサインインを行ったか。
-* これらのサインインはどのような状態か。
+## <a name="who-can-access-it"></a>だれがアクセスできるのか。
 
-[[Azure portal]](https://portal.azure.com) メニューで **[Azure Active Directory]** を選択するか、任意のページから **[Azure Active Directory]** を検索して選択します。
+このリンクを使用すれば、いつでも自身のサインイン履歴にアクセスできます: [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
 
-![[Azure Active Directory] を選択する](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+サインイン ログにアクセスするには、次の条件が必要です。
 
-**[監視]** で **[サインイン]** を選択して、[サインイン レポート](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)を開きます。
+- グローバル管理者
 
-![スクリーンショットには、[監視] メニューから選択された [サインイン] が示されています。](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "サインイン アクティビティ")
+- 次のいずれかのロールのユーザー
+    - セキュリティ管理者
 
-一部のサインイン レコードがポータルに表示されるまでに、最大 2 時間かかることがあります。
+    - セキュリティ閲覧者
 
-> [!IMPORTANT]
-> サインイン レポートには、**対話型** のサインイン、つまりユーザーがユーザー名とパスワードを使用して手動で行うサインインのみが表示されます。 サービス間の認証のような対話型ではないサインインは、サインイン レポートに表示されません。 
+    - グローバル閲覧者
+
+    - レポート閲覧者
+
+
+
+## <a name="what-azure-ad-license-do-you-need"></a>必要な Azure AD ライセンス
+
+サインイン アクティビティ レポートは、[Azure AD のすべてのエディション](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)で使用できます。 Azure Active Directory P1 または P2 ライセンスがある場合は、Microsoft Graph API からアクティビティ レポートにアクセスすることもできます。
+
+
+## <a name="where-can-you-find-it-in-the-azure-portal"></a>Azure portal での閲覧方法
+
+Azure portal でログにアクセスする方法はいくつかあります。 たとえば、[Azure Active Directory] メニューの **[監視]** セクションでログを開けます。  
+
+![サインイン ログを開く](./media/concept-sign-ins/sign-ins-logs-menu.png)
+
+また、次のリンクからサインイン ログに直接アクセスできます: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)
+
+
+## <a name="what-is-the-default-view"></a>既定の表示項目
 
 サインイン ログには、次のものを示す既定のリスト ビューがあります。
 
@@ -94,15 +106,24 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ![スクリーンショットには、詳細情報ビューが示されています。](./media/concept-sign-ins/basic-sign-in.png "サインイン アクティビティ")
 
-> [!NOTE]
-> すべてのサインイン レポートで、条件付きアクセス ポリシーのトラブルシューティングを実行できるようになりました。 サインイン レコードの **[条件付きアクセス]** タブをクリックして、条件付きアクセスの状態を確認し、サインインに適用されたポリシーの詳細と各ポリシーの結果を調べることができます。
-> 詳細については、「[Frequently asked questions about CA information in all sign-ins](reports-faq.md#conditional-access)」 (すべてのサインインの CA 情報に関してよく寄せられる質問) を参照してください。
+
+
+## <a name="sign-in-error-code"></a>サインイン エラー コード
+
+サインインに失敗した場合は、関連するログ項目の **[基本情報]** セクションで、理由に関する詳細情報を取得できます。 
+
+![サインイン エラー コード](./media/concept-all-sign-ins/error-code.png)
+ 
+ログ項目にはエラーの理由が表示されますが、[サインイン エラー ルックアップ ツール](https://login.microsoftonline.com/error)を使用して、さらに多くの情報が得られる場合があります。 たとえば、使用可能な場合は、このツールにより修復手順が通知されます。  
+
+![エラー コード ルックアップ ツール](./media/concept-all-sign-ins/error-code-lookup-tool.png)
 
 
 
 ## <a name="filter-sign-in-activities"></a>サインイン アクティビティのフィルター処理
 
-まず、報告されたデータを、自分に適したレベルまで絞り込みます。 次に、既定のフィルターとして [日付] フィールドを使用したサインイン データをフィルター処理します。 Azure AD では、さまざまな追加のフィルターを設定できます。
+
+ログのデータをフィルター処理して、必要な範囲まで絞り込めます。
 
 ![スクリーンショットには、[フィルターの追加] オプションが示されています。](./media/concept-sign-ins/04.png "サインイン アクティビティ")
 
@@ -143,6 +164,10 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 ![クライアント アプリ フィルター](./media/concept-sign-ins/client-app-filter.png)
 
 
+> [!NOTE]
+> プライバシーに関するコミットメントにより、テナント間のシナリオの場合、Azure AD によってこのフィールドがホーム テナントに設定されることはありません。
+
+
 |名前|先進認証|説明|
 |---|:-:|---|
 |認証済み SMTP| |電子メール メッセージを送信するために POP および IMAP のクライアントで使用されます。|
@@ -161,6 +186,10 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 |POP3| |POP3 を使用して電子メールを取得する従来のメール クライアント。|
 |レポート Web サービス| |Exchange Online でレポート データを取得するために使用されます。|
 |その他のクライアント| |クライアント アプリが含まれていない、または不明であるユーザーのサインインの試行をすべて表示します。|
+
+
+
+
 
 
 
@@ -193,7 +222,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ## <a name="download-sign-in-activities"></a>サインイン アクティビティのダウンロード
 
-**[ダウンロード]** オプションをクリックして、最新の 250,000 件のレコードを含む CSV または JSON ファイルを作成します。 Azure portal の外部で操作する場合は、まず[サインイン データをダウンロード](quickstart-download-sign-in-report.md)します。  
+**[ダウンロード]** オプションをクリックして、最新の 250,000 件のレコードを含む CSV または JSON ファイルを作成します。 Azure portal の外部で操作する場合は、まず[サインイン データをダウンロード](./howto-download-logs.md)します。  
 
 ![ダウンロード](./media/concept-sign-ins/71.png "ダウンロード")
 
@@ -240,11 +269,42 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 - サインインの状態
 
 > [!NOTE]
-> IP アドレスは、IP アドレスとそのアドレスを持つコンピューターの物理的な配置場所との間に明確な関連性がないような方法で発行されます。 IP アドレスのマッピングは、多くの場合、クライアント デバイスの実際の使用場所から遠く離れたところにある中央プールから、モバイル プロバイダーや VPN が IP アドレスを発行しているという事実によって、複雑になります。 現在の Azure AD レポートでは、IP アドレスの物理的な場所の変換は、トレース、レジストリ データ、逆引き参照、およびその他の情報に基づくベスト エフォートで対応されています。
+> IP アドレスは、IP アドレスとそのアドレスを持つコンピューターの物理的な配置場所との間に明確な関連性がないような方法で発行されます。 IP アドレスのマッピングは、多くの場合、クライアント デバイスの実際の使用場所から遠く離れたところにある中央プールから、モバイル プロバイダーや VPN が IP アドレスを発行しているという事実によって、複雑になります。 現時点では、トレース、レジストリ データ、逆引きなどの情報に基づいて IP アドレスを物理的な場所に変換するのがいいでしょう。
 
 **[ユーザー]** ページの **[アクティビティ]** セクションの **[サインイン]** をクリックすると、すべてのユーザー サインインの完全な概要が表示されます。
 
 ![スクリーンショットには、[サインイン] を選択できる [アクティビティ] セクションが示されています。](./media/concept-sign-ins/08.png "サインイン アクティビティ")
+
+## <a name="authentication-details"></a>認証の詳細
+
+サインイン レポート内にある **[認証の詳細]** タブには、認証を試行するごとに次の情報が表示されます。
+
+- 適用される認証ポリシーの一覧 (条件付きアクセス、ユーザーごとの MFA、セキュリティの既定値など)
+- 適用されるセッション有効期間ポリシーの一覧 (サインインの頻度、MFA の保存、構成可能なトークンの有効期間など)
+- サインインに使用される認証方法のシーケンス
+- 認証試行が成功したかどうか
+- 認証試行が成功または失敗した理由の詳細
+
+こうした情報によって、管理者はユーザーのサインインの各ステップのトラブルシューティングを行い、次の情報を追跡できます。
+
+- 多要素認証によって保護されるサインインの回数 
+- セッション有効期間ポリシーに基づく認証プロンプトの理由
+- 各認証方法の使用状況と成功率 
+- パスワードレス認証方法の使用 (パスワードレス電話サインイン、FIDO2、Windows Hello for Business など) 
+- トークン要求によって認証要件が満たされる頻度 (ユーザーが対話形式でパスワードの入力や SMS OTP の入力を求められない場合など)
+
+サインイン レポートを表示している状態で、 **[認証の詳細]** タブを選択 します。 
+
+![[認証の詳細] タブのスクリーンショット](media/concept-sign-ins/auth-details-tab.png)
+
+>[!NOTE]
+>**OATH 検証コード** は、OATH ハードウェア トークンとソフトウェア トークン (Microsoft Authenticator アプリの認証など) の両方で認証方法として記録されます。
+
+>[!IMPORTANT]
+>**[認証の詳細]** タブでは、ログ情報が完全に集計されるまでの最初のうちは、不完全または不正確なデータが表示されることがあります。 たとえば、次のような場合が確認されています。 
+>- サインイン イベントが最初にログに記録された場合、 **[トークンの要求によって満たされました]** というメッセージが正しく表示されません。 
+>- **[プライマリ認証]** の行が最初はログに記録されません。 
+
 
 ## <a name="usage-of-managed-applications"></a>マネージド アプリケーションの使用状況
 
@@ -272,12 +332,12 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 
 ## <a name="microsoft-365-activity-logs"></a>Microsoft 365 のアクティビティ ログ
 
-Microsoft 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Microsoft 365 アクティビティ ログと Azure AD アクティビティ ログで多くのディレクトリ リソースが共有される点について考えてみましょう。 Microsoft 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターだけです。 
+Microsoft 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Microsoft 365 アクティビティと Azure AD アクティビティのログで多くのディレクトリ リソースが共有される点について考えてみましょう。 Microsoft 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターだけです。 
 
 また、[Office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Microsoft 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [サインイン アクティビティ レポートのエラー コード](reference-sign-ins-error-codes.md)
 * [Azure AD のデータ保有ポリシー](reference-reports-data-retention.md)
 * [Azure AD のレポート待機時間](reference-reports-latencies.md)
+* [サインイン レポート中の Microsoft ファースト パーティー アプリケーション](/troubleshoot/azure/active-directory/verify-first-party-apps-sign-in#application-ids-for-commonly-used-microsoft-applications)

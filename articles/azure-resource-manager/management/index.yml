@@ -10,12 +10,12 @@ metadata:
   author: tfitzmac
   ms.author: tomfitz
   ms.date: 01/02/2020
-  ms.openlocfilehash: 4cdd9b4e93196ddb737861f87882e58f3964a601
-  ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+  ms.openlocfilehash: a0240c255bb43afd91098245bb24995d2b92993c
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/08/2021
-  ms.locfileid: "102456030"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129361982"
 landingContent:
 - title: Azure Resource Manager について
   linkLists:
@@ -46,7 +46,7 @@ landingContent:
     - text: リソース グループとサブスクリプションをまたがる移動
       url: move-resource-group-and-subscription.md
     - text: リージョン間で移動する
-      url: move-region.md
+      url: move-resources-overview.md
     - text: リソースへのタグ付け
       url: tag-resources.md
     - text: リソースのロック
@@ -72,15 +72,13 @@ landingContent:
     - text: .NET
       url: /dotnet/api/microsoft.azure.management.resourcemanager
     - text: Java
-      url: /java/api/com.microsoft.azure.management.resources
+      url: /java/api/com.azure.resourcemanager.resources
     - text: Python
       url: /python/api/overview/azure/resources
 - title: 操作を追跡する
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: アクティビティ ログを表示する
-      url: view-activity-logs.md
     - text: 要求の制限と調整
       url: request-limits-and-throttling.md
     - text: 非同期操作

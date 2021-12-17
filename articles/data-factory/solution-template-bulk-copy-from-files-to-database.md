@@ -1,17 +1,19 @@
 ---
 title: ファイルからデータベースへの一括コピー
 description: ソリューション テンプレートを使用して、Azure Data Lake Storage Gen2 から Azure Synapse Analytics または Azure SQL Database にデータを一括コピーする方法について説明します。
-author: linda33wj
-ms.author: jingwang
+titleSuffix: Azure Data Factory & Azure Synapse
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 5f68c7b33a26bc8c01f3f413943351ff8d61b380
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59189f0c197294ca74e01d331663c51fa0e2bd7d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376123"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757897"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>ファイルからデータベースへの一括コピー
 
@@ -38,32 +40,32 @@ ms.locfileid: "100376123"
 
 1. **[Bulk Copy from Files to Database]\(ファイルからデータベースへの一括コピー\)** テンプレートに移動します。 ソース Gen2 ストアへの **新しい** 接続を作成します。 "GetMetadataDataset" と "SourceDataset" は、ソース ファイル ストアの同じ接続への参照であることに注意してください。
 
-    ![ソース データ ストアへの新しい接続の作成](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/source-connection.png" alt-text="ソース データ ストアへの新しい接続の作成":::
 
 2. データのコピー先であるシンク データ ストアへの **新しい** 接続を作成します。
 
-    ![シンク データ ストアへの新しい接続の作成](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/destination-connection.png" alt-text="シンク データ ストアへの新しい接続の作成":::
     
 3. **[このテンプレートを使用]** を選択します。
 
-    ![このテンプレートを使用](media/solution-template-bulk-copy-from-files-to-database/use-template.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/use-template.png" alt-text="このテンプレートを使用":::
     
 4. 次の例のようなパイプラインが作成されます。
 
-    ![パイプラインのレビュー](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png" alt-text="パイプラインのレビュー":::
 
     > [!NOTE]
     > 前述の **手順 2** のデータのコピー先として **Azure Synapse Analytics** を選択した場合、Azure Synapse Analytics の Polybase で必要とされる、ステージングのための Azure BLOB ストレージへの接続を入力する必要があります。 次のスクリーンショットに示すように、このテンプレートは BLOB ストレージの "*ストレージ パス*" を自動的に生成します。 パイプラインの実行後、コンテナーが作成されているかどうかを確認してください。
         
-    ![Polybase 設定](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/staging-account.png" alt-text="Polybase 設定":::
 
 5. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
 
-    ![**[デバッグ]** をクリックします。](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/debug-run.png" alt-text="**[デバッグ]** をクリックします。":::
 
 6. パイプラインの実行が正常に完了すると、次の例のような結果が表示されます。
 
-    ![結果を確認する](media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png" alt-text="結果を確認する":::
 
        
 ## <a name="next-steps"></a>次のステップ

@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: デバイス ビルダー向け Microsoft Defender for IoT のドキュメント
+summary: 'Microsoft Defender for IoT は、IoT/OT 環境に対する包括的な脅威検出機能を備えており、完全なオンプレミス、クラウド接続、ハイブリッドなどの複数のデプロイ オプションが用意されています。 注: Microsoft Defender for IoT は、Microsoft Defender for IoT に名前が変更されています。 ドキュメントは間もなく更新されます。'
+metadata:
+  title: デバイス ビルダー向け Microsoft Defender for IoT のドキュメント
+  description: Microsoft Defender for IoT は、IoT/OT 環境に対する包括的な脅威検出機能を備えており、完全なオンプレミス、クラウド接続、ハイブリッドなどの複数のデプロイ オプションが用意されています。
+  services: service
+  ms.service: defender-for-iot
+  ms.topic: landing-page
+  ms.collection: M365-security-compliance
+  author: elazark
+  ms.author: v-ekrieg
+  manager: raynew
+  ms.date: 11/09/2021
+  ms.openlocfilehash: 43c54696ec3ce5359d2c61c71e9f5d9803a1ba41
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132283944"
+landingContent:
+- title: デバイス ビルダー向け Microsoft Defender for IoT について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: デバイス ビルダー向け Microsoft Defender for IoT とは
+      url: overview.md
+    - text: デバイス ビルダー向けエージェントベース ソリューションのアーキテクチャ
+      url: architecture-agent-based.md
+- title: 開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: エージェントベース ソリューションに Defender for IoT をオンボードする
+      url: quickstart-onboard-iot-hub.md
+    - text: Microsoft Defender for IoT ソリューションを構成します
+      url: quickstart-configure-your-solution.md
+- title: セキュリティ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: セキュリティに関する推奨事項
+      url: concept-recommendations.md
+    - text: イベントの集計
+      url: concept-event-aggregation.md
+- title: 操作方法
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Microsoft Defender for IoT エージェントベースのソリューションを構成する
+      url: how-to-configure-agent-based-solution.md
+    - text: OS ベースラインを調査する
+      url: how-to-investigate-cis-benchmark.md
+    - text: カスタム アラートの作成
+      url: quickstart-create-custom-alerts.md
+    - text: Azure RTOS 用の Defender-IoT-micro-agent を構成およびカスタマイズする (プレビュー)
+      url: how-to-azure-rtos-security-module.md
+- title: ドキュメントの最新情報
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: デバイス ビルダーの新機能
+      url: release-notes.md

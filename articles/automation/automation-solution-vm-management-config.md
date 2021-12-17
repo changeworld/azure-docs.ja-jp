@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: dfabb3ef521b496a073d502efd4fd672cfcf3b8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 966bb84f260762d2eb176b92a6ec2dd7b333271d
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597742"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203705"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours を構成する
 
@@ -57,7 +57,7 @@ VM の停止のみを行うようにこの機能を構成できます。 カス�
     > [!NOTE]
     > **[ターゲット ResourceGroup 名]** の値は、`External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupNames` の両方の値として格納されます。 粒度を高めるためには、これらの変数をそれぞれ変更して、異なるリソース グループを対象にします。 開始アクションでは `External_Start_ResourceGroupNames` を使用し、停止アクションでは `External_Stop_ResourceGroupNames` を使用します。 VM が起動スケジュールと停止スケジュールに自動的に追加されます。
 
-## <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a><a name="tags"></a>シナリオ 2:タグを使用して VM を順番に起動/停止する
+## <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a><a name="tags"></a>シナリオ 2: タグを使用して VM を順番に起動/停止する
 
 分散ワークロードをサポートする複数の VM のコンポーネントを 2 つ以上含む環境では、コンポーネントの起動および停止順序を指定できることが重要です。 
 
@@ -145,7 +145,7 @@ Start/Stop VMs during off-hours のデプロイ後に電子メール通知を変
 
     :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="更新されたメール アドレスの例を示す [Email/SMS message/Push/Voice]\(メール/SMS メッセージ/プッシュ/音声\) ページのスクリーンショット。":::
 
-    アクション グループに他のアクションを追加できます。 アクション グループの詳細については、[アクション グループ](../azure-monitor/platform/action-groups.md)に関する記事をご覧ください。
+    アクション グループに他のアクションを追加できます。 アクション グループの詳細については、[アクション グループ](../azure-monitor/alerts/action-groups.md)に関する記事をご覧ください。
 
 この機能によって仮想マシンがシャットダウンされたときに送信されるメールの例を以下に示します。
 

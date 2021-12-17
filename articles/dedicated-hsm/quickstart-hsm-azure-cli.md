@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.devlang: azurecli
 ms.date: 01/06/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e07bc758b1ef86b3d8c605cbce72f6db564a355f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80d5bbb54715c5a1a5102f8991f366e273145edc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020861"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868953"
 ---
 # <a name="quickstart-create-an-azure-dedicated-hsm-by-using-the-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure 専用 HSM を作成する
 
-この記事では、[az dedicated-hsm](/cli/azure/ext/hardware-security-modules/dedicated-hsm) Azure CLI 拡張機能を使用して、Azure 専用 HSM を作成および管理する方法について説明します。
+この記事では、[az dedicated-hsm](/cli/azure/dedicated-hsm) Azure CLI 拡張機能を使用して、Azure 専用 HSM を作成および管理する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ az group create --name myRG --location westus
 
 ## <a name="create-a-dedicated-hsm"></a>専用 HSM を作成する
 
-専用 HSM を作成するには、[az dedicated-hsm create](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_create) コマンドを使用します。 次の例では、`westus` リージョン、`myRG` リソース グループ、指定のサブスクリプション、仮想ネットワーク、およびサブネットで、`hsm1` という名前の専用 HSM をプロビジョニングします。 必須のパラメーターは、`name`、`location`、および `resource group` です。
+専用 HSM を作成するには、[az dedicated-hsm create](/cli/azure/dedicated-hsm#az_dedicated_hsm_create) コマンドを使用します。 次の例では、`westus` リージョン、`myRG` リソース グループ、指定のサブスクリプション、仮想ネットワーク、およびサブネットで、`hsm1` という名前の専用 HSM をプロビジョニングします。 必須のパラメーターは、`name`、`location`、および `resource group` です。
 
 ```azurecli-interactive
 az dedicated-hsm create \
@@ -63,7 +63,7 @@ az dedicated-hsm create \
 
 ## <a name="get-a-dedicated-hsm"></a>専用 HSM を取得する
 
-現在の専用 HSM を取得するには、[az dedicated-hsm show](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_show) コマンドを実行します。 次の例では、`myRG` リソース グループ内の `hsm1` 専用 HSM を取得します。
+現在の専用 HSM を取得するには、[az dedicated-hsm show](/cli/azure/dedicated-hsm#az_dedicated_hsm_show) コマンドを実行します。 次の例では、`myRG` リソース グループ内の `hsm1` 専用 HSM を取得します。
 
 ```azurecli-interactive
 az dedicated-hsm show --resource-group myRG --name hsm1
@@ -71,7 +71,7 @@ az dedicated-hsm show --resource-group myRG --name hsm1
 
 ## <a name="update-a-dedicated-hsm"></a>専用 HSM を更新する
 
-専用 HSM を更新するには、[az dedicated-hsm update](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_update) コマンドを使用します。 次の例では、`myRG` リソース グループ内の `hsm1` 専用 HSM と、そのタグを更新します。
+専用 HSM を更新するには、[az dedicated-hsm update](/cli/azure/dedicated-hsm#az_dedicated_hsm_update) コマンドを使用します。 次の例では、`myRG` リソース グループ内の `hsm1` 専用 HSM と、そのタグを更新します。
 
 ```azurecli-interactive
 az dedicated-hsm update --resource-group myRG –-name hsm1 --tags resourceType="hsm" Environment="prod" Slice="A"
@@ -79,7 +79,7 @@ az dedicated-hsm update --resource-group myRG –-name hsm1 --tags resourceType=
 
 ## <a name="list-dedicated-hsms"></a>専用 HSM を一覧表示する
 
-現在の専用 HSM に関する情報を取得するには、[az dedicated-hsm list](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_list) コマンドを実行します。 次の例では、`myRG` リソース グループ内の専用 HSM を一覧表示します。
+現在の専用 HSM に関する情報を取得するには、[az dedicated-hsm list](/cli/azure/dedicated-hsm#az_dedicated_hsm_list) コマンドを実行します。 次の例では、`myRG` リソース グループ内の専用 HSM を一覧表示します。
 
 ```azurecli-interactive
 az dedicated-hsm list --resource-group myRG
@@ -87,7 +87,7 @@ az dedicated-hsm list --resource-group myRG
 
 ## <a name="remove-a-dedicated-hsm"></a>専用 HSM を削除する
 
-専用 HSM を削除するには、[az dedicated-hsm delete](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_delete) コマンドを使用します。 次の例では、`myRG` リソース グループから `hsm1` 専用 HSM を削除します。
+専用 HSM を削除するには、[az dedicated-hsm delete](/cli/azure/dedicated-hsm#az_dedicated_hsm_delete) コマンドを使用します。 次の例では、`myRG` リソース グループから `hsm1` 専用 HSM を削除します。
 
 ```azurecli-interactive
 az dedicated-hsm delete --resource-group myRG –-name hsm1

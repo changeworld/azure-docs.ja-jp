@@ -4,12 +4,12 @@ description: Application Insights SDK の最新の更新内容。
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 07/27/2020
-ms.openlocfilehash: 0f5cebcb2711ca63833b6c7e285483f4e3ca6eb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7bab9d7d0f7f071b7efe0c85ccf0ed73b7f60fc6
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88934278"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293913"
 ---
 # <a name="release-notes---application-insights"></a>リリース ノート - Application Insights
 
@@ -35,14 +35,13 @@ Application Insights サービス全体の主要な機能強化をまとめた[�
 コード不要の監視の概要:
 
 * [Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ](./azure-vm-vmss-apps.md)
-* [IIS サーバー](./monitor-performance-live-website-now.md)
+* [IIS サーバー](./status-monitor-v2-overview.md)
 * [Azure Web Apps](./azure-web-apps.md)
 
 コードベースの監視の概要:
 
 * [ASP.NET](./asp-net.md)
 * [ASP.NET Core](./asp-net-core.md)
-* [Java](./java-get-started.md)
+* [Java](./java-in-process-agent.md)
 * [Node.js](./nodejs.md)
 * [Python](./opencensus-python.md)
-

@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: fcb924b84865519e8def3b28f633f9752c038ca2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e3ae224e08911de3fe08096265379c65322b1775
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351420"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615041"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>クイック スタート:PHP を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -51,14 +51,14 @@ ms.locfileid: "96351420"
 // ;extension=php_openssl.dll
 
 // **********************************************
-// **_ Update or verify the following values. _*_
-// _*********************************************
+// *** Update or verify the following values. ***
+// **********************************************
 
 // Replace the subscriptionKey string value with your valid subscription key.
 $subscriptionKey = 'ENTER KEY HERE';
 
-$host = "https://api.cognitive.microsoft.com";
-$path = "/bing/v7.0/entities";
+$host = "https://api.bing.microsoft.com";
+$path = "/v7.0/search";
 
 $mkt = "en-US";
 $query = "italian restaurants near me";

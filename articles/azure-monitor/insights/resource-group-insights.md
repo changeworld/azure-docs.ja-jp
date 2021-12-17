@@ -1,19 +1,19 @@
 ---
 title: Azure Monitor リソース グループの分析情報 | Microsoft Docs
-description: Azure Monitor によるリソース グループ レベルで分散アプリケーションとサービスの正常性とパフォーマンスの概要
+description: Azure Monitor のリソース グループの分析情報機能により、分散型アプリケーションやサービスの健全性やパフォーマンスをリソース グループ レベルで把握することができます。
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bfe197befc781548dc41ff389f2d9558af7a8aae
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 466d63f8615d8115c7dcbfacdca2d004cf19621e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567404"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073812"
 ---
-# <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Monitor でリソース グループを監視する (プレビュー)
+# <a name="monitor-azure-monitor-resource-group-insights-preview"></a>Azure Monitor リソース グループの分析情報の監視 (プレビュー)
 
 多くの場合、最新のアプリケーションは複雑で高度に分散しており、多くの個別のパーツが連携してサービスを提供しています。 このような複雑さを認識して、Azure Monitor はリソース グループの分析情報の監視機能を提供しています。 そのため、リソース グループ&mdash;とアプリケーション&mdash;全体の正常性とパフォーマンスに関するコンテキストを表示しながら、個々のリソースで問題が発生した場合に問題の分類と診断を簡単に実行できます。
 
@@ -108,10 +108,10 @@ App Service を選択すると、Azure Monitor Workbook テンプレートのギ
 
 ### <a name="enabling-access-to-alerts"></a>アラートへのアクセスを有効にする
 
-Azure Monitor でリソース グループのアラートを確認するには、このサブスクリプションの所有者または共同作成者ロールを持つユーザーが、サブスクリプション内の任意のリソース グループに対して、Azure Monitor for Resource Groups を開く必要があります。 これにより、読み取りアクセス権を持つユーザーが、サブスクリプション内のすべてのリソース グループのアラートを Azure Monitor for Resource Groups で確認できるようになります。 所有者または共同作成者ロールをお持ちの場合、数分単位でこのページを更新してください。
+リソース グループの分析情報でリソース グループのアラートを確認するには、このサブスクリプションの所有者または共同作成者ロールを持つユーザーが、サブスクリプション内の任意のリソース グループに対して、リソース グループの分析情報を開く必要があります。 これにより、読み取りアクセス権を持つユーザーが、サブスクリプション内のすべてのリソース グループのアラートをリソース グループの分析情報で確認できるようになります。 所有者または共同作成者ロールをお持ちの場合、数分単位でこのページを更新してください。
 
-Azure Monitor for Resource Groups は、Azure Monitor Alerts Management システムに依存して、アラート ステータスを取得します。 Alerts Management は、既定でどのリソース グループおよびサブスクリプションにも構成されているわけではなく、所有者または共同作成者ロールを持つユーザーしか有効化できません。 次のいずれかの方法で、有効化できます。
-* サブスクリプション内の任意のリソース グループに対して Azure Monitor for Resource Groups を開く。
+リソース グループの分析情報は、Azure Monitor Alerts Management システムを使用して、アラート ステータスを取得します。 Alerts Management は、既定でどのリソース グループおよびサブスクリプションにも構成されているわけではなく、所有者または共同作成者ロールを持つユーザーしか有効化できません。 次のいずれかの方法で、有効化できます。
+* サブスクリプション内の任意のリソース グループのリソース グループ分析情報を開く。
 * サブスクリプションに移動して、 **[リソース プロバイダー]** をクリックしてから、 **[Register for Alerts.Management]\(Alerts.Management への登録\)** をクリックする。
 
 ## <a name="next-steps"></a>次のステップ

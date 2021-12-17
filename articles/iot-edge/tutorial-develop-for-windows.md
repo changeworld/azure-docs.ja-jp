@@ -2,7 +2,6 @@
 title: チュートリアル - Azure IoT Edge を使用して Windows デバイス用のモジュールを開発する
 description: このチュートリアルでは、Windows コンテナーを使用して Windows デバイス用の IoT Edge モジュールを開発するための、開発マシンとクラウド リソースの設定について説明します
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
@@ -10,12 +9,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a2d8a215dfc34073783a5d8a6233ec8dbae4ec17
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0164d0ed578ea3f20392f333408553fa60f4d165
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218874"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238588"
 ---
 # <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>チュートリアル: Windows コンテナーを使用して IoT Edge モジュールを開発する
 
@@ -50,7 +49,7 @@ Visual Studio を使用して、コードを開発し、IoT Edge を実行して
 
 Window 上の Azure IoT Edge デバイス:
 
-* [Windows コンテナーを使用して Azure IoT Edge をインストールし、管理します](how-to-install-iot-edge-windows-on-windows.md)。
+* [Windows コンテナーを使用して Azure IoT Edge をインストールし、管理します](how-to-provision-single-device-windows-symmetric.md)。
 * 可能であれば、開発マシンでは IoT Edge を実行せず、代わりに別のデバイスを使用することをお勧めします。 開発マシンと IoT Edge デバイスのこの区別は、実際のデプロイ シナリオをより正確に反映し、異なる概念を区別するのに役立ちます。
 
 クラウド リソース:
@@ -157,6 +156,20 @@ Azure IoT Edge Tools の拡張機能により、Visual Studio でサポートさ
   * **program.cs** ファイルには、プロジェクト テンプレートに付属する既定の C# モジュール コードが含まれています。 既定のモジュールは、ソースから入力を受け取り、それを IoT Hub に渡します。
   * **module.json** ファイルには、完全なイメージ リポジトリ、イメージ バージョン、サポートされているプラットフォームごとに使用する Dockerfile など、モジュールに関する詳細情報が含まれています。
 
+### <a name="set-iot-edge-runtime-version"></a>IoT Edge ランタイム バージョンを設定する
+
+IoT Edge 拡張機能は、デプロイ アセットを作成するときに、IoT Edge ランタイムの最新の安定バージョンを既定として使用します。 現在、最新の安定バージョンはバージョン 1.2 です。 
+
+Windows コンテナーは、1.1 の長期サポート バージョンまたはそれより前の 1.0 バージョンでのみサポートされています。 Windows コンテナーを使用してデバイス用のモジュールを開発するには、これらのデバイスの IoT Edge バージョンと一致するように Visual Studio の IoT Edge ランタイム バージョンを更新します。
+
+1. ソリューション エクスプローラーで、プロジェクト名を右クリックし、 **[Set IoT Edge Runtime version]\(IoT Edge ランタイム バージョンの設定\)** を選択します。
+
+   :::image type="content" source="./media/how-to-visual-studio-develop-module/set-iot-edge-runtime-version.png" alt-text="プロジェクト名を右クリックし、[Set IoT Edge Runtime version]\(IoT Edge ランタイム バージョンの設定\) を選択します。":::
+
+1. ドロップダウン メニューを使用して、IoT Edge デバイスが実行されているランタイム バージョンを選択し、 **[OK]** を選択して変更を保存します。
+
+1. 新しいランタイム バージョンで配置マニフェストを再生成します。 プロジェクト名を右クリックし、 **[Generate Deployment for IoT Edge]\(IoT Edge の配置の生成\)** を選択します。
+
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>レジストリの資格情報を IoT Edge エージェントに提供する
 
 IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバイスにプルするためにレジストリ資格情報が必要です。 IoT Edge 拡張機能は、Azure からコンテナー レジストリの情報をプルし、それをデプロイ テンプレートに取り込もうと試みます。
@@ -180,6 +193,9 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 1. Azure コンテナー レジストリからコピーした **Username** と **Password** の値を追加します。
 
 1. 変更内容を .env ファイルに保存します。
+
+>[!NOTE]
+>このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、「[コンテナー レジストリへのアクセスを管理する](production-checklist.md#manage-access-to-your-container-registry)」を参照してください。
 
 ### <a name="review-the-sample-code"></a>サンプル コードを確認する
 

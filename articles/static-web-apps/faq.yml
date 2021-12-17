@@ -1,0 +1,205 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Static Web Apps についてよく寄せられる質問
+  description: Azure Static Web Apps についてよく寄せられる質問とその回答を紹介します。
+  keywords: azure static web apps, frequently asked questions
+  author: craigshoemaker
+  ms.topic: article
+  ms.service: static-web-apps
+  ms.date: 10/23/2021
+  ms.author: cshoe
+  ms.openlocfilehash: e4bab9b55051ecd6bbb35a99b0962132d8a5fd60
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131092139"
+title: Azure Static Web Apps についてよく寄せられる質問
+sections:
+- name: ビルドとデプロイ
+  questions:
+  - question: >
+      Static Web Apps によって自動的にビルドできるフロントエンド フレームワークは何ですか?
+    answer: >
+      Static Web Apps では、以下を自動的にビルドできます。
+
+
+      * React、Vue.js、Angular、Blazor WebAssembly など、一般的なシングルページ アプリケーション (SPA)
+
+      * Next.js、Nuxt.js、Gatsby、Hugo、Jekyll、Eleventy など、一般的に使用される静的サイト ジェネレーター
+
+
+      詳細については、[フロントエンド フレームワークの構成](front-end-frameworks.md)に関する記事を参照してください。
+  - question: >
+      ビルド プロセス中、どのようなことが行われますか?
+    answer: >
+      Azure Static Web Apps のビルド エンジンは、[Oryx](https://github.com/microsoft/Oryx) を利用してアプリのフロントエンドと API をビルドします。
+
+
+      アプリをビルドするときに、Oryx によってビルド ステップが自動的に検出され、実行されます。 たとえば、アプリで Node.js を使用している場合、npm または Yarn を使用してパッケージがインストールされます。 次に、アプリの _package.json_ ファイルで指定されている `build` または `build:azure` スクリプトが実行されます。
+  - question: >
+      ビルド プロセスはカスタマイズできますか?
+    answer: >
+      アプリのビルド方法を完全に制御する場合は、アプリの GitHub ワークフローまたは Azure DevOps パイプラインで独自のビルド ステップを構成できます。 その後、Static Web Apps GitHub Actions または Azure Pipelines タスクを使用してアプリをデプロイできます。 必ず `skip_app_build` を `true` に設定します。 詳細については、[ビルド構成](build-configuration.md?skip-building-front-end-app)に関する記事を参照してください。
+
+
+      現在、`skip_app_build` コマンドは、フロントエンド アプリでのみサポートされています。 API アプリは、Azure Static Web Apps GitHub Actions または Azure Pipelines タスクによってビルドする必要があります。
+  - question: >
+      GitHub Actions や Azure DevOps を使用せずにアプリをデプロイすることはできますか?
+    answer: >
+      現在、Azure Static Web Apps では、GitHub Actions と Azure DevOps がサポートされています。 今後、さらに多くのデプロイ オプションが追加される予定です。
+  - question: "\"Treating warnings as errors because process.env.CI = true\"\\(process.env.CI = true であるため、警告をエラーとして扱います\\) というメッセージが表示されて、React アプリケーションのビルドに失敗します。 このエラーを修正するにはどうすればよいですか?\n"
+    answer: >
+      アプリで [create-react-app](https://github.com/facebook/create-react-app) を使用した場合、そのビルド コマンドは、GitHub Actions や Azure Pipelines などの継続的インテグレーション (CI) 環境で実行されるときに警告をエラーとして扱います。 アプリで警告が発生した場合、ビルドに失敗します。 これらの問題を修正するには、アプリを変更して警告を削除します。 警告が発生してもビルドが成功するようにしたい場合は、_package.json_ 内のビルド スクリプトを更新して、`CI` 環境変数の設定を解除します。
+
+
+      ```json
+
+      "scripts": {
+        "build": "CI= react-scripts build"
+      }
+
+      ```
+  - question: >
+      GitHub のブランチを変更するにはどうすればよいですか?
+    answer: >
+      ビルドおよびデプロイ元のブランチを変更するには、アプリの GitHub ワークフローでブランチ名を更新します。 たとえば、`release` という名前のブランチからビルドおよびデプロイするようにアプリを変更する場合は、ワークフローの `on` セクションを次のように更新します。
+
+
+      ```yaml
+
+      on:
+        push:
+          branches:
+            - release
+        pull_request:
+          types: [opened, synchronize, reopened, closed]
+          branches:
+            - release
+      ```
+
+
+      プレビュー期間中に作成された静的 Web アプリの場合、[デプロイ トークンをリセット](deployment-token-management.md)することが必要な場合があります。
+  - question: >
+      Linux GitHub Actions または Azure Pipelines ビルド エージェントで Static Web Apps のアクションまたはタスクを実行する必要がありますか?
+    answer: >
+      Azure Static Web Apps のビルド エンジンは、Linux Docker コンテナーで実行されるので、Linux ビルド エージェントでのみ実行できます。
+  - question: >
+      Git Large File Storage (LFS) を使用するアプリをデプロイするにはどうすればよいですか?
+    answer: >
+      GitHub ワークフローで、LFS を有効にするように `actions/checkout` アクションを構成します。
+
+
+      ```yaml
+
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+          lfs: true
+      ```
+  - question: >
+      デプロイ後にキャッシュを手動で消去または無効にする必要がありますか?
+    answer: >
+      Azure Static Web Apps では、キャッシュの無効化を自動的に処理します。 デプロイが完了すると、すべての要求に最新バージョンのファイルが提供されます。 ただし、ユーザーのブラウザーまたは CDN (構成済みの場合) にファイルをキャッシュすることもできます。 ブラウザーおよび CDN でコンテンツをキャッシュする方法を制御するには、アプリの[構成ファイル](configuration.md)で適切なヘッダーを構成します。
+  - question: >
+      Azure Pipelines を使用してデプロイする場合、実稼働前環境を使用できますか?
+    answer: >
+      現在、[実稼働前環境](review-publish-pull-requests.md)は、GitHub Actions でのみサポートされています。
+- name: Hosting
+  questions:
+  - question: >
+      Static Web Apps では、カスタム ドメインと TLS 証明書はサポートされていますか?
+    answer: >
+      apex ドメインなど、カスタム ドメインを使用するようにアプリを構成できます。 Static Web Apps では、カスタム ドメインを追加すると、無料の TLS 証明書が自動的に提供されます。 詳細については、[無料の証明書を使用したカスタム ドメインの設定](custom-domain.md)に関する記事を参照してください。
+  - question: >
+      アプリの 404 エラー ページはカスタマイズできますか?
+    answer: >
+      [構成ファイル](configuration.md#response-overrides)の `responseOverrides` セクションを使用して、カスタム エラー ページを構成できます。
+  - question: >
+      アプリが特定の Azure リージョンに確実にデプロイされるようにするにはどうすればよいですか?
+    answer: >
+      Azure Static Web Apps はグローバル サービスです。 アプリの静的アセットはグローバルに分散されます。 アプリを作成するときに、マネージド Azure Functions アプリがデプロイされているリージョンを選択します。 マネージド関数をサポートしていないリージョンで Functions アプリが必要な場合は、個別にデプロイする Functions アプリで[独自の Functions アプリの持ち込み](functions-bring-your-own.md)機能を使用できます。
+  - question: >
+      Azure Application Gateway または Azure Front Door のような CDN の背後にある静的 Web アプリはどのように構成すればよいですか?
+    answer: >
+      Azure Static Web Apps では、アプリの静的アセットがグローバルに分散されます。 グローバル展開を最大限に活用する場合や高度な機能が必要な場合は、専用のコンテンツ配信ネットワーク (CDN) または Azure Application Gateway を追加できます。
+
+
+      特定の CDN へのトラフィックを制限するには、定義済みのシークレット値を含むヘッダーをすべての要求に追加するように CDN を構成し、[そのヘッダーを要求する](configuration.md#required-headers)ように Static Web Apps を構成します。 Azure Application Gateway へのトラフィックを制限するには、その Application Gateway の IP からのトラフィックのみを許可するように[アプリを構成](configuration.md#networking)します。
+
+
+      また、CDN または Application Gateway のホスト名の[転送を許可](configuration.md#allowed-forwarded-hosts)するようにアプリを構成します。
+
+
+      Azure Front Door の構成については、[このチュートリアル](front-door-manual.md)を参照してください。
+  - question: >
+      Gzip または Brotli 圧縮を有効にするにはどうすればよいですか?
+    answer: >
+      `.html`、`.css`、`.js` など、一般的なテキスト形式のファイル拡張子を持つアセットの場合、Azure Static Web Apps では、クライアントがサポートしていれば、静的アセットの [Gzip](https://en.wikipedia.org/wiki/Gzip) または [Brotli](https://en.wikipedia.org/wiki/Brotli) 圧縮バージョンが自動的に提供されます。
+
+
+      他のファイルの種類の場合、Static Web Apps を使用すると、`.br` 拡張子が付けられた Brotli 圧縮バージョンのファイルを含めることができます。 たとえば、`app.wasm` という名前の圧縮されていないファイルがある場合、`app.wasm.br` という名前の圧縮バージョンをアプリに追加できます。 このバージョンは、Brotli をサポートするクライアントが `app.wasm` を要求すると自動的に提供されます。
+  - question: >
+      存在するルートにアクセスしたときに、静的 Web アプリから 404 エラーが返されるのはなぜですか?
+    answer: >
+      React、Angular、Blazor WebAssembly などのほとんどのフロントエンド フレームワークでは、クライアント側ルーティングを使用してナビゲーションを処理します。 クライアント側ルートは、ブラウザーで実行されているアプリにのみ認識されます。 Static Web Apps からクライアント側ルートを要求した場合、そのルートはアプリのデプロイ済みアセットに存在しないため、404 エラーが返されます。 この問題を解決するには、アプリの[構成ファイル](configuration.md#fallback-routes)にフォールバック ルートを追加します。
+- name: 構成
+  questions:
+  - question: >
+      アプリの環境変数を構成するにはどうすればよいですか?
+    answer: >
+      アプリに設定できる環境変数にはさまざまな種類があります。 アプリの[ビルド構成](build-configuration.md#environment-variables)で、アプリのフロントエンド ビルド プロセスに影響を与える変数を構成します。 アプリの API で使用される変数を構成するには、[アプリケーション設定](application-settings.md)を使用します。 詳細については、「[構成の概要](configuration-overview.md)」を参照してください。
+  - question: >
+      Static Web App では、マネージド ID はサポートされていますか?
+    answer: >
+      Static Web Apps ではマネージド ID がサポートされていますが、Key Vault からの[認証シークレットの取得](key-vault-secrets.md)にのみ使用されます。
+
+
+      API でマネージド ID または Key Vault 参照が必要な場合は、[独自の Functions アプリの持ち込み](functions-bring-your-own.md)機能を使用して、マネージド ID を使用する別の Functions アプリを使用します。
+- name: 認証
+  questions:
+  - question: >
+      静的 Web アプリにログインできるユーザーは何人ですか?
+    answer: Static Web Apps では、アプリにログインできるユーザーの数に制限はありません。 組み込みの招待システムを使用して、最大 25 人のユーザーにカスタム ロールを割り当てることができます。 さらに多くのユーザーにカスタム ロールを割り当てる必要がある場合は、[API 関数を使用してプログラムでロールを割り当てる](authentication-authorization.md?tabs=function#role-management)ことができます。
+  - question: >
+      ID プロバイダーからユーザーのアクセス トークンまたは要求を取得するにはどうすればよいですか?
+    answer: >
+      [ロール管理に API 関数](authentication-authorization.md?tabs=function#role-management)を使用すると、ユーザーのアクセス トークンと要求を取得できます。
+  - question: >
+      使用する ID プロバイダーは 1 つに限られますか?
+    answer: >
+      Static Web Apps の組み込みの認証を使用する場合、ユーザーはサポートされている ID プロバイダーのいずれかを使用してログインできます。 ユーザーが特定の ID プロバイダーでログインできないようにしたい場合は、[それをブロック](authentication-authorization.md?#block-an-authorization-provider)できます。
+
+
+      [カスタム認証](authentication-custom.md)を使用している場合は、1 つ以上の ID プロバイダーを構成できます。
+- name: API 関数
+  questions:
+  - question: >
+      Static Web Apps でサポートされていない言語または言語バージョンを使用して API を記述するにはどうすればよいですか?
+    answer: >
+      Static Web Apps のマネージド関数アプリでは、Azure Functions でサポートされているすべての言語または言語バージョンがサポートされているわけではありません。 [独自の Functions アプリの持ち込み](functions-bring-your-own.md)機能を使用して、別の Functions アプリを静的 Web アプリにリンクすることができます。
+  - question: >
+      HTTP 以外のイベントに応答するサーバーレス関数を作成するにはどうすればよいですか?
+    answer: >
+      Static Web Apps のマネージド関数アプリは API のシナリオに最適化されており、HTTP トリガーのみがサポートされています。 cron ジョブなどに対応する Azure Functions またはステートフル ワークフロー向けの Durable Functions でサポートされている他のトリガーの種類を使用する必要がある場合は、[独自の Functions アプリの持ち込み](functions-bring-your-own.md)機能を使用して、別の Functions アプリを静的 Web アプリにリンクすることができます。
+- name: 全般
+  questions:
+  - question: >
+      Free プランにはどのような制限がありますか?
+    answer: >
+      Free プランには、グローバル分散、カスタム ドメイン、無料の TLS 証明書、マネージド API 関数など、Standard プランと同じ機能が多数含まれています。 ただし、より多くの帯域幅、サービス レベル アグリーメント (SLA)、または高度な機能が必要な場合は、Standard プランを検討してください。 詳細については、[ホスティング プラン](plans.md)に関する記事と[クォータ](quotas.md)に関する記事を参照してください。
+  - question: >
+      アプリの作成後にホスティング プランを変更することはできますか?
+    answer: >
+      Free プランから Standard プランにいつでもアップグレードできます。 Standard プランを必要とする機能を使用していない場合は、Standard プランから Free プランにダウングレードすることもできます。
+  - question: >
+      静的 Web アプリをデプロイせずにローカルで開発することはできますか?
+    answer: >
+      ほとんどのフロントエンド フレームワークでは、アプリをローカルで実行するための開発サーバーが提供されます。 ただし、認証や API 関数を使用する場合は、アプリを Azure にデプロイせずにアプリのすべての機能をテストするのは難しい可能性があります。 アプリをローカルで実行するには、[Static Web Apps コマンド ライン インターフェイス (CLI)](https://www.npmjs.com/package/@azure/static-web-apps-cli) を使用します。これは、認証などのクラウド エクスペリエンスをエミュレートし、[Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) と統合されて API 関数を実行します。 また、アプリを Azure にデプロイする際に使用できる [Static Web Apps Visual Studio Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps)も用意されています。
+  - question: >
+      サポートを受けたり、新しい機能を提案したりするにはどうすればよいですか?
+    answer: >-
+      サポートが必要な場合や提案がある場合は、[Static Web Apps GitHub リポジトリ](https://github.com/Azure/static-web-apps/issues)でイシューを作成できます。
+
+
+      問題解決にサポートがすぐに必要な場合は、[Azure サポートにお問い合わせください](https://azure.microsoft.com/support/options/)。

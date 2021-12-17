@@ -8,30 +8,30 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 09/27/2021
 ms.author: ryanwi
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 311dfd976610c392909a0ec3d91fecaa4d733539
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cba6644b691c6e702ee25d0302a56ca989aa88d9
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104197"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153876"
 ---
-# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>方法:アプリのサービス利用規約とプライバシーに関する声明を構成する
+# <a name="configure-terms-of-service-and-privacy-statement-for-an-app"></a>アプリのサービス利用規約とプライバシーに関する声明を構成する
 
-Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウントと統合されているアプリをビルドして管理する開発者は、アプリのサービス利用規約とプライバシーに関する声明へのリンクを含める必要があります。 サービス利用規約とプライバシーに関する声明は、ユーザーの同意エクスペリエンスからユーザーに提示されます。 これは、ユーザーがアプリを信頼できることを知るのに役立ちます。 サービス利用規約とプライバシーに関する声明は、ユーザー向けマルチテナント アプリに特に重要です。アプリは複数のディレクトリによって使用され、すべての Microsoft アカウントで利用できます。
+Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウントと統合されているマルチテナント アプリをビルドして管理する開発者は、アプリのサービス利用規約とプライバシーに関する声明へのリンクを含める必要があります。 サービス利用規約とプライバシーに関する声明は、ユーザーの同意エクスペリエンスからユーザーに提示されます。 これは、ユーザーがアプリを信頼できることを知るのに役立ちます。 サービス利用規約とプライバシーに関する声明は、ユーザー向けマルチテナント アプリに特に重要です。アプリは複数のディレクトリによって使用され、すべての Microsoft アカウントで利用できます。
 
 お客様は自分のアプリのサービス利用規約とプライバシーに関する声明ドキュメントを作成し、これらのドキュメントへの URL を提供する責任があります。 これらのリンクを提供できないマルチテナント アプリの場合、アプリに対するユーザーの同意エクスペリエンスで、ユーザーがアプリに同意することを防ぐためのアラートが表示されます。
 
 > [!NOTE]
-> * シングルテナント アプリでは、アラートは表示されません。
+> * シングルテナント アプリの場合、サービス使用条件とプライバシー ステートメントのリンクは該当しません。
 > * この 2 つのリンクの一方または両方が存在しない場合は、アプリにアラートが表示されます。
 
 ## <a name="user-consent-experience"></a>ユーザーの同意エクスペリエンス
 
-次の例では、サービス利用規約とプライバシーに関する声明を設定し、これらのリンクを設定していないときに、ユーザーの同意エクスペリエンスが表示されます。
+次の例では、サービス利用規約とプライバシーに関する声明を設定し、これらのリンクを設定していないときに、マルチテナント アプリのユーザーの同意エクスペリエンスが表示されます。
 
 ![提供されたプライバシーに関する声明とサービス利用規約を含むスクリーンショット、および含まないスクリーンショット](./media/howto-add-terms-of-service-privacy-statement/user-consent-exp-privacy-statement-terms-service.png)
 

@@ -5,18 +5,16 @@ description: モデルをパッケージ化します。 モデルは、後でダ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: gopalv
-author: gvashishtha
-ms.date: 07/31/2020
-ms.topic: conceptual
+ms.date: 10/21/2021
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 299eb316b534ddc9d5eee934cc15eae841276038
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a44f9150fd9d1b46a8f3ce7cfd44606f4382eac
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93312627"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557530"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>Docker を使用して登録済みモデルをパッケージ化する方法
 
@@ -29,7 +27,7 @@ ms.locfileid: "93312627"
 
 ## <a name="package-models"></a>モデルのパッケージ化
 
-場合によっては、モデルをデプロイせずに Docker イメージを作成することが必要になることがあります (たとえば、[Azure App Service にデプロイする](how-to-deploy-app-service.md)予定がある場合)。 または、イメージをダウンロードして、ローカルの Docker インストールで実行することが必要な場合もあります。 さらに、イメージのビルドに使用するファイルをダウンロードし、それらを検査および変更して、手動でビルドすることが必要な場合もあります。
+場合によっては、モデルをデプロイせずに Docker イメージを作成することが必要になることがあります。 または、イメージをダウンロードして、ローカルの Docker インストールで実行することが必要な場合もあります。 さらに、イメージのビルドに使用するファイルをダウンロードし、それらを検査および変更して、手動でビルドすることが必要な場合もあります。
 
 モデルのパッケージ化により、これらを行うことができます。 モデルを Web サービスとしてホストするために必要なすべてのアセットをパッケージ化し、完全にビルドされた Docker イメージ、またはイメージのビルドに必要なファイルのいずれかをダウンロードできます。 モデルのパッケージ化を使用するには、次の 2 つの方法があります。
 
@@ -166,7 +164,7 @@ docker kill mycontainer
 * [Azure Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md)
 * [Web サービスを使用するクライアント アプリケーションを作成する](how-to-consume-web-service.md)
 * [Web サービスを更新する](how-to-deploy-update-web-service.md)
-* [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
+* [カスタム Docker イメージを使用してモデルをデプロイする方法](./how-to-deploy-custom-container.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)

@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 436dbac814197556385a33d956928f97fd4716bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ea3022b0138e290891e1ee3bc78975648aae06c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93311913"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847890"
 ---
 # <a name="database-collation-support-for-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Synapse SQL のデータベース照合順序のサポート 
 
@@ -22,6 +22,9 @@ ms.locfileid: "93311913"
 新しい専用 SQL プール データベースを作成するときに、Azure portal から既定のデータベースの照合順序を変更できます。 この機能により、サポートされる 3800 個のデータベースの照合順序のいずれかを使用して、新しいデータベースをさらに簡単に作成できるようになりました。
 
 CREATE DATABASE ステートメントを使用した作成時には、既定のサーバーレス SQL プール データベースの照合順序を指定できます。
+
+> [!NOTE]
+> Azure Synapse Analytics では、クエリ テキスト (変数、定数などを含む) は、他の SQL Server オファリングと同様のサーバーレベルの照合順序ではなく、常にデータベースレベルの照合順序を使用して処理されます。
 
 ## <a name="change-collation"></a>照合順序を変更する
 専用 SQL プール データベースの既定の照合順序を変更するには、プロビジョニング エクスペリエンスで [Collation] フィールドを更新します。 たとえば、既定の照合順序を大文字と小文字が区別されるように変更する場合は、[Collation] の名前を SQL_Latin1_General_CP1_CI_AS から SQL_Latin1_General_CP1_CS_AS に変更します。 
@@ -115,7 +118,5 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 
 専用 SQL プールとサーバーレス SQL プールのベスト プラクティスに関する追加情報については、次の記事を参照してください。
 
-- [専用 SQL プールのベスト プラクティス](best-practices-sql-pool.md)
-- [サーバーレス SQL プールのベスト プラクティス](best-practices-sql-on-demand.md)
-
-
+- [専用 SQL プールのベスト プラクティス](./best-practices-dedicated-sql-pool.md)
+- [サーバーレス SQL プールのベスト プラクティス](./best-practices-serverless-sql-pool.md)

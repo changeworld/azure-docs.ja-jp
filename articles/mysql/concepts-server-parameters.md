@@ -6,14 +6,16 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 756337ce20c827d0c6549181c20fd843fa60c020
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0aeaf068de0bdcc06deb3e28575047b459b56b27
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720955"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426114"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL でのサーバー パラメーター
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 この記事では、Azure Database for MySQL でサーバー パラメーターを構成するための考慮事項とガイドラインを示します。
 
@@ -65,7 +67,7 @@ Azure Database for MySQL の場合、バイナリ ログは常に有効になっ
 
 このパラメーターの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_buffer_pool_size)を確認してください。
 
-#### <a name="servers-supporting-up-to-4-tb-storage"></a>最大 4 TB のストレージをサポートするサーバー
+#### <a name="servers-on-general-purpose-storage-v1-supporting-up-to-4-tb"></a>[汎用ストレージ v1 (最大 4 TB をサポート)](concepts-pricing-tiers.md#general-purpose-storage-v1-supports-up-to-4-tb) 上のサーバー
 
 |**価格レベル**|**仮想コア数**|**既定値 (バイト)**|**最小値 (バイト)**|**最大値 (バイト)**|
 |---|---|---|---|---|
@@ -83,7 +85,7 @@ Azure Database for MySQL の場合、バイナリ ログは常に有効になっ
 |メモリ最適化|16|65498251264|134217728|65498251264|
 |メモリ最適化|32|132070244352|134217728|132070244352|
 
-#### <a name="servers-support-up-to-16-tb-storage"></a>サーバーは最大 16 TB のストレージをサポート
+#### <a name="servers-on-general-purpose-storage-v2-supporting-up-to-16-tb"></a>[汎用ストレージ v2 (最大 16 TB をサポート)](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) 上のサーバー
 
 |**価格レベル**|**仮想コア数**|**既定値 (バイト)**|**最小値 (バイト)**|**最大値 (バイト)**|
 |---|---|---|---|---|
@@ -104,11 +106,11 @@ Azure Database for MySQL の場合、バイナリ ログは常に有効になっ
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table` は、価格レベルのうち、General Purpose と Memory Optimized でのみ更新できます。
+> `innodb_file_per_table` は、[汎用ストレージ v2](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) の General Purpose および Memory Optimized 価格レベルでのみ更新できます。
 
 MySQL では、テーブルの作成時に指定した構成に基づいて、InnoDB テーブルが異なるテーブルスペースに格納されます。 [システム テーブルスペース](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html)は、InnoDB データ辞書のストレージ領域です。 [file-per-table テーブルスペース](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html)は、1 つの InnoDB テーブルに対するデータとインデックスを含み、固有のデータ ファイル内のファイル システムに格納されています。 この動作は、`innodb_file_per_table` サーバー パラメーターによって制御されています。 `innodb_file_per_table` を `OFF` に設定すると、InnoDB ではシステム テーブルスペースにテーブルが作成されます。 それ以外の場合、InnoDB では file-per-table テーブルスペースにテーブルが作成されます。
 
-Azure Database for MySQL は、1 つのデータ ファイルで、最大 **4 TB** までサポートします。 データベースのサイズが 4 TB を超える場合は、[innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) テーブルスペースにテーブルを作成する必要があります。 1 つのテーブル サイズが 4 TB を超える場合は、パーティション テーブルを使用する必要があります。
+Azure Database for MySQL では、[汎用ストレージ v2](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) の 1 つのデータ ファイルで、最大 **4 TB** までサポートされます。 データベースのサイズが 4 TB を超える場合は、[innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) テーブルスペースにテーブルを作成する必要があります。 1 つのテーブル サイズが 4 TB を超える場合は、パーティション テーブルを使用する必要があります。
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -277,6 +279,13 @@ Azure Database for MySQL サーバーを再起動した後のウォームアッ�
 ### <a name="time_zone"></a>time_zone
 
 初期デプロイの時点で、Azure for MySQL サーバーにはタイム ゾーン情報のシステム テーブルが含まれていますが、これらのテーブルには値が設定されていません。 タイム ゾーン テーブルには、MySQL コマンド ラインや MySQL Workbench などのツールから `mysql.az_load_timezone` ストアド プロシージャを呼び出すことでデータを入力できます。 ストアド プロシージャを呼び出す方法とグローバル レベルまたはセッション レベルのタイム ゾーンを設定する方法については、[Azure portal](howto-server-parameters.md#working-with-the-time-zone-parameter) または [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) の記事を参照してください。
+
+### <a name="binlog_expire_logs_seconds"></a>binlog_expire_logs_seconds 
+
+Azure Database for MySQL では、このパラメーターは、サービスがバイナリ ログ ファイルを消去するまでに待機する秒数を指定します。
+
+バイナリ ログには、テーブルの作成操作やテーブル データの変更などのデータベースの変更を記述する "イベント" が含まれます。 また、変更を加えた可能性のあるステートメントのイベントも含まれます。 バイナリ ログは、主にレプリケーション操作とデータの復旧操作の 2 つの目的で使用されます。  通常、バイナリ ログは、ハンドルがサービス、バックアップ、またはレプリカ セットから解放されるとすぐに消去されます。 複数のレプリカの場合、最も遅いレプリカが変更を読み取るまで待機してから消去されます。 バイナリ ログをより長期間保持するには、binlog_expire_logs_seconds パラメーターを構成します。 binlog_expire_logs_seconds が既定値の 0 に設定されている場合、バイナリ ログは、ハンドルが解放されるとすぐに消去されます。 binlog_expire_logs_seconds が 0 を超える場合、設定された秒数待機してから消去されます。 Azure Database for MySQL の場合、バックアップおよび読み取りレプリカでのバイナリ ファイルの消去などのマネージド機能は内部で処理されます。 Azure Database for MySQL サービスからデータ出力をレプリケートする場合は、レプリカによってプライマリから変更が読み取られる前にバイナリ ログが消去されるのを回避するために、プライマリでこのパラメーターを設定する必要があります。 binlog_expire_logs_seconds に大きな値を設定すると、バイナリ ログがすぐに消去されず、ストレージの課金が増加する可能性があります。 
+
 
 ## <a name="non-configurable-server-parameters"></a>構成不可能なサーバー パラメーター
 

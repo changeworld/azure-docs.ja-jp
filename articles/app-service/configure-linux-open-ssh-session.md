@@ -5,15 +5,15 @@ keywords: Azure App Service, Web アプリ, Linux, OSS
 author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.topic: article
-ms.date: 02/23/2021
+ms.date: 09/10/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 5a4572c1292f691f1883a720d07c3f0130f1c8f3
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 955df8f28345baae89dafc8f3b6116b89e0e1b96
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480292"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768023"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Azure App Service で Linux コンテナーへの SSH セッションを開く
 
@@ -41,7 +41,7 @@ TCP トンネリングを使用して、認証済みの WebSocket 接続経由�
 
 最初に、[Azure CLI](/cli/azure/install-azure-cli) をインストールする必要があります。 Azure CLI をインストールしないとどのように動作するかを確認するには、[Azure Cloud Shell](../cloud-shell/overview.md) を開きます。 
 
-[az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) コマンドを使用して、アプリへのリモート接続を開きます。 アプリの _\<subscription-id>_ 、 _\<group-name>_ 、および \_\<app-name>_ を指定します。
+[az webapp create-remote-connection](/cli/azure/webapp#az_webapp_create_remote_connection) コマンドを使用して、アプリへのリモート接続を開きます。 アプリの _\<subscription-id>_ 、 _\<group-name>_ 、 _\<app-name>_ を指定します。
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
@@ -127,4 +127,4 @@ Web App for Containers について詳しくは、以下をご覧ください。
 * [VS Code からの Azure App Service 上での Node.js アプリのリモート デバッグの概要](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
 * [クイック スタート: App Service でカスタム コンテナーを実行する](quickstart-custom-container.md?pivots=container-linux)
 * [Azure App Service on Linux で Ruby を使用する](quickstart-ruby.md)
-* [Azure App Service Web App for Containers の FAQ](faq-app-service-linux.md)
+* [Azure App Service Web App for Containers の FAQ](faq-app-service-linux.yml)

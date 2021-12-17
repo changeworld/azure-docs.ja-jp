@@ -1,21 +1,21 @@
 ---
-title: Azure Marketplace のマネージド サービス オファーのプランを作成する方法
-description: Microsoft パートナー センターを使用して、Azure Marketplace のマネージド サービス オファーのプランを作成する方法について説明します。
+title: Azure Marketplace のマネージド サービス オファーのプランを作成する
+description: Azure Marketplace のマネージド サービス オファーのプランを作成します。
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.reviewer: anbene
+ms.reviewer: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 12/23/2020
-ms.openlocfilehash: 9b5526af03bdbefeb54633c49bbd43743555f60b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/12/2021
+ms.openlocfilehash: 4443492d19c09100433bf326f197c9405fa11d8e
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383230"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204467"
 ---
-# <a name="how-to-create-plans-for-your-managed-service-offer"></a>マネージド サービス オファーのプランを作成する方法
+# <a name="create-plans-for-a-managed-service-offer"></a>マネージド サービス オファーのプランを作成する
 
 Microsoft コマーシャル マーケットプレースを通じて販売されるマネージド サービス オファーには、少なくとも 1 つのプランが必要です。 同じオファー内でさまざまなオプションを使用して、さまざまなプランを作成できます。 これらのプラン (SKU とも呼ばれる) は、サービスのバージョン、収益化、またはレベルの点で異なる可能性があります。 プランの詳細なガイダンスについては、「[コマーシャル マーケットプレースのオファーのプランと価格](./plans-pricing.md)」を参照してください。
 
@@ -79,7 +79,7 @@ Azure サブスクリプション ID を使用して、プライベート プラ
 
 ## <a name="technical-configuration"></a>技術的な構成
 
-このセクションでは、顧客リソースを管理するための承認情報を含むマニフェストを作成します。 この情報は、[Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を有効にするために必要です。
+このセクションでは、顧客リソースを管理するための承認情報を含むマニフェストを作成します。 この情報は、[Azure の委任されたリソース管理](../lighthouse/concepts/architecture.md)を有効にするために必要です。
 
 「[Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー](../lighthouse/concepts/tenants-users-roles.md#best-practices-for-defining-users-and-roles)」を見直して、サポートされているロールと、承認を定義する際のベスト プラクティスを確認してください。
 
@@ -100,24 +100,31 @@ Azure サブスクリプション ID を使用して、プライベート プラ
 プランごとに最大 20 個の承認を作成できます。
 
 > [!TIP]
-> ほとんどの場合、一連の個々のユーザー アカウントではなく、Azure AD のユーザー グループまたはサービス プリンシパルにロールを割り当てます。 これにより、実際のアクセス要件が変更されたときに、プランを更新して再発行することなく、個々のユーザーのアクセス権を追加または削除できます。 Azure AD グループにロールを割り当てる場合、[グループの種類が "Office 365" ではなく "セキュリティ" である必要があります](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 その他の推奨事項については、「[Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー](../lighthouse/concepts/tenants-users-roles.md)」をご覧ください。
+> ほとんどの場合、一連の個々のユーザー アカウントではなく、Azure AD のユーザー グループまたはサービス プリンシパルにロールを割り当てます。 これにより、実際のアクセス要件が変更されたときに、プランを更新して再発行することなく、個々のユーザーのアクセス権を追加または削除できます。 Azure AD グループにロールを割り当てるときは、[グループの種類が "Office 365" ではなく "セキュリティ" である必要があります](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 その他の推奨事項については、「[Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー](../lighthouse/concepts/tenants-users-roles.md)」をご覧ください。
 
-承認ごとに、次の情報を指定する必要があります。 その後、 **[新しい承認]** を必要な回数だけ選択して、ユーザーやロールの定義を追加します。
+**認可** ごとに、次の情報を指定する必要があります。 **[+ Add authorization]\(+ 認可の追加\)** を必要に応じて選択し、ユーザーやロールの定義を追加します。
 
-* **AAD オブジェクト ID**: 顧客のリソースに対する特定のアクセス許可 ([ロールの定義] で定義) が付与されるユーザー、ユーザー グループ、またはアプリケーションの Azure AD 識別子。
-* **AAD オブジェクトの表示名**: 顧客がこの承認の目的を理解するのに役立つフレンドリ名。 この名前は、顧客がリソースを委任するときに表示されます。
-* **ロール定義**: 一覧から、使用可能な Azure AD 組み込みロールのいずれかを選択します。 このロールにより、 **[プリンシパル ID]** フィールドのユーザーに与えられる、顧客のリソースに対するアクセス許可が決まります。 これらのロールについては、[組み込みロール](../role-based-access-control/built-in-roles.md)に関する記事と、「[Azure Lighthouse 用のロールのサポート](../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)」をご覧ください。
-
-> [!NOTE]
-> 適用可能な新しい組み込みロールが Azure に追加されると、ここで使用できるようになります。 それらが表示されるまでに少し時間がかかる場合があります。
-
-* **割り当て可能なロール**: このオプションは、この承認の **[ロール定義]** でユーザー アクセス管理者を選択した場合にのみ表示されます。 その場合、割り当て可能なロールをここで 1 つ以上追加する必要があります。 **[Azure AD オブジェクト ID]** フィールドのユーザーは、これらのロールをマネージド ID に割り当てることができます。これは、[修復可能なポリシーをデプロイ](../lighthouse/how-to/deploy-policy-remediation.md)するために必要となります。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可は、このユーザーに適用されません。
+- **[表示名]** : 顧客がこの認可の目的を理解するのに役立つフレンドリ名。 この名前は、顧客がリソースを委任するときに表示されます。
+- **[プリンシパル ID]** : 顧客のリソースに対する特定のアクセス許可 (指定した **[ロール]** によって定義される) が付与されるユーザー、ユーザー グループ、またはサービス プリンシパルの Azure AD 識別子。
+- **アクセスの種類**:
+  - **[アクティブ]** な認可の場合、常にそのロールに権限が割り当てられます。 各プランには、少なくとも 1 つのアクティブな認可が必要です。
+  - **[適格]** な認可には時間制限があり、ユーザーによるアクティブ化が必要です。  **[適格]** を選択した場合は、アクティブ化された後にその適格なロールをユーザーが利用できる合計時間を定義する、最長期間を選択する必要があります。 最小値は 30 分、最大値は 8 時間です。 また、ロールのアクティブ化に多要素認証を要求するかどうかも選択できます。 適格な認可は現在パブリック プレビュー中であり、特定のライセンス要件があります。 詳細については、「[適格認可を作成する](../lighthouse/how-to/create-eligible-authorizations.md)」を参照してください。
+- **[ロール]** : 一覧から、使用可能な Azure AD の組み込みロールのいずれかを選択します。 このロールにより、 **[プリンシパル ID]** フィールドのユーザーに与えられる、顧客のリソースに対するアクセス許可が決まります。 これらのロールについては、[組み込みロール](../role-based-access-control/built-in-roles.md)に関する記事と、「[Azure Lighthouse 用のロールのサポート](../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)」をご覧ください。
+  > [!NOTE]
+  > 適用される新しい組み込みロールが Azure に追加されると、ここで使用できるようになりますが、表示されるまでに時間がかかる場合があります。
+- **Assignable Roles (割り当て可能なロール)** :このオプションは、この承認の **[ロール定義]** で [ユーザー アクセス管理者] を選択した場合のみ表示されます。 その場合、割り当て可能なロールをここで 1 つ以上追加する必要があります。 **[Azure AD オブジェクト ID]** フィールド内のユーザーは、これらのロールを [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md)に割り当てることができます。これは、[修復可能なポリシーをデプロイする](../lighthouse/how-to/deploy-policy-remediation.md)ために必要です。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可は、このユーザーに適用されません。
+- **[承認者]** :このオプションは、 **[アクセスの種類]** が **[適格]** に設定されている場合にのみ表示されます。 その場合は、[あるユーザーからの要求を認可または拒否してその適格なロールをアクティブ化](../lighthouse/how-to/create-eligible-authorizations.md#approvers)できる、最大で 10 人のユーザーのリストかユーザー グループを指定することもできます。 認可が要求され、許可されると、承認者に通知されます。 何も指定しない場合、認可は自動的にアクティブになります。
 
 > [!TIP]
 > 必要に応じて [委任へのアクセス権を削除](../lighthouse/how-to/remove-delegation.md)できるようにするには、 その **ロールの定義** セットに、 [「管理されたサービスの登録割り当て削除ロール」](../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)の **承認** を含めます。 このロールが割り当てられていない場合、委任されたリソースは顧客のテナント内のユーザーによってのみ削除できます。
 
-プランのすべてのセクションが完成したら、 **[+ 新しいプランの作成]** を選択して、追加のプランを作成できます。 完了したら、続行する前に **[下書きの保存]** を選択します。
+プランのすべてのセクションを入力したら、 **[+ 新しいプランの作成]** を選択して、追加のプランを作成できます。 完了したら、 **[下書きの保存]** を選択します。 プランの作成が完了したら、ウィンドウの上部にあるパンくずリストで **[プラン]** を選択し、そのオファーの左ナビゲーション メニューに戻ります。
+
+## <a name="updating-an-offer"></a>オファーの更新
+
+オファーを公開した後は、いつでも[更新済みバージョンのオファー](update-existing-offer.md)を公開できます。 たとえば、以前に公開されたオファーに新しいロールの定義を追加したほうがよい場合があります。 そうすると、オファーを既に追加している顧客には、Azure portal の [ **[サービス プロバイダー]**](../lighthouse/how-to/view-manage-service-providers.md) ページに、更新が利用可能であることを知らせるアイコンが表示されます。 各顧客は、変更を確認して、新しいバージョンに更新する必要があるかどうかを決定できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [レビューと公開](review-publish-offer.md)
+- プランのセットアップを終了して [Microsoft との共同販売](./co-sell-overview.md) (オプション) に進む、または
+- [プランをレビューして公開する](review-publish-offer.md)

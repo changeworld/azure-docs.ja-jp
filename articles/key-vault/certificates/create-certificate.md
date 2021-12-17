@@ -3,19 +3,18 @@ title: 証明書の作成方法
 description: Azure Key Vault で Key Vault 証明書を作成またはインポートするためのさまざまなオプションについて説明します。 Key Vault 証明書を作成するには、いくつかの方法あります。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f06f2de1f373f72aa5e55da17c249ff119a36950
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 20f11983a76b4ea703981e257b088c13cf577935
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581837"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123395"
 ---
 # <a name="certificate-creation-methods"></a>証明書の作成方法
 
@@ -50,7 +49,7 @@ ms.locfileid: "106581837"
 ## <a name="asynchronous-process"></a>非同期処理
 KV 証明書の作成は非同期プロセスです。 この操作は KV 証明書要求を作成して、http 状態コード 202 (Accepted) を返します。 この操作によって作成される保留中オブジェクトをポーリングすることにより、要求の状態を追跡できます。 保留中オブジェクトの完全な URI は、LOCATION ヘッダーで返されます。  
 
-KV 証明書の作成要求が完了すると、保留中オブジェクトの状態は "inprogress" から "completed" に変わり、KV 証明書の新しいバージョンが作成されます。 これが最新のバージョンになります。  
+KV 証明書の作成要求が完了すると、保留中のオブジェクトの状態は "inprogress" から "completed" に変わり、KV 証明書の新しいバージョンが作成されます。 これが最新のバージョンになります。  
 
 ## <a name="first-creation"></a>最初の作成
  KV 証明書が初めて作成されるときに、証明書と同じ名前で、アドレス指定可能なキーとシークレットも作成されます。 名前が既に使用されている場合、操作は http 状態コード 409 (conflict) で失敗します。
@@ -93,5 +92,5 @@ KV 証明書の作成要求が完了すると、保留中オブジェクトの�
 
 ## <a name="see-also"></a>参照
 
- - [Portal](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal)、[Azure CLI](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-cli)、[Azure Powershell](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-powershell) を使用して Key Vault で証明書を作成するための攻略ガイド
+ - [ポータル](./quick-create-portal.md)、[Azure CLI](./quick-create-cli.md)、[Azure PowerShell](./quick-create-powershell.md) を使用して Key Vault で証明書を作成するための攻略ガイド
  - [証明書作成の監視と管理](create-certificate-scenarios.md)

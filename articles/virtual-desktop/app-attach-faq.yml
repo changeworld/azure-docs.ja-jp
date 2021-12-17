@@ -1,0 +1,95 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Virtual Desktop の MSIX アプリ アタッチに関する FAQ - Azure
+  description: Azure Virtual Desktop の MSIX アプリ アタッチについてよくあるご質問。
+  services: virtual-desktop
+  author: Heidilohr
+  ms.service: virtual-desktop
+  ms.topic: conceptual
+  ms.date: 08/17/2020
+  ms.author: helohr
+  manager: femila
+  ms.openlocfilehash: d7a4cc61903ea6560566771e728932d09ddfb9cc
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132554467"
+title: MSIX アプリ アタッチに関するごよくある質問
+summary: この記事では、Azure Virtual Desktop の MSIX アプリ アタッチについてよくあるご質問に回答します。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      MSIX アプリと MSIX アプリ アタッチの違いは何ですか。
+    answer: >
+      MSIX はアプリのパッケージ形式であり、MSIX アプリ アタッチは、デプロイに MSIX パッケージを配信する機能です。
+  - question: >
+      MSIX アプリ アタッチでは FSLogix は使用されますか?
+    answer: >
+      MSIX アプリ アタッチでは、FSLogix は使用されません。 ただし、MSIX アプリ アタッチと FSLogix は、ユーザーがシームレスなエクスペリエンスを得られるよう連携して動作するように設計されています。
+  - question: >
+      MSIX アプリ アタッチは Azure Virtual Desktop の外部で使用できますか?
+    answer: >
+      MSIX アプリ アタッチを強化する API が Windows 10 Enterprise 向けに用意されています。 これらの API は、Azure Virtual Desktop の外部で使用できます。 ただし、Azure Virtual Desktop の外部には MSIX アプリ アタッチの管理プレーンはありません。
+  - question: >
+      MSIX パッケージはどのように入手できますか?
+    answer: >
+      MSIX パッケージは、ご自分のソフトウェア ベンダーから提供されます。 非 MSIX パッケージを MSIX に変換することもできます。 詳細については、「[既存のお使いのインストーラーを MSIX に移行する方法](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix)」を参照してください。
+  - question: >
+      MSIX アプリ アタッチはどのオペレーティング システムでサポートされていますか?
+    answer: >
+      Windows 10 Enterprise および Windows 10 Enterprise マルチセッション、バージョン 2004 以降でサポートされています。
+  - question: >
+      現在、MSIX アプリ アタッチは一般公開されていますか。
+    answer: "MSIX アプリ アタッチは、Windows 10 Enterprise および Windows 10 Enterprise マルチセッション、バージョン 2004 以降に含まれています。 現在、両方のオペレーティング システムが一般公開されています。 \n"
+  - question: >
+      MSIX アプリ アタッチは Azure Virtual Desktop の外部で使用できますか?
+    answer: >
+      MSIX と MSIX アプリ アタッチ API は、Windows 10 Enterprise および Windows 10 Enterprise マルチセッション、バージョン 2004 以降に含まれています。 現在、Azure Virtual Desktop の外部の MSIX アプリ アタッチの管理ソフトウェアは提供されていません。
+  - question: >
+      同じアプリケーションの 2 つのバージョンを同時に実行できますか。
+    answer: >
+      同じ MSIX アプリケーションの 2 つのバージョンを同時に実行するには、appxmanifest.xml ファイルで定義されている MSIX パッケージ ファミリが、アプリごとに異なっている必要があります。
+  - question: >
+      MSIX アプリ アタッチを使用する場合は、自動更新を無効にする必要がありますか。
+    answer: >
+      はい。 MSIX アプリ アタッチでは、MSIX アプリケーションの自動更新はサポートされていません。
+  - question: >
+      MSIX アプリ アタッチでアクセス許可はどのように機能しますか。
+    answer: >
+      MSIX アプリ アタッチを使用するホスト プール内のすべての仮想マシン (VM) に、MSIX イメージが格納されているファイル共有に対する読み取りアクセス許可が必要です。 Azure Files も使用している場合は、ロールベースのアクセス制御 (RBAC) と New Technology File System (NTFS) の両方のアクセス許可が付与されている必要があります。
+  - question: >
+      MSIX イメージ ハンドルを使用できるユーザーの数はどれくらいですか?
+    answer: "MSIX アプリ アタッチでは、ユーザーごとではなく、マシンごとに MSIX イメージをマウントします。 MSIX イメージ ハンドルを使用できるユーザーの数は、マシンのファイル システムのサイズとネットワークのスループットに基づいています。 また、Azure Files では、開いているハンドルの数はファイルあたり 2,000 に制限されています。 \n"
+  - question: >
+      MSIX アプリのアタッチで Azure Active Directory Domain Services (Azure AD DS) を使用できますか。
+    answer: >
+      MSIX アプリのアタッチでは現在のところ、Azure AD DS がサポートされていません。 Azure AD DS コンピューター オブジェクトが Azure Active Directory (Azure AD) と同期されないため、Azure Files に必要なロールベースのアクセス制御 (RBAC) アクセス許可を管理者は提供できません。
+  - question: >
+      HTTP または HTTPs で MSIX アプリ アタッチを使用できますか。
+    answer: >
+      HTTP または HTTPs で MSIX アプリ アタッチを使用することは、現在サポートされていません。
+  - question: >
+      同じ MSIX アプリケーションを再ステージングすることはできますか。
+    answer: >
+      はい。 既に再ステージングされているアプリケーションを再ステージングできます。これによってエラーが発生することはありません。
+  - question: >
+      MSIX アプリ アタッチで自己署名証明書はサポートされていますか。
+    answer: >
+      はい。 MSIX アプリのアタッチを使用して自己署名アプリケーションをホストするすべてのセッション ホスト VM に、自己署名証明書をインストールする必要があります。 自己署名証明書を作成する方法については、「[パッケージ署名用の証明書を作成する](/windows/msix/package/create-certificate-package-signing)」を参照してください。
+  - question: >
+      どのアプリケーションを MSIX に再パッケージ化できますか。
+    answer: "使用される OS の機能、プログラミング言語、フレームワークはアプリケーションごとに異なります。 アプリケーションを再パッケージ化するには、「[既存のインストーラーを MSIX に移動する方法](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix)」を参照してください。 アプリケーションの再パッケージ化に必要な項目の一覧は、「[デスクトップ アプリケーションのパッケージ化の準備](/windows/msix/desktop/desktop-to-uwp-prepare)」にあります。 \n\n特定のアプリケーションはアプリケーション層化できません。つまり、MSIX ファイルに再パッケージ化できません。 再パッケージ化できないアプリケーションの一覧を次に示します。\n\n- ドライバー \n- Active-X または Silverlight\n- VPN クライアント\n- ウイルス対策プログラム\n"
+  - question: >
+      各セッション ホストには MSIX アプリケーションをいくつ追加できますか。
+    answer: >
+      各セッション ホストには、CPU、メモリ、OS に基づいて異なる制限があります。 これらの制限を超えると、アプリケーションのパフォーマンスと全体的なユーザー エクスペリエンスに影響する場合があります。 ただし、MSIX アプリのアタッチ自体には、使用できるアプリケーションの数の制限はありません。
+  - question: >
+      ホスト プールに .VHD ファイルまたは .VHDX ファイルをいくつマウントできますか。
+    answer: "MSIX アプリのアタッチ自体には、マウントできるファイルの数の制限はありません。 ただし、ホスト プール自体は、次の要因によって制限されることがあります。\n\n- マウントされたボリュームを処理する OS の機能。\n- ストレージ ソリューションまたはファイル システムで保持できる開いているファイルの最大数。\n- ホスト プールのセッション ホストのメモリと CPU の使用率。\n\n言い換えると、ホスト プールの制限は、アプリをローカルにインストールして実行する場合と同じです。          \n"
+  - question: >
+      MSIX パッケージにタイムスタンプを付ける必要がありますか。
+    answer: >
+      [MSIX パッケージの概要](/windows/msix/package/signing-package-overview#timestamping)に関するページを確認して、タイムスタンプを使用するための Microsoft の推奨事項を確認します。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nMSIX アプリ アタッチの詳細については、[概要](what-is-app-attach.md)と[用語集](app-attach-glossary.md)に関するページを参照してください。 それ以外の場合、[アプリのアタッチの設定](app-attach.md)を開始してください。"

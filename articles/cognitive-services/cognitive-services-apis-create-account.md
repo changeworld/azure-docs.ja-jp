@@ -8,14 +8,14 @@ manager: nitinme
 keywords: Cognitive Services, コグニティブ インテリジェンス, コグニティブ ソリューション, AI サービス
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 10/28/2021
 ms.author: aahi
-ms.openlocfilehash: af957758918b99dcb44732eb536c0ca031231a7a
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 5ebccc07b4816237f12363e7729175dde5537e50
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868224"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458344"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して Cognitive Services リソースを作成する
 
@@ -28,6 +28,8 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 ## <a name="prerequisites"></a>前提条件
 
 * 有効な Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/cognitive-services/)。
+* [!INCLUDE [contributor-requirement](./includes/quickstarts/contributor-requirement.md)]
+
 
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>新しい Azure Cognitive Services リソースを作成する
 
@@ -39,10 +41,10 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 
 現在、マルチサービス リソースでは次の Cognitive Services にアクセスできます。
 
-* **視覚** - Computer Vision、Custom Vision、Form Recognizer、Face
+* **視覚** - Computer Vision、Custom Vision、Face
 * **音声** - Speech
-* **言語** - Language Understanding (LUIS)、Text Analytics、Translator
-* **決定** - Personalizer、Content Moderator
+* **言語** - Language、Translator
+* **決定** - Content Moderator
 
 ### <a name="single-service-resource"></a>[単一サービス リソース](#tab/singleservice)
 
@@ -53,7 +55,7 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 | [Computer Vision](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Speech Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [イマーシブ リーダー](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomaly Detector](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | 
 | [Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) |  | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | 
 | [Face](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     |
-| [Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)        |                         | [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
+|        |                         | [言語サービス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
 | | | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) | |
 
 ---
@@ -114,6 +116,8 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、 **[リソース グループ]** を選択して、リソース グループの一覧を表示します。
 2. 削除するリソースが含まれているリソース グループを見つけます
 3. リソース グループの一覧を右クリックします。 **[リソース グループの削除]** を選択し、確認します。
+
+削除されたリソースを復旧する必要がある場合は、[削除された Cognitive Services リソースの復旧](manage-resources.md)に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
 

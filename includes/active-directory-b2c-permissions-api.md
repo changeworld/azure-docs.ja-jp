@@ -1,16 +1,16 @@
 ---
-author: msmimart
+author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 04/04/2020
-ms.author: mimart
-ms.openlocfilehash: dd301cb3b18df5d3eb57ac38e9fb6432411d084b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.author: kengaderdus
+ms.openlocfilehash: 02aff100840f80a24210df7d653f2fed0059d9a5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073263"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038139"
 ---
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/) 
 

@@ -2,18 +2,16 @@
 title: Azure Monitor ブックのグリッドの視覚化
 description: Azure Monitor ブックのグリッドのすべての視覚化について説明します。
 services: azure-monitor
-author: lgayhardt
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.author: lagayhar
-ms.openlocfilehash: 114245030ba2356861b83a580f103d3b84c0eae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91b0933102c166657c237e7a7c9511a22a28de5c
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100600986"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132495"
 ---
 # <a name="grid-visualizations"></a>グリッドの視覚化
 

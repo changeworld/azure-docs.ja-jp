@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: a812704c42a4da5ddf89fe6c5ba0c9a684047f75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f67026514370a313b22b58daba48589f84f04b9
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88919490"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110585719"
 ---
 # <a name="get-started-with-the-azure-cdn-library-for-net"></a>.NET 向け Azure CDN ライブラリの概要
 > [!div class="op_single_selector"]
@@ -284,7 +284,7 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
     if (PromptUser(String.Format("Purge CDN endpoint {0}?", endpointName)))
     {
         Console.WriteLine("Purging endpoint. Please wait...");
-        cdn.Endpoints.PurgeContent(endpointName, profileName, resourceGroupName, new List<string>() { "/*" });
+        cdn.Endpoints.PurgeContent(resourceGroupName, profileName, endpointName, new List<string>() { "/*" });
         Console.WriteLine("Done.");
         Console.WriteLine();
     }

@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 7a3e4853d6dffa7eb2c5cf80846f6f1bd6beba03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 48f7cc738b55ef02de1d631d9ed7a41a9bc8a0b0
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100561182"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988820"
 ---
 # <a name="remove-azure-role-assignments"></a>Azure ロールの割り当ての削除
 
@@ -38,7 +39,7 @@ ms.locfileid: "100561182"
 
 1. **[削除]** をクリックします。
 
-   ![ロールの割り当ての削除メッセージ](./media/role-assignments-remove/remove-role-assignment.png)
+   ![ロールの割り当ての削除メッセージ](./media/shared/remove-role-assignment.png)
 
 1. ロールの割り当ての削除メッセージが表示されたら、 **[はい]** をクリックします。
 

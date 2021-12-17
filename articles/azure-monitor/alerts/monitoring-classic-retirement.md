@@ -6,18 +6,18 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.author: yalavi
-ms.openlocfilehash: bfa92a2fc58d479edd328dba9bf02d57ec66c0c9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 64e9c454bfe8df9b65176fe344999e88204720d0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041095"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539121"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor のアラートと監視の統合によるクラシックなアラートと監視の置換
 
 Azure Monitor は、Azure リソース全体で "1 つのメトリック" と "1 つのアラート" をサポートする統合された監視スタックです。 詳細については、この[ブログ記事](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/)を参照してください。 この新しい Azure の監視およびアラート プラットフォームは、処理速度が速く、より賢く、拡張できるように構築され、Microsoft のインテリジェント クラウド哲学に沿って、成長するクラウド コンピューティングの拡大に対応します。
 
-新しい Azure 監視およびアラート プラットフォームの導入により、パブリック クラウド ユーザーに対する Azure Monitor のクラシック アラートが廃止されました。ただし、**2021 年 5 月 31 日** までは、引き続き制限付きで使用できます。 Azure Government クラウドおよび Azure China 21Vianet 向けの従来のアラートは、**2024 年 2 月 29 日** に廃止されます。
+新しい Azure 監視およびアラート プラットフォームの導入により、パブリック クラウド ユーザーに対する Azure Monitor のクラシック アラートが廃止されました。 Azure Government クラウドおよび Azure China 21Vianet 向けの従来のアラートは、**2024 年 2 月 29 日** に廃止されます。
 
  ![Azure portal のクラシック アラート](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 

@@ -2,23 +2,25 @@
 title: チュートリアル:Azure Active Directory での自動ユーザー プロビジョニングに対応するように Oracle Cloud Infrastructure Console を構成する | Microsoft Docs
 description: Azure AD から Oracle Cloud Infrastructure Console に対してユーザー アカウントを自動的にプロビジョニングまたはプロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/16/2020
-ms.author: Zhchia
-ms.openlocfilehash: 94de0ca0a5393c891e567e558cbbadd0ca1f453b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/16/2021
+ms.author: thwimmer
+ms.openlocfilehash: 748e32a929e9681bb75a8d627eb9de11807c7c41
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97832084"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114709968"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Oracle Cloud Infrastructure Console を構成する
+> [!NOTE]
+> カスタムおよび BYOA アプリケーションの Oracle Cloud Infrastructure Console または Oracle IDCS との統合はサポートされていません。 このチュートリアルで説明している、ギャラリー アプリケーションの使用はサポートされています。 ギャラリー アプリケーションは、Oracle SCIM サーバーと連携するようにカスタマイズされています。 
 
 このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Oracle Cloud Infrastructure Console と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD では、ユーザーとグループの [Oracle Cloud Infrastructure Console](https://www.oracle.com/cloud/free/?source=:ow:o:p:nav:0916BCButton&intcmp=:ow:o:p:nav:0916BCButton) へのプロビジョニングおよびプロビジョニング解除が、Azure AD プロビジョニング サービスを使用して自動的に行われるようになります。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
 
@@ -69,7 +71,7 @@ ms.locfileid: "97832084"
 
     ![Oracle でのトークン生成](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/general-information.png)
 
-6. シークレット トークンを生成するには、クライアント ID とクライアント シークレットを **<クライアント ID>:<クライアント シークレット>** の形式で Base64 にエンコードします。 シークレット トークンを保存します。 この値を、Azure portal で Oracle Cloud Infrastructure Console アプリケーションのプロビジョニング タブの **[Secret Token]\(シークレット トークン\)** フィールドに入力します。
+6. シークレット トークンを生成するには、クライアント ID とクライアント シークレットを **<クライアント ID>:<クライアント シークレット>** の形式で Base64 としてエンコードします。 注 - この値は、行の折り返しを無効にして生成する必要があります (base64 -w 0)。 シークレット トークンを保存します。 この値を、Azure portal で Oracle Cloud Infrastructure Console アプリケーションのプロビジョニング タブの **[Secret Token]\(シークレット トークン\)** フィールドに入力します。
 
 ## <a name="step-3-add-oracle-cloud-infrastructure-console-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Oracle Cloud Infrastructure Console を追加する
 

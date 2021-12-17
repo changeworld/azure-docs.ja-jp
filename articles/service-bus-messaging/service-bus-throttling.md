@@ -2,13 +2,13 @@
 title: Azure Service Bus スロットルの概要 | Microsoft Docs
 description: Service Bus スロットルの概要 - Standard および Premium レベル。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 436f9a40269f7eea4e31b55b9657d38849876eb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: 0607cd96b68de960829d80f00765586213a55d2d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85340956"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609177"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure Service Bus でのスロットル操作
 
@@ -89,7 +89,7 @@ Service Bus Premium の排他的リソース割り当てでは、スロットル
 ### <a name="how-will-i-know-that-im-being-throttled"></a>スロットルされていることを認識するのはどのような状況ですか?
 
 Azure Service Bus Premium では、スロットルを識別する複数の方法があります。 
-  * **[Throttled Requests]\(スロットルされた要求\)** が [Azure Monitor の [要求] メトリック](service-bus-metrics-azure-monitor.md#request-metrics)に出現し、スロットルされた要求の数を示します。
+  * **[Throttled Requests]\(スロットルされた要求\)** が [Azure Monitor の [要求] メトリック](monitor-service-bus-reference.md#request-metrics)に出現し、スロットルされた要求の数を示します。
   * **[CPU 使用率]** の高い値は、現在のリソース割り当てが高水準であり、現在のワークロードが低下しなければ要求がスロットルされる可能性があることを示します。
   * **[メモリ使用量]** の高い値は、現在のリソース割り当てが高水準であり、現在のワークロードが低下しなければ要求がスロットルされる可能性があることを示します。
 

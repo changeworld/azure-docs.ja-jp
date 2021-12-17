@@ -5,14 +5,14 @@ author: julieMSFT
 ms.author: jrasnick
 ms.topic: troubleshooting
 ms.service: synapse-analytics
-ms.subservice: workspace
+ms.subservice: troubleshooting
 ms.date: 11/24/2020
-ms.openlocfilehash: f5d0aae975d476da47510a1f2fd164cbc5f32945
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54341621e0b696d2bc4b8570c6936d1fae78514e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96465527"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139905"
 ---
 # <a name="troubleshoot-azure-synapse-analytics-workspaces-created-using-sdk"></a>SDK を使用して作成された Azure Synapse Analytics ワークスペースのトラブルシューティング
 

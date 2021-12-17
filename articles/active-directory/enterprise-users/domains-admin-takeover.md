@@ -4,26 +4,29 @@ description: 非管理対象の Azure AD 組織 (シャドウ テナント) 内�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/18/2021
+ms.date: 09/01/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 816f4645626675ae19a462ac8707e995c3b4045e
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 0c4d98ead2812e4e8b0b6c3ce683a75df2f44329
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739371"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129986950"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 
 この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure Active Directory のセルフサービス サインアップについて](directory-self-service-signup.md)」をご覧ください
+
+
+> [!VIDEO https://www.youtube.com/embed/GOSpjHtrRsg]
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>非管理対象ディレクトリを引き継ぐ方法を決定する
 管理者の引き継ぎのプロセスでは、「[カスタム ドメイン名を Azure Active Directory に追加する](../fundamentals/add-custom-domain.md)」で説明されているように、所有権を証明できます。 次のセクションでは管理者エクスペリエンスを詳細に説明しますが、概要を以下に示します。
@@ -92,13 +95,16 @@ Azure サービスまたは Microsoft 365 を使って既に組織を管理し�
 
 サポートされているサービス プランは次のとおりです。
 
-- PowerApps Free
-- PowerFlow Free
+- Power Apps 無料
+- Power Automate 無料
 - 個人向け RMS
 - Microsoft Stream
 - Dynamics 365 無料試用版
 
 外部管理者の引き継ぎは、たとえば、Office の無償のサブスクリプション経由など、SharePoint、OneDrive、または Skype For Business を含むサービス プランを保持しているサービスではサポートされません。 
+
+> [!NOTE]
+> クラウドの境界を越える外部管理者の引き継ぎはサポートされていません (例 Azure Commercial から Azure Government に引き継ぐ)。  そのようなシナリオの場合、別の Azure Commercial テナントへの外部管理者引き継ぎを実行し、このテナントからドメインを削除することをお勧めします。それにより、宛先の Azure Government テナントに正常に検証できます。
 
 管理されていない組織からドメイン名を削除し、目的の組織でその有効性を確認する [**ForceTakeover** オプション](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)を任意で使用できます。 
 

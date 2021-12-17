@@ -6,12 +6,12 @@ ms.date: 03/22/2021
 author: trask
 ms.custom: devx-track-java
 ms.author: trstalna
-ms.openlocfilehash: 7602392b78f53e5b896e92058836fca60de39d64
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: c0f6c1b0fce97bc835cb63a47d8827d7fab8ed56
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448884"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599831"
 ---
 # <a name="sampling-overrides-preview---azure-monitor-application-insights-for-java"></a>サンプリング オーバーライド (プレビュー) - Azure Monitor Application Insights for Java
 
@@ -189,9 +189,10 @@ ms.locfileid: "106448884"
 |---|---|---|
 | `http.method` | string | HTTP 要求メソッド。|
 | `http.url` | string | `scheme://host[:port]/path?query[#fragment]` 形式の完全な HTTP 要求 URL。 通常、フラグメントは HTTP 経由で送信されません。 しかし、フラグメントがわかっている場合は、含める必要があります。|
-| `http.status_code` | number | [HTTP 応答状態コード](https://tools.ietf.org/html/rfc7231#section-6).|
 | `http.flavor` | string | HTTP プロトコルの種類。 |
 | `http.user_agent` | string | クライアントから送信された [HTTP ユーザー エージェント](https://tools.ietf.org/html/rfc7231#section-5.5.3) ヘッダーの値。 |
+
+`http.status_code` はスパンの開始時には利用できないため、サンプリングの決定には使用できないことに注意してください。
 
 ### <a name="jdbc-spans"></a>JDBC スパン
 

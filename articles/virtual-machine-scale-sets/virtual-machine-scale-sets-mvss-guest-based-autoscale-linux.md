@@ -9,14 +9,16 @@ ms.subservice: autoscale
 ms.date: 04/26/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 0605780651e1a3c54ae53d13a3f99e1124fa76db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ea607f788d9acb971312639851b745eb28b313d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585005"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697386"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Linux スケール セット テンプレートのゲスト メトリックを使用した自動スケール
+
+**適用対象:** :heavy_check_mark: Linux VMs :heavy_check_mark: ユニフォーム スケール セット
 
 VM とスケール セットから収集される Azure のメトリックには、ホスト メトリックとゲスト メトリックの 2 つの大きな種類があります。 一般には、標準的な CPU、ディスク、ネットワーク メトリックを使用している場合、ホスト メトリックは適合します。 ただし、メトリックの選択の幅を大きくする必要がある場合は、ゲスト メトリックの方を使用すべきです。
 

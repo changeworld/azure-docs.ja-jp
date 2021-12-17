@@ -5,30 +5,32 @@
   items:
     - name: Import/Export とは
       href: storage-import-export-service.md
+- name: チュートリアル
+  items:
+    - name: Blob Storage にデータをインポートする
+      href: storage-import-export-data-to-blobs.md
+    - name: Azure Files にデータをインポートする
+      href: storage-import-export-data-to-files.md
+    - name: Blob Storage からデータをエクスポートする
+      href: storage-import-export-data-from-blobs.md
 - name: 概念
   items:
     - name: 要件を確認する
       href: storage-import-export-requirements.md
     - name: よく寄せられる質問
-      href: storage-import-export-service-faq.md
+      href: storage-import-export-service-faq.yml
 - name: 方法
   expanded: true
   items:
-    - name: 配置
-      items:
-        - name: データを BLOB にインポートする
-          href: storage-import-export-data-to-blobs.md
-        - name: データをファイルにインポートする
-          href: storage-import-export-data-to-files.md
-        - name: BLOB からデータをエクスポートする
-          href: storage-import-export-data-from-blobs.md
     - name: カスタマー マネージド キーを使用する
       href: storage-import-export-encryption-key-portal.md
+    - name: 使用するディスクの特定
+      href: storage-import-export-determine-drives-for-export.md
     - name: モニター
       items:
-        - name: ドライブの状態を表示する
+        - name: ジョブとドライブの状態を表示する
           href: storage-import-export-view-drive-status.md
-        - name: ジョブの状態を表示する
+        - name: ログのコピーの確認
           href: storage-import-export-tool-reviewing-job-status-v1.md
     - name: トラブルシューティング
       items:

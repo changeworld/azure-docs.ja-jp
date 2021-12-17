@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 87fed1d2ac4f5fa85c01d7af10bec10c1412744f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08a19c55bd208036fe6731e4436a8f0a74a76723
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92202346"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127715"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 回線とピアリング
 
@@ -20,8 +20,9 @@ ExpressRoute 回線は、オンプレミスのインフラストラクチャを�
 
 ![ExpressRoute 回線がオンプレミスのインフラストラクチャを接続プロバイダー経由でどのように Microsoft に接続するかを示す図。](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
-> [!IMPORTANT]
-> Azure パブリック ピアリングは非推奨となり、新しい ExpressRoute 回線には使用できません。 新しい回線では、Microsoft ピアリングおよびプライベート ピアリングをサポートします。  
+> [!NOTE]
+> * ExpressRoute のコンテキストにおける Microsoft Edge とは、ExpressRoute 回線の Microsoft 側のエッジ ルーターを表します。 ExpressRoute 回線にとって、これは Microsoft のネットワークへの入口となります。
+> * Azure パブリック ピアリングは非推奨となり、新しい ExpressRoute 回線には使用できません。 新しい回線では、Microsoft ピアリングおよびプライベート ピアリングをサポートします。  
 >
 
 ## <a name="expressroute-circuits"></a><a name="circuits"></a>ExpressRoute 回線

@@ -1,5 +1,5 @@
 ---
-title: 暗号化キー情報の取得
+title: 暗号化キー情報を検索する
 titleSuffix: Azure Cognitive Search
 description: Azure Key Vault でキーを管理できるように、インデックスまたはシノニム マップで使用される暗号化キーの名前とバージョンを取得します。
 manager: nitinme
@@ -7,33 +7,50 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/01/2020
-ms.openlocfilehash: 37ff94608e9756142f70a4f3c64d0a6f7eeea685
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/21/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2f34d653a698a7ef2ee3dee21d46345ed9a7301a
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88932901"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003820"
 ---
-# <a name="get-customer-managed-key-information-from-indexes-and-synonym-maps"></a>インデックスとシノニム マップからカスタマー マネージド キーの情報を取得する
+# <a name="find-encrypted-objects-and-information"></a>暗号化されたオブジェクトと情報を検索する
 
-Azure Cognitive Search では、カスタマー マネージド暗号化キーが Azure Key Vault で作成、格納、管理されます。 オブジェクトが暗号化されているかどうか、または使用されたキー名またはバージョンを確認する必要がある場合は、REST API または SDK を使用して、インデックスまたはシノニム マップの定義から **encryptionKey** プロパティを取得します。 
+Azure Cognitive Search では、カスタマー マネージド暗号化キーが Azure Key Vault で作成、格納、管理されます。 オブジェクトが暗号化されているかどうかや、Azure Key Vault で使用されたキー名またはバージョンを調べる必要がある場合、REST API または Azure SDK を使用して、検索サービスのオブジェクトの定義から **encryptionKey** プロパティを取得します。
 
-キーの使用状況を監視できるように、Key Vault で[ログを有効にする](../key-vault/general/logging.md)ことをお勧めします。
+カスタマー マネージド キーで暗号化されていないオブジェクトは、**encryptionKey** プロパティが空になります。 それ以外の場合、定義は次の例のようになります。
+
+```json
+"encryptionKey": {
+"keyVaultUri": "https://demokeyvault.vault.azure.net",
+"keyVaultKeyName": "myEncryptionKey",
+"keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+"accessCredentials": {
+    "applicationId": "00000000-0000-0000-0000-000000000000",
+    "applicationSecret": "myApplicationSecret"
+    }
+}
+```
+
+**encryptionKey** のコンストラクトは、暗号化されたすべてのオブジェクトで共通です。 オブジェクトの名前や説明と同じ第 1 レベルのプロパティとなります。
 
 ## <a name="get-the-admin-api-key"></a>管理 API キーを取得する
 
-検索サービスからオブジェクト定義を取得するには、管理者権限を使用して認証を行う必要があります。 管理 API キーを取得する最も簡単な方法は、ポータルを使用することです。
+オブジェクトの定義を検索サービスから取得するには、あらかじめ管理 API キーを準備する必要があります。 オブジェクトの定義やメタデータを照会する要求では、管理 API キーが必要となります。 管理 API キーを取得する最も簡単な方法は、ポータルを使用することです。
 
 1. [Azure portal](https://portal.azure.com/) にサインインして、検索サービスの概要ページを開きます。
 
 1. 左側で **[キー]** をクリックし、管理 API をコピーします。 インデックスとシノニム マップを取得するには、管理者キーが必要です。
 
-残りの手順では、PowerShell と REST API に切り替えます。 ポータルには、シノニム マップとインデックスの暗号化キー プロパティのどちらも表示されません。
+残りの手順では、PowerShell と REST API に切り替えます。 ポータルでは、どのオブジェクトの暗号化キー情報も表示されません。
 
-## <a name="use-powershell-and-rest"></a>PowerShell と REST を使用する
+## <a name="retrieve-object-properties"></a>オブジェクトのプロパティを取得する
 
-次のコマンドを実行して、変数を設定し、オブジェクトの定義を取得します。
+PowerShell と REST から次のコマンドを実行して、変数を設定し、オブジェクトの定義を取得します。 
+
+[.NET](/dotnet/api/azure.search.documents.indexes.searchindexclient.getindexes)、[Python](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient)、[JavaScript](/javascript/api/@azure/search-documents/searchindexclient)、[Java](/java/api/com.azure.search.documents.indexes.searchindexclient.getindex) 用の Azure SDK を使用することもできます。
 
 ```powershell
 <# Connect to Azure #>
@@ -62,9 +79,11 @@ $uri= 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/<YOUR-INDEX-NAME
 Invoke-RestMethod -Uri $uri -Headers $headers | ConvertTo-Json
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-使用する暗号化キーとバージョンを確認したので、Azure Key Vault でのキーの管理や、他の構成設定の確認を行うことができます。
+キーの使用状況を監視できるように、Azure Key Vault で[ログを有効にする](../key-vault/general/logging.md)ことをお勧めします。
+
+Azure Key の使用またはカスタマー マネージド暗号化の構成について詳しくは、次の記事を参照してください。
 
 + [クイック スタート:PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../key-vault/secrets/quick-create-powershell.md)
 

@@ -1,23 +1,24 @@
 ---
 title: Windows 上に Azure IoT Edge デバイスを作成するクイックスタート | Microsoft Docs
 description: このクイック スタートでは、IoT Edge デバイスを作成した後、Azure portal から事前作成されたコードをリモートで展開する方法を学習します。
-author: rsameser
-manager: kgremban
-ms.author: riameser
-ms.date: 01/20/2021
+author: kgremban
+manager: lizross
+ms.author: kgremban
+ms.reviewer: fcabrera
+ms.date: 06/18/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: de24f6c8436b4537519f8cc65931325dd7d5f8d9
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a12bc8a4f41ec4ad30722d3f4489be01f1267381
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313353"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578953"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>クイックスタート: 初めての IoT Edge モジュールを Windows デバイスにデプロイする (プレビュー)
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device"></a>クイックスタート:初めての IoT Edge モジュールを Windows デバイスにデプロイする
 
 [!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
@@ -36,9 +37,6 @@ ms.locfileid: "107313353"
 
 アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free)を作成してください。
 
->[!NOTE]
->IoT Edge for Linux on Windows は、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)段階にあります。
-
 ## <a name="prerequisites"></a>前提条件
 
 Azure CLI の環境を準備します。
@@ -53,17 +51,17 @@ Azure CLI の環境を準備します。
 
 ご自身の IoT Edge デバイスが次の要件を満たしていることを確認します。
 
-* エディション
-  * Windows 10 バージョン 1809 以降、ビルド 17763 以降
-    * Professional、Enterprise、IoT Enterprise
-  * Windows Server 2019 ビルド 17763 以降
+* システム要件
+   * Windows 10¹/11 (Pro、Enterprise、IoT Enterprise)
+   * Windows Server 2019¹/2022  
+   <sub>¹ 現在のすべての累積更新プログラムがインストールされた Windows 10 および Windows Server 2019 最小ビルド 17763。</sub>
 
 * ハードウェア要件
-  * 最小空きメモリ容量: 2 GB
-  * 最小空きディスク領域: 10 GB
+  * 最小空きメモリ容量: 1 GB
+  * 最小空きディスク領域:10 GB
 
 >[!NOTE]
->このクイックスタートでは、Windows Admin Center を使用して、IoT Edge for Linux on Windows 用のデプロイを作成します。 PowerShell を使用することもできます。 PowerShell を使用してデプロイを作成する場合は、[Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする方法](how-to-install-iot-edge-on-windows.md)に関する攻略ガイドの手順に従ってください。
+>このクイックスタートでは、PowerShell を使用して、IoT Edge for Linux on Windows 用のデプロイを作成します。 Windows Admin Center を使用することもできます。 Windows Admin Center を使用してデプロイを作成する場合は、[Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする方法](how-to-provision-single-device-linux-on-windows-symmetric.md?tabs=windowsadmincenter)に関する攻略ガイドの手順に従ってください。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -115,65 +113,51 @@ IoT Edge for Linux on Windows を自分のデバイスにインストールし�
 
 ![IoT Edge ランタイムを起動する手順を示す図。](./media/quickstart/start-runtime.png)
 
-1. [Windows Admin Center をダウンロード](https://aka.ms/wacdownload)します。
+Azure IoT Edge for Linux on Windows をデプロイするターゲット デバイスで次の PowerShell コマンドを実行します。 PowerShell を使用してリモート ターゲット デバイスにデプロイするには、[リモート PowerShell](/powershell/module/microsoft.powershell.core/about/about_remote) を使用してリモート デバイスへの接続を確立し、そのデバイスでこれらのコマンドをリモートで実行します。
 
-1. インストール ウィザードのプロンプトに従って、Windows Admin Center を自分のデバイスで設定します。
+1. 管理者特権の PowerShell セッションで、次の各コマンドを実行し、IoT Edge for Linux on Windows をダウンロードします。
 
-1. Windows Admin Center を開きます。
+   ```powershell
+   $msiPath = $([io.Path]::Combine($env:TEMP, 'AzureIoTEdge.msi'))
+   $ProgressPreference = 'SilentlyContinue'
+   Invoke-WebRequest "https://aka.ms/AzEflowMSI" -OutFile $msiPath
+   ```
 
-1. 右上隅にある **設定の歯車アイコン** を選択し、 **[拡張機能]** を選択します。
+1. IoT Edge for Linux on Windows をデバイスにインストールします。
 
-1. **[フィード]** タブで **[追加]** を選択します。
+   ```powershell
+   Start-Process -Wait msiexec -ArgumentList "/i","$([io.Path]::Combine($env:TEMP, 'AzureIoTEdge.msi'))","/qn"
+   ```
 
-1. テキスト ボックスに「`https://aka.ms/wac-insiders-feed`」と入力し、 **[追加]** を選択します。
+1. ターゲット デバイスの実行ポリシーがまだ `AllSigned` に設定されていない場合、これを設定します。 現在の実行ポリシーは、管理者特権の PowerShell プロンプトで次のコマンドを使用して確認できます。
 
-1. フィードが追加されたら、 **[使用可能な拡張機能]** タブに移動して、拡張機能の一覧が更新されるまで待ちます。
+   ```powershell
+   Get-ExecutionPolicy -List
+   ```
 
-1. **[使用可能な拡張機能]** の一覧から **[Azure IoT Edge]** を選択します。
+   `local machine` の実行ポリシーが `AllSigned` になっていない場合は、次のようにして実行ポリシーを設定できます。
 
-1. 拡張機能をインストールします。
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy AllSigned -Force
+   ```
 
-1. 拡張機能がインストールされたら、左上隅の **[Windows Admin Center]** を選択して、メイン ダッシュボード ページに移動します。
+1. IoT Edge for Linux on Windows のデプロイを作成します。
 
-     Windows Admin Center が実行されている PC を表す **localhost** 接続が表示されます。
+   ```powershell
+   Deploy-Eflow
+   ```
 
-     :::image type="content" source="media/quickstart/windows-admin-center-start-page.png" alt-text="Windows Admin のスタート ページのスクリーンショット。":::
+1. ライセンス条項に同意するには、「Y」と入力します。
 
-1. **[追加]** を選択します。
+1. 必要に応じて、「O」または「R」を入力して **[Optional diagnostic data]\(オプションの診断データ\)** をオンまたはオフに切り替えます。 デプロイが成功したときの表示を次に示します。
 
-     :::image type="content" source="media/quickstart/windows-admin-center-start-page-add.png" alt-text="Windows Admin Center で [追加] ボタンを選択する場面を示すスクリーンショット。":::
+   ![デプロイが成功すると、メッセージの最後に [Deployment successful]\(デプロイ成功\) と表示されます](./media/quickstart/successful-powershell-deployment.png)
 
-1. [Azure IoT Edge] タイルで、 **[新規作成]** を選択してインストール ウィザードを開始します。
+1. 前のセクションで取得したデバイス接続文字列を使用し、デバイスをプロビジョニングします。 プレースホルダー テキストは実際の値に置き換えてください。
 
-     :::image type="content" source="media/quickstart/select-tile-screen.png" alt-text="Azure IoT Edge タイルで新しいデプロイを作成する場面を示すスクリーンショット。":::
-
-1. インストール ウィザードを続行して、Microsoft ソフトウェア ライセンス条項に同意し、 **[次へ]** を選択します。
-
-     :::image type="content" source="media/quickstart/wizard-welcome-screen.png" alt-text="[次へ] を選択して、インストール ウィザードを続行する場面を示すスクリーンショット。":::
-
-1. **[Optional diagnostic data]\(オプションの診断データ\)** を選択し、 **[Next: Deploy]\(次へ: デプロイ\) に進みます。デプロイ**」に進みます。 この選択により、Microsoft がサービスの品質を監視および維持するのに役立つ拡張診断データが提供されるようになります。
-
-     :::image type="content" source="media/quickstart/diagnostic-data-screen.png" alt-text="診断データのオプションを示すスクリーンショット。":::
-
-1. **[Select target device]\(ターゲット デバイスの選択\)** 画面で、必要なターゲット デバイスを選択し、最小要件を満たしていることを確認します。 このクイックスタートでは、IoT Edge をローカル デバイスにインストールするため、**localhost** 接続を選択します。 ターゲット デバイスが要件を満たしている場合は、 **[次へ]** を選択して続行します。
-
-     :::image type="content" source="media/quickstart/wizard-select-target-device-screen.png" alt-text="ターゲット デバイスの一覧を示すスクリーンショット。":::
-
-1. 既定の設定をそのまま使用するには、 **[次へ]** を選択します。 デプロイ画面に、パッケージのダウンロード、パッケージのインストール、ホストの構成、Linux 仮想マシン (VM) の最終設定の各プロセスが表示されます。 デプロイが成功すると、次のようになります。
-
-     :::image type="content" source="media/quickstart/wizard-deploy-success-screen.png" alt-text="デプロイが成功した場面を示すスクリーンショット。":::
-
-1. **Next:接続** をクリックして最後の手順に進み、IoT ハブ インスタンスから取得したデバイス ID を使用して、Azure IoT Edge デバイスをプロビジョニングします。
-
-1. [先ほどこのクイックスタートで](#register-an-iot-edge-device)コピーした接続文字列を、 **[Device connection string]\(デバイスの接続文字列\)** フィールドに貼り付けます。 続けて、 **[Provisioning with the selected method]\(選択した方法でプロビジョニングする\)** を選択します。
-
-     :::image type="content" source="media/quickstart/wizard-provision.png" alt-text="[Device connection string]\(デバイスの接続文字列\) フィールドの接続文字列を示すスクリーンショット。":::
-
-1. プロビジョニングが完了したら、 **[完了]** を選択して終了し、Windows Admin Center のスタート画面に戻ります。 自分のデバイスが IoT Edge デバイスとして表示されているはずです。
-
-     :::image type="content" source="media/quickstart/windows-admin-center-device-screen.png" alt-text="Windows Admin Center 内のすべての接続を示すスクリーンショット。":::
-
-1. Azure IoT Edge デバイスを選択してそのダッシュボードを表示します。 Azure IoT Hub 内のデバイス ツインからのワークロードがデプロイされていることがわかります。 **[IoT Edge Module List]\(IoT Edge モジュールの一覧\)** には、**edgeAgent** というモジュールが 1 つ実行されていることが示され、 **[IoT Edge Status]\(IoT Edge の状態\)** が **[active (running)]\(アクティブ (実行中)\)** になります。
+   ```powershell
+   Provision-EflowVm -provisioningType ManualConnectionString -devConnString "<CONNECTION_STRING_HERE>"
+   ```
 
 IoT Edge デバイスの構成はこれで完了です。 クラウドからモジュールをデプロイして実行することができます。
 
@@ -200,6 +184,9 @@ Azure Marketplace からお客様の最初のモジュールをデプロイす�
 1. 左側のメニューで、 **[デバイスの自動管理]** の下にある **[IoT Edge]** を選択します。
 
 1. デバイスの一覧でターゲット デバイスのデバイス ID を選択します。
+
+   新しい IoT Edge デバイスを作成すると、状態コード `417 -- The device's deployment configuration is not set` が Azure portal に表示されます。 この状態は正常であり、デバイスでモジュールのデプロイを受け取る準備ができていることを意味します。
+
 
 1. 上部のバーで **[モジュールの設定]** を選択します。
 
@@ -241,36 +228,33 @@ Azure Marketplace からお客様の最初のモジュールをデプロイす�
 
 プッシュしたモジュールによって、後でテストするために使用できるサンプル環境データが生成されます。 シミュレートされたセンサーは、マシンと、マシンの周囲の環境の両方を監視します。 たとえば、このセンサーは、サーバー ルーム、工場のフロア、または風力タービンに配置されている可能性があります。 送信されるメッセージには、周囲の温度と湿度、機械の温度と圧力、タイムスタンプが含まれます。 IoT Edge のチュートリアルでは、このモジュールによって作成されたデータを分析用のテスト データとして使用します。
 
-Windows Admin Center のコマンド シェルから、IoT Edge デバイス上で、クラウドからデプロイされたモジュールが実行されていることを確認します。
+1. PowerShell セッションで次のコマンドを使用して、お使いの IoT Edge for Linux on Windows 仮想マシンにログインします。
 
-1. 新しく作成した IoT Edge デバイスに接続します。
+   ```powershell
+   Connect-EflowVm
+   ```
 
-     :::image type="content" source="media/quickstart/connect-edge-screen.png" alt-text="Windows Admin Center で [接続] を選択する場面を示すスクリーンショット。":::
+   >[!NOTE]
+   >仮想マシンへの SSH 接続が許可されるアカウントは、それを作成したユーザーだけです。
 
-     **[概要]** ページでは、デバイスの **[IoT Edge Module List]\(IoT Edge モジュールの一覧\)** と **[IoT Edge Status]\(IoT Edge の状態\)** が表示されます。 デプロイされているモジュールとデバイスの状態を見ることができます。  
+1. ログインすると、次の Linux コマンドを使用して、実行中の IoT Edge モジュールの一覧を確認できます。
 
-1. **[ツール]** の **[コマンド シェル]** を選択します。 このコマンド シェルは PowerShell ターミナルとなっていて、Windows PC 上にある Azure IoT Edge デバイスの Linux VM に、自動的に Secure Shell (SSH) を使用して接続します。
+   ```bash
+   sudo iotedge list
+   ```
 
-     :::image type="content" source="media/quickstart/command-shell-screen.png" alt-text="コマンド シェルが開かれている画面のスクリーンショット。":::
+   ![温度センサー、エージェント、ハブが実行されていることを確認します。](./media/quickstart/iotedge-list-screen.png)
 
-1. 3 つのモジュールがデバイスにあることを確認するために、次の Bash コマンドを実行します。
+1. 次の Linux コマンドを使用し、温度センサー モジュールからクラウドに送信されているメッセージを確認します。
 
-     ```bash
-     sudo iotedge list
-     ```
+   ```bash
+   sudo iotedge logs SimulatedTemperatureSensor -f
+   ```
 
-    :::image type="content" source="media/quickstart/iotedge-list-screen.png" alt-text="コマンドシェルの I o T Edge 一覧の出力を示すスクリーンショット。":::
+   >[!IMPORTANT]
+   >IoT Edge のコマンドでは、モジュール名を参照する際に大文字と小文字が区別されます。
 
-1. 温度センサー モジュールからクラウドに送信されているメッセージを確認します。
-
-     ```bash
-     iotedge logs SimulatedTemperatureSensor -f
-     ```
-
-    >[!Important]
-    >IoT Edge のコマンドでは、モジュール名を参照する際に大文字と小文字が区別されます。
-
-    :::image type="content" source="media/quickstart/temperature-sensor-screen.png" alt-text="モジュールからクラウドに送信されたメッセージの一覧を示すスクリーンショット。":::
+   ![Simulated Temperature Sensor モジュールの出力ログを表示します。](./media/quickstart/temperature-sensor-screen.png)
 
 [Visual Studio Code 用の Azure IoT Hub の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)を使用して、自分の IoT ハブに到着したメッセージを監視することもできます。
 
@@ -304,13 +288,13 @@ Windows Admin Center のダッシュボード拡張機能を使用して、Azure
 1. **[アンインストール]** を選択します。 Azure IoT Edge が削除されると、Windows Admin Center の **[開始]** ページから Azure IoT Edge デバイスの接続エントリが削除されます。
 
 >[!Note]
->また、ご自身の IoT Edge デバイスで **[スタート]**  >  **[設定]**  >  **[アプリ]**  >  **[Azure IoT Edge]**  >  **[アンインストール]** の順に選択することで、Windows システムから Azure IoT Edge を削除することもできます。 この方法では、Azure IoT Edge が IoT Edge デバイスから削除されますが、その接続は Windows Admin Center に残ったままとなります。 削除を完了するには、 **[設定]** メニューから Windows Admin Center もアンインストールします。
+>また、ご自身の IoT Edge デバイスで **[スタート]** 、 **[設定]** 、 **[アプリ]** 、 **[Azure IoT Edge LTS]** 、 **[アンインストール]** の順に選択することで、Windows システムから Azure IoT Edge を削除することもできます。 この方法では、Azure IoT Edge が IoT Edge デバイスから削除されますが、その接続は Windows Admin Center に残ったままとなります。 削除を完了するには、 **[設定]** メニューから Windows Admin Center もアンインストールします。
 
 ## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、IoT Edge デバイスを作成し、Azure IoT Edge クラウド インターフェイスを使用してコードをデバイスにデプロイしました。 これで、環境に関する生データを生成するテスト デバイスができあがりました。
 
-次は、ビジネス ロジックを実行する IoT Edge モジュールの作成を開始できるように、ローカル開発環境を設定します。
+次のチュートリアルでは、Azure portal からデバイスのアクティビティと正常性を監視する方法について説明します。
 
 > [!div class="nextstepaction"]
-> [IoT Edge モジュールの開発を始める](tutorial-develop-for-linux.md)
+> [IoT Edge デバイスを監視する](tutorial-monitor-with-workbooks.md)

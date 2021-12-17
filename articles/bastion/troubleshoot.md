@@ -1,18 +1,18 @@
 ---
-title: Azure Bastion のトラブルシューティング | Microsoft Docs
-description: この記事では、Azure Bastion のトラブルシューティング方法について説明します。
+title: Azure Bastion のトラブルシューティング
+description: Azure Bastion のトラブルシューティング方法について説明します。
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 23b7a66afcc91cf1cf4a5dd9f720aad24ad40071
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86be88a7e8900ef871af1a2ad2c1c301f7487042
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98133992"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673903"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion のトラブルシューティング
 
@@ -20,11 +20,11 @@ ms.locfileid: "98133992"
 
 ## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>AzureBastionSubnet 上で NSG を作成できない
 
-**質問:** Azure Bastion サブネット上で NSG を作成しようとすると、次のエラーを受け取ります。 *"Network security group <NSG name> does not have necessary rules for Azure Bastion Subnet AzureBastionSubnet" (ネットワーク セキュリティ グループには Azure Bastion Subnet AzureBastionSubnet に必要な規則がありません)* 。
+**質問:** Azure Bastion サブネット上で NSG を作成しようとすると、次のエラーを受け取ります。 *"Network security group \<NSG name\> does not have necessary rules for Azure Bastion Subnet AzureBastionSubnet" (ネットワーク セキュリティ グループには Azure Bastion Subnet AzureBastionSubnet に必要な規則がありません)* 。
 
 **A:** NSG を作成して *AzureBastionSubnet* に適用する場合は、NSG に必要な規則を追加済みであることを確認してください。 必要な規則の一覧については、「[NSG アクセスと Azure Bastion を使用する](./bastion-nsg.md)」を参照してください。 これらの規則を追加しないと、NSG の作成/更新は失敗します。
 
-NSG 規則の例については、[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)を参照してください。
+NSG 規則の例については、[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/azure-bastion-nsg/)を参照してください。
 詳細については、[Azure Bastion の NSG のガイダンス](bastion-nsg.md)に関する記事を参照してください。
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Azure Bastion に SSH キーを使用できません
@@ -69,6 +69,13 @@ The key's randomart image is:
 
 **A:** Azure Bastion は、ドメイン参加 VM へのサインインには、ユーザー名とパスワードに基づくドメイン サインインのみをサポートしています。 Azure portal でドメインの資格情報を指定する場合は、サインインに *domain\username* 形式ではなく UPN (username@domain) 形式を使用します。 これは、ドメイン参加またはハイブリッド参加 (ドメイン参加と Azure AD 参加の両方) 仮想マシンでサポートされています。 Azure AD 参加のみの仮想マシンではサポートされていません。
 
+## <a name="unable-to-connect-to-virtual-machine"></a><a name="connectivity"></a> 仮想マシンに接続できません
+
+**Q:** 仮想マシンに接続できません (上記の問題は発生していません)。
+
+**A:** 接続の問題をトラブルシューティングするには、Azure portal 内で Azure Bastion リソースの **[接続のトラブルシューティング]** タブ ( **[監視]** セクション内) に移動します。 Network Watcher の接続のトラブルシューティングを使用すると、仮想マシン (VM) から VM、完全修飾ドメイン名 (FQDN)、URI、または IPv4 アドレスへの直接 TCP 接続を確認できます。 開始するには、接続を開始するソースと接続先を選択し、[チェック] を選択します。 [詳細については、こちらを参照してください](../network-watcher/network-watcher-connectivity-overview.md)。
+
+
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>ファイル転送に関する問題
 
 **質問:** Azure Bastion ではファイル転送はサポートされていますか?
@@ -77,7 +84,7 @@ The key's randomart image is:
 
 ## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Azure portal の黒い画面
 
-**Q:** Azure Bastion を使用して接続しようとすると、ターゲット VM に接続できず、Azure portal に黒い画面が表示されます。
+**質問:** Azure Bastion を使用して接続しようとすると、ターゲット VM に接続できず、Azure portal に黒い画面が表示されます。
 
 **A:** これは、ネットワーク接続の問題が Web ブラウザーと Azure Bastion 間 (クライアントのインターネット ファイアウォールによって WebSockets トラフィックがブロックされる場合など) または Azure Bastion とターゲット VM 間に存在する場合に発生します。 ほとんどの場合、AzureBastionSubnet、または仮想ネットワーク内の RDP/SSH トラフィックをブロックしているターゲット VM サブネットに適用された NSG が関わっています。 クライアントのインターネット ファイアウォールで WebSocket トラフィックを許可し、ターゲット VM サブネットで NSG を確認します。
 

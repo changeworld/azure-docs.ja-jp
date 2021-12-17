@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 06/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 8b1203693b67bb1a8b9699b84dd3a437027e4c3d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2b63b496fb06c2987161661ddbbfcfe74580e3bf
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055316"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356619"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用の証明書を構成する
 
@@ -32,12 +32,12 @@ ms.locfileid: "106055316"
 
 GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に、次のことを確認してください。
 
-* [Azure Stack Edge Pro の設置](azure-stack-edge-gpu-deploy-install.md)に関する記事の詳細に従って、物理デバイスを設置していること。
+* [Azure Stack Edge Pro GPU の設置](azure-stack-edge-gpu-deploy-install.md)に関する記事の説明に従って、物理デバイスが設置されていること。
 * 独自の証明書を持ち込む予定の場合:
     - 署名チェーン証明書を含む適切な形式で証明書を準備しておく必要があります。 証明書の詳細については、「[証明書の管理](azure-stack-edge-gpu-manage-certificates.md)」を参照してください。
 
-<!--    - If your device is deployed in Azure Government or Azure Government Secret or Azure Government top secret cloud and not deployed in Azure public cloud, a signing chain certificate is required before you can activate your device. 
-    For details on certificate, go to [Manage certificates](azure-stack-edge-gpu-manage-certificates.md).-->
+    - デバイスが Azure Government に配置されていて、Azure パブリック クラウドに配置されていない場合は、デバイスをアクティブにする前に署名チェーン証明書が必要になります。 
+    証明書の詳細については、[証明書の管理](azure-stack-edge-gpu-manage-certificates.md)に関するページを参照してください。
 
 
 ## <a name="configure-certificates-for-device"></a>デバイスの証明書を構成する
@@ -58,9 +58,9 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
         更新されたデバイス名と DNS ドメインが証明書に反映されないのはこのためです (それらはサブジェクト名とサブジェクトの別名に使用されます)。 デバイスを正常にアクティブ化するには、次のいずれかのオプションを選択します。 
     
-        - **[Bring your own certificates]\(すべてのデバイス証明書を生成する\)** 。 これらのデバイス証明書はテストにのみ使用し、運用環境のワークロードでは使用しないでください。 詳細については、[Azure Stack Edge Pro のデバイス証明書を生成する](#generate-device-certificates)方法に関するセクションを参照してください。
+        - **[Bring your own certificates]\(すべてのデバイス証明書を生成する\)** 。 これらのデバイス証明書はテストにのみ使用し、運用環境のワークロードでは使用しないでください。 詳細については、[Azure Stack Edge Pro GPU のデバイス証明書を生成する](#generate-device-certificates)方法に関するセクションを参照してください。
 
-        - **[Bring your own certificates]\(独自の証明書を持ち込む\)** 。 独自の署名済みエンドポイント証明書と対応する署名チェーンを持ち込むことができます。 まず署名チェーンを追加してから、エンドポイント証明書をアップロードします。 **運用環境のワークロードには、常に独自の証明書を持ち込むことをお勧めします。** 詳細については、[Azure Stack Edge Pro デバイスに独自の証明書を持ち込む](#bring-your-own-certificates)方法に関するセクションを参照してください。
+        - **[Bring your own certificates]\(独自の証明書を持ち込む\)** 。 独自の署名済みエンドポイント証明書と対応する署名チェーンを持ち込むことができます。 まず署名チェーンを追加してから、エンドポイント証明書をアップロードします。 **運用環境のワークロードには、常に独自の証明書を持ち込むことをお勧めします。** 詳細については、[Azure Stack Edge Pro GPU デバイスへの独自の証明書の持ち込み](#bring-your-own-certificates)に関するセクションを参照してください。
     
         - 独自の証明書を複数持ち込み、複数のデバイス証明書を生成することができます。 **[Generate certificates]\(証明書を生成する\)** オプションを選択すると、デバイス証明書の再生成のみが行われます。
 
@@ -71,7 +71,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
 デバイス証明書を生成するには、次の手順を実行します。
 
-次の手順を使用して、Azure Stack Edge Pro デバイス証明書を再生成してダウンロードします。
+次の手順を使用して、Azure Stack Edge Pro GPU デバイス証明書を再生成してダウンロードします。
 
 1. デバイスのローカル UI で、 **[構成] > [証明書]** に移動します。 **[Generate certificates]\(証明書の生成\)** を選択します。
 
@@ -117,9 +117,9 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
     `<Device name>_<Endpoint name>.cer`. これらの証明書には、デバイスにインストールされている対応する証明書の公開キーが含まれています。 
 
-ASE デバイス上のエンドポイントへのアクセスに使用しているクライアント システムにこれらの証明書をインストールする必要があります。 これらの証明書によって、クライアントとデバイス間に信頼が確立します。
+Azure Stack Edge デバイス上のエンドポイントへのアクセスに使用しているクライアント システムにこれらの証明書をインストールする必要があります。 これらの証明書によって、クライアントとデバイス間に信頼が確立します。
 
-デバイスへのアクセスに使用しているクライアントにこれらの証明書をインポートしてインストールするには、[Azure Stack Edge Pro デバイスにアクセスするクライアントに証明書をインポートする](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)方法の手順を実行します。 
+デバイスへのアクセスに使用しているクライアントにこれらの証明書をインポートしてインストールするには、[Azure Stack Edge Pro GPU デバイスにアクセスするクライアントに証明書をインポートする](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)方法の手順を実行します。 
 
 Azure Storage Explorer を使用する場合、クライアントに PEM 形式で証明書をインストールする必要があります。また、デバイスで生成された証明書を PEM 形式に変換する必要があります。 
 
@@ -130,7 +130,14 @@ Azure Storage Explorer を使用する場合、クライアントに PEM 形式�
 
 ### <a name="bring-your-own-certificates"></a>独自の証明書を持ち込む
 
-署名チェーンを含む独自の証明書を追加するには、次の手順を実行します。
+独自の証明書を持ち込むことができます。 
+
+- 最初に、[お使いの Azure Stack Edge デバイスで使用できる証明書の種類](azure-stack-edge-gpu-certificates-overview.md)を理解します。
+- 次に、[証明書の種類ごとの要件](azure-stack-edge-gpu-certificate-requirements.md)を確認します。
+- その後、[Azure PowerShell で証明書を作成する](azure-stack-edge-gpu-create-certificates-powershell.md)か、[適合性チェッカー ツールで証明書を作成する](azure-stack-edge-gpu-create-certificates-tool.md)ことができます。
+- 最後に、[証明書を適切な形式に変換](azure-stack-edge-gpu-prepare-certificates-device-upload.md)して、デバイスにアップロードできるようにします。
+
+署名チェーンを含む独自の証明書をアップロードするには、次の手順のようにします。
 
 1. 証明書をアップロードするには、 **[証明書]** ページで **[+ 証明書の追加]** を選択します。
 
@@ -176,7 +183,7 @@ Azure Storage Explorer を使用する場合、クライアントに PEM 形式�
 > * 前提条件
 > * 物理デバイスの証明書を構成する
 
-Azure Stack Edge Pro デバイスをアクティブにする方法については、以下を参照してください。
+Azure Stack Edge Pro GPU デバイスをアクティブにする方法については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge Pro デバイスをアクティブにする](./azure-stack-edge-gpu-deploy-activate.md)
+> [Azure Stack Edge Pro GPU デバイスをアクティブにする](./azure-stack-edge-gpu-deploy-activate.md)

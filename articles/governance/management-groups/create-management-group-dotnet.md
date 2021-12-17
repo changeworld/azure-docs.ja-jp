@@ -1,15 +1,15 @@
 ---
 title: 'クイック スタート: .NET Core を使用して管理グループを作成する'
 description: このクイックスタートでは、.NET Core を使用して、リソースを階層で整理する管理グループを作成します。
-ms.date: 02/05/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a74cea9b142785c093b8ed235fc40049746f11a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0530d1d3aeee1b96bfc8b3911dd49850f0171829
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99592570"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323244"
 ---
 # <a name="quickstart-create-a-management-group-with-net-core"></a>クイック スタート: .NET Core を使用して管理グループを作成する
 
@@ -47,7 +47,7 @@ ms.locfileid: "99592570"
    dotnet add package Microsoft.Azure.Management.ManagementGroups --version 1.1.1-preview
 
    # Add the Azure app auth package for .NET Core
-   dotnet add package Microsoft.Azure.Services.AppAuthentication --version 1.5.0
+   dotnet add package Microsoft.Azure.Services.AppAuthentication --version 1.6.1
    ```
 
 1. 既定の `program.cs` を次のコードに置き換え、更新したファイルを保存します。
@@ -60,7 +60,7 @@ ms.locfileid: "99592570"
    using Microsoft.Rest;
    using Microsoft.Azure.Management.ManagementGroups;
    using Microsoft.Azure.Management.ManagementGroups.Models;
-   
+
    namespace mgCreate
    {
        class Program
@@ -72,12 +72,12 @@ ms.locfileid: "99592570"
                string strClientSecret = args[2];
                string strGroupId = args[3];
                string strDisplayName = args[4];
-   
+
                var authContext = new AuthenticationContext($"https://login.microsoftonline.com/{strTenant}");
                var authResult = await authContext.AcquireTokenAsync(
                       "https://management.core.windows.net",
                       new ClientCredential(strClientId, strClientSecret));
-   
+
                using (var client = new ManagementGroupsAPIClient(new TokenCredentials(authResult.AccessToken)))
                {
                    var mgRequest = new CreateManagementGroupRequest

@@ -3,26 +3,30 @@ title: Google アカウントでのサインアップおよびサインインを
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C を使用するアプリケーションで Google アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e4dee196d3ff0796802d2552f073446ad6912663
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: faed36e348a8716e1023705ca077e892a24ac2d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028266"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007241"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Google アカウントでのサインアップおよびサインインを設定する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+> [!IMPORTANT]
+> **2021 年 9 月 30 日より**、Google は [Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 アプリで埋め込みの Web ビューを使用してユーザーを認証しており、Azure AD B2C で Google フェデレーションを使用している場合は、Google Gmail ユーザーを認証できなくなります。 [詳細については、こちらを参照してください](../active-directory/external-identities/google-federation.md#deprecation-of-web-view-sign-in-support)。
+
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -37,7 +41,7 @@ ms.locfileid: "107028266"
 
 ## <a name="create-a-google-application"></a>Google アプリケーションを作成する
 
-Azure Active Directory B2C (Azure AD B2C) で Google アカウントを持つユーザーのサインインを有効にするために、[Google Developers Console](https://console.developers.google.com/) でアプリケーションを作成する必要があります。 詳細については、「[OAuth 2.0 の設定](https://support.google.com/googleapi/answer/6158849)」を参照してください。 まだ Google アカウントを持っていない場合は、[https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) でサインアップできます。
+Azure Active Directory B2C (Azure AD B2C) で Google アカウントを持つユーザーのサインインを有効にするために、[Google Developers Console](https://console.developers.google.com/) でアプリケーションを作成する必要があります。 詳細については、「[OAuth 2.0 の設定](https://support.google.com/googleapi/answer/6158849)」を参照してください。 まだ Google アカウントを持っていない場合は、[`https://accounts.google.com/signup`](https://accounts.google.com/signup) でサインアップできます。
 
 1. Google アカウントの資格情報で [Google Developers Console](https://console.developers.google.com/) にサインインします。
 1. ページの左上隅にあるプロジェクトの一覧を選択し、**[新しいプロジェクト]** を選択します。
@@ -58,7 +62,8 @@ Azure Active Directory B2C (Azure AD B2C) で Google アカウントを持つユ
 ## <a name="configure-google-as-an-identity-provider"></a>Google を ID プロバイダーとして構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[ID プロバイダー]** を選択してから、**[Google]** を選択します。
 1. **[名前]** を入力します。 たとえば、「*Google*」とします。
@@ -91,15 +96,16 @@ Azure Active Directory B2C (Azure AD B2C) で Google アカウントを持つユ
 Azure AD B2C テナントで前に記録したクライアント シークレットを格納する必要があります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
-5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-6. **オプション** については、`Manual`を選択します。
-7. ポリシー キーの **名前** を入力します。 たとえば、「 `GoogleSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
-8. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
-9. **[キー使用法]** として [`Signature`] を選択します。
-10. **Create** をクリックしてください。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
+1. **オプション** については、`Manual`を選択します。
+1. ポリシー キーの **名前** を入力します。 たとえば、「 `GoogleSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+1. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
+1. **[キー使用法]** として [`Signature`] を選択します。
+1. **Create** をクリックしてください。
 
 ## <a name="configure-google-as-an-identity-provider"></a>Google を ID プロバイダーとして構成する
 

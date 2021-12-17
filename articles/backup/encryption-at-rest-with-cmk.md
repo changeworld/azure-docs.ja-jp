@@ -2,13 +2,14 @@
 title: カスタマー マネージド キーを使用したバックアップ データの暗号化
 description: Azure Backup でカスタマー マネージド キー (CMK) を使用してご自分のバックアップ データを暗号化できるようにする方法を説明します。
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: b6cb1a288d0052b39bbeb52ed9fd20e68a6427ed
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 08/24/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f16974d00f4801f288180814daf9ff5ed4558748
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167892"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778721"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
@@ -36,6 +37,7 @@ Azure Backup を使用すると、既定で有効になっているプラット�
 - Recovery Services コンテナーは、**同じリージョン** にある Azure キー コンテナーに格納されているキーを使用した場合にのみ暗号化できます。 また、キーは **RSA キー** に限定され、**有効** 状態である必要があります。
 
 - 現在、CMK で暗号化された Recovery Services コンテナーをリソース グループとサブスクリプションの間で移動することは、サポートされていません。
+- カスタマーマネージド キーを使用して暗号化された Recovery Services コンテナーでは、バックアップ インスタンスのリージョンをまたがる復元はサポートされません。
 - 既にカスタマー マネージド キーを使用して暗号化された Recovery Services コンテナーを新しいテナントに移動する場合、Recovery Services コンテナーを更新して、コンテナーのマネージド ID および CMK (新しいテナント内にあるはずです) を再作成および再構成する必要があります。 これを実行しないと、バックアップおよび復元操作が失敗するようになります。 また、サブスクリプション内に設定されているすべてのロールベースのアクセス制御 (RBAC) アクセス許可も再構成する必要があります。
 
 - この機能は、Azure portal と PowerShell を使用して構成できます。
@@ -44,7 +46,7 @@ Azure Backup を使用すると、既定で有効になっているプラット�
     >Az モジュール 5.3.0 以上を使用して、Recovery Services コンテナーでのバックアップ用のカスタマー マネージド キーを使用します。
     
     >[!Warning]
-    >Backup 用の暗号化キーを管理するために PowerShell を使用している場合は、ポータルからキーを更新しないことをお勧めします。<br></br>ポータルからキーを更新すると、新しいモデルをサポートする PowerShell 更新プログラムが利用可能になるまで、PowerShell を使用して暗号化キーを更新できなくなります。 ただし、Azure portal からキーを更新し続けることはできます。
+    >Backup 用の暗号化キーを管理するために PowerShell を使用している場合は、ポータルからキーを更新しないことをお勧めします。<br>ポータルからキーを更新すると、新しいモデルをサポートする PowerShell 更新プログラムが利用可能になるまで、PowerShell を使用して暗号化キーを更新できなくなります。 ただし、Azure portal からキーを更新し続けることはできます。
 
 自分の Recovery Services コンテナーを作成して構成していない場合は、[こちらで方法を確認](backup-create-rs-vault.md)してください。
 
@@ -111,7 +113,11 @@ TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type        : SystemAssigned
 ```
 
-### <a name="assign-user-assigned-managed-identity-to-the-vault"></a>ユーザー割り当てマネージド ID をコンテナーに割り当てる
+### <a name="assign-user-assigned-managed-identity-to-the-vault-in-preview"></a>ユーザー割り当てマネージド ID をコンテナーに割り当てる (プレビュー段階)
+
+>[!Note]
+>- CMK 暗号化のためにユーザーが割り当てたマネージド ID を使用するコンテナーでは、バックアップ用のプライベート エンドポイントの使用はサポートされません。
+>- 特定のネットワークへのアクセスを制限する Azure Key Vault は、CMK 暗号化用のユーザー割り当てマネージド ID と共に、まだサポートされていません。
 
 Recovery Services コンテナーのユーザー割り当てマネージド ID を割り当てるには、次の手順を実行します。
 
@@ -153,6 +159,9 @@ Recovery Services コンテナーのユーザー割り当てマネージド ID �
 1. 完了したら、 **[追加]** を選択して新しいアクセス ポリシーを追加します。
 
 1. **[保存]** を選択して、Azure キー コンテナーのアクセス ポリシーに加えた変更を保存します。
+
+>[!NOTE] 
+>前述のアクセス許可を含む Recovery Services コンテナーに、 _[Key Vault Crypto Officer](../key-vault/general/rbac-guide.md#azure-built-in-roles-for-key-vault-data-plane-operations)_ 役割など、RBAC の役割を割り当てることもできます。<br><br>これらの役割には、上記で説明したもの以外の追加のアクセス許可を含めることができます。
 
 ## <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Azure キー コンテナーで論理的な削除と消去保護を有効にする
 
@@ -282,11 +291,11 @@ InfrastructureEncryptionState : Disabled
 >[!IMPORTANT]
 > 保護の構成に進むには、次の手順を **正しく** 完了している必要があります。
 >
->1. バックアップ コンテナーを作成した
+>1. Recovery Services コンテナーを作成した
 >1. Recovery Services コンテナーのシステム割り当てマネージド ID を有効にした。または、ユーザー割り当てマネージド ID をコンテナーに割り当てた
->1. キー コンテナーから暗号化キーにアクセスするために、バックアップ コンテナー (またはユーザー当てマネージド ID) にアクセス許可を割り当てた
+>1. Key Vault から暗号化キーにアクセスするために、Recovery Services コンテナー (またはユーザー当てマネージド ID) にアクセス許可を割り当てた
 >1. キー コンテナーで論理的な削除と消去保護を有効にした
->1. バックアップ コンテナーに有効な暗号化キーを割り当てた
+>1. Recovery Services コンテナーに有効な暗号化キーを割り当てた
 >
 >上記の手順をすべて確認できた場合のみ、バックアップの構成に進んでください。
 
@@ -383,6 +392,16 @@ Azure VM で実行されているバックアップ SAP HANA または SQL デ�
 **[キー コンテナーから選ぶ]** オプションを使用すると、選択したキーの自動ローテーションを有効にできます。 これにより、次のバージョンに手動で更新する手間を省くことができます。 ただし、このオプションを使用すると、次のようになります。
 - キー バージョンの更新が有効になるまでに最大で 1 時間かかる場合があります。
 - キーの新しいバージョンが有効になると、キーの更新が有効になった後、少なくとも 1 回の後続バックアップ ジョブまで、古いバージョンも使用可能 (有効な状態) になります。
+
+### <a name="using-azure-policies-for-auditing-and-enforcing-encryption-utilizing-customer-managed-keys-in-preview"></a>カスタマー マネージド キーによる監査と暗号化適用のための Azure ポリシーの使用 (プレビュー)
+
+Azure Backup により、Azure ポリシーを使用して、Recovery Services コンテナー内のデータに、カスタマー マネージド キーを使用して監査を行い、暗号化を適用することができます。 Azure ポリシーを使用した場合:
+
+- 監査ポリシーを使用して、2021 年 4 月 1 日以降に有効になったカスタマー マネージド キーにより、暗号化された資格情報コンテナーを監査できます。 この日付より前に CMK 暗号化が有効になっている資格情報コンテナーの場合は、ポリシーの適用に失敗したり、不正な結果が表示されることがあります (つまり、**CMK 暗号化** が有効になっているにもかかわらず、これらのコンテナーが非準拠として報告される場合があります)。
+- 2021 年 4 月 1 日より前に **CMK 暗号化** が有効になった資格情報コンテナーの監査ポリシーを使用するには、Azure portal を使用して暗号化キーを更新します。 これにより、新しいモデルにアップグレードできます。 暗号化キーを変更しない場合は、キー URI またはキー選択オプションを使用して、同じキーを再度指定します。 
+
+   >[!Warning]
+    >Backup 用の暗号化キーを管理するために PowerShell を使用している場合は、ポータルからキーを更新しないことをお勧めします。<br>ポータルからキーを更新すると、新しいモデルをサポートする PowerShell 更新プログラムが利用可能になるまで、PowerShell を使用して暗号化キーを更新できなくなります。 ただし、Azure portal からキーを更新し続けることはできます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

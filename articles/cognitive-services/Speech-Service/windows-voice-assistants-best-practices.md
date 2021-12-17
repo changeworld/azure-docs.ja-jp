@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: 76a29af80891142fcf7f56f93f5c7acc5c58ab04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01f6e066ea5e6bca2f0160ac16ba0a6d94506c26
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92165147"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509955"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Windows 10 のアシスタント エクスペリエンスを設計する
 

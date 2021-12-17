@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory の IAM インフラストラクチャで回復性を強化する
-description: IAM インフラストラクチャの中断に対する回復性の強化に関する、アーキテクトおよび IT 管理者向けのガイド。
+description: 設計担当者と IT 管理者のための、IAM インフラストラクチャ障害に対する回復性の構築ガイド。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64fe4b8c217ec46cbb6dd046339c3ac65eebb121
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fc12433a187f030a0349247680c731c04a76274
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724679"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402813"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>ID およびアクセス管理インフラストラクチャで回復性を強化する
 

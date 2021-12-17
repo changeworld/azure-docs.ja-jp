@@ -8,15 +8,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
+ms.custom: references_regions, ignite-fall-2021
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 796abf8506a832c4053b505e903bb24ef9d09004
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c744f43fee7a49406b29768b6a0519da578eca01
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279036"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015316"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -28,6 +29,120 @@ ms.locfileid: "106279036"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="september-2021"></a>2021 年 9 月
+
+### <a name="new-basic-pass-through-live-event-sku"></a>新しい基本のパススルー ライブ イベント SKU
+
+新しい基本のパススルー ライブ イベント SKU を利用すると、顧客は[低い価格設定](https://azure.microsoft.com/pricing/details/media-services/)でライブ イベントを作成できます。 標準のパススルー ライブ イベントに似ていますが、入力帯域幅の制限が低く、許可されるライブ出力が少なく、DVR ウィンドウの長さ制限が異なり、ライブ文字起こしへのアクセスがありません。 詳細については、「[ライブ イベントの種類の比較](./live-event-types-comparison-reference.md#types-comparison)」を参照してください。
+
+### <a name="improved-scale-management-and-monitoring-for-a-streaming-endpoint-in-the-portal"></a>ポータルでのストリーミング エンドポイントのスケール管理と監視の向上
+
+ストリーミング エンドポイントのポータル ページには、エグレス容量を管理し、CDN が構成されている場合とされていない場合の対象ユーザーへのリーチを見積もることが簡単にできる方法が用意されました。  配信のビットレートと予想される CDN キャッシュのヒット率を調整して、対象ユーザーのサイズを短時間で見積もることができ、さらに Premium ストリーミング エンドポイントにスケールアップする必要があるかどうかを判断するのに役立ちます。
+
+   [ ![ポータルでのストリーミング エンドポイントのスケーリングと監視](./media/release-notes/streaming-endpoint-monitor-inline.png) ](./media/release-notes/streaming-endpoint-monitor.png#lightbox)
+
+### <a name="streaming-endpoint-portal-page-now-shows-cpu-egress-and-latency-metrics"></a>ストリーミング エンドポイントのポータル ページに CPU、エグレス、待機時間のメトリックが表示される
+
+Azure portal のストリーミング エンドポイントで、CPU 負荷、エグレス帯域幅、エンドツーエンドの待機時間のメトリックを視覚化できるようになりました。 Azure Monitor の機能を使用して、ポータルで直接、CPU、エグレス、待機時間のメトリックに基づいて監視アラートを作成できるようになりました。
+
+### <a name="user-assigned-managed-identities-support-for-media-services-accounts"></a>Media Services アカウント用のユーザー割り当てマネージド ID のサポート
+
+ユーザー割り当てマネージド ID を使用すると、お客様のストレージ アカウントおよび関連付けられたキー コンテナーのセキュリティを強化できるようになります。 ユーザーのストレージ アカウントとキー コンテナーにアクセスできるのは、ユーザー割り当てマネージド ID に限定されます。  お客様はユーザーが管理する ID の有効期間を完全に制御できます。また、必要に応じて、特定のストレージ アカウントへのメディア サービス アカウントのアクセス権を簡単に取り消すことができます。
+
+### <a name="media-services-storage-accounts-page-in-the-portal-now-support-both-uami-and-sami"></a>ポータルの Media Services ストレージ アカウントのページで UAMI と SAMI の両方をサポート
+
+Media Services のストレージ アカウントに、ユーザー割り当てマネージド ID (UAMI) またはシステム割り当てマネージド ID (SAMI) を Azure portal で直接割り当てて管理できるようになりました。
+
+### <a name="bring-your-own-key-page-now-also-supports-both-uami-and-sami"></a>Bring Your Own Key で UAMI と SAMI の両方もサポートされるようになりました。
+Media Services のキー管理ポータル ページで、ユーザー割り当てマネージド ID (UAMI) またはシステム割り当てマネージド ID (SAMI) の構成と管理がサポートされるようになりました。
+
+   [ ![アカウント暗号化のための Bring Your Own Key](./media/release-notes/byok-managed-identity.png)](./media/release-notes/byok-managed-identity.png)
+
+
+### <a name="private-link-support-for-media-services"></a>Media Services のプライベート リンクのサポート
+各サービスのプライベート エンドポイントを作成することによって、コンテンツ保護と DRM のためにライブ イベント、ストリーミング エンドポイント、キー配信サービス エンドポイントへのパブリック アクセスを制限できるようになりました。 これにより、これらの各サービスへのパブリック アクセスが制限されます。 プライベート エンドポイントで構成されている構成済みの仮想ネットワーク (VNET) から送信されたトラフィックのみが、これらのエンドポイントに接続できます。
+
+### <a name="ip-allow-list-for-key-service"></a>キー サービスの IP 許可リスト
+DRM およびコンテンツ保護のために、特定のパブリック IP アドレスからキー配信サービスへのアクセスを許可できるようになりました。 ライブ イベントとストリーミング エンドポイントについては、それぞれのページで IP 許可リストの構成が既にサポートされています。
+
+また、Media Services アカウントへのパブリック インターネット アクセスを許可またはブロックする、アカウント レベルの機能フラグを使用できるようになりました。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="net-sdk-microsoftazuremanagementmedia--500-release-available-in-nuget"></a>.NET SDK (Microsoft.Azure.Management.Media) 5.0.0 リリースが NuGet で利用可能
+
+[Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/5.0.0) .NET SDK バージョン 5.0.0 が NuGet でリリースされました。 このバージョンは、Open API (Swagger) ARM Rest API の [2021-06-01 安定](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01)バージョンと連動するように生成されています。
+
+4\.0.0 リリースからの変更点について詳しくは、[変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/mediaservices/Microsoft.Azure.Management.Media/CHANGELOG.md)を参照してください。
+
+#### <a name="changes-in-the-500-net-sdk-release"></a>5\.0.0 .NET SDK リリースでの変更点
+
+* Media Services アカウントはシステムおよびユーザー割り当てマネージド ID 対応になりました。
+* **PublicNetworkAccess** オプションを Media Services アカウントに追加しました。 このオプションを Private Link 機能と共に使用すると、アクセスをプライベート ネットワークのみに制限し、パブリック ネットワークからのアクセスをすべてブロックすることができます。
+* 基本パススルー - 新しい種類のライブ イベントが追加されています。 "基本パススルー" ライブ イベントは標準パススルー ライブ イベントと同様の機能を備えていますが、入力と出力にいくつかの制限があり、低価格で提供されます。
+* **PresetConfigurations** - 出力設定と、[コンテンツに対応したエンコード プリセット](./encode-content-aware-concept.md)に使用される最小および最大ビットレートをカスタマイズできます。 これにより、出力トラック番号や解像度が制限されているコンテンツに対応したエンコードを使用する際に、よりよい見積もりや正確な請求計画を立てることができます。
+
+#### <a name="breaking-changes-in-tht-500-net-sdk-release"></a>5\.0.0 .NET SDK リリースの破壊的変更
+
+* 他のすべての Azure SDK と一貫性を保つため、**ApiErrorException** が **ErrorResponseException** に置換されました。 例外本文は変更されません。
+* 404 Not found を返すすべての呼び出しで、null が返されるのではなく **ErrorResponseException** が発生するようになりました。 この変更は、他の Azure SDK との一貫性を維持するために行われました
+* Media Service コンストラクターには、KeyDelivery パラメーターの後に新しい省略可能な PublicNetworkAccess パラメーターが与えられます。
+* **MediaServiceIdentity** の Type プロパティは、コンマで区切った複数の値を入れるために、ManagedIdentityType 列挙型から文字列に変更されました。 有効な文字列は、**SystemAssigned** または **UserAssigned** です。
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="additional-live-event-ingest-heartbeat-properties-for-improved-diagnostics"></a>診断を改善するための追加のライブ イベント取り込みハートビート プロパティ
+
+追加のライブ イベント取り込みハートビート プロパティが、Event Grid メッセージに追加されました。 これには、ライブ取り込み中の問題の診断を支援する次の新しいフィールドが含まれます。  **ingestDriftValue** は、ライブ イベントにプッシュするソース取り込みエンコーダーからのネットワーク待機時間を監視する必要があるシナリオで役立ちます。 この値が大きすぎる場合は、ライブ ストリーミング イベントが成功するにはネットワーク待機時間が長すぎることを示している可能性があります。
+
+詳細については、[LiveEventIngestHeartbeat スキーマ](./monitoring/media-services-event-schemas.md#liveeventingestheartbeat)に関するページを参照してください。
+
+### <a name="private-links-support-is-now-ga"></a>プライベート リンクのサポートの一般提供
+
+[プライベート リンク](../../private-link/index.yml)で Media Services を使用するためのサポートが一般提供となり、Azure Government クラウドを含むすべての Azure リージョンで利用できるようになりました。
+Azure Private Link を使用すると、仮想ネットワーク内のプライベート エンドポイント経由で、Azure PaaS サービスと Azure でホストされている顧客が所有するサービスまたはパートナー サービスにアクセスできます。
+仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。
+
+プライベート リンクを使用して Media Services を使用する方法の詳細については、「[プライベート リンクを使用して Media Services とストレージ アカウントを作成する](./security-private-link-how-to.md)」を参照してください。
+
+### <a name="new-us-west-3-region-is-ga"></a>新しい米国西部 3 リージョンの一般提供
+
+米国西部 3 リージョンが一般提供となり、お客様が新しい Media Services アカウントを作成するときに使用できるようになりました。
+
+### <a name="key-delivery-supports-ip-allow-list-restrictions"></a>キー配信で IP 許可リストの制限がサポートされる
+
+キー配信に対する IP 許可リストの制限を使用して、Media Services アカウントを構成できるようになりました。 新しい許可リストの設定は、SDK、ポータル、CLI を介して、Media Services アカウント リソースで使用できます。
+これにより、オペレーターは DRM ライセンスと AES-128 コンテンツ キーの配信を特定の IPv4 範囲に制限できます。
+
+この機能を使用して、DRM ライセンスまたは AES-128 キーのすべてのパブリック インターネット配信を遮断し、プライベート ネットワーク エンドポイントへの配信を制限することもできます。
+
+詳細については、「[IP 許可リストを使用して DRM ライセンスおよび AES キー配信へのアクセスを制限する](./drm-content-protection-key-delivery-ip-allow.md)」という記事を参照してください。
+
+### <a name="new-samples-for-python-and-nodejs-with-typescript"></a>Python および Node.js 用の新しいサンプル (Typescript を使用)
+Azure SDK の最新の Typescript サポートを使用する **Node.js** のサンプルを更新しました。
+
+|サンプル|説明|
+|---|---|
+|[ライブ ストリーミング](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/Live/index.ts)| ライブ ストリーミングの基本的な例。 **警告**: ライブを使用する場合は、すべてのリソースがクリーンアップされていて、ポータルで課金されなくなっていることを確認してください|
+|[HLS と DASH をアップロードしてストリーミングする](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/StreamFilesSample/index.ts)| ソース URL からローカル ファイルまたはエンコードをアップロードするための基本的な例。 サンプルでは、Storage SDK を使用してコンテンツをダウンロードする方法と、プレーヤーにストリーミングする方法が示されています |
+|[Playready と Widevine DRM を使用して HLS と DASH をアップロードしてストリーミングする](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/StreamFilesWithDRMSample/index.ts)| Widevine と PlayReady DRM を使用したエンコードとストリーミングの方法を示しています |
+|[AI をアップロードおよび使用してビデオとオーディオにインデックスを付ける](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/VideoIndexerSample/index.ts)| ビデオおよびオーディオ アナライザーのプリセットを使用して、ビデオまたはオーディオ ファイルからメタデータと分析情報を生成する例 |
+
+
+新しい **Python** のサンプルでは、Azure Functions と Event Grid を使用して顔編集プリセットをトリガーする方法を示します。
+
+|サンプル|説明|
+|---|---|
+|[イベントと関数を使用した顔編集](https://github.com/Azure-Samples/media-services-v3-python/tree/main/VideoAnalytics/FaceRedactorEventBased) | これは、Azure ストレージ アカウントにアクセスするとすぐにビデオで Azure Media Services Face Redactor ジョブをトリガーするイベントベースのアプローチの例です。 このソリューションでは Azure Media Services、Azure 関数、Event Grid、Azure Storage を活用します。 ソリューションの詳細については、[README.md](https://github.com/Azure-Samples/media-services-v3-python/blob/main/VideoAnalytics/FaceRedactorEventBased/README.md) を参照してください |
+
+
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="availability-zones-default-support-in-media-services"></a>Media Services 内での Availability Zones の既定のサポート
+
+Media Services が [Availability Zones](concept-availability-zones.md) をサポートすることで、同じ Azure リージョン内で、障害から分離された場所を提供するようになりました。  Media Services アカウントは既定でゾーン冗長になりました。追加の構成や設定は必要ありません。 これは、[Availability Zones をサポート](../../availability-zones/az-region.md#azure-regions-with-availability-zones)するリージョンにのみ適用されます
+
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -62,7 +177,7 @@ AudioAnalyzer プリセット (基本と標準モードの両方) に、ビデ�
 
 Standard Encoder で、8 ビットの HEVC (H.265) エンコードがサポートされるようになりました。 HEVC コンテンツは、'hev1' 形式を使用して、Dynamic Packager を通じて配信およびパッケージ化できます。  
 
-HEVC サンプルを含む新しい .NET カスタム エンコードは、[media-services-v3-dotnet Git Hub リポジトリ](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC)で入手できます。
+HEVC サンプルを含む新しい .NET カスタム エンコードは、[media-services-v3-dotnet Git Hub リポジトリ](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)で入手できます。
 カスタム エンコードに加えて、次の組み込み HEVC エンコード プリセットを新しく使用できるようになりました。
 
 - H265ContentAwareEncoding
@@ -84,7 +199,9 @@ v2 API の Premium Encoder で HEVC を使用していたお客様は、Standard
  
 - 24 時間 365 日体制のライブ イベント サポート
 - ARM REST API、.NET Core 用のクライアント SDK、Node.js、Python、Java、Go、Ruby。
-- カスタマー マネージド キー、信頼されたストレージ統合、プライベート リンクのサポート、[その他](https://docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- カスタマー マネージド キー、信頼されたストレージ統合、プライベート リンクのサポート、[その他](./migrate-v-2-v-3-migration-benefits.md)
+
+v3 API と SDK に対する更新の一部として、Media Services アカウントにメディア占有ユニット (MRU) は不要になりました。負荷に基づいてシステムによって自動的にスケールアップとスケールダウンが行われるためです。 詳細については、[MRU の移行ガイダンス](./migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md)を参照してください。
 
 #### <a name="action-required"></a>必要な操作
 
@@ -95,10 +212,10 @@ v2 API の Premium Encoder で HEVC を使用していたお客様は、Standard
 
 ### <a name="standard-encoder-support-for-v2-api-features"></a>Standard Encoder での v2 API 機能のサポート
 
-新しく追加された HEVC (H.265) エンコードのサポートに加えて、2020-05-01 バージョンのエンコード API では次の機能を使用できるようになりました。
+新しく追加された HEVC (H.265) エンコードのサポートに加えて、2020-05-01 (以降) バージョンのエンコード API では次の機能を使用できるようになりました。
 
 - 新しい **Jobinputclip** サポートを使用して、複数の入力ファイルを結合できるようになりました。
-    - .NET 用の例では、[2 つのアセットを結合](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets)する方法を示しています。
+    - .NET 用の例では、[2 つのアセットを結合](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets)する方法を示しています。
 - オーディオ トラックのオプションにより、お客様は着信オーディオ トラックを選択してマップし、出力にルーティングしてエンコードできます
     - **Audiotrackdescriptor** とトラックのオプションの詳細については、[REST API OpenAPI](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385) に関するセクションを参照してください。
 - エンコードでのトラックの選択 - お客様は、ABR ソース ファイル、または複数のビットレート トラックを含むライブ アーカイブからトラックを選択できます。 ライブ イベント アーカイブ ファイルから MP4 を生成する場合に非常に便利です。
@@ -197,7 +314,7 @@ Media Services とビデオ オン デマンド (VOD) を使用した高可用�
 
 ### <a name="live-video-analytics-on-iot-edge-preview-release"></a>Live Video Analytics on IoT Edge プレビュー リリース
 
-Live Video Analytics on IoT Edge のプレビューが公開されました。 詳細については、「[リリース ノート](../live-video-analytics-edge/release-notes.md)」を参照してください。
+Live Video Analytics on IoT Edge のプレビューが公開されました。 
 
 Live Video Analytics on IoT Edge は、メディア サービス ファミリの拡張です。 独自のエッジ デバイスで任意の AI モデルを使用してライブ ビデオを分析し、必要に応じてそのビデオをキャプチャして記録することができます。 ライブ ビデオ パイプラインの構築と運用の複雑さを気にせずに、エッジでリアルタイムのビデオ分析を使用してアプリを作成できるようになりました。
 
@@ -268,7 +385,7 @@ RTMP ライブ ストリーミングで次の新しいおすすめパートナ�
 - 標準のエンコードでは、時間基準の GOP 設定の使用時、VOD エンコード中、可変フレーム レート (VFR) コンテンツで通常の GOP ペースが維持されるようになりました。  つまり、たとえば、15 fps から 30 fps の範囲で変化する混在フレーム レート コンテンツを送信すると、アダプティブ ビットレート ストリーミング MP4 ファイルへの出力に対して通常の GOP 距離が計算されます。 これにより HLS または DASH 経由で配信するときにトラック間で途切れなく切り替える機能が向上します。 
 -  可変フレーム レート (VFR) ソース コンテンツの AV 同期の向上
 
-### <a name="video-indexer-video-analytics"></a>Video Indexer、ビデオ分析
+### <a name="azure-video-analyzer-for-media-video-analytics"></a>Azure Video Analyzer for Media、ビデオ分析
 
 - VideoAnalyzer プリセットで抽出されたキーフレームがサイズ変更なく、動画の元の解像度で与えられるようになりました。 高解像度のキーフレーム抽出により元の画質が与えられ、Microsoft の Computer Vision サービスと Custom Vision サービスで提供される画像を基盤とする人工知能モデルを活用し、動画からさらに踏み込んだ分析情報を得ることができます。
 
@@ -284,9 +401,9 @@ Media Services v3 で、24 時間 365 日のライブ イベントのライブ �
 
 #### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関する記事を参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、これらの従来のメディア プロセッサに取って代わります。
+*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関する記事を参照してください。 Azure Video Analyzer for Media が、これらの従来のメディア プロセッサに取って代わります。
 
-詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](../previous/migrate-indexer-v1-v2.md)に関する記事をご覧ください。
+詳細については、[Media Indexer および Media Indexer 2 から **Azure Media Services Video Indexer** への移行](../previous/migrate-indexer-v1-v2.md)に関する記事を参照してください。
 
 ## <a name="august-2019"></a>2019 年 8 月
 
@@ -498,7 +615,7 @@ CMAF と 'cbcs' 暗号化のサポート。Apple HLS (iOS 11+) および、CMAF 
 
 ### <a name="video-indexer"></a>Video Indexer
 
-Video Indexer GA のリリースは 8 月に発表されました。 現在サポートされている機能に関する新しい情報については、「[Video Indexer とは](../video-indexer/video-indexer-overview.md?bc=/azure/media-services/video-indexer/breadcrumb/toc.json&toc=/azure/media-services/video-indexer/toc.json)」をご覧ください。 
+Video Indexer GA のリリースは 8 月に発表されました。 現在サポートされている機能に関する新しい情報については、「[Video Indexer とは](../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md?bc=%2fazure%2fmedia-services%2fvideo-indexer%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fmedia-services%2fvideo-indexer%2ftoc.json)」をご覧ください。 
 
 ### <a name="plans-for-changes"></a>変更の計画
 

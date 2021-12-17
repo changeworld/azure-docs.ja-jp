@@ -2,21 +2,21 @@
 title: チュートリアル:SAP Cloud Platform Identity Authentication を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを SAP Cloud Platform Identity Authentication に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
-ms.author: Zhchia
-ms.openlocfilehash: 419f25ee3df471bc2fc4526254f5677b8bd71856
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: ec63b60f4bb3ded457b3851d899cdbb6a051895f
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96342741"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990042"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>チュートリアル:SAP Cloud Platform Identity Authentication を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -32,8 +32,11 @@ ms.locfileid: "96342741"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * Azure AD テナント
-* [SAP Cloud Platform Identity Authentication テナント](https://cloudplatform.sap.com/pricing.html)
+* [SAP Cloud Platform Identity Authentication テナント](https://www.sap.com/products/cloud-platform.html)
 * 管理者のアクセス許可がある SAP Cloud Platform Identity Authentication のユーザー アカウント。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>SAP Cloud Platform Identity Authentication にユーザーを割り当てる
 

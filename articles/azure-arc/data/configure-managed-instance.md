@@ -4,77 +4,73 @@ description: Azure Arc 対応 SQL Managed Instance を構成する
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: dnethi
+ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 6e2443014f6788504a11784945078187a5a72de4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4dc8843804d48fb98fef7cd336e6b56f54f49ae
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98985871"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554357"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance を構成する
 
 この記事では、Azure Arc 対応 SQL Managed Instance を構成する方法について説明します。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="configure-resources"></a>Configure resources
+## <a name="configure-resources-such-as-cores-memory"></a>コア、メモリなどのリソースを構成する
 
-### <a name="configure-using-azure-data-cli-azdata"></a>[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用して構成する
 
-Azure Arc 対応 SQL Managed Instance の構成を [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用して編集できます。 次のコマンドを実行して構成オプションを確認します。 
+### <a name="configure-using-cli"></a>CLI を使用した構成
 
+Azure Arc 対応 SQL Managed Instance の構成を CLI を使用して編集できます。 次のコマンドを実行して構成オプションを確認します。 
+
+```azurecli
+az sql mi-arc edit --help
 ```
-azdata arc sql mi edit --help
+
+次のコマンドを使用して、Azure Arc 対応 SQL Managed Instance に利用できるメモリとコアを更新できます。
+
+```azurecli
+az sql mi-arc edit --cores-limit 4 --cores-request 2 --memory-limit 4Gi --memory-request 2Gi -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s
 ```
 
 次の例では、CPU コアとメモリの要求と制限を設定します。
 
-```
-azdata arc sql mi edit --cores-limit 4 --cores-request 2 --memory-limit 4Gi --memory-request 2Gi -n <NAME_OF_SQL_MI>
+```azurecli
+az sql mi-arc edit --cores-limit 4 --cores-request 2 --memory-limit 4Gi --memory-request 2Gi -n sqlinstance1 --k8s-namespace arc --use-k8s
 ```
 
-SQL Managed Instance に対して行われた変更を確認するには、次のコマンドを使用して、構成 yaml ファイルを表示できます。
+Azure Arc 対応 SQL Managed Instance に対して行われた変更を確認するには、次のコマンドを使用して、構成 yaml ファイルを表示できます。
 
-```
-azdata arc sql mi show -n <NAME_OF_SQL_MI>
+```azurecli
+az sql mi-arc show -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="configure-server-options"></a>サーバー オプションの構成
 
 作成後に、Azure Arc 対応 SQL Managed Instance のサーバー構成設定を構成できます。 この記事では、mssql エージェントの有効化/無効化などの設定を構成する方法、およびトラブルシューティングのシナリオで特定のトレース フラグを有効にする方法について説明します。
 
-これらのいずれかの設定を変更するには、次の手順に従います。
 
-1. ターゲット設定を含むカスタム `mssql-custom.conf` ファイルを作成します。 次の例では、SQL エージェントを有効にし、トレース フラグ 1204 を有効にします。
+### <a name="enable-sql-server-agent"></a>SQL Server エージェントを有効にする
 
-   ```
-   [sqlagent]
-   enabled=true
-   
-   [traceflag]
-   traceflag0 = 1204
-   ```
+既定では、SQL Server エージェントは無効になっています。 次のコマンドを実行して有効にできます。
 
-1. `mssql-custom.conf` ファイルを `master-0` ポッドの `mssql-miaa` コンテナー内の `/var/opt/mssql` にコピーします。 `<namespaceName>` をビッグ データ クラスター名に置き換えます。
+```azurecli
+az sql mi-arc edit -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s --agent-enabled true
+```
+例
+```azurecli
+az sql mi-arc edit -n sqlinstance1 --k8s-namespace arc --use-k8s --agent-enabled true
+```
 
-   ```bash
-   kubectl cp mssql-custom.conf master-0:/var/opt/mssql/mssql-custom.conf -c mssql-server -n <namespaceName>
-   ```
+### <a name="enable-trace-flags"></a>トレース フラグを有効にする
 
-1. SQL Server インスタンスを再起動します。  `<namespaceName>` をビッグ データ クラスター名に置き換えます。
+トレース フラグは次のように有効にできます。
+```azurecli
+az sql mi-arc edit -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s --trace-flags "3614,1234" 
+```
 
-   ```bash
-   kubectl exec -it master-0  -c mssql-server -n <namespaceName> -- /bin/bash
-   supervisorctl restart mssql-server
-   exit
-   ```
-
-
-**既知の制限事項**
-- 上記の手順では、Kubernetes クラスター管理者のアクセス許可が必要です
-- これは、プレビュー全体で変更される可能性があります

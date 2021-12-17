@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: fc85eec008ef099d63d538e4871a1a84573f5a18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fff03859cb41226e068380dd485d6b5d372aa6b9
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98790447"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510071"
 ---
 # <a name="what-is-a-voice-assistant"></a>音声アシスタントとは
 
@@ -74,7 +74,7 @@ Azure Speech Services を使用して構築された音声アシスタントで�
 
 * [カスタム音声](./custom-speech-overview.md)
 * [Custom Voice](how-to-custom-voice.md)
-* [カスタム キーワード](custom-keyword-overview.md)
+* [カスタム キーワード](keyword-recognition-overview.md)
 
 > [!NOTE]
 > カスタマイズのオプションは、言語やロケールによって異なります ([サポートされる言語](language-support.md)に関するページを参照してください)。

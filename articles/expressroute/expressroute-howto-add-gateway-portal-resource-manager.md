@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: f81446111ab87b280d50caceb93beefc7aedef3b
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: df663a2327ff60bcb76aa56acda0d92429b5f249
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110327"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132713613"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -50,11 +50,6 @@ ms.locfileid: "106110327"
 
 構成を開始する前に、これらの手順の[ビデオ](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)を表示できます。
 
-> [!IMPORTANT]
-> 現在、プライベート ピアリングの IPv6 サポートは **パブリック プレビュー** の段階にあります。 IPv6 ベースのプライベート ピアリングを構成して仮想ネットワークを ExpressRoute 回線に接続したい場合は、仮想ネットワークをデュアル スタックにし、[Azure VNet での IPv6](../virtual-network/ipv6-overview.md) に関するガイドラインに従ってください。
-> 
-> 
-
 ## <a name="create-the-gateway-subnet"></a>ゲートウェイ サブネットを作成する
 
 1. [ポータル](https://portal.azure.com)で、仮想ネットワーク ゲートウェイを作成する Resource Manager 仮想ネットワークに移動します。
@@ -89,13 +84,11 @@ ms.locfileid: "106110327"
     | パブリック IP アドレス名 | パブリック IP アドレスの名前を指定します。 |
 
     > [!IMPORTANT]
-    > ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、**SKU** に対して AZ SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ) を選択してください。
+    > ExpressRoute で IPv6 ベースのプライベート ピアリングを使用する予定の場合は [PowerShell の手順](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway)を使用して、必ず [標準]、[静的] タイプのパブリック IP アドレスでゲートウェイを作成してください。
     > 
     > 
 
 1. **[確認および作成]** 、 **[作成]** の順に選択して、ゲートウェイの作成を開始します。 設定が検証されて、ゲートウェイが作動します。 仮想ネットワーク ゲートウェイの作成は、完了するまでに最大で 45 分かかる場合があります。
-
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="[仮想ネットワーク ゲートウェイの作成] ページのフィールド":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

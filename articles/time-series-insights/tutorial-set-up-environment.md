@@ -1,21 +1,19 @@
 ---
 title: チュートリアル:Gen2 の環境を設定する - Azure Time Series Insights Gen2 | Microsoft Docs
 description: チュートリアル:Azure Time Series Insights Gen2 で環境を設定する方法について説明します。
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: riserrad
+ms.author: riserrad
 ms.workload: big-data
 ms.service: time-series-insights
-services: time-series-insights
 ms.topic: tutorial
-ms.date: 02/25/2021
+ms.date: 04/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: 76a33bdb773645c9e8f97a47b1378d813b165631
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a6562592bb7c0ae37784429d6a36eaf4ade4957
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103464179"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449317"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>チュートリアル:Azure Time Series Insights Gen2 環境を設定する
 
@@ -113,19 +111,18 @@ ms.locfileid: "103464179"
    | **IoT Hub name (IoT ハブの名前)** | デバイス シミュレーター用に作成した IoT ハブの名前を選択します。 |
    | **IoT Hub access policy (IoT ハブのアクセス ポリシー)** | **[iothubowner]** を選びます。 |
    | **IoT Hub コンシューマー グループ** | **[New]\(新規\)** を選択し、一意の名前を入力します。次に、 **[+ Add]\(追加\)** を選択します。 コンシューマー グループは、Azure Time Series Insights Gen2 で一意の値である必要があります。 |
+   | **開始オプション** | **[Beginning now]\(今すぐ開始\)** を選択します。 |
    | **Timestamp property \(タイムスタンプのプロパティ\)** | この値は、受信したテレメトリ データで **タイムスタンプ** プロパティを識別するために使用されます。 このチュートリアルでは、このボックスを空のままにします。 このシミュレーターでは、IoT ハブからの受信タイムスタンプを使用します。これが Azure Time Series Insights Gen2 の既定の設定です。 |
 
-1. **[確認および作成]** を選択します。
-
-   [![作成した IoT ハブをイベント ソースとして構成します。](media/tutorial-set-up-environment/configure-event-source.png)](media/tutorial-set-up-environment/configure-event-source.png#lightbox)
+   :::image type="content" source="media/tutorial-set-up-environment/configure-event-source.png" alt-text="作成された IoT ハブをイベント ソースとして構成する" lightbox="media/tutorial-set-up-environment/configure-event-source.png":::
 
 1. **[確認および作成]** を選択します。
 
-    [![[Review + create]\(確認と作成\) ページと [Create]\(作成\) ボタン。](media/tutorial-set-up-environment/environment-confirmation.png)](media/tutorial-set-up-environment/environment-confirmation.png#lightbox)
+   :::image type="content" source="media/tutorial-set-up-environment/environment-confirmation.png" alt-text="[確認および作成] ページと [作成] ボタン" lightbox="media/tutorial-set-up-environment/environment-confirmation.png":::
 
-    デプロイの状態を確認できます。
+   デプロイの状態を確認できます。
 
-    [![デプロイが完了したことを示す通知。](media/tutorial-set-up-environment/deployment-notification.png)](media/tutorial-set-up-environment/deployment-notification.png#lightbox)
+   [![デプロイが完了したことを示す通知。](media/tutorial-set-up-environment/deployment-notification.png)](media/tutorial-set-up-environment/deployment-notification.png#lightbox)
 
 1. デプロイの詳細を展開します。
 
@@ -229,7 +226,7 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
         | **名前** | 「**Floor**」と入力します。 |
         | **種類** | **[カテゴリ別]** を選択します |
         | **Value** | プリセットから選択します。 **[Floor (Double)]\(フロア (Double)\)** を選択します。 <br /> 注:Azure Time Series Insights Gen2 でイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。|
-        | **Categories (カテゴリ)** | <span style="text-decoration: underline">ラベル</span>  - <span style="text-decoration: underline">値</span> <br /> Lower:1,2,3,4 <br /> Middle:5,6,7,8,9 <br /> Upper:10,11,12,13,14,15 |
+        | **Categories (カテゴリ)** | **ラベル**: **値** <br /> Lower:1,2,3,4 <br /> Middle:5,6,7,8,9 <br /> Upper:10,11,12,13,14,15 |
         | **既定のカテゴリ** | 「**Unknown**」と入力します |
 
         [![型の変数を追加します。](media/tutorial-set-up-environment/add-type-variables.png)](media/tutorial-set-up-environment/add-type-variables.png#lightbox)

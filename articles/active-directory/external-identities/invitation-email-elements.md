@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc80c208b5a48a45b8c47d640dc381f5559c3d4d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 324b37931fff91779b8d25c744ae63671bae315c
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304768"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224312"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
@@ -40,7 +40,8 @@ ms.locfileid: "107304768"
 差出人アドレスには、LinkedIn と同様のパターンが使用されています。 このパターンにより、メールは invites@microsoft.com からのものであっても、招待は別の組織からであることがはっきりわかります。 形式は次のようになります:Microsoft Invitations  <invites@microsoft.com> または Microsoft Invitations (&lt;テナント名&gt; の代理)  <invites@microsoft.com>. 
 
 > [!NOTE]
-> 中国の 21Vianet が運営する Azure サービスでは、送信者のアドレスは Invites@oe.21vianet.com になります。
+> 中国の 21Vianet が運営する Azure サービスでは、送信者のアドレスは Invites@oe.21vianet.com になります。  
+> Azure AD Government の場合、送信者のアドレスは invites@azuread.us です。
 
 ### <a name="reply-to"></a>返信
 

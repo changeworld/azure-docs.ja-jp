@@ -8,15 +8,17 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: e427d51068115db27a36243d738c0e93a10d3cb1
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: b68963217dce0dd3c67b6876319c0a56bffb2b82
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375918"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715722"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
+
+**適用対象:** :heavy_check_mark: ユニフォーム スケール セット
 
 ポータルを通じて Azure 仮想マシン スケール セットをデプロイすると、特定のネットワーク プロパティには既定値が設定されます。たとえば、受信 NAT 規則付きの Azure ロード バランサーです。 この記事では、スケール セットで構成できる、いくつかのより高度なネットワーク機能の使用方法について説明します。
 
@@ -130,7 +132,7 @@ Azure テンプレート内でドメイン名を設定するには、スケー�
 ただし、一部のシナリオでは、スケール セット仮想マシンが独自のパブリック IP アドレスを備える必要があります。 たとえば、ゲームで、ゲームの物理処理を行っているクラウド仮想マシンにコンソールが直接接続する必要がある場合です。 もう 1 つの例は、分散型データベースで複数のリージョンにわたって各仮想マシンが互いに対する外部接続を確立する必要がある場合です。
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>仮想マシンごとにパブリック IP アドレスがあるスケール セットの作成
-CLI を使用して、各仮想マシンにパブリック IP アドレスを割り当てるスケール セットを作成するには、**vmss create** コマンドに **--public-ip-per-vm** パラメーターを追加します。 
+CLI を使用して、各仮想マシンにパブリック IP アドレスを割り当てるスケール セットを作成するには、**vmss create** コマンドに **--public-ip-per-vm** パラメーターを追加します。
 
 Azure テンプレートを使用してスケール セットを作成するには、Microsoft.Compute/virtualMachineScaleSets リソースの API バージョンが少なくとも **2017-03-30** であることを確認し、スケール セットの ipConfigurations セクションに **publicIpAddressConfiguration** JSON プロパティを追加します。 次に例を示します。
 
@@ -142,8 +144,13 @@ Azure テンプレートを使用してスケール セットを作成するに�
     }
 }
 ```
+インスタンスごとに複数のパブリック IP を持つ仮想マシン スケール セットが、前にロード バランサーを使用して作成される場合、インスタンス IP の SKU は Load Balancer (Basic または Standard など) の SKU によって決定されます。
 
-テンプレートの例:[201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
+Basic Load Balancer を使用したテンプレートの例: [vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-public-ip-linux)
+
+または、[パブリック IP プレフィックス](../virtual-network/ip-services/public-ip-address-prefix.md) (Standard SKU パブリック IP の連続したブロック) を使用して、仮想マシン スケール セットにインスタンス レベルの IP を生成できます。 プレフィックスのゾーン プロパティは、出力に表示されませんが、インスタンスの IP に渡されます。
+
+パブリック IP プレフィックスを使用したテンプレートの例: [vmms-with-public-ip-prefix](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-with-public-ip-prefix)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>スケール セットに含まれた仮想マシンのパブリック IP アドレスの照会
 CLI を使用して、スケール セット仮想マシンに割り当てられているパブリック IP アドレスを一覧表示するには、**az vmss list-instance-public-ips** コマンドを使用します。
@@ -384,7 +391,7 @@ az vmss show \
 
 ## <a name="make-networking-updates-to-specific-instances"></a>特定のインスタンスにネットワークを更新する
 
-特定の仮想マシン スケール セットのインスタンスにネットワークを更新できます。 
+特定の仮想マシン スケール セットのインスタンスにネットワークを更新できます。
 
 インスタンスに対して `PUT` を実行し、ネットワーク構成を更新できます。 これを利用し、たとえば、ネットワーク インターフェイス カード (NIC) を追加または削除したり、バックエンド プールからインスタンスを削除したりできます。
 
@@ -395,8 +402,8 @@ PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/provid
 次の例では、NIC に 2 つ目の IP 構成を追加する方法を示します。
 
 1. `GET` 特定の仮想マシン スケール セットのインスタンスの詳細。
-    
-    ``` 
+
+    ```
     GET https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
     ```
 
@@ -449,10 +456,10 @@ PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/provid
       }
     }
     ```
- 
+
 2. `PUT` インスタンスに対して。更新して IP 構成を追加します。 これは `networkInterfaceConfiguration` を追加する場合と似ています。
 
-    
+
     ```
     PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
     ```
@@ -516,6 +523,24 @@ PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/provid
     }
     ```
 
+
+## <a name="explicit-network-outbound-connectivity-for-flexible-scale-sets"></a>フレキシブル スケール セットの明示的なネットワーク送信接続 
+
+既定のネットワーク セキュリティを強化するために、[フレキシブル オーケストレーションを使用した仮想マシン スケール セット](..\virtual-machines\flexible-virtual-machine-scale-sets.md)では、自動スケール プロファイルを使用して暗黙的に作成されたインスタンスで、次のいずれかの方法を使用して送信接続を明示的に定義する必要があります。 
+
+- ほとんどのシナリオでは、[NAT Gateway をサブネットに接続する](../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md)ことをお勧めします。
+- 高度なセキュリティ要件を持つシナリオの場合や、Azure Firewall またはネットワーク仮想アプライアンス (NVA) を使用する場合は、カスタムのユーザー定義ルートをファイアウォール経由のネクスト ホップとして指定できます。 
+- インスタンスは、Standard SKU Azure Load Balancer のバックエンド プールにあります。 
+- インスタンス ネットワーク インターフェイスにパブリック IP アドレスを接続します。 
+
+単一インスタンス VM と仮想マシン スケール セットを均一オーケストレーションで使用すると、送信接続が自動的に提供されます。 
+
+明示的な送信接続を必要とする一般的なシナリオには、次のものがあります。 
+
+- Windows VM のアクティブ化では、VM インスタンスから Windows アクティブ化キー管理サービス (KMS) への送信接続が定義されている必要がある。 詳細については、[Windows VM のアクティブ化に関する問題のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)に関する記事を参照してください。  
+- ストレージ アカウントまたは Key Vault にアクセスする。 Azure サービスへの接続は、[プライベート リンク](../private-link/private-link-overview.md)を使用して確立することもできます。 
+
+セキュリティで保護された送信接続の定義の詳細については、「[Azure での既定の送信アクセス](../virtual-network/ip-services/default-outbound-access.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

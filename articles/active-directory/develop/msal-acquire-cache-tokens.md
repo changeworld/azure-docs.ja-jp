@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 98ae81626db637f5b0bd6bfe9e294c32293d09e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7709877fe88e5580e938176bd6340590cc36169b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755074"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231389"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) を使用してトークンを取得し、キャッシュする
 
@@ -93,7 +93,7 @@ MSAL は、1 つのトークン キャッシュ (または、機密クライア�
 パブリック クライアント アプリケーション (デスクトップまたはモバイルのアプリ) の場合は、次のようにします。
 
 - 多くの場合、UI またはポップアップ ウィンドウを使用してユーザーをサインインさせ、対話形式でトークンを取得します。
-- ドメインまたは Azure に参加済みの Windows コンピューターでデスクトップ アプリケーションが実行されている場合、統合 Windows 認証 (IWA および Kerberos) を使用して、[サインインしたユーザーのトークンを自動的に取得](msal-authentication-flows.md#integrated-windows-authentication)できます。
+- ドメインまたは Azure に参加済みの Windows コンピューターでデスクトップ アプリケーションが実行されている場合、統合 Windows 認証 (IWA および Kerberos) を使用して、[サインインしたユーザーのトークンを、確認を表示せずに取得](msal-authentication-flows.md#integrated-windows-authentication)できます。
 - .NET Framework デスクトップ クライアント アプリケーションでは、[ユーザー名とパスワードを使ってトークンを取得](msal-authentication-flows.md#usernamepassword)できます (推奨されません)。 機密クライアント アプリケーションでは、ユーザー名とパスワードを使わないでください。
 - Web ブラウザーがないデバイスで実行されているアプリケーションでは、[デバイス コード フロー](msal-authentication-flows.md#device-code)によってトークンを取得できます。 ユーザーは URL とコードを提供された後、別のデバイスの Web ブラウザーに移動し、コードを入力してサインインします。 その後、Azure AD はブラウザーのないデバイスにトークンを送り返します。
 

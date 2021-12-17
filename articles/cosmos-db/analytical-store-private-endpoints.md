@@ -6,21 +6,24 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 2f15b397fbceb9e097d94080ba03fba50a96ed06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 457182e2f8bf24e911fa2b5e0514b0dba48d6ae0
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048507"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111971"
 ---
-# <a name="configure-private-endpoints-for-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアのプライベート エンドポイントを構成する
+# <a name="configure-azure-private-link-for-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアの Azure Private Link を構成する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-この記事では、Azure Cosmos DB 分析ストアのマネージド プライベート エンドポイントを設定する方法について説明します。 トランザクション ストアを使用している場合は、[トランザクション ストアのプライベート エンドポイント](how-to-configure-private-endpoints.md)に関する記事を参照してください。 マネージド プライベート エンドポイントを使用して、Azure Cosmos DB 分析ストアのネットワーク アクセスを Azure Synapse のマネージド仮想ネットワークに制限することができます。 マネージド プライベート エンドポイントによって、分析ストアへのプライベート リンクが確立されます。
+この記事では、Azure Cosmos DB 分析ストアのマネージド プライベート エンドポイントを設定する方法について説明します。 トランザクション ストアを使用している場合は、[トランザクション ストアのプライベート エンドポイント](how-to-configure-private-endpoints.md)に関する記事を参照してください。 [マネージド プライベート エンドポイント](../synapse-analytics/security/synapse-workspace-managed-private-endpoints.md)を使用して、Azure Cosmos DB 分析ストアのネットワーク アクセスを、Azure Synapse ワークスペースに関連付けられたマネージド仮想ネットワークに制限することができます。 マネージド プライベート エンドポイントによって、分析ストアへのプライベート リンクが確立されます。
 
-## <a name="enable-private-endpoint-for-the-analytical-store"></a>分析ストアのプライベート エンドポイントを有効にする
+> [!NOTE]
+> Cosmos DB に対してプライベート DNS ゾーンを使用している場合、分析ストアのサブリソースに対して Synapse マネージド プライベート エンドポイントを作成するには、まず、Cosmos DB の仮想ネットワークにリンクされている分析ストアに対して DNS ゾーン (`privatelink.analytics.cosmos.azure.com`) を作成する必要があります。
 
-### <a name="set-up-an-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>マネージド仮想ネットワークを使用して Azure Synapse Analytics ワークスペースを設定する
+## <a name="enable-a-private-endpoint-for-the-analytical-store"></a>分析ストアのプライベート エンドポイントを有効にする
+
+### <a name="set-up-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>マネージド仮想ネットワークを使用して Azure Synapse Analytics ワークスペースを設定する
 
 [Azure Synapse Analytics でデータ流出を有効にしたワークスペースを作成します。](../synapse-analytics/security/how-to-create-a-workspace-with-data-exfiltration-protection.md) [データ流出を防止](../synapse-analytics/security/workspace-data-exfiltration-protection.md)することで、悪意のあるユーザーが Azure リソースから組織の範囲外の場所にデータをコピーまたは転送できないようにすることができます。
 
@@ -128,5 +131,6 @@ Synapse ワークスペースからこのアカウントのネットワーク分
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Synapse Spark を使用した分析ストアのクエリ](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)の概要
+* [Azure Synapse Spark 3 を使用した分析ストアのクエリ](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)の概要
+* [Azure Synapse Spark 2 を使用した分析ストアのクエリ](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)の概要
 * [Azure Synapse サーバーレス SQL プールを使用した分析ストアのクエリ](../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)の概要

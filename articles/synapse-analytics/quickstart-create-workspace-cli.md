@@ -2,19 +2,19 @@
 title: クイック スタート:Azure CLI を使用して Synapse ワークスペースを作成する
 description: このガイドの手順に従って Azure CLI を使用し、Azure Synapse ワークスペースを作成します。
 services: synapse-analytics
-author: alehall
+author: rothja
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: workspace
 ms.date: 08/25/2020
-ms.author: alehall
+ms.author: jroth
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8a56b325dd5e1180b1229465965167241fab76a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4856142a7c075405930969a3e1f6da5804ef8c6c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676454"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093157"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Synapse ワークスペースを作成する
 

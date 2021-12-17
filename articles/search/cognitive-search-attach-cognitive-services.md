@@ -1,114 +1,49 @@
 ---
 title: Cognitive Services をスキルセットにアタッチする
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search で Cognitive Search オールインワン サブスクリプションを AI エンリッチメント パイプラインにアタッチする方法について説明します。
-author: LuisCabrer
-ms.author: luisca
+description: Azure Cognitive Search でマルチサービス Cognitive Services リソースを AI エンリッチメント パイプラインにアタッチする方法について説明します。
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: 77735166fafe9d39dff483baa89a4b31db31275d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/22/2021
+ms.openlocfilehash: ce369b60fa1b12823acdb1f5045e403bcaa3f5dd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577940"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037665"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Cognitive Search で Cognitive Services リソースをスキルセットにアタッチする
 
-Azure Cognitive Search で [AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)を構成するとき、限られた数のドキュメントを無料でエンリッチできます。 ワークロードが大きくなる場合や頻繁に発生する場合は、有料の "オールインワン" Cognitive Services リソースをアタッチしてください。 "オールインワン" サブスクリプションでは、個々のサービスではなくオファリングとして "Cognitive Services" を参照し、1 つの API キーを使用してアクセス権が付与されます。
+Azure Cognitive Search で [オプションの AI エン](cognitive-search-concept-intro.md) リッチメント パイプラインを構成する場合は、限られた数のドキュメントを無料で強化できます。 ワークロードのサイズが大きく、頻度が高い場合は、リソース に対して請求可能 [**なマルチサービス Cognitive Services必要があります**](../cognitive-services/cognitive-services-apis-create-account.md)。 マルチサービス リソースでは、個々のサービスではなくオファリングとして "Cognitive Services" を参照し、1 つの API キーを使用してアクセス権が付与されます。
 
-"オールインワン" Cognitive Services リソースは、スキルセットに含めることができる[定義済みのスキル](cognitive-search-predefined-skills.md)を備えています。
+マルチサービス リソース キーはスキルセットで指定され、Microsoft は次の API を使用した場合に課金できます：
 
 + イメージ分析と光学式文字認識 (OCR) のための [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/)
 + 言語検出、エンティティ認識、感情分析、およびキー フレーズ抽出のための [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/)
 + [テキストの変換](https://azure.microsoft.com/services/cognitive-services/translator-text-api/)
 
-スキルセット定義では、"オールインワン" Cognitive Services のキーは省略可能です。 1 日あたりのトランザクション数が 20 未満の場合、コストは吸収されます。 ただし、トランザクションがこの数を超える場合は、処理を続行するために有効なリソース キーが必要です。
-
-任意の "オールインワン" リソース キーが有効です。 内部的には、"オールインワン" キーが別のリージョンのリソースに対するものである場合でも、検索サービスは同じ物理リージョンに併置されているリソースを使用します。 [利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)のページに、使用可能なリージョンが横並びで示されています。
-
 > [!NOTE]
-> スキルセットで定義済みのスキルを省略した場合、Cognitive Services にはアクセスされず、スキルセットでキーが指定されていても、料金は発生しません。
+> AI エンリッチメントには少量の無料処理が用意されています。そのため、リソースにリソースをアタッチすることなく短い演習Cognitive Servicesできます。 無料のエンリッチメントは、インデクサーあたり 1 日あたり 20 ドキュメントです。 演習を [繰り返す場合](search-howto-run-reset-indexers.md) は、インデクサーをリセットしてカウンターをリセットできます。
 
-## <a name="how-billing-works"></a>請求体系について
+## <a name="azure-portal"></a>[**Azure portal**](#tab/cogkey-portal)
 
-+ Azure Cognitive Search では、画像とテキストのエンリッチメントに対して課金する目的でスキルセットに指定する Cognitive Services リソース キーが使用されます。 課金対象スキルの実行は、[Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)になります。
+1. 検索サービス [と同じリージョンCognitive Servicesマルチ](../cognitive-services/cognitive-services-apis-create-account.md) サービス [リソース](#same-region-requirement) を作成します。
 
-+ 画像抽出は、エンリッチメントに先立ってドキュメントがクラックされるときに行われる Azure Cognitive Search 操作です。 画像抽出は課金対象です。 画像抽出の価格については、「[Azure Cognitive Search の価格ページ](https://azure.microsoft.com/pricing/details/search/)」をご覧ください。
+1. スキルセット定義にキーを追加します：
 
-+ テキスト抽出はドキュメントのクラック段階でも行われます。 それは課金対象ではありません。
+   + データのインポート [ウィザードを使用する場合は](search-import-data-portal.md)、2 番目の手順 「AI エンリッチメントの追加」でキーを入力します。
 
-+ Conditional、Shaper、Text Merge、Text Split といったスキルなど、Cognitive Services を呼び出さないスキルは課金されません。
+   + 新しいスキルセットまたは既存のスキルセットにキーを追加する場合は、キーを [新しいスキルセット] **タブCognitive Services** します。
 
-## <a name="same-region-requirement"></a>同一リージョンの要件
+   :::image type="content" source="media/cognitive-search-attach-cognitive-services/attach-existing2.png" alt-text="キー ページのスクリーンショット" border="true":::
 
-Cognitive Search と Cognitive Services は両方とも、[利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)のページで示されているように、同じ物理リージョン内に存在する必要があります。 Cognitive Search を提供するほとんどのリージョンでは Cognitive Services も提供されています。
+## <a name="rest"></a>[**REST**](#tab/cogkey-rest)
 
-両方のサービスがないリージョンで AI エンリッチメントを試行した場合、"Provided key is not a valid CognitiveServices type key for the region of your search service (指定されたキーは、検索サービスのリージョンに対して有効な CognitiveServices タイプのキーではありません)" というメッセージが表示されます。
+1. 検索サービス [と同じリージョンCognitive Servicesマルチ](../cognitive-services/cognitive-services-apis-create-account.md) サービス [リソース](#same-region-requirement) を作成します。
 
-> [!NOTE]
-> 一部の組み込みスキルは、非リージョンの Cognitive Services ([テキスト翻訳スキル](cognitive-search-skill-text-translation.md)など) をベースとしています。 非リージョン スキルを使用すると、Azure Cognitive Search リージョン以外のリージョンで要求に対してサービスが提供される可能性があります。 非リージョン サービスの詳細については、[Cognitive Services のリージョン別製品](https://aka.ms/allinoneregioninfo)に関するページを参照してください。
-
-## <a name="use-free-resources"></a>無料リソースを使用する
-
-AI エンリッチメントのチュートリアルとクイック スタートの演習を完了するため、制限された無料の処理オプションを使用することができます。
-
-無料 (制限付きのエンリッチメント) リソースは、インデクサーごとに、1 日あたり 20 ドキュメントに制限されます。 [インデクサーをリセット](search-howto-run-reset-indexers.md)してカウンターをリセットできます。
-
-AI エンリッチメントの **データのインポート** ウィザードを使用している場合は、 **[Add AI enrichment (Optional)]\(AI エンリッチメントの追加 (省略可能)\)** ページの [Cognitive Services をアタッチする] オプションが表示されます。
-
-![展開された [Cognitive Services をアタッチする] セクション](./media/cognitive-search-attach-cognitive-services/attach1.png "展開された [Cognitive Services をアタッチする] セクション")
-
-## <a name="use-billable-resources"></a>課金対象のリソースを使用する
-
-1 日に 20 を超えるエンリッチメントを作成するワークロードでは、課金対象の Cognitive Services リソースを必ずアタッチしてください。 Cognitive Services API を呼び出す予定がない場合でも、課金対象の Cognitive Services リソースを常にアタッチしておくことをお勧めします。 リソースをアタッチすることで、1 日の制限がオーバーライドされます。
-
-Cognitive Services API を呼び出すスキルに対してのみ課金されます。 [カスタム スキル](cognitive-search-create-custom-skill-example.md)、または[テキスト マージャー](cognitive-search-skill-textmerger.md)、[テキスト スプリッター](cognitive-search-skill-textsplit.md)、[Shaper](cognitive-search-skill-shaper.md) などの API ベースでないスキルについては課金されません。
-
-**データのインポート** ウィザードを使用している場合は、 **[Add AI enrichment (Optional)\(AI エンリッチメントの追加 (省略可能)\)]** ページで課金対象のリソースを構成できます。
-
-1. **[Cognitive Services をアタッチする]** を展開してから、**[新しい Cognitive Services リソースを作成します]** を選択します。 新しいタブが開き、リソースを作成できるようになります。
-
-   ![Cognitive Services リソースを作成する](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Cognitive Services リソースの作成")
-
-1. **[場所]** の一覧で、お使いの検索サービスと同じリージョンを選択します。
-
-1. **[価格レベル]** 一覧で **[S0]** を選択して、Cognitive Services の機能のオールインワン コレクション (Azure Cognitive Search で提供される組み込みスキルをサポートする Vision および Language の機能を含む) を取得します。
-
-   S0 レベルの場合、特定のワークロードの料金は、[Cognitive Services の価格ページ](https://azure.microsoft.com/pricing/details/cognitive-services/)で確認できます。
-  
-   + **[プランの選択]** 一覧で **[Cognitive Services]** が選択されていることを確認します。
-   + **[言語]** 機能の下では、 **[Text Analytics Standard]** の料金が AI インデックスに適用されます。
-   + **[Vision]** 機能の下では、**[Computer Vision S1]** の料金が適用されます。
-
-1. **[作成]** を選択して、新しい Cognitive Services リソースをプロビジョニングします。
-
-1. 前のタブに戻ります。 **[更新]** を選択して Cognitive Services リソースを表示し、リソースを選択します。
-
-   ![Cognitive Services リソースを選択する](./media/cognitive-search-attach-cognitive-services/attach2.png "Cognitive Services リソースを選択する")
-
-1. **[Add cognitive skills]\(コグニティブ スキルの追加\)** セクションを展開して、データに対して実行する特定のコグニティブ スキルを選択します。 ウィザードの残りを完了します。
-
-## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>既存のスキルセットを Cognitive Services リソースにアタッチする
-
-既存のスキルがある場合は、新規または別の Cognitive Services リソースにアタッチできます。
-
-1. 検索サービスの概要ページで、 **[スキルセット]** を選択します。
-
-   ![スキルセット タブ](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "スキルセット タブ")
-
-1. スキルセットの名前を選択し、既存のリソースを選択するか、新しいリソースを作成します。 **[OK]** を選択して変更を確認します。
-
-   ![スキルセット リソースの一覧](./media/cognitive-search-attach-cognitive-services/attach-existing2.png "スキルセット リソースの一覧")
-
-   **[無料 (制限付きのエンリッチメント)]** オプションでは 1 日あたり 20 ドキュメントに制限されていること、および **[新しい Cognitive Services リソースを作成します]** を使用して新しい課金対象のリソースをプロビジョニングできることを思い出してください。 新しいリソースを作成した場合は、**[更新]** を選択して Cognitive Services リソースのリストを更新し、リソースを選択します。
-
-## <a name="attach-cognitive-services-programmatically"></a>Cognitive Services をプログラムでアタッチする
-
-プログラムでスキルセットを定義するときは、`cognitiveServices` セクションをスキルセットに追加します。 そのセクションで、スキルセットに関連付ける Cognitive Services リソースのキーを含めます。 リソースは Azure Cognitive Search リソースと同一リージョンに存在する必要があることを思い出してください。 `@odata.type` も追加し、それを `#Microsoft.Azure.Search.CognitiveServicesByKey` に設定します。
-
-次の例は、このパターンを示しています。 定義の最後にある `cognitiveServices` セクションに留意してください。
+1. スキルセット要求の本文で セクションを指定 `cognitiveServices` して、スキルセットを [作成または更新します](/rest/api/searchservice/create-skillset)：
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
@@ -119,7 +54,7 @@ Content-Type: application/json
     "skills": 
     [
       {
-        "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+        "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
         "categories": [ "Organization" ],
         "defaultLanguageCode": "en",
         "inputs": [
@@ -141,6 +76,70 @@ Content-Type: application/json
     }
 }
 ```
+
+## <a name="net-sdk"></a>[ **.NET SDK**](#tab/cogkey-dotnet)
+
+次のコード スニペットは [、簡単に説明するようにトリミングされた azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/tutorial-ai-enrichment/v11/Program.cs)からの抜粋です。
+
+```csharp
+IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+IConfigurationRoot configuration = builder.Build();
+
+string searchServiceUri = configuration["SearchServiceUri"];
+string adminApiKey = configuration["SearchServiceAdminApiKey"];
+string cognitiveServicesKey = configuration["CognitiveServicesKey"];
+
+SearchIndexerClient indexerClient = new SearchIndexerClient(new Uri(searchServiceUri), new AzureKeyCredential(adminApiKey));
+
+// Create the skills
+Console.WriteLine("Creating the skills...");
+OcrSkill ocrSkill = CreateOcrSkill();
+MergeSkill mergeSkill = CreateMergeSkill();
+
+// Create the skillset
+Console.WriteLine("Creating or updating the skillset...");
+List<SearchIndexerSkill> skills = new List<SearchIndexerSkill>();
+skills.Add(ocrSkill);
+skills.Add(mergeSkill);
+
+SearchIndexerSkillset skillset = CreateOrUpdateDemoSkillSet(indexerClient, skills, cognitiveServicesKey);
+```
+
+---
+
+## <a name="how-the-key-is-used"></a>キーの使い方
+
+キーは課金に使用されますが、接続には使用されません。 接続の場合、検索サービスは内部ネットワークをCognitive Services同じ物理リージョン に同じリソース [に接続します](https://azure.microsoft.com/global-infrastructure/services/?products=search)。 
+
+キーベースの課金は、リソースへの API 呼び出しCognitive Servicesインデクサーあたり 1 日あたり 20 回の API 呼び出しを超えた場合に適用されます。 インデクサーを呼び出すごとにインデクサーをリセットして API カウンターをリセットできますが、自由に行える呼び出しの最大数は 20 に制限されます。
+
+ AI エンリッチメント中、Cognitive Search Cognitive Services APIs、テキスト翻訳、およびテキスト翻訳に基づく[組み込みスキル](cognitive-search-predefined-skills.md)の Computer Vision を呼び出Text Analytics。 Cognitive Services へのバックエンド呼び出しを行う組み込みのスキルには、Entity [Linking、](cognitive-search-skill-entity-linking-v3.md)[エンティティ認識](cognitive-search-skill-entity-recognition-v3.md)、[画像](cognitive-search-skill-image-analysis.md)分析、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、[言語検出](cognitive-search-skill-language-detection.md)、[OCR](cognitive-search-skill-ocr.md)、[PII検出](cognitive-search-skill-pii-detection.md)、[センチメント](cognitive-search-skill-sentiment-v3.md)、[テキスト翻訳](cognitive-search-skill-text-translation.md)があります。
+
+カスタム スキルまたはユーティリティ スキルのみで構成されるCognitive Servicesキーとキー のセクションを省略できます。 また、請求可能なスキルの使用量が 1 日あたりインデクサーあたり 20 トランザクションを超える場合は、プロパティを指定しないままにしておく必要があります。
+
+### <a name="exceptions-and-special-cases"></a>例外と特殊なケース
+
++ プロパティを呼び出すCognitive Servicesユーティリティ スキル（つまり、[条件付き](cognitive-search-skill-conditional.md)、[ドキュメント抽出](cognitive-search-skill-document-extraction.md)、[Shaper](cognitive-search-skill-shaper.md)、[テキストマージ](cognitive-search-skill-textmerger.md)、および[テキスト分割スキル](cognitive-search-skill-textsplit.md)）は請求できません。 
+
++ [カスタム エンティティ検索](cognitive-search-skill-custom-entity-lookup.md)は、Cognitive Services ではなく Azure Cognitive Search によって測定されますが、インデクサーごとに 1 日あたり 20 を超えるトランザクションのロックを解除するために、Cognitive Services リソース キーが必要です。 このスキルの場合のみ、リソース キーによってトランザクション数のブロックが解除されますが、課金とは無関係です。
+
+### <a name="other-costs-of-ai-enrichment"></a>AIエンリッチメントのその他のコスト
+
+画像抽出は、エンリッチメントに先立ってドキュメントがクラックされるときに行われる Azure Cognitive Search 操作です。 画像抽出は、すべてのレベルで課金対象ですが、Free レベルでの 1 日 20 回の無料抽出を除きます。 画像抽出コストは、BLOB 内の画像ファイル、他のファイル (PDF および他のアプリ ファイル) に埋め込まれた画像、および[ドキュメント抽出](cognitive-search-skill-document-extraction.md)を使用して抽出された画像に適用されます。 画像抽出の価格については、「[Azure Cognitive Search の価格ページ](https://azure.microsoft.com/pricing/details/search/)」をご覧ください。
+
+[ドキュメント解析](search-indexer-overview.md#document-cracking)段階では、テキスト抽出も行われます。 それは課金対象ではありません。
+
+> [!TIP]
+> スキルセット処理のコストを削減するには、[インクリメンタル エンリッチメント (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) を有効にして、スキルセットに加えた変更の影響を受けないエンリッチメントをキャッシュして再利用します。 キャッシュには Azure Storage が必要です ([価格](https://azure.microsoft.com/pricing/details/storage/blobs/)を参照してください)。ただし、既存のエンリッチメントを再利用できる場合は、スキルセットの実行の累積コストが低くなります (特に画像の抽出と分析を使用するスキルセットの場合)。
+
+## <a name="same-region-requirement"></a>同一リージョンの要件
+
+Cognitive Search と Cognitive Services は両方とも、[利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)のページで示されているように、同じ物理リージョン内に存在する必要があります。 Cognitive Search を提供するほとんどのリージョンでは Cognitive Services も提供されています。
+
+両方のサービスがないリージョンで AI エンリッチメントを試行した場合、"Provided key is not a valid CognitiveServices type key for the region of your search service (指定されたキーは、検索サービスのリージョンに対して有効な CognitiveServices タイプのキーではありません)" というメッセージが表示されます。
+
+> [!NOTE]
+> 一部の組み込みスキルは、非リージョンの Cognitive Services ([テキスト翻訳スキル](cognitive-search-skill-text-translation.md)など) をベースとしています。 非リージョン スキルを使用すると、Azure Cognitive Search リージョン以外のリージョンで要求に対してサービスが提供される可能性があります。 非リージョン サービスの詳細については、[Cognitive Services のリージョン別製品](https://aka.ms/allinoneregioninfo)に関するページを参照してください。
 
 ## <a name="example-estimate-costs"></a>例: コストの見積もり
 

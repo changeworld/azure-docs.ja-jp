@@ -2,13 +2,13 @@
 title: ハイブリッド接続の診断ログ
 description: この記事では、Azure Relay で使用可能なすべてのアクティビティ ログと診断ログの概要について説明します。
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: 7ca6dc95567a4867d3c58e0efad0fc74289e586c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 06/23/2021
+ms.openlocfilehash: cfcbdacb7b4266601f4669a20013bb6a5a5331a6
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079099"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666271"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Azure Relay ハイブリッド接続の診断ログを有効にする
 Azure Relay ハイブリッド接続の使用を開始するときは、リスナーとセンダーが開かれて閉じられる方法とタイミング、およびハイブリッド接続が作成され、メッセージが送信される方法を監視することが必要な場合があります。 この記事では、Azure Relay サービスで提供されるアクティビティ ログと診断ログの概要について説明します。 

@@ -1,24 +1,23 @@
 ---
 title: カスタム ルールと通知を使用して Azure IoT Central を拡張する |Microsoft Docs
 description: ソリューション開発者は、デバイスがテレメトリの送信を停止したときに電子メール通知を送信するように IoT Central アプリケーションを構成します。 このソリューションでは、Azure Stream Analytics、Azure Functions、SendGrid を使用します。
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: dominicbetts
+ms.author: dobett
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
-manager: philmea
-ms.openlocfilehash: 6146676121bac0089d5f520d60a97d74567a32bc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3d528ba1bf1e7ba0c13d5bcf8abb140365cbe7d6
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179342"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861522"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する
 
-この攻略ガイドでは、ソリューション開発者が、カスタム ルールと通知を使用して IoT Central アプリケーションを拡張する方法を説明します。 この例では、デバイスがテレメトリの送信を停止したときのオペレーターへの通知の送信を示します。 このソリューションでは、[Azure Stream Analytics](../../stream-analytics/index.yml) クエリを使用して、デバイスが利用統計情報の送信をいつ停止したかを検出します。 Stream Analytics ジョブは、[SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) を使用して通知メールを送信するために、[Azure Functions](../../azure-functions/index.yml) を使用します。
+この攻略ガイドでは、カスタム ルールと通知を使用して IoT Central アプリケーションを拡張する方法を説明します。 この例では、デバイスがテレメトリの送信を停止したときのオペレーターへの通知の送信を示します。 このソリューションでは、[Azure Stream Analytics](../../stream-analytics/index.yml) クエリを使用して、デバイスが利用統計情報の送信をいつ停止したかを検出します。 Stream Analytics ジョブは、[SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) を使用して通知メールを送信するために、[Azure Functions](../../azure-functions/index.yml) を使用します。
 
 この攻略ガイドでは、既に組み込みのルールとアクションを使用して実行できることを超えて IoT Central を拡張する方法を示します。
 
@@ -119,28 +118,26 @@ Sendgrid アカウントをお持ちでない場合は、開始する前に[無�
 
 次のスクリーンショットのような Event Hubs 名前空間が作成されます。 
 
-:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Event Hubs 名前空間のスクリーンショット。" border="false":::
+```:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
 
+## Define the function
 
-## <a name="define-the-function"></a>関数を定義する
+This solution uses an Azure Functions app to send an email notification when the Stream Analytics job detects a stopped device. To create your function app:
 
-このソリューションでは、Azure Functions アプリを使用して、Stream Analytics ジョブが停止したデバイスを検出したときにメール通知を送信します。 関数アプリを作成するには、次の手順に従います。
+1. In the Azure portal, navigate to the **App Service** instance in the **DetectStoppedDevices** resource group.
+1. Select **+** to create a new function.
+1. Select **HTTP Trigger**.
+1. Select **Add**.
 
-1. Azure portal で、**DetectStoppedDevices** リソース グループ内の **[App Service]** インスタンスに移動します。
-1. **+** を選択して、新しい関数を作成します。
-1. **[HTTP トリガー]** を選択します。
-1. **[追加]** を選択します。
+    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Image of the Default HTTP trigger function"::: 
 
-    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="既定の HTTP トリガー関数の画像"::: 
+## Edit code for HTTP Trigger
 
-## <a name="edit-code-for-http-trigger"></a>HTTP トリガーのコードの編集
+The portal creates a default function called **HttpTrigger1**:
 
-ポータルで **HttpTrigger1** という既定の関数が作成されます。
+```:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
 
-:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="HTTP トリガー関数の編集のスクリーンショット。":::
-
-
-1. C# コードを次のコードに置き換えます。
+1. Replace the C# code with the following code:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -179,50 +176,50 @@ Sendgrid アカウントをお持ちでない場合は、開始する前に[無�
     }
     ```
 
-    新しいコードを保存するまで、エラー メッセージが表示される場合があります。
-1. **[保存]** を選択して関数を保存します。
+    You may see an error message until you save the new code.
+1. Select **Save** to save the function.
 
-## <a name="add-sendgrid-key"></a>SendGrid キーの追加
+## Add SendGrid Key
 
-SendGrid API キーを追加するには、次のように **関数キー** に追加する必要があります。
+To add your SendGrid API Key, you need to add it to your **Function Keys** as follows:
 
-1. **[関数キー]** を選択します。
-1. **[新しいファンクション キー]** を選択します。
-1. 以前作成した API キーの *名前* と *値* を入力します。
-1. **[OK]** をクリックします。
+1. Select **Function Keys**.
+1. Choose **+ New Function Key**.
+1. Enter the *Name* and *Value* of the API Key you created before.
+1. Click **OK.**
 
-    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Sangrid キー追加のスクリーンショット。":::
+    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Screenshot of Add Sangrid Key.":::
 
 
-## <a name="configure-httptrigger-function-to-use-sendgrid"></a>SendGrid を使用するように HttpTrigger 関数を構成する
+## Configure HttpTrigger function to use SendGrid
 
-SendGrid を使用してメールを送信するには、次のように関数バインドを構成する必要があります。
+To send emails with SendGrid, you need to configure the bindings for your function as follows:
 
-1. **[統合]** を選択します。
-1. **[HTTP ($return)]** の **[出力の追加]** を選択します。
-1. **[削除]** を選択します。
-1. **[新しい出力]** を選択します。
-1. バインドの種類として **SendGrid** を選択します。
-1. SendGrid API キー設定の種類として [新規] をクリックします。
-1. SendGrid API キーの *名前* と *値* を入力します。
-1. 以下の情報を追加します。
+1. Select **Integrate**.
+1. Choose **Add Output** under **HTTP ($return)**.
+1. Select **Delete.**
+1. Choose **+ New Output**.
+1. For Binding Type, then choose **SendGrid**.
+1. For SendGrid API Key Setting Type, click New.
+1. Enter the *Name* and *Value* of your SendGrid API key.
+1. Add the following information:
 
-| 設定 | 値 |
+| Setting | Value |
 | ------- | ----- |
-| メッセージ パラメーター名 | 名前を選択 |
-| 宛先アドレス | 宛先アドレスの名前を選択 |
-| 差出人アドレス | 差出人アドレスの名前を選択 |
-| メッセージの件名 | 件名ヘッダーを入力 |
-| [メッセージ テキスト] | 統合からメッセージを入力 |
+| Message parameter name | Choose your name |
+| To address | Choose the name of your To Address |
+| From address | Choose the name of your From Address |
+| Message subject | Enter your subject header |
+| Message text | Enter the message from your integration |
 
-1. **[OK]** を選択します。
+1. Select **OK**.
 
-    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="SandGrid 出力の追加のスクリーンショット。":::
+    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Screenshot of Add SandGrid Output.":::
 
 
-### <a name="test-the-function-works"></a>関数の動作をテストする
+### Test the function works
 
-ポータルで関数をテストするには、まずコード エディターの下部にある **[ログ]** を選択します。 次に、コード エディターの右側にある **[テスト]** をクリックします。 **[要求本文]** として次の JSON を使用します。
+To test the function in the portal, first choose **Logs** at the bottom of the code editor. Then choose **Test** to the right of the code editor. Use the following JSON as the **Request body**:
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
@@ -230,9 +227,9 @@ SendGrid を使用してメールを送信するには、次のように関数�
 
 **[ログ]** パネルに関数ログのメッセージが表示されます。
 
-:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="関数のログ出力":::
+```:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
 
-数分後に、 **[宛先]** メール アドレスに次の内容のメールが届きます。
+After a few minutes, the **To** email address receives an email with the following content:
 
 ```txt
 The following device(s) have stopped sending telemetry:

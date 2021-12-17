@@ -3,14 +3,14 @@ title: クイック スタート:PHP Web アプリの作成
 description: Azure App Service に、初めての PHP の Hello World を数分でデプロイします。 デプロイには、App Service への数あるデプロイ方法の 1 つである Git を使用します。
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
-ms.date: 08/01/2020
+ms.date: 05/02/2021
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c04e1b33233abebde746fd7fb1ef8d761dba7e4e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 94d863dfcc3b6fd8b1d316994541ea61fd32c080
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788207"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121787378"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>Azure App Service に PHP Web アプリを作成する
 
@@ -39,28 +39,37 @@ ms.locfileid: "107788207"
 
 ## <a name="download-the-sample-locally"></a>サンプルをローカルでダウンロードする
 
-ターミナル ウィンドウで次のコマンドを実行します。 これにより、ローカル コンピューターにサンプル アプリケーションが複製され、サンプル コードを含むディレクトリに移動します。 
+1. ターミナル ウィンドウで次のコマンドを実行します。 これにより、ローカル コンピューターにサンプル アプリケーションが複製され、サンプル コードを含むディレクトリに移動します。 
 
-```bash
-git clone https://github.com/Azure-Samples/php-docs-hello-world
-cd php-docs-hello-world
-```
+    ```bash
+    git clone https://github.com/Azure-Samples/php-docs-hello-world
+    cd php-docs-hello-world
+    ```
+    
+1. 既定のブランチが `main` であることを確認します。
 
+    ```bash
+    git branch -m main
+    ```
+    
+    > [!TIP]
+    > App Service では、ブランチ名の変更は必要ありません。 ただし、多くのリポジトリで既定のブランチが `main` に変更されているため、このクイック スタートでは、`main` からリポジトリをデプロイする方法も示します。
+    
 ## <a name="run-the-app-locally"></a>アプリをローカルで実行する
 
-アプリケーションをローカルで実行すると、アプリケーションを Azure にデプロイするとどう表示されるかを把握できます。 ターミナル ウィンドウを開き、`php` コマンドを使用して組み込みの PHP Web サーバーを起動します。
+1. アプリケーションをローカルで実行すると、アプリケーションを Azure にデプロイするとどう表示されるかを把握できます。 ターミナル ウィンドウを開き、`php` コマンドを使用して組み込みの PHP Web サーバーを起動します。
 
-```bash
-php -S localhost:8080
-```
+    ```bash
+    php -S localhost:8080
+    ```
+    
+1. Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリに移動します。
 
-Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリに移動します。
-
-サンプル アプリケーションから "**Hello World!** " というメッセージがページに表示されます。
-
-![ローカルで実行されるサンプル アプリ](media/quickstart-php/localhost-hello-world-in-browser.png)
-
-ターミナル ウィンドウで **Ctrl + C** キーを押して、Web サーバーを終了します。
+    サンプル アプリケーションから "**Hello World!** " というメッセージがページに表示されます。
+    
+    ![ローカルで実行されるサンプル アプリ](media/quickstart-php/localhost-hello-world-in-browser.png)
+    
+1. ターミナル ウィンドウで **Ctrl + C** キーを押して、Web サーバーを終了します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -74,84 +83,77 @@ Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリ
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-linux.md)]
 ::: zone-end
 
-[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)]
+[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-linux.md)]
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-Cloud Shell で [`az webapp create`](/cli/azure/webapp#az_webapp_create) コマンドを使用して、`myAppServicePlan` App Service プランに Web アプリを作成します。 
+1. Cloud Shell で [`az webapp create`](/cli/azure/webapp#az_webapp_create) コマンドを使用して、`myAppServicePlan` App Service プランに Web アプリを作成します。 
 
-次の例では、`<app-name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.4` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes`](/cli/azure/webapp#az_webapp_list_runtimes) を実行します。 
+    次の例では、`<app-name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.4` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes`](/cli/azure/webapp#az_webapp_list_runtimes) を実行します。 
 
-```azurecli-interactive
-# Bash
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.4" --deployment-local-git
-# PowerShell
-az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.4" --deployment-local-git
-```
+    ```azurecli-interactive
+    az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime 'PHP|7.4' --deployment-local-git
+    ```
+    
+    Web アプリが作成されると、Azure CLI によって次の例のような出力が表示されます。
 
-> [!NOTE]
-> 解析停止記号 `(--%)` は、PowerShell のコマンドや式として入力が解釈されないようにするための命令で、PowerShell 3.0 で導入されました。
->
+    <pre>
+    Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git'
+    {
+      "availabilityState": "Normal",
+      "clientAffinityEnabled": true,
+      "clientCertEnabled": false,
+      "cloningInfo": null,
+      "containerSize": 0,
+      "dailyMemoryTimeQuota": 0,
+      "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
+      "enabled": true,
+      &lt; JSON data removed for brevity. &gt;
+    }
+    </pre>
+    
+    Git デプロイが有効な、空の新しい Web アプリが作成されました。
 
-Web アプリが作成されると、Azure CLI によって次の例のような出力が表示されます。
+    > [!NOTE]
+    > Git リモートの URL は `deploymentLocalGitUrl` プロパティに `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git` 形式で出力されます。 この URL は後で必要になるので保存しておいてください。
+    >
 
-<pre>
-Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git'
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
-  "enabled": true,
-  &lt; JSON data removed for brevity. &gt;
-}
-</pre>
+1. 新しく作成された Web アプリに移動します。 _&lt;app-name>_ は、前の手順で作成したアプリの一意の名前で置き換えます。
 
-Git デプロイが有効な、空の新しい Web アプリが作成されました。
+    ```bash
+    http://<app-name>.azurewebsites.net
+    ```
 
-> [!NOTE]
-> Git リモートの URL は `deploymentLocalGitUrl` プロパティに `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git` 形式で出力されます。 この URL は後で必要になるので保存しておいてください。
->
+    新しい Web アプリは次のようになります。
 
-新しく作成された Web アプリに移動します。 _&lt;app-name>_ は、前の手順で作成したアプリの一意の名前で置き換えます。
-
-```bash
-http://<app-name>.azurewebsites.net
-```
-
-新しい Web アプリは次のようになります。
-
-![空の Web アプリ ページ](media/quickstart-php/app-service-web-service-created.png)
+    ![空の Web アプリ ページ](media/quickstart-php/app-service-web-service-created.png)
 
 [!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
 
-<pre>
-Counting objects: 2, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (2/2), 352 bytes | 0 bytes/s, done.
-Total 2 (delta 1), reused 0 (delta 0)
-remote: Updating branch 'main'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id '25f18051e9'.
-remote: Generating deployment script.
-remote: Running deployment command...
-remote: Handling Basic Web Site deployment.
-remote: Kudu sync from: '/home/site/repository' to: '/home/site/wwwroot'
-remote: Copying file: '.gitignore'
-remote: Copying file: 'LICENSE'
-remote: Copying file: 'README.md'
-remote: Copying file: 'index.php'
-remote: Ignoring: .git
-remote: Finished successfully.
-remote: Running post deployment command(s)...
-remote: Deployment successful.
-To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
-   cc39b1e..25f1805  main -> main
-</pre>
+  <pre>
+  Counting objects: 2, done.
+  Delta compression using up to 4 threads.
+  Compressing objects: 100% (2/2), done.
+  Writing objects: 100% (2/2), 352 bytes | 0 bytes/s, done.
+  Total 2 (delta 1), reused 0 (delta 0)
+  remote: Updating branch 'main'.
+  remote: Updating submodules.
+  remote: Preparing deployment for commit id '25f18051e9'.
+  remote: Generating deployment script.
+  remote: Running deployment command...
+  remote: Handling Basic Web Site deployment.
+  remote: Kudu sync from: '/home/site/repository' to: '/home/site/wwwroot'
+  remote: Copying file: '.gitignore'
+  remote: Copying file: 'LICENSE'
+  remote: Copying file: 'README.md'
+  remote: Copying file: 'index.php'
+  remote: Ignoring: .git
+  remote: Finished successfully.
+  remote: Running post deployment command(s)...
+  remote: Deployment successful.
+  To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
+      cc39b1e..25f1805  main -> main
+  </pre>
 
 ## <a name="browse-to-the-app"></a>アプリの参照
 
@@ -169,22 +171,22 @@ PHP のサンプル コードは、Azure App Service の Web アプリで実行�
 
 ## <a name="update-locally-and-redeploy-the-code"></a>コードをローカルで更新して再デプロイする
 
-ローカルのテキスト エディターを使用して、PHP アプリ内の `index.php` ファイルを開き、`echo` に続く文字列の中のテキストを少し変更します。
+1. ローカルのテキスト エディターを使用して、PHP アプリ内の `index.php` ファイルを開き、`echo` に続く文字列の中のテキストを少し変更します。
 
-```php
-echo "Hello Azure!";
-```
+    ```php
+    echo "Hello Azure!";
+    ```
 
-ローカル ターミナル ウィンドウで、変更を Git にコミットし、コード変更を Azure にプッシュします。
+1. ローカル ターミナル ウィンドウで、変更を Git にコミットし、コード変更を Azure にプッシュします。
 
-```bash
-git commit -am "updated output"
-git push azure main
-```
+    ```bash
+    git commit -am "updated output"
+    git push azure main
+    ```
 
-デプロイが完了したら、「**アプリの参照**」の手順で開いたブラウザー ウィンドウに戻り、ページを更新します。
+1. デプロイが完了したら、「**アプリの参照**」の手順で開いたブラウザー ウィンドウに戻り、ページを更新します。
 
-![Azure で実行される更新済みのサンプル アプリ](media/quickstart-php/hello-azure-in-browser.png)
+    ![Azure で実行される更新済みのサンプル アプリ](media/quickstart-php/hello-azure-in-browser.png)
 
 ## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 

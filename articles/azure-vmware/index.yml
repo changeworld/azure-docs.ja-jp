@@ -6,15 +6,15 @@ metadata:
   description: Azure VMware Solution を使用して VMware プライベート クラウドを Azure にデプロイする方法について説明します
   ms.service: azure-vmware
   ms.topic: landing-page
-  author: dikamath
-  ms.author: dikamath
-  ms.date: 11/19/2020
-  ms.openlocfilehash: 9412889bef1ababa6d44d5cf3aa48c2231bed08d
-  ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+  author: suzizuber
+  ms.author: v-szuber
+  ms.date: 11/12/2021
+  ms.openlocfilehash: bf6c18fd32288ed99c16dd89314aca7c743a37b3
+  ms.sourcegitcommit: 81a1d2f927cf78e82557a85c7efdf17bf07aa642
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/07/2021
-  ms.locfileid: "102436194"
+  ms.lasthandoff: 11/19/2021
+  ms.locfileid: "132812071"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:
@@ -24,121 +24,219 @@ landingContent:
       url: introduction.md
     - text: プラットフォームの更新
       url: azure-vmware-solution-platform-updates.md
+    - text: よく寄せられる質問
+      url: ./faq.yml
   - linkListType: concept
     links:
-    - text: プライベート クラウドとクラスター
-      url: concepts-private-clouds-clusters.md
-    - text: プライベート クラウドのネットワークと相互接続
-      url: concepts-networking.md
-    - text: プライベート クラウドのストレージ
-      url: concepts-storage.md
-    - text: プライベート クラウドのアクセスと ID
+    - text: アクセスと ID
       url: concepts-identity.md
-    - text: vSphere ロールベースのアクセス制御
-      url: concepts-role-based-access-control.md
-    - text: プライベート クラウドのモニターと修復
-      url: concepts-monitor-repair-private-cloud.md
-    - text: プライベート クラウドのアップグレード
-      url: concepts-upgrades.md
-- title: 作業開始
-  linkLists:
-  - linkListType: deploy
-    links:
-    - text: 0 - デプロイの計画
-      url: production-ready-deployment-steps.md
-    - text: 1 - Azure VMware Solution のデプロイ
-      url: deploy-azure-vmware-solution.md
-    - text: 2 - オンプレミスに接続する
-      url: azure-vmware-solution-on-premises.md
-    - text: 3 - HCX のデプロイと構成
-      url: tutorial-deploy-vmware-hcx.md
-  - linkListType: tutorial
-    links:
-    - text: ネットワーク計画のチェックリスト
-      url: tutorial-network-checklist.md
-    - text: プライベート クラウドを作成する
-      url: tutorial-create-private-cloud.md
-    - text: プライベート クラウドへのアクセス
-      url: tutorial-access-private-cloud.md
-    - text: ネットワークを構成する
-      url: tutorial-configure-networking.md
-    - text: NSX-T ネットワーク セグメントの作成
-      url: tutorial-nsx-t-network-segment.md
-    - text: オンプレミスからプライベート クラウドへのピアリング
-      url: tutorial-expressroute-global-reach-private-cloud.md
-    - text: プライベート クラウドをスケーリングする
-      url: tutorial-scale-private-cloud.md
-    - text: プライベート クラウドを削除する
-      url: tutorial-delete-private-cloud.md
-- title: Azure VMware Solution を拡張する
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: ホスト クォータを要求し、Azure VMware Solution を有効にする
-      url: enable-azure-vmware-solution.md
-    - text: 予約インスタンスを使用してコストを削減する
-      url: reserved-instance.md
-    - text: 移行評価
-      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
-    - text: DHCP の管理
-      url: manage-dhcp.md
-    - text: NSX ネットワーク コンポーネントの構成
-      url: configure-nsx-network-components-azure-portal.md
-    - text: VM のディザスター リカバリーをデプロイする
-      url: disaster-recovery-for-virtual-machines.md
-    - text: コンテンツ ライブラリを介して VM をデプロイする
-      url: ./deploy-vm-content-library.md
-    - text: GitHub Enterprise Server を設定する
-      url: github-enterprise-server.md
-    - text: パブリック IP の使用
-      url: public-ip-usage.md
-    - text: IPSec トンネルを作成する
-      url: create-ipsec-tunnel.md
-- title: Azure のネイティブ統合
-  linkLists:
-  - linkListType: how-to-guide
-    links:
     - text: API Management
       url: concepts-api-management.md
     - text: ハブ アンド スポーク
       url: concepts-hub-and-spoke.md
-    - text: Azure Security Center
+    - text: ネットワークと相互接続
+      url: concepts-networking.md
+    - text: プライベート クラウドとクラスター
+      url: concepts-private-clouds-clusters.md
+    - text: 実行コマンド
+      url: concepts-run-command.md
+    - text: Storage
+      url: concepts-storage.md
+- title: はじめに
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 1 - デプロイを計画する
+      url: plan-private-cloud-deployment.md
+    - text: 2 - Azure VMware Solution をデプロイする
+      url: deploy-azure-vmware-solution.md
+    - text: 3 - オンプレミス環境に接続する
+      url: tutorial-expressroute-global-reach-private-cloud.md
+    - text: 4 - VMware HCX コネクタをインストールする
+      url: install-vmware-hcx.md
+    - text: 5 - オンプレミスの VMware HCX コネクタを構成する
+      url: configure-vmware-hcx.md
+  - linkListType: tutorial
+    links:
+    - text: 1 - ネットワーク計画のチェックリスト
+      url: tutorial-network-checklist.md
+    - text: 2 - プライベート クラウドを作成する
+      url: tutorial-create-private-cloud.md
+    - text: 3 - プライベート クラウドへのアクセス
+      url: tutorial-access-private-cloud.md
+    - text: 4 - ネットワークを構成する
+      url: tutorial-configure-networking.md
+    - text: 5 - NSX-T ネットワーク セグメントの作成
+      url: tutorial-nsx-t-network-segment.md
+    - text: 6 - オンプレミスからプライベート クラウドへのピアリング
+      url: tutorial-expressroute-global-reach-private-cloud.md
+    - text: 7 - プライベート クラウドのスケールイン
+      url: tutorial-scale-private-cloud.md
+    - text: 8 - プライベート クラウドを削除する
+      url: tutorial-delete-private-cloud.md
+- title: Azure VMware Solution のエンタープライズ規模
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Azure VMware Solution のエンタープライズ規模
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone
+    - text: ID 管理とアクセス管理
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-identity-and-access-management
+    - text: ネットワーク トポロジと接続
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-network-topology-connectivity
+    - text: 管理と監視
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-management-and-monitoring
+    - text: エンタープライズ規模の事業継続とディザスター リカバリー
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-business-continuity-and-disaster-recovery
+    - text: エンタープライズ規模のセキュリティ、ガバナンス、コンプライアンス
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-security-governance-and-compliance
+    - text: プラットフォームの自動化と DevOps
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-platform-automation-and-devops
+    - text: Azure VMware Solution 自動化のエンタープライズ規模
+      url: https://github.com/Azure/Enterprise-Scale-for-AVS
+- title: ID 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: アクセスと ID
+      url: concepts-identity.md
+    - text: vCenter の ID ソースを構成する
+      url: configure-identity-source-vcenter.md
+    - text: cloudadmin 資格情報のローテーション
+      url: rotate-cloudadmin-credentials.md
+- title: Azure VMware Solution を拡張する
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure VMware Solution の評価を作成する
+      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
+    - text: Azure VMware Solution のホスト クォータを要求する
+      url: request-host-quota-azure-vmware-solution.md
+    - text: 予約インスタンスを使用してコストを削減する
+      url: reserved-instance.md
+  - linkListType: how-to-guide
+    links:
+    - text: DHCP サーバーまたはリレーを構成する
+      url: configure-dhcp-azure-vmware-solution.md
+    - text: L2 拡張ネットワークで DHCP を構成する
+      url: configure-l2-stretched-vmware-hcx-networks.md
+    - text: DNS フォワーダーを構成する
+      url: configure-dns-azure-vmware-solution.md
+    - text: ポート ミラーリングの構成
+      url: configure-port-mirroring-azure-vmware-solution.md
+    - text: パブリック インターネット アクセスを有効にする
+      url: enable-public-internet-access.md
+    - text: vWAN でサイト間 VPN を構成する
+      url: configure-site-to-site-vpn-gateway.md
+    - text: Windows Server フェールオーバー クラスターの構成
+      url: configure-windows-server-failover-cluster.md
+    - text: 同じリージョン内の複数のプライベート クラウドを接続する
+      url: connect-multiple-private-clouds-same-region.md
+    - text: ストレージ ポリシーを構成する
+      url: configure-storage-policy.md
+    - text: 配置ポリシーを作成する
+      url: create-placement-policy.md
+- title: Azure のネイティブ統合
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: VM を保護、監視、管理する
+      url: integrate-azure-native-services.md
+    - text: Microsoft Defender for Cloud を統合する
       url: azure-security-integration.md
-    - text: Azure Backup Server
-      url: set-up-backup-server-for-azure-vmware-solution.md
-    - text: VM のライフサイクル管理
-      url: lifecycle-management-of-azure-vmware-solution-vms.md
-    - text: Application Gateway
+    - text: Azure NetApp Files を統合する
+      url: netapp-files-with-azure-vmware-solution.md
+    - text: Azure Application Gateway を使用して Web アプリを保護する
       url: protect-azure-vmware-solution-with-application-gateway.md
-    - text: Traffic Manager
+    - text: ワークロードのバランスを取るために Traffic Manager をデプロイする
       url: deploy-traffic-manager-balance-workloads.md
+    - text: アラートを構成してメトリックを使用する
+      url: configure-alerts-for-azure-vmware-solution.md
+    - text: ディスク プールを Azure VMware Solution ホストにアタッチする
+      url: attach-disk-pools-to-azure-vmware-solution-hosts.md
+- title: Azure Backup Server を使用してバックアップする
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Backup Server の設定
+      url: set-up-backup-server-for-azure-vmware-solution.md
+    - text: Backup Server を使用したプライベート クラウドのバックアップ
+      url: backup-azure-vmware-solution-virtual-machines.md
+  - linkListType: deploy
+    links:
+    - text: JetStream DR をデプロイする
+      url: deploy-disaster-recovery-using-jetstream.md
+    - text: ディザスター リカバリー用に VMware HCX をデプロイする
+      url: deploy-disaster-recovery-using-vmware-hcx.md
+    - text: ディザスター リカバリー用に VMware SRM をデプロイする
+      url: disaster-recovery-using-vmware-site-recovery-manager.md
 - title: VMware ソリューション
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: vRealize Operations の設定
+    - text: vRealize Operations を構成する
       url: vrealize-operations-for-azure-vmware-solution.md
     - text: VMware Horizon をデプロイする
       url: azure-vmware-solution-horizon.md
-- title: VMware のエコシステム
+    - text: コンテンツ ライブラリから VM をデプロイする
+      url: deploy-vm-content-library.md
+    - text: VMware SRM を使用してディザスター リカバリーをデプロイする
+      url: disaster-recovery-using-vmware-site-recovery-manager.md
+    - text: VMware HCX を使用してディザスター リカバリーをデプロイする
+      url: deploy-disaster-recovery-using-vmware-hcx.md
+    - text: VMware HCX アプライアンスをアップグレードする
+      url: https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html
+- title: パートナー ソリューションのエコシステム
   linkLists:
   - linkListType: reference
     links:
     - text: VM のバックアップ ソリューション
       url: ecosystem-back-up-vms.md
+    - text: VM の移行ソリューション
+      url: ecosystem-migration-vms.md
+    - text: Azure VMware Solution のセキュリティ ソリューション
+      url: ecosystem-security-solutions.md
+    - text: Bitnami アプライアンスのデプロイ
+      url: bitnami-appliances-deployment.md
 - title: リソース
   linkLists:
   - linkListType: reference
     links:
+    - text: REST API
+      url: /rest/api/avs
     - text: Azure CLI
-      url: /cli/azure/ext/vmware/vmware
+      url: /cli/azure/vmware
     - text: Azure PowerShell
       url: /powershell/module/az.vmware
-    - text: よく寄せられる質問
-      url: faq.yml
+    - text: Resource Manager テンプレート
+      url: /azure/templates/microsoft.avs/privateclouds
+    - text: Terraform Azure プロバイダー
+      url: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/vmware_private_cloud
+    - text: Azure VMware Solution 自動化のエンタープライズ規模
+      url: https://github.com/Azure/Enterprise-Scale-for-AVS
+  - linkListType: video
+    links:
+    - text: 再生リスト
+      url: https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin
+    - text: Azure サービスとの統合
+      url: https://youtu.be/m26iLu6DHbU
+    - text: Azure Application Gateway との統合
+      url: https://youtu.be/BoQYvqzb6Y8
+    - text: 移行と容量計画
+      url: https://youtu.be/NoNG-hkksrA
+- title: Azure VMware Solution リソースを移動する
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure VMware Solution のサブスクリプションを移動する
+      url: move-ea-csp-subscriptions.md
+    - text: リージョン間で Azure VMware Solution を移動する
+      url: move-azure-vmware-solution-across-regions.md
 - title: トラブルシューティング
   linkLists:
   - linkListType: reference
     links:
     - text: デプロイの失敗のサポート リクエストをオープンする
-      url: fix-deployment-provisioning-failures.md
+      url: fix-deployment-failures.md
+    - text: VMware ツール vix エラー コード = 21009
+      url: https://kb.vmware.com/s/article/2129927

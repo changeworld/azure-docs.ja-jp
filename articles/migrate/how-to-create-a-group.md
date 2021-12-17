@@ -6,18 +6,18 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 07/17/2019
-ms.openlocfilehash: 0570ed73b86223025b250e269d7e2f358473f004
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ffa031a9058eb6864298c5c9387402955a84968
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780856"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747249"
 ---
 # <a name="create-a-group-for-assessment"></a>評価用のグループを作成する
 
 この記事では、評価用のサーバーのグループを Azure Migrate: Discovery and Assessment で作成する方法について説明します。
 
-[Azure Migrate](migrate-services-overview.md) は、Azure への移行に役立ちます。 Azure Migrate には、オンプレミス インフラストラクチャ、アプリケーション、およびデータの検出、評価、および Azure への移行を追跡するための一元的なハブが用意されています。 このハブには、評価および移行のための Azure ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが用意されています。 
+[Azure Migrate](migrate-services-overview.md) は、Azure への移行に役立ちます。 Azure Migrate には、オンプレミス インフラストラクチャ、アプリケーション、およびデータの検出、評価、および Azure への移行を追跡するための一元的なハブが用意されています。 このハブには、評価および移行のための Azure ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが用意されています。
 
 ## <a name="grouping-servers"></a>サーバーのグループ化
 
@@ -47,12 +47,13 @@ ms.locfileid: "104780856"
 
     ![グループを作成する](./media/how-to-create-a-group/create-group.png)
 
-これで、[Azure VM の評価](how-to-create-assessment.md)、[Azure VMware Solution (AVS) の評価](how-to-create-azure-vmware-solution-assessment.md)、[Azure SQL の評価](how-to-create-azure-sql-assessment.md) を作成するときに、このグループを使用できます。
+これで、[Azure VM の評価](how-to-create-assessment.md)、[Azure VMware Solution (AVS) の評価](how-to-create-azure-vmware-solution-assessment.md)、[Azure SQL の評価](how-to-create-azure-sql-assessment.md)、[Azure App Service の評価](how-to-create-azure-app-service-assessment.md)を作成するときに、このグループを使用できます。
 
 ## <a name="refine-a-group-with-dependency-mapping"></a>依存関係マッピングを使用してグループを絞り込む
 
 依存関係マッピングを使用すると、サーバー全体の依存関係を視覚化できます。 一般的に依存関係マッピングは、より高い信頼度でサーバー グループを評価したいときに使用します。
-- 評価を実行する前に、サーバーの依存関係をクロスチェックする場合に役立ちます。 
+
+- 評価を実行する前に、サーバーの依存関係をクロスチェックする場合に役立ちます。
 - また、何も残さず、移行中の予期しない停止を回避するように Azure への移行を効果的に計画する場合にも役立ちます。
 - 同時に移行する必要のある、相互依存しているシステムを検出し、稼働中のシステムがまだユーザーにサービス提供しているのか、あるいは移行せず使用中止する対象となるのかを特定することができます。
 
@@ -84,7 +85,6 @@ ms.locfileid: "104780856"
     - 追加できるのは、検出済みのサーバーだけです。
     - サーバーを追加または削除すると、グループの過去の評価は無効になります。
     - 必要に応じて、グループを変更したときに新しいアセスメントを作成することもできます。
-
 
 ## <a name="next-steps"></a>次のステップ
 

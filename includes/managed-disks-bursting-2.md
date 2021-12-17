@@ -5,21 +5,19 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/04/2021
+ms.date: 11/09/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 3035b5d2803ff91e84bc6b47a99963185f9195d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7b1ac1f3b2fcb8c999276fecec495cf496108c12
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102623190"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134924"
 ---
-## <a name="disk-level-bursting"></a>ディスクレベルでのバースト
+### <a name="on-demand-bursting"></a>オンデマンド バースト
 
-### <a name="on-demand-bursting-preview"></a>オンデマンド バースト (プレビュー)
-
-ディスク バーストのオンデマンド バースト モデルを使用しているディスクなら、プロビジョニングされた元のターゲットを超えてバーストできます。最大バースト ターゲットを上限に、ワークロードに応じた必要な回数だけ、バースト可能です。 たとえば、1-TiB P30 ディスクでは、プロビジョニングされる IOPS は 5,000 IOPS です。 このディスクでディスク バーストが有効になっている場合、ワークロードで、最大バースト パフォーマンスである 30,000 IOPS および 1,000 Mbps まで、このディスクに IO を発行できます。
+ディスク バーストのオンデマンド バースト モデルを使用している Premium SSD なら、プロビジョニングされた元のターゲットを超えてバーストできます。最大バースト ターゲットを上限に、ワークロードに応じた必要な回数だけ、バースト可能です。 たとえば、1-TiB P30 ディスクでは、プロビジョニングされる IOPS は 5,000 IOPS です。 このディスクでディスク バーストが有効になっている場合、ワークロードで、最大バースト パフォーマンスである 30,000 IOPS および 1,000 Mbps まで、このディスクに IO を発行できます。 サポートされている各ディスクの最大バースト ターゲットについては、「[VM ディスクのスケーラビリティおよびパフォーマンスの目標](../articles/virtual-machines/disks-scalability-targets.md#premium-ssd-managed-disks-per-disk-limits)」を参照してください。
 
 ワークロードで、プロビジョニングされたパフォーマンス ターゲットを超えて頻繁にディスク バーストが実行されると予想される場合、ディスク バーストはコスト効果が高くありません。 この場合は、より良いベースライン パフォーマンスのために、ディスクのパフォーマンス レベルを[より高いレベル](../articles/virtual-machines/disks-performance-tiers.md)に変更することをお勧めします。 課金の詳細を確認し、ワークロードのトラフィック パターンに照らして評価してください。
 
@@ -33,7 +31,7 @@ ms.locfileid: "102623190"
 
 #### <a name="billing"></a>課金
 
-オンデマンド バースト モデルを使用しているディスクには、バーストの有効化の定額料金が時間単位で課され、プロビジョニングされたターゲットを超えるすべてのバースト トランザクションにトランザクション コストが適用されます。 トランザクション コストは、キャッシュされないディスク IO に基づいて、従量課金制モデルを使用して課金されます。これには、プロビジョニングされたターゲットを超える読み取りと書き込みの両方が含まれます。 以下は、請求時間中のディスク トラフィック パターンの例です。
+オンデマンド バースト モデルを使用している Premium SSD には、バーストの有効化の定額料金が時間単位で課され、プロビジョニングされたターゲットを超えるすべてのバースト トランザクションにトランザクション コストが適用されます。 トランザクション コストは、キャッシュされないディスク IO に基づいて、従量課金制モデルを使用して課金されます。これには、プロビジョニングされたターゲットを超える読み取りと書き込みの両方が含まれます。 以下は、請求時間中のディスク トラフィック パターンの例です。
 
 ディスク構成: Premium SSD - 1 TiB (P30)、ディスク バーストが有効。
 
@@ -59,18 +57,33 @@ ms.locfileid: "102623190"
 
 価格の詳細については、[Managed Disks の価格のページ](https://azure.microsoft.com/pricing/details/managed-disks/)を参照してください。また、ワークロードの評価を行うために、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=storage)を使用できます。 
 
+
+オンデマンド バーストを有効にするには、「[オンデマンド バーストを有効にする](../articles/virtual-machines/disks-enable-bursting.md)」をご覧ください。
+
 ### <a name="credit-based-bursting"></a>クレジットベースのバースト
 
-クレジットベースのバーストは、Azure パブリック クラウド、Azure Government クラウド、および Azure China クラウドのすべてのリージョンで、ディスク サイズ P20 以下で利用できます。 既定では、ディスク バーストは、サポートされているディスク サイズの新しいデプロイと既存のデプロイすべてで有効になっています。 VM レベルのバーストでは、クレジットベースのバーストだけが使用されます。
+Premium SSD の場合、クレジットベースのバーストは、P20 以下のディスク サイズで使用できます。 Standard SSD の場合、クレジットベースのバーストは、E30 以下のディスク サイズで使用できます。 Standard と Premium の両方の SSD について、クレジットベースのバーストは、Azure Public、Government、China クラウドのすべてのリージョンで利用できます。 既定では、ディスク バーストは、サポートされているディスク サイズの新しいデプロイと既存のデプロイすべてで有効になっています。 VM レベルのバーストでは、クレジットベースのバーストだけが使用されます。
 
 ## <a name="virtual-machine-level-bursting"></a>仮想マシンレベルのバースト
 
 VM レベルのバーストでは、バーストのクレジットベース モデルのみが使用され、これをサポートするすべての VM で既定で有効になっています。
 
 サポートされている次のサイズでは、Azure パブリック クラウド内のすべてのリージョンで、VM レベルでのバーストが有効になっています。 
+- [Dsv4 シリーズ](../articles/virtual-machines/dv4-dsv4-series.md)
+- [Dasv4 シリーズ](../articles/virtual-machines/dav4-dasv4-series.md)
+- [Ddsv4 シリーズ](../articles/virtual-machines/ddv4-ddsv4-series.md)
+- [Dasv5 シリーズ](../articles/virtual-machines/dasv5-dadsv5-series.md)
+- [Dadsv5 シリーズ](../articles/virtual-machines/dasv5-dadsv5-series.md)
+- [Esv4 シリーズ](../articles/virtual-machines/ev4-esv4-series.md)
+- [Easv4 シリーズ](../articles/virtual-machines/eav4-easv4-series.md)
+- [Edsv4 シリーズ](../articles/virtual-machines/edv4-edsv4-series.md)
+- [Easv5 シリーズ](../articles/virtual-machines/easv5-eadsv5-series.md)
+- [Eadsv5 シリーズ](../articles/virtual-machines/easv5-eadsv5-series.md)
+- [B シリーズ](../articles/virtual-machines/sizes-b-series-burstable.md)
+- [Fsv2 シリーズ](../articles/virtual-machines/fsv2-series.md)
+- [Dsv3 シリーズ](../articles/virtual-machines/dv3-dsv3-series.md)
+- [Esv3 シリーズ](../articles/virtual-machines/ev3-esv3-series.md)
 - [Lsv2 シリーズ](../articles/virtual-machines/lsv2-series.md)
-- [Dv3 および Dsv3 シリーズ](../articles/virtual-machines/dv3-dsv3-series.md)
-- [Ev3 および Esv3 シリーズ](../articles/virtual-machines/ev3-esv3-series.md)
 
 ## <a name="bursting-flow"></a>バースティングのフロー
 
@@ -120,7 +133,7 @@ VM レベルのバーストでは、バーストのクレジットベース モ�
     - 最大バースト MB/秒:1,280
 - P50 OS ディスク
     - プロビジョニングされる MB/秒:250 
-- 2 つの P10 データ ディスク 
+- 2 台の P50 データ ディスク 
     - プロビジョニングされる MB/秒:250
 
  最初の起動の後、VM 上でアプリケーションが実行され、重要度の低いワークロードが発生します。 このワークロードでは、すべてのディスクに均等に分散される 30 MB/秒が必要です。

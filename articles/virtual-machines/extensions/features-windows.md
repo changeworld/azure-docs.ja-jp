@@ -8,12 +8,13 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
-ms.openlocfilehash: b9b10e2ed58a41cee99e7e6ef1c3994035460407
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4eda8d1891081399c26a864e0976e6eee34a6b64
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601862"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258052"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -28,7 +29,7 @@ Azure 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の�
 さまざまな Azure VM 拡張機能が存在しますが、そのユース ケースはそれぞれ異なります。 次に例をいくつか示します。
 
 - Windows 用の DSC 拡張機能を使って、VM に PowerShell Desired State Configuration を適用します。 詳細については、「[Azure Desired State configuration extension](dsc-overview.md)」(Azure Desired State Configuration 拡張機能) を参照してください。
-- Log Analytics エージェント VM 拡張機能を使用して VM の監視を構成します。 詳しくは、[Azure VM の Azure Monitor ログへの接続](../../azure-monitor/vm/quick-collect-azurevm.md)に関するページを参照してください。
+- Log Analytics エージェント VM 拡張機能を使用して VM の監視を構成します。 詳しくは、[Azure VM の Azure Monitor ログへの接続](../../azure-monitor/vm/monitor-virtual-machine.md)に関するページを参照してください。
 - Chef を使用して Azure VM を構成します。 詳しくは、「[Chef で Azure VM の展開を自動化する](/azure/developer/chef/windows-vm-configure)」を参照してください。
 - Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳細については、[Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 
@@ -72,8 +73,8 @@ Windows ゲスト エージェントには、エージェントのトラフィ�
 Azure VM と共に、多くのさまざまな VM 拡張機能を使用できます。 完全な一覧を表示するには、[Get-AzVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) を使用します。 次の例では、*WestUS* の場所で利用できるすべての拡張機能が表示されています。
 
 ```powershell
-Get-AzVmImagePublisher -Location "WestUS" | `
-Get-AzVMExtensionImageType | `
+Get-AzVmImagePublisher -Location "WestUS" |
+Get-AzVMExtensionImageType |
 Get-AzVMExtensionImage | Select Type, Version
 ```
 
@@ -120,7 +121,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-次の例では、VM アクセス拡張機能を使って、Windows VM の管理パスワードを一時パスワードにリセットします。 VM アクセス拡張機能について詳しくは、[Windows VM でのリモート デスクトップ サービスのリセット](/troubleshoot/azure/virtual-machines/reset-rdp)に関する記事をご覧ください。 これを実行した後は、最初のログイン時にパスワードをリセットします。
+次の例では、VM アクセス拡張機能を使って、Windows VM の管理パスワードを一時パスワードにリセットします。 VM アクセス拡張機能について詳しくは、[Windows VM でのリモート デスクトップ サービスのリセット](/troubleshoot/azure/virtual-machines/reset-rdp)に関する記事をご覧ください。 これを実行した後は、最初のログイン時にパスワードをリセットする必要があります。
 
 ```powershell
 $cred=Get-Credential
@@ -251,9 +252,9 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>エージェントと拡張機能を更新する方法
 
-エージェントと拡張機能は、同じ更新メカニズムを共有します。 一部の更新プログラムでは、追加のファイアウォール規則を必要としません。
+エージェントと拡張機能は、同じ自動更新メカニズムを共有します。
 
-更新プログラムが利用できる場合で、拡張機能への変更があり、次のような他の VM モデルが変更されるときは、更新プログラムは VM にのみインストールされます。
+更新プログラムが使用可能で自動更新が有効になっている場合、拡張機能に変更が加えた後、または他の VM モデルが次のように変更された後にのみ、更新プログラムが VM にインストールされます。
 
 - データ ディスク
 - 拡張機能
@@ -262,7 +263,13 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 - VM サイズ
 - ネットワーク プロファイル
 
+> [!IMPORTANT]
+> 更新プログラムは、VM モデルに変更が適用された後にのみインストールされます。
+
 別のリージョンの VM は異なるバージョン上に搭載できるので、パブリッシャーは別のタイミングで、更新プログラムをリージョンで使用できるようにします。
+
+> [!NOTE]
+> 一部の更新プログラムでは、追加のファイアウォール規則を必要とする可能性があります。 「[ネットワーク アクセス](#network-access)」を参照してください。
 
 #### <a name="listing-extensions-deployed-to-a-vm"></a>VM にデプロイされる拡張機能の一覧
 
@@ -287,7 +294,10 @@ Windows ゲスト エージェントには *拡張機能処理コード* のみ�
 
 #### <a name="extension-updates"></a>拡張機能の更新プログラム
 
-拡張機能の更新プログラムが使用可能な場合、Windows ゲスト エージェントではこれをダウンロードして、拡張機能をアップグレードします。 拡張機能の自動更新プログラムは、"*マイナー*" または "*修正プログラム*" のどちらかです。 拡張機能の "*マイナー*" 更新プログラムは、拡張機能をプロビジョニングするときに、選択または除外できます。 次の例では、*autoUpgradeMinorVersion": true,'* を使って、Resource Manager テンプレートのマイナー バージョンを自動でアップグレードする方法を示しています。
+
+拡張機能の更新プログラムが使用可能で自動更新が有効になっている場合、[VM モデルの変更](#how-do-agents-and-extensions-get-updated)が発生すると、Windows ゲスト エージェントによって拡張機能がダウンロードされ、アップグレードされます。
+
+拡張機能の自動更新プログラムは、"*マイナー*" または "*修正プログラム*" のどちらかです。 拡張機能の "*マイナー*" 更新プログラムは、拡張機能をプロビジョニングするときに、選択または除外できます。 次の例では、 *"autoUpgradeMinorVersion": true,* を使って、Resource Manager テンプレートのマイナー バージョンを自動でアップグレードする方法を示しています。
 
 ```json
     "properties": {
@@ -303,6 +313,8 @@ Windows ゲスト エージェントには *拡張機能処理コード* のみ�
 ```
 
 最新のマイナー リリースのバグ修正プログラムを取得するには、拡張機能のデプロイで常に自動更新を選択することを強くお勧めします。 セキュリティまたは主要なバグの修正を提供する修正プログラムは、除外できません。
+
+拡張機能の自動更新を無効にした場合、またはメジャー バージョンをアップグレードする必要がある場合は、[Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) を使用してターゲット バージョンを指定します。
 
 ### <a name="how-to-identify-extension-updates"></a>拡張機能の更新プログラムを識別する方法
 
@@ -348,7 +360,7 @@ AutoUpgradeMinorVersion     : True
 
 1. Windows ゲスト エージェント ログをチェックするには、*C:\WindowsAzure\Logs\WaAppAgent.log* で拡張機能がプロビジョニングされたときのアクティビティを確認します
 
-2. *C:\WindowsAzure\Logs\Plugins\\<extensionName>* の実際の拡張機能ログで詳細を確認します
+2. `C:\WindowsAzure\Logs\Plugins\<extensionName>` で、実際の拡張機能のログを詳細にチェックします
 
 3. エラーコードや既知の問題などについて、拡張機能固有のドキュメントのトラブルシューティングのセクションを確認します。
 

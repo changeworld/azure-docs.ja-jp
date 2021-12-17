@@ -1,17 +1,17 @@
 ---
 title: Azure Real-Time Operating System の Device Update | Microsoft Docs
 description: Azure Real-Time Operating System の Device Update を使ってみる
-author: valls
+author: ValOlson
 ms.author: valls
 ms.date: 3/18/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 66da860a5cdae1f5c7c18e4136b1f2d960492ca8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c912984879cac12a9ad9fe078056677dccb48cf7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629055"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970124"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-azure-real-time-operating-system-rtos"></a>Azure Real Time Operating System (RTOS) を使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -29,7 +29,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 * IoT Hub へのアクセス。 S1 (Standard) レベル以上を使用することをお勧めします。
-* ご使用の IoT ハブにリンクされている Device Update インスタンスおよびアカウント。 [Device Update アカウントの作成とリンク](http://create-device-update-account.md/)がまだ済んでいない場合は、ガイドに従って行ってください。
+* ご使用の IoT ハブにリンクされている Device Update インスタンスおよびアカウント。 [Device Update アカウントの作成とリンク](./create-device-update-account.md)がまだ済んでいない場合は、ガイドに従って行ってください。
 
 ## <a name="get-started"></a>はじめに
 
@@ -41,7 +41,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 6. 次に、ファームウェア イメージとマニフェストを Device Update for IoT Hub に発行します。
 7. 最後に、プロジェクトをデバイスにダウンロードして実行します。
 
-[Azure RTOS](https://docs.microsoft.com/azure/rtos/) の詳細情報を参照してください。  
+[Azure RTOS](/azure/rtos/) の詳細情報を参照してください。  
 
 ## <a name="tag-your-device"></a>デバイスにタグを付ける
 

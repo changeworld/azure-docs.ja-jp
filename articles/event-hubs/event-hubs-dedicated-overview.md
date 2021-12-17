@@ -2,17 +2,17 @@
 title: 専用イベント ハブの概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、イベント ハブのシングル テナント デプロイを提供する専用の Azure Event Hubs の概要について説明します。
 ms.topic: article
-ms.date: 10/23/2020
-ms.openlocfilehash: fe63b074bfdd01191d81dfb7024af5532a87a12f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 09/23/2021
+ms.openlocfilehash: 696df96c9ac833d937fb89c52842b09ace4c4ec5
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310769"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210720"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Dedicated の概要
 
-*Event Hubs クラスター* は、最も厳しいストリーミングのニーズを持つお客様にシングルテナント デプロイを提供します。 このシングルテナントのサービスでは、99.99% の SLA が保証されており、専用の価格レベルでのみご利用いただけます。 Event Hubs クラスターでは、1 秒あたり数百万のイベントを、保証された容量と 1 秒未満の待ち時間でイングレスすることができます。 専用クラスター内で作成された名前空間とイベント ハブには、標準サービスのすべての機能とそれ以外の機能が含まれますが、イングレスに関する制限はありません。 また、一般的な [Event Hubs Capture](event-hubs-capture-overview.md) 機能も、追加コストなしで含まれています。 この機能を使用すると、Azure Storage または Azure Data Lake に対してデータ ストリームを自動的にバッチおよびログ処理することができます。 
+*Event Hubs クラスター* は、最も厳しいストリーミングのニーズを持つお客様にシングルテナント デプロイを提供します。 このシングルテナントのサービスでは、99.99% の SLA が保証されており、専用の価格レベルでのみご利用いただけます。 Event Hubs クラスターでは、1 秒あたり数百万のイベントを、保証された容量と 1 秒未満の待ち時間でイングレスすることができます。 専用クラスター内で作成された名前空間とイベント ハブには、プレミアム サービスのすべての機能とそれ以外の機能が含まれますが、イングレスに関する制限はありません。 また、一般的な [Event Hubs Capture](event-hubs-capture-overview.md) 機能も、追加コストなしで含まれています。 この機能を使用すると、Azure Storage または Azure Data Lake に対してデータ ストリームを自動的にバッチおよびログ処理することができます。 
 
 クラスターは、事前に割り当てられた CPU とメモリ リソースの量である **容量ユニット (CU)** を基準にプロビジョニングおよび請求が行われます。 クラスターごとに 1、2、4、8、12、16、または 20 の CU を購入することができます。 CU あたりの取り込みとストリーミングの量は、次のようなさまざまな要因によって異なります。 
 
@@ -31,29 +31,12 @@ ms.locfileid: "107310769"
 
 専用クラスターによって、完全なスケールで容量が保証されます。 トラフィックのバーストに対応できる十分な耐久性を備えたストレージと 1 秒未満の待機時間により、ギガバイト単位のストリーミング データまでイングレスできます。 
 
-#### <a name="inclusive-and-exclusive-access-to-features"></a>機能への包括アクセスと排他アクセス 
-専用オファリングには、追加コストなしでのキャプチャや、BYOK (Bring Your Own Key) などの近日導入される機能への排他アクセスなどの機能があります。 また、負荷分散、OS の更新、セキュリティ パッチ、パーティション分割は、サービスによって管理されます。 そのため、インフラストラクチャのメンテナンスにかかる時間が短縮され、クライアント側の機能を構築するためにより多くの時間を費やすことができます。  
+#### <a name="inclusive-and-exclusive-access-to-features"></a>機能への包括アクセスと排他アクセス
 
-#### <a name="cost-savings"></a>コスト削減
-高いイングレス量 (> 100 スループット ユニット) により、Standard オファリングで同等の量のスループット ユニットを購入するより、クラスターのコストが大幅に減ります。
-
+専用オファリングには、追加コストなしでのキャプチャや、BYOK (Bring Your Own Key) などの機能への排他アクセスなどの機能があります。 また、負荷分散、OS の更新、セキュリティ パッチ、パーティション分割は、サービスによって管理されます。 そのため、インフラストラクチャのメンテナンスにかかる時間が短縮され、クライアント側の機能を構築するためにより多くの時間を費やすことができます。  
 
 ## <a name="event-hubs-dedicated-quotas-and-limits"></a>Event Hubs Dedicated のクォータと制限
-
-Event Hubs Dedicated オファリングは固定の月額料金で課金され、最低の使用量は 4 時間です。 Dedicated レベルの機能は Standard プランとすべて同じですが、要求の厳しいワークロードを実行するお客様向けに、エンタープライズ規模の容量と制限で提供されます。 
-
-| 機能 | Standard | 専用 |
-| --- |:---|:---|
-| 帯域幅 | 20 TU (最大 40 TU) | 20 CU |
-| 名前空間 |  1 | CU あたり 50 |
-| Event Hubs |  名前空間あたり 10 | 名前空間あたり 1,000 |
-| イングレス イベント | 100 万イベントごとの課金 | Included |
-| メッセージ サイズ | 100 万バイト | 100 万バイト |
-| [メジャー グループ] | イベント ハブあたり 32 | イベント ハブあたり 1,024<br/>CU あたり 2,000 |
-| コンシューマー グループ | イベント ハブあたり 20 | CU あたりの制限なし、イベント ハブあたり 1,000 |
-| 仲介型接続 | 1,000 (付属)、最大 5,000 | 100,000 (付属、最大) |
-| [イベント保持](event-hubs-features.md#event-retention) | 7 日、TU あたり 84 GB を含む | 90 日、CU あたり 10 TB を含む |
-| キャプチャ | 1 時間ごとの課金 | Included |
+Event Hubs Dedicated オファリングは固定の月額料金で課金され、最低の使用量は 4 時間です。 専用レベルの機能はプレミアムプランとすべて同じですが、要求の厳しいワークロードを実行するお客様向けに、エンタープライズ規模の容量と制限で提供されます。 
 
 クォータと制限に関する詳細については、[Event Hubs のクォータと制限](event-hubs-quotas.md)に関する記事を参照してください
 
@@ -63,7 +46,7 @@ Event Hubs Dedicated オファリングは固定の月額料金で課金され�
 
 ## <a name="faqs"></a>FAQ
 
-[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
+[!INCLUDE [event-hubs-dedicated-clusters-faq](./includes/event-hubs-dedicated-clusters-faq.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

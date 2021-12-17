@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d56a9747627bd81e9bc0cc72fce804a64af91e4
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92547709"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398081"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -58,6 +58,7 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 | contentType | string | ユーザーはメッセージのコンテンツの種類を指定します。 メッセージ本文に基づいてクエリを実行するには、この値を application/json に設定する必要があります。 |
 | contentEncoding | string | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |
 | iothub-connection-device-id | string | この値は IoT Hub によって設定され、デバイスの ID を示します。 クエリを実行するには、`$connectionDeviceId` を使用します。 |
+| iothub-connection-module-id | string | この値は IoT Hub によって設定され、エッジ モジュールの ID を示します。 クエリを実行するには、`$connectionModuleId` を使用します。 |
 | iothub-enqueuedtime | string | この値は IoT Hub によって設定されます。この値によって、メッセージがエンキューされた実際の時刻が UTC で表されます。 クエリを実行するには、`enqueuedTime` を使用します。 |
 | dt-dataschema | string |  この値は、IoT Hub で、device-to-cloud メッセージに対して設定されます。 デバイス接続で設定されたデバイス モデル ID が含まれます。 クエリを実行するには、`$dt-dataschema` を使用します。 |
 | dt-subject | string | device-to-cloud メッセージを送信しているコンポーネントの名前。 クエリを実行するには、`$dt-subject` を使用します。 |
@@ -146,12 +147,11 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> これは、JavaScript の本文のエンコードを処理する方法を示しています。 C# のサンプルを確認するには、[Azure IoT C# のサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)をダウンロードしてください。 master.zip ファイルを解凍します。 Visual Studio ソリューション *SimulatedDevice* の Program.cs ファイルは、メッセージをエンコードして IoT Hub に送信する方法を示しています。 これは、[メッセージ ルーティングのチュートリアル](tutorial-routing.md)で説明されているように、メッセージ ルーティングのテストに使用されているものと同じサンプルです。 Program.cs の末尾には、エンコードされたファイルの 1 つを読み込んでデコードし、読み取ることができるように ASCII 形式で書き戻すメソッドもあります。 
-
+> これは、JavaScript の本文のエンコードを処理する方法を示しています。 C# のサンプルを確認するには、[Azure IoT C# のサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)をダウンロードしてください。 master.zip ファイルを解凍します。 Visual Studio ソリューション *SimulatedDevice* の Program.cs ファイルは、メッセージをエンコードして IoT Hub に送信する方法を示しています。 これは、[メッセージ ルーティングのチュートリアル](tutorial-routing.md)で説明されているように、メッセージ ルーティングのテストに使用されているものと同じサンプルです。 Program.cs の末尾には、エンコードされたファイルの 1 つを読み込んでデコードし、読み取ることができるように ASCII 形式で書き戻すメソッドもあります。 
 
 ### <a name="query-expressions"></a>クエリ式
 
-メッセージ本文に基づくクエリには、前に `$body` を付ける必要があります。 クエリ式では、本文の参照、本文配列の参照、または複数の本文の参照を使用できます。 さらにクエリ式では、本文の参照を、メッセージ システム プロパティおよびメッセージ アプリケーション プロパティの参照と組み合わせることもできます。 たとえば、以下はすべて有効なクエリ式です。 
+メッセージ本文に基づくクエリには、前に `$body` を付ける必要があります。 クエリ式では、本文の参照、本文配列の参照、または複数の本文の参照を使用できます。 さらにクエリ式では、本文の参照を、メッセージ システム プロパティおよびメッセージ アプリケーション プロパティの参照と組み合わせることもできます。 たとえば、以下はすべて有効なクエリ式です。
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
@@ -168,6 +168,20 @@ length($body.Weather.Location.State) = 2
 ```sql
 $body.Weather.Temperature = 50 AND processingPath = 'hot'
 ```
+
+> [!NOTE]
+> ツイン通知のペイロードを変更内容に基づいてフィルター処理するには、メッセージ本文に対して次のクエリを実行します。
+>
+> ```sql
+> $body.properties.desired.telemetryConfig.sendFrequency
+> ```
+
+> [!NOTE]
+> クエリおよび関数は、本文参照のプロパティでのみ実行できます。 本文参照全体でクエリまたは関数を実行することはできません。 たとえば、次のクエリはサポートされて "*おらず*"、`undefined` が返されます。
+>
+> ```sql
+> $body[0] = 'Feb'
+> ```
 
 ## <a name="message-routing-query-based-on-device-twin"></a>デバイス ツインに基づいたメッセージ ルーティング クエリ 
 

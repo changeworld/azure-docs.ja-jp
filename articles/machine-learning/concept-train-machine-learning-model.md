@@ -8,14 +8,14 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 09/23/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: de3d9aa60322cc3e6e189f6f16c35d6f42c0cf61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e75d2a7a7bfbe08447df98f170ba470e3503ebe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102500412"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601389"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -29,11 +29,9 @@ Azure Machine Learning には、SDK を使用したコード ファースト ソ
     | [自動機械学習](#automated-machine-learning) | 自動機械学習を使用すると、**データ サイエンスやプログラミングに関する豊富な知識がなくてもモデルをトレーニング** することができます。 データ サイエンスとプログラミングの経験がある人に対しては、アルゴリズムの選択とハイパーパラメーターのチューニングを自動化することによって時間とリソースを節約する手段が提供されます。 自動機械学習を使用する場合、実行構成の定義について心配する必要はありません。 |
     | [機械学習パイプライン](#machine-learning-pipeline) | パイプラインは別のトレーニング方法ではなく、**モジュール型の再利用可能な手順を使用してワークフローを定義する方法** であり、トレーニングをワークフローの一部として含めることができます。 機械学習パイプラインでは、自動機械学習と実行構成を使用したモデルのトレーニングがサポートされています。 パイプラインはトレーニングに明示的に重点を置いていないため、パイプラインを使用する理由は、他のトレーニング方法と大きく異なります。 一般に、以下の場合にパイプラインを使用できます。<br>* 実行時間の長いトレーニング ジョブやデータ準備など、**無人プロセスをスケジュール設定する**。<br>* 異種コンピューティング リソースとストレージの場所全体で調整された **複数の手順** を使用する。<br>* 再トレーニングやバッチ スコアリングなどの特定のシナリオ向けにパイプラインを **再利用可能なテンプレート** として使用する。<br>* ワークフローの **データソース、入力、出力を追跡してバージョン管理する**。<br>* ワークフローが、**特定の手順で個別に作業するさまざまなチームによって実装される**。 その後、手順をパイプラインに結合して、ワークフローを実装できます。 |
 
-+ [Azure Machine Learning SDK for R (プレビュー)](#r-sdk-preview): SDK for R では、reticulate パッケージを使用して Azure Machine Learning の Python SDK にバインドします。 これにより、R 環境から Python SDK で実装されているコア オブジェクトとメソッドにアクセスできます。
-
 + **デザイナー**: Azure Machine Learning デザイナーでは、概念実証を構築するため、またはコーディングの経験がほとんどないないユーザーのために、機械学習への簡単なエントリポイントが用意されています。 これにより、ドラッグ アンド ドロップ Web ベース UI を使用してモデルをトレーニングできます。 Python コードを設計の一部として使用したり、コードを記述せずにモデルをトレーニングしたりすることができます。
 
-+ **CLI**:機械学習 CLI には Azure Machine Learning を使用した一般的なタスク用のコマンドが用意されており、多くの場合、**スクリプト作成とタスクの自動化** に使用されます。 たとえば、トレーニング スクリプトまたはパイプラインを作成した後、スケジュールに基づいて、またはトレーニングに使用するデータ ファイルが更新されたときに、CLI を使用してトレーニングの実行を開始することができます。 トレーニング モデルの場合は、トレーニング ジョブを送信するコマンドが用意されています。 実行構成またはパイプラインを使用してジョブを送信できます。
++ **Azure CLI**: 機械学習 CLI には Azure Machine Learning を使用した一般的なタスク用のコマンドが用意されており、多くの場合、**スクリプト作成とタスクの自動化** に使用されます。 たとえば、トレーニング スクリプトまたはパイプラインを作成した後、スケジュールに基づいて、またはトレーニングに使用するデータ ファイルが更新されたときに、Azure CLI を使用してトレーニングの実行を開始することができます。 トレーニング モデルの場合は、トレーニング ジョブを送信するコマンドが用意されています。 実行構成またはパイプラインを使用してジョブを送信できます。
 
 これらの各トレーニング方法では、トレーニング用にさまざまな種類のコンピューティング リソースを使用できます。 これらのリソースをまとめて、[__コンピューティング先__](concept-azure-machine-learning-architecture.md#compute-targets)と呼びます。 コンピューティング先は、ローカル マシンでも、Azure Machine Learning コンピューティング、Azure HDInsight、リモート仮想マシンなどのクラウド リソースでもかまいません。
 
@@ -90,7 +88,7 @@ Azure トレーニング ライフサイクルは次の要素で構成されて�
 1. Dockerfile のビルドまたは計算ノードへのダウンロード 
     1. システムにより、次のハッシュが計算されます。 
         - 基本イメージ 
-        - カスタム Docker の手順 (「[カスタム Docker ベース イメージを使用してモデルをデプロイする](./how-to-deploy-custom-docker-image.md)」を参照してください)
+        - カスタム Docker の手順 (「[カスタム Docker ベース イメージを使用してモデルをデプロイする](./how-to-deploy-custom-container.md)」を参照してください)
         - Conda 定義 YAML ([Azure Machine Learning でのソフトウェア環境の作成と使用](./how-to-use-environments.md)に関するページを参照してください)
     1. システムでは、ワークスペース Azure Container Registry (ACR) の検索で、このハッシュがキーとして使用されます
     1. 見つからない場合、グローバル ACR で一致するものが検索されます
@@ -103,14 +101,6 @@ Azure トレーニング ライフサイクルは次の要素で構成されて�
 
 ローカル コンピューターでのトレーニングを選択した場合 ("ローカル実行として構成")、Docker を使用する必要はありません。 必要に応じて、Docker をローカルで使用できます (例については、[ML パイプラインの構成](./how-to-debug-pipelines.md)に関するセクションを参照)。
 
-## <a name="r-sdk-preview"></a>R SDK (プレビュー)
-
-R SDK を使用すると、Azure Machine Learning で R 言語を使用できます。 SDK では、reticulate パッケージを使用して Azure Machine Learning の Python SDK にバインドします。 これにより、R 環境から Python SDK で実装されているコア オブジェクトとメソッドにアクセスできます。
-
-詳細については、次の記事を参照してください。
-
-* [Azure Machine Learning SDK for R リファレンス](https://azure.github.io/azureml-sdk-for-r/index.html)
-
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning デザイナー
 
 デザイナーを使用すると、Web ブラウザーでドラッグ アンド ドロップ インターフェイスを使用してモデルをトレーニングできます。
@@ -118,19 +108,7 @@ R SDK を使用すると、Azure Machine Learning で R 言語を使用できま
 + [デザイナーとは](concept-designer.md)
 + [チュートリアル:自動車価格を予測する](tutorial-designer-automobile-price-train-score.md)
 
-## <a name="many-models-solution-accelerator"></a>多数モデル ソリューション アクセラレータ
-
-[多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
-
-たとえば次のシナリオで、__それぞれの事例または個々の対象の__ モデルを構築すると、結果が改善される可能性があります。
-
-* 個々の店舗の売上予測
-* 数百基の油井の予測メンテナンス
-* 個々のユーザーのエクスペリエンスの調整。
-
-詳細については、GitHub の[多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)に関するページを参照してください。
-
-## <a name="cli"></a>CLI
+## <a name="azure-cli"></a>Azure CLI
 
 機械学習 CLI は、Azure CLI 用の拡張機能です。 Azure Machine Learning を操作するためのクロスプラットフォーム CLI コマンドが提供されます。 通常は、CLI を使用して、機械学習モデルのトレーニングなどのタスクを自動化します。
 

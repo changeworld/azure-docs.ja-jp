@@ -7,17 +7,17 @@ manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: quickstart
-ms.date: 06/22/2020
+ms.date: 08/23/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7a46f41aecf4b53fed309ef9d1eaaaeadb819fc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94887265"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770309"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>クイック スタート:通知ハブのプッシュ通知を設定する
 
@@ -75,13 +75,13 @@ Google Firebase Cloud Messaging (FCM) プロジェクトの **API キー** が�
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>Google FCM のプッシュ通知を設定する
 
-1. [az notification-hub credential gcm update](/cli/azure/ext/notification-hub/notification-hub/credential/gcm#ext-notification-hub-az-notification-hub-credential-gcm-update) コマンドを使用して、Google API キーを通知ハブに追加します。
+1. [az notification-hub credential gcm update](/cli/azure/notification-hub/credential/gcm#az_notification_hub_credential_gcm_update) コマンドを使用して、Google API キーを通知ハブに追加します。
 
    ```azurecli
    az notification-hub credential gcm update --resource-group spnhubrg --namespace-name spnhubns    --notification-hub-name spfcmtutorial1nhub --google-api-key myKey
    ```
 
-2. Android アプリが通知ハブと接続するためには接続文字列が必要です。  使用できるアクセス ポリシーを一覧表示するには、[az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) コマンドを使用します。  アクセス ポリシーの接続文字列を取得するには、[az notification-hub authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) コマンドを使用します。  プライマリ接続文字列を直接取得するには、`--query` パラメーターに **primaryConnectionString** または **secondaryConnectionString** を指定します。
+2. Android アプリが通知ハブと接続するためには接続文字列が必要です。  使用できるアクセス ポリシーを一覧表示するには、[az notification-hub authorization-rule list](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_list) コマンドを使用します。  アクセス ポリシーの接続文字列を取得するには、[az notification-hub authorization-rule list-keys](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_list_keys) コマンドを使用します。  プライマリ接続文字列を直接取得するには、`--query` パラメーターに **primaryConnectionString** または **secondaryConnectionString** を指定します。
 
    ```azurecli
    #list access policies for a notification hub
@@ -94,7 +94,7 @@ Google Firebase Cloud Messaging (FCM) プロジェクトの **API キー** が�
    az notification-hub authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name myAccessPolicyName --query primaryConnectionString
    ```
 
-3. [az notification-hub test-send](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-test-send) コマンドを使用して、Android アプリに対するメッセージ送信をテストします。
+3. [az notification-hub test-send](/cli/azure/notification-hub#az_notification_hub_test_send) コマンドを使用して、Android アプリに対するメッセージ送信をテストします。
 
    ```azurecli
    #test with message body
@@ -104,7 +104,7 @@ Google Firebase Cloud Messaging (FCM) プロジェクトの **API キー** が�
    az notification-hub test-send --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --notification-format gcm --payload "{\"data\":{\"message\":\"my JSON string\"}}"
    ```
 
-その他のプラットフォーム向けの Azure CLI リファレンスは、[az notification-hub credential](/cli/azure/ext/notification-hub/notification-hub/credential) コマンドで入手してください。
+その他のプラットフォーム向けの Azure CLI リファレンスは、[az notification-hub credential](/cli/azure/notification-hub/credential) コマンドで入手してください。
 
 Android アプリケーションへの通知の送信に関する詳細については、「[Firebase を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を参照してください。
 
@@ -123,6 +123,9 @@ Windows プッシュ通知サービス (WNS) を設定するには、次の手�
 詳細については、[Azure Notification Hubs を使用して UWP アプリに通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)方法に関するページを参照してください。
 
 ## <a name="microsoft-push-notification-service-for-windows-phone"></a>Windows Phone 用 Microsoft プッシュ通知サービス
+
+> [!NOTE]
+> Microsoft プッシュ通知サービス (MPNS) は非推奨となり、サポートされなくなりました。
 
 Windows Phone 用 Microsoft プッシュ通知サービス (MPNS) を設定するには、次の手順に従います。
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: 927ff80a544ef8fbff348aeb8781f8a55c84e109
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 9445ff2960a9f774d8b55fa1bf983a238b0b0295
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061895"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262833"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
@@ -27,7 +27,7 @@ Azure 仮想ネットワークにより、Azure リソースは、他の Azure �
 
 ### <a name="communicate-with-the-internet"></a>インターネットとの通信
 
-VNet 内のすべてのリソースにおいて、既定でインターネットへの送信方向の通信が可能です。 リソースへの受信通信は、リソースにパブリック IP アドレスまたはパブリック ロード バランサーを割り当てることによって可能になります。 パブリック IP またはパブリック ロード バランサーを使用して、送信接続を管理することもできます。  Azure での送信接続の詳細については、[送信接続](../load-balancer/load-balancer-outbound-connections.md)、[パブリック IP アドレス](virtual-network-public-ip-address.md)、[ロード バランサー](../load-balancer/load-balancer-overview.md)に関する各ページを参照してください。
+VNet 内のすべてのリソースにおいて、既定でインターネットへの送信方向の通信が可能です。 リソースへの受信通信は、リソースにパブリック IP アドレスまたはパブリック ロード バランサーを割り当てることによって可能になります。 パブリック IP またはパブリック ロード バランサーを使用して、送信接続を管理することもできます。  Azure での送信接続の詳細については、[送信接続](../load-balancer/load-balancer-outbound-connections.md)、[パブリック IP アドレス](./ip-services/virtual-network-public-ip-address.md)、[ロード バランサー](../load-balancer/load-balancer-overview.md)に関する各ページを参照してください。
 
 >[!NOTE]
 >内部 [Standard Load Balancer](../load-balancer/load-balancer-overview.md) のみを使用している場合、[送信接続](../load-balancer/load-balancer-outbound-connections.md)でインスタンスレベルの IP アドレスまたはパブリック ロード バランサーがどのように処理されるかを定義するまで、送信接続は使用できません。
@@ -74,6 +74,9 @@ Azure 仮想ネットワークに Azure サービスを統合すると、仮想�
 ## <a name="azure-vnet-limits"></a>Azure VNet の制限
 
 デプロイできる Azure リソースの数について特定の制限があります。 Azure のネットワークの制限のほとんどは、最大値です。 ただし、[VNet の制限に関するページ](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に記載されているように、[特定のネットワークの上限を引き上げる](../azure-portal/supportability/networking-quota-requests.md)ことができます。 
+
+## <a name="virtual-networks-and-availability-zones"></a>仮想ネットワークと可用性ゾーン
+仮想ネットワークとサブネットは、リージョン内のすべての可用性ゾーンにまたがっています。 ゾーン リソースに対応するために、可用性ゾーンでそれらを分割する必要はありません。 たとえば、ゾーン VM を構成する場合、VM の可用性ゾーンを選択するときに仮想ネットワークを考慮する必要はありません。 他のゾーン リソースについても同様です。
 
 ## <a name="pricing"></a>価格
 

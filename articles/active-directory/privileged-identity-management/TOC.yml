@@ -8,9 +8,13 @@
   items:
     - name: ライセンスの要件
       href: subscription-requirements.md
+    - name: 特権アクセス グループ
+      href: groups-features.md
+    - name: ロールを割り当て可能なグループと特権アクセス グループ
+      href: concept-privileged-access-versus-role-assignable.md
     - name: PIM で管理できないロール
       href: pim-roles.md
-    - name: 特権アクセスのセキュリティ保護
+    - name: Azure AD で特権アクセスをセキュリティで保護する
       href: ../roles/security-planning.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
     - name: MFA と PIM
       href: pim-how-to-require-mfa.md
@@ -18,7 +22,7 @@
       href: pim-resource-roles-overview-dashboards.md
     - name: メール通知
       href: pim-email-notifications.md
-    - name: Microsoft Graph API と PIM
+    - name: PIM API の概念
       href: pim-apis.md
 - name: 操作方法ガイド
   expanded: true
@@ -27,102 +31,82 @@
       href: pim-deployment-plan.md
     - name: PIM の使用を開始する
       href: pim-getting-started.md
-    - name: PIM を構成する
-      items:
-        - name: セキュリティ ウィザード
-          href: pim-security-wizard.md
-        - name: Azure リソースを見つける
-          href: pim-resource-roles-discover-resources.md
-        - name: PIM へのアクセスを委任する
-          href: pim-how-to-give-access-to-pim.md
-        - name: すべてのサブスクリプションを管理するためにアクセス権を昇格する
-          href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
-    - name: ロールをアクティブ化する
-      items:
-        - name: Azure AD ロールをアクティブ化する
-          href: pim-how-to-activate-role.md
-        - name: 自分の Azure リソース ロールをアクティブにする
-          href: pim-resource-roles-activate-your-roles.md
-    - name: Azure AD ロールの管理
-      items:
-        - name: 機能の概要
-          href: azure-ad-roles-features.md
-        - name: Azure AD ロール用の PowerShell
-          href: powershell-for-azure-ad-roles.md
-        - name: ロールを割り当てる
-          href: pim-how-to-add-role-to-user.md
-        - name: 要求の承認
-          href: azure-ad-pim-approval-workflow.md
-        - name: ロール設定を構成する
-          href: pim-how-to-change-default-settings.md
-        - name: アラートを構成する
-          href: pim-how-to-configure-security-alerts.md
-        - name: カスタム ロール (プレビュー)
-          items:
-            - name: カスタム ロールをアクティブにする
-              href: azure-ad-custom-roles-activate.md
-            - name: カスタム ロールを割り当てる
-              href: azure-ad-custom-roles-assign.md
-            - name: ロールの割り当てを削除する
-              href: azure-ad-custom-roles-update-remove.md
-            - name: カスタム ロールを構成する
-              href: azure-ad-custom-roles-configure.md
-        - name: 監査履歴を表示する
-          href: pim-how-to-use-audit-log.md
-    - name: Azure ロールの管理
-      items:
-        - name: ロールを割り当てる
-          href: pim-resource-roles-assign-roles.md
-        - name: 外部ユーザーを招待する
-          href: pim-resource-roles-external-users.md
-        - name: 要求の承認
-          href: pim-resource-roles-approval-workflow.md
-        - name: ロールを拡張または更新する
-          href: pim-resource-roles-renew-extend.md
-        - name: ロール設定を構成する
-          href: pim-resource-roles-configure-role-settings.md
-        - name: アラートを構成する
-          href: pim-resource-roles-configure-alerts.md
-        - name: 監査履歴を表示する
-          href: azure-pim-resource-rbac.md
-        - name: カスタム ロールを使用する
-          href: pim-resource-roles-custom-role-policy.md
-    - name: 特権アクセス グループの管理 (プレビュー)
-      items:
-        - name: 特権アクセスの概要
-          href: groups-features.md
-        - name: グループを管理下に置く
-          href: groups-discover-groups.md
-        - name: メンバーまたは所有者を割り当てる
-          href: groups-assign-member-owner.md
-        - name: 要求の承認
-          href: groups-approval-workflow.md
-        - name: 割り当ての延長または更新
-          href: groups-renew-extend.md
-        - name: ロール設定を構成する
-          href: groups-role-settings.md
-        - name: 監査履歴を表示する
-          href: groups-audit.md
-    - name: PIM のトラブルシューティング
-      href: pim-troubleshoot.md
-    - name: アクセス レビュー
+    - name: 割り当て
       items:
         - name: Azure AD ロール
-          items:
-            - name: アクセス レビューの作成
-              href: pim-how-to-start-security-review.md
-            - name: アクセスのレビュー
-              href: pim-how-to-perform-security-review.md
-            - name: アクセス レビューを完了する
-              href: pim-how-to-complete-review.md
+          href: pim-how-to-add-role-to-user.md
         - name: Azure ロール
+          href: pim-resource-roles-assign-roles.md
+        - name: 特権アクセス グループ
+          href: groups-assign-member-owner.md
+    - name: アクティブ化
+      items:
+        - name: Azure AD ロール
+          href: pim-how-to-activate-role.md
+        - name: Azure ロール
+          href: pim-resource-roles-activate-your-roles.md
+        - name: 特権アクセス グループ
+          href: groups-activate-roles.md
+    - name: 承認
+      items:
+        - name: Azure AD ロール
+          href: azure-ad-pim-approval-workflow.md
+        - name: Azure ロール
+          href: pim-resource-roles-approval-workflow.md
+        - name: 特権アクセス グループ
+          href: groups-approval-workflow.md
+    - name: 管理下に置く
+      items:
+        - name: 管理
+          href: pim-resource-roles-discover-resources.md
+        - name: 特権アクセス グループ
+          href: groups-discover-groups.md
+    - name: 拡張または更新する
+      items:
+        - name: Azure AD ロール
+          href: pim-how-to-renew-extend.md
+        - name: Azure ロール
+          href: pim-resource-roles-renew-extend.md
+        - name: 特権アクセス グループ
+          href: groups-renew-extend.md
+    - name: ロールの設定を行う
+      items:
+        - name: Azure AD ロール
+          href: pim-how-to-change-default-settings.md
+        - name: Azure ロール
+          href: pim-resource-roles-configure-role-settings.md
+        - name: 特権アクセス グループ
+          href: groups-role-settings.md
+    - name: アラートを設定する
+      items:
+        - name: Azure AD ロール
+          href: pim-how-to-configure-security-alerts.md
+        - name: Azure ロール
+          href: pim-resource-roles-configure-alerts.md
+    - name: 監査
+      items:
+        - name: Azure AD ロール
+          href: pim-how-to-use-audit-log.md
+        - name: Azure ロール
+          href: azure-pim-resource-rbac.md
+        - name: 特権アクセス グループ
+          href: groups-audit.md
+    - name: アクセスのレビュー
+      items:
+        - name: Azure AD ロールおよび Azure リソース ロール
           items:
             - name: アクセス レビューの作成
-              href: pim-resource-roles-start-access-review.md
-            - name: アクセスのレビュー
-              href: pim-resource-roles-perform-access-review.md
+              href: pim-create-azure-ad-roles-and-resource-roles-review.md
+            - name: アクセス レビューの実行
+              href: pim-perform-azure-ad-roles-and-resource-roles-review.md
             - name: アクセス レビューを完了する
-              href: pim-resource-roles-complete-access-review.md
+              href: pim-complete-azure-ad-roles-and-resource-roles-review.md
+    - name: Azure AD ロールの検出と分析情報
+      href: pim-security-wizard.md
+    - name: Azure サブスクリプションを管理するためにアクセス権を昇格させる
+      href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+    - name: リソースのアクセス拒否に関するトラブルシューティング
+      href: pim-troubleshoot.md
 - name: リファレンス
   items:
     - name: Graph API
@@ -131,5 +115,7 @@
       href: /cli/azure/ad
     - name: Azure AD PowerShell for Graph
       href: /powershell/azure/active-directory/install-adv2
+    - name: Azure AD ロール用の PowerShell の例
+      href: powershell-for-azure-ad-roles.md
     - name: Azure AD サービスの制約
-      href: ../users-groups-roles/directory-service-limits-restrictions.md
+      href: ../enterprise-users/directory-service-limits-restrictions.md

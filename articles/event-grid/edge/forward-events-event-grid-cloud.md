@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: bfe150a45c70bc5bed18f8e929c9567905cd38f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1732e6f997af622bd7435b6b2f1a3033bc05a79
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171603"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112412735"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>チュートリアル: イベントを Event Grid クラウドに転送する
 
@@ -29,7 +30,7 @@ ms.locfileid: "86171603"
 * **Azure サブスクリプション**: まだお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free)を作成してください。 
 * **Azure IoT Hub および IoT Edge デバイス**: まだお持ちでない場合は、[Linux](../../iot-edge/quickstart-linux.md) または [Windows](../../iot-edge/quickstart.md) デバイスのクイック スタートの手順に従ってください。
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-deploy-iot-edge.md)] 
 ## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>クラウドで Event Grid トピックとサブスクリプションを作成する
 
 [こちらのチュートリアル](../custom-event-quickstart-portal.md)に従って、Event Grid トピックとサブスクリプションをクラウドに作成します。 チュートリアルの後半で使用するので、新しく作成したトピックの `topicURL`、`sasKey`、`topicName` を記録しておきます。
@@ -81,7 +82,7 @@ ms.locfileid: "86171603"
   
 ## <a name="create-event-grid-subscription-at-the-edge"></a>エッジで Event Grid サブスクリプションを作成する
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 次の内容で subscription3.json を作成します。 ペイロードの詳細については、[API のドキュメント](api.md)を参照してください。
 

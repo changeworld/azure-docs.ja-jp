@@ -1,5 +1,5 @@
 ---
-title: 強化学習モデルをトレーニングしてデプロイします (プレビュー)。
+title: 強化学習モデルをトレーニングしてデプロイする (プレビュー)
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning の強化学習 (プレビュー) を使用して、Pong をプレイするように RL エージェントをトレーニングする方法について説明します。
 services: machine-learning
@@ -7,22 +7,22 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: peterlu
 author: peterclu
-ms.date: 05/05/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 4c03016d003978b3c56361595bec7c559205574b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python, contperf-fy21q2
+ms.openlocfilehash: 126293b2416637b9775b9203144c3bc22b96758b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520882"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557397"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
 
 
 > [!NOTE]
-> Azure Machine Learning の強化学習は、現在はプレビュー機能です。 現時点では、Ray および RLlib フレームワークのみがサポートされています。
+> Azure Machine Learning の強化学習は、現在プレビュー機能です。 現時点では、Ray および RLlib フレームワークのみがサポートされています。
 
 この記事では、ビデオ ゲームの Pong をプレイするように強化学習 (RL) エージェントをトレーニングする方法について説明します。 オープンソースの Python ライブラリ [Ray RLlib](https://ray.readthedocs.io/en/master/rllib.html) と Azure Machine Learning を使用して、分散 RL の複雑さを管理します。
 
@@ -42,7 +42,7 @@ ms.locfileid: "102520882"
 
  - Azure Machine Learning コンピューティング インスタンス
 
-     - サンプルのノートブックを複製する方法を学習します ([環境とワークスペースの設定に関するチュートリアル](tutorial-1st-experiment-sdk-setup.md)を参照)。
+     - サンプルのノートブックを複製する方法を学習します ([環境とワークスペースの設定に関するチュートリアル](tutorial-train-models-with-aml.md)を参照)。
          - **tutorials** ではなく **how-to-use-azureml** フォルダーを複製します
      - `/how-to-use-azureml/reinforcement-learning/setup/devenv_setup.ipynb` にある仮想ネットワーク セットアップ ノートブックを実行して、分散強化学習に使用されるネットワーク ポートを開きます。
      - サンプル ノートブック `/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb` を実行します
@@ -214,6 +214,7 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>強化学習の推定器を作成する
+
 [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator) を使用して、Azure Machine Learning にトレーニング ジョブを送信します。
 
 Azure Machine Learning では、推定器クラスを使用して、実行の構成情報がカプセル化されます。 これにより、スクリプトの実行の構成方法を指定できます。 

@@ -5,63 +5,44 @@ services: static-web-apps
 author: burkeholland
 ms.service: static-web-apps
 ms.topic: how-to
-ms.date: 05/08/2020
+ms.date: 09/23/2021
 ms.author: buhollan
 ms.custom: devx-track-js
-ms.openlocfilehash: 152b96bee63b6d2280a807ca53842ed3a67ab67d
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: a104860eb72a6376c2ab337f31bb06fd041f42a0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279767"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597096"
 ---
-# <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Azure Static Web Apps (プレビュー) のアプリケーション設定を構成する
+# <a name="configure-application-settings-for-azure-static-web-apps"></a>Azure Static Web Apps のアプリケーション設定を構成する
 
 アプリケーション設定には、データベース接続文字列など、変更される可能性のある値の構成設定が保持されます。 アプリケーション設定を追加すると、アプリケーション コードを変更せずに、アプリへの構成入力を変更できます。
 
-アプリケーション設定は次のようになります。
+アプリケーション設定:
 
+- 静的 Web アプリのバックエンド API で、環境変数として使用できます
+- [認証構成](key-vault-secrets.md)で使用されるシークレットを格納するために使用できます
 - 保存時に暗号化される
 - [ステージング](review-publish-pull-requests.md)環境と運用環境にコピーされる
-
-アプリケーション設定は、環境変数と呼ばれることもあります。
+- 英数字、`.`、および `_` のみ使用可能
 
 > [!IMPORTANT]
 > この記事で説明しているアプリケーション設定は、Azure Static Web App のバックエンド API にのみ適用されます。
 >
-> フロントエンド Web アプリケーションでの環境変数の使用については、[JavaScript フレームワーク](#javascript-frameworks-and-libraries)または[静的サイト ジェネレーター](#static-site-generators)のドキュメントを参照してください。
+> フロントエンド Web アプリケーションの構築に必要な環境変数を構成するには、「[ビルドの構成](build-configuration.md#environment-variables)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure Static Web Apps アプリケーション
-- [Azure CLI](/cli/azure/install-azure-cli)
+- [Azure CLI](/cli/azure/install-azure-cli) — コマンド ラインを使用する場合に必要です
 
-## <a name="types-of-application-settings"></a>アプリケーション設定の種類
+## <a name="configure-api-application-settings-for-local-development"></a>ローカル開発用に API アプリケーション設定を構成する
 
-Azure Static Web Apps アプリケーションには、通常、2 つの側面があります。 1 つ目は、Web アプリケーション、すなわち HTML、CSS、JavaScript、およびイメージで表される静的コンテンツです。 2 つ目は、Azure Functions アプリケーションの機能を使用するバックエンド API です。
+Azure Static Web Apps の API では Azure Functions の機能が利用されています。これにより、アプリケーションをローカル環境で実行するときに、_local.settings.json_ ファイルでアプリケーションの設定を定義できます。 このファイルは、構成の `Values` プロパティでアプリケーション設定を定義します。
 
-この記事では、Azure Functions でバックエンド API のアプリケーション設定を管理する方法について説明します。
-
-この記事で説明しているアプリケーション設定は、静的 Web アプリケーションでは使用および参照できません。 ただし、多くのフロントエンド フレームワークおよび静的サイト ジェネレーターでは、開発時に環境変数を使用できます。 これらの変数は、ビルド時に、生成された HTML または JavaScript で値に置き換えられます。 HTML および JavaScript のデータはサイト訪問者が簡単に検出できるため、フロントエンド アプリケーションには機密情報を入れないようにしてください。 機密データを保持する設定は、アプリケーションの API 部分に配置することをお勧めします。
-
-JavaScript フレームワークまたはライブラリで環境変数を使用する方法の詳細については、次の記事を参照してください。
-
-### <a name="javascript-frameworks-and-libraries"></a>リンクされた JavaScript フレームワークとライブラリ
-
-- [Angular](https://angular.io/guide/build#configuring-application-environments)
-- [React](https://create-react-app.dev/docs/adding-custom-environment-variables/)
-- [Svelte](https://linguinecode.com/post/how-to-add-environment-variables-to-your-svelte-js-app)
-- [Vue](https://cli.vuejs.org/guide/mode-and-env.html)
-
-### <a name="static-site-generators"></a>静的サイト ジェネレーター
-
-- [Gatsby](https://www.gatsbyjs.org/docs/environment-variables/)
-- [Hugo](https://gohugo.io/getting-started/configuration/)
-- [Jekyll](https://jekyllrb.com/docs/configuration/environments/)
-
-## <a name="about-api-app-settings"></a>API アプリケーション設定
-
-Azure Static Web Apps の API は Azure Functions の機能を利用しています。これにより、_local.settings.json_ ファイルでアプリケーション設定を定義できます。 このファイルは、構成の `Values` プロパティでアプリケーション設定を定義します。
+> [!NOTE]
+> _local.settings.json_ ファイルは、ローカル開発にのみ使用されます。 運用環境用のアプリケーション設定を構成するには、[Azure portal](https://portal.azure.com) を使用します。
 
 次のサンプル _local.settings.json_ は、`DATABASE_CONNECTION_STRING` の値を追加する方法を示しています。
 
@@ -76,21 +57,21 @@ Azure Static Web Apps の API は Azure Functions の機能を利用していま
 }
 ```
 
-`Values` プロパティに定義された設定は、`process.env` オブジェクトから使用できる環境変数としてコードから参照できます。
+`Values` プロパティで定義されている設定は、環境変数としてコードから参照できます。 たとえば Node.js 関数では、`process.env` オブジェクトで使用できます。
 
 ```js
 const connectionString = process.env.DATABASE_CONNECTION_STRING;
 ```
 
-`local.settings.json` ファイルは GitHub リポジトリで追跡されていません。このファイルには、データベース接続文字列などの機密情報が含まれていることが多いためです。 ローカル設定はマシン上に残っているため、設定を手動で Azure にアップロードする必要があります。
+`local.settings.json` ファイルは GitHub リポジトリで追跡されていません。このファイルには、データベース接続文字列などの機密情報が含まれていることが多いためです。 ローカル設定はコンピューター上に残っているため、Azure では設定を手動で構成する必要があります。
 
-一般に、設定のアップロードは頻繁には行われず、毎回のビルドで必要となるわけではありません。
+一般に、設定の構成は頻繁には行われず、ビルドのたびに行う必要はありません。
 
-## <a name="uploading-application-settings"></a>アプリケーション設定のアップロード
+## <a name="configure-application-settings"></a>アプリケーション設定の構成
 
 アプリケーション設定を構成するには、Azure portal または Azure CLI を使用します。
 
-### <a name="using-the-azure-portal"></a>Azure ポータルの使用
+### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
 Azure portal には、アプリケーション設定を作成、更新、および削除するためのインターフェイスが用意されています。
 
@@ -112,7 +93,7 @@ Azure portal には、アプリケーション設定を作成、更新、およ�
 
 1. **[保存]** をクリックします。
 
-### <a name="using-the-azure-cli"></a>Azure CLI の使用
+### <a name="use-the-azure-cli"></a>Azure CLI の使用
 
 `az rest` コマンドを使用すると、設定を Azure に一括アップロードできます。 このコマンドは、`properties` という親プロパティで JSON オブジェクトとしてアプリケーション設定を受け入れます。
 
@@ -124,9 +105,9 @@ Azure portal には、アプリケーション設定を作成、更新、およ�
    local.settings*.json
    ```
 
-2. 次に、_local.settings.json_ ファイルのコピーを作成して、_local.settings.properties.json_ という名前を付けます。
+1. 次に、_local.settings.json_ ファイルのコピーを作成して、_local.settings.properties.json_ という名前を付けます。
 
-3. この新しいファイル内で、アプリケーション設定を除く他のすべてのデータをファイルから削除し、名前を `Values` から `properties` に変更します。
+1. この新しいファイル内で、アプリケーション設定を除く他のすべてのデータをファイルから削除し、名前を `Values` から `properties` に変更します。
 
    これで、ファイルは次の例のようになります。
 
@@ -138,31 +119,31 @@ Azure portal には、アプリケーション設定を作成、更新、およ�
    }
    ```
 
-Azure CLI コマンドには、アップロードを実行するために、アカウントに固有の多数の値が必要です。 Static Web Apps リソースの _[Overview]\(概要\)_ ウィンドウから、次の情報にアクセスできます。
+1. 次のコマンドを実行して、サブスクリプション内の静的 Web アプリの一覧と、それらの詳細を表示します。
 
-1. 静的サイトの名前
-2. リソース グループ名
-3. サブスクリプション ID
+    ```bash
+    az staticwebapp list -o json
+    ```
 
-:::image type="content" source="media/application-settings/overview.png" alt-text="Azure Static Web Apps の概要":::
+    構成する静的 Web アプリを見つけて、その ID を記録します。
 
-4. ターミナルまたはコマンド ラインから、次のコマンドを実行します。 `<YOUR_STATIC_SITE_NAME>`、`<YOUR_RESOURCE_GROUP_NAME>`、および `<YOUR_SUBSCRIPTION_ID>` のプレースホルダーは、必ず _[Overview]\(概要\)_ ウィンドウの値に置き換えてください。
+1. ターミナルまたはコマンド ラインから次のコマンドを実行して、設定をアップロードします。 `<YOUR_APP_ID>` を、前のステップで取得したアプリの ID に置き換えます。
 
    ```bash
-   az rest --method put --headers "Content-Type=application/json" --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/config/functionappsettings?api-version=2019-12-01-preview" --body @local.settings.properties.json
+   az rest --method put --headers "Content-Type=application/json" --uri "<YOUR_APP_ID>/config/functionappsettings?api-version=2019-12-01-preview" --body @local.settings.properties.json
    ```
 
-> [!IMPORTANT]
-> "local.settings.properties.json" ファイルは、このコマンドを実行するのと同じディレクトリに置かれている必要があります。 このファイルには任意の名前を付けることができます。 この名前は重要ではありません。
+  > [!IMPORTANT]
+  > "local.settings.properties.json" ファイルは、このコマンドを実行するのと同じディレクトリに置かれている必要があります。 このファイルには任意の名前を付けることができます。 この名前は重要ではありません。
 
 ### <a name="view-application-settings-with-the-azure-cli"></a>Azure CLI を使用してアプリケーション設定を表示する
 
 アプリケーション設定は、Azure CLI を使用して表示できます。
 
-- ターミナルまたはコマンド ラインから、次のコマンドを実行します。 `<YOUR_SUBSCRIPTION_ID>`、`<YOUR_RESOURCE_GROUP_NAME>`、`<YOUR_STATIC_SITE_NAME>` のプレースホルダーは必ず、実際の値に置き換えてください。
+- ターミナルまたはコマンド ラインから、次のコマンドを実行します。 プレースホルダー `<YOUR_APP_ID>` は、必ず実際の値に置き換えてください。
 
    ```bash
-   az rest --method post --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/listFunctionAppSettings?api-version=2019-12-01-preview"
+   az rest --method post --uri "<YOUR_APP_ID>/listFunctionAppSettings?api-version=2019-12-01-preview"
    ```
 
 ## <a name="next-steps"></a>次のステップ

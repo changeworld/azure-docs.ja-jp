@@ -1,18 +1,19 @@
 ---
 title: REST API で Azure エンタープライズ加入契約請求データを確認する
 description: Azure REST API を使用して、エンタープライズ加入契約の課金情報を確認する方法を説明します。
-author: lleonard-msft
+author: bandersmsft
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: article
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 777c8549d79f820c1847e711969919df128cebd3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 23c7b078b54d050aa687fe4bdb08fa908c13ed48
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132416"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464758"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>REST API を使用してエンタープライズ加入契約の請求書を確認する
 

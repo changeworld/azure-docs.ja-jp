@@ -4,15 +4,16 @@ description: Azure Data Factory を使用してオンプレミスの Netezza サ
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 36ca7b709e0ec945f1fb4a9a8b745d20e6a58fe1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09c4f136d0c3a2e8ed0d2ea47dd23504a434a94e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100367777"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208072"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Azure Data Factory を使用してオンプレミスの Netezza サーバーから Azure にデータを移行する 
 
@@ -33,7 +34,7 @@ Azure Data Factory には、オンプレミスの Netezza サーバーから Azu
 
 Azure Data Factory は、さまざまなレベルで並列処理を可能にするサーバーレス アーキテクチャを提供します。 開発者は、パイプラインを構築することでネットワークとデータベースの両方の帯域幅を余すことなく使用し、環境内でのデータ移動のスループットを最大化することができます。
 
-![パフォーマンスの図](media/data-migration-guidance-netezza-azure-sqldw/performance.png)
+:::image type="content" source="media/data-migration-guidance-netezza-azure-sqldw/performance.png" alt-text="パフォーマンスの図":::
 
 上の図は、次のように解釈できます。
 
@@ -65,7 +66,7 @@ Azure Data Factory のコピー アクティビティでは、ソースとシン
 
 ### <a name="migrate-data-over-the-public-internet"></a>パブリック インターネット経由でデータを移行する
 
-![パブリック インターネット経由でデータを移行する](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png)
+:::image type="content" source="media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png" alt-text="パブリック インターネット経由でデータを移行する":::
 
 上の図は、次のように解釈できます。
 
@@ -77,7 +78,7 @@ Azure Data Factory のコピー アクティビティでは、ソースとシン
 
 ### <a name="migrate-data-over-a-private-network"></a>プライベート ネットワーク経由でデータを移行する 
 
-![プライベート ネットワーク経由でデータを移行する](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png)
+:::image type="content" source="media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png" alt-text="プライベート ネットワーク経由でデータを移行する":::
 
 上の図は、次のように解釈できます。
 
@@ -111,7 +112,7 @@ Azure Data Factory のコピー アクティビティでは、ソースとシン
    
    - また、[サービス プリンシパル](./connector-azure-sql-data-warehouse.md#service-principal-authentication)または [SQL 認証](./connector-azure-sql-data-warehouse.md#sql-authentication)を使用することもできます。
 
-- Azure リソースのマネージド ID を使用しない場合は、簡単にするために、[Azure Key Vault に資格情報を格納](./store-credentials-in-key-vault.md)して、Azure Data Factory のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。 これは、[CI/CD のベスト プラクティス](./continuous-integration-deployment.md#best-practices-for-cicd)の1 つでもあります。 
+- Azure リソースのマネージド ID を使用しない場合は、簡単にするために、[Azure Key Vault に資格情報を格納](./store-credentials-in-key-vault.md)して、Azure Data Factory のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。 これは、[CI/CD のベスト プラクティス](./continuous-integration-delivery.md#best-practices-for-cicd)の1 つでもあります。 
 
 ### <a name="migrate-initial-snapshot-data"></a>初回のスナップショット データ移行 
 
@@ -160,7 +161,7 @@ Azure Data Factory のコピー アクティビティによって報告された
 
 オンプレミスの Netezza サーバーから Azure Synapse Analytics データベースにデータを移行するために構築されている、次のパイプラインについて検討します。
 
-![価格パイプライン](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
+:::image type="content" source="media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png" alt-text="価格パイプライン":::
 
 以下のことがわかると仮定します。 
 
@@ -178,7 +179,7 @@ Azure Data Factory のコピー アクティビティによって報告された
 
 上記の前提条件に基づき、見積もり価格は次のようになります。 
 
-![価格テーブル](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
+:::image type="content" source="media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png" alt-text="価格テーブル":::
 
 > [!NOTE]
 > 上記の価格は仮定です。 実際の料金は、環境の実際のスループットによって変わります。 (セルフホステッド IR がインストールされている) Windows マシンの料金は含まれていません。 

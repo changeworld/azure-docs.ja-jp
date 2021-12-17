@@ -96,7 +96,7 @@ Transform は、REST、CLI、または公開されている任意の SDK を使�
 ## <a name="see-also"></a>関連項目
 
 * [エラー コード](/rest/api/media/jobs/get#joberrorcode)
-* [Media Services エンティティのフィルター処理、順序付け、ページング](filter-order-page-entitites-how-to.md)
+* [Media Services エンティティのフィルター処理、順序付け、ページング](filter-order-page-entities-how-to.md)
 
 ## <a name="next-steps"></a>次のステップ
 

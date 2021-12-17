@@ -4,19 +4,19 @@ description: 関数アプリをデプロイする Azure Resource Manager テン�
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 9df4c62a65fd133c6ea8dc84e33d7c7b02d94cbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: fasttrack-edit, devx-track-azurepowershell
+ms.openlocfilehash: d1e60dd683ed062937995eab203f79ec30a11d0c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99494041"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440110"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
-Azure Resource Manager テンプレートを使用して、関数アプリをデプロイできます。 この記事では、これを行う際に必要なリソースとパラメーターについて説明します。 関数アプリの[トリガーとバインド](functions-triggers-bindings.md)によっては、追加のリソースのデプロイが必要になる可能性があります。
+Azure Resource Manager テンプレートを使用して、関数アプリをデプロイできます。 この記事では、これを行う際に必要なリソースとパラメーターについて説明します。 関数アプリの[トリガーとバインド](functions-triggers-bindings.md)によっては、その他のリソースのデプロイが必要になる可能性があります。
 
-テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)」を参照してください。
+テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/templates/syntax.md)」を参照してください。
 
 サンプル テンプレートについては、以下を参照してください。
 - [従量課金プランの関数アプリ]
@@ -56,7 +56,7 @@ Azure Functions のデプロイは通常、次のリソースで構成されて�
 }
 ```
 
-さらに、`AzureWebJobsStorage` プロパティを、サイト構成でアプリ設定として指定する必要があります。 関数アプリで監視に Application Insights を使用していない場合は、`AzureWebJobsDashboard` もアプリ設定として指定する必要があります。
+また、 `AzureWebJobsStorage` プロパティをサイト構成のアプリ設定として指定する必要があります。 関数アプリで監視に Application Insights を使用していない場合は、`AzureWebJobsDashboard` もアプリ設定として指定する必要があります。
 
 `AzureWebJobsStorage` 接続文字列は、Azure Functions ランタイムが内部キューを作成するときに使用します。  Application Insights が有効でない場合、ランタイムでは `AzureWebJobsDashboard` 接続文字列を使用して、Azure Table Storage にログを記録し、ポータルの **[監視]** タブをオンにします。
 
@@ -186,16 +186,16 @@ Azure Resource Manager テンプレートのサンプルについては、[従�
 従量課金プランは、特殊なタイプの "serverfarm" リソースです。 Windows では、`computeMode` および `sku` プロパティに `Dynamic` 値を使用して指定できます。
 
 ```json
-{  
+{
    "type":"Microsoft.Web/serverfarms",
    "apiVersion":"2016-09-01",
    "name":"[variables('hostingPlanName')]",
    "location":"[resourceGroup().location]",
-   "properties":{  
+   "properties":{
       "name":"[variables('hostingPlanName')]",
       "computeMode":"Dynamic"
    },
-   "sku":{  
+   "sku":{
       "name":"Y1",
       "tier":"Dynamic",
       "size":"Y1",
@@ -212,11 +212,11 @@ Azure Resource Manager テンプレートのサンプルについては、[従�
 
 ### <a name="create-a-function-app"></a>Function App を作成する
 
-従量課金プランで実行されている関数アプリに必要な設定は、Windows と Linux の間で異なります。 
+従量課金プランで実行されている関数アプリに必要な設定は、Windows と Linux の間で異なります。
 
 #### <a name="windows"></a>Windows
 
-Windows の場合、従量課金プランでは、サイト構成に追加の設定 [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) が必要です。 このプロパティによって、関数アプリのコードと構成が格納されているストレージ アカウントが構成されます。
+Windows の場合、従量課金プランでは、サイト構成にその他の設定 ([`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring)) が必要です。 このプロパティによって、関数アプリのコードと構成が格納されているストレージ アカウントが構成されます。
 
 ```json
 {
@@ -258,11 +258,11 @@ Windows の場合、従量課金プランでは、サイト構成に追加の設
 ```
 
 > [!IMPORTANT]
-> [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 設定は、サイトが最初に作成されるときに生成されるため、設定しないでください。  
+> デプロイ スロットで [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 設定を行わないでください。 この設定は、アプリがデプロイ スロットで作成されると自動的に生成されます。
 
 #### <a name="linux"></a>Linux
 
-Linux の場合、関数アプリは `kind` が `functionapp,linux` に設定され、`reserved` プロパティが `true` に設定されている必要があります。 
+Linux の場合、関数アプリは `kind` が `functionapp,linux` に設定され、`reserved` プロパティが `true` に設定されている必要があります。
 
 ```json
 {
@@ -305,7 +305,7 @@ Linux の場合、関数アプリは `kind` が `functionapp,linux` に設定さ
 <a name="premium"></a>
 ## <a name="deploy-on-premium-plan"></a>Premium プランでデプロイする
 
-Premium プランでは、従量課金プランと同じスケーリングが提供されますが、専用リソースと追加の機能が含まれています。 詳細については、「[Azure Functions の Premium プラン](./functions-premium-plan.md)」を参照してください。
+Premium プランでは、従量課金プランと同じスケーリングが提供されますが、専用リソースとその他の機能が含まれています。 詳細については、「[Azure Functions の Premium プラン](./functions-premium-plan.md)」を参照してください。
 
 ### <a name="create-a-premium-plan"></a>Premium プランを作成する
 
@@ -334,7 +334,7 @@ Premium プランは、特殊なタイプの "serverfarm" リソースです。 
 
 ### <a name="create-a-function-app"></a>Function App を作成する
 
-Premium プランでの関数アプリは、`serverFarmId` プロパティが、前に作成されたプランのリソース ID に設定されている必要があります。 さらに、Premium プランでは、サイト構成に追加の設定 [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) が必要です。 このプロパティによって、関数アプリのコードと構成が格納されているストレージ アカウントが構成されます。
+Premium プランでの関数アプリは、`serverFarmId` プロパティが、前に作成されたプランのリソース ID に設定されている必要があります。 さらに、Premium プランでは、サイト構成にその他の設定 ([`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring)) が必要です。 このプロパティによって、関数アプリのコードと構成が格納されているストレージ アカウントが構成されます。
 
 ```json
 {
@@ -342,7 +342,7 @@ Premium プランでの関数アプリは、`serverFarmId` プロパティが、
     "type": "Microsoft.Web/sites",
     "name": "[variables('functionAppName')]",
     "location": "[resourceGroup().location]",
-    "kind": "functionapp",            
+    "kind": "functionapp",
     "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
@@ -377,7 +377,7 @@ Premium プランでの関数アプリは、`serverFarmId` プロパティが、
 }
 ```
 > [!IMPORTANT]
-> [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 設定は、サイトが最初に作成されるときに生成されるため、設定しないでください。  
+> [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 設定は、サイトが最初に作成されるときに生成されるため、設定しないでください。
 
 <a name="app-service-plan"></a>
 
@@ -569,6 +569,109 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
 }
 ```
 
+## <a name="deploy-to-azure-arc"></a>Azure Arc にデプロイ
+
+Azure Functions は、[Azure Arc 対応 Kubernetes](../app-service/overview-arc-integration.md) にデプロイできます。 このプロセスは、主に「[deploying to an App Service plan](#deploy-on-app-service-plan)」\ (App Service プランへのデプロイ\) に従いますが、いくつかの違いがあります。
+
+アプリを作成し、リソースを計画するには、Azure Arc 対応 Kubernetes クラスター用の [App Service Kubernetes 環境](../app-service/manage-create-arc-environment.md) をあらかじめ作成しておく必要があります。 これらの例では、デプロイ先のカスタムの場所と App Service Kubernetes 環境のリソース ID があることを前提としています。 ほとんどのテンプレートでは、これらをパラメーターとして指定できます。
+
+```json
+{
+    "parameters": {
+        "kubeEnvironmentId" : {
+            "type": "string"
+        },
+        "customLocationId" : {
+            "type": "string"
+        }
+    }
+}
+```
+
+サイトとプランの両方で、`extendedLocation` フィールドを使用してカスタムの場所を参照する必要があります。 このブロックは、`properties` の外部にあり、`kind`と `location` をピアリングします。
+
+```json
+{
+    "extendedLocation": {
+        "type": "customlocation",
+        "name": "[parameters('customLocationId')]"
+    },
+}
+```
+
+プラン リソースは Kubernetes (K1) SKU を使用する必要があり、その `kind` フィールドは「linux, Kubernetes」である必要があります。 `properties` 内で `reserved` は "true" である必要があり、`kubeEnvironmentProfile.id` は App Service KUBERNETES 環境リソース ID に設定する必要があります。 サンプル プランは、次のようになります。
+
+```json
+{
+    "type": "Microsoft.Web/serverfarms",
+    "name": "[variables('hostingPlanName')]",
+    "location": "[parameters('location')]",
+    "apiVersion": "2020-12-01",
+    "kind": "linux,kubernetes",
+    "sku": {
+        "name": "K1",
+        "tier": "Kubernetes"
+    },
+    "extendedLocation": {
+        "type": "customlocation",
+        "name": "[parameters('customLocationId')]"
+    },
+    "properties": {
+        "name": "[variables('hostingPlanName')]",
+        "location": "[parameters('location')]",
+        "workerSizeId": "0",
+        "numberOfWorkers": "1",
+        "kubeEnvironmentProfile": {
+            "id": "[parameters('kubeEnvironmentId')]"
+        },
+        "reserved": true
+    }
+}
+```
+
+関数アプリ リソースの `kind` フィールドは、コードまたはコンテナーを使用して配置するかどうかによって、"functionapp, linux, kubernetes" または "functionapp, linux, kubernetes, container" に設定されている必要があります。 たとえば、関数アプリは次のようになります。
+
+```json
+ {
+    "apiVersion": "2018-11-01",
+    "type": "Microsoft.Web/sites",
+    "name": "[variables('appName')]",
+    "kind": "kubernetes,functionapp,linux,container",
+    "location": "[parameters('location')]",
+    "extendedLocation": {
+        "type": "customlocation",
+        "name": "[parameters('customLocationId')]"
+    },
+    "dependsOn": [
+        "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+        "[variables('hostingPlanId')]"
+    ],
+    "properties": {
+        "serverFarmId": "[variables('hostingPlanId')]",
+        "siteConfig": {
+            "linuxFxVersion": "DOCKER|mcr.microsoft.com/azure-functions/dotnet:3.0-appservice-quickstart",
+            "appSettings": [
+                {
+                    "name": "FUNCTIONS_EXTENSION_VERSION",
+                    "value": "~3"
+                },
+                {
+                    "name": "AzureWebJobsStorage",
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+
+                },
+                {
+                    "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                    "value": "[reference(resourceId('microsoft.insights/components/', variables('appInsightsName')), '2015-05-01').InstrumentationKey]"
+                }
+            ],
+            "alwaysOn": true
+        }
+    }
+}
+```
+
 ## <a name="customizing-a-deployment"></a>デプロイのカスタマイズ
 
 関数アプリには、アプリ設定オプション、ソース管理オプションなど、デプロイで使用できる子リソースが多数含まれます。 **sourcecontrols** 子リソースを削除して、別の [デプロイ オプション](functions-continuous-deployment.md)を代わりに使用することもできます。
@@ -684,7 +787,7 @@ $TemplateParams = @{"appName" = "<function-app-name>"}
 New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
 ```
 
-このデプロイをテストするには、従量課金プランで Windows 上に関数アプリを作成する[このようなテンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json)を使用できます。 `<function-app-name>` は、関数アプリの一意の名前に置き換えてください。
+このデプロイをテストするには、従量課金プランで Windows 上に関数アプリを作成する[このようなテンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.web/function-app-create-dynamic/azuredeploy.json)を使用できます。 `<function-app-name>` は、関数アプリの一意の名前に置き換えてください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -696,5 +799,5 @@ Azure Functions を開発および構成する方法について学習します�
 
 <!-- LINKS -->
 
-[従量課金プランの関数アプリ]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic/azuredeploy.json
-[Azure App Service プランの関数アプリ]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json
+[従量課金プランの関数アプリ]: https://azure.microsoft.com/resources/templates/function-app-create-dynamic/
+[Azure App Service プランの関数アプリ]: https://azure.microsoft.com/resources/templates/function-app-create-dedicated/

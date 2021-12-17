@@ -1,6 +1,6 @@
 ---
-title: Microsoft パートナー センターでコンサルティング サービスの価格と提供地域を構成する方法
-description: パートナー センターを使用して、Microsoft コマーシャル マーケットプレースのコンサルティング サービス プランの、価格の詳細と提供地域を構成する方法について説明します。
+title: コマーシャル マーケットプレースのコンサルティング サービスの価格と提供地域を構成する
+description: パートナー センターを使用して、Microsoft コマーシャル マーケットプレースのコンサルティング サービス プランの、価格の詳細と提供地域を構成します。
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: 6b386238bd759714bc0c8ad81d67c29aa1774aba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf6290632a1c9d78265961ccaa47b25fc1734a1b
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96780231"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065960"
 ---
-# <a name="how-to-configure-your-consulting-service-pricing-and-availability"></a>コンサルティング サービスの価格と提供地域を構成する方法
+# <a name="configure-consulting-service-offer-pricing-and-availability"></a>コンサルティング サービス プランの価格と提供地域を構成する
 
 この記事では、Microsoft コマーシャル マーケットプレースのコンサルティング サービス プランの市場提供状況と価格の詳細を定義する方法について説明します。
 

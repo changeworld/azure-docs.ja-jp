@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: garyericson
 ms.author: garye
-ms.reviewer: sstein, davidph
+ms.reviewer: mathoma, davidph
 manager: cgronlun
 ms.date: 03/17/2021
-ms.openlocfilehash: b5ad439a8e10fa9aa44e477ca35f45d65ae40803
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77637dc90bff07c96526fda421e872fc702f0ad9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599546"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751219"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL Managed Instance と SQL Server の Machine Learning Services の主な違い
 
-この記事では、[Azure SQL Managed Instance の Machine Learning Services](machine-learning-services-overview.md) と [SQL Server Machine の Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) の主な違いについて説明します。
+この記事では、[Azure SQL Managed Instance の Machine Learning Services](machine-learning-services-overview.md) と [SQL Server Machine の Learning Services](/sql/advanced-analytics/what-is-sql-server-machine-learning) の主な違いについて説明します。
 
 ## <a name="language-support"></a>言語のサポート
 
@@ -44,8 +44,8 @@ SQL Managed Instance では、外部ランタイム (Java など) に依存す�
 
 Python および R パッケージの管理の詳細については、以下を参照してください。
 
-- [Python パッケージ情報の取得](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
-- [R パッケージ情報の取得](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
+- [Python パッケージ情報の取得](/sql/machine-learning/package-management/python-package-information?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current)
+- [R パッケージ情報の取得](/sql/machine-learning/package-management/r-package-information?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current)
 
 ## <a name="resource-governance"></a>リソース管理
 
@@ -67,7 +67,7 @@ sp_configure 'external scripts enabled', 0;
 RECONFIGURE WITH OVERRIDE;
 ```
 
-SQL Managed Instance で使用できるリソースの合計は、選択したサービス レベルによって異なります。 詳細については、「[Azure SQL Database purchasing models](/azure/sql-database/sql-database-service-tiers)」 (Azure SQL Database の購入モデル) を参照してください。
+SQL Managed Instance で使用できるリソースの合計は、選択したサービス レベルによって異なります。 詳細については、「[Azure SQL Database purchasing models](../database/purchasing-models.md)」 (Azure SQL Database の購入モデル) を参照してください。
 
 ### <a name="insufficient-memory-error"></a>メモリ不足エラー
 

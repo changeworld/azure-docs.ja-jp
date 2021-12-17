@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 98e0137c8e48696737cd5d8d1fd4d3de925b9f7f
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: dbc82b67206f6453101b0d6f419718b928506f79
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579770"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003856"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal での Azure Cognitive Search のサービス管理
 
@@ -73,7 +73,7 @@ Cognitive Search では、より詳細な監視と管理を行うために、他
 
 検索サービスの概要ページを開くと、ご自身のアカウントに割り当てられているアクセス許可によって、使用できるページが決まります。 この記事の冒頭にある概要ページには、管理者または共同作成者に表示されるポータル ページが示されています。
 
-Azure リソースでは、管理者権限はロールの割り当てによって付与されます。 Azure Cognitive Search のコンテキストでは、ポータル、[PowerShell](search-manage-powershell.md)、[Azure CLI](search-manage-azure-cli.md)、[管理 REST API](/rest/api/searchmanagement/search-howto-management-rest-api) のうちどれを使用しているかとは無関係に、[ロールの割り当て](search-security-rbac.md)によって、レプリカとパーティションの割り当てまたは API キーの管理を実行できるユーザーが決定されます。
+Azure リソースでは、管理者権限はロールの割り当てによって付与されます。 Azure Cognitive Search のコンテキストでは、ポータル、[PowerShell](search-manage-powershell.md)、[Azure CLI](search-manage-azure-cli.md)、[管理 REST API](/rest/api/searchmanagement) のうちどれを使用しているかとは無関係に、[ロールの割り当て](search-security-rbac.md)によって、レプリカとパーティションの割り当てまたは API キーの管理を実行できるユーザーが決定されます。
 
 > [!TIP]
 > サービス自体のプロビジョニングまたは使用停止は、Azure サブスクリプションの管理者または共同管理者が実行できます。 Azure 全体のメカニズムを使用して、サブスクリプションまたはリソースをロックし、管理者権限を持つユーザーが検索サービスを誤って、または許可なく削除しないようにすることができます。 詳細については、[リソースのロックによる予期せぬ削除の防止](../azure-resource-manager/management/lock-resources.md)に関するページを参照してください。

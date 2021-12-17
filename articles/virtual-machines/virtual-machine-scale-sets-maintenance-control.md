@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 55cbc5db534dd1b05f91a24e0104b1f2dc110547
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60922ca7b2e910c883d39a89bebcd6de3c4b4ec8
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90532961"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695751"
 ---
-# <a name="preview-maintenance-control-for-azure-virtual-machine-scale-sets"></a>プレビュー:Azure 仮想マシン スケール セットのメンテナンス コントロール 
+# <a name="maintenance-control-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのメンテナンス コントロール 
+
+**適用対象:** :heavy_check_mark: ユニフォーム スケール セット
 
 メンテナンス コントロールを使用して、仮想マシン スケール セットの[自動 OS イメージ アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)を管理します。
 
@@ -26,11 +28,6 @@ ms.locfileid: "90532961"
 - メンテナンス構成を作成します。
 - 仮想マシン スケール セットをメンテナンス構成に関連付けます。
 - OS の自動アップグレードを有効にします。
-
-> [!IMPORTANT]
-> Azure 仮想マシン スケール セットで OS イメージをアップグレードするためのメンテナンス コントロールは、現在パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 
 ## <a name="limitations"></a>制限事項
@@ -46,11 +43,11 @@ ms.locfileid: "90532961"
 次のいずれかのオプションを使用して、メンテナンス構成を作成および管理できます。
 
 - [Azure PowerShell](virtual-machine-scale-sets-maintenance-control-powershell.md)
+- [Azure CLI](virtual-machine-scale-sets-maintenance-control-cli.md)
+- [Azure Portal](virtual-machine-scale-sets-maintenance-control-portal.md)
 
 
 ## <a name="next-steps"></a>次のステップ
-
-メンテナンス コントロールと PowerShell を使用して Azure 仮想マシン スケール セットにメンテナンスを適用するタイミングを制御する方法を確認します。
 
 > [!div class="nextstepaction"]
 > [PowerShell を使用した仮想マシン スケール セットのメンテナンス管理](virtual-machine-scale-sets-maintenance-control-powershell.md)

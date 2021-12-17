@@ -3,18 +3,18 @@ title: チュートリアル:Event Hubs データをデータ ウェアハウス
 description: Azure Functions と Event Grid トリガーを使用して、Event Hubs でキャプチャされたデータを Azure Synapse Analytics に格納する方法について説明します。
 ms.topic: tutorial
 ms.date: 12/07/2020
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 7b0e471e32650490e1896bb6ea171c8223b21378
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2887cdc1b4666daf73a21a76907f80d50d345d82
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96854718"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414091"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル:ビッグ データをデータ ウェアハウスにストリーミングする
 Azure [Event Grid](overview.md) は、アプリとサービスからの通知またはイベントへの対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、これを使用すると、BLOB ストレージまたは Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーできます。 この[サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)は、Event Grid と Azure Functions を使用して、キャプチャされた Event Hubs データを BLOB ストレージから Azure Synapse Analytics (特に、専用 SQL プール) に移行する方法を示しています。
 
-[!INCLUDE [event-grid-event-hubs-functions-synapse-analytics.md](../../includes/event-grid-event-hubs-functions-synapse-analytics.md)]
+[!INCLUDE [event-grid-event-hubs-functions-synapse-analytics.md](./includes/event-grid-event-hubs-functions-synapse-analytics.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

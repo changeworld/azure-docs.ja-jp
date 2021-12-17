@@ -2,13 +2,13 @@
 title: Azure Service Bus トピック フィルター | Microsoft Docs
 description: この記事では、どのメッセージをトピックから受信するかを、フィルターを指定することによってサブスクライバーが定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: f28b26ee112b47b9782823f6c79670dee9a3f082
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/19/2021
+ms.openlocfilehash: 310393456b21c43fe6d0665fad9e2f505045253c
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651665"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867086"
 ---
 # <a name="topic-filters-and-actions"></a>トピック フィルターとアクション
 
@@ -52,7 +52,7 @@ Service Bus は、次の 3 つのフィルター条件をサポートします�
 
 ## <a name="actions"></a>Actions
 
-SQL フィルター条件を使用すると、プロパティとその値を追加、削除、または置き換えることによってメッセージに注釈を付けることができるアクションを定義できます。 アクションでは、SQL UPDATE ステートメントの構文を基にした [SQL に似た式を使用](service-bus-messaging-sql-filter.md)します。 アクションは、メッセージが照合された後にサブスクリプションへと選択される前に、メッセージに対して実行されます。 メッセージのプロパティへの変更は、サブスクリプションにコピーされたメッセージにのみ有効です。
+SQL フィルター条件を使用すると、プロパティとその値を追加、削除、または置き換えることによってメッセージに注釈を付けることができるアクションを定義できます。 アクションでは、SQL UPDATE ステートメントの構文を基にした [SQL に似た式を使用](service-bus-messaging-sql-rule-action.md)します。 アクションは、メッセージが照合された後にサブスクリプションへと選択される前に、メッセージに対して実行されます。 メッセージのプロパティへの変更は、サブスクリプションにコピーされたメッセージにのみ有効です。
 
 ## <a name="usage-patterns"></a>使用パターン
 
@@ -73,8 +73,14 @@ SQL フィルター条件を使用すると、プロパティとその値を追�
 > Azure portal で Service Bus Explorer の機能がサポートされるようになったため、サブスクリプション フィルターをポータルから作成したり編集したりすることができます。 
 
 ## <a name="next-steps"></a>次のステップ
-次のサンプルを参照してください。 
+Azure Service Bus の機能については、使用する言語のサンプルを試してみてください。 
 
-- [.NET - フィルターを使用した基本的な送信と受信のチュートリアル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
-- [.NET - トピック フィルター](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [Azure Resource Manager テンプレート](/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
+- [.NET 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Python 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-python/servicebus-samples/)
+- [JavaScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [TypeScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+
+以前の .NET および Java クライアント ライブラリのサンプルについては、以下を参照してください。
+- [.NET 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)

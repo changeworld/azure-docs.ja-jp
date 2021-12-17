@@ -9,18 +9,18 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 5f9733866e85d79bdb85b8a24d1878e1169c2479
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9666b8c9424b03c34b1ac332ef7ceb2f617c96a3
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97586042"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542298"
 ---
-# <a name="how-to-use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Synapse Studio を使用して Apache Spark アプリケーションを監視する方法
+# <a name="monitor-your-apache-spark-applications-in-synapse-studio"></a>Synapse Studio で Apache Spark アプリケーションを監視する
 
-Azure Synapse Analytics では、Spark を使用して、ワークスペース内の Spark プールでノートブック、ジョブ、その他の種類のアプリケーションを実行できます。
+Azure Synapse Analytics では、Apache Spark を使用して、ワークスペース内の Apache Spark プールでノートブック、ジョブ、およびその他の種類のアプリケーションを実行できます。
 
-この記事では、Apache Spark アプリケーションを監視する方法を説明し、最新の状態、問題、進行状況を監視できるようにします。
+この記事では、Apache Spark アプリケーションを監視する方法を説明し、最新の状態、問題、および進捗状況を監視できるようにします。
 
 ## <a name="access-apache-spark-applications-list"></a>Apache Spark アプリケーション リストにアクセスする
 

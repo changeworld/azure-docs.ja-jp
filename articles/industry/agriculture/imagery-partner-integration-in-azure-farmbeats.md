@@ -1,17 +1,16 @@
 ---
 title: 画像パートナーの統合
 description: この記事では、画像パートナーとの統合について説明します。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.custom: has-adal-ref
-ms.openlocfilehash: 1bc723892e29ccc24a7612cfbe50d4b274cdacdf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.openlocfilehash: 85dff004bdaf61297d9f88766e4cadc97f7d6b88
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183796"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624256"
 ---
 # <a name="imagery-partner-integration"></a>画像パートナーの統合
 
@@ -91,8 +90,8 @@ FarmBeats Datahub への API 呼び出しを行うときに指定する必要が
 
 **ヘッダー** | **説明と例**
 --- | ---
-Content-Type  | 要求の形式 (Content-Type: application/<format>)。 FarmBeats Datahub API の場合、形式は JSON です。 Content-Type, application/json
-承認 | API 呼び出しを行うために必要なアクセス トークンを指定します。 Authorization:Bearer <Access-Token>
+Content-Type  | 要求の形式 (Content-Type: application/\<format\>)。 FarmBeats Datahub API の場合、形式は JSON です。 Content-Type, application/json
+承認 | API 呼び出しを行うために必要なアクセス トークンを指定します。 認可: ベアラー \<Access-Token\>
 Accept  | 応答形式。 FarmBeats Datahub API の場合、形式は JSON です。 Accept: application/json
 
 
@@ -112,7 +111,7 @@ REST API 要求を行うには、次のように組み合わせます。
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>”
+"Authorization: Bearer <Access-Token>"
 ```
 
 ほとんどの GET、POST、PUT 呼び出しには、JSON 要求本文が必要です。
@@ -136,20 +135,22 @@ JSON は、任意のデータ構造をシンプルなテキストで表現する
 
 パートナーは FarmBeats Datahub に接続できる資格情報を取得した後、Translator コンポーネントで次の手順を実行します。
 
-1.  アップロードされる画像の種類に応じて、次のフィールド用に新しい拡張型を作成します。
+1. アップロードされる画像の種類に応じて、次のフィールド用に新しい拡張型を作成します。
 
-    - **Scene Source (シーン ソース)** :たとえば、drone_partner_name
-    - **Scene Type (シーンの種類)** :たとえば、drone
-    - **Scene File Type (シーン ファイルの種類)** :たとえば、chlorophyll index です
-    - **Scene File Content Type (シーン ファイルのコンテンツ タイプ)** :たとえば、image/tiff です
+   - **Scene Source (シーン ソース)** :たとえば、drone_partner_name
+   - **Scene Type (シーンの種類)** :たとえば、drone
+   - **Scene File Type (シーン ファイルの種類)** :たとえば、chlorophyll index です
+   - **Scene File Content Type (シーン ファイルのコンテンツ タイプ)** :たとえば、image/tiff です
 
-2.  /Farms API を呼び出して、Azure FarmBeats システム内からファームの一覧を取得します。
-3.  顧客がファームの一覧から 1 つのファームを選択できるようにします。
+2. /Farms API を呼び出して、Azure FarmBeats システム内からファームの一覧を取得します。
 
-    パートナー システムでは、パートナー ソフトウェア内にファームを表示し、経路の計画、ドローンの飛行、画像の収集を行う必要があります。
+3. 顧客がファームの一覧から 1 つのファームを選択できるようにします。
 
-4.  /Scene API を呼び出し、一意のシーン ID を持つ新しいシーンを作成するために必要な詳細情報を提供します。
-5.  BLOB SAS URL を受け取り、必要な画像を FarmBeats Datahub にアップロードし、選択したファームのコンテキストで FarmBeats システムにアップロードします。
+   パートナー システムでは、パートナー ソフトウェア内にファームを表示し、経路の計画、ドローンの飛行、画像の収集を行う必要があります。
+
+4. /Scene API を呼び出し、一意のシーン ID を持つ新しいシーンを作成するために必要な詳細情報を提供します。
+
+5. BLOB SAS URL を受け取り、必要な画像を FarmBeats Datahub にアップロードし、選択したファームのコンテキストで FarmBeats システムにアップロードします。
 
 API 呼び出しの詳細なフローを次に示します。
 

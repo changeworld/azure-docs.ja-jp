@@ -2,17 +2,17 @@
 title: ルール エンジンを使用して Standard Azure CDN で HTTPS を強制する | Microsoft Docs
 description: Microsoft Standard Azure Content Delivery Network (Azure CDN) に対するルール エンジンを使用して、特定種類のコンテンツの配信ブロック、キャッシュ ポリシーの定義、HTTP ヘッダーの変更など、Azure CDN による HTTP 要求の処理方法をカスタマイズします。 この記事では、ユーザーを HTTPS にリダイレクトするルールを作成する方法について説明します。
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 11/01/2019
-ms.author: allensu
-ms.openlocfilehash: b94798580b2d4ba746c152486c0de753cf64d2c9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: duau
+ms.openlocfilehash: 7e3215c82acf476d84c58a6c6fb2bc4eeac13d99
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564902"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426432"
 ---
 # <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN に対する Standard ルール エンジンを設定する
 

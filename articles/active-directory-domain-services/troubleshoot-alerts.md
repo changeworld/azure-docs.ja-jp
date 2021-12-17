@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/09/2020
+ms.date: 06/07/2021
 ms.author: justinha
-ms.openlocfilehash: 4caf804a274956556d6e9ca396c8f08594b11a87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8ed66f1c6a7b52015778239e1d8afc2af2f6d06
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092879"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744757"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services での一般的なアラートと解決策
 
@@ -138,7 +138,8 @@ Azure AD DS では、パブリック IP アドレス、仮想ネットワーク 
 1. 正常性ページで、ID *AADDS109* のアラートを選択します。
 1. アラートには、最初に検出されたときのタイムスタンプがあります。 そのタイムスタンプから 4 時間未満の場合、Azure プラットフォームは、リソースを自動的に再作成して、それ自体でアラートを解決できる可能性があります。
 
-    アラートが 4 時間以上前のものである場合は、マネージド ドメインは回復不可能な状態にあります。 [マネージド ドメインを削除](delete-aadds.md)してから、[代替マネージド ドメインを作成します](tutorial-create-instance.md)。
+    さまざまな理由により、アラートが 4 時間を経過している場合もあります。 その場合は、[マネージド ドメインを削除](delete-aadds.md)してから[代替のマネージド ドメインを作成](tutorial-create-instance.md)して直ちに修正するか、インスタンスを修正するためのサポート リクエストを開くことができます。 問題の性質によっては、サポートでバックアップからの復元を必要とする場合もあります。
+
 
 ## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110:マネージド ドメインに関連付けられているサブネットが満杯
 

@@ -1,0 +1,53 @@
+- name: Azure Certified Device のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Certified Device プログラムとは
+      href: overview.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: 1 - 適切な認定を選択する
+      href: tutorial-00-selecting-your-certification.md
+    - name: 2 - プロジェクトを作成する
+      href: tutorial-01-creating-your-project.md
+    - name: 3 - デバイスの詳細を追加する
+      href: tutorial-02-adding-device-details.md
+    - name: 4 - デバイスをテストする
+      href: tutorial-03-testing-your-device.md
+    - name: 5 - デバイスを公開する
+      href: tutorial-04-publishing-your-device.md
+- name: プログラムの要件
+  items:
+    - name: Azure Certified Device
+      href: program-requirements-azure-certified-device.md
+    - name: IoT プラグ アンド プレイ
+      href: program-requirements-pnp.md
+    - name: Edge Managed
+      href: program-requirements-edge-managed.md
+    - name: Edge Secured-Core (プレビュー)
+      href: program-requirements-edge-secured-core.md
+- name: 概念
+  items:
+    - name: レガシ デバイス
+      href: concepts-legacy.md
+    - name: マーケティングの概念
+      href: concepts-marketing.md
+    - name: ソフトウェアのレベル
+      href: how-to-software-levels.md
+- name: 操作方法ガイド
+  items:
+    - name: 公開済みのデバイスを編集する方法
+      href: how-to-edit-published-device.md
+    - name: 間接的に接続されたデバイスを認定する方法
+      href: how-to-indirectly-connected-devices.md
+    - name: IoT プラグ アンド プレイ デバイスをトラブルシューティングする方法
+      href: how-to-troubleshoot-pnp.md
+    - name: コンポーネントの機能を使用する方法
+      href: how-to-using-the-components-feature.md
+- name: リソース
+  items:
+    - name: 認定の用語集
+      href: resources-glossary.md
+    - name: MPN/Microsoft Partner Network サポート
+      href: /partner-center/

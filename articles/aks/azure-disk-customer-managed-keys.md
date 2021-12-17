@@ -4,12 +4,12 @@ description: 独自のキー (BYOK) を使用して AKS OS ディスクとデー
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: c5c555d7eb5142f5f41f65b24f754c65450a2713
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6007294476321e1155219aae0664732ee4f921e0
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776193"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476248"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Azure ディスクに独自のキー (BYOK) を使用する
 
@@ -17,7 +17,7 @@ Azure Storage は、保存されているストレージ アカウント内の�
 
 ## <a name="limitations"></a>制限事項
 * データ ディスク暗号化サポートは、Kubernetes バージョン 1.17 以上を実行している AKS クラスターに制限されます。
-* カスタマー マネージド キーによる OS とデータ ディスクの暗号化は、AKS クラスターの作成時にのみ、有効にできます。
+* カスタマー マネージド キーによる OS ディスクの暗号化は、AKS クラスターの作成時にのみ、有効にできます。
 
 ## <a name="prerequisites"></a>前提条件
 * Key Vault を使用してマネージド ディスクを暗号化する場合、*Azure Key Vault* の論理的な削除と消去保護を有効にする必要があります。

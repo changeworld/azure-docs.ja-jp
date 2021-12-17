@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 03/30/2018
-ms.openlocfilehash: bdbbc4c421b83fd041c7d900fb0edd01c4d636e0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 19520e2eeb65ca6cce77e913534fb2c82020c49f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785093"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245666"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -27,7 +27,7 @@ Azure 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の�
 
 - Linux 用の DSC 拡張機能を使って、VM に PowerShell Desired State Configuration を適用します。 詳細については、「[Azure Desired State configuration extension](https://github.com/Azure/azure-linux-extensions/tree/master/DSC)」(Azure Desired State Configuration 拡張機能) を参照してください。
 - Microsoft Monitoring Agent の VM 拡張機能を使用して VM の監視を構成します。 詳細については、[Linux VM の監視方法](/previous-versions/azure/virtual-machines/linux/tutorial-monitor)に関する記事を参照してください。
-- Chef または Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳細については、[Chef のドキュメント](https://docs.chef.io/azure_portal.html)または [Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
+- Chef または Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳細については、[Chef のドキュメント](https://docs.chef.io/)または [Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 
 プロセス固有の拡張機能のほか、カスタム スクリプト拡張機能を Windows と Linux の両方の仮想マシンで使用できます。 Linux 用カスタム スクリプト拡張機能では、VM で実行する任意の Bash スクリプトを使用できます。 カスタム スクリプトは、ネイティブの Azure ツールが提供可能な構成以上の構成を必要とする Azure のデプロイを設計する場合に役立ちます。 詳細については、[Linux VM カスタム スクリプト拡張機能](custom-script-linux.md)に関するページを参照してください。
 
@@ -82,11 +82,11 @@ Azure VM 拡張機能は既存の VM で実行できます。これは、構成�
 [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) コマンドにより、Azure VM 拡張機能を既存の VM に対して実行できます。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して Custom Script 拡張機能を実行します。 例のリソース グループ名、VM 名、および実行するスクリプト (https:\//raw.githubusercontent.com/me/project/hello.sh) を実際の情報に置き換えます。 
 
 ```azurecli
-az vm extension set `
-  --resource-group myResourceGroup `
-  --vm-name myVM `
-  --name customScript `
-  --publisher Microsoft.Azure.Extensions `
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name customScript \
+  --publisher Microsoft.Azure.Extensions \
   --settings '{"fileUris": ["https://raw.githubusercontent.com/me/project/hello.sh"],"commandToExecute": "./hello.sh"}'
 ```
 
@@ -210,9 +210,9 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>エージェントと拡張機能を更新する方法
 
-エージェントと拡張機能は、同じ更新メカニズムを共有します。 一部の更新プログラムでは、追加のファイアウォール規則を必要としません。
+エージェントと拡張機能は、同じ自動更新メカニズムを共有します。
 
-更新プログラムが利用できる場合で、拡張機能への変更があり、次のような他の VM モデルが変更されるときは、更新プログラムは VM にのみインストールされます。
+更新プログラムが使用可能で自動更新が有効になっている場合、拡張機能に変更が加えた後、または他の VM モデルが次のように変更された後にのみ、更新プログラムが VM にインストールされます。
 
 - データ ディスク
 - 拡張機能
@@ -221,7 +221,13 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 - VM サイズ
 - ネットワーク プロファイル
 
+> [!IMPORTANT]
+> 更新プログラムは、VM モデルに変更が適用された後にのみインストールされます。
+
 別のリージョンの VM は異なるバージョン上に搭載できるので、パブリッシャーは別のタイミングで、更新プログラムをリージョンで使用できるようにします。
+
+> [!NOTE]
+> 一部の更新プログラムでは、追加のファイアウォール規則を必要とする可能性があります。 「[ネットワーク アクセス](#network-access)」を参照してください。
 
 #### <a name="agent-updates"></a>エージェントの更新プログラム
 
@@ -257,7 +263,9 @@ Goal state agent: 2.2.18
 
 #### <a name="extension-updates"></a>拡張機能の更新プログラム
 
-拡張機能の更新プログラムが使用可能な場合、Linux エージェントではこれをダウンロードして、拡張機能をアップグレードします。 拡張機能の自動更新プログラムは、"*マイナー*" または "*修正プログラム*" のどちらかです。 拡張機能の "*マイナー*" 更新プログラムは、拡張機能をプロビジョニングするときに、選択または除外できます。 次の例では、*autoUpgradeMinorVersion": true,'* を使って、Resource Manager テンプレートのマイナー バージョンを自動でアップグレードする方法を示しています。
+拡張機能の更新プログラムが使用可能で自動更新が有効になっている場合、[VM モデルの変更](#how-do-agents-and-extensions-get-updated)が発生すると、Linux エージェントによって拡張機能がダウンロードされ、アップグレードされます。
+
+拡張機能の自動更新プログラムは、"*マイナー*" または "*修正プログラム*" のどちらかです。 拡張機能の "*マイナー*" 更新プログラムは、拡張機能をプロビジョニングするときに、選択または除外できます。 次の例では、 *"autoUpgradeMinorVersion"* : true, を使って、Resource Manager テンプレートのマイナー バージョンを自動でアップグレードする方法を示しています。
 
 ```json
     "publisher": "Microsoft.Azure.Extensions",
@@ -272,6 +280,8 @@ Goal state agent: 2.2.18
 ```
 
 最新のマイナー リリースのバグ修正プログラムを取得するには、拡張機能のデプロイで常に自動更新を選択することを強くお勧めします。 セキュリティまたは主要なバグの修正を提供する修正プログラムは、除外できません。
+
+拡張機能の自動更新を無効にした場合、またはメジャー バージョンをアップグレードする必要がある場合は、[az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) を使用してターゲット バージョンを指定します。
 
 ### <a name="how-to-identify-extension-updates"></a>拡張機能の更新プログラムを識別する方法
 

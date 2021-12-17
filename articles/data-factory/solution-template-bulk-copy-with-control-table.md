@@ -4,15 +4,16 @@ description: Azure Data Factory で、ソース テーブルのパーティシ�
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: eed7a304bdd57846cd038cc9bf9a67e8150ca505
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94f7210c05056db2ead8b1aa54d9a0d16e3d8849
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392461"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743571"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>制御テーブルを使用してデータベースから一括コピーを行う
 
@@ -66,33 +67,33 @@ Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ 
 
 2. **[データベースからの一括コピー]** テンプレートに移動します。 手順 1 で作成した外部制御テーブルへの **新しい** 接続を作成します。
 
-    ![制御テーブルへの新しい接続の作成](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png" alt-text="制御テーブルへの新しい接続の作成":::
 
 3. データのコピー元であるソース データベースへの **新しい** 接続を作成します。
 
-    ![ソース データベースへの新しい接続の作成](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png" alt-text="ソース データベースへの新しい接続の作成":::
     
 4. データのコピー先である宛先データ ストアへの **新しい** 接続を作成します。
 
-    ![宛先ストアへの新しい接続の作成](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png" alt-text="宛先ストアへの新しい接続の作成":::
 
 5. **[このテンプレートを使用]** を選択します。
 
 6. 次の例に示すように、パイプラインが表示されます。
 
-    ![パイプラインのレビュー](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png" alt-text="パイプラインのレビュー":::
 
 7. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
 
-    ![**[デバッグ]** をクリックします。](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png" alt-text="**[デバッグ]** をクリックします。":::
 
 8. 次の例のような結果が表示されます。
 
-    ![結果を確認する](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png" alt-text="結果を確認する":::
 
 9. (省略可能) データの宛先として "Azure Synapse Analytics" を選択した場合、Azure Synapse Analytics Polybase に必要であれば、ステージングのために Azure Blob Storage への接続を入力する必要があります。 テンプレートを使うと、Blob ストレージのコンテナー パスが自動的に生成されます。 パイプラインの実行後は、コンテナーが作成されているかどうかを確認します。
     
-    ![Polybase 設定](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png" alt-text="Polybase 設定":::
        
 ## <a name="next-steps"></a>次のステップ
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 2/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3bbfd200dae6ee2cf724aaf4cccf9a6883075c68
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 138918b69582b85c9d59f87ac7f8dc181c56332f
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281518"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684921"
 ---
 # <a name="create-a-thumbnail-sprite-transform"></a>サムネイル スプライト変換を作成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "106281518"
 
 [!INCLUDE [code snippet for thumbnail sprites using REST](./includes/task-create-thumb-sprites-dotnet.md)]
 
-Azure サンプルの[完全なエンコード サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESCustomPresetAndSprite/Program.cs#L261-L287)にあるサムネイル スプライトの作成方法も参照してください。
+Azure サンプルの[完全なエンコード サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/VideoEncoding/Encoding_SpriteThumbnail/Program.cs#L261-L287)にあるサムネイル スプライトの作成方法も参照してください。
 
 ---
 

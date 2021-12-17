@@ -2,24 +2,23 @@
 title: スキルセットで入力と出力を参照する
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Searchの AI エンリッチメント パイプラインでの注釈の構文と、スキルセットの入力と出力で注釈を参照する方法について説明します。
-manager: nitinme
-author: LuisCabrer
-ms.author: luisca
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/24/2021
+ms.openlocfilehash: 1da7f0cdf0ee62d4d872255ac76a99226952d76d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88935536"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210499"
 ---
-# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Azure Cognitive Searchスキルセットで注釈を参照する方法
+# <a name="reference-annotations-in-an-azure-cognitive-search-skillset"></a>Azure Cognitive Search スキルセットで注釈を参照する
 
 この記事では、さまざまなシナリオを説明する例を使用して、スキル定義で注釈を参照する方法を学習します。 ドキュメントの内容がスキルのセットを通過するにつれて、注釈が豊富になっていきます。 注釈は、ダウンストリームをさらに豊富にするための入力として使用することも、インデックスの出力フィールドにマッピングすることもできます。 
  
-この記事の例は、[Azure Blob インデクサー](search-howto-indexing-azure-blob-storage.md)によってドキュメント クラッキング フェーズの一部として自動的に生成される *content* フィールドに基づいています。 BLOB コンテナーのドキュメントを参照するときは、`"/document/content"` などの書式を使用します。ここで、*content* フィールドは *document* の一部です。 
+この記事の例は、[Azure BLOB インデクサー](search-howto-indexing-azure-blob-storage.md)によって [ドキュメント解析](search-indexer-overview.md#document-cracking)フェーズの一部として自動的に生成される *content* フィールドに基づいています。 BLOB コンテナーのドキュメントを参照するときは、`"/document/content"` などの書式を使用します。ここで、*content* フィールドは *document* の一部です。 
 
 ## <a name="background-concepts"></a>バックグラウンドの概念
 
@@ -33,13 +32,13 @@ ms.locfileid: "88935536"
 <a name="example-1"></a>
 ## <a name="example-1-simple-annotation-reference"></a>例 1: 単純な注釈参照
 
-Azure BLOB ストレージに、エンティティ認識を使用して抽出する人名への参照を含む、さまざまなファイルがあるとします。 以下のスキル定義では、`"/document/content"` はドキュメント全体のテキスト表現であり、"people" は人物として識別されるエンティティのフル ネームの抽出です。
+Azure Blob Storage に、エンティティ認識を使用して抽出する人名への参照を含む、さまざまなファイルがあるとします。 以下のスキル定義では、`"/document/content"` はドキュメント全体のテキスト表現であり、"people" は人物として識別されるエンティティのフル ネームの抽出です。
 
 既定のコンテキストは `"/document"` であるため、人の一覧は `"/document/people"` として参照できるようになりました。 この特定のケースでは、`"/document/people"` は注釈であり、インデックス内のフィールドにマップすることも、同じスキルセット内の別のスキルで使用することもできます。
 
 ```json
   {
-    "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+    "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
     "categories": [ "Person"],
     "defaultLanguageCode": "en",
     "inputs": [

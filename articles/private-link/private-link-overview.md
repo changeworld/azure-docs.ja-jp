@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/15/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 19a4c6697c161a78bfb1425009bd0b142dece876
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3fc3dbbe453ebddd03f70082ff6974fd830b380c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057237"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305826"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Private Link とは 
 Azure Private Link を使用すると、お使いの仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナー サービスにアクセスできます。
@@ -66,7 +66,7 @@ Azure Monitor で次の情報にアクセスできます。
 料金の詳細については、「[Azure Private Link の料金](https://azure.microsoft.com/pricing/details/private-link/)」をご覧ください。
  
 ## <a name="faqs"></a>FAQ  
-FAQ については、「[Azure Private Link のよくあるご質問](private-link-faq.md)」を参照してください。
+FAQ については、「[Azure Private Link のよくあるご質問](private-link-faq.yml)」を参照してください。
  
 ## <a name="limits"></a>制限  
 制限については、[Azure Private Link の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits)に関するページを参照してください。
@@ -78,3 +78,4 @@ SLA については、「[Azure Private Link の SLA](https://azure.microsoft.co
 
 - [クイック スタート: Azure portal を使用してプライベート エンドポイントを作成する](create-private-endpoint-portal.md)
 - [クイック スタート: Azure portal を使用して Private Link サービスを作成する](create-private-link-service-portal.md)
+- [Learn モジュール: Azure Private Link の概要](/learn/modules/introduction-azure-private-link/)

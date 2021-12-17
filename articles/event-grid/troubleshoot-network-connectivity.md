@@ -3,14 +3,14 @@ title: ネットワーク接続の問題のトラブルシューティング - A
 description: この記事では、Azure Event Grid でのネットワーク接続の問題のトラブルシューティングについて説明します。
 author: batrived
 ms.topic: article
-ms.date: 06/21/2020
+ms.date: 09/28/2021
 ms.author: batrived
-ms.openlocfilehash: fa119784715b8c88ef3c9f2700b2cac1cc467234
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38b3834b6c7c20e15f466b7af2fb7aa2b1780547
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96339747"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548027"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>接続に関する問題のトラブルシューティング - Azure Event Grid
 
@@ -71,7 +71,7 @@ IP ファイアウォール規則は Event Grid のトピックまたはドメ�
 
 #### <a name="find-the-ip-addresses-blocked-by-ip-firewall"></a>IP ファイアウォールによってブロックされている IP アドレスを見つける
 
-Event Grid のトピックまたはドメインの[診断ログを有効にします](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-a-custom-topic)。 拒否された接続の IP アドレスが表示されます。
+Event Grid のトピックまたはドメインの[診断ログを有効にします](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-event-grid-topics-and-event-grid-domains)。 拒否された接続の IP アドレスが表示されます。
 
 ```json
 {

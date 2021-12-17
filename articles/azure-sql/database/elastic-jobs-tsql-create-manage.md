@@ -3,22 +3,22 @@ title: Transact-SQL (T-SQL) を使用して Elastic Database ジョブ (プレ�
 description: Transact-SQL (T-SQL) を使用する Elastic Database ジョブ エージェントでは多くのデータベース間でスクリプトを実行します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: scale-out
+ms.subservice: elastic-jobs
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 dev_langs:
 - TSQL
 ms.topic: how-to
-ms.author: jaredmoo
-author: jaredmoo
-ms.reviewer: sstein
+author: srinia
+ms.author: srinia
+ms.reviewer: mathoma
 ms.date: 02/01/2021
-ms.openlocfilehash: 11b94ba5bcedf56f0115b8730dc58f808aff5c58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e755f6b62c7adb1b980fa3ba0bec268c7547788
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371602"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708803"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブ (プレビュー) を作成および管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -208,7 +208,7 @@ EXEC jobs.sp_add_jobstep
 @output_credential_name = 'job_credential',
 @output_server_name = 'server1.database.windows.net',
 @output_database_name = '<resultsdb>',
-@output_table_name = '<resutlstable>';
+@output_table_name = '<resultstable>';
 
 --Create a job to monitor pool performance
 
@@ -256,7 +256,7 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 @output_credential_name = 'job_credential',
 @output_server_name = 'server1.database.windows.net',
 @output_database_name = 'resultsdb',
-@output_table_name = 'resutlstable';
+@output_table_name = 'resultstable';
 ```
 
 ## <a name="view-job-definitions"></a>ジョブの定義を表示する

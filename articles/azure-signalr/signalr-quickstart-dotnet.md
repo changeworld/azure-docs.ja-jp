@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: c39ef505b0cea0ad0c03b81683db8441077cd0d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ac17de3f73424994fc39ef0044d17ef83b501b7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94874544"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866145"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>クイック スタート:ASP.NET と SignalR Service を使ってチャット ルームを作成する
 
@@ -29,7 +29,7 @@ ASP.NET SignalR と ASP.NET Core SignalR の機能の比較の完全なリスト
 ## <a name="prerequisites"></a>前提条件
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-* [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
+* [.NET Framework 4.6.1](https://dotnet.microsoft.com/download/dotnet-framework/net461)
 * [ASP.NET SignalR 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
 問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnet)。

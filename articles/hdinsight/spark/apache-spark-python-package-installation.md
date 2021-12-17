@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: c3f912b4f4c2e78c44425f489927cee185b3d312
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eb95c7e6cd2c76cc35556f13025505785707ed04
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868717"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597875"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
 
@@ -58,7 +58,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
     -   `anaconda` は、package_spec を anaconda として指定して、仮想環境に Anaconda パッケージをインストールします。
     
     ```bash
-    sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes
+    sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda=4.3 --yes
     ```
 
 2. 必要に応じて、作成した仮想環境に外部の Python パッケージをインストールします。 次のスクリプトを使用して、クラスターのすべてのノードでスクリプト アクションを実行して、外部の Python パッケージをインストールします。 仮想環境フォルダーにファイルを書き込むために、ここでは sudo 特権が必要です。
@@ -155,11 +155,6 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
     :::image type="content" source="./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png" alt-text="Jupyter Notebook の Python のバージョンを確認する" border="true":::
 
-## <a name="known-issue"></a>既知の問題
-
-Anaconda のバージョン `4.7.11`、`4.7.12`、`4.8.0` には既知のバグがあります。 スクリプト アクションが `"Collecting package metadata (repodata.json): ...working..."` で応答を停止し、`"Python script has been killed due to timeout after waiting 3600 secs"` で失敗した場合は、 [このスクリプト](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)をダウンロードし、すべてのノードでスクリプト アクションとして実行することで問題を解決できます。
-
-Anaconda のバージョンを確認するには、クラスターのヘッダー ノードに SSH 接続し、`/usr/bin/anaconda/bin/conda --v` を実行します。
 
 ## <a name="next-steps"></a>次のステップ
 

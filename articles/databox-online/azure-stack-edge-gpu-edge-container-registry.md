@@ -1,19 +1,18 @@
 ---
 title: Azure Stack Edge Pro GPU デバイスで Edge コンテナー レジストリを有効にする
 description: Azure Stack Edge Pro GPU デバイスで Edge コンテナー レジストリを有効にする方法について説明します。
-services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 56b691b2755b5e248b16e338f8fd82864f5bf218
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 18fa68b6d0d0922bad0a632ba10bd82a8cfe8506
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560337"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643025"
 ---
 # <a name="enable-edge-container-registry-on-your-azure-stack-edge-pro-gpu-device"></a>ご自分の Azure Stack Edge Pro GPU デバイスで Edge コンテナー レジストリを有効にする
 
@@ -59,7 +58,7 @@ Edge コンテナー レジストリによって、Azure Stack Edge Pro デバ�
     
     この操作が完了するまでに数分かかる場合があります。
 
-    このコマンドの出力例を次に示します。  
+    このコマンドの出力例を次に示します。    
             
     ```powershell
     [10.128.44.40]: PS>Set-HcsKubernetesContainerRegistry
@@ -78,9 +77,9 @@ Edge コンテナー レジストリによって、Azure Stack Edge Pro デバ�
     Endpoint                                   IPAddress    Username     Password
     --------                                   ---------    --------     --------
     ecr.dbe-hw6h1t2.microsoftdatabox.com:31001 10.128.44.41 ase-ecr-user i3eTsU4zGYyIgxV
-    ``` 
+    ```    
 
-1. `Get-HcsKubernetesContainerRegistryInfo` の出力のユーザー名とパスワードをメモしておきます。 これらの資格情報は、イメージのプッシュ中に Edge コンテナー レジストリにサインインするために使用されます。         
+1. `Get-HcsKubernetesContainerRegistryInfo` の出力のユーザー名とパスワードをメモしておきます。 これらの資格情報は、イメージのプッシュ中に Edge コンテナー レジストリにサインインするために使用されます。            
 
 
 ## <a name="manage-container-registry-images"></a>コンテナー レジストリ イメージの管理
@@ -95,7 +94,7 @@ Edge コンテナー レジストリにアクセスするには、次の手順�
         ![デバイス ページの Edge コンテナー レジストリ エンドポイント](media/azure-stack-edge-gpu-edge-container-registry/get-edge-container-registry-endpoint-1.png) 
     1. Edge コンテナー レジストリ エンドポイントに接続するには、このエンドポイントをコピーし、対応する DNS エントリをクライアントの `C:\Windows\System32\Drivers\etc\hosts` ファイルに作成します。 
 
-        <IP address of the Kubernetes main node>    <Edge container registry endpoint> 
+        \<IP address of the Kubernetes main node\>    \<Edge container registry endpoint\> 
         
         ![Edge コンテナー レジストリ エンドポイントの DNS エントリの追加](media/azure-stack-edge-gpu-edge-container-registry/add-domain-name-service-entry-hosts-1.png)    
 

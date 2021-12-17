@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 47b4f36aec9a906317a9704a7d73bf66385d9e88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae8016251926e8afab10f1bccee8f53e204c7a7a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552118"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461110"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>チュートリアル:Blazor WebAssembly アプリでユーザーのサインインを行い、保護された API を呼び出す
 
@@ -40,16 +40,18 @@ ms.locfileid: "102552118"
 認証に Azure Active Directory (Azure AD) を使用するすべてのアプリは、Azure AD に登録する必要があります。 [アプリケーションの登録](quickstart-register-app.md)に関する記事にある手順と、以下の仕様に従います。
 
 - **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
-- **[リダイレクト URI]** ドロップ ダウンは **[Web]** に設定したままにして、「`https://localhost:5001/authentication/login-callback`」と入力します。 Kestrel で実行されているアプリの既定のポートは 5001 です。 アプリが別のポートで使用可能な場合は、`5001` ではなく、そのポート番号を指定します。
+- **[リダイレクト URI]** ドロップダウンを **[シングルページ アプリケーション (SPA)]** に設定し、`https://localhost:5001/authentication/login-callback` を入力します。 Kestrel で実行されているアプリの既定のポートは 5001 です。 アプリが別のポートで使用可能な場合は、`5001` ではなく、そのポート番号を指定します。
 
 登録されたら、 **[管理]** で、 **[認証]**  >  **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** を選択します。 **[アクセス トークン]** と **[ID トークン]** を選択し、 **[保存]** を選択します。
+
+> 注: .NET 6 以降を使用している場合、暗黙的な許可を使用する必要はありません。 最新のテンプレートでは、MSAL Browser 2.0 を使用し、PKCE で Auth Code Flow をサポートしています。
 
 ## <a name="create-the-app-using-the-net-core-cli"></a>.NET Core CLI を使用してアプリを作成する
 
 アプリを作成するには、最新の Blazor テンプレートが必要です。 .NET Core CLI の場合、これらは次のコマンドを使用してインストールできます。
 
 ```dotnetcli
-dotnet new -i Microsoft.Identity.Web.ProjectTemplates::1.6.0
+dotnet new -i Microsoft.Identity.Web.ProjectTemplates::1.9.1
 ```
 
 それから、次のコマンドを実行してアプリケーションを作成します。 コマンドのプレースホルダーをアプリの [概要] ページの適切な情報に置き換え、コマンド シェルでコマンドを実行します。 `-o|--output` オプションで指定した出力場所にプロジェクト フォルダーが存在しない場合は作成されて、アプリの名前の一部になります。

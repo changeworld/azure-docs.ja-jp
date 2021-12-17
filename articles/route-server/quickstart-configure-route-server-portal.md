@@ -5,23 +5,23 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 03/03/2021
+ms.date: 09/08/2021
 ms.author: duau
-ms.openlocfilehash: f76c48af4f5ebc8013daad457f9973cf7792c7c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7dfded652c14ec6805b7fa48004cf5dfe8d72b5f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547996"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131061107"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>クイックスタート: Azure portal を使用してルート サーバーを作成および構成する
 
 この記事は、Azure portal を使用して、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) とピアリングするように Azure Route Server を構成するのに役立ちます。 Azure Route Server では、NVA からルートを学習し、仮想ネットワーク内の仮想マシン上でそれらをプログラムします。 また、Azure Route Server は NVA に仮想ネットワーク ルートをアドバタイズします。 詳細については、[Azure Route Server](overview.md) に関するページを参照してください。
 
+:::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Azure portal を使用した Route Server デプロイ環境の図。" border="false":::
+
 > [!IMPORTANT]
-> Azure Route Server (プレビュー) は現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> 9 月 1 日より前に作成した Azure Route Server があり、パブリック IP アドレスが関連付けられていない場合は、管理目的で IP アドレスを取得できるようにするため、Route Server を再作成する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +36,7 @@ ms.locfileid: "102547996"
 
 ### <a name="create-a-route-server"></a>ルート サーバーを作成する
 
-1. https://aka.ms/routeserver にアクセスします。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[Route Server]\(ルート サーバー\)** を検索して選択します。
 
 1. **[+ Create new route server]\(+ 新しいルート サーバーの作成\)** を選択します。
 
@@ -54,6 +54,7 @@ ms.locfileid: "102547996"
     | リージョン | ルート サーバーを作成するリージョンを選択します。 以前に作成した仮想ネットワークと同じリージョンを選択すると、ドロップダウンにその仮想ネットワークが表示されます。 |
     | Virtual Network | ルート サーバーを作成する仮想ネットワークを選択します。 新しい仮想ネットワークを作成することも、既存の仮想ネットワークを使用することもできます。 既存の仮想ネットワークを使用する場合は、ルート サーバーのサブネット要件に対応するために、既存の仮想ネットワークに少なくとも /27 サブネットの十分な空間があることを確認してください。 ドロップダウンにお使いの仮想ネットワークが表示されない場合は、適切なリソース グループまたはリージョンを選択していることを確認してください。 |
     | Subnet | 仮想ネットワークを作成または選択すると、[サブネット] フィールドが表示されます。 このサブネットは、ルート サーバー専用です。 **[Manage subnet configuration]\(サブネット構成の管理\)** を選択し、Azure Route Server のサブネットを作成します。 **[+ サブネット]** を選択し、これらのガイドラインに従ってサブネットを作成します。</br><br>- サブネットの名前は *RouteServerSubnet* にする必要があります。</br><br>- サブネットは、少なくとも /27 以上である必要があります。</br> |
+    | パブリック IP アドレス | ルート サーバーに割り当てる既存の Standard パブリック IP リソースを選択するか、新規に作成します。 ルート サーバーの構成が管理されるバックエンド サービスへの接続を確保するために、パブリック IP アドレスが必要です。 |
 
 1. **[Review + create]\(確認と作成\)** を選択し、概要を確認して、 **[作成]** を選択します。 
 
@@ -64,7 +65,7 @@ ms.locfileid: "102547996"
 
 このセクションは、お使いの NVA との BGP ピアリングを構成するのに役立ちます。
 
-1. Azure portal で [[Route Server]\(ルート サーバー\)](https://aka.ms/routeserver) に移動し、構成するルート サーバーを選択します。
+1. Azure portal で [[Route Server]\(ルート サーバー\)](./overview.md) に移動し、構成するルート サーバーを選択します。
 
     :::image type="content" source="./media/quickstart-configure-route-server-portal/select-route-server.png" alt-text="ルート サーバーの一覧のスクリーンショット。"::: 
 
@@ -94,7 +95,7 @@ ms.locfileid: "102547996"
 
 ExpressRoute ゲートウェイや VPN ゲートウェイがあり、それらがルート サーバーとルートを交換するようにする場合は、ルート交換を有効にできます。
 
-1. Azure portal で [[Route Server]\(ルート サーバー\)](https://aka.ms/routeserver) に移動し、構成するルート サーバーを選択します。
+1. Azure portal で [[Route Server]\(ルート サーバー\)](./overview.md) に移動し、構成するルート サーバーを選択します。
 
 1. 左側のナビゲーション パネルの *[設定]* で、 **[構成]** を選択します。
 

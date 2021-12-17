@@ -4,12 +4,12 @@ description: Azure Site Recovery を使用して多数のオンプレミスの V
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 869702c9eaac4a38f6b0e64311c772892ddd6d90
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 6a77b91b49009964ba6e20f76e20e4739da6ea75
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580433"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823777"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM/物理サーバーの大規模なディザスター リカバリーを設定する
 
@@ -82,7 +82,7 @@ Deployment Planner は、VMware のオンプレミス環境に関する情報を
 
 **タスク** | **詳細** | **操作**
 --- | --- | ---
-**コア数を確認する** | フェールオーバーの時点で使用可能なクォータ内のコア数がターゲットの総数以上でない場合、フェールオーバーは失敗します。 | VMware VM の場合は、Deployment Planner のコアの推奨事項を満たすために、ターゲット サブスクリプションに十分なコアがあることを確認してください。<br/><br/> 物理サーバーの場合は、Azure コア数が、手動での見積もりを満たすことを確認してください。<br/><br/> クォータを確認するには、Azure portal > **[サブスクリプション]** で **[使用量 + クォータ]** をクリックします。<br/><br/> クォータの増加については[こちら](../azure-portal/supportability/resource-manager-core-quotas-request.md)をご覧ください。
+**コア数を確認する** | フェールオーバーの時点で使用可能なクォータ内のコア数がターゲットの総数以上でない場合、フェールオーバーは失敗します。 | VMware VM の場合は、Deployment Planner のコアの推奨事項を満たすために、ターゲット サブスクリプションに十分なコアがあることを確認してください。<br/><br/> 物理サーバーの場合は、Azure コア数が、手動での見積もりを満たすことを確認してください。<br/><br/> クォータを確認するには、Azure portal > **[サブスクリプション]** で **[使用量 + クォータ]** をクリックします。<br/><br/> クォータの増加については[こちら](../azure-portal/supportability/regional-quota-requests.md)をご覧ください。
 **フェールオーバーの上限を確認する** | フェールオーバーの数は、Site Recovery のフェールオーバーの上限を超えてはいけません。 |  フェールオーバーが上限を超える場合、サブスクリプションを追加して複数のサブスクリプションにフェールオーバーするか、サブスクリプションのクォータを増やすことができます。 
 
 

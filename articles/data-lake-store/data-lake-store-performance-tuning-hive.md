@@ -1,17 +1,17 @@
 ---
 title: パフォーマンス チューニング - Azure Data Lake Storage Gen1 での Hive
 description: HdInsight での Hive と Azure Data Lake Storage Gen1 のパフォーマンス チューニングについて説明します。 I/O 集中型のクエリでは、パフォーマンスが向上するように Hive をチューニングします。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: twooley
-ms.openlocfilehash: 082d684ed0a29cb6bf2de9c506886b6d98cf174a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 73bc2ec8998faa018f760a2b62e847ffbc5d7bb5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97723783"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633300"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight の Hive と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス
 

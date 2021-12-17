@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/03/2020
 ms.author: marsma
-ms.custom: aaddev
+ms.custom: aaddev, has-adal-ref
 ms.reviewer: celested
-ms.openlocfilehash: d3af0d360ec15ae793f9487693d8b94be686a783
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18a097e0677aa97a6af56d1ed1930355354c276c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100516109"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615341"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft ID プラットフォームのビデオ
 
@@ -208,122 +208,122 @@ ___
         >[!Video https://www.youtube.com/embed/bNlcFuIo3r8]
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=apbbx2n4tnU" target="_blank">Microsoft Graph と Microsoft Authentication Library (MSAL) </a>
-    :::column-end:::
-    :::column:::
-        >[!Video https://www.youtube.com/embed/apbbx2n4tnU]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
         <a href="https://www.youtube.com/watch?v=yLVEBU9Z96Q" target="_blank">ライブラリの MSAL ファミリとは何ですか?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/yLVEBU9Z96Q]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=eiPHOoLmGJs" target="_blank">範囲の説明 </a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/eiPHOoLmGJs]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=Zd_Uubnu0U0" target="_blank">ブローカーとは </a>
     :::column-end:::
     :::column:::
-        >[!Video https://www.youtube.com/embed/Zd_Uubnu0U0]
+       >[!Video https://www.youtube.com/embed/Zd_Uubnu0U0]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=znSN_3JAuoU" target="_blank">リダイレクト URI の機能</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/znSN_3JAuoU]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=mDhT4Zv1fZU" target="_blank">テナントの説明 </a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/mDhT4Zv1fZU]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=zDEC7A5ZS2Q" target="_blank">Azure AD の役割 </a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/zDEC7A5ZS2Q]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=HEpq_YSmuWw" target="_blank">Azure AD アプリ オブジェクトの役割</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/HEpq_YSmuWw]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=E2OUluQQKSk" target="_blank">Microsoft の組織アカウントと個人アカウントの違い</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/E2OUluQQKSk]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=ZJirt7eTVw8" target="_blank">SPA と Web アプリの違い</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/ZJirt7eTVw8]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=6R3W9T01gdE" target="_blank">アプリケーションのアクセス許可と委任されたアクセス許可の違いは何か?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/6R3W9T01gdE]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=Gm6sALdXtpg" target="_blank">Microsoft ID プラットフォーム OpenID Connect 認定とは何か?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/Gm6sALdXtpg]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=NrydwrckYaw" target="_blank">Azure Active Directory アプリにはどのような種類があり、どのような違いがあるか?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/NrydwrckYaw]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=cZKgTqF4o88" target="_blank">MSAL を使用する場合にプロトコルの本質的な概念としてどのようなことを知っておく必要があるか?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/cZKgTqF4o88]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=41vmzPdbfXM" target="_blank">ID トークン、アクセス トークン、更新トークン、セッション トークンの違いは何か?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/41vmzPdbfXM]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=jEEwN7XAtUo" target="_blank">承認要求とトークンの関係はどのようなものか?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/jEEwN7XAtUo]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=4pwuRYcZbz4" target="_blank">MSAL ライブラリによってプロトコルがどのように使いやすくなるか?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/4pwuRYcZbz4]
+    :::column-end:::
+    :::column:::
+
+    :::column-end:::
+    :::column:::
+
     :::column-end:::
 :::row-end:::
 

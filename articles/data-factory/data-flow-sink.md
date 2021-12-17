@@ -1,27 +1,31 @@
 ---
 title: マッピング データ フローでのシンク変換
+titleSuffix: Azure Data Factory & Azure Synapse
 description: マッピング データ フローでのシンク変換を構成する方法について説明します。
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/06/2021
-ms.openlocfilehash: 8970fc2d5f11d106f34cf2f4c05a1c61bdc6c438
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 10/14/2021
+ms.openlocfilehash: 152445c18c6d69a9db52b4acd58b70dddcca6617
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107416"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063851"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
+
 データの変換を完了したら、シンク変換を利用してそれを変換先ストアに書き込みます。 各データ フローには少なくとも 1 つのシンク変換が必要ですが、変換フローを完了するために必要な数だけのシンクに書き込むことができます。 追加のシンクに書き込むには、新しい分岐と条件分割によって新しいストリームを作成します。
 
-各シンク変換は、厳密に 1 つの Azure Data Factory のデータセット オブジェクトまたはリンクされたサービスに関連付けられます。 シンク変換では、データの形状と書き込みを行う場所が決定されます。
+各シンク変換が関連付けられるデータセット オブジェクトまたはリンクされたサービスは 1 つだけです。 シンク変換では、データの形状と書き込みを行う場所が決定されます。
 
 ## <a name="inline-datasets"></a>インライン データセット
 
@@ -33,7 +37,16 @@ ms.locfileid: "107107416"
 
 インライン データセットを使用するには、 **[シンクの種類]** セレクターで目的の形式を選択します。 シンク データセットを選択するのでなく、接続先にするリンクされたサービスを選択します。
 
-![インラインが選択されていることを示すスクリーンショット。](media/data-flow/inline-selector.png "インラインが選択されていることを示すスクリーンショット。")
+:::image type="content" source="media/data-flow/inline-selector.png" alt-text="インラインが選択されていることを示すスクリーンショット。":::
+
+## <a name="workspace-db-synapse-workspaces-only"></a>ワークスペース DB (Synapse ワークスペースのみ)
+
+Azure Synapse ワークスペースでデータ フローを使用する場合は、Synapse ワークスペース内にあるデータベースの種類に直接データをシンクする、追加のオプションが得られます。 これにより、それらのデータベース用のリンクされたサービスまたはデータセットを追加する必要性が軽減されます。
+
+> [!NOTE]
+> Azure Synapse ワークスペース DB コネクタは現在パブリック プレビュー段階にあり、現時点では Spark Lake データベースでのみ機能します
+
+:::image type="content" source="media/data-flow/syms-sink.png" alt-text="選択されたワークスペース DB を示すスクリーンショット。":::
 
 ##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> サポートされているシンクの種類
 
@@ -47,14 +60,16 @@ ms.locfileid: "107107416"
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br/>[Common Data Model](format-common-data-model.md#sink-properties)<br>[区切りテキスト](format-delimited-text.md#mapping-data-flow-properties) <br>[Delta](format-delta.md) <br>[JSON](format-json.md#mapping-data-flow-properties) <br/>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br>-/✓ <br>✓/- <br>-/✓ <br>✓/-<br>✓/✓ <br>✓/- |
 | [Azure Database for MySQL](connector-azure-database-for-mysql.md) |  | ✓/✓ |
 | [Azure Database for PostgreSQL](connector-azure-database-for-postgresql.md) |  | ✓/✓ |
-| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure SQL Managed Instance (プレビュー)](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure Data Explorer](connector-azure-data-explorer.md) |  | ✓/✓ |
+| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/✓ |
+| [Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
+| [SQL Server](connector-sql-server.md) | | ✓/✓ |
 
 これらのコネクタに固有の設定は、 **[設定]** タブ上にあります。これらの設定に関する情報とデータ フロー スクリプトの例は、コネクタのドキュメントに記載されています。
 
-Azure Data Factory から、[90 を超えるネイティブ コネクタ](connector-overview.md)にアクセスできます。 それらの他のソースにデータ フローからデータを書き込むには、コピー アクティビティを使用し、サポートされているシンクからそのデータを読み込みます。
+このサービスから、[90 を超えるネイティブ コネクタ](connector-overview.md)にアクセスできます。 それらの他のソースにデータ フローからデータを書き込むには、コピー アクティビティを使用し、サポートされているシンクからそのデータを読み込みます。
 
 ## <a name="sink-settings"></a>シンクの設定
 
@@ -64,11 +79,12 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
-![[シンク] の設定を示すスクリーンショット。](media/data-flow/sink-settings.png "[シンク] の設定を示すスクリーンショット。")
+:::image type="content" source="media/data-flow/sink-settings.png" alt-text="[シンク] の設定を示すスクリーンショット。":::
 
-**スキーマの誤差:** [スキーマの誤差](concepts-data-flow-schema-drift.md)は、データ フロー内の柔軟なスキーマをネイティブに処理するデータ ファクトリの機能であり、列の変更を明示的に定義する必要はありません。 シンク データ スキーマで定義されている内容の上に追加の列を記述するには、 **[Allow schema drift]\(スキーマの誤差を許可する\)** を有効にします。
+**[スキーマの誤差]** : [[スキーマの誤差]](concepts-data-flow-schema-drift.md) は、データ フロー内の柔軟なスキーマをネイティブに処理するこのサービスの機能であり、列の変更を明示的に定義する必要はありません。 シンク データ スキーマで定義されている内容の上に追加の列を記述するには、 **[Allow schema drift]\(スキーマの誤差を許可する\)** を有効にします。
 
-**スキーマの検証**: [スキーマの検証] を選択すると、受信ソース スキーマの列がソース プロジェクション内で見つからない場合、またはデータ型が一致しない場合にデータ フローは失敗します。 この設定を使用して、ソース データが定義済みのプロジェクションのコントラクトを満たすように強制します。 これは、列の名前または型が変更されたことを通知する、データベース ソースのシナリオにおいて便利です。
+**[スキーマの検証]** : [スキーマの検証] を選択すると、シンク プロジェクションの列がシンク ストアで見つからない場合、またはデータ型が一致しない場合にデータ フローは失敗します。 この設定を使用して、シンク スキーマが定義済みのプロジェクションのコントラクトを満たすように強制できます。 これは、列の名前または型が変更されたことを通知する、データベース シンクのシナリオにおいて便利です。
+
 
 ## <a name="cache-sink"></a>キャッシュ シンク
 
@@ -78,16 +94,18 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 
 キャッシュ シンクに書き込むには、シンク変換を追加し、シンクの種類として **[キャッシュ]** を選択します。 他のシンクの種類とは異なり、外部ストアに書き込むのではないため、データセットやリンクされたサービスを選択する必要はありません。 
 
-![キャッシュ シンクの選択](media/data-flow/select-cache-sink.png "キャッシュ シンクの選択")
+:::image type="content" source="media/data-flow/select-cache-sink.png" alt-text="キャッシュ シンクの選択":::
 
 シンクの設定で、必要に応じてキャッシュ シンクのキー列を指定できます。 これは、キャッシュ参照で `lookup()` 関数を使用する場合に、一致条件として使用されます。 キー列を指定する場合は、キャッシュ参照で `outputs()` 関数は使用できません。 キャッシュ参照構文の詳細については、[キャッシュされた参照](concepts-data-flow-expression-builder.md#cached-lookup)に関する記事を参照してください。
 
-![キャッシュ シンクのキー列](media/data-flow/cache-sink-key-columns.png "キャッシュ シンクのキー列")
+:::image type="content" source="media/data-flow/cache-sink-key-columns.png" alt-text="キャッシュ シンクのキー列":::
 
 たとえば、`cacheExample` というキャッシュ シンクに 1 つのキー列 `column1` を指定する場合、`cacheExample#lookup()` の呼び出しに、キャッシュ シンク内のどの行と照合するかを指定する 1 つのパラメーターを含めます。 この関数によって、マップされた各列のサブ列を含む 1 つの複合列が出力されます。
 
 > [!NOTE]
 > キャッシュ シンクは、キャッシュ参照を使用してそれを参照する変換から、完全に独立したデータ ストリームに存在する必要があります。 また、キャッシュ シンクは、最初に書き込まれるシンクである必要があります。 
+
+**アクティビティ出力への書き込み** キャッシュされたシンクは、必要に応じて、出力データを次のパイプライン アクティビティの入力に書き込むことができます。 これにより、データ ストアにデータを保持することなく、データ フロー アクティビティからデータをすばやく簡単に渡すことができます。
 
 ## <a name="field-mapping"></a>フィールドのマッピング
 
@@ -99,20 +117,20 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 
 既定では、データが複数のシンクに書き込まれる順序は決まっていません。 変換ロジックが完了すると、実行エンジンによってデータは並列に書き込まれます。シンクの順序は実行ごとに異なる場合があります。 シンクの順序を正確に指定するには、データフローの **[全般]** タブで **[カスタム シンクの順序付け]** を有効にします。 有効にすると、シンクは昇順で連続して書き込まれます。
 
-![[カスタム シンクの順序付け] を示すスクリーンショット。](media/data-flow/custom-sink-ordering.png "[カスタム シンクの順序付け] を示すスクリーンショット。")
+:::image type="content" source="media/data-flow/custom-sink-ordering.png" alt-text="[カスタム シンクの順序付け] を示すスクリーンショット。":::
 
 > [!NOTE]
 > [キャッシュされた参照](./concepts-data-flow-expression-builder.md#cached-lookup)を使用する場合は、シンクの順序付けで、キャッシュされたシンクが順序付けの一番下 (または最初) である 1 に設定されるようにしてください。
 
-![カスタム シンクの順序付け](media/data-flow/cache-2.png "カスタム シンクの順序付け")
+:::image type="content" source="media/data-flow/cache-2.png" alt-text="カスタム シンクの順序付け":::
 
 ### <a name="sink-groups"></a>シンク グループ
 
-シンクをグループ化するには、一連のシンクに同じ順序番号を適用します。 ADF は、それらのシンクを並列に実行できるグループとして扱います。 並列実行のオプションは、パイプライン データ フロー アクティビティに表示されます。
+シンクをグループ化するには、一連のシンクに同じ順序番号を適用します。 このサービスは、それらのシンクを並列に実行できるグループとして扱います。 並列実行のオプションは、パイプライン データ フロー アクティビティに表示されます。
 
 ## <a name="error-row-handling"></a>エラー行の処理
 
-データベースに書き込む場合、書き込み先で設定されている制約によって、データの特定の行が失敗することがあります。 既定では、データ フローの実行は最初に発生したエラーで失敗します。 一部のコネクタでは、 **[エラーのまま続行する]** を選択すると、個々の行でエラーが発生した場合でもデータ フローを完了することができます。 現時点では、この機能は Azure SQL Database でのみ使用できます。 詳細については、[Azure SQL DB でのエラー行の処理](connector-azure-sql-database.md#error-row-handling)に関する記事を参照してください。
+データベースに書き込む場合、書き込み先で設定されている制約によって、データの特定の行が失敗することがあります。 既定では、データ フローの実行は最初に発生したエラーで失敗します。 一部のコネクタでは、 **[エラーのまま続行する]** を選択すると、個々の行でエラーが発生した場合でもデータ フローを完了することができます。 現時点では、この機能は Azure SQL Database と Azure Synapse でのみ使用できます。 詳細については、[Azure SQL DB でのエラー行の処理](connector-azure-sql-database.md#error-row-handling)に関する記事を参照してください。
 
 以下は、シンク変換でデータベースのエラー行の処理を自動的に使用する方法を説明するビデオ チュートリアルです。
 

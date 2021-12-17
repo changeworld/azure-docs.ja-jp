@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: cccb42041ece65ad4f245c28dd7c5cf356d5e63c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 235fa649245e973e934e0930b4490f4e4701c94b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775155"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571504"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Python で最初の永続関数を作成する
 
@@ -56,7 +56,7 @@ ms.locfileid: "104775155"
     | Select a template for your project's first function (プロジェクトの最初の関数のテンプレートを選択してください) | 今はしない | |
     | Select how you would like to open your project (プロジェクトを開く方法を選択してください) | 現在のウィンドウで開く | 選択したフォルダーで VS Code を開き直します。 |
 
-Azure Functions Core Tools は、必要に応じて Visual Studio Code によりインストールされます。 また、関数アプリ プロジェクトがフォルダーに作成されます。 このプロジェクトには、[host.json](../functions-host-json.md) および [local.settings.json](../functions-run-local.md#local-settings-file) 構成ファイルが含まれています。
+Azure Functions Core Tools は、必要に応じて Visual Studio Code によりインストールされます。 また、関数アプリ プロジェクトがフォルダーに作成されます。 このプロジェクトには、[host.json](../functions-host-json.md) および [local.settings.json](../functions-develop-local.md#local-settings-file) 構成ファイルが含まれています。
 
 また、ルート フォルダーに *requirements.txt* ファイルが作成されます。 関数アプリを実行するために必要な Python パッケージを指定します。
 
@@ -144,7 +144,7 @@ Azure Functions Core Tools は、必要に応じて Visual Studio Code により
     | Prompt | 値 | 説明 |
     | ------ | ----- | ----------- |
     | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions HTTP スターター | HTTP スターター関数を作成する |
-    | Provide a function name (関数名を指定してください) | DurableFunctionsHttpStart | アクティビティ関数の名前 |
+    | Provide a function name (関数名を指定してください) | DurableFunctionsHttpStart | クライアント関数の名前 |
     | 承認レベル | Anonymous | デモの目的で、認証を使用せずに関数を呼び出すことができるようにします。 |
 
 オーケストレーションを開始する、HTTP によってトリガーされる関数を追加しました。 *DurableFunctionsHttpStart/\_\_init__.py* を開いて、`client.start_new` を使用して新しいオーケストレーションが開始されていることを確認します。 次に、`client.create_check_status_response` を使用して HTTP 応答が返されます。その応答には、新しいオーケストレーションを監視および管理するために使用できる URL が含まれています。

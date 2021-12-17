@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/2/2021
 ms.author: heikora
-ms.openlocfilehash: b82a732533c3d069b519b07c3209d4b96c472900
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 701a16779a7a485f33e5af44ec30d48801b7c1fd
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385027"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440810"
 ---
 # <a name="model-and-endpoint-lifecycle"></a>モデルとエンドポイントのライフサイクル
 
@@ -102,7 +102,7 @@ Speech Studio のデプロイ セクションで、または Custom Speech API �
 ### <a name="batch-transcription"></a>バッチ文字起こし
 [バッチ文字起こし](batch-transcription.md)で使用されるモデルの有効期限が切れた場合、要求は 4xx エラーで失敗します。 これを防ぐには、**文字起こしの作成** 要求の本文で送信される JSON の `model` パラメーターを更新して、より新しい基本モデルまたはより新しいカスタム モデルを指すようにします。 JSON から `model` エントリを削除すると、常に最新の基本モデルを使用することもできます。
 ### <a name="custom-speech-endpoint"></a>カスタム音声エンドポイント
-[カスタム音声エンドポイント](how-to-custom-speech-train-model.md)で使用されるモデルの有効期限が切れると、サービスは使用している言語の最新の基本モデルを使用するように自動的にフォールバックします。 ページ上部にある **[Custom Speech]** メニューの **[配置]** を選択してエンドポイント名をクリックすると、その詳細を表示できます。 詳細ページの上部には、このエンドポイントで使用するモデルをダウンタイムなしでシームレスに更新できる **[モデルの更新]** ボタンが表示されます。 この変更は、[**Update Model**](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UpdateModel) Rest API を使用してプログラムで行うこともできます。
+[カスタム音声エンドポイント](how-to-custom-speech-train-model.md)で使用されるモデルの有効期限が切れると、サービスは使用している言語の最新の基本モデルを使用するように自動的にフォールバックします。 使用しているモデルを更新するには、ページ上部にある **[Custom Speech]** メニューの **[デプロイ]** を選択してエンドポイント名をクリックすると、その詳細を表示できます。 詳細ページの上部には、このエンドポイントで使用するモデルをダウンタイムなしでシームレスに更新できる **[モデルの更新]** ボタンが表示されます。 この変更は、[**Update Model**](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UpdateModel) Rest API を使用してプログラムで行うこともできます。
 
 ## <a name="next-steps"></a>次のステップ
 

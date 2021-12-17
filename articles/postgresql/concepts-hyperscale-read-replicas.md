@@ -4,21 +4,17 @@ description: この記事では、Azure Database for PostgreSQL (Hyperscale (Cit
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: cf8c64bf3858f0d3b7d633b94bc7302fbe563f87
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 08/03/2021
+ms.openlocfilehash: 150d6b02ff2c11d2489c46b4dc2dd44fd2276b75
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023851"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736406"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL (Hyperscale (Citus)) の読み取りレプリカ
-
-> [!IMPORTANT]
-> Hyperscale (Citus) の読み取りレプリカは、現在プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
->
-> その他の新機能については、[Hyperscale (Citus) のプレビュー機能](hyperscale-preview-features.md)に関するページで全一覧をご覧いただけます。
 
 読み取りレプリカ機能を使用すると、Hyperscale (Citus) サーバー グループから、読み取り専用サーバー グループにデータをレプリケートできます。 レプリカは、PostgreSQL の物理的なレプリケーション テクノロジを使用して **非同期的に** 更新されます。 プライマリ サーバーから、無数のレプリカにレプリケートできます。
 

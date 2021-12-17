@@ -1,0 +1,77 @@
+- name: Azure AD の検証可能な資格情報のドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Azure Active Directory の検証可能な資格情報の概要
+      href: decentralized-identifier-overview.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: 検証可能な資格情報サービスを設定する
+      href: verifiable-credentials-configure-tenant.md
+    - name: 検証可能な資格情報を発行する
+      href: verifiable-credentials-configure-issuer.md
+    - name: 検証可能な資格情報を検証する
+      href: verifiable-credentials-configure-verifier.md
+- name: 概念
+  expanded: true
+  items:
+    - name: OpenID Connect プロトコルの詳細
+      href: issuer-openid.md
+- name: 操作方法ガイド
+  expanded: true
+  items:
+    - name: 計画と設計
+      items:
+        - name: アーキテクチャの計画の概要
+          href: introduction-to-verifiable-credentials-architecture.md
+        - name: 発行ソリューションの計画
+          href: plan-issuance-solution.md
+        - name: 検証ソリューションの計画
+          href: plan-verification-solution.md
+    - name: 要求サービス REST API の使用
+      href: get-started-request-api.md
+    - name: 資格情報をカスタマイズする方法
+      href: credential-design.md
+    - name: 資格情報の失効を管理する
+      href: how-to-issuer-revoke.md
+    - name: ドメインを DID にリンクする
+      href: how-to-dnsbind.md
+    - name: 検証可能な資格情報のオプトアウト
+      href: how-to-opt-out.md
+- name: サンプル
+  expanded: true
+  items:
+    - name: サンプル アプリケーション
+      href: 'https://github.com/Azure-Samples/active-directory-verifiable-credentials'
+    - name: サンプルの発行者
+      href: 'https://didvc-issuer-sample.azurewebsites.net/'
+    - name: サンプルの検証ツール
+      href: 'https://didvc-verifier-sample.azurewebsites.net/'
+- name: リファレンス
+  expanded: true
+  items:
+    - name: 新機能
+      href: whats-new.md
+    - name: API の発行の仕様
+      href: issuance-request-api.md
+    - name: API のプレゼンテーションの仕様
+      href: presentation-request-api.md
+- name: リソース
+  expanded: true
+  items:
+    - name: よく寄せられる質問
+      href: verifiable-credentials-faq.md
+    - name: 開発者アカウントを作成する方法
+      href: how-to-create-a-free-developer-account.md
+    - name: すべてのものの分散化 ID (DID) を対象とする業界の作業グループ
+      href: 'https://identity.foundation'
+    - name: Microsoft の DID ホワイトペーパー
+      href: 'https://aka.ms/didwhitepaper'
+    - name: DID マーケティングの概要
+      href: 'https://aka.ms/didexplained'
+    - name: 分散化 ID のブログ
+      href: 'https://techcommunity.microsoft.com/t5/tag/decentralized%20identity/tg-p'
+    - name: 分散化 ID 概要のビデオ
+      href: 'https://www.youtube.com/watch?v=Whc9Im-U0Wg'

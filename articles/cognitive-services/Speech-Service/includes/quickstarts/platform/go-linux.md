@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: gelecaro
-ms.openlocfilehash: cf765145cafa2eb06d77ea2e153e45c296281b71
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 9efcbb7b42fd9bc2a44211b765dfd9254623d5ce
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100551314"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252231"
 ---
-このガイドでは、Linux 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します
+このガイドでは、Linux 上の GO 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -23,32 +23,9 @@ Linux。[サポートされている Linux ディストリビューションと�
 
 このクイックスタートを完了するには、次のものが必要です。
 
-* Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2019 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0)が必要です。 これを初めてインストールする場合、再起動が必要になる場合があります。
-* gcc
 * [Go バイナリ (1.13 移行)](https://golang.org/dl/)
+* Linux 環境は、[システム要件とセットアップ手順](~/articles/cognitive-services/speech-service/speech-sdk.md#get-the-speech-sdk)に従って設定されます。
 
-* サポートされている Linux プラットフォームでは、特定のライブラリがインストールされている必要があります (Secure Sockets Layer サポート用に `libssl`、サウンド サポート用に `libasound2`)。 これらのライブラリの正しいバージョンをインストールするために必要なコマンドについては、下記のディストリビューションを参照してください。
-
-   * Ubuntu/Debian の場合:
-
-     ```sh
-     sudo apt-get update
-     sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-     ```
-
-     libssl1.0.0 が使用できない場合は、libssl1.0.x (ここで、x は 0 より大) または libssl1.1 を代わりにインストールします。
-
-   * RHEL または CentOS の場合:
-
-     ```sh
-     sudo yum update
-     sudo yum groupinstall "Development tools"
-     sudo yum install alsa-lib openssl wget
-     ```
-
-> [!NOTE]
-> - RHEL または CentOS 7 の場合、「[Speech SDK 用に RHEL/CentOS 7 を構成する](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)」の手順に従います。
-> - RHEL または CentOS 8 の場合、「[Linux 用 OpenSSL の構成](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)」の手順に従います。
 
 [!INCLUDE [linux-install-sdk](linux-install-sdk.md)]
 

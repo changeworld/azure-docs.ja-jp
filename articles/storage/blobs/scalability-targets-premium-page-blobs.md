@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 09/24/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 23a176bfa5e3861dbc4ad5c03ea54fc847d3f56b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9d669d583563e81fa55d3626e6505ebe108340c
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96922532"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153465"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Premium ページ BLOB ストレージ アカウントのスケーラビリティおよびパフォーマンス ターゲット
 
@@ -31,11 +31,13 @@ Premium ページ BLOB ストレージ アカウントのスケーラビリテ�
 
 | 合計アカウント容量                            | ローカル冗長ストレージ アカウントの合計帯域幅                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| ディスク容量:4 TB (個々のディスク)/35 TB (全ディスクの累積合計) <br>スナップショット容量:10 TB | 受信<sup>1</sup> と送信<sup>2</sup> を合わせて最大 50 GB/秒 |
+| ディスク容量:4 TB (個々のディスク)/35 TB (全ディスクの累積合計) <br>スナップショット容量: 10 TB<sup>3</sup> | 受信<sup>1</sup> と送信<sup>2</sup> を合わせて最大 50 GB/秒 |
 
 <sup>1</sup> ストレージ アカウントに送信されるすべてのデータ (要求)
 
 <sup>2</sup> ストレージ アカウントから受信されるすべてのデータ (応答)
+
+<sup>3</sup> 個々のページ BLOB で保持できるスナップショットの総数は 100 です。
 
 Premium ページ BLOB アカウントは、Premium パフォーマンス用に構成された汎用アカウントです。 汎用 v2 ストレージ アカウントをお勧めします。
 

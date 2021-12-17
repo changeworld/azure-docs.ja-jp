@@ -5,7 +5,7 @@ ms.prod: devops
 ms.technology: devops-cicd
 services: azure-devops-project
 documentationcenter: vs-devops-build
-author: mlearned
+author: georgewallace
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/23/2021
-ms.author: mlearned
+ms.author: gwallace
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 75531b9a75c2d28ad665748a9be4e37e2056b451
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4138ad215ed1e9cef9d2f0e4965d1b97d802a845
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547970"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053956"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Azure DevOps Starter を使用して .NET 用 CI/CD パイプラインを作成する
 

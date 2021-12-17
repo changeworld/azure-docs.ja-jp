@@ -3,18 +3,18 @@ title: チュートリアル:場所へのルートを検索する |Microsoft Azu
 description: 目的地へのルートを検索する方法に関するチュートリアルです。 住所の座標を設定し、Azure Maps Route Service に目的地への道順を照会する方法をご覧ください。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 09/01/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 1f1647766eeae917f7a2266ebb8f00fdfab3452e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cf5377c872c086675136f5b1a52ceb15c8b3b461
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102210582"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039147"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>チュートリアル:Azure Maps Route Service とマップ コントロールを使用してルートの道順を表示する方法
 
@@ -89,20 +89,20 @@ ms.locfileid: "102210582"
 
 3. `GetMap` 関数に、次の JavaScript コードを追加します。 `<Your Azure Maps Key>` という文字列は、Maps アカウントからコピーした主キーに置き換えてください。
 
-    ```JavaScript
-   //Instantiate a map object
-   var map = new atlas.Map("myMap", {
+    ```javascript
+    //Instantiate a map object
+    var map = new atlas.Map("myMap", {
         //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
         authOptions: {
            authType: 'subscriptionKey',
            subscriptionKey: '<Your Azure Maps Key>'
         }
-   });
-   ```
+    });
+    ```
 
 4. ファイルを保存し、ブラウザーで開きます。 サンプルが表示されます。
 
-     :::image type="content" source="./media/tutorial-route-location/basic-map.png" alt-text="マップ コントロールの基本的なマップ レンダリング":::
+    :::image type="content" source="./media/tutorial-route-location/basic-map.png" alt-text="マップ コントロールの基本的なマップ レンダリング":::
 
 ## <a name="define-route-display-rendering"></a>ルート表示レンダリングを定義する
 
@@ -224,7 +224,7 @@ ms.locfileid: "102210582"
 
 クリーンアップが必要なリソースはありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のチュートリアルでは、移動モードや積み荷の種類など、制限付きのルート クエリを作成する方法について説明します。 その後、同じマップに複数のルートを表示できます。
 

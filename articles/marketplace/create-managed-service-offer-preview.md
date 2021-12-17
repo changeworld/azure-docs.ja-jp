@@ -1,21 +1,21 @@
 ---
-title: 管理サービス オファーのプレビュー対象ユーザーを追加する方法
-description: Microsoft パートナー センターで、管理サービス オファーのプレビュー対象ユーザーを追加する方法について説明します。
+title: 管理サービス オファーのプレビュー対象ユーザーを追加する
+description: Azure Marketplace 内で管理サービス オファーのプレビュー対象ユーザーを追加します。
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 12/23/2020
-ms.openlocfilehash: 072f1d63e0b3df898ef170205b5c560432d870b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 7/16/2021
+ms.openlocfilehash: 38fbf04f9e8f961cca99bd3e0b23e05e664f4848
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97918038"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113649717"
 ---
-# <a name="how-to-add-a-preview-audience-for-your-managed-service-offer"></a>管理サービス オファーのプレビュー対象ユーザーを追加する方法
+# <a name="add-a-preview-audience-for-a-managed-service-offer"></a>管理サービス オファーのプレビュー対象ユーザーを追加する
 
 この記事では、パートナー センターを使用して、コマーシャル マーケット プレース内の管理サービス オファーに対してプレビュー対象ユーザーを構成する方法について説明します。 オファーが一般公開される前に、プレビュー対象ユーザーはそれをレビューすることができます。
 
@@ -43,7 +43,8 @@ ms.locfileid: "97918038"
 5. ファイルを CSV ファイルとして保存します。
 6. **[プレビュー対象ユーザー]** ページで、 **[対象者のインポート (csv)]** リンクを選択します。
 7. **[確認]** ダイアログ ボックスで **[はい]** を選択し、CSV ファイルをアップロードします。
-8. **[下書きの保存]** を選択してから、次のタブに進みます。
+
+**[下書きの保存]** を選択してから、次の **[プランの概要]** タブに移動します。
 
 ## <a name="next-steps"></a>次の手順
 

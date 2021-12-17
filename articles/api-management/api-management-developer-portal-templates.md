@@ -4,7 +4,7 @@ titleSuffix: Azure API Management
 description: Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: a195675b-f7d0-4fc9-90bf-860e6f17ccf7
@@ -13,13 +13,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: apimpm
-ms.openlocfilehash: 16c0b3e6dc4bd9097312e3a8c43618e66781ef85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 19c7f8734b69d077c41feac9aba2c739544a0160
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92092887"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598824"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法
 

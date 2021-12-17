@@ -2,283 +2,243 @@
 title: スキルセットを作成する
 titleSuffix: Azure Cognitive Search
 description: データの抽出、自然言語処理、または画像分析のステップを定義して、データから構造化された情報を抽出して強化し、Azure Cognitive Search で使用できるようにします。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 39a7c92ca6c83684658cf767722698806ed994ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/15/2021
+ms.openlocfilehash: 4425a4b7c29bc0f4bc237c021610087c933631d8
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88935451"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224035"
 ---
-# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Cognitive Search で AI エンリッチメント パイプラインにスキルセットを作成する方法 
+# <a name="create-a-skillset-in-azure-cognitive-search"></a>Azure Cognitive Search にスキルセットを作成する
 
 ![インデクサーのステージ](media/cognitive-search-defining-skillset/indexer-stages-skillset.png "インデクサーのステージ")
 
-スキルセットは、データを抽出して、データを検索できるようにする操作を定義します。 スキルセットが実行されるのは、テキストとイメージのコンテンツがソース ドキュメントから抽出された後と、ソース ドキュメントのフィールドがインデックスまたはナレッジ ストアのコピー先フィールドに (必要に応じて) マップされた後です。
+スキルセットは、データを抽出して、データを検索できるようにする操作を定義します。 ドキュメント解析後にスキルセットが実行されるのは、テキストとイメージのコンテンツがソース ドキュメントから抽出された後と、ソース ドキュメントのフィールドがインデックスまたはナレッジ ストアのコピー先フィールドに (必要に応じて) マップされた後です。
 
-スキルセットには、特定の強化操作を表す 1 つ以上の *コグニティブ スキル* が含まれています (テキストの翻訳、キー フレーズの抽出、画像ファイルからの光学式文字認識の実行など)。 スキルセットを作成するには、Microsoft の[組み込みスキル](cognitive-search-predefined-skills.md)使用するか、ユーザーが作成したモデルまたは処理ロジックを含むカスタム スキルを使用します ([例:AI エンリッチメント パイプラインにカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)を参照してください)。
+この記事では、スキルセットを作成する手順について説明します。 参考のために、この記事では、[作成スキルセット (REST API)](/rest/api/searchservice/create-skillset)を使用します。 
 
-この記事では、使用するスキル用にエンリッチメント パイプラインを作成する方法を学習します。 スキルセットは、Azure Cognitive Search [インデクサー](search-indexer-overview.md)にアタッチされます。 この記事で取り上げているパイプライン デザインの一環として、スキルセット自体を構築します。 
+スキルセットの使用規則には、次のようなものがあります。
+
++ スキルセットはトップレベル リソースであり、これは一度作成して多数のインデクサーで参照できます。
++ 1 つのスキルセットには、スキルが少なくとも 1 つ必要です。
++ スキルセットは、同じ種類のスキル (たとえば、複数の Shaper スキル) を繰り返すことができます。
+
+インデクサーはスキルセットの実行を促進することを思い出してください。つまり、スキルセットをテストする前に、[インデクサー](search-howto-create-indexers.md)、[データ ソース](search-data-sources-gallery.md)、[検索インデックス](search-what-is-an-index.md)を作成する必要があります。
+
+> [!TIP]
+> [エンリッチメント キャッシング](cognitive-search-incremental-indexing-conceptual.md)を有効にすることで、既に処理したコンテンツを再利用し、開発コストを削減することができます。
+
+## <a name="skillset-definition"></a>スキルセットの定義
+
+基本構造から開始します。 [REST API](/rest/api/searchservice/create-skillset) では、スキルセットは JSON で作成され、以下のセクションがあります。
+
+```json
+{
+   "name":"skillset-template",
+   "description":"A description makes the skillset self-documenting (comments aren't allowed in JSON itself)",
+   "skills":[
+      
+   ],
+   "cognitiveServices":{
+      "@odata.type":"#Microsoft.Azure.Search.CognitiveServicesByKey",
+      "description":"A Cognitive Services resource in the same region as Azure Cognitive Search",
+      "key":"<Your-Cognitive-Services-Multiservice-Key>"
+   },
+   "knowledgeStore":{
+      "storageConnectionString":"<Your-Azure-Storage-Connection-String>",
+      "projections":[
+         {
+            "tables":[ ],
+            "objects":[ ],
+            "files":[ ]
+         }
+      ]
+    },
+    "encryptionKey":{ }
+}
+```
+
+名前と説明の後には、スキルセットに以下の 4 つの主要なプロパティがあります。
+
++ `skills` アレイは、各スキルに必要な入力に基づいて検索サービスによって実行順序が決定される、順序付けされていない[スキルのコレクション](cognitive-search-predefined-skills.md)です。 スキルが独立している場合は、並列に実行されます。 スキルには、実用的なもの (テキストの分割など)、変革をもたらすもの (Cognitive Services の AI をベースにしたもの)、ユーザーが提供するカスタム スキルなどがあります。 次のセクションでは、スキル配列の例を示しています。
+
++ `cognitiveServices` は、Cognitive Services APIs を呼び出す[課金対象のスキル](cognitive-search-predefined-skills.md)に使用されます。 課金対象のスキルやカスタム エンティティの参照を使用していない場合は、このセクションを削除します。 使用している場合は[リソースをアタッチ](cognitive-search-attach-cognitive-services.md)します。
+
++ `knowledgeStore`、(省略可能) Azure Storage のテーブル、BLOB、およびファイルにスキルセットの出力を投影するための Azure Storage アカウントと設定を指定します。 不要な場合は、このセクションを削除します。それ以外の場合は、[ナレッジストアを指定します](knowledge-store-create-rest.md)。
+
++ `encryptionKey`、(省略可能) スキルセット定義で機微な内容を暗号化するために使用される Azure Key Vault および[ユーザーが管理するキー](search-security-manage-encryption-keys.md)を指定します。 ユーザーが管理する暗号化を使用していない場合は、このプロパティを削除します。
+
+## <a name="add-a-skills-array"></a>スキルの配列を追加する
+
+スキルセット定義内では、実行するスキルをスキル配列で指定します。 次の例では、関連付けられていない 2 つの[組み込みのスキル](cognitive-search-predefined-skills.md)を示すことによって、そのコンポジションについて説明します。 各スキルには、型、コンテキスト、入力、および出力があることに注意してください。 
+
+```json
+"skills":[
+  {
+    "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
+    "context": "/document",
+    "categories": [ "Organization" ],
+    "defaultLanguageCode": "en",
+    "inputs": [
+      {
+        "name": "text",
+        "source": "/document/content"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "organizations",
+        "targetName": "orgs"
+      }
+    ]
+  },
+  {
+    "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
+    "context": "/document",
+    "inputs": [
+      {
+        "name": "text",
+        "source": "/document/content"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "score",
+        "targetName": "mySentiment"
+      }
+    ]
+  }
+]
+```
 
 > [!NOTE]
-> インデクサーの指定はパイプライン デザインの別の部分として取り上げます (「[次の手順](#next-step)」で説明します)。 インデクサーの定義には、スキルセットの参照と、入力をターゲット インデックスの出力に接続するために使用されるフィールド マッピングが含まれます。
+> [条件付きスキル](cognitive-search-skill-conditional.md)を使用して式を作成することにより、ループや分岐が含まれる複雑なスキルセットを構築できます。 構文では、いくつかの修正が加えられた [JSON ポインター](https://tools.ietf.org/html/rfc6901) パス表記を使用して、強化ツリー内のノードを識別します。 `"/"` ではツリー内の下位レベルが走査され、`"*"` はコンテキストでの for-each 演算子として機能します。 この記事の多くの例は、この構文を示しています。 
 
-次の重要な点を覚えておいてください。
+### <a name="how-built-in-skills-are-structured"></a>組み込みのスキルがどのように構造化されているか
 
-+ 1 つのインデクサーで使用できるスキルセットは 1 つのみです。
-+ 1 つのスキルセットには、スキルが少なくとも 1 つ必要です。
-+ 同じ種類のスキルを複数作成できます (画像分析スキルのバリアントなど)。
-
-## <a name="begin-with-the-end-in-mind"></a>目的を念頭に置いて始める
-
-推奨される最初のステップは、生データからどのデータを抽出し、そのデータを検索ソリューションでどのように使用するかを決定することです。 エンリッチメント パイプライン全体の図を作成すると、必要なステップを特定しやすくなります。
-
-金融アナリストの一連のコメントの処理に関心があるとします。 ファイルごとに、会社名と、コメントの一般的なセンチメントを抽出する必要があります。 Bing Entity Search サービスを使用するカスタム エンリッチャーを記述することで、会社が携わっているビジネスの種類など、その会社に関する追加情報を検索することもできます。 実質的に、ドキュメントごとにインデックスが付けられている、次のような情報を抽出する必要があります。
-
-| レコード テキスト | 会社 | センチメント | 会社の説明 |
-|--------|-----|-----|-----|
-|サンプル レコード| ["Microsoft", "LinkedIn"] | 0.99 | ["Microsoft Corporation is an American multinational technology company ..." , "LinkedIn is a business- and employment-oriented social networking..."]
-
-次の図は、仮定のエンリッチメント パイプラインを示しています。
-
-![仮定のエンリッチメント パイプライン](media/cognitive-search-defining-skillset/sample-skillset.png "仮定のエンリッチメント パイプライン")
-
-
-このパイプラインで行うことをきちんと把握できたら、これらのステップを提供するスキルセットを表現できます。 機能上、このスキルセットは、Azure Cognitive Search にインデクサー定義をアップロードするときに表現されます。 インデクサーのアップロード方法の詳細については、[インデクサーに関するドキュメント](/rest/api/searchservice/create-indexer)を参照してください。
-
-
-この図で、"*ドキュメント クラッキング*" のステップは自動的に行われます。 基本的に、Azure Cognitive Search では、よく知られているファイルを開く方法を把握しており、各ドキュメントから抽出されたテキストを含む "*content*" フィールドが作成されます。 白いボックスは組み込みエンリッチャーで、ドットのある "Bing Entity Search" ボックスは、作成するカスタム エンリッチャーを表します。 図に示すように、スキルセットには、3 つのスキルが含まれています。
-
-## <a name="skillset-definition-in-rest"></a>REST でのスキルセットの定義
-
-スキルセットは、スキルの配列として定義されます。 スキルごとに、入力ソースと生成される出力の名前を定義します。 [スキルセット REST API の作成](/rest/api/searchservice/create-skillset)に関するページに従って、前の図に対応するスキルセットを定義することができます。 
-
-```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
-api-key: [admin key]
-Content-Type: application/json
-```
+各スキルは、入力値とそれに必要なパラメーターに関して一意です。 [各スキルのドキュメント](cognitive-search-predefined-skills.md)には、与えられたスキルのすべてのパラメーターとプロパティが記述されています。 違いはありますが、ほとんどのスキルは共通のセットを共有し、同様のパターンになっています。 いくつかのポイントを説明するために、[エンティティ認識スキル](cognitive-search-skill-entity-recognition-v3.md)を例に挙げます。
 
 ```json
 {
-  "description": 
-  "Extract sentiment from financial records, extract company names, and then find additional information about each company mentioned.",
-  "skills":
-  [
+  "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
+  "context": "/document",
+  "categories": [ "Organization" ],
+  "defaultLanguageCode": "en",
+  "inputs": [
     {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "context": "/document",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "organizations",
-          "targetName": "organizations"
-        }
-      ]
-    },
+      "name": "text",
+      "source": "/document/content"
+    }
+  ],
+  "outputs": [
     {
-      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "score",
-          "targetName": "mySentiment"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-     "description": "Calls an Azure function, which in turn calls Bing Entity Search",
-      "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
-      "httpHeaders": {
-          "Ocp-Apim-Subscription-Key": "foobar"
-      },
-      "context": "/document/organizations/*",
-      "inputs": [
-        {
-          "name": "query",
-          "source": "/document/organizations/*"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "description",
-          "targetName": "companyDescription"
-        }
-      ]
+      "name": "organizations",
+      "targetName": "orgs"
     }
   ]
 }
 ```
 
-## <a name="create-a-skillset"></a>スキルセットを作成する
+共通パラメーターには、"odata. type"、"inputs"、"outputs" などがあります。 その他のパラメーター ("categories" および "defaultLanguageCode") は、エンティティ認識に固有のパラメーターの例です。 
 
-スキルセットを作成するときに、スキルセットを自己文書化するための説明を指定できます。 説明は省略可能ですが、スキルセットの動作の追跡に役立ちます。 スキルセットは JSON ドキュメントであり、コメントが許可されていないため、説明には `description` 要素を使用する必要があります。
++ **"odata.type"** は、各スキルを一意に識別します。 型については、[スキル リファレンス ドキュメント](cognitive-search-predefined-skills.md)を参照してください。
+
++ **"context"** は強化ツリーのノードであり、操作が行われるレベルを表します。 すべてのスキルにこのプロパティがあります。 "context" フィールドが明示的に設定されていない場合、既定のコンテキストは `"/document"` になります。 この例では、コンテキストはドキュメント全体であり、つまり、認識スキルがドキュメントごとに 1 回呼び出されることになります。
+
+  また、コンテキストは、エンリッチメント ツリーで出力が生成される場所も決定します。 この例では、スキルは `"organizations"` というプロパティを返し、`orgs` としてキャプチャされ、`"/document"` の子ノードとして追加されています。 ダウンストリーム スキルでは、この新しく作成されたエンリッチメント ノードへのパスは `"/document/orgs"` です。 特定のドキュメントでは、`"/document/orgs"` の値は、テキストから抽出された組織の配列になります (例: `["Microsoft", "LinkedIn"]`)。 パスの構文の詳細については、「[スキルセット内の注釈の参照](cognitive-search-concept-annotations-syntax.md)」を参照してください。
+
++ **"入力"** は、受信データの送信元とその使用方法を指定します。 エンティティ認識の場合、入力の 1 つは `"text"` であり、エンティティを分析するコンテンツです。 コンテンツは、エンリッチメント ツリー内の `"/document/content"` ノードから供給されます。 エンリッチメント ツリーでは、`"/document"` がルート ノードです。 Azure Blob インデクサーを使用して取得されたドキュメントの場合、各ドキュメントの `content` フィールドは、インデクサーによって作成される標準フィールドです。 
+
++ **"outputs"** はスキルの出力を表します。 各スキルは、スキルセット内で名前によって参照される特定の種類の出力を生成するように設計されています。 エンティティ認識の場合、それがサポートされている出力の 1 つに `"organizations"` があります。 各スキルのドキュメントでは、生成できる出力について説明しています。
+
+出力は、処理中にのみ存在します。 この出力をダウンストリーム スキルの入力に連結するには、`"/document/orgs"` としてこの出力を参照します。 検索インデックスのフィールドに出力を送るには、インデクサーで[出力フィールドマッピングを作成](cognitive-search-output-field-mapping.md)します。 出力をナレッジ ストアに送るには、[プロジェクションを作成します](knowledge-store-projection-overview.md)。
+
+あるスキルからの出力が、別のスキルからの出力と競合する可能性があります。 同じ出力を返すスキルが複数ある場合は、エンリッチメント ノード パスでの名前のあいまいさを解消するために `"targetName"` を使用します。
+
+状況によっては、配列の各要素を別々に参照する必要があります。 たとえば、`"/document/orgs"` の *各要素* を別のスキルに別々に渡す必要があるとします。 これを行うには、パスにアスタリスクを追加します。`"/document/orgs/*"` 
+
+2 番目の、感情分析のスキルは、最初のエンリッチャーと同じパターンに従います。 入力として `"/document/content"` を受け取り、コンテンツのインスタンスごとにセンチメント スコアを返します。 "context" フィールドを明示的に設定していないため、出力 (mySentiment) は、`"/document"` の子になります。
 
 ```json
 {
-  "description": 
-  "This is our first skill set, it extracts sentiment from financial records, extract company names, and then finds additional information about each company mentioned.",
-  ...
-}
-```
-
-スキルセットの次の部分は、スキルの配列です。 各スキルはエンリッチメントの基本要素と考えることができます。 このエンリッチメント パイプライン内で、各スキルによって小さなタスクが実行されます。 各スキルが、1 つの入力 (または一連の入力) を受け取り、いくつかの出力を返します。 次のいくつかのセクションでは、組み込みのスキルとカスタム スキルを指定して、入出力の参照を介してスキルを連鎖させる方法に注目します。 入力は、ソース データまたは別のスキルから取得できます。 出力は、検索インデックス内のフィールドにマッピングしたり、ダウンストリームのスキルへの入力として使用したりできます。
-
-## <a name="add-built-in-skills"></a>組み込みのスキルを追加する
-
-最初のスキルを見てみましょう。組み込みの[エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)です。
-
-```json
+  "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
+  "inputs": [
     {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "context": "/document",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "organizations",
-          "targetName": "organizations"
-        }
-      ]
+      "name": "text",
+      "source": "/document/content"
     }
-```
-
-* どの組み込みのスキルにも、`odata.type`、`input`、および `output` プロパティがあります。 スキル固有のプロパティによって、そのスキルに適用できる追加の情報が提供されます。 エンティティの認識では、`categories` は、事前トレーニング済みモデルが認識できる固定されたエンティティ型セットのうちのエンティティの 1 つです。
-
-* スキルごとに ```"context"``` が必要です。 コンテキストは、操作が実行されるレベルを表します。 上記のスキルでは、コンテキストはドキュメント全体であり、つまり、認識スキルがドキュメントごとに 1 回呼び出されることになります。 出力もそのレベルで生成されます。 具体的には、```"organizations"``` は、```"/document"``` のメンバーとして生成されます。 ダウンストリーム スキルでは、新しく作成されたこの情報を ```"/document/organizations"``` として参照できます。  ```"context"``` フィールドが明示的に設定されていない場合、このドキュメントが既定のコンテキストになります。
-
-* このスキルには、ソースの入力が ```"/document/content"``` に設定されている "text" と呼ばれる入力があります。 このスキル (エンティティ認識) は、各ドキュメントの *content* フィールド (Azure BLOB インデクサーによって作成される標準のフィールドです) 上で動作します。 
-
-* このスキルには、```"organizations"``` と呼ばれる出力があります。 出力は、処理中にのみ存在します。 この出力をダウンストリーム スキルの入力に連結するには、```"/document/organizations"``` としてこの出力を参照します。
-
-* 特定のドキュメントでは、```"/document/organizations"``` の値は、テキストから抽出された組織の配列になります。 次に例を示します。
-
-  ```json
-  ["Microsoft", "LinkedIn"]
-  ```
-
-状況によっては、配列の各要素を別々に参照する必要があります。 たとえば、```"/document/organizations"``` の各要素を別のスキル (カスタム Bing Entity Search エンリッチャーなど) に別々に渡す必要があるとします。 この配列の各要素は、```"/document/organizations/*"``` のようにパスにアスタリスクを追加することで参照できます。 
-
-2 番目の、センチメント抽出のスキルは、最初のエンリッチャーと同じパターンに従います。 入力として ```"/document/content"``` を受け取り、コンテンツのインスタンスごとにセンチメント スコアを返します。 ```"context"``` フィールドを明示的に設定していないため、出力 (mySentiment) は、```"/document"``` の子になります。
-
-```json
+  ],
+  "outputs": [
     {
-      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "score",
-          "targetName": "mySentiment"
-        }
-      ]
-    },
-```
-
-## <a name="add-a-custom-skill"></a>カスタム スキルを追加する
-
-Bing Entity Search カスタム エンリッチャーの構造体を思い出してください。
-
-```json
-    {
-      "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-     "description": "This skill calls an Azure function, which in turn calls Bing Entity Search",
-      "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
-      "httpHeaders": {
-          "Ocp-Apim-Subscription-Key": "foobar"
-      },
-      "context": "/document/organizations/*",
-      "inputs": [
-        {
-          "name": "query",
-          "source": "/document/organizations/*"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "description",
-          "targetName": "companyDescription"
-        }
-      ]
-    }
-```
-
-この定義は、エンリッチメント プロセスの一環として Web API を呼び出す[カスタム スキル](cognitive-search-custom-skill-web-api.md)です。 このスキルでは、エンティティ認識によって識別される組織ごとに、Web API を呼び出してその組織の説明を検索します。 Web API を呼び出すタイミングと受信した情報を送る方法のオーケストレーションは、エンリッチメント エンジンによって内部的に処理されます。 ただし、このカスタム API を呼び出すために必要な初期化は、JSON (URI、httpHeaders、想定される入力など) で提供する必要があります。 エンリッチメント パイプライン用にカスタム Web API を作成する際のガイダンスについては、[カスタム インターフェイスを定義する方法](cognitive-search-custom-skill-interface.md)に関するページを参照してください。
-
-"context" フィールドが、アスタリスク付きで ```"/document/organizations/*"``` に設定されていることに注目してください。これは、エンリッチメント ステップが```"/document/organizations"``` の下にある組織 "*ごと*" に呼び出されることを意味します。 
-
-出力 (ここでは会社の説明) が、特定された組織ごとに生成されます。 ダウンストリームのステップ (キー フレーズの抽出など) で説明を参照するときは、パス ```"/document/organizations/*/description"``` を使用して実行します。 
-
-## <a name="add-structure"></a>構造を追加する
-
-スキルセットによって、非構造化データから構造化情報が生成されます。 次の例を確認してください。
-
-"*Microsoft では第 4 四半期に、昨年買収したソーシャル ネットワー キング会社 LinkedIn からの収益として 11 億ドルを記録しました。Microsoft は、この買収によって、LinkedIn の機能を自社の CRM と Office の機能に結合することができます。株主は、これまでの経過に興奮しています。* "
-
-結果として生成される構造体は、次の図のようになります。
-
-![出力構造のサンプル](media/cognitive-search-defining-skillset/enriched-doc.png "出力構造のサンプル")
-
-ここまでは、この構造は、内部のみ、メモリのみであり、Azure Cognitive Search インデックス内だけで使用されていました。 検索以外で使用するシェイプによるエンリッチメントを保存するための 1 つの方法として、ナレッジ ストアの追加が提供されています。
-
-## <a name="add-a-knowledge-store"></a>ナレッジ ストアを追加する
-
-[ナレッジ ストア](knowledge-store-concept-intro.md)は、エンリッチされたドキュメントを保存するための Azure Cognitive Search の機能です。 Azure ストレージ アカウントによってサポートされている、自身で作成したナレッジ ストアは、エンリッチされたデータが配置されるリポジトリになります。 
-
-ナレッジ ストアの定義は、スキルセットに追加されます。 プロセス全体のチュートリアルについては、[REST でのナレッジ ストアの作成](knowledge-store-create-rest.md)に関するページをご覧ください。
-
-```json
-"knowledgeStore": {
-  "storageConnectionString": "<an Azure storage connection string>",
-  "projections" : [
-    {
-      "tables": [ ]
-    },
-    {
-      "objects": [
-        {
-          "storageContainer": "containername",
-          "source": "/document/EnrichedShape/",
-          "key": "/document/Id"
-        }
-      ]
+      "name": "score",
+      "targetName": "mySentiment"
     }
   ]
 }
 ```
 
-エンリッチされたドキュメントは、階層のリレーションシップを保管するテーブルとして保存するか、またはBLOB ストレージ内に JSON ドキュメントとして保存できます。 スキルセット内のどのスキルからの出力も、プロジェクションへの入力のソースにすることが可能です。 特定のシェイプへのデータのプロジェクションを検討している場合は、[Shaper スキル](cognitive-search-skill-shaper.md)によって、ユーザーが使用する複合型をモデル化できるようになりました。 
+## <a name="adding-a-custom-skill"></a>カスタム スキルの追加
 
-<a name="next-step"></a>
+[カスタム スキル](cognitive-search-custom-skill-web-api.md)の例を次に示します。 URI は Azure 関数を指します。これにより、指定したモデルまたは変換が呼び出されます。 詳細については、[カスタム インターフェイスの定義](cognitive-search-custom-skill-interface.md)に関するページを参照してください。
+
+カスタム スキルは、パイプラインの外部にあるコードを実行していますが、スキル配列では、もう 1 つのスキルに過ぎません。 組み込みのスキルと同様に、型、コンテキスト、入力、および出力があります。 また、組み込みのスキルと同様に、エンリッチメント ツリーの読み取りと書き込みも行います。 "context" フィールドが、アスタリスク付きで `"/document/orgs/*"` に設定されていることに注目してください。これは、エンリッチメント ステップが`"/document/orgs"` の下にある組織 "*ごと*" に呼び出されることを意味します。
+
+出力 (ここでは会社の説明) が、特定された組織ごとに生成されます。 ダウンストリームのステップ (キー フレーズの抽出など) で説明を参照するときは、パス `"/document/orgs/*/companyDescription"` を使用して実行します。 
+
+```json
+{
+  "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+  "description": "This skill calls an Azure function, which in turn calls custom code",
+  "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeCode?code=foo",
+  "httpHeaders": {
+      "Ocp-Apim-Subscription-Key": "foobar"
+  },
+  "context": "/document/orgs/*",
+  "inputs": [
+    {
+      "name": "query",
+      "source": "/document/orgs/*"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "description",
+      "targetName": "companyDescription"
+    }
+  ]
+}
+```
+
+## <a name="send-output-to-an-index"></a>インデックスへの出力を送信する
+
+各スキルが実行されると、その出力がドキュメントのエンリッチメント ツリーのノードとして追加されます。 強化されたドキュメントは、パイプライン内に一時的なデータ構造として存在します。 永続的なデータ構造を作成し、スキルが実際にどのように生成されるかを完全に把握するには、検索インデックスまたは[ナレッジ ストア](knowledge-store-concept-intro.md)に出力を送信する必要があります。
+
+スキルセット評価の初期段階では、最小限の労力で暫定的な結果を確認することをお勧めします。 セットアップが簡単であるため、検索インデックスをお勧めします。 スキルの出力ごとに、[インデクサーの出力フィールド マッピング](cognitive-search-output-field-mapping.md)と、インデックスのフィールドを定義します。
+
+:::image type="content" source="media/cognitive-search-defining-skillset/skillset-indexer-index-combo.png" alt-text="Person エンティティがスキル出力、インデクサー フィールド マッピング、およびインデックス フィールドでどのように定義されているかを示すオブジェクト図。":::
+
+インデクサーを実行した後、[検索エクスプローラー](search-explorer.md)を使用してインデックスからドキュメントを返し、各フィールドの内容を確認して、スキルセットが検出または作成されたかどうかを確認できます。
+
+次の例は、テキストのチャンクに含まれる人物、場所、組織、およびその他のエンティティを検出したエンティティ認識スキルの結果を示しています。 検索エクスプローラーで結果を表示すると、スキルによってソリューションに価値が追加されるかどうかを判断するのに役立ちます。
+
+:::image type="content" source="media/cognitive-search-defining-skillset/doc-in-search-explorer.png" alt-text="検索エクスプローラーでのドキュメントのスクリーンショット。":::
+
+## <a name="tips-for-a-first-skillset"></a>最初のスキルセットのヒント
+
++ Blob Storage またはサポートされている別のインデクサー データ ソース内のコンテンツの代表的なサンプルをアセンブルし、**データのインポート** ウィザードを実行すると、スキルセット、インデックス、インデクサー、およびデータ ソース オブジェクトを作成できます。 
+
+  このウィザードでは、インデックスでのフィールドの定義、インデクサーでの出力フィールド マッピングの定義、使用している場合はナレッジ ストアでのプロジェクションなど、初めは難しいいくつかの手順を自動化しています。 OCR や画像解析などの一部のスキルでは、ドキュメントの解析中で分離された画像とテキストの内容を結合するユーティリティ スキルがウィザードによって追加されます。
+
++ または、変換結果を表示するためにクエリを実行できる、スキルセットからインデックスまでのスキルを評価するために必要なすべてのオブジェクト定義の例をすべて提供するスキル Postman コレクションをインポートすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
 
-エンリッチメント パイプラインとスキルセットについて学習したので、引き続き[スキルセットの注釈を参照する方法](cognitive-search-concept-annotations-syntax.md)または[インデックス内のフィールドに出力をマップする方法](cognitive-search-output-field-mapping.md)を確認してください。
+コンテキストと入力ソースのフィールドは、エンリッチメント ツリー内のノードへのパスです。 次の手順として、エンリッチメント ツリー内のノードへのパスを設定するための構文の詳細について説明します。
+
+> [!div class="nextstepaction"]
+> [スキルセットで注釈を参照する](cognitive-search-concept-annotations-syntax.md)

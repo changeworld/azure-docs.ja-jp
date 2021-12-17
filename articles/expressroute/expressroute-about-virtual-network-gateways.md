@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/05/2021
+ms.date: 04/23/2021
 ms.author: duau
-ms.openlocfilehash: 796e35be12939920f9392e6f3ce4cae660415f80
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 719ad0681e9d66828fc0e030394a2c910017a3ad
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504699"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259563"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>ExpressRoute の仮想ネットワーク ゲートウェイについて
 
@@ -31,16 +31,49 @@ ms.locfileid: "106504699"
 ## <a name="gateway-skus"></a><a name="gwsku"></a>ゲートウェイの SKU
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-ゲートウェイをより強力なゲートウェイ SKU にアップグレードする場合、ほとんどの場合 "Resize-AzVirtualNetworkGateway" PowerShell コマンドレットを使用できます。 これは、Standard および HighPerformance SKU へのアップグレードの場合でも機能します。 ただし、UltraPerformance SKU へのアップグレードでは、ゲートウェイを再作成する必要があります。 ゲートウェイの再作成によりダウンタイムが発生します。
+ゲートウェイをより強力なゲートウェイ SKU にアップグレードする場合、ほとんどの場合 "Resize-AzVirtualNetworkGateway" PowerShell コマンドレットを使用できます。 これは、Standard および HighPerformance SKU へのアップグレードの場合でも機能します。 ただし、可用性ゾーン (AZ) 以外のゲートウェイを UltraPerformance SKU にアップグレードするには、ゲートウェイを再作成する必要があります。 ゲートウェイの再作成によりダウンタイムが発生します。 AZ 対応 SKU をアップグレードするためにゲートウェイを削除して再作成する必要はありません。
+### <a name="feature-support-by-gateway-sku"></a><a name="gatewayfeaturesupport"></a>ゲートウェイ SKU による機能のサポート
+次の表では、各ゲートウェイの種類でサポートされる機能を示しています。
+
+|**ゲートウェイ SKU**|**VPN Gateway と ExpressRoute の共存**|**FastPath**|**回線接続の最大数**|
+| --- | --- | --- | --- |
+|**Standard SKU/ERGw1Az**|はい|いいえ|4|
+|**High Perf SKU/ERGw2Az**|はい|いいえ|8
+|**Ultra Performance SKU/ErGw3Az**|はい|はい|16
 
 ### <a name="estimated-performances-by-gateway-sku"></a><a name="aggthroughput"></a>ゲートウェイ SKU の推定パフォーマンス
-次の表は、ゲートウェイの種類と、予測されるパフォーマンスを示したものです。 この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
+次の表は、ゲートウェイの種類と、予測されるパフォーマンスとスケールの数値を示したものです。 これらの数値は、以下のテスト条件から得られたもので、サポートの上限を表しています。 実際のパフォーマンスは、トラフィックによってテスト条件がどれだけ厳密に再現されるかによって異なる場合があります。
 
-[!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
+### <a name="testing-conditions"></a>テスト条件
+##### <a name="standardergw1az"></a>**Standard/ERGw1Az** #####
+
+- 回線帯域幅: 1 Gbps
+- ゲートウェイによってアドバタイズされたルートの数: 500
+- 学習されたルートの数: 4,000
+##### <a name="high-performanceergw2az"></a>**High Performance/ERGw2Az** #####
+
+- 回線帯域幅: 1 Gbps
+- ゲートウェイによってアドバタイズされたルートの数: 500
+- 学習されたルートの数: 9,500
+##### <a name="ultra-performanceergw3az"></a>**Ultra Performance/ErGw3Az** #####
+
+- 回線帯域幅: 1 Gbps
+- ゲートウェイによってアドバタイズされたルートの数: 500
+- 学習されたルートの数: 9,500
+
+ この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
+ 
+|**ゲートウェイ SKU**|**1 秒あたりの接続数**|**1 秒あたりのメガビット数**|**1 秒あたりのパケット数**|**Virtual Network でサポートされている VM の数**|
+| --- | --- | --- | --- | --- |
+|**Standard/ERGw1Az**|7,000|1,000|100,000|2,000|
+|**High Performance/ERGw2Az**|14,000|2,000|250,000|4,500|
+|**Ultra Performance/ErGw3Az**|16,000|10,000|1,000,000|11,000|
 
 > [!IMPORTANT]
-> * 仮想ネットワーク内の VM の数には、リモート ExpressRoute ゲートウェイを使用するピアリングされた仮想ネットワーク内の VM も含まれます。
-> * アプリケーションのパフォーマンスは複数の要因によって異なります。これらの要因には、エンド ツー エンドの待機時間、アプリケーションが起動するトラフィック フローの数などがあります。 テーブルの数値は、アプリケーションが理想的な環境で理論上達成できる上限を表しています。
+> アプリケーションのパフォーマンスは複数の要因によって異なります。これらの要因には、エンド ツー エンドの待機時間、アプリケーションが起動するトラフィック フローの数などがあります。 テーブルの数値は、アプリケーションが理想的な環境で理論上達成できる上限を表しています。
+
+>[!NOTE]
+> 同じ仮想ネットワークに接続できる同じピアリングの場所からの ExpressRoute 回線の最大数は、すべてのゲートウェイに対して 4 です。
 >
 
 ## <a name="gateway-subnet"></a><a name="gwsub"></a>ゲートウェイ サブネット
@@ -76,11 +109,6 @@ Azure Availability Zones に、ExpressRoute ゲートウェイをデプロイす
 * ErGw3AZ
 
 新しいゲートウェイ SKU では、ニーズに最も適したその他のデプロイ オプションもサポートされます。 新しいゲートウェイ SKU を使用して仮想ネットワーク ゲートウェイを作成する場合、特定のゾーン内にゲートウェイをデプロイするオプションもあります。 これは、ゾーン ゲートウェイと呼ばれます。 ゾーン ゲートウェイをデプロイすると、すべてのゲートウェイ インスタンスが同じ可用性ゾーンにデプロイされます。
-
-> [!IMPORTANT]
-> ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、デュアル スタックのゲートウェイ サブネットにデプロイするゲートウェイに対して AZ SKU を選択してください。
-> 
->
 
 ## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 

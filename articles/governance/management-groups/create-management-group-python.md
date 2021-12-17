@@ -1,17 +1,15 @@
 ---
 title: 'クイックスタート: Python を使用して管理グループを作成する'
 description: このクイックスタートでは、Python を使用して、リソースをリソース階層に整理する管理グループを作成します。
-ms.date: 01/29/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.custom:
-- devx-track-python
-- mode-api
-ms.openlocfilehash: 9aec47e067ca62f4902df2dafb6a5d6d50a26d0e
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-python, mode-api
+ms.openlocfilehash: 571e59e058b5cade33be8e883f5f1b1bab4169f1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533171"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028255"
 ---
 # <a name="quickstart-create-a-management-group-with-python"></a>クイックスタート: Python を使用して管理グループを作成する
 
@@ -74,12 +72,12 @@ Python で管理グループを管理できるようにするには、ライブ�
    ```python
    # Import management group classes
    from azure.mgmt.managementgroups import ManagementGroupsAPI
-   
+
    # Import specific methods and models from other libraries
    from azure.common.credentials import get_azure_cli_credentials
    from azure.common.client_factory import get_client_from_cli_profile
    from azure.mgmt.resource import ResourceManagementClient, SubscriptionClient
-   
+
    # Wrap all the work in a function
    def createmanagementgroup( strName ):
        # Get your credentials from Azure CLI (development only!) and get your subscription list
@@ -90,17 +88,17 @@ Python で管理グループを管理できるようにするには、ライブ�
        subsList = []
        for sub in subsRaw:
            subsList.append(sub.get('subscription_id'))
-       
+
        # Create management group client and set options
        mgClient = get_client_from_cli_profile(ManagementGroupsAPI)
        mg_request = {'name': strName, 'display_name': strName}
-       
+
        # Create management group
        mg = mgClient.management_groups.create_or_update(group_id=strName,create_management_group_request=mg_request)
-       
+
        # Show results
        print(mg)
-   
+
    createmanagementgroup("MyNewMG")
    ```
 

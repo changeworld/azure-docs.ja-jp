@@ -3,20 +3,20 @@ title: Text to Speech API リファレンス (REST) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Text to Speech REST API の使用方法について説明します。 この記事では、認可のオプションとクエリのオプション、さらに要求を構築する方法と応答を受信する方法について説明します。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.author: trbye
+ms.date: 07/01/2021
+ms.author: eur
 ms.custom: references_regions
-ms.openlocfilehash: 0065b6f4a7039e2883bca6acd5cf659be7b71069
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: bb21358418b30a45bc0d9578d49d025cc4d1a408
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717677"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503830"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -109,11 +109,11 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 [
 
     {
-    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
-    "DisplayName": "Aria",
-    "LocalName": "Aria",
-    "ShortName": "en-US-AriaNeural",
-    "Gender": "Female",
+    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, ChristopherNeural)",
+    "DisplayName": "Christopher",
+    "LocalName": "Christopher",
+    "ShortName": "en-US-ChristopherNeural",
+    "Gender": "Male",
     "Locale": "en-US",
     "StyleList": [
       "chat",
@@ -128,9 +128,38 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
     "Status": "GA"
   },
 
-  ...
+    ...
 
      {
+    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, JennyMultilingualNeural)",
+    "ShortName": "en-US-JennyMultilingualNeural",
+    "DisplayName": "Jenny Multilingual",
+    "LocalName": "Jenny Multilingual",
+    "Gender": "Female",
+    "Locale": "en-US",
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "SecondaryLocaleList": [
+        "de-DE",
+        "en-AU",
+        "en-CA",
+        "en-GB",
+        "es-ES",
+        "es-MX",
+        "fr-CA",
+        "fr-FR",
+        "it-IT",
+        "ja-JP",
+        "ko-KR",
+        "pt-BR",
+        "zh-CN"
+      ],
+    "Status": "Preview"
+    },
+    
+  ...
+    
+    {
     "Name": "Microsoft Server Speech Text to Speech Voice (ga-IE, OrlaNeural)",
     "DisplayName": "Orla",
     "LocalName": "Orla",
@@ -264,8 +293,8 @@ Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
-<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-AriaNeural'>
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Male'
+    name='en-US-ChristopherNeural'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
@@ -289,4 +318,4 @@ HTTP ステータスが `200 OK` の場合、応答の本文には要求され�
 
 - [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 - [長い形式の音声の非同期合成](./long-audio-api.md)
-- [カスタム音声の概要](how-to-custom-voice.md)
+- [カスタム ニューラル音声の概要](how-to-custom-voice.md)

@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure VM Backup の�
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57187a9f7ecf3e1d00fa395d25d98fd03f5d2698
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92171458"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461025"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
 
@@ -23,7 +23,7 @@ ms.locfileid: "92171458"
 
 ### <a name="discover-unprotected-azure-vms"></a>保護されていない Azure VM を検出する
 
-最初に、コンテナーが Azure VM を識別できるようにする必要があります。 これは、[refresh 操作](/rest/api/backup/protectioncontainers/refresh)を使用してトリガーされます。 これは非同期の *POST* 操作であり、これにより、コンテナーが現在のサブスクリプション内で保護されていない全ての VM の最新の一覧を取得して、それらを "キャッシュ" することが確実に実行されます。 VM が "キャッシュ" されると、Recovery Services は VM にアクセスし、それを保護できるようになります。
+最初に、コンテナーが Azure VM を識別できるようにする必要があります。 これは、[refresh 操作](/rest/api/backup/protection-containers/refresh)を使用してトリガーされます。 これは非同期の *POST* 操作であり、これにより、コンテナーが現在のサブスクリプション内で保護されていない全ての VM の最新の一覧を取得して、それらを "キャッシュ" することが確実に実行されます。 VM が "キャッシュ" されると、Recovery Services は VM にアクセスし、それを保護できるようになります。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
@@ -41,7 +41,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |Type  |説明  |
+|名前  |型  |説明  |
 |---------|---------|---------|
 |204 No Content     |         |  OK で、返されたコンテンツはありません      |
 |202 Accepted     |         |     承認済み    |
@@ -92,7 +92,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>関連する Azure VM の選択
 
- サブスクリプションの下で[保護可能なすべての項目を一覧表示](/rest/api/backup/backupprotectableitems/list)し、応答内で目的の VM を見つけることで、"キャッシュ処理" が行われることを確認できます。 [この操作の応答](#example-responses-to-get-operation)には、Recovery Services が VM を識別する方法に関する情報も示されます。  このパターンに精通したら、この手順をスキップし、[保護の有効化](#enabling-protection-for-the-azure-vm)に直接進むことができます。
+ サブスクリプションの下で[保護可能なすべての項目を一覧表示](/rest/api/backup/backup-protectable-items/list)し、応答内で目的の VM を見つけることで、"キャッシュ処理" が行われることを確認できます。 [この操作の応答](#example-responses-to-get-operation)には、Recovery Services が VM を識別する方法に関する情報も示されます。  このパターンに精通したら、この手順をスキップし、[保護の有効化](#enabling-protection-for-the-azure-vm)に直接進むことができます。
 
 この操作は *GET* 操作です。
 
@@ -104,9 +104,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="responses-to-get-operation"></a>取得操作に対する応答
 
-|名前  |Type  |説明  |
+|名前  |型  |説明  |
 |---------|---------|---------|
-|200 OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       [OK] |
+|200 OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backup-protectable-items/list#workloadprotectableitemresourcelist)        |       [OK] |
 
 #### <a name="example-responses-to-get-operation"></a>取得操作に対する応答の例
 
@@ -162,7 +162,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Azure VM の保護の有効化
 
-適切な VM の "キャッシュ" と "識別" が行われたら、保護するポリシーを選択します。 コンテナー内にある既存のポリシーの詳細について知るには、[Policy API の list](/rest/api/backup/backuppolicies/list) を参照してください。 次に、ポリシー名を参照して、[適切なポリシー](/rest/api/backup/protectionpolicies/get)を選択します。 ポリシーを作成するには、[ポリシーの作成に関するチュートリアル](backup-azure-arm-userestapi-createorupdatepolicy.md)を参照してください。 以下の例では "DefaultPolicy" が選択されています。
+適切な VM の "キャッシュ" と "識別" が行われたら、保護するポリシーを選択します。 コンテナー内にある既存のポリシーの詳細について知るには、[Policy API の list](/rest/api/backup/backup-policies/list) を参照してください。 次に、ポリシー名を参照して、[適切なポリシー](/rest/api/backup/protection-policies/get)を選択します。 ポリシーを作成するには、[ポリシーの作成に関するチュートリアル](backup-azure-arm-userestapi-createorupdatepolicy.md)を参照してください。 以下の例では "DefaultPolicy" が選択されています。
 
 保護を有効にすることは、"保護された項目" を作成する非同期の *PUT* 操作です。
 
@@ -180,11 +180,11 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 保護された項目を作成する場合、要求本文のコンポーネントは次のようになります。
 
-|名前  |Type  |説明  |
+|名前  |型  |説明  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem リソースのプロパティ         |
 
-要求本文の定義の完全な一覧およびその他の詳細については、[保護された項目の作成に関する REST API ドキュメント](/rest/api/backup/protecteditems/createorupdate#request-body)を参照してください。
+要求本文の定義の完全な一覧およびその他の詳細については、[保護された項目の作成に関する REST API ドキュメント](/rest/api/backup/protected-items/create-or-update#request-body)を参照してください。
 
 ##### <a name="example-request-body"></a>要求本文の例
 
@@ -208,9 +208,9 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |Type  |説明  |
+|名前  |型  |説明  |
 |---------|---------|---------|
-|200 OK     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  [OK]       |
+|200 OK     |    [ProtectedItemResource](/rest/api/backup/protected-item-operation-results/get#protecteditemresource)     |  [OK]       |
 |202 Accepted     |         |     承認済み    |
 
 ##### <a name="example-responses-to-create-protected-item-operation"></a>保護された項目の作成操作に対する応答の例
@@ -323,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 オンデマンド バックアップをトリガーする場合、要求本文のコンポーネントは次のようになります。
 
-|名前  |Type  |説明  |
+|名前  |型  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource プロパティ         |
 
@@ -348,7 +348,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |Type  |説明  |
+|名前  |型  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
@@ -437,7 +437,7 @@ Azure VM が既にバックアップされている場合は、保護のポリ�
 > [!IMPORTANT]
 > 上記の要求本文は常に、除外するまたは含めるデータ ディスクの最終的なコピーです。 前の構成に "*追加*" されるわけではありません。 次に例を示します。最初に "データ ディスク 1 を除外する" として保護を更新し、その後に、"データ ディスク 2 を除外する" で保護を更新した場合、その後のバックアップでは "*データ ディスク 2 のみが除外*" され、データ ディスク 1 は含まれます。 これは、常に、その後のバックアップで含まれる、または除外される最終的な一覧です。
 
-除外される、または含まれるディスクの最新の一覧を取得するには、[こちら](/rest/api/backup/protecteditems/get)に記載されている保護された項目の情報を取得してください。 応答には、データ ディスク LUN の一覧が示され、それらが含まれるかのか除外されるのかが示されます。
+除外される、または含まれるディスクの最新の一覧を取得するには、[こちら](/rest/api/backup/protected-items/get)に記載されている保護された項目の情報を取得してください。 応答には、データ ディスク LUN の一覧が示され、それらが含まれるかのか除外されるのかが示されます。
 
 ### <a name="stop-protection-but-retain-existing-data"></a>保護を停止するが既存のデータを保持する
 
@@ -457,7 +457,7 @@ Azure VM が既にバックアップされている場合は、保護のポリ�
 
 ### <a name="stop-protection-and-delete-data"></a>保護を停止してデータを削除する
 
-保護された VM の保護を停止し、バックアップ データも削除するには、[ここ](/rest/api/backup/protecteditems/delete)で詳しく説明されている削除操作を実行します。
+保護された VM の保護を停止し、バックアップ データも削除するには、[ここ](/rest/api/backup/protected-items/delete)で詳しく説明されている削除操作を実行します。
 
 保護の停止とデータの削除は、*DELETE* 操作です。
 
@@ -477,7 +477,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、次にその操作が完了したときは 204 (NoContent)。
 
-|名前  |Type  |説明  |
+|名前  |型  |説明  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 Accepted     |         |     承認済み    |

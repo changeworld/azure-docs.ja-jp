@@ -4,16 +4,17 @@ description: 新しいノード タイプを追加し、前のものを削除し
 ms.date: 12/11/2020
 ms.author: pepogors
 ms.topic: how-to
-ms.openlocfilehash: 325ece761481077171a670c52e9d98071237601a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ad6b105d18f431c53c9fc46a463271e0481b4f0b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251183"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688584"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric クラスターのプライマリ ノード タイプをスケールアップする
 
-この記事では、最小限のダウンタイムで Service Fabric クラスターのプライマリ ノード タイプをスケールアップする方法について説明します。 Service Fabric クラスター ノードをアップグレードする一般的な方法は次のとおりです。
+この記事では、最小限のダウンタイムで Service Fabric クラスターのプライマリ ノード タイプをスケールアップする方法について説明します。 SKU のインプレイス アップグレードは、Service Fabric クラスター ノードではサポートされていません。このような操作には、データと可用性の損失が伴う可能性があるためです。 Service Fabric ノード タイプをスケールアップする際の、最も安全性と信頼性が高く推奨される方法は、次を行うことです。
 
 1. アップグレードされた (または変更された) 仮想マシン スケール セットの SKU および構成を使用する新しいノード タイプを Service Fabric クラスターに追加します。 この手順では、スケール セットの新しいロード バランサー、サブネット、およびパブリック IP の設定も必要になります。
 

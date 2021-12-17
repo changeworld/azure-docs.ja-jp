@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning からモデルがデプロイされたときに生成された Web サービス エンドポイントを呼び出す方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 10/12/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: e9fb801fce3e47fc83febeddd6f331ce2af207e6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python,devx-track-csharp
+ms.openlocfilehash: 7b6d586f3a96f9843bfa6241ffba05c924c20da3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506975"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559658"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
@@ -77,7 +77,7 @@ Web サービスは、ローカル環境、Azure Container Instances、Azure Kub
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-デプロイされたサービスの名前がわかっている場合は、[az ml service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) コマンドを使用します。
+デプロイされたサービスの名前がわかっている場合は、[az ml service show](/cli/azure/ml(v1)/service#az_ml_service_show) コマンドを使用します。
 
 ```azurecli
 az ml service show -n <service-name>

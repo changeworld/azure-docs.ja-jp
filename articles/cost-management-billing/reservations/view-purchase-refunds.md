@@ -1,22 +1,37 @@
 ---
 title: Azure Reservation の購入と払戻のトランザクションを表示する
 description: Azure Reservation の購入と払戻のトランザクションを表示する方法について学習します。
-author: yashesvi
+author: bandersmsft
+ms.reviwer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: b986aa2bfce203be85adbcde8e2966c167bf7ca1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a821ef123e8690bffc9645a23175618928e55d19
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151770"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425692"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>予約購入と払戻のトランザクションの表示
 
-予約購入と払戻のトランザクションを表示するには、いくつかの方法があります。 Azure portal、Power BI、REST API を使用できます。
+予約購入と払戻のトランザクションを表示するには、いくつかの方法があります。 Azure portal、Power BI、REST API を使用できます。 交換された予約を、トランザクションでの払戻と購入として表示できます。
+
+## <a name="view-reservation-purchases-in-the-azure-portal"></a>Azure portal で予約の購入を表示する
+
+Enterprise Agreement と Microsoft 顧客契約の請求閲覧者は、予約の購入の累積額を [コスト分析] で表示できます。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. **[コストの管理と請求]** に移動します。
+1. 左側のメニューで [コスト分析] を選択します。
+1.  **[価格モデル]**   のフィルターを適用し、 **[予約]** を選択します。
+1. 予約の購入を表示するには、 **[料金の種類]**   のフィルターを適用し、 **[購入]** を選択します。
+1.  **[細分性]**   を  **[月単位]** に設定します。
+1. グラフの種類を  **[列 (積み上げ)]** に設定します。
+
+:::image type="content" source="./media/view-purchase-refunds/reservation-purchase-cost-analysis.png" alt-text="[コスト分析] における予約の購入を示すスクリーンショット。" lightbox="./media/view-purchase-refunds/reservation-purchase-cost-analysis.png" :::
 
 ## <a name="view-reservation-transactions-in-the-azure-portal"></a>Azure portal で予約トランザクションを表示する
 
@@ -28,18 +43,18 @@ ms.locfileid: "92151770"
 1. 結果をフィルター処理するには、 **[期間]** 、 **[種類]** または **[説明]** を選択します。
 1. **[適用]** を選択します。
 
-[![Azure portal の予約トランザクションを示すスクリーンショット](./media/view-purchase-refunds/azure-portal-reservation-transactions.png)](./media/view-purchase-refunds/azure-portal-reservation-transactions.png#lightbox)
+[![Azure portal の予約トランザクションを示すスクリーンショット。](./media/view-purchase-refunds/azure-portal-reservation-transactions.png)](./media/view-purchase-refunds/azure-portal-reservation-transactions.png#lightbox)
 
 ## <a name="view-reservation-transactions-in-power-bi"></a>Power BI で予約トランザクションを表示する
 
-エンタープライズ登録または Microsoft 顧客契約の課金管理者は、Cost Management Power BI アプリで予約トランザクションを表示できます。
+マイクロソフト エンタープライズ加入契約管理者は、Cost Management Power BI アプリで予約トランザクションを表示できます。
 
 1. [Cost Management Power BI アプリ](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)を取得します。
 1. RI の購入レポートに移動します。
 
-[![予約トランザクションを示す例](./media/view-purchase-refunds/power-bi-reservation-transactions.png)](./media/view-purchase-refunds/power-bi-reservation-transactions.png#lightbox)
+[![予約トランザクションを示す例。](./media/view-purchase-refunds/power-bi-reservation-transactions.png)](./media/view-purchase-refunds/power-bi-reservation-transactions.png#lightbox)
 
-詳細については、[Enterprise Agreement 用の Azure Cost Management Power BI アプリ](../costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)に関するページを参照してください。
+詳細については、[Enterprise Agreement 用の Cost Management Power BI アプリ](../costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)に関するページを参照してください。
 
 ## <a name="use-apis-to-get-reservation-transactions"></a>API を使用して予約トランザクションを取得する
 

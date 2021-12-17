@@ -1,36 +1,38 @@
 ---
-title: リソースによる Azure Sentinel データへのアクセスを管理する | Microsoft Docs
-description: この記事では、ユーザーがアクセスできるリソースによる Azure Sentinel データへのアクセスを管理する方法について説明します。 リソースによるアクセスを管理することにより、Azure Sentinel エクスペリエンス全体を使用せずに、特定のデータにのみアクセスできるようにすることができます。 この方法は、リソースコンテキスト RBAC とも呼ばれています。
+title: リソースによる Microsoft Sentinel データへのアクセスを管理する | Microsoft Docs
+description: この記事では、ユーザーがアクセスできるリソースによって Microsoft Sentinel データへのアクセスを管理する方法について説明します。 リソースによるアクセスを管理すると、Microsoft Sentinel エクスペリエンス全体を使用せずに、特定のデータにのみアクセスできるようにすることができます。 この方法は、リソースコンテキスト RBAC とも呼ばれています。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: fc1246d079760fd86513840aebbffa34d192f8ed
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 38fd7f30dc412872ccdb6817ae1f502b78a77641
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044177"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522500"
 ---
-# <a name="manage-access-to-azure-sentinel-data-by-resource"></a>リソースによる Azure Sentinel データへのアクセスを管理する
+# <a name="manage-access-to-microsoft-sentinel-data-by-resource"></a>リソースによる Microsoft Sentinel データへのアクセスを管理する
 
-通常、Azure Sentinel ワークスペースにアクセスできるユーザーは、セキュリティ コンテンツを含め、すべてのワークスペース データにもアクセスできます。 管理者は、[Azure ロール](roles.md) を使用することにより、チームのアクセス要件に応じて、Azure Sentinel の特定の機能に対するアクセスを構成できます。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-ただし、Azure Sentinel ワークスペース内の特定のデータしかアクセスする必要がなく、Azure Sentinel 環境全体にアクセスする必要がないユーザーもいます。 たとえば、セキュリティ オペレーション以外 (非 SOC) のチームに、そのチームが所有するサーバーの Windows イベント データへのアクセスを提供することが必要な場合があります。
+通常、Microsoft Sentinel ワークスペースにアクセスできるユーザーは、セキュリティ コンテンツを含め、すべてのワークスペース データにもアクセスできます。 管理者は、[Azure ロール](roles.md) を使用して、チームのアクセス要件に応じて、Microsoft Sentinel の特定の機能に対するアクセスを構成できます。
 
-このような場合は、Azure Sentinel ワークスペースまたは特定の Azure Sentinel 機能へのアクセスを提供する代わりに、ユーザーに許可されるリソースに基づいてロールベースのアクセス制御 (RBAC) を構成します。 この方法は、**リソースコンテキスト RBAC** とも呼ばれています。
+ただし、Microsoft Sentinel ワークスペース内の特定のデータのみにアクセスする必要があり、Microsoft Sentinel 環境全体にアクセスする必要はないユーザーもいます。 たとえば、セキュリティ オペレーション以外 (非 SOC) のチームに、そのチームが所有するサーバーの Windows イベント データへのアクセスを提供することが必要な場合があります。
 
-ユーザーが、Azure Sentinel ワークスペースではなくアクセス可能なリソースを介して Azure Sentinel データにアクセスできる場合、ユーザーは次の方法を使用してログとブックを表示できます。
+このような場合は、Microsoft Sentinel ワークスペースまたは特定の Microsoft Sentinel 機能へのアクセスを提供する代わりに、ユーザーに許可されるリソースに基づいてロールベースのアクセス制御 (RBAC) を構成することをお勧めします。 この方法は、**リソースコンテキスト RBAC** とも呼ばれています。
+
+ユーザーが、Microsoft Sentinel ワークスペースではなくアクセス可能なリソースを介して Microsoft Sentinel データにアクセスできる場合、ユーザーは次の方法を使用してログとブックを表示できます。
 
 - **リソース自体を使用する** (Azure 仮想マシンなど): この方法を使用して、特定のリソースのみのログおよびブックを表示します。
 
@@ -39,10 +41,11 @@ ms.locfileid: "105044177"
 Azure Monitor でリソースコンテキスト RBAC を有効にします。 詳細については、「[Azure Monitor でログ データとワークスペースへのアクセスを管理する](../azure-monitor/logs/manage-access.md)」を参照してください。
 
 > [!NOTE]
-> データが、Syslog、CEF、または AAD データなどの Azure リソースではない場合、またはカスタム コレクターによって収集されたデータである場合は、データを識別してアクセスを有効にするために使用されるリソース ID を手動で構成する必要があります。
+> データが、Syslog、CEF、または AAD データなどの Azure リソースではない場合、またはカスタム コレクターによって収集されたデータである場合は、データを識別してアクセスを有効にするために使用されるリソース ID を手動で構成する必要があります。 詳細については、「[リソースコンテキスト RBAC を明示的に構成する](#explicitly-configure-resource-context-rbac)」を参照してください。
 >
-> 詳細については、「[リソースコンテキスト RBAC を明示的に構成する](#explicitly-configure-resource-context-rbac)」を参照してください。
->
+> また、[関数](../azure-monitor/logs/functions.md)と保存された検索条件は、リソース中心のコンテキストではサポートされていません。 そのため、解析や[正規化](normalization.md)などの Microsoft Sentinel 機能は、Microsoft Sentinel のリソースコンテキスト RBAC ではサポートされません。
+> 
+
 ## <a name="scenarios-for-resource-context-rbac"></a>リソースコンテキスト RBAC のシナリオ
 
 次の表は、リソースコンテキスト RBAC が最も役立つシナリオを示しています。 SOC チームと非 SOC チームの間のアクセス要件の違いに注意してください。
@@ -51,7 +54,7 @@ Azure Monitor でリソースコンテキスト RBAC を有効にします。 �
 |---------|---------|---------|
 |**アクセス許可**     | ワークスペース全体        |   特定のリソースのみ      |
 |**データ アクセス**     |  ワークスペース内のすべてのデータ       | チームがアクセスを許可されているリソースのデータのみ        |
-|**エクスペリエンス**     |  完全な Azure Sentinel エクスペリエンス (ユーザーに割り当てられている[機能のアクセス許可](roles.md)によって制限される場合がある)       |  ログ クエリとブックのみ       |
+|**エクスペリエンス**     |  完全な Microsoft Sentinel エクスペリエンス (ユーザーに割り当てられている[機能のアクセス許可](roles.md)によって制限される場合がある)       |  ログ クエリとブックのみ       |
 |     |         |         |
 
 チームのアクセス要件が、上記の表で説明した非 SOC チームと同様である場合は、選択肢としてリソースコンテキスト RBAC が適している可能性があります。
@@ -64,28 +67,28 @@ Azure Monitor でリソースコンテキスト RBAC を有効にします。 �
 
 |シナリオ  |解決策  |
 |---------|---------|
-|**子会社に、完全な Azure Sentinel エクスペリエンスを必要とする SOC チームがある**。     |  この場合は、マルチワークスペース アーキテクチャを使用して、データのアクセス許可を分離します。 <br><br>詳細については、次を参照してください。 <br>- [ワークスペースおよびテナント全体での Azure Sentinel の拡張](extend-sentinel-across-workspaces-tenants.md)<br>    - [多くのワークスペースのインシデントを一度に操作する](multiple-workspace-view.md)          |
+|**子会社に、完全な Microsoft Sentinel エクスペリエンスを必要とする SOC チームがある**。     |  この場合は、マルチワークスペース アーキテクチャを使用して、データのアクセス許可を分離します。 <br><br>詳細については、次を参照してください。 <br>- [ワークスペースおよびテナント全体での Microsoft Sentinel の拡張](extend-sentinel-across-workspaces-tenants.md)<br>    - [多くのワークスペースのインシデントを一度に操作する](multiple-workspace-view.md)          |
 |**特定の種類のイベントへのアクセスを提供する必要がある**。     |  たとえば、Windows 管理者に対して、すべてのシステムで Windows セキュリティ イベントにアクセスできるようにします。 <br><br>このような場合は、[テーブルレベルの RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) を使用して、各テーブルのアクセス許可を定義します。       |
-| **リソースに基づくのではなく、アクセスをより詳細なレベルに制限するか、またはイベント内のフィールドのサブセットのみに制限する**   |   たとえば、ユーザーの子会社に基づいて Office 365 ログへのアクセスを制限することができます。 <br><br>この場合、[Power BI のダッシュボードおよびレポート](../azure-monitor/visualize/powerbi.md)で組み込みの統合を使用して、データへのアクセスを提供します。      |
+| **リソースに基づくのではなく、アクセスをより詳細なレベルに制限するか、またはイベント内のフィールドのサブセットのみに制限する**   |   たとえば、ユーザーの子会社に基づいて Office 365 ログへのアクセスを制限することができます。 <br><br>この場合、[Power BI のダッシュボードおよびレポート](../azure-monitor/logs/log-powerbi.md)で組み込みの統合を使用して、データへのアクセスを提供します。      |
 | | |
 
 ## <a name="explicitly-configure-resource-context-rbac"></a>ソースコンテキスト RBAC を明示的に構成する
 
 ソースコンテキスト RBAC を構成する必要があるが、データが Azure リソースではない場合、次の手順を実行します。
 
-たとえば、Azure リソースではない Azure Sentinel ワークスペース内のデータには、Syslog、CEF、または AAD データか、カスタム コレクターによって収集されたデータが含まれます。
+たとえば、Azure リソースではない Microsoft Sentinel ワークスペース内のデータには、Syslog、CEF、または AAD データか、カスタム コレクターによって収集されたデータが含まれます。
 
 **ソースコンテキスト RBAC を明示的に構成する場合**:
 
 1. Azure Monitor で、[リソースコンテキスト RBAC を有効にしている](../azure-monitor/logs/manage-access.md)ことを確認します。 
 
-1. Azure Sentinel 環境全体を使用せずに、ご使用のリソースにアクセスする必要があるユーザーのチームごとに、[リソース グループを作成](../azure-resource-manager/management/manage-resource-groups-portal.md)します。
+1. Microsoft Sentinel 環境全体を使用せずに、ご使用のリソースにアクセスする必要があるユーザーのチームごとに、[リソース グループを作成](../azure-resource-manager/management/manage-resource-groups-portal.md)します。
 
     各チーム メンバーに[ログ閲覧者のアクセス許可](../azure-monitor/logs/manage-access.md#resource-permissions)を割り当てます。
 
 1. 作成したリソース チーム グループにリソースを割り当て、関連するリソース ID でイベントにタグを付けます。
 
-    Azure リソースによって Azure Sentinel にデータが送信されると、ログ レコードには、データ リソースのリソース ID で自動的にタグが付けられます。
+    Azure リソースによって Microsoft Sentinel にデータが送信されると、ログ レコードには、データ リソースのリソース ID で自動的にタグが付けられます。
 
     > [!TIP]
     > 目的に合わせて作成された特定のリソース グループで、アクセスを許可するリソースをグループ化することをお勧めします。
@@ -103,7 +106,7 @@ Azure Monitor でリソースコンテキスト RBAC を有効にします。 �
 
 [Common Event Format (CEF)](connect-common-event-format.md) または [Syslog](connect-syslog.md) を使用してイベントを収集する場合、複数のソース システムからイベントを収集するために、ログの転送が使用されます。
 
-たとえば、CEF または Syslog を転送する VM が、Syslog イベントを送信するソースをリッスンし、それらを Azure Sentinel に転送する場合、転送されるすべてのイベントに、ログ転送 VM のリソース ID が割り当てられます。
+たとえば、CEF または Syslog を転送する VM が、Syslog イベントを送信するソースをリッスンし、それらを Microsoft Sentinel に転送する場合、転送されるすべてのイベントに、ログ転送 VM のリソース ID が割り当てられます。
 
 複数のチームがある場合は、個別のチームごとに、イベントを処理する個別のログ転送 VM があることを確認してください。
 
@@ -116,7 +119,7 @@ Azure Monitor でリソースコンテキスト RBAC を有効にします。 �
 
 ### <a name="resource-ids-with-logstash-collection"></a>Logstash コレクションを使用するリソース ID
 
-Azure Sentinel [Logstash 出力プラグイン](connect-logstash.md)を使用してデータを収集する場合、**azure_resource_id** フィールドを使用して、出力にリソース ID を含めるようにカスタム コレクターを構成します。
+Microsoft Sentinel [Logstash 出力プラグイン](connect-logstash.md)を使用してデータを収集する場合、**azure_resource_id** フィールドを使用して、出力にリソース ID を含めるようにカスタム コレクターを構成します。
 
 リソースコンテキスト RBAC を使用しており、API によって収集されたイベントを特定のユーザーが使用できるようにする必要がある場合、[ユーザー用に作成した](#explicitly-configure-resource-context-rbac)リソース グループのリソース ID を使用します。
 
@@ -150,6 +153,7 @@ Azure Sentinel [Logstash 出力プラグイン](connect-logstash.md)を使用し
 リソースコンテキスト RBAC を使用しており、API によって収集されたイベントを特定のユーザーが使用できるようにする必要がある場合、[ユーザー用に作成した](#explicitly-configure-resource-context-rbac)リソース グループのリソース ID を使用します。
 
 
+
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、「[Azure Sentinel のアクセス許可](roles.md)」を参照してください。
+詳細については、「[Microsoft Sentinel のアクセス許可](roles.md)」を参照してください。

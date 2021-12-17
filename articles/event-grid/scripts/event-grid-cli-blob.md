@@ -3,14 +3,14 @@ title: Azure CLI のサンプル スクリプト - BLOB ストレージ アカ�
 description: この記事では、Azure Blob Storage アカウントのイベントをサブスクライブする方法を示したサンプル Azure CLI スクリプトを紹介しています。
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 07/08/2020
+ms.date: 09/15/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ab0995a49f944344b6914bd0e51f1d437dd28c69
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f8c5baf79209414031073c8ef0505c0ca18252a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766756"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584620"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-azure-cli"></a>Azure CLI を使用した BLOB ストレージ アカウントのイベントのサブスクライブ
 
@@ -31,7 +31,7 @@ ms.locfileid: "107766756"
 | コマンド | Notes |
 |---|---|
 | [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) | Event Grid のサブスクリプションを作成する。 |
-| [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - 拡張機能のバージョン | Event Grid のサブスクリプションを作成する。 |
+| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) - 拡張機能のバージョン | Event Grid のサブスクリプションを作成する。 |
 
 ## <a name="next-steps"></a>次のステップ
 

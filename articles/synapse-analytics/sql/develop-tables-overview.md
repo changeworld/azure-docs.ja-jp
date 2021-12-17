@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 27cc53c3eef1bb2a9962d2c21ae80db3c8b0383d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7958c66275bbfb3d08244c7ca81d50fca4b915d0
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585436"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862211"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Synapse SQL を使用したテーブルの設計
 
@@ -102,7 +102,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 [外部テーブル](develop-tables-external-tables.md)は、Azure Storage BLOB または Azure Data Lake Store 内にあるデータを指します。
 
-データを外部テーブルから専用 SQL プールにインポートするには、[CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ステートメントを使用します。 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)」をご覧ください。
+データを外部テーブルから専用 SQL プールにインポートするには、[CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context) ステートメントを使用します。 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)」をご覧ください。
 
 サーバーレス SQL プールでは、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage 内の外部テーブルに保存できます。
 
@@ -112,7 +112,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 ## <a name="distributed-tables"></a>分散テーブル
 
-専用 SQL プールの基本的な特徴は、テーブルを[複数のディストリビューション](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#distributions)にわたって格納し、操作できる方法にあります。  専用 SQL プールでは、データを分散させるための次の 3 つの方法がサポートされます。
+専用 SQL プールの基本的な特徴は、テーブルを[複数のディストリビューション](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?context=/azure/synapse-analytics/context/context#distributions)にわたって格納し、操作できる方法にあります。  専用 SQL プールでは、データを分散させるための次の 3 つの方法がサポートされます。
 
 - ラウンドロビン (既定)
 - ハッシュ インデックス
@@ -122,19 +122,19 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 ハッシュ分散テーブルは、ディストリビューション列内の値に基づいて行を分散します。 ハッシュ分散テーブルは、大規模なテーブルのクエリでハイパフォーマンスを達成するように設計されています。 ディストリビューション列を選択する際に検討すべきいくつかの要素があります。
 
-詳細については、「[Design guidance for distributed tables (分散テーブルの設計ガイダンス)](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+詳細については、「[Design guidance for distributed tables (分散テーブルの設計ガイダンス)](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context)」を参照してください。
 
 ### <a name="replicated-tables"></a>レプリケート テーブル
 
 レプリケート テーブルには、すべてのコンピューティング ノードで使用可能なテーブルの完全なコピーが含まれています。 レプリケート テーブルの結合ではデータ移動は必要ないため、レプリケート テーブルに対するクエリは高速に実行されます。 ただし、レプリケーションには余分なストレージが必要であるため、大きなテーブルには適していません。
 
-詳しくは、[レプリケート テーブルを使用するための設計ガイダンス](../sql-data-warehouse/design-guidance-for-replicated-tables.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。
+詳しくは、[レプリケート テーブルを使用するための設計ガイダンス](../sql-data-warehouse/design-guidance-for-replicated-tables.md?context=/azure/synapse-analytics/context/context)に関する記事をご覧ください。
 
 ### <a name="round-robin-tables"></a>ラウンドロビン テーブル
 
 ラウンドロビン テーブルは、すべてのディストリビューションにわたって均等にテーブル行を分散させます。 これらの行は、ランダムに分散されます。 ラウンドロビン テーブルへのデータの読み込みは高速です。  ただし、クエリは、他の分散方法より多くのデータ移動を必要とする可能性があります。
 
-詳細については、「[Design guidance for distributed tables (分散テーブルの設計ガイダンス)](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+詳細については、「[Design guidance for distributed tables (分散テーブルの設計ガイダンス)](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context)」を参照してください。
 
 ### <a name="common-distribution-methods-for-tables"></a>テーブルの一般的な分散方法
 
@@ -150,7 +150,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 専用 SQL プールでは、パーティション テーブルにより、データ範囲に基づいてテーブル行が格納され、操作が実行されます。 たとえば、day、month、または year でテーブルをパーティション分割できます。 クエリ スキャンをあるパーティション内のデータに制限するパーティション除外によってクエリ パフォーマンスを向上させることができます。
 
-パーティションを切り替えてデータを維持することもできます。 専用 SQL プールのデータは既に分散されているため、パーティションが多すぎるとクエリ パフォーマンスが低下することがあります。 詳しくは、[パーティション分割のガイダンス](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。  
+パーティションを切り替えてデータを維持することもできます。 専用 SQL プールのデータは既に分散されているため、パーティションが多すぎるとクエリ パフォーマンスが低下することがあります。 詳しくは、[パーティション分割のガイダンス](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context)に関する記事をご覧ください。  
 
 > [!TIP]
 > 空でないテーブル パーティションにパーティションを切り替えるとき、既存のデータが切り詰められる場合は、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) ステートメントに TRUNCATE_TARGET オプションを使用することを検討してください。
@@ -200,7 +200,7 @@ ORDER BY
 
 ## <a name="primary-key-and-unique-key"></a>主キーと一意キー
 
-専用 SQL プールでは、PRIMARY KEY は、NONCLUSTERED と NOT ENFORCED の両方が使用されている場合にのみサポートされます。  UNIQUE 制約は、NOT ENFORCED が使用されている場合にのみサポートされます。  詳細については、[SQL プールのテーブル制約](../sql-data-warehouse/sql-data-warehouse-table-constraints.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。
+専用 SQL プールでは、PRIMARY KEY は、NONCLUSTERED と NOT ENFORCED の両方が使用されている場合にのみサポートされます。  UNIQUE 制約は、NOT ENFORCED が使用されている場合にのみサポートされます。  詳細については、[専用 SQL プールのテーブル制約](../sql-data-warehouse/sql-data-warehouse-table-constraints.md?context=/azure/synapse-analytics/context/context)に関するページを参照してください。
 
 ## <a name="commands-for-creating-tables"></a>テーブルを作成するためのコマンド
 
@@ -231,7 +231,7 @@ ORDER BY
 - [インデックス付きビュー](/sql/relational-databases/views/create-indexed-views?view=azure-sqldw-latest&preserve-view=true)
 - [Sequence](/sql/t-sql/statements/create-sequence-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [スパース列](/sql/relational-databases/tables/use-sparse-columns?view=azure-sqldw-latest&preserve-view=true)
-- 代理キー ([IDENTITY](../sql-data-warehouse/sql-data-warehouse-tables-identity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を使用して実装)
+- 代理キー ([IDENTITY](../sql-data-warehouse/sql-data-warehouse-tables-identity.md?context=/azure/synapse-analytics/context/context) を使用して実装)
 - [シノニム](/sql/t-sql/statements/create-synonym-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [トリガー](/sql/t-sql/statements/create-trigger-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [一意のインデックス](/sql/t-sql/statements/create-index-transact-sql?view=azure-sqldw-latest&preserve-view=true)
@@ -440,4 +440,4 @@ ORDER BY    distribution_id
 
 ## <a name="next-steps"></a>次のステップ
 
-データ ウェアハウスにテーブルを作成した後、次の手順はテーブルへのデータの読み込みです。  読み込みのチュートリアルについては、[専用 SQL プールへのデータの読み込み](../sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#load-the-data-into-sql-pool)に関するページを参照してください。
+データ ウェアハウスにテーブルを作成した後、次の手順はテーブルへのデータの読み込みです。  読み込みのチュートリアルについては、[専用 SQL プールへのデータの読み込み](../sql-data-warehouse/load-data-wideworldimportersdw.md?context=/azure/synapse-analytics/context/context#load-the-data-into-sql-pool)に関するページを参照してください。

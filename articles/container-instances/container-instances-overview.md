@@ -4,12 +4,12 @@ description: Azure Container Instances サービスには、仮想マシンを�
 ms.topic: overview
 ms.date: 03/22/2021
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c445687db7a154b6fc86e962d2c2340ad6297431
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3628171c8c4a7994ac3237c533c1e15c061a01f1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799073"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215804"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances とは
 
@@ -21,7 +21,7 @@ Azure Container Instances は、単純なアプリケーション、タスク自
 
 コンテナーは、スタートアップにおいて、仮想マシン (VM) よりもはるかに優れています。 Azure Container Instances を使用すると、VM をプロビジョニングして管理する必要なく、数秒で Azure でコンテナーを開始できます。
 
-Docker Hub、プライベート [Azure コンテナー レジストリ](../container-registry/index.yml)、または別のクラウドベースの Docker レジストリから、Linux または Windows のコンテナー イメージを取り込みます。 ACI でサポートされているレジストリについては、[FAQ](container-instances-faq.md) を参照してください。 Azure Container Instances によって複数の一般的な基本 OS イメージがキャッシュされるため、カスタム アプリケーション イメージのデプロイを高速化するのに役立ちます。
+Docker Hub、プライベート [Azure コンテナー レジストリ](../container-registry/index.yml)、または別のクラウドベースの Docker レジストリから、Linux または Windows のコンテナー イメージを取り込みます。 ACI でサポートされているレジストリについては、[FAQ](container-instances-faq.yml) を参照してください。 Azure Container Instances によって複数の一般的な基本 OS イメージがキャッシュされるため、カスタム アプリケーション イメージのデプロイを高速化するのに役立ちます。
 
 ## <a name="container-access"></a>コンテナー アクセス
 
@@ -64,7 +64,7 @@ Azure Container Instances では、同じ API で、Windows と Linux の両方�
 * [仮想ネットワークのデプロイ](container-instances-vnet.md)
 * [GPU リソース](container-instances-gpu.md) (プレビュー)
 
-Windows コンテナーのデプロイでは、一般的な [Windows ベースのイメージ](container-instances-faq.md#what-windows-base-os-images-are-supported)に基づくイメージを使用します。
+Windows コンテナーのデプロイでは、一般的な [Windows ベースのイメージ](./container-instances-faq.yml#what-windows-base-os-images-are-supported-)に基づくイメージを使用します。
 
 ## <a name="co-scheduled-groups"></a>共同スケジュール グループ
 

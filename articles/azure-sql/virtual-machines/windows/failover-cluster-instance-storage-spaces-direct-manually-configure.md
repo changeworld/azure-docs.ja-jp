@@ -3,30 +3,37 @@ title: 記憶域スペース ダイレクトで FCI を作成する
 description: 記憶域スペース ダイレクトを使用して、Azure Virtual Machines 上の SQL Server でフェールオーバー クラスター インスタンス (FCI) を作成します。
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.subservice: hadr
-ms.custom: na
+ms.custom: na, devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/18/2020
-ms.author: mathoma
-ms.openlocfilehash: aa19cf6b59b1efa4b14501fbf64e319da3e4c0b3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 11/10/2021
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 56a939e11c9daabeb44da7fa79b6e05841401ab3
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048643"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158865"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>記憶域スペース ダイレクトで FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の[複数のサブネット](failover-cluster-instance-prepare-vm.md#subnets)に SQL Server VM を作成することで、フェールオーバー クラスター インスタンスに対して Azure Load Balancer または分散ネットワーク名 (DNN) が不要になります。
+
 この記事では、[記憶域スペース ダイレクト](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)を使用して、Azure Virtual Machines (VM) 上の SQL Server でフェールオーバー クラスター インスタンス (FCI) を作成する方法について説明します。 記憶域スペース ダイレクトは、Windows クラスター内のノード (Azure VM) 間でストレージ (データ ディスク) を同期するソフトウェア ベースの仮想記憶域ネットワーク (VSAN) として機能します。 
 
 詳細については、[Azure VM 上の SQL Server を使用した FCI](failover-cluster-instance-overview.md) および[クラスターのベスト プラクティス](hadr-cluster-best-practices.md)の概要に関する記事をご覧ください。 
+
+> [!NOTE]
+> これで Azure Migrate を使用して、フェールオーバー クラスター インスタンス ソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 詳細については、[フェールオーバー クラスター インスタンスの移行](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)に関するページを参照してください。 
 
 
 ## <a name="overview"></a>概要 
@@ -44,11 +51,11 @@ ms.locfileid: "102048643"
 - 記憶域スペース ダイレクトは、データ ディスク上のデータを同期し、同期されたストレージを記憶域プールとして提供します。
 - 記憶域プールは、クラスターの共有ボリューム (CSV) をフェールオーバー クラスターに提供します。
 - SQL Server FCI のクラスター ロールは、CSV をデータ ドライブ用に使用します。
-- SQL Server FCI の IP アドレスを保持するための Azure ロード バランサー。
+- サブネットが 1 つの場合に SQL Server FCI の IP アドレスを保持するための Azure ロード バランサー。
 - Azure 可用性セットにより、すべてのリソースが保持されます。
 
-   > [!NOTE]
-   > このソリューション全体を、Azure でテンプレートから作成できます。 テンプレートの例は、GitHub の[Azure クイック スタート テンプレート](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad)のページから使用できます。 この例は、特定のワークロード向けに設計およびテストされたものではありません。 このテンプレートを実行すれば、ドメインに接続された記憶域スペース ダイレクト ストレージで SQL Server FCI を作成できます。 このテンプレートは、評価のうえ、目的に応じた変更が可能です。
+ > [!NOTE]
+> このソリューション全体を、Azure でテンプレートから作成できます。 テンプレートの例は、GitHub の[Azure クイック スタート テンプレート](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad)のページから使用できます。 この例は、特定のワークロード向けに設計およびテストされたものではありません。 このテンプレートを実行すれば、ドメインに接続された記憶域スペース ダイレクト ストレージで SQL Server FCI を作成できます。 このテンプレートは、評価のうえ、目的に応じた変更が可能です。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -60,34 +67,19 @@ ms.locfileid: "102048643"
 - Azure の仮想マシンと Active Directory の両方にオブジェクトを作成するためのアクセス許可を持つアカウント。
 - 最新バージョンの [PowerShell](/powershell/azure/install-az-ps)。 
 
+## <a name="create-windows-failover-cluster"></a>Windows フェールオーバー クラスターの作成
 
-## <a name="add-the-windows-cluster-feature"></a>Windows クラスター機能を追加する
+Windows Server フェールオーバー クラスターを作成する手順は、SQL Server VM を 1 つのサブネットにデプロイしたか、それとも複数のサブネットにデプロイしたかによって異なります。 クラスターを作成するには、[複数のサブネットの場合](availability-group-manually-configure-tutorial-multi-subnet.md#add-failover-cluster-feature)または [1 つのサブネットの場合](availability-group-manually-configure-tutorial-single-subnet.md#create-the-cluster)のチュートリアルの手順に従います。 これらのチュートリアルは可用性グループを作成するためのものですが、クラスターを作成する手順は同じです。 
 
-1. ローカル管理者のメンバーであり、Active Directory でオブジェクトを作成するアクセス許可を持つドメイン アカウントで、リモート デスクトップ プロトコル (RDP) を使用して最初の仮想マシンに接続します。 このアカウントを使用して、構成を進めます。
+## <a name="configure-quorum"></a>クォーラムを構成する
 
-1. 各仮想マシンにフェールオーバー クラスタリングを追加します。
+ディスク監視は最も回復力のあるクォーラム オプションですが、記憶域スペース ダイレクトで構成されたフェールオーバー クラスター インスタンスではサポートされていません。 そのため、クラウド監視は、Azure VM 上の SQL Server 向けのこの種類のクラスター構成に推奨されるクォーラム ソリューションです。
 
-   UI からフェールオーバー クラスタリングをインストールするには、両方の仮想マシンで次のようにします。
-
-   1. **[サーバー マネージャー]** で、 **[管理]** 、 **[役割と機能の追加]** の順に選択します。
-   1. **[役割と機能の追加]** ウィザードで、 **[機能の選択]** ページが表示されるまで **[次へ]** を選択します。
-   1. **[機能の選択]** で **[フェールオーバー クラスタリング]** を選択します。 必要なすべての機能と管理ツールを含めます。 
-   1. **[機能の追加]** を選択します。
-   1. **[次へ]** を選択し、 **[完了]** を選択して、機能をインストールします。
-
-   PowerShell を使用してフェールオーバー クラスタリングをインストールするには、いずれかの仮想マシン上の管理者 PowerShell セッションから次のスクリプトを実行します。
-
-   ```powershell
-   $nodes = ("<node1>","<node2>")
-   Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
-   ```
-
-次の手順の詳細については、「手順 3: 記憶域スペース ダイレクトを構成する」セクション ([Windows Server 2016 で記憶域スペース ダイレクトを使用するハイパーコンバージド ソリューション](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct)に関する記事) の手順を参照してください。
-
+クラスターに多数の投票がある場合は、ビジネス ニーズに最適な[クォーラム ソリューション](hadr-cluster-quorum-configure-how-to.md)を構成します。 詳細については、[SQL Server VM でのクォーラム](hadr-windows-server-failover-cluster-overview.md#quorum)に関する記事をご覧ください。 
 
 ## <a name="validate-the-cluster"></a>クラスターを検証する
 
-UI または PowerShell を使用して、クラスターを検証します。
+フェールオーバー クラスター マネージャーの UI で、または PowerShell を使用してクラスターを検証します。
 
 UI を使用してクラスターを検証するには、いずれかの仮想マシンで次の手順を実行します。
 
@@ -112,42 +104,6 @@ PowerShell を使用してクラスターを検証するには、いずれかの
    Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
    ```
 
-クラスターの検証後、フェールオーバー クラスターを作成します。
-
-
-## <a name="create-failover-cluster"></a>フェールオーバー クラスターを作成する
-
-フェールオーバー クラスターを作成するには、以下が必要です。
-
-- クラスター ノードになる仮想マシンの名前。
-- フェールオーバー クラスターの名前。
-- フェールオーバー クラスターの IP アドレス。 クラスター ノードと同じ Azure 仮想ネットワークおよびサブネットでは使用されていない IP アドレスを使用することができます。
-
-
-# <a name="windows-server-2012---2016"></a>[Windows Server 2012 - 2016](#tab/windows2012)
-
-次の PowerShell スクリプトは、Windows Server 2012 から Windows Server 2016 用のフェールオーバー クラスターを作成します。 ノード名 (仮想マシン名) と、Azure VNET の使用可能な IP アドレスでスクリプトを更新してください。
-
-```powershell
-New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
-```   
-
-# <a name="windows-server-2019"></a>[Windows Server 2019](#tab/windows2019)
-
-次の PowerShell スクリプトは、Windows Server 2019 用のフェールオーバー クラスターを作成します。  ノード名 (仮想マシン名) と、Azure VNET の使用可能な IP アドレスでスクリプトを更新してください。
-
-```powershell
-New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
-```
-
-詳細については、「[フェールオーバー クラスター:クラスター ネットワーク オブジェクト](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)」に関するセクションを確認してください。
-
----
-
-
-## <a name="configure-quorum"></a>クォーラムを構成する
-
-ビジネス ニーズに最も適したクォーラム ソリューションを構成します。 [ディスク監視](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)、[クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)、または[ファイル共有監視](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)を構成できます。 詳細については、[SQL Server VM でのクォーラム](hadr-cluster-best-practices.md#quorum)に関する記事をご覧ください。 
 
 ## <a name="add-storage"></a>ストレージを追加する
 
@@ -199,29 +155,48 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. **[SQL Server フェールオーバー クラスターの新規インストール]** を選択します。 ウィザードの指示に従って、SQL Server FCI をインストールします。
 
-   FCI のデータ ディレクトリは、クラスター化されたストレージ上にある必要があります。 記憶域スペース ダイレクトでは、これは共有ディスクではなく、各サーバー上のボリュームのマウント ポイントです。 記憶域スペース ダイレクトは、両方のノード間でボリュームを同期します。 ボリュームは、CSV としてクラスターに表示されます。 データ ディレクトリとして CSV のマウント ポイントを使用します。
+1. **[クラスター ネットワークの構成]** ページで指定する IP は、SQL Server VM を 1 つのサブネットにデプロイしたのか、それとも複数のサブネットにデプロイしたのかによって異なります。 
+
+   1. **単一サブネット環境** の場合、[Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) に追加する IP アドレスを指定します。
+   1. **複数サブネット環境** の場合、[フェールオーバー クラスター インスタンスのネットワーク名の IP アドレス](failover-cluster-instance-prepare-vm.md#assign-secondary-ip-addresses)として以前に指定した、_最初の_ SQL Server VM のサブネット内のセカンダリ IP アドレスを指定します。
+
+   :::image type="content" source="./media/failover-cluster-instance-azure-shared-disk-manually-configure/sql-install-cluster-network-secondary-ip-vm-1.png" alt-text="フェールオーバー クラスター インスタンスのネットワーク名の IP アドレスとして以前に指定した、最初の SQL Server VM のサブネット内のセカンダリ IP アドレスを指定する":::
+
+1. **[データベース エンジンの構成]** で、FCI のデータ ディレクトリは、クラスター化されたストレージにある必要があります。 記憶域スペース ダイレクトでは、これは共有ディスクではなく、各サーバー上のボリュームのマウント ポイントです。 記憶域スペース ダイレクトは、両方のノード間でボリュームを同期します。 ボリュームは、CSV としてクラスターに表示されます。 データ ディレクトリとして CSV のマウント ポイントを使用します。
 
    ![データ ディレクトリ](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/20-data-dicrectories.png)
 
 1. ウィザードの手順を完了すると、セットアップにより、SQL Server FCI が最初のノードにインストールされます。
 
-1. セットアップで FCI が最初のノードにインストールされたら、RDP を使用して 2 番目のノードに接続します。
+1. 最初のノードで FCI のインストールが成功したら、RDP を使用して 2 番目のノードに接続します。
 
 1. **[SQL Server インストール センター]** を開きます。 **[インストール]** を選択します。
 
-1. **[SQL Server フェールオーバー クラスターにノードを追加]** を選択します。 ウィザードの指示に従って SQL Server をインストールし、このサーバーを FCI に追加します。
+1. **[SQL Server フェールオーバー クラスターにノードを追加]** を選択します。 ウィザードの指示に従って SQL Server をインストールし、このノードを FCI に追加します。
 
-   >[!NOTE]
-   >SQL Server を含む Azure Marketplace ギャラリー イメージを使用した場合、SQL Server のツールはイメージに含まれています。 これらのいずれかのイメージを使用しなかった場合、SQL Server のツールは別途インストールしてください。 詳細については、「 [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)」 (SQL Server Management Studio (SSMS) のダウンロード) を参照してください。
-   >
+1. 複数サブネットの場合、 **[クラスター ネットワークの構成]** で、[フェールオーバー クラスター インスタンスのネットワーク名の IP アドレス](failover-cluster-instance-prepare-vm.md#assign-secondary-ip-addresses)として以前に指定した、_2 番目の_ SQL Server VM のサブネット内のセカンダリ IP アドレスを入力します。
+
+    :::image type="content" source="./media/failover-cluster-instance-azure-shared-disk-manually-configure/sql-install-cluster-network-secondary-ip-vm-2.png" alt-text="フェールオーバー クラスター インスタンスのネットワーク名の IP アドレスとして以前に指定した、2 番目の SQL Server VM のサブネット内のセカンダリ IP アドレスを入力する":::
+
+    **[クラスター ネットワークの構成]** で **[次へ]** を選択した後、セットアップでは、サンプル画像のように SQL Server のセットアップによって複数のサブネットが検出されたことを示すダイアログ ボックスが表示されます。  **[はい]** を選択して確定します。 
+
+    :::image type="content" source="./media/failover-cluster-instance-azure-shared-disk-manually-configure/sql-install-multi-subnet-confirmation.png" alt-text="複数のサブネットの確認":::
+
+1. ウィザードの手順を完了すると、セットアップによって 2 番目の SQL Server FCI ノードが追加されます。 
+
+1. SQL Server フェールオーバー クラスター インスタンスに追加する他のすべてのノードで、以上の手順を繰り返します。 
 
 
-## <a name="register-with-the-sql-vm-rp"></a>SQL VM RP への登録
+>[!NOTE]
+> Azure Marketplace ギャラリー イメージには、SQL Server Management Studio がインストールされています。 マーケットプレース イメージを使用しなかった場合は、[SQL Server Management Studio (SSMS) をダウンロード](/sql/ssms/ownload-sql-server-management-studio-ssms)してください。
 
-ポータルから SQL Server VM を管理するには、それを[軽量管理モード](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)で SQL IaaS Agent 拡張機能 (RP) に登録します。このモードは、現時点では、FCI と Azure VM 上の SQL Server でサポートされている唯一のモードです。 
+
+## <a name="register-with-sql-iaas-extension"></a>SQL IaaS 拡張機能に登録する 
+
+ポータルから SQL Server VM を管理するには、それを[軽量管理モード](sql-agent-extension-manually-register-single-vm.md#lightweight-mode)で SQL IaaS Agent 拡張機能に登録します。このモードは、現時点では、FCI と Azure VM 上の SQL Server でサポートされている唯一のモードです。 
 
 
-PowerShell を使用して軽量モードで SQL Server VM を登録します。  
+PowerShell を使用して軽量モードで SQL Server VM を登録します (-LicenseType は `PAYG` または `AHUB` にできます)。
 
 ```powershell-interactive
 # Get the existing compute VM
@@ -232,26 +207,25 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
    -LicenseType PAYG -SqlManagementType LightWeight  
 ```
 
-## <a name="configure-connectivity"></a>接続の構成 
+## <a name="configure-connectivity"></a>接続の構成
 
-現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) を作成できます。あるいは、SQL Server 2019 CU2 (以降) と Windows Server 2016 (以降) を使用している場合、代わりに[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)機能を使用できます。 
+複数のサブネットに SQL Server VM をデプロイした場合は、この手順をスキップしてください。 1 つのサブネットに SQL Server VM をデプロイした場合は、トラフィックを FCI にルーティングするための追加コンポーネントを構成する必要があります。 フェールオーバー クラスター インスタンスに対して、仮想ネットワーク名 (VNN) と Azure Load Balancer、または分散ネットワーク名を構成できます。 [この 2 つの違いを確認](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)してから、フェールオーバー クラスター インスタンスに対して[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)または[仮想ネットワーク名と Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) をデプロイします。  
 
-クラスター接続オプションの詳細については、[HADR 接続を Azure VM 上の SQL Server にルーティングする方法](hadr-cluster-best-practices.md#connectivity)に関する記事をご覧ください。 
 
 ## <a name="limitations"></a>制限事項
 
-- Azure Virtual Machines では、CSV および [Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) 上のストレージを備えた Windows Server 2019 で、 Microsoft 分散トランザクション コーディネーター (MSDTC) がサポートされています。
+- Azure Virtual Machines では、CSV および [Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) 上のストレージを備えた Windows Server 2019 で、 Microsoft 分散トランザクション コーディネーター (MSDTC) がサポートされています。 Windows Server 2016 およびそれ以前では MSDTC はサポートされていません。 
 - NTFS でフォーマットされたディスクとして接続されているディスクは、ストレージがクラスターに追加されるときに、ディスク適格性オプションがオフにされている場合にのみ、記憶域スペース ダイレクトで使用できます。 
 - [軽量管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)での SQL IaaS Agent 拡張機能への登録のみがサポートされています。
+- 共有ストレージとして 記憶域スペース ダイレクトを使用するフェールオーバー クラスター インスタンスでは、クラスターのクォーラムに対するディスク監視の使用はサポートされていません。 代わりにクラウド監視を使用してください。 
 
 ## <a name="next-steps"></a>次のステップ
 
-[仮想ネットワーク名と Azure ロード バランサー](failover-cluster-instance-vnn-azure-load-balancer-configure.md)または[分散ネットワーク名 (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) を使用した FCI への接続をまだ構成していない場合は、構成してください。 
-
 記憶域スペース ダイレクトがお客様に適した FCI ストレージ ソリューションでない場合は、代わりに [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)または [Premium ファイル共有](failover-cluster-instance-premium-file-share-manually-configure.md)を使用して FCI を作成することを検討してください。 
 
-詳細については、[Azure VM 上の SQL Server を使用した FCI](failover-cluster-instance-overview.md) および[クラスター構成のベスト プラクティス](hadr-cluster-best-practices.md)の概要に関する記事をご覧ください。 
+詳細については、以下をご覧ください。
 
-詳細については、次を参照してください。 
-- [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server フェールオーバー クラスター インスタンス](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)
+- [フェールオーバー クラスター インスタンスの概要](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)

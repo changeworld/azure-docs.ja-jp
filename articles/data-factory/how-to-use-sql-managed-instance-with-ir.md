@@ -1,17 +1,18 @@
 ---
 title: Azure Data Factory 内で Azure SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する
 description: Azure Data Factory 内で SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する方法について説明します。
-author: chugugrace
-ms.author: chugu
+author: swinarko
+ms.author: sawinark
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
-ms.date: 4/15/2020
-ms.openlocfilehash: 190def0e6e2f77d330d2307753dc9e9d53c55dd7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/27/2021
+ms.openlocfilehash: 2655c3d5943902c94e364ba379ab6682d86c049d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564146"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343973"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory 内で SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する
 
@@ -65,7 +66,7 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
                 | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 |Destination port range |
                 |---|---|---|---|---|
-                |TCP|Azure-SSIS IR の静的 IP アドレス <br> 詳細については、[Azure-SSIS IR への独自のパブリック IP の使用](join-azure-ssis-integration-runtime-virtual-network.md#publicIP)に関するページをご覧ください。|*|VirtualNetwork|3342|
+                |TCP|Azure-SSIS IR の静的 IP アドレス <br> 詳細については、[Azure-SSIS IR への独自のパブリック IP の使用](azure-ssis-integration-runtime-standard-virtual-network-injection.md#ip)に関するページをご覧ください。|*|VirtualNetwork|3342|
 
              1. SQL Managed Instance への送信トラフィックを許可するための **Azure-SSIS IR の送信要件**。
 
@@ -93,7 +94,7 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
     1. 仮想ネットワークが属するリソース グループまたはサブスクリプション上で[リソースのロック](../azure-resource-manager/management/lock-resources.md)がないことを確認します。 読み取り専用または削除ロックを構成した場合、Azure-SSIS IR の開始と停止が失敗するか、応答しなくなります。
 
-    1. 仮想ネットワークが属するリソース グループまたはサブスクリプション下に次のリソースが作成されるのを妨げる Azure ポリシーがないことを確認します。
+    1. 仮想ネットワークが属するリソース グループまたはサブスクリプション下に次のリソースが作成されるのを妨げる Azure Policy の定義がないことを確認します。
         - Microsoft.Network/LoadBalancers
         - Microsoft.Network/NetworkSecurityGroups
 
@@ -106,23 +107,23 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
         1. SQL Managed Instance への送信トラフィックと、Azure-SSIS IR で必要とされる他のトラフィックを許可するための **Azure-SSIS IR の送信要件**。
 
-        | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range | 説明 |
-        |---|---|---|---|---|---|
-        | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000 ～ 11999 |SQL Managed Instance への送信トラフィックを許可します。 接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。 |
-        | TCP | VirtualNetwork | * | AzureCloud | 443 | 仮想ネットワークの Azure-SSIS IR のノードはこのポートを使って、Azure Storage や Azure Event Hubs などの Azure サービスにアクセスします。 |
-        | TCP | VirtualNetwork | * | インターネット | 80 | (省略可能) 仮想ネットワーク内の Azure-SSIS IR のノードでは、このポートを使用して、インターネットから証明書失効リストをダウンロードします。 このトラフィックをブロックすると、IR の開始時にパフォーマンスが低下し、証明書の使用状況について証明書失効リストを確認する機能が失われる可能性があります。 送信先を特定の FQDN にさらに絞り込む場合は、[Azure ExpressRoute またはユーザー定義ルート (UDR) の使用](./join-azure-ssis-integration-runtime-virtual-network.md#route)に関するページをご覧ください。|
-        | TCP | VirtualNetwork | * | ストレージ | 445 | (省略可能) この規則は、Azure Files に格納されている SSIS パッケージを実行する場合にのみ必要です。 |
-        |||||||
+           | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range | 説明 |
+           |---|---|---|---|---|---|
+           | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000 ～ 11999 |SQL Managed Instance への送信トラフィックを許可します。 接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。 |
+           | TCP | VirtualNetwork | * | AzureCloud | 443 | 仮想ネットワークの Azure-SSIS IR のノードはこのポートを使って、Azure Storage や Azure Event Hubs などの Azure サービスにアクセスします。 |
+           | TCP | VirtualNetwork | * | インターネット | 80 | (省略可能) 仮想ネットワーク内の Azure-SSIS IR のノードでは、このポートを使用して、インターネットから証明書失効リストをダウンロードします。 このトラフィックをブロックすると、IR の開始時にパフォーマンスが低下し、証明書の使用状況について証明書失効リストを確認する機能が失われる可能性があります。 送信先を特定の FQDN にさらに絞り込む場合は、[ユーザー定義ルート (UDR) の構成](azure-ssis-integration-runtime-standard-virtual-network-injection.md#udr)に関するページをご覧ください。|
+           | TCP | VirtualNetwork | * | ストレージ | 445 | (省略可能) この規則は、Azure Files に格納されている SSIS パッケージを実行する場合にのみ必要です。 |
+           |||||||
 
         1. Azure-SSIS IR に必要なトラフィックを許可するための、**Azure-SSIS IR の受信要件**。
 
-        | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range | 説明 |
-        |---|---|---|---|---|---|
-        | TCP | BatchNodeManagement | * | VirtualNetwork | 29876、29877 (IR を Resource Manager 仮想ネットワークに参加させる場合) <br/><br/>10100、20100、30100 (IR をクラシック仮想ネットワークに参加させる場合)| Data Factory サービスはこれらのポートを使って、仮想ネットワークの Azure-SSIS IR のノードと通信します。 <br/><br/> サブネットレベルの NSG を作成するかどうかにかかわらず、Azure-SSIS IR をホストする仮想マシンにアタッチされているネットワーク インターフェイス カード (NIC) のレベルで、Data Factory は NSG を常に構成します。 Data Factory の IP アドレスから指定したポートで受信したトラフィックのみが、その NIC レベルの NSG によって許可されます。 サブネット レベルでインターネット トラフィックに対してこれらのポートを開いている場合でも、Data Factory の IP アドレスではない IP アドレスからのトラフィックは NIC レベルでブロックされます。 |
-        | TCP | CorpNetSaw | * | VirtualNetwork | 3389 | (省略可能) このルールは、Microsoft サポーターがお客様に対して、高度なトラブルシューティングのために開くように依頼した場合にのみ必要になり、トラブルシューティングの直後に閉じることができます。 **CorpNetSaw** サービス タグでは、Microsoft 企業ネットワーク上のセキュリティで保護されたアクセス ワークステーションでのみ、リモート デスクトップの使用が許可されます。 このサービス タグはポータルから選択することはできず、Azure PowerShell または Azure CLI 経由でのみ使用できます。 <br/><br/> NIC レベルの NSG では、ポート 3389 が既定で開かれ、サブネット レベルの NSG ではポート 3389 を制御できます。一方、保護のために各 IR ノードの Windows ファイアウォール規則では既定で、Azure-SSIS IR によってポート 3389 の送信が禁止されています。 |
-        |||||||
+           | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range | 説明 |
+           |---|---|---|---|---|---|
+           | TCP | BatchNodeManagement | * | VirtualNetwork | 29876、29877 (IR を Resource Manager 仮想ネットワークに参加させる場合) <br/><br/>10100、20100、30100 (IR をクラシック仮想ネットワークに参加させる場合)| Data Factory サービスはこれらのポートを使って、仮想ネットワークの Azure-SSIS IR のノードと通信します。 <br/><br/> サブネットレベルの NSG を作成するかどうかにかかわらず、Azure-SSIS IR をホストする仮想マシンにアタッチされているネットワーク インターフェイス カード (NIC) のレベルで、Data Factory は NSG を常に構成します。 Data Factory の IP アドレスから指定したポートで受信したトラフィックのみが、その NIC レベルの NSG によって許可されます。 サブネット レベルでインターネット トラフィックに対してこれらのポートを開いている場合でも、Data Factory の IP アドレスではない IP アドレスからのトラフィックは NIC レベルでブロックされます。 |
+           | TCP | CorpNetSaw | * | VirtualNetwork | 3389 | (省略可能) このルールは、Microsoft サポーターがお客様に対して、高度なトラブルシューティングのために開くように依頼した場合にのみ必要になり、トラブルシューティングの直後に閉じることができます。 **CorpNetSaw** サービス タグでは、Microsoft 企業ネットワーク上のセキュリティで保護されたアクセス ワークステーションでのみ、リモート デスクトップの使用が許可されます。 このサービス タグはポータルから選択することはできず、Azure PowerShell または Azure CLI 経由でのみ使用できます。 <br/><br/> NIC レベルの NSG では、ポート 3389 が既定で開かれ、サブネット レベルの NSG ではポート 3389 を制御できます。一方、保護のために各 IR ノードの Windows ファイアウォール規則では既定で、Azure-SSIS IR によってポート 3389 の送信が禁止されています。 |
+           |||||||
 
-    1. 詳細については、[仮想ネットワークの構成](join-azure-ssis-integration-runtime-virtual-network.md#virtual-network-configuration)に関するページをご覧ください。
+    1. 詳細については、[仮想ネットワークの構成](azure-ssis-integration-runtime-virtual-network-configuration.md)に関するページをご覧ください。
         - Azure-SSIS IR に独自のパブリック IP アドレスを使用する
         - 独自のドメイン ネーム システム (DNS) サーバーを使用する
         - Azure ExpressRoute またはユーザー定義ルート (UDR) を使用する
@@ -132,15 +133,15 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
 1. SQL Managed Instance のプライベート エンドポイントまたはパブリック エンドポイントを選択します。
 
-    Azure portal/ADF アプリの [SQL の設定] ページで [Azure-SSIS IR をプロビジョニング](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime)するとき、SSIS カタログ (SSISDB) の作成時に、SQL Managed Instance の **プライベート エンドポイント** または **パブリック エンドポイント** を使用します。
+    Azure portal/ADF アプリの [SQL の設定] ページで [Azure-SSIS IR をプロビジョニング](create-azure-ssis-integration-runtime-portal.md#provision-an-azure-ssis-integration-runtime)するとき、SSIS カタログ (SSISDB) の作成時に、SQL Managed Instance の **プライベート エンドポイント** または **パブリック エンドポイント** を使用します。
 
     パブリック エンドポイントのホスト名が <mi_name>.public.<dns_zone>.database.windows.net 形式になっており、接続に使用されるポートが 3342 です。  
 
-    ![統合ランタイム セットアップのスクリーンショット。SSIS カタログの作成が選択されており、Catalog データベース サーバー エンドポイントが入力されています。](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
+    :::image type="content" source="./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png" alt-text="統合ランタイム セットアップのスクリーンショット。SSIS カタログの作成が選択されており、Catalog データベース サーバー エンドポイントが入力されています。":::
 
 1. 適用する場合は、[Azure AD 認証] を選択します。
 
-    ![カタログ-パブリック-エンドポイント](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
+    :::image type="content" source="./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png" alt-text="カタログ-パブリック-エンドポイント":::
 
     Azure AD 認証を有効にする方法の詳細については、[Azure SQL Database Managed Instance に対する Azure AD の有効化](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)に関するセクションをご覧ください。
 
@@ -152,9 +153,9 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
     Azure-SSIS IR を仮想ネットワークに参加させる方法の詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](join-azure-ssis-integration-runtime-virtual-network.md)」をご覧ください。
 
-    ![統合ランタイム セットアップの詳細設定のスクリーンショット。ここで、参加するランタイムに仮想ネットワークを選択できます。](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
+    :::image type="content" source="./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png" alt-text="統合ランタイム セットアップの詳細設定のスクリーンショット。ここで、参加するランタイムに仮想ネットワークを選択できます。":::
 
-Azure-SSIS IR を作成する方法の詳細については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime)」を参照してください。
+Azure-SSIS IR を作成する方法の詳細については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime-portal.md#provision-an-azure-ssis-integration-runtime)」を参照してください。
 
 ## <a name="clean-up-ssisdb-logs"></a>SSISDB ログのクリーンアップ
 

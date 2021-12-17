@@ -17,7 +17,6 @@
         - name: PowerShell
           href: ./linux/quick-create-powershell.md
         - name: ARM テンプレート
-          displayName: 'Resource Manager, template, json'
           href: ./linux/quick-create-template.md
     - name: Windows VM の作成
       items:
@@ -28,7 +27,6 @@
         - name: PowerShell
           href: ./windows/quick-create-powershell.md
         - name: ARM テンプレート
-          displayName: 'Resource Manager, template, json'
           href: ./windows/quick-create-template.md
   expanded: true
 - name: チュートリアル
@@ -69,6 +67,40 @@
           href: ./windows/tutorial-load-balancer.md
         - name: 8 - ネットワークの管理
           href: ./windows/tutorial-virtual-network.md
+- name: 開発
+  items:
+    - name: REST API
+      href: /rest/api/compute/virtual-machines?context=/azure/virtual-machines/context/context
+    - name: Python
+      items:
+        - name: Python SDK
+          href: 'https://github.com/Azure/azure-sdk-for-python'
+        - name: サンプル
+          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=/azure/virtual-machines/context/context
+    - name: .NET
+      items:
+        - name: .NET SDK
+          href: 'https://github.com/Azure/azure-sdk-for-net'
+        - name: リファレンス
+          href: /dotnet/api/overview/azure/virtualmachines?view=azure-dotnet?context=/azure/virtual-machines/context/context
+    - name: Java
+      items:
+        - name: Java SDK
+          href: 'https://github.com/Azure/azure-sdk-for-java'
+        - name: 関連項目
+          href: /java/api/com.azure.resourcemanager.compute?view=azure-java-stable?context=/azure/virtual-machines/context/context
+    - name: Go
+      items:
+        - name: Go SDK
+          href: 'https://github.com/Azure/azure-sdk-for-go'
+        - name: 関連項目
+          href: /azure/developer/go/azure-sdk-qs-vm
+    - name: Azure CLI サンプル リポジトリ
+      href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
+    - name: PowerShell サンプル リポジトリ
+      href: 'https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine'
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
 - name: ワークロード
   items:
     - name: Red Hat
@@ -99,10 +131,14 @@
       href: ./workloads/sap/get-started.md
     - name: Oracle
       href: ./workloads/oracle/oracle-database-quick-create.md
+    - name: ゲームのための Azure
+      href: /gaming/azure/
     - name: Elasticsearch
       href: ./linux/tutorial-elasticsearch.md
     - name: メインフレームのホスト変更
       href: ./workloads/mainframe-rehosting/overview.md
+    - name: Azure Confidential Computing
+      href: ../confidential-computing/overview.md
     - name: Virtual Machines 上の SQL
       href: ../azure-sql/virtual-machines/index.yml
     - name: ハイ パフォーマンス コンピューティング (HPC)
@@ -112,45 +148,56 @@
     - name: サイズ
       items:
         - name: 概要
+          displayName: 'Sizes, sizing, resize, ACU, compute'
           href: sizes.md
-        - name: VM のサイズの変更
-          items:
-            - name: CLI
-              href: ./linux/change-vm-size.md
-            - name: ポータルまたは PowerShell
-              href: ./windows/resize-vm.md
-        - name: 第 2 世代 VM
-          href: generation-2.md
         - name: 汎用
           items:
             - name: 概要
+              displayName: 'General purpose, sizes, size, vm size'
               href: sizes-general.md
+            - name: Av1 シリーズの提供終了
+              href: av1-series-retirement.md
             - name: Av2 シリーズ
               href: av2-series.md
             - name: 負荷の急増に対応できる B シリーズ
               href: sizes-b-series-burstable.md
+            - name: DCasv5 および DCadsv5 シリーズ
+              href: dcasv5-dcadsv5-series.md
             - name: DCsv2 シリーズ
               href: dcv2-series.md
+            - name: DCsv3 および DCdsv3 シリーズ
+              href: dcv3-series.md
             - name: Dv2 および DSv2 シリーズ
               href: dv2-dsv2-series.md
-            - name: Dv3 および Dsv3 シリーズ
+            - name: Dv3 および DSv3 シリーズ
               href: dv3-dsv3-series.md
+            - name: Dv4 および Dsv4 シリーズ
+              href: dv4-dsv4-series.md
             - name: Dav4 および Dasv4 シリーズ
               href: dav4-dasv4-series.md
             - name: Ddv4 および Ddsv4 シリーズ
               href: ddv4-ddsv4-series.md
-            - name: Dv4 および Dsv4 シリーズ
-              href: dv4-dsv4-series.md
+            - name: Dv5 および Dsv5 シリーズ
+              href: dv5-dsv5-series.md
+            - name: Ddv5 および Ddsv5 シリーズ
+              href: ddv5-ddsv5-series.md
+            - name: Dasv5 および Dadsv5 シリーズ
+              href: dasv5-dadsv5-series.md
+            - name: DCasv5 および DCadsv5 シリーズ
+              href: dcasv5-dcadsv5-series.md
         - name: コンピューティング最適化
           items:
             - name: 概要
+              displayName: 'compute optimized, sizes, size, vm size, compute'
               href: sizes-compute.md
             - name: Fsv2 シリーズ
               href: fsv2-series.md
+            - name: FX シリーズ
+              href: fx-series.md
         - name: メモリ最適化
-          displayName: Esv3 Ev3 Easv4 Eav4 M-series GS G-series DSv2 Dv2
           items:
             - name: 概要
+              displayName: 'memory optimized, sizes, size, vm size, memory'
               href: sizes-memory.md
             - name: Dv2 および DSv2 シリーズ 11-15
               href: dv2-dsv2-series-memory.md
@@ -162,6 +209,14 @@
               href: edv4-edsv4-series.md
             - name: Ev4 および Esv4 シリーズ
               href: ev4-esv4-series.md
+            - name: Ev5 および Esv5 シリーズ
+              href: ev5-esv5-series.md
+            - name: Edv5 および Edsv5 シリーズ
+              href: edv5-edsv5-series.md
+            - name: Easv5 および Eadsv5 シリーズ
+              href: easv5-eadsv5-series.md
+            - name: ECasv5 および ECadsv5 シリーズ
+              href: ecasv5-ecadsv5-series.md
             - name: M シリーズ
               href: m-series.md
             - name: Msv2 および Mdsv2 ミディアム メモリ シリーズ
@@ -173,19 +228,23 @@
         - name: ストレージ最適化
           items:
             - name: 概要
+              displayName: 'storage optimized, sizes, size, vm size, storage'
               href: sizes-storage.md
             - name: Lsv2 シリーズ
               href: lsv2-series.md
             - name: パフォーマンスを最適化する
               items:
                 - name: Linux
+                  displayName: 'performance, Linux, storage performance'
                   href: ./linux/storage-performance.md
                 - name: Windows
+                  displayName: 'performance, Windows, storage performance'
                   href: ./windows/storage-performance.md
         - name: GPU - 高速コンピューティング
           items:
             - name: 概要
-              href: sizes-gpu.md?context=/azure/virtual-machines/context/context
+              displayName: 'GPU, sizes, size, accelerated compute, compute, nvidia'
+              href: sizes-gpu.md
             - name: NC シリーズ
               href: nc-series.md
             - name: NCv2 シリーズ
@@ -194,6 +253,10 @@
               href: ncv3-series.md
             - name: NCasT4_v3 シリーズ
               href: nct4-v3-series.md
+            - name: NDasrA100_v4 シリーズ
+              href: nda100-v4-series.md
+            - name: NDm_A100_v4 シリーズ
+              href: ndm-a100-v4-series.md
             - name: ND シリーズ
               href: nd-series.md
             - name: NDv2 シリーズ
@@ -207,21 +270,40 @@
             - name: NVIDIA GPU ドライバーの設定
               items:
                 - name: Linux
+                  displayName: 'NVIDIA GPU drivers, GPU drivers, GPU'
                   href: ./linux/n-series-driver-setup.md
                 - name: Windows
+                  displayName: 'NVIDIA GPU drivers, GPU drivers, GPU'
                   href: ./windows/n-series-driver-setup.md
             - name: AMD GPU ドライバーの設定
+              displayName: 'AMD GPU drivers, AMD, GPU drivers, GPU'
               href: ./windows/n-series-amd-driver-setup.md
+            - name: NC シリーズの提供終了
+              href: nc-series-retirement.md
+            - name: NCv2 シリーズの提供終了
+              href: ncv2-series-retirement.md
+            - name: ND シリーズの提供終了
+              href: nd-series-retirement.md
+            - name: GPU コンピューティング移行ガイド
+              displayName: GPU compute migration guide
+              href: ./n-series-migration.md
+            - name: NV シリーズの提供終了
+              href: nv-series-retirement.md
+            - name: NV シリーズ移行ガイド
+              href: nv-series-migration-guide.md
         - name: FPGA - 高速コンピューティング
           items:
             - name: 概要
-              href: sizes-field-programmable-gate-arrays.md?context=/azure/virtual-machines/context/context
+              displayName: 'FPGA, accelerated compute, compute, accelerated, gpu'
+              href: sizes-field-programmable-gate-arrays.md
             - name: NP シリーズ
               href: np-series.md
+            - name: FPGA 構成証明サービス
+              href: field-programmable-gate-arrays-attestation.md
         - name: ハイ パフォーマンス コンピューティング
-          displayName: H-series
           items:
             - name: 概要
+              displayName: 'HPC, high performance compute, sizes, size'
               href: sizes-hpc.md
             - name: H シリーズ
               href: h-series.md
@@ -229,152 +311,462 @@
               href: hb-series.md
             - name: HBv2 シリーズ
               href: hbv2-series.md
+            - name: HBv3 シリーズ
+              href: hbv3-series.md
             - name: HC シリーズ
               href: hc-series.md
-        - name: vCPU のクォータ
-          items:
-            - name: CLI
-              href: ./linux/quotas.md
-            - name: PowerShell
-              href: ./windows/quotas.md
-        - name: 一時ディスクを使用しない Azure VM
-          href: azure-vms-no-temp-disk.md
-        - name: Azure VM のサイズの名前付け規則
-          href: vm-naming-conventions.md
+            - name: H シリーズの提供終了
+              href: h-series-retirement.md
+            - name: HB シリーズの提供終了
+              href: hb-series-retirement.md
         - name: 旧世代
-          displayName: D-series Ds-series A-series Basic
+          displayName: 'older, retired, expired, deprecated'
           href: sizes-previous-gen.md
+        - name: 第 2 世代 VM
+          displayName: 'Gen2, generation, gen1'
+          href: generation-2.md
         - name: Isolated のサイズ
+          displayName: 'isolated VM, sole-tenant, sole'
           href: isolation.md
         - name: Azure コンピューティング ユニット (ACU)
           href: acu.md
         - name: ベンチマーク スコア
+          displayName: 'benchmark, coremark'
           items:
             - name: Linux
               href: ./linux/compute-benchmark-scores.md
             - name: Windows
               href: ./windows/compute-benchmark-scores.md
+        - name: vCPU のクォータ
+          items:
+            - name: CLI
+              displayName: 'vCPU, quota, limit'
+              href: ./linux/quotas.md
+            - name: PowerShell
+              displayName: 'vCPU, quota, limit'
+              href: ./windows/quotas.md
+        - name: 仮想マシン セレクター ツール
+          href: 'https://aka.ms/vm-selector'
+        - name: VM のサイズの変更
+          displayName: 'Change, resize, update size'
+          href: resize-vm.md
+        - name: 状態と課金
+          href: states-billing.md
+        - name: 一時ディスクを使用しない Azure VM
+          href: azure-vms-no-temp-disk.yml
+        - name: Azure VM のサイズの名前付け規則
+          href: vm-naming-conventions.md
+    - name: Azure Compute Gallery
+      items:
+        - name: 概要
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: ./shared-image-galleries.md
+        - name: ギャラリーの作成
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: create-gallery.md
+        - name: ギャラリーを共有する
+          href: share-gallery.md
+        - name: 画像
+          items:
+            - name: ポータルで VM をキャプチャする
+              href: capture-image-portal.md
+            - name: イメージを作成する
+              displayName: 'VM, image, VHD, storage account'
+              href: image-version.md
+            - name: VM の作成
+              items:
+                - name: 一般化されたイメージ
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+                  href: vm-generalized-image-version.md
+                - name: 専用イメージ
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+                  href: vm-specialized-image-version.md
+            - name: イメージ リソースを更新する
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+              href: update-image-resources.md
+            - name: 共有のためのアプリの登録
+              items:
+                - name: Linux
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
+                  href: ./linux/share-images-across-tenants.md
+                - name: Windows
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
+                  href: ./windows/share-images-across-tenants.md
+            - name: リソース マネージャーのテンプレート
+              items:
+                - name: Azure Compute Gallery の作成
+                  href: 'https://azure.microsoft.com/resources/templates/sig-create/'
+                - name: Azure Compute Gallery でのイメージ定義の作成
+                  href: 'https://azure.microsoft.com/resources/templates/sig-image-definition-create/'
+                - name: Azure Compute Gallery でのイメージ バージョンの作成
+                  href: 'https://azure.microsoft.com/resources/templates/sig-image-version-create/'
+            - name: 共有イメージのトラブルシューティングを行う
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, troubleshooting, Azure Compute Gallery'
+              href: troubleshooting-shared-images.md
+            - name: カスタマー マネージド キーの使用
+              displayName: 'SSE, CMK, encrypt'
+              href: image-version-encryption.md
+            - name: イメージ バージョンからのマネージド ディスク
+              href: managed-disk-from-image-version.md
+            - name: 購入プラン情報
+              href: marketplace-images.md
+        - name: VM アプリケーション
+          items:
+            - name: 概要
+              href: vm-applications.md
+            - name: VM アプリケーションのデプロイ
+              href: vm-applications-how-to.md
+    - name: 画像
+      items:
+        - name: Azure Marketplace イメージの検索
+          items:
+            - name: CLI
+              displayName: 'Images, imaging, marketplace, publisher, plan, offer, URN, purchase plan, terms'
+              href: ./linux/cli-ps-findimage.md
+            - name: PowerShell
+              displayName: 'Images, imaging, marketplace, URN, purchase plan, terms'
+              href: ./windows/cli-ps-findimage.md
+            - name: Windows クライアント イメージ
+              displayName: 'Images, imaging, marketplace, Windows, Client'
+              href: ./windows/client-images.md
+            - name: Windows 10 のマルチテナント ホスティング権限
+              displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
+              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+        - name: Linux カスタム イメージ
+          items:
+            - name: 概要
+              displayName: 'Linux custom images, custom, image'
+              href: ./linux/imaging.md
+            - name: Linux のプロビジョニング
+              href: ./linux/provisioning.md
+            - name: Linux ディストリビューション固有の要件
+              items:
+                - name: 一般的な手順
+                  displayName: 'Linux distribution specific requirements, generic'
+                  href: ./linux/create-upload-generic.md
+                - name: CentOS
+                  displayName: 'Linux distribution specific requirements, CentOS'
+                  href: ./linux/create-upload-centos.md
+                - name: Debian
+                  displayName: 'Linux distribution specific requirements, Debian'
+                  href: ./linux/debian-create-upload-vhd.md
+                - name: Flatcar Container Linux
+                  displayName: 'Linux distribution specific requirements, Flatcar, Container'
+                  href: ./linux/flatcar-create-upload-vhd.md
+                - name: FreeBSD
+                  displayName: 'Linux distribution specific requirements, FreeBSD'
+                  href: ./linux/freebsd-intro-on-azure.md
+                - name: Oracle Linux
+                  displayName: 'Linux distribution specific requirements, Oracle'
+                  href: ./linux/oracle-create-upload-vhd.md
+                - name: OpenBSD
+                  displayName: 'Linux distribution specific requirements, OpenBSD'
+                  href: ./linux/create-upload-openbsd.md
+                - name: Red Hat
+                  displayName: 'Linux distribution specific requirements, Redhat'
+                  href: ./linux/redhat-create-upload-vhd.md
+                - name: SUSE
+                  displayName: 'Linux distribution specific requirements, SUSE'
+                  href: ./linux/suse-create-upload-vhd.md
+                - name: Ubuntu
+                  displayName: 'Linux distribution specific requirements, Ubuntu'
+                  href: ./linux/create-upload-ubuntu.md
+            - name: cloud-init を使用する
+              items:
+                - name: cloud-init の概要
+                  href: ./linux/using-cloud-init.md
+                - name: 詳細情報
+                  href: ./linux/cloud-init-deep-dive.md
+                  displayname: cloud-init
+                - name: トラブルシューティング
+                  href: ./linux/cloud-init-troubleshooting.md
+                  displayname: cloud-init
+                - name: VM のホスト名の構成
+                  href: ./linux/cloudinit-update-vm-hostname.md
+                  displayname: cloud-init
+                - name: VM 内のパッケージの更新
+                  href: ./linux/cloudinit-update-vm.md
+                  displayname: cloud-init
+                - name: VM へのユーザーの追加
+                  href: ./linux/cloudinit-add-user.md
+                  displayname: cloud-init
+                - name: スワップ ファイルの構成
+                  href: ./linux/cloudinit-configure-swapfile.md
+                  displayname: cloud-init
+                - name: 既存の Bash スクリプトの実行
+                  href: ./linux/cloudinit-bash-script.md
+                  displayname: cloud-init
+            - name: プロビジョニング エージェントを使用せずに Linux イメージを作成する
+              href: ./linux/no-agent.md
+            - name: Linux エージェントのプロビジョニングを無効にする
+              href: ./linux/disable-provisioning.md
+        - name: Windows カスタム イメージ
+          items:
+            - name: アップロードする VHD を準備する
+              displayName: 'Windows custom images, images, windows, upload, prepare, VHD'
+              href: ./windows/prepare-for-upload-vhd-image.md
+            - name: VM の一般化
+              href: generalize.md
+            - name: VHD をアップロードして マネージド イメージを作成する
+              displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed'
+              href: ./windows/upload-generalized-managed.md
+            - name: マネージド イメージをキャプチャする
+              displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed, capture'
+              href: ./windows/capture-image-resource.md
+            - name: 管理イメージから VM を作成する
+              displayName: 'Windows custom images, images, windows, upload, prepare, VHD, create, managed'
+              href: ./windows/create-vm-generalized-managed.md
+            - name: "Visual\_Studio"
+              href: ./windows/using-visual-studio-vm.md
+        - name: Image Builder
+          items:
+            - name: 概要
+              displayName: 'Image builder, images, building'
+              href: image-builder-overview.md
+            - name: CLI
+              items:
+                - name: Linux
+                  displayName: 'Image builder, images, building, cli, Linux'
+                  href: ./linux/image-builder.md
+                - name: Windows
+                  displayName: 'Image builder, images, building, cli, Windows'
+                  href: ./windows/image-builder.md
+            - name: PowerShell
+              items:
+                - name: Windows
+                  displayName: 'Image builder, images, building, PowerShell'
+                  href: ./windows/image-builder-powershell.md
+                - name: Windows Virtual Desktop
+                  href: ./windows/image-builder-virtual-desktop.md
+            - name: セキュリティ
+              items:
+                - name: Azure Policy によるセキュリティ制御
+                  displayName: 'Image builder, images, building'
+                  href: ./security-controls-policy-image-builder.md
+            - name: VNET を使用する
+              items:
+                - name: CLI
+                  displayName: 'Image builder, images, building'
+                  href: ./linux/image-builder-vnet.md
+                - name: PowerShell
+                  displayName: 'Image builder, images, building'
+                  href: ./windows/image-builder-vnet.md
+            - name: ネットワーク オプション
+              displayName: 'Image builder, images, building'
+              href: ./linux/image-builder-networking.md
+            - name: 権限の構成
+              items:
+                - name: CLI
+                  displayName: 'Image builder, images, building'
+                  href: ./linux/image-builder-permissions-cli.md
+                - name: PowerShell
+                  displayName: 'Image builder, images, building'
+                  href: ./linux/image-builder-permissions-powershell.md
+            - name: DevOps タスク
+              displayName: 'Image builder, images, building'
+              href: ./linux/image-builder-devops-task.md
+            - name: Image Builder テンプレート リファレンス
+              displayName: 'Image builder, images, building, json, ARM, template'
+              href: ./linux/image-builder-json.md
+            - name: イメージ ギャラリー用のビルド
+              items:
+                - name: Linux
+                  displayName: 'Image builder, images, building'
+                  href: ./linux/image-builder-gallery.md
+                - name: Windows
+                  displayName: 'Image builder, images, building'
+                  href: ./windows/image-builder-gallery.md
+            - name: 既存のイメージの更新
+              items:
+                - name: Linux
+                  displayName: 'Image builder, images, building, update'
+                  href: ./linux/image-builder-gallery-update-image-version.md
+                - name: Windows
+                  displayName: 'Image builder, images, building, update'
+                  href: ./windows/image-builder-gallery-update-image-version.md
+            - name: スクリプトの格納
+              displayName: 'Image builder, images, building, scripts'
+              href: ./linux/image-builder-user-assigned-identity.md
+            - name: トラブルシューティング
+              displayName: 'Image builder, images, building'
+              href: ./linux/image-builder-troubleshoot.md
+        - name: Packer でイメージを作成する
+          items:
+            - name: Linux
+              displayName: 'Image builder, images, building, packer'
+              href: ./linux/build-image-with-packer.md
+            - name: Windows
+              displayName: 'Image builder, images, building, packer'
+              href: ./windows/build-image-with-packer.md
     - name: 専用ホスト
+      displayName: 'sole-tenant, sole tenant, isolated, isolation'
       items:
         - name: 概要
+          displayName: 'Dedicated hosts, ADH'
           href: dedicated-hosts.md
-        - name: CLI
-          href: ./linux/dedicated-hosts-cli.md
-        - name: ポータル
-          href: dedicated-hosts-portal.md
-        - name: PowerShell
-          href: ./windows/dedicated-hosts-powershell.md
+        - name: 操作方法
+          displayName: dedicated adh
+          href: dedicated-hosts-how-to.md
+        - name: VM パッキング
+          displayName: 'dedicated, packing, dedicated host'
+          href: dedicated-host-packing.md
     - name: Azure スポット仮想マシン
-      displayName: 'pre-empt, preempt, spot'
       items:
         - name: 概要
+          displayName: 'pre-empt, preempt, spot, low priority, low-priority, Azure Spot Virtual Machines'
           href: spot-vms.md
         - name: CLI
+          displayName: 'pre-empt, preempt, spot, low priority, low-priority, cli'
           href: ./linux/spot-cli.md
         - name: ポータル
+          displayName: 'pre-empt, preempt, spot, low priority, low-priority, portal'
           href: spot-portal.md
         - name: PowerShell
+          displayName: 'pre-empt, preempt, spot, low priority, low-priority, PowerShell'
           href: ./windows/spot-powershell.md
         - name: ARM テンプレート
-          displayName: template ARM
+          displayName: 'pre-empt, preempt, spot, low priority, low-priority, ARM, template'
           href: ./linux/spot-template.md
         - name: エラー コード
+          displayName: 'pre-empt, preempt, spot, low priority, low-priority'
           href: error-codes-spot.md
     - name: Azure ハイブリッド特典
       items:
         - name: Linux
+          displayName: 'Azure Hybrid Benefit, Linux, AHB'
           href: ./linux/azure-hybrid-benefit-linux.md
         - name: Windows
-          items:
-            - name: Azure ハイブリッド特典ライセンスの使用
-              href: ./windows/hybrid-use-benefit-licensing.md
-            - name: Windows 10 のマルチテナント ホスティング権限の使用
-              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+          displayName: 'Azure Hybrid Benefit, AHB'
+          href: ./windows/hybrid-use-benefit-licensing.md
     - name: 予約インスタンス
       items:
+        - name: Azure の予約とは
+          displayName: 'Reserved Instances, RI, prepay, flexibility'
+          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
         - name: VM の前払い
+          displayName: 'Reserved Instances, RI, prepay, flexibility'
           href: ./prepay-reserved-vm-instances.md
         - name: 専用ホストの前払い
+          displayName: 'Reserved Instances, RI, prepay, flexibility'
           href: prepay-dedicated-hosts-reserved-instances.md
-        - name: Azure の予約とは
-          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
         - name: VM インスタンス サイズの柔軟性
+          displayName: 'Reserved Instances, RI, prepay'
           href: reserved-vm-instance-size-flexibility.md
-    - name: Linux VM を作成する
+    - name: 容量予約 (プレビュー)
       items:
-        - name: 動作保証済みディストリビューション
-          href: ./linux/endorsed-distros.md
-        - name: CLI の使用
-          href: ./linux/create-cli-complete.md
-        - name: Resource Manager テンプレートを使用する
-          displayName: Azure Resource Manager
-          href: ./linux/create-ssh-secured-vm-from-template.md
-        - name: REST API を使用する
-          href: ./linux/create-vm-rest-api.md
-        - name: CLI を使用して VM をコピーする
-          href: ./linux/copy-vm.md
-        - name: Jenkins でビルドする
-          href: /azure/developer/jenkins/pipeline-with-github-and-docker
-        - name: Jenkins を Azure DevOps と統合する
-          href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
-        - name: ローリング デプロイ戦略を構成する
-          href: ./linux/tutorial-devops-azure-pipelines-classic.md
-        - name: カナリア デプロイ戦略を構成する
-          href: ./linux/tutorial-azure-devops-canary-strategy.md
-        - name: ブルーグリーン デプロイ戦略を構成する
-          href: ./linux/tutorial-azure-devops-blue-green-strategy.md
-        - name: Azure Pipelines を使用した CI/CD (YAML)
-          href: ./linux/tutorial-build-deploy-azure-pipelines.md
-        - name: LAMP スタックの作成
-          href: ./linux/tutorial-lamp-stack.md
-        - name: TLS および SSL による Web サーバーのセキュリティ保護
+        - name: 概要
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-overview.md
+        - name: 容量予約を作成する
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-create.md
+        - name: 容量予約の割り当て超過
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-overallocate.md
+        - name: 容量予約を変更する
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-modify.md
+        - name: VM を関連付ける
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-associate-vm.md
+        - name: VM を削除する
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-remove-vm.md
+        - name: 仮想マシン スケール セットを関連付ける
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-associate-virtual-machine-scale-set.md
+        - name: 仮想マシン スケール セットの削除
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-remove-virtual-machine-scale-set.md
+    - name: 仮想マシンを作成する
+      items:
+        - name: Linux
           items:
-            - name: Linux
+            - name: 動作保証済みディストリビューション
+              href: ./linux/endorsed-distros.md
+            - name: CLI
+              displayName: 'Create VM, Create'
+              href: ./linux/create-cli-complete.md
+            - name: ARM テンプレート
+              displayName: 'Create VM, Create, ARM'
+              href: ./linux/create-ssh-secured-vm-from-template.md
+            - name: REST
+              displayName: 'Create VM, Create, REST'
+              href: ./linux/create-vm-rest-api.md
+            - name: LAMP スタック
+              href: ./linux/tutorial-lamp-stack.md
+            - name: 継続的デリバリー
+              items:
+                - name: ローリング デプロイ戦略を構成する
+                  href: ./linux/tutorial-devops-azure-pipelines-classic.md
+                - name: カナリア デプロイ戦略を構成する
+                  href: ./linux/tutorial-azure-devops-canary-strategy.md
+                - name: ブルーグリーン デプロイ戦略を構成する
+                  href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+                - name: Azure Pipelines を使用した CI/CD (YAML)
+                  href: ./linux/tutorial-build-deploy-azure-pipelines.md
+            - name: TLS および SSL による Web サーバーのセキュリティ保護
               href: ./linux/tutorial-secure-web-server.md
-            - name: Windows
-              href: ./windows/tutorial-secure-web-server.md
-          displayname: SSL TLS
-    - name: Linux VM への接続
-      items:
-        - name: Linux VM の SSH
+        - name: Windows
           items:
-            - name: Linux または macOS の場合
-              href: ./linux/mac-create-ssh-keys.md
-            - name: Windows の場合
-              href: ./linux/ssh-from-windows.md
-            - name: ポータルで
-              href: ssh-keys-portal.md
-            - name: 詳細な手順
-              href: ./linux/create-ssh-keys-detailed.md
-        - name: Linux のリモート デスクトップ
-          href: ./linux/use-remote-desktop.md
-    - name: Windows VM の作成
-      items:
-        - name: C# の使用
-          href: ../azure-resource-manager/templates/deploy-rest.md?context=/azure/virtual-machines/context/context
-        - name: 特殊化されたディスクを使用する
-          items:
-            - name: ポータル
+            - name: 特殊化されたディスク - ポータル
+              displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized-portal.md
-            - name: PowerShell
+            - name: 特殊化されたディスク - PowerShell
+              displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized.md
-        - name: Chef を使用した VM の作成
-          href: /azure/developer/chef/windows-vm-configure
-        - name: Java の使用
-          href: ./windows/java.md
-        - name: Python
-          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: Resource Manager テンプレートの使用
-          displayName: Azure Resource Manager template
-          href: ./windows/ps-template.md
-    - name: Windows VM への接続
-      href: ./windows/connect-logon.md
+            - name: ARM テンプレート
+              displayName: 'Create VM, Create, ARM'
+              href: ./windows/ps-template.md
+            - name: TLS および SSL による Web サーバーのセキュリティ保護
+              href: ./windows/tutorial-secure-web-server.md
+    - name: VM とそのリソースを削除する
+      item: delete.md
+    - name: 仮想マシンに接続する
       items:
-        - name: WinRM
-          href: ./windows/winrm.md
+        - name: Linux
+          items:
+            - name: SSH キーをローカルに作成して管理する
+              href: ./linux/create-ssh-keys-detailed.md
+            - name: SSH キーをポータルに作成して管理する
+              href: ssh-keys-portal.md
+            - name: Linux または macOS 上の SSH
+              href: ./linux/mac-create-ssh-keys.md
+            - name: Windows 上の SSH
+              href: ./linux/ssh-from-windows.md
+            - name: Linux のリモート デスクトップ
+              href: ./linux/use-remote-desktop.md
+        - name: Windows
+          items:
+            - name: Windows のリモート デスクトップ
+              href: ./windows/connect-logon.md
+            - name: WinRM
+              href: ./windows/winrm.md
+    - name: 時間同期
+      items:
+        - name: Linux
+          displayName: Time sync
+          href: ./linux/time-sync.md
+        - name: Windows
+          displayName: Time sync
+          href: ./windows/time-sync.md
+    - name: 実行コマンド
+      items:
+        - name: 概要
+          displayName: Run command
+          href: run-command-overview.md
+        - name: Linux 用のアクション実行コマンド
+          href: ./linux/run-command.md
+        - name: Windows 用のアクション実行コマンド
+          href: ./windows/run-command.md
+        - name: Linux 用のマネージド実行コマンド (プレビュー)
+          href: ./linux/run-command-managed.md
+        - name: Windows 用のマネージド実行コマンド (プレビュー)
+          href: ./windows/run-command-managed.md
     - name: Extensions
       items:
         - name: 概要
+          displayName: 'Extensions, ext, extension, VM extension'
           href: ./extensions/overview.md
         - name: Linux
           items:
@@ -388,59 +780,77 @@
               href: ./extensions/features-windows.md
             - name: Windows VM エージェント
               href: ./extensions/agent-windows.md
-        - name: Azure Disk Encryption
-          items:
-            - name: Linux
-              href: ./extensions/azure-disk-enc-linux.md
-            - name: Windows
-              href: ./extensions/azure-disk-enc-windows.md
-        - name: Azure Key Vault
-          items:
-            - name: Linux
-              href: ./extensions/key-vault-linux.md
-            - name: Windows
-              href: ./extensions/key-vault-windows.md
         - name: SQL Server 用の Azure Backup
           items:
             - name: SQL Server 用の Azure Backup
               href: ./extensions/backup-azure-sql-server-running-azure-vm.md
+        - name: Azure Disk Encryption
+          items:
+            - name: Linux
+              displayName: 'Azure Disk Encryption, ADE'
+              href: ./extensions/azure-disk-enc-linux.md
+            - name: Windows
+              displayName: 'Azure Disk Encryption, ADE'
+              href: ./extensions/azure-disk-enc-windows.md
+        - name: Azure Key Vault
+          items:
+            - name: Linux
+              displayName: 'Azure Key Vault, key vault, encryption'
+              href: ./extensions/key-vault-linux.md
+            - name: Windows
+              displayName: 'Azure Key Vault, key vault, encryption'
+              href: ./extensions/key-vault-windows.md
+        - name: Azure Policy ゲスト構成
+          href: ./extensions/guest-configuration.md
         - name: カスタム スクリプト
           items:
             - name: Linux - バージョン 2
+              displayName: 'Custom Script, extension'
               href: ./extensions/custom-script-linux.md
             - name: Windows
+              displayName: 'Custom Script, extension'
               href: ./extensions/custom-script-windows.md
         - name: Windows の IaaS マルウェア対策
           href: ./extensions/iaas-antimalware-windows.md
         - name: VM スナップショット
           items:
             - name: Linux
+              displayName: 'VM snapshot, snapshot'
               href: ./extensions/vmsnapshot-linux.md
             - name: Windows
+              displayName: 'VM snapshot, snapshot'
               href: ./extensions/vmsnapshot-windows.md
         - name: Network Watcher 拡張機能
           items:
             - name: Linux
+              displayName: 'Network Watcher, extension, Azure Network Watcher'
               href: ./extensions/network-watcher-linux.md
             - name: Windows
+              displayName: 'Network Watcher, extension, Azure Network Watcher'
               href: ./extensions/network-watcher-windows.md
             - name: 最新バージョンへの更新
+              displayName: 'Network Watcher, extension, Azure Network Watcher'
               href: ./extensions/network-watcher-update.md
         - name: InfiniBand ドライバー
           items:
             - name: Linux
+              displayName: 'InfiniBand Drivers, Infiband, drivers'
               href: ./extensions/hpc-compute-infiniband-linux.md
             - name: Windows
+              displayName: 'InfiniBand Drivers, Infiband, drivers'
               href: ./extensions/hpc-compute-infiniband-windows.md
         - name: NVIDIA GPU ドライバー
           items:
             - name: Linux
+              displayName: 'NVIDIA GPU Drivers, NVIDIA, GPU, drivers'
               href: ./extensions/hpccompute-gpu-linux.md
             - name: Windows
+              displayName: 'NVIDIA GPU Drivers, NVIDIA, GPU, drivers'
               href: ./extensions/hpccompute-gpu-windows.md
         - name: AMD GPU ドライバー
           items:
             - name: Windows
+              displayName: 'AMD GPU Drivers, AMD, GPU, drivers'
               href: ./extensions/hpccompute-amd-gpu-windows.md
         - name: Azure Monitor
           items:
@@ -451,25 +861,33 @@
             - name: Log Analytics
               items:
                 - name: Linux
+                  displayName: 'Log Analytics, extension'
                   href: ./extensions/oms-linux.md
                 - name: Windows
+                  displayName: 'Log Analytics, extension'
                   href: ./extensions/oms-windows.md
-            - name: VM に対する Azure Monitor
+            - name: VM insights
               items:
                 - name: Linux の依存関係エージェント
+                  displayName: Azure Monitor
                   href: ./extensions/agent-dependency-linux.md
                 - name: Windows の依存関係エージェント
+                  displayName: Azure Monitor
                   href: ./extensions/agent-dependency-windows.md
         - name: PowerShell DSC
           href: ./extensions/dsc-overview.md
           items:
             - name: DSC と Linux
+              displayName: 'Desired state configuration, dsc'
               href: ./extensions/dsc-linux.md
             - name: DSC と Windows
+              displayName: 'Desired state configuration, dsc'
               href: ./extensions/dsc-windows.md
             - name: 資格情報のハンドル
+              displayName: 'Desired state configuration, dsc'
               href: ./extensions/dsc-credentials.md
             - name: テンプレートの使用
+              displayName: 'Desired state configuration, dsc'
               href: ./extensions/dsc-template.md
         - name: 仮想マシンへのアクセス
           href: ./extensions/vmaccess.md
@@ -491,29 +909,40 @@
           href: ./extensions/update-linux-agent.md
         - name: 拡張機能のエクスポート
           href: ./extensions/export-templates.md
-        - name: トラブルシューティング
+        - name: 一般的なトラブルシューティングの手順
           href: ./extensions/troubleshoot.md
         - name: Python 3 対応 Linux システムに関する問題
           href: ./extensions/issues-using-vm-extensions-python-3.md
-    - name: クラシックから Azure Resource Manager に移行する
+    - name: 入れ子になった仮想化
+      href: /virtualization/hyper-v-on-windows/user-guide/nested-virtualization
+    - name: Azure Resource Manager への移行
       items:
         - name: 2023 年 3 月 1 日以降の提供終了
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: classic-vm-deprecation.md
         - name: 移行の概要
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-overview.md
         - name: 移行の詳細
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-deep-dive.md
         - name: 移行の計画
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-plan.md
         - name: CLI を使用して移行する
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-cli.md
         - name: PowerShell を使用して移行する
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-ps.md
         - name: 移行の一般的なエラー
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-errors.md
         - name: 移行用のコミュニティ ツール
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-community-tools.md
         - name: よく寄せられる質問
+<<<<<<< HEAD
           href: migration-classic-resource-manager-faq.md
     - name: 管理の基礎
       items:
@@ -779,112 +1208,183 @@
           href: ./linux/build-image-with-packer.md
         - name: Windows
           href: ./windows/build-image-with-packer.md
+=======
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
+          href: migration-classic-resource-manager-faq.yml
+>>>>>>> repo_sync_working_branch
 - name: 可用性とスケール
   items:
     - name: 概要
+      displayName: 'availability and scale, availability, scale, autoscale'
       href: availability.md
-    - name: 可用性セット
-      items:
-        - name: 概要
-          href: availability-set-overview.md
-        - name: CLI
-          href: ./linux/tutorial-availability-sets.md
-        - name: PowerShell
-          href: ./windows/tutorial-availability-sets.md
-        - name: 可用性セットの変更
-          href: ./windows/change-availability-set.md
     - name: 可用性ゾーン
       items:
         - name: 概要
+          displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
         - name: CLI
+          displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ./linux/create-cli-availability-zone.md
         - name: PowerShell
+          displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ./windows/create-powershell-availability-zone.md
         - name: ポータル
+          displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ./windows/create-portal-availability-zone.md
     - name: 近接配置グループ
       items:
         - name: 概要
+          displayName: 'proximity placement groups, ppg'
           href: co-location.md
         - name: CLI
+          displayName: 'proximity placement groups, ppg'
           href: ./linux/proximity-placement-groups.md
         - name: PowerShell
+          displayName: 'proximity placement groups, ppg'
           href: ./windows/proximity-placement-groups.md
         - name: ポータル
+          displayName: 'proximity placement groups, ppg'
           href: ./windows/proximity-placement-groups-portal.md
-    - name: Virtual Machine Scale Sets
+    - name: 仮想マシン スケール セット
       items:
         - name: 概要
-          href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+          displayName: Flexible orchestration mode for virtual machine scale sets
+          href: flexible-virtual-machine-scale-sets.md
+        - name: ポータル
+          displayName: Flexible orchestration mode for virtual machine scale sets
+          href: flexible-virtual-machine-scale-sets-portal.md
+        - name: CLI
+          displayName: Flexible orchestration mode for virtual machine scale sets
+          href: flexible-virtual-machine-scale-sets-cli.md
+        - name: PowerShell
+          displayName: Flexible orchestration mode for virtual machine scale sets
+          href: flexible-virtual-machine-scale-sets-powershell.md
+        - name: ARM テンプレート
+          displayName: Flexible orchestration mode for virtual machine scale sets
+          href: flexible-virtual-machine-scale-sets-rest-api.md
         - name: 自動スケール
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
         - name: オーケストレーション モード
+          displayName: 'VMSS, flex, scale set, scale, virtual machine scale set'
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
+        - name: 移行と考慮事項
+          displayName: 'VMSS, flex, scale set, scale, virtual machine scale set'
+          href: flexible-virtual-machine-scale-sets-migration-resources.md
     - name: VM の再起動について
       href: understand-vm-reboots.md
-    - name: 状態と課金
-      href: states-billing.md
     - name: Azure リージョン
       href: regions.md
+    - name: 可用性セット
+      items:
+        - name: 概要
+          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
+          href: availability-set-overview.md
+        - name: CLI
+          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
+          href: ./linux/tutorial-availability-sets.md
+        - name: PowerShell
+          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
+          href: ./windows/tutorial-availability-sets.md
+        - name: 可用性セットの変更
+          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
+          href: ./windows/change-availability-set.md
 - name: ディスク
   items:
-    - name: マネージド ディスクの概要
+    - name: 概要
+      displayName: 'managed disks, introduction to managed disks'
       href: managed-disks-overview.md
-    - name: IaaS VM 用のディスクの種類の選択
+    - name: ディスクの種類
       href: disks-types.md
     - name: ディスク冗長オプション
       href: disks-redundancy.md
+    - name: ZRS ディスクをデプロイする
+      href: disks-deploy-zrs.md
     - name: 共有ディスク
       href: disks-shared.md
     - name: 共有ディスクを有効にする
       href: disks-shared-enable.md
+    - name: ディスク プール
+      items:
+        - name: 概要
+          displayName: Disk pools overview
+          href: disks-pools.md
+        - name: ディスク プールの計画
+          href: disks-pools-planning.md
+        - name: ディスク プールをデプロイする
+          href: disks-pools-deploy.md
+        - name: ディスク プールを別のサブスクリプションに移動する
+          href: disks-pools-move-resource.md
+        - name: ディスク プールを管理する
+          href: disks-pools-manage.md
+        - name: ディスク プールをプロビジョニング解除する
+          href: disks-pools-deprovision.md
+        - name: ディスク プールのトラブルシューティングを行う
+          href: disks-pools-troubleshoot.md
     - name: 暗号化
       items:
+        - name: ディスク暗号化の概要
+          href: disk-encryption-overview.md
         - name: サーバー側暗号化
           items:
             - name: サーバー側暗号化の概要
               href: disk-encryption.md
+              displayname: 'Server side encryption, encryption, ADE'
             - name: カスタマー マネージド キーを有効にする
               items:
                 - name: ポータル
                   href: disks-enable-customer-managed-keys-portal.md
+                  displayname: 'Server side encryption, encryption, ADE'
                 - name: PowerShell
                   href: windows/disks-enable-customer-managed-keys-powershell.md
+                  displayname: 'Server side encryption, encryption, ADE'
                 - name: CLI
                   href: linux/disks-enable-customer-managed-keys-cli.md
+                  displayname: 'Server side encryption, encryption, ADE'
             - name: ホストでの暗号化を有効にする
               items:
                 - name: ポータル
                   href: disks-enable-host-based-encryption-portal.md
+                  displayname: 'Encryption at host, encryption, ADE'
                 - name: PowerShell
                   href: windows/disks-enable-host-based-encryption-powershell.md
+                  displayname: 'Encryption at host, encryption, ADE'
                 - name: CLI
                   href: linux/disks-enable-host-based-encryption-cli.md
+                  displayname: 'Encryption at host, encryption, ADE'
             - name: 保存時の二重暗号化を有効にする
               items:
                 - name: ポータル
                   href: disks-enable-double-encryption-at-rest-portal.md
+                  displayname: 'double encryption at rest, encryption, ADE'
                 - name: PowerShell
                   href: windows/disks-enable-double-encryption-at-rest-powershell.md
+                  displayname: 'double encryption at rest, encryption, ADE'
                 - name: CLI
                   href: linux/disks-enable-double-encryption-at-rest-cli.md
+                  displayname: 'double encryption at rest, encryption, ADE'
         - name: Azure Disk Encryption
           items:
             - name: Linux
               items:
                 - name: 概要
                   href: ./linux/disk-encryption-overview.md
+                  displayname: 'Azure disk encryption, encryption, ADE'
                 - name: クイックスタート
                   items:
                     - name: Azure CLI
                       href: ./linux/disk-encryption-cli-quickstart.md
+                      displayname: 'Azure disk encryption, encryption, ADE'
                     - name: Azure PowerShell
                       href: ./linux/disk-encryption-powershell-quickstart.md
+                      displayname: 'Azure disk encryption, encryption, ADE'
                     - name: Azure portal
                       href: ./linux/disk-encryption-portal-quickstart.md
+                      displayname: 'Azure disk encryption, encryption, ADE'
+                - name: Linux のディスク暗号化のシナリオ
+                  href: ./linux/disk-encryption-linux.md
                 - name: Azure Disk Encryption に対応したキー コンテナー
                   href: ./linux/disk-encryption-key-vault.md
+                  displayname: 'Azure disk encryption, encryption, ADE, Key vault'
                 - name: ディスク暗号化のサンプル スクリプト
                   href: ./linux/disk-encryption-sample-scripts.md
                 - name: 分離されたネットワークでのディスク暗号化
@@ -898,19 +1398,22 @@
                 - name: ディスク暗号化のトラブルシューティング
                   href: ./linux/disk-encryption-troubleshooting.md
                 - name: ディスク暗号化の FAQ
-                  href: ./linux/disk-encryption-faq.md
+                  href: ./linux/disk-encryption-faq.yml
+                - name: 以前のバージョンから現在のバージョンへのアップグレード
+                  href: ./linux/disk-encryption-upgrade.md
                 - name: ディスク暗号化 - 以前のバージョン
                   items:
                     - name: 概要
                       href: ./linux/disk-encryption-overview-aad.md
+                      displayname: 'Azure disk encryption, encryption, ADE, Key vault, previous version'
                     - name: Azure Disk Encryption に対応したキー コンテナー
                       href: ./linux/disk-encryption-key-vault-aad.md
                     - name: Linux のディスク暗号化のシナリオ
                       href: ./linux/disk-encryption-linux-aad.md
             - name: Windows
               items:
-                - name: Windows のディスク暗号化のシナリオ
-                  href: ./windows/disk-encryption-windows.md
+                - name: 概要
+                  href: ./windows/disk-encryption-overview.md
                 - name: クイックスタート
                   items:
                     - name: Azure CLI
@@ -919,6 +1422,8 @@
                       href: ./windows/disk-encryption-powershell-quickstart.md
                     - name: Azure portal
                       href: ./windows/disk-encryption-portal-quickstart.md
+                - name: Windows のディスク暗号化のシナリオ
+                  href: ./windows/disk-encryption-windows.md
                 - name: Azure Disk Encryption に対応したキー コンテナー
                   href: ./windows/disk-encryption-key-vault.md
                 - name: ディスク暗号化のサンプル スクリプト
@@ -926,7 +1431,7 @@
                 - name: ディスク暗号化のトラブルシューティング
                   href: ./windows/disk-encryption-troubleshooting.md
                 - name: ディスク暗号化の FAQ
-                  href: ./windows/disk-encryption-faq.md
+                  href: ./windows/disk-encryption-faq.yml
                 - name: ディスク暗号化 - 以前のバージョン
                   items:
                     - name: 概要
@@ -939,28 +1444,39 @@
       items:
         - name: Ultra ディスク
           href: disks-enable-ultra-ssd.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: 仮想マシンとディスクのパフォーマンス
           href: disks-performance.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: Disk Storage の予約
           href: ../cost-management-billing/reservations/understand-disk-reservations.md?context=/azure/virtual-machines/context/context
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: Disk Storage の予約
           href: disks-reserved-capacity.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: 高パフォーマンス用の設計
           href: premium-storage-performance.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: ディスク関連のメトリック
           href: disks-metrics.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: ディスク バースト モデル
           href: disk-bursting.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: オンデマンド バーストを有効にする
           href: disks-enable-bursting.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: ディスクのパフォーマンス レベル
           href: disks-change-performance.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: ディスクのパフォーマンス レベルを変更する
           items:
             - name: CLI および PowerShell
               href: disks-performance-tiers.md
+              displayname: 'Performance, cost, perf, disks, disk, change disk performance tier'
             - name: ポータル
               href: disks-performance-tiers-portal.md
+              displayname: 'Performance, cost, perf, disks, disk, change disk performance tier'
         - name: 書き込みアクセラレータを有効にする
           href: how-to-enable-write-accelerator.md
         - name: ディスクのベンチマークの実行
@@ -974,19 +1490,20 @@
         - name: Azure ディスク バックアップ
           items:
             - name: 概要
+              displayName: 'Azure disk backup, backup'
               href: ../backup/disk-backup-overview.md?context=/azure/virtual-machines/context/context
             - name: Azure ディスク バックアップの構成
               href: ../backup/backup-managed-disks.md?context=/azure/virtual-machines/context/context
             - name: Azure ディスク バックアップによるディスクの復元
               href: ../backup/restore-managed-disks.md?context=/azure/virtual-machines/context/context
-        - name: ディスクのバックアップとディザスター リカバリー
+        - name: マネージド ディスクのバックアップとディザスター リカバリー
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-        - name: ディスクのスナップショットの作成 - CLI
-          href: ./linux/snapshot-copy-managed-disk.md
-        - name: ディスクのスナップショットの作成 - PowerShell
-          href: ./windows/snapshot-copy-managed-disk.md
+        - name: ディスクのスナップショットの作成
+          href: snapshot-copy-managed-disk.md
         - name: アンマネージド ディスクをバックアップする
           href: ./linux/incremental-snapshots.md
+        - name: アンマネージド ディスクのバックアップとディザスター リカバリー
+          href: page-blobs-backup-and-disaster-recovery.md
     - name: エフェメラル OS ディスク
       href: ephemeral-os-disks.md
     - name: 移行と変換
@@ -994,51 +1511,67 @@
         - name: ディスクを別のディスクの種類に変換する
           items:
             - name: CLI
+              displayName: Convert disk to another disk type
               href: ./linux/convert-disk-storage.md
             - name: PowerShell
+              displayName: Convert disk to another disk type
               href: ./windows/convert-disk-storage.md
         - name: Azure Site Recovery を使用した Premium SSD への移行
           items:
             - name: Linux
+              displayName: Migrate to premium SSDs with Azure Site Recovery
               href: ./linux/migrate-to-premium-storage-using-azure-site-recovery.md
             - name: Windows
+              displayName: Migrate to premium SSDs with Azure Site Recovery
               href: ./windows/migrate-to-premium-storage-using-azure-site-recovery.md
         - name: マネージド ディスクに移行する
           href: ./windows/migrate-to-managed-disks.md
         - name: 非管理対象ディスクからマネージド ディスク
           items:
             - name: CLI
+              displayName: Unmanaged VM to Managed Disks
               href: ./linux/convert-unmanaged-to-managed-disks.md
             - name: PowerShell
+              displayName: Unmanaged VM to Managed Disks
               href: ./windows/convert-unmanaged-to-managed-disks.md
     - name: データ ディスクの追加
       items:
         - name: Linux
           items:
             - name: Azure CLI
+              displayName: 'add a data disk, data disk'
               href: ./linux/add-disk.md
             - name: Azure portal
+              displayName: 'add a data disk, data disk'
               href: ./linux/attach-disk-portal.md
         - name: Windows
           items:
             - name: Azure PowerShell
+              displayName: 'add a data disk, data disk'
               href: ./windows/attach-disk-ps.md
             - name: Azure portal
+              displayName: 'add a data disk, data disk'
               href: ./windows/attach-managed-disk-portal.md
             - name: 一時ディスク用のドライブ文字を変更する
               href: ./windows/change-drive-letter.md
     - name: ディスクを取り外す
       items:
         - name: Linux
+          displayName: detach a disk
           href: ./linux/detach-disk.md
         - name: Windows
+          displayName: detach a disk
           href: ./windows/detach-disk.md
-    - name: OS ディスクを拡張する
+    - name: ディスクを拡張する
       items:
         - name: Linux
+          displayName: Expand a disk - Linux
           href: ./linux/expand-disks.md
         - name: Windows
+          displayName: Expand a disk - Windows
           href: ./windows/expand-os-disk.md
+        - name: 非管理対象ディスク
+          href: expand-unmanaged-disks.md
     - name: ストレージの管理
       items:
         - name: Resource Manager テンプレートによるディスクのデプロイ
@@ -1057,8 +1590,10 @@
             - name: VHD のダウンロード
               items:
                 - name: Linux
+                  displayName: Download a VHD
                   href: ./linux/download-vhd.md
                 - name: Windows
+                  displayName: Download a VHD
                   href: ./windows/download-vhd.md
         - name: Storage Explorer を使用してディスクを管理する
           href: disks-use-storage-explorer-managed-disks.md
@@ -1070,74 +1605,161 @@
           href: ./linux/azure-to-guest-disk-mapping.md
         - name: マネージド ディスクをゲスト ディスクにマップする - Windows
           href: ./windows/azure-to-guest-disk-mapping.md
+        - name: File Storage
+          items:
+            - name: ファイルを Linux VM にコピーする
+              href: ./linux/copy-files-to-linux-vm-using-scp.md
         - name: アタッチされていないディスクの検出
           items:
             - name: CLI
+              displayName: Find unattached disks
               href: ./linux/find-unattached-disks.md
             - name: PowerShell
+              displayName: Find unattached disks
               href: ./windows/find-unattached-disks.md
             - name: ポータル
+              displayName: Find unattached disks
               href: disks-find-unattached-portal.md
         - name: ディスクに関する FAQ
-          href: faq-for-disks.md
+          href: faq-for-disks.yml
     - name: コード サンプル
       items:
         - name: CLI
           items:
             - name: VHD からマネージド ディスクを作成する
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: スナップショットからマネージド ディスクを作成する
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: 同じまたは別のサブスクリプションにマネージド ディスクをコピーする
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md'
+              href: 'https://github.com/Azure-Samples/azure-cli-samples/blob/master/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh'
             - name: 同じまたは別のサブスクリプションにスナップショットをコピーする
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription
             - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-storage-account.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
             - name: ストレージ アカウントに VHD としてマネージド ディスクをエクスポートする
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
         - name: PowerShell
           items:
             - name: VHD からマネージド ディスクを作成する
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
             - name: スナップショットからマネージド ディスクを作成する
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot
             - name: 同じまたは別のサブスクリプションにスナップショットをコピーする
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription
             - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account
             - name: ストレージ アカウントに VHD としてマネージド ディスクをエクスポートする
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd
             - name: VHD からスナップショットを作成する
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
 - name: ネットワーク
   items:
     - name: 概要
-      href: network-overview.md
+      displayName: Networking Overview
+      href: ../virtual-network/network-overview.md?context=/azure/virtual-machines/context/context
+    - name: ネットワーク スループットの最適化
+      href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
+    - name: ベスト プラクティス
+      href: ../virtual-network/concepts-and-best-practices.md
     - name: Create virtual network
       href: ../virtual-network/quick-create-cli.md?context=/azure/virtual-machines/context/context
+    - name: ネットワーク トラフィックのフィルター処理
+      items:
+        - name: Azure portal
+          href: ../virtual-network/tutorial-filter-network-traffic.md?context=/azure/virtual-machines/context/context
+        - name: Azure PowerShell
+          href: ../virtual-network/tutorial-filter-network-traffic-powershell.md?context=/azure/virtual-machines/context/context
+        - name: Azure CLI
+          href: ../virtual-network/tutorial-filter-network-traffic-cli.md?context=/azure/virtual-machines/context/context
+    - name: VM の作成 - 静的パブリック IP
+      items:
+        - name: Azure portal
+          href: ../virtual-network/ip-services/virtual-network-deploy-static-pip-arm-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: Azure PowerShell
+          href: ../virtual-network/ip-services/virtual-network-deploy-static-pip-arm-ps.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: Azure CLI
+          href: ../virtual-network/ip-services/virtual-network-deploy-static-pip-arm-cli.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: 既存の VM へのパブリック IP アドレスの追加
+          href: ../virtual-network/ip-services/associate-public-ip-address-vm.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: VM からのパブリック IP アドレスの切り離し
+          href: ../virtual-network/ip-services/remove-public-ip-address-vm.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+    - name: VM の作成 - 静的プライベート IP
+      items:
+        - name: Azure portal
+          href: ../virtual-network/ip-services/virtual-networks-static-private-ip-arm-pportal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: Azure PowerShell
+          href: ../virtual-network/ip-services/virtual-networks-static-private-ip-arm-ps.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: Azure CLI
+          href: ../virtual-network/ip-services/virtual-networks-static-private-ip-arm-cli.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+    - name: VM の作成 - 複数の IP
+      items:
+        - name: Azure portal
+          href: ../virtual-network/ip-services/virtual-network-multiple-ip-addresses-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: Azure PowerShell
+          href: ../virtual-network/ip-services/virtual-network-multiple-ip-addresses-powershell.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: Azure CLI
+          href: ../virtual-network/ip-services/virtual-network-multiple-ip-addresses-cli.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: ネットワーク インターフェイスの追加または削除
+          href: ../virtual-network/virtual-network-network-interface-vm.md?context=/azure/virtual-machines/context/context
+        - name: VM の作成 - 複数の NIC
+          items:
+            - name: Azure PowerShell
+              href: ./windows/multiple-nics.md
+            - name: Azure CLI
+              href: ./linux/multiple-nics.md
+    - name: VM の作成 - 高速ネットワーク
+      items:
+        - name: Azure PowerShell
+          href: ../virtual-network/create-vm-accelerated-networking-powershell.md?context=/azure/virtual-machines/context/context
+        - name: Azure CLI
+          href: ../virtual-network/create-vm-accelerated-networking-cli.md?context=/azure/virtual-machines/context/context
+          items:
+            - name: DPDK を設定する
+              href: ../virtual-network/setup-dpdk.md?context=/azure/virtual-machines/context/context
+    - name: Azure VM の TCP/IP パフォーマンス チューニング
+      href: ../virtual-network/virtual-network-tcpip-performance-tuning.md?context=/azure/virtual-machines/context/context
+    - name: 仮想マシンのネットワーク スループット
+      href: ../virtual-network/virtual-machine-network-throughput.md?context=/azure/virtual-machines/context/context
+    - name: DDoS 保護プランを作成する
+      items:
+        - name: ポータル
+          href: ../ddos-protection/manage-ddos-protection.md?context=/azure/virtual-machines/context/context
+        - name: PowerShell
+          href: ../ddos-protection/manage-ddos-protection-powershell.md?context=/azure/virtual-machines/context/context
+        - name: CLI
+          href: ../ddos-protection/manage-ddos-protection-cli.md?context=/azure/virtual-machines/context/context
+        - name: ARM テンプレート
+          displayName: Resource Manager
+          href: ../ddos-protection/manage-ddos-protection-template.md?context=/azure/virtual-machines/context/context
     - name: VM へのポートを開く
       items:
         - name: CLI
+          displayName: port nsg network security group
           href: ./linux/nsg-quickstart.md
         - name: PowerShell
+          displayName: nsg network security group
           href: ./windows/nsg-quickstart-powershell.md
         - name: ポータル
+          displayName: port nsg network security group
           href: ./windows/nsg-quickstart-portal.md
     - name: パブリック IP アドレスの割り当て
-      href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
+      href: ../virtual-network/ip-services/virtual-network-deploy-static-pip-arm-cli.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+    - name: カスタム ドメイン名の使用
+      href: custom-domain.md
     - name: 複数の NIC の使用
       items:
         - name: Linux (CLI を使用)
+          displayName: Use multipe NICs
           href: ./linux/multiple-nics.md
         - name: Windows (PowerShell を使用)
+          displayName: Use multipe NICs
           href: ./windows/multiple-nics.md
-    - name: 高速ネットワークの使用
-      href: ../virtual-network/create-vm-accelerated-networking-cli.md?context=/azure/virtual-machines/context/context
-    - name: パブリック DNS 名の割り当て
-      href: create-fqdn.md
     - name: 接続されていない NIC の検索と削除
       href: ./linux/find-unattached-nics.md
+    - name: パブリック DNS 名の割り当て
+      href: create-fqdn.md
+    - name: パブリック DNS 名の割り当て
+      href: create-fqdn.md
     - name: DNS の解決
       href: ./linux/azure-dns.md
     - name: 内部 DNS の使用
@@ -1145,21 +1767,26 @@
 - name: Security
   items:
     - name: 概要
+      displayName: Security Overview
       href: ../security/fundamentals/virtual-machines-overview.md?context=/azure/virtual-machines/context/context
-    - name: Azure Security Center
+    - name: Microsoft Defender for Cloud
       href: ../security-center/security-center-introduction.md
+      maintainContext: true
     - name: セキュリティ ベースライン
       items:
         - name: Linux
-          href: ./linux/security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-machines-linux-security-baseline?context=/azure/virtual-machines/context/context
+          displayname: Security baselines
         - name: Windows
-          href: ./windows/security-baseline.md
+          displayName: Security baselines
+          href: /security/benchmark/azure/baselines/virtual-machines-windows-security-baseline?context=/azure/virtual-machines/context/context
     - name: 推奨事項
       href: security-recommendations.md
     - name: トラステッド起動
       items:
         - name: 概要
           href: trusted-launch.md
+          DisplayName: 'Trusted Launch, shielded VM'
         - name: ポータルを使用したデプロイ
           href: trusted-launch-portal.md
     - name: ジャストインタイム アクセス
@@ -1167,6 +1794,7 @@
     - name: のポリシー
       items:
         - name: 概要
+          displayName: Azure Policy
           href: security-policy.md
         - name: ポリシーによるコントロール
           displayName: 'regulatory, compliance, standards, domains'
@@ -1176,32 +1804,42 @@
         - name: ポリシーの使用
           items:
             - name: Linux
+              displayName: Use policies
               href: ./linux/policy.md
             - name: Windows
+              displayName: Use policies
               href: ./windows/policy.md
     - name: Bastion
       items:
         - name: 概要
+          displayName: Bastion Overview
           href: ../bastion/bastion-overview.md
         - name: Bastion ホストの作成
           items:
             - name: ポータル
+              displayName: Create a Bastion host
               href: ../bastion/tutorial-create-host-portal.md
             - name: PowerShell
+              displayName: Create a Bastion host
               href: ../bastion/bastion-create-host-powershell.md
             - name: CLI
+              displayName: Create a Bastion host
               href: ../bastion/create-host-cli.md
             - name: Bastion SSH 接続
-              href: ../bastion/bastion-connect-vm-ssh.md
+              displayName: 'Create a Bastion host, SSH, connect'
+              href: ../bastion/bastion-connect-vm-ssh-linux.md
             - name: Bastion RDP 接続
-              href: ../bastion/bastion-connect-vm-rdp.md
+              displayName: 'Create a Bastion host, connect, remote desktop, rdp'
+              href: ../bastion/bastion-connect-vm-rdp-windows.md
         - name: アクセス制御の使用
           href: ../role-based-access-control/overview.md
         - name: Key Vault の作成
           items:
             - name: CLI
+              displayName: Create a key vault
               href: ./linux/key-vault-setup.md
             - name: PowerShell
+              displayName: create a key vault
               href: ./windows/key-vault-setup.md
     - name: 予測実行の軽減
       href: mitigate-se.md
@@ -1209,110 +1847,169 @@
       displayName: Azure AD
       items:
         - name: Red Hat Enterprise Linux
+          displayName: 'Linux VM to Azure Active Directory, Red Hat'
           href: ../active-directory-domain-services/join-rhel-linux-vm.md
         - name: CentOS
+          displayName: 'Linux VM to Azure Active Directory, CentOS'
           href: ../active-directory-domain-services/join-centos-linux-vm.md
         - name: Ubuntu
+          displayName: 'Linux VM to Azure Active Directory, Ubuntu'
           href: ../active-directory-domain-services/join-ubuntu-linux-vm.md
     - name: マネージド ID の構成
       items:
         - name: ポータル
+          displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?context=/azure/virtual-machines/context/context
         - name: CLI
+          displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?context=/azure/virtual-machines/context/context
         - name: PowerShell
+          displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?context=/azure/virtual-machines/context/context
         - name: Azure Resource Manager テンプレート
-          displayName: ARM
+          displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?context=/azure/virtual-machines/context/context
         - name: REST
+          displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?context=/azure/virtual-machines/context/context
         - name: Azure SDK
+          displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?context=/azure/virtual-machines/context/context
     - name: Linux の Active Directory サインイン
-      href: ./linux/login-using-aad.md
-- name: メンテナンスと更新
+      displayName: aad
+      items:
+        - name: Azure Active Directory での SSH
+          href: ../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md
+          items:
+            - name: 以前のバージョンは、2021 年 8 月 15 日に非推奨になります。
+              href: ./linux/login-using-aad.md
+- name: 更新プログラムとメンテナンス
   items:
     - name: 概要
-      href: maintenance-and-updates.md
-    - name: VM ゲストの自動修正プログラム (プレビュー)
-      href: automatic-vm-guest-patching.md
-    - name: 拡張機能の自動アップグレード (プレビュー)
-      href: automatic-extension-upgrade.md
-    - name: メンテナンス管理
+      displayName: 'maintenance, updates, live-migration'
+      href: updates-maintenance-overview.md
+    - name: OS イメージの自動アップグレード
       items:
+        - name: 概要
+          displayName: 'Automatic OS image upgrade, image, upgrade, OS'
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
+        - name: OS イメージ アップグレードのメンテナンス コントロール
+          items:
+            - name: 概要
+              displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
+              href: virtual-machine-scale-sets-maintenance-control.md
+            - name: PowerShell
+              displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
+              href: virtual-machine-scale-sets-maintenance-control-powershell.md
+            - name: CLI
+              displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
+              href: virtual-machine-scale-sets-maintenance-control-cli.md
+            - name: ポータル
+              displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
+              href: virtual-machine-scale-sets-maintenance-control-portal.md
+    - name: VM ゲストの自動パッチ適用
+      items:
+        - name: 概要
+          displayName: 'Automatic VM guest patching, guest, OS, patching'
+          href: automatic-vm-guest-patching.md
+        - name: ホットパッチ
+          displayName: 'patching, patch, update'
+          href: ../automanage/automanage-hotpatch.md?context=/azure/virtual-machines/context/context
+    - name: 拡張機能の自動アップグレード
+      href: automatic-extension-upgrade.md
+    - name: Azure Automation における Update Management
+      href: ../automation/update-management/overview.md?context=/azure/virtual-machines/context/context
+    - name: メンテナンス
+      items:
+        - name: 概要
+          displayName: 'Maintenance, VM maintenance'
+          href: maintenance-and-updates.md
         - name: メンテナンスの通知
           items:
             - name: 概要
+              displayName: Maintenance notifications
               href: maintenance-notifications.md
             - name: CLI
+              displayName: Maintenance notifications
               href: maintenance-notifications-cli.md
             - name: ポータル
+              displayName: Maintenance notifications
               href: maintenance-notifications-portal.md
             - name: PowerShell
+              displayName: Maintenance notifications
               href: maintenance-notifications-powershell.md
-        - name: プラットフォームのメンテナンス
+        - name: メンテナンス管理
           items:
             - name: 概要
+              displayName: Maintenance control
               href: maintenance-control.md
             - name: CLI
+              displayName: Maintenance control
               href: maintenance-control-cli.md
             - name: PowerShell
+              displayName: Maintenance control
               href: maintenance-control-powershell.md
             - name: ポータル
+              displayName: Maintenance control
               href: maintenance-control-portal.md
         - name: スケジュールされたイベント
           items:
             - name: Linux
               href: ./linux/scheduled-events.md
+              displayname: Scheduled events
             - name: Windows
+              displayName: Scheduled events
               href: ./windows/scheduled-events.md
         - name: VM の追跡と更新
           items:
             - name: Linux
+              displayName: 'update, track'
               href: ./linux/tutorial-config-management.md
             - name: Windows
+              displayName: 'update, track'
               href: ./windows/tutorial-config-management.md
-        - name: 仮想マシン スケール セットの OS イメージのアップグレード
-          items:
-            - name: OS の自動アップグレード
-              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
-            - name: メンテナンス管理
-              items:
-                - name: 概要 (プレビュー)
-                  href: virtual-machine-scale-sets-maintenance-control.md
-                - name: PowerShell (プレビュー)
-                  href: virtual-machine-scale-sets-maintenance-control-powershell.md
 - name: 監視
   items:
-    - name: 概要
-      href: ../azure-monitor/vm/monitor-vm-azure.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-    - name: VM の監視
+    - name: 仮想マシンの監視
+      href: monitor-vm.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+    - name: 仮想マシン リファレンスの監視
+      href: monitor-vm-reference.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+    - name: チュートリアル
       items:
-        - name: Windows
-          href: ./windows/tutorial-monitor.md
+        - name: 監視を有効にする
+          href: ../azure-monitor/vm/tutorial-monitor-vm-enable.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: マシン ダウン時のアラート
+          href: ../azure-monitor/vm/tutorial-monitor-vm-alert.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: ゲスト ログとメトリックを収集する
+          href: ../azure-monitor/vm/tutorial-monitor-vm-guest.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: エージェント
       items:
         - name: エージェントの概要
           href: ../azure-monitor/agents/agents-overview.md?context=/azure/virtual-machines/context/context
         - name: よく寄せられる質問
-          href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#agents
-        - name: Azure Diagnostics 拡張機能
+          displayName: Agents
+          href: ../azure-monitor/faq.yml
+        - name: Azure Monitor エージェント
           items:
             - name: 概要
-              href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-            - name: Linux Diagnostics 拡張機能
-              items:
-                - name: Version 4.0
-                  href: ../virtual-machines/extensions/diagnostics-linux.md?context=/azure/virtual-machines/context/context
-                - name: Version 3.0
-                  href: ../virtual-machines/extensions/diagnostics-linux-v3.md?context=/azure/virtual-machines/context/context
-                - name: Telegraf を使用したメトリックの収集
-                  href: ../azure-monitor/essentials/collect-custom-metrics-linux-telegraf.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-                  displayname: diagnostics extension
+              displayname: Azure Monitor agent
+              href: ../azure-monitor/agents/azure-monitor-agent-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+            - name: インストール
+              displayname: Azure Monitor agent
+              href: ../azure-monitor/agents/azure-monitor-agent-install.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+            - name: データ コレクション
+              displayname: 'data collection rule,Azure Monitor agent'
+              href: ../azure-monitor/agents/data-collection-rule-azure-monitor-agent.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+            - name: レガシ エージェントから移行する
+              displayname: Migrate to Azure Monitor agent
+              href: ../azure-monitor/agents/azure-monitor-agent-migration.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+            - name: よく寄せられる質問
+              displayname: Azure Monitor agent FAQ
+              href: ../azure-monitor/faq.yml?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Log Analytics エージェント
           items:
             - name: 概要
+              displayName: Log Analytics Agent
               href: ../azure-monitor/agents/log-analytics-agent.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Linux エージェント
               href: ../azure-monitor/agents/agent-linux.md?context=/azure/virtual-machines/context/context
@@ -1325,62 +2022,83 @@
             - name: データ ソース
               items:
                 - name: 概要
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/agent-data-sources.md?context=/azure/virtual-machines/context/context
                 - name: カスタム JSON データ
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-json.md?context=/azure/virtual-machines/context/context
-                - name: collectd のパフォーマンス データ
+                - name: パフォーマンス データを収集する
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-collectd.md?context=/azure/virtual-machines/context/context
                 - name: syslog
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-syslog.md?context=/azure/virtual-machines/context/context
                 - name: パフォーマンス カウンター
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-performance-counters.md?context=/azure/virtual-machines/context/context
                 - name: Linux アプリケーション パフォーマンス
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-linux-applications.md?context=/azure/virtual-machines/context/context
                 - name: カスタム ログ
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
                 - name: カスタム フィールド
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/logs/custom-fields.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: トラブルシューティング
           items:
             - name: Log Analytics VM 拡張機能
               href: ../azure-monitor/visualize/vmext-troubleshoot.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-              displayname: 'troubleshoot, troubleshooting'
             - name: Log Analytics Linux エージェント
               href: ../azure-monitor/agents/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
-              displayname: 'troubleshoot, troubleshooting'
-        - name: VM に対する Azure Monitor
+        - name: VM の分析情報
           items:
             - name: 概要
+              displayName: VM insights
               href: ../azure-monitor/vm/vminsights-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 一般提供の FAQ
-              href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+              displayName: VM insights
+              href: ../azure-monitor/vm/vminsights-ga-release-faq.yml?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: よく寄せられる質問
-              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context
+              displayName: VM insights
+              href: ../azure-monitor/faq.yml?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 監視を有効にする
               items:
                 - name: 監視の有効化の概要
+                  displayName: 'Azure monitor, monitoring'
                   href: ../azure-monitor/vm/vminsights-enable-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: 単一の Azure VM での有効化
+                  displayName: 'Azure monitor, monitoring'
                   href: ../azure-monitor/vm/vminsights-enable-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Azure Policy を使用して有効にする
+                  displayName: 'Azure monitor, monitoring'
                   href: ../azure-monitor/vm/vminsights-enable-policy.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Azure PowerShell を使用して有効にする
+                  displayName: 'Azure monitor, monitoring'
                   href: ../azure-monitor/vm/vminsights-enable-powershell.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: ハイブリッド環境対応にする
+                  displayName: 'Azure monitor, monitoring'
                   href: ../azure-monitor/vm/vminsights-enable-hybrid.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 依存関係のマップ
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-maps.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: パフォーマンスの監視
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-performance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: ログ クエリによるデータの分析
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-log-search.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: ブックを使用したデータの視覚化
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-workbooks.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: アラート ルールの作成
-              href: ../azure-monitor/vm/vminsights-alerts.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+              displayName: 'Azure monitor, monitoring'
+              href: ../azure-monitor/vm/monitor-virtual-machine-alerts.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 依存関係エージェントのアップグレード
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-dependency-agent-maintenance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 監視を無効にする
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-optout.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: VM の使用状況
       href: vm-usage.md
@@ -1388,17 +2106,23 @@
       items:
         - name: CLI
           href: tag-cli.md
+          displayname: 'tag, tagging, tag a vm'
         - name: ポータル
           href: tag-portal.md
+          displayname: 'tag, tagging, tag a vm'
         - name: PowerShell
           href: tag-powershell.md
+          displayname: 'tag, tagging, tag a vm'
         - name: テンプレート
           href: tag-template.md
+          displayname: 'tag, tagging, tag a vm'
     - name: メタデータの監視
       items:
         - name: CLI
+          displayName: Monitor metadata
           href: ./linux/instance-metadata-service.md
         - name: PowerShell
+          displayName: Monitor metadata
           href: ./windows/instance-metadata-service.md
     - name: REST による使用状況メトリックの取得
       href: ./linux/metrics-vm-usage-rest.md
@@ -1407,63 +2131,76 @@
 - name: バックアップと回復
   items:
     - name: 概要
+      displayName: Backup and recovery
       href: backup-recovery.md
     - name: サービスの中断
       href: virtual-machines-disaster-recovery-guidance.md
     - name: VM をバックアップする
       items:
         - name: 概要
-          href: ../backup/backup-azure-vms-introduction.md
+          href: ../backup/backup-azure-vms-introduction.md?context=/azure/virtual-machines/context/context
+          dispayName: 'backup VMs, Azure Backup, recovery'
         - name: クイックスタート
           items:
             - name: CLI
-              href: ../backup/quick-backup-vm-cli.md
+              href: ../backup/quick-backup-vm-cli.md?context=/azure/virtual-machines/context/context
+              dispayName: 'backup VMs, Azure Backup, recovery'
             - name: PowerShell
-              href: ../backup/quick-backup-vm-powershell.md
+              href: ../backup/quick-backup-vm-powershell.md?context=/azure/virtual-machines/context/context
+              dispayName: 'backup VMs, Azure Backup, recovery'
             - name: ポータル
-              href: ../backup/quick-backup-vm-portal.md
+              href: ../backup/quick-backup-vm-portal.md?context=/azure/virtual-machines/context/context
+              dispayName: 'backup VMs, Azure Backup, recovery'
             - name: Template
-              href: ../backup/quick-backup-vm-template.md
+              href: ../backup/quick-backup-vm-template.md?context=/azure/virtual-machines/context/context
+              dispayName: 'backup VMs, Azure Backup, recovery'
         - name: 複数の VM のバックアップ
-          href: ../backup/tutorial-backup-vm-at-scale.md
+          href: ../backup/tutorial-backup-vm-at-scale.md?context=/azure/virtual-machines/context/context
         - name: 復元オプション
-          href: ../backup/backup-azure-arm-restore-vms.md
+          href: ../backup/backup-azure-arm-restore-vms.md?context=/azure/virtual-machines/context/context
         - name: サポート マトリックス
-          href: ../backup/backup-support-matrix-iaas.md
+          href: ../backup/backup-support-matrix-iaas.md?context=/azure/virtual-machines/context/context
+          dispayName: 'backup VMs, Azure Backup, recovery'
         - name: 価格
-          href: ../backup/azure-backup-pricing.md
+          href: ../backup/azure-backup-pricing.md?context=/azure/virtual-machines/context/context
+          dispayName: 'backup VMs, Azure Backup, recovery'
         - name: よく寄せられる質問
-          href: ../backup/backup-azure-vm-backup-faq.yml
+          href: ../backup/backup-azure-vm-backup-faq.yml?context=/azure/virtual-machines/context/context
+          dispayName: 'backup VMs, Azure Backup, recovery'
     - name: 障害復旧
       items:
         - name: 概要
-          href: ../site-recovery/site-recovery-overview.md
+          displayName: Disaster Recovery Overview
+          href: ../site-recovery/site-recovery-overview.md?context=/azure/virtual-machines/context/context
         - name: ディザスター リカバリーを有効にする
           items:
             - name: Linux
+              displayName: Enable disaster recovery
               href: ./linux/tutorial-disaster-recovery.md
             - name: Windows
+              displayName: Enable disaster recovery
               href: ./windows/tutorial-disaster-recovery.md
-        - name: VM のディザスター リカバリーを有効にする
-          href: ../site-recovery/azure-to-azure-tutorial-enable-replication.md
-        - name: VM のディザスター リカバリーの演習を実行する
-          href: ../site-recovery/azure-to-azure-tutorial-dr-drill.md
         - name: VM を別のリージョンにフェールオーバーする
-          href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md
+          href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md?context=/azure/virtual-machines/context/context
+        - name: VM をプライマリ リージョンにフェールバックする
+          href: ../site-recovery/azure-to-azure-tutorial-failback.md?context=/azure/virtual-machines/context/context
     - name: VM を移動および移行する
       items:
         - name: サブスクリプションまたはリソース グループを変更する
           items:
             - name: CLI
+              displayName: Change subscription or resource group
               href: ./linux/move-vm.md
             - name: PowerShell
+              displayName: Change subscription or resource group
               href: ./windows/move-vm.md
             - name: Marketplace VM のサブスクリプションを変更する
+              displayName: Change subscription or resource group
               href: azure-cli-change-subscription-marketplace.md
         - name: VM を別のリージョンに移行する
-          href: ../site-recovery/azure-to-azure-tutorial-migrate.md
+          href: ../site-recovery/azure-to-azure-tutorial-migrate.md?context=/azure/virtual-machines/context/context
         - name: 可用性ゾーンに移動する
-          href: ../site-recovery/move-azure-vms-avset-azone.md
+          href: ../site-recovery/move-azure-vms-avset-azone.md?context=/azure/virtual-machines/context/context
         - name: メンテナンス コントロールの構成を別のリージョンに移動する
           href: move-region-maintenance-configuration.md
         - name: メンテナンス コントロールの構成リソースを別のリージョンに移動する
@@ -1475,12 +2212,16 @@
               href: ./windows/aws-to-azure.md
             - name: オンプレミスの VM をアップロードする
               href: ./linux/upload-vhd.md
+              displayname: Migrate from Amazon Web Services (AWS) to Azure
             - name: Azure Site Recovery を使用する
               href: ../site-recovery/migrate-overview.md?context=/azure/virtual-machines/context/context
 - name: インフラストラクチャの自動化
   items:
     - name: 概要
+      displayName: Infrastrucure automation overview
       href: infrastructure-automation.md
+    - name: ユーザー データ
+      href: user-data.md
     - name: カスタム データ
       href: custom-data.md
     - name: Ansible
@@ -1491,14 +2232,14 @@
       href: /azure/developer/jenkins/
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
-- name: トラブルシューティング
-  href: /troubleshoot/azure/virtual-machines/welcome-virtual-machines
 - name: リソース
   items:
     - name: クラウド導入フレームワーク
       href: /azure/cloud-adoption-framework/get-started/
     - name: アーキテクチャ センター
       href: /azure/architecture/
+    - name: 移行ツール
+      href: /azure/cloud-adoption-framework/migrate/azure-migration-guide/?tabs=MigrationTools
     - name: Microsoft Q&A
       href: /answers/topics/azure-virtual-machines.html
     - name: Azure クイック スタート テンプレート
@@ -1513,12 +2254,6 @@
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: サンプル
-      items:
-        - name: Azure CLI サンプル リポジトリ
-          href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
-        - name: PowerShell サンプル リポジトリ
-          href: 'https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine'
     - name: 一般的な CLI コマンド
       href: ./linux/cli-manage.md
     - name: 一般的な PowerShell コマンド
@@ -1536,6 +2271,12 @@
     - name: よく寄せられる質問
       items:
         - name: Linux
-          href: ./linux/faq.md
+          href: ./linux/faq.yml
         - name: Windows
+<<<<<<< HEAD
           href: ./windows/faq.md
+=======
+          href: ./windows/faq.yml
+- name: サポートとトラブルシューティング
+  href: vm-support-help.md
+>>>>>>> repo_sync_working_branch

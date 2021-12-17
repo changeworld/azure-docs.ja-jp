@@ -1,22 +1,25 @@
 ---
 title: Databricks Notebook でデータを変換する
-description: Azure Data Factory で Databricks Notebook を実行してデータを処理または変換する方法を説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory および Synapse Analytics パイプラインで Databricks Notebook を実行して、データの処理と変換を行う方法について説明します。
 ms.service: data-factory
+ms.subservice: tutorials
+ms.custom: synapse
 author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
-ms.date: 03/15/2018
-ms.openlocfilehash: fea572c2e75f62b5e7e7b4634e37da348bdcdaf1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 09/09/2021
+ms.openlocfilehash: 9f82c1f2e39261ba4ba1072f5da9f807f23a180e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183490"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798467"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Databricks Notebook を実行してデータを変換する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Data Factory パイプライン](concepts-pipelines-activities.md)の Azure Databricks Notebook アクティビティは、Azure Databricks ワークスペースで Databricks Notebook を実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。  Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
+[パイプライン](concepts-pipelines-activities.md)の Azure Databricks Notebook アクティビティによって、Azure Databricks ワークスペースで Databricks Notebook が実行されます。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。  Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
 
 ## <a name="databricks-notebook-activity-definition"></a>Databricks Notebook アクティビティの定義
 
@@ -106,15 +109,15 @@ Databricks Notebook アクティビティのサンプルの JSON 定義を次に
 
 ライブラリの種類の詳細については、[Databricks のドキュメント](/azure/databricks/dev-tools/api/latest/libraries#managedlibrarieslibrary)を参照してください。
 
-## <a name="passing-parameters-between-notebooks-and-data-factory"></a>ノートブックと Data Factory の間でパラメーターを渡す
+## <a name="passing-parameters-between-notebooks-and-pipelines"></a>ノートブックとパイプラインの間でのパラメーターの受け渡し
 
-Databricks アクティビティの *baseParameters* プロパティを使用して、Data Factory のパラメーターをノートブックに渡すことができます。
+Databricks アクティビティの *baseParameters* プロパティを使用して、パラメーターをノートブックに渡すことができます。
 
-場合によっては、ノートブックから Data Factory に特定の値を戻すことが必要になる場合があります。これは、Data Factory の制御フロー (条件チェック) に使用したり、ダウンストリームのアクティビティで使用したりできます (サイズの上限は 2 MB)。
+場合によっては、ノートブックからサービスに特定の値を戻す必要があり、サービスの制御フロー (条件チェック) のために使用したり、ダウンストリームのアクティビティで使用したりできます (サイズの上限は 2 MB)。
 
-1. ノートブックでは、[dbutils.notebook.exit("returnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit) を呼び出すことができ、対応する "returnValue" が Data Factory に返されます。
+1. ノートブックでは、[dbutils.notebook.exit("returnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit) を呼び出すことができ、対応する "returnValue" がサービスに返されます。
 
-2. `@{activity('databricks notebook activity name').output.runOutput}` などの式を使用して、Data Factory で出力を使用できます。 
+2. `@{activity('databricks notebook activity name').output.runOutput}` などの式を使用して、サービスで出力を使用できます。 
 
    > [!IMPORTANT]
    > JSON オブジェクトを渡す場合は、プロパティ名を追加することによって値を取得できます。 例: `@{activity('databricks notebook activity name').output.runOutput.PropertyName}`

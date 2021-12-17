@@ -2,14 +2,14 @@
 title: リソース グループとリソースを削除する
 description: リソース グループとリソースを削除する方法について説明します。 ここでは、リソース グループを削除するときに、Azure Resource Manager によってリソースの削除がどのように並べ替えられるかについて説明します。 応答コードと、削除が成功したかを判断するために Resource Manager によって応答コードが処理される方法について説明します。
 ms.topic: conceptual
-ms.date: 03/18/2021
-ms.custom: seodec18
-ms.openlocfilehash: 3c062c2f775e145347129f24b201748ee517daf4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 09/28/2021
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 7995539ededec882b0b69e5ba3d1c5ef42adbcdc
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768671"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211235"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager のリソース グループとリソースの削除
 
@@ -119,13 +119,13 @@ az resource delete \
 
 ---
 
-## <a name="required-access"></a>必要なアクセス
+## <a name="required-access-and-deletion-failures"></a>必要なアクセスと削除の失敗
 
 リソース グループを削除するには、**Microsoft.Resources/subscriptions/resourceGroups** リソースの削除アクションにアクセスできる必要があります。 また、リソース グループ内のすべてのリソースに対して削除を行う必要もあります。
 
 操作の一覧については、「[Azure リソース プロバイダーの操作](../../role-based-access-control/resource-provider-operations.md)」を参照してください。 組み込みロールの一覧については、[Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。
 
-必要なアクセス権を持っていても、削除要求が失敗した場合は、リソース グループが [ロック](lock-resources.md) されているおそれがあります。
+必要なアクセス権を持っていても、削除要求が失敗した場合は、[リソースまたはリソース グループがロック](lock-resources.md)されているおそれがあります。 リソース グループを手動でロックしなかった場合でも、[関連するサービスによって自動的にロックされている](lock-resources.md#managed-applications-and-locks)可能性があります。 または、リソースが、削除されていない他のリソース グループ内のリソースに接続されている場合、削除が失敗する可能性があります。 たとえば、仮想マシンでまだ使用されているサブネットを含む仮想ネットワークを削除することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

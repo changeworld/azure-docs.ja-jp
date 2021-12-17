@@ -4,12 +4,12 @@ description: Azure Service Fabric アプリケーションをパッケージ化�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 168e6d6dc7ab5bfeccc4e1dabc7bd50efcbe8f34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f575ea61f2406e8e1a636c2cf633a034753853bf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98789704"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003924"
 ---
 # <a name="package-an-application"></a>アプリケーションをパッケージ化する
 
@@ -207,12 +207,11 @@ diff プロビジョニングが選択肢とならず、パッケージを含め
 ## <a name="create-an-sfpkg"></a>sfpkg の作成
 
 バージョン 6.1 より、Service Fabric では外部ストアからのプロビジョニングが可能になりました。
-この場合、アプリケーション パッケージをイメージ ストアにコピーする必要はありません。 代わりに、`sfpkg` を作成して外部ストアにアップロードし、プロビジョニング時にダウンロード URI を Service Fabric に提供することができます。 同じパッケージを複数のクラスターにプロビジョニングできます。 外部ストアからプロビジョニングすることにより、パッケージを各クラスターにコピーするのに要する時間を節約できます。
+この場合、アプリケーション パッケージをイメージ ストアにコピーする必要はありません。 代わりに、`sfpkg` ファイルを作成して外部ストアにアップロードし、プロビジョニング時にダウンロード URI を Service Fabric に提供することができます。 同じパッケージを複数のクラスターにプロビジョニングできます。 外部ストアからプロビジョニングすることにより、パッケージを各クラスターにコピーするのに要する時間を節約できます。
 
-`sfpkg` ファイルは、初期アプリケーション パッケージを含む、拡張子が ".sfpkg" の zip です。
-zip には、圧縮されているアプリケーション パッケージと圧縮されていないアプリケーション パッケージのどちらも含めることができます。 zip 内のアプリケーション パッケージの圧縮は、[前述のように](service-fabric-package-apps.md#compress-a-package)、コード、構成、およびデータ パッケージ レベルで行われます。
+`sfpkg` ファイルは、初期アプリケーション パッケージを含む、拡張子が`.sfpkg`の zip です。 zip には、圧縮されているアプリケーション パッケージと圧縮されていないアプリケーション パッケージのどちらも含めることができます。 zip 内のアプリケーション パッケージの圧縮は、[前述のように](service-fabric-package-apps.md#compress-a-package)、コード、構成、およびデータ パッケージ レベルで行われます。
 
-`sfpkg` を作成するには、圧縮されているかどうかにかかわらず、元のアプリケーション パッケージを含むフォルダーから開始します。 その後、任意のユーティリティを使用してフォルダーを圧縮して、拡張子 ".sfpkg" を付けます。 たとえば、[ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_) を使用します。
+`sfpkg` ファイルを作成するには、圧縮されているかどうかにかかわらず、元のアプリケーション パッケージを含むフォルダーから開始します。 その後、任意のユーティリティを使用してフォルダーを圧縮して、拡張子 ".sfpkg" を付けます。 たとえば、[ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_) を使用します。
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

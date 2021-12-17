@@ -1,6 +1,6 @@
 ---
 title: Kubernetes Service で言語検出コンテナーを実行する
-titleSuffix: Text Analytics -  Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 実行するサンプルを使って言語検出コンテナーを Azure Kubernetes Service にデプロイし、Web ブラウザーでテストします。
 services: cognitive-services
 author: aahill
@@ -8,16 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/11/2021
 ms.author: aahi
-ms.openlocfilehash: 6918218d8434c06f59b0738e60cad53b94b0a0b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a60f92f98a23cacfd36e42619008f91285902f9d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98939851"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476777"
 ---
-# <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Azure Kubernetes Service に Text Analytics 言語検出コンテナーをデプロイする
+# <a name="deploy-a-language-detection-container-to-azure-kubernetes-service"></a>Azure Kubernetes Service に言語検出コンテナーをデプロイする
 
 言語検出コンテナーをデプロイする方法について説明します。 この手順では、ローカルの Docker コンテナーを作成し、コンテナーを独自のプライベート コンテナー レジストリにプッシュし、Kubernetes クラスターでコンテナーを実行して、Web ブラウザーでテストする方法を示します。
 
@@ -31,14 +32,14 @@ ms.locfileid: "98939851"
 * [Docker エンジン](https://www.docker.com/products/docker-engine)。Docker CLI がコンソール ウィンドウで動作することを確認します。
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe)。
 * 適切な価格レベルの Azure リソース。 すべての価格レベルでこのコンテナーを使用するわけではありません。
-  * F0 または Standard 価格レベルのみの **Text Analytics** リソース。
+  * F0 または Standard 価格レベルのみの **言語** リソース。
   * S0 価格レベルの **Cognitive Services** リソース。
 
 ## <a name="running-the-sample"></a>サンプルの実行
 
 この手順では、言語検出用の Cognitive Services コンテナーのサンプルを読み込んで実行します。 このサンプルには、クライアント アプリケーション用と Cognitive Services コンテナー用の 2 つのコンテナーがあります。 これらのイメージを両方とも Azure Container Registry にプッシュします。 独自のレジストリに設定したら、これらのイメージにアクセスしてコンテナーを実行する Azure Kubernetes Service を作成します。 コンテナーの実行中に、**kubectl** CLI を使用してコンテナーのパフォーマンスを監視します。 HTTP 要求を使用してクライアント アプリケーションにアクセスし、結果を確認します。
 
-![サンプルのコンテナーの実行に関する概念的な構想](../text-analytics/media/how-tos/container-instance-sample/containers.png)
+![Kubernetes でのコンテナーの実行の概念を示す図](media/container-instance-sample.png)
 
 ## <a name="the-sample-containers"></a>サンプルのコンテナー
 
@@ -309,21 +310,21 @@ Azure Kubernetes Service にコンテナーをデプロイするには、コン�
 
     [!code-yml[Kubernetes orchestration file for the Cognitive Services containers sample](~/samples-cogserv-containers/Kubernetes/language/language.yml "Kubernetes orchestration file for the Cognitive Services containers sample")]
 
-1. 次の表に基づいて `language.yml` の言語フロントエンドのデプロイの行を変更して、独自のコンテナー レジストリのイメージ名、クライアント シークレット、およびテキスト分析の設定を追加します。
+1. 次の表に基づいて `language.yml` の言語フロントエンドのデプロイの行を変更して、独自のコンテナー レジストリのイメージ名、クライアント シークレット、および言語サービスの設定を追加します。
 
     言語フロントエンドのデプロイ設定|目的|
     |--|--|
     |行 32<br> `image` プロパティ|コンテナー レジストリ内のフロントエンド イメージのイメージの場所<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
     |行 44<br> `name` プロパティ|イメージの Container Registry シークレット (前のセクションでは `<client-secret>` と呼ばれています)。|
 
-1. 次の表に基づいて `language.yml` の言語のデプロイの行を変更して、独自のコンテナー レジストリのイメージ名、クライアント シークレット、およびテキスト分析の設定を追加します。
+1. 次の表に基づいて `language.yml` の言語のデプロイの行を変更して、独自のコンテナー レジストリのイメージ名、クライアント シークレット、および言語サービスの設定を追加します。
 
     |言語のデプロイの設定|目的|
     |--|--|
     |行 78<br> `image` プロパティ|コンテナー レジストリ内の言語イメージのイメージの場所<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
     |行 95<br> `name` プロパティ|イメージの Container Registry シークレット (前のセクションでは `<client-secret>` と呼ばれています)。|
-    |行 91<br> `apiKey` プロパティ|テキスト分析リソース キー|
-    |行 92<br> `billing` プロパティ|テキスト分析リソースの課金エンドポイント。<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+    |行 91<br> `apiKey` プロパティ|言語サービスのリソース キー|
+    |行 92<br> `billing` プロパティ|言語サービス リソースの課金エンドポイント。<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
     **apiKey** と **課金エンドポイント** は、Kubernetes オーケストレーションの定義の一部として設定されているため、Web サイト コンテナーがこれらについて認識したり要求の一部として渡したりする必要はありません。 Web サイト コンテナーは、そのオーケストレーター名 `language` によって言語検出コンテナーを示します。
 
@@ -383,7 +384,7 @@ replicaset.apps/language-frontend-68b9969969   1         1         1         13h
 
 ブラウザーを開いて、前のセクションの `language` コンテナーの外部 IP (`http://<external-ip>:5000/swagger/index.html`) に移動します。 API の `Try it` 機能を使用して、言語検出エンドポイントをテストすることができます。
 
-![コンテナーの Swagger のドキュメントを表示する](../text-analytics/media/how-tos/container-instance-sample/language-detection-container-swagger-documentation.png)
+![コンテナーの Swagger ドキュメントを示すスクリーンショット](./media/language-detection-container-swagger-documentation.png)
 
 ## <a name="test-the-client-application-container"></a>クライアント アプリケーション コンテナーをテストする
 

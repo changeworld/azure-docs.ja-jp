@@ -3,15 +3,13 @@ title: Apache Hadoop のコンポーネントとバージョン - Azure HDInsigh
 description: Azure HDInsight 4.0 での Apache Hadoop のコンポーネントとバージョンについて説明します。
 ms.service: hdinsight
 ms.topic: conceptual
-author: deshriva
-ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: 0283779e10ac3e6070e9fd73d186af35972cad22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5e298235abadd5dab2f3e4283f201707c48d672
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582886"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236920"
 ---
 # <a name="hdinsight-40-component-versions"></a>HDInsight 4.0 のコンポーネントのバージョン
 
@@ -33,12 +31,11 @@ HDInsight 4.0 に関連付けられている OSS コンポーネントのバー�
 | Apache Oozie           | 4.3.1         |
 | Apache Zookeeper       | 3.4.6         |
 | Apache Phoenix         | 5             |
-| Apache Spark           | 2.4.4         |
+| Apache Spark           | 2.4.4、3.0.0 (プレビュー)|
 | Apache Livy            | 0.5           |
-| Apache Kafka           | 2.1.1         |
+| Apache Kafka           | 2.1.1、2.4.1 (プレビュー)        |
 | Apache Ambari          | 2.7.0         |
 | Apache Zeppelin        | 0.8.0         |
-| Mono                   | 4.2.1         |
 
 
 次の表は、廃止された HDInsight 4.0 クラスターの種類の一覧です。

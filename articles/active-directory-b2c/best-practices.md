@@ -4,19 +4,19 @@ titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C (Azure AD B2C) を使用する際に考慮すべき推奨事項とベスト プラクティス。
 services: active-directory-b2c
 author: vigunase
-manager: celestedg
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/06/2020
+ms.date: 10/01/2021
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 2c8a9121d0e36eb51cd02c2c884ddcaa0dd79a79
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 1ebdbcea15ae089d2799a107d29ed992807540a6
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226211"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039678"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の推奨事項とベスト プラクティス
 
@@ -39,7 +39,7 @@ ms.locfileid: "107226211"
 | エンドツーエンド ソリューションを設計する | Azure AD B2C 統合を計画するときには、ご利用のアプリケーションのすべての依存関係を含めます。 ご利用の環境内に現在存在している、またはソリューションに追加することが必要と考えられるすべてのサービスおよび製品 (Azure Functions、カスタマー リレーションシップ マネジメント (CRM) システム、Azure API Management ゲートウェイ、ストレージ サービスなど) について検討してください。 すべてのサービスについてセキュリティとスケーラビリティを考慮してください。 |
 | ユーザーのエクスペリエンスをドキュメント化する | お客様のアプリケーションでお客様の顧客が体験できるすべてのユーザー体験を詳細に説明します。 お客様のアプリケーションの ID およびプロファイルの側面を顧客が操作する際に表示される可能性のあるすべての画面と分岐フローを記載します。 使いやすさ、アクセシビリティ、およびローカライズを計画に含めます。 |
 | 適切な認証プロトコルを選択する |  さまざまなアプリケーション シナリオと、推奨される認証フローの詳細については、「[シナリオとサポートされている認証フロー](../active-directory/develop/authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)」を参照してください。 |
-| 概念実証 (POC) エンドツーエンド ユーザー エクスペリエンスをパイロット運用する | [Microsoft コード サンプル](code-samples.md)および[コミュニティ サンプル](https://github.com/azure-ad-b2c/samples)から開始します。 |
+| 概念実証 (POC) エンドツーエンド ユーザー エクスペリエンスをパイロット運用する | [Microsoft コード サンプル](integrate-with-app-code-samples.md)および[コミュニティ サンプル](https://github.com/azure-ad-b2c/samples)から開始します。 |
 | 移行計画を作成する |事前に計画を作成することによって、移行を円滑に進めることができます。 [ユーザー移行](user-migration.md)の詳細について確認してください。|
 | 使いやすさとセキュリティ | ソリューションでは、アプリケーションの使いやすさと組織におけるリスクの許容レベルとの間で適切なバランスを取る必要があります。 |
 | オンプレミスの依存関係をクラウドに移行する | ソリューションの回復性を確保できるようにするために、クラウドへの既存のアプリケーションの依存関係の移行を検討してください。 |

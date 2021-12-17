@@ -1,18 +1,20 @@
 ---
 title: コピー アクティビティのパフォーマンスのトラブルシューティング
-description: Azure Data Factory でのコピー アクティビティのパフォーマンスをトラブルシューティングする方法について説明します。
-ms.author: jingwang
-author: linda33wj
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Azure Synapse Analytics での Copy アクティビティのパフォーマンスをトラブルシューティングする方法について説明します。
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 01/07/2021
-ms.openlocfilehash: ce7c97abfb879e9298edac5f38540bbc026274da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: a2f3ddf20b41ae1a1638a8c8a1900207f5b880df
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584402"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767477"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>コピー アクティビティのパフォーマンスのトラブルシューティング
 
@@ -22,11 +24,11 @@ ms.locfileid: "104584402"
 
 コピー アクティビティを実行した後、[コピー アクティビティのモニタリング](copy-activity-monitoring.md) ビューで、実行結果とパフォーマンスの統計情報を収集できます。 以下に例を示します。
 
-![コピー アクティビティの実行状況の詳細の監視](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
+:::image type="content" source="./media/copy-activity-overview/monitor-copy-activity-run-details.png" alt-text="コピー アクティビティの実行状況の詳細の監視":::
 
 ## <a name="performance-tuning-tips"></a>パフォーマンスのチューニングのヒント
 
-一部のシナリオでは、Data Factory でコピー アクティビティを実行するときに、上の例に示すように、上部に **[Performance tuning tips]\(パフォーマンスチューニングのヒント\)** が表示されます。 このヒントでは、この特定のコピーの実行について ADF によって特定されたボトルネックと、コピーのスループットを向上させる方法について説明しています。 推奨されている変更を行ってから、コピーを再度実行してください。
+一部のシナリオでは、Copy アクティビティを実行するときに、上の例に示すように、上部に **[パフォーマンスのチューニングのヒント]** が表示されます。 このヒントでは、この特定のコピーの実行に対してサービスが特定したボトルネックと、コピーのスループットを向上させる方法についての提案を示しています。 推奨されている変更を行ってみてから、コピーを再度実行してください。
 
 参考として、現在、パフォーマンス チューニングのヒントには、次のような場合の提案が示されています。
 
@@ -69,11 +71,11 @@ ms.locfileid: "104584402"
 
     - [datetime パーティション分割されたファイルパスまたは名前に基づいてファイルをコピー](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)できるかどうかを確認します。 このような方法では、ソース側のリスト化に負担がかかりません。
 
-    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3/Azure Blob/Azure File Storage では "**prefix**"、ADLS Gen1 では "**listAfter/listBefore**" です。 これらのフィルターはデータ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
+    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3/Azure Blob Storage/Azure Files では "**prefix**"、ADLS Gen1 では "**listAfter/listBefore**" です。 これらのフィルターはデータ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
 
     - 単一の大きなデータ セットをいくつかの小さいデータ セットに分割し、それらのコピー ジョブをデータの各部分の処理と同時に実行することを検討してください。 これは、Lookup/GetMetadata + ForEach + Copy を使用して行うことができます。 一般的な例として、「[複数のコンテナーからファイルをコピーする](solution-template-copy-files-multiple-containers.md)」 または 「[Amazon S3 から ADLS Gen2](solution-template-migration-s3-azure.md) ソリューションテンプレートにデータを移行する」を参照してください。
 
-  - ADF がソースで調整エラーを報告するかどうか、またはデータ ストアの使用率が高いかどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
+  - サービスがソースで調整エラーを報告するかどうか、またはデータ ストアの使用率が高い状態かどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
 
   - Azure IR をソース データ ストア領域と同じか近い場所で使用します。
 
@@ -81,7 +83,7 @@ ms.locfileid: "104584402"
 
   - 適用する場合は、コネクタ固有のデータ読み込みのベスト プラクティスを採用します。 たとえば、[Amazon Redshift](connector-amazon-redshift.md)からデータをコピーする場合は、Redshift UNLOAD を使用するように構成します。
 
-  - ADF がソースで調整エラーを報告するかどうか、またはデータ ストアの使用率が高いかどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
+  - サービスがソースで調整エラーを報告するかどうか、またはデータ ストアの使用率が高いかどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
 
   - コピー ソースとシンク パターンを確認します。 
 
@@ -95,7 +97,7 @@ ms.locfileid: "104584402"
 
   - 適用する場合は、コネクタ固有のデータ読み込みのベスト プラクティスを採用します。 たとえば、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) にデータをコピーする場合は、PolyBase または COPY ステートメントを使用します。 
 
-  - ADF がシンクで調整エラーを報告するかどうか、またはデータ ストアの使用率が高いかどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
+  - サービスがシンクで調整エラーを報告するかどうか、またはデータ ストアの使用率が高いかどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
 
   - コピー ソースとシンク パターンを確認します。 
 
@@ -123,11 +125,11 @@ ms.locfileid: "104584402"
 
     - [datetime パーティション分割されたファイルパスまたは名前に基づいてファイルをコピー](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)できるかどうかを確認します。 このような方法では、ソース側のリスト化に負担がかかりません。
 
-    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3/Azure Blob/Azure File Storage では "**prefix**"、ADLS Gen1 では "**listAfter/listBefore**" です。 これらのフィルターはデータ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
+    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3/Azure Blob Storage/Azure Files では "**prefix**"、ADLS Gen1 では "**listAfter/listBefore**" です。 これらのフィルターはデータ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
 
     - 単一の大きなデータ セットをいくつかの小さいデータ セットに分割し、それらのコピー ジョブをデータの各部分の処理と同時に実行することを検討してください。 これは、Lookup/GetMetadata + ForEach + Copy を使用して行うことができます。 一般的な例として、「[複数のコンテナーからファイルをコピーする](solution-template-copy-files-multiple-containers.md)」 または 「[Amazon S3 から ADLS Gen2](solution-template-migration-s3-azure.md) ソリューションテンプレートにデータを移行する」を参照してください。
 
-  - ADF がソースで調整エラーを報告するかどうか、またはデータ ストアの使用率が高いかどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
+  - サービスがソースで調整エラーを報告するかどうか、またはデータ ストアの使用率が高い状態かどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
 
 - **"転送 - ソースからの読み取り" に長い時間がかかっています**: 
 
@@ -135,7 +137,7 @@ ms.locfileid: "104584402"
 
   - データの読み取りと転送を効率的に行うために、セルフホステッド IR マシンに十分な受信帯域幅があるかどうかを確認します。 ソースデータストアが Azure にある場合は、[このツール](https://www.azurespeed.com/Azure/Download) を使用してダウンロードの速度を確認できます。
 
-  - Azure portal -> データ ファクトリ -> 概要ページで、セルフホステッド IR の CPU とメモリの使用量の傾向を確認します。 CPU 使用率が高い場合、または使用可能なメモリが少ない場合は、[IR のスケールアップ/スケールアウト](create-self-hosted-integration-runtime.md#high-availability-and-scalability) を検討してください。
+  - Azure portal -> データ ファクトリまたは Synapse ワークスペース -> 概要ページで、セルフホステッド IR の CPU とメモリの使用量の傾向を確認します。 CPU 使用率が高い場合、または使用可能なメモリが少ない場合は、[IR のスケールアップ/スケールアウト](create-self-hosted-integration-runtime.md#high-availability-and-scalability) を検討してください。
 
   - 適用する場合は、コネクタ固有のデータ読み込みのベスト プラクティスを採用します。 次に例を示します。
 
@@ -145,7 +147,7 @@ ms.locfileid: "104584402"
 
     - 例えば、[Amazon Redshift](connector-amazon-redshift.md) からデータをコピーする場合は、Redshift UNLOAD を使用するように構成します。
 
-  - ADF がソースで調整エラーを報告するかどうか、またはデータ ストアの使用率が高いかどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
+  - サービスがソースで調整エラーを報告するかどうか、またはデータ ストアの使用率が高いかどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
 
   - コピー ソースとシンク パターンを確認します。 
 
@@ -161,9 +163,9 @@ ms.locfileid: "104584402"
 
   - セルフホステッド IR マシンに、データの転送とデータ書き込みを効率的に行うための十分な送信帯域幅があるかどうかを確認します。 シンク データ ストアが Azure にある場合は、[このツール](https://www.azurespeed.com/Azure/UploadLargeFile) を使用してアップロード速度を確認できます。
 
-  - Azure portal -> データ ファクトリ -> 概要ページで、セルフホステッド IR の CPU とメモリの使用量の傾向を確認します。 CPU 使用率が高い場合、または使用可能なメモリが少ない場合は、[IR のスケールアップ/スケールアウト](create-self-hosted-integration-runtime.md#high-availability-and-scalability) を検討してください。
+  - Azure portal -> データ ファクトリまたは Synapse ワークスペース -> 概要ページで、セルフホステッド IR の CPU とメモリの使用量の傾向を確認します。 CPU 使用率が高い場合、または使用可能なメモリが少ない場合は、[IR のスケールアップ/スケールアウト](create-self-hosted-integration-runtime.md#high-availability-and-scalability) を検討してください。
 
-  - ADF がシンクで調整エラーを報告するかどうか、またはデータ ストアの使用率が高いかどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
+  - サービスがシンクで調整エラーを報告するかどうか、またはデータ ストアの使用率が高いかどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
 
   - [並列コピー](copy-activity-performance-features.md) を徐々に調整することを検討してください。並列コピーの数が多すぎると、パフォーマンスが低下する可能性があることに注意してください。
 
@@ -178,9 +180,7 @@ ms.locfileid: "104584402"
 
 - **現象**:データセット内で [リンクされたサービス] ドロップダウンを切り替えるだけで、同じパイプライン アクティビティが実行されますが、実行時間は大幅に異なります。 データセットがマネージド仮想ネットワークの統合ランタイムに基づいている場合、既定の統合ランタイムに基づいているよりも時間がかかります。  
 
-- **原因**:パイプライン実行の詳細を確認すると、低速のパイプラインはマネージド VNet (Virtual Network) IR で実行されている一方、通常のパイプラインは Azure IR で実行されていることがわかります。 設計上、データ ファクトリごとに 1 つの計算ノードを予約していないため、マネージド VNet IR は Azure IR よりもキュー時間が長く、各コピー アクティビティが開始するまでにウォームアップがあります。これは、Azure IR ではなく、主に VNet 参加で発生します。 
-
-
+- **原因**:パイプライン実行の詳細を確認すると、低速のパイプラインはマネージド VNet (Virtual Network) IR で実行されている一方、通常のパイプラインは Azure IR で実行されていることがわかります。 設計上、サービス インスタンスごとに 1 つの計算ノードを予約していないため、マネージド VNet IR は Azure IR よりもキュー時間が長く、各 Copy アクティビティが開始するまでにウォームアップがあります。これは、Azure IR ではなく、主に VNet 参加で発生します。 
 
     
 ### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>データを Azure SQL Database に読み込むときにパフォーマンスが低下する
@@ -197,7 +197,7 @@ ms.locfileid: "104584402"
 
     - WriteBatchSize は、スキーマ行のサイズに適合するのに十分な大きさではありません。 問題のプロパティを拡大してみてください。
 
-    - 一括埋め込みではなく、ストアド プロシージャが使用されているため、パフォーマンスが低下することが予想されます。 
+    - 一括挿入ではなく、ストアド プロシージャが使用されているため、パフォーマンスが低下することが予想されます。 
 
 
 ### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>大きな Excel ファイルを解析するときのタイムアウトまたはパフォーマンスの低下
@@ -212,7 +212,7 @@ ms.locfileid: "104584402"
 
     - スキーマのインポート、データのプレビュー、Excel データセットでのワークシートの一覧表示などの操作では、タイムアウトは 100 秒で静的です。 大きな Excel ファイルでは、これらの操作がタイムアウト値内で完了しないことがあります。
 
-    - ADF コピー アクティビティは、Excel ファイル全体をメモリに読み込み、データを読み取る指定されたワークシートとセルを検索します。 ADF が使用する基盤となる SDK のために、このような動作になります。
+    - Copy アクティビティは、Excel ファイル全体をメモリに読み込み、データを読み取る指定されたワークシートとセルを検索します。 サービスが使用する基盤となる SDK のために、このような動作になります。
 
 - **解決方法**: 
 
@@ -240,5 +240,5 @@ ms.locfileid: "104584402"
 - [コピー アクティビティの概要](copy-activity-overview.md)
 - [コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド](copy-activity-performance.md)
 - [コピー アクティビティ パフォーマンス最適化機能](copy-activity-performance-features.md)
-- [Azure Data Factory を使用してデータ レイクまたはデータ ウェアハウスから Azure にデータを移行する](data-migration-guidance-overview.md)
+- [データ レイクまたはデータ ウェアハウスから Azure にデータを移行する](data-migration-guidance-overview.md)
 - [Amazon S3 から Azure Storage にデータを移行する](data-migration-guidance-s3-azure-storage.md)

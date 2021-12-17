@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro GA のリリース ノート | Microsoft Docs
-description: 一般提供リリースを実行している Azure Stack Edge Pro の重大な未解決の問題と解決策について説明します。
+title: Azure Stack Edge GA のリリース ノート | Microsoft Docs
+description: 一般提供リリースを実行している Azure Stack Edge の重大な未解決の問題と解決策について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 20340a07160a0b4501069e0f4d45599c5bff33f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6f08e9c33a0e5b97e27993519b1d0f471622cb9b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102444023"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705505"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>GPU 搭載 Azure Stack Edge Pro の一般提供 (GA) リリースノート
 
@@ -30,7 +30,7 @@ ms.locfileid: "102444023"
 Azure Stack Edge 2010 リリースでは、次の新機能が使用できます。 
 
 - **ストレージ クラス** - このリリースでは、ストレージを動的にプロビジョニングできるストレージ クラスが追加されました。 詳細については、「[Azure Stack Edge Pro GPU デバイス上の Kubernetes ストレージ管理](azure-stack-edge-gpu-kubernetes-storage.md#dynamicprovisioning)」を参照してください。 
-- **Kubernetes ダッシュボードとメトリック サーバー** - このリリースでは、Kubernetes ダッシュボードがメトリック サーバー アドオンと共に追加されました。 ダッシュボードを使用して Azure Stack Edge Pro デバイス上で実行されているアプリケーションの概要を取得すること、Kubernetes クラスター リソースの状態を表示すること、デバイスで発生したエラーを確認することができます。 メトリック サーバーによって、デバイス上の Kubernetes リソース全体の CPU とメモリの使用量が集計されます。 詳細については、「[Kubernetes ダッシュボードを使用して Azure Stack Edge Pro GPU デバイスを監視する](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)」を参照してください。
+- **Kubernetes ダッシュボードとメトリック サーバー** - このリリースでは、Kubernetes ダッシュボードがメトリック サーバー アドオンと共に追加されました。 ダッシュボードを使用して Azure Stack Edge Pro デバイス上で実行されているアプリケーションの概要を取得すること、Kubernetes クラスター リソースの状態を表示すること、デバイスで発生したエラーを確認することができます。 メトリック サーバーによって、デバイス上の Kubernetes リソース全体の CPU とメモリの使用量が集計されます。 詳細については、[Kubernetes ダッシュボードを使用した Azure Stack Edge Pro GPU デバイスの監視](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)に関するページを参照してください。
 - **Azure Stack Edge Pro 上の Azure Arc 対応 Kubernetes** - このリリースから、Azure Arc 対応 Kubernetes を介して Azure Stack Edge Pro デバイス上にアプリケーション ワークロードを展開できるようになりました。 Azure Arc は、Kubernetes クラスターにアプリケーションをデプロイできるようにするためのハイブリッド管理ツールです。 詳細については、[Azure Arc を介して Azure Stack Edge Pro デバイスにワークロードをデプロイする](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)方法に関するページを参照してください。  
 
 ## <a name="known-issues"></a>既知の問題 
@@ -40,7 +40,7 @@ Azure Stack Edge Pro デバイスの既知の問題の概要を次の表に示�
 | いいえ。 | 特徴量 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
 |**1.**|プレビュー機能 |この GA リリースでは、次の機能が使用できます。ローカル Azure Resource Manager、VM、Kubernetes、Azure Arc 対応 Kubernetes、GPU 用のマルチプロセスサービス (MPS) はすべて、Azure Stack Edge Pro デバイスのプレビュー版で提供されています。  |これらの機能は、今後のリリースで一般公開される予定です。 |
-| **2.** |Azure Stack Edge Pro + Azure SQL | SQL Database を作成するには、管理者アクセス権が必要です。   |[https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) の手順 1 から 2 の代わりに、次の手順を実行します。 <ul><li>デバイスのローカル UI で、コンピューティング インターフェイスを有効にします。 **[コンピューティング] > [ポート番号] > [Enable for compute]\(コンピューティングを有効にする\) > [適用]** を選択します。</li><li>https://docs.microsoft.com/sql/tools/sqlcmd-utility からクライアント マシンに `sqlcmd` をダウンロードします </li><li>コンピューティング インターフェイスの IP アドレス (有効なポート) に接続し、アドレスの末尾に ",1401" を追加します。</li><li>最終的なコマンドは次のようになります。sqlcmd -S {Interface IP},1401 -U SA -P "Strong!Passw0rd"</li>この後、現在のドキュメントの手順 3 から 4 は同じにする必要があります。 </li></ul> |
+| **2.** |Azure Stack Edge Pro + Azure SQL | SQL Database を作成するには、管理者アクセス権が必要です。   |[https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) の手順 1 から 2 の代わりに、次の手順を実行します。 <ul><li>デバイスのローカル UI で、コンピューティング インターフェイスを有効にします。 **[コンピューティング] > [ポート番号] > [Enable for compute]\(コンピューティングを有効にする\) > [適用]** を選択します。</li><li>クライアント マシンに [sqlcmd ユーティリティ](/sql/tools/sqlcmd-utility)をダウンロードします。</li><li>コンピューティング インターフェイスの IP アドレス (有効なポート) に接続し、アドレスの末尾に ",1401" を追加します。</li><li>最終的なコマンドは次のようになります。sqlcmd -S {Interface IP},1401 -U SA -P "Strong!Passw0rd"</li>この後、現在のドキュメントの手順 3 から 4 は同じにする必要があります。 </li></ul> |
 | **3.** |更新| **[更新]** によって復元された BLOB の増分変更はサポートされていません |BLOB エンドポイントの場合、[更新] 後に BLOB を部分的に更新すると、更新がクラウドにアップロードされない可能性があります。 たとえば、次のような一連のアクションがあります。<ul><li>クラウドに BLOB を作成します。 または、以前にアップロードした BLOB をデバイスから削除します。</li><li>更新機能を使用して、クラウドからアプライアンスに BLOB を更新します。</li><li>Azure SDK REST API を使用して、BLOB の一部のみを更新します。</li></ul>これらのアクションの結果、BLOB の更新されたセクションがクラウドで更新されない可能性があります。 <br>**回避策**:robocopy などのツール、またはエクスプローラーやコマンド ラインを介した通常のファイル コピーを使用して、BLOB 全体を置き換えます。|
 |**4.**|Throttling|調整中に、デバイスへの新しい書き込みが許可されていない場合、NFS クライアントによって行われた書き込みは "アクセス許可が拒否されました" エラーで失敗します。| 次のようなエラーが表示されます。<br>`hcsuser@ubuntu-vm:~/nfstest$ mkdir test`<br>mkdir: cannot create directory 'test': (mkdir: ディレクトリ 'test' を作成できません:)アクセス許可は拒否されました|
 |**5.**|Blob Storage のインジェスト|Blob storage のインジェストに AzCopy バージョン 10 を使用する場合は、次の引数を指定して AzCopy を実行します。`Azcopy <other arguments> --cap-mbps 2000`| AzCopy にこれらの制限を指定しない場合、デバイスに大量の要求が送信され、サービスに問題が発生する可能性があります。|

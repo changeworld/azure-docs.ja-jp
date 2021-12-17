@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark v1.1.0 ブループリント サンプル
 description: CIS Microsoft Azure Foundations Benchmark v1.1.0 ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定のコントロールを評価するのに役立ちます。
-ms.date: 03/11/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: b6188d96971329a83bc82042a1f840bd893354eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b9797691a84bf0aad0a50c604d53296b89d89bb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103197799"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614695"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-v110-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark v1.1.0 ブループリント サンプル
 

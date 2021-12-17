@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services で Linux VM に接続する | Microsoft Docs
 description: Azure Lab Services のラボで Linux 仮想マシン用リモート デスクトップを使用する方法について学習します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: d13868477ff2e3378d87d7785789a7498ed17e59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cbb4b9366aa8de5827f010f0759fe4235cf1343
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85443419"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263384"
 ---
 # <a name="connect-to-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Azure Lab Services のクラスルーム ラボで Linux 仮想マシンに接続する
 この記事では、学生がラボで以下を使用して Linux 仮想マシン (VM) に接続する方法を示します。
@@ -41,22 +41,34 @@ ms.locfileid: "85443419"
 ## <a name="connect-to-the-student-vm-using-gui-remote-desktop"></a>GUI リモート デスクトップを使用して学生の VM に接続する
 講師は、学生が GUI リモート デスクトップを使用した場合も接続できるように、VM を構成することができます。  この場合、学生は、**Microsoft リモートデスクトップ (RDP)** と **X2Go** クライアント アプリケーションのどちらを使用して各自の VM に接続するかを講師に確認する必要があります。  これらのアプリケーションのどちらを使っても、学生はリモートで各自の VM に接続し、ローカル コンピューター上に Linux のグラフィカル デスクトップを表示できます。
 
+> [!WARNING]
+>  [GNOME](https://www.gnome.org/) や [MATE](https://mate-desktop.org/) を使用する必要がある場合は、ラボの VM を適切に構成できるように、講師と調整する必要があります。  VM が Azure Lab Services で正常に動作するために必要な Azure Linux エージェントには、既知のネットワーク競合が発生する可能性があります。  代わりに [XFCE](https://www.xfce.org/) などの異なるグラフィカル デスクトップ環境を使用することをお勧めします。
+
 ### <a name="connect-to-the-student-vm-using-microsoft-remote-desktop-rdp"></a>Microsoft リモート デスクトップ (RDP) を使用して学生の VM に接続する
-講師が Linux のグラフィカル デスクトップ環境 (MATE、XFCE など) 用の RDP および GUI パッケージを使用してラボを設定した後、学生は Microsoft リモート デスクトップ (RDP) を使用して各自の Linux VM に接続できるようになります。 接続する手順は次のとおりです。 
+講師が Linux のグラフィカル デスクトップ環境 (XFCE など) 用の RDP および GUI パッケージを使用してラボを設定した後、学生は Microsoft リモート デスクトップ (RDP) を使用して各自の Linux VM に接続できるようになります。 接続する手順は次のとおりです。 
 
 1. VM のタイルで、VM が実行されていることを確認し、 **[接続]** をクリックします。 VM に接続するための 2 つのオプションが表示されます。つまり、**SSH** と **RDP** です。
 
     ![学生用 VM - 接続オプション](./media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
 2. **RDP** オプションを選択します。  RDP ファイルがマシンにダウンロードされたら、VM に保存します。
 
-3. Windows コンピューターから接続している場合は、通常、Microsoft リモート デスクトップ (RDP) クライアントが既にインストールされ、構成されています。  そのため、RDP ファイルをクリックして開き、リモート セッションを開始するだけで済みます。
+3. Windows コンピューターから接続している場合は、通常、RDP クライアントが既にインストールされ、構成されています。  そのため、RDP ファイルをクリックして開き、リモート セッションを開始するだけで済みます。
 
     代わりに、Mac または Chromebook から接続する場合は、次の手順を参照してください。
    - [Mac で RDP を使用して VM に接続する](connect-virtual-machine-mac-remote-desktop.md)。
-   - [Chromebook で RDP を使用して VM に接続する](connect-virtual-machine-chromebook-remote-desktop.md)。  
+   - [Chromebook で RDP を使用して VM に接続する](connect-virtual-machine-chromebook-remote-desktop.md)。
+
+RDP クライアントには、ユーザーの接続エクスペリエンスを最適化するために調整できるさまざまな設定が含まれています。  通常、これらの設定を変更する必要はありません。  既定では、設定はネットワーク接続に基づいた適切なエクスペリエンスを選択するように既に構成されています。  これらの設定の詳細については、[RDP クライアントの **エクスペリエンス** 設定に関する記事を参照](/windows-server/administration/performance-tuning/role/remote-desktop/session-hosts#client-experience-settings)してください。
+
+講師が RDP クライアントで GNOME グラフィカル デスクトップを構成している場合は、次の設定を使用してパフォーマンスを最適化することをお勧めします。
+- **[表示]** タブで、色の深度を **[High Color (15 ビット)]** に設定します。
+    ![RDP 表示設定の変更](./media/how-to-enable-remote-desktop-linux/rdp-display-settings.png)
+
+- **[エクスペリエンス]** タブで、接続速度を **[モデム (56 kbps)]** に設定します。
+    ![RDP エクスペリエンス設定の変更](./media/how-to-enable-remote-desktop-linux/rdp-experience-settings.png)
 
 ### <a name="connect-to-the-student-vm-using-x2go"></a>X2Go を使用して学生の VM に接続する
-講師が Linux のグラフィカル デスクトップ環境 (MATE、XFCE など) 用の X2Go および GUI パッケージを使用してラボを設定した後、学生は X2Go を使用して各自の Linux VM に接続できるようになります。
+講師が Linux のグラフィカル デスクトップ環境 (XFCE など) 用の X2Go および GUI パッケージを使用してラボを設定した後、学生は X2Go を使用して各自の Linux VM に接続できるようになります。
 
 学生は、どの Linux グラフィカル デスクトップ環境がインストールされているかを講師に確認する必要があります。  この情報は、次の手順で X2Go クライアントを使用して接続する際に必要になります。
 
@@ -79,7 +91,8 @@ ms.locfileid: "85443419"
    - **[Host]\(ホスト\)** - VM の ID (例: **`ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com`** )。
    - **[Login]\(ログイン\)** - VM のユーザー名 (例: **student**)。
    - **[SSH port]\(SSH ポート\)** - VM に割り当てられた一意のポート (例: **12345**)。
-   - **[Session type]\(セッションの種類\)** - 講師が VM を構成した Linux グラフィック デスクトップ環境を選択します。  この情報は、講師から入手する必要があります。
+   - **[Session type]\(セッションの種類\)** - 講師が VM を構成した Linux グラフィック デスクトップ環境を選択します。  この情報は、講師から入手する必要があります。  たとえば、XFCE または Xubuntu グラフィカル デスクトップ環境のいずれかを使用している場合は、`XFCE` を選択します。
+        
 
     最後に、 **[OK]** をクリックしてセッションを作成します。
 

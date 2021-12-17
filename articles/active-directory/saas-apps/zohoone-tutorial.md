@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Zoho One の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と Zoho One の統合'
 description: Azure Active Directory と Zoho One の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 12ac4d9fbf30873f0392a6d767d7568129bad112
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 465719da319bb5b266cb6cdb9d2f33b626fd97da
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650653"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132303575"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>チュートリアル: Azure Active Directory と Zoho One の統合
+# <a name="tutorial-azure-ad-sso-integration-with-zoho-one"></a>チュートリアル: Azure AD SSO と Zoho One の統合
 
 このチュートリアルでは、Zoho One と Azure Active Directory (Azure AD) を統合する方法について説明します。 Zoho One と Azure AD を統合すると、次のことができます。
 
@@ -37,7 +37,7 @@ Zoho One と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Zoho One では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
+* Zoho One では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -66,7 +66,7 @@ Zoho One に対して Azure AD SSO を構成してテストするには、次の
     1. **[Zoho One のテスト ユーザーの作成](#create-zoho-one-test-user)** - Azure AD の B.Simon にリンクさせるために、対応するユーザーを Zoho One で作成します。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
@@ -78,7 +78,7 @@ Zoho One に対して Azure AD SSO を構成してテストするには、次の
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    a. **[識別子]** ボックスに、`one.zoho.com` という URL を入力します。
+    a. **[識別子]** ボックスに、値として「`one.zoho.com`」を入力します。
 
     b. **[応答 URL]** ボックスに、`https://accounts.zoho.com/samlresponse/<saml-identifier>` のパターンを使用して URL を入力します
 
@@ -128,7 +128,7 @@ Zoho One に対して Azure AD SSO を構成してテストするには、次の
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="configure-zoho-one-sso"></a>Zoho One SSO の構成
+## <a name="configure-zoho-one-sso"></a>Zoho One SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Zoho One 企業サイトに管理者としてサインインします。
 
@@ -192,7 +192,7 @@ Azure AD ユーザーが Zoho One にサインインできるようにするに�
 
     c. **[追加]** をクリックします。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
@@ -206,8 +206,8 @@ Azure AD ユーザーが Zoho One にサインインできるようにするに�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Zoho One に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Zoho One] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Zoho One に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Zoho One] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Zoho One に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Zoho One を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Zoho One を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

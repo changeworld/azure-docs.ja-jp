@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 01/25/2021
+ms.date: 09/12/2021
 tags: azure-synpase
-ms.openlocfilehash: ccc648f06cad46b490ac73fe777066c9de2ff2b9
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 8a3740a228aa03a23f3584c3412b8451ebacc35e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551647"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812402"
 ---
 # <a name="dynamic-data-masking"></a>動的データ マスク 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -30,7 +30,7 @@ Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analyt
 
 ## <a name="dynamic-data-masking-basics"></a>動的データ マスキングの基礎
 
-Azure portal で動的データ マスキング ポリシーを設定するには、SQL Database 構成ペインの **[セキュリティ]** の下にある **[動的データ マスキング]** ブレードを選択します。 この機能は、ポータルを使用して SQL Managed Instance に設定することはできません (PowerShell または REST API を使用してください)。 詳細については、「 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)」を参照してください。
+Azure portal で動的データ マスキング ポリシーを設定するには、SQL Database 構成ペインの **[セキュリティ]** の下にある **[動的データ マスキング]** ブレードを選択します。 SQL Managed Instance の場合、この機能はポータルを使用して設定できません。 詳細については、「 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)」を参照してください。
 
 ### <a name="dynamic-data-masking-policy"></a>動的データ マスク ポリシー
 
@@ -51,6 +51,13 @@ Azure portal で動的データ マスキング ポリシーを設定するに�
 ### <a name="recommended-fields-to-mask"></a>マスクが推奨されるフィールド
 
 DDM の推奨エンジンでは、データベースの特定のフィールドに「機密データの可能性あり」の注意が付けられます。この注意を参考にマスク候補を選択できます。 ポータルの動的データ マスク ブレードには、データベースの推奨列が表示されます。 1 つまたは複数の列の **[マスクの追加]** をクリックし、 **[保存]** をクリックするだけでそれらのフィールドにマスクを適用できます。
+
+## <a name="manage-dynamic-data-masking-using-t-sql"></a>T-SQL を使用して動的データ マスキングを管理する
+
+- 動的データ マスクを作成するには、[「動的データ マスクを作成する」](/sql/relational-databases/security/dynamic-data-masking#creating-a-dynamic-data-mask)を参照してください。
+- 既存の列にマスクを追加するか、マスクを編集するには、「[既存の列のマスクを追加または編集する](/sql/relational-databases/security/dynamic-data-masking#adding-or-editing-a-mask-on-an-existing-column)」を参照してください。
+- マスクされていないデータを表示するアクセス許可を付与するには、「[アクセス許可を付与して、マスクが解除されたデータを表示する](/sql/relational-databases/security/dynamic-data-masking#granting-permissions-to-view-unmasked-data)」を参照してください。
+- 動的データ マスクをドロップするには、「[動的データ マスクをドロップする](/sql/relational-databases/security/dynamic-data-masking#dropping-a-dynamic-data-mask)」を参照してください。
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>PowerShell コマンドレットを使用して、ご使用のデータベースの動的データ マスクを設定する
 
@@ -82,8 +89,21 @@ REST API を使用して、データ マスク ポリシーおよびルールを
 
 ## <a name="permissions"></a>アクセス許可
 
-動的データ マスクを構成できるのは、Azure SQL Database 管理者、サーバー管理者、またはロールベースのアクセス制御 (RBAC) の [SQL セキュリティ管理者](../../role-based-access-control/built-in-roles.md#sql-security-manager)の各ロールです。
+動的データ マスキングを構成する組み込みロールは以下のとおりです。
+- [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager)
+- [SQL DB Contributor](../../role-based-access-control/built-in-roles.md#sql-db-contributor)
+- [SQL Server Contributor](../../role-based-access-control/built-in-roles.md#sql-server-contributor)
 
-## <a name="next-steps"></a>次のステップ
+動的データ マスキングを使用するために必要なアクションは以下のとおりです。
 
-[動的なデータ マスキング](/sql/relational-databases/security/dynamic-data-masking)
+読み取り/書き込み:
+- Microsoft.Sql/servers/databases/dataMaskingPolicies/* Read:
+- Microsoft.Sql/servers/databases/dataMaskingPolicies/read Write:
+-   Microsoft.Sql/servers/databases/dataMaskingPolicies/write
+
+T-SQL コマンドで動的データ マスキングを使用する場合のアクセス許可の詳細については、「[アクセス許可](/sql/relational-databases/security/dynamic-data-masking#permissions)」を参照してください
+
+## <a name="see-also"></a>関連項目
+
+- SQL Server の[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)。
+- Channel 9 の Data Exposed エピソード ([Azure SQL 動的データ マスクの粒度の細かいアクセス許可](https://channel9.msdn.com/Shows/Data-Exposed/Granular-Permissions-for-Azure-SQL-Dynamic-Data-Masking))。

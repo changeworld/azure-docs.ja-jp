@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 1eb0bf2c0e214c3e076895903176d15ee792c70c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9496d3139861c41bbcc3467c8169e2350e5414b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093049"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249782"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -280,7 +280,7 @@ Resource Manager テンプレートを構成する 4 つのセクション:
 
 - **テンプレートのリンク作成**: 1 つの Resource Manager テンプレートから別のテンプレートへのリンクを作成できます。 目的に基づいてターゲットが設定された一連のテンプレートにデプロイを分解できます。
 
-Resource Manager テンプレートはあらゆるテキスト エディターで作成できます。 Azure SDK for Visual Studio に便利なツールが付属しているので推奨しています。 Visual Studio を利用すれば、ウィザードでリソースをテンプレートに追加し、Visual Studio 内から直接、テンプレートをデプロイし、デバッグできます。 詳細については、「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」をご覧ください。
+Resource Manager テンプレートはあらゆるテキスト エディターで作成できます。 Azure SDK for Visual Studio に便利なツールが付属しているので推奨しています。 Visual Studio を利用すれば、ウィザードでリソースをテンプレートに追加し、Visual Studio 内から直接、テンプレートをデプロイし、デバッグできます。 詳細については、「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/syntax.md)」をご覧ください。
 
 最後になりますが、Azure Portal で、既存のリソース グループを再利用可能なテンプレートに変換できます。 既存のリソース グループのデプロイ可能テンプレートを作成したり、基礎 JSON を調べたりする場合に便利です。 リソース グループをエクスポートするには、リソース グループの設定にある **[Automation スクリプト]** ボタンを選択します。
 
@@ -342,52 +342,39 @@ PowerShell モジュールの場合と同様に、Azure コマンド ライン �
 
 ### <a name="access-and-security-for-virtual-machines"></a>仮想マシンのアクセスとセキュリティ
 
-インターネットから仮想マシンにアクセスするには、関連するネットワーク インターフェイスまたは (該当する場合) ロード バランサーをパブリック IP アドレスで構成する必要があります。 パブリック IP アドレスには、仮想マシンまたはロード バランサーに解決される DNS 名が含まれています。 詳細については、「[Azure 内の IP アドレス](../../virtual-network/public-ip-addresses.md)」を参照してください。
+インターネットから仮想マシンにアクセスするには、関連するネットワーク インターフェイスまたは (該当する場合) ロード バランサーをパブリック IP アドレスで構成する必要があります。 パブリック IP アドレスには、仮想マシンまたはロード バランサーに解決される DNS 名が含まれています。 詳細については、「[Azure 内の IP アドレス](../../virtual-network/ip-services/public-ip-addresses.md)」を参照してください。
 
 ネットワーク セキュリティ グループ (NSG) リソースを利用し、パブリック IP アドレスによる仮想マシンへのアクセスを管理します。 NSG はファイアウォールのように機能し、定義された一連のポートで、ネットワーク インターフェイスまたはサブネットを通過するトラフィックを許可または拒否します。 たとえば、Azure VM でリモート デスクトップ セッションを作成するには、ポート 3389 で入ってくるトラフィックを許可するように NSG を構成する必要があります。 詳細については、「[Azure Portal を使用した Azure の VM へのポートの開放](../../virtual-machines/windows/nsg-quickstart-portal.md)」を参照してください。
 
 最後になりますが、あらゆるコンピューター システムの管理と同様に、セキュリティ資格情報とソフトウェア ファイアウォールを利用し、オペレーティング システムで Azure 仮想マシンを守る必要があります。
 
 ## <a name="azure-storage"></a>Azure Storage
-
-Azure Storage は耐久性がありスケーラブルな冗長ストレージを提供するサービスであり、Microsoft が管理しています。 リソース デプロイ方法を利用し、リソース グループにリソースとして Azure ストレージ アカウントを追加できます。 Azure には、4 種類のストレージがあります: Blob Storage、File Storage、Table Storage、Queue Storage。 ストレージ アカウントをデプロイするとき、2 種類のアカウントを利用できます。汎用ストレージと BLOB ストレージです。 汎用ストレージ アカウントの場合、4 種類すべてのストレージにアクセスできます。 BLOB ストレージ アカウントは汎用アカウントと似ていますが、ホット アクセス層とコールド アクセス層を含む、特別な BLOB が含まれています。 BLOB ストレージの詳細については、「[Azure Blob Storage](../../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
-
-Azure ストレージ アカウントはさまざまな冗長レベルで構成できます。
-
-- **ローカル冗長ストレージ** は可用性が高く、すべてのデータのコピーが同期的に 3 つ作成されてから書き込みが成功したと見なされます。 コピーは、1 つのリージョン内の 1 つの施設に保存されます。 レプリカが別個の障害ドメインとアップグレード ドメインに置かれます。 つまり、データが収納されているストレージ ノードが壊れたり、更新のためにオフラインになったりしてもデータを利用できます。
-
-- **geo 冗長ストレージ** の場合、高可用性のために、プライマリ リージョンにデータのコピーが 3 つ同期的に作成されます。その後、ディザスター リカバリーのために、ペアになっているリージョンで 3 つのレプリカが非同期的に作成されます。
-
-- **読み取りアクセス geo 冗長ストレージ** の場合、geo 冗長ストレージの機能に加え、セカンダリ リージョンのデータを読み込めます。 部分的なディザスター リカバリーに最適です。 プライマリ リージョンに問題がある場合、アプリケーションを変更し、ペアになっているリージョンへの読み取り専用アクセスを与えることができます。
+Azure では、Azure Blob Storage、Azure Files、Azure Table Storage、および Azure Queue Storage を利用して、さまざまなストレージのユース ケースに対応できます。これらのすべてにおいて、高い持続性、スケーラビリティ、冗長性が保証されています。 Azure ストレージ サービスは、任意のリソース デプロイ方法を使用して任意のリソース グループにリソースとしてデプロイできる Azure ストレージ アカウントを通じて管理されます。 
 
 ### <a name="use-cases"></a>ユース ケース
-
 各種類のストレージには異なるユース ケースがあります。
 
 #### <a name="blob-storage"></a>BLOB ストレージ
+*blob* は *binary large object* (バイナリ ラージ オブジェクト) の略です。 BLOB は、コンピューターに保存するファイルのような、非構造化ファイルです。 Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。 Blob Storage は、オブジェクト ストレージとも呼ばれます。
 
-*blob* は *binary large object* (バイナリ ラージ オブジェクト) の略です。 BLOB は、コンピューターに保存するファイルのような、非構造化ファイルです。 Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。 Blob Storage は、オブジェクト ストレージとも呼ばれます。 Azure Blob ストレージには、Azure Virtual Machines データ ディスクも保存されます。
+Azure Blob Storage では、次の 3 種類の BLOB がサポートされています。
 
-Azure Storage でサポートされている 3 種類の BLOB:
+- **ブロック BLOB** は最大 195 GiB サイズの標準的なファイルの保存に使用されます (4 MiB × 50,000 ブロック)。 ブロック BLOB は主に、始めから終わりまで読み込まれるファイルの保存に使用されます。メディア ファイルや Web サイトの画像ファイルなどです。 64 MiB を超えるファイルは小さなブロックとしてアップロードする必要があるため、ブロック BLOB という名前が付いています。 アップロード後、小さなブロックが連結され (あるいはコミットされ)、最終的な BLOB が作られます。
 
-- **ブロック BLOB** は最大 195 GB サイズの普通のファイルの保存に使用されます (4 MB × 50,000 ブロック)。 ブロック BLOB は主に、始めから終わりまで読み込まれるファイルの保存に使用されます。メディア ファイルや Web サイトの画像ファイルなどです。 64 MB を超えるファイルは小さなブロックとしてアップロードする必要があるため、ブロック BLOB という名前が付いています。 アップロード後、小さなブロックが連結され (あるいはコミットされ)、最終的な BLOB が作られます。
+- **ページ BLOB** は最大 1 TiB のランダム アクセス ファイルの保存に使用されます。 ページ BLOB は主に、Azure の IaaS コンピューティング サービス、Azure Virtual Machines に耐久性のあるディスクを提供する VHD のバッキング ストレージとして使用されます。 512 バイト ページを読み書きするランダム アクセスを提供するため、ページ BLOB という名前が付いています。
 
-- **ページ BLOB** は最大 1 TB のランダムアクセス ファイルの保存に使用されます。 ページ BLOB は主に、Azure の IaaS コンピューティング サービス、Azure Virtual Machines に耐久性のあるディスクを提供する VHD のバッキング ストレージとして使用されます。 512 バイト ページを読み書きするランダム アクセスを提供するため、ページ BLOB という名前が付いています。
+- **追加 BLOB** はブロック BLOB のようなブロックで構成されますが、追加操作のために最適化されています。 多くの場合、1 つまたは複数のソースから同じ BLOB に情報を記録するために使用されます。 たとえば、複数の VM で実行されているアプリケーションに関して、すべてのトレース ログを同じ追加 BLOB に書き込みます。 1 つの追加 BLOB は最大 195 GiB になります。
 
-- **追加 BLOB** はブロック BLOB のようなブロックで構成されますが、追加操作のために最適化されています。 多くの場合、1 つまたは複数のソースから同じ BLOB に情報を記録するために使用されます。 たとえば、複数の VM で実行されているアプリケーションに関して、すべてのトレース ログを同じ追加 BLOB に書き込みます。 1 つの追加 BLOB は最大 195 GB になります。
+詳細については、「[Azure BLOB Storage とは](../../storage/blobs/storage-blobs-overview.md)」を参照してください。
 
-詳細については、「[.NET を使用して Azure Blob Storage を使用する](../../storage/blobs/storage-quickstart-blobs-dotnet.md)」をご覧ください。
+#### <a name="azure-files"></a>Azure Files
+Azure Files では、業界標準のサーバー メッセージ ブロック (SMB) またはネットワーク ファイル システム (NFS) プロトコルを介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 このサービスでは、SMB 3.1.1、SMB 3.0、SMB 2.1、NFS 4.1 のそれぞれがサポートされています。 Azure Files を使用すると、コストがかかる書き換えを行わずに、ファイル共有に依存しているアプリケーションをすばやく Azure に移行することができます。 AzureVirtual Machines またはクラウド サービスで実行されているアプリケーション、またはオンプレミスのクライアントから実行されているアプリケーションは、クラウドにファイル共有をマウントできます。
 
-#### <a name="file-storage"></a>File Storage
+Azure ファイル共有では、標準の SMB または NFS エンドポイントが公開されているため、Azure で実行されているアプリケーションは、ファイル システム I/O API を介して共有内のデータにアクセスできます。 そのため、開発者は、既存のコードとスキルを利用し、既存のアプリケーションを移行することができます。 IT プロフェッショナルは、Azure アプリケーションの管理の一貫として、PowerShell コマンドレットを使用して、Azure ファイル共有を作成、マウント、管理できます。
 
-Azure File Storage は、標準のサーバー メッセージ ブロック (SMB) プロトコルを使用してクラウドでファイル共有を提供するサービスです。 このサービスは SMB 2.1 と SMB 3.0 の両方に対応しています。 Azure File Storage を使用すると、コストがかかる書き換えを行わずに、ファイル共有に依存しているアプリケーションをすばやく Azure に移行することができます。 AzureVirtual Machines またはクラウド サービスで実行されているアプリケーション、またはオンプレミスのクライアントから実行されているアプリケーションは、クラウドにファイル共有をマウントできます。 これはデスクトップ アプリケーションが一般的な SMB 共有をマウントするのに似ています。 このため、任意の数のアプリケーション コンポーネントが、File Storage 共有をマウントして同時にアクセスできます。
-
-File Storage 共有は標準の SMB ファイル共有であるため、Azure で実行されているアプリケーションは、ファイル システム I/O API を介して共有内のデータにアクセスできます。 そのため、開発者は、既存のコードとスキルを利用し、既存のアプリケーションを移行することができます。 IT プロフェッショナルは、Azure アプリケーションの管理の一部として、PowerShell コマンドレットを使用して、File Storage 共有を作成、マウント、管理できます。
-
-詳しくは、「[Windows で Azure File Storage を使用する](../../storage/files/storage-how-to-use-files-windows.md)」または「[Linux で Azure File Storage を使用する方法](../../storage/files/storage-how-to-use-files-linux.md)」をご覧ください。
+詳細については、「[Azure Files とは](../../storage/files/storage-files-introduction.md)」を参照してください。
 
 #### <a name="table-storage"></a>テーブル ストレージ
-
 Azure Table Storage は、NoSQL の構造化データをクラウド内に格納するサービスです。 Table Storage は、スキーマなしの設計によるキーまたは属性ストアです。 Table Storage はスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。 あらゆる種類のデータに、高速かつ経済的にアクセスできます。 Table Storage は、通常、従来の SQL と比較して、同様の容量のデータをはるかに低コストで保存できます。
 
 テーブル ストレージを使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。 任意の数のエンティティをテーブルに保存できます。 ストレージ アカウントには、ストレージ アカウントの容量の上限を超えない限り、任意の数のテーブルを含めることができます。
@@ -395,7 +382,6 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
 詳細については、「[Azure Table Storage を使用する](../../cosmos-db/tutorial-develop-table-dotnet.md)」をご覧ください。
 
 #### <a name="queue-storage"></a>ストレージ
-
 Azure Queue Storage は、アプリケーション コンポーネント間のクラウド メッセージングを提供します。 拡張性を重視してアプリケーションを設計する場合、通常、アプリケーション コンポーネントを個別に拡張できるように分離します。 Queue Storage は、アプリケーション コンポーネントがクラウド、デスクトップ、オンプレミスのサーバー、モバイル デバイスのいずれで実行されている場合でも、アプリケーション コンポーネント間の通信に非同期メッセージングを提供します。 Queue Storage ではまた、非同期タスクの管理とプロセス ワークフローの構築もサポートします。
 
 詳細については、「[Azure Queue Storage を使用する](../../storage/queues/storage-dotnet-how-to-use-queues.md)」をご覧ください。
@@ -418,17 +404,17 @@ Azure リソースを個別にデプロイする以外に、Azure PowerShell モ
 
 #### <a name="command-line-interface-cli"></a>コマンド ライン インターフェイス (CLI)
 
-PowerShell モジュールの場合と同様に、Azure コマンド ライン インターフェイスでデプロイを自動化できます。Windows、OS X、Linux システムで利用できます。 Azure CLI **storage account create** コマンドを利用し、ストレージ アカウントを作成できます。 詳細については、「[Azure Storage での Azure CLI の使用](../../storage/blobs/storage-quickstart-blobs-cli.md)」を参照してください。
+PowerShell モジュールの場合と同様に、Azure コマンド ライン インターフェイスでデプロイを自動化できます。Windows、macOS、Linux システムで利用できます。 Azure CLI **storage account create** コマンドを利用し、ストレージ アカウントを作成できます。 詳細については、「[Azure Storage での Azure CLI の使用](../../storage/blobs/storage-quickstart-blobs-cli.md)」を参照してください。
 
 同様に、Azure CLI を利用し、Azure Resource Manager テンプレートをデプロイできます。 詳細については、「[Deploy resources with Resource Manager templates and Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)」 (Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ) を参照してください。
 
-### <a name="access-and-security-for-azure-storage"></a>Azure Storage のアクセスとセキュリティ
+### <a name="access-and-security-for-azure-storage-services"></a>Azure ストレージ サービスのアクセスとセキュリティ
 
-Azure Storage にはさまざまな方法でアクセスできます。たとえば、Azure Portal や Storage クライアント ライブラリからアクセスしたり、VM の作成中や操作中にアクセスしたりできます。
+Azure ストレージ サービスにはさまざまな方法でアクセスできます。たとえば、Azure portal や Storage クライアント ライブラリからアクセスしたり、VM の作成中や操作中にアクセスしたりできます。
 
 #### <a name="virtual-machine-disks"></a>仮想マシンのディスク
 
-仮想マシンをデプロイするとき、仮想マシンのオペレーティング システム ディスクや追加のデータ ディスクを保存するためのストレージ アカウントを作成する必要もあります。 既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成できます。 BLOB の最大サイズは 1,024 GB であるため、1 つの VM ディスクの最大サイズは 1,023 GB です。 より大きなデータ ディスクを構成するには、複数のデータ ディスクを仮想マシンに提示し、1 つの論理ディスクとしてまとめてプールできます。 詳細については、[Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) および [Linux](../../virtual-machines/linux/tutorial-manage-disks.md) 向けの Azure ディスクの管理に関するページを参照してください。
+仮想マシンをデプロイするとき、仮想マシンのオペレーティング システム ディスクや追加のデータ ディスクを保存するためのストレージ アカウントを作成する必要もあります。 既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成できます。 BLOB の最大サイズは 1,024 GiB であるため、1 つの VM ディスクの最大サイズは 1,023 GiB です。 より大きなデータ ディスクを構成するには、複数のデータ ディスクを仮想マシンに提示し、1 つの論理ディスクとしてまとめてプールできます。 詳細については、[Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) および [Linux](../../virtual-machines/linux/tutorial-manage-disks.md) 向けの Azure ディスクの管理に関するページを参照してください。
 
 #### <a name="storage-tools"></a>Storage ツール
 
@@ -436,7 +422,7 @@ Azure ストレージ アカウントには、Visual Studio Cloud Explorer な�
 
 #### <a name="storage-api"></a>Storage API
 
-Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語からアクセスできます。 さらに、主要な複数の言語のプログラミング ライブラリも用意されています。 ライブラリにより、同期呼び出しと非同期呼び出し、操作のバッチ処理、例外管理、自動再試行などの詳細が処理され、Azure Storage の使用が簡略化されます。 詳細については、「[Azure Storage サービスの REST API リファレンス](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)」を参照してください。
+Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語からアクセスできます。 さらに、Azure ストレージ サービスには、いくつかの一般的な言語のためのプログラミング ライブラリが用意されています。 これらのライブラリを使用すると、同期呼び出しと非同期呼び出し、操作のバッチ処理、例外管理、自動再試行などの詳細が処理できるため、Azure ストレージ プラットフォームの使用が簡略化されます。 詳細については、[Azure ストレージ サービスの REST API リファレンス](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)に関するページを参照してください。
 
 #### <a name="storage-access-keys"></a>ストレージ アクセス キー
 

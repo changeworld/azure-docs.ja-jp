@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: dfeb99fdbd5cf2b0784982b385d46c3a16901ec8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5277e5ab395409888d52157203eb3a61a080ffc0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567340"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742140"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>チュートリアル: Azure Active Directory と Mozy Enterprise の統合
 
@@ -199,7 +199,7 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-### <a name="create-mozy-enterprise-test-user&quot;></a>Mozy Enterprise テスト ユーザーの作成
+### <a name="create-mozy-enterprise-test-user"></a>Mozy Enterprise テスト ユーザーの作成
 
 Azure AD ユーザーが Mozy Enterprise にログインできるようにするには、ユーザーを Mozy Enterprise にプロビジョニングする必要があります。 Mozy Enterprise の場合、プロビジョニングは手動で行います。
 
@@ -212,7 +212,7 @@ Azure AD ユーザーが Mozy Enterprise にログインできるようにする
 
 2. **[ユーザー]** をクリックして、 **[新規ユーザーの追加]** をクリックします。
    
-    ![ユーザー](./media/mozy-enterprise-tutorial/ic777317.png &quot;ユーザー")
+    ![ユーザー](./media/mozy-enterprise-tutorial/ic777317.png "ユーザー")
    
     >[!NOTE]
     >**[新規ユーザーの追加]** オプションは、 **[認証ポリシー]** で **[Mozy]** が選択されている場合にのみ表示されます。 SAML 認証が構成されている場合、ユーザーはシングル サインオンでの初回ログイン時に自動的に追加されます。
@@ -240,7 +240,7 @@ Azure AD ユーザーが Mozy Enterprise にログインできるようにする
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Mozy Enterprise] タイルをクリックすると、SSO を設定した Mozy Enterprise に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Mozy Enterprise] タイルをクリックすると、SSO を設定した Mozy Enterprise に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -1,17 +1,17 @@
 ---
-title: Azure Application Insights データを利用したカスタム レポートの自動化
-description: Azure Application Insights データを利用して 日/週/月 1 回のレポートを自動化します
+title: Application Insights データを利用したカスタム レポートの自動化
+description: Azure Monitor Application Insights データを利用して日/週/月 1 回のレポートを自動化します
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 39970227fc94d3073688b23cc530462f368a6ecf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1579874f77a41abbfef6a9ba44f997d1ec06bb76
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100590041"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195729"
 ---
-# <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights データを利用したカスタム レポートの自動化
+# <a name="automate-custom-reports-with-application-insights-data"></a>Application Insights データを利用したカスタム レポートの自動化
 
 定期レポートは､ビジネスに重要なサービスの実施状況についてチームが常に情報を入手するのに役立ちます｡ 開発者や DevOps/SRE チーム､彼らのマネージャーは､誰もポータルにサインインしなくても､自動化されたレポートによって信頼できる形で知見が提供されることで生産的であることができます。 そうしたレポートによって､アラート ルールをトリガーすることのない待ち時間や負荷､故障発生率の漸増を発見することもできます｡
 

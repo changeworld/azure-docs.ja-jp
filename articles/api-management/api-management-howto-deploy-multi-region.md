@@ -2,23 +2,17 @@
 title: 複数の Azure リージョンへの Azure API Management サービスのデプロイ
 titleSuffix: Azure API Management
 description: 複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法について説明します。
-services: api-management
-documentationcenter: ''
-author: mikebudzynski
-manager: cfowler
-editor: ''
+author: dlepow
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 04/20/2020
-ms.author: apimpm
-ms.openlocfilehash: 427ebfe865002612be2f9aeb9db416f5c2f41e52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.date: 04/13/2021
+ms.author: danlep
+ms.openlocfilehash: 2e9dd8909e1c8d76d950fa2b7789050c29b19502
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88065456"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641695"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
 
@@ -27,24 +21,30 @@ Azure API Management では複数リージョンのデプロイがサポート�
 新しい Azure API Management サービスには、最初は単一の Azure リージョン (プライマリ リージョン) 内に 1 つの[ユニット][unit]のみが含まれています。 追加のユニットは、プライマリ リージョンまたはセカンダリ リージョンに追加できます。 API Management ゲートウェイ コンポーネントは、選択されたすべてのプライマリ リージョンとセカンダリ リージョンにデプロイされます。 受信 API 要求は、最も近いリージョンに自動的に送られます。 リージョンがオフラインになった場合、API 要求は、障害が発生したリージョンを迂回して、次に最も近いゲートウェイに自動的にルーティングされます。
 
 > [!NOTE]
-> すべてのリージョンにデプロイされるのは、API Management のゲートウェイ コンポーネントのみです。 サービス管理コンポーネントと開発者ポータルは、プライマリ リージョンでのみホストされます。 このため、プライマリ リージョンの停止時には、プライマリ リージョンがオンラインに戻るまで、開発者ポータルへのアクセス、および構成を変更する機能 (API の追加、ポリシーの適用など) が損なわれます。 プライマリ リージョンがオフラインの間、使用可能なセカンダリ リージョンは、使用可能な最新の構成を使用して引き続き API トラフィックを処理します。
+> すべてのリージョンにデプロイされるのは、API Management のゲートウェイ コンポーネントのみです。 サービス管理コンポーネントと開発者ポータルは、プライマリ リージョンでのみホストされます。 このため、プライマリ リージョンの停止時には、プライマリ リージョンがオンラインに戻るまで、開発者ポータルへのアクセス、および構成を変更する機能 (API の追加、ポリシーの適用など) が損なわれます。 プライマリ リージョンがオフラインの間、使用可能なセカンダリ リージョンによって、それらで使用できる最新の構成を使用して引き続き API トラフィックが処理されます。 プライマリまたはセカンダリのリージョンの可用性と回復性を向上させるには、必要に応じて[ゾーン冗長](zone-redundancy.md)を有効にしてください。
 
 >[!IMPORTANT]
-> 顧客データを 1 つのリージョンに格納できるようにする機能は、現在のところ、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは地域内に格納されます。
+> 顧客データを 1 つのリージョンに格納できるようにする機能は、現在のところ、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="deploy-api-management-service-to-a-new-region"></a><a name="add-region"> </a>新しいリージョンに API Management サービスをデプロイする
 
-> [!NOTE]
-> API Management サービス インスタンスをまだ作成していない場合は、[API Management サービス インスタンスの作成][create an api management service instance]に関するページを参照してください。
+## <a name="prerequisites"></a>前提条件
 
-1. Azure portal で、API Management サービスに移動し、メニューの **[場所]** エントリをクリックします。
-2. 上部バーの **[+ 追加]** をクリックします。
-3. ドロップダウン リストから場所を選択し、スライダーでユニット数を設定します。
-4. **[追加]** ボタンをクリックして確認します。
-5. すべての場所を構成するまで、この手順を繰り返します。
-6. 上部バーにある **[保存]** をクリックして、デプロイ プロセスを開始します。
+* API Management サービス インスタンスをまだ作成していない場合は、[API Management サービス インスタンスの作成](get-started-create-service-instance.md)に関するページを参照してください。 Premium サービス レベルを選択します。
+* API Management インスタンスが[仮想ネットワーク](api-management-using-with-vnet.md)にデプロイされる場合は、追加する予定の場所に仮想ネットワーク、サブネット、パブリック IP アドレスを設定していることを確認します。
+
+## <a name="deploy-api-management-service-to-an-additional-location"></a><a name="add-region"> </a>追加の場所に API Management サービスをデプロイする
+
+1. Azure portal で、API Management サービスに移動し、メニューの **[場所]** を選択します。
+1. 上部バーにある **[+ 追加]** を選択します。
+1. ドロップダウン リストから場所を選択します。
+1. その場所のスケール **[ユニット](upgrade-and-scale.md)** の数を選択します。
+1. 必要に応じて、[**可用性ゾーン**](zone-redundancy.md)を有効にします。
+1. API Management インスタンスが[仮想ネットワーク](api-management-using-with-vnet.md)にデプロイされる場合は、その場所の仮想ネットワーク設定を構成します。 その場所で使用できる既存の仮想ネットワーク、サブネット、およびパブリック IP アドレスを選択します。
+1. **[追加]** を選択して確定します。
+1. すべての場所を構成するまで、この手順を繰り返します。
+1. 上部バーにある **[保存]** を選択して、デプロイ プロセスを開始します。
 
 ## <a name="delete-an-api-management-service-location"></a><a name="remove-region"> </a>API Management サービスの場所を削除する
 

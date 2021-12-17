@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: e1d84483a701bf7fb4e6c50b9dc4f4f89993c64d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85048e9a5fccc520cab5bb319ee0b6f81b06f4fd
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96354910"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653693"
 ---
 # <a name="best-practices-for-server-operations-on-azure-database-for-mysql--single-server"></a>Azure Database for MySQL でのサーバー運用のベスト プラクティス - 単一サーバー
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL を使用する場合のベスト プラクティスについて説明します。 Microsoft は、プラットフォームに新しい機能を追加していく中で、このセクションで詳しく説明するベスト プラクティスを改善することに注力していきます。
 

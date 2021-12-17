@@ -2,21 +2,21 @@
 title: チュートリアル:SmartFile を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを SmartFile に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 03c7efd390d4714680ed2ccd54d297b8137aaafc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 7132a8c5a0ce951328aa3d1d21130ed9e968db7c
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96348672"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989833"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>チュートリアル:SmartFile を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -34,6 +34,10 @@ ms.locfileid: "96348672"
 * Azure AD テナント。
 * [SmartFile テナント](https://www.SmartFile.com/pricing/)。
 * 管理者アクセス許可がある SmartFile のユーザー アカウント。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 
 ## <a name="assigning-users-to-smartfile"></a>SmartFile へのユーザーの割り当て
 

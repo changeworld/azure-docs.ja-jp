@@ -5,35 +5,37 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 51baf009543208fbbfe091238d0215a24761641d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6b3cdddcc07df6961cc6493404583e6cb7da96e4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031958"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224462"
 ---
 # <a name="enable-vm-insights-by-using-azure-policy"></a>Azure Policy を使用して VM insights を有効にする
 この記事では、Azure Policy を使用して、Azure 仮想マシンまたは Azure Arc (プレビュー) に接続されたハイブリッド仮想マシンで VM insights を有効にする方法について説明します。 Azure Policy を使用すると、Azure 環境全体にわたって VM insights に必要なエージェントをインストールし、各仮想マシンが作成されたら VM に対する監視を自動的に有効にするポリシー定義を割り当てることができます。 VM insights には、環境内の準拠していない VM を検出して修復できる機能が用意されています。 この機能は、Azure Policy を直接操作する代わりに使用します。
 
-Azure Policy に精通していない場合は、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md)」にある簡単な概要を参照してください。
+Azure Policy に精通していない場合は、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../best-practices.md)」にある簡単な概要を参照してください。
 
 > [!NOTE]
-> Azure 仮想マシン スケール セットで Azure Policy を使用するか、または Azure 仮想マシンを有効にするために Azure Policy を直接操作するには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md#vm-insights)」を参照してください。
+> Azure 仮想マシン スケール セットで Azure Policy を使用するか、または Azure 仮想マシンを有効にするために Azure Policy を直接操作するには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../best-practices.md)」を参照してください。
 
-## <a name="prerequisites"></a>前提条件
-- [Log Analytics ワークスペースを作成して構成](./vminsights-configure-workspace.md)します。
-- 「[サポートされるオペレーティング システム](./vminsights-enable-overview.md#supported-operating-systems)」を参照して、有効にする仮想マシンまたは仮想マシン スケール セットのオペレーティング システムがサポートされていることを確認してください。 
+## <a name="vm-insights-initiatives"></a>VM insights イニシアティブ
+VM insights には、Azure 仮想マシンに Log Analytics エージェントと依存関係エージェントをインストールするための組み込みのポリシー定義が用意されています。 完全な監視を可能にするため、次の組み込みイニシアティブにより両方のエージェントがインストールされます。 これらのイニシアティブを管理グループ、サブスクリプション、またはリソース グループに割り当てて、そのスコープ内のすべての Windows または Linux Azure 仮想マシンにエージェントを自動的にインストールします。
+
+|名前 |説明 |
+|:---|:---|
+|VM 分析情報の有効化 | Azure Arc に接続されている Azure VM とハイブリッド VM に、Log Analytics エージェントと依存関係エージェントをインストールします。 |
+|仮想マシン スケール セットに対して Azure Monitor を有効にする | Azure 仮想マシン スケール セットに Log Analytics エージェントと依存関係エージェントをインストールします。 |
 
 
-## <a name="vm-insights-initiative"></a>VM insights のイニシアティブ
-VM insights には、Azure 仮想マシンに Log Analytics エージェントと依存関係エージェントをインストールするための組み込みのポリシー定義が用意されています。 イニシアティブ **[Enable VM insights]\(VM insights を有効にする\)** には、これらの各ポリシー定義が含まれています。 このイニシアティブを管理グループ、サブスクリプション、またはリソース グループに割り当てて、そのスコープ内のすべての Windows または Linux Azure 仮想マシンにエージェントを自動的にインストールします。
 
 ## <a name="open-policy-coverage-feature"></a>ポリシー カバレッジ機能を開く
 **[VM insights ポリシー対象範囲]** にアクセスするには、Azure portal で **[Azure Monitor]** メニューの **[仮想マシン]** に移動します。 **[その他のオンボード オプション]** を選択してから、 **[ポリシーを使用して有効にする]** の **[有効化]** を選択します。
 
 [![Azure Monitor from VMs の [はじめに] タブ](./media/vminsights-enable-policy/get-started-page.png)](./media/vminsights-enable-policy/get-started-page.png#lightbox)
 
-## <a name="create-new-assignment"></a>新しい割り当てを作成する
+### <a name="create-new-assignment"></a>新しい割り当てを作成する
 まだ割り当てがない場合は、 **[ポリシーの割り当て]** をクリックして新しい割り当てを作成します。
 
 [![割り当てを作成する](media/vminsights-enable-policy/create-assignment.png)](media/vminsights-enable-policy/create-assignment.png#lightbox)
@@ -51,7 +53,7 @@ VM insights には、Azure 仮想マシンに Log Analytics エージェント�
 
 **[作成]** をクリックして作成する前に割り当ての詳細を確認するには、 **[確認と作成]** をクリックします。 既存の仮想マシンを有効にするには複数の修復タスクが必要になる可能性が高いため、この時点では修復タスクを作成しないでください。 後の「[コンプライアンスの結果を修復する](#remediate-compliance-results)」を参照してください。
 
-## <a name="review-compliance"></a>コンプライアンスを確認する
+### <a name="review-compliance"></a>コンプライアンスを確認する
 割り当てが作成されたら、管理グループやサブスクリプションにまたがる **[Enable VM insights]\(VM insights を有効にする\)** イニシアティブの対象範囲を確認して管理できます。 これにより、各管理グループまたはサブスクリプションに存在する仮想マシンの数や、それらのコンプライアンス状態が示されます。
 
 [![VM insights のポリシーの管理ページ](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
@@ -74,7 +76,7 @@ VM insights には、Azure 仮想マシンに Log Analytics エージェント�
 イニシアティブを割り当てる場合、割り当てで選択されたスコープは、一覧表示されているスコープまたはそのサブセットである可能性があります。 たとえば、管理グループ (対象範囲スコープ) ではなく、サブスクリプション (ポリシー スコープ) の割り当てを作成している可能性があります。 この場合、 **[割り当て対象範囲]** の値は、イニシアティブ スコープ内の VM 数を対象範囲スコープ内の VM 数で割った値を示します。 あるいは、ご自分がポリシー スコープからいくつかの VM、リソース グループ、またはサブスクリプションを除外している可能性があります。 値が空白の場合は、ポリシーまたはイニシアチブが存在しないか、アクセス許可がないことを示します。 情報は **[割り当ての状態]** の下に表示されます。
 
 
-## <a name="remediate-compliance-results"></a>コンプライアンスの結果を修復する
+### <a name="remediate-compliance-results"></a>コンプライアンスの結果を修復する
 イニシアティブは、作成または変更されると仮想マシンに適用されますが、既存の VM には適用されません。 割り当てが 100% のコンプライアンスを示していない場合は、既存の VM を評価して有効にするための修復タスクを作成し、省略記号 (...) を選択して **[コンプライアンスの表示]** を選択します。
 
 [![[コンプライアンスの表示]](media/vminsights-enable-policy/view-compliance.png)](media/vminsights-enable-policy/view-compliance.png#lightbox)
@@ -105,6 +107,22 @@ VM insights には、Azure 仮想マシンに Log Analytics エージェント�
 
 
 修復タスクが完了すると、VM はエージェントがインストールされた準拠した状態になり、VM insights が有効になります。 
+
+
+## <a name="azure-policy"></a>Azure Policy
+Azure Policy を使用して仮想マシン スケール セットの監視を有効にするには、監視するリソースのスコープに応じて、Azure 管理グループ、サブスクリプション、またはリソース グループに対して、**Virtual Machine Scale Sets に対して Azure Monitor を有効にする** イニシアティブを割り当てます。 [管理グループ](../../governance/management-groups/overview.md)は、特に組織に複数のサブスクリプションがある場合に、ポリシーのスコープ設定に役立ちます。
+
+![Azure portal 内の [イニシアティブの割り当て] ページのスクリーンショット。 [イニシアティブ定義] は [Virtual Machine Scale Sets 用の Azure Monitor の有効化] に設定されています。](media/vminsights-enable-policy/virtual-machine-scale-set-assign-initiative.png)
+
+データの送信先となるワークスペースを選択します。 「[VM 分析情報の Log Analytics ワークスペースの構成](vminsights-configure-workspace.md)」で説明されているように、このワークスペースには *VMInsights* ソリューションがインストールされている必要があります。
+
+![ワークスペースの選択を示すスクリーンショット。](media/vminsights-enable-policy/virtual-machine-scale-set-workspace.png)
+
+このポリシーを割り当てる必要がある既存の仮想マシン スケール セットがある場合は、修復タスクを作成します。
+
+![修復タスクの作成を示すスクリーンショット。](media/vminsights-enable-policy/virtual-machine-scale-set-remediation.png)
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

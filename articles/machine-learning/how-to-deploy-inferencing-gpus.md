@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: この記事では、Azure Machine Learning を使用して、GPU 対応の Tensorflow ディープ ラーニング モデルを Web サービスとしてデプロイし、推論要求をスコア付けする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 06/17/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 6797c32ded5c12bbac3fafa1eabd1e6f74d28e07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python, deploy
+ms.openlocfilehash: d7d3897b80947b8198d1ab4403b2d99a8738b2d3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519250"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557568"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU を使用した推論のためのディープ ラーニング モデルをデプロイする
 
@@ -24,6 +24,8 @@ ms.locfileid: "102519250"
 この記事では、Azure Machine Learning を使用して GPU 対応のモデルを Web サービスとしてデプロイする方法について説明します。 この記事の情報は、Azure Kubernetes Service (AKS) へのモデルのデプロイに基づいています。 AKS クラスターは、モデルが推論に使用する GPU リソースを提供します。
 
 推論、つまりモデルによるスコア付けは、デプロイしたモデルを使用して予測を行うフェーズです。 CPU の代わりに GPU を使用すると、高度に並列化可能な計算によってパフォーマンスが向上します。
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 > [!IMPORTANT]
 > Web サービスのデプロイでは、GPU による推論がサポートされるのは、Azure Kubernetes Service のみです。 __機械学習パイプライン__ を使用した推論では、GPU は Azure Machine Learning コンピューティングでのみサポートされます。 ML パイプラインの使用方法の詳細については、「[チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する](tutorial-pipeline-batch-scoring-classification.md)」に従います。 

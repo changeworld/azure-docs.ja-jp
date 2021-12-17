@@ -3,16 +3,17 @@ title: Data Factory を使用して Salesforce からデータを移動する
 description: Azure Data Factory を使用して Salesforce からデータを移動する方法を説明します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ccc20f415d13356de755af5d1d3afc5b29de72f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd3fb6866b7402162265be8d936d866dbfb492a0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387055"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223609"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -81,7 +82,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 > [!IMPORTANT]
 > カスタム オブジェクトには、API 名の "__c" の部分が必要となります。
 
-![カスタム オブジェクト定義の詳細を示すスクリーンショット。カスタム オブジェクトの API 名を確認できます。](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
+:::image type="content" source="media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png" alt-text="カスタム オブジェクト定義の詳細を示すスクリーンショット。カスタム オブジェクトの API 名を確認できます。":::
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に使用できるセクションとプロパティの完全な一覧については、 [パイプラインの作成](data-factory-create-pipelines.md) に関する記事をご覧ください。 名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
@@ -97,7 +98,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 > [!IMPORTANT]
 > カスタム オブジェクトには、API 名の "__c" の部分が必要となります。
 
-![カスタム フィールドとリレーションシップを示すスクリーンショット。カスタム オブジェクトの API 名を確認できます。](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+:::image type="content" source="media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png" alt-text="カスタム フィールドとリレーションシップを示すスクリーンショット。カスタム オブジェクトの API 名を確認できます。":::
 
 ## <a name="query-tips"></a>クエリのヒント
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>DateTime 列に対して where 句を 使ってデータを取得する
@@ -192,7 +193,7 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
 > [!IMPORTANT]
 > カスタム オブジェクトには、API 名の "__c" の部分が必要となります。
 
-![カスタム オブジェクト定義の詳細を示すスクリーンショット。単数形のラベル、複数形のラベル、オブジェクト名、および API 名を確認できます。](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
+:::image type="content" source="media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png" alt-text="カスタム オブジェクト定義の詳細を示すスクリーンショット。単数形のラベル、複数形のラベル、オブジェクト名、および API 名を確認できます。":::
 
 **Azure BLOB の出力データセット**
 
@@ -273,7 +274,7 @@ RelationalSource でサポートされるプロパティの一覧については
 > [!IMPORTANT]
 > カスタム オブジェクトには、API 名の "__c" の部分が必要となります。
 
-![カスタム フィールドとリレーションシップを示すスクリーンショット。API 名が強調表示されています。](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+:::image type="content" source="media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png" alt-text="カスタム フィールドとリレーションシップを示すスクリーンショット。API 名が強調表示されています。":::
 
 
 ### <a name="type-mapping-for-salesforce"></a>Salesforce の型マッピング
@@ -303,7 +304,7 @@ RelationalSource でサポートされるプロパティの一覧については
 > [!NOTE]
 > ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
-[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../../includes/data-factory-structure-for-rectangualr-datasets.md)]
+[!INCLUDE [data-factory-structure-for-rectangular-datasets](includes/data-factory-structure-for-rectangular-datasets.md)]
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md) 」をご覧ください。

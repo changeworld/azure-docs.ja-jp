@@ -2,7 +2,6 @@
 title: Azure IoT Hub (ノード) を使用したクラウドからデバイスへのメッセージ| Microsoft Docs
 description: Azure IoT SDK for Node.js を使用して、クラウドからデバイスへのメッセージを Azure IoT Hub からデバイスへ送信する方法。 クラウドからデバイスへのメッセージを受信するためにシミュレートされたデバイス アプリを変更し、クラウドからデバイスへのメッセージを送信するためにバックエンド アプリを変更します。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -13,22 +12,22 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: e398138f12c38e5235a0004679d9574dbde607db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75473561ecb827f12aeb02cb69b12259862da10b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91446874"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229660"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Node.js)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-node.md)に関するクイックスタートには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [デバイスから IoT ハブへのテレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)に関するクイックスタートには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-このチュートリアルは、[デバイスから IoT ハブへのテレメトリ送信](quickstart-send-telemetry-node.md)に関する記事に基づいて作成されています。 次の方法について説明します。
+このチュートリアルは、[デバイスから IoT ハブへのテレメトリ送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)に関する記事に基づいて作成されています。 次の方法について説明します。
 
 * ソリューション バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
 * クラウドからデバイスへのメッセージをデバイスで受信する。
@@ -38,7 +37,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 
 このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリを実行します。
 
-* **SimulatedDevice**。[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-node.md)に関するページで作成されたアプリの修正版であり、IoT ハブに接続し、cloud-to-device メッセージを受信します。
+* **SimulatedDevice**。[デバイスから IoT ハブへのテレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)に関するページで作成されたアプリの修正版であり、IoT ハブに接続し、cloud-to-device メッセージを受信します。
 
 * **SendCloudToDeviceMessage**。cloud-to-device メッセージを IoT Hub を介してシミュレートされたデバイス アプリに送信し、その配信確認を受け取ります。
 
@@ -56,9 +55,9 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>シミュレートされたデバイス アプリでメッセージを受信する
 
-このセクションでは、[デバイスから IoT Hub へのテレメトリ送信](quickstart-send-telemetry-node.md)に関するページで作成したシミュレート デバイス アプリを変更して、cloud-to-device メッセージを IoT ハブから受信するようにします。
+このセクションでは、[デバイスから IoT Hub へのテレメトリ送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)に関するページで作成したシミュレート デバイス アプリを変更して、cloud-to-device メッセージを IoT ハブから受信するようにします。
 
-1. テキスト エディターを使用して **SimulatedDevice.js** ファイルを開きます。 このファイルは、[デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-node.md)に関するクイックスタートでダウンロードした Node.js サンプル コードのルート フォルダーの **iot-hub\Quickstarts\simulated-device** フォルダーにあります。
+1. テキスト エディターを使用して **SimulatedDevice.js** ファイルを開きます。 このファイルは、[デバイスから IoT ハブへの利用統計情報の送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)に関するクイックスタートでダウンロードした Node.js サンプル コードのルート フォルダーの **iot-hub\Quickstarts\simulated-device** フォルダーにあります。
 
 2. IoT Hub から送信されたメッセージを受信するために、デバイス クライアントにハンドラーを登録します。 次のスニペットのように、デバイス クライアントを作成する行の直後に、`client.on` の呼び出しを追加します。
 
@@ -94,13 +93,13 @@ cloud-to-device メッセージのライフサイクルの詳細など、IoT Hub
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
 
-この記事では、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-node.md)に関するページで作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、**サービス接続** のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
+この記事では、[デバイスから IoT ハブへのテレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)に関するページで作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、**サービス接続** のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
 
-このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する Node.js コンソール アプリを作成します。 [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-node.md)に関するクイックスタートで追加したデバイスのデバイス ID が必要です。 また、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列も必要です。
+このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する Node.js コンソール アプリを作成します。 [デバイスから IoT ハブへのテレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)に関するクイックスタートで追加したデバイスのデバイス ID が必要です。 また、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列も必要です。
 
 1. 空のフォルダーを **sendcloudtodevicemessage** という名前で作成します。 コマンド プロンプトで次のコマンドを使用して、**sendcloudtodevicemessage** フォルダー内に package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
 
@@ -203,7 +202,5 @@ cloud-to-device メッセージのライフサイクルの詳細など、IoT Hub
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。
-
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT リモート監視ソリューション アクセラレータ](https://azure.microsoft.com/documentation/suites/iot-suite/)に関するページをご覧ください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide.md)をご覧ください。

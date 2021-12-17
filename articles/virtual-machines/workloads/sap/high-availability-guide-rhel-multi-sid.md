@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/11/2021
+ms.date: 08/03/2021
 ms.author: radeltch
-ms.openlocfilehash: ec2121754a24a44288c158e630a4e84219c744e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efbb1370ace9936f4ac7e42bc6c8feac55525002
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676914"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774065"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Red Hat Enterprise Linux for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
@@ -27,9 +27,8 @@ ms.locfileid: "101676914"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-azure-doc]:../../../azure-netapp-files/azure-netapp-files-introduction.md
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=storage&regions=all
-[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
@@ -44,7 +43,7 @@ ms.locfileid: "101676914"
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
-[template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 [glusterfs-ha]:high-availability-guide-rhel-glusterfs.md
@@ -250,8 +249,8 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
 
    クラスターにデプロイする追加の SAP システム用のファイル システムで、ファイル `/etc/fstab` を更新します。  
 
-   * Azure NetApp Files を使用する場合は、[こちら](./high-availability-guide-rhel-netapp-files.md#prepare-for-sap-netweaver-installation)の手順に従ってください  
-   * GlusterFS クラスターを使用する場合は、[こちら](./high-availability-guide-rhel.md#prepare-for-sap-netweaver-installation)の手順に従ってください  
+   * Azure NetApp Files を使用する場合は、[Azure NetApp Files を使用した RHEL 上の SAP NW 用の Azure VM の高可用性](./high-availability-guide-rhel-netapp-files.md#prepare-for-sap-netweaver-installation)に関するページにある指示に従ってください
+   * GlusterFS クラスターを使用する場合は、[RHEL での SAP NW 用の Azure VM の高可用性](./high-availability-guide-rhel.md#prepare-for-sap-netweaver-installation)に関するページにある指示に従って下さい
 
 ### <a name="install-ascs--ers"></a>ASCS/ERS をインストールする
 
@@ -266,7 +265,7 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
     sudo pcs resource create vip_NW2_ASCS IPaddr2 \
     ip=10.3.1.52 cidr_netmask=24 \
      --group g-NW2_ASCS
-    
+  
     sudo pcs resource create nc_NW2_ASCS azure-lb port=62010 \
      --group g-NW2_ASCS
 
@@ -418,6 +417,8 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
     op start interval=0 timeout=600 op stop interval=0 timeout=600 \
      --group g-NW2_ASCS
 
+    sudo pcs resource meta g-NW2_ASCS resource-stickiness=3000
+
     sudo pcs resource create rsc_sap_NW2_ERS12 SAPInstance \
     InstanceName=NW2_ERS12_msnw2ers START_PROFILE="/sapmnt/NW2/profile/NW2_ERS12_msnw2ers" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
@@ -426,7 +427,7 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
 
     sudo pcs constraint colocation add g-NW2_AERS with g-NW2_ASCS -5000
     sudo pcs constraint location rsc_sap_NW2_ASCS10 rule score=2000 runs_ers_NW2 eq 1
-    sudo pcs constraint order g-NW2_ASCS then g-NW2_AERS kind=Optional symmetrical=false
+    sudo pcs constraint order start g-NW2_ASCS then stop g-NW2_AERS kind=Optional symmetrical=false
 
     sudo pcs resource create rsc_sap_NW3_ASCS20 SAPInstance \
     InstanceName=NW3_ASCS20_msnw3ascs START_PROFILE="/sapmnt/NW3/profile/NW3_ASCS20_msnw3ascs" \
@@ -436,6 +437,8 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
     op start interval=0 timeout=600 op stop interval=0 timeout=600 \
      --group g-NW3_ASCS
 
+    sudo pcs resource meta g-NW3_ASCS resource-stickiness=3000
+
     sudo pcs resource create rsc_sap_NW3_ERS22 SAPInstance \
     InstanceName=NW3_ERS22_msnw3ers START_PROFILE="/sapmnt/NW3/profile/NW2_ERS22_msnw3ers" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
@@ -444,7 +447,7 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
 
     sudo pcs constraint colocation add g-NW3_AERS with g-NW3_ASCS -5000
     sudo pcs constraint location rsc_sap_NW3_ASCS20 rule score=2000 runs_ers_NW3 eq 1
-    sudo pcs constraint order g-NW3_ASCS then g-NW3_AERS kind=Optional symmetrical=false
+    sudo pcs constraint order start g-NW3_ASCS then stop g-NW3_AERS kind=Optional symmetrical=false
 
     sudo pcs property set maintenance-mode=false
     ```
@@ -458,10 +461,12 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
     sudo pcs resource create rsc_sap_NW2_ASCS10 SAPInstance \
     InstanceName=NW2_ASCS10_msnw2ascs START_PROFILE="/sapmnt/NW2/profile/NW2_ASCS10_msnw2ascs" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    meta resource-stickiness=5000 \
     op monitor interval=20 on-fail=restart timeout=60 \
     op start interval=0 timeout=600 op stop interval=0 timeout=600 \
      --group g-NW2_ASCS
+
+    sudo pcs resource meta g-NW2_ASCS resource-stickiness=3000
 
     sudo pcs resource create rsc_sap_NW2_ERS12 SAPInstance \
     InstanceName=NW2_ERS12_msnw2ers START_PROFILE="/sapmnt/NW2/profile/NW2_ERS12_msnw2ers" \
@@ -469,17 +474,21 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
     op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
      --group g-NW2_AERS
 
+    sudo pcs resource meta rsc_sap_NW2_ERS12  resource-stickiness=3000
+
     sudo pcs constraint colocation add g-NW2_AERS with g-NW2_ASCS -5000
-    sudo pcs constraint order g-NW2_ASCS then g-NW2_AERS kind=Optional symmetrical=false
-    sudo pcs constraint order start g-NW2_ASCS then stop g-NW2_AERS symmetrical=false
+    sudo pcs constraint order start g-NW2_ASCS then start g-NW2_AERS kind=Optional symmetrical=false
+    sudo pcs constraint order start g-NW2_ASCS then stop g-NW2_AERS kind=Optional symmetrical=false
 
     sudo pcs resource create rsc_sap_NW3_ASCS20 SAPInstance \
     InstanceName=NW3_ASCS20_msnw3ascs START_PROFILE="/sapmnt/NW3/profile/NW3_ASCS20_msnw3ascs" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    meta resource-stickiness=5000 \
     op monitor interval=20 on-fail=restart timeout=60 \
     op start interval=0 timeout=600 op stop interval=0 timeout=600 \
      --group g-NW3_ASCS
+
+    sudo pcs resource meta g-NW3_ASCS resource-stickiness=3000
 
     sudo pcs resource create rsc_sap_NW3_ERS22 SAPInstance \
     InstanceName=NW3_ERS22_msnw3ers START_PROFILE="/sapmnt/NW3/profile/NW2_ERS22_msnw3ers" \
@@ -487,9 +496,11 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
     op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
      --group g-NW3_AERS
 
+    sudo pcs resource meta rsc_sap_NW3_ERS22  resource-stickiness=3000
+
     sudo pcs constraint colocation add g-NW3_AERS with g-NW3_ASCS -5000
-    sudo pcs constraint order g-NW3_ASCS then g-NW3_AERS kind=Optional symmetrical=false
-    sudo pcs constraint order start g-NW3_ASCS then stop g-NW3_AERS symmetrical=false
+    sudo pcs constraint order start g-NW3_ASCS then start g-NW3_AERS kind=Optional symmetrical=false
+    sudo pcs constraint order start g-NW3_ASCS then stop g-NW3_AERS kind=Optional symmetrical=false
 
     sudo pcs property set maintenance-mode=false
     ```

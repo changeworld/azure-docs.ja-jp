@@ -10,38 +10,36 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/05/2020
+ms.date: 04/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 289ffbbd3dc23be0060ee5dbe488bf80323214e2
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91575964"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897219"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>StorSimple デバイスへの Update 5.1 のインストール
 
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、Update 5.1 より前のソフトウェア バージョンを実行している StorSimple デバイスに、Azure portal 経由で Update 5.1 をインストールする方法について説明します。 <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
+このチュートリアルでは、Update 5.1 より前のソフトウェア バージョンを実行している StorSimple デバイスに、Azure Portal 経由で Update 5.1 をインストールする方法、または修正プログラムを使用してインストールする方法について説明します。
 
-Update 5.1 には、中断なしのセキュリティ更新プログラムが含まれています。 中断なしまたは通常の更新プログラムは、Azure portal を使用して適用できます <!--or by the hotfix method-->.
+更新プログラム5.1 には、Azure portal または修正プログラムのメソッドによって適用できる、中断のないセキュリティ更新プログラムが含まれています。
+
+Azure portal から Update 5.1 を適用する場合は、ハードウェアの状態とネットワーク接続の点からデバイスの正常性を判断するための手動と自動の一連の事前チェックが行われます。 これらの事前チェックは、Azure portal から更新プログラムを適用する場合にのみ行われます。
+
+修正プログラムのメソッドを使用する場合は、まず、「[StorSimple デバイスに Update 5 をインストールする](storsimple-8000-install-update-5.md)」の手順に従って update 5 をインストールすることを強くお勧めします。 次に、Update 5.1 をインストールするには、次の「[修正プログラムとして Update 5.1 をインストールする](#install-update-51-as-a-hotfix)」の手順に従います。
+
+Update 5.1 のセキュリティ更新プログラムは、インストールに約 30 分かかります。
 
 > [!IMPORTANT]
->
 > * Update 5.1 は必須の更新プログラムであり、すぐにインストールする必要があります。 詳細については、[Update 5.1 リリース ノート](storsimple-update51-release-notes.md)に関する記事を参照してください。
-> * インストールの前に、ハードウェアの状態とネットワーク接続の点からデバイスの正常性を判断するための手動と自動の一連の事前チェックが行われます。 これらの事前チェックは、Azure portal から更新プログラムを適用する場合にのみ実行されます。
-> * 修正プログラムによる方法を使用してインストールする場合は、[Microsoft サポート](mailto:support@microsoft.com)にお問い合わせください。
+> * サポートされる最小バージョンは Update 5 です。
 
-<!--
-> * We strongly recommend that when updating a device running versions prior to Update 3, you install the updates using hotfix method. If you encounter any issues, [log a support ticket](storsimple-8000-contact-microsoft-support.md). 
-
-
-> * We recommend that you install the software and other regular updates via the Azure portal. You should only go to the Windows PowerShell interface of the device (to install updates) if the pre-update gateway check fails in the portal. Depending upon the version you are updating from, the updates may take 4 hours (or greater) to install. The maintenance mode updates must be installed through the Windows PowerShell interface of the device. As maintenance mode updates are disruptive updates, these result in a down time for your device.
-
-
-> * If running the optional StorSimple Snapshot Manager, ensure that you have upgraded your Snapshot Manager version to Update 5.1 prior to updating the device.
--->
+> [!NOTE]
+> * ソフトウェアとその他の通常の更新プログラムのインストールには Azure Portal を使用することをお勧めします。 <!--You should only go to the Windows PowerShell interface of the device (to install updates) if the pre-update gateway check fails in the portal. Depending upon the version you are updating from, the updates may take 4 hours (or greater) to install. The maintenance mode updates must be installed through the Windows PowerShell interface of the device. As maintenance mode updates are disruptive updates, these result in a down time for your device. - N/A FOR 5.1? No maintenance mode updates, and the security updates go quickly.-->
+> * 修正プログラムのメソッドを使用してインストールする場合は、インストールを開始する前に [Microsoft サポート](mailto:support@microsoft.com) に問い合わせる必要があります。
 
 [!INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
@@ -78,13 +76,13 @@ Update 5.1 には、中断なしのセキュリティ更新プログラムが含
 
      すべてのチェックが正常に完了した場合にのみ、更新プログラムがダウンロードされてインストールされます。 チェックが実行中のときは通知されます。 事前チェックに失敗した場合、失敗の理由が表示されます。 それらの問題を解決してから操作をやり直してください。 これらの問題に自分で対処できない場合、Microsoft サポートに連絡することが必要になる場合があります。
 
-7. 事前チェックが正常に完了したら、更新ジョブが作成されます。 更新ジョブが正常に作成されると、通知されます。
+6. 事前チェックが正常に完了したら、更新ジョブが作成されます。 更新ジョブが正常に作成されると、通知されます。
    
     ![[ソフトウェアの更新ジョブを開始しています] という通知のスクリーンショット。](./media/storsimple-8000-install-update-51/update6.png)
    
     その後、更新プログラムがデバイスに適用されます。
 
-9. 更新の完了には数時間かかります。 更新ジョブを選択し、 **[詳細]** をクリックすると、ジョブの詳細をいつでも表示できます。
+7. 更新の完了には数時間かかります。 更新ジョブを選択し、 **[詳細]** をクリックすると、ジョブの詳細をいつでも表示できます。
 
     ![[デバイスの更新] ブレードのスクリーンショット。[ソフトウェア更新プログラムのダウンロードとインストールが進行中です] オプションのコールアウトと、[更新プログラムのインストール] ブレードが表示されています。](./media/storsimple-8000-install-update-51/update8.png)
 
@@ -92,79 +90,66 @@ Update 5.1 には、中断なしのセキュリティ更新プログラムが含
 
      ![[設定] ブレードのスクリーンショット。[ジョブ] のコールアウトが表示され、[ジョブ] ブレードに更新の進行状況が示されています。](./media/storsimple-8000-install-update-51/update7.png)
 
-10. ジョブが完了したら、 **[デバイスの設定]、[デバイスの更新プログラム]** の順に移動します。 ソフトウェアのバージョンが更新されています。
+8. ジョブが完了したら、 **[デバイスの設定]、[デバイスの更新プログラム]** の順に移動します。 ソフトウェアのバージョンが更新されています。
 
+   デバイスで **StorSimple 8000 Series Update 5.1 (6.3.9600.17885)** が実行されており、 **最終更新日** が今日の日付であることを確認します。
 
-デバイスで **StorSimple 8000 Series Update 5.1 (6.3.9600.17885)** が実行されていることを確認します。 **[最終更新日]** が変更されています。
-<!-- 5.1 - KB 4542887-->
+## <a name="install-update-51-as-a-hotfix"></a>Update 5.1 を修正プログラムとしてインストールする
 
-<!--You will now see that the Maintenance mode updates are available (this message might continue to be displayed for up to 24 hours after you install the updates). The steps to install maintenance mode update are detailed in the next section.
+Update 5.1 を修正プログラムとしてインストールする場合は、インストールを開始する前に、次の手順を実行します。
 
-[!INCLUDE [storsimple-8000-install-maintenance-mode-updates](../../includes/storsimple-8000-install-maintenance-mode-updates.md)]
+* Update 5.1 をインストールする前に、Update 5 をインストールします。 手順については、「[StorSimple デバイスへ Update 5 をインストールする](storsimple-8000-install-update-5.md)」を参照してください。
+* 修正プログラムのインストールを開始する前に、 [Microsoft サポート](mailto:support@microsoft.com)にお問い合わせください。
 
-## Install Update 5.1 as a hotfix
+修正プログラムを使用する方法には、次の手順が含まれます。
 
-The software versions that can be upgraded using the hotfix method are:
+1. Microsoft Update カタログから修正プログラムをダウンロードします。
+2. 通常モードの修正プログラムをインストールして確認します。
+3. メンテナンス モードの修正プログラムをインストールして確認します。
 
-* Update 0.1, 0.2, 0.3
-* Update 1, 1.1, 1.2
-* Update 2, 2.1, 2.2
-* Update 3, 3.1
-* Update 4
-* Update 5
+#### <a name="download-updates-for-your-device"></a>デバイスの更新プログラムをダウンロードする
 
-> [!NOTE]
-> The recommended method to install Update 5.1 is through the Azure portal when trying to update from Update 3 and later version. When updating a device running versions prior to Update 3, use this procedure. You can also use this procedure if you fail the gateway check when trying to install the updates through the Azure portal. The check fails when you have a gateway assigned to a non-DATA 0 network interface and your device is running a software version earlier than Update 1.
+指定の順序で推奨されるフォルダーで、次の修正プログラムをダウンロードしてインストールする必要があります。
 
-The hotfix method involves the following three steps:
+| 注文 | KB       | 説明 | 更新の種類 | インストール時間 |インストールするフォルダー|
+|-------|----------|------------ |-------------|--------------|----- |
+|1.     |KB4542887|ソフトウェア更新<br>_HcsSoftwareUpdate.exe_ と _CisMSDAgent.exe_ の両方をダウンロード |通常 <br></br>中断なし |～ 25 分 |FirstOrderUpdate|
+|3.<sup>1, 2</sup>     |KB4037263|ディスク ファームウェア|メンテナンス <br></br>中断あり|～ 30 分|ThirdOrderUpdate|
 
-1. Download the hotfixes from the Microsoft Update Catalog.
-2. Install and verify the regular mode hotfixes.
-3. Install and verify the maintenance mode hotfix.
+<sup>1</sup> Update 5.1 では、2 番目の注文の更新プログラムはありません。
 
-#### Download updates for your device
+<sup>2</sup> Update 5 の修正プログラムの更新プログラムの上にディスク ファームウェアの更新プログラムをインストールしていない場合は、3 番目の更新プログラムをインストールします。
 
-You must download and install the following hotfixes in the prescribed order and the suggested folders:
+この修正プログラムをダウンロードしてインポートするには、次のステップを実行します。
 
-| Order | KB | Description | Update type | Install time |Install in folder|
-| --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |Software update<br> Download both _HcsSoftwareUpdate.exe_ and _CisMSDAgent.exe_ |Regular <br></br>Non-disruptive |~ 25 mins |FirstOrderUpdate|
+#### <a name="download-hotfixes"></a>修正プログラムをダウンロードする
 
-If updating from a device running Update 4, you only need to install the OS cumulative updates as second order updates.
+修正プログラムをダウンロードするには、「[修正プログラムをダウンロードする](storsimple-8000-install-update-5.md#to-download-hotfixes)」を参照してください。
 
-| Order | KB | Description | Update type | Install time |Install in folder|
-| --- | --- | --- | --- | --- | --- |
-| 2A. |KB4025336 |OS cumulative updates package <br> Download Windows Server 2012 R2 version |Regular <br></br>Non-disruptive |- |SecondOrderUpdate|
+#### <a name="install-and-verify-device-updates"></a>デバイスの更新プログラムをインストールして検証する
 
-If installing from a device running Update 3 or earlier, install the following in addition to the cumulative updates.
-
-| Order | KB | Description | Update type | Install time |Install in folder|
-| --- | --- | --- | --- | --- | --- |
-| 2B. |KB4011841 <br> KB4011842 |LSI driver and firmware updates <br> USM firmware update (version 3.38) |Regular <br></br>Non-disruptive |~ 3 hrs <br> (includes 2A. + 2B. + 2C.)|SecondOrderUpdate|
-| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |OS security updates package <br> Download Windows Server 2012 R2 version |Regular <br></br>Non-disruptive |- |SecondOrderUpdate|
-| 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |OS updates package <br> Download Windows Server 2012 R2 version |Regular <br></br>Non-disruptive |- |SecondOrderUpdate|
-
-
-
-You may also need to install disk firmware updates on top of all the updates shown in the preceding tables. You can verify whether you need the disk firmware updates by running the `Get-HcsFirmwareVersion` cmdlet. If you are running these firmware versions: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N003`, `0107`, then you do not need to install these updates.
-
-| Order | KB | Description | Update type | Install time | Install in folder|
-| --- | --- | --- | --- | --- | --- |
-| 3. |KB4037263 |Disk firmware |Maintenance <br></br>Disruptive |~ 30 mins | ThirdOrderUpdate |
-
-<br></br>
+「**Update 5 を StorSimple デバイスにインストールする**」の「[通常モードの修正プログラムをインストールして検証する](storsimple-8000-install-update-5.md#to-install-and-verify-regular-mode-hotfixes)」の手順に従って、KB4542887 でデバイスの更新プログラムをインストールます。
 
 > [!IMPORTANT]
-> * If updating from Update 4, the total install time is close to 4 hours.
-> * Before using this procedure to apply the update, make sure that both the device controllers are online and all the hardware components are healthy.
+> まだ [Microsoft サポート](mailto:support@microsoft.com)に連絡していない場合は、修正プログラムをインストールする前に、これを行う必要があります。
 
-Perform the following steps to download and install the hotfixes.
+手順に従って、最初の更新プログラムをインストールします。 Update 5.1 では、2 番目の更新プログラムはありません。
 
-[!INCLUDE [storsimple-install-update5-hotfix](../../includes/storsimple-install-update5-hotfix.md)]
--->
-<!--
-[!INCLUDE [storsimple-8000-install-troubleshooting](../../includes/storsimple-8000-install-troubleshooting.md)]
--->
+Update 5.1 の場合は、インストール後にこれらのソフトウェアのバージョンを確認します。
+
+ * FriendlySoftwareVersion: StorSimple 8000 Series Update 5.1
+ * HcsSoftwareVersion: 6.3.9600.17885
+ * CisAgentVersion: 1.0.9777.0
+ * MdsAgentVersion: 35.2.2.0
+ * Lsisas2Version: 2.0.78.00
+
+#### <a name="install-and-verify-disk-firmware-updates"></a>ディスクファームウェアの更新プログラムをインストールして確認する
+
+Update 5 をインストールしたときにディスク ファームウェアの更新プログラムをインストールしていない場合は、「**Update 5 を StorSimple デバイスにインストールする**」の「[通常モードの修正プログラムをインストールして検証する](storsimple-8000-install-update-5.md#to-install-and-verify-maintenance-mode-hotfixes)」の手順に従って、KB4037263 でディスク ファームウェアの更新プログラムをインストールます。
+
+`XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N003`、`0107`の各ファームウェア バージョンを実行している場合は、ディスク ファームウェアの更新プログラムをインストールする必要はありません。
+
+ディスク ファームウェアの更新プログラムが必要かどうかを確認するには、`Get-HcsFirmwareVersion` コマンドレットを実行します。
 
 ## <a name="next-steps"></a>次のステップ
 

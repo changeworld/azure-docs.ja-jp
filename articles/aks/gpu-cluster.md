@@ -3,19 +3,17 @@ title: Azure Kubernetes Service (AKS) での GPU の使用
 description: Azure Kubernetes Service (AKS) で高パフォーマンス コンピューティングやグラフィックを集中的に使用するワークロードに GPU を使用する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 08/21/2020
-ms.author: jpalma
-author: palma21
-ms.openlocfilehash: 5e36465c307443c8e6f135c5937bddbbb079b60e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 08/06/2021
+ms.openlocfilehash: fa7415f015ad17cc2e8a5ff4822c8ff53578f054
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783163"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751527"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する
 
-GPU (Graphical processing units) は、多くの場合に、グラフィックや視覚化ワークロードなど、コンピューティングを集中的に使用するワークロードに使用とされます。 AKS では、Kubernetes でこれらのコンピューティングを集中的に使用するワークロードを実行する GPU 対応ノード プールの作成をサポートしています。 使用可能な GPU 対応 VM の詳細については、[Azure での GPU 最適化済み VM サイズ][gpu-skus]に関する記事を参照してください。 AKS ノードには、最小サイズの *Standard_NC6* をお勧めします。
+GPU (Graphical processing units) は、多くの場合に、グラフィックや視覚化ワークロードなど、コンピューティングを集中的に使用するワークロードに使用とされます。 AKS では、Kubernetes でこれらのコンピューティングを集中的に使用するワークロードを実行する GPU 対応ノード プールの作成をサポートしています。 使用可能な GPU 対応 VM の詳細については、[Azure での GPU 最適化済み VM サイズ][gpu-skus]に関する記事を参照してください。 AKS ノード プールには、最小サイズの *Standard_NC6* をお勧めします。
 
 > [!NOTE]
 > GPU 対応 VM には、より高い価格が適用され、利用可能なリージョンが限られる特殊なハードウェアが含まれます。 詳細については、[価格][azure-pricing]ツールと[利用可能なリージョン][azure-availability]を参照してください。
@@ -24,41 +22,127 @@ GPU (Graphical processing units) は、多くの場合に、グラフィック�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、GPU をサポートするノードを含む AKS クラスターが既に存在していることを前提としています。 AKS クラスターで Kubernetes 1.10 以降を実行している必要があります。 これらの要件を満たす AKS クラスターが必要な場合は、この記事の最初のセクションを参照して、[AKS クラスターを作成](#create-an-aks-cluster)してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、「[クイックスタート: Azure CLI を使用して Azure Kubernetes Service クラスターをデプロイする][aks-quickstart]」を参照してください。
 
 また、Azure CLI バージョン 2.0.64 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
-## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
+## <a name="get-the-credentials-for-your-cluster"></a>クラスターの資格情報を取得する
 
-最小要件 (GPU 対応ノードと Kubernetes バージョン 1.10 以降) を満たしている AKS クラスターが必要な場合は、次の手順を実行します。 これらの要件を満たしている AKS クラスターが既にある場合は、[次のセクションに進んでください](#confirm-that-gpus-are-schedulable)。
-
-まず、[az group create][az-group-create] コマンドを使用して、クラスターのリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成します。
-
-```azurecli-interactive
-az group create --name myResourceGroup --location eastus
-```
-
-ここで、[az aks create][az-aks-create] コマンドを使用して、AKS クラスターを作成します。 次の例では、サイズ `Standard_NC6` の 1 つのノードを含むクラスターを作成します。
-
-```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --node-vm-size Standard_NC6 \
-    --node-count 1
-```
-
-[az aks get-credentials][az-aks-get-credentials] コマンドを使用して、AKS クラスターの資格情報を取得します。
+[az aks get-credentials][az-aks-get-credentials] コマンドを使用して、AKS クラスターの資格情報を取得します。 次のコマンド例では、*myResourceGroup* リソース グループにある *myAKSCluster* の資格情報を取得します。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-device-plugin"></a>NVIDIA デバイス プラグインをインストールする
+## <a name="add-the-nvidia-device-plugin"></a>NVIDIA デバイス プラグインを追加する
 
-ノード内の GPU を使用するには、NVIDIA デバイス プラグイン用の DaemonSet をデプロイしておく必要があります。 この DaemonSet により、各ノードでポッドが実行され、GPU に必要なドライバーが提供されます。
+NVIDIA デバイス プラグインを追加するには、次の 2 つのオプションがあります。
 
-まず、[kubectl create namespace][kubectl-create] コマンドを使用して、名前空間 (*gpu-resources* など) を作成します。
+* AKS GPU イメージを使用する
+* NVIDIA デバイス プラグインを手動でインストールする
+
+> [!WARNING]
+> 上記のいずれのオプションも使用できますが、AKS GPU イメージを使用するクラスターで NVIDIA デバイス プラグイン デーモン セットを手動でインストールしないでください。
+
+### <a name="update-your-cluster-to-use-the-aks-gpu-image-preview"></a>AKS GPU イメージを使用するようにクラスターを更新する (プレビュー)
+
+AKS からは、[Kubernetes 向け NVIDIA デバイス プラグイン][nvidia-github]が既に含まれる、完全構成済みの AKS イメージが提供されます。
+
+`GPUDedicatedVHDPreview` 機能を登録します。
+
+```azurecli
+az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
+```
+
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature#az_feature_list) コマンドを使用して登録状態を確認できます。
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
+```
+
+状態が登録済みと表示されたら、[az provider register](/cli/azure/provider#az_provider_register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+aks-preview CLI 拡張機能をインストールするには、次の Azure CLI コマンドを使用します。
+
+```azurecli
+az extension add --name aks-preview
+```
+
+aks-preview CLI 拡張機能を更新するには、次の Azure CLI コマンドを使用します。
+
+```azurecli
+az extension update --name aks-preview
+```
+
+## <a name="add-a-node-pool-for-gpu-nodes"></a>GPU ノードのノード プールを追加する
+
+ノード プールをクラスターに追加するには、[az aks nodepool add][az-aks-nodepool-add] を使用します。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name gpunp \
+    --node-count 1 \
+    --node-vm-size Standard_NC6 \
+    --node-taints sku=gpu:NoSchedule \
+    --aks-custom-headers UseGPUDedicatedVHD=true \
+    --enable-cluster-autoscaler \
+    --min-count 1 \
+    --max-count 3
+```
+
+上記のコマンドにより、*gpunp* という名前のノード プールが *myResourceGroup* リソース グループにある *myAKSCluster* に追加されます。 また、このコマンドは、ノード プール内のノードの VM サイズを *Standard_NC6* に設定し、クラスター オートスケーラーを有効にするほか、ノード プール内に最低で 1 つのノード、最大で 3 つのノードを維持するようにクラスター オートスケーラーを構成し、新しいノード プールに特殊な AKS GPU イメージ ノードを指定し、そのノード プールに *sku=gpu:NoSchedule* テイントを指定します。
+
+> [!NOTE]
+> テイントと VM のサイズは、ノード プールの作成時にのみノード プールに設定できますが、オートスケーラーの設定はいつでも更新できます。
+
+> [!NOTE]
+> GPU SKU で第 2 世代の VM が必要な場合は、 *--aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true* を使用します。 次に例を示します。
+> 
+> ```azurecli
+> az aks nodepool add \
+>    --resource-group myResourceGroup \
+>    --cluster-name myAKSCluster \
+>    --name gpunp \
+>    --node-count 1 \
+>    --node-vm-size Standard_NC6 \
+>    --node-taints sku=gpu:NoSchedule \
+>    --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true \
+>    --enable-cluster-autoscaler \
+>    --min-count 1 \
+>    --max-count 3
+> ```
+
+### <a name="manually-install-the-nvidia-device-plugin"></a>NVIDIA デバイス プラグインを手動でインストールする
+
+別の方法として、NVIDIA デバイス プラグインの DaemonSet をデプロイすることができます。 この DaemonSet により、各ノードでポッドが実行され、GPU に必要なドライバーが提供されます。
+
+[az aks nodepool add][az-aks-nodepool-add] を使用して、ノード プールをクラスターに追加します。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name gpunp \
+    --node-count 1 \
+    --node-vm-size Standard_NC6 \
+    --node-taints sku=gpu:NoSchedule \
+    --enable-cluster-autoscaler \
+    --min-count 1 \
+    --max-count 3
+```
+
+上記のコマンドにより、*gpunp* という名前のノード プールが *myResourceGroup* リソース グループにある *myAKSCluster* に追加されます。 また、このコマンドは、ノード プール内のノードの VM サイズを *Standard_NC6* に設定し、クラスター オートスケーラーを有効にするほか、ノード プール内に最低で 1 つのノード、最大で 3 つのノードを維持するようにクラスター オートスケーラーを構成し、ノード プールに *sku=gpu:NoSchedule* テイントを指定します。
+
+> [!NOTE]
+> テイントと VM のサイズは、ノード プールの作成時にのみノード プールに設定できますが、オートスケーラーの設定はいつでも更新できます。
+
+[kubectl create namespace][kubectl-create] コマンドを使用して、名前空間 (*gpu-resources* など) を作成します。
 
 ```console
 kubectl create namespace gpu-resources
@@ -96,6 +180,10 @@ spec:
       - key: nvidia.com/gpu
         operator: Exists
         effect: NoSchedule
+      - key: "sku"
+        operator: "Equal"
+        value: "gpu"
+        effect: "NoSchedule"
       containers:
       - image: mcr.microsoft.com/oss/nvidia/k8s-device-plugin:1.11
         name: nvidia-device-plugin-ctr
@@ -112,78 +200,13 @@ spec:
             path: /var/lib/kubelet/device-plugins
 ```
 
-ここで、次の出力例に示すように、[kubectl apply][kubectl-apply] コマンドを使用して DaemonSet を作成し、NVIDIA デバイス プラグインが正常に作成されていることを確認します。
+次の出力例に示すように、[kubectl apply][kubectl-apply] を使用して DaemonSet を作成し、NVIDIA デバイス プラグインが正常に作成されていることを確認します。
 
 ```console
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
 
 daemonset "nvidia-device-plugin" created
 ```
-
-## <a name="use-the-aks-specialized-gpu-image-preview"></a>AKS 専用 GPU イメージ (プレビュー) を使用する
-
-これらの手順の代わりとして、AKS からは、[Kubernetes 向け NVIDIA デバイス プラグイン][nvidia-github]が既に含まれる、完全構成済みの AKS イメージが提供されます。
-
-> [!WARNING]
-> 新しい AKS 専用 GPU イメージを使用し、クラスター向け NVIDIA デバイス プラグイン デーモン セットを手動インストールしないでください。
-
-
-`GPUDedicatedVHDPreview` 機能を登録します。
-
-```azurecli
-az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
-```
-
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature#az_feature_list) コマンドを使用して登録状態を確認できます。
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
-```
-
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider#az_provider_register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
-
-aks-preview CLI 拡張機能をインストールするには、次の Azure CLI コマンドを使用します。
-
-```azurecli
-az extension add --name aks-preview
-```
-
-aks-preview CLI 拡張機能を更新するには、次の Azure CLI コマンドを使用します。
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>新しいクラスターで AKS 専用 GPU イメージ (プレビュー) を使用する    
-
-クラスターの作成時に、AKS 専用 GPU イメージを使用するようにクラスターを構成します。 AKS 専用 GPU イメージを使用するため、新しいクラスターで GPU エージェント ノードの `--aks-custom-headers` フラグを使用します。
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
-```
-
-通常の AKS イメージを使用してクラスターを作成する場合、カスタムの `--aks-custom-headers` タグを省略すると、そうすることができます。 下のように、もっと特化した GPU ノード プールの追加を選択することもできます。
-
-
-### <a name="use-the-aks-specialized-gpu-image-on-existing-clusters-preview"></a>既存のクラスターで AKS 専用 GPU イメージ (プレビュー) を使用する
-
-AKS 専用 GPU イメージを使用するように新しいノード プールを構成します。 AKS 専用 GPU イメージを使用するため、新しいノード プールで GPU エージェント ノードの `--aks-custom-headers` フラグを使用します。
-
-```azurecli
-az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
-```
-
-通常の AKS イメージを使用してノード プールを作成する場合、カスタムの `--aks-custom-headers` タグを省略すると、そうすることができます。 
-
-> [!NOTE]
-> GPU SKU に第 2 世代仮想マシンが必要な場合、次のように作成できます。
-> ```azurecli
-> az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
-> ```
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>GPU がスケジュール可能であることを確認する
 
@@ -192,8 +215,8 @@ AKS クラスターが作成されたら、Kubernetes で GPU がスケジュー
 ```console
 $ kubectl get nodes
 
-NAME                       STATUS   ROLES   AGE   VERSION
-aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
+NAME                   STATUS   ROLES   AGE   VERSION
+aks-gpunp-28993262-0   Ready    agent   13m   v1.20.7
 ```
 
 ここで、[kubectl describe node][kubectl-describe] コマンドを使用して、GPU がスケジュール可能であることを確認します。 *Capacity* セクションで、GPU は `nvidia.com/gpu:  1` と表示されているはずです。
@@ -201,50 +224,17 @@ aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 次の抜粋された例では、*aks nodepool1 18821093 0* という名前のノードで GPU が使用できることを示しています。
 
 ```console
-$ kubectl describe node aks-nodepool1-28993262-0
+$ kubectl describe node aks-gpunp-28993262-0
 
-Name:               aks-nodepool1-28993262-0
+Name:               aks-gpunp-28993262-0
 Roles:              agent
 Labels:             accelerator=nvidia
 
 [...]
 
 Capacity:
- attachable-volumes-azure-disk:  24
- cpu:                            6
- ephemeral-storage:              101584140Ki
- hugepages-1Gi:                  0
- hugepages-2Mi:                  0
- memory:                         57713784Ki
+[...]
  nvidia.com/gpu:                 1
- pods:                           110
-Allocatable:
- attachable-volumes-azure-disk:  24
- cpu:                            5916m
- ephemeral-storage:              93619943269
- hugepages-1Gi:                  0
- hugepages-2Mi:                  0
- memory:                         51702904Ki
- nvidia.com/gpu:                 1
- pods:                           110
-System Info:
- Machine ID:                 b0cd6fb49ffe4900b56ac8df2eaa0376
- System UUID:                486A1C08-C459-6F43-AD6B-E9CD0F8AEC17
- Boot ID:                    f134525f-385d-4b4e-89b8-989f3abb490b
- Kernel Version:             4.15.0-1040-azure
- OS Image:                   Ubuntu 16.04.6 LTS
- Operating System:           linux
- Architecture:               amd64
- Container Runtime Version:  docker://1.13.1
- Kubelet Version:            v1.12.7
- Kube-Proxy Version:         v1.12.7
-PodCIDR:                     10.244.0.0/24
-ProviderID:                  azure:///subscriptions/<guid>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/Microsoft.Compute/virtualMachines/aks-nodepool1-28993262-0
-Non-terminated Pods:         (9 in total)
-  Namespace                  Name                                     CPU Requests  CPU Limits  Memory Requests  Memory Limits  AGE
-  ---------                  ----                                     ------------  ----------  ---------------  -------------  ---
-  kube-system                nvidia-device-plugin-daemonset-bbjlq     0 (0%)        0 (0%)      0 (0%)           0 (0%)         2m39s
-
 [...]
 ```
 
@@ -279,6 +269,11 @@ spec:
           limits:
            nvidia.com/gpu: 1
       restartPolicy: OnFailure
+      tolerations:
+      - key: "sku"
+        operator: "Equal"
+        value: "gpu"
+        effect: "NoSchedule"
 ```
 
 [kubectl apply][kubectl-apply] コマンドを使ってジョブを実行します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。
@@ -386,6 +381,20 @@ Accuracy at step 490: 0.9494
 Adding run metadata for 499
 ```
 
+## <a name="use-container-insights-to-monitor-gpu-usage"></a>Container Insights を使用して GPU の使用状況を監視する
+
+GPU の使用状況を監視するために、次のメトリックを [AKS での Container Insights][aks-container-insights] で使用できます。
+
+| メトリックの名前 | メトリック ディメンション (タグ) | 説明 |
+|-------------|-------------------------|-------------|
+| containerGpuDutyCycle | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName`, `gpuId`, `gpuModel`, `gpuVendor`   | 過去のサンプリング期間 (60 秒) 中に、コンテナーに対して GPU がビジーであるかアクティブに処理を行っていた時間の割合。 デューティ サイクルは 1 から 100 までの値です。 |
+| containerGpuLimits | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName` | 各コンテナーでは、1 つまたは複数の GPU として制限を指定できます。 GPU の一部を要求または制限することはできません。 |
+| containerGpuRequests | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName` | 各コンテナーでは、1 つまたは複数の GPU を要求できます。 GPU の一部を要求または制限することはできません。 |
+| containerGpumemoryTotalBytes | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName`, `gpuId`, `gpuModel`, `gpuVendor` | 特定のコンテナーに使用できる GPU メモリの量 (バイト)。 |
+| containerGpumemoryUsedBytes | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName`, `gpuId`, `gpuModel`, `gpuVendor` | 特定のコンテナーに使用された GPU メモリの量 (バイト)。 |
+| nodeGpuAllocatable | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `gpuVendor` | Kubernetes で使用できるノード内の GPU の数。 |
+| nodeGpuCapacity | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `gpuVendor` | ノード内の GPU の合計数。 |
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成され、関連付けられている Kubernetes オブジェクトを削除するには、次のように [kubectl delete job][kubectl delete] コマンドを使用します。
@@ -399,6 +408,12 @@ kubectl delete jobs samples-tf-mnist-demo
 Apache Spark ジョブを実行するには、[AKS での Apache Spark ジョブの実行][aks-spark]に関する記事を参照してください。
 
 Kubernetes での機械学習 (ML) ワークロードの実行に関する詳細については、[Kubeflow ラボ][kubeflow-labs]を参照してください。
+
+Azure Machine Learning での Azure Kubernetes Service の使用方法の詳細については、次の記事を参照してください。
+
+* [Azure Kubernetes Service にモデルをデプロイする][azureml-aks]。
+* [GPU を使用した推論のためのディープ ラーニング モデルをデプロイする][azureml-gpu]。
+* [Triton 推論サーバーを使用した高パフォーマンスのサービス][azureml-triton]。
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -416,6 +431,11 @@ Kubernetes での機械学習 (ML) ワークロードの実行に関する詳細
 [az-group-create]: /cli/azure/group#az_group_create
 [az-aks-create]: /cli/azure/aks#az_aks_create
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[aks-quickstart]: kubernetes-walkthrough.md
 [aks-spark]: spark-job.md
 [gpu-skus]: ../virtual-machines/sizes-gpu.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[azureml-aks]: ../machine-learning/how-to-deploy-azure-kubernetes-service.md
+[azureml-gpu]: ../machine-learning/how-to-deploy-inferencing-gpus.md
+[azureml-triton]: ../machine-learning/how-to-deploy-with-triton.md
+[aks-container-insights]: monitor-aks.md#container-insights

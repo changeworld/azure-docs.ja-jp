@@ -4,13 +4,13 @@ description: Azure Kubernetes Service (AKS) に移行します。
 services: container-service
 ms.topic: article
 ms.date: 03/25/2021
-ms.custom: mvc
-ms.openlocfilehash: d5e3543fd6b7cd1b5534d6e363e51f1778cc7fc9
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: c162a782965156545cf238f8f0489409433a0345
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012129"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724760"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する
 
@@ -52,8 +52,8 @@ Azure Kubernetes Service (AKS) への正常な移行を計画して実行でき�
 
 Azure Migrate により、オンプレミスのサーバー、インフラストラクチャ、アプリケーション、データの評価と、Azure へのそれらの移行を行うための統合プラットフォームが提供されます。 AKS には、次のタスクで Azure Migrate を使用できます。
 
-* [ASP.NET アプリケーションのコンテナー化と AKS へのそれらの移行](../migrate/tutorial-containerize-aspnet-kubernetes.md)
-* [Java Web アプリケーションのコンテナー化と AKS へのそれらの移行](../migrate/tutorial-containerize-java-kubernetes.md)
+* [ASP.NET アプリケーションのコンテナー化と AKS へのそれらの移行](../migrate/tutorial-app-containerization-aspnet-kubernetes.md)
+* [Java Web アプリケーションのコンテナー化と AKS へのそれらの移行](../migrate/tutorial-app-containerization-java-kubernetes.md)
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>Standard Load Balancer と Virtual Machine Scale Sets を使用する AKS
 
@@ -182,17 +182,19 @@ IP を使い切らないようにするには、[ネットワーク クォータ
 
 既存の継続的インテグレーション (CI) および継続的配置 (CD) パイプラインを使用して、既知の正常な構成を AKS にデプロイすることをお勧めします。 Azure Pipelines を使用すると、[アプリケーションをビルドして AKS にデプロイ](/azure/devops/pipelines/ecosystems/kubernetes/aks-template)できます。 既存のデプロイ タスクを複製し、`kubeconfig` が新しい AKS クラスターを指すようにします。
 
-それが不可能な場合は、既存の Kubernetes クラスターからリソース定義をエクスポートし、AKS にそれを適用します。 オブジェクトをエクスポートするには `kubectl` を使用できます。
+それが不可能な場合は、既存の Kubernetes クラスターからリソース定義をエクスポートし、AKS にそれを適用します。 オブジェクトをエクスポートするには `kubectl` を使用できます。 次に例を示します。
 
 ```console
-kubectl get deployment -o=yaml --export > deployments.yaml
+kubectl get deployment -o yaml > deployments.yaml
 ```
+
+必ず出力を確認し、不要なライブ データ フィールドを削除してください。
 
 ### <a name="moving-existing-resources-to-another-region"></a>既存のリソースを別のリージョンに移動する
 
 AKS クラスターを、[AKS でサポートされている別のリージョン][region-availability]に移動する必要がある場合があります。 もう一方のリージョンに新しいクラスターを作成し、その新しいクラスターにリソースとアプリケーションをデプロイすることをお勧めします。 
 
-また、AKS クラスターで実行されている [Azure Dev Spaces][azure-dev-spaces] などのサービスがある場合は、新しいリージョンのクラスターにこれらのサービスをインストールして構成する必要があります。
+また、AKS クラスターで実行されているサービスがある場合は、新しいリージョンのクラスターにそれらのサービスをインストールして構成する必要があります。
 
 
 この記事では、次の移行の詳細について説明しました。
@@ -208,4 +210,3 @@ AKS クラスターを、[AKS でサポートされている別のリージョ�
 
 
 [region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[azure-dev-spaces]: ../dev-spaces/index.yml

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a84d4d71e5190c455441d1e627381be86ef5e129
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 190299cfc6e86e0085f9c727b3b216079204ec93
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97608529"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734062"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>チュートリアル: Azure Active Directory と Peakon の統合
 
@@ -45,6 +45,7 @@ Peakon と Azure AD の統合を構成するには、次のものが必要です
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * Peakon では、**SP** と **IDP** によって開始される SSO がサポートされます
+* Peakon では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](peakon-provisioning-tutorial.md) (推奨) がサポートされます。
 
 ## <a name="adding-peakon-from-the-gallery"></a>ギャラリーからの Peakon の追加
 
@@ -245,7 +246,7 @@ Peakon の場合、プロビジョニングは手動で行います。
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Peakon] タイルをクリックすると、SSO を設定した Peakon に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Peakon] タイルをクリックすると、SSO を設定した Peakon に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

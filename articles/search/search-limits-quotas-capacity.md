@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 994ed74750d159dfdb83259e9fe921f870ec2241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9034d493e0ab10d8c548170cac99238d5edc4e22
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99509369"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003874"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Cognitive Search におけるサービスの制限
 
@@ -103,7 +103,7 @@ ms.locfileid: "99509369"
 
 ## <a name="shared-private-link-resource-limits"></a>共有プライベート リンク リソースの制限
 
-インデクサーでは、[共有プライベート リンク リソース API](/rest/api/searchmanagement/sharedprivatelinkresources) を使用して管理されている[プライベート エンドポイント経由](search-indexer-howto-access-private.md)で他の Azure リソースにアクセスできます。 このセクションでは、この機能に関連する制限について説明します。
+インデクサーでは、[共有プライベート リンク リソース API](/rest/api/searchmanagement/2020-08-01/shared-private-link-resources) を使用して管理されている[プライベート エンドポイント経由](search-indexer-howto-access-private.md)で他の Azure リソースにアクセスできます。 このセクションでは、この機能に関連する制限について説明します。
 
 | リソース | Free | Basic | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -127,7 +127,7 @@ ms.locfileid: "99509369"
 
 ## <a name="data-limits-ai-enrichment"></a>データの制限 (AI エンリッチメント)
 
-[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、[センチメント分析](cognitive-search-skill-sentiment.md)、[言語検出](cognitive-search-skill-language-detection.md)、および[個人情報検出](cognitive-search-skill-pii-detection.md)の Text Analytics リソースに対して呼び出しを行う [AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)は、データの制限を受ける可能性があります。 レコードのサイズは、[`String.Length`](/dotnet/api/system.string.length) で測定して 50,000 文字以下にする必要があります。 データをセンチメント アナライザーに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用します。
+[エンティティ認識](cognitive-search-skill-entity-recognition-v3.md)、[エンティティリンク設定](cognitive-search-skill-entity-linking-v3.md)、[キー フレーズの抽出](cognitive-search-skill-keyphrases.md)、[センチメント分析](cognitive-search-skill-sentiment-v3.md)、[言語選択](cognitive-search-skill-language-detection.md)、および[個人情報検出](cognitive-search-skill-pii-detection.md)の Text Analytics リソースに対して呼び出しを行う [AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)は、データの制限を受ける可能性があります。 レコードのサイズは、[`String.Length`](/dotnet/api/system.string.length) で測定して 50,000 文字以下にする必要があります。 データをセンチメント アナライザーに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用します。
 
 ## <a name="throttling-limits"></a>スロットルの制限
 

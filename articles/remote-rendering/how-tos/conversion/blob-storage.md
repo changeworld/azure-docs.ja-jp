@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 629b48a378dd029d9952270e3c71762a5bb7aa82
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 742bf5eb7e33f7121325216d8880f77dadc85155
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306723"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803982"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>モデルの変換に Azure Blob Storage を使用する
 
@@ -73,7 +73,7 @@ SAS URI は、次のいずれかを使用して生成できます。
 変換のためにデータをアップロードする方法の例については、「[PowerShell スクリプトの例](../../samples/powershell-example-scripts.md#script-conversionps1)」の「Conversion.ps1」を参照してください。
 
 > [!Note]
-> 入力モデルをアップロードする場合は、サービスで [Windows のパスの長さの制限](https://docs.mxicrosoft.com/windows/win32/fileio/maximum-file-path-limitation)に関する問題を回避するために、ファイル名やフォルダー構造が長くならないように注意する必要があります。 
+> 入力モデルをアップロードする場合は、サービスで [Windows のパスの長さの制限](/windows/win32/fileio/maximum-file-path-limitation)に関する問題を回避するために、ファイル名やフォルダー構造が長くならないように注意する必要があります。 
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>変換されたモデルの SAS URI を取得する
 

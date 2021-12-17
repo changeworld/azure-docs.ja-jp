@@ -2,18 +2,18 @@
 title: コンテンツ メタデータ プロパティ
 titleSuffix: Azure Cognitive Search
 description: ドキュメントのメタデータ プロパティを使用すると、検索インデックス内のフィールドにコンテンツを提供したり、実行時にインデックス作成動作を通知する情報を提供したりすることができます。 この記事では、Azure Cognitive Search でサポートされているメタデータ プロパティの一覧を示します。
+author: nitinme
 manager: nitinme
-author: MarkHeff
-ms.author: maheff
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/22/2021
-ms.openlocfilehash: cbb35f596a1d32816d1a73b462bf590d9dde0d52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6f02a50160d650f44e9793dbfa59e0dbf58ebbc
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668420"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055571"
 ---
 # <a name="content-metadata-properties-used-in-azure-cognitive-search"></a>Azure Cognitive Search で使用されるコンテンツ メタデータ プロパティ
 
@@ -31,8 +31,8 @@ Cognitive Search では、次のドキュメント形式の BLOB のインデッ
 
 | ドキュメントの形式/コンテンツの種類 | 抽出されるメタデータ | 処理の詳細 |
 | --- | --- | --- |
-| HTML (text/html) |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |HTML マークアップを削除し、テキストを抽出します。 |
-| PDF (application/pdf) |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |テキストを抽出します。埋め込みドキュメントも対象となります (画像を除く)。 |
+| HTML (text/html または application/xhtml+xml) |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |HTML マークアップを削除し、テキストを抽出します。 |
+| PDF (application/pdf) |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title`<br/>`metadata_creation_date` |テキストを抽出します。埋め込みドキュメントも対象となります (画像を除く)。 |
 | DOCX (application/vnd.openxmlformats-officedocument.wordprocessingml.document) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |テキストを抽出します。埋め込みドキュメントも対象となります。 |
 | DOC (application/msword) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |テキストを抽出します。埋め込みドキュメントも対象となります。 |
 | DOCM (application/vnd.ms-word.document.macroenabled.12) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |テキストを抽出します。埋め込みドキュメントも対象となります。 |
@@ -47,15 +47,17 @@ Cognitive Search では、次のドキュメント形式の BLOB のインデッ
 | MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |テキスト (添付ファイルから抽出されたテキストを含む) を抽出します。 `metadata_message_to_email`、`metadata_message_cc_email`、`metadata_message_bcc_email` は文字列コレクションであり、残りのフィールドは文字列です。|
 | ODT (application/vnd.oasis.opendocument.text) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |テキストを抽出します。埋め込みドキュメントも対象となります。 |
 | ODS (application/vnd.oasis.opendocument.spreadsheet) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |テキストを抽出します。埋め込みドキュメントも対象となります。 |
-| ODP (application/vnd.oasis.opendocument.presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`title` |テキストを抽出します。埋め込みドキュメントも対象となります。 |
+| ODP (application/vnd.oasis.opendocument.presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_title` |テキストを抽出します。埋め込みドキュメントも対象となります。 |
 | ZIP (application/zip) |`metadata_content_type` |アーカイブ内のすべてのドキュメントからテキストを抽出します。 |
 | GZ (application/gzip) |`metadata_content_type` |アーカイブ内のすべてのドキュメントからテキストを抽出します。 |
 | EPUB (application/epub+zip) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_title`<br/>`metadata_description`<br/>`metadata_language`<br/>`metadata_keywords`<br/>`metadata_identifier`<br/>`metadata_publisher` |アーカイブ内のすべてのドキュメントからテキストを抽出します。 |
-| XML (application/xml) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> |XML マークアップを削除し、テキストを抽出します。 |
+| XML (application/xml) |`metadata_content_type`<br/>`metadata_content_encoding`<br/>`metadata_language`<br/> |XML マークアップを削除し、テキストを抽出します。 |
+| KML (application/vnd.google-earth.kml+xml) |`metadata_content_type`<br/>`metadata_content_encoding`<br/>`metadata_language`<br/> |XML マークアップを削除し、テキストを抽出します。 |
 | JSON (application/json) |`metadata_content_type`<br/>`metadata_content_encoding` |テキストを抽出します<br/>注:JSON BLOB から複数のドキュメント フィールドを抽出する必要がある場合、詳細については、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事をご覧ください |
 | EML (message/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |テキストを抽出します。添付ファイルも対象となります。 |
-| RTF (アプリケーション/rtf) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_page_count`<br/>`metadata_word_count`<br/> | テキストを抽出します|
-| プレーン テキスト (text/plain) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | テキストを抽出します|
+| RTF (アプリケーション/rtf) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count`<br/> | テキストを抽出します|
+| プレーン テキスト (text/plain) |`metadata_content_type`<br/>`metadata_content_encoding`<br/>`metadata_language`<br/> | テキストを抽出します|
+| CSV (text/csv) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | テキストを抽出します<br/>注: CSV BLOB から複数のドキュメント フィールドを抽出する必要がある場合、詳細について、[CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)に関する記事をご覧ください |
 
 ## <a name="see-also"></a>関連項目
 

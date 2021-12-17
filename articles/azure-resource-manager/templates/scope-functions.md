@@ -3,12 +3,13 @@ title: スコープが指定されたデプロイにおけるテンプレート�
 description: スコープが指定されたデプロイにおけるテンプレート関数の解決方法について説明します。 スコープには、テナント、管理グループ、サブスクリプション、リソース グループが含まれます。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: f128448380612bc9b8d9114226e8a3036feeead8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: db2099c6c2405928a33f33bbba579c2280ad4877
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492095"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959995"
 ---
 # <a name="arm-template-functions-in-deployment-scopes"></a>デプロイ スコープにおける ARM テンプレートの関数
 
@@ -138,6 +139,6 @@ az deployment group create \
 
 ## <a name="next-steps"></a>次のステップ
 
-* テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+* テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./syntax.md)」を参照してください。
 * 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](common-deployment-errors.md)」を参照してください。
 * SAS トークンを必要とするテンプレートをデプロイする方法については、「[SAS トークンを使用してプライベート ARM テンプレートをデプロイする](secure-template-with-sas-token.md)」を参照してください。

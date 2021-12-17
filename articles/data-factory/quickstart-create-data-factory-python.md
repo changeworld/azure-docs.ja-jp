@@ -1,20 +1,21 @@
 ---
 title: クイック スタート:Python を使用して Azure データ ファクトリを作成する
 description: データ ファクトリを使用して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: tutorials
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 04/12/2021
+ms.date: 05/27/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 534b5b3aca86cc2f6d7ee2d703939420f80abb8e
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 0344ac6e358b35f2f5d420932b188c229bd94fe8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365095"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749832"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
 
@@ -40,7 +41,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (省略可)。
 
-* [Azure Active Directory のアプリケーション](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 このリンク先の手順に従ってアプリケーションを作成し、同じ記事の手順に従ってこのアプリケーションを **共同作成者** ロールに割り当てます。 記事に示されているように後の手順で使用するために、**アプリケーション ID (以下のサービス プリンシパル ID)、認証キー (以下のクライアント シークレット)、およびテナント ID** の値をメモしておきます。
+* [Azure Active Directory のアプリケーション](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 このリンク先の手順に従い、認証オプション 2 (アプリケーション シークレット)　を使用してアプリケーションを作成し、同じ記事の手順に従ってこのアプリケーションを **共同作成者** ロールに割り当てます。 記事に示されているように、後の手順で使用するために、**アプリケーション (クライアント) ID、クライアント シークレット値、およびテナント ID** の値をメモしておきます。
 
 ## <a name="create-and-upload-an-input-file"></a>入力ファイルを作成およびアップロードする
 
@@ -75,7 +76,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
     ```
     > [!NOTE] 
     > "azure-identity" パッケージは、いくつかの共通の依存関係に関して、"azure-cli" と競合する可能性があります。 認証の問題が発生した場合は、"azure-cli" とその依存関係を削除するか、"azure-cli" パッケージがインストールされていないクリーン マシンを使用して解決してください。
-    > ソブリン クラウドの場合は、適切なクラウド固有の定数を使用する必要があります。  ソブリン クラウドで Python を使用して接続する手順については、[Python マルチクラウド用 Azure ライブラリを使用したすべてのリージョンへの接続](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)に関する記事をご覧ください。
+    > ソブリン クラウドの場合は、適切なクラウド固有の定数を使用する必要があります。  ソブリン クラウドで Python を使用して接続する手順については、[Python マルチクラウド用 Azure ライブラリを使用したすべてのリージョンへの接続](/azure/developer/python/azure-sdk-sovereign-domain)に関する記事をご覧ください。
     
     
 ## <a name="create-a-data-factory-client"></a>データ ファクトリ クライアントを作成する
@@ -139,7 +140,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
         df_name = '<factory name>'
 
         # Specify your Active Directory client ID, client secret, and tenant ID
-        credentials = ClientSecretCredential(client_id='<service principal ID>', client_secret='<service principal key>', tenant_id='<tenant ID>') 
+        credentials = ClientSecretCredential(client_id='<Application (client) ID>', client_secret='<client secret value>', tenant_id='<tenant ID>') 
         
         # Specify following for Soverign Clouds, import right cloud constant and then use it to connect.
         # from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD as CLOUD

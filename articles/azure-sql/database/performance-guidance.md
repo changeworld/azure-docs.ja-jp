@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 40657ad2f3b69d62e0e0d9c7d9e0f0be7343547b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mathoma
+ms.date: 07/26/2021
+ms.openlocfilehash: 6446470baf321fa46eab4a68a13cc6e09fdd2e59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96490603"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739641"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance でアプリケーションとデータベースのパフォーマンスを調整します
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -264,6 +264,12 @@ Azure SQL Database および Azure SQL Managed Instance 内でスケールアウ
 ### <a name="application-tier-caching"></a>アプリケーション層のキャッシュ
 
 一部のデータベース アプリケーションでは、ワークロードの大半が読み取りになります。 キャッシュ層を利用すれば、データベースの負荷を減らすことができます。また、Azure SQL Database および Azure SQL Managed Instance を使用してデータベースをサポートするために必要なコンピューティング サイズを下げられる可能性があります。 [Azure Cache for Redis](https://azure.microsoft.com/services/cache/) を利用すると、読み取りが多いワークロードがある場合に、データを 1 回 (または、構成方法に応じてアプリケーション層コンピューターごとに 1 回) 読み込んでから、データベースの外部にそのデータを格納することができます。 この方法は、データベースの負荷 (CPU と読み取り IO) を減らすことができるものの、トランザクションの整合性に影響があります。データがキャッシュから読み込まれると、データベースのデータとの同期が失われることがあるためです。 多くのアプリケーションではある程度の不整合が許容されますが、すべてのワークロードで許容されるとは限りません。 アプリケーション層のキャッシュ手法を実装する前に、あらゆるアプリケーション要件を完全に理解しておく必要があります。
+
+## <a name="get-configuration-and-design-tips"></a>構成とデザインのヒントを取得する
+
+Azure SQL Database を使用する場合は、オープンソースの T-SQL [スクリプト](https://aka.ms/sqldbtips)を実行して、必要に応じてデータベースを分析し、データベースのパフォーマンスと正常性を向上させるためのヒントを提供できます。 ベスト プラクティスに基づいて構成と運用上の変更を提案するヒントもありますが、データベース エンジンの高度な機能を有効にするなど、ワークロードに適したデザインの変更を推奨するヒントもあります。
+
+スクリプトの詳細を確認し、作業を開始するには、[wiki](https://aka.ms/sqldbtipswiki) ページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,14 +4,14 @@ description: Update 1.3 を実行する Azure StorSimple Virtual Array に関す
 ms.service: storsimple
 author: v-dalc
 ms.topic: article
-ms.date: 03/17/2021
+ms.date: 04/13/2021
 ms.author: alkohli
-ms.openlocfilehash: b2c2af4267140370c2aa9421a67cb3a6f413165f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 498e3d11d8188850a918c67a9a88643d15c134c5
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104657554"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389521"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>StorSimple Virtual Array Update 1.3 のリリース ノート
 
@@ -45,12 +45,12 @@ Update 1.3 はソフトウェア バージョン 10.0.10319.0 に対応してい
 
 ## <a name="download-update-13"></a>Update 1.3 のダウンロード
 
-この更新プログラムをダウンロードするには、[Microsoft Update カタログ](https://www.catalog.update.microsoft.com/Home.aspx)のサーバーへ移動して、KB4575898 パッケージをダウンロードします。 このパッケージには、次のパッケージが含まれています。
+この更新プログラムをダウンロードするには、[Microsoft Update カタログ](https://www.catalog.update.microsoft.com/Home.aspx)のサーバーへ移動して、KB4575898 パッケージをダウンロードします。 このパッケージには、次のパッケージが含まれています。 パッケージを次の順序でインストールします。
 
-- 2012 R2 から 2020 年 3 月までの累積的な Windows Update が含まれる **KB4540725**。 このロールアップに含まれる内容の詳細については、[3 月のマンスリー セキュリティ ロールアップ](https://support.microsoft.com/help/4540725)に関するページをご覧ください。
-- 2012 R2 から 2020 年 7 月までの累積的な Windows Update が含まれる **KB4565541**。 このロールアップに含まれる内容の詳細については、[2 月のマンスリー セキュリティ ロールアップ](https://support.microsoft.com/help/4565541)に関するページをご覧ください。
-- 2020 年 7 月までの累積的な .NET Framework の更新プログラムが含まれる **KB4565622**。 このロールアップに含まれる内容の詳細については、[2 月のマンスリー セキュリティ ロールアップ](https://support.microsoft.com/help/4565622)に関するページをご覧ください。
-- デバイス ソフトウェアの更新プログラムが含まれる **KB3011067**。
+1. 2012 R2 から 2020 年 3 月までの累積的な Windows Update が含まれる **KB4540725**。 このロールアップに含まれる内容の詳細については、[3 月のマンスリー セキュリティ ロールアップ](https://support.microsoft.com/help/4540725)に関するページをご覧ください。
+1. 2012 R2 から 2020 年 7 月までの累積的な Windows Update が含まれる **KB4565541**。 このロールアップに含まれる更新プログラムの詳細については、[7 月のマンスリー セキュリティ ロールアップ](https://support.microsoft.com/help/4565541)に関するページをご覧ください。
+1. 2020 年 7 月までの累積的な .NET Framework の更新プログラムが含まれる **KB4565622**。 このロールアップに含まれる更新プログラムの詳細については、[KB4565622](https://support.microsoft.com/help/4565622) に関するページをご覧ください。<!--The Help link opens the KB. I can't find a monthly rollup. I updated the link text to accurately describe what opens.-->
+1. デバイス ソフトウェアの更新プログラムが含まれる **KB3011067**。
 
 KB4575898 をダウンロードして、[ローカル Web UI を使用して更新プログラムを適用する](./storsimple-virtual-array-install-update-11.md#use-the-local-web-ui)ための手順に従います。
 

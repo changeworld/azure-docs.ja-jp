@@ -1,23 +1,25 @@
 ---
-title: はじめに
-description: Azure App Service Environments を利用して、完全に分離された専用の環境でアプリをスケーリング、セキュリティ保護、および最適化する方法について学習します。
-author: ccompy
-ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
+title: ASEv2 入門
+description: Azure App Service Environments v2 を利用して、完全に分離された専用の環境でアプリをスケーリング、セキュリティ保護、および最適化する方法について学習します。
+author: madsd
 ms.topic: overview
-ms.date: 04/19/2018
-ms.author: ccompy
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 6fff19498e9ca70991d3190165df70a48136f502
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/15/2021
+ms.author: madsd
+ms.openlocfilehash: f704cf8bcd1efdc9a415b8c94662570869787491
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92631140"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523332"
 ---
-# <a name="introduction-to-the-app-service-environments"></a>App Service Environment の概要 #
-## <a name="overview"></a>概要 ##
+# <a name="introduction-to-app-service-environment-v2"></a>App Service Environment v2 の概要
+> [!NOTE]
+> この記事は、Isolated App Service プランで使用される App Service Environment v2 に関するものです より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](overview.md)」を参照してください。
+> 
 
-Azure App Service Environment は、App Service アプリを大規模かつ安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の機能です。 この機能は、以下をホストできます。
+## <a name="overview"></a>概要
+
+Azure App Service Environment v2 は、App Service アプリを大規模かつ安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の機能です。 この機能は、以下をホストできます。
 
 * Windows Web アプリ
 * Linux Web アプリ 
@@ -42,9 +44,9 @@ ASE では、単一の顧客のアプリケーションは VNet の 1 つでホ�
 * ASE で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール (WAF) などのアップストリーム デバイスによって制限できます。 詳細については、[Web アプリケーション ファイアウォール (WAF)][AppGW] に関するページを参照してください。
 * Availability Zones (AZ) には、ゾーンの固定を使用して App Service Environment をデプロイできます。  詳細については、「[App Service Environment の Availability Zones サポート][ASEAZ]」を参照してください。
 
-## <a name="dedicated-environment"></a>専用の環境 ##
+## <a name="dedicated-environment"></a>専用の環境
 
-ASE は、1 つのサブスクリプション専用であり、100 の App Service プラン インスタンスをホストできます。 1 つの App Service プラン内の 100 のインスタンスから、100 の単一インスタンス App Service プラン、およびその間のすべてのプランがあります。
+ASE は、1 人の顧客に限定された専用環境であり、合計 200 件の App Service プランのインスタンスをホストできます。 Isolated SKU App Service プランの場合には、1 つにつきインスタンスを 100 件まで作成できます。 その ASE のすべての App Service プランからすべてのインスタンスを追加する場合、合計は 200 件以下にする必要があります。
 
 ASE は、フロントエンドとワーカーで構成されます。 フロントエンドは、HTTP/HTTPS ターミネーションと、ASE 内でのアプリ要求の自動負荷分散を担当します。 ASE で App Service プランをスケールアウトすると、フロントエンドが自動的に追加されます。
 
@@ -58,7 +60,7 @@ ASE は、フロントエンドとワーカーで構成されます。 フロン
 
 インフラストラクチャの支払いを行うための ASE の一定の月額料金があり、ASE のサイズが変化しても料金は変わりません。 それに加えて、App Service プランの vCPU あたりのコストがあります。 ASE でホストされているすべてのアプリは、分離された価格 SKU に含まれます。 ASE の価格については、「[App Service の価格][Pricing]」で、ASE に関して提供されている選択肢を参照してください。
 
-## <a name="virtual-network-support"></a>Virtual Network のサポート ##
+## <a name="virtual-network-support"></a>Virtual Network のサポート
 
 ASE 機能は、お客様の Azure Resource Manager 仮想ネットワークに Azure App Service を直接デプロイしたものです。 Azure の仮想ネットワークの詳細については、「[Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)](../../virtual-network/virtual-networks-faq.md)」を参照してください。 ASE は常に仮想ネットワーク内 (正確には仮想ネットワークのサブネット内) に存在します。 仮想ネットワークのセキュリティ機能を使って、アプリの送受信方向のネットワーク通信を制御することができます。
 
@@ -72,11 +74,11 @@ ASE と仮想ネットワークおよびオンプレミス ネットワークと
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud/player]
 
-## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
+## <a name="app-service-environment-v1"></a>App Service Environment v1
 
-App Service Environment には、ASEv1 と ASEv2 です。 前述の情報は ASEv2 に基づいていました。 このセクションでは、ASEv1 と ASEv2 の違いについて説明します。 
+App Service Environment には、ASEv1、ASEv2、および ASEv3 の 3 つのバージョンがあります。 前述の情報は ASEv2 に基づいていました。 このセクションでは、ASEv1 と ASEv2 の違いについて説明します。 詳しくは、[App Service Environment v3 の概要](./overview.md)に関するページを参照してください。
 
-ASEv1 では、すべてのリソースを手動で管理する必要があります。 これには、フロントエンド、ワーカー、IP ベースの SSL に使用する IP アドレスが含まれます。 App Service プランをスケールアウトするには、そのプランをホストするワーカー プールを先にスケールアウトしておく必要があります。
+ASEv1 では、すべてのリソースを手動で管理する必要があります。 これには、フロントエンド、ワーカー、IP ベースの TLS/SSL バインディングに使用する IP アドレスが含まれます。 App Service プランをスケールアウトするには、そのプランをホストするワーカー プールを先にスケールアウトしておく必要があります。
 
 ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 では、割り当てられた vCPU ごとに料金を支払います。 これには、フロントエンドまたはどのワークロードもホストしていないワーカーに使用される vCPU が含まれます。 ASEv1 では、ASE の既定の最大スケール サイズは合計で 55 ホストです。 これにはワーカーとフロントエンドが含まれます。 ASEv1 の利点の 1 つは、従来の仮想ネットワークと Resource Manager 仮想ネットワークにデプロイできることです。 ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Intro]に関するページを参照してください。
 
@@ -100,6 +102,6 @@ ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 �
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
-[ASEWAF]: app-service-app-service-environment-web-application-firewall.md
+[ASEWAF]: ./integrate-with-application-gateway.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [ASEAZ]: https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html

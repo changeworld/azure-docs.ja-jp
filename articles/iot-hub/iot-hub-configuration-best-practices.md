@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub のデバイス構成のベスト プラクティス | Microsoft Docs
 description: 自動デバイス管理を使用して、IoT デバイスを大規模に管理する際の反復的で複雑なタスクを最小限に抑えるためのベスト プラクティスについて説明します。
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 8a39c2b06ca8a0f852891acb60ba199fc2c6db5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22417fa8842835ce84377190783567c9727c15a0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96024131"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547669"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT ソリューション内のデバイス構成のベスト プラクティス
 
@@ -20,7 +20,7 @@ Azure IoT Hub の自動デバイス管理では、大規模なデバイス集団
 
 * **IoT ハードウェアの製造元/インテグレーター:** IoT ハードウェアの製造元、さまざまな製造元のハードウェアをアセンブルするインテグレーター、あるいは他のサプライヤーによって製造または統合された IoT デプロイ用のハードウェアを提供するサプライヤーです。 ファームウェア、埋め込みオペレーティング システム、埋め込みソフトウェアの開発と統合に関与します。
 
-* **IoT ソリューション開発者:** 通常、IoT ソリューションの開発は、ソリューション開発者が行います。 この開発者は、この活動を専門とする社内チームの一員であることも、システム インテグレーターであることもあります。 IoT ソリューション開発者は、IoT ソリューションのさまざまなコンポーネントをゼロから開発したり、標準またはオープン ソースのさまざまなコンポーネントを統合したり、[IoT ソリューション アクセラレータ](../iot-accelerators/index.yml)をカスタマイズしたりできます。
+* **IoT ソリューション開発者:** 通常、IoT ソリューションの開発は、ソリューション開発者が行います。 この開発者は、この活動を専門とする社内チームの一員であることも、システム インテグレーターであることもあります。 IoT ソリューション開発者は、IoT ソリューションのさまざまなコンポーネントをゼロから開発したり、標準またはオープン ソースのさまざまなコンポーネントを統合したりできます。
 
 * **IoT ソリューションのオペレーター:** IoT ソリューションをデプロイしたら、長期間にわたる操作、監視、アップグレード、メンテナンスが必要となります。 これらのタスクは、情報テクノロジ スペシャリスト、ハードウェア操作およびメンテナンス チーム、および全体的な IoT インフラストラクチャの正常な動作を監視するドメイン スペシャリストから成る社内チームが実行できます。
 
@@ -90,4 +90,4 @@ Azure 上に構築された IoT ソリューションを使用する IoT ソリ�
 
 * 「[多数の IoT デバイスの構成と監視](./iot-hub-automatic-device-management.md)」で、自動デバイス構成を作成、更新、または削除する手順を紹介します。
 
-* 「[チュートリアル: デバイス ファームウェア更新プロセスを実装する](tutorial-firmware-update.md)」で、デバイス ツインと自動デバイス構成を使用してファームウェア更新パターンを実装します。
+* [Raspberry Pi 3 B+ リファレンス イメージ を使用して、Device Update for Azure IoT Hub チュートリアル](../iot-hub-device-update/device-update-raspberry-pi.md)でエンドツーエンドのイメージ ベースの更新を完了する方法について説明します。

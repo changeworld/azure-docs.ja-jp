@@ -3,15 +3,15 @@ title: Azure Cosmos コンテナーまたはアカウントの正規化された
 description: Azure Cosmos DB で、操作の正規化された要求ユニットの使用状況を監視する方法について説明します。 Azure Cosmos DB アカウントの所有者は、より多くの要求ユニットを消費している操作を把握できます。
 ms.service: cosmos-db
 ms.topic: how-to
-author: kanshiG
-ms.author: govindk
-ms.date: 01/07/2021
-ms.openlocfilehash: ec82532b54e7834b62fcc03d3ee7de1345a0f546
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: esarroyo
+author: StefArroyo
+ms.date: 09/16/2021
+ms.openlocfilehash: e7e52208602ed2e82fed8201d1b4ba91c295946d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98027799"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593859"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Azure Cosmos コンテナーまたはアカウントの正規化された RU/秒を監視する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -38,17 +38,17 @@ Azure Monitor メトリックでは、 **[合計要求数]** メトリックを�
 
 2. 左側のナビゲーション バーから **[監視]** を選択し、 **[メトリック]** を選択します。
 
-   :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Azure Monitor のメトリック ペイン":::
+   :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Azure Monitor のメトリック ペイン" border="true":::
 
 3. **[メトリック]** ウィンドウから、 **[リソースの選択]** を選択し、必要な **サブスクリプション** と **リソース グループ** を選択します。 **[リソースの種類]** で、 **[Azure Cosmos DB accounts]\(Azure Cosmos DB アカウント\)** を選択し、既存の Azure Cosmos アカウントの一つを選択し、 **[適用]** を選択します。
 
-   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="メトリックを表示する Azure Cosmos アカウントを選択する":::
+   :::image type="content" source="./media/monitor-account-key-updates/select-account-scope.png" alt-text="メトリックを表示するアカウント スコープを選択する" border="true":::
 
 4. 次に、使用可能なメトリックの一覧からメトリックを選択できます。 要求ユニット、ストレージ、待機時間、可用性、Cassandra などに固有のメトリックを選択できます。 この一覧で使用可能なすべてのメトリックの詳細については、「[カテゴリ別のメトリック](monitor-cosmos-db-reference.md)」の記事を参照してください。 この例では、 **[Normalized RU Consumption]\(正規化された RU 消費量\)** メトリックを選択し、集計値として **[最大]** を選択します。
 
    これらの詳細に加えて、メトリックの **[時間の範囲]** と **[時間の粒度]** を選択することもできます。 最大で、過去 30 日間のメトリックを表示できます。  フィルターを適用すると、そのフィルターに基づいてグラフが表示されます。
 
-   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Azure portal からのメトリックの選択":::
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Azure portal からのメトリックの選択" border="true":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>正規化された要求ユニット消費量をフィルターする
 
@@ -58,7 +58,7 @@ Azure Monitor メトリックでは、 **[合計要求数]** メトリックを�
 
 次の図に示すように、各コンテナーの正規化された要求ユニット消費量のメトリックが表示されます。
 
-:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="正規化された要求ユニット消費量メトリックにフィルターを適用する":::
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="正規化された要求ユニット消費量メトリックにフィルターを適用する" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

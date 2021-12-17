@@ -1,0 +1,126 @@
+### YamlMime:FAQ
+metadata:
+  title: FAQ - Azure VM 上の SQL Server データベースのバックアップ
+  description: Azure Backup を使用した Azure VM 上での SQL Server データベースのバックアップに関する一般的な質問への回答を見つけてください。
+  ms.reviewer: vijayts
+  ms.topic: article
+  ms.service: backup
+  ms.date: 08/20/2021
+  ms.openlocfilehash: d8c04eead12e3c0e96cf72e7492c52ccdb49686e
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123108917"
+title: Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
+summary: >
+  この記事では、Azure 仮想マシン (VM) 上で実行され、[Azure Backup](backup-overview.md) サービスを使用する SQL Server データベースのバックアップに関する一般的な質問にお答えします。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      IaaS VM の Azure バックアップと SQL Server を同じマシン上で使用できますか。
+    answer: >
+      はい、同じ VM上で VM のバックアップと SQL のバックアップを共存させることができます。 この場合はログを切り詰めないようにするため、VM 上でコピーのみの完全バックアップを内部でトリガーします。
+  - question: >
+      このソリューションではバックアップは再試行または自動回復されますか?
+    answer: >
+      状況によっては、Azure Backup サービスが修復バックアップをトリガーします。 自動回復は、次に示す 6 つの条件のいずれかに対して実行されます。
+
+
+      - ログまたは差分バックアップが LSN 検証エラーのために失敗した場合は、代わりに次のログまたは差分バックアップが完全バックアップに変換されます。
+
+      - ログまたは差分バックアップの前に完全バックアップが実行されていない場合は、代わりにそのログまたは差分バックアップが完全バックアップに変換されます。
+
+      - 最新の完全バックアップの特定の時点が 15 日より前の場合は、代わりに次のログまたは差分バックアップが完全バックアップに変換されます。
+
+      - 拡張機能のアップグレードのために取り消されたバックアップ ジョブはすべて、そのアップグレードが完了し、拡張機能が起動された後に再トリガーされます。
+
+      - 復元中にデータベースを上書きすることを選択した場合は、次のログ/差分バックアップが失敗し、代わりに完全バックアップがトリガーされます。
+
+      - データベース復旧モデルの変更のために、完全バックアップでログ チェーンをリセットする必要がある場合は、次のスケジュールで完全バックアップが自動的にトリガーされます。
+  - question: >
+      自動修復バックアップ ジョブはキャンセルできますか?
+    answer: >
+      いいえ。自動修復ジョブをキャンセルすることはできません。 ただし、これらの手順に従ってオプトアウトできます。
+
+
+      1. SQL Server インスタンスで、*C:\Program Files\Azure Workload Backup\bin* フォルダーで **ExtensionSettingsOverrides.json** ファイルを作成または編集します。
+
+      1. **ExtensionSettingsOverrides.json** ファイルで、*{"EnableAutoHealer": false}* を設定します。
+
+      1. 変更を保存してファイルを閉じます。
+
+      1. SQL Server インスタンスで、**タスク マネージャー** を開き、**AzureWLBackupCoordinatorSvc** サービスを再起動します。
+  - question: >
+      SQL サーバー上で実行される同時実行バックアップの数を制御できますか?
+    answer: >
+      はい。 バックアップ ポリシーが実行される速度を調整して、SQL Server インスタンスへの影響を最小限に抑えることができます。 設定を変更するには:
+
+
+      1. SQL Server インスタンスで、*C:\Program Files\Azure Workload Backup\bin* フォルダーに *ExtensionSettingsOverrides.json* ファイルを作成します。
+
+      2. *ExtensionSettingsOverrides.json* ファイルで、**DefaultBackupTasksThreshold** 設定を小さな値 (たとえば、5) に変更します。 <br>
+        `{"DefaultBackupTasksThreshold": 5}`
+      <br>
+
+      DefaultBackupTasksThreshold の既定値は **20** です。
+
+
+      3. 変更を保存し、ファイルを閉じます。
+
+      4. SQL Server インスタンスで、**タスク マネージャー** を開きます。 **AzureWLBackupCoordinatorSvc** サービスを再起動します。<br/> <br/>
+       バックアップ アプリケーションで多くのリソース量を消費している場合はこの方法が役立つ一方で、SQL Server の [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) では、受信するアプリケーション要求で使用できる CPU、物理 IO、およびメモリの量に対して、より汎用的なやり方で制限を指定できます。
+
+      > [!NOTE]
+
+      > UX では、いつでも、引き続き先に進みいくつでもバックアップをスケジュールできます。 ただし、それらは上の例に従った値 (たとえば、5) のスライディング ウィンドウで処理されます。
+  - question: >
+      成功したバックアップ ジョブでアラートが作成されますか?
+    answer: >
+      いいえ。 成功したバックアップ ジョブではアラートは生成されません。 アラートは、失敗したバックアップ ジョブに対してのみ送信されます。 ポータル アラートの詳細な動作は[ここ](backup-azure-monitoring-built-in-monitor.md)に記載されています。 ただし、成功したジョブに対してもアラートを生成することに関心がある場合は、[Azure Monitor を使用した監視](backup-azure-monitoring-use-azuremonitor.md)を使用できます。
+  - question: >
+      スケジュールされたバックアップ ジョブを [バックアップ ジョブ] メニューで確認できますか?
+    answer: >
+      **[バックアップ ジョブ]** メニューには、ごく頻繁に実行される可能性があるスケジュールされたログのバックアップを除き、すべてのスケジュール済みおよびオンデマンドの操作が表示されます。 スケジュールされたログ ジョブの場合は、[Azure Monitor を使用した監視](backup-azure-monitoring-use-azuremonitor.md)を使用してください。
+  - question: >
+      今後作成されるデータベースはバックアップに自動的に追加されますか?
+    answer: "はい。この機能は、[自動保護](backup-sql-server-database-azure-vms.md#enable-auto-protection)で実現できます。  \n"
+  - question: >
+      自動保護されたインスタンスからデータベースを削除した場合、バックアップはどうなりますか?
+    answer: "自動保護されたインスタンスからデータベースが削除された場合でも、データベース バックアップは引き続き試行されます。 これは、削除されたデータベースが **[バックアップ項目]** に異常として表示され始め、引き続き保護されていることを示しています。\n\nこのデータベースの保護を停止するための正しい方法は、このデータベースに対して **データを削除** した **[バックアップの停止]** を実行することです。  \n"
+  - question: >
+      自動保護されたデータベースのバックアップ操作の停止を実行した場合、その動作はどうなりますか?
+    answer: >
+      **データを保持したバックアップの停止** を実行した場合、将来のバックアップは実行されず、既存の復旧ポイントはそのまま残ります。 そのデータベースは引き続き保護されていると見なされ、 **[バックアップ項目]** に表示されます。
+
+
+      **データを削除したバックアップの停止** を実行した場合、将来のバックアップは実行されず、既存の復旧ポイントも削除されます。 そのデータベースは保護されていないと見なされ、[バックアップの構成] 内のインスタンスに表示されます。 ただし、手動で選択したり、自動保護したりできる他の保護されていないデータベースとは異なり、このデータベースは灰色表示され、選択できません。 このデータベースを再保護するための唯一の方法は、そのインスタンスに対する自動保護を無効にすることです。 これでこのデータベースを選択できるようになり、それに対する保護を構成するか、またはそのインスタンスに対する自動保護を再び有効にします。
+  - question: >
+      データベースが保護された後にその名前を変更した場合、その動作はどうなりますか?
+    answer: >
+      名前が変更されたデータベースは、新しいデータベースとして処理されます。 このため、サービスはこの状況を、データベースが見つからず、バックアップが失敗したかのように処理します。
+
+
+      名前が変更されているデータベースを選択し、それに対する保護を構成できます。 そのインスタンスに対して自動保護が有効になっている場合は、名前が変更されたデータベースが自動的に検出されて保護されます。
+  - question: >
+      自動保護されたインスタンスの追加されたデータベースが表示されないのはなぜですか?
+    answer: >
+      [自動保護されたインスタンスに追加した](backup-sql-server-database-azure-vms.md#enable-auto-protection)データベースは、保護された項目にすぐには表示されない可能性があります。 これは、検出は通常 8 時間ごとに実行され、システムの実際の保護は VM のサイズによって異なるため、さらに時間がかかることがあるためです。 ただし、次の図に示すように、**[DB の再検出]** を選択することによって検出を手動で実行した場合は、新しいデータベースを直ちに検出できます。
+
+        ![新しく追加されたデータベースを手動で検出する](./media/backup-azure-sql-database/view-newly-added-database.png)
+  - question: >
+      Azure Disk Encryption (ADE) が有効になっている仮想マシン上のデータベースを保護できますか?
+    answer: >
+      はい、Azure Disk Encryption (ADE) が有効になっている仮想マシン上のデータベースを保護できます。
+  - question: >
+      TDE (Transparent Data Encryption) が有効になっているデータベースを保護し、バックアップ プロセス全体を通してデータベースを暗号化したままにすることはできますか?
+    answer: >
+      はい、Azure Backup では、TDE が有効になった SQL Server データベースまたはサーバーのバックアップがサポートされます。 キーが Azure によって管理される [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption) と、キーがユーザーによって管理される (BYOK) TDE がサポートされます。  バックアップでは、バックアップ プロセスの一環として SQL 暗号化は実行されないため、バックアップ時にデータベースが暗号化されたままになります。
+  - question: >
+      Azure Backup では、データ ストリームに対してチェックサム操作が実行されますか?
+    answer: >
+      データ ストリームに対してチェックサム操作は実行されます。 ただし、これを [SQL チェックサム](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)と混同しないようにしてください。
+
+      Azure ワークロード バックアップでは、データ ストリームに対してチェックサムが計算され、バックアップ操作中に明示的に格納されます。 次に、このチェックサム ストリームが参照として取得され、データの整合性を確保するために復元操作中にデータ ストリームのチェックサムとクロス検証されます。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\nAzure VM 上で実行されている[SQL Server データベースをバックアップする](backup-azure-sql-database.md)方法を学習します。"

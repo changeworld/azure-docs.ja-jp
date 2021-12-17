@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 07/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6e4926d9bad317027d1b290e0365c667b867df6
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92442067"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729652"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Azure AD External Identities の課金モデル
 
 Azure Active Directory (Azure AD) External Identities の価格は、1 か月間に認証アクティビティを行った一意のユーザーの数である、月間アクティブ ユーザー数 (MAU) に基づいています。 この課金モデルは、Azure AD ゲスト ユーザー コラボレーション (B2B) と [Azure AD B2C テナント](../../active-directory-b2c/billing.md)の両方に適用されます。 MAU の課金は、無料レベルと柔軟で予測可能な価格を提供することによってコストを削減するのに役立ちます。 この記事では、MAU の課金と Azure AD テナントをサブスクリプションにリンクする方法について説明します。
 
 > [!IMPORTANT]
-> この記事には価格の詳細は含まれていません。 使用量の課金と価格の最新情報については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
+> この記事には価格の詳細は含まれていません。 使用量の課金と価格の最新情報については、「[Azure Active Directory の価格](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)」を参照してください。
 
 ## <a name="what-do-i-need-to-do"></a>何をする必要がありますか?
 
@@ -38,8 +38,8 @@ MAU の課金を利用するには、Azure AD テナントを Azure サブスク
 ## <a name="about-monthly-active-users-mau-billing"></a>月間アクティブ ユーザー (MAU) の課金の概要
 
 Azure AD テナントでは、ゲスト ユーザーの共同作業の使用量は、1 か月間の認証アクティビティを使用した一意のゲスト ユーザー数に基づいて課金されます。 このモデルは、テナントの Azure AD Premium ライセンスごとに最大 5 人のゲスト ユーザーが許可されていた 1:5 の比率の課金モデルに代わるものです。 テナントがサブスクリプションにリンクされており、External Identities 機能を使用してゲスト ユーザーと共同作業する場合、MAU ベースの課金モデルを使用して自動的に課金されます。
-  
-ゲスト ユーザーに適用される価格レベルは、Azure AD テナントに割り当てられている最も高い価格レベルに基づいて決まります。 たとえば、テナントの最も高い価格レベルが Azure AD Premium P1 である場合、Premium P1 の価格レベルがゲスト ユーザーにも適用されます。 最も高い価格が Azure AD Free である場合、ゲスト ユーザーに Premium 機能を使用しようとすると、Premium 価格レベルにアップグレードするように求められます。
+
+ゲスト ユーザーに適用される価格レベルは、Azure AD テナントに割り当てられている最も高い価格レベルに基づいて決まります。 詳細については、「[Azure Active Directory External Identities の価格](https://azure.microsoft.com/pricing/details/active-directory/external-identities/)」を参照してください。
 
 ## <a name="link-your-azure-ad-tenant-to-a-subscription"></a>Azure AD テナントをサブスクリプションにリンクする
 
@@ -64,7 +64,9 @@ Azure AD テナントでは、ゲスト ユーザーの共同作業の使用量�
 7. [Link subscription]\(サブスクリプションのリンク\) ペインで、 **[サブスクリプション]** と **[リソース グループ]** を選択します。 次に、**[適用]** を選択します。
 
    > [!NOTE]
-   > サブスクリプションが表示されていない場合は、[サブスクリプションをテナントに関連付ける](../fundamentals/active-directory-how-subscriptions-associated-directory.md)ことができます。 または、 **[サブスクリプションをまだお持ちでない場合は、こちらで作成できます]** のリンクを選択して、新しいサブスクリプションを追加することもできます。
+   >
+   > * Premium P1 機能と Premium P2 機能の両方で、1 か月あたり最初の 50,000 人の MAU については無料となります。 MAU の総数を確認するために、Microsoft では同じサブスクリプションにリンクされているすべてのテナント (Azure AD と Azure AD B2C の両方) の MAU を結合します。
+    >* サブスクリプションが表示されていない場合は、[サブスクリプションをテナントに関連付ける](../fundamentals/active-directory-how-subscriptions-associated-directory.md)ことができます。 または、 **[サブスクリプションをまだお持ちでない場合は、こちらで作成できます]** のリンクを選択して、新しいサブスクリプションを追加することもできます。
 
     ![サブスクリプションとリソース グループを選択する](media/external-identities-pricing/link-subscription-resource.png)
 
@@ -72,4 +74,4 @@ Azure AD テナントでは、ゲスト ユーザーの共同作業の使用量�
 
 ## <a name="next-steps"></a>次のステップ
 
-最新の価格情報については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
+最新の価格情報については、「[Azure Active Directory の価格](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)」を参照してください。

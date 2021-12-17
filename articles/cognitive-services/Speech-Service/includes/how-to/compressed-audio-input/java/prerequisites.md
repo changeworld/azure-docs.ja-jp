@@ -1,19 +1,19 @@
 ---
-author: trevorbye
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
-ms.author: trbye
-ms.openlocfilehash: 6f7e74a4e3a0ad208ea832798748adf7a15dfc89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: eur
+ms.openlocfilehash: 625f980c94536db7d4f23323393e19e0d735437e
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103417726"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156660"
 ---
 圧縮オーディオの処理は、[GStreamer](https://gstreamer.freedesktop.org) を使用して実装されます。 ライセンスの理由から、Speech SDK では GStreamer バイナリはコンパイルおよびリンクされません。 代わりに、Android では事前構築済みのバイナリを使用する必要があります。 事前構築済みのライブラリをダウンロードするには、「[Android 開発用のインストール](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)」を参照してください。
 
-`libgstreamer_android.so` は必須です。 `libgstreamer_android.so` ですべての GStreamer プラグイン (以下の Android.mk ファイルから) がリンクされていることを確認します。 最新の Speech SDK (1.16.0 以降) を GStreamer バージョン 1.18.3 と共に使用する場合、`libc++_shared.so` は Android NDK にも存在している必要があります。
+`libgstreamer_android.so` は必須です。 `libgstreamer_android.so` ですべての GStreamer プラグイン (以下の Android.mk ファイルから) がリンクされていることを確認します。 最新の Speech SDK (1.16.0 以降) を GStreamer バージョン 1.18.3 と共に使用する場合、android ndk から `libc++_shared.so` も存在している必要があります。
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
@@ -77,7 +77,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-Ubuntu 16.04 または 18.04 で次のコマンドを使用して、`libgstreamer_android.so` を構築できます。 次のコマンドラインは[Android NDK b16b](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)での[GStreamer Android version 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2)に対してのみテストされています。
+Ubuntu 18.04 または 20.04 で次のコマンドを使用して、`libgstreamer_android.so` を構築できます。 次のコマンドラインは[Android NDK b16b](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)での[GStreamer Android version 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2)に対してのみテストされています。
 
 ```sh
 # Assuming wget and unzip already installed on the system

@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace のマネージド サービス オファー
-description: 管理サービス オファーを使用すると、Azure Marketplace の顧客にリソース管理オファーを販売できます。
-ms.date: 02/17/2021
+description: Azure Marketplace 内でマネージド サービス オファーを使用して、Azure Lighthouse 管理サービスを顧客に提供します。
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: e66a87751e0375804031e777a40c5fc1d0e8a7e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d96a23f1dbdba74eefbf4f483a441c25e2dd47b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093000"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732933"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Marketplace のマネージド サービス オファー
 
@@ -18,7 +18,7 @@ ms.locfileid: "101093000"
 
 マネージド サービス オファーにより、Azure Lighthouse に顧客をオンボードするプロセスが効率化されます。 顧客は、Azure Marketplace でオファーを購入すると、オンボードするサブスクリプションやリソース グループを指定できるようになります。
 
-その後、組織内のユーザーは、オファーを作成するときに定義されたアクセス権に従い、[Azure の委任されたリソース管理](azure-delegated-resource-management.md)を使用して、管理テナント内からそれらのリソースに対して作業できるようになります。 これは、顧客のリソースにアクセスできる Azure Active Directory (Azure AD) ユーザー、グループ、サービス プリンシパルが指定されているマニフェストと、それらのアクセス レベルが定義されている[ロール](tenants-users-roles.md)を通じて行われます。
+オファーごとに、組織内のユーザーが顧客テナント内のリソースに対して作業する必要があるアクセス権を定義します。 これは、顧客のリソースにアクセスできる Azure Active Directory (Azure AD) ユーザー、グループ、サービス プリンシパルが指定されているマニフェストと、それらのアクセス レベルが定義されている[ロール](tenants-users-roles.md)を通じて行われます。
 
 > [!NOTE]
 > マネージド サービス オファーは、Azure Government およびその他の国内クラウドでは利用できない場合があります。
@@ -37,7 +37,7 @@ ms.locfileid: "101093000"
 必要に応じて、同じオファーにパブリック プランとプライベート プランの両方を含めることができます。
 
 > [!IMPORTANT]
-> プランをパブリックとして公開した後でプライベートに変更することはできません。 どの顧客がプランを受け入れて、リソースを委任できるようにするかを制御するには、プライベート プランを使用します。 パブリック プランの場合、対象範囲を特定の顧客に制限したり、対象となる顧客数を限定したりできません (ただし、必要に応じてプランの販売を完全に中止することはできます)。 オファーを発行し、カスタマーがそれを受け入れた後に [委任へのアクセス権を削除](../how-to/remove-delegation.md)できるのは、 その **ロールの定義** セットに「[管理されたサービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)」の **承認** を含めた場合に限ります。 また、カスタマーに連絡して、[アクセスを削除](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)するよう依頼することもできます。
+> プランをパブリックとして公開した後でプライベートに変更することはできません。 どの顧客がプランを受け入れて、リソースを委任できるようにするかを制御するには、プライベート プランを使用します。 パブリック プランの場合、対象範囲を特定の顧客に制限したり、対象となる顧客数を限定したりできません (ただし、必要に応じてプランの販売を完全に中止することはできます)。 オファーを発行し、カスタマーがそれを受け入れた後に [委任へのアクセス権を削除](../how-to/remove-delegation.md)できるのは、 その **ロールの定義** セットに「[管理されたサービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)」の **承認** を含めた場合に限ります。 また、カスタマーに連絡して、[アクセスを削除](../how-to/view-manage-service-providers.md#remove-service-provider-offers)するよう依頼することもできます。
 
 ## <a name="publish-managed-service-offers"></a>マネージド サービス オファーの公開
 
@@ -45,5 +45,5 @@ ms.locfileid: "101093000"
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure の委任されたリソース管理](azure-delegated-resource-management.md)」および「[テナント間の管理エクスペリエンス](cross-tenant-management-experience.md)」を確認します。
+- Azure Lighthouse の[アーキテクチャ](architecture.md)と[テナント間の管理エクスペリエンス](cross-tenant-management-experience.md)について学習します。
 - Azure Marketplace に[マネージド サービス オファーを公開](../how-to/publish-managed-services-offers.md)します。

@@ -1,55 +1,108 @@
 ---
 title: Data Factory を Azure Purview に接続する
 description: Data Factory を Azure Purview に接続する方法について説明します
-ms.author: lle
-author: lrtoyou1223
+ms.author: jingwang
+author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.custom:
-- seo-lt-2019
-- references_regions
-ms.date: 12/3/2020
-ms.openlocfilehash: 44f093f96d0f4653a6fcca94aaa97264c93e3c7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seo-lt-2019, references_regions
+ms.date: 10/25/2021
+ms.openlocfilehash: 026dc4cb24c5e7b51fc5eec918cf92d3b6b23090
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727942"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846142"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Data Factory を Azure Purview に接続する (プレビュー)
+
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-この記事では、Data Factory を Azure Purview に接続する方法と、Azure Data Factory アクティビティ (データのコピー、データ フロー、SSIS パッケージの実行) のデータ系列を報告する方法について説明します。
-
+[Azure Purview](../purview/overview.md) は、オンプレミス、マルチクラウド、SaaS (サービスとしてのソフトウェア) にあるデータの管理と制御を支援する統合データ ガバナンス サービスです。 データ ファクトリを Azure Purview に接続できます。 この接続により、Azure Purview を使用して、データ系列データをキャプチャでき、Azure Purview 資産を検出して探索することもできます。
 
 ## <a name="connect-data-factory-to-azure-purview"></a>Data Factory を Azure Purview に接続する
-Azure Purview は、データ ユーザーがクラウド環境とオンプレミス環境にまたがるデータ資産全体のデータ ガバナンスを一元管理するために使用する新しいクラウド サービスです。 Data Factory を Azure Purview に接続できます。また、この接続により、Azure Purview を使用して、コピー、データ フロー、SSIS パッケージの実行の系列データをキャプチャできます。 Data Factory を Azure Purview に接続するには、次の 2 つの方法があります。
-### <a name="register-azure-purview-account-to-data-factory"></a>Azure Purview アカウントを Data Factory に登録する
-1. ADF ポータルで、 **[管理]**  ->  **[Azure Purview]** にアクセスします。 **[Connect to a Purview account]\(Purview アカウントに接続する\)** を選択します。 
 
-:::image type="content" source="./media/data-factory-purview/register-purview-account.png" alt-text="Purview アカウントを登録するためのスクリーンショット。":::
-2. **[Azure サブスクリプションから]** または **[手動で入力]** を選択できます。 **Azure サブスクリプションから**、自分がアクセスできるアカウントを選択できます。 
-3. 接続すると、 **[Purview アカウント]** タブで Purview アカウントの名前を確認できます。 
-4. Azure Data Factory ポータルの上部中央にある検索バーを使用して、データを検索することができます。 
+Data Factory を Azure Purview に接続するには、次の 2 つのオプションがあります。
 
-Azure Purview アカウントを Data Factory に登録した後に、Azure Data Factory ポータルで警告が表示される場合は、次の手順に従って問題を解決してください。
+- [Azure Purview アカウントに Data Factory で接続する](#connect-to-azure-purview-account-in-data-factory)
+- [Azure Purview に Data Factory を登録する](#register-data-factory-in-azure-purview)
 
-:::image type="content" source="./media/data-factory-purview/register-purview-account-warning.png" alt-text="Purview アカウント登録の警告のスクリーンショット。":::
+### <a name="connect-to-azure-purview-account-in-data-factory"></a>Azure Purview アカウントに Data Factory で接続する
 
-1. Azure portal にアクセスして、データ ファクトリを検索します。 [タグ] セクションを選択し、**catalogUri** という名前のタグがあるかどうかを確認します。 ない場合は、ADF ポータルで Azure Purview アカウントを切断し、再接続してください。
+Azure Purview アカウントに接続するには、データ ファクトリで **所有者** または **共同作成者** のロールが必要です。
 
-:::image type="content" source="./media/data-factory-purview/register-purview-account-tag.png" alt-text="Purview アカウント登録のタグのスクリーンショット。":::
+Data Factory 作成 UI で接続を確立するには
 
-2. Azure Purview アカウントを Data Factory に登録するためのアクセス許可が付与されているかどうかを確認します。 「[Azure Data Factory と Azure Purview を接続する方法](../purview/how-to-link-azure-data-factory.md#create-new-data-factory-connection)」を参照してください。
+1. ADF 作成 UI で、 **[管理]**  ->  **[Azure Purview]** に移動し、 **[Connect to a Purview account]\(Purview アカウントに接続する\)** を選択します。 
+
+    :::image type="content" source="./media/data-factory-purview/register-purview-account.png" alt-text="Purview アカウントを登録するためのスクリーンショット。":::
+
+2. **[Azure サブスクリプションから]** または **[手動で入力]** を選択します。 **Azure サブスクリプションから**、自分がアクセスできるアカウントを選択できます。
+
+3. 接続すると、 **[Purview アカウント]** タブで Purview アカウントの名前を確認できます。
+
+Purview アカウントがファイアウォールによって保護されている場合は、Purview 用のマネージド プライベート エンドポイントを作成します。 Data Factory から[セキュリティで保護された Purview アカウントにアクセス](how-to-access-secured-purview-account.md)できるようにする方法の詳細を確認してください。 初期接続時にそれを行うことも、既存の接続を後で編集することもできます。
+
+Purview の接続情報は、次のようなデータ ファクトリ リソースに格納されます。 プログラムを使用して接続を確立するには、データ ファクトリを更新し、`purviewConfiguration` 設定を追加します。 SSIS アクティビティから系列をプッシュする必要がある場合は、さらに `catalogUri` タグも追加します。
+
+```json
+{
+    "name": "ContosoDataFactory",
+    "type": "Microsoft.DataFactory/factories",
+    "location": "<region>",
+    "properties": {
+        ...
+        "purviewConfiguration": {
+            "purviewResourceId": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupname>/providers/Microsoft.Purview/accounts/<PurviewAccountName>"
+        }
+    },
+    ...
+    "identity": {...},
+    "tags": {
+        "catalogUri": "<PurviewAccountName>.purview.azure.com/catalog //Note: used for SSIS lineage only"
+    }
+}
+```
 
 ### <a name="register-data-factory-in-azure-purview"></a>Azure Purview に Data Factory を登録する
-Azure Purview に Data Factory を登録する方法については、「[Azure Data Factory と Azure Purview を接続する方法](../purview/how-to-link-azure-data-factory.md)」を参照してください。 
 
-## <a name="report-lineage-data-to-azure-purview"></a>系列データを Azure Purview に報告する
-お客様が Azure Data Factory でコピー、データ フロー、または SSIS パッケージの実行アクティビティを実行すると、お客様は依存関係を取得し、データ ソースと宛先の間のワークフロー プロセス全体の概要を把握できます。
-Azure Data Factory からデータ系列を収集する方法については、[Data Factory のデータ系列](../purview/how-to-link-azure-data-factory.md#supported-azure-data-factory-activities)に関する記事を参照してください。
+Azure Purview に Data Factory を登録する方法については、「[Azure Data Factory と Azure Purview を接続する方法](../purview/how-to-link-azure-data-factory.md)」を参照してください。
+
+## <a name="set-up-authentication"></a>認証の設定
+
+データ ファクトリのマネージド ID は、データ ファクトリから Purview への系列のプッシュ操作を認証するために使用されます。 
+
+データ ファクトリのマネージド ID に、Purview **ルート コレクション** の **データ キュレーター** ロールを付与します。 詳細については、[Azure Purview でのアクセス制御](../purview/catalog-permissions.md)および[コレクションを使用したロールの追加とアクセスの制限](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)に関連するページを参照してください。
+
+作成 UI でデータ ファクトリを Purview に接続すると、ADF はこのようなロールの割り当てを自動的に追加します。 Purview ルート コレクションに対する **コレクション管理者** ロールがあり、ネットワークから Purview アカウントにアクセスできる場合、この操作は成功します。
+
+## <a name="monitor-purview-connection"></a>Purview 接続を監視する
+
+データ ファクトリを Purview アカウントに接続すると、次のページが表示されます。このページには、有効な統合機能の詳細が示されています。
+
+:::image type="content" source="./media/data-factory-purview/monitor-purview-connection-status.png" alt-text="Azure Data Factory と Purview の統合状態を監視するためのスクリーンショット。":::
+
+**データ系列 - パイプライン** については、次のいずれかの状態が表示されます。
+
+- **接続中**: データ ファクトリは Purview アカウントに正常に接続されています。 これは、データ ファクトリが Purview アカウントに関連付けられていて、そのアカウントに系列をプッシュする権限が、そのデータ ファクトリにあることを示しています。 Purview アカウントがファイアウォールによって保護されている場合は、アクティビティの実行および系列のプッシュに使用される統合ランタイムが、Purview アカウントに到達できることを確認する必要もあります。 詳細については、「[保護された Azure Purview アカウントに Azure Data Factory でアクセスする](how-to-access-secured-purview-account.md)」を参照してください。
+- **接続解除**: Purview データ キュレーター ロールがデータ ファクトリのマネージド ID に付与されないため、データ ファクトリは、Purview に系列をプッシュできません。 この問題を修正するには、ご自身の Purview アカウントに移動してロールの割り当てを確認し、必要に応じて手動でロールを付与します。 詳細については、「[認証の設定](#set-up-authentication)」セクションを 参照してください。
+- **不明**: Data Factory によって状態を確認できません。 次のような原因が考えられます。
+
+    - アカウントがファイアウォールによって保護されているため、ご自身の現在のネットワークから Purview アカウントに到達できません。 代わりに、ご自身の Purview アカウントに接続されているプライベート ネットワークから ADF UI を起動できます。
+    - Purview アカウント上でロールの割り当てを確認する権限がありません。 ご自身のロールの割り当てについては、Purview アカウント管理者に問い合わせることができます。 必要な Purview ロールについては、「[認証の設定](#set-up-authentication)」セクションを参照してください。
+
+## <a name="report-lineage-data-to-azure-purview"></a>データ系列データを Azure Purview に報告する
+
+データ ファクトリを Purview アカウントに接続すると、パイプラインを実行するときに、Data Factory が Purview アカウントに系列情報をプッシュします。 サポートされている機能の詳細については、「[サポートされる Azure Data Factory アクティビティ](../purview/how-to-link-azure-data-factory.md#supported-azure-data-factory-activities)」を参照してください。 エンドツーエンドのチュートリアルについては、「[チュートリアル: Data Factory 系列データを Azure Purview にプッシュする](tutorial-push-lineage-to-purview.md)」を参照してください。
+
+## <a name="discover-and-explore-data-using-purview"></a>Purview を使用してデータを検出して探索する
+
+データ ファクトリを Purview アカウントに接続すると、Data Factory 作成 UI の上部中央にある検索バーを使用して、データを検索してアクションを実行できます。 詳細については、「[Purview を使用した ADF でのデータの検出と探索](how-to-discover-explore-purview-data.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-[カタログ系列ユーザー ガイド](../purview/catalog-lineage-user-guide.md)
 
-[チュートリアル: Data Factory 系列データを Azure Purview にプッシュする](turorial-push-lineage-to-purview.md)
+[チュートリアル: Data Factory 系列データを Azure Purview にプッシュする](tutorial-push-lineage-to-purview.md)
+
+[Purview を使用した ADF でのデータの検出と探索](how-to-discover-explore-purview-data.md)
+
+[セキュリティで保護された Azure Purview アカウントにアクセスする](how-to-access-secured-purview-account.md)

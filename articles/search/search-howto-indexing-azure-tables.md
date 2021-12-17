@@ -1,40 +1,40 @@
 ---
-title: Azure Table Storage のコンテンツを検索する
+title: Azure Table Storage からのデータへのインデックス付け
 titleSuffix: Azure Cognitive Search
-description: Azure Table Storage に格納されているデータのインデックスを Azure Cognitive Search インデクサーで作成する方法について説明します。
+description: Azure Cognitive Search でフルテキスト検索を行うために、検索インデクサーを設定し、Azure Table Storage に格納されているデータにインデックスを付けます。
 manager: nitinme
 author: mgottein
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.openlocfilehash: 2c67cd4d071660da2ca5714623695ca434329263
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/26/2021
+ms.openlocfilehash: 8469716c5cc6b3b7c70d5eeb5868f81ae6b40198
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91275185"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982962"
 ---
-# <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Azure Cognitive Search を使用して Azure Table Storage からテーブルにインデックスを作成する方法
+# <a name="index-data-from-azure-table-storage"></a>Azure Table Storage からのデータへのインデックス付け
 
-この記事では、Azure Cognitive Search を使用して、Azure Table Storage に格納されているデータのインデックスを作成する方法を示します。
+この記事では、コンテンツを抽出して Azure Cognitive Search で検索できるようにするために、Azure テーブル インデクサーを構成する方法を説明します。 このワークフローでは、Azure Cognitive Search に検索インデックスを作成し、Azure Table Storage から抽出された既存のコンテンツとともにその検索インデックスをロードします。
 
-## <a name="set-up-azure-table-storage-indexing"></a>Azure Table Storage のインデックスを設定する
-
-次のリソースを使用して、Azure Table Storage のインデクサーを設定できます。
+次のクライアントを使用して、Azure Table Storage のインデクサーを設定できます。
 
 * [Azure Portal](https://ms.portal.azure.com)
 * Azure Cognitive Search [REST API](/rest/api/searchservice/Indexer-operations)
-* Azure Cognitive Search [.NET SDK](/dotnet/api/overview/azure/search)
+* Azure Cognitive Search [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
-ここでは、REST API を使用したフローについて説明します。 
+この記事では REST API を使用します。 
 
-### <a name="step-1-create-a-datasource"></a>手順 1:データソースの作成
+## <a name="configure-an-indexer"></a>インデクサーを構成する
 
-データ ソースは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Cognitive Search がデータの変更を効率よく識別できるようにするポリシーを指定します。
+### <a name="step-1-create-a-data-source"></a>手順 1:データ ソースを作成する
 
-テーブルのインデックス作成では、次のプロパティがデータ ソースに必要です。
+[データ ソースの作成](/rest/api/searchservice/create-data-source)では、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Cognitive Search がデータの変更を効率的に識別できるようにするためのポリシーを指定します。
+
+Table インデックス作成の場合は、次のプロパティがデータ ソースに必要です。
 
 - **name** は、Search サービス内のデータ ソースの一意の名前です。
 - **type** は `azuretable` である必要があります。
@@ -46,25 +46,23 @@ ms.locfileid: "91275185"
 > [!IMPORTANT] 
 > 可能な場合は、パフォーマンス向上のために PartitionKey でフィルターを使用してください。 その他のクエリはフル テーブル スキャンを実行するため、規模の大きなテーブルではパフォーマンスが下がります。 詳しくは、「[パフォーマンスに関する考慮事項](#Performance)」セクションをご覧ください。
 
-
-データ ソースを作成するには:
+データ ソースを作成するには、次の要求を送信します。
 
 ```http
-    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
 
-    {
-        "name" : "table-datasource",
-        "type" : "azuretable",
-        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
-        "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
-    }   
+{
+    "name" : "table-datasource",
+    "type" : "azuretable",
+    "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
+    "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
+}   
 ```
 
-データ ソース作成 API の詳細については、「[データ ソースの作成](/rest/api/searchservice/create-data-source)」をご覧ください。
-
 <a name="Credentials"></a>
+
 #### <a name="ways-to-specify-credentials"></a>資格情報を指定する方法 ####
 
 次のいずれかの方法でテーブルに対して資格情報を指定できます。 
@@ -80,54 +78,52 @@ ms.locfileid: "91275185"
 > 共有アクセス署名の資格情報を使用する場合は、その有効期限が切れないように、データ ソースの資格情報を更新された署名で定期的に更新する必要があります。 共有アクセス署名の資格情報の有効期限が切れた場合、インデクサーは失敗し、「接続文字列で指定された資格情報が無効か期限が切れています」のようなエラー メッセージが表示されます。  
 
 ### <a name="step-2-create-an-index"></a>手順 2:インデックスを作成する
-インデックスは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。
 
-インデックスを作成するには:
+[インデックスの作成](/rest/api/searchservice/create-index)では、検索に使用するドキュメント内のフィールド、属性、およびその他の構成要素を指定します。
+
+インデックスを作成するには、次の要求を送信します。
 
 ```http
-    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
+POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
 
-    {
-          "name" : "my-target-index",
-          "fields": [
-            { "name": "key", "type": "Edm.String", "key": true, "searchable": false },
-            { "name": "SomeColumnInMyTable", "type": "Edm.String", "searchable": true }
-          ]
-    }
+{
+        "name" : "my-target-index",
+        "fields": [
+        { "name": "key", "type": "Edm.String", "key": true, "searchable": false },
+        { "name": "SomeColumnInMyTable", "type": "Edm.String", "searchable": true }
+        ]
+}
 ```
-
-インデックスの作成の詳細については、[インデックスの作成](/rest/api/searchservice/create-index)に関する記事をご覧ください。
 
 ### <a name="step-3-create-an-indexer"></a>手順 3:インデクサーの作成
-インデクサーはデータ ソースをターゲットの検索インデックスに接続し、データ更新を自動化するスケジュールを提供します。 
 
-インデックスとデータ ソースを作成した後、インデクサーを作成できます。
+[インデクサーの作成](/rest/api/searchservice/create-indexer)では、ターゲットの検索インデックスにデータ ソースを接続し、データの更新を自動化するスケジュールを指定します。 
+
+インデックスとデータ ソースを作成した後、インデクサーを作成できるようになります。
 
 ```http
-    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
+POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
 
-    {
-      "name" : "table-indexer",
-      "dataSourceName" : "table-datasource",
-      "targetIndexName" : "my-target-index",
-      "schedule" : { "interval" : "PT2H" }
-    }
+{
+    "name" : "table-indexer",
+    "dataSourceName" : "table-datasource",
+    "targetIndexName" : "my-target-index",
+    "schedule" : { "interval" : "PT2H" }
+}
 ```
 
-このインデクサーは、2 時間ごとに実行されます  (スケジュール間隔は "PT2H"に設定されます)。インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
+このインデクサーは、2 時間ごとに実行されます  (スケジュール間隔は "PT2H"に設定されます)。インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。 インデクサーのスケジュールの定義について詳しくは、[Azure Cognitive Search のインデクサーのスケジュール](search-howto-schedule-indexers.md)に関する記事を参照粗て下さい。
 
-インデクサー作成 API の詳細については、[インデクサーの作成](/rest/api/searchservice/create-indexer)に関するページをご覧ください。
+## <a name="handle-field-name-discrepancies"></a>フィールド名の不一致の処理
 
-インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
-
-## <a name="deal-with-different-field-names"></a>さまざまなフィールド名を操作する
 既存のインデックス内のフィールド名が、テーブルのプロパティ名と異なることがあります。 テーブルのプロパティ名は、フィールド マッピングを使用して、検索インデックス内のフィールド名に対応付けることができます。 フィールド マッピングの詳細については、[データ ソースと検索インデックスの橋渡し役としての Azure Cognitive Search インデクサー フィールド マッピング](search-indexer-field-mappings.md)に関する記事を参照してください。
 
 ## <a name="handle-document-keys"></a>ドキュメント キーを処理する
+
 Azure Cognitive Search では、ドキュメントがそのキーによって一意に識別されます。 それぞれの検索インデックスには、 `Edm.String`型のキー フィールドが 1 つだけ必要です。 キー フィールドは、インデックスに追加するドキュメントごとに必要です  (実際のところ、これは唯一の必須フィールドです)。
 
 テーブル行には複合キーがあるため、Azure Cognitive Search では、パーティション キーと行キーの値が連結された `Key` と呼ばれる合成フィールドが生成されます。 たとえば、行の PartitionKey が `PK1` で、RowKey が `RK1` の場合、`Key` フィールドの値は `PK1RK1` です。
@@ -135,32 +131,32 @@ Azure Cognitive Search では、ドキュメントがそのキーによって一
 > [!NOTE]
 > `Key` 値には、ドキュメント キーでは無効な文字、たとえばダッシュを含めることができます。 無効な文字を扱うには、 `base64Encode` [フィールド マッピング関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用します。 これを行う場合は、Lookup などの API 呼び出しでドキュメント キーを渡す際に、必ず URL の安全な Base64 エンコードを使用する点にも注意してください。
 >
->
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>インデックスの増分作成と削除の検出
+
 スケジュールに従って実行するようにテーブルのインデクサーを設定すると、行の `Timestamp` 値に従って、新しい行または更新された行のみでインデックスが再作成されます。 変更検出ポリシーを指定する必要はありません。 増分インデックス作成が自動的に有効になります。
 
 一部のドキュメントをインデックスを削除する必要があることを示すには、論理的な削除を使用できます。 行を削除する代わりに、プロパティを追加してそれが削除されていることを示し、データソースに論理的な削除のポリシーを設定します。 たとえば、次のポリシーは値 `"true"` が指定されたプロパティ `IsDeleted` がある行を削除されているものと見なします。
 
 ```http
-    PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
+PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
 
-    {
-        "name" : "my-table-datasource",
-        "type" : "azuretable",
-        "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "table name", "query" : "<query>" },
-        "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
-    }   
+{
+    "name" : "my-table-datasource",
+    "type" : "azuretable",
+    "credentials" : { "connectionString" : "<your storage connection string>" },
+    "container" : { "name" : "table name", "query" : "<query>" },
+    "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
+}   
 ```
 
 <a name="Performance"></a>
+
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 
 既定では、Azure Cognitive Search は `Timestamp >= HighWaterMarkValue` というクエリ フィルターを使用します。 Azure のテーブルの `Timestamp` フィールドにはセカンダリ インデックスがないため、この種類のクエリはフル テーブル スキャンを必要とし、規模の大きなテーブルでは速度が低下します。
-
 
 テーブルのインデックス作成のパフォーマンスを向上させる可能性のある 2 つの方法を紹介します。 どちらの方法もテーブルのパーティションを使用します。 
 
@@ -174,6 +170,7 @@ Azure Cognitive Search では、ドキュメントがそのキーによって一
     - インデクサーの進行状況を [Get Indexer Status API](/rest/api/searchservice/get-indexer-status) を使用して監視し、直近の成功した高基準値に基づいてクエリの `<TimeStamp>` 条件を定期的に更新します。 
     - この方法では、全インデックスの再作成をトリガーする必要がある場合は、インデクサーのリセットに加えてデータソース クエリをリセットする必要があります。 
 
+## <a name="see-also"></a>関連項目
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Cognitive Search の品質向上にご協力ください
-ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
++ [Azure Cognitive Search のインデクサー](search-indexer-overview.md)
++ [インデクサーの作成](search-howto-create-indexers.md)

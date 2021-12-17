@@ -6,17 +6,18 @@ ms.service: synapse-analytics
 ms.subservice: machine-learning
 ms.topic: tutorial
 ms.reviewer: jrasnick, garye
-ms.date: 11/20/2020
+ms.date: 07/01/2021
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: c54300bf37f6f4526c525b1502d902e5f4336ed7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6afec907fb648e80034f22a4dfdb6fb94e0844a6
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943504"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715817"
 ---
-# <a name="tutorial-anomaly-detection-with-cognitive-services-preview"></a>チュートリアル:Cognitive Services を使用した異常検出 (プレビュー)
+# <a name="tutorial-anomaly-detection-with-cognitive-services"></a>チュートリアル:Cognitive Services を使用した異常検出
 
 このチュートリアルでは、[Azure Cognitive Services](../../cognitive-services/index.yml) を使用して、Azure Synapse Analytics でデータを簡単に強化する方法について説明します。 [Anomaly Detector](../../cognitive-services/anomaly-detector/index.yml) を使用して異常を検出します。 Azure Synapse のユーザーは、異常を検出するために強化するテーブルを選択するだけです。
 
@@ -56,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 ## <a name="open-the-cognitive-services-wizard"></a>Cognitive Services ウィザードを開く
 
-1. 前の手順で作成した Spark テーブルを右クリックします。 **[Machine Learning]**  >  **[Enrich with existing model]\(既存のモデルを使用して強化\)** を選択してウィザードを開きます。
+1. 前の手順で作成した Spark テーブルを右クリックします。 **[機械学習]**  >  **[モデルを使用した予測]** を選択し、ウィザードを開きます。
 
    ![スコアリング ウィザードを開くための選択を示すスクリーンショット。](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00g.png)
 
@@ -64,40 +65,31 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
    ![モデルとしての Anomaly Detector の選択を示すスクリーンショット。](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00c.png)
 
-## <a name="provide-authentication-details"></a>認証の詳細を指定する
-
-Cognitive Services に対して認証するには、キー コンテナーのシークレットを参照する必要があります。 次の入力は、この時点までに完了しておく必要がある[前提条件の手順](tutorial-configure-cognitive-services-synapse.md)によって異なります。
-
-- **Azure サブスクリプション**:ご利用のキー コンテナーが属する Azure サブスクリプションを選択します。
-- **[Cognitive Services アカウント]** : 接続先の Text Analytics リソースを入力します。
-- **[Azure Key Vault linked service]\(Azure Key Vault リンク サービス\)** : 前提条件の手順の中で、Text Analytics リソースへのリンク サービスを作成しました。 それをここで選択します。
-- **[シークレット名]** : Cognitive Services リソースに対して認証するためのキーが含まれた、キー コンテナーのシークレットの名前を入力します。
-
-![キー コンテナーの認証の詳細を示すスクリーンショット。](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00d.png)
-
 ## <a name="configure-anomaly-detector"></a>Anomaly Detector を構成する
 
 次の詳細を指定して、Anomaly Detector を構成します。
+
+- **Azure Cognitive Services のリンク サービス**: 前提条件の手順の一部として、[Cognitive Services](tutorial-configure-cognitive-services-synapse.md) へのリンク サービスを作成しました。 それをここで選択します。
 
 - **[細分性]** : データがサンプリングされる速度。 **[monthly]\(月単位\)** を選択します。 
 
 - **[Timestamp column]\(タイムスタンプ列\)** : 系列の時間を表す列。 **[timestamp (string)]\(timestamp (文字列)\)** を選択します。
 
-- **[Timeseries value column]\(時系列値列\)** : [Timestamp column]\(タイムスタンプ列\) で指定した時間における系列の値を表す列。 **[value (double)]** を選択します。
+- **[Time series value column]\(時系列値列\)** : [Timestamp column]\(タイムスタンプ列\) で指定した時間における系列の値を表す列。 **[value (double)]** を選択します。
 
 - **[Grouping column]\(グループ化列\)** : 系列をグループ化する列。 つまり、この列に同じ値を含むすべての行は 1 つの時系列を形成します。 **[group (string)]\(group (文字列)\)** を選択します。
 
 完了したら、 **[Open notebook]\(ノートブックを開く\)** を選択します。 これにより、Azure Cognitive Services を使用して異常を検出する PySpark コードを含むノートブックが生成されます。
 
-![Anomaly Detector の構成の詳細を示すスクリーンショット。](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00e.png)
+![Anomaly Detector の構成の詳細を示すスクリーンショット。](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-config.png)
 
 ## <a name="run-the-notebook"></a>ノートブックを実行する
 
-先ほど開いたノートブックでは、[mmlspark ライブラリ](https://github.com/Azure/mmlspark)を使用して Cognitive Services に接続します。 指定した Azure Key Vault の詳細により、シークレットが公開されることなく、このエクスペリエンスからシークレットを安全に参照できます。
+先ほど開いたノートブックでは、[SynapseML ライブラリ](https://github.com/microsoft/SynapseML)を使用して Cognitive Services に接続します。 指定した Azure Cognitive Services のリンク サービスを使用すると、シークレットを開示することなく、このエクスペリエンスからコグニティブ サービスを安全に参照できます。
 
 これで、すべてのセルを実行して異常検出を実行できるようになりました。 **[すべて実行]** を選択します。 [Cognitive Services の Anomaly Detector の詳細をご覧ください](../../cognitive-services/anomaly-detector/index.yml)。
 
-![異常検出を示すスクリーンショット。](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00f.png)
+![異常検出を示すスクリーンショット。](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-notebook.png)
 
 ## <a name="next-steps"></a>次の手順
 

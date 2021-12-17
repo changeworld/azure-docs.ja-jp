@@ -3,16 +3,17 @@ title: Azure Synapse Analytics にテラバイト単位のデータを読み込�
 description: 1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure Synapse Analytics に読み込む方法を示します
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5acae7c90efbf178fad199177fa6e0886e497fdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23cba5dbee4900f56e4180912f276cbd29c743f7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371211"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264201"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure Synapse Analytics に読み込む
 > [!NOTE]
@@ -62,15 +63,15 @@ Azure Synapse Analytics は、**Azure Data Factory** を使用するといっそ
 
     6,000 DWU の 専用 SQL プールを作成するには、パフォーマンス スライダーを右端まで移動します。
 
-    ![パフォーマンス スライダー](media/data-factory-load-sql-data-warehouse/performance-slider.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/performance-slider.png" alt-text="パフォーマンス スライダー":::
 
     6,000 DWU で構成されていない既存のデータベースの場合は、Azure ポータルを使用してスケール アップできます。  Azure ポータルで既存のデータベースに移動します。次の図に示すように、 **[概要]** パネルに **[スケール]** ボタンがあります。
 
-    ![[スケール] ボタン](media/data-factory-load-sql-data-warehouse/scale-button.png)    
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/scale-button.png" alt-text="[スケール] ボタン":::    
 
     **[スケール]** ボタンをクリックして次に示すパネルを開き、スライダーを最大値まで移動し、 **[保存]** ボタンをクリックします。
 
-    ![[スケール] ダイアログ](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/scale-dialog.png" alt-text="[スケール] ダイアログ":::
 
     この実験では、`xlargerc` リソース クラスを使用して Azure Synapse Analytics にデータを読み込みます。
 
@@ -121,7 +122,7 @@ Azure Synapse Analytics は、**Azure Data Factory** を使用するといっそ
    6. **Create** をクリックしてください。
 4. 作成が完了すると、次の図に示すような **[Data Factory]** ブレードが表示されます。
 
-   ![データ ファクトリのホーム ページ](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
+   :::image type="content" source="media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png" alt-text="データ ファクトリのホーム ページ":::
 5. Data Factory のホーム ページで **[データのコピー]** タイルをクリックして、**コピー ウィザード** を起動します。
 
    > [!NOTE]
@@ -138,41 +139,41 @@ Azure Synapse Analytics は、**Azure Data Factory** を使用するといっそ
 2. **[Run once now (今すぐ 1 度だけ実行する)]** オプションを選択します。   
 3. **[次へ]** をクリックします。  
 
-    ![コピー ウィザード - [プロパティ] ページ](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png" alt-text="コピー ウィザード - [プロパティ] ページ":::
 
 ## <a name="step-2-configure-source"></a>手順 2:ソースの構成
 このセクションでは、1-TB TPC-H 行アイテム ファイルを含む Azure BLOB のソースを構成する手順を示します。
 
 1. データ ストアとして **[Azure Blob Storage]** を選択し、 **[次へ]** をクリックします。
 
-    ![コピー ウィザード - ソース選択ページ](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/select-source-connection.png" alt-text="コピー ウィザード - ソース選択ページ":::
 
 2. Azure Blob ストレージ アカウントの接続情報を入力し、 **[次へ]** をクリックします。
 
-    ![コピー ウィザード - ソース接続情報](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/source-connection-info.png" alt-text="コピー ウィザード - ソース接続情報":::
 
 3. TPC-H 行項目ファイルが含まれている **フォルダー** を選択し、 **[次へ]** をクリックします。
 
-    ![コピー ウィザード - 入力フォルダーの選択](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/select-input-folder.png" alt-text="コピー ウィザード - 入力フォルダーの選択":::
 
 4. **[次へ]** をクリックすると、ファイル形式の設定が自動的に検出されます。  列区切り記号が、既定のコンマ ',' ではなく、'|' になっていることを確認します。  データをプレビューした後、 **[次へ]** をクリックします。
 
-    ![コピー ウィザード - ファイル形式の設定](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/file-format-settings.png" alt-text="コピー ウィザード - ファイル形式の設定":::
 
 ## <a name="step-3-configure-destination"></a>手順 3:コピー先を構成する
 このセクションでは、変換先 (Azure Synapse Analytics データベースの `lineitem` テーブル) を構成する方法を示します。
 
 1. 変換先ストアとして **[Azure Synapse Analytics]** を選択し、 **[次へ]** をクリックします。
 
-    ![コピー ウィザード - 変換先データ ストアの選択](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/select-destination-data-store.png" alt-text="コピー ウィザード - 変換先データ ストアの選択":::
 
 2. Azure Synapse Analytics の接続情報を入力します。  `xlargerc` ロールのメンバーであるユーザー (詳細な手順については「**前提条件**」セクションを参照してください) を指定したことを確認し、 **[次へ]** をクリックします。
 
-    ![コピー ウィザード - 変換先の接続情報](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/destination-connection-info.png" alt-text="コピー ウィザード - 変換先の接続情報":::
 
 3. 変換先テーブルを選択し、 **[次へ]** をクリックします。
 
-    ![コピー ウィザード - [テーブル マッピング] ページ](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/table-mapping-page.png" alt-text="コピー ウィザード - [テーブル マッピング] ページ":::
 
 4. [スキーマ マッピング] ページで [Apply column mapping (列マッピングの適用)] オプションをオフにして、 **[次へ]** をクリックします。
 
@@ -180,22 +181,22 @@ Azure Synapse Analytics は、**Azure Data Factory** を使用するといっそ
 
 **[Allow polybase (PolyBase を許可する)]** は既定でオンになっています。  **[次へ]** をクリックします。
 
-![コピー ウィザード - [スキーマ マッピング] ページ](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
+:::image type="content" source="media/data-factory-load-sql-data-warehouse/performance-settings-page.png" alt-text="コピー ウィザード - [スキーマ マッピング] ページ":::
 
 ## <a name="step-5-deploy-and-monitor-load-results"></a>手順 5:デプロイし、読み込み結果を監視する
 1. **[完了]** ボタンをクリックしてデプロイします。
 
-    ![コピー ウィザード - [概要] ページ 1](media/data-factory-load-sql-data-warehouse/summary-page.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/summary-page.png" alt-text="コピー ウィザード - [概要] ページ 1":::
 
 2. デプロイが完了したら、[`Click here to monitor copy pipeline`] をクリックして、コピーの実行の進行状況を監視します。 **[アクティビティ ウィンドウ]** の一覧から、作成したコピー パイプラインを選択します。
 
-    ![コピー ウィザード - [概要] ページ 2](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png" alt-text="コピー ウィザード - [概要] ページ 2":::
 
     右側のパネルの **アクティビティ ウィンドウ エクスプローラー** で、コピーの実行の詳細を確認できます。ソースから読み取られたデータ量、変換先に書き込まれたデータ量、および実行の平均スループットなどが表示されます。
 
     次のスクリーンショットからわかるように、1 TB のデータを Azure Blob Storage から Azure Synapse Analytics にコピーする処理は 14 分で完了し、実質的に 1.22 GBps のスループットが達成されています。
 
-    ![コピー ウィザード - [成功] ダイアログ](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
+    :::image type="content" source="media/data-factory-load-sql-data-warehouse/succeeded-info.png" alt-text="コピー ウィザード - [成功] ダイアログ":::
 
 ## <a name="best-practices"></a>ベスト プラクティス
 Azure Synapse Analytics データベースを実行するためのいくつかのベスト プラクティスを次に示します。
@@ -205,7 +206,7 @@ Azure Synapse Analytics データベースを実行するためのいくつか�
 * 読み込み速度を上げるために、一時的なデータに対するヒープの使用を検討します。
 * 統計は、Azure Synapse Analytics の読み込みが完了した後で作成します。
 
-詳細については、[Azure Synapse Analytics のベスト プラクティス](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)に関する記事を参照してください。
+詳細については、[Azure Synapse Analytics のベスト プラクティス](../../synapse-analytics/sql/best-practices-dedicated-sql-pool.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Data Factory コピー ウィザード](data-factory-copy-wizard.md) - この記事では、コピーウィザードの詳細について説明します。

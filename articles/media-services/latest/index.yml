@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure Media Services v3 のクラウドベース プラットフォームのドキュメント
-summary: Media Services v3 を使用して、コンテンツのエンコードとパッケージ化、オンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
+title: Azure Media Services (v3) のドキュメント
+summary: Media Services を使用して、ライブ イベントのブロードキャスト、エンコード、パッケージ化、オンデマンドでのビデオのストリーム配信を行う方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
 metadata:
-  title: Azure Media Services v3 のクラウドベース プラットフォームのドキュメント
-  description: Media Services v3 を使用して、コンテンツのエンコードとパッケージ化、オンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。
+  title: Azure Media Services (v3) のドキュメント
+  description: Media Services を使用して、ライブ イベントのブロードキャスト、エンコード、パッケージ化、オンデマンドでのビデオのストリーム配信を行う方法を説明します。
   services: media-services
   ms.service: media-services
   ms.subservice: 
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: IngridAtMicrosoft
   ms.author: inhenkel
-  ms.date: 21/16/2020
-  ms.openlocfilehash: 32e5693438240c051175be232b3f442b2242e69f
-  ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+  ms.date: 08/18/2021
+  ms.openlocfilehash: 7e249a36b629c2c91acf67a26294fef50f1f0197
+  ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/14/2020
-  ms.locfileid: "92018918"
+  ms.lasthandoff: 08/21/2021
+  ms.locfileid: "122635042"
 landingContent:
 - title: Media Services について
   linkLists:
@@ -27,30 +27,36 @@ landingContent:
       url: media-services-overview.md
     - text: Media Services の最新情報
       url: release-notes.md
+    - text: よく寄せられる質問
+      url: frequently-asked-questions.yml
   - linkListType: concept
     links:
     - text: Media Services アカウント
-      url: media-services-account-concept.md
+      url: account-move-account-how-to.md
     - text: ストレージ アカウント
       url: storage-account-concept.md
     - text: 梱包
-      url: dynamic-packaging-overview.md
+      url: encode-dynamic-packaging-concept.md
     - text: 監視
-      url: reacting-to-media-services-events.md
+      url: monitoring/reacting-to-media-services-events.md
     - text: Player クライアント
-      url: use-azure-media-player.md
+      url: player-use-azure-media-player-how-to.md
     - text: v3 API を使用した開発のガイダンス
       url: media-services-apis-overview.md
+    - text: v2 からの移行
+      url: migrate-v-2-v-3-migration-introduction.md
 - title: はじめに
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: アカウントを作成する
-      url: ./create-account-howto.md
+      url: ./account-create-how-to.md
     - text: API へのアクセス
       url: ./access-api-howto.md
   - linkListType: download
     links:
+    - text: すべての GitHub コード サンプル
+      url: samples-overview.md
     - text: .NET SDK のサンプル
       url: https://github.com/Azure-Samples/media-services-v3-dotnet
     - text: Java SDK のサンプル
@@ -72,7 +78,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: ライブ ストリーミング
-      url: live-streaming-overview.md
+      url: stream-live-streaming-concept.md
   - linkListType: tutorial
     links:
     - text: ライブ ストリーム配信
@@ -84,7 +90,7 @@ landingContent:
     - text: アップロード
       url: assets-concept.md
     - text: エンコード
-      url: encoding-concept.md
+      url: encode-concept.md
   - linkListType: tutorial
     links:
     - text: リモート ファイルのエンコードとストリーム配信
@@ -96,22 +102,26 @@ landingContent:
   - linkListType: concept
     links:
     - text: 保護
-      url: content-protection-overview.md
+      url: drm-content-protection-concept.md
   - linkListType: tutorial
     links:
     - text: AES-128 を使用した動的な暗号化
-      url: protect-with-aes128.md
+      url: drm-playready-license-template-concept.md
     - text: DRM を使用した動的な暗号化
-      url: protect-with-drm.md
+      url: drm-protect-with-drm-tutorial.md
 - title: コンテンツの分析
   linkLists:
   - linkListType: concept
     links:
     - text: メディア分析
-      url: analyzing-video-audio-files-concept.md
+      url: analyze-video-audio-files-concept.md
     - text: コンプライアンス、プライバシー、セキュリティ
-      url: analyzing-video-audio-files-concept.md#compliance-privacy-and-security
+      url: analyze-video-audio-files-concept.md#compliance-privacy-and-security
+    - text: Azure Video Analyzer (プレビュー) のドキュメント
+      url: ../../azure-video-analyzer/video-analyzer-docs/overview.md
   - linkListType: tutorial
     links:
     - text: ビデオを分析する
-      url: analyze-videos-tutorial-with-api.md
+      url: analyze-videos-tutorial.md
+    - text: ビデオで顔を編集する
+      url: analyze-face-redaction-concept.md

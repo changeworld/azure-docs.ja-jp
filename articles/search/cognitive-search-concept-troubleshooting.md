@@ -2,24 +2,23 @@
 title: AI エンリッチメントの設計に関するヒント
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search で AI エンリッチメント パイプラインをセットアップするためのヒントとトラブルシューティング。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/08/2020
-ms.openlocfilehash: 5882cc949d88e8c2a4102362cf5d2a3613e1d714
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/16/2021
+ms.openlocfilehash: 63b420d65fcb60c35cba3eca6201255f3efba85d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99475490"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331074"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメントに関するヒント
 
 この記事では、Azure Cognitive Search で AI エンリッチメント機能を使い始めてから利用を続けるためのヒントやコツの一覧を示します。 
 
-まだ[AI エンリッチメント API を呼び出す方法を学習するチュートリアル](cognitive-search-quickstart-blob.md)を行っていない場合は、AI エンリッチメントを BLOB データ ソースに適用する練習のために、このチュートリアルを実行してください。
+まだ行っていない場合は、[テキスト翻訳とエンティティ スキルセットの作成](cognitive-search-quickstart-blob.md)または [OCR イメージ スキルセットの作成](cognitive-search-quickstart-ocr.md)に関するクイックスタートを実行して、BLOB データのエンリッチメントについて確認してください。
 
 ## <a name="tip-1-start-with-a-small-dataset"></a>ヒント 1: 小さなデータセットから開始する
 問題をすばやく見つける最良の方法は、問題を修正する速度を上げることです。 インデックス付け時間を短縮する最善の方法は、インデックス付けするドキュメントの数を減らすことです。 
@@ -30,8 +29,7 @@ ms.locfileid: "99475490"
 
 ## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>ヒント 2: データ ソースの資格情報が正しいことを確認する
 データ ソース接続は、それを使用するインデクサーを定義するまでは検証されません。 インデクサーがデータにアクセスできないというエラーが表示される場合は、次の点を確認してください。
-- 接続文字列正しい。 特に、SAS トークンを作成している場合は、Azure Cognitive Search の所定の形式を使用するようにしてください。 サポートされているさまざまなフォーマットについては、「[資格情報を指定する方法](
-https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials)」のセクションを参照してください。
+- 接続文字列正しい。 特に、SAS トークンを作成している場合は、Azure Cognitive Search の所定の形式を使用するようにしてください。 サポートされているさまざまなフォーマットについては、「[資格情報を指定する方法](search-howto-indexing-azure-blob-storage.md#credentials)」のセクションを参照してください。
 - インデクサー内のコンテナー名が正しい。
 
 ## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>ヒント 3: いくつかのエラーがある場合でも何が動作しているかを確認する

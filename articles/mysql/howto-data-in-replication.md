@@ -6,19 +6,21 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/08/2021
-ms.openlocfilehash: 5f418867a2f22a16304d16c8889fff9a27a37ab3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: fb12a8617396eb0c582ed2b00f856af7f91765fb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312163"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611417"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 この記事では、ソースとレプリカのサーバーを構成することによって、Azure Database for MySQL で[データイン レプリケーション](concepts-data-in-replication.md)を設定する方法について説明します。 この記事は、MySQL サーバーとデータベースに関して、ある程度の使用経験があることを前提としています。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった "_スレーブ_" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 >
 
 Azure Database for MySQL サービスでレプリカを作成するために、[データイン レプリケーション](concepts-data-in-replication.md)によって、オンプレミス、仮想マシン (VM)、またはクラウド データベース サービスのソース MySQL サーバーからデータが同期されます。 データイン レプリケーションは、MySQL のネイティブなバイナリ ログ (binlog) ファイルの位置ベースまたは GTID ベースのレプリケーションに基づいています。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。
@@ -27,7 +29,7 @@ Azure Database for MySQL サービスでレプリカを作成するために、[
 
 ## <a name="create-an-azure-database-for-mysql-single-server-instance-to-use-as-a-replica"></a>レプリカとして使用する Azure Database for MySQL 単一サーバー インスタンスを作成する
 
-1. Azure Database for MySQL 単一サーバーの新しいインスタンスを作成します (例: "replica.mysql.database.azure.com")。 サーバーの作成については、「[Azure portal を使用した Azure Database for MySQL サーバーの作成](quickstart-create-mysql-server-database-using-azure-portal.md)」を参照してください。 このサーバーは、データイン レプリケーション用の "レプリカ" サーバーです。
+1. Azure Database for MySQL 単一サーバーの新しいインスタンスを作成します (例: `replica.mysql.database.azure.com`)。 サーバーの作成については、「[Azure portal を使用した Azure Database for MySQL サーバーの作成](quickstart-create-mysql-server-database-using-azure-portal.md)」を参照してください。 このサーバーは、データイン レプリケーション用の "レプリカ" サーバーです。
 
    > [!IMPORTANT]
    > Azure Database for MySQL サーバーは、General Purpose またはメモリ最適化価格レベルで作成する必要があります。データイン レプリケーションはこれらのレベルでのみサポートされるためです。

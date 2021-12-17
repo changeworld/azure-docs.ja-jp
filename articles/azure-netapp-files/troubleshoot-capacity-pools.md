@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files の容量プールに関する問題をトラブルシューティングする | Microsoft Docs
+title: Azure NetApp Files の容量プール エラーをトラブルシューティングする | Microsoft Docs
 description: 容量プールを管理するときに発生する可能性のある問題について説明し、問題の解決策を示します。
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 759759b67582b241d0bab1e043dd15e54a804faf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e637c80f864592f89252e52f27325762cd43582b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251541"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219775"
 ---
-# <a name="troubleshoot-capacity-pool-issues"></a>容量プールに関する問題のトラブルシューティング
+# <a name="troubleshoot-capacity-pool-errors"></a>容量プールのエラーのトラブルシューティング
 
 この記事では、プールの変更操作など、容量プールを管理するときに発生する可能性がある問題の解決策について説明します。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "98251541"
 
 ## <a name="next-steps"></a>次のステップ  
 
-* [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+* [容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)
 * [手動 QoS 容量プールを管理する](manage-manual-qos-capacity-pool.md)
 * [ボリュームのサービス レベルを動的に変更する](dynamic-change-volume-service-level.md)
 * [容量プールまたはボリュームをサイズ変更する](azure-netapp-files-resize-capacity-pools-or-volumes.md)

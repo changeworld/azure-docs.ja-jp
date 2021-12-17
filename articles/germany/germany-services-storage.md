@@ -1,31 +1,27 @@
 ---
 title: Azure Germany のストレージ サービス | Microsoft Docs
-description: Azure Germany のストレージ サービスを比較します
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
+description: このトピックでは、Azure Germany のストレージ サービスを比較します その他の関連情報も記載されています。
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/07/2017
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: fc3eaa92e2373384b59c65aae3d9d2d622a89e6f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: 840ac16914196a238bcf8fdaaa518799dcb104e9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080842"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275033"
 ---
 # <a name="azure-germany-storage-services"></a>Azure Germany のストレージ サービス
-## <a name="storage"></a>Storage
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
+
+## <a name="storage"></a>記憶域
 Azure Storage とその使用方法の詳細については、[ストレージ グローバル ドキュメント](../storage/index.yml)を参照してください。
 
-Azure Storage に格納されたデータは、高可用性を確保するためにレプリケートされます。 geo 冗長ストレージと読み取りアクセス geo 冗長ストレージの場合、Azure は*ペア リージョン*間でデータをレプリケートします。 Azure Germany の場合のこれらのペア リージョンを次に示します。
+Azure Storage に格納されたデータは、高可用性を確保するためにレプリケートされます。 geo 冗長ストレージと読み取りアクセス geo 冗長ストレージの場合、Azure は *ペア リージョン* 間でデータをレプリケートします。 Azure Germany の場合のこれらのペア リージョンを次に示します。
 
 | プライマリ リージョン | セカンダリ (ペア) リージョン |
 | --- | --- |
@@ -38,15 +34,15 @@ Storage Service Encryption によって、Azure ストレージ アカウント�
 
 ### <a name="storage-service-availability-by-azure-germany-region"></a>Azure Germany リージョンごとのストレージ サービスの利用可能性
 
-| Service | ドイツ中部 | ドイツ北東部 |
+| サービス | ドイツ中部 | ドイツ北東部 |
 | --- | --- | --- |
-| [Blob Storage](../storage/common/storage-introduction.md#blob-storage) |一般公開 |一般公開 |
-| [Azure Files](../storage/common/storage-introduction.md#azure-files) | 一般公開 | 一般公開 |
-| [Table Storage](../storage/common/storage-introduction.md#table-storage) |一般公開  |一般公開 |
-| [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |一般公開 | 一般公開 |
-| [ホット/クール BLOB ストレージ](../storage/blobs/storage-blob-storage-tiers.md) |一般公開 |一般公開 |
-| [ストレージ サービスの暗号化](../storage/common/storage-service-encryption.md) |一般公開 |一般公開 |
-| Import/Export |NA |NA |
+| [Blob Storage](../storage/common/storage-introduction.md#blob-storage) |GA |GA |
+| [Azure Files](../storage/common/storage-introduction.md#azure-files) | GA | GA |
+| [Table Storage](../storage/common/storage-introduction.md#table-storage) |GA  |GA |
+| [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |GA | GA |
+| [ホット/クール BLOB ストレージ](../storage/blobs/access-tiers-overview.md) |GA |GA |
+| [Storage Service Encryption](../storage/common/storage-service-encryption.md) |GA |GA |
+| インポート/エクスポート |NA |NA |
 | StorSimple |NA |NA |
 
 ### <a name="variations"></a>バリエーション
@@ -54,7 +50,7 @@ Azure Germany でのストレージ アカウントの URL はグローバル Az
 
 | サービスの種類 | グローバル Azure | Azure Germany |
 | --- | --- | --- |
-| BLOB ストレージ | *.blob.core.windows.net | *.blob.core.cloudapi.de |
+| Blob Storage | *.blob.core.windows.net | *.blob.core.cloudapi.de |
 | Azure Files | *.file.core.windows.net | *.file.core.cloudapi.de | 
 | ストレージ | *.queue.core.windows.net | *.queue.core.cloudapi.de |
 | テーブル ストレージ | *.table.core.windows.net | *.table.core.cloudapi.de |
@@ -74,5 +70,5 @@ API の詳細については、[クラウド ストレージ アカウント コ
 >
 
 
-## <a name="next-steps"></a>次の手順
-補足情報と更新情報については、[Azure Germany のブログ](https://blogs.msdn.microsoft.com/azuregermany/)を参照してください。
+## <a name="next-steps"></a>次のステップ
+補足情報と更新情報については、[Azure Germany のブログ](/archive/blogs/azuregermany/)を参照してください。

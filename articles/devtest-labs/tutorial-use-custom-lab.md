@@ -1,80 +1,106 @@
 ---
-title: Azure DevTest Labs のラボへのアクセス | Microsoft Docs
-description: このチュートリアルでは、Azure DevTest Labs を使って作成されたラボにアクセスし、仮想マシンを要求して使用した後、それらを解放します。
+title: ラボにアクセスする
+description: このチュートリアルでは、Azure DevTest Labs のラボにアクセスします。 仮想マシンを使用し、それを解放し、さらに要求します。
 ms.topic: tutorial
-ms.date: 06/26/2020
+ms.date: 11/03/2021
 ms.author: spelluru
-ms.openlocfilehash: 96d41b74b3c143feb64fc9c602de68182787c08b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: d5ace346c8f4b853e862b2e12b8b2adee55bab8c
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379470"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578542"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs のラボにアクセスする
+
 このチュートリアルでは、[チュートリアル: Azure DevTest Labs でラボを作成する](tutorial-create-custom-lab.md)の記事で作成したラボを使います。
 
 このチュートリアルでは、次のアクションを実行します。
 
 > [!div class="checklist"]
+> * ラボの VM に接続する
+> * ラボの VM を解放する
 > * ラボの仮想マシン (VM) を要求する
-> * VM に接続します
-> * VM を解放する
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="access-the-lab"></a>ラボにアクセスする
+## <a name="prerequisites"></a>前提条件
+
+[Azure 仮想マシンを含む DevTest Labs 内のラボ](tutorial-create-custom-lab.md)。
+
+## <a name="connect-to-the-lab-vm"></a>ラボの VM に接続する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューで、 **[すべてのリソース]** を選択します。 
-3. リソースの種類として **[DevTest Labs]** を選びます。 
-4. ラボを選びます。 
 
-    ![ラボを選ぶ](./media/tutorial-use-custom-lab/search-for-select-custom-lab.png)
+1. **DevTest Labs** のラボに移動します。
 
-## <a name="claim-a-vm"></a>VM を要求する
+1. **[自分の仮想マシン]** で自分の VM を選択します。
+
+    :::image type="content" source="./media/tutorial-use-custom-lab/my-virtual-machines.png" alt-text="[自分の仮想マシン] の VM のスクリーンショット。":::
+
+1. 上部のメニューで、 **[接続]** を選択します。 次に、マシンにダウンロードする `.rdp` ファイルを選択します。
+
+    :::image type="content" source="./media/tutorial-use-custom-lab/vm-connect.png" alt-text="VM の [接続] ボタンのスクリーンショット。":::
+
+1. **[リモート デスクトップ接続]** ダイアログ ボックスで、 **[接続]** を選択します
+
+1. **[資格情報を入力してください]** ダイアログ ボックスでパスワードを入力し、 **[OK]** を選択します。
+
+1. **[このリモート コンピューターの ID を識別できません。]** というダイアログ ボックスが表示されたら、 **[Don't ask me again for connections to this computer]\(今後このコンピューターへの接続についてメッセージを表示しない\)** のチェック ボックスを選択します。 次に、 **[はい]** を選択します。
+
+    :::image type="content" source="./media/tutorial-use-custom-lab/remote-computer-verification.png" alt-text="リモート コンピューターの検証のスクリーンショット。":::
+
+Linux VM に接続する手順については、[Azure での Linux VM への接続](../virtual-machines/linux/use-remote-desktop.md)に関するページを参照してください。 
+
+## <a name="unclaim-the-lab-vm"></a>ラボの VM を解放する
+
+VM の操作を完了したら、次の手順で VM を解放します。 
+
+1. 前と同じ手順を使用して、DevTest Labs から VM を選択します。
+
+1. **仮想マシン** のページで、上部のメニューから **[解放]** を選択します。 
+
+    :::image type="content" source="./media/tutorial-use-custom-lab/virtual-machine-unclaim.png" alt-text="[解放] オプションのスクリーンショット。":::
+
+1. VM は、解放される前にシャットダウンされます。 この動作の状態は、 **[通知]** で監視できます。
+
+1. **仮想マシン** のページを閉じて、**DevTest Lab の [概要]** ページに戻ります。
+
+1. **[個人用ラボ]** で、 **[要求可能な仮想マシン]** を選択します。 これで、その VM を要求できるようになります。
+
+    :::image type="content" source="./media/tutorial-use-custom-lab/claimable-virtual-machines.png" alt-text="[要求可能な仮想マシン] のオプションのスクリーンショット。":::
+
+## <a name="claim-a-lab-vm"></a>ラボの VM を要求する
+
+VM を使用する必要がある場合は、VM を再度要求できます。
 
 1. **[要求可能な仮想マシン]** の一覧で、**[...]** (省略記号) を選び、**[マシンの要求]** を選びます。
 
-    ![仮想マシンを要求する](./media/tutorial-use-custom-lab/claim-virtual-machine.png)
+    :::image type="content" source="./media/tutorial-use-custom-lab/claimable-virtual-machines-claimed.png" alt-text="要求オプションのスクリーンショット。":::
+
 1. **[自分の仮想マシン]** の一覧に VM が表示されることを確認します。
 
-    ![自分の仮想マシン](./media/tutorial-use-custom-lab/my-virtual-machines.png)
+    :::image type="content" source="./media/tutorial-use-custom-lab/my-virtual-machines-2.png" alt-text="[自分の仮想マシン] に返された VM を示すスクリーンショット。":::
 
-## <a name="connect-to-the-vm"></a>VM に接続します
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-1. 一覧で VM を選びます。 選んだ VM の **仮想マシン ページ** が表示されます。 ツール バーの **[接続]** を選びます。
+リソースを削除して、Azure でラボと VM を実行するための課金が生じないようにします。 ラボ内の VM にアクセスするために次のチュートリアルを実行する場合は、そのチュートリアルを完了した後にリソースをクリーンアップできます。 それ以外の場合は、次の手順に従います。 
 
-    ![仮想マシンへの接続](./media/tutorial-use-custom-lab/connect-button.png)
-2. ダウンロードした **RDP** ファイルをお使いのハード ディスクに保存し、それを使って仮想マシンに接続します。 前のセクションで VM を作成するときに設定したユーザー名とパスワードを指定します。 
+1. 作成したラボのホーム ページに戻ります。
 
-    Linux VM に接続するには、その VM に対する SSH アクセスや RDP アクセスが有効になっている必要があります。 Linux VM に RDP で接続する手順については、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../virtual-machines/linux/use-remote-desktop.md)」を参照してください。 
+1. 上部のメニューで **[削除]** を選択します。
 
-    > [!NOTE]
-    > VM の [仮想マシン] ページにアクセスする方法はほかにもあります。 その一部を次に示します。 
-    > 
-    > 1. サブスクリプション内のすべての VM を検索します。 VM の一覧から対象の VM を選択して、**[仮想マシン]** ページにアクセスします。
-    > 2. リソース グループの **[リソース グループ]** ページに移動します。 次に、リソース グループ内のリソースの一覧から対象の VM を選択して、**[仮想マシン]** ページに移動します。 
-    >
-    > これらの方法を使用して表示される **[仮想マシン]** ページのツール バーの **[接続]** ボタンは使用しないでください。 代わりに、この記事に示されているように **[DevTest Labs]** ページから **[仮想マシン]** ページに移動しら、ツール バーの **[接続]** を使用します。
+   :::image type="content" source="./media/tutorial-use-custom-lab/portal-lab-delete.png" alt-text="ラボの [削除] ボタンのスクリーンショット。":::
 
+1. **[それを削除してよろしいですか]** ページで、テキスト ボックスにラボの名前を入力し、 **[削除]** を選択します。
 
-## <a name="unclaim-the-vm"></a>VM を解放する
-VM を使い終わったら、次の手順で VM を解放します。 
+1. 削除中、画面の上部にある **[通知]** を選択すると進行状況を表示できます。 ラボの削除にはしばらく時間がかかります。 ラボが削除されたら、次の手順に進みます。
 
-1. 仮想マシンのページで、ツール バーの **[解放]** を選びます。 
-
-    ![VM を解放する](./media/tutorial-use-custom-lab/unclaim-vm-menu.png)
-1. VM は、解放される前にシャットダウンされます。 この動作の状態は、通知で確認できます。  
-3. 一番上の階層リンク メニューでラボ名をクリックして DevTest Lab ページに戻ります。 
-    
-    ![ラボに戻る](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
-1. 一番下の **[要求可能な仮想マシン]** ボックスの一覧に、対象の VM が表示されていることを確認します。
-
+1. 既存のリソース グループ内にラボを作成した場合は、すべてのラボ リソースが削除されています。 このチュートリアル用に新しいリソース グループを作成した場合は、それが空になっていて削除できます。 ラボがまだ存在している場合にリソース グループが削除されることはありません。
     
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Azure DevTest Labs を使って作成されたラボにアクセスして使用する方法を示しました。 ラボの VM にアクセスして使用する方法について詳しくは、次をご覧ください 
+
+このチュートリアルでは、Azure DevTest Labs 内のラボにアクセスして使用する方法法を学びました。 ラボの VM にアクセスして使用する方法について詳しくは、次をご覧ください。
 
 > [!div class="nextstepaction"]
 > [方法: ラボでの VM の使用](devtest-lab-add-vm.md)
-

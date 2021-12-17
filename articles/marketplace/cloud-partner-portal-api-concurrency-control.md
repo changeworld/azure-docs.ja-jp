@@ -7,12 +7,12 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: e468898daffe8fc42250575d3efa42f99279c410
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ed67862bc7c4277d95df7ddf6a6f34c563eed49
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88031650"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736054"
 ---
 # <a name="concurrency-control"></a>コンカレンシー制御
 
@@ -24,8 +24,7 @@ Microsoft Cloud パートナー ポータルの発行 API を呼び出すごと�
 -   **オプティミスティック** - 更新プログラムを実行するクライアントは、前回データが読み取られてからデータに変更があったかどうかを確認します。
 -   **ラスト ワン ウィン** - クライアントは、最後の読み取り時以降に別のアプリケーションによって変更されたかどうかには関係なく、データを直接更新します。
 
-<a name="optimistic-concurrency-workflow"></a>オプティミスティック同時実行ワークフロー
--------------------------------
+## <a name="optimistic-concurrency-workflow"></a>オプティミスティック同時実行ワークフロー
 
 次のワークフローでオプティミスティック同時実行戦略を使用して、予期しない編集がリソースに行われていないことを保証します。
 

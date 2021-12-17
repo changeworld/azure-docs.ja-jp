@@ -1,19 +1,19 @@
 ---
 title: ARM テンプレートを使用して、Azure IoT Hub とストレージ アカウントを発行し、メッセージをルーティングする
 description: ARM テンプレートを使用して、Azure IoT Hub とストレージ アカウントを発行し、メッセージをルーティングする
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: quickstart
 ms.date: 08/24/2020
-ms.author: robinsh
+ms.author: lizross
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: fc8ddba2ec9b7bc9f1c2db8673ab805810afe17e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf755f26ddd0dd3b6f6453b54e492e410f1f3994
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99981291"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547952"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure IoT Hub とストレージ アカウントをデプロイする
 
@@ -23,7 +23,7 @@ ms.locfileid: "99981291"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
+[![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.devices%2Fiothub-auto-route-messages%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,9 +31,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートでは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-iothub-auto-route-messages)から入手した `101-iothub-auto-route-messages` というテンプレートを使用します。
+このクイックスタートでは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/iothub-auto-route-messages)から入手した `101-iothub-auto-route-messages` というテンプレートを使用します。
 
-:::code language="json" source="~/quickstart-templates/101-iothub-auto-route-messages/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.devices/iothub-auto-route-messages/azuredeploy.json":::
 
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     > [!TIP]
     > 以下のボタンを選択すると、テンプレートのデプロイが開始されます。 それが行われている間に、arm-read-write アプリケーションを実行するための設定を行います。
 
-    [![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
+    [![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.devices%2Fiothub-auto-route-messages%2Fazuredeploy.json)
 
 1. [IoT C# サンプル](/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/)をダウンロードして解凍します。
 
@@ -63,8 +63,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **ハブの名前** が必要です。 リソースの一覧でハブを選択します。 IoT Hub セクションの上部からハブの名前をコピーして Windows クリップボードに格納します。
 
-   ![ハブの名前をコピーする](./media/horizontal-arm-route-messages/03-copy-hub-name.png)
-
     このコマンドのハブ名 (強調された部分) を実際のハブ名に置き換えて、コマンド ウィンドウで実行します。
 
     ```cmd
@@ -77,11 +75,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    SET IOT_HUB_URI=ContosoTestHubdlxlud5h.azure-devices-net;
    ```
 
-1. 次の環境変数は、IoT デバイス キーです。 ハブの [IoT Hub] メニューから **[IoT デバイス]** を選択して、ハブに新しいデバイスを追加します。
+1. 次の環境変数は、IoT デバイス キーです。 ハブの [IoT Hub] メニューから **[デバイス]** を選択し、ハブに新しいデバイスを追加します。
 
-   ![[IoT デバイス] を選択する](./media/horizontal-arm-route-messages/04-select-iot-devices.png)
+   :::image type="content" source="./media/horizontal-arm-route-messages/04-select-iot-devices.png" alt-text="左ウィンドウのデバイスのスクリーンショット。" border="true":::
 
-1. 画面の右側にある **[+ 新規]** を選択して新しいデバイスを追加します。
+1. 画面の右側にある **[+ デバイスの追加]** を選択して新しいデバイスを追加します。
 
    新しいデバイス名を入力します。 このクイックスタートでは、**Contoso-Test-Device** で始まる名前を使用します。 デバイスを保存し、その画面を再度開いてデバイス キーを取得します (このキーは、ペインを閉じたときに生成されます)。プライマリまたはセカンダリのキーを選択して Windows クリップボードにコピーします。 コマンド ウィンドウで、実行するコマンドを設定し、**Enter** キーを押します。 コマンドはこのようになっている必要があります。ただし、デバイス キーを貼り付けてください。
 

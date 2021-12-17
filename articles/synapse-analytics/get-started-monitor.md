@@ -9,13 +9,14 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 7e8525dbebb42e1f387ee8f0c192efd5e64c9453
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 08/25/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: cab153403d41a7eca026fb2350d8f94238df6ec2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426042"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054790"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Synapse ワークスペースを監視する
 
@@ -34,13 +35,20 @@ Synapse Studio を開き、 **[監視]** ハブに移動します。 ここに�
 1. 前の手順で実行したパイプラインを見つけて、その **パイプライン名** をクリックし、詳細を表示します。
 1. Synapse Studio の上部近くにある **[階層リンク バー]** をクリックします。 **[すべてのパイプラインの実行]** をクリックすると、前のビューに戻ります。
 
-## <a name="apache-spark-activities"></a>Apache Spark アクティビティ
+## <a name="data-explorer-activities"></a>Data Explorer のアクティビティ
+
+1. **[アクティビティ] > [KQL requests]\(KQL 要求\)** の順に移動します。
+1. このビューでは、KQL 要求を確認できます。
+1. **[プール]** フィルターから、監視する **プール** を選択します。 これで、そのプールにあるご利用のワークスペース内で実行中の、または実行されたすべての KQL 要求を確認できます。
+1. 特定の KQL 要求を探して **[More]\(その他\)** リンクをクリックすると、KQL 要求のテキスト全体が表示されます。
+
+## <a name="apache-spark-activities"></a>Apache Spark のアクティビティ
 
 1. **[アクティビティ] > [Apache Spark applications]\(Apache Spark アプリケーション\)** の順に移動します。 これで、ご利用のワークスペース内で実行中の、または実行されたすべての Spark アプリケーションを確認できます。
 1. 現在実行されていないアプリケーションを見つけて、その **[アプリケーション名]** をクリックします。 これで、その Spark アプリケーションの詳細を確認できます。
 1. Apache Spark に慣れている場合は、 **[Spark History Server]** をクリックすることで、標準の Apache Spark History Server UI を見つけることができます。
 
-## <a name="sql-activities"></a>SQL アクティビティ
+## <a name="sql-activities"></a>SQL のアクティビティ
 
 1. **[アクティビティ] > [SQL requests]\(SQL 要求\)** の順に移動します。
 1. このビューでは、SQL 要求を確認できます。
@@ -53,4 +61,4 @@ Synapse Studio を開き、 **[監視]** ハブに移動します。 ここに�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Knowledge Center を探索する](get-started-knowledge-center.md)
+> [ナレッジ センターを探索する](get-started-knowledge-center.md)

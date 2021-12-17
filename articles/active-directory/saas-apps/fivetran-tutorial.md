@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 08/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 88f6da7e43e269816c7e4ae2fd7bbc3f5e26522b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05acfe25fd92c135e72d7930a403b7eff08b7f50
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92453095"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132330049"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fivetran"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Fivetran の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "92453095"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Fivetran では、**IDP** Initiated SSO がサポートされています
-* Fivetran では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
+* Fivetran では、**IDP** によって開始される SSO がサポートされています。
+* Fivetran では、**Just-In-Time** ユーザー プロビジョニングがサポートされています。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -53,7 +53,6 @@ Azure AD への Fivetran の統合を構成するには、ギャラリーから�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Fivetran**」と入力します。
 1. 結果のパネルから **[Fivetran]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-fivetran"></a>Fivetran に対して Azure AD SSO を構成してテストする
 
@@ -74,12 +73,11 @@ Fivetran に対して Azure AD SSO を構成してテストするには、次の
 
 1. Azure portal の **Fivetran** アプリケーション統合ページで、 **[管理]** セクションを見つけ、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
-
 
 1. Fivetran アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -129,13 +127,14 @@ Fivetran に対して Azure AD SSO を構成してテストするには、次の
 このセクションでは、**Fivetran** 側でシングル サインオンを構成します。
 
 1. 別の Web ブラウザーのウィンドウで、アカウント所有者として Fivetran アカウントにサインインします。
+
 1. ウィンドウの左上隅にある矢印を選択し、ドロップダウン リストから **[Manage Account]\(アカウントを管理する\)** を選択します。
 
-   ![[Manage Account]\(アカウントを管理する\) メニュー オプションが選択されている画面のスクリーンショット。](media/fivetran-tutorial/fivetran-1.png)
+   ![[Manage Account]\(アカウントを管理する\) メニュー オプションが選択されている画面のスクリーンショット。](media/fivetran-tutorial/menu.png)
 
 1. **[設定]** ページの **[SAML Config]\(SAML 構成\)** セクションに移動します。
 
-   ![[SAML Config]\(SAML 構成\) ウィンドウのスクリーンショット。構成オプションが強調表示されています。](media/fivetran-tutorial/fivetran-2.png)
+   ![[SAML Config]\(SAML 構成\) ウィンドウのスクリーンショット。構成オプションが強調表示されています。](media/fivetran-tutorial/settings.png)
 
    1. **[SAML 認証を有効にする]** には **[オン]** を選択します。
    1. **[サインオン URL]** に、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
@@ -149,12 +148,12 @@ Fivetran に対して Azure AD SSO を構成してテストするには、次の
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Fivetran に自動的にサインインされるはずです 
+* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Fivetran に自動的にサインインされます。
 
-2. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Fivetran] タイルをクリックすると、SSO を設定した Fivetran に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fivetran] タイルをクリックすると、SSO を設定した Fivetran に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Fivetran を構成したら、組織の機微なデータを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Fivetran を構成したら、組織の機微なデータを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

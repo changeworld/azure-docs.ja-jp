@@ -5,23 +5,24 @@ description: このステップごとのクイック スタート ガイドで�
 services: dns
 author: rohinkoul
 ms.author: rohink
-ms.date: 10/20/2020
+ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: dns
-ms.custom:
-- mode-portal
-ms.openlocfilehash: d08c5768c2c400ff3d842f58081a58708bfc28db
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mode-portal
+ms.openlocfilehash: f29b63398cf01320c6d46085139183edcf0e5f4b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537771"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033078"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure DNS ゾーンおよびレコードを作成する
 
 パブリック ドメイン内のホスト名を解決するように Azure DNS を構成できます。 たとえば、*contoso.xyz* というドメイン名をドメイン名レジストラーから購入した場合、*contoso.xyz* ドメインをホストし、 *`www.contoso.xyz`* を Web サーバーまたは Web アプリの IP アドレスに解決するように Azure DNS を構成できます。
 
 このクイック スタートでは、テスト ドメインを作成し、*www* を IP アドレス *10.10.10.10* に解決するアドレス レコードを作成します。
+
+:::image type="content" source="media/dns-getstarted-portal/environment-diagram.png" alt-text="Azure portal を使用した DNS デプロイ環境の図。" border="false":::
 
 >[!IMPORTANT]
 >このクイック スタートのすべての名前と IP アドレスは例であり、実際のシナリオに対応するものではありません。

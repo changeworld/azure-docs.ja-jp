@@ -3,32 +3,24 @@ title: アプリケーションと API を b2clogin.com に移行する
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C のリダイレクト URL での b2clogin.com の使用について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/27/2020
-ms.author: mimart
+ms.date: 09/15/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 20df5fc3a4d7c392be62df2b7778854d1e2e1cba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21f881dd0213c59c32f0acfe96b3c3cfc809fdcf
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97109064"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039868"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
 Azure Active Directory B2C (Azure AD B2C) アプリケーションへのサインアップおよびサインイン用に ID プロバイダーを設定する際に、リダイレクト URL を指定する必要があります。 Azure AD B2C でユーザーを認証する際に、アプリケーションと API で *login.microsoftonline.com* を今後は参照しないでください。 代わりに、すべての新しいアプリケーションで *b2clogin.com* を使用し、既存のアプリケーションを *login.microsoftonline.com* から *b2clogin.com* に移行してください。
-
-## <a name="deprecation-of-loginmicrosoftonlinecom"></a>login.microsoftonline.com の廃止
-
-**2020 年 10 月の更新:** 最初に発表された非推奨化の予定日 (2020 年 12 月 4 日) に間に合わないテナントに対して、猶予期間を延長しています。 login.microsoftonline.com は、**2021 年 1 月 14 日** 以降に廃止されることになりました。
-
-**背景**: 当初、2019 年 12 月 4 日に、Azure AD B2C での login.microsoftonline.com のサポートが 2020 年 12 月 4 日で終了する予定であることを [発表しました](https://azure.microsoft.com/updates/b2c-deprecate-msol/)。 これにより、既存のテナントには、b2clogin.com への移行に 1 年間の猶予が与えられました。 2019 年 12 月 4 日より後に作成された新しいテナントは、login.microsoftonline.com からの要求を受け付けません。 b2clogin.com エンドポイントでは、すべての機能が同じままです。
-
-login.microsoftonline.com の廃止は、Azure Active Directory のテナントには影響しません。 この変更によって影響を受けるのは、Azure Active Directory B2C のテナントだけです。
 
 ## <a name="what-endpoints-does-this-apply-to"></a>これが適用されるエンドポイント
 b2clogin.com への移行は、ユーザーを認証するために Azure AD B2C ポリシー (ユーザー フローまたはカスタム ポリシー) を使用する認証エンドポイントにのみ適用されます。 これらのエンドポイントには、Azure AD B2C で使用するポリシーを指定する `<policy-name>` パラメーターがあります。 [Azure AD B2C ポリシーの詳細については、こちらを参照してください](technical-overview.md#identity-experiences-user-flows-or-custom-policies)。 
@@ -53,7 +45,7 @@ Azure AD B2C の一部のお客様は、OAuth 2.0 クライアントの資格情
 
 * Microsoft サービスによって Cookie ヘッダーで使用される領域が減ります。
 * リダイレクト URL に、Microsoft への参照を含める必要がなくなります。
-* カスタマイズされたページで、JavaScript クライアント側コードがサポートされます (現在、[プレビュー段階](javascript-and-page-layout.md)です)。 *login.microsoftonline.com* を使用する場合は、セキュリティ上の制限により、JavaScript コードと HTML フォームの要素はカスタム ページから削除されます。
+* カスタマイズされたページで、[JavaScript クライアント側コード](javascript-and-page-layout.md)がサポートされます。 *login.microsoftonline.com* を使用する場合は、セキュリティ上の制限により、JavaScript コードと HTML フォームの要素はカスタム ページから削除されます。
 
 ## <a name="overview-of-required-changes"></a>必要な変更の概要
 

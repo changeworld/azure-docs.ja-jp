@@ -1,22 +1,22 @@
 ---
 title: トレーニングと推論のコンピューティング先を設定する
 titleSuffix: Azure Machine Learning
-description: 機械学習のトレーニングと推論に使用するためにコンピューティング リソース (コンピューティング先) をワークスペースに追加する
+description: 機械学習のトレーニングと推論に使用するためにコンピューティング リソース (コンピューティング先) をワークスペースに追加します。
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 10/02/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a3a70ac5d5603cad98c199cbd8e3b98bb095d131
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python, contperf-fy21q1, ignite-fall-2021
+ms.openlocfilehash: 3c3d33fc783c3e499ab8fcb3794c929cf1359dcb
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167670"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553977"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>モデルのトレーニングとデプロイのためのコンピューティング ターゲットを設定する
 
@@ -26,14 +26,15 @@ Azure Machine Learning ワークスペースに Azure のコンピューティ�
 
 * ユーザーのローカル コンピューター
 * リモート仮想マシン
+* Apache Spark プール (Azure Synapse Analytics によって機能する)
 * Azure HDInsight
 * Azure Batch
-* Azure Databricks
+* Azure Databricks - [機械学習パイプライン](how-to-create-machine-learning-pipelines.md)でのみトレーニングのコンピューティング先として使用されます
 * Azure Data Lake Analytics
 * Azure Container Instances
+* Azure Kubernetes Service および Azure Arc 対応 Kubernetes (プレビュー)
 
 Azure Machine Learning によって管理されるコンピューティング先を使用するには、以下を参照してください。
-
 
 * [Azure Machine Learning コンピューティング インスタンス](how-to-create-manage-compute-instance.md)
 * [Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-cluster.md)
@@ -43,7 +44,7 @@ Azure Machine Learning によって管理されるコンピューティング先
 
 * Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 
-* [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
+* [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-setup-vs-code.md)。
 
 ## <a name="limitations"></a>制限事項
 
@@ -124,9 +125,13 @@ Azure Machine Learning では、Azure 仮想マシンのアタッチもサポー
    ```
 
 > [!TIP]
-> ワークスペースから VM を __削除__ (デタッチ) する場合は、[RemoteCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remotecompute#detach--) メソッドを使用します。
+> ワークスペースから VM を __削除__ (デタッチ) する場合は、[RemoteCompute.detach()](/python/api/azureml-core/azureml.core.compute.remotecompute#detach--) メソッドを使用します。
 >
 > Azure Machine Learning によって VM が削除されることはありません。 Azure portal、CLI、または Azure VM 用の SDK を使用して、VM を手動で削除する必要があります。
+
+## <a name="apache-spark-pools"></a><a id="synapse"></a>Apache Spark プール
+
+Azure Synapse Analytics と Azure Machine Learning の統合 (プレビュー) によって、Azure Synapse によってサポートされる Apache Spark プールをアタッチし、インタラクティブなデータ探索とデータ準備を行うことができます。 この統合を使用して、データ ラングリングの専用コンピューティングを大規模にすることができます。 詳細については、[「Apache Spark pools powered by Azure Synapse Analytics をアタッチする方法」](how-to-link-synapse-ml-workspaces.md#attach-synapse-spark-pool-as-a-compute)を参照してください。
 
 ## <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
@@ -174,7 +179,7 @@ Azure HDInsight は、ビッグ データ分析のための一般的なプラッ
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
 > [!TIP]
-> ワークスペースから HDInsight クラスターを __削除__ (デタッチ) する場合は、[HDInsightCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.hdinsight.hdinsightcompute#detach--) メソッドを使用します。
+> ワークスペースから HDInsight クラスターを __削除__ (デタッチ) する場合は、[HDInsightCompute.detach()](/python/api/azureml-core/azureml.core.compute.hdinsight.hdinsightcompute#detach--) メソッドを使用します。
 >
 > Azure Machine Learning によって、HDInsight クラスターは削除されません。 Azure portal、CLI、または Azure HDInsight 用の SDK を使用して、手動で削除する必要があります。
 
@@ -221,11 +226,14 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 > [!WARNING]
 > ワークスペースから同じ Azure Batch に対して複数のアタッチメントを同時に作成することは避けてください。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 
-### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
+## <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
 Azure Databricks は、Azure クラウド内の Apache Spark ベースの環境です。 これは、Azure Machine Learning パイプラインでコンピューティング先として使用できます。
 
-> [!重要} Azure Machine Learning によって Azure Databricks コンピューティング先を作成することはできません。 代わりに、ユーザーが Azure Databricks ワークスペースを作成してから、Azure Machine Learning ワークスペースにアタッチする必要があります。 ワークスペース リソースを作成するには、[Azure Databricks での Spark ジョブの実行](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)に関するドキュメントを参照してください。
+> [!IMPORTANT]
+> Azure Machine Learning によって Azure Databricks コンピューティング先を作成することはできません。 代わりに、ユーザーが Azure Databricks ワークスペースを作成してから、Azure Machine Learning ワークスペースにアタッチする必要があります。 ワークスペース リソースを作成するには、[Azure Databricks での Spark ジョブの実行](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)に関するドキュメントを参照してください。
+> 
+> __別の Azure サブスクリプション__ から Azure Databricks ワークスペースをアタッチするには、[Azure Databricks] ワークスペースで、自分 (Azure AD アカウント) に **共同作成者** ロールが付与されている必要があります。 [Azure portal](https://ms.portal.azure.com/) でご自身のアクセス権を確認してください。
 
 コンピューティング先として Azure Databricks をアタッチするには、次の情報を指定します。
 
@@ -233,7 +241,7 @@ Azure Databricks は、Azure クラウド内の Apache Spark ベースの環境�
 * __Databricks ワークスペース名__:Azure Databricks ワークスペースの名前。
 * __Databricks アクセス トークン__:Azure Databricks に対する認証に使用するアクセス トークン。 アクセス トークンを生成するには、[認証](/azure/databricks/dev-tools/api/latest/authentication)に関するドキュメントを参照してください。
 
-次のコードでは、Azure Machine Learning SDK を使用してコンピューティング先として Azure Databricks をアタッチする方法を示します (__Databricks ワークスペースは、AML ワークスペースと同じサブスクリプション内に存在する必要があります__)。
+次のコードでは、Azure Machine Learning SDK を使用してコンピューティング先として Azure Databricks をアタッチする方法を示します。
 
 ```python
 import os
@@ -277,7 +285,7 @@ except ComputeTargetException:
 > [!WARNING]
 > ワークスペースから同じ Azure Databricks に対して複数のアタッチメントを同時に作成することは避けてください。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 
-### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
+## <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics は、Azure クラウド内のビッグ データ分析プラットフォームです。 これは、Azure Machine Learning パイプラインでコンピューティング先として使用できます。
 
@@ -337,9 +345,23 @@ except ComputeTargetException:
 
 Azure Container Instances (ACI) は、モデルのデプロイ時に動的に作成されます。 他の方法では、ACI を作成したり、ワークスペースにアタッチしたりすることはできません。 詳細については、[Azure Container Instances へのモデルのデプロイ](how-to-deploy-azure-container-instance.md)に関するページを参照してください。
 
-## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+## <a name="kubernetes-preview"></a><a id="kubernetes"></a>Kubernetes (プレビュー)
 
-Azure Kubernetes Service (AKS) を Azure Machine Learning と組み合わせて使用すると、さまざまな構成オプションが使用できます。 詳細については、[Azure Kubernetes Service を作成してアタッチする方法](how-to-create-attach-kubernetes.md)に関するページを参照してください。
+Azure Machine Learning には、トレーニングと推論用に独自の Kubernetes クラスターを接続するための次のオプションが用意されています。
+
+* [Azure Kubernetes Service](../aks/intro-kubernetes.md)。 Azure Kubernetes Service は、Azure のマネージド クラスターを提供します。
+* [Azure Arc Kubernetes](../azure-arc/kubernetes/overview.md)。 クラスターが Azure の外でホストされている場合は、Azure Arc 対応 Kubernetes クラスターを使用します。
+
+[!INCLUDE [arc-enabled-machine-learning-create-training-compute](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
+
+ワークスペースから Kubernetes クラスターをデタッチするには、次の方法を使用します。
+
+```python
+compute_target.detach()
+```
+
+> [!WARNING]
+> クラスターをデタッチしても、**クラスターは削除されません**。 Azure Kubernetes Service クラスターを削除するには、[AKS での Azure CLI の使用](../aks/kubernetes-walkthrough.md#delete-the-cluster)に関するセクションを参照してください。 Azure Arc 対応 Kubernetes クラスターを削除するには、[Azure Arc のクイックスタート](../azure-arc/kubernetes/quickstart-connect-cluster.md#7-clean-up-resources)に関するページを参照してください。
 
 ## <a name="notebook-examples"></a>ノートブックの例
 

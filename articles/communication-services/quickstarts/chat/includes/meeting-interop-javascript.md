@@ -2,19 +2,43 @@
 title: クイックスタート - Teams の会議に参加する
 author: askaur
 ms.author: askaur
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 49f9bac40ae803f980a22c19fd5d44d85fa99e9e
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 616741c97b1e133dd9027b8622c181a9ca622b72
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564498"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378475"
 ---
+このクイックスタートでは、JavaScript 用 Azure Communication Services Chat SDK を使用して Teams 会議でチャットする方法について説明します。
+
+## <a name="sample-code"></a>サンプル コード
+このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-chat-to-teams-meeting) にあります。
+
+## <a name="prerequisites"></a>前提条件 
+
+*  [Teams のデプロイ](/deployoffice/teams-install)。 
+* 実際に動作する[チャット アプリ](../get-started.md)。 
+
 ## <a name="joining-the-meeting-chat"></a>会議チャットへの参加 
 
-Teams の相互運用性が有効になると、Communication Services ユーザーは、Calling SDK を使用して外部ユーザーとして Teams の通話に参加できます。 通話に参加すると、会議チャットにも参加者として追加されます。会議チャットでは、通話の他のユーザーとメッセージを送受信できます。 ユーザーは、通話に参加する前に送信されたチャット メッセージにはアクセスできません。 会議に参加してチャットを開始するには、次の手順に従います。
+Communication Services ユーザーは、Calling SDK を使用して、匿名ユーザーとして Teams 会議に参加できます。 会議に参加すると、会議チャットにも参加者として追加されます。会議チャットでは、会議に参加している他のユーザーとメッセージを送受信できます。 ユーザーは、会議に参加する前に送信されたチャット メッセージにアクセスすることはできず、会議の終了後はメッセージを送受信することはできなくなります。 会議に参加してチャットを開始するには、次の手順に従います。
+
+## <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
+
+ターミナルまたはコマンド ウィンドウを開き、アプリ用の新しいディレクトリを作成して、そこに移動します。
+
+```console
+mkdir chat-interop-quickstart && cd chat-interop-quickstart
+```
+
+既定の設定で `npm init -y` を実行して、**package.json** ファイルを作成します。
+
+```console
+npm init -y
+```
 
 ## <a name="install-the-chat-packages"></a>チャット パッケージをインストールする
 
@@ -34,11 +58,21 @@ npm install @azure/communication-calling --save
 
 `--save` オプションを使用すると、**package.json** ファイル内の依存関係としてライブラリが表示されます。
 
+## <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
+
+このクイックスタートでは、webpack を使用してアプリケーション資産をバンドルします。 次のコマンドを実行して、webpack、webpack-cli、および webpack-dev-server npm パッケージをインストールし、**package.json** 内の開発依存関係として表示します。
+
+```console
+npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
+```
+
+自分のプロジェクトのルート ディレクトリに、**index.html** ファイルを作成します。 このファイルを使用して、ユーザーが会議に参加してチャットを開始できるようにする基本的なレイアウトを構成します。
+
 ## <a name="add-the-teams-ui-controls"></a>Teams の UI コントロールを追加する
 
 index.html のコードを次のスニペットに置き換えます。
 ページの上部にあるテキスト ボックスは、Teams 会議のコンテキストと会議スレッド ID を入力するために使用されます。 [Join Teams Meeting]\(Teams の会議に参加\) ボタンは、指定した会議に参加するために使用します。
-ページの下部にチャットのポップアップが表示されます。 これは、会議スレッドでメッセージを送信するために使用でき、ACS ユーザーがメンバーである間にそのスレッドで送信されたメッセージがリアルタイムで表示されます。
+ページの下部にチャットのポップアップが表示されます。 これは、会議スレッドでメッセージを送信するために使用でき、Communication Services ユーザーがメンバーである間にそのスレッドで送信されたメッセージがリアルタイムで表示されます。
 
 ```html
 <!DOCTYPE html>
@@ -145,14 +179,12 @@ index.html のコードを次のスニペットに置き換えます。
 client.js ファイルの内容を次のスニペットに置き換えます。
 
 スニペット内で、以下を置き換えます 
-- `SECRET CONNECTION STRING` を Communication Services の接続文字列に 
-- `ENDPOINT URL` を Communication Services のエンドポイント URL に
+- `SECRET_CONNECTION_STRING` を Communication Services の接続文字列に 
+- `ENDPOINT_URL` を Communication Services のエンドポイント URL に
 
 ```javascript
-// run using
-// npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
 import { CallClient, CallAgent } from "@azure/communication-calling";
-import { AzureCommunicationUserCredential } from "@azure/communication-common";
+import { AzureCommunicationTokenCredential } from "@azure/communication-common";
 import { CommunicationIdentityClient } from "@azure/communication-identity";
 import { ChatClient } from "@azure/communication-chat";
 
@@ -173,38 +205,36 @@ const sendMessageButton = document.getElementById("send-message");
 const messagebox = document.getElementById("message-box");
 
 var userId = '';
-var messages = '';
+var lastMessage = '';
+var previousMessage = '';
 
 async function init() {
-  const connectionString = "<SECRET CONNECTION STRING>";
-  const endpointUrl = "<ENDPOINT URL>";
+  const connectionString = "<SECRET_CONNECTION_STRING>";
+  const endpointUrl = "<ENDPOINT_URL>";
 
   const identityClient = new CommunicationIdentityClient(connectionString);
 
   let identityResponse = await identityClient.createUser();
   userId = identityResponse.communicationUserId;
-  console.log(
-    `\nCreated an identity with ID: ${identityResponse.communicationUserId}`
-  );
+  console.log(`\nCreated an identity with ID: ${identityResponse.communicationUserId}`);
 
-  let tokenResponse = await identityClient.issueToken(identityResponse, [
+  let tokenResponse = await identityClient.getToken(identityResponse, [
     "voip",
     "chat",
   ]);
+
   const { token, expiresOn } = tokenResponse;
-  console.log(
-    `\nIssued an access token that expires at ${expiresOn}:`
-  );
+  console.log(`\nIssued an access token that expires at: ${expiresOn}`);
   console.log(token);
 
   const callClient = new CallClient();
-  const tokenCredential = new AzureCommunicationUserCredential(token);
+  const tokenCredential = new AzureCommunicationTokenCredential(token);
   callAgent = await callClient.createCallAgent(tokenCredential);
   callButton.disabled = false;
 
   chatClient = new ChatClient(
     endpointUrl,
-    new AzureCommunicationUserCredential(token)
+    new AzureCommunicationTokenCredential(token)
   );
 
   console.log('Azure Communication Chat client created!');
@@ -215,17 +245,17 @@ init();
 callButton.addEventListener("click", async () => {
   // join with meeting link
   call = callAgent.join({meetingLink: meetingLinkInput.value}, {});
-    
-  call.on('callStateChanged', () => {
-        callStateElement.innerText = call.state;
+
+  call.on('stateChanged', () => {
+      callStateElement.innerText = call.state;
   })
   // toggle button and chat box states
   chatBox.style.display = "block";
   hangUpButton.disabled = false;
   callButton.disabled = true;
 
-  messagesContainer.innerHTML = messages;
-  
+  messagesContainer.innerHTML = "";
+
   console.log(call);
 
   // open notifications channel
@@ -234,25 +264,33 @@ callButton.addEventListener("click", async () => {
   // subscribe to new message notifications
   chatClient.on("chatMessageReceived", (e) => {
     console.log("Notification chatMessageReceived!");
-    
+
+      // check whether the notification is intended for the current thread
+    if (threadIdInput.value != e.threadId) {
+      return;
+    }
+
     if (e.sender.communicationUserId != userId) {
-       renderReceivedMessage(e.content);
+       renderReceivedMessage(e.message);
     }
     else {
-       renderSentMessage(e.content);
+       renderSentMessage(e.message);
     }
   });
+
   chatThreadClient = await chatClient.getChatThreadClient(threadIdInput.value);
 });
 
 async function renderReceivedMessage(message) {
-   messages += '<div class="container lighter">' + message + '</div>';
-   messagesContainer.innerHTML = messages;
+  previousMessage = lastMessage;
+  lastMessage = '<div class="container lighter">' + message + '</div>';
+  messagesContainer.innerHTML = previousMessage + lastMessage;
 }
 
 async function renderSentMessage(message) {
-   messages += '<div class="container darker">' + message + '</div>';
-   messagesContainer.innerHTML = messages;
+  previousMessage = lastMessage;
+  lastMessage = '<div class="container darker">' + message + '</div>';
+  messagesContainer.innerHTML = previousMessage + lastMessage;
 }
 
 hangUpButton.addEventListener("click", async () => 
@@ -272,21 +310,29 @@ hangUpButton.addEventListener("click", async () =>
 
 sendMessageButton.addEventListener("click", async () =>
   {
-      let message = messagebox.value;
+    let message = messagebox.value;
 
-      let sendMessageRequest = { content: message };
-      let sendMessageOptions = { senderDisplayName : 'Jack' };
-      let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
-      let messageId = sendChatMessageResult.id;
+    let sendMessageRequest = { content: message };
+    let sendMessageOptions = { senderDisplayName : 'Jack' };
+    let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
+    let messageId = sendChatMessageResult.id;
 
-      messagebox.value = '';
-      console.log(`Message sent!, message id:${messageId}`);
+    messagebox.value = '';
+    console.log(`Message sent!, message id:${messageId}`);
   });
+```
+
+チャット スレッドの参加者の表示名は、Teams クライアントによって設定されません。 これらの名前は、`participantsAdded` イベントと `participantsRemoved` イベントの、参加者を一覧表示する API では null として返されます。 チャット参加者の表示名は、`call` オブジェクトの `remoteParticipants` フィールドから取得できます。 名簿の変更に関する通知を受信するときに、このコードを使用して、追加または削除されたユーザーの名前を取得できます。
+
+```
+var displayName = call.remoteParticipants.find(p => p.identifier.communicationUserId == '<REMOTE_USER_ID>').displayName;
 ```
 
 ## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>Communication Services ユーザーの Teams 会議チャット スレッドを取得する
 
-Teams 会議のリンクとチャットは Graph API を使用して取得できます。詳細については、[Graphのドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)を参照してください。 Communication Services 通話 SDK は、Teams 会議のフル リンクを受け入れます。 このリンクは `onlineMeeting` リソースの一部として返され、[Graph API](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) 使用して [`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)の下でアクセスできます。また、`threadId` を取得することもできます。 応答には、`threadID` を含む `chatInfo` オブジェクトがあります。 
+Teams 会議の詳細情報は Graph API を使用して取得できます。詳細については、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)を参照してください。 Communication Services 通話 SDK は、Teams 会議の完全なリンクまたはミーティング ID を受け入れます。 これらは `onlineMeeting` リソースの一部として返され、[`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)の下でアクセスできます。
+
+[Graph API](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) を使用して、`threadID` を取得することもできます。 応答には、`threadID` を含む `chatInfo` オブジェクトがあります。 
 
 必要な会議情報とスレッド ID は、Teams 会議の招待状自体に含まれている **[Join Meeting]\(会議に参加\)** URL から取得することもできます。
 Teams の会議リンクは、`https://teams.microsoft.com/l/meetup-join/meeting_chat_thread_id/1606337455313?context=some_context_here` のようになっています。 `threadId` は、このリンクの `meeting_chat_thread_id` 部分になります。 使用する前に、`meeting_chat_thread_id` がエスケープされていないことを確認してください。 これは、`19:meeting_ZWRhZDY4ZGUtYmRlNS00OWZaLTlkZTgtZWRiYjIxOWI2NTQ4@thread.v2` という形式になっている必要があります。
@@ -302,9 +348,9 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 ブラウザーを開き、http://localhost:8080/ に移動します。 次のように表示されます。
 
-:::image type="content" source="../acs-join-teams-meeting-chat-quickstart.png" alt-text="完成した JavaScript アプリケーションのスクリーンショット。":::
+:::image type="content" source="../join-teams-meeting-chat-quickstart.png" alt-text="完成した JavaScript アプリケーションのスクリーンショット。":::
 
-Teams 会議のリンクとスレッド ID を各テキスト ボックスに挿入します。 Teams 会議に参加するには、 *[Join Teams Meeting]\(Teams の会議に参加\)* を押します。 ACS ユーザーが会議への参加を許可されたら、Communication Services アプリケーション内からチャットを行うことができます。 チャットを開始するには、ページの下部にあるボックスに移動します。
+Teams 会議のリンクとスレッド ID を各テキスト ボックスに挿入します。 Teams 会議に参加するには、 *[Join Teams Meeting]\(Teams の会議に参加\)* を押します。 Communication Services ユーザーが会議への参加を許可されたら、Communication Services アプリケーション内からチャットを行うことができます。 チャットを開始するには、ページの下部にあるボックスに移動します。 わかりやすくするために、このアプリケーションには、チャット内の最後の 2 つのメッセージのみが表示されます。
 
 > [!NOTE] 
-> 現在、Teams との相互運用性のシナリオでは、メッセージの送受信と編集のみがサポートされています。 入力インジケーターや、Communication Services ユーザーが Teams 会議に他のユーザーを追加または削除するなどの機能は、まだサポートされていません。  
+> 現在、Teams との相互運用性のシナリオでは、メッセージの送受信と編集、および入力通知の送信のみがサポートされています。 開封確認メッセージや、Communication Services ユーザーが Teams 会議に他のユーザーを追加または削除するなどの機能は、まだサポートされていません。

@@ -2,17 +2,17 @@
 title: チュートリアル - Azure portal を使用した新しいポリシーの割り当て
 description: このチュートリアルでは、Azure portal を使用して、Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
 ms.topic: tutorial
-ms.date: 10/07/2020
-ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: e1d131c6419fcc0bed866a3334a065e46e399c78
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91826599"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807500"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>チュートリアル:準拠していないリソースを識別するためのポリシー割り当てを作成する
 
-Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 Azure Policy では、ゲスト構成ポリシーを使用した、Arc 対応サーバーの状態の監査がサポートされています。 ゲスト構成ポリシーでは、構成は適用されず、マシン内の設定の監査のみが行われます。 このチュートリアルでは、ポリシーの作成と割り当て、およびどの Arc 対応サーバーで Log Analytics エージェントがインストールされていないかの特定のプロセスの手順を説明します。
+Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 Azure Policy では、ゲスト構成ポリシーを使用した、Azure Arc 対応サーバーの状態の監査がサポートされています。 Azure Policy のゲスト構成定義により、マシン内の設定を監査または適用できます。 このチュートリアルでは、ポリシーの作成と割り当て、および Log Analytics エージェントがインストールされていない Azure Arc 対応サーバーを特定するプロセスの手順を説明します。
 
 この手順を終えると、Windows 用または Linux 用の Log Analytics エージェントがインストールされていないマシンが正しく特定されます。 これらはポリシーの割り当てに "_準拠していません_"。
 
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    使用できる組み込みポリシーの部分的な一覧については、[Azure Policy サンプル](../../../governance/policy/samples/index.md)に関する記事をご覧ください。
 
-1. Windows ベースのマシンで Arc 対応サーバー エージェントを有効にしている場合、ポリシー定義の一覧から、" _\[プレビュー]: Log Analytics エージェントは Windows Azure Arc マシンにインストールされる必要がある_" という定義を見つけます。 Linux ベースのマシンの場合、対応するポリシー定義 " _\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある_" を見つけます。 そのポリシーをクリックし、**[選択]** をクリックします。
+1. Windows ベースのマシンで Arc 対応サーバー エージェントを有効にしている場合、ポリシー定義の一覧から、" _\[プレビュー]: Log Analytics エージェントは Windows Azure Arc マシンにインストールする必要がある_" という定義を見つけます。 Linux ベースのマシンの場合、対応するポリシー定義 " _\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある_" を見つけます。 そのポリシーをクリックし、**[選択]** をクリックします。
 
    :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="適切なポリシー定義を見つける" border="false":::
 
@@ -95,9 +95,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、ポリシー定義をスコープに割り当て、コンプライアンス レポートを評価しました。 ポリシー定義では、スコープ内のすべてのリソースが準拠していることが検証されて、準拠していないリソースが識別されます。 これで、Azure Monitor for VMs を使用して Azure Arc 対応サーバー マシンを監視することができるようになりました。
+このチュートリアルでは、ポリシー定義をスコープに割り当て、コンプライアンス レポートを評価しました。 ポリシー定義では、スコープ内のすべてのリソースが準拠していることが検証されて、準拠していないリソースが識別されます。 これで、[VM insights](../../../azure-monitor/vm/vminsights-overview.md) を有効にして、Azure Arc 対応サーバー マシンを監視することができるようになりました。
 
 ご利用のマシンから、パフォーマンスと実行中のプロセス、およびその依存関係を監視および確認する方法については、引き続き次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [VM 用 Azure Monitor を有効にする](tutorial-enable-vm-insights.md)
+> [VM Insights を有効にする](tutorial-enable-vm-insights.md)

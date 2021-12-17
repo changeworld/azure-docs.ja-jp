@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 5802df8bec8a0d938b132e099dd71fdb1d22a5b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6b272bc03151dc4a10bd3eec9434e7df3bfb3f2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98727468"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132291086"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Kronos の統合
 
@@ -147,9 +147,8 @@ Kronos に対する Azure AD SSO を構成してテストするには、次の�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Kronos に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Kronos] タイルをクリックすると、SSO を設定した Kronos に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Kronos] タイルをクリックすると、SSO を設定した Kronos に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Kronos を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Kronos を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

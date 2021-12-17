@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 19f36e926ada75f36ddb34f1ad8d98cdf531fd22
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94966566"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457432"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>チュートリアル: Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
 
-前のチュートリアルでは、Device Provisioning Service に接続するデバイスを設定する方法を説明しました。 このチュートリアルでは、このサービスで "**_個別の登録_**" と "**_登録グループ_**" の両方を使用して、1 つの IoT ハブにデバイスをプロビジョニングする方法について説明します。 このチュートリアルでは、次の操作方法について説明します。
+前のチュートリアルでは、Device Provisioning Service に接続するようにデバイスを設定する方法を学習しました。 このチュートリアルでは、このサービスで "**_個別の登録_**" と "**_登録グループ_**" の両方を使用して、1 つの IoT ハブにデバイスをプロビジョニングする方法について説明します。 このチュートリアルでは、次の操作方法について説明します。
 
 > [!div class="checklist"]
 > * デバイスを登録する
@@ -32,7 +32,7 @@ ms.locfileid: "94966566"
 * Visual Studio
 
 > [!NOTE]
-> Visual Studio は必須ではありません。 [.NET](https://www.microsoft.com/net) のインストールだけが必要であり、開発者は Windows または Linux で任意のエディターを使用することができます。  
+> Visual Studio は必須ではありません。 [.NET](https://dotnet.microsoft.com) のインストールだけが必要であり、開発者は Windows または Linux で任意のエディターを使用することができます。  
 
 このチュートリアルでは、デバイス情報がプロビジョニング サービスに追加される、ハードウェアの製造プロセス中またはその直後の期間をシミュレートします。 このコードは、通常、.NET コードを実行できる PC またはファクトリ デバイス上で実行します。デバイス自体には追加しないでください。
 
@@ -229,7 +229,7 @@ ms.locfileid: "94966566"
 
 ## <a name="verify-the-device-is-registered"></a>デバイスが登録されていることを確認する
 
-デバイスが起動すると、次のアクションが実行されます。 詳細については、[プロビジョニング デバイス クライアントのサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device)に関するページを参照してください。 
+デバイスが起動すると、次のアクションが実行されます。 詳細については、[プロビジョニング デバイス クライアントのサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/provisioning/Samples/device)に関するページを参照してください。 
 
 1. デバイスが Device Provisioning Service に登録要求を送信します。
 2. TPM デバイスの場合、Device Provisioning Service が登録チャレンジを送信し、デバイスがこれに応答します。 

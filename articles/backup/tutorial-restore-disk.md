@@ -4,12 +4,12 @@ description: Azure でバックアップおよび Recovery Services を使用し
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7f4d70f43f76c3a72cd8e53037d06d32e61c3cdb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0de37086f3b7a968b69318ebe7bb73689812373a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768508"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537205"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Azure CLI を使用した VM の復元
 
@@ -163,6 +163,12 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 ```
 
 復元ジョブの *[状態]* が *[完了]* になっている場合は、必要な情報 (VM の構成とデプロイ テンプレート) がストレージ アカウントに復元されています。
+
+#### <a name="using-managed-identity-to-restore-disks"></a>マネージド ID を使用したディスクの復元
+
+Azure Backup では、復元操作中にマネージド ID (MSI) を使用して、ディスクを復元する必要があるストレージ アカウントにアクセスすることもできます。 このオプションは現在、マネージド ディスクの復元でのみサポートされています。
+
+コンテナーのシステム割り当てマネージド ID を使用してディスクを復元する場合は、[az backup restore restore-disks](/cli/azure/backup/restore#az_backup_restore_restore_disks) コマンドに追加フラグ * **--mi-system-assigned** _ を渡します。 ユーザー割り当てマネージド ID を使用する場合は、コンテナーのマネージド ID の ARM ID をパラメーターの値として使用して、パラメーター _*_ --mi-user-assigned_** を渡します。 コンテナーのマネージド ID を有効にする方法については、[この記事](encryption-at-rest-with-cmk.md#enable-managed-identity-for-your-recovery-services-vault)を参照してください。 
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>復元されたディスクから VM を作成する
 

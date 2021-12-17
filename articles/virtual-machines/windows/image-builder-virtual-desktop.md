@@ -1,32 +1,35 @@
 ---
-title: Image Builder - Windows Virtual Desktop イメージを作成する
-description: PowerShell で Azure Image Builder を使用して、Windows Virtual Desktop の Azure VM イメージを作成します。
-author: danielsollondon
-ms.author: danis
+title: Image Builder - Azure Virtual Desktop イメージを作成する
+description: PowerShell で Azure Image Builder を使用して、Azure Virtual Desktop の Azure VM イメージを作成します。
+author: kof-f
+ms.author: kofiforson
 ms.reviewer: cynthn
-ms.date: 01/27/2021
+ms.date: 05/12/2021
 ms.topic: article
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.collection: windows
-ms.subservice: imaging
-ms.openlocfilehash: 69718b219d239ac13e5d932b05a7dd29619adaa3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.subservice: image-builder
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 503b2663d6de83d982e6f8e9c2538de3765c9294
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045588"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466658"
 ---
-# <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Azure VM Image Builder と PowerShell を使用して Windows Virtual Desktop イメージを作成する
+# <a name="create-a-azure-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Azure VM Image Builder と PowerShell を使用して Azure Virtual Desktop イメージを作成する
 
-この記事では、次のようなカスタマイズを行って Windows Virtual Desktop イメージを作成する方法について説明します。
+**適用対象:** :heavy_check_mark: Windows VM 
+
+この記事では、次のようなカスタマイズを行って Azure Virtual Desktop イメージを作成する方法について示します。
 
 * [Fslogix](https://github.com/DeanCefola/Azure-WVD/blob/master/PowerShell/FSLogixSetup.ps1) をインストールする。
-* コミュニティ リポジトリから [Windows Virtual Desktop の最適化スクリプト](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool)を実行する。
-* [Microsoft Teams](../../virtual-desktop/teams-on-wvd.md) をインストールする。
+* コミュニティ リポジトリから [Azure Virtual Desktop の最適化スクリプト](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool)を実行する。
+* [Microsoft Teams](../../virtual-desktop/teams-on-avd.md) をインストールする。
 * [Restart](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
 * [Windows Update](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer) を実行する。
 
-ここでは、Azure VM Image Builder を使用してこれを自動化する方法について説明します。また、他のリージョンへの複製、スケールの制御、および組織内外でのイメージの共有を行うことができる [Shared Image Gallery](../shared-image-galleries.md) にイメージを配布する方法について説明します。
+ここでは、Azure VM Image Builder を使用してこれを自動化する方法について説明します。また、他のリージョンへの複製、スケールの制御、および組織内外でのイメージの共有を行うことができる [Azure Compute Gallery](../shared-image-galleries.md) (以前の Shared Image Gallery) にイメージを配布する方法について説明します。
 
 
 Image Builder の構成のデプロイを簡略化するために、この例では、入れ子になった Image Builder テンプレートを使用して Azure Resource Manager テンプレートを使用します。 これにより、変数やパラメーターで入力できるなど、他のいくつかの利点が得られます。 これらのパラメーターをコマンド ラインから渡すこともできます。
@@ -54,7 +57,7 @@ Image Builder の構成のデプロイを簡略化するために、この例で
           "name": "installFsLogix",
           "runElevated": true,
           "runAsSystem": true,
-          "scriptUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/14_Building_Images_WVD/0_installConfFsLogix.ps1"
+          "scriptUri": "https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/14_Building_Images_WVD/0_installConfFsLogix.ps1"
     ```
 - コードにコメントを追加 - AIB ビルド ログ (customization.log) は非常に詳細なログを出力します。"write-host" を使用してスクリプトにコメントを追加すると、それらがログに送られ、トラブルシューティングが容易になります。
 
@@ -73,23 +76,16 @@ Image Builder の構成のデプロイを簡略化するために、この例で
 
 ## <a name="prerequisites"></a>前提条件
 
-最新の Azure PowerShell コマンドレットがインストールされている必要があります。インストールの詳細については、[こちら](/powershell/azure/overview)を参照してください。
+最新の Azure PowerShell コマンドレットがインストールされている必要があります。インストールの詳細については、[Azure PowerShell の概要](/powershell/azure/overview)に関するページを参照してください。
 
 ```PowerShell
-# Register for Azure Image Builder Feature
-Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-
-Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-
-# wait until RegistrationState is set to 'Registered'
-
 # check you are registered for the providers, ensure RegistrationState is set to 'Registered'.
 Get-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages
 Get-AzResourceProvider -ProviderNamespace Microsoft.Storage 
 Get-AzResourceProvider -ProviderNamespace Microsoft.Compute
 Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
 
-# If they do not saw registered, run the commented out code below.
+# If they do not show as registered, run the commented out code below.
 
 ## Register-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages
 ## Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
@@ -150,7 +146,7 @@ $idenityNamePrincipalId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageRe
 イメージを配布するためにアクセス許可を ID に割り当てます。 このコマンドは、テンプレートをダウンロードし、前に指定したパラメーターを使用してテンプレートを更新します。
 
 ```azurepowershell-interactive
-$aibRoleImageCreationUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
+$aibRoleImageCreationUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
 $aibRoleImageCreationPath = "aibRoleImageCreation.json"
 
 # download config
@@ -168,13 +164,12 @@ New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $imag
 ```
 
 > [!NOTE] 
-> 「New-AzRoleDefinition: ロールの定義の制限を超えました。 ロールの定義はこれ以上作成できません」のようなエラーが表示された場合、 解決方法については、 https://docs.microsoft.com/azure/role-based-access-control/troubleshooting の記事を参照してください。
+> 「New-AzRoleDefinition: ロールの定義の制限を超えました。 ロールの定義はこれ以上作成できません」のようなエラーが表示された場合、 「[Azure RBAC のトラブルシューティング](../../role-based-access-control/troubleshooting.md)」を参照してください。
 
 
+## <a name="create-the-azure-compute-gallery"></a>Azure Compute Gallery を作成する 
 
-## <a name="create-the-shared-image-gallery"></a>Shared Image Gallery を作成する 
-
-Shared Image Gallery がない場合、作成する必要があります。
+Azure Compute Gallery がない場合、作成する必要があります。
 
 ```azurepowershell-interactive
 $sigGalleryName= "myaibsig01"
@@ -226,7 +221,7 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsDesktop -Offer
 ここで、テンプレートをダウンロードして、用途に合わせて構成する必要があります。
 
 ```azurepowershell-interactive
-$templateUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json"
+$templateUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json"
 $templateFilePath = "armTemplateWVD.json"
 
 Invoke-WebRequest -Uri $templateUrl -OutFile $templateFilePath -UseBasicParsing
@@ -243,7 +238,7 @@ Invoke-WebRequest -Uri $templateUrl -OutFile $templateFilePath -UseBasicParsing
 
 ```
 
-[テンプレート](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json)を自由に表示できます。すべてのコードを表示することもできます。
+[テンプレート](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json)を自由に表示できます。すべてのコードを表示することもできます。
 
 
 ## <a name="submit-the-template"></a>テンプレートの編集
@@ -279,7 +274,7 @@ $getStatus.LastRunStatusMessage
 $getStatus.LastRunStatusRunSubState
 ```
 ## <a name="create-a-vm"></a>VM の作成
-ビルドが完了したら、イメージから VM を作成できます。[こちら](/powershell/module/az.compute/new-azvm#examples)からサンプルを使用してください。
+これでビルドが完了したしたので、イメージから VM を作成できます。[New-AzVM (Az.Compute)](/powershell/module/az.compute/new-azvm#examples) の例を使用してください。
 
 ## <a name="clean-up"></a>クリーンアップ
 
@@ -311,4 +306,5 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-[GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts) で他のサンプルを試すこともできます。
+[GitHub](https://github.com/azure/azvmimagebuilder/tree/master/quickquickstarts) で他のサンプルを試すこともできます。
+

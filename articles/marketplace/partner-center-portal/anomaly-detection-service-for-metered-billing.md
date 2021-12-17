@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
-ms.date: 06/10/2020
-ms.openlocfilehash: ac3e07c67ca82c2960de1c4341a714b33751bfc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: ff4600cd1b107fb041123191f80f9da4f50af5ac
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092401"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081181"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>従量制課金に対する異常検出サービス
 
-[マーケットプレース測定サービス](marketplace-metering-service-apis-faq.md)を使用すると、標準以外の単位に応じて課金されるコマーシャル マーケットプレース プログラムでプランを作成できます。 従量制課金では、お客様が顧客の使用量について使用状況イベントを Microsoft に送信し、Microsoft がその使用量に基づいて請求を準備します。
+[マーケットプレース測定サービス](../marketplace-metering-service-apis-faq.yml)を使用すると、標準以外の単位に応じて課金されるコマーシャル マーケットプレース プログラムでプランを作成できます。 従量制課金では、お客様が顧客の使用量について使用状況イベントを Microsoft に送信し、Microsoft がその使用量に基づいて請求を準備します。
 
 バグ、使用量追跡の構成ミス、不正行為など、さまざまな原因によって間違った使用量データが発生する可能性があります。 間違った使用量データは、不適当な顧客請求および請求紛争につながる可能性があります。
 
@@ -67,7 +67,26 @@ ms.locfileid: "101092401"
 
 従量制課金の異常に関連するサポート チケットを送信するには、次のようにします。
 
-1. 職場アカウントを使用して[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)にサインインします。
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. 職場アカウントを使用して[パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. ホーム ページで、 **[ヘルプとサポート]** タイルを選択します。
+
+    [ ![パートナー センターのホーム ページの [ヘルプとサポート] タイルが表示されます。](../media/workspaces/partner-center-help-support-tile.png) ](../media/workspaces/partner-center-help-support-tile.png#lightbox)
+
+1. **[サポート リクエスト]** の下で、 **[+ 新しいサポート リクエスト]** を選びます。
+1. **[問題の概要]** ボックスに、「**従量制課金**」と入力します。
+1. **[問題の種類]** ボックスで、次のいずれかを選択します。
+    - **[コマーシャル マーケットプレース] > [Metered Billing]\(従量制課金\) > [Wrong usage sent for Azure Applications offer]\(送信された Azure アプリケーション プランの使用量が間違っている\)**
+    - **[コマーシャル マーケットプレース] > [Metered Billing]\(従量制課金\) > [Wrong usage sent for SaaS offer]\(送信された SaaS プランの使用量が間違っている\)**
+1. **[次のステップ]** で、 **[ソリューションの確認]** を選択します。
+1. 推奨されるドキュメントがあればそれを確認するか、 **[問題の詳細を指定]** を選択して、サポート チケットを送信します。
+
+発行元サポート オプションについては、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](../support.md)」をご覧ください。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+1. 職場アカウントを使用して[パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 1. ページの右上にあるメニューで **[サポート]** アイコンを選択します。 ページの右側に **[ヘルプとサポート]** ウィンドウが表示されます。
 1. コマーシャル マーケットプレースに関するヘルプの場合は、 **[Commercial Marketplace]\(コマーシャル マーケットプレース\)** を選択します。
    ![サポート ウィンドウを示しています。](../media/support/commercial-marketplace-support-pane.png)
@@ -80,7 +99,9 @@ ms.locfileid: "101092401"
 
 発行元サポート オプションについては、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](../support.md)」をご覧ください。
 
+---
+
 ## <a name="next-steps"></a>次のステップ
 
-- [Marketplace の測定サービス API](marketplace-metering-service-apis.md) について学習する。
+- [Marketplace の測定サービス API](../marketplace-metering-service-apis.md) について学習する。
 - [パートナー センターで従量制課金の異常を管理する](../anomaly-detection.md)

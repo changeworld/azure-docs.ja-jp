@@ -1,15 +1,15 @@
 ---
 title: Azure Application Insights の IP アドレスの収集 | Microsoft Docs
-description: Azure Application Insights を使用して IP アドレスと位置情報を処理する方法について
+description: Application Insights が IP アドレスと位置情報を処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: 91b3aa07720e39aa8aeeceb9c35e38205e7d7c76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-js, devx-track-azurepowershell
+ms.openlocfilehash: 28b3fb6242d496be7962961d36db3a85c6187d8e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584080"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745890"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>位置情報と IP アドレスの処理
 
@@ -19,20 +19,22 @@ ms.locfileid: "100584080"
 
 既定では、IP アドレスは一時的に収集されますが、Application Insights には格納されません。 基本的なプロセスは次のとおりです。
 
-テレメトリが Azure に送信されると、[MaxMind の GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) を使って位置情報検索を行うために IP アドレスが使用されます。 この検索結果は、`client_City`、`client_StateOrProvince`、`client_CountryOrRegion` の各フィールドを設定するために使用されます。 アドレスは破棄され、`0.0.0.0` が `client_IP` フィールドに書き込まれます。
+テレメトリが Azure に送信されると、Application Insights は、[MaxMind の GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) を使って位置情報検索を行うために IP アドレスを使用します。 Application Insights は、この検索結果を使用して、`client_City`、`client_StateOrProvince`、`client_CountryOrRegion` の各フィールドを設定します。 アドレスは破棄され、`0.0.0.0` が `client_IP` フィールドに書き込まれます。 
 
-* ブラウザー テレメトリ:送信者の IP アドレスを一時的に収集します。 IP アドレスはインジェスト エンドポイントによって計算されます。
-* サーバー テレメトリ:Application Insights テレメトリ モジュールでクライアントの IP アドレスが一時的に収集されます。 `X-Forwarded-For` ヘッダーが設定されている場合、IP アドレスはローカルに収集されません。
+テレメトリの種類は次のとおりです。
+
+* ブラウザー テレメトリ: Application Insights は、送信者の IP アドレスを収集します。 インジェスト エンドポイントは IP アドレスを計算します。
+* サーバー テレメトリ:Application Insights テレメトリ モジュールでクライアントの IP アドレスが一時的に収集されます。 `X-Forwarded-For` ヘッダーが設定されている場合、IP アドレスはローカルに収集されません。 受信した IP アドレスの一覧に複数の項目がある場合は、最後の IP アドレスを使用して位置情報フィールドが設定されます。
 
 この動作の仕様は、個人データの不必要な収集を回避するのに役立ちます。 可能な限り、個人データの収集を回避することをお勧めします。 
 
-## <a name="overriding-default-behavior"></a>既定の動作のオーバーライド
+> [!NOTE]
+> 既定では IP アドレスを収集しませんが、この動作はオーバーライドすることができます。 ただし、コレクションがどのコンプライアンス要件にも地域の規制にも違反していないことを確認することをお勧めします。 
+>
+> Application Insights での個人データ処理の詳細については、[個人データのガイダンス](../logs/personal-data-mgmt.md)に関するページをご覧ください。
 
-既定では IP アドレスを収集しません。 この動作をオーバーライドする柔軟性を引き続き提供しています。 ただし、コレクションがどのコンプライアンス要件にも地域の規制にも違反していないことを確認することをお勧めします。 
 
-Application Insights での個人データ処理の詳細については、[個人データのガイダンス](../logs/personal-data-mgmt.md)に関するページをご覧ください。
-
-## <a name="storing-ip-address-data"></a>IP アドレス データの格納
+## <a name="storage-of-ip-address-data"></a>IP アドレス データのストレージ
 
 IP の収集と格納を有効にするには、Application Insights コンポーネントの `DisableIpMasking` プロパティを `true` に設定する必要があります。 このプロパティは、Azure Resource Manager テンプレートを使用するか、REST API を呼び出すことによって設定できます。 
 
@@ -58,46 +60,45 @@ IP の収集と格納を有効にするには、Application Insights コンポ�
 }
 ```
 
-### <a name="portal"></a>ポータル 
+### <a name="portal"></a>ポータル
 
 1 つの Application Insights リソースの動作のみを変更する必要がある場合は、Azure portal を使用します。 
 
-1. Application Insights リソース > **[Automation]**  >  **[テンプレートのエクスポート]** の順に移動します 
+1. Application Insights リソースに移動し、 **[Automation]**  >  **[テンプレートのエクスポート]** を選択します。 
 
-2. **[デプロイ]** を選択します
+2. **[デプロイ]** を選択します。
 
-    !["デプロイ" の語が赤色で強調表示されたボタン](media/ip-collection/deploy.png)
+    ![赤で強調表示されている [デプロイ] ボタンを示すスクリーンショット。](media/ip-collection/deploy.png)
 
 3. **[テンプレートの編集]** を選択します
 
-    !["編集" の語が赤色で強調表示されたボタン](media/ip-collection/edit-template.png)
+    ![赤で強調表示されている [編集] ボタンと共にリソース グループに関する警告が表示されているスクリーンショット。](media/ip-collection/edit-template.png)
 
-4. リソースの json を次のように変更してから、 **[保存]** を選択します。
+    > [!NOTE]
+    > 次のエラー (スクリーンショット参照) が発生した場合は解決が可能です。"リソース グループは、テンプレート内の 1 つ以上のリソースがサポートしていない場所にあります。 別のリソース グループを選択してください。" 一時的にドロップダウン リストから別のリソース グループを選択してから、元のリソース グループを再選択します。
 
-    ![スクリーンショットでは、"IbizaAIExtension" の後にコンマが追加され、その下の新しい行に "DisableIpMasking": true が追加されています](media/ip-collection/save.png)
+4. JSON テンプレートで、`resources` の中に `properties` を特定し、最後の JSON フィールドにコンマを追加して、`"DisableIpMasking": true` という新しい行を追加します。 次に、**[保存]** を選択します。
 
-    > [!WARNING]
-    > 次のようなエラーが発生した場合:"**_リソース グループは、テンプレート内の 1 つ以上のリソースがサポートしていない場所にあります。別のリソース グループを選択してください。_**" 一時的にドロップダウンから別のリソース グループを選択してから、元のリソース グループを再選択してエラーを解決します。
+    ![要求ソースのプロパティの後にコンマと新しい行が追加されたことを示すスクリーンショット。](media/ip-collection/save.png)
 
-5. **[同意する]**  >  **[購入]** の順に選択します。 
+5. **[確認と作成]**  >  **[作成]** の順に選択します。
 
-    !["購入" の語が赤色で強調表示されたボタンの上に、"上記の使用条件に同意する" の語句が赤色で強調表示されたチェックされたボックス。](media/ip-collection/purchase.png)
-
-    この場合、実際には新しいものは購入されていません。 既存の Application Insights リソースの構成のみを更新しています。
+    > [!NOTE]
+    > "デプロイに失敗しました" と表示されている場合は、`microsoft.insights/components` という種類のデプロイの詳細を確認し、状態を確認します。 成功した場合は、`DisableIpMasking` に加えられた変更がデプロイされます。
 
 6. デプロイが完了すると、新しいテレメトリ データが記録されます。
 
-    テンプレートをもう一度選択して編集すると、新しく追加されたプロパティを使用せずに既定のテンプレートのみが表示されます。 IP アドレス データが表示されず、`"DisableIpMasking": true` が設定されていることを確認する必要がある場合、次の PowerShell を実行します。 
+    テンプレートをもう一度選択して編集すると、新しく追加されたプロパティを使用せずに既定のテンプレートのみが表示されます。 IP アドレス データが表示されず、`"DisableIpMasking": true` が設定されていることを確認する必要がある場合、次の PowerShell コマンドを実行します。
     
     ```powershell
     # Replace `Fabrikam-dev` with the appropriate resource and resource group name.
-    # If you aren't using the cloud shell you will need to connect to your Azure account
+    # If you aren't using Azure Cloud Shell, you need to connect to your Azure account
     # Connect-AzAccount 
     $AppInsights = Get-AzResource -Name 'Fabrikam-dev' -ResourceType 'microsoft.insights/components' -ResourceGroupName 'Fabrikam-dev'
     $AppInsights.Properties
     ```
     
-    結果として、プロパティの一覧が返されます。 プロパティのいずれかが `DisableIpMasking: true` になっているはずです。 Azure Resource Manager で新しいプロパティをデプロイする前に PowerShell を実行する場合、プロパティは存在しません。
+    結果として、プロパティの一覧が返されます。 プロパティのいずれかが `DisableIpMasking: true` になっているはずです。 Azure Resource Manager で新しいプロパティをデプロイする前に PowerShell コマンドを実行する場合、プロパティは存在しません。
 
 ### <a name="rest-api"></a>Rest API
 
@@ -126,7 +127,7 @@ Content-Length: 54
 
 # <a name="net"></a>[.NET](#tab/net)
 
-### <a name="aspnet--aspnet-core"></a>ASP.NET または ASP.NET Core
+### <a name="aspnet-or-aspnet-core"></a>ASP.NET または ASP.NET Core
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -152,9 +153,9 @@ namespace MyWebApp
 ```
 
 > [!NOTE]
-> `ISupportProperties` にアクセスできない場合は、Application Insights SDK の最新の安定版リリースを実行していることを確認してください。 `ISupportProperties` は、大きなカーディナリティ値を対象としています。一方、`GlobalProperties` は、リージョン名、環境名などの小さなカーディナリティ値に適しています。 
+> `ISupportProperties` にアクセスできない場合は、Application Insights SDK の最新の安定したリリースを実行していることを確認してください。 `ISupportProperties` は、カーディナリティの値が高いことを意図しています。 `GlobalProperties` は、リージョン名や環境名などの小さなカーディナリティの値に適しています。
 
-### <a name="enable-telemetry-initializer-for-aspnet"></a>ASP.NET のテレメトリ初期化子を有効にする
+### <a name="enable-the-telemetry-initializer-for-aspnet"></a>ASP.NET のテレメトリ初期化子を有効にする
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;
@@ -174,9 +175,9 @@ namespace MyWebApp
 
 ```
 
-### <a name="enable-telemetry-initializer-for-aspnet-core"></a>ASP.NET Core のテレメトリ初期化子を有効にする
+### <a name="enable-the-telemetry-initializer-for-aspnet-core"></a>ASP.NET Core のテレメトリ初期化子を有効にする
 
-ASP.NET と同じ方法で ASP.NET Core のテレメトリ初期化子を作成できますが、初期化子を有効にするために、参照用に次の例を使用します。
+ASP.NET と同じ方法で、ASP.NET Core テレメトリ初期化子を作成できます。 初期化子を有効にするには、次の例を参考にしてください。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -209,7 +210,7 @@ appInsights.defaultClient.addTelemetryProcessor((envelope) => {
 
 クライアント側で IP アドレスを直接計算する場合は、独自のカスタム ロジックを追加し、結果を使用して `ai.location.ip` タグを設定する必要があります。 `ai.location.ip` が設定されている場合、IP アドレスの計算はインジェスト エンドポイントでは行われず、指定された IP アドレスが、位置情報検索に使用されます。 このシナリオでは、引き続き、既定で IP アドレスがゼロに設定されます。 
 
-カスタム ロジックから計算された IP アドレス全体を保持する場合は、テレメトリ初期化子を使用できます。これにより、`ai.location.ip` で指定した IP アドレス データが別のカスタム フィールドにコピーされます。 しかし、ここでもサーバー側の SDK とは異なり、サードパーティのライブラリや独自のカスタム収集ロジックに依存することなく、クライアント側の SDK ではアドレスが自動的に計算されません。    
+カスタム ロジックから計算された IP アドレス全体を保持する場合は、テレメトリ初期化子を使用できます。これにより、`ai.location.ip` で指定した IP アドレス データが別のカスタム フィールドにコピーされます。 ただし、ここでもサーバー側の SDK とは異なり、サードパーティのライブラリや独自のカスタム ロジックに依存しない場合、クライアント側の SDK ではアドレスが計算されません。    
 
 
 ```javascript
@@ -231,7 +232,7 @@ appInsights.addTelemetryInitializer((item) => {
 
 ### <a name="view-the-results-of-your-telemetry-initializer"></a>テレメトリ初期化子の結果を表示する
 
-サイトに新しいトラフィックを送信する場合は、数分待ってください。 次に、クエリを実行して、コレクションが動作していることを確認できます。
+サイトに新しいトラフィックを送信して数分待ってから、クエリを実行してコレクションが動作していることを確認できます。
 
 ```kusto
 requests
@@ -239,12 +240,12 @@ requests
 | project appName, operation_Name, url, resultCode, client_IP, customDimensions.["client-ip"]
 ```
 
-新しく収集された IP アドレスは `customDimensions_client-ip` 列に表示されます。 既定の `client-ip` 列では、4 つすべてのオクテットがゼロになります。 
+新しく収集された IP アドレスは `customDimensions_client-ip` 列に表示されます。 既定の `client-ip` 列では、4 つすべてのオクテットがゼロのままになります。 
 
-localhost からテストし、`customDimensions_client-ip` の値が `::1` の場合、この値は想定される動作です。 `::1` は、IPv6 のループバック アドレスを表します。 これは、IPv4 での `127.0.0.1` と同じです。
+localhost からテストし、`customDimensions_client-ip` の値が `::1` の場合、この値は想定される動作です。 `::1` の値は、IPv6 のループバック アドレスを表します。 これは、IPv4 での `127.0.0.1` と同じです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Application Insights での[個人データ収集](../logs/personal-data-mgmt.md)について、さらに学習します。
 
-* Application Insights の [IP アドレス収集](https://apmtips.com/posts/2016-07-05-client-ip-address/)のしくみについて、さらに学習します  (この記事は、Microsoft のエンジニアの 1 人が書き込んだ外部の古いブログ投稿です。 IP アドレスが `0.0.0.0` として記録される現在の既定の動作より前のものですが、組み込みの `ClientIpHeaderTelemetryInitializer` のメカニズムについてより詳しく説明されています)。
+* Application Insights の [IP アドレス収集](https://apmtips.com/posts/2016-07-05-client-ip-address/)のしくみについて、さらに学習します  この記事は、Microsoft のエンジニアの 1 人が書き込んだ外部の古いブログ投稿です。 IP アドレスが `0.0.0.0` として記録される現在の既定の動作より前のものですが、組み込みのテレメトリ初期化子のメカニズムについてより詳しく説明されています。

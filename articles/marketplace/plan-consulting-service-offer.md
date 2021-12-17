@@ -1,6 +1,6 @@
 ---
-title: Microsoft コマーシャル マーケットプレース向けのコンサルティング サービス オファーを計画する方法
-description: Microsoft パートナー センターでコマーシャル マーケットプレース プログラムを使用して、Microsoft AppSource または Azure Marketplace 向けの新しいコンサルティング サービス オファーを計画する方法。
+title: コマーシャル マーケットプレースにコンサルティング サービス オファーを計画する
+description: パートナー センターを使用して、Microsoft AppSource または Azure Marketplace のコンサルティング サービス オファーを計画します。
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 10c06f5b36de880302f17dc17c1d47d5209dd902
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29c7460d8d9831a671759f6bf5f1ce3711a1a12d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97588473"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041483"
 ---
-# <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでコンサルティング サービス オファーを計画する方法
+# <a name="plan-a-consulting-service-offer"></a>コンサルティング サービス オファーの計画
 
-この記事では、コンサルティング サービス オファーを Microsoft コマーシャル マーケットプレースに公開するためのさまざまなオプションと要件について説明します。 パートナー センターで公開するためにオファーを準備するには、この記事をお読みください。
+この記事では、コンサルティング サービス オファーをコマーシャル マーケットプレースに公開するためのさまざまなオプションと要件について説明します。 パートナー センターで公開するためにオファーを準備するには、この記事をお読みください。
 
 ## <a name="whats-a-consulting-service"></a>コンサルティング サービスとは
 
@@ -90,7 +90,7 @@ AppSource と Azure Marketplace の違いの詳細については、「[コマ�
 * **概念実証**: ソリューションがお客様の要件を満たすかどうかを判断するための、限られた範囲の実装。
 * **ワークショップ**: お客様の施設内で実施される対話形式のエンゲージメント。 これには、トレーニング、ブリーフィング、評価、またはお客様のデータや環境に対して構築されたデモを含めることができます。
 
-サービスには、10 週間を上限として、あらかじめ固定の期間が設けられている必要があります。 サービスの期間は、オファーのリストに明記されている必要があります。
+サービスには、12 か月を上限としてあらかじめ期間が設けられている必要があります。 サービスの期間は、オファーのリストに明記されている必要があります。
 
 ## <a name="customer-leads"></a>潜在顧客
 
@@ -160,7 +160,7 @@ HTML タグを使用して説明の書式を設定できます。 このボッ�
 
 **検索キーワード** (省略可能): オンライン ストアで顧客がオファーを見つけることができるように使用する検索キーワードを、最大 3 つ指定します。 オファーの **名前** と **説明** を含める必要はありません。
 
-**期間**: コンサルティング サービス オファーの期間は、10 週間を上限として、事前に決定されている必要があります。
+**期間**: コンサルティング サービス オファーの期間は、12 か月を上限として、事前に決定されている必要があります。
 
 **連絡先情報**: パートナー センターでは、社内の 2 人の担当者の名前、メール アドレス、電話番号を入力するように求められます (登録者自身が 2 人の連絡先の一方になることができます)。 Microsoft は、オファーに関するパートナーとの連絡にこの情報を使用します。 この情報はお客様には表示されませんが、クラウド ソリューション プロバイダー (CSP) パートナーには提供される場合があります。
 

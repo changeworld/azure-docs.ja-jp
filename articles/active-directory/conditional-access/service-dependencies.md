@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6592add5e33ba240c0f1d9fdbd23d82adfe5229
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ff1a78fb5dd51ebc00d8a174989d59184c0b884
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91258610"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554640"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスのサービス依存関係の概要 
 
@@ -58,8 +58,10 @@ Office スタックでアプリケーションを使用してこれを実現す�
 |                     | SharePoint                                  | 遅延バインディング  |
 | Outlook Groups      | Exchange                                    | 事前バインディング |
 |                     | SharePoint                                  | 事前バインディング |
-| PowerApps           | Microsoft Azure 管理 (ポータルおよび API) | 事前バインディング |
+| Power Apps           | Microsoft Azure 管理 (ポータルおよび API) | 事前バインディング |
 |                     | Windows Azure Active Directory              | 事前バインディング |
+|                     | SharePoint                                  | 事前バインディング |
+|                     | Exchange                                    | 事前バインディング |
 | Project             | Dynamics CRM                                | 事前バインディング |
 | Skype for Business  | Exchange                                    | 事前バインディング |
 | Visual Studio       | Microsoft Azure 管理 (ポータルおよび API) | 事前バインディング |

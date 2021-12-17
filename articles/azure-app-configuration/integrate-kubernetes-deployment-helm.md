@@ -8,16 +8,16 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 6276fc2027e92d5b7baaf9237a928e7828a3b021
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 47782cb59bf751bd9eb38dd3125c3cdf805305d9
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775769"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370709"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Helm を使用して Kubernetes デプロイと統合する
 
-Helm を使用すると、Kubernetes で実行されるアプリケーションを定義、インストール、およびアップグレードすることができます。 Helm chart には、Kubernetes アプリケーションのインスタンスを作成するために必要な情報が含まれています。 構成は、chart の外部の *values.yaml* という名前のファイルに保存されます。 
+Helm を使用すると、Kubernetes で実行されるアプリケーションを定義、インストール、およびアップグレードすることができます。 Helm chart には、Kubernetes アプリケーションのインスタンスを作成するために必要な情報が含まれています。 構成は、chart の外部の *values.yaml* という名前のファイルに保存されます。
 
 リリース プロセス中、Helm により、アプリケーションを実行するために、chart が適切な構成とマージされます。 たとえば、*values.yaml* に定義された変数は、実行中のコンテナー内で環境変数として参照できます。 また、Helm では、データ ボリュームとしてマウントしたり、環境変数として公開したりできる Kubernetes シークレットの作成もサポートされています。
 
@@ -25,8 +25,8 @@ Helm を使用すると、Kubernetes で実行されるアプリケーション�
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
-> * Helm を使用してアプリケーションを Kubernetes にデプロイするときに、App Configuration の値を使用する。
-> * App Configuration 内の Key Vault 参照に基づいて Kubernetes シークレットを作成する。
+> - Helm を使用してアプリケーションを Kubernetes にデプロイするときに、App Configuration の値を使用する。
+> - App Configuration 内の Key Vault 参照に基づいて Kubernetes シークレットを作成する。
 
 このチュートリアルでは、Helm を使用した Kubernetes の管理に関する基本的な知識があることを前提としています。 [Azure Kubernetes Service](../aks/kubernetes-helm.md) での Helm を使用したアプリケーションのインストールについて詳細を確認します。
 
@@ -41,34 +41,37 @@ Helm を使用すると、Kubernetes で実行されるアプリケーション�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. **[構成エクスプローラー]**  >  **[作成]** の順に選択して、次のキーと値のペアを追加します。
+1. **[構成エクスプローラー]**  >  **[作成]** の順に選択して、次のキーと値のペアを追加します。
 
     | Key | 値 |
     |---|---|
     | settings.color | White |
     | settings.message | Azure App Configuration からのデータ |
 
-    **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
+2. **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>App Configuration に Key Vault 参照を追加する
-1. [Azure portal](https://portal.azure.com) にサインインし、**Password** という名前と **myPassword** という値を持つシークレットを [Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) に追加します。 
+
+1. [Azure portal](https://portal.azure.com) にサインインし、**Password** という名前と **myPassword** という値を持つシークレットを [Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) に追加します。
+
 2. 前のセクションで作成した App Configuration ストア インスタンスを選択します。
 
 3. **[構成エクスプローラー]** を選択します。
 
 4. **[+ 作成]** 、 **[キー コンテナー参照]** の順に選択し、次の値を指定します。
+
     - **[キー]** :**secrets.password** を選択します。
     - **ラベル**:この値は空白のままにしておきます。
     - **[サブスクリプション]** 、 **[リソース グループ]** 、 **[キー コンテナー]** : 前の手順で作成したキー コンテナー内の値に対応する値を入力します。
     - **[シークレット]** : 前のセクションで作成した、**Password** という名前のシークレットを選択します。
 
-## <a name="create-helm-chart"></a>Helm chart を作成する ##
-まず、次のコマンドを使用して、サンプルの Helm chart を作成します
-```console
-helm create mychart
-```
+## <a name="create-helm-chart"></a>Helm chart を作成する
 
-Helm により、次に示す構造を持つ、mychart という名前の新しいディレクトリが作成されます。 
+まず、次のコマンドを使用して、サンプルの Helm chart を作成します
+
+`helm create mychart`
+
+Helm により、次に示す構造を持つ、mychart という名前の新しいディレクトリが作成されます。
 
 > [!TIP]
 > この [chart ガイド](https://helm.sh/docs/chart_template_guide/getting_started/)に従って詳細を確認してください。
@@ -94,7 +97,7 @@ env:
     value: {{ .Values.settings.color }}
 - name: Message
     value: {{ .Values.settings.message }}
-``` 
+```
 
 更新後の完全な *deployment.yaml* ファイルは次のようになります。
 
@@ -177,15 +180,16 @@ data:
 ```yaml
 # settings will be overwritten by App Configuration
 settings:
-    color: red
-    message: myMessage
+  color: red
+  message: myMessage
 ```
 
-## <a name="pass-configuration-from-app-configuration-in-helm-install"></a>Helm インストール内の App Configuration から構成を渡す ##
-最初に、App Configuration から *myConfig.yaml* ファイルに構成をダウンロードします。 **settings.** で始まるキーのみをダウンロードするには、キー フィルターを使用します。 Key Vault 参照のキーを除外するのにキー フィルターが十分でない場合は、引数 **--skip-keyvault** を使用してそれらを除外することができます。 
+## <a name="pass-configuration-from-app-configuration-in-helm-install"></a>Helm インストール内の App Configuration から構成を渡す
+
+最初に、App Configuration から *myConfig.yaml* ファイルに構成をダウンロードします。 **settings.** で始まるキーのみをダウンロードするには、キー フィルターを使用します。 Key Vault 参照のキーを除外するのにキー フィルターが十分でない場合は、引数 **--skip-keyvault** を使用してそれらを除外することができます。
 
 > [!TIP]
-> [export コマンド](/cli/azure/appconfig/kv#az_appconfig_kv_export)の詳細を確認してください。 
+> [export コマンド](/cli/azure/appconfig/kv#az_appconfig_kv_export)の詳細を確認してください。
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml
@@ -203,10 +207,10 @@ az appconfig kv export -n myAppConfiguration -d file --path mySecrets.yaml --key
 helm upgrade の **-f** 引数を使用して、作成した 2 つの構成ファイルを渡します。 これにより、*values.yaml* で定義された構成値が、App Configuration からエクスポートされた値で上書きされます。
 
 ```console
-helm upgrade --install -f myConfig.yaml -f mySecrets.yaml "example" ./mychart 
+helm upgrade --install -f myConfig.yaml -f mySecrets.yaml "example" ./mychart
 ```
 
-また、helm upgrade の **--set** 引数を使用して、リテラル キー値を渡すこともできます。 **--set** 引数の使用は、機密データがディスクに保持されないようにするうえで適切な方法です。 
+また、helm upgrade の **--set** 引数を使用して、リテラル キー値を渡すこともできます。 **--set** 引数の使用は、機密データがディスクに保持されないようにするうえで適切な方法です。
 
 ```powershell
 $secrets = az appconfig kv list -n myAppConfiguration --key "secrets.*" --resolve-keyvault --query "[*].{name:key, value:value}" | ConvertFrom-Json
@@ -217,10 +221,10 @@ foreach ($secret in $secrets) {
 
 if ($keyvalues){
   $keyvalues = $keyvalues.TrimEnd(',')
-  helm upgrade --install --set $keyvalues "example" ./mychart 
+  helm upgrade --install --set $keyvalues "example" ./mychart
 }
 else{
-  helm upgrade --install "example" ./mychart 
+  helm upgrade --install "example" ./mychart
 }
 
 ```
@@ -229,7 +233,7 @@ else{
 
 ![クイック スタートのアプリ (ローカルで起動)](./media/kubernetes-dashboard-env-variables.png)
 
-App Configuration で Key Vault 参照として格納された 1 つのシークレット (**password**) も Kubernetes シークレットに追加されています。 
+App Configuration で Key Vault 参照として格納された 1 つのシークレット (**password**) も Kubernetes シークレットに追加されています。
 
 ![データ セクション内のパスワードを強調表示するスクリーンショット。](./media/kubernetes-dashboard-secrets.png)
 

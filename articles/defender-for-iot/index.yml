@@ -1,86 +1,71 @@
-### YamlMime:Landing
-title: Azure Defender for IoT のドキュメント
-summary: Azure Defender for IoT は、IoT/OT 環境に対する包括的な脅威検出機能を備えており、完全なオンプレミス、クラウド接続、ハイブリッドなどの複数のデプロイ オプションが用意されています。
+### YamlMime:Hub
+title: Microsoft Defender for IoT
+summary: Microsoft Defender for IoT は、IoT/OT 環境に対する包括的な脅威検出機能を備えており、完全なオンプレミス、クラウド接続、ハイブリッドなどの複数のデプロイ オプションが用意されています。
+brand: azure
 metadata:
-  title: Azure Defender for IoT のドキュメント
-  description: Azure ベースのクラウド セキュリティ サービス、Azure Defender for IoT が包括的な IoT デバイス脅威保護を提供するしくみについて説明します。
+  title: Microsoft Defender for IoT のドキュメント
+  description: Azure ベースのクラウド セキュリティ サービス、Microsoft Defender for IoT が包括的な IoT デバイス脅威保護を提供するしくみについて説明します。
   services: service
   ms.service: defender-for-iot
   ms.topic: landing-page
   ms.collection: M365-security-compliance
-  author: mlottner
-  ms.author: mlottner
-  ms.date: 09/07/2020
-  ms.openlocfilehash: a56e82d81839d94029bc34dcdec30544e7158ea1
-  ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/26/2021
-  ms.locfileid: "98802681"
-landingContent:
-- title: Azure Defender for IoT を使用した作業の開始
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Azure Defender for IoT とは
-      url: overview.md
-    - text: ソリューションのアーキテクチャ
-      url: architecture.md
-    - text: ソリューション セットアップの概要
-      url: getting-started.md
-    - text: 新機能
-      url: release-notes.md
-- title: セットアップとオンボード - エージェントレス ソリューション
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: ネットワークをセットアップする
-      url: how-to-set-up-your-network.md
-    - text: 必要なアプライアンスを特定する
-      url: how-to-identify-required-appliances.md
-    - text: ソフトウェアをインストールする
-      url: how-to-install-software.md
-- title: ネットワークを監視する - エージェントレス ソリューション
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 接続されたデバイスの表示
-      url: how-to-work-with-the-sensor-device-map.md
-    - text: デバイスのインベントリを表示する
-      url: how-to-investigate-sensor-detections-in-a-device-inventory.md
-    - text: アラートの調査
-      url: how-to-work-with-alerts-on-your-sensor.md
-    - text: 検出するトラフィックを制御する
-      url: how-to-control-what-traffic-is-monitored.md
-    - text: Azure Sentinel に接続する
-      url: how-to-configure-with-sentinel.md
-- title: Azure Defender for IoT - エージェントベースのソリューション
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Edge のセキュリティ モジュール
-      url: security-edge-architecture.md
-  - linkListType: quickstart
-    links:
-    - text: IoT Hub を有効にする - エージェントベースのソリューション
-      url: quickstart-onboard-iot-hub.md
-    - text: IoT セキュリティ ソリューションを構成する
-      url: quickstart-configure-your-solution.md
-    - text: Azure RTOS 用のセキュリティ モジュールを構成する
-      url: quickstart-azure-rtos-security-module.md
-    - text: Azure Defender for IoT のモジュール ツインを作成する
-      url: quickstart-create-security-twin.md
-    - text: カスタムのセキュリティのアラートを作成する
-      url: quickstart-create-custom-alerts.md
-    - text: セキュリティ アラートについて調査する
-      url: quickstart-investigate-security-alerts.md
-- title: Azure Defender for IoT ソリューションのリソース
-  linkLists:
-  - linkListType: video
-    links:
-    - text: Take
-      url: https://myignite.microsoft.com/sessions/973175b0-2a2d-4b41-99f8-051e42ac575a
-  - linkListType: reference
-    links:
-    - text: よく寄せられる質問
-      url: resources-frequently-asked-questions.md
+  author: elazark
+  ms.author: v-ekrieg
+  manager: raynew
+  ms.date: 11/09/2021
+highlightedContent:
+  items:
+    - title: エンドユーザー組織向けの Microsoft Defender for IoT とは
+      itemType: overview
+      url: organizations/overview.md
+    - title: エンドユーザー組織向けの新機能とは
+      itemType: whats-new
+      url: organizations/release-notes.md
+    - title: エンドユーザー組織向けのエージェントレス ソリューション アーキテクチャ
+      itemType: architecture
+      url: organizations/architecture.md
+    - title: デバイス ビルダー向け Microsoft Defender for IoT とは
+      itemType: overview
+      url: device-builders/overview.md
+    - title: デバイス ビルダー向けの新機能
+      itemType: whats-new
+      url: device-builders/release-notes.md
+    - title: デバイス ビルダー向けのエージェントベース ソリューション アーキテクチャ
+      itemType: architecture
+      url: device-builders/architecture-agent-based.md
+conceptualContent:
+  items:
+    - title: エンドユーザー組織向けの Microsoft Defender for IoT
+      links:
+        - url: organizations/quickstart-system-prerequisites.md
+          itemType: quickstart
+          text: システムの前提条件
+        - url: organizations/getting-started.md
+          itemType: quickstart
+          text: エンドユーザー組織向けの Azure Defender for IoT の使用を開始する
+        - url: organizations/concept-key-concepts.md
+          itemType: quickstart
+          text: 主要な概念
+        - url: organizations/how-to-set-up-your-network.md
+          itemType: how-to-guide
+          text: Microsoft Defender for IoT のネットワーク設定について
+      footerLink:
+        url: organizations/index.yml
+        text: 詳細情報
+    - title: デバイス ビルダー向け Microsoft Defender for IoT
+      links:
+        - url: device-builders/quickstart-onboard-iot-hub.md
+          itemType: quickstart
+          text: エージェントベース ソリューションに Defender for IoT をオンボードする
+        - url: device-builders/quickstart-configure-your-solution.md
+          itemType: quickstart
+          text: Microsoft Defender for IoT ソリューションを構成します
+        - url: device-builders/concept-recommendations.md
+          itemType: concept
+          text: IoT Hub のセキュリティに関する推奨事項
+        - url: device-builders/how-to-configure-agent-based-solution.md
+          itemType: how-to-guide
+          text: Microsoft Defender for IoT を構成します
+      footerLink:
+        url: device-builders/index.yml
+        text: 詳細情報

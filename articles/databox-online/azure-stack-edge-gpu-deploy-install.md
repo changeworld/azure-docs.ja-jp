@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 07/07/2021
 ms.author: alkohli
-ms.openlocfilehash: a415dba4bb4fd5b95e98ae7c104cae92db27f34c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 488b6d791afe477bb1aecacd0ecb15d54dcb43da
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060161"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221320"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro を設置する
 
@@ -163,7 +163,7 @@ ms.locfileid: "106060161"
 - 開梱してラックに取り付けた状態の Azure Stack Edge Pro 物理デバイス。
 - 電源コード 2 本。
 - 管理インターフェイスに接続するための 1-GbE RJ-45 ネットワーク ケーブルを 1 本以上。 デバイスには、管理用とデータ用に 1 つずつ、2 つの 1-GbE ネットワーク インターフェイスがあります。
-- 構成するデータ ネットワーク インターフェイスのそれぞれに対して、25-GbE SFP+ 銅線ケーブル 1 本。 少なくとも 1 つのデータ ネットワーク インターフェイス (ポート 2、ポート 3、ポート 4、ポート 5、またはポート 6) がインターネットに接続されている必要があります (Azure への接続が可能なもの)。  
+- 構成するデータ ネットワーク インターフェイスのそれぞれに対して、25 または 10 GbE SFP+ 銅線ケーブル 1 本。 少なくとも 1 つのデータ ネットワーク インターフェイス (ポート 2、ポート 3、ポート 4、ポート 5、またはポート 6) がインターネットに接続されている必要があります (Azure への接続が可能なもの)。  
 - 2 つの配電ユニットへのアクセス (推奨)。
 - データ用に 1 GbE ネットワーク インターフェイスをインターネットに接続するための少なくとも 1 つの 1 GbE ネットワーク スイッチ。 接続されたスイッチが 1 GbE 以上でない場合、ローカル Web UI にアクセスできません。 データ用に 25 または 10 GbE インターフェイスを使用する場合は、25 GbE または 10 GbE スイッチが必要です。
 
@@ -190,10 +190,10 @@ Azure Stack Edge Pro デバイスとは:
     - **カスタム Microsoft `Qlogic` Cavium 25G NDC アダプター** - ポート 1 からポート 4。
     - **Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター** - ポート 5 とポート 6。
 
-これらのネットワーク カードでサポートされているケーブル、スイッチ、およびトランシーバーの完全な一覧については、以下を参照してください。
+これらのネットワーク アダプター カードでサポートされているケーブル、スイッチ、およびトランシーバーの完全な一覧については、以下を参照してください。
 
 - [`Qlogic` Cavium 25G NDC アダプターの相互運用性マトリックス](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
-- [Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター互換製品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。  
+- [Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター互換製品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)内の 25 GbE と 10 GbE ケーブルおよびモジュール。  
 
  
 以下の手順に従って、デバイスの電源とネットワークのケーブルを接続します。
@@ -228,6 +228,7 @@ Azure Stack Edge Pro デバイスとは:
 
     - ポート 2 を接続する場合は、1-GbE RJ-45 ネットワーク ケーブルを使用します。
     - 10/25 GbE ネットワーク インターフェイスの場合は、SFP+ 銅線ケーブルまたはファイバーを使用します。 ファイバーを使用する場合は、SFP アダプターへの光ファイバーを使用します。
+    - ネットワーク機能マネージャーのデプロイ用に、ポート 5 とポート 6 が接続されていることを確認します。 詳細については、「[チュートリアル: Azure Stack Edge にネットワーク機能をデプロイする (プレビュー)](../network-function-manager/deploy-functions.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

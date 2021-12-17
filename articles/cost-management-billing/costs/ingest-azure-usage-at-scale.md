@@ -1,23 +1,23 @@
 ---
-title: エクスポートを使用してサイズの大きなコスト データセットを繰り返し取得する
-description: この記事は、エクスポートを使用して Azure Cost Management から大量のデータを定期的にエクスポートする場合に役立ちます。
+title: エクスポートを使用して Azure Cost Management から大規模なコスト データセットを繰り返し取得する
+description: この記事は、エクスポートを使用して Cost Management から大量のデータを定期的にエクスポートする場合に役立ちます。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/08/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 465225341bdffc984ac6cbc82ba94eb656ad60df
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a27e64e7b5c94d033529c08ea02e757ba8857549
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509632"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705859"
 ---
 # <a name="retrieve-large-cost-datasets-recurringly-with-exports"></a>エクスポートを使用してサイズの大きなコスト データセットを繰り返し取得する
 
-この記事は、エクスポートを使用して Azure Cost Management から大量のデータを定期的にエクスポートする場合に役立ちます。 エクスポートは、未集計のコスト データを取得する際に推奨される方法です。 特に、使用状況ファイルが大きすぎるために、Usage Details API を使用して確実に呼び出したりダウンロードしたりできない場合に推奨されます。 エクスポートされたデータは、自分が選択した Azure Storage アカウントに配置されます。 そこから、お使いのシステムにそれを読み込み、必要に応じて分析できます。 Azure portal でエクスポートを構成するには、[データのエクスポート](tutorial-export-acm-data.md)に関するページを参照してください。
+この記事は、エクスポートを使用して Cost Management から大量のデータを定期的にエクスポートする場合に役立ちます。 エクスポートは、未集計のコスト データを取得する際に推奨される方法です。 特に、使用状況ファイルが大きすぎるために、Usage Details API を使用して確実に呼び出したりダウンロードしたりできない場合に推奨されます。 エクスポートされたデータは、自分が選択した Azure Storage アカウントに配置されます。 そこから、お使いのシステムにそれを読み込み、必要に応じて分析できます。 Azure portal でエクスポートを構成するには、[データのエクスポート](tutorial-export-acm-data.md)に関するページを参照してください。
 
 さまざまなスコープでエクスポートを自動化する場合は、次のセクションのサンプル API 要求が出発点として適しています。 Exports API を使用して、一般的な環境構成の一部として自動エクスポートを作成できます。 自動エクスポートは、必要なデータを確実に入手するのに役立ちます。 Azure の使用の拡大に伴って、ご自分の組織のシステムで使用できます。
 
@@ -79,7 +79,7 @@ ms.locfileid: "102509632"
 
 ## <a name="copy-large-azure-storage-blobs"></a>サイズの大きな Azure ストレージ BLOB をコピーする
 
-Cost Management を使用すると、スケジュールを設定して Azure の使用状況の詳細を BLOB として Azure のストレージ アカウントにエクスポートすることができます。 その結果できる BLOB のサイズが、数ギガバイトを超えることがあります。 Azure Cost Management チームは、Azure Storage チームと共同で、サイズの大きな Azure ストレージ BLOB をコピーするテストを実施しました。 その結果については、後のセクションで説明します。 ある Azure リージョンから別のリージョンにストレージ BLOB をコピーした場合には、これとよく似た結果になるものと考えて問題ありません。
+Cost Management を使用すると、スケジュールを設定して Azure の使用状況の詳細を BLOB として Azure のストレージ アカウントにエクスポートすることができます。 その結果できる BLOB のサイズが、数ギガバイトを超えることがあります。 Cost Management チームは、Azure Storage チームと共同で、大規模な Azure Storage BLOB をコピーするテストを実施しました。 その結果については、後のセクションで説明します。 ある Azure リージョンから別のリージョンにストレージ BLOB をコピーした場合には、これとよく似た結果になるものと考えて問題ありません。
 
 チームは、米国西部リージョンのストレージ アカウントから得られた BLOB を同一リージョンおよび他のリージョンに転送し、そのパフォーマンスをテストしました。 速度は、同一リージョンに転送した場合の 1 秒あたり 2 GB から、東南アジア リージョンのストレージ アカウントに転送した場合の 1 秒あたり 150 MB まで、幅広く観測されました。
 

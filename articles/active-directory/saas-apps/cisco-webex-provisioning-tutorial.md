@@ -2,21 +2,21 @@
 title: チュートリアル:Azure Active Directory を使用して、自動ユーザー プロビジョニングを行うように Cisco Webex を構成する | Microsoft Docs
 description: Cisco Webex に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除するように Azure Active Directory を設定する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
-ms.author: zhchia
-ms.openlocfilehash: bc05e83ac6c7f0f7c5e9a571c1fa7397af858f44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 1d7c7092dc0bf44093390e9cd41b9ca8f62f247e
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180100"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988447"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>チュートリアル:自動的にユーザーをプロビジョニングするための Cisco Webex の構成
 
@@ -34,6 +34,9 @@ ms.locfileid: "96180100"
 * Azure AD テナント。
 * [Cisco Webex テナント](https://www.webex.com/pricing/index.html)。
 * Admin アクセス許可がある Cisco Webex のユーザー アカウント。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>ギャラリーからの Cisco Webex の追加
 

@@ -2,18 +2,18 @@
 title: マネージド HSM のキーを管理する - Azure Key Vault | Microsoft Docs
 description: この記事では、マネージド HSM のキーを管理します
 services: key-vault
-author: amitbapat
+author: mbaldwin
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.author: ambapat
-ms.openlocfilehash: 8d0cbd35b53bc8460ac8a19e5197d1f560657263
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: mbaldwin
+ms.openlocfilehash: 71cc84defc8eb791b8d1f1189162b97ee44db9ec
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212044"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129208"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Azure CLI を使用してマネージド HSM を管理する
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この記事の手順を完了するには、次のものが必要です。
 
 * Microsoft Azure サブスクリプション。 サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
-* Azure CLI バージョン 2.12.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+* Azure CLI バージョン 2.25.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 * お使いのサブスクリプション内のマネージド HSM。 「[クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする](quick-create-cli.md)」を参照して、マネージド HSM をプロビジョニングしてアクティブにします。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -47,7 +47,12 @@ CLI を使用したログイン オプションの詳細については、「[Az
 > [!NOTE]
 > 以下のすべてのコマンドは、2 つの使用方法を示しています。 1 つは **--hsm-name** と **--name** (キー名用) パラメーターを使用し、もう 1 つは **--id** パラメーターを使用して、必要に応じてキー名を含む URL 全体を指定できます。 後者の方法は、呼び出し元 (ユーザーまたはアプリケーション) にコントロール プレーンに対する読み取りアクセス権がなく、データ プレーンに対する制限付きアクセスだけがある場合に便利です。
 
+> [!NOTE]
+> キー マテリアルとの一部のやり取りでは、特定のローカル RBAC アクセス許可が必要です。 組み込みのローカル RBAC ロールとアクセス許可の全一覧については、「[Managed HSM のローカル RBAC の組み込みロール](./built-in-roles.md)」を参照してください。 これらのアクセス許可をユーザーに割り当てるには、「[マネージド HSM へのアクセスをセキュリティで保護する](./secure-your-managed-hsm.md)」を参照してください。
 ## <a name="create-an-hsm-key"></a>HSM キーを作成する
+
+> [!NOTE]
+> Managed HSM に生成またはインポートされたキーはエクスポートできません。 主要な移植性と持続性については、推奨されるベスト プラクティスを参照してください。
 
 キーを作成するには、`az keyvault key create` コマンドを使用します。
 
@@ -173,7 +178,7 @@ az keyvault key purge --hsm-name ContosoHSM --name myrsakey
 ## OR
 # Note the key name (myaeskey) in the URI
 
-az keyvault key recover --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys/myrsakey
+az keyvault key purge --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys/myrsakey
 
 ```
 
@@ -199,12 +204,12 @@ az keyvault key backup --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys
 > 同じ名前のキーがアクティブまたは削除済みの状態である場合、復元は成功しません。
 
 ```azurecli-interactive
-az keyvault key restore --hsm-name ContosoHSM --name myrsakey --file myrsakey.bakup
+az keyvault key restore --hsm-name ContosoHSM --name myrsakey --file myrsakey.backup
 
 ## OR
 # Note the key name (myaeskey) in the URI
 
-az keyvault key recover --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys/myrsakey --file myrsakey.bakup
+az keyvault key restore --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys/myrsakey --file myrsakey.backup
 
 ```
 

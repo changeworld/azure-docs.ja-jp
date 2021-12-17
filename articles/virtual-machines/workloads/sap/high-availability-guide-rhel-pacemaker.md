@@ -12,14 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2021
+ms.custom: subject-rbac-steps
+ms.date: 08/26/2021
 ms.author: radeltch
-ms.openlocfilehash: af8523486b42af8c0722a56bdd813d6449692c14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 412bbd6f7414cdeaab1c116210b511bc8000c270
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676886"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123109802"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする
 
@@ -90,7 +91,7 @@ ms.locfileid: "101676886"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Azure Marketplace PAYG RHEL イメージにプールをアタッチすると、RHEL の使用に対して二重に請求されることになります。これは、PAYG イメージに対して 1 回、アタッチするプールの RHEL エンタイトルメントに対して 1 回です。 これを防ぐ目的で、Azure では BYOS RHEL イメージが提供されるようになりました。 詳細については[こちら](../redhat/byos.md)を参照してください。  
+   Azure Marketplace PAYG RHEL イメージにプールをアタッチすると、RHEL の使用に対して二重に請求されることになります。これは、PAYG イメージに対して 1 回、アタッチするプールの RHEL エンタイトルメントに対して 1 回です。 これを防ぐ目的で、Azure では BYOS RHEL イメージが提供されるようになりました。 詳細については、[Red Hat Enterprise Linux のサブスクリプション持ち込み Azure イメージ](../redhat/byos.md)に関するページを参照してください。
 
 1. **[A]** SAP のリポジトリ用に RHEL を有効にします。 RHEL SAP の HA が有効になっているイメージを使用する場合、この手順は必要ありません。  
 
@@ -246,44 +247,28 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 ```json
 {
-    "properties": {
-        "roleName": "Linux Fence Agent Role",
-        "description": "Allows to power-off and start virtual machines",
-        "assignableScopes": [
-            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-        ],
-        "permissions": [
-            {
-                "actions": [
-                    "Microsoft.Compute/*/read",
-                    "Microsoft.Compute/virtualMachines/powerOff/action",
-                    "Microsoft.Compute/virtualMachines/start/action"
-                ],
-                "notActions": [],
-                "dataActions": [],
-                "notDataActions": []
-            }
-        ]
-    }
+      "Name": "Linux Fence Agent Role",
+      "description": "Allows to power-off and start virtual machines",
+      "assignableScopes": [
+              "/subscriptions/e663cc2d-722b-4be1-b636-bbd9e4c60fd9",
+              "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+      ],
+      "actions": [
+              "Microsoft.Compute/*/read",
+              "Microsoft.Compute/virtualMachines/powerOff/action",
+              "Microsoft.Compute/virtualMachines/start/action"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
 }
 ```
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** サービス プリンシパルにカスタム ロールを割り当てる
 
-最後の章で作成したカスタム ロール "Linux Fence Agent Role" をサービス プリンシパルに割り当てます。 所有者ロールは今後使わないでください。
-
-1. [https://resources.azure.com](https://portal.azure.com ) に移動します
-1. [All resources] \(すべてのリソース) ブレードを開きます
-1. 1 つ目のクラスター ノードの仮想マシンを選択します
-1. [アクセス制御 (IAM)] を選択します
-1. [ロールの割り当ての追加] をクリックします
-1. "Linux Fence Agent Role" ロールを選択します
-1. 上記で作成したアプリケーションの名前を入力します
-1. [保存] をクリックします。
-
-2 つ目のクラスター ノードについても上記の手順を繰り返します。
-
+最後の章で作成したカスタム ロール "Linux Fence Agent Role" をサービス プリンシパルに割り当てます。 所有者ロールは今後使わないでください。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../../role-based-access-control/role-assignments-portal.md)」を参照してください。   
+必ず両方のクラスターノードにロールを割り当ててください。    
+      
 ### <a name="1-create-the-stonith-devices"></a>**[1]** STONITH デバイスを作成します
 
 仮想マシンのアクセス許可を編集したあとで、クラスターの STONITH デバイスを構成できます。
@@ -298,15 +283,19 @@ sudo pcs property set stonith-timeout=900
 
 RHEL **7.X** の場合は、次のコマンドを使用してフェンス デバイスを構成します。    
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
-power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 pcmk_delay_max=15 \
 op monitor interval=3600
 </code></pre>
 
 RHEL **8.X** の場合は、次のコマンドを使用してフェンス デバイスを構成します。  
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
-power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 pcmk_delay_max=15 \
 op monitor interval=3600
 </code></pre>
+
+> [!TIP]
+> `pcmk_delay_max` 属性は、2 ノード Pacemaker クラスターでのみ構成します。 2 ノード Pacemaker クラスターでのフェンス レース防止の詳細については、[2 ノード クラスターでフェンスを遅延させて "フェンスが機能停止する" シナリオのフェンス レースを防ぐこと](https://access.redhat.com/solutions/54829)に関するページを参照してください。 
+ 
 
 > [!IMPORTANT]
 > 監視およびフェンス操作は逆シリアル化されます。 その結果、長時間実行されている監視操作と同時フェンス イベントがある場合、既に実行されている監視操作により、クラスターのフェールオーバーに遅延は発生しません。  
@@ -319,6 +308,101 @@ op monitor interval=3600
 > [!TIP]
 >Azure Fence Agent では、[標準 ILB を使用した VM 用のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)に関する記事で説明されているように、使用可能なソリューションと共に、パブリック エンドポイントへの送信接続が必要です。  
 
+
+## <a name="optional-stonith-configuration"></a>オプションの STONITH 構成  
+
+> [!TIP]
+> このセクションは、特殊なフェンス デバイス `fence_kdump` を構成する必要がある場合にのみ適用されます。  
+
+VM 内で診断情報を収集する必要がある場合は、フェンス エージェント `fence_kdump` に基づいて追加の STONITH デバイスを構成すると有用な場合があります。 `fence_kdump` エージェントでは、他のフェンス メソッドが呼び出される前に、kdump クラッシュ復旧に入ったノードを検出してクラッシュ復旧サービスを完了できるようにすることができます。 `fence_kdump` は、Azure VM 使用時の Azure Fence Agent のような、従来のフェンス メカニズムに代わるものではないことに注意してください。   
+
+> [!IMPORTANT]
+> `fence_kdump` が第 1 レベルの stonith として構成されている場合、それによってフェンス操作で遅延が発生し、アプリケーション リソースのフェールオーバーでそれぞれ遅延が発生することに注意してください。  
+> 
+> クラッシュ ダンプが正常に検出された場合、フェンスはクラッシュ復旧サービスが完了するまで遅延されます。 失敗したノードが到達不能な場合や応答しない場合は、構成されている繰り返しの回数と、`fence_kdump` のタイムアウトによって決まる時間だけフェンスが遅延されます。 詳細については、「[Red Hat Pacemaker クラスターで fence_kdump を構成する方法](https://access.redhat.com/solutions/2876971)」を参照してください。  
+> 提案されている fence_kdump のタイムアウトは、実際の環境に合わせて調整する必要がある場合があります。
+>     
+> `fence_kdump` stonith を構成するのは、VM 内で診断情報を収集する必要がある場合のみとし、必ず Azure Fence Agent のような従来のフェンス方式と組み合わせることをお勧めします。   
+
+以下の Red Hat KB には、`fence_kdump` stonith の構成に関する重要な情報が含まれています。
+
+* [Red Hat Pacemaker クラスターで fence_kdump を構成する方法](https://access.redhat.com/solutions/2876971)
+* [Pacemaker を使用する RHEL クラスターで STONITH レベルを構成および管理する方法](https://access.redhat.com/solutions/891323)
+* [2.0.14 よりも古い kexec-tools を使用すると "X 秒後にタイムアウトします" と表示されて RHEL 6 0r 7 HA クラスターで fence_kdump が失敗する](https://access.redhat.com/solutions/2388711)
+* 既定のタイムアウトを変更する方法については、「[RHEL 6、7、8 HA アドオンで使用するために kdump を構成する方法](https://access.redhat.com/articles/67570)」を参照してください
+* `fence_kdump` の使用時にフェールオーバーの遅延を減らす方法については、「[fence_kdump 構成の追加時に予想されるフェールオーバーの遅延を減らすことができるか](https://access.redhat.com/solutions/5512331)」を参照してください
+   
+Azure Fence Agent の構成に加えて以下のオプションの手順を実行し、第 1 レベルの STONITH 構成として `fence_kdump` を追加します。 
+
+
+1. **[A]** kdump がアクティブになっていて、構成されていることを確認します。  
+    ```
+    systemctl is-active kdump
+    # Expected result
+    # active
+    ```
+2. **[A]** `fence_kdump` フェンス エージェントをインストールします。  
+    ```
+    yum install fence-agents-kdump
+    ```
+3. **[1]** クラスター内に `fence_kdump` stonith デバイスを作成します。   
+    <pre><code>
+    pcs stonith create rsc_st_kdump fence_kdump pcmk_reboot_action="off" <b>pcmk_host_list="prod-cl1-0 prod-cl1-1</b>" timeout=30
+    </code></pre>
+
+4. **[1]** stonith レベルを構成して、`fence_kdump` フェンス メカニズムが最初に動作するようにします。  
+    <pre><code>
+    pcs stonith create rsc_st_kdump fence_kdump pcmk_reboot_action="off" <b>pcmk_host_list="prod-cl1-0 prod-cl1-1</b>"
+    pcs stonith level add 1 <b>prod-cl1-0</b> rsc_st_kdump
+    pcs stonith level add 1 <b>prod-cl1-1</b> rsc_st_kdump
+    pcs stonith level add 2 <b>prod-cl1-0</b> rsc_st_azure
+    pcs stonith level add 2 <b>prod-cl1-1</b> rsc_st_azure
+    # Check the stonith level configuration 
+    pcs stonith level
+    # Example output
+    # Target: <b>prod-cl1-0</b>
+    # Level 1 - rsc_st_kdump
+    # Level 2 - rsc_st_azure
+    # Target: <b>prod-cl1-1</b>
+    # Level 1 - rsc_st_kdump
+    # Level 2 - rsc_st_azure
+    </code></pre>
+
+5. **[A]** ファイアウォールを通過する `fence_kdump` のために必要なポートを許可します
+    ```
+    firewall-cmd --add-port=7410/udp
+    firewall-cmd --add-port=7410/udp --permanent
+    ```
+
+6. **[A]** `initramfs` イメージ ファイルに `fence_kdump` と `hosts` のファイルが含まれることを確認します。 詳細については、「[Red Hat Pacemaker クラスターで fence_kdump を構成する方法](https://access.redhat.com/solutions/2876971)」を参照してください。   
+    ```
+    lsinitrd /boot/initramfs-$(uname -r)kdump.img | egrep "fence|hosts"
+    # Example output 
+    # -rw-r--r--   1 root     root          208 Jun  7 21:42 etc/hosts
+    # -rwxr-xr-x   1 root     root        15560 Jun 17 14:59 usr/libexec/fence_kdump_send
+    ```
+
+7. **[A]** `kexec-tools` の一部のバージョンでタイムアウトによる `fence_kdump` の失敗が発生しないように、`/etc/kdump.conf` で `fence_kdump_nodes` の構成を実行します。 詳細については、「[kexec-tools バージョン 2.0.15 以降の使用時に fence_kdump_nodes が指定されていないと fence_kdump がタイムアウトする](https://access.redhat.com/solutions/4498151)」と、「[2.0.14 より前のバージョンの kexec-tools の使用時に RHEL 6 または 7 の高可用性クラスターで "X 秒後にタイムアウトします" と表示されて fence_kdump が失敗する](https://access.redhat.com/solutions/2388711)」を参照してください。 下に、2 ノード クラスターの構成例を示します。 `/etc/kdump.conf` で変更を加えた後に、kdump イメージを再生成する必要があります。 これは、`kdump` サービスを再起動することで実現できます。  
+
+    <pre><code>
+    vi /etc/kdump.conf
+    # On node <b>prod-cl1-0</b> make sure the following line is added
+    fence_kdump_nodes  <b>prod-cl1-1</b>
+    # On node <b>prod-cl1-1</b> make sure the following line is added
+    fence_kdump_nodes  <b>prod-cl1-0</b>
+
+    # Restart the service on each node
+    systemctl restart kdump
+    </code></pre>
+
+8. ノードをクラッシュさせて構成をテストします。 詳細については、「[Red Hat Pacemaker クラスターで fence_kdump を構成する方法](https://access.redhat.com/solutions/2876971)」を参照してください。  
+
+    > [!IMPORTANT]
+    > クラスターが既に運用環境で使用中の場合は、ノードをクラッシュさせるとアプリケーションに影響があるため、それに応じてテストを計画します。   
+
+    ```
+    echo c > /proc/sysrq-trigger
+    ```
 ## <a name="next-steps"></a>次のステップ
 
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]

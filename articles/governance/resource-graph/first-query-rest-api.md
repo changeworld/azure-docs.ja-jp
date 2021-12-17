@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:自分の初めての REST API クエリ
 description: このクイックスタートでは、手順に従い、REST API 用に Resource Graph エンドポイントを呼び出し、ご自分の初めてのクエリを実行します。
-ms.date: 01/27/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
-ms.openlocfilehash: 670ceba95d937be278c44c34704cb844eead480d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 258bda8df671dac3440edef37d8ea5a1c7f362b5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920073"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460067"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>クイック スタート:REST API を使用して自分の初めて Resource Graph クエリを実行する
 
@@ -54,7 +54,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-ご自分の選択した環境に REST API ツールが追加されたので、簡単な Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。
+ご自分の選択した環境に REST API ツールが追加されたので、簡単なサブスクリプション ベースの Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。 [管理グループ](../management-groups/overview.md)でクエリを実行する場合、`subscriptions` ではなく `managementgroups` を使用します。 テナント全体に対してクエリを実行するには、要求本文から `managementgroups` と `subscriptions` プロパティの両方を省略します。
 
 各 REST API 呼び出しの要求本文には、自分固有の値に置き換える必要がある変数が使用されています。
 
@@ -65,7 +65,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
    - REST API URI
 
      ```http
-     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2019-04-01
+     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01
      ```
 
    - 要求本文
@@ -87,7 +87,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
    - REST API URI
 
      ```http
-     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2019-04-01
+     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01
      ```
 
    - 要求本文
@@ -109,7 +109,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
    - REST API URI
 
      ```http
-     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2019-04-01
+     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01
      ```
 
    - 要求本文
@@ -125,7 +125,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 最後のクエリを複数回実行した場合、環境内で何も変更がないと仮定すると、返される結果は変わらず、**Name** プロパティで並べ替えられますが、引き続き上位 5 件の結果に制限されます。
 
-Azure Resource Graph に対する REST API 呼び出しの追加の例については、[Azure Resource Graph の REST の例](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources#examples)に関するページを参照してください。
+Azure Resource Graph に対する REST API 呼び出しの追加の例については、[Azure Resource Graph の REST の例](/rest/api/azureresourcegraph/resourcegraph(2021-03-01)/resources/resources#examples)に関するページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

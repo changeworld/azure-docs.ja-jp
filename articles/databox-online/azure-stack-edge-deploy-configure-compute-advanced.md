@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Stack Edge Pro のコンピューティングを使用して詳細なデプロイのためのデータのフィルター処理と分析を行う | Microsoft Docs'
-description: Azure Stack Edge Pro 上にコンピューティング ロールを構成し、それを使用して、Azure に送信する前のデータを詳細なデプロイ フロー用に変換する方法について説明します。
+title: 詳細なコンピューティング デプロイ用に Azure Stack Edge Pro FPGA のデータをフィルター処理、分析するためのチュートリアル
+description: Azure Stack Edge Pro FPGA 上にコンピューティング ロールを構成し、それを使用して、Azure に送信する前のデータを詳細なデプロイ フロー用に変換する方法について学習します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 81953f573c47d229fcaccd7c11f62155acd2f119
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8f6fff328e90c37804e86e4b258cbcd0cb2255d7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063646"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461466"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>チュートリアル:詳細なデプロイ フローのために Azure Stack Edge Pro でデータを変換する
+# <a name="tutorial-transform-data-with-azure-stack-edge-pro-fpga-for-advanced-deployment-flow"></a>チュートリアル: 詳細なデプロイ フローのために Azure Stack Edge Pro FPGA でデータを変換する
 
-このチュートリアルでは、Azure Stack Edge Pro デバイス上に詳細なデプロイ フロー用のコンピューティング ロールを構成する方法について説明します。 コンピューティング ロールを構成すると、Azure に送信する前に Azure Stack Edge Pro でデータを変換できるようになります。
+このチュートリアルでは、Azure Stack Edge Pro FPGA デバイス上に詳細なデプロイ フロー用のコンピューティング ロールを構成する方法について説明します。 コンピューティング ロールを構成すると、Azure に送信する前に Azure Stack Edge Pro FPGA でデータを変換できるようになります。
 
 コンピューティングは、デバイスでのシンプルまたは詳細なデプロイ フロー用に構成できます。
 
@@ -42,14 +42,14 @@ ms.locfileid: "106063646"
  
 ## <a name="prerequisites"></a>前提条件
 
-お客様の Azure Stack Edge Pro デバイスでコンピューティング ロールを設定する前に、次のことを確認してください。
+Azure Stack Edge Pro FPGA デバイスでコンピューティング ロールを設定する前に、次のことを確認してください。
 
-- [Azure Stack Edge Pro の接続、設定、アクティブ化](azure-stack-edge-deploy-connect-setup-activate.md)に関するページで説明されているとおり、お客様の Azure Stack Edge Pro デバイスをアクティブ化していること。
+- [Azure Stack Edge Pro FPGA の接続、設定、アクティブ化](azure-stack-edge-deploy-connect-setup-activate.md)に関するページで説明されているとおり、お客様の Azure Stack Edge Pro FPGA デバイスをアクティブ化していること。
 
 
 ## <a name="configure-compute"></a>コンピューティングを構成する
 
-Azure Stack Edge Pro でコンピューティングを構成するために、IoT Hub リソースを作成します。
+Azure Stack Edge Pro FPGA でコンピューティングを構成するために、IoT Hub リソースを作成します。
 
 1. Azure portal で、Azure Stack Edge リソースの **[概要]** に移動します。 右ペインで **[IoT Edge]** タイルを選択します。
 
@@ -145,9 +145,9 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 
 ## <a name="add-a-module"></a>モジュールを追加する
 
-この Edge デバイスにはカスタム モジュールがありません。 カスタム モジュールまたはあらかじめ構築されたモジュールを追加できます。 カスタム モジュールを作成する方法については、[Azure Stack Edge Pro デバイス用の C# モジュールの開発](azure-stack-edge-create-iot-edge-module.md)に関するページを参照してください。
+この Edge デバイスにはカスタム モジュールがありません。 カスタム モジュールまたはあらかじめ構築されたモジュールを追加できます。 カスタム モジュールを作成する方法については、[Azure Stack Edge Pro FPGA デバイス用の C# モジュールの開発](azure-stack-edge-create-iot-edge-module.md)に関するページを参照してください。
 
-このセクションでは、[Azure Stack Edge Pro 用の C# モジュールの開発](azure-stack-edge-create-iot-edge-module.md)に関するページでお客様が作成したカスタム モジュールを IoT Edge デバイスに追加します。 このカスタム モジュールによって、Edge デバイス上の Edge ローカル共有からファイルが受け取られ、デバイス上の Edge (クラウド) 共有にそれらが移動されます。 その後、クラウド共有から、そのクラウド共有に関連付けられた Azure ストレージ アカウントにファイルがプッシュされます。
+このセクションでは、[Azure Stack Edge Pro FPGA 用の C# モジュールの開発](azure-stack-edge-create-iot-edge-module.md)に関するページでお客様が作成したカスタム モジュールを IoT Edge デバイスに追加します。 このカスタム モジュールによって、Edge デバイス上の Edge ローカル共有からファイルが受け取られ、デバイス上の Edge (クラウド) 共有にそれらが移動されます。 その後、クラウド共有から、そのクラウド共有に関連付けられた Azure ストレージ アカウントにファイルがプッシュされます。
 
 1. Azure Stack Edge リソースに移動し、 **[IoT Edge] > [概要]** に移動します。 **[モジュール]** タイルの **[Go to Azure IoT Hub]\(Azure IoT Hub に移動\)** を選択します。
 
@@ -170,7 +170,7 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 4. **[モジュールの追加]** で以下を実行します。
 
     1. カスタム モジュールのコンテナー レジストリの設定で、名前、アドレス、ユーザー名、パスワードを入力します。
-    名前、アドレス、および一覧に示された資格情報は、一致する URL を使用してモジュールを取得するために使用されます。 このモジュールをデプロイするには、 **[Deployment modules]\(デプロイ モジュール)** で **[IoT Edge module]\(IoT Edge モジュール)** を選択します。 この IoT Edge モジュールは、お客様の Azure Stack Edge Pro デバイスに関連付けられている IoT Edge デバイスにデプロイできる Docker コンテナーです。
+    名前、アドレス、および一覧に示された資格情報は、一致する URL を使用してモジュールを取得するために使用されます。 このモジュールをデプロイするには、 **[Deployment modules]\(デプロイ モジュール)** で **[IoT Edge module]\(IoT Edge モジュール)** を選択します。 この IoT Edge モジュールは、お客様の Azure Stack Edge Pro FPGA デバイスに関連付けられている IoT Edge デバイスにデプロイできる Docker コンテナーです。
 
         ![[モジュールの設定] ページ](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-4.png) 
  
@@ -178,7 +178,7 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
      
         |フィールド  |値  |
         |---------|---------|
-        |名前     | モジュールの一意の名前。 このモジュールは、お客様の Azure Stack Edge Pro に関連付けられている IoT Edge デバイスにデプロイできる Docker コンテナーです。        |
+        |名前     | モジュールの一意の名前。 このモジュールは、お客様の Azure Stack Edge Pro FPGA に関連付けられている IoT Edge デバイスにデプロイできる Docker コンテナーです。        |
         |イメージの URI     | モジュールの対応するコンテナー イメージのイメージ URI。        |
         |資格情報が必要です     | チェック ボックスをオンにすると、一致する URL が含まれているモジュールの取得にユーザー名とパスワードが使用されます。        |
     
@@ -265,7 +265,7 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 > * コンピューティング モジュールを追加する
 > * データ変換を検証して転送する
 
-お客様の Azure Stack Edge Pro デバイスを管理する方法については、次を参照してください。
+お客様の Azure Stack Edge Pro FPGA デバイスを管理する方法については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [ローカル Web UI を使用して Azure Stack Edge Pro を管理する](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [ローカル Web UI を使用して Azure Stack Edge Pro FPGA を管理する](azure-stack-edge-manage-access-power-connectivity-mode.md)

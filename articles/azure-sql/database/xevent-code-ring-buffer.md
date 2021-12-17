@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/19/2018
-ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a74c6851c8dc3e2c2e4808f324fe711e31fd603
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96487305"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741203"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database での拡張イベント向けリング バッファー ターゲット コード
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,11 +45,11 @@ ms.locfileid: "96487305"
 
 * Azure アカウントとサブスクリプション。 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 * テーブルを作成できるデータベース。
-  
+
   * 必要に応じて、数分で [**AdventureWorksLT** デモ データベースを作成](single-database-create-quickstart.md)できる。
 * SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。
   最新の ssms.exe をダウンロードすることができる。
-  
+
   * 「 [SQL Server Management Studio のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)」というタイトルのトピック。
   * [ダウンロードへの直接リンク。](https://go.microsoft.com/fwlink/?linkid=616025)
 
@@ -226,7 +226,7 @@ GO
 
 &nbsp;
 
-```
+```xml
 <RingBufferTarget truncated="0" processingTime="0" totalEventsProcessed="2" eventCount="2" droppedCount="0" memoryUsed="1728">
   <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T15:29:31.317Z">
     <data name="state">

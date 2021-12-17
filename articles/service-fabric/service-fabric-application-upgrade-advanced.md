@@ -3,12 +3,12 @@ title: アプリケーションのアップグレードに関する高度なト�
 description: この記事では、Service Fabric アプリケーションのアップグレードに関連する高度なトピックについて説明します。
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 6604300328f2d243077ba341a9028221438dce9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dca3ec669fde61be86f2424d9b314b4b26546c55
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98792050"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363317"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード:高度なトピック
 
@@ -48,11 +48,11 @@ ms.locfileid: "98792050"
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
     ```
 
- * **ARM テンプレートを使用して既存のサービスを作成または更新する場合** は、`InstanceCloseDelayDuration` 値を指定します (サポートされている最小 API バージョン:2019-11-01-preview):
+ * **ARM テンプレートを使用して既存のサービスを作成または更新する場合** は、`InstanceCloseDelayDuration` 値を指定します (サポートされている最小 API バージョン: 2020-03-01)。
 
     ```ARM template to define InstanceCloseDelayDuration of 30seconds
     {
-      "apiVersion": "2019-11-01-preview",
+      "apiVersion": "2020-03-01",
       "type": "Microsoft.ServiceFabric/clusters/applications/services",
       "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
       "location": "[variables('clusterLocation')]",

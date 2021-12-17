@@ -1,21 +1,22 @@
 ---
-title: 'コンピューターから VNet に接続する - P2S VPN とネイティブ Azure 証明書認証: PowerShell'
-description: Azure Virtual Network に対し、P2S と自己署名または CA によって発行された証明書を使用して安全に Windows および macOS クライアントを接続します。 この記事では、PowerShell を使用します。
+title: 'コンピューターから VNet に接続する - P2S VPN と Azure 証明書認証: PowerShell'
+description: P2S と自己署名または CA によって発行された証明書を使用して、Windows および macOS クライアントを Azure Virtual Network に安全に接続する方法について説明します。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 06/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: ed0a60c88c33af70b7d780d6c4735c5f8e65b35b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 62765ceb53d7a66d591b0fa62397b50c7fc04b9a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660408"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774046"
 ---
-# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト VPN 接続の構成:PowerShell
+# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-azure-certificate-authentication-powershell"></a>Azure 証明書認証を使用した VNet へのポイント対サイト VPN 接続の構成:PowerShell
 
 この記事では、Windows、Linux、または macOS が実行されている個々のクライアントを Azure VNet に対して安全に接続する方法を紹介します。 ポイント対サイト VPN 接続は、自宅や会議室でのテレワークなど、リモートの場所から VNet に接続する場合に便利です。 VNet への接続を必要とするクライアントがごく少ない場合は、サイト対サイト VPN の代わりに P2S を使用することもできます。 ポイント対サイト接続に、VPN デバイスや公開 IP アドレスは必要ありません。 P2S により、SSTP (Secure Socket トンネリング プロトコル) または IKEv2 経由の VPN 接続が作成されます。
 
@@ -37,11 +38,11 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="1-sign-in"></a><a name="signin"></a>1.サインイン
+## <a name="sign-in"></a><a name="signin"></a>サインイン
 
 [!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
-## <a name="2-declare-variables"></a><a name="declare"></a>2.変数の宣言
+## <a name="declare-variables"></a><a name="declare"></a>変数の宣言
 
 この記事では、サンプル自体を変更することなく、独自の環境に適用する値を簡単に変更できるように、変数を使用しています。 使用する変数を宣言します。 次のサンプルを使用し、必要に応じて独自の値で置き換えられます。 演習中の任意の時点で PowerShell/Cloud Shell セッションを閉じた場合は、値をもう一度コピーして貼り付けるだけで、変数を再宣言します。
 
@@ -61,7 +62,7 @@ $GWIPconfName = "gwipconf"
 $DNS = "10.2.1.4"
 ```
 
-## <a name="3-configure-a-vnet"></a><a name="ConfigureVNet"></a>3.VNet の構成
+## <a name="create-a-vnet"></a><a name="ConfigureVNet"></a>VNet を作成する
 
 1. リソース グループを作成します。
 
@@ -106,14 +107,14 @@ $DNS = "10.2.1.4"
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="4-create-the-vpn-gateway"></a><a name="creategateway"></a>4.VPN ゲートウェイを作成する
+## <a name="create-the-vpn-gateway"></a><a name="creategateway"></a>VPN ゲートウェイの作成
 
 この手順では、VNet の仮想ネットワーク ゲートウェイを構成して作成します。
 
 * -GatewayType は **Vpn**、-VpnType は **RouteBased** にする必要があります。
-* -VpnClientProtocol は、有効にするトンネルの種類を指定する際に使用します。 トンネルのオプションには、**OpenVPN、SSTP**、**IKEv2** があります。 いずれか 1 つを有効にすることも、サポートされるすべての組み合わせを有効にすることもできます。 複数の種類を有効にする場合は、名前をコンマで区切って指定します。 OpenVPN と SSTP は一緒に有効にすることができません。 Android と Linux の strongSwan クライアントおよび iOS と OSX のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。 OpenVPN クライアントを使用して、OpenVPN トンネルの種類に接続することができます。
+* -VpnClientProtocol は、有効にするトンネルの種類を指定する際に使用します。 トンネルのオプションには、**OpenVPN、SSTP**、**IKEv2** があります。 いずれか 1 つを有効にすることも、サポートされるすべての組み合わせを有効にすることもできます。 複数の種類を有効にする場合は、名前をコンマで区切って指定します。 OpenVPN と SSTP は一緒に有効にすることができません。 Android と Linux の strongSwan クライアントおよび iOS と macOS のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。 OpenVPN クライアントを使用して、OpenVPN トンネルの種類に接続することができます。
 * 仮想ネットワーク ゲートウェイ 'Basic' SKU では、IKEv2、OpenVPN、RADIUS 認証はサポートされません。 Mac クライアントを仮想ネットワークに接続する予定がある場合は、Basic SKU を使用しないでください。
-* 選択する[ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md) によっては、VPN ゲートウェイで処理が完了するまでに最大で 45 分かかる場合があります。 この例では、IKEv2 を使用します。
+* 選択する[ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md) によっては、VPN ゲートウェイの作成が完了するまでに 45 分以上かかる場合があります。 
 
 1. VNet の仮想ネットワーク ゲートウェイを構成、作成します。 ゲートウェイの作成には約 45 分かかります。
 
@@ -129,7 +130,7 @@ $DNS = "10.2.1.4"
    Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroup $RG
    ```
 
-## <a name="5-add-the-vpn-client-address-pool"></a><a name="addresspool"></a>5.VPN クライアント アドレス プールの追加
+## <a name="add-the-vpn-client-address-pool"></a><a name="addresspool"></a>VPN クライアント アドレス プールを追加する
 
 VPN ゲートウェイの作成が完了したら、VPN クライアント アドレス プールを追加できます。 VPN クライアント アドレス プールは、VPN クライアントが接続時に受け取る IP アドレスの範囲です。 接続元であるオンプレミスの場所、または接続先とする VNet と重複しないプライベート IP アドレス範囲を使用してください。
 
@@ -140,7 +141,7 @@ $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPool $VPNClientAddressPool
 ```
 
-## <a name="6-generate-certificates"></a><a name="Certificates"></a>6.証明書の生成
+## <a name="generate-certificates"></a><a name="Certificates"></a>証明書の生成
 
 >[!IMPORTANT]
 > Azure Cloud Shell を使用して証明書を生成することはできません。 このセクションで説明されているいずれかの方法を使用する必要があります。 PowerShell を使用する場合は、ローカルにインストールする必要があります。
@@ -162,7 +163,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPoo
 
 1. クライアント証明書を作成したら、それを[エクスポート](vpn-gateway-certificates-point-to-site.md#clientexport)します。 クライアント証明書は、接続するクライアント コンピューターに配布されます。
 
-## <a name="7-upload-the-root-certificate-public-key-information"></a><a name="upload"></a>7.ルート証明書の公開キー情報のアップロード
+## <a name="upload-root-certificate-public-key-information"></a><a name="upload"></a>ルート証明書の公開キー情報のアップロード
 
 VPN ゲートウェイの作成が完了していることを確認します。 この操作が完了した後は、信頼されたルート証明書の (公開キー情報を含む) .cer ファイルを Azure にアップロードできます。 .cer ファイルがアップロードされると、Azure ではそれを使用し、信頼されたルート証明書から生成されたクライアント証明書がインストールされているクライアントを認証できます。 その後は必要に応じて、最大で合計 20 個になるまで信頼されたルート証明書を追加でアップロードできます。
 
@@ -190,7 +191,7 @@ VPN ゲートウェイの作成が完了していることを確認します。 
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG1" -PublicCertData $CertBase64
    ```
 
-## <a name="8-install-an-exported-client-certificate"></a><a name="clientcertificate"></a>8.エクスポートしたクライアント証明書のインストール
+## <a name="install-an-exported-client-certificate"></a><a name="clientcertificate"></a>エクスポートしたクライアント証明書のインストール
 
 次の手順に従い、Windows クライアントにインストールできます。 その他のクライアントと詳細については、[クライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)に関する記事を参照してください。
 
@@ -198,9 +199,9 @@ VPN ゲートウェイの作成が完了していることを確認します。 
 
 クライアント証明書が証明書チェーン全体と一緒に .pfx としてエクスポートされている (既定値) ことを確認します。 そうでないと、ルート証明書情報がクライアント コンピューターに存在せず、クライアントは正しく認証されません。
 
-## <a name="9-configure-the-vpn-client"></a><a name="clientconfig"></a>9.VPN クライアントを構成する
+## <a name="configure-the-vpn-client"></a><a name="clientconfig"></a>VPN クライアントを構成する
 
-このセクションでは、仮想ネットワーク ゲートウェイに接続するようにコンピューターのネイティブ クライアントを構成します。 たとえば、Windows コンピューターの VPN 設定に移動すると、VPN 接続を追加できます。 ポイント対サイト接続には、特定の構成設定が必要です。 この手順では、ネイティブ VPN クライアントがポイント対サイト接続を介して仮想ネットワークに接続できるようにするために必要な特定の設定を使用して、パッケージを作成できます。
+P2S を使用して仮想ネットワーク ゲートウェイに接続するために、各コンピューターは、オペレーティング システムの一部としてネイティブにインストールされている VPN クライアントを使用します。 たとえば、Windows コンピューターの VPN 設定に移動すると、別に VPN クライアントをインストールせずに VPN 接続を追加できます。 各 VPN クライアントは、クライアント構成パッケージを使用して構成します。 クライアント構成パッケージには、作成した VPN ゲートウェイに固有の設定が含まれています。 
 
 次の簡単な例を使用して、クライアント構成パッケージを生成してインストールできます。 パッケージの内容に関する詳細と、VPN クライアント構成ファイルの生成とインストールに関する追加の手順については、「[VPN クライアント構成ファイルの作成とインストール](point-to-site-vpn-client-configuration-azure-cert.md)」を参照してください。
 
@@ -229,7 +230,7 @@ $profile.VPNProfileSASUrl
 ### <a name="mac-vpn-client"></a>Mac VPN クライアント
 
 [ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、 **[接続]** をクリックします。
-手順の詳細については、[Mac (OS X) のインストール](./point-to-site-vpn-client-configuration-azure-cert.md#installmac)に関するセクションを参照してください。 接続に問題がある場合は、仮想ネットワーク ゲートウェイが Basic SKU を使用していないことを確認します。 Basic SKU は Mac クライアントではサポートされていません。
+手順の詳細については、[Mac (macOS) のインストール](./point-to-site-vpn-client-configuration-azure-cert.md#installmac)に関するセクションを参照してください。 接続に問題がある場合は、仮想ネットワーク ゲートウェイが Basic SKU を使用していないことを確認します。 Basic SKU は Mac クライアントではサポートされていません。
 
   ![Mac の接続](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
@@ -385,6 +386,6 @@ Azure には、最大 20 個のルート証明書 .cer ファイルを追加で�
 
 ## <a name="next-steps"></a>次のステップ
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/network-overview.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-network/network-overview.md)」を参照してください。
 
 P2S のトラブルシューティング情報については、[Azure ポイント対サイト接続の問題のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)に関するページを参照してください。

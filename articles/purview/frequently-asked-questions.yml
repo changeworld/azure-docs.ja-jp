@@ -1,0 +1,130 @@
+### YamlMime:FAQ
+metadata:
+  title: よく寄せられる質問 (FAQ)
+  description: この記事では、Azure Purview についてよく寄せられる質問に回答します。
+  author: SunetraVirdi
+  ms.author: suvirdi
+  ms.service: purview
+  ms.topic: conceptual
+  ms.date: 05/08/2021
+  ms.openlocfilehash: 8ab2749a1a0134f90644e1af082006b414a9b91f
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132301363"
+title: Azure Purview に関してよく寄せられる質問 (FAQ)
+summary: ''
+sections:
+- name: 無視
+  questions:
+  - question: >
+      概要
+    answer: >
+      多くの組織では、自社データの全体像を把握できていません。 どのようなデータがあるか、データはどこにあるか、関連するデータを検索してアクセスするにはどうしたらよいかを理解することは困難です。 データには系列、分類、包括的なメタデータなどのコンテキストが不足しているため、ビジネス ユーザーは適切なデータを検索し、そのデータを適切に使用することが難しくなります。 その結果、収集されたデータのごく一部しかビジネスの意思決定に使用されていません。 最後に、データのセキュリティ上の問題を特定することと、機密データを保護することには整合性がありません。 特にデータの機敏性を確保しているときは、継続的な時間と労力が必要になります。
+
+
+      Azure Purview は、データ ガバナンス ソリューションです。 これは、顧客が自社のすべてのデータの使用を制御しながら、それに関する深い知識を習得するのに役立ちます。 Azure Purview を使用すれば、組織はデータを検出し、キュレーションします。 自社のデータ資産に関する分析情報を取得し、データへのアクセスを一元的に管理します。
+  - question: >
+      この FAQ の目的
+    answer: >
+      この FAQ では、顧客や現場のチームからよく寄せられる一般的な質問に回答します。 これは、Azure Purview および関連するソリューション (Azure Data Catalog (ADC) Gen 2 (非推奨) や Azure Information Protection など) に関する質問を明確にすることを目的としています。
+  - question: >
+      メタデータのスキャンと分類に使用できるソースの種類は何ですか?
+    answer: >
+      |Azure|Azure 以外|
+
+      |---------|---------|
+
+      |Azure Blob Storage|Power BI|
+
+      |Azure Synapse Analytics (SQL DW)|SQL Server |
+
+      |Azure Cosmos DB|Teradata (2020 年末まで利用可能)|
+
+      |Azure SQL Managed Instance|SAP ECC (2020 年末まで利用可能)|
+
+      |Azure Data Explorer|AP S/4 HANA (2020 年末まで利用可能)|
+
+      |Azure Data Lake Storage Gen1|Hive メタストア (2020 年末まで利用可能)|
+
+      |Azure Data Lake Storage Gen2|Amazon S3|
+
+      |Azure Files|--|
+
+      |Azure SQL Database|--|
+  - question: >
+      どのようなデータ システムまたはプロセッサに接続して、系列を取得できますか?
+    answer: "|データ システムまたはプロセッサ \n|---------\n|Azure Data Factory: コピー アクティビティ、データ フロー アクティビティ \n|カスタム系列   \n|Azure Data Share   \n|Power BI    |\n|SQL Server Integration Services  \n"
+  - question: >
+      ADC Gen 2、Azure Information Protection、Azure Purview はどのように関連していますか?
+    answer: >
+      Azure Purview はもともと ADC Gen 2 として開始されましたが、以来ずっとその範囲が拡大されてきました。 現在、ADC Gen 2 の高度なカタログ機能を、Azure Information Protection のデータ分類、ラベル付け、コンプライアンス ポリシー適用機能と組み合わせて使用できるようになりました。 今日では、データ ガバナンスの幅広い業界定義により厳密に適合しています。
+  - question: >
+      ADC Gen 1 を使用している顧客はどうなりますか?
+    answer: >
+      Microsoft のカタログ ソリューション分野では、Azure Purview がすべての製品イノベーションの焦点となっています。 ADC Gen 1 は引き続きサポートされます。
+  - question: >
+      同じサブスクリプションに複数の Azure Purview アカウントを割り当てることはできますか?
+    answer: >
+      はい。サブスクリプションとテナントごとに、多数の Azure Purview アカウントがサポートされています。
+  - question: >
+      ADC Gen 1 と Azure Purview を並行で実行できますか?
+    answer: >
+      はい。 どちらも独立したサービスです。
+  - question: >
+      ADC Gen 1 の既存のデータ資産を Azure Purview に移行するにはどうすればよいですか?
+    answer: >
+      Azure Purview の API を使用して ADC Gen 1 から抽出し、Azure Purview に取り込みます。 用語集については、CSV に基づいた一括ツールがサポートされています。
+  - question: >
+      Azure Purview を使用して SQL テーブルの機密データを暗号化するにはどうすればよいですか?
+    answer: >
+      データの暗号化は、データ ソース レベルで行われます。 Azure Purview では、メタデータのみを格納します。 データのプレビューは行われません。
+  - question: >
+      Azure Purview には ADC Gen 2 のすべての機能が含まれていますか?
+    answer: >
+      はい。
+  - question: >
+      用語集と分類の違いは何ですか?
+    answer: >
+      用語集では、データの非技術系またはビジネス ユーザー (データ コンシューマーとも呼ばれる) が従うべき名前付け規則が使用されています。 こうした種類のユーザーは、Azure Purview を使用し、ビジネスの使用状況に基づいて特定の種類のデータを検索するビジネス アナリストまたはデータ サイエンティストです。 たとえば、サプライ チェーン アナリストは、"*SKU の種類*" や "*出荷の詳細*" という用語の検索が必要になる場合があります。 用語集でこうした用語を検索すると、関連データを見つけることができます。
+
+      分類は、テーブル、列、またはファイル レベルでデータ資産に適用されるタグであり、これによって資産内に存在するデータを識別できます。 分類は、検出されたデータの種類に基づいて、自動または手動で適用できます。 通常、分類タグを使用すると、資産に機密データが含まれているかどうかや、どのような種類の機密データが含まれているかを特定できます。
+  - question: >
+      Azure Purview では、SharePoint や OneDrive 内の電子メール、PDF などをスキャンして分類しますか?
+    answer: >
+      現時点では、Purview では SharePoint や OneDrive のスキャンがサポートされていません。 オンプレミスの SharePoint のサイトおよびライブラリのスキャンは、Azure Information Protection スキャナーを通じて提供されます。 このスキャナーは、次の SKU を含む顧客の Microsoft 365 サブスクリプションを通じて使用できます: AIP P1、EMS E3、Microsoft 365 E3。 これらの SKU のいずれかをお持ちの場合は、Azure Information Protection スキャナーの使用を開始するための適切な権利があるはずです。
+  - question: >
+      スキャンに使用されるコンピューティングは何ですか?
+    answer: >
+      Microsoft によって管理されるスキャン インフラストラクチャがあります。 サポートされているほとんどの Azure または AWS リソースでは、スキャン インフラストラクチャをデプロイする必要はありません。
+  - question: >
+      Azure Resource Manager (ARM) のテンプレート、CLI、または PowerShell を使用して Azure Purview をプロビジョニングする方法はありますか?
+    answer: >
+      はい、ARM テンプレートを使用できます
+  - question: >
+      Atlas を既に使用していますが、Azure Purview に簡単に移行できますか?
+    answer: >
+      Azure Purview は、Atlas API と互換性があります。 Atlas から移行する場合は、まず Azure Purview を使用してデータ ソースをスキャンすることをお勧めします。 お使いのアカウントで資産を利用できるようになったら、同様の Atlas API を使用して、資産を更新したりカスタム系列を追加したりするなどの統合を行うことができます。 Azure Purview では、Azure Search を使用するように Search API を変更します。これにより、高度な検索を使用できるようになります。
+  - question: >
+      自分のテナントに複数のカタログを作成できますか?
+    answer: >
+      はい。サブスクリプションとテナントごとに複数の Azure Purview アカウントを作成できます。 これらの制限については、[Azure Purview を使用したリソースのクォータの管理と引き上げ](how-to-manage-quotas.md)に関するページで確認できます。
+
+
+      複数のアカウントが必要な場合と必要ない場合のその他の推奨事項については、「[Azure Purview のデプロイのベストプラクティス](deployment-best-practices.md)」をご覧ください。
+  - question: >
+      1 つの Azure Purview アカウント内に複数のテナントを登録できますか?
+    answer: >
+      いいえ。現在、別のテナントのデータ ソースをスキャンするには、そのテナントに別の Azure Purview アカウントを作成する必要があります。
+  - question: >
+      Azure Purview では列レベルの系列をサポートしていますか?
+    answer: >
+      はい。Azure Purview では列レベルの系列をサポートしています。
+  - question: >
+      Azure Purview で論理的な削除はサポートされていますか?
+    answer: >
+      はい。Azure Purview では、Azure サブスクリプションの状態管理の観点から、論理的な削除をサポートしています。 Purview では、サブスクリプションの状態 (無効、警告など) を読み取り、アカウントが復元または削除されるまで、アカウントを論理的に削除された状態にすることができます。 アカウントが論理的に削除された状態であり、GET または DELETE コントロール プレーン API 呼び出しのみが許可される場合、すべてのデータ プレーン API 呼び出しはブロックされます。 [Azure サブスクリプションの状態](../cost-management-billing/manage/subscription-states.md)の追加情報については、「Azure サブスクリプションの状態」ページで確認できます
+  - question: >
+      Azure Purview では現在、データ損失防止機能をサポートしていますか?
+    answer: "いいえ。現時点では、Azure Purview にはデータ損失防止機能はありません。 \n\nMicrosoft 365 のデータ損失防止に興味がある場合は、[Microsoft Information Protection 内のデータ損失防止機能](/microsoft-365/compliance/information-protection#prevent-data-loss)について目を通してください。"

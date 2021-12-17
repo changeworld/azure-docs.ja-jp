@@ -4,15 +4,15 @@ description: この記事では、バックアップ間隔を指定した定期�
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 08/30/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d0470759a589927b65462f258b20446af608175c
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 56e9bfe95a78c8bf0771acdc98c761df9994a708
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284042"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221064"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>定期的バックアップを使用して Azure Cosmos DB アカウントを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,6 +31,9 @@ Azure Cosmos DB では、データのバックアップが一定の間隔で自�
 
 * バックアップは、お使いのアプリケーションのパフォーマンスや可用性に影響を与えずに取得されます。 Azure Cosmos DB では、データのバックアップがバックグラウンドで実行され、プロビジョニング済みのスループット (RU) を余計に消費することも、データベースのパフォーマンスや可用性に影響することもありません。
 
+> [!Note]
+> Azure Synapse Link が有効なアカウントの場合、分析ストア データはバックアップと復元に含まれません。 Synapse Link が有効になっている場合、Azure Cosmos DB がトランザクション ストア内のデータを、スケジュールされたバックアップ間隔で引き続き自動的にバックアップします。 現時点では、分析ストア内のデータの自動バックアップと復元はサポートされていません。
+
 ## <a name="backup-storage-redundancy"></a><a id="backup-storage-redundancy"></a>バックアップ ストレージの冗長性
 
 既定では、Azure Cosmos DB は、[ペアのリージョン](../best-practices-availability-paired-regions.md)にレプリケートされる geo 冗長 [BLOB ストレージ](../storage/common/storage-redundancy.md)に定期的モードのバックアップ データを格納します。  
@@ -46,7 +49,7 @@ Azure Cosmos DB のバックアップ データは、プライマリ リージ�
 * **ローカル冗長ストレージ:** このオプションは、プライマリ リージョンの 1 つの物理的な場所内で、データを非同期的に 3 回コピーします。
 
 > [!NOTE]
-> ゾーン冗長ストレージは現在、[特定のリージョン](high-availability.md#availability-zone-support)でのみ利用できます。 選択したリージョンに基づき、このオプションは、新規または既存のアカウントでは使用できません。
+> ゾーン冗長ストレージは現在、[特定のリージョン](high-availability.md#availability-zone-support)でのみ利用できます。 新規アカウント対して選択したリージョンか、既存アカウント用のリージョンかによって異なります。ゾーン冗長オプションは使用できません。
 >
 > バックアップ ストレージの冗長性を更新しても、バックアップ ストレージの価格には影響しません。
 
@@ -173,5 +176,7 @@ Azure Cosmos DB SQL API アカウントをお持ちの場合は、次のいず�
 ## <a name="next-steps"></a>次のステップ
 
 * 復元の要請を行うために、Azure サポートに連絡して [Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-* [Azure portal](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md)、[CLI](continuous-backup-restore-command-line.md)、または [Azure Resource Manager](continuous-backup-restore-template.md) を使用して、継続的バックアップを構成および管理します。
+* [Azure portal](provision-account-continuous-backup.md#provision-portal)、[PowerShell](provision-account-continuous-backup.md#provision-powershell)、[CLI](provision-account-continuous-backup.md#provision-cli)、または [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template) を使用して継続的バックアップをプロビジョニングします。
+* [Azure portal](restore-account-continuous-backup.md#restore-account-portal)、[PowerShell](restore-account-continuous-backup.md#restore-account-powershell)、[CLI](restore-account-continuous-backup.md#restore-account-cli)、または [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template) を使用して継続的バックアップ アカウントを復元します。
+* [定期的なバックアップから継続的バックアップにアカウントを移行します](migrate-continuous-backup.md)。
 * 継続的バックアップ モードでデータを復元するために必要な[アクセス許可を管理](continuous-backup-restore-permissions.md)します。

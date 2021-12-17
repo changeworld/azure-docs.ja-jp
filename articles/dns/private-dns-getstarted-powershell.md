@@ -7,14 +7,13 @@ ms.author: rohink
 ms.date: 10/20/2020
 ms.topic: quickstart
 ms.service: dns
-ms.custom:
-- mode-api
-ms.openlocfilehash: 321cd9c9f85b7f1dc2540992d9db0aaefa1b9b62
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell, mode-api
+ms.openlocfilehash: 4f6ac82358a9cdf247dee4b0934e98f97f962d9b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535473"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077669"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して Azure プライベート DNS ゾーンを作成する
 

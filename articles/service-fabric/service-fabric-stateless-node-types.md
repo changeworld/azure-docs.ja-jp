@@ -3,24 +3,24 @@ title: Service Fabric クラスターにステートレス専用ノード タイ
 description: Azure Service Fabric クラスターでステートレス ノード タイプを作成してデプロイする方法について説明します。
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 10/19/2021
 ms.author: pepogors
-ms.openlocfilehash: 74680f7b56ad98851e2839b53c1f9e92b6c6c23a
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 9c9f94cf3d9a9eb0ea18356afdcbba7046509762
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030013"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460415"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>ステートレス専用ノード タイプを使用した Azure Service Fabric クラスターのデプロイ
-Service Fabric ノード タイプには、ある時点でステートフル サービスがノードに配置されるという固有の前提があります。 ステートレス ノード タイプを使用することで、ノード タイプに対するこの仮定を緩和します。これにより、ノード タイプでスケールアウト操作の高速化、ブロンズ持続性での自動 OS アップグレードのサポート、および単一の仮想マシン スケール セット内の 100 以上のノードへのスケールアウトなどの他の機能を使用することができます。
+Service Fabric ノード タイプには、ある時点でステートフル サービスがノードに配置されるという固有の前提があります。 ステートレス ノード タイプを使用することで、ノード タイプに対するこの仮定を変更します。これにより、ノード タイプでスケールアウト操作の高速化、ブロンズ持続性での自動 OS アップグレードのサポート、および単一の仮想マシン スケール セット内の 100 以上のノードへのスケールアウトなどの他の機能を使用することができます。
 
 * プライマリ ノード タイプをステートレスに構成することはできません
 * ステートレス ノード タイプは、ブロンズ持続性レベルでのみサポートされています
 * ステートレス ノード タイプは Service Fabric ランタイム バージョン 7.1.409 以上でのみサポートされています
 
 
-サンプル テンプレートを使用できます。[Service Fabric のステートレス ノード タイプのテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)
+サンプル テンプレートを使用できます。[Service Fabric のステートレス ノード タイプのテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-2-NodeTypes-Windows-Stateless-Secure)
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>Service Fabric クラスターでステートレス ノード タイプを有効化する
 クラスター リソースで 1 つまたは複数のノード タイプをステートレスとして設定するには、**isStateless** プロパティを **true** に設定します。 ステートレス ノード タイプで Service Fabric クラスターをデプロイする場合は、クラスター リソースに少なくとも 1 つのプライマリ ノード タイプがあるようにしてください。
@@ -73,7 +73,7 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
 
 * 値 **singlePlacementGroup** プロパティは、100 台を超える VM に拡張する場合は **false** に設定する必要があります。
 * スケール セットの **upgradeMode** は、**Rolling** に設定する必要があります。
-* ローリング アップグレード モードを使用するには、アプリケーション正常性拡張機能または正常性プローブが構成されている必要があります。 次に示すように、ステートレス ノード タイプの既定の構成を使用して正常性プローブを構成します。 アプリケーションがノード タイプにデプロイされると、正常性プローブまたは正常性拡張機能のポートを変更して、アプリケーションの正常性を監視できます。
+* ローリング アップグレード モードを使用するには、アプリケーション正常性拡張機能または正常性プローブが構成されている必要があります。 正常性プローブまたはアプリケーションの正常性拡張機能の構成の詳細については、こちらの[ドキュメント](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#how-does-automatic-os-image-upgrade-work)を参照してください。次に示すように、ステートレス ノード タイプの既定の構成を使用して正常性プローブを構成します。 アプリケーションがノード タイプにデプロイされると、正常性プローブまたは正常性拡張機能のポートを変更して、アプリケーションの実際の正常性を監視できます。
 
 >[!NOTE]
 > ステートレスなノード タイプで自動スケーリングを使用している間、スケールダウン操作後は、ノードの状態は自動的には消去されません。 自動スケーリング時にダウン ノードのノードの状態を消去するには、[Service Fabric 自動スケーリング ヘルパー](https://github.com/Azure/service-fabric-autoscale-helper)を使用することをお勧めします。
@@ -116,7 +116,7 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
                 "Enabled": true
             },
         },
-        "typeHandlerVersion": "1.0"
+        "typeHandlerVersion": "1.1"
     }
     },
     {
@@ -138,14 +138,11 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
 ```
 
 ## <a name="configuring-stateless-node-types-with-multiple-availability-zones"></a>複数の Availability Zones を持つステートレス ノード タイプの構成
-複数の Availability Zones にまたがるステートレス ノード タイプを構成するには、次のようないくつかの変更と共に、[こちら](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set)のドキュメントに従ってください。
+複数の Availability Zones にまたがるステートレス ノード タイプを構成するには、次のようないくつかの変更と共に、[こちら](./service-fabric-cross-availability-zones.md#1-preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set)のドキュメントに従ってください。
 
 * 複数の配置グループを有効にする必要がある場合は、**singlePlacementGroup** :  **false** を設定します。
 * **upgradeMode** : **Rolling** を設定して、上述したようにアプリケーション正常性拡張機能または正常性プローブを追加します。
 * 仮想マシン スケール セットに **platformFaultDomainCount** : **5** を設定します。
-
->[!NOTE]
-> クラスターで構成されている VMSSZonalUpgradeMode に関係なく、仮想マシン スケール セットの更新は、複数のゾーンにまたがるステートレス ノード タイプでは常に一度に 1 つの可用性ゾーンに対して順次行われます。これは、ローリング アップグレード モードが使用されるためです。
 
 複数の Availability Zones を持つステートレス ノード タイプの構成に関する参照情報については、[テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure)を参照してください
 
@@ -272,4 +269,3 @@ Basic SKU で Load Balancer と IP を使用していたクラスターを移行
 ## <a name="next-steps"></a>次の手順 
 * [Reliable Service](service-fabric-reliable-services-introduction.md)
 * [ノード タイプと仮想マシン スケール セット](service-fabric-cluster-nodetypes.md)
-

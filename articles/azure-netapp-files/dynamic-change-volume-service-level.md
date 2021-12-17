@@ -12,19 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 05/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 7b5bbad1f0691f76c12f161d1dd1f9d6ddc43270
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7c9704549c68dce72c16f0b5386cdb76edb5fe90
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184323"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407002"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>ボリュームのサービス レベルを動的に変更する
-
-> [!IMPORTANT] 
-> 現時点では、レプリケーション先のボリュームのサービス レベルの動的な変更はサポートされていません。
 
 既存のボリュームのサービス レベルは変更できます。それには、目的のボリュームで使用したい[サービス レベル](azure-netapp-files-service-levels.md)を使用中の別の容量プールに、目的のボリュームを移動します。 ボリュームのサービス レベルのインプレース変更では、データを移行する必要はありません。 ボリュームへのアクセスにも影響はありません。  
 
@@ -41,6 +38,8 @@ ms.locfileid: "102184323"
 ## <a name="register-the-feature"></a>機能を登録する
 
 ボリュームを別の容量プールに移動する機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、まず機能を登録する必要があります。
+
+複数の Azure サブスクリプションがある場合は、["Set-AzContext "](/powershell/module/az.accounts/set-azcontext) コマンドを使用して、目的のサブスクリプションに登録していることを確認してください。 <!-- GitHub #74191 --> 
 
 1. 機能を登録します。 
 
@@ -74,5 +73,5 @@ ms.locfileid: "102184323"
 ## <a name="next-steps"></a>次のステップ  
 
 * [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)
-* [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+* [容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)
 * [ボリュームの容量プールの変更に関する問題のトラブルシューティング](troubleshoot-capacity-pools.md#issues-when-changing-the-capacity-pool-of-a-volume)

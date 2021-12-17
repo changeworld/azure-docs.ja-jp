@@ -1,14 +1,14 @@
 ---
-title: Azure Lab Services - 管理者ガイド | Microsoft Docs
+title: 管理者ガイド | Microsoft Docs
 description: このガイドは、Azure Lab Services を使用してラボ アカウントを作成および管理する管理者に役立ちます。
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/20/2020
-ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 698b6ddb6474031e7d19f2029156197b7d6a7741
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462469"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177272"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - 管理者ガイド
 大学のクラウド リソースを管理する情報技術 (IT) 管理者は、通常、学校のラボ アカウントの設定を担当します。 管理者または教師は、ラボ アカウントを設定した後、アカウント内に含まれるラボを作成します。 この記事では、関連する Azure リソースの概要を説明し、それらを作成するためのガイダンスを示します。
@@ -89,23 +89,23 @@ ms.locfileid: "96462469"
 
 ## <a name="shared-image-gallery"></a>共有イメージ ギャラリー
 
-共有イメージ ギャラリーはラボ アカウントにアタッチされ、イメージを保存するための中央リポジトリとして機能します。 教師がラボのテンプレート VM からエクスポートすることを選択すると、イメージがギャラリーに保存されます。 教師がテンプレート VM に変更を加えてエクスポートするたびに、イメージの新しいバージョンが保存され、以前のバージョンも保持されます。
+共有イメージ ギャラリーはラボ アカウントにアタッチされ、イメージを保存するための中央リポジトリとして機能します。 教師がラボのテンプレート VM からエクスポートすることを選択すると、イメージがギャラリーに保存されます。 教師がテンプレート VM を変更してエクスポートするたびに、新しいイメージの定義とバージョンの一方または両方がギャラリーに作成されます。  
 
-講師は、新しいラボを作成するときに、共有イメージ ギャラリーからイメージ バージョンを発行できます。 ギャラリーにはイメージの複数のバージョンが保存されますが、教師がラボの作成時に選択できるのは最新バージョンに限られます。
+講師は、新しいラボを作成するときに、共有イメージ ギャラリーからイメージ バージョンを発行できます。 ギャラリーにはイメージの複数のバージョンが保存されますが、教師がラボの作成時に選択できるのは最新バージョンに限られます。  最新バージョンは、MajorVersion、MinorVersion、Patch の順で最高値に基づいて選択されます。  バージョン管理の詳細については、「[イメージ バージョン](../virtual-machines/shared-image-galleries.md#image-versions)」を参照してください。
 
 Shared Image Gallery サービスはオプションのリソースであり、ごく少数のラボのみで開始する場合は、すぐに必要にならない可能性があります。 ただし、Shared Image Gallery には、追加のラボにスケールアップするときに役立つ多くの利点があります。
 
 - **テンプレート VM イメージの複数のバージョンを保存して管理できる**
 
-    カスタム イメージを作成したり、パブリック Azure Marketplace ギャラリーのイメージに変更 (ソフトウェア、構成など) を加えたりする場合に便利です。  たとえば、教師が別のソフトウェアやツールをインストールする必要があることがよくあります。 これらの前提条件を各自が手動でインストールするよう学生に要求するのではなく、テンプレート VM イメージのさまざまなバージョンを共有イメージ ギャラリーにエクスポートできます。 この後、新しいラボを作成するときに、これらのイメージ バージョンを使用できます。
+    カスタム イメージを作成したり、Azure Marketplace ギャラリーのイメージを変更 (ソフトウェア、構成など) したりする場合に便利です。  たとえば、教師が別のソフトウェアやツールをインストールする必要があることがよくあります。 これらの前提条件を各自が手動でインストールするよう学生に要求するのではなく、テンプレート VM イメージのさまざまなバージョンを共有イメージ ギャラリーにエクスポートできます。 この後、新しいラボを作成するときに、これらのイメージ バージョンを使用できます。
 
 - **ラボ間でテンプレート VM イメージを共有または再利用できる**
 
     新しいラボを作成するたびに最初から構成しなくて済むように、イメージを保存して再使用できます。 たとえば、複数のクラスで同じイメージを使用する必要がある場合、そのイメージを 1 回作成し、共有イメージ ギャラリーにエクスポートすると、ラボ間で共有できるようになります。
 
-- **自動レプリケーションによってイメージの可用性が保証される**
+- **ラボの外部にある他の環境から独自のカスタム イメージをアップロードできる**
 
-    イメージをラボから共有イメージ ギャラリーに保存すると、[同じ地域内の他のリージョン](https://azure.microsoft.com/global-infrastructure/regions/)に自動的にレプリケートされます。 あるリージョンで停止が発生した場合、別のリージョンのイメージ レプリカを使用できるため、ラボへのイメージの発行に影響を及ぼすことはありません。  また、複数のレプリカから VM を発行することにより、パフォーマンスを向上させることができます。
+    [ラボのコンテキストの外部にある他の環境からカスタム イメージをアップロードする](how-to-attach-detach-shared-image-gallery.md)ことができます。  たとえば、独自の物理ラボ環境や Azure VM から、共有イメージ ギャラリーにイメージをアップロードできます。  イメージをギャラリーにインポートすると、そのイメージを使用してラボを作成できます。
 
 共有イメージを論理的にグループ化するには、次のいずれかの方法を使用できます。
 
@@ -137,7 +137,7 @@ Azure Lab Services のリソースを設定する場合、リソースをホス�
 
 ラボ アカウントの場所は、リソースが存在するリージョンを示します。  
 
-### <a name="lab"></a>ラボ
+### <a name="lab"></a>ラボ    
 
 ラボが存在する場所は、次の要因に応じて異なります。
 
@@ -163,18 +163,21 @@ Azure Lab Services のリソースを設定する場合、リソースをホス�
 
 ## <a name="vm-sizing"></a>VM のサイズ設定
 
-管理者またはラボ作成者は、ラボを作成するときに、クラスルームのニーズに応じてさまざまな VM サイズから選択できます。 コンピューティング サイズの利用可能性は、ラボ アカウントがあるリージョンによって異なることに注意してください。
+管理者またはラボ作成者は、ラボを作成するときに、クラスルームのニーズに応じてさまざまな VM サイズから選択できます。 利用できるサイズは、ラボ アカウントがあるリージョンによって異なることに注意してください。
 
-| サイズ | 仕様 | 系列 | 推奨される用途 |
+次の表では、いくつかの VM サイズが複数の VM シリーズに対応していることに注意してください。  利用できる容量に応じて、VM サイズの一覧にあるいずれかの VM シリーズを Lab Services で使用できます。  たとえば、"*小*" VM サイズは、[Standard_A2_v2](../virtual-machines/av2-series.md) または [Standard_A2](../virtual-machines/sizes-previous-gen.md#a-series) VM シリーズの使用に対応します。  ラボの VM サイズとして "*小*" を選択した場合、Lab Services では最初に *Standard_A2_v2* シリーズの使用が試みられます。  しかし、十分な容量を使用できない場合は、Lab Services によって *Standard_A2* シリーズが使用されます。  価格は VM のサイズによって決まり、その特定のサイズに対して Lab Services で使用される VM シリーズに関係なく同じです。 各 VM サイズの価格の詳細については、[Lab Services 価格ガイド](https://azure.microsoft.com/pricing/details/lab-services/)を参照してください。
+
+
+| サイズ | 最小の仕様 | 系列 | 推奨される用途 |
 | ---- | ----- | ------ | ------------- |
-| Small| <ul><li>2&nbsp;コア</li><li>3.5 GB RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | コマンド ライン、Web ブラウザーの起動、トラフィックが少ない Web サーバー、中小規模のデータベースに最も適しています。 |
-| Medium | <ul><li>4&nbsp;コア</li><li>7&nbsp;GB&nbsp;RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | リレーショナル データベース、メモリ内キャッシュ、分析に最も適しています。 |
-| 中 (入れ子になった仮想化) | <ul><li>4&nbsp;コア</li><li>16&nbsp;GB&nbsp;RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | リレーショナル データベース、メモリ内キャッシュ、分析に最も適しています。
-| Large | <ul><li>8&nbsp;コア</li><li>16&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | 高速の CPU、ローカル ディスクのより優れたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。  また、このサイズは入れ子になった仮想化もサポートしています。 |
-| 大 (入れ子になった仮想化) | <ul><li>8&nbsp;コア</li><li>32&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | 高速の CPU、ローカル ディスクのより優れたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 |
+| Small| <ul><li>2&nbsp;コア</li><li>3.5 GB RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md)、[Standard_A2](../virtual-machines/sizes-previous-gen.md#a-series) | コマンド ライン、Web ブラウザーの起動、トラフィックが少ない Web サーバー、中小規模のデータベースに最も適しています。 |
+| Medium | <ul><li>4&nbsp;コア</li><li>7&nbsp;GB&nbsp;RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md)、[Standard_A3](../virtual-machines/sizes-previous-gen.md#a-series) | リレーショナル データベース、メモリ内キャッシュ、分析に最も適しています。 |
+| 中 (入れ子になった仮想化) | <ul><li>4&nbsp;コア</li><li>16&nbsp;GB&nbsp;RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md#dsv3-series) | リレーショナル データベース、メモリ内キャッシュ、分析に最も適しています。  また、このサイズは入れ子になった仮想化もサポートしています。
+| Large | <ul><li>8&nbsp;コア</li><li>16&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md)、[Standard_A7](../virtual-machines/sizes-previous-gen.md#a-series) | 高速の CPU、ローカル ディスクのより優れたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 |
+| 大 (入れ子になった仮想化) | <ul><li>8&nbsp;コア</li><li>32&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md#dsv3-series) | 高速の CPU、ローカル ディスクのより優れたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。  また、このサイズは入れ子になった仮想化もサポートしています。 |
 | 小規模 GPU (視覚化) | <ul><li>6&nbsp;コア</li><li>56&nbsp;GB&nbsp;RAM</li>  | [Standard_NV6](../virtual-machines/nv-series.md) | OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
-| Small GPU (Compute) | <ul><li>6&nbsp;コア</li><li>56&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md) |AI やディープ ラーニングなどのコンピューティング集中型アプリケーションに最も適しています。 |
-| 中規模 GPU (視覚化) | <ul><li>12&nbsp;コア</li><li>112&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
+| Small GPU (Compute) | <ul><li>6&nbsp;コア</li><li>56&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md)、[Standard_NC6s_v3](../virtual-machines/ncv3-series.md) |AI やディープ ラーニングなどのコンピューティング集中型アプリケーションに最も適しています。 |
+| 中規模 GPU (視覚化) | <ul><li>12&nbsp;コア</li><li>112&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md)、[Standard_NV12s_v3](../virtual-machines/nvv3-series.md)、[Standard_NV12s_v2](../virtual-machines/sizes-previous-gen.md#nvv2-series)  | OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
 
 ## <a name="manage-identity"></a>ID の管理
 
@@ -216,12 +219,37 @@ Azure Lab Services のリソースを設定する場合、リソースをホス�
    - 教師がラボの新規作成や自身が作成したラボの管理を行うことができるようにするには、ラボの作成者ロールを割り当てるだけで済みます。
    - 教師が特定のラボを管理できるが、新しいラボを作成 "*できない*" ようにするには、その教師が管理する各ラボの所有者または共同作成者ロールを割り当てます。 たとえば、教授と補助教員がラボを共同で所有することを許可できます。 詳細については、[ラボへの所有者の追加](./how-to-add-user-lab-owner.md)に関する記事を参照してください。
 
+## <a name="content-filtering"></a>コンテンツのフィルター処理
+
+学校では、学生が不適切な Web サイトにアクセスできないようにコンテンツのフィルター処理を行うことが必要になる場合があります。  たとえば、[子供のインターネット保護法 (CIPA)](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act)に準拠するためなどです。  Lab Services には、コンテンツ フィルター処理の組み込みサポートはありません。
+
+通常、コンテンツのフィルター処理に関して学校では 2 つの方法を考慮します。
+- ネットワーク レベルでコンテンツをフィルター処理するようにファイアウォールを構成します。
+- コンテンツのフィルター処理を実行する各コンピューターに、サードパーティ製ソフトウェアを直接インストールします。
+
+最初の方法は、Lab Services では現在サポートされていません。  Lab Services により、Microsoft が管理する Azure サブスクリプション内に各ラボの仮想ネットワークがホストされています。  そのため、基になる仮想ネットワークにアクセスして、ネットワーク レベルでコンテンツのフィルター処理を行うことはできません。  Lab Services のアーキテクチャの詳細については、[アーキテクチャの基礎](./classroom-labs-fundamentals.md)に関する記事を参照してください。
+
+代わりに、各ラボのテンプレート VM にサードパーティ製ソフトウェアをインストールする 2 番目の方法をお勧めします。  このソリューションの一部として注目すべき重要な点がいくつかあります。
+- [自動シャットダウンの設定](./cost-management-guide.md#automatic-shutdown-settings-for-cost-control)を使用する場合は、サードパーティ製ソフトウェアでいくつかの Azure ホスト名のブロックを解除する必要があります。  自動シャットダウンの設定で使用される診断拡張機能では、Lab Services に対して通信できる必要があります。  そうしないと、自動シャットダウンの設定をラボで有効にできません。
+- また、コンテンツ フィルター処理ソフトウェアをアンインストールできないように、各学生には VM で管理者以外のアカウントを使用させる必要もあります。  既定では、各学生が VM へのサインインに使用する管理者アカウントが Lab Services によって作成されます。  特別に作成されたイメージを使用して、非管理者アカウントを追加することはできますが、いくつかの既知の制限があります。
+
+学校でコンテンツのフィルター処理を行う必要がある場合は、詳細について [Azure Lab Services のフォーラム](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices)でご連絡ください。
+
+## <a name="endpoint-management"></a>Endpoint management (エンドポイント管理)
+
+[Microsoft エンドポイント マネージャー](https://techcommunity.microsoft.com/t5/azure-lab-services/configuration-manager-azure-lab-services/ba-p/1754407)などの多くのエンドポイント管理ツールでは、Windows VM に一意のマシン セキュリティ識別子 (SID) が必要です。  SysPrep を使用して "*一般化された*" イメージを作成すると、通常、VM がイメージから起動されるときに、各 Windows マシンに新しい一意のマシン SID が生成されます。
+
+Lab Services では、"*一般化された*" イメージを使用してラボが作成される場合でも、テンプレート VM と学生用 VM のマシン SID はすべて同じになります。  テンプレート VM のイメージは、学生用 VM を作成するために発行されるときは "*特殊化された*" 状態であるため、VM の SID は同じになります。
+
+たとえば、Azure Marketplace のイメージは一般化されています。  Win 10 の Marketplace イメージからラボを作成して、テンプレート VM を発行すると、ラボ内のすべての学生用 VM は、テンプレート VM と同じマシン SID を持つようになります。  マシン SID は、[PsGetSid](/sysinternals/downloads/psgetsid) などのツールを使用して確認できます。
+
+エンドポイント管理ツールまたは類似のソフトウェアを使用する場合は、ラボの VM を使用してそれをテストし、マシンの SID が同じであっても正常に動作することを確認することをお勧めします。  
+
 ## <a name="pricing"></a>価格
 
 ### <a name="azure-lab-services"></a>Azure Lab Services
 
 価格については、「[Azure Lab Services の価格](https://azure.microsoft.com/pricing/details/lab-services/)」を参照してください。
-
 
 ### <a name="shared-image-gallery"></a>共有イメージ ギャラリー
 
@@ -231,7 +259,7 @@ Azure Lab Services のリソースを設定する場合、リソースをホス�
 
 #### <a name="storage-charges"></a>ストレージ料金
 
-イメージ バージョンを保存するために、共有イメージ ギャラリーでは標準ハード ディスク ドライブ (HDD) マネージド ディスクを使用します。 使用される HDD マネージド ディスクのサイズは、保存されるイメージ バージョンのサイズによって異なります。 価格については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」を参照してください。
+イメージのバージョンを格納するため、共有イメージ ギャラリーでは既定で、Standard ハード ディスク ドライブ (HDD) マネージド ディスクが使用されます。  Lab Services で共有イメージ ギャラリーを使用するときは、HDD マネージド ディスクを使用することをお勧めします。  使用される HDD マネージド ディスクのサイズは、保存されるイメージ バージョンのサイズによって異なります。  Lab Services でサポートされるイメージとディスクのサイズは、最大 128 GB です。  価格については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」を参照してください。
 
 #### <a name="replication-and-network-egress-charges"></a>レプリケーションとネットワーク エグレス料金
 
@@ -263,7 +291,7 @@ Azure Lab Services では、ラボが配置されている[地域内のターゲ
 * 1 カスタム イメージ (32 GB) &times; 2 バージョン &times; 8 米国リージョン &times; 1.54 ドル = 1 か月あたり 24.64 ドル
 
 > [!NOTE]
-> 上記の計算は、例の目的でのみ使用されます。 これは、Shared Image Gallery の使用に関連するストレージ コストを対象にしており、エグレス コストは含まれて "*いません*"。 ストレージの実際の価格については、「[Managed Disks の価格](https://azure.microsoft.com/en-us/pricing/details/managed-disks/)」を参照してください。
+> 上記の計算は、例の目的でのみ使用されます。 これは、Shared Image Gallery の使用に関連するストレージ コストを対象にしており、エグレス コストは含まれて "*いません*"。 ストレージの実際の価格については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」を参照してください。
 
 #### <a name="cost-management"></a>コスト管理
 

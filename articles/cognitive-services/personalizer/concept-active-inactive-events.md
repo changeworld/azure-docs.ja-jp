@@ -1,48 +1,55 @@
 ---
 title: アクティブなイベントと非アクティブなイベント- Personalizer
 description: この記事では、Personalizer サービス内でのアクティブおよび非アクティブなイベントの使用について説明します。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 7d1044d02ceba1f3d0996b1fe1c8a9a44b31049b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 948d375c0f580a71dbd27fa10660c0c7e0046a10
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91253651"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129219156"
 ---
-# <a name="active-and-inactive-events"></a>アクティブなイベントと非アクティブなイベント
+# <a name="defer-event-activation"></a>イベントのアクティブ化を遅延させる
 
-**アクティブな** イベントは、顧客に結果を示し、報酬スコアを決定することがわかっている場合の Rank のすべての呼び出しです。 これが既定の動作です。
+イベントの遅延アクティブ化を使用すると、ユーザーが実際にページを表示したり電子メールを開いたりしない可能性を考慮して、パーソナライズされた Web サイトやメーリング キャンペーンを作成できます。 これらのシナリオでは、結果が使用されたりユーザーに表示されたりするかどうかをアプリケーション側で知る前に、アプリケーションで Rank を呼び出す必要があります。 コンテンツがユーザーに表示されない場合は、学習のためにコンテンツに対して既定の報酬 (通常は 0) を想定する必要はありません。
+遅延アクティブ化を使用すると、Rank 呼び出しの結果をある時点で使用し、イベントを後から、またはコード内の他の場所で、学習する必要があるかどうかを決定できます。
 
-**非アクティブな** イベントは、ビジネス ロジックが原因でユーザーが推奨されるアクションを確認するかどうか不明な場合の Rank の呼び出しです。 これにより、Personalizer が既定の報酬でトレーニングされないように、そのイベントを破棄することができます。 非アクティブなイベントは、Reward API を呼び出すことはできません。
+## <a name="typical-scenarios-for-deferred-activation"></a>遅延アクティブ化の一般的なシナリオ
 
-学習ループでイベントの実際の種類が認識されていることが重要です。 非アクティブなイベントには、Reward の呼び出しはありません。 アクティブなイベントには Reward 呼び出しが必要ですが、その API 呼び出しが行われない場合は、既定の報酬スコアが適用されます。 イベントの状態がユーザー エクスペリエンスに影響することがわかった場合は、すぐにそれを非アクティブからアクティブに変更します。
+イベントのアクティブ化の遅延は、次の例のようなシナリオで役に立ちます。
 
-## <a name="typical-active-events-scenario"></a>アクティブなイベントの一般的なシナリオ
+* ユーザー向けにパーソナライズされた Web ページを事前にレンダリングしていますが、Personalizer のアクションの選択がいくつかのビジネス ロジックによってオーバーライドされるため、それをユーザーが見ない可能性があります。
+* Web ページの "下半分" にあるコンテンツをパーソナライズしていて、そのコンテンツがユーザーに見られない可能性が高いと考えられます。
+* マーケティング電子メールをパーソナライズしていて、ユーザーに開かれたことがない電子メールによるトレーニングは避ける必要があります。
+* 動的メディア チャネルをパーソナライズしましたが、Personalizer によって選択された曲や動画に到達する前に、ユーザーがチャネルの再生を停止する可能性があります。 
 
-アプリケーションから Rank API を呼び出すと、アプリケーションで **rewardActionId** フィールドに表示する必要のあるアクションを受け取ります。  その時点から、Personalizer では、eventId が同じである報酬スコアを含む Reward 呼び出しが予期されます。 報酬スコアは、以降の Rank 呼び出しに対するモデルのトレーニングに使用されます。 eventId に対して Reward の呼び出しを受け取っていない場合は、既定の報酬が適用されます。 [既定の報酬](how-to-settings.md#configure-rewards-for-the-feedback-loop)は、Azure portal の Personalizer リソースに設定されます。
+一般的に、これらのシナリオは以下の場合に発生します。
 
-## <a name="other-event-type-scenarios"></a>その他のイベントの種類のシナリオ
+* UI または時間の制約により、ユーザーが見るか見ないかわからない UI を事前にレンダリングしている。
+* 出力を使用するかどうかわかる前に Rank 呼び出しを行う予測パーソナライズを、アプリケーションが実行している。
 
-一部のシナリオでは、結果が使用されるか、ユーザーに表示されるかを知るよりも前に、アプリケーションで Rank を呼び出す必要があります。 これは、たとえば、昇格したコンテンツのページ レンダリングがマーケティング キャンペーンで上書きされる場合に発生する可能性があります。 Rank の呼び出しの結果が使用されておらず、ユーザーがそれを見ていない場合は、対応する Reward の呼び出しを送信しないでください。
+## <a name="how-to-defer-activation-and-later-activate-events"></a>イベントのアクティブ化を遅延させ、後でアクティブ化する方法
 
-通常、これらのシナリオは次の場合に発生します。
+イベントのアクティブ化を遅延させるには、要求本文で、`deferActivation = True` にして [Rank](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) を呼び出します。
 
-* ユーザーに表示されるかどうかにかかわらず、UI の事前レンダリングを行っている。
-* アプリケーションで、リアルタイム性の低いコンテキストを使用して Rank 呼び出しが行われる予測パーソナル化が行われていて、その出力がアプリケーションで使用される場合もあれば、使用されない場合もある。
+パーソナライズされたコンテンツまたはメディアがユーザーに表示され、報酬が妥当であることがわかったらすぐに、そのイベントをアクティブ化する必要があります。 そうするには、eventId を指定して [Activate API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Activate) を呼び出します。
 
-このような場合は、Personalizer を使用して Rank を呼び出し、イベントを "_非アクティブ_" にするよう要求します。 Personalizer では、このイベントに対する報酬は必要とされず、既定の報酬も適用されません。
 
-後のビジネス ロジックにおいて、アプリケーションで Rank 呼び出しの情報を使用する場合は、イベントを "_アクティブ化_" するだけです。 イベントがアクティブになると直ちに、Personalizer でイベントの報酬が必要になります。 Reward API の明示的な呼び出しが行われない場合、Personalizer では既定の報酬が適用されます。
+その EventID 呼び出しの [Activate API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Activate) 呼び出しは、報酬の待機時間枠が終了する前に受信される必要があります。
 
-## <a name="inactive-events"></a>非アクティブなイベント
+### <a name="behavior-with-deferred-activation"></a>遅延アクティブ化での動作 
 
-イベントのトレーニングを無効にするには、`learningEnabled = False` を使用して Rank を呼び出します。
-
-非アクティブなイベントの学習は、eventId に対して報酬が送信されたり、その eventId に対して `activate` API が呼び出されたりすると、暗黙的にアクティブになります。
+Personalizer は、次のようにイベントと報酬から学習します。
+* `deferActivation = True` にして Rank を呼び出し、その eventId の `Activate` API を呼び出さ "*ない*" で、Reward を呼び出す場合、Personalizer はイベントから学習しません。
+* `deferActivation = True` にして Rank を呼び出し、その eventId の `Activate` API を "*呼び出して*"、Reward を呼び出す場合、Personalizer は指定された報酬スコアを使用してイベントから学習します。
+* `deferActivation = True` にして Rank を呼び出し、その eventId の `Activate` API を "*呼び出す*" ものの、Reward の呼び出しは省略する場合、Personalizer は構成内の既定の報酬スコア セットを使用してイベントから学習します。
 
 ## <a name="next-steps"></a>次のステップ
-
+* [既定の報酬](how-to-settings.md#configure-rewards-for-the-feedback-loop)を構成する方法。
 * [報酬スコアを決定する方法と考慮すべきデータ](concept-rewards.md)を確認します。

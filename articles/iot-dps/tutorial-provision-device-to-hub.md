@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 94568eb5d64f07133ebb9992cdae59400830dd5e
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: eed3ff374850d4861c94fe79263c26a8f33760ac
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226890"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271690"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>チュートリアル:Azure IoT Hub Device Provisioning Service を使用した IoT ハブへのデバイスのプロビジョニング
 
@@ -56,7 +56,7 @@ ms.locfileid: "107226890"
 
 今度は、デバイスの構成証明メカニズムに基づく必要なセキュリティ アーティファクトを使って、Device Provisioning Service インスタンスにデバイスを登録します。 
 
-1. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
+1. Azure portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
 
 2. Device Provisioning Service の概要ブレードで、 **[Manage enrollments]\(登録の管理\)** を選択します。 デバイスの設定に従って、 **[Individual Enrollments]/(個別登録\)** タブまたは **[Enrollment Groups]\(登録グループ\)** タブを選択します。 上部にある **[追加]** をクリックします。 ID 構成証明 "*メカニズム*" として **[TPM]** または **[X.509]** を選択し、前述の適切なセキュリティ アーティファクトを入力します。 新しい **IoT ハブ デバイス ID** を入力できます。 作業が完了したら、 **[保存]** をクリックします。 
 
@@ -68,11 +68,9 @@ ms.locfileid: "107226890"
 
 ## <a name="start-the-iot-device"></a>IoT デバイスを起動する
 
-IoT デバイスは、実際のデバイスにすることも、シミュレートされたデバイスにすることもできます。 IoT デバイスが Device Provisioning Service インスタンスに登録されたため、デバイスを起動し、プロビジョニング サービスを呼び出して、構成証明メカニズムを使用して認識されるようにすることができます。 デバイスは、プロビジョニング サービスに認識されると、IoT ハブに割り当てられます。 
+IoT デバイスは、実際のデバイスにすることも、シミュレートされたデバイスにすることもできます。 IoT デバイスが Device Provisioning Service インスタンスに登録されたため、デバイスを起動し、プロビジョニング サービスを呼び出して、構成証明メカニズムを使用して認識されるようにすることができます。 デバイスは、プロビジョニング サービスに認識されると、IoT ハブに割り当てられます。
 
-TPM と X.509 の両方の構成証明を使用する、シミュレートされたデバイスの例として、C、Java、C#、Node.js、Python などによるものがあります。 たとえば、TPM と [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) を使用するシミュレートされたデバイスは、「[デバイスの初回ブート シーケンスのシミュレーション](quick-create-simulated-device.md#simulate-first-boot-sequence-for-the-device)」セクションで説明されているプロセスに従います。 X.509 証明書構成証明を使用する同じデバイスの場合は、この[ブート シーケンス](quick-create-simulated-device-x509.md#simulate-first-boot-sequence-for-the-device)についてのセクションを参照してください。
-
-実際のデバイスの例については、[MXChip Iot DevKit のハウツー ガイド](how-to-connect-mxchip-iot-devkit.md)を参照してください。
+TPM と X.509 の両方の構成証明を使用する、シミュレートされたデバイスの例として、C、Java、C#、Node.js、Python などによるものがあります。  TPM 構成証明を使用するデバイスの例については、「[クイックスタート: シミュレートされた TPM デバイスをプロビジョニングする](quick-create-simulated-device-tpm.md)」を参照してください。 X.509 構成証明を使用するデバイスの例については、[シミュレートされた対称キー デバイスをプロビジョニングする](quick-create-simulated-device-x509.md#prepare-and-run-the-device-provisioning-code)方法に関するクイックスタートを参照してください。
 
 デバイスを起動して、デバイスのクライアント アプリケーションが Device Provisioning Service への登録を開始できるようにします。  
 
@@ -88,7 +86,7 @@ TPM と X.509 の両方の構成証明を使用する、シミュレートされ
 
     ![ポータルに表示されたハブへの成功した接続](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-詳細については、プロビジョニング デバイス クライアントのサンプル [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) を参照してください。 このサンプルは、TPM、X.509 証明書、対称キーを使用してシミュレートされたデバイスをプロビジョニングする方法を示しています。 サンプルの使用に関する詳細な手順については、[TPM](./quick-create-simulated-device.md)、[X.509](./quick-create-simulated-device-x509.md)、および[対称キー](./quick-create-simulated-device-symm-key.md)の構成証明のクイック スタートに戻って参照してください。
+詳細については、プロビジョニング デバイス クライアントのサンプル [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) を参照してください。 このサンプルは、TPM、X.509 証明書、対称キーを使用してシミュレートされたデバイスをプロビジョニングする方法を示しています。 サンプルの使用に関する詳細な手順については、[TPM](./quick-create-simulated-device-tpm.md)、[X.509](./quick-create-simulated-device-x509.md)、および[対称キー](./quick-create-simulated-device-symm-key.md)の構成証明のクイック スタートに戻って参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の内容を学習しました。

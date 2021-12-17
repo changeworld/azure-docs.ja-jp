@@ -2,13 +2,13 @@
 title: SAP HANA データベースのバックアップ エラーのトラブルシューティング
 description: Azure Backup を使用して SAP HANA データベースをバックアップするときに発生する可能性のある一般的なエラーをトラブルシューティングする方法について説明します。
 ms.topic: troubleshooting
-ms.date: 11/7/2019
-ms.openlocfilehash: cdf4c26aa32d65ec63ec84d85e454adaaf2ece8d
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 05/31/2021
+ms.openlocfilehash: 1af52116a08344d36a9364ac9e3b4f468e0abb83
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517234"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451963"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure での SAP HANA データベースのバックアップをトラブルシューティングする
 
@@ -22,59 +22,158 @@ ms.locfileid: "107517234"
 
 ### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
 
-| **エラー メッセージ**      | <span style="font-weight:normal">Azure Backup には、バックアップを実行するために必須のロール特権がありません</span>    |
+| **エラー メッセージ**      | `Azure Backup does not have required role  privileges to carry out Backup and Restore operations`    |
 | ---------------------- | ------------------------------------------------------------ |
-| **考えられる原因**    | ロールが上書きされている可能性があります。                          |
-| **推奨される操作** | この問題を解決するには、 **[Discover DB]\(DB の検出\)** ウィンドウからスクリプトを実行するか、[ここ](https://aka.ms/scriptforpermsonhana)からダウンロードします。 または、"SAP_INTERNAL_HANA_SUPPORT" ロールをワークロード バックアップ ユーザー (AZUREWLBACKUPHANAUSER) に追加します。 |
+| **考えられる原因**    | バックアップ ユーザー (AZUREWLBACKUPHANAUSER) に **SAP_INTERNAL_HANA_SUPPORT** ロールが割り当てられていないか、ロールが上書きされている場合は、すべての操作が失敗し、このエラーが表示されます。                          |
+| **推奨される操作** | [事前登録スクリプト](https://aka.ms/scriptforpermsonhana)をダウンロードして SAP HANA インスタンスで実行するか、**SAP_INTERNAL_HANA_SUPPORT** ロールをバックアップ ユーザー (AZUREWLBACKUPHANAUSER) に手動で割り当てます。<br><br>**注:**<br><br>HANA 2.0 SPS04 Rev 46 以降を使用している場合、これらの HANA バージョンでは **SAP_INTERNAL_HANA_SUPPORT** ロールの使用が非推奨であるため、このエラーは発生しません。 |
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-| エラー メッセージ      | <span style="font-weight:normal">HANA システムに接続できませんでした</span>                        |
+| **エラー メッセージ**      | `Failed to connect to HANA system`                        |
 | ------------------ | ------------------------------------------------------------ |
-| **考えられる原因**    | SAP HANA インスタンスがダウンしている可能性があります。<br/>Azure Backup が HANA データベースと対話するのに必要なアクセス許可が設定されていません。 |
-| **推奨される操作** | SAP HANA データベースが稼働しているかどうかを確認します。 データベースが稼働している場合は、必要なアクセス許可がすべて設定されているかどうかを確認します。 いずれかのアクセス許可がない場合は、[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行して、不足しているアクセス許可を追加します。 |
+| **考えられる原因**    | <ul><li>HANA インスタンスへの接続に失敗しました</li><li>システム DB がオフラインです</li><li>テナント DB がオフラインです</li><li>バックアップ ユーザー (AZUREWLBACKUPHANAUSER) に十分なアクセス許可または特権がありません。</li></ul> |
+| **推奨される操作** | システムが稼働しているかどうかを確認します。 データベースが稼働している場合は、SAP HANA インスタンスで[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)をダウンロードして実行することにより、必要な権限が設定されていることを確認します。 |
 
 ### <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid
 
-| エラー メッセージ      | <span style="font-weight:normal">指定した SAP HANA インスタンスは無効であるか、見つかりません</span>  |
+| **エラー メッセージ**      | `The specified SAP HANA instance is either invalid or can't be found`  |
 | ------------------ | ------------------------------------------------------------ |
-| **考えられる原因**    | 単一の Azure VM 上の複数の SAP HANA インスタンスをバックアップすることはできません。 |
-| **推奨される操作** | バックアップする SAP HANA インスタンス上で[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行します。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 |
-
-### <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation
-
-| エラー メッセージ      | <span style="font-weight:normal">指定された SAP HANA 操作はサポートされていません</span>              |
-| ------------------ | ------------------------------------------------------------ |
-| **考えられる原因**    | SAP HANA 用 Azure Backup は、SAP HANA ネイティブ クライアント (Studio/ Cockpit/ DBA Cockpit) で実行される増分バックアップやアクションをサポートしていません |
-| **推奨される操作** | 詳しくは、[こちら](./sap-hana-backup-support-matrix.md#scenario-support)を参照してください。 |
+| **考えられる原因**    | <ul><li>指定した SAP HANA インスタンスは無効であるか、見つかりません。</li><li>単一の Azure VM 上の複数の SAP HANA インスタンスをバックアップすることはできません。</li></ul> |
+| **推奨される操作** | <ul><li>Azure VM 上で実行されている HANA インスタンスが 1 つだけであることを確認します。</li><li>正しい SAP HANA インスタンスを指定して、[Discover DB]\(DB の検出\) ウィンドウのスクリプト ([こちらから](https://aka.ms/scriptforpermsonhana)見つけることもできます) を実行して問題を解決します。</li></ul> |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
 
-| エラー メッセージ      | <span style="font-weight:normal">バックアップ ログ チェーンが壊れています</span>                                    |
+| **エラー メッセージ**      | `Backup log chain is broken`                                    |
 | ------------------ | ------------------------------------------------------------ |
-| **考えられる原因**    | ログ バックアップ先が backint からファイル システムに更新されたか、backint 実行可能ファイルが変更された可能性があります |
-| **推奨される操作** | 問題を解決するには、完全バックアップをトリガーします                   |
+| **考えられる原因**    | HANA LSN ログ チェーンの中断は、以下を含むさまざまな理由でトリガーされる可能性があります。<ul><li>バックアップをコミットする Azure Storage 呼び出しに失敗しました。</li><li>テナント DB がオフラインです。</li><li>拡張機能のアップグレードにより、進行中のバックアップ ジョブが終了しました。</li><li>バックアップ中に Azure Storage に接続できません。</li><li>SAP HANA によってバックアップ プロセスでトランザクションがロールバックされました。</li><li>バックアップは完了しましたが、HANA システムでカタログがまだ正常に更新されていません。</li><li>Azure Backup の観点でバックアップに失敗しましたが、HANA の観点からは成功しました。ログ バックアップまたはカタログの配置先が backint からファイル システムに更新されたか、backint 実行可能ファイルが変更された可能性があります。</li></ul> |
+| **推奨される操作** | この問題を解決するために、Azure Backup では自動修復の完全バックアップがトリガーされます。 この自動修復のバックアップが進行中の間、HANA によってトリガーされたすべてのログ バックアップが **OperationCancelledBecauseConflictingAutohealOperationRunningUserError** で失敗します。 自動修復の完全バックアップが完了すると、ログとその他のすべてのバックアップが正常に動作し始めます。<br>24 時間以内に自動修復完全バックアップがトリガーされない、または成功したバックアップ (完全、差分、増分) が確認できない場合は、Microsoft サポートにお問い合わせください。</br> |
 
 ### <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected
 
-| エラー メッセージ      | <span style="font-weight:normal">SDC から MDC へのアップグレードが検出されました</span>                                   |
+| **エラー メッセージ**      | `SDC to MDC upgrade detected.`                                   |
 | ------------------ | ------------------------------------------------------------ |
-| **考えられる原因**    | SAP HANA インスタンスが、SDC から MDC にアップグレードされました。 更新すると、バックアップは失敗します。 |
-| **推奨される操作** | [SDC から MDC にアップグレード](#sdc-to-mdc-upgrade-with-a-change-in-sid)するための手順に従って、問題を解決します |
+| **考えられる原因**    | SDC システムが MDC にアップグレードされると、バックアップは失敗し、このエラーが発生します。 |
+| **推奨される操作** | この問題をトラブルシューティングして解決するには、[SDC から MDC へのアップグレード](#sdc-to-mdc-upgrade-with-a-change-in-sid)に関する記事を参照してください。 |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
-| エラー メッセージ      | <span style="font-weight:normal">無効な backint 構成が検出されました</span>                       |
+| **エラー メッセージ**      | `Backups will fail with this error when the Backint Configuration is incorrectly updated.`                       |
 | ------------------ | ------------------------------------------------------------ |
-| **考えられる原因**    | バッキング パラメーターが Azure Backup に対して正しく指定されていません |
-| **推奨される操作** | 次の (backint) パラメーターが設定されているかどうかを確認します。<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>backint ベースのパラメーターが HOST に存在する場合は、それらを削除します。 パラメーターが HOST レベルに存在しないが、データベース レベルで手動で変更されている場合は、それらを既に説明した適切な値に戻します。 または、Azure portal から [[保護を停止してバックアップ データを保持する]](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) を実行してから、 **[バックアップの再開]** を選択します。 |
+| **考えられる原因**    | Azure Backup による保護の構成フロー中に更新された backint 構成が、顧客によって変更または更新されています。 |
+| **推奨される操作** | 次の (backint) パラメーターが設定されているかどうかを確認します。<br><ul><li>[catalog_backup_using_backint:true]</li><li>[enable_accumulated_catalog_backup:false]</li><li>[parallel_data_backup_backint_channels:1]</li><li>[log_backup_timeout_s:900)]</li><li>[backint_response_timeout:7200]</li></ul>backint ベースのパラメーターが HOST レベルに存在する場合は、それらを削除します。 ただし、パラメーターが HOST レベルに存在しないが、データベース レベルで手動で変更されている場合は、データベース レベルの値が上記で設定されていることを確認してください。 または、Azure portal から[バックアップ データを保持した保護の停止](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)を実行してから、[バックアップの再開] を選択します。 |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
 
-|エラー メッセージ  |復元のソース システムとターゲット システムには互換性がありません  |
+|**エラー メッセージ**  | `The source and target systems for restore are incompatible.`  |
 |---------|---------|
-|考えられる原因   | 復元のために選択されたソース システムとターゲット システムには互換性がありません        |
-|推奨される操作   |   復元シナリオが、次のような互換性のない復元の一覧に含まれていないことを確認します。 <br><br>   **ケース 1:** 復元中に SYSTEMDB の名前を変更することはできません。  <br><br> **ケース 2:** ソースは SDC、ターゲットは MDC: ソース データベースをターゲット上の SYSTEMDB またはテナント DB として復元することはできません。 <br><br> **ケース 3:** ソースは MDC、ターゲットは SDC: ソース データベース (SYSTEMDB またはテナント DB) をターゲットに復元することはできません。 <br><br>  詳細については、[SAP サポート スタート パッド](https://launchpad.support.sap.com)でノート **1642148** を参照してください。 |
+|**考えられる原因**   | ソースとターゲットの HANA データベース、およびシステムに互換性がない場合、復元フローは失敗し、このエラーが発生します。 |
+|推奨される操作   |   復元シナリオが、次のような互換性のない復元の一覧に含まれていないことを確認します。<br> **ケース 1:** 復元中に SYSTEMDB の名前を変更することはできません。<br>**ケース 2:** ソースは SDC、ターゲットは MDC: ソース データベースをターゲット上の SYSTEMDB またはテナント DB として復元することはできません。 <br> **ケース 3:** ソースは MDC、ターゲットは SDC: ソース データベース (SYSTEMDB またはテナント DB) をターゲットに復元することはできません。<br>詳細については、[SAP サポート スタート パッド](https://launchpad.support.sap.com)のノート **1642148** を参照してください。 |
+
+### <a name="usererrorhanapodoesnotexist"></a>UserErrorHANAPODoesNotExist
+
+**エラー メッセージ** | `Database configured for backup does not exist.`
+--------- | --------------------------------
+**考えられる原因** | バックアップ用に構成されているデータベースが削除されると、このデータベースのすべてのスケジュールされたバックアップとアドホック バックアップが失敗します。
+**推奨される操作** | データベースが削除されているか確認します。 データベースを作成し直すか、データベースの[保護を停止](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)します (データを保持して、または保持しないで)。
+
+### <a name="usererrorinsufficientprivilegeofdatabaseuser"></a>UserErrorInsufficientPrivilegeOfDatabaseUser
+
+**エラー メッセージ** |    `Azure Backup does not have enough privileges to carry out Backup and Restore operations.`
+---------- | ---------
+**考えられる原因** | 事前登録スクリプトによって作成されたバックアップ ユーザー (AZUREWLBACKUPHANAUSER) に、次のロールが 1 つ以上割り当てられていません。<ul><li>MDC の場合、復元中に新しいデータベースを作成するための DATABASE ADMIN および BACKUP ADMIN (HANA 2.0 SPS05 以降の場合)。</li><li>SDC の場合、復元中に新しいデータベースを作成するための BACKUP ADMIN。</li><li>バックアップ カタログを読み取るための CATALOG READ。</li><li>いくつかのプライベート テーブルにアクセスするための SAP_INTERNAL_HANA_SUPPORT。 HANA 2.0 SPS04 Rev 46 より前の SDC および MDC バージョンでのみ必要となります。 HANA 2.0 SPS04 Rev 46 以降では必要ありません。必要な情報は、HANA チームからの修正プログラムと共に、パブリック テーブルから入手することになります。</li></ul>
+**推奨される操作** | 問題を解決するには、必要なロールとアクセス許可を手動でバックアップ ユーザー (AZUREWLBACKUPHANAUSER) に追加するか、SAP HANA インスタンスで[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)をダウンロードして実行します。
+
+### <a name="usererrordatabaseuserpasswordexpired"></a>UserErrorDatabaseUserPasswordExpired
+
+**エラー メッセージ** | `Database/Backup user's password expired.`
+----------- | -----------
+**考えられる原因** | 事前登録スクリプトによって作成されたデータベースまたはバックアップ ユーザーに、パスワードの有効期限が設定されていません。 ただし、変更された場合は、このエラーが表示される場合があります。
+**推奨される操作** | この問題を解決するには、SAP HANA インスタンス上で[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)をダウンロードして実行します。
+
+### <a name="usererrorinconsistentssfs"></a>UserErrorInconsistentSSFS
+
+**エラー メッセージ** | `SAP HANA error`
+------------ | ----------
+**考えられる原因** | SAP HANA エンジンから受信した、セキュリティ保護ストレージ ファイル システム (SSFS) の不整合エラー。
+**推奨される操作** | SAP HANA チームと協力してこの問題を修正してください。 詳細については、SAP ノート **0002097613** を参照してください。
+
+### <a name="usererrorcannotconnecttoazureactivedirectoryservice"></a>UserErrorCannotConnectToAzureActiveDirectoryService
+
+**エラー メッセージ** | `Unable to connect to the AAD service from the HANA system.`
+--------- | --------
+**考えられる原因** | バックアップ拡張機能のプラグイン サービス アカウントとしてのファイアウォールまたはプロキシの設定で、AAD への送信接続が許可されていません。
+**推奨される操作** | AAD への送信接続が成功するようにファイアウォールまたはプロキシの設定を修正してください。
+
+### <a name="usererrormisconfiguredsslcastore"></a>UserErrorMisConfiguredSslCaStore
+
+**エラー メッセージ** | `Misconfigured CA store`
+-------- | -------
+**考えられる原因** | バックアップ拡張機能のプラグイン ホスト プロセスがルート CA ストア (SLES の場合は _/var/lib/ca-certificates/ca-bundle.pem_) にアクセスできません。
+**推奨される操作** | `chmod o+r` を使用して元のアクセス許可を復元することで、CA ストアの問題を修正します。  次に、バックアップと復元が成功するようにプラグイン ホスト サービスを再起動します。
+
+### <a name="usererrorbackupfailedasremedialbackupinprogress"></a>UserErrorBackupFailedAsRemedialBackupInProgress
+
+**エラー メッセージ** | `Remedial Backup in progress.`
+---------- | -------
+**考えられる原因** | Azure Backup により、LSN ログ チェーンの切断に対処するための修復完全バックアップがトリガーされます。 この修復完全バックアップの進行中には、ポータルまたは CLI を介してトリガーされたバックアップ (完全/差分/増分) が失敗し、このエラーが発生します。
+**推奨される操作** | 修復完全バックアップが正常に完了するまで待ってから、別のバックアップをトリガーします。
+
+### <a name="operationcancelledbecauseconflictingoperationrunningusererror"></a>OperationCancelledBecauseConflictingOperationRunningUserError
+
+**エラー メッセージ** | `Conflicting operation in progress.`
+----------- | -------------
+**考えられる原因** | 別の完全、差分、増分バックアップが既に進行中であるときに、ポータル、CLI、ネイティブ HANA クライアントで完全、差分、増分バックアップがトリガーされています。
+**推奨される操作** | アクティブなバックアップ ジョブが完了するのを待ってから、新しい完全または差分バックアップをトリガーします。
+
+### <a name="operationcancelledbecauseconflictingautohealoperationrunning-usererror"></a>OperationCancelledBecauseConflictingAutohealOperationRunning UserError
+
+**エラー メッセージ** | `Auto-heal Full backup in progress.`
+------- | -------
+**考えられる原因** | Azure Backup により、**UserErrorHANALSNValidationFailure** を解決するために自動修復の完全バックアップがトリガーされます。 この自動修復のバックアップが進行中の間、HANA によってトリガーされたすべてのログ バックアップが **OperationCancelledBecauseConflictingAutohealOperationRunningUserError** で失敗します。<br>自動修復の完全バックアップが完了すると、ログとその他のすべてのバックアップが正常に動作し始めます。</br>
+**推奨される操作** | 自動修復の完全バックアップが完了するのを待ってから、新しい完全または差分バックアップをトリガーします。
+
+### <a name="usererrorhanaprescriptnotrun"></a>UserErrorHanaPreScriptNotRun
+
+**エラー メッセージ** | `Pre-registration script not run.`
+--------- | --------
+**考えられる原因** | 環境を設定するための SAP HANA 事前登録スクリプトがまだ実行されていません。
+**推奨される操作** | [事前登録スクリプト](https://aka.ms/scriptforpermsonhana)をダウンロードし、SAP HANA インスタンスで実行します。
+
+
+### <a name="usererrortargetpoexistsoverwritenotspecified"></a>UserErrorTargetPOExistsOverwriteNotSpecified
+
+**エラー メッセージ** | `Target database cannot be overwritten for Restore.`
+------- | -------
+**考えられる原因** | ターゲット データベースは存在しますが、上書きすることはできません。 ポータル または CLI の復元フローでは、強制的な上書きは設定されません。
+**推奨される操作** | [強制的に上書きします] オプションを選択してデータベースを復元するか、別のターゲット データベースに復元します。
+
+### <a name="usererrorrecoverysysscriptfailedtotriggerrestore"></a>UserErrorRecoverySysScriptFailedToTriggerRestore
+
+**エラー メッセージ** | `RecoverySys.py could not be run successfully to restore System DB.`
+-------- | ---------
+**考えられる原因** | システム DB の復元が失敗する原因として考えられるものは次のとおりです。<ul><li>Azure Backup が HANA マシン上の **Recoverysys.py** を検出できません。 これは、HANA 環境が適切に設定されていない場合に発生します。</li><li>**Recoverysys.py** は存在しますが、HANA を呼び出して復元を実行するためのこのスクリプトのトリガーに失敗しました。</li><li>Recoverysys.py による、復元を実行するための HANA の呼び出しは成功しましたが、HANA による復元が失敗しました。</li></ul>
+**推奨される操作** | <ul><li>問題 1 の場合は、SAP HANA チームと協力して問題を修正してください。</li><li>2 と 3 については、sid-adm プロンプトで HDSetting.sh コマンドを実行してログ トレースを参照してください。 たとえば、 _/usr/sap/SID/HDB00/HDBSetting.sh_ と入力します。</li></ul>これらの結果を SAP HANA チームと共有して問題を修正してください。
+
+### <a name="usererrordbnamenotincorrectformat"></a>UserErrorDBNameNotInCorrectFormat
+
+**エラー メッセージ** | `Restored database name not in correct format.`
+--------- | --------
+**考えられる原因** | ユーザーが指定した復元されたデータベース名が、許容または予期される形式ではありません。
+**推奨される操作** | 復元されるデータベース名が文字で始まり、数字またはアンダースコア以外の記号が含まれていないことを確認します。<br>最大文字数は 127 文字で、先頭を "\_SYS_\" にすることはできません。
+
+### <a name="usererrordefaultsidadmdirectorychanged"></a>UserErrorDefaultSidAdmDirectoryChanged
+
+**エラー メッセージ** | `Default sid-adm directory changed.`
+------- | -------
+**考えられる原因** | 既定の **sid-adm** ディレクトリが変更され、使用できる **HDBSetting.sh** がこの既定のディレクトリにありません。
+**推奨される操作** | HXE が SID である場合、環境変数 HOME が **sid-adm** ユーザーとして _/usr/sap/HXE/home_ に設定されていることを確認してください。
+
+### <a name="usererrorhdbsettingsscriptnotfound"></a>UserErrorHDBsettingsScriptNotFound
+
+**エラー メッセージ** | `HDBSetting.sh file cannot be found.`
+--------- | -------
+**考えられる原因** | 復元をトリガーするための **HDBsettings.sh** ファイルが **&lt;sid&gt;adm** ユーザー環境で見つからなかったため、システム データベースの復元が失敗しました。
+**推奨される操作** | SAP HANA チームと協力してこの問題を修正してください。<br><br>HXE が SID である場合、環境変数 HOME が **sid-adm** ユーザーとして _/usr/sap/HXE/home_ に設定されていることを確認してください。
 
 ## <a name="restore-checks"></a>復元の確認
 

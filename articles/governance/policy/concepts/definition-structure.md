@@ -1,14 +1,14 @@
 ---
 title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
-ms.date: 02/17/2021
+ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: cebba214671cfab75a3f44720578b51febacdfcd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 08e4df487786de0e43e7bc1ae7c0a5debb6a9752
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215070"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002512"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -16,7 +16,7 @@ Azure Policy によってリソースの規則が確立されます。 ポリシ
 
 規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、リソースに特定のタグを付けることを必須にすることもできます。 ポリシー割り当ては、子リソースによって継承されます。 リソース グループにポリシー割り当てが適用されると、そのリソース グループ内のすべてのリソースに適用されます。
 
-ポリシー定義の _policyRule_ スキーマは、[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json) にあります
+ポリシー定義の _policyRule_ スキーマは、[https://schema.management.azure.com/schemas/2020-10-01/policyDefinition.json](https://schema.management.azure.com/schemas/2020-10-01/policyDefinition.json) にあります
 
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 
@@ -105,7 +105,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 次のリソース プロバイダーのモードが完全にサポートされています。
 
-- Azure 上で、または Azure を離れて Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。 このリソース プロバイダー モードを使用する定義では、効果 _audit_、_deny_、および _disabled_ を使用します。 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果の使用は "_非推奨_" です。
+- Azure 上で、または Azure を離れて Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。 このリソース プロバイダー モードを使用する定義では、効果 _audit_、_deny_、および _disabled_ を使用します。 このモードでは、_パブリック プレビュー_ としてカスタム定義がサポートされます。 既存の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3 [制約テンプレート](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)からカスタム定義を作成するには、「[制約テンプレートからポリシー定義を作成する](../how-to/extension-for-vscode.md)」を参照してください。 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果の使用は "_非推奨_" です。
 
 現在、**プレビュー** として次のリソース プロバイダー モードがサポートされています。
 
@@ -113,7 +113,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 - [Azure Key Vault](../../../key-vault/general/overview.md) でコンテナーと証明書を管理するための `Microsoft.KeyVault.Data`。 これらのポリシー定義の詳細については、「[Azure Key Vault と Azure Policy を統合する](../../../key-vault/general/azure-policy.md)」を参照してください。
 
 > [!NOTE]
-> リソース プロバイダーのモードでは、組み込みのポリシー定義のみがサポートされており、[適用除外](./exemption-structure.md)はサポートされていません。
+> リソース プロバイダーのモードでは、組み込みのポリシー定義のみがサポートされており、明示的に宣言されない限り、[適用除外](./exemption-structure.md)はサポートされていません。
 
 ## <a name="metadata"></a>Metadata
 
@@ -122,16 +122,17 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 ### <a name="common-metadata-properties"></a>一般的なメタデータのプロパティ
 
 - `version` (string):ポリシー定義の内容のバージョンに関する詳細を追跡します。
-- `category` (string):ポリシー定義が表示される Azure portal 内のカテゴリを指定します。
+- `category` (string): ポリシー定義が表示される Azure portal 内のカテゴリを指定します。
 - `preview` (boolean):ポリシー定義が _preview_ であるかどうかを示す true または false フラグです。
 - `deprecated` (boolean):ポリシー定義が _deprecated_ とマークされているかどうかを示す true または false フラグです。
+- `portalReview` (string): 必要な入力に関係なく、ポータルでパラメーターを確認するかどうかを指定します。 
 
 > [!NOTE]
 > Azure Policy サービスは、`version`、`preview`、`deprecated` の各プロパティを使用して、組み込みのポリシー定義に対する変更のレベルや取り組み、状態を伝えます。 `version` の形式は `{Major}.{Minor}.{Patch}` です。 特定の状態 (_deprecated_、_preview_ など) は、`version` プロパティに追加されるほか、別のプロパティに **boolean** として追加されます。 Azure Policy が組み込みをバージョン管理する方法の詳細については、[組み込みのバージョン管理](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md)に関する記事を参照してください。
 
 ## <a name="parameters"></a>パラメーター
 
-パラメーターによって、ポリシー定義の数を減らし、ポリシーの管理を単純化できます。 1 つのフォームにあるフィールドのようなパラメーター `name`、`address``city``state` を考えてみてください。 これらのパラメーターは常に同じままですが、その値はフォームの個々の入力に基づいて変わります。
+パラメーターによって、ポリシー定義の数を減らし、ポリシーの管理を単純化できます。 フォームにあるフィールドのようなパラメーター `name`、`address`、`city`、`state` を考えてみてください。 これらのパラメーターは常に同じままですが、その値はフォームの個々の入力に基づいて変わります。
 パラメーターは、ポリシーの作成時と同じように機能します。 ポリシー定義にパラメーターを含めることで、別の値を使用してさまざまなシナリオについてポリシーを再利用できます。
 
 > [!NOTE]
@@ -150,7 +151,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
   - `assignPermissions`:(省略可能) ポリシーの割り当て中に Azure portal にロールの割り当てを作成させるには、_true_ に設定します。 このプロパティは、割り当てスコープ外でアクセス許可を割り当てたい場合に便利です。 ロールの割り当ては、ポリシーのロール定義ごと (またはイニシアチブのすべてのポリシーのロール定義ごとに) 1 つあります。 パラメーター値は、有効なリソースまたはスコープである必要があります。
 - `defaultValue`:(省略可能) 値が指定されていない場合、割り当ての中でパラメーターの値を設定します。
   割り当てられている既存のポリシー定義を更新するときは、必須です。
-- `allowedValues`:(省略可能) 割り当て中にパラメーターが許可する値の配列を指定します。 許可されている値の比較では、大文字と小文字が区別されます。 
+- `allowedValues`:(省略可能) 割り当て中にパラメーターが許可する値の配列を指定します。 許可されている値の比較では、大文字と小文字が区別されます。
 
 たとえば、リソースをデプロイできる場所を制限するためのポリシー定義を定めることができます。 そのポリシー定義のパラメーターは、**allowedLocations** にすることができます。 このパラメーターは、許可される値を制限するために、ポリシー定義の割り当てごとに使用されます。 **strongType** の使用によって、ポータル経由で割り当てを完了したときに、拡張されたエクスペリエンスが提供されます。
 
@@ -188,7 +189,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ### <a name="strongtype"></a>strongType
 
-`metadata` プロパティの中で、**strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 **strongType** には、サポートされる "_リソースの種類_" または許可される値を指定できます。 ある "_リソースの種類_" が **strongType** に対して有効かどうかを確認するには、[Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider) を使用します。 _リソースの種類_ **strongType** の形式は `<Resource Provider>/<Resource Type>` です。 たとえば、「 `Microsoft.Network/virtualNetworks/subnets` 」のように入力します。
+`metadata` プロパティの中で、**strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 **strongType** には、サポートされる "_リソースの種類_" または許可される値を指定できます。 "_リソースの種類_" が **strongType** に対して有効かどうかを判断するには、[Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider) を使用します。 _リソースの種類_ **strongType** の形式は `<Resource Provider>/<Resource Type>` です。 たとえば、「 `Microsoft.Network/virtualNetworks/subnets` 」のように入力します。
 
 **Get-AzResourceProvider** によって返されない一部の "_リソースの種類_" もサポートされています。 その種類には、次のようなものがあります。
 
@@ -720,6 +721,7 @@ Azure Policy で配列プロパティを操作する方法の詳細 (**field cou
 ```
 
 ポリシー:
+
 ```json
 {
     "count": {
@@ -774,6 +776,8 @@ Azure Policy では、次の種類の効果をサポートしています。
 
 ### <a name="policy-functions"></a>ポリシー関数
 
+関数を使用して、ポリシー規則にロジックを追加できます。 これらは、ポリシー定義の[ポリシー規則](#policy-rule)内と、[イニシアティブのポリシー定義に割り当てられたパラメーター値](initiative-definition-structure.md#passing-a-parameter-value-to-a-policy-definition)内で解決されます。
+
 ポリシー規則では、次の関数およびユーザー定義関数を除くすべての [Resource Manager テンプレート関数](../../../azure-resource-manager/templates/template-functions.md)を使用できます。
 
 - copyIndex()
@@ -799,30 +803,32 @@ Azure Policy では、次の種類の効果をサポートしています。
 - `addDays(dateTime, numberOfDaysToAdd)`
   - **dateTime**: [必須] 文字列 - ユニバーサル ISO 8601 日時形式 "yyyy-MM-ddTHH:mm:ss.FFFFFFFZ" の文字列
   - **numberOfDaysToAdd**: [必須] 整数 - 追加する日数
+
 - `field(fieldName)`
   - **fieldName**: [必須] 文字列 - 取得する [フィールド](#fields)の名前
   - If 条件による評価の対象となっている、リソースのそのフィールドの値を返します。
   - `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
+
 - `requestContext().apiVersion`
-  - ポリシーの評価をトリガーした要求の API バージョンを返します (例: `2019-09-01`)。
+  - ポリシーの評価をトリガーした要求の API バージョンを返します (例: `2021-09-01`)。
     この値は、PUT または PATCH 要求で、リソースの作成または更新時の評価に使用された API バージョンになります。 既存のリソースに対するコンプライアンスの評価中は、常に最新バージョンの API が使用されます。
+
 - `policy()`
   - 評価対象のポリシーに関する次の情報が返されます。 プロパティには、返されたオブジェクトからアクセスできます (例: `[policy().assignmentId]`)。
-  
-  ```json
-  {
-    "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
-    "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
-    "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
-    "definitionReferenceId": "StorageAccountNetworkACLs"
-  }
-  ```
+
+    ```json
+    {
+      "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
+      "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
+      "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
+      "definitionReferenceId": "StorageAccountNetworkACLs"
+    }
+    ```
 
 - `ipRangeContains(range, targetRange)`
-  - **range**: [必須] 文字列 - IP アドレスの範囲を指定する文字列。
-  - **targetRange**: [必須] 文字列 - IP アドレスの範囲を指定する文字列。
-
-  指定した IP アドレスの範囲にターゲット IP アドレスの範囲が含まれているかどうかを返します。 空の範囲、または IP ファミリ間の混合は許可されておらず、評価エラーが発生します。
+  - **range**: [必須] 文字列 - _targetRange_ が含まれているかどうかを確認するために IP アドレスの範囲を指定する文字列。
+  - **targetRange**: [必須] 文字列 - _range_ 内に含まれることを検証するために IP アドレスの範囲を指定する文字列。
+  - _range_ IP アドレス範囲に _targetRange_ IP アドレス範囲が含まれているかどうかを示す "_ブール値_" を返します。 空の範囲、または IP ファミリ間の混合は許可されておらず、評価エラーが発生します。
 
   サポートされる形式:
   - 単一の IP アドレス (例: `10.0.0.0`、`2001:0DB8::3:FFFE`)

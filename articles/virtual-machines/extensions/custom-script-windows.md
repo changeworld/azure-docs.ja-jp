@@ -8,12 +8,13 @@ ms.author: amjads
 author: amjads1
 ms.collection: windows
 ms.date: 08/31/2020
-ms.openlocfilehash: 13b4c4ef50ea37cabe30474d339acb19176cef97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c359df185ea21df52f678ca4f4656e0b4eca1a19
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553903"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663193"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -74,7 +75,7 @@ CustomScript 拡張機能には、証明書の検証を省略する方法がな�
 
 カスタム スクリプト拡張機能の構成では、スクリプトの場所や、実行するコマンドなどを指定します。 この構成は、構成ファイルに格納したり、コマンド ラインで指定したり、Azure Resource Manager テンプレートで指定したりできます。
 
-機微なデータは、保護された構成に格納できます。この構成は暗号化され、仮想マシン内だけで復号化されます。 保護された構成は、実行コマンドにパスワードなどの機密情報が含まれている場合に便利です。
+機微なデータは、保護された構成に格納できます。この構成は暗号化され、仮想マシン内だけで復号化されます。 保護された構成は、実行コマンドにパスワードや共有アクセス署名 (SAS) ファイルの参照などのシークレットが含まれており、これらを保護しなければならない場合に便利です。
 
 これらの項目は機密データとして扱う必要があり、拡張機能の保護された構成設定で指定する必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。
 
@@ -97,16 +98,16 @@ CustomScript 拡張機能には、証明書の検証を省略する方法がな�
         "typeHandlerVersion": "1.10",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "fileUris": [
-                "script location"
-            ],
             "timestamp":123456789
         },
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
             "storageAccountName": "myStorageAccountName",
             "storageAccountKey": "myStorageAccountKey",
-            "managedIdentity" : {}
+            "managedIdentity" : {},
+            "fileUris": [
+                "script location"
+            ]
         }
     }
 }
@@ -142,7 +143,7 @@ CustomScript 拡張機能には、証明書の検証を省略する方法がな�
 #### <a name="property-value-details"></a>プロパティ値の詳細
 
 * `commandToExecute`: (**必須**、文字列) 実行するエントリ ポイント スクリプト。 コマンドにパスワードなどの機密情報が含まれている場合、または fileUris が機密の場合は、代わりにこのフィールドを使用します。
-* `fileUris`: (省略可能、文字列の配列) ファイルをダウンロードする URL。
+* `fileUris`: (省略可能、文字列の配列) ファイルをダウンロードする URL。 URL が (キーを含む URL のように) 機密性の高い場合は、このフィールドを protectedSettings で指定する必要があります。
 * `timestamp` (省略可能、32 ビットの整数) このフィールドは、このフィールドの値を変更することによりスクリプトの再実行をトリガーする場合のみ使用します。  任意の整数値が使用できますが、前の値と異なる必要があります。
 * `storageAccountName`: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての `fileUris` が Azure BLOB の URL である必要があります。
 * `storageAccountKey`: (省略可能、文字列) ストレージ アカウントのアクセス キー
@@ -153,6 +154,7 @@ CustomScript 拡張機能には、証明書の検証を省略する方法がな�
 パブリックまたはプロテクトのいずれかの設定に、次の値を設定することができます。拡張機能では、パブリックおよびプロテクトの両方の設定に以下の値が設定された場合、構成が拒否されます。
 
 * `commandToExecute`
+* `fileUris`
 
 デバッグには、パブリック設定を使用することが便利な場合もありますが、保護された設定を使用することをお勧めします。
 

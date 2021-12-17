@@ -3,12 +3,13 @@ title: Resource Health アラートを作成するためのテンプレート
 description: Azure リソースが利用不可になったときに通知するアラートをプログラムで作成します。
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 4f1cbe1e2d2c185906feb4ccba380cb31df864f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6543e376f1cfa3ed2592972b997895c8bae68f01
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588198"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113643579"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
 
@@ -313,7 +314,7 @@ Resource Health イベントは、プラットフォームまたはユーザー�
     ]
 }
 ```
-イベントによっては、cause フィールドが null 値になっていることがあることにご注意ください。 つまり、正常性の遷移 (available から unavailable など) が起こり、通知の遅延を避けるためにイベントがすぐにログに記録されます。 そのため、上記の句を使用すると、properties.clause プロパティ値が null に設定されるため、アラートはトリガーされないことがあります。
+イベントによっては、cause フィールドが null 値になっていることがあることにご注意ください。 つまり、正常性の遷移 (available から unavailable など) が起こり、通知の遅延を避けるためにイベントがすぐにログに記録されます。 そのため、上記の句を使用すると、properties.cause プロパティ値が null に設定されるため、アラートはトリガーされないことがあります。
 
 ## <a name="complete-resource-health-alert-template"></a>完全な Resource Health アラート テンプレート
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 018995ed973679a617b409b82e076198a558eef7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82508133"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968768"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>マネージド ID を持つ Azure マネージド アプリケーション
 
@@ -46,7 +46,7 @@ ms.locfileid: "82508133"
 }
 ```
 
-**identity** でマネージド アプリケーションを作成するための一般的な方法には、[CreateUIDefinition.json](./create-uidefinition-overview.md) と [Azure Resource Manager テンプレート](../templates/template-syntax.md)の 2 つがあります。 単純な 1 つの作成のシナリオの場合は、より豊富なエクスペリエンスが提供されるため、CreateUIDefinition を使用してマネージド ID を有効にしてください。 ただし、マネージド アプリケーションの自動化された、または複数のデプロイを必要とする高度なシステムや複雑なシステムに対応する場合は、テンプレートを使用できます。
+**identity** でマネージド アプリケーションを作成するための一般的な方法には、[CreateUIDefinition.json](./create-uidefinition-overview.md) と [Azure Resource Manager テンプレート](../templates/syntax.md)の 2 つがあります。 単純な 1 つの作成のシナリオの場合は、より豊富なエクスペリエンスが提供されるため、CreateUIDefinition を使用してマネージド ID を有効にしてください。 ただし、マネージド アプリケーションの自動化された、または複数のデプロイを必要とする高度なシステムや複雑なシステムに対応する場合は、テンプレートを使用できます。
 
 ### <a name="using-createuidefinition"></a>CreateUIDefinition の使用
 

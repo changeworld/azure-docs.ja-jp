@@ -14,16 +14,16 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 3444d6c62b5e36b7e68cfaf6da1ec534e2ea4ec6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1ed9dbef648eace79807f06f034ba02e8bc67817
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551455"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655868"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Azure で Pivotal Cloud Foundry クラスターを作成する
 
-このチュートリアルでは、Azure で Pivotal Cloud Foundry (PCF) クラスターをプロビジョニングするために必要なパラメーターを作成および生成する際の簡単な手順を示します。 Pivotal Cloud Foundry ソリューションを見つけるには、Azure [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry) で検索します。
+このチュートリアルでは、Azure で Pivotal Cloud Foundry (PCF) クラスターをプロビジョニングするために必要なパラメーターを作成および生成する際の簡単な手順を示します。 Pivotal Cloud Foundry ソリューションを見つけるには、Azure Marketplace で検索します。
 
 ![Azure で Pivotal Cloud Foundry を検索する](media/deploy/pcf-marketplace.png)
 
@@ -117,7 +117,7 @@ ssh-keygen -t rsa -b 2048
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Azure で Cloud Foundry クラスターをプロビジョニングする
 
-これで、[Pivotal Cloud Foundry クラスターを Azure](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry) でプロビジョニングするために必要なパラメーターがすべて揃いました。
+これで、Pivotal Cloud Foundry クラスターを Azure でプロビジョニングするために必要なパラメーターがすべて揃いました。
 パラメーターを入力し、PCF クラスターを作成します。
 
 ## <a name="verify-the-deployment-and-sign-in-to-the-pivotal-ops-manager"></a>デプロイを確認して Pivotal Ops Manager にサインインする

@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: baselden
 author: BarbaraSelden
-manager: daveba
+manager: karenhoran
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13460fad0ed106f5c0590df961ceca54cb04cd7b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 38f602d41d8891aadc45a9dd35d2ea62afda897d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102427183"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998240"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>条件付きアクセスのデプロイを計画する
 
@@ -50,7 +50,7 @@ Microsoft は、基本レベルのセキュリティを保証する[セキュリ
 
 [条件付きアクセスのライセンス要件](overview.md)に関する記事を参照してください。
 
-追加機能が必要な場合、関連するライセンスが必要になることもあります。 詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+追加機能が必要な場合、関連するライセンスが必要になることもあります。 詳細については、「[Azure Active Directory の価格](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)」をご覧ください。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -217,7 +217,7 @@ Group 1 に所属していないユーザーがこのアプリにアクセスし
 
 ### <a name="minimize-the-number-of-conditional-access-policies"></a>条件付きアクセス ポリシーの数を最小限にする
 
-アプリごとにポリシーを作成するのは効率的ではなく、管理が困難になります。 条件付きアクセスでは、ユーザーごとに最初の 195 個のポリシーのみが適用されます。 アプリを分析し、同じユーザーに対して同じリソース要件があるアプリケーションにそれらをグループ化することをお勧めします。 たとえば、すべての Microsoft 365 アプリまたはすべての HR アプリで同じユーザーに対して同じ要件がある場合、1 つのポリシーを作成し、それが適用されるすべてのアプリを含めます。 
+アプリごとにポリシーを作成するのは効率的ではなく、管理が複雑になります。 Azure AD テナントごとに、最大 195 の条件付きアクセスを設定できます。 アプリを分析し、同じアクセス要件を持つポリシーにそれらをグループ化することをお勧めします。 たとえば、すべての Microsoft 365 アプリまたはすべての HR アプリで同じユーザーに対して同じ要件がある場合、アプリごとにポリシーを追加する代わりに、1 つのポリシーを作成して対象のアプリをすべて含めます。
 
 ### <a name="set-up-emergency-access-accounts"></a>緊急アクセス用アカウントを設定する
 
@@ -316,7 +316,7 @@ MFA アクセスを必須とする一般的なユース ケース:
 
 * [すべてのユーザーが MFA に登録することを必須にする](howto-conditional-access-policy-risk.md)
 
-* [リスクの高いユーザーのパスワードの変更を必須にする](howto-conditional-access-policy-risk.md)
+* [リスクの高いユーザーのパスワードの変更を必須にする](howto-conditional-access-policy-risk-user.md)
 
 * [サインインのリスクが中以上のユーザーに対して MFA を必須にする](howto-conditional-access-policy-risk.md)
 

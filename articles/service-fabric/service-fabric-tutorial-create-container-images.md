@@ -4,12 +4,12 @@ description: このチュートリアルでは、複数コンテナーの Servic
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 31b5f870465bc1dff9d6ff7827a4efed084bcf62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 831d96534bbdb0a90c89d0e76fc1aeb48ce2f69e
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92739068"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201502"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル: Linux Service Fabric クラスター上にコンテナー イメージを作成する
 
@@ -59,19 +59,10 @@ docker build -t azure-vote-front .
 > [!Note]
 > アクセス許可が拒否される場合、sudo なしで Docker を操作する方法に関する[この](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user)ドキュメントに従います。
 
-このコマンドは、必要なすべての依存関係を Docker Hub からプルする必要があるため、時間がかかる場合があります。 完了したら、[docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使って、作成されたイメージを確認します。
+このコマンドは、必要なすべての依存関係を Docker Hub からプルする必要があるため、時間がかかる場合があります。 完了したら、作成した *azure-vote-front* イメージを [docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使って確認します。
 
 ```bash
 docker images
-```
-
-2 つのイメージがダウンロードまたは作成されたことに注目してください。 *azure-vote-front* イメージにアプリケーションが含まれています。 これは、Docker Hub の *python* イメージから派生されたものです。
-
-```bash
-REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-azure-vote-front             latest              052c549a75bf        About a minute ago   708MB
-tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
-
 ```
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry のデプロイ
@@ -128,8 +119,7 @@ docker images
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-azure-vote-front             latest              052c549a75bf        About a minute ago   708MB
-tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
+azure-vote-front             latest              052c549a75bf        About a minute ago   913MB
 ```
 
 loginServer 名を取得するには、次のコマンドを実行します。
@@ -158,15 +148,14 @@ docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 
 ```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
-azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
-<acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
-tiangolo/uwsgi-nginx-flask             python3.6           590e17342131        5 days ago          707MB
+azure-vote-front                       latest              052c549a75bf        23 minutes ago      913MB
+<acrName>.azurecr.io/azure-vote-front  v1                  052c549a75bf        23 minutes ago      913MB
 
 ```
 
 ## <a name="push-images-to-registry"></a>イメージをレジストリにプッシュ
 
-*azure-vote-front* イメージをレジストリにプッシュします。 
+*azure-vote-front* イメージをレジストリにプッシュします。
 
 次の例を使用して、ACR loginServer 名を環境の loginServer に置き換えます。
 

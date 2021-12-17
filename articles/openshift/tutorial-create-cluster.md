@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: dda4fc6a80bbe07977f8d2a5ffcbea895a4e1fe6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e86ae7d2e168946c00690810749051f15587b438
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771841"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004874"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
@@ -27,13 +27,22 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 OpenShift クラスターを作成して実行するには、Azure Red Hat OpenShift に少なくとも 40 コアが必要です。 新しい Azure サブスクリプションの既定の Azure リソース クォータは、この要件を満たしていません。 リソースの制限の引き上げを依頼するには、「[標準クォータ:VM シリーズでの制限の引き上げ](../azure-portal/supportability/per-vm-quota-requests.md)」を参照してください。
 
+* たとえば、サポートされる仮想マシン ファミリの最小 SKU "Standard DSv3" の現在のサブスクリプション クォータを確認するには、次のコマンドを実行します。
+
+    ```azurecli-interactive
+    LOCATION=eastus
+    az vm list-usage -l $LOCATION \
+    --query "[?contains(name.value, 'standardDSv3Family')]" \
+    -o table
+    ```
+
 ARO プル シークレットを使用することで、ARO の RH OpenShift ライセンスのコストが変わることはありません。
 
 ### <a name="verify-your-permissions"></a>アクセス許可を確認する
 
 このチュートリアルでは、クラスターの仮想ネットワークを含むリソース グループを作成します。 共同作成者とユーザー アクセス管理者のアクセス許可、または仮想ネットワークに対する直接の所有者アクセス許可、またはそれを含むリソース グループまたはサブスクリプションに対する所有者アクセス許可を取得している必要があります。
 
-また、クラスターのアプリケーションとサービス プリンシパルを作成するために、ツールに対する十分な Azure Active Directory アクセス許可を取得している必要があります。
+また、クラスターのアプリケーションとサービス プリンシパルを作成するために、ツールに対する十分な Azure Active Directory アクセス許可 (テナントのメンバー ユーザー、または **アプリケーション管理者** ロールが割り当てられたゲスト ユーザー) も必要になります。 詳細については、「[メンバーとゲスト ユーザー](../active-directory/fundamentals/users-default-permissions.md#member-and-guest-users)」および「[Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)」を参照してください。
 
 ### <a name="register-the-resource-providers"></a>リソース プロバイダーを登録する
 
@@ -66,6 +75,15 @@ ARO プル シークレットを使用することで、ARO の RH OpenShift ラ
     ```azurecli-interactive
     az provider register -n Microsoft.Authorization --wait
     ```
+    
+    1. Azure Red Hat Openshift は現在、Azure Government でパブリック プレビューとして提供されています。 デプロイを検討している場合は、次の手順に従ってください。 
+
+> [!IMPORTANT]
+> ARO のプレビュー機能は、セルフサービスのオプトイン単位で利用できます。 プレビュー機能は、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル アグリーメントおよび限定保証からは除外されます。 プレビュー機能は、カスタマー サポートによりベストエフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。
+
+```azurecli-interactive
+az feature register --namespace Microsoft.RedHatOpenShift --name preview
+```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat プル シークレットを取得する (省略可能)
 
@@ -115,7 +133,7 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
    Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所を指定するよう求められます。 この場所は、リソース グループのメタデータが格納される場所です。また、リソースの作成時に別のリージョンを指定しない場合は、Azure でリソースが実行される場所でもあります。 [az group create](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。
     
    > [!NOTE] 
-   > Azure Red Hat OpenShift は、Azure リソース グループを作成できるすべてのリージョンで使用可能なわけではありません。 Azure Red Hat OpenShift がサポートされている場所については、「[使用可能なリージョン](https://azure.microsoft.com/en-gb/global-infrastructure/services/?products=openshift)」を参照してください。
+   > Azure Red Hat OpenShift は、Azure リソース グループを作成できるすべてのリージョンで使用可能なわけではありません。 Azure Red Hat OpenShift がサポートされている場所については、「[使用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=openshift)」を参照してください。
 
    ```azurecli-interactive
    az group create \

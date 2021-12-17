@@ -3,7 +3,7 @@ title: SQL Server 2008 と 2008 R2 のサポート延長
 description: Azure に SQL Server インスタンスを移行するか、オンプレミスでインスタンスを保持する延長サポートを購入すると、SQL Server 2008 および SQL Server 2008 R2 のサポートが延長されます。
 services: virtual-machines-windows
 documentationcenter: ''
-author: MashaMSFT
+author: bluefooted
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/08/2019
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4c25adc16d14b4a5fb72ae0103ca05b193b40499
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea249347c2fca760e2c835aa28b7b4888e684276
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359168"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130160913"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure での SQL Server 2008 および SQL Server 2008 R2 のサポート延長
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -90,7 +90,7 @@ Azure Virtual Machines における SQL Server の概要:
 
 SQL Server VM についてよく寄せられる質問とその回答:
 
-* [Azure Virtual Machines における SQL Server に関する FAQ](frequently-asked-questions-faq.md)
+* [Azure Virtual Machines における SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 
 サポートの終了オプションやセキュリティ延長更新の詳細は次にあります。
 

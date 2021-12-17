@@ -5,15 +5,15 @@ description: Azure Communication Services をサポートするベースライ�
 author: nmurav
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 03/10/2021
-ms.topic: overview
+ms.date: 06/30/2021
+ms.topic: tutorial
 ms.service: azure-communication-services
-ms.openlocfilehash: a5a23d6a06c8cdff4deabac5251597b7ffe0c833
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 62c72271e1c72b524de1ff2365a78ec240007bfb
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728047"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250963"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>チュートリアル:Azure Communication Services 用の Web アプリを準備する (Node.js)
 

@@ -1,34 +1,78 @@
 ---
 title: ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する
 description: Azurite オープンソース エミュレーターでは、Azure Storage アプリケーションをテストするための無料のローカル環境が提供されます。
-author: twooley
-ms.author: twooley
-ms.date: 07/15/2020
+author: normesta
+ms.author: normesta
+ms.date: 08/02/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a921de0d976b9c92ca7978feb7caf69484ba9379
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 567b54aae5ac2ac1defeedb390ee9d5c04f5f6bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277127"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013519"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する
 
-Azurite オープンソース エミュレーターには、Azure Blob およびキュー ストレージ アプリケーションをテストするための無料のローカル環境が用意されています。 ローカルでのアプリケーションの動作に満足できたら、クラウドでの Azure Storage アカウントの使用に切り替えることができます。 エミュレーターは、Windows、Linux、および macOS でのクロスプラットフォーム サポートを提供します。
+Azurite オープンソース エミュレーターには、Azure BLOB、キュー ストレージ、テーブル ストレージ アプリケーションをテストするための無料のローカル環境が用意されています。 ローカルでのアプリケーションの動作に満足できたら、クラウドでの Azure Storage アカウントの使用に切り替えることができます。 エミュレーターは、Windows、Linux、および macOS でのクロスプラットフォーム サポートを提供します。
 
 Azurite は今後のストレージ エミュレーター プラットフォームです。 Azurite は [Azure Storage Emulator](storage-use-emulator.md)よりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。
 
-Azurite をローカル システムにインストールして実行するには、次のようないくつかの方法があります。
+Azurite をローカル システムにインストールし、そのシステム上で実行する方法は複数あります。 これらのタブのいずれかを選択してください。
 
+<<<<<<< HEAD
   1. [Azurite Visual Studio Code の拡張機能をインストールして実行する](#install-and-run-the-azurite-visual-studio-code-extension)
   1. [NPM を使用して Azurite をインストールして実行する](#install-and-run-azurite-by-using-npm)
   1. [Azurite Docker イメージをインストールして実行する](#install-and-run-the-azurite-docker-image)
   1. [GitHub リポジトリから Azurite をクローン、ビルド、および実行する](#clone-build-and-run-azurite-from-the-github-repository)
+=======
+## <a name="install-and-run-azurite"></a>Azurite をインストールして実行する
+>>>>>>> repo_sync_working_branch
 
-## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>Azurite Visual Studio Code の拡張機能をインストールして実行する
+### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+> [!TIP]
+> Azurite は [Visual Studio 2022 プレビュー](https://visualstudio.microsoft.com/vs/preview/)で自動的に使用できます。そのため、プレビューをインストールする場合は、Azurite を手動でインストールする必要はありません。 
+
+このセクションの手順では、まだ Visual Studio 2022 プレビューをインストールしていないと想定しています。
+
+Visual Studio で、**Azure Functions** プロジェクトなどの Azure プロジェクトを作成します。
+
+![新しい Azure 関数プロジェクト](media/storage-use-azurite/visual-studio-azure-function-project.png)
+
+**Azure Functions** プロジェクトを作成したら、 **[Http トリガー]** を必ず選択してください。 次に、 **[承認レベル]** ドロップダウン リストで、 **[匿名]** を選択します。
+
+![関数プロジェクトの設定](media/storage-use-azurite/visual-studio-azure-function-project-settings.png)
+
+[Node.js バージョン 8.0 以降](https://nodejs.org)をインストールします。 ノード パッケージ マネージャー (npm) は、Node.js のすべてのインストールに含まれるパッケージ管理ツールです。 Node.js をインストールした後、次の `npm` コマンドを実行して Azurite をインストールします。
+
+```console
+npm install -g azurite
+```
+
+コマンド ラインから、次のコマンドを使用して Azurite を開始します。
+
+```console
+azurite
+```
+
+次のような出力情報がコンソールに表示されます。
+
+![コマンド ライン出力](media/storage-use-azurite/azurite-command-line-output.png)
+
+[リリース ビルド構成](/visualstudio/debugger/how-to-set-debug-and-release-configurations#change-the-build-configuration)に変更し、プロジェクトを実行します。
+
+> [!NOTE]
+> デバッグ ビルド構成を使用してプロジェクトを開始すると、エラーが発生する場合があります。 これは、Visual Studio に組み込まれているレガシ ストレージ エミュレーターを、Visual Studio が起動しようとする可能性があるためです。 レガシ ストレージエミュレーターに必要なリスニング ポートは Azurite によって使用されているため、レガシ エミュレーターを起動しようとしてもブロックされます。
+
+次のイメージは、Azure 関数プロジェクトを実行するときに表示されるコマンド ライン出力を示しています。
+
+![プロジェクト実行後のコマンド ライン出力](media/storage-use-azurite/azurite-command-line-output-2.png)
+
+### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Visual Studio Code で、 **[EXTENSIONS]** ウィンドウを選択し、 **[EXTENSIONS:MARKETPLACE]** で *Azurite* を検索します。
 
@@ -36,17 +80,20 @@ Visual Studio Code で、 **[EXTENSIONS]** ウィンドウを選択し、 **[EXT
 
 また、ブラウザーで [Visual Studio Code 拡張機能のマーケット](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)に移動することもできます。 **[Install]\(インストール\)** を選択して Visual Studio Code を開き、Azurite 拡張機能ページに直接アクセスします。
 
-拡張機能では、次の Visual Studio Code コマンドがサポートされています。 コマンド パレットを開くには、Visual Studio Code で F1 キーを押します。 
+拡張機能では、次の Visual Studio Code コマンドがサポートされています。 コマンド パレットを開くには、Visual Studio Code で F1 キーを押します。
 
    - **Azurite:Clean** - すべての Azurite サービス永続性データをリセットします
    - **Azurite:Clean Blob Service** - Blob Service をクリーンアップします
    - **Azurite:Clean Queue Service** - Queue service をクリーンアップします
+   - **Azurite: Clean Table Service** - Table service をクリーンアップします
    - **Azurite:Close** - すべての Azurite サービスを閉じます
    - **Azurite:Close Blob Service** - Blob Service を閉じます
    - **Azurite:Close Queue Service** - Queue service を閉じます
+   - **Azurite: Close Table Service** - Table service を閉じます
    - **Azurite:Start** - すべての Azurite サービスを開始します
    - **Azurite:Start Blob Service** - Blob Service を開始します
    - **Azurite:Start Queue Service** - Queue service を開始します
+   - **Azurite: Start Table Service** - Table service を開始します
 
 Visual Studio Code 内で Azurite を構成するには、拡張機能ウィンドウを選択します。 **Azurite** の **[管理]** (歯車) アイコンを選択します。 **[拡張機能の設定]** を選択します。
 
@@ -67,8 +114,10 @@ Visual Studio Code 内で Azurite を構成するには、拡張機能ウィン�
    - **Azurite:Queue Port** - Queue サービスのリッスン ポート。 既定のポートは 10001 です。
    - **Azurite:Silent** - サイレント モードではアクセス ログが無効になります。 既定値は **false** です。
    - **Azurite:API バージョンの確認をスキップします** - 要求 API バージョン チェックをスキップします。 既定値は **false** です。
+   - **Azurite: Table Host** - Table service のリッスン エンドポイント (既定の設定は 127.0.0.1)。
+   - **Azurite: Table Port** - Table service のリッスン エンドポイント (既定では 10002)
 
-## <a name="install-and-run-azurite-by-using-npm"></a>NPM を使用して Azurite をインストールして実行する
+### <a name="npm"></a>[npm](#tab/npm)
 
 このインストール方法では、[Node.js バージョン8.0 以降](https://nodejs.org)がインストールされている必要があります。 ノード パッケージ マネージャー (npm) は、Node.js のすべてのインストールに含まれるパッケージ管理ツールです。 Node.js をインストールした後、次の `npm` コマンドを実行して Azurite をインストールします。
 
@@ -78,7 +127,7 @@ npm install -g azurite
 
 Azurite をインストールしたら、「[Azurite をコマンド ラインから実行する](#run-azurite-from-a-command-line)」を参照してください。
 
-## <a name="install-and-run-the-azurite-docker-image"></a>Azurite Docker イメージをインストールして実行する
+### <a name="docker-hub"></a>[Docker Hub](#tab/docker-hub)
 
 [DockerHub](https://hub.docker.com/) を使用して、次のコマンドを使用することによって[最新の Azurite イメージ](https://hub.docker.com/_/microsoft-azure-storage-azurite)をプルします。
 
@@ -91,7 +140,7 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 次のコマンドは Azurite Docker を実行します。 `-p 10000:10000` パラメーターにより、ホスト マシンのポート 10000 から Docker インスタンスに要求がリダイレクトされます。
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 \
+docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 \
     mcr.microsoft.com/azure-storage/azurite
 ```
 
@@ -100,7 +149,7 @@ docker run -p 10000:10000 -p 10001:10001 \
 次の例で、`-v c:/azurite:/data` パラメーターでは Azurite の永続的なデータの場所として *c:/azurite* が指定されています。 Docker コマンドを実行する前に、*c:/azurite* ディレクトリを作成しておく必要があります。
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 \
+docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 \
     -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
 ```
 
@@ -113,7 +162,11 @@ docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite \
 
 起動時に Azurite を構成する方法の詳細については、「[コマンド ライン オプション](#command-line-options)」を参照してください。
 
+<<<<<<< HEAD
 ## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>GitHub リポジトリから Azurite をクローン、ビルド、および実行する
+=======
+### <a name="github"></a>[GitHub](#tab/github)
+>>>>>>> repo_sync_working_branch
 
 このインストール方法では、[Git](https://git-scm.com/) がインストールされている必要があります。 次のコンソール コマンドを使用して、Azurite プロジェクト用の [GitHub リポジトリ](https://github.com/azure/azurite)をクローンします。
 
@@ -131,10 +184,12 @@ npm install -g
 
 Azurite をインストールおよびビルドしたら、「[Azurite をコマンド ラインから実行する](#run-azurite-from-a-command-line)」を参照してください。
 
+---
+
 ## <a name="run-azurite-from-a-command-line"></a>Azurite をコマンド ラインから実行する
 
 > [!NOTE]
-> Visual Studio Code 拡張機能のみをインストールした場合、Azurite をコマンドラインから実行することはできません。 代わりに、Visual Studio Code コマンド パレットを使用します。 詳細については、「[Azurite Visual Studio Code の拡張機能をインストールして実行する](#install-and-run-the-azurite-visual-studio-code-extension)」を参照してください。
+> Visual Studio Code 拡張機能のみをインストールした場合、Azurite をコマンドラインから実行することはできません。 代わりに、Visual Studio Code コマンド パレットを使用します。
 
 コマンド ラインを使用してすぐに作業を開始するには、*c:\azurite* という名前のディレクトリを作成し、次のコマンドを発行して Azurite を起動します。
 
@@ -237,6 +292,46 @@ azurite --queuePort 0
 
 使用中のポートは Azurite の起動時に表示されます。
 
+### <a name="table-listening-host"></a>テーブル リスニング ホスト
+
+**オプション** - 既定では、Azurite はローカル サーバーとして 127.0.0.1 をリッスンします。 要件に合わせてアドレスを設定するには、`--tableHost` スイッチを使用します。
+
+ローカル コンピューターの要求のみを受け入れる:
+
+```console
+azurite --tableHost 127.0.0.1
+```
+
+リモート要求を許可する:
+
+```console
+azurite --tableHost 0.0.0.0
+```
+
+> [!CAUTION]
+> リモート要求を許可すると、システムが外部からの攻撃に対して脆弱になる可能性があります。
+
+### <a name="table-listening-port-configuration"></a>テーブル リスニング ポートの構成
+
+**オプション** - 既定では、Azurite は Table service をポート 10002 でリッスンします。 必要なリスニング ポートを指定するには、`--tablePort` スイッチを使用します。
+
+> [!NOTE]
+> カスタマイズされたポートを使用した後、Azure Storage ツールまたは SDK で、接続文字列または対応する構成を更新する必要があります。
+
+Table service のリスニング ポートをカスタマイズします。
+
+```console
+azurite --tablePort 11111
+```
+
+使用可能なポートをシステムに自動選択させる:
+
+```console
+azurite --tablePort 0
+```
+
+使用中のポートは Azurite の起動時に表示されます。
+
 ### <a name="workspace-path"></a>ワークスペース パス
 
 **オプション** - Azurite は、実行中にデータをローカル ディスクに格納します。 ワークスペースの場所としてパスを指定するには、`-l` または `--location` スイッチを使用します。 既定では、現在のプロセスの作業ディレクトリが使用されます。 小文字の "l" であることに注意してください。
@@ -254,6 +349,8 @@ azurite --location c:\azurite
 azurite -s
 azurite --silent
 ```
+
+
 ### <a name="debug-log"></a>デバッグ ログ
 
 **オプション** - デバッグ ログにはすべての要求と例外スタック トレースに関する詳細情報が含まれます。 `-d` または `--debug` スイッチに有効なローカル ファイル パスを指定すると、デバッグ ログが有効になります。
@@ -271,6 +368,8 @@ azurite --debug path/debug.log
 azurite -L
 azurite --loose
 ```
+
+
 ### <a name="version"></a>Version
 
 **オプション** - `-v` または `--version` スイッチを使用して、インストールされている Azurite のバージョン番号を表示します。
@@ -318,7 +417,6 @@ Azurite は、`--oauth` スイッチに `basic` パラメーターを指定す�
 ```console
 azurite --skipApiVersionCheck
 ```
-
 
 ## <a name="authorization-for-tools-and-sdks"></a>ツールと SDK の認証
 
@@ -462,7 +560,7 @@ var client = new QueueClient(
   );
 ```
 
-### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー
 
 Storage Explorer を使用すると、Azurite に格納されているデータを表示できます。
 
@@ -558,9 +656,13 @@ Azurite は、読み取りアクセス geo 冗長レプリケーション (RA-GR
 
 ### <a name="table-support"></a>テーブル サポート
 
-Azurite でのテーブルのサポートは現在開発中であり、協力を歓迎しています。 最新の進行状況については、[Azurite V3 テーブル](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) プロジェクトを確認してください。
+Azurite 内でのテーブルのサポートは、現在プレビュー段階です。 詳細については、[Azurite V3 Table](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) プロジェクトをご覧ください。
 
 持続的関数のサポートにはテーブルが必要です。
+
+> [!IMPORTANT]
+>
+> Table Storage の Azurite サポーは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="azurite-is-open-source"></a>Azurite はオープンソースです
 

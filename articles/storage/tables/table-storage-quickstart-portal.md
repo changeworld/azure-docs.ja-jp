@@ -8,14 +8,13 @@ ms.date: 12/02/2019
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: tables
-ms.custom:
-- mode-portal
-ms.openlocfilehash: fabfd0031ddd8ff58af346274c454b107c00779b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mode-portal
+ms.openlocfilehash: 088e0afedb139338514e70cd6a51ca9dab88638d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529482"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063824"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>クイック スタート: Azure portal で Azure Storage テーブルを作成する 
 

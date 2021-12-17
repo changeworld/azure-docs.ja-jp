@@ -1,26 +1,26 @@
 ---
-title: Windows Virtual Desktop (クラシック) のホスト プールの負荷分散 - Azure
-description: Windows Virtual Desktop 環境でのホスト プールの負荷分散方法。
+title: Azure Virtual Desktop (クラシック) のホスト プールの負荷分散 - Azure
+description: Azure Virtual Desktop 環境でのホスト プールの負荷分散方法。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 50f25422fb30f5d519acd70c632145d51454ed62
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: abd52941efc06b79a21e490e4e94f39a6e1d34be
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444430"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745045"
 ---
-# <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) でのホスト プールの負荷分散方法
+# <a name="host-pool-load-balancing-methods-in-azure-virtual-desktop-classic"></a>Azure Virtual Desktop (クラシック) でのホスト プールの負荷分散方法
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../host-pool-load-balancing.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../host-pool-load-balancing.md)を参照してください。
 
-Windows Virtual Desktop では 2 つの負荷分散方法がサポートされます。 それぞれの方法では、ユーザーがホスト プール内のリソースに接続するときにそのユーザーのセッションをホストするセッション ホストが決定されます。
+Azure Virtual Desktop では 2 つの負荷分散方法がサポートされます。 それぞれの方法では、ユーザーがホスト プール内のリソースに接続するときにそのユーザーのセッションをホストするセッション ホストが決定されます。
 
-Windows Virtual Desktop では以下の負荷分散方法を使用できます。
+Azure Virtual Desktop では以下の負荷分散方法を使用できます。
 
 - 幅優先の負荷分散では、ホスト プール内のセッション ホスト間でユーザー セッションを均等に分散させることができます。
 - 深さ優先の負荷分散では、セッション ホストをホスト プール内のユーザー セッションで飽和状態にすることができます。 最初のセッションがそのセッション制限のしきい値に達すると、新しいユーザー接続はロード バランサーによってホスト プール内の次のセッション ホストに制限に達するまで送られ、以下同様に送られます。

@@ -1,22 +1,22 @@
 ---
 title: ID セキュリティ スコアとは - Azure Active Directory
-description: ID セキュリティ スコアを使用して、お使いのディレクトリのセキュリティ体制を強化する方法
+description: ID セキュリティ スコアを使用してディレクトリのセキュリティ体制を強化する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 06/02/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: guptashi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23832d9f1205105f1f9711cdf3260b74ee4a9bb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 322643d443aac7cb0ec1aac06b46535114c8d340
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952279"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309512"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Azure Active Directory の ID セキュリティ スコアとは
 
@@ -58,6 +58,11 @@ ID セキュリティ スコアは、Azure AD のすべてのエディション�
 
 ![アクションを無視するか、サード パーティ対象アクションとしてマークする](./media/identity-secure-score/identity-secure-score-ignore-or-third-party-reccomendations.png)
 
+- **対処するには** - 改善アクションが必要であると認識し、将来のどこかの時点で対処する予定です。 この状態は、部分的に検出されたが完全には完了していないアクションにも適用されます。
+- **計画済み** - 改善アクションを完了する具体的な計画が実施されています。
+- **受け入れられるリスク** - セキュリティは常に使いやすさとバランスを取る必要があります。すべての推奨事項が環境に合うとは限りません。 その場合は、リスクまたは残りのリスクを受け入れ、改善アクションを実施しない選択を行います。 ポイントは指定されませんが、アクションは改善アクションの一覧に表示されなくなりました。 このアクションは履歴で表示したり、いつでも元に戻すことができます。
+- **サード パーティを通じて解決され**、**代替の軽減策によって解決済み** - 改善アクションは、サードパーティのアプリケーションまたはソフトウェア、または内部ツールによって既に対処されています。 アクションの価値があるポイントが得られるので、スコアは全体的なセキュリティ態勢をよりよく反映します。 サード パーティまたは内部ツールでコントロールがカバーされなくなった場合は、別の状態を選択できます。 改善アクションがこれらの状態のいずれかとしてマークされている場合、Microsoft は実装の完全性を可視化できない点を忘れないでください。
+
 ## <a name="how-does-it-help-me"></a>それはどのように役立つか
 
 セキュリティ スコアは、次のために役立ちます。
@@ -90,7 +95,7 @@ ID セキュリティ スコアは、次のロールが使用できます。
 
 ### <a name="my-score-changed-how-do-i-figure-out-why"></a>スコアが変更されました。 その理由を見つけるにはどうしたらよいですか?
 
-[Microsoft 365 セキュリティ センター](https://security.microsoft.com/)をご覧ください。ここには、ご自身の Microsoft セキュリティ スコアの詳細情報が示されています。 ご自身のセキュリティ スコアに対するすべての変更の詳細を、履歴タブで確認することができます。
+[Microsoft 365 Defender ポータル](https://security.microsoft.com/)に移動します。そこには Microsoft セキュリティ スコアの完全版があります。 ご自身のセキュリティ スコアに対するすべての変更の詳細を、履歴タブで確認することができます。
 
 ### <a name="does-the-secure-score-measure-my-risk-of-getting-breached"></a>セキュリティ スコアは侵害されるリスクを測定しますか?
 
@@ -100,7 +105,7 @@ ID セキュリティ スコアは、次のロールが使用できます。
 
 推奨されるセキュリティ機能を構成したり、セキュリティ関連のタスク (レポートの参照など) を実行したりするとスコアが向上します。 一部のアクションは、部分的な完了としてスコア付けされます (ユーザーのための多要素認証 (MFA) の有効化など)。 セキュリティ スコアは、使用している Microsoft セキュリティ サービスを直接表しています。 セキュリティは、使いやすさとのバランスを取る必要があることに注意してください。 すべてのセキュリティ コントロールには、ユーザーに影響するコンポーネントがあります。 ユーザーへの影響が少ないコントロールは、ユーザーの日常操作にほとんど、またはまったく影響しません。
 
-スコアの履歴を表示するには、[Microsoft 365 セキュリティ センター](https://security.microsoft.com/)に移動して、ご自身の全体的な Microsoft セキュリティ スコアをご確認ください。 全体的なセキュリティ スコアへの変更を確認するには、[履歴の表示] をクリックします。 特定の日付を選択すると、その日どのコントロールが有効になっていて、コントロールごとにどれだけのポイントを得たかを確認できます。
+スコアの履歴を確認するには、[Microsoft 365 Defender ポータル](https://security.microsoft.com/)に移動してください。全体的な Microsoft セキュリティ スコアを調査できます。 全体的なセキュリティ スコアへの変更を確認するには、[履歴の表示] をクリックします。 特定の日付を選択すると、その日どのコントロールが有効になっていて、コントロールごとにどれだけのポイントを得たかを確認できます。
 
 ### <a name="how-does-the-identity-secure-score-relate-to-the-microsoft-365-secure-score"></a>ID セキュリティ スコアは Microsoft 365 のセキュリティ スコアにどのように関連していますか?
 

@@ -2,23 +2,23 @@
 title: Azure Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 description: Azure Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング方法について説明します
 services: application-gateway
-author: surajmb
+author: vhorne
 ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
-ms.author: surmb
-ms.openlocfilehash: 8664f9327af37345c7104c65b2521212669ae806
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.author: victorh
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3cc75c637dd286cb87ca745d713a55a0a2cf8834
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786328"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137705"
 ---
-<a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
-==================================================
+# <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 
-<a name="overview"></a>概要
---------
+## <a name="overview"></a>概要
+
 
 既定では、Azure Application Gateway は、バックエンド サーバーに対して probe を実行して、その正常性状態を確認すると共に、バックエンド サーバーが要求を処理する準備ができているかどうかを確認します。 ユーザーは、カスタム probe を作成して、ホスト名、probe の対象となるパス、および正常として受け入れられる状態コードを指定することもできます。 どちらのケースでも、バックエンド サーバーが正常に応答しない場合、Application Gateway はそのサーバーを "異常" とマークし、サーバーへの要求の転送を停止します。 サーバーが正常に応答し始めると、Application Gateway は要求の転送を再開します。
 
@@ -36,8 +36,7 @@ ms.locfileid: "107786328"
 
 サーバーのバックエンドの正常性状態が正常の場合、Application Gateway が要求をそのサーバーに転送することを意味します。 一方、バックエンド プール内の全サーバーのバックエンドの正常性が異常または不明の場合、アプリケーションへアクセスしようとすると問題が発生する可能性があります。 この記事では、表示される各エラーの症状、原因、および解決策について説明します。
 
-<a name="backend-health-status-unhealthy"></a>バックエンドの正常性状態:異常
--------------------------------
+## <a name="backend-health-status-unhealthy"></a>バックエンドの正常性状態:異常
 
 バックエンドの正常性状態が異常の場合、ポータル ビューは次のスクリーンショットのようになります。
 
@@ -76,6 +75,7 @@ BackendAddressPoolsText : [
                             }
                         ]
 ```
+
 バックエンド プール内のすべてのサーバーについて、バックエンド サーバーの状態として "異常" が返される場合、要求はサーバーに転送されず、Application Gateway は 502 "ゲートウェイが不適切です" というエラーを要求元のクライアントに返します。 この問題のトラブルシューティングを行うには、 **[バックエンド正常性]** タブの **[詳細]** 列を確認します。
 
 **[詳細]** 列に表示されるメッセージは問題に関する詳細な分析情報を示すため、これに基づいて問題のトラブルシューティングを開始できます。
@@ -83,9 +83,10 @@ BackendAddressPoolsText : [
 > [!NOTE]
 > 既定の probe 要求は、\<protocol\>://127.0.0.1:\<port\>/ の形式で送信されます。 たとえば、ポート80 における HTTP probe の場合は http://127.0.0.1:80 になります。 HTTP 状態コード 200 から 399 のみが正常と見なされます。 プロトコルと宛先ポートは、HTTP 設定から継承されます。 Application Gateway で別のプロトコル、ホスト名、またはパスに対して probe を実行し、他の状態コードを正常として認識させるには、カスタム probe を構成し、それを HTTP 設定に関連付けます。
 
-<a name="error-messages"></a>エラー メッセージ
-------------------------
-#### <a name="backend-server-timeout"></a>バックエンド サーバーのタイムアウト
+## <a name="error-messages"></a>エラー メッセージ
+
+
+### <a name="backend-server-timeout"></a>バックエンド サーバーのタイムアウト
 
 **メッセージ:** Time taken by the backend to respond to application gateway\'s health probe is more than the timeout threshold in the probe setting (バックエンドがアプリケーション ゲートウェイの正常性 probe に応答するのにかかる時間が、probe 設定のタイムアウトしきい値を超えています。)
 
@@ -103,7 +104,7 @@ BackendAddressPoolsText : [
 
 1.  カスタム probe 設定を保存し、バックエンドの正常性が [正常] と表示されるかどうかを確認します。
 
-#### <a name="dns-resolution-error"></a>DNS の解決エラー
+### <a name="dns-resolution-error"></a>DNS の解決エラー
 
 **メッセージ:** Application Gateway could not create a probe for this backend. (Application Gateway でこのバックエンドに対する probe を作成できませんでした。) This usually happens when the FQDN of the backend has not been entered correctly. (これは、通常、バックエンドの FQDN が正しく入力されていない場合に発生します。) 
 
@@ -121,7 +122,38 @@ BackendAddressPoolsText : [
 
 1.  ドメインがプライベートまたは内部の場合は、同じ仮想ネットワーク内の VM から解決を試みます。 解決できる場合は、Application Gateway を再起動して、もう一度確認してください。 Application Gateway を再起動するには、次のリンク先のリソースで説明されている PowerShell コマンドを使用して、[停止](/powershell/module/azurerm.network/stop-azurermapplicationgateway)および[起動](/powershell/module/azurerm.network/start-azurermapplicationgateway)する必要があります。
 
-#### <a name="tcp-connect-error"></a>TCP 接続エラー
+### <a name="updates-to-the-dns-entries-of-the-backend-pool"></a>バックエンド プールの DNS エントリの更新
+
+**メッセージ:** The backend health status could not be retrieved. (バックエンドの正常性状態を取得できませんでした。) This happens when an NSG/UDR/Firewall on the application gateway subnet is blocking traffic on ports 65503-65534 in case of v1 SKU, and ports 65200-65535 in case of the v2 SKU or if the FQDN configured in the backend pool could not be resolved to an IP address. (これは、v1 SKU の場合はポート 65503 から 65534、v2 SKU の場合はポート 65200 から 65535 のトラフィックがアプリケーション ゲートウェイ サブネット上の NSG/UDR/Firewall によってブロックされている場合、またはバックエンド プールで構成された FQDN を IP アドレスに解決できない場合に発生します。) To learn more visit - https://aka.ms/UnknownBackendHealth. (詳細については、次にアクセスしてください。)
+
+**原因:** Application Gateway では起動時にバックエンド プールの DNS エントリが解決され、実行中には動的に更新されません。
+
+**解決方法:**
+
+新しい IP アドレスの使用を開始するには、バックエンド サーバーの DNS エントリを変更した後に Application Gateway を再起動する必要があります。  この操作は Azure PowerShell または Azure CLI から実行できます。
+
+#### <a name="azure-powershell"></a>Azure PowerShell
+```
+# Get Azure Application Gateway
+$appgw=Get-AzApplicationGateway -Name <appgw_name> -ResourceGroupName <rg_name>
+ 
+# Stop the Azure Application Gateway
+Stop-AzApplicationGateway -ApplicationGateway $appgw
+ 
+# Start the Azure Application Gateway
+Start-AzApplicationGateway -ApplicationGateway $appgw
+```
+
+#### <a name="azure-cli"></a>Azure CLI
+```
+# Stop the Azure Application Gateway
+az network application-gateway stop -n <appgw_name> -g <rg_name>
+
+# Start the Azure Application Gateway
+az network application-gateway start -n <appgw_name> -g <rg_name>
+```
+
+### <a name="tcp-connect-error"></a>TCP 接続エラー
 
 **メッセージ:** Application Gateway could not connect to the backend. (Application Gateway がバックエンドに接続できませんでした。)
 Please check that the backend responds on the port used for the probe. (バックエンドが probe に使用されるポートで応答することを確認してください。)
@@ -187,7 +219,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 カスタム probe を作成するには、[こちらの手順](./application-gateway-create-probe-portal.md)に従います。
 
-#### <a name="http-response-body-mismatch"></a>HTTP 応答本文の不一致
+### <a name="http-response-body-mismatch"></a>HTTP 応答本文の不一致
 
 **メッセージ:** Body of the backend\'s HTTP response did not match the probe setting. (バックエンドの HTTP 応答の本文が probe 設定と一致しませんでした。) Received response body does not contain {string}. (受信した応答本文に {string} が含まれていません。)
 
@@ -207,7 +239,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 > すべての TLS 関連のエラー メッセージについて、SNI の動作と、v1 と v2 の SKU 間の違いを確認するには、「[TLS の概要](ssl-overview.md)」ページを参照してください。
 
 
-#### <a name="backend-server-certificate-invalid-ca"></a>バックエンド サーバーの証明書: 無効な CA
+### <a name="backend-server-certificate-invalid-ca"></a>バックエンド サーバーの証明書: 無効な CA
 
 **メッセージ:** The server certificate used by the backend is not signed by a well-known Certificate Authority (CA). (バックエンドによって使用されるサーバー証明書が既知の証明機関 (CA) によって署名されていません。) Allow the backend on the Application Gateway by uploading the root certificate of the server certificate used by the backend. (バックエンドによって使用されるサーバー証明書のルート証明書をアップロードして、アプリケーション ゲートウェイでバックエンドを許可してください。)
 
@@ -240,7 +272,7 @@ TLS または SSL 証明書を信頼するには、そのバックエンド サ�
 
 Application Gateway で信頼されるルート証明書を抽出してアップロードする方法の詳細については、「[信頼されたルート証明書をエクスポートする (V2 SKU の場合)](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku)」を参照してください。
 
-#### <a name="trusted-root-certificate-mismatch"></a>信頼されたルート証明書の不一致
+### <a name="trusted-root-certificate-mismatch"></a>信頼されたルート証明書の不一致
 
 **メッセージ:** The root certificate of the server certificate used by the backend does not match the trusted root certificate added to the application gateway. (バックエンドによって使用されるサーバー証明書のルート証明書が、アプリケーション ゲートウェイに追加されている信頼されたルート証明書と一致しません。) Ensure that you add the correct root certificate to allowlist the backend. (バックエンドを許可リストに登録するために適切なルート証明書を追加していることを確認してください)
 
@@ -254,6 +286,7 @@ Application Gateway の HTTP 設定にアップロードされた証明書は、
 上記の方法の手順 1 から 11 に従って、正しい信頼されたルート証明書を Application Gateway にアップロードします。
 
 Application Gateway で信頼されるルート証明書を抽出してアップロードする方法の詳細については、「[信頼されたルート証明書をエクスポートする (V2 SKU の場合)](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku)」を参照してください。
+
 > [!NOTE]
 > このエラーは、バックエンド サーバーが TLS ハンドシェイク中に "ルート -> 中間 (該当する場合) -> リーフ" を含む証明書の完全なチェーンを交換していない場合にも発生する可能性があります。 確認するには、任意のクライアントから OpenSSL コマンドを使用し、Application Gateway probe に構成された設定を使用してバックエンド サーバーに接続します。
 
@@ -261,6 +294,7 @@ Application Gateway で信頼されるルート証明書を抽出してアップ
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
+
 返される証明書の完全なチェーンが出力に表示されない場合は、ルート証明書を含む完全なチェーンと共に証明書を再度エクスポートします。 バックエンドサーバーでその証明書を構成します。 
 
 ```
@@ -280,7 +314,7 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
   \-----END CERTIFICATE-----
 ```
 
-#### <a name="backend-certificate-invalid-common-name-cn"></a>バックエンド証明書の無効な共通名 (CN)
+### <a name="backend-certificate-invalid-common-name-cn"></a>バックエンド証明書の無効な共通名 (CN)
 
 **メッセージ:** The Common Name (CN) of the backend certificate does not match the host header of the probe. (バックエンド証明書の共通名 (CN) が probe のホスト ヘッダーと一致しません。)
 
@@ -321,7 +355,7 @@ OpenSSL を使用する Linux の場合:
 
 2.  表示されたプロパティから証明書の CN を見つけ、HTTP 設定のホスト名フィールドに同じ値を入力します。 これが対象の Web サイトの目的のホスト名ではない場合は、そのドメインの証明書を取得するか、カスタム probe または HTTP 設定の構成に正しいホスト名を入力する必要があります。
 
-#### <a name="backend-certificate-is-invalid"></a>バックエンド証明書が無効
+### <a name="backend-certificate-is-invalid"></a>バックエンド証明書が無効
 
 **メッセージ:** Backend certificate is invalid. (バックエンド証明書が無効です。) Current date is not within the \"Valid from\" and \"Valid to\" date range on the certificate. (現在の日付が証明書の [有効期間の開始] と [有効期間の終了] の日付範囲内ではありません。)
 
@@ -335,7 +369,7 @@ OpenSSL を使用する Linux の場合:
 
 1.  証明書の横にある **削除** アイコンを使用して古い証明書を削除し、 **[保存]** を選択します。
 
-#### <a name="certificate-verification-failed"></a>証明書の検証の失敗
+### <a name="certificate-verification-failed"></a>証明書の検証の失敗
 
 **メッセージ:** The validity of the backend certificate could not be verified. (バックエンド証明書の有効性を検証できませんでした。) To find out the reason, check OpenSSL diagnostics for the message associated with error code {errorCode} (理由を調べるには、エラー コード {errorCode} に関連付けられたメッセージの OpenSSL 診断を確認してください)
 
@@ -343,8 +377,8 @@ OpenSSL を使用する Linux の場合:
 
 **解決方法:** この問題を解決するには、サーバー上の証明書が適切に作成されていることを確認します。 たとえば、[OpenSSL](https://www.openssl.org/docs/man1.0.2/man1/verify.html) を使用して、証明書とそのプロパティを確認し、Application Gateway の HTTP 設定への証明書の再アップロードを試行できます。
 
-<a name="backend-health-status-unknown"></a>バックエンドの正常性状態: 不明
--------------------------------
+## <a name="backend-health-status-unknown"></a>バックエンドの正常性状態: 不明
+
 バックエンドの正常性状態が不明の場合、ポータル ビューは次のスクリーンショットのようになります。
 
 ![Application Gateway のバックエンドの正常性 - 不明](./media/application-gateway-backend-health-troubleshooting/appgwunknown.png)
@@ -395,7 +429,6 @@ OpenSSL を使用する Linux の場合:
 
 1.  Application Gateway が正常で実行中であることを確認するには、ポータルの **[Resource Health]\(リソース正常性\)** オプションにアクセスし、状態が **[正常]** であることを確認します。 **[異常]** または **[デグレード]** 状態が表示される場合は、[サポートにお問い合わせください](https://azure.microsoft.com/support/options/)。
 
-<a name="next-steps"></a>次のステップ
-----------
+## <a name="next-steps"></a>次のステップ
 
 [Application Gateway の診断とログ](./application-gateway-diagnostics.md)の詳細を確認します。

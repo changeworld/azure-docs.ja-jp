@@ -4,15 +4,15 @@ description: セキュリティに関する推奨事項を実装することに�
 author: msmbaldwin
 manager: barbkess
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 09/02/2021
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 09dbe0fbefb8b90b4c4e1ddef57abf3b13856183
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42eaec619097d673c77b6b233a2f2316605971b6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92148079"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348428"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service のセキュリティに関する推奨事項
 
@@ -49,14 +49,14 @@ ms.locfileid: "92148079"
 |-|-|
 | 静的 IP の制限を使用する | Windows 上の Azure App Service では、アプリへのアクセスを許可されている IP アドレスの一覧を定義できます。 許可一覧には、個々 の IP アドレスまたはサブネット マスクによって定義された IP アドレスの範囲を含めることができます。 詳細については、「[Azure App Service 静的 IP 制限](app-service-ip-restrictions.md)」を参照してください。  |
 | Isolated 価格レベルを使用する | Isolated 価格レベルを除くすべての価格レベルでは、Azure App Service の共有ネットワーク インフラストラクチャ上でアプリが実行されます。 Isolated 価格レベルでは、専用の [App Service Environment](environment/intro.md)内でアプリを実行することで完全なネットワークの分離を実現しています。 App Service Environment は、[Azure Virtual Network](../virtual-network/index.yml) の独自のインスタンスで実行されます。|
-| オンプレミス リソースへのアクセス時にセキュリティで保護された接続を使用する | オンプレミス リソースへの接続には、[ハイブリッド接続](app-service-hybrid-connections.md)、[仮想ネットワーク統合](web-sites-integrate-with-vnet.md)、または [App Service Environment](environment/intro.md)を使用できます。 |
+| オンプレミス リソースへのアクセス時にセキュリティで保護された接続を使用する | オンプレミス リソースへの接続には、[ハイブリッド接続](app-service-hybrid-connections.md)、[仮想ネットワーク統合](./overview-vnet-integration.md)、または [App Service Environment](environment/intro.md)を使用できます。 |
 | 受信ネットワーク トラフィックへの露出を制限する | ネットワーク セキュリティ グループを使用すると、ネットワーク アクセスを制限し、公開するエンドポイントの数を制御できます。 詳細については、[App Service Environment への受信トラフィックを制御する方法](environment/app-service-app-service-environment-control-inbound-traffic.md)に関する記事を参照してください。 |
 
 ## <a name="monitoring"></a>監視
 
 | 推奨 | 説明 |
 |-|-|
-|Azure Security Center Standard レベルを使用する | [Azure Security Center](../security-center/defender-for-app-service-introduction.md) は、Azure App Service とネイティブに統合されています。 これにより、評価が実行され、セキュリティに関する推奨事項が提供されます。 |
+|Microsoft Defender for Cloud の Microsoft Defender for App Service を使用する | [Microsoft Defender for App Service](../security-center/defender-for-app-service-introduction.md) は Azure App Service にネイティブ統合されています。 App Service プランの対象となるリソースが Defender for Cloud によって評価され、その結果に基づき、セキュリティ上の推奨事項が生成されます。 [こちらの推奨事項]()../security-center/recommendations-reference.md#appservices-recommendations) にある詳しい手順を利用し、App Service リソースを強化してください。 Microsoft Defender for Cloud からは脅威防止機能も提供され、無数の脅威を検出できます。事前攻撃からコマンド & コントロールまで、ほぼすべての MITRE ATT&CK 作戦に対応しています。 Azure App Service アラートの完全な一覧については、[Microsoft Defender for App Service のアラート](../security-center/alerts-reference.md#alerts-azureappserv)に関するページを参照してください。|
 
 ## <a name="next-steps"></a>次のステップ
 

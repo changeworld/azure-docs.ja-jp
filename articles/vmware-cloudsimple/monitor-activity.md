@@ -2,19 +2,19 @@
 title: プライベート クラウド アクティビティを監視する
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Azure VMware Solution by CloudSimple 環境で利用できる、アラート、イベント、タスク、監査などのアクティビティに関する情報について説明します。
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/13/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46b6f703599637ce7fa032c14d6d799db3010d9f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899305"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322267"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware Solution by CloudSimple のアクティビティを監視する
 

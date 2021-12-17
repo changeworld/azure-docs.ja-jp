@@ -2,15 +2,15 @@
 title: Azure Application Insights におけるテレメトリ サンプリング | Microsoft Docs
 description: テレメトリのボリュームを抑制する方法。
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 08/26/2021
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a03dab43c12b372fc52e7516821fe7aef22d2e16
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 6c89ad519489892cf2965054d0c331a6f5d9f8e6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305244"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067701"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -23,6 +23,7 @@ ms.locfileid: "107305244"
 * サンプリングには、アダプティブ サンプリング、固定レート サンプリング、インジェスト サンプリングの 3 種類があります。
 * アダプティブ サンプリングは、Application Insights ASP.NET および ASP.NET Core ソフトウェア開発キット (SDK) のすべての最新バージョンで既定で有効になっています。 また、[Azure Functions](../../azure-functions/functions-overview.md) でも使用されます。
 * 固定レート サンプリングは、ASP.NET、ASP.NET Core、Java (エージェントと SDK の両方)、および Python 用の Application Insights SDK の最近のバージョンで使用できます。
+* Java では、サンプリング オーバーライドが利用できます。一部の依存関係、要求、正常性確認に異なるサンプリング レートを適用する必要があるときに便利です。 [サンプリング オーバーライド](./java-standalone-sampling-overrides.md)を使用し、ノイズのある依存関係をチューニングします。一方で、たとえば、重要なエラーはすべて 100% で保持します。 これは固定サンプリングの形式であり、テレメトリを細かく制御できます。
 * インジェスト サンプリングは、Application Insights サービス エンドポイントで機能します。 これは、他のサンプリングが有効になっていない場合にのみ適用されます。 SDK でテレメトリがサンプリングされると、インジェスト サンプリングは無効になります。
 * Web アプリケーションの場合、カスタム イベントを記録しており、一連のイベントが確実にまとめて保持または破棄されるようにする必要がある場合は、それらのイベントに同じ `OperationId` 値を割り当てる必要があります。
 * Analytics クエリを作成する場合は、 [サンプリングを考慮する](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)必要があります。 具体的には、単純にレコードをカウントするのではなく、 `summarize sum(itemCount)`を使用する必要があります。
@@ -35,7 +36,7 @@ ms.locfileid: "107305244"
 | ASP.NET | [はい (既定でオン)](#configuring-adaptive-sampling-for-aspnet-applications) | [はい](#configuring-fixed-rate-sampling-for-aspnet-applications) | 他のサンプリングが有効になっていない場合のみ |
 | ASP.NET Core | [はい (既定でオン)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [はい](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | 他のサンプリングが有効になっていない場合のみ |
 | Azure Functions | [はい (既定でオン)](#configuring-adaptive-sampling-for-azure-functions) | いいえ | 他のサンプリングが有効になっていない場合のみ |
-| Java | いいえ | [はい](#configuring-fixed-rate-sampling-for-java-applications) | 他のサンプリングが有効になっていない場合のみ |
+| Java | いいえ | [はい](#configuring-sampling-overrides-and-fixed-rate-sampling-for-java-applications) | 他のサンプリングが有効になっていない場合のみ |
 | Node.JS | いいえ | [はい](./nodejs.md#sampling) | 他のサンプリングが有効になっていない場合のみ
 | Python | いいえ | [はい](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | 他のサンプリングが有効になっていない場合のみ |
 | その他すべて | いいえ | いいえ | [はい](#ingestion-sampling) |
@@ -237,7 +238,7 @@ Azure Functions で実行されているアプリに対してアダプティブ 
 
 2. **固定レート サンプリング モジュールを有効にします。** 次のスニペットを [`ApplicationInsights.config`](./configuration-with-applicationinsights-config.md) に追加します。
    
-    ```XML
+    ```xml
     <TelemetryProcessors>
         <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
             <!-- Set a percentage close to 100/N where N is an integer. -->
@@ -307,31 +308,22 @@ Azure Functions で実行されているアプリに対してアダプティブ 
     }
     ```
 
-### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>Java アプリケーション用の固定レート サンプリングの構成
+### <a name="configuring-sampling-overrides-and-fixed-rate-sampling-for-java-applications"></a>Java アプリケーションのサンプリング オーバーライドと固定レート サンプリングを構成する
 
-Java エージェントおよび SDK では、既定ではどのサンプリングも有効になっていません。 現在、固定レート サンプリングのみがサポートされています。 Java では、アダプティブ サンプリングはサポートされていません。
+既定では、Java 自動インストルメンテーションと SDK ではサンプリングは有効になっていません。 現在、Java 自動インストルメンテーション、[サンプリング オーバーライド](./java-standalone-sampling-overrides.md)、固定レート サンプリングはサポートされています。 Java では、アダプティブ サンプリングはサポートされていません。
 
-#### <a name="configuring-java-agent"></a>Java エージェントの構成
+#### <a name="configuring-java-auto-instrumentation"></a>Java 自動インストルメンテーションの構成
 
-1. [applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar) をダウンロードします
+* 既定のサンプリング レートをオーバーライドするサンプリング オーバーライドを構成し、一部の要求と依存関係に異なるサンプリング レートを適用するには、[サンプリング オーバーライド ガイド](./java-standalone-sampling-overrides.md#getting-started)を使用します。
+* すべてのテレメトリに適用される固定レート サンプリングを構成するには、[固定レート サンプリング ガイド](./java-standalone-config.md#sampling)を使用します。
 
-1. サンプリングを有効にするには、`applicationinsights.json` ファイルに以下を追加します。
+#### <a name="configuring-java-2x-sdk"></a>Java 2.x SDK の構成
 
-```json
-{
-  "sampling": {
-    "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
-  }
-}
-```
-
-#### <a name="configuring-java-sdk"></a>Java SDK の構成
-
-1. 最新の [Application Insights Java SDK](./java-get-started.md) を使用して Web アプリケーションをダウンロードして構成します。
+1. 最新の [Application Insights Java SDK](./java-2x-get-started.md) を使用して Web アプリケーションをダウンロードして構成します。
 
 2. `ApplicationInsights.xml` ファイルに次のスニペットを追加することによって、**固定レート サンプリング モジュールを有効にします**。
 
-    ```XML
+    ```xml
     <TelemetryProcessors>
         <BuiltInProcessors>
             <Processor type="FixedRateSamplingTelemetryProcessor">
@@ -345,7 +337,7 @@ Java エージェントおよび SDK では、既定ではどのサンプリン�
 
 3. `Processor` タグの `FixedRateSamplingTelemetryProcessor` 内の次のタグを使用して、特定の種類のテレメトリをサンプリングに含めたり、サンプリングから除外したりできます。
    
-    ```XML
+    ```xml
     <ExcludedTypes>
         <ExcludedType>Request</ExcludedType>
     </ExcludedTypes>
@@ -584,4 +576,3 @@ ASP.NET SDK の v2.5.0-beta2 および ASP.NET Core SDK の v2.2.0-beta3 より�
 
 * [フィルター](./api-filtering-sampling.md) を使用して、SDK から送信される情報についてさらに厳密に制御できます。
 * [Application Insights によるテレメトリの最適化](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights)に関する Developer Network の記事を読みます。
-

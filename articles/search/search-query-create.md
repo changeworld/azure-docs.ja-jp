@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 4f5cc0d5eefd5969566040e4148ca7358d348736
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53428a0185b003e22fd0ad68001b2b1588f994b1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951506"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750751"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>Azure Cognitive Search でのクエリの作成
 
@@ -23,9 +23,9 @@ ms.locfileid: "104951506"
 
 クエリとは、単一の検索インデックスのドキュメント コレクションに対する読み取り専用の要求です。 ここでは、'Search' パラメーターを指定します。また、語句、引用符で囲まれたフレーズ、および演算子で構成されたクエリ式が含まれます。
 
-追加のパラメーターを使用すると、クエリと応答をより詳細に定義することができます。 たとえば、'searchFields' では特定のフィールドに対してクエリを実行します。'select' では結果で返されるフィールドを指定し、'count' ではインデックス内で見つかった一致の数を返します。
+要求で追加のパラメーターを使用すると、クエリと応答をより詳細に定義することができます。 たとえば、'searchFields' では特定のフィールドに対してクエリを実行します。'select' では結果で返されるフィールドを指定し、'count' ではインデックス内で見つかった一致の数を返します。
 
-次の例では、使用可能なパラメーターのサブセットを示すことにより、クエリ要求の一般的な概念を示します。 クエリの構成の詳細については、[クエリの種類と構成](search-query-overview.md)および[ドキュメントの検索 (REST)](/rest/api/searchservice/search-documents) に関する記事を参照してください。
+次の例では、使用可能ないくつかのパラメーターを示すことにより、クエリ要求の一般的な概念を示します。 クエリの構成の詳細については、[クエリの種類と構成](search-query-overview.md)および[ドキュメントの検索 (REST)](/rest/api/searchservice/search-documents) に関する記事を参照してください。
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -45,7 +45,7 @@ Azure portal や Postman などのツール、または API を使用してク�
 
 ### <a name="permissions"></a>アクセス許可
 
-クエリ要求を含むすべての操作は[管理 API キー](search-security-api-keys.md)で動作しますが、クエリ要求は必要に応じて[クエリ API キー](search-security-api-keys.md#create-query-keys)を使用できます。 クエリ API キーを強くお勧めします。 サービスあたり最大 50 個作成でき、アプリケーションごとに異なるキーを割り当てることができます。
+クエリ要求には、ヘッダーで渡された API キーを使用して許可される読み取りアクセス許可が必要です。 クエリ要求を含むすべての操作は[管理 API キー](search-security-api-keys.md)で動作しますが、クエリ要求は必要に応じて[クエリ API キー](search-security-api-keys.md#create-query-keys)を使用できます。 クエリ API キーを強くお勧めします。 サービスあたり最大 50 個作成でき、アプリケーションごとに異なるキーを割り当てることができます。
 
 Azure portal では、ツール、ウィザード、およびオブジェクトへのアクセスには、サービスに対する共同作成者ロール以上のメンバーシップが必要です。 
 

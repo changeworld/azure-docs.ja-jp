@@ -1,38 +1,44 @@
 ---
-title: カスタム分類と分類ルールの作成 (プレビュー)
+title: カスタム分類と分類ルールを作成する
 description: Azure Purview で組織に固有のデータ資産のデータの種類を定義する、カスタム分類を作成する方法について説明します。
-author: animukherjee
-ms.author: anmuk
+author: viseshag
+ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 3/24/2021
-ms.openlocfilehash: 7d6baee49250509e50cdeeea8cf8ca6cec5b362d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 09/27/2021
+ms.openlocfilehash: 8e1e43b1c1f11ae6eb37ab599f9636bc47423f8b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222162"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442143"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure Purview でのカスタム分類
 
 この記事では、組織に固有のデータ資産のデータの種類を定義する、カスタム分類を作成する方法について説明します。 また、データ資産全体で特定のデータを検索できるようにする、カスタム分類ルールの作成についても説明します。
 
-## <a name="default-classifications"></a>既定の分類
+## <a name="default-system-classifications"></a>既定のシステム分類
 
-Azure Purview Data Catalog には、データ資産に含まれている可能性がある一般的な個人データの種類を表す、既定の分類が多数用意されています。
+Azure Purview Data Catalog には、データ資産に含まれている可能性がある一般的な個人データの種類を表す、既定のシステム分類が多数用意されています。 使用可能なシステム分類の完全な一覧については、「[Azure Purview でサポートされている分類](supported-classifications.md)」を参照してください。
 
 :::image type="content" source="media/create-a-custom-classification-and-classification-rule/classification.png" alt-text="分類の選択" border="true":::
 
 既定の分類がニーズに合わない場合は、カスタム分類を作成することもできます。
 
+> [!Note]
+> Microsoft の[データ サンプリング ルール](sources-and-scans.md#sampling-within-a-file)は、システムとカスタムの両方の分類に適用されます。  
+
+> [!NOTE]
+> Purview のカスタム分類は、構造化データ ソース (SQL、CosmosDB など) と構造化ファイル タイプ (CSV、JSON、Parquet など) にのみ適用されます。 DOC、PDF、XLSX などの非構造化データ ファイル タイプには適用されません。
+
 ## <a name="steps-to-create-a-custom-classification"></a>カスタム分類の作成手順
 
 カスタム分類ルールを作成するには、次の手順に従います。
 
-1. カタログで、左側のメニューから **[管理センター]** を選択します。
+1. カタログで、左側のメニューから **[Data Map]** を選択します。
 
-2. **[メタデータ管理]** の下にある **[分類]** を選択します。
+2. **[注釈の管理]** の下にある **[分類]** を選択します。
 
 3. **[+新規]** を選択します
 
@@ -48,7 +54,7 @@ Microsoft のシステム分類は、予約済みの `MICROSOFT.` 名前空間�
 
 - 名前空間の最後の 2 つのセグメント以外はすべてトリミングされます。
 
-- 大文字と小文字の区別は、各単語の最初の文字が大文字になるように調整されます。 その他の文字はすべて小文字に変換されます。
+- 大文字と小文字の区別は、各単語の最初の文字が大文字になるように調整されます。
 
 - すべてのアンダースコア (\_) はスペースで置き換えられます。
 
@@ -82,15 +88,15 @@ Contoso は、カスタム分類ルールを作成することによって、こ
 
 1. 前のセクションの手順に従って、カスタム分類を作成します。 分類ルールの構成にこのカスタム分類を追加して、列内で一致が検出されたときにシステムによって適用されるようにします。
 
-2. **管理センター** のアイコンを選択します。
+2. **[Data Map]** アイコンを選択します。
 
 3. **[Classifications rules]\(分類ルール\)** セクションを選択します。
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/classificationrules.png" alt-text="分類ルール タイル" border="true":::
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/classification-rules.png" alt-text="分類ルール タイル" border="true":::
 
 4. **[新規]** を選択します。
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/newclassificationrule.png" alt-text="新しい分類ルールの追加" border="true":::
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/new-classification-rule.png" alt-text="新しい分類ルールの追加" border="true":::
 
 5. **[New classification rule]\(新しい分類ルール\)** ダイアログ ボックスが表示されます。 フィールドに入力し、**正規表現ルール** と **辞書ルール** のどちらを作成するかを決定します。
 
@@ -118,16 +124,12 @@ Contoso は、カスタム分類ルールを作成することによって、こ
    |データ パターン    |省略可能。 データ フィールドに格納されているデータを表す正規表現です。 制限は非常に大きく設定されています。 前の例では、従業員 ID のデータ パターン テストは `Employee{GUID}` というワードでした。  |
    |列パターン    |省略可能。 一致する列名を表す正規表現です。 制限は非常に大きく設定されています。 |
 
-1. **[Data Pattern]\(データ パターン\)** には、次の 2 つのしきい値を設定できます。
+1. **[データ パターン]** の **[Minimum match threshold]\(最小の一致のしきい値\)** を使用して、分類を適用するためにスキャナーによって検出される必要がある列の、個別のデータ値の最小一致率を設定できます。 推奨値は 60% です。 複数のデータ パターンを指定した場合、この設定は無効になり、値は 60% で固定されます。
 
-   - **[Distinct match threshold]\(個別の一致のしきい値\)** : スキャナーがデータ パターンを実行する前に、列に含まれている必要がある個別のデータ値の合計数です。 推奨値は 8 です。 この値は、2 から 32 の範囲で手動で調整できます。 システムでは、この値を使用して、スキャナーが正確に分類するのに十分なデータが列に含まれていることを確認する必要があります。 たとえば、すべて値 1 が含まれている複数の行を含む列は分類されません。 1 つの行に値が含まれ、残りの行に null 値が含まれている列の場合も分類されません。 複数のパターンを指定すると、この値がそれぞれに適用されます。
-
-   - **[Minimum match threshold]\(最小の一致のしきい値\)** : この設定を使用して、分類を適用するためにスキャナーによって検出される必要がある列の、個別のデータ値の最小一致率を設定できます。 推奨値は 60% です。 この設定には注意する必要があります。 レベルを 60% 未満に減らすと、誤検知の分類がカタログに導入される可能性があります。 複数のデータ パターンを指定した場合、この設定は無効になり、値は 60% で固定されます。
+   > [!Note]
+   > [Minimum match threshold]\(最小の一致のしきい値\) は 1% 以上にする必要があります。
 
 1. これで、ルールを検証して **作成** できるようになりました。
-
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="ルールを作成前に検証" border="true":::
-
 1. 作成プロセスを完了する前に分類ルールをテストして、資産にタグが適用されることを検証します。 ルールの分類は、スキャンと同様に、アップロードされるサンプル データに適用されます。 これは、すべてのシステム分類とカスタム分類がファイル内のデータと一致することを意味します。
 
    入力ファイルには、区切りファイル (CSV、PSV、SSV、TSV)、JSON、または XML コンテンツを含めることができます。 コンテンツは、入力ファイルのファイル拡張子に基づいて解析されます。 区切りデータには、記述された型のいずれかと一致するファイル拡張子が付いている場合があります。 たとえば、TSV データは MySampleData.csv という名前のファイルに存在することができます。 区切りコンテンツには、少なくとも 3 つの列が必要です。
@@ -142,9 +144,7 @@ Contoso は、カスタム分類ルールを作成することによって、こ
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-rule.png" alt-text="辞書ルールの作成" border="true":::
 
-1. 辞書が生成された後、個別の一致と最小一致のしきい値を調整して、ルールを送信することができます。
-
-- **[Distinct match threshold]\(個別の一致のしきい値\)** : スキャナーがデータ パターンを実行する前に、列に含まれている必要がある個別のデータ値の合計数です。 個別の一致のしきい値は、パターン マッチングとは関係ありませんが、パターン マッチングの前提条件です。 推奨値は 8 です。 この値は、2 から 32 の範囲で手動で調整できます。 システムでは、この値を使用して、スキャナーが正確に分類するのに十分なデータが列に含まれていることを確認する必要があります。 たとえば、すべて値 1 が含まれている複数の行を含む列は分類されません。 1 つの行に値が含まれ、残りの行に null 値が含まれている列の場合も分類されません。 複数のパターンを指定すると、この値がそれぞれに適用されます。
+1. 辞書が生成された後、最小の一致のしきい値を調整して、ルールを送信することができます。
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="辞書が生成されたというチェックマークがある、辞書ルールを作成します。" border="true":::
 

@@ -4,14 +4,15 @@ description: データ ファクトリの作成および子リソースの操作
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
-author: dcstwh
-ms.author: weetok
-ms.openlocfilehash: cec5df9a5046e912ab8542c91bde4344affa0925
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: security
+author: nabhishek
+ms.author: abnarain
+ms.openlocfilehash: 2138c1947fd6d068bfc4d171595cf818ecf5dd77
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100364479"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708052"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory のロールとアクセス許可
 
@@ -22,10 +23,14 @@ ms.locfileid: "100364479"
 
 ## <a name="roles-and-requirements"></a>ロールと要件
 
-Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、"*共同作成者*" ロール、"*所有者*" ロールのメンバーであるか、Azure サブスクリプションの "*管理者*" である必要があります。 サブスクリプションで自分が持っているアクセス許可を表示するには、Azure portal で右上隅にあるユーザー名を選択し、 **[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 
+Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、"*共同作成者*" ロール、"*所有者*" ロールのメンバーであるか、Azure サブスクリプションの "*管理者*" である必要があります。 サブスクリプションに対するご自分のアクセス許可を表示するには、Azure portal の右上隅のユーザー名を選択し、 **[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 
 
 データセット、リンクされたサービス、パイプライン、トリガー、および統合ランタイムを含む Data Factory の子リソースを作成および管理するには、次の要件が適用されます。
 - Azure portal で子リソースを作成および管理するには、**リソース グループ** レベル以上で **Data Factory 共同作成者** ロールに属している必要があります。
+  
+  > [!NOTE]
+  > **リソース グループ** レベル以上で **共同作成者** ロールを既に割り当てている場合、**Data Factory 共同作成者** ロールは必要ありません。 [共同作成者ロール](../role-based-access-control/built-in-roles.md#data-factory-contributor)は、[Data Factory 共同作成者ロール](../role-based-access-control/built-in-roles.md#contributor)に付与されたすべてのアクセス許可を含むスーパーセット ロールです。
+
 - PowerShell または SDK を使用して子リソースを作成および管理する場合は、リソース レベル以上での **共同作成者** ロールで十分です。
 
 ロールにユーザーを追加する方法に関するサンプル手順については、[ロールの追加](../cost-management-billing/manage/add-change-subscription-administrator.md)に関する記事を参照してください。

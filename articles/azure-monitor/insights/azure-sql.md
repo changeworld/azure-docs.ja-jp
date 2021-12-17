@@ -6,12 +6,13 @@ author: danimir
 ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 54ef88e65925ba9c7e9fe2e44ef0c76fbc9ceb04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5a8227b862328f1d1f7f282b7d89febaa0a66040
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101717487"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178231"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -35,7 +36,7 @@ Azure SQL Analytics は、すべての Azure SQL Database を対象に、診断�
 | [診断設定](../essentials/diagnostic-settings.md) | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Azure Monitor ログに送信されます。 |
 | [Azure Storage アカウント](../essentials/resource-logs.md#send-to-log-analytics-workspace) | いいえ | Azure Monitor は、ストレージ アカウントからデータを読み取りません。 |
 | [Windows エージェント](../agents/agent-windows.md) | いいえ | Azure SQL Analytics では、Windows のダイレクト エージェントは使用されません。 |
-| [Linux エージェント](../vm/quick-collect-linux-computer.md) | いいえ | Azure SQL Analytics では、Linux のダイレクト エージェントは使用されません。 |
+| [Linux エージェント](../vm/monitor-virtual-machine.md) | いいえ | Azure SQL Analytics では、Linux のダイレクト エージェントは使用されません。 |
 | [System Center Operations Manager 管理グループ](../agents/om-agents.md) | いいえ | Operations Manager エージェントから Azure Monitor への直接の接続は、Azure SQL Analytics では使用されません。 |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL Analytics のオプション
@@ -299,4 +300,3 @@ Azure SQL Analytics は無料で使用できますが、毎月割り当てられ
 - Azure Monitor で[ログ クエリ](../logs/log-query-overview.md)を使用して、詳細な Azure SQL データを表示します。
 - Azure SQL データを表示する[独自のダッシュ ボードを作成](../visualize/tutorial-logs-dashboards.md)します。
 - Azure SQL の特定のイベントが発生した場合の[アラートを作成](../alerts/alerts-overview.md)します。
-

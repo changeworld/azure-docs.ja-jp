@@ -6,22 +6,21 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 9a6346a2b62c81dd74cf0ebe9a85df12d3488679
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 479fe6c4f30c8272d73c9d1d085f541beeefe229
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251252"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579661"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>Azure Database for MySQL でデータベースとユーザーを作成する
 
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
 この記事では、Azure Database for MySQL でユーザーを作成する方法について説明します。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった "_スレーブ_" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
->
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 Azure Database for MySQL サーバーを初めて作成したときに、サーバー管理者のユーザー名とパスワードを指定しています。 詳細については、こちらの[クイックスタート](quickstart-create-mysql-server-database-using-azure-portal.md)をご覧ください。 サーバー管理者のユーザー名は、Azure portal で確認できます。
 
@@ -69,18 +68,17 @@ Azure Database for MySQL サーバーを作成すると、最初のサーバー�
 
 5. 指定したデータベースを指定し、新しいユーザー名とパスワードを使用して、サーバーにサインインします。 この例は、mysql のコマンド ラインです。 このコマンドを使用すると、ユーザーのパスワードの入力を求められます。 実際のサーバー名、データベース名、およびユーザー名を使用します。
 
-   ### <a name="single-server"></a>[単一サーバー](#tab/single-server)
+### <a name="single-server"></a>[単一サーバー](#tab/single-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
 
-   ### <a name="flexible-server"></a>[フレキシブル サーバー](#tab/flexible-server)
+### <a name="flexible-server"></a>[フレキシブル サーバー](#tab/flexible-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p
    ```
- ---
 
 ## <a name="to-create-more-admin-users-in-azure-database-for-mysql"></a>Azure Database for MySQL で追加の管理者のユーザーを作成するには
 

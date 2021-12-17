@@ -1,21 +1,21 @@
 ---
 title: リソース ロックについて
 description: ブループリントを割り当てるときにリソースを保護するための Azure Blueprints 内のロック オプションについて説明します。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: b2004ad294ae0eec1b4f2fc6f49308efd32d652e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f209cb1e350739bfecdf86e125b28dcd4866501
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920192"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324307"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Blueprint でのリソース ロックについて
 
 一貫性のある環境を大規模に作成することが本当に価値があるのは、一貫性を維持するためのメカニズムがある場合だけです。 この記事では、Azure Blueprint でのリソース ロックのしくみについて説明します。 リソース ロックと "_拒否割り当て_" の適用の例については、[新しいリソースの保護](../tutorials/protect-new-resources.md)に関するチュートリアルを参照してください。
 
 > [!NOTE]
-> Azure Blueprints によってデプロイされたリソース ロックは、ブループリントの割り当てによってデプロイされたリソースにのみ適用されます。 既に存在するリソース グループ内のリソースなどの既存のリソースには、ロックは追加されません。
+> Azure Blueprints によってデプロイされたリソース ロックは、ブループリントの割り当てによってデプロイされた[非拡張リソース](../../../azure-resource-manager/templates/scope-extension-resources.md)にのみ適用されます。 既に存在するリソース グループ内のリソースなどの既存のリソースには、ロックは追加されません。
 
 ## <a name="locking-modes-and-states"></a>ロック モードと状態
 

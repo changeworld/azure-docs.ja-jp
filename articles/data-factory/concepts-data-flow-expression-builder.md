@@ -1,18 +1,21 @@
 ---
 title: マッピング データ フローでの式ビルダー
-description: Azure Data Factory のマッピング データ フローで式ビルダーを使用して式を構築する
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Azure Synapse Analytics のマッピング データ フローで式ビルダーを使用して式を構築する
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 02/04/2021
-ms.openlocfilehash: 753f201fbde5d9e7100b6e257f8dc79e4462d7b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.openlocfilehash: 6a21299d505d0132bab432223095850b3006b05e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99584925"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651277"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>マッピング データ フローで式を構築する
 
@@ -20,31 +23,31 @@ ms.locfileid: "99584925"
 
 マッピング データ フローでは、多くの変換プロパティが式として入力されます。 これらの式は、実行時に Spark データ型に評価される列の値、パラメーター、関数、演算子、リテラルで構成されます。 マッピング データ フローには、これらの式の構築を支援する、**式ビルダー** と呼ばれる専用のエクスペリエンスがあります。 [IntelliSense](/visualstudio/ide/using-intellisense) のコード補完を利用して、強調表示、構文チェック、オートコンプリートを行うことで、式ビルダーはデータ フローを簡単に構築できるように設計されています。 この記事では、式ビルダーを使用してビジネス ロジックを効率よく構築する方法について説明します。
 
-![式ビルダー](media/data-flow/expresion-builder.png "式ビルダー")
+:::image type="content" source="media/data-flow/expresion-builder.png" alt-text="式ビルダー":::
 
 ## <a name="open-expression-builder"></a>式ビルダーを開く
 
 式ビルダーを開くための複数のエントリ ポイントがあります。 これらはすべて、データ フロー変換の特定のコンテキストに依存します。 最も一般的なユース ケースは、ユーザーがデータ フロー式言語を使用して列を作成または更新する[派生列](data-flow-derived-column.md)や[集計](data-flow-aggregate.md)のような変換の場合です。 式ビルダーを開くには、列の一覧の上にある **[Open expression builder]\(式ビルダーを開く\)** を選択します。 列のコンテキストをクリックして、その式に対する式ビルダーを直接開くこともできます。
 
-![式ビルダーを開く](media/data-flow/open-expression-builder-derive.png "式ビルダーを開く")
+:::image type="content" source="media/data-flow/open-expression-builder-derive.png" alt-text="式ビルダーを開く":::
 
 [フィルター](data-flow-filter.md)のような一部の変換では、青い式テキスト ボックスをクリックすると、式ビルダーが開きます。 
 
-![青い式ボックス](media/data-flow/expressionbox.png "青い式ボックス")
+:::image type="content" source="media/data-flow/expressionbox.png" alt-text="青い式ボックス":::
 
 一致条件またはグループ化の条件で列を参照するときは、式で列から値を抽出できます。 式を作成するには、 **[計算列]** を選択します。
 
-![[計算列] オプション](media/data-flow/computedcolumn.png "[計算列] オプション")
+:::image type="content" source="media/data-flow/computedcolumn.png" alt-text="[計算列] オプション":::
 
 式またはリテラル値が有効な入力である場合は、 **[動的なコンテンツの追加]** を選択して、リテラル値に評価される式を構築します。
 
-![[動的なコンテンツの追加] オプション](media/data-flow/add-dynamic-content.png "[動的なコンテンツの追加] オプション")
+:::image type="content" source="media/data-flow/add-dynamic-content.png" alt-text="[動的なコンテンツの追加] オプション":::
 
 ## <a name="expression-elements"></a>式の要素
 
 マッピング データ フローでは、列の値、パラメーター、関数、ローカル変数、演算子、リテラルで式を構成できます。 これらの式は、文字列、ブール値、整数などの Spark データ型に評価される必要があります。
 
-![式の要素](media/data-flow/expression-elements.png "式の要素")
+:::image type="content" source="media/data-flow/expression-elements.png" alt-text="式の要素":::
 
 ### <a name="functions"></a>関数
 
@@ -54,7 +57,7 @@ ms.locfileid: "99584925"
 
 配列型を返す列または関数を扱う場合は、角かっこ ([]) を使用して特定の要素にアクセスします。 インデックスが存在しない場合、式は NULL と評価されます。
 
-![式ビルダーの配列](media/data-flow/expression-array.png "式データのプレビュー")
+:::image type="content" source="media/data-flow/expression-array.png" alt-text="式ビルダーの配列":::
 
 > [!IMPORTANT]
 > マッピング データ フローでは、配列は 1 から始まります。つまり、最初の要素はインデックス 1 で参照されます。 たとえば、myArray[1] では、"myArray" という名前の配列の最初の要素にアクセスします。
@@ -67,11 +70,11 @@ ms.locfileid: "99584925"
 
 特殊文字またはスペースを含む列名がある場合、それらを式で参照するには、その名前を中かっこで囲みます。
 
-```{[dbo].this_is my complex name$$$}```
+`{[dbo].this_is my complex name$$$}`
 
 ### <a name="parameters"></a>パラメーター
 
-パラメーターは、実行時にパイプラインからデータ フローに渡される値です。 パラメーターを参照するには、 **[Expression elements]\(式の要素\)** ビューでパラメーターをクリックするか、名前の前にドル記号を付けて参照します。 たとえば、parameter1 という名前のパラメーターは `$parameter1` によって参照されます。 詳細については、「[マッピング データ フローをパラメーター化する](parameters-data-flow.md)」を参照してください。
+パラメーターは、実行時にパイプラインからデータ フローに渡される値です。 パラメーターを参照するには、 **[Expression elements]\(式の要素\)** ビューでパラメーターをクリックするか、名前の前にドル記号を付けて参照します。 たとえば、parameter1 という名前のパラメーターは `$parameter1` によって参照されます。 詳細については、「[マッピング データ フローをパラメーター化する](parameters-data-flow.md)」を参照してください。 
 
 ### <a name="cached-lookup"></a>キャッシュされた検索
 
@@ -81,7 +84,7 @@ ms.locfileid: "99584925"
 
 `outputs()` を使用すると、パラメーターは取得されず、複合列の配列としてキャッシュ シンク全体が返されます。 これは、キー列がシンク内で指定されている場合は呼び出すことができず、キャッシュ シンクに行が少数ある場合にのみ使用する必要があります。 一般的なユース ケースでは、増分キーの最大値が追加されます。 キャッシュされた単一の集計行 `CacheMaxKey` に列 `MaxKey` が含まれている場合に最初の値を参照するには、`CacheMaxKey#outputs()[1].MaxKey` を呼び出します。
 
-![キャッシュされた検索](media/data-flow/cached-lookup-example.png "キャッシュされた検索")
+:::image type="content" source="media/data-flow/cached-lookup-example.png" alt-text="キャッシュされた検索":::
 
 ### <a name="locals"></a>ローカル
 
@@ -91,7 +94,7 @@ ms.locfileid: "99584925"
 
 [デバッグ モード](concepts-data-flow-debug-mode.md)がオンになっている場合は、デバッグ クラスターを対話的に使用して、式の評価をプレビューできます。 データ プレビューの横にある **[最新の情報に更新]** を選択すると、データ プレビューの結果が更新されます。 入力列を指定して、各行の出力を確認できます。
 
-![進行中のプレビュー](media/data-flow/preview-expression.png "式データのプレビュー")
+:::image type="content" source="media/data-flow/preview-expression.png" alt-text="進行中のプレビュー":::
 
 ## <a name="string-interpolation"></a>文字列補間
 
@@ -123,7 +126,7 @@ ms.locfileid: "99584925"
 
 式の先頭にコメントを配置すると、変換式を文書化するための変換テキスト ボックスにコメントが表示されます。
 
-![変換テキストボックス内のコメント](media/data-flow/comment-expression.png "説明")
+:::image type="content" source="media/data-flow/comment-expression.png" alt-text="変換テキストボックス内のコメント":::
 
 ## <a name="regular-expressions"></a>正規表現
 
@@ -156,19 +159,25 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 ### <a name="convert-to-dates-or-timestamps"></a>日付またはタイムスタンプに変換する
 
-タイムスタンプ出力に文字列リテラルを含めるには、```toString()``` で変換をラップします。
+タイムスタンプ出力に文字列リテラルを含めるには、`toString()` で変換をラップします。
 
-```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
+`toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')`
 
 ミリ秒をエポックから日付またはタイムスタンプに変換するには、`toTimestamp(<number of milliseconds>)` を使用します。 時刻が秒単位で指定されている場合は、1,000 を掛けます。
 
-```toTimestamp(1574127407*1000l)```
+`toTimestamp(1574127407*1000l)`
 
 前の式の最後にある末尾の "l" は、インライン構文としての long 型への変換を示しています。
 
 ### <a name="find-time-from-epoch-or-unix-time"></a>エポックまたは Unix 時刻から時刻を検索する
 
 toLong( currentTimestamp() - toTimestamp('1970-01-01 00:00:00.000', 'yyyy-MM-dd HH:mm:ss.SSS') ) * 1000l
+
+### <a name="data-flow-time-evaluation"></a>データ フローの時刻の評価
+
+データ フローは、ミリ秒単位まで処理します。 *2018-07-31T20:00:00.2170000* の場合は、出力に *2018-07-31T20:00:00.217* が表示されます。
+サービス用のポータルでは、 **[current browser setting]\(現在のブラウザーの設定\)** にタイムスタンプが表示されます。217 が表示されない可能性がありますが、データフローを最後まで実行すると、217 (ミリ秒部分) も同様に処理されます。 toString(myDateTimeColumn) を式として使用すると、データを完全な精度でプレビュー表示することができます。 実際上は、datetime を文字列ではなく datetime として処理します。
+ 
 
 ## <a name="next-steps"></a>次のステップ
 

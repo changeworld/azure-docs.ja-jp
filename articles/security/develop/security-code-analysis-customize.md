@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: ad395e1b782edb28845bb7db0607d2bab5b5697c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 763369fbbd52ed14b547e2a23dfa0bb977a1b9a4
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802014"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112116139"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>ビルド タスクを構成およびカスタマイズする
 
@@ -202,4 +202,4 @@ Security Report の構成の詳細については、次のスクリーンショ�
 
 YAML ベースの構成については、[YAML 構成ガイド](yaml-configuration.md)に関するページを参照してください。
 
-Security Code Analysis 拡張機能と提供されるツールについてさらに質問がある場合は、[FAQ ページ](security-code-analysis-faq.md)を参照してください。
+Security Code Analysis 拡張機能と提供されるツールについてさらに質問がある場合は、[FAQ ページ](security-code-analysis-faq.yml)を参照してください。

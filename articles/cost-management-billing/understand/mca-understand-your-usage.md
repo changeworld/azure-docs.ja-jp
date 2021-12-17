@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 10/13/2021
 ms.author: banders
-ms.openlocfilehash: 826217091b3297da0c068336ff67a0a58841716d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: db7dbf6da5405b0b86a6231b31572cfeaffe12f0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690461"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000197"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約のAzure の利用状況と料金ファイルに関する用語
 
@@ -24,7 +24,7 @@ Azure の利用状況および料金を含む CSV ファイルには、現在の
 
 Azure の利用状況と料金を含むファイルを入手する方法については、「[View and download Azure usage and charges for your Microsoft Customer Agreement (Microsoft 顧客契約の Azure の利用状況と料金の表示とダウンロード)](download-azure-daily-usage.md)」を参照してください。 このファイルは、スプレッドシート アプリケーションで開くことができるコンマ区切り値 (.csv) ファイル形式で入手できます。
 
-利用料金は、サブスクリプションの**月額**料金の合計です。 利用料金では、クレジットや割引は考慮されません。
+利用料金は、サブスクリプションの **月額** 料金の合計です。 利用料金では、クレジットや割引は考慮されません。
 
 ## <a name="changes-from-azure-ea-usage-and-charges"></a>Azure EA の利用状況と料金の変更
 
@@ -32,11 +32,11 @@ EA のお客様であれば、Azure 課金プロファイルの利用状況を�
 
 | Azure EA の利用状況を含む CSV | Microsoft 顧客契約の Azure の利用状況と料金を含む CSV |
 | --- | --- |
-| Date | date |
+| Date | 日付 |
 | Month| date |
-| 日 | date |
-| 年 | date |
-| Product | product |
+| 日間 | date |
+| Year | date |
+| Product | 製品 |
 | MeterId | meterID |
 | MeterCategory | meterCategory |
 | MeterSubCategory | meterSubCategory |
@@ -50,8 +50,8 @@ EA のお客様であれば、Azure 課金プロファイルの利用状況を�
 | InstanceId | instanceId |
 | ServiceInfo1 | serviceInfo1 |
 | ServiceInfo2 | serviceInfo2 |
-| AdditionalInfo: | additionalInfo |
-| Tags | tags |
+| AdditionalInfo | additionalInfo |
+| タグ | tags |
 | StoreServiceIdentifier | 該当なし |
 | DepartmentName | invoiceSection |
 | CostCenter | costCenter |
@@ -97,7 +97,7 @@ product | 料金が発生する製品の名前
 subscriptionName | 料金が発生するサブスクリプションの名前
 reservationId | 購入した予約インスタンスの一意の識別子
 reservationName | 購入した予約インスタンスの名前
-publisherType | 発行元の種類 (値: firstParty、thirdPartyReseller、thirdPartyAgency)
+publisherType | Microsoft/Azure、Marketplace および AWS のコスト。  値は、Microsoft 顧客契約アカウントの場合は `Microsoft` で、EA と従量課金制アカウントの場合は `Azure` です。
 publisherName | Marketplace サービスの発行元
 resourceGroupId | リソースに関連付けられているリソース グループの一意の識別子
 resourceGroupName | リソースに関連付けられているリソース グループの名前
@@ -107,8 +107,8 @@ resourceLocation | リソースが実行されているデータ センターの
 location | 同じリージョンの別のリソースの場所が構成されている場合、リソースの正規化された場所
 数量 | 購入または消費されるユニットの数
 unitOfMeasure | サービス課金の測定単位。 たとえば、コンピューティング サービスは時間単位で課金されます。
-chargeType | 料金の種類。 値: <ul><li>AsCharged-Usage:発生する料金は、Azure のサービスの利用状況をベースにしています。 これには、予約インスタンスのために課金されない VM の使用量が含まれます。</li><li>AsCharged PurchaseMarketplace:Marketplace での購入による 1 回限りのまたは毎月の固定料金</li><li>AsCharged-UsageMarketplace:ユニットの消費量ベースで課金される Marketplace のサービスの料金</li></ul>
-isAzureCreditEligible | サービスの料金を Azure クレジットを使用して支払うことができるかどうかを示すフラグ (値：True、False)
+chargeType | 料金の種類。 値: <ul><li>AsCharged-Usage: Azure サービスの利用状況に基づいて発生する料金。 これには、予約インスタンスのために課金されない VM の使用量が含まれます。</li><li>AsCharged-PurchaseMarketplace: Marketplace での購入による 1 回限りの料金または毎月の固定料金</li><li>AsCharged-UsageMarketplace: 消費単位に基づいて課金される Marketplace サービスの料金</li></ul>
+isAzureCreditEligible | サービスの料金を Azure クレジットを使用して支払うことができるかどうかを示すフラグ (値: True、False)
 serviceInfo1 | サービス固有のメタデータ
 serviceInfo2 | これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです
 additionalInfo | その他のサービス固有のメタデータ。

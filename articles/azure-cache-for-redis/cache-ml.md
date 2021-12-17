@@ -1,29 +1,30 @@
 ---
 title: Azure Cache for Redis を使用して Azure Functions に機械学習モデルをデプロイする
-description: この記事では、Azure Cache for Redis インスタンスを使用して、Azure Machine Learning からのモデルを Azure Functions に関数アプリとしてデプロイします。 Azure Cache for Redis は非常にパフォーマンスが高くスケーラブルです。Azure Machine Learning モデルと組み合わせると、アプリケーションの待機時間が短くなり、スループットも向上します。
+description: この記事では、Azure Cache for Redis インスタンスを使用して、Azure Machine Learning からのモデルを Azure Functions に関数アプリとしてデプロイします。 Azure Cache for Redis はパフォーマンスが高くスケーラブルです。Azure Machine Learning モデルと組み合わせると、アプリケーションの待機時間が短くなり、スループットも向上します。
 author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: ec8943bc73cac2020350dd4916f040f031cd842b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 023bef17efd0d61031f51d37ab48b633b297ef23
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499698"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234503"
 ---
-# <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Azure Cache for Redis を使用して Azure Functions に機械学習モデルをデプロイする 
+# <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Azure Cache for Redis を使用して Azure Functions に機械学習モデルをデプロイする
 
 この記事では、Azure Cache for Redis インスタンスを使用して、Azure Machine Learning からのモデルを Azure Functions に関数アプリとしてデプロイします。  
 
-Azure Cache for Redis は非常にパフォーマンスが高くスケーラブルです。Azure Machine Learning モデルと組み合わせると、アプリケーションの待機時間が短くなり、スループットも向上します。 キャッシュが特に役立つシナリオがいくつかあります。データを推論するとき、および実際のモデル推論結果に対して使用されます。 いずれのシナリオでも、メタ データまたは結果はメモリ内に格納されるため、パフォーマンスが向上します。 
+Azure Cache for Redis はパフォーマンスが高くスケーラブルです。 Azure Machine Learning モデルと組み合わせると、アプリケーションの待機時間が短くなり、スループットも向上します。 キャッシュが役立つシナリオがいくつかあります。データを推論するときと、実際のモデル推論結果に対して使用される場合です。 いずれのシナリオでも、メタ データまたは結果はメモリ内に格納されるため、パフォーマンスが向上します。
 
 > [!NOTE]
 > Azure Machine Learning と Azure Functions の両方が一般公開されていますが、Machine Learning サービスから Functions 用にモデルをパッケージする機能はプレビュー段階です。  
 >
 
 ## <a name="prerequisites"></a>前提条件
+
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)。
 * Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](../machine-learning/how-to-manage-workspace.md)を参照してください。
 * [Azure CLI](/cli/azure/install-azure-cli)。
@@ -38,44 +39,45 @@ Azure Cache for Redis は非常にパフォーマンスが高くスケーラブ�
 >
 > これらの変数の設定の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](../machine-learning/how-to-deploy-and-where.md)」を参照してください。
 
-## <a name="create-an-azure-cache-for-redis-instance"></a>Azure Cache for Redis インスタンスを作成する 
+## <a name="create-an-azure-cache-for-redis-instance"></a>Azure Cache for Redis インスタンスを作成する
+
 Basic、Standard、または Premium のいずれのキャッシュ インスタンスでも Azure Functions に機械学習モデルをデプロイすることができます。 キャッシュ インスタンスを作成するには、これらの手順に従います。  
 
-1. Azure portal ホームページに戻るか、サイドバー メニューを開いて、 **[リソースの作成]** を選択します。 
-   
+1. Azure portal ホームページに戻るか、サイドバー メニューを開いて、 **[リソースの作成]** を選択します。
+
 1. **[新規]** ページで、 **[データベース]** を選択し、 **[Azure Cache for Redis]** を選択します。
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="[Azure Cache for Redis] を選択します。":::
-   
+
 1. **[新規 Redis Cache]** ページで、新しいキャッシュの設定を構成します。
-   
+
    | 設定      | 推奨値  | 説明 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの "*ホスト名*" は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
-   | **サブスクリプション** | ドロップダウンで、ご自身のサブスクリプションを選択します。 | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 | 
-   | **リソース グループ** | ドロップ ダウンでリソース グループを選択するか、 **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 | 
+   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュの名前は 1 文字から 63 文字の文字列である必要があります。 文字列には、数字、文字、またはハイフンのみを含めることができます。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの "*ホスト名*" は、 *\<DNS name>.redis.cache.windows.net* になります。 |
+   | **サブスクリプション** | ドロップダウンで、ご自身のサブスクリプションを選択します。 | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 |
+   | **リソース グループ** | ドロップ ダウンでリソース グループを選択するか、 **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 |
    | **場所** | ドロップ ダウンで場所を選択します。 | キャッシュを使用する他のサービスの近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
    | **価格レベル** | ドロップ ダウンで[価格レベル](https://azure.microsoft.com/pricing/details/cache/)を選択します。 |  価格レベルによって、キャッシュに使用できるのサイズ、パフォーマンス、および機能が決まります。 詳細については、[Azure Cache for Redis の概要](cache-overview.md)に関するページを参照してください。 |
 
-1. **[ネットワーク]** タブを選択するか、ページの下部にある **[ネットワーク]** ボタンをクリックします。
+1. **[ネットワーク]** タブを選択するか、ページの下部にある **[ネットワーク]** ボタンを選択します。
 
 1. **[ネットワーク]** タブで、接続方法を選択します。
 
-1. **[次へ: 詳細]** タブを選択するか、ページの下部にある **[次へ: 詳細]** ボタンをクリックします。
+1. **[次へ: 詳細]** タブを選択するか、ページの下部にある **[次へ: 詳細]** ボタンを選択します。
 
 1. Basic または Standard のキャッシュ インスタンスの **[詳細]** タブで、非 TLS ポートを有効にする場合は有効トグルをオンにします。
 
 1. Premium キャッシュ インスタンスの **[詳細]** タブで、非 TLS ポート、クラスタリング、データ永続化の設定を構成します。
 
-1. **[次へ: タグ]** タブを選択するか、ページの下部にある **[次へ: タグ]** ボタンをクリックします。
+1. ページの下部にある **[次へ: タグ]** タブを選択するか、ページの下部にある **[次へ: タグ]** ボタンを選択します。
 
-1. 必要に応じて、 **[タグ]** タブで、リソースを分類する場合は名前と値を入力します。 
+1. 必要に応じて、 **[タグ]** タブで、リソースを分類する場合は名前と値を入力します。
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 [確認および作成] タブが表示され、Azure によって構成が検証されます。
 
 1. 緑色の検証に成功のメッセージが表示された後、 **[作成]** を選択します。
 
-キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。 
+キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。
 
 ## <a name="prepare-for-deployment"></a>展開を準備する
 
@@ -185,7 +187,7 @@ print(model_package.location)
 
 ## <a name="deploy-image-as-a-web-app"></a>イメージを Web アプリとしてデプロイする
 
-1. 次のコマンドを使用して、イメージを含む Azure Container Registry のログイン資格情報を取得します。 `<myacr>` を、以前 `package.location` から返された値に置き換えます。 
+1. 次のコマンドを使用して、イメージを含む Azure Container Registry のログイン資格情報を取得します。 `<myacr>` を、以前 `package.location` から返された値に置き換えます。
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -211,7 +213,7 @@ print(model_package.location)
 
     __username__ の値と __passwords__ の 1 つを保存します。
 
-1. サービスをデプロイするリソース グループまたは App Service プランがまだない場合は、次のコマンドで両方の作成方法を確認してください。
+1. サービスをデプロイするリソース グループまたは App Service プランがまだない場合は、これらのコマンドで両方の作成方法を確認してください。
 
     ```azurecli-interactive
     az group create --name myresourcegroup --location "West Europe"
@@ -228,6 +230,7 @@ print(model_package.location)
     ```azurecli-interactive
     az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
+
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
@@ -239,7 +242,7 @@ print(model_package.location)
     ```
 
     > [!IMPORTANT]
-    > この時点で、関数アプリが作成されています。 しかし、イメージを含む Azure Container Registry に資格情報または HTTP トリガーの接続文字列が指定されていないため、関数アプリはアクティブになりません。 次の手順で、コンテナー レジストリの認証情報と接続文字列を指定します。 
+    > この時点で、関数アプリが作成されています。 しかし、イメージを含む Azure Container Registry に資格情報または HTTP トリガーの接続文字列が指定されていないため、関数アプリはアクティブになりません。 次の手順で、コンテナー レジストリの認証情報と接続文字列を指定します。
 
 1. コンテナー レジストリにアクセスするために必要な資格情報を関数アプリに指定するには、次のコマンドを使用します。 `<app-name>` は、関数アプリの名前で置き換えます。 `<acrinstance>` と `<imagetag>` を、前の手順の AZ CLI 呼び出しの値に置き換えます。 `<username>` と `<password>` を、前の手順で取得した ACR ログイン情報に置き換えます。
 
@@ -283,14 +286,14 @@ print(model_package.location)
 > [!IMPORTANT]
 > イメージが読み込まれるまで数分かかる場合があります。 Azure portal を使用して進行状況を監視できます。
 
-## <a name="test-azure-functions-http-trigger"></a>Azure Functions の HTTP トリガーをテストする 
+## <a name="test-azure-functions-http-trigger"></a>Azure Functions の HTTP トリガーをテストする
 
 ここでは、Azure Functions の HTTP トリガーを実行してテストします。
 
 1. Azure portal で関数アプリにアクセスします。
-1. Developer で、 **[コードとテスト]** を選択します。 
-1. 右側にある **[入力]** タブを選択します。 
-1. **[実行]** ボタンをクリックして、Azure Functions の HTTP トリガーをテストします。 
+1. Developer で、 **[コードとテスト]** を選択します。
+1. 右側にある **[入力]** タブを選択します。
+1. **[実行]** ボタンを選択して、Azure Functions の HTTP トリガーをテストします。
 
 これで、Azure Cache for Redis インスタンスを使用して、Azure Machine Learning からのモデルを関数アプリとして正常にデプロイできました。 Azure Cache for Redis の詳細については、以下のセクションのリンクを参照してください。
 
@@ -298,10 +301,10 @@ print(model_package.location)
 
 次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、再利用することができます。
 
-そうではなく、クイック スタートの使用を終える場合は、課金を避けるために、このクイック スタートで作成した Azure リソースを削除することができます。 
+そうではなく、クイック スタートの使用を終える場合は、課金を避けるために、このクイック スタートで作成した Azure リソースを削除することができます。
 
 > [!IMPORTANT]
-> リソース グループを削除すると、元に戻すことができません。 リソース グループを削除すると、そのリソース グループ内のすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、個々のブレードから各リソースを個別に削除することができます。
+> リソース グループを削除すると、元に戻すことができません。 リソース グループを削除すると、そのリソース グループ内のすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルをホストするためのリソースを、保持するリソースが含まれる既存のリソース グループ内に作成した場合、リソース グループを削除する代わりに、左側で各リソースを個別に削除できます。
 
 ### <a name="to-delete-a-resource-group"></a>リソース グループを削除するには
 
@@ -313,9 +316,9 @@ print(model_package.location)
 
 しばらくすると、リソース グループとそのリソースのすべてが削除されます。
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cache for Redis](./cache-overview.md) について詳細を学習する
 * [Functions](../azure-functions/functions-create-function-linux-custom-image.md) のドキュメントで、関数アプリを構成する方法を学習する。
-* [API リファレンス](/python/api/azureml-contrib-functions/azureml.contrib.functions) 
+* [API リファレンス](/python/api/azureml-contrib-functions/azureml.contrib.functions)
 * [Azure Cache for Redis を使用する Python アプリ](./cache-python-get-started.md)を作成する

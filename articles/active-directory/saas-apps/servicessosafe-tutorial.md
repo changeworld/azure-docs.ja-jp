@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 046ded816c28c2153e5609992eb4b7c7cd7f2978
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62d308e9b25a1f65cd97dd86b8f7fd4ae96b2bf9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729603"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132299139"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sosafe"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SoSafe の統合
 
@@ -37,12 +37,12 @@ ms.locfileid: "98729603"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SoSafe では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* SoSafe では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* SoSafe では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* SoSafe では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* SoSafe では、[自動化されたユーザー プロビジョニング](sosafe-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
-
 
 ## <a name="adding-sosafe-from-the-gallery"></a>ギャラリーからの SoSafe の追加
 
@@ -54,7 +54,6 @@ Azure AD への SoSafe の統合を構成するには、ギャラリーからマ
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「SoSafe」と入力します。
 1. 結果のパネルから [SoSafe] を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-sosafe"></a>SoSafe の Azure AD SSO の構成とテスト
 
@@ -75,7 +74,7 @@ SoSafe に対して Azure AD SSO を構成してテストするには、次の�
 
 1. Azure portal の SoSafe アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -95,6 +94,7 @@ SoSafe に対して Azure AD SSO を構成してテストするには、次の�
 1. [SoSafe のセットアップ] セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -143,22 +143,24 @@ SoSafe に対して Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、Britta Simon というユーザーを SoSafe に作成します。 SoSafe では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 SoSafe にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
+SoSafe では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./sosafe-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
 #### <a name="sp-initiated"></a>SP Initiated:
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる SoSafe のサインオン URL にリダイレクトされます。  
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる SoSafe のサインオン URL にリダイレクトされます。  
 
-1. SoSafe のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* SoSafe のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した SoSafe に自動的にサインインされます 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した SoSafe に自動的にサインインされます。 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [SoSafe] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した SoSafe に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [SoSafe] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した SoSafe に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-SoSafe を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SoSafe を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

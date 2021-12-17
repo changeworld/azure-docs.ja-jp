@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 78932e5852453fe996e26a278f8a1859a8ecf546
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67ac453bb70c6889e1a69e7c0c40a88f623813ff
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755012"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235119"
 ---
 # <a name="authentication-flows"></a>認証フロー
 
@@ -27,11 +27,11 @@ Microsoft Authentication Library (MSAL) では、さまざまなアプリケー�
 |--|--|--|
 | [承認コード](#authorization-code) | デバイスにインストールされているアプリで、Web API などの保護されたリソースにアクセスするために使用されます。 モバイル アプリおよびデスクトップ アプリにサインインおよび API アクセスを追加できます。 | [デスクトップ アプリ](scenario-desktop-overview.md)、[モバイル アプリ](scenario-mobile-overview.md)、[Web アプリ](scenario-web-app-call-api-overview.md) |
 | [クライアントの資格情報](#client-credentials) | アプリケーションの ID を使って Web でホストされているリソースにアクセスできます。 バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 | [デーモン アプリ](scenario-daemon-overview.md) |
-| [デバイス コード](#device-code) | ユーザーは、スマート TV、IoT デバイス、プリンターなどの入力制限のあるデバイスにサインインできます。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
+| [デバイス コード](#device-code) | ユーザーは、スマート TV、IoT デバイス、プリンターなどの入力制限のあるデバイスにサインインできます。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token-device-code-flow.md) |
 | [暗黙的な許可](#implicit-grant) | バックエンド サーバーと資格情報をやり取りせずに、アプリはトークンを取得できます。 アプリは、ユーザーのサインイン、セッションの維持、他の Web API へのトークンの取得を、すべてクライアント JavaScript コード内で実行できます。 | [シングル ページ アプリケーション (SPA)](scenario-spa-overview.md) |
 | [On-Behalf-Of](#on-behalf-of) | アプリケーションでサービスまたは Web API を呼び出し、それがさらに別のサービスまたは Web API を呼び出す必要があります。 その考え方は、委任されたユーザー ID とアクセス許可を要求チェーン経由で伝達するというものです。 | [Web API](scenario-web-api-call-api-overview.md) |
-| [ユーザー名/パスワード](#usernamepassword) | アプリケーションはパスワードを直接処理することによって、ユーザーをサインインさせることができます。 このフローは推奨されません。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token.md#username-and-password) |
-| [統合 Windows 認証](#integrated-windows-authentication) | ドメインまたは Azure Active Directory (Azure AD) に参加しているコンピューターのアプリケーションは、サイレントで (ユーザーからの UI 操作なしで) トークンを取得できます。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
+| [ユーザー名/パスワード](#usernamepassword) | アプリケーションはパスワードを直接処理することによって、ユーザーをサインインさせることができます。 このフローは推奨されません。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token-username-password.md) |
+| [統合 Windows 認証](#integrated-windows-authentication) | ドメインまたは Azure Active Directory (Azure AD) に参加しているコンピューターのアプリケーションは、サイレントで (ユーザーからの UI 操作なしで) トークンを取得できます。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token-integrated-windows-authentication.md) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>各フローがトークンとコードを生成する方法
 
@@ -167,7 +167,7 @@ MSAL ベースのアプリケーションでは、最初にトークンを *サ�
 > [!WARNING]
 > このフローは推奨されません。 高度な信頼と資格情報の公開が要求されます。 このフローは、より安全なフローを使用できない場合 *にのみ* 使用してください。 詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください。
 
-Windows ドメイン参加済みマシン上でトークンを自動的に取得するために推奨されるフローは、[統合 Windows 認証](#integrated-windows-authentication)です。 それ以外の場合は、[デバイス コード フロー](#device-code)を使用してください。
+Windows ドメイン参加済みマシン上でトークンをサイレントに取得するための推奨されるフローは、[統合 Windows 認証](#integrated-windows-authentication)です。 それ以外の場合は、[デバイス コード フロー](#device-code)を使用してください。
 
 DevOps のような一部のシナリオではユーザー名/パスワードのフローが役立つ場合もありますが、独自の UI を提供する対話形式のシナリオでユーザー名/パスワードを使用する場合は、それを避けてください。
 
@@ -187,7 +187,7 @@ DevOps のような一部のシナリオではユーザー名/パスワードの
 
 ## <a name="integrated-windows-authentication"></a>統合 Windows 認証
 
-MSAL では、ドメイン参加済みまたは Azure AD 参加済みの Windows コンピューターで実行されているデスクトップやモバイル アプリケーションに対して統合 Windows 認証 (IWA) がサポートされています。 IWA を使用して、これらのアプリケーションは、ユーザーによる UI 操作なしでトークンをサイレントに取得できます。
+MSAL では、ドメイン参加済みまたは Azure AD 参加済み Windows コンピューター上で実行されるデスクトップやモバイル アプリケーションに対して統合 Windows 認証 (IWA) がサポートされています。 IWA を使用して、これらのアプリケーションは、ユーザーによる UI 操作なしでトークンをサイレントに取得できます。
 
 ![統合 Windows 認証の図](media/msal-authentication-flows/integrated-windows-authentication.png)
 
@@ -198,7 +198,7 @@ MSAL では、ドメイン参加済みまたは Azure AD 参加済みの Windows
 
 ### <a name="constraints"></a>制約
 
-統合 Windows 認証 (IWA) では、フェデレーション ユーザー (Active Directory で作成され、Azure AD によってサポートされているユーザー) *のみ* がサポートされています。 Azure AD で直接作成され、Active Directory による支援のないユーザー (マネージド ユーザー) は、この認証フローを使用できません。 この制限は、[ユーザー名/パスワードのフロー](#usernamepassword)には影響しません。
+統合 Windows 認証 (IWA) では、フェデレーション ユーザー (Active Directory で作成され、Azure AD によってサポートされるユーザー) "*のみ*" がサポートされています。 Azure AD で直接作成され、Active Directory による支援のないユーザー (マネージド ユーザー) は、この認証フローを使用できません。 この制限は、[ユーザー名/パスワードのフロー](#usernamepassword)には影響しません。
 
 IWA は、.NET Framework、.NET Core、およびユニバーサル Windows プラットフォームのアプリケーションを対象としています。
 

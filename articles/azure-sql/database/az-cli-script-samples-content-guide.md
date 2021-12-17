@@ -1,23 +1,24 @@
 ---
-title: Azure CLI スクリプトの例
+title: Azure SQL Database と Managed Instance 用の Azure CLI のサンプル | Microsoft Docs
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Azure SQL Database と Azure SQL Managed Instance を作成、管理するための Azure CLI サンプル スクリプト
+description: Azure SQL Database と Azure SQL Managed Instance を作成、管理するための Azure CLI スクリプトのサンプルをご覧ください。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
-ms.custom: overview-samples, mvc, sqldbrb=2, devx-track-azurecli
+ms.subservice: deployment-configuration
+ms.custom: overview-samples, mvc, sqldbrb=2, devx-track-azurecli, seo-azure-cli
 ms.devlang: azurecli
 ms.topic: sample
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
-ms.date: 02/03/2019
-ms.openlocfilehash: 439167f29bb53d4a6e90b95826faa56e3c3170da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/17/2021
+keywords: sql データベース, マネージド インスタンス, azure cli サンプル, azure cli の例, azure cli のコード サンプル, azure cli スクリプトの例
+ms.openlocfilehash: adc7f1db28fa1b0e8cafb2b3363876b1e316f8bd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94563360"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662155"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のための Azure CLI サンプル 
  

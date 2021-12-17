@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/07/2021
-ms.openlocfilehash: 446792b26527126a4db99da14a2585c17cf8610c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 79120eb6d3d5aad9c27ed42bc825fdad4907af49
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107968"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144764"
 ---
 # <a name="manage-tenants-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでテナントを管理する
 
@@ -53,7 +53,7 @@ Azure Active Directory (AD) テナントは、Azure portal で設定される組
 1. [Create]\(作成\) を選択して、新しいドメインとアカウントの情報を確定します。
 1. 新しい Azure AD グローバル管理者のユーザー名とパスワードでサインインして、[ユーザーの追加と管理](add-manage-users.md)を開始します。
 
-パートナー センター ポータルを介さず Azure portal 内で新しいテナントを作成する方法について詳しくは、[Azure Active Directory で新しいテナントを作成する](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)方法に関する記事を参照してください。
+パートナー センター ポータルを介さず Azure portal 内で新しいテナントを作成する方法について詳しくは、[Azure Active Directory で新しいテナントを作成する](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)方法に関する記事を参照してください。
 
 ## <a name="remove-a-tenant"></a>テナントを削除する
 

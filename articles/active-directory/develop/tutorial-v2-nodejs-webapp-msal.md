@@ -3,19 +3,19 @@ title: 'チュートリアル: Node.js + Express Web アプリにユーザーを
 titleSuffix: Microsoft identity platform
 description: このチュートリアルでは、Web アプリでのユーザーのサインインのサポートを追加します。
 services: active-directory
-author: derisen
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 02/17/2021
-ms.author: v-doeris
-ms.openlocfilehash: 58132b6d038abe0db02d1e58f8c8a8f64962ff49
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.author: marsma
+ms.openlocfilehash: 1a61eb908221d4fe2eea9d74d4fbc02c7660ba85
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279716"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507930"
 ---
 # <a name="tutorial-sign-in-users-in-a-nodejs--express-web-app"></a>チュートリアル: Node.js + Express Web アプリにユーザーをサインインさせる
 

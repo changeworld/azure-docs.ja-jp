@@ -2,17 +2,17 @@
 title: Azure CDN - Verizon Premium ルール エンジンを使用して HTTP 動作をオーバーライドする
 description: このルール エンジンを使用して、Azure CDN from Verizon Premium による HTTP 要求の処理方法をカスタマイズできます (特定の種類のコンテンツの配信のブロック、キャッシュ ポリシーの定義、HTTP ヘッダーの変更など)。
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 05/31/2019
-ms.author: allensu
-ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: 47c1f944c36b33094bc3a0e60411a11e819e8090
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87040214"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423396"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Azure CDN from Verizon Premium ルール エンジンを使用して HTTP 動作をオーバーライドする
 

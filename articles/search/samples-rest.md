@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: a7ab48759ac775c1195dedb4143d895bdcdec937
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e25c921b390211f159e7f845dca9c7cbc9168c7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98956441"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739064"
 ---
 # <a name="rest-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の REST コード サンプル
 
@@ -37,11 +37,15 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 | [デバッグ セッション](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Debug-sessions) | 「[チュートリアル:スキルセットに対する診断、修復、および変更のコミットを行う](cognitive-search-tutorial-debug-sessions.md)」のソース コード。 この記事では、Azure portal でスキルセット デバッグ セッションを使用する方法について説明します。 REST は、デバッグ中に使用されるオブジェクトを作成するために使用されます。|
 | [カスタム アナライザー](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/custom-analyzers) | 「[チュートリアル:電話番号のカスタム アナライザーを作成する](tutorial-create-custom-analyzer.md)」のソース コード。 この記事では、アナライザーを使用して、検索可能なコンテンツでパターンと特殊文字を保持する方法について説明します。|
 | [ナレッジ ストア](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) | 「[REST と Postman を使用してナレッジ ストアを作成する](knowledge-store-create-rest.md)」のソース コード。 この記事では、ナレッジ マイニング ワークフローに使用されるナレッジ ストアを設定するために必要な手順について説明します。 |
-| [プロジェクション](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/projections) | 「[エンリッチメントを整形してエクスポートする方法](knowledge-store-projections-examples.md)」のソース コード。 この記事では、ナレッジ ストアで物理データ構造を指定する方法について説明します。|
+| [プロジェクション](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/projections) | 「[ナレッジ ストアでのプロジェクションを定義する](knowledge-store-projections-examples.md)」のソース コード。 この記事では、ナレッジ ストアで物理データ構造を指定する方法について説明します。|
 | [暗号化された BLOB にインデックスを付ける](https://github.com/Azure-Samples/azure-search-postman-samples/commit/f5ebb141f1ff98f571ab84ac59dcd6fd06a46718) | [BLOB インデクサーとスキルセットを使用して暗号化された BLOB にインデックスを付ける方法](search-howto-index-encrypted-blobs.md)に関する記事のソース コード。 この記事では、以前に Azure Key Vault を使用して暗号化されている Azure Blob Storage 内のドキュメントにインデックスを付ける方法について説明します。 |
 
 > [!Tip]
+<<<<<<< HEAD
 > [サンプル ブラウザー](/samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを GitHub 内で検索してください。
+=======
+> Github で製品、サービス、言語でフィルター処理された Microsoft コード サンプルを検索するために、[サンプル ブラウザー](/samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search)を試してください。
+>>>>>>> repo_sync_working_branch
 
 ## <a name="other-samples"></a>その他のサンプル
 

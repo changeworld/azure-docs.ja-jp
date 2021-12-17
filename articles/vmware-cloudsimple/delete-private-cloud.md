@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple プライベート クラウドの削除
 description: CloudSimple プライベート クラウドを削除する方法について説明します。 プライベート クラウドを削除すると、すべてのクラスターが削除されます。
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7db967955dc86db39db4dcb2b3a2baf8906efb20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 602e7315a398f428276fac6eeadf7dc9eba7340d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97896262"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322609"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドの削除
 

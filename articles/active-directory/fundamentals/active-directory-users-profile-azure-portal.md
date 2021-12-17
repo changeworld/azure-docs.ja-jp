@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 04/11/2019
+ms.date: 06/10/2021
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6239b0c7f56db49d54ee95b1d6fb0737d2ea9cb8
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92370918"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017985"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する
 Azure Active Directory (Azure AD) を使用して、プロファイル画像、職種別情報、および一部の設定などのユーザー プロファイル情報を追加します。 新しいユーザーの追加方法については、[Azure Active Directory でユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページをご覧ください。
@@ -26,7 +26,11 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
 ご覧のとおり、ユーザーを作成するときに追加する情報より、ユーザー プロファイルの方が情報が多いです。 この追加情報は、すべて組織が必要に応じて追加することができるオプションです。
 
 ## <a name="to-add-or-change-profile-information"></a>プロファイル情報を追加または変更する
-1. [Azure portal](https://portal.azure.com/) に組織のユーザー管理者としてサインインします。
+
+>[!Note]
+>ユーザー名とメール アドレスのプロパティにアクセント文字を含めることはできません。
+
+1. 組織のユーザー管理者ロールで [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、ユーザーを選択します。 たとえば、_Alain Charon_ を選びます。
 
@@ -34,9 +38,7 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
 
     ![編集可能な情報を含むユーザー プロファイル ページ](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
 
-3. **[編集]** を選択し、利用可能な各セクションに含まれる情報をオプションで追加するか、更新します。
-
-    ![編集可能な領域が表示されたユーザー プロファイル ページ](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
+3. **[編集]** を選択し、編集可能な各セクションに含まれる情報をオプションで追加するか、更新します。
 
     - **プロファイルの画像。** ユーザー アカウントのサムネイル画像を選択します。 この画像は、Azure Active Directory と myapps.microsoft.com ページなどのユーザーの個人ページに表示されます。
 

@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 466e01a874e75221beeb12624199911136b9d5e1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880137"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048142"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>例:Form Recognizer カスタム スキルを作成する
 
@@ -26,15 +26,15 @@ ms.locfileid: "98880137"
 
 ## <a name="create-a-form-recognizer-resource"></a>Form Recognizer リソースを作成する
 
-[!INCLUDE [create resource](../cognitive-services/form-recognizer/includes/create-resource.md)]
+[!INCLUDE [create resource](../applied-ai-services/form-recognizer/includes/create-resource.md)]
 
 ## <a name="train-your-model"></a>モデルをトレーニングする
 
-このスキルを使用する前に、入力フォームで Form Recognizer モデルのトレーニングを行う必要があります。 モデルのトレーニング方法については、[cURL クイックスタート](../cognitive-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api)に従ってください。 このクイックスタートに記載されているサンプル フォームを使用するか、独自のデータを使用できます。 モデルのトレーニング後、その ID 値を安全な場所にコピーします。
+このスキルを使用する前に、入力フォームで Form Recognizer モデルのトレーニングを行う必要があります。 モデルのトレーニング方法については、[cURL クイックスタート](../applied-ai-services/form-recognizer/quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api)に従ってください。 このクイックスタートに記載されているサンプル フォームを使用するか、独自のデータを使用できます。 モデルのトレーニング後、その ID 値を安全な場所にコピーします。
 
 ## <a name="set-up-the-custom-skill"></a>カスタム スキルを設定する
 
-このチュートリアルでは、[Azure Search Power Skills](https://github.com/Azure-Samples/azure-search-power-skills) GitHub リポジトリで [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) プロジェクトを使用します。 このリポジトリをローカル コンピューターに複製し、**Vision/AnalyzeForm/** に移動して、プロジェクトにアクセスします。 次に、Visual Studio で _AnalyzeForm.csproj_ を開きます。 このプロジェクトでは、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)を満たし、Azure Cognitive Search の強化に使用できる Azure 関数リソースを作成します。 フォーム ドキュメントを入力として受け取り、指定したキー/値ペアを (テキストとして) 出力します。
+このチュートリアルでは、[Azure Search Power Skills](https://github.com/Azure-Samples/azure-search-power-skills) GitHub リポジトリで [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/main/Vision/AnalyzeForm) プロジェクトを使用します。 このリポジトリをローカル コンピューターに複製し、**Vision/AnalyzeForm/** に移動して、プロジェクトにアクセスします。 次に、Visual Studio で _AnalyzeForm.csproj_ を開きます。 このプロジェクトでは、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)を満たし、Azure Cognitive Search の強化に使用できる Azure 関数リソースを作成します。 フォーム ドキュメントを入力として受け取り、指定したキー/値ペアを (テキストとして) 出力します。
 
 まず、プロジェクト レベルの環境変数を追加します。 左側のウィンドウで **AnalyzeForm** プロジェクトを見つけ、右クリックして **[プロパティ]** を選択します。 **[プロパティ]** ウィンドウで **[デバッグ]** タブをクリックし、 **[環境変数]** フィールドを見つけます。 **[追加]** をクリックして以下の変数を追加します。
 * `FORMS_RECOGNIZER_ENDPOINT_URL`、エンドポイント URL に設定されている値を含む。
@@ -77,7 +77,7 @@ POST https://localhost:7071/api/analyze-form
 }
 ```
 
-ここでは、トレーニングを行ったフォームと同じ種類のフォームの URL を指定する必要があります。 テスト目的で、トレーニング フォームのいずれかを使用できます。 cURL クイックスタートに従っている場合、フォームは Azure BLOB ストレージ アカウントに配置されます。 Azure Storage Explorer を開き、フォーム ファイルを見つけて右クリックし、 **[Shared Access Signature の取得]** を選択します。 次のダイアログ ウィンドウには、URL と SAS トークンが表示されます。 これらの文字列は、要求本文の `"formUrl"` と `"formSasToken"` の各フィールドにそれぞれ入力します。
+ここでは、トレーニングを行ったフォームと同じ種類のフォームの URL を指定する必要があります。 テスト目的で、トレーニング フォームのいずれかを使用できます。 cURL クイックスタートに従っている場合、フォームは Azure Blob Storage アカウントに配置されます。 Azure Storage Explorer を開き、フォーム ファイルを見つけて右クリックし、 **[Shared Access Signature の取得]** を選択します。 次のダイアログ ウィンドウには、URL と SAS トークンが表示されます。 これらの文字列は、要求本文の `"formUrl"` と `"formSasToken"` の各フィールドにそれぞれ入力します。
 
 > [!div class="mx-imgBorder"]
 > ![Azure Storage Explorer で pdf ドキュメントが選択されています](media/cognitive-search-skill-form/form-sas.png)

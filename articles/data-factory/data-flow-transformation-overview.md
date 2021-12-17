@@ -1,21 +1,26 @@
 ---
 title: マッピング データ フロー変換の概要
+titleSuffix: Azure Data Factory & Azure Synapse
 description: データ フローのマッピングで使用できる、さまざまな変換の概要
-author: dcstwh
-ms.author: weetok
+author: kromerm
+ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.openlocfilehash: bb5021c0125c3140ef44a1ec3304b9d0ac40c30f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 10/07/2021
+ms.openlocfilehash: 56a6a521eb648a1ad49baf2bf206ef84aa084731
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060229"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714120"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>マッピング データ フロー変換の概要
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 データ フローのマッピングで現在サポートされている変換のリストを次に示します。 それぞれの変換をクリックして、構成の詳細を確認します。
 
@@ -38,6 +43,7 @@ ms.locfileid: "106060229"
 | [Sink](data-flow-sink.md) | - | お使いのデータの最終受信先 |
 | [Sort](data-flow-sort.md) | 行の修飾子 | 現在のデータ ストリームで受信行を並べ替える |
 | [ソース](data-flow-source.md) | - | データ フローのデータ ソース |
+| [Stringify](data-flow-stringify.md) | - | 複合型をプレーン文字列に変換する |
 | [代理キー](data-flow-surrogate-key.md) | スキーマ修飾子 | ビジネス以外の任意のキー値のインクリメントを追加する |
 | [Union (結合)](data-flow-union.md) | 複数の入力/出力 | 複数のデータ ストリームを垂直方向に結合する |
 | [ピボット解除](data-flow-unpivot.md) | スキーマ修飾子 | 列を行の値にピボットする |

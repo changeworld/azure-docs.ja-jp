@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - オンプレミスから CloudSimple VPN ゲートウェイへの高可用性の構成
 description: 高可用性のために、オンプレミス環境から CloudSimple VPN ゲートウェイへの高可用接続を構成する方法について説明します。
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 80805aaa172518c40c7ad123ca24361ee0f15e69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d9996b150bd07c50082db7b3bedbac04b90559c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895701"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305752"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>オンプレミスから CloudSimple VPN ゲートウェイへの高可用接続を構成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "97895701"
 
 外部インターフェイス上でフェーズ 1 (IKEv1) を有効にするには、Cisco ASA ファイアウォールで次の CLI コマンドを入力します。
 
-```crypto ikev1 enable outside```
+`crypto ikev1 enable outside`
 
 ### <a name="2-create-an-ikev1-policy"></a>2.IKEv1 ポリシーを作成する
 
@@ -121,13 +121,13 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 外部インターフェイスに暗号化マップを適用します。
 
-```crypto map mymap interface outside```
+`crypto map mymap interface outside`
 
 ### <a name="8-confirm-applicable-nat-rules"></a>8.適用できる NAT 規則を確認する
 
 使用される NAT 規則を次に示します。 VPN トラフィックが他の NAT 規則の対象になっていないことを確認します。
 
-```nat (inside,outside) source static AZ_inside AZ_inside destination static CS_inside CS_inside```
+`nat (inside,outside) source static AZ_inside AZ_inside destination static CS_inside CS_inside`
 
 ### <a name="sample-ipsec-site-to-site-vpn-established-output-from-cisco-asa"></a>Cisco ASA からの IPsec サイト間 VPN の確立された出力の例
 
@@ -280,7 +280,7 @@ Cisco ASA 上の NAT の構成:
 
 Cisco ASA でサポートされている IKEv1 および IKEv2 属性:
 
-<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa90/configuration/guide/asa_90_cli_config/vpn_ike.html#21661" target="_blank">Cisco ASA シリーズ CLI 構成ガイド</a>
+<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa72/configuration/guide/conf_gd/ike.html" target="_blank">Cisco ASA シリーズ CLI 構成ガイド</a>
 
 バージョン 8.4 以降の Cisco ASA で IPsec サイト間 VPN の構成:
 

@@ -12,13 +12,13 @@ ms.topic: how-to
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
-ms.custom: aaddev
-ms.openlocfilehash: 06e197a6e445c7dc1179be696318905f2132ee36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: dd8ad7f8c07a164d8c8bdac56d7ea3b57ef3aecc
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85477738"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419090"
 ---
 # <a name="configure-keychain"></a>キーチェーンの構成
 

@@ -3,19 +3,19 @@ title: Azure Cognitive Services のセキュリティ
 titleSuffix: Azure Cognitive Services
 description: Cognitive Services を使用するときに考慮する必要のあるセキュリティに関する事柄について説明します。
 services: cognitive-services
-author: erhopf
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.author: erhopf
+ms.author: pafarley
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 90fbc41edbfea0ea99d436906d3052e43bfb4fb8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 33ed0fc2f104d0f94001ef821e9152926f6ab72a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043878"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077916"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services のセキュリティ
 
@@ -199,7 +199,11 @@ NSString* value =
 
 [Microsoft Azure 用カスタマー ロックボックス](../security/fundamentals/customer-lockbox-overview.md)には、お客様が顧客データへのアクセス要求を承認または拒否するインターフェイスが用意されています。 これは、Microsoft のエンジニアがサポート リクエストの際に顧客データにアクセスする必要がある場合に使用されます。 カスタマー ロックボックス要求の開始、追跡、後のレビューと監査のための保存の方法に関する詳細については、「[カスタマー ロックボックス](../security/fundamentals/customer-lockbox-overview.md)」を参照してください。 
 
+<<<<<<< HEAD
 カスタマー ロックボックスはこの Cognitive Services で利用できます。
+=======
+カスタマー ロックボックスはこのサービスで利用できます。
+>>>>>>> repo_sync_working_branch
 
 * Translator
 
@@ -209,9 +213,6 @@ NSString* value =
 * Face
 * Content Moderator
 * Personalizer
-
-> [!IMPORTANT]
-> **Form Recognizer** の場合、Microsoft のエンジニアが 2020 年 7 月 10 日より後に作成されたリソースの顧客データにアクセスすることはありません。
 
 E0 SKU を使用するための機能を要求するには、この [要求フォーム](https://aka.ms/cogsvc-cmk)に記入して提出してください。 要求の状態について連絡を差し上げるまで、約 3 から 5 営業日かかります。 要求によっては、お客様は待ち行列に登録され、スペースが利用できるようになってから承認される場合があります。 LUIS での E0 SKU の使用が承認されたら、Azure portal から新しいリソースを作成し、価格レベルとして E0 を選択する必要があります。 ユーザーは、F0 を新しい E0 SKU にアップグレードすることはできません。
 

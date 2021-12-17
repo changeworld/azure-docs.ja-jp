@@ -4,15 +4,15 @@ description: このクイックスタートでは、Object Anchors を使用す�
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 03/02/2021
+ms.date: 09/08/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 4f85a258042430d58690ef578db6d21a6c831d50
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 53bcc84fc63666e64ffaf502a4348de87c1ab8c7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044811"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796994"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity"></a>クイックスタート: Azure Object Anchors を使用する HoloLens アプリを Unity で作成する
 
@@ -27,7 +27,11 @@ ms.locfileid: "102044811"
 
 [!INCLUDE [Unity quickstart prerequisites](../../../includes/object-anchors-quickstart-unity-prerequisites.md)]
 
+[!INCLUDE [Create Account](../../../includes/object-anchors-get-started-create-account.md)]
+
 [!INCLUDE [Unity device setup](../../../includes/object-anchors-quickstart-unity-device-setup.md)]
+
+[!INCLUDE [Unity upload your model](../../../includes/object-anchors-quickstart-unity-upload-model.md)]
 
 ## <a name="open-the-sample-project"></a>サンプル プロジェクトを開く
 
@@ -39,19 +43,15 @@ Unity で `quickstarts/apps/unity/basic` プロジェクトを開きます。
 
 [!INCLUDE [Import Unity Package](../../../includes/object-anchors-quickstart-unity-import-package.md)]
 
+[!INCLUDE [Configure Account](../../../includes/object-anchors-get-started-configure-account.md)]
+
 [!INCLUDE [Unity build sample scene 1](../../../includes/object-anchors-quickstart-unity-build-sample-scene-1.md)]
 
 [!INCLUDE [Unity build sample scene 2](../../../includes/object-anchors-quickstart-unity-build-sample-scene-2.md)]
 
 [!INCLUDE [Unity build and deploy](../../../includes/object-anchors-quickstart-unity-build-deploy.md)]
 
-### <a name="run-the-sample-app"></a>サンプル アプリを実行する
-
-デバイスをオンにし、 **[すべてのアプリ]** を選択してから、アプリを見つけて起動します。 Unity のスプラッシュ スクリーンの後に、オブジェクト オブザーバーが初期化されたことを示すメッセージが表示されます。 ただし、モデルをアプリに追加する必要があります。
-
-[!INCLUDE [Unity setup Windows Device Portal](../../../includes/object-anchors-quickstart-unity-setup-device-portal.md)]
-
-[!INCLUDE [Unity upload your model](../../../includes/object-anchors-quickstart-unity-upload-model.md)]
+Unity のスプラッシュ スクリーンの後に、オブジェクト オブザーバーが初期化されたことを示すメッセージが表示されます。
 
 アプリによって、ビューの現在のフィールドでオブジェクトが検索され、検出されるとそれらが追跡されます。 インスタンスは、ユーザーの場所から 6 メートル離れると削除されます。 デバッグ テキストには、ID、更新されたタイムスタンプ、サーフェス カバレッジの比率など、インスタンスの詳細が表示されます。
 
@@ -67,3 +67,9 @@ Unity で `quickstarts/apps/unity/basic` プロジェクトを開きます。
 
 > [!div class="nextstepaction"]
 > [FAQ](../faq.md)
+
+> [!div class="nextstepaction"]
+> [変換 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre)
+
+> [!div class="nextstepaction"]
+> [オブジェクト検出のトラブルシューティング](../troubleshoot/object-detection.md)

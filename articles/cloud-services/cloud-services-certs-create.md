@@ -4,21 +4,20 @@ description: クラウド サービスと、Azure における管理 API によ�
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: c73f9812f344eecf4e51f43405b48693ddfa191b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aed27dd50e5880e3f4dd1f06233f47d75f02379f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98739736"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715399"
 ---
 # <a name="certificates-overview-for-azure-cloud-services-classic"></a>Azure Cloud Services (クラシック) の証明書の概要
 
-> [!IMPORTANT]
-> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使われます ([管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure にデプロイする方法について説明します。
 
@@ -37,7 +36,7 @@ Azure Portal または Azure クラシック デプロイ モデルを使って�
 サービス証明書は、サービスとは別に管理することができ、別の人が管理する場合があります。 たとえば、開発者が IT 管理者が 以前 Azure にアップロードした証明書を参照するサービス パッケージをアップロードする場合があります。 IT 管理者は、新しいサービス パッケージをアップロードすることなくサービスの構成を変更する証明書を管理および更新できます。 論理名、ストアの名前、証明書の場所がサービス定義ファイルにあり、証明書の拇印はサービス構成ファイルで指定されているため、新しいサービス パッケージなしで更新することは可能です。 証明書を更新するには、サービス構成ファイルに新しい証明書をアップロードし、拇印値を変更するだけです。
 
 >[!Note]
->[Cloud Services の構成と管理についての FAQ](cloud-services-configuration-and-management-faq.md) に関する記事には、証明書に関して役に立つ情報があります。
+>[Cloud Services の構成と管理についての FAQ](cloud-services-configuration-and-management-faq.yml) に関する記事には、証明書に関して役に立つ情報があります。
 
 ## <a name="what-are-management-certificates"></a>管理証明書とは何でしょうか。
 管理証明書により、クラシック デプロイ モデルで認証することができます。 多くのプログラムとツール (Visual Studio や Azure SDK など) でこれらの証明書が使用され、さまざまな Azure サービスの構成とデプロイメントが自動化されます。 これらはクラウド サービスには実際には関連がありません。 
@@ -49,6 +48,8 @@ Azure Portal または Azure クラシック デプロイ モデルを使って�
 
 ### <a name="limitations"></a>制限事項
 各サブスクリプションでは、管理証明書の数は 100 個までに制限されています。 また、特定のサービス管理者のユーザー ID の下にあるすべてのサブスクリプションでも、管理証明書の数は 100 個までに制限されています。 アカウント管理者のユーザー ID が既に 100 の管理証明書の追加に使用されていて、さらに証明書が必要な場合は、証明書を追加する共同管理者を追加できます。 
+
+また、管理証明書を CSP サブスクリプションで使用することはできません。CSP サブスクリプションでサポートされるのは Azure Resource Manager デプロイ モデルのみですが、管理証明書にはクラシック デプロイ モデルが使用されます。 CSP サブスクリプションのオプションの詳細については、[Azure Resource Manager モデルとクラシック デプロイ モデルの比較](../azure-resource-manager/management/deployment-models.md)に関するページと [Azure SDK for .NET を使用した認証](/dotnet/azure/sdk/authentication)に関するページを参照してください。
 
 <a name="create"></a>
 ## <a name="create-a-new-self-signed-certificate"></a>新しい自己署名証明書を作成する

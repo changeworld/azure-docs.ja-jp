@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: 22804015ebf0344c00e60c88f780fe22ba440b52
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: deb10f2b3e4e2b5e7d911992a601f66e1e557268
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774991"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211653"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight の安全な転送のストレージ アカウントを使用した Apache Hadoop クラスター
 
@@ -38,6 +38,21 @@ PowerShell で既存のストレージ アカウントを更新するには、�
 Azure CLI コマンド [az storage account create](/cli/azure/storage/account#az_storage_account_create) の場合、パラメーター `--https-only` が `true` に設定されていることを確認してください。
 
 Azure CLI で既存のストレージ アカウントを更新するには、「[Azure CLI を使用して安全な転送を要求する](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)」を参照してください。
+
+### <a name="secure-transfer-errors"></a>安全な転送のエラー
+
+
+HDInsight クラスターの作成後に [安全な転送が必須] オプションを誤って有効にした場合は、次のようなエラー メッセージが表示されることがあります。
+
+`com.microsoft.azure.storage.StorageException: The account being accessed does not support http.`
+
+Hbase クラスターの場合のみ、クラスターの機能を復元するために以下の手順を試すことができます。
+1. Ambari で HBase を停止します。
+2. Ambari から HDFS を停止します。
+3. Ambari で、[HDFS] --> [構成] --> [詳細] --> [fs.defaultFS] と移動します
+4. wasb を wasbs に変更して保存します。
+5. 高速書き込み機能を使用している場合は、hbase 構成の下にある "hbase.rootDir" も、"wasb" から "wasbs" に変更する必要があります。
+6. 必要なサービスをすべて再起動します。
 
 ## <a name="add-additional-storage-accounts"></a>追加のストレージ アカウントの追加
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/23/2017
 ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: 3efa51f5632dd5cdc274ea39df5178aa0351a01f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53f77e719d25ba4b11ad06c0f62f93a227d9becd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652298"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022761"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Maven から Java ライブラリをフェッチするよう以前の Java Service Fabric アプリケーションを更新する
 Service Fabric Java バイナリは、Service Fabric Java SDK から Maven ホスティングに移行されました。 **mavencentral** を使用して最新の Service Fabric Java 依存関係をフェッチできます。 このガイドは、Yeoman テンプレートまたは Eclipse を使用して Service Fabric Java SDK 用に作成された既存の Java アプリケーションを、Maven ベースのビルドと互換性を持つように更新する際に役立ちます。
@@ -35,7 +35,7 @@ Service Fabric Java バイナリは、Service Fabric Java SDK から Maven ホ�
 
 4. [ここ](service-fabric-application-lifecycle-sfctl.md)に記載されている手順に従って、新しい Service Fabric CLI を使用するようにアプリケーションのインストール/アンインストール スクリプトを更新します。 参考にするために、入門用の[例](https://github.com/Azure-Samples/service-fabric-java-getting-started)を参照することができます。
 
->[!TIP]
+> [!TIP]
 > Service Fabric Java SDK をアンインストールすると、Yeoman は機能しなくなります。 Service Fabric Yeoman Java テンプレート ジェネレーターを起動して動作させるには、[ここ](service-fabric-create-your-first-linux-application-with-java.md)に記載されている前提条件に従ってください。
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Maven 上の Service Fabric Java ライブラリ
@@ -46,7 +46,7 @@ Service Fabric Java ライブラリは、Maven でホストされてきました
 
 アプリケーションの Service Fabric Reliable Actors サポート。
 
-  ```XML
+  ```xml
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-actors</artifactId>
@@ -67,7 +67,7 @@ Service Fabric Java ライブラリは、Maven でホストされてきました
 
 アプリケーションの Service Fabric ステートレス サービス サポート。
 
-  ```XML
+  ```xml
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-services</artifactId>
@@ -90,7 +90,7 @@ Service Fabric Java ライブラリは、Maven でホストされてきました
 
 Service Fabric Java アプリケーションのトランスポート層サポート。 トランスポート層でプログラムを作成する場合以外は、Reliable Actors または Service アプリケーションにこの依存関係を明示的に追加する必要はありません。
 
-  ```XML
+  ```xml
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-transport</artifactId>
@@ -111,7 +111,7 @@ Service Fabric Java アプリケーションのトランスポート層サポー
 
 Service Fabric のシステム レベルのサポート。ネイティブの Service Fabric ランタイムと対話します。 Reliable Actors または Service アプリケーションにこの依存関係を明示的に追加する必要はありません。 上記の他の依存関係を取り込むときに、Maven から自動的にフェッチされます。
 
-  ```XML
+  ```xml
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf</artifactId>

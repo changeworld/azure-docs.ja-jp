@@ -1,23 +1,26 @@
 ---
 title: Databricks Jar を使用してデータを変換する
-description: Azure Data Factory パイプラインで Databricks Jar を実行して、データを処理または変換する方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Synapse Analytics パイプラインで Databricks Jar を実行して、データを処理または変換する方法について説明します。
 ms.service: data-factory
+ms.subservice: tutorials
+ms.custom: synapse
 ms.topic: conceptual
 ms.author: abnarain
 author: nabhishek
-ms.date: 02/10/2021
-ms.openlocfilehash: ccfe8fbf330e1c7f6f415b64a1f18d93a084a0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.openlocfilehash: d4e1daad02e46f5921754665a44e57b42dabed8c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374016"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798505"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Azure Databricks で Jar アクティビティを実行してデータを変換する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Data Factory パイプライン](concepts-pipelines-activities.md) の Azure Databricks Jar アクティビティは、Azure Databricks クラスターで Spark Jar を実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。  Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
+[パイプライン](concepts-pipelines-activities.md)の Azure Databricks Jar アクティビティによって、Azure Databricks クラスターで Spark Jar が実行されます。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。  Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
 
 この機能の概要とデモンストレーションについては、以下の 11 分間の動画を視聴してください。
 

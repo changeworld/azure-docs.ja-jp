@@ -2,13 +2,13 @@
 title: レジストリに関するネットワークの問題のトラブルシューティング
 description: 仮想ネットワークまたはファイアウォールの内側で Azure Container Registry にアクセスするときの一般的な問題の現象、原因、および解決策
 ms.topic: article
-ms.date: 03/30/2021
-ms.openlocfilehash: ae75959028e19ec61e6dcf41308e54df38139d59
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 05/10/2021
+ms.openlocfilehash: 4d3962a99fd462cfe3b613a4f0a9409b309b462f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220115"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287136"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>レジストリに関するネットワークの問題のトラブルシューティング
 
@@ -27,18 +27,19 @@ ms.locfileid: "106220115"
 * Azure portal でレジストリ設定にアクセスまたは表示できないか、Azure CLI を使用してレジストリを管理できない
 * 仮想ネットワークの設定またはパブリック アクセス規則を追加または変更できない
 * ACR タスクによるイメージのプッシュまたはプルができない
-* Azure Security Center によるレジストリ内のイメージのスキャンができない。または、スキャン結果が Azure Security Center に表示されない
+* Microsoft Defender for Cloud でレジストリ内のイメージをスキャンできない、またはスキャン結果が Microsoft Defender for Cloud に表示されない
+* プライベート エンドポイントを使用して構成されたレジストリにアクセスしようとすると、エラー `host is not reachable` が発生します。
 
 ## <a name="causes"></a>原因
 
 * クライアントのファイアウォールまたはプロキシによってアクセスが妨げられている - [解決策](#configure-client-firewall-access)
 * レジストリのパブリック ネットワーク アクセス規則によってアクセスが妨げられている - [解決策](#configure-public-access-to-registry)
-* 仮想ネットワークの構成によってアクセスが妨げられている - [解決策](#configure-vnet-access)
-* Azure Security Center または特定の他の Azure サービスをプライベート エンドポイント、サービス エンドポイント、またはパブリック IP アクセス規則を持つレジストリと統合しようとしている - [解決策](#configure-service-access)
+* 仮想ネットワークまたはプライベート エンドポイントの構成によってアクセスが妨げられている - [解決策](#configure-vnet-access)
+* Microsoft Defender for Cloud または特定の他の Azure サービスをプライベート エンドポイント、サービス エンドポイント、またはパブリック IP アクセス規則を持つレジストリと統合しようとしている - [解決策](#configure-service-access)
 
 ## <a name="further-diagnosis"></a>詳しい診断 
 
-[az acr check-health](/cli/azure/acr#az-acr-check-health) コマンドを実行して、レジストリ環境の正常性に関する詳細情報を取得し、必要に応じてターゲット レジストリにアクセスします。 たとえば、特定のネットワーク接続や構成の問題を診断します。 
+[az acr check-health](/cli/azure/acr#az_acr_check_health) コマンドを実行して、レジストリ環境の正常性に関する詳細情報を取得し、必要に応じてターゲット レジストリにアクセスします。 たとえば、特定のネットワーク接続や構成の問題を診断します。 
 
 コマンドの例については、「[Azure Container Registry の正常性のチェック](container-registry-check-health.md)」を参照してください。 エラーが報告された場合は、推奨される対処法について、[エラー リファレンス](container-registry-health-error-reference.md)と次のセクションを確認してください。
 
@@ -67,7 +68,7 @@ ContainerRegistryLoginEvents テーブルのレジストリ リソース ログ�
 * [ファイアウォールの内側から Azure Container Registry にアクセスする規則を構成する](container-registry-firewall-access-rules.md)
 * [HTTP/HTTPS プロキシの構成](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
 * [Azure Container Registry の geo レプリケーション](container-registry-geo-replication.md)
-* [診断の評価と監査のための Azure Container Registry ログ](container-registry-diagnostics-audit-logs.md)
+* [Azure Container Registry の監視](monitor-service.md)
 
 ### <a name="configure-public-access-to-registry"></a>レジストリへのパブリック アクセスを構成する
 
@@ -86,6 +87,12 @@ ContainerRegistryLoginEvents テーブルのレジストリ リソース ログ�
 
 Private Link のプライベート エンドポイントまたはサービス エンドポイント (プレビュー) のいずれかを使用して、仮想ネットワークが構成されていることを確認します。 現在、Azure Bastion エンドポイントはサポートされていません。
 
+プライベート エンドポイントが構成されている場合は、DNS によってレジストリのパブリック FQDN (*myregistry.azurecr.io* など) がレジストリのプライベート IP アドレスに解決されることを確認します。
+
+  * `--vnet` パラメーターを指定して [az acr check-health](/cli/azure/acr#az_acr_check_health) コマンドを実行し、仮想ネットワーク内のプライベート エンドポイントへの DNS ルーティングを確認します。
+  * DNS の参照には `dig` や `nslookup` などのネットワーク ユーティリティを使用します。 
+  * レジストリの FQDN と各データ エンドポイントの FQDN 用に [DNS レコードが構成されている](container-registry-private-link.md#dns-configuration-options)ことを確認します。 
+
 ネットワーク内の他のリソースからレジストリへのトラフィックを制限するために使用される NSG ルールとサービス タグを確認します。 
 
 レジストリへのサービス エンドポイントが構成されている場合は、そのネットワーク サブネットからのアクセスを許可するネットワーク規則がレジストリに追加されていることを確認します。 サービス エンドポイントによって、ネットワーク内の仮想マシンおよび AKS クラスターからのアクセスのみがサポートされます。
@@ -94,11 +101,10 @@ Private Link のプライベート エンドポイントまたはサービス �
 
 Azure Firewall または同様のソリューションがネットワークに構成されている場合は、AKS クラスターなどの他のリソースからのエグレス トラフィックが、レジストリ エンドポイントに到達できるようになっていることを確認します。
 
-プライベート エンドポイントが構成されている場合は、DNS によってレジストリのパブリック FQDN (*myregistry.azurecr.io* など) がレジストリのプライベート IP アドレスに解決されることを確認します。 DNS の参照には `dig` や `nslookup` などのネットワーク ユーティリティを使用します。
-
 関連リンク:
 
 * [Azure Private Link を使用して Azure Container Registry にプライベートで接続する](container-registry-private-link.md)
+* [Azure プライベート エンドポイント接続に関する問題のトラブルシューティング](../private-link/troubleshoot-private-endpoint-connectivity.md)
 * [Azure 仮想ネットワークのサービス エンドポイントを使用してコンテナー レジストリへのアクセスを制限する](container-registry-vnet.md)
 * [AKS クラスターに必要な送信ネットワーク規則と FQDN](../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
 * [Kubernetes: DNS 解決のデバッグ](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
@@ -108,7 +114,7 @@ Azure Firewall または同様のソリューションがネットワークに�
 
 現時点では、ネットワークが制限されたコンテナー レジストリへのアクセスは、次のいくつかの Azure サービスでは許可されていません。
 
-* Azure Security Center では、プライベート エンドポイント、選択したサブネット、または IP アドレスへのアクセスを制限するレジストリで[イメージの脆弱性のスキャン](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json)を実行することはできません。 
+* Microsoft Defender for Cloud では、プライベート エンドポイント、選択したサブネット、または IP アドレスへのアクセスを制限するレジストリで[イメージの脆弱性のスキャン](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json)を実行することはできません。 
 * Azure App Service や Azure Container Instances を含む特定の Azure サービスのリソースは、ネットワークが制限されたコンテナー レジストリにアクセスすることはできません。
 
 コンテナー レジストリに対するこれらの Azure サービスのアクセスや統合が必要な場合は、ネットワークの制限を解除します。 たとえば、レジストリのプライベート エンドポイントを削除するか、レジストリのパブリック アクセス規則を削除または変更します。
@@ -117,19 +123,19 @@ Azure Firewall または同様のソリューションがネットワークに�
 
 関連リンク:
 
-* [Security Center による Azure Container Registry のイメージ スキャン](../security-center/defender-for-container-registries-introduction.md)
-* [フィードバック](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)の提供
+* [コンテナー レジストリ用 Microsoft Defender による Azure Container Registry のイメージ スキャン](../security-center/defender-for-container-registries-introduction.md)
+* [フィードバック](https://feedback.azure.com/d365community/idea/cbe6351a-0525-ec11-b6e6-000d3a4f07b8)の提供
 * [信頼されたサービスがネットワーク制限付きコンテナー レジストリに安全にアクセスできるようにする](allow-access-trusted-services.md)
 
 
 ## <a name="advanced-troubleshooting"></a>高度なトラブルシューティング
 
-レジストリで[リソース ログの収集](container-registry-diagnostics-audit-logs.md)が有効になっている場合は、ContainterRegistryLoginEvents ログを確認します。 このログには、受信 ID や IP アドレスを含む、認証イベントと状態が格納されています。 ログで[レジストリ認証エラー](container-registry-diagnostics-audit-logs.md#registry-authentication-failures)のクエリを実行します。 
+レジストリで[リソース ログの収集](monitor-service.md)が有効になっている場合は、ContainterRegistryLoginEvents ログを確認します。 このログには、受信 ID や IP アドレスを含む、認証イベントと状態が格納されています。 ログで[レジストリ認証エラー](monitor-service.md#registry-authentication-failures)のクエリを実行します。 
 
 関連リンク:
 
-* [診断の評価と監査のためのログ](container-registry-diagnostics-audit-logs.md)
-* [Container Registry に関する FAQ](container-registry-faq.md)
+* [診断の評価と監査のためのログ](./monitor-service.md)
+* [Container Registry に関する FAQ](container-registry-faq.yml)
 * [Azure Container Registry 用の Azure セキュリティ ベースライン](security-baseline.md)
 * [Azure Container Registry のベスト プラクティス](container-registry-best-practices.md)
 

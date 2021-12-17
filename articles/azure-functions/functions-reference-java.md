@@ -4,12 +4,12 @@ description: Java を使用して関数を開発する方法について説明�
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 1ffbd760ae75605d75652b29d379420d6946aa8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae47e03e2b72c94c5419744164cf9daa2182b7de
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96326456"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027130"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -106,7 +106,7 @@ FunctionsProject
 [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) パッケージに含まれる Java の注釈を使用して、入力と出力をメソッドにバインドします。 詳細については、[Java リファレンス ドキュメント](/java/api/com.microsoft.azure.functions.annotation)に関するページを参照してください。
 
 > [!IMPORTANT] 
-> Azure Blob storage、Azure Queue storage、または Azure Table Storage をローカルで実行するには、[local.settings.json](./functions-run-local.md#local-settings-file) に Azure Storage アカウントを構成する必要があります。
+> Azure Blob storage、Azure Queue storage、または Azure Table Storage をローカルで実行するには、[local.settings.json](./functions-develop-local.md#local-settings-file) に Azure Storage アカウントを構成する必要があります。
 
 例:
 
@@ -132,7 +132,7 @@ public class Function {
       "name": "req",
       "direction": "in",
       "authLevel": "anonymous",
-      "methods": [ "post" ]
+      "methods": [ "GET","POST" ]
     },
     {
       "type": "http",
@@ -154,6 +154,7 @@ Azure で関数を実行する関数アプリを作成する場合に使用す�
 
 | Functions バージョン | Java バージョン (Windows) | Java バージョン (Linux) |
 | ----- | ----- | --- |
+| 4.x | 11 <br/>8 | 11 <br/>8 |
 | 3.x | 11 <br/>8 | 11 <br/>8 |
 | 2.x | 8 | 該当なし |
 
@@ -187,7 +188,7 @@ Maven アーキタイプでは、指定された Java バージョンを対象�
 
 | 要素 |  Windows | Linux | Docker |
 | ---- | ---- | ---- | --- |
-| **`os`** | Windows | linux | docker |
+| **`os`** | `windows` | `linux` | `docker` |
 
 次の例は、pom.xml ファイルの `runtime` セクションのオペレーティング システム設定を示しています。
 
@@ -195,7 +196,7 @@ Maven アーキタイプでは、指定された Java バージョンを対象�
  
 ## <a name="jdk-runtime-availability-and-support"></a>JDK ランタイムの使用可能性とサポート 
 
-Java 関数アプリをローカルで開発するには、[Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) から適切な [Azul Zulu Enterprise for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java JDK をダウンロードして使用します。 Azure Functions は、関数アプリをクラウドにデプロイするときに Azul Java 8 JDK ランタイムを使用します。
+Java 関数アプリをローカルで開発するには、Azul Systems から適切な [Azul Zulu Enterprise for Azure](https://www.azul.com/downloads/azure-only/zulu/) Java JDK をダウンロードして使用します。 Azure Functions は、関数アプリをクラウドにデプロイするときに Azul Java 8 JDK ランタイムを使用します。
 
 JKD および関数アプリに関する問題に対する [Azure サポート](https://azure.microsoft.com/support/)は、[認定サポート プラン](https://azure.microsoft.com/support/plans/)を通じてご利用いただけます。
 

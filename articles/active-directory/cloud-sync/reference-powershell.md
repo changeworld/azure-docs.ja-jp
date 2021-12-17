@@ -7,30 +7,29 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 11/03/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa358b0c9d7747584deabe761160d3bcbcde8feb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d45c331c8af6dda32b7a47dbdb517adf1d8a4d93
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99593182"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500300"
 ---
 # <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期用 AADCloudSyncTools PowerShell モジュール
 
 AADCloudSyncTools モジュールには、Azure AD Connect クラウド同期のデプロイを管理するために使用できる一連の便利なツールが用意されています。
 
-## <a name="pre-requisites"></a>前提条件
-次の前提条件が必要です。
+## <a name="prerequisites"></a>前提条件
+以下の前提条件が必要です。
 
 - このモジュールのすべての前提条件は、`Install-AADCloudSyncToolsPrerequisites` を使用して自動的にインストールすることができます。
-- このモジュールでは、MSAL 認証が使用されるため、MSAL.PS モジュールがインストールされている必要があります。 確認するには、PowerShell ウィンドウで `Get-module MSAL.PS -ListAvailable` を実行します。 モジュールが正しくインストールされている場合は、応答が返されます。 `Install-AADCloudSyncToolsPrerequisites` を使用して、MSAL.PS の最新バージョンをインストールできます
-- AzureAD PowerShell モジュールは、このモジュールの機能の前提条件となるものではありませんが、`Install-AADCloudSyncToolsPrerequisites` を使用して自動的にインストールされるようにすると便利です。
-- PowerShell から手動でモジュールをインストールするには、TLS 1.2 の適用が必要です。 モジュールを確実にインストールできるようにするには、使用する前に、PowerShell セッションで次のように設定します
+- このモジュールでは MSAL 認証が使用されるため、MSAL.PS モジュールがインストールされている必要があります。 確認するには、PowerShell ウィンドウで `Get-module MSAL.PS -ListAvailable` を実行します。 モジュールが正しくインストールされている場合は、応答が返されます。 `Install-AADCloudSyncToolsPrerequisites` を使用して、MSAL.PS の最新バージョンをインストールできます
+- AzureAD PowerShell モジュールは、このモジュールの機能の前提条件となるものではありませんが、あると便利なため、`Install-AADCloudSyncToolsPrerequisites` を使用すると自動的にインストールされます。 
+- PowerShell ギャラリーからモジュールをインストールするには、TLS 1.2 の適用が必要です。 コマンドレット `Install-AADCloudSyncToolsPrerequisites` を使用すると、すべての前提条件をインストールする前に TLS 1.2 の適用が設定されます。 モジュールを手動で確実にインストールできるようにするには、`Install-Module` を使用する前に、PowerShell セッションで次のように設定します。
   ```
-   Install-Module:
   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
   ```
 
@@ -45,9 +44,13 @@ AADCloudSyncTools モジュールをインストールして使用するには�
 5. モジュールに関する情報が表示されます。
 6. 次に、AADCloudSyncTools モジュールの前提条件をインストールするには、`Install-AADCloudSyncToolsPrerequisites` を実行します
 7. 最初の実行時に、PoweShellGet モジュールが存在しない場合は、インストールされます。 新しい PowershellGet モジュールを読み込むには、PowerShell ウィンドウを閉じ、管理者特権で新しい PowerShell セッションを開きます。 
-8. 手順 3 を使用してモジュールを再度インポートします。
+8. 手順 2 を使用してモジュールを再度インポートします。
 9. `Install-AADCloudSyncToolsPrerequisites` を実行して MSAL および AzureAD モジュールをインストールします
 11. すべての前提要件が正常にインストールされているはずです ![モジュールのインストール](media/reference-powershell/install-1.png)
+12. 新しい PowerShell セッションで AADCloudSyncTools モジュールを使用する場合は、毎回、次を入力するかコピーして貼り付けます。
+```
+Import-module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Utility\AADCloudSyncTools"
+```
 
 
 ## <a name="aadcloudsynctools--cmdlets"></a>AADCloudSyncTools コマンドレット
@@ -57,13 +60,13 @@ MSAL.PS モジュールを使用して、Azure AD 管理者が Microsoft Graph �
 
 ### <a name="export-aadcloudsynctoolslogs"></a>Export-AADCloudSyncToolsLogs
 次のように、圧縮ファイルにすべてのトラブルシューティング データをエクスポートしてパッケージ化します。
- 1. Start-AADCloudSyncToolsVerboseLogs によって詳細トレースが開始されます。  これらのトレース ログは、C:\ProgramData\Microsoft\Azure AD Connect Provisioning Agent\Trace フォルダーにあります。
- 2. トレース ログが 3 分間収集されます。
-   -TracingDurationMins を使用して別の時間を指定するか、-SkipVerboseTrace を使用して詳細トレースをスキップすることができます
- 3. Stop-AADCloudSyncToolsVerboseLogs によって詳細トレースが停止されます
- 4. 過去 24 時間のイベント ビューアー ログが収集されます
- 5. すべてのエージェント ログ、詳細ログ、およびイベント ビューアー ログが、圧縮された .zip ファイルとしてユーザーのドキュメント フォルダーに圧縮されます。 
- </br>-OutputPath \<folder path\> を使用して別の出力フォルダーを指定することもできます
+ 1. 詳細トレースを設定し、プロビジョニング エージェントからのデータ収集を開始します (`Start-AADCloudSyncToolsVerboseLogs` と同じです)
+ <br>これらのトレース ログは フォルダー `C:\ProgramData\Microsoft\Azure AD Connect Provisioning Agent\Trace` にあります </br>
+ 2. 3 分後にデータ収集を停止し、詳細トレースを無効にします (`Stop-AADCloudSyncToolsVerboseLogs` と同じです)
+ <br>`-TracingDurationMins` を使用して別の時間を指定したり、`-SkipVerboseTrace` を使用して詳細トレースを完全にスキップしたりできます </br>
+ 3. 過去 24 時間のイベント ビューアー ログが収集されます
+ 4. すべてのエージェント ログ、詳細ログ、およびイベント ビューアー ログが、圧縮された ZIP ファイルとしてユーザーのドキュメント フォルダーに圧縮されます
+ <br>`-OutputPath <folder path>` を使用して別の出力フォルダーを指定することもできます </br>
 
 ### <a name="get-aadcloudsynctoolsinfo"></a>Get-AADCloudSyncToolsInfo
 Azure AD テナントの詳細と内部変数の状態を表示します
@@ -122,4 +125,3 @@ Azure AD PowerShell を使用して現在のアカウント (存在する場合)
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [Azure AD Connect クラウド同期とは](what-is-cloud-sync.md)
-

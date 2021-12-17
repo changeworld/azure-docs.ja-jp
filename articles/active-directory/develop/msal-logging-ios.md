@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ee3837b75d586238e7ca6ac85434cc56f592929d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e3af65c3eefe7f72b9cf3ff79c280012e39289e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98763270"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164329"
 ---
 # <a name="logging-in-msal-for-iosmacos"></a>iOS および macOS 用の MSAL でのログ記録
 
@@ -33,7 +33,7 @@ MSAL ログをキャプチャして独自のアプリケーションのログに
 ```objc
 /*!
     The LogCallback block for the MSAL logger
- 
+
     @param  level           The level of the log message
     @param  message         The message being logged
     @param  containsPII     If the message might contain Personally Identifiable Information (PII)
@@ -90,7 +90,7 @@ iOS および macOS 用の MSAL を使用してログを記録するときにロ
 
 ```objc
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
- ```
+```
 
  ### <a name="log-message-format"></a>ログ メッセージの形式
 
@@ -111,7 +111,7 @@ MSAL ログをキャプチャして独自のアプリケーションのログに
 ```objc
 /*!
     The LogCallback block for the MSAL logger
- 
+
     @param  level           The level of the log message
     @param  message         The message being logged
     @param  containsPII     If the message might contain Personally Identifiable Information (PII)
@@ -167,7 +167,7 @@ iOS および macOS 用の MSAL を使用してログを記録するときにロ
 
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
- ```
+```
 
 ### <a name="log-message-format"></a>ログ メッセージの形式
 

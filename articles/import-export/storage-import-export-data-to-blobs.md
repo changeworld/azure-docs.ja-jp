@@ -1,24 +1,35 @@
 ---
-title: Azure Import/Export を使用した Azure Blob へのデータの転送 | Microsoft Docs
+title: 'チュートリアル: Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする | Microsoft Docs'
 description: Azure portal でインポート ジョブとエクスポート ジョブを作成し、Azure BLOB との間でデータを転送する方法について説明します。
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: how-to
-ms.date: 03/15/2021
+ms.topic: tutorial
+ms.date: 10/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 74f5565ba9dfa48dabfe56c25e3ef30a8caafe14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: tutorial, devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: 10f2103049b47366a267fdf0412a7e3fb95a95cd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563285"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709627"
 ---
-# <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
+# <a name="tutorial-import-data-to-blob-storage-with-azure-importexport-service"></a>チュートリアル: Azure Import/Export サービスを使用して Blob Storage にデータをインポートする
 
 この記事では、Azure Import/Export サービスを使用して大量のデータを Azure Blob Storage に安全にインポートする手順について説明します。 Azure BLOB にデータをインポートするには、データが保存されている暗号化されたディスク ドライブを Azure データセンターに送付する必要があります。
+
+このチュートリアルでは、以下の内容を学習します。
+
+> [!div class="checklist"]
+> * Azure Blob Storage にデータをインポートするための前提条件
+> * 手順 1:ドライブを準備する
+> * 手順 2:インポート ジョブの作成
+> * 手順 3: カスタマー マネージド キーを構成する (省略可能)
+> * 手順 4:ドライブを送付する
+> * 手順 5: 追跡情報を使用してジョブを更新する
+> * 手順 6:Azure へのデータのアップロードを確認する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,13 +39,13 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 * Import/Export サービスに使用できるアクティブな Azure サブスクリプションがある。
 * ストレージ コンテナーがある Azure ストレージ アカウントを少なくとも 1 つは持っている。 [Import/Export サービスでサポートしているストレージ アカウントとストレージの種類](storage-import-export-requirements.md)の一覧を参照してください。
   * 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](../storage/common/storage-account-create.md)」を参照してください。
-  * ストレージ コンテナーについては、[ストレージ コンテナーの作成](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)に関するセクションを参照してください。
+  * ストレージ コンテナーの作成については、[ストレージ コンテナーの作成](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)に関するページを参照してください。
 * 十分な数の[サポートされている種類](storage-import-export-requirements.md#supported-disks)のディスクがある。
 * [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システムがある。
 * Windows システムで BitLocker を有効にする。 [BitLocker を有効にする方法](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)に関するページを参照してください。
-* Windows システムに[最新の WAImportExport バージョン 1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=42659)します。 最新バージョンのツールには、BitLocker キーの外部プロテクター、および更新されたロック解除モード機能を許可する、セキュリティ更新プログラムがあります。
-
-  * 既定のフォルダー `waimportexportv1` に解凍します。 たとえば、「 `C:\WaImportExportV1` 」のように入力します。
+* Azure Import/Export バージョン 1 ツールの現在のリリースを、BLOB 用に Windows システムにダウンロードします。
+  1. [WAImportExport バージョン 1 をダウンロードします](https://www.microsoft.com/download/details.aspx?id=42659)。 現在のバージョンは 1.5.0.300 です。
+  1. 既定のフォルダー `WaImportExportV1` に解凍します。 たとえば、「 `C:\WaImportExportV1` 」のように入力します。
 * FedEx または DHL のアカウントを用意します。 FedEx または DHL 以外の運送業者を使用する場合、`adbops@microsoft.com` から Azure Data Box Operations チームまでお問い合わせください。
   * アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
   * エクスポート ジョブの追跡番号を生成します。
@@ -73,7 +84,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     ```powershell
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
-
+    
     ジャーナル ファイルは、ツールを実行したフォルダーと同じフォルダーに作成されます。 *.xml* ファイル (ツールを実行するフォルダー) と *drive-manifest.xml* ファイル (データが保存されているフォルダー) の 2 つのファイルも作成されます。
 
     使用されるパラメーターについては、次の表で説明します。
@@ -89,11 +100,19 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     |/blobtype:     |このオプションは、データをインポートする BLOB の種類を指定します。 ブロック BLOB の場合、BLOB の種類は `BlockBlob` で、ページ BLOB の場合は `PageBlob` です。         |
     |/skipwrite:     | コピーする必要がある新しいデータがなく、ディスク上の既存のデータを準備する必要があることを指定します。          |
     |/enablecontentmd5:     |有効にすると、このオプションにより、MD5 が計算されて、各 BLOB で `Content-md5` プロパティとして設定されます。 このオプションは、データが Azure にアップロードされた後に、`Content-md5` フィールドを使用する場合にのみ使用してください。 <br> このオプションはデータ整合性チェック (既定で実行) には影響しません。 この設定により、クラウドにデータをアップロードするためにかかる時間が長くなります。          |
-8. 送付する必要があるディスクごとに前の手順を繰り返します。 コマンド行の実行ごとに、指定された名前のジャーナル ファイルが作成されます。
 
-    > [!IMPORTANT]
-    > * ツールが存在するフォルダーと同じフォルダーに、ジャーナル ファイルと共に `<Journal file name>_DriveInfo_<Drive serial ID>.xml` ファイルも作成されます。 ジャーナル ファイルが大きすぎる場合、ジョブの作成時にジャーナル ファイルではなく .xml ファイルが使用されます。
-   > * ポータルで許可されるジャーナル ファイルの最大サイズは 2 MB です。 ジャーナル ファイルがこの制限を超えると、エラーが返されます。
+    > [!NOTE]
+    > インポート先コンテナー内の既存の BLOB と同じ名前の BLOB をインポートすると、インポートされた BLOB によって既存の BLOB が上書きされます。 以前のツール バージョン (1.5.0.300 より前) では、インポートされた BLOB の名前が既定で変更され、\Disposition パラメーターを使用すると、インポート内の BLOB の名前を変更、上書き、または無視するかを指定できます。
+
+8. 送付する必要があるディスクごとに前の手順を繰り返します。 
+
+   コマンド行の実行ごとに、指定された名前のジャーナル ファイルが作成されます。 
+
+   ツールが存在するフォルダーと同じフォルダーに、ジャーナル ファイルと共に `<Journal file name>_DriveInfo_<Drive serial ID>.xml` ファイルも作成されます。 ジャーナル ファイルが大きすぎる場合、ジョブの作成時にジャーナル ファイルではなく .xml ファイルが使用されます。
+
+> [!IMPORTANT]
+> * ディスクの準備が完了した後に、ディスク ドライブ上のデータやジャーナル ファイルに変更を加えたり、ディスクを再フォーマットしたりすることは避けてください。
+> * ポータルで許可されるジャーナル ファイルの最大サイズは 2 MB です。 ジャーナル ファイルがこの制限を超えると、エラーが返されます。
 
 ## <a name="step-2-create-an-import-job"></a>手順 2:インポート ジョブの作成
 
@@ -166,7 +185,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 
 ### <a name="create-a-job"></a>ジョブの作成
 
-1. [az extension add](/cli/azure/extension#az_extension_add) コマンドを使用して、[az import-export](/cli/azure/ext/import-export/import-export) 拡張機能を追加します。
+1. [az extension add](/cli/azure/extension#az_extension_add) コマンドを使用して、[az import-export](/cli/azure/import-export) 拡張機能を追加します。
 
     ```azurecli
     az extension add --name import-export
@@ -184,19 +203,19 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     az storage account create --resource-group myierg --name myssdocsstorage --https-only
     ```
 
-1. ディスクを受け取ることができる場所の一覧を取得するには、[az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) コマンドを使用します。
+1. ディスクを受け取ることができる場所の一覧を取得するには、[az import-export location list](/cli/azure/import-export/location#az_import_export_location_list) コマンドを使用します。
 
     ```azurecli
     az import-export location list
     ```
 
-1. [az import-export location show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) コマンドを使用して、リージョンの場所を取得します。
+1. [az import-export location show](/cli/azure/import-export/location#az_import_export_location_show) コマンドを使用して、リージョンの場所を取得します。
 
     ```azurecli
     az import-export location show --location "West US"
     ```
 
-1. 次の [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) コマンドを実行して、インポート ジョブを作成します。
+1. 次の [az import-export create](/cli/azure/import-export#az_import_export_create) コマンドを実行して、インポート ジョブを作成します。
 
     ```azurecli
     az import-export create \
@@ -223,13 +242,13 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
    > [!TIP]
    > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
 
-1. [az import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) コマンドを使用して、リソース グループ myierg のすべてのジョブを表示します。
+1. [az import-export list](/cli/azure/import-export#az_import_export_list) コマンドを使用して、リソース グループ myierg のすべてのジョブを表示します。
 
     ```azurecli
     az import-export list --resource-group myierg
     ```
 
-1. ジョブを更新するかジョブをキャンセルするには、[az import-export update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) コマンドを実行します。
+1. ジョブを更新するかジョブをキャンセルするには、[az import-export update](/cli/azure/import-export#az_import_export_update) コマンドを実行します。
 
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
@@ -347,9 +366,9 @@ Microsoft マネージド キーを使用してドライブの BitLocker キー�
 
 ## <a name="step-6-verify-data-upload-to-azure"></a>手順 6:Azure へのデータのアップロードを確認する
 
-完了するまでジョブを監視します。 ジョブが完了したら、データが Azure にアップロードされたことを確認します。 アップロードが成功したことを確認した後にのみ、オンプレミスのデータを削除します。
+完了するまでジョブを監視します。 ジョブが完了したら、データが Azure にアップロードされたことを確認します。 アップロードが成功したことを確認した後にのみ、オンプレミスのデータを削除します。 詳細については、[Import/Export のコピー ログの確認](storage-import-export-tool-reviewing-job-status-v1.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [ジョブとドライブの状態の表示](storage-import-export-view-drive-status.md)
-* [Import/Export の要件の確認](storage-import-export-requirements.md)
+* [Import/Export のコピー ログの確認](storage-import-export-tool-reviewing-job-status-v1.md)

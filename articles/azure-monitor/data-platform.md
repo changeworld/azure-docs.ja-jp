@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 7356b9bb814f8bca5465fe74d48409b9dbca6d3b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b97f7fdfb64f80fa1e132b0bdbd1dbb6d1382de1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731699"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279198"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor データ プラットフォーム
 
@@ -72,7 +72,7 @@ Azure Monitor の分散トレースは、[Application Insights SDK](app/distribu
 | 構造体 | サンプリング時間、監視対象のリソース、数値を含むプロパティの標準セット。 一部のメトリックには、定義を深めるための複数のディメンションが含まれます。 | ログの種類に応じたプロパティの一意のセット。 |
 | コレクション | 一定の間隔で収集されます。 | イベントによってレコードの作成がトリガされるときに、散発的に収集される可能性があります。 |
 | Azure portal に表示 | メトリックス エクスプローラー | Log Analytics |
-| 含まれるデータ ソース | Azure リソースから収集されたプラットフォームのメトリック。<br>Application Insights によって監視されるアプリケーション。<br>アプリケーションまたは API によってカスタム に定義される。 | アプリケーションとリソースのログ。<br>監視ソリューション。<br>エージェントと VM 拡張機能。<br>アプリケーションの要求と例外。<br>Azure Security Center。<br>Data Collector API。 |
+| 含まれるデータ ソース | Azure リソースから収集されたプラットフォームのメトリック。<br>Application Insights によって監視されるアプリケーション。<br>アプリケーションまたは API によってカスタム に定義される。 | アプリケーションとリソースのログ。<br>監視ソリューション。<br>エージェントと VM 拡張機能。<br>アプリケーションの要求と例外。<br>Microsoft Defender for Cloud。<br>Data Collector API。 |
 
 ## <a name="collect-monitoring-data"></a>Azure で監視データを収集する
 さまざまな [sources of data for Azure Monitor のデータ ソース](agents/data-sources.md)から、Log Analytics ワークスペース (ログ) または Azure Monitor メトリック データベース (メトリック)、あるいはその両方に書き込みが行われます。 これらのデータ ストアに直接書き込みするデータ ソースも、Azure ストレージなどの別の場所に書き込むためにログまたはメトリックを設定する構成が必要なデータ ソースもあります。 
@@ -90,4 +90,3 @@ Azure のツールを使用した監視データの分析に加え、監視デ�
 - [Azure Monitor のメトリック](essentials/data-platform-metrics.md)を確認します。
 - [Azure Monitor のログ](logs/data-platform-logs.md)を確認します。
 - Azure のさまざまなリソースで[入手できる監視データ](agents/data-sources.md)を確認します。
-

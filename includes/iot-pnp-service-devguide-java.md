@@ -1,25 +1,25 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: 33752c1ebb83c5d63e8e1cb396c52f01f07046cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05d6284578cd9f7076873dc0f75bcb2ed9ded1bd
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102245008"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516591"
 ---
 次のリソースも使用できます。
 
 - [Java SDK のリファレンス ドキュメント](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice)
-- [サービス クライアントのサンプル](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)
-- [Digital Twins のサンプル](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples)
+- [サービス クライアントのサンプル](https://github.com/Azure/azure-iot-sdk-java/blob/main/service/iot-service-samples/pnp-service-sample)
+- [Digital Twins のサンプル](https://github.com/Azure/azure-iot-sdk-java/tree/main/service/iot-service-samples/digitaltwin-service-samples)
 
 ## <a name="iot-hub-service-client-examples"></a>IoT Hub サービス クライアントの例
 
-このセクションでは、IoT Hub サービス クライアント、および **com.microsoft.azure.sdk.iot.service.devicetwin** 名前空間の **DeviceTwin** クラスと **DeviceMethod** クラスを使用した Java の例を示します。 **DeviceTwin** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 **DeviceTwin** クラスを使用して、IoT Hub 内の [デバイス登録のクエリ](../articles/iot-hub/iot-hub-devguide-query-language.md)を実行することもできます。 デバイス上でコマンドを呼び出すには、**DeviceMethod** クラスを使用します。 デバイスの [DTDL](../articles/iot-pnp/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`deviceId` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
+このセクションでは、IoT Hub サービス クライアント、および **com.microsoft.azure.sdk.iot.service.devicetwin** 名前空間の **DeviceTwin** クラスと **DeviceMethod** クラスを使用した Java の例を示します。 **DeviceTwin** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 **DeviceTwin** クラスを使用して、IoT Hub 内の [デバイス登録のクエリ](../articles/iot-hub/iot-hub-devguide-query-language.md)を実行することもできます。 デバイス上でコマンドを呼び出すには、**DeviceMethod** クラスを使用します。 デバイスの [DTDL](../articles/iot-develop/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`deviceId` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
 
 ### <a name="get-the-device-twin-and-model-id"></a>デバイス ツインとモデル ID を取得する
 
@@ -115,7 +115,7 @@ System.out.println("Method result status is: " + result.getStatus());
 
 ## <a name="iot-hub-digital-twin-examples"></a>IoT Hub デジタル ツインの例
 
-**com.microsoft.azure.sdk.iot.service.digitaltwin** 名前空間の **DigitalTwinAsyncClient** クラスを使用し、デジタル ツインを使用してデバイスの状態を操作します。 次の例では、同じ名前空間の **UpdateOperationUtility** クラスと **BasicDigitalTwin** クラスも使用します。 デバイスの [DTDL](../articles/iot-pnp/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。
+**com.microsoft.azure.sdk.iot.service.digitaltwin** 名前空間の **DigitalTwinAsyncClient** クラスを使用し、デジタル ツインを使用してデバイスの状態を操作します。 次の例では、同じ名前空間の **UpdateOperationUtility** クラスと **BasicDigitalTwin** クラスも使用します。 デバイスの [DTDL](../articles/iot-develop/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。
 
 `digitalTwinid` 変数には、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
 
@@ -304,7 +304,7 @@ private static String prettyString(String str)
 
 IoT プラグ アンド プレイ デバイスにより、DTDL モデル内で定義されているテレメトリが IoT Hub に送信されます。 既定では、IoT Hub により、テレメトリが Event Hubs エンドポイントにルーティングされ、そこで使用できます。 詳細については、「[IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)」を参照してください。
 
-次のコード スニペットは、既定の Event Hubs エンドポイントからテレメトリを読み取る方法を示しています。 このスニペットのコードは、IoT Hub クイックスタート「[デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る](../articles/iot-hub/quickstart-send-telemetry-java.md)」から取得したものです。
+次のコード スニペットは、既定の Event Hubs エンドポイントからテレメトリを読み取る方法を示しています。 このスニペットのコードは、IoT Hub クイックスタート「[デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る](../articles/iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-java)」から取得したものです。
 
 ```java
 import com.azure.messaging.eventhubs.EventHubClientBuilder;

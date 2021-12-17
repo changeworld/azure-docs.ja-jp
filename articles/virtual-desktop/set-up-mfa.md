@@ -1,28 +1,28 @@
 ---
-title: Windows Virtual Desktop 向け Azure 多要素認証の設定 - Azure
-description: Windows Virtual Desktop でセキュリティを強化するために Azure 多要素認証を設定する方法。
+title: Azure Virtual Desktop の Azure 多要素認証 - Azure
+description: Azure Virtual Desktop のセキュリティを強化するために Azure 多要素認証を設定する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 12/10/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7ebf38226ff725865104707a3f28e7ce51a86c31
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 2e86597f0307699c2fc4cac9f48eac5b884e8df3
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445654"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363609"
 ---
-# <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Windows Virtual Desktop 向け Azure 多要素認証の有効化
+# <a name="enable-azure-multifactor-authentication-for-azure-virtual-desktop"></a>Azure Virtual Desktop で Azure 多要素認証を有効にする
 
 >[!IMPORTANT]
-> Windows Virtual Desktop (クラシック) のドキュメントからこのページにアクセスしている場合は、終了した後に [Windows Virtual Desktop (クラシック) のドキュメント](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)に戻ったことを確認してください。
+> Azure Virtual Desktop (classic) のドキュメントからこのページに来た方は、この記事を読み終えた後 [Azure Virtual Desktop (classic) のドキュメントに戻る](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)ことを忘れないでください。
 
-Windows Virtual Desktop 用の Windows クライアントは、Windows Virtual Desktop をローカル コンピューターに統合するための優れたオプションです。 ただし、Windows Virtual Desktop アカウントを Windows クライアントに構成する場合、自分自身とユーザーの安全を維持するために必要な特定の手段があります。
+Azure Virtual Desktop の Windows 用クライアントは、Azure Virtual Desktop とローカル コンピューターを統合するための優れた手段です。 ですが、Azure Virtual Desktop アカウントを Windows Client に設定する場合、自分自身とユーザーの安全を保つための対策を行う必要があります。
 
 初めてサインインすると、クライアントによって、ユーザー名、パスワード、Azure 多要素認証が要求されます。 その後、次回のサインイン時に、クライアントで、Azure Active Directory (AD) エンタープライズ アプリケーションからのトークンが記憶されます。 セッション ホストの資格情報を求めるプロンプトで **[このアカウントを記憶する]** を選択した場合、ユーザーは、クライアントの再起動後に、資格情報を再入力しなくてもサインインできます。
 
-資格情報を記憶させることは便利ですが、企業のシナリオや個人のデバイスでのデプロイのセキュリティを低下させる可能性もあります。 ユーザーを保護するには、クライアントが Azure 多要素認証の資格情報をより頻繁に要求し続けるようにできます。 この記事では、Windows Virtual Desktop の条件付きアクセス ポリシーを構成して、この設定を有効にする方法について説明します。
+資格情報を記憶させることは便利ですが、企業のシナリオや個人のデバイスでのデプロイのセキュリティを低下させる可能性もあります。 ユーザーを保護するには、クライアントが Azure 多要素認証の資格情報をより頻繁に要求し続けるようにできます。 この記事では、Azure Virtual Desktop の条件付きアクセス ポリシーを使用して、この設定を有効にする方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,11 +33,11 @@ Windows Virtual Desktop 用の Windows クライアントは、Windows Virtual D
 - すべてのユーザーに対して Azure 多要素認証を有効にします。 その方法の詳細については、「[ユーザーに 2 段階認証を要求する方法](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)」を参照してください。
 
 > [!NOTE]
-> 次の設定は、[Windows Virtual Desktop Web クライアント](https://rdweb.wvd.microsoft.com/arm/webclient/index.html)にも適用されます。
+> 次の設定は、[Azure Virtual Desktop Web クライアント](https://rdweb.wvd.microsoft.com/arm/webclient/index.html)にも適用されます。
 
 ## <a name="create-a-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
-ここでは、Windows Virtual Desktop に接続するときに多要素認証を必要とする条件付きアクセス ポリシーを作成する方法について説明します。
+Azure Virtual Desktop に接続するときに多要素認証が必要な条件付きアクセス ポリシーを作成する方法を、ここで説明します。
 
 1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 2. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
@@ -47,27 +47,27 @@ Windows Virtual Desktop 用の Windows クライアントは、Windows Virtual D
 6. **[Include]\(含める\)** で **[ユーザーとグループの選択]**  >  **[ユーザーとグループ]** を選択し、[事前準備](#prerequisites)の段階で作成したグループを選択します。
 7. **[Done]** を選択します。
 8. **[クラウド アプリまたはアクション]**  >  **[Include]\(含める\)** で、 **[アプリを選択]** を選択します。
-9. 使用している Windows Virtual Desktop のバージョンに基づいて、次のいずれかのアプリを選択します。
+9. 使用している Azure Virtual Desktop のバージョンに合わせて、次のアプリのいずれか 1 つを選びます。
    
-   - Windows Virtual Desktop (クラシック) を使用している場合は、次のアプリを選択します。
+   - Azure Virtual Desktop (classic) を使用している場合は、これらのアプリを選びます。
        
-       - **Windows Virtual Desktop** (アプリ ID 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
-       - **Windows Virtual Desktop クライアント** (アプリ ID fa4345a4-a730-4230-84a8-7d9651b86739) これを使用すると、Web クライアントでポリシーを設定することができます
+       - **Azure Virtual Desktop** (アプリ ID 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
+       - **Azure Virtual Desktop Client** (アプリ ID fa4345a4-a730-4230-84a8-7d9651b86739)、Web クライアントでポリシーを設定できます
        
         その後、手順 11 に進みます。
 
-   - Windows Virtual Desktop を使用している場合は、代わりに次のアプリを選択します。
+   - Azure Virtual Desktop を使用している場合は、代わりにこのアプリを選びます。
        
-       -  **Windows Virtual Desktop** (アプリ ID 9cdead84-a844-4324-93f2-b2e6bb768d07)
+       -  **Azure Virtual Desktop** (アプリ ID 9cdead84-a844-4324-93f2-b2e6bb768d07)
        
         その後、手順 10 に進みます。
 
    >[!IMPORTANT]
-   > Windows Virtual Desktop Azure Resource Manager Provider (50e95039-b200-4007-bc97-8d5790743a63) という名前のアプリは選択しないでください。 このアプリは、ユーザー フィードを取得するためだけに使用され、多要素認証を持つことはできません。
+   > Azure Virtual Desktop Azure Resource Manager Provider というアプリは選ばないでください (50e95039-b200-4007-bc97-8d5790743a63)。 このアプリは、ユーザー フィードを取得するためだけに使用され、多要素認証を持つことはできません。
    > 
-   > Windows Virtual Desktop (クラシック) を使用している場合、条件付きアクセス ポリシーによってすべてのアクセスがブロックされ、Windows Virtual Desktop のアプリ ID のみが除外されている場合は、アプリ ID 9cdead84-a844-4324-93f2-b2e6bb768d07 をポリシーに追加することでこれを修正できます。 このアプリ ID を追加しないと、Windows Virtual Desktop (クラシック) リソースのフィード検出はブロックされます。
+   > Azure Virtual Desktop (classic) を使用している場合に、条件付きアクセス ポリシーによって、Azure Virtual Desktop のアプリ ID を除くすべてのアクセスがブロックされるときは、アプリ ID 9cdead84-a844-4324-93f2-b2e6bb768d07 をポリシーに追加することで、この問題を解消できます。 このアプリ ID を追加しないと、Azure Virtual Desktop (classic) リソースのフィード検出がブロックされます。
 
-10. **[条件]**  >  **[クライアント アプリ]** に移動して、ポリシーを適用する場所を選択します。
+10. **[条件]**  >  **[クライアント アプリ]** に移動します。 **[構成]** で、 **[はい]** を選択し、ポリシーを適用する場所を選択します。
     
     - ポリシーを Web クライアントに適用する場合は、 **[ブラウザー]** を選択します。
     - ポリシーを他のクライアントに適用する場合は、 **[モバイル アプリとデスクトップ クライアント]** を選択します。
@@ -79,7 +79,7 @@ Windows Virtual Desktop 用の Windows クライアントは、Windows Virtual D
 11. アプリを選択したら、 **[選択]** を選び、 **[完了]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![[クラウド アプリまたはアクション] ページのスクリーンショット。 Windows Virtual Desktop および Windows Virtual Desktop Client アプリが赤色で強調表示されています。](media/cloud-apps-enterprise.png)
+    > ![[クラウド アプリまたはアクション] ページのスクリーンショット。 Azure Virtual Desktop と Azure Virtual Desktop Client アプリが赤色で強調表示されている。](media/cloud-apps-enterprise.png)
 
     >[!NOTE]
     >選択するアプリのアプリ ID を検索するには、 **[エンタープライズ アプリケーション]** に移動し、[アプリケーションの種類] ドロップダウン メニューから **[Microsoft アプリケーション]** を選択します。
@@ -90,7 +90,7 @@ Windows Virtual Desktop 用の Windows クライアントは、Windows Virtual D
 15. **[作成]** を選択して、ポリシーを有効化します。
 
 >[!NOTE]
->Web クライアントを使用してブラウザーから Windows Virtual Desktop にサインインすると、ログにクライアント アプリ ID が a85cf173-4192-42f8-81fa-777a763e6e2c (Windows Virtual Desktop クライアント) として表示されます。 これは、クライアント アプリが、条件付きアクセス ポリシーが設定されたサーバー アプリ ID に内部的にリンクされているためです。 
+>Web クライアントでブラウザーを使用して Azure Virtual Desktop にサインインすると、クライアント アプリ ID が a85cf173-4192-42f8-81fa-777a763e6e2c (Azure Virtual Desktop client) としてログに記載されます。 これは、クライアント アプリが、条件付きアクセス ポリシーが設定されたサーバー アプリ ID に内部的にリンクされているためです。 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,12 +4,12 @@ description: チュートリアル - Enterprise セキュリティ パッケー�
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: bab3df857dfdac3ca3b9193bda1caea0040a4cbb
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 2c8a34728c37aa015159b89d82284a7156befd48
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104866983"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190174"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)
 
@@ -134,7 +134,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
    export KAFKABROKERS=<brokerlist>:9092
    ```
 
-   例: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
+   例: `export KAFKABROKERS=<brokername1>.contoso.com:9092,<brokername2>.contoso.com:9092`
 
 3. 「**例を構築してデプロイする**」の手順 3. (「[チュートリアル: Apache Kafka Producer および Consumer API の使用](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)」) に従って、`kafka-producer-consumer.jar` を **sales_user** が利用できるようにします。
 

@@ -7,21 +7,19 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
-ms.openlocfilehash: d8acab17e9d8dfc078b46f6a279cc671a70b0a50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 312acb2715e76587ac213f73c86e785afe2eadcb
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91974840"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695273"
 ---
-# <a name="preview-maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>プレビュー:PowerShell を使用して Azure 仮想マシン スケール セットで OS イメージをアップグレードするためのメンテナンス コントロール
+# <a name="maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>PowerShell を使用して Azure 仮想マシン スケール セットで OS イメージをアップグレードするためのメンテナンス コントロール
+
+**適用対象:** :heavy_check_mark: ユニフォーム スケール セット
 
 メンテナンス コントロールを使用すると、ゲスト OS イメージの自動アップグレードを仮想マシン スケール セットに適用するタイミングを決定できます。 このトピックでは、メンテナンス コントロール用の Azure PowerShell オプションについて説明します。 メンテナンス コントロールの使用方法の詳細については、「[Azure 仮想マシン スケール セットのメンテナンス コントロール](virtual-machine-scale-sets-maintenance-control.md)」を参照してください。
-
-> [!IMPORTANT]
-> Azure 仮想マシン スケール セットで OS イメージをアップグレードするためのメンテナンス コントロールは、現在パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 
 ## <a name="enable-the-powershell-module"></a>PowerShell モジュールを有効にする
@@ -112,12 +110,10 @@ New-AzConfigurationAssignment `
 
 ## <a name="enable-automatic-os-upgrade"></a>OS の自動アップグレードを有効にする
 
-メンテナンス コントロールを使用する仮想マシン スケール セットごとに、OS の自動アップグレードを有効にすることができます。 仮想マシン スケール セットで OS の自動アップグレードを有効にするには、ドキュメント「[Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)」を参照してください。 
+メンテナンス コントロールを使用する仮想マシン スケール セットごとに、OS の自動アップグレードを有効にすることができます。 仮想マシン スケール セットでの OS の自動アップグレードの有効化については、「[Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
-
-Azure で実行されている仮想マシンのメンテナンスと更新について確認する。
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [メンテナンスと更新](maintenance-and-updates.md)
+> [Azure で実行されている仮想マシンのメンテナンスと更新について確認する](maintenance-and-updates.md)

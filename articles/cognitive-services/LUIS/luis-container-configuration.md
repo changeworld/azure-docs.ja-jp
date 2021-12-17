@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: a4f2b07edc6c290fa030621a4dc400ab50890bba
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d431364f0e539f7944a759c3e4669570ce25646
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96001180"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285681"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding の Docker コンテナーの構成 
 
@@ -28,10 +28,10 @@ ms.locfileid: "96001180"
 
 |必須|設定|目的|
 |--|--|--|
-|Yes|[ApiKey](#apikey-setting)|課金情報の追跡に使用されます。|
+|はい|[ApiKey](#apikey-setting)|課金情報の追跡に使用されます。|
 |いいえ|[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
-|Yes|[Billing](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
-|Yes|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
+|はい|[Billing](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
+|はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ|[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
 |いいえ|[Http Proxy](#http-proxy-credentials-settings)|送信要求を行うために、HTTP プロキシを構成します。|
 |いいえ|[Logging](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
@@ -167,5 +167,5 @@ Logging:Console:LogLevel:Default=Information
 ## <a name="next-steps"></a>次のステップ
 
 * [コンテナーのインストール方法と実行方法](luis-container-howto.md)を確認する。
-* [トラブルシューティング](troubleshooting.md)に関するページを参照して、LUIS 機能に関連する問題を解決する。
+* [トラブルシューティング](troubleshooting.yml)に関するページを参照して、LUIS 機能に関連する問題を解決する。
 * さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

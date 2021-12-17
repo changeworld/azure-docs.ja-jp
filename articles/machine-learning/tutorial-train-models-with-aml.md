@@ -1,24 +1,23 @@
 ---
-title: イメージの分類チュートリアル:モデルをトレーニングする
+title: 'チュートリアル: Jupyter Notebook の例をトレーニングする'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning を使用し、Python Jupyter Notebook で scikit-learn を使用して画像の分類モデルをトレーニングします。 このチュートリアルは、2 部構成の第 1 部です。
+description: Azure Machine Learning を使用し、クラウドベースの Python Jupyter Notebook で scikit-learn を使用して画像分類モデルをトレーニングします。 このチュートリアルは、2 部構成の第 1 部です。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 09/28/2020
-ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 85dea807ee09338e7f0e9e388f6b196fd3beef33
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 10/21/2021
+ms.custom: seodec18, devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 4f29290c96b5f9603b4d626a8f87ee1c75168abc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588666"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289720"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする 
-
+# <a name="tutorial-train-an-image-classification-model-with-an-example-jupyter-notebook"></a>チュートリアル: Jupyter Notebook の例を使用して画像分類モデルをトレーニングする 
 
 このチュートリアルでは、機械学習モデルのトレーニングをリモートのコンピューティング リソース上で行います。 Python Jupyter Notebook 内の Azure Machine Learning に関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
 
@@ -34,22 +33,66 @@ ms.locfileid: "104588666"
 
 [このチュートリアルのパート 2](tutorial-deploy-models-with-aml.md) では、モデルを選択してデプロイする方法を学習します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
->[!NOTE]
+> [!NOTE]
 > この記事のコードは、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) バージョン 1.13.0 を使用してテストされています。
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[チュートリアル: 初めての Azure ML 実験の作成を開始する](tutorial-1st-experiment-sdk-setup.md)」を完了することで、以下の操作を行います。
-    * ワークスペースの作成
-    * チュートリアル ノートブックをワークスペース内のフォルダーに複製します。
-    * クラウドベースのコンピューティング インスタンスを作成します。
+* [Azure Machine Learning の利用開始に関するクイックスタート](quickstart-create-resources.md)で次の作業を完了します。
+    * ワークスペースを作成します。
+    * 開発環境に使用するクラウドベースのコンピューティング インスタンスを作成します。
+    * モデルのトレーニングに使用するクラウドベースのコンピューティング クラスターを作成します。
 
-* 複製した *tutorials/image-classification-mnist-data* フォルダーで、*img-classification-part1-training.ipynb* ノートブックを開きます。 
+## <a name="run-a-notebook-from-your-workspace"></a><a name="azure"></a>ワークスペースからノートブックを実行する
+
+Azure Machine Learning では、インストール不要であらかじめ構成されたエクスペリエンスを実現するために、お使いのワークスペースにクラウド ノートブック サーバーが含まれています。 お使いの環境、パッケージ、および依存関係を制御したい場合は、[独自の環境](how-to-configure-environment.md#local)を使用してください。
+
+ 次のビデオに従うか、詳細な手順を使用して、ワークスペースでチュートリアル ノートブックを複製して実行します。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
+
+> [!NOTE]
+> このビデオはプロセスを理解するのに役立ちますが、別のファイルを開く方法を示しています。  本チュートリアルでは、**tutorials** フォルダーを複製したら、**tutorials/image-classification-mnist-data** フォルダーから **img-classification-part1-training.ipynb** ファイルを開きます。
+
+### <a name="clone-a-notebook-folder"></a><a name="clone"></a> ノートブック フォルダーを複製する
+
+次の実験の設定を完了し、Azure Machine Learning スタジオで手順を実行します。 この統合インターフェイスには、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールが含まれています。
+
+1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインします。
+
+1. お使いのサブスクリプションと、作成したワークスペースを選択します。
+
+1. 左側で **[ノートブック]** を選択します。
+
+1. 上部で **[サンプル]** タブを選択します。
+
+1. **Python** フォルダーを開きます。
+
+1. バージョン番号が付いたフォルダーを開きます。 この番号は、Python SDK の現在のリリースを表します。
+
+1. **tutorials** フォルダーの右側にある **[...]** ボタンを選択し、 **[Clone]\(複製\)** を選択します。
+
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="Clone チュートリアル フォルダーを示すスクリーンショット。":::
+
+1. フォルダーの一覧には、ワークスペースにアクセスする各ユーザーが表示されます。 自分のフォルダーを選択して **tutorials** フォルダーをそこに複製します。
+
+### <a name="open-the-cloned-notebook"></a><a name="open"></a> 複製されたノートブックを開く
+
+1. **[User files]\(ユーザー ファイル\)** セクションに複製された **tutorials** フォルダーを開きます。
+
+    > [!IMPORTANT]
+    > **samples** フォルダー内のノートブックを表示できますが、そこからノートブックを実行することはできません。 ノートブックを実行するには、必ず **[User Files]\(ユーザー ファイル\)** セクションにあるノートブックの複製バージョンを開いてください。
+    
+1. **tutorials/image-classification-mnist-data** フォルダーの **img-classification-part1-training.ipynb** ファイルを選択します。
+
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="tutorials フォルダーを開いたところを示すスクリーンショット。":::
+
+1. 上部のバーで、ノートブックの実行に使用するコンピューティング インスタンスを選択します。
 
 
-チュートリアルと付随する **utils.py** ファイルは、独自の [ローカル環境](how-to-configure-environment.md#local)で使用する場合、[GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) から入手することもできます。 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` を実行して、このチュートリアルの依存関係をインストールします。
+チュートリアルと付随する **utils.py** ファイルは、独自の [ローカル環境](how-to-configure-environment.md#local)で使用する場合、[GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) から入手することもできます。 コンピューティング インスタンスを使用しない場合は、`pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` を使用して、このチュートリアルの依存関係をインストールしてください。 
 
 > [!Important]
 > 以降この記事には、ノートブックと同じ内容が記載されています。  
@@ -84,7 +127,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="connect-to-a-workspace"></a>ワークスペースに接続する
 
-既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace.from_config()` により、**config.json** ファイルが読み取られ、詳細情報が `ws` という名前のオブジェクトに読み込まれます。
+既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace.from_config()` は、**config.json** ファイルを読み取り、詳細情報を `ws` という名前のオブジェクト内に読み込みます。  コンピューティング インスタンスでは、このファイルのコピーがルート ディレクトリに保存されます。  コードを別の場所で実行する場合は、[ファイルを作成する](how-to-configure-environment.md#workspace)必要があります。
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
@@ -110,9 +153,12 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 マネージド サービスである Azure Machine Learning コンピューティングを使用することにより、データ サイエンティストは Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできます。 たとえば、GPU がサポートされている VM などです。 このチュートリアルでは、トレーニング環境として Azure Machine Learning コンピューティングを作成します。 その VM 上で実行する Python コードは、後でこのチュートリアルの中で送信します。 
 
-以下のコードでは、まだワークスペース内にコンピューティング クラスターがない場合、それらが作成されます。 使用されていないときに 0 にスケールダウンするクラスターが設定されますが、最大 4 ノードにスケールアップできます。 
+以下のコードでは、まだワークスペース内にコンピューティング クラスターがない場合、それらが作成されます。 使用されていないときに 0 にスケールダウンするクラスターが設定されますが、最大 4 ノードにスケールアップできます。
 
- **コンピューティング先の作成には約 5 分かかります。** ワークスペース内にコンピューティング リソースが既にある場合は、それが使用され、作成プロセスはスキップされます。
+ **コンピューティング先の作成には約 5 分かかります。** ワークスペース内にコンピューティング リソースが既にある場合は、それが使用され、作成プロセスはスキップされます。  
+
+> [!TIP]
+> クイックスタートでコンピューティング クラスターを作成した場合は、以下のコードの `compute_name` に必ず同じ名前を使用してください。
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -299,11 +345,13 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 以下の、スクリプトがデータを取得してモデルを保存する方法に注目してください。
 
-+ トレーニング スクリプトで引数が読み取られ、データが含まれるディレクトリが検出されます。 後でジョブを送信する際に、次のように、引数にデータストアを指定します。```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
+- トレーニング スクリプトで引数が読み取られ、データが含まれるディレクトリが検出されます。 後でジョブを送信する際に、次のように、引数にデータストアを指定します。
 
-+ トレーニング スクリプトでは、**outputs** という名前のディレクトリにモデルが保存されます。 このディレクトリ内に書き込まれたものはすべてワークスペース内に自動的にアップロードされます。 チュートリアルの後半で、このディレクトリからモデルにアクセスします。 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
+  `parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
 
-+ このトレーニング スクリプトでは、データセットを正しく読み込むためにファイル `utils.py` が必要です。 次のコードでは、`utils.py` を `script_folder` にコピーして、リモート リソース上でトレーニング スクリプトと共にファイルにアクセスできるようにします。
+- トレーニング スクリプトでは、**outputs** という名前のディレクトリにモデルが保存されます。 このディレクトリ内に書き込まれたものはすべてワークスペース内に自動的にアップロードされます。 チュートリアルの後半で、このディレクトリからモデルにアクセスします。 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
+
+- このトレーニング スクリプトでは、データセットを正しく読み込むためにファイル `utils.py` が必要です。 次のコードでは、`utils.py` を `script_folder` にコピーして、リモート リソース上でトレーニング スクリプトと共にファイルにアクセスできるようにします。
 
   ```python
   import shutil
@@ -396,7 +444,7 @@ RunDetails(run).show()
 
 ![Notebook のウィジェット](./media/tutorial-train-models-with-aml/widget.png)
 
-実行を取り消す必要がある場合は、[これらの手順](./how-to-manage-runs.md)に従います。
+実行を取り消す必要がある場合は、[これらの手順](./how-to-track-monitor-analyze-runs.md)に従います。
 
 ### <a name="get-log-results-upon-completion"></a>完了時にログの結果を取得する
 

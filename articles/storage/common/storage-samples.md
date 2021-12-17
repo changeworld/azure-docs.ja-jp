@@ -1,19 +1,19 @@
 ---
 title: Azure Storage のサンプル コード | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 .NET、Java、Python、Node.js、Azure CLI、C++ のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dadc76c46e5a51a34038a38f059428ffac3bd5a8
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 4cac7e334a2d936c027c244aba22e58a364863e1
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276707"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708132"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage のサンプル
 
@@ -27,41 +27,40 @@ Azure Storage のサンプル コードとアプリケーションを閲覧し�
 
 .NET のサンプルを調べるには、NuGet から [.NET ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/) をダウンロードします。 .NET ストレージ クライアント ライブラリは、 [Azure SDK for .NET のページ](https://azure.microsoft.com/downloads/)にも用意されています。
 
-* [.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
+- [.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
 
 ## <a name="java-samples"></a>Java のサンプル
 
 Java のサンプルを調べるには、 [Java ストレージ クライアント ライブラリ](https://github.com/azure/azure-storage-java)をダウンロードします。
 
-* [Java を使用した Azure Storage サンプル](storage-samples-java.md)
+- [Java を使用した Azure Storage サンプル](storage-samples-java.md)
 
 ## <a name="python-samples"></a>Python のサンプル
 
 Python のサンプルを調べるには、[Python ストレージ クライアント ライブラリ](https://github.com/azure/azure-storage-python)をダウンロードします。
 
-* [Python を使用した Azure Storage サンプル](storage-samples-python.md)
+- [Python を使用した Azure Storage サンプル](storage-samples-python.md)
 
 ## <a name="nodejs-samples"></a>Node.js のサンプル
 
 Node.js のサンプルを調べるには、 [Node.js ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-node)をダウンロードします。
 
-* [JavaScript/Node.js を使用した Azure Storage サンプル](storage-samples-javascript.md)
+- [JavaScript/Node.js を使用した Azure Storage サンプル](storage-samples-javascript.md)
 
 ## <a name="c-samples"></a>C++ のサンプル
 
 C++ のサンプルを調べるには、GitHub から [C++ 用の Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)を入手します。
 
-* [Azure BLOB を使ってみる](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-blobs/sample/blob_getting_started.cpp)
-* [Azure Data Lake を使ってみる](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-datalake/sample/datalake_getting_started.cpp)
-* [Azure Files を使ってみる](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-shares/sample/file_share_getting_started.cpp)
+- [Azure BLOB を使ってみる](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-blobs/sample/blob_getting_started.cpp)
+- [Azure Data Lake を使ってみる](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-datalake/sample/datalake_getting_started.cpp)
+- [Azure Files を使ってみる](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-shares/sample/file_share_getting_started.cpp)
 
 ## <a name="azure-cli"></a>Azure CLI
 
 Azure CLI のサンプルを試すには、まず [Azure CLI をインストール](/cli/azure/install-azure-cli)してください。
 
-* [Azure CLI の概要](/cli/azure/get-started-with-azure-cli)
-* [Azure CLI を使用した Azure Storage サンプル](../blobs/storage-samples-blobs-cli.md)
-* [Azure Storage での Azure CLI の使用に関する人気のある記事](/cli/azure/popular-articles-using-the-azure-cli#storage)
+- [Azure CLI の概要](/cli/azure/get-started-with-azure-cli)
+- [Azure CLI を使用した Azure Storage サンプル](../blobs/storage-samples-blobs-cli.md)
 
 ## <a name="api-reference-and-source-code"></a>API リファレンスとソース コード
 
@@ -78,9 +77,18 @@ Azure CLI のサンプルを試すには、まず [Azure CLI をインストー�
 
 以下の記事は、サービス (BLOB、ファイル、キュー、テーブル) ごとにサンプルをまとめた索引としてご利用ください。
 
+<<<<<<< HEAD
 * [.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
 * [Java を使用した Azure Storage サンプル](storage-samples-java.md)
 * [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
 * [Python を使用した Azure Storage サンプル](storage-samples-python.md)
 * [C++ を使用した Azure Storage サンプル](storage-samples-c-plus-plus.md)
 * [Azure CLI を使用した Azure Storage サンプル](../blobs/storage-samples-blobs-cli.md)
+=======
+- [.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
+- [Java を使用した Azure Storage サンプル](storage-samples-java.md)
+- [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
+- [Python を使用した Azure Storage サンプル](storage-samples-python.md)
+- [C++ を使用した Azure Storage サンプル](storage-samples-c-plus-plus.md)
+- [Azure CLI を使用した Azure Storage サンプル](../blobs/storage-samples-blobs-cli.md)
+>>>>>>> repo_sync_working_branch

@@ -2,8 +2,8 @@
 title: 'チュートリアル: Azure Active Directory で自動ユーザー プロビジョニング用に Comeet Recruiting Software を構成する | Microsoft Docs'
 description: ユーザー アカウントを Comeet Recruiting Software に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 288d1e6cec8ddcf7d4afe5a35f28a022c2a7be10
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04f4d1c25fcd7a0072e8d72eb28c1cfac106166f
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96006714"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988789"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Comeet Recruiting Software を構成する
 
@@ -35,6 +35,8 @@ ms.locfileid: "96006714"
 * [Comeet Recruiting Software テナント](https://www.comeet.co/)
 * 管理者アクセス許可がある Comeet Recruiting Software のユーザー アカウント
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 ## <a name="add-comeet-recruiting-software-from-the-gallery"></a>ギャラリーから Comeet Recruiting Software を追加する
 
 Azure AD で自動ユーザー プロビジョニング用に Comeet Recruiting Software を構成する前に、Comeet Recruiting Software を Azure AD アプリケーション ギャラリーからマネージド SaaS アプリケーションの一覧に追加する必要があります。

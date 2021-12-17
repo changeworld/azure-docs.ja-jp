@@ -1,26 +1,28 @@
 ---
-title: 'チュートリアル: 自動機械学習による回帰'
+title: 'チュートリアル: AutoML - 回帰モデルをトレーニングする'
 titleSuffix: Azure Machine Learning
-description: Python SDK を使用してコードを記述し、回帰モデルを自動的に生成する自動機械学習の実験を作成します。
+description: Azure Machine Learning の自動 ML を使用して Azure Machine Learning Python SDK で NYC タクシーの料金を予測する回帰モデルをトレーニングします。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: tutorial
-author: aniththa
-ms.author: anumamah
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 08/14/2020
-ms.custom: devx-track-python, automl
-ms.openlocfilehash: 85129cf282e39b4f4932cc5e9f7cfd72d1e445b0
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 10/21/2021
+ms.custom: devx-track-python, automl, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: caa8f387debbc5afa9f53f76c100268312d7b9b3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210637"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555820"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
+# <a name="tutorial-train-a-regression-model-with-automl-and-python"></a>チュートリアル: AutoML と Python を使用して回帰モデルをトレーニングする
 
-このチュートリアルでは、Azure Machine Learning SDK の自動機械学習を使用して、ニューヨーク市のタクシー運賃を予測する[回帰モデル](concept-automated-ml.md#regression)を作成します。 このプロセスは、トレーニング データと構成設定を受け取り、さまざまなフィーチャーの正規化/標準化の方法、モデル、およびハイパーパラメーター設定の組み合わせを自動的に反復処理し、最適なモデルに到達します。
+このチュートリアルでは、Azure Machine Learning の自動 ML を使用して Azure Machine Learning Python SDK で回帰モデルをトレーニングする方法について説明します。 この回帰モデルでは、NYC タクシーの料金を予測します。 
+
+このプロセスは、トレーニング データと構成設定を受け取り、さまざまなフィーチャーの正規化/標準化の方法、モデル、およびハイパーパラメーター設定の組み合わせを自動的に反復処理し、最適なモデルに到達します。 
 
 ![フロー図](./media/tutorial-auto-train-models/flow2.png)
 
@@ -31,20 +33,24 @@ ms.locfileid: "107210637"
 > * 自動機械学習回帰モデルをトレーニングする
 > * モデルの精度を計算する
 
-他のタイプのモデルについても、自動機械学習を試してみましょう。 
+コードなしの AutoML の場合は、次のチュートリアルを試してください。 
 
-* 「[チュートリアル: Azure Machine Learning の自動 ML で分類モデルを作成する](tutorial-first-experiment-automated-ml.md)」(ノー コードの例)
-* 「[チュートリアル: 自動機械学習を使用して需要を予測する](tutorial-automated-ml-forecast.md)」(ノー コードの例)
+* [チュートリアル: コードなし分類モデルをトレーニングする](tutorial-first-experiment-automated-ml.md)
+
+* [チュートリアル:自動機械学習を使用して需要を予測する](tutorial-automated-ml-forecast.md)
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版](https://aka.ms/AMLFree)の Azure Machine Learning を今すぐお試しください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版](https://azure.microsoft.com/free/)の Azure Machine Learning を今すぐお試しください。
 
-* まだ Azure Machine Learning ワークスペースとノートブック仮想マシンがない場合は、[セットアップのチュートリアル](tutorial-1st-experiment-sdk-setup.md)を済ませておいてください。
-* セットアップのチュートリアルを完了したら、同じノートブック サーバーを使用して、*tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb* ノートブックを開きます。
+* まだ Azure Machine Learning ワークスペースまたはコンピューティング インスタンスがない場合は、[Azure Machine Learning の利用開始に関するクイックスタート](quickstart-create-resources.md)を完了します。
+* ウィザードの完了後:
+    1. スタジオで **[Notebooks]** を選択します。
+    1. **[サンプル]** タブを選択します。
+    1. *tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb* ノートブックを開きます。
 
 独自の[ローカル環境](how-to-configure-environment.md#local)で実行したい場合は、このチュートリアルを [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) で入手することもできます。 必要なパッケージを取得するには、 
-* [完全な `automl` クライアントをインストール](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)します。
+* [完全な `automl` クライアントをインストール](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/README.md#setup-using-a-local-conda-environment)します。
 * `pip install azureml-opendatasets azureml-widgets` を実行して必要なパッケージを取得してください。
 
 ## <a name="download-and-prepare-data"></a>データのダウンロードと準備
@@ -89,39 +95,10 @@ green_taxi_df.head(10)
 |150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1.19|なし|なし|-73.94|40.71|-73.95|...|1|7.00|0.00|0.50|0.3|1.75|0.00|nan|9.55|
 |432136|2|2015-01-22 23:16:33   2015-01-22 23:20:13 1   0.65|なし|なし|-73.94|40.71|-73.94|...|2|5.00|0.50|0.50|0.3|0.00|0.00|nan|6.30|
 
-初期データを読み込んだところで、乗車日時のフィールドからさまざまな時間ベースのフィーチャーを作成する関数を定義します。 これによって、月、日付、曜日、時刻に対応する新しいフィールドが作成され、時間に基づいた季節性をモデルで考慮できるようになります。 日付フレームに対して `apply()` 関数を使用し、`build_time_features()` 関数をタクシー データの各行に繰り返し適用します。
+トレーニングまたはその他の特徴の構築で必要としない列を削除します。  自動機械学習では、**lpepPickupDatetime** などの時間ベースの機能が自動的に処理されます。
 
 ```python
-def build_time_features(vector):
-    pickup_datetime = vector[0]
-    month_num = pickup_datetime.month
-    day_of_month = pickup_datetime.day
-    day_of_week = pickup_datetime.weekday()
-    hour_of_day = pickup_datetime.hour
-
-    return pd.Series((month_num, day_of_month, day_of_week, hour_of_day))
-
-green_taxi_df[["month_num", "day_of_month","day_of_week", "hour_of_day"]] = green_taxi_df[["lpepPickupDatetime"]].apply(build_time_features, axis=1)
-green_taxi_df.head(10)
-```
-
-|vendorID| lpepPickupDatetime|  lpepDropoffDatetime|    passengerCount| tripDistance|   puLocationId|   doLocationId|   pickupLongitude|    pickupLatitude| dropoffLongitude    |...|   paymentType|fareAmount  |extra| mtaTax| improvementSurcharge|   tipAmount|  tollsAmount|    ehailFee|   totalAmount|tripType|month_num|day_of_month|day_of_week|hour_of_day
-|----|----|----|----|----|----|---|--|---|---|---|----|----|----|--|---|----|-----|----|----|----|----|---|----|----|
-|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4.84|なし|なし|-73.88|40.84|-73.94|...|2|15.00|0.50|0.50|0.3|0.00|0.00|nan|16.30|1.00|1|11|6|
-|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0.69|なし|なし|-73.96|40.81|-73.96|...|2|4.50|1.00|0.50|0.3|0.00|0.00|nan|6.30|1.00|1|20|1|
-|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0.45|なし|なし|-73.92|40.76|-73.91|...|2|4.00|0.00|0.50|0.3|0.00|0.00|nan|4.80|1.00|1|1|3|
-|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0.00|なし|なし|-73.81|40.70|-73.82|...|2|12.50|0.50|0.50|0.3|0.00|0.00|nan|13.80|1.00|1|17|5|
-1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0.50|なし|なし|-73.92|40.76|-73.92|...|2|4.00|0.50|0.50|0|0.00|0.00|nan|5.00|1.00|1|1|3|
-|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|なし|なし|-73.96|40.72|-73.95|...|2|6.50|0.50|0.50|0.3|0.00|0.00|nan|7.80|1.00|1|4|6|
-|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0.90|なし|なし|-73.88|40.76|-73.87|...|2|6.00|0.00|0.50|0.3|0.00|0.00|nan|6.80|1.00|1|3|5|
-|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3.30|なし|なし|-73.96|40.72|-73.91|...|2|12.50|0.50|0.50|0.3|0.00|0.00|nan|13.80|1.00|1|9|4|
-|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1.19|なし|なし|-73.94|40.71|-73.95|...|1|7.00|0.00|0.50|0.3|1.75|0.00|nan|9.55|1.00|1|11|6|
-|432136|2|2015-01-22 23:16:33   2015-01-22 23:20:13 1   0.65|なし|なし|-73.94|40.71|-73.94|...|2|5.00|0.50|0.50|0.3|0.00|0.00|nan|6.30|1.00|1|22|3|
-
-トレーニングまたはその他の特徴の構築で必要としない列を削除します。
-
-```python
-columns_to_remove = ["lpepPickupDatetime", "lpepDropoffDatetime", "puLocationId", "doLocationId", "extra", "mtaTax",
+columns_to_remove = ["lpepDropoffDatetime", "puLocationId", "doLocationId", "extra", "mtaTax",
                      "improvementSurcharge", "tollsAmount", "ehailFee", "tripType", "rateCodeID",
                      "storeAndFwdFlag", "paymentType", "fareAmount", "tipAmount"
                     ]

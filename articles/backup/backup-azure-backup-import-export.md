@@ -4,12 +4,12 @@ description: Azure Import/Export サービスを使用してネットワーク�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36646c148fb42503b8bdc78cbcd11a1f497127b0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704365"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644070"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 
@@ -116,7 +116,7 @@ Azure Backup の次の機能またはワークロードでは、オフライン 
 
 *AzureOfflineBackupDiskPrep* ユーティリティは、最寄りの Azure データセンターに送る SATA ドライブを準備します。 このユーティリティは、次のパスの Azure Backup エージェントのインストール ディレクトリにあります。
 
-```*\Microsoft Azure Recovery Services Agent\Utils\\*```
+`*\Microsoft Azure Recovery Services Agent\Utils\\*`
 
 1. このディレクトリに移動し、*AzureOfflineBackupDiskPrep* ディレクトリを、SATA ドライブが接続されている別のコンピューターにコピーします。 SATA ドライブが接続されたコンピューターで、次のことを確実にします。
 
@@ -131,7 +131,7 @@ Azure Backup の次の機能またはワークロードでは、オフライン 
 
 1. コピー用コンピューターで、*AzureOfflineBackupDiskPrep* ユーティリティのディレクトリを現在のディレクトリとして使用して管理者特権でのコマンド プロンプトを開きます。 次のコマンドを実行します。
 
-    ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
+    `.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>`
 
     | パラメーター | 説明 |
     | --- | --- |

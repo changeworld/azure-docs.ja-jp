@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 9aca1e76c825de52744da817f6a0bf236eef617c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 10b622a707747e69beba1e2be5f989ee2bcd4804
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313608"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804553"
 ---
-# <a name="accessing-user-information-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューでのユーザー情報へのアクセス
+# <a name="accessing-user-information-in-azure-static-web-apps"></a>Azure Static Web Apps でのユーザー情報へのアクセス
 
 Azure Static Web Apps では、[直接アクセス エンドポイント](#direct-access-endpoint)および [API 関数](#api-functions)を介して、認証関連のユーザー情報が提供されます。
 
@@ -36,9 +36,9 @@ Azure Static Web Apps では、[直接アクセス エンドポイント](#direc
 
 ```json
 {
-  "identityProvider": "facebook",
+  "identityProvider": "github",
   "userId": "d75b260a64504067bfc5b2905e3b8182",
-  "userDetails": "user@example.com",
+  "userDetails": "username",
   "userRoles": ["anonymous", "authenticated"]
 }
 ```
@@ -64,7 +64,7 @@ console.log(getUserInfo());
 
 ## <a name="api-functions"></a>API 関数
 
-Azure Functions バックエンドを介して Static Web Apps で使用できる API 関数では、クライアント アプリケーションと同じユーザー情報にアクセスできます。 API では、ユーザーを特定できる情報を受け取りますが、ユーザーが認証されているか、必要なロールと一致する場合は、独自のチェックを実行しません。 アクセス制御規則は、[`staticwebapp.config.json`](routes.md) ファイルで定義されています。
+Azure Functions バックエンドを介して Static Web Apps で使用できる API 関数では、クライアント アプリケーションと同じユーザー情報にアクセスできます。 API では、ユーザーを特定できる情報を受け取りますが、ユーザーが認証されているか、必要なロールと一致する場合は、独自のチェックを実行しません。 アクセス制御規則は、[`staticwebapp.config.json`](configuration.md#routes) ファイルで定義されています。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -104,46 +104,56 @@ console.log(await getUser());
 C# 関数では、`ClaimsPrincipal` オブジェクトまたは独自のカスタム型に逆シリアル化できる `x-ms-client-principal` ヘッダーにあるユーザー情報を使用できます。 次のコードは、ヘッダーを中間の型、`ClientPrincipal` にアンパックする方法を示します。これは、その後、`ClaimsPrincipal` インスタンスになります。
 
 ```csharp
-  public static class StaticWebAppsAuth
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Json;
+using Microsoft.AspNetCore.Http;
+
+public static class StaticWebAppsAuth
+{
+  private class ClientPrincipal
   {
-    private class ClientPrincipal
-    {
-        public string IdentityProvider { get; set; }
-        public string UserId { get; set; }
-        public string UserDetails { get; set; }
-        public IEnumerable<string> UserRoles { get; set; }
-    }
-
-    public static ClaimsPrincipal Parse(HttpRequest req)
-    {
-        var principal = new ClientPrincipal();
-
-        if (req.Headers.TryGetValue("x-ms-client-principal", out var header))
-        {
-            var data = header[0];
-            var decoded = Convert.FromBase64String(data);
-            var json = Encoding.ASCII.GetString(decoded);
-            principal = JsonSerializer.Deserialize<ClientPrincipal>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-        }
-
-        principal.UserRoles = principal.UserRoles?.Except(new string[] { "anonymous" }, StringComparer.CurrentCultureIgnoreCase);
-
-        if (!principal.UserRoles?.Any() ?? true)
-        {
-            return new ClaimsPrincipal();
-        }
-
-        var identity = new ClaimsIdentity(principal.IdentityProvider);
-        identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, principal.UserId));
-        identity.AddClaim(new Claim(ClaimTypes.Name, principal.UserDetails));
-        identity.AddClaims(principal.UserRoles.Select(r => new Claim(ClaimTypes.Role, r)));
-
-        return new ClaimsPrincipal(identity);
-    }
+      public string IdentityProvider { get; set; }
+      public string UserId { get; set; }
+      public string UserDetails { get; set; }
+      public IEnumerable<string> UserRoles { get; set; }
   }
+
+  public static ClaimsPrincipal Parse(HttpRequest req)
+  {
+      var principal = new ClientPrincipal();
+
+      if (req.Headers.TryGetValue("x-ms-client-principal", out var header))
+      {
+          var data = header[0];
+          var decoded = Convert.FromBase64String(data);
+          var json = Encoding.UTF8.GetString(decoded);
+          principal = JsonSerializer.Deserialize<ClientPrincipal>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+      }
+
+      principal.UserRoles = principal.UserRoles?.Except(new string[] { "anonymous" }, StringComparer.CurrentCultureIgnoreCase);
+
+      if (!principal.UserRoles?.Any() ?? true)
+      {
+          return new ClaimsPrincipal();
+      }
+
+      var identity = new ClaimsIdentity(principal.IdentityProvider);
+      identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, principal.UserId));
+      identity.AddClaim(new Claim(ClaimTypes.Name, principal.UserDetails));
+      identity.AddClaims(principal.UserRoles.Select(r => new Claim(ClaimTypes.Role, r)));
+
+      return new ClaimsPrincipal(identity);
+  }
+}
 ```
 
 ---
+
+ユーザーがログインすると、Static Web Apps エッジ ノードを介してユーザー情報の要求に `x-ms-client-principal` ヘッダーが追加されます。
 
 <sup>1</sup> [fetch](https://caniuse.com/#feat=fetch) API と [await](https://caniuse.com/#feat=mdn-javascript_operators_await) 演算子は、Internet Explorer ではサポートされていません。
 

@@ -2,13 +2,13 @@
 title: バックアップ センターを使用して分析情報を得る
 description: バックアップ センターを使用して、履歴の傾向を分析し、バックアップに関する詳細な分析情報を得る方法について説明します。
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: c48173749a9b47be7eeb906e9f8eec716e0cb200
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/19/2021
+ms.openlocfilehash: 5244ba6edaac3b58550107c2519b90447ff197e0
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506015"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177842"
 ---
 # <a name="obtain-insights-using-backup-center"></a>バックアップ センターを使用して分析情報を得る
 
@@ -24,7 +24,7 @@ ms.locfileid: "102506015"
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-- 現在、バックアップ レポートは Azure Database for PostgreSQL サーバーのバックアップには使用できません。
+- Backup コンテナーを使用してバックアップされるワークロードの場合、現在、バックアップ レポートはサポートされていません。
 
 - サポートされるシナリオとサポートされないシナリオの詳細な一覧については、[サポート マトリックス](backup-center-support-matrix.md)を参照してください。
 
@@ -56,10 +56,10 @@ ms.locfileid: "102506015"
 
 7. **ポリシー準拠** -このタブを使用すると、各バックアップ インスタンスに 1 日 1 回以上の成功したバックアップがあるかどうかを確認できます。 [詳細情報](./configure-reports.md#policy-adherence)
 
-また、[電子メール レポート](backup-reports-email.md) 機能を使用して、これらのレポートに電子メールを構成することもできます。
+また、[メール レポート](backup-reports-email.md)機能を使用して、これらのレポート用にメールを構成することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [バックアップを監視および操作する](backup-center-monitor-operate.md)
+- <bpt id="p1">[</bpt>バックアップを監視および操作する<ept id="p1">](backup-center-monitor-operate.md)</ept>
 - [バックアップ資産を管理する](backup-center-govern-environment.md)
 - [バックアップ センターを使用してアクションを実行する](backup-center-actions.md)

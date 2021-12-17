@@ -1,14 +1,14 @@
 ---
 title: Azure DevTest Labs を Azure Pipelines に統合する
 description: Azure Pipelines の継続的インテグレーションと配信パイプラインに Azure DevTest Labs を統合する方法を説明します
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c226523e9239b096cfd04990833d7c6cb1290400
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87288924"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641360"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs を Azure Pipelines CI/CD パイプラインに統合する
 

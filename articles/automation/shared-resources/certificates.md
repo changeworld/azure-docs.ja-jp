@@ -5,12 +5,13 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: fcd593beed6faa9ef142c62e2fbdb251b66c009f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: daed24e27c1dec0a6dec1bf3b12f8290078027b1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169421"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274787"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Azure Automation で証明書を管理する
 
@@ -21,7 +22,7 @@ Azure Automation では証明書を安全に保存し、Azure Resource Manager �
 
 ## <a name="powershell-cmdlets-to-access-certificates"></a>証明書にアクセスするための PowerShell コマンドレット
 
-PowerShell を使用して Automation 証明書を作成および管理するためのコマンドレットを次の表に示します。 これらは、[Az モジュール](modules.md#az-modules)に付属しています。
+PowerShell を使用して Automation 証明書を作成および管理するためのコマンドレットを次の表に示します。 これらは、Az モジュールに付属しています。
 
 |コマンドレット |説明|
 | --- | ---|

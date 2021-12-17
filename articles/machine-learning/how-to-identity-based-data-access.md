@@ -4,24 +4,21 @@ titleSuffix: Machine Learning
 description: ID ベースのデータ アクセスを使用して、Azure Machine Learning データストアと Machine Learning Python SDK によって Azure のストレージ サービスに接続する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.author: sihhu
-author: MayMSFT
+ms.subservice: enterprise-readiness
+ms.topic: how-to
+ms.author: yogipandey
+author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 02/22/2021
-ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: a46f54bd037dcf8d71ba3fbafb2ba0fd961a32cc
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 10/21/2021
+ms.custom: contperf-fy21q1, devx-track-python, data4ml
+ms.openlocfilehash: e82ba7fbab8d82d266fb3a4d86d97598bc9b6703
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210654"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722964"
 ---
-# <a name="connect-to-storage-by-using-identity-based-data-access-preview"></a>ID ベースのデータ アクセスを使用してストレージに接続する (プレビュー)
-
->[!IMPORTANT]
-> この記事に記載されている機能はプレビュー段階です。 これらは、いつでも変更される可能性がある[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能と考える必要があります。
+# <a name="connect-to-storage-by-using-identity-based-data-access"></a>ID ベースのデータ アクセスを使用してストレージに接続する
 
 この記事では、ID ベースのデータ アクセスと Azure Machine Learning データストアを使用して、[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro) を介して Azure 上のストレージ サービスに接続する方法について説明します。  
 
@@ -59,7 +56,7 @@ ID ベースのデータ アクセスを使用すると、データストアに�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 - サポートされている種類のストレージを持つ Azure ストレージ アカウント。 プレビューでは、これらのストレージの種類がサポートされています。 
     - [Azure Blob Storage](../storage/blobs/storage-blobs-overview.md)
@@ -84,7 +81,7 @@ ID ベースのデータ アクセスでは、次のストレージ サービス
 * Azure Data Lake Storage Gen2
 * Azure SQL データベース
 
-これらのストレージ サービスにアクセスするには、少なくとも[ストレージ BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)のアクセス権が必要です。 [Azure portal を使用してアクセス レベルを変更](../storage/common/storage-auth-aad-rbac-portal.md)できるのは、ストレージ アカウントの所有者だけです。
+これらのストレージ サービスにアクセスするには、少なくとも[ストレージ BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)のアクセス権が必要です。 [Azure portal を使用してアクセス レベルを変更](../storage/blobs/assign-azure-role-data-access.md)できるのは、ストレージ アカウントの所有者だけです。
 
 リモート コンピューティング先でモデルをトレーニングする場合は、コンピューティング ID にストレージ サービスから「ストレージ BLOB データ閲覧者」以上のロールが付与されている必要があります。 [コンピューティング クラスターでマネージド ID を設定](how-to-create-attach-compute-cluster.md#managed-identity)する方法を参照してください。
 
@@ -143,6 +140,20 @@ adls2_dstore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                        datastore_name='credentialless_adls2', 
                                                        filesystem='tabular', 
                                                        account_name='myadls2')
+```
+### <a name="azure-sql-database"></a>Azure SQL データベース
+Azure SQL データベースの場合は、[register_azure_sql_database()](/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-sql-database-workspace--datastore-name--server-name--database-name--tenant-id-none--client-id-none--client-secret-none--resource-url-none--authority-url-none--endpoint-none--overwrite-false--username-none--password-none--subscription-id-none--resource-group-none--grant-workspace-access-false----kwargs-) を使用して、Azure SQL データベース ストレージに接続するデータストアを登録します。
+
+次のコードでは、`credentialless_sqldb` データストアを作成して `ws` ワークスペースに登録し、それが変数 `sqldb_dstore` に割り当てられます。 このデータストアは、`myserver` SQL DB サーバーのデータベース `mydb` にアクセスします。  
+
+```python
+# createn sqldatabase datastore without credentials
+                                                       
+sqldb_dstore = Datastore.register_azure_sql_database(workspace=ws,
+                                                       datastore_name='credentialless_sqldb',
+                                                       server_name='myserver',
+                                                       database_name='mydb')                                                       
+                                                   
 ```
 
 ## <a name="use-data-in-storage"></a>ストレージ内のデータを使用する

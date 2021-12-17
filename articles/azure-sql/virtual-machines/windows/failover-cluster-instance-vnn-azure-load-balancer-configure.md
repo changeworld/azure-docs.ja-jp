@@ -3,7 +3,7 @@ title: フェールオーバー クラスター インスタンス VNN 用に Az
 description: 高可用性とディザスター リカバリー (HADR) を実現するために、Azure Load Balancer を構成して、Azure VM 上の SQL Server を使用するフェールオーバー クラスター インスタンス (FCI) の仮想ネットワーク名 (VNN) にトラフィックをルーティングする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 5670a29e86eb201a707e5ceef28043aafe4839d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/10/2021
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 0eea2233a2b6b59c92b49ca325378a95301fc962
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97357978"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158854"
 ---
-# <a name="configure-azure-load-balancer-for-failover-cluster-instance-vnn"></a>フェールオーバー クラスター インスタンス VNN 用に Azure Load Balancer を構成する
+# <a name="configure-azure-load-balancer-for-an-fci-vnn"></a>FCI VNN 用に Azure Load Balancer を構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の複数のサブネットに SQL Server VM を作成することで、フェールオーバー クラスター インスタンスに対して Azure Load Balancer が不要になります。
 
 Azure 仮想マシンでは、一度に 1 つのクラスター ノードに設定する必要がある IP アドレスを保持するために、クラスターでロード バランサーが使用されます。 このソリューションでは、Azure のクラスター化されたリソースによって使用される仮想ネットワーク名 (VNN) の IP アドレスが、ロード バランサーによって保持されます。 
 
@@ -36,12 +39,14 @@ SQL Server 2019 CU2 以降で代替の接続オプションを使用する場合
 
 この記事の手順を完了するには、次のものが必要です。
 
-- Azure Load Balancer が[お客様の HADR ソリューションに適切な接続オプション](hadr-cluster-best-practices.md#connectivity)であると判断済みであること。
-- [可用性グループ リスナー](availability-group-overview.md)または[フェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)を構成済みであること。 
-- 最新バージョンの [PowerShell](/powershell/azure/install-az-ps) をインストール済みであること。 
-
+- Azure Load Balancer が[お客様の FCI に適切な接続オプション](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)であると判断済みであること。
+- [フェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)を構成済みであること。 
+- 最新バージョンの [PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows) をインストール済みであること。 
 
 ## <a name="create-load-balancer"></a>ロード バランサーの作成
+
+内部ロード バランサーまたは外部ロード バランサーを作成することができます。 内部ロード バランサーは、ネットワークの内部にあるプライベート リソースからのみアクセスできます。  外部ロード バランサーは、パブリック リソースから内部リソースへとトラフィックをルーティングすることができます。 内部ロード バランサーを構成するときは、負荷分散規則を構成する際のフロントエンド IP に、FCI リソースと同じ IP アドレスを使用します。 外部ロード バランサーを構成するときは、同じ IP アドレスは使用できません。FCI の IP アドレスをパブリック IP アドレスにすることはできないためです。 したがって外部ロード バランサーを使用するには、FCI と同じサブネット内の IP アドレスのうち、他の IP アドレスと競合しないアドレスを論理的に割り当て、そのアドレスを負荷分散規則のフロントエンド IP アドレスとして使用します。 
+
 
 [Azure portal](https://portal.azure.com) を使用してロード バランサーを作成します。
 
@@ -76,7 +81,7 @@ SQL Server 2019 CU2 以降で代替の接続オプションを使用する場合
 
 1. VM を含む可用性セットにバックエンド プールを関連付けます。
 
-1. **[ターゲット ネットワーク IP 構成]** で、 **[仮想マシン]** を選択し、クラスター ノードとして参加する仮想マシンを選びます。 必ず、FCI または可用性グループをホストするすべての仮想マシンを含めます。
+1. **[ターゲット ネットワーク IP 構成]** で、 **[仮想マシン]** を選択し、クラスター ノードとして参加する仮想マシンを選びます。 必ず、FCI をホストするすべての仮想マシンを含めます。 各 VM のプライマリ IP アドレスのみを追加し、セカンダリ IP アドレスは追加しないでください。 
 
 1. **[OK]** を選択して、バックエンド プールを作成します。
 
@@ -98,14 +103,19 @@ SQL Server 2019 CU2 以降で代替の接続オプションを使用する場合
 
 ## <a name="set-load-balancing-rules"></a>負荷分散規則を設定する
 
+ロード バランサーの負荷分散規則を設定します。 
+
+
+# <a name="private-load-balancer"></a>[プライベート ロード バランサー](#tab/ilb)
+
+次の手順に従って、プライベート ロード バランサーの負荷分散規則を設定します。 
+
 1. [ロード バランサー] ペインで、 **[負荷分散規則]** を選択します。
-
 1. **[追加]** を選択します。
-
 1. 次のように負荷分散規則のパラメーターを設定します。
 
    - **Name**:負荷分散規則の名前。
-   - **[フロントエンド IP アドレス]** : SQL Server FCI または AG リスナーのクラスター化されたネットワーク リソースの IP アドレス。
+   - **[フロントエンド IP アドレス]** : SQL Server FCI のクラスター ネットワーク リソースの IP アドレス。
    - **ポート**:SQL Server の TCP ポート。 既定のインスタンス ポートは 1433 です。
    - **[バックエンド ポート]** : **[フローティング IP (ダイレクト サーバー リターン)]** を有効にしたときの **[ポート]** の値と同じポート。
    - **[バックエンド プール]** : 先ほど構成したバックエンド プール名。
@@ -116,15 +126,41 @@ SQL Server 2019 CU2 以降で代替の接続オプションを使用する場合
 
 1. **[OK]** を選択します。
 
+# <a name="public-load-balancer"></a>[パブリック ロード バランサー](#tab/elb)
+
+次の手順に従って、パブリック ロード バランサーの負荷分散規則を設定します。 
+
+1. [ロード バランサー] ペインで、 **[負荷分散規則]** を選択します。
+1. **[追加]** を選択します。
+1. 次のように負荷分散規則のパラメーターを設定します。
+
+   - **Name**:負荷分散規則の名前。
+   - **フロントエンド IP アドレス**: クライアントがパブリック エンドポイントへの接続に使用するパブリック IP アドレス。 
+   - **ポート**:SQL Server の TCP ポート。 既定のインスタンス ポートは 1433 です。
+   - **バックエンド ポート**: FCI インスタンスで使用されるポート。 既定では 1433 です。 
+   - **[バックエンド プール]** : 先ほど構成したバックエンド プール名。
+   - **[正常性プローブ]** : 先ほど構成した正常性プローブ。
+   - **[セッション永続化]** : [なし] :
+   - **[アイドル タイムアウト (分)]** : 4.
+   - **[フローティング IP (ダイレクト サーバー リターン)]** : 無効にします。
+
+1. **[OK]** を選択します。
+
+---
+
+
+
 ## <a name="configure-cluster-probe"></a>クラスターのプローブを構成する
 
 PowerShell でクラスターのプローブ ポート パラメーターを設定します。
+
+# <a name="private-load-balancer"></a>[プライベート ロード バランサー](#tab/ilb)
 
 クラスターのプローブ ポート パラメーターを設定するには、使用環境の値を使用して、次のスクリプトで変数を更新します。 スクリプトから山かっこ (`<` および `>`) を削除します。
 
 ```powershell
 $ClusterNetworkName = "<Cluster Network Name>"
-$IPResourceName = "<SQL Server FCI / AG Listener IP Address Resource Name>" 
+$IPResourceName = "<SQL Server FCI IP Address Resource Name>" 
 $ILBIP = "<n.n.n.n>" 
 [int]$ProbePort = <nnnnn>
 
@@ -139,7 +175,7 @@ Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"
 |**Value**|**説明**|
 |---------|---------|
 |`Cluster Network Name`| ネットワークの Windows Server フェールオーバー クラスターの名前。 **[フェールオーバー クラスター マネージャー]**  >  **[ネットワーク]** で、ネットワークを右クリックして **[プロパティ]** を選択します。 正しい値は **[全般]** タブの **[名前]** にあります。|
-|`SQL Server FCI/AG listener IP Address Resource Name`|SQL Server FCI または AG リスナーの IP アドレスのリソース名。 **[フェールオーバー クラスター マネージャー]**  >  **[Roles]\(ロール\)** で、SQL Server FCI ロールの **[サーバー名]** の下にある IP アドレス リソースを右クリックして **[プロパティ]** を選択します。 正しい値は **[全般]** タブの **[名前]** にあります。|
+|`SQL Server FCI IP Address Resource Name`|SQL Server FCI IP アドレスのリソース名。 **[フェールオーバー クラスター マネージャー]**  >  **[Roles]\(ロール\)** で、SQL Server FCI ロールの **[サーバー名]** の下にある IP アドレス リソースを右クリックして **[プロパティ]** を選択します。 正しい値は **[全般]** タブの **[名前]** にあります。|
 |`ILBIP`|内部ロード バランサー (ILB) の IP アドレス。 このアドレスは、Azure portal で ILB のフロントエンド アドレスとして構成されます。 これは、SQL Server FCI の IP アドレスでもあります。 **[フェールオーバー クラスター マネージャー]** の `<SQL Server FCI/AG listener IP Address Resource Name>` がある同じプロパティ ページで見つけることができます。|
 |`nnnnn`|ロード バランサーの正常性プローブで構成したプローブ ポート。 未使用の TCP ポートが有効です。|
 |"SubnetMask"| クラスター パラメーターのサブネット マスク。 TCP IP のブロードキャスト アドレス `255.255.255.255` である必要があります。| 
@@ -150,6 +186,62 @@ Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"
 ```powershell
 Get-ClusterResource $IPResourceName | Get-ClusterParameter
 ```
+
+# <a name="public-load-balancer"></a>[パブリック ロード バランサー](#tab/elb)
+
+クラスターのプローブ ポート パラメーターを設定するには、使用環境の値を使用して、次のスクリプトで変数を更新します。 スクリプトから山かっこ (`<` および `>`) を削除します。
+
+```powershell
+$ClusterNetworkName = "<Cluster Network Name>"
+$IPResourceName = "<SQL Server FCI IP Address Resource Name>" 
+$ELBIP = "<n.n.n.n>" 
+[int]$ProbePort = <nnnnn>
+
+Import-Module FailoverClusters
+
+Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ELBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+```
+
+次の表では、更新する必要がある値について説明します。
+
+
+|**Value**|**説明**|
+|---------|---------|
+|`Cluster Network Name`| ネットワークの Windows Server フェールオーバー クラスターの名前。 **[フェールオーバー クラスター マネージャー]**  >  **[ネットワーク]** で、ネットワークを右クリックして **[プロパティ]** を選択します。 正しい値は **[全般]** タブの **[名前]** にあります。|
+|`SQL Server FCI IP Address Resource Name`|SQL Server FCI の IP アドレスのリソース名。 **[フェールオーバー クラスター マネージャー]**  >  **[Roles]\(ロール\)** で、SQL Server FCI ロールの **[サーバー名]** の下にある IP アドレス リソースを右クリックして **[プロパティ]** を選択します。 正しい値は **[全般]** タブの **[名前]** にあります。|
+|`ELBIP`|外部ロード バランサー (ELB) の IP アドレス。 このアドレスは、Azure portal で ELB のフロントエンド アドレスとして構成され、外部リソースからパブリック ロード バランサーへの接続に使用されます。 |
+|`nnnnn`|ロード バランサーの正常性プローブで構成したプローブ ポート。 未使用の TCP ポートが有効です。|
+|"SubnetMask"| クラスター パラメーターのサブネット マスク。 TCP IP のブロードキャスト アドレス `255.255.255.255` である必要があります。| 
+
+クラスターのプローブを設定したら、PowerShell ですべてのクラスター パラメーターを確認できます。 このスクリプトを実行します。
+
+```powershell
+Get-ClusterResource $IPResourceName | Get-ClusterParameter
+```
+
+> [!NOTE]
+> 外部ロード バランサーにはプライベート IP アドレスがないため、サブネット内の IP アドレスを解決する VNN DNS 名をユーザーが直接使用することはできません。 パブリック LB のパブリック IP アドレスを使用するか、または DNS サーバーに対する別の DNS マッピングを構成してください。 
+
+---
+
+## <a name="modify-connection-string"></a>接続文字列を変更する 
+
+それをサポートするクライアントの場合は、`MultiSubnetFailover=True` を接続文字列に追加します。  MultiSubnetFailover 接続オプションは必須ではありませんが、サブネットのフェールオーバーが速くなるという利点があります。 これは、クライアント ドライバーが、各 IP アドレスの TCP ソケットを同時に開こうとするためです。 クライアント ドライバーは、最初の IP が正常に応答するのを待ち、応答した場合は、その IP を接続に使用します。
+
+ご自身のクライアントで MultiSubnetFailover パラメーターがサポートされていない場合は、RegisterAllProvidersIP と HostRecordTTL の設定を変更して、フェールオーバー時の接続の遅延を防ぐことができます。 
+
+PowerShell を使用して、RegisterAllProvidersIp と HostRecordTTL の設定を変更します。 
+
+```powershell
+Get-ClusterResource yourFCIname | Set-ClusterParameter RegisterAllProvidersIP 0  
+Get-ClusterResource yourFCIname | Set-ClusterParameter HostRecordTTL 300 
+```
+
+詳細については、SQL Server の[リスナーの接続タイムアウト](/troubleshoot/sql/availability-groups/listener-connection-times-out)に関するドキュメントを参照してください。 
+
+> [!TIP]
+> - 1 つのサブネットの HADR ソリューションでも、接続文字列内で MultiSubnetFailover パラメータ = true を設定することで、今後、接続文字列を変更することなく、複数のサブネットにまたがることができます。  
+> - 既定では、クライアントは 20 分間、クラスター DNS レコードをキャッシュします。 HostRecordTTL を小さくすると、キャッシュするレコードの Time to Live (TTL) が短くなり、レガシ クライアントがより迅速に再接続できるようになります。 このため、HostRecordTTL の設定を小さくすると、DNS サーバーへのトラフィックが増加する可能性があります。
 
 
 ## <a name="test-failover"></a>[テスト フェールオーバー]
@@ -171,14 +263,22 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 
 接続をテストするには、同じ仮想ネットワーク内の別の仮想マシンにサインインします。 **SQL Server Management Studio** を開き、SQL Server FCI 名に接続します。 
 
->[!NOTE]
->必要に応じて、[SQL Server Management Studio をダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)できます。
+> [!NOTE]
+> 必要に応じて、[SQL Server Management Studio をダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)できます。
+
+
 
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure での SQL Server の HADR 機能について詳しくは、[可用性グループ](availability-group-overview.md)と[フェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)に関する記事をご覧ください。 また、高可用性とディザスター リカバリー用に環境を構成するための[ベスト プラクティス](hadr-cluster-best-practices.md)を学習することもできます。 
+詳細については、以下をご覧ください。
+
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)
+- [フェールオーバー クラスター インスタンスの概要](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)
+
 
 
 

@@ -3,12 +3,13 @@ title: コンテナー内の .NET アプリを Azure Service Fabric にデプロ
 description: Visual Studio を使って既存の .NET アプリケーションをコンテナーに格納し、Service Fabric 内のコンテナーをローカルでデバッグする方法を紹介します。 コンテナーに格納されたアプリケーションは Azure のコンテナー レジストリにプッシュされ、Service Fabric クラスターにデプロイされます。 Azure にデプロイされたアプリケーションは、データの保持に Azure SQL DB を使用します。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 7930651a0faa5f37336c15557e2a0f068d613011
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ae7069b155266b8fc8049b9660d38acbb1103d6c
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98936715"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236425"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル:Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -31,14 +32,14 @@ ms.locfileid: "98936715"
 2. Windows の **Hyper-V** および **Containers** 機能を有効にします。
 3. Windows 10 でコンテナーを実行できるように、[Docker Desktop for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) をインストールします。
 4. [Service Fabric ランタイムのバージョン 6.2 以降](service-fabric-get-started.md)と、[Service Fabric SDK のバージョン 3.1](service-fabric-get-started.md) 以降をインストールします。
-5. [Visual Studio 2019 のバージョン 16.1](https://www.visualstudio.com/) 以降をインストールし、**Azure の開発** ワークロードと **ASP.NET と Web 開発** ワークロードをインストールします。
+5. [Visual Studio](https://www.visualstudio.com/) をインストールして **Azure 開発** および **ASP.NET と Web 開発ワークロード** を有効にします。
 6. [Azure PowerShell][link-azure-powershell-install] をインストールする
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Fabrikam Fiber CallCenter をダウンロードして実行する
 
-1. [Fabrikam Fiber CallCenter][link-fabrikam-github] というサンプル アプリケーションをダウンロードします。  **[download archive]\(アーカイブのダウンロード\)** リンクをクリックします。  *fabrikam.zip* ファイルの *sourceCode* ディレクトリにある *sourceCode.zip* ファイルを展開してから、お使いのコンピューターに *VS2015* ディレクトリを展開します。
+1. GitHub から [Fabrikam Fiber CallCenter][link-fabrikam-github] というサンプル アプリケーションをダウンロードします。
 
-2. Fabrikam Fiber CallCenter アプリケーションがビルドされ、問題なく実行できていることを確認します。  Visual Studio を **管理者** として起動し、[FabrikamFiber.CallCenter.sln][link-fabrikam-github] ファイルを開きます。  F5 キーを押して、アプリケーションをデバッグおよび実行します。
+2. Fabrikam Fiber CallCenter アプリケーションがビルドされ、問題なく実行できていることを確認します。  Visual Studio を **管理者** として起動し、[VS2015\FabrikamFiber.CallCenter.sln][link-fabrikam-github] ファイルを開きます。 F5 キーを押してアプリケーションを実行し、デバッグします。
 
    ![ローカル ホストで実行されている Fabrikam Fiber CallCenter アプリケーション ホーム ページのスクリーンショット。 このページには、サポート コールの一覧が含まれるダッシュボードが表示されます。][fabrikam-web-page]
 
@@ -308,7 +309,7 @@ Remove-AzResourceGroup -Name $clusterresourcegroupname
 
 このチュートリアルの次の部分では、[CI/CD を使用して Service Fabric クラスターへコンテナー アプリケーションをデプロイする](service-fabric-tutorial-deploy-container-app-with-cicd-vsts.md)方法について説明します。
 
-[link-fabrikam-github]: https://aka.ms/fabrikamcontainer
+[link-fabrikam-github]: https://github.com/Azure-Samples/service-fabric-dotnet-containerize
 [link-azure-powershell-install]: /powershell/azure/install-Az-ps
 [link-servicefabric-create-secure-clusters]: service-fabric-cluster-creation-via-arm.md
 [link-visualstudio-cd-extension]: https://aka.ms/cd4vs

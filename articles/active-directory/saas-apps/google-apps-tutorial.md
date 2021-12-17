@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/11/2021
+ms.date: 06/24/2021
 ms.author: jeedes
-ms.openlocfilehash: a846899ba8f9b9e7c0d2e54744f5e5044ca7a2d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ed9fffbc569b2c973728809cbfde30ec90ebe57
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732057"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132291580"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Google Cloud (G Suite) Connector の統合
 
@@ -30,17 +30,17 @@ ms.locfileid: "98732057"
 
 開始するには、次が必要です。
 
-- Azure AD サブスクリプション。
-- Google Cloud (G Suite) Connector でのシングル サインオン (SSO) が有効なサブスクリプション。
-- Google Apps サブスクリプションまたは Google Cloud Platform サブスクリプション
+* Azure AD サブスクリプション。
+* Google Cloud (G Suite) Connector でのシングル サインオン (SSO) が有効なサブスクリプション。
+* Google Apps サブスクリプションまたは Google Cloud Platform サブスクリプション
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 このドキュメントは、新しいユーザー シングル サインオン エクスペリエンスを使用して作成されました。 まだ古いものを使用している場合、セットアップは異なります。 G-Suite アプリケーションのシングル サインオン設定で、新しいエクスペリエンスを有効にすることができます。 **[Azure AD, Enterprise applications]\(Azure AD Enterprise アプリケーション\)** に移動し、 **[Google Cloud (G Suite) Connector]** 、 **[シングル サインオン]** の順に選択して、 **[新しいエクスペリエンスをお試しください]** をクリックします。
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-- 必要な場合を除き、運用環境は使用しないでください。
-- サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* 必要な場合を除き、運用環境は使用しないでください。
+* サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -78,9 +78,9 @@ ms.locfileid: "98732057"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Google Cloud (G Suite) Connector では、**SP** Initiated SSO がサポートされます
+* Google Cloud (G Suite) Connector では、**SP** Initiated SSO がサポートされます。
 
-* Google Cloud (G Suite) Connector では、[**自動化された** ユーザー プロビジョニング](./g-suite-provisioning-tutorial.md)がサポートされます
+* Google Cloud (G Suite) Connector では、[**自動化された** ユーザー プロビジョニング](./g-suite-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>ギャラリーからの Google Cloud (G Suite) Connector の追加
 
@@ -118,51 +118,53 @@ Google Cloud (G Suite) Connector に対する Azure AD SSO を構成してテス
 
 1. **[基本的な SAML 構成]** セクションで、**Gmail** を構成する場合は次の手順で行います。
 
-    a. **[サインオン URL]** ボックスに、`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com` のパターンを使用して URL を入力します。
+    a. **[識別子]** ボックスに、次のいずれかのパターンで URL を入力します。
 
-    b. **[識別子]** ボックスに、次の形式で URL を入力します。
+    | **Identifier** |
+    |----|
+    | `google.com/a/<yourdomain.com>` |
+    | `google.com` |
+    | `https://google.com` | 
+    | `https://google.com/a/<yourdomain.com>` |
 
-    ```http
-    google.com/a/<yourdomain.com>
-    google.com
-    https://google.com
-    https://google.com/a/<yourdomain.com>
-    ```
+    b. **[応答 URL]** ボックスに、次のいずれかの形式で URL を入力します。 
 
-    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 
-
-    ```http
-    https://www.google.com/acs
-    https://www.google.com/a/<yourdomain.com>/acs
-    ```
+    | **応答 URL** |
+    |-----|
+    | `https://www.google.com/acs` |
+    | `https://www.google.com/a/<yourdomain.com>/acs` |
+    
+    c. **[サインオン URL]** ボックスに、`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com` のパターンを使用して URL を入力します。
 
 1. **[基本的な SAML 構成]** セクションで、**Google Cloud Platform** を構成する場合は次の手順で行います。
 
-    a. **[サインオン URL]** ボックスに、`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com` のパターンを使用して URL を入力します。
-
-    b. **[識別子]** ボックスに、次の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次のいずれかのパターンで URL を入力します。
     
-    ```http
-    google.com/a/<yourdomain.com>
-    google.com
-    https://google.com
-    https://google.com/a/<yourdomain.com>
-    ```
+    | **Identifier** |
+    |-----|
+    | `google.com/a/<yourdomain.com>` |
+    | `google.com` |
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
     
-    c. **[応答 URL]** ボックスに、 のパターンを使用して URL を入力します。 
+    b. **[応答 URL]** ボックスに、次のいずれかの形式で URL を入力します。 
     
-    ```http
-    https://www.google.com/acs
-    https://www.google.com/a/<yourdomain.com>/acs
-    ```
+    | **応答 URL** |
+    |-----|
+    | `https://www.google.com/acs` |
+    | `https://www.google.com/a/<yourdomain.com>/acs` |
+    
+    c. **[サインオン URL]** ボックスに、`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com` のパターンを使用して URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 Google Cloud (G Suite) Connector ではシングル サインオン構成のエンティティ ID も識別子の値も提供されないため、 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオフにすると、識別子の値は `google.com` になります。 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオンにすると、値は `google.com/a/<yourdomainname.com>` になります。 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオンまたはオフにするには、以降のチュートリアルで説明する「**Google Cloud (G Suite) Connector SSO の構成**」セクションに移動する必要があります。 詳細については、[Google Cloud (G Suite) Connector クライアント サポート チーム](https://www.google.com/contact/)にお問い合わせください。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 Google Cloud (G Suite) Connector ではシングル サインオン構成のエンティティ ID も識別子の値も提供されないため、 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオフにすると、識別子の値は `google.com` になります。 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオンにすると、値は `google.com/a/<yourdomainname.com>` になります。 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオンまたはオフにするには、以降のチュートリアルで説明する「**Google Cloud (G Suite) Connector SSO の構成**」セクションに移動する必要があります。 詳細については、[Google Cloud (G Suite) Connector クライアント サポート チーム](https://www.google.com/contact/)にお問い合わせください。
 
 1. Google Cloud (G Suite) Connector アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 次のスクリーンショットはその例です。 **[一意のユーザー ID]** の既定値は **user.userprincipalname** ですが、Google Cloud (G Suite) Connector ではこれがユーザーのメール アドレスにマップされることが想定されています。 そのため、一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。
 
     ![image](common/default-attributes.png)
 
+    > [!NOTE]
+    > SAML Response の DisplayName 属性と Surname 属性に非標準の ASCII 文字が含まれないようにしてください。    
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -171,6 +173,10 @@ Google Cloud (G Suite) Connector に対する Azure AD SSO を構成してテス
 1. **[Google Cloud (G Suite) Connector のセットアップ]** セクションで、自分の要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
+    ```Logout URL
+    https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0
+    ```
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -202,30 +208,27 @@ Google Cloud (G Suite) Connector に対する Azure AD SSO を構成してテス
 
 2. **[セキュリティ]** をクリックします。 このリンクが表示されていない場合、画面下部の **[その他の設定]** に隠れていることがあります。
 
-    ![Click Security.][10]
+    ![Click Security.](./media/google-apps-tutorial/gapps-security.png)
 
 3. **[セキュリティ]** ページで、 **[シングル サインオン (SSO) の設定]** をクリックします。
 
-    ![Click SSO.][11]
+    ![Click SSO.](./media/google-apps-tutorial/security-gapps.png)
 
 4. 次の構成の変更を実行します。
 
-    ![Configure SSO][12]
+    ![SSO を構成します。](./media/google-apps-tutorial/configuration.png)
 
     a. **[Setup SSO with third-party identity provider]\(サード パーティの ID プロバイダーで SSO を設定する\)** を選択します。
 
     b. Google Cloud (G Suite) Connector の **[Sign-in page URL]\(サインイン ページの URL\)** フィールドに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    c. Google Cloud (G Suite) Connector の **[Sign-out page URL]\(サインアウト ページの URL\)** フィールドに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
-
-    > [!NOTE]
-    > Google Cloud (G Suite) は、SAML ログアウト プロトコルに基づいています。 そのため、 **[Sign-out page URL]\(サインアウト ページの URL\)** フィールドでは、その値として SAML ログアウト URL (つまり、ログイン URL) を使用する必要があります。
+    c. Google Cloud (G Suite) Connector の **[Sign-out page URL]\(サインアウト ページの URL\)** フィールドに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
 
     d. Google Cloud (G Suite) Connector の **[Verification certificate]\(検証証明書\)** に、Azure portal からダウンロードした証明書をアップロードします。   
 
     e. 上記の Azure AD の **[基本的な SAML 構成]** セクションに記載されている注意事項に従って、 **[Use a domain specific issuer]\(ドメイン固有の発行者を使用する\)** オプションをオンまたはオフにします。
 
-    f. Google Cloud (G Suite) Connector の **[Change password URL]\(パスワードの URL の変更\)** フィールドに、Azure portal からコピーした **[パスワードの URL の変更]** の値を貼り付けます。
+    f. Google Cloud (G Suite) Connector の **[パスワードの変更 URL]** フィールドに値 `https://account.activedirectory.windowsazure.com/changepassword.aspx` を入力します。
 
     g. **[保存]** をクリックします。
 
@@ -249,15 +252,8 @@ Google Cloud (G Suite) Connector では、自動ユーザー プロビジョニ�
 
 * Google Cloud (G Suite) Connector のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Google Cloud (G Suite) Connector] タイルをクリックすると、Google Cloud (G Suite) Connector のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Google Cloud (G Suite) Connector] タイルをクリックすると、Google Cloud (G Suite) Connector のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Google Cloud (G Suite) Connector を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
-
-<!--Image references-->
-
-[10]: ./media/google-apps-tutorial/gapps-security.png
-[11]: ./media/google-apps-tutorial/security-gapps.png
-[12]: ./media/google-apps-tutorial/gapps-sso-config.png
+Google Cloud (G Suite) Connector を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

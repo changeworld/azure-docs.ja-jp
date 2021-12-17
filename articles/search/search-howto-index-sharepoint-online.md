@@ -1,38 +1,34 @@
 ---
-title: SharePoint Online インデクサーを構成する (プレビュー)
+title: SharePoint Online からのデータのインデックスを作成する (プレビュー)
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search でドキュメント ライブラリのコンテンツのインデックス作成を自動化するように SharePoint Online インデクサーを設定します。
-manager: luisca
-author: MarkHeff
-ms.author: maheff
+author: gmndrg
+ms.author: gimondra
+manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 5888a7cc8aa58d1c6edab191e1243ebc60000fd6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f0e5afcc4f0869c4fe12a634e34e7b0669da5c75
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048869"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137794"
 ---
-# <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Cognitive Search で SharePoint Online のインデックス作成を構成する方法 (プレビュー)
+# <a name="index-data-from-sharepoint-online"></a>SharePoint Online からのデータのインデックスを作成する
 
 > [!IMPORTANT] 
-> SharePoint Online のサポートは現在、**限定的なパブリック プレビュー** の段階です。 限定的なプレビューへのアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に入力して行うことができます。
->
-> プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-> 
-> [REST API バージョン 2020-06-30-Preview](search-api-preview.md) で、この機能を提供しています。 現時点では、ポータルと SDK によるサポートはありません。
+> SharePoint Online のサポートは、現在パブリック プレビュー段階にあり、[追加の使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)が適用されます。 この機能への[アクセスの要求](https://aka.ms/azure-cognitive-search/indexer-preview)を行い、アクセスが有効になったら、[プレビュー REST API (2020-06-30-preview 以降)](search-api-preview.md) を使用してコンテンツのインデックスを作成します。 現時点で、ポータルによるサポートは制限されており、.NET SDK によるサポートはありません。
+
+この記事では、Azure Cognitive Search を使用して、SharePoint Online ドキュメント ライブラリに格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) の Azure Cognitive Search インデックスを作成する方法を説明します。 まず、インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
 
 > [!NOTE]
 > SharePoint Online では、ユーザーごとのアクセスをドキュメント レベルで決定する詳細な認可モデルがサポートされています。 SharePoint Online インデクサーによってこれらのアクセス許可が検索インデックスに設定されることはありません。Cognitive Search では、ドキュメントレベルの認可がサポートされていません。 SharePoint Online からのインデックスがドキュメントに付けられ、検索サービスに設定される場合、そのインデックスに読み取りアクセスできる誰もがコンテンツを利用できます。 ドキュメントレベルのアクセス許可が必要な場合、セキュリティ フィルターを調べ、権限のないコンテンツの結果を減らしてください。 詳細については、[Active Directory ID を使用してセキュリティをトリミングする](search-security-trimming-for-azure-search-with-aad.md)方法に関するページを参照してください。
 
-この記事では、Azure Cognitive Search を使用して、SharePoint Online ドキュメント ライブラリに格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) の Azure Cognitive Search インデックスを作成する方法を説明します。 まず、インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
-
 ## <a name="functionality"></a>機能
+
 Azure Cognitive Search のインデクサーは、データ ソースから検索可能なデータとメタデータを抽出するクローラーです。 SharePoint Online インデクサーは、SharePoint Online サイトに接続し、1 つ以上のドキュメント ライブラリにあるドキュメントのインデックスを作成します。 インデクサーには以下の機能があります。
 + 1 つ以上の SharePoint Online ドキュメント ライブラリにあるコンテンツのインデックスを作成する。
-+ Azure Cognitive Search サービスと同じテナントに属する SharePoint Online ドキュメント ライブラリにあるコンテンツのインデックスを作成する。 インデクサーは、Azure Cognitive Search サービスとは異なるテナントに属する SharePoint サイトでは機能しません。 
 + インデクサーは、インデックスの増分作成をサポートします。そのため、ドキュメント ライブラリ内の変更されたコンテンツが特定され、それ以降のインデックス作成の実行時には更新されたコンテンツのインデックスのみが作成されます。 たとえば、最初に 5 つの PDF のインデックスがインデクサーによって作成され、その後に 1 つが更新され、それからインデクサーが再度実行された場合、更新された 1 つの PDF のインデックスのみがインデクサーによって作成されます。
 + インデックスが作成されるドキュメントからは、既定でテキストおよび正規化された画像が抽出されます。 必要に応じて、さらにコンテンツをエンリッチするためにスキルセットをパイプラインに追加できます。 スキルセットの詳細については、記事「[Azure Cognitive Search のスキルセットの概念](cognitive-search-working-with-skillsets.md)」を参照してください。
 
@@ -50,8 +46,15 @@ SharePoint Online インデクサーは、既定でインデックスの増分�
 ## <a name="setting-up-sharepoint-online-indexing"></a>SharePoint Online のインデックス作成の設定
 SharePoint Online インデクサーを設定するには、Azure portal 内でいくつかのアクションを、プレビュー REST API を使用していくつかのアクションを実行する必要があります。 このプレビューは、SDK ではサポートされていません。
 
-### <a name="step-1-enable-system-assigned-managed-identity"></a>手順 1: システム割り当てマネージド ID を有効にする
-システム割り当てマネージド ID が有効になると、Azure によって検索サービス用の ID が作成され、インデクサーで使用することができるようになります。
+ 次のビデオでは、SharePoint Online インデクサーを設定する方法を説明します。
+ 
+> [!VIDEO https://www.youtube.com/embed/QmG65Vgl0JI]
+
+### <a name="step-1-optional-enable-system-assigned-managed-identity"></a>手順 1 (省略可能): システム割り当てマネージド ID を有効にする
+
+システム割り当てマネージド ID が有効になると、Azure によって検索サービス用の ID が作成され、インデクサーで使用することができるようになります。 この ID は、検索サービスがプロビジョニングされているテナントを自動的に検出するために使用されます。
+
+SharePoint Online サイトが検索サービスと同じテナント内にある場合は、検索サービスに対してシステム割り当てマネージド ID を有効にする必要があります。 SharePoint Online サイトが検索サービスとは別のテナント内にある場合、システム割り当てマネージド ID を有効にする必要はありません。
 
 ![システム割り当てマネージド ID を有効にする](media/search-howto-index-sharepoint-online/enable-managed-identity.png "システム割り当てマネージド ID を有効にする")
 
@@ -87,7 +90,7 @@ SharePoint Online インデクサーは、この AAD アプリケーションを
 
 1.  管理者の同意を与えます (特定のテナントに対してのみ必要)。
 
-    一部のテナントはロックダウンされていて、これらの委任された API アクセス許可に管理者の同意が必要です。 その場合は、インデクサーを作成する前に、管理者がこの AAD アプリケーションに管理者の同意を与える必要があります。 
+    一部のテナントはロックダウンされていて、これらの委任された API アクセス許可に管理者の同意が必要です。 その場合は、インデクサーを作成する前に、管理者がこの AAD アプリケーションに管理者の同意を与える必要があります。
 
     すべてのテナントにこの要件があるわけではないため、まずこの手順をスキップして、手順を続行することをお勧めします。 管理者の同意が必要かどうかは、インデクサーを作成するときに、認証が失敗すると、管理者が認証を承認する必要があることを伝えるメッセージが表示されることでわかります。 その場合は、下のボタンを使用して、テナント管理者が同意を与える必要があります。
 
@@ -117,10 +120,13 @@ api-key: [admin key]
 {
     "name" : "sharepoint-datasource",
     "type" : "sharepoint",
-    "credentials" : { "connectionString" : "SharePointOnlineEndpoint=[SharePoint Online site url];ApplicationId=[AAD App ID]" },
+    "credentials" : { "connectionString" : "SharePointOnlineEndpoint=[SharePoint Online site url];ApplicationId=[AAD App ID];TenantId=[SharePoint Online site tenant id]" },
     "container" : { "name" : "defaultSiteLibrary", "query" : null }
 }
 ```
+
+> [!NOTE]
+> SharePoint Online サイトが検索サービスと同じテナント内にあり、システム割り当てマネージド ID が有効になっている場合は、`TenantId` を接続文字列に含める必要はありません。 SharePoint Online サイトが検索サービスとは異なるテナント内にある場合は、`TenantId` を含める必要があります。
 
 ### <a name="step-4-create-an-index"></a>手順 4: インデックスを作成する
 インデックスでは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。
@@ -146,6 +152,9 @@ api-key: [admin key]
 }
 
 ```
+
+> [!IMPORTANT]
+> SharePoint Online インデクサーによって設定されたインデックスのキーフィールドとして [`metadata_spo_site_library_item_id`](#metadata) のみを使用できます。 キー フィールドがデータ ソースに存在しない場合、`metadata_spo_site_library_item_id` は自動的にキー フィールドにマップされます。
 
 詳細については、[インデックスの作成 (REST API)](/rest/api/searchservice/create-index) に関する記事をご覧ください。
 
@@ -257,11 +266,10 @@ api-key: [admin key]
 
 1.  再度インデクサーの実行を手動で開始し、インデクサーの状態を確認します。 今度はインデクサーの実行が正常に開始されるはずです。
 
+<a name="metadata"></a>
+
 ## <a name="indexing-document-metadata"></a>ドキュメント メタデータのインデックス作成
 ドキュメント メタデータのインデックスを作成するようにインデクサーを設定している場合は、次のメタデータを使用して、インデックスを作成できます。
-
-> [!NOTE]
-> カスタム メタデータは、現在のバージョンのプレビューには含まれていません。
 
 | 識別子 | Type | 説明 | 
 | ------------- | -------------- | ----------- |
@@ -279,6 +287,9 @@ api-key: [admin key]
 
 SharePoint Online インデクサーでは、各ドキュメントの種類に固有のメタデータもサポートされています。 詳細については、[Azure Cognitive Search で使用されるコンテンツ メタデータのプロパティ](search-blob-metadata-properties.md)に関するページを参照してください。
 
+> [!NOTE]
+> カスタム メタデータのインデックスを作成するには、[クエリ定義で `additionalColumns` を指定する必要があります](#query)
+
 <a name="controlling-which-documents-are-indexed"></a>
 
 ## <a name="controlling-which-documents-are-indexed"></a>インデックスを作成するドキュメントの制御
@@ -293,6 +304,8 @@ SharePoint Online インデクサーでは、各ドキュメントの種類に�
 +   *useQuery*
     + *query* で定義されているコンテンツのインデックスのみを作成します。
 
+<a name="query"></a>
+
 ### <a name="query"></a>クエリ
 *query* プロパティは、キーワードと値のペアで構成されます。 使用できるキーワードを以下に示します。 値は、サイトの URL またはドキュメント ライブラリの URL のいずれかです。
 
@@ -305,6 +318,7 @@ SharePoint Online インデクサーでは、各ドキュメントの種類に�
 | includeLibrariesInSite | 接続文字列に定義されているサイト内のすべてのライブラリにあるコンテンツのインデックスを作成します。 これらはご自分のサイトのサブサイトに限定されます <br><br> このキーワードの *query* 値は、サイトまたはサブサイトの URI である必要があります。 | mysite 内のすべてのドキュメント ライブラリにあるすべてのコンテンツのインデックスを作成する。 <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrariesInSite=https://mycompany.sharepoint.com/mysite" } ``` |
 | includeLibrary | このライブラリにあるコンテンツのインデックスを作成します。 <br><br> このキーワードの *query* 値は、次のいずれかの形式にする必要があります。 <br><br> 例 1: <br><br> *includeLibrary=[サイトまたはサブサイト]/[ドキュメント ライブラリ]* <br><br> 例 2: <br><br> お使いのブラウザーからコピーした URI。 | MyDocumentLibrary にあるすべてのコンテンツのインデックスを作成する。 <br><br> 例 1: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/mysite/MyDocumentLibrary" } ``` <br><br> 例 2: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/teams/mysite/MyDocumentLibrary/Forms/AllItems.aspx" } ``` |
 | excludeLibrary |  このライブラリにあるコンテンツのインデックスを作成しません。 <br><br> このキーワードの *query* 値は、次のいずれかの形式にする必要があります。 <br><br> 例 1: <br><br> *excludeLibrary=[サイトまたはサブサイトの URI]/[ドキュメント ライブラリ]* <br><br> 例 2: <br><br> お使いのブラウザーからコピーした URI。 | MyDocumentLibrary 以外のすべてのライブラリにあるすべてのコンテンツのインデックスを作成する。 <br><br> 例 1: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrariesInSite=https://mysite.sharepoint.com/subsite1; excludeLibrary=https://mysite.sharepoint.com/subsite1/MyDocumentLibrary" } ``` <br><br> 例 2: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrariesInSite=https://mycompany.sharepoint.com/teams/mysite; excludeLibrary=https://mycompany.sharepoint.com/teams/mysite/MyDocumentLibrary/Forms/AllItems.aspx" } ``` |
+| additionalColumns | このライブラリの列にインデックスを作成します。 <br><br> このキーワードのクエリ値には、インデックスを作成する列名のコンマ区切りリストを含める必要があります。 列名に含まれるセミコロンとコンマは、二重円記号を使用してエスケープします。 <br><br> 例 1: <br><br> additionalColumns=MyCustomColumn,MyCustomColumn2 <br><br> 例 2: <br><br> additionalColumns=MyCustomColumnWith\\,,MyCustomColumn2With\\; | MyDocumentLibrary にあるすべてのコンテンツのインデックスを作成する。 <br><br> 例 1: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/mysite/MyDocumentLibrary;additionalColumns=MyCustomColumn,MyCustomColumn2" } ``` <br><br> 文字をエスケープするときの二重の円記号に注意してください。JSON では、円記号を別の円記号でエスケープする必要があります。 <br><br> 例 2: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/teams/mysite/MyDocumentLibrary/Forms/AllItems.aspx;additionalColumns=MyCustomColumnWith\\,,MyCustomColumnWith\\;" } ``` |
 
 ## <a name="index-by-file-type"></a>ファイルの種類でインデックスを作成する
 インデックスが作成されるドキュメントとスキップされるドキュメントを制御できます。

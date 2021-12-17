@@ -1,26 +1,28 @@
 ---
-title: Azure Active Directory のアプリケーション管理用の PowerShell サンプル
+title: アプリケーション管理の PowerShell サンプル
+titleSuffix: Azure AD
 description: これらの PowerShell サンプルは、Azure Active Directory テナントで管理しているアプリに使用します。 これらのサンプル スクリプトを使用すると、シークレットと証明書の有効期限に関する情報を見つけることができます。
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 02/18/2021
-ms.author: iangithinji
-ms.reviewer: mifarca
-ms.openlocfilehash: 6b6314935bfafc2fe6288c30619e1d01242a991d
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.author: davidmu
+ms.reviewer: sureshja
+ms.openlocfilehash: 95f0ee8106612dd2035f0e1c77d9fe5d3efe2540
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378824"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620034"
 ---
 # <a name="azure-active-directory-powershell-examples-for-application-management"></a>アプリケーション管理用の Azure Active Directory PowerShell の例
 
 次の表には、Azure AD アプリケーション管理用の PowerShell スクリプトの例へのリンクが含まれています。 これらのサンプルでは、次のいずれかが必要です。
+
 - [Graph 用 AzureAD V2 PowerShell モジュール](/powershell/azure/active-directory/install-adv2)
 - [Graph 用 AzureAD V2 PowerShell モジュール プレビュー バージョン](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (これ以外の指定がない場合)。
 

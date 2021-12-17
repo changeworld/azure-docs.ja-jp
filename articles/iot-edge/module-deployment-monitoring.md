@@ -1,19 +1,18 @@
 ---
 title: デバイス グループの自動デプロイ - Azure IoT Edge | Microsoft Docs
 description: Azure IoT Edge で自動デプロイを使用し、共有タグに基づいてデバイスのグループを管理します
-author: kgremban
-manager: philmea
-ms.author: kgremban
-ms.date: 01/30/2020
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 10/18/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3989ec4ca2b5c9d7385841604678791b20c1d102
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 349ad022876b2504fe31be6f162255ae4d6d6a65
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489984"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179471"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動デプロイについて
 
@@ -79,7 +78,8 @@ IoT Edge の自動デプロイでは、実行する IoT Edge モジュール イ
 * デバイス ツインでは、ターゲット条件を作成するときに使うことができるのはタグ、報告されるプロパティ、またはデバイス ID だけです。
 * ターゲット条件のどの部分でも、二重引用符を使うことはできません。 単一引用符を使ってください。
 * 単一引用符は、ターゲット条件の値を表します。 そのため、デバイス名に単一引用符が含まれる場合は、別の単一引用符でエスケープする必要があります。 たとえば、`operator'sDevice` というデバイスをターゲットとするには、`deviceId='operator''sDevice'` と書き込みます。
-* ターゲット条件の値 `-:.+%_#*?!(),=@;$` には、数字、文字、および 次の文字を使用することができます。
+* ターゲット条件の値 `“()<>@,;:\\"/?={} \t\n\r` には、数字、文字、および 次の文字を使用することができます。
+* ターゲット条件キーでは、次の文字は使用できません: `/;`。
 
 ### <a name="priority"></a>Priority
 

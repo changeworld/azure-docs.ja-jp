@@ -1,24 +1,26 @@
 ---
-title: Kubernetes にセルフホステッド ゲートウェイをデプロイする | Microsoft Docs
+title: Kubernetes にセルフホステッド ゲートウェイをデプロイする
 description: Azure API Management のセルフホステッド ゲートウェイ コンポーネントを Kubernetes にデプロイする方法について説明します
-services: api-management
-author: vladvino
+author: dlepow
 manager: gwallace
 ms.service: api-management
 ms.workload: mobile
 ms.topic: article
-ms.author: apimpm
-ms.date: 04/23/2020
-ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.date: 05/25/2021
+ms.openlocfilehash: 5ab029b5080ae06276119d733f081974ba42ff9b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89500132"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708444"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Kubernetes にセルフホステッド ゲートウェイをデプロイする
 
 この記事では、Azure API Management のセルフホステッド ゲートウェイ コンポーネントを Kubernetes クラスターにデプロイする手順について説明します。
+
+> [!NOTE]
+> また、セルフホステッド ゲートウェイを [Azure Arc 対応 Kubernetes クラスター](how-to-deploy-self-hosted-gateway-azure-arc.md)に[クラスター拡張機能](../azure-arc/kubernetes/extensions.md)としてデプロイすることもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,38 +42,40 @@ ms.locfileid: "89500132"
 8. コマンドをターミナル (またはコマンド) ウィンドウに貼り付けます。 最初のコマンドでは、手順 4 で生成されたアクセス トークンを含めた Kubernetes シークレットを作成します。 2 番目のコマンドでは、手順 6 でダウンロードした構成ファイルを Kubernetes クラスターに適用し、ファイルが現在のディレクトリにあることを求めます。
 9. コマンドを実行して[既定の名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)に必要な Kubernetes オブジェクトを作成し、Microsoft Container Registry からダウンロードされた[コンテナー イメージ](https://aka.ms/apim/sputnik/dhub)からセルフホステッド ゲートウェイ ポッドを起動します。
 10. 次のコマンドを実行し、デプロイが成功したかどうかを確認します。 すべてのオブジェクトが作成され、ポッドが初期化されるまでに少し時間がかかる場合があることにご注意ください。
+
     ```console
     kubectl get deployments
     NAME             READY   UP-TO-DATE   AVAILABLE   AGE
     <gateway-name>   1/1     1            1           18s
     ```
 11. サービスが正常に作成されたかどうかを確認するには、次のコマンドを実行します。 サービスの IP とポートが異なることに注意してください。
+
     ```console
     kubectl get services
     NAME             TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
     <gateway-name>   LoadBalancer   10.99.236.168   <pending>     80:31620/TCP,443:30456/TCP   9m1s
     ```
-12. Azure portal に戻り、 **[概要]** を選択します。
-13. **[状態]** に緑のチェック マークが表示されていることを確認し、そのマークの後ろのノード数が YAML ファイルに指定されているレプリカ数に一致することを確認します。 この状態は、デプロイされたセルフホステッド ゲートウェイ ポッドが API Management サービスと正常に通信しており、"ハートビート" が通常であることを意味します。
+1. Azure portal に戻り、 **[概要]** を選択します。
+1. **[状態]** に緑のチェック マークが表示されていることを確認し、そのマークの後ろのノード数が YAML ファイルに指定されているレプリカ数に一致することを確認します。 この状態は、デプロイされたセルフホステッド ゲートウェイ ポッドが API Management サービスと正常に通信しており、"ハートビート" が通常であることを意味します。
 
     ![ゲートウェイの状態](media/how-to-deploy-self-hosted-gateway-kubernetes/status.png)
 
 > [!TIP]
-> ランダムに選択されたポッドのログを表示するには、<code>kubectl logs deployment/<gateway-name></code> コマンドを実行します (複数存在する場合)。
-> 特定のポッドまたはコンテナーのログを表示する方法など、コマンド オプションの完全なセットに対して <code>kubectl logs -h</code> を実行します。
+> ランダムに選択されたポッドのログを表示するには、`kubectl logs deployment/<gateway-name>` コマンドを実行します (複数存在する場合)。
+> 特定のポッドまたはコンテナーのログを表示する方法など、コマンド オプションの完全なセットに対して `kubectl logs -h` を実行します。
 
 ## <a name="production-deployment-considerations"></a>運用環境のデプロイに関する考慮事項
 
 ### <a name="access-token"></a>アクセス トークン
 有効なアクセス トークンがない場合、セルフホステッド ゲートウェイで、関連付けられている API Management サービスのエンドポイントから構成データにアクセスしてダウンロードすることができません。 アクセス トークンは最大で 30 日間有効です。 有効期限が切れる前に再生成し、手動か自動化により、新しいトークンでクラスターを構成する必要があります。
 
-トークンの更新を自動化する場合、この管理 API [操作](/rest/api/apimanagement/2019-12-01/gateway/generatetoken)を使用して新しいトークンを生成します。 Kubernetes シークレットの管理の詳細については、[Kubernetes Web サイト](https://kubernetes.io/docs/concepts/configuration/secret)を参照してください。
+トークンの更新を自動化する場合、この管理 API [操作](/rest/api/apimanagement/2020-12-01/gateway/generate-token)を使用して新しいトークンを生成します。 Kubernetes シークレットの管理の詳細については、[Kubernetes Web サイト](https://kubernetes.io/docs/concepts/configuration/secret)を参照してください。
 
 ### <a name="namespace"></a>名前空間
 Kubernetes [名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)を使用すると、1 つのクラスターを複数のチーム、プロジェクト、またはアプリケーションに分割する際に役立ちます。 名前空間からはリソースと名前の範囲が与えられます。 リソース クォータとアクセス制御ポリシーに関連付けることができます。
 
 Azure portal からは、**既定** の名前空間でセルフホステッド ゲートウェイ リソースを作成するコマンドが与えられます。 この名前空間は自動的に作成され、あらゆるクラスターに存在します。削除できません。
-運用環境の別の名前空間にセルフホステッド ゲートウェイを[作成およびデプロイ](https://kubernetesbyexample.com/ns/)することを検討してください。
+運用環境の別の名前空間にセルフホステッド ゲートウェイを[作成およびデプロイ](https://www.kubernetesbyexample.com/)することを検討してください。
 
 ### <a name="number-of-replicas"></a>レプリカの数
 運用環境に適したレプリカの最小数は 2 です。
@@ -130,3 +134,4 @@ API トラフィックを監視し、Azure の接続が停止している間の�
 ## <a name="next-steps"></a>次のステップ
 
 * セルフホステッド ゲートウェイの詳細については、[セルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md)に関するページを参照してください。
+* [Azure Arc 対応 Kubernetes クラスターに API Management セルフホステッド ゲートウェイをデプロイする方法](how-to-deploy-self-hosted-gateway-azure-arc.md)について学習します。

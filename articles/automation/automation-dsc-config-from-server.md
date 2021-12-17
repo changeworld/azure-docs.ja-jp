@@ -3,19 +3,15 @@ title: Azure Automation State Configuration のために既存のサーバーか
 description: この記事では、Azure Automation State Configuration のために既存のサーバーから構成を作成する方法について説明します。
 keywords: DSC, PowerShell, 構成, セットアップ
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgreenegit
-ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8f376fb383e50a39f0f12d45cf9b5ae47ad6fcbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0240fd14a8e5dd5975fd499839e10caa0756953f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86186505"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491509"
 ---
 # <a name="create-configurations-from-existing-servers"></a>既存のサーバーから構成を作成する
 
@@ -33,7 +29,7 @@ ms.locfileid: "86186505"
 
 SharePoint の頃から、この分野で利用するための [ReverseDSC](https://github.com/microsoft/reversedsc) というソリューションがコミュニティによって管理されてきました。
 
-このソリューションは [SharePointDSC リソース](https://github.com/powershell/sharepointdsc)を基盤としており、既存の SharePoint サーバーからの[情報収集](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use)をオーケストレーションするように機能が拡張されています。
+このソリューションは [SharePointDSC リソース](https://github.com/powershell/sharepointdsc)を基盤としており、SharePoint を実行している既存のサーバーからの[情報収集](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use)をオーケストレーションするように機能が拡張されています。
 最新バージョンは、インクルードする情報のレベルを決定する複数の[抽出モード](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes)を備えています。
 
 ソリューションを使用した結果、SharePointDSC 構成スクリプトで使用する[構成データ](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data)が生成されます。

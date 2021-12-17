@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.openlocfilehash: e28281b783c66f8dbb0bc4842679eeec43755508
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 33077902722a32f792c12598f7d555880050a574
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92515003"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309021"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-reprints-desk---article-galaxy"></a>チュートリアル: Reprints Desk - Article Galaxy と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -43,7 +43,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Reprints Desk - Article Galaxy では、**ジャスト イン タイム** のユーザー プロビジョニングがサポートされます
 
-* [Reprints Desk - Article Galaxy を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。セッション制御は、条件付きアクセスを拡張したものです。Microsoft Cloud App Security でセッション制御を強制する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。
+* [Reprints Desk - Article Galaxy を構成すると、セッション制御を適用できます。これにより、組織の機密データの流出と侵入行動がリアルタイムで保護されます。セッション制御は、条件付きアクセスから拡張します。Microsoft Defender for Cloud Apps でセッション制御を強制する方法について説明](/cloud-app-security/proxy-deployment-any-app)します。
 
 ## <a name="adding-reprints-desk---article-galaxy-from-the-gallery"></a>ギャラリーからの Reprints Desk - Article Galaxy の追加
 
@@ -144,7 +144,7 @@ Reprints Desk - Article Galaxy に対する Azure AD SSO を構成してテス�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルの [Reprints Desk - Article Galaxy] タイルをクリックすると、SSO を設定した Reprints Desk - Article Galaxy に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルの [Reprints Desk - Article Galaxy] タイルをクリックすると、SSO を設定した Reprints Desk - Article Galaxy に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -156,6 +156,6 @@ Reprints Desk - Article Galaxy に対する Azure AD SSO を構成してテス�
 
 - [Azure AD を使用して Reprints Desk - Article Galaxy を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Reprints Desk - Article Galaxy を保護する方法](/cloud-app-security/proxy-intro-aad)

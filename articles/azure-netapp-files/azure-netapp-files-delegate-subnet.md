@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 08/25/2021
 ms.author: b-juche
-ms.openlocfilehash: bb3d1fd49c2623ff6dcbe8a19ae8c8ca3b46425a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdb184d4b96e4cfee2b5450f35c947efb768da9b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006578"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866978"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>サブネットを Azure NetApp Files に委任する 
 
@@ -27,8 +27,8 @@ ms.locfileid: "96006578"
 
 ## <a name="considerations"></a>考慮事項
 
-* 新しいサブネットを作成するウィザードでは、既定で /24 ネットワーク マスクになっており、251 個の使用可能な IP アドレスが提供されます。 /28 ネットワーク マスクを使用すると、11 個の使用可能な IP アドレスが提供され、このサービスにはそれで十分です。
-* 各 Azure Virtual Network (VNet) で、1 つのサブネットだけを Azure NetApp Files に委任できます。   
+* 新しいサブネットを作成するウィザードでは、既定で /24 ネットワーク マスクになっており、251 個の使用可能な IP アドレスが提供されます。 /28 ネットワーク マスクを使用すると、11 個の使用可能な IP アドレスが提供され、ほとんどのユース ケースにはそれで十分です。 多くのボリュームとストレージ エンドポイントが予想される SAP HANA などのシナリオでは、より大きなサブネット (/26 ネットワーク マスクなど) を検討する必要があります。 Azure Virtual Network (VNet) で多数のクライアントまたは VM IP アドレスを予約する必要がなき場合は、ウィザードで提案されている既定のネットワーク マスク /24 のままにすることもできます。 委任されたネットワークのネットワーク マスクは、最初の作成後に変更できないことに注意してください。 
+* 各 VNet で、1 つのサブネットだけを Azure NetApp Files に委任できます。   
    Azure では、VNet 内に複数の委任されたサブネットを作成できます。  ただし、委任されたサブネットを複数使用している場合、新しいボリュームを作成しようとすると失敗します。  
    1 つの VNet には、委任されたサブネットを 1 つだけ含めることができます。 NetApp アカウントでは、複数の Vnet にボリュームを配置でき、それぞれに独自の委任されたサブネットがあります。  
 * 委任されたサブネット内のネットワーク セキュリティ グループまたはサービス エンドポイントを指定することはできません。 そうした場合、サブネットの委任が失敗します。

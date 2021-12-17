@@ -1,17 +1,17 @@
 ---
 title: 過去のテレメトリ データの取り込み
 description: この記事では、テレメトリの履歴データを取り込む方法について説明します。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.custom: has-adal-ref
-ms.openlocfilehash: e4182f3718422be3a0aa99c980d33026df4ce9af
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.custom: ''
+ms.openlocfilehash: 0028bced72633c1544f6c53fa0f429ca570026c1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173751"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621625"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み
 
@@ -192,7 +192,7 @@ access_token = token_response.get('access_token')
 FarmBeats Datahub への API 呼び出しを行うときに指定する必要がある、最も一般的な要求ヘッダーを次に示します。
 
 - **Content-Type**: application/json
-- **承認**: Bearer <Access-Token>
+- **Authorization**: ベアラー \<Access-Token\>
 - **Accept**: application/json
 
 ### <a name="input-payload-to-create-metadata"></a>メタデータを作成するための入力ペイロード

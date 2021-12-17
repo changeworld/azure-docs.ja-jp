@@ -1,20 +1,20 @@
 ---
 title: Node.js から Azure Queue Storage を使用する方法 - Azure Storage
 description: Azure Queue Storage を使用してキューを作成および削除する方法について説明します。 Node.js を使用してメッセージを挿入、取得、削除する方法について説明します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 12/21/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 161000f2860a1153424a628a2b303f3717f828da
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 29a621aa5221a0a4ee06c5c9a635af49320533c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275942"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638275"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>Node.js から Azure Queue Storage を使用する方法
 
@@ -42,7 +42,7 @@ ms.locfileid: "106275942"
 
 1. PowerShell (Windows)、Terminal (Mac)、Bash (Unix) などのコマンド ライン インターフェイスを使用し、サンプル アプリケーションを作成したフォルダーに移動します。
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 1. コマンド ウィンドウに「`npm install @azure/storage-queue`」と入力します。
 
@@ -60,7 +60,7 @@ ms.locfileid: "106275942"
 
 コード エディターを使用して、キューを使用しようとしている JavaScript ファイルの先頭に次を追加します。
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_ImportStatements":::
 
@@ -74,7 +74,7 @@ var azure = require('azure-storage');
 
 ## <a name="how-to-create-a-queue"></a>キューの作成方法
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 次のコードを実行すると、`AZURE_STORAGE_CONNECTION_STRING` という名前の環境変数の値が取得され、それを使用して [`QueueServiceClient`](/javascript/api/@azure/storage-queue/queueserviceclient) オブジェクトが作成されます。 その後、このオブジェクトを使用して、特定のキューを操作できる [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient) オブジェクトを作成します。
 
@@ -108,7 +108,7 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>メッセージをキューに挿入する方法
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 キューにメッセージを追加するには、[`sendMessage`](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) メソッドを呼び出します。
 
@@ -132,7 +132,7 @@ queueSvc.createMessage('myqueue', "Hello, World", function(error, results, respo
 
 `peekMessages` メソッドを呼び出すことにより、キュー内のメッセージをそのキューから削除することなくピークできます。
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 既定では、[`peekMessages`](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) によって 1 つのメッセージがピークされます。 次の例では、キュー内の最初の 5 つのメッセージをピークします。 表示されるメッセージが 5 つより少ない場合は、表示されるメッセージだけが返されます。
 
@@ -160,7 +160,7 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 
 次の例では、メッセージのテキストを更新します。
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 [`updateMessage`](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-) を呼び出すことにより、キュー内のメッセージの内容をその場で変更します。
 
@@ -196,7 +196,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 
 次の例では、メッセージを取得してから削除します。
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 メッセージを取得するには、[`receiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) メソッドを呼び出します。 この呼び出しによりそのメッセージはキュー内で非表示になるため、他のクライアントは処理できません。 アプリケーションによるメッセージの処理が済んだら、[`deleteMessage`](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) を呼び出してキューからそれを削除します。
 
@@ -232,7 +232,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 
 ## <a name="additional-options-for-dequeuing-messages"></a>メッセージのデキュー用の追加オプション
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
 
@@ -273,7 +273,7 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 
 ## <a name="how-to-get-the-queue-length"></a>キューの長さを取得する方法
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 [`getProperties`](/javascript/api/@azure/storage-queue/queueclient#getproperties-queuegetpropertiesoptions-) メソッドからは、キューに関するメタデータ (キュー内で待機しているメッセージの概数を含む) が返されます。
 
@@ -295,7 +295,7 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 
 ## <a name="how-to-list-queues"></a>キューを一覧表示する方法
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 キューの一覧を取得するには、[`QueueServiceClient.listQueues`](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix) を呼び出します。 特定のプレフィックスによってフィルター処理された一覧を取得するには、呼び出し内の [options.prefix](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix) を `listQueues` に設定します。
 
@@ -319,7 +319,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 
 ## <a name="how-to-delete-a-queue"></a>キューを削除する方法
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 キューおよびキューに格納されているすべてのメッセージを削除するには、`QueueClient` オブジェクトで [`DeleteQueue`](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) メソッドを呼び出します。
 

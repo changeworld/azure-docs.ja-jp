@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery で暗号化された Azure VM のレプリケーションを有効にする
 description: この記事では、Site Recovery を使用して Azure Disk Encryption 対応 VM を Azure リージョン間でレプリケートするための構成方法について説明します。
-author: asgang
-manager: rochakm
+author: sideeksh
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
-ms.author: sutalasi
-ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sideeksh
+ms.openlocfilehash: bc51c117e48c823a46458b732e18c45fa119fffb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86135789"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748070"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption 対応仮想マシンを別の Azure リージョンにレプリケートする
 

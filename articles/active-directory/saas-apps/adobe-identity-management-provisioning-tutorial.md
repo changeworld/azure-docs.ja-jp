@@ -3,8 +3,8 @@ title: チュートリアル:Azure Active Directory を使用した自動ユー�
 description: Azure AD から Adobe Identity Management に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 6ae05dc7-1265-44b4-a20c-512b5218b9d1
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/27/2020
-ms.author: Zhchia
-ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: tutorial
+ms.date: 04/30/2021
+ms.author: thwimmer
+ms.openlocfilehash: 504b0c40a2cf0b4daf8af95c6564168dd2867bd5
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673302"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322806"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Adobe Identity Management を構成する
 
@@ -42,6 +42,7 @@ ms.locfileid: "97673302"
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。
 * プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * 検証済みドメインでの [Adobe Admin Console](https://adminconsole.adobe.com/) におけるフェデレーション ディレクトリ。
+* ユーザー プロビジョニングに関する [adobe ドキュメント](https://helpx.adobe.com/enterprise/admin-guide.html/enterprise/using/add-azure-sync.ug.html)を確認する 
 
 > [!NOTE]
 > 組織でユーザー同期ツールまたは UMAPI 統合を使用している場合は、最初に統合を一時停止する必要があります。 次に、Azure Portal からのユーザー管理を自動化するために Azure AD 自動プロビジョニングを追加します。 Azure AD 自動プロビジョニングが構成されて実行されたら、ユーザー同期ツールまたは UMAPI 統合を完全に削除できます。

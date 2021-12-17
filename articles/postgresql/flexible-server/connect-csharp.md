@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 01/16/2021
-ms.openlocfilehash: fd6df64482c5eaeec79fe5f2c9a92aaae475dfdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7eb4d405982b3a069c77d3d6bf994d3d9f6a2bdd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98605958"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429054"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>クイックスタート: .NET (C#) を使用して Azure Database for PostgreSQL - フレキシブル サーバーに接続し、データのクエリを実行する
 
@@ -25,7 +25,7 @@ ms.locfileid: "98605958"
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free)。
 - [Azure portal](./quickstart-create-server-portal.md) を使用して Azure Database for PostgreSQL フレキシブル サーバーを作成する <br/> [Azure CLI](./quickstart-create-server-cli.md) を使用して、Azure Database for PostgreSQL の単一サーバーを作成します (まだない場合)。
 - サーバーにある空の *postgres* データベースを使用するか、[新しいデータベース](./quickstart-create-server-portal.md#connect-to-the-postgresql-database-using-psql)を作成します。
-- 使用しているプラットフォーム (Windows、Ubuntu Linux、または macOS) 用の [.NET Framework](https://www.microsoft.com/net/download) をインストールします。
+- 使用しているプラットフォーム (Windows、Ubuntu Linux、または macOS) 用の [.NET SDK](https://dotnet.microsoft.com/download) をインストールします。
 - プロジェクトをビルドするには、[Visual Studio](https://www.visualstudio.com/downloads/) をインストールします。
 - Visual Studio に [Npgsql](https://www.nuget.org/packages/Npgsql/) NuGet パッケージをインストールします。
 

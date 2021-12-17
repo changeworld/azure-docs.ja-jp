@@ -5,14 +5,15 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 09/13/2020
+ms.date: 10/05/2021
 ms.author: rogarana
-ms.openlocfilehash: 5ee4481b3151e28d5d37760e486a43adbc194994
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9012f74f29c1e3ed768a32a6988c7aae527b44ce
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553223"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999152"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>パート 1: Azure ファイル共有に対する AD DS 認証を有効にする 
 
@@ -22,15 +23,23 @@ Active Directory Domain Services (AD DS) 認証を有効にする前に、[概�
 
 ストレージ アカウントを AD DS に登録するには、それを表すアカウントを AD DS 内に作成します。 このプロセスは、オンプレミスの Windows ファイル サーバーを表すアカウントを AD DS 内に作成するのと同じように考えることができます。 機能は、ストレージ アカウントで有効になると、アカウント内のすべての新規および既存のファイル共有に適用されます。
 
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+
 ## <a name="option-one-recommended-use-azfileshybrid-powershell-module"></a>オプション 1 (推奨):AzFilesHybrid PowerShell モジュールを使用する
 
 AzFilesHybrid PowerShell モジュールのコマンドレットによって、ユーザーの代わりに必要な変更が行われ、機能が有効になります。 コマンドレットの一部はオンプレミスの AD DS と相互作用するため、ここではコマンドレットの動作について説明します。これにより、変更がコンプライアンス ポリシーとセキュリティ ポリシーに適合するかどうかを判断し、コマンドレットを実行するための適切なアクセス許可を持っていることを確実にすることができます。 AzFilesHybrid モジュールの使用をお勧めしますが、使用できない場合は、手動で実行するための手順を用意しています。
 
 ### <a name="download-azfileshybrid-module"></a>AzFilesHybrid モジュールをダウンロードする
 
-- [AzFilesHybrid モジュール (GA モジュール: v0.2.0+) をダウンロードして解凍する](https://github.com/Azure-Samples/azure-files-samples/releases)AES 256 Kerberos 暗号化は、v0.2.2 以上でサポートされることに注意してください。 この機能を 0.2.2 未満の AzFilesHybrid バージョンで有効にし、AES 256 Kerberos 暗号化がサポートされるように更新する場合は、[この記事](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)をご覧ください。 
+- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download/dotnet-framework/net472) がインストールされていない場合は、今すぐインストールします。 これは、モジュールを正常にインポートするために必要です。
+- [AzFilesHybrid モジュール (GA モジュール: v0.2.0+) をダウンロードして解凍する](https://github.com/Azure-Samples/azure-files-samples/releases)AES 256 Kerberos 暗号化は、v0.2.2 以上でサポートされることに注意してください。 この機能を 0.2.2 未満の AzFilesHybrid バージョンで有効にし、AES 256 Kerberos 暗号化がサポートされるように更新する場合は、[この記事](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)をご覧ください。
 - ターゲット AD でサービス ログオン アカウントまたはコンピューター アカウントを作成する権限がある AD DS 資格情報を使用して、オンプレミスの AD DS に参加しているデバイスにモジュールをインストールして実行します。
--  Azure AD に同期されているオンプレミスの AD DS 資格情報を使用して、スクリプトを実行します。 オンプレミスの AD DS 資格情報には、ストレージ アカウント所有者または共同作成者の Azure ロールのアクセス許可が必要です。
+-  Azure AD に同期されているオンプレミスの AD DS 資格情報を使用して、スクリプトを実行します。 オンプレミスの AD DS 資格情報には、ストレージ アカウントに対する **所有者** または **共同作成者** の Azure ロールが必要です。
 
 ### <a name="run-join-azstorageaccountforauth"></a>Join-AzStorageAccountForAuth を実行する
 
@@ -41,27 +50,35 @@ AzFilesHybrid PowerShell モジュールのコマンドレットによって、�
 PowerShell で実行する前に、必ず、以下のパラメーターのプレースホルダーの値を実際の値に置き換えてください。
 > [!IMPORTANT]
 > ドメイン参加コマンドレットは、AD のストレージ アカウント (ファイル共有) を表す AD アカウントを作成します。 コンピューター アカウントまたはサービス ログオン アカウントのどちらとして登録するかを選択できます。詳細については、[FAQ](./storage-files-faq.md#security-authentication-and-access-control) を参照してください。 コンピューター アカウントの場合は、AD で 30 日に設定された既定のパスワードの有効期限が存在します。 同様に、サービス ログオン アカウントでも、既定のパスワードの有効期限が AD ドメインまたは組織単位 (OU) で設定されている可能性があります。
-> どちらのアカウントの種類でも、AD 環境で構成されているパスワードの有効期限を確認し、パスワードの有効期間が終了する前に、AD アカウントの[ストレージ アカウント ID のパスワードを更新する](storage-files-identity-ad-ds-update-password.md)よう計画することをお勧めします。 [AD で新しい AD 組織単位 (OU) を作成](/powershell/module/addsadministration/new-adorganizationalunit)し、それぞれ[コンピューター アカウント](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11))またはサービス ログオン アカウントのパスワードの有効期限のポリシーを無効にすることを検討できます。 
+> どちらのアカウントの種類でも、AD 環境で構成されているパスワードの有効期限を確認し、パスワードの有効期間が終了する前に、AD アカウントの[ストレージ アカウント ID のパスワードを更新する](storage-files-identity-ad-ds-update-password.md)よう計画することをお勧めします。 [AD で新しい AD 組織単位 (OU) を作成](/powershell/module/activedirectory/new-adorganizationalunit)し、それぞれ[コンピューター アカウント](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11))またはサービス ログオン アカウントのパスワードの有効期限のポリシーを無効にすることを検討できます。 
 
 ```PowerShell
-#Change the execution policy to unblock importing AzFilesHybrid.psm1 module
+# Change the execution policy to unblock importing AzFilesHybrid.psm1 module
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 
 # Navigate to where AzFilesHybrid is unzipped and stored and run to copy the files into your path
 .\CopyToPSPath.ps1 
 
-#Import AzFilesHybrid module
+# Import AzFilesHybrid module
 Import-Module -Name AzFilesHybrid
 
-#Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
+# Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
+# If you are logging into an Azure environment other than Public (ex. AzureUSGovernment) you will need to specify that.
+# See https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-ps
+# for more information.
 Connect-AzAccount
 
-#Define parameters
+# Define parameters, $StorageAccountName currently has a maximum limit of 15 characters
 $SubscriptionId = "<your-subscription-id-here>"
 $ResourceGroupName = "<resource-group-name-here>"
 $StorageAccountName = "<storage-account-name-here>"
+$DomainAccountType = "<ComputerAccount|ServiceLogonAccount>" # Default is set as ComputerAccount
+# If you don't provide the OU name as an input parameter, the AD identity that represents the storage account is created under the root directory.
+$OuDistinguishedName = "<ou-distinguishedname-here>"
+# Specify the encryption agorithm used for Kerberos authentication. Default is configured as "'RC4','AES256'" which supports both 'RC4' and 'AES256' encryption.
+$EncryptionType = "<AES256|RC4|AES256,RC4>"
 
-#Select the target subscription for the current session
+# Select the target subscription for the current session
 Select-AzSubscription -SubscriptionId $SubscriptionId 
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
@@ -72,9 +89,9 @@ Select-AzSubscription -SubscriptionId $SubscriptionId
 Join-AzStorageAccountForAuth `
         -ResourceGroupName $ResourceGroupName `
         -StorageAccountName $StorageAccountName `
-        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" <# Default is set as ComputerAccount #> `
-        -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" <# If you don't provide the OU name as an input parameter, the AD identity that represents the storage account is created under the root directory. #> `
-        -EncryptionType "<AES256/RC4/AES256,RC4>" <# Specify the encryption agorithm used for Kerberos authentication. Default is configured as "'RC4','AES256'" which supports both 'RC4' and 'AES256' encryption. #>
+        -DomainAccountType $DomainAccountType `
+        -OrganizationalUnitDistinguishedName $OuDistinguishedName `
+        -EncryptionType $EncryptionType
 
 #Run the command below if you want to enable AES 256 authentication. If you plan to use RC4, you can skip this step.
 Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
@@ -83,15 +100,15 @@ Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -Stor
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 
-## <a name="option-2-manually-perform-the-enablement-actions"></a>オプション 2:有効化アクションを手動で実行する
+## <a name="option-two-manually-perform-the-enablement-actions"></a>オプション 2:有効化アクションを手動で実行する
 
 前述の `Join-AzStorageAccountForAuth` スクリプトを既に正常に実行している場合は、セクション[「機能が有効になっていることを確認する」](#confirm-the-feature-is-enabled)に進んでください。 次の手動の手順を実行する必要はありません。
 
-### <a name="checking-environment"></a>環境の確認
+### <a name="check-the-environment"></a>環境をチェックする
 
-まず、環境の状態を確認する必要があります。 具体的には、[Active Directory PowerShell](/powershell/module/addsadministration/) がインストールされているかどうかと、シェルが管理者特権で実行されているかどうかを確認する必要があります。 次に、[Az.Storage 2.0 モジュール](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)がインストールされているかどうかを確認し、まだの場合はインストールします。 これらの確認が完了したら、AD DS を確認し、[コンピューター アカウント](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (既定値)、あるいは "cifs/ここはご利用のストレージ アカウントの名前.file.core.windows.net" などの SPN または UPN を使用して既に作成されている[サービス ログオン アカウント](/windows/win32/ad/about-service-logon-accounts)があるかどうかを確認します。 アカウントが存在しない場合は、次のセクションの説明に従って作成します。
+まず、環境の状態を確認する必要があります。 具体的には、[Active Directory PowerShell](/powershell/module/activedirectory/) がインストールされているかどうかと、シェルが管理者特権で実行されているかどうかを確認する必要があります。 次に、[Az.Storage 2.0 モジュール (またはそれ以降)](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) がインストールされているかどうかを確認し、まだの場合はインストールします。 これらの確認が完了したら、AD DS を確認し、[コンピューター アカウント](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (既定値)、あるいは "cifs/ここはご利用のストレージ アカウントの名前.file.core.windows.net" などの SPN または UPN を使用して既に作成されている[サービス ログオン アカウント](/windows/win32/ad/about-service-logon-accounts)があるかどうかを確認します。 アカウントが存在しない場合は、次のセクションの説明に従って作成します。
 
-### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>AD でのストレージ アカウントを表す ID の手動による作成
+### <a name="create-an-identity-representing-the-storage-account-in-your-ad-manually"></a>AD のストレージ アカウントを表す ID を手動で作成する
 
 このアカウントを手動で作成するには、ストレージ アカウント用の新しい Kerberos キーを作成します。 次に、以下の PowerShell コマンドレットを使用して、その Kerberos キーをアカウントのパスワードとして使用します。 このキーは、設定時にのみ使われ、ストレージ アカウントに対する制御やデータ プレーンの操作には使用できません。 
 
@@ -112,9 +129,37 @@ OU でパスワードの有効期限が適用されている場合は、パス�
 
 新しく作成された ID の SID を保持します。これは次の手順で必要になります。 ストレージ アカウントを表す、作成した ID を Azure AD に同期する必要はありません。
 
+#### <a name="optional-enable-aes256-encryption"></a>(省略可能) AES256 暗号化を有効にする
+
+AES 256 暗号化を有効にする場合は、このセクションの手順に従ってください。 RC4 を使用する予定の場合は、このセクションを省略できます。
+
+ストレージ アカウントを表すドメイン オブジェクトは、次の要件を満たしている必要があります。
+- ストレージ アカウント名は 15 文字以下でなければなりません。
+- ドメイン オブジェクトは、オンプレミスの AD ドメイン内のコンピューター オブジェクトとして作成する必要があります。
+- 末尾の '$' を除き、ストレージ アカウント名はコンピューター オブジェクトの SamAccountName と同じである必要があります。
+
+ドメイン オブジェクトがこれらの要件を満たしていない場合は、削除して、要件を満たす新しいドメイン オブジェクトを作成します。
+
+`<domain-object-identity>` と `<domain-name>` を実際の値に置き換えてから、次のコマンドを使用して AES256 のサポートを構成します。 
+
+```powershell
+Set-ADComputer -Identity <domain-object-identity> -Server <domain-name> -KerberosEncryptionType "AES256"
+```
+
+そのコマンドを実行した後、次のスクリプトの `<domain-object-identity>` を実際の値に置き換えてから、スクリプトを実行してドメイン オブジェクトのパスワードを更新します。
+
+```powershell
+$KeyName = "kerb1" # Could be either the first or second kerberos key, this script assumes we're refreshing the first
+$KerbKeys = New-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -KeyName $KeyName
+$KerbKey = $KerbKeys | Where-Object {$_.KeyName -eq $KeyName} | Select-Object -ExpandProperty Value
+$NewPassword = ConvertTo-SecureString -String $KerbKey -AsPlainText -Force
+
+Set-ADAccountPassword -Identity <domain-object-identity> -Reset -NewPassword $NewPassword
+```
+
 ### <a name="enable-the-feature-on-your-storage-account"></a>ストレージ アカウントで機能を有効にする
 
-これで、ストレージ アカウントで機能を有効にすることができるようになりました。 次のコマンドでドメイン プロパティの構成の詳細をいくつか指定してから実行します。 次のコマンドで必要なストレージ アカウント SID は、[前のセクション](#creating-an-identity-representing-the-storage-account-in-your-ad-manually)の AD DS で作成した ID の SID です。
+これで、ストレージ アカウントで機能を有効にすることができるようになりました。 次のコマンドでドメイン プロパティの構成の詳細をいくつか指定してから実行します。 次のコマンドで必要なストレージ アカウント SID は、[前のセクション](#create-an-identity-representing-the-storage-account-in-your-ad-manually)の AD DS で作成した ID の SID です。
 
 ```PowerShell
 # Set the feature flag on the target storage account and provide the required AD domain information

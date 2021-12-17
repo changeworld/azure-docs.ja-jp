@@ -1,28 +1,26 @@
 ---
 title: Azure Cloud Services (延長サポート) への移行に関する技術的詳細と要件
 description: Azure Cloud Services (クラシック) から Azure Cloud Services (拡張サポート) への移行に関する技術的詳細と要件について説明します。
-author: tanmaygore
 ms.service: cloud-services-extended-support
 ms.subservice: classic-to-arm-migration
 ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
-ms.author: tagore
-ms.openlocfilehash: 4ff7d9aa2075b675a7ecd979c08d5621bbdd831a
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+author: hirenshah1
+ms.author: hirshah
+ms.openlocfilehash: 55ce5305962562876a97dfd7677e6af5e1eb9e3a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286735"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747567"
 ---
 # <a name="technical-details-of-migrating-to-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) への移行に関する技術的詳細   
 
 この記事では、Cloud Services (クラシック) と関係のある移行ツールに関する技術的詳細について説明します。 
 
-> [!IMPORTANT]
-> 移行ツールを使用した Cloud Services (クラシック) から Cloud Services (延長サポート) への移行は現在、パブリック プレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 ## <a name="details-about-feature--scenarios-supported-for-migration"></a>移行がサポートされている機能およびシナリオの詳細 
+
 
 ### <a name="extensions-and-plugin-migration"></a>拡張機能とプラグインの移行 
 - サポートされているすべての有効な拡張機能が移行されます。 
@@ -36,7 +34,7 @@ ms.locfileid: "106286735"
 ### <a name="service-configuration-and-service-definition-files"></a>サービス構成ファイルとサービス定義ファイル
 - .cscfg および .csdef ファイルを Cloud Services (拡張サポート) 用の軽微な変更について更新する必要があります。 
 - 仮想ネットワークや VM SKU などのリソースの名前が異なります。 「[移行後のリソースの変換と名前付け規則](#translation-of-resources-and-naming-convention-post-migration)」を参照してください
-- お客様は、[PowerShell](https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice&preserve-view=true) と [Rest API](https://docs.microsoft.com/rest/api/compute/cloudservices/get)を使って新しいデプロイを取得することができます。 
+- お客様は、[PowerShell](/powershell/module/az.cloudservice/?preserve-view=true&view=azps-5.4.0#cloudservice) と [Rest API](/rest/api/compute/cloudservices/get)を使って新しいデプロイを取得することができます。 
 
 ### <a name="cloud-service-and-deployments"></a>クラウド サービスとデプロイ
 - Cloud Service (延長サポート) のデプロイはそれぞれ独立したクラウド サービスです。 デプロイは、スロットを使用してクラウド サービスにグループ化されなくなりました。
@@ -63,6 +61,39 @@ ms.locfileid: "106286735"
 - 移行の一環として、Azure によって新しい Key Vault が自動的に作成され、すべての証明書がそれに移行されます。 このツールでは、既存の Key Vault を使用することはできません。 
 - Cloud Services (拡張サポート) には、同じリージョンとサブスクリプションに配置された Key Vault が必要です。 この Key Vault は、移行の一環として自動的に作成されます。 
 
+## <a name="resources-and-features-not-available-for-migration"></a>移行に使用できないリソースと機能
+これらは、リソース、機能、Cloud Services の組み合わせが含まれる主なシナリオです。 このリストは全てを網羅しているわけではありません。 
+
+| リソース | 次の手順、回避策 | 
+|---|---|
+| 自動スケーリング ルール | 移行は行われますが、ルールは削除されます。 Cloud Services への移行後に[ルールを再作成](./configure-scaling.md)します (延長サポート)。 | 
+| 警告 | 移行は行われますが、警告は削除されます。 Cloud Services への移行後に[ルールを再作成](./enable-alerts.md)します (延長サポート)。 | 
+| VPN Gateway | 移行を開始する前に VPN Gateway を削除し、移行の完了後に VPN Gateway を作成し直します。 | 
+| ExpressRoute ゲートウェイ (仮想ネットワークと同じサブスクリプション内にある場合のみ) | 移行を開始する前に ExpressRoute ゲートウェイを削除し、移行の完了後にゲートウェイを作成し直します。 | 
+| Quota  | クォータは移行されません。 検証を成功させるには、移行の前に Azure Resource Manager で[新しいクォータを要求](../azure-resource-manager/templates/error-resource-quota.md#solution)します。 | 
+| アフィニティ グループ | サポートされていません。 移行前にアフィニティ グループを削除します。  | 
+| [仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)を使用する仮想ネットワーク| ピアリングされた仮想ネットワークを別の仮想ネットワークに移行する前に、ピアリングを削除し、仮想ネットワークを Resource Manager に移行して、ピアリングを作成し直します。 これにより、アーキテクチャによってはダウンタイムが発生する可能性があります。 | 
+| App Service 環境を含む仮想ネットワーク | サポートされていません | 
+| HDInsight サービスを含む仮想ネットワーク | サポートされていません。 
+| Azure API Management デプロイを含む仮想ネットワーク | サポートされていません。 <br><br> 仮想ネットワークを移行するには、API Management のデプロイの仮想ネットワークを変更します。 これは、ダウンタイムのない操作です。 | 
+| クラシック Express Route 回線 | サポートされていません。 <br><br>これらの回線は、PaaS の移行を開始する前に、Azure Resource Manager に移行する必要があります。 詳細については、「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](../expressroute/expressroute-howto-move-arm.md)」をご覧ください。 |  
+| ロールベースのアクセス制御 | 移行後に、リソースの URI は `Microsoft.ClassicCompute` から `Microsoft.Compute` に変わります。RBAC ポリシーを移行後に更新する必要があります。 | 
+| Application Gateway | サポートされていません。 <br><br> 移行を始める前にアプリケーション ゲートウェイを削除し、Azure Resource Manager への移行の完了後にアプリケーション ゲートウェイを作成し直します | 
+
+## <a name="unsupported-configurations--migration-scenarios"></a>サポートされない構成と移行シナリオ
+
+| 構成、シナリオ  | 次の手順、回避策 | 
+|---|---|
+| 仮想ネットワーク内にない一部の古いデプロイの移行 | 仮想ネットワーク内にない一部のクラウド サービスのデプロイは、移行がサポートされていません。 <br><br> 1. Validate API を使用して、デプロイが移行の対象であるかどうかを確認します。 <br> 2. 対象である場合、デプロイは仮想ネットワークの下の Azure Resource Manager に "DefaultRdfeVnet" というプレフィックスを付けて移動されます | 
+| 動的 IP アドレスを使用している運用とステージング両方のスロットのデプロイを含むデプロイの移行 | 2 スロットのクラウド サービスを移行するには、ステージング スロットを削除する必要があります。 ステージング スロットを削除した後、Azure Resource Manager の独立したクラウド サービス (延長サポート) として、運用スロットを移行します。 その後、ステージング環境を新しいクラウド サービス (延長サポート) として再デプロイし、最初のものとスワップできるようにします。 | 
+| 予約済み IP アドレスを使用している運用とステージング両方のスロットのデプロイを含むデプロイの移行 | サポートされていません。 | 
+| 異なる仮想ネットワーク内にある運用とステージングのデプロイの移行|2 スロットのクラウド サービスを移行するには、ステージング スロットを削除する必要があります。 ステージング スロットを削除した後、Azure Resource Manager の独立したクラウド サービス (延長サポート) として、運用スロットを移行します。 その後、新しい Cloud Services (延長サポート) のデプロイを、スワップ可能なプロパティが有効になっている移行されたデプロイにリンクすることができます。 古いステージング スロットのデプロイのデプロイ ファイルを再利用して、この新しいスワップ可能なデプロイを作成できます。 | 
+| 空のクラウド サービス (デプロイのないクラウド サービス) の移行 | サポートされていません。 | 
+| リモート デスクトップ プラグインとリモート デスクトップ拡張機能が含まれるデプロイの移行 | オプション 1: 移行前にリモート デスクトップ プラグインを削除します。 そのためには、デプロイ ファイルの変更が必要です。 その後、移行を行います。 <br><br> オプション 2: リモート デスクトップ拡張機能を削除して、デプロイを移行します。 移行後に、プラグインを削除して拡張機能をインストールします。 そのためには、デプロイ ファイルの変更が必要です。 <br><br> 移行の前に、プラグインと拡張機能を削除します。 Cloud Services (延長サポート) での[プラグインの使用は推奨されません](./deploy-prerequisite.md#required-service-definition-file-csdef-updates)。| 
+| PaaS と IaaS 両方のデプロイが含まれる仮想ネットワーク |サポートされていません <br><br> PaaS または IaaS どちらかデプロイを、別の仮想ネットワークに移動します。 これはダウンタイムの原因になります。 | 
+従来のロール サイズ (Small や ExtraLarge など) を使用しているクラウド サービスのデプロイ。 | 移行は完了しますが、ロールのサイズは最新のロール サイズを使用するように更新されます。 コストまたは SKU のプロパティは変更されず、この変更のために仮想マシンは再起動されません。 これらの新しい最新のロール サイズを参照するように、すべてのデプロイ成果物を更新します。 詳細については、[使用可能な VM サイズ](available-sizes.md)に関する記事を参照してください|
+| 異なる仮想ネットワークへのクラウド サービスの移行 | サポートされていません <br><br> 1. 移行の前に、別のクラシック仮想ネットワークにデプロイを移動します。 これはダウンタイムの原因になります。 <br> 2. 新しい仮想ネットワークを Azure Resource Manager に移行します。 <br><br> または <br><br> 1. 仮想ネットワークを Azure Resource Manager に移行します <br>2. クラウド サービスを新しい仮想ネットワークに移動します。 これはダウンタイムの原因になります。 | 
+| 仮想ネットワーク内にあるが、明示的なサブネットが割り当てられていないクラウド サービス | サポートされていません。 軽減策にはサブネットへのロールの移動が含まれ、ロールの再起動 (ダウンタイム) が必要です | 
 
 ## <a name="translation-of-resources-and-naming-convention-post-migration"></a>移行後のリソースの変換と名前付け規則
 移行の一環として、リソースの名前が変更され、いくつかの Cloud Services の機能は、Azure Resource Manager のリソースとして公開されます。 この表は、Cloud Services の移行に固有の変更点をまとめたものです。
@@ -70,14 +101,14 @@ ms.locfileid: "106286735"
 | Cloud Services (クラシック) <br><br> リソース名 | Cloud Services (クラシック) <br><br> 構文| Cloud Services (延長サポート) <br><br> リソース名| Cloud Services (延長サポート) <br><br> 構文 | 
 |---|---|---|---|
 | クラウド サービス | `cloudservicename` | 関連付けられていません| 関連付けられていません |
-| デプロイ (ポータルで作成) <br><br> デプロイ (ポータル以外で作成)  | `deploymentname` | Cloud Services (延長サポート) | `deploymentname` |  
-| Virtual Network | `vnetname` <br><br> `Group resourcegroupname vnetname` <br><br> 関連付けられていません |  仮想ネットワーク (ポータル以外で作成) <br><br> 仮想ネットワーク (ポータルで作成) <br><br> 仮想ネットワーク (既定) | `vnetname` <br><br> `group-resourcegroupname-vnetname` <br><br> `DefaultRdfevirtualnetwork_vnetid`|
-| 関連付けられていません | 関連付けられていません | Key Vault | `cloudservicename` | 
+| デプロイ (ポータルで作成) <br><br> デプロイ (ポータル以外で作成)  | `deploymentname` | Cloud Services (延長サポート) | `cloudservicename` |  
+| Virtual Network | `vnetname` <br><br> `Group resourcegroupname vnetname` <br><br> 関連付けられていません |  仮想ネットワーク (ポータル以外で作成) <br><br> 仮想ネットワーク (ポータルで作成) <br><br> 仮想ネットワーク (既定) | `vnetname` <br><br> `group-resourcegroupname-vnetname` <br><br> `VNet-cloudservicename`|
+| 関連付けられていません | 関連付けられていません | Key Vault | `KV-cloudservicename` | 
 | 関連付けられていません | 関連付けられていません | クラウド サービス のデプロイのリソース グループ | `cloudservicename-migrated` | 
 | 関連付けられていません | 関連付けられていません | 仮想ネットワークのリソース グループ | `vnetname-migrated` <br><br> `group-resourcegroupname-vnetname-migrated`|
 | 関連付けられていません | 関連付けられていません | パブリック IP (動的) | `cloudservicenameContractContract` | 
 | 予約済み IP 名 | `reservedipname` | 予約済み IP (ポータル以外で作成) <br><br> 予約済み IP (ポータルで作成) | `reservedipname` <br><br> `group-resourcegroupname-reservedipname` | 
-| 関連付けられていません| 関連付けられていません | Load Balancer | `deploymentname-lb`|
+| 関連付けられていません| 関連付けられていません | Load Balancer | `LB-cloudservicename`|
 
 
 
@@ -100,4 +131,7 @@ ms.locfileid: "106286735"
 - PowerShell または Rest API を使用して中止またはコミットすることができます。 
 
 ### <a name="how-much-time-can-the-operations-takebr"></a>操作にはどれくらいの時間がかかりますか。<br>
-検証は短時間で終了するように設計されています。 準備が最も長く、移行されるロール インスタンスの合計数によっては時間がかかります。 中止とコミットにも時間がかかることがありますが、準備よりは短い時間です。 すべての操作は 24 時間後にタイムアウトになります。 
+検証は短時間で終了するように設計されています。 準備が最も長く、移行されるロール インスタンスの合計数によっては時間がかかります。 中止とコミットにも時間がかかることがありますが、準備よりは短い時間です。 すべての操作は 24 時間後にタイムアウトになります。
+
+## <a name="next-steps"></a>次のステップ
+Cloud Services (クラシック) デプロイを Cloud Services (拡張サポート) に移行する方法については、[サポートとトラブルシューティング](support-help.md)に関するランディング ページを参照してください。

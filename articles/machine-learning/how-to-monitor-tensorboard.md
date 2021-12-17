@@ -4,18 +4,17 @@ titleSuffix: Azure Machine Learning
 description: TensorBoard を起動して実験の実行履歴を視覚化し、ハイパーパラメーターの調整と再トレーニングの候補となる領域を特定します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: minxia
 ms.author: minxia
-ms.date: 02/27/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: f8986ef895c5766d363261ef263851ee96d9c0da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.openlocfilehash: e01cc1b97659a4580c3cc33cf276b9fc566fb10a
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727673"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558613"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 
@@ -37,7 +36,7 @@ Azure Machine Learning の実験で TensorBoard を起動する方法は、実�
 * TensorBoard を起動して実験の実行履歴を表示するには、あらかじめ実験でログ記録を有効にして、そのメトリックとパフォーマンスを追跡しておく必要があります。  
 * このドキュメントのコードは、次のいずれの環境でも実行できます。 
     * Azure Machine Learning コンピューティング インスタンス - ダウンロードやインストールは必要なし
-        * 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
+        * 「[クイック スタート: Azure Machine Learning の利用を開始](quickstart-create-resources.md)」を完了して、SDK およびサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
         * ノートブック サーバー上の samples フォルダーで、次のディレクトリに移動して、完成したノートブックと展開されたノートブックの 2 つを見つけます。
             * **how-to-use-azureml > track-and-monitor-experiments > tensorboard > export-run-history-to-tensorboard > export-run-history-to-tensorboard.ipynb**
             * **how-to-use-azureml > track-and-monitor-experiments > tensorboard > tensorboard > tensorboard.ipynb**

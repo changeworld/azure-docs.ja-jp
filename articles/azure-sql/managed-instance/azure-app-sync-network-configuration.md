@@ -4,25 +4,25 @@ titleSuffix: Azure SQL Managed Instance
 description: この記事では、Azure SQL Managed Instance を使用して、Azure App Service のホスティング プラン用にネットワーク構成を同期する方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova
+ms.reviewer: mathoma, bonova
 ms.date: 12/13/2018
-ms.openlocfilehash: e102aaace15d065d02e44fa06655827068020959
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1421b84c9156862f25c6dcf35b70b42dd8f2862
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91620224"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239367"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance を使用してネットワーク構成を Azure App Service のホスティング プラン用に同期する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-場合によっては、[アプリを Azure Virtual Network と統合したにもかかわらず](../../app-service/web-sites-integrate-with-vnet.md)、SQL Managed Instance への接続を確立できないことがあります。 サービス プランのネットワーク構成を更新または同期することで、この問題を解決できる場合があります。 
+場合によっては、[アプリを Azure Virtual Network と統合したにもかかわらず](../../app-service/overview-vnet-integration.md)、SQL Managed Instance への接続を確立できないことがあります。 サービス プランのネットワーク構成を更新または同期することで、この問題を解決できる場合があります。 
 
 ## <a name="sync-network-configuration"></a>ネットワーク構成の同期 
 

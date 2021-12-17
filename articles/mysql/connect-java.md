@@ -8,14 +8,16 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 457f7e07391c647d2ab0e7d78197086f6f5e2cf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1e7cbcdbaeb375e733a3e05ebd4998c1d2160a6
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96187784"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113285813"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql"></a>クイックスタート: Azure Database for MySQL で Java と JDBC を使用する
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 このトピックでは、Java と [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) を使って [Azure Database for MySQL](./index.yml) に情報を格納および取得するサンプル アプリケーションを作成する方法を説明します。
 
@@ -25,7 +27,7 @@ JDBC は、従来のリレーショナル データベースに接続するた�
 
 - Azure アカウント。 所有していない場合は、[無料試用版を入手](https://azure.microsoft.com/free/)してください。
 - [Azure Cloud Shell](../cloud-shell/quickstart.md) または [Azure CLI](/cli/azure/install-azure-cli)。 Azure Cloud Shell をお勧めします。これにより、自動的にログインし、必要なすべてのツールにアクセスできるようになります。
-- サポートされている [Java 開発キット](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8 (Azure Cloud Shell に含まれます)。
+- サポートされている [Java 開発キット](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン 8 (Azure Cloud Shell に含まれます)。
 - [Apache Maven](https://maven.apache.org/) ビルド ツール。
 
 ## <a name="prepare-the-working-environment"></a>作業環境を準備する

@@ -1,20 +1,20 @@
 ---
 title: Azure Percept DK の 80/20 統合
 description: Azure Percept DK と 80/20 レーリング システムとの統合の詳細について説明します。
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.custom: template-concept
-ms.openlocfilehash: 32254b1ca094ee3e34ca95088210bb7c2e7bc0e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: template-concept, ignite-fall-2021
+ms.openlocfilehash: 384dd5e2209451b714f7c77323fee1e615b05042
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562751"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069864"
 ---
-# <a name="azure-percept-dk-8020-integration-overview"></a>Azure Percept DK の 80/20 統合の概要
+# <a name="azure-percept-dk-8020-integration"></a>Azure Percept DK の 80/20 統合
 
 Azure Percept DK および Audio アクセサリは、[80/20 T-slot Aluminum Building System](https://8020.net/) と統合するように設計されています。
 

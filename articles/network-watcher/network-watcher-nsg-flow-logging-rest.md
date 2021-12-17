@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: ea24716dba5e4e824a4fa986602007035be8e365
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cede3018f8922c6771f81470a714eed430cd5cdf
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018379"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291871"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>REST API を使用したネットワーク セキュリティ グループ のフローのログの構成
 
@@ -31,7 +31,7 @@ ms.locfileid: "98018379"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-PowerShell を使用して REST API を呼び出すには、ARMClient を使用します。 ARMClient は、[Chocolatey 上の ARMClient](https://chocolatey.org/packages/ARMClient) に関するページの chocolatey 上にあります。
+PowerShell を使用して REST API を呼び出すには、ARMClient を使用します。 ARMClient は、[Chocolatey 上の ARMClient](https://chocolatey.org/packages/ARMClient) に関するページの Chocolatey にあります。 NSG フロー ログの REST API の詳細な仕様については、[こちら](/rest/api/network-watcher/flowlogs)を参照してください 
 
 このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。
 
@@ -115,6 +115,9 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
   }
 }
 ```
+> [!NOTE]
+> - 前に使用した API [Network Watchers - Set Flow Log Configuration](/rest/api/network-watcher/network-watchers/set-flow-log-configuration) は古いものであり、間もなく非推奨となる可能性があります。
+> - 代わりに、新しい [Flow Logs - Create Or Update](/rest/api/network-watcher/flow-logs/create-or-update) REST API を使用することが推奨されます。
 
 ## <a name="disable-network-security-group-flow-logs"></a>ネットワーク セキュリティ グループのフローのログを無効にする
 
@@ -167,6 +170,10 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 }
 ```
 
+> [!NOTE]
+> - 前に使用した API [Network Watchers - Set Flow Log Configuration](/rest/api/network-watcher/network-watchers/set-flow-log-configuration) は古いものであり、間もなく非推奨となる可能性があります。
+> - 新しい [Flow Logs - Create Or Update](/rest/api/network-watcher/flow-logs/create-or-update) REST API を使用して、フロー ログと [Flow Logs - Delete](/rest/api/network-watcher/flow-logs/delete) を無効にして、フロー ログ リソースを削除することが推奨されます。
+
 ## <a name="query-flow-logs"></a>フローのログを照会する
 
 次の REST 呼び出しでは、ネットワーク セキュリティ グループのフローのログの状態を照会します。
@@ -204,6 +211,10 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
   }
 }
 ```
+
+> [!NOTE]
+> - 前に使用した API [Network Watchers - Get Flow Log Status](/rest/api/network-watcher/network-watchers/get-flow-log-status) には、Network Watcher のリソース グループに追加の "閲覧者" アクセス許可が必要です。 また、この API は古いものであり、間もなく非推奨となる可能性があります。
+> - 代わりに、新しい [Flow Logs - Get](/rest/api/network-watcher/flow-logs/get) REST API を使用することが推奨されます。
 
 ## <a name="download-a-flow-log"></a>フローのログをダウンロードする
 

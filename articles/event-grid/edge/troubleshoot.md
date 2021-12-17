@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 0196522618d4b61f615f7cc6faeacbe9a8c7c5b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b8e5b95b0d1853d81de5a4ec603a3a59563da9d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171348"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379802"
 ---
 # <a name="common-issues"></a>一般的な問題
 
@@ -20,7 +21,7 @@ ms.locfileid: "86171348"
 
 ## <a name="view-event-grid-module-logs"></a>Event Grid モジュールのログを表示する
 
-トラブルシューティングを行うには、Event Grid モジュールのログにアクセスする必要がある場合があります。 そのためには、モジュールがデプロイされている VM で次のコマンドを実行します。
+トラブルシューティングを行うには、Event Grid モジュールのログにアクセスする必要がある場合があります。 モジュールがデプロイされている VM で、次のコマンドを実行します。
 
 Windows の場合:
 
@@ -84,13 +85,13 @@ Event Grid モジュールは、既定で、IoT Edge セキュリティ デー�
 
 [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) の **IoTSecurity** クラスに、IoT Edge セキュリティ デーモンから証明書を取得し、それを使用して発信呼び出しを構成する方法が示されています。
 
-非運用環境の場合は、クライアント認証をオフにするオプションがあります。 これを行う方法の詳細については、「[セキュリティと認証](security-authentication.md)」を参照してください。
+非運用環境の場合は、クライアント認証をオフにするオプションがあります。 詳細については、[セキュリティと認証](security-authentication.md)に関するページを参照してください。
 
 ## <a name="debug-events-not-received-by-subscriber"></a>サブスクライバーがデバッグ イベントを受信できない
 
 この一般的な理由は、次のとおりです。
 
-* イベントが正常に送信されていない。 Event Grid モジュールにイベントを送信したときに、HTTP StatusCode 200(OK) が返されているはずです。
+* イベントが正常に送信されていない。 Event Grid モジュールにイベントを送信したときに、クライアントに HTTP StatusCode 200(OK) が返されているはずです。
 
 * イベント サブスクリプションを調べて、次のことを確認します。
     * エンドポイント URL が有効である

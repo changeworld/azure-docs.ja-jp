@@ -12,22 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/28/2018
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 994af6291f55e9f1dd44f2f522f9273639531257
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006595"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407059"
 ---
 # <a name="create-a-netapp-account"></a>NetApp アカウントを作成する
 NetApp アカウントを作成することによって、容量プールを設定し、その後、ボリュームを作成することができます。 新しい NetApp アカウントの作成は、[Azure NetApp Files] ブレードを使用して行います。
 
 ## <a name="before-you-begin"></a>開始する前に
-サービスへのアクセス許可が付与されたことを確認できる Azure NetApp Files チームからの電子メールを、必ず受信します。 [サービスにアクセスするための順番待ち要求の送信](azure-netapp-files-register.md#waitlist)に関するページを参照してください。
 
-また、NetApp Resource Provider を使用する場合、サブスクリプションが登録済みになっている必要があります。 「[NetApp リソース プロバイダーの登録](azure-netapp-files-register.md#resource-provider)」をご覧ください。
+NetApp Resource Provider を使用する場合、サブスクリプションが登録済みになっている必要があります。 「[NetApp リソース プロバイダーの登録](azure-netapp-files-register.md)」をご覧ください。
 
 ## <a name="steps"></a>手順 
 
@@ -64,5 +63,5 @@ NetApp アカウントを作成することによって、容量プールを設�
 
 ## <a name="next-steps"></a>次のステップ  
 
-[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+[容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)
 

@@ -5,13 +5,13 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
-ms.custom: has-adal-ref
-ms.openlocfilehash: 5f6494eb72084c683ddbb8b27a49acdb1fbc2bfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b4e96045ec49a337d317583826cb3f50c6161f39
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99054265"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276059"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Automation の接続を管理する
 
@@ -39,7 +39,7 @@ Azure Automation によって、次の組み込みの接続の種類を使用で
 
 ## <a name="powershell-cmdlets-to-access-connections"></a>接続にアクセスするための PowerShell コマンドレット
 
-PowerShell を使用して Automation 接続を作成および管理するためのコマンドレットを次の表に示します。 これらは、[Az モジュール](shared-resources/modules.md#az-modules)の一部として出荷されます。
+PowerShell を使用して Automation 接続を作成および管理するためのコマンドレットを次の表に示します。 これらは、Az モジュールの一部として出荷されます。
 
 |コマンドレット|説明|
 |---|---|

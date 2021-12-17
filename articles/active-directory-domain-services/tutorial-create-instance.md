@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 09/15/2021
 ms.author: justinha
-ms.openlocfilehash: 945c131394a0a3c6273f79044c8500a2feba70fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2080cf50a5837b2b4347f03a77496f5d6215e958
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96618146"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605394"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインを作成して構成する
 
@@ -41,11 +41,12 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD DS を有効にするには、Azure AD テナントに "*全体管理者*" 特権が必要です。
 * 必要な Azure AD DS リソースを作成するためには、ご利用の Azure サブスクリプションに "*共同作成者*" 特権が必要です。
+* ストレージなどの必要なインフラストラクチャを照会できる DNS サーバーを持つ仮想ネットワーク。 一般的なインターネット クエリを実行できない DNS サーバーでは、マネージド ドメインを作成できない可能性があります。 
 
 Azure AD DS では必須ではありませんが、Azure AD テナントには、[SSPR (Self-Service Password Reset: セルフサービス パスワード リセット ) を構成][configure-sspr]することをお勧めします。 SSPR がなくても、ユーザーは自分のパスワードを変更できます。しかし、ユーザーがパスワードを紛失してしまってリセットする必要が生じた場合には SSPR が役立ちます。
 
 > [!IMPORTANT]
-> いったん作成したマネージド ドメインを別のリソース グループ、仮想ネットワーク、サブスクリプションなどに移動することはできません。マネージド ドメインをデプロイするときに、最適なサブスクリプション、リソース グループ、リージョン、仮想ネットワークを慎重に選択してください。
+> マネージド ドメインを作成した後、これを別のサブスクリプション、リソース グループ、リージョン、仮想ネットワーク、またはサブネットに移動することはできません。 マネージド ドメインをデプロイするときに、最適なサブスクリプション、リソース グループ、リージョン、仮想ネットワーク、およびサブネットを慎重に選択してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -94,7 +95,7 @@ Azure portal の *[基本]* ウィンドウのフィールドに必要事項を�
     >
     > Azure AD DS を複数のゾーンに分散するために、ご自身で構成するものは何もありません。 Azure プラットフォームでは、ゾーンへのリソース分散が自動的に処理されます。 詳細情報および利用可能なリージョンについては、「[Azure の Availability Zones の概要][availability-zones]」を参照してください。
 
-1. パフォーマンス、バックアップ頻度、作成できるフォレストの信頼の最大数は、**SKU** によって決まります。 マネージド ドメインの作成後、ビジネス上の需要や要件に変化が生じた場合は SKU を変更できます。 詳細については、[Azure AD DS SKU の概念][concepts-sku]に関するセクションを参照してください。
+1. パフォーマンスとバックアップの頻度は **SKU** によって決まります。 マネージド ドメインの作成後、ビジネス上の需要や要件に変化が生じた場合は SKU を変更できます。 詳細については、[Azure AD DS SKU の概念][concepts-sku]に関するセクションを参照してください。
 
     このチュートリアルでは、*Standard* SKU を選択します。
 1. "*フォレスト*" は、Active Directory Domain Services が 1 つまたは複数のドメインをグループ化するために使用する論理上の構成体です。 既定では、マネージド ドメインは "*ユーザー*" フォレストとして作成されます。 このタイプのフォレストでは、オンプレミスの AD DS 環境で作成されたユーザー アカウントも含め、Azure AD 内のすべてのオブジェクトが同期されます。
@@ -158,7 +159,7 @@ Azure AD DS でマネージド ドメインのユーザーを認証するため�
 >
 > マネージド ドメインを後から作成した場合、Azure AD にある同期済みの資格情報は再利用できません。パスワード ハッシュを再度保存するには、パスワード ハッシュ同期を再構成する必要があります。 既にドメイン参加済みの VM またはユーザーがすぐに認証を行うことはできません。Azure AD が、新しいマネージド ドメインにパスワード ハッシュを生成して保存する必要があります。
 >
-> 詳細については、[Azure AD DS と Azure AD Connect のパスワード ハッシュ同期プロセス][password-hash-sync-process]に関するセクションを参照してください。
+> [Azure AD Connect クラウド同期は Azure AD DS ではサポートされていません][/azure/active-directory/cloud-sync/what-is-cloud-sync#comparison-between-azure-ad-connect-and-cloud-sync]。 オンプレミスのユーザーがドメインに参加している VM にアクセスできるようにするには、Azure AD Connect を使用して同期されている必要があります。 詳細については、[Azure AD DS と Azure AD Connect のパスワード ハッシュ同期プロセス][password-hash-sync-process]に関するセクションを参照してください。
 
 Azure AD に作成されたユーザー アカウントがクラウド専用のアカウントであるか、オンプレミス ディレクトリとの間で Azure AD Connect を使って同期されたアカウントであるかによって、パスワード ハッシュの生成と保存の手順は異なります。
 

@@ -7,12 +7,12 @@ metadata:
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   description: 音声認識、音声合成、リアルタイムのトランザクションの取得、会話の文字起こし、ボットへの音声の統合を行います。
-  author: trevorbye
+  author: eric-urban
   manager: nitinme
   ms.service: speech-service
   ms.topic: hub-page
   ms.date: 03/24/2020
-  ms.author: trbye
+  ms.author: eur
 highlightedContent:
   items:
     - title: 音声サービスとは
@@ -89,7 +89,7 @@ conceptualContent:
       links:
         - itemType: overview
           text: Custom Keyword について
-          url: custom-keyword-overview.md
+          url: keyword-recognition-overview.md
         - itemType: quickstart
           text: Custom Keyword の概要
           url: custom-keyword-basics.md
@@ -101,6 +101,9 @@ conceptualContent:
         - itemType: how-to-guide
           text: LUIS と C# を使用して音声から意図を認識する
           url: how-to-recognize-intents-from-speech-csharp.md
+        - itemType: how-to-guide
+          text: 単純なパターン マッチング (C++) を使用して音声から意図を認識する
+          url: how-to-use-simple-language-pattern-matching.md
         - itemType: reference
           text: Language Understanding (LUIS) ポータル
           url: 'https://www.luis.ai'
@@ -130,14 +133,11 @@ conceptualContent:
     - title: ツール
       links:
         - itemType: overview
-          text: Speech CLI について (コードなしのコマンド ライン ツール)
-          url: spx-overview.md
-        - itemType: how-to-guide
-          text: Speech CLI の基本 (インストールと例)
-          url: spx-basics.md
+          text: Speech Studio について (コードなし UI エクスペリエンス)
+          url: speech-studio-overview.md
         - itemType: overview
-          text: Speech Studio について (カスタマイズ)
-          url: 'https://speech.microsoft.com'
+          text: Speech CLI について (コードなしコマンド ライン ツール)
+          url: spx-overview.md
     - title: Hosting
       links:
         - itemType: how-to-guide

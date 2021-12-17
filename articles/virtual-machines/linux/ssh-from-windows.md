@@ -8,14 +8,17 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: f018f591052050431996e3017335ab003973d25a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 49357c5098a4e9a9dc35e3abd910a33efe6411ca
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771007"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691040"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット
 
 この記事は、*secure shell* (SSH) キーを [作成](#create-an-ssh-key-pair)し、それを使用して Azure の Linux 仮想マシン (VM) に [接続](#connect-to-your-vm)する Windows ユーザーを対象としています。 また、[Azure portal で SSH キーを生成および保存](../ssh-keys-portal.md)して、このポータルで VM を作成するときに使用することもできます。
 
@@ -68,7 +71,7 @@ az vm create \
    --name myVM \
    --image UbuntuLTS\
    --admin-username azureuser \
-   --ssh-key-value ~/.ssh/id_rsa
+   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
 PowerShell では、`New-AzVM` を使用し、' を使用して SSH キーを VM 構成に追加します。 例については、「[クイックスタート: PowerShell を使用して Azure に Linux 仮想マシンを作成する](quick-create-powershell.md)」を参照してください。
@@ -81,8 +84,14 @@ PowerShell では、`New-AzVM` を使用し、' を使用して SSH キーを VM
 公開キーを Azure VM に、秘密キーをローカル システム上に配置した状態で、VM の IP アドレスまたは DNS 名を使用して、VM に SSH 接続します。 次のコマンドの *azureuser* と *10.111.12.123* を、管理者のユーザー名、IP アドレス (または完全修飾ドメイン名)、および自分の秘密キーへのパスに置き換えてください。
 
 ```bash
-ssh -i ~/.ssh/id_rsa.pub azureuser@10.111.12.123
+ssh -i ~/.ssh/id_rsa azureuser@10.111.12.123
 ```
+
+この VM にこれまで一度も接続したことがない場合は、ホストのフィンガープリントを確認するように求めるメッセージが表示されます。 提示されたフィンガープリントをそのまま受け入れたくなりますが、そのようにすると、中間者攻撃の危険性にさらされます。 ホストのフィンガープリントは常に検証するようにしてください。 これは、クライアントから初めて接続する場合にのみ行う必要があります。 ポータルを介してホストのフィンガープリントを取得するには、次を指定した実行コマンドを使用します: `ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub | awk '{print $2}'`。
+
+:::image type="content" source="media/ssh-from-windows/run-command-validate-host-fingerprint.png" alt-text="ホストのフィンガープリントを検証するために実行コマンドを使用する方法を示したスクリーンショット。":::
+
+CLI を使用してコマンドを実行するには、[`az vm run-command invoke` コマンド](/cli/azure/vm/run-command)を使用します。
 
 キーの組を作成したときにパスフレーズを構成してある場合、入力を求められたら、そのパスフレーズを入力します。
 

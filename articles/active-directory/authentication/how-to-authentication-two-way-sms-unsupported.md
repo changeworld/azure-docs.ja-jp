@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 07/19/2021
 ms.author: justinha
 author: rhicock
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d25ed1e46823ec6d820addf3944c96c97fcabcb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c92095449132b790c80cf6396a3608f802d7e9a7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101689030"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458506"
 ---
 # <a name="two-way-sms-unsupported"></a>双方向 SMS のサポート終了
 
-Azure AD Multi-Factor Authentication (MFA) Server の双方向 SMS は、元は 2018 年に非推奨とされていたもので、2021 年 2 月 24 日以降はサポートされなくなりました。 管理者は、現在も双方向 SMS を使用しているユーザーに対して、別の方法を有効にする必要があります。
+Azure AD Multi-Factor Authentication (MFA) Server の双方向 SMS は、元は 2018 年に非推奨とされていたもので、2021 年 2 月 24 日以降はサポートされなくなりました。ただし、2021 年 8 月 2 日までサポート延長を受けた組織は除きます。 管理者は、現在も双方向 SMS を使用しているユーザーに対して、別の方法を有効にする必要があります。
 
 影響を受ける管理者に対して、2020 年 12 月 8 日と 2021 年 1 月 28 日に、電子メール通知と Azure portal Service Health 通知 （ポータル トースト） が送信されました。 アラートは、サブスクリプションに関連付けられている、所有者、共同所有者、管理者、およびサービス管理者の各 RBAC の役割に送信されました。 次の手順を既に完了している場合は、必要なアクションはありません。
 

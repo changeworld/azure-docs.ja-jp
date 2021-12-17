@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 10/11/2021
 ms.author: justinha
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8b6d022b9a1f3be70f69943a53754c9dd909ca99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea50fc8bfbaaf7383eb71b433fee97729967c061
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619489"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856982"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Ubuntu Linux 仮想マシンを Azure Active Directory Domain Services のマネージド ドメインに参加させる
 
@@ -35,7 +35,8 @@ ms.locfileid: "96619489"
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要であれば、1 つ目のチュートリアルで [Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance]します。
-* マネージド ドメインの一部であるユーザー アカウント。
+* マネージド ドメインの一部であるユーザー アカウント。 ユーザーの SAMAccountName 属性が自動生成されていないことを確認します。 Azure AD テナント内の複数のユーザー アカウントの mailNickname 属性が同じである場合、各ユーザーの SAMAccountName 属性は自動生成されたものです。 詳細については、「[Azure Active Directory Domain Services のマネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ](synchronization.md)」を参照してください。
+* 名前の切り詰めによって生じる Active Directory での競合を防ぐため、最大 15 文字の一意の Linux VM 名。
 
 ## <a name="create-and-connect-to-an-ubuntu-linux-vm"></a>Ubuntu Linux VM を作成してそれに接続する
 

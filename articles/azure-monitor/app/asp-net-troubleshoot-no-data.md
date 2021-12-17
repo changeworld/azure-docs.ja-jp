@@ -4,26 +4,26 @@ description: Auzre Application Insights にデータが表示されない場合�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 3b550e434db5b616ffedef7ebe9891b36fa431a2
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d691958bf6ee55f31b0215b51bb9f4d7fd20c753
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311228"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079056"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
 ## <a name="some-of-my-telemetry-is-missing"></a>テレメトリの一部が見つからない
 *Application Insights で、アプリによって生成されているイベントのごく一部しか表示されません。*
 
-* 同じ部分が常に表示される場合は、アダプティブ [サンプリング](./sampling.md)が原因である可能性があります。 これを確認するには、([概要] ブレードから) [検索] を開き、要求やその他のイベントのインスタンスを確認します。 プロパティ セクションの下部で、[...] をクリックし、すべてのプロパティの詳細を取得します。 要求数が > 1 の場合は、サンプリングが実行中です。
-* それ以外の場合、料金プランの [データ速度の上限](./pricing.md#limits-summary) に達してる可能性があります。 これらの制限は分単位で適用されます。
+* 同じ部分が常に表示される場合は、アダプティブ [サンプリング](../../azure-monitor/app/sampling.md)が原因である可能性があります。 これを確認するには、([概要] ブレードから) [検索] を開き、要求やその他のイベントのインスタンスを確認します。 すべてのプロパティの詳細を表示するには、 **[プロパティ]** セクションの下部にある省略記号 **[...]** を選択します。 要求数が 1 より大きい場合は、サンプリングが実行中です。
+* 料金プランの[データ速度の上限](../../azure-monitor/app/pricing.md#limits-summary)に達してる可能性があります。 これらの制限は分単位で適用されます。
 
-*データがランダムに失われます。*
+"*データがランダムに失われます。* "
 
-* [テレメトリ チャネル](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)でデータ損失がないか確認してください
+* [テレメトリ チャネル](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)でデータ損失がないか確認してください。
 
-* テレメトリ チャネル [GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)で既知の問題がないか確認してください
+* テレメトリ チャネル [GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)で既知の問題がないか確認してください。
 
 *アプリが停止する直前、コンソール アプリや Web アプリでデータが失われます。*
 
@@ -34,17 +34,16 @@ ms.locfileid: "107311228"
 インターネット インフォメーション サービス (IIS) は、IIS に到達したすべての要求の数をログに記録します。これは本質的に、アプリケーションに到達した要求の総数とは異なる可能性があります。 このため、SDK によって収集された要求カウントが IIS ログの合計数と一致するとは限りません。 
 
 ## <a name="no-data-from-my-server"></a>サーバーからデータを取得できない
-*Web サーバーにアプリをインストールしたのですが、テレメトリがなにも表示されません。開発用コンピューターでは正常に機能していました。*
+* Web サーバーにアプリをインストールしたのですが、テレメトリがなにも表示されません。 開発用コンピューターでは正常に機能していました。*
+* これはおそらくファイアウォールの問題です。 [Application Insights がデータを送信できるようにファイアウォールの例外を設定](../../azure-monitor/app/ip-addresses.md)してください。
+* IIS サーバーに、.NET 拡張機能 4.5 または ASP.NET 4.5 などの前提条件がない可能性があります。
 
-* おそらく、ファイアウォールの問題でしょう。 [Application Insights がデータを送信できるようにファイアウォールの例外を設定](./ip-addresses.md)してください。
-* IIS サーバーに、前提条件である .NET 拡張機能 4.5 および ASP.NET 4.5 がない可能性があります。
+*[既存のアプリを監視するために Web サーバーに Azure Monitor Application Insights Agent](./status-monitor-v2-overview.md) をインストールしたのですが、結果がまったく表示されません。*
 
-*既存のアプリを監視するために、Web サーバーに [Status Monitor をインストール](./monitor-performance-live-website-now.md)したのですが、結果がまったく表示されません。*
-
-* 「 [Status Monitor のトラブルシューティング](./monitor-performance-live-website-now.md#troubleshoot)」を参照してください。
+* 「 [Status Monitor のトラブルシューティング](./status-monitor-v2-troubleshoot.md)」を参照してください。
 
 > [!IMPORTANT]
-> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=net)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+> インストルメンテーション キーよりも、[接続文字列](./sdk-connection-string.md?tabs=net)を使用することをお勧めします。 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 接続文字列により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 
 ## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException:ファイルまたはアセンブリ Microsoft.AspNet TelemetryCorrelation を読み込めませんでした
@@ -186,13 +185,13 @@ Application Insights をインストールしているとき、またはログ �
 [依存関係のテレメトリ](./asp-net-dependencies.md)に関する記事と[例外のテレメトリ](asp-net-exceptions.md)に関する記事をご覧ください。
 
 ## <a name="no-performance-data"></a>パフォーマンス データが表示されない
-パフォーマンス データ (CPU、IO レートなど) は、[Java Web サービス](./java-collectd.md)、[Windows デスクトップ アプリ](./windows-desktop.md)、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](./monitor-performance-live-website-now.md)、[Azure Cloud Services](./app-insights-overview.md) で使用できます。 パフォーマンス データは、[設定] の [サーバー] の下にあります。
+パフォーマンス データ (CPU、IO 量など) は、[Java Web サービス](java-2x-collectd.md)、[Windows デスクトップ アプリ](./windows-desktop.md)、[IIS Web アプリおよびサービス (Application Insights Agent がインストールされている場合)](./status-monitor-v2-overview.md)、および [Azure Cloud Services](./app-insights-overview.md) で使用できます。 パフォーマンス データは、[設定] の [サーバー] の下にあります。
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>サーバーにアプリを発行して以来、(サーバー) データが得られない
 * すべての Microsoft. ApplicationInsights DLL が Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll と一緒にサーバーにコピーされたことを確認します。
 * ファイアウォールで、[一部の TCP ポートを開く](./ip-addresses.md)ことが必要な場合があります。
 * プロキシを使用して社内ネットワークの外に送信しなければならない場合は、Web.config に [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) を設定します。
-* Windows Server 2008:更新プログラム [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://web.archive.org/web/20150129090641/http://support.microsoft.com/kb/2600217) がインストールされていることを確認します。
+* Windows Server 2008:更新プログラム [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://www.microsoft.com/download/details.aspx?id=28936) がインストールされていることを確認します。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>データが表示されていたのに停止しました。
 * データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。 「 [料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
@@ -222,9 +221,10 @@ Application Insights をインストールしているとき、またはログ �
 
 ### <a name="net-framework"></a>.NET Framework
 
-1. NuGet から [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) パッケージをインストールします。 インストールするバージョンは、`Microsoft.ApplicationInsighs` の現在インストールされているバージョンと一致する必要があります。
+> [!NOTE]
+> バージョン 2.14 以降では、[Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) パッケージは不要になり、SDK のログは [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) パッケージによって収集されるようになりました。 パッケージを追加する必要はありません。
 
-2. applicationinsights.config ファイルを変更して以下を含めます。
+1. applicationinsights.config ファイルを変更して以下を含めます。
 
     ```xml
     <TelemetryModules>
@@ -237,9 +237,9 @@ Application Insights をインストールしているとき、またはログ �
     ```
     アプリケーションには、構成されている場所への書き込みアクセス許可が必要です。
 
-3. プロセスを再起動して、SDK によってこれらの新しい設定が取得されるようにします。
+2. プロセスを再起動して、SDK によってこれらの新しい設定が取得されるようにします。
 
-4. 完了したら、これらの変更を元に戻します。
+3. 完了したら、これらの変更を元に戻します。
 
 ### <a name="net-core"></a>.NET Core
 
@@ -271,7 +271,7 @@ Application Insights SDK は、PerfView でキャプチャできる EventSource 
 
 ログを収集するには、PerfView をダウンロードし、次のコマンドを実行します。
 ```cmd
-PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-LoggerProvider,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
+PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-LoggerProvider,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore,*Redfield-Microsoft-ApplicationInsights-Core,*Redfield-Microsoft-ApplicationInsights-Data,*Redfield-Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Redfield-Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Redfield-Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Redfield-Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Redfield-Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Redfield-Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,*Redfield-Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Redfield-Microsoft-ApplicationInsights-Extensibility-Web,*Redfield-Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Redfield-Microsoft-ApplicationInsights-LoggerProvider,*Redfield-Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Redfield-Microsoft-ApplicationInsights-AspNetCore
 ```
 
 以下のパラメーターは、必要に応じて変更できます。
@@ -282,7 +282,7 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 
 詳細については、以下を参照してください。
 - [PerfView でのパフォーマンス トレースの記録](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)
-- [Application Insights のイベント ソース](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ETW)
+- [Application Insights のイベント ソース](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/troubleshooting/ETW)
 
 ## <a name="collect-logs-with-dotnet-trace"></a>dotnet-trace を使用してログを収集する
 
@@ -291,12 +291,12 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) をインストールしたら、bash で次のコマンドを実行します。
 
 ```bash
-dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
+dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore,Redfield-Microsoft-ApplicationInsights-Core,Redfield-Microsoft-ApplicationInsights-Data,Redfield-Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Redfield-Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Redfield-Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Redfield-Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Redfield-Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Redfield-Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Redfield-Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Redfield-Microsoft-ApplicationInsights-Extensibility-Web,Redfield-Microsoft-ApplicationInsights-Extensibility-WindowsServer,Redfield-Microsoft-ApplicationInsights-LoggerProvider,Redfield-Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Redfield-Microsoft-ApplicationInsights-AspNetCore
 ```
 
 ## <a name="how-to-remove-application-insights"></a>Application Insights を削除する方法
 
-削除の[記事](./remove-application-insights.md)に示されている手順に従って Visual Studio で Application Insights を削除する方法を学習してください。
+Visual Studio で Application Insights を削除する方法については、[Application Insights の削除に関する記事](./remove-application-insights.md)で説明されている手順を参照してください。
 
 ## <a name="still-not-working"></a>問題が解決しない場合
 * [Application Insights に関する Microsoft Q&A 質問ページ](/answers/topics/azure-monitor.html)

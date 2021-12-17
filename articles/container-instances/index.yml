@@ -11,12 +11,12 @@ metadata:
   author: dlepow
   ms.author: danlep
   ms.date: 09/25/2019
-  ms.openlocfilehash: 8dd403d9c1b2996c70c8d387e5305d2c8749bce8
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 7f9fb5223fc59fda2379d7b2cda660a504366c7b
+  ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90705199"
+  ms.lasthandoff: 07/02/2021
+  ms.locfileid: "113217631"
 landingContent:
 - title: Azure Container Instances について
   linkLists:
@@ -27,7 +27,7 @@ landingContent:
     - text: コンテナー グループ
       url: container-instances-container-groups.md
     - text: よく寄せられる質問
-      url: container-instances-faq.md
+      url: container-instances-faq.yml
 - title: はじめに
   linkLists:
   - linkListType: quickstart

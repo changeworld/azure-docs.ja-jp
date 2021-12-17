@@ -1,14 +1,14 @@
 ---
 title: ポータルを使用した新しいポリシーの割り当て
 description: このクイックスタートでは、Azure portal を使用して、Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
-ms.date: 01/29/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: e5cbf31e897b5be404327efa254eb90ead990f5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8407005f54f940885e47671d97425395bcc3ba70
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99220889"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323233"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>準拠していないリソースを識別するためのポリシー割り当てを作成する」を参照してください。
 

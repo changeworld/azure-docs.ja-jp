@@ -3,7 +3,7 @@ title: セキュリティに関する考慮事項 | Microsoft Docs
 description: このトピックでは、Azure 仮想マシンで実行されている SQL Server をセキュリティで保護するための一般的なガイダンスを示します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 editor: ''
 tags: azure-service-management
 ms.assetid: d710c296-e490-43e7-8ca9-8932586b71da
@@ -12,15 +12,15 @@ ms.subservice: security
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/23/2018
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 7ff77a407dfa87e408170573249876bbefee0abe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 05/30/2021
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: 327c2fa71fc8c95da654e7fca9450a8d0372e1ab
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558579"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301785"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のセキュリティに関する考慮事項
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,9 +29,29 @@ ms.locfileid: "105558579"
 
 Azure はいくつかの業界規制および標準に準拠しているため、ユーザーは仮想マシンで実行されている SQL Server を使用して、標準に準拠しているソリューションを構築できます。 Azure での法規制遵守に関する情報については、 [Azure トラスト センター](https://azure.microsoft.com/support/trust-center/)を参照してください。
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
+このトピックで説明している手法に加えて、従来のオンプレミスのセキュリティ手法でのセキュリティ ベスト プラクティスと仮想マシンのセキュリティ ベスト プラクティスの両方を確認して実装することをお勧めします。 
 
-## <a name="control-access-to-the-sql-virtual-machine"></a>SQL 仮想マシンへのアクセスを制御する
+## <a name="microsoft-defender-for-sql"></a>Microsoft Defender for SQL 
+
+[Microsoft Defender for SQL](../../../security-center/defender-for-sql-introduction.md) では、脆弱性評価、セキュリティ アラートなど、Microsoft Defender for Cloud のセキュリティ機能が有効になります。 詳細については、[Microsoft Defender for SQL の有効化](../../../security-center/defender-for-sql-usage.md)に関するページを参照してください。 
+
+## <a name="portal-management"></a>ポータル管理
+
+[SQL Server VM を SQL IaaS 拡張機能 に登録](sql-agent-extension-manually-register-single-vm.md)した後、Azure Key Vault 統合の有効化や SQL 認証など、Azure portal の [SQL 仮想マシン リソース](manage-sql-vm-portal.md)を使用していくつかのセキュリティ設定を構成できます。 
+
+さらに、[Microsoft Defender for SQL](../../../security-center/defender-for-sql-usage.md) を有効にした後、脆弱性評価やセキュリティ アラートなどの Defender for Cloud の機能を Azure portal の [SQL 仮想マシン リソース](manage-sql-vm-portal.md)で直接表示できます。 
+
+詳細については、[ポータルでの SQL Server VM の管理](manage-sql-vm-portal.md)に関する記事を参照してください。 
+
+## <a name="azure-key-vault-integration"></a>Azure Key Vault の統合 
+
+透過的なデータ暗号化 (TDE)、列レベルの暗号化 (CLE)、バックアップ暗号化 など、SQL Server 暗号化機能が複数存在します。 これらの形態の暗号化では、暗号化に利用する暗号鍵を管理し、保存する必要があります。 Azure Key Vault サービスは、セキュリティを強化し、安全かつ可用性の高い場所で鍵を管理できるように設計されています。 SQL Server コネクタ を利用すると、SQL Server で Azure Key Vault にある鍵を利用できるようになります。
+総合的な情報は、このシリーズ記事 ([チェックリスト](performance-guidelines-best-practices-checklist.md)、[VM のサイズ](performance-guidelines-best-practices-vm-size.md)、[ストレージ](performance-guidelines-best-practices-storage.md)、[HADR の構成](hadr-cluster-best-practices.md)、[ベースラインの収集](performance-guidelines-best-practices-collect-baseline.md)) の他の記事をご覧ください。 
+
+詳細については、[Azure Key Vault の統合](azure-key-vault-integration-configure.md)に関する記事を参照してください。
+
+
+## <a name="access-control"></a>アクセス制御 
 
 SQL Server 仮想マシンを作成するときに、マシンと SQL Server へのアクセス権を持つユーザーを注意深く制御する方法を検討します。 一般に、次の作業を行う必要があります。
 
@@ -60,17 +80,15 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 
 ## <a name="encryption"></a>暗号化
 
-マネージド ディスクでは、サーバー側暗号化と Azure Disk Encryption が提供されます。 [サーバー側暗号化](../../../virtual-machines/disk-encryption.md)では、保存時の暗号化が提供され、組織のセキュリティおよびコンプライアンス要件を満たすようにデータが保護されます。 [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) では、Bitlocker または DM-Crypt テクノロジを使用し、Azure Key Vault と統合して OS とデータ ディスクの両方を暗号化します。 
+マネージド ディスクでは、サーバー側暗号化と Azure Disk Encryption が提供されます。 [サーバー側暗号化](../../../virtual-machines/disk-encryption.md)では、保存時の暗号化が提供され、組織のセキュリティおよびコンプライアンス要件を満たすようにデータが保護されます。 [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) では、BitLocker または DM-Crypt テクノロジを使用し、Azure Key Vault と統合して OS とデータ ディスクの両方を暗号化します。 
 
-## <a name="use-a-non-default-port"></a>既定以外のポートの使用
+## <a name="non-default-port"></a>既定以外のポート
 
 既定では、SQL Server は既知のポート (1433) をリッスンします。 セキュリティ強化のために、既定以外のポート (1401 など) をリッスンするように、SQL Server を構成します。 Azure Portal で SQL Server のギャラリー イメージをプロビジョニングする場合、 **[SQL Server 設定]** ブレードでこのポートを指定できます。
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
 プロビジョニングした後に、これを構成するには、次の 2 つのオプションがあります。
 
-- Resource Manager VM の場合、[SQL 仮想マシン リソース](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)から **[セキュリティ]** を選択できます。 ここには、ポートを変更するオプションがあります。
+- Resource Manager VM の場合、[SQL 仮想マシン リソース](manage-sql-vm-portal.md#access-the-resource)から **[セキュリティ]** を選択できます。 ここには、ポートを変更するオプションがあります。
 
   ![ポータルの TCP ポートの変更](./media/security-considerations-best-practices/sql-vm-change-tcp-port.png)
 
@@ -98,17 +116,20 @@ SQL Server が既定以外のポートをリッスンしている場合は、接
 
   - **SA** ログインを使用する必要がある場合は、プロビジョニング後にログインを有効にし、新しい強力なパスワードを割り当てます。
 
-## <a name="additional-best-practices"></a>その他のベスト プラクティス
-
-このトピックで説明している手法に加えて、従来のオンプレミスのセキュリティ手法でのセキュリティ ベスト プラクティスと仮想マシンのセキュリティ ベスト プラクティスの両方を確認して実装することをお勧めします。 
-
-オンプレミスのセキュリティ手法の詳細については、「[SQL Server インストールにおけるセキュリティの考慮事](/sql/sql-server/install/security-considerations-for-a-sql-server-installation)」および[セキュリティ センター](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)に関するページを参照してください。 
-
-仮想マシンのセキュリティの詳細については、[仮想マシンのセキュリティの概要](../../../security/fundamentals/virtual-machines-overview.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-パフォーマンスに関するベスト プラクティスにも関心がある場合は、「[Azure Virtual Machines 上の SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)」をご覧ください。
+パフォーマンスに関するベスト プラクティスにも関心がある場合は、「[Azure Virtual Machines 上の SQL Server のパフォーマンスに関するベスト プラクティス](./performance-guidelines-best-practices-checklist.md)」をご覧ください。
 
-Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)」をご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
+Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)」をご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.yml)に関するページをご覧ください。
+
+
+詳細については、このシリーズの他の記事を参照してください。
+
+- [クイック チェックリスト](performance-guidelines-best-practices-checklist.md)
+- [VM サイズ](performance-guidelines-best-practices-vm-size.md)
+- [Storage](performance-guidelines-best-practices-storage.md)
+- [Security](security-considerations-best-practices.md)
+- [HADR の設定](hadr-cluster-best-practices.md)
+- [ベースラインの収集](performance-guidelines-best-practices-collect-baseline.md)

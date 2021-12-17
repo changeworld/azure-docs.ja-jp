@@ -5,24 +5,24 @@ author: normesta
 services: storage
 ms.author: normesta
 ms.reviewer: fryu
-ms.date: 10/26/2020
+ms.date: 11/10/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
-ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b65aff45cc304f59e45fc3bed925b93ee6c622fd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: dfd31111844bc6969d0d2d61caac53b663b1c05c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788405"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346631"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Azure Queue Storage の監視
 
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure Queue Storage によって生成される監視データについてと、Azure Monitor の機能を使用してこのデータに関するアラートを分析する方法について説明します。
 
 > [!NOTE]
-> Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリック クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、およびテーブルに対してログが有効になります。 この機能は、Azure Resource Manager デプロイ モデルを使用して作成されたすべてのストレージ アカウントで使用できます。 「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
+> Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリックおよび米国政府クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、およびテーブルに対してログが有効になります。 この機能は、Azure Resource Manager デプロイ モデルを使用して作成されたすべてのストレージ アカウントで使用できます。 「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 
 ## <a name="monitor-overview"></a>監視の概要
 
@@ -66,12 +66,12 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 
 ## <a name="creating-a-diagnostic-setting"></a>診断設定の作成
 
-診断設定を作成するには、Azure portal、PowerShell、Azure CLI、または Azure Resource Manager テンプレートを使用します。
+診断設定を作成するには、Azure portal、PowerShell、Azure CLI、Azure Resource Manager テンプレート、Azure Policy のいずれかを使用します。
 
 一般的なガイダンスについては、[Azure でプラットフォーム ログとメトリックを収集するための診断設定の作成](../../azure-monitor/essentials/diagnostic-settings.md)に関するページを参照してください。
 
 > [!NOTE]
-> Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリック クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、およびテーブルに対してログが有効になります。 この機能は、Azure Resource Manager デプロイ モデルを使用して作成されたすべてのストレージ アカウントで使用できます。 「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
+> Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリックおよび米国政府クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、およびテーブルに対してログが有効になります。 この機能は、Azure Resource Manager デプロイ モデルを使用して作成されたすべてのストレージ アカウントで使用できます。 「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 
 ### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -108,7 +108,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
    > ![[診断設定] ページのアーカイブ ストレージ](media/monitor-queue-storage/diagnostic-logs-settings-pane-archive-storage.png)
 
 2. **[ストレージ アカウント]** ドロップダウン リストで、ログのアーカイブ先とするストレージ アカウントを選択し、 **[OK]** ボタンをクリックして、 **[保存]** ボタンを選択します。
- 
+
    [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
    > [!NOTE]
@@ -268,6 +268,10 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 診断設定を作成する Azure Resource Manager テンプレートを表示するには、「[Azure Storage の診断設定](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)」を参照してください。
 
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
+
+診断設定を作成するには、ポリシー定義を使用します。 これにより、作成または更新されたすべてのアカウントに対して、確実に診断設定が作成されるようになります。 「[Azure Storage 用の Azure Policy 組み込み定義](../common/policy-reference.md)」をご覧ください。
+
 ---
 
 ## <a name="analyzing-metrics"></a>メトリックの分析
@@ -318,6 +322,17 @@ Azure Queue Storage のメトリックは、次の名前空間にあります。
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
+#### <a name="reading-metric-values-with-dimensions"></a>ディメンションのあるメトリック値を読み取る
+
+メトリックにディメンションが付いている場合、メトリック値を読み取り、ディメンション値をフィルターにしてメトリック値を絞り込むことができます。 [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) コマンドレットを使用します。
+
+```powershell
+$resourceId = "<resource-ID>"
+$dimFilter = [String](New-AzMetricFilter -Dimension ApiName -Operator eq -Value "GetMessages" 3> $null)
+Get-AzMetric -ResourceId $resourceId -MetricName Transactions -TimeGrain 01:00:00 -MetricFilter $dimFilter -AggregationType "Total"
+```
+
+
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>アカウント レベルのメトリック定義を一覧表示する
@@ -338,7 +353,15 @@ Azure Queue Storage のメトリックは、次の名前空間にあります。
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
 
-### <a name="net"></a>[.NET](#tab/azure-portal)
+#### <a name="reading-metric-values-with-dimensions"></a>ディメンションのあるメトリック値を読み取る
+
+メトリックにディメンションが付いている場合、メトリック値を読み取り、ディメンション値をフィルターにしてメトリック値を絞り込むことができます。 [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) コマンドを使用します。
+
+```azurecli
+az monitor metrics list --resource <resource-ID> --metric "Transactions" --interval PT1H --filter "ApiName eq 'GetMessages' " --aggregation "Total" 
+```
+
+### <a name="net-sdk"></a>[.NET SDK](#tab/azure-portal)
 
 Azure Monitor には、メトリックの定義と値を読み取るための [.NET SDK](https://www.nuget.org/packages/microsoft.azure.management.monitor/) が用意されています。 [サンプル コード](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)では、さまざまなパラメーターで SDK を使用する方法を示します。 ストレージ メトリックスについては `0.18.0-preview` 以降のバージョンを使用する必要があります。
 
@@ -481,6 +504,10 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 
 該当なし。
 
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
+
+該当なし。
+
 ---
 
 ## <a name="analyzing-logs"></a>ログの分析
@@ -490,7 +517,7 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 これらのログに表示されるフィールドの詳細なリファレンスについては、「[Azure Queue Storage 監視データのリファレンス](monitor-queue-storage-reference.md)」を参照してください。
 
 > [!NOTE]
-> Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリック クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、汎用 v1 と汎用 v2 ストレージ アカウントの BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、テーブル、Premium ストレージ アカウントに対してログが有効になります。 クラシック ストレージ アカウントはサポートされていません。
+> Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリックおよび米国政府クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、汎用 v1 と汎用 v2 ストレージ アカウントの BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、テーブル、Premium ストレージ アカウントに対してログが有効になります。 クラシック ストレージ アカウントはサポートされていません。
 
 ログ エントリが作成されるのは、サービス エンドポイントに対して行われた要求がある場合に限られます。 たとえば、ストレージ アカウントのキュー エンドポイントにはアクティビティが存在するが、テーブルおよび BLOB のいずれのエンドポイントにも存在しない場合、Queue Storage に関連したログだけが作成されます。 Azure Storage ログには、ストレージ サービスに対する要求の成功と失敗についての詳細な情報が含まれています。 この情報を使って個々の要求を監視したり、ストレージ サービスに関する問題を診断したりできます。 要求は、ベスト エフォートでログに記録されます。
 
@@ -553,7 +580,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 - 過去 3 日間に発生した 10 件の最も一般的なエラーの一覧を表示します。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d) and StatusText !contains "Success"
     | summarize count() by StatusText
@@ -562,7 +589,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 - 過去 3 日間で最も多く発生したエラーの原因となった上位 10 件の操作を一覧表示します。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d) and StatusText !contains "Success"
     | summarize count() by OperationName
@@ -571,7 +598,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 - 過去 3 日間でエンドツーエンドの待機時間が最も長かった上位 10 個の操作を一覧表示します。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d)
     | top 10 by DurationMs desc
@@ -580,7 +607,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 - 過去 3 日間にサーバー側の調整エラーの原因となったすべての操作を一覧表示します。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d) and StatusText contains "ServerBusy"
     | project TimeGenerated, OperationName, StatusCode, StatusText
@@ -588,7 +615,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 - 過去 3 日間の匿名アクセスを含むすべての要求を一覧表示します。
 
-    ```Kusto
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and AuthenticationType == "Anonymous"
     | project TimeGenerated, OperationName, AuthenticationType, Uri
@@ -596,7 +623,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 - 過去 3 日間に使用された操作の円グラフを作成します。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d)
     | summarize count() by OperationName

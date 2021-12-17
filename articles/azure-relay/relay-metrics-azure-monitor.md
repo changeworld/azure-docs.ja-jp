@@ -3,13 +3,13 @@ title: Azure Monitor での Azure リレー メトリック | Microsoft Docs
 description: この記事では、Azure Monitor を使用して Azure Relay の状態を監視する方法について説明します。
 services: service-bus-relay
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 7f91ac0aec46d0fc24901585156dceabb18640c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: 29c54f65a0519e8e9152826953dea29a353c8443
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586822"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668778"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Monitor の Azure リレー メトリック 
 Azure リレー メトリックによって、Azure サブスクリプション内のリソースの状態が提供されます。 豊富な一連のメトリック データにより、名前空間レベルだけでなくエンティティ レベルでも、リレー リソースの全体的な正常性を評価できます。 これらの統計は Azure リレーの状態の監視に役立つため、重要になる場合があります。 メトリックはまた、Azure サポートに問い合わせることなく、根本的な問題をトラブルシューティングするのにも役立ちます。

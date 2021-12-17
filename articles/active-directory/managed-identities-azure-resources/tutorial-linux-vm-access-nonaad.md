@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/16/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61673210dafbdbdbc56477ed58fb0cbe9335efcf
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 5ac851c54a17893082d70bec5d96e8b8cf63b482
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012692"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517894"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする 
 
@@ -47,7 +47,7 @@ ms.locfileid: "107012692"
 
 このセクションでは、Key Vault に格納されているシークレットへのアクセスを VM に許可する方法を説明します。 Azure リソースのマネージド ID を使用すると、Azure AD 認証をサポートするリソースに対して認証するためのアクセス トークンをコードで取得できます。ただし、すべての Azure サービスが Azure AD 認証をサポートしているわけではありません。 Azure リソースのマネージド ID をこれらのサービスと共に使用するには、Azure Key Vault にサービス資格情報を保存し、VM のマネージド ID を使用して Key Vault にアクセスして、資格情報を取得します。
 
-まず、Key Vault を作成し、VM のシステム割り当てマネージド ID に Key Vault へのアクセスを許可する必要があります。
+まず、キー コンテナーを作成し、VM のシステム割り当てマネージド ID にキー コンテナーへのアクセスを許可する必要があります。
 
 1. Azure [portal](https://portal.azure.com/) を開きます。
 1. 左側のナビゲーション バーの上部で、 **[リソースの作成]** を選択します。  
@@ -97,10 +97,10 @@ ms.locfileid: "107012692"
 
 >[!IMPORTANT]
 > 目標のサービスにアクセスするための Azure AD トークンを容易に取得できる Azure.Identity ライブラリは、すべての Azure SDK でサポートされます。 [Azure SDK](https://azure.microsoft.com/downloads/) の詳細を確認し、Azure.Identity ライブラリを活用してください。
-> - [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme?view=azure-dotnet)
-> - [JAVA](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable)
-> - [Javascript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme?view=azure-node-latest)
-> - [Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python)
+> - [.NET](/dotnet/api/overview/azure/identity-readme)
+> - [JAVA](/java/api/overview/azure/identity-readme)
+> - [Javascript](/javascript/api/overview/azure/identity-readme)
+> - [Python](/python/api/overview/azure/identity-readme)
 
 
 1. ポータルで Linux VM に移動し、 **[概要]** の **[接続]** をクリックします。 
@@ -126,7 +126,7 @@ ms.locfileid: "107012692"
     "token_type":"Bearer"} 
     ```
     
-    このアクセス トークンを使用して Azure Key Vault に認証することができます。  次の CURL 要求は、CURL と Key Vault REST API を使用して Key Vault からシークレットを読み取る方法を示しています。  Key Vault の [**概要**] ページの [**要点**] セクションにある Key Vault の URL が必要です。  前の呼び出しで取得したアクセス トークンも必要になります。 
+    このアクセス トークンを使用して Azure Key Vault に認証することができます。  次の CURL 要求は、CURL と Key Vault REST API を使用して Key Vault からシークレットを読み取る方法を示しています。  Key Vault の **[概要]** ページの **[要点]** セクションにある Key Vault の URL が必要です。  前の呼び出しで取得したアクセス トークンも必要になります。 
         
     ```bash
     curl 'https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01' -H "Authorization: Bearer <ACCESS TOKEN>" 

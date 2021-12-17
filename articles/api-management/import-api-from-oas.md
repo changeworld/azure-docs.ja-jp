@@ -3,7 +3,7 @@ title: Azure Portal を使用して OpenAPI 仕様をインポートする | Mic
 description: API Management を使用して OpenAPI 仕様をインポートし、Azure portal と開発者ポータルで API をテストする方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
-ms.author: apimpm
-ms.openlocfilehash: 05295efec3d7651c3a77dd5ad6e2c72b57a6c5a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 438e779d5eb7718a5cf9b56cf9bbe7404f6861c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95994704"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679335"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI 仕様のインポート
 
@@ -28,11 +28,10 @@ ms.locfileid: "95994704"
 > [!div class="checklist"]
 > * "OpenAPI の仕様" バックエンド API のインポート
 > * Azure Portal での API のテスト
-> * 開発者ポータルでの API のテスト
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します
+次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

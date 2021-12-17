@@ -1,25 +1,24 @@
 ---
 title: インクルード ファイル
-author: erhopf
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/09/2020
-ms.author: erhopf
+ms.date: 10/28/2021
+ms.author: pafarley
 ms.custom: include
-ms.openlocfilehash: 44d42fa53a25436205c88d6e00bb3a01f6f7462f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 324f1a9e0506f8119ea81f8a4887d5a0d3908721
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101710322"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131521250"
 ---
 ## <a name="service-specific-updates"></a>サービス固有の更新 
 
 * [Computer Vision](../computer-vision/whats-new.md)
 * [Custom Vision](../custom-vision-service/whats-new.md)
-* [Form Recognizer](../form-recognizer/whats-new.md)
 * [Language Understanding (LUIS)](../LUIS/whats-new.md)
 * [Personalizer](../personalizer/whats-new.md)
 * [QnA Maker](../qnamaker/whats-new.md)
-* [Text Analytics](../text-analytics/whats-new.md)
+* [言語サービス](../language-service/whats-new.md)

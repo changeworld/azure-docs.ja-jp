@@ -1,7 +1,7 @@
 ---
-title: 'クイックスタート: ARM テンプレートを使用して Any-to-Any の構成を作成する'
+title: 'クイック スタート: ARM テンプレートを使用して Any-to-Any の構成を作成する'
 titleSuffix: Azure Virtual WAN
-description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Any-to-Any の構成を作成する方法について説明します。
+description: このクイック スタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Any-to-Any の構成を作成する方法について説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,22 +9,22 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: d31f490baec49e8e0b6fcf89caa8c19202fdf763
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 79b78af6e0ff1d23ea47b150dfd6c185e3d9df18
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102431382"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323122"
 ---
-# <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Any-to-Any の構成を作成する
+# <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>クイック スタート: ARM テンプレートを使用して Any-to-Any の構成を作成する
 
-このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、任意のスポークから他の任意のスポークに到達できる Any-to-Any のシナリオを作成する方法について説明します。
+このクイック スタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、任意のスポークから他の別のスポークに到達できる Any-to-Any のシナリオを作成する方法について説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f201-virtual-wan-with-all-gateways%2fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.network%2fvirtual-wan-with-all-gateways%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "102431382"
 
 ## <a name="review-the-template"></a><a name="review"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/201-virtual-wan-with-all-gateways)からのものです。 この記事のテンプレートは長いため、ここでは表示できません。 テンプレートを確認するには、[azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-virtual-wan-with-all-gateways/azuredeploy.json) を参照してください。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/virtual-wan-with-all-gateways)からのものです。 この記事のテンプレートは長いため、ここでは表示できません。 テンプレートを確認するには、[azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.network/virtual-wan-with-all-gateways/azuredeploy.json) を参照してください。
 
 このクイックスタートでは、ゲートウェイや VNet 接続をすべて含む、Azure Virtual WAN のマルチハブ デプロイを作成します。 入力パラメーターの数は、意図的に最小限に抑えています。 IP アドレス スキームは、テンプレート内の変数を編集することで変更できます。 このシナリオについては、[Any-to-Any シナリオ](scenario-any-to-any.md)に関する記事で詳しく説明しています。
 
@@ -67,7 +67,7 @@ ms.locfileid: "102431382"
 
 ## <a name="deploy-the-template"></a><a name="deploy"></a>テンプレートのデプロイ
 
-このテンプレートを適切にデプロイするには、[Azure へのデプロイ] ボタンと Azure portal を使用する必要があります。次の理由から、他の方法は使用できません。
+このテンプレートを適切にデプロイするには、Azure portal で **[Azure に配置する]** ボタンを使用する必要があります。次の理由から、他の方法は使用できません。
 
 * P2S 構成を作成するためには、ルート証明書データをアップロードする必要があります。 PowerShell または CLI を使用する場合、データ フィールドが証明書データを受け付けません。
 * このテンプレートは、Cloud Shell を使用すると、証明書データのアップロードが原因で適切に機能しません。
@@ -75,7 +75,7 @@ ms.locfileid: "102431382"
 
 1. **[Azure へのデプロイ]** をクリックします。
 
-   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f201-virtual-wan-with-all-gateways%2fazuredeploy.json)
+   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.network%2fvirtual-wan-with-all-gateways%2fazuredeploy.json)
 1. テンプレートを表示するには、 **[テンプレートの編集]** をクリックします。 このページで、アドレス空間や特定のリソースの名前など、一部の値を調整できます。 **[保存]** をクリックして変更内容を保存するか、 **[破棄]** をクリックしてください。
 1. テンプレート ページで値を入力します。 このテンプレートには、P2S パブリック証明書データが必要です。 この記事を練習に使用している場合は、サンプル データとして、次の .cer ファイルのデータを両方のハブにご利用ください。 テンプレートの実行とデプロイが完了した後、この P2S 構成を使用するためには、この情報を、実際のデプロイの公開キー[証明書データ](certificates-point-to-site.md#cer)に置き換える必要があります。
 

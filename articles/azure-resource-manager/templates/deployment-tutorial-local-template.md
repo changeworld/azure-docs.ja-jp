@@ -4,13 +4,13 @@ description: ローカル コンピューターから Azure Resource Manager テ
 ms.date: 02/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: ''
-ms.openlocfilehash: d8d54acfa345994edcc401170e70495b3826bfdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9450a140d6c2fec93ccd836309690e15337b588b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384233"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638807"
 ---
 # <a name="tutorial-deploy-a-local-arm-template"></a>チュートリアル:ローカル ARM テンプレートをデプロイする
 
@@ -44,7 +44,7 @@ Azure PowerShell または Azure CLI をインストールした後で、初回�
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 
 > [!IMPORTANT]
-> ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用する必要があります。 名前は一意である必要があります。 このテンプレートでは、プロジェクト名に **store** を追加したものがストレージ アカウント名になります。プロジェクト名は 3 文字を超え、11 文字未満であることが必要です。 そのためプロジェクト名は、ストレージ アカウント名の要件を満たしていること、また 11 文字未満であることが必要となります。
+> ストレージ アカウント名は、一意であり、長さが 3 から 24 文字で、**数字** と **小文字** のみを使用する必要があります。 サンプル テンプレートの `storageAccountName` 変数では、`projectName` パラメーターの最大 11 文字と、13 文字の [uniqueString](./template-functions-string.md#uniquestring) が結合されています。
 
 テンプレートのコピーに _.json_ という拡張子を付けてローカル コンピューターに保存します (例: _azuredeploy.json_)。 このテンプレートは、後でこのチュートリアルの中でデプロイします。
 

@@ -3,14 +3,15 @@ title: Azure Automation で Runbook を開始する
 description: この記事では、Azure Automation で Runbook を開始する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/16/2018
+ms.date: 04/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3a08d727f5257f48ba45fc132f493d33bbb0848f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4b178ff8b667c5c1db508d8062b4cd5b53955047
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169370"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277230"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Automation で Runbook を開始する
 
@@ -137,11 +138,11 @@ jsmith
 
 ## <a name="start-a-runbook-with-the-azure-portal"></a>Azure portal で Runbook を開始する
 
-1. Azure portal で、 **[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
-2. [ハブ] メニューで、 **[Runbook]** を選択します。
-3. [Runbook] ページで Runbook を選択し、 **[開始]** をクリックします。
+1. Azure Portal で、 **[Automation]** を選択し、次に Automation アカウントの名前を選択します。
+2. 左側のペインから、 **[Runbook]** を選択します。
+3. **[Runbook]** ページで Runbook を選択し、 **[開始]** をクリックします。
 4. Runbook にパラメーターがある場合は、各パラメーターのテキスト ボックスに値を指定するように求めるプロンプトが表示されます。 パラメーターについて詳しくは、「[Runbook のパラメーター](#work-with-runbook-parameters)」をご覧ください。
-5. [ジョブ] ペインで、Runbook ジョブの状態を表示することができます。
+5. **[ジョブ]** ペインで、Runbook ジョブの状態を表示することができます。
 
 ## <a name="start-a-runbook-with-powershell"></a>PowerShell で Runbook を開始する
 

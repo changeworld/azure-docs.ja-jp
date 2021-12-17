@@ -2,18 +2,17 @@
 title: Azure IoT Hub のエラー 503003 PartitionNotFound のトラブルシューティング
 description: エラー 503003 PartitionNotFound を修正する方法の概要
 author: jlian
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: troubleshooting
-ms.date: 01/30/2020
+ms.date: 07/07/2021
 ms.author: jlian
-ms.openlocfilehash: e52ac6068951c76a214c9cf5514d95109188cc20
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 213a372bc38ba8c0216993de2d340dfba0fad3e0
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060960"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830785"
 ---
 # <a name="503003-partitionnotfound"></a>503003 PartitionNotFound
 

@@ -1,22 +1,22 @@
 ---
 title: テーブルの設計
-description: Azure Synapse Analytics の専用 SQL プールを使用したテーブルの設計の概要。
+description: 専用 SQL プールを使用したテーブルの設計の概要。
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/15/2019
-ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c55edbd24553189c11070999ddc5d3b3516f2d97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea3081720adc74576d171dbba40a0f09d858749a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737933"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507096"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールを使用してテーブルを設計する
 
@@ -36,15 +36,15 @@ ms.locfileid: "98737933"
 
 スキーマは、同じ方法で使用されるテーブルをグループ化するのに良い方法です。  複数のデータベースをオンプレミス ソリューションから専用 SQL プールに移行する場合は、ファクト テーブル、ディメンション テーブル、および統合テーブルのすべてを専用 SQL プール内の 1 つのスキーマに移行すると一番うまくいきます。
 
-たとえば、すべてのテーブルを、wwi と呼ばれる 1 つのスキーマ内の [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) サンプルの専用 SQL プールに格納できます。 次のコードは、wwi と呼ばれる[ユーザー定義スキーマ](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を作成します。
+たとえば、すべてのテーブルを、`wwi` と呼ばれる 1 つのスキーマ内の [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) サンプルの専用 SQL プールに格納できます。 次のコードは、`wwi` と呼ばれる[ユーザー定義スキーマ](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を作成します。
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-専用 SQL プール内のテーブルの構成を表示するには、テーブル名のプレフィックスとして fact、dim、および int を使用できます。 次の表に、WideWorldImportersDW のスキーマ名とテーブル名の一部を示します。  
+専用 SQL プール内のテーブルの構成を表示するには、テーブル名のプレフィックスとして fact、dim、および int を使用できます。 次の表に、`WideWorldImportersDW` のスキーマ名とテーブル名の一部を示します。  
 
-| WideWorldImportersDW テーブル  | テーブルの種類です。 | 専用 SQL プール |
+| **WideWorldImportersDW テーブル**  | *テーブルの種類です。* | **専用 SQL プール** |
 |:-----|:-----|:------|:-----|
 | City | Dimension | wwi.DimCity |
 | Order | ファクト | wwi.FactOrder |
@@ -65,11 +65,11 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 一時テーブルは、セッション中のみ存在します。 一時テーブルを使用して、一時的な結果を他のユーザーが確認できないようにしたり、クリーンアップの必要性を減らしたりすることもできます。  
 
-一時テーブルはローカル ストレージを使用して高速のパフォーマンスを提供します。  詳しくは、[一時テーブル](sql-data-warehouse-tables-temporary.md)に関する記事をご覧ください。
+一時テーブルはローカル ストレージを使用して高速のパフォーマンスを提供します。 詳しくは、[一時テーブル](sql-data-warehouse-tables-temporary.md)に関する記事をご覧ください。
 
 ### <a name="external-table"></a>外部テーブル
 
-外部テーブルは、Azure Storage BLOB または Azure Data Lake Store にあるデータを指します。 CREATE TABLE AS SELECT ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが専用 SQL プールにインポートされます。
+外部テーブルは、Azure Storage BLOB または Azure Data Lake Store にあるデータを指します。 CREATE TABLE AS SELECT ステートメントと共に使用する場合は、外部テーブルから選択するとデータが専用 SQL プールにインポートされます。
 
 このため、外部テーブルはデータを読み込むのに役立ちます。 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](./load-data-from-azure-blob-storage-using-copy.md)」をご覧ください。
 
@@ -103,7 +103,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 テーブル カテゴリは、多くの場合、テーブルの分散について選択するオプションを決定します。
 
-| テーブル カテゴリ | 推奨される分散オプション |
+| **テーブル カテゴリ** | **推奨される分散オプション** |
 |:---------------|:--------------------|
 | ファクト           | クラスター化列ストア インデックスによるハッシュ分散を使用します。 2 つのハッシュ テーブルが同じディストリビューション列に結合される場合にパフォーマンスが向上します。 |
 | Dimension      | 小さなテーブルにはレプリケートを使用します。 各コンピューティング ノードに保存するにはテーブルが大きすぎる場合は、ハッシュ分散を使用します。 |
@@ -144,7 +144,7 @@ PRIMARY KEY は、NONCLUSTERED と NOT ENFORCED が両方とも使用されて�
 
 テーブルは、新しい空のテーブルとして作成することができます。 テーブルを作成し、SELECT ステートメントの結果を使用して値を設定することもできます。 テーブルを作成するための T-SQL コマンドを次に示します。
 
-| T-SQL ステートメント | 説明 |
+| **T-SQL ステートメント**| **説明** |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | すべてのテーブル列およびオプションを定義して空のテーブルを作成します。 |
 | [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 外部テーブルを作成します。 テーブルの定義は、専用 SQL プールに格納されます。 テーブル データは Azure Blob Storage または Azure Data Lake Store に格納されます。 |
@@ -297,7 +297,7 @@ FROM size
 
 ### <a name="table-space-summary"></a>テーブル領域の概要
 
-次のクエリはテーブルごとに行と領域を返します。  これにより、最大規模のテーブルや、各テーブルがラウンド ロビン、レプリケート、ハッシュ分散のいずれであるかを確認できます。  ハッシュ分散テーブルの場合、クエリによってディストリビューション列が表示されます。  
+次のクエリはテーブルごとに行と領域を返します。  これにより、最大規模のテーブルや、各テーブルがラウンド ロビン、レプリケート、ハッシュ分散のいずれかであるかを確認できます。  ハッシュ分散テーブルの場合、クエリによってディストリビューション列が表示されます。  
 
 ```sql
 SELECT

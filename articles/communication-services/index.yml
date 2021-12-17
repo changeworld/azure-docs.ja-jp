@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Communication Services
-summary: Azure Communication Services は、音声、ビデオ、チャット、テレフォニーをアプリに追加できるクラウドベースの通信サービスです。 Azure Communication Services は現在パブリック プレビュー段階にあることに注意してください。
+summary: Azure Communication Services は、音声、ビデオ、チャット、テレフォニーをアプリに追加できるクラウドベースの通信サービスです。
 metadata:
   title: Azure Communication Services
-  description: Azure Communication Services は、音声、ビデオ、チャット、テレフォニーをアプリに追加できるクラウドベースの通信サービスです。 Azure Communication Services は現在パブリック プレビュー段階にあることに注意してください。
+  description: Azure Communication Services は、音声、ビデオ、チャット、テレフォニーをアプリに追加できるクラウドベースの通信サービスです。
   ms.service: azure-communication-services
   ms.topic: landing-page
-  author: mikben
-  ms.author: mikben
-  ms.date: 08/10/2020
-  ms.openlocfilehash: 4727e7ca3e0831483811c77be34e69f794cfb576
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  author: probableprime
+  ms.author: rifox
+  ms.date: 06/30/2021
+  ms.openlocfilehash: 8e22518e43b588615cdac3c9b49128ae5b02e532
+  ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101690517"
+  ms.lasthandoff: 10/19/2021
+  ms.locfileid: "130178920"
 landingContent:
 - title: Azure Communication Services について
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
-    - text: クライアント ライブラリのオプション
+    - text: SDK オプション
       url: concepts/sdk-options.md
     - text: Teams との相互運用
       url: concepts/teams-interop.md
@@ -36,6 +36,8 @@ landingContent:
       url: quickstarts/create-communication-resource.md
     - text: ユーザー アクセス トークンを作成して管理する
       url: quickstarts/access-tokens.md
+    - text: リレー トークンを取得する
+      url: quickstarts/relay-token.md
   - linkListType: concept
     links:
     - text: クライアントとサーバーのアーキテクチャ
@@ -43,25 +45,41 @@ landingContent:
     - text: 認証と承認
       url: concepts/authentication.md
     - text: イベント処理
-      url: concepts/event-handling.md
+      url: ../event-grid/event-schema-communication-services.md
     - text: 通知
       url: concepts/notifications.md
+    - text: ベスト プラクティス
+      url: concepts/best-practices.md
+    - text: トラブルシューティング
+      url: concepts/troubleshooting-info.md
 - title: 音声およびビデオによる通話
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 音声およびビデオによる通話をアプリに追加する
+    - text: 音声通話をアプリに追加する
       url: quickstarts/voice-video-calling/getting-started-with-calling.md
-    - text: 通話クライアント ライブラリを使用する
-      url: quickstarts/voice-video-calling/calling-client-samples.md
+    - text: ビデオ通話をアプリに追加する
+      url: quickstarts/voice-video-calling/get-started-with-video-calling.md
   - linkListType: concept
     links:
-    - text: 音声とビデオに関する概念
+    - text: 音声とビデオの概念
       url: concepts/voice-video-calling/about-call-types.md
-    - text: 通話クライアント ライブラリの概要
+    - text: Calling SDK の概要
       url: concepts/voice-video-calling/calling-sdk-features.md
     - text: 通話のフロー
       url: concepts/call-flows.md
+- title: UI ライブラリ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: UI ライブラリの概要
+      url: concepts/ui-library/ui-library-overview.md
+    - text: UI ライブラリのユース ケース
+      url: concepts/ui-library/ui-library-use-cases.md
+    - text: モバイル UI ライブラリの概要
+      url: concepts/ui-library/mobile-ui-library.md
+    - text: モバイル UI ライブラリのユース ケース
+      url: concepts/ui-library/mobile-ui-use-cases.md
 - title: テレフォニーと SMS
   linkLists:
   - linkListType: quickstart
@@ -76,12 +94,16 @@ landingContent:
     links:
     - text: SMS に関する概念
       url: concepts/telephony-sms/concepts.md
-    - text: SMS クライアント ライブラリの概要
+    - text: SMS SDK の概要
       url: concepts/telephony-sms/sdk-features.md
     - text: 通話の概要
       url: concepts/voice-video-calling/calling-sdk-features.md
     - text: 電話番号の種類
       url: concepts/telephony-sms/plan-solution.md
+  - linkListType: learn
+    links:
+    - text: C# を使用して SMS を送信する
+      url: /learn/modules/communication-service-send-sms-console-app/
 - title: チャット
   linkLists:
   - linkListType: quickstart
@@ -92,7 +114,7 @@ landingContent:
     links:
     - text: チャットに関する概念
       url: concepts/chat/concepts.md
-    - text: チャット クライアント ライブラリの概要
+    - text: Chat SDK の概要
       url: concepts/chat/sdk-features.md
 - title: サンプル
   linkLists:

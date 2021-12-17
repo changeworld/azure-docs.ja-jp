@@ -4,15 +4,16 @@ description: Microsoft コマーシャル マーケットプレースにおい�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
-ms.date: 3/08/2021
-ms.openlocfilehash: f2b5f7eb559e349947f88067a3d2ea53d99b7cbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/06/2021
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.openlocfilehash: 04d56f39cc4721d0290bb258595fb95b6440cf79
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583578"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748216"
 ---
 # <a name="list-of-system-queries"></a>システム クエリのリスト
 
@@ -46,6 +47,14 @@ ms.locfileid: "102583578"
 **レポート クエリ**:
 
 `SELECT MarketplaceSubscriptionId,MonthStartDate,OfferType,AzureLicenseType,MarketplaceLicenseType,Sku,CustomerCountry,IsPreviewSKU,OrderId,OrderQuantity,CloudInstanceName,IsNewCustomer,OrderStatus,OrderCancelDate,CustomerCompanyName,CustomerName,OrderPurchaseDate,OfferName,TrialEndDate,CustomerId,BillingAccountId FROM ISVOrder TIMESPAN LAST_6_MONTHS`
+
+**レポートの説明**: 直近 6 か月間の OrdersV2 レポート
+
+**QueryID**: `bd1b0cc1-ce45-4578-beba-6fe5a69fd421`
+
+**レポート クエリ**:
+
+`SELECT MarketplaceSubscriptionId,MonthStartDate,OfferType,AzureLicenseType,MarketplaceLicenseType,Sku,CustomerCountry,IsPreviewSKU,OrderId,OrderQuantity,CloudInstanceName,IsNewCustomer,OrderStatus,OrderCancelDate,CustomerCompanyName,CustomerName,OrderPurchaseDate,OfferName,TrialEndDate,CustomerId,BillingAccountId,TermStartDate,TermEndDate,PurchaseRecordId,PurchaseRecordLineItemId,HasTrial,IsTrialDeployment,estimatedcharges FROM ISVOrderV2 TIMESPAN LAST_6_MONTHS`
 
 ## <a name="usage-report-queries"></a>使用状況レポートのクエリ
 

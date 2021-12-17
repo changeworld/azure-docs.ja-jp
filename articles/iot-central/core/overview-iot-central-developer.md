@@ -3,23 +3,21 @@ title: Azure IoT Central 用デバイスの開発 | Microsoft Docs
 description: Azure IoT Central は、IoT ソリューションの作成を簡単にする IoT アプリケーション プラットフォームです。 この記事では、IoT Central アプリケーションに接続するデバイスの開発について概要を説明します。 デバイスは、テレメトリを使用してストリーミング データとプロパティを送信することにより、その状態をレポートします。 IoT Central は、書き込み可能なプロパティを使用してデバイスの状態を設定したり、デバイスに対するコマンドを呼び出したりすることができます。
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/05/2020
+ms.date: 08/30/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: ebd2759d4dfb8ee79130f9b4876eba8d45226d04
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: f2131ec5a0b939172097494dcd457b9d661614ad
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718793"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473498"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central デバイスの開発ガイド
-
-"*この記事は、デバイス開発者を対象としています。* "
 
 IoT Central アプリケーションを使用すると、数百万台ものデバイスを、そのライフ サイクル全体にわたって監視および管理することができます。 このガイドは、IoT Central に接続されたデバイスで実行されるコードを実装するデバイス開発者を対象としています。
 
@@ -29,33 +27,31 @@ IoT Central アプリケーションを使用すると、数百万台ものデ�
 - "_プロパティ_": デバイスが IoT Central に報告する状態の値。 たとえば、デバイスのファームウェアの現在のバージョン。 さらに、IoT Central がデバイスで更新できる書き込み可能なプロパティも使用できます (目標温度など)。
 - "_コマンド_": デバイスの動作を制御するために IoT Central から呼び出されます。 たとえば、IoT Central アプリケーションは、デバイスを再起動するためにコマンドを呼び出す場合があります。
 
-ソリューション ビルダーは、テレメトリの視覚化、プロパティの管理、コマンドの呼び出しを行うために、IoT Central の Web UI でダッシュボードとビューを構成する役割を担います。
+ソリューション ビルダーは、テレメトリの視覚化、プロパティの管理、コマンドの呼び出しを行うために、IoT Central の Web UI でダッシュボードとデバイスのビューを構成する役割を担います。
 
 ## <a name="types-of-device"></a>デバイスの種類
 
 以降のセクションでは、IoT Central アプリケーションに接続可能なデバイスの主な種類について説明します。
 
-### <a name="standalone-device"></a>スタンドアロン デバイス
+### <a name="iot-device"></a>IoT デバイス
 
-スタンドアロン デバイスは、IoT Central に直接接続します。 通常、スタンドアロン デバイスは、そのオンボード センサーまたは接続されているセンサーから IoT Central アプリケーションにテレメトリを送信します。 また、スタンドアロン デバイスは、プロパティ値の報告、書き込み可能なプロパティ値の受信、コマンドへの応答を行うこともできます。
+IoT デバイスは、IoT Central に直接接続するスタンドアロンのデバイスです。 通常、IoT デバイスは、そのオンボード センサーまたは接続されているセンサーから IoT Central アプリケーションにテレメトリを送信します。 また、スタンドアロン デバイスは、プロパティ値の報告、書き込み可能なプロパティ値の受信、コマンドへの応答を行うこともできます。
 
-### <a name="gateway-device"></a>ゲートウェイ デバイス
+### <a name="iot-edge-device"></a>IoT Edge デバイス
 
-ゲートウェイ デバイスは、IoT Central アプリケーションに接続されている 1 台以上のダウンストリーム デバイスを管理します。 ダウンストリーム デバイスとゲートウェイ デバイスの関係を構成するには、IoT Central を使用します。 詳細については、「[Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する](./tutorial-define-gateway-device-type.md)」を参照してください。
+IoT Edge デバイスは、IoT Central に直接接続します。 IoT Edge デバイスは、自身のテレメトリの送信、そのプロパティのレポート、書き込み可能なプロパティの更新やコマンドへの応答を行うことができます。 IoT Edge モジュールは、IoT Edge デバイス上のローカルでデータを処理することができます。 また、IoT Edge デバイスが、他のデバイス (リーフ デバイス) の仲介役を担うこともできます。 たとえば、IoT Edge デバイスは、次のようなシナリオで使用されます。
 
-### <a name="edge-device"></a>エッジ デバイス
-
-エッジ デバイスは、IoT Central に直接接続しますが、"_リーフ デバイス_" と呼ばれる他のデバイスの仲介役として機能します。 通常、エッジ デバイスは、それが仲介役となるリーフ デバイスの近くに配置されます。 エッジ デバイスを使用するシナリオには、次のようなものがあります。
-
-- IoT Central に直接接続できないデバイスを、エッジ デバイスを介して接続できるようにする: たとえば、リーフ デバイスが Bluetooth を使用してエッジ デバイスに接続し、エッジ デバイスがインターネット経由で IoT Central に接続することができます。
-- テレメトリを集約してから IoT Central に送信する: この方法は、データを IoT Central に送信するコストの削減に役立ちます。
+- IoT Central に送信するテレメトリを事前に集約またはフィルター処理する: この方法は、データを IoT Central に送信するコストの削減に役立ちます。
+- IoT Central に直接接続できないデバイスを、IoT Edge デバイスを介して接続できるようにする: たとえば、リーフ デバイスが Bluetooth を使用してエッジ デバイスに接続し、IoT Edge デバイスがインターネット経由で IoT Central に接続することができます。
 - インターネットを介して IoT Central に接続する場合に生じる待ち時間を回避するために、リーフ デバイスをローカルで制御する:
 
-エッジ デバイスは、自身のテレメトリの送信、そのプロパティの報告、書き込み可能なプロパティの更新やコマンドへの応答も行うことができます。
-
-IoT Central では、エッジ デバイスに接続されているリーフ デバイスではなく、エッジ デバイスのみが認識されます。
+IoT Central から見えるのは、IoT Edge デバイスのみです。IoT Edge デバイスに接続されているリーフ デバイスは見えません。
 
 詳細については、[Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する](./tutorial-add-edge-as-leaf-device.md)に関するページを参照してください。
+
+### <a name="gateways"></a>ゲートウェイ
+
+ゲートウェイ デバイスは、IoT Central アプリケーションに接続されている 1 台以上のダウンストリーム デバイスを管理します。 ダウンストリーム デバイスとゲートウェイ デバイスの関係を構成するには、IoT Central を使用します。 ゲートウェイの役割は、IoT デバイスと IoT Edge デバイスの両方が担うことができます。 詳細については、「[Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する](./tutorial-define-gateway-device-type.md)」を参照してください。
 
 ## <a name="connect-a-device"></a>デバイスの接続
 
@@ -82,12 +78,14 @@ DPS を使用すると、次のことが可能になります。
 
 IoT Central デバイス テンプレートには、その種類のデバイスで実装されるべき動作を指定する "_モデル_" が含まれています。 動作には、テレメトリ、プロパティ、コマンドが含まれます。
 
+モデルの編集に関するベスト プラクティスの詳細については、「[既存のデバイス テンプレートを編集する](howto-edit-device-template.md)」を参照してください。
+
 > [!TIP]
 > モデルは、[Digital Twins Definition Language (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl) JSON ファイルとして IoT Central からエクスポートできます。
 
 各モデルには、一意の "_デバイス ツイン モデル識別子_" (DTMI) があります (例: `dtmi:com:example:Thermostat;1`)。 デバイスは、IoT Central に接続するときに、実装するモデルの DTMI を送信します。 これにより、IoT Central で正しいデバイス テンプレートをデバイスに関連付けることができます。
 
-[IoT プラグ アンド プレイ](../../iot-pnp/overview-iot-plug-and-play.md)では、DTDL モデルの実装時にデバイスで遵守されるべき一連の規則を定義しています。
+[IoT プラグ アンド プレイ](../../iot-develop/overview-iot-plug-and-play.md)では、DTDL モデルの実装時にデバイスで遵守されるべき一連の[規則](../../iot-develop/concepts-convention.md)を定義しています。
 
 [Azure IoT device SDK](#languages-and-sdks) では、IoT プラグ アンド プレイ規則がサポートされています。
 
@@ -102,10 +100,10 @@ IoT Central デバイス テンプレートには、その種類のデバイス�
 
 DTDL モデルは、"_コンポーネントなし_" または "_複数コンポーネント_" のモデルにすることができます。
 
-- コンポーネントなしモデル: 単純なモデルでは、埋め込みコンポーネントまたはカスケードされたコンポーネントは使用されません。 すべてのテレメトリ、プロパティ、コマンドは、1 つの "_既定のコンポーネント_" として定義されます。 例については、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) モデルを参照してください。
-- 複数コンポーネント モデル: 2 つ以上のコンポーネントを含むより複雑なモデル。 これらのコンポーネントには、1 つの既定のコンポーネントと、入れ子になった 1 つ以上の追加コンポーネントが含まれます。 例については、[Temperature Controller](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) モデルを参照してください。
+- コンポーネントなしモデル: 単純なモデルでは、埋め込みコンポーネントまたはカスケードされたコンポーネントは使用されません。 すべてのテレメトリ、プロパティ、コマンドは、1 つの "_ルート コンポーネント_" として定義されます。 例については、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) モデルを参照してください。
+- 複数コンポーネント モデル: 2 つ以上のコンポーネントを含むより複雑なモデル。 これらのコンポーネントには、1 つのルート コンポーネントと、入れ子になった 1 つ以上の追加コンポーネントが含まれます。 例については、[Temperature Controller](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) モデルを参照してください。
 
-詳細については、[IoT プラグ アンド プレイ モデリング ガイド](../../iot-pnp/concepts-modeling-guide.md)を参照してください。
+詳細については、[IoT プラグ アンド プレイ モデリング ガイド](../../iot-develop/concepts-modeling-guide.md)を参照してください。
 
 ### <a name="conventions"></a>規約
 
@@ -121,7 +119,7 @@ DTDL モデルは、"_コンポーネントなし_" または "_複数コンポ�
 
 デバイスが IoT Central と交換する JSON メッセージの形式の詳細については、「[テレメトリ、プロパティ、およびコマンドのペイロード](concepts-telemetry-properties-commands.md)」を参照してください。
 
-IoT プラグ アンド プレイ規則の詳細については、「[IoT プラグ アンド プレイ規則](../../iot-pnp/concepts-convention.md)」を参照してください。
+IoT プラグ アンド プレイ規則の詳細については、「[IoT プラグ アンド プレイ規則](../../iot-develop/concepts-convention.md)」を参照してください。
 
 ### <a name="device-sdks"></a>デバイスの SDK
 

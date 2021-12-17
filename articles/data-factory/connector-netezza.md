@@ -1,25 +1,28 @@
 ---
-title: Azure Data Factory を使用して Netezza からデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Netezza のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-author: linda33wj
+title: Netezza からデータをコピーする
+description: Azure Data Factory または Synapse Analytics パイプラインで Copy アクティビティを使用して、Netezza からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.author: jingwang
-ms.openlocfilehash: 4b12c1f24f389634004de3d487a693bc588a7241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.author: jianleishen
+ms.openlocfilehash: 588700126d87361e4530c073cdcaf1a5a9339511
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374356"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828171"
 ---
-# <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory を使用して Netezza からデータをコピーする
+# <a name="copy-data-from-netezza-by-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Netezza からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Netezza からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
+この記事では、Azure Data Factory および Azure Synapse Analytics パイプラインで Copy アクティビティを使用して、Netezza からデータをコピーする方法について説明します。 この記事は、Copy アクティビティの概要を説明する [Copy アクティビティ](copy-activity-overview.md)に関する記事に基づいています。
 
 >[!TIP]
->Netezza から Azure へのデータ移行のシナリオの詳細については、「[Azure Data Factory を使用してオンプレミスの Netezza サーバーから Azure にデータを移行する](data-migration-guidance-netezza-azure-sqldw.md)」を参照してください。
+>Netezza から Azure へのデータ移行のシナリオの詳細については、「[オンプレミスの Netezza サーバーから Azure へのデータの移行](data-migration-guidance-netezza-azure-sqldw.md)」をご覧ください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -33,17 +36,42 @@ Netezza から、サポートされている任意のシンク データ スト�
 
 Netezza コネクタでは、ソースからの並列コピーがサポートされています。 詳細については、「[Netezza からの並列コピー](#parallel-copy-from-netezza)」セクションを参照してください。
 
-Azure Data Factory では、接続を可能にする組み込みのドライバーが提供されます。 このコネクタを使用するためにドライバーを手動でインストールする必要はありません。
+このサービスでは、接続を行うための組み込みのドライバーが提供されます。 このコネクタを使用するためにドライバーを手動でインストールする必要はありません。
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>はじめに
 
-コピー アクティビティを使用するパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを使用するパイプラインを作成する詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)を参照してください。
+コピー アクティビティを使用するパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 Copy アクティビティを使用したパイプライン作成の詳細な手順については、[Copy アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)を参照してください。
 
-次のセクションでは、Netezza コネクタに固有の Data Factory エンティティの定義に使用できるプロパティについて詳しく説明します。
+## <a name="create-a-linked-service-to-netezza-using-ui"></a>UI を使用して Netezza のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Netezza のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. Netezza を検索し、Netezza コネクタを選択します。
+
+   :::image type="content" source="media/connector-netezza/netezza-connector.png" alt-text="Netezza コネクタのスクリーンショット。":::    
+
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+   :::image type="content" source="media/connector-netezza/configure-netezza-linked-service.png" alt-text="Netezza のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、Netezza コネクタに固有のエンティティの定義に使用できるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -196,17 +224,17 @@ Netezza からデータをコピーするには、コピー アクティビテ�
 
 Data Factory の Netezza コネクタは、Netezza からデータを並列でコピーするために、組み込みのデータ パーティション分割を提供します。 データ パーティション分割オプションは、コピー アクティビティの **[ソース]** テーブルにあります。
 
-![パーティションのオプションのスクリーンショット](./media/connector-netezza/connector-netezza-partition-options.png)
+:::image type="content" source="./media/connector-netezza/connector-netezza-partition-options.png" alt-text="パーティションのオプションのスクリーンショット":::
 
-パーティション分割されたコピーを有効にすると、Data Factory によって Netezza ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリは、Netezza データベースからデータの一部を取得します。
+パーティション分割されたコピーを有効にすると、サービスによって Netezza ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリでは、Netezza データベースからデータの一部を取得します。
 
 特に、Netezza データベースから大量のデータを読み込む場合は、データ パーティション分割を使用した並列コピーを有効にすることをお勧めします。 さまざまなシナリオの推奨構成を以下に示します。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) ことをお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
 
 | シナリオ                                                     | 推奨設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 大きなテーブル全体を読み込む。                                   | **パーティション オプション**: データ スライス。 <br><br/>実行中に、Data Factory によって [Netezza の組み込みデータ スライス](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)に基づいてデータが自動的にパーティション分割され、パーティションごとにデータがコピーされます。 |
-| カスタム クエリを使用して大量のデータを読み込む。                 | **パーティション オプション**: データ スライス。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`<br>実行中に Data Factory によって `?AdfPartitionCount` (コピー アクティビティで並列コピー番号が設定されています) と `?AdfDataSliceCondition` がデータ スライス パーティション ロジックに置き換えられ、Netezza に送信されます。 |
-| カスタム クエリを使用して大量のデータを読み込む (範囲パーティション分割のために値が均等に分散されている整数列がある場合)。 | **パーティション オプション**: 動的範囲パーティション。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`<br>**パーティション列**: データのパーティション分割に使用される列を指定します。 整数データ型の列に対してパーティション分割を実行できます。<br>**パーティションの上限** と **パーティションの下限**: パーティション列に対してフィルター処理を実行して、下限から上限までの範囲内のデータのみを取得する場合に指定します。<br><br>実行中に、Data Factory によって `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound`、`?AdfRangePartitionLowbound` が各パーティションの実際の列名および値の範囲に置き換えられ、Netezza に送信されます。 <br>たとえば、パーティション列 "ID" で下限が 1、上限が 80 に設定され、並列コピーが 4 に設定されている場合、Data Factory は 4 つのパーティションでデータを取得します。 これらの ID の範囲はそれぞれ [1, 20]、[21, 40]、[41, 60]、[61, 80] です。 |
+| 大きなテーブル全体を読み込む。                                   | **パーティション オプション**: データ スライス。 <br><br/>実行中に、サービスによって [Netezza の組み込みデータ スライス](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)に基づいてデータが自動的にパーティション分割され、パーティションごとにデータがコピーされます。 |
+| カスタム クエリを使用して大量のデータを読み込む。                 | **パーティション オプション**: データ スライス。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`<br>実行中にサービスによって `?AdfPartitionCount` (コピー アクティビティで並列コピー番号が設定されています) と `?AdfDataSliceCondition` がデータ スライス パーティション ロジックに置き換えられ、Netezza に送信されます。 |
+| カスタム クエリを使用して大量のデータを読み込む (範囲パーティション分割のために値が均等に分散されている整数列がある場合)。 | **パーティション オプション**: 動的範囲パーティション。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`<br>**パーティション列**: データのパーティション分割に使用される列を指定します。 整数データ型の列に対してパーティション分割を実行できます。<br>**パーティションの上限** と **パーティションの下限**: パーティション列に対してフィルター処理を実行して、下限から上限までの範囲内のデータのみを取得する場合に指定します。<br><br>実行中に、サービスによって `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound`、`?AdfRangePartitionLowbound` が各パーティションの実際の列名および値の範囲に置き換えられ、Netezza に送信されます。 <br>たとえば、パーティション列 "ID" で下限が 1、上限が 80 に設定され、並列コピーが 4 に設定されている場合、サービスは 4 つのパーティションでデータを取得します。 これらの ID の範囲はそれぞれ [1, 20]、[21, 40]、[41, 60]、[61, 80] です。 |
 
 **例: データ スライス パーティションを使用してクエリを実行する**
 
@@ -240,4 +268,4 @@ Data Factory の Netezza コネクタは、Netezza からデータを並列で�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
+コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。

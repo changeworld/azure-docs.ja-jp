@@ -1,20 +1,19 @@
 ---
 title: Azure Maps Weather Service を使用して、リアルタイムと予測の気象データを要求する
 description: Microsoft Azure Maps Weather Service を使用して、リアルタイム (現在) と予測 (分ごと、時間ごと、日ごと) の気象データを要求する方法について説明します
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 12/07/2020
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 46d9847e8463d5413409ebcacc7cd62d68f13e65
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 6ee9fefcb0675f35eebfe78b980d6e04d44f5a72
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259406"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435265"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Azure Maps Weather Service を使用して、リアルタイムと予測の気象データを要求する
 
@@ -40,7 +39,7 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
     >[!IMPORTANT]
-    >[Get Minute Forecast API](/rest/api/maps/weather/getminuteforecast) には、S1 価格レベルのキーが必要です。 その他すべての API には S0 価格レベルのキーが必要です。
+    >[Get Minute FORECAST API](/rest/api/maps/weather/getminuteforecast) には、Gen 1 (S1) または Gen 2 の価格レベルが必要です。  その他すべての API には S0 価格レベルのキーが必要です。
 
 このチュートリアルでは [Postman](https://www.postman.com/) アプリケーションを使用していますが、別の API 開発環境を選択することもできます。
 
@@ -50,17 +49,15 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 
 この例では、[Get Current Conditions API](/rest/api/maps/weather/getcurrentconditions) を使用して、ワシントン州シアトルに位置する座標における現在の気象条件を取得します。
 
-1. Postman アプリを開きます。 Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[コレクション]** を選択します。  コレクションに名前を付け、 **[作成]** ボタンを選択します。 このコレクションは、このドキュメントの残りの例で使用します。
+1. Postman アプリを開きます。 **[New]\(新規\)** を選択して、要求を作成します。 **[Create New]\(新規作成\)** ウィンドウで **[HTTP Request]\(HTTP 要求\)** を選択します。 要求の **[要求名]** を入力します。 
 
-2. 要求を作成するには、 **[新規]** をもう一度選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 前の手順で作成したコレクションを選択し、 **[Save]\(保存\)** を選択します。
-
-3. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
+2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
-    https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.0&query=47.60357,-122.32945&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.0&query=47.60357,-122.32945&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
-4. 青い **[送信]** ボタンをクリックします。 この応答本文には、現在の気象情報が含まれます。
+3. 青い **[送信]** ボタンをクリックします。 この応答本文には、現在の気象情報が含まれます。
 
     ```json
     {
@@ -242,12 +239,12 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 >[!NOTE]
 >この例では、この記事の執筆時点での悪天候のアラートを取得します。 要求された場所では悪天候のアラートが解除されている可能性があります。 この例の実行時点での実際の重大なアラート データを取得するには、別の座標位置のデータを取得する必要があります。
 
-1. Postman アプリで、 **[new]\(新規\)** をクリックし、 **[Request]\(\要求\)** を選択します。 要求の **[要求名]** を入力します。 前のセクションで作成したコレクションを選択するか、新しいコレクションを作成して、 **[Save]\(保存\)** を選択します。
+1. Postman アプリで、 **[New]\(新規\)** を選択して要求を作成します。 **[Create New]\(新規作成\)** ウィンドウで **[HTTP Request]\(HTTP 要求\)** を選択します。 要求の **[要求名]** を入力します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
-    https://atlas.microsoft.com/weather/severe/alerts/json?api-version=1.0&query=41.161079,-104.805450&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/weather/severe/alerts/json?api-version=1.0&query=41.161079,-104.805450&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 3. 青い **[送信]** ボタンをクリックします。 悪天候のアラートがない場合、応答本文には空の `results[]` 配列が含まれます。 悪天候のアラートがある場合、応答本文には次のような JSON 応答が含まれます。
@@ -290,19 +287,20 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 [Get Daily Forecast API](/rest/api/maps/weather/getdailyforecast) では、気温や風などの日ごとの詳細な気象予測が返されます。 要求では、返される対象の日数を指定できます。特定の座標位置に対して 1 日、5 日、10 日、15 日、25 日、または 45 日です。 この応答には、気温、風、降水量、大気質、UV 指数などの詳細が含まれます。  この例では、`duration=5` を設定して 5 日間を要求します。
 
 >[!IMPORTANT]
->S0 価格レベルでは、今後 1 日、5 日、10 日、15 日間の日ごとの予測を要求できます。 S1 価格レベルでは、今後 25 日間および 45 日間の日ごとの予測も要求できます。
+>S0 価格レベルでは、今後 1 日、5 日、10 日、15 日間の日ごとの予測を要求できます。 Gen 1 (S1) または Gen 2 のいずれの価格レベルでも、今後 25 日間および 45 日間の日単位の予測を要求できます。
 
 この例では、[Get Daily Forecast API](/rest/api/maps/weather/getdailyforecast) を使用して、ワシントン州シアトルに位置する座標における 5 日間の気象予測を取得します。
 
-1. Postman アプリで、 **[new]\(新規\)** をクリックし、 **[Request]\(\要求\)** を選択します。 要求の **[要求名]** を入力します。 前のセクションで作成したコレクションを選択するか、新しいコレクションを作成して、 **[Save]\(保存\)** を選択します。
+1. Postman アプリで、 **[New]\(新規\)** を選択して要求を作成します。 **[Create New]\(新規作成\)** ウィンドウで **[HTTP Request]\(HTTP 要求\)** を選択します。 要求の **[要求名]** を入力します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
-    https://atlas.microsoft.com/weather/forecast/daily/json?api-version=1.0&query=47.60357,-122.32945&duration=5&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/weather/forecast/daily/json?api-version=1.0&query=47.60357,-122.32945&duration=5&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 3. 青い **[送信]** ボタンをクリックします。 この応答本文には、5 日間の気象予測データが含まれます。 簡潔にするために、下の JSON 応答は最初の日の予測を示しています。
+
     ```json
     {
     "summary": {
@@ -538,16 +536,16 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 [Get Hourly Forecast API](/rest/api/maps/weather/gethourlyforecast) では、特定の座標位置における、今後 1 時間、12 時間、24 時間 (1 日間)、72 時間 (3 日間)、120 時間 (5 日間)、240 時間 (10 日間) の時間ごとの詳しい気象予測が返されます。 この API では、気温、湿度、風、降水量、UV 指数などの詳細が返されます。
 
 >[!IMPORTANT]
->S0 価格レベルでは、今後 1 時間、12 時間、24 時間 (1 日間)、および 72 時間 (3 日間) の時間ごとの予測を要求できます。 S1 価格レベルでは、今後 120 時間 (5 日間) および240 時間 (10 日間) の時間ごとの予測も要求できます。
+>S0 価格レベルでは、今後 1 時間、12 時間、24 時間 (1 日間)、および 72 時間 (3 日間) の時間ごとの予測を要求できます。 Gen 1 (S1) または Gen 2 のいずれの価格レベルでも、今後 120 時間 (5 日間) および 240 時間 (10 日間) の時間単位の予測を要求できます。
 
 この例では、[Get Hourly Forecast API](/rest/api/maps/weather/gethourlyforecast) を使用して、ワシントン州シアトルに位置する座標における今後 12 時間の時間ごとの気象予測を取得します。
 
-1. Postman アプリで、 **[new]\(新規\)** をクリックし、 **[Request]\(\要求\)** を選択します。 要求の **[要求名]** を入力します。 前のセクションで作成したコレクションを選択するか、新しいコレクションを作成して、 **[Save]\(保存\)** を選択します。
+1. Postman アプリで、 **[New]\(新規\)** を選択して要求を作成します。 **[Create New]\(新規作成\)** ウィンドウで **[HTTP Request]\(HTTP 要求\)** を選択します。 要求の **[要求名]** を入力します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
-    https://atlas.microsoft.com/weather/forecast/hourly/json?api-version=1.0&query=47.60357,-122.32945&duration=12&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/weather/forecast/hourly/json?api-version=1.0&query=47.60357,-122.32945&duration=12&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 3. 青い **[送信]** ボタンをクリックします。 この応答本文には、今後 12 時間の気象予測データが含まれます。 簡潔にするために、下の JSON 応答は最初の 1 時間の予測を示しています。
@@ -643,18 +641,19 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
     ]
     }
     ```
+
 ## <a name="request-minute-by-minute-weather-forecast-data"></a>分ごとの気象予測データを要求する
 
  [Get Minute Forecast API](/rest/api/maps/weather/getminuteforecast) では、特定の場所における今後 120 分間の分ごとの予測が返されます。 ユーザーは、1 分、5 分、15 分の間隔で気象予測を要求できます。 この応答には、降水の種類 (雨、雪、または両方の組み合わせを含む)、開始時刻、降水強度値 (dBZ) などの詳細が含まれます。
 
 この例では、[Get Minute Forecast API](/rest/api/maps/weather/getminuteforecast) を使用して、ワシントン州シアトルに位置する座標における分ごとの気象予測を取得します。 気象予測は今後 120 分間について表示されます。 このクエリでは 15 分間隔で予測が表示されるように要求していますが、このパラメーターを 1 分または 5 分に調整できます。
 
-1. Postman アプリで、 **[new]\(新規\)** をクリックし、 **[Request]\(\要求\)** を選択します。 要求の **[要求名]** を入力します。 前のセクションで作成したコレクションを選択するか、新しいコレクションを作成して、 **[Save]\(保存\)** を選択します。
+1. Postman アプリで、 **[New]\(新規\)** を選択して要求を作成します。 **[Create New]\(新規作成\)** ウィンドウで **[HTTP Request]\(HTTP 要求\)** を選択します。 要求の **[要求名]** を入力します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
-    https://atlas.microsoft.com/weather/forecast/minute/json?api-version=1.0&query=47.60357,-122.32945&interval=15&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/weather/forecast/minute/json?api-version=1.0&query=47.60357,-122.32945&interval=15&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 3. 青い **[送信]** ボタンをクリックします。 この応答本文には、15 分間隔での、今後 120 分間の気象予測データが含まれます。

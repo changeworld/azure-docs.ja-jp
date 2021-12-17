@@ -2,17 +2,17 @@
 title: Azure API Management のコストを計画および管理する
 description: Azure portal でコスト分析を使用して、Azure API Management のコストを計画および管理する方法を学習します。
 author: dlepow
-ms.author: apimpm
+ms.author: danlep
 ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
-ms.date: 12/15/2020
-ms.openlocfilehash: 1ebb89ae318e57f1d4e0708a08019515ca43158d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: 8baf9e9e7ff1ae12fc5c53af9aa2a479e1ce8342
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99581331"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670312"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>API Management のコストを計画および管理する
 
@@ -51,11 +51,29 @@ API Management を追加する前に、[Azure 料金計算ツール](https://azu
 
 API Management の料金は、Azure 前払い (旧称: 年額コミットメント) を使用して支払うことができます。 ただし、Azure 前払いのクレジットを使用して、サードパーティの製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
 
+## <a name="understand-the-full-billing-model"></a>完全な課金モデルを理解する
+
+API Management で Azure リソースを使用すると、コストまたは課金対象の測定が発生します。 Azure リソースの使用のユニット コストは、以下によって異なります。
+* 期間 (秒、分、時間、日)
+* ユニット使用量 (バイト、メガバイトなど)
+* トランザクション数
+
+### <a name="how-youre-charged-for-api-management"></a>API Management に対する課金方法
+
+API Management で Azure リソースを作成または使用すると、作業しているレベルに基づいて課金されます。 自分に[最適なレベルの選択](./api-management-features.md)の詳細を学習してください。
+
+| 層 | 説明 |
+| ----- | ----------- |
+| 従量課金 | 固定費は発生しません。 特定のしきい値を超える、サービスへの API 呼び出しの数に基づいて課金されます。 |
+| Developer、Basic、Standard、Premium | [ユニット](./api-management-capacity.md)と[セルフホステッド ゲートウェイ](./self-hosted-gateway-overview.md)の数に基づいて、毎月のコストが発生します。 セルフホステッド ゲートウェイは、Developer レベルでは無料です。 いつでも別のサービス レベルに[アップグレード](./upgrade-and-scale.md)できます。 |
+
+仮想ネットワーク、可用性ゾーン、マルチリージョン書き込みなど、他の Azure リソースを API Management で使用すると、追加料金が発生する場合もあります。 請求期間終了時に、各測定の料金が合計されます。 請求書には、API Management に対して発生したすべてのコストに関するセクションが表示されています。 測定ごとに個別の行項目があります。
+
 ## <a name="monitor-costs"></a>コストを監視する
 
-API Management で Azure リソースを使用すると、コストが発生します。 Azure リソース使用のユニット コストは、期間 (秒、分、時間、日数) やユニット使用量 (バイト、メガバイトなど) によって異なります。 API Management の使用が開始されるとすぐにコストが発生し、[コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)でコストを確認できます。
+API Management を使い始めるとすぐに、コストが発生します。 コストは、[コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)または Azure 料金計算ツールを使用して確認できます。
 
-コスト分析を使用すると、さまざまな期間について、API Management のコストをグラフや表で表示できます。 たとえば、日単位、現在の月、以前の月、年単位などがあります。 予算や予想コストを基準としてコストを表示することもできます。 時間経過を示す、より長い期間のビューに切り替えると、支出の傾向を特定するのに役立ちます。 超過出費が発生した可能性のある時期を確認できます。 予算を作成したら、それを超えた場所も簡単に確認できます。
+コスト分析を使用すると、さまざまな期間 (日、今月と前月、年) について、API Management のコストをグラフや表で表示できます。 予算や予想コストを基準としてコストを表示することもできます。 時間経過を示す、より長い期間のビューに切り替えると、支出の傾向を特定するのに役立ちます。 超過出費が発生した可能性のある時期を確認できます。 予算を作成したら、それを超えた場所も簡単に確認できます。
 
 > [!NOTE]
 > この例で示されるコストは、デモンストレーションのみを目的としています。 コストは、リソースの使用量と現在の価格によって変わります。
@@ -86,13 +104,6 @@ API Management のコストをコスト分析で表示するには、次のよ�
 また、ストレージ アカウントに[コスト データをエクスポート](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)することもできます。 これは、他のユーザーがコストに関する追加のデータ分析を行う必要がある場合に便利です。 たとえば、財務チームは、Excel や Power BI を使用してデータを分析できます。 日単位、週単位、または月単位のスケジュールでコストをエクスポートし、カスタムの日付範囲を設定することができます。 コスト データのエクスポートは、推奨されるコスト データセット取得方法です。
 
 ## <a name="other-ways-to-manage-and-reduce-costs-for-api-management"></a>API Management のコストを管理して削減するその他の方法
-
-### <a name="choose-tier"></a>レベルを選択する
-
-「[Azure API Management レベルの機能に基づく比較](api-management-features.md)」を確認し、シナリオに適したサービス レベルの判断に役立ててください。 さまざまなサービス レベルにおいて、各種のユース ケースに合わせて設計された機能の組み合わせがサポートされており、コストが異なります。 
-
-* **従量課金** サービス レベルでは、固定費が発生しない、軽量のサーバーレス オプションが提供されます。 特定のしきい値を超える、サービスへの API 呼び出しの数に基づいて課金されます。 また、容量は、サービスの負荷に基づいて自動的にスケーリングされます。
-* **Developer**、**Basic**、**Standard**、**Premium** の各 API Management レベルでは、月額コストが発生し、評価および運用のワークロードにより高いスループットとより豊富な機能セットが提供されます。 いつでも別のサービス レベルに[アップグレード](upgrade-and-scale.md)できます。
 
 ### <a name="scale-using-capacity-units"></a>容量ユニットを使用してスケーリングする
 

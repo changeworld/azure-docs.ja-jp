@@ -2,21 +2,21 @@
 title: チュートリアル:Azure Active Directory を使用した自動ユーザー プロビジョニングに対応するように Signagelive を構成する | Microsoft Docs
 description: Signagelive に対するユーザー アカウントのプロビジョニングおよびプロビジョニング解除を自動的に行えるように Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2019
-ms.author: Zhchia
-ms.openlocfilehash: 10ad06041e8136b5661b1b1ff487cd4d3b0f5153
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: e2e3b2b9e976ed67731c6bfef23be22d16ea8d1f
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358407"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766101"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Signagelive を構成する
 

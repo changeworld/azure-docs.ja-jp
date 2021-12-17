@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 08/11/2021
 ms.author: jeedes
-ms.openlocfilehash: a89ab7f2304fa51d3e8c7a968d445c9b40a457a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7dd906ec56327b85f8439fe5a0a27a0ef3555132
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92456090"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307785"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco AnyConnect の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "92456090"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Cisco AnyConnect では、**IDP** Initiated SSO がサポートされます
+* Cisco AnyConnect では、**IDP** Initiated SSO がサポートされます。
 
 ## <a name="adding-cisco-anyconnect-from-the-gallery"></a>ギャラリーからの Cisco AnyConnect の追加
 
@@ -73,14 +73,16 @@ Cisco AnyConnect に対して Azure AD SSO を構成してテストするには�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ページで、次のフィールドの値を入力します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、次のフィールドの値を入力します (値は大文字と小文字の区別があることに注意してください)。
 
-    a. **[識別子]** ボックスに、`< YOUR CISCO ANYCONNECT VPN VALUE >` の形式で URL を入力します。
+   1. **[識別子]** ボックスに、次の形式で URL を入力します。  
+      `https://<SUBDOMAIN>.YourCiscoServer.com/saml/sp/metadata/<Tunnel_Group_Name>`
 
-    b. **[応答 URL]** ボックスに、`< YOUR CISCO ANYCONNECT VPN VALUE >` のパターンを使用して URL を入力します
+   1. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。  
+      `https://<YOUR_CISCO_ANYCONNECT_FQDN>/+CSCOE+/saml/sp/acs?tgname=<Tunnel_Group_Name>`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Cisco AnyConnect クライアント サポート チーム](https://www.cisco.com/c/en/us/support/index.html)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらの値の詳細については、Cisco TAC のサポートに問い合わせてください。 これらの値を実際の識別子と、Cisco TAC から提供された応答 URL の値で更新します。 これらの値を取得するには、[Cisco AnyConnect クライアント サポート チーム](https://www.cisco.com/c/en/us/support/index.html)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードしてお使いのコンピューターに保存します。
 
@@ -91,7 +93,7 @@ Cisco AnyConnect に対して Azure AD SSO を構成してテストするには�
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> サーバーの複数の TGT をオンボードする場合は、ギャラリーから Cisco AnyConnect アプリケーションの複数のインスタンスを追加する必要があります。 また、これらすべてのアプリケーション インスタンスについて、Azure AD に独自の証明書をアップロードすることもできます。 このようにアプリケーションに同じ証明書を使用できる一方で、アプリケーションごとに異なる識別子と応答 URL を構成することができます。
+> サーバーの複数の TGT をオンボードする場合は、ギャラリーから Cisco AnyConnect アプリケーションの複数のインスタンスを追加する必要があります。 これらすべてのアプリケーション インスタンスについて、Azure AD に独自の証明書をアップロードすることもできます。 このようにアプリケーションに同じ証明書を使用できる一方で、アプリケーションごとに異なる識別子と応答 URL を構成することができます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -168,7 +170,7 @@ Cisco AnyConnect に対して Azure AD SSO を構成してテストするには�
     ```
 
     > [!NOTE]
-    > SAML IdP の構成を伴う機能があります。IdP の構成に変更を加えた場合は、変更を有効にするために、トンネル グループから SAML ID プロバイダーの構成を削除し、再度適用する必要があります。
+    > SAML IdP の構成には回避策があります。 IdP の構成に変更を加えた場合は、変更を有効にするために、トンネル グループから SAML ID プロバイダーの構成を削除し、再度適用する必要があります。
 
 ### <a name="create-cisco-anyconnect-test-user"></a>Cisco AnyConnect テスト ユーザーの作成
 
@@ -179,8 +181,8 @@ Cisco AnyConnect に対して Azure AD SSO を構成してテストするには�
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Cisco AnyConnect に自動的にサインインされるはずです
-* Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Cisco AnyConnect] タイルをクリックすると、SSO を設定した Cisco AnyConnect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Cisco AnyConnect] タイルをクリックすると、SSO を設定した Cisco AnyConnect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Cisco AnyConnect を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Cisco AnyConnect を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

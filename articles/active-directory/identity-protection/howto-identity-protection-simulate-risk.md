@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eafeaf59757fcda978fa89b4bc2f9882b769e48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 353c80be29a5bf62ed98d82374fda61a4e7b7021
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94835902"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051574"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Identity Protection でのリスク検出のシミュレーション
 
@@ -93,7 +93,7 @@ ms.locfileid: "94835902"
 ユーザー リスク セキュリティ ポリシーをテストするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) に移動します。
-1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[概要]** の順に移動します。
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[Identity Protection]**  >  **[概要]** を参照します。
 1. **[ユーザー リスク ポリシーの構成]** を選択します。
    1. **[割り当て]** で:
       1. **[ユーザー]** - **[すべてのユーザー]** を選択します。ロールアウトを制限する場合は **[個人と グループの選択]** を選択します。
@@ -113,7 +113,7 @@ ms.locfileid: "94835902"
 サインイン リスク ポリシーをテストするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) に移動します。
-1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[概要]** の順に移動します。
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[Identity Protection]**  >  **[概要]** を参照します。
 1. **[サインイン リスク ポリシーの構成]** を選択します。
    1. **[割り当て]** で:
       1. **[ユーザー]** - **[すべてのユーザー]** を選択します。ロールアウトを制限する場合は **[個人と グループの選択]** を選択します。

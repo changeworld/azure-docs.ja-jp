@@ -1,124 +1,150 @@
 ### YamlMime:Landing
 title: Anomaly Detector API のドキュメント
-summary: Anomaly Detector API を使用して、データを経時的に監視し、機械学習により異常を検出する方法を説明します。 分量、業種、シナリオを問わず、データに関する分析情報が得られます。
+summary: Anomaly Detector 一変量および多変量の API を使用して、データを経時的に監視し、機械学習により異常を検出する方法を説明します。 分量、業種、シナリオを問わず、データに関する分析情報が得られます。
 metadata:
   title: Anomaly Detector API - チュートリアル、クイックスタート、API リファレンス
   titleSuffix: Azure Cognitive Services
-  description: Anomaly Detector API を使用すると、データを経時的に監視し、機械学習により異常を検出できます。 分量、業種、シナリオを問わず、データに関する分析情報が得られます。
+  description: Anomaly Detector 一変量および多変量の API を使用して、データを経時的に監視し、機械学習により異常を検出します。 分量、業種、シナリオを問わず、データに関する分析情報が得られます。
   services: cognitive-services
-  author: aahill
+  author: mrbullwinkle
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: anomaly-detector
   ms.topic: landing-page
-  ms.date: 09/10/2019
-  ms.author: aahi
-  ms.openlocfilehash: 24f6ec0afc0760b2f57f7ac9409f0b84f2e630da
-  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+  ms.date: 05/12/2021
+  ms.author: mbullwin
+  ms.openlocfilehash: bf9d0fbfb60e486fe83fba235c01ff470c34a223
+  ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/20/2021
-  ms.locfileid: "107789107"
+  ms.lasthandoff: 11/23/2021
+  ms.locfileid: "132934441"
 landingContent:
 - title: Anomaly Detector API について
   linkLists:
   - linkListType: overview
     links:
-    - text: Anomaly Detector API とは
+    - text: Anomaly Detector (一変量) とは
       url: overview.md
+    - text: Anomaly Detector (多変量) とは
+      url: overview-multivariate.md
+    - text: Anomaly Detector の新機能
+      url: whats-new.md
   - linkListType: get-started
     links:
-    - text: Anomaly Detector のデモ
+    - text: デモの Web アプリケーション (一変量および多変量)
       url: https://aka.ms/adDemo
   - linkListType: video
     links:
-    - text: Anomaly Detector API の概要
+    - text: Anomaly Detector API の紹介 (一変量)
       url: https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner
-    - text: Anomaly Detection API で使用されるアルゴリズム
-      url: https://www.youtube.com/embed/ERTaAnwCarM
+    - text: 新しい多変量機能の紹介
+      url: https://channel9.msdn.com/Shows/AI-Show/New-to-Anomaly-Detector-Multivariate-Capabilities
+    - text: その他のビデオ...
+      url: whats-new.md#videos
   - linkListType: reference
     links:
-    - text: Azure Anomaly Detector API の概要
+    - text: Azure Anomaly Detector API の紹介 (一変量)
       url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162
-    - text: SR-CNN アルゴリズムの概要
-      url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798
-    - text: 異常検出で使用されるアルゴリズム (KDD ペーパー)
-      url: https://arxiv.org/abs/1906.03821
+    - text: 多変量異常検出の紹介
+      url: https://techcommunity.microsoft.com/t5/azure-ai/introducing-multivariate-anomaly-detection/ba-p/2260679
+    - text: その他の技術記事...
+      url: whats-new.md#technical-articles
 - title: データの異常を検出する
   linkLists:
   - linkListType: quickstart
     links:
-    - text: C# の使用
+    - text: C# の使用 (一変量)
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-csharp
-    - text: JavaScript の使用
+    - text: JavaScript の使用 (一変量)
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-javascript
-    - text: Python の使用
+    - text: Python の使用 (一変量)
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-python
+  - linkListType: quickstart
+    links:
+    - text: C# の使用 (多変量)
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-csharp
+    - text: JavaScript の使用 (多変量)
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-javascript
+    - text: Python の使用 (多変量)
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-python
+    - text: Java の使用 (多変量)
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-java
   - linkListType: tutorial
     links:
-    - text: バッチ検出と Power BI を使用して異常を視覚化する
+    - text: 多変量異常検出について 1 時間で学習する
+      url: tutorials/learn-multivariate-anomaly-detection.md
+    - text: バッチ検出と Power BI を使用して (一変量) 異常を視覚化する
       url: tutorials/batch-anomaly-detection-powerbi.md
-  - linkListType: video
-    links:
-    - text: Azure Databricks を使用した、ストリーミング データの異常検出
-      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-detection-on-streaming-data-using-Azure-Databricks
 - title: 検出結果を最適化する
   linkLists:
   - linkListType: concept
     links:
-    - text: データの異常検出モードとパラメーターを調整します。
+    - text: データの異常検出モードとパラメーターを調整する (一変量)
       url: how-to/identify-anomalies.md
-    - text: ベスト プラクティスを使用して、異常検出の結果を最適化します。
+    - text: ベスト プラクティスを使用して異常検出の結果を最適化する (一変量)
       url: concepts/anomaly-detection-best-practices.md
+    - text: ベスト プラクティスを使用して異常検出の結果を最適化する (多変量)
+      url: concepts/best-practices-multivariate.md
   - linkListType: video
     links:
-    - text: Anomaly Detector のベスト プラクティス
+    - text: Anomaly Detector のベスト プラクティス (一変量)
       url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-Detector-v10-Best-Practices
 - title: Docker コンテナーを使用する
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Anomaly Detector コンテナーのインストールと実行
+    - text: Anomaly Detector コンテナーのインストールと実行 (一変量)
       url: anomaly-detector-container-howto.md
-    - text: Anomaly Detector コンテナーを構成する
+    - text: Anomaly Detector コンテナーを構成する (一変量)
       url: anomaly-detector-container-configuration.md
-    - text: コンテナー インスタンスを Azure にデプロイする
+    - text: コンテナー インスタンスを Azure にデプロイする (一変量)
       url: how-to/deploy-anomaly-detection-on-container-instances.md
-    - text: IoT Edge にデプロイする
+    - text: IoT Edge にデプロイする (一変量)
       url: how-to/deploy-anomaly-detection-on-iot-edge.md
   - linkListType: video
     links:
-    - text: コンテナー サポートとともに Anomaly Detector をオンプレミスで使用する
+    - text: コンテナー サポートとともに Anomaly Detector をオンプレミスで使用する (一変量)
       url: https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support
-- title: Anomaly Detector コミュニティに参加する
+- title: ヘルプとフィードバック
   linkLists:
   - linkListType: learn
     links:
     - text: Microsoft Teams 上での Anomaly Detector Advisors グループへの参加
       url: https://aka.ms/adadvisorsjoin
-    - text: お勧めのユーザー生成コンテンツ
-      url: user-generated-content.md
-- title: ヘルプとフィードバック
-  linkLists:
   - linkListType: reference
     links:
+    - text: エラー コード (多変量)
+      url: concepts/troubleshoot.md
     - text: サポート オプションとヘルプ オプション
       url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
 - title: リファレンス
   linkLists:
   - linkListType: reference
     links:
-    - text: REST API
-      url: https://aka.ms/anomaly-detector-rest-api-ref
-    - text: .NET SDK
+    - text: REST API (一変量)
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect
+    - text: .NET SDK (一変量)
       url: https://aka.ms/anomaly-detector-dotnet-ref
-    - text: .Python SDK
+    - text: .Python SDK (一変量)
       url: https://go.microsoft.com/fwlink/?linkid=2090370
-    - text: Go SDK
+    - text: Go SDK (一変量)
       url: https://go.microsoft.com/fwlink/?linkid=2089915
-    - text: Node.js SDK
+    - text: Node.js SDK (一変量)
       url: https://go.microsoft.com/fwlink/?linkid=2090788
-    - text: Azure PowerShell
+    - text: Azure PowerShell (一変量)
       url: /powershell/module/az.cognitiveservices/#cognitive_services
-    - text: Azure CLI
+    - text: Azure CLI (一変量)
       url: /cli/azure/cognitiveservices#az_cognitiveservices_list
+  - linkListType: reference
+    links:
+    - text: REST API (多変量)
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector-v1-1-preview/operations/DetectAnomaly
+    - text: .NET SDK (多変量)
+      url: /dotnet/api/azure.ai.anomalydetector
+    - text: Python SDK (多変量)
+      url: /python/api/azure-ai-anomalydetector/azure.ai.anomalydetector
+    - text: Java SDK (多変量)
+      url: /java/api/com.azure.ai.anomalydetector
+    - text: Node.js SDK (多変量)
+      url: /javascript/api/overview/azure/ai-anomaly-detector-readme

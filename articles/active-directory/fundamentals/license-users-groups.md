@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ba2e88a20106b9344a6d7942d4bc7149a346b7c
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97504408"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733144"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでのライセンスの割り当てと削除
 
@@ -35,7 +35,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
 - Azure AD Premium P2
 
-各ライセンス プランと関連するライセンスの詳細に関する固有の情報については、「[必要なライセンス](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。 Azure AD Premium ライセンス プランにサインアップするには、[こちら](./active-directory-get-started-premium.md)をご覧ください。
+各ライセンス プランと関連するライセンスの詳細に関する固有の情報については、「[必要なライセンス](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)」をご覧ください。 Azure AD Premium ライセンス プランにサインアップするには、[こちら](./active-directory-get-started-premium.md)をご覧ください。
 
 すべての Microsoft サービスが、すべての場所で利用できるわけではありません。 ライセンスをグループに割り当てる前に、お客様はすべてのメンバーに対して **[利用場所]** を指定しておく必要があります。 この値は Azure AD の **[Azure Active Directory] &gt; [ユーザー] &gt; [プロファイル] &gt; [設定]** 領域で設定できます。 利用場所が指定されていないユーザーは、Azure AD 組織の場所を継承します。
 
@@ -48,8 +48,6 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 1. Azure AD 組織のライセンス管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure Active Directory]** を選択し、**[ライセンス]** を選択します。
-
-    :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="購入したサービス数と割り当てられたライセンスを示す [ライセンス] ページ":::
 
 1. **[すべての製品]** を選択して [すべての製品] ページを表示し、ライセンス プランの **[合計]** 、 **[割り当て済み]** 、 **[利用可能]** 、 **[まもなく有効期限切れ]** の数を確認します。
 
@@ -72,11 +70,9 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
 1. **[製品]** ページで、ユーザーに割り当てる必要があるライセンス プラン名を選択します。
 
-    ![サービス ライセンス プランが強調表示されたサービス ページ](media/license-users-groups/license-products-blade-with-product-highlight.png)
+1. ライセンスプランを選択したら、 **[割り当て]** を選択します。
 
-1. ライセンス プランの概要ページで、**[割り当て]** を選択します。
-
-    ![[割り当て] オプションが強調表示されているサービス ページ](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
+    ![[サービス] ページ。ライセンス プランの選択と割り当てのオプションが強調表示されています](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
 1. **[割り当て]** ページで **[ユーザーとグループ]** を選択し、ライセンスを割り当てるユーザーを検索して選択します。
 

@@ -8,12 +8,13 @@ author: v-amallick
 ms.author: v-amallick
 ms.collection: windows
 ms.date: 07/05/2019
-ms.openlocfilehash: c10be941206dd60887c9d82025506d1ea15c51a2
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b63e5c7de8a7198d5631075e9748d13f72ddb354
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517251"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294051"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure VM で実行されている SQL Server 用の Azure Backup
 
@@ -98,7 +99,7 @@ statusBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrexten
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-AzureBackupWindowsWorkload 拡張機能を仮想マシンに追加する推奨される方法は、仮想マシンで SQL Server のバックアップを有効にすることです。 これは、SQL Server VM でのバックアップを自動化するために設計されている [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup)を使って実現できます。
+AzureBackupWindowsWorkload 拡張機能を仮想マシンに追加する推奨される方法は、仮想マシンで SQL Server のバックアップを有効にすることです。 これは、SQL Server VM でのバックアップを自動化するために設計されている [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.recoveryservices/recovery-services-vm-workload-backup)を使って実現できます。
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 

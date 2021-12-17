@@ -4,21 +4,20 @@ description: この記事では、クラウド サービスの Web ロールと 
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: aa05fc9f02c26192762ed34db54b60b4760bf3bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d3247140bd99d2f3ea500a9eaeb0bab6e7640ee
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99061853"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821502"
 ---
 # <a name="install-net-on-azure-cloud-services-classic-roles"></a>Azure Cloud Services (クラシック) のロールに .NET をインストールする
 
-> [!IMPORTANT]
-> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 この記事では、Azure ゲスト OS に付属するバージョンとは異なるバージョンの .NET Framework をインストールする方法について説明します。 ゲスト OS にインストールした .NET を使用して、クラウド サービスの Web ロールおよび worker ロールを構成できます。
 
@@ -34,7 +33,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
 
 * [.NET Framework 4.8 の Web インストーラー](https://go.microsoft.com/fwlink/?LinkId=2150985)
 * [.NET Framework 4.7.2 の Web インストーラー](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [.NET Framework 4.6.2 の Web インストーラー](https://www.microsoft.com/download/details.aspx?id=53345)
+* [.NET Framework 4.6.2 の Web インストーラー](https://dotnet.microsoft.com/download/dotnet-framework/net462)
 
 *Web* ロールのインストールを追加するには、次の操作を実行します。
   1. **ソリューション エクスプローラー** で、該当するクラウド サービス プロジェクトの **[ロール]** の下の *Web* ロールを右クリックし、**[追加]** > **[新しいフォルダー]** の順に選択します。 **bin** という名前のフォルダーを作成します。
@@ -96,7 +95,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
    REM ***** To install .NET 4.5.2 set the variable netfx to "NDP452" *****
    REM ***** To install .NET 4.6 set the variable netfx to "NDP46" *****
    REM ***** To install .NET 4.6.1 set the variable netfx to "NDP461" ***** https://go.microsoft.com/fwlink/?LinkId=671729
-   REM ***** To install .NET 4.6.2 set the variable netfx to "NDP462" ***** https://www.microsoft.com/download/details.aspx?id=53345
+   REM ***** To install .NET 4.6.2 set the variable netfx to "NDP462" ***** https://dotnet.microsoft.com/download/dotnet-framework/net462
    REM ***** To install .NET 4.7 set the variable netfx to "NDP47" ***** 
    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP471" ***** https://go.microsoft.com/fwlink/?LinkId=852095
    REM ***** To install .NET 4.7.2 set the variable netfx to "NDP472" ***** https://go.microsoft.com/fwlink/?LinkId=863262

@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 06/01/2021
 ms.author: justinha
-ms.openlocfilehash: 4d03edac98329d7c47b8bfafbf4d30cfca18863c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6e226ff022788c3409be4004c11db6bdad36876
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96618231"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438524"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>チュートリアル:詳細構成オプションを使用して Azure Active Directory Domain Services のマネージド ドメインを作成、構成する
 
@@ -95,7 +95,7 @@ Azure portal の *[基本]* ウィンドウのフィールドに必要事項を�
     >
     > Azure AD DS を複数のゾーンに分散するために、ご自身で構成するものは何もありません。 Azure プラットフォームでは、ゾーンへのリソース分散が自動的に処理されます。 詳細情報および利用可能なリージョンについては、「[Azure の Availability Zones の概要][availability-zones]」を参照してください。
 
-1. パフォーマンス、バックアップ頻度、作成できるフォレストの信頼の最大数は、**SKU** によって決まります。 マネージド ドメインの作成後、ビジネス上の需要や要件に変化が生じた場合は SKU を変更できます。 詳細については、[Azure AD DS SKU の概念][concepts-sku]に関するセクションを参照してください。
+1. パフォーマンスとバックアップの頻度は **SKU** によって決まります。 マネージド ドメインの作成後、ビジネス上の需要や要件に変化が生じた場合は SKU を変更できます。 詳細については、[Azure AD DS SKU の概念][concepts-sku]に関するセクションを参照してください。
 
     このチュートリアルでは、*Standard* SKU を選択します。
 1. "*フォレスト*" は、Active Directory Domain Services が 1 つまたは複数のドメインをグループ化するために使用する論理上の構成体です。 既定では、マネージド ドメインは "*ユーザー*" フォレストとして作成されます。 このタイプのフォレストでは、オンプレミスの AD DS 環境で作成されたユーザー アカウントも含め、Azure AD 内のすべてのオブジェクトが同期されます。

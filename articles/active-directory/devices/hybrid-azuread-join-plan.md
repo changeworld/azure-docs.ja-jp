@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 06/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cadba181ea7d6a12ca64c78f3c7c58654d5f756f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a766415eab11a0486b4609d181e5f01dcf4ef2a6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500810"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049693"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -30,12 +30,24 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 
 オンプレミスの Active Directory (AD) 環境があるときに、AD ドメイン参加済みコンピューターを Azure AD に参加させたい場合は、ハイブリッド Azure AD 参加を実行してこれを実現できます。 この記事では、ご使用の環境でハイブリッド Azure AD 参加を実装するための関連する手順について説明します。 
 
+> [!TIP]
+> オンプレミスのリソースへの SSO アクセスは、参加して Azure AD デバイスでも使用できます。 詳しくは、「[How SSO to on-premises resources works on Azure AD joined devices](azuread-join-sso.md)」(Azure AD 参加済みデバイス上でのオンプレミスのリソースへの SSO の動作) をご覧ください。
+>
+
 ## <a name="prerequisites"></a>前提条件
 
 この記事では、[Azure Active Directory でのデバイス ID 管理の概要](./overview.md)を理解していることを前提とします
 
 > [!NOTE]
 > Windows 10 の Hybrid Azure AD 参加に最低限必要なドメイン コントローラー バージョンは、Windows Server 2008 R2 です。
+
+Hybrid Azure AD Join を使用したデバイスには、ドメイン コントローラーへのネットワーク接続が定期的に必要になります。 この接続がない場合、デバイスは使用できなくなります。
+
+ドメイン コントローラーへの通信経路がないと利用できないシナリオ:
+
+- デバイスのパスワードの変更
+- ユーザー パスワードの変更 (キャッシュされた資格情報)
+- TPM をリセットしたため
 
 ## <a name="plan-your-implementation"></a>実装の計画
 
@@ -55,6 +67,7 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 ### <a name="windows-current-devices"></a>最新の Windows デバイス
 
 - Windows 10
+- Windows 11
 - Windows Server 2016
   - **注**:Azure 国内クラウドのお客様にはバージョン 1803 が必要です
 - Windows Server 2019
@@ -74,7 +87,6 @@ Windows デスクトップ オペレーティング システムを実行して�
 ## <a name="review-things-you-should-know"></a>知っておくべきことを確認する
 
 ### <a name="unsupported-scenarios"></a>サポートされていないシナリオ
-- ID データを複数の Azure AD テナントに同期する単一 AD フォレストで構成されている環境の場合、ハイブリッド Azure AD 参加は現在サポートされていません。
 
 - ハイブリッド Azure AD 参加は、ドメイン コントローラー (DC) ロールを実行している Windows Server ではサポートされていません。
 
@@ -85,6 +97,7 @@ Windows デスクトップ オペレーティング システムを実行して�
 - ユーザー状態移行ツール (USMT) では、デバイス登録は処理されません。  
 
 ### <a name="os-imaging-considerations"></a>OS イメージングの考慮事項
+
 - システム準備ツール (Sysprep) を使用していて、インストールに **pre-Windows 10 1809** イメージを使用している場合は、そのイメージが既にハイブリッド Azure AD 参加として Azure AD に登録されているデバイスからのものではないことを確認します。
 
 - 仮想マシン (VM) のスナップショットを利用して追加の VM を作成する場合は、そのスナップショットが、既にハイブリッド Azure AD 参加として Azure AD に登録されている VM からのものではないことを確認します。
@@ -92,7 +105,8 @@ Windows デスクトップ オペレーティング システムを実行して�
 - 再起動時にディスクへの変更をクリアする [統合書き込みフィルター](/windows-hardware/customize/enterprise/unified-write-filter) および類似のテクノロジーを使用している場合、デバイスが Hybrid Azure AD に結合した後にそれらを適用する必要があります。 Hybrid Azure AD の結合を完了する前にこのようなテクノロジーを有効にすると、再起動のたびにデバイスが切断されることになります
 
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>Azure AD 登録状態のデバイスの処理
-Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](overview.md#getting-devices-in-azure-ad)である場合、デバイスは、Hybrid Azure AD 参加済みでかつ Azure AD に登録済みの二重状態になる可能性があります。 このシナリオに自動的に対処するには、(KB4489894 が適用された) Windows 10 1803 以上にアップグレードすることをお勧めします。 1803 より前のリリースでは、Hybrid Azure AD 参加を有効にする前に、Azure AD の登録済み状態を手動で削除する必要があります。 1803 以降のリリースでは、この二重状態を回避するために次の変更が行われています。
+
+Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](concept-azure-ad-register.md)である場合、デバイスは、Hybrid Azure AD 参加済みでかつ Azure AD に登録済みの二重状態になる可能性があります。 このシナリオに自動的に対処するには、(KB4489894 が適用された) Windows 10 1803 以上にアップグレードすることをお勧めします。 1803 より前のリリースでは、Hybrid Azure AD 参加を有効にする前に、Azure AD の登録済み状態を手動で削除する必要があります。 1803 以降のリリースでは、この二重状態を回避するために次の変更が行われています。
 
 - "<i>デバイスが Hybrid Azure AD 参加済みになり、同じユーザーがログインした後</i>"、ユーザーの既存の Azure AD 登録済み状態は自動的に削除されます。 たとえば、ユーザー A がデバイスに Azure AD 登録済み状態を持っている場合は、ユーザー A がデバイスにログインしたときにのみ、ユーザー A の二重状態はクリーンアップされます。 同じデバイスに複数のユーザーがいる場合、それらのユーザーがログインすると、二重状態は個別にクリーンアップされます。 Azure AD の登録済み状態が削除されるだけでなく、Windows 10 では、登録が自動登録を介して Azure AD 登録の一部として行われた場合に、Intune またはその他の MDM からもデバイスの登録が解除されます。
 - デバイス上のすべてのローカル アカウントの Azure AD 登録済みの状態は、この変更による影響を受けません。 これは、ドメイン アカウントにのみ適用されます。 そのため、ローカル アカウントの Azure AD 登録済みの状態は、ユーザーがドメイン ユーザーではないため、ユーザーのログオン後でも自動的には削除されません。 
@@ -102,7 +116,18 @@ Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azur
 > [!NOTE]
 > Windows 10 では Azure AD の登録済み状態がローカルで自動的に削除されますが、Azure AD 内のデバイス オブジェクトは、Intune で管理されている場合に、直ちに削除されません。 Azure AD 登録済みの状態の削除を確認するには、dsregcmd /status を実行し、それに基づいて、デバイスが Azure AD に登録されていないものと見なすことができます。
 
+### <a name="hybrid-azure-ad-join-for-single-forest-multiple-azure-ad-tenants"></a>1 つのフォレストと複数の Azure AD テナントへの Hybrid Azure AD 参加
+
+それぞれのテナントにデバイスを Hybrid Azure AD 参加として登録するには、AD ではなくデバイスで SCP を構成する必要があります。 これを実現する方法の詳細については、「[ハイブリッド Azure AD 参加の検証を制御する](hybrid-azuread-join-control.md)」を参照してください。 また、特定の Azure AD 機能が単一フォレストで複数の Azure AD テナントの構成では動作しないことを理解しておくことも重要です。
+- [デバイス ライトバック](../hybrid/how-to-connect-device-writeback.md)は機能しません。 これは、[ADFS を使用してフェデレーションされているオンプレミス アプリ用のデバイス ベースの条件付きアクセス](/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises)に影響します。 また、これは、[ハイブリッド証明書信頼モデルを使用しているときの Windows Hello For business のデプロイ](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust)にも影響します。
+- [グループ ライトバック](../hybrid/how-to-connect-group-writeback.md)は機能しません。 これは、Exchange がインストールされているフォレストへの Office 365 グループのライトバックに影響します。
+- [シームレス SSO](../hybrid/how-to-connect-sso.md) は機能しません。 これは、組織がクロス OS またはブラウザー プラットフォームで使用している可能性がある SSO シナリオに影響します (たとえば、Firefox を使用している iOS/Linux、Safari、Windows 10 拡張機能のない Chrome など)。
+- [マネージド環境での Windows ダウンレベル デバイスに対する Hybrid Azure AD 参加](./hybrid-azuread-join-managed-domains.md#enable-windows-down-level-devices)は機能しません。 たとえば、マネージド環境の Windows Server 2012 R2 での Hybrid Azure AD 参加にはシームレス SSO が必要であり、シームレス SSO は動作しないため、そのようなセットアップでは Hybrid Azure AD 参加は機能しません。
+- [オンプレミスの Azure AD パスワード保護](../authentication/concept-password-ban-bad-on-premises.md)は機能しません。これは、Azure AD に格納されている同じグローバルとカスタムの禁止パスワード リストを使用するオンプレミスの Active Directory Domain Services (AD DS) ドメイン コントローラーに対してパスワード変更とパスワード リセット イベントを実行する機能に影響します。
+
+
 ### <a name="additional-considerations"></a>その他の注意点
+
 - 環境で仮想デスクトップ インフラストラクチャ (VDI) を使用する場合は、「[デバイス ID とデスクトップ仮想化](./howto-device-identity-virtual-desktop-infrastructure.md)」を参照してください。
 
 - Hybrid Azure AD 参加は、FIPS に準拠している TPM 2.0 でサポートされており、TPM 1.2 ではサポートされていません。 FIPS に準拠している TPM 1.2 がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。 

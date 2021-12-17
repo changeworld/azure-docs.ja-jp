@@ -17,7 +17,15 @@
     - name: 属性マッピングのカスタマイズ
       href: customize-application-attributes.md
     - name: アプリ固有のプロビジョニングに関するチュートリアル
-      href: /azure/active-directory/saas-apps
+      href: /azure/active-directory/saas-apps/tutorial-list
+    - name: オンプレミス アプリのプロビジョニングに関するチュートリアル
+      items:
+        - name: オンプレミスの SCIM 対応アプリへのプロビジョニング
+          href: on-premises-scim-provisioning.md
+        - name: SQL ベースのアプリへのプロビジョニング
+          href: on-premises-sql-connector-configure.md
+        - name: LDAP ベースのアプリへのプロビジョニング
+          href: on-premises-ldap-connector-configure.md
 - name: 概念
   expanded: true
   items:
@@ -29,6 +37,14 @@
       href: plan-cloud-hr-provision.md
     - name: Azure Monitor でのログ記録を理解する
       href: application-provisioning-log-analytics.md
+    - name: オンプレミス アプリケーションのプロビジョニング アーキテクチャ
+      href: on-premises-application-provisioning-architecture.md
+    - name: 式ビルダーについて
+      href: expression-builder.md
+    - name: SuccessFactors 統合について
+      href: sap-successfactors-integration-reference.md
+    - name: Workday の統合について
+      href: workday-integration-reference.md
 - name: 操作方法ガイド
   expanded: true
   items:
@@ -52,8 +68,6 @@
           href: export-import-provisioning-configuration.md
         - name: レポートのプロビジョニング
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: MS Graph を使用した構成の自動化
-      href: /graph/application-provisioning-configure-api
     - name: アプリケーションのプロビジョニングのトラブルシューティング
       items:
         - name: 既知の問題
@@ -66,38 +80,54 @@
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: ソース属性が存在しない
           href: user-provisioning-sync-attributes-for-mapping.md
+        - name: オンプレミスのプロビジョニングのトラブルシューティング
+          href: on-premises-ecma-troubleshoot.md
         - name: プロビジョニング ログ
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+    - name: HR プロビジョニングのトラブルシューティング
+      items:
+        - name: 属性の取得に関する問題
+          href: hr-attribute-retrieval-issues.md
+        - name: ユーザーの作成に関する問題
+          href: hr-user-creation-issues.md
+        - name: ユーザーの更新に関する問題
+          href: hr-user-update-issues.md
+        - name: マネージャーの更新に関する問題
+          href: hr-manager-update-issues.md
+        - name: HR の書き戻しに関する問題
+          href: hr-writeback-issues.md
+    - name: 誤削除防止を有効にする
+      href: accidental-deletions.md
+    - name: MS Graph を使用した構成の自動化
+      href: application-provisioning-configuration-api.md
 - name: リファレンス
   items:
+    - name: 属性マッピングの式を記述するための関数リファレンス
+      href: functions-for-customizing-application-data.md
     - name: SCIM 2.0 プロトコルへの準拠
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: SCIM と Graph のシナリオ
       href: scim-graph-scenarios.md
-    - name: 属性マッピングの式を記述するための関数リファレンス
-      href: functions-for-customizing-application-data.md
     - name: クラウド HR のプロビジョニング
       items:
-        - name: SuccessFactors の統合
-          href: sap-successfactors-integration-reference.md
         - name: SuccessFactors 属性のリファレンス
           href: sap-successfactors-attribute-reference.md
-        - name: Workday の統合
-          href: workday-integration-reference.md
         - name: Workday 属性のリファレンス
           href: workday-attribute-reference.md
         - name: プロビジョニング エージェントのバージョン履歴
           href: provisioning-agent-release-version-history.md
+        - name: MIM Sync からコネクタを移行する
+          href: on-premises-migrate-microsoft-identity-manager.md
 - name: リソース
   items:
     - name: 開発者向けのサポート オプションとヘルプ オプション
       href: ../develop/developer-support-help-options.md
     - name: Azure フィードバック フォーラム
-      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+      href: 'https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789'
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-active-directory.html
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
     - name: Stack Overflow

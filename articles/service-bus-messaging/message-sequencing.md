@@ -2,17 +2,17 @@
 title: Azure Service Bus のメッセージのシーケンス処理とタイムスタンプ | Microsoft Docs
 description: この記事では、Azure Service Bus のメッセージのシーケンス処理と (タイムスタンプによる) 順序付けを維持する方法について説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: fdb18802e576ad114fd3f783d5efd7bb826a5f94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 3d5300568232afae1238445113d60eda8cdb2f1b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85341179"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497100"
 ---
 # <a name="message-sequencing-and-timestamps"></a>メッセージのシーケンス処理とタイムスタンプ
 
-シーケンス処理とタイムスタンプは、受信または参照するメッセージの [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) プロパティおよび [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) プロパティを通じて Service Bus のすべてのエンティティとサーフェスで常に利用できる 2 つの機能です。
+シーケンス処理とタイムスタンプは、受信または参照するメッセージの `SequenceNumber` および `EnqueuedTimeUtc` プロパティを通じて Service Bus のすべてのエンティティとサーフェスで常に有効になる 2 つの機能です。
 
 メッセージの絶対的な順序が重要なケースや、コンシューマーが信頼できるメッセージの一意識別子を必要とするケースでは、ブローカーは、キューまたはトピックを基準とした、ギャップのない増分するシーケンス番号をメッセージに付けます。 パーティション分割されたエンティティの場合、シーケンス番号はパーティションを基準として発行されます。
 
@@ -30,7 +30,11 @@ ms.locfileid: "85341179"
 
 スケジュール設定されたメッセージは、定義されたエンキュー時刻まではキューで具体化されません。 その時刻より前であれば、スケジュール設定されたメッセージをキャンセルできます。 キャンセルすると、メッセージが削除されます。
 
-メッセージをスケジュール設定するには、通常の送信パス経由でメッセージを送信するときに [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) プロパティを設定するか、[ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) API で明示的に設定します。 後者の場合、スケジュール設定されたメッセージの **SequenceNumber** がただちに返されます。必要な場合はこれを後で使用して、スケジュール設定されたメッセージをキャンセルできます。 スケジュール設定されたメッセージとそのシーケンス番号を、[メッセージのブラウズ](message-browsing.md)を使用して調べることもできます。
+任意のクライアントを使用してメッセージをスケジュールするには、次の 2 つの方法があります。
+- 通常の送信 API を使用しますが、送信する前にメッセージの `ScheduledEnqueueTimeUtc` プロパティを設定します。
+- スケジュール メッセージ API を使用して、通常のメッセージとスケジュールされた時刻の両方を渡します。 これにより、スケジュール設定されたメッセージの **SequenceNumber** が返されます。必要な場合はこれを後で使用して、スケジュール設定されたメッセージをキャンセルできます。 
+
+スケジュール設定されたメッセージとそのシーケンス番号を、[メッセージのブラウズ](message-browsing.md)を使用して調べることもできます。
 
 スケジュール設定されたメッセージの **SequenceNumber** は、メッセージがこの状態にある間のみ有効です。 アクティブ状態に移行すると、メッセージは即時にエンキューされた場合のようにキューに追加され、新しい **SequenceNumber** を割り当てられます。
 

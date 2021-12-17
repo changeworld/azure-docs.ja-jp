@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e81cb9018d817fb206915a81fdc3bdd60f6b08c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ab37861a78ef80949e9afb4a3f51a6d9fdbad321
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611890"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126624"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Microsoft 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>概要
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) と Active Directory Federation Services (AD F
 
 > [!IMPORTANT]
 > Microsoft では、証明書を保護し、セキュリティで保護するために、ハードウェア セキュリティ モジュール (HSM) を使用することを強く推奨します。
-> 詳細については、AD FS をセキュリティ保護するためのベスト プラクティスの「[ハードウェア セキュリティ モジュール](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm)」を参照してください。
+> 詳細については、AD FS をセキュリティ保護するためのベスト プラクティスの「[ハードウェア セキュリティ モジュール](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm)」を参照してください。
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>トークン署名証明書に使用する AD FS の既定の構成
 通常、トークン署名証明書とトークン暗号化解除証明書は自己署名証明書であり、有効期間は 1 年です。 AD FS には **AutoCertificateRollover** と呼ばれる自動更新プロセスが既定で含まれています。 AD FS 2.0 以降を使用している場合、Microsoft 365 と Azure AD により、証明書は期限切れになる前に自動的に更新されます。

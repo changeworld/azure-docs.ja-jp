@@ -4,7 +4,7 @@ description: Azure Active Directory レポートの概要について説明し�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 09/30/2020
 ms.author: markvi
 ms.reviewer: sarbar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9a51c10a4f390e5627bccf35ab5dc74689e9c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e2f83a6b59c8f71ddd8a56a618bfad653f3b792
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91566824"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995031"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Azure Active Directory レポートの概要
 
@@ -87,7 +87,7 @@ Azure Active Directory (Azure AD) レポートを使用すると、ご利用の�
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>監査ログ レポートにアクセスするために必要な Azure AD ライセンス  
 
-監査ログ レポートは、自分がライセンスを所有している機能に関して利用できます。 特定の機能のライセンスがある場合、その機能の監査ログ情報にもアクセスすることができます。 [さまざまな種類のライセンス](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)別の詳しい機能比較は、[Azure Active Directory の価格ページ](https://azure.microsoft.com/pricing/details/active-directory/)にあります。 詳細については、[Azure Active Directory の機能と働き](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad)に関するページを参照してください。
+監査ログ レポートは、自分がライセンスを所有している機能に関して利用できます。 特定の機能のライセンスがある場合、その機能の監査ログ情報にもアクセスすることができます。 [さまざまな種類のライセンス](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)別の詳しい機能比較は、[Azure Active Directory の価格ページ](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)にあります。 詳細については、[Azure Active Directory の機能と働き](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad)に関するページを参照してください。
 
 ### <a name="sign-ins-report"></a>サインイン レポート
 

@@ -3,36 +3,85 @@ title: ページ レイアウト バージョン
 titleSuffix: Azure AD B2C
 description: カスタム ポリシーでの UI カスタマイズのページ レイアウトのバージョン履歴。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/05/2021
-ms.author: mimart
+ms.date: 09/22/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 8469e05b82a651760829761ca57af3bdb1b256a9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: ef18f8391962520daada2e7abf5677863d503a91
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443408"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036096"
 ---
 # <a name="page-layout-versions"></a>ページ レイアウト バージョン
 
 ページ レイアウト パッケージは定期的に更新され、ページ要素に修正と機能強化が加えられます。 次の変更ログは、各バージョンで導入された変更を示しています。
 
-## <a name="jquery-version"></a>jQuery バージョン
+> [!IMPORTANT]
+> Azure Active Directory B2C では、新しいページ レイアウト バージョンごとに機能強化と修正がリリースされます。 ページ レイアウトのバージョンを最新の状態に保ち、すべてのページ要素に最新のセキュリティの強化、アクセシビリティ標準、フィードバックを反映することを強くお勧めします。
+>
 
-[Azure AD B2C] ページのレイアウトでは、次のバージョンの [jQuery ライブラリ](https://jquery.com/)を使用します。
+## <a name="jquery-and-handlebars-versions"></a>jQuery および Handlebars のバージョン
 
-|ページ レイアウトのバージョンから  |jQuery バージョン  |
-|---------|---------|
-|2.1.4 | 3.5.1 |
-|1.2.0 | 3.4.1 |
-|1.1.0 | 1.10.2 |
+[Azure AD B2C] ページのレイアウトでは、次のバージョンの [jQuery ライブラリ](https://jquery.com/)と [Handlebars テンプレート](https://handlebarsjs.com/)を使用します。
+
+|要素 |ページ レイアウト バージョンの範囲 |jQuery バージョン  |Handlebars ランタイム バージョン |Handlebars コンパイラ バージョン |
+|---------|---------|------|--------|----------|
+|multifactor |>= 1.2.4 | 3.5.1 | 4.7.6 |4.7.7 |
+|            |< 1.2.4 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|selfasserted |>= 2.1.4 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 2.1.4 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|unifiedssp |>= 2.1.4 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 2.1.4 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|globalexception |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|providerselection |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|claimsconsent |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|unifiedssd |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
 
 ## <a name="self-asserted-page-selfasserted"></a>セルフアサート ページ (selfasserted)
+
+**2.1.8**
+
+- 要求名は、ユーザーの属性入力要素を囲む `<li>` HTML 要素の `class` 属性に追加されます。 クラス名を使用すると、特定のユーザー属性入力要素の親 `<li>` を選択する CSS セレクターを作成できます。 次の HTML マークアップは、サインアップ ページのクラス属性を示しています。
+  
+  ```html
+  <div id="attributeList" class="attr">
+    <ul>
+      <li class="EmailBox email_li">...</li>
+      <li class="Password newPassword_li">...</li>
+      <li class="Password reenterPassword_li">...</li>
+      <li class="TextBox displayName_li">...</li>
+      <li class="TextBox givenName_li">...</li>
+      <li class="TextBox surname_li">...</li>
+      <li class="TextBox extension_age_li">...</li>
+    </ul>
+  </div>
+  ```
+**2.1.7**
+- 要求が失敗する原因となっている言語エンコードの問題を修正しました。
+- フォームの送信時にのみインライン エラー メッセージを表示するアクセシビリティのバグを修正しました。
+
+**2.1.6**
+- 別のフィールドにすばやく入力するとパスワード エラーがクリアされる問題を修正しました。
+
+**2.1.5**
+- テキストの中央で編集する際の iOS でのカーソルジャンプの問題を修正しました。
 
 **2.1.4**
 - jQuery のバージョンが 3.5.1 に更新されました。
@@ -94,6 +143,10 @@ ms.locfileid: "106443408"
 > [!TIP]
 > 複数のロケールまたはユーザー フローの言語をサポートするようにページをローカライズする場合。 [ローカライズ ID](localization-string-ids.md) に関する記事に、選択したページ バージョンで使用できるローカライズ ID の一覧が記載されています。
 
+**2.1.5**
+- サインイン ページで idp セレクター テンプレートが使用されている場合のタブ オーダーの問題を修正しました。
+- サインイン リンク テキストでのエンコードの問題を修正しました。
+
 **2.1.4**
 - jQuery のバージョンが 3.5.1 に更新されました。
 - HandlebarJS のバージョンが 4.7.6 に更新されました。
@@ -119,6 +172,7 @@ ms.locfileid: "106443408"
 
 - 複数のサインアップ リンクのサポートが追加されました。
 - ポリシーで定義されている述語規則に従った、ユーザー入力の検証のサポートが追加されました。
+- [[サインイン オプション]](sign-in-options.md) が [電子メール] に設定されている場合、サインイン ヘッダーには "Sign in with your sign in name"(サインイン名でサインインする) と表示されます。 username フィールドには、"サインイン名" が表示されます。 詳細については、[ローカライズ](localization-string-ids.md#sign-up-or-sign-in-page-elements)に関する記事を参照してください。
 
 **1.2.0**
 
@@ -140,6 +194,9 @@ ms.locfileid: "106443408"
 - 最初のリリース
 
 ## <a name="mfa-page-multifactor"></a>MFA ページ (多要素)
+
+**1.2.5**
+- 要求が失敗する原因となっている言語エンコードの問題を修正しました。
 
 **1.2.4**
 - jQuery のバージョンが 3.5.1 に更新されました。

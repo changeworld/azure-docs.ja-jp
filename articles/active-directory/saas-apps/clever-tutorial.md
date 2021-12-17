@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/17/2020
+ms.date: 06/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 5fe539521213a6c25804c5c0db1e6b18646cceea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f641069d482a27892fc5daa2c82acc281def627d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563839"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307595"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Clever の統合
 
@@ -37,12 +37,12 @@ ms.locfileid: "105563839"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Clever では、**SP** によって開始される SSO がサポートされます
+* Clever では、**SP** Initiated SSO がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
-## <a name="adding-clever-from-the-gallery"></a>ギャラリーからの Clever の追加
+## <a name="add-clever-from-the-gallery"></a>ギャラリーからの Clever の追加
 
 Azure AD への Clever の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Clever を追加する必要があります。
 
@@ -53,12 +53,11 @@ Azure AD への Clever の統合を構成するには、ギャラリーから管
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Clever**」と入力します。
 1. 結果ウィンドウで **Clever** を選択してそのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-clever"></a>Clever の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Clever に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと Clever の関連ユーザーの間で、リンク関係を確立する必要があります。
 
-Clever で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
+Clever に対する Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -73,20 +72,20 @@ Clever で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. Azure portal の **Clever** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://clever.com/in/<companyname>`
+    a. **[識別子 (エンティティ ID)]** ボックスに `https://clever.com/oauth/saml/metadata.xml` という URL を入力します。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに `https://clever.com/oauth/saml/metadata.xml` という URL を入力します。
+    b. **[応答 URL]** ボックスに、`https://clever.com/<COMPANY_NAME>` のパターンを使用して URL を入力します
 
-    c. **[応答 URL]** ボックスに、`https://clever.com/<companyname>` のパターンを使用して URL を入力します
-    
+    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://clever.com/in/<COMPANY_NAME>`
+
     > [!NOTE]
-    >  これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 この値を取得するには、[Clever クライアント サポート チーム](https://clever.com/about/contact/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    >  これらは実際の値ではありません。 これらの値を、実際の応答 URL およびサインオン URL で更新してください。 この値を取得するには、[Clever クライアント サポート チーム](https://clever.com/about/contact/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
@@ -118,7 +117,23 @@ Clever で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-clever-sso"></a>Clever の SSO の構成
 
-[リンク](https://support.clever.com/hc/s/articles/205889768)に記載されている手順に従って、Clever 側でシングル サインオンを構成します。
+1. 別の Web ブラウザー ウィンドウで、Clever ディストリクト ダッシュボードに管理者としてログインします。
+
+2. 左側のナビゲーションから **[Menu]\(メニュー\)**  >  **[Portal]\(ポータル\)**  >  **[SSO Settings]\(SSO の設定\)** をクリックします。
+
+3. **[SSO Settings]\(SSO の設定\)** ページで、次の手順を実行します。
+    
+    a。 **[Add Login Method]\(ログイン方法の追加\)** を選択します。
+
+    b. **[Active Directory Authentication]\(Active Directory 認証\)** を選択します。 
+
+    ![設定](./media/clever-tutorial/account.png "設定") 
+    
+    c. Azure portal からダウンロードした **アプリのフェデレーション メタデータ URL** をメモ帳で開き、その内容を **[Metadata URL]\(メタデータ URL\)** ボックスに貼り付けます。
+
+    ![証明書のアップロード](./media/clever-tutorial/metadata.png "証明書のアップロード") 
+
+    d. **[Save]\(保存\)** をクリックします。
 
 ### <a name="create-clever-test-user"></a>Clever テスト ユーザーの作成
 
@@ -137,8 +152,8 @@ Clever の場合は、[Clever クライアント サポート チーム](https:/
 
 * Clever のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Clever] タイルをクリックすると、Clever のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Clever] タイルをクリックすると、Clever のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Clever を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Clever を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

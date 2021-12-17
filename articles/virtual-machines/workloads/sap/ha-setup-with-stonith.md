@@ -1,469 +1,533 @@
 ---
 title: STONITH を使用した SAP HANA on Azure (L インスタンス) の高可用性のセットアップ | Microsoft Docs
-description: STONITH を使って SUSE の SAP HANA on Azure (L インスタンス) の高可用性を確立します
+description: SUSE で STONITH デバイスを使用して、SAP HANA on Azure (L インスタンス) の高可用性を設定する方法を説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: saghorpa
+author: Ajayan1008
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/21/2017
-ms.author: saghorpa
+ms.date: 9/01/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3dd2a618f22036fd0826a99207d83a3add390c7d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5866fbb227477b0079f5f2ac314357ca8e67a364
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645324"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710839"
 ---
-# <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
-このドキュメントでは、STONITH デバイスを使って SUSE オペレーティング システムに高可用性をセットアップする詳しい手順について説明します。
+# <a name="high-availability-setup-in-suse-using-the-stonith-device"></a>STONITH デバイスを使用した SUSE での高可用性セットアップ
 
-**免責事項:** *このガイドは、正常に動作する Microsoft HANA L インスタンス環境でのセットアップのテストによって得られたものです。HANA L インスタンスの Microsoft サービス管理チームはオペレーティング システムをサポートしていないので、オペレーティング システム レイヤーでの詳細なトラブルシューティングや不明点については、SUSE に問い合わせる必要があります。Microsoft のサービス管理チームは、STONITH デバイスのセットアップを行い、STONITH デバイスに関する問題のトラブルシューティングについて全面的にサポートします。*
-## <a name="overview"></a>概要
-SUSE のクラスタリングを使って高可用性をセットアップするには、次の前提条件が満たされている必要があります。
-### <a name="pre-requisites"></a>前提条件
-- HANA L インスタンスがプロビジョニングされている
-- オペレーティング システムが登録されている
-- HANA L インスタンスが SMT サーバーに接続されていて、修正プログラム/パッケージを取得できる
-- オペレーティング システムに最新の修正プログラムがインストールされている
-- NTP (タイム サーバー) がセットアップされている
-- 最新バージョンの SUSE のドキュメントで HA のセットアップに関する情報を読み、理解している
+この記事では、SUSE オペレーティング システムで STONITH デバイスを使用して、HANA L インスタンスの高可用性 (HA) を設定する手順を説明します。
 
-### <a name="setup-details"></a>セットアップの詳細
+> [!NOTE]
+> このガイドは、Microsoft HANA L インスタンス環境の設定を適切にテストすることで得られたものです。 HANA L インスタンスの Microsoft サービス管理チームは、このオペレーティング システムをサポートしていません。 オペレーティング システム レイヤーに関するトラブルシューティングと説明については、SUSE にお問い合わせください。 
+>
+> Microsoft サービス管理チームは、STONITH デバイスの設定とフル サポートを担当しています。 STONITH デバイスに関する問題のトラブルシューティングについても支援します。
+
+## <a name="prerequisites"></a>必須コンポーネント
+
+SUSE のクラスタリングを使用して高可用性を設定するには、次のことを行う必要があります。
+
+- HANA L インスタンスをプロビジョニングする。
+- 最新のパッチを適用したオペレーティング システムをインストールして登録する。
+- HANA L インスタンス サーバーを SMT サーバーに接続し、パッチとパッケージを取得する。
+- ネットワーク タイム プロトコル (NTP タイム サーバー) を設定する。
+- 最新の SUSE のドキュメントで HA のセットアップに関する情報を読み、理解する。
+
+## <a name="setup-details"></a>セットアップの詳細
+
 このガイドでは、次のセットアップを使用します。
-- オペレーティング システム:SLES 12 SP1 for SAP
+
+- オペレーティング システム: SLES 12 SP1 for SAP
 - HANA L インスタンス:2xS192 (4 ソケット、2 TB)
-- HANA バージョン:HANA 2.0 SP1
+- HANA のバージョン: HANA 2.0 SP1
 - サーバー名: sapprdhdb95 (node1) および sapprdhdb96 (node2)
-- STONITH デバイス: iSCSI ベースの STONITH デバイス
-- HANA L インスタンス ノードの 1 つに NTP のセットアップ
+- STONITH デバイス: iSCSI ベース
+- HANA L インスタンス ノードのいずれかでの NTP
 
-HSR で HANA L インスタンスをセットアップするときは、Microsoft サービス管理チームに STONITH のセットアップを依頼できます。 HANA L インスタンスがプロビジョニングされた既存のお客様が、既存のブレード用に STONITH デバイスをセットアップする必要がある場合は、サービス要求フォーム (SRF) で次の情報を Microsoft サービス管理チームに提供する必要があります。 SRF フォームは、テクニカル アカウント マネージャーまたは HANA L インスタンスのオンボーディングに関する Microsoft の担当者に要求できます。 新しいお客様は、プロビジョニング時に STONITH デバイスを要求できます。 入力はプロビジョニング要求フォームでできます。
+HANA システム レプリケーションを有効にして HANA L インスタンスを設定するときは、Microsoft サービス管理チームに STONITH デバイスの設定を依頼できます。 これは、プロビジョニング時に行います。 
 
-- サーバー名とサーバー IP アドレス (例: myhanaserver1、10.35.0.1)
+既に HANA Large Instances のプロビジョニングを行った方も、STONITH デバイスをセットアップできます。 サービス依頼フォーム (SRF) に次の情報を入力して Microsoft サービス管理チームに渡します。 SRF は、テクニカル アカウント マネージャーか、HANA Large Instances のオンボーディングを担当する Microsoft の連絡先に連絡して取得できます。
+
+- サーバー名とサーバーの IP アドレス (例: myhanaserver1、10.35.0.1)
 - 場所 (例: 米国東部)
 - 顧客名 (例: Microsoft)
-- SID - HANA システム識別子 (例: H11)
+- HANA システム識別子 (SID) (例: H11)
 
-STONITH デバイスの構成が済むと、Microsoft のサービス管理チームから iSCSI ストレージの SBD デバイス名と IP アドレスが提供されるので、それを使って STONITH のセットアップを構成できます。 
+STONITH デバイスの設定が終わったら、Microsoft サービス管理チームから、STONITH ブロック デバイス (SBD) 名と iSCSI ストレージの IP アドレスが提供されます。 この情報を使用して STONITH のセットアップの設定ができます。 
 
-STONITH を使ってエンド ツー エンドの HA をセットアップするには、次の手順に従う必要があります。
+次のセクションの手順に従い、STONITH を使用して HA を設定します。
 
-1.  SBD デバイスを識別する
-2.  SBD デバイスを初期化する
-3.  クラスターを構成する
-4.  Softdog ウォッチドッグを設定する
-5.  クラスターにノードを参加させる
-6.  クラスターを検証する
-7.  クラスターのリソースを構成する
-8.  フェールオーバー プロセスをテストする
+## <a name="identify-the-sbd-device"></a>SBD デバイスを識別する
 
-## <a name="1---identify-the-sbd-device"></a>1. SBD デバイスを識別する
-このセクションでは、Microsoft のサービス管理チームが STONITH を構成した後で、セットアップ対象の SBD デバイスを特定する方法について説明します。 **このセクションは、既存のお客様のみが対象となります**。 新しいお客様の場合は、Microsoft のサービス管理チームが SBD のデバイス名を提供するので、お客様はこのセクションをスキップできます。
+> [!NOTE]
+> このセクションの内容は既存のお客様にのみ当てはまります。 新規顧客には Microsoft サービス管理チームから SBD デバイス名を提供しますので、このセクションは飛ばしてください。
 
-1.1 */etc/iscsi/initiatorname.isci* を次のように変更します 
-``` 
-iqn.1996-04.de.suse:01:<Tenant><Location><SID><NodeNumber> 
-```
+1. */etc/iscsi/initiatorname.isci* を次のように変更します。 
 
-Microsoft のサービス管理チームがこの文字列を提供します。 **両方** のノードでファイルを修正します。ただし、ノード番号はノードごとに異なります。
+    ``` 
+    iqn.1996-04.de.suse:01:<Tenant><Location><SID><NodeNumber> 
+    ```
+    
+    Microsoft サービス管理からこの文字列を受け取ります。 *両* ノードのファイルを変更します。 ただし、ノード番号はノードによって異なります。
+    
+    ![ノードの InitiatorName 値を含む initiatorname ファイルを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-![ノードの InitiatorName 値を含む initiatorname ファイルを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/initiatorname.png)
+2. `node.session.timeo.replacement_timeout=5` と `node.startup = automatic` を設定して、 */etc/iscsi/iscsid.conf* を変更します。 *両* ノードのファイルを変更します。
 
-1.2 */etc/iscsi/iscsid.conf* を次のように変更します。*node.session.timeo.replacement_timeout=5* および *node.startup = automatic* を設定します。 **両方** のノードでファイルを修正します。
+3. "*両方*" のノード上で次の discovery コマンドを実行します。
 
-1.3 discovery コマンドを実行します。4 つのセッションが表示されます。 両方のノードで実行します。
+    ```
+    iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
+    ```
+    
+    結果には 4 つのセッションが表示されます。
+    
+    ![discovery コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
 
-```
-iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
-```
+4. "*両方*" のノード上で次のコマンドを実行し、iSCSI デバイスにサインインします。 
 
-![iscsiadm discovery コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
+    ```
+    iscsiadm -m node -l
+    ```
+    
+    結果には 4 つのセッションが表示されます。
+    
+    ![node コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1.4 コマンドを実行して iSCSI デバイスにログインします。4 つのセッションが表示されます。 **両方** のノードで実行します。
+5. 次のコマンドを使用して、*rescan-scsi-bus.sh* rescan スクリプトを実行します。 自動的に作成された新しいディスクが表示されます。  *両* ノードでこれを実行します。
 
-```
-iscsiadm -m node -l
-```
-![iscsiadm node コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
+    ```
+    rescan-scsi-bus.sh
+    ```
+    
+    結果には、0 より大きい LUN 番号が表示されます (例: 1、2 など)。
+     
+    ![スクリプトの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
 
-1.5 再スキャン スクリプト *rescan-scsi-bus.sh* を実行します。自動的に作成された新しいディスクが表示されます。  両方のノードで実行します。 ゼロより大きい LUN 番号が表示されます (例:1、2 など)
+6. デバイス名を取得するには、"*両方*" のノード上で次のコマンドを実行します。 
 
-```
-rescan-scsi-bus.sh
-```
-![スクリプトの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
+    ```
+      fdisk –l
+    ```
+    
+    結果で、178 MiB のサイズのデバイスを選択します。
+    
+    ![fdisk コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
 
-1.6 デバイス名を確認するには、*fdisk –l* コマンドを実行します。 両方のノードで実行します。 サイズが **178 MiB** のデバイスを選択します。
+## <a name="initialize-the-sbd-device"></a>SBD デバイスを初期化する
 
-```
-  fdisk –l
-```
+1. "*両方*" のノード上で次のコマンドを使用して、SBD デバイスを初期化します。
 
-![fdisk コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
+    ```
+    sbd -d <SBD Device Name> create
+    ```
+    ![sbd create コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbdcreate.png)
 
-## <a name="2---initialize-the-sbd-device"></a>2. SBD デバイスを初期化する
+2. "*両方*" のノード上で次のコマンドを使用して、デバイスに書き込まれた内容を確認します。
 
-2.1 **両方** のノードで SBD デバイスを初期化します
+    ```
+    sbd -d <SBD Device Name> dump
+    ```
 
-```
-sbd -d <SBD Device Name> create
-```
-![sbd create コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbdcreate.png)
+## <a name="configure-the-suse-ha-cluster"></a>SUSE HA クラスターを構成する
 
-2.2 デバイスに書き込まれた内容を確認します。 **両方** のノードで行います
+1. "*両方*" のノード上で次のコマンドを使用して、ha_sles と SAPHanaSR-doc パターンがインストールされているかどうかを確認します。 インストールされていない場合はインストールします。
 
-```
-sbd -d <SBD Device Name> dump
-```
+    ```
+    zypper in -t pattern ha_sles
+    zypper in SAPHanaSR SAPHanaSR-doc
+    ```
+    ![pattern コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
+    
+    ![SAPHanaSR-doc コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
+    
+2. `ha-cluster-init` コマンドまたは yast2 ウィザードのいずれかを使用してクラスターを設定します。 この例では、yast2 ウィザードを使用しています。 この手順は "*プライマリ ノード*" でのみ実施します。
 
-## <a name="3---configuring-the-cluster"></a>3. クラスターを構成する
-このセクションでは、SUSE HA クラスターをセットアップする手順について説明します。
-### <a name="31-package-installation"></a>3.1 パッケージのインストール
-3.1.1   ha_sles および SAPHanaSR-doc パターンがインストールされていることを確認します。 インストールされていない場合はインストールします。 **両方** のノードにインストールしてください。
-```
-zypper in -t pattern ha_sles
-zypper in SAPHanaSR SAPHanaSR-doc
-```
-![pattern コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。 ](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
-![SAPHanaSR-doc コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
+    1. **[yast2]**  >  **[High Availability]\(高可用性\)**  >  **[Cluster]\(クラスター\)** に移動します
+    
+        ![YaST Control Center のスクリーンショット。[High Availability]\(高可用性\) と [Cluster]\(クラスター\) が選択されている。](media/HowToHLI/HASetupWithStonith/yast-control-center.png)        
+                
+    1. halk2 パッケージは既にインストールされているため、表示される hawk パッケージのインストールに関するダイアログで **[キャンセル]** を選択します。
+    
+        ![[Install]\(インストール\) と [Cancel]\(キャンセル\) ボタンが存在するダイアログを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
+                    
+    1. 表示される続行に関するダイアログで、 **[Continue]\(続行\)** を選択します。
+    
+        ![必要なパッケージをインストールせずに続行する旨のメッセージを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)        
+        
+    1. 予期される値は、デプロイされたノード数 (この場合は 2) です。 **[次へ]** を選択します。  
 
-### <a name="32-setting-up-the-cluster"></a>3.2 クラスターのセットアップ
-3.2.1   *ha-cluster-init* コマンドまたは yast2 ウィザードを使って、クラスターをセットアップできます。 この例では、yast2 ウィザードを使用します。 このステップは、**プライマリ ノードのみ** で実行します。
+     
+        
+    1. ノード名を追加し、 **[Add suggested files]\(示されたファイルを追加する\)** を選択します。
 
-[yast2] > [High Availability]\(高可用性) > [Cluster]\(クラスター\) の順に選択します ![[High Availability]\(高可用性) と [Cluster]\(クラスター\) が選択された YaST コントロール センターを示すスクリーンショット。 ](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
-![[Install]\(インストール\) と [Cancel]\(キャンセル\) オプションが表示されたダイアログ ボックスを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
+        ![[Sync Host]\(同期ホスト\) と [Sync File]\(同期ファイル\) 一覧が表示されたクラスターの構成ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)
+        
+    1. **[Turn csync2 ON]\(csync2 をオンにする\)** を選択します。
+    
+    1. **[Generate Pre-Shared-Keys]\(事前共有キーを生成する\)** を選択します。 
+    
+    1. 表示されるポップアップ メッセージで、 **[OK]** を選択します。
+    
+        ![キーが生成されたというメッセージを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
+        
+    1. Csync2 で IP アドレスと事前共有キーを使って認証が実行されます。 キー ファイルは、`csync2 -k /etc/csync2/key_hagroup` を使用して生成されます。 
+    
+        ファイル *key_hagroup* が作成されたら、クラスターの全メンバーに手動でコピーします。 必ずファイルを node1 から node2 にコピーします。 **[次へ]** を選択します。
+        
+        ![クラスターのすべてのメンバーにキーをコピーするのに必要なオプションが表示されたクラスターの構成ダイアログ ボックスを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
+        
+    1. 既定のオプションでは、 **[Booting]\(ブート\)** オプションは **[Off]\(オフ\)** です。 これを **[On]\(オン\)** に変更すると、起動時に pacemaker サービスが開始されます。 セットアップの要件に基づいて選ぶことができます。
 
-halk2 パッケージは既にインストールされているので、 **[Cancel]\(キャンセル\)** をクリックします。
+        ![[Booting]\(ブート\) が有効な Cluster Service ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
+    
+    1. **[Next]\(次へ\)** をクリックしてクラスターの設定を完了します。
 
-![キャンセル オプションに関するメッセージを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
+## <a name="set-up-the-softdog-watchdog"></a>softdog ウォッチドッグをセットアップします
 
-**[Continue]\(続行\)** をクリックします
+1. "*両方*" のノードの */etc/init.d/boot.local* に次の行を追加します。
+    
+    ```
+    modprobe softdog
+    ```
+    ![softdog 行が追加された boot ファイルを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
+    
+2. "*両方*" のノード上で次のコマンドを使用して、ファイル */etc/sysconfig/sbd* を更新します。
+    
+    ```
+    SBD_DEVICE="<SBD Device Name>"
+    ```
+    ![SBD_DEVICE 値が追加された sbd ファイルを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-device.png)
+    
+3. "*両方*" のノード上で次のコマンドを実行して、カーネル モジュールを読み込みます。
+    
+    ```
+    modprobe softdog
+    ```
+    ![modprobe softdog コマンドが表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
-予想される値 = デプロイされているノードの数 (この場合は 2) ![[Enable Security Auth]\(セキュリティ認証を有効にする\) チェック ボックスが表示された [Cluster Security]\(クラスター セキュリティ\) を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)
-**[Next]\(次へ\)** をクリックします 
-![[Sync Host]\(同期ホスト\) と [Sync File]\(同期ファイル\) 一覧が表示されたクラスターの構成ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)
-ノード名を追加し、[Add suggested files]\(示されたファイルを追加する\) をクリックします
+4. "*両方*" のノード上で次のコマンドを使用して、softdog が実行されていることを確認します。
+    
+    ```
+    lsmod | grep dog
+    ```
+    ![lsmod コマンドの実行結果が表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
+    
+5. "*両方*" のノード上で次のコマンドを使用して、SBD デバイスを起動します。
 
-[Turn csync2 ON]\(csync2 をオンにする\) をクリックします
+    ```
+    /usr/share/sbd/sbd.sh start
+    ```
+    ![start コマンドが表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
+    
+6. "*両方*" のノード上で次のコマンドを使用して、SBD デーモンをテストします。 
+    
+    ```
+    sbd -d <SBD Device Name> list
+    ```
+    両方のノードの構成後の結果には、2 つのエントリが表示されます。    
+    
+    ![2 つのエントリが表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
+    
+7. 次のテスト メッセージをノードの "*いずれか*" に送信します。
 
-[Generate Pre-Shared-Keys]\(事前共有キーの生成\) をクリックします。次のポップアップが表示されます
+    ```
+    sbd  -d <SBD Device Name> message <node2> <message>
+    ```
+    
+8. "*2 つ目*" のノード (node2) 上で次のコマンドを使用して、メッセージの状態を確認します。
+    
+    ```
+    sbd  -d <SBD Device Name> list
+    ```
+    ![他のメンバーのテスト値を表示するメンバーの 1 つを含むコンソールウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
+    
+9. SBD の構成を採用するには、"*両方*" のノード上のファイル */etc/sysconfig/SBD* を次のように更新します。
 
-![キーが生成されたことを示すメッセージを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
+    ```
+    SBD_DEVICE=" <SBD Device Name>" 
+    SBD_WATCHDOG="yes" 
+    SBD_PACEMAKER="yes" 
+    SBD_STARTMODE="clean" 
+    SBD_OPTS=""
+    ```
+10. "*プライマリ ノード*" (node1) 上で次のコマンドを使用して、pacemaker サービスを開始します。
 
-**[OK]**
+    ```
+    systemctl start pacemaker
+    ```
+    ![pacemaker の開始後の状態が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
+    
+    pacemaker サービスが失敗する場合は、後述の「[シナリオ 5: Pacemaker サービスが失敗する](#scenario-5-pacemaker-service-fails)」セクションを参照してください。
 
-Csync2 で IP アドレスと事前共有キーを使って認証が実行されます。 キー ファイルは csync2 -k /etc/csync2/key_hagroup で生成されます。 作成された key_hagroup ファイルを、クラスターのすべてのメンバーに手動でコピーする必要があります。 **node1 から node2 にファイルを必ずコピーします**。
+## <a name="join-the-node-to-the-cluster"></a>クラスターにノードを参加させる
 
-![クラスターのすべてのメンバーにキーをコピーするのに必要なオプションが表示されたクラスターの構成ダイアログ ボックスを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
+*node2* 上で次のコマンドを実行して、ノードをクラスターに参加させます。
 
-**[Next]\(次へ\)** をクリックします 
-![クラスターのサービス ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
-
-既定のオプションでは起動はオフになっているので、Pacemaker が起動時に開始されるように "オン" に変更します。 セットアップの要件に基づいて選ぶことができます。
-**[Next]\(次へ\)** をクリックしてクラスターの構成を完了します。
-
-## <a name="4---setting-up-the-softdog-watchdog"></a>4. Softdog ウォッチドッグを設定する
-このセクションでは、ウォッチドッグ (softdog) の構成について説明します。
-
-4.1 次の行を、**両方** のノードの */etc/init.d/boot.local* に追加します。
-```
-modprobe softdog
-```
-![softdog 行が追加された boot ファイルを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
-
-4.2 **両方** のノードの */etc/sysconfig/sbd* ファイルを次のように更新します。
-```
-SBD_DEVICE="<SBD Device Name>"
-```
-![SBD_DEVICE 値が追加された sbd ファイルを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-device.png)
-
-4.3 **両方** のノードで次のコマンドを実行してカーネル モジュールを読み込みます
-```
-modprobe softdog
-```
-![modprobe softdog コマンドが表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
-
-4.4 **両方** のノードで次のようにして、softdog が実行されていることを確認します。
-```
-lsmod | grep dog
-```
-![lsmod コマンドの実行結果が表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
-
-4.5 **両方** のノードで SBD デバイスを起動します
-```
-/usr/share/sbd/sbd.sh start
-```
-![start コマンドが表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
-
-4.6 **両方** のノードで SBD デーモンをテストします。 **両方** のノードで構成した後は、2 つのエントリが表示されます
-```
-sbd -d <SBD Device Name> list
-```
-![2 つのエントリが表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
-
-4.7 **一方** のノードにテスト メッセージを送信します
-```
-sbd  -d <SBD Device Name> message <node2> <message>
-```
-![2 つのエントリが表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
-
-4.8 **2 番目** のノード (node2) で、メッセージの状態を確認できます
-```
-sbd  -d <SBD Device Name> list
-```
-![他のメンバーのテスト値を表示するメンバーの 1 つを含むコンソールウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
-
-4.9 sbd の構成を適用するには、 */etc/sysconfig/sbd* ファイルを次のように更新します。 **両方** のノードでファイルを更新します
-```
-SBD_DEVICE=" <SBD Device Name>" 
-SBD_WATCHDOG="yes" 
-SBD_PACEMAKER="yes" 
-SBD_STARTMODE="clean" 
-SBD_OPTS=""
-```
-4.10   **プライマリ ノード** (node1) で Pacemaker サービスを開始します
-```
-systemctl start pacemaker
-```
-![pacemaker の開始後の状態が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
-
-Pacemaker サービスが "*失敗*" する場合は、「*シナリオ 5:Pacemaker サービスが失敗する*」を参照してください
-
-## <a name="5---joining-the-cluster"></a>5. クラスターに参加する
-このセクションでは、クラスターにノードを参加させる方法について説明します。
-
-### <a name="51-add-the-node"></a>5.1 ノードを追加する
-**node2** で次のコマンドを実行して、node2 をクラスターに参加させます。
 ```
 ha-cluster-join
 ```
-クラスターを参加させるときに "*エラー*" が発生する場合は、「*シナリオ 6:node2 がクラスターに参加できない*」を参照してください。
 
-## <a name="6---validating-the-cluster"></a>6. クラスターの検証
+クラスターの参加中にエラーが発生した場合は、この記事で後述する「[シナリオ 6: Node2 がクラスターに参加できない](#scenario-6-node2-cant-join-the-cluster)」セクションを参照してください。
 
-### <a name="61-start-the-cluster-service"></a>6.1 クラスター サービスを開始する
-確認し、必要に応じて **両方** のノードでクラスターを初めて開始します。
-```
-systemctl status pacemaker
-systemctl start pacemaker
-```
-![pacemaker の状態が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
-### <a name="62-monitor-the-status"></a>6.2 状態を監視する
-*crm_mon* コマンドを実行し、**両方** のノードがオンラインであることを確認します。 クラスターの **どのノード** で実行してもかまいません
-```
-crm_mon
-```
-![crm_mon の結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/crm-mon.png)
-hawk にログインして、クラスターの状態 *https://\<node IP>:7630* を確認することもできます。 既定のユーザーは hacluster で、パスワードは linux です。 必要な場合は、*passwd* コマンドを使ってパスワードを変更できます。
+## <a name="validate-the-cluster"></a>クラスターを検証する
 
-## <a name="7-configure-cluster-properties-and-resources"></a>7.クラスターのプロパティとリソースを構成する 
+1. 次のコマンドを使用して確認し、必要に応じて "*両方*" のノード上でクラスターを初めて開始します。
+    
+     ```
+    systemctl status pacemaker
+    systemctl start pacemaker
+    ```
+    ![pacemaker の状態が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
+        
+2. 次のコマンドを実行して、"*両方*" のノードがオンラインであることを確認します。 これは、クラスターの *どのノードでも* 実行できます。
+    
+    ```
+    crm_mon
+    ```
+    ![crm_mon コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/crm-mon.png)
+    
+    hawk にサインインして、クラスターの状態 `https://\<node IP>:7630` を確認することもできます。 既定のユーザーは **hacluster** であり、パスワードは **linux** です。 必要であれば、`passwd` コマンドでパスワードを変更できます。
+    
+## <a name="configure-cluster-properties-and-resources"></a>クラスターのプロパティとリソースを構成する
+
 このセクションでは、クラスター リソースを構成する手順について説明します。
-この例では、次のリソースをセットアップします。残りは、SUSE HA のガイドを参考にして (必要に応じて) 構成できます。 この構成は、**1 つのノード** だけで実行します。 プライマリ ノードで行います。
+この例では、次のリソースを設定しています。 残りの部分は (必要に応じて) SUSE HA のガイドを参照して構成できます。
 
 - クラスターのブートストラップ
 - STONITH デバイス
-- 仮想 IP アドレス
+- Virtual IP address
 
+この構成は "*プライマリ ノード*" でのみ行います。
 
-### <a name="71-cluster-bootstrap-and-more"></a>7.1 クラスターのブートストラップその他
-クラスターのブートストラップを追加します。 ファイルを作成し、次のようにテキストを追加します。
-```
-sapprdhdb95:~ # vi crm-bs.txt
-# enter the following to crm-bs.txt
-property $id="cib-bootstrap-options" \
-no-quorum-policy="ignore" \
-stonith-enabled="true" \
-stonith-action="reboot" \
-stonith-timeout="150s"
-rsc_defaults $id="rsc-options" \
-resource-stickiness="1000" \
-migration-threshold="5000"
-op_defaults $id="op-options" \
-timeout="600"
-```
-構成をクラスターに追加します。
-```
-crm configure load update crm-bs.txt
-```
-![crm コマンドを実行するコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/crm-configure-crmbs.png)
+1. クラスターのブートストラップ ファイルを作成し、次のテキストを追加して構成します。
+    
+    ```
+    sapprdhdb95:~ # vi crm-bs.txt
+    # enter the following to crm-bs.txt
+    property $id="cib-bootstrap-options" \
+    no-quorum-policy="ignore" \
+    stonith-enabled="true" \
+    stonith-action="reboot" \
+    stonith-timeout="150s"
+    rsc_defaults $id="rsc-options" \
+    resource-stickiness="1000" \
+    migration-threshold="5000"
+    op_defaults $id="op-options" \
+    timeout="600"
+    ```
 
-### <a name="72-stonith-device"></a>7.2 STONITH デバイス
-STONITH リソースを追加します。 ファイルを作成し、次のようにテキストを追加します。
-```
-# vi crm-sbd.txt
-# enter the following to crm-sbd.txt
-primitive stonith-sbd stonith:external/sbd \
-params pcmk_delay_max="15"
-```
-構成をクラスターに追加します。
-```
-crm configure load update crm-sbd.txt
-```
+2. 次のコマンドを使用して、構成をクラスターに追加します。
 
-### <a name="73-the-virtual-ip-address"></a>7.3 仮想 IP アドレス
-仮想 IP リソースを追加します。 ファイルを作成し、次のようにテキストを追加します。
-```
-# vi crm-vip.txt
-primitive rsc_ip_HA1_HDB10 ocf:heartbeat:IPaddr2 \
-operations $id="rsc_ip_HA1_HDB10-operations" \
-op monitor interval="10s" timeout="20s" \
-params ip="10.35.0.197"
-```
-構成をクラスターに追加します。
-```
-crm configure load update crm-vip.txt
-```
+    ```
+    crm configure load update crm-bs.txt
+    ```
+    ![crm コマンドを実行するコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/crm-configure-crmbs.png)
+    
+3. 次のようにリソースを追加し、ファイルを作成し、テキストを追加して、STONITH デバイスを構成します。
 
-### <a name="74-validate-the-resources"></a>7.4 リソースを確認する
+    ```
+    # vi crm-sbd.txt
+    # enter the following to crm-sbd.txt
+    primitive stonith-sbd stonith:external/sbd \
+    params pcmk_delay_max="15"
+    ```
+    次のコマンドを使用して、構成をクラスターに追加します。
+        
+    ```
+    crm configure load update crm-sbd.txt
+    ```
+        
+4. ファイルを作成して次のテキストを追加することで、リソースの仮想 IP アドレスを追加します。
 
-*crm_mon* コマンドを実行すると、2 つのリソースが表示されます。
-![2 つのリソースが表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
+    ```
+    # vi crm-vip.txt
+    primitive rsc_ip_HA1_HDB10 ocf:heartbeat:IPaddr2 \
+    operations $id="rsc_ip_HA1_HDB10-operations" \
+    op monitor interval="10s" timeout="20s" \
+    params ip="10.35.0.197"
+    ```
+    
+    次のコマンドを使用して、構成をクラスターに追加します。
+    
+    ```
+    crm configure load update crm-vip.txt
+    ```
+        
+5. `crm_mon` コマンドを使用してリソースを検証します。 
 
-また、*https://\<node IP address>:7630/cib/live/state* で状態を確認できます
+    結果には、2 つのリソースが表示されます。
 
-![2 つのリソースの状態を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
+    ![2 つのリソースが表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-## <a name="8-testing-the-failover-process"></a>8.フェールオーバー プロセスをテストする
-フェールオーバー プロセスをテストするには、node1 の Pacemaker サービスを停止すると、リソースが node2 にフェールオーバーします。
-```
-Service pacemaker stop
-```
-次に、**node2** で Pacemaker サービスを停止すると、リソースが **node1** にフェールオーバーします
+    *https://\<node IP address>:7630/cib/live/state* でも状態を確認できます。
+    
+    ![2 つのリソースの状態を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
+    
+## <a name="test-the-failover-process"></a>フェールオーバー プロセスをテストする
 
-**フェールオーバー前**  
-![フェールオーバー前の 2 つのリソースの状態を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+1. フェールオーバー プロセスをテストするには、次のコマンドを使用して node1 上の pacemaker サービスを停止します。
 
-**フェールオーバー後**  
-![フェールオーバー後の 2 つのリソースの状態を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/after-failover.png)  
-![フェールオーバー後のリソースの状態が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+    ```
+    Service pacemaker stop
+    ```
+    
+    リソースは node2 にフェールオーバーされます。
 
+2. pacemaker のサービスを node2 で停止します。するとリソースが node1 にフェールオーバーします。
 
-## <a name="9-troubleshooting"></a>9.トラブルシューティング
-このセクションでは、セットアップ中に発生する可能性のあるいくつかの障害シナリオについて説明します。 これらの問題は必ず発生するとは限りません。
+    フェールオーバー前の状態は次のとおりです。  
+    ![フェールオーバー前の 2 つのリソースの状態を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+    
+    フェールオーバー後の状態は次のとおりです。  
+    ![フェールオーバー後の 2 つのリソースの状態を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/after-failover.png)
+    
+    ![フェールオーバー後のリソースの状態が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+    
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+このセクションでは、設定時に発生する可能性のあるエラー シナリオについて説明します。
 
 ### <a name="scenario-1-cluster-node-not-online"></a>シナリオ 1:クラスター ノードがオンラインではない
-クラスター マネージャーでいずれかのノードがオンラインと表示されない場合は、以下の方法でオンラインになる可能性があります。
 
-iSCSI サービスを開始します
-```
-service iscsid start
-```
+クラスター マネージャーでオンラインと表示されないノードがある場合は、これをオンラインにするために次の手順を試すことができます。
 
-その iSCSI ノードにログインできるようになります
-```
-iscsiadm -m node -l
-```
-予想される出力は次のとおりです
-```
-sapprdhdb45:~ # iscsiadm -m node -l
-Logging in to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.11,3260] (multiple)
-Logging in to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.12,3260] (multiple)
-Logging in to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.22,3260] (multiple)
-Logging in to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.21,3260] (multiple)
-Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.11,3260] successful.
-Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.12,3260] successful.
-Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.22,3260] successful.
-Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.21,3260] successful.
-```
-### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>シナリオ 2: yast2 でグラフィカル ビューが表示されない
-このドキュメントでは、yast2 のグラフィカル画面を使って高可用性クラスターをセットアップしています。 次のような yast2 のグラフィカル ウィンドウが開かず、Qt エラーがスローされる場合は、次の手順に従います。 グラフィカル ウィンドウが開く場合は、この手順を省略できます。
+1. 次のコマンドを使用して iSCSI サービスを開始します。
 
-**Error**
+    ```
+    service iscsid start
+    ```
+    
+2. 次のコマンドを使用してその iSCSI ノードにサインインします。
+
+    ```
+    iscsiadm -m node -l
+    ```
+    
+    次のような出力が表示されます。
+
+    ```
+    sapprdhdb45:~ # iscsiadm -m node -l
+    Logging in to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.11,3260] (multiple)
+    Logging in to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.12,3260] (multiple)
+    Logging in to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.22,3260] (multiple)
+    Logging in to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.21,3260] (multiple)
+    Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.11,3260] successful.
+    Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.12,3260] successful.
+    Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.22,3260] successful.
+    Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.21,3260] successful.
+    ```
+### <a name="scenario-2-yast2-doesnt-show-graphical-view"></a>シナリオ 2: yast2 で GUI が表示されない
+
+この記事では、yast2 の GUI 画面で高可用性クラスターを設定します。 yast2 が図のような GUI ウィンドウで開かず、Qt エラーがスローされる場合は、次の手順で必要なパッケージをインストールします。 グラフィカル ウィンドウが開く場合は、この手順を省略できます。
+
+Qt エラーの例を次に示します。
 
 ![エラー メッセージが表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
 
-**予想される出力**
+想定される出力の例を次に示します。
 
-![[High Availability]\(高可用性) と [Cluster]\(クラスター\) が強調表示された YaST コントロール センターを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
+![[High Availability]\(高可用性) と [Cluster]\(クラスター\) が強調表示された YaST Control Center を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 
-yast2 のグラフィカル ビューが開かない場合は、以下の手順のようにします。
+1. 必ず "root" ユーザーとしてログインし、SMT セットアップでパッケージをダウンロードしてインストールします。
 
-必要なパッケージをインストールします。 "root" ユーザーとしてログインし、SMT セットアップでパッケージをダウンロードしてインストールする必要があります。
+2. **[yast]**  >  **[Software]\(ソフトウェア\)**  >  **[Software Management]\(ソフトウェア管理\)**  >  **[Dependencies]\(依存関係\)** に移動し、 **[Install recommended packages]\(推奨パッケージのインストール\)** を選択します。 
 
-パッケージをインストールするには、[yast] > [Software]\(ソフトウェア\) > [Software Management]\(ソフトウェア管理\) > [Dependencies]\(依存関係\) > [Install recommended packages…]\(推奨されるパッケージをインストールする...\) オプションを使います。 次のスクリーンショットは、予想される画面を示しています。
->[!NOTE]
->両方のノードから yast2 のグラフィカル ビューにアクセスできるように、両方のノードで手順を実行する必要があります。
+    >[!NOTE]
+    >両方のノードから yast2 の GUI を利用できるように、"*両方*" のノード上でこの手順を実行します。
+    
+    次のスクリーンショットは、想定される画面を示しています。
+    
+    ![YaST Control Center が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-sofwaremanagement.png)
+    
+3. **[Dependencies]\(依存関係\)** で、 **[Install Recommended Packages]\(推奨パッケージのインストール\)** を選択します。
 
-![YaST コントロール センターが表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-sofwaremanagement.png)
+    ![コンソール ウィンドウのスクリーンショット。[Install Recommended Packages]\(推奨パッケージのインストール\) が選択されている。](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
 
-[Dependencies]\(依存関係\) で、[Install Recommended Packages]\(推奨されるパッケージをインストールする\) を選択します ![[Install Recommended Packages]\(推奨されるパッケージをインストールする\) が選択されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
+4. 変更内容を確認し **[OK]** を選択します。
 
-変更を確認して、[OK] をクリックします
+    ![インストール対象として選択されたパッケージの一覧が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
 
-![yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
+    パッケージのインストールが続行されます。
 
-パッケージのインストールが実行されます ![インストールの進行状況が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
+    ![インストールの進み具合を示す、コンソール ウィンドウのスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
-[Next]\(次へ\) をクリックします
+5. **[次へ]** を選択します。    
 
-![成功メッセージが表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
+6. **[Installation Successfully Finished]\(インストールが正常に完了しました\)** 画面が表示されたら、 **[Finish]\(完了\)** を選択します。
 
-[Finish]\(完了\) をクリックします
+    ![成功メッセージが表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 
-libqt4 パッケージと libyui-qt パッケージもインストールする必要があります。
-```
-zypper -n install libqt4
-```
-![libqt4 パッケージをインストールするコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/zypper-install-libqt4.png)
-```
-zypper -n install libyui-qt
-```
-![libyui-qt パッケージをインストールするコンソール ウィンドウを示すスクリーンショット。 ](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
-![libyui-qt パッケージをインストールするコンソール ウィンドウを示すスクリーンショットの続き。](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png)
-次のように、yast2 でグラフィカル ビューが開くようになります。
-![[Software]\(ソフトウェア\) と [Online Update]\(オンライン更新\) が選択された YaST コントロール センターを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+7. 次のコマンドを使用して、libqt4 および libyui-qt パッケージをインストールします。
+    
+    ```
+    zypper -n install libqt4
+    ```
+    ![最初のパッケージをインストールするコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/zypper-install-libqt4.png)
+    
+    ```
+    zypper -n install libyui-qt
+    ```
+    ![2 つ目のパッケージをインストールするコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
+    
+    ![2 つ目のパッケージをインストールするコンソール ウィンドウを示すスクリーンショット (続き)。](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png)
+    
+    yast2 で GUI を表示できるようになります。
 
-### <a name="scenario-3-yast2-does-not-high-availability-option"></a>シナリオ 3: yast2 に高可用性オプションが表示されない
-yast2 コントロール センターに高可用性オプションが表示されるようにするには、追加パッケージをインストールする必要があります。
+    ![[Software]\(ソフトウェア\) と [Online Update]\(オンライン更新\) が選択された YaST Control Center を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
-[Yast2] > [Software]\(ソフトウェア\) > [Software management]\(ソフトウェア管理\) で次のパターンを選びます
+### <a name="scenario-3-yast2-doesnt-show-the-high-availability-option"></a>シナリオ 3: yast2 に高可用性オプションが表示されない
 
-- SAP HANA サーバー ベース
-- C/C++ コンパイラとツール
-- 高可用性
-- SAP アプリケーション サーバー ベース
+高可用性オプションを yast2 Control Center に表示するには、他のパッケージもインストールする必要があります。
 
-次の画面では、パターンをインストールする手順を示します。
+1. **[Yast2]**  >  **[Software]\(ソフトウェア\)**  >  **[Software Management]\(ソフトウェア管理\)** に移動します。 次に、 **[Software]\(ソフトウェア\)**  >  **[Online Update]\(オンライン更新\)** を選択します。  
 
-[yast2] > [Software]\(ソフトウェア\) > [Software management]\(ソフトウェア管理\) の使用
+    ![[Software]\(ソフトウェア\) と [Online Update]\(オンライン更新\) が選択された YaST Control Center を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
-![インストールを開始するために [Software]\(ソフトウェア\) と [Online Update]\(オンライン更新\) が選択された YaST コントロール センターを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+2. 次の項目のパターンを選択します。 次に **[Accept]\(承認\)** を選択します。
 
-パターンを選びます
+    - SAP HANA サーバー ベース
+    - C/C++ コンパイラとツール
+    - 高可用性
+    - SAP アプリケーション サーバー ベース
 
-![[C / C++ Compiler and Tools]\(C/C++ コンパイラとツール\) 項目の最初のパターンが選択されたスクリーンショット。 ](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
-![[C / C++ Compiler and Tools]\(C/C++ コンパイラとツール\) 項目の 2 つ目のパターンが選択されたスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
+    ![コンパイラとツールの項目で 1 つ目のパターンを選択する操作を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
 
-**[Accept]\(受け入れる\)** をクリックします
+    ![コンパイラとツールの項目で 2 つ目のパターンを選択する操作を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
-![依存関係を解決するように変更されたパッケージが表示された [Changed Packages]\(変更されたパッケージ\) ダイアログ ボックスを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-changed-packages.png)
+4. 依存関係を解決するように変更されたパッケージの一覧で、 **[Continue]\(続行\)** を選択します。
 
-**[Continue]\(続行\)** をクリックします
+    ![依存関係を解決するように変更されたパッケージが表示された [Changed Packages]\(変更されたパッケージ\) ダイアログを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-changed-packages.png)
 
-![[Performing Installation]\(インストールの実行中\) 状態ページが示されたスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
+4. **[Performing Installation]\(インストールの実行中\)** 状態ページで、 **[Next]\(次へ\)** を選択します。
 
-インストールが完了したら、 **[Next]\(次へ\)** をクリックします
+    ![[Performing Installation]\(インストールの実行中\) 状態ページが示されたスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 
-![インストールのレポートが表示されたスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
+5. インストールが完了すると、インストール レポートが表示されます。 **[完了]** を選択します。
 
-### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>シナリオ 4: HANA のインストールが gcc アセンブリ エラーで失敗する
-HANA のインストールが次のエラーで失敗します。
+    ![インストール レポートを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
-![オペレーティング システムが gcc 5 アセンブリを実行する準備ができていないことを示すエラー メッセージが表示されたスクリーンショット。](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
+### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>シナリオ 4: gcc アセンブリ エラーが出て HANA のインストールが失敗する
 
-この問題を修正するには、ライブラリ (libgcc_sl と libstdc++6) を次のようにしてインストールする必要があります。
+HANA のインストールに失敗すると、次のようなエラーが発生することがあります。
+
+![オペレーティング システムが gcc 5 のアセンブリを実行できる状態でないことを表すエラーのスクリーンショット。](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
+
+この問題を解決するには、次のスクリーンショットに示すように、libgcc_sl と libstdc++6 のライブラリをインストールします。
 
 ![必要なライブラリをインストールするコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
 
 ### <a name="scenario-5-pacemaker-service-fails"></a>シナリオ 5: Pacemaker サービスが失敗する
 
-Pacemaker サービスの開始中に、次の問題が発生します。
+pacemaker サービスを開始できない場合は、次の情報が表示されます。
 
 ```
 sapprdhdb95:/ # systemctl start pacemaker
@@ -504,43 +568,51 @@ sapprdhdb95:/ # tail -f /var/log/messages
 2017-09-28T18:45:01.308066-04:00 sapprdhdb95 CRON[57995]: pam_unix(crond:session): session closed for user root
 ```
 
-これを修正するには、 */usr/lib/systemd/system/fstrim.timer* ファイルから次の行を削除します
+これを修正するには、 */usr/lib/systemd/system/fstrim.timer* ファイルから次の行を削除します。
 
 ```
 Persistent=true
 ```
-
+    
 ![削除される値 Persistent=true が含まれている fstrim ファイルを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/Persistent.png)
 
-### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>シナリオ 6:node2 がクラスターに参加できない
+### <a name="scenario-6-node2-cant-join-the-cluster"></a>シナリオ 6: Node2 がクラスターに参加できない
 
-*ha-cluster-join* コマンドを使って node2 を既存のクラスターに参加させるときに、次のエラーが発生します。
+*ha-cluster-join* コマンドを使用して node2 を既存のクラスターに参加させる操作に問題がある場合は、次のようなエラーが表示されます。
 
 ```
 ERROR: Can’t retrieve SSH keys from <Primary Node>
 ```
 
-![IP アドレスから SSH キーを取得できないというエラー メッセージが表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/ha-cluster-join-error.png)
+![SSH キーが特定の IP アドレスから取得できないというエラー メッセージが表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/ha-cluster-join-error.png)
 
-解決するには、両方のノードで次を実行します
+これを修正するには:
 
-```
-ssh-keygen -q -f /root/.ssh/id_rsa -C 'Cluster Internal' -N ''
-cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
-```
+1. "*両方のノード*" 上で次のコマンドを実行します。
 
-![最初のノードでコマンドを実行するコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/ssh-keygen-node1.PNG)
+    ```
+    ssh-keygen -q -f /root/.ssh/id_rsa -C 'Cluster Internal' -N ''
+    cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
+    ```
 
-![2 番目のノードでコマンドを実行するコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/ssh-keygen-node2.PNG)
+    ![1 つ目のノード上でコマンドを実行するコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/ssh-keygen-node1.PNG)
 
-上記の修正を実行すると、node2 はクラスターに追加されるようになります
+    ![2 つ目のノード上でコマンドを実行するコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/ssh-keygen-node2.PNG)
 
-![ha-cluster-join コマンドが成功したコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
+2. node2 がクラスターに追加されたことを確認します。
 
-## <a name="10-general-documentation"></a>10.一般的なドキュメント
+    ![join コマンドが成功したコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
+
+## <a name="next-steps"></a>次のステップ
+
 SUSE HA のセットアップについて詳しくは、次の記事をご覧ください。 
 
-- [SAP HANA SR パフォーマンス最適化シナリオ](https://www.suse.com/support/kb/doc/?id=000019450 )
-- [ストレージ ベースのフェンス操作](https://www.suse.com/documentation/sle_ha/book_sleha/data/sec_ha_storage_protect_fencing.html)
-- [SAP HANA 用 Pacemaker Cluster の使用 - パート 1 のブログ](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-1-basics/)
-- [SAP HANA 用 Pacemaker Cluster の使用 - パート 2 のブログ](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-2-failure-of-both-nodes/)
+- [SAP HANA SR Performance Optimized Scenario (SAP HANA SR パフォーマンス最適化シナリオ)](https://www.suse.com/support/kb/doc/?id=000019450) (SUSE Web サイト)
+- [Fencing and STONITH (フェンスと STONITH)](https://documentation.suse.com/sle-ha/15-SP1/html/SLE-HA-all/cha-ha-fencing.html) (SUSE Web サイト)
+- [Be Prepared for Using Pacemaker Cluster for SAP HANA - Part 1: Basics (Pacemaker Cluster for SAP HANA を使用するための準備 - パート 1: 基本)](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-1-basics/) (SAP ブログ)
+- [Be Prepared for Using Pacemaker Cluster for SAP HANA – Part 2: Failure of Both Nodes (Pacemaker Cluster for SAP HANA を使用するための準備 - パート 2: 両方のノードの失敗)](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-2-failure-of-both-nodes/) (SAP ブログ)
+
+オペレーティング システムのファイルレベルのバックアップと復元を行う方法を確認します。
+
+> [!div class="nextstepaction"]
+> [OS のバックアップと復元](large-instance-os-backup.md)

@@ -1,324 +1,169 @@
 ---
 title: Media Services v3 を使用する Azure Functions の開発
-description: このトピックでは、Media Services v3 を使用する Azure Functions を Azure Portal で開発する方法について説明します。
+description: この記事では、Visual Studio Code を使用して Media Services v3 で Azure Functions の開発を開始する方法について説明します。
 services: media-services
-author: IngridAtMicrosoft
-manager: femila
+author: xpouyat
 ms.service: media-services
 ms.workload: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/22/2021
-ms.author: inhenkel
+ms.date: 06/09/2021
+ms.author: xpouyat
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 389ad34bb856675dfabd761507ed07cc722c032a
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 523a5dbfb503f47f15e44e7be1b61bf6cf05c471
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281391"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661718"
 ---
 # <a name="develop-azure-functions-with-media-services-v3"></a>Media Services v3 を使用する Azure Functions の開発
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-この記事では、Media Services を使用した Azure Functions の作成方法について説明しています。 この記事で定義されている Azure Function は、新しい MP4 ファイルの **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。 Azure Functions について確認するには、**Azure Functions** のセクションで [概要](../../azure-functions/functions-overview.md)およびその他のトピックを参照してください。
+この記事では、Media Services を使用した Azure Functions の作成方法について説明しています。 この記事で定義されている Azure Functions は、ビデオ ファイルを Media Encoder Standard でエンコードします。 エンコード ジョブが作成されるとすぐに、関数はジョブ名と出力アセット名を返します。 Azure Functions について確認するには、**Azure Functions** のセクションで[概要](../../azure-functions/functions-overview.md)およびその他のトピックを参照してください。
 
-Azure Media Services を使用する既存の Azure 関数を探してデプロイするには、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration) をチェックアウトしてください。 このリポジトリには、Media Services を使ったサンプルが格納されています。Blob Storage から直接コンテンツを取り込んだり、エンコードしたり、Blob Storage にコンテンツを書き戻したりする処理に関連するワークフローの例が紹介されています。
+Azure Media Services を使用する既存の Azure 関数を探してデプロイするには、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration) をチェックアウトしてください。 このリポジトリには、Media Services を使ったサンプルが格納されています。Blob Storage からの直接コンテンツ取り込み、エンコード、ライブ ストリーム操作に関連するワークフローの例が紹介されています。
 
 ## <a name="prerequisites"></a>前提条件
 
 - 初めての関数を作成するには、アクティブな Azure アカウントを用意しておく必要があります。 Azure アカウントがまだない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。
 - Azure Media Services (AMS) アカウントでアクションを実行する Azure 関数を作成したり、Media Services から送信されるイベントをリッスンしたりするためには、[こちら](account-create-how-to.md)の説明に従って AMS アカウントを作成する必要があります。
+- [サポートされているプラットフォーム](https://code.visualstudio.com/docs/supporting/requirements#_platforms)のいずれかに [Visual Studio Code](https://code.visualstudio.com/) をインストールします。
 
-## <a name="create-a-function-app"></a>Function App を作成する
+この記事では、Azure Media Services と通信する C# .NET 5 関数を作成する方法について説明します。 別の言語で関数を作成するには、こちらの[記事](../../azure-functions/functions-develop-vs-code.md)を参照してください。
 
-1. [Azure Portal](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
-2. [こちら](../../azure-functions/functions-create-function-app-portal.md)の説明に従って関数アプリを作成します。
+### <a name="run-local-requirements"></a>ローカルで実行するための要件
 
->[!NOTE]
-> 指定するストレージ アカウントは、アプリと同じリージョンに存在する必要があります。
+これらの前提条件は、関数をローカルで実行およびデバッグするためにのみ必要です。 プロジェクトの作成、または Azure Functions への発行には必要ありません。
 
-## <a name="configure-function-app-settings"></a>関数アプリの設定の構成
+- [.NET Core 3.1 と .NET 5 SDK](https://dotnet.microsoft.com/download/dotnet)。
 
-Media Services の関数を開発するときは、自分が開発するさまざまな関数で使用する環境変数を追加しておくと便利です。 アプリケーション設定を構成するには、[アプリケーション設定の構成] リンクをクリックします。 詳細については、「[Azure Function App の設定の構成方法](../../azure-functions/functions-how-to-use-azure-function-app-settings.md)」を参照してください。
+- [Azure Functions Core Tools](../../azure-functions/functions-run-local.md#install-the-azure-functions-core-tools) バージョン 3.x 以降。 プロジェクトをローカルで開始すると、Core Tools パッケージが自動的にダウンロードされてインストールされます。 Core Tools には、Azure Functions ランタイム全体が含まれているため、ダウンロードとインストールにはしばらく時間がかかる場合があります。
 
-## <a name="create-a-function"></a>関数を作成する
+- Visual Studio Code 用の [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
 
-デプロイした関数アプリは、 **[App Services]** の Azure Functions に表示されます。
+## <a name="install-the-azure-functions-extension"></a>Azure Functions 拡張機能をインストールする
 
-1. 目的の関数アプリを選択し、 **[新しい関数]** をクリックします。
-1. **C#** 言語と **データ処理** シナリオを選択します。
-1. **BlobTrigger** テンプレートを選択します。 BLOB を **input** コンテナーにアップロードするたびに、この関数はトリガーされます。 **input** 名は、次の手順の **Path** で指定されます。
-1. **BlobTrigger** を選択すると、一部の追加のコントロールがページに表示されます。
-1. **Create** をクリックしてください。
+Azure Functions 拡張機能を使用すると、関数を作成してテストし、Azure にデプロイすることができます。
 
-## <a name="files"></a>ファイル
+1. Visual Studio Code で **[拡張機能]** を開き、**Azure Functions** を検索するか、Visual Studio Code でこのリンク ([`vscode:extension/ms-azuretools.vscode-azurefunctions`](vscode:extension/ms-azuretools.vscode-azurefunctions)) を選択します。
 
-Azure 関数は、コード ファイルなど、このセクションで取り上げる各種ファイルに関連付けることになります。 Azure Portal を使用して関数を作成すると、**function.json** および **run.csx** が自動的に作成されます。 ユーザーは、**project.json** ファイルを追加するか、アップロードする必要があります。 このセクションの残りの部分では、各ファイルの簡単な説明とその定義を紹介します。
+1. **[インストール]** を選択して、Visual Studio Code に拡張機能をインストールします。
 
-### <a name="functionjson"></a>function.json
+    ![Azure Functions の拡張機能をインストールする](./Media/integrate-azure-functions-dotnet-how-to/vscode-install-extension.png)
 
-function.json ファイルは、関数バインドとその他の構成設定を定義します。 ランタイムはこのファイルを使用して、監視対象のイベントを特定し、関数の実行との間でデータを渡したりデータを受け取ったりする方法を判断します。 詳細については、「[Azure Functions における HTTP と Webhook のバインド](../../azure-functions/functions-reference.md#function-code)」を参照してください。
+1. インストール後、アクティビティ バーの Azure アイコンを選択します。 サイド バーに Azure Functions 領域が表示されます。
 
->[!NOTE]
->関数が実行されることを防ぐために、**disabled** プロパティを **true** に設定します。
+    ![サイド バーの Azure Functions 領域](./Media/integrate-azure-functions-dotnet-how-to/azure-functions-window-vscode.png)
 
-既存の function.json ファイルの内容を次のコードで置き換えます。
+## <a name="create-an-azure-functions-project"></a>Azure Functions プロジェクトを作成する
+
+Functions の拡張機能により、最初の関数と共に関数アプリ プロジェクトを作成できます。 次の手順では、HTTP によってトリガーされる関数を新しい Functions プロジェクトに作成する方法を示します。 HTTP トリガーは、実演する最も単純な関数トリガー テンプレートです。
+
+1. **[Azure:Functions]** で **[関数の作成]** アイコンを選択します。
+
+    ![関数を作成する](./Media/integrate-azure-functions-dotnet-how-to/create-function.png)
+
+1. 関数アプリ プロジェクト用のフォルダーを選択し、**関数プロジェクト用 C# を選択** し、ランタイムの **.NET 5 Isolated** を選択します。
+
+1. **HTTP トリガー** 関数テンプレートを選択します。
+
+    ![HTTP トリガー テンプレートを選択する](./Media/integrate-azure-functions-dotnet-how-to/create-function-choose-template.png)
+
+1. 関数名として「**HttpTriggerEncode**」と入力して Enter キーを選択してから、名前空間の **[Company.Function]** を受け入れ、アクセス権限に **[関数]** を選択します。 この承認レベルでは、関数エンドポイントを呼び出すときに[関数キー](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)を指定する必要があります。
+
+    ![関数の承認を選択する](./Media/integrate-azure-functions-dotnet-how-to/create-function-auth.png)
+
+    選択した言語と、HTTP によってトリガーされる関数のテンプレートで、関数が作成されます。
+
+    ![Visual Studio Code の HTTP によってトリガーされる関数のテンプレート](./Media/integrate-azure-functions-dotnet-how-to/new-function-full.png)
+
+## <a name="install-media-services-and-other-extensions"></a>Media Services とその他の拡張機能をインストールする
+
+ターミナル ウィンドウで dotnet add package コマンドを実行して、プロジェクトに必要な拡張機能パッケージをインストールします。 次のコマンドでは、サンプルに必要な Media Services パッケージとその他の拡張機能がインストールされます。
+
+```bash
+dotnet add package Azure.Storage.Blobs
+dotnet add package Microsoft.Azure.Management.Media
+dotnet add package Azure.Identity
+```
+
+## <a name="generated-project-files"></a>生成されたプロジェクト ファイル
+
+このプロジェクト テンプレートは、選択した言語でプロジェクトを作成し、必要な依存関係をインストールします。 新しいプロジェクトには次のファイルが含まれます。
+
+* **host.json**:Functions のホストを構成できます。 これらの設定は、関数をローカルで実行している場合と、Azure で実行している場合に適用されます。 詳細については、[host.json](./../../azure-functions/functions-host-json.md) のリファレンスを参照してください。
+
+* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 これらの設定は、関数をローカルで実行するときにのみ使用されます。
+
+    >[!IMPORTANT]
+    >local.settings.json ファイルにはシークレットを含めることができるため、それをプロジェクト ソース管理から除外する必要があります。
+
+* 関数を実装する **HttpTriggerEncode.cs** クラス ファイル。
+
+### <a name="httptriggerencodecs"></a>HttpTriggerEncode.cs
+
+これは関数の C# コードです。 その役割は、Media Services の資産またはソース URL を取得し、Media Services でエンコード ジョブを起動することです。 存在しない場合は、作成された変換が使用されます。 作成されると、入力本文に指定されたプリセットが使用されます。 
+
+>[!IMPORTANT]
+>HttpTriggerEncode.cs ファイルの完全な内容を[このリポジトリからの `HttpTriggerEncode.cs` ](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/blob/main/Tutorial/HttpTriggerEncode.cs)で置き換えます。
+
+必要な関数を定義したら、 **[保存および実行]** を選択します。
+
+この関数の **Run** メソッドのソース コードは次のとおりです。
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-core-functions-integration/Tutorial/HttpTriggerEncode.cs#Run)]
+
+### <a name="localsettingsjson"></a>local.settings.json
+
+次の内容でファイルを更新し、値を置き換えます。
 
 ```json
 {
-  "bindings": [
-    {
-      "name": "myBlob",
-      "type": "blobTrigger",
-      "direction": "in",
-      "path": "input/{filename}.mp4",
-      "connection": "ConnectionString"
-    }
-  ],
-  "disabled": false
-}
-```
-
-### <a name="projectjson"></a>project.json
-
-project.json ファイルには、依存関係が含まれています。 以下に NuGet からの必要な .NET Azure Media Services を含む **project.json** ファイルの例を示します。 バージョン番号は、パッケージに最新の更新プログラムがあると変更されることに注意してください。そのため、最新バージョンを確認する必要があります。
-
-次の定義を project.json に追加します。
-
-```json
-{
-  "frameworks": {
-    "net46":{
-      "dependencies": {
-        "windowsazure.mediaservices": "4.0.0.4",
-        "windowsazure.mediaservices.extensions": "4.0.0.4",
-        "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.13.1",
-        "Microsoft.IdentityModel.Protocol.Extensions": "1.0.2.206221351"
-      }
-    }
-   }
-}
-
-```
-
-### <a name="runcsx"></a>run.csx
-
-これは関数の C# コードです。  以下で定義されている関数は、新しい MP4 ファイルの (パスで指定された) **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。
-
-このセクションで定義されている例では、次の操作を行います。
-
-1. (AMS 資産に BLOB をコピーして) Media Services アカウントに資産を取り込む方法
-2. Media Encoder Standard の "アダプティブ ストリーミング" プリセットを使用するエンコード ジョブを送信する方法
-
-既存の run.csx ファイルの内容を次のコードで置き換えます。必要な関数を定義したら、 **[保存および実行]** をクリックします。
-
-```csharp
-#r "Microsoft.WindowsAzure.Storage"
-#r "Newtonsoft.Json"
-#r "System.Web"
-
-using System;
-using System.Net;
-using System.Net.Http;
-using Newtonsoft.Json;
-using Microsoft.WindowsAzure.MediaServices.Client;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.IO;
-using System.Web;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.Azure.WebJobs;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-  
-// Read values from the App.config file.
-
-static readonly string _AADTenantDomain = Environment.GetEnvironmentVariable("AMSAADTenantDomain");
-static readonly string _RESTAPIEndpoint = Environment.GetEnvironmentVariable("AMSRESTAPIEndpoint");
- 
-static readonly string _mediaservicesClientId = Environment.GetEnvironmentVariable("AMSClientId");
-static readonly string _mediaservicesClientSecret = Environment.GetEnvironmentVariable("AMSClientSecret");
-
-static readonly string _connectionString = Environment.GetEnvironmentVariable("ConnectionString");  
-
-private static CloudMediaContext _context = null;
-private static CloudStorageAccount _destinationStorageAccount = null;
-
-public static void Run(CloudBlockBlob myBlob, string fileName, TraceWriter log)
-{
-    // NOTE that the variables {fileName} here come from the path setting in function.json
-    // and are passed into the  Run method signature above. We can use this to make decisions on what type of file
-    // was dropped into the input container for the function. 
-
-    // No need to do any Retry strategy in this function, By default, the SDK calls a function up to 5 times for a 
-    // given blob. If the fifth try fails, the SDK adds a message to a queue named webjobs-blobtrigger-poison.
-
-    log.Info($"C# Blob trigger function processed: {fileName}.mp4");
-    log.Info($"Media Services REST endpoint : {_RESTAPIEndpoint}");
-
-    try
-    {
-        AzureAdTokenCredentials tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain,
-                            new AzureAdClientSymmetricKey(_mediaservicesClientId, _mediaservicesClientSecret),
-                            AzureEnvironments.AzureCloudEnvironment);
- 
-        AzureAdTokenProvider tokenProvider = new AzureAdTokenProvider(tokenCredentials);
- 
-        _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
-
-        IAsset newAsset = CreateAssetFromBlob(myBlob, fileName, log).GetAwaiter().GetResult();
-
-        // Step 2: Create an Encoding Job
-
-        // Declare a new encoding job with the Standard encoder
-        IJob job = _context.Jobs.Create("Azure Function - MES Job");
-
-        // Get a media processor reference, and pass to it the name of the 
-        // processor to use for the specific task.
-        IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
-
-        // Create a task with the encoding details, using a custom preset
-        ITask task = job.Tasks.AddNew("Encode with Adaptive Streaming",
-            processor,
-            "Adaptive Streaming",
-            TaskOptions.None); 
-
-        // Specify the input asset to be encoded.
-        task.InputAssets.Add(newAsset);
-
-        // Add an output asset to contain the results of the job. 
-        // This output is specified as AssetCreationOptions.None, which 
-        // means the output asset is not encrypted. 
-        task.OutputAssets.AddNew(fileName, AssetCreationOptions.None);
-
-        job.Submit();
-        log.Info("Job Submitted");
-
-    }
-    catch (Exception ex)
-    {
-        log.Error("ERROR: failed.");
-        log.Info($"StackTrace : {ex.StackTrace}");
-        throw ex;
-    }
-}
-
-private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-{
-    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-
-    if (processor == null)
-    throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-
-    return processor;
-}
-
-public static async Task<IAsset> CreateAssetFromBlob(CloudBlockBlob blob, string assetName, TraceWriter log){
-    IAsset newAsset = null;
-
-    try{
-        Task<IAsset> copyAssetTask = CreateAssetFromBlobAsync(blob, assetName, log);
-        newAsset = await copyAssetTask;
-        log.Info($"Asset Copied : {newAsset.Id}");
-    }
-    catch(Exception ex){
-        log.Info("Copy Failed");
-        log.Info($"ERROR : {ex.Message}");
-        throw ex;
-    }
-
-    return newAsset;
-}
-
-/// <summary>
-/// Creates a new asset and copies blobs from the specifed storage account.
-/// </summary>
-/// <param name="blob">The specified blob.</param>
-/// <returns>The new asset.</returns>
-public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, string assetName, TraceWriter log)
-{
-     //Get a reference to the storage account that is associated with the Media Services account. 
-    _destinationStorageAccount = CloudStorageAccount.Parse(_connectionString);
-
-    // Create a new asset. 
-    var asset = _context.Assets.Create(blob.Name, AssetCreationOptions.None);
-    log.Info($"Created new asset {asset.Name}");
-
-    IAccessPolicy writePolicy = _context.AccessPolicies.Create("writePolicy",
-    TimeSpan.FromHours(4), AccessPermissions.Write);
-    ILocator destinationLocator = _context.Locators.CreateLocator(LocatorType.Sas, asset, writePolicy);
-    CloudBlobClient destBlobStorage = _destinationStorageAccount.CreateCloudBlobClient();
-
-    // Get the destination asset container reference
-    string destinationContainerName = (new Uri(destinationLocator.Path)).Segments[1];
-    CloudBlobContainer assetContainer = destBlobStorage.GetContainerReference(destinationContainerName);
-
-    try{
-    assetContainer.CreateIfNotExists();
-    }
-    catch (Exception ex)
-    {
-    log.Error ("ERROR:" + ex.Message);
-    }
-
-    log.Info("Created asset.");
-
-    // Get hold of the destination blob
-    CloudBlockBlob destinationBlob = assetContainer.GetBlockBlobReference(blob.Name);
-
-    // Copy Blob
-    try
-    {
-    using (var stream = await blob.OpenReadAsync()) 
-    {            
-        await destinationBlob.UploadFromStreamAsync(stream);          
-    }
-
-    log.Info("Copy Complete.");
-
-    var assetFile = asset.AssetFiles.Create(blob.Name);
-    assetFile.ContentFileSize = blob.Properties.Length;
-    assetFile.IsPrimary = true;
-    assetFile.Update();
-    asset.Update();
-    }
-    catch (Exception ex)
-    {
-    log.Error(ex.Message);
-    log.Info (ex.StackTrace);
-    log.Info ("Copy Failed.");
-    throw;
-    }
-
-    destinationLocator.Delete();
-    writePolicy.Delete();
-
-    return asset;
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "AadClientId": "00000000-0000-0000-0000-000000000000",
+    "AadEndpoint": "https://login.microsoftonline.com",
+    "AadSecret": "00000000-0000-0000-0000-000000000000",
+    "AadTenantId": "00000000-0000-0000-0000-000000000000",
+    "AccountName": "amsaccount",
+    "ArmAadAudience": "https://management.core.windows.net/",
+    "ArmEndpoint": "https://management.azure.com/",
+    "ResourceGroup": "amsResourceGroup",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
 }
 ```
 
 ## <a name="test-your-function"></a>関数をテストする
 
-関数をテストするには、接続文字列で指定したストレージ アカウントの **input**  コンテナーに MP4 ファイルをアップロードする必要があります。  
+この関数を VS Code でローカルに実行すると、関数は次のように公開されます。 
 
-1. 指定したストレージ アカウントを選択します。
-2. **[BLOB]** をクリックします。
-3. **[+ Container]** (+ コンテナー) をクリックします。 **input** コンテナーに名前を付けます。
-4. **[アップロード]** をクリックして、アップロードする .mp4 ファイルを参照します。
+```url
+http://localhost:7071/api/HttpTriggerEncode
+```
 
->[!NOTE]
-> 従量課金プランで BLOB トリガーを使用していると、関数アプリがアイドル状態になったあと、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 詳しくは、「[BLOB ストレージ トリガーとバインド](../../azure-functions/functions-bindings-storage-blob.md)」をご覧ください。
+これをテストするには、Postman を使用して、JSON 入力本文を使用してこの URL に対して POST を実行できます。
+
+JSON 入力本文の例は次のとおりです。
+
+```json
+{
+    "inputUrl":"https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4",
+    "transformName" : "TransformAS",
+    "builtInPreset" :"AdaptiveStreaming"
+ }
+```
+
+この関数は、ジョブと出力のアセット名を含む出力本文を含む 200 OK を返すはずです。
+
+![Postman で関数をテストする](./Media/integrate-azure-functions-dotnet-how-to/postman.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、Media Services アプリケーションの開発準備が整いました。
+この時点で、Media Services API を呼び出す関数の開発を開始する準備が整いました。
 
-カスタム コンテンツ作成ワークフローを作成するために Azure Media Services で Azure Functions と Logic Apps を使用するサンプル/ソリューションの詳細については、「[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration)」をご覧ください。
+Azure Media Services v3 での Azure Functions の使用に関する詳細と完全なサンプルについては、[Media Services v3 Azure Functions サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/main/Functions)を参照してください。

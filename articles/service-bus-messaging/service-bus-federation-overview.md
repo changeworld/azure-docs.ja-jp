@@ -2,13 +2,13 @@
 title: メッセージ レプリケーションとリージョン間フェデレーション - Azure Service Bus | Microsoft Docs
 description: この記事では、Azure Service Bus でのイベント レプリケーションとリージョン間フェデレーションの概要について説明します。
 ms.topic: article
-ms.date: 12/12/2020
-ms.openlocfilehash: e47f633fcd9248eab6f47936aa7c45877decc1fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: 0f0d2b5f96ea65a6d0fd0f5664ef98948dc46c19
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880829"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211869"
 ---
 # <a name="message-replication-and-cross-region-federation"></a>メッセージ レプリケーションとリージョン間フェデレーション
 

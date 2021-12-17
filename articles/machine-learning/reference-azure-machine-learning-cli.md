@@ -9,15 +9,16 @@ ms.author: jordane
 author: jpe316
 ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 8e912e141ab769f3121fcccdecb9c3952920572f
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 41f12d9421a49cb926a666469beda97cd8f53eac
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516214"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559734"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning の CLI 拡張機能のインストールと使用
 
+[!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
 
 Azure Machine Learning CLI は [Azure CLI](/cli/azure/) への拡張機能であり、Azure プラットフォーム向けのクロスプラット フォームのコマンド ライン インターフェイスです。 この拡張機能では、Azure Machine Learning を操作するためのコマンドが提供されます。 それにより、機械学習のアクティビティを自動化することができます。 CLI 拡張機能を使用することで可能になるアクションの例を次に示します。
 
@@ -31,7 +32,7 @@ CLI は、Azure Machine Learning SDK に取って代わるものではありま�
 
 ## <a name="prerequisites"></a>前提条件
 
-* CLI を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* CLI を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
 * ご使用の **ローカル環境** からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](/cli/azure/install-azure-cli) が必要です。
 
@@ -39,7 +40,7 @@ CLI は、Azure Machine Learning SDK に取って代わるものではありま�
 
 ## <a name="full-reference-docs"></a>詳細なリファレンス ドキュメント
 
-[Azure CLI の azure-cli-ml 拡張機能に関する詳細なリファレンス ドキュメント](/cli/azure/ml/)を参照してください。
+[Azure CLI の azure-cli-ml 拡張機能に関する詳細なリファレンス ドキュメント](/cli/azure/ml(v1)/)を参照してください。
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>Azure サブスクリプションへの CLI の接続
 
@@ -60,7 +61,10 @@ CLI で既定のブラウザーを開くことができる場合、開いたブ�
 
 ## <a name="install-the-extension"></a>拡張機能をインストールする
 
-拡張機能は、`az ml` で始まるコマンドの使用を初めて試したときに自動的にインストールされます。
+CLI (v1) 拡張機能をインストールするには、次のようにします。
+```azurecli-interactive
+az extension add -n azure-cli-ml
+```
 
 ## <a name="update-the-extension"></a>拡張機能を更新する
 
@@ -94,7 +98,7 @@ az extension remove -n azure-cli-ml
     az ml workspace create -w myworkspace -g myresourcegroup
     ```
 
-    詳しくは、「[az ml workspace create](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-create)」をご覧ください。
+    詳しくは、「[az ml workspace create](/cli/azure/ml/workspace#az_ml_workspace_create)」をご覧ください。
 
 + ワークスペース構成をフォルダーに接続して、CLI コンテキストの認識を有効にします。
 
@@ -104,7 +108,7 @@ az extension remove -n azure-cli-ml
 
     このコマンドでは、サンプルの runconfig および conda 環境ファイルを含む `.azureml` サブディレクトリを作成します。 これには、Azure Machine Learning ワークスペースとの通信に使用される `config.json` ファイルも含まれています。
 
-    詳しくは、「[az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder#ext-azure-cli-ml-az-ml-folder-attach)」をご覧ください。
+    詳しくは、「[az ml folder attach](/cli/azure/ml(v1)/folder#az_ml_folder_attach)」をご覧ください。
 
 + Azure BLOB コンテナーをデータストアとして接続します。
 
@@ -112,7 +116,7 @@ az extension remove -n azure-cli-ml
     az ml datastore attach-blob  -n datastorename -a accountname -c containername
     ```
 
-    詳しくは、「[az ml datastore attach-blob](/cli/azure/ext/azure-cli-ml/ml/datastore#ext-azure-cli-ml-az-ml-datastore-attach-blob)」をご覧ください。
+    詳しくは、「[az ml datastore attach-blob](/cli/azure/ml/datastore#az_ml_datastore_attach-blob)」をご覧ください。
 
 + データストアにファイルをアップロードします。
 
@@ -120,7 +124,7 @@ az extension remove -n azure-cli-ml
     az ml datastore upload  -n datastorename -p sourcepath
     ```
 
-    詳細については、[az ml datastore upload](/cli/azure/ext/azure-cli-ml/ml/datastore#ext-azure-cli-ml-az-ml-datastore-upload)に関するページを参照してください。
+    詳細については、[az ml datastore upload](/cli/azure/ml/datastore#az_ml_datastore_upload)に関するページを参照してください。
 
 + AKS クラスターをコンピューティング先として接続します。
 
@@ -128,7 +132,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget attach aks -n myaks -i myaksresourceid -g myresourcegroup -w myworkspace
     ```
 
-    詳しくは、「[az ml computetarget attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks)」をご覧ください。
+    詳しくは、「[az ml computetarget attach aks](/cli/azure/ml(v1)/computetarget/attach#az_ml_computetarget_attach-aks)」をご覧ください。
 
 ### <a name="compute-clusters"></a>コンピューティング クラスター
 
@@ -165,7 +169,7 @@ az extension remove -n azure-cli-ml
         az ml computetarget amlcompute identity assign --name cpu-cluster '[system]'
         ```
 
-詳しくは、「[az ml computetarget create amlcompute](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)」をご覧ください。
+詳しくは、「[az ml computetarget create amlcompute](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_amlcompute)」をご覧ください。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-note.md)]
 
@@ -180,7 +184,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget create computeinstance -n cpu -s "STANDARD_D3_V2" -v
     ```
 
-    詳細については、「[az ml computetarget create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-computeinstance)」をご覧ください。
+    詳細については、「[az ml computetarget create computeinstance](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_computeinstance)」をご覧ください。
 
 + computeinstance を停止します。
 
@@ -188,7 +192,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget computeinstance stop -n cpu -v
     ```
 
-    詳細については、「[az ml computetarget computeinstance stop](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)」を参照してください。
+    詳細については、「[az ml computetarget computeinstance stop](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)」を参照してください。
 
 + computeinstance を開始します。
 
@@ -196,7 +200,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget computeinstance start -n cpu -v
     ```
 
-    詳細については、「[az ml computetarget computeinstance start](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)」を参照してください。
+    詳細については、「[az ml computetarget computeinstance start](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)」を参照してください。
 
 + computeinstance を再起動します。
 
@@ -204,7 +208,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget computeinstance restart -n cpu -v
     ```
 
-    詳細については、「[az ml computetarget computeinstance restart](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)」を参照してください。
+    詳細については、「[az ml computetarget computeinstance restart](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart)」を参照してください。
 
 + computeinstance を削除します。
 
@@ -212,7 +216,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget delete -n cpu -v
     ```
 
-    詳細については、[az ml computetarget の computeinstance の削除](/cli/azure/ext/azure-cli-ml/ml/computetarget#ext-azure-cli-ml-az-ml-computetarget-delete)に関する記事をご覧ください。
+    詳細については、[az ml computetarget の computeinstance の削除](/cli/azure/ml(v1)/computetarget#az_ml_computetarget_delete)に関する記事をご覧ください。
 
 
 ## <a name="run-experiments"></a><a id="experiments"></a>実験の実行
@@ -230,7 +234,7 @@ az extension remove -n azure-cli-ml
     >
     > 完全な runconfig のスキーマについては、こちらの [JSON ファイル](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)を参照してください。 スキーマは、各オブジェクトの `description` キーを使用して自己文書化されています。 また、有効な値の列挙と、末尾にテンプレートのスニペットがあります。
 
-    詳しくは、「[az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-script)」をご覧ください。
+    詳しくは、「[az ml run submit-script](/cli/azure/ml(v1)/run#az_ml_run_submit_script)」をご覧ください。
 
 * 次のように指定して、実験の一覧を表示します。
 
@@ -238,7 +242,7 @@ az extension remove -n azure-cli-ml
     az ml experiment list
     ```
 
-    詳しくは、「[az ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment#ext-azure-cli-ml-az-ml-experiment-list)」をご覧ください。
+    詳しくは、「[az ml experiment list](/cli/azure/ml(v1)/experiment#az_ml_experiment_list)」をご覧ください。
 
 ### <a name="hyperdrive-run"></a>HyperDrive の実行
 
@@ -282,7 +286,7 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
 
     データセットを定義する場合に使用する JSON ファイルの形式の詳細については、`az ml dataset register --show-template` を使用してください。
 
-    詳細については、「[az ml dataset register](/cli/azure/ext/azure-cli-ml/ml/dataset#ext-azure-cli-ml-az-ml-dataset-register)」を参照してください。
+    詳細については、「[az ml dataset register](/cli/azure/ml(v1)/dataset#az_ml_dataset_register)」を参照してください。
 
 + ワークスペース内のすべてのデータセットを一覧表示する:
 
@@ -290,7 +294,7 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
     az ml dataset list
     ```
 
-    詳細については、「[az ml dataset list](/cli/azure/ext/azure-cli-ml/ml/dataset#ext-azure-cli-ml-az-ml-dataset-list)」を参照してください。
+    詳細については、「[az ml dataset list](/cli/azure/ml(v1)/dataset#az_ml_dataset_list)」を参照してください。
 
 + データセットの詳細を取得する:
 
@@ -298,7 +302,7 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
     az ml dataset show -n dataset-name
     ```
 
-    詳細については、「[az ml dataset show](/cli/azure/ext/azure-cli-ml/ml/dataset#ext-azure-cli-ml-az-ml-dataset-show)」を参照してください。
+    詳細については、「[az ml dataset show](/cli/azure/ml(v1)/dataset#az_ml_dataset_show)」を参照してください。
 
 + データセットの登録を解除する:
 
@@ -306,7 +310,7 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
     az ml dataset unregister -n dataset-name
     ```
 
-    詳細については、「[az ml dataset unregister](/cli/azure/ext/azure-cli-ml/ml/dataset#ext-azure-cli-ml-az-ml-dataset-archive)」を参照してください。
+    詳細については、「[az ml dataset unregister](/cli/azure/ml(v1)/dataset#az_ml_dataset_archive)」を参照してください。
 
 ## <a name="environment-management"></a>環境の管理
 
@@ -318,7 +322,7 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
     az ml environment scaffold -n myenv -d myenvdirectory
     ```
 
-    詳細については、[az ml environment scaffold](/cli/azure/ext/azure-cli-ml/ml/environment#ext-azure-cli-ml-az-ml-environment-scaffold)に関するページを参照してください。
+    詳細については、[az ml environment scaffold](/cli/azure/ml/environment#az_ml_environment_scaffold)に関するページを参照してください。
 
 + 環境を登録します。
 
@@ -326,7 +330,7 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
     az ml environment register -d myenvdirectory
     ```
 
-    詳細については、[az ml environment register](/cli/azure/ext/azure-cli-ml/ml/environment#ext-azure-cli-ml-az-ml-environment-register)に関するページを参照してください。
+    詳細については、[az ml environment register](/cli/azure/ml/environment#az_ml_environment_register)に関するページを参照してください。
 
 + 登録されている環境を一覧表示します。
 
@@ -334,7 +338,7 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
     az ml environment list
     ```
 
-    詳細については、[az ml environment list](/cli/azure/ext/azure-cli-ml/ml/environment#ext-azure-cli-ml-az-ml-environment-list)に関するページを参照してください。
+    詳細については、[az ml environment list](/cli/azure/ml/environment#az_ml_environment_list)に関するページを参照してください。
 
 + 登録されている環境をダウンロードします。
 
@@ -342,7 +346,7 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
     az ml environment download -n myenv -d downloaddirectory
     ```
 
-    詳細については、[az ml environment download](/cli/azure/ext/azure-cli-ml/ml/environment#ext-azure-cli-ml-az-ml-environment-download)に関するページを参照してください。
+    詳細については、[az ml environment download](/cli/azure/ml/environment#az_ml_environment_download)に関するページを参照してください。
 
 ### <a name="environment-configuration-schema"></a>環境構成スキーマ
 
@@ -363,7 +367,7 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
     },
     "docker": {
         "enabled": false,
-        "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+        "baseImage": "mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210615.v1",
         "baseDockerfile": null,
         "sharedVolumes": true,
         "shmSize": "2g",
@@ -413,7 +417,7 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
     az ml pipeline create -n mypipeline -y mypipeline.yml
     ```
 
-    詳しくは、「[az ml pipeline create](/cli/azure/ext/azure-cli-ml/ml/pipeline#ext-azure-cli-ml-az-ml-pipeline-create)」をご覧ください。
+    詳しくは、「[az ml pipeline create](/cli/azure/ml(v1)/pipeline#az_ml_pipeline_create)」をご覧ください。
 
     パイプラインの YAML ファイルについて詳しくは、「[YAML で機械学習パイプラインを定義する](reference-pipeline-yaml.md)」をご覧ください。
 
@@ -423,17 +427,17 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
     az ml run submit-pipeline -n myexperiment -y mypipeline.yml
     ```
 
-    詳しくは、「[az ml run submit-pipeline](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-pipeline)」をご覧ください。
+    詳しくは、「[az ml run submit-pipeline](/cli/azure/ml(v1)/run#az_ml_run_submit_pipeline)」をご覧ください。
 
     パイプラインの YAML ファイルについて詳しくは、「[YAML で機械学習パイプラインを定義する](reference-pipeline-yaml.md)」をご覧ください。
 
 + パイプラインのスケジュールを設定する:
 
     ```azurecli-interactive
-    az ml pipeline create-schedule -n myschedule -e myexpereiment -i mypipelineid -y myschedule.yml
+    az ml pipeline create-schedule -n myschedule -e myexperiment -i mypipelineid -y myschedule.yml
     ```
 
-    詳しくは、「[az ml pipeline create-schedule](/cli/azure/ext/azure-cli-ml/ml/pipeline#ext-azure-cli-ml-az-ml-pipeline-create-schedule)」をご覧ください。
+    詳しくは、「[az ml pipeline create-schedule](/cli/azure/ml(v1)/pipeline#az_ml_pipeline_create-schedule)」をご覧ください。
 
     パイプラインのスケジュールに関する YAML ファイルについて詳しくは、「[YAML で機械学習パイプラインを定義する](reference-pipeline-yaml.md#schedules)」をご覧ください。
 
@@ -447,14 +451,14 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
     az ml model register -n mymodel -p sklearn_regression_model.pkl
     ```
 
-    詳しくは、「[az ml model register](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-register)」をご覧ください。
+    詳しくは、「[az ml model register](/cli/azure/ml/model#az_ml_model_register)」をご覧ください。
 
 + **省略可能** モデルをプロファイルして、デプロイに最適な CPU とメモリの値を取得します。
     ```azurecli-interactive
     az ml model profile -n myprofile -m mymodel:1 --ic inferenceconfig.json -d "{\"data\": [[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}" -t myprofileresult.json
     ```
 
-    詳しくは、「[az ml model profile](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-profile)」をご覧ください。
+    詳しくは、「[az ml model profile](/cli/azure/ml/model#az_ml_model_profile)」をご覧ください。
 
 + モデルを AKS にデプロイします｡
     ```azurecli-interactive
@@ -465,7 +469,7 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
     
     デプロイ構成ファイル スキーマの詳細については、「[デプロイ構成スキーマ](#deploymentconfig)」を参照してください。
 
-    詳しくは、「[az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy)」をご覧ください。
+    詳しくは、「[az ml model deploy](/cli/azure/ml/model#az_ml_model_deploy)」をご覧ください。
 
 <a id="inferenceconfig"></a>
 
@@ -491,6 +495,6 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Machine Learning CLI 拡張機能のコマンド リファレンス](/cli/azure/ext/azure-cli-ml/ml)
+* [Machine Learning CLI 拡張機能のコマンド リファレンス](/cli/azure/ml)
 
 * [Azure Pipelines を使用して機械学習モデルをトレーニングおよびデプロイする](/azure/devops/pipelines/targets/azure-machine-learning)

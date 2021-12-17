@@ -7,13 +7,14 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 03/26/2021
 ms.author: victorh
+ms.custom: devx-track-azurepowershell
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: db60c26ed50dae3b4b28a6c44d152a921eb96a69
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: da9d5c0e3e3a7d8b81202f7194786bf8debdf3db
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627559"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694947"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -29,7 +30,7 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 
 ![ハイブリッド ネットワークでのファイアウォール](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-この記事では、次の方法について説明します。
+この記事では、次のことについて説明します。
 
 * 変数を宣言する
 * ファイアウォールのハブ仮想ネットワークを作成する
@@ -450,6 +451,8 @@ New-AzVm `
     -OpenPorts 3389 `
     -Size "Standard_DS2"
 ```
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="test-the-firewall"></a>ファイアウォールをテストする
 

@@ -32,6 +32,8 @@
     - name: ポリシーの割り当て - ARM テンプレート
       displayName: 'assign, compliance, resource manager'
       href: ./assign-policy-template.md
+    - name: ポリシーの割り当て - Bicep
+      href: ./assign-policy-bicep.md
     - name: ポリシーの割り当て - Terraform
       displayName: 'assign, compliance, hcl, provider'
       href: ./assign-policy-terraform.md
@@ -46,12 +48,15 @@
     - name: タグ ガバナンスを管理する
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
+    - name: ポリシー状態変更イベントをルーティングする
+      displayName: 'event grid, subject, topic, subscription'
+      href: ./tutorials/route-state-change-events.md
     - name: GitHub を使用してコードとしての Azure Policy を実装する
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./tutorials/policy-as-code-github.md
     - name: '次のことを学びます:Azure Policy を使用してリソースを制御および監査する'
       displayName: 'governance, module'
-      href: /learn/modules/build-cloud-governance-strategy-azure/8-control-audit-resources-azure-policy
+      href: /learn/modules/build-cloud-governance-strategy-azure/6-control-audit-resources-azure-policy
 - name: サンプル
   items:
     - name: インデックス
@@ -61,6 +66,10 @@
       href: ./samples/built-in-policies.md
     - name: 組み込みのイニシアティブ
       href: ./samples/built-in-initiatives.md
+    - name: ゲスト構成用の組み込みパッケージ
+      href: ./samples/built-in-packages.md
+    - name: Azure Resource Graph クエリ
+      href: ./samples/resource-graph-samples.md
     - name: 使用パターン
       items:
         - name: 論理演算子
@@ -83,26 +92,74 @@
           href: ./samples/pattern-deploy-resources.md
     - name: 法令順守の組み込み
       items:
-        - name: Azure セキュリティ ベンチマーク
-          href: ./samples/azure-security-benchmark.md
-        - name: Azure セキュリティ ベンチマーク v1
-          href: ./samples/azure-security-benchmarkv1.md
-        - name: CIS Microsoft Azure Foundations Benchmark 1.3.0
-          href: ./samples/cis-azure-1-3-0.md
-        - name: CIS Microsoft Azure Foundations Benchmark 1.1.0
-          href: ./samples/cis-azure-1-1-0.md
-        - name: CMMC レベル 3
-          href: ./samples/cmmc-l3.md
-        - name: HIPAA HITRUST 9.2
-          href: ./samples/hipaa-hitrust-9-2.md
-        - name: 'ISO 27001:2013'
-          href: ./samples/iso-27001.md
-        - name: New Zealand ISM Restricted
-          href: ./samples/new-zealand-ism.md
-        - name: NIST SP 800-53 R4
-          href: ./samples/nist-sp-800-53-r4.md
-        - name: NIST SP 800-171 R2
-          href: ./samples/nist-sp-800-171-r2.md
+        - name: Azure の組み込み
+          items:
+            - name: Australian Government ISM PROTECTED
+              href: ./samples/australia-ism.md
+            - name: Azure セキュリティ ベンチマーク
+              href: ./samples/azure-security-benchmark.md
+            - name: カナダ連邦の PBMM
+              href: ./samples/canada-federal-pbmm.md
+            - name: CIS Microsoft Azure Foundations Benchmark 1.3.0
+              href: ./samples/cis-azure-1-3-0.md
+            - name: CIS Microsoft Azure Foundations Benchmark 1.1.0
+              href: ./samples/cis-azure-1-1-0.md
+            - name: CMMC レベル 3
+              href: ./samples/cmmc-l3.md
+            - name: FedRAMP Moderate
+              href: ./samples/fedramp-moderate.md
+            - name: FedRAMP High
+              href: ./samples/fedramp-high.md
+            - name: HIPAA HITRUST 9.2
+              href: ./samples/hipaa-hitrust-9-2.md
+            - name: IRS 1075 (2016 年 9 月)
+              href: ./samples/irs-1075-sept2016.md
+            - name: 'ISO 27001:2013'
+              href: ./samples/iso-27001.md
+            - name: New Zealand ISM Restricted
+              href: ./samples/new-zealand-ism.md
+            - name: NIST SP 800-53 Rev. 5
+              href: ./samples/nist-sp-800-53-r5.md
+            - name: NIST SP 800-53 Rev. 4
+              href: ./samples/nist-sp-800-53-r4.md
+            - name: NIST SP 800-171 R2
+              href: ./samples/nist-sp-800-171-r2.md
+            - name: UK OFFICIAL および UK NHS
+              href: ./samples/ukofficial-uknhs.md
+        - name: Azure Government の組み込み
+          items:
+            - name: Azure セキュリティ ベンチマーク
+              href: ./samples/gov-azure-security-benchmark.md
+            - name: CIS Microsoft Azure Foundations Benchmark 1.3.0
+              href: ./samples/gov-cis-azure-1-3-0.md
+            - name: CIS Microsoft Azure Foundations Benchmark 1.1.0
+              href: ./samples/gov-cis-azure-1-1-0.md
+            - name: CMMC レベル 3
+              href: ./samples/gov-cmmc-l3.md
+            - name: DoD 影響レベル 4
+              href: ./samples/gov-dod-impact-level-4.md
+            - name: DoD 影響レベル 5
+              href: ./samples/gov-dod-impact-level-5.md
+            - name: FedRAMP Moderate
+              href: ./samples/gov-fedramp-moderate.md
+            - name: FedRAMP High
+              href: ./samples/gov-fedramp-high.md
+            - name: IRS 1075 (2016 年 9 月)
+              href: ./samples/gov-irs-1075-sept2016.md
+            - name: 'ISO 27001:2013'
+              href: ./samples/gov-iso-27001.md
+            - name: NIST SP 800-53 Rev. 5
+              href: ./samples/gov-nist-sp-800-53-r5.md
+            - name: NIST SP 800-53 Rev. 4
+              href: ./samples/gov-nist-sp-800-53-r4.md
+            - name: NIST SP 800-171 R2
+              href: ./samples/gov-nist-sp-800-171-r2.md
+    - name: Compute のセキュリティ ベースライン
+      items:
+        - name: Linux セキュリティ ベースライン
+          href: ./samples/guest-configuration-baseline-linux.md
+        - name: Windows セキュリティ ベースライン
+          href: ./samples/guest-configuration-baseline-windows.md
 - name: 概念
   items:
     - name: 定義の構造
@@ -120,6 +177,9 @@
     - name: 割り当ての構造
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
+    - name: ポリシー状態変更イベントに対応する
+      displayName: 'event grid, subject, topic, subscription'
+      href: ./concepts/event-overview.md
     - name: 除外の構造
       displayName: 'waiver, mitigated, compliance'
       href: ./concepts/exemption-structure.md
@@ -143,13 +203,24 @@
         - name: Azure Policy を使用した AKS のセキュリティ保護
           displayName: 'aks, psp, rego, opa'
           href: ../../aks/use-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
-    - name: ゲスト構成を使用した VM の監査
-      displayName: 'provider, tools, definition'
-      href: ./concepts/guest-configuration.md
+    - name: ゲスト構成
+      items:
+        - name: Azure Policy のゲストの構成の理解
+          displayName: 'provider, tools, definition'
+          href: ./concepts/guest-configuration.md
+        - name: ゲスト構成用の PowerShell Desired State Configuration の動作に対する変更
+          displayName: 'provider, tools, definition'
+          href: ./concepts/guest-configuration-custom.md
+        - name: Azure Policy のゲスト構成割り当てリソースの理解
+          displayName: 'provider, tools, definition'
+          href: ./concepts/guest-configuration-assignments.md
+        - name: ゲスト構成の修復オプション
+          displayName: 'provider, tools, definition'
+          href: ./concepts/guest-configuration-policy-effects.md
     - name: セキュリティ
       items:
         - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
-          href: ./concepts/azure-security-benchmark-baseline.md
+          href: /security/benchmark/azure/baselines/policy-security-baseline?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: 操作方法ガイド
   items:
     - name: VS Code 用 Azure Policy 拡張機能
@@ -166,15 +237,33 @@
       href: ./how-to/export-resources.md
     - name: ゲスト構成
       items:
-        - name: Windows でのゲスト構成ポリシーの作成
-          displayName: 'powershell, dsc, chef, windows'
+        - name: ゲスト構成の作成環境の設定
+          displayName: 'powershell, dsc'
+          href: ./how-to/guest-configuration-create-setup.md
+        - name: カスタム ゲスト構成パッケージの成果物の作成
+          displayName: 'powershell, dsc'
           href: ./how-to/guest-configuration-create.md
-        - name: Linux でのゲスト構成ポリシーの作成
-          displayName: 'powershell, dsc, chef, linux'
-          href: ./how-to/guest-configuration-create-linux.md
-        - name: グループ ポリシーからのゲスト構成ポリシーの作成
+        - name: ゲスト構成パッケージの成果物のテスト
+          displayName: 'powershell, dsc'
+          href: ./how-to/guest-configuration-create-test.md
+        - name: ゲスト構成パッケージへの署名
+          displayName: 'powershell, dsc'
+          href: ./how-to/guest-configuration-create-signing.md
+        - name: ゲスト構成パッケージの発行
+          displayName: 'powershell, dsc'
+          href: ./how-to/guest-configuration-create-publish.md
+        - name: ゲスト構成割り当ての作成
+          displayName: 'powershell, dsc'
+          href: ./how-to/guest-configuration-create-assignment.md
+        - name: カスタム ゲスト構成定義の作成
+          displayName: 'powershell, dsc'
+          href: ./how-to/guest-configuration-create-definition.md
+        - name: グループ ポリシーからのゲスト構成定義の作成
           displayName: 'powershell, dsc, grouppolicy, windows'
           href: ./how-to/guest-configuration-create-group-policy.md
+        - name: ゲスト構成への移行計画のための Azure Automation State Configuration
+          displayName: 'powershell, dsc, automation'
+          href: ./how-to/guest-configuration-azure-automation-migration.md
     - name: コンプライアンス データの取得
       displayName: 'evaluation, scan, summarize, query, events, log analytics'
       href: ./how-to/get-compliance-data.md
@@ -201,7 +290,7 @@
       items:
         - name: Azure Monitor の大規模なデプロイ
           displayName: 'monitor, diagnostic settings, dependency agent'
-          href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../azure-monitor/best-practices.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
         - name: Azure Monitor for VMs の有効化 (プレビュー)
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/vm/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
@@ -259,22 +348,8 @@
           href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
-        - name: events
-          href: /rest/api/policy-insights/policyevents
-        - name: 状態
-          href: /rest/api/policy-insights/policystates
-        - name: 代入
-          href: /rest/api/resources/policyassignments
-        - name: ポリシーの定義
-          href: /rest/api/resources/policydefinitions
-        - name: ポリシーの除外
-          href: /rest/api/resources/policyexemptions
-        - name: イニシアティブの定義
-          href: /rest/api/resources/policysetdefinitions
-        - name: ポリシー追跡対象リソース
-          href: /rest/api/policy-insights/policytrackedresources
-        - name: 修復
-          href: /rest/api/policy-insights/remediations
+        - name: ポリシー
+          href: /rest/api/policy/
         - name: ゲスト構成
           href: /rest/api/guestconfiguration/
     - name: Resource Manager テンプレート
@@ -299,6 +374,8 @@
   items:
     - name: GitHub - Azure Policy サンプル
       href: 'https://github.com/Azure/azure-policy'
+    - name: エンタープライズ規模 - リファレンス実装
+      href: 'https://github.com/Azure/Enterprise-Scale#enterprise-scale---reference-implementation'
     - name: コミュニティ ツール
       items:
         - name: GitHub - コミュニティ ポリシー リポジトリ
@@ -319,13 +396,13 @@
           href: /answers/topics/azure-policy.html
         - name: Azure サポート チケット
           href: 'https://azure.microsoft.com/support/create-ticket/'
-        - name: UserVoice
-          href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345055'
+        - name: Azure ガバナンスのアイデア
+          href: 'https://feedback.azure.com/d365community/forum/675ae472-f324-ec11-b6e6-000d3a4f0da0#'
     - name: ビデオ
       items:
         - name: ガバナンスに関する YouTube チャンネル
           href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure の更新情報
+      href: 'https://azure.microsoft.com/updates/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'

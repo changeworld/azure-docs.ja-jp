@@ -1,18 +1,18 @@
 ---
 title: Azure Percept DK のモデル推論のテレメトリを表示する
 description: Azure Percept DK のビジョン モデル推論のテレメトリを Azure IoT Explorer で表示する方法について説明します。
-author: elqu20
-ms.author: v-elqu
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.custom: template-how-to
-ms.openlocfilehash: 07abbc5f5e85c75b73774d11b6b81dd2085735b7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 0f8b56aef3a3e141c80b09e97101f1d78a2c761b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095325"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006262"
 ---
 # <a name="view-your-azure-percept-dks-model-inference-telemetry"></a>Azure Percept DK のモデル推論のテレメトリを表示する
 

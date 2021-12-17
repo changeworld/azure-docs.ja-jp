@@ -1,27 +1,34 @@
 ---
 title: Azure HPC Cache を使用したリージョン冗長とフェールオーバーの回復
 description: Azure HPC Cache を使用してディザスター リカバリーのためのフェールオーバー機能を提供する技法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
-ms.author: v-erkel
-ms.openlocfilehash: 9159807f55ae52393b8fccec339fcc94c3e4ebb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/19/2021
+ms.author: femila
+ms.openlocfilehash: b47e664bcbe5435a527940c0c1df8f92d95d5cb5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87061377"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078542"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>リージョン内フェールオーバーの回復に複数のキャッシュを使用する
 
-各 Azure HPC Cache インスタンスは、特定のサブスクリプションと 1 つのリージョン内で実行されます。 これは、リージョンで全体的な障害が発生した場合に、キャッシュ ワークフローが中断される可能性があることを意味します。
+各 Azure HPC Cache インスタンスは、特定のサブスクリプションと 1 つのリージョン内で実行されます。 これは、キャッシュのリージョンで全体的な障害が発生した場合に、キャッシュ ワークフローが中断されるおそれがあることを意味します。
 
 この記事では、キャッシュのフェールオーバー用に 2 番目のリージョンを使用することで、作業を中断するリスクを軽減する戦略について説明します。
 
 このキーでは、複数のリージョンからアクセスできるバックエンド ストレージを使用しています。 このストレージは、適切な DNS サポートを備えたオンプレミスの NAS システム、またはキャッシュとは別のリージョンに存在する Azure BLOB ストレージのいずれかになります。
 
 プライマリ リージョンでワークフローが進行すると、データはリージョン外の長期的なストレージに保存されます。 キャッシュ領域が使用できなくなった場合は、セカンダリ リージョンに複製された Azure HPC Cache インスタンスを作成し、同じストレージに接続して、新しいキャッシュから作業を再開することができます。
+
+> [!NOTE]
+> このフェールオーバー プランは、"*ストレージ アカウント*" のリージョンの完全な停止には対応していません。 また、Azure HPC Cache は、リージョン間の非同期コピーが HPC キャッシュ ワークフローに対して十分な一貫性がないため、geo 冗長ストレージ アカウント (GRS または GZRS) をサポートしていません。
+>
+> HPC キャッシュでは、[1 つの Azure リージョン内でデータを複製する](../storage/common/storage-redundancy.md#redundancy-in-the-primary-region)ローカル冗長ストレージ (LRS) とゾーン冗長ストレージ (ZRS) が **サポートされています**。
+>
+> フルリージョンのストレージ停止を防ぐ必要がある場合は、手動バックアップの方法を検討してください。
 
 ## <a name="planning-for-regional-failover"></a>リージョン内フェールオーバーの計画
 
@@ -36,8 +43,7 @@ ms.locfileid: "87061377"
    1. キャッシュと同じリージョンに配置されている場合のクライアント コンピューターに関する詳細
    1. キャッシュ クライアントが使用するマウント コマンド
 
-   > [!NOTE]
-   > Azure HPC Cache は、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を使用するか、その API に直接アクセスすることによって、プログラムで作成することができます。 詳細については、Azure HPC Cache チームにお問い合わせください。
+   > [注] Azure HPC Cache は、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を使用するか、その API に直接アクセスして、プログラムで作成することができます。 詳細については、Azure HPC Cache チームにお問い合わせください。
 
 ## <a name="failover-example"></a>フェールオーバーの例
 
@@ -57,4 +63,4 @@ ms.locfileid: "87061377"
 
 ## <a name="learn-more"></a>詳細情報
 
-Azure アプリケーション アーキテクチャ ガイドには、[リージョン全体のサービス中断から回復する方法](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>)についての詳細が含まれています。
+Azure アプリケーション アーキテクチャ ガイドには、[リージョン全体のサービス中断から回復する方法](/azure/architecture/resiliency/recovery-loss-azure-region)についての詳細が含まれています。

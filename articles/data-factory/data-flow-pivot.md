@@ -1,23 +1,26 @@
 ---
 title: マッピング データ フローでのピボット変換
-description: Azure Data Factory マッピング データ フローのピボット変換を使用した行から列へのデータのピボット
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Synapse Analytics パイプラインでマッピング データ フロー ピボット変換を使用して、行から列にデータをピボットします。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 07/17/2020
-ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: c6aa95864ad12d5776a8e90eb2b1bd8dac1f04a2
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87086661"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059931"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>マッピング データ フローでのピボット変換
 
-
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 ピボット変換を使用して、1 つの列の一意の行値から複数の列を作成します。 ピボットは、グループ化列を選択し、[集計関数](data-flow-expression-functions.md#aggregate-functions)を使用してピボット列を生成する集計変換です。
 
@@ -29,7 +32,7 @@ ms.locfileid: "87086661"
 
 ### <a name="group-by"></a>グループ化
 
-![オプションでグループ化する](media/data-flow/pivot2.png "オプションでグループ化する")
+:::image type="content" source="media/data-flow/pivot2.png" alt-text="オプションでグループ化する":::
 
 ピボットされた列を集計する列を選択します。 出力データは、同じグループ化の値を持つすべての行を 1 つの行にグループ化します。 ピボットされた列で行われる集計は、各グループに対して行われます。
 
@@ -37,7 +40,7 @@ ms.locfileid: "87086661"
 
 ### <a name="pivot-key"></a>ピボット キー
 
-![ピボット キー](media/data-flow/pivot3.png "ピボット キー")
+:::image type="content" source="media/data-flow/pivot3.png" alt-text="ピボット キー":::
 
 ピボット キーは、行の値が新しい列にピボットされる列です。 既定では、ピボット変換によって、一意の行値ごとに新しい列が作成されます。
 
@@ -45,7 +48,7 @@ ms.locfileid: "87086661"
 
 ### <a name="pivoted-columns"></a>ピボットされた列
 
-![ピボットされた列](media/data-flow/pivot4.png "ピボットされた列")
+:::image type="content" source="media/data-flow/pivot4.png" alt-text="ピボットされた列":::
 
 列になる一意のピボット キー値ごとに、各グループの集計された行値を生成します。 ピボット キーごとに複数の列を作成できます。 各ピボット列には、少なくとも 1 つの[集計関数](data-flow-expression-functions.md#aggregate-functions)が含まれている必要があります。
 
@@ -59,7 +62,7 @@ ms.locfileid: "87086661"
 
 次のヘルプ グラフィックは、さまざまなピボット コンポーネントがどのように相互に作用しているかを示しています。
 
-![ピボットのヘルプ グラフィック](media/data-flow/pivot5.png "ピボットのヘルプ グラフィック")
+:::image type="content" source="media/data-flow/pivot5.png" alt-text="ピボットのヘルプ グラフィック":::
 
 ## <a name="pivot-metadata"></a>ピボットのメタデータ
 
@@ -71,7 +74,7 @@ ms.locfileid: "87086661"
 
 ピボットでは、行の値に基づいて動的に新しい列名が生成されます。 これらの新しい列は、後でデータ フローで参照できるメタデータに追加できます。 これを行うには、データ プレビューで [[Map Drifted]\(誤差のマップ\)](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action) クイック アクションを使用します。 
 
-![列のピボット](media/data-flow/newpivot1.png "誤差のピボット列のマップ")
+:::image type="content" source="media/data-flow/newpivot1.png" alt-text="列のピボット":::
 
 ### <a name="sinking-pivoted-columns"></a>ピボットされた列のシンク
 

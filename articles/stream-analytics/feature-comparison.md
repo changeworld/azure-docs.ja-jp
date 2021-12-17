@@ -6,12 +6,12 @@ ms.author: raan
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 037bd8bc823cd8c77241d0ca25174e29d25149b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26ef280950d14f7bb3a833edd466912540ff1059
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020538"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263194"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics の機能の比較
 
@@ -37,14 +37,13 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 |ジョブを一覧表示してジョブ エンティティを表示する     |はい         |はい        |はい         |
 |ジョブのローカル プロジェクトへのエクスポート     |いいえ         |はい         |はい         |
 |ジョブの送信、開始、停止     |はい         |はい         |はい         |
-|ジョブ メトリックとジョブ ダイアグラムの表示     |はい         |はい         |ポータルで開く         |
-|ジョブの実行時エラーの表示     |はい         |はい         |いいえ         |
-|リソース ログ     |はい         |いいえ         |いいえ         |
-|カスタム メッセージ プロパティ     |はい         |はい         |いいえ       |
-|C# カスタム コード関数とデシリアライザー|読み取り専用モード|はい|いいえ|
+|ジョブ メトリックとジョブ ダイアグラムの表示     |はい         |はい         |はい         |
+|ジョブの実行時エラーの表示     |はい         |はい         |はい         |
+|リソース ログ     |はい         |いいえ         |はい         |
+|カスタム メッセージ プロパティ     |はい         |はい         |はい       |
+|C# カスタム コード関数とデシリアライザー|読み取り専用モード|はい|はい|
 |JavaScript UDF および UDA     |はい         |はい         |Windows のみ         |
-|Machine Learning Service     |はい        |はい         |いいえ         |
-|Azure Machine Learning Studio (クラシック)|はい。ただし、クエリはテストできません        |はい |いいえ         |
+|Azure Machine Learning      |はい        |はい         |はい         |
 |互換性レベル     |1.0</br>1.1</br>1.2 (既定値)         |1.0</br>1.1</br>1.2 (既定値)           |1.0</br>1.1</br>1.2 (既定値)           |
 |組み込みの ML ベースの異常検出関数     |はい         |はい         |はい         |
 |組み込みの地理空間関数     |はい         |はい         |はい         |

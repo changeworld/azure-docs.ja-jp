@@ -2,15 +2,15 @@
 title: 共有リソースを使用してラボを作成する方法 | Azure Lab Services
 description: 学生間で共有されるリソースを必要とするラボを作成する方法について説明します。
 author: emaher
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: d4bf4127dc163bb5f034e077b84664828374ba87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db69c781c6b2f78e5ffbd6150d49775eb0c8cfbd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94647972"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337190"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Azure Lab Services で共有リソースを使用してラボを作成する方法
 
@@ -38,11 +38,11 @@ ms.locfileid: "94647972"
 ライセンス サーバーは、ラボとピアリングされた仮想ネットワークに接続する必要があるため、ラボ アカウントと同じリージョンに配置する必要があります。
 
 #### <a name="static-private-ip-and-mac-address"></a>静的プライベート IP および MAC アドレス
-既定では、仮想マシンは動的プライベート IP を持つため、[ソフトウェアを設定する前に、プライベート IP を静的に設定します](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)。 これにより、プライベート IP と MAC アドレスが静的に設定されます。  
+既定では、仮想マシンは動的プライベート IP を持つため、[ソフトウェアを設定する前に、プライベート IP を静的に設定します](../virtual-network/ip-services/virtual-networks-static-private-ip-arm-pportal.md)。 これにより、プライベート IP と MAC アドレスが静的に設定されます。  
 
 #### <a name="control-access"></a>アクセスを制御する
 ライセンス サーバーへのアクセスを制御することは重要です。  VM をセットアップした後も、メンテナンス、トラブルシューティング、および更新のためにアクセスが必要になります。  これを行うには、いくつかの方法があります。
-- [Azure Security Center 内で Just-In-Time (JIT) アクセスを設定する。](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
+- [Microsoft Defender for Cloud 内で Just In Time (JIT) アクセスを設定する。](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
 - [アクセスを制限するためのネットワーク セキュリティ グループを設定する。](../virtual-network/network-security-groups-overview.md)
 - [ライセンス サーバーへの安全なアクセスを許可する Bastion をセットアップする。](https://azure.microsoft.com/services/azure-bastion/)
 
@@ -51,7 +51,8 @@ ms.locfileid: "94647972"
 共有リソースを使用するには、[ピアリングされた仮想ネットワーク](how-to-connect-peer-virtual-network.md)を使用するようにラボ アカウントを設定する必要があります。  この場合は、共有リソースが保持されている仮想ネットワークにピアリングします。
 
 >[!WARNING]
->クラス用のラボは、ラボ アカウントを共有リソースの仮想ネットワークにピアリングした **後で**、作成する必要があります。  
-テンプレート マシン
+>クラス用のラボは、ラボ アカウントを共有リソースの仮想ネットワークにピアリングした **後で**、作成する必要があります。
+
+## <a name="template-machine"></a>テンプレート マシン
 
 ラボ アカウントが仮想ネットワークとピアリングされると、テンプレート マシンは共有リソースにアクセスできるようになります。  アクセスされる共有リソースによっては、ファイアウォール規則の更新が必要になる場合があります。

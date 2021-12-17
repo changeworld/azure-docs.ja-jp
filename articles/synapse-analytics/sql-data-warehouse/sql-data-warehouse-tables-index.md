@@ -2,25 +2,25 @@
 title: テーブルのインデックス作成
 description: 専用 SQL プールでのテーブルのインデックス作成に関する推奨事項と例。
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/18/2019
-ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: fabbdf330d43737ffa85379f9cc4d5ac59c4a734
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 498c9c6f5f010490f97eb6a7cb0073a8f9c58d28
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673520"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503811"
 ---
-# <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール テーブルのインデックス作成
+# <a name="indexes-on-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール テーブルのインデックス作成
 
-専用 SQL プールでのテーブルのインデックス作成に関する推奨事項と例。
+Azure Synapse Analytic 内の専用 SQL プールでのテーブルのインデックス作成に関する推奨事項と例。
 
 ## <a name="index-types"></a>インデックスの種類
 
@@ -30,9 +30,9 @@ ms.locfileid: "98673520"
 
 ## <a name="clustered-columnstore-indexes"></a>クラスター化列ストア インデックス
 
-既定で、専用 SQL プールでは、テーブルにインデックス オプションが指定されていない場合、クラスター化列ストア インデックスが作成されます。 クラスター化列ストア テーブルは、クエリの全体的なパフォーマンスを最適化するだけでなく、最上位のレベルのデータ圧縮が可能になります。  クラスター化列ストア テーブルは、一般的にクラスター化インデックスまたはヒープ テーブルより優れており、大きなテーブルの選択肢として通常最適です。  こうした理由から、テーブルのインデックスを作成する方法に確信がない場合は、クラスター化列ストアを使用することをお勧めします。  
+既定で、専用 SQL プールでは、テーブルにインデックス オプションが指定されていない場合、クラスター化列ストア インデックスが作成されます。 クラスター化列ストア テーブルにより、最上位のレベルのデータ圧縮と、クエリの全体的なパフォーマンスの最適化が可能になります。  クラスター化列ストア テーブルは、一般的にクラスター化インデックスまたはヒープ テーブルより優れており、大きなテーブルの選択肢として通常最適です。  こうした理由から、テーブルのインデックスを作成する方法に確信がない場合は、クラスター化列ストアを使用することをお勧めします。  
 
-クラスター化列ストア テーブルを作成するには、単純に WITH 句で CLUSTERED COLUMNSTORE INDEX を指定するか、WITH 句を省略します。
+クラスター化列ストア テーブルを作成するには、単純に WITH 句で `CLUSTERED COLUMNSTORE INDEX` を指定するか、WITH 句を省略します。
 
 ```SQL
 CREATE TABLE myTable
@@ -70,7 +70,7 @@ WITH ( HEAP );
 
 ## <a name="clustered-and-nonclustered-indexes"></a>クラスター化インデックスと非クラスター化インデックス
 
-クラスター化インデックスは、1 つの行をすばやく取得する必要がある場合に、クラスター化列ストア テーブルを上回る可能性があります。 極めて高速で実行するために 1 行または極めて少数の行の検索が必要とされるクエリの場合、クラスター化インデックスまたは非クラスター化セカンダリ インデックスを検討してください。 クラスター化インデックスを使用するデメリットは、クラスター化インデックスの列で非常に選択的なフィルターを使用するクエリのみに効果が得られることです。 他の列のフィルターを改善するには、非クラスター化インデックスを他の列に追加できます。 ただし、テーブルに各インデックスを追加すると、領域と読み込みの処理時間の両方が増加します。
+クラスター化インデックスは、1 つの行をすばやく取得する必要がある場合に、クラスター化列ストア テーブルを上回る可能性があります。 1 行または極めて少数の行の検索を極めて高速で実行する必要があるクエリの場合、クラスター化インデックスまたは非クラスター化セカンダリ インデックスを検討してください。 クラスター化インデックスを使用するデメリットは、クラスター化インデックスの列で非常に選択的なフィルターを使用するクエリのみに効果が得られることです。 他の列のフィルターを改善するために、非クラスター化インデックスを他の列に追加できます。 ただし、テーブルに各インデックスを追加すると、領域と読み込みの処理時間の両方が増加します。
 
 クラスター化インデックス テーブルを作成するには、単純に WITH 句で CLUSTERED INDEX を指定します。
 
@@ -139,17 +139,16 @@ JOIN    sys.[tables] t                              ON  mp.[object_id]          
 JOIN    sys.[schemas] s                             ON t.[schema_id]            = s.[schema_id]
 GROUP BY
         s.[name]
-,       t.[name]
-;
+,       t.[name];
 ```
 
-ビューが作成できたので、このクエリを実行して、10 万行未満の行グループを持つテーブルを特定します。 もちろん、セグメントの品質をさらに高める必要がある場合は、10 万行のしきい値を高くすることもできます。
+ビューが作成できたので、このクエリを実行して、10 万行未満の行グループを持つテーブルを特定します。 セグメントの品質をさらに高める必要がある場合は、10 万行のしきい値を高くすることもできます。
 
 ```sql
 SELECT    *
 FROM    [dbo].[vColumnstoreDensity]
 WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
-        OR INVISIBLE_rowgroup_rows_AVG < 100000
+        OR INVISIBLE_rowgroup_rows_AVG < 100000;
 ```
 
 クエリを実行したら、データの確認と結果の分析を開始できます。 次の表では、行グループ分析で確認する項目について説明します。
@@ -163,7 +162,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 | [COMPRESSED_rowgroup_rows_AVG] |平均行数が行グループの最大行数を大幅に下回る場合は、CTAS または ALTER INDEX REBUILD を使用してデータを再圧縮することを検討してください。 |
 | [COMPRESSED_rowgroup_count] |列ストア形式の行グループの数。 この数がテーブルに対して非常に多い場合は、列ストアの密度が低いことを示します。 |
 | [COMPRESSED_rowgroup_rows_DELETED] |行が列ストア形式で論理的に削除されます。 この数がテーブル サイズと比べて多い場合は、パーティションを再作成するか、インデックスを再構築して、行を物理的に削除することを検討してください。 |
-| [COMPRESSED_rowgroup_rows_MIN] |この値と、AVG 列および MAX 列を組み合わせて使用して、列ストアの行グループに対する値の範囲を把握します。 読み込みのしきい値 (パーティションに合わせて整列されたディストリビューションあたり 102,400) をわずかに上回っている場合は、データ読み込みで最適化が可能であることを示します。 |
+| [COMPRESSED_rowgroup_rows_MIN] |この値と、AVG 列および MAX 列を使用して、列ストアの行グループに対する値の範囲を把握します。 読み込みのしきい値 (パーティションに合わせて整列されたディストリビューションあたり 102,400) をわずかに上回っている場合は、データ読み込みで最適化が可能であることを示します。 |
 | [COMPRESSED_rowgroup_rows_MAX] |上記と同じ。 |
 | [OPEN_rowgroup_count] |開いている行グループは正常です。 テーブル ディストリビューションごとに 1 つの行グループが開いていることが期待できます (60)。 数が多すぎる場合は、パーティションをまたいでデータを読み込むことをお勧めします。 パーティション分割の計画が適切であることを再確認してください。 |
 | [OPEN_rowgroup_rows] |各行グループには最大で 1,048,576 行を含めることができます。 この値は、開いている行グループの使用率を確認するときに使用します。 |
@@ -176,6 +175,16 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 | [CLOSED_rowgroup_rows_MAX] |上記と同じ。 |
 | [CLOSED_rowgroup_rows_AVG] |上記と同じ。 |
 | [Rebuild_Index_SQL] |テーブルの列ストア インデックスを再構築するための SQL です。 |
+
+## <a name="impact-of-index-maintenance"></a>インデックスのメンテナンスの影響
+
+`vColumnstoreDensity` ビューの `Rebuild_Index_SQL` 列には、インデックスの再構築に使用できる `ALTER INDEX REBUILD` ステートメントが含まれています。 インデックスを再構築するときは、インデックスを再構築するセッションに必ず十分なメモリを割り当ててください。 これを実行するには、このテーブルのインデックスを再構築するためのアクセス許可を持っているユーザーの[リソース クラス](resource-classes-for-workload-management.md)を、推奨される最小値に変更します。 例については、この記事で後述する「[セグメントの品質を向上させるためのインデックスの再構築](#rebuild-indexes-to-improve-segment-quality)」を参照してください。
+
+順序付けされたクラスター化列ストア インデックスを使用するテーブルの場合、`ALTER INDEX REBUILD` では tempdb を使用してデータが再度並べ替えられます。 再構築操作中に tempdb を監視します。 tempdb 領域がさらに必要な場合は、データベース プールをスケールアップします。 インデックスの再構築が完了したら、スケール ダウンで戻します。
+
+順序付けされたクラスター化列ストア インデックスを使用するテーブルの場合、`ALTER INDEX REORGANIZE` ではデータが再度並べ替えられません。 データを並べ替えるには、`ALTER INDEX REBUILD` を使用します。
+
+順序付けされたクラスター化列ストア インデックスの詳細については、「[順序指定クラスター化列ストア インデックスを使用したパフォーマンスのチューニング](performance-tuning-ordered-cci.md)」を参照してください。
 
 ## <a name="causes-of-poor-columnstore-index-quality"></a>列ストア インデックスの品質の低さの原因
 
@@ -194,7 +203,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 ### <a name="high-volume-of-dml-operations"></a>大量の DML 操作
 
-行を更新および削除する大量の DML 操作では、列ストアの効率性が低下する可能性があります。 これは、行グループ内の多数の行が変更される場合に特に当てはまります。
+行を更新および削除する大量の DML 操作では、列ストアの効率性が低下する可能性があります。 これは、行グループ内のほとんどの行が変更される場合に特に当てはまります。
 
 - 圧縮行グループから行を削除すると、行は論理的にのみ削除済みとしてマークされます。 パーティションまたはテーブルが再構築されるまで、行は圧縮行グループに残ります。
 - 行を挿入すると、行はデルタ行グループと呼ばれる内部の行ストア テーブルに追加されます。 挿入された行は、デルタ行グループがいっぱいになりクローズとしてマークされるまで、列ストアに変換されません。 行グループは、1,048,576 行の最大容量に到達した時点で閉じられます。
@@ -214,42 +223,42 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 テーブルが一部のデータと共に読み込まれたら、以下の手順に従って、最適化されていないクラスター化列ストア インデックスを持つテーブルを特定して再構築します。
 
-## <a name="rebuilding-indexes-to-improve-segment-quality"></a>セグメントの品質を向上させるためのインデックスの再構築
+## <a name="rebuild-indexes-to-improve-segment-quality"></a>インデックスを再構築してセグメントの品質を向上する
 
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>手順 1:適切なリソース クラスを使用しているユーザーを特定または作成する
 
-セグメントの品質を簡単に高める方法の 1 つが、インデックスの再構築です。  上記のビューが返す SQL によって、インデックスを再構築するために使用できる ALTER INDEX REBUILD ステートメントが返されます。 インデックスを再構築するときは、インデックスを再構築するセッションに必ず十分なメモリを割り当ててください。  これを実行するには、次のテーブルのインデックスを再構築するためのアクセス許可を持っているユーザーのリソース クラスを、推奨される最小値に変更します。
+セグメントの品質を簡単に高める方法の 1 つが、インデックスの再構築です。  上記のビューが返す SQL によって、インデックスを再構築するために使用できる ALTER INDEX REBUILD ステートメントが格納されます。 インデックスを再構築するときは、インデックスを再構築するセッションに必ず十分なメモリを割り当ててください。 これを実行するには、次のテーブルのインデックスを再構築するためのアクセス許可を持っているユーザーのリソース クラスを、推奨される最小値に変更します。
 
 次に、リソース クラスを増やすことでより多くのメモリをユーザーに割り当てる方法の例を示します。 リソース クラスの使用については、[「ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。
 
 ```sql
-EXEC sp_addrolemember 'xlargerc', 'LoadUser'
+EXEC sp_addrolemember 'xlargerc', 'LoadUser';
 ```
 
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>手順 2:より高いリソース クラス ユーザーでクラスター化列ストア インデックスを再構築する
 
-手順 1 でリソース クラスを上位に変更したユーザー (たとえば LoadUser) としてサインインし、ALTER INDEX ステートメントを実行します。 このユーザーは、インデックスが再構築されるテーブルに対して ALTER 権限を持っている必要があるのでご注意ください。 これらの例では、列ストア インデックス全体を再構築する方法や単一のパーティションを再構築する方法を示します。 大規模なテーブルでは、単一のパーティションとインデックスを同時に再構築すると、より実用的です。
+手順 1 でリソース クラスを上位に変更したユーザー (`LoadUser`) としてサインインし、ALTER INDEX ステートメントを実行します。 このユーザーは、インデックスが再構築されるテーブルに対して ALTER 権限を持っている必要があるのでご注意ください。 これらの例では、列ストア インデックス全体を再構築する方法や単一のパーティションを再構築する方法を示します。 大規模なテーブルでは、単一のパーティションとインデックスを同時に再構築すると、より実用的です。
 
 または、インデックスを再構築せずに、[CTAS を使用して](sql-data-warehouse-develop-ctas.md)テーブルを新しいテーブルにコピーできます。 最良の方法はどちらでしょうか。 大量のデータの場合は、通常、CTAS の方が [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) より高速です。 少量のデータの場合は、ALTER INDEX を簡単に使用できるため、テーブルを入れ替える必要はありません。
 
 ```sql
 -- Rebuild the entire clustered index
-ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD
+ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ```
 
 ```sql
 -- Rebuild a single partition
-ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5;
 ```
 
 ```sql
 -- Rebuild a single partition with archival compression
-ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE_ARCHIVE)
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE_ARCHIVE);
 ```
 
 ```sql
 -- Rebuild a single partition with columnstore compression
-ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE);
 ```
 
 専用 SQL プールでのインデックスの再構築は、オフライン操作です。  インデックスの再構築の詳細については、「[列ストア インデックス - 最適化](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」の ALTER INDEX REBUILD に関するセクションと、「[ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
@@ -258,7 +267,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 
 セグメントの品質が低いテーブルを特定するクエリを再実行し、セグメントの品質が改善したことを確認します。  セグメントの品質が改善されていない場合は、テーブル内の行の幅が余分である可能性があります。  インデックスを再構築するときに、より高いリソース クラスまたは DWU の使用を検討してください。
 
-## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>CTAS とパーティションの切り替えを使用したインデックスの再構築
+## <a name="rebuild-indexes-with-ctas-and-partition-switching"></a>CTAS とパーティションの切り替えを使用したインデックスの再構築
 
 この例では、[CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントとパーティション切り替えを使用してテーブル パーティションを再構築します。
 

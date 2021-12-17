@@ -1,20 +1,20 @@
 ---
-title: Azure Percept DK を無線 (OTA) で更新する
+title: Azure Percept DK を無線で更新する
 description: Azure Percept DK の更新プログラムを無線 (OTA) で受信する方法について説明します
-author: mimcco
-ms.author: mimcco
+author: EthanChangAED
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.custom: template-how-to
-ms.openlocfilehash: a3f586f853201534bbaa613e8538d55485ffe147
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: ae4daa5721d19fa1fa9a556781808cbca4b58b24
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063119"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006204"
 ---
-# <a name="update-your-azure-percept-dk-over-the-air-ota"></a>Azure Percept DK を無線 (OTA) で更新する
+# <a name="update-azure-percept-dk-over-the-air"></a>Azure Percept DK を無線で更新する
 
 Device Update for IoT Hub を使用して無線 (OTA) で Azure Percept DK のキャリア ボードの OS およびファームウェアを更新する方法について学習するには、このガイドに従ってください。
 
@@ -30,7 +30,7 @@ Device Update for IoT Hub を使用して無線 (OTA) で Azure Percept DK の�
 > [!NOTE]
 > 既に更新プログラムをインポートしてある場合は、「**デバイス更新プログラム グループを作成する**」に直接進むことができます。
 
-1. [Azure Percept デバイス用の適切なマニフェスト ファイル (.json) および更新ファイル (.swu) をダウンロードします](https://go.microsoft.com/fwlink/?linkid=2155625)。
+1. 開発キットに適した[マニフェストと更新パッケージ](./how-to-select-update-package.md)を決定します。
 
 1. Azure Percept デバイスに使用している Azure IoT Hub に移動します。 左側のメニュー パネルで、 **[デバイスの自動管理]** の下にある **[デバイスの更新プログラム]** を選択します。
 
@@ -38,7 +38,7 @@ Device Update for IoT Hub を使用して無線 (OTA) で Azure Percept DK の�
 
 1. **[Ready to Deploy]\(デプロイの準備完了\)** ヘッダーの下にある **[+ Import New Update]\(+ 新しい更新プログラムのインポート\)** を選択します。
 
-1. **[Select Import Manifest File]\(インポート マニフェスト ファイルの選択\)** および **[Select Update Files]\(更新ファイルの選択\)** の下のボックスをクリックして、マニフェスト ファイル (.json) および更新ファイル (.swu) を選択します。
+1. **[インポート マニフェスト ファイルの選択]** および **[更新ファイルの選択]** の下のボックスをクリックして、マニフェスト ファイル (.json) および更新ファイル (.swu) を選択します。
 
 1. **[ストレージ コンテナーの選択]** の下にあるフォルダー アイコンまたはテキスト ボックスを選択し、適切なストレージ アカウントを選択します。 ストレージ コンテナーを既に作成してある場合は、それを再利用できます。 そうでない場合は、 **[+ コンテナー]** を選択して、OTA 更新プログラム用の新しいストレージ コンテナーを作成します。 使用するコンテナーを選択し、 **[選択]** をクリックします。
 
@@ -68,12 +68,10 @@ Device Update for IoT Hub では、Azure Percept DK の特定のグループに�
 - デバイスは 1 つのグループにのみ属することができます。
 
 1. デバイスにタグを追加します。
-
     1. 左側のナビゲーション ウィンドウの **[IoT Edge]** で Azure Percept DK を見つけて、その **[デバイス ツイン]** に移動します。
-
     1. 下のように、新しい **Device Update for IoT Hub** タグ値を追加します (```<CustomTagValue>``` は、AzurePerceptGroup1 などのタグの値/名前を表します)。 デバイス ツインの [JSON ドキュメント タグ](../iot-hub/iot-hub-devguide-device-twins.md#device-twins)の詳細についてご確認ください。
 
-        ```
+        ```json
         "tags": {
         "ADUGroup": "<CustomTagValue>"
         },
@@ -84,15 +82,10 @@ Device Update for IoT Hub では、Azure Percept DK の特定のグループに�
 1. 既存の Azure IoT Hub タグを選択して、グループを作成します。
 
     1. Azure IoT Hub ページに戻ります。
-
     1. 左側のメニュー パネルで、 **[デバイスの自動管理]** の下にある **[デバイスの更新プログラム]** を選択します。
-
     1. **[グループ]** タブを選択します。このページには、Device Update に接続されている、グループ化されていないデバイスの数が表示されます。
-
     1. **[+ 追加]** を選択して、新しいグループを作成します。
-
     1. 一覧から IoT Hub タグを選択し、 **[送信]** をクリックします。
-
     1. グループが作成されると、更新のコンプライアンス チャートおよびグループの一覧が更新されます。 チャートには、さまざまなコンプライアンス対応状態 (**On latest update (最新の更新状態)** 、**New updates available (利用可能な新しい更新がある)** 、**Updates in progress (更新の進行中)** 、および **Not yet grouped (まだグループ化されていない)** ) にあるデバイスの数が表示されます。
 
 ## <a name="deploy-an-update"></a>更新プログラムをデプロイする

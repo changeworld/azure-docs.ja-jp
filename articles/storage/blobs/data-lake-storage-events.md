@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f5fa4ad357e937fed7df5be24a1fc78409a0259b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98cd9fd4a54796827184da9dc549637331892083
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100516398"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590482"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>チュートリアル:Databricks Delta テーブルを更新する Data Lake キャプチャ パターンを実装する
 
@@ -25,21 +25,21 @@ ms.locfileid: "100516398"
 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
-> * Azure 関数を呼び出す Event Grid サブスクリプションを追加します。
-> * イベントから通知を受信し、Azure Databricks 内でジョブを実行する Azure 関数を作成します。
-> * ストレージ アカウントに配置されている Databricks Delta テーブルに顧客注文を挿入する Databricks ジョブを作成します。
+> - Azure 関数を呼び出す Event Grid サブスクリプションを追加します。
+> - イベントから通知を受信し、Azure Databricks 内でジョブを実行する Azure 関数を作成します。
+> - ストレージ アカウントに配置されている Databricks Delta テーブルに顧客注文を挿入する Databricks ジョブを作成します。
 
 このソリューションの構築は、Azure Databricks ワークスペースから始めて、逆の順序で行います。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-* 階層型名前空間 (Azure Data Lake Storage Gen2) を持つストレージ アカウントを作成します。 このチュートリアルでは、`contosoorders` という名前のストレージ アカウントを使用します。 ユーザー アカウントに[ストレージ BLOB データ共同作成者ロール](../common/storage-auth-aad-rbac-portal.md)が割り当てられていることを確認します。
+- 階層型名前空間 (Azure Data Lake Storage Gen2) を持つストレージ アカウントを作成します。 このチュートリアルでは、`contosoorders` という名前のストレージ アカウントを使用します。 ユーザー アカウントに[ストレージ BLOB データ共同作成者ロール](assign-azure-role-data-access.md)が割り当てられていることを確認します。
 
    「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](create-data-lake-storage-account.md)」をご覧ください。
 
-* サービス プリンシパルを作成する。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」のガイダンスに従って、サービス プリンシパルを作成します。
+- サービス プリンシパルを作成する。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」のガイダンスに従って、サービス プリンシパルを作成します。
 
   この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
 
@@ -71,17 +71,17 @@ ms.locfileid: "100516398"
 
 4. このファイルをローカル コンピューターに保存し、**data.csv** という名前を付けます。
 
-5. Storage Explorer で、このファイルを **input** フォルダーにアップロードします。  
+5. Storage Explorer で、このファイルを **input** フォルダーにアップロードします。
 
 ## <a name="create-a-job-in-azure-databricks"></a>Azure Databricks でジョブを作成する
 
 このセクションでは、以下のタスクを実行します。
 
-* Azure Databricks ワークスペースを作成する。
-* Notebook を作成します。
-* Databricks Delta テーブルを作成し、データを設定します。
-* Databricks Delta テーブルに行を挿入するコードを追加します。
-* ジョブを作成します。
+- Azure Databricks ワークスペースを作成する。
+- Notebook を作成します。
+- Databricks Delta テーブルを作成し、データを設定します。
+- Databricks Delta テーブルに行を挿入するコードを追加します。
+- ジョブを作成します。
 
 ### <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
@@ -111,8 +111,8 @@ ms.locfileid: "100516398"
 
     以下を除くすべての値は、既定値のままにします。
 
-    * クラスターの名前を入力します。
-    * **[Terminate after 120 minutes of inactivity]** \(アクティビティが 120 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
+    - クラスターの名前を入力します。
+    - **[Terminate after 120 minutes of inactivity]** \(アクティビティが 120 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
 
 4. **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
@@ -132,11 +132,11 @@ ms.locfileid: "100516398"
 
 ### <a name="create-and-populate-a-databricks-delta-table"></a>Databricks Delta テーブルを作成してデータを設定する
 
-1. 作成したノートブックで、次のコード ブロックをコピーして最初のセルに貼り付けます。ただし、このコードはまだ実行しないでください。  
+1. 作成したノートブックで、次のコード ブロックをコピーして最初のセルに貼り付けます。ただし、このコードはまだ実行しないでください。
 
    このコード ブロックの `appId`、`password`、および `tenant` のプレースホルダー値を、このチュートリアルの前提条件を満たすための作業で収集した値に置き換えます。
 
-    ```Python
+    ```python
     dbutils.widgets.text('source_file', "", "Source File")
 
     spark.conf.set("fs.azure.account.auth.type", "OAuth")
@@ -159,9 +159,8 @@ ms.locfileid: "100516398"
 
 3. 次のコード ブロックをコピーして別のセルに貼り付け、**Shift + Enter** キーを押して、このブロックのコードを実行します。
 
-   ```Python
+   ```python
    from pyspark.sql.types import StructType, StructField, DoubleType, IntegerType, StringType
-
 
    inputSchema = StructType([
    StructField("InvoiceNo", IntegerType(), True),
@@ -194,7 +193,7 @@ ms.locfileid: "100516398"
 
 1. 次のコード ブロックをコピーして、別のセルに貼り付けます。ただし、このセルは実行しないでください。
 
-   ```Python
+   ```python
    upsertDataDF = (spark
      .read
      .option("header", "true")
@@ -257,7 +256,7 @@ ms.locfileid: "100516398"
 2. **[新しいトークンの生成]** をクリックし、 **[生成]** をクリックします。
 
    トークンは安全な場所にコピーしてください。 Azure 関数では、Databricks に認証してジョブを実行するためにこのトークンが必要です。
-  
+
 3. Azure portal の左上隅にある **[リソースの作成]** を選択し、 **[コンピューティング] > [Function App]** の順に選択します。
 
    ![Azure 関数を作成する](./media/data-lake-storage-events/function-app-create-flow.png "Azure 関数を作成する")

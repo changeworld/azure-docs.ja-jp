@@ -2,19 +2,22 @@
 title: Azure PowerShell - SSE でカスタマー マネージド キーを有効にする - マネージド ディスク
 description: Azure PowerShell を使用して、マネージド ディスクでカスタマー マネージド キーを使用し、サーバー側の暗号化を有効にします。
 author: roygara
-ms.date: 03/02/2021
+ms.date: 11/02/2021
 ms.topic: how-to
 ms.author: rogarana
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 37d248fd61cd8fb99259e3776447a719ae365ab9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell, ignite-fall-2021
+ms.openlocfilehash: 3dfc34f9319409fa6d6928c830febfa61e136e31
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105042885"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074424"
 ---
 # <a name="azure-powershell---enable-customer-managed-keys-with-server-side-encryption---managed-disks"></a>Azure PowerShell - サーバー側の暗号化でカスタマー マネージド キーを有効にする - マネージド ディスク
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 Azure Disk Storage を使用すると、選択した場合は、マネージド ディスクにサーバー側の暗号化 (SSE) を使用しているときに独自のキーを管理できます。 カスタマー マネージド キーを使用する SSE とその他のマネージド ディスクの暗号化の種類の概念については、ディスクの暗号化の記事の「[カスタマー マネージド キー](../disk-encryption.md#customer-managed-keys)」セクションをご覧ください。
 
@@ -26,53 +29,12 @@ Azure Disk Storage を使用すると、選択した場合は、マネージド 
     これを回避する必要がある場合は、カスタマー マネージド キーを使用していないまったく別のマネージド ディスクに[すべてのデータをコピー](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)する必要があります。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-## <a name="set-up-an-azure-key-vault-and-diskencryptionset-without-automatic-key-rotation"></a>自動キー ローテーションを使用せずに Azure Key Vault と DiskEncryptionSet を設定する
+## <a name="set-up-an-azure-key-vault-and-diskencryptionset-optionally-with-automatic-key-rotation"></a>オプションで自動キー ローテーションを使用して Azure Key Vault と DiskEncryptionSet を設定する
 
 SSE でカスタマー マネージド キーを使用するには、Azure Key Vault と DiskEncryptionSet リソースを設定する必要があります。
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-powershell](../../../includes/virtual-machines-disks-encryption-create-key-vault-powershell.md)]
 
-## <a name="set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview"></a>自動キー ローテーションを使用して Azure Key Vault と DiskEncryptionSet を設定する (プレビュー)
-
-1. 最新の [Azure PowerShell バージョン](/powershell/azure/install-az-ps)がインストールされており、`Connect-AzAccount` を使用して Azure アカウントにサインインしていることを確認します。
-1. Azure Key Vault と暗号化キーのインスタンスを作成します。
-
-    Key Vault インスタンスを作成する場合、消去保護を有効にする必要があります。 消去保護では、保持期間が経過するまで、削除されたキーを完全に削除できないようになります。 この設定により、誤って削除されたことが原因でデータが失われるのを防ぐことができます。マネージド ディスクの暗号化にはこれが必須です。
-    
-    ```powershell
-    $ResourceGroupName="yourResourceGroupName"
-    $LocationName="westcentralus"
-    $keyVaultName="yourKeyVaultName"
-    $keyName="yourKeyName"
-    $keyDestination="Software"
-    $diskEncryptionSetName="yourDiskEncryptionSetName"
-
-    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnablePurgeProtection
-
-    $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
-    ```
-
-1.  Azure Resource Manager テンプレート [CreateDiskEncryptionSetWithAutoKeyRotation.json](https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/AutoKeyRotation/CreateDiskEncryptionSetWithAutoKeyRotation.json) で API バージョン `2020-12-01` を使用し、`rotationToLatestKeyVersionEnabled` プロパティを true に設定して、DiskEncryptionSet を作成する
-    
-    ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/AutoKeyRotation/CreateDiskEncryptionSetWithAutoKeyRotation.json" `
-    -diskEncryptionSetName $diskEncryptionSetName `
-    -keyVaultId $($keyVault.ResourceId) `
-    -keyVaultKeyUrl $($key.Key.Kid) `
-    -encryptionType "EncryptionAtRestWithCustomerKey" `
-    -region $LocationName
-    ```
-
-1.  DiskEncryptionSet リソースに Key Vault へのアクセス権を付与します。
-
-    > [!NOTE]
-    > Azure がお使いの Azure Active Directory にご自分の DiskEncryptionSet の ID を作成するのには数分かかる場合があります。 次のコマンドを実行しているときに "Active Directory オブジェクトが見つかりません" のようなエラーが表示された場合は、数分待ってから再試行してください。
-
-    ```powershell
-    $des=Get-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName
-    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
-    ```
 
 ## <a name="examples"></a>例
 

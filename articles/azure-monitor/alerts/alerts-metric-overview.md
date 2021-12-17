@@ -1,18 +1,18 @@
 ---
 title: Azure Monitor でのメトリック アラートの機能
 description: メトリック アラートの用途と、Azure Monitor での機能の概要を理解します。
-ms.date: 03/11/2021
+ms.date: 10/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8a243f0a2130e0ec2ebafe726f48e07c148807c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa577d4c2099be6b333994690b56c7581ae32669
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016085"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994729"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
-Azure Monitor でメトリック アラートは、複数ディメンションのメトリック上で動作します。 これらのメトリックには、[プラットフォーム メトリック](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[カスタム メトリック](../essentials/metrics-custom-overview.md)、[Azure Monitor からの一般的なログのメトリック](./alerts-metric-logs.md)への変換、Application Insights のメトリックが含まれます。 メトリック アラートは 1 つまたは複数のメトリック タイム シリーズの条件が true かどうかを定期的に評価し、評価が満たされたときに通知します。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
+Azure Monitor でメトリック アラートは、複数ディメンションのメトリック上で動作します。 これらのメトリックには、[プラットフォーム メトリック](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[カスタム メトリック](../essentials/metrics-custom-overview.md)、[Azure Monitor からの一般的なログのメトリック](./alerts-metric-logs.md)への変換、Application Insights のメトリックが含まれます。 メトリック アラートは 1 つまたは複数のメトリック タイム シリーズの条件が true かどうかを定期的に評価し、評価が満たされたときに通知します。 メトリック アラートは既定でステートフルです。つまり、状態が変更されたときにのみ (発生、解決済み)、通知を送信します。 ステートレスにする場合は、「[条件が満たされるたびにメトリック アラートが発生するようにする](alerts-troubleshoot-metric.md#make-metric-alerts-occur-every-time-my-condition-is-met)」を参照してください。
 
 ## <a name="how-do-metric-alerts-work"></a>メトリック アラートの機能
 
@@ -130,8 +130,6 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 > - 複数のリソースを監視するメトリック アラート ルール – 新しいリソースがスコープに追加されたとき
 > - 連続して生成されないメトリックを監視するメトリック アラート ルール (スパース メトリック) – メトリックが生成されていない 24 時間以上の期間の後に生成されたとき
 
-
-
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートによるスケールの監視
 
 ここまでは、単一の Azure リソースに関連する 1 つ以上のメトリックの時系列を監視するために、単一のメトリック アラートを使用する方法について説明しました。 1 つのアラート ルールを多数のリソースに適用する場合はよくあります。 また、Azure Monitor では、同じ Azure リージョンに存在するリソースに対して、メトリック警告ルールが 1 つの (同じ種類の) 複数のリソースの監視をサポートしています。 
@@ -140,14 +138,15 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 | サービス | パブリック Azure | Government | 中国 |
 |:--------|:--------|:--------|:--------|
-| 仮想マシン<sup>1</sup>  | **はい** | **はい** | **はい** |
+| 仮想マシン<sup>1</sup>  | **はい** | **あり** | **はい** |
 | SQL Server データベース | **はい** | **はい** | **あり** |
-| SQL Server エラスティック プール | **はい** | **はい** | **あり** |
-| NetApp ファイル容量プール | **はい** | **はい** | **あり** |
+| SQL Server エラスティック プール | **はい** | **あり** | **あり** |
+| NetApp ファイル容量プール | **あり** | **あり** | **あり** |
 | NetApp ファイル ボリューム | **あり** | **はい** | **あり** |
-| キー コンテナー | **あり** | **はい** | **あり** |
-| Azure Cache for Redis | **はい** | **はい** | **あり** |
+| キー コンテナー | **あり** | **あり** | **あり** |
+| Azure Cache for Redis | **あり** | **あり** | **あり** |
 | Data Box Edge のデバイス | **はい** | **はい** | **あり** |
+| Recovery Services コンテナー | **あり** | **いいえ** | **いいえ** |
 
 <sup>1</sup> 仮想マシンのネットワーク メトリック (受信ネットワーク合計、送信ネットワーク合計、受信フロー数、送信フロー数、受信フローの最大作成速度、送信フローの最大作成速度) に対してはサポートされていません。
 
@@ -174,7 +173,6 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 ## <a name="supported-resource-types-for-metric-alerts"></a>メトリック アラートでサポートされているリソースの種類
 
 サポートされているリソースの種類の完全な一覧については、こちらの[記事](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)をご覧ください。
-
 
 ## <a name="next-steps"></a>次のステップ
 

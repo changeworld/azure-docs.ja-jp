@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 10/26/2020
-  ms.openlocfilehash: 753a2b112929b785526e32df9c9836f48b8675ba
-  ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+  ms.date: 06/02/2021
+  ms.openlocfilehash: 6232e7623ef154702feac80dd0575c63f74ed1ec
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/08/2021
-  ms.locfileid: "98034953"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131425522"
 landingContent:
 - title: Azure Policy について
   linkLists:
@@ -33,10 +33,12 @@ landingContent:
       url: ./concepts/assignment-structure.md
     - text: 除外の構造
       url: ./concepts/exemption-structure.md
-  - linkListType: video
+  - linkListType: architecture
     links:
-    - text: Build 2018 での Azure Policy
-      url: https://channel9.msdn.com/events/Build/2018/THR2030
+    - text: クラウド導入フレームワーク (ガバナンス)
+      url: /azure/cloud-adoption-framework/govern/
+    - text: エンタープライズ規模のランディング ゾーン
+      url: /azure/cloud-adoption-framework/ready/enterprise-scale/
 - title: はじめに
   linkLists:
   - linkListType: quickstart
@@ -57,6 +59,8 @@ landingContent:
       url: ./assign-policy-rest-api.md
     - text: ポリシーを割り当てる (ARM テンプレート)
       url: ./assign-policy-template.md
+    - text: ポリシーを割り当てる (Bicep)
+      url: ./assign-policy-bicep.md
     - text: ポリシーを割り当てる (Terraform)
       url: ./assign-policy-terraform.md
   - linkListType: tutorial
@@ -118,7 +122,7 @@ landingContent:
     - text: Azure のガバナンスに関する YouTube チャンネル
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: 製品機能のリクエスト
-      url: https://feedback.azure.com/forums/915958-azure-governance?category_id=345055
+      url: https://feedback.azure.com/d365community/forum/675ae472-f324-ec11-b6e6-000d3a4f0da0?c=5b220886-f324-ec11-b6e6-000d3a4f0da0
     - text: Azure のガバナンスの Tech Community
       url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
 - title: リファレンス
@@ -131,16 +135,8 @@ landingContent:
       url: /powershell/module/az.resources/#policy
     - text: Azure PowerShell (ポリシーの分析情報)
       url: /powershell/module/az.policyinsights#policy-insights
-    - text: REST (ポリシーの分析情報)
-      url: /rest/api/policy-insights/
-    - text: REST (割り当て)
-      url: /rest/api/resources/policyassignments
-    - text: REST (定義)
-      url: /rest/api/resources/policydefinitions
-    - text: REST (除外)
-      url: /rest/api/resources/policyexemptions
-    - text: REST (イニシアティブ)
-      url: /rest/api/resources/policysetdefinitions
+    - text: REST
+      url: /rest/api/policy/
     - text: Resource Manager テンプレート
       url: /azure/templates/microsoft.authorization/allversions
 - title: リファレンス (その他)

@@ -3,20 +3,18 @@ title: 分析情報トークンの使用 - Bing Visual Search
 titleSuffix: Azure Cognitive Services
 description: Bing Visual Search API で画像の分析情報トークンを使用して、画像に関する分析情報を取得する方法を説明します。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
-ms.author: scottwhi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 161266a69308175637f5967b2ded48621d4d9c53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04239a1fb2ce060ac2622c8607d66c5b5aacc790
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102424072"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663195"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する
 
@@ -262,7 +260,7 @@ namespace VisualSearchInsightsToken
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成</a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
-* このコードをコンパイルして実行するための、[JDK 7 または 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
+* このコードをコンパイルして実行するための、[JDK 7 または 8](/azure/developer/java/fundamentals/java-support-on-azure)。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
 
 
 ## <a name="run-the-java-application"></a>Java アプリケーションを実行する

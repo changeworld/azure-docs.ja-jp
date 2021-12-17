@@ -1,22 +1,23 @@
 ---
-title: Azure Automation への Windows Hybrid Runbook Worker のデプロイ
-description: この記事では、お使いのローカル データ センターまたはクラウド環境内の Windows ベースのマシン上で Runbook を実行するために使用できる Hybrid Runbook Worker をデプロイする方法について説明します。
+title: Automation でエージェントベースの Windows Hybrid Runbook Worker をデプロイする
+description: この記事では、お使いのローカル データ センターまたはクラウド環境内の Windows ベースのマシン上で Runbook を実行するために使用できるエージェントベースの Hybrid Runbook Worker をデプロイする方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/02/2021
+ms.date: 10/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9f2047a07586f078555032ed9001fdb602fe3b2a
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d2588864b2a6bdba913c9a7fb0bbc7af62e8c4c1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293789"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248566"
 ---
-# <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
+# <a name="deploy-an-agent-based-windows-hybrid-runbook-worker-in-automation"></a>Automation でエージェントベースの Windows Hybrid Runbook Worker をデプロイする
 
 Azure Automation のユーザー Hybrid Runbook Worker 機能を使用すると、Azure または Azure 以外のマシン ([Azure Arc 対応サーバー](../azure-arc/servers/overview.md)に登録されているサーバーを含む) 上で Runbook を直接実行することができます。 ロールをホストしているマシンまたはサーバーで、環境内のリソースに対して Runbook を直接実行して、それらのローカル リソースを管理できます。
 
-Azure Automation によって Runbook が格納および管理された後、1 つ以上の指定されたマシンに配信されます。 この記事では、Windows マシンにユーザー Hybrid Runbook Worker をデプロイする方法、worker を削除する方法、および Hybrid Runbook Worker グループを削除する方法について説明します。
+Azure Automation によって Runbook が格納および管理された後、1 つ以上の選択されたマシンに配信されます。 この記事では、Windows マシンにユーザー Hybrid Runbook Worker をデプロイする方法、worker を削除する方法、および Hybrid Runbook Worker グループを削除する方法について説明します。 ユーザー Hybrid Runbook Worker については、「[拡張機能ベースの Windows または Linux ユーザー Hybrid Runbook Worker を Automation にデプロイする](./extension-based-hybrid-runbook-worker-install.md)」もご覧ください
 
 Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照して、オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を確認します。
 
@@ -26,7 +27,7 @@ Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker 
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics ワークスペース
 
-Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)、[Azure portal](../azure-monitor/logs/quick-create-workspace.md) のいずれかを使用して作成できます。
+Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../azure-monitor/logs/quick-create-workspace.md) のいずれかを使用して作成できます。
 
 Azure Monitor Log Analytics ワークスペースがない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/logs/design-logs-deployment.md)を確認してください。
 
@@ -87,13 +88,13 @@ Hybrid Runbook Worker を自動的にデプロイするには、2 つの方法�
 
 ### <a name="importing-a-runbook-from-the-runbook-gallery"></a>Runbook ギャラリーから Runbook をインポートする
 
-インポートの手順の詳細については、「[Azure portal を使用して GitHub から PowerShell Runbook をインポートする](automation-runbook-gallery.md#import-a-powershell-runbook-from-github-with-the-azure-portal)」をご覧ください。 インポートする Runbook の名前は、**Create Automation Windows HybridWorker** です。
+インポートの手順の詳細については、「[Azure portal を使用して GitHub から Runbook をインポートする](automation-runbook-gallery.md#import-runbooks-from-github-with-the-azure-portal)」をご覧ください。 インポートする Runbook の名前は、**Create Automation Windows HybridWorker** です。
 
 Runbook では、次のパラメーターが使用されます。
 
 | パラメーター | Status | 説明 |
 | ------- | ----- | ----------- |
-| `Location` | Mandatory | Log Analytics ワークスペースの場所。 |
+| `Location` | Mandatory | スクリプトが実行される Automation アカウントの場所。 |
 | `ResourceGroupName` | Mandatory | Automation アカウントのリソース グループ。 |
 | `AccountName` | Mandatory | Hybrid Run Worker が登録される Automation アカウントの名前。 |
 | `CreateLA` | Mandatory | true の場合、`WorkspaceName` の値を使用して Log Analytics ワークスペースを作成します。 false の場合、`WorkspaceName` の値は既存のワークスペースを参照する必要があります。 |
@@ -168,22 +169,22 @@ Windows Hybrid Runbook Worker をインストールして構成するには、�
 
 1. ターゲット マシンに Log Analytics エージェントをデプロイします。
 
-    * Azure VM の場合、[Windows 用仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md)を使用して、Windows 用 Log Analytics エージェントをインストールします。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 Azure Resource Manager テンプレート、PowerShell、または Azure Policy を使用すれば、組み込みポリシーである [*Linux* または *Windows* VM 用の Log Analytics エージェントのデプロイ](../governance/policy/samples/built-in-policies.md#monitoring)を割り当てることができます。 エージェントがインストールされたら、Automation アカウントの Hybrid Runbook Worker グループにマシンを追加できます。
+    - Azure VM の場合、[Windows 用仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md)を使用して、Windows 用 Log Analytics エージェントをインストールします。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 Azure Resource Manager テンプレート、PowerShell、または Azure Policy を使用すれば、"[*Linux* または *Windows* VM 用の Log Analytics エージェントのデプロイ](../governance/policy/samples/built-in-policies.md#monitoring)" という組み込みポリシー定義を割り当てることができます。 エージェントがインストールされたら、Automation アカウントの Hybrid Runbook Worker グループにマシンを追加できます。
     
-    * Azure 以外のマシンの場合は、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用して Log Analytics エージェントをインストールできます。 Arc 対応サーバーでは、以下の方法を使用した Log Analytics エージェントのデプロイがサポートされています。
+    - Azure 以外のマシンの場合は、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用して Log Analytics エージェントをインストールできます。 Azure Arc 対応サーバーは、以下の方法を使用した Log Analytics エージェントのデプロイをサポートしています。
     
-        - VM 拡張機能フレームワークの使用。
+      - VM 拡張機能フレームワークの使用。
         
-            Azure Arc 対応サーバーのこの機能を使用すると、Azure 以外の Windows や Linux のサーバーに、Log Analytics エージェントの VM 拡張機能をデプロイできます。 VM 拡張機能は、ハイブリッド コンピューターまたは Arc 対応サーバーで管理されているサーバーで、次の方法を使用して管理できます。
+        Azure Arc 対応サーバーのこの機能を使用すると、Azure 以外の Windows や Linux のサーバーに、Log Analytics エージェントの VM 拡張機能をデプロイできます。 VM 拡張機能は、ハイブリッド コンピューターまたは Arc 対応サーバーで管理されているサーバーで、次の方法を使用して管理できます。
         
-            - [Azure Portal](../azure-arc/servers/manage-vm-extensions-portal.md)
-            - [Azure CLI](../azure-arc/servers/manage-vm-extensions-cli.md)
-            - [Azure PowerShell](../azure-arc/servers/manage-vm-extensions-powershell.md)
-            - Azure [Resource Manager テンプレート](../azure-arc/servers/manage-vm-extensions-template.md)
+        - [Azure Portal](../azure-arc/servers/manage-vm-extensions-portal.md)
+        - [Azure CLI](../azure-arc/servers/manage-vm-extensions-cli.md)
+        - [Azure PowerShell](../azure-arc/servers/manage-vm-extensions-powershell.md)
+        - Azure [Resource Manager テンプレート](../azure-arc/servers/manage-vm-extensions-template.md)
         
-        - Azure Policy の使用。
+      - Azure Policy の使用。
         
-            この方法を利用し、Azure Policy の "[Log Analytics エージェントを Linux または Windows Azure Arc マシンにデプロイする](../governance/policy/samples/built-in-policies.md#monitoring)" という組み込みポリシーを使用して、Arc 対応サーバーに Log Analytics エージェントがインストールされているかどうかを監査します。 エージェントがインストールされていない場合は、修復タスクを使用して自動的にそれがデプロイされます。 または、Azure Monitor for VMs を使用してマシンを監視する予定の場合は、代わりに "[Azure Monitor for VMs を有効にする](../governance/policy/samples/built-in-initiatives.md#monitoring)" というイニシアティブを使用して Log Analytics エージェントのインストールと構成を行います。
+      この方法を利用し、Azure Policy の "[Log Analytics エージェントを Linux または Windows Azure Arc マシンにデプロイする](../governance/policy/samples/built-in-policies.md#monitoring)" という組み込みポリシー定義を使用して、Arc 対応サーバーに Log Analytics エージェントがインストールされているかどうかを監査します。 エージェントがインストールされていない場合は、修復タスクを使用して自動的にそれがデプロイされます。 Azure Monitor for VMs を使用してマシンを監視する予定の場合は、代わりに [Azure Monitor for VMs を有効にする](../governance/policy/samples/built-in-initiatives.md#monitoring)というイニシアティブを使用して Log Analytics エージェントのインストールと構成を行います。
 
     Azure Policy を使用して、Windows または Linux 用の Log Analytics エージェントをインストールすることをお勧めします。
 
@@ -191,7 +192,7 @@ Windows Hybrid Runbook Worker をインストールして構成するには、�
 
     Windows 用 Log Analytics エージェントにより、マシンが Azure Monitor Log Analytics ワークスペースに接続されます。 マシンにエージェントをインストールし、ワークスペースに接続すると、Hybrid Runbook Worker に必要なコンポーネントが自動的にダウンロードされます。
 
-    エージェントが Log Analytics ワークスペースに正常に接続されたら、数分後に次のクエリを実行して、ワークスペースにハートビート データが送信されていることを確認できます。
+    エージェントがお使いの Log Analytics ワークスペースに正常に接続されたら、数分後に次のクエリを実行して、ワークスペースにハートビート データが送信されていることを確認できます。
 
     ```kusto
     Heartbeat 

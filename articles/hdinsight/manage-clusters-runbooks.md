@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
-ms.openlocfilehash: 5eb0f353579233041bb5ccba46de2549ada7e9b7
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d8091bd5e1bb95ff29d0be948a464f587a49f62f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864790"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819743"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>チュートリアル: Azure Automation で Azure HDInsight クラスターを作成する
 
@@ -27,7 +27,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-* 既存の [Azure Automation アカウント](../automation/automation-quickstart-create-account.md)。
+* 既存の [Azure Automation アカウント](../automation/quickstarts/create-account-portal.md)。
 * 既存の [Azure ストレージ アカウント](../storage/common/storage-account-create.md)。クラスター記憶域として使用されます。
 
 ## <a name="install-hdinsight-modules"></a>HDInsight モジュールをインストールする

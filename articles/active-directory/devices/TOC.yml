@@ -4,8 +4,6 @@
   items:
     - name: デバイス ID とは
       href: overview.md
-    - name: Enterprise State Roaming とは
-      href: enterprise-state-roaming-overview.md
 - name: チュートリアル
   expanded: false
   items:
@@ -26,6 +24,8 @@
       href: concept-azure-ad-join.md
     - name: ハイブリッド Azure AD 参加済みデバイス
       href: concept-azure-ad-join-hybrid.md
+    - name: デバイス登録フロー
+      href: device-registration-how-it-works.md
     - name: オンプレミスのリソースへの SSO
       href: azuread-join-sso.md
     - name: プライマリ更新トークン
@@ -47,48 +47,52 @@
       href: device-management-azure-portal.md
     - name: 古いデバイスを管理する
       href: manage-stale-devices.md
-    - name: Enterprise State Roaming を有効にする
-      href: enterprise-state-roaming-enable.md
-    - name: Windows Azure VM と Azure AD
+    - name: Azure Linux VM と Azure AD
+      href: howto-vm-sign-in-azure-ad-linux.md
+    - name: Azure Windows VM と Azure AD
       href: howto-vm-sign-in-azure-ad-windows.md
     - name: 仮想デスクトップ インフラストラクチャ
       href: howto-device-identity-virtual-desktop-infrastructure.md
+    - name: よく寄せられる質問
+      href: faq.yml
     - name: デバイス ID のトラブルシューティング
       items:
         - name: ハイブリッド Azure AD 参加済みの最新 Windows デバイスのトラブルシューティングを行う
           href: troubleshoot-hybrid-join-windows-current.md
+        - name: 保留中のデバイス状態のトラブルシューティング
+          href: /troubleshoot/azure/active-directory/pending-devices
         - name: dsregcmd を使用したトラブルシューティング
           href: troubleshoot-device-dsregcmd.md
         - name: ハイブリッド Azure AD 参加済みのダウンレベル Windows デバイスのトラブルシューティング
           href: troubleshoot-hybrid-join-windows-legacy.md
+    - name: Enterprise State Roaming
+      items:
+        - name: Enterprise State Roaming とは
+          href: enterprise-state-roaming-overview.md
+        - name: Enterprise State Roaming を有効にする
+          href: enterprise-state-roaming-enable.md
+        - name: Enterprise State Roaming を有効にする
+          href: enterprise-state-roaming-faqs.yml
         - name: Enterprise State Roaming に関する問題のトラブルシューティング
           href: enterprise-state-roaming-troubleshooting.md
-    - name: よく寄せられる質問
-      items:
-        - name: FAQ
-          href: faq.md
-        - name: Enterprise State Roaming を有効にする
-          href: enterprise-state-roaming-faqs.md
+        - name: Enterprise State Roaming GPO の設定
+          href: enterprise-state-roaming-group-policy-settings.md
+        - name: Enterprise State Roaming Windows の設定
+          href: enterprise-state-roaming-windows-settings-reference.md
 - name: リファレンス
   items:
     - name: TLS 1.2 を適用する
       href: reference-device-registration-tls-1-2.md
-    - name: Enterprise State Roaming GPO の設定
-      href: enterprise-state-roaming-group-policy-settings.md
-    - name: Enterprise State Roaming Windows の設定
-      href: enterprise-state-roaming-windows-settings-reference.md
     - name: Graph API
-      items:
-        - name: デバイス ID API
-          href: /graph/api/resources/device
+      href: /graph/api/resources/device
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム
-      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+      href: 'https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789'
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-active-directory.html
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+      href: 'https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing'
     - name: サービスの更新情報
       href: ../fundamentals/whats-new.md
     - name: Stack Overflow

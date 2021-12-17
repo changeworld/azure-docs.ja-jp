@@ -7,30 +7,32 @@ ms.service: mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: 641dfa2439513138b5dd8f56843e81c31eb38609
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: b26cfa516cc9080faac7d47c512b054e5909c1c6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389776"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345245"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>インポートとエクスポートを使用した MySQL データベースの移行
 
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 この記事では、MySQL Workbench を使用して、Azure Database for MySQL サーバーにデータをインポートおよびエクスポートする 2 つの一般的な方法について説明します。
 
 移行についての詳細かつ包括的なガイダンスについては、[移行ガイド リソース](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)を参照してください。 
 
-その他の移行シナリオについては、[データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。 
+その他の移行シナリオについては、[データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 MySQL データベースの移行を開始する前に、次のことを行う必要があります。
+
 - [Azure portal を使用して、Azure Database for MySQL サーバー](quickstart-create-mysql-server-database-using-azure-portal.md)を作成する。
 - インポートおよびエクスポートを行うために [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) または他のサードパーティの MySQL ツールをダウンロードしてインストールする。
 
 ## <a name="create-a-database-on-the-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーでのデータベースの作成
+
 MySQL Workbench、Toad、または Navicat を使用して、Azure Database for MySQL サーバー上に空のデータベースを作成します。 データベースは、ダンプされたデータが含まれるデータベースと同じ名前にすることも、別の名前でデータベースを作成することもできます。
 
 接続するには、次のようにします。
@@ -48,7 +50,7 @@ MySQL Workbench、Toad、または Navicat を使用して、Azure Database for 
 > [!TIP]
 > データベース全体をダンプして復元するシナリオでは、代わりに[ダンプと復元の](concepts-migrate-dump-restore.md)の手法を使用します。
 
-次のシナリオでは、MySQL ツールを使用して、データベースをご利用の MySQL データベースにインポートおよびエクスポートします。 その他のツールについては、[MySQL から Azure Database への移行ガイド](https://github.com/Azure/azure-mysql/blob/master/MigrationGuide/MySQL%20Migration%20Guide_v1.1.pdf)の「移行方法」セクション (22 ページ) に移動してください。 
+次のシナリオでは、MySQL ツールを使用して、データベースをご利用の MySQL データベースにインポートおよびエクスポートします。 その他のツールについては、[MySQL から Azure Database への移行ガイド](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)の「移行方法」セクション (22 ページ) に移動してください。 
 
 - 既存の MySQL データベースから少数のテーブルを選択して、Azure MySQL Database にインポートする必要がある場合は、インポートとエクスポートの手法を使用することをお勧めします。 これにより、不要なテーブルを移行から除外して、時間とリソースを節約できます。 たとえば、[mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) では `--include-tables` または `--exclude-tables` スイッチを、[mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables) では `--tables` スイッチを使用します。
 - テーブル以外のデータベース オブジェクトを移行する場合は、それらのオブジェクトを明示的に作成します。 制約 (主キー、外部キー、インデックス)、ビュー、関数、プロシージャ、トリガーなど、移行するデータベース オブジェクトを含めます。
@@ -66,17 +68,20 @@ MySQL Workbench、Toad、または Navicat を使用して、Azure Database for 
 ## <a name="performance-recommendations-for-import-and-export"></a>インポートおよびエクスポートのパフォーマンスに関する推奨事項
 
 データのインポートとエクスポートで最適なパフォーマンスを得るために、次のようにすることをお勧めします。
--   データを読み込む前に、クラスター化インデックスと主キーを作成します。 主キーの順序でデータを読み込みます。
--   データの読み込みが完了するまでセカンダリ インデックスの作成を遅らせます。
--   データを読み込む前に外部キー制約を無効にします。 外部キーのチェックを無効にすると、パフォーマンスが大幅に向上します。 読み込み後に制約を有効にし、データを検証して参照整合性を確認します。
--   データを並列で読み込みます。 リソースの上限に達するような過剰な並列処理を避け、Azure Portal で使用可能なメトリックを使用してリソースを監視します。
--   パーティション テーブルを適宜使用します。
+
+- データを読み込む前に、クラスター化インデックスと主キーを作成します。 主キーの順序でデータを読み込みます。
+- データの読み込みが完了するまでセカンダリ インデックスの作成を遅らせます。
+- データを読み込む前に外部キー制約を無効にします。 外部キーのチェックを無効にすると、パフォーマンスが大幅に向上します。 読み込み後に制約を有効にし、データを検証して参照整合性を確認します。
+- データを並列で読み込みます。 リソースの上限に達するような過剰な並列処理を避け、Azure Portal で使用可能なメトリックを使用してリソースを監視します。
+- パーティション テーブルを適宜使用します。
 
 ## <a name="import-and-export-data-by-using-mysql-workbench"></a>MySQL Workbench を使用してデータをインポートおよびエクスポートする
+
 MySQL Workbench でデータをエクスポートおよびインポートする方法には、オブジェクト ブラウザーのコンテキスト メニューからと [ナビゲーター] ペインからの 2 つがあります。 各方法の目的は異なります。
 
 > [!NOTE]
-> MySQL Workbench で MySQL 単一サーバーまたはフレキシブル サーバー (プレビュー) への接続を追加する場合は、次のようにします。
+> MySQL Workbench で MySQL 単一サーバーまたはフレキシブル サーバーへの接続を追加する場合、次のようにします。
+>
 > - MySQL 単一サーバーの場合は、ユーザー名が *\<username@servername>* の形式であることをご確認ください。
 > - MySQL フレキシブル サーバーの場合は、 *\<username>* のみを使用します。 *\<username@servername>* を使用して接続すると、その接続は失敗します。
 
@@ -109,6 +114,7 @@ CSV からテーブルをインポートするには、次のようにします�
 1. **[データのインポート]** ペインで、 **[次へ]** を選択します。 ウィザードでデータがインポートされます。
 
 ### <a name="run-the-sql-data-export-and-import-wizards-from-the-navigator-pane"></a>[ナビゲーター] ペインから SQL データのエクスポートおよびインポート ウィザードを実行する
+
 ウィザードを使用して、MySQL Workbench または mysqldump コマンドから生成された SQL データをエクスポートまたはインポートします。 そのウィザードには、 **[ナビゲーター]** ペインからアクセスできます。あるいは、メイン メニューから **[サーバー]** を選択することもできます。
 
 #### <a name="export-data"></a>データのエクスポート
@@ -142,5 +148,6 @@ CSV からテーブルをインポートするには、次のようにします�
 1. **[インポートの開始]** を選択してインポート プロセスを開始します。
 
 ## <a name="next-steps"></a>次の手順
+
 - 別の移行方法については、「[ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行](concepts-migrate-dump-restore.md)」を参照してください。
 - Azure Database for MySQL へのデータベースの移行について詳しくは、「[データベース移行ガイド](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)」をご覧ください。

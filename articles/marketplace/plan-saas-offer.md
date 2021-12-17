@@ -1,23 +1,26 @@
 ---
-title: Microsoft コマーシャル マーケットプレースの SaaS オファーを計画する方法
-description: Microsoft パートナー センターのコマーシャル マーケットプレース プログラムを使用して、Microsoft AppSource、Azure Marketplace、またはクラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために新しいサービスとしてのソフトウェア (SaaS) オファーを計画する方法。
+title: Microsoft コマーシャル マーケットプレース向けの SaaS オファーを計画する - Azure Marketplace
+description: Microsoft パートナー センターのコマーシャル マーケットプレース プログラムを使用して、Microsoft AppSource、Azure Marketplace、またはクラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために新しいサービスとしてのソフトウェア (SaaS) オファーを計画します。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/26/2021
-ms.openlocfilehash: 6f08fa0b2126112fa17fd61be6f44bb5cc6d5396
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.date: 10/26/2021
+ms.openlocfilehash: d2caec4bff61fde962a231858d3dfc675426d076
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552157"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848270"
 ---
-# <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS オファーを計画する方法
+# <a name="plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース向けの SaaS オファーを計画する
 
 この記事では、サービスとしてのソフトウェア (SaaS) オファーを Microsoft コマーシャル マーケットプレースに公開するためのさまざまなオプションと要件について説明します。 SaaS では、オンライン サブスクリプションを介してソリューションを顧客に配布し、ライセンスを付与します。 SaaS 発行者は、お客様のプランの使用をサポートするために必要なインフラストラクチャの管理および支払いを行います。 この記事は、パートナー センターでコマーシャル マーケットプレースに公開するためにオファーを準備するのに役立ちます。
+
+> [!TIP]
+> Azure portal での SaaS オファー購入の顧客のビューを表示するには、「[Azure portal での SaaS オファーの購入](/marketplace/purchase-saas-offer-in-azure-portal)」および「[Microsoft AppSource での SaaS アプリの購入](/marketplace/purchase-software-appsource)」を参照してください。
 
 ## <a name="listing-options"></a>リスト オプション
 
@@ -27,10 +30,10 @@ ms.locfileid: "106552157"
 
 | リスト オプション | トランザクション プロセス |
 | ------------ | ------------- |
-| [Contact me (お問い合わせ)] | 顧客は、登録情報から直接連絡します。``*`` |
-| 無料試用版 | 顧客は、Azure Active Directory (Azure AD) を介してターゲットの URL にリダイレクトされます。``*`` |
-| Get it now (今すぐ入手する) (無料) | 顧客は、Azure AD を介してターゲットの URL にリダイレクトされます。``*`` |
-| Microsoft を通じた販売  | Microsoft を通じて販売されたオファーは、"_取引可能_" オファーと呼ばれます。 取引可能なオファーは、Microsoft が公開元の代わりにソフトウェア ライセンス費用の交換を支援する際のオファーです。 Microsoft は、公開元に代わって選択された価格モデルを使用して SaaS オファーの料金を請求し、顧客トランザクションを管理します。 Azure インフラストラクチャの利用料金は、お客様 (パートナー) に直接課金されます。 価格モデルのインフラストラクチャ コストを考慮する必要があります。 これについては、以下の「[SaaS 課金](#saas-billing)」で詳細に説明します。  |
+| [Contact me (お問い合わせ)] | 顧客は、登録情報から直接連絡します。``*``<br>オファーを公開した後で、別のリスト オプションに変更することができます。 |
+| 無料試用版 | 顧客は、Azure Active Directory (Azure AD) を介してターゲットの URL にリダイレクトされます。``*``<br>オファーを公開した後で、別のリスト オプションに変更することができます。 |
+| Get it now (今すぐ入手する) (無料) | 顧客は、Azure AD を介してターゲットの URL にリダイレクトされます。``*``<br>オファーを公開した後で、別のリスト オプションに変更することができます。 |
+| Microsoft を通じた販売  | Microsoft を通じて販売されたオファーは、"_取引可能_" オファーと呼ばれます。 取引可能なオファーは、Microsoft が公開元の代わりにソフトウェア ライセンス費用の交換を支援する際のオファーです。 Microsoft は、公開元に代わって選択された価格モデルを使用して SaaS オファーの料金を請求し、顧客トランザクションを管理します。 Azure インフラストラクチャの利用料金は、お客様 (パートナー) に直接課金されます。 価格モデルのインフラストラクチャ コストを考慮する必要があります。 これについては、以下の「[SaaS 課金](#saas-billing)」で詳細に説明します。<br><br>**注**: オファーが公開されると、このオプションを変更することはできません。  |
 |||
 
 ``*``ソフトウェア ライセンス トランザクションのすべての側面 (注文、フルフィルメント、使用状況測定、課金、請求、支払い、収集を含みますが、これらに限定されません) のサポートは、公開元が担当します。
@@ -49,15 +52,13 @@ _[問い合わせ]_ リスト オプションには、技術的な要件はあ�
 
 _[今すぐ入手 (無料)]_ 、 _[無料試用版]_ 、 _[Sell through Microsoft]\(Microsoft を通じた販売\)_ リスト オプションには、次の技術的な要件があります。
 
-- SaaS アプリケーションは、マルチテナント ソリューションである必要があります。
-- ユーザーを認証するために、Microsoft アカウント (MSA) と [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) の両方を有効にすることができます。
-- ランディング ページを作成する必要があります。 ユーザーは、オファーを購入するとランディング ページにリダイレクトされます。 これは、必要とされる追加のプロビジョニングやセットアップがあればユーザーが終えるのに役立ちます。 ランディング ページの作成に関するガイダンスについては、次の記事を参照してください。
+- サイトでの購入者を認証するために、Microsoft アカウント (MSA) と [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) の両方を有効にする必要があります。 Azure AD アカウントを持つ購入者が、Azure AD を使用してシングル サインオン (SSO) でアプリケーションにサインインできるようにする必要があります。
+- オファーを購入した顧客を対象に、シームレスなサインインとオンボード エクスペリエンスを提供するランディング ページを作成する必要があります。 ランディング ページは、顧客が、必要な追加のプロビジョニングやセットアップを完了するのに役立ちます。 ランディング ページの作成に関するガイダンスについては、次の記事を参照してください。
   - [取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する](azure-ad-transactable-saas-landing-page.md)
   - [コマーシャル マーケットプレースで無料または試用版 SaaS オファーのランディング ページを構築する](azure-ad-free-or-trial-landing-page.md)
 
 これらの追加の技術的な要件は、" _[Sell through Microsoft]\(Microsoft を通じた販売\)_ " (取引可能) リスト オプションにのみ適用されます。
 
-- 購入ユーザーがランディング ページにアクセスするには、Azure AD およびシングル サインオン (SSO) ID の管理と認証が必要です。 詳細なガイダンスについては、「[コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー](azure-ad-saas.md)」を参照してください。
 - [SaaS フルフィルメント API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) を使用して、Azure Marketplace と Microsoft AppSource を統合する必要があります。 SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、削除する必要があります。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。 収集されたフィールドの使用方法を示す図と詳細な説明については、この [API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) に関するドキュメントをご覧ください。
 - オファーに対して少なくとも 1 つのプランを作成する必要があります。 プランの価格は、公開する前に選択する価格モデル ("_定額_" または "_ユーザーごと_") に基づきます。 [プラン](#plans)の詳細については、この記事の後半で説明します。
 - 顧客は、いつでもオファーをキャンセルできます。
@@ -74,7 +75,7 @@ _[今すぐ入手 (無料)]_ 、 _[無料試用版]_ 、 _[Sell through Microsof
 
     構成するランディング ページは、24 時間 365 日稼働している必要があります。 これは、コマーシャル マーケットプレースでの SaaS オファーの新しい購入について、またはオファーのアクティブなサブスクリプションの構成要求について、通知を受ける唯一の方法です。
 
-- **接続 Webhook**: Microsoft から送信する必要があるすべての非同期イベント (例: SaaS サブスクリプションがキャンセルされた) について、接続 Webhook の URL を指定する必要があります。 イベントについてお客様に通知するために、Microsoft によってこの URL が呼び出されます。
+- **[接続 Webhook]** : Microsoft からパートナーに送信する必要があるすべての非同期イベントのため (SaaS サブスクリプションが取り消されたときなど)、パートナーは [接続 Webhook の URL を指定する](./partner-center-portal/pc-saas-fulfillment-api-v2.md#implementing-a-webhook-on-the-saas-service)必要があります。 イベントについてお客様に通知するために、Microsoft によってこの URL が呼び出されます。
 
   指定する Webhook は、24 時間 365 日稼働している必要があります。 これは、コマーシャル マーケットプレースを介して購入された顧客の SaaS サブスクリプションに関する更新について通知を受ける唯一の方法です。
 
@@ -109,17 +110,17 @@ SaaS オファーを公開すると、Microsoft AppSource、Azure Marketplace、
 SaaS オファーが IT ソリューション (Azure Marketplace) とビジネス ソリューション (AppSource) の "*両方*" である場合は、各オンライン ストアに適用されるカテゴリおよびサブカテゴリを選択します。 両方のオンライン ストアに公開されるオファーには、IT ソリューション "*および*" ビジネス ソリューションとしての価値提案が存在する必要があります。
 
 > [!IMPORTANT]
-> [従量制課金](partner-center-portal/saas-metered-billing.md)での SaaS オファーは、Azure Marketplace と Azure portal を通じて利用できます。 プライベート プランのみを含む SaaS オファーは、Azure portal から利用できます。
+> [従量制課金](partner-center-portal/saas-metered-billing.md)での SaaS オファーは、Azure Marketplace と Azure portal を通じて利用できます。 プライベート プランのみを含む SaaS オファーは、Azure portal と AppSource から利用できます。
 
 | 従量制課金 | パブリック プラン | プライベート プラン | 次で利用可能: |
 |---|---|---|---|
 | はい             | はい         | いいえ           | Azure Marketplace と Azure portal |
-| はい             | はい         | Yes          | Azure Marketplace と Azure portal* |
+| はい             | はい         | はい          | Azure Marketplace と Azure portal* |
 | はい             | いいえ          | はい          | Azure portal のみ |
-| いいえ              | いいえ          | はい          | Azure portal のみ |
+| いいえ              | いいえ          | はい          | Azure portal と AppSource |
 |||||
 
-&#42; このオファーのプライベート プランは、Azure portal 経由でのみ利用可能です
+&#42; オファーのプライベート プランは、Azure portal および AppSource からのみ利用できます。
 
 たとえば、従量制課金とプライベート プランのみ (パブリックプランなし) のオファーを購入するのは、Azure portal のお客様のみになります。 詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](private-offers.md)」を参照してください。
 
@@ -134,7 +135,6 @@ SaaS オファーが IT ソリューション (Azure Marketplace) とビジネ�
 > [!NOTE]
 > コマーシャル マーケットプレースの標準契約を使用してオファーを公開した後に、独自のカスタム使用条件を使用することはできません。 これは、"または" のシナリオです。 ソリューションは、標準契約または独自の使用条件のいずれかの下で提供します。 標準契約の条件を変更する必要がある場合は、Standard Contract Amendments (標準契約の修正) を使用して変更することができます。
 
-
 ## <a name="microsoft-365-integration"></a>Microsoft 365 の統合
 
 Microsoft 365 との統合により、SaaS オファーでは、Teams アプリ、Office アドイン、SharePoint Framework ソリューションなどの関連する無料アドインを通じて、複数の Microsoft 365 アプリ サーフェイス間で接続されたエクスペリエンスを提供できます。 次の情報を提供することで、顧客が E2E ソリューション (Web サービスと関連するアドイン) におけるすべてのファセットを簡単に検出し、それらを 1 つのプロセスでデプロイできるように支援できます。 
@@ -142,19 +142,20 @@ Microsoft 365 との統合により、SaaS オファーでは、Teams アプリ�
     
      Microsoft を通じてオファーを販売する場合、これは顧客サブスクリプションのアクティブ化を完了するために必要なユーザー基本情報を取得するランディング ページで登録したものと同じ AAD アプリ ID になります。 詳細なガイダンスについては、「[取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する](azure-ad-transactable-saas-landing-page.md)」を参照してください。 
     
-   -    リンクする SaaS オファーで動作する関連アドインの一覧を提供します。 顧客は AppSource で E2E ソリューションを見つけることができ、管理者は SaaS と、Microsoft 365 管理センターを介して同じプロセスでリンクされたすべての関連アドインの両方をデプロイできます。
+   -    リンクする SaaS オファーで動作する関連アドインの一覧を提供します。 顧客は Microsoft AppSource で E2E ソリューションを見つけることができ、管理者は SaaS とリンクされたすべての関連アドインの両方を、Microsoft 365 管理センターから同じプロセスでデプロイできます。
     
         関連するアドインをリンクするには、アドインの AppSource リンクを指定する必要があります。これは、アドインをまず AppSource に公開する必要があることを意味します。 リンクに対応しているアドインの種類としては、Teams アプリ、Office アドイン、および SharePoint Framework (SPFx) ソリューションがあります。 リンクされた各アドインは、SaaS オファーに対して一意である必要があります。 
 
 製品がリンクされた場合、AppSource で検索すると、SaaS とリンクされたすべてのアドインの両方を含む結果が 1 つ返されます。顧客は、SaaS オファーの製品詳細ページとリンクされたアドイン間を移動できます。IT 管理者は Microsoft 365 管理センター内の統合されて接続されたエクスペリエンスを通じて、SaaS とリンクされたアドインの両方を同じプロセス内で確認およびデプロイできます。 詳細については、[Microsoft 365 アプリのテストとデプロイ - Microsoft 365 管理](/microsoft-365/admin/manage/test-and-deploy-microsoft-365-apps)に関する記事を参照してください。
 
 ### <a name="microsoft-365-integration-support-limitations"></a>Microsoft 365 統合サポートの制限事項
+
 単一の E2E ソリューションとしての検出は、すべてのケースにおいて AppSource でサポートされますが、Microsoft 365 管理センターを介した前述の E2E ソリューションの簡略化されたデプロイについては、次のシナリオではサポートされません。
 
+   - "Contact me (お問い合わせ)" リストのみのオファー。 
    - 同じアドインが複数の SaaS オファーにリンクされている。
    - SaaS オファーがアドインにリンクされているが、Microsoft Graph と統合されていないため、AAD アプリ ID は提供されていない。
   - SaaS オファーはアドインにリンクされているが、Microsoft Graph 統合用に提供された AAD アプリ ID が複数の SaaS オファー間で共有されている。
-
  
 ## <a name="offer-listing-details"></a>オファー登録情報の詳細
 
@@ -215,18 +216,18 @@ Microsoft 365 との統合により、SaaS オファーでは、Teams アプリ�
 
   これらのロゴは、オンライン ストアのさまざまな場所で使用されます。
 
-  - 小のロゴは、Azure Marketplace の検索結果、Microsoft AppSource のメイン ページ、検索結果ページに表示されます。
+  - 小さいロゴは、Azure Marketplace の検索結果および AppSource のメイン ページと検索結果ページに表示されます。
   - 中のロゴは、Microsoft Azure で新しいリソースを作成すると表示されます。
-  - 大のロゴは、Azure Marketplace と Microsoft AppSource のオファー登録情報ページに表示されます。
+  - 大きいロゴは、Azure Marketplace および AppSource のオファー掲載ページに表示されます。
 
 - **メディア - スクリーンショット**: オファーがどのように機能するかを示す、次の要件を含むスクリーンショットを 1 つ以上最大 5 つ追加する必要があります。
   - 1280 x 720 ピクセル
-  - .png ファイル
+  - PNG ファイルの種類
   - キャプションを含める必要があります
 - **メディア - ビデオ** (省略可能): オファーのデモを行い、次の要件を満たす最大 4 つのビデオを追加できます。
   - 名前
   - URL:YouTube または Vimeo のみでホストされる必要があります。
-  - サムネイル: 1280 x 720 .png ファイル
+  - サムネイル: 1280 x 720 PNG ファイル
 
 > [!Note]
 > オファーは、一般的な[コマーシャル マーケットプレースの認定ポリシー](/legal/marketplace/certification-policies#100-general)と、コマーシャル マーケットプレースに公開される[サービスとしてのソフトウェアのポリシー](/legal/marketplace/certification-policies#1000-software-as-a-service-saas)を満たしている必要があります。
@@ -266,12 +267,8 @@ Microsoft を通じて販売される SaaS アプリ オファーでは、定額
 | Azure 使用コスト (D1/1 コア) | 顧客ではなく公開元に直接課金されます |
 | 顧客は Microsoft から請求されます | 1 か月あたり $100.00 (公開元は、ライセンス料金の中で、発生したパススルー インフラストラクチャ コストを考慮する必要があります) |
 | **Microsoft が請求** | **1 か月あたり $100** |
-| Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います<br>`*` 対象の SaaS アプリの場合、Microsoft はライセンス コストの 90% を支払います| 1 か月あたり $80.00<br>``*`` 1 か月あたり $90.00 |
-|||
-
-**`*`マーケットプレース サービス料金の減額** - コマーシャル マーケットプレースで公開される特定の SaaS オファーについて、Microsoft では、マーケットプレース サービス料金を 20% (Microsoft 公開元契約の説明どおり) から 10% 減額します。 お客様のオファーが対象となるには、そのオファーが Microsoft によって Azure IP 共同販売インセンティブとして指定されている必要があります。 Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 資格が満たされると、翌月の 1 日に有効なすべてのトランザクションについて、サービス料金の減額を受け、この適用は、Azure IP 共同販売インセンティブ対象の状態が失われるまで継続されます。 IP 共同販売の資格の詳細については、[共同販売の状態の要件](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブの VM やマネージド アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS オファーにも適用されます。
-
-## <a name="preview-audience"></a>プレビュー対象ユーザー
+| Microsoft は 3% の Marketplace サービス料金を請求し、ライセンス コストの 97% を支払います | 1 か月あたり $97.00 |
+|
 
 プレビュー対象ユーザーは、オンライン ストアで公開される前に、オファーへアクセスできます。 このユーザーは、コマーシャル マーケットプレイスでオファーがどのように表示されるかを確認し、公開する前にエンドツーエンドの機能をテストすることができます。 
 
@@ -321,7 +318,7 @@ Microsoft がサポートするマーケティングおよびセールス チャ
 
 - **CSP を通して再販する**: このオプションを使用して、Microsoft クラウド ソリューションプロバイダー (CSP) パートナーがバンドルされたオファーの一部としてソリューションを再販できるようにします。 このプログラムの詳細については、「[クラウド ソリューション プロバイダー プログラム](cloud-solution-providers.md)」を参照してください。
 
-- **Microsoft と共同販売する**: このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 共同販売の資格の詳細については、[共同販売の状態の要件](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 評価のためにオファーを準備する方法の詳細については、「[パートナー センターの [共同販売] オプション](commercial-marketplace-co-sell.md)」を参照してください。
+- **Microsoft と共同販売する**: このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 共同販売の資格の詳細については、[共同販売の状態の要件](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 評価のためにオファーを準備する方法の詳細については、「[パートナー センターの [共同販売] オプション](co-sell-configure.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

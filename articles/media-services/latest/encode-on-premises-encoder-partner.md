@@ -8,12 +8,12 @@ ms.author: johndeu
 ms.date: 08/31/2020
 ms.topic: how-to
 ms.service: media-services
-ms.openlocfilehash: a8b40206a73672b1d6bbb0ecded26b9f974be6b9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 553fb2b55a5b183b596016c2942106ead99e79c4
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277591"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387166"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>オンプレミス ライブ ストリーミング エンコーダーを検証する方法
 
@@ -26,7 +26,7 @@ Media Services は、Azure Media Services オンプレミス エンコーダー 
 ## <a name="pass-through-live-event-verification"></a>パススルー Live Event 検証
 
 1. Media Services アカウントで、**ストリーミング エンドポイント** が実行されていることを確認します。 
-2. **パススルー** Live Event を作成し、起動します。 <br/> 詳細については、[ライブ イベントの状態と課金](live-event-states-billing-concept.md)に関するページを参照してください。
+2. **パススルー** ライブ イベント (基本的または標準) を作成し、起動します。 <br/> 詳細については、[ライブ イベントの状態と課金](live-event-states-billing-concept.md)に関するページを参照してください。
 3. 取り込み URL を取得し、URL を使用してマルチビットレート ライブ ストリームを Media Services に送信するようにオンプレミス エンコーダーを構成します。
 4. プレビュー URL を取得し、それを使用して、エンコーダーからの入力が実際に受信されていることを確認します。
 5. 新しい **アセット** オブジェクトを作成します。

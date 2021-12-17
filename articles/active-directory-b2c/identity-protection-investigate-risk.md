@@ -5,22 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 03/03/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
-ms.author: mimart
-author: msmimart
-manager: celested
+ms.author: kengaderdus
+author: kengaderdus
+manager: CelesteDG
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8919285f31e04a51ce10afe3313b28cf86b64ee0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ae32e78ea7d20b2e62ee91aa5182a7409f4ab0bb
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055195"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036963"
 ---
 # <a name="investigate-risk-with-identity-protection-in-azure-ad-b2c"></a>Azure AD B2C の Identity Protection を使用したリスクの調査
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 Identity Protection は、ご自分の Azure AD B2C テナントに継続的なリスク検出を提供するものです。 これにより、組織は ID ベースのリスクを検出、調査し、修復できます。 Identity Protection には、Azure AD B2C テナントの ID のリスクを調査するために使用できるリスク レポートが用意されています。 この記事では、リスクを調査して軽減する方法について説明します。
 
@@ -70,7 +68,7 @@ Identity Protection の一部の機能には、Azure AD B2C Premium P2 が必要
 
 危険なユーザー レポートによって提供される情報を使用して、管理者は、以下を見つけることができます。
 
-- どのユーザーにリスクがあり、リスクが修復されたか無視されたか
+- どのユーザーが **危険** な状態になっているか、およびそのリスクが **修復** されたか **無視** されたかを確認できる **リスクの状態**
 - 検出の詳細
 - すべての危険なサインインの履歴
 - リスクの履歴
@@ -83,15 +81,15 @@ Identity Protection の一部の機能には、Azure AD B2C Premium P2 が必要
 - ユーザーによるサインインをブロックする
 - Azure ATP を使用してさらに調査する
 
+管理者は、Azure portal でユーザーのリスクを無視するか、[ユーザーのリスクを無視](/graph/api/riskyusers-dismiss?preserve-view=true&view=graph-rest-beta)するための Microsoft Graph API を使用してプログラムによってユーザーのリスクを無視するかを選択できます。 ユーザーのリスクを無視するには、管理者特権が必要です。 リスクの修復は、危険なユーザー、またはそのユーザーの代理の管理者が、パスワードのリセットなどを通じて実行できます。
+
 ### <a name="navigating-the-risky-users-report"></a>危険なユーザー レポート内の移動
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
-
-1. **[セキュリティ]** で、 **[危険なユーザー (プレビュー)]** を選択します。
+1. **[セキュリティ]** で、 **[危険なユーザー]** を選択します。
 
    ![危険なユーザー](media/identity-protection-investigate-risk/risky-users.png)
 
@@ -107,15 +105,15 @@ Identity Protection の一部の機能には、Azure AD B2C Premium P2 が必要
 リスク検出レポートによって提供される情報を使用して、管理者は、以下を見つけることができます。
 
 - 各リスク検出についての種類を含む情報
-- 同時にトリガーされた他のリスク
-- サインインが試行された場所
+- 同時にトリガーされたその他のリスク。
+- サインインが試行された場所。
 
 管理者は、ユーザーのリスク レポートまたはサインイン レポートに戻り、収集された情報に基づいてアクションを実行できます。
 
 ### <a name="navigating-the-risk-detections-report"></a>リスク検出レポート内の移動
 
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
-1. **[セキュリティ]** で、 **[リスク検出 (プレビュー)]** を選択します。
+1. **[セキュリティ]** で、 **[リスク検出]** を選択します。
 
    ![リスク検出](media/identity-protection-investigate-risk/risk-detections.png)
 

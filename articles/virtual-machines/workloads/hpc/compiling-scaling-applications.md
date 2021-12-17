@@ -5,17 +5,19 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 4ab2c599bea4b2e3e682755a80a2ee348e4de7ef
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 408f55592ee7a192172c85e7a417db0b277f0f46
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606778"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054516"
 ---
 # <a name="scaling-hpc-applications"></a>HPC アプリケーションのスケール
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure 上の HPC アプリケーションの最適なスケールアップとスケールアウトのパフォーマンスには、特定のワークロードに対するパフォーマンスの調整と最適化の実験が必要です。 このセクションと VM シリーズ固有のページでは、アプリケーションをスケールするための一般的なガイダンスについて説明します。
 
@@ -89,14 +91,14 @@ $ gfortran [gFortran flags]
 ```
    
 ### <a name="pgi-compiler"></a>PGI コンパイラ
-PGI Community Edition バージョン 17 は AMD EPYC で動作することが確認されています。 PGI コンパイル バージョンの STREAM は、プラットフォームの全メモリ帯域幅を提供します。 新しい Community Edition 18.10 (2018 年 11 月) も同様に機能するはずです。 以下は Intel コンパイラで最適にコンパイルすることができるサンプル CLI です。
+PGI Community Edition 17 は、AMD EPYC と連携して動作することが確認されています。 PGI コンパイル バージョンの STREAM は、プラットフォームの全メモリ帯域幅を提供します。 新しい Community Edition 18.10 (2018 年 11 月) も同様に機能するはずです。 以下は Intel コンパイラで最適にコンパイルすることができるサンプル CLI です。
 
 ```bash
 pgcc $(OPTIMIZATIONS_PGI) $(STACK) -DSTREAM_ARRAY_SIZE=800000000 stream.c -o stream.pgi
 ```
 
 ### <a name="intel-compiler"></a>Intel コンパイラ
-Intel コンパイラ バージョン 18 は AMD EPYC で動作することが確認されています。 以下は Intel コンパイラで最適にコンパイルすることができるサンプル CLI です。
+Intel Compiler 18 は、AMD EPYC で動作することが確認されています。 以下は Intel コンパイラで最適にコンパイルすることができるサンプル CLI です。
 
 ```bash
 icc -o stream.intel stream.c -DSTATIC -DSTREAM_ARRAY_SIZE=800000000 -mcmodel=large -shared-intel -Ofast –qopenmp
@@ -112,4 +114,7 @@ gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure での [HPC](/azure/architecture/topics/high-performance-computing/) の詳細を確認する。
+- [Azure での HPC アプリケーションの最適化に関する学習モジュール](/learn/modules/optimize-tightly-coupled-hpc-apps/)を使用して、知識をテストします。
+- [HBv3 シリーズの概要](hbv3-series-overview.md)および [HC シリーズの概要](hc-series-overview.md)に関する記事を確認します。
+- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
+- Azure での [HPC](/azure/architecture/topics/high-performance-computing/) の詳細を確認する。

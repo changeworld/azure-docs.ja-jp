@@ -10,14 +10,16 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: c70b02bdc554c723f53ad5f8c0d36c5eca87811e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 938e5b88c635213b5614efe4c9dc646a25ee8d06
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774370"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471499"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>VM とイメージの Linux エージェントを無効化または削除する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Linux エージェントを削除する前に、Linux エージェントの削除後に VM で実行できなくなる処理について理解しておく必要があります。
 
@@ -139,7 +141,7 @@ az vm generalize -g <resource_group> -n <vm_name>
 az image create -g <resource_group> -n <image_name> --source <vm_name>
 ```
 
-**Shared Image Gallery にイメージのバージョンを作成する**
+**Azure Compute Gallery でのイメージ バージョンの作成**
 
 ```azurecli
 az sig image-version create \

@@ -1,5 +1,5 @@
 ---
-title: Anomaly Detector API の利用に関するベスト プラクティス
+title: Anomaly Detector 一変量 API を使用する場合のベスト プラクティス
 titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API を使用して異常を検出する場合のベスト プラクティスについて説明します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: 43ccde054a9630b251aa6c206028d29c7c699316
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de1662fd39030082dfbfef4d38d1803b3d6f82e5
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98936200"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113297300"
 ---
-# <a name="best-practices-for-using-the-anomaly-detector-api"></a>Anomaly Detector API の使用に関するベスト プラクティス
+# <a name="best-practices-for-using-the-anomaly-detector-univariate-api"></a>Anomaly Detector 一変量 API を使用するためのベスト プラクティス
 
 Anomaly Detector API はステートレスな異常検出サービスです。 結果の精度とパフォーマンスは、次の事項によって影響を受けます。
 

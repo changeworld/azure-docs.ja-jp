@@ -9,12 +9,12 @@ metadata:
   author: sethmanheim
   ms.author: sethm
   ms.date: 03/11/2020
-  ms.openlocfilehash: 89a4b291490ae5fe1cb13c254f6350c0a03e255e
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.openlocfilehash: 86890739ba3db0c8254e71f7317d910421adebd4
+  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102508879"
+  ms.lasthandoff: 06/11/2021
+  ms.locfileid: "112029911"
 landingContent:
 - title: Azure Notification Hubs について
   linkLists:
@@ -73,13 +73,13 @@ landingContent:
     - text: PowerShell
       url: /powershell/module/az.notificationhubs/
     - text: CLI
-      url: /cli/azure/ext/notification-hub/notification-hub
+      url: /cli/azure/notification-hub
 - title: リソース
   linkLists:
   - linkListType: concept
     links:
     - text: よく寄せられる質問
-      url: notification-hubs-push-notification-faq.md
+      url: notification-hubs-push-notification-faq.yml
     - text: サポート オプション
       url: https://azure.microsoft.com/support/options/
     - text: Microsoft Q&A 質問ページ

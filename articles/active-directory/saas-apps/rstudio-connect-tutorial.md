@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と RStudio Connect SAML Authentication の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と RStudio Connect SAML Authentication の統合'
 description: Azure Active Directory と RStudio Connect SAML Authentication の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,40 +9,39 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/21/2020
+ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 84e8c7fc1d2655ea0685ac79841a9c467bf766cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 785bb3b1425e76b3cb7dcf1954f663849b97b345
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182393"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309038"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rstudio-connect-saml-authentication"></a>チュートリアル:Azure Active Directory と RStudio Connect SAML Authentication の統合
+# <a name="tutorial-azure-ad-sso-integration-with-rstudio-connect-saml-authentication"></a>チュートリアル: Azure AD SSO と RStudio Connect SAML Authentication の統合
 
-このチュートリアルでは、RStudio Connect SAML Authentication と Azure Active Directory (Azure AD) を統合する方法について説明します。
-RStudio Connect SAML Authentication と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、RStudio Connect SAML Authentication と Azure Active Directory (Azure AD) を統合する方法について説明します。 RStudio Connect SAML Authentication と Azure AD を統合すると、次のことが可能になります。
 
 * RStudio Connect SAML Authentication にアクセスできるユーザーを Azure AD で管理できます。
-* ユーザーが自分の Azure AD アカウントを使用して RStudio Connect SAML Authentication に自動的にサインイン (シングル サインオン) できるように設定できます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* ユーザーが自分の Azure AD アカウントで RStudio Connect SAML Authentication に自動的にサインインするように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
 RStudio Connect SAML Authentication と Azure AD の統合を構成するには、次のものが必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * RStudio Connect SAML Authentication。 [45 日間無料評価版](https://www.rstudio.com/products/connect/)があります。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* RStudio Connect SAML Authentication では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* RStudio Connect SAML Authentication では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
-* RStudio Connect SAML Authentication では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* RStudio Connect SAML Authentication では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
-## <a name="adding-rstudio-connect-saml-authentication-from-the-gallery"></a>ギャラリーからの RStudio Connect SAML Authentication の追加
+## <a name="add-rstudio-connect-saml-authentication-from-the-gallery"></a>ギャラリーからの RStudio Connect SAML Authentication の追加
 
 Azure AD への RStudio Connect SAML Authentication の統合を構成するには、マネージド SaaS アプリの一覧にギャラリーから RStudio Connect SAML Authentication を追加する必要があります。
 
@@ -53,7 +52,6 @@ Azure AD への RStudio Connect SAML Authentication の統合を構成するに�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**RStudio Connect SAML Authentication**」と入力します。
 1. 結果のパネルから **[RStudio Connect SAML Authentication]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-rstudio-connect-saml-authentication"></a>RStudio Connect SAML Authentication の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、RStudio Connect SAML Authentication に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと RStudio Connect SAML Authentication の関連ユーザーとの間にリンク関係を確立する必要があります。
@@ -61,10 +59,10 @@ Azure AD への RStudio Connect SAML Authentication の統合を構成するに�
 RStudio Connect SAML Authentication に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 2. **[RStudio Connect SAML Authentication の SSO の構成](#configure-rstudio-connect-saml-authentication-sso)** - アプリケーション側でシングル サインオンを構成します。
-    * **[RStudio Connect SAML Authentication のテスト ユーザーの作成](#create-rstudio-connect-saml-authentication-test-user)** - RStudio Connect SAML Authentication で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+    1. **[RStudio Connect SAML Authentication のテスト ユーザーの作成](#create-rstudio-connect-saml-authentication-test-user)** - RStudio Connect SAML Authentication で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -73,21 +71,17 @@ RStudio Connect SAML Authentication に対して Azure AD SSO を構成してテ
 
 1. Azure portal の **RStudio Connect SAML Authentication** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** initiated モードで構成する場合は、次の手順を実行します。`<example.com>` は、お使いの RStudio Connect SAML Authentication のサーバー アドレスおよびポートで置き換えてください。
-
-    ![RStudio Connect SAML Authentication のドメインと URL のシングル サインオン情報](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://<example.com>/__login__/saml` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<example.com>/__login__/saml/acs` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    ![RStudio Connect SAML Authentication のメタデータのアップロード](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<example.com>/` という形式で URL を入力します。
 
@@ -175,10 +169,10 @@ SSOInitiated = IdPAndSP
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した RStudio Connect SAML Authentication に自動的にサインインされます 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した RStudio Connect SAML Authentication に自動的にサインインされます。 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [RStudio Connect SAML Authentication] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した RStudio Connect SAML Authentication に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [RStudio Connect SAML Authentication] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した RStudio Connect SAML Authentication に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-RStudio Connect SAML Authentication を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+RStudio Connect SAML Authentication を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

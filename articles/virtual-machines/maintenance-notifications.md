@@ -3,19 +3,21 @@ title: メンテナンスの通知
 description: Azure で実行されている仮想マシンのメンテナンス通知の概要。
 author: shants123
 ms.service: virtual-machines
-ms.subservice: maintenance-control
+ms.subservice: maintenance
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 92cb780a80f1010fd1c2f5d19fe616e0285de73b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4330f171b9fe7559a22cb90e6fbd18598f04dd40
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564528"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216082"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>計画メンテナンスの通知の処理
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure は、定期的に更新を行い、仮想マシンのホスト インフラストラクチャの信頼性、パフォーマンス、セキュリティの向上に努めています。 更新とは、ホスティング環境の修正、ハードウェアのアップグレードや使用停止などの変更のことです。 これらの更新のほとんどは、ホストされている仮想マシンに影響を及ぼすことなく完了します。 ただし、更新による影響が生じる場合もあります。
 
@@ -81,7 +83,7 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 
 **Q:計画メンテナンスに関する通知を受け取るにはどうすればよいですか?**
 
-**A:** 計画済みメンテナンス ウェーブは、1 つ以上の Azure リージョンにスケジュールを設定することで開始されます。 開始直後に、メール通知がサブスクリプションの管理者、共同管理者、所有者、および共同作成者に送信されます (サブスクリプションごとに 1 メール)。 この通知の追加のチャネルと受信者は、アクティビティ ログ アラートを使用して構成できます。 計画済みメンテナンスが既にスケジュールされているリージョンに仮想マシンをデプロイした場合、通知を受け取ることはできないため、その VM のメンテナンスの状態を確認する必要があります。
+**A:** 計画済みメンテナンス ウェーブは、1 つ以上の Azure リージョンにスケジュールを設定することで開始されます。 開始直後に、メール通知がサブスクリプションの管理者、共同管理者、所有者、および共同作成者に送信されます (すべての受信者が追加されたサブスクリプションごとに 1 つのメール)。 この通知の追加のチャネルと受信者は、アクティビティ ログ アラートを使用して構成できます。 計画済みメンテナンスが既にスケジュールされているリージョンに仮想マシンをデプロイした場合、通知を受け取ることはできないため、その VM のメンテナンスの状態を確認する必要があります。
 
 **Q:ポータル、PowerShell、または CLI に計画メンテナンスの情報が表示されません。何がおかしいのでしょうか?**
 

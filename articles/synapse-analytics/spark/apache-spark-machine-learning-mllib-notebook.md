@@ -9,12 +9,13 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 5caa41b852bf55a11489db6c0bab871b20720e05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: c0be8241b438a010a44c4b9dbabbb05d5ac290b3
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670660"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217091"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>チュートリアル:Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
 
@@ -195,9 +196,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 2 つの DataFrame が得られたところで、次のタスクは、モデル式を作成して、トレーニング DataFrame に対してそれを実行することです。 その後、テスト用 DataFrame に対して検証できます。 さまざまなバージョンのモデル式を試して、さまざまな組み合わせの影響を確認してください。
 
 > [!Note]
-> モデルを保存するためには、*Storage BLOB データ共同作成者* の Azure ロールが必要です。 お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロールの割り当ての追加]** を選択します。 Storage BLOB データ共同作成者ロールを Azure SQL Database サーバーに割り当てます。 所有者特権を持つメンバーのみが、この手順を実行できます。 
->
->さまざまな Azure の組み込みロールについては、[こちらのガイド](../../role-based-access-control/built-in-roles.md)を参照してください。
+> モデルを保存するには、"*Storage Blob データ共同作成者*" ロールを Azure SQL Database サーバーのリソース スコープに割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。 所有者特権を持つメンバーのみが、この手順を実行できます。
 
 ```python
 ## Create a new logistic regression object for the model

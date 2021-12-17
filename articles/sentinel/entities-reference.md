@@ -1,36 +1,38 @@
 ---
-title: Azure Sentinel エンティティ型リファレンス | Microsoft Docs
-description: この記事では、Azure Sentinel のエンティティ型とその必須識別子について説明します。
+title: Microsoft Azure Sentinel エンティティ型リファレンス | Microsoft Docs
+description: この記事では、Microsoft Azure Sentinel のエンティティ型とその必須識別子について説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 17a4df3037f9922d92fca924de0d246458cfa08e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c5917011bd937e88811c9f0cffaed7f8c1c61f00
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456185"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521208"
 ---
-# <a name="azure-sentinel-entity-types-reference"></a>Azure Sentinel エンティティ型リファレンス
+# <a name="microsoft-sentinel-entity-types-reference"></a>Microsoft Azure Sentinel エンティティ型リファレンス
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ## <a name="entity-types-and-identifiers"></a>エンティティ型と識別子
 
-次の表では、現在 Azure Sentinel でマッピングに使用できる **エンティティ型** と、各エンティティ型の **識別子** として使用できる **属性** を示します。これは、[分析ルール ウィザード](tutorial-detect-threats-custom.md)の [エンティティ マッピング](map-data-fields-to-entities.md) セクションの **[識別子]** ドロップダウンの一覧に表示されます。
+次の表では、現在 Microsoft Azure Sentinel でマッピングに使用できる **エンティティ型** と、各エンティティ型の **識別子** として使用できる **属性** を示します。これは、[分析ルール ウィザード](detect-threats-custom.md)の [エンティティ マッピング](map-data-fields-to-entities.md) セクションの **[識別子]** ドロップダウン リストに表示されます。
 
 「**必須識別子**」列の各識別子は、そのエンティティを識別するために最低限必要なものです。 ただし、必須識別子だけでは、"*一意の*" ID を提供するのに十分ではない場合があります。 使用する識別子が多いほど、ID が一意になる可能性が高くなります。 1 つのエンティティ マッピングに最大で 3 つの識別子を使用できます。
 
-最適な結果が得られるようにするには (保証された一意の識別)、可能な限り、「**最も強い識別子**」列の識別子を使用する必要があります。 強い識別子を複数使用すると、さまざまなデータ ソースやスキーマの強い識別子の相関関係が可能になります。 これにより、Azure Sentinel で特定のエンティティについてより包括的な分析情報を提供できます。
+最適な結果が得られるようにするには (保証された一意の識別)、可能な限り、「**最も強い識別子**」列の識別子を使用する必要があります。 強い識別子を複数使用すると、さまざまなデータ ソースやスキーマの強い識別子の相関関係が可能になります。 これにより、Microsoft Azure Sentinel で特定のエンティティについてより包括的な分析情報を提供できます。
 
 | エンティティ型 | 識別子 | 必須識別子 | 最も強い識別子 |
 | - | - | - | - |
@@ -66,7 +68,7 @@ ms.locfileid: "102456185"
 
 *エンティティ名: Account*
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "account" |
 | 名前 | String | アカウントの名前。 このフィールドには、ドメインが追加されていない名前のみを設定する必要があります。 |
@@ -102,7 +104,7 @@ ms.locfileid: "102456185"
 
 ## <a name="host"></a>Host
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "host" |
 | DnsDomain | String | このホストが属している DNS ドメイン。 既知の場合は、ドメインの完全な DNS サフィックスが含まれている必要があります。 |
@@ -135,11 +137,11 @@ ms.locfileid: "102456185"
 
 *エンティティ名: IP*
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "ip" |
 | Address | String | 文字列としての IP アドレス (例: 127.0.0.1、IPv4 または IPv6 のいずれか)。 |
-| 場所 | GeoLocation | IP エンティティに関連付けられている地理的な場所のコンテキスト。 |
+| 場所 | GeoLocation | IP エンティティに関連付けられている地理的な場所のコンテキスト。 <br><br>詳細については、「[Microsoft Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする (パブリック プレビュー)](geolocation-data-api.md)」も参照してください。 |
 |
 
 IP エンティティの強い識別子:
@@ -147,7 +149,7 @@ IP エンティティの強い識別子:
 
 ## <a name="malware"></a>マルウェア
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "malware" |
 | 名前 | String | ベンダーによるマルウェアの名前 (例: `Win32/Toga!rfn`)。 |
@@ -162,7 +164,7 @@ IP エンティティの強い識別子:
 
 ## <a name="file"></a>ファイル
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "file" |
 | ディレクトリ | String | ファイルへの完全なパスです。 |
@@ -178,7 +180,7 @@ IP エンティティの強い識別子:
 
 ## <a name="process"></a>Process
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "process" |
 | ProcessId | String | プロセス ID。 |
@@ -208,7 +210,7 @@ IP エンティティの強い識別子:
 
 *エンティティ名: CloudApplication*
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "cloud-application" |
 | AppId | int | アプリケーションの技術的 ID。 これは、[クラウド アプリケーション識別子](#cloud-application-identifiers)のリストで定義されている値のいずれかである必要があります。 AppId フィールドの値は省略可能です。 |
@@ -226,7 +228,7 @@ IP エンティティの強い識別子:
 
 *エンティティ名: DNS*
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "dns" |
 | DomainName | String | アラートに関連付けられている DNS レコードの名前。 |
@@ -243,7 +245,7 @@ DNS エンティティの弱い識別子:
 
 ## <a name="azure-resource"></a>Azure リソース
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "azure-resource" |
 | ResourceId | String | リソースの Azure リソース ID。 |
@@ -260,7 +262,7 @@ Azure リソース エンティティの強い識別子:
 
 *エンティティ名: FileHash*
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "filehash" |
 | アルゴリズム | 列挙型 | ハッシュ アルゴリズムの種類。 指定できる値<li>Unknown<li>MD5<li>SHA1<li>SHA256<li>SHA256AC |
@@ -274,7 +276,7 @@ Azure リソース エンティティの強い識別子:
 
 *エンティティ名: RegistryKey*
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "registry-key" |
 | Hive | Enum? | 次のいずれかの値です。<li>HKEY_LOCAL_MACHINE<li>HKEY_CLASSES_ROOT<li>HKEY_CURRENT_CONFIG<li>HKEY_USERS<li>HKEY_CURRENT_USER_LOCAL_SETTINGS<li>HKEY_PERFORMANCE_DATA<li>HKEY_PERFORMANCE_NLSTEXT<li>HKEY_PERFORMANCE_TEXT<li>HKEY_A<li>HKEY_CURRENT_USER |
@@ -288,7 +290,7 @@ Azure リソース エンティティの強い識別子:
 
 *エンティティ名: RegistryValue*
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "registry-value" |
 | キー | Entity (RegistryKey) | レジストリ キーのエンティティ。 |
@@ -307,7 +309,7 @@ Azure リソース エンティティの強い識別子:
 
 *エンティティ名: SecurityGroup*
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "security-group" |
 | DistinguishedName | String | グループの識別名。 |
@@ -322,7 +324,7 @@ Azure リソース エンティティの強い識別子:
 
 ## <a name="url"></a>URL
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "url" |
 | url | Uri | エンティティが指している完全な URL。 |
@@ -338,7 +340,7 @@ URL エンティティの弱い識別子:
 
 *エンティティ名: IoTDevice*
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "iotdevice" |
 | IoTHub | Entity (AzureResource) | デバイスが属している IoT Hub を表す AzureResource エンティティ。 |
@@ -365,7 +367,7 @@ IoT デバイス エンティティの弱い識別子:
 
 ## <a name="mailbox"></a>Mailbox
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "mailbox" |
 | MailboxPrimaryAddress | String | メールボックスのプライマリ アドレス。 |
@@ -383,9 +385,9 @@ IoT デバイス エンティティの弱い識別子:
 *エンティティ名: MailCluster*
 
 > [!NOTE]
-> **MDO** = **Microsoft Defender for Office 365**、旧称 Office 365 Advanced Threat Protection (O365 ATP)。
+> **Microsoft Defender for Office 365** は、以前は Office 365 Advanced Threat Protection (O365 ATP) と呼ばれていました。
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "mail-cluster" |
 | NetworkMessageIds | IList&lt;String&gt; | メール クラスターの一部であるメール メッセージ ID。 |
@@ -399,10 +401,10 @@ IoT デバイス エンティティの弱い識別子:
 | IsVolumeAnomaly | Bool? | これがボリューム異常メール クラスターかどうかを示します。 |
 | source | String | メール クラスターのソース (既定値は "O365 ATP")。 |
 | ClusterSourceIdentifier | String | このメール クラスターのソースであるメールのネットワーク メッセージ ID。 |
-| ClusterSourceType | String | メール クラスターのソースの種類。 これは、MDO の MailClusterSourceType の設定に対応します (上記のメモを参照)。 |
-| ClusterQueryStartTime | DateTime? | クラスター開始日時 - クラスター カウント クエリの開始日時として使用されます。 通常、終了日時から MDO の DaysToLookBack の設定を引いたものの日付 (上のメモを参照)。 |
+| ClusterSourceType | String | メール クラスターのソースの種類。 これは、Microsoft Defender for Office 365 の MailClusterSourceType 設定にマップされます (上記のメモを参照してください)。 |
+| ClusterQueryStartTime | DateTime? | クラスター開始日時 - クラスター カウント クエリの開始日時として使用されます。 通常、終了日時から Microsoft Defender for Office 365 の DaysToLookBack の設定を引いたものの日付 (上のメモを参照)。 |
 | ClusterQueryEndTime | DateTime? | クラスター終了日時 - クラスター カウント クエリの終了日時として使用されます。 通常、メール データの受信日時。 |
-| ClusterGroup | String | MDO で使用される Kusto クエリ キーに対応します (上のメモを参照)。 |
+| ClusterGroup | String | Microsoft Defender for Office 365 で使用される Kusto クエリキーに対応します (上記のメモを参照してください)。 |
 |
 
 メール クラスター エンティティの強い識別子:
@@ -412,7 +414,7 @@ IoT デバイス エンティティの弱い識別子:
 
 *エンティティ名: MailMessage*
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "mail-message" |
 | ファイル | IList&lt;File&gt; | このメール メッセージの添付ファイルのファイル エンティティ。 |
@@ -446,7 +448,7 @@ IoT デバイス エンティティの弱い識別子:
 
 *エンティティ名: SubmissionMail*
 
-| フィールド | Type | 説明 |
+| フィールド | 型 | 説明 |
 | ----- | ---- | ----------- |
 | Type | String | "SubmissionMail" |
 | SubmissionId | Guid? | 申請 ID。 |
@@ -501,7 +503,7 @@ SubmissionMail エンティティの強い識別子:
 |17865|Ariba Inc|
 |18432|Zscaler|
 |19688|Xactly|
-|20595|Microsoft Cloud App Security|
+|20595|Microsoft Defender for Cloud Apps|
 |20892|Microsoft SharePoint Online|
 |20893|Microsoft Exchange Online|
 |20940|Active Directory|
@@ -540,6 +542,6 @@ SubmissionMail エンティティの強い識別子:
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Azure Sentinel でのエンティティの構造、識別子、およびスキーマについて説明しました。
+このドキュメントでは、Microsoft Azure Sentinel でのエンティティの構造、識別子、スキーマについて学習しました。
 
 [エンティティ](entities-in-azure-sentinel.md)と[エンティティ マッピング](map-data-fields-to-entities.md)に関する詳細をご確認ください。 

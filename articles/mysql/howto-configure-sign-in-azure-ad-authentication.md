@@ -1,19 +1,22 @@
 ---
 title: Azure Active Directory の使用 - Azure Database for MySQL
 description: Azure Database for MySQL での認証に Azure Active Directory (Azure AD) を設定する方法について説明します
-author: sunilagarwal
-ms.author: sunila
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: 492e56e09129f9d47b863624cd72cd508801c143
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d05b48432fd976bf7e5b8add01532aae361968ec
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728268"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167191"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 この記事では、Azure Database for MySQL を使用して Azure Active Directory アクセスを構成する方法と、Azure AD トークンを使用して接続する方法について説明します。
 
@@ -173,9 +176,9 @@ CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
 ```sql
 CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
 ```
-
 > [!NOTE]
-> Azure AD を通じてユーザーを認証しても、Azure Database for MySQL データベース内のオブジェクトにアクセスするためのアクセス許可はユーザーに付与されません。 必要なアクセス許可をユーザーに手動で付与する必要があります。
+> 1. MySQL では先頭と末尾のスペースが無視されるため、ユーザー名の先頭または末尾にスペースを含めることはできません。 
+> 2. Azure AD を通じてユーザーを認証しても、Azure Database for MySQL データベース内のオブジェクトにアクセスするためのアクセス許可はユーザーに付与されません。 必要なアクセス許可をユーザーに手動で付与する必要があります。
 
 ## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>Azure Database for MySQL で Azure AD グループを作成する
 

@@ -3,20 +3,33 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 09/30/2019
+ms.date: 05/07/2021
 ms.author: alkohli
-ms.openlocfilehash: ca7b83d24f2416b224963559361faf5a7775cd0d
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: a46552639b9cdea135216e544ec4c51f4d9dda3d
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631540"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736256"
 ---
-Microsoft がディスクを受け取ってスキャンすると、注文の状態は " **受取済み** " に更新されます。 その後、デバイスの損傷または改ざんの印がないか物理的に検証されます。
+Microsoft がディスクを受け取ってスキャンすると、注文の状態は "**受取済み**" に更新されます。 その後、デバイスの損傷または改ざんの印がないか物理的に検証されます。
 
 検証が完了すると、Data Box は Azure データセンターのネットワークに接続されます。 データのコピーが自動的に開始されます。 データのサイズによっては、コピー処理が完了するまでに数時間から数日かかる場合があります。 コピー ジョブの進行状況は、ポータルで監視することができます。
 
-コピーが完了すると、注文の状態が " **完了** " に更新されます。
+### <a name="review-copy-errors-from-upload"></a>アップロードで発生したコピー エラーを確認する
+
+再試行できないエラーのためにファイルをアップロードできない場合は、続行する前にエラーを確認するように通知されます。 エラーはデータ コピー ログに一覧表示されます。
+
+これらのエラーは修正できません。 アップロードは完了しましたが、エラーが発生しました。 この通知は、ネットワーク転送または新しいインポート注文を使用して別のアップロードを実行する前に修正する必要がある構成の問題について通知しています。 ガイダンスについては、「[Azure Data Box および Azure Data Box Heavy デバイスからのアップロードのコピー エラーを確認する](../articles/databox/data-box-troubleshoot-data-upload.md)」を参照してください。
+
+エラーを確認し、続行する準備ができたことを確認して応答すると、データがデバイスから安全に消去されます。 注文は 14 日後に自動的に完了します。 通知に応答することで、より迅速に進めることができます。
+
+[!INCLUDE [data-box-review-nonretryable-errors](data-box-review-nonretryable-errors.md)]
+
+
+### <a name="verify-data-in-completed-upload"></a>アップロードの完了後にデータを検証する
+
+データのアップロードが完了すると、注文の状態が **[完了]** に更新されます。
 
 コピー元からデータを削除する前に、データが Azure にアップロードされていることを確認します。 データは次の場所にあります。
 

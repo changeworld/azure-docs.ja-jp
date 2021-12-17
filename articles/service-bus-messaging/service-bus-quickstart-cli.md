@@ -3,14 +3,14 @@ title: クイック スタート - Azure CLI を使用して Service Bus キュ�
 description: このクイックスタートでは、Service Bus 名前空間とその名前空間のキューを Azure CLI を使用して作成する方法について説明します。
 author: spelluru
 ms.topic: quickstart
-ms.date: 08/12/2020
+ms.date: 09/28/2021
 ms.author: spelluru
-ms.openlocfilehash: 14892b114f3bb8a0bb6c07f7cdd01a174b931cf9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 381d4d32d87391c0914d55690a0f4119b95a3488
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95810628"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211831"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>Azure CLI を使用して Service Bus 名前空間とキューを作成する
 このクイックスタートでは、Azure CLI を使用して Service Bus 名前空間とキューを作成する方法について説明します。 また、クライアント アプリケーションがキューとの間でメッセージを送受信するときに使用できる承認の資格情報を取得する方法についても説明します。 
@@ -59,7 +59,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - [JavaScript](service-bus-nodejs-how-to-use-queues.md)
 - [Python](service-bus-python-how-to-use-queues.md)
 - [PHP](service-bus-php-how-to-use-queues.md)
-- [Ruby](service-bus-ruby-how-to-use-queues.md)
 
 [free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 

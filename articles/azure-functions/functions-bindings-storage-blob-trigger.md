@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 1d83a828829d27d85749b3fa7b283cad9683bffc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58167006a1925ee1110f9d7468a66d580545f336
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455919"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039299"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー
 
@@ -35,15 +35,26 @@ Azure Blob Storage トリガーには、汎用ストレージ アカウントが
 
 ### <a name="event-grid-trigger"></a>Event Grid トリガー
 
+> [!NOTE]
+> 5\.x 以降のバージョンの Storage 拡張機能では、Event Grid を使用する Blob トリガーが組み込みでサポートされています。 詳しくは、以下の「[ストレージ拡張機能 5.x 以降](#storage-extension-5x-and-higher)」セクションをご覧ください。
+
 [Event Grid トリガー](functions-bindings-event-grid.md)にも、[BLOB イベント](../storage/blobs/storage-blob-event-overview.md)のサポートが組み込まれています。 次のシナリオの場合は、Blob ストレージ トリガーではなく Event Grid を使用してください。
 
 - **BLOB 専用ストレージ アカウント**: [BLOB 専用ストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)は、BLOB の入力と出力のバインドでサポートされ、BLOB トリガーではサポートされません。
 
 - **高スケール**: 高スケールとは、おおまかに言って、100,000 以上の BLOB を含むコンテナー、または 1 秒あたり 100 を超える BLOB の更新が発生するストレージ アカウントと定義できます。
 
+- **既存の BLOB**: BLOB トリガーは、トリガーを設定するときにコンテナー内のすべての既存の BLOB を処理します。 既存の BLOB が多数含まれ、新しい BLOB に対してトリガーするだけのコンテナーがある場合は、Event Grid トリガーを使用します。
+
 - **待ち時間の最小化**: 関数アプリを従量課金プランで使用しているときに、関数アプリがアイドル状態になっている場合、新しい BLOB の処理が最大で 10 分間遅延する可能性があります。 この待機時間を避けるには、Always On が有効な App Service プランに切り替えることができます。 BLOB ストレージ アカウントで [Event Grid トリガー](functions-bindings-event-grid.md)を使用することもできます。 例については、[Event Grid のチュートリアル](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)を参照してください。
 
 Event Grid の例については、[Event Grid を使用した画像のサイズ変更](../event-grid/resize-images-on-storage-blob-upload-event.md)に関するチュートリアルを参照してください。
+
+#### <a name="storage-extension-5x-and-higher"></a>ストレージ拡張機能 5.x 以降
+
+プレビュー版の Storage 拡張機能の Blob トリガーは、Event Grid を組み込みでサポートしています。これを使用するには、既存の Blob トリガーの `source` パラメーターを “Event Grid” に設定する必要があります。 
+
+Event Grid を使用する Blob トリガーの詳しい使用方法は、[Event Grid Blob トリガーの使用方法](./functions-event-grid-blob-trigger.md)に関する記事をご覧ください。
 
 ### <a name="queue-storage-trigger"></a>Queue ストレージ トリガー
 
@@ -255,7 +266,7 @@ def main(myblob: func.InputStream):
 
   次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウントを指定できます。
 
-   ```csharp
+  ```csharp
   [FunctionName("ResizeImage")]
   public static void Run(
       [BlobTrigger("sample-images/{name}", Connection = "StorageConnectionAppSetting")] Stream image,
@@ -263,7 +274,7 @@ def main(myblob: func.InputStream):
   {
       ....
   }
-   ```
+  ```
 
   完全な例については、「[トリガー - 例](#example)」を参照してください。
 
@@ -323,9 +334,11 @@ def main(myblob: func.InputStream):
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 例外は、[使用方法](#usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。 |
 |**path** | **BlobPath** |監視する[コンテナー](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  [BLOB 名パターン](#blob-name-patterns)の場合があります。 |
-|**connection** | **接続** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB ストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。<br><br>接続文字列の代わりに[バージョン 5.x またはそれ以降の拡張機能](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)を使用している場合は、接続を定義する構成セクションへの参照を指定できます。 「[接続](./functions-reference.md#connections)」を参照してください。|
+|**connection** | **接続** | Azure Blob への接続方法を指定するアプリ設定または設定コレクションの名前。 「[接続](#connections)」を参照してください。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+[!INCLUDE [functions-storage-blob-connections](../../includes/functions-storage-blob-connections.md)]
 
 ## <a name="usage"></a>使用法
 

@@ -4,12 +4,12 @@ description: この記事では、Container insights で kubectl を使用せず
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2e3a8a417a934374c2c0b256bb65a471d98fdebe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5dffc98e73a9d9e85b301d3272869b7fb5118ab5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731852"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747664"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>メトリックをリアルタイムで表示する方法
 
@@ -82,4 +82,4 @@ Live Data (プレビュー) 機能は、Kubernetes API に直接アクセスし�
 
 ## <a name="next-steps"></a>次のステップ
 
-アラートの作成、視覚化の作成、またはクラスターの詳細な分析を行うために、定義済みのクエリや例を確認するには、[ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を参照してください。
+アラートの作成、視覚化の作成、またはクラスターの詳細な分析を行うために、定義済みのクエリや例を確認するには、[ログ クエリの例](container-insights-log-query.md)を参照してください。

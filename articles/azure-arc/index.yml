@@ -9,106 +9,102 @@ metadata:
   ms.topic: hub-page
   author: MGoedtel
   ms.author: magoedte
-  ms.date: 03/02/2021
-  ms.openlocfilehash: fe751273c39562d7df53b779d609bf84b7248fbc
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101651146"
+  ms.date: 06/28/2021
+  ms.custom: e2e-hybrid
 highlightedContent:
   items:
-  - title: Azure Arc について
-    itemType: overview
-    url: overview.md
-  - title: ジャンプスタート
-    itemType: sample
-    url: https://azurearcjumpstart.io/overview/
-  - title: Azure Arc 対応サーバー
-    itemType: overview
-    url: ./servers/overview.md
-  - title: Azure Arc 対応 Kubernetes
-    itemType: overview
-    url: ./kubernetes/overview.md
-  - title: Azure Arc 対応データ サービス (プレビュー)
-    itemType: overview
-    url: ./data/overview.md
-  - title: Azure Arc 対応 SQL Server (プレビュー)
-    itemType: overview
-    url: /sql/sql-server/azure-arc/overview
-productDirectory:
-  title: Azure Arc 対応サービス
-  summary: 場所を問わずサービスを実行する方法を参照してください。
-  items:
-  - title: Azure Arc 対応サーバー
-    imageSrc: ./media/manage-450-machines-azure-arc.svg
-    links:
-    - url: ./servers/onboard-portal.md
-      text: Azure portal から Azure Arc へのマシンの接続
-    - url: ./servers/onboard-service-principal.md
-      text: サービス プリンシパルを使用したマシンの大規模な接続
-    - url: ./servers/onboard-dsc.md
-      text: PowerShell DSC を使用してマシンを Azure に接続する
-    - url: ./servers/index.yml
-      text: さらに表示...
-  - title: Azure Arc 対応 Kubernetes
-    imageSrc: ./media/01088-icon-arc-kubernetes-menu.svg
-    links:
-    - url: ./kubernetes/connect-cluster.md
-      text: クラスターの接続
-    - url: ./kubernetes/use-gitops-connected-cluster.md
-      text: GitOps を使用して構成をデプロイする
-    - url: ./kubernetes/index.yml
-      text: さらに表示...
-  - title: Azure Arc 対応データ サービス (プレビュー)
-    imageSrc: ./media/manage-756-azure-arc.svg
-    links:
-    - url: ./data/install-client-tools.md
-      text: ツールをインストールする
-    - url: ./data/create-sql-managed-instance.md
-      text: SQL マネージド インスタンスの作成
-    - url: ./data/create-postgresql-hyperscale-server-group.md
-      text: PostgreSQL Hyperscale の作成
-    - url: ./data/index.yml
-      text: さらに表示...
-  - title: Azure Arc 対応 SQL Server (プレビュー)
-    imageSrc: ./media/01850-icon-arc-sql-server-menu.svg
-    links:
-    - url: /sql/sql-server/azure-arc/assess
-      text: SQL インスタンスの評価
-    - url: /sql/sql-server/azure-arc/overview
-      text: さらに表示...
+    - title: Azure Arc について
+      itemType: overview
+      url: overview.md
+    - title: ジャンプスタート
+      itemType: sample
+      url: 'https://azurearcjumpstart.io/overview/'
+    - title: Azure Arc 対応サーバー
+      itemType: overview
+      url: ./servers/overview.md
+    - title: Azure Arc 対応 Kubernetes
+      itemType: overview
+      url: ./kubernetes/overview.md
+    - title: Azure Arc 対応データ サービス
+      itemType: overview
+      url: ./data/overview.md
+    - title: Azure Arc 対応サーバーでの SQL Server
+      itemType: overview
+      url: /sql/sql-server/azure-arc/overview
 conceptualContent:
-  title: 作業開始
   items:
-  - title: Azure Arc 対応サーバー
-    links:
-    - url: ./servers/learn/quick-enable-hybrid-vm.md
-      itemType: get-started
-      text: Arc 対応サーバー エージェントを有効にする
-    - url: ./servers/learn/tutorial-enable-vm-insights.md
-      itemType: tutorial
-      text: Azure Monitor for VMs を使用してハイブリッド マシンを監視する
-    - url: ./servers/policy-reference.md
-      itemType: learn
-      text: Azure Policy を使用した受付制御ポリシー
-    - url: ./servers/manage-vm-extensions.md
-      itemType: how-to-guide
-      text: Azure VM 拡張機能の管理と使用
-  - title: Azure Arc 対応 Kubernetes
-    links:
-    - url: ./kubernetes/use-gitops-with-helm.md
-      itemType: deploy
-      text: GitOps を使用して Helm グラフをデプロイする
-    - url: ./kubernetes/use-azure-policy.md
-      itemType: how-to-guide
-      text: Azure Policy を使用して GitOps を適用する
-    - url: ../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=%2fazure%2fazure-arc%2ftoc.json
-      itemType: tutorial
-      text: Azure Monitor を使用してコンテナーを監視する
-    - url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
-      itemType: learn
-      text: Azure Policy を使用した受付制御ポリシー
-    - url: ./kubernetes/deploy-azure-iot-edge-workloads.md
-      itemType: deploy
-      text: Azure IoT Edge ワークロードをデプロイする
+    - title: Azure Arc 対応サーバー
+      links:
+        - url: ./servers/learn/quick-enable-hybrid-vm.md
+          itemType: quickstart
+          text: ハイブリッド マシンを接続する
+        - url: ./servers/security-overview.md
+          itemType: concept
+          text: セキュリティの概要
+        - url: ./servers/policy-reference.md
+          itemType: learn
+          text: Azure Policy を使用した受付制御ポリシーの定義
+        - url: /sql/sql-server/azure-arc/overview
+          itemType: overview
+          text: SQL Server の接続
+      footerLink:
+        url: ./servers/index.yml
+        text: 詳細情報
+    - title: Azure Arc 対応 Kubernetes
+      links:
+        - url: ./kubernetes/quickstart-connect-cluster.md
+          itemType: quickstart
+          text: Azure Arc にクラスターを接続する
+        - url: ../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md
+          itemType: tutorial
+          text: Azure Monitor を使用してコンテナーを監視する
+        - url: ./kubernetes/use-azure-policy.md
+          itemType: how-to-guide
+          text: Azure Policy を使用して GitOps を適用する
+        - url: ./kubernetes/tutorial-arc-enabled-open-service-mesh.md
+          itemType: tutorial
+          text: Azure Arc 対応 Open Service Mesh (プレビュー)
+      footerLink:
+        url: ./kubernetes/index.yml
+        text: 詳細情報
+    - title: Azure Arc 対応データ サービス
+      links:
+        - url: ./data/install-client-tools.md
+          itemType: deploy
+          text: ツールをインストールする
+        - url: ./data/create-sql-managed-instance.md
+          itemType: how-to-guide
+          text: SQL マネージド インスタンスの作成
+        - url: ./data/create-postgresql-hyperscale-server-group.md
+          itemType: how-to-guide
+          text: PostgreSQL Hyperscale の作成
+        - url: ./data/index.yml
+          itemType: get-started
+          text: さらに表示...
+    - title: アプリケーション サービス
+      links:
+        - url: ../app-service/overview-arc-integration.md
+          itemType: overview
+          text: Azure Arc の App Service、Functions、および Logic Apps (プレビュー)
+    - title: Azure Arc をサポートする管理サービス
+      links:
+        - url: ../azure-monitor/overview.md?
+          itemType: overview
+          text: Azure Monitor の概要
+        - url: ../governance/policy/overview.md
+          itemType: overview
+          text: Azure Policy の概要
+        - url: ../security-center/azure-defender.md
+          itemType: overview
+          text: Microsoft Defender for Cloud の概要
+        - url: ../automation/automation-intro.md
+          itemType: overview
+          text: Azure Automation の概要
+    - title: Azure Arc 対応サーバーでの SQL Server
+      links:
+        - url: /sql/sql-server/azure-arc/assess
+          itemType: how-to-guide
+          text: インスタンスの評価
+        - url: /sql/sql-server/azure-arc/configure-advanced-data-security
+          itemType: how-to-guide
+          text: Advanced Data Security の構成

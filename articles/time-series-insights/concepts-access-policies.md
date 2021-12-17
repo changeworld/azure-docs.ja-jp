@@ -3,24 +3,28 @@ title: データ アクセスを許可するようにセキュリティを構成
 description: Azure Time Series Insights 環境でセキュリティとアクセス許可を構成し、データ アクセス ポリシーを管理する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: shipra1mishra
-ms.author: shmishr
+author: tedvilutis
+ms.author: tvilutis
 manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 84b973dfa016b069b18fda47a4336fe952f73b3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebbb3c02263d860822482e2e19293d9a032274ef
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96780860"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135363"
 ---
 # <a name="grant-data-access-to-an-environment"></a>環境へのデータ アクセスの許可
 
 この記事では、Azure Time Series Insights の 2 種類のアクセス ポリシーについて説明します。
+
+> [!Warning]
+> アクセス ポリシーは、Azure AD のユーザーまたはグループに、Time Series Insights 環境へのデータ プレーン アクセスを許可します。
+> Azure Active Directory はテナントに関連付けられます。 そのため、テナント間でサブスクリプションを移動することになった場合は、必ず[以下のセクション](#procedure-for-when-the-subscription-is-moved-across-tenants)の手順に従ってください。
 
 ## <a name="sign-in-to-azure-time-series-insights"></a>Azure Time Series Insights にサインインする
 
@@ -119,6 +123,29 @@ ms.locfileid: "96780860"
     ユーザーは、**手順 5.** で提供されたロールに関連付けられているすべての能力を持つようになりました。
 
     [![ゲスト ユーザーがドロップダウンから Azure テナントを選択する](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
+
+## <a name="procedure-for-when-the-subscription-is-moved-across-tenants"></a>テナント間でサブスクリプションを移動する場合の手順
+
+Time Series Insights のデータ アクセス ポリシーは Azure Active Directory を拠り所としており、また Azure Active Directory は、サブスクリプションがある Azure テナントに関連付けられます。
+
+データ アクセス ポリシーを許可する Azure AD オブジェクトと、Time Series Insights 環境そのものが、同じテナントに存在していなければなりません。 それ以外の場合、それらのオブジェクトが環境にアクセスすることはできません。
+
+その環境があるサブスクリプションを別のテナントに移動する予定がある場合、新しいテナントの Azure AD オブジェクトを反映するようにデータ アクセス ポリシーが更新されるようにする必要があります。
+
+このプロセスを円滑化するには、以下の手順に従ってください。
+
+### <a name="before-moving-a-subscription-to-another-tenant"></a>サブスクリプションを別のテナントに移動する前に
+
+- 環境の最新のデータ アクセス ポリシー割り当てリストが移動元のテナントにある間に、それを保存します。
+- 移動先のテナントの Active Directory にサブスクリプションが移行された後も、ユーザー、グループ、アプリに環境へのアクセス権が維持されるようにします。
+- サブスクリプションの移動後、移動先テナントの環境にデータ アクセス ポリシーを再適用できるよう、サブスクリプションに対する共同作成者以上のアクセス権を自分に確保 (または、そのようなアクセス権を持つユーザーと連携) してください。
+
+### <a name="after-moving-a-subscription-to-another-tenant"></a>サブスクリプションを別のテナントに移動した後
+
+移動先テナントのサブスクリプションに対する共同作成者のアクセス権があるユーザーは、次のことを実行できます。
+
+- 移行済みのデータ アクセス ポリシーは移動元のテナントに属しているため、環境と共にすべて削除できます。
+- 上記の手順を使用して環境にアクセス ポリシーを再付与します。以後、それらのアクセス ポリシーは、移動先テナント内の Azure AD オブジェクトを参照するようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

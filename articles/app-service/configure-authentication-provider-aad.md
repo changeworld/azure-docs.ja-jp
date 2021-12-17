@@ -3,22 +3,22 @@ title: Azure AD 認証を構成する
 description: App Service または Azure Functions アプリの ID プロバイダーとして Azure Active Directory 認証を構成する方法を学びます。
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
-ms.date: 04/14/2020
-ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: b1254e7db0e62d08ea2a3d6d30f2abd379675c55
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 10/26/2021
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: cc5761afe295bd9ef71c86cf6ffdafb8c0e847ff
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078317"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435835"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service または Azure Functions アプリを構成する
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-この記事では、アプリで [Microsoft ID プラットフォーム](../active-directory/develop/v2-overview.md) (Azure AD) を認証プロバイダーとして使用してユーザーがサインインするように、Azure App Service または Azure Functions の認証を構成する方法について説明します。
+この記事では、アプリで [Microsoft ID プラットフォーム](../active-directory/develop/v2-overview.md) (Azure AD) を認証プロバイダーとして使ってユーザーがサインインするように、Azure App Service または Azure Functions の認証を構成する方法について説明します。
 
-App Service 認証機能では、Microsoft ID プラットフォームを使用してアプリの登録を自動的に作成できます。 また、ユーザーまたはディレクトリ管理者が個別に作成した登録を使用することもできます。
+App Service 認証機能では、Microsoft ID プラットフォームを使ってアプリの登録を自動的に作成できます。 また、ユーザーまたはディレクトリ管理者が個別に作成した登録を使用することもできます。
 
 - [新しいアプリ登録を自動作成する](#express)
 - [個別に作成された既存の登録を使用する](#advanced)
@@ -26,7 +26,7 @@ App Service 認証機能では、Microsoft ID プラットフォームを使用�
 > [!NOTE]
 > 新しい登録を作成するオプションは、政府機関向けクラウドでは使用できません。 代わりに、 [登録を個別に定義](#advanced)します。
 
-## <a name="create-a-new-app-registration-automatically"></a><a name="express"> </a>新しいアプリ登録を自動作成する
+## <a name="option-1-create-a-new-app-registration-automatically"></a><a name="express"> </a> オプション 1: 新しいアプリ登録を自動作成する
 
 このオプションでは、認証を簡単にするように設計されていて、必要なのは数回のクリックのみです。
 
@@ -43,13 +43,13 @@ App Service 認証機能では、Microsoft ID プラットフォームを使用�
 1. (オプション) **[次へ: アクセス許可]** をクリックし、アプリケーションで必要なスコープを追加します。 これらはアプリの登録に追加されますが、後で変更することもできます。
 1. **[追加]** をクリックします。
 
-これで、アプリケーションで認証に Microsoft ID プラットフォームを使用する準備ができました。 **[認証]** 画面にプロバイダーが一覧表示されます。 そこから、このプロバイダーの構成を編集または削除できます。
+これで、アプリケーションで認証に Microsoft ID プラットフォームを使う準備ができました。 **[認証]** 画面にプロバイダーが一覧表示されます。 そこから、このプロバイダーの構成を編集または削除できます。
 
 Azure Storage と Microsoft Graph にアクセスする Web アプリの Azure AD ログインを構成する例については、[こちらのチュートリアル](scenario-secure-app-authentication-app-service.md)を参照してください。
 
-## <a name="use-an-existing-registration-created-separately"></a><a name="advanced"> </a>個別に作成された既存の登録を使用する
+## <a name="option-2-use-an-existing-registration-created-separately"></a><a name="advanced"> </a>オプション 2: 個別に作成された既存の登録を使用する
 
-また、アプリケーションを Microsoft ID プラットフォームに手動で登録し、登録をカスタマイズして、登録の詳細を使用して App Service 認証を構成することもできます。 これは、たとえば App Service が含まれているものとは異なる Azure AD テナントからアプリケーションの登録を使用する場合に便利です。
+また、アプリケーションを Microsoft ID プラットフォームに手動で登録し、登録をカスタマイズして、登録の詳細を使って App Service 認証を構成することもできます。 これは、たとえば App Service が含まれているものとは異なる Azure AD テナントからアプリケーションの登録を使用する場合に便利です。
 
 ### <a name="create-an-app-registration-in-azure-ad-for-your-app-service-app"></a><a name="register"> </a>App Service アプリに対するアプリ登録を Azure AD で作成する
 
@@ -68,18 +68,20 @@ Azure Storage と Microsoft Graph にアクセスする Web アプリの Azure A
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、「`<app-url>/.auth/login/aad/callback`」と入力します。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/aad/callback` 」のように入力します。
 1. **[登録]** を選択します。
 1. アプリの登録が作成されたら、後のために **[アプリケーション (クライアント) ID]** と **[ディレクトリ (テナント) ID]** をコピーします。
-1. **[認証]** を選択します。 **[暗黙的な許可]** で **[ID トークン]** を有効にして、App Service からの OpenID Connect ユーザーのサインインを許可します。
+1. **[認証]** を選択します。 **[Implicit grant and hybrid flows]\(暗黙的な許可とハイブリッド フロー\)** で **[ID トークン]** を有効にして、App Service からの OpenID Connect ユーザーのサインインを許可します。  **[保存]** を選択します。
 1. (省略可能) **[ブランド]** を選択します。 **[ホーム ページ URL]** に App Service アプリの URL を入力し、 **[保存]** を選択します。
-1. **[API の公開]**  >  **[設定]** を選択します。 シングルテナント アプリの場合は、App Service アプリの URL を貼り付けて **[保存]** を選択します。マルチテナント アプリの場合は、テナントで検証済みのいずれかのドメインに基づく URL を貼り付けて、 **[保存]** を選択します。
+1. **[API の公開]** を選択し、"アプリケーション ID URI" の横にある **[設定]** をクリックします。 この値によって、リソースとしての使用時、アプリケーションが一意に特定されます。アクセスを付与するトークンを要求できます。 作成するスコープのプレフィックスとして使用されます。
 
-   > [!NOTE]
-   > この値は、アプリの登録の **アプリケーション ID の URI** です。 Web アプリでクラウドの API にアクセスする必要がある場合、クラウド App Service リソースの構成時、**Web アプリのアプリケーション ID URI** が必要になります。 たとえば、クラウド サービスで Web アプリにアクセスを明示的に与える場合にこれを利用できます。
+    シングルテナントのアプリの場合、`api://<application-client-id>` 形式である既定値を使用できます。 テナントの検証済みドメインの 1 つに基づき、`https://contoso.com/api` のような、もっと読みやすい URI を指定することもできます。 マルチテナントのアプリの場合は、カスタム URI を指定する必要があります。 アプリ ID URI で使用できる形式の詳細については、[アプリ登録のベスト プラクティス リファレンス](../active-directory/develop/security-best-practices-for-app-registration.md#appid-uri-configuration) ページを参照してください。
+
+    値を入力したら、 **[保存]** をクリックします。
 
 1. **[Scope の追加]** を選択します。
+   1. **[Scope の追加]** の **[アプリケーション ID の URI]** は前の手順で設定した値です。  **[Save and continue]** (保存して続行) を選択します。
    1. **[スコープ名]** に、「*user_impersonation*」と入力します。
-   1. 同意ページでユーザーに表示する同意スコープの名前と説明をテキスト ボックスに入力します。 たとえば、「*Access my app*」と入力します。
+   1. 同意ページでユーザーに表示する同意スコープの名前と説明をテキスト ボックスに入力します。 たとえば、「 *&lt;アプリケーション名&gt; にアクセスする*」と入力します。
    1. **[スコープの追加]** を選択します。
-1. (省略可能) クライアント シークレットを作成するには、 **[Certificates & secrets]\(証明書とシークレット)**  >  **[New client secret]\(新しいクライアント シークレット)**  >  **[追加]** を選択します。 ページに表示されるクライアント シークレットの値をコピーします。 二度と表示されることはありません。
+1. (省略可能) クライアント シークレットを作成するには、 **[証明書とシークレット]**  >  **[Client secrets]\(クライアント シークレット\)**  >  **[New client secret]\(新しいクライアント シークレット)** を選びます。  説明と有効期限を入力し、 **[追加]** を選びます ページに表示されるクライアント シークレットの値をコピーします。 二度と表示されることはありません。
 1. (省略可能) 複数の **応答 URL** を追加するには、 **[認証]** を選択します。
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>App Service アプリで Azure Active Directory を有効にする
@@ -92,7 +94,7 @@ Azure Storage と Microsoft Graph にアクセスする Web アプリの Azure A
     |フィールド|説明|
     |-|-|
     |アプリケーション (クライアント) ID| アプリの登録の **アプリケーション (クライアント) ID** を使用します。 |
-    |クライアント シークレット (省略可能)| アプリの登録で生成したクライアント シークレットを使用します。 クライアント シークレットを使用すると、ハイブリッド フローが使用され、App Service によってアクセス トークンと更新トークンが返されます。 クライアント シークレットが設定されていない場合は、暗黙的なフローが使用され、ID トークンのみが返されます。 これらのトークンはプロバイダーによって送信され、EasyAuth トークン ストアに格納されます。|
+    |クライアント シークレット| アプリの登録で生成したクライアント シークレットを使用します。 クライアント シークレットを使用すると、ハイブリッド フローが使用され、App Service によってアクセス トークンと更新トークンが返されます。 クライアント シークレットが設定されていない場合は、暗黙的なフローが使用され、ID トークンのみが返されます。 これらのトークンはプロバイダーによって送信され、EasyAuth トークン ストアに格納されます。|
     |発行者の URL| `<authentication-endpoint>/<tenant-id>/v2.0` を使用し、 *\<authentication-endpoint>* を [クラウド環境の認証エンドポイント](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (たとえば、グローバル Azure の場合、"https://login.microsoftonline.com") に置き換え、さらに、 *\<tenant-id>* を、アプリ登録が作成された **ディレクトリ (テナント) ID** に置き換えます。 この値は、ユーザーを正しい Azure AD テナントにリダイレクトするため、および適切なメタデータをダウンロードして、適切なトークン署名キーやトークン発行者のクレーム値などを特定するために使用されます。 Azure AD v1 を使用するアプリケーションと Azure Functions アプリの場合は、URL の `/v2.0` を省略します。|
     |許可されるトークン対象ユーザー| これがクラウドまたはサーバー アプリで、Web アプリからの認証トークンを許可する場合は、Web アプリの **アプリケーション ID URI** をここに追加します。 構成された **[クライアント ID]** は、*常に*、許可された対象ユーザーであると暗黙的に見なされます。|
 
@@ -104,7 +106,7 @@ Azure Storage と Microsoft Graph にアクセスする Web アプリの Azure A
 
 1. **[追加]** をクリックします。
 
-これで、アプリケーションで認証に Microsoft ID プラットフォームを使用する準備ができました。 **[認証]** 画面にプロバイダーが一覧表示されます。 そこから、このプロバイダーの構成を編集または削除できます。
+これで、アプリケーションで認証に Microsoft ID プラットフォームを使う準備ができました。 **[認証]** 画面にプロバイダーが一覧表示されます。 そこから、このプロバイダーの構成を編集または削除できます。
 
 ## <a name="configure-client-apps-to-access-your-app-service"></a>App Service にアクセスするようにクライアント アプリを構成する
 
@@ -149,7 +151,7 @@ Azure Storage と Microsoft Graph にアクセスする Web アプリの Azure A
 1. **[アプリケーションのアクセス許可]** で、前に作成したアプリ ロールを選択し、 **[アクセス許可の追加]** を選択します。
 1. クライアント アプリケーションがアクセス許可を要求することを承認するために、必ず **[管理者の同意を与える]** をクリックしてください。
 1. (ロールを追加する前の) 前述のシナリオと同様に、これで、同じターゲット `resource` の[アクセス トークンを要求](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret)できます。アクセス トークンには、クライアント アプリケーションのために承認されたアプリ ロールを含む `roles` 要求が含まれます。
-1. これで、ターゲット App Service または関数アプリのコード内で、必要なロールがトークンに存在しているか検証できます (これは App Service 認証/承認では実行されません)。 詳しくは、「[ユーザー要求へのアクセス](app-service-authentication-how-to.md#access-user-claims)」をご覧ください。
+1. これで、ターゲット App Service または関数アプリのコード内で、必要なロールがトークンに存在しているか検証できます (これは App Service 認証/承認では実行されません)。 詳しくは、「[ユーザー要求へのアクセス](configure-authentication-user-identities.md#access-user-claims-in-app-code)」をご覧ください。
 
 これで、独自の ID を使用して App Service アプリにアクセスできるデーモン クライアント アプリケーションが構成されました。
 

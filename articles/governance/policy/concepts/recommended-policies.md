@@ -1,15 +1,15 @@
 ---
 title: Azure サービスの推奨ポリシー
 description: Azure Virtual Machines などの Azure サービスの推奨ポリシーを検索して適用する方法について説明します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.customer: generated
-ms.openlocfilehash: ef028dc61b10117509fdd27e815230ff27dbadfa
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.custom: generated
+ms.openlocfilehash: 06f68dec2c2a1ec8fa717dc721916c070a653b10
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090003"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323073"
 ---
 # <a name="recommended-policies-for-azure-services"></a>Azure サービスの推奨ポリシー
 

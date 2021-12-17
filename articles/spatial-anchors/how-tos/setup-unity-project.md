@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 03/30/2021
+ms.date: 11/12/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fe9160f22754c62888b2a61ce9751f596842604e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 945a95054f281e0a5920232a729de4087d1deab6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076704"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490518"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Unity プロジェクトでの Azure Spatial Anchors の構成
 
@@ -33,6 +33,24 @@ Unity プロジェクトに Azure Spatial Anchors SDK を含める前に、必�
 ### <a name="import-asa-packages"></a>ASA パッケージのインポート
 [!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
+### <a name="hololens-only"></a>HoloLens のみ
+
+#### <a name="configure-your-unity-project-xr-settings"></a>Unity プロジェクトの XR 設定を構成する
+HoloLens で複合現実アプリを開発する場合、Unity で XR 構成を設定する必要があります。 詳細については、「[XR 構成の設定 - 混合現実 | Microsoft Docs](/windows/mixed-reality/develop/unity/xr-project-setup?tabs=openxr)」と「[Unity バージョンと XR プラグインの選択 - 混合現実 | Microsoft Docs](/windows/mixed-reality/develop/unity/choosing-unity-version)」を参照してください。
+
+Azure Spatial Anchors SDK バージョン 2.9.0 以前では、Windows XR プラグイン (com.unity.xr.windowsmr) のみが提供されます。そのため、Azure Spatial Anchors ウィンドウ パッケージは Windows XR プラグインに明示的に依存します。
+
+Azure Spatial Anchors SDK バージョン 2.10.0 以降では、Mixed Reality OpenXR プラグイン ([com.microsoft.mixedreality.openxr](https://dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging?_a=package&feed=Unity-packages&view=overview&package=com.microsoft.mixedreality.openxr&protocolType=Npm)) と Windows XR プラグイン ([com.unity.xr.windowsmr](https://docs.unity3d.com/Manual/com.unity.xr.windowsmr.html)) の両方がサポートされます。 選択に基づき、プロジェクトに com.microsoft.mixedreality.openxr パッケージまたは com.unity.xr.windowsmr パッケージを含める必要があります。
+
+#### <a name="configure-your-unity-project-capabilities"></a>Unity プロジェクトの機能を構成する
+
+Unity プロジェクトでは、次の機能を必ず有効にしてください。
+- SpatialPerception
+- InternetClient
+- PrivateNetworkClientServer
+
+> [!WARNING]
+> PrivateNetworkClientServer 機能を有効にしないと、プライベートに構成されているネットワークがデバイスで使用されている場合に、アンカーのクエリが失敗する可能性があります。
 ### <a name="android-only-configure-the-maintemplategradle-file"></a>Android のみ:mainTemplate.gradle ファイルを構成する
 
 1. **[Edit]\(編集\)**  >  **[Project Settings]\(プロジェクト設定\)**  >  **[Player]\(プレーヤー\)** の順に移動します。

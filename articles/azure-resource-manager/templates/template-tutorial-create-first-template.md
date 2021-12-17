@@ -2,16 +2,16 @@
 title: チュートリアル - テンプレートの作成とデプロイ
 description: 初めての Azure Resource Manager テンプレート (ARM テンプレート) を作成します。 このチュートリアルでは、テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
-ms.date: 12/17/2020
+ms.date: 10/20/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: ''
-ms.openlocfilehash: 001a20c38a82d053ae22a2614a32f0be9d8aabce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ef50a1136080358fc6de27da1ab42467c337f252
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656990"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239735"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>チュートリアル:初めての ARM テンプレートを作成してデプロイする
 
@@ -100,18 +100,18 @@ az login
 
 ---
 
-複数の Azure サブスクリプションがある場合は、使用するサブスクリプションを選択します。 `[SubscriptionID/SubscriptionName]` と角かっこ `[]` を実際のサブスクリプション情報に置き換えます。
+複数の Azure サブスクリプションがある場合は、使用するサブスクリプションを選択します。 `SubscriptionName` をサブスクリプション名に置き換えます。 サブスクリプション名の代わりに、サブスクリプション ID を使用することもできます。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-Set-AzContext [SubscriptionID/SubscriptionName]
+Set-AzContext SubscriptionName
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az account set --subscription [SubscriptionID/SubscriptionName]
+az account set --subscription SubscriptionName
 ```
 
 ---

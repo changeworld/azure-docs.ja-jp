@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/31/2020
+ms.date: 05/14/2021
 ms.author: jeedes
-ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03312977c4901593c433113d88766dcc7a6b2a55
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96015181"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300680"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>チュートリアル:Azure Active Directory と Mitel MiCloud Connect または CloudLink Platform の統合
 
@@ -24,10 +24,6 @@ ms.locfileid: "96015181"
 
 * Azure AD で、エンタープライズ資格情報を使用して、MiCloud Connect アプリまたは CloudLink アプリにアクセスできるユーザーを制御できます。
 * お使いのアカウントで、ユーザーが自身の Azure AD アカウントを使用して MiCloud Connect または CloudLink に自動的にサインイン (シングル サインオン) するように設定できます。
-
-SaaS アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオン](../manage-apps/what-is-single-sign-on.md)に関するページを参照してください。
-
-Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してから、Azure AD と Mitel MiCloud Connect または CloudLink Platform の統合を開始してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,30 +36,20 @@ MiCloud Connect と Azure AD の統合を構成するには、次のものが必
 
 このチュートリアルでは、Azure AD のシングル サインオン (SSO) を構成してテストします。
 
-* Mitel Connect では、**SP** によって開始される SSO がサポートされます
-* Mitel Connect を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Mitel Connect では、**SP** initiated SSO をサポートしています。
 
-## <a name="add-mitel-connect-from-the-gallery"></a>ギャラリーからの Mitel Connect の追加
+## <a name="adding-mitel-connect-from-the-gallery"></a>ギャラリーからの Mitel Connect の追加
 
-Azure AD への Mitel Connect の統合を構成するには、Azure portal 内のマネージド SaaS アプリの一覧に、ギャラリーから Mitel Connect を追加する必要があります。
+Azure AD への Mitel Connect の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Mitel Connect を追加する必要があります。
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Mitel Connect**」と入力します。
+1. 結果のパネルから **[Mitel Connect]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
-
-2. **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-3. **[新しいアプリケーション]** を選択します。
-
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
-
-4. 検索フィールドに「**Mitel Connect**」と入力し、結果のパネルから **[Mitel Connect]** を選択して、 **[追加]** を選択します。
-
-     ![結果リストの Mitel Connect](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
 このセクションでは、**_Britta Simon_** というテスト ユーザーに基づいて、MiCloud Connect または CloudLink Platform に対する Azure AD SSO を構成およびテストします。 シングル サインオンが機能するためには、Azure AD ポータルのユーザーと Mitel プラットフォームの対応するユーザーの間にリンクが確立されている必要があります。 MiCloud Connect または CloudLink Platform に対する Azure AD SSO を構成してテストする方法については、以下のセクションを参照してください。
 * MiCloud Connect に対する Azure AD SSO の構成とテスト
@@ -77,7 +63,7 @@ MiCloud Connect に対する Azure AD シングル サインオンを構成お�
 2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 4. **[Mitel MiCloud Connect のテスト ユーザーの作成](#create-a-mitel-micloud-connect-test-user)** - MiCloud Connect アカウントで Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-micloud-connect-for-sso-with-azure-ad"></a>Azure AD を使った SSO のための MiCloud Connect の構成
 
@@ -86,17 +72,11 @@ MiCloud Connect に対する Azure AD シングル サインオンを構成お�
 MiCloud Connect に Azure AD による SSO を構成する際は、Azure portal と Mitel アカウント ポータルを並べて開いておくのが最も簡単です。 Azure portal と Mitel アカウント ポータルの間で、いくつかの情報を互いにコピーする必要があります。
 
 
-1. [Azure portal](https://portal.azure.com/) で構成ページを開くには、次のようにします。
+1. Azure portal で構成ページを開くには、次のようにします。
 
     1. **Mitel Connect** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
-       ![シングル サインオン構成のリンク](common/select-sso.png)
-
-    1. **[シングル サインオン方式の選択]** ダイアログ ボックスで、 **[SAML]** を選択します。
-    
-       ![シングル サインオン選択モード](common/select-saml-option.png)
-    
-       SAML ベースのサインオン ページが表示されます。
+    1. **[シングル サインオン方式の選択]** ダイアログ ボックスで、 **[SAML]** を選択します。 SAML ベースのサインオン ページが表示されます。
 
 2. Mitel アカウント ポータルで構成ダイアログ ボックスを開くには、次の手順を実行します。
 
@@ -152,53 +132,27 @@ MiCloud Connect に Azure AD による SSO を構成する際は、Azure portal 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
-このセクションでは、Azure portal で Britta Simon という名前のテスト ユーザーを作成します。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. ユーザーのプロパティのダイアログ ボックスで、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    1. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    1. **[ユーザー名]** フィールドに「brittasimon@\<yourcompanydomain\>.\<extension\>」と入力します。  たとえば、「 BrittaSimon@contoso.com 」のように入力します。
-
-    1. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
-
-    1. **［作成］** を選択します
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Mitel Connect へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Mitel Connect へのアクセスを B.Simon に許可し、Azure のシングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で **[Mitel Connect]** を選択します。
-
-    ![アプリケーションの一覧の Mitel Connect のリンク](common/all-applications.png)
-
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** を選択し、**[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** を選択します。
-
-6. SAML アサーション内に任意のロール値が必要な場合、ユーザーに適したロールを **[ロールの選択]** ダイアログ ボックスの一覧から選択し、画面の下部にある **[選択]** を選択します。
-
-7. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
+1. アプリケーションの一覧で **[Mitel Connect]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-a-mitel-micloud-connect-test-user"></a>Mitel MiCloud Connect のテスト ユーザーの作成
 
@@ -217,11 +171,16 @@ Mitel アカウント ポータルでのユーザーの追加の詳細につい�
 > [!NOTE]
 > MiCloud Connect のユーザー名は、Azure 内のユーザーのメール アドレスと同じである必要があります。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルの [Mitel Connect] タイルを選択すると自動的にリダイレクトされ、 **[サインオン URL]** フィールドで既定値として構成した MiCloud Connect アプリケーションにサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Mitel Connect のサインオン URL にリダイレクトされます。 
+
+* Mitel Connect のサインオン URL に直接移動し、そこからログイン フローを開始します。
+
+* Microsoft マイ アプリを使用することができます。 [マイ アプリ] で [Mitel Connect] タイルをクリックすると、MiCloud Connect のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
+
 
 ## <a name="configure-and-test-azure-ad-sso-with-cloudlink-platform"></a>CloudLink Platform に対する Azure AD SSO の構成とテスト
 
@@ -229,17 +188,10 @@ Mitel アカウント ポータルでのユーザーの追加の詳細につい�
 
 CloudLink プラットフォームで Azure AD シングル サインオンを構成する際は、Azure portal と CloudLink アカウント ポータルを横に並べて開くことをお勧めします。これは、Azure portal から CloudLink アカウント ポータルに (またはその逆方向に) いくつかの情報をコピーする必要があるためです。
 
-1. [Azure portal](https://portal.azure.com/) で構成ページを開くには、次のようにします。
+1. Azure portal で構成ページを開くには、次のようにします。
 
     1. **Mitel Connect** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-       ![シングル サインオン構成のリンク](common/select-sso.png)
-
-    1. **[シングル サインオン方式の選択]** ダイアログ ボックスで、 **[SAML]** を選択します。
-
-       ![シングル サインオン選択モード](common/select-saml-option.png)
-    
-       **[SAML ベースのサインオン]** ページが開き、 **[基本的な SAML 構成]** セクションが表示されます。
+    1. **[シングル サインオン方式の選択]** ダイアログ ボックスで、 **[SAML]** を選択します。 **[SAML ベースのサインオン]** ページが開き、 **[基本的な SAML 構成]** セクションが表示されます。
 
        ![[SAML ベースのサインオン] ページを示すスクリーンショット。[基本的な SAML 構成] が表示されています。](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
 
@@ -307,53 +259,27 @@ CloudLink プラットフォームで Azure AD シングル サインオンを�
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
-このセクションでは、Azure portal で Britta Simon という名前のテスト ユーザーを作成します。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. ユーザーのプロパティのダイアログ ボックスで、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    1. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    1. **[ユーザー名]** フィールドに「brittasimon@\<yourcompanydomain\>.\<extension\>」と入力します。  たとえば、「 BrittaSimon@contoso.com 」のように入力します。
-
-    1. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
-
-    1. **［作成］** を選択します
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Mitel Connect へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Mitel Connect へのアクセスを B.Simon に許可し、Azure のシングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で **[Mitel Connect]** を選択します。
-
-    ![アプリケーションの一覧の Mitel Connect のリンク](common/all-applications.png)
-
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** を選択し、**[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** を選択します。
-
-6. SAML アサーション内に任意のロール値が必要な場合、ユーザーに適したロールを **[ロールの選択]** ダイアログ ボックスの一覧から選択し、画面の下部にある **[選択]** を選択します。
-
-7. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
+1. アプリケーションの一覧で **[Mitel Connect]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-a-cloudlink-test-user"></a>CloudLink テスト ユーザーの作成
 
@@ -371,16 +297,16 @@ CloudLink アカウント ポータルでユーザーを追加する方法の詳
 > [!NOTE]
 > ユーザーの CloudLink メール アドレスは、Azure portal の **ユーザー プリンシパル名** と同じにする必要があります。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD SSO の構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルの [Mitel Connect] タイルを選択すると自動的にリダイレクトされ、 **[サインオン URL]** フィールドで既定値として構成した CloudLink アプリケーションにサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる CloudLink のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+* CloudLink のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Microsoft マイ アプリを使用することができます。 [マイ アプリ] で [Mitel Connect] タイルをクリックすると、CloudLink のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+Mitel Connect を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

@@ -4,23 +4,23 @@ description: Azure Data Lake Storage Gen2 で Azure サービスを使用する�
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
-ms.date: 02/17/2021
+ms.date: 10/06/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: b67c3ccebefc178ddebc2b4a7fd49043bc0776b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e25a4210e41505d6b8af2c5c530bdb806609f3db
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735422"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013538"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で Azure サービスを使用するチュートリアル
 
-この記事には、Data Lake Storage Gen2 でさまざまな Azure サービスを使用する方法を示すチュートリアルへのリンクが含まれています。 
+この記事には、Data Lake Storage Gen2 でさまざまな Azure サービスを使用する方法を示すチュートリアルへのリンクが含まれています。
 
 ## <a name="list-of-tutorials"></a>チュートリアルの一覧
 
-| Azure サービス | ステップバイステップ ガイド | 
+| Azure サービス | ステップバイステップ ガイド |
 |---------------|-------------------|
 | Azure Synapse Analytics | [Azure Synapse Analytics の使用を開始する](../../synapse-analytics/get-started.md) |
 | Azure Data Factory | [Load data into Azure Data Lake Storage Gen2 with Azure Data Factory (Azure Data Factory を使用して Azure Data Lake Storage Gen2 内にデータを読み込む)](../../data-factory/load-azure-data-lake-storage-gen2.md) |
@@ -37,8 +37,8 @@ ms.locfileid: "101735422"
 | Azure Cognitive Search | [Azure Data Lake Storage Gen2 ドキュメントのインデックスと検索 (プレビュー)](../../search/search-howto-index-azure-data-lake-storage.md) |
 
 > [!NOTE]
-> この表には、Data Lake Storage Gen2 がサポートされる Azure サービスの完全な一覧が反映されているわけではありません。 サポートされる Azure サービスの一覧と、そのサポートのレベルについては、「[Azure Data Lake Storage Gen2 がサポートされている Azure のサービス](data-lake-storage-supported-azure-services.md)」を参照してください
+> この表には、Data Lake Storage Gen2 がサポートされる Azure サービスの完全な一覧が反映されているわけではありません。 サポートされる Azure サービスの一覧と、そのサポートのレベルについては、「[Azure Data Lake Storage Gen2 がサポートされている Azure のサービス](data-lake-storage-supported-azure-services.md)」を参照してください。 取り込み、ダウンロード、処理、視覚化などのカテゴリにサービスを整理するしくみについては、[取り込み、処理、分析](./data-lake-storage-best-practices.md#ingest-process-and-analyze)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
-- これらのサービスを組み合わせて使用し、データの取り込み、ダウンロード、処理、視覚化を行うワークロードを構築する方法について学習します。 「[Data Lake Storage Gen2 を使用してビッグ データの要件に対応する](data-lake-storage-data-scenarios.md)」を参照してください。
+[Azure Data Lake Storage Gen2 の使用に関するベスト プラクティス](data-lake-storage-best-practices.md)

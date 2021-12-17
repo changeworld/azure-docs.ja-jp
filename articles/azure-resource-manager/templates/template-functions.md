@@ -2,19 +2,19 @@
 title: テンプレート関数
 description: 値の取得、文字列および数値の処理、デプロイ情報の取得のために、Azure Resource Manager テンプレート (ARM テンプレート) で使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 10/12/2020
-ms.openlocfilehash: a9ea21a57404f7de832fb307bdabeb47f8cf3f58
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 08/31/2021
+ms.openlocfilehash: a094bfca418cfb2ab28fd0c80b19e580cab76024
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220183"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123310369"
 ---
 # <a name="arm-template-functions"></a>ARM テンプレート関数
 
 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) で使用できるすべての関数について説明します。 ご自分のテンプレート内で関数を使用する方法の詳細については、[テンプレートの構文](template-expressions.md)に関するセクションを参照してください。
 
-独自の関数を作成するには、[ユーザー定義関数](template-syntax.md#functions)に関するページをご覧ください。
+独自の関数を作成するには、[ユーザー定義関数](./syntax.md#functions)に関するページをご覧ください。
 
 ほとんどの関数は、リソース グループ、サブスクリプション、管理グループ、またはテナントにデプロイされた場合に、同じように動作します。 いくつかの関数は、すべてのスコープでは使用できません。 これらは以下の一覧に記載されています。
 
@@ -36,7 +36,7 @@ ms.locfileid: "106220183"
 
 ## <a name="any-function"></a>すべての関数
 
-Bicep では、データ型の警告に関する問題の解決に役立つ[任意の関数](template-functions-any.md)を使用できます。
+Bicep では、データ型の警告に関する問題の解決に役立つ[任意の関数](../bicep/bicep-functions-any.md)を使用できます。
 
 ## <a name="array-functions"></a>配列関数
 
@@ -176,6 +176,7 @@ Resource Manager には、オブジェクトを操作する関数が複数用意
 * [listSecrets](template-functions-resource.md#list)
 * [list*](template-functions-resource.md#list)
 * [pickZones](template-functions-resource.md#pickzones)
+* [providers (非推奨)](template-functions-resource.md#providers)
 * [reference](template-functions-resource.md#reference)
 * [resourceGroup](template-functions-resource.md#resourcegroup) - リソース グループへのデプロイでのみ使用できます。
 * [resourceId](template-functions-resource.md#resourceid) - 任意のスコープで使用できますが、有効なパラメーターはスコープに応じて変わります。
@@ -253,7 +254,7 @@ Resource Manager には、オブジェクトを操作する関数が複数用意
 
 ## <a name="next-steps"></a>次のステップ
 
-* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](./syntax.md)」を参照してください。
 * 複数のテンプレートをマージする方法については、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](linked-templates.md)」を参照してください。
 * ある種類のリソースを作成するときに、指定した回数だけ反復する方法については、「[ARM テンプレートでのリソースの反復処理](copy-resources.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。

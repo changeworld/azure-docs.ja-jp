@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 65dc9da03a6b763d419c51e53bf756550e8b56a4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7e1e4dd244045e86a0fb9e6d65f81a4149cf6659
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751852"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413323"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault を別のサブスクリプションに移動する
 
@@ -28,6 +29,10 @@ ms.locfileid: "107751852"
 > 管理対象サービス ID (MSI) を使用している場合は、このドキュメントの最後にある移動後の手順を参照してください。 
 
 [Azure Key Vault](overview.md) は、それが作成されたサブスクリプションの既定の [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) テナント ID に自動的に関連付けられます。 こちらの[ガイド](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)に従って、サブスクリプションに関連付けられているテナント ID を見つけることができます。 また、すべてのアクセス ポリシー エントリとロールの割り当てもこのテナント ID に関連付けられます。  テナント A からテナント B に Azure サブスクリプションを移行した場合、テナント B のサービス プリンシパル (ユーザーとアプリケーション) は既存のキー コンテナーにアクセスできなくなります。この問題を解決するには、次の操作を行う必要があります。
+
+> [!NOTE]
+> Key Vault が [Azure Lighthouse](../../lighthouse/overview.md) を使用して作成されている場合は、代わりにテナント ID の管理に関連付けられます。 Azure Lighthouse は、コンテナー　アクセス　ポリシーのアクセス許可モデルでのみサポートされます。
+> Azure Lighthouse のテナントの詳細については、[Azure Lighthouse におけるテナント、ユーザー、ロール](../../lighthouse/concepts/tenants-users-roles.md)に関する記事を参照してください。
 
 * そのサブスクリプションにあるすべての既存のキー コンテナーに関連付けられたテナント ID を、テナント B に変更する。
 * すべての既存のアクセス ポリシー エントリを削除する。
@@ -87,7 +92,7 @@ Connect-AzAccount                                                          #Log 
 
 ```azurecli
 az account set -s <your-subscriptionId>                                    # Select your Azure Subscription
-tenantId=$(az account show --query tenantId)                               # Get your tenantId
+$tenantId=$(az account show --query tenantId)                               # Get your tenantId
 az keyvault update -n myvault --remove Properties.accessPolicies           # Remove the access policies
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```
@@ -123,5 +128,5 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 - [キー、シークレット、証明書](about-keys-secrets-certificates.md)について学習します
 - 概念的な情報については、Key Vault のログを解釈する方法を含め、[Key Vault のログ記録](logging.md)に関するページを参照してください
 - [Key Vault 開発者ガイド](../general/developers-guide.md)
-- [キー コンテナーのセキュリティ保護](security-overview.md)
+- [Azure Key Vault セキュリティ機能](security-features.md)
 - [Azure Key Vault のファイアウォールと仮想ネットワークを構成する](network-security.md)

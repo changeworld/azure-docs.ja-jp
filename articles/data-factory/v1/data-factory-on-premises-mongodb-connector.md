@@ -4,14 +4,15 @@ description: Azure Data Factory を使用して MongoDB データベースから
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 04/13/2018
-ms.openlocfilehash: cedb0b99f04df00763a3ee83287eec90bd5fb45d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 10/22/2021
+ms.openlocfilehash: 4e9ac666907e4439f67da61dd27fa421da264b07
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100387514"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263973"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB からデータを移動する
 

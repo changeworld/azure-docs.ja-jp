@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 339bbd7edf48737113de360812165dc8148c5b93
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: fd364d07202a486bfa47c513af601aeefe595bb5
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375867"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437794"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Azure Load Balancer のアウトバウンド規則
 
@@ -46,6 +46,9 @@ ms.locfileid: "107375867"
 * **アイドル タイムアウト時に TCP リセットを送信するかどうか。**
      * アイドル状態の接続がタイムアウトになった場合は、フローが破棄されていることがわかるように TCP RST をクライアントとサーバーに送信しますか?
 
+>[!Important]
+> バックエンド プールが IP アドレス別に構成されている場合、既定の送信が有効な Basic ロード バランサーとして動作します。 既定でセキュリティで保護された構成の場合と、送信のニーズが厳しいアプリケーションの場合は、バックエンド プールを NIC 別に構成します。
+
 ## <a name="outbound-rule-definition"></a>アウトバウンド規則の定義
 
 アウトバウンド規則は、負荷分散およびインバウンド NAT 規則と同じ使い慣れた構文 (**フロントエンド** + **パラメーター** + **バックエンド プール**) に従います。 
@@ -62,7 +65,7 @@ ms.locfileid: "107375867"
 
 [パブリック IP プレフィックス](./load-balancer-outbound-connections.md#outboundrules)をアウトバウンド規則で直接使用することもできます。 
 
-パブリック IP プレフィックスを使用すると、デプロイのスケーリングが向上します。 プレフィックスは、Azure リソースから送信されたフローの許可リストに追加できます。 パブリック IP アドレス プレフィックスを参照するように、ロード バランサー内のフロントエンド IP 構成を設定できます。  
+パブリック IP プレフィックスを使用すると、デプロイのスケーリングが向上します。 プレフィックスは、対象の Azure リソースから送信されたフローの許可リストに追加できます。 パブリック IP アドレス プレフィックスを参照するように、ロード バランサー内のフロントエンド IP 構成を設定できます。  
 
 ロード バランサーにより、パブリック IP プレフィックスが制御されます。 アウトバウンド規則により、パブリック IP プレフィックスに含まれるすべてのパブリック IP アドレスが自動的にアウトバウンド接続に使用されるようになります。 
 
@@ -119,7 +122,7 @@ NSG が AZURE_LOADBALANCER 既定タグからの正常性プローブ要求を�
 #### <a name="details"></a>詳細
 
 
-このシナリオは、一連のパブリック IP アドレスから送信されるアウトバウンド接続を調整する場合に使用します。 送信元に基づいて、許可リストまたは拒否リストにパブリック IP またはプレフィックスを追加します。
+このシナリオは、一連のパブリック IP アドレスから送信されるアウトバウンド接続を調整する場合に使用します。 送信元に基づいて、許可リストまたはブロックリストにパブリック IP またはプレフィックスを追加します。
 
 
 このパブリック IP またはプレフィックスは、負荷分散規則で使用されるものと同じにすることができます。 
@@ -172,13 +175,13 @@ SNAT 不足が発生した場合は、[SNAT](load-balancer-outbound-connections.
 
 
 > [!NOTE]
-> **Azure Virtual Network NAT** では、ロード バランサーを使わずに、仮想マシンに対するアウトバウンド接続を提供できます。 詳細については、[Azure Virtual Network NAT](../virtual-network/nat-overview.md) に関するページを参照してください。
+> **Azure Virtual Network NAT** では、ロード バランサーを使わずに、仮想マシンに対するアウトバウンド接続を提供できます。 詳細については、[Azure Virtual Network NAT](../virtual-network/nat-gateway/nat-overview.md) に関するページを参照してください。
 
 ### <a name="scenario-4-outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>シナリオ 4:VM のアウトバウンド NAT のみ (インバウンドなし)
 
 
 > [!NOTE]
-> **Azure Virtual Network NAT** では、ロード バランサーを使わずに、仮想マシンに対するアウトバウンド接続を提供できます。 詳細については、[Azure Virtual Network NAT](../virtual-network/nat-overview.md) に関するページを参照してください。
+> **Azure Virtual Network NAT** では、ロード バランサーを使わずに、仮想マシンに対するアウトバウンド接続を提供できます。 詳細については、[Azure Virtual Network NAT](../virtual-network/nat-gateway/nat-overview.md) に関するページを参照してください。
 
 #### <a name="details"></a>詳細
 
@@ -195,7 +198,7 @@ SNAT 不足が発生した場合は、[SNAT](load-balancer-outbound-connections.
 
 
 
-プレフィックスまたはパブリック IP を使用して、[SNAT](load-balancer-outbound-connections.md) ポートをスケーリングします。 アウトバウンド接続の送信元を許可リストまたは拒否リストに追加します。
+プレフィックスまたはパブリック IP を使用して、[SNAT](load-balancer-outbound-connections.md) ポートをスケーリングします。 アウトバウンド接続の送信元を許可リストまたはブロックリストに追加します。
 
 
 
@@ -203,7 +206,7 @@ SNAT 不足が発生した場合は、[SNAT](load-balancer-outbound-connections.
 
 
 > [!NOTE]
-> **Azure Virtual Network NAT** では、内部の標準ロード バランサーを利用して、仮想マシンに対するアウトバウンド接続を提供できます。 詳細については、[Azure Virtual Network NAT](../virtual-network/nat-overview.md) に関するページを参照してください。
+> **Azure Virtual Network NAT** では、内部の標準ロード バランサーを利用して、仮想マシンに対するアウトバウンド接続を提供できます。 詳細については、[Azure Virtual Network NAT](../virtual-network/nat-gateway/nat-overview.md) に関するページを参照してください。
 
 #### <a name="details"></a>詳細
 
@@ -252,4 +255,4 @@ SNAT 不足が発生した場合は、[SNAT](load-balancer-outbound-connections.
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Standard Load Balancer](load-balancer-overview.md) について理解を深める
-- [Azure Load Balancer についてよく寄せられる質問](load-balancer-faqs.md)を確認する
+- [Azure Load Balancer についてよく寄せられる質問](load-balancer-faqs.yml)を確認する

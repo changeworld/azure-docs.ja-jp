@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 09/27/2021
 ms.author: pafarley
-ms.openlocfilehash: 183983779c09658d8d6f609319a127b1f406452d
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 8625a3a4fbb23ce6e719a1db2dd706ee70bccf02
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728430"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354930"
 ---
 # <a name="best-practices-for-adding-users-to-a-face-service"></a>Face サービス にユーザーを追加するためのベスト プラクティス
 

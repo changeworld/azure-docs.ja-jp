@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/08/2020
 ms.author: RamaKoni
-ms.reviewer: sqlblt, daleche
+ms.reviewer: sqlblt, daleche, mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5dbd5725c666afe04d57d4432f0a4798fcb34c03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b28a2872667ed49b74c6b1ece86280e3dfdec4b6
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358845"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166003"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM 上の SQL Server バージョンのインプレース変更
 
@@ -33,7 +33,7 @@ ms.locfileid: "97358845"
 SQL Server のインプレース アップグレードを実行するには、次の条件が適用されます。
 
 - SQL Server の目的のバージョンのセットアップ メディアが必要です。 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、SQL Server の新しいバージョン (通常、C:\SQLServerFull にあります) を含む Azure Marketplace の SQL Server VM イメージから、セットアップ メディアを使用できます。
-- エディションのアップグレードは、[サポート アップグレード パス](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15)に従う必要があります。
+- バージョンのアップグレードは、[サポート アップグレード パス](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15)に従う必要があります。
 
 ## <a name="planning-for-version-change"></a>バージョンの変更の計画
 
@@ -108,7 +108,7 @@ SQL Server のバージョンを変更した後、Azure portal を使用して S
 :::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="バージョンの確認":::
 
 > [!NOTE]
-> SQL IaaS Agent 拡張機能に既に登録している場合は、[RP から登録を解除](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)してから、[SQL VM リソースを再度登録](sql-agent-extension-manually-register-single-vm.md#register-with-extension)して、VM にインストールされている SQL Server の正しいバージョンとエディションを検出できるようにします。 これにより、この VM に関連付けられているメタデータと請求先情報が更新されます。
+> SQL IaaS Agent 拡張機能に既に登録している場合は、[RP から登録を解除](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)してから、[SQL VM リソースを再度登録](sql-agent-extension-manually-register-single-vm.md#full-mode)して、VM にインストールされている SQL Server の正しいバージョンとエディションを検出できるようにします。 これにより、この VM に関連付けられているメタデータと請求先情報が更新されます。
 
 ## <a name="remarks"></a>解説
 
@@ -122,6 +122,6 @@ SQL Server のバージョンを変更した後、Azure portal を使用して S
 詳細については、次の記事を参照してください。
 
 - [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
-- [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.md)
+- [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 - [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
-- [Windows VM 上の SQL Server のリリース ノート](doc-changes-updates-release-notes.md)
+* [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)

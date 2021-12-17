@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Microsoft Defender for Cloud のドキュメント
+summary: Microsoft Defender for Cloud では、統合されたセキュリティ管理と高度な脅威に対する保護がハイブリッド クラウド ワークロードに提供されます。
+metadata:
+  title: Microsoft Defender for Cloud のドキュメント
+  description: Microsoft が提供するクイックスタートとチュートリアルを使用して、Defender for Cloud の利用開始、ワークロードをセキュリティで保護する方法の確認、リスクの抑制、攻撃の検出および対応を行えます。
+  services: defender-for-cloud
+  author: memildin
+  ms.author: memildin
+  manager: raynew
+  ms.topic: landing-page
+  ms.collection: collection
+  ms.date: 10/21/2021
+  ms.openlocfilehash: fc2ad72084b56df50a4f35da9e7e0f9d5b0d57ab
+  ms.sourcegitcommit: e9e332a512ed615a3c8ad5a11baa21649f14116d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/24/2021
+  ms.locfileid: "133097701"
+landingContent:
+- title: Defender for Cloud について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Defender for Cloud の主な機能
+      url: defender-for-cloud-introduction.md
+    - text: サポートされる Windows Server および Linux のバージョン
+      url: security-center-os-coverage.md
+    - text: Defender for Cloud の開始方法
+      url: get-started.md
+    - text: セキュリティ ポリシー、イニシアチブ、および推奨事項とは
+      url: security-policy-concept.md
+- title: 最新情報
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Defender for Cloud のリリース ノート
+      url: release-notes.md
+    - text: 今後予定されている重要な変更
+      url: upcoming-changes.md
+    - text: マルチクラウド セキュリティ - AWS EKS クラスターを保護する
+      url: defender-for-kubernetes-introduction.md#protect-amazon-elastic-kubernetes-service-clusters
+    - text: 環境設定で AWS アカウントを接続する
+      url: quickstart-onboard-aws.md
+    - text: 脅威と脆弱性の管理の脆弱性評価
+      url: deploy-vulnerability-assessment-tvm.md
+- title: はじめに
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: サブスクリプションで Defender for Cloud を有効にする
+      url: get-started.md
+    - text: 強化されたセキュリティ機能を有効にする
+      url: enable-enhanced-security.md
+    - text: ハイブリッド マシンとマルチクラウド マシンの接続
+      url: quickstart-onboard-machines.md
+    - text: 自動プロビジョニングを構成する
+      url: enable-data-collection.md
+    - text: メール通知の設定
+      url: configure-email-notifications.md
+- title: セキュリティ スコアを向上させる
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: セキュア スコアについて
+      url: secure-score-security-controls.md
+    - text: セキュリティの推奨事項への対応
+      url: implement-security-recommendations.md
+    - text: リソースを推奨事項から除外する
+      url: exempt-resource.md
+    - text: 時間の経過に伴うスコアの追跡
+      url: custom-dashboards-azure-workbooks.md#use-the-secure-score-over-time-workbook
+- title: 脅威の軽減
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Just-In-Time アクセスの管理
+      url: just-in-time-access-usage.md
+    - text: 適応型アプリケーション制御の設定
+      url: adaptive-application-controls.md
+    - text: アダプティブ ネットワーク強化の実装
+      url: adaptive-network-hardening.md
+    - text: ワークロード保護の使用
+      url: workload-protections-dashboard.md

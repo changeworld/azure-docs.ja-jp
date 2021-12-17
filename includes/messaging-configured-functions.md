@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9bc641d680d927c44814f6814ebf6a6dde958c9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4d7b9d272f097f5be332c8ff0acdf7cb30395ea
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98901038"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571266"
 ---
 Azure Functions を使用すると、事前構築済みのエントリ ポイントを使用して、構成のみのレプリケーション タスクを作成できます。 [Azure Functions の構成ベース レプリケーションのサンプル](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config)では、独自のコードで[事前構築済みのヘルパー](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication)を活用したり、コード全体を処理せずに構成を使用したりする方法について説明しています。
 
@@ -22,7 +22,7 @@ Azure Functions を使用すると、事前構築済みのエントリ ポイン
 
 次に、フォルダー内に `function.json` ファイルを作成します。 このファイルでは、関数を構成します。 次の内容から始めます。
 
-``` JSON
+```json
 {
     "configurationSource": "config",
     "bindings" : [
@@ -64,7 +64,7 @@ Azure Functions を使用すると、事前構築済みのエントリ ポイン
 * **eventHubName** - 接続文字列によって識別される名前空間内におけるイベント ハブの名前。
 * **consumerGroup** - コンシューマー グループの名前。 名前はパーセント記号で囲まれているので、アプリ設定値も参照していることに注意してください。
 
-```JSON
+```json
     ...
     "bindings" : [
         {
@@ -86,7 +86,7 @@ Service Bus キューからイベントを受信する場合は、"bindings" 内
 * **connection** - Service Bus 接続文字列のアプリ設定値の名前。
 * **queueName** - 接続文字列によって識別される名前空間内における Service Bus キューの名前。
 
-```JSON
+```json
     ...
     "bindings" : [
         {
@@ -108,7 +108,7 @@ Service Bus トピックからイベントを受信する場合は、"bindings" 
 * **topicName** - 接続文字列によって識別される名前空間内における Service Bus トピックの名前。
 * **subscriptionName** - 接続文字列によって識別される名前空間内における、指定されたトピックの Service Bus サブスクリプションの名前。
 
-```JSON
+```json
     ...
     "bindings" : [
         {
@@ -132,7 +132,7 @@ Service Bus トピックからイベントを受信する場合は、"bindings" 
 * **connection** - イベント ハブ接続文字列のアプリ設定値の名前。 
 * **eventHubName** - 接続文字列によって識別される名前空間内におけるイベント ハブの名前。
 
-```JSON
+```json
     ...
     "bindings" : [
         {
@@ -156,7 +156,7 @@ Service Bus キューにイベントを転送する場合は、"bindings" 内の
 * **connection** - Service Bus 接続文字列のアプリ設定値の名前。 
 * **queueName** - 接続文字列によって識別される名前空間内における Service Bus キューの名前。
 
-```JSON
+```json
     ...
     "bindings" : [
         {
@@ -180,7 +180,7 @@ Service Bus トピックにイベントを転送する場合は、"bindings" 内
 * **connection** - Service Bus 接続文字列のアプリ設定値の名前。 
 * **topicName** - 接続文字列によって識別される名前空間内における Service Bus トピックの名前。
 
-```JSON
+```json
     ...
     "bindings" : [
         {
@@ -200,7 +200,7 @@ Service Bus トピックにイベントを転送する場合は、"bindings" 内
 
 エントリ ポイントの構成では、標準のレプリケーション タスクのうち 1 つを選択します。 `Azure.Messaging.Replication` プロジェクトを変更する場合は、ここでタスクを追加して参照することもできます。 次に例を示します。
 
-```JSON
+```json
     ...
     "scriptFile": "../dotnet/bin/Azure.Messaging.Replication.dll",
     "entryPoint": "Azure.Messaging.Replication.EventHubReplicationTasks.ForwardToEventHub"

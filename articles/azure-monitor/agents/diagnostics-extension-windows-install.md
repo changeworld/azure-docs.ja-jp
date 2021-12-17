@@ -6,13 +6,13 @@ author: bwren
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 3ff752b673c49047551c48c4c8693b00d7b5edeb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6fb9698b4f2f20fb4fa527bbd68cc2b4c352d5f5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787407"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663499"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成
 [Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure 仮想マシンと他のコンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 診断拡張機能のインストールと構成の詳細と、Azure ストレージ アカウントでデータを保存する方法について説明します。
@@ -71,7 +71,7 @@ Azure portal で、個々の仮想マシンに診断拡張機能をインスト�
 10. **[保存]** をクリックして構成を保存します。 
 
 > [!NOTE]
-> 診断拡張機能の構成は、JSON と XML のどちらの形式にすることもできますが、Azure portal で実行される構成は常に JSON 形式で保存されます。 別の構成方法で XML を使用していて、Azure portal で構成を変更した場合、設定は JSON に変更されます。
+> 診断拡張機能の構成は、JSON と XML のどちらの形式にすることもできますが、Azure portal で実行される構成は常に JSON 形式で保存されます。 別の構成方法で XML を使用していて、Azure portal で構成を変更した場合、設定は JSON に変更されます。 また、これらのログの保有期間を設定するオプションはありません。
 
 ## <a name="resource-manager-template"></a>Resource Manager テンプレート
 Azure Resource Manager テンプレートを使用した診断拡張機能のデプロイについては、「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](../../virtual-machines/extensions/diagnostics-template.md)」を参照してください。 
@@ -207,7 +207,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
 
 * Visual Studio のサーバー エクスプローラー - Azure Tools for Microsoft Visual Studio がインストールされている場合、サーバー エクスプローラーの Azure Storage ノードを使用して、Azure ストレージ アカウントの読み取り専用の BLOB およびテーブル データを表示できます。 データは、ローカルのストレージ エミュレーター アカウントから表示できます。また、Azure 用に作成したストレージ アカウントから表示することもできます。 詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)」を参照してください。
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、OSX、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
-* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) に含まれている Azure Diagnostics Manager では、Azure で実行されているアプリケーションによって収集された診断データの表示、ダウンロード、管理を行うことができます。
+* [Azure Management Studio](https://cerebrata.com/blog/introducing-azure-management-studio-and-azure-explorer) に含まれている Azure Diagnostics Manager では、Azure で実行されているアプリケーションによって収集された診断データの表示、ダウンロード、管理を行うことができます。
 
 ## <a name="next-steps"></a>次のステップ
 - Azure Event Hubs への監視データの転送の詳細については、[Windows Azure Diagnostics 拡張機能から Event Hubs へのデータ送信](diagnostics-extension-stream-event-hubs.md)に関する記事を参照してください。

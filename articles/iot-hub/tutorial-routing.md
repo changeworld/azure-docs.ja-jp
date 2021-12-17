@@ -1,24 +1,23 @@
 ---
 title: チュートリアル - Azure CLI を使用して Azure IoT Hub のメッセージ ルーティングを構成する
 description: チュートリアル - Azure CLI と Azure portal を使用して Azure IoT Hub のメッセージ ルーティングを構成する
-author: robinsh
-manager: philmea
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 03/12/2019
-ms.author: robinsh
+ms.date: 08/16/2021
+ms.author: lizross
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: d7a10aac82286616273f7283bc3fba74f2c58f35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbe2108a50e29b91c8c324201085d9ba1f6969bc
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625217"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550143"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI と Azure portal を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -136,91 +135,96 @@ az servicebus queue create --name $sbQueueName \
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
+次に、メッセージ ルーティングの構成を Azure Storage に設定します。
+
 1. [Azure portal](https://portal.azure.com) で **[リソース グループ]** を選択し、自分のリソース グループを選択します。 このチュートリアルでは、**ContosoResources** を使います。
 
 2. リソースの一覧で IoT ハブを選択します。 このチュートリアルでは、**ContosoTestHub** を使います。
 
-3. **[メッセージ ルーティング]** を選択します。 **[メッセージ ルーティング]** ウィンドウで、+ **[追加]** を選択します。 次の図に示すように、 **[ルートの追加]** ペインで、[エンドポイント] フィールドの横の + **[エンドポイントの追加]** を選択して、サポートされているエンドポイントを表示します。
+3. 中央の **_[メッセージング]_ * という列で **[メッセージ ルーティング]** を選択します。+** [追加]** を選択して **[ルートの追加]** ペインを表示します。 [エンドポイント] フィールドの横にある + **[エンドポイントの追加]** を選択し、 **[ストレージ]** を選択します。 **[Add storage endpoint]\(ストレージ エンドポイントの追加\)** ウィンドウが表示されます。
 
-   ![ルートのエンドポイントの追加を開始する](./media/tutorial-routing/message-routing-add-a-route-with-storage-endpoint-ver2.png)
+   ![ルートのエンドポイントの追加を開始する](./media/tutorial-routing/01-add-a-route-to-storage.png)
 
-4. **[ストレージ]** を選択します。 **[Add storage endpoint]\(ストレージ エンドポイントの追加\)** ウィンドウが表示されます。
+4. エンドポイントの名前を入力します。 このチュートリアルでは、**ContosoStorageEndpoint** を使います。
 
-   ![エンドポイントの追加](./media/tutorial-routing/message-routing-add-storage-endpoint-ver2.png)
+   ![エンドポイント名の指定](./media/tutorial-routing/02-add-a-storage-endpoint.png)
 
-5. エンドポイントの名前を入力します。 このチュートリアルでは、**ContosoStorageEndpoint** を使います。
+5. **[コンテナーを選択します]** を選択します。 ストレージ アカウントの一覧が表示されます。 準備の手順で設定したものを選択します。このチュートリアルでは、**contosostorage** を使用します。 そのストレージ アカウント内のコンテナーの一覧が表示されます。 準備ステップで設定したコンテナーを **選択** します。 このチュートリアルでは、**contosoresults** を使います。 次に、画面の下部にある **[選択]** をクリックします。 これにより、別の **[Add storage endpoint]\(ストレージ エンドポイントの追加\)** ペインに戻ります。 選択したコンテナーの URL が表示されます。 
 
-6. **[コンテナーを選択します]** を選択します。 ストレージ アカウントの一覧が表示されます。 準備ステップで設定したものを選択します。 このチュートリアルでは、**contosostorage** を使います。 そのストレージ アカウント内のコンテナーの一覧が表示されます。 準備ステップで設定したコンテナーを **選択** します。 このチュートリアルでは、**contosoresults** を使います。 **[ストレージ エンドポイントの追加]** ウィンドウに戻り、選択した内容が表示されます。
-
-7. エンコードを AVRO または JSON に設定します。 このチュートリアルでは、残りのフィールドには既定値を使用します。 選択したリージョンが JSON エンコードをサポートしていない場合、このフィールドは灰色表示されます。
+6. エンコードを AVRO または JSON に設定します。 このチュートリアルでは、残りのフィールドには既定値を使用します。 選択したリージョンで JSON エンコードがサポートされていない場合、このフィールドは淡色表示されます。 ファイル名の形式を設定します。 
 
    > [!NOTE]
-   > BLOB 名の形式は、 **[BLOB ファイル名形式]** を使用して設定することができます。 既定では、 `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`です。 形式には任意の順序で {iothub}、{partition}、{YYYY}、{MM}、{DD}、{HH}、および {mm} を含める必要があります。
+   > BLOB 名の形式は、**BLOB ファイル名形式** を使用して設定します。 既定では、 `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`です。 形式には任意の順序で {iothub}、{partition}、{YYYY}、{MM}、{DD}、{HH}、および {mm} を含める必要があります。
    >
    > たとえば、既定の BLOB ファイル名形式を使用して、ハブ名が ContosoTestHub であり、日付/時刻が 2018 年 10 月 30 日午前 10:56 である場合、BLOB 名は `ContosoTestHub/0/2018/10/30/10/56` のようになります。
    > 
-   > BLOB は、Avro 形式で書き込まれます。
+   > 既定では、BLOB は AVRO 形式で書き込まれます。
    >
 
-8. **[作成]** を選択してストレージ エンドポイントを作成し、ルートに追加します。 **[Add a route]\(ルートの追加\)** ウィンドウに表示が戻ります。
+7. ページの下部にある **[作成]** を選択してストレージ エンドポイントを作成し、ルートに追加します。 **[ルートの追加]** ペインに戻ります。 
 
-9. ルーティング クエリ情報の残りの部分を完成します。 このクエリでは、エンドポイントとして追加したストレージ コンテナーにメッセージを送信するための条件を指定します。 画面のフィールドを入力します。
+8. ルーティング クエリ情報の残りの部分を完成させます。 このクエリでは、エンドポイントとして追加したストレージ コンテナーにメッセージを送信するための条件を指定します。 画面のフィールドを入力します。
 
-   **Name**:ルーティング クエリの名前を入力します。 このチュートリアルでは、**ContosoStorageRoute** を使います。
+9. フィールドの残りの部分を入力します。
 
-   **エンドポイント**: ここには、先ほど設定したエンドポイントが表示されます。
-
-   **データ ソース**:ドロップダウン リストから **[デバイス テレメトリのメッセージ]** を選びます。
-
-   **ルートの有効化**:このフィールドは必ず `enabled` に設定してください。
+   - **[名前]** : ルートの名前を入力します。 このチュートリアルでは、**ContosoStorageRoute** を使います。 次に、ストレージのエンドポイントを指定します。 このチュートリアルでは、ContosoStorageEndpoint を使います。
    
-   **ルーティング クエリ**:クエリ文字列として、「`level="storage"`」と入力します。
+   - **[データ ソース]** の指定: ドロップダウン リストから **[Device Telemetry Messages]\(デバイス テレメトリ メッセージ\)** を選びます。   
 
-   ![ストレージ アカウントのルーティング クエリを作成する](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
+   - **[ルートの有効化]** の選択: このフィールドが `enabled` に設定されていることを確認します。
 
-   **[保存]** を選択します。 完了すると [メッセージ ルーティング] ウィンドウに表示が戻り、そこでストレージの新しいルーティング クエリを確認できます。 [ルート] ウィンドウを閉じて、[リソース グループ] ページに戻ります。
+   - **ルーティング クエリ**:クエリ文字列として、「`level="storage"`」と入力します。
+
+   ![ルーティング クエリ情報の保存](./media/tutorial-routing/04-save-storage-route.png)
+  
+10.  **[保存]** を選択します。 完了すると [メッセージ ルーティング] ウィンドウに表示が戻り、そこでストレージの新しいルーティング クエリを確認できます。 [メッセージ ルーティング] ペインを閉じて、[リソース グループ] ページに戻ります。
+
 
 ### <a name="route-to-a-service-bus-queue"></a>Service Bus キューへのルーティング
 
-次に、Service Bus キューへのルーティングを設定します。 [メッセージ ルーティング] ウィンドウに移動して、ルートを追加します。 ルートを追加するときは、ルートに対する新しいエンドポイントを定義します。 このルートを設定した後、**level** プロパティが **critical** に設定されているメッセージは、Service Bus キューに書き込まれます。それにより、ロジック アプリがトリガーされて、情報を含むメールが送信されます。
+次に、Service Bus キューへのルーティングを設定します。 [メッセージ ルーティング] ウィンドウに移動して、ルートを追加します。 ルートを追加するときは、ルートのエンドポイントとして Service Bus キューを定義します。 このルートを設定した後、**level** プロパティが **critical** に設定されているメッセージは、Service Bus キューに書き込まれます。それにより、ロジック アプリがトリガーされて、情報を含むメールが送信されます。
 
 1. [リソース グループ] ページで、自分の IoT ハブを選択し、 **[メッセージ ルーティング]** を選択します。
 
-2. **[メッセージ ルーティング]** ウィンドウで、+ **[追加]** を選択します。
+2. **[メッセージ ルーティング]** ペインで、+ **[追加]** を選択します。
 
-3. **[ルートの追加]** ウィンドウで、[エンドポイント] フィールドの隣にある + **[追加]** を選択します。 **[Service Bus キュー]** を選択します。 **[Service Bus エンドポイントを追加する]** ウィンドウが表示されます。
+3. **[ルートの追加]** ペインで、+ **[エンドポイント]** の隣にある + **[追加]** を選択します。 **[Service Bus キュー]** を選択します。 **[Service Bus エンドポイントを追加する]** ウィンドウが表示されます。
 
-   ![Service Bus エンドポイントを追加する](./media/tutorial-routing/message-routing-add-sbqueue-ep.png)
+   ![最初の Service Bus エンドポイントの追加](./media/tutorial-routing/05-setup-sbq-endpoint.png)
 
-4. フィールドに入力します。
+4. フィールドの残りの部分を入力します。
 
-   **エンドポイント名**:エンドポイントの名前を入力します。 このチュートリアルでは、**ContosoSBQueueEndpoint** を使います。
+   **エンドポイント名**:エンドポイントの名前を入力します。 このチュートリアルでは、**ContosoSBQEndpoint** を使います。
    
    **Service Bus 名前空間**:ドロップダウン リストを使用し、準備ステップで設定したサービス バスの名前空間を選択します。 このチュートリアルでは、**ContosoSBNamespace** を使います。
 
    **Service Bus キュー**:ドロップダウン リストを使用して Service Bus キューを選択します。 このチュートリアルでは、**contososbqueue** を使います。
 
-5. **[作成]** を選択して Service Bus キューのエンドポイントを追加します。 **[Add a route]\(ルートの追加\)** ウィンドウに表示が戻ります。
+5. **[作成]** を選択して最初の Service Bus キューのエンドポイントを追加します。 **[Add a route]\(ルートの追加\)** ウィンドウに表示が戻ります。
+
+   ![2 番目の Service Bus エンドポイントの追加](./media/tutorial-routing/06-save-sbq-endpoint.png)
 
 6. ルーティング クエリ情報の残りの部分を完成します。 このクエリでは、エンドポイントとして追加した Service Bus キューにメッセージを送信するための条件を指定します。 画面のフィールドを入力します。 
 
-   **Name**:ルーティング クエリの名前を入力します。 このチュートリアルでは、**ContosoSBQueueRoute** を使います。 
+   **[名前]** : ルートの名前を入力します。 このチュートリアルでは、**ContosoSBQueueRoute** を使います。 
 
    **エンドポイント**: ここには、先ほど設定したエンドポイントが表示されます。
 
    **データ ソース**:ドロップダウン リストから **[デバイス テレメトリのメッセージ]** を選びます。
 
-   **ルーティング クエリ**:クエリ文字列として、「`level="critical"`」と入力します。 
+   **[ルートの有効化]** : このフィールドを `enable` に設定します。
 
-   ![Service Bus キューのルーティング クエリを作成する](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
+   **[ルーティング クエリ]** : ルーティング クエリとして `level="critical"` と入力します。 
 
-7. **[保存]** を選択します。 [ルート] ウィンドウに戻ると、次のように、新しいルートが両方とも表示されます。
+   ![Service Bus キューのルーティング クエリを作成する](./media/tutorial-routing/07-save-servicebusqueue-route.png)
 
-   ![設定したばかりのルート](./media/tutorial-routing/message-routing-show-both-routes.png)
+7. **[保存]** を選択します。 [ルート] ペインに戻ると、新しいルートが両方とも表示されます。
+
+   ![設定したばかりのルート](./media/tutorial-routing/08-show-both-routes.png)
 
 8. **[カスタム エンドポイント]** タブを選択することで、設定したカスタム エンドポイントを確認できます。
 
-   ![設定したばかりのカスタム エンドポイント](./media/tutorial-routing/message-routing-show-custom-endpoints.png)
+   ![設定したばかりのカスタム エンドポイント](./media/tutorial-routing/09-show-custom-endpoints.png)
 
 9. [メッセージ ルーティング] ウィンドウを閉じて、[リソース グループ] ウィンドウに戻ります。
 

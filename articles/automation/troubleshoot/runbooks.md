@@ -2,15 +2,15 @@
 title: Azure Automation Runbook に関する問題のトラブルシューティング
 description: この記事では、Azure Automation Runbook に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
-ms.date: 02/11/2021
+ms.date: 09/16/2021
 ms.topic: troubleshooting
-ms.custom: has-adal-ref
-ms.openlocfilehash: ea9d8a4899b0d725c9791192d68373b44acee11f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: has-adal-ref, devx-track-azurepowershell
+ms.openlocfilehash: 3813fa79fb6eaba5c61500d11d9b160c88d668d4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168741"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435398"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook の問題のトラブルシューティング
 
@@ -39,7 +39,7 @@ Azure Automation で Runbook を実行しているときにエラーが発生し
 1. Runbook が中断されたか、予期せず失敗した場合:
 
     * [証明書を更新する](../manage-runas-account.md#cert-renewal) (実行アカウントの有効期限が切れている場合)。
-    * [Webhook を更新する](../automation-webhooks.md#renew-a-webhook) (期限切れの Webhook を使用して Runbook を開始しようとしている場合)。
+    * [Webhook を更新する](../automation-webhooks.md#update-a-webhook) (期限切れの Webhook を使用して Runbook を開始しようとしている場合)。
     * [ジョブの状態を確認](../automation-runbook-execution.md#job-statuses)して、現在の Runbook の状態と、この問題について考えられるいくつかの原因を特定する。
     * [新たな出力を Runbook に追加](../automation-runbook-output-and-messages.md#working-with-message-streams)して、Runbook の中断前に何が発生したかを特定する。
     * ジョブによってスローされる[例外を処理する](../automation-runbook-execution.md#exceptions)。
@@ -47,6 +47,22 @@ Azure Automation で Runbook を実行しているときにエラーが発生し
 1. Runbook ジョブまたは Hybrid Runbook Worker 上の環境が応答しない場合に、この手順を実行します。
 
     Azure Automation ではなく、Hybrid Runbook Worker で Runbook を実行している場合は、[Hybrid Worker 自体のトラブルシューティング](hybrid-runbook-worker.md)が必要になることがあります。
+
+## <a name="scenario-access-blocked-to-azure-storage-or-azure-key-vault-or-azure-sql"></a>シナリオ: Azure Storage、Azure Key Vault、または Azure SQL へのブロックされたアクセス
+
+このシナリオでは、[Azure Storage](../../storage/common/storage-network-security.md) を使用します。ただし、この情報は、[Azure Key Vault](../../key-vault/general/network-security.md) と [Azure SQL](../../azure-sql/database/firewall-configure.md) にも同じように適用できます。
+
+### <a name="issue"></a>問題
+
+Runbook から Azure Storage にアクセスしようとすると、次のメッセージのようなエラーが発生します: `The remote server returned an error: (403) Forbidden. HTTP Status Code: 403 - HTTP Error Message: This request is not authorized to perform this operation.`
+
+### <a name="cause"></a>原因
+
+Azure Storage で Azure Firewall が有効になっています。
+
+### <a name="resolution"></a>解決方法
+
+[Azure Storage](../../storage/common/storage-network-security.md)、[Azure Key Vault](../../key-vault/general/network-security.md)、または [Azure SQL](../../azure-sql/database/firewall-configure.md) で Azure Firewall を有効にすると、それらのサービスの Azure Automation Runbook からのアクセスがブロックされます。 信頼される Microsoft サービスを許可するファイアウォール例外が有効になっている場合でも、Automation は信頼されるサービス一覧に含まれていないため、アクセスはブロックされます。 ファイアウォールが有効になっている場合は、Hybrid Runbook Worker と[仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)を使用しないとアクセスできません。
 
 ## <a name="scenario-runbook-fails-with-a-no-permission-or-forbidden-403-error"></a><a name="runbook-fails-no-permission"></a>シナリオ:Runbook が "No permission (アクセス許可なし)" または "Forbidden 403 (禁止 403)" エラーで失敗する
 
@@ -194,26 +210,11 @@ The subscription named <subscription name> cannot be found.
 * サブスクリプション名が有効ではない。
 * サブスクリプションの詳細を取得しようとしている Azure AD ユーザーが、サブスクリプションの管理者として構成されていない。
 * そのコマンドレットが使用できない。
+* コンテキスト切り替えが発生した。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
-次の手順に従って、Azure に対して認証されているかと、選択しようとしているサブスクリプションにアクセスできるかを確認します。
-
-1. スクリプトがスタンドアロンで動作することを確認するには、Azure Automation の外部でテストします。
-1. スクリプトで、`Select-*` コマンドレットを実行する前に [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) コマンドレットが実行されていることを確認します。
-1. Runbook の先頭に `Disable-AzContextAutosave -Scope Process` を追加します。 このコマンドレットにより、すべての資格情報が現在の Runbook の実行にのみ適用されるようになります。
-1. それでもエラー メッセージが表示される場合は、`Connect-AzAccount` に `AzContext` パラメーターを追加するようにコードを変更してから、コードを実行します。
-
-   ```powershell
-   Disable-AzContextAutosave -Scope Process
-
-   $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
-
-   $context = Get-AzContext
-
-   Get-AzVM -ResourceGroupName myResourceGroup -AzContext $context
-    ```
+コンテキスト切り替えについては、「[Azure Automation でのコンテキスト切り替え](../context-switching.md)」を参照してください。
 
 ## <a name="scenario-runbooks-fail-when-dealing-with-multiple-subscriptions"></a><a name="runbook-auth-failure"></a>シナリオ:複数のサブスクリプションを処理するときに Runbook が失敗する
 
@@ -235,33 +236,19 @@ Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automat
    ID : <AGuidRepresentingTheOperation> At line:51 char:7 + $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $UNBV... +
 ```
 
-### <a name="resolution"></a>解像度
+次のようなエラーが表示されることもあります。
 
-1 つの Runbook で複数の Runbook を呼び出すと、サブスクリプション コンテキストが失われる可能性があります。 誤って間違ったサブスクリプションにアクセスしようとするのを避けるために、以下のガイダンスに従う必要があります。
+```error
+Get-AzureRmResource : Resource group "SomeResourceGroupName" could not be found.
+... resources = Get-AzResource -ResourceGroupName $group.ResourceGro ...
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Get-AzResource], CloudException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.GetAzureResourceCmdlet
+```
 
-* 間違ったサブスクリプションが参照されないようにするには、各 Runbook の開始時に次のコードを使用して、Automation Runbook でコンテキストの保存を無効にします。
+### <a name="resolution"></a>解決策
 
-   ```azurepowershell-interactive
-   Disable-AzContextAutosave -Scope Process
-   ```
-
-* Azure PowerShell コマンドレットでは、`-DefaultProfile` パラメーターがサポートされています。 この機能は、すべての Az および AzureRm コマンドレットに追加され、同じプロセスで複数の PowerShell スクリプトを実行できるようになりました。コンテキストと、各コマンドレットに使用するサブスクリプションを指定できます。 Runbook を使用する場合、Runbook の作成時 (つまり、あるアカウントでサインインしたとき) と、変更のたびに、Runbook にコンテキスト オブジェクトを保存してください。また、Az コマンドレットを指定するとき、コンテキストを参照してください。
-
-   > [!NOTE]
-   > [Set-AzContext](/powershell/module/az.accounts/Set-AzContext) や [Select-AzSubscription](/powershell/module/servicemanagement/azure.service/set-azuresubscription) などのコマンドレットを使用してコンテキストを直接操作する場合でも、コンテキスト オブジェクトを渡す必要があります。
-
-   ```azurepowershell-interactive
-   $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName 
-   $context = Add-AzAccount `
-             -ServicePrincipal `
-             -TenantId $servicePrincipalConnection.TenantId `
-             -ApplicationId $servicePrincipalConnection.ApplicationId `
-             -Subscription 'cd4dxxxx-xxxx-xxxx-xxxx-xxxxxxxx9749' `
-             -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
-   $context = Set-AzContext -SubscriptionName $subscription `
-       -DefaultProfile $context
-   Get-AzVm -DefaultProfile $context
-   ```
+誤って間違ったサブスクリプションにアクセスしようとするのを防ぐために、「[Azure Automation でのコンテキスト切り替え](../context-switching.md)」を参照してください。
   
 ## <a name="scenario-authentication-to-azure-fails-because-multifactor-authentication-is-enabled"></a><a name="auth-failed-mfa"></a>シナリオ:多要素認証が有効になっているために Azure に対する認証が失敗する
 
@@ -279,7 +266,7 @@ Azure アカウントに多要素認証を設定している場合、Azure に�
 
 ### <a name="resolution"></a>解像度
 
-クラシック実行アカウントを Azure クラシック デプロイ モデルのコマンドレットと共に使用するには、[クラシック実行アカウントを作成して Azure サービスを管理する](../automation-create-standalone-account.md#create-a-classic-run-as-account)方法に関する記事を参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する場合は、[Azure portal を使用するサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)および [Azure Resource Manager でのサービス プリンシパルの認証](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)に関するページを参照してください。
+Azure Resource Manager コマンドレットでサービス プリンシパルを使用する場合は、[Azure portal を使用するサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)および [Azure Resource Manager でのサービス プリンシパルの認証](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)に関するページを参照してください。
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>シナリオ:Runbook が "A task was canceled" (タスクが取り消されました) というエラー メッセージで失敗する
 
@@ -470,7 +457,7 @@ Azure Automation Runbook の Webhook を呼び出そうとすると、次のエ�
 
 ### <a name="resolution"></a>解像度
 
-Webhook が無効な場合は、Azure portal から再度有効にすることができます。 Webhook の有効期限が切れている場合は、削除してから再作成する必要があります。 Webhook がまだ期限切れでない場合にのみ、[Webhook を更新](../automation-webhooks.md#renew-a-webhook)できます。 
+Webhook が無効な場合は、Azure portal から再度有効にすることができます。 Webhook の有効期限が切れている場合は、削除してから再作成する必要があります。 Webhook がまだ期限切れでない場合にのみ、[Webhook を更新](../automation-webhooks.md#update-a-webhook)できます。 
 
 ## <a name="scenario-429-the-request-rate-is-currently-too-large"></a><a name="429"></a>シナリオ:429:The request rate is currently too large (現在、要求率が大きすぎます)
 
@@ -677,7 +664,7 @@ Operation returned an invalid status code 'Forbidden'
 
 #### <a name="not-using-a-run-as-account"></a>実行アカウントを使用していない
 
-「[手順 5 - Azure リソースを管理するための認証を追加する](../learn/automation-tutorial-runbook-textual-powershell.md#step-5---add-authentication-to-manage-azure-resources)」に従って、Key Vault へのアクセスに実行アカウントを使用するようにします。
+「[手順 5 - Azure リソースを管理するための認証を追加する](../learn/powershell-runbook-managed-identity.md#assign-permissions-to-managed-identities)」に従って、Key Vault へのアクセスに実行アカウントを使用するようにします。
 
 #### <a name="insufficient-permissions"></a>アクセス許可が不十分である
 

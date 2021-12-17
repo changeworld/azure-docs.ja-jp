@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/01/2021
+ms.date: 04/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c9568c51fe3a59dba83a66fc35c8d9112ade167f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 6c8f4e902929d6a610dc1f9224ac17b2d3b893d0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106178497"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126056951"
 ---
 Microsoft Intune を使用して、Azure VPN クライアント (Windows 10) のプロファイルを展開できます。 この記事では、カスタム設定を使用して Intune プロファイルを作成する方法について説明します。
 
@@ -66,15 +66,13 @@ Microsoft Intune を使用して、Azure VPN クライアント (Windows 10) の
 このセクションでは、カスタム設定を使用して Microsoft Intune プロファイルを作成します。
 
 1. Intune にサインインし、 **[デバイス] -> [構成プロファイル]** の順に移動します。 **[+ プロファイルの作成]** を選択します。
-
-   :::image type="content" source="./media/vpn-gateway-virtual-wan-vpn-profile-intune/configuration-profile.png" alt-text="構成プロファイル":::
-1. **[プラットフォーム]** には、 **[Windows 10 以降]** を選択します。 **[プロファイル]** には **[カスタム]** を選択します。 そのうえで **[Create]\(作成\)** を選択します。
+1. **[プラットフォーム]** には、 **[Windows 10 以降]** を選択します。 **[プロファイルの種類]** には、 **[テンプレート]** と **[カスタム]** を選択します。 そのうえで **[Create]\(作成\)** を選択します。
 1. プロファイルの名前と説明を入力し、 **[次へ]** を選択します。
 1. **[構成設定]** タブで **[追加]** を選択します。
 
     * **[名前]:** 構成の名前を入力します。
     * **説明:** 省略可能な説明です。
-    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (この情報は、azurevpnconfig.xml の <name></name> タグ内にあります)。
+    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (この情報は、azurevpnconfig.xml の \<name\> \</name\> タグ内にあります)。
     * **データ型**: 文字列 (XML ファイル)。
 
    フォルダー アイコンを選択し、[XML](#xml) 手順の手順 6 で保存したファイルを選択します。 **[追加]** を選択します。

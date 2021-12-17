@@ -1,22 +1,24 @@
 ---
 title: チュートリアル - Azure CLI を使用した Azure ディスクの管理
 description: このチュートリアルでは、Azure CLI を使用して、仮想マシン用の Azure ディスクの作成と管理を行う方法について説明します
-author: cynthn
-ms.service: virtual-machines
+author: roygara
+ms.author: rogarana
+ms.service: storage
+ms.subservice: disks
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 08/20/2020
-ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.subservice: disks
-ms.openlocfilehash: 56e804bc0d479f09ef2900c42361fbd24eed1d98
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 37f5e0163d7c2ed57866f8c4eda49458a969ad87
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765955"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687763"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用した Azure ディスクの管理
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure Virtual Machines (VM) では、オペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 VM を作成するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクのデプロイと管理方法を示します。 内容は次のとおりです。
 
@@ -111,7 +113,7 @@ az vm disk attach \
 仮想マシンとの SSH 接続を作成します。 この例の IP アドレスは、仮想マシンのパブリック IP で置き換えてください。
 
 ```console
-ssh 10.101.10.10
+ssh azureuser@10.101.10.10
 ```
 
 `parted` を使用してディスクをパーティション分割します。

@@ -40,30 +40,49 @@
           items:
             - name: クラスの種類の概要
               href: class-types.md
-            - name: 自然言語処理でのディープ ラーニング
-              href: class-type-deep-learning-natural-language-processing.md
-            - name: Linux でのシェル スクリプト
-              href: class-type-shell-scripting-linux.md
-            - name: 倫理的ハッキング
-              href: class-type-ethical-hacking.md
-            - name: GNS3 を使用したネットワーク
-              href: class-type-networking-gns3.md
-            - name: データベースの管理
-              href: class-type-database-management.md
-            - name: SQL データベースの管理と開発
-              href: class-type-sql-server.md
-            - name: Python と Jupyter Notebook
-              href: class-type-jupyter-notebook.md
-            - name: ビッグ データ分析
-              href: class-type-big-data-analytics.md
-            - name: MATLAB
-              href: class-type-matlab.md
-            - name: SolidWorks のコンピューター支援設計 (CAD)
-              href: class-type-solidworks.md
+            - name: Adobe Creative Cloud
+              href: class-type-adobe-creative-cloud.md
             - name: 「ArcGIS」
               href: class-type-arcgis.md
+            - name: Autodesk
+              href: class-type-autodesk.md
+            - name: ビッグ データ分析
+              href: class-type-big-data-analytics.md
+            - name: データベースの管理
+              href: class-type-database-management.md
+            - name: 自然言語処理でのディープ ラーニング
+              href: class-type-deep-learning-natural-language-processing.md
+            - name: Hyper-V を使用した倫理的ハッキング
+              href: class-type-ethical-hacking.md
+            - name: VirtualBox を使用した倫理的ハッキング
+              href: class-type-ethical-hacking-virtualbox.md
+            - name: MATLAB
+              href: class-type-matlab.md
+            - name: GNS3 を使用したネットワーク
+              href: class-type-networking-gns3.md
             - name: Project Lead the Way
               href: class-type-pltw.md
+            - name: Python と Jupyter Notebook
+              href: class-type-jupyter-notebook.md
+            - name: React Web 開発
+              items:
+                - name: React (Linux)
+                  href: class-type-react-linux.md
+                - name: React (Windows)
+                  href: class-type-react-windows.md
+            - name: RStudio
+              items:
+                - name: RStudio (Linux)
+                  href: class-type-rstudio-linux.md
+                - name: RStudio (Windows)
+                  href: class-type-rstudio-windows.md
+            - name: Linux でのシェル スクリプト
+              href: class-type-shell-scripting-linux.md
+            - name: SolidWorks のコンピューター支援設計 (CAD)
+              displayName: SolidWorks CAD
+              href: class-type-solidworks.md
+            - name: SQL データベースの管理と開発
+              href: class-type-sql-server.md
         - name: Teams 内で Azure Lab Services を使用する
           items:
             - name: 概要
@@ -93,8 +112,24 @@
           href: how-to-connect-peer-virtual-network.md
         - name: 共有リソースを使用してラボを作成する方法
           href: how-to-create-a-lab-with-shared-resource.md
-        - name: 共有イメージ ギャラリーをアタッチまたはデタッチする
-          href: how-to-attach-detach-shared-image-gallery.md
+        - name: カスタム イメージに共有イメージ ギャラリーを使用する
+          items:
+            - name: 共有イメージ ギャラリーをアタッチまたはデタッチする
+              href: how-to-attach-detach-shared-image-gallery.md
+            - name: ラボのカスタム イメージを作成する
+              href: approaches-for-custom-image-creation.md
+            - name: Windows
+              items:
+                - name: Azure VM からカスタム イメージを取り込む
+                  href: how-to-bring-custom-windows-image-azure-vm.md
+                - name: 物理環境からカスタム イメージを取り込む
+                  href: upload-custom-image-shared-image-gallery.md
+            - name: Linux
+              items:
+                - name: Azure VM からカスタム イメージを取り込む
+                  href: how-to-bring-custom-linux-image-azure-vm.md
+                - name: 物理環境からカスタム イメージを取り込む
+                  href: how-to-bring-custom-linux-image-vhd.md
         - name: クラスルーム ラボに他の所有者を追加する
           href: how-to-add-user-lab-owner.md
         - name: ファイアウォール設定を構成する
@@ -103,8 +138,6 @@
           href: specify-marketplace-images.md
         - name: サポート情報を指定する (ラボ アカウント オーナー)
           href: lab-account-owner-support-information.md
-        - name: カスタム イメージを Shared Image Gallery にアップロードする
-          href: upload-custom-image-shared-image-gallery.md
     - name: ラボを作成して構成する (教師)
       items:
         - name: ラボを作成して管理する
@@ -137,6 +170,8 @@
           href: how-to-setup-lab-gpu.md
         - name: Windows テンプレート VM の準備
           href: how-to-prepare-windows-template.md
+        - name: 外部ファイル ストレージを使用する
+          href: how-to-attach-external-storage.md
         - name: Windows のシャットダウン動作を制御する
           href: how-to-windows-shutdown.md
         - name: サポート情報の表示 (教師)
@@ -177,6 +212,8 @@
       href: /rest/api/labservices/
     - name: Az.LabServices PowerShell モジュール (プレビュー)
       href: reference-powershell-module.md
+    - name: Azure CLI
+      href: 'https://github.com/Azure/azure-cli-extensions/tree/main/src/hack'
 - name: リソース
   items:
     - name: Azure Lab Services のブログ
@@ -188,4 +225,4 @@
     - name: テクニカル コミュニティ フォーラム
       href: 'https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices'
     - name: よく寄せられる質問
-      href: classroom-labs-faq.md
+      href: classroom-labs-faq.yml

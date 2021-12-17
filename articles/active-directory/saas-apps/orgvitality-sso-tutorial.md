@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/29/2020
+ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: b774f50f6f136d9e7c71b5fe6fbffb725a9240a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c530eba1c509007e47bc6f34c94ffd10d487d02
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522225"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307139"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-orgvitality-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と OrgVitality SSO の統合
 
@@ -37,9 +37,9 @@ ms.locfileid: "92522225"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* OrgVitality SSO では、**IDP** によって開始される SSO がサポートされます
+* OrgVitality SSO では、**IDP** Initiated SSO がサポートされています。
 
-## <a name="adding-orgvitality-sso-from-the-gallery"></a>ギャラリーからの OrgVitality SSO の追加
+## <a name="add-orgvitality-sso-from-the-gallery"></a>ギャラリーから OrgVitality SSO を追加する
 
 Azure AD への OrgVitality SSO の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に OrgVitality SSO を追加する必要があります。
 
@@ -50,7 +50,6 @@ Azure AD への OrgVitality SSO の統合を構成するには、ギャラリー
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**OrgVitality SSO**」と入力します。
 1. 結果 パネルで **OrgVitality SSO** を選択して、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-orgvitality-sso"></a>OrgVitality SSO の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、OrgVitality SSO に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと OrgVitality SSO の関連ユーザーとの間にリンク関係を確立する必要があります。
@@ -60,7 +59,7 @@ OrgVitality SSO に対して Azure AD SSO を構成してテストするには�
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[OrgVitality SSO の SSO の構成](#configure-orgvitality-sso-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+1. **[OrgVitality SSO の構成](#configure-orgvitality-sso)** - アプリケーション側でシングル サインオン設定を構成します。
     1. **[OrgVitality SSO のテスト ユーザーの作成](#create-orgvitality-sso-test-user)** - OrgVitality SSO で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
@@ -70,11 +69,11 @@ OrgVitality SSO に対して Azure AD SSO を構成してテストするには�
 
 1. Azure portal の **OrgVitality SSO** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
     a. **[識別子]** ボックスに、`https://rpt.orgvitality.com/<COMPANY_NAME>/` の形式で URL を入力します。
 
@@ -94,6 +93,7 @@ OrgVitality SSO に対して Azure AD SSO を構成してテストするには�
 1. **[OrgVitality SSO のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -118,7 +118,7 @@ OrgVitality SSO に対して Azure AD SSO を構成してテストするには�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-orgvitality-sso-sso"></a>OrgVitality SSO の SSO の構成
+## <a name="configure-orgvitality-sso"></a>OrgVitality SSO の構成
 
 **OrgVitality SSO** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [OrgVitality SSO サポート チーム](https://orgvitality.com/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -130,10 +130,10 @@ OrgVitality SSO に対して Azure AD SSO を構成してテストするには�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-1. Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した OrgVitality SSO に自動的にサインインされるはずです
+* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した OrgVitality SSO に自動的にサインインされます。
 
-1. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [OrgVitality SSO] タイルをクリックすると、SSO を設定した OrgVitality SSO に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 [マイ アプリ] で [OrgVitality SSO] タイルをクリックすると、SSO を設定した OrgVitality SSO に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-OrgVitality SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+OrgVitality SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

@@ -3,19 +3,19 @@ title: コール センターの文字起こし - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声テキスト変換の一般的なシナリオは、インタラクティブ ボイス レスポンス (IVR) など、さまざまなシステムから入ってくる大量の電話データを文字に起こすことです。 Speech サービスと Unified 音声モデルを使用すると、企業は、音声取り込みシステムで高品質の文字起こしが可能になります。
 services: cognitive-services
-author: erhopf
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: erhopf
-ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: eur
+ms.openlocfilehash: 0944e5da8bde152a2c8e9fd67e5641d419b0b1fd
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95021968"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493966"
 ---
 # <a name="speech-service-for-telephony-data"></a>電話データのための Speech サービス
 
@@ -76,7 +76,7 @@ Speech サービスがコール センターで利用される場合、機能的
 
 ### <a name="key-phrase-extraction"></a>キー フレーズ抽出
 
-分析アプリケーションとして難易度が高く、また、AI と機械学習の応用から得られるものが多いのがこの領域です。 この場合の主なシナリオは、顧客の意図を推測することです。 顧客が電話してきた理由は何か? 顧客はどのような問題を抱えているのか? 顧客に不快な思いをさせたのはなぜか? Microsoft の[テキスト分析サービス](https://azure.microsoft.com/services/cognitive-services/text-analytics/)には、すぐにお使いいただける一連の分析機能が用意されており、こうした重要なキーワードやフレーズを抽出できるように、エンドツーエンド ソリューションを簡単にアップグレードできます。
+分析アプリケーションとして難易度が高く、また、AI と機械学習の応用から得られるものが多いのがこの領域です。 この場合の主なシナリオは、顧客の意図を推測することです。 顧客が電話してきた理由は何か? 顧客はどのような問題を抱えているのか? 顧客に不快な思いをさせたのはなぜか? Microsoft の[言語サービス](https://azure.microsoft.com/services/cognitive-services/text-analytics/)には、すぐにお使いいただける一連の分析機能が用意されており、こうした重要なキーワードやフレーズを抽出できるように、エンドツーエンド ソリューションを簡単にアップグレードできます。
 
 それでは、音声認識のバッチ処理とリアルタイム パイプラインについてもう少し詳しく見てみましょう。
 
@@ -103,7 +103,7 @@ Microsoft 社内では以上のテクノロジを利用し、バッチ モード
 
 会話をリアルタイムで文字起こしすることを必要とする企業もあります。 リアルタイムの文字起こしは、センチメント監視のためにキーワードを特定し、会話に関連するコンテンツとリソースの検索をトリガーしたり、アクセシビリティを改善したり、ネイティブ スピーカーではない顧客やエージェントのために翻訳を提供したりする目的で利用できます。
 
-リアルタイムの文字起こしを必要とする場合、[Speech SDK](speech-sdk.md) の利用をお勧めします。 現在のところ、[20 を超える言語](language-support.md)で音声テキスト変換を利用できます。また、この SDK は C++、C#、Java、Python、Node.js、Objective-C、JavaScript で利用できます。 各言語のサンプルが [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk) にあります。 最新ニュースや更新情報については、[リリース ノート](releasenotes.md)をご覧ください。
+リアルタイムの文字起こしを必要とする場合、[Speech SDK](speech-sdk.md) の利用をお勧めします。 現在のところ、[20 を超える言語](language-support.md)で音声テキスト変換を利用できます。また、この SDK は C++、C#、Java、Python、JavaScript、Objective-C、Go で利用できます。 各言語のサンプルが [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk) にあります。 最新ニュースや更新情報については、[リリース ノート](releasenotes.md)をご覧ください。
 
 次の図に示すように、Microsoft 社内では以上のテクノロジを利用し、Microsoft カスタマー コールをリアルタイムで分析しています。
 
@@ -130,7 +130,7 @@ IVR または電話サービス製品 (Genesys や AudioCodes など) の中に�
 
 ## <a name="sample-code"></a>サンプル コード
 
-Speech サービスの各機能のサンプル コードは、GitHub で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、連続的な認識と単発の認識、カスタム モデルの使用など、一般的なシナリオについて説明されています。 SDK と REST のサンプルを見るには、次のリンクを使用してください。
+Speech サービスの各機能のサンプル コードは、GitHub で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、継続的な認識と開始時の認識、カスタム モデルの使用など、一般的なシナリオについて説明されています。 SDK と REST のサンプルを見るには、次のリンクを使用してください。
 
 - [音声テキスト変換と音声翻訳のサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [バッチ文字起こしのサンプル (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)

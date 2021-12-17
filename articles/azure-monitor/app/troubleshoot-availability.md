@@ -2,16 +2,14 @@
 title: Azure Application Insights 可用性テストのトラブルシューティング
 description: Azure Application Insights の Web テストのトラブルシューティングを行います。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 940a70de81df60f7b6c1545c992e1ee10e69fa9f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 09e7a59e25be45dcd0d0c68612fbe13715200d2f
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728928"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131697"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 

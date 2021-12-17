@@ -1,35 +1,42 @@
 ---
 title: マネージド ID Azure Stream Analytics による BLOB 出力の認証
 description: この記事では、マネージド ID を使用して、Azure Blob Storage 出力に対して Azure Stream Analytics ジョブを認証する方法について説明します。
-author: kim-ale
-ms.author: kimal
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/15/2020
-ms.openlocfilehash: 369348133f7395f5db5b5923bd438cec8e4ad733
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/07/2021
+ms.openlocfilehash: 708871f620614f893a641f20098f6ed58af464f5
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954380"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486105"
 ---
-# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>マネージド ID (プレビュー) を使用して、Azure Blob Storage に対して Azure Stream Analytics ジョブを認証する
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>マネージド ID を使用して、Azure Blob Storage に対して Azure Stream Analytics ジョブを認証する
 
-Azure Blob Storage への出力に対して[マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md) (プレビュー) を使用すると、Stream Analytics ジョブで、接続文字列を使用せずに、ストレージ アカウントに直接アクセスできます。 この機能により、セキュリティが向上し、さらに Azure 内の仮想ネットワーク (VNET) のストレージ アカウントにデータを書き込むことができます。
+Azure Blob Storage への出力に対して [マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md)を使用すると、Stream Analytics ジョブで、接続文字列を使用せずに、ストレージ アカウントに直接アクセスできます。 この機能により、セキュリティが向上し、さらに Azure 内の仮想ネットワーク (VNET) のストレージ アカウントにデータを書き込むことができます。
 
 この記事では、Azure portal を通じて、および Azure Resource Manager デプロイを通じて、Stream Analytics ジョブの Blob 出力に対してマネージド ID を有効にする方法を示します。
 
 ## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>Azure portal を使用して Stream Analytics ジョブを作成する
 
-1. Azure portal で、新しい Stream Analytics ジョブを作成するか、既存のジョブを開きます。 画面の左側にあるメニュー バーで、 **[構成]** の下にある **[マネージド ID]** を選択します。 [システム割り当てマネージド ID を使用] が選択されていることを確認し、画面下部にある **[保存]** ボタンをクリックします。
+まず、Azure Stream Analytics ジョブに対するマネージド ID を作成します。  
 
-   ![Stream Analytics のマネージド ID の構成](./media/common/stream-analytics-enable-managed-identity.png)
+1. Azure portal で、Azure Stream Analytics ジョブを開きます。  
 
-2. Azure Blob Storage 出力シンクの [出力プロパティ] ウィンドウで、[認証モード] ドロップダウンを選択し、 **[マネージド ID]** を選択します。 その他の出力プロパティについて詳しくは、「[Azure Stream Analytics からの出力を理解する](./stream-analytics-define-outputs.md)」を参照してください。 操作が終了したら、 **[OK]** をクリックします。
+2. 左側のナビゲーション メニューから、 *[構成]* の下にある  **[マネージド ID]**   を選択します。 次に、 **[システム割り当てマネージド ID を使用]**   のチェック ボックスをオンにして、 **[保存]** を選択します。
 
-   ![Azure Blob Storage 出力を構成する](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
+   :::image type="content" source="media/event-hubs-managed-identity/system-assigned-managed-identity.png" alt-text="システム割り当てマネージド ID":::  
 
-3. ジョブが作成されたので、この記事の「[Stream Analytics ジョブにストレージ アカウントへのアクセス権を付与する](#give-the-stream-analytics-job-access-to-your-storage-account)」セクションを参照してください。
+3. Azure Active Directory に Stream Analytics ジョブの ID 用のサービス プリンシパルが作成されます。 新しく作成された ID のライフ サイクルは、Azure によって管理されます。 Stream Analytics ジョブが削除されると、関連付けられた ID (つまりサービス プリンシパル) も Azure によって自動的に削除されます。  
+
+   構成を保存すると、サービス プリンシパルのオブジェクト ID (OID) が、次に示すようにプリンシパル ID として表示されます。  
+
+   :::image type="content" source="media/event-hubs-managed-identity/principal-id.png" alt-text="プリンシパル ID":::
+
+   サービス プリンシパルは、Stream Analytics ジョブと同じ名前を持ちます。 たとえば、ジョブの名前が  `MyASAJob` であれば、サービス プリンシパルの名前も  `MyASAJob` になります。 
+
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager デプロイ
 
@@ -160,6 +167,9 @@ Stream Analytics ジョブには、次の 2 つのレベルのアクセス権の
 
 自分のためにコンテナーを作成するためのジョブが必要でない限り、**コンテナー レベルのアクセス権** を選択してください。これは、このオプションでは、必要な最小レベルのアクセス権がジョブに付与されるためです。 Azure portal とコマンド ラインでの両方のオプションについて、以下で説明します。
 
+> [!NOTE]
+> グローバル レプリケーションまたはキャッシュの待機時間が原因で、アクセス許可が取り消されたり付与されたりすると、遅延が発生することがあります。 変更は 8 分以内に反映される必要があります。
+
 ### <a name="grant-access-via-the-azure-portal"></a>Azure portal を使用してアクセス権を付与する
 
 #### <a name="container-level-access"></a>コンテナー レベルのアクセス権
@@ -213,6 +223,15 @@ Stream Analytics ジョブには、次の 2 つのレベルのアクセス権の
    ```azurecli
    az role assignment create --role "Storage Blob Data Contributor" --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
    ```
+   
+## <a name="create-a-blob-input-or-output"></a>Blob の入力または出力を作成する  
+
+マネージド ID を構成したので、BLOB リソースを入力または出力として Stream Analytics ジョブに追加する準備ができました。
+
+1. Azure Blob Storage 出力シンクの [出力プロパティ] ウィンドウで、[認証モード] ドロップダウンを選択し、 **[マネージド ID]** を選択します。 その他の出力プロパティについて詳しくは、「[Azure Stream Analytics からの出力を理解する](./stream-analytics-define-outputs.md)」を参照してください。 操作が終了したら、 **[OK]** をクリックします。
+
+   ![Azure Blob Storage 出力を構成する](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
+
 
 ## <a name="enable-vnet-access"></a>VNET アクセスを有効にする
 

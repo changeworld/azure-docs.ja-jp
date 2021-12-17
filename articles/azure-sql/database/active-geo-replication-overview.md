@@ -1,27 +1,35 @@
 ---
 title: アクティブな地理的レプリケーション
-description: アクティブ geo レプリケーションを使用して、同じデータ センター リージョンまたは異なるデータ センター リージョン内の Azure SQL Database に、個々のデータベースの読み取り可能なセカンダリ データベースを作成します。
-services: sql-database
+description: アクティブ geo レプリケーションを使用して、同じデータ センター リージョンまたは異なるリージョン内の Azure SQL Database に、個々のデータベースの読み取り可能なセカンダリ データベースを作成します。
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
-ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, sstein
-ms.date: 08/27/2020
-ms.openlocfilehash: 3a678f6280b5f2d0fd372e75bfbeb6eb2e9b1577
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: emlisa
+ms.author: emlisa
+ms.reviewer: mathoma
+ms.date: 10/25/2021
+ms.openlocfilehash: ca958a3e7a43864caa673cd31736b1e661e7f608
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634296"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465366"
 ---
-# <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>アクティブ geo レプリケーションの作成と使用 - Azure SQL Database
+# <a name="active-geo-replication"></a>アクティブな地理的レプリケーション
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-アクティブ geo レプリケーションは Azure SQL Database の機能です。これを使用すると、同じデータ センターまたは異なるデータ センター (リージョン) 内のサーバー上に、個々のデータベースの読み取り可能なセカンダリ データベースを作成することができます。
+アクティブ geo レプリケーションは、プライマリ データベースに対して継続的に同期された読み取り可能なセカンダリ データベースを作成できる機能です。 読み取り可能なセカンダリ データベースは、プライマリと同じ Azure リージョン、またはより一般的に別のリージョンに含まれる場合があります。 このような読み取り可能なセカンダリ データベースは、geo セカンダリまたは geo レプリカとも呼ばれます。
+
+アクティブ geo レプリケーションはビジネス継続性ソリューションとして設計されています。このソリューションを使用すれば、地域災害または大規模な機能停止が発生した場合にディザスター リカバリーを迅速に実行することができます。 Geo レプリケーションを設定したら、別の Azure リージョンの geo セカンダリへの geo フェールオーバーを開始できます。 Geo フェールオーバーは、アプリケーションによってプログラムで、またはユーザーが手動で開始します。
+
+> [!NOTE]
+> Azure SQL Hyperscale のアクティブ geo レプリケーションは[現在、パブリック プレビュー](https://aka.ms/hsgeodr)段階です。 現在、次のような制限があります。geo セカンダリは同じまたは異なるリージョンに 1 つのみです。強制および計画されたフェールオーバーは現在サポートされていません。geo セカンダリからのデータベース復元はサポートされていません。データベース コピーのソース データベースとして、あるいは、別の geo セカンダリのためのプライマリとして geo セカンダリを使用することはサポートされていません。
+> 
+> geo セカンダリをプライマリ (書き込み可能なデータベース) にする必要がある場合は、次の手順に従ってください。
+> 1. PowerShell の [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) コマンドレットまたは Azure CLI 向けの [az sql db replica delete-link](/cli/azure/sql/db/replica#az_sql_db_replica_delete_link) を使用して、geo レプリケーション リンクを解除します。これにより、セカンダリ データベースが読み取りと書き込みが可能なスタンドアロン データベースになります。 プライマリにコミットされていてもまだセカンダリにレプリケートされていないトランザクションは失われます。 これらの変更は、古いプライマリが使用可能な場合に復旧できます。また、古いプライマリを利用可能な最新の時点に復元することで復旧できる場合があります。
+> 2. 古いプライマリが使用可能な場合はそれを削除し、新しいプライマリの geo レプリケーションを設定します (新しいセカンダリがシードされます)。 
+> 3. これに応じて、アプリケーション内の接続文字列を更新します。
 
 > [!NOTE]
 > アクティブ geo レプリケーションは、 Azure SQL Managed Instance ではサポートされていません。 SQL Managed Instance の地理的なフェールオーバーについては、[自動フェールオーバー グループ](auto-failover-group-overview.md)を使用します。
@@ -29,21 +37,15 @@ ms.locfileid: "100634296"
 > [!NOTE]
 > アクティブ geo レプリケーションを使用して Azure Germany から SQL データベースを移行するには、「[アクティブ geo レプリケーションを使用した SQL Database の移行](../../germany/germany-migration-databases.md#migrate-sql-database-using-active-geo-replication)」を参照してください。
 
-アクティブ geo レプリケーションはビジネス継続性ソリューションとして設計されています。このソリューションを使用すれば、地域災害または大規模な機能停止が発生した場合にディザスター リカバリーをアプリケーションで迅速に実行することができます。 geo レプリケーションを有効にすると、アプリケーションは別の Azure リージョンにあるセカンダリ データベースへのフェールオーバーを開始できます。 同じリージョン内または異なるリージョン内で最大 4 つのセカンダリがサポートされています。また、セカンダリを使用して読み取り専用アクセスのクエリを行うこともできます。 フェールオーバーはアプリケーションまたはユーザーによって手動で開始される必要があります。 フェールオーバー後、新しいプライマリには別の接続エンドポイントが設定されます。
-
-> [!NOTE]
-> アクティブ geo レプリケーションでは、ストリーミング データベース トランザクション ログによって変更がレプリケートされます。 これは、DML (INSERT、UPDATE、DELETE) コマンドを実行して変更をレプリケートする[トランザクション レプリケーション](/sql/relational-databases/replication/transactional/transactional-replication)とは無関係です。
+アプリケーションで geo レプリケーションに加えて安定した接続エンドポイントと geo フェールオーバーの自動サポートが必要な場合は、[自動フェールオーバーグループ](auto-failover-group-overview.md) を使用します。
 
 次の図に、アクティブ geo レプリケーションを使用して行われる geo 冗長クラウド アプリケーションの一般的な構成を示します。
 
-![アクティブ geo レプリケーション](./media/active-geo-replication-overview/geo-replication.png )
+![アクティブ geo レプリケーション](./media/active-geo-replication-overview/geo-replication.png)
 
-> [!IMPORTANT]
-> SQL Database でも自動フェールオーバー グループがサポートされています。 詳細については、[自動フェールオーバー グループ](auto-failover-group-overview.md)の使用に関するページを参照してください。
+何らかの理由でプライマリ データベースが失敗した場合は、任意のセカンダリ データベースに geo フェールオーバーを開始できます。 セカンダリがプライマリ ロールに昇格すると、他のすべてのセカンダリが新しいプライマリに自動的にリンクされます。
 
-何らかの理由でご利用のプライマリ データベースにエラーが発生したか、または単にそのプライマリ データベースをオフラインにする必要がある場合、ご利用のセカンダリ データベースのいずれかへのフェールオーバーを開始することができます。 セカンダリ データベースの 1 つに対してフェールオーバーがアクティブな場合、その他すべてのセカンダリ データベースは新しいプライマリ データベースに自動的にリンクします。
-
-サーバー上またはエラスティック プール内の個々のデータベースまたはデータベースのセットのレプリケーションとフェールオーバーは、アクティブ geo レプリケーションを使用して管理できます。 そのためには以下のものを使うことができます。
+Geo レプリケーションを管理し、以下を使用して geo フェールオーバーを開始できます。
 
 - [Azure Portal](active-geo-replication-configure-portal.md)
 - [PowerShell: 単一データベース](scripts/setup-geodr-and-failover-database-powershell.md)
@@ -51,221 +53,217 @@ ms.locfileid: "100634296"
 - [Transact-SQL:単一のデータベースまたはエラスティック プール](/sql/t-sql/statements/alter-database-azure-sql-database)
 - [REST API: 単一データベース](/rest/api/sql/replicationlinks)
 
-アクティブ geo レプリケーションでは、データベース エンジンの [Always On 可用性グループ](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) テクノロジを活用し、スナップショット分離を使用して、プライマリ データベース上のコミットされたトランザクションをセカンダリ データベースに非同期にレプリケートします。 自動フェールオーバー グループにはアクティブ geo レプリケーションに加えてグループ セマンティックが用意されていますが、同じ非同期レプリケーション メカニズムを使用します。 特定の時点におけるセカンダリ データベースは、プライマリ データベースよりもわずかに古い可能性がありますが、セカンダリ データには部分トランザクションが含まれないことが保証されます。 リージョン間で冗長性が確保されるため、自然災害、致命的なヒューマン エラー、または悪意のある行為によってデータセンター全体またはその一部の機能が完全に失われた場合でも、アプリケーションをすばやく復旧できます。 特定の RPO データについては、 [ビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)に関するページをご覧ください。
+アクティブ geo レプリケーションでは、[Always On 可用性グループ](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) テクノロジを利用して、プライマリ レプリカで生成されたトランザクション ログをすべての geo レプリカに非同期的にレプリケートします。 特定の時点におけるセカンダリ データベースは、プライマリ データベースよりもわずかに古い可能性がありますが、セカンダリ上のデータはトランザクション上の一貫性が保証されます。 つまり、コミットされていないトランザクションによって行われた変更は表示されません。 
 
 > [!NOTE]
-> 2 つのリージョン間でネットワーク障害が発生すると、接続を再確立するために 10 秒ごとに再試行します。
+> アクティブ geo レプリケーションでは、プライマリ レプリカからセカンダリ レプリカにデータベース トランザクション ログをストリーミングすることで、変更がレプリケートされます。 これは、サブスクライバー上でDML (INSERT、UPDATE、DELETE) コマンドを実行して変更をレプリケートする[トランザクション レプリケーション](/sql/relational-databases/replication/transactional/transactional-replication)とは無関係です。
 
-> [!IMPORTANT]
-> プライマリ データベースでの重要な変更が、フェールオーバー前にセカンダリに確実にレプリケートされるようにするには、強制同期を実行して、重要な変更 (パスワードの更新など) のレプリケーションを確実に行わせることができます。 強制同期を実行すると、コミットされたトランザクションがすべてレプリケートされるまで呼び出しスレッドがブロックされるため、パフォーマンスに影響します。 詳細については、[sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) に関するページをご覧ください。 プライマリ データベースと geo セカンダリの間のレプリケーションの遅延を監視するには、「[sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)」を参照してください。
+Geo レプリケーションで提供されるリージョン間の冗長性のため、自然災害、致命的なヒューマンエラー、または悪意のある行為によって Azure リージョン全体またはリージョンの一部が完全に失われた場合でも、アプリケーションをすばやく復旧できます。 Geo レプリケーション RPO については、「[ビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)」を参照してください。
 
-次の図は、プライマリが米国中北部リージョン、セカンダリが米国中南部リージョンに構成されたアクティブ Geo レプリケーションの例を示しています。
+次の図は、プライマリが米国中北部リージョン、geo セカンダリが米国中南部リージョンに構成されたアクティブ geo レプリケーションの例を示しています。
 
 ![geo レプリケーションのリレーションシップ](./media/active-geo-replication-overview/geo-replication-relationship.png)
 
-セカンダリ データベースは読み取り可能であるため、ジョブを報告するなどの読み取り専用ワークロードの負荷を軽減するために使用できます。 アクティブ geo レプリケーションを使用している場合、セカンダリ データベースをプライマリと同じリージョンに作成できますが、致命的な障害に対するアプリケーションの復元力は改善されません。 自動フェールオーバー グループを使用している場合、セカンダリ データベースは常に異なるリージョンに作成されます。
-
 アクティブ geo レプリケーションは、ディザスター リカバリーに加えて次のシナリオで使用できます。
 
-- **データベースの移行**: アクティブ geo レプリケーションを使用して、最小限のダウンタイムでデータベースをあるサーバーから別のサーバーにオンラインで移行できます。
+- **データベースの移行**: アクティブ geo レプリケーションを使用して、最小限のダウンタイムでデータベースをあるサーバーから別のサーバーに移行できます。
 - **アプリケーションのアップグレード**: アプリケーションのアップグレード時に、セカンダリをフェールバック コピーとして余分に作成することができます。
 
-ビジネスの継続性を実現するにあたって、データセンター間のデータベース冗長性を追加することは、ソリューションのほんの一部です。 致命的な障害の後にアプリケーション (サービス) をエンド ツー エンドで復旧するには、そのサービスと依存しているサービスを構成するすべてのコンポーネントを復旧する必要があります。 このようなコンポーネントの例には、クライアント ソフトウェア (カスタム JavaScript が設定されたブラウザーなど)、Web フロント エンド、ストレージ、DNS などがあります。 すべてのコンポーネントが同じ障害に対する復元性を備えており、アプリケーションの目標復旧時間 (RTO) 以内に利用可能になることが重要です。 そのため、依存するサービスをすべて特定し、これらのサービスが提供する保証と機能について把握しておく必要があります。 そのうえで、依存するサービスのフェールオーバー中もサービスが確実に機能するように対策を講じる必要があります。 ディザスター リカバリーのソリューション設計の詳細については、[アクティブ geo レプリケーションを使用したディザスター リカバリー用のクラウド ソリューションの設計](designing-cloud-solutions-for-disaster-recovery.md)に関するページを参照してください。
+完全なビジネス継続性を実現するために、データベースのリージョンの冗長性を追加することは、ソリューションの一部でしかありません。 致命的な障害の後にアプリケーション (サービス) をエンド ツー エンドで復旧するには、そのサービスと依存しているサービスを構成するすべてのコンポーネントを復旧する必要があります。 このようなコンポーネントの例には、クライアント ソフトウェア (カスタム JavaScript が設定されたブラウザーなど)、Web フロント エンド、ストレージ、DNS などがあります。 すべてのコンポーネントが同じ障害に対する復元性を備えており、アプリケーションの目標復旧時間 (RTO) 以内に利用可能になることが重要です。 そのため、依存するサービスをすべて特定し、これらのサービスが提供する保証と機能について把握しておく必要があります。 そのうえで、依存するサービスのフェールオーバー中もサービスが確実に機能するように対策を講じる必要があります。 ディザスター リカバリーのソリューション設計の詳細については、[アクティブ geo レプリケーションを使用したディザスター リカバリー用のクラウド ソリューションの設計](designing-cloud-solutions-for-disaster-recovery.md)に関するページを参照してください。
 
 ## <a name="active-geo-replication-terminology-and-capabilities"></a>アクティブ geo レプリケーションの用語と機能
 
 - **自動非同期レプリケーション**
 
-  セカンダリ データベースは、既存のデータベースに追加することによってのみ作成できます。 セカンダリは任意のサーバーに作成できます。 作成した後、プライマリ データベースからコピーしたデータをセカンダリ データベースに設定できます。 このプロセスはシード処理と呼ばれます。 オンライン セカンダリ データベースが作成およびシードされた後、プライマリ データベースの更新がセカンダリ データベースに非同期で自動的にレプリケートされます。 非同期レプリケーションでは、トランザクションはプライマリ データベースでコミットされた後に、セカンダリ データベースにレプリケートされます。
+  作成できるのは、既存のデータベースの geo セカンダリのみです。 Geo セカンダリは、プライマリ データベースを持つサーバー以外の任意の論理サーバーに作成できます。 作成されると、geo セカンダリ レプリカにプライマリ データベースのデータが設定されます。 このプロセスはシード処理と呼ばれます。 Geo セカンダリ データベースが作成およびシードされた後、プライマリ データベースの更新が geo セカンダリ データベースに非同期で自動的にレプリケートされます。 非同期レプリケーションでは、トランザクションはプライマリ データベースでコミットされた後にレプリケートされます。
 
-- **読み取り可能なセカンダリ データベース**
+- **読み取り可能なセカンダリ レプリカ**
 
-  アプリケーションは、プライマリ データベースへのアクセスに使用されているのと同じ、または異なるセキュリティ プリンシパルを使用して、セカンダリ データベースにアクセスして読み取り専用操作を実行できます。 セカンダリ データベースは、セカンダリ上で実行されるクエリによってプライマリ (ログの再生) の更新プログラムのレプリケーションが遅延しないように、スナップショット分離モードで動作します。
+  アプリケーションは、プライマリ データベースへのアクセスに使用されているのと同じ、または異なるセキュリティ プリンシパルを使用して、geo セカンダリ レプリカにアクセスして読み取り専用クエリを実行できます。 詳細については、「[読み取り専用レプリカを使用して読み取り専用クエリ ワークロードをオフロードする](read-scale-out.md)」を参照してください。
 
-> [!NOTE]
-> プライマリ データベースでスキーマの更新がある場合、セカンダリ データベースのログ再生は遅延します。 後者の場合は、セカンダリ データベースでスキーマ ロックが必要です。
+   > [!IMPORTANT]
+   > Geo レプリケーションを使用して、同じリージョンにプライマリとしてセカンダリレプリカを作成できます。 これらのセカンダリを使用して、同じリージョンの読み取りスケールアウト シナリオを満たします。 ただし、同じリージョン内のセカンダリ レプリカは、致命的な障害や大規模な停止に対する更なる回復力を提供しないため、ディザスター リカバリーの目的に適したフェールオーバー ターゲットではありません。 また、可用性ゾーンの分離も保証されません。 [ゾーン冗長の構成](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)で Business Critical または Premium サービス レベルを使用するか、General Purpose サービス レベルの[ゾーン冗長の構成](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)を使用して、可用性ゾーンの分離を行ってください。
+   >
 
-> [!IMPORTANT]
-> geo レプリケーションを使用して、同じリージョンにプライマリとしてセカンダリ データベースを作成できます。 このセカンダリを使用して、同じリージョン内の読み取り専用ワークロードの負荷分散を行います。 ただし、同じリージョン内のセカンダリ データベースは、障害からの回復性を提供しないため、ディザスター リカバリーの適切なフェールオーバー ターゲットではありません。 また、可用性ゾーンの分離も保証されません。 [ゾーン冗長の構成](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)で Business Critical または Premium サービス レベルを使用するか、General Purpose サービス レベルの[ゾーン冗長の構成](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)を使用して、可用性ゾーンの分離を行ってください。
->
+- **計画的 geo フェールオーバー**
 
-- **計画されたフェールオーバー**
+  計画的 geo フェールオーバーでは、完全なデータ同期が完了した後、プライマリと geo セカンダリ データベースのロールが切り替わります。 計画されたフェールオーバーでは、データ損失は発生しません。 計画された geo フェールオーバーの期間は、geo セカンダリに同期する必要があるプライマリのトランザクション ログのサイズによって異なります。 計画的 geo フェールオーバーは、次のシナリオ用に設計されています。
 
-  計画されたフェールオーバーは、完全同期が完了した後に、プライマリ データベースとセカンダリ データベースのロールを切り替えます。 これはデータの損失を発生させないオンライン操作です。 操作の時間は、同期が必要なプライマリ上のトランザクション ログのサイズによって異なります。 計画されたフェールオーバーは次のシナリオ向けに設計されています。(a) データの損失が許容されない場合に、運用環境で DR ドリルを実行する (b) 異なるリージョンにデータベースを再配置する、(c) 機能停止に対処した後でプライマリ リージョンにデータベースを戻す (フェールバック)。
+  - データ損失が許容されない場合は、運用環境でディザスター リカバリー (DR) ドリルを行います。 
+  - データベースを別のリージョンに再配置します 
+  - 機能停止が軽減 (フェールバックとして知られています) された後、データベースをプライマリ リージョンに返します
 
-- **計画されていないフェールオーバー**
+- **計画されていない geo フェールオーバー**
 
-  計画されていないフェールオーバーや強制フェールオーバーでは、プライマリと同期せずに、セカンダリをすぐにプライマリ ロールに切り替えます。 プライマリにコミットされていてもセカンダリにレプリケートされていないトランザクションは失われます。 この操作は、停止中、プライマリにアクセスできないがデータベースの可用性を早急に回復しなければならない場合の復旧方法として設計されています。 元のプライマリは、オンラインに戻ると、自動的に再接続され、新しいセカンダリとなります。 フェールオーバー前の同期されていないトランザクションはすべてバックアップ ファイルに保持されますが、競合を避けるために新しいプライマリとは同期されません。 これらのトランザクションは、プライマリ データベースの最新バージョンに手動でマージする必要があります。
+  計画されていないフェールオーバーや geo フェールオーバーでは、プライマリと同期せずに、geo セカンダリをすぐにプライマリ ロールに切り替えます。 プライマリにコミットされていても、セカンダリにレプリケートされていないトランザクションは失われます。 この操作は、停止中、プライマリにアクセスできないがデータベースの可用性を早急に回復しなければならない場合の復旧方法として設計されています。 元のプライマリがオンラインに戻されると、自動的に再接続され、現在のプライマリ データを使用してシードを再設定され、新しい geo セカンダリになります。
 
-- **複数のセカンダリ データベース**
+  > [!IMPORTANT]
+  > 計画済み geo フェールオーバーまたは計画外 geo フェールオーバーの後、新しいプライマリの接続エンドポイントが変更されます。これは、新しいプライマリが別の論理サーバーに位置されているからです。
 
-  プライマリごとに、最大で 4 つのセカンダリ データベースを作成できます。 セカンダリ データベースが 1 つしか存在しない場合に障害が発生すると、新しいセカンダリ データベースが作成されるまで、アプリケーションは高いリスクにさらされます。 セカンダリ データベースが複数存在する場合、セカンダリ データベースのいずれかに障害が発生しても、アプリケーションは保護された状態が維持されます。 読み取り専用のワークロードをスケール アウトするために、追加のセカンダリを使用することもできます。
+- **複数のセカンダリ geo データベース**
 
-  > [!NOTE]
-  > グローバルに分散されたアプリケーションの構築にアクティブ geo レプリケーションを使用し、4 つを超えるリージョンにデータへの読み取り専用アクセスを提供する必要がある場合は、セカンダリのセカンダリ (チェーンと呼ばれるプロセス) を作成できます。 この方法により、データベースのレプリケーションを事実上無制限に拡張できます。 さらに、チェーンによりプライマリ データベースからのレプリケーションのオーバーヘッドが軽減されます。 トレードオフは、リーフの多いセカンダリ データベースでレプリケーションのラグが増えることです。
+  プライマリに対して最大 4 つの geo セカンダリを作成できます。 セカンダリが 1 つしか存在しない場合に障害が発生すると、新しいセカンダリ が作成されるまで、アプリケーションは高いリスクにさらされます。 セカンダリ が複数存在する場合、セカンダリ のいずれかに障害が発生しても、アプリケーションは保護された状態が維持されます。 読み取り専用のワークロードをスケール アウトするために、追加のセカンダリを使用することもできます。
+
+  > [!TIP]
+  > グローバルに分散されたアプリケーションの構築にアクティブ geo レプリケーションを使用し、4 つを超えるリージョンにデータへの読み取り専用アクセスを提供する必要がある場合は、セカンダリのセカンダリ (チェーンと呼ばれるプロセス) を作成し、追加の geo レプリカを作成できます。 チェーンされた geo レプリカでのレプリケーションのラグは、プライマリに直接接続されている geo レプリカよりも高くなる可能性があります。 チェーン geo レプリケーション トポロジの設定は、プログラムによってのみサポートされており、Azure portal からはサポートされていません。
 
 - **エラスティック プール内のデータベースの geo レプリケーション**
 
-  各セカンダリ データベースは、個別にエラスティック プールに参加しても、どのエラスティック プールにもまったく参加しなくてもかまいません。 セカンダリ データベースごとのプールの選択は独立しており、他のどのセカンダリ データベースの構成にも依存しません (プライマリでもセカンダリでも)。 各エラスティック プールは 1 つのリージョンにのみ含まれるので、同じトポロジ内の複数のセカンダリ データベースがエラスティック プールを共有することはできません。
+  セカンダリ データベースは、Single Database またはエラスティック プールのデータベースにできます。 Geo セカンダリ データベースごとにエラスティック プールの選択は独立しており、トポロジ内の他のレプリカ (プライマリまたはセカンダリ) の構成には依存しません。 各エラスティック プールは、1 つの論理サーバー内に含まれます。 論理サーバー上のデータベース名は一意である必要があるため、同じプライマリの複数の geo セカンダリがエラスティック プールを共有できません。
 
-- **ユーザー制御のフェールオーバーとフェールバック**
+- **ユーザー制御の geo フェールオーバーとフェールバック**
 
-  アプリケーションまたはユーザーによって、セカンダリ データベースをプライマリ ロールにいつでも明示的に切り替えることができます。 実際のシステム停止時には、"計画されていない" オプションを使用して、セカンダリをプライマリにすぐに昇格させる必要があります。 障害が発生したプライマリが回復して、再び使用可能になると、回復したプライマリは自動的にセカンダリとしてマークされ、新しいプライマリによって最新の状態になります。 レプリケーションは非同期であるため、最新の変更をセカンダリにレプリケートする前に、プライマリに障害が発生した場合、計画されていないフェールオーバー時に少量のデータの失われる可能性があります。 複数のセカンダリを持つプライマリがフェールオーバーすると、システムは自動的にレプリケーション関係を再構成して、いかなるユーザー介入も必要とすることなく、残りのセカンダリを新しく昇格されたプライマリにリンクします。 フェールオーバーの原因となった障害が解決されたら、アプリケーションをプライマリ リージョンに復帰させることが望ましい場合があります。 そうするには、"計画" オプションを使用してフェールオーバー コマンドを呼び出す必要があります。
+  初期シード処理が完了した geo セカンダリは、アプリケーションまたはユーザーがいつでもプライマリ ロールに明示的に切り替え (フェールオーバー) できます。 プライマリにアクセスできない停止中は、計画外の geo フェールオーバーのみを使用できます。 これはすぐに geo セカンダリを新しいプライマリに昇格します。 停止が軽減された場合、システムは自動的に復旧されたプライマリを geo セカンダリにし、新しいプライマリで最新の状態に戻します。 geo レプリケーションの非同期の性質上、これらのトランザクションが geo セカンダリにレプリケートされる前にプライマリが失敗した場合、計画外の geo フェールオーバー中に最近のトランザクションが失われる可能性があります。 複数の geo セカンダリを持つプライマリがフェールオーバーすると、システムは自動的にレプリケーション関係を再構成して、いかなるユーザー介入も必要とすることなく、残りの geo セカンダリを新しく昇格されたプライマリにリンクします。 geo フェールオーバーの原因となった障害が軽減された後、プライマリを元のリージョンに復帰させることが望ましい場合があります。 これを行うには、計画された geo フェールオーバーを呼び出します。
 
-## <a name="preparing-secondary-database-for-failover"></a>フェールオーバー用セカンダリ データベースの準備
+## <a name="prepare-for-geo-failover"></a><a name="preparing-secondary-database-for-failover"></a> Geo フェールオーバーの準備
 
-フェールオーバー後にアプリケーションが新しいプライマリにすぐアクセスできることが確実になるよう、セカンダリ サーバーとデータベースの認証要件が正しく構成されていることを確認してください。 詳細については、 [障害復旧後の SQL Database のセキュリティ](active-geo-replication-security-configure.md)に関するページを参照してください。 フェールオーバー後のコンプライアンスを保証するために、セカンダリ データベースでのバックアップ保持ポリシーがプライマリのそれと一致していることを確認してください。 これらの設定はデータベースの一部ではなく、レプリケートされません。 既定では、セカンダリは 7 日間の既定の PITR 保持期間で構成されます。 詳細については、「 [SQL Database 自動バックアップ](automated-backups-overview.md)」を参照してください。
+geo フェールオーバー後にアプリケーションが新しいプライマリにすぐアクセスできることが確実になるよう、セカンダリ サーバーの認証とネットワークが正しく構成されていることを確認してください。 詳細については、 [障害復旧後の SQL Database のセキュリティ](active-geo-replication-security-configure.md)に関するページを参照してください。 また、セカンダリデータベースのバックアップ保持ポリシーがプライマリのバックアップ保持ポリシーと一致していることを確認します。 この設定はデータベースの一部ではなく、プライマリからはレプリケートされません。 既定では、geo セカンダリは 7 日間の既定の PITR 保持期間で構成されます。 詳細については、「 [SQL Database 自動バックアップ](automated-backups-overview.md)」を参照してください。
 
 > [!IMPORTANT]
-> ご使用のデータベースがフェールオーバー グループのメンバーである場合、geo レプリケーション フェールオーバー コマンドを使用してそのフェールオーバーを開始することはできません。 グループのフェールオーバー コマンドを使用してください。 個々のデータベースをフェールオーバーする必要がある場合、最初にそれをフェールオーバー グループから削除する必要があります。 詳細については、[フェールオーバー グループ](auto-failover-group-overview.md)に関する記事をご覧ください。
+> ご使用のデータベースがフェールオーバー グループのメンバーである場合、geo レプリケーション フェールオーバー コマンドを使用してそのフェールオーバーを開始することはできません。 グループのフェールオーバー コマンドを使用してください。 個々のデータベースをフェールオーバーする必要がある場合、最初にそれをフェールオーバー グループから削除する必要があります。 詳細については、[自動フェールオーバー グループ](auto-failover-group-overview.md)をご覧ください。
 
-## <a name="configuring-secondary-database"></a>セカンダリ データベースの構成
+## <a name="configure-geo-secondary"></a><a name="configuring-secondary-database"></a>Geo セカンダリの構成
 
-プライマリとセカンダリ、両方のデータベースが同じサービス階層を持つ必要があります。 また、セカンダリ データベースは、プライマリと同じバックアップ ストレージの冗長性とコンピューティング サイズ (DTU または仮想コア) で作成することも強くお勧めします。 プライマリ データベースで書き込みワークロードの負荷が高くなっている場合、コンピューティング サイズがより小さなセカンダリはそのワークロードを維持できない可能性があります。 これにより、セカンダリで再実行ラグが発生し、セカンダリが利用不能となる可能性があります。 このようなリスクを軽減するために、アクティブ geo レプリケーションは、必要に応じてプライマリのトランザクション ログ速度をスロットルしてセカンダリが追い付けるようにします。
+プライマリと geo セカンダリの両方が同じサービス階層を持つ必要があります。 また、geo セカンダリは、プライマリと同じバックアップ ストレージの冗長性とコンピューティング サイズ (DTU または仮想コア) で構成することも強くお勧めします。 プライマリで書き込みワークロードの負荷が高くなっている場合、コンピューティング サイズがより小さな geo セカンダリは維持できない可能性があります。 これにより、geo セカンダリでレプリケーションが発生し、最終的に geo セカンダリが利用できなくなる可能性があります。 このようなリスクを軽減するために、アクティブ geo レプリケーションは、必要に応じてプライマリのトランザクション ログ速度を減少 (スロットル) してセカンダリが追い付けるようにします。
 
-バランスがとれていないセカンダリ構成の他の影響として、フェールオーバーの後、新しいプライマリのコンピューティング容量の不足のためにアプリケーションのパフォーマンスが低下する可能性があることが挙げられます。 その場合は、データベース サービスの目標を必要なレベルに拡張する必要があります。これには膨大な時間とコンピューティング リソースがかかる可能性があり、スケールアップ プロセスの最後には[高可用性](high-availability-sla.md)フェールオーバーが必要となります。
+バランスがとれていない geo セカンダリ構成の他の影響として、フェールオーバーの後、新しいプライマリのコンピューティング容量の不足のためにアプリケーションのパフォーマンスが低下する可能性があることが挙げられます。 その場合は、データベースが十分なリソースを持つように拡張する必要があります。これには膨大な時間がかかる可能性があり、スケールアップ プロセスの最後には[高可用性](high-availability-sla.md)フェールオーバーが必要となり、アプリケーションのワークロードが中断される可能性があります。
 
-小さいコンピューティング サイズでセカンダリを作成する場合は、Azure portal 上のログ IO の割合グラフを使用すると、レプリケーションの負荷を維持するために必要なセカンダリの最小コンピューティング サイズを適切に見積もることができます。 たとえば、プライマリ データベースが P6 (1000 DTU) で、ログ書き込みの割合が 50% の場合、セカンダリは P4 (500 DTU) 以上である必要があります。 履歴ログ IO データを取得するには、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) ビューを使用します。 短期的なログ速度の急増を詳細に反映した最新のログ書き込みデータを取得するには、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ビューを使用します。
+より低いコンピューティングサイズで geo セカンダリを作成する場合は、時間の経過に伴うログ IO 率をプライマリで監視する必要があります。 これにより、レプリケーションの負荷を維持するために必要な geo セカンダリの最小コンピューティングサイズを見積もることができます。 たとえば、プライマリ データベースが P6 (1000 DTU) で、ログ IO が 50% で維持されている場合、geo セカンダリは P4 (500 DTU) 以上である必要があります。 履歴ログ IO データを取得するには、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) ビューを使用します。 短期間の急増を詳細に反映した最新のログ IO データを取得するには、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ビューを使用します。
 
-セカンダリのコンピューティング サイズが低いため、プライマリで行われたトランザクション ログ速度のスロットリングは、HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO の待機の種類を使用して報告され、[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) および [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) データベース ビューに表示されます。
+> [!TIP]
+> geo セカンダリのコンピューティング サイズが低いため、プライマリで行われたトランザクション ログ IO のスロットリングは、HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO の待機の種類を使用して報告され、[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) および [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) データベース ビューに表示されます。
+>
+> プライマリのトランザクション ログ IO は、geo セカンダリのコンピューティング サイズが小さいことに関連しない理由によりスロットルされる可能性があります。 この種類のスロットリングは、geo セカンダリのコンピューティング サイズがプライマリよりも同じかそれ以上である場合にも発生する可能性があります。 さまざまな種類のログ IO スロットリングの待機の種類などの詳細については、「[トランザクション ログ速度ガバナンス](resource-limits-logical-server.md#transaction-log-rate-governance)」を参照してください。
 
-既定では、セカンダリにおけるバックアップ ストレージの冗長性は、プライマリ データベースと同じです。 別のバックアップ ストレージの冗長性を使用してセカンダリを構成することもできます。 バックアップは、常にプライマリ データベースで実行されます。 セカンダリが異なるバックアップ ストレージの冗長性で構成されている場合、セカンダリがプライマリに昇格されたときのフェールオーバー後に、新しいプライマリ (前のセカンダリ) で選択されたストレージの冗長性に従って、バックアップが課金されます。 
-
-> [!NOTE]
-> プライマリのトランザクション ログ速度は、セカンダリのコンピューティング サイズが小さいことに関連しない理由によりスロットルされる可能性があります。 この種類のスロットリングは、セカンダリのコンピューティング サイズがプライマリよりも同じかそれ以上である場合にも発生する可能性があります。 さまざまな種類のログ速度スロットリングの待機の種類などの詳細については、「[トランザクション ログ速度ガバナンス](resource-limits-logical-server.md#transaction-log-rate-governance)」を参照してください。
-
-> [!NOTE]
-> Azure SQL Database の構成可能なバックアップ ストレージの冗長性は、現在、ブラジル南部ではパブリック プレビューとして利用でき、一般公開されているのは東南アジアの Azure リージョンのみです。 ソース データベースがローカル冗長またはゾーン冗長のバックアップ ストレージの冗長性を使用して作成されている場合、別の Azure リージョンにセカンダリ データベースを作成することはできません。 
-
-SQL Database のコンピューティング サイズの詳細については、[SQL Database サービス レベル](purchasing-models.md)に関するページをご覧ください。
+既定では、geo セカンダリのバックアップ ストレージの冗長性は、プライマリ データベースのものと同じです。 別のバックアップ ストレージの冗長性を使用して geo セカンダリを構成することもできます。 バックアップは、常にプライマリ データベースで実行されます。 セカンダリが異なるバックアップ ストレージの冗長性で構成されている場合、geo セカンダリがプライマリに昇格されたときの geo フェールオーバー後に、新しいプライマリ (前のセカンダリ) で選択されたストレージの種類に従って (RA-GRS, ZRS, LRS)、バックアップが保存され、課金されます。 
 
 ## <a name="cross-subscription-geo-replication"></a>サブスクリプション間 geo レプリケーション
 
-(同じテナント下にあるかどうかにかかわらず) 異なるサブスクリプションに属する 2 つのデータベース間でアクティブ geo レプリケーションをセットアップするには、このセクションで説明する特別な手順に従う必要があります。  手順は SQL コマンドに基づいており、次のことが必要です。
+プライマリのサブスクリプションとは異なるサブスクリプションで geo セカンダリを作成するには (同じ Azure Active Directory テナントであるかどうかにかかわらず)、このセクションの手順を実行します。
 
-- 両方のサーバーで特権ログインを作成する
-- 両方のサーバーで、変更を実行するクライアントの許可リストに IP アドレスを追加する (SQL Server Management Studio を実行しているホストの IP アドレスなど)。
+1. 以下の T-SQL コマンドを実行しているクライアントコンピューターの IP アドレスを、プライマリサーバーとセカンダリサーバーの **両方** のサーバーファイアウォールに追加します。 この IP アドレスを確認するには、同じクライアントコンピューターからプライマリサーバーに接続しているときに、次のクエリを実行します。
+  
+   ```sql
+   select client_net_address from sys.dm_exec_connections where session_id = @@SPID;
+   ``` 
 
-変更を実行するクライアントには、プライマリ サーバーへのネットワーク アクセスが必要です。 セカンダリ サーバーで、クライアントの同じ IP アドレスを許可リストに追加する必要がありますが、セカンダリ サーバーへのネットワーク接続は必ずしも必要ありません。
+   詳細については、「[ファイアウォールの構成](firewall-configure.md)」を参照してください。
 
-### <a name="on-the-master-of-the-primary-server"></a>プライマリ サーバーのマスターでの手順
-
-1. 変更を実行するクライアントの許可リストに IP アドレスを追加します (詳細については、[ファイアウォールの構成](firewall-configure.md)に関するページを参照してください)。
-1. アクティブ geo レプリケーションのセットアップ専用のログインを作成します (また、必要に応じて資格情報を調整します)。
+2. **プライマリ** サーバーの master データベースで、アクティブ geo レプリケーションのセットアップ専用の SQL 認証ログインを作成します。 必要に応じて、ログイン名とパスワードを調整します。
 
    ```sql
-   create login geodrsetup with password = 'ComplexPassword01'
+   create login geodrsetup with password = 'ComplexPassword01';
    ```
 
-1. 対応するユーザーを作成し、dbmanager ロールに割り当てます。
-
-   ```sql
-   create user geodrsetup for login geodrsetup
-   alter role dbmanager add member geodrsetup
-   ```
-
-1. 次のクエリを使用して、新しいログインの SID を書き留めます。
-
-   ```sql
-   select sid from sys.sql_logins where name = 'geodrsetup'
-   ```
-
-### <a name="on-the-source-database-on-the-primary-server"></a>プライマリ サーバー上のソース データベースでの手順
-
-1. 同じログイン用のユーザーを作成します。
-
-   ```sql
-   create user geodrsetup for login geodrsetup
-   ```
-
-1. そのユーザーを db_owner ロールに追加します。
-
-   ```sql
-   alter role db_owner add member geodrsetup
-   ```
-
-### <a name="on-the-master-of-the-secondary-server"></a>セカンダリ サーバーのマスターでの手順
-
-1. セカンダリ サーバーのファイアウォール規則で、クライアント IP アドレスを許可リストに追加します。 プライマリ サーバーに追加されたものとまったく同じクライアント IP アドレスがセカンダリにも追加されていることを確認します。 geo レプリケーションを開始するには、ALTER DATABASE ADD SECONDARY コマンドを実行する前に、この手順を実行する必要があります。
-
-1. 同じユーザー名、パスワード、および SID を使用して、プライマリ サーバー上のものと同じログインを作成します。
-
-   ```sql
-   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E
-   ```
-
-1. 対応するユーザーを作成し、dbmanager ロールに割り当てます。
+3. 同じデータベースで、ログイン用のユーザーを作成し、`dbmanager`ロールに追加し ます。
 
    ```sql
    create user geodrsetup for login geodrsetup;
-   alter role dbmanager add member geodrsetup
+   alter role dbmanager add member geodrsetup;
    ```
 
-### <a name="on-the-master-of-the-primary-server"></a>プライマリ サーバーのマスターでの手順
-
-1. 新しいログインを使用して、プライマリ サーバーのマスターにログインします。
-1. セカンダリ サーバー上のソース データベースのセカンダリ レプリカを作成します (必要に応じてデータベース名とサーバー名を調整します)。
+4. 新しいログインの SID 値をメモしておきます。 次のクエリを使用して SID 値を取得します。
 
    ```sql
-   alter database dbrep add secondary on server <servername>
+   select sid from sys.sql_logins where name = 'geodrsetup';
    ```
 
-初期セットアップの後、作成されたユーザー、ログイン、およびファイアウォール規則は削除できます。
+5. (master データベースではなく)**プライマリ** データベースに接続し、同じログインのユーザーを作成します。
 
-## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>資格情報とファイアウォール規則の同期を保つ
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   ```
 
-geo レプリケートされたデータベースには、[データベース レベルのファイアウォール規則](firewall-configure.md)の使用をお勧めします。この規則は、データベースと共にレプリケートされ、すべてのセカンダリ データベースの IP ファイアウォール規則がプライマリと同じになります。 このアプローチにより、プライマリとセカンダリ データベースの両方をホストするサーバー上で、顧客がファイアウォール規則を手動で構成、管理する必要性がなくなります。 同様に、データのアクセスに[包含データベース ユーザー](logins-create-manage.md)を使用することにより、プライマリとセカンダリの両方のデータベースが、確実かつ常に同じユーザー資格情報を持つようにして、フェールオーバー時に、ログインとパスワードの不一致による中断を防ぐことができます。 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) の顧客を追加すると、プライマリおよびセカンダリ データベースへのユーザー アクセスを管理でき、データベース内で資格情報を管理する必要が完全になくなります。
+6. 同じデータベースで、ユーザーを`db_owner`ロールに追加します。
 
-## <a name="upgrading-or-downgrading-primary-database"></a>プライマリ データベースのアップグレードまたはダウングレード
+   ```sql
+   alter role db_owner add member geodrsetup;
+   ```
 
-セカンダリ データベースの接続を解除することなく、プライマリ データベースを (General Purpose と Business Critical 間ではなく、同じサービス レベル内の) 異なるコンピューティング サイズにアップグレードまたはダウングレードできます。 アップグレードの場合は、最初にセカンダリ データベースをアップグレードしてからプライマリをアップグレードすることをお勧めします。 ダウングレードは逆の順序で行います。つまり、最初にプライマリをダウングレードしてからセカンダリをダウングレードします。 データベースを異なるサービス レベルにアップグレードまたはダウングレードすると、この推奨事項が強制されます。
+7. **セカンダリ** サーバーの master データベースで、同じ名前、パスワード、および SID を使用して、プライマリサーバーと同じログインを作成します。 次のサンプルコマンドの 16 進数の SID 値を、手順 4 で取得したものに置き換えます。
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E;
+   ```
+
+8. 同じデータベースで、ログイン用のユーザーを作成し、`dbmanager`ロールに追加し ます。
+
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   alter role dbmanager add member geodrsetup;
+   ```
+
+9. 新しいログインを使用して **プライマリ** サーバー上の master データベースに接続`geodrsetup`し、セカンダリサーバーで geo セカンダリの作成を開始します。 必要に応じて、データベース名とセカンダリサーバー名を調整します。 コマンドが実行されたら、**プライマリ** データベースの [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)ビューに対してクエリを実行し、**プライマリ** サーバーの master データベースの[sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)ビューに対してクエリを実行することで、geo セカンダリの作成を監視できます。 Geo セカンダリの作成に必要な時間は、プライマリデータベースのサイズによって異なります。
+
+   ```sql
+   alter database [dbrep] add secondary on server [servername];
+   ```
+
+10. Geo セカンダリが正常に作成されたら、この手順で作成したユーザー、ログイン、およびファイアウォールルールを削除できます。
 
 > [!NOTE]
-> セカンダリ データベースをフェールオーバー グループ構成の一部として作成した場合、セカンダリ データベースをダウングレードすることは推奨されません。 これは、フェールオーバーがアクティブ化された後にデータ層に通常のワークロードを処理するのに十分な容量を確保するためです。
+> セットアップと geo フェールオーバーを含むサブスクリプション間 geo レプリケーション操作は、T-SQL コマンドを使用することでのみサポートされます。
+> 
+> プライマリまたはセカンダリのサーバーに[プライベート エンドポイント](private-endpoint-overview.md)が構成されているとき、[パブリック ネットワーク アクセスが拒否される](connectivity-settings.md#deny-public-network-access)場合、T-SQL で geo セカンダリを追加することはできません。 プライベート エンドポイントが構成されているが、パブリック ネットワーク アクセスが許可される場合、パブリック IP アドレスからプライマリ サーバーに接続するときに geo セカンダリを追加できます。 geo セカンダリを追加すると、パブリック アクセスを拒否できます。
+> 
+> プライマリまたはセカンダリのどちらかの論理サーバー上で Azure SQL に対する [Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/azure-active-directory-only-authentication-for-azure-sql/ba-p/2417673) 専用認証がアクティブ (有効) になっている場合、別の Azure テナント内の論理サーバー上での geo セカンダリの作成はサポートされていません。
+
+## <a name="keep-credentials-and-firewall-rules-in-sync"></a><a name="keeping-credentials-and-firewall-rules-in-sync"></a>資格情報とファイアウォール規則の同期を保つ
+
+データベースへの接続にパブリックネットワークアクセスを使用する場合は、geo レプリケートされたデータベースに対して[データベースレベルの IP ファイアウォール規則](firewall-configure.md)を使用することをお勧めします。 これらのルールはデータベースと共にレプリケートされます。これにより、すべての geo セカンダリがプライマリと同じ IP ファイアウォールルールを持つようになります。 このアプローチにより、プライマリとセカンダリ データベースをホストするサーバー上で、顧客がファイアウォール規則を手動で構成、管理する必要性がなくなります。 同様に、データアクセスに[包含データベースユーザー](logins-create-manage.md)を使用すると、プライマリデータベースとセカンダリデータベースの両方に同じ認証資格情報が常に割り当てられます。 これにより、geo フェールオーバー後に、認証資格情報の不一致による中断が発生しません。
+
+## <a name="scale-primary-database"></a><a name="upgrading-or-downgrading-primary-database"></a> プライマリデータベースのスケーリング
+
+Geo セカンダリを切断せずに、プライマリデータベースを (同じサービスレベル内の) 別のコンピューティングサイズにスケールアップまたはスケールダウンすることができます。 スケールアップするときは、まず geo セカンダリをスケールアップしてから、プライマリをスケールアップすることをお勧めします。 スケールダウンする場合は、順序を逆にします。最初にプライマリをスケールダウンし、次にセカンダリをスケールダウンします。
+
+> [!NOTE]
+> フェールオーバーグループの構成の一部として geo セカンダリを作成した場合は、geo セカンダリをスケールダウンすることは推奨されません。 これは、geo フェールオーバー後の通常のワークロードを処理するのに十分な容量がデータ層にあることを確認するためのものです。
 
 > [!IMPORTANT]
-> フェールオーバー グループのプライマリ データベースを上位のレベルにスケーリングするには、最初にセカンダリ データベースを上位のレベルにスケーリングする必要があります。 セカンダリ データベースがスケーリングされる前にプライマリ データベースをスケーリングしようとすると、次のエラーが表示される可能性があります。
+> フェールオーバー グループのプライマリ データベースを上位のサービス レベル (エディション) にスケーリングするには、最初にセカンダリ データベースを上位のレベルにスケーリングする必要があります。 たとえば、プライマリを General Purpose から Business Critical にスケールアップする場合は、まず geo セカンダリを Business Critical にスケールアップする必要があります。 この規則に違反する方法でプライマリまたは geo セカンダリをスケーリングしようとすると、次のエラーが表示されます。
 >
-> `Error message: The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
+> `The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
 >
 
-## <a name="preventing-the-loss-of-critical-data"></a>重要なデータの損失の防止
+## <a name="prevent-loss-of-critical-data"></a><a name="preventing-the-loss-of-critical-data"></a> 重要なデータが失われないようにする
 
-ワイド エリア ネットワークの遅延は大きいため、連続コピーでは非同期のレプリケーション メカニズムが使用されます。 非同期レプリケーションでは、障害が発生した場合に部分的なデータ損失が避けられません。 しかし、データ損失が許されないアプリケーションもあります。 重要な更新情報を保護するには、アプリケーション開発者は、トランザクションがコミットされた直後に [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) ステム プロシージャを呼び出すことができます。 **sp_wait_for_database_copy_sync** を呼び出すと、最後にコミットされたトランザクションがセカンダリ データベースに転送されるまで、呼び出しスレッドがブロックされます。 ただし、転送されたトランザクションがセカンダリで再生およびコミットされるのを待つことはありません。 **sp_wait_for_database_copy_sync** の対象は、特定の連続コピー リンクです。 プライマリ データベースへの接続権限を持つユーザーが、このプロシージャを呼び出すことができます。
+ワイドエリアネットワークの待機時間が長いため、geo レプリケーションは非同期レプリケーションメカニズムを使用します。 非同期レプリケーションを使用すると、プライマリに障害が発生した場合にデータ損失が回避される可能性があります。 重要なトランザクションをデータ損失から保護するために、アプリケーション開発者はトランザクションをコミットした直後に [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) ストアドプロシージャを呼び出すことができます。 を呼び出す `sp_wait_for_database_copy_sync` と、最後にコミットされたトランザクションが転送され、セカンダリデータベースのトランザクションログに書き込まれるまで、呼び出し元のスレッドがブロックされます。 ただし、転送されたトランザクションがセカンダリで再生 (再実行) されるのを待機することはありません。 `sp_wait_for_database_copy_sync` は、特定の geo レプリケーションリンクにスコープが設定されています。 プライマリ データベースへの接続権限を持つユーザーが、このプロシージャを呼び出すことができます。
 
 > [!NOTE]
-> **sp_wait_for_database_copy_sync** は、フェールオーバー後のデータの損失を防ぎますが、読み取りアクセスに対して完全な同期を保証することはありません。 **sp_wait_for_database_copy_sync** プロシージャ呼び出しによる遅延は、長くなる場合があり、呼び出し時のトランザクション ログのサイズによって異なります。
+> `sp_wait_for_database_copy_sync` 特定のトランザクションの geo フェールオーバー後のデータ損失を防ぎますが、読み取りアクセスの完全同期は保証しません。 プロシージャ呼び出しによって発生する遅延は `sp_wait_for_database_copy_sync` 大きくなる可能性があり、呼び出し時のプライマリでまだ転送されていないトランザクションログのサイズによって異なります。
 
-## <a name="monitoring-geo-replication-lag"></a>geo レプリケーションの遅延の監視
+## <a name="monitor-geo-replication-lag"></a><a name="monitoring-geo-replication-lag">geo レプリケーションのラグの監視</a>
 
-RPO に関する遅延を監視するには、プライマリ データベースの [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) の *replication_lag_sec* 列を使用します。 ここには、プライマリでコミットされたトランザクションと、セカンダリで保持されているトランザクションとの間の遅延が秒単位で表示されます。 例: 遅延の値が 1 秒である場合は、この瞬間にプライマリが停止の影響を受け、フェールオーバーが開始されると、最新の移行の 1 秒間が保存されないことを示します。
+RPO に関する遅延を監視するには、プライマリ データベースの [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) の *replication_lag_sec* 列を使用します。 プライマリでコミットされたトランザクション間の遅延が秒単位で表示され、セカンダリのトランザクションログに書き込まれます。 たとえば、ラグが 1 秒の場合は、プライマリが停止によって影響を受け、geo フェールオーバーが開始されると、最後の 1 秒間にコミットされたトランザクションは失われます。
 
-セカンダリに適用済みの (つまり、セカンダリから読み取り可能な) プライマリ データベースに対する変更に関する遅延を測定するには、セカンダリ データベースの *last_commit* 時間を、プライマリ データベースの同じ値と比較します。
+セカンダリに書き込み済みのプライマリ データベースに対する変更に関する遅延を測定するには、geo セカンダリの *last_commit* 時間を、プライマリの同じ値と比較します。
 
-> [!NOTE]
-> プライマリ データベースの *replication_lag_sec* の値が NULL になっていることがありますが、これは、現時点でプライマリとセカンダリとの間の遅延時間が不明であることを意味します。   これは、プロセスが再起動した後に発生する一時的な状態であることがほとんどです。 *replication_lag_sec* から長時間にわたって NULL が返される場合は、アプリケーションにアラートを送ることを検討してください。 永続的な接続エラーにより、セカンダリ データベースがプライマリと通信できないことを示していると考えられます。 セカンダリとプライマリ データベース間の *last_commit* 時間に大きな差が生じる可能性のある状況は他にもあります。 例: 長時間変更がなかったプライマリでコミットが行われた場合、差異は非常に大きくなりますが、すぐに 0 に戻ります。 これらの 2 つの値の差が大きい状況が長時間続く場合は、エラーの状態にあると考えられます。
+> [!TIP]
+> プライマリの *replication_lag_sec* が NULL になっていることがありますが、これは、現時点でプライマリと geo セカンダリとの間の遅延時間が不明であることを意味します。 これは、プロセスが再起動した後に発生する一時的な状態であることがほとんどです。 *replication_lag_sec* から長時間にわたって NULL が返される場合は、アラートを送ることを検討してください。 接続エラーが原因で、geo セカンダリがプライマリと通信できないことを示す場合があります。
+> 
+> Geo セカンダリとプライマリ間の *last_commit* 時間に大きな差が生じる可能性のある状況は他にもあります。 例えば、長時間変更がなかったプライマリでコミットが行われた場合、差異は非常に大きくなりますが、すぐにゼロに戻ります。 この2つの値の差が長時間続く場合は、アラートを送信することを検討してください。
 
-## <a name="programmatically-managing-active-geo-replication"></a>アクティブ geo レプリケーションのプログラムでの管理
+## <a name="programmatically-manage-active-geo-replication"></a><a name="programmatically-managing-active-geo-replication"></a> アクティブ geo レプリケーションのプログラムでの管理
 
-前に説明したように、アクティブ geo レプリケーションは、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](/rest/api/sql/)、[Azure PowerShell コマンドレット](/powershell/azure/)など) が含まれています。 これらの API では、リソース グループを使用する必要があり、Azure のロール ベースのアクセス制御 (Azure RBAC) がサポートされます。 アクセス ロールの実装方法の詳細については、[Azure のロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページをご覧ください。
+前に説明したように、アクティブ geo レプリケーションは、T-SQL、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](/rest/api/sql/)、[Azure PowerShell コマンドレット](/powershell/azure/)など) が含まれています。 こうした API は、Azure ロールベースのアクセス制御 (Azure RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、[Azure のロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページをご覧ください。
 
-### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: 単一データベースおよびプールされたデータベースのフェールオーバーを管理します。
+### <a name="t-sql-manage-geo-failover-of-single-and-pooled-databases"></a><a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>単一データベースおよびプールされたデータベースの geo フェールオーバーを管理します。
 
 > [!IMPORTANT]
-> これらの Transact-SQL コマンドは、アクティブ geo レプリケーションにのみ適用され、フェールオーバー グループには適用されません。 そのため、それらは、フェールオーバー グループしかサポートしていない SQL Managed Instance のインスタンスにも適用されません。
+> これらの T-SQL コマンドは、アクティブ geo レプリケーションにのみ適用され、フェールオーバー グループには適用されません。 また、フェールオーバーグループのみをサポートする SQL Managed Instance には適用されません。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |ADD SECONDARY ON SERVER 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |FAILOVER または FORCE_FAILOVER_ALLOW_DATA_LOSS を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します |
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |REMOVE SECONDARY ON SERVER を使用して、SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |**ADD SECONDARY ON SERVER** 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |**FAILOVER** または **FORCE_FAILOVER_ALLOW_DATA_LOSS** を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します |
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |**REMOVE SECONDARY ON SERVER** を使用して、SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
 | [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |サーバー上の各データベースの、既存のレプリケーション リンクの情報をすべて返します。 |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |最新のレプリケーション時刻、最後のレプリケーションの遅延、および指定されたデータベースのレプリケーション リンクに関する他の情報を取得します。 |
-| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |レプリケーション リンクの状態を含むすべてのデータベース操作の状態が表示されます。 |
-| [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |コミットされたすべてのトランザクションがレプリケートされ、アクティブ セカンダリ データベースによって認識されるまで、アプリケーションが待機状態になります。 |
+| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |レプリケーション リンクの変更を含むすべてのデータベース操作の状態が表示されます。 |
+| [sys.sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |コミットされたすべてのトランザクションが、geo セカンダリのトランザクションログに書き込まれるまで待機します。 |
 |  | |
 
-### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell:単一データベースおよびプールされたデータベースのフェールオーバーを管理します。
+### <a name="powershell-manage-geo-failover-of-single-and-pooled-databases"></a><a name="powershell-manage-failover-of-single-and-pooled-databases"></a>単一データベースおよびプールされたデータベースの geo フェールオーバーを管理します。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -277,13 +275,13 @@ RPO に関する遅延を監視するには、プライマリ データベース
 | [New-AzSqlDatabaseSecondary](/powershell/module/az.sql/new-azsqldatabasesecondary) |既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
 | [Set-AzSqlDatabaseSecondary](/powershell/module/az.sql/set-azsqldatabasesecondary) |セカンダリ データベースをプライマリに切り替えて、フェールオーバーを開始します。 |
 | [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) |SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
-| [Get-AzSqlDatabaseReplicationLink](/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Azure SQL Database とリソース グループまたは論理 SQL サーバー間の geo レプリケーション リンクを取得します。 |
+| [Get-AzSqlDatabaseReplicationLink](/powershell/module/az.sql/get-azsqldatabasereplicationlink) |データベースの geo レプリケーションリンクを取得します。 |
 |  | |
 
-> [!IMPORTANT]
+> [!TIP]
 > サンプル スクリプトについては、[アクティブ geo レプリケーションを使用した単一データベースの構成およびフェールオーバー](scripts/setup-geodr-and-failover-database-powershell.md)に関するページ、および[アクティブ geo レプリケーションを使用したプールされたデータベースの構成およびフェールオーバー](scripts/setup-geodr-and-failover-elastic-pool-powershell.md)に関するページをご覧ください。
 
-### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API:単一データベースおよびプールされたデータベースのフェールオーバーを管理します。
+### <a name="rest-api-manage-geo-failover-of-single-and-pooled-databases"></a><a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: 単一データベースおよびプールされたデータベースの geo フェールオーバーを管理します。
 
 | API | 説明 |
 | --- | --- |
@@ -296,16 +294,13 @@ RPO に関する遅延を監視するには、プライマリ データベース
 | [Delete Replication Link](/rest/api/sql/replicationlinks/delete) | データベース レプリケーション リンクを削除します。 フェールオーバー中には実行できません。 |
 |  | |
 
-
-
-
 ## <a name="next-steps"></a>次のステップ
 
 - サンプル スクリプトは、以下を参照してください。
-  - [アクティブ geo レプリケーションを使用して、単一のデータベースを構成およびフェールオーバーする](scripts/setup-geodr-and-failover-database-powershell.md)
+  - [アクティブ geo レプリケーションを使用して、単一データベースを構成し、フェールオーバーします](scripts/setup-geodr-and-failover-database-powershell.md)。
   - [アクティブ geo レプリケーションを使用して、プールされたデータベースを構成およびフェールオーバーする](scripts/setup-geodr-and-failover-elastic-pool-powershell.md)
 - SQL Database でも自動フェールオーバー グループがサポートされています。 詳細については、[自動フェールオーバー グループ](auto-failover-group-overview.md)の使用に関するページを参照してください。
-- ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)を参照してください。
+- ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)に関する記事を参照してください。
 - Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](automated-backups-overview.md)」を参照してください
 - 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](recovery-using-backups.md)に関する記事を参照してください。
 - 新しいプライマリ サーバーとデータベースの認証要件については、 [障害復旧後の SQL Database のセキュリティ](active-geo-replication-security-configure.md)に関する記事を参照してください。

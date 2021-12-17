@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff7505e7c47b93f32efd9de60463873026247329
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87149785d670e85f991d0fbc851b642688526630
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724927"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059340"
 ---
 # <a name="resilience-through-developer-best-practices"></a>開発者のベスト プラクティスによる回復性
 
@@ -42,12 +42,13 @@ Microsoft Azure AD B2C ディレクトリ サービスによって、1 日に何
 
   - ユーザー体験での[前提条件](../../active-directory-b2c/userjourneys.md)は、次のようになります。
 
-  ``
+  ```xml
   <Precondition Type="ClaimEquals" ExecuteActionsIf="true"> 
   <Value>requiresMigration</Value>
   ...
-  < Precondition/>
-  ``
+  <Precondition/>
+  ```
+
   - [CAPTCHA システムと統合して](https://github.com/azure-ad-b2c/samples/tree/master/policies/captcha-integration)、ボットによるサインアップに対する抵抗力を構築します。
 
   - [ロード テストのサンプル](../../active-directory-b2c/best-practices.md#testing)を使用して、サインアップとサインインをシミュレートします。 

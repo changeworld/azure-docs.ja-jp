@@ -6,12 +6,13 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
-ms.openlocfilehash: 0ef9d8118a8ff1d9fdd69566dd60033f5847f810
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7be1aa846ee53edf0c23594d89af59e3c7f7aa32
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048966"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051517"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Azure Monitor メトリック ストアの従来の Cloud Services にゲスト OS メトリックを送信する 
 
@@ -60,7 +61,7 @@ Azure Monitor [診断拡張機能](../agents/diagnostics-extension-overview.md)�
 
 診断拡張機能の構成ファイルを準備します。 このファイルにより、お使いのクラウド サービスに対して、診断拡張機能が収集するパフォーマンス カウンターとログが決まります。 サンプルの診断構成ファイルを以下に示します。  
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?> 
 <DiagnosticsConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> 
   <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> 
@@ -102,7 +103,7 @@ Azure Monitor [診断拡張機能](../agents/diagnostics-extension-overview.md)�
 
 診断ファイルの "SinksConfig" セクションで、新しい Azure Monitor シンクを定義します。 
 
-```XML
+```xml
   <SinksConfig> 
     <Sink name="AzMonSink"> 
     <AzureMonitor> 
@@ -124,7 +125,7 @@ Azure Monitor [診断拡張機能](../agents/diagnostics-extension-overview.md)�
 
 最後に、プライベート構成に *Azure Monitor アカウント* セクションを追加します。 前の手順で作成したサービス プリンシパルのクライアント ID とシークレットを入力します。 
 
-```XML
+```xml
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> 
   <StorageAccount name="" endpoint="" /> 
     <AzureMonitorAccount> 

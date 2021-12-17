@@ -1,26 +1,31 @@
 ---
 title: SMB マルチチャネルのパフォーマンス - Azure Files
 description: SMB マルチチャネルのパフォーマンスについて説明します。
-author: gunjanj
+author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/16/2020
-ms.author: gunjanj
+ms.date: 08/25/2021
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a9edd93aa265622732be4a7582cce9900959bf6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e19011751115e305be40b33bec72e35e47a80293
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374985"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967266"
 ---
 # <a name="smb-multichannel-performance"></a>SMB マルチチャネルのパフォーマンス
+SMB マルチチャネルでは、SMB 3.x クライアントが SMB ファイル共有に複数のネットワーク接続を確立できます。 Azure Files では、プレミアム ファイル共有で SMB マルチチャネルがサポートされています (FileStorage ストレージ アカウントの種類のファイル共有)。 Azure Files で SMB マルチチャネルを有効にしても追加料金は発生しません。 SMB マルチチャネルは既定で無効になっています。
 
-Azure Files SMB マルチチャネル (プレビュー) を使用すると、SMB 3.x クライアントから、FileStorage アカウント内の Premium ファイル共有への複数のネットワーク接続を確立できます。 Windows Server 2012 および Windows 8 クライアントで、SMB 3.0 プロトコルに SMB マルチチャネル機能が導入されました。 これにより、SMB マルチチャネルをサポートしている Azure Files SMB 3.x クライアントから、Azure Premium ファイル共有の機能を利用できます。 ストレージ アカウントで SMB マルチチャネルを有効にするための追加料金は発生しません。
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
-## <a name="benefits"></a>利点
-
-Azure Files SMB マルチチャネルを使用すると、クライアントから、複数のネットワーク接続を使用して、パフォーマンスを向上させることができ、所有コストも削減します。 複数の NIC に帯域幅を集約し、NIC の Receive Side Scaling (RSS) サポートを利用して複数の CPU に IO 負荷を分散させることで、パフォーマンスの向上が達成されます。
+## <a name="benefits"></a>メリット
+SMB マルチチャネルを使用すると、クライアントから、複数のネットワーク接続を使用して、パフォーマンスを向上させることができ、所有コストも削減します。 複数の NIC に帯域幅を集約し、NIC の Receive Side Scaling (RSS) サポートを利用して複数の CPU に IO 負荷を分散させることで、パフォーマンスの向上が達成されます。
 
 - **スループットの向上**:複数接続により、複数のパスで並行してデータを転送できるため、サイズが大きく、IO サイズが大きいファイルを使用し、単一の VM またはより小さな VM セットからの高スループットを必要とするワークロードに大きなメリットがあります。 これらのワークロードには、コンテンツ作成やコード変換のためのメディアやエンターテインメント、ゲノミクス、金融サービスのリスク分析などがあります。
 - **高 IOPS**:NIC RSS 機能を使用すると、複数の CPU で複数の接続がある場合に効果的な負荷分散を行うことができます。 これは、より高い IOPS スケールと VM CPU の有効活用に役立ちます。 これは、データベース アプリケーションなど、IO サイズが小さいワークロードに便利です。
@@ -33,22 +38,20 @@ SMB マルチチャネルの詳細については、[Windows のドキュメン�
 この機能により、マルチスレッド プリケーションのパフォーマンスが向上するメリットが得られますが、通常シングルスレッド アプリケーションには役立ちません。 詳細については、「[パフォーマンスの比較](#performance-comparison)」セクションを参照してください。
 
 ## <a name="limitations"></a>制限事項
-
-[!INCLUDE [storage-files-smb-multi-channel-restrictions](../../../includes/storage-files-smb-multi-channel-restrictions.md)]
-
-### <a name="regional-availability"></a>リージョン別の提供状況
-
-[!INCLUDE [storage-files-smb-multi-channel-regions](../../../includes/storage-files-smb-multi-channel-regions.md)]
+Azure ファイル共有の SMB マルチチャネルには、現在、次の制限があります。
+- SMB 3.1.1 を使用している [Windows](storage-how-to-use-files-windows.md) および [Linux](storage-how-to-use-files-linux.md) クライアントでのみサポートされます。 SMB クライアント オペレーティング システムに推奨レベルの修正プログラムが適用されていることを確認します。
+- チャネルの最大数は 4 です。詳細については、[こちら](storage-troubleshooting-files-performance.md#cause-4-number-of-smb-channels-exceeds-four)を参照してください。
 
 ## <a name="configuration"></a>構成
-
 SMB マルチチャネルは、機能がクライアント側 (お使いのクライアント) とサービス側 (お使いの Azure ストレージ アカウント) の両方で有効になっている場合にのみ機能します。
 
 Windows クライアントでは、SMB マルチチャネルが既定で有効になっています。 次の PowerShell コマンドを実行して、構成を確認できます。 
 
-`Get-smbClientConfiguration | select EnableMultichannel`.
+```PowerShell
+Get-SmbClientConfiguration | Select-Object -Property EnableMultichannel
+```
  
-Azure ストレージ アカウントで、SMB マルチチャネルを有効にする必要があります。 「[SMB マルチチャネルを有効にする (プレビュー)](storage-files-enable-smb-multichannel.md)」を参照してください。
+Azure ストレージ アカウントで、SMB マルチチャネルを有効にする必要があります。 [SMB マルチチャネルの有効化](files-smb-protocol.md#smb-multichannel)に関するページを参照してください。
 
 ### <a name="disable-smb-multichannel"></a>SMB マルチチャネルを無効にする
 ほとんどのシナリオ (特にマルチスレッドのワークロード) では、クライアントのパフォーマンスは SMB マルチチャネルにより向上するはずです。 しかしながら、シングルスレッドのワークロードやテスト目的など、特定のシナリオでは、SMB マルチチャネルを無効にした方がよい場合があります。 詳細については、「[パフォーマンスの比較](#performance-comparison)」を参照してください。
@@ -131,6 +134,5 @@ Azure ストレージ アカウントで、SMB マルチチャネルを有効に
 IO サイズが大きくなるとスループットが向上して、待ち時間が多くなり、その結果、正味の IOPS 数が少なくなります。 IO サイズが小さくなると IOPS が向上しますが、その結果、正味のスループットと待ち時間は少なくなります。
 
 ## <a name="next-steps"></a>次のステップ
-
-- [FileStorage アカウントで SMB マルチチャネルを有効にする (プレビュー)](storage-files-enable-smb-multichannel.md)
+- [SMB マルチチャネルを有効にする](files-smb-protocol.md#smb-multichannel)
 - SMB マルチチャネルの詳細については、[Windows のドキュメント](/azure-stack/hci/manage/manage-smb-multichannel)を参照してください。

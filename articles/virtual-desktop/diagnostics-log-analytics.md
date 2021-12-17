@@ -1,27 +1,27 @@
 ---
-title: Windows Virtual Desktop の診断ログ分析 - Azure
-description: Windows Virtual Desktop の診断機能でログ分析を使用する方法について説明します。
+title: Azure Virtual Desktop の診断ログ分析 - Azure
+description: Azure Virtual Desktop の診断機能でログ分析を使用する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0775df0d5ca1061bff127ba5491040a90ddb8597
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3a33c9e1542e6abbebfdf251864877112230af83
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447014"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261464"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>診断機能に Log Analytics を使用する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)を参照してください。
 
-Windows Virtual Desktop では、他の多くの Azure サービスと同様に、監視やアラートに [Azure Monitor](../azure-monitor/overview.md) が使用されます。 これにより、管理者は 1 つのインターフェイス経由で問題を特定できます。 サービスでは、ユーザーと管理者の両方のアクションに対してアクティビティ ログが作成されます。 各アクティビティ ログは、次のカテゴリに分類されます。
+Azure Virtual Desktop では、他の多くの Azure サービスと同様に、監視やアラートに [Azure Monitor](../azure-monitor/overview.md) が使用されます。 これにより、管理者は 1 つのインターフェイス経由で問題を特定できます。 サービスでは、ユーザーと管理者の両方のアクションに対してアクティビティ ログが作成されます。 各アクティビティ ログは、次のカテゴリに分類されます。
 
 - 管理アクティビティ:
-    - API または PowerShell を使用して Windows Virtual Desktop のオブジェクトを変更しようとした場合に、成功するかどうかを追跡する。 たとえば、ユーザーは PowerShell を使用してホスト プールを正常に作成できるか。
+    - API または PowerShell を使用して Azure Virtual Desktop のオブジェクトを変更しようとした場合に、成功するかどうかを追跡します。 たとえば、ユーザーは PowerShell を使用してホスト プールを正常に作成できるか。
 - フィード:
     - ユーザーが、正常にワークスペースにサブスクライブできるか。
     - ユーザーには、リモート デスクトップ クライアント上でパブリッシュされているすべてのリソースが表示されるか。
@@ -34,9 +34,9 @@ Windows Virtual Desktop では、他の多くの Azure サービスと同様に�
 - チェックポイント:
     - アクティビティの有効期間内に到達した特定のステップ。 たとえば、セッション中に、ユーザーが特定のホストに負荷分散された後、接続中にそのユーザーへのサインオンが行われた、など。
 
-診断ロール サービス自体が Windows Virtual Desktop の一部であるため、Windows Virtual Desktop に到達しない接続は診断結果に表示されません。 Windows Virtual Desktop 接続の問題は、ユーザーにネットワーク接続の問題が発生しているときに発生する可能性があります。
+診断ロール サービス自体が Azure Virtual Desktop の一部であるため、Azure Virtual Desktop に到達しない接続は診断結果に表示されません。 Azure Virtual Desktop 接続の問題は、ユーザーにネットワーク接続の問題が発生しているときに発生する可能性があります。
 
-Azure Monitor を使用すると、Windows Virtual Desktop のデータを分析して、仮想マシン (VM) のパフォーマンス カウンターを確認できます。すべて、同じツール内で行われます。 この記事では、ご自身の Windows 仮想デスクトップ環境で診断を有効にする方法について説明します。
+Azure Monitor を使用すると、Azure Virtual Desktop のデータを分析して、仮想マシン (VM) のパフォーマンス カウンターを確認できます。すべて、同じツール内で行われます。 この記事では、ご自身の Azure 仮想デスクトップ環境で診断を有効にする方法について説明します。
 
 >[!NOTE]
 >Azure で VM を監視する方法については、「[Azure Monitor を使用して Azure 仮想マシンを監視する](../azure-monitor/vm/monitor-vm-azure.md)」を参照してください。 また、セッション ホストでのユーザー エクスペリエンスをより深く理解するために、必ず[パフォーマンス カウンターのしきい値を確認](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds)してください。
@@ -55,15 +55,15 @@ Log Analytics を使用するには、まず、ワークスペースを作成す
 
 この情報は後のセットアップ プロセスで必要になります。
 
-お使いの Windows Virtual Desktop 環境を監視およびメンテナンスする担当者がデータにアクセスできるように、確実に Azure Monitor のアクセス許可を管理してください。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/roles-permissions-security.md)を参照してください。
+お使いの Azure Virtual Desktop 環境を監視およびメンテナンスする担当者がデータにアクセスできるように、確実に Azure Monitor のアクセス許可を管理してください。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/roles-permissions-security.md)を参照してください。
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>診断データをワークスペースにプッシュする
 
-お使いの Windows Virtual Desktop オブジェクトからワークスペースの Log Analytics に診断データをプッシュできます。 この機能は、最初にオブジェクトを作成するときに、すぐに設定できます。
+お使いの Azure Virtual Desktop オブジェクトからワークスペースの Log Analytics に診断データをプッシュできます。 この機能は、最初にオブジェクトを作成するときに、すぐに設定できます。
 
 新しいオブジェクトに Log Analytics を設定するには:
 
-1. Azure portal にサインインして、 **[Windows Virtual Desktop]** に移動します。
+1. Azure portal にサインインして、 **[Azure Virtual Desktop]** に移動します。
 
 2. ログとイベントをキャプチャするオブジェクト (ホスト プール、アプリ グループ、ワークスペースなど) に移動します。
 
@@ -97,7 +97,7 @@ Azure portal または Azure Monitor 上で Log Analytics ワークスペース�
 
 3. [サービス] 下で、 **[Log Analytics ワークスペース]** を選択します。
 
-4. 一覧から、お使いの Windows 仮想デスクトップ オブジェクト用に構成したワークスペースを選択します。
+4. 一覧から、お使いの Azure Virtual Desktop オブジェクト用に構成したワークスペースを選択します。
 
 5. お使いのワークスペースを表示し、 **[ログ]** を選択します。 **[検索]** 機能を使用して、メニュー リストをフィルター処理できます。
 
@@ -114,7 +114,7 @@ Azure portal または Azure Monitor 上で Log Analytics ワークスペース�
 5. クエリ診断の準備が整いました。 すべての診断テーブルに、"WVD" プレフィックスがあります。
 
 >[!NOTE]
->Azure Monitor ログ内に格納されているテーブルの詳細については、「[Azure Monitor のデータ リファレンス](/azure/azure-monitor/reference/)」を参照してください。 Windows Virtual Desktop に関連するすべてのテーブルに "WVD" というラベルが付いています。
+>Azure Monitor ログ内に格納されているテーブルの詳細については、「[Azure Monitor のデータ リファレンス](/azure/azure-monitor/reference/)」を参照してください。 Azure Virtual Desktop に関連するすべてのテーブルに "WVD" というラベルが付いています。
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>診断イベントの送信頻度
 
@@ -131,10 +131,10 @@ Azure portal または Azure Monitor 上で Log Analytics ワークスペース�
 Azure Monitor Log Analytics UI を使用したサンプル クエリへのアクセス:
 1. Log Analytics ワークスペースにアクセスし、 **[ログ]** を選択します。 クエリ UI の例が自動的に表示されます。
 1. フィルターを **[カテゴリ]** に変更します。
-1. **[Windows Virtual Desktop]** を選択して、使用可能なクエリを確認します。
+1. **[Azure Virtual Desktop]** を選択して、使用可能なクエリを確認します。
 1. **[実行]** を選択して、選択したクエリを実行します。
 
-サンプル クエリ インターフェイスの詳細については、「[Azure Monitor Log Analytics の保存済みクエリ](../azure-monitor/logs/example-queries.md)」を参照してください。
+サンプル クエリ インターフェイスの詳細については、「[Azure Monitor Log Analytics の保存済みクエリ](../azure-monitor/logs/queries.md)」を参照してください。
 
 次のクエリ一覧では、1 人のユーザーの接続情報または問題を確認できます。 これらのクエリは、[Log Analytics クエリ エディター](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query)で実行できます。 クエリごとに、`userupn` を検索するユーザーの UPN に置き換えます。
 
@@ -199,4 +199,4 @@ WVDErrors
 
 ## <a name="next-steps"></a>次のステップ
 
-診断機能で特定できる一般的なエラー シナリオについては、「[問題の特定と診断](diagnostics-role-service.md#common-error-scenarios)」をご確認ください。
+診断機能で特定できる一般的なエラー シナリオについては、「[問題の特定と診断](./troubleshoot-set-up-overview.md)」をご確認ください。

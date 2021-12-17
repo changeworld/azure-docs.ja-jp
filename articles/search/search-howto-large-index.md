@@ -2,18 +2,18 @@
 title: 組み込みのインデクサーを使用して大容量のデータ セットのインデックスを作成する
 titleSuffix: Azure Cognitive Search
 description: 大容量データのインデックス作成またはバッチ モードでの計算負荷の高いインデックス作成の戦略と、リソース管理と、スケジュール設定されたインデックス作成、並列インデックス作成、および分散インデックス作成のためのテクニック。
-manager: liamca
+manager: nitinme
 author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/12/2021
+ms.openlocfilehash: 0c7dccdc484a99e751a7676729a760499b501672
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358394"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487967"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Cognitive Search で大容量のデータ セットのインデックスを作成する方法
 
@@ -23,11 +23,11 @@ Azure Cognitive Search は、検索インデックスにデータをインポー
 
 実行時間の長いプロセスにも同じ手法が適用されます。 具体的には、「[並列インデックス作成](#parallel-indexing)」で説明する手順は、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)での画像分析や自然言語処理など、計算負荷の高いインデックス作成に役立ちます。
 
-以降のセクションでは、Push API とインデクサーの両方を使用して大量のデータのインデックスを作成する方法について説明します。
+次のセクションでは、プッシュ API とインデクサーの両方を使って大量のデータにインデックスを付ける技術について説明します。
 
 ## <a name="use-the-push-api"></a>プッシュ API を使用する
 
-[ドキュメントの追加 REST API](/rest/api/searchservice/addupdate-or-delete-documents) か [IndexDocuments メソッド](/dotnet/api/azure.search.documents.searchclient.indexdocuments)を使用してデータをインデックスにプッシュするとき、インデックス作成の速度に影響を与える重要な考慮事項がいくつかあります。 そのような要因について、サービス容量の設定からコードの最適化まで、以下のセクションで説明します。
+[ドキュメントの追加 REST API](/rest/api/searchservice/addupdate-or-delete-documents) か [IndexDocuments メソッド (.NET) ](/dotnet/api/azure.search.documents.searchclient.indexdocuments) を使ってデータをインデックスにプッシュするとき、インデックスを付ける速度に影響を与える重要な留意事項がいくつかあります。 そのような要因について、サービス容量の設定からコードの最適化まで、以下のセクションで説明します。
 
 プッシュ モデルのインデックス作成について説明する詳細とコード サンプルが必要であれば、[インデックス作成速度の最適化に関するチュートリアル](tutorial-optimize-indexing-push-api.md)を参照してください。
 
@@ -98,7 +98,7 @@ Azure Cognitive Search のインデックス作成速度を最大限に引き出
 
 + スケジューラを使用すると、インデックス作成を一定の間隔で配分して行い、時間をかけて徐々に行うことができます。
 + スケジュール済みのインデックス作成は、最後の既知の停止ポイントから再開することができます。 24 時間の範囲内でデータ ソースが完全にクロールされていない場合、中断されたところから 2 日目にインデクサーによってインデックス作成が再開されます。
-+ データをより小さな個々のデータ ソースにパーティション分割することにより、並列処理が実現されます。 ソース データは、Azure BLOB ストレージ内の複数のコンテナーなど、より小さなコンポーネントに分割してから、対応する複数の[データ ソース オブジェクト](/rest/api/searchservice/create-data-source)を Azure Cognitive Search で作成して、並列でインデックスを作成することができます。
++ データをより小さな個々のデータ ソースにパーティション分割することにより、並列処理が実現されます。 ソース データは、Azure Blob Storage 内の複数のコンテナーなど、より小さなコンポーネントに分割してから、対応する複数の[データ ソース オブジェクト](/rest/api/searchservice/create-data-source)を Azure Cognitive Search で作成して、並列でインデックスを作成することができます。
 
 > [!NOTE]
 > インデクサーはデータ ソース固有のものです。そのため、インデクサー アプローチの使用は、Azure 上で選択される次のデータ ソースに対してのみ有効です。[SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Table Storage](search-howto-indexing-azure-tables.md)、[Cosmos DB](search-howto-index-cosmosdb.md)。
@@ -144,7 +144,7 @@ Push API と同様に、インデクサーを使用すると、バッチごと�
 
 2. サービス内の検索単位数と同じ数のインデクサーを並列で実行できます。 **[設定]**  >  **[スケール]** で、並列処理用の [レプリカを増やす](search-capacity-planning.md)かパーティションを増やします (インデクサー ワークロードごとに 1 つのレプリカまたはパーティションを追加します)。 既存のクエリ量は十分な数に設定します。 インデックス作成のためのクエリ ワークロードを犠牲にすることは、適切なトレードオフではありません。
 
-3. Azure Cognitive Search インデクサーが到達可能なレベルの複数のコンテナーにデータを分割します。 これには、Azure SQL Database 内の複数のテーブル、Azure BLOB ストレージ内の複数のコンテナー、または複数のコレクションが考えられます。 テーブルまたはコンテナーごとに 1 つのデータ ソース オブジェクトを定義します。
+3. Azure Cognitive Search インデクサーが到達可能なレベルの複数のコンテナーにデータを分割します。 これには、Azure SQL Database 内の複数のテーブル、Azure Blob Storage 内の複数のコンテナー、または複数のコレクションが考えられます。 テーブルまたはコンテナーごとに 1 つのデータ ソース オブジェクトを定義します。
 
 4. 並列実行する複数のインデクサーを作成し、スケジュールを設定します。
 

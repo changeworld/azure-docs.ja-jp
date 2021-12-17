@@ -5,16 +5,18 @@ services: sql-database
 author: joplum
 ms.author: joplum
 ms.service: sql-database
+ms.subservice: migration
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
-ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mathoma
+ms.openlocfilehash: 25b19430c3adca98422ffb986c1dc126d4f45c33
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92790408"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708540"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>SQLite データベースを Azure SQL Database サーバーレスに移行する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

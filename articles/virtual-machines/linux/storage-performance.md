@@ -1,7 +1,6 @@
 ---
 title: Azure Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する - ストレージ
 description: Lsv2 シリーズの仮想マシン上でソリューションのパフォーマンスを最適化する方法をLinux を例にして紹介します。
-services: virtual-machines-linux
 author: laurenhughes
 ms.service: virtual-machines
 ms-subservice: vm-sizes-storage
@@ -11,14 +10,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 99349654bb01f368a2a3a84c4ecc01f248b25175
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5dd1e506b2eafff1d197a108dfa521dc89499925
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552764"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691022"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Lsv2 シリーズ Linux 仮想マシン上でパフォーマンスを最適化する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Lsv2 シリーズの仮想マシンは、幅広いアプリケーションや業界において、ローカル ストレージに高い I/O とスループットを必要とするさまざまなワークロードをサポートしています。  Lsv2 シリーズは、Cassandra、MongoDB、Cloudera、Redis などのビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、大規模トランザクション データベースに最適です。
 
@@ -32,7 +33,7 @@ Lsv2 シリーズの仮想マシン (VM) の設計は、AMD EPYC™ 7551 プロ�
 
 この記事では、ワークロードとアプリケーションで VM の設計に応じた最大限のパフォーマンスを実現するためのヒントと推奨事項を紹介します。 このページに掲載した情報は、最適化済みの Lsv2 イメージが Azure Marketplace に追加されるのに応じて随時更新していく予定です。
 
-## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™ チップセットのアーキテクチャ
+## <a name="amd-epyc-chipset-architecture"></a>AMD EPYC™ チップセットのアーキテクチャ
 
 Lsv2 シリーズの VM では、Zen マイクロアーキテクチャをベースとする AMD EYPC™ サーバー プロセッサを使用しています。 AMD は、オンダイ、オンパッケージ、マルチパッケージの通信に利用が期待できる自らの NUMA モデルのスケーラブルなインターコネクトとして、Infinity Fabric (IF) for EYPC™ を開発しました。 NUMA が多くダイが少ない AMD のアーキテクチャは、Intel の最新型モノリシックダイ プロセッサで採用されている QPI (Quick-Path Interconnect) と UPI (Ultra-Path Interconnect) に比べると、パフォーマンス面でメリットと課題のどちらももたらしうる可能性を秘めています。 メモリの帯域幅と待ち時間の制約の影響が実際にどれほどのものになるかは、実行するワークロードの種類に応じて異なります。
 

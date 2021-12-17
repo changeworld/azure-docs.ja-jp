@@ -2,24 +2,24 @@
 title: 従来の Azure DNS プライベート ゾーンを新しいリソース モデルに移行する
 titleSuffix: Azure DNS
 description: このガイドでは、従来のプライベート DNS ゾーンを最新のリソース モデルに移行する方法の詳細な手順について説明します
-services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 6bb828aaff0c1d026e977863a6e224aaea81b629
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 566608da26cafab0d491663300136ebc815eb3ff
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729237"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357096"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>従来の Azure DNS プライベート ゾーンを新しいリソース モデルに移行する
 
 パブリック プレビュー中、プライベート DNS ゾーンは "zoneType" プロパティが "Private" に設定された "dnszones" リソースを使用して作成されました。 このようなゾーンは、2019 年 12 月 31 日以降はサポートされないため、"dnszones" ではなく "privateDnsZones" というリソースの種類を使用する GA リソース モデルに移行する必要があります。 移行プロセスはシンプルです。Microsoft は、このプロセスを自動化するための PowerShell スクリプトを用意しました。 このガイドでは、Azure DNS プライベート ゾーンを新しいリソース モデルに移行するための詳細な手順について説明します。
 
 移行が必要な dnszones リソースを確認するには、Azure CLI で次のコマンドを実行します。
+
 ```azurecli
 az account set --subscription <SubscriptionId>
 az network dns zone list --query "[?zoneType=='Private']"
@@ -27,7 +27,7 @@ az network dns zone list --query "[?zoneType=='Private']"
 
 ## <a name="prerequisites"></a>前提条件
 
-最新バージョンの Azure PowerShell がインストールされていることを確認します。 Azure PowerShell (Az) とそのインストール方法の詳細については、https://docs.microsoft.com/powershell/azure/new-azureps-module-az をご覧ください
+最新バージョンの Azure PowerShell がインストールされていることを確認します。 Azure PowerShell (Az) とそのインストール方法の詳細については、「[Azure Az PowerShell モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
 
 Azure PowerShell の Az.PrivateDns モジュールがインストールされていることを確認します。 このモジュールをインストールするには、管理者特権の PowerShell ウィンドウ (管理者モード) を開いて、次のコマンドを入力します
 
@@ -122,8 +122,8 @@ DNS クエリが解決されていないとわかった場合、数分待って�
 
 * [プライベート ゾーンのシナリオ](./private-dns-scenarios.md)に関しては、Azure DNS のプライベート ゾーンで実現できるいくつかの一般的なシナリオを参照してください。
 
-* Azure DNS のプライベート ゾーンに関する一般的な質問と回答については、[プライベート DNS の FAQ](./dns-faq-private.md) に関する記事をご覧ください。特定の種類の操作で期待できる固有の動作についても説明があります。
+* Azure DNS のプライベート ゾーンに関する一般的な質問と回答については、[プライベート DNS の FAQ](./dns-faq-private.yml) に関する記事をご覧ください。特定の種類の操作で期待できる固有の動作についても説明があります。
 
 * 「[DNS ゾーンとレコードの概要](dns-zones-records.md)」で DNS ゾーンとレコードについて学びます。
 
-* Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
+* Azure のその他の重要な[ネットワーク機能](../networking/fundamentals/networking-overview.md)について参照してください。

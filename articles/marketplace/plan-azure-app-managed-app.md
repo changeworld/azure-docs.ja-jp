@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 694f501efc565ed498c1c8d8e2e38326277e8605
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+ms.openlocfilehash: b20910e7692d5cea979997f32263c8e74385b564
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96621418"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724978"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Azure アプリケーション オファーの Azure マネージド アプリケーションを計画する
 
@@ -32,7 +32,7 @@ Azure アプリケーションのマネージド アプリケーション プラ
 | ------------ | ------------- |
 | Azure サブスクリプション | マネージド アプリケーションを顧客のサブスクリプションにデプロイする必要があるが、アプリケーションはサード パーティが管理できます。 |
 | 請求/メータリング | リソースは、顧客の Azure サブスクリプションで提供されます。 従量課金制の支払モデルを使用する VM は Microsoft 経由で顧客が処理し、顧客の Azure サブスクリプション経由で請求されます。 <br><br> ライセンス持ち込み VM の場合、顧客サブスクリプションで発生するインフラストラクチャ コストを Microsoft が請求しますが、ユーザーが顧客に対して直接ソフトウェア ライセンス料金を処理します。 |
-| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 詳細については、次を参照してください。<br> • [Azure VM の技術資産を作成する](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 用)。<br> • [Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 用)。 |
+| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 詳細については、次を参照してください。<br> * [Azure VM の技術資産を作成する](./azure-vm-certification-faq.yml#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 用)。<br> *  [Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 用)。 |
 | 顧客の利用状況属性 | すべての新しい Azure アプリケーション オファーには、[Azure パートナーの顧客の使用状況の属性 GUID](azure-partner-customer-usage-attribution.md) も含まれている必要があります。 顧客の利用状況属性とそれを有効にする方法の詳細については、「[Azure パートナーの顧客の使用状況の属性](azure-partner-customer-usage-attribution.md)」をご覧ください。 |
 | 展開パッケージ | お客様がプランをデプロイできるようにするデプロイ パッケージが必要になります。 同じ技術的構成が必要なプランを複数作成する場合は、同じパッケージを使用できます。 詳細については、次のセクションの「デプロイ パッケージ」を参照してください。 |
 |||
@@ -40,13 +40,35 @@ Azure アプリケーションのマネージド アプリケーション プラ
 > [!NOTE]
 > 管理対象アプリケーションは、Azure Marketplace から展開できる必要があります。 顧客の通信に懸念がある場合、リード共有を有効にした後、興味を持つ顧客に連絡してください。
 
+## <a name="usage-of-azure-kubernetes-service-aks-and-containers-in-managed-application"></a>マネージド アプリケーションにおける Azure Kubernetes Service (AKS) とコンテナーの使用
+
+### <a name="azure-application-offers-fall-into-two-categories"></a>Azure アプリケーションのオファーは 2 つのカテゴリに分類されます
+
+- ソリューション テンプレート - 発行元がアクセスできないもの
+- マネージドアプリケーション - デプロイ時に顧客が付与した事前定義の権限により、発行元がアクセス可能なもの
+
+**ソリューション テンプレート:** 顧客によるデプロイが完了した後に、発行元がソリューション テンプレート オファーを変更ですることはできません。 そのため、現在このオファー カテゴリでは、コンテナーと Azure Kubernetes Service (AKS) リソースは許可されていません。
+
+**マネージド アプリケーション:** マネージド アプリケーション オファーを使用すると、発行元は、顧客のサブスクリプションへのデプロイ時に作成されたリソースにアクセスして制御することができます。 そのため、このオファー カテゴリーでは、コンテナーと Azure Kubernetes Service (AKS) リソースが *<u>暫定的に許可</u>* されています。
+
+### <a name="rules-and-known-issues-for-aks-and-containers-in-managed-applications"></a>マネージド アプリケーションでの AKS とコンテナーに関する規則と既知の問題
+
+- AKS ノード リソース グループに、Azure マネージド アプリケーションの一部として拒否割り当てが継承されることはありません。 つまり、顧客は AKS リソースがマネージド アプリケーションに含まれた際に、それによって作成された AKS ノード リソース グループには完全にアクセスできる一方で、管理対象リソース グループには適切な拒否割り当てが付与されていることになります。
+ 
+- 発行元は、Azure マネージド アプリケーションの一部として Helm グラフや他のスクリプトを含めることができます。 ただし、オファーは通常のマネージド アプリケーションデプロイのように扱われ、デプロイ時にコンテナー固有の処理や Helm グラフのインストールが自動的に行われることはありません。 デプロイ時、またはデプロイ後に、VM のカスタム スクリプト拡張機能や Azure のデプロイ スクリプトなどの通常の手法を用いて、関連するスクリプトを実行することは、発行者の責任です。
+ 
+- 通常の Azure マネージド アプリケーションと同様に、発行者は、ソリューションが正常にデプロイされ、すべてのコンポーネントが適切に構成され、セキュリティで保護され、稼働していることを責任をもって確認する必要があります。 例えば、発行者はイメージのソースとして独自のコンテナー レジストリを使用することができますが、そのコンテナーのセキュリティと継続的な脆弱性スキャンについては全面的に責任を負います。
+
+> [!NOTE]
+> Azure マネージド アプリケーション オファーでのコンテナーと AKS のサポートは、公式のコンテナー アプリケーションのオファーの種類が Marketplace で利用可能になった時点で廃止される可能性があります。 その場合、今後オファーを公開する際は、新しいオファーの種類を使用して公開する必要があるかもしれません。また、既存のオファーを新しいオファーの種類に移行して廃止する必要がある場合があります。
+
 ## <a name="deployment-package"></a>展開パッケージ
 
 デプロイ パッケージには、このプランに必要なすべてのテンプレート ファイルに加え、すべての追加リソースが、.zip ファイルとしてパッケージ化されて含まれています。
 
 すべての Azure アプリケーションで、.zip アーカイブのルート フォルダーに次の 2 つのファイルが含まれている必要があります。
 
-- [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template) という名前の Resource Manager テンプレート ファイル。 このテンプレートでは、顧客の Azure サブスクリプションにデプロイするリソースが定義されます。 Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)または対応する [GitHub:Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
+- [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template) という名前の Resource Manager テンプレート ファイル。 このテンプレートでは、顧客の Azure サブスクリプションにデプロイするリソースが定義されます。 Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/)または対応する [GitHub:Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
 - [createUiDefinition.json](../azure-resource-manager/managed-applications/create-uidefinition-overview.md) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。 ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
 
 サポートされる最大ファイル サイズは次のとおりです。
@@ -81,7 +103,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 各プランについて、月ごとの価格を指定する必要があります。 このソリューションによってデプロイされるリソースによって発生する Azure インフラストラクチャまたは従量課金制ソフトウェアのコストに、この価格が追加されます。
 
-月ごとの価格に加え、[従量制課金](partner-center-portal/azure-app-metered-billing.md)を使用して、非標準ユニットの消費に対する価格を設定することもできます。 月ごとの価格を 0 に設定し、必要に応じて、従量制課金のみを使用して課金することができます。
+月ごとの価格に加え、[従量制課金](marketplace-metering-service-apis.md)を使用して、非標準ユニットの消費に対する価格を設定することもできます。 月ごとの価格を 0 に設定し、必要に応じて、従量制課金のみを使用して課金することができます。
 
 価格は USD (USD = 米国ドル) で設定され、保存時の最新の為替レートを使用して、選択されたすべての市場の現地通貨に変換されます。 しかし、市場ごとに顧客向け価格を設定することを選択できます。
 
@@ -99,6 +121,10 @@ JIT アクセスによって、発行元は、トラブルシューティング�
 ## <a name="notification-endpoint-url"></a>通知エンドポイント URL
 
 必要に応じて、プランのマネージド アプリケーション インスタンスでのすべての CRUD 操作に関する通知を受け取る、HTTPS Webhook エンドポイントを指定できます。
+
+Webhook URI を呼び出す前に、Azure によって末尾に `/resource` が追加されます。 そのため、Webhook URL は `/resource` で終わる必要があります。ただしこれは、パートナー センターの **[通知エンドポイント URL]** ボックスに入力された URI には含めません。 たとえば、通知エンドポイント URI として `https://contoso.com` を入力すると、`https://contoso.com/resource` が呼び出されます。
+
+マネージド アプリの通知からイベントをリッスンする場合は、`https://<url>/resource` をリッスンし、設定された URL だけではないことを確認します。 通知の例については、「[通知スキーマ](../azure-resource-manager/managed-applications/publish-notifications.md#notification-schema)」を参照してください。
 
 ## <a name="customize-allowed-customer-actions-optional"></a>許可される顧客アクションをカスタマイズする (省略可能)
 
@@ -137,4 +163,4 @@ JIT アクセスによって、発行元は、トラブルシューティング�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コマーシャル マーケットプレースで Azure アプリケーション オファーを作成する方法](create-new-azure-apps-offer.md)
+- [Azure アプリケーション オファーを作成する](azure-app-offer-setup.md)

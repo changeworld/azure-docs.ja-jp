@@ -1,23 +1,24 @@
 ---
 title: Synapse RBAC ロール
 description: この記事では、組み込みの Synapse RBAC ロールについて説明します。
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 12/1/2020
-ms.author: ronytho
-ms.reviewer: jrasnick
-ms.openlocfilehash: 35f66732fa9cb48b94f80bab203534c9d04b7a7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+ms.author: mesrivas
+ms.reviewer: wiassaf
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 076e5fe14eeceb15e7f72a8f09168e5a9902f07a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100102123"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018814"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse RBAC ロール
 
-この記事では、組み込みの Synapse RBAC ロール、それらに付与されているアクセス許可、それらを使用できるスコープについて説明します。  
+この記事では、組み込みの Synapse RBAC (ロールベースのアクセス制御) ロール、それらが付与するアクセス許可、およびそれらを使用できるスコープについて説明します。  
 
 ## <a name="whats-changed-since-the-preview"></a>プレビュー以降の変更点
 プレビュー期間中に提供された Synapse RBAC ロールに精通しているユーザーの場合は、次の変更が適用されます。
@@ -27,9 +28,6 @@ ms.locfileid: "100102123"
 - 特定の分析ランタイムではなく、開発と運用のペルソナのサポートに焦点を絞った、**新しいきめ細かな Synapse RBAC ロール** が導入されました。  
 - いくつかのロールのための、**新しいより低いレベルのスコープ** が導入されました。  これらのスコープを使用すると、ロールを特定のリソースまたはオブジェクトに制限できます。
 
->[!Note]
->**新しい Synapse RBAC ロールとより低いレベルのスコープは現在プレビュー段階です**。  完全にサポートされているこれらの新しいロールとスコープを使用し、それらの使用に関するフィードバックを提供することをお勧めします。
-
 ## <a name="built-in-synapse-rbac-roles-and-scopes"></a>組み込みの Synapse RBAC ロールとスコープ
 
 次の表では、組み込みロールと、それらを使用できるスコープについて説明します。
@@ -37,9 +35,12 @@ ms.locfileid: "100102123"
 >[!Note]
 > 任意のスコープの任意の Synapse RBAC ロールを持つユーザーには、ワークスペース スコープの Synapse ユーザー ロールが自動的に割り当てられます。 
 
+> [!IMPORTANT]
+> Synapse RBAC ロールでは、Synapse ワークスペースで SQL プール、Apache Spark プール、および統合ランタイムを作成または管理するためのアクセス許可は付与されません。 これらのアクションには、リソース グループの Azure 所有者ロールまたは Azure 共同作成者ロールが必要です。
+
 |Role |アクセス許可|スコープ|
 |---|---|-----|
-|Synapse 管理者  |サーバーレス SQL プール、Apache Spark プール、統合ランタイムへの Synapse のフル アクセス。  公開されているすべてのコード成果物への作成、読み取り、更新、削除のアクセスが含まれます。  ワークスペース システム ID の資格情報に対するコンピューティング オペレーター、リンクされた Data Manager、資格情報ユーザーのアクセス許可が含まれます。  Synapse RBAC ロールの割り当てが含まれます。 Synapse 管理者だけでなく、Azure 所有者も Synapse RBAC ロールを割り当てることができます。 コンピューティング リソースを作成、削除、管理するには、Azure のアクセス許可が必要です。 </br></br>_成果物の読み取りと書き込みができる</br> Spark アクティビティに対するすべてのアクションを実行できる</br>Spark プールのログを表示できる</br> 保存されたノートブックとパイプライン出力を表示できる </br> リンクされたサービスまたは資格情報によって格納されたシークレットを使用できる</br> SQL の `db_datareader`、`db_datawriter`、`connect`、`grant` アクセス許可を使用して SQL サーバーレス エンドポイントに接続できる </br> 現在のスコープの Synapse RBAC ロールを割り当てたり、取り消したりできる_|ワークスペース </br> Spark プール<br/>統合ランタイム </br>リンクされたサービス</br>資格情報 |
+|Synapse 管理者  |SQLプール、Data Explorerプール、Apache Sparkプール、および統合ランタイムへのSynapse のフルアクセス。  公開されているすべてのコード成果物への作成、読み取り、更新、削除のアクセスが含まれます。  ワークスペース システム ID の資格情報に対するコンピューティング オペレーター、リンクされた Data Manager、資格情報ユーザーのアクセス許可が含まれます。  Synapse RBAC ロールの割り当てが含まれます。 Synapse 管理者だけでなく、Azure 所有者も Synapse RBAC ロールを割り当てることができます。 コンピューティング リソースを作成、削除、管理するには、Azure のアクセス許可が必要です。 </br></br>_成果物を読み書きできる</br> Spark アクティビティに対してすべてのアクションを実行できる。</br> Spark プールのログを表示できる</br> 保存されたノートブックとパイプライン出力を表示できる</br> リンクされたサービスまたは資格情報によって格納されたシークレットを使用できる</br> 現在のスコープの Synapse RBAC ロールを割り当て、取り消しできる_|ワークスペース </br> Spark プール<br/>統合ランタイム </br>リンクされたサービス</br>資格情報 |
 |Synapse Apache Spark 管理者</br>|Apache Spark プールへの Synapse のフル アクセス。  公開されている Spark ジョブ定義、ノートブック、その出力、およびライブラリ、リンクされたサービス、資格情報への作成、読み取り、更新、削除のアクセス。  その他の公開されているすべてのコード成果物への読み取りアクセスが含まれます。 資格情報を使用したり、パイプラインを実行したりするためのアクセス許可は含まれません。 アクセス権の付与は含まれません。 </br></br>_Spark 成果物に対するすべてのアクションを実行できる</br>Spark アクティビティに対するすべてのアクションを実行できる_|ワークスペース</br>Spark プール|
 |Synapse SQL 管理者|サーバーレス SQL プールへの Synapse のフル アクセス。  公開されている SQL スクリプト、資格情報、リンクされたサービスへの作成、読み取り、更新、削除のアクセス。  その他の公開されているすべてのコード成果物への読み取りアクセスが含まれます。  資格情報を使用したり、パイプラインを実行したりするためのアクセス許可は含まれません。 アクセス権の付与は含まれません。 </br></br>*SQL スクリプトに対するすべてのアクションを実行できる<br/>SQL の `db_datareader`、`db_datawriter`、`connect`、`grant` アクセス許可を使用して SQL サーバーレス エンドポイントに接続できる*|ワークスペース|
 |Synapse 共同作成者|Apache Spark プールと統合ランタイムへの Synapse のフル アクセス。 公開されているすべてのコード成果物とその出力 (資格情報やリンクされたサービスを含む) への作成、読み取り、更新、削除のアクセスが含まれます。  コンピューティング オペレーターのアクセス許可が含まれます。 資格情報を使用したり、パイプラインを実行したりするためのアクセス許可は含まれません。 アクセス権の付与は含まれません。 </br></br>_成果物の読み取りと書き込みができる</br>保存されたノートブックとパイプライン出力を表示できる</br>Spark アクティビティに対するすべてのアクションを実行できる</br>Spark プールのログを表示できる_|ワークスペース </br> Spark プール<br/> 統合ランタイム|
@@ -48,7 +49,7 @@ ms.locfileid: "100102123"
 |Synapse コンピューティング オペレーター |Spark ジョブおよびノートブックを送信したり、ログを表示したりします。  任意のユーザーから送信された Spark ジョブの取り消しが含まれます。 パイプラインを実行し、パイプライン実行および出力を表示するには、ワークスペース システム ID に対する資格情報使用の追加のアクセス許可が必要です。 </br></br>_ジョブ (他のユーザーから送信されたジョブを含む) を送信したり、取り消したりできる</br>Spark プールのログを表示できる_|ワークスペース</br>Spark プール</br>統合ランタイム|
 |Synapse 資格情報ユーザー|パイプライン実行などのアクティビティでの資格情報やリンクされたサービス内での、シークレットのランタイムと構成時の使用。 パイプラインを実行するには、ワークスペース システム ID にスコープ指定されたこのロールが必要です。 </br></br>_資格情報にスコープ指定されているため、資格情報によって保護されているリンクされたサービス経由でデータにアクセスできる (コンピューティング使用のアクセス許可も必要) </br>ワークスペース システム ID の資格情報によって保護されているパイプラインを実行できる (コンピューティング使用の追加のアクセス許可を使用)_|ワークスペース </br>リンクされたサービス</br>資格情報
 |Synapse のリンクされた Data Manager|マネージド プライベート エンドポイント、リンクされたサービス、資格情報の作成と管理。 資格情報によって保護されているリンクされたサービスを使用するマネージド プライベート エンドポイントを作成できる|ワークスペース|
-|Synapse ユーザー|SQL プール、Apache Spark プール、統合ランタイム、公開されているリンクされたサービスと資格情報の詳細を一覧表示および表示します。 その他の公開されているコード成果物は含まれません。  新しい成果物を作成できますが、追加のアクセス許可なしに実行したり公開したりすることはできません。</br></br>_Spark プール、統合ランタイムを一覧表示したり、読み取ったりできる_|ワークスペース、Spark プール</br>リンクされたサービス </br>資格情報|
+|Synapse ユーザー|SQL プール、Apache Spark プール、統合ランタイム、公開されているリンクされたサービスと資格情報の詳細を一覧表示および表示します。 その他の公開されているコード成果物は含まれません。  新しい成果物を作成できますが、追加のアクセス許可なしに実行したり公開したりすることはできません。 </br></br>_Spark プール、統合ランタイムを一覧表示したり、読み取ったりできる_|ワークスペース、Spark プール</br>リンクされたサービス </br>資格情報|
 
 ## <a name="synapse-rbac-roles-and-the-actions-they-permit"></a>Synapse RBAC ロールとそれによって許可されるアクション
 
@@ -60,11 +61,11 @@ ms.locfileid: "100102123"
 
 ロール|アクション
 --|--
-Synapse 管理者|workspaces/read</br>workspaces/roleAssignments/write、delete</br>workspaces/managedPrivateEndpoint/write、delete</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write、delete</br>workspaces/sparkJobDefinitions/write、delete</br>workspaces/sqlScripts/write、delete</br>workspaces/dataFlows/write、delete</br>workspaces/pipelines/write、delete</br>workspaces/triggers/write、delete</br>workspaces/datasets/write、delete</br>workspaces/libraries/write、delete</br>workspaces/linkedServices/write、delete</br>workspaces/credentials/write、delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action</br>workspaces/linkedServices/useSecret/action</br>workspaces/credentials/useSecret/action|
+Synapse 管理者|workspaces/read</br>workspaces/roleAssignments/write、delete</br>workspaces/managedPrivateEndpoint/write、delete</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/integrationRuntimes/viewLogs/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write、delete</br>workspaces/sparkJobDefinitions/write、delete</br>workspaces/sqlScripts/write、delete</br>workspaces/kqlScripts/write、 delete</br>workspaces/dataFlows/write、delete</br>workspaces/pipelines/write、delete</br>workspaces/triggers/write、delete</br>workspaces/datasets/write、delete</br>workspaces/libraries/write、delete</br>workspaces/linkedServices/write、delete</br>workspaces/credentials/write、delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action</br>workspaces/linkedServices/useSecret/action</br>workspaces/credentials/useSecret/action|
 |Synapse Apache Spark 管理者|workspaces/read</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/notebooks/viewOutputs/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write、delete</br>workspaces/sparkJobDefinitions/write、delete</br>workspaces/libraries/write、delete</br>workspaces/linkedServices/write、delete</br>workspaces/credentials/write、delete|
 |Synapse SQL 管理者|workspaces/read</br>workspaces/artifacts/read</br>workspaces/sqlScripts/write、delete</br>workspaces/linkedServices/write、delete</br>workspaces/credentials/write、delete|
-|Synapse 共同作成者|workspaces/read</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/integrationRuntimes/viewLogs/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write、delete</br>workspaces/sparkJobDefinitions/write、delete</br>workspaces/sqlScripts/write、delete</br>workspaces/dataFlows/write、delete</br>workspaces/pipelines/write、delete</br>workspaces/triggers/write、delete</br>workspaces/datasets/write、delete</br>workspaces/libraries/write、delete</br>workspaces/linkedServices/write、delete</br>workspaces/credentials/write、delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action|
-|Synapse 成果物発行元|workspaces/read</br>workspaces/artifacts/read</br>workspaces/notebooks/write、delete</br>workspaces/sparkJobDefinitions/write、delete</br>workspaces/sqlScripts/write、delete</br>workspaces/dataFlows/write、delete</br>workspaces/pipelines/write、delete</br>workspaces/triggers/write、delete</br>workspaces/datasets/write、delete</br>workspaces/libraries/write、delete</br>workspaces/linkedServices/write、delete</br>workspaces/credentials/write、delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action|
+|Synapse 共同作成者|workspaces/read</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/integrationRuntimes/viewLogs/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write、delete</br>workspaces/sparkJobDefinitions/write、delete</br>workspaces/sqlScripts/write、delete</br>workspaces/kqlScripts/write、 delete</br>workspaces/dataFlows/write、delete</br>workspaces/pipelines/write、delete</br>workspaces/triggers/write、delete</br>workspaces/datasets/write、delete</br>workspaces/libraries/write、delete</br>workspaces/linkedServices/write、delete</br>workspaces/credentials/write、delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action|
+|Synapse 成果物発行元|workspaces/read</br>workspaces/artifacts/read</br>workspaces/notebooks/write、delete</br>workspaces/sparkJobDefinitions/write、delete</br>workspaces/sqlScripts/write、delete</br>workspaces/kqlScripts/write、 delete</br>workspaces/dataFlows/write、delete</br>workspaces/pipelines/write、delete</br>workspaces/triggers/write、delete</br>workspaces/datasets/write、delete</br>workspaces/libraries/write、delete</br>workspaces/linkedServices/write、delete</br>workspaces/credentials/write、delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action|
 |Synapse 成果物ユーザー|workspaces/read</br>workspaces/artifacts/read</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action|
 |Synapse コンピューティング オペレーター |workspaces/read</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/integrationRuntimes/viewLogs/action|
 |Synapse 資格情報ユーザー|workspaces/read</br>workspaces/linkedServices/useSecret/action</br>workspaces/credentials/useSecret/action|
@@ -82,18 +83,20 @@ workspaces/roleAssignments/write、delete|Synapse 管理者
 workspaces/managedPrivateEndpoint/write、delete|Synapse 管理者</br>Synapse のリンクされた Data Manager
 workspaces/bigDataPools/useCompute/action|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse 共同作成者</br>Synapse コンピューティング オペレーター 
 workspaces/bigDataPools/viewLogs/action|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse 共同作成者</br>Synapse コンピューティング オペレーター 
-workspaces/integrationRuntimes/useCompute/action|Synapse 管理者</br>Synapse 共同作成者</br>Synapse コンピューティング オペレーター 
+workspaces/integrationRuntimes/useCompute/action|Synapse 管理者</br>Synapse 共同作成者</br>Synapse コンピューティング オペレーター
+workspaces/integrationRuntimes/viewLogs/action|Synapse 管理者</br>Synapse 共同作成者</br>Synapse コンピューティング オペレーター
 workspaces/artifacts/read|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse SQL 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse 成果物ユーザー
 workspaces/notebooks/write、delete|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元
 workspaces/sparkJobDefinitions/write、delete|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元
 workspaces/sqlScripts/write、delete|Synapse 管理者</br>Synapse SQL 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元
+workspaces/kqlScripts/write、 delete|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元
 workspaces/dataFlows/write、delete|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元
 workspaces/pipelines/write、delete|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元
 workspaces/triggers/write、delete|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元
 workspaces/datasets/write、delete|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元
 workspaces/libraries/write、delete|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元
-workspaces/linkedServices/write、delete|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse のリンクされた Data Manager
-workspaces/credentials/write、delete|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse のリンクされた Data Manager
+workspaces/linkedServices/write、delete|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse SQL 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse のリンクされた Data Manager
+workspaces/credentials/write、delete|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse SQL 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse のリンクされた Data Manager
 workspaces/notebooks/viewOutputs/action|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse 成果物ユーザー
 workspaces/pipelines/viewOutputs/action|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse 成果物ユーザー
 workspaces/linkedServices/useSecret/action|Synapse 管理者</br>Synapse 資格情報ユーザー
@@ -103,7 +106,7 @@ workspaces/credentials/useSecret/action|Synapse 管理者</br>Synapse 資格情�
 
 次の表は、Synapse RBAC スコープと各スコープで割り当てることができるロールの一覧を示しています。 
 
->[!note]
+>[!NOTE]
 >オブジェクトを作成または削除するには、より高いレベルのスコープのアクセス許可が必要です。
 
 Scope|ロール
@@ -114,7 +117,7 @@ Apache Spark プール | Synapse 管理者 </br>Synapse 共同作成者 </br> Sy
 リンクされたサービス |Synapse 管理者 </br>Synapse 資格情報ユーザー
 資格情報 |Synapse 管理者 </br>Synapse 資格情報ユーザー
  
->[!note]
+>[!NOTE]
 >成果物のロールとアクションはすべて、ワークスペース レベルでスコープ指定されます。 
 
 ## <a name="next-steps"></a>次のステップ

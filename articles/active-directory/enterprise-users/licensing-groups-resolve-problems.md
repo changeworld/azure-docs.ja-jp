@@ -5,22 +5,22 @@ services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/02/2020
+ms.date: 04/21/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ceea2dbcf408b6b35ef7c26580278d3979244119
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36ef151b7d7f72aa87c1ad4e95d3a8744aa296ba
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551540"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985848"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 - Exchange Online (プラン 2) と Exchange Online (プラン 1) の競合
 
-この競合を解決するには、2 つのプランを無効にする必要があります。 ユーザーに直接割り当てられている E1 ライセンスを無効にできます。 または、グループのライセンス割り当てを変更して、E3 ライセンスのプランを無効にする必要があります。 E3 ライセンスのコンテキストで冗長である場合は、E1 ライセンスをユーザーから削除することもできます。
+この競合を解決するには、プランの内 1 つを無効にする必要があります。 ユーザーに直接割り当てられている E1 ライセンスを無効にできます。 または、グループのライセンス割り当てを変更して、E3 ライセンスのプランを無効にする必要があります。 E3 ライセンスのコンテキストで冗長である場合は、E1 ライセンスをユーザーから削除することもできます。
 
 製品ライセンスの競合を解決する方法の決定は、常に管理者に委ねられます。 ライセンスの競合が Azure AD によって自動的に解決されることはありません。
 
@@ -104,7 +104,7 @@ Exchange Online を使用する場合は、組織内の一部のユーザーが�
 > [!TIP]
 > 重複したプロキシ アドレスの有無を確認するには、次の PowerShell コマンドレットを Exchange Online に対して実行します。
 > ```
-> Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+> Get-Recipient -Filter "EmailAddresses -eq 'user@contoso.onmicrosoft.com'" | fl Name, RecipientType,Emailaddresses
 > ```
 > この問題の詳細については、「[Exchange Online のエラー メッセージ: "プロキシ アドレス <アドレス> は既に使用されています"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)」を参照してください。 この記事では、[リモート PowerShell を使用して Exchange Online に接続する方法](/powershell/exchange/connect-to-exchange-online-powershell)に関する情報も確認できます。
 

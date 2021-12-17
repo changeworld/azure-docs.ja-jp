@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 06/4/2021
 ms.author: damaerte
-ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f380db2502a34115b071c3aa3e70f18a67d2ca6b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89468659"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748634"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 
@@ -33,7 +33,7 @@ Cloud Shell には、次の 3 つの方法でアクセスできます。
 
     ![Azure portal から Cloud Shell を起動するアイコン](media/overview/portal-launch-icon.png)
 
-- **コード スニペット**:[docs.microsoft.com]() と [Microsoft Learn](/learn/)で、Azure CLI と Azure PowerShell のコード スニペットに表示されている **[試してみる]** ボタンを選択します。
+- **コード スニペット**:[docs.microsoft.com]() と [Microsoft Learn](/learn/)で、Azure CLI と Azure PowerShell のコード スニペットに表示されている **[使ってみる]** ボタンを選択します。
 
     ```azurecli-interactive
     az account show
@@ -43,7 +43,7 @@ Cloud Shell には、次の 3 つの方法でアクセスできます。
     Get-AzSubscription
     ```
 
-    **[試してみる]** ボタンにより、Bash (Azure CLI スニペットの場合) または PowerShell (Azure PowerShell スニペットの場合) を使用して、ドキュメントと共に Cloud Shell が直接開きます。
+    **[使ってみる]** ボタンにより、Bash (Azure CLI スニペットの場合) または PowerShell (Azure PowerShell スニペットの場合) を使用して、ドキュメントと共に Cloud Shell が直接開きます。
 
     コマンドを実行するには、コード スニペットで **[コピー]** を使用し、**Ctrl**+**Shift**+**V** (Windows/Linux) または **Cmd**+**Shift**+**V** (macOS) を使用してコマンドを貼り付け、**Enter** キーを押します。
 
@@ -112,6 +112,10 @@ Cloud Shell マシンは一時的ですが、ファイルは、ディスク イ�
 * Bash では、標準の Linux ユーザーとしてアクセス許可が設定されます。
 
 [Cloud Shell の Bash](features.md) と [Cloud Shell の PowerShell](./features.md) の機能に関する詳細をご覧ください。
+
+## <a name="compliance"></a>コンプライアンス
+### <a name="encryption-at-rest"></a>保存時の暗号化
+すべての Cloud Shell インフラストラクチャは、既定で保存時の二重暗号化に準拠しています。 ユーザーによる操作は不要です。
 
 ## <a name="pricing"></a>価格
 

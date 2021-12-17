@@ -1,26 +1,26 @@
 ---
-title: Android から Windows Virtual Desktop (クラシック) に接続する - Azure
-description: Android クライアントを使用して Windows Virtual Desktop (クラシック) に接続する方法。
+title: Android から Azure Virtual Desktop (クラシック) に接続する - Azure
+description: Android クライアントを使用して Azure Virtual Desktop (クラシック) に接続する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7de94bdd28b51b87b3b06d62685dcc1921a1c6f3
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 53f4ed035fc9f3a010a0677fa448a05ef189e20b
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445297"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749995"
 ---
-# <a name="connect-to-windows-virtual-desktop-classic-with-the-android-client"></a>Android クライアントを使用して Windows Virtual Desktop (クラシック) に接続する
+# <a name="connect-to-azure-virtual-desktop-classic-with-the-android-client"></a>Android クライアントを使用して Azure Virtual Desktop (クラシック) に接続する
 
 > 適用対象:Android 4.1 以降、Chrome OS 53 以降の Chromebook。
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-android.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-android.md)を参照してください。
 
-ダウンロード可能なクライアントを使用して、ご利用の Android デバイスから Windows Virtual Desktop リソースにアクセスできます。 Google Play ストアをサポートする Chromebook デバイスで Android クライアントを使用することもできます。 このガイドでは、Android クライアントを設定する方法について説明します。
+ダウンロード可能なクライアントを使用して、ご利用の Android デバイスから Azure Virtual Desktop リソースにアクセスできます。 Google Play ストアをサポートする Chromebook デバイスで Android クライアントを使用することもできます。 このガイドでは、Android クライアントを設定する方法について説明します。
 
 ## <a name="install-the-android-client"></a>Android クライアントをインストールする
 

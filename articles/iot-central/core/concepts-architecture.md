@@ -3,171 +3,108 @@ title: Azure IoT Central でのアーキテクチャの概念 | Microsoft Docs
 description: この記事では、Azure IoT Central のアーキテクチャに関連する主要な概念を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/19/2020
+ms.date: 08/31/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: c2d5310d1a664aa2e22d4241d8066e41d9c82bd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58c9f69b898a41a1d07ae41755f67d926b2ac74f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97796722"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082457"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central のアーキテクチャ
 
-この記事では、Microsoft Azure IoT Central のアーキテクチャの概要について説明します。
+この記事では、IoT Central ソリューションのアーキテクチャにおける重要な要素の概要について説明します。
 
-![最上位のアーキテクチャ](media/concepts-architecture/architecture.png)
+:::image type="content" source="media/concepts-architecture/architecture.png" alt-text="IoT Central ソリューションのアーキテクチャ概要" border="false":::
+
+IoT Central アプリケーション:
+
+- ユーザーはソリューション内の IoT デバイスを管理できます。
+- ユーザーはデバイスのデータを表示および分析できます。
+- ソリューションの一部となっている他のサービスに対するエクスポートと統合が可能です。
+
+## <a name="iot-central"></a>IoT Central
+
+IoT Central は、IoT ソリューション開発用にあらかじめ用意されている環境です。 これはサービスとしてのプラットフォーム (PaaS) IoT ソリューションであり、主なインターフェイスは Web UI です。 また、プログラムからアプリケーションを操作できるようにする [REST API](#rest-api) もあります。
+
+このセクションでは、IoT Central アプリケーションの重要な機能について説明します。
+
+### <a name="manage-devices"></a>デバイスの管理
+
+IoT Central では、ソリューションにデータを送信する一連の [IoT デバイス](#devices)を管理できます。 たとえば、次のようなことができます。
+
+- アプリケーションに[接続](concepts-get-connected.md)できるデバイスと、それらがどのように認証するかを制御します。
+- アプリケーションに接続できるデバイスの種類は、[デバイス テンプレート](concepts-device-templates.md)を使用して定義します。
+- 接続されるデバイスに対してプロパティを設定するかコマンドを呼び出すことでデバイスを管理します。 たとえば、サーモスタット デバイスの目標温度プロパティを設定したり、デバイスをトリガーするコマンドを呼び出して、ファームウェアを更新したりします。 以下に対してプロパティの設定やコマンドの呼び出しを行えます。
+  - 個々のデバイス ([カスタマイズ可能](concepts-device-templates.md#views)な Web UI を通して)。
+  - 複数のデバイス (スケジュールされた[ジョブ](howto-manage-devices-in-bulk.md)またはオンデマンド ジョブによって)。
+- 顧客の住所や最後のサービスの日付[などのデバイス メタデータ](concepts-device-templates.md#cloud-properties)を管理します。
+
+### <a name="view-and-analyze-data"></a>データを表示して分析する
+
+IoT Central アプリケーションでは、個々のデバイスのデータや、複数のデバイスからの集計データを表示し、分析することができます。
+
+- デバイス テンプレートを使用して、特定の種類の個々のデバイスについて[カスタム ビュー](howto-set-up-template.md#views)を定義します。 たとえば、個々のサーモスタットの温度を長時間にわたってプロットしたり、配送トラックの実際の場所を表示したりできます。
+- 組み込みの[分析](tutorial-use-device-groups.md)を使用して、複数のデバイスの集計データを表示します。 たとえば、複数の小売店にわたる全体的混雑状況を表示したり、混雑率が最大の店舗や最小の店舗を識別したりすることができます。
+- カスタム [ダッシュボード](howto-manage-dashboards.md)を作成して、デバイスの管理に役立てます。 たとえば、デバイス テレメトリを表示するためのマップ、タイル、グラフを追加できます。  
+
+### <a name="secure-your-solution"></a>ソリューションをセキュリティで保護する
+
+IoT Central アプリケーションでは、ソリューションの、以下のようなセキュリティ面を管理できます。
+
+- [デバイス接続](concepts-get-connected.md): アプリケーションへの接続を確立するためにデバイスで使用するセキュリティ キーを作成、取り消し、更新します。
+- [アプリの統合](howto-authorize-rest-api.md#get-an-api-token): アプリケーションとの安全な接続を確立するために、他のアプリケーションで使用するセキュリティ キーを作成、取り消し、更新します。
+- [データのエクスポート](howto-export-data.md#connection-options): マネージド ID を使用して、データのエクスポート先への接続をセキュリティで保護します。
+- [ユーザー管理](howto-manage-users-roles.md): アプリケーションにサインインできるユーザーと、それらのユーザーがどのようなアクセス許可を持つかを決定するロールを管理します。
+- [組織](howto-create-organizations.md): IoT Central アプリケーションで、どのユーザーがどのデバイスを表示できるかを管理するための階層を定義します。
+
+### <a name="rest-api"></a>REST API
+
+お使いのアプリケーションを、他のアプリケーションやサービスから管理できるようにする統合を構築します。 たとえば、プログラムによって、お使いのアプリケーションで[デバイスを管理](howto-control-devices-with-rest-api.md)したり、[ユーザー情報](howto-manage-users-roles-with-rest-api.md)を外部システムと同期したりします。
 
 ## <a name="devices"></a>デバイス
 
-デバイスは、Azure IoT Central アプリケーションとデータを交換します。 デバイスは次のことを実行できます。
+デバイスはセンサーからデータを収集して、テレメトリのストリームとして IoT Central アプリケーションに送信します。 たとえば、冷却装置が温度値のストリームを送信したり、配送トラックがその場所をストリーミングしたりします。
 
-- テレメトリなどの測定を送信します。
-- アプリケーションと設定を同期します。
+デバイスでは、プロパティを使用して、その状態を報告できます。バルブが開いているか閉じているかなどです。 IoT Central アプリケーションでは、サーモスタットの目標温度を設定するなど、プロパティを使用してデバイスの状態を設定することもできます。
 
-Azure IoT Central では、デバイスがアプリケーションと交換できるデータはデバイス テンプレートで指定されます。 デバイス テンプレートの詳細については、「[メタデータ管理](#metadata-management)」を参照してください。
+IoT Central では、デバイスに対してコマンドを呼び出してデバイスを制御することもできます。 たとえば、ファームウェア更新プログラムをダウンロードしてインストールするように、デバイスに指示します。
 
-Azure IoT Central アプリケーションへのデバイスの接続方法の詳細については、[デバイス接続](concepts-get-connected.md)に関するページを参照してください。
+1 つのデバイスが実装する[テレメトリ、プロパティ、コマンド](concepts-telemetry-properties-commands.md)は、集合的にデバイス機能と呼ばれます。 これらの機能は、デバイスと IoT Central アプリケーションとの間で共有されるモデル内で定義します。 IoT Central において、このモデルは、特定の種類のデバイスを定義するデバイス テンプレートの一部となります。
 
-## <a name="azure-iot-edge-devices"></a>Azure IoT Edge デバイス
+[デバイスの実装](tutorial-connect-device.md)は、IoT Central と確実に通信できるようにする [IoT Plug and Play の規則](../../iot-develop/concepts-convention.md)に従っている必要があります。 詳細については、さまざまな言語の [SDK とサンプル](../../iot-develop/libraries-sdks.md)を参照してください。
 
-[Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) を使用して作成されたデバイスと同様に、[Azure IoT Edge デバイス](../../iot-edge/about-iot-edge.md)を IoT Central アプリケーションに接続することもできます。 IoT Edge を使用すると、IoT Central によって管理されている IoT デバイスで、クラウド インテリジェンスやカスタム ロジックを直接実行できます。 IoT Edge ランタイムによって以下が可能となります。
+デバイスは、サポートされているプロトコル [MQTT、AMQP、HTTP](../../iot-hub/iot-hub-devguide-protocols.md) のいずれかを使用して IoT Central に接続します。
 
-- デバイスにワークロードをインストールし、更新する。
-- デバイス上の IoT Edge のセキュリティ標準を維持する。
-- IoT Edge モジュールの実行状態を絶えず確保する。
-- モジュールの正常性をクラウドにレポートしてリモート監視を可能にする。
-- ダウンストリームのリーフ デバイスと IoT Edge デバイス間、IoT Edge デバイス上のモジュール間、IoT Edge デバイスとクラウド間の通信を管理する。
+## <a name="gateways"></a>ゲートウェイ
 
-![Azure IoT Central と Azure IoT Edge](./media/concepts-architecture/iotedge.png)
+ローカル デバイス ゲートウェイは、以下のようないくつかのシナリオで役に立ちます。
 
-IoT Central により、IoT Edge デバイスで次の機能を使用できるようになります。
+- デバイスは、インターネットに接続できないために、IoT Central に直接接続できない場合があります。 たとえば、ゲートウェイ経由で接続する必要がある、Bluetooth 対応の混雑状況センサーのコレクションを使用している場合があります。
+- お使いのデバイスによって生成されるデータの量が多い場合があります。 コストを削減するため、IoT Central アプリケーションに送信する前にローカル ゲートウェイ内でデータを結合したり集計したりすることができます。
+- ソリューションで、データ内の異常に対してすばやい応答が必要な場合があります。 IoT Central アプリケーションにデータを送信する必要なしに、ローカルで異常を識別してアクションを実行するルールをゲートウェイで実行できます。
 
-- 次のような IoT Edge デバイスの機能を記述するデバイス テンプレート。
-  - 配置マニフェストのアップロード機能。これは、デバイスのマニフェストを管理するのに役立ちます。
-  - IoT Edge デバイスで実行されるモジュール。
-  - 各モジュールが送信するテレメトリ。
-  - 各モジュールによって報告されるプロパティ。
-  - 各モジュールが応答するコマンド。
-  - IoT Edge ゲートウェイ デバイスとダウンストリーム デバイス間の関係。
-  - IoT Edge デバイスに格納されていないクラウド プロパティ。
-  - カスタマイズ、ダッシュボード、およびフォーム: ご利用の IoT Central アプリケーションの一部を成します。
-
-  詳細については、記事「[Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する](./concepts-iot-edge.md)」を参照してください。
-
-- Azure IoT のデバイス プロビジョニング サービスを使用して大規模に IoT Edge デバイスをプロビジョニングする機能
-- ルールとアクション。
-- カスタム ダッシュボードと分析。
-- IoT Edge デバイスからのテレメトリの連続データ エクスポート。
-
-### <a name="iot-edge-device-types"></a>IoT Edge デバイスの種類
-
-IoT Central は、IoT Edge デバイスの種類を次のように分類します。
-
-- リーフ デバイス。 IoT Edge デバイスはダウンストリームのリーフ デバイスを持つことができますが、それらのデバイスは IoT Central にはプロビジョニングされません。
-- ダウンストリーム デバイスがあるゲートウェイ デバイス。 ゲートウェイ デバイスとダウンストリーム デバイスは、どちらも IoT Central にプロビジョニングされます
-
-![IoT Central と IoT Edge の概要](./media/concepts-architecture/gatewayedge.png)
-
-### <a name="iot-edge-patterns"></a>IoT Edge のパターン
-
-IoT Central は、次の IoT Edge デバイス パターンをサポートしています。
-
-#### <a name="iot-edge-as-leaf-device"></a>リーフ デバイスとしての IoT Edge
-
-![リーフ デバイスとしての IoT Edge](./media/concepts-architecture/edgeasleafdevice.png)
-
-IoT Edge デバイスは、IoT Central にプロビジョニングされ、ダウンストリーム デバイスとそれらのテレメトリは、IoT Edge デバイスからのものとして表されます。 IoT Edge デバイスに接続されているダウンストリーム デバイスは、IoT Central にはプロビジョニングされません。
-
-#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>ID を使用してダウンストリーム デバイスに接続されている IoT Edge ゲートウェイ デバイス
-
-![IoT Edge とダウンストリーム デバイス ID](./media/concepts-architecture/edgewithdownstreamdeviceidentity.png)
-
-IoT Edge デバイスは、IoT Edge デバイスに接続されているダウンストリーム デバイスと共に IoT Central にプロビジョニングされます。 ゲートウェイ経由でダウンストリーム デバイスをプロビジョニングするためのランタイム サポートは、現在サポートされていません。
-
-#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>IoT Edge ゲートウェイによって提供される ID を使用してダウンストリーム デバイスに接続されている IoT Edge ゲートウェイ デバイス
-
-![ID を使用しない IoT Edge とダウンストリーム デバイス](./media/concepts-architecture/edgewithoutdownstreamdeviceidentity.png)
-
-IoT Edge デバイスは、IoT Edge デバイスに接続されているダウンストリーム デバイスと共に IoT Central にプロビジョニングされます。 ダウンストリーム デバイスに ID を提供するゲートウェイのランタイム サポートおよびダウンストリーム デバイスのプロビジョニングは、現在サポートされていません。 独自の ID 変換モジュールを使用すると、IoT Central はこのパターンをサポートできます。
-
-## <a name="cloud-gateway"></a>クラウド ゲートウェイ
-
-Azure IoT Central は、デバイス接続を可能にするクラウド ゲートウェイとして Azure IoT Hub を使用します。 IoT Hub では、次のことが可能になります。
-
-- クラウド内での大規模なデータ インジェスト。
-- デバイスの管理。
-- セキュリティ保護されたデバイス接続。
-
-IoT Hub の詳細については、[Azure IoT Hub](../../iot-hub/index.yml) に関するページを参照してください。
-
-Azure IoT Central でのデバイス接続の詳細については、[デバイス接続](concepts-get-connected.md)に関するページを参照してください。
-
-## <a name="data-stores"></a>データ ストア
-
-Azure IoT Central は、クラウド内にアプリケーション データを格納します。 格納されるアプリケーション データには、次のものがあります。
-
-- デバイス テンプレート。
-- デバイス ID。
-- デバイス メタデータ。
-- ユーザーおよびロール データ。
-
-Azure IoT Central は、デバイスから送信された測定データのために時系列ストアを使用します。 分析サービスによって使用されるデバイスからの時系列データ。
-
-## <a name="analytics"></a>Analytics
-
-分析サービスは、アプリケーションが表示するカスタム レポート データを生成する役割を果たします。 オペレーターは、アプリケーションに表示される[分析をカスタマイズする](howto-create-analytics.md)ことができます。 分析サービスは [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) 上に構築されており、デバイスから送信された測定データを処理します。
-
-## <a name="rules-and-actions"></a>ルールとアクション
-
-[ルールとアクション](tutorial-create-telemetry-rules.md)は、アプリケーション内のタスクを自動化するために緊密に連携します。 開発者は、定義されたしきい値を超える温度などのデバイス テレメトリに基づいてルールを定義できます。 Azure IoT Central は、ストリーム プロセッサを使用して、ルールの条件がいつ満たされるかを判定します。 ルールの条件が満たされると、開発者によって定義されたアクションがトリガーされます。 たとえば、アクションは、デバイス内の温度が高すぎることをエンジニアに通知するために電子メールを送信できます。
-
-## <a name="metadata-management"></a>メタデータ管理
-
-Azure IoT Central アプリケーションでは、デバイス テンプレートによって各種のデバイスの動作や機能が定義されます。 たとえば、冷蔵庫デバイス テンプレートは、冷蔵庫がアプリケーションに送信するテレメトリを指定します。
-
-![テンプレートのアーキテクチャ](media/concepts-architecture/template-architecture.png)
-
-IoT Central の[デバイス テンプレート](concepts-device-templates.md)には、次のものが含まれます。
-
-- **デバイス モデル** では、デバイスの機能 (送信するテレメトリ、デバイスの状態を定義するプロパティ、デバイスが応答するコマンドなど) を指定します。 デバイスの機能は、1つ以上のインターフェイスに編成されています。
-- **クラウド プロパティ** では、IoT Central がデバイス用に格納するプロパティを指定します。 これらのプロパティは IoT Central にのみ格納され、デバイスに送信されることはありません。
-- **ビュー** では、オペレーターがデバイスを監視および管理できるように、ビルダーが作成するダッシュボードとフォームを指定します。
-- **カスタマイズ** により、ビルダーはデバイス モデルの定義の一部をオーバーライドして、IoT Central アプリケーションに対する関連性を高めることができます。
-
-アプリケーションには、各デバイス テンプレートに基づいて 1 つ以上のシミュレートされた実デバイスを割り当てることができます。
+詳細については、「[Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する](concepts-iot-edge.md)」を参照してください。
 
 ## <a name="data-export"></a>データのエクスポート
 
-Azure IoT Central アプリケーションでは、独自の Azure Event Hubs と Azure Service Bus のインスタンスに[データを継続的にエクスポート](howto-export-data.md)できます。 また、データをご自分の Azure BLOB ストレージ アカウントに定期的にエクスポートすることもできます。 IoT Central では、測定、デバイス、デバイス テンプレートをエクスポートできます。
+IoT Central には組み込みの分析機能が用意されていますが、他のサービスやアプリケーションにデータをエクスポートできます。 データをエクスポートする理由として、以下が挙げられます。
 
-## <a name="batch-device-updates"></a>デバイスの一括更新
+### <a name="storage-and-analysis"></a>ストレージと分析
 
-Azure IoT Central アプリケーションでは、接続されたデバイスを管理するための[ジョブを作成して実行](howto-run-a-job.md)できます。 これらのジョブを使用すると、デバイスのプロパティや設定を一括更新したり、コマンドを実行したりできます。 たとえば、複数の冷蔵自動販売機のファン速度を上げるジョブを作成できます。
+アーカイブと保有のポリシーに関して長期的な保存と制御を行う場合は、他の保存先ストレージに[データを継続的にエクスポート](howto-export-data.md)できます。 別個のストレージを使用すると、他の分析ツールを使用して分析情報を引き出して、お使いのソリューション内でデータを表示することもできます。
 
-## <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
+### <a name="business-automation"></a>ビジネスの自動化
 
-すべての IoT Central アプリケーションには、独自の RBAC システムが組み込まれています。 事前定義済みロールの 1 つを使用して、あるいはカスタム ロールを作成することで、Azure IoT Central アプリケーションの[アクセス ルールを管理者は定義できます](howto-manage-users-roles.md)。 ユーザーにアクセスが許可されるアプリケーションの領域とユーザーが実行できるアクションがロールにより決定されます。
+IoT Central の[ルール](howto-configure-rules-advanced.md)を使用すると、IoT Central 内で条件に応答して、電子メールの送信やイベントの発生などの外部アクションをトリガーできます。 たとえば、デバイスの周辺温度がしきい値に達した場合にエンジニアに通知できます。
 
-## <a name="security"></a>セキュリティ
+### <a name="additional-computation"></a>追加の計算
 
-Azure IoT Central 内のセキュリティ機能には、次のものがあります。
-
-- データは、転送中および保存時に暗号化されます。
-- 認証は、Azure Active Directory または Microsoft アカウントのどちらかによって提供されます。 2 要素認証がサポートされています。
-- テナントの完全な分離。
-- デバイス レベルのセキュリティ。
-
-## <a name="ui-shell"></a>UI シェル
-
-UI シェルは、最新の、応答性に優れた、HTML5 ブラウザー ベースのアプリケーションです。
-管理者は、カスタム テーマを適用したり、独自のカスタム ヘルプ リソースを指すようにヘルプのリンクを変更したりして、アプリケーションの UI をカスタマイズできます。 UI カスタムの詳細については、記事「[Azure IoT Central の UI をカスタマイズする](howto-customize-ui.md)」を参照してください。
-
-オペレーターは、パーソナライズされたアプリケーション ダッシュボードを作成できます。 別のデータを表示する複数のダッシュボードを持っておいて切り替えることができます。
+データを IoT Central や別のサービスで使用する前に、データに対して[変換や計算](howto-transform-data.md)を行う必要が生じる場合があります。 たとえば、配送トラックによって報告された場所データに、地域の気象情報を追加することができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、Azure IoT Central のアーキテクチャについて学習しました。推奨される次の手順は、Azure IoT Central での[デバイス接続](concepts-get-connected.md)の学習です。
+ここでは、Azure IoT Central のアーキテクチャについて学習しました。推奨される次の手順は、Azure IoT Central での[スケーラビリティと高可用性](concepts-scalability-availability.md)の学習です。

@@ -1,26 +1,25 @@
 ---
 title: Socket.io を使用する Node.js アプリケーション - Azure
-description: このチュートリアルを使用し、Azure で Socket.IO ベースのチャット アプリケーションをホストする方法について説明します。 Socket.IO は、node.js のサーバーとクライアントにリアルタイム通信を提供します。
+description: このチュートリアルを使用し、Azure で Socket.IO ベースのチャット アプリケーションをホストする方法について説明します。 Socket.IO は、Node.js のサーバーとクライアントにリアルタイム通信を提供します。
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: abc02769d7d978e14975d90ae0f98547bdc4faf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8aaad3067f1e9ec2cbb0b79b8aa3f6b3e772a33
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743323"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823914"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>Azure Cloud Services (クラシック) で Socket.IO を使用する Node.js チャット アプリケーションをビルドする
 
-> [!IMPORTANT]
-> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
-Socket.IO は、node.js サーバーとクライアントの間のリアルタイム通信を提供します。 このチュートリアルでは、Azure で socket.IO ベースのチャット アプリケーションをホストする手順を説明します。 Socket.IO の詳細については、[socket.io](https://socket.io) を参照してください。
+Socket.IO は、Node.js サーバーとクライアントの間のリアルタイム通信を提供します。 このチュートリアルでは、Azure で socket.IO ベースのチャット アプリケーションをホストする手順を説明します。 Socket.IO の詳細については、[socket.io](https://socket.io) を参照してください。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 

@@ -1,17 +1,18 @@
 ---
 title: Azure Data Factory を使用して Office 365 からデータを読み込む
 description: Azure Data Factory を使用して Office 365 からデータをコピーする
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.author: jingwang
-ms.openlocfilehash: 54aa511414695d28e390529af61d484e465f1c19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/05/2021
+ms.author: jianleishen
+ms.openlocfilehash: 6fa350757ff1d4595c0eaa9c3dffb1c7299fb116
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101710267"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835972"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 からデータを読み込む
 
@@ -23,11 +24,11 @@ ms.locfileid: "101710267"
 
 1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。 
    
-   ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png" alt-text="[新規] ペインでの Data Factory の選択":::
 
 2. **[新しいデータ ファクトリ]** ページで、次の画像に示されているフィールドの値を指定します。
       
-   ![[新しいデータ ファクトリ] ページ](./media/load-office-365-data/new-azure-data-factory.png)
+   :::image type="content" source="./media/load-office-365-data/new-azure-data-factory.png" alt-text="[新しいデータ ファクトリ] ページ":::
  
     * **Name**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 *LoadFromOffice365Demo* は利用できません" というエラーを受信した場合は、データ ファクトリに別の名前を入力します。 たとえば、 _**yourname**_ **LoadFromOffice365Demo** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
     * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
@@ -38,15 +39,15 @@ ms.locfileid: "101710267"
 3. **［作成］** を選択します
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。
    
-   ![データ ファクトリのホーム ページ](./media/load-office-365-data/data-factory-home-page.png)
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio] タイルを含む、Azure Data Factory のホーム ページ。":::
 
-5. **[作成と監視]** タイルを選択して、別のタブでデータ統合アプリケーションを起動します。
+5. **[Open Azure Data Factory Studio](Azure Data Factory Studio を開く)** タイルで **[開く]** を選択して、別のタブでデータ統合アプリケーションを起動します。
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 
-1. [Let's get started]\(始めましょう\) ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
+1. ホーム ページで **[調整]** を選択します。
  
-    ![パイプラインの作成](./media/load-office-365-data/create-pipeline-entry.png)
+    :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="ADF のホーム ページを示すスクリーンショット。":::
 
 2. パイプラインの **[全般]** タブで、パイプラインの **名前** として「CopyPipeline」と入力します。
 
@@ -60,7 +61,7 @@ ms.locfileid: "101710267"
  
 3. コピー アクティビティの構成のタブが表示されます。Office 365 データセットの横にある **[編集]** ボタンをクリックして、データの構成を続行します。
 
-    ![一般的な Office 365 データセットを構成する](./media/load-office-365-data/transition-to-edit-dataset.png)
+    :::image type="content" source="./media/load-office-365-data/transition-to-edit-dataset.png" alt-text="一般的な Office 365 データセットを構成する":::
  
 4. Office 365 データセット用の新しいタブが開きます。 プロパティ ウィンドウの下部にある **[全般] タブ** で、[名前] に「SourceOffice365Dataset」と入力します。
  
@@ -68,11 +69,11 @@ ms.locfileid: "101710267"
 
 6. [New Linked Service]\(新しいリンクされたサービス) ウィンドウで、名前として「Office365LinkedService」と入力し、サービス プリンシパル ID とサービス プリンシパル キーを入力したら、接続をテストし、 **[作成]** を選択して、リンクされたサービスをデプロイします。
 
-    ![新しい Office 365 のリンクされたサービス](./media/load-office-365-data/new-office-365-linked-service.png)
+    :::image type="content" source="./media/load-office-365-data/new-office-365-linked-service.png" alt-text="新しい Office 365 のリンクされたサービス":::
  
 7. リンクされたサービスが作成されると、データセットの設定に戻ります。 **[テーブル]** の横にある下向き矢印を選択し、使用可能な Office 365 データセットの一覧を展開して、ドロップダウン リストから "BasicDataSet_v0.Message_v0" を選択します。
 
-    ![Office 365 データセット テーブルを構成する](./media/load-office-365-data/edit-dataset.png)
+    :::image type="content" source="./media/load-office-365-data/edit-dataset.png" alt-text="Office 365 データセット テーブルを構成する":::
 
 8. 次に、 **[パイプライン]**  >  **[ソース] タブ** に戻り、Office 365 のデータ抽出のために引き続き追加プロパティを構成します。  ユーザー スコープとユーザースコープ フィルターは、Office 365 から抽出するデータを制限するために定義できる省略可能な述語です。 これらの設定を構成する方法については、[Office 365 のデータセットのプロパティ](./connector-office-365.md#dataset-properties)に関するセクションを参照してください。
 
@@ -80,7 +81,7 @@ ms.locfileid: "101710267"
 
 10. **[インポート スキーマ]** タブをクリックして、メッセージ データセットのスキーマをインポートします。
 
-    ![Office 365 データセット スキーマを構成する](./media/load-office-365-data/edit-source-properties.png)
+    :::image type="content" source="./media/load-office-365-data/edit-source-properties.png" alt-text="Office 365 データセット スキーマを構成する":::
 
 ### <a name="configure-sink"></a>シンクの構成
 
@@ -96,7 +97,7 @@ ms.locfileid: "101710267"
 
 6. [New Linked Service]\(新しいリンクされたサービス) ウィンドウで、名前として「AzureStorageLinkedService」と入力し、認証方法のドロップダウン リストから [サービス プリンシパル] を選択します。サービス エンドポイント、テナント、サービス プリンシパル ID、およびサービス プリンシパル キーを入力したら、[保存] を選択し、リンクされたサービスをデプロイします。  Azure Blob Storage のサービス プリンシパルの認証を設定する方法については、[ここ](connector-azure-blob-storage.md#service-principal-authentication)を参照してください。
 
-    ![BLOB の新しいリンクされたサービス](./media/load-office-365-data/configure-blob-linked-service.png)
+    :::image type="content" source="./media/load-office-365-data/configure-blob-linked-service.png" alt-text="BLOB の新しいリンクされたサービス":::
 
 
 ## <a name="validate-the-pipeline"></a>パイプラインを検証する
@@ -109,7 +110,7 @@ ms.locfileid: "101710267"
 
 上部ツールバーの **[すべて発行]** を選択します。 これにより、作成したエンティティ (データセットとパイプライン) が Data Factory に発行されます。
 
-![変更を発行する](./media/load-office-365-data/publish-changes.png) 
+:::image type="content" source="./media/load-office-365-data/publish-changes.png" alt-text="変更を発行する"::: 
 
 ## <a name="trigger-the-pipeline-manually"></a>パイプラインを手動でトリガーする
 
@@ -119,24 +120,24 @@ ms.locfileid: "101710267"
 
 左側の **[監視]** タブに移動します。 手動トリガーによってトリガーされたパイプラインの実行が表示されます。 **[アクション]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
 
-![パイプラインを監視する](./media/load-office-365-data/pipeline-status.png) 
+:::image type="content" source="./media/load-office-365-data/pipeline-status.png" alt-text="パイプラインを監視する"::: 
 
 パイプラインの実行に関連付けられているアクティビティの実行を表示するには、[アクション] 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 この例では、アクティビティが 1 つだけなので、一覧に表示されるエントリは 1 つのみです。 コピー操作の詳細を確認するには、[アクション] 列の **[詳細]** リンク (眼鏡アイコン) を選択します。
 
-![アクティビティを監視する](./media/load-office-365-data/activity-status.png) 
+:::image type="content" source="./media/load-office-365-data/activity-status.png" alt-text="アクティビティを監視する"::: 
 
 このコンテキスト (アクセスされるデータ テーブル、データが読み込まれる宛先アカウント、データ アクセス要求を行っているユーザー ID の組み合わせ) にデータを要求するのはこれが初めての場合は、コピー アクティビティの状態が "**In Progress**" (進行中) として表示され、[アクション] の下にある [詳細] リンクをクリックしたときにのみ、状態は "**RequesetingConsent**" と表示されます。  データの抽出を進めるには、データ アクセス承認者グループのメンバーが、Privileged Access Management で要求を承認する必要があります。
 
 _同意を要求しているときの状態:_ 
-![アクティビティ実行の詳細 - 同意の要求](./media/load-office-365-data/activity-details-request-consent.png) 
+:::image type="content" source="./media/load-office-365-data/activity-details-request-consent.png" alt-text="アクティビティ実行の詳細 - 同意の要求"::: 
 
 _データを抽出しているときの状態:_
 
-![アクティビティの実行の詳細 - データの抽出](./media/load-office-365-data/activity-details-extract-data.png) 
+:::image type="content" source="./media/load-office-365-data/activity-details-extract-data.png" alt-text="アクティビティの実行の詳細 - データの抽出"::: 
 
 同意が得られると、データの抽出が続行されて、しばらくするとパイプラインの実行が正常終了として表示されます。
 
-![パイプラインの監視 - 成功](./media/load-office-365-data/pipeline-monitoring-succeeded.png) 
+:::image type="content" source="./media/load-office-365-data/pipeline-monitoring-succeeded.png" alt-text="パイプラインの監視 - 成功"::: 
 
 抽出先の Azure Blob Storage に移動して、Office 365 データがバイナリ形式で抽出されていることを確認します。
 

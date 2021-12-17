@@ -7,20 +7,24 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffdd27b67a122f82cc5fdb5568f11c85387955e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a1a8602b18c4ec68eacc37faca941211ee83fd63
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98660798"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742642"
 ---
 # <a name="create-a-new-configuration-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期の新しい構成を作成する
 
-Azure AD Connect プロビジョニング エージェントをインストールした後で、Azure portal にサインインしてそれを構成する必要があります。 エージェントを有効にするには、次の手順に従います。
+次のドキュメントでは、Azure AD Connect クラウド同期を構成する方法について説明します。クラウド同期を構成する方法の詳細と例については、下のビデオをご覧ください。
+
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWKact]
+
 
 ## <a name="configure-provisioning"></a>プロビジョニングの構成
 プロビジョニングを構成するのには、次の手順に従います。

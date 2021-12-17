@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4baaf2de6fbe4a56f64d449644b8594217dc432c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9208a0076038dd9977c1488ab25836e249e290d0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96172739"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966029"
 ---
 # <a name="remote-desktop-gateway-services"></a>リモート デスクトップ ゲートウェイ サービス
 
@@ -44,7 +44,6 @@ ms.locfileid: "96172739"
 
 ## <a name="implement-remote-desktop-gateway-services-with-azure-ad"></a>Azure AD を使用したリモート デスクトップ ゲートウェイ サービスを実装する
 
-* [Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行](../manage-apps/application-proxy-integrate-with-remote-desktop-services.md) 
+* [Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行](../app-proxy/application-proxy-integrate-with-remote-desktop-services.md) 
 
-* [Azure AD でアプリケーション プロキシを使用したリモート アクセスを行うためにオンプレミス アプリケーションを追加する](../manage-apps/application-proxy-add-on-premises-application.md)
-
+* [Azure AD でアプリケーション プロキシを使用したリモート アクセスを行うためにオンプレミス アプリケーションを追加する](../app-proxy/application-proxy-add-on-premises-application.md)

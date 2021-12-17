@@ -1,22 +1,25 @@
 ---
-title: Azure Purview 内のデータに関するアセットの分析情報 (プレビュー)
+title: Azure Purview 内のデータに関するアセットの分析情報
 description: このハウツー ガイドでは、データに関する Purview Insights のアセット レポートを表示して使用する方法について説明します。
 author: SunetraVirdi
 ms.author: suvirdi
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-insights
 ms.topic: how-to
-ms.date: 11/20/2020
-ms.openlocfilehash: b9a207ffa14a18a5f4421fd21cebed28290b5ea6
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 09/27/2021
+ms.openlocfilehash: 8879edc7d1858cff5871c5339da4857d81f5c2d8
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183082"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217023"
 ---
 # <a name="asset-insights-on-your-data-in-azure-purview"></a>Azure Purview 内のデータに関するアセットの分析情報
 
 このハウツー ガイドでは、データに関する Purview のアセットの分析情報レポートへのアクセス、表示、フィルター処理を行う方法について説明します。
+
+> [!IMPORTANT]
+> Azure Purview Insights は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
 このハウツー ガイドでは、次の方法について説明します。
 
@@ -33,7 +36,7 @@ Purview Insights の使用を開始する前に、次の手順を完了してい
 
 * ソースの種類に関するスキャンを設定して完了します。
 
-詳細については、[Azure Purview でのデータ ソースの管理 (プレビュー)](manage-data-sources.md) に関するページを参照してください。
+詳細については、「[Azure Purview でデータ ソースを管理する](manage-data-sources.md)」を参照してください。
 
 ## <a name="use-purview-asset-insights"></a>Purview のアセットの分析情報を使用する
 
@@ -48,11 +51,11 @@ Azure Purview では、ソースの種類を登録してスキャンできます
 
    :::image type="content" source="./media/asset-insights/portal-access.png" alt-text="Azure portal から Purview を起動する":::
 
-1. Purview の **[ホーム]** ページで、 **[分析情報の表示]** タイルを選択して **[分析情報]** :::image type="icon" source="media/asset-insights/ico-insights.png" border="false"::: 領域にアクセスします。
+1. Purview **ホーム** ページで、左側のメニューの **[分析情報]** を選択します。
 
    :::image type="content" source="./media/asset-insights/view-insights.png" alt-text="Azure portal で分析情報を表示する":::
 
-1. **[分析情報]** :::image type="icon" source="media/asset-insights/ico-insights.png" border="false"::: 領域で、 **[アセット]** を選択して Purview の **[アセットの分析情報]** レポートを表示します。
+1. **[分析情報]** 領域で、 **[アセット]** を選択して Purview の **[アセットの分析情報]** レポートを表示します。
 
 ### <a name="view-asset-insights"></a>アセットの分析情報を表示する
 
@@ -90,7 +93,7 @@ Azure Purview では、ソースの種類を登録してスキャンできます
    > [!NOTE]
    > スキャンが過去 30 日間に 1 回しか実行されなかったか、または分類の追加や削除などのカタログの変更が 30 日間に 1 回しか発生していない場合、上の変更情報は空白で表示されます。
 
-1. ソースの種類をクリックすると、上位のアセット数の変更を含む最上位のフォルダーが表示されます。
+1. ソースの種類を選択すると、上位のアセット数の変更を含む最上位のフォルダーが表示されます。
 
 1. パスを選択して、アセットの一覧を表示します。
 

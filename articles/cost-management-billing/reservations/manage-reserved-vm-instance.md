@@ -4,16 +4,16 @@ description: Azure の予約を管理する方法について説明します。 
 ms.service: cost-management-billing
 ms.subservice: reservations
 author: bandersmsft
-ms.reviewer: yashesvi
+ms.reviewer: primittal
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: 717cf5acb63ee04852ccbb9aae2f7aed2b3c179a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cbfe1aae48f09330a025861a82cfd8caaa878e41
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392274"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621889"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -53,24 +53,19 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 スコープの対象となるのは、従量課金制料金の個別サブスクリプション (オファー MS-AZR-0003P または MS-AZR-0023P)、Enterprise オファー MS-AZR-0017P または MS-AZR-0148P、または CSP サブスクリプションの種類のみです。
 
+すべてのサブスクリプションを管理グループから移動すると、予約のスコープは自動的に共有に変更されます。
+
 ## <a name="who-can-manage-a-reservation-by-default"></a>既定で予約を管理できるユーザー
 
 既定では、次のユーザーが予約を表示および管理できます。
 
-- 予約を購入した担当者と、予約の購入に使用した課金サブスクリプションのアカウント管理者が、予約注文に追加されます。
-- マイクロソフト エンタープライズ契約および Microsoft 顧客契約の課金管理者。
+- 予約を購入した人と課金サブスクリプションのアカウント オーナーは、予約注文に対する Azure RBAC アクセス権を取得します。
+-  Enterprise Agreement および Microsoft 顧客契約の請求共同作成者は、[コストの管理と請求] > [予約トランザクション] > 青いバナーの順に選択して、すべての予約を管理できます。
 
 他のユーザーが予約を管理できるようにするには、次の 2 つのオプションがあります。
 
-- 個々の予約注文のアクセス管理を委任するには、次の手順を実行します。
-    1. [Azure portal](https://portal.azure.com) にサインインします。
-    1. **[すべてのサービス]**  >  **[予約]** の順に選択し、自分にアクセス権がある予約を一覧表示します。
-    1. どの予約のアクセス権を他のユーザーに委任するかを選択します。
-    1. [予約の詳細] で、予約注文を選択します。
-    1. **[アクセス制御 (IAM)]** を選択します。
-    1. **[ロールの割り当ての追加]**  >  **[ロール]**  >  **[所有者]** を選択します。 制限付きアクセス権を付与する場合は、別のロールを選択します。
-    1. 所有者として追加するユーザーの電子メール アドレスを入力します。
-    1. ユーザーを選択し、 **[保存]** を選択します。
+- 予約注文のリソース スコープのユーザーに Owner ロールを割り当てることにより、個別の予約注文に対するアクセス管理を委任する。 制限付きアクセス権を付与する場合は、別のロールを選択します。  
+     詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 - ユーザーを課金管理者としてマイクロソフト エンタープライズ契約または Microsoft 顧客契約に追加するには、次の手順を実行します。
     - マイクロソフト エンタープライズ契約の場合は、"_エンタープライズ管理者_" ロールを持つユーザーを追加することで、マイクロソフト エンタープライズ契約に適用されるすべての予約注文を表示および管理できます。 "_エンタープライズ管理者 (読み取り専用)_ " ロールを持つユーザーは、予約の表示のみを実行できます。 部門管理者およびアカウント所有者は、アクセス制御 (IAM) を使用して明示的にこれらに追加されて "_いない限り_"、予約を表示することはできません。 詳細については、「[Azure エンタープライズ ロールの管理](../manage/understand-ea-roles.md)」を参照してください。
@@ -81,8 +76,18 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>課金管理者が予約を表示または管理する方法
 
-1. **[コストの管理と請求]** に移動し、ページの左側にある **[予約トランザクション]** を選択します。
-2. 必要な課金アクセス許可がある場合は、予約を表示および管理できます。 予約が表示されない場合は、予約が作成された Azure AD テナントを使用してサインインしていることを確認してください。
+課金管理者の場合は、次の手順を使用して、すべての予約と予約トランザクションを表示および管理します。
+
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[Cost Management + Billing]** に移動します。
+    - EA 管理者の場合は、左側のメニューで **[課金スコープ]** を選択し、課金スコープの一覧でスコープを選択します。
+    - Microsoft 顧客契約の課金プロファイル所有者の場合は、左側のメニューで **[課金プロファイル]** を選択します。 課金プロファイルの一覧でプロファイルを選択します。
+2. 左側のメニューで、 **[製品とサービス]**  >  **[予約]** を選択します。
+3. EA 加入契約または課金プロファイルの予約の完全な一覧が表示されます。
+4. 課金管理者は、予約を選択し、表示されたウィンドウで **[アクセスの付与]** を選択することで、予約の所有権を取得できます。
+
+## <a name="change-billing-subscription-for-an-azure-reservation"></a>Azure の予約の課金サブスクリプションを変更する
+
+予約の購入後に課金サブスクリプションを変更することは認められていません。 サブスクリプションの変更をご希望の場合は、交換プロセスを使用して、予約に適切な課金サブスクリプションを設定してください。
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>1 つの予約を 2 つの予約に分割する
 
@@ -177,23 +182,8 @@ Enterprise Agreement (EA) のお客様の場合、ご自身の組織内で予約
 ## <a name="next-steps"></a>次のステップ
 
 Azure の予約の詳細については、次の記事を参照してください。
-
-- [Azure の予約とは](save-compute-costs-reservations.md)
-
-サービス プランの購入:
-- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/prepay-reserved-vm-instances.md)
-- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../azure-sql/database/reserved-capacity-overview.md)
-- [Azure Cosmos DB の容量が予約された Azure Cosmos DB リソースの前払い](../../cosmos-db/cosmos-db-reserved-capacity.md)
-
-ソフトウェア プランの購入:
-- [Azure の予約からの Red Hat ソフトウェア プランの前払い](../../virtual-machines/linux/prepay-suse-software-charges.md)
-- [Azure の予約からの SUSE ソフトウェア プランの前払い](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-割引と使用状況の理解:
-- [VM 予約割引の適用方法](../manage/understand-vm-reservation-charges.md)
-- [Red Hat Enterprise Linux ソフトウェア プランの割引の適用方法](understand-rhel-reservation-charges.md)
-- [SUSE Linux Enterprise ソフトウェア プランの割引の適用方法](understand-suse-reservation-charges.md)
-- [その他の予約割引の適用方法](understand-reservation-charges.md)
-- [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)
-- [エンタープライズ加入契約の予約使用量について](understand-reserved-instance-usage-ea.md)
-- [予約に含まれない Windows ソフトウェアのコスト](reserved-instance-windows-software-costs.md)
+ - [予約の使用率を表示する](reservation-utilization.md)
+ - [交換と払戻](exchange-and-refund-azure-reservations.md)
+ - [予約の更新](reservation-renew.md)
+ - [テナント間での転送](troubleshoot-reservation-transfers-between-tenants.md)
+ - [Azure のログから予約購入者を見つける](find-reservation-purchaser-from-logs.md)

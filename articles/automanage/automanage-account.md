@@ -1,19 +1,17 @@
 ---
 title: Azure Automanage アカウント
 description: Automanage アカウントのしくみと作成方法について説明します。
-author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.author: alsin
-ms.openlocfilehash: b79e061ae00c42ed2ec2ac39f5653a868f09a15f
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: d418cd8c6ad764ee68cf8defd697ed168ee4136c
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368529"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455097"
 ---
 # <a name="automanage-accounts"></a>Automanage アカウント
 
@@ -46,7 +44,7 @@ ARM テンプレートを使用して Automanage アカウントを作成する�
 1. Automanage アカウントを作成する
 1. アカウントが操作を実行できるように、十分なアクセス許可を付与する
     1. この手順で作成したアカウントのオブジェクト ID が必要になります。
-        1. アカウントのサービス プリンシパルの詳細 (オブジェクト ID を含む) を見つける手順については、[こちら](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-view-managed-identity-service-principal-portal#view-the-service-principal)を参照してください。
+        1. アカウントのサービス プリンシパルの詳細 (オブジェクト ID を含む) を見つける手順については、[こちら](../active-directory/managed-identities-azure-resources/how-to-view-managed-identity-service-principal-portal.md#view-the-service-principal)を参照してください。
     1. サービス プリンシパルが見つかったら、**オブジェクト ID** をコピーします。 これは、次のアクセス許可を委任するために必要となるため、保存します。
 
 #### <a name="1-create-automanage-account-does-not-grant-permissions-to-it"></a>1. Automanage アカウントを作成する (アクセス許可は付与しない)
@@ -87,8 +85,9 @@ Automanage アカウントに十分なアクセス許可を付与するには、
 1. プロンプトが表示されたら、作成して保存した Automanage アカウントのオブジェクト ID を入力します。
 
 ```azurecli-interactive
-az deployment group create --resource-group <resource group name> --template-file azuredeploy.json
+az deployment sub create --location <location> --template-file azuredeploy2.json
 ```
+
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -99,6 +98,10 @@ az deployment group create --resource-group <resource group name> --template-fil
             "metadata": {
                 "description": "The principal to assign the role to"
             }
+        },
+        "dateTime": {
+            "type": "string",
+            "defaultValue": "[utcNow()]"
         }
     },
     "variables": {
@@ -109,7 +112,7 @@ az deployment group create --resource-group <resource group name> --template-fil
         {
             "type": "Microsoft.Authorization/roleAssignments",
             "apiVersion": "2020-04-01-preview",
-            "name": "[guid(variables('contributorRoleDefinitionID'))]",
+            "name": "[guid(concat(parameters('dateTime'), variables('contributorRoleDefinitionID')))]",
             "properties": {
                 "roleDefinitionId": "[variables('contributorRoleDefinitionID')]",
                 "principalId": "[parameters('principalId')]"
@@ -118,7 +121,7 @@ az deployment group create --resource-group <resource group name> --template-fil
         {
             "type": "Microsoft.Authorization/roleAssignments",
             "apiVersion": "2020-04-01-preview",
-            "name": "[guid(variables('resourcePolicyContributorRoleDefinitionID'))]",
+            "name": "[guid(concat(parameters('dateTime'), variables('resourcePolicyContributorRoleDefinitionID')))]",
             "properties": {
                 "roleDefinitionId": "[variables('resourcePolicyContributorRoleDefinitionID')]",
                 "principalId": "[parameters('principalId')]"

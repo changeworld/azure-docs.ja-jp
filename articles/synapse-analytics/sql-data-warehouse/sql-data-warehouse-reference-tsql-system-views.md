@@ -2,21 +2,21 @@
 title: 専用 SQL プール (旧称 SQL DW) のシステム ビュー
 description: Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のシステム ビューに対するドキュメントへのリンク。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: WilliamDAssafMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 01/06/2020
-ms.author: xiaoyul
+ms.author: wiassaf
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 088cf9f33093c7a4623c044a220f4e89fe07872b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e0c91cad3eab64c95854484aaf0c033903bf853
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98681205"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746967"
 ---
 # <a name="system-views-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のシステム　ビュー
 

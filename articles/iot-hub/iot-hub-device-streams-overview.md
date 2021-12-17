@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Hub デバイス ストリーム | Microsoft Docs
 description: さまざまな cloud-to-device 通信シナリオのセキュリティで保護された双方向 TCP トンネルを支援する、Azure IoT Hub デバイス ストリームの概要について説明します。
-author: robinsh
+author: eross-msft
 services: iot-hub
 ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 9487fc562fa099d2650aabc8d15fc1449c7fcb5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bedbb4e14886e1e16d765f91ad86f7b20989a34
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97825176"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556004"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub デバイス ストリーム (プレビュー)
 
@@ -153,64 +153,6 @@ IoT Hub での Azure Monitor の使用の詳細については、[IoT Hub の監
 * C および C# の SDK では、デバイス側のデバイス ストリームがサポートされます。
 
 * NodeJS および C# の SDK では、サービス側のデバイス ストリームがサポートされます。
-
-## <a name="iot-hub-device-stream-samples"></a>IoT Hub デバイス ストリームのサンプル
-
-IoT Hub のページでは、2 つの[クイックスタート サンプル](./index.yml)を利用できます。 これらでは、アプリケーションでのデバイス ストリームの使用が示されています。
-
-* "*エコー*" サンプルでは、(SDK API を直接呼び出すことによって) プログラムでデバイス ストリームを使用する方法を示しています。
-
-* *ローカル プロキシ* サンプルでは、デバイス ストリームを使用して (SSH、RDP、Web などの) 既存のアプリケーションのトラフィックをトンネリングする方法を示しています。
-
-これらのサンプルについて、以下で詳しく説明します。
-
-### <a name="echo-sample"></a>エコー サンプル
-
-エコー サンプルでは、サービス アプリケーションとデバイス アプリケーション間でバイトを送受信するために、プログラムでデバイス ストリームを使用する方法を示します。 さまざまな言語でサービスとデバイスのプログラムを使用できることに注意してください。 たとえば、C# のサービス プログラムで C のデバイス プログラムを使用できます。
-
-echo サンプルを次に示します。
-
-* [C# サービスとサービス プログラム](quickstart-device-streams-echo-csharp.md)
-
-* [Node.js サービス プログラム](quickstart-device-streams-echo-nodejs.md)
-
-* [C デバイス プログラム](quickstart-device-streams-echo-c.md)
-
-### <a name="local-proxy-sample-for-ssh-or-rdp"></a>ローカル プロキシのサンプル (SSH または RDP の場合)
-
-ローカル プロキシのサンプルでは、クライアントおよびサーバー プログラム間の通信を含む、既存のアプリケーションのトラフィックのトンネリングを有効にする方法を示します。 このセットアップは SSH や RDP などのクライアント/サーバー プロトコルで動作します。その場合、サービス側は (SSH または RDP クライアント プログラムを実行している) クライアントとして機能し、デバイス側は (SSH デーモンまたは RDP サーバー プログラムを実行している) サーバーとして機能します。
-
-このセクションでは、ユーザーがデバイス ストリーム経由でデバイスに SSH 接続できるようにするための、デバイス ストリームの使用方法について説明します (RDP またはその他のクライアント/サーバー アプリケーションのケースは、プロトコルの対応するポートを使用する点で似ています)。
-
-セットアップでは、下の図に示されている、2 つの *ローカル プロキシ* プログラム (つまり、*デバイス ローカル プロキシ* と *サービス ローカル プロキシ*) が利用されます。 ローカル プロキシ プログラムは、IoT Hub による[デバイス ストリームの開始ハンドシェイク](#device-stream-creation-flow)を実行し、通常のクライアント/サーバー ソケットを使用して SSH クライアントおよび SSH デーモンとやりとりします。
-
-!["SSH/RDP のためのデバイス ストリーム プロキシ セットアップ"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
-
-1. ユーザーはサービス ローカル プロキシを実行して、デバイスへのデバイス ストリームを開始します。
-
-2. デバイス ローカル プロキシがストリームの開始要求を受け入れ、IoT Hub のストリーミング エンドポイントへのトンネルが確立されます (上の説明を参照)。
-
-3. デバイス ローカル プロキシは、デバイス上のポート 22 をリッスンする SSH デーモン エンドポイントに接続されます。
-
-4. サービス ローカル プロキシは、ユーザーからの新しい SSH 接続を待機している指定されたポートをリッスンします (このサンプルではポート 2222 を使用していますが、それ以外の利用可能なポートに構成することもできます)。 ユーザーは SSH クライアントを、localhost 上のサービス ローカル プロキシ ポートにポイントします。
-
-### <a name="notes"></a>Notes
-
-* 上記の手順では、SSH クライアント (右側) から SSH デーモン (左側) の間のエンド ツー エンド トンネルを完了します。 このエンド ツー エンド接続の一部として、デバイス ストリーム経由の IoT Hub への送信トラフィックが含まれます。
-
-* 図の矢印は、エンドポイント間で確立される接続の方向を示しています。 具体的には、デバイスに向かうインバウンド接続はないことに注意してください (これは多くの場合、ファイアウォールでブロックされます)。
-
-* サービス ローカル プロキシ上でポート 2222 を使用する選択は任意です。 他の利用可能なポートを使用するように、プロキシを構成できます。
-
-* ポート 22 の選択はプロトコルに依存しており、この場合、SSH に固有のものです。 RDP の場合は、ポート 3389 を使用する必要があります。 これは、提供されているサンプル プログラムで構成できます。
-
-以下のリンクを使用して、選択した言語でローカル プロキシ プログラムを実行する方法を確認してください。 [エコー サンプル](#echo-sample)と同様、デバイス ローカル プロキシ プログラムとサービス ローカル プロキシ プログラムは完全に相互運用可能であるため、さまざまな言語で実行できます。
-
-* [C# サービスとサービス プログラム](quickstart-device-streams-proxy-csharp.md)
-
-* [Node.js サービス プログラム](quickstart-device-streams-proxy-nodejs.md)
-
-* [C デバイス プログラム](quickstart-device-streams-proxy-c.md)
 
 ## <a name="next-steps"></a>次のステップ
 

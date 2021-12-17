@@ -3,20 +3,21 @@ title: リアルタイムでの会話の文字起こしのクイックスター�
 titleSuffix: Azure Cognitive Services
 description: リアルタイムでの会話の文字起こしを Speech SDK とともに使用する方法を説明します。 会話の文字起こしを使用すると、会議やその他の会話を文字起こしして、音声を Speech サービスにストリーミングすることによって、複数の参加者を追加、削除、または識別することができます。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: trbye
+ms.author: eur
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: 48cd4c7996eabad7293aa2429c76b8943e0ab3da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 00cfb66da3b3e233e703e74b039be9d6a7d02c4b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100368474"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508936"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>リアルタイムの会話の文字起こしの概要
 
@@ -25,7 +26,7 @@ Speech SDK の **ConversationTranscriber** API を使用すると、会議やそ
 ## <a name="limitations"></a>制限事項
 
 * 次のサブスクリプション リージョンでのみ使用できます: `centralus`、`eastasia`、`eastus`、`westeurope`
-* 7 つのマイクの循環マルチマイク配列が必要です。 このマイク配列は、[Microsoft の仕様](./speech-devices-sdk-microphone.md)を満たす必要があります。
+* 7 つのマイクの循環マルチマイク配列が必要です。 このマイク配列は、[Microsoft の仕様](./speech-sdk-microphone.md)を満たす必要があります。
 * [Speech Devices SDK](speech-devices-sdk.md) には、会話の文字起こしを実行する適切なデバイスやサンプル アプリが提供されています。
 
 ## <a name="prerequisites"></a>前提条件

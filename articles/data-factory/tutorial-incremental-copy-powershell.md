@@ -4,15 +4,15 @@ description: このチュートリアルでは、Azure SQL Database から Azure
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-dt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: f4cb4807e6f2620bb76649fc7c7dcce7363cf4a4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 17af8eafed3ebd2cade812b50af1f69d5e3da9bd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740989"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016532"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
@@ -34,7 +34,7 @@ ms.locfileid: "101740989"
 ## <a name="overview"></a>概要
 ソリューションの概略図を次に示します。
 
-![データの増分読み込み](media/tutorial-Incrementally-copy-powershell/incrementally-load.png)
+:::image type="content" source="media/tutorial-Incrementally-copy-powershell/incrementally-load.png" alt-text="データの増分読み込み":::
 
 このソリューションを作成するための重要な手順を次に示します。
 
@@ -145,9 +145,10 @@ END
 ```
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
+
 1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前を二重引用符で囲んで指定してコマンドを実行します。 たとえば `"adfrg"` です。 
    
-     ```powershell
+    ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 

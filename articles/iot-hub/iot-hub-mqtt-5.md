@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: jlian
-ms.openlocfilehash: fb2cc0b81083936a67bcd465e0408b9f4b53996b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbe51d51da55d6708bfae96d0fec15eec9896602
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96603051"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484849"
 ---
 # <a name="iot-hub-mqtt-5-support-overview-preview"></a>IoT Hub の MQTT 5 のサポートの概要 (プレビュー)
 
@@ -111,7 +111,7 @@ IoT Hub は、認証と、接続をサポートするためのデータのフェ
 
 #### <a name="sas"></a>SAS
 
-SAS ベースの認証の場合、クライアントは接続コンテキストの署名を提供する必要があります。 これにより、MQTT 接続の信頼性が証明されます。 署名は、IoT Hub でのクライアント構成の 2 つの認証キーのいずれか、または[共有アクセス ポリシー](iot-hub-devguide-security.md)の 2 つの共有アクセス キーのいずれかに基づいている必要があります。
+SAS ベースの認証の場合、クライアントは接続コンテキストの署名を提供する必要があります。 これにより、MQTT 接続の信頼性が証明されます。 署名は、IoT Hub でのクライアント構成の 2 つの認証キーのいずれか、または[共有アクセス ポリシー](iot-hub-dev-guide-sas.md)の 2 つの共有アクセス キーのいずれかに基づいている必要があります。
 
 署名する文字列は、次のように構成されている必要があります。
 

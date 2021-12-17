@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 49cee5c98c4099e214a732371269e935db353152
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82c6b6cd0dde6b321e4de8a87f99e1adad69040d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97106973"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662117"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>チュートリアル:ARM テンプレートにリソースを追加する
 
@@ -50,7 +50,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 その他のプロパティは、リソースの種類と API バージョンにより異なります。 API バージョンと利用可能なプロパティの関係を理解することが大切ですので、もう少し踏み込んでみましょう。
 
-このチュートリアルでは、テンプレートにストレージ アカウントを追加しました。 その API バージョンは、[storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts) で確認できます。 すべてのプロパティをテンプレートに追加したわけではないことに注目してください。 プロパティの多くは省略可能です。 `Microsoft.Storage` リソース プロバイダーから新しい API バージョンがリリースされる可能性もありますが、デプロイするバージョンを変更する必要はありません。 そのバージョンを使い続けることができ、またデプロイの結果に一貫性を確保できます。
+このチュートリアルでは、テンプレートにストレージ アカウントを追加しました。 その API バージョンは、[storageAccounts 2021-04-01](/azure/templates/microsoft.storage/2021-04-01/storageaccounts) で確認できます。 すべてのプロパティをテンプレートに追加したわけではないことに注目してください。 プロパティの多くは省略可能です。 `Microsoft.Storage` リソース プロバイダーから新しい API バージョンがリリースされる可能性もありますが、デプロイするバージョンを変更する必要はありません。 そのバージョンを使い続けることができ、またデプロイの結果に一貫性を確保できます。
 
 以前の API バージョン ([storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts) など) を表示した場合、用意されているプロパティが少ないことがわかります。
 

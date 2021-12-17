@@ -2,21 +2,21 @@
 title: チュートリアル:Hootsuite を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から Hootsuite に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.author: Zhchia
-ms.openlocfilehash: b371baec663ffc7ff5909e04965353e79acb9708
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: eabdbf7b427176d13046ebf7bf82f5a2979ed703
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96177074"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989216"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>チュートリアル:Hootsuite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -38,6 +38,9 @@ ms.locfileid: "96177074"
 * プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * 組織に対する **メンバー管理** のアクセス許可を持つ、[Hootsuite](http://www.hootsuite.com/) のユーザー アカウント。
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
 1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
 2. [プロビジョニングの対象](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)となるユーザーを決定します。
@@ -45,7 +48,7 @@ ms.locfileid: "96177074"
 
 ## <a name="step-2-configure-hootsuite-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Hootsuite を構成する
 
-dev.support@hootsuite.com に連絡して、後の手順で必要になる、長期間使用できるシークレット トークンを取得します。 
+後の手順で必要な長期トークンについては、Hootsuite の CSM にアクセスしてください。
 
 ## <a name="step-3-add-hootsuite-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Hootsuite を追加する
 
@@ -135,13 +138,13 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
-この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期サイクルが開始されます。 初期サイクルは後続の同期よりも実行に時間がかかります。後続のサイクルは、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 
+この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期サイクルが開始されます。 初期サイクルは次からのサイクルよりも完了に時間がかかります。後続のサイクルは、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 
 
 ## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
 * [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-* [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+* [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します
 * プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
 
 ## <a name="change-log"></a>ログの変更
@@ -149,7 +152,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * 2020 年 10 月 22 日 - ユーザー属性 "name.givenName" および "name.familyName" のサポートが追加されました。 Users のカスタム拡張属性 "organizationIds" と "teamIds" は削除されました。
 グループ属性 "displayName"、"members"、および "externalId" のサポートが追加されました。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="more-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)

@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services でクラスルーム ラボ用のダッシュボードを使用する | Microsoft Docs
 description: Azure Lab Services でクラスルーム ラボ用のダッシュボードを使用する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: a91e1649d913956219ddcf192ab315a245b32eae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdc0227a6d0ce6bd46c4157ba0700a06d734928d
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96434602"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178996"
 ---
 # <a name="dashboard-for-labs"></a>ラボのダッシュボード
 この記事では、Azure Lab Services でのクラスルーム ラボのダッシュボード ビューについて説明します。 

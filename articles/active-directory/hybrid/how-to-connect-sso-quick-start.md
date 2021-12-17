@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 349aef1bb9382eec19d9ad9c7f6d4579c82b62de
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4f691f2c6cff0abec7454282a239e8ede47277c6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043939"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068115"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -177,12 +177,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (すべてのプラットフォーム)
 
-Mozilla Firefox は、Kerberos 認証を自動的には使用しません。 各ユーザーが、次の手順に従って、Firefox の設定に Azure AD の URL を手動で追加する必要があります。
-1. Firefox を実行し、アドレス バーに「`about:config`」と入力します。 表示されているすべての通知を無視します。
-2. **network.negotiate-auth.trusted-uris** の設定を検索します。 この設定は、Kerberos 認証用の Firefox の信頼済みサイトを一覧表示します。
-3. 右クリックして **[変更]** を選択します。
-4. フィールドに「 `https://autologon.microsoftazuread-sso.com` 」を入力します。
-5. **[OK]** を選択してから、ブラウザーをもう一度開きます。
+お使いの環境で [Authentication](https://github.com/mozilla/policy-templates/blob/master/README.md#authentication) ポリシー設定を使用している場合は、Azure AD の URL (`https://autologon.microsoftazuread-sso.com`) を **SPNEGO** セクションに確実に追加します。 **PrivateBrowsing** オプションを true に設定して、プライベート ブラウズ モードでシームレス SSO を許可することもできます。
 
 #### <a name="safari-macos"></a>Safari (macOS)
 
@@ -198,17 +193,20 @@ macOS および他の Windows 以外のプラットフォームの Chromium に�
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (すべてのプラットフォーム)
 
-お使いの環境の [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) ポリシー設定または [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ポリシー設定をオーバーライドした場合は、それらの設定に Azure AD の URL (`https://autologon.microsoftazuread-sso.com`) を必ず追加してください。
+お使いの環境の [AuthNegotiateDelegateAllowlist](https://chromeenterprise.google/policies/#AuthNegotiateDelegateAllowlist) ポリシー設定または [AuthServerAllowlist](https://chromeenterprise.google/policies/#AuthServerAllowlist) ポリシー設定をオーバーライドした場合は、それらの設定に Azure AD の URL (`https://autologon.microsoftazuread-sso.com`) を確実に追加します。
 
-#### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome (macOS と Windows 以外のその他のプラットフォーム)
+#### <a name="macos"></a>macOS
 
-macOS などの Windows 以外のプラットフォームで Google Chrome を使用し、統合認証用の Azure AD の URL の許可一覧を制御する方法については、[Chromium プロジェクト ポリシー リスト](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)に関する記事をご覧ください。
-
-サード パーティの Active Directory グループ ポリシーの拡張機能を使用して、Mac 上で Firefox および Google Chrome を使用するユーザーに Azure AD の URL を ロールアウトする場合については、この記事では扱われません。
+サードパーティの Active Directory グループ ポリシーの拡張機能を使用して、Firefox および Google Chrome への Azure AD の URL を macOS ユーザーにロールアウトする場合については、この記事では扱われません。
 
 #### <a name="known-browser-limitations"></a>ブラウザーの既知の制限事項
 
-シームレス SSO は、Firefox および Microsoft Edge (レガシー) ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。 シームレス SSO では、Chromium に基づく Microsoft Edge の次期バージョンがサポートされています。仕様により InPrivate とゲスト モードで機能します。
+拡張保護モードで実行されている場合、シームレス SSO は Internet Explorer ブラウザーでも機能しません。 シームレス SSO では、Chromium に基づく Microsoft Edge の次期バージョンがサポートされています。仕様により InPrivate とゲスト モードで機能します。 Microsoft Edge (レガシ) はサポートされなくなりました。 
+
+ `AmbientAuthenticationInPrivateModesEnabled` は、対応するドキュメントに基づいて、InPrivate および/またはゲスト ユーザー用に構成する必要がある場合があります。
+ 
+   - [Microsoft Edge Chromium](/DeployEdge/microsoft-edge-policies#ambientauthenticationinprivatemodesenabled)
+   - [Google Chrome](https://chromeenterprise.google/policies/?policy=AmbientAuthenticationInPrivateModesEnabled)
 
 ## <a name="step-4-test-the-feature"></a>手順 4:機能をテストする
 
@@ -219,7 +217,7 @@ macOS などの Windows 以外のプラットフォームで Google Chrome を�
   - グループ ポリシーを使用して、このユーザーに[機能がロールアウト](#step-3-roll-out-the-feature)されている。
 
 ユーザーがユーザー名のみを入力し、パスワードを入力しないシナリオをテストする場合:
-   - https://myapps.microsoft.com/ にサインインします。 必ずブラウザーのキャッシュをクリアするか、サポートされているいずれかのブラウザーのプライベート モードでの新しいプライベート ブラウザー セッションを使用してください。
+   - [https://manage.visualstudio.com](https://myapps.microsoft.com/ ) にサインインします。 必ずブラウザーのキャッシュをクリアするか、サポートされているいずれかのブラウザーのプライベート モードでの新しいプライベート ブラウザー セッションを使用してください。
 
 ユーザーがユーザー名またはパスワードを入力する必要がないシナリオをテストする場合は、次の手順のいずれかに従います。 
    - `https://myapps.microsoft.com/contoso.onmicrosoft.com` にサインインします。必ず、ブラウザーのキャッシュをクリアするか、サポートされているいずれかのブラウザーのプライベート モードで新しいプライベート ブラウザー セッションを使用してください。 *contoso* を自分のテナント名に置き換えます。
@@ -232,7 +230,7 @@ macOS などの Windows 以外のプラットフォームで Google Chrome を�
 >[!IMPORTANT]
 >コンピューター アカウントの Kerberos 解読キーが流出した場合、それを利用し、その AD フォレストのあらゆるユーザーに対して Kerberos チケットが生成されます。 悪意のあるアクターは、Azure AD サインインを偽装し、ユーザーを危険にさらすことがあります。 定期的に (少なくとも 30 日ごとに) Kerberos の解読キーをロールオーバーすることを強くお勧めします。
 
-キーをロールオーバーする方法の詳細については、「[Azure Active Directory シームレス シングル サインオン: よく寄せられる質問](how-to-connect-sso-faq.md)」をご覧ください。 Microsoft はキーの自動ロールオーバーを導入する機能の開発に取り組んでいます。
+キーをロールオーバーする方法の詳細については、「[Azure Active Directory シームレス シングル サインオン: よく寄せられる質問](how-to-connect-sso-faq.yml)」をご覧ください。
 
 >[!IMPORTANT]
 >この機能を有効にした後に、"_直ちに_" この手順を実行する必要はありません。 少なくとも 30 日に 1 回は、Kerberos 暗号化の解除キーをロールオーバーしてください。
@@ -240,6 +238,6 @@ macOS などの Windows 以外のプラットフォームで Google Chrome を�
 ## <a name="next-steps"></a>次のステップ
 
 - [技術的な詳細](how-to-connect-sso-how-it-works.md): シームレス シングル サインオン機能のしくみを理解します。
-- [よく寄せられる質問](how-to-connect-sso-faq.md): シームレス シングル サインオンに関してよく寄せられる質問への回答を示します。
+- [よく寄せられる質問](how-to-connect-sso-faq.yml): シームレス シングル サインオンに関してよく寄せられる質問への回答を示します。
 - [トラブルシューティング](tshoot-connect-sso.md): シームレス シングル サインオン機能に関する一般的な問題の解決方法を説明します。
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Azure Active Directory フォーラムを使用して、新しい機能の要求を行います。
+- [UserVoice](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789): Azure Active Directory フォーラムを使用して、新しい機能の要求を行います。

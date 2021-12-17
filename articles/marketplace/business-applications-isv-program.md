@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/19/2020
-ms.openlocfilehash: e4cd22418c4f8a2f9504baf665c67a4a57f7f6f5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 233fc2d15ce4e80ed305fd38006b5a0fd9d3c5ab
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103387"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867005"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立系ソフトウェア ベンダー (ISV) コネクト プログラム オンボード ガイド
 
@@ -37,7 +37,7 @@ ISV コネクト プログラムのアカウントを設定して管理するに
 > [!NOTE]
 > この手順で法的契約に署名するには、パートナー センターでアカウントに対する "*所有者*" または "*マネージャー*" のロールが必要です。
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165507)にサインインします。
 1. **[設定]** (歯車アイコン) > **[アカウント設定]** を選択します。
 1. **[契約]** を選択します。
 1. バージョンのリンクを選択し、契約を表示します。
@@ -50,7 +50,7 @@ ISV コネクト プログラムのアカウントを設定して管理するに
 > [!NOTE]
 > このステップで課金情報を更新するには、パートナー センターでアカウントに対する "*所有者*" または "*マネージャー*" のロールが必要です。
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165507)にサインインします。
 1. **[設定]** (歯車アイコン) > **[アカウント設定]** を選択します。
 1. **[組織プロファイル]** で、 **[課金プロファイル]** を選択して、 **[開発者]** タブを選択します。
 1. 法人から設定された主要連絡先と課金情報を確認します。
@@ -77,8 +77,7 @@ ISV コネクト プログラムのアカウントを設定して管理するに
 
 アカウントに関する問い合わせは、アカウント マネージャーまたは [Microsoft パートナー サポート](https://aka.ms/marketplacepublishersupport)に対して行ってください。 ビジネス アプリケーション ISV コネクト プログラムの一般情報については、以下をご覧ください。
 
-- [ISV にとっての Business Applications](https://partner.microsoft.com/solutions/business-applications/isv-overview) (オンライン記事)
-- [Business Applications ISV 向けの新しいプログラムの概要](https://aka.ms/BizAppsISVProgram) (PDF)
-- [ビジネス アプリケーション ISV コネクト プログラムの FAQ](https://assetsprod.microsoft.com/faq-using-partner-center-isv-connect.pdf) (PDF)
-- [Business Applications ISV 向けの今後のプログラム](https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/) (ブログ投稿)
-- [ISV コネクト プログラムのポリシー](https://aka.ms/bizappsisvpolicies) (PDF)
+- [Business Applications パートナー情報](https://aka.ms/bizappsisvWeb) (Web サイト)
+- [ISV コネクト プログラム ガイド](https://aka.ms/bizappsisvProgram) (PDF)
+- [ISV コネクト プログラム パートナーの FAQ](https://powerplatformpartners.transform.microsoft.com/download?assetname=assets/ISV%20Connect%20Partner%20FAQ.pdf&download=1) (PDF)
+- [ISV コネクト プログラムの変更](https://cloudblogs.microsoft.com/dynamics365/bdm/2021/07/14/innovate-and-grow-with-the-simplified-business-applications-isv-connect-program/) (ブログ投稿)

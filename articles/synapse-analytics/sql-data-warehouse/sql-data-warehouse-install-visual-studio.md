@@ -1,7 +1,6 @@
 ---
 title: Visual Studio 2019 をインストールする
 description: Synapse SQL 用に Visual Studio と SQL Server Development Tools (SSDT) をインストールします
-services: synapse-analytics
 ms.custom: vs-azure, azure-synapse
 ms.workload: azure-vs
 author: julieMSFT
@@ -12,12 +11,12 @@ ms.subservice: sql-dw
 ms.date: 05/11/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: c8c07997b3ef8cb050ea4609a650a3e3b1bd21fb
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 378c36f1df7c83c6309be44d24ec671b64e34c08
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568252"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054611"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Visual Studio 2019 の概要
 
@@ -41,8 +40,8 @@ Synapse SQL の機能リリースに SSDT のサポートが含まれない場�
 
 - [ワークロード管理](sql-data-warehouse-workload-management.md) - ワークロード グループと分類子
 - [行レベルのセキュリティ](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (テーブル値関数を含む)
-  - この機能がサポートされるようにするには、[サポート チケットを送信するか投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security)してください。
-  - この機能がサポートされるようにするには、[サポート チケットを送信するか投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)してください。
+  - この機能がサポートされるようにするには、[サポート チケットを送信するか投票](https://feedback.azure.com/d365community/idea/a9192b4c-0b25-ec11-b6e6-000d3a4f07b8)してください。
+  - この機能がサポートされるようにするには、[サポート チケットを送信するか投票](https://feedback.azure.com/d365community/idea/ab192b4c-0b25-ec11-b6e6-000d3a4f07b8)してください。
 - 次のような特定の T-SQL 機能:
    - [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql) 文字列関数内の *WITHIN GROUP* 句。
 

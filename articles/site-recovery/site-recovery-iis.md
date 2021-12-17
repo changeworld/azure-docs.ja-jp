@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 56ac58e47bffc73c7079af043ad567a77e8f3323
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a353a2d95f9da4b78d88118555d20fc79bae5fd7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735507"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437614"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションのディザスター リカバリーの設定
 
@@ -69,9 +69,9 @@ Azure|NA|はい
 
 すべての IIS Web ファーム仮想マシンを Azure にレプリケートするには、「[Site Recovery での Azure へのフェールオーバーをテストする](site-recovery-test-failover-to-azure.md)」のガイダンスに従います。
 
-静的 IP アドレスを使用している場合は、仮想マシンに割り当てる IP アドレスを指定できます。 IP アドレスを設定するには、 **[コンピューティングとネットワーク] の設定** >  **[ターゲット IP]** に移動します。
+静的 IP アドレスを使用している場合は、仮想マシンに割り当てる IP アドレスを指定できます。 IP アドレスを設定するには、 **[ネットワーク設定]**  >  **[ターゲット IP]** に移動します。
 
-![Site Recovery の [コンピューティングとネットワーク] ウィンドウでターゲット IP を設定する方法を示したスクリーン ショット](./media/site-recovery-active-directory/dns-target-ip.png)
+![Site Recovery のネットワーク ペインでターゲット IP を設定する方法を示したスクリーンショット](./media/site-recovery-active-directory/dns-target-ip.png)
 
 ## <a name="create-a-recovery-plan"></a>復旧計画の作成
 復旧計画では、フェールオーバー時における多層アプリケーション内の各種階層の順序付けがサポートされます。 順序付けは、アプリケーションの一貫性の保守に役立ちます。 多層 Web アプリケーションの復旧計画を作成する際には、[復旧計画の作成](site-recovery-create-recovery-plans.md)に関するページで説明されている手順を完了します。
@@ -95,7 +95,7 @@ Azure|NA|はい
 IIS Web ファームを正常に機能させるには、フェールオーバー後、またはテスト フェールオーバー時に、Azure の仮想マシンに対して一定の操作を実行することが必要な場合があります。 フェールオーバー後の操作は一部自動化することもできます。 たとえば、対応するスクリプトを復旧計画に追加することで、DNS エントリを更新したり、サイトのバインドを変更したり、接続文字列を変更したりすることができます。 スクリプトを使用して自動化タスクを設定する方法については、「[Add a VMM script to a recovery plan (復旧計画に VMM スクリプトを追加する)](./hyper-v-vmm-recovery-script.md)」で説明されています。
 
 #### <a name="dns-update"></a>DNS の更新
-DNS が動的 DNS 更新用に構成されている場合、仮想マシンは通常、その起動後に新しい IP アドレスで DNS を更新します。 仮想マシンの新しい IP アドレスで DNS を更新するための明示的な手順を追加する場合は、[DNS の IP を更新するためのスクリプト](https://aka.ms/asr-dns-update)を、復旧計画グループのフェールオーバー後のアクションとして追加します。  
+DNS が動的 DNS 更新用に構成されている場合、仮想マシンは通常、その起動後に新しい IP アドレスで DNS を更新します。 仮想マシンの新しい IP アドレスで DNS を更新するための明示的な手順を追加する場合は、[DNS の IP を更新するためのスクリプト](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/demos/asr-automation-recovery/scripts/ASR-DNS-UpdateIP.ps1)を、復旧計画グループのフェールオーバー後のアクションとして追加します。  
 
 #### <a name="connection-string-in-an-applications-webconfig"></a>アプリケーションの web.config 内の接続文字列
 接続文字列では、Web サイトの通信先となるデータベースを指定します。 接続文字列にデータベース仮想マシンの名前が含まれている場合は、フェールオーバー後の手順を追加する必要はありません。 アプリケーションは自動的に、データベースと通信できるようになります。 また、データベース仮想マシンの IP アドレスが保持される場合、接続文字列を更新する必要はありません。 

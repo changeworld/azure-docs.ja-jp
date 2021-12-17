@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/13/2020
+ms.date: 11/02/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 430af1dfcbd9c7faabfca2f3f5b80b3b3106a889
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f31a210894f6c4581c9deea54e18c5dac4d44b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675796"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462930"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
 
@@ -161,6 +161,13 @@ SAP ソリューション マネージャーなど、データベース サイ�
 | バックアップ ディスクの数と種類 | 4 | 4 | LVM2 または記憶域スペースを使用 |
 
 
+NFS v4.1 ボリュームにホストされている Azure NetApp Files は、SAP ASE データベース ストレージに使用するもう 1 つの代替手段です。 このような構成の基本構造は次のようになります
+
+![ANF を使用する SAP ASE 用のストレージ構成](./media/dbms-guide-sap-ase/anf-layout.png)
+
+上の例では、データベースの SID は A11 でした。 Azure NetApp Files ベースのボリュームのサイズとパフォーマンス レベルは、データベース ボリュームと、必要な IOPS およびスループットによって決まります。 sapdata と saplog の場合は、十分な帯域幅を提供できるように Ultra パフォーマンス レベルから始めることをお勧めします。 多くの非運用環境デプロイでは、Premium パフォーマンス レベルで十分な可能性があります。 データベースに使用する Azure NetApp Files の具体的なサイズ設定と制限事項について詳しくは、[『SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム』の「Azure NetApp Files 上の HANA データベースのサイズ指定」](./hana-vm-operations-netapp.md)の章をご覧ください。
+
+
 ### <a name="backup--restore-considerations-for-sap-ase-on-azure"></a>Azure での SAP ASE のバックアップと復元に関する考慮事項
 データとバックアップのデバイスの数を増やすと、バックアップと復元のパフォーマンスが向上します。 前の表に示したように、SAP ASE バックアップ デバイスをホストしている Azure ディスクをストライピングすることをお勧めします。 バックアップ デバイスとディスクの数のバランスを取り、バックアップのスループットが VM スループット クォータ合計の 40% - 50% を超えないように注意する必要があります。 既定として SAP バックアップ圧縮を使用することをお勧めします。 詳細については次の記事を参照してください。
 
@@ -182,13 +189,17 @@ I/O 帯域幅が制限要因になる構成では、IOPS を削減する手段�
 データベースと LOB の圧縮は、オンプレミスと同様に Azure Virtual Machines でも動作します。 既存の SAP ASE データベースで既に圧縮を使用しているかどうかを確認する方法について詳しくは、[SAP サポート ノート 1750510](https://launchpad.support.sap.com/#/notes/1750510) をご覧ください。 SAP ASE データベースの圧縮チェックの詳細については、[SAP サポート ノート #2121797](https://launchpad.support.sap.com/#/notes/2121797) を参照してください。
 
 ## <a name="high-availability-of-sap-ase-on-azure"></a>Azure での SAP ASE の高可用性 
-HADR ユーザー ガイドでは、2 ノードの SAP ASE "Always-on" ソリューションのセットアップと構成について詳しく説明されています。  さらに、3 つ目のディザスター リカバリー ノードもサポートされています。 SAP ASE では、共有ディスクやネイティブ OS クラスタリング (フローティング IP) など、多くの高可用性構成がサポートされています。 Azure でサポートされている構成は、Floating IP なしで Fault Manager を使用することだけです。  Floating IP Address メソッドは、Azure では機能しません。  SAP カーネルは "HA 対応" アプリケーションであり、プライマリとセカンダリの SAP ASE サーバーを認識します。 SAP ASE と Azure の間に密接な統合がないため、Azure 内部ロード バランサーは使用されません。 そのため、標準の SAP ASE のドキュメントは、「[SAP ASE HADR Users Guide](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html)」 (SAP ASE HADR ユーザー ガイド) から始める必要があります。 
+HADR ユーザー ガイドでは、2 ノードの SAP ASE "Always-on" ソリューションのセットアップと構成について詳しく説明されています。  さらに、3 つ目のディザスター リカバリー ノードもサポートされています。 SAP ASE では、共有ディスクやネイティブ OS クラスタリング (Pacemaker や Windows Server Failover Cluster など) を含む多くの高可用性[構成](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.4.1/en-US/9b40a3c038a34cbda1064312aa8d25a4.html)がサポートされています。 SAP ASE on Azure では、次の 2 つの高可用性構成がサポートされています。
+
+- Fault Manager を使用した HA 対応: SAP カーネルは "HA 対応" アプリケーションであり、プライマリとセカンダリの SAP ASE サーバーを認識します。 SAP ASE "HA 対応" ソリューションと Azure の間に密接な統合がないため、Azure 内部ロード バランサーは使用されません。  このソリューションについては、[SAP ASE HADR ユーザー ガイド](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html)に記載されています
+- Fault Manager を使用したフローティング IP: このソリューションは、SAP Business Suite および SAP Business Suite 以外のアプリケーションで使用できます。  このソリューションは Azure ILB を利用し、SAP ASE データベース エンジンはプローブ ポートを提供します。  Fault Manager は SAPHostAgent を呼び出して、ASE ホスト上のセカンダリ フローティング IP を開始または停止します。  このソリューションについては、[SAP ノート #3086679 - SYB: Fault Manager: Microsoft Azure でのフローティング IP アドレス](https://launchpad.support.sap.com/#/notes/3086679)に関するページを参照してください
+
 
 > [!NOTE]
-> Azure でサポートされている構成は、Floating IP なしで Fault Manager を使用することだけです。  Floating IP Address メソッドは、Azure では機能しません。 
+> HA 対応またはフローティング IP ソリューションのフェールオーバー時間とその他の特性は似ています。  お客様がこれら 2 つのソリューションを決定する際には、計画されたフェールオーバー時間や計画外のフェールオーバー時間などの要因や、その他の運用手順など、独自のテストと評価を実行する必要があります。  
 
 ### <a name="third-node-for-disaster-recovery"></a>ディザスター リカバリーのための 3 番目のノード
-ローカルの高可用性のために SAP ASE Always-On を使用する以外に、構成を別の Azure リージョンの非同期にレプリケートされたノードに拡張することが必要になる場合があります。 このようなシナリオのドキュメントは、[こちら](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)を参照してください。
+ローカルの高可用性のために SAP ASE Always-On を使用する以外に、構成を別の Azure リージョンの非同期にレプリケートされたノードに拡張することが必要になる場合があります。 詳細については、[Suse 12.3 への Sybase 16.3 パッチ レベル 3 Always-on および DR のインストール手順](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)に関するページを参照してください。
 
 ## <a name="sap-ase-database-encryption--ssl"></a>SAP ASE データベース暗号化と SSL 
 SAP Software Provisioning Manager (SWPM) には、インストール時にデータベースを暗号化するオプションが用意されています。  暗号化を使用する場合は、SAP Full Database Encryption を使用することをお勧めします。  詳細については、次のドキュメントを参照してください。
@@ -245,7 +256,6 @@ SAP システムをホストする Azure Virtual Machine が AD や DNS に接�
 > 
 > 
 
-DNS 名の詳細については、[こちら][virtual-machines-azurerm-versus-azuresm] をご覧ください。
 
 SAP プロファイル パラメーター icm/host_name_full を Azure VM のリンクの DNS 名に設定すると、リンクは次のようになる場合があります。
 

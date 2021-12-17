@@ -5,14 +5,15 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 02/21/2021
+ms.date: 10/04/2021
 ms.author: raynew
-ms.openlocfilehash: b728170521570ff0d83b67671109e82adb7fa7b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 57d08ea3997dac79f680881d3adb096afd8c9ea2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583280"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433462"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>PowerShell でリソースをリージョン間で移動する
 
@@ -48,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 リソースの移動操作は、Azure portal と PowerShell のいずれを使用しても、ほとんどの場合同じですが、いくつかの例外があります。
 
-**操作** | **PowerShell** | **ポータル**
+**操作** | **ポータル** | **PowerShell**
 --- | --- | ---
 **移動コレクションを作成する** | 移動コレクション (移動しようとしているすべてのリソースの一覧) は、自動的に作成されます。 必要な ID のアクセス許可は、ポータルによってバックエンドで割り当てられます。 | 以下を実行するには、PowerShell コマンドレットを使用します。<br/><br/> - 移動コレクションのリソース グループを作成し、その場所を指定する。<br/><br/> - マネージド ID をコレクションに割り当てる。<br/><br/> - リソースをコレクションに追加する。
 **移動コレクションを削除する** | ポータルでは、移動コレクションを直接削除することはできません。 | 移動コレクションを削除するには、PowerShell コマンドレットを使用します。
@@ -212,7 +213,7 @@ New-AzResourceMoverMoveCollection -Name "PS-centralus-westcentralus-demoRMS"  -R
     - 不足しているすべての依存関係の一覧を取得する場合:
 
         ```azurepowershell-interactive
-        Get-AzResourceMoverUnresolvedDependency -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS" -DependencyLevel Descendant"
+        Get-AzResourceMoverUnresolvedDependency -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS" -DependencyLevel Descendant
         ```
         **出力** ![すべての依存関係の一覧を取得した後の出力テキスト](./media/tutorial-move-region-powershell/dependencies-list.png)  
 
@@ -287,7 +288,7 @@ New-AzResourceMoverMoveCollection -Name "PS-centralus-westcentralus-demoRMS"  -R
 2. ソース リソース グループの移動を開始します。
 
     ```azurepowershell-interactive
-    "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource “PSDemoRM”
+    Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource “PSDemoRM”
     ```
     ![ソース リソース グループの移動を開始した後の出力テキスト](./media/tutorial-move-region-powershell/initiate-move-source-resource-group.png)
 

@@ -1,22 +1,29 @@
 ---
 title: Azure Automation の実行アカウントを管理する
-description: この記事では、PowerShell または Azure portal を使用して、実行アカウントを管理する方法について説明します。
+description: この記事では、PowerShell または Azure portal を使用して、Azure Automation 実行アカウントを管理する方法について説明します。
 services: automation
 ms.subservice: ''
-ms.date: 01/19/2021
+ms.date: 08/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f170fc948f136f4f46634e7ae2645ed2eb357afa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b6248ee0815d90be83030931c011bb2e8208eeaa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101096461"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723017"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation の実行アカウントを管理する
 
-Azure Automation の実行アカウントでは、Automation の Runbook やその他の自動化機能を使用し、Azure Resource Manager または Azure クラシック デプロイ モデルのリソースを管理する認証を提供します。 この記事では、実行アカウントまたはクラシック実行アカウントを管理する方法について説明します。
+Azure Automation の実行アカウントでは、Automation の Runbook やその他の自動化機能を使用し、Azure Resource Manager または Azure クラシック デプロイ モデルのリソースを管理する認証を提供します。 
 
-自動化シナリオの処理に関連する Azure Automation アカウントの認証と説明については、「[Automation アカウントの認証の概要](automation-security-overview.md)」を参照してください。
+この記事では、実行アカウントまたはクラシック実行アカウントの管理方法について取り上げます。取り上げる内容は次のとおりです。
+
+   * 自己署名証明書を更新する方法
+   * エンタープライズ証明機関 (CA) またはサードパーティ証明機関から発行された証明書を更新する方法
+   * 実行アカウントのアクセス許可を管理する
+
+Azure Automation アカウントの認証、実行アカウントの管理に必要なアクセス許可、および自動化シナリオの処理に関連するガイダンスについては、「[Automation アカウントの認証の概要](automation-security-overview.md)」を参照してください。
 
 ## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>自己署名証明書を更新する
 
@@ -28,7 +35,7 @@ Azure Automation の実行アカウントでは、Automation の Runbook やそ�
 >実行アカウントが侵害されていると思われる場合は、自己署名証明書を削除してから再作成することができます。
 
 >[!NOTE]
->エンタープライズ証明機関によって発行された証明書を使用するように実行アカウントを構成している場合に、自己署名証明書を更新するオプションを使用すると、エンタープライズ証明書は自己署名証明書に置き換えられます。
+>エンタープライズ CA またはサードパーティ CA によって発行された証明書を使用するように実行アカウントを構成している場合に、自己署名証明書を更新するオプションを使用すると、エンタープライズ証明書は自己署名証明書に置き換えられます。 このケースで証明書を更新する方法については、「[エンタープライズ証明書またはサードパーティ証明書を更新する](#renew-an-enterprise-or-third-party-certificate)」を参照してください。
 
 自己署名証明書を更新するには、次の手順を使用します。
 
@@ -45,6 +52,31 @@ Azure Automation の実行アカウントでは、Automation の Runbook やそ�
     :::image type="content" source="media/manage-runas-account/automation-account-renew-runas-certificate.png" alt-text="実行アカウントの証明書を更新する。":::
 
 1. 証明書が書き換えられている間、メニューの **[通知]** で進行状況を追跡できます。
+
+## <a name="renew-an-enterprise-or-third-party-certificate"></a>エンタープライズ証明書またはサードパーティ証明書を更新する
+
+証明書にはそれぞれ有効期限日が組み込まれています。 実行アカウントに割り当てた証明書が証明機関 (CA) によって発行されたものである場合、その有効期限が切れる前に各種の手順を実行し、新しい証明書で実行アカウントを構成する必要があります。 有効期限が切れる前にいつでも更新することができます。
+
+1. 「[新しい証明書を作成する](./shared-resources/certificates.md#create-a-new-certificate)」の手順に従って、更新済みの証明書をインポートします。 Automation では、証明書に次の構成が必要となります。
+
+   * **Microsoft Enhanced RSA and AES Cryptographic Provider** プロバイダーを指定する
+   * エクスポート可能としてマークされている
+   * SHA256 アルゴリズムを使用するように構成されている
+   * `*.pfx` または `*.cer` 形式で保存されている 
+
+   証明書をインポートしたら、その **拇印** の値をメモまたはコピーします。 この値は、実行アカウントの接続プロパティを新しい証明書で更新する際に使用されます。 
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+
+1. **Automation アカウント** を検索して選択します。
+
+1. [Automation アカウント] ページで、一覧から Automation アカウントを選択します。
+
+1. 左ペインで **[接続]** を選択します。
+
+1. **[Connections]\(接続\)** ページで **[AzureRunAsConnection]** を選択し、新しい証明書の拇印で **[証明書の拇印]** を更新します。
+
+1. **[保存]** を選択して、変更をコミットします。
 
 ## <a name="grant-run-as-account-permissions-in-other-subscriptions"></a>実行アカウントに他のサブスクリプションのアクセス許可を付与する
 

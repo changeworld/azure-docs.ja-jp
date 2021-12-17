@@ -2,13 +2,13 @@
 title: Azure VM のバックアップを管理および監視する
 description: Azure Backup サービスを使用して Azure VM のバックアップを管理および監視する方法について説明します。
 ms.topic: conceptual
-ms.date: 08/02/2020
-ms.openlocfilehash: 51ce88bb67d64ce129a3479d38db9a66dfe65d0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/17/2021
+ms.openlocfilehash: d1040c1261c3edff3010403a63c856ff1c0200fa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100635079"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605622"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup サービスで Azure VM のバックアップを管理する
 
@@ -97,7 +97,7 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 * オンデマンド バックアップのリテンション期間は、バックアップをトリガーするタイミングを指定するリテンション期間の値です。
 
 > [!NOTE]
-> Azure Backup サービスでは、1 日あたり最大 3 回のオンデマンド バックアップと、スケジュール済みバックアップを追加で 1 回サポートします。
+> Azure Backup では、1 日あたり 4 回のバックアップを推奨しています。VM に対して、バックアップ ポリシーに従って行われるスケジュールされたバックアップが 1 回と、オンデマンド バックアップが 3 回です。 ただし、試行が失敗した場合にユーザーが再試行できるようにするために、オンデマンド バックアップのハード制限は 9 回の試行に設定されます。
 
 オンデマンド バックアップをトリガーするには:
 
@@ -140,6 +140,10 @@ VM の保護を停止するには、次の 2 つの方法があります。
 ### <a name="stop-protection-and-delete-backup-data"></a>保護を停止してバックアップ データを削除する
 
 保護を停止して VM のデータを削除するには、次の手順を実行します。
+
+>[!Note]
+>アーカイブ層で 180 日間経過していないアーカイブの復旧ポイントを削除すると、早期削除コストが発生します。 [詳細については、こちらを参照してください](../storage/blobs/storage-blob-storage-tiers.md#cool-and-archive-early-deletion)。
+
 
 1. [コンテナー項目のダッシュボード](#view-vms-on-the-dashboard)で **[バックアップの停止]** を選択します。
 2. **[バックアップ データの削除]** を選択し、必要に応じて選択内容を確認します。 バックアップ項目の名前を入力し、必要に応じてコメントを追加します。

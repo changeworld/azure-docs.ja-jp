@@ -1,20 +1,20 @@
 ---
 title: Java から Queue Storage を使用する方法 - Azure Storage
 description: Queue Storage を使用してキューを作成および削除する方法について説明します。 Java 用の Azure Storage クライアント ライブラリを使用して、メッセージの挿入、ピーク、取得、削除を行う方法について説明します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 08/19/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-java
-ms.openlocfilehash: 5ea00adacff1f76eb5ec81728e3a11f703a5fe8c
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 25734b7f4073895da832b3d020679c6f7b36a080
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276265"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665855"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Java から Queue Storage を使用する方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "106276265"
 
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 最初に、[Java 用の Azure Queue Storage クライアント ライブラリ v12](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) に関する記事に記載されている前提条件が、開発システムによって満たされていることを確認します。
 
@@ -48,52 +48,52 @@ ms.locfileid: "106276265"
    ```
 
    ```powershell
-    mvn archetype:generate `
-        --define interactiveMode=n `
-        --define groupId=com.queues.howto `
-        --define artifactId=queues-howto-v12 `
-        --define archetypeArtifactId=maven-archetype-quickstart `
-        --define archetypeVersion=1.4
-    ```
+   mvn archetype:generate `
+       --define interactiveMode=n `
+       --define groupId=com.queues.howto `
+       --define artifactId=queues-howto-v12 `
+       --define archetypeArtifactId=maven-archetype-quickstart `
+       --define archetypeVersion=1.4
+   ```
 
 1. プロジェクトの生成からの出力は、次のようになります。
 
-    ```console
-    [INFO] Scanning for projects...
-    [INFO]
-    [INFO] ------------------< org.apache.maven:standalone-pom >-------------------
-    [INFO] Building Maven Stub Project (No POM) 1
-    [INFO] --------------------------------[ pom ]---------------------------------
-    [INFO]
-    [INFO] >>> maven-archetype-plugin:3.1.2:generate (default-cli) > generate-sources @ standalone-pom >>>
-    [INFO]
-    [INFO] <<< maven-archetype-plugin:3.1.2:generate (default-cli) < generate-sources @ standalone-pom <<<
-    [INFO]
-    [INFO]
-    [INFO] --- maven-archetype-plugin:3.1.2:generate (default-cli) @ standalone-pom ---
-    [INFO] Generating project in Batch mode
-    [INFO] ----------------------------------------------------------------------------
-    [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
-    [INFO] ----------------------------------------------------------------------------
-    [INFO] Parameter: groupId, Value: com.queues.howto
-    [INFO] Parameter: artifactId, Value: queues-howto-v12
-    [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-    [INFO] Parameter: package, Value: com.queues.howto
-    [INFO] Parameter: packageInPathFormat, Value: com/queues/howto
-    [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-    [INFO] Parameter: package, Value: com.queues.howto
-    [INFO] Parameter: groupId, Value: com.queues.howto
-    [INFO] Parameter: artifactId, Value: queues-howto-v12
-    [INFO] Project created from Archetype in dir: C:\queues\queues-howto-v12
-    [INFO] ------------------------------------------------------------------------
-    [INFO] BUILD SUCCESS
-    [INFO] ------------------------------------------------------------------------
-    [INFO] Total time:  6.775 s
-    [INFO] Finished at: 2020-08-17T15:27:31-07:00
-    [INFO] ------------------------------------------------------------------------
-        ```
+   ```console
+   [INFO] Scanning for projects...
+   [INFO]
+   [INFO] ------------------< org.apache.maven:standalone-pom >-------------------
+   [INFO] Building Maven Stub Project (No POM) 1
+   [INFO] --------------------------------[ pom ]---------------------------------
+   [INFO]
+   [INFO] >>> maven-archetype-plugin:3.1.2:generate (default-cli) > generate-sources @ standalone-pom >>>
+   [INFO]
+   [INFO] <<< maven-archetype-plugin:3.1.2:generate (default-cli) < generate-sources @ standalone-pom <<<
+   [INFO]
+   [INFO]
+   [INFO] --- maven-archetype-plugin:3.1.2:generate (default-cli) @ standalone-pom ---
+   [INFO] Generating project in Batch mode
+   [INFO] ----------------------------------------------------------------------------
+   [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
+   [INFO] ----------------------------------------------------------------------------
+   [INFO] Parameter: groupId, Value: com.queues.howto
+   [INFO] Parameter: artifactId, Value: queues-howto-v12
+   [INFO] Parameter: version, Value: 1.0-SNAPSHOT
+   [INFO] Parameter: package, Value: com.queues.howto
+   [INFO] Parameter: packageInPathFormat, Value: com/queues/howto
+   [INFO] Parameter: version, Value: 1.0-SNAPSHOT
+   [INFO] Parameter: package, Value: com.queues.howto
+   [INFO] Parameter: groupId, Value: com.queues.howto
+   [INFO] Parameter: artifactId, Value: queues-howto-v12
+   [INFO] Project created from Archetype in dir: C:\queues\queues-howto-v12
+   [INFO] ------------------------------------------------------------------------
+   [INFO] BUILD SUCCESS
+   [INFO] ------------------------------------------------------------------------
+   [INFO] Total time:  6.775 s
+   [INFO] Finished at: 2020-08-17T15:27:31-07:00
+   [INFO] ------------------------------------------------------------------------
+   ```
 
-1. Switch to the newly created `queues-howto-v12` directory.
+1. 新しく作成した `queues-howto-v12` ディレクトリに切り替えます。
 
    ```console
    cd queues-howto-v12
@@ -111,7 +111,7 @@ ms.locfileid: "106276265"
 </dependency>
 ```
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 最初に、[Java v8 用の Azure Storage SDK](https://github.com/azure/azure-storage-java) に記載されている前提条件が、開発システムによって満たされていることを確認します。 Azure Storage Libraries for Java をダウンロードしてインストールする手順に従います。 その後、この記事の例を使用して Java アプリケーションを作成できます。
 
@@ -121,11 +121,11 @@ ms.locfileid: "106276265"
 
 Azure Storage API を使用してキューにアクセスする Java ファイルの先頭には、次の import ステートメントを追加します。
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_ImportStatements":::
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 ```java
 // Include the following imports to use queue APIs.
@@ -139,11 +139,11 @@ import com.microsoft.azure.storage.queue.*;
 
 Azure Storage クライアントでは、データ管理サービスにアクセスするためにストレージ接続文字列が使用されます。 ストレージ アカウントの名前とプライマリ アクセス キーを、[Azure portal](https://portal.azure.com) で確認します。 これらを接続文字列の `AccountName` および `AccountKey` の値として使用します。 この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_ConnectionString":::
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 ```java
 // Define the connection-string with your values.
@@ -167,13 +167,13 @@ String storageConnectionString =
 
 ## <a name="how-to-create-a-queue"></a>方法:キューを作成する
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 `QueueClient` オブジェクトには、キューとやりとりするための操作が含まれています。 次のコードでは、`QueueClient` オブジェクトを作成します。 使用するキューを作成するには、`QueueClient` オブジェクトを使用します。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_CreateQueue":::
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 `CloudQueueClient` オブジェクトを使用すると、キューの参照オブジェクトを取得できます。 次のコードでは、使用するキューの参照を与える `CloudQueueClient` オブジェクトが作成されます。 キューが存在しない場合は作成できます。
 
@@ -207,15 +207,15 @@ catch (Exception e)
 
 ## <a name="how-to-add-a-message-to-a-queue"></a>方法:メッセージをキューに追加する
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 既存のキューにメッセージを挿入するには、`sendMessage` メソッドを呼び出します。 メッセージには、文字列 (UTF-8 形式) またはバイト配列のいずれかを指定できます。 キューに文字列メッセージを送信するコードを次に示します。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_AddMessage":::
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
-既存のキューにメッセージを挿入するには、最初に新しい `CloudQueueMessage`を作成します。 次に、`addMessage` メソッドを呼び出します。 `CloudQueueMessage` は、文字列 (UTF-8 形式) またはバイト配列で作成できます。 次のコードでは、キューが存在しない場合は作成し、メッセージ `Hello, World` を挿入します。
+既存のキューにメッセージを挿入するには、最初に新しい `CloudQueueMessage` を作成します。 次に、`addMessage` メソッドを呼び出します。 `CloudQueueMessage` は、文字列 (UTF-8 形式) またはバイト配列で作成できます。 次のコードでは、キューが存在しない場合は作成し、メッセージ `Hello, World` を挿入します。
 
 ```java
 try
@@ -250,11 +250,11 @@ catch (Exception e)
 
 `peekMessage` を呼び出すと、キューの先頭にあるメッセージをキューから削除せずにクイック表示することができます。
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_PeekMessage":::
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 ```java
 try
@@ -291,13 +291,13 @@ catch (Exception e)
 
 キュー内のメッセージの内容をインプレースで変更できます。 メッセージで作業タスクが表されている場合は、この機能を使用して、その状態を更新できます。 次のコードでは、キュー メッセージを新しい内容に更新し、表示タイムアウトを設定して 30 秒延長します。 表示タイムアウトを延長すると、クライアントでメッセージの処理をさらに 30 秒続けることができます。 再試行回数も維持できます。 メッセージの再試行回数が *n* 回を超えた場合は、それを削除します。 このシナリオでは、処理されるたびにアプリケーション エラーが発生するメッセージから保護されます。
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 次のコード サンプルでは、メッセージのキューを検索し、内容が検索文字列と一致する最初のメッセージを見つけて、メッセージの内容を変更し、終了します。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_UpdateSearchMessage":::
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 次のコード サンプルでは、メッセージのキューを検索し、内容が `Hello, world` と一致する最初のメッセージを見つけて、メッセージの内容を変更し、終了します。
 
@@ -346,11 +346,11 @@ catch (Exception e)
 
 次のコード サンプルでは、キューで最初に参照したメッセージのみが更新されます。
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_UpdateFirstMessage":::
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 ```java
 try
@@ -393,13 +393,13 @@ catch (Exception e)
 
 キュー内のメッセージの概数を取得できます。
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 `getProperties` メソッドから、キューに現在置かれているメッセージの数など、いくつかの値が返されます。 要求の後でメッセージが追加または削除される可能性があるため、これらの値はあくまでも概数です。 `getApproximateMessageCount` メソッドからは、Queue Storage を呼び出さず、`getProperties` を呼び出すことで取得された最後の値が返されます。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_GetQueueLength":::
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 `downloadAttributes` メソッドでは、キューに現在置かれているメッセージの数など、いくつかの値が取得されます。 要求の後でメッセージが追加または削除される可能性があるため、これらの値はあくまでも概数です。 `getApproximateMessageCount` メソッドからは、Queue Storage を呼び出さず、`downloadAttributes` を呼び出すことで取得された最後の値が返されます。
 
@@ -436,13 +436,13 @@ catch (Exception e)
 
 ## <a name="how-to-dequeue-the-next-message"></a>方法:次のメッセージをデキューする
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 コードでは、2 つの手順でキューからメッセージをデキューします。 `receiveMessage`を呼び出すと、キュー内の次のメッセージを取得します。 `receiveMessage` から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 既定では、このメッセージを参照できない状態は 30 秒間続きます。 また、キューからのメッセージの削除を完了するには、`deleteMessage` を呼び出す必要があります。 コードでのメッセージの処理が失敗した場合でも、この 2 段階のプロセスにより、同じメッセージを取得して再試行できます。 ご自分のコードで、メッセージが処理された直後に `deleteMessage` を呼び出します。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessage":::
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 コードでは、2 つの手順でキューからメッセージをデキューします。 `retrieveMessage`を呼び出すと、キュー内の次のメッセージを取得します。 `retrieveMessage` から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 既定では、このメッセージを参照できない状態は 30 秒間続きます。 また、キューからのメッセージの削除を完了するには、`deleteMessage` を呼び出す必要があります。 コードでのメッセージの処理が失敗した場合でも、この 2 段階のプロセスにより、同じメッセージを取得して再試行できます。 ご自分のコードで、メッセージが処理された直後に `deleteMessage` を呼び出します。
 
@@ -481,13 +481,13 @@ catch (Exception e)
 
 キューからのメッセージの取得をカスタマイズする方法は 2 つあります。 1 つ目の方法では、メッセージのバッチ (最大 32 個) を取得します。 2 つ目の方法では、コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くします。
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 次のコード例では、`receiveMessages` メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。 その後、`for` ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分 (300 秒) に設定します。 タイムアウトは、すべてのメッセージに対して同時に開始されます。 `receiveMessages` を呼び出してから 5 分経過すると、削除されていないメッセージは再び見えるようになります。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessages":::
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 次のコード例では、`retrieveMessages` メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。 その後、`for` ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分 (300 秒) に設定します。 タイムアウトは、すべてのメッセージに対して同時に開始されます。 `retrieveMessages` を呼び出してから 5 分経過すると、削除されていないメッセージは再び見えるようになります。
 
@@ -522,13 +522,13 @@ catch (Exception e)
 
 ## <a name="how-to-list-the-queues"></a>方法:キューを一覧表示する
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
-現在のキューの一覧を取得するには、`QueueServiceClient.listQueues()` メソッドを呼び出します。このメソッドからは、`QueueItem` オブジェクトのコレクションが返されます。
+現在のキューの一覧を取得するには、`QueueServiceClient.listQueues()` メソッドを呼び出します。このメソッドは、`QueueItem` オブジェクトのコレクションを返します。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_ListQueues":::
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 現在のキューの一覧を取得するには、`CloudQueueClient.listQueues()` メソッドを呼び出します。このメソッドは、`CloudQueue` オブジェクトのコレクションを返します。
 
@@ -561,13 +561,13 @@ catch (Exception e)
 
 ## <a name="how-to-delete-a-queue"></a>方法:キューを削除する
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
-キューおよびキューに格納されているすべてのメッセージを削除するには、`QueueClient` オブジェクトで `delete` メソッドを呼び出します。
+キューおよびそれに格納されているすべてのメッセージを削除するには、`QueueClient` オブジェクトの `delete` メソッドを呼び出します。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DeleteMessageQueue":::
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 キューおよびそれに格納されているすべてのメッセージを削除するには、`CloudQueue` オブジェクトの `deleteIfExists` メソッドを呼び出します。
 

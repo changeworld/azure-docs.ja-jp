@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Database
 description: Azure SQL Database への移行後の単一データベースとプールされたデータベースの管理方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: migration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: joesackmsft
-ms.author: josack
-ms.reviewer: sstein
+author: mokabiru
+ms.author: mokabiru
+ms.reviewer: mathoma
 ms.date: 02/13/2019
-ms.openlocfilehash: b34ac24cb26bf5db4a49a5ad5b531deb252f4695
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8a8eba07d29ae590a55586819a220a95f026507
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96446112"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298105"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>クラウドの新しい DBA – 移行後の Azure SQL Database の管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -95,7 +95,7 @@ SQL Database ではセキュリティとプライバシーが非常に重視さ�
 - 実際のデータの保護 ([Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) および [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine))。
 - 機密データおよび特権データの制御 ([行レベル セキュリティ](/sql/relational-databases/security/row-level-security)および[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking))。
 
-[Azure Security Center](https://azure.microsoft.com/services/security-center/): Azure、オンプレミス、他のクラウドで実行されているワークロード全体でのセキュリティ管理を一元化します。 [監査](../../azure-sql/database/auditing-overview.md)や [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) などの SQL Database の主要な保護機能がすべてのリソースに対して構成されているかどうかを確認し、独自の要件に応じてポリシーを作成できます。
+[Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) は、Azure、オンプレミス、他のクラウドで実行されているワークロード全体でのセキュリティ管理を一元化します。 [監査](../../azure-sql/database/auditing-overview.md)や [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) などの SQL Database の主要な保護機能がすべてのリソースに対して構成されているかどうかを確認し、独自の要件に応じてポリシーを作成できます。
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL Database ではどのようなユーザー認証方法が提供されますか
 
@@ -104,7 +104,7 @@ SQL Database では 2 種類の認証方法が提供されています。
 - [Azure Active Directory 認証](authentication-aad-overview.md)
 - [SQL 認証](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-従来の Windows 認証はサポートされていません。 Azure Active Directory (Azure AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 
+従来の Windows 認証はサポートされていません。 Azure Active Directory (Azure AD) は、ID とアクセスの集中管理サービスです。 これを利用すると、組織の人間にシングル サインオン (SSO) アクセスを非常に便利な方法で提供できます。 つまり、認証が簡単なように、資格情報は Azure サービスで共有されます。
 
 Azure AD は [Azure AD Multi-Factor Authentication](authentication-mfa-ssms-overview.md) をサポートします。[数クリック](../../active-directory/hybrid/how-to-connect-install-express.md)で Azure AD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定のサーバーの任意のデータベースでユーザーを認証できます。 これを使用すると、SQL Database および Azure Synapse Analytics で、Azure AD ドメイン内において Multi-Factor Authentication とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
 
@@ -245,7 +245,7 @@ Query Performance Insight を使うと、データベースのワークロード
 
 SQL Database では、データの保護に役立つ実践的なセキュリティの推奨事項と、データベースに対する潜在的な脅威になる可能性のある不審なデータベース アクティビティを識別して調査する脅威検出が提供されます。 [脆弱性評価](sql-vulnerability-assessment.md): データベース スキャンおよびレポート サービスであり、大規模なデータベースのセキュリティ状態を監視して、セキュリティ上のリスクおよびユーザーが定義したセキュリティ ベースラインからのずれを特定します。 各スキャン後には、ユーザーに合わせた実行可能な手順の一覧と修復スクリプト、およびコンプライアンス要件に準拠するために使用可能な評価レポートが提供されます。
 
-Azure Security Center では、全体的なセキュリティ推奨事項を確認し、シングル クリックでそれらを適用できます。
+Microsoft Defender for Cloud では、全体的なセキュリティ推奨事項を確認し、シングル クリックでそれらを適用できます。
 
 ### <a name="cost-optimization"></a>コストの最適化
 

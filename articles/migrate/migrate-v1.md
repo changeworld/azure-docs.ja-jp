@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 00e44185c938c94903e9b85a4748906721dac27f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a24675bb1dc0977165dfe891f36f2f83476198f7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571701"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615132"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 
@@ -225,7 +225,7 @@ vCenter Server で **[Other]\(その他\)** と指定された OS | この場合
 4. ワークスペース ID とキーをコピーします。 これらは、MMA をオンプレミスのマシンにインストールするときに必要になります。
 
 > [!NOTE]
-> エージェントのインストールを自動化するには、Configuration Manager などのデプロイ ツールを使用するか、Azure Migrate 用エージェント デプロイ ソリューションを備えたパートナー ツール ([Intigua](https://www.intigua.com/intigua-for-azure-migration) など) を使用します。
+> エージェントのインストールを自動化するには、Configuration Manager などのデプロイ ツールを使用するか、Azure Migrate 用エージェント デプロイ ソリューションを備えたパートナー ツール (Intigua など) を使用します。
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>Windows マシンに MMA エージェントをインストールする
@@ -247,7 +247,7 @@ Linux マシンにエージェントをインストールするには、次の�
 1. 該当するバンドル (x86 または x64) を、scp/sftp を使用して Linux コンピューターに転送します。
 2. --install 引数を使用してバンドルをインストールします。
 
-    ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
+    `sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>`
 
 MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](../azure-monitor/agents/agents-overview.md#supported-operating-systems)をご覧ください。
 
@@ -260,7 +260,7 @@ System Center Operations Manager 2012 R2 以降によって監視されている
 1. Windows マシンに依存関係エージェントをインストールするには、セットアップ ファイルをダブルクリックし、ウィザードに従います。
 2. Linux マシンに依存関係エージェントをインストールするには、次のコマンドを使用してルートとしてインストールします。
 
-    ```sh InstallDependencyAgent-Linux64.bin```
+    `sh InstallDependencyAgent-Linux64.bin`
 
 - Windows および Linux オペレーティング システムの[依存関係エージェントのサポート](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems)に関する詳細を確認してください。
 - スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent)をご覧ください。

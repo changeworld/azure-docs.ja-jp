@@ -2,20 +2,20 @@
 title: チュートリアル:サーバーでレンダリングされた Nuxt.js の Web サイトを Azure Static Web Apps にデプロイする
 description: Nuxt.js の動的サイトを生成し、Azure Static Web Apps を使用してデプロイします。
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.author: chnwamba
+ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 8f21f5fa8ee9035fe594cecff37a63b1ef2115cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 615bba10b410ec054227e1f2d45d2fdfde7b225d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97563468"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748025"
 ---
-# <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>サーバーでレンダリングされた Nuxt.js の Web サイトを Azure Static Web Apps プレビューにデプロイする
+# <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps"></a>サーバーでレンダリングされた Nuxt.js の Web サイトを Azure Static Web Apps にデプロイする
 
 このチュートリアルでは、[Nuxt.js](https://nuxtjs.org) で生成された静的 Web サイトを [Azure Static Web Apps](overview.md) にデプロイする方法について説明します。 まず、Nuxt.js アプリを設定、構成、デプロイする方法を学習します。 このプロセスの間に、Nuxt.js を使用して静的ページを生成するときによく発生する一般的な課題に対処する方法についても学習します
 
@@ -31,7 +31,11 @@ ms.locfileid: "97563468"
 
 1. お使いの GitHub アカウントに、テンプレート リポジトリから新しいリポジトリを作成します。
 1. [http://github.com/staticwebdev/nuxtjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nuxtjs-starter/generate) に移動します
+<<<<<<< HEAD
 1. リポジトリに **nuxtjs-starter** という名前を設定します
+=======
+1. リポジトリに **nuxtjs-starter** という名前を付けます。
+>>>>>>> repo_sync_working_branch
 1. 次に、新しいリポジトリをお使いのコンピューターにクローンします。 <YOUR_GITHUB_ACCOUNT_NAME> は、必ず自分のアカウント名に置き換えてください。
 
     ```bash
@@ -73,7 +77,7 @@ ms.locfileid: "97563468"
     ```json
     "scripts": {
       "dev": "nuxt dev",
-      "build": "nuxt generate",
+      "build": "nuxt generate"
     },
     ```
 
@@ -116,49 +120,49 @@ Azure Static Web Apps により、GitHub リポジトリからアプリがデプ
 
 次の手順では、GitHub にプッシュしたアプリを Azure Static Web Apps にリンクする方法を示します。 Azure に移動すると、アプリケーションを運用環境にデプロイできます。
 
-### <a name="create-an-azure-static-web-apps-preview-resource"></a>Azure Static Web Apps プレビューのリソースを作成する
+### <a name="create-an-azure-static-web-apps-resource"></a>Azure Static Web Apps リソースの作成
 
-1. [Azure Portal](https://portal.azure.com) に移動します
-1. **[リソースの作成]** をクリックします
-1. **[Static Web Apps]** を探します
-1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
-1. **[作成]**
+1. [Azure Portal](https://portal.azure.com) に移動します。
+1. **[リソースの作成]** を選択します。
+1. **Static Web Apps** を検索します。
+1. **Static Web Apps** を選択します。
+1. **［作成］** を選択します
+1. _[基本]_ タブで、次の値を入力します。
 
-1. *[サブスクリプション]* ドロップダウンの一覧からサブスクリプションを選択するか、既定値を使用します。
-1. *[リソース グループ]* ドロップダウンの下にある **[新規]** リンクをクリックします。 *[新しいリソース グループ名]* に「**mystaticsite**」と入力して、 **[OK]** をクリックします
-1. アプリのグローバルに一意の名前を **[名前]** テキスト ボックスに入力します。 有効な文字は、`a-z`、`A-Z`、`0-9`、`-` です。 この値は、静的アプリの URL プレフィックスとして `https://<APP_NAME>.azurestaticapps.net` の形式で使用されます。
-1. *[リージョン]* ドロップダウンで、最も近いリージョンを選択します。
-1. [SKU] ドロップダウンから **[Free]** を選択します。
+    | プロパティ | 値 |
+    | --- | --- |
+    | _サブスクリプション_ | Azure サブスクリプション名。 |
+    | _リソース グループ_ | **my-nuxtjs-group**  |
+    | _名前_ | **my-nuxtjs-app** |
+    | _[プランの種類]_ | **Free** |
+    | _Azure Functions API のリージョンとステージング環境_ | 最も近いリージョンを選択します。 |
+    | _ソース_ | **GitHub** |
 
-   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="静的 Web アプリを作成する":::
+1. **[GitHub でサインイン]** を選択し、GitHub で認証します。
 
-### <a name="add-a-github-repository"></a>GitHub リポジトリを追加する
+1. 次の GitHub 値を入力します。
 
-新しい Static Web Apps アカウントは、コミットを自動的にデプロイできるように、Nuxt.js アプリでリポジトリにアクセスする必要があります。
+    | プロパティ | 値 |
+    | --- | --- |
+    | _組織_ | ご自分の希望する GitHub 組織を選択します。 |
+    | _リポジトリ_ | 以前に選択したリポジトリを選択します。 |
+    | _ブランチ_ | **[main]\(メイン\)** を選択します。 |
 
-1. **[GitHub でサインイン]** ボタンをクリックします
-1. Nuxt.js プロジェクト用のリポジトリを作成した **[組織]** を選択します。これは、GitHub のユーザー名である場合があります。
-1. 前に作成したリポジトリの名前を探して選択します。
-1. *[ブランチ]* ドロップダウンから、ブランチとして **main** を選択します。
+1. _[Build Details]\(ビルドの詳細\)_ セクションで、 _[Build Presets]\(ビルドのプリセット\)_ ドロップダウンから **[Custom]\(カスタム\)** を選択し、既定値をそのままにします。
 
-   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="GitHub に接続する":::
-
-### <a name="configure-the-build-process"></a>ビルド プロセスを構成する
-
-Azure Static Web Apps は、npm モジュールのインストールや、各デプロイ中の `npm run build` の実行など、一般的なタスクを自動的に実行するように作成されています。 ただし、アプリケーション ソース フォルダーやビルド先フォルダーなど、手動で構成する必要のある設定がいくつかあります。
-
-1. **[ビルド]** タブをクリックして、静的な出力フォルダーを構成します。
-
-      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="[ビルド] タブ":::
-
-1. *[App artifact location]\(アプリ成果物の場所\)* テキスト ボックスに「**dist**」と入力します。
+1. _[App location]\(アプリの場所\)_ のボックスに「 **./** 」と入力します。
+1. _[Api location]\(API の場所\)_ ボックスはからのままにします。
+1. _[Output location]\(出力の場所\)_ ボックスに、「**out**」と入力します。
 
 ### <a name="review-and-create"></a>[Review and create] (確認および作成)
 
-1. **[確認および作成]** ボタンをクリックして、詳細がすべて正しいことを確認します。
-1. **[作成]** をクリックして、リソースの作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
-1. デプロイが完了したら、 **[リソースに移動]** をクリックします
-1. _[概要]_ ウィンドウで、 *[URL]* リンクをクリックして、デプロイしたアプリケーションを開きます。 
+1. **[確認および作成]** ボタンを選択して、詳細がすべて正しいことを確認します。
+
+1. **[作成]** を選択して、App Service Static Web App の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
+
+1. デプロイが完了したら、 **[リソースに移動]** をクリックします。
+
+1. _[概要]_ ウィンドウで、 *[URL]* リンクをクリックして、デプロイしたアプリケーションを開きます。
 
 Web サイトがすぐに読み込まれない場合は、バックグラウンドで GitHub Actions ワークフローがまだ実行されています。 ワークフローが完了したら、クリックしてブラウザーを最新の情報に更新し、Web アプリを表示できます。
 

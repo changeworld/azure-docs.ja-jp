@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: aamalvea
-ms.author: aamalvea
-ms.reviewer: wiassaf, sstein
+author: AlainDormehlMSFT
+ms.author: aldorme
+ms.reviewer: mathoma, wiassaf
 ms.date: 03/24/2021
-ms.openlocfilehash: 4434c796a41126444b8785440427123e88e0b528
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1c52ca808b509ddb3a79d27a110a08a451b9c748
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107790"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722971"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Resource Health を使用して Azure SQL Database と Azure SQL Managed Instance の接続をトラブルシューティングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -77,4 +77,4 @@ Azure インフラストラクチャでは、計画メンテナンス (データ
 - [SQL 接続エラーのトラブルシューティング、診断、および回避](troubleshoot-common-connectivity-issues.md)。
 - [Resource Health のアラートの構成](../../service-health/resource-health-alert-arm-template-guide.md)の詳細を確認します。
 - [Resource Health](../../service-health/resource-health-overview.md) の概要を確認します。
-- [Resource Health の FAQ](../../service-health/resource-health-faq.md) を確認します。
+- [Resource Health の FAQ](../../service-health/resource-health-faq.yml) を確認します。

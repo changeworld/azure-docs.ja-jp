@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bcee8d0554b9c3349c7efc88c10e9eee8b185acb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e4374e564ea2fb8a5cc3f8bada6eb3ff27663912
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773281"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634278"
 ---
 # <a name="streaming-locators"></a>ストリーミング ロケーター
 
@@ -85,7 +85,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ## <a name="filter-order-page-streaming-locator-entities"></a>ストリーミング ロケーター エンティティのフィルター処理、順序付け、ページング
 
-「[Media Services エンティティのフィルター処理、順序付け、ページング](filter-order-page-entitites-how-to.md)」を参照してください。
+「[Media Services エンティティのフィルター処理、順序付け、ページング](filter-order-page-entities-how-to.md)」を参照してください。
 
 ## <a name="list-streaming-locators-by-asset-name"></a>アセット名別のストリーミング ロケーターの一覧
 

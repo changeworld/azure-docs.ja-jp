@@ -4,11 +4,23 @@
   items:
     - name: Azure Arc について
       href: overview.md
-- name: Arc 対応サーバー >
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
+- name: Azure Arc 対応サーバー >
   href: ./servers/overview.md
-- name: Arc 対応 Kubernetes >
+- name: Azure Arc 対応 Kubernetes >
   href: ./kubernetes/overview.md
-- name: Arc 対応データ サービス (プレビュー) >
+- name: Azure Arc 対応データ サービス  >
   href: ./data/overview.md
-- name: Arc 対応 SQL Server (プレビュー) >
-  href: 'https://docs.microsoft.com/sql/sql-server/azure-arc/overview'
+- name: Azure Arc 対応サーバーでの SQL Server >
+  href: /sql/sql-server/azure-arc/overview
+- name: Arc 検証プログラム
+  items:
+    - name: プログラムの概要
+      href: validation-program/overview.md
+    - name: 検証済みの Kubernetes パートナー
+      href: kubernetes/validation-program.md?toc=/azure/azure-arc/toc.json&bc=/azure/azure-arc/breadcrumb/toc.json
+    - name: 検証済みのデータ サービス パートナー
+      href: data/validation-program.md?toc=/azure/azure-arc/toc.json&bc=/azure/azure-arc/breadcrumb/toc.json

@@ -3,12 +3,12 @@ title: Application Insights のデプロイを設計する方法 - 1 つまた�
 description: 開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ffa3c0c6248fd34f91ec1756c3e7e5177134717e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102424667"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078239"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>デプロイする必要がある Application Insights リソースの数
 
@@ -24,23 +24,23 @@ Web アプリに対する Application Insights の監視を設定するときは
 
 ### <a name="when-to-use-a-single-application-insights-resource"></a>単一の Application Insights リソースを使用するケース
 
--   一緒にデプロイされるアプリケーション コンポーネントの場合。 通常は、1 つのチームによって開発され、同じ DevOps/ITOps ユーザーのセットによって管理されます。
--   それらすべてにわたって既定で応答時間、ダッシュボードの失敗率などの主要業績評価指標 (KPI) を集計することが理にかなっている場合 (メトリックス エクスプローラー エクスペリエンスでロール名でセグメント化することを選択できます)。
--   アプリケーション コンポーネント間で異なる方法で Azure ロールベースのアクセス制御 (Azure RBAC) を管理する必要がない場合。
--   コンポーネント間で異なるメトリック アラート条件が必要ない場合。
--   コンポーネント間で異なる方法で連続エクスポートを管理する必要がない場合。
--   コンポーネント間で異なる方法で請求先またはクォータを管理する必要がない場合。
--   API キーがすべてのコンポーネントのデータに対して同じアクセス権を持っていてもかまわない場合。 これらすべてのニーズに対応するには、10 個の API キーで十分です。
--   すべてのロールで同じスマート検出と作業項目の統合設定を持つことができる場合。
+- 一緒にデプロイされるアプリケーション コンポーネントの場合。 通常は、1 つのチームによって開発され、同じ DevOps/ITOps ユーザーのセットによって管理されます。
+- それらすべてにわたって既定で応答時間、ダッシュボードの失敗率などの主要業績評価指標 (KPI) を集計することが理にかなっている場合 (メトリックス エクスプローラー エクスペリエンスでロール名でセグメント化することを選択できます)。
+- アプリケーション コンポーネント間で異なる方法で Azure ロールベースのアクセス制御 (Azure RBAC) を管理する必要がない場合。
+- コンポーネント間で異なるメトリック アラート条件が必要ない場合。
+- コンポーネント間で異なる方法で連続エクスポートを管理する必要がない場合。
+- コンポーネント間で異なる方法で請求先またはクォータを管理する必要がない場合。
+- API キーがすべてのコンポーネントのデータに対して同じアクセス権を持っていてもかまわない場合。 これらすべてのニーズに対応するには、10 個の API キーで十分です。
+- すべてのロールで同じスマート検出と作業項目の統合設定を持つことができる場合。
 
 > [!NOTE]
 > 複数の Application Insights リソースを統合する場合、統合後の新しい Application Insights リソースに既存のアプリケーション コンポーネントをさし向けることができます。 古いリソースに保管されている利用統計情報は、新しいリソースに転送されません。そのため、事業継続性のために、新しいリソースに十分な利用統計情報がある場合、古いリソースのみを削除してください。
 
 ### <a name="other-things-to-keep-in-mind"></a>その他の注意点
 
--   [Cloud_RoleName](./app-map.md?tabs=net#set-or-override-cloud-role-name) 属性に意味のある値が設定されるようにするには、カスタム コードを追加することが必要になる場合があります。 この属性に対して意味のある値が設定されていないと、どのポータル エクスペリエンスも機能 "*しません*"。
+- [Cloud_RoleName](./app-map.md?tabs=net#set-or-override-cloud-role-name) 属性に意味のある値が設定されるようにするには、カスタム コードを追加することが必要になる場合があります。 この属性に対して意味のある値が設定されていないと、どのポータル エクスペリエンスも機能 "*しません*"。
 - Service Fabric アプリケーションと従来のクラウド サービスについては、SDK によって Azure ロール環境から自動的に読み取られ、これらが設定されます。 他のすべての種類のアプリでは、これを明示的に設定する必要があります。
--   Live Metrics エクスペリエンスでは、ロール名による分割はサポートされていません。
+- Live Metrics エクスペリエンスでは、ロール名による分割はサポートされていません。
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
@@ -99,7 +99,7 @@ Application Insights リソースを作成するには、[リソース作成ガ�
 * その行を [テレメトリ初期化子](../../azure-monitor/app/api-custom-events-metrics.md#defaults) にラップして、すべての TelemetryClient インスタンスが一貫して設定されるようにします。
 * [ASP.NET] `BuildInfo.config`でバージョンを設定します。 Web モジュールは BuildLabel ノードからバージョンを取得します。 このファイルをプロジェクトに追加し、ソリューション エクスプローラーで [常にコピーする] プロパティを設定します。
 
-    ```XML
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <DeploymentEvent xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
       <ProjectName>AppVersionExpt</ProjectName>
@@ -113,7 +113,7 @@ Application Insights リソースを作成するには、[リソース作成ガ�
     ```
 * [ASP.NET] MSBuild で自動的に BuildInfo.config を生成します。 そのためには、`.csproj` ファイルに数行を追加します。
 
-    ```XML
+    ```xml
     <PropertyGroup>
       <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
     </PropertyGroup>
@@ -126,9 +126,9 @@ Application Insights リソースを作成するには、[リソース作成ガ�
     MSBuild がバージョン番号を生成できるようにするには、AssemblyReference.cs で `1.0.*` のようなバージョンを設定します。
 
 ## <a name="version-and-release-tracking"></a>バージョンおよびリリースの追跡
-アプリケーションのバージョンを追跡するには、Microsoft Build Engine プロセスによって `buildinfo.config` が生成されたことを確認してください。 `.csproj` ファイルに以下を追加します。  
+アプリケーションのバージョンを追跡するには、Microsoft Build Engine プロセスによって `buildinfo.config` が生成されたことを確認してください。 `.csproj` ファイルに以下を追加します。
 
-```XML
+```xml
 <PropertyGroup>
   <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>
   <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
@@ -140,7 +140,8 @@ Application Insights リソースを作成するには、[リソース作成ガ�
 ただし、Visual Studio の開発者向けのビルドではなく、Microsoft Build Engine でのみビルド バージョン番号が生成されることに注意してください。
 
 ### <a name="release-annotations"></a>リリース注釈
-Azure DevOps を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](../../azure-monitor/app/annotations.md)できます。 
+
+Azure DevOps を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](../../azure-monitor/app/annotations.md)できます。
 
 ## <a name="next-steps"></a>次のステップ
 

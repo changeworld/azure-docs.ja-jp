@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 機械学習パイプラインと Python 用 Azure Machine Learning SDK を使用して、機械学習ワークフロー実行します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.reviewer: sgilley
 ms.author: laobri
 author: lobrien
-ms.date: 8/25/2020
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: efedb21a1ec1ed53a8c6bfadf337d23a89c04383
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: a28a9b5cc6241c36e6dfdca253a4e56af480b9d8
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520178"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557511"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>機械学習パイプラインを発行して追跡する
 
@@ -302,7 +302,7 @@ class AuthenticationBody {
 ```python
 from azureml.pipeline.core import PipelineEndpoint
 
-published_pipeline = PipelineEndpoint.get(workspace=ws, name="My_Published_Pipeline")
+published_pipeline = PublishedPipeline.get(workspace=ws, name="My_Published_Pipeline")
 pipeline_endpoint = PipelineEndpoint.publish(workspace=ws, name="PipelineEndpointTest",
                                             pipeline=published_pipeline, description="Test description Notebook")
 ```
@@ -350,13 +350,13 @@ Studio から発行されたパイプラインを実行することもできま�
 
 1. 実行または使用する、またはパイプライン エンドポイントの以前の実行の結果を確認する、特定のパイプラインを選択します。
 
-## <a name="disable-a-published-pipeline&quot;></a>発行されたパイプラインを無効にする
+## <a name="disable-a-published-pipeline"></a>発行されたパイプラインを無効にする
 
 発行済みパイプラインの一覧にパイプラインが表示されないようにするには、Studio または SDK でそれを無効にします。
 
 ```python
 # Get the pipeline by using its ID from Azure Machine Learning studio
-p = PublishedPipeline.get(ws, id=&quot;068f4885-7088-424b-8ce2-eeb9ba5381a6")
+p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 

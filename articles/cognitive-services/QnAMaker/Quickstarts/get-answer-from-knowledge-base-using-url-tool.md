@@ -9,15 +9,17 @@ ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
 ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: 46657cfaf513cdd2dd0ecfd284602d2277781626
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2f983ba51269315ba9406faa7e3feec1853e995d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583073"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043721"
 ---
-# <a name="get-an-answer-from-a-knowledge-base"></a>ナレッジ ベースから回答を取得する
+# <a name="get-an-answer-from-a-qna-maker-knowledge-base"></a>QNA Maker ナレッジ ベースから回答を取得する
 
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 ::: zone pivot="url-test-tool-curl"
 
@@ -40,4 +42,3 @@ ms.locfileid: "104583073"
 メタデータの詳細:
 * [作成 - QnA ペアにメタデータを追加する](../How-To/edit-knowledge-base.md#add-metadata)
 * [クエリ予測 - メタデータを使用して回答のフィルター処理を行う](../How-To/query-knowledge-base-with-metadata.md)
-

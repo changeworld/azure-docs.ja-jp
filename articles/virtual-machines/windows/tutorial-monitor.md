@@ -9,15 +9,16 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 8c4345d16efe296413ea9d995c2307bba62d33f8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: f16060e58783a96c95c71361908d6bfbc74e36ba
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560703"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281440"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で Windows 仮想マシンを監視する
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット
 
 Azure Monitoring は、エージェントを使用して Azure VM からブート データとパフォーマンス データを収集します。そのデータは、Azure Storage に格納され、ポータルや Azure PowerShell モジュール、Azure CLI からアクセスできるようになります。 Azure Monitor for VMs でパフォーマンス メトリックを収集し、VM にインストールされているアプリケーション コンポーネントを検出すると共に、パフォーマンス グラフと依存関係マップを追加することによって、先進の監視機能が実現されます。
 
@@ -142,7 +143,7 @@ VM 用 Azure Monitor には、仮想マシンがどの程度効果的に実行�
 > * VM のメトリックを表示する
 > * アラートを作成する
 
-次のチュートリアルに進み、Azure Security Center について学習してください。
+次のチュートリアルに進み、Microsoft Defender for Cloud について学習してください。
 
 > [!div class="nextstepaction"]
 > [VM のセキュリティの管理](../../security/fundamentals/overview.md)

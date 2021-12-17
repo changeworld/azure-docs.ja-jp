@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: 54bfd7c6e691efbd754e9ea2b804e16b3e07ebbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65de72576ac484ea29710baaba9f391bfdcbc7b6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670962"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131421591"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines への SAP HANA のインストール
 ## <a name="introduction"></a>はじめに
@@ -55,7 +55,7 @@ ms.locfileid: "101670962"
 ## <a name="step-by-step-vm-deployment-and-guest-os-considerations"></a>VM のデプロイの詳細な手順とゲスト OS に関する考慮事項
 このフェーズでは、VM をデプロイして HANA をインストールする手順を実行し、インストール後に、選択したオペレーティング システムを最終的に最適化する必要があります。
 
-1. Azure ギャラリーから基本イメージを選択します。 SAP HANA 用に独自のオペレーティング システム イメージを構築する場合は、SAP HANA を正常にインストールするために必要なさまざまなパッケージをすべて把握しておく必要があります。 それ以外の場合は、Azure イメージ ギャラリーから SAP または SAP HANA 用の SUSE および Red Hat のイメージを使用することをお勧めします。 これらのイメージには、HANA を正常にインストールするために必要なパッケージが含まれています。 オペレーティング システム プロバイダーとのサポート契約に基づいて、ライセンスを持ち込むイメージを選択する必要があります。 または、サポートを含む OS イメージを選択します。
+1. Azure ギャラリーから基本イメージを選択します。 SAP HANA 用に独自のオペレーティング システム イメージを構築する場合は、SAP HANA を正常にインストールするために必要なさまざまなパッケージをすべて把握しておく必要があります。 それ以外の場合は、ギャラリーから SAP または SAP HANA 用の SUSE および Red Hat のイメージを使用することをお勧めします。 これらのイメージには、HANA を正常にインストールするために必要なパッケージが含まれています。 オペレーティング システム プロバイダーとのサポート契約に基づいて、ライセンスを持ち込むイメージを選択する必要があります。 または、サポートを含む OS イメージを選択します。
 2. ライセンスを持ち込む必要があるゲスト OS イメージを選択した場合は、最新の修正プログラムをダウンロードして適用できるように、その OS イメージをサブスクリプションに登録する必要があります。 この手順では、パブリック インターネット アクセスが必要になります。 ただし、Azure 内に (たとえば、SMT サーバーの) プライベート インスタンスを設定している場合を除きます。
 3. VM のネットワーク構成を決定します。 詳細については、「[Azure における SAP HANA インフラストラクチャの構成と運用](./hana-vm-operations.md)」ドキュメントを参照してください。 Azure の仮想ネットワーク カードに割り当てられるネットワーク スループット クォータはないことに注意してください。 そのため、さまざまな vNIC 経由でトラフィックを転送する唯一の目的は、セキュリティに関する考慮事項に基づいています。 複数の vNIC を経由するトラフィック ルーティングの複雑さと、セキュリティ面から適用される要件との間で、サポート可能な妥協点を見つけてください。
 3. VM をデプロイして登録したら、最新の修正プログラムをオペレーティング システムに適用します。 登録は、独自のサブスクリプションに対するものです。 または、オペレーティング システムのサポートが含まれているイメージを選択した場合は、VM は既に修正プログラムにアクセスできます。 
@@ -94,8 +94,8 @@ Azure Premium Storage または Ultra ディスクの直接接続ディスクを
 
 ## <a name="additional-resources-for-sap-hana-backup"></a>SAP HANA バックアップ用の追加リソース
 Azure VM での SAP HANA データベースのバックアップ方法の詳細については以下を参照してください。
-* [Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](./sap-hana-backup-guide.md)
-* [ファイル レベルの SAP HANA Azure バックアップ](./sap-hana-backup-file-level.md)
+* [Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](../../../backup/sap-hana-db-about.md)
+* [ファイル レベルの SAP HANA Azure バックアップ](../../../backup/sap-hana-db-about.md)
 
 ## <a name="next-steps"></a>次のステップ
 次のドキュメントをお読みください。

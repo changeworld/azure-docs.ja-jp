@@ -1,31 +1,31 @@
 ---
-title: 自動 ML での説明可能性 (プレビュー)
+title: 自動 ML でのモデル説明 (プレビュー)
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning SDK を使用している場合に、自動 ML モデルがどのように特徴量の重要度を判定して予測を行うかに関する説明を取得する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, automl, responsible-ml
+ms.subservice: automl
+ms.topic: how-to
+ms.custom: automl, responsible-ml, mktng-kw-nov2021
 ms.author: mithigpe
 author: minthigpen
-ms.date: 07/09/2020
-ms.openlocfilehash: 535ff489060c8099ba3c695f2b615f3c38309698
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 10/21/2021
+ms.openlocfilehash: f739da0dde7f2ef9935466ebbd4e4d4498355263
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167942"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852619"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>解釈可能性: 自動機械学習のモデルの説明 (プレビュー)
+# <a name="interpretability-model-explainability-in-automated-ml-preview"></a>解釈可能性: 自動 ML でのモデル説明 (プレビュー)
 
 
-
-この記事では、Azure Machine Learning で自動機械学習 (AutoML) の説明を取得する方法について説明します。 AutoML は、生成されるモデルの特徴量の重要度を理解するのに役立ちます。 
+この記事では、Python SDK を使用して、Azure Machine Learning で自動機械学習 (自動 ML) モデルの説明を取得する方法について説明します。 自動 ML は、生成されるモデルの特徴量の重要度を理解するのに役立ちます。 
 
 1\.0.85 より後のすべての SDK バージョンは、既定で `model_explainability=True` となります。 SDK バージョン 1.0.85 以前のバージョンでは、モデルの解釈可能性を使用するために、ユーザーは `AutoMLConfig` オブジェクトに `model_explainability=True` を設定する必要があります。 
 
-この記事では、次の方法について説明します。
+
+この記事では、次のことについて説明します。
 
 - 最良のモデルまたは任意のモデルのトレーニング中の解釈可能性を実行する。
 - データや説明のパターンを確認するのに役立つ視覚化を有効にする。
@@ -34,22 +34,14 @@ ms.locfileid: "106167942"
 ## <a name="prerequisites"></a>前提条件
 
 - 解釈可能性の機能。 `pip install azureml-interpret` を実行して、必要なパッケージを取得します。
-- AutoML の実験の作成に関する知識。 Azure Machine Learning SDK の使用方法について詳しくは、こちらの[回帰モデルのチュートリアル](tutorial-auto-train-models.md)を完了するか、[AutoML の実験を構成する](how-to-configure-auto-train.md)方法を参照してください。
+- 自動 ML の実験の作成に関する知識。 Azure Machine Learning SDK の使用方法について詳しくは、この[回帰モデルのチュートリアル](tutorial-auto-train-models.md)を最後まで読むか、または[自動 ML の実験を構成する](how-to-configure-auto-train.md)方法に関する記事を参照してください。
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>最良のモデルのトレーニング中の解釈可能性
 
 `best_run` から説明を取得します。これには、生の特徴とエンジニアリングされた特徴の両方の説明が含まれます。
 
 > [!NOTE]
-> 解釈可能性、最適なモデルの説明は、以下のアルゴリズムを最適なモデルとして推奨する Auto ML 予測実験では利用できません。 
-> * TCNForecaster
-> * AutoArima
-> * ExponentialSmoothing
-> * Prophet
-> * 平均 
-> * Naive
-> * Seasonal Average 
-> * Seasonal Naive
+> 自動 ML 予測実験で推奨される TCNForecaster モデルでは、解釈能力、モデルの説明は使用できません。
 
 ### <a name="download-the-engineered-feature-importances-from-the-best-run"></a>最適な実行からエンジニアリングされた特徴量の重要度をダウンロードする
 
@@ -105,11 +97,11 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 
 ### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>特徴量の重要度のための Mimic Explainer を初期化する
 
-AutoML モデルの説明を生成するには、`MimicWrapper` クラスを使います。 次のパラメーターを使用して MimicWrapper を初期化できます。
+自動 ML モデルの説明を生成するには、`MimicWrapper` クラスを使います。 次のパラメーターを使用して MimicWrapper を初期化できます。
 
 - 説明セットアップ オブジェクト
 - ワークスペース
-- `fitted_model` AutoML モデルを説明する代理モデル
+- `fitted_model` 自動 ML モデルを説明する代理モデル
 
 また、MimicWrapper は、エンジニアリングされた説明のアップロード先となる `automl_run` オブジェクトを受け取ります。
 
@@ -128,13 +120,13 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimic-explainer-for-computing-and-visualizing-engineered-feature-importance"></a>Mimic Explainer を使用してエンジニアリングされた特徴量の重要度を計算および視覚化する
 
-変換されたテスト サンプルを使用して、MimicWrapper の `explain()` メソッドを呼び出し、生成済みのエンジニアリングされた特徴の特徴量の重要度を取得できます。 [Azure Machine Learning スタジオ](https://ml.azure.com/)にサインインして、AutoML フィーチャライザーによって生成された、エンジニアリングされた特徴の特徴量の重要度の値をダッシュボードに視覚化して表示することもできます。
+変換されたテスト サンプルを使用して、MimicWrapper の `explain()` メソッドを呼び出し、生成済みのエンジニアリングされた特徴の特徴量の重要度を取得できます。 [Azure Machine Learning スタジオ](https://ml.azure.com/)にサインインして、自動 ML フィーチャライザーによって生成された、エンジニアリングされた特徴の特徴量の重要度の値を説明ダッシュボードに視覚化して表示することもできます。
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
 ```
-自動 ML でトレーニングされたモデルの場合は、`get_output()` メソッドを使用して最適なモデルを取得し、説明をローカルで計算できます。  説明の結果は、`interpret-community` パッケージから `ExplanationDashboard` を使用して視覚化できます。
+自動 ML でトレーニングされたモデルの場合は、`get_output()` メソッドを使用して最適なモデルを取得し、説明をローカルで計算できます。  説明の結果は、`raiwidgets` パッケージから `ExplanationDashboard` を使用して視覚化できます。
 
 ```python
 best_run, fitted_model = remote_run.get_output()
@@ -157,7 +149,7 @@ pip install interpret-community[visualization]
 
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict()),
-from interpret_community.widget import ExplanationDashboard
+from raiwidgets import ExplanationDashboard
 ExplanationDashboard(engineered_explanations, automl_explainer_setup_obj.automl_estimator, datasetX=automl_explainer_setup_obj.X_test_transform)
 
  
@@ -166,13 +158,13 @@ raw_explanations = explainer.explain(['local', 'global'], get_raw=True,
                                      raw_feature_names=automl_explainer_setup_obj.raw_feature_names,
                                      eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(raw_explanations.get_feature_importance_dict()),
-from interpret_community.widget import ExplanationDashboard
+from raiwidgets import ExplanationDashboard
 ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, datasetX=automl_explainer_setup_obj.X_test_raw)
 ```
 
 ### <a name="use-mimic-explainer-for-computing-and-visualizing-raw-feature-importance"></a>Mimic Explainer を使用して生の特徴量の重要度を計算および視覚化する
 
-変換されたテスト サンプルを使用して、MimicWrapper の `explain()` メソッドを呼び出し、生の特徴の特徴量の重要度を取得できます。 [Machine Learning スタジオ](https://ml.azure.com/)では、生の特徴の特徴量の重要度の値をダッシュボードに視覚化して表示することもできます。
+変換されたテスト サンプルを使用して、MimicWrapper の `explain()` メソッドを呼び出し、生の特徴の特徴量の重要度を取得できます。 [Machine Learning スタジオ](https://ml.azure.com/)では、生の特徴の特徴量の重要度の値をダッシュボードに視覚化して表示できます。
 
 ```python
 raw_explanations = explainer.explain(['local', 'global'], get_raw=True,
@@ -184,7 +176,7 @@ print(raw_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-inference"></a>推論中の解釈可能性
 
-このセクションでは、前のセクションで説明の計算に使用された Explainer を使用して、AutoML モデルを運用化する方法について説明します。
+このセクションでは、前のセクションで説明の計算に使用された Explainer を使用して、自動 ML モデルを運用化する方法について説明します。
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>モデルとスコアリング Explainer を登録する
 
@@ -321,9 +313,9 @@ if service.state == 'Healthy':
     print('raw_local_importance_values:\n{}\n'.format(output['raw_local_importance_values']))
 ```
 
-### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>トレーニング時にデータのパターンと説明を発見するために視覚化する
+## <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>トレーニング時にデータのパターンと説明を発見するために視覚化する
 
-[Machine Learning スタジオ](https://ml.azure.com)のワークスペースで、特徴量の重要度のグラフを視覚化できます。 AutoML の実行が完了した後、 **[モデルの詳細の表示]** を選択して、特定の実行を表示します。 **[Explanations]\(説明\)** タブを選択して、説明の視覚化ダッシュボードを表示します。
+[Azure Machine Learning Studio](https://ml.azure.com) のワークスペースで、特徴量の重要度のグラフを視覚化できます。 AutoML の実行が完了した後、 **[モデルの詳細の表示]** を選択して、特定の実行を表示します。 **[Explanations]\(説明\)** タブを選択して、説明ダッシュボードで視覚化を確認します。
 
 [![機械学習解釈可能性のアーキテクチャ](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png)](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png#lightbox)
 
@@ -331,4 +323,4 @@ if service.state == 'Healthy':
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning SDK の自動機械学習以外の領域で、モデルの説明と特徴量の重要度を有効にする方法について詳しくは、[解釈可能性の概念](how-to-machine-learning-interpretability.md)に関する記事をご覧ください。
+自動 ML 以外の分野でモデル説明と特徴量の重要度を有効にする方法について詳しくは、[モデルの解釈可能性に関するその他の手法](how-to-machine-learning-interpretability.md)に関するページを参照してください。

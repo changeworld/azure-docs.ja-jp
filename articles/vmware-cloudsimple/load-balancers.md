@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-CloudSimple プライベート クラウド用の負荷分散ソリューションを選択する
 description: プライベート クラウドにアプリケーションをデプロイするときの負荷分散のオプションについて説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 06d2305c209011e4fb1b8ee05a016d2e15a49833
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da744c44dfd20266304fcf2991c26e92028fa40b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97898030"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339240"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>CloudSimple プライベート クラウドの負荷分散ソリューションを選択する
 

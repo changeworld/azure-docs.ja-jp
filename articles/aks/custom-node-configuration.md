@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c2173118b58ca92d69286fb36014872c19058bd6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c872848791e2de3591c8e3e94d4aa5744c7bbcdc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779977"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656381"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Azure Kubernetes Service (AKS) ノード プールのノード構成をカスタマイズする (プレビュー)
 
@@ -66,8 +66,11 @@ az extension update --name aks-preview
 | `cpuCfsQuotaPeriod` | ミリ秒 (ms) 単位の間隔 | `100ms` | CPU の CFS クォータ期間値を設定します。 | 
 | `imageGcHighThreshold` | 0 ～ 100 | 85 | イメージ ガベージ コレクションが常に実行されるようになる、ディスク使用量の割合。 ガベージ コレクションをトリガー **する** 最小ディスク使用量。 イメージ ガベージ コレクションを無効にするには、100 に設定します。 | 
 | `imageGcLowThreshold` | 0 から 100、`imageGcHighThreshold` 以下 | 80 | イメージ ガベージ コレクションを実行できるようになる、ディスク使用量の割合。 ガベージ コレクションをトリガー **できる** 最小ディスク使用量。 |
-| `topologyManagerPolicy` | none、best-effort、restricted、single-numa-node | なし | NUMA ノードの配置を最適化します。詳細については、[こちら](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/)をご覧ください。 Kubernetes v1.18 以降のみに該当します。 |
+| `topologyManagerPolicy` | none、best-effort、restricted、single-numa-node | なし | NUMA ノードの配置を最適化します。詳細については、[こちら](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/)をご覧ください。 |
 | `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | なし | 安全でない sysctls パターンまたは安全でない sysctl パターンの許容リスト。 | 
+| `containerLogMaxSizeMB` | メガバイト (MB) 単位のサイズ | 10 MB | 回転される前のコンテナー ログ ファイルの最大サイズ (例: 10 MB)。 | 
+| `containerLogMaxFiles` | ≥ 2 | 5 | コンテナーに表示できるコンテナー ログ ファイルの最大数。 | 
+| `podMaxPids` | -1 からカーネル PID 制限まで | -1 (∞)| ポッドで実行できるプロセス ID の最大量 |
 
 ### <a name="linux-os-custom-configuration"></a>Linux OS カスタム構成
 
@@ -198,7 +201,7 @@ az aks nodepool add --name mynodepool1 --cluster-name myAKSCluster --resource-gr
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [aks-support-policies]: support-policies.md
 [aks-upgrade]: upgrade-cluster.md
-[aks-view-master-logs]: ./view-control-plane-logs.md#enable-resource-logs
+[aks-view-master-logs]: ../azure-monitor/containers/container-insights-log-query.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az_aks_show

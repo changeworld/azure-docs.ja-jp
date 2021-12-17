@@ -4,22 +4,22 @@ description: グループを自動的に設定するメンバーシップ ルー
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: overview
-ms.date: 02/18/2021
+ms.date: 09/24/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41bdf5251881fa9307a3cd4d214081845e967900
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 1a30e270b202989f041ea9e07dc69e67c33b8e87
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209521"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448274"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) では、複雑な属性ベースのルール�
 - デバイス所有者の属性に基づいてデバイス グループを作成することはできません。 デバイス メンバーシップ ルールで参照できるのは、デバイスの属性のみです。
 
 > [!NOTE]
-> この機能を使うには、少なくとも 1 つの動的グループのメンバーである一意のユーザーごとに Azure AD Premium P1 ライセンスが必要です。 ユーザーを動的グループのメンバーにするために、そのユーザーにライセンスを割り当てる必要はありませんが、少なくともそのすべてのユーザーを対象にできるだけのライセンス数が Azure AD 組織に含まれている必要があります。 たとえば、組織のすべての動的グループに、合計 1,000 人の一意のユーザーがいる場合、ライセンス要件を満たすには、Azure AD Premium P1 に対するライセンスが 1,000 個以上必要です。
+> この機能を使うには、少なくとも 1 つの動的グループのメンバーである一意のユーザーごとに Azure AD Premium P1 ライセンスまたは Intune for Education が必要です。 ユーザーを動的グループのメンバーにするために、そのユーザーにライセンスを割り当てる必要はありませんが、少なくともそのすべてのユーザーを対象にできるだけのライセンス数が Azure AD 組織に含まれている必要があります。 たとえば、組織のすべての動的グループに、合計 1,000 人の一意のユーザーがいる場合、ライセンス要件を満たすには、Azure AD Premium P1 に対するライセンスが 1,000 個以上必要です。
 > 動的なデバイス グループのメンバーであるデバイスには、ライセンスは必要ありません。
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure portal のルール ビルダー
@@ -52,19 +52,19 @@ Azure AD には、重要なルールをすばやく作成したり更新した�
 
 ![動的グループのメンバーシップのルールを追加する](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
-### <a name="rule-syntax-for-a-single-expression&quot;></a>単一式のルール構文
+### <a name="rule-syntax-for-a-single-expression"></a>単一式のルール構文
 
 単一式は、メンバーシップ ルールの最もシンプルな形式であり、前述の 3 つの部分でのみ構成されます。 単一式のルールは `Property Operator Value` のようになります。プロパティの構文は object.property の名前です。
 
 次は、単一式で正しく構成されたメンバーシップ ルールの例です。
 
 ```
-user.department -eq &quot;Sales&quot;
+user.department -eq "Sales"
 ```
 
 単一式の場合、かっこは省略可能です。 メンバーシップ ルール本文の合計文字数が 3,072 文字を超えないようにしてください。
 
-## <a name=&quot;constructing-the-body-of-a-membership-rule&quot;></a>メンバーシップ ルールの本文の作成
+## <a name="constructing-the-body-of-a-membership-rule"></a>メンバーシップ ルールの本文の作成
 
 グループにユーザーまたはデバイスを自動的に入力するメンバーシップ ルールは、true または false に帰結するバイナリ式です。 シンプルなルールの要素は次の 3 つです。
 
@@ -74,7 +74,7 @@ user.department -eq &quot;Sales&quot;
 
 式の中の要素の順序は、構文エラーを回避するために重要です。
 
-## <a name=&quot;supported-properties&quot;></a>サポートされているプロパティ
+## <a name="supported-properties"></a>サポートされているプロパティ
 
 メンバーシップ ルールを作成するとき、3 種類のプロパティを使用できます。
 
@@ -84,18 +84,18 @@ user.department -eq &quot;Sales&quot;
 
 次は、単一式の作成に使用できるユーザー プロパティです。
 
-### <a name=&quot;properties-of-type-boolean&quot;></a>ブール型のプロパティ
+### <a name="properties-of-type-boolean"></a>ブール型のプロパティ
 
 | Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
-### <a name=&quot;properties-of-type-string&quot;></a>文字列型のプロパティ
+### <a name="properties-of-type-string"></a>文字列型のプロパティ
 
 | Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
-| city |任意の文字列値または *null* |(user.city -eq &quot;value") |
+| city |任意の文字列値または *null* |(user.city -eq "value") |
 | country |任意の文字列値または *null* |(user.country -eq "value") |
 | companyName | 任意の文字列値または *null* | (user.companyName -eq "value") |
 | department |任意の文字列値または *null* |(user.department -eq "value") |
@@ -133,7 +133,7 @@ user.department -eq &quot;Sales&quot;
 
 ## <a name="supported-expression-operators"></a>サポートされている式の演算子
 
-次の表は、サポートされているすべての演算子とその単一式用の構文をまとめたものです。 演算子は、ハイフン (-) のプレフィックスがあってもなくても使用できます。
+次の表は、サポートされているすべての演算子とその単一式用の構文をまとめたものです。 演算子は、ハイフン (-) のプレフィックスがあってもなくても使用できます。 **Contains** 演算子では部分文字列一致が行われますが、コレクション内の項目一致ではありません。
 
 | 演算子 | 構文 |
 | --- | --- |
@@ -176,25 +176,25 @@ David は true と評価され、Da は false と評価されます。
 
 式内で使用される値は、次に挙げるいくつかの型で構成できます。
 
-* 文字列
-* ブール値 – true、false
-* 数値
-* 配列 – 数値配列、文字列配列
+- 文字列
+- ブール値 – true、false
+- 数値
+- 配列 – 数値配列、文字列配列
 
 式内で値を指定するとき、エラーを回避するために、正しい構文を使用することが重要です。 構文のヒント:
 
-* 値が文字列でなければ、二重引用符は任意です。
-* 文字列演算と正規表現演算は、大文字と小文字が区別されません。
-* 文字列値に二重引用符が含まれているとき、両方の引用符を \` 文字でエスケープしてください。たとえば、"Sales" が値のとき、user.department -eq \`"Sales\`" が正しい構文です。
-* null を値として使用し、Null チェックを実行することもできます。たとえば、`user.department -eq null` のようになります。
+- 値が文字列でなければ、二重引用符は任意です。
+- 文字列演算と正規表現演算は、大文字と小文字が区別されません。
+- 文字列値に二重引用符が含まれているとき、両方の引用符を \` 文字でエスケープしてください。たとえば、"Sales" が値のとき、user.department -eq \`"Sales\`" が正しい構文です。 単一引用符をエスケープするには、毎回 1 つではなく 2 つの単一引用符を使用する必要があります。
+- null を値として使用し、Null チェックを実行することもできます。たとえば、`user.department -eq null` のようになります。
 
 ### <a name="use-of-null-values"></a>Null 値の使用
 
 ルールで null 値を指定するには、*null* 値を使用します。 
 
-* 式で *null* 値を比較するとき、-eq または -ne を使用します。
-* リテラル文字列値として解釈する場合にのみ、*null* という語を引用符で囲みます。
-* -not 演算子は、null の比較演算子として使用できません。 使うと、null または $null のどちらを使ってもエラーになります。
+- 式で *null* 値を比較するとき、-eq または -ne を使用します。
+- リテラル文字列値として解釈する場合にのみ、*null* という語を引用符で囲みます。
+- -not 演算子は、null の比較演算子として使用できません。 使うと、null または $null のどちらを使ってもエラーになります。
 
 null 値を参照する正しい方法は次のとおりです。
 
@@ -204,7 +204,7 @@ null 値を参照する正しい方法は次のとおりです。
 
 ## <a name="rules-with-multiple-expressions"></a>複数の式を持つルール
 
-グループ メンバーシップ ルールは、複数の単一式を論理演算子 (-and、-or、-not) で結合して作ることができます。 論理演算子は組み合わせて使用することもできます。 
+グループ メンバーシップ ルールは、複数の単一式を論理演算子 (-and、-or、-not) で結合して作ることができます。 論理演算子は組み合わせて使用することもできます。
 
 複数の式で正しく構築されたメンバーシップ ルールの例を次に示します。
 
@@ -241,9 +241,9 @@ null 値を参照する正しい方法は次のとおりです。
 
 メンバーシップ ルールは、プロパティ、演算子、値がより複雑な形式をとる複雑な式で構成できます。 次のいずれかが当てはまるとき、式が複雑であると見なされます。
 
-* プロパティが値の集まりで、具体的には複数値プロパティで構成される
-* 式で -any 演算子と -all 演算子が使用される
-* 式の値自体が 1 つまたは複数の式になる
+- プロパティが値の集まりで、具体的には複数値プロパティで構成される
+- 式で -any 演算子と -all 演算子が使用される
+- 式の値自体が 1 つまたは複数の式になる
 
 ## <a name="multi-value-properties"></a>複数値プロパティ
 
@@ -258,8 +258,8 @@ null 値を参照する正しい方法は次のとおりです。
 
 コレクション内の 1 つの項目またはすべての項目に条件を適用するには、それぞれ -any および -all 演算子を使用できます。
 
-* -any (コレクション内の少なくとも 1 つの項目が条件に一致するときに満たされる)
-* -all (コレクション内のすべての項目が条件に一致するときに満たされる)
+- -any (コレクション内の少なくとも 1 つの項目が条件に一致するときに満たされる)
+- -all (コレクション内のすべての項目が条件に一致するときに満たされる)
 
 #### <a name="example-1"></a>例 1
 
@@ -357,8 +357,8 @@ device.objectId -ne null
 
 [カスタム拡張機能プロパティ](../hybrid/how-to-connect-sync-feature-directory-extensions.md)はオンプレミス Windows Server AD または接続されている SaaS アプリケーションから同期され、形式は `user.extension_[GUID]_[Attribute]` になります。
 
-* [GUID] は Azure AD でプロパティを作成したアプリケーションの Azure AD における一意の識別子です
-* [Attribute] は作成されたプロパティの名前です
+- [GUID] は Azure AD でプロパティを作成したアプリケーションの Azure AD における一意の識別子です
+- [Attribute] は作成されたプロパティの名前です
 
 カスタム拡張機能プロパティを使用するルールの例を次に示します。
 
@@ -366,7 +366,9 @@ device.objectId -ne null
 user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
-カスタム プロパティ名は、Graph Explorer を使用してユーザーのプロパティを問い合わせ、プロパティ名を探すことで見つけられます。 また、動的ユーザー グループのルール ビルダーにある **[カスタム拡張機能のプロパティを取得します]** リンクを選択し、一意のアプリ ID を入力すると、ユーザーの動的メンバーシップ ルールの作成時に使用するカスタム拡張機能プロパティの完全な一覧が表示されるようになりました。 この一覧を最新の情報に更新して、そのアプリの新しいカスタム拡張機能プロパティを取得することもできます。
+カスタム プロパティ名は、Graph Explorer を使用してユーザーのプロパティを問い合わせ、プロパティ名を探すことで見つけられます。 また、動的ユーザー グループのルール ビルダーにある **[カスタム拡張機能のプロパティを取得します]** リンクを選択し、一意のアプリ ID を入力すると、ユーザーの動的メンバーシップ ルールの作成時に使用するカスタム拡張機能プロパティの完全な一覧が表示されるようになりました。 この一覧を最新の情報に更新して、そのアプリの新しいカスタム拡張機能プロパティを取得することもできます。 
+
+詳細については、「[Azure AD Connect 同期: ディレクトリ拡張機能](../hybrid/how-to-connect-sync-feature-directory-extensions.md)」の記事の「[動的グループで属性を使用する](../hybrid/how-to-connect-sync-feature-directory-extensions.md#use-the-attributes-in-dynamic-groups)」を参照してください。
 
 ## <a name="rules-for-devices"></a>デバイスのルール
 
@@ -394,7 +396,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  deviceOwnership | 個人、会社、不明 | (device.deviceOwnership -eq "Company")
  enrollmentProfileName | Apple Device Enrollment プロファイル名、Android Enterprise 企業所有専用 Enrollment プロファイル名、または Windows Autopilot プロファイル名 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
- managementType | MDM (モバイル デバイスの場合)<br>PC (Intune PC エージェントによって管理されるコンピューターの場合) | (device.managementType -eq "MDM")
+ managementType | MDM (モバイル デバイスの場合) | (device.managementType -eq "MDM")
  deviceId | 有効な Azure AD デバイス ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有効な Azure AD オブジェクト ID |  (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  devicePhysicalIds | すべてのオートパイロット デバイス、OrderID、PurchaseOrderID など、オートパイロットによって使用される任意の文字列値  | (device.devicePhysicalIDs -any _ -contains "[ZTDId]") (device.devicePhysicalIds -any _ -eq "[OrderID]:179887111881") (device.devicePhysicalIds -any _ -eq "[PurchaseOrderId]:76222342342")

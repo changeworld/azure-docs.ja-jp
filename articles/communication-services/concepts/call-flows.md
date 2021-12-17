@@ -2,23 +2,22 @@
 title: Azure Communication Services での通話フロー
 titleSuffix: An Azure Communication Services concept document
 description: Azure Communication Services での通話フローについて説明します。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
-ms.date: 03/10/2021
-ms.topic: overview
+ms.author: rifox
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 7651142d1c2b24da64d9f72dd2300dc0c3807e93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.subservice: calling
+ms.openlocfilehash: 70eec46f882e9aedb8a30c6dede2f0b4a420c553
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937877"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672307"
 ---
 # <a name="call-flow-basics"></a>通話フローの基礎
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include-phone-numbers.md)]
 
 次のセクションでは、Azure Communication Services での通話フローの概要を示します。 信号とメディアのフローは、ユーザーが行う通話の種類によって異なります。 通話の種類の例としては、一対一の VoIP、一対一の PSTN、および VoIP と PSTN で接続された参加者の組み合わせを含むグループ通話などがあります。 [通話の種類](./voice-video-calling/about-call-types.md)を確認してください。
 

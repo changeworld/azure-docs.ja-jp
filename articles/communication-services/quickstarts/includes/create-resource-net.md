@@ -1,15 +1,15 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 03/10/2021
-ms.author: mikben
-ms.openlocfilehash: 443595a52458d7ff7c168f4c120257cfb60fad2e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/30/2021
+ms.author: rifox
+ms.openlocfilehash: bccc61f0099a8d96fd830b48c55d54a67560667b
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110893"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966467"
 ---
 ## <a name="prerequisites"></a>前提条件
 

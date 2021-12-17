@@ -3,12 +3,12 @@ title: Azure Monitor アラートのアクション ルール
 description: Azure Monitor におけるアクション ルールとはどのようなものか、およびそれを構成して管理する方法を説明します。
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: df71883d04106dd341af4571c13cc55f35a1ecc3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 61c9912fbe12c706c717bed448d3b7c141b40cd2
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304819"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018351"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 
@@ -129,7 +129,7 @@ _注意 - 適切なアラート ルール ID を取得するには、CLI から�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI でアクション ルールを作成するには、[az monitor action-rule create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) コマンドを使用します。  `az monitor action-rule` リファレンスは、[Azure Monitor の数ある Azure CLI リファレンス](/cli/azure/azure-cli-reference-for-monitor)の 1 つにすぎません。
+Azure CLI でアクション ルールを作成するには、[az monitor action-rule create](/cli/azure/monitor/action-rule#az_monitor_action_rule_create) コマンドを使用します。  `az monitor action-rule` リファレンスは、[Azure Monitor の数ある Azure CLI リファレンス](/cli/azure/azure-cli-reference-for-monitor)の 1 つにすぎません。
 
 ### <a name="prepare-your-environment"></a>環境を準備する
 
@@ -143,7 +143,7 @@ Azure CLI でアクション ルールを作成するには、[az monitor action
 
 1. サインインします。
 
-   CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。  ターミナルに表示される手順に従って、認証プロセスを完了します。
+   CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az_login) コマンドを使用してサインインします。  ターミナルに表示される手順に従って、認証プロセスを完了します。
 
     ```azurecli
     az login
@@ -165,7 +165,7 @@ Azure CLI でアクション ルールを作成するには、[az monitor action
 
 ### <a name="create-action-rules-with-the-azure-cli"></a>Azure CLI を使用してアクション ルールを作成する
 
-必須と省略可能なパラメーターについては、[az monitor action-rule create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) の Azure CLI リファレンス コンテンツを参照してください。
+必須と省略可能なパラメーターについては、[az monitor action-rule create](/cli/azure/monitor/action-rule#az_monitor_action_rule_create) の Azure CLI リファレンス コンテンツを参照してください。
 
 リソース グループ内の通知を抑制するアクション ルールを作成します。
 
@@ -251,7 +251,7 @@ Contoso は、[1 つのサブスクリプション レベルで 1 つのメト�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI から [az monitor action-rule](/cli/azure/ext/alertsmanagement/monitor) コマンドを使用して、アクション ルールを表示および管理することができます。
+Azure CLI から [az monitor action-rule](/cli/azure/monitor) コマンドを使用して、アクション ルールを表示および管理することができます。
 
 Azure CLI でアクション ルールを管理する前に、「[アクション ルールの構成](#configuring-an-action-rule)」に記載されている手順を使用して環境を準備します。
 

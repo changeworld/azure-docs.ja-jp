@@ -1,18 +1,19 @@
 ---
-title: 'オンプレミス ネットワークから Azure Virtual Network への接続:サイト間 VPN (クラシック): ポータル | Microsoft Docs'
-description: パブリック インターネットを経由したオンプレミスのネットワークからクラシック Azure 仮想ネットワークへの IPsec 接続を作成します。
+title: 'オンプレミスのネットワークを VNet に接続する: サイト間 VPN (クラシック): ポータル'
+titleSuffix: Azure VPN Gateway
+description: パブリック インターネットを経由したオンプレミスのネットワークとクラシック Azure 仮想ネットワーク間の IPsec 接続を作成する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ad05281f13885327c855a261a3101388f38af83
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71b365a2034e40831d4216f83d046c0b897bbe26
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878055"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729500"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 
@@ -33,7 +34,7 @@ ms.locfileid: "98878055"
 
 構成を開始する前に、以下の条件を満たしていることを確認します。
 
-* クラシック デプロイ モデルで作業することを確認します。 Resource Manager デプロイ モデルで作業する場合は、[サイト間接続の作成 (Resource Manager)](./tutorial-site-to-site-portal.md) に関する記事を参照してください。 Resource Manager デプロイ モデルはレガシーであるため、このクラシック モデルを使用することをお勧めします。
+* クラシック デプロイ モデルで作業することを確認します。 [Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)で作業する場合は、[サイト間接続の作成 (Resource Manager)](./tutorial-site-to-site-portal.md) に関する記事を参照してください。 Resource Manager デプロイ モデルはレガシーであるため、このクラシック モデルを使用することをお勧めします。
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいることを確認します。 互換性のある VPN デバイスとデバイスの構成の詳細については、[VPN デバイスの概要](vpn-gateway-about-vpn-devices.md)に関する記事を参照してください。
 * VPN デバイスの外部接続用パブリック IPv4 アドレスがあることを確認します。
 * オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。 この構成を作成する場合は、Azure がオンプレミスの場所にルーティングする IP アドレス範囲のプレフィックスを指定する必要があります。 オンプレミス ネットワークのサブネットと接続先の仮想ネットワーク サブネットが重複しないようにしなければなりません。

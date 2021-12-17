@@ -3,17 +3,17 @@ title: 自動化を使用した Azure コストの管理
 description: この記事では、自動化を使用して Azure コストを管理する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/08/2021
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: f5cebffeaba1ce198be347758004068e8c03133b
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 1c3e7399eedb6c3c4b78c9838f3724d94f20f0e4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499681"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745446"
 ---
 # <a name="manage-costs-with-automation"></a>自動化を使用したコストの管理
 
@@ -75,6 +75,10 @@ Usage Details API に対する要求は、1 日あたり "_1 回のみ_" 行う�
   - Reservations
   - 計算時に発生する丸め処理 - 丸め処理では、使用量、階層化された数量または含まれる数量の価格、およびスケーリングされたユニット価格が考慮されます。
 
+### <a name="a-single-resource-might-have-multiple-records-for-a-single-day"></a>1 つのリソースに 1 日のレコードが複数存在する場合がある
+
+Azure リソース プロバイダーは、使用量と料金を課金システムに出力し、使用量レコードの `Additional Info` フィールドに反映します。 まれに、リソース プロバイダーが特定の日の使用量を出力し、使用量レコードの `Additional Info` フィールドに、複数の異なるデータセンターでレコードを記録する場合があります。 その場合、1 日の使用量ファイルに、メーターまたはリソースのレコードが複数存在する結果となります。 そのような状況では、超過料金は発生しません。 複数のレコードは、その日にリソースのメーターの完全なコストを表します。
+
 ## <a name="example-usage-details-api-requests"></a>Usage Details API に対する要求の例
 
 次の要求例は、Microsoft のお客様が、直面する可能性のある一般的なシナリオに対処するために使用されています。
@@ -92,7 +96,7 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 Microsoft 顧客契約をご利用の新しいお客様の場合は、次の呼び出しを使用します。
 
 ```http
-GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?startDate=2020-08-01&endDate=&2020-08-05$top=1000&api-version=2019-10-01
+GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?startDate=2020-08-01&endDate=2020-08-05&$top=1000&api-version=2019-10-01
 ```
 
 ### <a name="get-amortized-cost-details"></a>償却コストの詳細を取得する
@@ -182,9 +186,9 @@ Budgets API への GET 呼び出しでは、コスト分析で示される現在
 | pl-pl | ポーランド語 (ポーランド) |
 | tr-tr | トルコ語 (トルコ) |
 | da-dk | デンマーク語 (デンマーク) |
-| dn-gb | 英語 (イギリス) |
+| en-gb | 英語 (イギリス) |
 | hu-hu | ハンガリー語 (ハンガリー) |
-| nb-bo | ノルウェー語ブークモール (ノルウェー) |
+| nb-no | ノルウェー語ブークモール (ノルウェー) |
 | nl-nl | オランダ語 (オランダ) |
 | pt-pt | ポルトガル語 (ポルトガル) |
 | sv-se | スウェーデン語 (スウェーデン) |

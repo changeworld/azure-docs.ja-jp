@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64536024af7e939de2bd8f98a9ce14bb4df3303f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c447bae82f4e8eb428942bdf807f6ebf23b4043c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98612138"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070356"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>既存のフォレストと新しいフォレストを単一の Azure AD テナントに統合する
 
@@ -68,6 +68,9 @@ ms.locfileid: "98612138"
 
 9. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録されて再起動されます。</br>
 ![[構成が完了しました] 画面を示すスクリーンショット。](media/how-to-install/install-4a.png)</br>
+
+   > [!NOTE]
+   > グループ管理のサービス アカウント (CONTOSO\provAgentgMSA$ など) は、ホスト サーバーが参加しているものと同じ Active Directory ドメインで作成されます。
 
 10. この操作が完了すると、次の通知が表示されます。 **"Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました。)"**  **[終了]** をクリックします。</br>
 ![[ようこそ] 画面](media/how-to-install/install-5.png)</br>

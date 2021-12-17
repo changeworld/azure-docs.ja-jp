@@ -9,16 +9,16 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
-ms.openlocfilehash: 4bab8def514df21d948d67f3cfba846c43917be2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c78d8f3bc4a7bfc7b73d71a97e29c369926448c5
+ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96530937"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113139415"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーとスキルセットを使用して暗号化された BLOB にインデックスを付ける方法
 
-この記事では、以前に [Azure Key Vault](../key-vault/general/overview.md) を使用して前に暗号化されている [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) 内のドキュメントに、[Azure Cognitive Search](search-what-is-azure-search.md) を使用してインデックスを付ける方法について示します。 通常、インデクサーを使用すると、暗号化キーにアクセスできないため、暗号化されたファイルからはコンテンツを抽出できません。 しかし、[DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) カスタム スキルを利用した後、[DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) を利用することにより、キーへの制御されたアクセスを提供してファイルを解読した後、そこからコンテンツを抽出することができます。 これにより、格納されているドキュメントの暗号化状態を損なうことなく、これらのドキュメントにインデックスを作成する機能のロックが解除されます。
+この記事では、以前に [Azure Key Vault](../key-vault/general/overview.md) を使用して前に暗号化されている [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) 内のドキュメントに、[Azure Cognitive Search](search-what-is-azure-search.md) を使用してインデックスを付ける方法について示します。 通常、インデクサーを使用すると、暗号化キーにアクセスできないため、暗号化されたファイルからはコンテンツを抽出できません。 しかし、[DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/main/Utils/DecryptBlobFile) カスタム スキルを利用した後、[DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) を利用することにより、キーへの制御されたアクセスを提供してファイルを解読した後、そこからコンテンツを抽出することができます。 これにより、格納されているドキュメントの暗号化状態を損なうことなく、これらのドキュメントにインデックスを作成する機能のロックが解除されます。
 
 Azure Blob Storage の PDF、HTML、DOCX、PPTX など、以前に暗号化されたドキュメント全体 (非構造化テキスト) から、このガイドでは Postman と Search REST API を使用して、次のタスクを実行します。
 
@@ -44,11 +44,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="set-up-the-custom-skill"></a>カスタム スキルを設定する
 
-この例では、GitHub の [Azure Search Power Skills](https://github.com/Azure-Samples/azure-search-power-skills) リポジトリのサンプル プロジェクト [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) を使用します。 このセクションでは、スキルセットで使用できるようにスキルを Azure 関数にデプロイします。 組み込みのデプロイ スクリプトにより、名前が **psdbf-function-app-** で始まる Azure 関数リソースが作成されて、スキルが読み込まれます。 サブスクリプションとリソース グループを指定するように求められます。 Azure Key Vault インスタンスが存在するのと同じサブスクリプションを選択してください。
+この例では、GitHub の [Azure Search Power Skills](https://github.com/Azure-Samples/azure-search-power-skills) リポジトリのサンプル プロジェクト [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/main/Utils/DecryptBlobFile) を使用します。 このセクションでは、スキルセットで使用できるようにスキルを Azure 関数にデプロイします。 組み込みのデプロイ スクリプトにより、名前が **psdbf-function-app-** で始まる Azure 関数リソースが作成されて、スキルが読み込まれます。 サブスクリプションとリソース グループを指定するように求められます。 Azure Key Vault インスタンスが存在するのと同じサブスクリプションを選択してください。
 
 運用上、DecryptBlobFile スキルによって、各 BLOB の URL と SAS トークンが入力として受け取られて、Azure Cognitive Search で必要なファイル参照コントラクトを使用して、ダウンロードされて解読されたファイルが出力されます。 解読を実行するには、DecryptBlobFile に暗号化キーが必要であることを思い出してください。 設定の一部として、Azure Key Vault 内の暗号化キーへのアクセスを DecryptBlobFile 関数に許可するアクセス ポリシーも作成します。
 
-1. [DecryptBlobFile のランディング ページ](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile#deployment)にある **[Azure に配置する]** ボタンをクリックします。提供された Resource Manager テンプレートが Azure portal で開かれます。
+1. [DecryptBlobFile のランディング ページ](https://github.com/Azure-Samples/azure-search-power-skills/blob/main/Utils/DecryptBlobFile#deployment)にある **[Azure に配置する]** ボタンをクリックします。提供された Resource Manager テンプレートが Azure portal で開かれます。
 
 1. **Azure Key Vault のインスタンスが存在するサブスクリプション** を選択し (別のサブスクリプションを選択した場合、このガイドは機能しません)、既存のリソース グループを選択するか、新しいものを作成します (新しいものを作成する場合は、デプロイ先のリージョンも選択する必要があります)。
 
@@ -117,7 +117,7 @@ Postman をインストールして設定します。
 1. [Postman コレクション ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json)をダウンロードします。
 1. **[File]\(ファイル\)**  >  **[Import]\(インポート\)** を選択して、ソース コードを Postman にインポートします。
 1. **[Collections]\(コレクション\)** タブを選択し、 **[...]** (省略記号) ボタンを選択します。
-1. **[編集]** を選択します。 
+1. **[Edit]\(編集\)** を選択します。 
    
    ![ナビゲーションを示す Postman アプリ](media/indexing-encrypted-blob-files/postman-edit-menu.jpg "Postman の [Edit]\(編集\) メニューに移動する")
 1. **[Edit]\(編集\)** ダイアログ ボックスで、 **[Variables]\(変数\)** タブを選択します。 

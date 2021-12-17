@@ -1,20 +1,20 @@
 ---
 title: Android マップのデータ ソースを作成する | Microsoft Azure Maps
 description: マップのデータ ソースを作成する方法について説明します。 Azure Maps Android SDK で使用されるデータ ソースについて説明します。GeoJSON ソースとベクター タイル。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: e870134e2ecd431aa3e5c02638120027f0d47df2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e66d1aeaa87ac170cf692360e614335a98802e5a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101462"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430668"
 ---
 # <a name="create-a-data-source-android-sdk"></a>データ ソースを作成する (Android SDK)
 
@@ -86,6 +86,9 @@ feature.addStringProperty("custom-property", "value")
 //Add the feature to the data source.
 source.add(feature)
 ```
+
+> [!TIP]
+> GeoJSON データは、3 つのメソッド (`add`、`importDataFromUrl`、`setShapes`) のいずれかを使用して、`DataSource` インスタンスに追加できます。 `setShapes` メソッドを使用すると、データ ソース内のすべてのデータを効率的に上書きすることができます。 `clear`、`add` の順にメソッドを呼び出してデータ ソース内のすべてのデータを置換すると、マップに対して 2 つのレンダリング呼び出しが行われます。 `setShape` メソッドを使用すると、マップへの 1 回のレンダリング呼び出しで、データのクリアとデータ ソースへの追加が行われます。
 
 ::: zone-end
 
@@ -264,7 +267,49 @@ val featureString = feature.toJson()
 
 ほとんどの GeoJSON ファイルには、FeatureCollection が含まれています。 GeoJSON ファイルを文字列として読み取り、`FeatureCollection.fromJson` メソッドを使用して逆シリアル化します。
 
-次のコードは、Web またはローカルの assets フォルダーからデータを文字列としてインポートし、コールバック関数を介して UI スレッドに返すための再利用可能なクラスです。
+`DataSource` クラスには、`importDataFromUrl` という組み込みのメソッドがあります。これを使用すると、Web 上または asset フォルダー内のファイルへの URL を使用して GeoJSON ファイルに読み込むことができます。 このメソッドは、データ ソースがマップに追加される前に、呼び出す **必要があり** ます。
+
+zone_pivot_groups: azure-maps-android
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("URL_or_FilePath_to_GeoJSON_data");
+
+//Examples:
+//source.importDataFromUrl("asset://sample_file.json");
+//source.importDataFromUrl("https://example.com/sample_file.json");
+
+//Add data source to the map.
+map.sources.add(source);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+var source = new DataSource()
+
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("URL_or_FilePath_to_GeoJSON_data")
+
+//Examples:
+//source.importDataFromUrl("asset://sample_file.json")
+//source.importDataFromUrl("https://example.com/sample_file.json")
+
+//Add data source to the map.
+map.sources.add(source)
+```
+
+::: zone-end
+
+`importDataFromUrl` メソッドを使用すると、GeoJSON フィードをデータ ソースに簡単に読み込むことができますが、データの読み込み方法と、読み込み後の動作の制御は限定されます。 次のコードは、Web または assets フォルダーからデータをインポートし、コールバック関数を介して UI スレッドに返すための再利用可能なクラスです。 その後、コールバックで追加のポスト ロード ロジックを追加してデータを処理し、それをマップに追加して、境界ボックスを計算し、マップ カメラを更新できます。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -516,8 +561,8 @@ class Utils {
 
 ```java
 //Create a data source and add it to the map.
-DataSource dataSource = new DataSource();
-map.sources.add(dataSource);
+DataSource source = new DataSource();
+map.sources.add(source);
 
 //Import the geojson data and add it to the data source.
 Utils.importData("URL_or_FilePath_to_GeoJSON_data",
@@ -527,7 +572,7 @@ Utils.importData("URL_or_FilePath_to_GeoJSON_data",
         FeatureCollection fc = FeatureCollection.fromJson(result);
 
         //Add the feature collection to the data source.
-        dataSource.add(fc);
+        source.add(fc);
 
         //Optionally, update the maps camera to focus in on the data.
 
@@ -576,6 +621,149 @@ Utils.importData("SamplePoiDataSet.json", this) {
 
 ::: zone-end
 
+### <a name="update-a-feature"></a>フィーチャーを更新する
+
+`DataSource` クラスを使用すると、フィーチャーを簡単に追加および削除できます。 フィーチャーのジオメトリまたはプロパティを更新するには、データ ソース内のフィーチャーを置き換える必要があります。 フィーチャーを更新するには、次の 2 つのメソッドを使用できます。
+
+1. 必要な更新を使用して新しいフィーチャーを作成し、`setShapes` メソッドを使用してデータ ソース内のすべてのフィーチャーを置き換えます。 このメソッドは、データ ソース内のすべてのフィーチャーを更新する場合に適しています。
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+DataSource source;
+
+private void onReady(AzureMap map) {
+    //Create a data source and add it to the map.
+    source = new DataSource();
+    map.sources.add(source);
+
+    //Create a feature and add it to the data source.
+    Feature myFeature = Feature.fromGeometry(Point.fromLngLat(0,0));
+    myFeature.addStringProperty("Name", "Original value");
+
+    source.add(myFeature);
+}
+
+private void updateFeature(){
+    //Create a new replacement feature with an updated geometry and property value.
+    Feature myNewFeature = Feature.fromGeometry(Point.fromLngLat(-10, 10));
+    myNewFeature.addStringProperty("Name", "New value");
+
+    //Replace all features to the data source with the new one.
+    source.setShapes(myNewFeature);
+}
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+var source: DataSource? = null
+
+private fun onReady(map: AzureMap) {
+    //Create a data source and add it to the map.
+    source = DataSource()
+    map.sources.add(source)
+
+    //Create a feature and add it to the data source.
+    val myFeature = Feature.fromGeometry(Point.fromLngLat(0.0, 0.0))
+    myFeature.addStringProperty("Name", "Original value")
+    source!!.add(myFeature)
+}
+
+private fun updateFeature() {
+    //Create a new replacement feature with an updated geometry and property value.
+    val myNewFeature = Feature.fromGeometry(Point.fromLngLat(-10.0, 10.0))
+    myNewFeature.addStringProperty("Name", "New value")
+
+    //Replace all features to the data source with the new one.
+    source!!.setShapes(myNewFeature)
+}
+```
+
+::: zone-end
+
+2. 変数内のフィーチャー インスタンスを追跡し、それをデータ ソースの `remove` メソッドに渡して削除します。 必要な更新を使用して新しいフィーチャーを作成し、変数参照を更新して、`add` メソッドを使用してそれをデータ ソースに追加します。
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+DataSource source;
+Feature myFeature;
+
+private void onReady(AzureMap map) {
+    //Create a data source and add it to the map.
+    source = new DataSource();
+    map.sources.add(source);
+
+    //Create a feature and add it to the data source.
+    myFeature = Feature.fromGeometry(Point.fromLngLat(0,0));
+    myFeature.addStringProperty("Name", "Original value");
+
+    source.add(myFeature);
+}
+
+private void updateFeature(){
+    //Remove the feature instance from the data source.
+    source.remove(myFeature);
+
+    //Get properties from original feature.
+    JsonObject props = myFeature.properties();
+
+    //Update a property.
+    props.addProperty("Name", "New value");
+
+    //Create a new replacement feature with an updated geometry.
+    myFeature = Feature.fromGeometry(Point.fromLngLat(-10, 10), props);
+
+    //Re-add the feature to the data source.
+    source.add(myFeature);
+}
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+var source: DataSource? = null
+var myFeature: Feature? = null
+
+private fun onReady(map: AzureMap) {
+    //Create a data source and add it to the map.
+    source = DataSource()
+    map.sources.add(source)
+
+    //Create a feature and add it to the data source.
+    myFeature = Feature.fromGeometry(Point.fromLngLat(0.0, 0.0))
+    myFeature.addStringProperty("Name", "Original value")
+    source!!.add(myFeature)
+}
+
+private fun updateFeature() {
+    //Remove the feature instance from the data source.
+    source!!.remove(myFeature)
+
+    //Get properties from original feature.
+    val props = myFeature!!.properties()
+
+    //Update a property.
+    props!!.addProperty("Name", "New value")
+
+    //Create a new replacement feature with an updated geometry.
+    myFeature = Feature.fromGeometry(Point.fromLngLat(-10.0, 10.0), props)
+
+    //Re-add the feature to the data source.
+    source!!.add(myFeature)
+}
+```
+
+::: zone-end
+
+> [!TIP]
+> 定期的に更新されるデータや、めったに変更されないその他のデータがある場合は、それらを別々のデータ ソース インスタンスに分割することをお勧めします。 データ ソースで更新が発生すると、マップでデータ ソース内のすべてのフィーチャーが強制的に再描画されます。 このデータを分割することで、一方のデータ ソースで更新が発生したときに、定期的に更新されるフィーチャーのみが再描画され、もう一方のデータ ソースのフィーチャーは再描画する必要がなくなります。 これにより、パフォーマンスが向上します。
+
 ## <a name="vector-tile-source"></a>ベクター タイル ソース
 
 ベクター タイル ソースには、ベクター タイル レイヤーにアクセスする方法が記述されています。 ベクター タイル ソースをインスタンス化するには、`VectorTileSource` クラスを使用します。 ベクター タイル レイヤーはタイル レイヤーに似ていますが、同じではありません。 タイル レイヤーはラスター イメージです。 ベクター タイル レイヤーは、**PBF** 形式の圧縮ファイルです。 この圧縮ファイルには、ベクター マップ データと 1 つ以上のレイヤーが含まれています。 このファイルは、各レイヤーのスタイルに基づいて、クライアントでレンダリングおよびスタイル設定できます。 ベクター タイルのデータには、ポイント、線、および多角形の形式で地理的特徴が含まれています。 ベクター タイル レイヤーの使用には、ラスター タイル レイヤーよりも優れている点がいくつかあります。
@@ -587,10 +775,10 @@ Utils.importData("SamplePoiDataSet.json", this) {
 
 Azure Maps は、オープン スタンダードである [Mapbox Vector Tile 仕様](https://github.com/mapbox/vector-tile-spec)に準拠しています。 Azure Maps では、プラットフォームの一部として次のベクター タイル サービスが提供されます。
 
-- Road tiles [ドキュメント](/rest/api/maps/renderv2/getmaptilepreview) | [データ形式の詳細](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- Road tiles [ドキュメント](/rest/api/maps/render-v2/get-map-tile) | [データ形式の詳細](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
 - Traffic incidents [ドキュメント](/rest/api/maps/traffic/gettrafficincidenttile) | [データ形式の詳細](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
 - Traffic flow [ドキュメント](/rest/api/maps/traffic/gettrafficflowtile) | [データ形式の詳細](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- Azure Maps の作成者は、[Get Tile Render V2](/rest/api/maps/renderv2/getmaptilepreview) を使用して、カスタム ベクター タイルを作成およびアクセスすることもできます
+- Azure Maps Creator では、[Render V2-Get Map Tile API](/rest/api/maps/render-v2/get-map-tile) を使用して、カスタム ベクター タイルを作成およびアクセスすることもできます
 
 > [!TIP]
 > Web SDK を使用して Azure Maps の Render Service からベクターまたはラスター イメージのタイルを使用する場合、`atlas.microsoft.com` をプレースホルダー `azmapsdomain.invalid` に置き換えることができます。 このプレースホルダーは、マップによって使用されるのと同じドメインに置き換えられ、同じ認証の詳細も自動的に追加されます。 これにより、Azure Active Directory 認証を使用するときに、Render Service での認証が大幅に簡単になります。
@@ -704,32 +892,16 @@ map.layers.add(layer, "labels")
 ```java
 //Create a data source and add it to the map.
 DataSource source = new DataSource();
+
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("URL_or_FilePath_to_GeoJSON_data");
+
+//Add data source to the map.
 map.sources.add(source);
 
 //Create a layer that defines how to render points in the data source and add it to the map.
 BubbleLayer layer = new BubbleLayer(source);
 map.layers.add(layer);
-
-//Import the geojson data and add it to the data source.
-Utils.importData("URL_or_FilePath_to_GeoJSON_data",
-    this,
-    (String result) -> {
-        //Parse the data as a GeoJSON Feature Collection.
-        FeatureCollection fc = FeatureCollection.fromJson(result);
-
-        //Add the feature collection to the data source.
-        dataSource.add(fc);
-
-        //Optionally, update the maps camera to focus in on the data.
-
-        //Calculate the bounding box of all the data in the Feature Collection.
-        BoundingBox bbox = MapMath.fromData(fc);
-
-        //Update the maps camera so it is focused on the data.
-        map.setCamera(
-            bounds(bbox),
-            padding(20));
-    });
 ```
 
 ::: zone-end
@@ -739,31 +911,12 @@ Utils.importData("URL_or_FilePath_to_GeoJSON_data",
 ```kotlin
 //Create a data source and add it to the map.
 val source = DataSource()
-map.sources.add(source)
-
-//Create a layer that defines how to render points in the data source and add it to the map.
-val layer = BubbleLayer(source)
-map.layers.add(layer)
 
 //Import the geojson data and add it to the data source.
-Utils.importData("URL_or_FilePath_to_GeoJSON_data", this) { 
-    result: String? ->
-        //Parse the data as a GeoJSON Feature Collection.
-        val fc = FeatureCollection.fromJson(result!!)
-    
-        //Add the feature collection to the data source.
-        dataSource.add(fc)
-    
-        //Optionally, update the maps camera to focus in on the data.
-        //Calculate the bounding box of all the data in the Feature Collection.
-        val bbox = MapMath.fromData(fc)
-    
-        //Update the maps camera so it is focused on the data.
-        map.setCamera(
-            bounds(bbox),
-            padding(20)
-        )
-    }
+source.importDataFromUrl("URL_or_FilePath_to_GeoJSON_data")
+
+//Add data source to the map.
+map.sources.add(source)
 ```
 
 ::: zone-end
@@ -867,6 +1020,9 @@ map.layers.add(arrayOf<Layer>(polygonLayer, lineLayer, bubbleLayer))
 
 > [!div class="nextstepaction"]
 > [データドリブンのスタイルの式を使用する](create-data-source-android-sdk.md)
+
+> [!div class="nextstepaction"]
+> [ポイント データをクラスタリングする](clustering-point-data-android-sdk.md)
 
 > [!div class="nextstepaction"]
 > [シンボル レイヤーを追加する](how-to-add-symbol-to-android-map.md)

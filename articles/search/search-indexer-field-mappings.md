@@ -7,42 +7,49 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.openlocfilehash: fb3a77291d8b24d5774094533f8c214f1527d771
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/19/2021
+ms.openlocfilehash: 9fdff284d3b183ef9a0589d9dee4c568249b854b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99430447"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238006"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Cognitive Search インデクサーを使用したフィールドのマッピングと変換
 
 ![インデクサーのステージ](./media/search-indexer-field-mappings/indexer-stages-field-mappings.png "インデクサーのステージ")
 
-Azure Cognitive Search インデクサーを使用すると、入力データがターゲット インデックスのスキーマと完全に一致しないことがあります。 そのような場合は、インデックス作成処理中に **フィールド マッピング** を使用してデータを変形できます。
+Azure Cognitive Search のインデクサーを使用すると、インデクサーにより、フィールド名と型が対応しているという想定の下に、データ ソース内のフィールドがターゲット インデックスのフィールドに自動的にマップされます。 場合によっては、入力データがターゲット インデックスのスキーマと完全に一致していないことがあります。 1 つの解決策は、"*フィールド マッピング*" を使用して、インデックス作成プロセスの間にデータ パスを明示的に設定することです。
 
-フィールド マッピングが役立つシナリオは次のとおりです。
+フィールド マッピングを使うと、次のシナリオに対応できます。
 
-* データ ソースに `_id` というフィールドがあるが、Azure Cognitive Search でアンダースコアで始まるフィールド名が許可されていない場合。 フィールド マッピングを使用すると、フィールドの名前を効果的に変更できます。
-* 同じデータ ソース データからインデックス内のいくつかのフィールドにデータを入力します。 たとえば、このようなフィールドにさまざまなアナライザーを適用することができます。
-* インデックス フィールドに複数のデータ ソースのデータを入力し、データ ソースはそれぞれ異なるフィールド名が使用されています。
-* Base64 エンコードまたはデータのデコードが必要な場合。 フィールド マッピングは、Base64 エンコードおよびデコードの関数など、**マッピング関数** をいくつかサポートしています。
++ 一致しないフィールド名。 データ ソースに `_id` という名前のフィールドがあるとします。 Azure Cognitive Search ではアンダースコアで始まるフィールド名が許可されていないとすると、フィールド マッピングを使ってフィールドの名前を効果的に変更できます。
+
++ 1 つのフィールドを複数のフィールドにする。 データ ソースの同じデータを、インデックスの複数のフィールドに設定できます。 たとえば、各フィールドに異なるアナライザーを適用することができます。
+
++ 複数のフィールドを 1 つのフィールドにする。 インデックス フィールドに複数のデータ ソースのデータを入力し、データ ソースはそれぞれ異なるフィールド名が使用されています。
+
++ Base64 エンコードまたはデータのデコード。 フィールド マッピングでは、Base64 エンコードやデコードの関数など、複数の [**マッピング関数**](#mappingFunctions)がサポートされています。
+
++ 文字列コレクションへの文字列の分割または JSON 配列の再キャスト。 この機能は、フィールド マッピング関数で提供されます。
+
+インデクサーのフィールド マッピングは、データ フィールドをインデックス フィールドにマップする簡単な方法であり、軽量のデータ変換の機能も備えています。 より複雑なデータでは、インデックス作成に適した形式に変換するための前処理が必要になる場合があります。 1 つのオプションとして [Azure Data Factory](../data-factory/index.yml) を検討することができます。
 
 > [!NOTE]
-> インデクサーのフィールド マッピングは、データ フィールドをインデックス フィールドにマップする簡単な方法であり、軽量のデータ変換の機能も備えています。 より複雑なデータでは、インデックス作成に適した形式に変換するための前処理が必要になる場合があります。 1 つのオプションとして [Azure Data Factory](../data-factory/index.yml) を検討することができます。
+> フィールド マッピングは、検索インデックスにのみ適用されます。 [ナレッジ ストア](knowledge-store-concept-intro.md)も作成するインデクサーの場合は、データ シェイプとプロジェクションによってフィールドの関連付けが決まり、インデクサーでのフィールド マッピングと出力フィールド マッピングは無視されます。
 
 ## <a name="set-up-field-mappings"></a>フィールド マッピングの設定
 
 フィールド マッピングは、3 つの部分で構成されます。
 
-1. `sourceFieldName`。データ ソース内のフィールドを表します。 このプロパティは必須です。
-2. `targetFieldName` (省略可能)。Search インデックス内のフィールドを表します。 省略すると、データ ソースと同じ名前が使用されます。
-3. `mappingFunction` (省略可能)。定義済みのいずれかの関数を使用してデータを変換できます。 これは入力と出力の両方のフィールド マッピングに適用できます。 関数の完全な一覧については、[以下](#mappingFunctions)をご覧ください。
++ "sourceFieldName"。データ ソース内のフィールドを表します。 このプロパティは必須です。
++ "targetFieldName" (省略可能)。検索インデックス内のフィールドを表します。 省略した場合、"sourceFieldName" の値がターゲットに使用されます。
++ "mappingFunction" (省略可能)。複数の[定義済み関数](#mappingFunctions)のいずれかを使用して、データを変換できます。 これは入力と出力の両方のフィールド マッピングに適用できます。
 
-フィールド マッピングは、インデクサー定義の `fieldMappings` 配列に追加されます。
+フィールド マッピングは、インデクサー定義の "fieldMappings" 配列に追加されます。
 
 > [!NOTE]
-> フィールド マッピングが追加されない場合、インデクサーでは、データ ソース フィールドが同じ名前のインデックス フィールドにマップされていると仮定されます。 フィールド マッピングを追加すると、ソースおよびターゲットのフィールドに対するこれらの既定のフィールド マッピングは削除されます。 [Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)などの一部のインデクサーを使用すると、インデックス キー フィールドに対して既定のフィールド マッピングが追加されます。
+> フィールド マッピングがない場合、インデクサーでは、データ ソースのフィールドを同じ名前のインデックス フィールドにマップする必要があると想定されます。 フィールド マッピングを追加すると、ソースとターゲットのフィールドに対するこれらの既定のフィールド マッピングはオーバーライドされます。 [Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)などの一部のインデクサーを使用すると、インデックス キー フィールドに対して既定のフィールド マッピングが追加されます。
 
 ## <a name="map-fields-using-rest"></a>REST を使用してフィールドをマップする
 
@@ -77,28 +84,26 @@ api-key: [admin key]
 
 ## <a name="map-fields-using-net"></a>.NET を使用してフィールドをマップする
 
-プロパティ `SourceFieldName` と `TargetFieldName` を持つ [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) クラスと、オプションの `MappingFunction` 参照を使用して、.NET SDK でフィールド マッピングを定義します。
+プロパティ "SourceFieldName" と "TargetFieldName" を持つ [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) クラスと、省略可能な "MappingFunction" 参照を使用して、.NET SDK でのフィールド マッピングを定義できます。
 
-インデクサーを作成するとき、または後で `Indexer.FieldMappings` プロパティを直接設定することによって、フィールド マッピングを指定できます。
+インデクサーを作成するとき、または後で [SearchIndexer.FieldMappings](/dotnet/api/azure.search.documents.indexes.models.searchindexer.fieldmappings) を直接設定することによって、フィールド マッピングを指定できます。
 
 次の C# の例では、インデクサーを作成するときにフィールド マッピングを設定します。
 
 ```csharp
-  List<FieldMapping> map = new List<FieldMapping> {
-    // removes a leading underscore from a field name
-    new FieldMapping("_custId", "custId"),
-    // URL-encodes a field for use as the index key
-    new FieldMapping("docPath", "docId", FieldMappingFunction.Base64Encode() )
-  };
+var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.Name)
+{
+    Description = "SQL data indexer",
+    Schedule = schedule,
+    Parameters = parameters,
+    FieldMappings =
+    {
+        new FieldMapping("_id") {TargetFieldName = "HotelId", FieldMappingFunction.Base64Encode()},
+        new FieldMapping("Amenities") {TargetFieldName = "Tags"}
+    }
+};
 
-  Indexer sqlIndexer = new Indexer(
-    name: "azure-sql-indexer",
-    dataSourceName: sqlDataSource.Name,
-    targetIndexName: index.Name,
-    fieldMappings: map,
-    schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
-
-  await searchService.Indexers.CreateOrUpdateAsync(indexer);
+await indexerClient.CreateOrUpdateIndexerAsync(indexer);
 ```
 
 <a name="mappingFunctions"></a>
@@ -107,12 +112,12 @@ api-key: [admin key]
 
 フィールド マッピング関数によって、インデックスに格納される前にフィールドのコンテンツが変換されます。 現在、以下のマッピング関数がサポートされています。
 
-* [base64Encode](#base64EncodeFunction)
-* [base64Decode](#base64DecodeFunction)
-* [extractTokenAtPosition](#extractTokenAtPositionFunction)
-* [jsonArrayToStringCollection](#jsonArrayToStringCollectionFunction)
-* [urlEncode](#urlEncodeFunction)
-* [urlDecode](#urlDecodeFunction)
++ [base64Encode](#base64EncodeFunction)
++ [base64Decode](#base64DecodeFunction)
++ [extractTokenAtPosition](#extractTokenAtPositionFunction)
++ [jsonArrayToStringCollection](#jsonArrayToStringCollectionFunction)
++ [urlEncode](#urlEncodeFunction)
++ [urlDecode](#urlDecodeFunction)
 
 <a name="base64EncodeFunction"></a>
 
@@ -122,12 +127,11 @@ api-key: [admin key]
 
 #### <a name="example---document-key-lookup"></a>例 - ドキュメント キーの検索
 
-Azure Cognitive Search ドキュメント キーには、URL で使用できる文字のみを使用できます ([Lookup API](/rest/api/searchservice/lookup-document) を使用してドキュメントのアドレスを指定できるようにする必要があるため)。 URL の安全ではない文字がキーのソース フィールドに含まれている場合は、インデックス作成時に `base64Encode` 関数を使用して変換できます。 ただし、ドキュメント キー (変換前と変換後の両方) を 1024 文字より長くすることはできません。
+Azure Cognitive Search ドキュメント キーには、URL で使用できる文字のみを使用できます ([Lookup API](/rest/api/searchservice/lookup-document) を使用してドキュメントのアドレスを指定できるように)。 URL の安全ではない文字がキーのソース フィールドに含まれている場合は、インデックス作成時に `base64Encode` 関数を使用して変換できます。 ただし、ドキュメント キー (変換前と変換後の両方) を 1024 文字より長くすることはできません。
 
-検索時にエンコードされたキーを取得すると、`base64Decode` 関数を使用して元のキー値を取得し、それを使用してソース ドキュメントを取得できます。
+検索時にエンコードされたキーを取得するときは、`base64Decode` 関数を使用して元のキー値を取得し、それを使用してソース ドキュメントを取得します。
 
 ```JSON
-
 "fieldMappings" : [
   {
     "sourceFieldName" : "SourceKey",
@@ -144,7 +148,6 @@ Azure Cognitive Search ドキュメント キーには、URL で使用できる�
 フィールド マッピングが指定されていない場合、[Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)によって自動的に `metadata_storage_path`(BLOB の URI) からインデックス キー フィールドにフィールド マッピングが追加されます。 この値は Base64 によってエンコードされているため、Azure Cognitive Search ドキュメント キーとして安全に使用できます。 次の例では、*URL が安全な* Base64 によってエンコードされたバージョンの `metadata_storage_path` を `index_key` フィールドにマップして、同時に、`metadata_storage_path` フィールドで元の値を保持する方法を示します。
 
 ```JSON
-
 "fieldMappings": [
   {
     "sourceFieldName": "metadata_storage_path",
@@ -175,7 +178,6 @@ Azure Cognitive Search では、2 つの異なる Base64 エンコードがサ�
 ソース データには、BLOB メタデータ文字列や Web URL など、プレーン テキストとして検索できるようにする Base64 エンコード文字列が含まれている場合があります。 検索インデックスを設定するときに、`base64Decode` 関数を使用して、エンコードされたデータを通常の文字列に戻すことができます。
 
 ```JSON
-
 "fieldMappings" : [
   {
     "sourceFieldName" : "Base64EncodedMetadata",
@@ -200,7 +202,7 @@ Azure Cognitive Search では、URL セーフな base64 エンコードと通常
 それぞれがエンコードとデコードに対応する `useHttpServerUtilityUrlTokenEncode` パラメーターまたは `useHttpServerUtilityUrlTokenDecode` パラメーターが `true` に設定されると、`base64Encode` は [HttpServerUtility.UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode) のように、`base64Decode` は [HttpServerUtility.UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode) のように動作します。
 
 > [!WARNING]
-> キー値を生成するために `base64Encode` を使用する場合は、`useHttpServerUtilityUrlTokenEncode` を true に設定する必要があります。 キー値に使用できるのは、URL セーフな base64 エンコードのみです。 キー値の文字に関するすべての制限事項については、「[名前付け規則 &#40;Azure Cognitive Search&#41;](/rest/api/searchservice/naming-rules)」を参照してください。
+> キー値を生成するために `base64Encode` を使用する場合は、`useHttpServerUtilityUrlTokenEncode` を true に設定する必要があります。 キー値に使用できるのは、URL セーフな base64 エンコードのみです。 キー値の文字に関するすべての制限事項については、[名前付け規則](/rest/api/searchservice/naming-rules)に関する記事をご覧ください。
 
 Azure Cognitive Search の .NET ライブラリでは、組み込みのエンコードを提供する完全な .NET Framework が前提になっています。 `useHttpServerUtilityUrlTokenEncode` と `useHttpServerUtilityUrlTokenDecode` オプションは、この組み込み機能を利用します。 .NET Core または別のフレームワークを使用している場合は、これらのオプションを `false` に設定し、フレームワークのエンコードおよびデコード関数を直接呼び出すことをお勧めします。
 
@@ -221,8 +223,8 @@ Azure Cognitive Search の .NET ライブラリでは、組み込みのエンコ
 
 この関数は以下のパラメーターを使用します。
 
-* `delimiter`: 入力文字列を分割するときに区切り記号として使用する文字列。
-* `position`: 入力文字列の分割後に取得するトークンの整数の 0 から始まる位置。
++ `delimiter`: 入力文字列を分割するときに区切り記号として使用する文字列。
++ `position`: 入力文字列の分割後に取得するトークンの整数の 0 から始まる位置。
 
 たとえば、入力が `Jane Doe`、`delimiter` が `" "` (空白)、`position` が 0 の場合、結果は `Jane` になり、`position` が 1 の場合、結果は `Doe` になります。 位置が、存在しないトークンを参照する場合、エラーが返されます。
 
@@ -231,7 +233,6 @@ Azure Cognitive Search の .NET ライブラリでは、組み込みのエンコ
 データ ソースに `PersonName` フィールドが含まれ、それを 2 つの別々の `FirstName` および `LastName` フィールドとしてインデックスする必要がある場合、 この関数を使用して、空白文字を区切り記号として使って入力を分割できます。
 
 ```JSON
-
 "fieldMappings" : [
   {
     "sourceFieldName" : "PersonName",
@@ -258,7 +259,6 @@ Azure Cognitive Search の .NET ライブラリでは、組み込みのエンコ
 Azure SQL Database には、Azure Cognitive Search の `Collection(Edm.String)` のフィールドに自然にマップされる組み込みのデータ型がありません。 文字列収集フィールドを設定するには、ソース データを JSON 文字列配列として前処理してから、`jsonArrayToStringCollection` マッピング関数を使用することができます。
 
 ```JSON
-
 "fieldMappings" : [
   {
     "sourceFieldName" : "tags", 
@@ -281,7 +281,6 @@ Azure SQL Database には、Azure Cognitive Search の `Collection(Edm.String)` 
 検索時にエンコードされたキーを取得すると、`urlDecode` 関数を使用して元のキー値を取得し、それを使用してソース ドキュメントを取得できます。
 
 ```JSON
-
 "fieldMappings" : [
   {
     "sourceFieldName" : "SourceKey",
@@ -294,16 +293,15 @@ Azure SQL Database には、Azure Cognitive Search の `Collection(Edm.String)` 
 
  <a name="urlDecodeFunction"></a>
 
- ### <a name="urldecode-function"></a>urlDecode 関数
+### <a name="urldecode-function"></a>urlDecode 関数
 
  この関数では、UTF-8 エンコード形式を使用して、URL エンコードされた文字列がデコードされた文字列に変換されます。
 
- ### <a name="example---decode-blob-metadata"></a>例 - BLOB メタデータをデコードする
+### <a name="example---decode-blob-metadata"></a>例 - BLOB メタデータをデコードする
 
  一部の Azure ストレージ クライアントでは、ASCII 以外の文字が含まれている場合に、BLOB メタデータが自動的に URL エンコードされます。 ただし、このようなメタデータを (プレーンテキストとして) 検索可能にする場合は、`urlDecode` 関数を使用して、検索インデックスを設定する際に、エンコードされたデータを通常の文字列に戻すことがきます。
 
  ```JSON
-
 "fieldMappings" : [
   {
     "sourceFieldName" : "UrlEncodedMetadata",
@@ -316,11 +314,11 @@ Azure SQL Database には、Azure Cognitive Search の `Collection(Edm.String)` 
  
  <a name="fixedLengthEncodeFunction"></a>
  
- ### <a name="fixedlengthencode-function"></a>fixedLengthEncode 関数
+### <a name="fixedlengthencode-function"></a>fixedLengthEncode 関数
  
  この関数は、任意の長さの文字列を固定長文字列に変換します。
  
- ### <a name="example---map-document-keys-that-are-too-long"></a>例 - 長すぎるドキュメント キーをマップする
+### <a name="example---map-document-keys-that-are-too-long"></a>例 - 長すぎるドキュメント キーをマップする
  
 ドキュメント キーの長さが 1024 文字を超えていることを通知するエラーが発生した場合、この関数を適用して、ドキュメント キーの長さを短くすることができます。
 

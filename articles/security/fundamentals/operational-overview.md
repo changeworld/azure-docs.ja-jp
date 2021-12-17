@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 4bc30fbf342a9bc85b52c9f88ce7ca1df3c36e23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d65666103526768d904501e93b3c974dd436b30
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595499"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277963"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -52,7 +52,7 @@ Azure Backup には複数のコンポーネントが用意されており、お�
 
 ### <a name="site-recovery"></a>Site Recovery
 
-[Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) を使用すると、オンプレミスの仮想マシンと物理マシンを Azure (またはセカンダリ サイト) にレプリケートする際の調整を行って、ビジネス継続性を実現できます。 プライマリ サイトが使用できなくなった場合には、ユーザーが作業を継続できるよう、セカンダリの場所にフェールオーバーできます。 システムが使用できる状態に戻ったら、プライマリにフェールバックできます。 さらにインテリジェントで効果的な脅威の検出を実行するには、Azure Security Center を使います。
+[Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) を使用すると、オンプレミスの仮想マシンと物理マシンを Azure (またはセカンダリ サイト) にレプリケートする際の調整を行って、ビジネス継続性を実現できます。 プライマリ サイトが使用できなくなった場合には、ユーザーが作業を継続できるよう、セカンダリの場所にフェールオーバーできます。 システムが使用できる状態に戻ったら、プライマリにフェールバックできます。 Microsoft Defender for Cloud を使用して、よりインテリジェントで効果的な脅威検出を実行します。
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -66,7 +66,7 @@ Azure AD には、必要な [ID 管理機能](./identity-management-overview.md#
 
 - [多要素認証](../../active-directory/authentication/concept-mfa-howitworks.md)
 - [セルフサービスによるパスワード管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
-- [セルフサービスのグループ管理](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md)
+- [セルフサービスのグループ管理](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)
 - [特権アカウント管理](../../active-directory/privileged-identity-management/pim-configure.md)
 - [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md)
 - [アプリケーション使用状況の監視](../../active-directory/hybrid/whatis-hybrid-identity.md)
@@ -75,11 +75,11 @@ Azure AD には、必要な [ID 管理機能](./identity-management-overview.md#
 
 Azure Active Directory を使用すると、パートナーと顧客 (ビジネスまたはコンシューマー) 向けに発行したすべてのアプリケーションに同じ ID およびアクセス管理の機能が備わります。 これにより、運用コストを大幅に減らすことができます。
 
-## <a name="azure-security-center"></a>Azure Security Center
+## <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-[Azure Security Center](../../security-center/security-center-introduction.md) を使用すると、Azure リソースのセキュリティを高度に視覚化 (および制御) しながら、脅威を回避し、検出し、それらに対応することができます。 Security Center では、各サブスクリプションに対するセキュリティ監視機能とポリシー管理機能が総合的に提供されます。 Security Center は、見つけにくい脅威の検出を支援すると共に、さまざまなセキュリティ ソリューションをまとめた広範なエコシステムとして機能します。
+[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) は、Azure リソースのセキュリティの可視性 (と制御) を強化することで、脅威を防止、検出、対応できるようにします。 Security Center では、各サブスクリプションに対するセキュリティ監視機能とポリシー管理機能が総合的に提供されます。 Security Center は、見つけにくい脅威の検出を支援すると共に、さまざまなセキュリティ ソリューションをまとめた広範なエコシステムとして機能します。
 
-Security Center では、仮想マシン (VM) のセキュリティ設定を可視化し、脅威を監視することによって、Azure 上の[仮想マシンのデータを保護](../../security-center/security-center-introduction.md)できます。 Security Center は、仮想マシンの次の項目を監視できます。
+Security Center では、仮想マシン (VM) のセキュリティ設定を可視化し、脅威を監視することによって、Azure 上の[仮想マシンのデータを保護](../../security-center/security-center-introduction.md)できます。 Defender for Cloud では、仮想マシンの次の項目を監視できます。
 
 - 推奨される構成規則を使用したオペレーティング システムセキュリティ設定。
 - 不足しているシステムのセキュリティ更新プログラムと重要な更新プログラム。
@@ -87,14 +87,14 @@ Security Center では、仮想マシン (VM) のセキュリティ設定を可�
 - ディスク暗号化の検証。
 - ネットワークベースの攻撃。
 
-Security Center では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) が使用されます。 Azure RBAC では、Azure 内のユーザー、グループ、およびサービスに割り当てることができる、[組み込みロール](../../role-based-access-control/built-in-roles.md)が提供されます。
+Defender for Cloud では、[Azure のロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) が使用されます。 Azure RBAC では、Azure 内のユーザー、グループ、およびサービスに割り当てることができる、[組み込みロール](../../role-based-access-control/built-in-roles.md)が提供されます。
 
-Security Center は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Security Center では、リソースが属するサブスクリプションまたはリソース グループの所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているときにリソースに関連した情報のみが表示されます。
+Defender for Cloud は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Defender for Cloud では、リソースが属するサブスクリプションまたはリソース グループに対する所有者、共同作業者、または閲覧者のロールが割り当てられている場合にのみ、リソースに関連した情報が表示されます。
 
 >[!Note]
->Security Center のロールと許可されているアクションの詳細については、「[Azure Security Center におけるアクセス許可](../../security-center/security-center-permissions.md)」を参照してください。
+>Defender for Cloud でのロールと許可されるアクションの詳細については、「[Microsoft Defender for Cloud のアクセス許可](../../security-center/security-center-permissions.md)」を参照してください。
 
-Security Center では、Microsoft Monitoring Agent が使用されます。 これは、Azure Monitor サービスで使用されるのと同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics [ワークスペース](../../azure-monitor/logs/manage-access.md)または新規のワークスペースのいずれかに格納されます。
+Defender for Cloud では、Microsoft Monitoring Agent が使用されます。 これは、Azure Monitor サービスで使用されるのと同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics [ワークスペース](../../azure-monitor/logs/manage-access.md)または新規のワークスペースのいずれかに格納されます。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -177,20 +177,20 @@ DevOps を導入すれば、各チームが連携し、より安全で高品質�
 
 Microsoft Azure などのクラウド プラットフォームでは、従来のボトルネックが除去されるため、インフラストラクチャの商品化に役に立ちます。 ソフトウェアは、ビジネスの成果における重要な差別化要因および要素としてすべてのビジネスに君臨します。 どの組織、開発者、IT worker も、DevOps の動きを回避できず、回避する必要もありません。
 
-成熟した DevOps 実践者は、次のプラクティスのいくつかを採用します。 これらのプラクティスには、ビジネス シナリオに基づいて戦略を形作る[ユーザーが関係します](/azure/devops/learn/what-is-devops-culture)。 ツールは、さまざまなプラクティスの自動化に役立ちます。
+成熟した DevOps 実践者は、次のプラクティスのいくつかを採用します。 これらのプラクティスには、ビジネス シナリオに基づいて戦略を形作る[ユーザーが関係します](/devops/what-is-devops)。 ツールは、さまざまなプラクティスの自動化に役立ちます。
 
 - [アジャイル計画およびプロジェクト管理](https://www.visualstudio.com/learn/what-is-agile/)手法を使用して、作業の計画とスプリントへの分離、チームのキャパシティの管理、チームがビジネス ニーズの変化にすばやく適応するための支援を行います。
-- [通常は Git を使用したバージョン コントロール](/azure/devops/learn/git/what-is-git)により、チームは世界中のどこにいてもソースを共有でき、ソフトウェア開発ツールと統合してリリース パイプラインを自動化できます。
-- [継続的インテグレーション](/azure/devops/learn/what-is-continuous-integration)は、実行中のコードのマージとテストを推進します。これにより、障害を早期に検出できるようになります。  その他のメリットとして、マージの問題への取り組みや開発チームへの迅速なフィードバックに浪費される時間が短縮されます。
-- 環境の保護とテストのためのソフトウェア ソリューションの[継続的デリバリー](/azure/devops/learn/what-is-continuous-delivery)により、組織はバグを迅速に修正し、絶えず変化するビジネス要件に対応できます。
-- 実行中のアプリケーションの[監視](/azure/devops/learn/what-is-monitoring) (運用環境でのアプリケーションの正常性や顧客の使用状況など) は、組織が仮説を形成し、戦略を迅速に検証または誤りを証明するのに役立ちます。  豊富なデータがキャプチャされ、さまざまなログ形式で格納されます。
-- [コードとしてのインフラストラクチャ (IaC)](/azure/devops/learn/what-is-infrastructure-as-code) は、ネットワークや仮想マシンの作成と切断の自動化と妥当性確認を有効にして、セキュリティで保護された、安定したアプリケーション ホスティング プラットフォームの提供を支援するプラクティスです。
-- [マイクロサービス](/azure/devops/learn/what-are-microservices) アーキテクチャを使用して、ビジネス ユース ケースを小規模の再利用可能なサービスに分離します。  このアーキテクチャでは、スケーラビリティと効率性が実現されます。
+- [通常は Git を使用したバージョン コントロール](/devops/develop/git/what-is-git)により、チームは世界中のどこにいてもソースを共有でき、ソフトウェア開発ツールと統合してリリース パイプラインを自動化できます。
+- [継続的インテグレーション](/devops/develop/what-is-continuous-integration)は、実行中のコードのマージとテストを推進します。これにより、障害を早期に検出できるようになります。  その他のメリットとして、マージの問題への取り組みや開発チームへの迅速なフィードバックに浪費される時間が短縮されます。
+- 環境の保護とテストのためのソフトウェア ソリューションの[継続的デリバリー](/devops/deliver/what-is-continuous-delivery)により、組織はバグを迅速に修正し、絶えず変化するビジネス要件に対応できます。
+- 実行中のアプリケーションの[監視](/devops/operate/what-is-monitoring) (運用環境でのアプリケーションの正常性や顧客の使用状況など) は、組織が仮説を形成し、戦略を迅速に検証または誤りを証明するのに役立ちます。  豊富なデータがキャプチャされ、さまざまなログ形式で格納されます。
+- [コードとしてのインフラストラクチャ (IaC)](/devops/deliver/what-is-infrastructure-as-code) は、ネットワークや仮想マシンの作成と切断の自動化と妥当性確認を有効にして、セキュリティで保護された、安定したアプリケーション ホスティング プラットフォームの提供を支援するプラクティスです。
+- [マイクロサービス](/devops/deliver/what-are-microservices) アーキテクチャを使用して、ビジネス ユース ケースを小規模の再利用可能なサービスに分離します。  このアーキテクチャでは、スケーラビリティと効率性が実現されます。
 
 ## <a name="next-steps"></a>次の手順
 
 セキュリティおよび監査ソリューションの詳細については、次の記事をご覧ください。
 
 - [セキュリティとコンプライアンス](https://azure.microsoft.com/overview/trusted-cloud/)
-- [Azure Security Center](../../security-center/security-center-introduction.md)
+- [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md)
 - [Azure Monitor](../../azure-monitor/overview.md)

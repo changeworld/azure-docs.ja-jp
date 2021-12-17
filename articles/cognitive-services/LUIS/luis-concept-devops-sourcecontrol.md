@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 68d88ef667da9f22d3e3a17f10036693fcca0c3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e24ba72960c40031dd49189f151fd3f35190e116
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98932524"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463623"
 ---
 # <a name="devops-practices-for-luis"></a>LUIS の DevOps プラクティス
 
@@ -183,7 +183,7 @@ LUDown 形式の LUIS アプリは人間が判読できるものであり、レ�
 
 ## <a name="versioning"></a>バージョン管理
 
-アプリケーションは複数のコンポーネントで構成され、[Azure Bot Service](/azure/bot-service/bot-service-overview-introduction) で実行されるボット、[QnA Maker](https://www.qnamaker.ai/)、[Azure Speech Service](../speech-service/overview.md) などが含まれる場合があります。 疎結合アプリケーションの目標を達成するには、アプリケーションの各コンポーネントが個別にバージョン管理されるように、[バージョン コントロール](/azure/devops/learn/git/what-is-version-control)を使用します。このようにすると、開発者はバージョン番号を見るだけで、破壊的変更や更新を検出できます。 独自のリポジトリで管理している場合は、他のコンポーネントから独立して LUIS アプリを簡単にバージョン管理できます。
+アプリケーションは複数のコンポーネントで構成され、[Azure Bot Service](/azure/bot-service/bot-service-overview-introduction) で実行されるボット、[QnA Maker](https://www.qnamaker.ai/)、[Azure Speech Service](../speech-service/overview.md) などが含まれる場合があります。 疎結合アプリケーションの目標を達成するには、アプリケーションの各コンポーネントが個別にバージョン管理されるように、[バージョン コントロール](/devops/develop/git/what-is-version-control)を使用します。このようにすると、開発者はバージョン番号を見るだけで、破壊的変更や更新を検出できます。 独自のリポジトリで管理している場合は、他のコンポーネントから独立して LUIS アプリを簡単にバージョン管理できます。
 
 メイン ブランチの LUIS アプリには、バージョン管理スキームを適用する必要があります。 LUIS アプリの `.lu` に対する更新をメインにマージするときは、メイン ブランチ用の LUIS アプリの新しいバージョンに、その更新されたソースをインポートします。
 
@@ -214,4 +214,4 @@ PR での変更をメインにマージした時点で、メインに対する�
 ## <a name="next-steps"></a>次のステップ
 
 * [LUIS DevOps のテスト](luis-concept-devops-testing.md)について学習します
-* [GitHub で DevOps for LUIS を実装する](luis-how-to-devops-with-github.md)方法を学習します
+* [GitHub で DevOps for LUIS を実装する](./luis-concept-devops-automation.md)方法を学習します

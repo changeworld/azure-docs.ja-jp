@@ -1,16 +1,16 @@
 ---
 title: Azure Monitor ビュー デザイナーからブックへの移行ガイド
 description: Azure Monitor のビューからブックへの移行。
-author: austonli
-ms.author: aul
+author: shijatsu
+ms.author: shijain
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 19de2a3d3f5a998c09db7c4df689b0378e2597fd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1c371a155f36574f7a443506c0b9090b6b3bd544
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043373"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447077"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Monitor ビュー デザイナーからブックへの移行ガイド
 [ビュー デザイナー](view-designer.md)は Azure Monitor の機能で、Log Analytics ワークスペース内のデータを、グラフ、リスト、タイムラインを使用して視覚化するのに役立つカスタム ビューを作成できます。 これらはブックに移行されており、Azure portal 内でデータを分析し、高度な視覚的レポートを作成するための柔軟なキャンバスを提供します。 この記事は、ビュー デザイナーからブックへの移行を行う際に役立ちます。 
@@ -49,7 +49,7 @@ Workbooks は、データの持つ可能性を最大限に引き出すための�
 
 
 ## <a name="how-to-start-using-workbooks"></a>ブックの使用を開始する方法
-[ブック] から開いたブックは、Log Analytics ワークスペースで、ビュー デザイナーの場所のすぐ下にあるサイド ナビゲーション バーの項目として有効になります。
+Log Analytics ワークスペースの [ブック] タイルからブックを開きます。
 
 ![ブックのナビゲーション](media/view-designer-conversion-overview/workbooks-nav.png)
 
@@ -60,9 +60,7 @@ Workbooks は、データの持つ可能性を最大限に引き出すための�
 新しいブックを開始するには、 **[クイック スタート]** の下にある **空** のテンプレートを選択するか、上部のナビゲーション バーの **[新規]** アイコンを選択します。 テンプレートを表示するか、保存済みブックに戻るには、ギャラリーからその項目を選択するか、検索バーで名前を検索します。
 
 ブックを保存するには、特定のタイトル、サブスクリプション、リソース グループ、場所を指定してレポートを保存する必要があります。
-ブックは、LA ワークスペースと同じサブスクリプションおよびリソース グループを使用して、同じ設定にオートフィルされます。ただし、これらのレポート設定はユーザーが変更できます。 ブックは、既定では *[個人用レポート]* に保存され、個々のユーザーのみがアクセスできます。 また、共有レポートに直接保存することや、後で共有することもできます。
-
-![ブックの保存](media/view-designer-conversion-overview/workbooks-save.png)
+ブックは、LA ワークスペースと同じサブスクリプションおよびリソース グループを使用して、同じ設定にオートフィルされます。ただし、これらのレポート設定はユーザーが変更できます。 ブックは共有リソースであり、保存するには親リソース グループへの書き込みアクセスが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

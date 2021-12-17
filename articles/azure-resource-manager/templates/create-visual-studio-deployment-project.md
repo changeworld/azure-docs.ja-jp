@@ -3,12 +3,12 @@ title: Visual Studio でリソース グループ プロジェクトを作成、
 description: Visual Studio を使用して、Azure リソース グループ プロジェクトを作成し、リソースを Azure にデプロイします。
 ms.topic: conceptual
 ms.date: 04/12/2021
-ms.openlocfilehash: 4c0e19042506e0cf1772398b0a02b81f0245b1c7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 71474578853523245b4859680b739254702afde6
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306978"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958119"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
 
@@ -51,7 +51,11 @@ Visual Studio では、インフラストラクチャとコードを Azure に�
 
 ## <a name="customize-resource-manager-template"></a>Resource Manager テンプレートをカスタマイズする
 
+<<<<<<< HEAD
 デプロイ プロジェクトをカスタマイズするには、デプロイするリソースが記述されている Resource Manager テンプレートを変更します。 リソース マネージャーのテンプレートの要素の詳細については、「[Azure Resource Manager のテンプレートの作成](template-syntax.md)」を参照してください。
+=======
+デプロイ プロジェクトをカスタマイズするには、デプロイするリソースが記述されている Resource Manager テンプレートを変更します。 リソース マネージャーのテンプレートの要素の詳細については、「 [Azure リソース マネージャーのテンプレートの作成](./syntax.md)」を参照してください。
+>>>>>>> repo_sync_working_branch
 
 1. テンプレートで作業するには、**WebSite.json** を開きます。
 

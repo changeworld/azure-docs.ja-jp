@@ -99,13 +99,13 @@
     - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
-    - name: セキュリティ属性
-      href: ./security-baseline.md
+          href: /security/benchmark/azure/baselines/expressroute-security-baseline?toc=/azure/expressroute/TOC.json
     - name: ExpressRoute 経由での BFD
       href: expressroute-bfd.md
     - name: QoS の要件
       href: expressroute-qos.md
+    - name: ExpressRoute を介して Microsoft 365 トラフィックをルーティングする
+      href: using-expressroute-for-microsoft365.md
     - name: 高可用性 - 設計
       href: designing-for-high-availability-with-expressroute.md
     - name: ディザスター リカバリー - 計画
@@ -136,18 +136,26 @@
           href: expressroute-howto-set-global-reach.md
         - name: Azure CLI
           href: expressroute-howto-set-global-reach-cli.md
-    - name: プライベート ピアリングのために IPv6 のサポートを追加する (プレビュー)
+    - name: プライベート ピアリングに対する IPv6 サポートを追加する
       items:
         - name: Azure portal
           href: expressroute-howto-add-ipv6-portal.md
         - name: Azure PowerShell
           href: expressroute-howto-add-ipv6-powershell.md
+        - name: Azure CLI
+          href: expressroute-howto-add-ipv6-cli.md
     - name: 監視
       items:
+        - name: ExpressRoute の監視
+          href: monitor-expressroute.md
+        - name: ネットワークの分析情報
+          href: expressroute-network-insights.md
+        - name: ExpressRoute の接続モニターの構成
+          href: how-to-configure-connection-monitor.md
         - name: ExpressRoute の監視、メトリック、およびアラート
           href: expressroute-monitoring-metrics-alerts.md
-        - name: ExpressRoute に使用する Network Performance Monitor の構成
-          href: how-to-npm.md
+        - name: メンテナンス アラートを表示および構成する
+          href: maintenance-alerts.md
         - name: カスタム アラートを構成して、アドバタイズされるルートを監視する
           href: how-to-custom-route-alert.md
     - name: ピアリングの管理
@@ -158,6 +166,8 @@
               href: expressroute-howto-reset-peering-portal.md
             - name: Azure PowerShell
               href: expressroute-howto-reset-peering.md
+        - name: VNet の BGP コミュニティ値を構成する
+          href: how-to-configure-custom-bgp-communities.md
         - name: パブリック ピアリングから Microsoft ピアリングに移行する
           href: how-to-move-peering.md
     - name: 回線を介したトラフィックの暗号化
@@ -206,10 +216,12 @@
           href: expressroute-troubleshooting-arp-classic.md
 - name: リファレンス
   items:
+    - name: データ参照を監視する
+      href: monitor-expressroute-reference.md
     - name: Azure PowerShell
       href: /powershell/module/az.network#expressroute
     - name: Azure CLI
-      href: /cli/azure/network/express-route
+      href: /cli/azure/azure-cli-reference-for-network
     - name: REST
       href: /rest/api/expressroute/
     - name: REST (クラシック)
@@ -288,3 +300,5 @@
           href: expressroute-howto-add-gateway-classic.md
         - name: パブリック ピアリングの作成と変更
           href: about-public-peering.md
+        - name: ExpressRoute に使用する Network Performance Monitor の構成 (非推奨)
+          href: how-to-npm.md

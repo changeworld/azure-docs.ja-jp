@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Hub のデバイス メソッドについて | Microsoft Docs
 description: 開発者ガイド - ダイレクト メソッドを使用して、サービス アプリからデバイス上のコードを呼び出す。
-author: philmea
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: philmea
+ms.author: lizross
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: b75e859fc1237bc88bee464cef423b7289810fa8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f11d5b3f2986dcdd2a4e063ff9d1e3b24a6ab441
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147803"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546369"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 
@@ -89,7 +89,7 @@ IoT Hub で **サービス接続** のアクセス許可を持っていれば、
 まず、[Azure CLI 用の Microsoft Azure IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用して、SharedAccessSignature を作成します。
 
 ```bash
-az iot hub generate-sas-token -n <iothubName> -du <duration>
+az iot hub generate-sas-token -n <iothubName> --du <duration>
 ```
 
 次に、Authorization ヘッダーを、新しく生成された SharedAccessSignature に置き換えます。次に、以下の `curl` コマンドの例の実装に一致するように、`iothubName`、`deviceId`、`methodName`、および `payload` パラメーターを変更します。  
@@ -228,5 +228,5 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 
 この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご利用ください。
 
-* [ダイレクト メソッドの使用](quickstart-control-device-node.md)
+* [ダイレクト メソッドの使用](quickstart-control-device.md)
 * [VS Code 用の Azure IoT Tools を使用したデバイス管理](iot-hub-device-management-iot-toolkit.md)

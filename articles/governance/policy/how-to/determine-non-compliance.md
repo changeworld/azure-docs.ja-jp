@@ -1,14 +1,14 @@
 ---
 title: コンプライアンス違反の原因の特定
 description: リソースのコンプライアンス違反には多くの理由が考えられます。 コンプライアンス違反の原因を確認する方法について説明します。
-ms.date: 03/31/2021
+ms.date: 09/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 66b0c6d7d0575e7361d04d16e6ba6fb06e36801b
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 3c4076673adfe3253a418cc648592e72a8979b5a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094117"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433812"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
@@ -34,7 +34,7 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 1. **[概要]** ページまたは **[コンプライアンス]** ページで、 **[コンプライアンスの状態]** が _[非対応]_ になっているポリシーを選択します。
 
-1. **[Policy compliance]** (ポリシー コンプライアンス) ページの **[リソースのコンプライアンス]** タブで、 **[コンプライアンスの状態]** が _[非対応]_ になっているリソースを右クリックするか、リソースの省略記号を選択します。 次に、 **[ポリシー準拠状況の詳細]** を選択します。
+1. **[ポリシーのコンプライアンス]** ページの **[リソースのコンプライアンス]** タブで、 **[コンプライアンスの状態]** が _[非対応]_ になっているリソースを選択したままにする (または右クリックする) か、リソースの省略記号を選択します。 次に、 **[ポリシー準拠状況の詳細]** を選択します。
 
    :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="[リソース コンプライアンス] タブの 'ポリシー準拠状況の詳細' リンクのスクリーンショット。" border="false":::
 
@@ -78,9 +78,13 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 ### <a name="compliance-reasons"></a>コンプライアンスの理由
 
-次のマトリックスは、可能性のある各 _理由_ と、ポリシー定義内でのその [条件](../concepts/definition-structure.md#conditions)の対応を示しています。
+[リソース マネージャー モード](../concepts/definition-structure.md#resource-manager-modes)と [リソース プロバイダー モード](../concepts/definition-structure.md#resource-provider-modes)では、コンプライアンス違反の "_理由_" が異なります。
 
-|理由 | 条件 |
+#### <a name="general-resource-manager-mode-compliance-reasons"></a>リソース マネージャー モードの一般的なコンプライアンスの理由
+
+次の表は、[リソース マネージャー モード](../concepts/definition-structure.md#resource-manager-modes)の各 "_理由_" と、ポリシー定義内でのその[条件](../concepts/definition-structure.md#conditions)の対応を示しています。
+
+|理由 |条件 |
 |-|-|
 |現在の値には、キーとしてターゲット値を含める必要があります。 |containsKey、または notContainsKey **ではない** |
 |現在の値には、ターゲット値を含める必要があります。 |contains、または notContains **ではない** |
@@ -104,15 +108,33 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 |現在の値は、ターゲット値と一致してはなりません (大文字/小文字を区別しない)。 |notMatchInsensitively、または matchInsensitively **ではない** |
 |ポリシー定義の効果の詳細と一致する関連リソースがありません。 |**then.details.type** で定義されている種類のリソース、およびポリシー ルールの **if** 部分に定義されているリソースに関連したリソースが存在しません。 |
 
+#### <a name="aks-resource-provider-mode-compliance-reasons"></a>AKS リソース プロバイダー モードのコンプライアンスの理由
+
+次の表は、`Microsoft.Kubernetes.Data`
+[リソース プロバイダー モード](../concepts/definition-structure.md#resource-provider-modes)の各 "_理由_" と、ポリシー定義内での[制約テンプレート](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)の状態との対応を示しています。
+
+|理由 |制約テンプレートの理由の説明 |
+|-|-|
+|Constraint/TemplateCreateFailed |制約またはテンプレートがリソースのメタデータ名によるクラスター上の既存の制約またはテンプレートと一致していないポリシー定義に対して、リソースが作成に失敗しました。 |
+|Constraint/TemplateUpdateFailed |制約またはテンプレートがリソースのメタデータ名によるクラスター上の既存の制約またはテンプレートと一致しているポリシー定義に対して、制約またはテンプレートが更新に失敗しました。 |
+|Constraint/TemplateInstallFailed |制約またはテンプレートのビルドに失敗し、作成または更新操作のためにクラスターにインストールできませんでした。 |
+|ConstraintTemplateConflicts |テンプレートが、ソースの異なる同じテンプレート名を使用して、1 つ以上のポリシー定義と競合しています。 |
+|ConstraintStatusStale |既存の "監査" 状態はありますが、過去 1 時間以内に Gatekeeper による監査は実行されていません。 |
+|ConstraintNotProcessed |状態は存在せず、過去 1 時間以内に Gatekeeper による監査は実行されていません。 |
+|InvalidConstraint/Template |API サーバーで、YAML が正しくないためにリソースが拒否されました。 この理由は、パラメーターの型の不一致が原因になる場合もあります (整数型に文字列が指定された場合など)
+
+> [!NOTE]
+> クラスター上に既存のポリシー割り当てと制約テンプレートが既にある場合、その制約またはテンプレートが失敗すると、既存の制約またはテンプレートを維持することでクラスターが保護されます。 クラスターでは、ポリシー割り当てまたはアドオンの自己復旧でエラーが解決されるまで、非対応として報告します。 競合の処理の詳細については、「[制約テンプレートの競合](../concepts/policy-for-kubernetes.md#constraint-template-conflicts)」を参照してください。
+
 ## <a name="component-details-for-resource-provider-modes"></a>リソース プロバイダー モードのコンポーネントの詳細
 
-[リソース プロバイダー モード](../concepts/definition-structure.md#resource-manager-modes)による割り当てについては、_準拠していない_ リソースを選択して、詳細なビューを開きます。 **[コンポーネント コンプライアンス]** タブの下に、割り当てられたポリシーのリソース プロバイダー モードに固有の追加情報があり、_準拠していない_**コンポーネント** と **コンポーネント ID** が表示されます。
+[リソース プロバイダー モード](../concepts/definition-structure.md#resource-provider-modes)による割り当てについては、_準拠していない_ リソースを選択して、詳細なビューを開きます。 **[コンポーネント コンプライアンス]** タブの下に、割り当てられたポリシーのリソース プロバイダー モードに固有の追加情報があり、_準拠していない_**コンポーネント** と **コンポーネント ID** が表示されます。
 
 :::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="[Component Compliance]\(コンポーネントのコンプライアンス\) タブと、リソース プロバイダー モードの割り当てに対するコンプライアンスの詳細のスクリーンショット。" border="false":::
 
 ## <a name="compliance-details-for-guest-configuration"></a>ゲスト構成のコンプライアンスの詳細
 
-_ゲスト構成_ カテゴリの _auditIfNotExists_ ポリシーについては、仮想マシン内で評価された複数の設定が存在する可能性があり、設定ごとの詳細を表示する必要があります。 たとえば、パスワード ポリシーの一覧を監査していて、そのうちの 1 つだけが "_非準拠_" の状態の場合は、対応していない特定のパスワード ポリシーとその理由を把握しておく必要があります。
+"_ゲスト構成_" カテゴリ内のポリシー定義については、仮想マシン内で評価された複数の設定が存在する可能性があり、設定ごとの詳細を表示する必要があります。 たとえば、セキュリティ設定の一覧を監査していて、そのうちの 1 つだけが "_非対応_" 状態の場合は、対応していない特定の設定とその理由を把握しておく必要があります。
 
 また、仮想マシンに直接サインインするアクセス権を持たない可能性もありますが、仮想マシンが _準拠していない_ 理由についてレポートする必要があります。
 
@@ -128,9 +150,18 @@ _ゲスト構成_ カテゴリの _auditIfNotExists_ ポリシーについては
 
 :::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="ゲスト割り当てのコンプライアンスの詳細のスクリーンショット。" border="false":::
 
+### <a name="view-configuration-assignment-details-at-scale"></a>大規模な構成割り当ての詳細の表示
+
+ゲスト構成機能は、Azure Policy の割り当ての外部で使用できます。
+たとえば、[Azure AutoManage](../../../automanage/automanage-virtual-machines.md) でゲスト構成割り当てが作成されたり、[マシンを配置するときに構成を割り当て](guest-configuration-create-assignment.md)たりする場合があります。
+
+テナント全体のゲスト構成割り当てをすべて表示するには、Azure portal から **[ゲスト割り当て]** ページを開きます。 詳細なコンプライアンス情報を表示するには、"名前" 列のリンクを使用して各割り当てを選択します。
+
+:::image type="content" source="../media/determine-non-compliance/guest-config-assignment-view.png" alt-text="[ゲスト割り当て] ページのスクリーンショット。" border="true":::
+
 ## <a name="change-history-preview"></a><a name="change-history"></a>変更履歴 (プレビュー)
 
-新しい **パブリック プレビュー** の一環として、[完全モードの削除](../../../azure-resource-manager/templates/complete-mode-deletion.md)をサポートするすべての Azure リソースについて、過去 14 日間の変更履歴が使用可能です。 変更履歴では、変更が検出された日時についての詳細と、各変更の "_差分表示_" が提供されます。 変更の検出は、Azure Resource Manager のプロパティが追加、削除、変更されるとトリガーされます。
+新しい **パブリック プレビュー** の一環として、[完全モードの削除](../../../azure-resource-manager/templates/deployment-complete-mode-deletion.md)をサポートするすべての Azure リソースについて、過去 14 日間の変更履歴が使用可能です。 変更履歴では、変更が検出された日時についての詳細と、各変更の "_差分表示_" が提供されます。 変更の検出は、Azure Resource Manager のプロパティが追加、削除、変更されるとトリガーされます。
 
 1. Azure portal で **[すべてのサービス]** を選択し、 **[Policy]** を検索して選択することで、Azure Policy サービスを起動します。
 

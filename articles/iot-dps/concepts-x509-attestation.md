@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 9eee315aac28847710662b463add7d6e68d8d505
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3847ec5ce253d2d5f2ad18ce9a0cc912335e2f4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94967297"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141999"
 ---
 # <a name="x509-certificate-attestation"></a>X.509 証明書の構成証明
 
@@ -38,7 +38,7 @@ X.509 証明書を構成証明メカニズムとして使用することは、�
 
 ### <a name="root-certificate"></a>ルート証明書
 
-ルート証明書は、証明機関 (CA) を表す自己署名の X.509 証明書です。 証明書チェーンの終端、つまりトラスト アンカーになります。 ルート証明書は組織が自ら発行することも、ルート証明機関から購入することもできます。 詳細については、「[X.509 CA 証明書を入手する](../iot-hub/iot-hub-security-x509-get-started.md#get-x509-ca-certificates)」をご覧ください。 ルート証明書は、ルート CA 証明書とも呼ばれます。
+ルート証明書は、証明機関 (CA) を表す自己署名の X.509 証明書です。 証明書チェーンの終端、つまりトラスト アンカーになります。 ルート証明書は組織が自ら発行することも、ルート証明機関から購入することもできます。 詳細については、「[X.509 CA 証明書を入手する](../iot-hub/tutorial-x509-scripts.md)」をご覧ください。 ルート証明書は、ルート CA 証明書とも呼ばれます。
 
 ### <a name="intermediate-certificate"></a>中間証明機関の証明書
 

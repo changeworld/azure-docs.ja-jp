@@ -1,65 +1,91 @@
 ---
-title: Azure File Storage との間でデータをコピーする
-description: Azure Data Factory を使用して、Azure File Storage からサポートされるシンク データ ストアにデータをコピーしたり、サポートされるソース データ ストアから Azure Data Factory にデータをコピーしたりする方法を説明します。
-ms.author: jingwang
-author: linda33wj
+title: Azure Files との間でデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory を使用して、Azure Files からサポートされるシンク データ ストアにデータをコピーしたり、サポートされるソース データ ストアから Azure Files にデータをコピーしたりする方法を説明します。
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: 1046aee7eea406cce1141382294a70c7eb2f62d4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: synapse
+ms.date: 09/10/2021
+ms.openlocfilehash: 893142b873e408f5e884bdd1248d0275b6979757
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597540"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744139"
 ---
-# <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して File Storage をコピー元またはコピー先としてデータをコピーする
+# <a name="copy-data-from-or-to-azure-files-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Files との間でデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure File Storage をコピー先またはコピー元としてデータをコピーする方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Azure Files をコピー先またはコピー元としてデータをコピーする方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-この Azure File Storage コネクタは、次のアクティビティでサポートされます。
+この Azure Files コネクタは、次のアクティビティでサポートされます。
 
 - [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 - [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
 - [アクティビティを削除する](delete-activity.md)
 
-Azure File Storage のデータをサポートされる任意のシンク データ ストアにコピーしたり、サポートされる任意のソース データ ストアのデータを Azure File Storage にコピーしたりできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
+Azure Files から、サポートされる任意のシンク データ ストアにデータをコピーしたり、サポートされる任意のソース データ ストアから Azure Files にデータをコピーしたりできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
 
-具体的には、この Azure File Storage コネクタは、以下をサポートします。
+具体的には、この Azure Files コネクタは、以下をサポートします。
 
 - アカウント キーまたはサービス Shared Access Signature (SAS) の認証を使用したファイルのコピー。
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用したファイルの解析/生成。
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-以下のセクションでは、Azure File Storage に固有の Data Factory エンティティの定義に使用されるプロパティの詳細を説明します。
+## <a name="create-a-linked-service-to-azure-files-using-ui"></a>UI を使用して Azure Files のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Azure Files のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. ファイルを検索し、*Azure File Storage* と表示される Azure Files のコネクタを選択します。
+
+    :::image type="content" source="media/connector-azure-file-storage/azure-file-storage-connector.png" alt-text="Azure File Storage コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-azure-file-storage/configure-azure-file-storage-linked-service.png" alt-text="Azure File Storage のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、Azure Files に固有のエンティティの定義に使用されるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
-この Azure File Storage コネクタでは、次の認証の種類がサポートされています。 詳細については、対応するセクションをご覧ください。
+Azure Files コネクタでは、次の認証の種類がサポートされています。 詳細については、対応するセクションをご覧ください。
 
 - [アカウント キー認証](#account-key-authentication)
 - [Shared Access Signature 認証](#shared-access-signature-authentication)
 
 >[!NOTE]
-> Azure File Storage のリンクされたサービスを [レガシ モデル](#legacy-model)で使用していて、ADF 作成 UI 上に "基本認証" として表示されている場合は、引き続きそのままサポートされますが、今後は新しいモデルを使用することをお勧めします。 レガシ モデルではサーバー メッセージ ブロック (SMB) を介してストレージとの間でデータを転送しますが、新しいモデルでは、スループットが向上したストレージ SDK が利用されます。 アップグレードするには、リンクされたサービスを編集して認証方法を "アカウント キー" または "SAS URI" に切り替えます。データセットとコピー アクティビティの変更は不要です。
+> Azure Files のリンクされたサービスを [レガシ モデル](#legacy-model)で使用していて、ADF 作成 UI 上に "基本認証" として表示されている場合は、引き続きそのままサポートされますが、今後は新しいモデルを使用することをお勧めします。 レガシ モデルではサーバー メッセージ ブロック (SMB) を介してストレージとの間でデータを転送しますが、新しいモデルでは、スループットが向上したストレージ SDK が利用されます。 アップグレードするには、リンクされたサービスを編集して認証方法を "アカウント キー" または "SAS URI" に切り替えます。データセットとコピー アクティビティの変更は不要です。
 
 ### <a name="account-key-authentication"></a>アカウント キー認証
 
-Data Factory では、Azure File Storage アカウント キー認証用に次のプロパティがサポートされています。
+Data Factory では、Azure Files アカウント キー認証用に次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**AzureFileStorage**。 | はい |
-| connectionString | Azure File Storage に接続するために必要な情報を指定します。 <br/> アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
+| connectionString | Azure Files に接続するために必要な情報を指定します。 <br/> アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
 | fileShare | ファイル共有を指定します。 | はい |
 | スナップショット | スナップショットからコピーする場合は、 [ファイル共有スナップショット](../storage/files/storage-snapshots-files.md)の日付を指定します。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
@@ -114,12 +140,12 @@ Data Factory では、Azure File Storage アカウント キー認証用に次�
 
 Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 Shared Access Signature を使用して、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間を指定してクライアントに付与できます。 Shared Access Signature について詳しくは、[Shared Access Signature のモデルの概要](../storage/common/storage-sas-overview.md)に関するページをご覧ください。
 
-Data Factory では、Shared Access Signature 認証を使用するための次のプロパティがサポートされています。
+サービスでは、Shared Access Signature 認証を使用するための次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**AzureFileStorage**。 | はい |
-| sasUri | リソースへの Shared Access Signature URI を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを **SecureString** として指定します。 自動ローテーションを使用してトークン部分を削除するために、SAS トークンを Azure Key Vault に配置することもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 | はい |
+| sasUri | リソースへの Shared Access Signature URI を指定します。 <br/>安全に保存するには、このフィールドを **SecureString** としてマークします。 自動ローテーションを使用してトークン部分を削除するために、SAS トークンを Azure Key Vault に配置することもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 | はい |
 | fileShare | ファイル共有を指定します。 | はい |
 | スナップショット | スナップショットからコピーする場合は、 [ファイル共有スナップショット](../storage/files/storage-snapshots-files.md)の日付を指定します。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
@@ -147,7 +173,7 @@ Data Factory では、Shared Access Signature 認証を使用するための次�
 }
 ```
 
-**例: アカウント キーを Azure Key Vault に格納する**
+**例: SAS トークンを Azure Key Vault に格納する**
 
 ```json
 {
@@ -166,7 +192,8 @@ Data Factory では、Shared Access Signature 認証を使用するための次�
                     "type": "LinkedServiceReference" 
                 }, 
                 "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>" 
-            }
+            },
+            "fileShare": "<file share name>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -181,8 +208,8 @@ Data Factory では、Shared Access Signature 認証を使用するための次�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**AzureFileStorage**。 | はい |
-| host | Azure File Storage のエンドポイントを次のように指定します。 <br/>\- UI を使用する場合: `\\<storage name>.file.core.windows.net\<file service name>` を指定します<br/>- JSON を使用する場合: `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`。 | はい |
-| userid | Azure File Storage にアクセスするユーザーを次のように指定します。 <br/>\- UI を使用する場合: `AZURE\<storage name>` を指定します<br/>\- JSON を使用する場合: `"userid": "AZURE\\<storage name>"`。 | はい |
+| host | Azure Files のエンドポイントを次のように指定します。 <br/>\- UI を使用する場合: `\\<storage name>.file.core.windows.net\<file service name>` を指定します<br/>- JSON を使用する場合: `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`。 | はい |
+| userid | Azure Files にアクセスするユーザーを次のように指定します。 <br/>\- UI を使用する場合: `AZURE\<storage name>` を指定します<br/>\- JSON を使用する場合: `"userid": "AZURE\\<storage name>"`。 | はい |
 | password | ストレージ アクセス キーを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |ソースの場合はいいえ、シンクの場合ははい |
 
@@ -213,9 +240,9 @@ Data Factory では、Shared Access Signature 認証を使用するための次�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
-Azure File Storage では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
+Azure Files では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -251,20 +278,20 @@ Azure File Storage では、形式ベースのデータセットの `location` �
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Azure File Storage のソースとシンクでサポートされるプロパティの一覧を示します。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Azure Files のソースとシンクでサポートされるプロパティの一覧を示します。
 
-### <a name="azure-file-storage-as-source"></a>ソースとしての Azure File Storage
+### <a name="azure-files-as-source"></a>Azure Files をソースとして
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
-Azure File Storage では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
+Azure Files では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` の type プロパティは **AzureFileStorageReadSettings** に設定する必要があります。 | はい                                           |
 | ***コピーするファイルを特定する:*** |  |  |
 | オプション 1: 静的パス<br> | データセットに指定されている所定のフォルダーまたはファイル パスからコピーします。 フォルダーからすべてのファイルをコピーする場合は、さらに `*` として `wildcardFileName` を指定します。 |  |
-| オプション 2: ファイルのプレフィックス<br>- prefix | ソース ファイルをフィルター処理するために、データセットで構成されている、指定されたファイル共有にあるファイル名のプレフィックス。 `fileshare_in_linked_service/this_prefix` で始まる名前のファイルが選択されます。 ワイルドカード フィルターより優れたパフォーマンスを提供する、Azure File Storage 用のサービス側フィルターを利用します。 [レガシのリンクされたサービス モデル](#legacy-model)を使用する場合、この機能はサポートされません。 | いいえ                                                          |
+| オプション 2: ファイルのプレフィックス<br>- prefix | ソース ファイルをフィルター処理するために、データセットで構成されている、指定されたファイル共有にあるファイル名のプレフィックス。 `fileshare_in_linked_service/this_prefix` で始まる名前のファイルが選択されます。 ワイルドカード フィルターより優れたパフォーマンスを提供する、Azure Files 用のサービス側フィルターを利用します。 [レガシのリンクされたサービス モデル](#legacy-model)を使用する場合、この機能はサポートされません。 | いいえ                                                          |
 | オプション 3: ワイルドカード<br>- wildcardFolderPath | ソース フォルダーをフィルター処理するための、ワイルドカード文字を含むフォルダー パス。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                            |
 | オプション 3: ワイルドカード<br>- wildcardFileName | ソース ファイルをフィルター処理するための、特定の folderPath/wildcardFolderPath の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。  「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい |
 | オプション 4: ファイルの一覧<br>- fileListPath | 指定されたファイル セットをコピーすることを示します。 コピーするファイルの一覧を含むテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスであるファイルを 1 行につき 1 つずつ指定します。<br/>このオプションを使用する場合は、データ セットにファイル名を指定しないでください。 その他の例については、[ファイル リストの例](#file-list-examples)を参照してください。 |いいえ |
@@ -318,11 +345,11 @@ Azure File Storage では、形式ベースのコピー ソースの `storeSetti
 ]
 ```
 
-### <a name="azure-file-storage-as-sink"></a>シンクとしての Azure File Storage
+### <a name="azure-files-as-sink"></a>Azure Files をシンクとして
 
-[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
+[!INCLUDE [data-factory-v2-file-sink-formats](includes/data-factory-v2-file-sink-formats.md)]
 
-Azure File Storage では、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
+Azure Files では、形式ベースのコピー リンクの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -382,7 +409,7 @@ Azure File Storage では、形式ベースのコピー シンクの `storeSetti
 
 次のソース フォルダー構造があり、太字のファイルをコピーするとします。
 
-| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | ADF の構成                                            |
+| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | 構成                                            |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | root<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadata<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **データセット内:**<br>- フォルダー パス: `root/FolderA`<br><br>**コピー アクティビティ ソース内:**<br>- ファイル リストのパス: `root/Metadata/FileListToCopy.txt` <br><br>ファイル リストのパスは、コピーするファイルの一覧を含む同じデータ ストア内のテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスで 1 行につき 1 つのファイルを指定します。 |
 
@@ -414,7 +441,7 @@ Azure File Storage では、形式ベースのコピー シンクの `storeSetti
 ## <a name="legacy-models"></a>レガシ モデル
 
 >[!NOTE]
->次のモデルは、下位互換性のために引き続きそのままサポートされます。 今後は、上のセクションで説明した新しいモデルを使用することをお勧めします。ADF オーサリング UI は、新しいモデルを生成するように切り替えられています。
+>次のモデルは、下位互換性のために引き続きそのままサポートされます。 今後は、上記のセクションで説明した新しいモデルを使用することをお勧めします。作成 UI は、新しいモデルを生成するように切り替えられています。
 
 ### <a name="legacy-dataset-model"></a>レガシ データセット モデル
 
@@ -545,4 +572,4 @@ Azure File Storage では、形式ベースのコピー シンクの `storeSetti
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

@@ -1,19 +1,19 @@
 ---
 title: クイック スタート - プライベート クラウドに Azure VMware VM を作成する - Azure VMware Solution by CloudSimple
 description: CloudSimple プライベート クラウドに VMware 仮想マシンを作成する方法について説明します。 CloudSimple ポータルには Azure portal からアクセスします。
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c741f01ccc3e34ec991aa77fc850fd9f60c4d8aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bacbe4b303a3f1f53f6ec1a397c52cd5b05e8a6b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899288"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322134"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>プライベート クラウドに VMware 仮想マシンを作成する
 

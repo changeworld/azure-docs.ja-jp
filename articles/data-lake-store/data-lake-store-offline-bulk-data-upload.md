@@ -1,17 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen1 に大きなデータ セットをアップロードする - オフライン メソッド
 description: Import/Export サービスを使用して Azure Blob ストレージから Azure Data Lake Storage Gen1 にデータをコピーする
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
-ms.author: twooley
-ms.openlocfilehash: 940b7ac90f85e0254d59459b70ccc15312cd69f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 854426ff67816992c2dfb42ef08627bc6ceb0199
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98700841"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612208"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Azure Import/Export サービスを使用した Data Lake Storage Gen1 へのデータのオフライン コピー
 

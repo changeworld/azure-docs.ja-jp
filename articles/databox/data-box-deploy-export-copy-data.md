@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 05/17/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 495b4427fb7e456c60a489b9ce3d19c2a44bd918
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 68012cd27318822b8c18b281db967a26da3a15a2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680894"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095646"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb"></a>チュートリアル:Azure Data Box から SMB 経由でデータをコピーする
 
@@ -33,8 +33,8 @@ ms.locfileid: "97680894"
 開始する前に次の点を確認します。
 
 1. Azure Data Box を注文済みであること。
-    - インポート注文の場合は、「[チュートリアル: Azure Data Box を注文する](data-box-deploy-ordered.md)を完了していること。
-    - エクスポート注文の場合は、「[チュートリアル: Azure Data Box を注文する](data-box-deploy-export-ordered.md)を完了していること。
+    - インポート注文については、「[チュートリアル: Azure Data Box を注文する](data-box-deploy-ordered.md)」を参照してください。
+    - エクスポート注文については、「[チュートリアル: Azure Data Box の注文](data-box-deploy-export-ordered.md)に関するページを参照してください。
 2. Data Box の受け取りが済んでいて、ポータル内での注文の状態が **[配信済み]** であること。
 3. Data Box のデータのコピー先となるホスト コンピューターが用意されていること。 このホスト コンピューターは次の条件を満たしている必要があります。
    * [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。
@@ -56,7 +56,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
 3. 自分のストレージ アカウントに関連付けられている共有 (次の例の場合は、*exportbvtdataset2*) にホスト コンピューターからアクセスするために、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
 
-    `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
+    `net use \\<IP address of the device>\<share name>  /u:<IP address of the device>\<user name for the share>`
 
     データ形式に応じて、共有パスは次のようになっています。
     - Azure ブロック BLOB - `\\169.254.143.85\exportbvtdataset2_BlockBlob`
@@ -66,7 +66,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 4. メッセージに従って共有のパスワードを入力します。 上記のコマンドを使用して共有に接続する例を次に示します。
 
     ```
-    C:\Users\Databoxuser>net use \\169.254.143.85\exportbvtdataset2_BlockBlob /u:exportbvtdataset2
+    C:\Users\Databoxuser>net use \\169.254.143.85\exportbvtdataset2_BlockBlob /u:169.254.143.85\exportbvtdataset2
     Enter the password for 'exportbvtdataset2' to connect to '169.254.143.85':
     The command completed successfully.
     ```

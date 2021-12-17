@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/29/2017
+ms.date: 04/29/2021
 ms.author: rohink
-ms.openlocfilehash: c72e17e601ebf87b0f344a4723159ae22abc81d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6010d165b1a66f968c66f52cf3bfac754df47111
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919886"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460036"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure でホストされているサービスの逆引き DNS を構成する
 
@@ -24,45 +25,44 @@ ms.locfileid: "98919886"
 
 この記事では、Azure でホストされているサービスの逆引き DNS 参照を構成する方法について説明します。
 
-Azure のサービスは、Azure によって割り当てられて、Microsoft によって所有されている IP アドレスを使います。 対応する Microsoft 所有の逆引き DNS 参照ゾーンに、これらの逆引き DNS レコード (PTR レコード) を作成する必要があります。 この記事では、その方法について説明します。
+Azure のサービスは、Azure によって割り当てられて、Microsoft によって所有されている IP アドレスを使います。 対応する Microsoft 所有の逆引き DNS 参照ゾーンに、これらの逆引き DNS レコード (PTR レコード) を作成する必要があります。
 
-このシナリオを、[Azure DNS で割り当てられた IP アドレス範囲の逆引き DNS 参照ゾーンをホストする](dns-reverse-dns-hosting.md)機能と混同しないようにしてください。 この場合、逆引き参照ゾーンによって表される IP 範囲を、通常は ISP が、組織に割り当てる必要があります。
+このシナリオは、Azure DNS で割り当てられた IP アドレス範囲の[逆引き DNS 参照ゾーンをホストする](dns-reverse-dns-hosting.md)機能とは異なります。 この場合、逆引き参照ゾーンによって表される IP 範囲を、通常は ISP が、組織に割り当てる必要があります。
 
-この記事を読む前に、[逆引き DNS と Azure でのサポートの概要](dns-reverse-dns-overview.md)について理解しておいてください。
+この記事を読む前に、[Azure DNS の逆引き DNS](dns-reverse-dns-overview.md) について理解しておいてください。
 
-Azure DNS では、コンピューティング リソース (仮想マシン、仮想マシンのスケール セット、Service Fabric クラスターなど) は、PublicIpAddress リソースによって公開されます。 逆引き DNS 参照は、PublicIpAddress の "ReverseFqdn" プロパティを使って構成します。
-
+Azure DNS では、仮想マシン、仮想マシン スケール セット、Service Fabric クラスターなどのコンピューティング リソースにパブリック IP アドレスがあります。 逆引き DNS 参照は、パブリック IP アドレスの "ReverseFqdn" プロパティを使って構成します。
 
 現在、Azure App Service と Application Gateway については逆引き DNS はサポートされていません。
 
 ## <a name="validation-of-reverse-dns-records"></a>逆引き DNS レコードの検証
 
-サード パーティが、DNS ドメインに対する Azure サービス マッピングの逆引き DNS レコードを作成することができてはなりません。 これを防ぐため、Azure では、逆引き DNS レコードで指定されているドメイン名が、同じ Azure サブスクリプション内の PublicIpAddress またはクラウド サービスの DNS 名または IP アドレスと同じか、それに解決される場合にのみ、逆引き DNS レコードの作成が許可されます。
+サード パーティが DNS ドメインに対する Azure サービス マッピングの逆引き DNS レコードを作成することが可能であってはなりません。 そのため、Azure で逆引き DNS レコードを作成できるのは、ドメイン名が同じであるか、同じサブスクリプション内のパブリック IP アドレスに解決される場合に限られます。 この制限は、クラウド サービスにも適用されます。
 
-この検証は、逆引き DNS レコードが設定または変更されるときにのみ実行されます。 定期的な再検証は行われません。
+この検証は、逆引き DNS レコードが設定または変更されるときにのみ行なわれます。 定期的な再検証は行われません。
 
-たとえば、PublicIpAddress リソースの DNS 名が contosoapp1.northus.cloudapp.azure.com であり、IP アドレスが 23.96.52.53 であるものとします。 PublicIpAddress の ReverseFqdn は次のように指定できます。
-* PublicIpAddress の DNS 名 (contosoapp1.northus.cloudapp.azure.com)
-* 同じサブスクリプション内の異なる PublicIpAddress の DNS 名 (contosoapp2.westus.cloudapp.azure.com など)
-* バニティ DNS 名 (app1.contoso.com など)。ただし、この名前が contosoapp1.northus.cloudapp.azure.com または同じサブスクリプション内の異なる PublicIpAddress に対する CNAME として、"*最初に*" 構成されている場合。
-* バニティ DNS 名 (app1.contoso.com など)。ただし、この名前が IP アドレス 23.96.52.53 または同じサブスクリプション内の異なる PublicIpAddress の IP アドレスに対する A レコードとして、"*最初に*" 構成されている場合。
+たとえば、パブリック IP アドレス リソースに DNS 名 `contosoapp1.northus.cloudapp.azure.com` と IP アドレス `23.96.52.53` が含まれているとします。 パブリック IP アドレスの逆引き FQDN は、次のように指定できます。
+
+* パブリック IP アドレスの DNS 名: `contosoapp1.northus.cloudapp.azure.com`。
+* 同じサブスクリプション内の異なる PublicIpAddress の DNS 名 (例: `contosoapp2.westus.cloudapp.azure.com`)。
+* バニティ DNS 名 (例: `app1.contoso.com`)。 この名前が `contosoapp1.northus.cloudapp.azure.com` を指す CNAME として "*最初に*" 構成されている場合に限ります。 名前は、同じサブスクリプション内の別のパブリック IP アドレスを指すこともできます。
+* バニティ DNS 名 (例: `app1.contoso.com`)。 この名前が IP アドレス 23.96.52.53 を指す A レコードとして "*最初に*" 構成されている場合に限ります。 名前は、同じサブスクリプション内の他の IP アドレスを指すこともできます。
 
 同じ制約が、Cloud Services の逆引き DNS にも適用されます。
 
+## <a name="reverse-dns-for-public-ip-address-resources"></a>パブリック IP アドレス リソースの逆引き DNS
 
-## <a name="reverse-dns-for-publicipaddress-resources"></a>PublicIpAddress リソースの逆引き DNS
+このセクションでは、Resource Manager デプロイ モデルのパブリック IP アドレス リソースに対する逆引き DNS を構成する方法の詳細な手順について説明します。 Azure PowerShell、Azure クラシック CLI、Azure CLI のいずれかを使用して、このタスクを実行できます。 パブリック IP アドレス リソースの逆引き DNS の構成は、Azure portal では現在サポートされていません。
 
-ここでは、Azure PowerShell、Azure CLI、または Azure CLI を使って、Resource Manager デプロイ モデルに PublicIpAddress リソースに対する逆引き DNS を構成する方法の詳細な手順を説明します。 Azure Portal を使った PublicIpAddress リソースの逆引き DNS の構成は、現在はサポートされていません。
-
-現在、Azure は、IPv4 の PublicIpAddress リソースの逆引き DNS のみをサポートしています。 IPv6 についてはサポートされていません。
+Azure では、現在、パブリック IPv4 アドレス リソースの逆引き DNS のみサポートされています。
 
 ### <a name="add-reverse-dns-to-an-existing-publicipaddresses"></a>既存の PublicIpAddresses に逆引き DNS を追加する
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
 既存の PublicIpAddress に逆引き DNS を更新するには
 
-```powershell
+```azurepowershell-interactive
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
 Set-AzPublicIpAddress -PublicIpAddress $pip
@@ -70,7 +70,7 @@ Set-AzPublicIpAddress -PublicIpAddress $pip
 
 まだ DNS 名を持っていない既存の PublicIpAddress に逆引き DNS を追加するには、DNS 名も指定する必要があります。
 
-```powershell
+```azurepowershell-interactive
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings = New-Object -TypeName "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings"
 $pip.DnsSettings.DomainNameLabel = "contosoapp1"
@@ -88,7 +88,7 @@ azure network public-ip set -n PublicIp -g MyResourceGroup -f contosoapp1.westus
 
 まだ DNS 名を持っていない既存の PublicIpAddress に逆引き DNS を追加するには、DNS 名も指定する必要があります。
 
-```azurecli
+```azurecli-interactive
 azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f contosoapp1.westus.cloudapp.azure.com.
 ```
 
@@ -96,13 +96,13 @@ azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f con
 
 既存の PublicIpAddress に逆引き DNS を追加するには:
 
-```azurecli
+```azurecli-interacgive
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn contosoapp1.westus.cloudapp.azure.com.
 ```
 
 まだ DNS 名を持っていない既存の PublicIpAddress に逆引き DNS を追加するには、DNS 名も指定する必要があります。
 
-```azurecli
+```azurecli-interactive
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn contosoapp1.westus.cloudapp.azure.com --dns-name contosoapp1
 ```
 
@@ -110,9 +110,9 @@ az network public-ip update --resource-group MyResourceGroup --name PublicIp --r
 
 既に指定されている逆引き DNS プロパティで新しい PublicIpAddress を作成するには:
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
-```powershell
+```azurepowershell-interactive
 New-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Location "WestUS" -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
 ```
 
@@ -124,7 +124,7 @@ azure network public-ip create -n PublicIp -g MyResourceGroup -l westus -d conto
 
 #### <a name="azure-cli"></a>Azure CLI
 
-```azurecli
+```azurecli-interactive
 az network public-ip create --name PublicIp --resource-group MyResourceGroup --location westcentralus --dns-name contosoapp1 --reverse-fqdn contosoapp1.westcentralus.cloudapp.azure.com
 ```
 
@@ -132,9 +132,9 @@ az network public-ip create --name PublicIp --resource-group MyResourceGroup --l
 
 既存の PublicIpAddress に構成されている値を表示するには:
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
-```powershell
+```azurepowershell-interactive
 Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 ```
 
@@ -146,7 +146,7 @@ azure network public-ip show -n PublicIp -g MyResourceGroup
 
 #### <a name="azure-cli"></a>Azure CLI
 
-```azurecli
+```azurecli-interactive
 az network public-ip show --name PublicIp --resource-group MyResourceGroup
 ```
 
@@ -154,9 +154,9 @@ az network public-ip show --name PublicIp --resource-group MyResourceGroup
 
 既存の PublicIpAddress から逆引き DNS プロパティを削除するには:
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
-```powershell
+```azurepowershell-interactive
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings.ReverseFqdn = ""
 Set-AzPublicIpAddress -PublicIpAddress $pip
@@ -170,14 +170,13 @@ azure network public-ip set -n PublicIp -g MyResourceGroup –f ""
 
 #### <a name="azure-cli"></a>Azure CLI
 
-```azurecli
+```azurecli-interactive
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn ""
 ```
 
-
 ## <a name="configure-reverse-dns-for-cloud-services"></a>Cloud Services の逆引き DNS を構成する
 
-ここでは、Azure PowerShell を使って、クラシック デプロイ モデルで Cloud Services の逆引き DNS を構成する方法の詳細な手順についてを説明します。 Cloud Services に対する Azure Portal、Azure CLI、および Azure CLI からの逆引き DNS の構成はサポートされていません。
+ここでは、Azure PowerShell を使って、クラシック デプロイ モデルで Cloud Services の逆引き DNS を構成する方法の詳細な手順についてを説明します。 Cloud Services に対する Azure portal、Azure クラシック CLI、および Azure CLI からの逆引き DNS の構成はサポートされていません。
 
 ### <a name="add-reverse-dns-to-existing-cloud-services"></a>既存の Cloud Services への逆引き DNS の追加
 
@@ -215,17 +214,17 @@ Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse 
 
 ### <a name="how-much-do-reverse-dns-records-cost"></a>逆引き DNS レコードのコストはどのくらいですか?
 
-無料です。  逆引き DNS レコードまたはクエリに追加コストはかかりません。
+無料です。 逆引き DNS レコードまたはクエリに追加コストはかかりません。
 
 ### <a name="will-my-reverse-dns-records-resolve-from-the-internet"></a>逆引き DNS レコードはインターネットから解決しますか?
 
-はい。 Azure サービスに逆引き DNS プロパティを設定すると、Azure は、すべてのインターネット ユーザーについて逆引き DNS レコードを解決するために必要なすべての DNS 委任と DNS ゾーンを管理します。
+はい。 Azure サービスに逆引き DNS プロパティを設定すると、Azure では、すべてのインターネット ユーザーでそれを解決するために必要なすべての DNS 委任と DNS ゾーンが管理されます。
 
 ### <a name="are-default-reverse-dns-records-created-for-my-azure-services"></a>Azure サービスに既定の逆引き DNS レコードは作成されますか?
 
 いいえ。 逆引き DNS はオプトイン機能です。 既定の逆引き DNS レコードを構成しない設定の場合、レコードは作成されません。
 
-### <a name="what-is-the-format-for-the-fully-qualified-domain-name-fqdn"></a>完全修飾ドメイン名 (FQDN) の形式とは何ですか?
+### <a name="what-is-the-format-for-the-fully-qualified-domain-name-fqdn"></a>完全修飾ドメイン名 (FQDN) の形式は何ですか?
 
 FQDN は順方向で指定します。末尾にはドットを指定する必要があります (例: "app1.contoso.com.")。
 
@@ -247,10 +246,9 @@ FQDN は順方向で指定します。末尾にはドットを指定する必要
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Azure コンピューティング サービスから外部ドメインに電子メールを送信できますか?
 
-Azure のデプロイから電子メールを直接送信する技術的能力は、サブスクリプションの種類によって異なります。 Microsoft では、サブスクリプションの種類に関係なく、信頼できるメール リレー サービスを使用して発信メールを送信することをお勧めしています。 詳細については、「[Enhanced Azure Security for sending Emails – November 2017 Update](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)」 (電子メールを送信するための Azure セキュリティの強化 - 2017 年 11 月更新) を参照してください。
+Azure のデプロイから電子メールを直接送信する技術的能力は、サブスクリプションの種類によって異なります。 Microsoft では、サブスクリプションの種類に関係なく、信頼できるメール リレー サービスを使用して発信メールを送信することをお勧めしています。 詳細については、[電子メールを送信するための Azure セキュリティの強化 – 2017 年 11 月更新](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
-<br>
-[Azure DNS で ISP によって割り当てられた IP アドレス範囲の逆引き参照ゾーンをホストする](dns-reverse-dns-for-azure-services.md)方法を学習してください。
+* 逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
+* [Azure DNS で ISP によって割り当てられた IP アドレス範囲の逆引き参照ゾーンをホストする](dns-reverse-dns-hosting.md)方法を学習してください。

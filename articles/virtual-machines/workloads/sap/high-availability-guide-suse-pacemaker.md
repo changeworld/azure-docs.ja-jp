@@ -12,14 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.custom: subject-rbac-steps
+ms.date: 09/08/2021
 ms.author: radeltch
-ms.openlocfilehash: aa2006ecfad91e21ac13a1e63be23302b2a70399
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 63c7def5a76fba19eeef5192ebdfacd6225fbaa1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551035"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784301"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -442,8 +443,8 @@ o- / ...........................................................................
    >SUSEConnect ---list-extensions を実行して、拡張機能を確認できます。  
    >Azure Fence エージェントでフェールオーバー時間を短縮するには、次のようにします。
    > - SLES 12 SP4 または SLES 12 SP5 の場合、python-azure-mgmt-compute パッケージのバージョン **4.6.2** 以上をインストールする  
-   > - SLES 15 の場合、python **3**-azure-mgmt-compute パッケージのバージョン **4.6.2** 以上をインストールする 
-
+   > - SLES 15.X の場合、python **3**-azure-mgmt-compute パッケージのバージョン **4.6.2** をインストールする (これより新しいバージョンは対象外)。 python **3**-azure-mgmt-compute パッケージのバージョン 17.0.0-6.7.1 には Azure Fence Agent と互換性のない変更が含まれているため避けてください    
+     
 1. **[A]** ホスト名解決を設定します
 
    DNS サーバーを使用するか、すべてのノードの /etc/hosts を変更します。 この例では、/etc/hosts ファイルを使用する方法を示しています。
@@ -594,43 +595,27 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 ```json
 {
-    "properties": {
-        "roleName": "Linux Fence Agent Role",
-        "description": "Allows to power-off and start virtual machines",
-        "assignableScopes": [
-            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-        ],
-        "permissions": [
-            {
-                "actions": [
-                    "Microsoft.Compute/*/read",
-                    "Microsoft.Compute/virtualMachines/powerOff/action",
-                    "Microsoft.Compute/virtualMachines/start/action"
-                ],
-                "notActions": [],
-                "dataActions": [],
-                "notDataActions": []
-            }
-        ]
-    }
+      "Name": "Linux Fence Agent Role",
+      "description": "Allows to power-off and start virtual machines",
+      "assignableScopes": [
+              "/subscriptions/e663cc2d-722b-4be1-b636-bbd9e4c60fd9",
+              "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+      ],
+      "actions": [
+              "Microsoft.Compute/*/read",
+              "Microsoft.Compute/virtualMachines/powerOff/action",
+              "Microsoft.Compute/virtualMachines/start/action"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
 }
 ```
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** サービス プリンシパルにカスタム ロールを割り当てる
 
-最後の章で作成したカスタム ロール "Linux Fence Agent Role" をサービス プリンシパルに割り当てます。 所有者ロールは今後使わないでください。
-
-1. [https://portal.azure.com](https://portal.azure.com) に移動します
-1. [All resources] \(すべてのリソース) ブレードを開きます
-1. 1 つ目のクラスター ノードの仮想マシンを選択します
-1. [アクセス制御 (IAM)] を選択します
-1. [ロールの割り当ての追加] をクリックします
-1. "Linux Fence Agent Role" ロールを選択します
-1. 上記で作成したアプリケーションの名前を入力します
-1. [保存] をクリックします。
-
-2 つ目のクラスター ノードについても上記の手順を繰り返します。
+最後の章で作成したカスタム ロール "Linux Fence Agent Role" をサービス プリンシパルに割り当てます。 所有者ロールは今後使わないでください。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../../role-based-access-control/role-assignments-portal.md)」を参照してください。   
+必ず両方のクラスターノードにロールを割り当ててください。    
 
 ### <a name="1-create-the-stonith-devices"></a>**[1]** STONITH デバイスを作成します
 
@@ -660,7 +645,7 @@ sudo crm configure property stonith-timeout=900
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Azure のスケジュール化されたイベントの Pacemaker 構成
 
-Azure では、[スケジュール化されたイベント](../../linux/scheduled-events.md)が提供されています。 スケジュール化されたイベントは、メタデータ サービスを介して提供され、VM のシャットダウンや VM の再デプロイなどのイベントに対して準備する時間をアプリケーションに与えます。リソース エージェント **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** では、スケジュール化された Azure イベントが監視されます。 イベントが検出された場合、エージェントは影響を受ける VM 上のすべてのリソースを停止してクラスター内の別のノードに移動しようとします。 これを実現するには、追加の Pacemaker リソースを構成する必要があります。 
+Azure では、[スケジュール化されたイベント](../../linux/scheduled-events.md)が提供されています。 スケジュール化されたイベントは、メタデータ サービスを介して提供され、VM のシャットダウンや VM の再デプロイなどのイベントに対して準備する時間をアプリケーションに与えます。リソース エージェント **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** では、スケジュール化された Azure イベントが監視されます。 イベントが検出され、使用可能なクラスター ノードが他にあるとリソース エージェントが判断した場合、ターゲット クラスター ノードは、azure-events エージェントによってスタンバイ モードになります。これにより、クラスターは、保留中の [Azure のスケジュール化されたイベント](../../linux/scheduled-events.md)を使用して、リソースを VM から強制的に移行することができます。 これを実現するには、追加の Pacemaker リソースを構成する必要があります。 
 
 1. **[A]** **azure-events** エージェントのパッケージが既にインストールされ、最新であることを確認します。 
 

@@ -8,17 +8,18 @@ ms.assetid: 7aa21ef8-9cfb-43e0-bfda-3f10a2a2f3ef
 ms.topic: quickstart
 ms.service: virtual-machines
 ms.subservice: redhat
-ms.custom:
-- mode-api
+ms.custom: mode-api
 ms.collection: linux
-ms.openlocfilehash: bad9331a6d9a0c0936b1458e3aa4a84559e4a107
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 011be3cd73422c98464708bcf69b231fe3077711
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533567"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036677"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>クイックスタート: CentOS 8 上の WildFly
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 このクイックスタートでは、CentOS 8 VM に存在するスタンドアロンの WildFly ノードをデプロイする方法を紹介します。 これは、Azure 上でエンタープライズ Java アプリケーションの開発とテストをするうえで最適です。 このクイックスタートをデプロイする際に、アプリケーション サーバー サブスクリプションは必要ありません。
 
@@ -73,7 +74,7 @@ Azure CentOS 8 イメージは従量課金制 (PAYG) の VM イメージであ�
     ```
 
     ```
-    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/wildfly/wildfly-standalone-centos8/azuredeploy.json
     ```
     
 - Azure CLI を使う - 次のコマンドを実行してテンプレートをデプロイします (Azure クロスプラットフォーム コマンドライン インターフェイスのインストールと構成に関する詳細については、[Azure クロスプラットフォーム コマンドライン](/cli/azure/install-azure-cli)に関するページを参照してください)。
@@ -83,14 +84,14 @@ Azure CentOS 8 イメージは従量課金制 (PAYG) の VM イメージであ�
     ```
 
     ```
-    az deployment group create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    az deployment group create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/wildfly/wildfly-standalone-centos8/azuredeploy.json
     ```
 
-- Azure portal を使う - <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">ここ</a>をクリックして Azure portal にログインし、テンプレートをデプロイします。
+- Azure portal を使う - <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fwildfly%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">ここ</a>をクリックして Azure portal にログインし、テンプレートをデプロイします。
 
 ## <a name="arm-template"></a>ARM テンプレート
 
-<a href="https://github.com/Azure/azure-quickstart-templates/tree/master/wildfly-standalone-centos8" target="_blank"> WildFly 18 on CentOS 8 (stand-alone VM)</a> - リソース グループ (RG) 内に CentOS 8 VM 上の WildFly 18.0.1.Final のスタンドアロン ノードを作成するためのクイックスタート テンプレートです。VM のプライベート IP、仮想ネットワーク、および診断ストレージ アカウントが含まれています。 また、WildFly 上に JBoss-EAP on Azure という名前のサンプル Java アプリケーションもデプロイされます。
+<a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/wildfly/wildfly-standalone-centos8" target="_blank"> WildFly 18 on CentOS 8 (stand-alone VM)</a> - リソース グループ (RG) 内に CentOS 8 VM 上の WildFly 18.0.1.Final のスタンドアロン ノードを作成するためのクイックスタート テンプレートです。VM のプライベート IP、仮想ネットワーク、および診断ストレージ アカウントが含まれています。 また、WildFly 上に JBoss-EAP on Azure という名前のサンプル Java アプリケーションもデプロイされます。
 
 ## <a name="resource-links"></a>リソース リンク
 
@@ -104,12 +105,12 @@ Azure CentOS 8 イメージは従量課金制 (PAYG) の VM イメージであ�
 
 サンプル アプリケーションを備えたスタンドアロンの RHEL 仮想マシン
 
-*  <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/jboss-eap-standalone-rhel" target="_blank"> JBoss EAP on RHEL (stand-alone VM)</a>
+*  <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/jboss/jboss-eap-standalone-rhel" target="_blank"> JBoss EAP on RHEL (stand-alone VM)</a>
 
 サンプル アプリケーションを備え、クラスター化された RHEL 仮想マシン
 
-* <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/jboss-eap-clustered-multivm-rhel" target="_blank"> JBoss EAP on RHEL (clustered, multi-VM)</a>
+* <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/jboss/jboss-eap-clustered-multivm-rhel" target="_blank"> JBoss EAP on RHEL (clustered, multi-VM)</a>
 
 サンプル アプリケーションを備え、クラスター化された RHEL 仮想マシン スケール セット
 
-* <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/jboss-eap-clustered-vmss-rhel" target="_blank"> JBoss EAP on RHEL (clustered, VMSS)</a>
+* <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/jboss/jboss-eap-clustered-vmss-rhel" target="_blank"> JBoss EAP on RHEL (clustered, VMSS)</a>

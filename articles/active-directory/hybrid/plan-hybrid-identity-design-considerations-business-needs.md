@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 074c203a0a5688855d4f7607a877b25ce6ee6ad7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f57ae5565e176956cab15586809ad231b776d27
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89660568"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300866"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの ID 要件の決定
 ハイブリッド ID ソリューションを設計する上で最初の手順は、このソリューションを利用するビジネス組織の要件を決定することです。  ハイブリッド ID は脇役から始まり (認証を提供することでその他すべてのクラウド ソリューションをサポートします)、ユーザーに対して新しいワークロードを解除するという、新しく興味深い機能を提供するようになります。  こうしたユーザー向けに採用する予定のワークロードまたはサービスは、ハイブリッド ID の設計の要件に影響があります。  これらのサービスとワークロードは、オンプレミスとクラウドの両方でハイブリッド ID を利用する必要があります。  
@@ -59,7 +59,7 @@ ms.locfileid: "89660568"
 * 現在、その統合は運用中ですか、パイロットですか。
 
 > [!NOTE]
-> Cloud Discovery は、Microsoft Cloud App Security のクラウド アプリ カタログに対するトラフィック ログを分析します。クラウド アプリ カタログは、16,000 を超えるクラウド アプリからなり、これらのクラウド アプリは、70 を超えるリスク要因に基づいてランクとスコアが付けられています。このトラフィック ログの分析により、クラウドの利用状況、シャドウ IT、シャドウ IT が組織に与えるリスクを継続的に確認することができます。Cloud Discovery を使い始めるには、「[Cloud Discovery の設定](/cloud-app-security/set-up-cloud-discovery)」を参照してください。
+> Cloud Discovery は、Microsoft Defender for Cloud Apps カタログに対するトラフィック ログを分析します。カタログは、16,000 を超えるクラウド アプリからなり、これらのクラウド アプリは、70 を超えるリスク要因に基づいてランクとスコアが付けられています。このトラフィック ログの分析により、クラウドの利用状況、シャドウ IT、シャドウ IT が組織に与えるリスクを継続的に確認することができます。Cloud Discovery を使い始めるには、「[Cloud Discovery の設定](/cloud-app-security/set-up-cloud-discovery)」を参照してください。
 > 
 > 
 
@@ -112,4 +112,3 @@ ms.locfileid: "89660568"
 
 ## <a name="see-also"></a>参照
 [設計上の考慮事項の概要](plan-hybrid-identity-design-considerations-overview.md)
-

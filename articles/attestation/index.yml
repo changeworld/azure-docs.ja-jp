@@ -10,12 +10,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 07/20/2020
-  ms.openlocfilehash: 47e1a1cc838a7d8153c8dbea71a0aae576166f2e
-  ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+  ms.openlocfilehash: d2f52a50e29757c8005d6fd204f05101ede9ebb3
+  ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/30/2021
-  ms.locfileid: "99093544"
+  ms.lasthandoff: 06/14/2021
+  ms.locfileid: "112061778"
 landingContent:
 - title: Microsoft Azure Attestation について
   linkLists:
@@ -62,7 +62,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: よく寄せられる質問
-      url: faq.md
+      url: faq.yml
     - text: REST
       url: /rest/api/attestation/
     - text: 問題のトラブルシューティング

@@ -5,15 +5,16 @@ description: Azure Communication Services における通話フローのトポ�
 author: nmurav
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 03/10/2021
-ms.topic: overview
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 526e3a1e4eeb6ef6a31a33498241d9a7443cca35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: calling
+ms.openlocfilehash: 064586d0fadac917359a7de70145a10ab6e2cb45
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103490638"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672041"
 ---
 # <a name="call-flow-topologies"></a>通話フローのトポロジ
 この記事では、Azure Communication Services における通話フローのトポロジについて説明します。 この記事は、管理下のネットワーク内に Communication Services を統合することを検討しているエンタープライズのお客様にぜひお勧めします。 Communication Services における通話フローの概要については、[通話フローの概念に関するドキュメント](./call-flows.md)を参照してください。
@@ -74,7 +75,7 @@ Communication Services の通話フローは、次の 4 つの一般原則によ
 
 ### <a name="communication-services-internet"></a>Communication Services (インターネット)
 
-このトポロジは、SIP Interface などのオンプレミス デプロイを使わず、クラウドから Communication Services を利用するお客様向けです。 このトポロジでは、Communication Services との間でやり取りされるトラフィックがインターネットを経由します。
+このトポロジは、Azure 直接ルーティングなどのオンプレミス デプロイを使わず、クラウドから Communication Services を利用するお客様向けです。 このトポロジでは、Communication Services との間でやり取りされるトラフィックがインターネットを経由します。
 
 :::image type="content" source="./media/call-flows/detailed-flow-general.png" alt-text="Azure Communication Services のトポロジ。":::
 
@@ -172,7 +173,7 @@ VPN ユーザーとカスタマー ネットワークとの間のシグナリン
 
 ### <a name="use-case-communication-services-client-to-pstn-through-communication-services-trunk"></a>ユース ケース: Communication Services クライアントから Communication Services トランクを経由して PSTN へ
 
-Communication Services では、公衆交換電話網 (PSTN) との間で電話をかけたり受けたりすることができます。 Communication Services から提供された電話番号を使用して PSTN トランクが接続されていれば、このユース ケースに関して特別な接続要件はありません。 独自のオンプレミス PSTN トランクを Azure Communication Services に接続したい場合は、SIP インターフェイス (2021 年に提供) を使用することができます。
+Communication Services では、公衆交換電話網 (PSTN) との間で電話をかけたり受けたりすることができます。 Communication Services から提供された電話番号を使用して PSTN トランクが接続されていれば、このユース ケースに関して特別な接続要件はありません。 独自のオンプレミス PSTN トランクを Azure Communication Services に接続したい場合は、Azure 直接ルーティング (2021 年に提供) を使用することができます。
 
 :::image type="content" source="./media/call-flows/acs-to-pstn.png" alt-text="PSTN 参加者との一対一の通話":::
 

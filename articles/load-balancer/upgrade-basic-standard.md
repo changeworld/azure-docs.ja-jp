@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33858a315e1a20a3f20277157f64b8992b6c43c2
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612832"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179817"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure Public Load Balancer をアップグレードする
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](./skus.md#skus)を参照してください。
@@ -58,7 +58,7 @@ ms.locfileid: "102612832"
 
 ## <a name="download-the-script"></a>スクリプトのダウンロード
 
-[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/4.0)から移行スクリプトをダウンロードします。
+[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/6.0)から移行スクリプトをダウンロードします。
 ## <a name="use-the-script"></a>スクリプトの使用
 
 ローカルの PowerShell 環境のセットアップと設定に応じて、次の 2 つのオプションがあります。
@@ -115,7 +115,7 @@ Azure Az モジュールがインストールされていて、それらをア�
 
 ### <a name="how-long-does-the-upgrade-take"></a>アップグレードにはどのくらいの時間がかかりますか。
 
-通常、スクリプトが完了するまでに約 5 分から 10 分かかります。Load Balancer 構成の複雑さによってはさらに時間がかかることがあります。 そのため、ダウンタイムを考慮し、必要に応じてフェールオーバーを計画してください。
+通常、スクリプトが完了するまでに数分かかります。Load Balancer の構成の複雑さによっては、さらに時間がかかることがあります。 そのため、ダウンタイムを考慮し、必要に応じてフェールオーバーを計画してください。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell スクリプトでは、Basic Load Balancer から新しく作成した Standard Load Balancer にトラフィックを切り替えることもできますか?
 

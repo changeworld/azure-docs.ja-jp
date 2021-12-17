@@ -2,22 +2,22 @@
 title: DNS エイリアス (PowerShell & Azure CLI)
 description: PowerShell コマンドレットと Azure CLI コマンドレットを使用すると、クライアントの構成を手動で変更することなく、新しいクライアント接続を Azure 内の別の SQL サーバーにリダイレクトできます。
 keywords: DNS SQL Database
-ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.devlang: PowerShell
 ms.topic: how-to
-author: rohitnayakmsft
-ms.author: rohitna
-ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
+author: emlisa
+ms.author: emlisa
+ms.reviewer: mathoma, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
-ms.openlocfilehash: 02cfd839ed1b75fd85553f2e5a5150cadc29ff8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0fecfb53fbf511e17a14cbea87c8db7ee6a209a
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92790459"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163094"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Azure SQL Database を参照する DNS エイリアス用の PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

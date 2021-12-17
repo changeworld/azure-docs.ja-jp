@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 9d81af064b18ca8113599b460f2b9524c7288439
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50e1a5b98607046f8f57699e49be764439baa6f2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711078"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114474163"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Azure Monitor で Surface Hub を監視して正常性を追跡する
 
@@ -18,7 +18,7 @@ ms.locfileid: "101711078"
 
 この記事では、Azure Monitor の Surface Hub ソリューションを使用して、Microsoft Surface Hub デバイスを監視する方法について説明します。 そのソリューションは、Surface Hub の正常性を追跡し、それらがどのように使用されているかを理解するのに役立ちます。
 
-各 Surface Hub には、Microsoft Monitoring Agent がインストールされます。 そのエージェントを通して、Surface Hub から Azure Monitor 内の Log Analytics ワークスペースにデータを送信できます。 ログ ファイルは、Surface Hub から読み取られた後、Azure Monitor に送信されます。 オフラインになっているサーバー、同期していない予定表、デバイス アカウントで Skype にログインできないなどの問題が、Azure Monitor の Surface Hub ダッシュボードに表示されます。 ダッシュボードに表示されるデータを利用して、実行されていないデバイスや問題が発生しているデバイスを識別し、検出された問題に対して修正プログラムを適用できる可能性があります。
+各 Surface Hub には、Microsoft Monitoring Agent がインストールされます。 そのエージェントを通して、Surface Hub から Azure Monitor 内の Log Analytics ワークスペースにデータを送信できます。 ログ ファイルは Surface Hub から読み取られた後、Azure Monitor に送信されます。 オフラインになっているサーバー、同期していない予定表、デバイス アカウントで Skype にログインできないなどの問題が、Azure Monitor の Surface Hub ダッシュボードに表示されます。 ダッシュボードに表示されるデータを利用して、実行されていないデバイスや問題が発生しているデバイスを識別し、検出された問題に対して修正プログラムを適用できる可能性があります。
 
 ## <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。 Azure Monitor で Surface Hub を管理するには、次のものが必要です。
@@ -38,14 +38,16 @@ Surface Hub を管理する Log Analytics ワークスペースのワークス�
 
 Intune は、1 つまたは複数のデバイスに適用される Log Analytics ワークスペースの構成設定を一元管理できる Microsoft 製品です。 Intune を通してデバイスを構成するには、次の手順に従います。
 
-1. Intune にサインインします。
-2. **[設定]**  >  **[接続されたソース]** の順に移動します。
-3. Surface Hub テンプレートに基づいてポリシーを作成するか編集します。
-4. ポリシーの [Azure Operational Insights] セクションに移動し、Log Analytics の "*ワークスペース ID*" と "*ワークスペース キー*" をポリシーに追加します。
-5. ポリシーを保存します。
-6. ポリシーを適切なデバイス グループに関連付けます。
+1. [Microsoft エンドポイント マネージャー管理センター](https://endpoint.microsoft.com/)にサインインします。
+2. **[デバイス]**  >  **[構成プロファイル]** の順に移動します。
+3. 新しい Windows 10 プロファイルを作成し、 **[テンプレート]** を選択します。
+4. テンプレートの一覧で、 **[デバイスの制限 (Windows 10 Team)]** を選択します。
+5. プロファイルの名前と説明を入力します。
+6. **Azure Operational Insights** の場合は、 **[有効]** を選択します。
+7. Log Analytics の **[ワークスペース ID]** を入力し、ポリシーの **[ワークスペース キー]** を入力します。
+8. Surface Hub デバイスのグループにポリシーを割り当て、そのポリシーを保存します。
 
-   ![Intune ポリシー](./media/surface-hubs/intune.png)
+    :::image type="content" source="./media/surface-hubs/intune.png" alt-text="Intune ポリシーの設定を示すスクリーンショット。":::
 
 その後、Intune によって、Log Analytics の設定がターゲット グループ内のデバイスと同期され、デバイスが Log Analytics ワークスペースに登録されます。
 
@@ -58,9 +60,10 @@ Surface Hub を管理する Log Analytics ワークスペースのワークス�
 2. 情報を求めるメッセージが表示されたら、デバイス管理者の資格情報を入力します。
 3. **[This device (このデバイス)]** をクリックし、 **[監視]** の下の **[Log Analytics 設定の構成]** をクリックします。
 4. **[監視を有効にする]** を選択します。
-5. [Log Analytics の設定] ダイアログで、Log Analytics の **[ワークスペース ID]** と **[ワークスペース キー]** を入力します。  
-   ![Microsoft Operations Manager Suite 設定のスクリーンショット。[監視を有効にする] が選択されています。[ワークスペース ID] と [ワークスペース キー] にテキスト ボックスがあります。](./media/surface-hubs/settings.png)
-6. **[OK]** をクリックして、構成を完了します。
+5. [Log Analytics の設定] ダイアログで、Log Analytics の **[ワークスペース ID]** と **[ワークスペース キー]** を入力します。 
+
+    ![Microsoft Operations Manager Suite 設定のスクリーンショット。[監視を有効にする] が選択されています。[ワークスペース ID] と [ワークスペース キー] にテキスト ボックスがあります。](./media/surface-hubs/settings.png)
+1. **[OK]** をクリックして、構成を完了します。
 
 デバイスに構成が正常に適用されたかどうかを示す確認メッセージが表示されます。 成功した場合は、エージェントが Azure Monitor に正常に接続されたことを示すメッセージが表示されます。 その後、デバイスでは Azure Monitor へのデータ送信が開始されます。Azure Monitor でデータを表示し、対応することができます。
 

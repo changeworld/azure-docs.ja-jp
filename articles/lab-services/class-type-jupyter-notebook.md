@@ -2,15 +2,15 @@
 title: Python と Jupyter Notebooks を使用してデータ サイエンスを教えるためのラボを設定する |Microsoft Docs
 description: Python と Jupyter Notebooks を使用してデータサイエンスを教えるためのラボを設定する方法について説明します。
 author: emaher
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: d4034f889334bcf1e4eaa3710a32db60b6a9936b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f52215fbcaf2d3a037863853366aaae9bb55a3fb
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94648023"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176892"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python と Jupyter Notebook を使用してデータ サイエンスを教えるためのラボを設定する
 この記事では、[Jupyter Notebook](http://jupyter-notebook.readthedocs.io/) の使用方法を学生に教えるために必要なツールを使用して Lab Services 内にテンプレート仮想マシン (VM) を設定する方法と、学生が各自の仮想マシン (VM) 上で各自のノートブックに接続する方法について概説します。
@@ -42,6 +42,7 @@ Azure サブスクリプションを用意したら、Azure Lab Services で新�
 | 仮想マシンのサイズ | <p>ここで選択するサイズは、実行するワークロードによって異なります。</p><ul><li>小規模または大規模 - Jupyter Notebook にアクセスする基本的なセットアップに適しています</li><li>小規模 GPU (コンピューティング) – 人工知能やディープ ラーニングのような、コンピューティング集中型およびネットワーク集中型のアプリケーションに最適です</li></ul> | 
 | 仮想マシン イメージ | <p>オペレーティング システムのニーズに応じて、次のいずれかのイメージを選択します。</p><ul><li>[Data Science Virtual Machine – Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)</li><li>[Data Science Virtual Machine – Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview)</li></ul> |
 
+**小規模 GPU (コンピューティング)** サイズのラボを作成する場合、[GPU ドライバーをインストール](./how-to-setup-lab-gpu.md#ensure-that-the-appropriate-gpu-drivers-are-installed)するオプションがあります。  このオプションでは、GPU でハイ パフォーマンス コンピューティングを有効にするために必要な、最新の NVIDIA ドライバーと Compute Unified Device Architecture (CUDA) Toolkit がインストールされます。  詳細については、記事「[GPU 仮想マシンを使用してラボを設定する](./how-to-setup-lab-gpu.md)」を参照してください。
 
 ### <a name="template-virtual-machine"></a>テンプレート仮想マシン
 ラボを作成すると、選択した仮想マシンのサイズとイメージに基づいてテンプレート VM が作成されます。 このテンプレート VM に、このクラスの学生に対して提供するすべてのものを構成します。 詳細については、[テンプレート仮想マシンを管理する方法](how-to-create-manage-template.md)に関する記事を参照してください。 
@@ -50,6 +51,53 @@ Azure サブスクリプションを用意したら、Azure Lab Services で新�
 
 - [Jupyter Notebook](http://jupyter-notebook.readthedocs.io/):データ サイエンティストが生データの取得、計算の実行、および結果の表示をすべて同じ環境で行えるようにする Web アプリです。 テンプレート VM でローカルで実行されます。  
 - [Visual Studio Code](https://code.visualstudio.com/):ノートブックを作成およびテストする際に、豊富な対話型エクスペリエンスを提供する統合開発環境 (IDE) です。 詳細については、「[Visual Studio Code での Jupyter Notebooks の使用](https://code.visualstudio.com/docs/python/jupyter-support)」を参照してください。
+
+**小規模 GPU (コンピューティング)** サイズを使用する場合、データ サイエンス フレームワークとライブラリが GPU で適切に設定されているか確認することをお勧めします。  フレームワークとライブラリを適切に設定するには、別のバージョンの NVIDIA ドライバーと CUDA Toolkit のインストールが必要になる場合があります。  たとえば、GPU が TensorFlow 用に構成されていることを確認するために、テンプレート VM に接続し、Jupyter Notebooks で次の Python-TensorFlow コードを実行できます。
+
+```python
+import tensorflow as tf
+from tensorflow.python.client import device_lib
+
+print(device_lib.list_local_devices())
+```
+
+上記のコードの出力が次のようになる場合、GPU は TensorFlow 用に構成されていません。
+
+```python
+[name: "/device:CPU:0"
+device_type: "CPU"
+memory_limit: 268435456
+locality {
+}
+incarnation: 15833696144144374634
+]
+```
+GPU を適切に構成するために、フレームワークまたはライブラリのドキュメントを参照する必要があります。  上記の例に続き、TensorFlow では次のガイダンスが提供されています。
+- [TensorFlow GPU サポート](https://www.tensorflow.org/install/gpu)
+
+このガイダンスでは、[NVIDIA ドライバー](https://www.nvidia.com/drivers)と [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit-archive) の必要なバージョンについて説明されています。  このガイダンスには、[NVIDIA CUDA Deep Neural Network ライブラリ (cudDNN)](https://developer.nvidia.com/cudnn) のインストールも含まれます。
+
+TensorFlow の手順に従って GPU を構成した後、上記のコードを再実行すると、次のような出力が表示されます。
+
+```python
+[name: "/device:CPU:0"
+device_type: "CPU"
+memory_limit: 268435456
+locality {
+}
+incarnation: 15833696144144374634
+, name: "/device:GPU:0"
+device_type: "GPU"
+memory_limit: 11154792128
+locality {
+  bus_id: 1
+  links {
+  }
+}
+incarnation: 2659412736190423786
+physical_device_desc: "device: 0, name: NVIDIA Tesla K80, pci bus id: 0001:00:00.0, compute capability: 3.7"
+]
+```
 
 ### <a name="provide-notebooks-for-the-class"></a>クラス用のノートブックを提供する
 次のタスクは、使用するノートブックを学生に提供することです。 独自のノートブックを提供するために、テンプレート VM にノートブックをローカルに保存できます。 
@@ -128,7 +176,6 @@ Mac または Chromebook を使用する学生は、次の記事の手順に従�
     ![X2Go クライアント](./media/class-type-jupyter-notebook/x2go-client.png)
 2. VM に接続するためのパスワードを入力します (ファイアウォールをバイパスして接続を完了するには、X2Go アクセス許可の付与が必要な場合があります)。
 3.  これで、Ubuntu Data Science VM のグラフィカル インターフェイスが表示されます。
-
 
 #### <a name="ssh-tunnel-to-jupyter-server-on-the-vm"></a>VM 上の Jupyter サーバーへの SSH トンネル
 学生によっては、自分のローカル コンピューターから VM 内の Jupyter サーバーに直接接続することを望む場合があります。 SSH プロトコルでは、ローカル コンピューターとリモート サーバー (ここでは学生のラボ VM) 間でのポート転送を有効にして、サーバー上の特定のポートで実行されているアプリケーションを、ローカル コンピューター上のマッピングポートに **トンネリング** されるようにすることができます。 学生は、次の手順に従って、ラボ VM 上の Jupyter サーバーへの SSH トンネリングを行う必要があります。

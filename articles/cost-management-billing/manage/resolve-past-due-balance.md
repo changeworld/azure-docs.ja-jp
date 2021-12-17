@@ -1,26 +1,28 @@
 ---
 title: Azure からの支払期限を過ぎた未払い額に関する電子メール
-description: Azure サブスクリプションに支払期限を過ぎた未払い額がある場合の支払い方法について説明します
-author: genlin
-ms.reviewer: dcscontentpm
+description: Azure サブスクリプションに支払期限を過ぎた未払い額がある場合の支払い方法について説明します。
+author: bandersmsft
+ms.reviewer: lishepar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 10/27/2021
 ms.author: banders
-ms.openlocfilehash: 3c42db58017dc3a692c227f6eb454cf7b597e77b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b29689069c16a59c134939a5b8cbf8b6b0df4c98
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297586"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464853"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>支払期限を過ぎた Azure サブスクリプション未払い額の支払い
 
-この記事は、クレジット カードを使用してオンラインで Azure にサインアップし、Microsoft Online Services プログラムの課金アカウントを持っているお客様に適用されます。 [課金アカウントの種類を確認する](#check-the-type-of-your-account)方法をご覧ください。 Microsoft 顧客契約の課金アカウントをお持ちの場合は、「[Microsoft Azure の請求書の支払い](../understand/pay-bill.md)」を参照してください。
+この記事は、クレジット カードを使用してオンラインで Azure にサインアップし、Microsoft Online Services プログラムの課金アカウント (従量課金制とも呼ばれます) を持っているお客様に適用されます。 [課金アカウントの種類を確認する](#check-the-type-of-your-account)方法をご覧ください。 Microsoft 顧客契約の課金アカウントをお持ちの場合は、「[Microsoft Azure の請求書の支払い](../understand/pay-bill.md)」を参照してください。
 
-お客様の支払いが届いていない場合や、お客様の支払いを処理できない場合、サブスクリプションの期限が過ぎていることを通知するメールが届き、アラートが Azure portal に表示されます。 既定の支払い方法がクレジット カードの場合、[アカウント管理者](../understand/subscription-transfer.md#whoisaa)は Azure portal で未払い料金を清算できます。 請求書による支払い (小切手、電信送金) を利用する場合は、請求書の下部に記載されている場所に送金してください。
+お客様の支払いが届いていない場合や、お客様の支払いを処理できない場合、サブスクリプションの期限が過ぎていることを通知するメールが届き、アラートが Azure portal に表示されます。 メールには、[残高の清算] ページに移動するリンクが含まれています。
+
+既定の支払い方法がクレジット カードの場合、[アカウント管理者](add-change-subscription-administrator.md#whoisaa)は Azure portal で未払い料金を清算できます。 請求書による支払い (小切手、電信送金) を利用する場合は、請求書の下部に記載されている場所に送金してください。
 
 > [!IMPORTANT]
 > * 同じクレジット カードを使用する複数のサブスクリプションがあり、それらがすべて支払期限を過ぎている場合は、未払い残高全体を一度に支払う必要があります。
@@ -34,9 +36,10 @@ ms.locfileid: "91297586"
 1. **[サブスクリプションの概要]** ページで、期限超過を示す赤いバナーをクリックして、残高を決済します。
     > [!NOTE]
     > アカウント管理者でない場合は、残高を決済することはできません。
+    - アカウントが支払い済みの場合、バナーは表示されません。
+    - アカウントに支払いの準備ができている請求書がある場合は、[残高の清算] ページに移動する青いバナーが表示されます。 また、[残高の清算] ページへのリンクを含むメールも送信されます。
+    - アカウントの期限が過ぎた場合は、[残高の清算] ページに移動する、アカウントの期限が過ぎたという赤いバナーが表示されます。 また、[残高の清算] ページへのリンクを含むメールも送信されます。
 1. 新しい **[残高の清算]** ページで、 **[支払い方法の選択]** をクリックします。
-    ![支払い方法の選択のリンクを示すスクリーン ショット](./media/resolve-past-due-balance/settle-balance-screen.png)
-
 1. 右側の新しいブレードで、クレジット カードをドロップダウンから選択するか、青い **[新しい支払い方法の追加]** リンクをクリックして新しく追加します。 このクレジット カードは、失敗した支払い方法を現在使用しているすべてのサブスクリプションのアクティブな支払い方法になります。
      > [!NOTE]
      > * 合計未払い残高には、失敗した支払い方法を使用するすべての Microsoft サービスの未払い料金が反映されます。

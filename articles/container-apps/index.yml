@@ -1,0 +1,70 @@
+### YamlMime:Landing
+title: Azure Container Apps プレビューのドキュメント
+summary: Azure Container Apps を使うと、オーケストレーションやインフラストラクチャを気にすることなく、コンテナー化されたアプリケーションを実行できます。
+metadata:
+  title: Azure Container Apps のドキュメント
+  description: Azure Container Apps を使うと、オーケストレーションやインフラストラクチャを気にすることなく、コンテナー化されたアプリケーションを実行できます。
+  ms.topic: landing-page
+  ms.service: container-apps
+  author: craigshoemaker
+  ms.author: cshoe
+  ms.date: 11/08/2021
+  ms.openlocfilehash: 39397cee65d48d44896c248620a4ac5d3d65283e
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132704771"
+landingContent:
+- title: Azure Container Apps について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Container Apps とは
+      url: overview.md
+    - text: Azure のコンテナー オプションを比較する
+      url: compare-options.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 初めてのコンテナー アプリをデプロイする - Azure CLI
+      url: ./get-started.md
+    - text: 初めてのコンテナー アプリをデプロイする - Azure portal
+      url: ./quickstart-portal.md
+  - linkListType: concept
+    links:
+    - text: 環境
+      url: environment.md
+    - text: Containers
+      url: containers.md
+    - text: リビジョン
+      url: revisions.md
+    - text: アプリケーション ライフサイクル管理
+      url: application-lifecycle-management.md
+    - text: マイクロサービス
+      url: microservices.md
+- title: 一般的なタスク
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: スケーリング ルールを設定する
+      url: scale-app.md
+    - text: アプリをセキュリティで保護する
+      url: secure-app.md
+    - text: アプリを監視する
+      url: monitor.md
+    - text: リビジョンを管理する
+      url: revisions-manage.md
+    - text: HTTP イングレスを設定する
+      url: ingress.md
+    - text: 複数のアプリを接続する
+      url: connect-apps.md
+- title: アプリとマイクロサービス
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Dapr を使用したマイクロサービス
+      url: microservices-dapr.md
+    - text: バックグラウンド処理
+      url: background-processing.md

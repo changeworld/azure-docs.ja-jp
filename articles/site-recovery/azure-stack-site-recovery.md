@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用して Azure Stack VM を Azure にレプリ
 description: Azure Site Recovery サービスを使用して Azure Stack VM の Azure へのディザスター リカバリーを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 300b239de74c7d21e03eb0c3b059663b5074964c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d423f4511e830c4a62537330f3bff7d2c7bc6ec9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728387"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452720"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする
 
@@ -82,7 +82,7 @@ VM を実行中のオペレーティング システムが、表にまとめら�
 
 **オペレーティング システム** | **詳細**
 --- | ---
-**64 ビット Windows** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 (SP1 から)
+**64 ビット Windows** | Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 (SP1 以降)
 **CentOS** | 5.2 から 5.11、6.1 から 6.9、7.0 から 7.3
 **Ubuntu** | 14.04 LTS サーバー、16.04 LTS サーバー。 [サポートされているカーネル](vmware-physical-azure-support-matrix.md#ubuntu-kernel-versions)を確認してください。
 
@@ -260,7 +260,7 @@ Azure へのテスト フェールオーバーを実行して、すべて想定�
 
 1. **[保護されているアイテム]** で、 **[レプリケートされたアイテム]** をクリックし、VM をクリックします。
 2. **[レプリケートされたアイテム]** ウィンドウには、VM 情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
-3. **[コンピューティングとネットワーク]** で、必要に応じて設定を変更します。
+3. **[コンピューティング]** と **[ネットワーク]** の設定で、必要に応じて設定を変更します。
 
     - Azure VM 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、およびマネージド ディスクの設定を変更できます。
     - ネットワーク設定も、表示して変更できます。 これらには、フェールオーバー後に Azure VM が参加するネットワーク/サブネットと、VM に割り当てられた IP アドレスが含まれます。

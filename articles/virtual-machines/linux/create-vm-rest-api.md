@@ -7,14 +7,16 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 519939445e67f0f993662e2faf506eb186686156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af006f25733344ebd272087b897130f895478685
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554566"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689765"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure 内の Linux 仮想マシン (VM) は、ディスクやネットワーク インターフェイスなどのさまざまなリソースで構成され、場所、サイズおよびオペレーティング システムのイメージや認証の設定などのパラメーターが定義されます。
 

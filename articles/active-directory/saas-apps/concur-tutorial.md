@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/26/2020
+ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 006d30839e16ea303b684fb0ee1be7f40dcbdfb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01fc60a0927c2b402877ff32099e3194ca860c63
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736961"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342454"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Concur の統合
 
@@ -37,8 +37,9 @@ ms.locfileid: "98736961"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Concur では、**SP** によって開始される SSO がサポートされます
-* Concur では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Concur では、**SP** Initiated SSO がサポートされます。
+* Concur では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* Concur では、[自動化されたユーザー プロビジョニング](concur-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-concur-from-the-gallery"></a>ギャラリーからの Concur の追加
 
@@ -135,6 +136,8 @@ Concur に対する Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、B. Simon というユーザーを Concur に作成します。 Concur では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Concur にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
+Concur では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./concur-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -143,9 +146,8 @@ Concur に対する Azure AD SSO を構成してテストするには、次の�
 
 * Concur のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Concur] タイルをクリックすると、Concur のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Concur] タイルをクリックすると、Concur のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Concur を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Concur を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

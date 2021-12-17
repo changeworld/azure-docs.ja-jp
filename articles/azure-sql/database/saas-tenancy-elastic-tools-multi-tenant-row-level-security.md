@@ -1,7 +1,6 @@
 ---
 title: RLS とエラスティック データベース ツールを使用したマルチテナント アプリ
 description: 行レベルのセキュリティを備えた弾力性データベース ツールを使用して、拡張性の高いデータ層を持つアプリケーションを構築します。
-services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
@@ -9,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: 6d753a90f2a4cb19c9f3933d007fb3d378af6d81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7bc3f44b5b794ece77296d84b4d21cf12a57eb3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92793213"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063007"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -239,7 +238,7 @@ CREATE FUNCTION rls.fn_tenantAccessPredicate(@TenantId int)
     WITH SCHEMABINDING
 AS
     RETURN SELECT 1 AS fn_accessResult
-        -- Use the user in your application’s connection string.
+        -- Use the user in your application's connection string.
         -- Here we use 'dbo' only for demo purposes!
         WHERE DATABASE_PRINCIPAL_ID() = DATABASE_PRINCIPAL_ID('dbo')
         AND CAST(SESSION_CONTEXT(N'TenantId') AS int) = @TenantId;
@@ -346,7 +345,7 @@ GO
 
 ## <a name="summary"></a>まとめ
 
-弾力性データベース ツールと行レベルのセキュリティを組み合わせると、アプリケーションのデータ層をスケール アウトして、マルチテナントのシャードと単一テナントのシャードの両方をサポートできます。 マルチテナントのシャードは、データをより効率的に格納するために使用できます。 その効果は、多数のテナントにデータが数行しかない場合に発揮されます。 より厳しいパフォーマンス要件と分離要件を持つプレミアム テナントには、シングル テナント シャードで対応できます。 詳細については、「[行レベルのセキュリティ][rls]」をご覧ください。
+エラスティックデータベースツールと行レベルのセキュリティを組み合わせて使用すると、アプリケーションのデータ層をスケール アウトして、マルチテナントのシャードと単一テナントのシャードの両方をサポートできます。 マルチテナントのシャードは、データをより効率的に格納するために使用できます。 その効果は、多数のテナントにデータが数行しかない場合に発揮されます。 より厳しいパフォーマンス要件と分離要件を持つプレミアム テナントには、シングル テナント シャードで対応できます。 詳細については、「[行レベルのセキュリティ][rls]」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -358,7 +357,7 @@ GO
 
 ## <a name="questions-and-feature-requests"></a>質問と機能に関する要望
 
-ご質問がある場合は、[SQL Database に関する Microsoft Q&A 質問ページ](/answers/topics/azure-sql-database.html)からお問い合わせください。 また、機能に関するご要望は、[SQL Database フィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)までお寄せください。
+ご質問がある場合は、[SQL Database に関する Microsoft Q&A 質問ページ](/answers/topics/azure-sql-database.html)からお問い合わせください。 また、機能に関するご要望は、[SQL Database フィードバック フォーラム](https://feedback.azure.com/d365community/forum/04fe6ee0-3b25-ec11-b6e6-000d3a4f0da0)までお寄せください。
 
 <!--Image references-->
 [1]: ./media/saas-tenancy-elastic-tools-multi-tenant-row-level-security/blogging-app.png

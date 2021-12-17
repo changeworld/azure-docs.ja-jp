@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: be5409f7130f0e79b77871a2657609e8ddb76e36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6bde571c0baefa14190dd65e93ca9cf49cb8281b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728639"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290650"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -18,19 +18,19 @@ ms.locfileid: "101728639"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>ソリューションの更新
-> このソリューションは、[Azure Sentinel](../../sentinel/overview.md) の [Office 365](../../sentinel/connect-office-365.md) 一般公開ソリューション、および [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に置き換えられました。 これらのソリューションにより、以前の Azure Monitor Office 365 ソリューションの更新バージョンが提供され、構成操作が向上しました。 2020 年 10 月 31 日までは、既存のソリューションを引き続きご利用いただけます。
+> このソリューションは、[Microsoft Sentinel](../../sentinel/overview.md) の [Office 365](../../sentinel/data-connectors-reference.md#microsoft-office-365) 一般公開ソリューション、および [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に置き換えられました。 これらのソリューションにより、以前の Azure Monitor Office 365 ソリューションの更新バージョンが提供され、構成操作が向上しました。 2020 年 10 月 31 日までは、既存のソリューションを引き続きご利用いただけます。
 > 
-> Azure Sentinel は、ログを取り込み、検出、調査、検出、機械学習による分析情報を含む追加の SIEM 機能を提供するクラウド ネイティブのセキュリティ情報およびイベント管理ソリューションです。 Azure Sentinel を使用することで、Office 365 SharePoint アクティビティと Exchange 管理ログの取り込みが提供されるようになりました。
+> Microsoft Sentinel は、ログを取り込み、検出、調査、検出、機械学習による分析情報を含む追加の SIEM 機能を提供するクラウド ネイティブのセキュリティ情報およびイベント管理ソリューションです。 Microsoft Sentinel を使用することで、Office 365 SharePoint アクティビティと Exchange 管理ログの取り込みが提供されるようになりました。
 > 
-> Azure AD のレポートは、サインイン イベント、監査イベント、ディレクトリへの変更など、環境内の Azure AD アクティビティのさらに包括的なビューとログを提供します。 Azure AD ログに接続するには [Azure Sentinel Azure ADコネクタ](../../sentinel/connect-azure-active-directory.md)を使用するか、[Azure Monitor で Azure AD ログ統合](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)を構成します。 
+> Azure AD のレポートは、サインイン イベント、監査イベント、ディレクトリへの変更など、環境内の Azure AD アクティビティのさらに包括的なビューとログを提供します。 Azure AD ログに接続するには [Microsoft Sentinel Azure AD コネクタ](../../sentinel/connect-azure-active-directory.md)を使用するか、[Azure Monitor で Azure AD ログ統合](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)を構成します。 
 >
 > Azure AD ログのコレクションは Azure Monitor 価格が適用されます。  詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
 >
-> Azure Sentinel Office 365 ソリューションを使用するには、次の手順に従います。
-> 1. Azure Sentinel で Office 365 コネクタを使用すると、ワークスペースの料金に影響します。 詳細については、「[Azure Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel/)」を参照してください。
+> Microsoft Sentinel Office 365 ソリューションを使用するには、次のようにします。
+> 1. Microsoft Sentinel で Office 365 コネクタを使用すると、ワークスペースの料金に影響します。 詳細については、[Microsoft Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel/)に関するページを参照してください。
 > 2. Azure Monitor Office 365 ソリューションを既に使用している場合は、[次のアンインストールに関するセクション](#uninstall)のスクリプトを使用して、まずアンインストールする必要があります。
-> 3. ワークスペースで [Azure Sentinel ソリューションを有効にします](../../sentinel/quickstart-onboard.md)。
-> 4. Azure Sentinel の **[データ コネクタ]** ページにアクセスし、**Office 365** コネクタを有効にします。
+> 3. ワークスペースで [Microsoft Sentinel ソリューションを有効にします](../../sentinel/quickstart-onboard.md)。
+> 4. Microsoft Sentinel の **[データ コネクタ]** ページにアクセスし、**Office 365** コネクタを有効にします。
 >
 > ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 > 
@@ -40,7 +40,7 @@ ms.locfileid: "101728639"
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>Q:テーブルとスキーマは変更されますか。
 > **OfficeActivity** テーブル名とスキーマは、現在のソリューションと同じままです。 新しいソリューションでは、Azure AD データを参照するクエリを除き、同じクエリを使用し続けることができます。
 > 
-> 新しい [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)ログは、**OfficeActivity** ではなく、[SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md) と [AuditLogs](../../active-directory/reports-monitoring/concept-audit-logs.md) テーブルに取り込まれます。 詳細については、[Azure AD ログの分析方法](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md)に関する記事を参照してください。これは、Azure Sentinel と Azure Monitor ユーザーにも関連しています。
+> 新しい [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)ログは、**OfficeActivity** ではなく、[SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md) と [AuditLogs](../../active-directory/reports-monitoring/concept-audit-logs.md) テーブルに取り込まれます。 詳細については、[Azure AD ログの分析方法](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md)に関する記事を参照してください。これは、Microsoft Sentinel と Azure Monitor のユーザーにも関連しています。
 > 
 > **OfficeActivity** から **SigninLogs** にクエリを変換するためのサンプルを次に示します。
 > 
@@ -74,41 +74,41 @@ ms.locfileid: "101728639"
 > | summarize count() by OperationName
 > ```
 > 
-> ### <a name="q-how-can-i-on-board-azure-sentinel"></a>Q:Azure Sentinel をオンボードするにはどうすればよいですか。
-> Azure Sentinel は、新規または既存の Log Analytics ワークスペースで有効にできるソリューションです。 詳細については、[Azure Sentinel のオンボードに関するドキュメント](../../sentinel/quickstart-onboard.md)を参照してください。
+> ### <a name="q-how-can-i-on-board-microsoft-sentinel"></a>Q: Microsoft Sentinel はどのようにオンボードすればよいですか。
+> Microsoft Sentinel は、新規または既存の Log Analytics ワークスペースで有効にできるソリューションです。 詳細については、[Microsoft Sentinel のオンボードに関するドキュメント](../../sentinel/quickstart-onboard.md)を参照してください。
 >
-> ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>Q:Azure AD ログを接続するために Azure Sentinel は必要ですか。
-> [Azure AD ログと Azure Monitor の統合](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)を構成できます。これは、Azure Sentinel ソリューションに関連付けられていません。 Azure Sentinel は、ネイティブ コネクタと、すぐに使用できる Azure AD ログ用のコンテンツを提供します。 詳細については、組み込みのセキュリティ指向のコンテンツに関する次の質問を参照してください。
+> ### <a name="q-do-i-need-microsoft-sentinel-to-connect-the-azure-ad-logs"></a>Q: Azure AD ログを接続するために Microsoft Sentinel は必要ですか。
+> [Azure AD ログと Azure Monitor の統合](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)を構成できます。これは、Microsoft Sentinel ソリューションに関連付けられていません。 Microsoft Sentinel は、ネイティブ コネクタと、すぐに使用できる Azure AD ログ用のコンテンツを提供します。 詳細については、組み込みのセキュリティ指向のコンテンツに関する次の質問を参照してください。
 >
-> ###    <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>Q:Azure Sentinel と Azure Monitor から Azure AD ログを接続する場合の違いは何ですか。
-> Azure Sentinel と Azure Monitor は、同じ [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に基づいて Azure AD ログに接続します。 Azure Sentinel では、同じデータを接続し、監視情報をワンクリック提供するでネイティブ コネクタが使用できます。
+> ###    <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-microsoft-sentinel-and-azure-monitor"></a>Q: Microsoft Sentinel と Azure Monitor から Azure AD ログを接続する場合の違いは何ですか。
+> Microsoft Sentinel と Azure Monitor は、同じ [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に基づいて Azure AD ログに接続します。 Microsoft Sentinel では、同じデータを接続し、監視情報を提供するワンクリックのネイティブ コネクタを使用できます。
 >
 > ###    <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>Q:新しい Azure AD レポートおよび監視テーブルに移動する場合は、どのように変更する必要がありますか。
 > 警告、ダッシュボード、および Office 365 Azure AD データを使用して作成したコンテンツを含む Azure AD データを使用するすべてのクエリを、新しいテーブルを使用して再作成する必要があります。
 >
-> Azure Sentinel と Azure AD には、Azure AD レポートおよび監視ソリューションに移行するときに使用できる組み込みコンテンツが用意されています。 詳細については、組み込みのセキュリティ指向のコンテンツに関する次の質問、および 「[Azure Active Directory レポートに Azure Monitor ブックを使用する方法](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md)」を参照してください。 
+> Microsoft Sentinel と Azure AD には、Azure AD レポートおよび監視ソリューションに移行するときに使用できる組み込みコンテンツが用意されています。 詳細については、組み込みのセキュリティ指向のコンテンツに関する次の質問、および 「[Azure Active Directory レポートに Azure Monitor ブックを使用する方法](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md)」を参照してください。 
 >
-> ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>Q:組み込みの Azure Sentinel のセキュリティ指向コンテンツを使用するにはどうすればよいですか。
-> Azure Sentinel は、Office 365 および Azure AD ログに基づいた、組み込みのセキュリティ指向のダッシュボード、カスタム アラート クエリ、検索クエリ、調査、および自動応答機能を提供します。 詳細については、Azure Sentinel GitHub とチュートリアルを参照してください。
+> ### <a name="q-how-i-can-use-the-microsoft-sentinel-out-of-the-box-security-oriented-content"></a>Q: 組み込みの Microsoft Sentinel のセキュリティ指向コンテンツを使用するにはどうすればよいですか。
+> Microsoft Sentinel は、Office 365 および Azure AD ログに基づいた、組み込みのセキュリティ指向のダッシュボード、カスタム アラート クエリ、検索クエリ、調査、自動応答の機能を提供します。 詳細については、Microsoft Sentinel GitHub コミュニティとチュートリアルを参照してください。
 >
-> - [難しい設定なしで脅威を検出する](../../sentinel/tutorial-detect-threats-built-in.md)
-> - [疑わしい脅威を検出するカスタム分析ルールを作成する](../../sentinel/tutorial-detect-threats-custom.md)
-> - [データを監視する](../../sentinel/tutorial-monitor-your-data.md)
-> - [Azure Sentinel でインシデントを調査します](../../sentinel/tutorial-investigate-cases.md)
-> - [Azure Sentinel で脅威への自動対応を設定します](../../sentinel/tutorial-respond-threats-playbook.md)
-> - [Azure Sentinel GitHub コミュニティ](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
+> - [難しい設定なしで脅威を検出する](../../sentinel/detect-threats-built-in.md)
+> - [疑わしい脅威を検出するカスタム分析ルールを作成する](../../sentinel/detect-threats-custom.md)
+> - [データを監視する](../../sentinel/monitor-your-data.md)
+> - [Microsoft Sentinel を使用してインシデントを調査する](../../sentinel/investigate-cases.md)
+> - [Microsoft Sentinel で脅威への自動対応を設定する](../../sentinel/tutorial-respond-threats-playbook.md)
+> - [Microsoft Sentinel GitHub コミュニティ](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 
-> ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Q:Azure Sentinel は、ソリューションの一部として追加のコネクタを提供しますか。
-> はい。[Azure Sentinel データ ソースの接続](../../sentinel/connect-data-sources.md)に関する記事を参照してください。
+> ### <a name="q-does-microsoft-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Q: Microsoft Sentinel は、ソリューションの一部として追加のコネクタを提供しますか。
+> はい。[Microsoft Sentinel データ ソースの接続](../../sentinel/connect-data-sources.md)に関する記事を参照してください。
 > 
 > ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>Q:10 月 31 日には何が行われるのですか。 事前にオフボードする必要はありますか。
 > 
 > - **Office365** ソリューションからデータを受信することができなくなります。 ソリューションはワークスペースから削除され、Marketplace で入手できなくなります。
-> - Azure Sentinel のお客様については、Log Analytics ワークスペース ソリューション **Office365** が Azure Sentinel **SecurityInsights** ソリューションに含まれるようになります。
-> - 10 月 31 日までに手動でソリューションをオフボードしない場合、データは自動的に切断され、**OfficeActivity** テーブルは削除されます。 このような場合でも、以下で説明するように、Azure Sentinel で Office 365 コネクタを有効にすると、テーブルを復元できます。
+> - Microsoft Sentinel のお客様については、Log Analytics ワークスペース ソリューション **Office365** が Microsoft Sentinel **SecurityInsights** ソリューションに含まれるようになります。
+> - 10 月 31 日までに手動でソリューションをオフボードしない場合、データは自動的に切断され、**OfficeActivity** テーブルは削除されます。 このような場合でも、以下で説明するように、Microsoft Sentinel で Office 365 コネクタを有効にすると、テーブルを復元できます。
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Q:データは新しいソリューションに転送されますか。
-> はい。 **Office 365** ソリューションをワークスペースから削除すると、スキーマが削除されるため、そのデータは一時的に使用できなくなります。 新しい **Office 365** コネクタを Azure Sentinel で有効にすると、スキーマがワークスペースに復元され、既に収集されたデータが使用できるようになります。 
+> はい。 **Office 365** ソリューションをワークスペースから削除すると、スキーマが削除されるため、そのデータは一時的に使用できなくなります。 新しい **Office 365** コネクタを Microsoft Sentinel で有効にすると、スキーマがワークスペースに復元され、既に収集されたデータが使用できるようになります。 
  
 
 Office 365 管理ソリューションでは、Azure Monitor で Office 365 環境を監視できます。
@@ -474,4 +474,4 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 * [Azure Monitor でログ クエリ](../logs/log-query-overview.md)を使用して、詳細な更新プログラムのデータを表示します。
 * [独自のダッシュボードを作成](../visualize/tutorial-logs-dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。
-* [アラートを作成](../alerts/alerts-overview.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  
+* [アラートを作成](../alerts/alerts-overview.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。

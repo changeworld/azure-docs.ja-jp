@@ -4,20 +4,20 @@ description: Azure Analysis Services サーバーからオンプレミスのデ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 04/27/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 43e5b64d06a6ec145876798b2e0da6499ab94bfc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7cf788c4b11591121254e1712253827462deac35
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769231"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113009544"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 
-同じリージョン内の 1 つまたは複数の Azure Analysis Services サーバーがオンプレミスのデータ ソースに接続する場合は、オンプレミスのデータ ゲートウェイが必要です。  インストールするゲートウェイは、Power BI、Power Apps、Logic Apps などの他のサービスで使用されているものと同じですが、Azure Analysis Services にインストールするときは、いくつかの追加手順を実行する必要があります。 このインストール記事は、**Azure Analysis Services** に固有のものです。 
+同じリージョン内の 1 つまたは複数の Azure Analysis Services サーバーがオンプレミスのデータ ソースに接続する場合は、オンプレミスのデータ ゲートウェイが必要です。 インストールするゲートウェイは、Power BI、Power Apps、Logic Apps などの他のサービスで使用されているものと同じですが、Azure Analysis Services にインストールするときは、いくつかの追加手順を実行する必要があります。 このインストール記事は、**Azure Analysis Services** に固有のものです。 
 
 Azure Analysis Services とゲートウェイの連動に関する詳細については、[オンプレミス データ ソースに接続する](analysis-services-gateway.md)方法に関するページを参照してください。 高度なインストール シナリオとゲートウェイ全般に関する詳細については、[オンプレミス データ ゲートウェイ](/data-integration/gateway/service-gateway-onprem)に関するドキュメントを参照してください。
 
@@ -156,6 +156,7 @@ Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -Gatew
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Analysis Services を管理する](analysis-services-manage.md)   
-* [Azure Analysis Services からデータを取得する](analysis-services-connect.md)   
-* [Azure Virtual Network 上のデータソースに対してゲートウェイを使用する](analysis-services-vnet-gateway.md)
+* [オンプレミス データ ソースへの接続](analysis-services-gateway.md)   
+* [Azure Analysis Services でサポートされるデータ ソース](analysis-services-datasource.md)   
+* [Azure Virtual Network 上のデータソースに対してゲートウェイを使用する](analysis-services-vnet-gateway.md)   
+* [Analysis Services ネットワーク接続についてよく寄せられる質問](analysis-services-network-faq.yml) 

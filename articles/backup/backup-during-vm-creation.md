@@ -2,13 +2,16 @@
 title: Azure VM の作成時にバックアップを有効にする
 description: Azure Backup を使用した Azure VM の作成時にバックアップを有効にする方法について説明します。
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.openlocfilehash: ad81300545686d61f42cdd8684e502c937b4fd43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/09/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: d94faf113fb3d75c1c0f5c878369c1856366b1be
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89377337"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332120"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM の作成時にバックアップを有効にする
 
@@ -30,6 +33,9 @@ Azure Virtual Machines (VM) をバックアップするには、Azure Backup サ
 
 2. Azure Marketplace で **[コンピューティング]** を選択し、VM イメージを選択します。
 
+   >[!Note]
+   >Marketplace 以外のイメージから VM を作成するには、または Marketplace 以外のイメージを使用して VM の OS ディスクをスワップするには、VM からプラン情報を削除します。 これは、シームレスな VM の復元に役立ちます。
+
 3. [Windows](../virtual-machines/windows/quick-create-portal.md) または [Linux](../virtual-machines/linux/quick-create-portal.md) の指示に従って、VM を設定します。
 
 4. **[管理]** タブの **[バックアップの有効化]** で **[オン]** を選択します。
@@ -49,7 +55,7 @@ Azure Virtual Machines (VM) をバックアップするには、Azure Backup サ
       ![既定のバックアップ ポリシー](./media/backup-during-vm-creation/daily-policy.png)
 
 >[!NOTE]
->[SSE と PMK は、Azure VM の既定の暗号化方法です](backup-encryption.md)。 Azure Backup では、これらの Azure VM のバックアップと復元がサポートされます。
+> [SSE と PMK は、Azure VM の既定の暗号化方法です](backup-encryption.md)。 Azure Backup では、これらの Azure VM のバックアップと復元がサポートされます。
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Virtual Machines の Azure Backup リソース グループ
 
@@ -57,16 +63,20 @@ Backup サービスでは、復元ポイント コレクション (RPC) を格�
 
 注意する点:
 
-1. RG の既定の名前を使用することも、会社の要件に従って編集することもできます。
-2. VM バックアップ ポリシーの作成時には、入力として RG 名パターンを指定します。 RG 名の形式は `<alpha-numeric string>* n <alpha-numeric string>` にします。 'n' は (1 から始まる) 整数に置き換えられ、最初の RG がいっぱいになった場合はスケールアウトに使用されます。 現在、1 つの RG には、最大 600 の RPC を含めることができます。
+1. RG の既定の名前を使用することも、会社の要件に従って編集することもできます。<br>RG を作成していない場合、restorepointcollection に対して RG を指定するには、次の手順に従います。
+   1. restorepointcollection の RG を作成します (例: "rpcrg")。
+   1. VM バックアップ ポリシー内で RG の名前を指定します。
+   >[!NOTE]
+   >これにより、番号が付加された RG が作成され、restorepointcollection に使用されます。
+1. VM バックアップ ポリシーの作成時には、入力として RG 名パターンを指定します。 RG 名の形式は `<alpha-numeric string>* n <alpha-numeric string>` にします。 'n' は (1 から始まる) 整数に置き換えられ、最初の RG がいっぱいになった場合はスケールアウトに使用されます。 現在、1 つの RG には、最大 600 の RPC を含めることができます。
               ![ポリシー作成時の名前の選択](./media/backup-during-vm-creation/create-policy.png)
-3. このパターンでは、以下の RG の名前付け規則に従う必要があり、合計長は、RG 名の許容最大長を超えてはなりません。
+1. このパターンでは、以下の RG の名前付け規則に従う必要があり、合計長は、RG 名の許容最大長を超えてはなりません。
     1. リソース グループ名に使用できるのは、英数字、ピリオド、アンダースコア、ハイフン、かっこのみです。 末尾をピリオドにすることはできません。
     2. リソース グループ名には、RG の名前とサフィックスを含めて、最大 74 文字を使用できます。
-4. 最初の `<alpha-numeric-string>` は必須ですが、'n' の後の 2 番目のものは省略可能です。 これが適用されるのは、カスタマイズした名前を指定する場合だけです。 どちらのテキストボックスにも入力しないと、既定の名前が使用されます。
-5. 必要が生じた場合、ポリシーを変更することで RG の名前を編集できます。 名前のパターンが変更されると、新しい RG の中に新しい RP が作成されます。 ただし、RP コレクションではリソースの移動がサポートされないため、古い RP は引き続き古い RG 内に存在し、移動されません。 最終的に、ポイントの有効期限が切れたときに RP のガベージ コレクションが実行されます。
+1. 最初の `<alpha-numeric-string>` は必須ですが、'n' の後の 2 番目のものは省略可能です。 これが適用されるのは、カスタマイズした名前を指定する場合だけです。 どちらのテキストボックスにも入力しないと、既定の名前が使用されます。
+1. 必要が生じた場合、ポリシーを変更することで RG の名前を編集できます。 名前のパターンが変更されると、新しい RG の中に新しい RP が作成されます。 ただし、RP コレクションではリソースの移動がサポートされないため、古い RP は引き続き古い RG 内に存在し、移動されません。 最終的に、ポイントの有効期限が切れたときに RP のガベージ コレクションが実行されます。
 ![ポリシー変更時の名前の変更](./media/backup-during-vm-creation/modify-policy.png)
-6. Backup サービスに使用するために作成されたリソース グループは、ロックしないことをお勧めします。
+1. Backup サービスに使用するために作成されたリソース グループは、ロックしないことをお勧めします。
 
 PowerShell を使用して Virtual Machines の Azure Backup リソース グループを構成するには、[スナップショットのリテンション期間中の Azure Backup リソース グループの作成](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention)に関するページを参照してください。
 
@@ -83,7 +93,7 @@ VM が作成されたら、次の操作を行います。
 
 ## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Resource Manager テンプレートを使用して保護された VM をデプロイする
 
-前の手順では、Azure portal を使用して仮想マシンを作成し、Recovery Services コンテナーにそれを保護する方法について説明しました。 VM をすばやくデプロイし、Recovery Services コンテナーでそれを保護するには、[Windows VM をデプロイしてバックアップを有効にする](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)ためのテンプレートをご覧ください。
+前の手順では、Azure portal を使用して仮想マシンを作成し、Recovery Services コンテナーにそれを保護する方法について説明しました。 VM をすばやくデプロイし、Recovery Services コンテナーでそれを保護するには、[Windows VM をデプロイしてバックアップを有効にする](https://azure.microsoft.com/resources/templates/recovery-services-create-vm-and-configure-backup/)ためのテンプレートをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

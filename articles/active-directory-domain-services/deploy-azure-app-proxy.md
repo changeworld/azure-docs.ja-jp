@@ -11,18 +11,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 8305b2190cf3b157973f5844c3237ffe73adba66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbe44535f535eb2f0deb5ef30515cc188d3d5b22
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619918"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235423"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメイン内の内部アプリケーションに安全にアクセスするために Azure AD アプリケーション プロキシをデプロイする
 
 Azure AD Domain Services (Azure AD DS) を使用して、オンプレミスで実行されているレガシ アプリケーションを Azure にリフトアンドシフトすることができます。 その後、Azure Active Directory (AD) アプリケーション プロキシにより、インターネット経由でアクセスできるように、Azure AD DS マネージド ドメインの一部として内部アプリケーションを安全に公開することで、リモート ワーカーをサポートできます。
 
-Azure AD アプリケーション プロキシを使用したことがなく、詳細を確認したい場合は、[内部アプリケーションに安全なリモート アクセスを提供する方法](../active-directory/manage-apps/application-proxy.md)に関する記事を参照してください。
+Azure AD アプリケーション プロキシを使用したことがなく、詳細を確認したい場合は、[内部アプリケーションに安全なリモート アクセスを提供する方法](../active-directory/app-proxy/application-proxy.md)に関する記事を参照してください。
 
 この記事では、Azure AD アプリケーション プロキシ コネクタを作成および構成して、マネージド ドメイン内のアプリケーションへの安全なアクセスを提供する方法について説明します。
 
@@ -75,7 +75,7 @@ VM を Azure AD アプリケーション プロキシ コネクタとして使�
         > たとえば、Azure AD ドメインが *contoso.com* の場合、全体管理者は `admin@contoso.com` か、そのドメインの別の有効なエイリアスである必要があります。
 
    * コネクタをインストールする VM で [Internet Explorer セキュリティ強化の構成] がオンになっていると、登録画面がブロックされることがあります。 アクセスを許可するには、エラー メッセージの指示に従うか、インストールプロセス中に Internet Explorer のセキュリティ強化をオフにします。
-   * コネクタの登録が失敗する場合は、[アプリケーション プロキシのトラブルシューティング](../active-directory/manage-apps/application-proxy-troubleshoot.md)に関する記事をご覧ください。
+   * コネクタの登録が失敗する場合は、[アプリケーション プロキシのトラブルシューティング](../active-directory/app-proxy/application-proxy-troubleshoot.md)に関する記事をご覧ください。
 1. セットアップの最後に、送信プロキシを使用している環境に対してメモが表示されます。 送信プロキシ経由で動作するように Azure AD アプリケーション プロキシ コネクタを構成するには、提供されたスクリプト (`C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1` など) を実行します。
 1. Azure portal の [アプリケーション プロキシ] ページで、次の例に示すように、新しいコネクタが *[アクティブ]* の状態で一覧表示されます。
 
@@ -113,7 +113,7 @@ Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure AD DS と統合された Azure AD アプリケーション プロキシを使用して、ユーザーがアクセスできるようにアプリケーションを発行します。 詳しくは、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](../active-directory/manage-apps/application-proxy-add-on-premises-application.md)に関する記事をご覧ください。
+Azure AD DS と統合された Azure AD アプリケーション プロキシを使用して、ユーザーがアクセスできるようにアプリケーションを発行します。 詳しくは、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](../active-directory/app-proxy/application-proxy-add-on-premises-application.md)に関する記事をご覧ください。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
@@ -121,5 +121,5 @@ Azure AD DS と統合された Azure AD アプリケーション プロキシを
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
 [azure-bastion]: ../bastion/tutorial-create-host-portal.md
-[Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
-[Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer
+[Get-ADComputer]: /powershell/module/activedirectory/get-adcomputer
+[Set-ADComputer]: /powershell/module/activedirectory/set-adcomputer

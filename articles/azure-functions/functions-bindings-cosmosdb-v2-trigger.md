@@ -3,15 +3,15 @@ title: Functions 2.x 以降での Azure Cosmos DB のトリガー
 description: Azure Functions で Azure Cosmos DB のトリガーを使用する方法について説明します。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 09/01/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6f4e43efeb1882f52bd335d83a3660a94040ab8a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f9e8790a05181f095ff28b154a5a264cb38295e4
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729217"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994349"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 以降での Azure Cosmos DB のトリガー
 
@@ -49,6 +49,47 @@ namespace CosmosDBSamplesV2
             {
                 log.LogInformation($"Documents modified: {documents.Count}");
                 log.LogInformation($"First document Id: {documents[0].Id}");
+            }
+        }
+    }
+}
+```
+
+Cosmos DB [拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) 以降を使用しているアプリには、以下に示すように、さまざまな属性プロパティがあります。 この例では、シンプルな `ToDoItem` タイプを参照します。
+
+```cs
+namespace CosmosDBSamplesV2
+{
+    public class ToDoItem
+    {
+        public string Id { get; set; }
+        public string Description { get; set; }
+    }
+}
+```
+
+```cs
+using System.Collections.Generic;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
+
+namespace CosmosDBSamplesV2
+{
+    public static class CosmosTrigger
+    {
+        [FunctionName("CosmosTrigger")]
+        public static void Run([CosmosDBTrigger(
+            databaseName: "databaseName",
+            containerName: "containerName",
+            Connection = "CosmosDBConnectionSetting",
+            LeaseContainerName = "leases",
+            CreateLeaseContainerIfNotExists = true)]IReadOnlyList<ToDoItem> input, ILogger log)
+        {
+            if (input != null && input.Count > 0)
+            {
+                log.LogInformation("Documents modified " + input.Count);
+                log.LogInformation("First document Id " + input[0].Id);
             }
         }
     }
@@ -217,7 +258,30 @@ Python コードを次に示します。
     }
 ```
 
-完全な例については、「[トリガー](#example)」を参照してください。
+[拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) 内の設定およびプロパティの中には、削除されているものや、名前が変更されているものがあります。 この変更の詳細については、[トリガー - 構成](#configuration)に関するセクションをご覧ください。 ここでは、シンプルな `CosmosDBTrigger` タイプを参照するメソッド シグネチャ内の `ToDoItem` 属性の例を示します。
+
+```cs
+namespace CosmosDBSamplesV2
+{
+    public class ToDoItem
+    {
+        public string Id { get; set; }
+        public string Description { get; set; }
+    }
+}
+```
+
+```csharp
+    [FunctionName("DocumentUpdates")]
+    public static void Run([CosmosDBTrigger("database", "container", Connection = "CosmosDBConnectionSetting")]
+        IReadOnlyList<ToDoItem> documents,  
+        ILogger log)
+    {
+        ...
+    }
+```
+
+どちらの拡張機能のバージョンでも、完全な例については[トリガー](#example)に関するページを参照してください。
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
@@ -250,25 +314,27 @@ Python コードを次に示します。
 |**type** | 該当なし | `cosmosDBTrigger` に設定する必要があります。 |
 |**direction** | 該当なし | `in` に設定する必要があります。 このパラメーターは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし | 変更されるドキュメントの一覧を表す、関数コードで使用する変数の名前。 |
-|**connectionStringSetting**|**ConnectionStringSetting** | 監視されている Azure Cosmos DB アカウントに接続するために使用される接続文字列を含めたアプリ設定の名前。 |
+|**connectionStringSetting** <br> または <br> **connection**|**ConnectionStringSetting** <br> または <br> **接続**| 監視対象の Azure Cosmos DB アカウントへの接続方法を指定するアプリの設定または設定のコレクションの名前。 「[接続](#connections)」を参照してください。 <br><br> [拡張機能バージョン 4.x] では、このプロパティは `connection` と呼ばれます。 |
 |**databaseName**|**DatabaseName**  | 監視されているコレクションを使用する Azure Cosmos DB データベースの名前。 |
-|**collectionName** |**CollectionName** | 監視されているコレクションの名前。 |
-|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (省略可能) リース コレクションを保持する Azure Cosmos DB アカウントへの接続文字列を含むアプリ設定の名前。 この値を設定しない場合、`connectionStringSetting` という値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 リース コレクションの接続文字列には書き込み権限が必要です。|
+|**collectionName** <br> または <br> **containerName** |**CollectionName** <br> または <br> **ContainerName** | 監視されているコレクションの名前。 <br><br> [拡張機能バージョン 4.x] では、このプロパティは `ContainerName` と呼ばれます。 |
+|**leaseConnectionStringSetting** <br> または <br> **leaseConnection** | **LeaseConnectionStringSetting** <br> または <br> **LeaseConnection** | (省略可能) 監視対象の Azure Cosmos DB アカウントへの接続方法を指定するアプリの設定または設定のコレクションの名前。 「[接続](#connections)」を参照してください。 <br><br> この値を設定しない場合、`connectionStringSetting` という値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 リース コレクションの接続文字列には書き込み権限が必要です。 <br><br> [バージョン 4.x の拡張機能]では、このプロパティは `leaseConnection` と呼ばれ、設定されていない場合は `connection` の値が使用されます。 |
 |**leaseDatabaseName** |**LeaseDatabaseName** | (省略可能) リースの保存のために使用するコレクションを保持しているデータベースの名前。 この値を設定しない場合、`databaseName` の設定の値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 |
-|**leaseCollectionName** | **LeaseCollectionName** | (省略可能) リースの保存のために使用するコレクションの名前。 この値を設定しない場合、`leases` という値が使用されます。 |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (省略可能) `true` を設定すると、リース コレクションが存在していない場合に自動でリース コレクションを作成します。 既定値は `false` です。 |
-|**leasesCollectionThroughput**| **leasesCollectionThroughput**| (省略可能) リース コレクションの作成に割り当てる要求ユニットの数を定義します。 この設定は、`createLeaseCollectionIfNotExists` が `true` に設定されている場合のみ使用できます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。
-|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| (省略可能) 設定すると、この関数のリース コレクションで作成されたリースへのプレフィックスとして値が追加されます。 プレフィックスを使用すると、異なるプレフィックスを使用して、2 つの別の Azure Functions が同じリース コレクションを共有できるようになります。
+|**leaseCollectionName** <br> または <br> **leaseContainerName** | **LeaseCollectionName** <br> または <br> **LeaseContainerName** | (省略可能) リースの保存のために使用するコレクションの名前。 この値を設定しない場合、`leases` という値が使用されます。 <br><br> [拡張機能バージョン 4.x] では、このプロパティは `LeaseContainerName` と呼ばれます。 |
+|**createLeaseCollectionIfNotExists** <br> または <br> **createLeaseContainerIfNotExists** | **CreateLeaseCollectionIfNotExists** <br> または <br> **CreateLeaseContainerIfNotExists** | (省略可能) `true` を設定すると、リース コレクションが存在していない場合に自動でリース コレクションを作成します。 既定値は `false` です。 <br><br> [拡張機能バージョン 4.x] では、このプロパティは `CreateLeaseContainerIfNotExists` と呼ばれます。 |
+|**leasesCollectionThroughput** <br> または <br> **leasesContainerThroughput**| **leasesCollectionThroughput** <br> または <br> **LeasesContainerThroughput**| (省略可能) リース コレクションの作成に割り当てる要求ユニットの数を定義します。 この設定は、`createLeaseCollectionIfNotExists` が `true` に設定されている場合のみ使用できます。 このパラメーターは、ポータルを使用してバインドを作成するときに自動的に設定されます。 <br><br> [拡張機能バージョン 4.x] では、このプロパティは `LeasesContainerThroughput` と呼ばれます。 |
+|**leaseCollectionPrefix** <br> または <br> **leaseContainerPrefix**| **LeaseCollectionPrefix** <br> または <br> **leaseContainerPrefix** | (省略可能) 設定すると、この関数のリース コレクションで作成されたリースへのプレフィックスとして値が追加されます。 プレフィックスを使用すると、異なるプレフィックスを使用して、2 つの別の Azure Functions が同じリース コレクションを共有できるようになります。 <br><br> [拡張機能バージョン 4.x] では、このプロパティは `LeaseContainerPrefix` と呼ばれます。 |
 |**feedPollDelay**| **FeedPollDelay**| (省略可能) 現在のすべての変更がドレインされた後、フィードの新しい変更についてパーティションをポーリングする間の遅延時間 (ミリ秒)。 既定値は 5,000 ミリ秒 (5 秒) です。
 |**leaseAcquireInterval**| **LeaseAcquireInterval**| (省略可能) 設定すると、パーティションが既知のホスト インスタンス間で均等に分散されているかどうかを計算するタスクを開始する間隔がミリ秒単位で定義されます。 既定値は 13,000 (13 秒) です。
 |**leaseExpirationInterval**| **LeaseExpirationInterval**| (省略可能) 設定すると、パーティションを表すリースでリースを取得する間隔がミリ秒単位で定義されます。 この間隔内にリースが更新されない場合、リースは期限切れとなり、パーティションの所有権は別のインスタンスに移動します。 既定値は 60,000 (60 秒) です。
 |**leaseRenewInterval**| **LeaseRenewInterval**| (省略可能) 設定すると、インスタンスが現在保持しているパーティションのすべてのリースの更新間隔がミリ秒単位で定義されます。 既定値は 17,000 (17 秒) です。
-|**checkpointFrequency**| **CheckpointFrequency**| (省略可能) 設定すると、リース チェックポイントの間隔がミリ秒単位で定義されます。 既定値は、常に各関数呼び出しの後です。
+|**checkpointInterval**| **CheckpointInterval**| (省略可能) 設定すると、リース チェックポイントの間隔がミリ秒単位で定義されます。 既定値は、常に各関数呼び出しの後です。 <br><br> このプロパティは、[拡張機能バージョン 4.x] では使用できません。 |
 |**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (省略可能) 設定すると、関数呼び出しごとに、受信するアイテムの最大数がこのプロパティによって設定されます。 監視対象のコレクションでストアド プロシージャによって操作が実行されると、変更フィードから項目が読み取られるとき、[トランザクション スコープ](../cosmos-db/stored-procedures-triggers-udfs.md#transactions)が保持されます。 その結果、受信した項目数が指定した値よりも多くなり、同じトランザクションで変更された項目が 1 つのアトミック バッチの一部として返される可能性があります。
 |**startFromBeginning**| **StartFromBeginning**| (省略可能) このオプションを指定すると、現在の時刻から開始するのではなく、コレクションの変更履歴の先頭から変更を読み取るようにトリガーに指示できます。 以降の実行ではチェックポイントが既に保存されているため、先頭からの読み取りが機能するのは、トリガーが初めて開始されたときのみです。 既にリースが作成されているときにこのオプションを `true` に設定しても効果はありません。 |
 |**preferredLocations**| **PreferredLocations**| (省略可能) Azure Cosmos DB サービスの geo レプリケートされたデータベース アカウントの優先される場所 (リージョン) を定義します。 複数の値はコンマで区切る必要があります。 たとえば、"East US,South Central US,North Europe" などです。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+[!INCLUDE [functions-cosmosdb-connections](../../includes/functions-cosmosdb-connections.md)]
 
 ## <a name="usage"></a>使用法
 
@@ -283,3 +349,5 @@ Python コードを次に示します。
 
 - [Azure Cosmos DB ドキュメントを読み込む (入力バインド)](./functions-bindings-cosmosdb-v2-input.md)
 - [Azure Cosmos DB ドキュメントに変更を保存する (出力バインド)](./functions-bindings-cosmosdb-v2-output.md)
+
+[バージョン 4.x の拡張機能]: ./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher

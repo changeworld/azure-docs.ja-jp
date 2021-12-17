@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning を使用して、モデルを Web サービスとしてパッケージ化し、Azure Functions アプリにデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.author: vaidyas
-author: vaidya-s
+ms.subservice: mlops
+ms.author: ssambare
+author: shivanissambare
 ms.reviewer: larryfr
-ms.date: 03/06/2020
-ms.topic: conceptual
-ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: abb38ebbdacdf4f153148fbe121e54ede88f066a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: racking-python, devx-track-azurecli
+ms.openlocfilehash: 561cde1c671c6edcde947e3b69f5e4472034edd4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519267"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557587"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Functions に機械学習モデルをデプロイする (プレビュー)
 

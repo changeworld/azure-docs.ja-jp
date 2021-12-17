@@ -1,15 +1,15 @@
 ---
 title: Azure DevTest Labs を使用する一般的なシナリオ
 description: この記事では、Azure DevTest Labs と 2 つの一般的な方針を使用して、組織でサービスの使用を開始するための主要なシナリオを提供します。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/20/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 1adb9b009a250942bab7e9b0e3b4b3e52840341c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f717043555321bb00aecd62ea4e41067e75217aa
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85481597"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722204"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Azure DevTest Labs を使用する一般的なシナリオ
 DevTest Labs は企業のニーズに応じてさまざまな要件を満たすように構成できます。  この記事では、一般的なシナリオについて説明します。 各シナリオでは、DevTest Labs を使用するメリットと、これらのシナリオの実装に使用するリソースについて説明します。  
@@ -27,7 +27,7 @@ DevTest Labs は企業のニーズに応じてさまざまな要件を満たす�
 - 開発者は、必要に応じた開発用コンピューターのプロビジョニング、または、[既存の事前構成済みコンピューターの要求](devtest-lab-add-claimable-vm.md)をすばやく行うことができます。
 - 開発者は、サブスクリプション レベルのアクセス許可がなくても、セルフ サービス方式でリソースをプロビジョニングできます。
 - IT または管理者は、[ネットワーク トポロジを事前に定義](devtest-lab-configure-vnet.md)でき、開発者は、特別なアクセスを必要とすることなく、単純で直感的な方法で直接それを活用できます。
-- 開発者は、必要に応じて、開発用コンピューターを簡単に[カスタマイズ](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm)できます。
+- 開発者は、必要に応じて、開発用コンピューターを簡単に[カスタマイズ](devtest-lab-add-vm.md#add-artifacts-after-installation)できます。
 - 管理者は、次のことが確実に行われるようにしてコストを管理できます。
     - 開発者は、開発に必要なものより[多くの VM を取得できません](devtest-lab-set-lab-policy.md#set-virtual-machines-per-user)
     - VM は、使われていないときは[シャットダウンされます](devtest-lab-set-lab-policy.md#set-auto-shutdown)
@@ -59,9 +59,9 @@ Azure DevTest Labs のラボは、ワークショップ、ハンズオン ラボ
 
 - [ポリシー](devtest-lab-set-lab-policy.md)により、受講者は仮想マシンなどのリソースを必要な数のみ取得します。
 - 受講者の単一のアクションにより、事前構成され作成されたマシンが[要求](devtest-lab-add-claimable-vm.md)されます。
-- ラボは、[ラボの URL](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) にアクセスすることにより受講者に共有されます。
-- 仮想マシンの[有効期限](devtest-lab-add-vm.md#steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs)により、マシンは不要になった時点で削除されます。
-- トレーニング終了後、[ラボ](devtest-lab-delete-lab-vm.md#delete-a-lab)とすべての[関連リソース](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab)は簡単に削除することができます。
+- ラボは、[ラボの URL](/azure/devtest-labs/devtest-lab-faq#how-do-i-share-a-direct-link-to-my-lab) にアクセスすることにより受講者に共有されます。
+- 仮想マシンの[有効期限](devtest-lab-add-vm.md#create-and-add-virtual-machines)により、マシンは不要になった時点で削除されます。
+- トレーニング終了後、[ラボ](devtest-lab-delete-lab-vm.md#delete-a-lab)とすべての[関連リソース](/azure/devtest-labs/devtest-lab-faq#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab)は簡単に削除することができます。
 
 詳細については、「[トレーニングでの Azure DevTest Labs の使用](devtest-lab-training-lab.md)」を参照してください。  
 
@@ -76,5 +76,4 @@ DevTest Labs の詳細を確認することに決めた場合には、概念実�
 次の記事を参照してください。
 
 - [DevTest ラボの概念](devtest-lab-concepts.md)
-- [DevTest Labs に関する FAQ](devtest-lab-faq.md)
-
+- [DevTest Labs に関する FAQ](devtest-lab-faq.yml)

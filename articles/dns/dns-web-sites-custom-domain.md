@@ -7,12 +7,13 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 369c7dab174f0269797b10635882a6821ade8311
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2bca0b855f53c566ce4408b19d018e04038f5d63
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94952915"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691300"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル: カスタム ドメインにおける Web アプリの DNS レコードの作成 
 
@@ -70,12 +71,12 @@ Azure portal の App Services ページの左側のナビゲーションで、 *
 
 ![Azure アプリへのポータル ナビゲーション](../app-service/./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-### <a name="create-the-a-record"></a>A レコードを作成する
+### <a name="create-the-a-record&quot;></a>A レコードを作成する
 
 ```azurepowershell
-New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
- -ResourceGroupName "MyAzureResourceGroup" -Ttl 600 `
- -DnsRecords (New-AzDnsRecordConfig -IPv4Address "<your web app IP address>")
+New-AzDnsRecordSet -Name &quot;@&quot; -RecordType &quot;A&quot; -ZoneName &quot;contoso.com&quot; `
+ -ResourceGroupName &quot;MyAzureResourceGroup&quot; -Ttl 600 `
+ -DnsRecords (New-AzDnsRecordConfig -IPv4Address &quot;<your web app IP address>")
 ```
 
 ### <a name="create-the-txt-record"></a>TXT レコードの作成

@@ -1,19 +1,19 @@
 ---
-title: Azure Percept Audio をセットアップする
+title: Azure Percept Audio デバイスを設定する
 description: Azure Percept Audio デバイスを Azure Percept DK に接続する方法について説明します。
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/25/2021
-ms.openlocfilehash: fa3dad8cdd38e6db621d8194cc9472430c7c5008
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b6ec3ba8473be8e924d3c4b8ae17ccbdcf6568f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605792"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221837"
 ---
-# <a name="azure-percept-audio-setup"></a>Azure Percept Audio の設定
+# <a name="set-up-the-azure-percept-audio-device"></a>Azure Percept Audio デバイスを設定する
 
 Azure Percept Audio は、Azure Percept DK ですぐに使用できます。 特別な設定は必要ありません。
 
@@ -31,14 +31,14 @@ Azure Percept Audio は、Azure Percept DK ですぐに使用できます。 特
 
 1. (省略可能) "Line Out" というラベルの付いたオーディオ ジャックを介して、スピーカーまたはヘッドホンを Azure Percept Audio デバイスに接続します。 これによって音声応答を聴くことができます。
 
-1. 開発キットの電源をオンにします。 オーディオ インターポーザー ボードの LED L02 が白の点滅に変わり、デバイスの電源が入っており、Audio SoM で認証が行われていることを示します。
+1. 電源アダプターに接続し、開発キットをオンにします。 LED L02 が白の点滅に変わり、デバイスの電源が入っており、認証が行われていることを示します。
 
-1. 認証プロセスが完了するまで待機します。これには最大 3 分かかることがあります。
+1. 認証プロセスが完了するまで待機します。これには最大 5 分かかることがあります。
 
-1. 次のいずれかが表示されたら、プロトタイプ作成を開始できます。
+1. 次の LED 状態のいずれかが表示されたら、プロトタイプ作成を開始できます。
 
-    - LED L02 が白の点灯に変わった: 認証は完了しましたが、キーワードを使用した開発キットの構成はまだ済んでいません。
-    - 3 つの LED がすべて青色に変わった: 認証が完了し、キーワードを使用した開発キットの構成も済んでいます。
+    - LED L02 が白の点灯に変わると、認証が完了し、開発キットがキーワードなしで構成されたことを示します。
+    - 3 つの LED がすべて青に変わると、認証が完了し、開発キットがキーワードありで構成されたことを示します。
 
 ## <a name="next-steps"></a>次のステップ
 

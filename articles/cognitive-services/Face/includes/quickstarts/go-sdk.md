@@ -9,21 +9,21 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: ab3fdd24446448e9c21a1e4867c26c960f814c7a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5534fc3b82119295dc744e98054fead2f12d4a7d
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958103"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442287"
 ---
 Go 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
 Go 用 Face サービス クライアント ライブラリは、次の目的で使用します。
 
-* [画像内の顔を検出する](#detect-faces-in-an-image)
-* [似た顔を探す](#find-similar-faces)
-* [PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)
+* [顔を検出して分析する](#detect-and-analyze-faces)
 * [顔を識別する](#identify-a-face)
+* [顔を確認する](#verify-faces)
+* [似た顔を探す](#find-similar-faces)
 
 [リファレンス ドキュメント](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK のダウンロード](https://github.com/Azure/azure-sdk-for-go)
 
@@ -31,6 +31,7 @@ Go 用 Face サービス クライアント ライブラリは、次の目的で
 
 * 最新バージョンの [Go](https://golang.org/dl/)
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Face リソースを作成"  target="_blank">Face リソースを作成</a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 対象のアプリケーションを Face API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
@@ -104,10 +105,10 @@ touch sample-app.go
 これらのコード サンプルは、Go 用 Face サービス クライアント ライブラリを使用して基本的なタスクを実行する方法を示しています。
 
 * [クライアントを認証する](#authenticate-the-client)
-* [画像内の顔を検出する](#detect-faces-in-an-image)
-* [似た顔を探す](#find-similar-faces)
-* [PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)
+* [顔を検出して分析する](#detect-and-analyze-faces)
 * [顔を識別する](#identify-a-face)
+* [顔を確認する](#verify-faces)
+* [似た顔を探す](#find-similar-faces)
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -119,7 +120,10 @@ touch sample-app.go
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_main_client)]
 
 
-## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
+## <a name="detect-and-analyze-faces"></a>顔を検出して分析する
+
+顔検出は、顔分析と ID 検証の最初の手順として必要です。 このセクションでは、追加の顔属性データを返す方法について説明します。 顔の識別または検証のためにだけ顔検出を行う場合は、先のセクションまでスキップしてください。
+
 
 **main** メソッド内に次のコードを追加します。 このコードは、リモートのサンプル画像を定義し、画像から抽出する顔の特徴を指定します。 また、検出された顔からどの AI モデルを使用してデータを抽出するかも指定しています。 それらの選択については、[認識モデルの指定](../../Face-API-How-to-Topics/specify-recognition-model.md)に関するページを参照してください。 最後に、 **[DetectWithURL](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client.DetectWithURL)** メソッドで画像に対する顔検出処理を実行し、その結果をプログラムのメモリに保存します。
 
@@ -134,40 +138,21 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_detect_display)]
 
-## <a name="find-similar-faces"></a>似た顔の検索
-
-以下のコードでは、検出された顔 (ソース) を 1 つ受け取って、他の顔のセット (ターゲット) から一致するものを見つけます (画像による顔検索)。 一致するものが見つかると、一致した顔の ID がコンソールに出力されます。
-
-### <a name="detect-faces-for-comparison"></a>比較の対象となる顔を検出する
-
-まず、「[画像内の顔を検出する](#detect-faces-in-an-image)」セクションで検出した顔の参照を保存します。 この顔がソースになります。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar_single_ref)]
-
-さらに、別の画像から一連の顔を検出する次のコードを入力します。 これらの顔がターゲットになります。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar_multiple_ref)]
-
-### <a name="find-matches"></a>一致するものを探す
-
-次のコードでは、 **[FindSimilar](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client.FindSimilar)** メソッドを使用して、ソースの顔と一致するターゲットの顔をすべて検索します。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar)]
-
-### <a name="print-matches"></a>一致するものを出力する
-
-次のコードは、一致の詳細をコンソールに出力します。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar_print)]
 
 
-## <a name="create-and-train-a-persongroup"></a>PersonGroup を作成してトレーニングする
+
+
+## <a name="identify-a-face"></a>顔を識別する
+
+識別操作では、人物 (1人または複数人) の画像を受け取り、その画像に含まれるそれぞれの顔の同一性を見つけます (顔認識検索)。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな **Person** オブジェクトのデータベース、つまり **PersonGroup** と比較されます。
+
+### <a name="get-person-images"></a>人物の画像を取得する
 
 このシナリオの手順を実行するには、プロジェクトのルート ディレクトリに画像 (https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images ) を保存する必要があります。
 
 この画像のグループには、3 人の異なる人物に対応する 3 種類の顔画像が含まれています。写真には、1 枚につき 1 人の顔が写っています。 このコードでは、3 つの **PersonGroup Person** オブジェクトを定義し、それらを `woman`、`man`、および `child` で始まる画像ファイルに関連付けます。
 
-### <a name="create-persongroup"></a>PersonGroup を作成する
+### <a name="create-a-persongroup"></a>PersonGroup を作成する
 
 画像をダウンロードしたら、**main** メソッドの一番下に次のコードを追加します。 このコードは、 **[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)** オブジェクトを認証し、それを使用して新しい **PersonGroup** を定義します。
 
@@ -188,7 +173,7 @@ touch sample-app.go
 > [!TIP]
 > URL によって参照されたリモート画像から **PersonGroup** を作成することもできます。 [PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient) のメソッドを参照してください (**AddFaceFromURL** など)。
 
-### <a name="train-persongroup"></a>PersonGroup をトレーニングする
+### <a name="train-the-persongroup"></a>PersonGroup をトレーニングする
 
 顔を割り当てたら、**PersonGroup** をトレーニングして、その各 **Person** オブジェクトに関連付けられている視覚的特徴を識別できるようにします。 次のコードは、非同期の **train** メソッドを呼び出し、結果をポーリングして、状態をコンソールに出力します。
 
@@ -197,16 +182,9 @@ touch sample-app.go
 > [!TIP]
 > Face API は、本質的に静的な一連の事前構築済みモデルで実行されます (サービスの実行中にモデルのパフォーマンスが低下したり改善されたりすることはありません)。 Microsoft により、まったく新しいモデル バージョンに移行することなくモデルのバックエンドが更新されると、モデルによって生成される結果が変わる可能性があります。 より新しいバージョンのモデルを利用するには、同じ登録画像でより新しいモデルをパラメーターとして指定し、**PersonGroup** を再トレーニングすることができます。
 
-## <a name="identify-a-face"></a>顔を識別する
-
-識別操作では、人物 (1人または複数人) の画像を受け取り、その画像に含まれるそれぞれの顔の同一性を見つけます (顔認識検索)。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな **Person** オブジェクトのデータベース、つまり **PersonGroup** と比較されます。
-
-> [!IMPORTANT]
-> この例を実行するには、まず、「[PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)」のコードを実行する必要があります。
-
 ### <a name="get-a-test-image"></a>テスト画像を取得する
 
-次のコードは、プロジェクトのルートから画像 _test-image-person-group.jpg_ を探して、プログラムのメモリに読み込みます。 この画像は、「[PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)」で使用した画像と同じリポジトリにあります (https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images )。
+次のコードは、プロジェクトのルートから画像 _test-image-person-group.jpg_ を探して、プログラムのメモリに読み込みます。 この画像は、**PersonGroup** を作成するために使用した画像と同じリポジトリにあります (https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images )。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 
@@ -216,7 +194,7 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_detect)]
 
-### <a name="identify-faces"></a>顔を識別する
+### <a name="identify-faces-from-source-image"></a>ソース イメージから顔を識別する
 
 **[Identify](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client.Identify)** メソッドは、検出された顔の配列を受け取って、指定された **PersonGroup** (前セクションで定義、トレーニングしたもの) と比較します。 検出された顔がグループ内の **Person** と一致する場合は、結果を保存します。
 
@@ -227,9 +205,9 @@ touch sample-app.go
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_print)]
 
 
-## <a name="verify-faces"></a>顔を確認する
+### <a name="verify-faces"></a>顔を確認する
 
-確認操作では、顔 ID と、別の顔 ID または **Person** オブジェクトのいずれかを取得し、同じ人に属しているかどうかを判断します。
+確認操作では、顔 ID と、別の顔 ID または **Person** オブジェクトのいずれかを取得し、同じ人に属しているかどうかを判断します。 確認を使用すると、識別操作によって返される顔の一致を二重チェックできます。
 
 次のコードでは、2 つのソース画像から顔を検出し、それぞれターゲット画像から検出された顔と照らして確認します。
 
@@ -253,6 +231,33 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_ver)]
 
+## <a name="find-similar-faces"></a>似た顔の検索
+
+以下のコードでは、検出された顔 (ソース) を 1 つ受け取って、他の顔のセット (ターゲット) から一致するものを見つけます (画像による顔検索)。 一致するものが見つかると、一致した顔の ID がコンソールに出力されます。
+
+### <a name="detect-faces-for-comparison"></a>比較の対象となる顔を検出する
+
+まず、「[検出して分析する](#detect-and-analyze-faces)」セクションで検出した顔の参照を保存します。 この顔がソースになります。
+
+[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar_single_ref)]
+
+さらに、別の画像から一連の顔を検出する次のコードを入力します。 これらの顔がターゲットになります。
+
+[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar_multiple_ref)]
+
+### <a name="find-matches"></a>一致するものを探す
+
+次のコードでは、 **[FindSimilar](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client.FindSimilar)** メソッドを使用して、ソースの顔と一致するターゲットの顔をすべて検索します。
+
+[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar)]
+
+### <a name="print-matches"></a>一致するものを出力する
+
+次のコードは、一致の詳細をコンソールに出力します。
+
+[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar_print)]
+
+
 ## <a name="run-the-application"></a>アプリケーションの実行
 
 `go run <app-name>` コマンドを使用して、アプリケーション ディレクトリから顔認識アプリを実行します。
@@ -272,10 +277,10 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Go 用の Face クライアント ライブラリを使用して基本的な顔認識タスクを行う方法について学習しました。 次は、リファレンス ドキュメントを参照して、ライブラリの詳細について学習してください。
+このクイックスタートでは、Go 用の Face クライアント ライブラリを使用して基本的な顔認識タスクを行う方法について学習しました。 次に、さまざまな顔検出モデルと、ユース ケースに適したモデルを指定する方法について学習します。
 
 > [!div class="nextstepaction"]
-> [Face API リファレンス (Go)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)
+> [顔検出モデル バージョンを指定する](../../Face-API-How-to-Topics/specify-detection-model.md)
 
 * [Face サービスとは](../../overview.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/Face/FaceQuickstart.go) にあります。

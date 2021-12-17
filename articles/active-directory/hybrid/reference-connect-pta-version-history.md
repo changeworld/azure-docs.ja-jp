@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 854931273ffebd653615a44dbfa9ce1b846655c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 852a842c9b58a76742d0b482e62c49cd91d34f1b
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91333428"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099647"
 ---
 # <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD パススルー認証エージェント: バージョンのリリース履歴 
  
@@ -27,6 +27,14 @@ ms.locfileid: "91333428"
 
 - [Azure AD パススルー認証によるユーザー サインイン](how-to-connect-pta.md) 
 - [Azure AD パススルー認証エージェントのインストール](how-to-connect-pta-quick-start.md) 
+
+## <a name="1524820"></a>1.5.2482.0
+### <a name="release-status"></a>リリースの状態: 
+2021 年 7 月 7 日: ダウンロード対象としてリリース済み
+
+### <a name="new-features-and-improvements"></a>新機能と機能強化
+
+- SHA-256RSA を使用して署名された新しいバージョンにパッケージまたはライブラリをアップグレードしました。
 
 ## <a name="1517420"></a>1.5.1742.0
 ### <a name="release-status"></a>リリースの状態: 

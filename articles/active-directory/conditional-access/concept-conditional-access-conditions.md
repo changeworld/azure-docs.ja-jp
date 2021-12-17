@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 10/22/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
-ms.reviewer: calebb
+manager: karenhoran
+ms.reviewer: calebb, sandeo-MSFT
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab840b46503aed1a318e3b39a4e8fe3e4d11735c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 89dab74b476345e08a5b995ad04d7d512d0e3a28
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579129"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012645"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
@@ -26,7 +26,7 @@ ms.locfileid: "104579129"
 
 複数の条件を組み合わせて、きめ細かで具体的な条件付きアクセス ポリシーを作成することができます。
 
-たとえば、機密性の高いアプリケーションにアクセスするときに、管理者は、多要素認証などの他のコントロールに加えて、Identity Protection や場所からのサインイン リスク情報を、アクセスの決定要因の 1 つとして含めることができます。
+たとえば、機密性の高いアプリケーションにアクセスする場合、管理者は、多要素認証などの他の制御に加えて、Identity Protection と場所からのサインイン リスク情報をアクセスの決定に組み込む可能性があります。
 
 ## <a name="sign-in-risk"></a>サインイン リスク
 
@@ -34,7 +34,7 @@ ms.locfileid: "104579129"
 
 ## <a name="user-risk"></a>ユーザー リスク 
 
-[Identity Protection](../identity-protection/overview-identity-protection.md) にアクセスできるお客様の場合、条件付きアクセス ポリシーの一部としてユーザー リスクを評価できます。 ユーザー リスクは、特定の ID またはアカウントが侵害されているおそれがあることを表します。 ユーザー リスクの詳細については、「[リスクとは](../identity-protection/concept-identity-protection-risks.md#user-risk)」および「[方法: リスク ポリシーを構成して有効にする](../identity-protection/howto-identity-protection-configure-risk-policies.md)」を参照してください。
+[Identity Protection](../identity-protection/overview-identity-protection.md) にアクセスできるお客様の場合、条件付きアクセス ポリシーの一部としてユーザー リスクを評価できます。 ユーザー リスクは、特定の ID またはアカウントが侵害されているおそれがあることを表します。 ユーザー リスクの詳細については、「[リスクとは](../identity-protection/concept-identity-protection-risks.md#user-linked-detections)」および「[方法: リスク ポリシーを構成して有効にする](../identity-protection/howto-identity-protection-configure-risk-policies.md)」を参照してください。
 
 ## <a name="device-platforms"></a>デバイス プラットフォーム
 
@@ -59,7 +59,7 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 
 **任意の場所** を含める場合、このオプションには、構成された名前付きの場所ではなく、インターネット上の任意の IP アドレスが含まれます。 **任意の場所** を選択するときには、管理者は、**信頼されているすべての場所** または **選択した場所** を除外することを選択できます。
 
-たとえば、組織によっては、物理的な本社のように、信頼できる場所のネットワークにユーザーが接続されているときは多要素認証を要求しないことを選択する可能性もあります。 管理者は、本社ネットワーク用に選択された場所を除いて、すべての場所を含むポリシーを作成することも可能です。
+たとえば、組織によっては、ユーザーが物理的な本社などの信頼できる場所にあるネットワークに接続されている場合に、多要素認証を必要としない場合があります。 管理者は、本社ネットワーク用に選択された場所を除いて、すべての場所を含むポリシーを作成することも可能です。
 
 場所に関する詳細については、「[Azure Active Directory 条件付きアクセスの場所の条件の概要](location-condition.md)」の記事を参照してください。
 
@@ -82,14 +82,14 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
       -  このオプションには、Office デスクトップや Phone アプリケーションなどのアプリケーションが含まれます。
 - レガシ認証クライアント
    - Exchange ActiveSync クライアント
-      - これには Exchange ActiveSync (EAS) プロトコルのすべての使用が含まれます。
+      - この選択には Exchange ActiveSync (EAS) プロトコルのすべての使用が含まれます。
       - ポリシーによって Exchange ActiveSync の使用がブロックされると、影響を受けるユーザーには 1 通の検疫電子メールが送信されます。 この電子メールには、ブロックされた理由に関する情報が記載され、可能な場合は修復の手順が含められます。
-      - 管理者は、条件付きアクセス MS Graph API を使用して、サポートされているプラットフォーム (iOS、Android、Windows など) にのみポリシーを適用できます。
+      - 管理者は、条件付きアクセス Microsoft Graph API を使用して、サポートされているプラットフォーム (iOS、Android、Windows など) にのみポリシーを適用できます。
    - その他のクライアント
       - このオプションには、最新の認証をサポートしていない基本またはレガシ認証プロトコルを使用するクライアントが含まれます。
          - 認証済み SMTP - 電子メール メッセージを送信するために POP および IMAP クライアントで使用されます。
          - 自動検出 - Exchange Online でメールボックスを検索して接続するために Outlook および EAS のクライアントで使用されます。
-         - Exchange Online PowerShell - リモート PowerShell を使用して Exchange Online に接続するために使用されます。 Exchange Online PowerShell の基本認証をブロックする場合は、Exchange Online PowerShell モジュールを使用して接続する必要があります。 手順については、「[多要素認証を使用して Exchange Online PowerShell に接続する](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)」を参照してください。
+         - Exchange Online PowerShell - リモート PowerShell を使用して Exchange Online に接続するために使用されます。 Exchange Online PowerShell の基本認証をブロックする場合は、Exchange Online PowerShell モジュールを使用して接続する必要があります。 手順については、「多要素認証[をConnect PowerShell Exchange Onlineする方法」を参照してください](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
          - Exchange Web サービス (EWS) - Outlook、Outlook for Mac、およびサードパーティ製アプリによって使用されるプログラミング インターフェイスです。
          - IMAP4 - IMAP 電子メール クライアントで使用されます。
          - MAPI over HTTP (MAPI/HTTP) - Outlook 2010 以降で使用されます。
@@ -107,7 +107,7 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 
 | OS | ブラウザー |
 | :-- | :-- |
-| Windows 10 | Microsoft Edge、Internet Explorer、Chrome |
+| Windows 10 | Microsoft Edge、Internet Explorer、Chrome、[Firefox 91+](https://support.mozilla.org/kb/windows-sso) |
 | Windows 8 / 8.1 | Internet Explorer、Chrome |
 | Windows 7 | Internet Explorer、Chrome |
 | iOS | Microsoft Edge、Intune Managed Browser、Safari |
@@ -117,10 +117,12 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 | Windows Server 2016 | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer |
 | Windows Server 2008 R2 | Internet Explorer |
-| macOS | Chrome、Safari |
+| macOS | Microsoft Edge、Chrome、Safari |
+
+これらのブラウザーはデバイス認証をサポートしており、デバイスを識別してポリシーで検証することができます。 ブラウザーがプライベート モードで実行されている場合、または Cookie が無効になっている場合、デバイスのチェックは失敗します。
 
 > [!NOTE]
-> Edge 85+ の場合、デバイス ID を適切に渡すには、ユーザーがブラウザーにサインインする必要があります。 そうしない場合、アカウントの拡張機能のない Chrome のように動作します。 Hybrid Azure AD Join シナリオでは、このサインインが自動的に行われないことがあります。 
+> Edge 85+ の場合、デバイス ID を適切に渡すには、ユーザーがブラウザーにサインインする必要があります。 そうしない場合、アカウントの拡張機能のない Chrome のように動作します。 Hybrid Azure AD Join シナリオでは、このサインインが自動的に行われないことがあります。 Safari はデバイスベースの条件付きアクセスでサポートされていますが、**承認済みクライアント アプリを必須にする** または **アプリの保護ポリシーを必須にする** の条件を満たすことができません。 Microsoft Edge のような管理対象ブラウザーは、承認済みクライアント アプリとアプリ保護ポリシーの要件を満たしています。
 
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>ブラウザーに証明書のプロンプトが表示される理由
 
@@ -144,8 +146,6 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 - 型 REG_SZ (文字列)
 - データ {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
 
-これらのブラウザーはデバイス認証をサポートしており、デバイスを識別してポリシーで検証することができます。 ブラウザーがプライベート モードで実行している場合、デバイス チェックは失敗します。
-
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>サポートされているモバイル アプリケーションとデスクトップ クライアント
 
 組織は、クライアント アプリとして **[モバイル アプリとデスクトップ クライアント]** を選択できます。
@@ -157,7 +157,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 | Dynamics CRM アプリ | Dynamics CRM | Windows 10、Windows 8.1、iOS、Android |
 | メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)| Exchange Online | Windows 10 |
 | アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。| 任意のマイ アプリ アプリ サービス | Android および iOS |
-| Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS |
+| Microsoft Teams Services - このクライアント アプリは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS |
 | Office 2016 アプリ、Office 2013 (最新の認証を使用)、[OneDrive 同期クライアント](/onedrive/enable-conditional-access) | SharePoint | Windows 8.1、Windows 7 |
 | Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、[OneDrive 同期クライアント](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
 | Office 2016 (Word、Excel、PowerPoint、OneNote のみ)。 | SharePoint | macOS |
@@ -190,11 +190,23 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 **[その他のクライアント]** を選択することで、基本認証とメール プロトコル (IMAP、MAPI、POP、SMTP など) を使用するアプリや、先進認証を使用しない以前の Office アプリに影響を及ぼすポリシーを指定できます。
 
 ## <a name="device-state-preview"></a>デバイス状態 (プレビュー)
+> [!CAUTION]
+> **このプレビュー機能は非推奨とされます。** お客様は、以前にデバイス **の** 状態 (プレビュー) 条件を使用して実現されたシナリオを満たすために、条件付きアクセスでデバイスの条件に対してフィルターを使用する必要があります。
 
 デバイス状態の条件を使用して、組織の条件付きアクセス ポリシーから、ハイブリッド Azure AD 参加済みデバイスや、Microsoft Intune コンプライアンス ポリシーに準拠しているとマークが付けられているデバイスを除外することができます。
 
 例: *Microsoft Azure の管理* クラウド アプリにアクセスする *すべてのユーザー* について、*アクセス制御* と **ブロック** のために、**すべてのデバイスの状態** を含め、**ハイブリッド Azure AD 参加済みのデバイス** と **デバイスは準拠としてマーク済み** を除外する。 
    - この例では、ハイブリッド Azure AD 参加済みデバイスまたは準拠としてマーク済みのデバイスのいずれかから、Microsoft Azure の管理へのアクセスのみを許可するポリシーが作成されます。
+
+上記のシナリオでは、次の規則device.trustType -ne "ServerAD" -または device.isCompliant -ne Trueとアクセス制御、ブロックを使用して、デバイス条件のフィルターを除く *Microsoft Azure Management* クラウド アプリにアクセスするすべてのユーザーを使用して構成できます。
+- この例では、ハイブリッド Azure AD 参加済みデバイスまたは準拠としてマーク済みのデバイスのいずれかから、Microsoft Azure の管理へのアクセスのみを許可するポリシーが作成されます。
+
+> [!IMPORTANT]
+> デバイス状態とデバイスのフィルターは、条件付きアクセス ポリシーで一緒に使用することはできません。 デバイスのフィルターを使用する方が、`trustType` および `isCompliant` プロパティを介して、対象とするデバイス状態情報のサポートも含め、より詳細に対象設定できます。
+
+## <a name="filter-for-devices"></a>デバイスのフィルター
+
+条件付きアクセスには、デバイスのフィルターと呼ばれる新しい省略可能な条件があります。 条件としてデバイスのフィルターを構成する場合、組織は、デバイスのプロパティに対するルール式を使用して、フィルターに基づいてデバイスを含めるか除外することができます。 デバイスのフィルターのルール式は、ルール ビルダーまたはルール構文を使用して作成できます。 このエクスペリエンスは、グループの動的なメンバーシップの規則に使用されるものと似ています。 詳細については、「条件付きアクセス: デバイスのフィルター処理 [(プレビュー)」を参照してください](concept-condition-filters-for-devices.md)。
 
 ## <a name="next-steps"></a>次のステップ
 

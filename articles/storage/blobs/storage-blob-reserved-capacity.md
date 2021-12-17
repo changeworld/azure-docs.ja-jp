@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 05/17/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6fd791495602846b95e2dd3e99423db5505f5307
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d7740a1b5840674720bfc8e180b54334256e488
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98600916"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441440"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>予約容量を使用して BLOB ストレージのコストを最適化する
 
@@ -34,7 +34,7 @@ Azure Storage の予約容量は、1 年間または 3 年間の期間につい�
 
 ### <a name="reservation-scope"></a>予約スコープ
 
-Azure Storage の予約容量は、単一サブスクリプションまたは複数のサブスクリプション (共有スコープ) に対して使用できます。 単一サブスクリプションを範囲としている場合、予約割引は選択したサブスクリプションにのみ適用されます。 複数のサブスクリプションを範囲としている場合、予約割引は顧客の請求コンテキスト内のサブスクリプションとの間で共有されます。
+Azure Storage の予約容量は、単一サブスクリプション、複数のサブスクリプション (共有スコープ)、管理グループに対して使用できます。 単一サブスクリプションを範囲としている場合、予約割引は選択したサブスクリプションにのみ適用されます。 複数のサブスクリプションを範囲としている場合、予約割引は顧客の請求コンテキスト内のサブスクリプションとの間で共有されます。 管理グループを範囲としている場合、予約割引は、管理グループと請求範囲の両方の一部となっているサブスクリプション間で共有されます。
 
 Azure Storage の予約容量を購入すると、ブロック BLOB と Azure Data Lake Storage Gen2 データの両方に対して予約を使用できます。 予約は購入済み範囲内の使用量に対して適用され、サブスクリプション内の特定のストレージ アカウント、コンテナー、オブジェクトに限定されるものではありません。
 
@@ -44,12 +44,12 @@ Azure Storage の予約は、サブスクリプションまたは共有リソー
 
 Azure Storage の予約容量は、汎用 v2 (GPv2) アカウントおよび Blob Storage アカウントを含む、Standard ストレージ アカウントのリソースについて使用できます。
 
-すべてのアクセス層 (ホット、クール、アーカイブ) の予約がサポートされています。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
+すべてのアクセス層 (ホット、クール、アーカイブ) の予約がサポートされています。 アクセス層の詳細については、[BLOB データのホット、クール、アーカイブ アクセス層](access-tiers-overview.md)に関するページを参照してください。
 
 すべての種類の冗長性の予約がサポートされています。 冗長オプションの詳細については、[Azure Storage の冗長性](../common/storage-redundancy.md)に関する記事を参照してください。
 
 > [!NOTE]
-> Azure Storage の予約容量は、Premium Storage アカウント、汎用 v1 (GPv1) ストレージ アカウント、Azure Data Lake Storage Gen1、ページ BLOB、Azure Queue storage、Azure Table Storage、または Azure Files では使用できません。  
+> Azure Storage の予約容量は、Premium Storage アカウント、汎用 v1 (GPv1) ストレージ アカウント、Azure Data Lake Storage Gen1、ページ BLOB、Azure Queue Storage、Azure Table Storage では使用できません。 Azure Files の予約容量については、「[予約容量を使用して Azure Files のコストを最適化する](../files/files-reserve-capacity.md)」を参照してください。
 
 ### <a name="security-requirements-for-purchase"></a>購入のセキュリティ要件
 
@@ -61,7 +61,7 @@ Azure Storage の予約容量は、汎用 v2 (GPv2) アカウントおよび Blo
 
 ## <a name="determine-required-capacity-before-purchase"></a>購入前に必要な容量を確認する
 
-Azure Storage の予約を購入する場合は、予約のリージョン、アクセス層、冗長性オプションを選択する必要があります。 予約はそのリージョン、アクセス層、および冗長性レベルに格納されるデータに対してのみ有効です。 たとえば、ゾーン冗長ストレージ (ZRS) を使用して、ホット アクセス層のデータの予約を米国西部で購入したとします。 米国東部のデータ、アーカイブ アクセス層のデータ、または geo 冗長ストレージ (GRS) のデータに同じ予約を使用することはできません。 ただし、追加のニーズに応じて別の予約を購入することもできます。  
+Azure Storage の予約を購入する場合は、予約のリージョン、アクセス層、冗長性オプションを選択する必要があります。 予約はそのリージョン、アクセス層、および冗長性レベルに格納されるデータに対してのみ有効です。 たとえば、ゾーン冗長ストレージ (ZRS) を使用して、ホット アクセス層のデータの予約を米国西部で購入したとします。 米国東部のデータ、アーカイブ アクセス層のデータ、または geo 冗長ストレージ (GRS) のデータに同じ予約を使用することはできません。 ただし、追加のニーズに応じて別の予約を購入することもできます。
 
 予約は現在、100 TiB または 1 PiB のブロックでご利用いただくことができ、1 PiB ブロックではより割引率が高くなります。 Azure Portal で予約を購入するとき、購入する予約を決定するのに役立つよう、以前の使用状況に応じて、Microsoft からの推奨が表示されることがあります。
 
@@ -73,8 +73,8 @@ Azure Storage の予約容量は [Azure portal](https://portal.azure.com) を使
 
 予約容量を購入するには、次の手順に従います。
 
-1. Azure portal の [[購入予約]](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand) ペインに移動します。  
-1. 新しい予約を購入する **[Azure Blob Storage]** を選択します。  
+1. Azure portal の [[購入予約]](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand) ペインに移動します。
+1. 新しい予約を購入する **[Azure Blob Storage]** を選択します。
 1. 次の表で説明するように、必須フィールドに入力します。
 
     ![予約容量の購入方法を示すスクリーンショット](media/storage-blob-reserved-capacity/select-reserved-capacity.png)
@@ -84,7 +84,7 @@ Azure Storage の予約容量は [Azure portal](https://portal.azure.com) を使
    |**スコープ**   |  予約に関連づけられた課金の特典を使用できるサブスクリプションの数を指定します。 また、特定のサブスクリプションに予約を適用する方法も制御します。 <br/><br/> **[共有]** を選択すると、予約割引は、課金のコンテキスト内にある任意のサブスクリプションの Azure Storage 容量に適用されます。 課金のコンテキストは、Azure に対するサインアップ方法に基づきます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープはアカウント管理者が作成するすべての個別の従量課金制サブスクリプションを含みます。  <br/><br/>  **[単一サブスクリプション]** を選択すると、予約割引は選択したサブスクリプションの Azure Storage 容量に適用されます。 <br/><br/> **[1 つのリソース グループ]** を選択した場合、予約割引は、選択したサブスクリプションおよびそのサブスクリプション内の選択したリソース グループ内の Azure Storage 容量に適用されます。 <br/><br/> 予約を購入した後で、予約のスコープを変更できます。  |
    |**サブスクリプション**  | Azure Storage の予約の支払いに使用するサブスクリプションです。 選択したサブスクリプションの支払方法が、コストの課金で使用されます。 サブスクリプションは、次のいずれかの種類である必要があります。 <br/><br/>  マイクロソフト エンタープライズ契約 (オファー番号:MS-AZR-0017P または MS-AZR-0148P):Enterprise サブスクリプションの場合、登録の Azure 前払い (旧称: 年額コミットメント) の残高から料金が差し引かれるか、超過分として課金されます。 <br/><br/> 従量課金制料金の個別サブスクリプション (オファー番号:MS-AZR-0003P または MS-AZR-0023P):従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。    |
    | **リージョン** | 予約が有効になっているリージョン。 |
-   | **アクセス層** | 予約が有効になっているアクセス層。 オプションには、*ホット*、*クール*、*アーカイブ* があります。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。 |
+   | **アクセス層** | 予約が有効になっているアクセス層。 オプションには、*ホット*、*クール*、*アーカイブ* があります。 アクセス層の詳細については、[BLOB データのホット、クール、アーカイブ アクセス層](access-tiers-overview.md)に関するページを参照してください。 |
    | **冗長性** | 予約の冗長オプション。 オプションには、*LRS*、*ZRS*、*GRS*、*GZRS*、*RA-GRS*、*RA- GZRS* があります。 冗長オプションの詳細については、[Azure Storage の冗長性](../common/storage-redundancy.md)に関する記事を参照してください。 |
    | **請求頻度** | アカウントが予約に対して課金される頻度を示します。 オプションには *[月 1 回]* または *[前払い]* があります。 |
    | **[サイズ]** | 予約する容量。 |
@@ -114,7 +114,7 @@ Azure の予約ポリシーの詳細については、「[Azure の予約のセ�
 
 ### <a name="refund-a-reservation"></a>予約を返金する
 
-Azure Storage 予約はいつでも取り消すことができます。 取り消しを行うと、予約の残りの期間に基づいて日割り計算された返金金額から 12% の早期終了料金を差し引いた金額を受け取ります。 1 年あたりの最大の返金は 5 万ドルです。
+Azure Storage 予約はいつでも取り消すことができます。 取り消しを行うと、予約の残りの期間に基づいて日割り計算された返金金額を受け取ります。 1 年あたりの最大の返金は 5 万ドルです。
 
 予約を取り消すと予約はすぐに終了し、残りの月が Microsoft に返されます。 なお、残りは日割りの払い戻し額から手数料を引いた額が当初の購入形式に戻されます。
 

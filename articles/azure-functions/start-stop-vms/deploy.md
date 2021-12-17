@@ -2,20 +2,25 @@
 title: Start/Stop VMs v2 (プレビュー) のデプロイ
 description: この記事では、Azure サブスクリプションで Azure VM の Start/Stop VMs v2 (プレビュー) 機能をデプロイする方法について説明します。
 services: azure-functions
-ms.subservice: ''
-ms.date: 03/29/2021
+ms.subservice: start-stop-vms
+ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9ca808fffbd26c8837ad9a43447f60e99f89d922
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 878bead652cf9962febc7622ef98ade0abc6cce5
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111294"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399695"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>Start/Stop VMs v2 (プレビュー) のデプロイ
 
 Start/Stop VMs v2 (プレビュー) 機能をインストールするには、このトピックの手順を順番に実行します。 セットアップ プロセスが完了したら、要件に合わせてカスタマイズするスケジュールを構成します。
 
+## <a name="permissions-considerations"></a>アクセス許可に関する考慮事項
+デプロイの前および最中に、次の点に留意してください。
++   このソリューションでは、Start/Stop v2 のデプロイに対する適切なロールベースのアクセス制御 (RBAC) のアクセス許可を持つユーザーが、Start/Stop v2 のスコープで仮想マシンのスケジュールを追加、削除、管理することができます。 この動作は仕様です。 実際には、仮想マシンに対する RBAC アクセス許可を直接持たないユーザーでも、仮想マシンを管理している Start/Stop v2 ソリューションを変更するための RBAC アクセス許可を持っていれば、その仮想マシンに対する開始、停止、自動停止の操作を作成できます。
++ Start/Stop v2 ソリューションにアクセスできるすべてのユーザーが、Start/Stop v2 アプリケーションで使用される Application Insights インスタンスに保存されているコスト、節約、操作履歴、その他のデータを見ることができます。
++ Start/Stop v2 ソリューションを管理するときは、Start/Stop v2 ソリューションに対するユーザーのアクセス許可を考慮する必要があります (特に、ターゲット仮想マシンを直接変更するアクセス許可をユーザーが持っていない場合)。
 ## <a name="deploy-feature"></a>機能をデプロイする
 
 デプロイは、[こちらの](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md) Start/Stop VMs v2 の GitHub 組織から開始されます。 この機能は、サブスクリプション内のすべてのリソース グループにわたるすべての VM を、そのサブスクリプション内の 1 つのデプロイから管理することを目的としていますが、組織の運用モデルまたは要件に基づいて、別のインスタンスをインストールすることもできます。 また、複数のサブスクリプション全体で VM を一元的に管理するように構成することもできます。
@@ -24,6 +29,10 @@ Start/Stop VMs v2 (プレビュー) 機能をインストールするには、�
 
 > [!NOTE]
 > 現在、このプレビューでは、既存のストレージ アカウントまたは Application Insights リソースの指定はサポートされていません。
+
+
+> [!NOTE]
+> 関数アプリとストレージアカウントの名前付け形式が変更されました。 グローバルな一意性を保証するため、ランダムで一意の文字列が、これらのリソースの名前に追加されるようになりました。
 
 1. ブラウザーを開いて、Start/Stop VMs v2 の [GitHub 組織](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md)に移動します。
 1. お使いの Azure VM が作成されている Azure クラウド環境に基づいて、デプロイ オプションを選択します。 これにより、Azure portal にカスタムの Azure Resource Manager のデプロイ ページが開きます。
@@ -50,6 +59,9 @@ Start/Stop VMs v2 (プレビュー) 機能をインストールするには、�
 
     :::image type="content" source="media/deploy/deployment-results-resource-list.png" alt-text="Start/Stop VMs テンプレートのデプロイ リソース一覧":::
 
+> [!NOTE]
+> お客様がトラブルシューティングのためにサポート チームに連絡してきたときにより良く支援できるよう、運用およびハートビートのテレメトリが収集されています。 また、サービスの有効性を判断できるよう、仮想マシンでサービスが動作した時間と、仮想マシンが再通知された期間を確認するため、仮想マシンのイベント履歴も収集されています。
+
 ## <a name="enable-multiple-subscriptions"></a>複数のサブスクリプションを有効にする
 
 Start/Stop のデプロイが完了したら、次の手順を実行して、Start/Stop VMs v2 (プレビュー) で複数のサブスクリプションに対してアクションを実行できるようにします。
@@ -72,7 +84,7 @@ VM の起動と停止を制御するためのオートメーションの方法�
 
 - Scheduled - 起動と停止のアクションは、Azure Resource Manager とクラシックの VM に対して指定したスケジュールに基づきます。**ststv2_vms_Scheduled_start** と **ststv2_vms_Scheduled_stop** により、スケジュールされた起動と停止が構成されます。
 
-- Sequenced - 起動と停止のアクションは、事前定義されたシーケンス処理タグの付いた VM を対象とするスケジュールに基づきます。 サポートされているのは、**sequencestart** および **sequencestop** の 2 つの名前付きタグのみです。 **ststv2_vms_Sequenced_start** と **ststv2_vms_Sequenced_stop** により、シーケンスされた起動と停止が構成されます。
+- Sequenced - 起動と停止のアクションは、事前定義されたシーケンス処理タグの付いた VM を対象とするスケジュールに基づきます。 サポートされているのは、**sequencestart** および **sequencestop** の 2 つの名前付きタグのみです。 **ststv2_vms_Sequenced_start** と **ststv2_vms_Sequenced_stop** により、シーケンスされた開始と停止が構成されます。
 
     > [!NOTE]
     > このシナリオでサポートされるのは、Azure Resource Manager の VM のみです。
@@ -176,12 +188,15 @@ VM を起動するだけのロジック アプリの構成はサポートされ�
           "/subscriptions/11111111-0000-1111-2222-444444444444/resourceGroups/rg2/providers/Microsoft.ClassicCompute/virtualMachines/vm30"
           
         ]
+      }
     }
     ```
 
+1. ロジック アプリの [概要] ウィンドウで、 **[有効]** を選択します。  
+
 ## <a name="sequenced-start-and-stop-scenario"></a>シーケンス処理された起動と停止のシナリオ
 
-分散アプリケーション アーキテクチャ内の複数の Azure Resource Manager VM に 2 つ以上のコンポーネントを含む環境では、コンポーネントの起動および停止順序を指定できることが重要です。
+分散アプリケーション アーキテクチャ内の複数の Azure Resource Manager VM に 2 つ以上のコンポーネントを含む環境では、コンポーネントの起動および停止順序を指定できることが重要です。 このシナリオを構成する前に、[概要ページ](../../azure-functions/start-stop-vms/overview.md#overview)で説明されているように、**sequencestart** タグと **Sequencestart** タグをターゲット VM に適用していることを確認してください。
 
 1. シーケンス処理された起動を構成する場合、ロジック アプリの一覧から **[ststv2_vms_Sequenced_start]** を選択します。 シーケンス処理された停止を構成する場合は、 **[ststv2_vms_Sequenced_stop]** を選択します。
 

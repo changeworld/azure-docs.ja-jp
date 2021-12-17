@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d003008ea5b0d2591574f6f488b0145ee6f08a5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2636b4ee53784d1cc79002430774d0bb5c5c2aa5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100008130"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966229"
 ---
 # <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 の外部共有と Azure Active Directory (Azure AD) B2B コラボレーション
 
@@ -45,7 +45,7 @@ OneDrive/SharePoint Online と Azure AD B2B コラボレーションの外部共
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure AD B2B コラボレーションとは](what-is-b2b.md)
-* [B2B コラボレーション ユーザーのロールへの追加](add-guest-to-role.md)
+* [B2B コラボレーション ユーザーのロールへの追加](./add-users-administrator.md)
 * [B2B コラボレーションの招待の委任](delegate-invitations.md)
 * [動的グループと B2B コラボレーション](use-dynamic-groups.md)
 * [Azure Active Directory B2B コラボレーションのトラブルシューティング](troubleshoot.md)

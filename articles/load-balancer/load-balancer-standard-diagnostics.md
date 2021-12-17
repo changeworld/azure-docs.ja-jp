@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: 29584a9453fa052745f417cba0bbe940766c30e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f92d776239bccb457f6d9fe9b073ea64a56178a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699081"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286433"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>メトリック、アラート、およびリソース正常性を使用した Standard Load Balancer の診断
 
@@ -65,6 +65,8 @@ Standard Load Balancer リソースのメトリックを表示するには:
 
   >[!NOTE] 
   >データは 1 分間に 1 回サンプリングされるため、時間の集計は、特定のメトリックを解釈する場合に重要になります。 時間の集計が 5 分に設定されていて、メトリック集計の種類である合計 (Sum) が SNAT 割り当てなどのメトリックに使用されている場合、グラフには、割り当て済みの SNAT ポートの合計数が 5 回表示されます。 
+  >
+  >推奨事項: メトリック集計の種類として Sum と Count を分析する場合、1 分を超える時間集計値を使用することをお勧めします。
 
 ![Standard Load Balancer のメトリック](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
 
@@ -72,7 +74,7 @@ Standard Load Balancer リソースのメトリックを表示するには:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>API を使用してプログラムで多次元メトリックを取得する
 
-多次元メトリックの定義と値を取得するための API のガイダンスについては、「[Azure 監視 REST API のチュートリアル](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api)」をご覧ください。 これらのメトリックは、"すべてのメトリック" カテゴリに[診断設定](../azure-monitor/essentials/diagnostic-settings.md)を追加することでストレージ アカウントに書き込むことができます。 
+多次元メトリックの定義と値を取得するための API のガイダンスについては、「[Azure 監視 REST API のチュートリアル](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions)」をご覧ください。 これらのメトリックは、"すべてのメトリック" カテゴリに[診断設定](../azure-monitor/essentials/diagnostic-settings.md)を追加することでストレージ アカウントに書き込むことができます。 
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>一般的な診断シナリオと推奨されるビュー
 
@@ -150,7 +152,7 @@ SNAT 接続の統計情報を取得するには:
 SNAT ポートの使用状況と割り当てを確認するには:
 1. グラフの時間の集計を 1 分に設定して、目的のデータが表示されるようにします。
 1. メトリックの種類として **[使用された SNAT ポート]** および/または **[割り当てられた SNAT ポート]** を選択し、集計として **[平均]** を選択します。
-    * 既定では、これらのメトリックは、各バックエンド VM または VMSS に割り当てられた、またはこれらが使用している SNAT ポートの平均数です。これは、ロード バランサーにマップされたすべてのフロントエンド パブリック IP に対応し、TCP と UDP で集計されます。
+    * 既定では、これらのメトリックは、各バックエンド VM または仮想マシン スケール セットに割り当てられた、またはこれらが使用している SNAT ポートの平均数です。これは、ロード バランサーにマップされたすべてのフロントエンド パブリック IP に対応し、TCP と UDP で集計されます。
     * ロード バランサーが使用している、またはロード バランサーに割り当てられた SNAT ポートの合計数を確認するには、メトリック集計の **[Sum]\(合計\)** を使用します。
 1. フィルター処理によって、特定の **プロトコルの種類**、一連の **バックエンド IP**、および/または **フロントエンド IP** に絞り込みます。
 1. バックエンドまたはフロントエンド インスタンスごとに正常性を監視するには、分割を適用します。 
@@ -169,7 +171,7 @@ SNAT ポートの使用状況と割り当てを確認するには:
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>サービスに対する受信/送信接続の試行を確認する方法
 <details>
   <summary>expand</summary>
-SYN パケット メトリックは、特定のフロントエンドに関連付けられている、到着した TCP SYN パケットまたは送信された TCP SYN パケット ([送信フロー](./load-balancer-outbound-connections.md)の場合) の量を示します。 このメトリックを使用して、サービスへの TCP 接続の試行を把握できます。
+SYN パケット メトリックは、特定のフロントエンドに関連付けられている、到着した TCP SYN パケットまたは送信された TCP SYN パケット ([送信フロー](../load-balancer-outbound-connections.md)の場合) の量を示します。 このメトリックを使用して、サービスへの TCP 接続の試行を把握できます。
 
 ほとんどのシナリオでは、集計として **Sum** を使用します。
 
@@ -217,7 +219,7 @@ SYN パケット メトリックは、特定のフロントエンドに関連付
 このグラフを見ることで、ユーザーは、他の問題が発生していたかどうかを推測したりサポートに問い合わせたりすることなく、独力でデプロイのトラブルシューティングを行うことができます。 このサービスは、誤った構成またはアプリケーションの障害によって正常性プローブが失敗したため、利用できませんでした。
 </details>
 
-## <a name="configure-alerts-for-multi-dimensional-metrics"></a>多次元メトリックのアラートを構成する ###
+## <a name="configure-alerts-for-multi-dimensional-metrics"></a>多次元メトリックのアラートを構成する
 
 Azure Standard Load Balancer では、多次元メトリックの簡単に構成できるアラートがサポートされています。 タッチレスのリソース監視エクスペリエンスを強化するには、特定のメトリックのカスタムしきい値を、さまざまなレベルの重大度でアラートをトリガーするように構成します。
 

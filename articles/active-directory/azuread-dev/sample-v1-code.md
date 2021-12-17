@@ -1,7 +1,6 @@
 ---
 title: Azure Active Directory v1.0 のコード サンプル | Microsoft Docs
 description: シナリオ別に整理された Azure Active Directory (v1.0 エンドポイント) のコード サンプルのインデックスを提供します。
-services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
@@ -14,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4d2b1a60856877c24d61379a688ea630e506a848
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 89c96384400d9a8942021c0c8c6a9793f35de2f5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075238"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059473"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory のコード サンプル (v1.0 エンドポイント)
 
@@ -75,16 +74,16 @@ GitHub でサンプルに協力することもできます。 その方法につ
 - サイレント型 (Windows の統合 Windows 認証、またはユーザー名/パスワードを使用)
 - 対話型サインインの別のデバイスへの委任 (Web コントロールを提供しないデバイスで使用されるデバイス コード フロー)
 
-クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し | ASP.NET または ASP.NET Core 2.x Web API の呼び出し
------------------- | -------- | ---------- | -------------------- | -------------------------
-デスクトップ (WPF)           | ![.NET/C# のロゴを示す画像](media/sample-v2-code/logo-net.png)  | Interactive | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) の一部 | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
-モバイル (UWP)            | .![.NET/C#/UWP を示す画像](media/sample-v2-code/logo-windows.png)   | Interactive | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> このサンプルでは、[ADAL.NET](https://aka.ms/adalnet) ではなく [WAM](/windows/uwp/security/web-account-manager) を使用します|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (ADAL.NET を使用してシングル テナント Web API を呼び出す UWP アプリケーション) </p> [dotnet-webapi-multitenant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (ADAL.NET を使用してマルチテナント Web API を呼び出す UWP アプリケーション)|
-モバイル (Android、iOS、UWP)   | ![.NET/C# (Xamarin) を示す画像](media/sample-v2-code/logo-xamarin.png) | Interactive | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
-モバイル (Android)           | ![Android のロゴを示す画像](media/sample-v2-code/logo-android.png) | Interactive |   [android](https://github.com/Azure-Samples/active-directory-android) |
-モバイル (iOS)           | ![iOS/Objective C または Swift を示す画像](media/sample-v2-code/logo-ios.png) | Interactive |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
-デスクトップ (コンソール)          | ![.NET/C# のロゴを示す画像](media/sample-v2-code/logo-net.png) | ユーザー名/パスワード </p>  統合 Windows 認証 | | [dotnet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
-デスクトップ (コンソール)          | ![Java のロゴを示す画像](media/sample-v2-code/logo-java.png) | ユーザー名/パスワード | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
-デスクトップ (コンソール)           | ![.NET Core/C# のロゴを示す画像](media/sample-v2-code/logo-netcore.png) | デバイス コード フロー | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
+| クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し | ASP.NET または ASP.NET Core 2.x Web API の呼び出し |
+|------------------ | -------- | ---------- | -------------------- | ------------------------- |
+| デスクトップ (WPF) | ![.NET/C# のロゴを示す画像](media/sample-v2-code/logo-net.png) | Interactive | [`dotnet-native-multitarget`](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) の一部 | [`dotnet-native-desktop`](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [`dotnet-native-aspnetcore`](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [`dotnet-webapi-manual-jwt-validation`](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation) |
+| モバイル (UWP) | ![.NET/C#/UWP を示す画像](media/sample-v2-code/logo-windows.png) | Interactive | [`dotnet-native-uwp-wam`](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> このサンプルでは、[ADAL.NET](https://aka.ms/adalnet) ではなく [WAM](/windows/uwp/security/web-account-manager) を使用します | [`dotnet-windows-store`](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (ADAL.NET を使用してシングル テナント Web API を呼び出す UWP アプリケーション) </p> [`dotnet-webapi-multitenant-windows-store`](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (ADAL.NET を使用してマルチテナント Web API を呼び出す UWP アプリケーション) |
+| モバイル (Android、iOS、UWP) | ![.NET/C# (Xamarin) を示す画像](media/sample-v2-code/logo-xamarin.png) | Interactive | [`dotnet-native-multitarget`](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
+| モバイル (Android) | ![Android のロゴを示す画像](media/sample-v2-code/logo-android.png) | Interactive | [`android`](https://github.com/Azure-Samples/active-directory-android) |
+| モバイル (iOS) | ![iOS/Objective C または Swift を示す画像](media/sample-v2-code/logo-ios.png) | Interactive | [`nativeClient-iOS`](https://github.com/azureadquickstarts/nativeclient-ios) |
+| デスクトップ (コンソール) | ![.NET/C# のロゴを示す画像](media/sample-v2-code/logo-net.png) | ユーザー名/パスワード </p> 統合 Windows 認証 | | [`dotnet-native-headless`](https://github.com/azure-samples/active-directory-dotnet-native-headless) |
+| デスクトップ (コンソール) | ![Java のロゴを示す画像](media/sample-v2-code/logo-java.png) | ユーザー名/パスワード | | [`java-native-headless`](https://github.com/Azure-Samples/active-directory-java-native-headless) |
+| デスクトップ (コンソール) | ![.NET Core/C# のロゴを示す画像](media/sample-v2-code/logo-netcore.png) | デバイス コード フロー | | [`dotnet-deviceprofile`](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile) |
 
 ## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>デーモン アプリケーション (アプリケーションの ID で Web API にアクセス)
 

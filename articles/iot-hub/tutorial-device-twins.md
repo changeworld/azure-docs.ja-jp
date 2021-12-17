@@ -7,7 +7,7 @@ ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 06/21/2019
+ms.date: 10/13/2021
 ms.custom:
 - mvc
 - mqtt
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 7dbc0404679927bcef1647dfdf46ce3360216a79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21055be377dff564753844e779cae287cab63b03
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98733302"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176018"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -261,7 +261,7 @@ az group delete --name tutorial-iot-hub-rg
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、デバイスと IoT ハブ間の状態情報を同期する方法について説明しました。 デバイス ツインを使用してファームウェアの更新プロセスを実装する方法については、次のチュートリアルに進んでください。
+このチュートリアルでは、デバイスと IoT ハブ間の状態情報を同期する方法について説明しました。 デバイス ツインを使用してデバイスの更新プロセスを実装する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [デバイス ファームウェアの更新プロセスを実装する](tutorial-firmware-update.md)
+> [Raspberry Pi 3 B+ 参照イメージを使用した Device Update for Azure IoT Hub の実装のチュートリアル](../iot-hub-device-update/device-update-raspberry-pi.md)

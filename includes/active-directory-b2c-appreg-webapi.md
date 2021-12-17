@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 7cbf6ca7606210b70ae9efa69a8cc6551eb6f36f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 85883cd465626764d7af0c20af480b6075e13f9e
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073131"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070582"
 ---
 アクセス トークンを提示するクライアント アプリケーションによる保護されたリソース要求を Web API リソースで受け取って処理できるためには、Web API リソースをテナントに登録しておく必要があります。
 
@@ -34,7 +34,7 @@ ms.locfileid: "106073131"
 1. **[暗黙的な許可]** で、 **[アクセス トークン]** と **[ID トークン]** の両方のチェック ボックスをオンにします。
 1. **[保存]** を選択します。
 
-#### <a name="applications"></a>[アプリケーション](#tab/applications/)
+#### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications/)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。

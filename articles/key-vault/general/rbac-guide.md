@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 966f704bd47b4b238ed72579a6103bd2e4348849
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c92b17158beee9d1f6c60becb858564555bf56bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772219"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048446"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する
 
@@ -35,16 +35,16 @@ Azure RBAC モデルには、さまざまなスコープ レベル (管理グル
 
 個々のキー、シークレット、および証明書のアクセス許可は、次のように特定のシナリオにのみ使用するようにします。
 
--   レイヤー間でアクセス制御を分離する必要があるマルチレイヤー アプリケーション
-
--   複数のアプリケーション間での個々のシークレットの共有
+-   複数のアプリケーションなど間に個々のシークレットを共有するアプリケーションが他のアプリケーションのデータにアクセスする必要がある
+-   顧客キーを使用したテナント間の暗号化  にーコンテナーのキー顧客キやISVなどを使用してデータを暗号化する
 
 Azure Key Vault 管理ガイドラインの詳細については、以下を参照してください。
 
-- [Azure Key Vault のセキュリティの概要](security-overview.md)
+- [Azure Key Vault のベスト プラクティス](best-practices.md)
 - [Azure Key Vault サービスの制限](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>Key Vault データ プレーン操作のための Azure の組み込みロール
+
 > [!NOTE]
 > `Key Vault Contributor` ロールは、キー コンテナーを管理するための管理プレーン操作用です。 キー、シークレット、証明書へのアクセスは許可されていません。
 
@@ -67,10 +67,9 @@ Key Vault の新しい Azure RBAC アクセス許可モデルには、コンテ�
 
 ### <a name="prerequisites"></a>前提条件
 
-ロールの割り当てを追加するには、以下が必要です。
+Azure サブスクリプションが必要です。 これがない場合、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成できます。
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-- `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)や[所有者](../../role-based-access-control/built-in-roles.md#owner)など)
+ロールの割り当てを追加するには、`Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)や[所有者](../../role-based-access-control/built-in-roles.md#owner)など) が必要です。
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Key Vault で Azure RBAC アクセス許可を有効にする
 
@@ -99,6 +98,9 @@ Key Vault の新しい Azure RBAC アクセス許可モデルには、コンテ�
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope <scope>
 ```
+
+詳細については、「[Azure CLI を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-cli.md)」を参照してください。
+
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
 
 ```azurepowershell
@@ -108,27 +110,41 @@ New-AzRoleAssignment -RoleDefinitionName <role_name> -SignInName <assignee_upn> 
 #Assign by Service Principal ApplicationId
 New-AzRoleAssignment -RoleDefinitionName Reader -ApplicationId <applicationId> -Scope <scope>
 ```
+
+詳細については、「[Azure PowerShell を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-powershell.md)」を参照してください。
+
 ---
 
-Azure portal では、[アクセス制御 (IAM)] タブのすべてのリソースに [Azure ロールの割り当て] 画面を使用できます。
-
-![[ロールの割り当て] - (IAM) タブ](../media/rbac/image-3.png)
+Azure portal を使用してロールを割り当てるには、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。  Azure portal では、[アクセス制御 (IAM)] タブのすべてのリソースに [Azure ロールの割り当て] 画面を使用できます。
 
 ### <a name="resource-group-scope-role-assignment"></a>リソース グループのスコープ ロールの割り当て
 
-1.  [Key Vault リソース グループ] に移動します。
+1. 自分のキー コンテナーが含まれているリソース グループに移動します。
+
     ![ロールの割り当て - リソース グループ](../media/rbac/image-4.png)
 
-2.  [アクセス制御 (IAM)] \> [ロールの割り当ての追加] \> [追加] をクリックします
+1. **[アクセス制御 (IAM)]** を選択します。
 
-3.  現在のユーザーに対して Key Vault Reader ロール "Key Vault Reader" を作成する
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
 
-    ![ロールの追加 - リソース グループ](../media/rbac/image-5.png)
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | Key Vault Reader |
+    | アクセスの割り当て先 | 現在のユーザー |
+    | メンバー | メール アドレスで検索 |
+
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
+
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role "Key Vault Reader" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
 ```
+
+詳細については、「[Azure CLI を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-cli.md)」を参照してください。
+
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
 
 ```azurepowershell
@@ -138,6 +154,8 @@ New-AzRoleAssignment -RoleDefinitionName 'Key Vault Reader' -SignInName {i.e use
 #Assign by Service Principal ApplicationId
 New-AzRoleAssignment -RoleDefinitionName 'Key Vault Reader' -ApplicationId {i.e 8ee5237a-816b-4a72-b605-446970e5f156} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
 ```
+詳細については、「[Azure PowerShell を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-powershell.md)」を参照してください。
+
 ---
 
 前述のロール割り当てには、Key Vault 内の Key Vault オブジェクトを一覧表示する機能があります。
@@ -145,17 +163,26 @@ New-AzRoleAssignment -RoleDefinitionName 'Key Vault Reader' -ApplicationId {i.e 
 ### <a name="key-vault-scope-role-assignment"></a>Key Vault スコープのロールの割り当て
 
 1. Key Vault \> [アクセス制御 (IAM)] タブに移動します
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
 
-2. [ロールの割り当ての追加]\>[追加] をクリックします
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | Key Vault Secrets Officer |
+    | アクセスの割り当て先 | 現在のユーザー |
+    | メンバー | メール アドレスで検索 |
 
-3. 現在のユーザーに対して Key Secrets Officer ロール "Key Vault Secrets Officer" を作成します。
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
-    ![ロールの割り当て - Key Vault](../media/rbac/image-6.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
 ```
+
+詳細については、「[Azure CLI を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-cli.md)」を参照してください。
+
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
 
 ```azurepowershell
@@ -165,28 +192,39 @@ New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -SignInName
 #Assign by Service Principal ApplicationId
 New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -ApplicationId {i.e 8ee5237a-816b-4a72-b605-446970e5f156} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
 ```
+
+詳細については、「[Azure PowerShell を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-powershell.md)」を参照してください。
+
 ---
-
-前述のロールの割り当てを作成した後は、シークレットの作成、更新、削除を行うことができます。
-
-4. シークレット レベルのロールの割り当てをテストするための新しいシークレットを作成します ([シークレット] \> [+Generate/Import]\(生成またはインポート\))。
-
-    ![ロールの追加 - Key Vault](../media/rbac/image-7.png)
 
 ### <a name="secret-scope-role-assignment"></a>シークレット スコープのロールの割り当て
 
-1. 以前に作成したシークレットのいずれかを開くと、[概要] と [アクセス制御 (IAM)] があります 
+1. 以前に作成したシークレットを開きます。
 
-2. [アクセス制御 (IAM)] タブをクリックします
+1. [アクセス制御 (IAM)] タブをクリックします
 
     ![ロールの割り当て - シークレット](../media/rbac/image-8.png)
 
-3. 前述のキー コンテナーの場合と同じように、現在のユーザーに対して Key Secrets Officer ロール "Key Vault Secrets Officer" を作成します。
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
+
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | Key Vault Secrets Officer |
+    | アクセスの割り当て先 | 現在のユーザー |
+    | メンバー | メール アドレスで検索 |
+
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
+
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
 ```
+
+詳細については、「[Azure CLI を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-cli.md)」を参照してください。
+
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
 
 ```azurepowershell
@@ -196,6 +234,9 @@ New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -SignInName
 #Assign by Service Principal ApplicationId
 New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -ApplicationId {i.e 8ee5237a-816b-4a72-b605-446970e5f156} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
 ```
+
+詳細については、「[Azure PowerShell を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-powershell.md)」を参照してください。
+
 ---
 
 ### <a name="test-and-verify"></a>テストして検証する
@@ -287,11 +328,15 @@ New-AzRoleDefinition -InputFile role.json
 
 ## <a name="known-limits-and-performance"></a>既知の制限とパフォーマンス
 
+-   Key Vault データ プレーン RBAC は、Azure Lighthouse のようなマルチ テナント シナリオではサポートされていません
 -   サブスクリプションごとに 2,000 件の Azure ロールの割り当て
-
 -   ロールの割り当ての待機時間: 現在想定されているパフォーマンスでは、ロールの割り当てが変更されてから、ロールが適用されるまでに最大 10 分 (600 秒) かかります
 
 ## <a name="learn-more"></a>詳細情報
+1. [MANAGEMENTGROUP | SUBSCRIPTION | RESOURCEGROUP | RESOURCE] スコープで [ROLENAME] ロールを [USER | GROUP | SERVICEPRINCIPAL | MANAGEDIDENTITY] に割り当てます。
+
 
 - [Azure RBAC の概要](../../role-based-access-control/overview.md)
+- [Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)
 - [カスタム ロールのチュートリアル](../../role-based-access-control/tutorial-custom-role-cli.md)
+- [Azure Key Vault のベスト プラクティス](best-practices.md)

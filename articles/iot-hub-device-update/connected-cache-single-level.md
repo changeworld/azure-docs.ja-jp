@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ae07926d7d8c768170e945e916367bee41999571
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c116bbf5ea9f5fc6e58962e02c93c630fc747d9e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101658741"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811726"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-samples"></a>Microsoft 接続キャッシュ プレビュー デプロイ シナリオのサンプル
 
@@ -22,23 +22,23 @@ ms.locfileid: "101658741"
 
   :::image type="content" source="media/connected-cache-overview/disconnected-device-update.png" alt-text="Microsoft 接続キャッシュの切断デバイス更新プログラム" lightbox="media/connected-cache-overview/disconnected-device-update.png":::
 
-1. Azure IoT Hub で、Azure IoT Edge ゲートウェイ デバイスのデプロイに Microsoft 接続キャッシュ モジュールを追加 します (モジュールを取得する方法の詳細については、「`MCC concepts`」を参照してください)。
+1. Azure IoT Hub で、Azure IoT Edge ゲートウェイ デバイスのデプロイに Microsoft 接続キャッシュ モジュールを追加します (モジュールを取得する方法の詳細については、[切断されたデバイスのサポート](connected-cache-disconnected-device-update.md)に関するページを参照してください)。
 2. デプロイに対する環境変数を追加します。 環境変数の例を次に示します。
 
     **環境変数**
     
-    | 名前                 | 値                                       |
-    | ----------------------------- | --------------------------------------------| 
-    | CACHE_NODE_ID                 | 上記の環境変数の説明を参照してください。 |
-    | CUSTOMER_ID                   | 上記の環境変数の説明を参照してください。 |
-    | CUSTOMER_KEY                  | 上記の環境変数の説明を参照してください。 |
-    | STORAGE_ *N* _SIZE_GB           | N = 5                                       |
+    | 名前                          | 値                                                                 |
+    | ----------------------------- | ----------------------------------------------------------------------| 
+    | CACHE_NODE_ID                 | [環境変数](connected-cache-configure.md)の説明を参照してください |
+    | CUSTOMER_ID                   | [環境変数](connected-cache-configure.md)の説明を参照してください |
+    | CUSTOMER_KEY                  | [環境変数](connected-cache-configure.md)の説明を参照してください |
+    | STORAGE_1_SIZE_GB             | 10                                                                    |
 
 3. デプロイのコンテナー作成オプションを追加します。 コンテナー作成オプションの例を次に示します。
 
 ### <a name="container-create-options"></a>コンテナーの作成オプション
 
-```markdown
+```json
 {
     "HostConfig": {
         "Binds": [
@@ -57,12 +57,13 @@ ms.locfileid: "101658741"
             ]
         }
     }
+}
 ```
 
-Microsoft 接続キャッシュが正常に機能していることを確認するには、モジュールをホスティングする IoT Edge デバイスのターミナル、またはネットワーク上の任意のデバイスで、次のコマンドを実行します。
+Microsoft 接続キャッシュが正常に機能していることを確認するには、モジュールをホスティングする IoT Edge デバイスのターミナル、またはネットワーク上の任意のデバイスで、次のコマンドを実行します。 \<Azure IoT Edge Gateway IP\> を、お使いの IoT Edge ゲートウェイの IP アドレスまたはホスト名に置き換えます (このレポートの表示については、環境変数の詳細を参照してください)。
 
 ```bash
-    wget "http://<IOT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
+    wget http://<IoT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
 ```
 
 ## <a name="single-level-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>認証されていない送信プロキシを使用する単一レベルの Azure IoT Edge ゲートウェイ
@@ -76,16 +77,16 @@ Microsoft 接続キャッシュが正常に機能していることを確認す�
 
     **環境変数**
 
-    | 名前                 | 値                                       |
-    | ----------------------------- | --------------------------------------------| 
-    | CACHE_NODE_ID                 | 上記の環境変数の説明を参照してください。 |
-    | CUSTOMER_ID                   | 上記の環境変数の説明を参照してください。 |
-    | CUSTOMER_KEY                  | 上記の環境変数の説明を参照してください。 |
-    | STORAGE_ *N* _SIZE_GB           | N = 5                                       |
-    | CACHEABLE_CUSTOM_1_HOST       | Packagerepo.com:80                          |
-    | CACHEABLE_CUSTOM_1_CANONICAL  | Packagerepo.com                             |
-    | IS_SUMMARY_ACCESS_UNRESTRICTED| true                                        |
-    | UPSTREAM_PROXY                | プロキシ サーバーの IP または FQDN                     |
+    | 名前                          | 値                                                                 |
+    | ----------------------------- | ----------------------------------------------------------------------| 
+    | CACHE_NODE_ID                 | [環境変数](connected-cache-configure.md)の説明を参照してください |
+    | CUSTOMER_ID                   | [環境変数](connected-cache-configure.md)の説明を参照してください |
+    | CUSTOMER_KEY                  | [環境変数](connected-cache-configure.md)の説明を参照してください |
+    | STORAGE_1_SIZE_GB             | 10                                                                    |
+    | CACHEABLE_CUSTOM_1_HOST       | Packagerepo.com:80                                                    |
+    | CACHEABLE_CUSTOM_1_CANONICAL  | Packagerepo.com                                                       |
+    | IS_SUMMARY_ACCESS_UNRESTRICTED| true                                                                  |
+    | UPSTREAM_PROXY                | 対象のプロキシ サーバーの IP または FQDN                                          |
 
 3. デプロイのコンテナー作成オプションを追加します。 前の例の MCC コンテナー作成オプションに違いはありません。 コンテナー作成オプションの例を次に示します。
 
@@ -110,10 +111,11 @@ Microsoft 接続キャッシュが正常に機能していることを確認す�
             ]
         }
     }
+}
 ```
 
-Microsoft 接続キャッシュが正常に機能していることを確認するには、モジュールをホスティングする Azure IoT Edge デバイスのターミナル、またはネットワーク上の任意のデバイスで、次のコマンドを実行します。
+Microsoft 接続キャッシュが正常に機能していることを確認するには、モジュールをホスティングする Azure IoT Edge デバイスのターミナル、またはネットワーク上の任意のデバイスで、次のコマンドを実行します。 \<Azure IoT Edge Gateway IP\> を、お使いの IoT Edge ゲートウェイの IP アドレスまたはホスト名に置き換えます (このレポートの表示については、環境変数の詳細を参照してください)。
 
 ```bash
-    wget "http://<Azure IOT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
+    wget http://<Azure IoT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com 
 ```

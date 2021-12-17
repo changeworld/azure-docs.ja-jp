@@ -1,31 +1,34 @@
 ---
 title: Common Data Model 形式
-description: Common Data Model メタデータ システムを使用してデータを変換します
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory および Synapse Analytics パイプラインの Common Data Model メタデータ システムを使用してデータを変換します。
 author: kromerm
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 09/09/2021
 ms.author: makromer
-ms.openlocfilehash: 45f5334ebee3365c17bfa52c8d47ed75b82bdfa1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e97bb5a51bc636cf8f2227473f090e51bb49c1c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387701"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787700"
 ---
-# <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory での Common Data Model 形式
+# <a name="common-data-model-format-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory および Synapse Analytics での Common Data Model 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Common Data Model (CDM) メタデータ システムを使用すると、データとその意味をアプリケーションやビジネス プロセス間で簡単に共有できます。 詳しくは、「[Common Data Model](/common-data-model/)」の概要を参照してください。
 
-Azure Data Factory では、マッピング データ フローを使用して、[Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) に格納されている model.json およびマニフェスト形式の両方の CDM エンティティのデータの変換を行うことができます。 また、データをパーティション分割されたフォルダーに CSV または Parquet 形式で格納する CDM エンティティ参照を使用して、データを CDM 形式でシンクすることもできます。 
+Azure Data Factory および Synapse パイプラインでは、マッピング データ フローを使用して、[Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) に格納されている model.json およびマニフェスト形式の両方の CDM エンティティのデータの変換を行うことができます。 また、データをパーティション分割されたフォルダーに CSV または Parquet 形式で格納する CDM エンティティ参照を使用して、データを CDM 形式でシンクすることもできます。 
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
 Common Data Model は、マッピング データ フローの[インライン データセット](data-flow-source.md#inline-datasets)として、ソースとシンクの両方として利用できます。
 
 > [!NOTE]
-> CDM エンティティを記述する際は、参照として使用する既存の CDM エンティティ定義 (メタデータ スキーマ) が既に定義されている必要があります。 ADF データ フロー シンクでは、その CDM エンティティ ファイルが読み取られ、フィールド マッピング用のシンクにスキーマがインポートされます。
+> CDM エンティティを記述する際は、参照として使用する既存の CDM エンティティ定義 (メタデータ スキーマ) が既に定義されている必要があります。 データ フロー シンクでは、その CDM エンティティ ファイルが読み取られ、フィールド マッピング用のシンクにスキーマがインポートされます。
 
 ### <a name="source-properties"></a>ソースのプロパティ
 
@@ -50,32 +53,32 @@ Common Data Model は、マッピング データ フローの[インライン �
 
 ソース変換とシンク変換の両方で "エンティティ参照" を選択する際に、以下の 3 つのオプションからエンティティ参照の場所を選択できます。
 
-* ローカル- ADF によって既に使用されているマニフェスト ファイルで定義されているエンティティを使用します。
-* カスタム - ADF によって使用されているマニフェスト ファイルとは異なるエンティティ マニフェスト ファイルを指定するように求めるメッセージが表示されます。
+* ローカル - サービスによって既に使用されているマニフェスト ファイルで定義されているエンティティを使用します
+* カスタム - サービスによって使用されているマニフェスト ファイルとは異なるエンティティ マニフェスト ファイルを指定するように求めるメッセージが表示されます
 * 標準 - ```Github``` に保持されている CDM エンティティの標準ライブラリにあるエンティティ参照を使用します。
 
 ### <a name="sink-settings"></a>シンクの設定
 
 * 記述するエンティティの定義を含む CDM エンティティ参照ファイルをポイントします。
 
-![エンティティの設定](media/data-flow/common-data-model-111.png "エンティティ参照")
+:::image type="content" source="media/data-flow/common-data-model-111.png" alt-text="エンティティの設定":::
 
-* ADF でエンティティの記述に使用する出力ファイルのパーティション パスと形式を定義します。
+* サービスでエンティティの記述に使用する出力ファイルのパーティション パスと形式を定義します。
 
-![エンティティ形式](media/data-flow/common-data-model-222.png "エンティティ形式")
+:::image type="content" source="media/data-flow/common-data-model-222.png" alt-text="エンティティ形式":::
 
 * 出力ファイルの場所とマニフェスト ファイルの場所と名前を設定します。
 
-![CDM の場所](media/data-flow/common-data-model-333.png "CDM の場所")
+:::image type="content" source="media/data-flow/common-data-model-333.png" alt-text="CDM の場所":::
 
 
 #### <a name="import-schema"></a>Import schema
 
 CDM はインライン データセットとしてのみ利用でき、既定では、関連付けられたスキーマはありません。 列メタデータを取得するには、 **[プロジェクション]** タブの **[スキーマのインポート]** ボタンをクリックします。これにより、コーパスによって指定されている列名とデータ型を参照できます。 スキーマをインポートするには、[データ フロー デバッグ セッション](concepts-data-flow-debug-mode.md)をアクティブにする必要があり、既存の CDM エンティティ定義ファイルをポイントする必要があります。
 
-シンク変換でデータ フロー列をエンティティ プロパティにマップする場合は、"マッピング" タブをクリックし、"スキーマのインポート" を選択します。 ADF によって、シンク オプションでポイントしたエンティティ参照が読み取られ、これでターゲットの CDM スキーマにマップできるようになります。
+シンク変換でデータ フロー列をエンティティ プロパティにマップする場合は、"マッピング" タブをクリックし、"スキーマのインポート" を選択します。 サービスによって、シンク オプションでポイントしたエンティティ参照が読み取られ、これでターゲットの CDM スキーマにマップできるようになります。
 
-![CDM シンクの設定](media/data-flow/common-data-model-444.png "CDM マッピング")
+:::image type="content" source="media/data-flow/common-data-model-444.png" alt-text="CDM シンクの設定":::
 
 > [!NOTE]
 >  Power BI または Power Platform データフローに由来する model.json ソース タイプを使用すると、ソース変換から "コーパスのパスが null または空である" というエラーが発生することがあります。 原因は、model.json ファイル内のパーティションの場所のパスで書式に問題がある可能性があります。 これを修正するには、次の手順に従います。 
@@ -84,7 +87,7 @@ CDM はインライン データセットとしてのみ利用でき、既定で
 2. partitions.Location プロパティを検索する 
 3. "blob.core.windows.net" を "dfs.core.windows.net" に変更する
 4. URL の "% 2F" エンコードを "/" に修正する
-5. ADF データ フローを使用する場合は、パーティション ファイル パス内の特殊文字を英数字に置き換えるか、Synapse データ フローに切り替える必要があります
+5. ADF データ フローを使用する場合は、パーティション ファイル パス内の特殊文字を英数字に置き換えるか、Azure Synapse データ フローに切り替える必要があります
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM ソース データ フロー スクリプトの例
 

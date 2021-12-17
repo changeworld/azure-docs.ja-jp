@@ -1,22 +1,22 @@
 ---
-title: 仮想マシンとの間のコピーと貼り付け:Azure Bastion
-description: この記事では、Azure Bastion を使用して Azure VM との間でコピーと貼り付けを行う方法を説明します。
+title: 'Windows 仮想マシンとの間のコピーと貼り付け: Azure Bastion'
+description: Bastion を使用して、Windows VM でコピーと貼り付けを行う方法を説明します。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4b0c2b734366f9a74a9b007ab9450ab4b4f51feb
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 5ce8faa76e1ddbd8d1d1adb52759dba0afe9c737
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800433"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629618"
 ---
-# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>仮想マシンとの間のコピーと貼り付け:Azure Bastion
+# <a name="copy-and-paste-to-a-windows-virtual-machine-azure-bastion"></a>Windows 仮想マシンへのコピーと貼り付け: Azure Bastion
 
-この記事は、Azure Bastion を使用している場合に、仮想マシンとの間でテキストのコピーと貼り付けを行う際に役立ちます。 VM を操作する前に、[Azure Bastion ホストを作成する](./tutorial-create-host-portal.md)手順を実行済みであることを確認してください。 その後、[RDP](bastion-connect-vm-rdp.md) または [SSH](bastion-connect-vm-ssh.md) のいずれかを使用して、操作する VM に接続します。
+この記事は、Azure Bastion を使用している場合に、仮想マシンとの間でテキストのコピーと貼り付けを行う際に役立ちます。 VM を操作する前に、[Azure Bastion ホストを作成する](./tutorial-create-host-portal.md)手順を実行済みであることを確認してください。 その後、[RDP](bastion-connect-vm-rdp-windows.md) または [SSH](bastion-connect-vm-ssh-windows.md) のいずれかを使用して、操作する VM に接続します。
 
 高度な Clipboard API アクセスをサポートするブラウザーでは、ローカル デバイス上のアプリケーション間でテキストをコピーして貼り付けるのと同じ方法で、ローカル デバイスとリモート セッションとの間でテキストをコピーして貼り付けることができます。 他のブラウザーでは、Azure Bastion クリップボード アクセス ツール パレットを使用することができます。
 

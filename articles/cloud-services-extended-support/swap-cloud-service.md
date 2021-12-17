@@ -1,90 +1,124 @@
 ---
-title: 2 つの Azure Cloud Services 間のスワップ/切り替え (延長サポート)
-description: 2 つの Azure Cloud Services 間のスワップ/切り替え (延長サポート)
+title: Azure Cloud Services (拡張サポート) でのデプロイのスワップまたは切り替え
+description: Azure Cloud Services (拡張サポート) でデプロイのスワップまたは切り替えを行う方法を説明します。
 ms.topic: how-to
 ms.service: cloud-services-extended-support
 author: surbhijain
 ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/01/2021
-ms.custom: ''
-ms.openlocfilehash: 6f96656af9afd9874cc6273a9cea9ed43e8c69cc
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: cd13a7f69d3085786407a405598df4bc7b8e0ef9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106294230"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358434"
 ---
-# <a name="swapswitch-between-two-azure-cloud-services-extended-support"></a>2 つの Azure Cloud Services 間のスワップ/切り替え (延長サポート)
-Cloud Services (延長サポート) を使用すると、2 つの独立したクラウド サービスのデプロイを切り替えることができます。 クラウド サービス (クラシック) とは異なり、スロットの概念は Azure Resource Manager モデルには存在しません。 クラウド サービス (延長サポート) の新しいリリースをデプロイする場合は、別の既存の クラウド サービス (延長サポート) を使用して "スワップ可能" にして、このデプロイを使用して新しいリリースのステージングとテストを行うことができます。 クラウド サービスは、(ペアの) 2 つ目のクラウド サービスをデプロイするときにのみ、別のクラウド サービスと "スワップ可能" にすることができます。 ARM テンプレートベースのデプロイ方法を使用する場合、これを行うには、Cloud Service オブジェクトのネットワーク プロファイル内の SwappableCloudService プロパティを、ペアになっているクラウド サービスの ID に設定します。 
+# <a name="swap-or-switch-deployments-in-azure-cloud-services-extended-support"></a>Azure Cloud Services (拡張サポート) でのデプロイのスワップまたは切り替え
 
-```
+Azure Cloud Services (拡張サポート) を使用すると、2 つの独立したクラウド サービスのデプロイ間で切り替えを行うことができます。 Azure Cloud Services (従来の) とは異なり、Azure Cloud Services (拡張サポート) の Azure Resource Manager モデルはデプロイ スロットを使用しません。 Azure Cloud Services (拡張サポート) では、クラウドサービスの新しいリリースをデプロイするときに、クラウド サービスを、Azure Cloud Services (拡張サポート) の既存のクラウド サービスと "スワップ可能" にすることができます。
+
+デプロイをスワップした後は、新しいクラウド サービスのデプロイを使用して、新しいリリースをステージングし、テストすることができます。 実際には、スワップにより、運用リリースへとステージングされた新しいクラウド サービスが昇格されます。
+
+> [!NOTE]
+> Azure Cloud Services (従来の) のデプロイと Azure Cloud Services (拡張サポート) デプロイの間でスワップすることはできません。
+
+クラウド サービスを別のクラウド サービスにスワップ可能にする必要があるのは、ペアの 2 つ目のクラウド サービスを初めてデプロイするときです。 ペアの 2 つ目のクラウド サービスをデプロイすると、それ以降の更新でそれを既存のクラウド サービスとスワップ可能にすることはできません。
+
+デプロイをスワップするには、Azure Resource Manager テンプレート (ARM テンプレート)、Azure portal、または REST API を使用します。
+
+2 つ目のクラウド サービスをデプロイすると、両方のクラウド サービスの SwappableCloudService プロパティが互いを指し示すように設定されます。 これらのクラウド サービスに対するそれ以降の更新では、このプロパティを指定する必要があります。そうでないと、SwappableCloudService プロパティを削除または更新できないことを示すエラーが返されます。
+
+設定されると、SwappableCloudService プロパティは読み取り専用として扱われます。 これを削除したり、別の値に変更したりすることはできません。 (スワップ可能なペアの) クラウド サービスのいずれかを削除すると、残りのクラウド サービスの SwappableCloudService プロパティがクリアされます。
+
+## <a name="arm-template"></a>ARM テンプレート
+
+ARM テンプレートのデプロイ方法を使用して、クラウドサービスをスワップ可能にするには、`cloudServices` オブジェクトの `networkProfile` の `SwappableCloudService` プロパティを、スワップ対象のクラウド サービスの ID に設定します。
+
+```json
 "networkProfile": {
  "SwappableCloudService": {
               "id": "[concat(variables('swappableResourcePrefix'), 'Microsoft.Compute/cloudServices/', parameters('cloudServicesToBeSwappedWith'))]"
             },
+        }
 ```
-> [!Note] 
-> クラウド サービス (クラシック) とクラウド サービス (延長サポート) の間でスワップすることはできません。
 
-2 つのクラウド サービスをアドレス指定する際に使用する URL を切り替えるには、 **[スワップ]** を使用します。これにより、新しいクラウド サービス (ステージング済み) が運用リリースに昇格します。
-デプロイメントのスワップは、 [Cloud Services] ページまたはダッシュボードから実行できます。
+## <a name="azure-portal"></a>Azure portal
 
-1. [Azure ポータル](https://portal.azure.com)で、更新するクラウド サービスを選択します。 この手順により、クラウド サービス インスタンス ブレードが開きます。
-2. ブレードで、 **[スワップ]** 
-   :::image type="content" source="media/swap-cloud-service-1.png" alt-text="[イメージ] を選択すると、クラウド サービスのスワップ オプションが表示 "::: されます
-   
-3. 次のような確認ダイアログが表示されます
-   
-   :::image type="content" source="media/swap-cloud-service-2.png" alt-text="図はクラウド サービスのスワップを示しています":::
-   
-4. デプロイ情報を確認した後、 [OK] を選択してデプロイをスワップします。
-変更されるのは 2 つのクラウド サービスの仮想 IP アドレス (VIP) だけであるため、スワップは直ちに実行されます。
+Azure portal でデプロイをスワップするには、次の手順に従います。
 
-コンピューティング コストを節約するために、スワップされたクラウド サービスが想定どおりに動作していることを確認した後、(アプリケーション デプロイのステージング環境として指定された) いずれかのクラウド サービスを削除できます。
+1. ポータル メニューで、 **[Cloud Services (拡張サポート)]** または **[ダッシュボード]** を選択します。
+1. 更新するクラウド サービスを選択します。
+1. クラウド サービスの **[概要]** で **[スワップ]** を選択します。
 
-2 つのクラウド サービス延長サポート デプロイの間で ‘スワップ’ を実行する rest API を以下に示します。
+   :::image type="content" source="media/swap-cloud-service-portal-swap.png" alt-text="クラウド サービスの [スワップ] タブを示すスクリーンショット。":::
+
+1. スワップ確認用のウィンドウでデプロイ情報を確認し、 **[OK]** を選択してデプロイをスワップします。
+
+   :::image type="content" source="media/swap-cloud-service-portal-confirm.png" alt-text="デプロイのスワップの情報を確認するスクリーンショット。":::
+
+変更されるのは、デプロイされたクラウド サービスの仮想 IP アドレスのみであるため、デプロイは短時間でスワップされます。
+
+コンピューティング コストを節約するために、スワップされたクラウド サービスが想定どおりに動作していることを確認した後は、(アプリケーション デプロイのステージング環境として指定された) いずれかのクラウド サービスを削除できます。
+
+## <a name="rest-api"></a>REST API
+
+[REST API](/rest/api/compute/load-balancers/swap-public-ip-addresses) を使用して Azure Cloud Services (拡張サポート) で、新しいクラウド サービスのデプロイに切り替えるには、次のコマンドと JSON 構成を使用します。
+
 ```http
-POST https://management.azure.com/subscriptions/subId/providers/Microsoft.Network/locations/region/setLoadBalancerFrontendPublicIpAddresses?api-version=2020-11-01
+POST https://management.azure.com/subscriptions/subid/providers/Microsoft.Network/locations/westus/setLoadBalancerFrontendPublicIpAddresses?api-version=2021-02-01
 ```
-```
+
+```json
 {
   "frontendIPConfigurations": [
     {
-    "id": "#LBFE1#",
-    "properties": {
-    "publicIPAddress": {
-    "id": "#PIP2#"
-    }
+      "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/lbfe1",
+      "properties": {
+        "publicIPAddress": {
+          "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/publicIPAddresses/pip2"
+        }
       }
     },
-   {
-    "id": "#LBFE2#",
-    "properties": {
-    "publicIPAddress": {
-    "id": "#PIP1#"
-     }
-       }
+    {
+      "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/loadBalancers/lb2/frontendIPConfigurations/lbfe2",
+      "properties": {
+        "publicIPAddress": {
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pip1"
+        }
+      }
     }
   ]
- }
+}
 ```
+
 ## <a name="common-questions-about-swapping-deployments"></a>デプロイのスワップについてよく寄せられる質問
 
-### <a name="what-are-the-prerequisites-for-swapping-between-two-cloud-services"></a>2 つのクラウド サービス間でスワップするための前提条件は何ですか?
-クラウド サービス (延長サポート) のスワップを成功させるには、次の 2 つの重要な前提条件があります。
-* スワップ可能ないずれかのクラウド サービスに静的/予約済み IP アドレスを使用する場合は、他のクラウド サービスでも予約済み IP を使用する必要があります。 これを行わなかった場合、スワップは失敗します。
-* スワップを実行する前に、ロールのすべてのインスタンスを実行する必要があります。 インスタンスの状態は、Azure Portal の [概要] ブレードで確認できます。 または Windows PowerShell の Get-AzRole を使用して確認できます。
+Azure Cloud Services (拡張サポート) でのデプロイのスワップに関してよく寄せられる質問への回答を確認してください。
 
-ゲスト OS の更新とサービス復旧操作もデプロイのスワップが失敗する原因となる可能性があります。 詳細については、「クラウド サービスのデプロイメントに関する問題のトラブルシューティング」を参照してください。
+### <a name="what-are-the-prerequisites-for-swapping-to-a-new-cloud-services-deployment"></a>新しいクラウド サービスのデプロイにスワップするための前提条件は何ですか。
 
-### <a name="can-i-perform-a-vip-swap-in-parallel-with-another-mutating-operation"></a>別の変更操作と同時に VIP スワップを実行できますか?
-いいえ。 VIP スワップは、クラウド サービスで他のコンピューティング操作を実行する前に完了する必要があるネットワークのみの変更です。 VIP スワップが進行中にクラウド サービスで更新、削除、または自動スケール操作を実行する、または他のコンピューティング操作が進行中に VIP スワップをトリガーすると、クラウド サービスが望ましくない状態になり、リカバリが不可能になる場合があります。 
+Azure Cloud Services (拡張サポート) でデプロイを正常にスワップするには、次の 2 つの重要な前提条件を満たす必要があります。
 
-### <a name="does-a-swap-incur-downtime-for-my-application-how-should-i-handle-it"></a>スワップで、アプリケーションのダウンタイムは発生しますか。 どのように対応する必要がありますか。
-前のセクションで説明したように、クラウド サービスのスワップは、Azure ロード バランサーの構成を変更するだけなので、通常は高速で実行されます。 ただし、場合によっては 10 数秒かかることがあり、その結果、一時的な接続エラーが発生します。 お客様への影響を制限するために、クライアント再試行ロジックの実装を検討してください。
+* 一方のスワップ可能クラウド サービスに、静的 IP アドレスまたは予約済み IP アドレスを使用する場合は、他方のクラウド サービスにも予約済み IP アドレスを使用する必要があります。 これを行わなかった場合、スワップは失敗します。
+* スワップが成功するためには、ロールのすべてのインスタンスが実行中である必要があります。 インスタンスの状態を確認するには、Azure portal で、新しくデプロイされたクラウド サービスの **[概要]** にアクセスするか、Windows PowerShell で `Get-AzRole` コマンドを使用します。
+
+ゲスト OS の更新およびサービス復旧の操作により、デプロイのスワップが失敗する可能性があります。 詳細については、[クラウド サービスのデプロイメントのトラブルシューティング](../cloud-services/cloud-services-troubleshoot-deployment-problems.md)に関するページを参照してください。
+
+### <a name="can-i-make-a-vip-swap-in-parallel-with-another-mutating-operation"></a>別の変更操作と並行して VIP スワップを実行できますか。
+
+いいえ。 VIP スワップは、クラウド サービスで他のコンピューティング操作を開始する前に完了する必要がある、ネットワークのみの変更です。 VIP スワップの進行中にクラウド サービスの更新、削除、または自動スケール操作を開始したり、別のコンピューティング操作の進行中に VIP スワップがトリガーされたりすると、クラウド サービスが、回復不能なエラー状態になることがあります。
+
+### <a name="does-a-swap-incur-downtime-for-my-application-and-how-should-i-handle-it"></a>スワップで、アプリケーションのダウンタイムは発生しますか。それに、どのように対応すべきですか。
+
+クラウド サービスのスワップは、Azure ロード バランサーの構成の変更にすぎないため、通常は短時間で終了します。 ただし、スワップに 10 秒以上かかり、その結果、一時的な接続エラーが発生する場合があります。 ユーザーへのスワップの影響を抑制するには、クライアント再試行ロジックを実装することを検討してください。
 
 ## <a name="next-steps"></a>次のステップ 
-- Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
-- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
-- [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。
+
+* Azure Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
+* Azure Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.yml)を確認します。
+* 次のいずれかのオプションを使用して、Azure Cloud Services (拡張サポート) クラウド サービスをデプロイします。
+  * [Azure Portal](deploy-portal.md)
+  * [PowerShell](deploy-powershell.md)
+  * [ARM テンプレート](deploy-template.md)
+  * [Visual Studio](deploy-visual-studio.md)

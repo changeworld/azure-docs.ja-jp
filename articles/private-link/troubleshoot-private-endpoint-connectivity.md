@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77295f2d47f0645b8d4610af3834f0b8a64ec7a0
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97807554"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064459"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Azure プライベート エンドポイント接続に関する問題のトラブルシューティング
 
@@ -39,7 +39,7 @@ Azure プライベート エンドポイントは、プライベート リンク
 
 1. リソースを参照して、プライベート エンドポイントの構成を確認します。
 
-    a. **[プライベート リンク センター]** に移動します。
+    a. [[プライベート リンク センター]](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/overview) に移動します。
 
       ![プライベート リンク センター](./media/private-endpoint-tsg/private-link-center.png)
 
@@ -59,7 +59,7 @@ Azure プライベート エンドポイントは、プライベート リンク
 1. [Azure Monitor](../azure-monitor/overview.md) を使用して、データが流れているかどうか確認します。
 
     a. プライベート エンドポイント リソースで **[監視]** を選択します。
-     - **[受信データ]** または **[送信データ]** を選択します。 
+     - **[入力バイト数]** または **[出力バイト数]** を選択します。 
      - プライベート エンドポイントへの接続を試みたときにデータが流れているかどうか確認します。 約 10 分の遅延が予想されます。
     
        ![プライベート エンドポイント テレメトリの検証](./media/private-endpoint-tsg/private-endpoint-monitor.png)
@@ -103,8 +103,9 @@ Azure プライベート エンドポイントは、プライベート リンク
 1. ソース仮想マシンでは、NIC の有効なルートで、プライベート エンドポイント IP のネクスト ホップへのルートが InterfaceEndpoints として設定されている必要があります。 
 
     a. ソース VM のプライベート エンドポイント ルートを確認できない場合は、次の点を調べてください 
-     - ソース VM とプライベート エンドポイントが同じ VNET に属している。 「はい」の場合は、サポートに問い合わせる必要があります。 
-     - ソース VM とプライベート エンドポイントは異なる VNET に属している。この場合は、VNET 間の IP 接続を調べます。 IP 接続が確立していてもルートを確認できない場合は、サポートにお問い合わせください。 
+     - ソース VM とプライベート エンドポイントが、同じ VNET の一部かどうか。 「はい」の場合は、サポートに問い合わせる必要があります。 
+     - ソース VM とプライベート エンドポイントが、互いに直接ピアリングされている異なる VNET の一部かどうか。 「はい」の場合は、サポートに問い合わせる必要があります。
+     - ソース VM とプライベート エンドポイントが、互いに直接ピアリングされていない異なる VNET に属しているかどうか。この場合は、VNET 間の IP 接続を調べます。
 
 1. 接続の結果が正しいと確認された場合、接続の問題は、アプリケーション層でのシークレット、トークン、パスワードなどの他の側面に関連している可能性があります。
    - この場合、プライベート エンドポイントに関連付けられているプライベート リンク リソースの構成を確認してください。 詳細については、[Azure Private Link トラブルシューティング ガイド](troubleshoot-private-link-connectivity.md)を参照してください
@@ -119,7 +120,19 @@ Azure プライベート エンドポイントは、プライベート リンク
       - 別のソースからプライベート エンドポイントへの接続。 このようにすることで、仮想マシン固有のすべての問題を切り離せます。 
       - プライベート エンドポイントと同じ Virtual Network の一部である任意の仮想マシンへの接続。  
 
-1. 問題が解決されず、接続の問題が依然として存在する場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) チームにお問い合わせください。
+1. プライベート エンドポイントが、[Azure Private Link サービス](./troubleshoot-private-link-connectivity.md)にリンクされている Azure Load Balancer にリンクされている場合は、バックエンド プールが正常と報告されるかどうかを確認します。 Azure Load Balancer の正常性を修正すると、プライベート エンドポイントへの接続に関する問題が修正されます。
+
+    - 次にアクセスすると、ビジュアル ダイアグラムまたは関連するリソース、メトリック、分析情報の[依存関係ビュー](../azure-monitor/insights/network-insights-overview.md#dependency-view)を表示できます。
+        - Azure Monitor
+        - ネットワーク
+        - プライベート エンドポイント
+        - [依存関係] ビュー 
+
+![モニター - ネットワーク](https://user-images.githubusercontent.com/20302679/134994620-0660b9e2-e2a3-4233-8953-d3e49b93e2f2.png)
+
+![DependencyView](https://user-images.githubusercontent.com/20302679/134994637-fb8b4a1a-81d5-4723-b1c3-d7bdc72162f3.png)
+
+9. 問題が解決されず、接続の問題が依然として存在する場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) チームにお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

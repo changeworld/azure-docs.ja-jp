@@ -1,246 +1,249 @@
-- name: Azure Arc 対応データ サービスのドキュメント
-  href: index.yml
-- name: 概要
-  items:
-    - name: Azure Arc 対応データ サービスとは
-      href: overview.md
-    - name: リリース ノート
-      href: release-notes.md
-    - name: 既知の問題
-      href: known-issues.md
-- name: クイックスタート
-  items:
-    - name: データ コントローラーの作成
-      href: create-data-controller.md
-- name: 概念
-  items:
-    - name: 接続モードと要件
-      href: connectivity.md
-    - name: ストレージの構成
-      href: storage-configuration.md
-    - name: サイズ設定のガイダンス
-      href: sizing-guidance.md
-- name: 操作方法ガイド
-  items:
-    - name: ツールをインストールする
-      items:
-        - name: クライアント ツールのインストール
-          href: install-client-tools.md
-        - name: Azure Data CLI (azdata)
-          items:
-            - name: インストール
-              href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: macOS
-              href: /sql/azdata/install/deploy-install-azdata-macos?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Windows
-              href: /sql/azdata/install/deploy-install-azdata-installer?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Linux (apt を使用)
-              href: /sql/azdata/install/deploy-install-azdata-linux-package?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Linux (yum を使用)
-              href: /sql/azdata/install/deploy-install-azdata-yum?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Linux (zypper を使用)
-              href: /sql/azdata/install/deploy-install-azdata-zypper?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Linux (pip を使用)
-              href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-    - name: データ コントローラーの作成
-      items:
-        - name: Azure Data Studio
-          href: create-data-controller-azure-data-studio.md
-        - name: Azure portal
-          href: create-data-controller-resource-in-azure-portal.md
-        - name: Azure Data CLI (azdata)
-          href: create-data-controller-using-azdata.md
-        - name: Kubernetes のツール
-          href: create-data-controller-using-kubernetes-native-tools.md
-        - name: SCC の適用 (OpenShift)
-          href: how-to-apply-security-context-constraint.md
-    - name: Azure Arc 対応データ サービス全般に共通するエクスペリエンス
-      items:
-        - name: ダッシュボードの監視 (Azure Data Studio)
-          href: azure-data-studio-dashboards.md
-        - name: 課金データの表示 (Azure)
-          href: view-billing-data-in-azure.md
-        - name: データ コントローラーの表示 (ポータル)
-          href: view-data-controller-in-azure-portal.md
-        - name: リソースを削除する
-          href: delete-azure-resources.md
-        - name: Azure Arc データ コントローラーのアンインストール
-          href: uninstall-azure-arc-data-controller.md
-    - name: 管理する
-      items:
-        - name: Grafana および Kibana を使用した監視
-          href: monitor-grafana-kibana.md
-        - name: Azure Monitor へのアップロード
-          items:
-            - name: アップロードの前提条件
-              href: upload-metrics-and-logs-to-azure-monitor.md
-            - name: ログのアップロード
-              href: upload-logs.md
-            - name: メトリックのアップロード
-              href: upload-metrics.md
-            - name: 使用状況データのアップロード
-              href: upload-usage-data.md
-        - name: インベントリ データベース インスタンス
-          href: view-arc-data-services-inventory-in-azure-portal.md
-        - name: データ コントローラーのユーザー名とパスワードの取得
-          href: retrieve-the-username-password-for-data-controller.md
-        - name: サービス プリンシパルの資格情報を更新
-          href: update-service-principal-credentials.md
-    - name: トラブルシューティング
-      items:
-        - name: ガイド
-          href: troubleshoot-guide.md
-        - name: ログを取得する
-          href: troubleshooting-get-logs.md
-- name: Azure Arc 対応 PostgreSQL Hyperscale (プレビュー)
-  items:
-    - name: 概要
-      items:
-        - name: Azure Arc 対応 PostgreSQL Hyperscale とは
-          href: what-is-azure-arc-enabled-postgres-hyperscale.md
-        - name: 制限事項
-          href: limitations-postgresql-hyperscale.md
-    - name: クイックスタート
-      items:
-        - name: サポートされているバージョン
-          href: supported-versions-postgres-hyperscale.md
-        - name: Postgres Hyperscale サーバー グループの作成 (CLI)
-          href: create-postgresql-hyperscale-server-group.md
-        - name: Postgres Hyperscale サーバー グループの作成 (Azure Data Studio)
-          href: create-postgresql-hyperscale-server-group-azure-data-studio.md
-        - name: Postgres Hyperscale サーバー グループの作成 - Kubernetes ネイティブ ツール
-          href: create-postgresql-hyperscale-server-group-kubernetes-native-tools.md
-        - name: 接続する
-          href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
-    - name: 概念
-      items:
-        - name: データの配布
-          href: concepts-distributed-postgres-hyperscale.md
-        - name: サーバー グループの配置
-          href: postgresql-hyperscale-server-group-placement-on-kubernetes-cluster-nodes.md
-    - name: 方法
-      items:
-        - name: 管理する
-          items:
-            - name: バックアップと復元
-              href: backup-restore-postgresql-hyperscale.md
-            - name: PostgreSQL ポートの変更
-              href: change-postgresql-port.md
-            - name: 構成とスケーリング
-              items:
-                - name: 構成の表示
-                  href: show-configuration-postgresql-hyperscale-server-group.md
-                - name: スケールアウト - ワーカー ノードの追加
-                  href: scale-out-postgresql-hyperscale-server-group.md
-                - name: メモリと仮想コアのスケールアップ/スケールダウン
-                  href: scale-up-down-postgresql-hyperscale-server-group-using-cli.md
-                - name: サーバー パラメーターの構成
-                  href: configure-server-parameters-postgresql-hyperscale.md
-            - name: 削除
-              href: delete-postgresql-hyperscale-server-group.md
-            - name: サーバー グループの一覧表示
-              href: list-server-groups-postgres-hyperscale.md
-            - name: 監視、ログ分析、課金情報、Azure portal
-              href: monitoring-log-analytics-azure-portal-postgresql.md
-            - name: セキュリティで保護
-              href: configure-security-postgres-hyperscale.md
-            - name: サーバー グループの管理 (Azure Data Studio)
-              href: manage-postgresql-hyperscale-server-group-with-azure-data-studio.md
-            - name: Postgre 拡張機能の使用
-              href: using-extensions-in-postgresql-hyperscale-server-group.md
-        - name: 移行
-          items:
-            - name: PostgreSQL データを Postgres Hyperscale サーバー グループに移行する
-              href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
-            - name: AdventureWorks サンプル データベースのインポート
-              href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
-        - name: トラブルシューティング
-          href: troubleshoot-postgresql-hyperscale-server-group.md
-- name: Azure Arc 対応 SQL Managed Instance (プレビュー)
-  items:
-    - name: 概要
-      items:
-        - name: Azure Arc 対応 SQL Managed Instance とは
-          href: managed-instance-overview.md
-        - name: 特徴
-          href: managed-instance-features.md
-    - name: クイックスタート
-      items:
-        - name: SQL マネージド インスタンスの作成
-          href: create-sql-managed-instance.md
-        - name: SQL マネージド インスタンスの作成 (Azure Data Studio)
-          href: create-sql-managed-instance-azure-data-studio.md
-        - name: Kubernetes ツールを使用して作成する
-          href: create-sql-managed-instance-using-kubernetes-native-tools.md
-        - name: 接続する
-          href: connect-managed-instance.md
-    - name: 方法
-      items:
-        - name: 管理する
-          items:
-            - name: 構成
-              href: configure-managed-instance.md
-            - name: 監視、ログ分析、課金情報、Azure portal
-              href: monitoring-log-analytics-azure-portal-managed-instance.md
-            - name: 高可用性
-              href: managed-instance-high-availability.md
-            - name: 削除
-              href: delete-managed-instance.md
-        - name: 移行
-          items:
-            - name: SQL マネージド インスタンスへの移行 (Azure Arc)
-              href: migrate-to-managed-instance.md
-            - name: AdventureWorks の復元
-              href: restore-adventureworks-sample-db.md
-- name: 関連項目
-  items:
-    - name: azdata
-      items:
-        - name: azdata
-          href: /sql/azdata/reference/reference-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: ノートブック
-          href: /sql/azdata/reference/reference-azdata-notebook?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: postgres
-          href: /sql/azdata/reference/reference-azdata-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: sql
-          href: /sql/azdata/reference/reference-azdata-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: azdata-arc
-          href: /sql/azdata/reference/reference-azdata-arc?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-dc
-          href: /sql/azdata/reference/reference-azdata-arc-dc?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-dc-config
-          href: /sql/azdata/reference/reference-azdata-arc-dc-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-dc-debug
-          href: /sql/azdata/reference/reference-azdata-arc-dc-debug?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-dc-endpoint
-          href: /sql/azdata/reference/reference-azdata-arc-dc-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-dc-status
-          href: /sql/azdata/reference/reference-azdata-arc-dc-status?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-postgres
-          href: /sql/azdata/reference/reference-azdata-arc-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-postgres-backup
-          href: /sql/azdata/reference/reference-azdata-arc-postgres-backup?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-postgres-endpoint
-          href: /sql/azdata/reference/reference-azdata-arc-postgres-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-postgres-server
-          href: /sql/azdata/reference/reference-azdata-arc-postgres-server?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-postgres-server-backup
-          href: /sql/azdata/reference/reference-azdata-arc-postgres-server-backup?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-postgres-server-config
-          href: /sql/azdata/reference/reference-azdata-arc-postgres-server-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-resource
-          href: /sql/azdata/reference/reference-azdata-arc-resource?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-resource-kind
-          href: /sql/azdata/reference/reference-azdata-arc-resource-kind?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-sql
-          href: /sql/azdata/reference/reference-azdata-arc-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-sql-endpoint
-          href: /sql/azdata/reference/reference-azdata-arc-sql-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-sql-mi
-          href: /sql/azdata/reference/reference-azdata-arc-sql-mi?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-sql-mi-config
-          href: /sql/azdata/reference/reference-azdata-arc-sql-mi-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-- name: リソース
-  items:
-    - name: Azure Arc のジャンプスタート
-      href: 'https://azurearcjumpstart.io'
+items:
+  - name: Azure Arc 対応データ サービスのドキュメント
+    href: index.yml
+  - name: 概要
+    items:
+      - name: Azure Arc 対応データ サービスとは
+        href: overview.md
+      - name: リリース ノート
+        href: release-notes.md
+      - name: Azure Arc 検証済みパートナー
+        href: validation-program.md
+      - name: データ収集とレポート
+        href: privacy-data-collection-and-reporting.md
+  - name: クイックスタート
+    items:
+      - name: Azure Arc 対応データ サービスのデプロイを計画する
+        href: plan-azure-arc-data-services.md
+      - name: AKS クラスターの作成
+        href: create-aks-cluster-data-controller.md
+  - name: 概念
+    items:
+      - name: 接続モードと要件
+        href: connectivity.md
+      - name: ストレージの構成
+        href: storage-configuration.md
+      - name: サイズ設定のガイダンス
+        href: sizing-guidance.md
+  - name: 操作方法ガイド
+    items:
+      - name: ツールをインストールする
+        items:
+          - name: クライアント ツールのインストール
+            href: install-client-tools.md
+          - name: arcdata 拡張機能のインストール (Azure CLI)
+            href: install-arcdata-extension.md
+      - name: カスタム構成プロファイル ファイルの作成
+        href: create-custom-configuration-template.md
+      - name: データ コントローラーの作成
+        items:
+          - name: 間接接続モード
+            items:
+              - name: Azure Data Studio
+                href: create-data-controller-indirect-azure-data-studio.md
+              - name: Azure portal
+                href: create-data-controller-indirect-azure-portal.md
+              - name: Azure (az) CLI
+                href: create-data-controller-indirect-cli.md
+              - name: Kubernetes のツール
+                href: create-data-controller-using-kubernetes-native-tools.md
+          - name: 直接接続モード
+            items:
+              - name: 前提条件
+                href: create-data-controller-direct-prerequisites.md
+              - name: Azure portal
+                href: create-data-controller-direct-azure-portal.md
+      - name: Azure Arc 対応データ サービス全般に共通するエクスペリエンス
+        items:
+          - name: ダッシュボードの監視 (Azure Data Studio)
+            href: azure-data-studio-dashboards.md
+          - name: 課金データの表示 (Azure)
+            href: view-billing-data-in-azure.md
+          - name: データ コントローラーの表示 (ポータル)
+            href: view-data-controller-in-azure-portal.md
+          - name: リソースを削除する
+            href: delete-azure-resources.md
+          - name: Azure Arc データ コントローラーのアンインストール
+            href: uninstall-azure-arc-data-controller.md
+      - name: 管理する
+        items:
+          - name: Grafana および Kibana を使用した監視
+            href: monitor-grafana-kibana.md
+          - name: Azure Monitor へのアップロード
+            items:
+              - name: アップロードの前提条件
+                href: upload-metrics-and-logs-to-azure-monitor.md
+              - name: ログのアップロード
+                href: upload-logs.md
+              - name: メトリックのアップロード
+                href: upload-metrics.md
+              - name: 使用状況データのアップロード
+                href: upload-usage-data.md
+          - name: インベントリ データベース インスタンス
+            href: view-arc-data-services-inventory-in-azure-portal.md
+          - name: データ コントローラーのユーザー名とパスワードの取得
+            href: retrieve-the-username-password-for-data-controller.md
+          - name: サービス プリンシパルの資格情報を更新
+            href: update-service-principal-credentials.md
+      - name: アップグレード
+        items:
+          - name: 間接のデータ コントローラー - CLI
+            href: upgrade-data-controller-indirect-cli.md
+      - name: トラブルシューティング
+        items:
+          - name: ガイド
+            href: troubleshoot-guide.md
+          - name: ログを取得する
+            href: troubleshooting-get-logs.md
+  - name: Azure Arc 対応 PostgreSQL Hyperscale (プレビュー)
+    items:
+      - name: 概要
+        items:
+          - name: Azure Arc 対応 PostgreSQL Hyperscale とは
+            href: what-is-azure-arc-enabled-postgres-hyperscale.md
+          - name: 制限事項
+            href: limitations-postgresql-hyperscale.md
+      - name: クイックスタート
+        items:
+          - name: サポートされているバージョン
+            href: supported-versions-postgres-hyperscale.md
+          - name: Postgres Hyperscale サーバー グループの作成 (CLI)
+            href: create-postgresql-hyperscale-server-group.md
+          - name: Postgres Hyperscale サーバー グループの作成 (ポータル)
+            href: create-postgresql-hyperscale-server-group-azure-portal.md
+          - name: Postgres Hyperscale サーバー グループの作成 (Azure Data Studio)
+            href: create-postgresql-hyperscale-server-group-azure-data-studio.md
+          - name: Postgres Hyperscale サーバー グループの作成 - Kubernetes ネイティブ ツール
+            href: create-postgresql-hyperscale-server-group-kubernetes-native-tools.md
+          - name: 接続する
+            href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+      - name: 概念
+        items:
+          - name: データの配布
+            href: concepts-distributed-postgres-hyperscale.md
+          - name: サーバー グループの配置
+            href: postgresql-hyperscale-server-group-placement-on-kubernetes-cluster-nodes.md
+      - name: 方法
+        items:
+          - name: 管理する
+            items:
+              - name: バックアップと復元
+                href: backup-restore-postgresql-hyperscale.md
+              - name: PostgreSQL ポートの変更
+                href: change-postgresql-port.md
+              - name: 構成とスケーリング
+                items:
+                  - name: 構成の表示
+                    href: show-configuration-postgresql-hyperscale-server-group.md
+                  - name: ワーカー ノードのスケールアウト/スケールイン
+                    href: scale-out-in-postgresql-hyperscale-server-group.md
+                  - name: メモリと仮想コアのスケールアップ/スケールダウン
+                    href: scale-up-down-postgresql-hyperscale-server-group-using-cli.md
+                  - name: サーバー パラメーターの構成
+                    href: configure-server-parameters-postgresql-hyperscale.md
+              - name: 削除
+                href: delete-postgresql-hyperscale-server-group.md
+              - name: サーバー グループの一覧表示
+                href: list-server-groups-postgres-hyperscale.md
+              - name: 監視、ログ分析、課金情報 (ポータル)
+                href: monitoring-log-analytics-azure-portal-postgresql.md
+              - name: セキュリティで保護
+                href: configure-security-postgres-hyperscale.md
+              - name: サーバー グループの管理 (Azure Data Studio)
+                href: manage-postgresql-hyperscale-server-group-with-azure-data-studio.md
+              - name: Postgre 拡張機能の使用
+                href: using-extensions-in-postgresql-hyperscale-server-group.md
+          - name: 移行
+            items:
+              - name: PostgreSQL データを Postgres Hyperscale サーバー グループに移行する
+                href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+              - name: AdventureWorks サンプル データベースのインポート
+                href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+          - name: トラブルシューティング
+            href: troubleshoot-postgresql-hyperscale-server-group.md
+  - name: Azure Arc 対応 SQL Managed Instance
+    items:
+      - name: 概要
+        items:
+          - name: Azure Arc 対応 SQL Managed Instance とは
+            href: managed-instance-overview.md
+          - name: 特徴
+            href: managed-instance-features.md
+          - name: 制限事項
+            href: limitations-managed-instance.md
+          - name: サービス階層
+            href: service-tiers.md
+      - name: クイックスタート
+        items:
+          - name: SQL マネージド インスタンスの作成
+            href: create-sql-managed-instance.md
+          - name: SQL マネージド インスタンスの作成 (Azure Data Studio)
+            href: create-sql-managed-instance-azure-data-studio.md
+          - name: Kubernetes ツールを使用して作成する
+            href: create-sql-managed-instance-using-kubernetes-native-tools.md
+          - name: 接続する
+            href: connect-managed-instance.md
+      - name: 方法
+        items:
+          - name: 管理する
+            items:
+              - name: 構成
+                href: configure-managed-instance.md
+              - name: 監視、ログ分析、課金情報 (ポータル)
+                href: monitoring-log-analytics-azure-portal-managed-instance.md
+              - name: 高可用性
+                href: managed-instance-high-availability.md
+              - name: 予約容量
+                href: reserved-capacity-overview.md
+              - name: 削除
+                href: delete-managed-instance.md
+          - name: アップグレード
+            items:
+              - name: CLI を使用したアップグレード
+                href: upgrade-sql-managed-instance-cli.md
+          - name: 移行
+            items:
+              - name: SQL マネージド インスタンスへの移行 (Azure Arc)
+                href: migrate-to-managed-instance.md
+              - name: AdventureWorks の復元
+                href: restore-adventureworks-sample-db.md
+          - name: ビジネス継続性の構成
+            items:
+              - name: ポイントインタイム リストア
+                href: point-in-time-restore.md
+  - name: 関連項目
+    items:
+      - name: リリース バージョン ログ
+        href: version-log.md
+      - name: az arcdata 拡張機能
+        items:
+          - name: arcdata
+            href: ./reference/reference-az-arcdata.md
+          - name: arcdata dc
+            href: ./reference/reference-az-arcdata-dc.md
+          - name: arcdata dc config
+            href: ./reference/reference-az-arcdata-dc-config.md
+          - name: arcdata dc endpoint
+            href: ./reference/reference-az-arcdata-dc-endpoint.md
+          - name: arcdata dc status
+            href: ./reference/reference-az-arcdata-dc-status.md
+          - name: arcdata resource-kind
+            href: ./reference/reference-az-arcdata-resource-kind.md
+          - name: postgres arc-server
+            href: ./reference/reference-az-postgres-arc-server.md
+          - name: postgres arc-server endpoint
+            href: ./reference/reference-az-postgres-arc-server-endpoint.md
+          - name: sql mi-arc
+            href: ./reference/reference-az-sql-mi-arc.md
+          - name: sql mi-arc endpoint
+            href: ./reference/reference-az-sql-mi-arc-endpoint.md
+          - name: sql mi-arc config
+            href: ./reference/reference-az-sql-mi-arc-config.md
+          - name: sql mi-arc dag
+            href: ./reference/reference-az-sql-mi-arc-dag.md
+          - name: sql midb-arc
+            href: ./reference/reference-az-sql-midb-arc.md
+  - name: リソース
+    items:
+      - name: Azure Arc のジャンプスタート
+        href: 'https://azurearcjumpstart.io'

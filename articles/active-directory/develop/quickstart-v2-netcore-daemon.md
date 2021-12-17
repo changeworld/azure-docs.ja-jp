@@ -13,12 +13,12 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1b539c168deab7c1893f071a2453be28310fc132
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5b463156116b675c2220d1c1b1278d7552eadb0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022927"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619308"
 ---
 # <a name="quickstart-get-a-token-and-call-the-microsoft-graph-api-by-using-a-console-apps-identity"></a>クイックスタート: コンソール アプリの ID を使用してトークンを取得し、Microsoft Graph API を呼び出す
 
@@ -32,7 +32,7 @@ ms.locfileid: "105022927"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートには [.Net Core 3.1](https://www.microsoft.com/net/download/dotnet-core) が必要ですが、.Net Core 5.0 でも動作します。
+このクイックスタートには [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download) が必要ですが、.NET 5.0 SDK でも動作します。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-the-app"></a>アプリを登録してダウンロードする
@@ -58,7 +58,7 @@ ms.locfileid: "105022927"
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
 >
 > 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</span></a> にサインインします。
-> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントを選択します。
+> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 > 1. **[名前]** に、アプリケーションの名前を入力します。 たとえば、「**Daemon-console**」と入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。

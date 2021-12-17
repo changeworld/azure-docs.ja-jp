@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 089d5d70d8ad8060455e5c1bee45e0bee4a12fae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36d78edebdcc1624270cf27f136f701b2ebc0191
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575839"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715350"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Automation アカウントから Update Management を有効にする
 
@@ -24,7 +24,7 @@ ms.locfileid: "100575839"
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
 * マシンを管理する [Automation アカウント](../automation-security-overview.md)。
-* Arc 対応サーバーで登録された [Azure 仮想マシン](../../virtual-machines/windows/quick-create-portal.md) (VM) またはサーバー。 Azure 以外の VM やサーバーの場合、Windows または Linux 向けの [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)をインストールしておく必要があり、Update Management が有効になっている Automation アカウントにリンクされているワークスペースに報告させる必要があります。 最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [*Linux* または *Windows* Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーに割り当てることにより、Windows または Linux 用の Log Analytics エージェントをインストールすることが推奨されます。 また、Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
+* Azure Arc 対応サーバーで登録された [Azure 仮想マシン](../../virtual-machines/windows/quick-create-portal.md) (VM) またはサーバー。 Azure 以外の VM やサーバーの場合、Windows または Linux 向けの [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)をインストールしておく必要があり、Update Management が有効になっている Automation アカウントにリンクされているワークスペースに報告させる必要があります。 最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [*Linux* または *Windows* Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーを割り当てることにより、Windows または Linux 用の Log Analytics エージェントをインストールすることをお勧めします。 また、Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン

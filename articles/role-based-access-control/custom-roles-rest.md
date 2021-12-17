@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ab64765fc4e329c8edbf7a4db813113d20d476b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c7e816f15400a28e8b10f4aea7a2315c89048be
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100557516"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352910"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>REST API を使用して Azure カスタム ロールを作成または更新する
 
@@ -185,9 +185,9 @@ ms.locfileid: "100557516"
 
 1. `assignableScopes` が管理グループである場合は、 *{groupId}* インスタンスを、管理グループの識別子に置き換えます。 `assignableScopes` への管理グループの追加は、現在プレビューの段階です。
 
-1. `actions` プロパティに、ロールで実行できる操作を追加します。
+1. `actions` プロパティに、ロールで実行できるアクションを追加します。
 
-1. `notActions` プロパティに、許可された `actions` から除外される操作を追加します。
+1. `notActions` プロパティに、許可された `actions` から除外されるアクションを追加します。
 
 1. `roleName` および `description` プロパティに、一意なロール名と説明を指定します。 プロパティの詳細については、[Azure カスタム ロール](custom-roles.md)に関するページを参照してください。
 

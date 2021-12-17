@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 3a7d0d49313cb524a5bf39add5c9a55862dcad47
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: eacbf24fdd4d92ac4da1419c02be7ae006b640d4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046892"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432246"
 ---
 # <a name="integrate-system-center-operations-manager-with-vm-insights-map-feature"></a>System Center Operations Manager と VM insights のマップ機能を統合する
 
@@ -143,5 +143,5 @@ Service Map フォルダーには 4 つのノードがあります。
 
 ### <a name="suggestions"></a>検索候補
 
-VM insights のマップ機能との統合、またはこのドキュメントについてフィードバックがある場合は、 [User Voice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)を是非ご利用ください。このページでは、機能を提案したり、既存の提案に投票したりすることができます。
+VM insights のマップ機能との統合、またはこのドキュメントについてフィードバックがある場合は、 [User Voice ページ](https://feedback.azure.com/d365community/forum/aa68334e-1925-ec11-b6e6-000d3a4f09d0?c=ad4304e4-1925-ec11-b6e6-000d3a4f09d0)を是非ご利用ください。このページでは、機能を提案したり、既存の提案に投票したりすることができます。
 

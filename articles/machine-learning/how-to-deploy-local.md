@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: laobri
 author: lobrien
 ms.date: 11/20/2020
-ms.topic: conceptual
-ms.custom: how-to, deploy
-ms.openlocfilehash: a7d1212d1106f0883d05a860b498b90e4e5f8e00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: deploy
+ms.openlocfilehash: 97b8d6f32b2e59dd2e19b1d41b4fa01f97158325
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517516"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547688"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Azure Machine Learning でトレーニングされたモデルをローカル コンピューターにデプロイする 
 
@@ -101,7 +101,7 @@ Azure Machine Learning によって使用される環境を複製する最も簡
 
 ```python
 from azureml.core.webservice import Webservice
-from azure.core.model import InferenceConfig
+from azureml.core.model import InferenceConfig
 from azureml.core.environment import Environment
 from azureml.core import Workspace
 from azureml.core.model import Model
@@ -185,10 +185,10 @@ Docker を使用してモデルを Web サービスとしてデプロイする�
 モデルは次の方法でダウンロードできます。  
 
 - ポータルで **[モデル]** タブを選択し、目的のモデルを選択して、 **[詳細]** ページで **[ダウンロード]** を選択する。
-- コマンドラインで `az ml model download` を使用する ([model download](/cli/azure/ext/azure-cli-ml/ml/model#ext_azure_cli_ml_az_ml_model_download) に関するセクションを参照)。
+- コマンドラインで `az ml model download` を使用する ([model download](/cli/azure/ml/model#az_ml_model_download) に関するセクションを参照)。
 - Python SDK `Model.download()` メソッドを使用する (「[Model クラス](/python/api/azureml-core/azureml.core.model.model#download-target-dir------exist-ok-false--exists-ok-none-)」を参照)。
 
-Azure モデルは、1 つまたは複数のシリアル化された Python オブジェクトであり、Python pickle ファイル ( .pkl 拡張子) としてパッケージ化されています。 pickle ファイルの内容は、モデルのトレーニングに使用された機械学習ライブラリまたは技法によって異なります。 たとえば、チュートリアルのモデルを使用している場合は、次のようにしてモデルを読み込むことができます。
+Azure モデルは、フレームワークで使用されている形式であるものの、1 つまたは複数のシリアル化された Python オブジェクトであり、Python pickle ファイル (.pkl 拡張子) としてパッケージ化されています。 pickle ファイルの内容は、モデルのトレーニングに使用された機械学習ライブラリまたは技法によって異なります。 たとえば、チュートリアルのモデルを使用している場合は、次のようにしてモデルを読み込むことができます。
 
 ```python
 import pickle
@@ -250,5 +250,6 @@ model = Model.register(model_path="sklearn_regression_model.pkl",
 
 ## <a name="next-steps"></a>次のステップ
 
+- Azure Machine Learning で VS Code を使用する方法については、「[Visual Studio Code でコンピューティング インスタンスに接続する (プレビュー)](how-to-set-up-vs-code-remote.md)」を参照してください。
 - 環境の管理の詳細については、「[Azure Machine Learning でソフトウェア環境を作成して使用する](how-to-use-environments.md)」を参照してください。
 - データストアからデータへのアクセスの詳細については、「[Azure のストレージ サービスに接続する](how-to-access-data.md)」を参照してください。

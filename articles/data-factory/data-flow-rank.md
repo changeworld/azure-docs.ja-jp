@@ -1,23 +1,27 @@
 ---
 title: マッピング データ フローでの順位変換
-description: Azure Data Factory のマッピング データ フロー順位変換を使用して順位付け列を生成する方法
-author: dcstwh
-ms.author: weetok
+description: Azure Data Factory または Synapse Analytics パイプラインで、マッピング データ フローの順位変換を使用して、順位列を生成する方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+author: kromerm
+ms.author: makromer
 ms.reviewer: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 10/05/2020
-ms.openlocfilehash: b7adb6bf13cba5f886b442515e8ba5661cfeb8ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: c3af0355a02badb5aaa5d5b13a51b74392c931d8
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96490926"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059882"
 ---
 # <a name="rank-transformation-in-mapping-data-flow"></a>マッピング データ フローでの順位変換 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 順位変換を使用して、ユーザーが指定した並べ替え条件に基づいて順序付けされた順位を生成します。 
 
@@ -25,7 +29,7 @@ ms.locfileid: "96490926"
 
 ## <a name="configuration"></a>構成
 
-![順位設定](media/data-flow/rank-configuration.png "順位設定")
+:::image type="content" source="media/data-flow/rank-configuration.png" alt-text="順位設定":::
 
 **大文字と小文字の区別をしない:** 並べ替え列の型が文字列の場合、大文字と小文字の違いが順位付けで考慮されます。 
 
@@ -55,7 +59,7 @@ ms.locfileid: "96490926"
 
 ### <a name="example"></a>例
 
-![順位設定](media/data-flow/rank-configuration.png "順位設定")
+:::image type="content" source="media/data-flow/rank-configuration.png" alt-text="順位設定":::
 
 次のコード スニペットには、上記の順位構成に対するデータ フロー スクリプトが含まれています。
 

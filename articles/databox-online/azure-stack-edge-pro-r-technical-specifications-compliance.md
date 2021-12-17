@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 07/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 3b323bf920bd884e821d03bf2def37471775e720
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: cb0a7ede9ee4b4a5f6fbb2312026211784fa486c
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312707"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301566"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R の技術仕様
 
@@ -31,7 +31,7 @@ Azure Stack Edge Pro R デバイスには、コンピューティングとメモ
 | CPU: 使用可能    | vCPU 数 32                                          |
 | メモリの種類    | Dell 互換 16 GB RDIMM、2666 MT/秒、デュアル ランク |
 | メモリ: Raw    | 256 GB RAM (16 x 16 GB)                           |
-| メモリ: 使用可能 | 230 GB RAM                                        |
+| メモリ: 使用可能 | 217 GB RAM                                        |
 
 ## <a name="compute-acceleration-specifications"></a>コンピューティング アクセラレーション仕様
 

@@ -5,20 +5,20 @@ ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
-author: mlearned
+author: georgewallace
 manager: gwallace
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 07/09/2018
-ms.author: mlearned
+ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 6d6181686eaeb90d4fcdae0231430623b84e2c1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db1d72c953e5f344d4e202774983ab134ff6afe8
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548514"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054146"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>Azure DevOps Starter を使用して Go 用の CI/CD パイプラインを作成する
 

@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/18/2020
+ms.date: 06/04/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 50679e11697a4227af69b8568c5f3cd23fe26cbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8fdac875bf6469363dbcf95f7ff347fad4cb55b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98662799"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733845"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 プライベート データ センターまたは企業ネットワークから、Azure や Microsoft 365 などの多くの Microsoft クラウド サービスにアクセスできます。 たとえば、シリコン バレーに ExpressRoute 回線があるサンフランシスコのブランチ オフィスと、市内に ExpressRoute 回線があるロンドンのブランチ オフィスがあるとします。 どちらのブランチ オフィスも、米国西部と英国南部で Azure リソースへの高速の接続を利用しています。 ただし、ブランチ オフィスは相互に直接接続してデータを送信することはできません。 つまり、10.0.1.0/24 から 10.0.3.0/24 および 10.0.4.0/24 ネットワークにデータを送信することはできますが、10.0.2.0/24 ネットワークには送信できません。
@@ -36,10 +36,16 @@ ExpressRoute Global Reach は以下の場所でサポートされています。
 > [異なる地政学的地域](expressroute-locations-providers.md#locations)間で ExpressRoute Global Reach を有効にするには、**Premium SKU** の回線を使用する必要があります。
 
 * オーストラリア
+<<<<<<< HEAD
 * カナダ
+=======
+* Canada
+* デンマーク
+>>>>>>> repo_sync_working_branch
 * フランス
 * ドイツ
 * 香港特別行政区
+* インド
 * アイルランド
 * 日本
 * 韓国
@@ -50,6 +56,7 @@ ExpressRoute Global Reach は以下の場所でサポートされています。
 * 南アフリカ (ヨハネスブルグのみ)
 * スウェーデン
 * スイス
+* 台湾
 * イギリス
 * アメリカ
 

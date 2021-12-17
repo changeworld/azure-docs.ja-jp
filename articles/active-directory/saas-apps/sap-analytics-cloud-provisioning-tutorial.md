@@ -3,8 +3,8 @@ title: チュートリアル:Azure Active Directory を使用した自動ユー�
 description: Azure AD から SAP Analytics Cloud に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 27d12989-efa8-4254-a4ad-8cb6bf09d839
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/13/2020
-ms.author: Zhchia
-ms.openlocfilehash: 31e5393cb5de627ebf8832e43302583d6eacbf59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 18761305ced552ae8cade7aeb647836ab5666a3e
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181489"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989032"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングを行うために SAP Analytics Cloud を構成する
 
@@ -44,6 +44,10 @@ ms.locfileid: "96181489"
 * 管理者アクセス許可がある SAP Identity Provisioning の管理コンソールのユーザー アカウント。 Identity Provisioning 管理コンソールのプロキシ システムにアクセスできることを確認します。 **[プロキシ システム]** タイルが表示されない場合は、このタイルへのアクセスを要求するコンポーネント **BC-IAM-IPS** のインシデントを作成します。
 * SAP Analytics Cloud における承認付与のクライアント資格情報を持つ OAuth クライアント。 その方法については、次を参照してください。[OAuth クライアントと信頼できる ID プロバイダーの管理](https://help.sap.com/viewer/00f68c2e08b941f081002fd3691d86a7/release/en-US/4f43b54398fc4acaa5efa32badfe3df6.html)に関する記事
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
+
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
 
 1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
@@ -54,7 +58,7 @@ ms.locfileid: "96181489"
 
 1. [SAP Identity Provisioning の管理コンソール](https://ips-xlnk9v890j.dispatcher.us1.hana.ondemand.com/)に管理者アカウントでサインインし、 **[プロキシ システム]** を選択します。
 
-   ![SAP プロキシ システム](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems.png.png)
+   ![SAP プロキシ システム](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems.png)
 
 2. **[プロパティ]** を選択します。
 

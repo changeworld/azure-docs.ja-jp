@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 08/24/2021
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 40bf202e0f14f18d817e4e918f8372ba3c0a4ad8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d3257980d628a627b9a4896e2511812240454f8
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91950671"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229888"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 
@@ -30,7 +30,7 @@ ms.locfileid: "91950671"
 ![シングル サインオン (SSO) のワークフロー](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
 
 > [!NOTE]
-> この記事では、シングル サインオンでの SAML の使用について説明します。 シングル サインオンを処理するその他の方法 (OpenID Connect や統合 Windows 認証など) の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
+> この記事では、シングル サインオンでの SAML の使用について説明します。 シングル サインオンを処理するその他の方法 (OpenID Connect や統合 Windows 認証など) の詳細については、[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)に関するページを参照してください。
 
 ## <a name="authnrequest"></a>AuthnRequest
 

@@ -1,22 +1,23 @@
 ---
 title: 仮想マシン スケール セットで Azure Disk Encryption を有効にする
 description: この記事では、仮想マシン スケール セットで Microsoft Azure Disk Encryption を有効にする手順について説明します
-author: mimckitt
-ms.author: mimckitt
+author: ju-shim
+ms.author: jushiman
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 10/10/2019
-ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 6b9805d66149a18216a200bc89a79b3e06106c9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mimckitt
+ms.openlocfilehash: 579315379923b5ba8a16f94cff5984e6e904a5ec
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83195110"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691302"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure Disk Encryption
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 均一のスケール セット
 
 Azure Disk Encryption は、仮想マシンの OS とデータ ディスクのボリューム暗号化を提供し、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 詳細については、[Azure Disk Encryption: Linux VM](../virtual-machines/linux/disk-encryption-overview.md) および [Azure Disk Encryption: Windows VM](../virtual-machines/windows/disk-encryption-overview.md) に関するページを参照してください。  
 

@@ -4,12 +4,12 @@ description: パーティションを使用して Azure Event Hubs で最大限�
 ms.topic: article
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e014a33e94fe7f90569dd2ef1e9b620eef274842
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02f26aaf369db177d77d27f3274b34fe1c400419
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952866"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988948"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs における可用性と一貫性
 この記事では、Azure Event Hubs でサポートされる可用性と整合性に関する情報を提供します。 
@@ -60,14 +60,14 @@ producer.SendAsync(events, sendOptions)
 
 
 ### <a name="java"></a>[Java](#tab/java)
-特定のパーティションにイベントを送信するには、[createBatchOptions](/java/api/com.azure.messaging.eventhubs.models.createbatchoptions) に **パーティション ID** または **パーティション キー** を指定して、[createBatch](/java/api/com.azure.messaging.eventhubs.eventhubproducerclient.createbatch) メソッドを使用してバッチを作成します。 次のコードでは、パーティション キーを指定することによって、特定のパーティションにイベントのバッチを送信します。 
+特定のパーティションにイベントを送信するには、[createBatchOptions](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/main/java/com/azure/messaging/eventhubs/models/CreateBatchOptions.java) に **パーティション ID** または **パーティション キー** を指定して、[createBatch](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/main/java/com/azure/messaging/eventhubs/EventHubProducerClient.java) メソッドを使用してバッチを作成します。 次のコードでは、パーティション キーを指定することによって、特定のパーティションにイベントのバッチを送信します。 
 
 ```java
 CreateBatchOptions batchOptions = new CreateBatchOptions();
 batchOptions.setPartitionKey("cities");
 ```
 
-また、[SendOptions](/java/api/com.azure.messaging.eventhubs.models.sendoptions) に **パーティション ID** または **パーティション キー** を指定して、[EventHubProducerClient.send](/java/api/com.azure.messaging.eventhubs.eventhubproducerclient.send#com_azure_messaging_eventhubs_EventHubProducerClient_send_java_lang_Iterable_com_azure_messaging_eventhubs_EventData__com_azure_messaging_eventhubs_models_SendOptions_) メソッドを使用することもできます。
+また、[SendOptions](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/main/java/com/azure/messaging/eventhubs/models/SendOptions.java) に **パーティション ID** または **パーティション キー** を指定して、[EventHubProducerClient.send](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/main/java/com/azure/messaging/eventhubs/EventHubProducerClient.java) メソッドを使用することもできます。
 
 ```java
 List<EventData> events = Arrays.asList(new EventData("Melbourne"), new EventData("London"), new EventData("New York"));

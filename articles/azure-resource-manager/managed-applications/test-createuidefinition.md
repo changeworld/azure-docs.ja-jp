@@ -3,18 +3,18 @@ title: UI 定義ファイルをテストする
 description: ポータルを使用してご自身の Azure マネージド アプリケーションを作成するためのユーザー エクスペリエンスをテストする方法について説明します。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 06/04/2021
 ms.author: tomfitz
-ms.openlocfilehash: eeef454e4c5706b39d07261ade1c2f0ffbc942ad
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 55a966c17f3bcd51f354198e36e03071efd4834d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478898"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951476"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Azure Managed Applications 用のポータル インターフェイスをテストする
 
-マネージド アプリケーション用の [createUiDefinition.json ファイルを作成](create-uidefinition-overview.md)したら、ユーザー エクスペリエンスをテストする必要があります。 テストを簡素化するには、ポータルにファイルを読み込むサンドボックス環境を使用します。 マネージド アプリケーションを実際に展開する必要はありません。 サンドボックスでは、最新の全画面表示ポータル エクスペリエンスでユーザー インターフェイスが表示されます。 または、スクリプトを使用してインターフェイスをテストすることもできます。 この記事では、両方の方法を紹介します。 インターフェイスのプレビューには、サンドボックスがお勧めの方法です。
+マネージド アプリケーション用の [createUiDefinition.json ファイルを作成](create-uidefinition-overview.md)したら、ユーザー エクスペリエンスをテストする必要があります。 テストを簡素化するには、ポータルにファイルを読み込むサンドボックス環境を使用します。 マネージド アプリケーションを実際に展開する必要はありません。 サンドボックスでは、最新の全画面表示ポータル エクスペリエンスでユーザー インターフェイスが表示されます。 インターフェイスのプレビューには、サンドボックスがお勧めの方法です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,62 +46,10 @@ ms.locfileid: "107478898"
 
 ![エラーの表示](./media/test-createuidefinition/show-error.png)
 
-## <a name="use-test-script"></a>テスト スクリプトの使用
-
-ポータルでご自身のインターフェイスをテストするには、お使いのローカル コンピューターに次のスクリプトのいずれかをコピーします。
-
-* [PowerShell side-load スクリプト - Az モジュール](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-AzCreateUIDefinition.ps1)
-* [PowerShell side-load スクリプト - Azure モジュール](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
-* [Azure CLI side-load スクリプト](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
-
-ポータルでご自身のインターフェイス ファイルを確認するには、ダウンロードしたスクリプトを実行します。 スクリプトによりストレージ アカウントがご自身の Azure サブスクリプションに作成され、該当する createUiDefinition.json ファイルがそのストレージ アカウントにアップロードされます。 ストレージ アカウントが作成されるのは、最初にスクリプトを実行したとき、またはストレージ アカウントが削除されている場合です。 ストレージ アカウントが Azure サブスクリプション内に存在している場合は、そのアカウントが再利用されます。 スクリプトによって、ポータルが開き、ストレージ アカウントから該当するファイルが読み込まれます。
-
-ストレージ アカウントに対して場所を入力し、該当する createUiDefinition.json ファイルがあるフォルダーを指定します。
-
-PowerShell では、次を使用します。
-
-```powershell
-.\SideLoad-AzCreateUIDefinition.ps1 `
-  -StorageResourceGroupLocation southcentralus `
-  -ArtifactsStagingDirectory .\100-Marketplace-Sample
-```
-
-Azure CLI では、次を使用します。
-
-```bash
-./sideload-createuidef.sh \
-  -l southcentralus \
-  -a .\100-Marketplace-Sample
-```
-
-createUiDefinition.json ファイルがスクリプトと同じフォルダー内にあり、ストレージ アカウントが既に作成されている場合は、これらのパラメーターを指定する必要はありません。
-
-PowerShell では、次を使用します。
-
-```powershell
-.\SideLoad-AzCreateUIDefinition.ps1
-```
-
-Azure CLI では、次を使用します。
-
-```bash
-./sideload-createuidef.sh
-```
-
-スクリプトによって、ブラウザーで新しいタブが開きます。 マネージド アプリケーションを作成するためのインターフェイスでポータルが表示されます。
-
-フィールドの値を指定します。 完了すると、テンプレートに渡される値を、ブラウザーの開発者ツール コンソールで確認できます。
-
-![値の表示](./media/test-createuidefinition/show-json.png)
-
-これらの値をパラメーター ファイルとして使用して、デプロイ テンプレートをテストできます。
-
-概要画面で、ポータルがハングした場合、出力セクションにバグがある可能性があります。 たとえば、存在しないコントロールを参照している可能性があります。 出力のパラメーターが空の場合、パラメーターが、存在しないプロパティを参照している可能性があります。 たとえば、コントロールの参照は有効であっても、プロパティの参照が無効になっています。
-
 ## <a name="test-your-solution-files"></a>ソリューション ファイルのテスト
 
 お使いのポータル インターフェイスが想定どおりに動作していることを確認できたので、次は該当する createUiDefinition ファイルが目的の mainTemplate.json ファイルに正しく統合されていることを検証します。 検証スクリプト テストを実行すると、createUiDefinition ファイルなど、目的のソリューション ファイルのコンテンツをテストできます。 このスクリプトによって JSON 構文が検証され、テキスト フィールドの正規表現式がチェックされます。また、ポータル インターフェイスの出力値が、該当するテンプレートのパラメーターと一致するかどうかが確認されます。 このスクリプトの実行については、[テンプレート用の静的検証チェックの実行](https://aka.ms/arm-ttk)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-ポータル インターフェイスを検証したら、[Marketplace で利用できる Azure マネージド アプリケーション](../../marketplace/create-new-azure-apps-offer.md)の作成について確認します。
+ポータル インターフェイスを検証したら、[Marketplace で利用できる Azure マネージド アプリケーション](../../marketplace/azure-app-offer-setup.md)の作成について確認します。

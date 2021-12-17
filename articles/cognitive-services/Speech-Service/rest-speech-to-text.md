@@ -3,20 +3,20 @@ title: Speech to Text API リファレンス (REST) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech to Text REST API の使用方法について説明します。 この記事では、認可のオプションとクエリのオプション、さらに要求を構築する方法と応答を受信する方法について説明します。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.author: trbye
+ms.date: 07/01/2021
+ms.author: eur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0c041d64b3dbd0c38979f4d8d0fa563a72f6a4b1
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: af20b5893c9cd22edc81234a28c9db780c7eae3b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168197"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509562"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
@@ -153,7 +153,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 オーディオ データを投稿するときにストリーミング (チャンク) アップロードを行うことを強くお勧めします。これにより、待機時間が大幅に短縮されます。 ストリーミングを有効にする方法については、[さまざまなプログラミング言語のサンプル コード](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment)を参照してください。
 
 >[!NOTE]
-> 発音評価機能では現在、すべての[音声テキスト変換のリージョン](regions.md#speech-to-text)で使用できる `en-US` 言語がサポートされています。 `en-GB` および `zh-CN` 言語のサポートはプレビュー段階です。これは `westus`、`eastasia`、`centralindia` のリージョンで利用できます。
+> 発音評価機能では現在、すべての[音声テキスト変換のリージョン](regions.md#speech-to-text)で使用できる `en-US` 言語がサポートされています。 `en-GB` 言語と `zh-CN` 言語のサポートはプレビュー段階にあります。
 
 ### <a name="sample-request"></a>要求のサンプル
 
@@ -286,13 +286,20 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
   "Offset": "1236645672289",
   "Duration": "1236645672289",
   "NBest": [
-      {
-        "Confidence" : "0.87",
-        "Lexical" : "remind me to buy five pencils",
-        "ITN" : "remind me to buy 5 pencils",
-        "MaskedITN" : "remind me to buy 5 pencils",
-        "Display" : "Remind me to buy 5 pencils.",
-      }
+    {
+      "Confidence": 0.9052885,
+      "Display": "What's the weather like?",
+      "ITN": "what's the weather like",
+      "Lexical": "what's the weather like",
+      "MaskedITN": "what's the weather like"
+    },
+    {
+      "Confidence": 0.92459863,
+      "Display": "what is the weather like",
+      "ITN": "what is the weather like",
+      "Lexical": "what is the weather like",
+      "MaskedITN": "what is the weather like"
+    }
   ]
 }
 ```

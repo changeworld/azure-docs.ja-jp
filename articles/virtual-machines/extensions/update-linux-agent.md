@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 08/02/2017
-ms.openlocfilehash: a274435d6e0fc32bdf5b2ab04702ed971d7c5175
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: da94bc47a5d7796e0b13bcdaa0dc5e30db55722c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558986"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445866"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>VM で Azure Linux エージェントを更新する方法
 
@@ -397,7 +397,7 @@ cd WALinuxAgent-2.2.14
 
 ### <a name="2-install-the-azure-linux-agent"></a>2.Azure Linux エージェントをインストールします。
 
-バージョン 2.2.x の場合は次を使用します。パッケージ `setuptools` を先にインストールする必要がある場合は、 [こちら](https://pypi.python.org/pypi/setuptools)をご覧ください。 次に、次のコマンドを実行します。
+バージョン 2.2.x の場合は次を使用します。場合によってはパッケージ `setuptools` を先にインストールする必要があります。[setuptools](https://pypi.python.org/pypi/setuptools) に関するページを参照してください。 次に、次のコマンドを実行します。
 
 ```bash
 sudo python setup.py install

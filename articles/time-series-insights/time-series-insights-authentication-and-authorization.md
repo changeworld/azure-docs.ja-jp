@@ -2,21 +2,21 @@
 title: API の認証と承認 - Azure Time Series Insights | Microsoft Docs
 description: この記事では、Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する方法を説明します。
 ms.service: time-series-insights
-author: deepakpalled
+author: shreyasharmamsft
 ms.author: shresha
-manager: dpalled
-ms.reviewer: v-mamcge, jasonh, kfile
+manager: cnovak
+ms.reviewer: orspodek
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
-ms.custom: seodec18, has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: 225e72bc00ce0a80ff655a76562b5c6b70b7fa79
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 86b663bb245b31ea89c9d523ea4df6e27bbc32b7
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479493"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772044"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -79,7 +79,7 @@ Azure Time Series Insights 環境によって要求が受信されると、最�
 
 - [Azure portal](https://portal.azure.com/) の UI を使用してアクセスを許可するには、記事「[環境へのデータ アクセスの許可](concepts-access-policies.md)」に記載されている手順に従います。 ユーザーを選択するときは、名前または ID でマネージド ID またはアプリの登録を検索できます。
 
-- Azure CLI を使用してアクセスを許可するには、次のコマンドを実行します。 アクセスの管理に使用できるコマンドの完全な一覧については、[こちら](/cli/azure/ext/timeseriesinsights/tsi/access-policy)のドキュメントを参照してください。
+- Azure CLI を使用してアクセスを許可するには、次のコマンドを実行します。 アクセスの管理に使用できるコマンドの完全な一覧については、[こちら](/cli/azure/tsi/access-policy)のドキュメントを参照してください。
 
    ```azurecli-interactive
    az tsi access-policy create --name "ap1" --environment-name "env1" --description "some description" --principal-object-id "aGuid" --roles Reader Contributor --resource-group "rg1"
@@ -150,7 +150,7 @@ MSAL は、次のものを初めとする多くのアプリケーション シ�
 
 | 必要な要求ヘッダー | 説明 |
 | --- | --- |
-| 承認 | Azure Time Series Insights で認証を行うには、有効な OAuth 2.0 ベアラー トークンを [Authorization ヘッダー](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)内で渡す必要があります。 |
+| 承認 | Azure Time Series Insights で認証を行うには、有効な OAuth 2.0 ベアラー トークンを [Authorization ヘッダー](/rest/api/apimanagement/2020-12-01/authorization-server/create-or-update)内で渡す必要があります。 |
 
 > [!TIP]
 > チャートやグラフと共に [JavaScript クライアント SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) を使用して、プログラムによって Azure Time Series Insights API で認証を行う方法については、Azure Time Series Insights の[クライアント SDK のサンプルの視覚化](https://tsiclientsample.azurewebsites.net/)に関する記事を参照してください。
@@ -188,7 +188,7 @@ MSAL は、次のものを初めとする多くのアプリケーション シ�
 
 | 省略可能なクエリパラメーター | 説明 | Version |
 | --- |  --- | --- |
-| `timeout=<timeout>` | HTTP 要求実行のサーバー側のタイムアウト。 [環境イベントの取得](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) API と[環境集計の取得](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) API にのみ適用できます。 タイムアウト値は、`"PT20S"` など、ISO 8601 の期間の形式で指定され、その範囲は `1-30 s` である必要があります。 既定値は `30 s` です。 | Gen1 |
+| `timeout=<timeout>` | HTTP 要求実行のサーバー側のタイムアウト。 [環境イベントの取得](/rest/api/time-series-insights/dataaccessgen2/query/get-availability) API と[環境集計の取得](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) API にのみ適用できます。 タイムアウト値は、`"PT20S"` など、ISO 8601 の期間の形式で指定され、その範囲は `1-30 s` である必要があります。 既定値は `30 s` です。 | Gen1 |
 | `storeType=<storeType>` | ウォーム ストアが有効になっている Gen2 環境では、`WarmStore` または `ColdStore` のいずれかでクエリを実行できます。 クエリ内のこのパラメーターは、クエリを実行する必要があるストアを定義します。 定義されていない場合は、コールドストアでクエリが実行されます。 ウォームストアに対してクエリを実行するには、**storeType** を `WarmStore`に設定する必要があります。 定義されていない場合は、コールドストアに対してクエリが実行されます。 | Gen2 |
 
 ## <a name="next-steps"></a>次の手順

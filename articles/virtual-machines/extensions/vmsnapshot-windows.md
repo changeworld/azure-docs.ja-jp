@@ -11,12 +11,12 @@ ms.collection: windows
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: trinadhk
-ms.openlocfilehash: 834c886c15e50870ec008dbb5ceab38132cc4649
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9749cb2e01950c05daf88bae831500c27033d31d
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561069"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112279759"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Azure Backup 用の VM スナップショットの Windows 拡張機能
 
@@ -75,7 +75,7 @@ VMSnapshot 拡張機能は、Azure portal で、非マネージド VM に対し�
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 ただし、VM スナップショット拡張機能を仮想マシンに追加するための推奨される方法は、仮想マシンでバックアップを有効化することです。 これは、Resource Manager テンプレートを使って実現できます。  仮想マシンでのバックアップを有効にする Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/)にあります。
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 ただし、VM スナップショット拡張機能を仮想マシンに追加するための推奨される方法は、仮想マシンでバックアップを有効化することです。 これは、Resource Manager テンプレートを使って実現できます。  仮想マシンでのバックアップを有効にする Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://azure.microsoft.com/resources/templates/recovery-services-backup-vms/)にあります。
 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
@@ -88,6 +88,16 @@ az backup protection enable-for-vm \
     --vault-name myRecoveryServicesVault \
     --vm myVM \
     --policy-name DefaultPolicy
+```
+
+## <a name="azure-powershell-deployment"></a>Azure PowerShell でのデプロイ
+
+Azure PowerShell を使用すると、仮想マシンでバックアップを有効にすることができます。 バックアップが構成されると、スケジュールされた最初のバックアップ ジョブによって、VM スナップショット拡張機能が VM にインストールされます。
+
+```azurepowershell
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "myResourceGroup" -Name "myRecoveryServicesVault"
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy Name DefaultPolicy -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "myVM" -ResourceGroupName "myVMResourceGroup" -VaultId $targetVault.ID
 ```
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート

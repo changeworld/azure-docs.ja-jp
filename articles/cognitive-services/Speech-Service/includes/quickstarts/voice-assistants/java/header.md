@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: travisw
-ms.openlocfilehash: 017b5161235093a0ae35a14310824a16b43a71f0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 55b02b08bbd575f4daf0d07f3f94fc59416bfbb7
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187650"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520451"
 ---
 GitHub で、すべての <a href="https://aka.ms/speech/github-java">Speech SDK Java サンプル</a>を表示またはダウンロードできます。 

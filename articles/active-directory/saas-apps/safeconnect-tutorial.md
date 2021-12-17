@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 299d75f6d039ae36cdc99f5e77ec0dc8ca456a04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 51d7d7beb74175da38b6fc59c4ce93565dc6f347
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92676764"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124772640"
 ---
 # <a name="tutorial-integrate-safeconnect-with-azure-active-directory"></a>チュートリアル: Azure Active Directory と SafeConnect の統合
 
@@ -129,7 +129,7 @@ SafeConnect で Azure AD SSO を構成してテストするには、次の構成
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [SafeConnect] タイルをクリックすると、SSO を設定した SafeConnect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [SafeConnect] タイルをクリックすると、SSO を設定した SafeConnect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

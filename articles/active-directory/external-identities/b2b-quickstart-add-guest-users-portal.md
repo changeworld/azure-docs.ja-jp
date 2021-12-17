@@ -6,21 +6,18 @@ author: msmimart
 ms.author: mimart
 manager: celestedg
 ms.reviewer: mal
-ms.date: 08/05/2020
+ms.date: 06/18/2020
 ms.topic: quickstart
 ms.service: active-directory
 ms.subservice: B2B
-ms.custom:
-- it-pro
-- seo-update-azuread-jan
-- mode-portal
+ms.custom: it-pro, seo-update-azuread-jan, mode-portal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7326a35d07715eae75f70f2f33763f82946c589c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 550f4bc700c6ade4f608a3108a254f683deebce5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529847"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049541"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>クイック スタート:Azure portal でディレクトリにゲスト ユーザーを追加する
 
@@ -34,7 +31,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このチュートリアルのシナリオを完了するための要件を次に示します。
 
- - グローバル管理者ロールやいずれかの制限付き管理者ディレクトリ ロールなどの、ディレクトリ内にユーザーを作成できるロール。
+ - グローバル管理者ロールや、いずれかの制限付き管理者ディレクトリ ロール (たとえばゲスト招待元、ユーザー管理者) といったユーザーをテナント ディレクトリに作成できるロール。
  - テナント ディレクトリに追加でき、テスト招待メールを受信するために使用できる有効な電子メール アカウント。
 
 ## <a name="add-a-new-guest-user-in-azure-ad"></a>Azure AD に新しいゲスト ユーザーを追加する

@@ -4,12 +4,12 @@ description: この記事では、Apache Ambari で SendGrid を使用してメ�
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 5b344c0c4b1db9159d0223c861e5d371cb225f5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e9c7e9e44cd09460ede9046cadb1800871b5052d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867204"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726729"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Ambari のメール通知を構成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "104867204"
 
 ## <a name="prerequisites"></a>前提条件
 
-* SendGrid 電子メール アカウント。 手順については、「[SendGrid を使用した Azure での電子メールの送信方法](../sendgrid-dotnet-how-to-send-email.md)」を参照してください。
+* SendGrid 電子メール アカウント。 手順については、「[SendGrid を使用した Azure での電子メールの送信方法](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-twilio-sendgrid-accountcreate-a-twilio-sendgrid-account)」を参照してください。
 
 * HDInsight クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](./hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
 

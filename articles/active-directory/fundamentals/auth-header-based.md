@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69e87fc919893a544f5d0b1b615a110f25486e57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99cf28c88b3c94fad5e9abe7eaee1e11bcfacbe6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96168748"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052372"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>Azure Active Directory を使用したヘッダーベースの認証
 
-一般に、レガシ アプリケーションではヘッダーベースの認証が使用されます。 このシナリオでは、ユーザー (またはメッセージの発信者) が中間 ID ソリューションへの認証を行います。 中間ソリューションでは、ユーザーが認証され、必要なハイパーテキスト転送プロトコル (HTTP) ヘッダーが宛先 Web サービスに伝達されます。 Azure Active Directory (AD) では、このパターンがアプリケーション プロキシ サービスを使用してサポートされ、他のネットワーク コントローラー ソリューションに統合されます。 
+一般に、レガシ アプリケーションではヘッダーベースの認証が使用されます。 このシナリオでは、ユーザー (またはメッセージの発信者) が中間 id ソリューションに対して認証を行います。 中間ソリューションでは、ユーザーが認証され、必要なハイパーテキスト転送プロトコル (HTTP) ヘッダーが宛先 Web サービスに伝達されます。 Azure Active Directory (AD) では、このパターンがアプリケーション プロキシ サービスを使用してサポートされ、他のネットワーク コントローラー ソリューションに統合されます。
 
 このソリューションでは、アプリケーション プロキシからアプリケーションへのリモート アクセスが提供され、ユーザーが認証されると、アプリケーションに必要なヘッダーが渡されます。 
 
@@ -48,8 +48,8 @@ ms.locfileid: "96168748"
 
 ## <a name="implement-header-based-authentication-with-azure-ad"></a>Azure AD を使用したヘッダーベースの認証を実装する
 
-* [Azure AD でアプリケーション プロキシを使用したリモート アクセスを行うためにオンプレミス アプリケーションを追加する](../manage-apps/application-proxy-add-on-premises-application.md)  
+* [Azure AD でアプリケーション プロキシを使用したリモート アクセスを行うためにオンプレミス アプリケーションを追加する](../app-proxy/application-proxy-add-on-premises-application.md)  
 
-* [アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証](../manage-apps/application-proxy-configure-single-sign-on-with-headers.md) 
+* [アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証](../app-proxy/application-proxy-configure-single-sign-on-with-headers.md) 
 
 * [アプリ デリバリー コントローラーとネットワークを使用してレガシ アプリをセキュリティで保護する](../manage-apps/secure-hybrid-access.md)

@@ -5,16 +5,16 @@ description: Azure Machine Learning のラベル付けプロジェクトから�
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, data4ml
-ms.date: 05/14/2020
-ms.openlocfilehash: 97922cc8693cddcb13350117b6c17c4220f75337
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.subservice: mldata
+ms.topic: how-to
+ms.custom: data4ml
+ms.date: 10/21/2021
+ms.openlocfilehash: 53abb99aef3a04f3c975cd0fbde4d1097e01269b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227978"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560319"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>ラベル付き Azure Machine Learning データセットを作成して探索する
 
@@ -22,15 +22,15 @@ ms.locfileid: "107227978"
 
 ## <a name="what-are-datasets-with-labels"></a>ラベル付きデータセットとは 
 
-ラベル付きの Azure Machine Learning データセットは、ラベル付きデータセットと呼ばれています。 ラベル付きデータセットというこれらの特定の種類のデータセットは、Azure Machine Learning データ ラベル付けプロジェクトの出力としてのみ作成されます。 データ ラベル付けプロジェクトを作成するには、[こちらの手順](how-to-create-labeling-projects.md)を使用します。 Machine Learning では、画像の分類 (複数ラベルまたは多クラス) のほか、境界ボックスと組み合わせたオブジェクトの識別でデータ ラベル付けプロジェクトをサポートしています。
+ラベル付きの Azure Machine Learning データセットは、ラベル付きデータセットと呼ばれています。 ラベル付きデータセットというこれらの特定の種類のデータセットは、Azure Machine Learning データ ラベル付けプロジェクトの出力としてのみ作成されます。 [画像のラベル付け](how-to-create-image-labeling-projects.md)や[テキストのラベル付け](how-to-create-text-labeling-projects.md)のためのデータ ラベル付けプロジェクトを作成します。 Machine Learning では、画像の分類 (複数ラベルまたは多クラス) のほか、境界ボックスと組み合わせたオブジェクトの識別でデータ ラベル付けプロジェクトをサポートしています。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://aka.ms/AMLFree)を作成してください。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 * [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
     * [azure-contrib-dataset](/python/api/azureml-contrib-dataset/) パッケージをインストールする
 * Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。
-* Azure Machine Learning データのラベル付けプロジェクトへのアクセス。 ラベル付けプロジェクトがない場合は、[こちらの手順](how-to-create-labeling-projects.md)を使用して作成します。
+* Azure Machine Learning データのラベル付けプロジェクトへのアクセス。 ラベル付けプロジェクトがない場合は、最初に[画像のラベル付け](how-to-create-image-labeling-projects.md)や[テキストのラベル付け](how-to-create-text-labeling-projects.md)のためのものを作成します。
 
 ## <a name="export-data-labels"></a>データ ラベルをエクスポートする 
 
@@ -48,6 +48,8 @@ ms.locfileid: "107227978"
 エクスポートした Azure Machine Learning データセットには、Azure Machine Learning Studio の **[データセット]** セクションでアクセスできます。 また、データセットの **[詳細]** ページには、Python からラベルにアクセスするためのサンプル コードも用意されています。
 
 ![エクスポートされたデータセット](./media/how-to-create-labeling-projects/exported-dataset.png)
+
+ラベル付きデータを Azure Machine Learning データセットにエクスポートした後、AutoML を使用して、ラベル付きデータでトレーニングされた Computer Vision モデルを作成できます。 詳細については、「[Python を使用して Computer Vision モデルをトレーニングする AutoML を設定する (プレビュー)](how-to-auto-train-image-models.md)」を参照してください
 
 ## <a name="explore-labeled-datasets"></a>ラベル付きデータセットを探索する
 
@@ -118,5 +120,3 @@ imgplot = plt.imshow(gray_image)
 ```
 
 ## <a name="next-steps"></a>次のステップ
-
-* 完全なトレーニング サンプルについては、[ラベル付きデータセットのノートブック](/azure/machine-learning/how-to-use-labeled-dataset)を参照してください。

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 60f67ea618746c9f2b0cd65a9fbc7fb2b5fbfe86
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: b01049e8b2ceb851680cc73837f5f0609818372b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520005"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336850"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
@@ -55,7 +55,7 @@ Azure の Microsoft マルウェア対策は、アプリケーションやテナ
 * [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../../virtual-machines/extensions/symantec.md)
 * [Azure Marketplace のセキュリティ ソリューション](https://azure.microsoft.com/marketplace/?term=security)
 
-さらに強力な保護のためには、[Windows Defender の Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection) を使用することを検討してください。 Windows Defender の ATP を使用すると、以下が得られます。
+さらに強力な保護のためには、[Windows Defender の Advanced Threat Protection](/mem/configmgr/protect/deploy-use/defender-advanced-threat-protection) を使用することを検討してください。 Windows Defender の ATP を使用すると、以下が得られます。
 
 * [攻撃対象領域の縮小](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [次世代の保護](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
@@ -69,7 +69,7 @@ Azure の Microsoft マルウェア対策は、アプリケーションやテナ
 詳細情報:
 
 * [WDATP の使用を開始する](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)  
-* [WDATP 機能の概要](/windows/security/threat-protection/windows-defender-atp/overview)  
+* [WDATP 機能の概要](/microsoft-365/security/defender-endpoint/whats-new-in-microsoft-defender-atp)  
 
 ## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
 
@@ -134,18 +134,18 @@ Azure 仮想ネットワークは、物理的な Azure ネットワーク ファ
 
 ## <a name="security-policy-management-and-reporting"></a>セキュリティ ポリシーの管理とレポート
 
-Azure Security Center は、脅威の防御、検出、対応を可能にする機能です。 Security Center により、Azure リソースのセキュリティの可視化を向上させ、コントロールすることができます。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 Security Center は、見つけにくい脅威の検出を支援すると共に、さまざまなセキュリティ ソリューションをまとめた広範なエコシステムとして機能します。
+Microsoft Defender for Cloud は、脅威の防御、検出、対応に役立ちます。 Defender for Cloud により、Azure リソースのセキュリティの可視化を向上させ、コントロールすることができます。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 Security Center は、見つけにくい脅威の検出を支援すると共に、さまざまなセキュリティ ソリューションをまとめた広範なエコシステムとして機能します。
 
-Security Center は、仮想マシンのセキュリティの最適化と監視に役立つ次の機能を備えています。
+Defender for Cloud は、仮想マシンのセキュリティの最適化と監視に役立つ次の機能を備えています。
 
 * 仮想マシンの[セキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)の提供。 推奨事項の例としては、システム更新プログラムの適用、ACL エンドポイント、マルウェア対策の有効化、ネットワーク セキュリティ グループの有効化、ディスク暗号化の適用などがあります。
 * 仮想マシンの状態の監視。
 
 詳細情報:
 
-* [Azure Security Center 入門](../../security-center/security-center-introduction.md)
-* [Azure Security Center についてよく寄せられる質問](../../security-center/faq-general.md)
-* [Azure Security Center 計画および運用](../../security-center/security-center-planning-and-operations-guide.md)
+* [Microsoft Defender for Cloud の概要](../../security-center/security-center-introduction.md)
+* [Microsoft Defender for Cloud についてよく寄せられる質問](../../security-center/faq-general.yml)
+* [Microsoft Defender for Cloud の計画と運用](../../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>コンプライアンス
 

@@ -3,19 +3,18 @@ title: Azure PowerShell を使用して Azure Monitor for SAP Solutions をデ�
 description: Azure PowerShell を使用して Azure Monitor for SAP Solutions をデプロイする
 author: sameeksha91
 ms.author: sakhare
-ms.date: 09/08/2020
 ms.topic: quickstart
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
+ms.date: 07/08/2021
 ms.devlang: azurepowershell
-ms.custom:
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: 0af2611bada7a9aad206ce7463ef72ec930c89a2
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell, mode-api
+ms.openlocfilehash: e86f29291e52909eb1a531079a008c6ebefc47f4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538702"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008410"
 ---
 # <a name="quickstart-deploy-azure-monitor-for-sap-solutions-with-azure-powershell"></a>クイック スタート」を参照してください。Azure PowerShell を使用してAzure Monitor for SAP Solutions をデプロイする
 
@@ -28,7 +27,7 @@ ms.locfileid: "107538702"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール](/powershell/azure/install-az-ps)」を参照してください。 Cloud Shell の使用を選択した場合、詳細については「[Azure Cloud Shell の概要](../../../cloud-shell/overview.md)」を参照してください。
+PowerShell をローカルで使用する場合、この記事では Az PowerShell モジュールをインストールする必要があります。 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して、Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール](/powershell/azure/install-az-ps)」を参照してください。 または、Cloud Shell を使用することもできます。 Cloud Shell の詳細については、「[Azure Cloud Shell の概要](../../../cloud-shell/overview.md)」を参照してください。
 
 > [!IMPORTANT]
 > **Az.HanaOnAzure** PowerShell モジュールがプレビュー段階にある間は、`Install-Module` コマンドレットを使用して、これを個別にインストールする必要があります。 この PowerShell モジュールは、一般提供された段階で将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
@@ -45,7 +44,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](../../../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して [Azure リソース グループ](../../../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
 次の例では、指定された名前のリソース グループを、指定された場所に作成します。
 
@@ -100,7 +99,11 @@ $SapProviderParams = @{
 New-AzSapMonitorProviderInstance @SapProviderParams
 ```
 
-プロバイダー インスタンスのプロパティを取得するには、[Get-AzSapMonitorProviderInstance](/powershell/module/az.hanaonazure/get-azsapmonitorproviderinstance) コマンドレットを使用します。 次の例では、指定されたサブスクリプション、リソース グループ、SapMonitor 名、およびリソース名のプロバイダー インスタンスのプロパティを取得します。
+プロバイダー インスタンスのプロパティを取得するには、[Get-AzSapMonitorProviderInstance](/powershell/module/az.hanaonazure/get-azsapmonitorproviderinstance) コマンドレットを使用します。 次の例では、以下のもののプロパティを取得します。 
+- 指定されたサブスクリプションのプロバイダー インスタンス
+- リソース グループ
+- SapMonitor 名
+- リソース名
 
 ```azurepowershell-interactive
 Get-AzSapMonitorProviderInstance -ResourceGroupName myResourceGroup -SapMonitorName ps-spamonitor-t01
@@ -138,4 +141,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Monitor for SAP Solutions](azure-monitor-overview.md) の詳細について詳しく学習する。
+Azure Monitor for SAP Solutions の詳細について学習します。
+
+> [!div class="nextstepaction"]
+> [SAP on Azure の監視](monitor-sap-on-azure.md)

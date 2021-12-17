@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 02/11/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: b1a56c8acf1789690c01f1c16b7c37a237720e39
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a2a63e62598b291388375e0eb520d390dbdc4278
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564876"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562829"
 ---
 # <a name="limitations-of-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale の制限事項
 
@@ -23,26 +23,19 @@ ms.locfileid: "105564876"
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="backup-and-restore"></a>バックアップと復元
+バックアップと復元の機能は、設計とエクスペリエンスの最終調整のため、一時的に削除されています。
 
-- 同じサーバー グループへのポイントインタイム リストア (特定の日付と時刻への復元など) はサポートされていません。 ポイントインタイム リストアを実行する場合は、復元する前にデプロイした別のサーバー グループに復元する必要があります。 新しいサーバー グループに復元した後、元のサーバー グループを削除することができます。
-- (特定の時点までの復元ではなく) バックアップの内容全体を同じサーバー　グループに復元することは、PostgreSQL バージョン 12 でサポートされています。 Postgresql エンジンとタイムラインの制限があるため、PostgreSQL バージョン 11 ではサポートされません。 バージョン 11 の PostgreSQL サーバー グループのバックアップの内容全体を復元するには、別のサーバー グループに復元する必要があります。
-
+## <a name="high-availability"></a>高可用性
+高可用性の構成や、インフラで障害が発生した際のフェールオーバーの確保はまだ利用できません。
 
 ## <a name="databases"></a>データベース
-
-1 つのサーバー グループで複数のデータベースをホストすることはサポートされていません。
-
-
-## <a name="security"></a>セキュリティ
-
-ユーザーとロールの管理はサポートされていません。 当面は、postgres 標準ユーザーを引き続き使用してください。
+複数のワーカー ノードにデプロイをスケールアウトしている場合、1 つのサーバー グループで複数のデータベースをホストすることはできません。
 
 ## <a name="roles-and-responsibilities"></a>ロールと責任
 
-Microsoft とそのお客様の間のロールと責任は、Azure PaaS サービス (サービスとしてのプラットフォーム) と Azure ハイブリッド (Azure Arc 対応 PostgreSQL Hyperscale など) とで異なります。 
+Microsoft とそのお客様の間のロールと責任は、Azure マネージド サービス (サービスとしてのプラットフォーム (PaaS)) と Azure ハイブリッド (Azure Arc 対応 PostgreSQL Hyperscale など) とで異なります。 
 
 ### <a name="frequently-asked-questions"></a>よく寄せられる質問
-
 次の表は、サポートのロールと責任に関してよく寄せられる質問とその回答をまとめたものです。
 
 | Question                      | Azure PaaS (サービスとしてのプラットフォーム) | Azure Arc ハイブリッド サービス |
@@ -59,7 +52,7 @@ __Microsoft が Azure Arc ハイブリッド サービスに SLA を提供しな
 
 ## <a name="next-steps"></a>次のステップ
 
-- **実際に使ってみてください。** Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) をすぐに開始できます。 
+- **実際に使ってみてください。** Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) をすぐに開始できます。 
 
 - **独自のものを作成します。** 独自の Kubernetes クラスターを作成するには、こちらの手順に従います。 
    1. [クライアント ツールをインストールする](install-client-tools.md)

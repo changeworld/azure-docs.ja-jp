@@ -3,16 +3,16 @@ title: Azure Kubernetes Service (AKS) でホストベースの暗号化を有効
 description: Azure Kubernetes Service (AKS) クラスターでホストベースの暗号化を構成する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 03/03/2021
+ms.date: 04/26/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7eb3215aeb1f7c6508092d18fbebd90f852efe63
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3eb2f0023cbd0bbe36b466ecf4a1380aa20a2c5c
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772921"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446309"
 ---
-# <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) でのホストベースの暗号化 (プレビュー)
+# <a name="host-based-encryption-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のホストベースの暗号化
 
 ホストベースの暗号化では、AKS エージェント ノードの VM の VM ホストに保存されたデータは、保存時に暗号化され、暗号化された状態でストレージ サービスに送られます。 つまり、一時ディスクは、プラットフォーム マネージド キーを使用して保存時に暗号化されます。 OS ディスクとデータ ディスクのキャッシュは、ディスクに設定された暗号化のタイプに応じて、プラットフォーム マネージド キーまたはカスタマー マネージド キーのどちらかを使用して保存時に暗号化されます。 既定では、AKS を使用する場合、OS ディスクとデータ ディスクはプラットフォーム マネージド キーを使用して保存時に暗号化されます。つまり、これらのディスクのキャッシュも既定で、プラットフォーム マネージド キーを使用して保存時に暗号化されます。  「[Azure Kubernetes Service (AKS) の Azure ディスクに独自のキー (BYOK) を使用する](azure-disk-customer-managed-keys.md)」の説明に従って、独自のマネージド キーを指定できます。 以後、これらのディスクのキャッシュも、この手順で指定するキーを使用して暗号化されるようになります。
 
@@ -26,32 +26,29 @@ ms.locfileid: "107772921"
 
 ### <a name="prerequisites"></a>前提条件
 
-- `aks-preview` CLI 拡張機能 v0.4.73 以降のバージョンがインストールされていることを確認します。
-- `Microsoft.ContainerService` の `EnableEncryptionAtHostPreview` 機能フラグが有効になっていることを確認します。
+- CLI 拡張機能 v2.23 以降のバージョンがインストールされていることを確認します。
+- `Microsoft.Compute` の `EncryptionAtHost` 機能フラグが有効になっていることを確認します。
 
-Azure Kubernetes Service クラスターに対して EncryptionAtHost プロパティを使用する前に、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、お使いのサブスクリプションに対してこの機能を有効にしてください。
+### <a name="register-encryptionathost--preview-features"></a>`EncryptionAtHost` プレビュー機能の登録
 
-1. 次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
+ホストベースの暗号化を使用する AKS クラスターを作成するには、サブスクリプションで `EncryptionAtHost` 機能フラグを有効にする必要があります。
 
-```azurecli-interactive
-Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"
-```
-2. この機能を試す前に、下のコマンドを使用して登録状態が Registered であることを確認してください (数分かかります)。
+次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`EncryptionAtHost` 機能フラグを登録します。
 
 ```azurecli-interactive
-Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"
+az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
 ```
 
-### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
-
-ホストベースの暗号化に対応した AKS クラスターを作成するには、最新の *aks-preview* CLI 拡張機能が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールするか、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
+状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
 
 ```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
+az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
+```
 
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、`Microsoft.Compute` の各リソース プロバイダーの登録を更新します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
 ```
 
 ### <a name="limitations"></a>制限事項
@@ -60,7 +57,7 @@ az extension update --name aks-preview
 - Azure マネージド ディスクのサーバー側暗号化がサポートされている [Azure リージョン][supported-regions]で、特定の[サポートされている VM サイズ][supported-sizes]のみを使用して有効にできます。
 - Virtual Machine Scale Sets (VMSS) の *VM セット タイプ* に基づいた AKS クラスターとノード プールが必要です。
 
-## <a name="use-host-based-encryption-on-new-clusters-preview"></a>新しいクラスターでホストベースの暗号化を使用する (プレビュー)
+## <a name="use-host-based-encryption-on-new-clusters"></a>新しいクラスターでホストベースの暗号化を使用する
 
 クラスターの作成時に、ホストベースの暗号化を使用するようにクラスター エージェント ノードを構成します。 
 
@@ -70,7 +67,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D
 
 ホストベースの暗号化を使用せずにクラスターを作成する場合は、`--enable-encryption-at-host` パラメーターを省略できます。
 
-## <a name="use-host-based-encryption-on-existing-clusters-preview"></a>既存のクラスターでホストベースの暗号化を使用する (プレビュー)
+## <a name="use-host-based-encryption-on-existing-clusters"></a>既存のクラスターでホストベースの暗号化を使用する
 
 新しいノード プールをクラスターに追加することによって、既存のクラスターでホストベースの暗号化を有効にできます。 `--enable-encryption-at-host` パラメーターを使用して、ホストベースの暗号化を使用するように新しいノード プールを構成します。
 

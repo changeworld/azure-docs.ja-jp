@@ -5,12 +5,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: a02e5fced0a9e338a32d8d8beaa9e4b5fca994e8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c9a535e06278146f89f2c8f6a1844813c2417a1a
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309481"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114706905"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor ブック
 
@@ -19,6 +19,9 @@ ms.locfileid: "107309481"
 ブックの作成に関するビデオ チュートリアルはこちらです。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B4Ap]
+
+> [!NOTE]
+> レガシ ブックとプライベート ブックは削除されました。 以前のブックのコンテンツを取得するには、[ブック取得ツール](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/LegacyAI/DeprecatedWorkbookRetrievalTool.md)を使用します。
 
 ## <a name="data-sources"></a>データ ソース
 
@@ -47,8 +50,21 @@ ms.locfileid: "107309481"
 * [ツリー](../visualize/workbooks-tree-visualizations.md)
 * [グラフ](../visualize/workbooks-graph-visualizations.md)
 * [複合棒グラフ](../visualize/workbooks-composite-bar.md)
+* [蜂の巣](workbooks-honey-comb.md)
+* [Map](workbooks-map-visualizations.md)
 
-:::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="ブックの視覚化の例" border="false" lightbox="./media/workbooks-overview/visualizations.png":::
+:::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="ブックの視覚化の例。" border="false" lightbox="./media/workbooks-overview/visualizations.png":::
+
+### <a name="pinning-visualizations"></a>視覚化のピン留め
+
+ブック内のテキスト、クエリ、メトリックのステップは、ブックがピン モードのとき、またはブック作成者がその要素の設定を有効にしてピン アイコンが表示されるようにしている場合に、それらの項目のピン ボタンを使用してピン留めできます。
+
+ピン モードにアクセスするには、 **[編集]** を選択して編集モードに移行し、上部のバーにある青いピン アイコンを選択します。 画面の右側にある対応する各ブック パーツの *[編集]* ボックスの上に、個々のピン アイコンが表示されます。
+
+:::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="ピン留めエクスペリエンスのスクリーンショット。" border="false":::
+
+> [!NOTE]
+> ブックの状態は、ピン留めの時点で保存されます。ダッシュボード上でピン留めされたブックは、基になるブックが変更された場合でも更新されません。 ピン留めされたブック パーツを更新するには、そのパーツを削除して、再度ピン留めする必要があります。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -56,7 +72,7 @@ ms.locfileid: "107309481"
 
 次に、 **[ブック]** を選択します。
 
-:::image type="content" source="./media/workbooks-overview/workbooks.png" alt-text="赤い枠で強調表示された [ブック] ボタンのスクリーンショット" border="false":::
+:::image type="content" source="./media/workbooks-overview/workbooks.png" alt-text="赤い枠で強調表示された [ブック] ボタンのスクリーンショット。" border="false":::
 
 ### <a name="gallery"></a>[ギャラリー]
 
@@ -97,7 +113,7 @@ ms.locfileid: "107309481"
 
 **[Application Failure Analysis]\(アプリケーションの障害分析\)** を選択して、既定のアプリケーション ブック テンプレートの 1 つを表示します。
 
-:::image type="content" source="./media/workbooks-overview/failure-analysis.png" alt-text="アプリケーションの障害分析テンプレートのスクリーンショット" border="false" lightbox="./media/workbooks-overview/failure-analysis.png":::
+:::image type="content" source="./media/workbooks-overview/failure-analysis.png" alt-text="アプリケーションの障害分析テンプレートのスクリーンショット。" border="false" lightbox="./media/workbooks-overview/failure-analysis.png":::
 
 前述したように、テンプレートを開くと一時的なブックが作成され、操作できるようになります。 既定では、ブックは読み取りモードで開かれます。この場合、元のテンプレートの作成者によって作成された所定の分析エクスペリエンスの情報のみが表示されます。
 
@@ -111,27 +127,15 @@ ms.locfileid: "107309481"
 
 編集モードに切り替えると、ブックの個々の側面に対応する多数の **[編集]** ボックスが右側に表示されます。
 
-:::image type="content" source="./media/workbooks-overview/edit-mode.png" alt-text="[編集] ボタンのスクリーンショット" border="false" lightbox="./media/workbooks-overview/edit-mode.png":::
+:::image type="content" source="./media/workbooks-overview/edit-mode.png" alt-text="[編集] ボタンのスクリーンショット。" border="false" lightbox="./media/workbooks-overview/edit-mode.png":::
 
 要求データのグリッドのすぐ下にある [編集] ボタンを選択すると、ブックのこの部分が、Application Insights リソースのデータに対する Kusto クエリで構成されていることがわかります。
 
-:::image type="content" source="./media/workbooks-overview/kusto.png" alt-text="基になる Kusto クエリのスクリーンショット" border="false" lightbox="./media/workbooks-overview/kusto.png":::
+:::image type="content" source="./media/workbooks-overview/kusto.png" alt-text="基になる Kusto クエリのスクリーンショット。" border="false" lightbox="./media/workbooks-overview/kusto.png":::
 
-
-右側にある他の **[編集]** ボタンをクリックすると、マークダウンベースの [テキスト ボックス](../visualize/workbooks-text-visualizations.md)、[パラメーターの選択](../visualize/workbooks-parameters.md) UI 要素、その他の [グラフまたは視覚化の種類](#visualizations)など、ブックを構成する主要なコンポーネントがいくつか表示されます。
+右側にある他の **[編集]** ボタンを選択すると、マークダウンベースの [テキスト ボックス](../visualize/workbooks-text-visualizations.md)、[パラメーターの選択](../visualize/workbooks-parameters.md) UI 要素、その他の [グラフまたは視覚化の種類](#visualizations)など、ブックを構成する主要なコンポーネントがいくつか表示されます。
 
 作成済みのテンプレートを編集モードで調べ、ニーズに合わせて変更を加えたうえで独自のカスタム ブックを保存することは、Azure Monitor ブックでできることを知るための優れた方法です。
-
-## <a name="pinning-visualizations"></a>視覚化のピン留め
-
-ブック内のテキスト、クエリ、メトリックのステップは、ブックがピン モードのとき、またはブック作成者がその要素の設定を有効にしてピン アイコンが表示されるようにしている場合に、それらの項目のピン ボタンを使用してピン留めできます。
-
-ピン モードにアクセスするには、 **[編集]** をクリックして編集モードに移行し、上部のバーにある青いピン アイコンを選択します。 画面の右側にある対応する各ブック パーツの *[編集]* ボックスの上に、個々のピン アイコンが表示されます。
-
-:::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="ピン留めエクスペリエンスのスクリーンショット。" border="false":::
-
-> [!NOTE]
-> ブックの状態は、ピン留めの時点で保存されます。ダッシュボード上でピン留めされたブックは、基になるブックが変更された場合でも更新されません。 ピン留めされたブック パーツを更新するには、そのパーツを削除して、再度ピン留めする必要があります。
 
 ## <a name="dashboard-time-ranges"></a>ダッシュボードの時間範囲
 
@@ -147,6 +151,7 @@ ms.locfileid: "107309481"
 ## <a name="sharing-workbook-templates"></a>ブック テンプレートの共有
 
 独自のブック テンプレートの作成を開始したら、より広範なコミュニティで共有することができます。 詳細情報を確認したり、既定の Azure Monitor ギャラリー ビューに含まれていない他のテンプレートを探索したりするには、[GitHub リポジトリ](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md)を参照してください。 既存のブックを参照するには、GitHub の[ブック ライブラリ](https://github.com/microsoft/Application-Insights-Workbooks/tree/master/Workbooks)にアクセスします。
+
 
 ## <a name="next-step"></a>次のステップ
 

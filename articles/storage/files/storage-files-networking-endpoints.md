@@ -4,16 +4,16 @@ description: Azure File ネットワーク エンドポイントを構成する�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2020
+ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 42e83facec7817b6588bf69977fea5ab74b6b10d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 6d92350a46319400cb0c5ec8dce4b87ef1da5487
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107759881"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224978"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files ネットワーク エンドポイントの構成
 
@@ -26,6 +26,13 @@ Azure Files では、Azure ファイル共有にアクセスするための次�
 この記事では、Azure ファイル共有に直接アクセスするためのストレージ アカウントのエンドポイントを構成する方法について説明します。 このドキュメントに記載されている詳細のほとんどは、Azure File Sync とストレージ アカウントのパブリック エンドポイントおよびプライベート エンドポイントとの相互運用方法にも適用されますが、Azure File Sync のデプロイに対するネットワークに関する考慮事項の詳細については、[Azure File Sync プロキシとファイアウォールの設定の構成](../file-sync/file-sync-firewall-and-proxy.md)に関する記事を参照してください。
 
 このハウツー ガイドを読む前に、「[Azure Files のネットワークに関する考慮事項](storage-files-networking-overview.md)」を読むことをお勧めします。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
 
 ## <a name="prerequisites"></a>前提条件
 

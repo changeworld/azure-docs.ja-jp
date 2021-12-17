@@ -7,18 +7,18 @@ ms.subservice: core
 ms.topic: overview
 author: peterclu
 ms.author: peterlu
-ms.date: 08/24/2020
+ms.date: 10/21/2021
 adobe-target: true
-ms.openlocfilehash: 48c4b2a73628ab2105e23054d747e28acc105d01
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 09f4a047d3cccb5b34834a9315893c4c1687bc1b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563192"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556238"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning スタジオとは
 
-この記事では、Azure Machine Learning スタジオについて説明します。これは、[Azure Machine Learning](overview-what-is-azure-ml.md) でのデータ サイエンティスト開発者向けの Web ポータルです。 このスタジオでは、包括的なデータ サイエンス プラットフォームのために、コードなしのエクスペリエンスとコードファースト エクスペリエンスを組み合わせています。
+この記事では、Azure Machine Learning スタジオについて説明します。これは、[Azure Machine Learning](overview-what-is-azure-machine-learning.md) でのデータ サイエンティスト開発者向けの Web ポータルです。 このスタジオでは、包括的なデータ サイエンス プラットフォームのために、コードなしのエクスペリエンスとコードファースト エクスペリエンスを組み合わせています。
 
 この記事では、次のことについて説明します。
 >[!div class="checklist"]
@@ -27,7 +27,7 @@ ms.locfileid: "103563192"
 > - [Azure Machine Learning スタジオと ML Studio (classic)](#ml-studio-classic-vs-azure-machine-learning-studio) の違い。
 
 オペレーティング システムと互換性のある最新ブラウザーを使うことをお勧めします。 次のブラウザーがサポートされています。
-  * Microsoft Edge (新しい Microsoft Edge の最新バージョンです。 Microsoft Edge レガシではありません)。
+  * Microsoft Edge (最新バージョン)
   * Safari (最新バージョン、Mac のみ)
   * Chrome (最新バージョン)
   * Firefox (最新バージョン)
@@ -44,7 +44,7 @@ ms.locfileid: "103563192"
 
 + **Azure Machine Learning デザイナー**
 
-  デザイナーを使用すると、コードを書かなくても、機械学習モデルのトレーニングとデプロイを行うことができます。 ML パイプラインを作成するには、データセットとモジュールをドラッグ アンド ドロップします。 [デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)をお試しください。
+  デザイナーを使用すると、コードを書かなくても、機械学習モデルのトレーニングとデプロイを行うことができます。 ML パイプラインを作成するには、データセットとコンポーネントをドラッグ アンド ドロップします。 [デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)をお試しください。
 
     ![Azure Machine Learning デザイナーの例](media/concept-designer/designer-drag-and-drop.gif)
 
@@ -52,11 +52,11 @@ ms.locfileid: "103563192"
 
   使いやすいインターフェイスで、[自動化された ML 実験](tutorial-first-experiment-automated-ml.md)を作成する方法を学ぶことができます。 
 
-  [![Azure Machine Learning Studio のナビゲーション パネル](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)
+  ![Azure Machine Learning スタジオのナビゲーション ウィンドウの AutoML](./media/overview-what-is-azure-ml-studio/azure-machine-learning-automated-ml-ui.jpg)
 
 + **データのラベル付け**
 
-    [Azure Machine Learning のデータのラベル付け](how-to-create-labeling-projects.md)を使用すると、データのラベル付けプロジェクトを効率的にコーディネートすることができます。
+    Azure Machine Learning のデータのラベル付けを使用すると、[画像のラベル付け](how-to-create-image-labeling-projects.md)または[テキストのラベル付け](how-to-create-text-labeling-projects.md)プロジェクトを効率的にコーディネートできます。
 
 ## <a name="manage-assets-and-resources"></a>アセットとリソースを管理する
 
@@ -76,17 +76,15 @@ ms.locfileid: "103563192"
 
 ## <a name="ml-studio-classic-vs-azure-machine-learning-studio"></a>ML Studio (classic) と Azure Machine Learning スタジオ
 
-2015 年にリリースされた **ML Studio (classic)** は、初めてのドラッグ アンド ドロップ機械学習ビルダーでした。 
+[!INCLUDE [ML Studio (classic) retirement](../../includes/machine-learning-studio-classic-deprecation.md)]
 
-**ML Studio (classic)** は、ビジュアル エクスペリエンスだけを提供するスタンドアロンのサービスです。 Studio (classic) は、Azure Machine Learning との相互運用はできません。
+2015 年にリリースされた **ML Studio (クラシック)** は、Azure で初めてのドラッグ アンド ドロップ機械学習ビルダーでした。 **ML Studio (classic)** は、ビジュアル エクスペリエンスだけを提供するスタンドアロンのサービスです。 Studio (classic) は、Azure Machine Learning との相互運用はできません。
 
 **Azure Machine Learning** は、完全なデータ サイエンス プラットフォームを提供する、独立した最新のサービスです。 コード ファースト エクスペリエンスと少量コード エクスペリエンスの両方がサポートされています。
 
 **Azure Machine Learning スタジオ** は Azure Machine Learning "*内の*" Web ポータルであり、プロジェクト作成とアセット管理のための少量のコードおよびコードなしのオプションが用意されています。 
 
-新しく使い始める方には、最新の各種データ サイエンス ツールのために、ML Studio (classic) ではなく、**Azure Machine Learning** を選択することをお勧めします。 既存の ML Studio (classic) ユーザーの場合は、[Azure Machine Learning への移行](classic/migrate-overview.md)を検討してください。
-
-Azure Machine Learning に切り替えると、次のような利点があります。
+新しいユーザーの場合は、ML Studio (クラシック) の代わりに **Azure Machine Learning** を選択してください。 完全な ML プラットフォームとして、Azure Machine Learning では以下が提供されます。
 
 - 大規模なトレーニング用のスケーラブルなコンピューティング クラスター。
 - エンタープライズ セキュリティとガバナンス。
@@ -105,8 +103,10 @@ Azure Machine Learning に切り替えると、次のような利点がありま
 
 [スタジオ](https://ml.azure.com)にアクセスするか、以下のチュートリアルを使用して別の作成オプションを調べます。  
 
-- + [個人の開発環境で使用を開始する](tutorial-1st-experiment-sdk-setup-local.md)
-  + [コンピューティング インスタンスで Jupyter Notebook を使用してモデルのトレーニングとデプロイを行う](tutorial-1st-experiment-sdk-setup.md)
+最初に、[Azure Machine Learning の利用開始作に関するクイックスタート](quickstart-create-resources.md)をお読みください。  その後、これらのリソースを使用して、お好きな方法で最初の実験を作成します。
+
+  + ["Hello world!" Python スクリプトを実行する (パート 1/3)](tutorial-1st-experiment-hello-world.md)
+  + [Jupyter Notebook を使用して画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
   + [自動化された機械学習を使用して、モデルをトレーニングおよびデプロイする](tutorial-first-experiment-automated-ml.md)  
   + [デザイナーを使用して、モデルをトレーニングおよびデプロイする](tutorial-designer-automobile-price-train-score.md)
   + [セキュリティで保護された仮想ネットワークでスタジオを使用する](how-to-enable-studio-virtual-network.md)

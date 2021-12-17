@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:カスタム ポリシー定義の作成
 description: このチュートリアルでは、Azure リソースに対してカスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
-ms.openlocfilehash: c6c4fbe05b6df8a6f8521a0551fe276c893bb6be
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: ee7939461c6d655447ebbd32079ec2e1345a89ad
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092804"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323619"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ご自分の要件では、リソースの "適切な状態" と "不適切な状態" の両方を明確に特定する必要があります。
 
-リソースの想定される状態は定義してありますが、非準拠リソースをどうするかはまだ定義していません。 Azure Policy ではさまざまな[効果](../concepts/effects.md)がサポートされます。 このチュートリアルで定義するビジネス要件では、ビジネス ルールに準拠しないリソースが作成されないようにします。 この目標を達成するには、[Deny](../concepts/effects.md#deny) 効果を使用します。 また、特定の割り当てに対するポリシーを一時停止するオプションも必要です。 そのため、[Disabled](../concepts/effects.md#disabled) 効果を使用し、その効果をポリシー定義の[パラメーター](../concepts/definition-structure.md#parameters)にします。
+リソースの想定される状態は定義してありますが、非準拠リソースをどうするかはまだ定義していません。 Azure Policy では多くの[効果](../concepts/effects.md)がサポートされます。 このチュートリアルで定義するビジネス要件では、ビジネス ルールに準拠しないリソースが作成されないようにします。 この目標を達成するには、[Deny](../concepts/effects.md#deny) 効果を使用します。 また、特定の割り当てに対するポリシーを一時停止するオプションも必要です。 そのため、[Disabled](../concepts/effects.md#disabled) 効果を使用し、その効果をポリシー定義の[パラメーター](../concepts/definition-structure.md#parameters)にします。
 
 ## <a name="determine-resource-properties"></a>リソースのプロパティを判別する
 
@@ -66,7 +66,7 @@ Azure リソースのプロパティを判別する方法はたくさんあり�
 
 ### <a name="arm-templates"></a>ARM テンプレート
 
-管理しようとしているプロパティが含まれる [ARM](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) を確認する方法はいくつかあります。
+管理しようとしているプロパティが含まれる [ARM](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) テンプレートを確認する方法はいくつかあります。
 
 #### <a name="existing-resource-in-the-portal"></a>ポータルにおける既存のリソース
 

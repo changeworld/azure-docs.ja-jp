@@ -2,7 +2,6 @@
 title: 透過的なゲートウェイ デバイスを作成する - Azure IoT Edge | Microsoft Docs
 description: ダウンストリーム デバイスからの情報を処理できる透過的なゲートウェイとして、Azure IoT Edge デバイスを使用します
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/01/2021
 ms.topic: conceptual
@@ -11,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f7f05fb84ff6cbe320e8f479912bdcdefdc41021
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76d04b8d55b25c3fd5c96f34ad38088472c504b5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201651"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740652"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 

@@ -5,23 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 06/30/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a5e8b933f617d767f017f73fb6778a45b5a1ce3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1bb9c2ad21469ad6b658795f29361760d4bcf13
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725591"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737352"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory の認証方法 - 電話オプション
 
 テキスト メッセージを使用した直接認証では、[ユーザーが SMS ベースの認証を構成して有効にする](howto-authentication-sms-signin.md)ことができます。 SMS ベースのサインインは、第一線で働くユーザーに最適です。 SMS ベースのサインインでは、ユーザーはアプリケーションやサービスにアクセスするためのユーザー名とパスワードを知る必要がありません。 代わりに、登録済みの携帯電話番号を入力し、確認コードを含むテキスト メッセージを受信して、サインイン インターフェイスに入力します。
 
-また、ユーザーは、Azure AD Multi-Factor Authentication またはセルフサービス パスワード リセット (SSPR) で使用される認証のセカンダリ形式として、携帯電話または会社の電話を使用して自身を確認することもできます。
+また、ユーザーは、Azure AD Multi-Factor Authentication またはセルフサービス パスワード リセット (SSPR) で使用される認証のセカンダリ形式として、携帯電話または会社の電話を使用して自身を確認することもできます。 
+
+> [!NOTE]
+> 試用版サブスクリプションを使用した Azure AD テナントでは、音声通話の確認は使用できません。  たとえば、試用版 EMS ライセンスにサインアップした場合、音声通話の確認機能が提供されません。
 
 正常に動作させるには、電話番号の形式が " *+<国コード> <電話番号>* " (例: *+1 4251234567*) になっている必要があります。
 
@@ -50,14 +53,14 @@ SSPR または Azure AD Multi-Factor Authentication で音声通話の確認を�
 
 ## <a name="office-phone-verification"></a>会社電話の確認
 
-SSPR または Azure AD Multi-Factor Authentication で音声通話の確認を使用すると、ユーザーが登録した電話番号に自動音声通話が発信されます。 サインイン プロセスを完了するには、ユーザーはテンキーで # を入力するように求められます。
+SSPR または Azure AD Multi-Factor Authentication で音声通話の確認を使用すると、ユーザーが登録した電話番号に自動音声通話が発信されます。 サインイン プロセスを完了するには、ユーザーはテンキーで # を入力するように求められます。 
 
 ## <a name="troubleshooting-phone-options"></a>電話オプションのトラブルシューティング
 
 Azure AD の電話認証で問題が発生した場合は、次のトラブルシューティングの手順を確認してください。
 
 * サインイン中の [You've hit our limit on verification calls]\(確認呼び出しの上限に達しました\) エラー メッセージまたは [You've hit our limit on text verification codes]\(テキスト確認コードの上限に達しました\) エラー メッセージ
-   * Microsoft は、同じユーザーが短時間に認証の試行を繰り返し行うことを制限する場合があります。 この制限は、Microsoft Authenticator または確認コードには適用されません。 これらの制限に達した場合は、Authenticator アプリまたは確認コードを使用するか、数分後にもう一度サインインを試行することができます。
+   * Microsoft では、同じユーザーが短時間に認証の試行を繰り返すことを制限する場合があります。 この制限は、Microsoft Authenticator または確認コードには適用されません。 これらの制限に達した場合は、Authenticator アプリまたは確認コードを使用するか、数分後にもう一度サインインを試行することができます。
 * サインイン中に「申し訳ありませんが、アカウントの確認に問題が生じています」というエラー メッセージ
    * Microsoft では、音声または SMS 認証の失敗した試行回数が多いことが原因で、同じユーザー、電話番号、または組織によって実行される音声または SMS 認証の試行を制限したりブロックしたりすることがあります。 このエラーが発生した場合は、Authenticator アプリや確認コードなどの別の方法を試したり、管理者に連絡してサポートを受けたりすることができます。
 * 1 つのデバイスで発信者 ID がブロックされる。

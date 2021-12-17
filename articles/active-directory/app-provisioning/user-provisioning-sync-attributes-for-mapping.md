@@ -3,21 +3,22 @@ title: マッピングのために Azure Active Directory に属性を同期す�
 description: Azure Active Directory と SaaS アプリを使用してユーザー プロビジョニングを構成する際は、ディレクトリの拡張機能を使用して、既定では同期されないソース属性を追加します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/31/2021
+ms.date: 08/24/2021
 ms.author: kenwith
-ms.openlocfilehash: f7a2429161cebe867d844b4ca7aa08ec3613edcd
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.reviewer: arvinh
+ms.openlocfilehash: 207936bd4b8fe29cfa15cd284b8ebba1e6a12164
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388212"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057535"
 ---
-# <a name="syncing-extension-attributes-for-app-provisioning"></a>アプリ プロビジョニングの拡張属性の同期
+# <a name="syncing-extension-attributes-for-azure-active-directory-application-provisioning"></a>Azure Active Directory アプリケーション プロビジョニングの拡張属性を同期する
 
 Azure AD から [SaaS アプリ](../saas-apps/tutorial-list.md)にユーザー アカウントをプロビジョニングするときに、Azure Active Directory (Azure AD) には、ユーザー プロファイルの作成に必要なすべてのデータ (属性) が含まれていなければなりません。 ユーザー プロビジョニングのために属性マッピングをカスタマイズしているときに、マップ対象の属性が **[ソース属性]** の一覧に表示されないことがあります。 この記事では、欠落している属性を追加する方法について説明します。
 
@@ -122,7 +123,7 @@ Get-AzureADUser -ObjectId 0ccf8df6-62f1-4175-9e55-73da9e742690 | Select -ExpandP
    ![Azure Active Directory Connect ウィザードの [ディレクトリ拡張機能] 選択ページ](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
 
 > [!NOTE]
-> オンプレミスの AD から参照属性 (**managedby** や **DN/DistinguishedName** など) をプロビジョニングする機能は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory)に関するページで、この機能の要求をお送りください。 
+> オンプレミスの AD から参照属性 (**managedby** や **DN/DistinguishedName** など) をプロビジョニングする機能は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)に関するページで、この機能の要求をお送りください。 
 
 
 ## <a name="next-steps"></a>次のステップ

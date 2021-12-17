@@ -1,29 +1,27 @@
 ---
-title: Azure Active Directory B2C におけるサブ体験 | Microsoft Docs
+title: Azure Active Directory B2C におけるサブ体験
 description: Azure Active Directory B2C にカスタム ポリシーのサブ体験要素を指定します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/11/2020
-ms.author: mimart
+ms.date: 10/15/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 8f037d4283b4b05081ef47e7223495f6e19d460e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cb3ebfbc3125e26f1b922ee43360c7527c7fb35
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97386869"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063965"
 ---
 # <a name="sub-journeys"></a>サブ体験
 
 サブ体験を使用して、ユーザー体験内のオーケストレーション ステップのフローを整理して簡略化できます。 [ユーザー体験](userjourneys.md)では、証明書利用者アプリケーションがユーザーの任意の要求を取得できるようにする、ポリシーの明示的なパスを指定します。 ユーザーはこれらのパスを通じて証明書利用者に提示される要求を検索します。 つまり、ユーザー体験では、Azure AD B2C Identity Experience Framework が要求をプロセスする際に、エンド ユーザーがたどるビジネス ロジックを定義します。 ユーザー体験は、トランザクションを成功させるために従う必要のあるオーケストレーション シーケンスとして表されます。 オーケストレーション ステップの [ClaimsExchange](userjourneys.md#claimsexchanges) 要素は、実行される単一の[技術プロファイル](technicalprofiles.md)に関連付けられます。
 
 サブ体験は、オーケストレーション ステップをグループ化したものであり、ユーザー体験内の任意の時点で呼び出すことができます。 サブ体験を使用して、再利用可能なステップ シーケンスを作成したり、ビジネス ロジックをもっと適切に表現する分岐を実装したりできます。
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="user-journey-branching"></a>ユーザー体験の分岐
 

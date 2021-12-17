@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 7245b0c0fb1e96959ef5dca4992cf52a38accb58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a73269a411ff250afd6e9779deb36d00a596ac3d
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920292"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113223664"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions のバインド式のパターン
 
@@ -261,7 +261,9 @@ module.exports = function (context, info) {
 
 ### <a name="dot-notation"></a>ドット表記
 
-JSON ペイロード内のいくつかのプロパティがプロパティを持つオブジェクトである場合は、ドット表記を使用してこれらを直接参照できます。 たとえば、次のような JSON があるとします。
+JSON ペイロード内のいくつかのプロパティがプロパティを持つオブジェクトである場合は、ドット表記を使用してこれらを直接参照できます。 [Cosmos DB](./functions-bindings-cosmosdb-v2.md) と [Table Storage](./functions-bindings-storage-table-output.md) バインディングでは、ドット表記が機能しません。 
+
+たとえば、次のような JSON があるとします。
 
 ```json
 {

@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: b2856c51ccc31b57ea567c5d0940cd260797f770
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb80d5e6bc6d12dfe51420b25560f83376125a13
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560754"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693839"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Windows 仮想マシンを作成する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure に Windows 仮想マシン (VM) をデプロイする方法を示します。
 
@@ -24,7 +26,7 @@ ms.locfileid: "102560754"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
+[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,9 +34,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/vm-simple-windows/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-vm-simple-windows/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json":::
 
 
 このテンプレートでは、いくつかのリソースが定義されています。
@@ -53,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートを使用すると、キー コンテナーとシークレットが作成されます。
 
-    [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
+    [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json)
 
 1. 次の値を選択または入力します。 既定値がある場合には、既定値を使用します。
 
@@ -61,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - **[リソース グループ]** : ドロップダウンから既存のリソース グループを選択するか、または **[新規作成]** を選択してリソース グループの一意の名前を入力してから、 **[OK]** をクリックします。
     - **場所**: 場所を選択します。  たとえば **[米国中部]** です。
     - **管理者ユーザー名**: *azureuser* のように、ユーザー名を指定します。
-    - **管理者パスワード**: 管理者アカウントに使用するパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
+    - **管理者パスワード**: 管理者アカウントに使用するパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.yml#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。
     - **DNS ラベル プレフィックス**: DNS ラベルの一部として使用する一意の識別子を入力します。
     - **Windows OS バージョン**: VM 上で実行する Windows のバージョンを選択します。
     - **VM サイズ**: VM に使用する [サイズ](../sizes.md)を選択します。
@@ -78,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不要になったリソース グループは削除してください。リソース グループを削除すると、そのリソース グループ内の VM とすべてのリソースが削除されます。 
+不要になったリソース グループは削除してください。リソース グループを削除すると、そのリソース グループ内の VM とすべてのリソースが削除されます。
 
 1. **[リソース グループ]** を選択します。
 1. リソース グループのページで、 **[削除]** を選択します。

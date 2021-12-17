@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: b74ebf332790fd9a08840c8c76d99e2b014dac43
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 429702adaccf5731292192f1b3cb6a7d42859a00
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103081"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867581"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS Protection の参照アーキテクチャ
 
@@ -66,13 +66,13 @@ Azure でパブリック IP アドレスをホストし、バックエンド配�
 
 ![オンプレミスのリソースの保護](./media/reference-architectures/ddos-on-prem.png)
 
-インターネットからのトラフィックを受信する Web アプリがある場合は、Application Gateway の背後で Web アプリをホストし、SQL インジェクションや Slowloris などのレイヤー 7 の Web 攻撃に対して WAF を使用して保護することができます。 アプリケーションのバックエンド配信元は、VPN 経由で接続されているオンプレミス環境に配置されます。 
+インターネットからのトラフィックを受信する Web アプリがある場合は、Application Gateway の背後で Web アプリをホストし、SQL インジェクションなどのレイヤー 7 の Web 攻撃に対して WAF を使用して保護することができます。 アプリケーションのバックエンド配信元は、VPN 経由で接続されているオンプレミス環境に配置されます。 
 
 オンプレミス環境のバックエンド リソースは、パブリック インターネットに公開されません。 AppGW/WAF パブリック IP のみがインターネットに公開され、アプリケーションの DNS 名がそのパブリック IP アドレスにマップされます。 
 
 AppGW/WAF を含む仮想ネットワークで DDoS Protection Standard が有効になっている場合、DDoS Protection Standard は、不適切なトラフィックを軽減し、クリーンと考えられるトラフィックをアプリケーションにルーティングすることで、アプリケーションを保護します。 
 
-この[記事](https://docs.microsoft.com/azure/azure-vmware/protect-azure-vmware-solution-with-application-gateway)では、Application Gateway と共に DDoS Protection Standard を使用して、Azure VMware Solution で実行されている Web アプリを保護する方法について説明します。
+この[記事](../azure-vmware/protect-azure-vmware-solution-with-application-gateway.md)では、Application Gateway と共に DDoS Protection Standard を使用して、Azure VMware Solution で実行されている Web アプリを保護する方法について説明します。
 
 ## <a name="mitigation-for-non-web-paas-services"></a>Web PaaS 以外のサービスに対するリスク軽減
 
@@ -90,7 +90,11 @@ AppGW/WAF を含む仮想ネットワークで DDoS Protection Standard が有�
 
 
 > [!NOTE]
+<<<<<<< HEAD
 > パブリック IP を使用する仮想ネットワーク内での PowerApps 用 AzureApp Service Environment または API 管理は、どちらもネイティブにはサポートされていません。
+=======
+> パブリック IP を使用する仮想ネットワーク内での Azure App Service Environment for Power Apps 環境または API 管理は、どちらもネイティブにはサポートされていません。
+>>>>>>> repo_sync_working_branch
 
 ## <a name="next-steps"></a>次のステップ
 

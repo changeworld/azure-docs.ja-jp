@@ -3,12 +3,12 @@ title: Microsoft.Resources 内のリソースのリージョンを移動する
 description: Microsoft.Resources 名前空間にあるリソースを新しいリージョンに移動する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 098e5c36969da12966d793b6e1eddd4f79701ead
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 898e5efef22f76dc07395fcfcad413ef4582dafd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88950811"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725874"
 ---
 # <a name="move-microsoftresources-resources-to-new-region"></a>Microsoft.Resources のリソースを新しいリージョンに移動する
 
@@ -93,4 +93,4 @@ ms.locfileid: "88950811"
 ## <a name="next-steps"></a>次のステップ
 
 * 新しいリソース グループまたはサブスクリプションへのリソースの移動については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](move-resource-group-and-subscription.md)」を参照してください。
-* 新しいリージョンへのリソースの移動については、「[リージョン間の Azure リソースの移動](move-region.md)」を参照してください。
+* 新しいリージョンへのリソースの移動については、[リージョン間でのリソースの移動](move-resources-overview.md#move-resources-across-regions)に関する記事を参照してください。

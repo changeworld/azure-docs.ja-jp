@@ -1,14 +1,14 @@
 ---
 title: コードとしての Azure Policy ワークフローを設計する
 description: Azure Policy 定義をコードとしてデプロイし、リソースを自動的に検証するようにワークフローを設計する方法について説明します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 233a5d4ca6583bc6a2cd9e8366e54f3ed1e2dad3
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: db48579d94263f3b8806c1c78b950b5a9ae19c27
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094899"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324821"
 ---
 # <a name="design-azure-policy-as-code-workflows"></a>コードとしての Azure Policy ワークフローを設計する
 
@@ -44,7 +44,7 @@ ms.locfileid: "106094899"
 コードとしての Azure Policy の推奨される一般的なワークフローは、次の図のようになります。
 
 :::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="作成からテスト、デプロイまでの、コードとしての Azure Policy のワークフロー ボックスを示している図。" border="false":::
-   図は、コードとしての Azure Policy ワークフロー ボックスを示しています。 作成には、ポリシーとイニシアチブ定義の作成が含まれます。 テストには、強制モードが無効な割り当てが含まれます。 コンプライアンス対応状態のゲートウェイ チェックの後に、M S I アクセス許可の割り当ての付与およびリソースの修復が行われます。  デプロイには、強制モードが有効な割り当ての更新が含まれます。
+   図は、コードとしての Azure Policy ワークフロー ボックスを示しています。 作成には、ポリシーとイニシアチブ定義の作成が含まれます。 テストには、強制モードが無効な割り当てが含まれます。 コンプライアンス対応状態のゲートウェイ チェックの後に、M S I アクセス許可の割り当ての付与およびリソースの修復が行われます。 デプロイには、強制モードが有効な割り当ての更新が含まれます。
 :::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>ポリシー定義を作成および更新する

@@ -5,18 +5,21 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 01/25/2019
+ms.date: 07/28/2019
 ms.author: duau
-ms.openlocfilehash: 907c03bd15463368def316e72f55ce214cb3e617
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 135c949afaeaa50a743869138a05acd2321332ec
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571052"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739311"
 ---
-# <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute に使用する Network Performance Monitor の構成
+# <a name="configure-network-performance-monitor-for-expressroute-deprecated"></a>ExpressRoute に使用する Network Performance Monitor の構成 (非推奨)
 
 この記事は、ExpressRoute を監視するよう Network Performance Monitor の拡張機能を構成するのに役立ちます。 Network Performance Monitor (NPM) は、Azure クラウド デプロイとオンプレミス拠点 (支社など) との間の接続性を監視するクラウドベースのネットワーク監視ソリューションです。 NPM は、Azure Monitor ログの一部です。 NPM は、ExpressRoute 用の拡張機能を提供して、プライベート ピアリングまたは Microsoft ピアリングを使用するように構成された ExpressRoute 回線上のネットワーク パフォーマンスを監視できるようにします。 ExpressRoute に対して NPM を構成することにより、特定して排除すべきネットワークの問題を検出することができます。 このサービスは、Azure Government Cloud でも使用可能です。
+
+> [!IMPORTANT]
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 接続モニター (クラシック) に新しい接続モニターを追加することもできなくなります。 2021 年 7 月 1 日より前に作成されたテストおよび接続モニターは引き続き使用することができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor からテストを移行する](../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)か、[接続モニター (クラシック) から Azure Network Watcher の新しい接続モニターに移行](../network-watcher/migrate-to-connection-monitor-from-connection-monitor-classic.md)します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -83,7 +86,7 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 
 1. リソースの **[ネットワーク パフォーマンス モニターの構成]** ページの **[共通設定]** タブに移動します。 **[Log Analytics エージェントをインストールする]** セクションでサーバーのプロセッサに対応するエージェントをクリックし、セットアップ ファイルをダウンロードします。
 2. 次に、 **[ワークスペース ID]** と **[主キー]** をメモ帳にコピーします。
-3. **[TCP プロトコルを使用して Log Analytics エージェントを監視用に構成します]** セクションで、Powershell スクリプトをダウンロードします。 この PowerShell スクリプトは、TCP トランザクションに必要なファイアウォール ポートを開くのに役立ちます。
+3. **[Configure Log Analytics Agents for monitoring using TCP protocol]\(TCP プロトコルを使用して Log Analytics エージェントを監視用に構成します\)** セクションで、PowerShell スクリプトをダウンロードします。 この PowerShell スクリプトは、TCP トランザクションに必要なファイアウォール ポートを開くのに役立ちます。
 
    ![PowerShell スクリプト](./media/how-to-npm/7.png)
 

@@ -9,38 +9,37 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 06/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 762bd1c536df0ca307149ba7c201f08f5bdfded5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82e0e8543f51d6bb8a6965e19712a079502564e2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735618"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132303679"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>チュートリアル:Azure Active Directory と xMatters OnDemand の統合
 
-このチュートリアルでは、xMatters OnDemand と Azure Active Directory (Azure AD) を統合する方法について説明します。
-xMatters OnDemand と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、xMatters OnDemand と Azure Active Directory (Azure AD) を統合する方法について説明します。 xMatters OnDemand を Azure AD と統合すると、次のことができます。
 
-* xMatters OnDemand にアクセスするユーザーを Azure AD で管理できます。
-* ユーザーが自分の Azure AD アカウントを使用して xMattersxMatters OnDemand に自動的にサインイン (シングル サインオン) できるようにすることができます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* xMatters OnDemand にアクセスできるユーザーを Azure AD で管理する。
+* ユーザーが自分の Azure AD アカウントを使用して xMatters OnDemand に自動的にサインインできるようにする。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
 xMatters OnDemand と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* xMatters OnDemand でのシングル サインオンが有効なサブスクリプション
+* xMatters OnDemand でのシングル サインオンが有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* xMatters OnDemand では、**IDP** によって開始される SSO がサポートされます
+* xMatters OnDemand では、**IDP** Initiated SSO がサポートされます。
 
-## <a name="adding-xmatters-ondemand-from-the-gallery"></a>ギャラリーからの xMatters OnDemand の追加
+## <a name="add-xmatters-ondemand-from-the-gallery"></a>ギャラリーからの xMatters OnDemand の追加
 
 Azure AD への xMatters OnDemand の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に xMatters OnDemand を追加する必要があります。
 
@@ -50,7 +49,6 @@ Azure AD への xMatters OnDemand の統合を構成するには、ギャラリ�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**xMatters OnDemand**」と入力します。
 1. 結果パネルで **[xMatters OnDemand]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-xmatters-ondemand"></a>xMatters OnDemand の Azure AD SSO の構成とテスト
 
@@ -65,36 +63,36 @@ xMatters OnDemand に対して Azure AD SSO を構成してテストするには
     1. **[xMatters OnDemand のテスト ユーザーの作成](#create-xmatters-ondemand-test-user)** - xMatters OnDemand で Britta Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. Azure portal の **xMatters OnDemand** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
     a. **[識別子]** テキスト ボックスに、次のいずれかのパターンを使用して URL を入力します。
 
     | 識別子 |
     | ---------- |
-    | `https://<companyname>.au1.xmatters.com.au/` |
-    | `https://<companyname>.cs1.xmatters.com/` |
-    | `https://<companyname>.xmatters.com/` |
+    | `https://<COMPANY_NAME>.au1.xmatters.com.au/` |
+    | `https://<COMPANY_NAME>.cs1.xmatters.com/` |
+    | `https://<COMPANY_NAME>.xmatters.com/` |
     | `https://www.xmatters.com` |
-    | `https://<companyname>.xmatters.com.au/` |
+    | `https://<COMPANY_NAME>.xmatters.com.au/` |
 
     b. **[応答 URL]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
 
     | [応答 URL] |
     | ---------- |
-    |  `https://<companyname>.au1.xmatters.com.au` |
-    | `https://<companyname>.xmatters.com/sp/<instancename>` |
-    | `https://<companyname>.cs1.xmatters.com/sp/<instancename>` |
-    | `https://<companyname>.au1.xmatters.com.au/<instancename>` |
+    | `https://<COMPANY_NAME>.au1.xmatters.com.au` |
+    | `https://<COMPANY_NAME>.xmatters.com/sp/<INSTANCE_NAME>` |
+    | `https://<COMPANY_NAME>.cs1.xmatters.com/sp/<INSTANCE_NAME>` |
+    | `https://<COMPANY_NAME>.au1.xmatters.com.au/<INSTANCE_NAME>` |
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[xMatters OnDemand クライアント サポート チーム](https://www.xmatters.com/company/contact-us/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -134,18 +132,17 @@ xMatters OnDemand に対して Azure AD SSO を構成してテストするには
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-
 ## <a name="configure-xmatters-ondemand-sso"></a>xMatters OnDemand の SSO の構成
 
-1. 別の Web ブラウザーのウィンドウで、XMatters OnDemand の企業サイトに管理者としてサインインします。
+1. 別の Web ブラウザー ウィンドウで、xMatters OnDemand の企業サイトに管理者としてサインインします。
 
 2. **[Admin]\(管理\)** をクリックし、 **[Company Details]\(会社の詳細\)** をクリックします。
 
-    ![[Admin]\(管理\) ページ](./media/xmatters-ondemand-tutorial/admin.png "管理者")
+    ![[Admin]\(管理\) ページ](./media/xmatters-ondemand-tutorial/admin.png "[Admin]\(管理\) ページ")
 
 3. **[SAML 構成]** ページで、次の手順を実行します。
 
-    ![[SAML Configuration]\(SAML 構成\) セクション](./media/xmatters-ondemand-tutorial/saml-configuration.png "[SAML 構成]")
+    ![[SAML Configuration]\(SAML 構成\) セクション](./media/xmatters-ondemand-tutorial/saml-configuration.png "[SAML Configuration]\(SAML 構成\) セクション")
 
     a. **[Enable SAML]** を選択します。
 
@@ -163,7 +160,7 @@ xMatters OnDemand に対して Azure AD SSO を構成してテストするには
 
 ### <a name="create-xmatters-ondemand-test-user"></a>xMatters OnDemand のテスト ユーザーの作成
 
-1. **XMatters OnDemand** テナントにサインインします。
+1. **xMatters OnDemand** テナントにサインインします。
 
 2. **[Users]\(ユーザー\) アイコン** >  **[Users]\(ユーザー\)** に移動し、 **[Add Users]\(ユーザーの追加\)** をクリックします。
 
@@ -173,16 +170,14 @@ xMatters OnDemand に対して Azure AD SSO を構成してテストするには
 
     ![[ユーザーの追加]](./media/xmatters-ondemand-tutorial/add-user-2.png "ユーザーを追加する")
 
-
-
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した xMatters OnDemand に自動的にサインインされます
+* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した xMatters OnDemand に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [xMatters OnDemand] タイルをクリックすると、SSO を設定した xMatters OnDemand に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [xMatters OnDemand] タイルをクリックすると、SSO を設定した xMatters OnDemand に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-xMatters OnDemand を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+xMatters OnDemand を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

@@ -1,22 +1,22 @@
 ---
 title: Azure メディア リソースを Azure Germany からグローバル Azure に移行する
 description: この記事では、Azure メディア リソースの Azure Germany からグローバル Azure への移行に関する情報を提供します。
+ms.topic: article
+ms.date: 10/16/2020
 author: gitralf
-services: germany
-cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 08/15/2018
-ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: c8a34137c6d1d0d238d27c61d11012bf589b6ea0
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: ac7cd5ca55525c11d2b985d931be24d1780899fb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657040"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "117028988"
 ---
 # <a name="migrate-media-resources-to-global-azure"></a>メディア リソースをグローバル Azure に移行する
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 この記事には、Azure メディア リソースの Azure Germany からグローバル Azure への移行に役立つ可能性のある情報が含まれています。
 
@@ -24,9 +24,9 @@ ms.locfileid: "67657040"
 
 Azure Media Services では、独自のストレージ アカウントとすべてのメディア資産を構成します。 まず、グローバル Azure で新しい Media Services アカウントを作成します。 次に、対応するメディア成果物を再読み込みし、新しい Media Services アカウントでエンコードとストリーミングを実行します。
 
-詳細:
+詳細情報:
 
-- [Media Services のチュートリアル](https://docs.microsoft.com/azure/media-services/previous/)を完了することによって知識を更新します。
+- [Media Services のチュートリアル](../media-services/previous/index.yml)を完了することによって知識を更新します。
 - [Media Services の概要](../media-services/previous/media-services-overview.md)を確認します。
 - [Media Services アカウントを作成する](../media-services/previous/media-services-portal-create-account.md)方法を確認します。
 
@@ -36,7 +36,7 @@ Azure Media Player では、複数のエンドポイントを選択できます�
 
 詳しくは、[Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
@@ -49,5 +49,5 @@ Azure Media Player では、複数のエンドポイントを選択できます�
 - [IoT](./germany-migration-iot.md)
 - [統合](./germany-migration-integration.md)
 - [ID](./germany-migration-identity.md)
-- [セキュリティ](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [管理ツール](./germany-migration-management-tools.md)

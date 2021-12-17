@@ -2,20 +2,21 @@
 title: クイック スタート - Azure Communication Services でリソースを作成して管理する
 titleSuffix: An Azure Communication Services quickstart
 description: このクイック スタートでは、最初の Azure Communication Services リソースを作成して管理する方法について説明します。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
-ms.date: 03/10/2021
-ms.topic: overview
+ms.author: rifox
+ms.date: 06/30/2021
+ms.topic: quickstart
 ms.service: azure-communication-services
+ms.subservice: arm
 zone_pivot_groups: acs-plat-azp-azcli-net-ps
-ms.openlocfilehash: aabb8bdf4105702aa623c45bc291770b05b8279e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e3be24cda914edbf4f3ae3474ff43eef438fce20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726773"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635643"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>クイック スタート:Communication Services のリソースを作成して管理する
 
@@ -23,7 +24,7 @@ ms.locfileid: "105726773"
 
 
 > [!WARNING]
-> Communication Services は複数の地域で利用できますが、電話番号を取得するには、リソースのデータ一が 'US' に設定されている必要があります。 また、パブリック プレビュー期間中は、通信リソースを別のサブスクリプションに転送できないことにも注意してください。
+> Communication Services は複数の地域で利用できますが、電話番号を取得するには、リソースのデータ一が 'US' に設定されている必要があります。 Azure Communication Services のリソースと同時にリソース グループを作成できないことにも注意してください。 リソースを作成するときは、既に作成されているリソース グループを使用する必要があります。
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]
@@ -52,7 +53,7 @@ Communication Services リソースに移動した後、ナビゲーション �
 
 特定のリソースのキーやリソース グループなど、重要な情報には、Azure CLI を使用してアクセスすることもできます。 
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli) をインストールし、次のコマンドを使用してログインします。 Azure アカウントを使用して接続するには、資格情報を入力する必要があります。
+[Azure CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli) をインストールし、次のコマンドを使用してログインします。 Azure アカウントを使用して接続するには、資格情報を入力する必要があります。
 ```azurecli
 az login
 ```
@@ -118,9 +119,12 @@ export COMMUNICATION_SERVICES_CONNECTION_STRING="<yourconnectionstring>"
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Communication Services サブスクリプションをクリーンアップして解除する場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
+Communication Services サブスクリプションをクリーンアップして解除する場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 
 
-リソースの削除時にリソースに電話番号が割り当てられている場合、その電話番号は同時にリソースから自動的に解放されます。
+リソースの削除時にリソースに電話番号が割り当てられている場合、その電話番号は同時にリソースから自動的に解放されます。 
+
+> [!Note]
+> リソースの削除は **永続的** であり、リソースを削除すると、イベント ガード フィルター、電話番号など、リソースに関連付けられたデータを含むデータを復元できなくなります。
 
 ## <a name="next-steps"></a>次の手順
 

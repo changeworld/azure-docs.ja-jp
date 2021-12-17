@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 67110a2a2bd7f34c735edd126cfc655f45247fc2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a0b3a5d0cbbae9f25a845f79db35d1049f93f776
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560235"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710184"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスでの Kubernetes ワークロード管理
 
@@ -55,9 +55,9 @@ Azure Stack Edge Pro デバイスにアプリケーションをデプロイす�
 
 - **Azure Arc 対応 Kubernetes のデプロイ**: Azure Arc 対応 Kubernetes は、Kubernetes クラスターにアプリケーションをデプロイできるようにするためのハイブリッド管理ツールです。 `azure-arc namespace` を使用して、Azure Stack Edge Pro デバイス上の Kubernetes クラスターに接続します。 この名前空間にデプロイされたエージェントが、Azure への接続を担当します。 GitOps ベースの構成管理を使用して、デプロイ構成を適用します。 
     
-    また、Azure Arc 対応 Kubernetes を使用すると、コンテナーに対して Azure Monitor を使用して、クラスターを表示および監視することもできます。 詳細については、[Azure Arc 対応 Kubernetes の概要](../azure-arc/kubernetes/overview.md)に関するページを参照してください。
+    また、Azure Arc 対応 Kubernetes を使用すると、コンテナーに対して Azure Monitor を使用して、ご利用のクラスターを表示および監視することもできます。 詳細については、[Azure Arc 対応 Kubernetes の概要](../azure-arc/kubernetes/overview.md)に関するページを参照してください。
     
-    2021 年 3 月以降、Azure Arc 対応 Kubernetes がユーザーに一般提供され、標準の使用料金が適用されます。 プレビュー版のお客様は、特典として、Azure Stack Edge デバイスに対して Azure Arc 対応 Kubernetes を無料でご利用いただけます。 プレビュー オファーを利用するには、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を作成します。
+    2021 年 3 月以降、Azure Arc 対応 Kubernetes がユーザーに一般提供され、標準の使用料金が適用されています。 プレビュー版のお客様は、特典として、Azure Stack Edge デバイスに対して Azure Arc 対応 Kubernetes を無料でご利用いただけます。 プレビュー オファーを利用するには、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を作成します。
 
     1. **[問題の種類]** で **[課金]** を選択します。
     2. **[サブスクリプション]** でご使用のサブスクリプションを選択します。

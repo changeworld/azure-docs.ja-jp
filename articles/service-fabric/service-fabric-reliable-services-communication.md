@@ -4,12 +4,12 @@ description: サービスのリッスン開始、エンドポイントの解決�
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d6f9d3ca44161674a829c4839e0a889c227b6f2
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97912616"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113597849"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Reliable Services 通信 API の使用方法
 プラットフォームとしての Azure Service Fabric は、サービス間の通信にまったく依存しません。 UDP から HTTP まで、あらゆるプロトコルとスタックに対応します。 サービスの通信方法の選択は、サービス開発者に委ねられています。 Reliable Services アプリケーション フレームワークには、組み込みの通信スタックと、カスタム通信コンポーネントの構築に使用できる API が用意されています。
@@ -86,7 +86,7 @@ public class MyStatefulService : StatefulService
 }
 ```
 
-どちらの場合も、リスナーのコレクションが返されます。 これにより、サービスでは、複数のリスナーを使用して、異なるプロトコルを使用している可能性のある複数のエンドポイントでリッスンすることができます。 たとえば、HTTP リスナーと別の WebSocket リスナーがあるとします。 各リスナーが名前を取得し、その結果としての *名前とアドレス* のペアのコレクションは、クライアントがサービス インスタンスまたはパーティションのリッスン アドレスを要求したときに JSON オブジェクトとして表されます。
+どちらの場合も、リスナーのコレクションが返されます。 複数のリスナーを使用すると、サービスは、異なるプロトコルを使用している可能性のある複数のエンドポイントでリッスンすることができます。 たとえば、HTTP リスナーと別の WebSocket リスナーがあるとします。 セキュリティで保護されていないリスナーとセキュリティで保護されたリスナーの両方を使用して、最初に両方のシナリオを有効にすることで、セキュリティで保護されていないリモート処理から、セキュリティで保護されたリモート処理へと移行できます。 各リスナーが名前を取得し、その結果としての *名前とアドレス* のペアのコレクションは、クライアントがサービス インスタンスまたはパーティションのリッスン アドレスを要求したときに JSON オブジェクトとして表されます。
 
 ステートレス サービスでは、オーバーライドによって ServiceInstanceListeners のコレクションが返されます。 `ServiceInstanceListener` には、`ICommunicationListener(C#) / CommunicationListener(Java)` を作成して名前を付ける関数が含まれます。 ステートフル サービスでは、オーバーライドによって ServiceReplicaListeners のコレクションが返されます。 `ServiceReplicaListener` は、ステートレス サービスとは少し異なり、セカンダリ レプリカで `ICommunicationListener` を開くオプションを備えています。 これにより、サービスで複数の通信リスナーを使用できるだけでなく、セカンダリ レプリカで要求を受け入れるリスナーと、プライマリ レプリカでリッスンするだけのリスナーを指定することもできます。
 

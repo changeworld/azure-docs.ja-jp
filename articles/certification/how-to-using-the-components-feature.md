@@ -5,20 +5,20 @@ author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 05/04/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 220a6c2107063734201064115898611c20cab650
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 494ff350866d8de1386a5fd98539f0e3e5ff2c3f
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304462"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126304"
 ---
 # <a name="add-components-on-the-portal"></a>ポータルでコンポーネントを追加する
 
 認定プロジェクトに[デバイスの詳細を追加するチュートリアル](tutorial-02-adding-device-details.md)を行っているとき、デバイスのハードウェア仕様を記述することが求められます。 これを行う際、ユーザーはデバイスを構成する複数の独立したハードウェア製品 (**コンポーネント** と呼ばれます) を強調することができます。 これにより、追加のハードウェアが付属しているデバイスの販売をさらに促進することができ、顧客はこれらの機能に基づいてカタログを検索することによって適切な製品を見つけることができます。
 
-## <a name="prerequisites"></a>必須コンポーネント
+## <a name="prerequisites"></a>前提条件
 
 - [Azure Certified Device ポータル](https://certify.azure.com)にサインインして、そこでデバイス用のプロジェクトを作成する必要があります。 詳細については、[チュートリアル](tutorial-01-creating-your-project.md)を参照してください。
 
@@ -26,9 +26,9 @@ ms.locfileid: "107304462"
 
 認定を受けるために提出されたすべてのプロジェクトには、1 つの **顧客向け製品** コンポーネント (多くの場合、製品全体そのものを指す) が含まれます。 顧客向け製品コンポーネント タイプの特徴について理解を深めるには、[認定用語集](./resources-glossary.md)を参照してください。 すべての追加コンポーネントは、デバイスを正確に説明するためにユーザーの裁量で含めることができます。
 
-1. [製品の詳細] タブで `Add a component` を選択します。
+1. [ハードウェア] タブで `Add a component` を選択します。
 
-    ![[コンポーネントの追加] リンク](./media/images/add-a-component-link.png)
+    ![[コンポーネントの追加] リンク](./media/images/add-component-new.png)
 
 1. コンポーネントの関連するフォーム フィールドに入力します。
 
@@ -65,7 +65,7 @@ ms.locfileid: "107304462"
 | 完成した製品                                   | 1          | 顧客向け製品、個別 | 該当なし                                              |
 | 完成した製品 (**取り外し可能な周辺機器** あり) | 2 以上  | 顧客向け製品、個別 | 周辺機器 / 個別または統合              |
 | 完成した製品 (**統合コンポーネント** あり)  | 2 以上  | 顧客向け製品、個別 | 適切な種類を選択 / 個別または統合 |
-| ソリューション対応開発キット                             | 2 以上  | 顧客向け製品、個別 | 適切な種類を選択 / 個別または統合 |
+| ソリューション対応開発キット                             | 1 つ以上  | 顧客向け製品または開発ボード、個別または統合| 適切な種類を選択 / 個別または統合 |
 
 ## <a name="example-component-usage"></a>コンポーネントの使用例
 
@@ -112,4 +112,3 @@ ms.locfileid: "107304462"
 
 - [チュートリアル: デバイスの詳細の追加](tutorial-02-adding-device-details.md)
 - [公開済みのデバイスの編集](how-to-edit-published-device.md)
-

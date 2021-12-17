@@ -1,24 +1,21 @@
 ---
 title: Azure API Management の Dapr 統合ポリシー | Microsoft Docs
 description: Dapr マイクロサービス拡張機能と対話するための Azure API Management のポリシーについて説明します。
-author: vladvino
-ms.author: vlvinogr
+author: dlepow
+ms.author: danlep
 ms.date: 02/18/2021
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 051bf4398555f318f613c66d58ec65be1d30e215
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4251d87727fafbb136b29eb2479ac0a70f2d027d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646811"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647558"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management の Dapr 統合ポリシー
 
 このトピックでは、API Management の Dapr 統合ポリシーについて説明します。 Dapr は、ステートレスおよびステートフル マイクロサービス ベースのアプリケーションを任意の言語またはフレームワークで構築するための移植可能なランタイムです。 ビルドイン再試行ロジックを使用したサービスの検出と呼び出し、1 回以上の配信セマンティクスを使用したパブリッシュとサブスクライブ、外部サービスを使用したコンポジションを容易にするプラグ可能なバインド リソースなど、一般的なマイクロサービス パターンが体系化されています。 Dapr の使用を開始する方法の詳細と手順については、[dapr.io](https://dapr.io) を参照してください。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。
-
-> [!CAUTION]
-> このトピックで参照されているポリシーはパブリック プレビュー段階であり、[Microsoft Azure プレビューの追加利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の対象となります。
 
 > [!IMPORTANT]
 > このトピックで参照されているポリシーは、Dapr サポートが有効になっている[セルフホステッド バージョンの API Management ゲートウェイ](self-hosted-gateway-overview.md)でのみ動作します。

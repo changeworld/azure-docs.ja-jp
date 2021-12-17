@@ -1,86 +1,87 @@
-- name: '[キー]'
-  href: index.yml
-- name: 概要
-  items:
-    - name: Key Vault キーについて
-      href: about-keys.md
-- name: クイックスタート
-  expanded: true
-  items:
-    - name: CLI
-      href: quick-create-cli.md
-    - name: PowerShell
-      href: quick-create-powershell.md
-    - name: ポータル
-      href: quick-create-portal.md
-    - name: .NET
-      href: quick-create-net.md
-    - name: Node.js
-      href: quick-create-node.md
-    - name: Python
-      href: quick-create-python.md
-    - name: Java
-      href: quick-create-java.md
-    - name: ARM テンプレート
-      displayName: Resource Manager
-      href: quick-create-template.md
-- name: チュートリアル
-  items:
-    - name: HSM で保護されたキーをインポートする (概要)
-      href: hsm-protected-keys.md
-    - name: HSM で保護されたキーをインポートする (BYOK)
-      href: hsm-protected-keys-byok.md
-    - name: HSM で保護されたキーをインポートする (nCipher)
-      href: hsm-protected-keys-ncipher.md
-- name: サンプル
-  items:
-    - name: Key Vault のコード サンプル
-      href: /samples/browse/?expanded=azure&products=azure-key-vault
-- name: 概念
-  items:
-    - name: キーの種類、アルゴリズム、および操作
-      href: about-keys-details.md
-- name: リファレンス
-  items:
-    - name: Azure PowerShell
-      href: /powershell/module/az.keyvault/#key_vault
-    - name: Azure CLI
-      href: /cli/azure/keyvault
-    - name: .NET
-      href: /dotnet/api/overview/azure/security.keyvault.keys-readme
-    - name: Java
-      href: /java/api/overview/azure/keyvault
-    - name: Node.js
-      href: /javascript/api/overview/azure/key-vault-index
-    - name: Python
-      href: /python/api/overview/azure/keyvault-keys-readme
-    - name: REST
-      href: /rest/api/keyvault
-    - name: Resource Manager テンプレート
-      href: /azure/templates/microsoft.keyvault/allversions
-      displayName: ARM
-    - name: Bring Your Own Key の仕様
-      href: byok-specification.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ../policy-reference.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
-- name: リソース
-  items:
-    - name: Microsoft Learn でスキルを身に付ける
-      href: /learn/browse/?products=azure-key-vault
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
-    - name: 利用可能なリージョン
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
-    - name: サービス レベル アグリーメント (SLA)
-      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
-    - name: サービスの制限
-      href: ../general/service-limits.md
-    - name: サービスの状態
-      href: 'https://azure.microsoft.com/status/'
-    - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?product=key-vault'
-    - name: ブログ
-      href: /archive/blogs/kv/
-    - name: 製品フィードバック
-      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'
+items:
+  - name: '[キー]'
+    href: index.yml
+  - name: 概要
+    items:
+      - name: Key Vault キーについて
+        href: about-keys.md
+  - name: クイックスタート
+    expanded: true
+    items:
+      - name: CLI
+        href: quick-create-cli.md
+      - name: PowerShell
+        href: quick-create-powershell.md
+      - name: ポータル
+        href: quick-create-portal.md
+      - name: .NET
+        href: quick-create-net.md
+      - name: Node.js
+        href: quick-create-node.md
+      - name: Python
+        href: quick-create-python.md
+      - name: Java
+        href: quick-create-java.md
+      - name: ARM テンプレート
+        displayName: Resource Manager
+        href: quick-create-template.md
+  - name: チュートリアル
+    items:
+      - name: HSM で保護されたキーをインポートする (概要)
+        href: hsm-protected-keys.md
+      - name: HSM で保護されたキーをインポートする (BYOK)
+        href: hsm-protected-keys-byok.md
+      - name: HSM で保護されたキーをインポートする (nCipher)
+        href: hsm-protected-keys-ncipher.md
+  - name: サンプル
+    items:
+      - name: Key Vault のコード サンプル
+        href: /samples/browse/?expanded=azure&products=azure-key-vault
+  - name: 概念
+    items:
+      - name: キーの種類、アルゴリズム、および操作
+        href: about-keys-details.md
+  - name: リファレンス
+    items:
+      - name: Azure PowerShell
+        href: /powershell/module/az.keyvault/#key_vault
+      - name: Azure CLI
+        href: /cli/azure/keyvault
+      - name: .NET
+        href: /dotnet/api/overview/azure/security.keyvault.keys-readme
+      - name: Java
+        href: /java/api/overview/azure/keyvault
+      - name: Node.js
+        href: /javascript/api/overview/azure/key-vault-index
+      - name: Python
+        href: /python/api/overview/azure/keyvault-keys-readme
+      - name: REST
+        href: /rest/api/keyvault
+      - name: Resource Manager テンプレート
+        href: /azure/templates/microsoft.keyvault/allversions
+        displayName: ARM
+      - name: Bring Your Own Key の仕様
+        href: byok-specification.md
+      - name: Azure Policy の組み込み
+        displayName: 'samples, policies, definitions'
+        href: ../policy-reference.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+  - name: リソース
+    items:
+      - name: Microsoft Learn でスキルを身に付ける
+        href: /learn/browse/?products=azure-key-vault
+      - name: 価格
+        href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+      - name: 利用可能なリージョン
+        href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+      - name: サービス レベル アグリーメント (SLA)
+        href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+      - name: サービスの制限
+        href: ../general/service-limits.md
+      - name: サービスの状態
+        href: 'https://azure.microsoft.com/status/'
+      - name: サービスの更新情報
+        href: 'https://azure.microsoft.com/updates/?product=key-vault'
+      - name: ブログ
+        href: /archive/blogs/kv/
+      - name: 製品フィードバック
+        href: 'https://feedback.azure.com/d365community/forum/285c5ae0-f524-ec11-b6e6-000d3a4f0da0'

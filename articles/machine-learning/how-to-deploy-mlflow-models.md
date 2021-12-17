@@ -3,30 +3,34 @@ title: MLflow モデルを Web サービスとしてデプロイする
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning で MLflow を設定して、ML モデルを Azure Web サービスとしてデプロイします。
 services: machine-learning
-author: shivp950
-ms.author: shipatel
+author: cjgronlund
+ms.author: cgronlun
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
-ms.date: 12/23/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c45b819f9fc02fae40c2bf7fc5c2247c8c0a6147
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/25/2021
+ms.topic: how-to
+ms.custom: devx-track-python
+ms.openlocfilehash: e77c2729d9cab3fb7c50a808c2220412e287dec5
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517482"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719886"
 ---
-# <a name="deploy-mlflow-models-as-azure-web-services-preview"></a>MLflow モデルを Azure Web サービスとしてデプロイする (プレビュー)
+# <a name="deploy-mlflow-models-as-azure-web-services"></a>MLflow モデルを Azure Web サービスとしてデプロイする
 
-この記事では、[MLflow](https://www.mlflow.org) モデルを Azure Web サービスとしてデプロイする方法について説明します。これにより、Azure Machine Learning のモデル管理とデータ ドリフト検出の機能を活用し、実稼働モデルに適用できるようになります。
+この記事では、[MLflow](https://www.mlflow.org) モデルを Azure Web サービスとしてデプロイする方法について説明します。これにより、Azure Machine Learning のモデル管理とデータ ドリフト検出の機能を活用し、実稼働モデルに適用できるようになります。 MLflow と Azure Machine Learning のその他の機能統合については、[MLflow と Azure Machine Learning](concept-mlflow.md) に関する記事をご覧ください。
 
 Azure Machine Learning では、次のデプロイ構成が提供されます。
 * Azure コンテナー インスタンス (ACI)。これは、迅速な開発/テスト デプロイに適した選択肢です。
 * Azure Kubernetes Service (AKS)。これは、スケーラブルな運用環境デプロイに推奨されます。
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
+
 > [!TIP]
 > このドキュメントの情報は、MLflow モデルを Azure Machine Learning Web サービス エンドポイントにデプロイするデータ サイエンティストと開発者を主に対象としています。 Azure Machine Learning からリソース使用状況やイベント (クォータ、トレーニング実行の完了、モデル デプロイの完了など) を監視することに関心がある管理者の方は、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
+
 ## <a name="mlflow-with-azure-machine-learning-deployment"></a>Azure Machine Learning デプロイでの MLflow
 
 MLflow は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 Azure Machine Learning との統合により、モデルのトレーニングを超えて、実稼働モデルのデプロイ フェーズまでこの管理を拡張できます。
@@ -34,10 +38,6 @@ MLflow は、機械学習の実験のライフ サイクルを管理するため
 次の図は、MLflow デプロイ API と Azure Machine Learning を使用して、一般的なフレームワーク (PyTorch、Tensorflow、scikit-learn など) で作成されたモデルを Azure Web サービスとしてデプロイし、ワークスペース内で管理できることを示しています。 
 
 ![ Azure Machine Learning を使用して MLflow モデルをデプロイする](./media/how-to-deploy-mlflow-models/mlflow-diagram-deploy.png)
-
-
->[!NOTE]
-> オープン ソース ライブラリである MLflow は頻繁に変更されます。 そのため、Azure Machine Learning と MLflow の統合によって利用できるようになる機能はプレビューとして見なす必要があり、Microsoft は完全にサポートしていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,34 +51,50 @@ MLflow は、機械学習の実験のライフ サイクルを管理するため
 
 MLflow モデルを Azure Machine Learning Web サービスにデプロイするには、[Azure Machine Learning に接続するための MLflow 追跡 URI](how-to-use-mlflow.md) を使用してモデルを設定する必要があります。 
 
-[deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) メソッドを使用してデプロイ構成を設定します。 また、Web サービスの追跡に役立つタグや説明を追加することもできます。
-
-```python
-from azureml.core.webservice import AciWebservice, Webservice
-
-# Set the model path to the model folder created by your run
-model_path = "model"
-
-# Configure 
-aci_config = AciWebservice.deploy_configuration(cpu_cores=1, 
-                                                memory_gb=1, 
-                                                tags={'method' : 'sklearn'}, 
-                                                description='Diabetes model',
-                                                location='eastus2')
-```
-
+ACI にデプロイする場合は、デプロイ構成を定義する必要はありません。構成が指定されていない場合、サービスによって既定で ACI にデプロイされます。
 次に、Azure Machine Learning 用の MLflow の [deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) メソッドを使用して、1 つの手順でモデルを登録し、デプロイします。 
 
-```python
-(webservice,model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),
-                      workspace=ws,
-                      model_name='sklearn-model', 
-                      service_name='diabetes-model-1', 
-                      deployment_config=aci_config, 
-                      tags=None, mlflow_home=None, synchronous=True)
 
-webservice.wait_for_deployment(show_output=True)
+```python
+from mlflow.deployments import get_deploy_client
+
+# set the tracking uri as the deployment client
+client = get_deploy_client(mlflow.get_tracking_uri())
+
+# set the model path 
+model_path = "model"
+
+# define the model path and the name is the service name
+# the model gets registered automatically and a name is autogenerated using the "name" parameter below 
+client.create_deployment(model_uri='runs:/{}/{}'.format(run.id, model_path),
+                         name="mlflow-test-aci")
 ```
+
+### <a name="customize-deployment-configuration"></a>デプロイの構成をカスタマイズする
+
+既定値を使用したくない場合は、[deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) メソッドのパラメーターを参照として使用するデプロイ構成 JSON ファイルを使用して、デプロイの構成を設定できます。 
+
+デプロイ構成 JSON ファイルでは、各デプロイ構成パラメーターをディクショナリの形式で定義する必要があります。 以下に例を示します。 [デプロイ構成 JSON ファイルに含めることができるものの詳細については、こちらを参照してください](reference-azure-machine-learning-cli.md#azure-container-instance-deployment-configuration-schema)。
+
+```json
+{"computeType": "aci",
+ "containerResourceRequirements": {"cpu": 1, "memoryInGB": 1},
+ "location": "eastus2"
+}
+```
+
+その後、JSON ファイルを使用してデプロイを作成できます。
+
+```python
+# set the deployment config
+deploy_path = "deployment_config.json"
+test_config = {'deploy-config-file': deploy_path}
+
+client.create_deployment(model_uri='runs:/{}/{}'.format(run.id, model_path),
+                         config=test_config,
+                         name="mlflow-test-aci")                                       
+```
+
 
 ## <a name="deploy-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) へのデプロイ
 
@@ -104,35 +120,32 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-[deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) メソッドを使用してデプロイ構成を設定します。 また、Web サービスの追跡に役立つタグや説明を追加することもできます。
+[deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration#parameters) メソッド値を参照として使用して、デプロイ構成 json を作成します。 各デプロイ構成パラメーターは、単にディクショナリとして定義する必要があります。 例を次に示します。
 
-```python
-from azureml.core.webservice import Webservice, AksWebservice
-
-# Set the web service configuration (using default here with app insights)
-aks_config = AksWebservice.deploy_configuration(enable_app_insights=True, compute_target_name='aks-mlflow')
-
+```json
+{"computeType": "aks", "computeTargetName": "aks-mlflow"}
 ```
 
-次に、Azure Machine Learning 用の MLflow の [deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) メソッドを使用して、1 つの手順でモデルを登録し、デプロイします。 
+次に、MLflow の[デプロイ クライアント](https://www.mlflow.org/docs/latest/python_api/mlflow.deployments.html)を使用して、1 つの手順でモデルを登録し、デプロイします。 
 
 ```python
+from mlflow.deployments import get_deploy_client
 
-# Webservice creation using single command
-from azureml.core.webservice import AksWebservice, Webservice
+# set the tracking uri as the deployment client
+client = get_deploy_client(mlflow.get_tracking_uri())
 
 # set the model path 
 model_path = "model"
 
-(webservice, model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),
-                      workspace=ws,
-                      model_name='sklearn-model', 
-                      service_name='my-aks', 
-                      deployment_config=aks_config, 
-                      tags=None, mlflow_home=None, synchronous=True)
+# set the deployment config
+deploy_path = "deployment_config.json"
+test_config = {'deploy-config-file': deploy_path}
 
-
-webservice.wait_for_deployment()
+# define the model path and the name is the service name
+# the model gets registered automatically and a name is autogenerated using the "name" parameter below 
+client.create_deployment(model_uri='runs:/{}/{}'.format(run.id, model_path),
+                         config=test_config,
+                         name="mlflow-test-aci")
 ```
 
 サービスのデプロイには数分かかることがあります。
@@ -153,4 +166,3 @@ webservice.wait_for_deployment()
 * [モデルを管理します](concept-model-management-and-deployment.md)。
 * [データの誤差](./how-to-enable-data-collection.md)について実稼働モデルを監視します。
 * [MLflow を使用して Azure Databricks 実行を追跡する](how-to-use-mlflow-azure-databricks.md)。
-

@@ -5,17 +5,17 @@ services: static-web-apps
 author: aaronpowell
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 05/08/2020
+ms.date: 05/10/2021
 ms.author: aapowell
 ms.custom: devx-track-js
-ms.openlocfilehash: 4430ed34858077b13b4fec69756c1c7e9f3ef7ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c6a68b8db40aa07c251cabab28217143105aab1
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652372"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814516"
 ---
-# <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>チュートリアル:Gatsby サイトを Azure Static Web Apps プレビューに発行する
+# <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps"></a>チュートリアル:Gatsby サイトを Azure Static Web Apps に発行する
 
 この記事では、[Gatsby](https://gatsbyjs.org) Web アプリケーションを作成して [Azure Static Web Apps](overview.md) にデプロイする方法を説明します。 最終結果として、アプリの構築と発行の方法を制御できる新しい Static Web Apps サイト (および関連する GitHub Actions) が得られます。
 
@@ -85,54 +85,38 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 ### <a name="create-the-application"></a>アプリケーションを作成する
 
 1. [Azure Portal](https://portal.azure.com) に移動します
-1. **[リソースの作成]** をクリックします
+1. **[リソースの作成]** を選択します
 1. **[Static Web Apps]** を探します
-1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
+1. **[Static Web Apps]** を選択します。
 1. **[作成]**
+1. _[基本]_ タブで、次の値を入力します。
 
-   :::image type="content" source="./media/publish-gatsby/create-in-portal.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
+    | プロパティ | 値 |
+    | --- | --- |
+    | _サブスクリプション_ | Azure サブスクリプション名。 |
+    | _リソース グループ_ | **my-gatsby-group**  |
+    | _名前_ | **my-gatsby-app** |
+    | _[プランの種類]_ | **Free** |
+    | _Azure Functions API のリージョンとステージング環境_ | 最も近いリージョンを選択します。 |
+    | _ソース_ | **GitHub** |
 
-1. _[サブスクリプション]_ で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
+1. **[GitHub でサインイン]** を選択し、GitHub で認証します。
 
-1. _[リソース グループ]_ で、 **[新規]** を選択します。 _[新しいリソース グループ名]_ に「**gatsby-static-web-app**」と入力し、 **[OK]** を選択します。
+1. 次の GitHub 値を入力します。
 
-1. 次に、 **[名前]** ボックスにアプリの名前を入力します。 有効な文字には、`a-z`、`A-Z`、`0-9`、および `-` があります。
+    | プロパティ | 値 |
+    | --- | --- |
+    | _組織_ | ご自分の希望する GitHub 組織を選択します。 |
+    | _リポジトリ_ | **gatsby-static-web-app** を選択します。 |
+    | _ブランチ_ | **[main]\(メイン\)** を選択します。 |
 
-1. _[リージョン]_ で、近くの使用可能なリージョンを選択します。
-
-1. _[SKU]_ で、 **[Free]** を選択します。
-
-   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="詳細情報の入力":::
-
-1. **[GitHub でサインイン]** ボタンをクリックします。
-
-1. リポジトリを作成した **[組織]** を選択します。
-
-1. _[リポジトリ]_ として、**gatsby-static-web-app** を選択します。
-
-1. _[ブランチ]_ では、**main** を選択します。
-
-   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="入力済みの GitHub 情報":::
-
-### <a name="build"></a>Build
-
-次に、ビルド プロセスによってアプリのビルドに使用される構成設定を追加します。
-
-1. **[次へ:ビルド >]** ボタンをクリックして、ビルド構成を編集します。
-
-1. GitHub Actions の手順の設定を構成するには、 _[App location]\(アプリの場所\)_ に **/** を設定します。
-
-1. _[App artifact location]\(アプリ成果物の場所\)_ に **public** を設定します。
-
-   この時点では API をデプロイしていないため _[API location]\(アプリの場所\)_ の値は必要ありません。
-
-   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="ビルド設定":::
+1. _[Build Details]\(ビルドの詳細\)_ セクションで、 _[Build Presets]\(ビルドのプリセット\)_ ドロップダウンから **[Gatsby]** を選択し、既定値をそのままにします。
 
 ### <a name="review-and-create"></a>[Review and create] (確認および作成)
 
-1. **[Review + Create]\(確認および作成\)** ボタンをクリックして、詳細がすべて正しいことを確認します。
+1. **[確認および作成]** ボタンを選択して、詳細がすべて正しいことを確認します。
 
-1. **[作成]** をクリックして、App Service Static Web App の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
+1. **[作成]** を選択して、App Service Static Web App の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
 
 1. デプロイが完了したら、 **[リソースに移動]** をクリックします。
 

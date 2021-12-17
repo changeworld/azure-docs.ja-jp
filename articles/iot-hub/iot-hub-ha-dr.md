@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Hub の高可用性とディザスター リカバリー | Microsoft Docs
 description: ディザスター リカバリー機能を持つ高可用性 Azure IoT ソリューションの構築を支援する Azure および IoT Hub 機能について説明します。
-author: jlian
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.author: philmea
-ms.openlocfilehash: 10a3360f30d211336e4ce861b124a307c85fb150
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.author: lizross
+ms.openlocfilehash: 84342a3cc325efbaee5a11167392586cea9c3734
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308253"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552605"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub の高可用性とディザスター リカバリー
 
-回復力のある IoT ソリューションを実装するための第一歩として、設計者、開発者、経営者は、構築しているソリューションのアップタイム目標を定義する必要があります。 この目標は、主にシナリオごとの細かい事業目標に基づいて定義できます。 このような背景から、この[Azure ビジネス継続性テクニカル ガイダンス](/azure/architecture/resiliency/)に関する記事では、ビジネス継続性とディザスター リカバリーについて考慮する際に役立つ一般的なフレームワークについて説明しています。 「[Disaster recovery and high availability for Azure applications](/azure/architecture/reliability/disaster-recovery)」(Azure アプリケーションのディザスター リカバリーと高可用性) では、高可用性 (HA) とディザスター リカバリー (DR) を実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスを確認できます。
+回復力のある IoT ソリューションを実装するための第一歩として、設計者、開発者、経営者は、構築しているソリューションのアップタイム目標を定義する必要があります。 この目標は、主にシナリオごとの細かい事業目標に基づいて定義できます。 このような背景から、この[Azure ビジネス継続性テクニカル ガイダンス](/azure/architecture/framework/resiliency/app-design)に関する記事では、ビジネス継続性とディザスター リカバリーについて考慮する際に役立つ一般的なフレームワークについて説明しています。 「[Disaster recovery and high availability for Azure applications](/azure/architecture/reliability/disaster-recovery)」(Azure アプリケーションのディザスター リカバリーと高可用性) では、高可用性 (HA) とディザスター リカバリー (DR) を実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスを確認できます。
 
 この記事では、特に IoT Hub サービスによって提供されている HA および DR の機能について説明します。 この記事では、次のように幅広い分野について取り上げています。
 
@@ -60,7 +60,7 @@ IoT Hub サービスは、サービスのほぼすべてのレイヤーに冗長
 IoT Hub のフェールオーバー操作が完了すると、デバイスおよびバックエンド アプリケーションからのすべての操作は、機能し続けることが期待されます。手動操作は必要ありません。 これは、device-to-cloud メッセージが引き続き動作するはずであり、デバイス レジストリ全体が破損していないことを意味します。 Event Grid から発行されたイベントは、Event Grid のサブスクリプションを引き続き利用できる限り、以前に構成されたその同じサブスクリプションから使用できます。 カスタム エンドポイントに対して追加の処理は必要ありません。
 
 > [!CAUTION]
-> - そのIoT Hub の組み込みイベント エンドポイントのイベント ハブと互換性のある名前とエンドポイントは、フェールオーバー後に変更されます。 イベント ハブ クライアントまたはイベント プロセッサ ホストを使用して組み込みエンドポイントからテレメトリ メッセージを受信する場合は、[その IoT ハブの接続文字列を使用](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)して接続を確立する必要があります。 これにより、フェールオーバー後に手動操作することなく、バックエンド アプリケーションは継続的に動作します。 アプリケーションでイベント ハブと互換性のある名前とエンドポイントを直接使用する場合、フェールオーバー後も運用を継続するには、[新しいイベント ハブと互換性のあるエンドポイントをフェッチする](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)必要があります。 
+> - そのIoT Hub の組み込みイベント エンドポイントのイベント ハブと互換性のある名前とエンドポイントは、フェールオーバー後に変更されます。 イベント ハブ クライアントまたはイベント プロセッサ ホストを使用して組み込みエンドポイントからテレメトリ メッセージを受信する場合は、[その IoT ハブの接続文字列を使用](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)して接続を確立する必要があります。 これにより、フェールオーバー後に手動操作することなく、バックエンド アプリケーションは継続的に動作します。 アプリケーションでイベント ハブと互換性のある名前とエンドポイントを直接使用する場合、フェールオーバー後も運用を継続するには、[新しいイベント ハブと互換性のあるエンドポイントをフェッチする](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)必要があります。 詳細については、「[手動フェールオーバーとイベント ハブ](#manual-failover-and-event-hub)」を参照してください。
 >
 > - Azure Functions または Azure Stream Analytics を使用して組み込みイベント エンドポイントを接続する場合は、**再起動** が必要になる場合があります。 これは、フェールオーバー中に以前のオフセットが無効になるためです。
 >
@@ -81,6 +81,18 @@ Microsoft が開始するフェールオーバーで指定されている RTO �
 2017 年 5 月 18 日より後に作成された IoT ハブでは、追加料金なしで手動フェールオーバーを利用できます
 
 詳細な手順については、[チュートリアル:IoT ハブの手動フェールオーバーを実行する](tutorial-manual-failover.md)
+
+## <a name="manual-failover-and-event-hub"></a>手動フェールオーバーとイベント ハブ
+
+**[注意]** セクションで前述したように、その IoT Hub の組み込みイベント エンドポイントのイベント ハブと互換性のある名前とエンドポイントは、手動フェールオーバー後に変更されます。 これは、イベント ハブ クライアントに IoT Hub イベントが表示されないためです。 これは、他のクラウドベースのクライアント (Functions や Azure Stream Analytics など) にも当てはまります。 エンドポイントと名前を取得するには、Azure portal を使用するか、付属のサンプルを活用します。
+
+### <a name="use-the-portal"></a>ポータルの使用
+
+ポータルを使用して、イベント ハブと互換性のあるエンドポイントと名前を取得する方法の詳細については、「[組み込みのエンドポイントからの読み取り](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)」を参照してください。
+
+### <a name="use-the-included-sample"></a>付属のサンプルを使用する
+
+IoT Hub 接続文字列を使用してイベント ハブと互換性のあるエンドポイントを再キャプチャするには、[https://github.com/Azure/azure-sdk-for-net/tree/main/samples/iothub-connect-to-eventhubs](https://github.com/Azure/azure-sdk-for-net/tree/main/samples/iothub-connect-to-eventhubs) にあるサンプルを活用して、IoT Hub 接続文字列を使用してイベント ハブと互換性のあるエンドポイントを再キャプチャする方法を示します。 このコード例では、接続文字列を使用して新しいイベント ハブ エンドポイントを取得し、接続を再確立します。 Visual Studio をインストールする必要があります。
 
 ### <a name="running-test-drills"></a>テスト ドリルの実行
 
@@ -141,5 +153,5 @@ IoT ソリューションでのデプロイ トポロジの詳しい説明はこ
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure IoT Hub とは](about-iot-hub.md)
-* [IoT Hub の使用 (クイック スタート)](quickstart-send-telemetry-dotnet.md)
+* [IoT Hub の使用 (クイック スタート)](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)
 * [チュートリアル:IoT ハブの手動フェールオーバーを実行する](tutorial-manual-failover.md)

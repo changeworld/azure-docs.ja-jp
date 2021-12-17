@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: 99a8e331e265e686d1de06f8143d2345e51143f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f5085bbb39aef007c0bda840240fc3c064f8e6a
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102613002"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690811"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -108,7 +108,11 @@ Operations Manager 管理グループが  Log Analytics ワークスペースの
 
 1. 管理者特権でのコマンド プロンプトを開きます。
    a. **[スタート]** に移動し、「**cmd**」と入力します。
+<<<<<<< HEAD
    b. **[コマンド プロンプト]** を右クリックし、**\[管理者として実行]** を選択します。
+=======
+   b. **[コマンド プロンプト]** を右クリックし、 **[管理者として実行]** を選択します。
+>>>>>>> repo_sync_working_branch
 1. 次のコマンドを入力し、**Enter** キーを押します。
 
     `netsh winhttp set proxy <proxy>:<port>`

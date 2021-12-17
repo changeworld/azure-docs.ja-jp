@@ -1,0 +1,97 @@
+### YamlMime:FAQ
+metadata:
+  title: Windows 10 Enterprise マルチセッションに関する FAQ - Azure
+  description: Azure Virtual Desktop に Windows 10 Enterprise マルチセッションを使用するためのよく寄せられる質問とベスト プラクティス。
+  author: Heidilohr
+  ms.topic: article
+  ms.prod: windows
+  ms.date: 02/19/2020
+  ms.author: helohr
+  manager: femila
+  ms.openlocfilehash: 0546f6186fbf725e14a105b0d735db0b7ecef2cc
+  ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/05/2021
+  ms.locfileid: "131841604"
+title: Windows 10 Enterprise マルチセッションに関する FAQ
+summary: この記事では、よく寄せられる質問に回答し、Windows 10 Enterprise マルチセッションのベスト プラクティスについて説明します。
+sections:
+- name: 無視
+  questions:
+  - question: Windows 10 Enterprise マルチセッションとは
+    answer: >
+      Windows 10 Enterprise マルチセッション (旧称 Windows 10 Enterprise for Virtual Desktops (EVD)) は、複数の対話型セッションを同時に実行できる新しいリモート デスクトップ セッション ホストです。 以前は、これを行うことができるのは Windows Server だけでした。 この機能により、ユーザーは使い慣れた Windows 10 エクスペリエンスを利用しつつ、IT はマルチセッションのコスト面での恩恵が受けられ、RDS クライアント アクセス ライセンス (CAL) ではなく、既存のユーザーごとの Windows ライセンスを使用することができます。 ライセンスと価格の詳細については、「[Azure Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」を参照してください。
+  - question: Windows 10 Enterprise マルチセッションで対話型セッションを同時に実行できるユーザー数はいくつですか?
+    answer: >
+      同時にアクティブにできる対話型セッションの数は、ご使用のシステムのハードウェア リソース (vCPU、メモリ、ディスク、vGPU)、ユーザーがセッションにサインインしている間にアプリを使用する方法、およびシステムのワークロードの大きさによって異なります。 ご使用のシステムのパフォーマンスを検証して、Windows 10 Enterprise マルチセッションで対応可能なユーザー数を把握することをお勧めします。 詳細については、「[Azure Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」を参照してください。
+  - question: アプリケーションで Windows 10 Enterprise マルチセッションがサーバー オペレーティング システムとして報告されるのはなぜですか?
+    answer: >
+      Windows 10 Enterprise マルチセッションは、Windows 10 Enterprise の仮想エディションです。 違いの 1 つは、このオペレーティング システム (OS) では [ProductType](/windows/win32/cimwin32prov/win32-operatingsystem) の値が Windows Server と同じ 3 として報告されることです。 このプロパティにより、OS で、既存の RDSH 管理ツール、RDSH マルチセッション対応アプリケーション、および RDSH 環境の主に低レベルのシステム パフォーマンスの最適化に対する互換性が維持されます。 一部のアプリケーション インストーラーでは、ProductType がクライアントに設定されていることを検出するかどうかによって、Windows 10 マルチセッションへのインストールをブロックすることができます。 アプリがインストールされない場合は、アプリケーション ベンダーに更新バージョンを問い合わせてください。
+  - question: Windows 10 Enterprise マルチセッションをオンプレミスで実行できますか?
+    answer: Windows 10 Enterprise マルチセッションは、Azure 用の Azure Virtual Desktop サービスに最適化されているため、オンプレミスの運用環境では実行できません。 運用目的で Azure の外部で Windows 10 Enterprise マルチセッションを実行することは、ライセンス契約違反です。 Windows 10 Enterprise マルチセッションは、オンプレミスのキー管理サービス (KMS) に対してアクティブ化されません。
+  - question: Windows 10 VM を Windows 10 Enterprise マルチセッションにアップグレードすることはできますか。
+    answer: いいえ。 現在、Windows 10 Professional または Enterprise を実行している既存の仮想マシン (VM) を Windows 10 Enterprise マルチセッションにアップグレードすることはできません。 また、Windows 10 Enterprise マルチセッション VM をデプロイしてから、プロダクト キーを別のエディションに更新した場合は、VM を Windows 10 Enterprise マルチセッションに戻すことができないため、その VM は再デプロイする必要があります。 Azure Virtual Desktop VM SKU を別のエディションに変更する機能はサポートされていません。
+  - question: 自分の組織向けに Windows 10 Enterprise マルチセッション イメージをカスタマイズする方法を教えてください。
+    answer: >
+      Windows 10 Enterprise マルチセッションを使用して Azure で VM を起動し、LOB アプリケーションをインストールしてカスタマイズし、sysprep/generalize を実行したら、Azure portal を使用してイメージを作成することができます。
+
+
+      最初に、Windows 10 Enterprise マルチセッションを使用して Azure で VM を作成します。 Azure で VM を起動する代わりに、VHD を直接ダウンロードすることができます。 その後、ダウンロードした VHD を使用して、Hyper-V が有効になっている Windows 10 PC に新しい第 1 世代の VM を作成することができます。
+
+
+      LOB アプリケーションをインストールしてニーズに合わせてイメージをカスタマイズし、イメージに sysprep を実行します。 カスタマイズが完了したら、VHD が含まれたイメージを Azure にアップロードします。 その後、Azure Marketplace から Azure Virtual Desktop を取得し、それを使用して、カスタマイズされたイメージで新しいホスト プールをデプロイします。
+  - question: デプロイ後に Windows 10 Enterprise マルチセッションを管理する方法を教えてください。
+    answer: サポートされている任意の構成ツールを使用できますが、Windows 10 Enterprise マルチセッションをサポートしているという理由から、Configuration Manager バージョン 1906 をお勧めします。 現在、Microsoft では、Microsoft Intune のサポートに取り組んでいます。
+  - question: Windows 10 Enterprise マルチセッションを Azure Active Directory (AD) に参加させることはできますか?
+    answer: >
+      Windows 10 Enterprise マルチセッションでは、現在、ハイブリッド Azure AD への参加がサポートされています。 Windows 10 Enterprise マルチセッションがドメインに参加したら、既存のグループ ポリシー オブジェクトを使用して、Azure AD の登録を有効にします。 詳細については、「[Hybrid Azure Active Directory 参加の実装を計画する](../active-directory/devices/hybrid-azuread-join-plan.md)」を参照してください。
+  - question: Windows 10 Enterprise マルチセッション イメージはどこで入手できますか?
+    answer: Windows 10 Enterprise マルチセッションは Azure ギャラリーにあります。 これを見つけるには、Azure portal に移動し、Windows 10 Enterprise for Virtual Desktops のリリースを検索します。 Microsoft 365 Apps for enterprise と統合されたイメージの場合は、Azure portal にアクセスし、「**Microsoft Windows 10 + Microsoft 365 Apps for enterprise**」を検索します。
+  - question: どの Windows 10 Enterprise マルチセッション イメージを使用すればよいですか?
+    answer: Azure ギャラリーには、Windows 10 Enterprise マルチセッション、バージョン 1909、Windows 10 Enterprise マルチセッション、バージョン 1903 など、いくつかのリリースがあります。 パフォーマンスと信頼性を向上させるため、最新バージョンを使用することをお勧めします。
+  - question: サポートされている Windows 10 Enterprise のマルチセッション バージョンはどれですか?
+    answer: Windows 10 Enterprise マルチセッション、バージョン 1909 以降がサポートされており、Azure ギャラリーで入手できます。 これらのリリースは、Windows 10 Enterprise と同じサポート ライフサイクル ポリシーに従っています。つまり、3 月のリリースは 18 か月間サポートされ、9 月のリリースは 30 か月間サポートされます。
+  - question: Windows 10 Enterprise マルチセッションには、どのプロファイル管理ソリューションを使用すればよいですか?
+    answer: >
+      非永続的な環境または一元的に格納されたプロファイルを必要とするその他のシナリオで Windows 10 Enterprise を構成する場合は、FSLogix プロファイル コンテナーを使用することをお勧めします。 FSLogix を使用すると、ユーザーのすべてのセッションに対してユーザー プロファイルが確実に利用でき、最新の状態に保つことができます。 また、FSLogix プロファイル コンテナーを使用して、適切なアクセス許可を持つ任意の SMB 共有にユーザー プロファイルを格納することをお勧めしますが、必要に応じて、ユーザー プロファイルを Azure ページ BLOB ストレージに格納することもできます。 Azure Virtual Desktop ユーザーは、追加コストなしで FSLogix を使用できます。  FSLogix は、すべての Windows 10 Enterprise マルチセッション イメージにプレインストールされていますが、IT 管理者は引き続き FSLogix プロファイル コンテナーの構成を担当します。
+
+
+      FSLogix プロファイル コンテナーの構成方法の詳細については、「[FSLogix プロファイル コンテナーを構成する](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)」を参照してください。
+  - question: Windows 10 Enterprise マルチセッションにアクセスするには、どのライセンスが必要ですか?
+    answer: >
+      適用可能なライセンスの完全な一覧については、「[Azure Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」を参照してください。
+  - question: サインアウト後にアプリが非表示になるのはなぜですか？
+    answer: これは、FSLogix などのプロファイル管理ソリューションで Windows 10 Enterprise マルチセッションを使用しているために発生します。 管理者またはプロファイルソリューションは、ユーザーがサインアウトしたときにユーザープロファイルを削除するようにシステムを構成しました。この構成は、サインアウト後にシステムがユーザープロファイルを削除すると、セッション中にインストールしたすべてのアプリも削除されることを意味します。 インストールしたアプリを保持する場合は、Azure Virtual Desktop 環境内のすべてのユーザーに対してこれらのアプリをプロビジョニングするよう管理者に依頼する必要があります。
+  - question: ユーザーがサインアウトしたときにアプリが消えないようにするにはどうすればいいですか？
+    answer: >
+      ほとんどの仮想化環境は、ユーザーが自分のプロファイルに追加のアプリをインストールできないように、既定で構成されています。 ユーザーが Azure Virtual Desktop からサインアウトしたときにアプリが消失しないようにするには、環境内のすべてのユーザープロファイルにそのアプリをプロビジョニングする必要があります。 アプリのプロビジョニングの詳細については、次のリソースをご確認ください。
+
+
+      - [Azure Virtual Desktop で組み込みアプリを発行する](publish-apps.md)
+
+      - [DISM アプリ パッケージ サービスのコマンド ライン オプション](/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+
+      - [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage)
+  - question: ユーザーが Microsoft Store からアプリをダウンロードしてインストールしないようにするにはどうすればいいですか？
+    answer: >
+      Microsoft Store アプリを無効にして、ユーザーが既にプロビジョニングしたアプリ以外のアプリをダウンロードしないようにすることができます。
+
+
+      ストア アプリを無効にするには:
+
+
+      1. 新しいグループ ポリシーを作成します。
+
+      2. **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]** を選択します。
+
+      3. **[ストア]** を選択します。
+
+      4. **ストア アプリケーション** を選択します。
+
+      5. **無効** を選択し、 **[OK]** を選択します。
+
+      6. **[適用]** を選択します。
+  - question: Windows 10 または 11 Enterprise マルチセッションでは、Windows Server Update Services (WSUS) を通じて機能更新プログラムを受け取れますか?
+    answer: "現時点では、WSUS は、Windows 10 または 11 Enterprise マルチセッションへの機能更新プログラムを提供できません。\n         \n"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n   \nAzure Virtual Desktop と Windows 10 Enterprise マルチセッションの詳細については、次をご覧ください。\n        \n- [Azure Virtual Desktop のドキュメント](overview.md)を参照する\n- [Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスする\n- [Azure Virtual Desktop のチュートリアル](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)を使用して Azure Virtual Desktop のデプロイをセットアップする"

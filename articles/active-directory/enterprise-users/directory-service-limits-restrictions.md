@@ -4,23 +4,23 @@ description: Azure Active Directory サービスの使用上の制約および�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: reference
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 10/27/2021
 ms.author: curtand
 ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 055f66ed96a293c7bc97cc34012756f0fee27f14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 142d9389bf419da53f2dbc222d938777fa419541
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96547119"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505683"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Azure AD サービスの制限と制約
 
@@ -28,7 +28,7 @@ ms.locfileid: "96547119"
 
 [!INCLUDE [AAD-service-limits](../../../includes/active-directory-service-limits-include.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure への組織としてのサインアップ](../fundamentals/sign-up-organization.md)
 * [Azure サブスクリプションを Azure AD に関連付ける方法](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

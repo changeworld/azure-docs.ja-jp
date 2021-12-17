@@ -1,14 +1,14 @@
 ---
 title: PowerShell を使用した割り当ての管理方法
 description: 公式の Azure Blueprints PowerShell モジュールである Az.Blueprint でブループリント割り当てを管理する方法について説明します。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: d60fb887e07b4697b8e86a4e2fd74a735ac0bb58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ce2132fe9d43ef0d5df1a4e0eec3a80a3a5c5ca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919378"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612816"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>PowerShell を使用した割り当ての管理方法
 
@@ -16,7 +16,7 @@ ms.locfileid: "98919378"
 
 ## <a name="add-the-azblueprint-module"></a>Az.Blueprint モジュールを追加する
 
-Azure PowerShell でブループリント割り当てを管理できるようにするには、モジュールを追加する必要があります。 このモジュールは、ローカルにインストールされた PowerShell、[Azure Cloud Shell](https://shell.azure.com)、または [Azure PowerShell Docker イメージ](https://hub.docker.com/r/azuresdk/azure-powershell/)で使用できます。
+Azure PowerShell でブループリント割り当てを管理できるようにするには、モジュールを追加する必要があります。 このモジュールは、ローカルにインストールされた PowerShell、[Azure Cloud Shell](https://shell.azure.com)、または [Azure PowerShell Docker イメージ](/powershell/azure/azureps-in-docker)で使用できます。
 
 ### <a name="base-requirements"></a>基本要件
 

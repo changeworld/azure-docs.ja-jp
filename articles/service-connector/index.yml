@@ -1,0 +1,52 @@
+### YamlMime:Landing
+title: Service Connector のドキュメント
+summary: Service Connector は Azure で管理されたサービスであり、開発者はコンピューティング サービスをターゲットのバッキング サービスに簡単に接続できます。
+metadata:
+  title: Service Connector のドキュメント
+  description: Service Connector を使って Azure コンピューティング サービスをバッキング サービスに簡単に接続します。
+  ms.service: service-connector
+  ms.topic: landing-page
+  author: shizn
+  ms.author: xshi
+  ms.date: 10/29/2021
+  ms.openlocfilehash: 9388686488d452f08610485a1fedeecb9daf8e5d
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131088366"
+landingContent:
+- title: Service Connector について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Service Connector とは
+      url: overview.md
+    - text: Service Connector の主要な概念
+      url: concept-service-connector-internals.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: App Service に新しいサービス接続を作成する
+      url: quickstart-portal-app-service-connection.md
+    - text: Spring Cloud に新しいサービス接続を作成する
+      url: quickstart-portal-spring-cloud-connection.md
+- title: 一般的なタスク
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: PostgreSQL を使用する Python (Django) アプリ
+      url: tutorial-django-webapp-postgres-cli.md
+    - text: MySQL を使用する Spring Cloud アプリ
+      url: tutorial-java-spring-mysql.md
+    - text: Blob Storage を使用する ASP.NET アプリ
+      url: tutorial-csharp-webapp-storage-cli.md
+    - text: Confluent Cloud 上の Kafka を使用する Spring Cloud アプリ
+      url: tutorial-java-spring-confluent-kafka.md
+  - linkListType: how-to-guide
+    links:
+    - text: トラブルシューティング ガイド
+      url: how-to-troubleshoot-front-end-error.md
+    - text: リージョンのサポート
+      url: concept-region-support.md

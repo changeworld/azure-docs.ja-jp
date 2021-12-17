@@ -2,13 +2,13 @@
 title: 接続の問題のトラブルシューティング - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs での接続の問題のトラブルシューティングについて説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8eddc0e8c598e4553b30759d179fecb6ae880829
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: a07b98f9913e0ef82edd88e2aa0dad6c5f3b238b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96012682"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600420"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>接続に関する問題のトラブルシューティング - Azure Event Hubs
 クライアント アプリケーションがイベント ハブに接続できない理由はさまざまです。 発生した接続の問題は、永続的である場合もあれば、一時的なものである場合もあります。 問題が常に (永続的に) 発生する場合は、接続文字列、組織のファイアウォール設定、IP ファイアウォール設定、ネットワーク セキュリティ設定 (サービス エンドポイント、プライベート エンドポイントなど) などを確認することをお勧めします。 一時的な問題の場合は、SDK の最新バージョンへのアップグレード、ドロップされたパケットを確認するコマンドの実行、ネットワーク トレースの取得によって問題のトラブルシューティングに役立つ場合があります。 
@@ -26,10 +26,10 @@ ms.locfileid: "96012682"
 
 Kafka クライアントの場合、producer.config または consumer.config の各ファイルが正しく構成されていることを確認します。 詳細については、「[Event Hubs で Kafka を使用してメッセージを送受信する](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs)」を参照してください。
 
-[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
+[!INCLUDE [event-hubs-connectivity](./includes/event-hubs-connectivity.md)]
 
-### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>ネットワーク セキュリティ グループで AzureEventGrid サービス タグが許可されていることを確認する
-アプリケーションがサブネット内で実行されていて、関連付けられているネットワーク セキュリティ グループがある場合は、インターネット アウトバウンドが許可されているか、または AzureEventGrid サービス タグが許可されているかを確認します。 「[仮想ネットワーク サービス タグ](../virtual-network/service-tags-overview.md)」を参照し、`EventHub` を検索してください。
+### <a name="verify-that-eventhub-service-tag-is-allowed-in-your-network-security-groups"></a>ネットワーク セキュリティ グループで EventHub サービス タグが許可されていることを確認する
+アプリケーションがサブネット内で実行され、関連付けられているネットワーク セキュリティ グループが存在する場合は、インターネット送信が許可されているか、または EventHub サービス タグが許可されているかどうかを確認します。 「[仮想ネットワーク サービス タグ](../virtual-network/service-tags-overview.md)」を参照し、`EventHub` を検索してください。
 
 ### <a name="check-if-the-application-needs-to-be-running-in-a-specific-subnet-of-a-vnet"></a>アプリケーションを vnet の特定のサブネットで実行する必要があるかどうかを確認する
 名前空間にアクセスできる仮想ネットワーク サブネットでアプリケーションが実行されていることを確認します。 そうでない場合は、名前空間にアクセスできるサブネットでアプリケーションを実行するか、アプリケーションが実行されているマシンの IP アドレスを [IP ファイアウォール](event-hubs-ip-filtering.md)に追加します。 

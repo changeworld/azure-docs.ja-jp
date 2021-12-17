@@ -1,0 +1,165 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Import/Export サービスに関する FAQ | Microsoft Azure
+  description: Azure Import/Export サービスについてよく寄せられる質問とその回答を紹介します。
+  author: alkohli
+  services: storage
+  ms.service: storage
+  ms.topic: conceptual
+  ms.date: 10/04/2021
+  ms.author: alkohli
+  ms.subservice: common
+  ms.openlocfilehash: 7217f10d9d54931d0f37ec0400c8df3132076f87
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129709466"
+title: 'Azure Import/Export サービス: よく寄せられる質問'
+summary: >
+  以下では、Azure Import/Export サービスを使用してデータを Azure Storage に転送するときによくある質問と、それに対する回答を示します。
+sections:
+- name: Import/Export サービスについて
+  questions:
+  - question: >
+      Azure Import/Export サービスを使用して Azure Files ストレージにコピーすることはできますか?
+    answer: >
+      はい。 Azure Import/Export サービスでは Azure Files ストレージへのインポートがサポートされます。 現時点では、Azure Files からのエクスポートはサポートされていません。
+  - question: >
+      CSP サブスクリプションで Azure Import/Export サービスを使用できますか?
+    answer: >
+      はい。 Azure Import/Export サービスは、クラウド ソリューション プロバイダー (CSP) サブスクリプションをサポートします。
+  - question: >
+      Azure Import/Export サービスを使用して、PST メールボックスと SharePoint データを Microsoft 365 にコピーすることはできますか?
+    answer: >
+      はい。 詳細については、「[組織の PST ファイルのインポートの概要](/microsoft-365/compliance/importing-pst-files-to-office-365)」を参照してください。
+  - question: >
+      Azure Import/Export サービスを使用して、Azure Backup サービスにバックアップをオフラインでコピーすることはできますか?
+    answer: >
+      はい。 詳しくは、「[Azure Backup でのオフライン バックアップのワークフロー](../backup/backup-azure-backup-import-export.md)」をご覧ください。
+  - question: >
+      インポート/エクスポート ジョブのドライブを Microsoft から購入できますか?
+    answer: >
+      いいえ。 インポート ジョブとエクスポート ジョブで、自分のドライブを発送する必要があります。
+- name: インポート/エクスポートのためのディスクの準備
+  questions:
+  - question: >
+      インポート ジョブのドライブ準備手順をスキップすることはできますか? コピーなしでドライブを準備できますか?
+    answer: >
+      いいえ。 データをインポートするために使用するドライブは、Azure WAImportExport ツールを使用して準備する必要があります。 ドライブへのデータのコピーにも、このツールを使用してください。
+  - question: >
+      エクスポート ジョブを作成するときに、ディスクの準備作業を実行する必要はありますか?
+    answer: >
+      いいえ。 いくつかの事前チェックをお勧めします。 必要なディスクの数を確認するには、WAImportExport ツールの PreviewExport コマンドを使います。 詳細については、「 [Previewing Drive Usage for an Export Job (エクスポート ジョブのドライブ使用率のプレビュー)](/previous-versions/azure/storage/common/storage-import-export-tool-previewing-drive-usage-export-v1)」をご覧ください。 このコマンドは、使用するドライブのサイズに基づいて、選択した BLOB に対するドライブの使用率をプレビューするのに役立ちます。 また、エクスポート ジョブに対して発送されるハード ドライブを読み書きできることを確認します。
+- name: Import/Export ジョブ
+  questions:
+  - question: >
+      ジョブを取り消すことはできますか?
+    answer: >
+      はい。 状態が **[Creating]\作成中\** の間にジョブを取り消すことができます。 ただし、追跡情報を入力すると、ジョブの状態が **[Shipping]\(送付\)** に変わり、ジョブを取り消すことができなくなります。
+  - question: >
+      Azure Portal では、どのくらいの期間、完了したジョブの状態を確認できますか?
+    answer: >
+      完了したジョブの状態は、最大 90 日間、表示されます。 90 日が経過すると、完了したジョブは削除されます。
+  - question: >
+      10 台を超えるドライブでインポートまたはエクスポートするには、どうすればよいでしょうか?
+    answer: >
+      1 つのインポート ジョブまたはエクスポート ジョブが参照できるのは、10 台のドライブまでです。 10 台を超えるドライブを発送するには、複数のジョブを作成する必要があります。 同じジョブに関連付けられているドライブは、同じパッケージにまとめて発送する必要があります。
+
+      データ容量が複数ディスクのインポート ジョブにわたるときの詳細とガイダンスについては、Microsoft サポートに問い合わせてください。
+  - question: >
+      インポート/エクスポート ジョブのデータ コピー ログに問題が見つかりました。 ジョブを修復できますか?
+    answer: >
+      いいえ。現在のバージョンの Azure ImportExport ツール (BLOB の場合はバージョン 1.5.0.300、ファイルの場合はバージョン 2.2.0.300) では、ジョブの修復はサポートされていません。 問題を解決した後で、新しい Import/Export ジョブを作成する必要があります。 [BLOB のインポート ジョブの作成](storage-import-export-data-to-blobs.md#step-2-create-an-import-job)または[ファイルのインポート ジョブの作成](storage-import-export-data-to-files.md#step-2-create-an-import-job)に関する記事を参照してください。
+  - question: >
+      アップロードした BLOB の状態が "Lease expired (リースの有効期限切れ)" として表示されます。 どうすればよいですか。
+    answer: >
+      **Lease Expired (リースの有効期限切れ)** フィールドは無視してかまいません。 Import/Export は、アップロード中、他のプロセスが BLOB を並列に更新できないよう BLOB をリースする必要があります。 **Lease Expired (リースの有効期限切れ)** は、Import/Export による BLOB へのアップロードが今は行われておらず、BLOB が利用可能な状態にあることを示しています。
+- name: ディスクの発送
+  questions:
+  - question: >
+      一度に発送できる HDD は最大で何個ですか?
+    answer: >
+      1 回で発送できる HDD の数に制限はありません。 ディスクが複数のジョブに属する場合は、次のようにすることをお勧めします。
+
+
+      - 対応するジョブ名のラベルをディスクに付けます。
+
+      - -1、-2 などのサフィックスが付いた追跡番号でジョブを更新します。
+  - question: >
+      HDD 以外のものをパッケージに含める必要はありますか?
+    answer: >
+      発送パッケージではハード ドライブだけを発送してください。 電源ケーブルや USB ケーブルなどは同梱しないでください。
+  - question: >
+      FedEx や DHL を利用してドライブを発送する必要がありますか?
+    answer: "既知の運送業者を利用して Azure データ センターにドライブを発送できます。 FedEx、DHL、またはアメリカ郵政公社を利用することをお勧めします。 アメリカ郵政公社を利用する場合、デバイスはデータセンターでなく、最寄りの郵便局に送られるため、大幅な遅れが出る可能性があるのでご注意ください。\n\nデータセンターからユーザーへのドライブの返送の場合は、以下を指定する必要があります。 \n\n- 米国およびヨーロッパにおける FedEx アカウント番号\n- または、アジアおよびオーストラリア地域での DHL アカウント番号\n\n> [!NOTE]\n> インドのデータセンターでは、ドライブを返却する際にレターヘッドに申告書 (納品書) が必要になります。 また、必要な入館証を手配するために、選択した運送業者に集荷の予約を入れ、詳細をデータセンターに伝える必要があります。\n    \n"
+  - question: >
+      ドライブを海外に発送したり返送したりする場合、何か制限はありますか?
+    answer: >
+      発送する物理メディアが国境を越える場合があることに注意してください。 お客様は、物理メディアおよびデータが輸入および輸出に関して該当する法律に準拠していることを確認する必要があります。 物理メディアを発送する前に、アドバイザーに依頼して、メディアおよびデータが指定のデータ センターに合法的に発送できることを確認してもらってください。 事前に確認することで、マイクロソフトへの到着が遅れるのを防ぐことができます。
+
+
+      アップロードの完了後、ドライブを海外の住所に返送するプロセスは、国内の返送に要する期間 (通常 2 日から 3 日) よりも長くなる場合があります。 Azure Portal に "Packaging (梱包)" として表示されている段階では、さまざまな海外輸出入要件を確実に満たした発送を行うために、適切な書類が提出されるよう Data Box チームが万全を期しています。
+  - question: >
+      ディスクをデータセンターに送付するための特別な要件はありますか?
+    answer: >
+      要件は、特定の Azure データセンターの制限事項によって異なります。
+
+
+      - セキュリティ上の理由から、小包に Microsoft データセンターの入荷 ID 番号を記載することを求めるサイトがいくつかあります (オーストラリア、ドイツ、英国南部など)。 ドライブまたはディスクをデータセンターに発送する前に、Azure DataBox Operations (adbops@microsoft.com) に連絡してこの番号を入手してください。 この番号がない場合、パッケージは受け取り拒否されます。
+
+      - インドのデータセンターでは、入門許可証を入手するために、ドライバーの個人情報 (政府 ID カード番号または証明番号 (PAN、AADHAR、DL など)、名前、連絡先、車のナンバーなど) が必要になります。 配送遅延が発生しないように、これらの要件について運送業者に知らせてください。
+  - question: >
+      ジョブの作成時に、ストレージ アカウントの場所とは異なる場所が送付先住所として提供されました。 どうすればよいですか。
+    answer: >
+      一部のストレージ アカウントの場所は、別の送付先にマップされています。 以前に利用できた送付先が、一時的に別の場所にマップされている場合もあります。 ドライブを発送する前に、ジョブの作成時に提供された送付先住所を必ず確認してください。
+  - question: >
+      ドライブを発送するときに、運送業者からデータ センターの連絡先の住所と電話番号を求められました。 何を提供すればよいですか?
+    answer: >
+      電話番号とデータ センターの住所は、ジョブの作成の一環として提供されます。
+  - question: >
+      デバイスが既に配送されているのに、注文の状態がまだ「発送」であるのはなぜですか?
+    answer: >
+      運送業者が物理的なデバイスを配送した後、Azure Import/Export で配送が処理されるまでに 1 営業日から 3 営業日かかります。 処理が完了すると、注文の状態は「受取済み」に変わります。
+- name: その他
+  questions:
+  - question: >
+      サポートされる要件に適合しない HDD を誤って発送した場合は、どうなりますか?
+    answer: >
+      Azure データ センターでは、サポートされる要件に適合しないドライブは返送されます。 サポートされる要件を満たすのが、パッケージ内の一部のドライブだけである場合は、それらのドライブが処理され、要件を満たさないドライブは返送されます。
+  - question: >
+      ドライブは返送前にフォーマットされるのですか?
+    answer: >
+      いいえ。 ドライブはすべて BitLocker で暗号化されます。
+  - question: >
+      このサービスでインポートされたデータには、どのようにしてアクセスできますか?
+    answer: "Azure ストレージ アカウントのデータにアクセスするには、Azure Portal または[ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用します。  \n"
+  - question: >
+      インポートの完了後、ストレージ アカウント内でデータはどのような状態になりますか? ディレクトリ階層は保持されますか?
+    answer: >
+      インポート ジョブのハード ドライブを準備するときに、データセット CSV の DstBlobPathOrPrefix フィールドでコピー先が指定されます。 これは、ハード ドライブのデータのコピー先となるストレージ アカウント内のコピー先コンテナーです。 このコピー先コンテナー内に、ハード ドライブのフォルダーの仮想ディレクトリが作成され、ファイルの BLOB が作成されます。
+  - question: >
+      ストレージ アカウント内に既に存在するファイルがドライブに含まれている場合、既存の BLOB またはファイルは上書きされますか?
+    answer: >
+      はい。 Azure ImportExport ツールの最新リリース (バージョン 1.5.0.300 (BLOB の場合) と 2.2.0.300 (ファイルの場合)) では、インポートに同じ名前のファイルまたは BLOB が含まれる場合、ストレージに既に存在する BLOB またはファイルは自動的に上書きされます。 以前のツール バージョンでは、既存の BLOB またはファイルの名前が同じ場合、既定では受信ファイルの名前が変更されていました。 データセット CSV ファイルの Disposition フィールドを使用すると、コピー先のファイルまたは BLOB の名前を変更するか、上書きしないか、上書きするかを指定できます。 Disposition フィールドの形式は `Disposition:<rename|no-overwrite|overwrite>` です。
+  - question: >
+      新しいジョブを作成しています。 古い Azure Import/Export ツールを引き続き使用できますか?
+    answer: >
+      既存のジョブで古い Azure Import/Export ツールを使用することもできます。 ただし、古いツールは段階的に廃止されるため、新しいインポート/エクスポート ジョブについては最新のツール バージョンへ移行することを強くお勧めします。古いツールがサポートされなくなると、Azure portal に通知が表示されます。
+
+      最新のツール バージョンの場所を次に示します。 BLOBの場合、[WAImportExport バージョン 1.5.0.300 をダウンロードします](https://www.microsoft.com/download/details.aspx?id=42659)。 ファイルの場合、[WAImportExport バージョン 2.2.0.300 をダウンロードします](https://aka.ms/waiev2)。
+  - question: >
+      WAImportExport ツールは、32 ビット オペレーティング システムと互換性がありますか?
+    answer: >
+      いいえ。 WAImportExport ツールは、64 ビット Windows オペレーティング システムとのみ互換性があります。 サポートされる OS の全一覧については、[サポートされるオペレーティング システム](./storage-import-export-requirements.md)に関するページをご覧ください。
+  - question: >
+      Azure Import/Export でサポートされるブロック BLOB とページ BLOB の最大サイズはいくつですか?
+    answer: >
+      - ブロック BLOB の最大サイズは、約 4.768 TB (5,000,000 MB) です。
+
+      - ページ BLOB の最大サイズは 8 TB です。
+  - question: >
+      Azure Import/Export は AES-256 暗号化をサポートしていますか?
+    answer: >
+      はい。 Azure Import/Export サービスでは、AES-256 BitLocker 暗号化が既定で使用されます。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n* [Azure Import/Export とは](storage-import-export-service.md)"

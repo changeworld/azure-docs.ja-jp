@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: c08d0c210e992cba5bca2695fda0bcf08c4689dc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 9688ca47efabd8023f29879f9963ab43f0882cf4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772093"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286386"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>チュートリアル:.NET で仮想マシンを使用して Azure Key Vault を使用する
 
@@ -138,7 +138,7 @@ Set-AzKeyVaultAccessPolicy -ResourceGroupName <YourResourceGroupName> -VaultName
 
 ### <a name="install-net-core"></a>.NET Core のインストール
 
-.NET Core をインストールするには、[.NET のダウンロード](https://www.microsoft.com/net/download) ページに移動します。
+.NET Core をインストールするには、[.NET のダウンロード](https://dotnet.microsoft.com/download) ページに移動します。
 
 ### <a name="create-and-run-a-sample-net-app"></a>サンプルの .NET アプリを作成して実行する
 

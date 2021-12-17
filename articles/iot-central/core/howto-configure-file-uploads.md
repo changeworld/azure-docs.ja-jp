@@ -4,19 +4,17 @@ description: デバイスからクラウドへのファイルのアップロー�
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/23/2020
+ms.date: 08/23/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: ed2eff4d6ccbb9f85dfaf7049fa3cc18711bae0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57ee46a9ba0283def1e1c2d3e2fb71bdf44ec08c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97796908"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486362"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>ファイルをデバイスからクラウドにアップロードする
-
-*このトピックは、管理者とデバイス開発者を対象としています。*
 
 IoT Central では、接続されているデバイスからクラウド ストレージにメディアやその他のファイルをアップロードできます。 IoT Central アプリケーションでファイルのアップロード機能を構成してから、デバイスのコードでファイルのアップロードを実装します。
 
@@ -54,7 +52,7 @@ IoT Central では、接続されているデバイスからクラウド スト�
 
 ## <a name="upload-a-file-from-a-device"></a>デバイスからのファイルのアップロード
 
-IoT Central では、IoT Hub のファイル アップロード機能を使用して、デバイスからファイルをアップロードできるようにします。 デバイスからファイルをアップロードする方法を示すサンプル コードについては、[IoT Central ファイル アップロード デバイス サンプル](/samples/iot-for-all/iotc-file-upload-device/iotc-file-upload-device/)を参照してください。
+IoT Central では、IoT Hub のファイル アップロード機能を使用して、デバイスからファイルをアップロードできるようにします。 デバイスからファイルをアップロードする方法を示すサンプル コードについては、[IoT Central ファイル アップロード デバイス サンプル](/samples/azure-samples/iot-central-file-upload-device/iotc-file-upload-device/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure Backup のバ�
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: ced0e0020fe955734bf6cc767480fbadd6eaffc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4f1a0c3701e2b2d46a555f82433642e5a013b24
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88890282"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438086"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>REST API を使用してバックアップ ジョブと復元ジョブを追跡する
 
@@ -33,7 +33,7 @@ Azure Backup サービスは、バックアップのトリガー、復元操作�
 }
 ```
 
-Azure VM のバックアップ ジョブは "jobId" フィールドによって識別され、[こちら](/rest/api/backup/jobdetails/)で説明されているように、簡単な *GET* 要求を使用して追跡できます。
+Azure VM のバックアップ ジョブは "jobId" フィールドによって識別され、[こちら](/rest/api/backup/job-details)で説明されているように、簡単な *GET* 要求を使用して追跡できます。
 
 ## <a name="tracking-the-job"></a>ジョブの追跡
 
@@ -45,9 +45,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="response"></a>Response
 
-|名前  |Type  |説明  |
+|名前  |型  |説明  |
 |---------|---------|---------|
-|200 OK     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | [OK]        |
+|200 OK     | [JobResource](/rest/api/backup/job-details/get#jobresource)        | [OK]        |
 
 #### <a name="example-response"></a>応答の例
 

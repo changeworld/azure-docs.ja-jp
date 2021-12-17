@@ -1,22 +1,22 @@
 ---
 title: Azure Spring Cloud のトラブルシューティング ガイド | Microsoft Docs
 description: Azure Spring Cloud のトラブルシューティング ガイド
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 09/08/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 2a26a71e956a7e1313af9e99cc92232d0caf91e7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 98f9a87825a2eb0bbae36255111ba4b019fb4750
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877649"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015389"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Azure Spring Cloud に関する一般的な問題のトラブルシューティング
 
-この記事では、Azure Spring Cloud の開発に関する問題のトラブルシューティングについて説明します。 詳しくは、「[よく寄せられる質問](spring-cloud-faq.md)」をご覧ください。
+この記事では、Azure Spring Cloud の開発に関する問題のトラブルシューティングについて説明します。 詳しくは、「[よく寄せられる質問](./faq.md)」をご覧ください。
 
 ## <a name="availability-performance-and-application-issues"></a>可用性、パフォーマンス、アプリケーションの問題
 
@@ -28,7 +28,8 @@ Azure Log Analytics にログをエクスポートしてください。 Spring �
 
 > "org.springframework.context.ApplicationContextException: Unable to start web server" (Web サーバーを開始できません)
 
-このメッセージは、次の 2 つの問題のいずれかを示しています。 
+このメッセージは、次の 2 つの問題のいずれかを示しています。
+
 * いずれかの Bean またはその依存関係のいずれかが見つかりません。
 * Bean のプロパティの 1 つが見つからないか、無効です。 この場合、"java.lang.IllegalArgumentException" が表示される可能性があります。
 
@@ -38,7 +39,6 @@ Azure Log Analytics にログをエクスポートしてください。 Spring �
 
 このエラーを解決するには、MySQL インスタンスの `server parameters` に移動し、`time_zone` の値を *SYSTEM* から *+0:00* に変更します。
 
-
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>アプリケーションがクラッシュするか、予期しないエラーをスローする
 
 アプリケーションのクラッシュをデバッグするときは、まずアプリケーションの実行状態と検出状態を確認します。 そのためには、Azure portal の _[アプリの管理]_ に移動し、すべてのアプリケーションの状態が _[実行中]_ かつ _[稼働中]_ であることを確認します。
@@ -47,30 +47,36 @@ Azure Log Analytics にログをエクスポートしてください。 Spring �
 
 * 検出状態が _[稼働中]_ になっている場合は、[メトリック] に移動して、アプリケーションの正常性を確認します。 確認するメトリックは次のとおりです。
 
+   - `TomcatErrorCount` (_tomcat.global.error_):
 
-  - `TomcatErrorCount` (_tomcat.global.error_):Spring アプリケーションのすべての例外がここにカウントされます。 この値が大きい場合は、Azure Log Analytics に移動して、アプリケーション ログを調べます。
+      Spring アプリケーションのすべての例外がここにカウントされます。 この値が大きい場合は、Azure Log Analytics に移動して、アプリケーション ログを調べます。
 
-  - `AppMemoryMax` (_jvm.memory.max_):アプリケーションで利用可能なメモリの最大量です。 量が定義されていないか、定義されていても時間が経って変更されている可能性があります。 定義されている場合、使用済みおよびコミット済みのメモリの量は常に最大量以下になります。ただし、"*使用済みメモリ量が最大メモリ量以下*" であっても、割り当てにおいて "*コミット済みより使用済みが大きくなる*" ように使用済みメモリの増量が試みられると、メモリ割り当てが `OutOfMemoryError` メッセージで失敗する可能性があります。 このような状況では、`-Xmx` パラメーターを使用して最大ヒープ サイズを増やしてみてください。
+   - `AppMemoryMax` (_jvm.memory.max_):
 
-  - `AppMemoryUsed` (_jvm.memory.used_):アプリケーションで現在使用されているメモリの量 (バイト単位) です。 通常の負荷の Java アプリケーションでは、このメトリック シリーズは "*鋸歯*" パターンになります。この場合、メモリの使用量は、少しずつ増加して突然大きく減少するという、安定した増減パターンを繰り返します。 このメトリック シリーズは、Java 仮想マシン内のガベージ コレクションによって発生し、鋸歯パターンで大きく低下したところが、コレクション アクションを表しています。
-    
+      アプリケーションで利用可能なメモリの最大量です。 量が定義されていないか、定義されていても時間が経って変更されている可能性があります。 定義されている場合、使用済みおよびコミット済みのメモリの量は常に最大量以下になります。ただし、"*使用済みメモリ量が最大メモリ量以下*" であっても、割り当てにおいて "*コミット済みより使用済みが大きくなる*" ように使用済みメモリの増量が試みられると、メモリ割り当てが `OutOfMemoryError` メッセージで失敗する可能性があります。 このような状況では、`-Xmx` パラメーターを使用して最大ヒープ サイズを増やしてみてください。
+
+   - `AppMemoryUsed` (_jvm.memory.used_):
+
+      アプリケーションで現在使用されているメモリの量 (バイト単位) です。 通常の負荷の Java アプリケーションでは、このメトリック シリーズは "*鋸歯*" パターンになります。この場合、メモリの使用量は、少しずつ増加して突然大きく減少するという、安定した増減パターンを繰り返します。 このメトリック シリーズは、Java 仮想マシン内のガベージ コレクションによって発生し、鋸歯パターンで大きく低下したところが、コレクション アクションを表しています。
+
     このメトリックは、次のようなメモリの問題を特定するのに役立ちます。
+
     * 最初のメモリの爆発的な増加。
     * 特定の論理パスに対するメモリ割り当ての急増。
     * 段階的なメモリ リーク。
-  詳しくは、[メトリック](spring-cloud-concept-metrics.md)に関する記事をご覧ください。
-  
+
+   詳しくは、[メトリック](./concept-metrics.md)に関する記事をご覧ください。
+
 * アプリケーションの起動に失敗した場合は、アプリケーションに有効な jvm パラメーターがあることを確認します。 jvm メモリの設定が高すぎる場合、ログに次のエラー メッセージが含まれている可能性があります。
 
-  >"required memory 2728741K is greater than 2000M available for allocation" (必要なメモリ 2728741K は割り当てに使用できる 2000M を超えています)
-
-
+   > "required memory 2728741K is greater than 2000M available for allocation" (必要なメモリ 2728741K は割り当てに使用できる 2000M を超えています)
 
 Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/logs/log-analytics-tutorial.md)」をご覧ください。
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>アプリケーションで高い CPU 使用率またはメモリ使用率が発生する
 
 アプリケーションで CPU またはメモリの使用率が高くなった場合には、次の 2 つの状況のいずれかが発生しています。
+
 * すべてのアプリ インスタンスで CPU またはメモリの使用率が高い。
 * 一部のアプリ インスタンスで CPU またはメモリの使用率が高い。
 
@@ -80,11 +86,11 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 2. 監視するアプリケーションを指定するには、**App=** フィルターを追加します。
 3. **インスタンス** ごとにメトリックを分割します。
 
-"*すべてのインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、アプリケーションをスケールアウトするか、CPU またはメモリの使用量をスケールアップする必要があります。 詳細については、[Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-howto-scale-manual.md)」をご覧ください。
+"*すべてのインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、アプリケーションをスケールアウトするか、CPU またはメモリの使用量をスケールアップする必要があります。 詳細については、[Azure Spring Cloud でアプリケーションをスケーリングする](./how-to-scale-manual.md)」をご覧ください。
 
 "*一部のインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、インスタンスの状態とその検出状態を確認します。
 
-詳しくは、「[Azure Spring Cloud のメトリック](spring-cloud-concept-metrics.md)」をご覧ください。
+詳しくは、「[Azure Spring Cloud のメトリック](./concept-metrics.md)」をご覧ください。
 
 すべてのインスタンスが稼働している場合は、Azure Log Analytics に移動して、アプリケーション ログのクエリを実行し、コードのロジックを調べます。 これは、いずれかがスケールのパーティション分割に影響している可能性があるかどうかを確認するのに役立ちます。 詳しくは、「[診断設定でログとメトリックを分析する](diagnostic-services.md)」をご覧ください。
 
@@ -96,7 +102,7 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 * 指定した Java ランタイム バージョンのローカル環境で、アプリケーションを実行できる。
 * 環境の構成 (CPU、RAM、およびインスタンス) が、アプリケーション プロバイダーが定めた最小要件を満たしている。
-* 構成項目に適切な値が設定されている。 詳細については、[構成サーバー](spring-cloud-howto-config-server.md)に関するページを参照してください。
+* 構成項目に適切な値が設定されている。 詳細については、[構成サーバー](./how-to-config-server.md)に関するページを参照してください。
 * 環境変数に適切な値が設定されている。
 * JVM パラメーターに適切な値が設定されている。
 * 埋め込まれている "_構成サーバー_" および "_Spring サービス レジストリ_" サービスを無効にするか、アプリケーション パッケージから削除することをお勧めします。
@@ -111,11 +117,11 @@ Azure portal を使用して Azure Spring Cloud サービス インスタンス�
 一方、[Azure CLI](/cli/azure/get-started-with-azure-cli) または [Azure Resource Manager テンプレート](../azure-resource-manager/index.yml)を使用して Azure Spring Cloud サービス インスタンスを設定する場合には、次のことを確認してください。
 
 * サブスクリプションがアクティブである。
-* 場所が Azure Spring Cloud で[サポートされている](spring-cloud-faq.md)。
+* 場所が Azure Spring Cloud で[サポートされている](./faq.md)。
 * インスタンスのリソース グループが既に作成されている。
 * リソース名が、名前付け規則に準拠している 使用できる文字は小文字、数字、およびハイフンのみです。 先頭の文字は英字にする必要があります。 末尾の文字は、文字または数字にする必要があります。 値は 2 文字以上 32 文字以下にする必要があります。
 
-Resource Manager テンプレートを使用して Azure Spring Cloud サービス インスタンスを設定する場合は、最初に「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md)」を参照してください。
+Resource Manager テンプレートを使用して Azure Spring Cloud サービス インスタンスを設定する場合は、最初に「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/syntax.md)」を参照してください。
 
 Azure Spring Cloud サービス インスタンスの名前が `azureapps.io` の下のサブドメイン名を要求するために使用されるため、名前が既存のものと競合する場合、設定は失敗します。 アクティビティ ログで詳細を確認できる場合があります。
 
@@ -151,7 +157,7 @@ Azure portal または Resource Manager テンプレートを使用して、JAR 
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-ただし、1 つの Azure Spring Cloud サービス インスタンスから一度にトリガーできるビルド ジョブは、ソース パッケージ 1 つにつき 1 件のみであることに注意してください。 詳しくは、「[アプリケーションをデプロイする](spring-cloud-quickstart.md)」および「[Azure Spring Cloud でステージング環境を設定する](spring-cloud-howto-staging-environment.md)」をご覧ください。
+ただし、1 つの Azure Spring Cloud サービス インスタンスから一度にトリガーできるビルド ジョブは、ソース パッケージ 1 つにつき 1 件のみであることに注意してください。 詳しくは、「[アプリケーションをデプロイする](./quickstart.md)」および「[Azure Spring Cloud でステージング環境を設定する](./how-to-staging-environment.md)」をご覧ください。
 
 ### <a name="my-application-cant-be-registered"></a>アプリケーションを登録できない
 
@@ -167,12 +173,13 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>アプリケーションの環境変数を調べたい
 
-環境変数によって Azure Spring Cloud フレームワークに伝えられる情報により、アプリケーションを構成するサービスの場所と構成方法が Azure で認識されます。 潜在的な問題をトラブルシューティングするためにまず必要な手順は、環境変数が正しいことの確認です。  環境変数は、Spring Boot Actuator エンドポイントを使用して確認できます。  
+環境変数によって Azure Spring Cloud フレームワークに伝えられる情報により、アプリケーションを構成するサービスの場所と構成方法が Azure で認識されます。 潜在的な問題をトラブルシューティングするためにまず必要な手順は、環境変数が正しいことの確認です。  環境変数は、Spring Boot Actuator エンドポイントを使用して確認できます。
 
 > [!WARNING]
 > この手順では、テスト エンドポイントを使用して環境変数が公開されます。  テスト エンドポイントがパブリックにアクセスできる場合や、アプリケーションにドメイン名が割り当てられている場合は、この先の手順を行わないようにしてください。
 
-1. `https://<your application test endpoint>/actuator/health` にアクセスします。  
+1. `https://<your application test endpoint>/actuator/health` にアクセスします。
+
     - `{"status":"UP"}` のような応答は、エンドポイントが有効になっていることを示します。
     - 応答が否定的である場合は、*POM.xml* ファイルに次の依存関係を追加します。
 
@@ -183,7 +190,7 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
             </dependency>
         ```
 
-1. Spring Boot Actuator エンドポイントが有効になったら、Azure portal に移動してアプリケーションの構成ページを見つけます。  名前は `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`、値は `*` として、環境変数を追加します。 
+1. Spring Boot Actuator エンドポイントが有効になったら、Azure portal に移動してアプリケーションの構成ページを見つけます。  名前は `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`、値は `*` として、環境変数を追加します。
 
 1. アプリケーションを再起動します。
 
@@ -212,7 +219,7 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 **[アプリの管理]** に移動し、アプリケーションの状態が _[実行中]_ かつ _[稼働中]_ であることを確認します。
 
-アプリケーション パッケージで _JMX_ が有効になっているか確認します。 この機能は構成プロパティ `spring.jmx.enabled=true` で有効にできます。  
+アプリケーション パッケージで _JMX_ が有効になっているか確認します。 この機能は構成プロパティ `spring.jmx.enabled=true` で有効にできます。
 
 アプリケーション パッケージで `spring-boot-actuator` 依存関係が有効になっており、正常に起動しているかどうかを確認します。
 
@@ -227,4 +234,4 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Spring Cloud での問題を自己診断して解決する方法](spring-cloud-howto-self-diagnose-solve.md)
+* [Azure Spring Cloud での問題を自己診断して解決する方法](./how-to-self-diagnose-solve.md)

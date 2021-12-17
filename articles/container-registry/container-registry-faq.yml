@@ -1,0 +1,494 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Container Registry
+  description: Azure Container Registry サービスに関連したよく寄せられる質問への回答
+  author: sajayantony
+  ms.topic: article
+  ms.date: 09/17/2021
+  ms.author: sajaya
+  ms.openlocfilehash: 4a7c640897fc40916d42b387aa1d3f73cba9e85b
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132345453"
+title: よく寄せられる質問 - Azure Container Registry
+summary: >
+  この記事では、Azure Container Registry に関するよく寄せられる質問および既知の問題について説明します。
+
+
+  レジストリのトラブルシューティング ガイダンスについては、以下を参照してください。
+
+  * [レジストリ ログインのトラブルシューティング](container-registry-troubleshoot-login.md)
+
+  * <bpt id="p1">[</bpt>レジストリに関するネットワークの問題のトラブルシューティング<ept id="p1">](container-registry-troubleshoot-access.md)</ept>
+
+  * [レジストリのパフォーマンスのトラブルシューティング](container-registry-troubleshoot-performance.md)
+sections:
+- name: リソース管理
+  questions:
+  - question: >
+      Resource Manager テンプレートを使用して Azure コンテナー レジストリを作成できますか?
+    answer: >
+      はい。 レジストリを作成するために使用できる<bpt id="p1">[</bpt>テンプレート<ept id="p1">](https://azure.microsoft.com/resources/templates/container-registry/)</ept>がここにあります。
+  - question: >
+      ACR 内のイメージに対するセキュリティ脆弱性スキャンは存在しますか?
+    answer: >
+      はい。 [Microsoft Defender for Cloud](../security-center/defender-for-container-registries-introduction.md)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)、および [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) のドキュメントをご覧ください。
+  - question: >
+      Azure Container Registry で Kubernetes を構成するにはどうすればよいですか?
+    answer: >
+      <bpt id="p1">[</bpt>Kubernetes<ept id="p1">](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr)</ept> のドキュメントおよび <bpt id="p2">[</bpt>Azure Kubernetes Service<ept id="p2">](../aks/cluster-container-registry-integration.md)</ept> の手順を参照してください。
+  - question: >
+      コンテナー レジストリの管理者の資格情報を取得するにはどうすればよいですか?
+    answer: >
+      > [!IMPORTANT]
+
+      > 管理者ユーザー アカウントは、主にテストの目的でレジストリにアクセスする 1 人のユーザーのために設計されています。 管理者アカウントの資格情報を複数のユーザーと共有しないようにすることをお勧めします。 ユーザーおよびヘッドレス シナリオ用のサービス プリンシパルには、個人 ID を使用することをお勧めします。 <bpt id="p1">[</bpt>認証の概要<ept id="p1">](container-registry-authentication.md)</ept>に関するページを参照してください。
+
+
+      管理者の資格情報を取得する前に、レジストリの管理者ユーザーが有効になっていることを確認してください。
+
+
+      Azure CLI を使用して資格情報を取得するには:
+
+
+      ```azurecli
+
+      az acr credential show -n myRegistry
+
+      ```
+
+
+      Azure PowerShell の使用:
+
+
+      ```powershell
+
+      Invoke-AzureRmResourceAction -Action listCredentials -ResourceType Microsoft.ContainerRegistry/registries -ResourceGroupName myResourceGroup -ResourceName myRegistry
+
+      ```
+  - question: >
+      Resource Manager テンプレートの管理者の資格情報を取得するにはどうすればよいですか?
+    answer: >
+      > [!IMPORTANT]
+
+      > 管理者ユーザー アカウントは、主にテストの目的でレジストリにアクセスする 1 人のユーザーのために設計されています。 管理者アカウントの資格情報を複数のユーザーと共有しないようにすることをお勧めします。 ユーザーおよびヘッドレス シナリオ用のサービス プリンシパルには、個人 ID を使用することをお勧めします。 <bpt id="p1">[</bpt>認証の概要<ept id="p1">](container-registry-authentication.md)</ept>に関するページを参照してください。
+
+
+      管理者の資格情報を取得する前に、レジストリの管理者ユーザーが有効になっていることを確認してください。
+
+
+      最初のパスワードを取得するには:
+
+
+      ```json
+
+      {
+          "password": "[listCredentials(resourceId('Microsoft.ContainerRegistry/registries', 'myRegistry'), '2017-10-01').passwords[0].value]"
+      }
+
+      ```
+
+
+      2 番目のパスワードを取得するには:
+
+
+      ```json
+
+      {
+          "password": "[listCredentials(resourceId('Microsoft.ContainerRegistry/registries', 'myRegistry'), '2017-10-01').passwords[1].value]"
+      }
+
+      ```
+  - question: >
+      レプリケーションは Azure CLI または Azure PowerShell を使用して削除されるが、レプリケーションの削除が "許可されていません" 状態で失敗する
+    answer: "このエラーは、ユーザーがレジストリに対するアクセス許可を持っているが、サブスクリプションに対する閲覧者レベルのアクセス許可を持っていない場合に表示されます。 この問題を解決するには、ユーザーにサブスクリプションに対する閲覧者アクセス許可を割り当てます。\n\n\n```azurecli  \naz role assignment create --role \"Reader\" --assignee user@contoso.com --scope /subscriptions/<subscription_id> \n```\n"
+  - question: >
+      ファイアウォール規則が正常に更新されたのに有効にならない
+    answer: >
+      ファイアウォール規則の変更が反映されるまで時間がかかります。 ファイアウォールの設定を変更した後は、この変更を検証する前に、数分間お待ちください。
+- name: レジストリの操作
+  questions:
+  - question: >
+      Docker Registry HTTP API V2 にアクセスするにはどうすればよいですか?
+    answer: >
+      ACR は Docker Registry HTTP API V2 をサポートしています。 これらの API には <ph id="ph1">`https://<your registry login server>/v2/`</ph> でアクセスできます。 例: `https://mycontainerregistry.azurecr.io/v2/`
+  - question: >
+      リポジトリ内のどのタグによっても参照されていないすべてのマニフェストを削除するにはどうすればよいですか?
+    answer: "Bash を使用している場合:\n\n```azurecli\naz acr repository show-manifests -n myRegistry --repository myRepository --query \"[?tags[0]==null].digest\" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%\n```\n\nPowerShell の場合:\n\n```azurecli\naz acr repository show-manifests -n myRegistry --repository myRepository --query \"[?tags[0]==null].digest\" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }\n```\n\n> [!NOTE] \n> 削除コマンドで <ph id=\"ph1\">`-y`</ph> を追加すると、確認をスキップできます。\n\n詳細については、「<bpt id=\"p1\">[</bpt>Azure Container Registry のコンテナー イメージを削除する<ept id=\"p1\">](container-registry-delete.md)</ept>」を参照してください。\n"
+  - question: >
+      イメージを削除した後もレジストリ クォータの使用量が減少しないのはなぜですか?
+    answer: >
+      この状況は、基になるレイヤーが引き続き他のコンテナー イメージによって参照されている場合に発生することがあります。 参照されていないイメージを削除した場合、レジストリの使用量は数分以内に更新されます。
+  - question: >
+      ストレージ クォータの変更を検証するにはどうすればよいですか?
+    answer: >
+      次の docker ファイルを使用して、1GB のレイヤーを持つイメージを作成します。 これにより、このイメージには、レジストリ内の他のどのイメージからも共有されないレイヤーが確実に含まれます。
+
+
+      ```dockerfile
+
+      FROM alpine
+
+      RUN dd if=/dev/urandom of=1GB.bin  bs=32M  count=32
+
+      RUN ls -lh 1GB.bin
+
+      ```
+
+
+      docker CLI を使用して、このイメージを構築してレジストリにプッシュします。
+
+
+      ```bash
+
+      docker build -t myregistry.azurecr.io/1gb:latest .
+
+      docker push myregistry.azurecr.io/1gb:latest
+
+      ```
+
+
+      Azure Portal でストレージの使用量が増加したことを確認できるか、または CLI を使用して使用量にクエリを実行できます。
+
+
+      ```azurecli
+
+      az acr show-usage -n myregistry
+
+      ```
+
+
+      Azure CLI またはポータルを使用してイメージを削除し、数分以内に更新された使用量を確認します。
+
+
+      ```azurecli
+
+      az acr repository delete -n myregistry --image 1gb
+
+      ```
+  - question: >
+      コンテナーで CLI を実行しているときにレジストリに対して認証するにはどうすればよいですか?
+    answer: >
+      Docker ソケットをマウントすることによって Azure CLI コンテナーを実行する必要があります。
+
+
+      ```bash
+
+      docker run -it -v /var/run/docker.sock:/var/run/docker.sock azuresdk/azure-cli-python:dev
+
+      ```
+
+
+      コンテナーで、<ph id="ph1">`docker`</ph> をインストールします。
+
+
+      ```bash
+
+      apk --update add docker
+
+      ```
+
+
+      次に、レジストリに対して認証します。
+
+
+      ```azurecli
+
+      az acr login -n MyRegistry
+
+      ```
+  - question: >
+      TLS 1.2 はどのようにして有効にするのですか?
+    answer: "最新の docker クライアント (バージョン 18.03.0 以上) を使用して TLS 1.2 を有効にします。 \n\n> [!IMPORTANT]\n> 2020 年 1 月 13 日以降、Azure Container Registry では、サーバーとアプリケーションからのセキュリティで保護されたすべての接続で TLS 1.2 を使用する必要があります。 TLS 1.0 と 1.1 のサポートは、廃止される予定です。\n"
+  - question: >
+      Azure Container Registry はコンテンツの信頼をサポートしていますか?
+    answer: >
+      はい。<bpt id="p1">[</bpt>Docker Notary<ept id="p1">](https://docs.docker.com/notary/getting_started/)</ept> が統合されており、これを有効にできるため、Azure Container Registry で信頼済みのイメージを使用できます。 詳細については、「<bpt id="p1">[</bpt>Azure Container Registry におけるコンテンツの信頼<ept id="p1">](container-registry-content-trust.md)</ept>」を参照してください。
+
+
+
+      #### <a name="where-is-the-file-for-the-thumbprint-located"></a>サムプリント用のファイルはどこにありますか?
+
+
+      <ph id="ph1">`~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata`</ph> の下:
+
+
+      * 委任ロールを除くすべてのロールの公開キーと証明書は <ph id="ph1">`root.json`</ph> に格納されています。
+
+      * 委任ロールの公開キーと証明書は、その親ロール (<ph id="ph2">`targets/releases`</ph> ロールの場合の <ph id="ph1">`targets.json`</ph> など) の JSON ファイルに格納されています。
+
+
+      Docker および Notary クライアントによって実行される全体的な TUF の確認の後、これらの公開キーと証明書を確認することをお勧めします。
+  - question: >
+      レジストリ リソースを管理するためのアクセス許可なしで、イメージをプルまたはプッシュするためのアクセス権を付与するにはどうすればよいですか?
+    answer: "ACR は、さまざまなレベルのアクセス許可を提供する<bpt id=\"p1\">[</bpt>カスタム ロール<ept id=\"p1\">](container-registry-roles.md)</ept>をサポートしています。 具体的には、<ph id=\"ph1\">`AcrPull`</ph> および <ph id=\"ph2\">`AcrPush`</ph> ロールを使用すると、ユーザーは Azure でレジストリ リソースを管理するためのアクセス許可なしで、イメージのプルまたはプッシュ、あるいはその両方を行うことができます。\n\n* Azure portal:レジストリ -> [アクセス制御 (IAM)] -> [追加] (ロールの <ph id=\"ph1\">`AcrPull`</ph> または <ph id=\"ph2\">`AcrPush`</ph> を選択)。\n* Azure CLI:次のコマンドを実行して、レジストリのリソース ID を見つけます。\n\n  ```azurecli\n  az acr show -n myRegistry\n  ```\n  \n  その後、ユーザーに <ph id=\"ph1\">`AcrPull`</ph> または <ph id=\"ph2\">`AcrPush`</ph> ロールを割り当てることができます (次の例では <ph id=\"ph3\">`AcrPull`</ph> を使用しています)。\n\n  ```azurecli\n  az role assignment create --scope resource_id --role AcrPull --assignee user@example.com\n  ```\n\n  または、そのアプリケーション ID で識別されたサービス プリンシパルにロールを割り当てます。\n\n  ```azurecli\n  az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000\n  ```\n\nそれにより、アサイニーは、レジストリ内のイメージの認証やアクセスが可能になります。\n\n* レジストリを認証するには:\n    \n  ```azurecli\n  az acr login -n myRegistry \n  ```\n\n* リポジトリを一覧表示するには:\n\n  ```azurecli\n  az acr repository list -n myRegistry\n  ```\n\n* イメージをプルするには:\n\n  ```bash\n  docker pull myregistry.azurecr.io/hello-world\n  ```\n\n<ph id=\"ph1\">`AcrPull`</ph> または <ph id=\"ph2\">`AcrPush`</ph> ロールを使用しただけでは、アサイニーに Azure でレジストリ リソースを管理するためのアクセス許可は与えられません。 たとえば、<ph id=\"ph1\">`az acr list`</ph> または <ph id=\"ph2\">`az acr show -n myRegistry`</ph> でレジストリは表示されません。\n"
+  - question: >
+      レジストリに対するイメージの自動検疫を有効にするにはどうすればよいですか?
+    answer: >
+      イメージの検疫は現在、ACR のプレビュー機能です。 セキュリティ スキャンに正常に合格したイメージのみが通常のユーザーに表示されるように、レジストリの検疫モードを有効にすることができます。 詳細については、<bpt id="p1">[</bpt>ACR の GitHub リポジトリ<ept id="p1">](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)</ept>に関するページを参照してください。
+  - question: >
+      匿名プル アクセスを有効にするにはどうすればよいですか?
+    answer: "詳細については、[レジストリ コンテンツの公開](anonymous-pull-access.md)に関するページを参照してください。          \n"
+  - question: >
+      非再頒布可能レイヤーをレジストリにプッシュするにはどうすればよいですか?
+    answer: >
+      マニフェスト内の非再頒布可能レイヤーには、コンテンツのフェッチ元となる可能性がある URL パラメーターが含まれています。 非再頒布可能レイヤーのプッシュを有効にするユース ケースとしては、ネットワーク制限付きレジストリ、アクセス制限のあるエアギャップ レジストリ、またはインターネット接続のないレジストリが考えられます。
+
+
+      たとえば、VM によるイメージのプルをお使いの Azure コンテナー レジストリからのみ実行できるように NSG 規則を設定している場合、Docker では、外部または非再頒布可能レイヤーのプル エラーが発生します。 たとえば、Windows Server Core イメージには、マニフェスト内の Azure コンテナー レジストリへの外部レイヤー参照が含まれており、このシナリオではプルは失敗します。
+
+
+      非再頒布可能レイヤーのプッシュを有効にするには:
+
+
+      1. <ph id="ph1">`daemon.json`</ph> ファイルを編集します。これは、Linux ホストでは <ph id="ph2">`/etc/docker/`</ph> に、Windows Server では <ph id="ph3">`C:\ProgramData\docker\config\daemon.json`</ph> にあります。 これまでファイルが空であったと仮定して、次の内容を追加します。
+
+         ```json
+         {
+           "allow-nondistributable-artifacts": ["myregistry.azurecr.io"]
+         }
+         ```
+         > [!NOTE]
+         > 値は、コンマで区切られたレジストリ アドレスの配列です。
+
+      2. ファイルを保存して終了します。
+
+
+      3. Docker を再起動します。
+
+
+      一覧のレジストリにイメージをプッシュすると、非再頒布可能レイヤーがレジストリにプッシュされます。
+
+
+      > [!WARNING]
+
+      > 非再頒布可能アーティファクトには、通常、頒布と共有の方法と場所に関する制限があります。 この機能は、アーティファクトをプライベート レジストリにプッシュする場合にのみ使用します。 非再頒布可能アーティファクトの再頒布に関するすべての条件を順守していることを確認します。
+- name: 診断と正常性チェック
+  questions:
+  - question: >
+      <ph id="ph1">`az acr check-health`</ph> を使用した正常性チェック
+    answer: >
+      環境とレジストリに関する一般的な問題のトラブルシューティングを行うには、「<bpt id="p1">[</bpt>Azure コンテナー レジストリの正常性のチェック<ept id="p1">](container-registry-check-health.md)</ept>」を参照してください。
+  - question: >
+      docker pull が "net/http: 接続の待機中に要求が取り消されました (ヘッダーの待機中に Client.Timeout を超えました)" というエラーで失敗する
+    answer: "- このエラーが一時的な問題である場合は、再試行が成功します。\n- <ph id=\"ph1\">`docker pull`</ph> が引き続き失敗する場合は、Docker デーモンの問題である可能性があります。 この問題は一般に、Docker デーモンを再起動することによって緩和されます。 \n- Docker デーモンを再起動してもこの問題が引き続き表示される場合は、コンピューターとの何らかのネットワーク接続の問題である可能性があります。 コンピューター上の一般的なネットワークが正常かどうかを確認するには、次のコマンドを実行してエンドポイントの接続性をテストします。 この接続チェック コマンドを含む最小の<ph id=\"ph1\">`az acr`</ph> バージョンは、2.2.9 です。 以前のバージョンを使用している場合は、Azure CLI をアップグレードしてください。\n\n ```azurecli\n az acr check-health -n myRegistry\n ```\n\n- すべての Docker クライアント操作に対して常に再試行メカニズムを用意する必要があります。\n"
+  - question: >
+      Docker プル速度が遅い
+    answer: >
+      お使いのコンピューターのネットワーク ダウンロード速度をテストするには、<bpt id="p1">[</bpt>この<ept id="p1">](http://www.azurespeed.com/Azure/Download)</ept>ツールを使用します。 コンピューター ネットワークの速度が遅い場合は、レジストリと同じリージョンで Azure VM を使用することを検討してください。 これにより、通常はネットワーク速度が速くなります。
+  - question: >
+      Docker プッシュ速度が遅い
+    answer: >
+      お使いのコンピューターのネットワーク アップロード速度をテストするには、<bpt id="p1">[</bpt>この<ept id="p1">](http://www.azurespeed.com/Azure/Upload)</ept>ツールを使用します。 コンピューター ネットワークの速度が遅い場合は、レジストリと同じリージョンで Azure VM を使用することを検討してください。 これにより、通常はネットワーク速度が速くなります。
+  - question: >
+      docker push は成功するが、docker pull が "権限がありません: 認証が必要です" というエラーで失敗する
+    answer: "このエラーは、<ph id=\"ph1\">`--signature-verification`</ph> が既定で有効になっている Red Hat バージョンの Docker デーモンで発生する場合があります。 次のコマンドを実行して、Red Hat Enterprise Linux (RHEL) または Fedora の Docker デーモン オプションを確認できます。\n\n```bash\ngrep OPTIONS /etc/sysconfig/docker\n```\n\nたとえば、Fedora 28 Server には次の docker デーモン オプションがあります。\n\n`OPTIONS='--selinux-enabled --log-driver=journald --live-restore'`\n\n<ph id=\"ph1\">`--signature-verification=false`</ph> がないと、<ph id=\"ph2\">`docker pull`</ph> は次のようなエラーで失敗します。\n\n```output\nTrying to pull repository myregistry.azurecr.io/myimage ...\nunauthorized: authentication required\n```\n\nこのエラーを解決するには:\n1. Docker デーモンの構成ファイル <ph id=\"ph2\">`/etc/sysconfig/docker`</ph> にオプション <ph id=\"ph1\">`--signature-verification=false`</ph> を追加します。 次に例を示します。\n   \n   `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`\n   \n2. 次のコマンドを実行して、Docker デーモン サービスを再起動します。\n   \n   ```bash\n   sudo systemctl restart docker.service\n   ```\n\n<ph id=\"ph1\">`--signature-verification`</ph> の詳細は、<ph id=\"ph2\">`man dockerd`</ph> を実行して確認できます。\n"
+  - question: >
+      az acr ログインは成功するが、Docker が "権限がありません: 認証が必要です" というエラーで失敗する
+    answer: >
+      レジストリ リソース名が大文字であるか、<ph id="ph2">`myRegistry`</ph> のように大文字と小文字が混在している場合でも、<ph id="ph1">`docker push myregistry.azurecr.io/myimage:latest`</ph> のように、サーバー URL にはすべて小文字を使用してください。
+  - question: "Docker デーモンのデバッグ ログを有効にして取得する    \n"
+    answer: "<ph id=\"ph2\">`debug`</ph> オプションを使用して <ph id=\"ph1\">`dockerd`</ph> を起動します。 最初に、Docker デーモンの構成ファイル (<ph id=\"ph1\">`/etc/docker/daemon.json`</ph>) が存在しない場合は作成し、<ph id=\"ph2\">`debug`</ph> オプションを追加します。\n\n```json\n{    \n    \"debug\": true    \n}\n```\n\n次に、このデーモンを再起動します。 たとえば、Ubuntu 14.04 では次のようにします。\n\n```bash\nsudo service docker restart\n```\n\n詳細は、<bpt id=\"p1\">[</bpt>Docker のドキュメント<ept id=\"p1\">](https://docs.docker.com/engine/admin/#enable-debugging)</ept>で見つけることができます。    \n\n * ログは、システムに応じて異なる場所に生成される可能性があります。 たとえば、Ubuntu 14.04 では <ph id=\"ph1\">`/var/log/upstart/docker.log`</ph> です。    \n詳細については、<bpt id=\"p1\">[</bpt>Docker のドキュメント<ept id=\"p1\">](https://docs.docker.com/engine/admin/#read-the-logs)</ept>を参照してください。    \n\n * Docker for Windows の場合、ログは %LOCALAPPDATA%/docker/ の下に生成されます。 ただし、すべてのデバッグ情報はまだ含まれていない可能性があります。    \n\n   完全なデーモン ログにアクセスするために、追加の手順がいくつか必要になる場合があります。\n\n    ```console\n    docker run --privileged -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v /usr/local/bin/docker:/usr/local/bin/docker alpine sh\n\n    docker run --net=host --ipc=host --uts=host --pid=host -it --security-opt=seccomp=unconfined --privileged --rm -v /:/host alpine /bin/sh\n    chroot /host\n    ```\n    これで、<ph id=\"ph1\">`dockerd`</ph> を実行している VM のすべてのファイルにアクセスできます。 ログは <ph id=\"ph1\">`/var/log/docker.log`</ph> にあります。\n"
+  - question: >
+      更新の直後に新しいユーザー アクセス許可が有効にならない場合がある
+    answer: >
+      サービス プリンシパルに新しいアクセス許可 (新しいロール) を付与した場合は、その変更が直ちに有効にならない可能性があります。 次の 2 つの原因が考えられます。
+
+
+      * Azure Active Directory のロールの割り当ての遅延。 これは通常は高速ですが、伝播の遅延のために数分かかることがあります。
+
+      * ACR トークン サーバーでのアクセス許可の遅延。 これには、最大 10 分かかることがあります。 これを緩和するには、<ph id="ph1">`docker logout`</ph> を実行し、1 分後に同じユーザーで再び認証することができます。
+
+        ```bash
+        docker logout myregistry.azurecr.io
+        docker login myregistry.azurecr.io
+        ```
+
+      ACR は現在、ユーザーによるホーム レプリケーションの削除をサポートしていません。 対処法として、テンプレートにホーム レプリケーションの作成を含めますが、次に示すように <ph id="ph1">`"condition": false`</ph> を追加することによってその作成をスキップします。
+
+
+      ```json
+
+      {
+          "name": "[concat(parameters('acrName'), '/', parameters('location'))]",
+          "condition": false,
+          "type": "Microsoft.ContainerRegistry/registries/replications",
+          "apiVersion": "2017-10-01",
+          "location": "[parameters('location')]",
+          "properties": {},
+          "dependsOn": [
+              "[concat('Microsoft.ContainerRegistry/registries/', parameters('acrName'))]"
+           ]
+      },
+
+      ```
+  - question: >
+      REST API の直接呼び出しで認証情報が正しい形式で提供されない
+    answer: >
+      特に (リダイレクトをフォローするために) オプション <ph id="ph3">`-L`</ph>、<ph id="ph4">`--location`</ph> を指定して <ph id="ph2">`curl`</ph> ツールを使用すると、<ph id="ph1">`InvalidAuthenticationInfo`</ph> エラーが発生する場合があります。
+
+      たとえば、<ph id="ph2">`-L`</ph> オプションを指定した <ph id="ph1">`curl`</ph> と基本認証を使用して BLOB をフェッチすると、
+
+
+      ```bash
+
+      curl -L -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest
+
+      ```
+
+
+      次の応答が返される場合があります。
+
+
+      ```xml
+
+      <?xml version="1.0" encoding="utf-8"?>
+
+      <Error><Code>InvalidAuthenticationInfo</Code><Message>Authentication information is not given in the correct format. Check the value of Authorization header.
+
+      RequestId:00000000-0000-0000-0000-000000000000
+
+      Time:2019-01-01T00:00:00.0000000Z</Message></Error>
+
+      ```
+
+
+      この根本原因は、一部の <ph id="ph1">`curl`</ph> 実装では元の要求のヘッダーを使用してリダイレクトをフォローするためです。
+
+
+      この問題を解決するには、ヘッダーなしで手動でリダイレクトをフォローする必要があります。 <ph id="ph2">`curl`</ph> の <ph id="ph1">`-D -`</ph> オプションを使用して応答ヘッダーを印刷した後、<ph id="ph3">`Location`</ph> ヘッダーを抽出します。
+
+
+      ```bash
+
+      redirect_url=$(curl -s -D - -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest | grep "^Location: " | cut -d " " -f2 | tr -d '\r')
+
+      curl $redirect_url
+
+      ```
+  - question: "Azure Portal にすべてのリポジトリまたはタグが一覧表示されないのはなぜですか? \n"
+    answer: >
+      Microsoft Edge または IE ブラウザーを使用している場合は、最大で 100 個のリポジトリまたはタグを表示できます。 レジストリに 100 を超えるリポジトリまたはタグが含まれている場合は、すべてを一覧表示するために Firefox または Chrome ブラウザーを使用することをお勧めします。
+  - question: >
+      Azure portal でリポジトリまたはタグをフェッチできないのはなぜですか?
+    answer: >
+      ブラウザーがリポジトリまたはタグをサーバーにフェッチするための要求を送信できない可能性があります。 次のような理由が考えられます。
+
+
+      * ネットワーク接続の不備
+
+      * ファイアウォール
+
+      * プライベート アクセスのみを許可するレジストリに対する、公衆ネットワークからのポータルの使用
+
+      * 広告ブロッカー
+
+      * DNS エラー
+
+
+      ネットワーク管理者に問い合わせるか、ネットワークの構成と接続を確認してください。 Azure CLI を使用して <ph id="ph1">`az acr check-health -n yourRegistry`</ph> を実行し、ご使用の環境から Container Registry に接続できるかどうかを確認します。 また、ブラウザーでシークレット/プライベート セッションを試して、古いブラウザー キャッシュや Cookie を回避することもできます。
+  - question: >
+      許可されていない操作エラーで pull または push の要求が失敗するのはなぜですか?
+    answer: >
+      操作が許可されない可能性のあるいくつかのシナリオを次に示します。
+
+      * クラシック レジストリはサポートされなくなりました。 <bpt id="p2">[</bpt>az acr update<ept id="p2">](/cli/azure/acr#az_acr_update)</ept> か Azure portal を使用して、サポートされている<bpt id="p1">[</bpt>サービス レベル<ept id="p1">](./container-registry-skus.md)</ept>にアップグレードしてください。
+
+      * イメージやリポジトリがロックされているため、削除や更新を実行できない場合があります。 <bpt id="p1">[</bpt>az acr show repository<ept id="p1">](./container-registry-image-lock.md)</ept> コマンドを使用して、現在の属性を表示できます。
+
+      * イメージが検疫状態の場合、一部の操作は許可されません。 検疫の詳細については、<bpt id="p1">[</bpt>こちら<ept id="p1">](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)</ept>をご覧ください。
+
+      * レジストリが、その<bpt id="p1">[</bpt>ストレージの上限<ept id="p1">](container-registry-skus.md#service-tier-features-and-limits)</ept>に達した可能性があります。
+  - question: >
+      リポジトリ形式が無効またはサポートされていません
+    answer: "リポジトリの操作でリポジトリ名を指定するときに \"サポートされていないリポジトリ形式\"、\"無効な形式\"、\"要求されたデータが存在しません\" などのエラーが表示された場合は、名前のスペル、および大文字か小文字かを確認します。 有効なリポジトリ名には、小文字の英数字、ピリオド、ダッシュ、アンダースコア、およびスラッシュのみを含めることができます。 \n\nリポジトリの完全な名前付け規則については、<bpt id=\"p1\">[</bpt>Open Container Initiative Distribution Specification<ept id=\"p1\">](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)</ept> (オープン コンテナー イニシアチブの配布仕様) を参照してください。\n"
+  - question: >
+      Windows で http トレースを収集するにはどうすればよいですか?
+    answer: >
+      #### <a name="prerequisites"></a>前提条件
+
+
+      - Fiddler で https の復号化を有効にします: <ph id="ph1"><https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS></ph>
+
+      - Docker UI を使用して、Docker によるプロキシの使用を有効にします: <ph id="ph1"><https://docs.docker.com/docker-for-windows/#proxies></ph>
+
+      - 完了したら必ず元に戻してください。  これが有効になっていて、Fiddler が実行されていない場合、Docker は機能しません。
+
+
+      #### <a name="windows-containers"></a>Windows コンテナー
+
+
+      Docker プロキシを 127.0.0.1:8888 に構成します。
+
+
+      #### <a name="linux-containers"></a>Linux コンテナー
+
+
+      Docker VM 仮想スイッチの IP を見つけます。
+
+
+      ```powershell
+
+      (Get-NetIPAddress -InterfaceAlias "*Docker*" -AddressFamily IPv4).IPAddress
+
+      ```
+
+
+      Docker プロキシを前のコマンドの出力とポート 8888 に構成します (たとえば、10.0.75.1:8888)。
+- name: タスク
+  questions:
+  - question: >
+      実行を一括で取り消すにはどうすればよいですか?
+    answer: >
+      次のコマンドは、指定されたレジストリ内のすべての実行中のタスクを取り消します。
+
+
+      ```azurecli
+
+      az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o tsv \
+
+      | xargs -I% az acr task cancel-run -r $myregistry --run-id %
+
+      ```
+  - question: >
+      az acr build コマンドに .git フォルダーを含めるにはどうすればよいですか?
+    answer: "<ph id=\"ph1\">`az acr build`</ph> コマンドにローカルのソース フォルダーを渡した場合、既定では、<ph id=\"ph2\">`.git`</ph> フォルダーはアップロードされるパッケージから除外されます。 次の設定を使用して、<ph id=\"ph1\">`.dockerignore`</ph> ファイルを作成できます。 これは、コマンドに、アップロードされるパッケージ内の <ph id=\"ph1\">`.git`</ph> の下にあるすべてのファイルを復元するよう指示します。 \n\n`!.git/**`\n\nこの設定は、<ph id=\"ph1\">`az acr run`</ph> コマンドにも適用されます。\n"
+  - question: >
+      タスクではソース トリガーに対して GitLab をサポートしていますか?
+    answer: >
+      現在、ソース トリガーに対して GitLab をサポートしていません。
+  - question: >
+      タスクでサポートされる Git リポジトリ管理サービスは何ですか?
+    answer: >
+      | Git サービス | ソース コンテキスト | 手動ビルド | コミット トリガーを使用した自動ビルド |
+
+      |---|---|---|---|
+
+      | GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | はい | はい |
+
+      | Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | はい | はい |
+
+      | GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | はい | いいえ |
+
+      | BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | はい | いいえ |
+
+
+      ## <a name="run-error-message-troubleshooting"></a>実行のエラー メッセージのトラブルシューティング
+
+
+      | エラー メッセージ | トラブルシューティング ガイド |
+
+      |---|---|
+
+      |VM 用にアクセスが構成されていないため、サブスクリプションが見つかりませんでした|これは、ACR タスクで <ph id="ph1">`az login --identity`</ph> を使用している場合に発生する可能性があります。 これは一時的なエラーであり、マネージド ID のロールの割り当てが反映されていない場合に発生します。 数秒待ってから、操作を再試行してください。|
+
+
+      ## <a name="cicd-integration"></a>CI/CD の統合
+
+
+      - <bpt id="p1">[</bpt>CircleCI<ept id="p1">](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)</ept>
+
+      - [GitHub のアクション](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n  * Azure Container Registry の<bpt id=\"p1\">[</bpt>詳細を学習<ept id=\"p1\">](container-registry-intro.md)</ept>します。"

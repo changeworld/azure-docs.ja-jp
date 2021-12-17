@@ -6,12 +6,12 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: d7f8aa990f5a5e64d2d5c59b52457149187acddd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d47de5dd9af7b6d769c31d4909103616293a5a60
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773983"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361651"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Java と Gradle を使用して関数を作成し、Azure に発行する
 
@@ -24,10 +24,10 @@ ms.locfileid: "107773983"
 
 Java を使用して関数を開発するには、以下のものがインストールされている必要があります。
 
-- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン 8
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降
-- [Gradle](https://gradle.org/) バージョン 4.10 以降
+- [Gradle](https://gradle.org/)、バージョン 6.8 以降
 
 アクティブな Azure サブスクリプションも必要です。 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -126,7 +126,7 @@ gradle azureFunctionsDeploy
 
 + リソース グループ。 指定した _resourceGroup_ の名前が付けられます。
 + ストレージ アカウント。 Functions に必要です。 名前は、ストレージ アカウント名の要件に基づいてランダムに生成されます。
-+ App Service プラン。 指定した _appRegion_ での、関数アプリのサーバーレス従量課金プラン ホスティング。 名前はランダムに生成されます。
++ App Service プラン。 指定した _リージョン_ での、関数アプリのサーバーレス従量課金プラン ホスティング。 名前はランダムに生成されます。
 + 関数アプリ。 関数アプリは、関数のデプロイと実行の単位です。 名前は _appName_ で、ランダムに生成された番号が付加されます。 
 
 また、デプロイにより、プロジェクト ファイルがパッケージ化され、[zip デプロイ](functions-deployment-technologies.md#zip-deploy)を使用して Run-From-Package モードが有効な状態で新しい関数アプリにデプロイされます。
@@ -142,7 +142,7 @@ gradle azureFunctionsDeploy
 
 1. [Azure portal] を参照してサインインし、対象の関数アプリの _appName_ をページ上部の **[検索]** に入力して、Enter キーを押します。
  
-1. 対象の関数アプリで、 **[関数]** を選び、対象の関数を選択します。次に、右上にある **[</> 関数の URL の取得]** をクリックします。 
+1. 対象の関数アプリで、 **[関数]** を選び、対象の関数を選択します。次に、右上にある **[関数の URL の取得]** をクリックします。 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="Azure portal からの関数 URL のコピー":::
 

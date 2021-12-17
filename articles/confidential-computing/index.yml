@@ -5,17 +5,17 @@ metadata:
   title: Azure Confidential Computing
   description: Azure のコンフィデンシャル コンピューティングで使用中のデータを保護するしくみと、機密性の高いワークロードをクラウドで構築する方法について説明します。
   ms.service: virtual-machines
-  ms.subservice: workloads
+  ms.subservice: confidential-computing
   ms.topic: landing-page
-  author: JBCook
-  ms.author: jencook
+  author: stempesta
+  ms.author: stempesta
   ms.date: 09/22/2020
-  ms.openlocfilehash: d41addbcf1c7e5bf673ba0082e5eaa216b5f946d
-  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.openlocfilehash: e7b9bff597383f8cbca1a0f86d30547c133bec39
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/18/2021
-  ms.locfileid: "100652634"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132709653"
 landingContent:
 - title: Azure のコンフィデンシャル コンピューティングについて
   linkLists:
@@ -27,7 +27,7 @@ landingContent:
       url: use-cases-scenarios.md
   - linkListType: concept
     links:
-    - text: 仮想マシン
+    - text: アプリケーション エンクレーブを使用して構築する
       url: confidential-computing-enclaves.md
     - text: AKS でのコンテナー コンピューティング
       url: confidential-containers.md
@@ -37,8 +37,10 @@ landingContent:
       url: attestation.md
   - linkListType: reference
     links:
-    - text: Intel SGX 仮想マシン
+    - text: DCsv2 シリーズの Virtual Machines
       url: ../virtual-machines/dcv2-series.md
+    - text: DCsv3 と DCdsv3 シリーズの Virtual Machines
+      url: ../virtual-machines/dcv3-series.md
 - title: 仮想マシン
   linkLists:
   - linkListType: get-started
@@ -47,18 +49,18 @@ landingContent:
       url: confidential-computing-enclaves.md
   - linkListType: concept
     links:
-    - text: 仮想マシン上のソリューション
-      url: virtual-machine-solutions.md
+    - text: SGX 仮想マシン上のソリューション
+      url: virtual-machine-solutions-sgx.md
   - linkListType: quickstart
     links:
-    - text: Azure portal でのデプロイ
+    - text: Azure Portal で Intel SGX VM を作成する
       url: quick-create-portal.md
-    - text: Azure Marketplace でのデプロイ
+    - text: Azure Marketplace で Intel SGX VM を作成する
       url: quick-create-marketplace.md
   - linkListType: reference
     links:
-    - text: コンフィデンシャル コンピューティング仮想マシンに関する FAQ
-      url: faq.md
+    - text: コンフィデンシャル コンピューティング エンクレーブに関する FAQ
+      url: faq-application-enclaves.yml
     - text: 価格
       url: https://azure.microsoft.com/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2
     - text: 可用性
@@ -76,11 +78,11 @@ landingContent:
     - text: エンクレーブ対応コンテナー
       url: enclave-aware-containers.md
     - text: プロセス外の構成証明
-      url: confidential-nodes-out-of-proc-attestation.md
+      url: confidential-nodes-aks-addon.md
   - linkListType: quickstart
     links:
     - text: AKS での単純なエンクレーブ コンテナー アプリによる CLI ベースのプロビジョニング
-      url: confidential-nodes-aks-get-started.md
+      url: confidential-enclave-nodes-aks-get-started.md
   - linkListType: sample
     links:
     - text: 機密コンテナーのサンプル (SGX 上の未変更のコンテナー)
@@ -90,7 +92,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: AKS 上の機密ノードに関する FAQ
-      url: confidential-nodes-aks-faq.md
+      url: confidential-nodes-aks-faq.yml
     - text: Azure Kubernetes Service (AKS) について
       url: ../aks/intro-kubernetes.md
 - title: 機密クラウド サービス
@@ -101,6 +103,16 @@ landingContent:
       url: ../attestation/overview.md
     - text: 機密推論 ONNX Runtime
       url: https://aka.ms/confidentialinference
+    - text: Azure SQL Database でのセキュリティで保護されたエンクレーブを使用する Always Encrypted
+      url: ../azure-sql/database/always-encrypted-with-secure-enclaves-landing.yml
+    - text: Azure Confidential Ledger
+      url: ../confidential-ledger/overview.md
+    - text: トラステッド起動
+      url: ../virtual-machines/trusted-launch.md
+    - text: Azure IoT Edge
+      url: ../iot-edge/deploy-confidential-applications.md
+    - text: Azure Key Vault マネージド HSM
+      url: ../key-vault/managed-hsm/index.yml
 - title: コンフィデンシャル コンピューティングによる開発
   linkLists:
   - linkListType: tutorial

@@ -6,16 +6,16 @@ author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: synapse-link
-ms.date: 03/02/2021
+ms.date: 06/02/2021
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: cdc9f344e108fc58399f9bcb2a9f02a4659ecfe1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8400a479b45770570c43ec906a192bf4f05a71a0
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627678"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123110396"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link でサポートされる機能
 
@@ -26,9 +26,6 @@ ms.locfileid: "105627678"
 Azure Cosmos DB には、次の 2 種類のコンテナーがあります。
 * HTAP コンテナー - Synapse Link が有効になっているコンテナー。 このコンテナーには、トランザクション ストアと分析ストアの両方があります。 
 * OLTP コンテナー - Synapse Link が有効になっていないコンテナー。 このコンテナーにはトランザクション ストアのみが含まれており、分析ストアはありません。
-
-> [!IMPORTANT]
-> 現在、Azure Synapse Link for Azure Cosmos DB は、マネージド仮想ネットワークが有効になっていない Synapse ワークスペースでサポートされています。 
 
 Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接続できます。 このシナリオでは、トランザクション ストアに対して読み取り/書き込みのみを行うことができます。 Azure Cosmos DB 用の Synapse Link 内で現時点でサポートされている機能の一覧を次に示します。 
 
@@ -64,4 +61,5 @@ Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB 用の Synapse Link に接続する](../quickstart-connect-synapse-link-cosmos-db.md)方法を確認する
-* [Spark を使用して Cosmos DB 分析ストアにクエリを実行する方法を確認する](how-to-query-analytical-store-spark.md)
+* [Spark 3 を使用して Cosmos DB 分析ストアにクエリを実行する方法を確認する](how-to-query-analytical-store-spark-3.md)
+* [Spark 2 を使用して Cosmos DB 分析ストアにクエリを実行する方法を確認する](how-to-query-analytical-store-spark.md)

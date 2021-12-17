@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c8016b566db8be1b7f5c5ddb8d92123d6673db5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8e55202163a447ca2d7d08999c953e619bc027b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98569846"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746574"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>REST API の v2.0 から v3.0 にコードを移行する
 
@@ -143,7 +143,7 @@ v2 のすべてのエンティティは、同じ ID で v3 API にも存在し�
 文字起こしのバッチを作成する方法の詳細な説明については、[バッチ文字起こしの使用方法](./batch-transcription.md)に関するページをご覧ください。
 
 v3 の文字起こし API では、特定の文字起こしオプションを明示的に設定できます。 すべての (省略可能な) 構成プロパティは、`properties` プロパティで設定できるようになりました。
-バージョン v3 では複数の入力ファイルもサポートされているため、v2 のように単一の URL ではなく、URL のリストを指定する必要があります。 v2 のプロパティ名 `recordingsUrl` は、v3 では `contentUrls` に変わりました。 文字起こしでセンチメントを分析する機能は、v3 では削除されています。 センチメント分析オプションについては、Microsoft Cognitive Service の [Text Analytics](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/) をご覧ください。
+バージョン v3 では複数の入力ファイルもサポートされているため、v2 のように単一の URL ではなく、URL のリストを指定する必要があります。 v2 のプロパティ名 `recordingsUrl` は、v3 では `contentUrls` に変わりました。 文字起こしでセンチメントを分析する機能は、v3 では削除されています。 センチメント分析オプションについては、Microsoft Cognitive Service の [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) をご覧ください。
 
 `properties` の下にある新しいプロパティ `timeToLive` は、既存の完了したエンティティを取り除くのに役立ちます。 `timeToLive` には、完了したエンティティが自動的に削除されるまでの期間を指定します。 これを大きな値 (`PT12H` など) に設定できるのは、エンティティの追跡、使用、削除が継続的に行われているゆえに、通常は 12 時間が経過するよりずっと前に処理が行われる場合です。
 

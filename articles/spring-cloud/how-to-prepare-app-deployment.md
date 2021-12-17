@@ -1,31 +1,31 @@
 ---
 title: Azure Spring Cloud にデプロイするアプリケーションを準備する方法
 description: Azure Spring Cloud にデプロイするアプリケーションを準備する方法について説明します。
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 09/08/2020
-ms.author: brendm
+ms.date: 07/06/2021
+ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a90d4c2a8649e270365af9b11fa408b865945f92
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 913d750353053398015da9939ec35f0f9b0de1c5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877547"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013709"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud にデプロイするアプリケーションを準備する
 
 ::: zone pivot="programming-language-csharp"
-Azure Spring Cloud は、Steeltoe アプリをホスト、監視、スケール、更新するための堅牢なサービスを提供しています。 この記事では、Azure Spring Cloud にデプロイするために既存の Steeltoe アプリケーションを準備する方法について説明します。 
+Azure Spring Cloud は、Steeltoe アプリをホスト、監視、スケール、更新するための堅牢なサービスを提供しています。 この記事では、Azure Spring Cloud にデプロイするために既存の Steeltoe アプリケーションを準備する方法について説明します。
 
-この記事では、Azure Spring Cloud で .NET Core Steeltoe アプリを実行するために必要な依存関係、構成、およびコードについて説明します。 アプリケーションを Azure Spring Cloud にデプロイする方法については、「[初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)」を参照してください。
+この記事では、Azure Spring Cloud で .NET Core Steeltoe アプリを実行するために必要な依存関係、構成、およびコードについて説明します。 アプリケーションを Azure Spring Cloud にデプロイする方法については、「[Azure Spring Cloud での初めての Spring Boot アプリケーションをデプロイする](./quickstart.md)」を参照してください。
 
 >[!Note]
 > Azure Spring Cloud の Steeltoe のサポートは、現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー段階のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) を参照するか、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を提出してください。
 
-##  <a name="supported-versions"></a>サポートされているバージョン
+## <a name="supported-versions"></a>サポートされているバージョン
 
 Azure Spring Cloud は以下をサポートしています。
 
@@ -119,50 +119,52 @@ using (var client = new HttpClient(discoveryHandler, false))
     };
 }
 ```
+
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 このトピックでは、Azure Spring Cloud にデプロイできるように既存の Java Spring アプリケーションを準備する方法について説明します。 適切に構成すると、Azure Spring Cloud によって Java Spring Cloud アプリケーションの監視、スケーリング、更新を行う堅牢なサービスが実現します。
 
-この例を実行する前に、[基本的なクイックスタート](spring-cloud-quickstart.md)を試してみることができます。
+この例を実行する前に、[基本的なクイックスタート](./quickstart.md)を試してみることができます。
 
-POM ファイルが構成されているときにアプリケーションを Azure Spring Cloud にデプロイする方法については、その他の例で説明しています。 
-* [最初のアプリを起動する](spring-cloud-quickstart.md)
-* [マイクロサービスをビルドして実行する](spring-cloud-quickstart-sample-app-introduction.md)
+POM ファイルが構成されているときにアプリケーションを Azure Spring Cloud にデプロイする方法については、その他の例で説明しています。
+
+* [最初のアプリを起動する](./quickstart.md)
+* [マイクロサービスをビルドして実行する](./quickstart-sample-app-introduction.md)
 
 この記事では、必要な依存関係とそれらを POM ファイルに追加する方法について説明します。
 
 ## <a name="java-runtime-version"></a>Java ランタイム バージョン
 
-Azure Spring Cloud で稼働できるのは、Spring または Java アプリケーションのみです。
-
-Azure Spring Cloud は、Java 8 と Java 11 の両方をサポートしています。 ホスティング環境には最新バージョンの Azure 用 Azul Zulu OpenJDK が含まれます。 Azure 用 Azul Zulu OpenJDK の詳細については、[JDK のインストール](/azure/developer/java/fundamentals/java-jdk-install)に関するページを参照してください。
+Azure Spring Cloud は、Java 8 と Java 11 の両方をサポートしています。 一般に、Azure PaaS は Java LTS バージョンのみをサポートし、Azure Spring Cloud は Java 17 LTS をサポートします。 ホスティング環境には最新バージョンの Azure 用 Azul Zulu OpenJDK が含まれます。 Azure 用 Azul Zulu OpenJDK の詳細については、[JDK のインストール](/azure/developer/java/fundamentals/java-jdk-install)に関するページを参照してください。
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot と Spring Cloud のバージョン
 
 既存の Spring Boot アプリケーションを Azure Spring Cloud にデプロイできるよう準備するには、以降のセクションに示したように、アプリケーションの POM ファイルに Spring Boot と Spring Cloud の依存関係を追加します。
 
-Azure Spring Cloud でサポートされるのは、Spring Boot バージョン 2.1 とバージョン 2.2 のどちらかの Spring Boot アプリのみです。 サポートされている Spring Boot と Spring Cloud の組み合わせを次の表に示します。
+Azure Spring Cloud では、リリース後 1 か月以内に最新の Spring Boot または Spring Cloud リリースがサポートされます。 サポートされる Spring Boot のバージョンは [Spring Boot Releases ](https://github.com/spring-projects/spring-boot/wiki/Supported-Versions#releases)から、Spring Cloud のバージョンは [Spring Cloud Releases](https://github.com/spring-projects/spring-boot/wiki/Supported-Versions#releases) から入手できます。 
+
+サポートされている Spring Boot と Spring Cloud の組み合わせを次の表に示します。
 
 Spring Boot のバージョン | Spring Cloud のバージョン
 ---|---
-2.2 | Hoxton.SR8
-2.3 | Hoxton.SR8
-2.4.1+ | 2020.0.0
+2.3.x | Hoxton.SR8+
+2.4.x, 2.5.x | 2020.0 aka Ilford +
 
 > [!NOTE]
-> アプリと Eureka の間の TLS 認証で Spring Boot 2.4.0 に問題があることを確認しました。2.4.1 以降を使用してください。 2\.4.0 を使用する場合の回避策については、[FAQ](./spring-cloud-faq.md?pivots=programming-language-java#development) を参照してください。
+> - CVE レポート「[CVE-2021-22119: Denial-of-Service attack with spring-security-oauth2-client](https://tanzu.vmware.com/security/cve-2021-22119)」に対応するために、Spring Boot を 2.5.2 または 2.4.8 にアップグレードしてください。 Spring Security を使用している場合は、5.5.1、5.4.7、5.3.10、または 5.2.11 にアップグレードしてください。
+> - アプリと Spring Cloud Service Registry 間の TLS 認証で Spring Boot 2.4.0 に問題があることが確認されました。2.4.1 以降を使用してください。 2\.4.0 を使用する場合の回避策については、[FAQ](./faq.md?pivots=programming-language-java#development) を参照してください。
 
-### <a name="dependencies-for-spring-boot-version-2223"></a>Spring Boot バージョン 2.2/2.3 の依存関係
+### <a name="dependencies-for-spring-boot-version-23"></a>Spring Boot バージョン 2.3 の依存関係
 
-Spring Boot バージョン 2.2 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
+Spring Boot バージョン 2.3 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
 
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.4.RELEASE</version>
+        <version>2.3.4.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -179,16 +181,16 @@ Spring Boot バージョン 2.2 の場合は、アプリケーションの POM �
     </dependencyManagement>
 ```
 
-### <a name="dependencies-for-spring-boot-version-24"></a>Spring Boot バージョン 2.4 の依存関係
+### <a name="dependencies-for-spring-boot-version-2425"></a>Spring Boot バージョン 2.4/2.5 の依存関係
 
-Spring Boot バージョン 2.2 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
+Spring Boot バージョン 2.4/2.5 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
 
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.1.RELEASE</version>
+        <version>2.4.8</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -197,7 +199,7 @@ Spring Boot バージョン 2.2 の場合は、アプリケーションの POM �
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2020.0.0</version>
+                <version>2020.0.2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -225,14 +227,16 @@ Spring Boot バージョン 2.2 の場合は、アプリケーションの POM �
 
 サービス レジストリ サーバーのエンドポイントは、アプリで環境変数として自動的に挿入されます。 その後、アプリケーションによって、アプリケーション自体がサービス レジストリ サーバーに登録され、他の依存マイクロサービスが検出されます。
 
-
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient 注釈
 
 アプリケーションのソース コードに次の注釈を追加します。
+
 ```java
 @EnableDiscoveryClient
 ```
+
 たとえば、前出の例の piggymetrics アプリケーションを見てみましょう。
+
 ```java
 package com.piggymetrics.gateway;
 
@@ -261,6 +265,10 @@ public class GatewayApplication {
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-config-client</artifactId>
 </dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-bootstrap</artifactId>
+</dependency>
 ```
 
 > [!WARNING]
@@ -282,44 +290,16 @@ public class GatewayApplication {
  > [!WARNING]
  > 構成プロパティに `spring.jmx.enabled=true` を指定してください。 そうしないと、Azure portal でメトリックを視覚化することはできません。
 
-### <a name="distributed-tracing"></a>分散トレース
-
-さらに、自分の Azure Spring Cloud サービス インスタンスと連携できるよう、Azure Application Insights インスタンスを有効にする必要があります。 Azure Spring Cloud と共に Application Insights を使用する方法については、[分散トレースに関するドキュメント](spring-cloud-tutorial-distributed-tracing.md)を参照してください。
-
-#### <a name="spring-boot-2223"></a>Spring Boot 2.2/2.3
-pom.xml ファイルの依存関係セクションに次の `spring-cloud-starter-sleuth` および `spring-cloud-starter-zipkin` の依存関係を含めます。
-
-```xml
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-sleuth</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-zipkin</artifactId>
-</dependency>
-```
-
-#### <a name="spring-boot-24"></a>Spring Boot 2.4
-pom.xml ファイルの依存関係セクションに次の `spring-cloud-sleuth-zipkin` の依存関係を含めます。
-
-```xml
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-sleuth-zipkin</artifactId>
-</dependency>
-```
-
 ## <a name="see-also"></a>関連項目
+
 * [アプリケーションのログとメトリックを分析する](./diagnostic-services.md)
-* [構成サーバーを設定する](spring-cloud-tutorial-config-server.md)
-* [Azure Spring Cloud で分散トレースを使用する](spring-cloud-tutorial-distributed-tracing.md)
+* [構成サーバーを設定する](./how-to-config-server.md)
 * [Spring クイックスタート ガイド](https://spring.io/quickstart)
 * [Spring Boot のドキュメント](https://spring.io/projects/spring-boot)
 
 ## <a name="next-steps"></a>次のステップ
 
-このトピックでは、Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に構成する方法について学習しました。 Config Server インスタンスを設定する方法については、[Config Server インスタンスの設定](spring-cloud-tutorial-config-server.md)に関するページを参照してください。
+このトピックでは、Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に構成する方法について学習しました。 Config Server インスタンスを設定する方法については、[Config Server インスタンスの設定](./how-to-config-server.md)に関するページを参照してください。
 
 その他のサンプルを GitHub で入手できます ([Azure Spring Cloud のサンプル](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples))。
 ::: zone-end

@@ -1,40 +1,60 @@
 ---
-title: Microsoft パートナー センターでコマーシャル マーケットプレースのアカウントを管理する方法 - Azure Marketplace
-description: Microsoft パートナー センターで商業マーケットプレース アカウントを管理する方法について学習します。
+title: パートナー センターで商業マーケットプレース アカウントを管理する
+description: パートナー センターで商業マーケットプレース アカウントを管理します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
-ms.date: 04/07/2021
-ms.openlocfilehash: c76d9d06425405cf7f43e089cb9c2995e30410ee
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 09/27/2021
+ms.openlocfilehash: 40ea8110ddf9a8f81395dea86beb656dba736cf7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107982"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024336"
 ---
-# <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する
+# <a name="manage-a-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する
 
 **適切なロール**
 
 - 所有者
 - 管理者
 
-[パートナー センター アカウントの作成](./create-account.md)したら、[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)を使用してアカウントとオファーを管理できるようになります。
+[パートナー センター アカウントを作成](./create-account.md)したら、[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)を使用してアカウントとオファーを管理します。
 
 ## <a name="access-your-account-settings"></a>アカウント設定にアクセスする
 
-まだアクセスしていない場合は、ご自身 (または組織の管理者) がパートナー センター アカウントの[アカウント設定](https://partner.microsoft.com/dashboard/account/management)にアクセスする必要があります。
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
 
-1. アクセスするアカウントを使用して、パートナー センターの[コマーシャル マーケットプレースのダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace)にサインインします。 複数のアカウントに属していて、別のアカウントでサインインしている場合は、[カウントを切り替える](switch-accounts.md)ことができます。
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+まだアクセスしていない場合は、ご自身 (または組織の管理者) がパートナー センター アカウントの[アカウント設定](https://partner.microsoft.com/dashboard/account/v3/organization/legalinfo#mpn)にアクセスする必要があります。
+
+1. アクセスするアカウントを使用して、パートナー センターの[コマーシャル マーケットプレースのダッシュボード](https://partner.microsoft.com/dashboard/home)にサインインします。 複数のアカウントに属していて、別のアカウントでサインインしている場合は、[カウントを切り替える](switch-accounts.md)ことができます。
+
+1. 右上にある **[設定]** (歯車アイコン)、 **[アカウント設定]** の順に選択します。
+
+    [ ![パートナー センターにあるアカウント設定メニューのスクリーンショット。](./media/manage-accounts/settings-account-workspaces.png) ](./media/manage-accounts/settings-account-workspaces.png#lightbox)
+
+1. **[アカウント設定]** の下にある **[法的情報]** 、 **[開発者]** タブの順に選択し、商業マーケットプレース アカウントに関する詳細を表示します。
+
+    [ ![[アカウント設定] の [法的情報] ページにある [開発者] タブのスクリーンショット。](./media/manage-accounts/developer-tab-workspaces.png) ](./media/manage-accounts/developer-tab-workspaces.png#lightbox)
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+まだアクセスしていない場合は、ご自身 (または組織の管理者) がパートナー センター アカウントの[アカウント設定](https://go.microsoft.com/fwlink/?linkid=2165291)にアクセスする必要があります。
+
+1. アクセスするアカウントを使用して、パートナー センターの[コマーシャル マーケットプレースのダッシュボード](https://go.microsoft.com/fwlink/?linkid=2165290)にサインインします。 複数のアカウントに属していて、別のアカウントでサインインしている場合は、[カウントを切り替える](switch-accounts.md)ことができます。
 1. 右上にある **[設定]** (歯車アイコン) を選択してから、 **[アカウント設定]** を選択します。
 
-    [ ![パートナー センターにあるアカウント設定メニューのスクリーンショット。](./media/manage-accounts/settings-account.png) ](./media/manage-accounts/settings-account.png#lightbox)
+   :::image type="content" source="media/manage-accounts/settings-account.png" alt-text="パートナー センターの [アカウント設定] オプションのスクリーンショット。":::
 
-1. **[アカウント設定]** で、 **[法的情報]** を選択します。 次に、 **[開発者]** タブを選択して、コマーシャル マーケットプレースのアカウントに関連する詳細を表示します。
+1. **[アカウント設定]** の下にある **[法的情報]** 、 **[開発者]** タブの順に選択し、商業マーケットプレース アカウントに関する詳細を表示します。
 
-    [ ![[アカウント設定] の [法的情報] ページにある [開発者] タブのスクリーンショット。](./media/manage-accounts/developer-tab.png) ](./media/manage-accounts/developer-tab.png#lightbox)
+   :::image type="content" source="media/manage-accounts/developer-tab.png" alt-text="[開発者] タブのスクリーンショット。" lightbox="media/manage-accounts/developer-tab.png":::
+
+---
 
 ### <a name="account-settings-page"></a>アカウント設定ページ
 
@@ -118,14 +138,40 @@ _[連絡先情報]_ セクションでは、**発行元の表示名**、**販売
 
 ## <a name="set-up-a-payout-profile"></a>支払いプロファイルを設定する
 
-支払いプロファイルは、販売収益の振り込み先となる銀行口座です。 この銀行口座は、パートナー センター アカウントの登録時に入力した国またはリージョンと同じ場所に存在している必要があります。 支払いプロファイルの詳細については、[パートナー センターでインセンティブの支払いと税金のプロファイルを作成および管理する](/partner-center/incentives-create-and-manage-your-payout-and-tax-profiles)方法に関する記事と、[支払いアカウントと税金のフォームを設定する](/partner-center/set-up-your-payout-account)方法に関する記事を参照してください。
+Azure Marketplace で取引可能なプランを用意するには、パートナー センターで税務プロファイルと支払プロファイルを送信して検証する必要があります。  支払プロファイルを作成する前に、まず税務プロファイルを送信する必要があります。 税務プロファイルの送信は、検証に最大 48 時間かかる場合があります。
 
-支払いプロファイルを設定するには、以下の手順を実行します。
+支払いプロファイルは、販売収益の振り込み先となる銀行口座です。 この銀行口座は、パートナー センター アカウントの登録時に入力した国またはリージョンと同じ場所に存在している必要があります。 支払いプロファイルに関する詳細については、「[支払いアカウントと税フォームの設定](/partner-center/set-up-your-payout-account)」を参照してください。
+
+### <a name="to-set-up-your-payout-profile"></a>支払いプロファイルを設定するには
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. アクセスするアカウントを使用して、パートナー センターの[コマーシャル マーケットプレースのダッシュボード](https://partner.microsoft.com/dashboard/home)にサインインします。
+
+1. 右上にある **[設定]** (歯車アイコン) を選択してから、 **[アカウント設定]** を選択します。
+
+    [ ![パートナー センターにあるアカウント設定メニューのスクリーンショット。](./media/manage-accounts/settings-account-workspaces.png) ](./media/manage-accounts/settings-account-workspaces.png#lightbox)
+
+1. 左側のメニューで **[支払いと税金]** の下にある **[支払いと税プロファイルの割り当て]** を選択します。
+
+    [ ![[支払いと税プロファイルの割り当て] ページを示しています。](./media/manage-accounts/payout-and-tax-profile-assignment.png) ](./media/manage-accounts/payout-and-tax-profile-assignment.png#lightbox)
+
+    > [!NOTE]
+    > 左側のメニューに **[支払いと税金]** セクションが表示されない場合、グローバル管理者かアカウント管理者に問い合わせ、アクセス許可を申請してください。
+
+1. 支払いプロファイルの設定に関する詳細については、「[支払いアカウントと税フォームの設定](/partner-center/set-up-your-payout-account)」を参照してください。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
 
 1. パートナー センターの[商業マーケットプレースの概要ページ](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)に移動します。
-2. **[プロファイル]** セクションの **[支払いプロファイル]** の横にある **[更新]** を選択します。
-3. **支払い方法を選択する**: 銀行口座または PayPal。
-4. **支払情報を追加する**: たとえば、口座の種類 (当座預金または普通預金) を選択し、口座名義人の名前、口座番号、銀行支店コード、請求先住所、電話番号、PayPal メール アドレスなどを入力します。 アカウントの支払い方法として PayPal を使用する場合の詳細および対象の市場または地域における PayPal の対応状況については、「[PayPal 情報](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)」を参照してください。
+1. **[プロファイル]** セクションの **[支払いプロファイル]** の横にある **[更新]** を選択します。
+
+    > [!NOTE]
+    > 左側のメニューに **[支払いと税金]** セクションが表示されない場合、グローバル管理者かアカウント管理者に問い合わせ、アクセス許可を申請してください。
+
+1. 支払いプロファイルの設定に関する詳細については、「[支払いアカウントと税フォームの設定](/partner-center/set-up-your-payout-account)」を参照してください。
+
+---
 
 > [!IMPORTANT]
 > 支払いアカウントを変更すると、最大で支払い期間 1 回分の遅延が支払いに発生する可能性があります。 この遅延は、支払い受取口座が初めて設定された場合と同様に、口座変更の場合にも確認が必要となるために発生します。 アカウントが確認された後も、お支払いは引き続き一括払いになります。期日が現在の支払い期間内にある支払いは、次の支払い期間に追加されます。  
@@ -183,13 +229,12 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 請求先住所は、お客様の法人から事前に設定されています。このアドレスは後で更新できます。 一部の国では税と VAT ID のフィールドが必須になりますが、それ以外の国では省略可能です。 国および地域の名前と会社名は編集できません。
 
-1. **[アカウント設定]** に移動します。
+1. 右上にある **[設定]** (歯車アイコン) を選択してから、 **[アカウント設定]** を選択します。
 1. 次に、左側のナビゲーションで **[組織プロファイル]** を展開して **[課金プロファイル]** を選択します。
-
 
 ## <a name="multi-user-account-management"></a>マルチユーザー アカウント管理
 
-パートナー センターでは、マルチユーザー アカウントのアクセスと管理のために [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) が使用されています。 パートナー センター アカウントには、登録プロセスの過程でお客様の組織の Azure AD が自動的に関連付けられます。
+パートナー センターでは、マルチユーザー アカウントのアクセスと管理のために [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) が使用されています。 パートナー センター アカウントには、登録プロセスの過程でお客様の組織の Azure AD が自動的に関連付けられます。
 
 ## <a name="next-steps"></a>次のステップ
 

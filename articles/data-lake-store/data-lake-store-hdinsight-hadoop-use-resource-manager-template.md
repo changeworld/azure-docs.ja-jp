@@ -1,17 +1,18 @@
 ---
 title: テンプレート - Data Lake Storage Gen1 を使用する HDInsight クラスター
 description: Azure Resource Manager テンプレートを使用して、Azure Data Lake Storage Gen1 を使用する Azure HDInsight クラスターを作成および使用します。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
-ms.author: twooley
-ms.openlocfilehash: a7283ad4c4c61ecc293a55ffc4cb9626bb28d630
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1cf45c977feae9f8c9bba6b63421805c35735ceb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92108730"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597343"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
@@ -49,7 +50,7 @@ HDInsight で Data Lake Storage Gen1 を使用するための重要な考慮事�
     **Azure AD 管理者でない場合** は、サービス プリンシパルの作成に必要な手順を実行することはできません。 その場合は、Data Lake Storage Gen1 で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 また、「[Create a service principal with certificate](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)」 (証明書でサービス プリンシパルを作成する) で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
 
 ## <a name="create-an-hdinsight-cluster-with-data-lake-storage-gen1"></a>Data Lake Storage Gen1 を使用する HDInsight クラスターの作成
-Resource Manager テンプレートおよびテンプレート使用の前提条件は、GitHub の[新しい Data Lake Storage Gen1 での HDInsight Linux クラスターのデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage)に関するページにあります。 このリンクで示されている手順に従って、Data Lake Storage Gen1 を追加ストレージとして使用する HDInsight クラスターを作成します。
+Resource Manager テンプレートおよびテンプレート使用の前提条件は、GitHub の[新しい Data Lake Storage Gen1 での HDInsight Linux クラスターのデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-datalake-store-azure-storage)に関するページにあります。 このリンクで示されている手順に従って、Data Lake Storage Gen1 を追加ストレージとして使用する HDInsight クラスターを作成します。
 
 上記リンクの手順には、PowerShell が必要です。 手順を進める前に、Azure アカウントにログインしていることを確認してください。 デスクトップで Azure PowerShell ウィンドウを新しく開き、次のスニペットを入力します。 ログインを求められたら、必ず、サブスクリプションの管理者または所有者としてログインしてください。
 

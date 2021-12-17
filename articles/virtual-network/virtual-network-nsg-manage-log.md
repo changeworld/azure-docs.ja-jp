@@ -10,12 +10,13 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: bb078b9738e995a1c507f7934a7dd64f075d5fe0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b5cb8ffc7b006ce94dd809668b7e1cf8e44bd48a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596528"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678754"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループのリソース ログ
 
@@ -28,7 +29,7 @@ NSG に対するログを有効にすると、次の種類のリソース ログ
 
 リソース ログは、Azure Resource Manager デプロイ モデルでデプロイされた NSG についてのみ使用できます。 クラシック デプロイ モデルでデプロイされた NSG についてはリソース ログを有効にできません。 2 つのモデルについて理解を深めるには、[Azure デプロイ モデルの理解](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 
-リソース ログは、診断データの収集対象とする "*個々の*" NSG に対して個別に有効にします。 アクティビティ (操作) ログに関心がある場合は、Azure の [アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
+リソース ログは、診断データの収集対象とする "*個々の*" NSG に対して個別に有効にします。 アクティビティ (操作) ログに関心がある場合は、Azure の [アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。 NSG を通過する IP トラフィックに関心がある場合は、Azure Network Watcher の [NSG フロー ログ](../network-watcher/network-watcher-nsg-flow-logging-overview.md)に関するページを参照してください 
 
 ## <a name="enable-logging"></a>ログの有効化
 
@@ -95,9 +96,9 @@ Set-AzDiagnosticSetting `
 
 以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/bash) で、またはコンピューターから Azure CLI を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 コンピューターから CLI を実行する場合は、バージョン 2.0.38 以降が必要です。 コンピューターで `az --version` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 CLI をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `az login` を実行して Azure にサインインする必要もあります。
 
-リソース ログを有効にするには、既存の NSG の ID が必要です。 既存の NSG がない場合は、[az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) を使用して作成できます。
+リソース ログを有効にするには、既存の NSG の ID が必要です。 既存の NSG がない場合は、[az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) を使用して作成できます。
 
-[az network nsg show](/cli/azure/network/nsg#az-network-nsg-show) を使用して、リソース ログを有効にするネットワーク セキュリティ グループを取得します。 たとえば、*myResourceGroup* という名前のリソース グループに存在する *myNsg* という名前の NSG を取得するには、次のコマンドを入力します。
+[az network nsg show](/cli/azure/network/nsg#az_network_nsg_show) を使用して、リソース ログを有効にするネットワーク セキュリティ グループを取得します。 たとえば、*myResourceGroup* という名前のリソース グループに存在する *myNsg* という名前の NSG を取得するには、次のコマンドを入力します。
 
 ```azurecli-interactive
 nsgId=$(az network nsg show \
@@ -109,7 +110,7 @@ nsgId=$(az network nsg show \
 
 3 種類の保存先にリソース ログを書き込むことができます。 詳しくは、「[ログの保存先](#log-destinations)」をご覧ください。 この記事では、例として *Log Analytics* の保存先にログを送信します。 詳しくは、「[ログのカテゴリ](#log-categories)」をご覧ください。
 
-[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) を使用して、NSG に対するリソース ログを有効にします。 次の例では、*myWorkspaces* というリソース グループ内に存在する *myWorkspace* という既存のワークスペースに対するイベントとカウンター カテゴリ データの両方と、以前に取得した NSG の ID をログに記録します。
+[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) を使用して、NSG に対するリソース ログを有効にします。 次の例では、*myWorkspaces* というリソース グループ内に存在する *myWorkspace* という既存のワークスペースに対するイベントとカウンター カテゴリ データの両方と、以前に取得した NSG の ID をログに記録します。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create \

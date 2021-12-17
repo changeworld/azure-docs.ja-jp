@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f540ab40a14af09aa8667860286021f572eb6f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d3f6163cc8c5f642835562c631d1712f329a788
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587901"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292531"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Azure AD サービス アカウントの管理
 
@@ -111,7 +111,7 @@ Azure Active Directory (Azure AD) のサービス アカウントには、[マ�
 
 * サービス アカウントのサインイン パターンは変化していますか?
 
-Azure AD サインイン ログをエクスポートし、既存のセキュリティ情報イベント管理 (SIEM) ツール (Azure Sentinel など) にインポートすることをお勧めします。 SIEM を使用して、アラートとダッシュボードを作成します。
+Azure AD サインイン ログをエクスポートし、既存のセキュリティ情報イベント管理 (SIEM) ツール (Microsoft Sentinel など) にインポートすることをお勧めします。 SIEM を使用して、アラートとダッシュボードを作成します。
 
 ### <a name="review-service-account-permissions"></a>サービス アカウントのアクセス許可をレビューする
 
@@ -172,7 +172,7 @@ Microsoft の無料の PowerShell サンプルでは、サービス プリンシ
 
 **プロビジョニング解除のプロセスには、次のタスクが含まれている必要があります。**
 
-1. 関連するアプリケーションまたはスクリプトがプロビジョニング解除されたら、サービス アカウントによる[サインイン](../reports-monitoring/concept-sign-ins.md#sign-ins-report)とリソース アクセスを監視します。
+1. 関連するアプリケーションまたはスクリプトがプロビジョニング解除されたら、サービス アカウントによる[サインイン](../reports-monitoring/concept-sign-ins.md)とリソース アクセスを監視します。
 
    * アカウントがまだアクティブの場合は、それがどのように使用されているかを確認してから、以降の手順を実行します。
  
@@ -195,4 +195,3 @@ Azure サービス アカウントのセキュリティ保護の詳細につい�
 
 
  
-

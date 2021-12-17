@@ -3,21 +3,21 @@ title: Azure PowerShell のサンプル スクリプト - バックエンドを�
 description: Azure PowerShell スクリプト サンプルを使用して、相互証明書認証でバックエンドをセキュリティで保護する方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.topic: sample
 ms.date: 11/16/2017
-ms.author: apimpm
-ms.custom: mvc
-ms.openlocfilehash: cb6b1cfcb6a8f482bdcbc9d6befc99197f024f4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: a41b29e190ca6bb2cd05e832dc980ac568668a8e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87905637"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657369"
 ---
 # <a name="secure-back-end"></a>バックエンドをセキュリティで保護する
 

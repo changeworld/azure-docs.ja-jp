@@ -2,14 +2,16 @@
 title: エージェントと拡張機能に関する問題のトラブルシューティング
 description: エージェント、拡張機能、ディスクに関する Azure Backup のエラーの症状、原因、解決策。
 ms.topic: troubleshooting
-ms.date: 07/05/2019
+ms.date: 11/10/2021
 ms.service: backup
-ms.openlocfilehash: 0313394ad149460f82c98c63cab95b922b4a3da2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+author: v-amallick
+ms.author: v-amallick
+ms.openlocfilehash: 464b2e6ed2c968ea57d5396570d8a928d9d9bace
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519607"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301952"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -34,7 +36,7 @@ ms.locfileid: "102519607"
     - Azure VM エージェントは、既定でポータル、PowerShell、コマンド ライン インターフェイス、または Azure Resource Manager テンプレートから Azure Marketplace イメージによってデプロイされた、すべての Windows VM にインストールされます。 Azure にデプロイするカスタム VM イメージを作成する場合は、[エージェントの手動インストール](../virtual-machines/extensions/agent-windows.md#manual-installation)が必要となる場合があります。
     - サポート マトリックスを確認して、VM が[サポートされている Windows オペレーティング システム](backup-support-matrix-iaas.md#operating-system-support-windows)で動作するかどうかを確認します。
   - Linux VM の場合は、
-    - コマンド `ps-e` を実行して、Azure VM ゲスト エージェント サービスが実行されていることを確認します。 また、[最新バージョン](../virtual-machines/extensions/update-linux-agent.md)がインストールされていることを確認してください。 詳細については、[Linux VM ゲスト エージェントの問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)に関するページを参照してください。
+    - コマンド `ps -e` を実行して、Azure VM ゲスト エージェント サービスが実行されていることを確認します。 また、[最新バージョン](../virtual-machines/extensions/update-linux-agent.md)がインストールされていることを確認してください。 詳細については、[Linux VM ゲスト エージェントの問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)に関するページを参照してください。
     - [Linux VM エージェントのシステム パッケージの依存関係](../virtual-machines/extensions/agent-linux.md#requirements)が、サポートされている構成であることを確認します。 次に例を示します。サポートされている Python のバージョンは 2.6 以降です。
     - サポート マトリックスを確認し、VM が[サポートされている Linux オペレーティング システム](backup-support-matrix-iaas.md#operating-system-support-linux)で動作するかどうかを確認します。
 
@@ -45,7 +47,7 @@ ms.locfileid: "102519607"
 - すべての[拡張機能の問題](../virtual-machines/extensions/overview.md#troubleshoot-extensions)が解決されていることを確認して、バックアップ操作をやり直してください。
 - **COM+ System Application** が動作していることを確認します。 また、**分散トランザクション コーディネーター サービス** も **ネットワーク サービス アカウント** として実行されている必要があります。 [COM+ と MSDTC の問題のトラブルシューティング](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error)に関する記事の手順に従います。
 
-### <a name="step-4-check-azure-backup-vm-extension-health"></a>手順 4:Azure Backup VM 拡張機能の正常性を確認する
+### <a name="step-4-check-azure-backup-extension-health"></a>手順 4:Azure Backup 拡張機能の正常性を確認する
 
 Azure Backup では、VM スナップショット拡張機能を使用して Azure 仮想マシンのアプリケーション整合性バックアップを作成します。 Azure Backup によって、バックアップの有効化の後にトリガーされる最初のスケジュールされたバックアップの一部として、拡張機能がインストールされます。
 
@@ -129,6 +131,9 @@ Azure Backup サービスに VM を登録してスケジュール設定すると
 **エラー メッセージ**:Backup のキー コンテナーに対するアクセス許可は、暗号化された VM をバックアップするのに十分ではありません。 <br>
 
 暗号化された VM のバックアップ操作を正常に完了するには、キー コンテナーへのアクセス許可が必要です。 アクセス許可は、[Azure portal](./backup-azure-vms-encryption.md) または [PowerShell](./backup-azure-vms-automation.md#enable-protection) を使用して設定できます。
+
+>[!Note]
+>キー コンテナーへのアクセスに必要なアクセス許可が既に設定されている場合は、しばらくしてから操作を再試行してください。
 
 ## <a name="extensionsnapshotfailednonetwork---snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a><a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - Snapshot operation failed due to no network connectivity on the virtual machine (仮想マシンがネットワークに接続していないためにスナップショット操作が失敗しました)
 
@@ -272,7 +277,7 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 | 原因 | 解決策 |
 | --- | --- |
 | VM が リモート デスクトップ プロトコル (RDP) でシャットダウンされているため、VM の状態が正しく報告されない。 | RDP で VM をシャットダウンした場合は、ポータルでその VM の状態が正しいかどうかを確認します。 正しくない場合は、VM のダッシュボードにある **[シャットダウン]** オプションを使用して、ポータル上で VM をシャットダウンします。 |
-| VM が DHCP からホスト/ファブリック アドレスを取得できない。 | IaaS VM バックアップが正しく機能するには、ゲスト内で DHCP が有効になっている必要があります。 VM が DHCP 応答 245 からホスト/ファブリック アドレスを取得できない場合は、拡張機能をダウンロードしたり実行したりできません。 静的プライベート IP が必要な場合は、**Azure portal** または **PowerShell** を通じて静的プライベート IP を構成し、VM 内の DHCP オプションが有効になっていることを確認します。 PowerShell を使用した静的 IP アドレスの設定については、[こちら](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)をご覧ください。
+| VM が DHCP からホスト/ファブリック アドレスを取得できない。 | IaaS VM バックアップが正しく機能するには、ゲスト内で DHCP が有効になっている必要があります。 VM が DHCP 応答 245 からホスト/ファブリック アドレスを取得できない場合は、拡張機能をダウンロードしたり実行したりできません。 静的プライベート IP が必要な場合は、**Azure portal** または **PowerShell** を通じて静的プライベート IP を構成し、VM 内の DHCP オプションが有効になっていることを確認します。 PowerShell を使用した静的 IP アドレスの設定については、[こちら](../virtual-network/ip-services/virtual-networks-static-private-ip-arm-ps.md)をご覧ください。
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>復旧ポイントのリソース グループに対するロックを解除する
 

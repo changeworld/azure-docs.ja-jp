@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1064c6a1e2dddaae98e94ccceca7b1d550897393
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6fa93319e9e2ecdd666a92f816df5a63a4f477f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97930856"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748664"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-javascript-version-4"></a>クイックスタート: JavaScript 用 Azure Key Vault 証明書クライアント ライブラリ (バージョン 4)
 
@@ -152,9 +152,9 @@ const { CertificateClient } = require("@azure/keyvault-certificates");
 
 ### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
 
-このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
 
-以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、[Azure ID ライブラリ](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)の ["DefaultAzureCredential()"](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 キー コンテナーに対する認証について詳しくは、[開発者ガイド](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)を参照してください。
+以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、[Azure ID ライブラリ](/javascript/api/overview/azure/identity-readme)の ["DefaultAzureCredential()"](/javascript/api/@azure/identity/defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 キー コンテナーに対する認証について詳しくは、[開発者ガイド](../general/developers-guide.md#authenticate-to-key-vault-in-code)を参照してください。
 
 次のコードを "main()" 関数に追加します
 
@@ -168,7 +168,7 @@ const client = new Certificate(KVUri, credential);
 
 ### <a name="save-a-certificate"></a>証明書の保存
 
-アプリケーションが認証されたら、[beginCreateCertificate メソッド](/javascript/api/@azure/keyvault-certificates/certificateclient?#beginCreateCertificate_string__CertificatePolicy__BeginCreateCertificateOptions_)を使用して、キー コンテナーに証明書を設定できます。これには、証明書の名前、[証明書ポリシー](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicy)、[証明書ポリシー プロパティ](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicyproperties)が必要です
+アプリケーションが認証されたら、[beginCreateCertificate メソッド](/javascript/api/@azure/keyvault-certificates/certificateclient?#beginCreateCertificate_string__CertificatePolicy__BeginCreateCertificateOptions_)を使用して、キー コンテナーに証明書を設定できます。これには、証明書の名前、[証明書ポリシー](/javascript/api/@azure/keyvault-certificates/certificatepolicy)、[証明書ポリシー プロパティ](/javascript/api/@azure/keyvault-certificates/certificatepolicyproperties)が必要です
 
 ```javascript
 const certificatePolicy = {
@@ -191,7 +191,7 @@ const retrievedCertificate = await client.getCertificate(certificateName);
 
 ### <a name="delete-a-certificate"></a>証明書の削除
 
-最後に、[beginDeleteCertificate](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#beginDeleteCertificate_string__BeginDeleteCertificateOptions_) メソッドと [purgeDeletedCertificate](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#purgeDeletedCertificate_string__PurgeDeletedCertificateOptions_) メソッドを使用して、キー コンテナーから証明書を削除して消去します。
+最後に、[beginDeleteCertificate](/javascript/api/@azure/keyvault-certificates/certificateclient?#beginDeleteCertificate_string__BeginDeleteCertificateOptions_) メソッドと [purgeDeletedCertificate](/javascript/api/@azure/keyvault-certificates/certificateclient?#purgeDeletedCertificate_string__PurgeDeletedCertificateOptions_) メソッドを使用して、キー コンテナーから証明書を削除して消去します。
 
 ```javascript
 const deletePoller = await client.beginDeleteCertificate(certificateName);
@@ -262,7 +262,7 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 次のコマンドを実行して、アプリを実行します。
 
-```azurecli
+```cmd
 npm install
 npm index.js
 ```
@@ -286,4 +286,4 @@ Purging your certificate from mykeyvault ... done
 - [App Service アプリケーションから Key Vault にアクセスする方法についてのチュートリアル](../general/tutorial-net-create-vault-azure-web-app.md)を参照する
 - [仮想マシンから Key Vault にアクセスする方法についてのチュートリアル](../general/tutorial-net-virtual-machine.md)を参照する
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
-- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-features.md)を確認する

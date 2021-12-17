@@ -6,25 +6,25 @@ ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: 1ee1411aba7724d76ed8626de9b8b038d02339dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d7c498f0052a3e0da024e8b4902579ab8a98fd0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574256"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083291"
 ---
-# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Azure Machine Learning Studio (クラシック) 関数を使用した Stream Analytics ジョブのスケーリング
+# <a name="scale-your-stream-analytics-job-with-machine-learning-studio-classic-functions"></a>Machine Learning Studio (クラシック) 関数を使用した Stream Analytics ジョブのスケーリング
 
 > [!TIP]
-> パフォーマンスと信頼性を向上させるために、Azure Machine Learning Studio (classic) UDF の代わりに [Azure Machine Learning UDF](machine-learning-udf.md) を使用することを強くお勧めします。
+> パフォーマンスと信頼性を向上させるために、Machine Learning Studio (クラシック) UDF ではなく[Azure Machine Learning udf](machine-learning-udf.md)を使用することを強くお勧めします。
 
-この記事では、Azure Machine Learning Studio (クラシック) 関数を使用する Azure Stream Analytics ジョブを効率的にスケーリングする方法について説明します。 通常の Stream Analytics ジョブをスケーリングする方法の詳細については、「 [ストリーム データ処理スループット向上のための Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)」を参照してください。
+この記事では、Machine Learning Studio (クラシック) 関数を使用する Azure Stream Analytics ジョブを効率的にスケーリングする方法について説明します。 通常の Stream Analytics ジョブをスケーリングする方法の詳細については、「 [ストリーム データ処理スループット向上のための Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)」を参照してください。
 
 ## <a name="what-is-a-studio-classic-function-in-stream-analytics"></a>Stream Analytics での Studio (クラシック) 関数とは
 
 Stream Analytics での Machine Learning Studio (クラシック) 関数は、Stream Analytics クエリ言語の通常の関数呼び出しのように使用できます。 ただし、この関数呼び出しは、バックグラウンドでは実際には Studio (クラシック) Web サービス要求です。
 
-複数の行を同じ Web サービス API 呼び出しで一度に "バッチ処理" することで、Studio (クラシック) Web サービス要求のスループットを上げることができます。 このグループ化は、ミニバッチと呼ばれます。 詳しくは、[Azure Machine Learning Studio (クラシック) Web サービス](../machine-learning/classic/consume-web-services.md)に関する記事をご覧ください。 スタジオ (クラシック) は Stream Analytics でサポートされています。
+複数の行を同じ Web サービス API 呼び出しで一度に "バッチ処理" することで、Studio (クラシック) Web サービス要求のスループットを上げることができます。 このグループ化は、ミニバッチと呼ばれます。 詳細については、「 [Machine Learning Studio (クラシック) Web サービス](../machine-learning/classic/consume-web-services.md)」を参照してください。 スタジオ (クラシック) は Stream Analytics でサポートされています。
 
 ## <a name="configure-a-stream-analytics-job-with-studio-classic-functions"></a>Studio (クラシック) 関数を使用した Stream Analytics ジョブの構成
 

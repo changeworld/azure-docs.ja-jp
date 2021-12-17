@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: c1172cd818a3b40e908bbf5a133ea76d6b0d17b9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5a675141bf02e8b07b1fabd1dc0ce3d4922cfe0c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642883"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132330307"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-equinix-federation-app"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Equinix Federation App の統合
 
@@ -131,11 +131,9 @@ Equinix Federation App で Azure AD SSO を構成してテストするには、�
 Equinix Federation App のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
  > [!NOTE]
- > **[このアプリケーションをテストします]** リンクを使用するか、Equinix Federation App タイルをクリックして、Azure アプリケーションをテストしようとしても正しく動作しません。なぜなら、これは IdP-Initiated SSO であり、Equinix が既定ではサポートしていないためです。  マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+ > **[このアプリケーションをテストします]** リンクを使用するか、Equinix Federation App タイルをクリックして、Azure アプリケーションをテストしようとしても正しく動作しません。なぜなら、これは IdP-Initiated SSO であり、Equinix が既定ではサポートしていないためです。  マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Equinix Federation App を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Equinix Federation App を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

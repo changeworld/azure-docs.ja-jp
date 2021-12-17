@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2021
 ms.author: terrylan
-ms.openlocfilehash: d28d55c8dff16df987f6535b0f1452b840b35c43
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 558eebf12179b04fb9a76c3db0195c4e812e956c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960505"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335444"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -53,7 +53,7 @@ ms.locfileid: "105960505"
 
 Azure プラットフォームではネットワークベースのさまざまなテクノロジを使用して、強力な DDoS 保護を提供します。 ただし、ネットワークベースのすべての種類の DDoS 保護方法には、リンクごとやデータセンターごとに限界があります。 大規模な DDoS 攻撃の影響を回避するには、DDoS 攻撃に対する防御を迅速かつ自動的にスケール アウトする Azure のコア クラウド機能を活用できます。 これを実行する方法については、推奨されるプラクティスの記事で詳しく説明します。
 
-## <a name="modernizing-the-defenders-mindset"></a>防御担当者の意識を改革
+## <a name="modernizing-the-defender-for-clouds-mindset"></a>Defender for Cloud の思考を最新式にする
 PaaS デプロイにより、セキュリティへのアプローチ全般に変革がもたらされます。 すべて自分で制御しなければならない状況から、Microsoft と責任を分担する状況へと変わります。
 
 PaaS と従来のオンプレミス デプロイにおけるもう 1 つの重要な相違点は、主要なセキュリティ境界を定義する新しい視点です。 これまでは、ネットワークこそがオンプレミスの主要なセキュリティ境界であり、オンプレミス セキュリティ設計のほとんどでは、主要なセキュリティの中心としてネットワークが使用されてきました。 PaaS デプロイでは、ID を主要なセキュリティ境界と考えることによって、お客様により充実したサービスを提供します。
@@ -122,10 +122,15 @@ App Service 使用時のベスト プラクティスを次に示します。
 **詳細**: Azure Key Vault は、クラウド アプリケーションやサービスで使われる暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。 さらに安心感を高めたい場合には、HSM でキーのインポートや生成を行うことができます。 詳細については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」を参照してください。 Key Vault を使用して、自動更新で TLS 証明書の管理することもできます。
 
 **ベスト プラクティス**: 受信ソース IP アドレスを制限します。   
-**詳細**: [App Service Environment](../../app-service/environment/intro.md) には、ネットワーク セキュリティ グループによる受信ソース IP アドレスの制限に役立つ、仮想ネットワーク統合機能が用意されています。 仮想ネットワークを使用すると、Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 詳細については、「[アプリを Azure 仮想ネットワークに統合する](../../app-service/web-sites-integrate-with-vnet.md)」を参照してください。
+**詳細**: [App Service Environment](../../app-service/environment/intro.md) には、ネットワーク セキュリティ グループによる受信ソース IP アドレスの制限に役立つ、仮想ネットワーク統合機能が用意されています。 仮想ネットワークを使用すると、Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 詳細については、「[アプリを Azure 仮想ネットワークに統合する](../../app-service/overview-vnet-integration.md)」を参照してください。
 
+<<<<<<< HEAD
 **ベスト プラクティス**: App Service Environment のセキュリティ状態を監視する。   
 **詳細**: Azure Security Center を使用して App Service Environment を監視します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/asset-inventory.md)を作成します。
+=======
+**ベスト プラクティス**: App Service 環境のセキュリティ状態を監視する。   
+**詳細**: Microsoft Defender for Cloud を使用し、お使いの App Service 環境を監視します。 Defender for Cloud では、潜在的なセキュリティの脆弱性を特定すると、必要な抑制力を構成するプロセスを指示する[推奨事項](../../security-center/asset-inventory.md)が作成されます。
+>>>>>>> repo_sync_working_branch
 
 ## <a name="azure-cloud-services"></a>Azure クラウド サービス
 [Azure Cloud Services](../../cloud-services/cloud-services-choose-me.md) は、PaaS の 1 つの例です。 このテクノロジは、Azure App Service と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。

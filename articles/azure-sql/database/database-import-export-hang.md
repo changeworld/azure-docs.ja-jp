@@ -8,14 +8,14 @@ ms.subservice: data-movement
 ms.topic: troubleshooting
 author: v-miegge
 ms.author: ramakoni
-ms.reviewer: ''
+ms.reviewer: cawrites
 ms.date: 09/27/2019
-ms.openlocfilehash: e69bba858ccf62f1b3a3b45b08771ddba71f11cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 27431b24b0f6507ac7031deae6573a8b111e0f76
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92671391"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913688"
 ---
 # <a name="azure-sql-database-and-managed-instance-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL Database および Managed Instance の Import/Export サービスで、データベースのインポートまたはエクスポートに時間がかかる
 
@@ -33,8 +33,6 @@ Azure SQL Database Import/Export サービスは、すべての Azure データ�
 
 Azure SQL Database Import/Export サービスでは、インポート操作とエクスポート操作を処理するために、リージョンごとに制限された数のコンピューティング仮想マシン (VM) が提供されます。 インポートまたはエクスポートにより複数リージョンにわたる帯域幅の遅延と課金が生じるのを回避するために、コンピューティング VM はリージョンごとにホストされています。 同じリージョンで同時に行われる要求が多すぎると、それらの操作の処理で大幅な遅延が発生することがあります。 要求を完了するために必要な時間は、数秒から長時間までさまざまです。
 
-> [!NOTE]
-> 要求が 4 日以内に処理されない場合、サービスによって自動的に要求がキャンセルされます。
 
 ## <a name="recommended-solutions"></a>推奨されるソリューション
 

@@ -5,13 +5,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 66f26cfa14d51a985e2bb420bec294f7ef3a6cd1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 08/26/2021
+ms.openlocfilehash: 781fb98b1b71e70f07291f04d89fbfb8fed17759
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048150"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123028579"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB (NoSQL) への移行とアプリケーション開発のパートナー
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,7 +34,7 @@ NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB �
 | [Lambda3 Informatics](https://www.lambda3.com.br/) | リアルタイム パーソナル化、小売在庫目録、アプリ開発 | ブラジル|
 |[Neal Analytics](https://www.nealanalytics.com/)    |     パーソナル化、小売り (在庫目録)、運用分析 (Spark)、アプリ開発  |    米国     |  
 |[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL の移行      |   米国      |
-| [Ricoh Digital Services](https://www.ricoh.com/) | IoT、リアルタイム パーソナル化、小売在庫目録、NoSQL 移行 | 英国  |
+| [Ricoh Digital Experience](https://www.ricoh-europe.com/contact-us) | IoT、リアルタイム パーソナル化、小売在庫目録、NoSQL 移行 | 英国、ヨーロッパ  |
 |[SNP Technologies](https://www.snp.com/) | NoSQL の移行| 米国 |
 | [Solidsoft Reply](https://www.reply.com/solidsoft-reply/) | NoSQL の移行 | クロアチア、スウェーデン、デンマーク、アイルランド、ブルガリア、スロベニア、キプロス、マルタ、リトアニア、チェコ共和国、アイスランド、スイス、リヒテンシュタイン|
 | [Spanish Point Technologies](https://www.spanishpoint.ie/) | NoSQL の移行| アイルランド|
@@ -51,6 +51,10 @@ NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB �
 ## <a name="next-steps"></a>次のステップ
 
 Microsoft の他のパートナーの詳細については、[Microsoft パートナー サイト](https://partner.microsoft.com/)を参照してください。
+
+Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
+* 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+* 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
 
 <!--Image references-->
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png

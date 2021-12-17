@@ -2,31 +2,49 @@
 title: Azure Web アプリ拡張機能のリリース ノート - Application Insights
 description: Application Insights を使用した実行時インストルメンテーションのための Azure Web アプリ拡張機能のリリース ノートです。
 ms.topic: conceptual
-author: MS-jgol
-ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 07ba61f630b849a377f1c7ba881f95518eb73606
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 84d01a2bcc4e371ca03610f2d002eaaf73159b2a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042608"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316035"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Application Insights 用 Azure Web アプリ拡張機能のリリース ノート
 
 この記事には、Application Insights を使用した実行時インストルメンテーションのための Azure Web アプリ拡張機能のリリース ノートが含まれています。 これは、プレインストールされている拡張機能にのみ適用されます。
 
-Application Insights 用 Azure Web アプリ拡張機能の詳細については、[こちら](azure-web-apps.md)を参照してください。
+[Application Insights 用 Azure Web アプリ拡張機能](azure-web-apps.md)の詳細については、こちらを参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 - 現在使用している拡張機能のバージョンは、どうすれば確認できますか?
-    - `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights` にアクセスします。 詳細については、[拡張機能またはエージェント ベースの監視に関するステップ バイ ステップ トラブルシューティング ガイド](./azure-web-apps.md?tabs=net#troubleshooting)を参照してください。
+    - `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights` にアクセスします。 詳細については、[ASP.NET Core](./azure-web-apps-net-core.md#troubleshooting)、[ASP.NET](./azure-web-apps-net.md#troubleshooting)、[Java](./azure-web-apps-java.md#troubleshooting)、または [Node.js](./azure-web-apps-nodejs.md#troubleshooting) を対象とする拡張機能またはエージェント ベースの監視に関するステップ バイ ステップ トラブルシューティング ガイドを参照してください。
 
 - プライベート拡張機能を使用している場合はどうすればよいですか?
     - プライベート サイト拡張機能は現在サポートされていないため、アンインストールしてください。
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2842"></a>2.8.42
+
+- JAVA 拡張機能: 2.5.1 から [Java Agent 3.2.0](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.2.0) にアップグレード。
+- Node.js 拡張機能: AI SDK を 2.1.7 から [2.1.8](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/2.1.8) に更新。 ユーザー割り当ておよびシステム割り当ての AAD マネージド ID のサポートを追加。
+- .NET Core: [.NET Startup Hook](https://github.com/dotnet/runtime/blob/main/docs/design/features/host-startup-hook.md) を利用した .NET 6.0 サポートと自己完結型展開を追加。
+
+### <a name="2841"></a>2.8.41
+
+- Node.js 拡張機能: AI SDK を 2.1.3 から [2.1.7](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/2.1.7) に更新。
+- .NET Core: サポート対象外のバージョン (2.1) を削除。 サポートされているバージョンは 3.1 と 5.0 です。
+
+### <a name="2840"></a>2.8.40
+
+- JAVA 拡張機能: 3.0.2 から [Java Agent 3.1.1 (GA)](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.1.1) にアップグレード。
+- Node.js 拡張機能: AI SDK を 1.8.8 から [2.1.3](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/2.1.3) に更新。
+
+### <a name="2839"></a>2.8.39
+
+- .NET Core: .NET Core 5.0 サポートを追加。
 
 ### <a name="2838"></a>2.8.38
 
@@ -36,7 +54,7 @@ Application Insights 用 Azure Web アプリ拡張機能の詳細については
 
 ### <a name="2837"></a>2.8.37
 
-- AppSvc Windows 拡張機能: .Net Core を System.Diagnostics.DiagnosticSource.dll のすべてのバージョンで動作するようにしました。
+- AppSvc Windows 拡張機能: .NET Core を System.Diagnostics.DiagnosticSource.dll のすべてのバージョンで動作するようにしました。
 
 ### <a name="2836"></a>2.8.36
 
@@ -93,4 +111,4 @@ Application Insights 用 Azure Web アプリ拡張機能の詳細については
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure App Service の監視を構成する方法の詳細については、[Azure App Service のドキュメント](azure-web-apps.md)を参照してください。 
+- Azure App Service の監視を構成する方法の詳細については、[Azure App Service のアプリケーション監視のドキュメント](azure-web-apps.md)を参照してください。 

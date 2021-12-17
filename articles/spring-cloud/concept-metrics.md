@@ -1,22 +1,22 @@
 ---
 title: Azure Spring Cloud のメトリック
 description: Azure Spring Cloud でメトリックを確認する方法について説明します。
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 5a8d7d5906a769b778eb8f0ab5abe396a5f2e104
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 26d95493042d259029bc6a9428b016bbceb5681b
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877638"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154244"
 ---
 # <a name="metrics-for-azure-spring-cloud"></a>Azure Spring Cloud のメトリック
 
-Azure メトリックス エクスプローラーは、グラフの描画、傾向の視覚的な相関付け、およびメトリックの値の急上昇と急降下の調査を行うことができる、Microsoft Azure portal のコンポーネントです。 メトリックス エクスプローラーを使用して、ご利用のソースの正常性と使用率を調べます。 
+Azure メトリックス エクスプローラーは、グラフの描画、傾向の視覚的な相関付け、およびメトリックの値の急上昇と急降下の調査を行うことができる、Microsoft Azure portal のコンポーネントです。 メトリックス エクスプローラーを使用して、ご利用のソースの正常性と使用率を調べます。
 
 Azure Spring Cloud では、メトリックに 2 つのビューポイントがあります。
 * 各アプリケーションの概要ページのグラフ
@@ -27,13 +27,14 @@ Azure Spring Cloud では、メトリックに 2 つのビューポイントが�
 アプリケーションの **概要** のグラフは、各アプリケーションの簡単な状態チェックを提供します。 一般 **メトリック** ページには、参照のために使用できるすべてのメトリックが含まれます。 一般メトリック ページで独自のグラフを作成しし、それらをダッシュボードにピン留めできます。
 
 ## <a name="application-overview-page"></a>アプリケーションの概要ページ
-**[アプリ]** でアプリを選択すると、概要ページにグラフが表示されます。  
 
- ![アプリケーションのメトリックの管理](media/metrics/metrics-2.png)
+**[アプリ]** でアプリを選択すると、概要ページにグラフが表示されます。
 
-各アプリケーションの **[アプリケーションの概要]** ページには、アプリケーションの状態をすばやく確認できるようにするメトリック グラフが表示されます。  
+![アプリケーションのメトリックの管理](media/metrics/metrics-2.png)
 
- ![アプリケーションのメトリックの概要](media/metrics/metrics-3.png)
+各アプリケーションの **[アプリケーションの概要]** ページには、アプリケーションの状態をすばやく確認できるようにするメトリック グラフが表示されます。
+
+![アプリケーションのメトリックの概要](media/metrics/metrics-3.png)
 
 Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用して、次の 5 つのグラフを提供します。
 
@@ -60,6 +61,7 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 ![メトリックの集計](media/metrics/metrics-5.png)
 
 集計の種類は、グラフ内のメトリック ポイントを時間で集計する方法を示します。 1 分ごとに 1 つの未加工のメトリック ポイントがあり、1 分以内の事前集計の種類がメトリックの種類によって事前に定義されています。
+
 * 合計:ターゲット出力としてすべての値を合計します。
 * 平均:ターゲット出力として期間中の平均値を使用します。
 * 最大および最小: ターゲット出力として期間中の最大および最小値を使用します。
@@ -68,9 +70,10 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 
 ![メトリックの変更](media/metrics/metrics-6.png)
 
-既定のビューには、Azure Spring Cloud サービスのアプリケーションのメトリックがすべて一緒に含まれています。 1 つのアプリまたはインスタンスのメトリックを表示でフィルター処理できます。  **[フィルタの追加]** をクリックし、プロパティを **[アプリ]** に設定し、 **[値]** テキスト ボックスで監視するターゲット アプリケーションを選択します。 
+既定のビューには、Azure Spring Cloud サービスのアプリケーションのメトリックがすべて一緒に含まれています。 1 つのアプリまたはインスタンスのメトリックを表示でフィルター処理できます。 **[フィルタの追加]** を選択し、プロパティを **[アプリ]** に設定し、 **[値]** テキスト ボックスで監視するターゲット アプリケーションを選択します。
 
 次の 2 種類のフィルター (プロパティ) を使用できます。
+
 * アプリ: アプリ名でフィルター処理
 * インスタンス: アプリ インスタンスでフィルター処理
 
@@ -88,18 +91,22 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 次の表に、使用可能なメトリックとその詳細を示します。
 
 ### <a name="error"></a>エラー
+
 >[!div class="mx-tdCol2BreakAll"]
 >| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
 >|----|----|----|------------|
 >| tomcat.global.error | tomcat.global.error | Count | 処理された要求で発生したエラーの数 |
 
 ### <a name="performance"></a>パフォーマンス
+
 >[!div class="mx-tdCol2BreakAll"]
 >| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
 >|----|----|----|------------|
 >| system.cpu.usage | system.cpu.usage | Percent | システム全体の最近の CPU 使用率 (非推奨のため、使用をお勧めしません)。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中にすべての CPU がアイドル状態であったことを意味します。一方、値 1.0 は、最近の観測期間中にすべての CPU が 100% の稼働状態であったことを意味します。|
 >| process.cpu.usage | アプリの CPU 使用率 (%) | Percent | Java 仮想マシン プロセスの最近の CPU 使用率 (非推奨のため、使用をお勧めしません)。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中に、どの CPU でも JVM プロセスからスレッドが実行されなかったことを意味します。一方、値 1.0 は、最近の観測期間中に、すべての CPU で JVM からスレッドが 100% 実行されたことを意味します。 JVM からのスレッドには、アプリケーション スレッドだけでなく、JVM 内部スレッドも含まれます。|
->| AppCpuUsage | アプリの CPU 使用率 | Percent | このアプリに割り当てられた CPU に対する JVM プロセスの最近の CPU 使用率 (0.0 と 1.0 の間の倍精度浮動小数点型の値)。 値 0.0 は、最近の観測期間中に、どの CPU でも JVM プロセスからスレッドが実行されなかったことを意味します。一方、値 1.0 は、最近の観測期間中に、すべての CPU で JVM からスレッドが 100% 実行されたことを意味します。 JVM からのスレッドには、アプリケーション スレッドだけでなく、JVM 内部スレッドも含まれます。|
+>| アプリの CPU 使用率 | | Percent | このアプリに割り当てられた CPU に対する JVM プロセスの最近の CPU 使用率。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中に、どの CPU でも JVM プロセスからスレッドが実行されなかったことを意味します。一方、値 1.0 は、最近の観測期間中に、すべての CPU で JVM からスレッドが 100% 実行されたことを意味します。 JVM からのスレッドには、アプリケーション スレッドだけでなく、JVM 内部スレッドも含まれます。|
+>| アプリの CPU 使用率 (非推奨) | | Percent | アプリの CPU 使用率の非推奨メトリック。 代わりに、新しいアプリの CPU 使用率メトリックを使用してください。|
+>| アプリのメモリ使用量 | | Percent | このアプリに割り当てられたメモリに対する JVM プロセスの最近のメモリ使用率。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中に、どのメモリでも JVM プロセスからスレッドで割り当てられなかったことを意味します。一方、値 1.0 は、最近の観測期間中に、すべての CPU で JVM からスレッドが 100% 実行されたことを意味します。 JVM からのスレッドには、アプリケーション スレッドだけでなく、JVM 内部スレッドも含まれます。|
 >| jvm.memory.committed | jvm.memory.committed | バイト | JVM で使用できることが保証されているメモリの量を表します。 JVM がシステムに対してメモリを解放する場合があり、保証されているメモリが初期値よりも少なくなる可能性があります。 保証されているメモリは、常に使用量以上になります。 |
 >| jvm.memory.used | jvm.memory.used | バイト | 現在使用されているメモリの量を表します (バイト単位)。 |
 >| jvm.memory.max | jvm.memory.max | バイト | メモリ管理に使用できるメモリの最大量を表します。 最大量が定義されている場合、使用されるメモリおよび保証されるメモリの量は常にそれ以下になります。 使用されているメモリ量が最大メモリ量以下であっても、保証されているメモリ量よりも使用されるメモリ量が大きくなるように使用されるメモリ量を増やそうとすると、メモリ割り当てが失敗する可能性があります (たとえば、システムの仮想メモリが不足している場合)。 |
@@ -138,6 +145,7 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 詳細については、[dotnet のカウンター](/dotnet/core/diagnostics/dotnet-counters)に関するページを参照してください。
 
 ### <a name="request"></a>Request
+
 >[!div class="mx-tdCol2BreakAll"]
 >| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
 >|----|----|----|------------|
@@ -159,6 +167,7 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 詳細については、[dotnet のカウンター](/dotnet/core/diagnostics/dotnet-counters)に関するページを参照してください。
 
 ### <a name="session"></a>Session
+
 >[!div class="mx-tdCol2BreakAll"]
 >| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
 >|----|----|----|------------|
@@ -169,16 +178,24 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >| tomcat.sessions.rejected | tomcat.sessions.rejected | Count | アクティブなセッションの最大数に達したために作成されなかったセッションの数。 |
 >| tomcat.sessions.active.current | tomcat.sessions.active.current | Count | Tomcat セッションのアクティブ数 |
 
-## <a name="see-also"></a>関連項目
+### <a name="ingress"></a>イングレス
 
-* [クイック スタート: ログ、メトリック、トレースを使用した Azure Spring Cloud アプリの監視](spring-cloud-quickstart-logs-metrics-tracing.md)に関するページ
-
-* [Azure メトリックス エクスプローラーの概要](../azure-monitor/essentials/metrics-getting-started.md)
-
-* [診断設定でログとメトリックを分析する](./diagnostic-services.md)
+>[!div class="mx-tdCol2BreakAll"]
+>| 表示名             | Azure メトリック名        | ユニット           | 詳細                                                                                                                                                                          |
+>|--------------------------|--------------------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+>| 受信バイト数           | IngressBytesReceived     | バイト          | クライアントからの Azure Spring Cloud によって受信されたバイト数                                                                                                                   |
+>| 送信バイト数               | IngressBytesSent         | バイト          | Azure Spring Cloud によってクライアントに送信されたバイト数                                                                                                                         |
+>| Requests                 | IngressRequests          | Count          | クライアントからの Azure Spring Cloud による要求数                                                                                                                         |
+>| 失敗した要求          | IngressFailedRequests    | Count          | クライアントからの Azure Spring Cloud による失敗した要求数                                                                                                                  |
+>| 応答の状態          | IngressResponseStatus    | Count          | Azure Spring Cloud によって返された HTTP 応答の状態。 応答状態コードの分布をさらに分類し、2xx、3xx、4xx、5xx のカテゴリで応答を表示できます |
+>| 応答時間            | IngressResponseTime      | 秒        | Azure Spring Cloud によって返された HTTP 応答時間。                                                                                                                                  |
+>| スループット (バイト/秒)  | IngressBytesReceivedRate | BytesPerSecond | クライアントからの Azure Spring Cloud によって受信された 1 秒あたりのバイト数                                                                                                                 |
+>| スループット アウト (バイト/秒) | IngressBytesSentRate     | BytesPerSecond | クライアントに Azure Spring Cloud によって送信された 1 秒あたりのバイト数                                                                                                                       |
 
 ## <a name="next-steps"></a>次のステップ
 
-* [チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する](./spring-cloud-tutorial-alerts-action-groups.md)
-
-* [Azure Spring Cloud のクォータとサービス プラン](./spring-cloud-quotas.md)
+* [クイック スタート: ログ、メトリック、トレースを使用した Azure Spring Cloud アプリの監視](./quickstart-logs-metrics-tracing.md)
+* [Azure メトリックス エクスプローラーの概要](../azure-monitor/essentials/metrics-getting-started.md)
+* [診断設定でログとメトリックを分析する](./diagnostic-services.md)
+* [チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する](./tutorial-alerts-action-groups.md)
+* [Azure Spring Cloud のクォータとサービス プラン](./quotas.md)

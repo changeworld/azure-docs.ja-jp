@@ -1,23 +1,24 @@
 ---
 title: コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
-description: コピー アクティビティを使用する場合に、Azure Data Factory でのデータ移動のパフォーマンスに影響する主な要因について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: コピー アクティビティを使用するときに、Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプラインでのデータ移動のパフォーマンスに影響する主な要因について説明します。
 services: data-factory
 documentationcenter: ''
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
+ms.subservice: data-movement
 ms.workload: data-services
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 09/15/2020
-ms.openlocfilehash: 75f9080b43333168802a72e60751eec2a765c6d4
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: c66e7a1d19ecf392c5f990bcaa31ba506cf0d7f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580808"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767415"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
 
@@ -29,27 +30,27 @@ ms.locfileid: "106580808"
 
 データ レイクまたはエンタープライズ データ ウェアハウス (EDW) から Azure への大規模なデータ移行を実行することが必要な場合があります。 また、ビッグ データ分析用に各種ソースから Azure に大量のデータを取り込むことが必要な場合があります。 いずれの場合も、最適なパフォーマンスとスケーラビリティを実現することが不可欠です。
 
-Azure Data Factory (ADF) には、データを取り込むメカニズムが備わっています。 ADF には次の利点があります。
+Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプラインには、データを取り込むためのメカニズムが用意されています。これには次のような利点があります。
 
 * 大量のデータを処理する
 * パフォーマンスが高い
 * コスト効率に優れている
 
-これらの利点により、ADF は、パフォーマンスの高いスケーラブルなデータ インジェスト パイプラインを構築したいデータ エンジニアに最適です。
+これらの利点により、パフォーマンスの高いスケーラブルなデータ インジェスト パイプラインを構築したいデータ エンジニアに最適です。
 
 この記事を読むと、次の質問に回答できるようになります。
 
-* データ移行シナリオとデータ インジェスト シナリオで ADF のコピー アクティビティを使用すると、どのレベルのパフォーマンスとスケーラビリティを実現できますか。
-* ADF のコピー アクティビティのパフォーマンスを調整するには、どのような手順を実行する必要がありますか。
-* 1 回のコピー アクティビティの実行でパフォーマンスを最適化するために、どのような ADF のパフォーマンス最適化のヒントを利用できますか。
-* コピーのパフォーマンスを最適化するときに考慮する ADF 以外の要因には何がありますか。
+* データ移行シナリオとデータ インジェスト シナリオでコピー アクティビティを使用すると、どのレベルのパフォーマンスとスケーラビリティを実現できますか。
+* コピー アクティビティのパフォーマンスを調整するには、どのような手順を実行する必要がありますか。
+* 1 回のコピー アクティビティの実行には、どのようなパフォーマンスの最適化を利用できますか。
+* コピーのパフォーマンスを最適化するときに考慮する外的要因には何がありますか。
 
 > [!NOTE]
 > コピー アクティビティ全般に慣れていない場合は、この記事を読む前に、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
 
-## <a name="copy-performance-and-scalability-achievable-using-adf"></a>ADF を使用して実現可能なコピー パフォーマンスとスケーラビリティ
+## <a name="copy-performance-and-scalability-achievable-using-azure-data-factory-and-synapse-pipelines"></a>Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプラインを使用して実現可能なコピー パフォーマンスとスケーラビリティ
 
-ADF は、さまざまなレベルで並列処理を可能にするサーバーレス アーキテクチャを提供します。
+Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプラインは、さまざまなレベルで並列処理を可能にするサーバーレス アーキテクチャを提供します。
 
 このアーキテクチャを使用すると、お使いの環境のデータ移動スループットを最大化するパイプラインを開発できます。 これらのパイプラインは、次のリソースを完全に利用します。
 
@@ -65,7 +66,7 @@ ADF は、さまざまなレベルで並列処理を可能にするサーバー�
 次の表は、データ移動時間を計算したものです。 各セルの期間は、特定のネットワークおよびデータ ストアの帯域幅と、特定のデータ ペイロード サイズに基づいて計算されます。
 
 > [!NOTE]
-> 以下に示す期間は、ForEach を使用したパーティションの作成や複数の同時コピー アクティビティの生成など、「[コピー パフォーマンス最適化機能](#copy-performance-optimization-features)」で説明されている 1 つ以上のパフォーマンス最適化手法を使用して、ADF を使用して実装されたエンドツーエンドのデータ統合ソリューションで達成可能なパフォーマンスを表すためのものです。 特定のデータセットとシステム構成のコピー パフォーマンスを最適化するには、[パフォーマンス チューニングの手順](#performance-tuning-steps)に記載されている手順に従うことをお勧めします。 パフォーマンス チューニング テストで取得した数値は、運用環境デプロイ計画、容量計画、および請求プロジェクションに使用する必要があります。
+> 以下に示す期間は、ForEach を使用したパーティションの作成や複数の同時コピー アクティビティの生成など、「[コピー パフォーマンス最適化機能](#copy-performance-optimization-features)」で説明されている 1 つ以上のパフォーマンス最適化手法を使用して、エンドツーエンドのデータ統合ソリューションで達成可能なパフォーマンスを表すためのものです。 特定のデータセットとシステム構成のコピー パフォーマンスを最適化するには、[パフォーマンス チューニングの手順](#performance-tuning-steps)に記載されている手順に従うことをお勧めします。 パフォーマンス チューニング テストで取得した数値は、運用環境デプロイ計画、容量計画、および請求プロジェクションに使用する必要があります。
 
 &nbsp;
 
@@ -81,11 +82,11 @@ ADF は、さまざまなレベルで並列処理を可能にするサーバー�
 | **10 PB**                   | 647.3 か月   | 323.6 か月  | 64.7 か月   | 31.6 か月  | 6.5 か月   | 3.2 か月   | 0.6 か月    |
 | | |  | | |  | | |
 
-ADF コピーはさまざまなレベルでスケーラブルです。
+コピーはさまざまなレベルでスケーラブルです。
 
-![ADF のコピー スケールのしくみ](media/copy-activity-performance/adf-copy-scalability.png)
+:::image type="content" source="media/copy-activity-performance/adf-copy-scalability.png" alt-text="コピーのスケーリングのしくみ":::
 
-* ADF 制御フローでは、複数のコピー アクティビティを並列して開始できます。たとえば、[For Each ループ](control-flow-for-each-activity.md)を使用します。
+* 制御フローでは、複数のコピー アクティビティを並列して開始できます。たとえば、[For Each ループ](control-flow-for-each-activity.md)を使用します。
 
 * 1 回のコピー アクティビティで、スケーラブルなコンピューティング リソースを利用できます。
   * Azure 統合ランタイム (IR) を使用すると、各コピー アクティビティに対して[最大 256 データ統合単位 (DIU)](#data-integration-units) をサーバーレス方式で指定できます。
@@ -97,7 +98,7 @@ ADF コピーはさまざまなレベルでスケーラブルです。
 
 ## <a name="performance-tuning-steps"></a>パフォーマンス チューニングの手順
 
-コピー アクティビティを伴う Azure Data Factory サービスのパフォーマンスをチューニングするには、次の手順を実行します。
+コピー アクティビティを伴うサービスのパフォーマンスをチューニングするには、次の手順を実行します。
 
 1. **テスト データセットを選択し、ベースラインを確立します。**
 
@@ -127,7 +128,7 @@ ADF コピーはさまざまなレベルでスケーラブルです。
 
 3. **複数のコピーを同時に実行することで合計スループットを最大化する方法:**
 
-    ここまでで、1 回のコピー アクティビティのパフォーマンスを最大化しました。 お使いの環境のスループットの上限にまだ達していない場合は、複数のコピー アクティビティを並行して実行できます。 ADF 制御フロー コンストラクトを使用することで、並列で実行できます。 このようなコンストラクトの 1 つは、[For Each ループ](control-flow-for-each-activity.md)です。 詳細については、ソリューション テンプレートに関する次の記事を参照してください。
+    ここまでで、1 回のコピー アクティビティのパフォーマンスを最大化しました。 お使いの環境のスループットの上限にまだ達していない場合は、複数のコピー アクティビティを並行して実行できます。 制御フロー コンストラクトを使用することで、並列で実行できます。 このようなコンストラクトの 1 つは、[For Each ループ](control-flow-for-each-activity.md)です。 詳細については、ソリューション テンプレートに関する次の記事を参照してください。
 
     * [複数のコンテナーからのファイルのコピー](solution-template-copy-files-multiple-containers.md)
     * [Amazon S3 から ADLS Gen2 にデータを移行する](solution-template-migration-s3-azure.md)
@@ -139,11 +140,11 @@ ADF コピーはさまざまなレベルでスケーラブルです。
 
 ## <a name="troubleshoot-copy-activity-performance"></a>コピー アクティビティのパフォーマンスのトラブルシューティング
 
-[パフォーマンス チューニングの手順](#performance-tuning-steps) に従って、シナリオのパフォーマンステストを計画および実施します。 また、「[コピー アクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」で、Azure Data Factory での各回のコピー アクティビティの実行のパフォーマンスに関する問題をトラブルシューティングする方法を確認します。
+[パフォーマンス チューニングの手順](#performance-tuning-steps) に従って、シナリオのパフォーマンステストを計画および実施します。 また、「[コピー アクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」で、各回のコピー アクティビティの実行のパフォーマンスに関する問題をトラブルシューティングする方法を確認します。
 
 ## <a name="copy-performance-optimization-features"></a>コピー パフォーマンス最適化機能
 
-Azure Data Factory には、次のパフォーマンス最適化機能があります。
+このサービスには、次のパフォーマンス最適化機能があります。
 
 * [データ統合単位](#data-integration-units)
 * [セルフホステッド統合ランタイムのスケーラビリティ](#self-hosted-integration-runtime-scalability)
@@ -152,7 +153,7 @@ Azure Data Factory には、次のパフォーマンス最適化機能があり�
 
 ### <a name="data-integration-units"></a>データ統合単位
 
-データ統合単位 (DIU) は、Azure Data Factory で 1 つの単位の能力を表す尺度です。 能力は、CPU、メモリ、およびネットワーク リソース割り当てを組み合わせたものです。 DIU は [Azure 統合ランタイム](concepts-integration-runtime.md#azure-integration-runtime)にのみ適用されます。 DIU は[セルフホステッド統合ランタイム](concepts-integration-runtime.md#self-hosted-integration-runtime)には適用されません。 [こちら](copy-activity-performance-features.md#data-integration-units)を参照してください。
+データ統合単位 (DIU) は、Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプラインで 1 つの単位の能力を表す尺度です。 能力は、CPU、メモリ、およびネットワーク リソース割り当てを組み合わせたものです。 DIU は [Azure 統合ランタイム](concepts-integration-runtime.md#azure-integration-runtime)にのみ適用されます。 DIU は[セルフホステッド統合ランタイム](concepts-integration-runtime.md#self-hosted-integration-runtime)には適用されません。 [こちら](copy-activity-performance-features.md#data-integration-units)を参照してください。
 
 ### <a name="self-hosted-integration-runtime-scalability"></a>セルフホステッド統合ランタイムのスケーラビリティ
 

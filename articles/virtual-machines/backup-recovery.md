@@ -7,14 +7,16 @@ ms.subservice: recovery
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: c4116ef8d02bd47d6375371be9381553f8c22eda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aadbc0fe98f85d96cb06c21b33c8b28be6e732ed
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565446"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694404"
 ---
 # <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Azure での仮想マシンのバックアップと復元のオプション
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット
 
 データは、定期的にバックアップすることで保護することができます。 ユースケースに応じて、複数のバックアップ オプションを VM に使うことができます。
 

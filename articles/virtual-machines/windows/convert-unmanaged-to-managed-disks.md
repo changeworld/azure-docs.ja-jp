@@ -7,25 +7,26 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 3f586c8907ded618b4cc4aaaadf3c87471cda0b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10b4da09ae851a95fdbb267174540972357e028a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550724"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217615"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows 仮想マシンを非管理対象ディスクからマネージド ディスクに変換します
 
-非管理対象ディスクを使用する既存の Windows 仮想マシン (VM) を所有している場合、[Azure Managed Disks](../managed-disks-overview.md) サービスを使用して、マネージド ディスクを使用するように VM を変換できます。 このプロセスでは、OS ディスクと接続されたすべてのデータ ディスクの両方を変換します。
+**適用対象:** :heavy_check_mark: Windows VM 
 
- 
+非管理対象ディスクを使用する既存の Windows 仮想マシン (VM) を所有している場合、[Azure Managed Disks](../managed-disks-overview.md) サービスを使用して、マネージド ディスクを使用するように VM を変換できます。 このプロセスでは、オペレーティング システム (OS) ディスクと、アタッチされたすべてのデータ ディスクの両方を変換します。
+
 
 ## <a name="before-you-begin"></a>開始する前に
 
 
 * [Managed Disks への移行の計画](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)を確認します。
 
-* [Managed Disks への移行に関する FAQ](../faq-for-disks.md#migrate-to-managed-disks) を確認します。
+* [Managed Disks への移行に関する FAQ](../faq-for-disks.yml) を確認します。
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
@@ -88,8 +89,11 @@ ms.locfileid: "102550724"
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-変換中にエラーが発生する場合、または以前の変換の問題のために VM がエラー状態になっている場合は、`ConvertTo-AzVMManagedDisk` コマンドレットをもう一度実行します。 通常再試行するだけで状況が好転します。
-変換前に、すべての VM の拡張機能が "プロビジョニング成功" 状態にあることを確認してください。そのようになっていないとエラー コード 409 で変換に失敗します。
+- 変換前に、すべての VM の拡張機能が "プロビジョニング成功" 状態にあることを確認してください。そのようになっていないとエラー コード 409 で変換に失敗します。
+- 変換中にエラーが発生する場合、または以前の変換の問題のために VM がエラー状態になっている場合は、`ConvertTo-AzVMManagedDisk` コマンドレットをもう一度実行します。 通常再試行するだけで状況が好転します。
+- Linux VM をマネージド ディスクに変換する場合は、最新バージョンの Azure Linux エージェントを使用します。 Azure Linux エージェントのバージョン "2.2.0" 以前を使用している操作は、失敗する可能性があります。 一般化された VM または従来の可用性セットに属している VM での変換の実行も、サポートされていません。
+- "SnapshotCountExceeded" エラーで変換が失敗する場合は、一部のスナップショットを削除してから、操作を再試行してください。
+
 
 ## <a name="convert-using-the-azure-portal"></a>Azure portal を使用して変換する
 

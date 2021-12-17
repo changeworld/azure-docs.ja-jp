@@ -1,32 +1,40 @@
 ---
-title: ブラウザーを使用して仮想マシンに接続する - Azure | Microsoft Docs
+title: ラボの仮想マシンへのブラウザー アクセスを有効にする
 description: ブラウザーを使用して仮想マシンに接続する方法について説明します。
-ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 352fc5fd3ff53a00d9f62966ecf21417ad898706
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.date: 10/29/2021
+ms.openlocfilehash: f712d0090defa28f673807b835dbe3642cfdface
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87288061"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464370"
 ---
-# <a name="connect-to-your-virtual-machines-through-a-browser"></a>ブラウザーを使用して仮想マシンに接続する 
+# <a name="connect-to-your-lab-virtual-machines-through-a-browser"></a>ブラウザーを使用してラボの仮想マシンに接続する 
 
-DevTest Labs は [Azure Bastion](../bastion/index.yml) と統合されたことにより、ブラウザーを使用して仮想マシンに接続できます。 DevTest Labs でこの機能を有効にする方法の詳細については、「[ラボ仮想マシンでブラウザー接続を有効にする](enable-browser-connection-lab-virtual-machines.md)」を参照してください。
+DevTest Labs は [Azure Bastion](../bastion/index.yml) と統合されたことにより、ブラウザーを使用してラボの仮想マシン (VM) に接続できます。 **ブラウザー接続** が有効になると、ラボ ユーザーはブラウザーを使用してその仮想マシンにアクセスできます。  
 
-"*ブラウザー接続*" が有効になると、ラボ ユーザーはブラウザーを使用して仮想マシンにアクセスできます。  
+この攻略ガイドでは、**ブラウザー接続** を使用してラボの VM に接続します。
 
-## <a name="create-a-lab-virtual-machine"></a>ラボ仮想マシンの作成
+## <a name="prerequisites"></a>前提条件
 
-まず、Bastion が構成されている仮想ネットワーク内にラボ仮想マシンを作成する必要があります。 AzureBastionSubnet ではなく、作成した 2 番目の **サブネット** を選択します。 仮想マシンの作成中に **[詳細設定]** タブに移動することによって仮想ネットワークを選択できます。
+- ラボの VM で、[仮想ネットワークに Bastion が構成されていること、また **[ブラウザー接続]** 設定が有効にされていること](enable-browser-connection-lab-virtual-machines.md)。
 
-![仮想マシンの作成](./media/connect-virtual-machine-through-browser/create-virtual-machine.png)
+- Web ブラウザーが、`https://portal.azure.com:443` からのポップアップを許可するように構成されていること。
 
 ## <a name="launch-virtual-machine-in-a-browser"></a>ブラウザーでの仮想マシンの起動
 
-仮想マシンを作成したら、*[ブラウザー接続]* ボタンをクリックして、マシンのユーザー名とパスワードを入力すると、ブラウザーで起動できます。  
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
-![ブラウザーでの起動](./media/connect-virtual-machine-through-browser/browser-connect.png)
+1. **DevTest Labs** のラボに移動します。
+
+1. 仮想マシンを選択します。
+
+1. トップ メニューから **[ブラウザー接続]** を選択します。
+
+1. **[ブラウザー接続]** セクションで自分の資格情報を入力し、 **[接続]** を選択します。
+
+    :::image type="content" source="./media/connect-virtual-machine-through-browser/lab-vm-browser-connect.png" alt-text="ブラウザーの [接続] ボタンのスクリーンショット。":::
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,7 +3,7 @@ title: 可用性グループおよび DNN リスナーとの機能の相互運�
 description: '特定の SQL Server 機能および分散ネットワーク名 (DNN) リスナーと、Azure VM 上の SQL Server の Always On 可用性グループを一緒に操作する場合の追加の考慮事項について説明します。 '
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -11,22 +11,33 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/08/2020
-ms.author: mathoma
-ms.openlocfilehash: 19b4b7407468b19419e2f85193b1f8fb6ace39c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/10/2021
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 79aefd5c4b41e86aeeb2f7f02f2df57397c4b36b
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359406"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157478"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>AG と DNN リスナーとの機能の相互運用性 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-特定の SQL Server 機能では、ハードコーディングされた仮想ネットワーク名 (VNN) が使用されます。 そのため、分散ネットワーク名 (DNN) リスナーを Azure VM 上の Always On 可用性グループおよび SQL Server と一緒に使用する場合には、いくつかの追加の考慮事項がある場合があります。 
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の[複数のサブネット](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)に SQL Server VM を作成することで、Always On 可用性グループ (AG) に対して分散ネットワーク名が不要になります。
+
+特定の SQL Server 機能では、ハードコーディングされた仮想ネットワーク名 (VNN) が使用されます。 そのため、分散ネットワーク名 (DNN) リスナーを、1 つのサブネット内の Azure VM 上の Always On 可用性グループおよび SQL Server と一緒に使用する場合には、いくつかの追加の考慮事項がある場合があります。 
 
 この記事では、SQL Server 機能と可用性グループ DNN リスナーとの相互運用性について詳しく説明します。 
 
+## <a name="behavior-differences"></a>動作の違い
+
+VNN リスナーと DNN リスナーの機能には、注意が必要な動作の違いがいつくかあります。 
+
+- **フェールオーバー時間**: DNN リスナーを使用すると、ネットワーク ロード バランサーによって障害イベントが検出され、ルーティングが変更されるまで待つ必要がないため、フェールオーバー時間が短縮されます。 
+- **既存の接続**: フェールオーバー可用性グループ内の *特定のデータベース* に対する接続は閉じられますが、フェールオーバー処理中も DNN によってオンライン状態が維持されるため、プライマリ レプリカへの他の接続は開いたままになります。 これは、可用性グループがフェールオーバーすると通常はプライマリ レプリカへのすべての接続が閉じられ、リスナーはオフラインになり、プライマリ レプリカはセカンダリの役割に移行するという従来の VNN 環境とは異なります。 DNN リスナーを使用する場合は、フェールオーバー時に接続が新しいプライマリ レプリカにリダイレクトされるように、必要に応じてアプリケーションの接続文字列を調整します。
+- **開いているトランザクション**: フェールオーバー可用性グループ内のデータベースに対して開かれているトランザクションは、閉じられ、ロールバックされるので、*手動* で再接続する必要があります。 たとえば、SQL Server Management Studio で、クエリ ウィンドウを閉じて、新しいウィンドウを開きます。 
 
 ## <a name="client-drivers"></a>クライアント ドライバー
 
@@ -121,12 +132,17 @@ AG DNN リスナーの名前とポートを使用して、リンク サーバー
 
    はい。 DNS の DNN は、サブネットに関係なく、クラスターによって可用性内のすべてのレプリカの物理 IP アドレスにバインドされます。 SQL クライアントは、サブネットに関係なく、DNS 名の IP アドレスをすべて試行します。 
 
+- 可用性グループ DNN リスナーでは読み取り専用ルーティングはサポートされますか? 
+
+   はい。 読み取り専用ルーティングは、DNN リスナーでサポートされています。 
 
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、次を参照してください。 
+詳細については、以下をご覧ください。
 
-- [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)   
-- [Always On 可用性グループ](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)
 

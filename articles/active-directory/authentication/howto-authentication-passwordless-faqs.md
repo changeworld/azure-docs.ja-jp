@@ -11,14 +11,14 @@ author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2ea3a8213fa57aa7c8066b81ea7c790ec0b1db9
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646386"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988826"
 ---
-# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Azure AD でのハイブリッド FIDO2 セキュリティ キーのデプロイに関してよく寄せられる質問 (FAQ) 
+# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Azure AD でのハイブリッド FIDO2 セキュリティ キーのデプロイに関してよく寄せられる質問 (FAQ)
 
 この記事では、ハイブリッド Azure AD 参加済みデバイスと、オンプレミスのリソースへのパスワードレス サインインに関してよく寄せられるデプロイの質問 (FAQ) について説明します。 このパスワードレスの機能により、FIDO2 セキュリティ キーを使用して、Windows 10 デバイスをハイブリッド Azure AD 参加済みデバイスとして Azure AD 認証することができます。 ユーザーは、FIDO2 キーのような最新の資格情報を使用してデバイス上の Windows にサインインし、オンプレミスのリソースへのシームレスなシングル サインオン (SSO) エクスペリエンスにより、従来の Active Directory Domain Services (AD DS) ベースのリソースにアクセスできます。
 
@@ -65,6 +65,10 @@ FIDO2 セキュリティ キーを登録して使用する方法の詳細につ�
 ### <a name="is-there-a-way-for-admins-to-provision-the-keys-for-the-users-directly"></a>管理者がユーザーのキーを直接プロビジョニングする方法はありますか。
 
 現時点ではできません。
+
+### <a name="why-i-am-getting-notallowederror-in-the-browser-when-registering-fido2-keys"></a>FIDO2 キーを登録するときに、ブラウザーに「NotAllowedError」が表示されるのはなぜですか?
+
+Fido2 キー登録ページから「NotAllowedError」を受信します。 これは通常、ユーザーがプライベート (Incognito) ウィンドウまたはリモート デスクトップを使用していて、FIDO2 の秘密キーへのアクセスができない場合に発生します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -174,14 +178,14 @@ Windows Server 2016 または 2019 ドメイン コントローラーで、次�
 
 ### <a name="how-is-azure-ad-kerberos-linked-to-my-on-premises-active-directory-domain-services-environment"></a>オンプレミスの Active Directory Domain Services 環境に、Azure AD Kerberos はどのようにリンクされますか。
 
-これには、オンプレミスの AD DS 環境と、Azure AD テナントの 2 つの部分があります。
+これには、オンプレミスの AD DS 環境と Azure AD テナントの 2 つの部分があります。
 
 **Active Directory Domain Services (AD DS)**
 
 Azure AD Kerberos サーバーは、オンプレミスの AD DS 環境ではドメイン コントローラー (DC) オブジェクトとして表されます。 この DC オブジェクトは、次の複数のオブジェクトで構成されています。
 
 * *CN=AzureADKerberos,OU=Domain Controllers,\<domain-DN>*
-    
+
     AD DS で読み取り専用ドメイン コントローラー (RODC) を表す *コンピューター* オブジェクト。 このオブジェクトに関連付けられているコンピューターはありません。 むしろ、これは DC の論理的な表現です。
 
 * *CN=krbtgt_AzureAD,CN=Users,\<domain-DN>*
@@ -204,7 +208,7 @@ Azure AD Kerberos サーバーは、Azure AD 内では *KerberosDomain* オブ�
 
 すべてのオブジェクトを表示するには、Azure AD Connect の最新バージョンに含まれている Azure AD Kerberos サーバー PowerShell コマンドレットを使用します。
 
-オブジェクトの表示方法を含む詳細については、「[Kerberos サーバー オブジェクトの作成](howto-authentication-passwordless-security-key-on-premises.md#create-kerberos-server-object)」を参照してください。
+オブジェクトの表示方法を含む詳細については、「[Kerberos サーバー オブジェクトの作成](howto-authentication-passwordless-security-key-on-premises.md#create-a-kerberos-server-object)」を参照してください。
 
 ### <a name="why-cant-we-have-the-public-key-registered-to-on-premises-ad-ds-so-there-is-no-dependency-on-the-internet"></a>インターネットへの依存関係がなくなるように、公開キーをオンプレミスの AD DS に登録することができないのはなぜですか。
 
@@ -215,7 +219,7 @@ Microsoft では Windows Hello for Business のデプロイ モデルの複雑�
 他の DC と同様に、Azure AD Kerberos サーバー暗号化の *krbtgt* キーは定期的にローテーションする必要があります。 他のすべての AD DS *krbtgt* キーのローテーションのスケジュールと同じスケジュールにすることをお勧めします。
 
 > [!NOTE]
-> *krbtgt* キーをローテーションするツールは他にもありますが、Azure AD Kerberos サーバーの [*krbtgt* キーをローテーションするには、PowerShell コマンドレットを使用する](howto-authentication-passwordless-security-key-on-premises.md#rotating-the-azure-ad-kerberos-server-key)必要があります。 この方法を使用すると、オンプレミスの AD DS 環境と Azure AD の両方で、キーが確実に更新されます。
+> *krbtgt* キーをローテーションするツールは他にもありますが、Azure AD Kerberos サーバーの [*krbtgt* キーをローテーションするには、PowerShell コマンドレットを使用する](howto-authentication-passwordless-security-key-on-premises.md#rotate-the-azure-ad-kerberos-server-key)必要があります。 この方法を使用すると、オンプレミスの AD DS 環境と Azure AD の両方で、キーが確実に更新されます。
 
 ### <a name="why-do-we-need-azure-ad-connect-does-it-write-any-info-back-to-ad-ds-from-azure-ad"></a>なぜ Azure AD Connect が必要なのですか。 これによって、Azure AD から AD DS に情報が書き戻されることはありますか。
 

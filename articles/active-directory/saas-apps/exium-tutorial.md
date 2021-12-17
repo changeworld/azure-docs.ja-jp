@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/16/2021
+ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 01b3bbc0a4f0c7d53ed0a9ba2449cf5985b2ab86
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2449a8d289acb02f93f87be28c5561e4feb987d0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608379"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132314234"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exium"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Exium の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "104608379"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Exium では、**SP** Initiated SSO がサポートされます。
+* Exium では、[自動化されたユーザー プロビジョニング](exium-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-exium-from-the-gallery"></a>ギャラリーからの Exium の追加
 
@@ -149,6 +150,9 @@ Exium に対して Azure AD SSO を構成してテストするには、次の手
 
     ![テスト ユーザーの作成フィールドと保存ボタンのスクリーンショット](./media/exium-tutorial/add-user-2.png)
 
+> [!NOTE]
+>Exium では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./exium-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -157,11 +161,9 @@ Exium に対して Azure AD SSO を構成してテストするには、次の手
 
 * Exium のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Exium] タイルをクリックすると、Exium のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Exium] タイルをクリックすると、Exium のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Exium を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Exium を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

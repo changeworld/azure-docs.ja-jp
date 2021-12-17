@@ -10,20 +10,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3e6ed6bc8ba426a981b7a2390e7d00d9c3b1e785
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 50504d2e36c490c90c7c8bdbb8b737837b64eaff
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643460"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163032"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault について
 
 Azure Key Vault は、次の問題の解決に役立ちます。
 
 - **シークレットの管理** - Azure Key Vault を使用すると、トークン、パスワード、証明書、API キー、その他のシークレットを安全に格納し、それらへのアクセスを厳密に制御できます。
-- **キー管理** - Azure Key Vault は、キー管理ソリューションとしても使用できます。 Azure Key Vault により、データの暗号化に使用される暗号化キーの作成と制御が簡単になります。 
-- **証明書の管理** - Azure Key Vault は、Azure および内部の接続されているリソースで使用するためのパブリックおよびプライベートの Transport Layer Security/Secure Sockets Layer (TLS/SSL) 証明書を簡単にプロビジョニング、管理、デプロイすることができるサービスでもあります。
+- **キー管理** - Azure Key Vault は、キー管理ソリューションとして使用できます。 Azure Key Vault により、データの暗号化に使用される暗号化キーの作成と制御が簡単になります。
+- **証明書の管理** - Azure Key Vault では、Azure および内部の接続されているリソースで使用するためのパブリックおよびプライベートの Transport Layer Security/Secure Sockets Layer (TLS/SSL) 証明書を簡単にプロビジョニング、管理、デプロイできます。
 
 Azure Key Vault には 2 つのサービス レベルがあります。ソフトウェア キーを使用して暗号化する Standard レベルと、ハードウェア セキュリティ モジュール (HSM) で保護されたキーを含む Premium レベルです。 Standard レベルと Premium レベルの比較については、[Azure Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
 
@@ -39,7 +39,7 @@ Azure Key Vault には 2 つのサービス レベルがあります。ソフト
 
 キー コンテナーにアクセスする場合、呼び出し元 (ユーザーまたはアプリケーション) がアクセスする前に適切な認証と認可が必要になります。 認証では呼び出し元の ID を確認し、認可では呼び出し元が実行できる操作を決定します。
 
-認証は Azure Active Directory を介して行われます。 認可は、Azure ロールベースのアクセス制御 (Azure RBAC) または Key Vault のアクセス ポリシーを使用して行うことができます。 Azure RBAC は、コンテナーを管理するときに使用されます。キー コンテナーのアクセス ポリシーは、コンテナーに格納されているデータにアクセスするときに使用されます。
+認証は Azure Active Directory を介して行われます。 認可は、Azure ロールベースのアクセス制御 (Azure RBAC) または Key Vault のアクセス ポリシーを使用して行うことができます。 Azure RBAC は、コンテナーの管理と、コンテナーに格納されているデータへのアクセスの両方に使用できます。一方、Key Vault のアクセス ポリシーは、コンテナーに格納されているデータにアクセスしようとするときにのみ使用できます。
 
 Azure Key Vault はソフトウェアで保護する方法と、Azure Key Vault Premium レベルを使用し、HSM (ハードウェア セキュリティ モジュール) によってハードウェアで保護する方法とがあります。 ソフトウェアで保護されたキー、シークレット、証明書は、Azure によって業界標準のアルゴリズムとキーの長さを使用して保護されます。  さらに追加の保証が必要な状況では、HSM 内でキーのインポートや生成を行うことができ、キーは HSM の境界内から出ることはありません。 Azure Key Vault で使用される nCipher HSM は、Federal Information Processing Standards (FIPS) 140-2 Level 2 適合認定取得済みです。 nCipher ツールを使用して、キーを HSM から Azure Key Vault に移動できます。
 
@@ -72,7 +72,7 @@ Azure Key Vault はソフトウェアで保護する方法と、Azure Key Vault 
 Azure 内の安全なストアとして、Key Vault は次のようなシナリオの簡略化に使用されてきました。
 -  [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)
 -  SQL サーバーと Azure SQL Database 内の [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) と [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) 機能
-- [Azure App Service](/azure/app-service/configure-ssl-certificate)。
+- [Azure App Service](../../app-service/configure-ssl-certificate.md)。
 
 Key Vault 自体は、ストレージ アカウント、イベント ハブ、ログ分析と統合できます。
 

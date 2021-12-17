@@ -3,15 +3,15 @@ title: Azure API Management の論理的な削除 (プレビュー) | Microsoft 
 description: 論理的な削除を使用すると、削除された API Management インスタンスを復旧できます。
 ms.service: api-management
 ms.topic: conceptual
-author: vladvino
-ms.author: apimpm
+author: dlepow
+ms.author: danlep
 ms.date: 11/27/2020
-ms.openlocfilehash: e2842f3e428abb4f0eb628dbb8e446f2714d5d89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca142ec96bf4ec45cc7c2f612a38ee0d10bf9615
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101652387"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000577"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management の論理的な削除 (プレビュー)
 
@@ -22,19 +22,19 @@ API Management の論理的な削除 (プレビュー) を使用すると、最�
 
 ## <a name="supporting-interfaces"></a>インターフェイスのサポート
 
-論理的な削除機能は [REST API](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/restore) を通じて利用できます。
+論理的な削除機能は [REST API](/rest/api/apimanagement/2021-01-01-preview/api-management-service/restore) を通じて利用できます。
 
 > [!TIP]
 > Azure REST API を呼び出すためのヒントとツールについては、[Azure REST API リファレンス](/rest/api/azure/)を参照してください。
 
 | 操作 | 説明 | API Management の名前空間 | 最小 API バージョン |
 |--|--|--|--|
-| [Create or Update](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | API Management サービスを作成または更新します。  | API Management サービス | Any |
-| [Create or Update](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) (`restore` プロパティを **true** に設定) | API Management サービスが以前に論理的に削除されていた場合、削除を取り消します。 `restore` が指定されていて `true` に設定されている場合、その他のプロパティはすべて無視されます。  | API Management サービス |  2020-06-01-preview |
-| [削除](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | 既存の API Management サービスを削除します。 | API Management サービス | 2020-06-01-preview|
-| [Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) | 論理的に削除された API Management サービスを、名前を指定して取得します。 | 削除されたサービス | 2020-06-01-preview |
-| [List By Subscription](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) | 指定されたサブスクリプションについて削除の取り消しが可能な、論理的に削除されたサービスを一覧表示します。 | 削除されたサービス | 2020-06-01-preview
-| [消去](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) | API Management サービスを消去します (削除を取り消すオプションを使用せずに削除します)。 | 削除されたサービス | 2020-06-01-preview
+| [Create or Update](/rest/api/apimanagement/2021-01-01-preview/api-management-service/create-or-update) | API Management サービスを作成または更新します。  | API Management サービス | Any |
+| [Create or Update](/rest/api/apimanagement/2021-01-01-preview/api-management-service/create-or-update) (`restore` プロパティを **true** に設定) | API Management サービスが以前に論理的に削除されていた場合、削除を取り消します。 `restore` が指定されていて `true` に設定されている場合、その他のプロパティはすべて無視されます。  | API Management サービス |  2020-06-01-preview |
+| [削除](/rest/api/apimanagement/2021-01-01-preview/api-management-service/delete) | 既存の API Management サービスを削除します。 | API Management サービス | 2020-06-01-preview|
+| [Get By Name](/rest/api/apimanagement/2021-01-01-preview/deleted-services/get-by-name) | 論理的に削除された API Management サービスを、名前を指定して取得します。 | 削除されたサービス | 2020-06-01-preview |
+| [List By Subscription](/rest/api/apimanagement/2021-01-01-preview/deleted-services/list-by-subscription) | 指定されたサブスクリプションについて削除の取り消しが可能な、論理的に削除されたサービスを一覧表示します。 | 削除されたサービス | 2020-06-01-preview
+| [消去](/rest/api/apimanagement/2021-01-01-preview/deleted-services/purge) | API Management サービスを消去します (削除を取り消すオプションを使用せずに削除します)。 | 削除されたサービス | 2020-06-01-preview
 
 ## <a name="soft-delete-behavior"></a>論理的な削除の動作
 
@@ -48,11 +48,11 @@ APIM インスタンスが 48 時間以内に回復されない場合、その�
 
 ## <a name="list-deleted-apim-instances"></a>削除された APIM インスタンスを一覧表示する
 
-削除されたサービスの [Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) または [List By Subscription](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) を使用して、論理的に削除された APIM インスタンスを復元 (削除を取り消し) できることを確認できます。
+削除されたサービスの [Get By Name](/rest/api/apimanagement/2021-01-01-preview/deleted-services/get-by-name) または [List By Subscription](/rest/api/apimanagement/2021-01-01-preview/deleted-services/list-by-subscription) を使用して、論理的に削除された APIM インスタンスを復元 (削除を取り消し) できることを確認できます。
 
 ### <a name="get-a-soft-deleted-instance-by-name"></a>論理的に削除されたインスタンスを名前を指定して取得する
 
-API Management の [Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) 操作を使用して、`{subscriptionId}`、`{location}`、`{serviceName}` を Azure サブスクリプション、リソースの場所、および API Management インスタンス名に置き換えます。
+API Management の [Get By Name](/rest/api/apimanagement/2021-01-01-preview/deleted-services/get-by-name) 操作を使用して、`{subscriptionId}`、`{location}`、`{serviceName}` を Azure サブスクリプション、リソースの場所、および API Management インスタンス名に置き換えます。
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/deletedservices/{serviceName}?api-version=2020-06-01-preview
@@ -76,7 +76,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 ### <a name="list-all-soft-deleted-instances-for-a-given-subscription"></a>特定のサブスクリプションについて論理的に削除されたすべてのインスタンスを一覧表示する
 
-API Management の [List By Subscription](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) 操作を使用して、`{subscriptionId}` をサブスクリプション ID に置き換えます。
+API Management の [List By Subscription](/rest/api/apimanagement/2021-01-01-preview/deleted-services/list-by-subscription) 操作を使用して、`{subscriptionId}` をサブスクリプション ID に置き換えます。
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/deletedservices?api-version=2020-06-01-preview
@@ -86,10 +86,11 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 ## <a name="recover-a-deleted-apim-instance"></a>削除された APIM インスタンスを復旧する
 
-API Management の [Create Or Update](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) 操作を使用して、`{subscriptionId}`、`{resourceGroup}`、`{apimServiceName}` を Azure サブスクリプション、リソース グループ名、および API Management 名に置き換えます。
+API Management の [Create Or Update](/rest/api/apimanagement/2021-01-01-preview/api-management-service/create-or-update) 操作を使用して、`{subscriptionId}`、`{resourceGroup}`、`{apimServiceName}` を Azure サブスクリプション、リソース グループ名、および API Management 名に置き換えます。
 
 ```rest
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ApiManagement/service/{apimServiceName}?api-version=2020-06-01-preview
+PUT
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ApiManagement/service/{apimServiceName}?api-version=2021-01-01-preview
 ```
 
 . . . 要求本文で `restore` プロパティを `true` に設定します。 (このフラグが指定されていて *true* に設定されている場合、その他のプロパティはすべて無視されます。)次に例を示します。
@@ -111,7 +112,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="purge-a-soft-deleted-apim-instance"></a>論理的に削除された APIM インスタンスを消去する
 
-API Management の [Purge](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) 操作を使用して、`{subscriptionId}`、`{location}`、`{serviceName}` を Azure サブスクリプション、リソースの場所、および API Management 名に置き換えます。
+API Management の [Purge](/rest/api/apimanagement/2021-01-01-preview/deleted-services/purge) 操作を使用して、`{subscriptionId}`、`{location}`、`{serviceName}` を Azure サブスクリプション、リソースの場所、および API Management 名に置き換えます。
 
 ```rest
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/deletedservices/{serviceName}?api-version=2020-06-01-preview

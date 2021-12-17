@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Stack Edge Pro を使用して共有にデータを転送する | Microsoft Docs'
-description: このチュートリアルでは、Azure Stack Edge Pro デバイスに共有を追加して接続し、Azure Stack Edge Pro から Azure にデータを転送する方法について説明します。
+title: Azure Stack Edge Pro FPGA データの共有への転送のチュートリアル
+description: このチュートリアルでは、Azure Stack Edge Pro FPGA デバイスに共有を追加して接続し、Azure Stack Edge Pro FPGA から Azure にデータを転送する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 8c9ad00a8910562e1a3a53af5120030bc482c927
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f1b3e1b0b2734e54bdf8f63981a80848662cda64
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060212"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747388"
 ---
-# <a name="tutorial-transfer-data-with-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro を使用してデータを転送する
+# <a name="tutorial-transfer-data-with-azure-stack-edge-pro-fpga"></a>チュートリアル: Azure Stack Edge Pro FPGA を使用してデータを転送する
 
-このチュートリアルでは、お客様の Azure Stack Edge Pro デバイスに共有を追加して接続する方法について説明します。 共有を追加した後、Azure Stack Edge Pro から Azure にデータを転送できます。
+このチュートリアルでは、Azure Stack Edge Pro FPGA デバイスに共有を追加して接続する方法について説明します。 共有を追加した後、Azure Stack Edge Pro FPGA から Azure にデータを転送できます。
 
 この手順の所要時間は約 10 分です。
 
@@ -30,11 +30,11 @@ ms.locfileid: "106060212"
  
 ## <a name="prerequisites"></a>前提条件
 
-共有を Azure Stack Edge Pro に追加する前に、次のことを確認してください。
+共有を Azure Stack Edge Pro FPGA に追加する前に、次のことを確認してください。
 
-- [Azure Stack Edge Pro の設置](azure-stack-edge-deploy-install.md)に関するページで説明されているように、物理デバイスが設置されていること。
+- [Azure Stack Edge Pro FPGA の設置](azure-stack-edge-deploy-install.md)に関するページで説明されているように、物理デバイスが設置されていること。
 
-- [Azure Stack Edge Pro の接続、設定、アクティブ化](azure-stack-edge-deploy-connect-setup-activate.md)に関するページで説明されているとおり、物理デバイスがアクティブ化されていること。
+- [Azure Stack Edge Pro FPGA の接続、設定、アクティブ化](azure-stack-edge-deploy-connect-setup-activate.md)に関するページで説明されているとおり、物理デバイスがアクティブ化されていること。
 
 
 ## <a name="add-a-share"></a>共有の追加
@@ -61,7 +61,7 @@ ms.locfileid: "106060212"
     c. 共有を配置するストレージ アカウントを指定します。 
 
     > [!IMPORTANT]
-    > Azure Stack Edge Pro または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、そのアカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/storage-blob-immutability-policies-manage.md)」を参照してください。
+    > Azure Stack Edge Pro FPGA または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、それに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/immutable-policy-configure-version-scope.md)」を参照してください。
     
     d. **[ストレージ サービス]** ドロップダウン リストで、 **[ブロック BLOB]** 、 **[ページ BLOB]** 、 **[ファイル]** のいずれかを選択します。  
     お客様が選択するサービスの種類は、Azure で使用したいデータの形式によって変わります。 この例では、データをブロック BLOB として Azure に格納したいため、 **[ブロック BLOB]** を選択します。 **ページ BLOB** を選択する場合は、お客様のデータが 512 バイトでアラインされるようにします。 たとえば、VHDX は常に 512 バイトでアラインされています。
@@ -91,7 +91,7 @@ ms.locfileid: "106060212"
 
 ### <a name="connect-to-an-smb-share"></a>SMB 共有に接続する
 
-お客様の Azure Stack Edge Pro デバイスに接続されている Windows Server クライアントで、コマンドを入力して SMB 共有に接続します。
+Azure Stack Edge Pro FPGA デバイスに接続されている Windows Server クライアントで、コマンドを入力して SMB 共有に接続します。
 
 
 1. コマンド ウィンドウで次を入力します。
@@ -124,7 +124,7 @@ ms.locfileid: "106060212"
 
 ### <a name="connect-to-an-nfs-share"></a>NFS 共有に接続する
 
-お客様の Azure Stack Edge Pro デバイスに接続されている Linux クライアントで、次の手順を実行します。
+Azure Stack Edge Pro FPGA デバイスに接続されている Linux クライアントで、次の手順を実行します。
 
 1. クライアントに NFSv4 クライアントがインストール済みであることを確認します。 NFS クライアントをインストールするには、次のコマンドを使用します。
 
@@ -132,7 +132,7 @@ ms.locfileid: "106060212"
 
     詳細については、[NFSv4 クライアントのインストール](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client)に関するページを参照してください。
 
-2. NFS クライアントがインストールされたら、次のコマンドを使用して、作成した NFS 共有を Azure Stack Edge Pro デバイスにマウントします。
+2. NFS クライアントがインストールされたら、次のコマンドを使用して、作成した NFS 共有を Azure Stack Edge Pro FPGA デバイスにマウントします。
 
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
@@ -140,7 +140,7 @@ ms.locfileid: "106060212"
     > 共有をマウントする際に `sync` オプションを使用すると、大きなファイルの転送速度が向上します。
     > 共有をマウントする前に、ローカル コンピューター上のマウント ポイントとして機能するディレクトリが既に作成されていることを確認します。 これらのディレクトリに、ファイルやサブフォルダーを含めることはできません。
 
-    NFS 経由で Azure Stack Edge Pro デバイス上の共有に接続する方法の例を次に示します。 デバイスの IP アドレスは `10.10.10.60` です。 共有 `mylinuxshare2` は ubuntuVM にマウントされています。 共有マウント ポイントは `/home/databoxubuntuhost/edge` です。
+    NFS 経由で Azure Stack Edge Pro FPGA デバイス上の共有に接続する方法の例を次に示します。 デバイスの IP アドレスは `10.10.10.60` です。 共有 `mylinuxshare2` は ubuntuVM にマウントされています。 共有マウント ポイントは `/home/databoxubuntuhost/edge` です。
 
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
 
@@ -151,13 +151,13 @@ ms.locfileid: "106060212"
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Stack Edge Pro に関する次のトピックについて説明しました。
+このチュートリアルでは、Azure Stack Edge Pro FPGA に関する次のトピックについて説明しました。
 
 > [!div class="checklist"]
 > * 共有の追加
 > * 共有への接続
 
-Azure Stack Edge Pro を使用してデータを変換する方法については、次のチュートリアルに進みます。
+Azure Stack Edge Pro FPGA を使用してデータを変換する方法については、次のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge Pro でデータを変換する](./azure-stack-edge-deploy-configure-compute.md)
+> [Azure Stack Edge Pro FPGA でデータを変換する](./azure-stack-edge-deploy-configure-compute.md)

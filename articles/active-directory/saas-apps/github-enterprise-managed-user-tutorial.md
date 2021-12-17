@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 864415f421f4fbecf31fd52a624ac568b4cf9c80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6038db88610e1fde8d95c2c31a9bcfa2c5ad5ac2
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574764"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111904249"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-managed-user"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と GitHub Enterprise Managed User の統合
 
-このチュートリアルでは、GitHub Enterprise Managed User と Azure Active Directory (Azure AD) を統合する方法について説明します。 GitHub Enterprise Managed User と Azure AD を統合すると、次のことができます。
+このチュートリアルでは、GitHub Enterprise Managed User (EMU) と Azure Active Directory (Azure AD) を統合する方法について説明します。 GitHub Enterprise Managed User と Azure AD を統合すると、次のことができます。
 
 * GitHub Enterprise Managed User にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して GitHub Enterprise Managed User に自動的にサインインできるようにする。
@@ -38,8 +38,7 @@ ms.locfileid: "103574764"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * GitHub Enterprise Managed User では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
-* GitHub Enterprise Managed User では、**Just In Time** ユーザー プロビジョニングがサポートされます。
-* GitHub Enterprise Managed User では、[**自動化された** ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/github-enterprise-managed-user-provisioning-tutorial)がサポートされます。
+* GitHub Enterprise Managed User には、[**自動化された** ユーザー プロビジョニング](./github-enterprise-managed-user-provisioning-tutorial.md)が必要です。
 
 ## <a name="adding-github-enterprise-managed-user-from-the-gallery"></a>ギャラリーからの GitHub Enterprise Managed User の追加
 
@@ -55,16 +54,10 @@ Azure AD への GitHub Enterprise Managed User の統合を構成するには、
 
 ## <a name="configure-and-test-azure-ad-sso-for-github-enterprise-managed-user"></a>GitHub Enterprise Managed User の Azure AD SSO の構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、GitHub Enterprise Managed User に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと GitHub Enterprise Managed User の関連ユーザーとの間にリンク関係を確立する必要があります。
-
 GitHub Enterprise Managed User に対する Azure AD SSO を構成してテストするには、次の手順を実行します。
 
-1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[GitHub Enterprise Managed User の SSO の構成](#configure-github-enterprise-managed-user-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[GitHub Enterprise Managed User のテスト ユーザーの作成](#create-github-enterprise-managed-user-test-user)** - GitHub Enterprise Managed User で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
-1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - AAD テナントで SAML シングルサインオンを有効にします。
+1. **[GitHub Enterprise Managed User の SSO の構成](#configure-github-enterprise-managed-user-sso)** - GitHub Enterprise でシングル サインオン設定を構成します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
@@ -76,79 +69,66 @@ GitHub Enterprise Managed User に対する Azure AD SSO を構成してテス�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. 始める前に Enterprise URL があることを確認します。 下に示す ENTITY フィールドは、EMU 対応 Enterprise URL の Enterprise 名です。 たとえば、 https://github.com/enterprises/contoso - **contoso** が ENTITY です。 **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`https://github.com/enterprise-managed/<ENTITY>` の形式で URL を入力します。
-
+    a. **[識別子]** ボックスに、`https://github.com/enterprises/<ENTITY>` の形式で URL を入力します。
+    
+    > [!NOTE]
+    > 識別子の形式は、アプリケーションの推奨形式とは異なります。上の形式に従ってください。 さらに、**識別子の末尾にスラッシュを付けないでください。
+    
     b. **[応答 URL]** ボックスに、`https://github.com/enterprises/<ENTITY>/saml/consume` のパターンを使用して URL を入力します
+    
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** ボックスに、`https://github.com/enterprises/<ENTITY>/sso` という形式で URL を入力します。
 
-    > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[GitHub Enterprise Managed User クライアント サポート チーム](mailto:support@github.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
-
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+    ![証明書のダウンロードのリンク](common/certificate-base64-download.png)
 
-1. **[GitHub Enterprise Managed User のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+1. **[Set up GitHub Enterprise Managed User]\(GitHub Enterprise Managed User の設定\)** セクションで、下の URL をコピーして、下で GitHub を構成するために保存します。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-
-このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
-
-1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-1. 画面の上部にある **[新しいユーザー]** を選択します。
-1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
-   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、B.Simon に GitHub Enterprise Managed User へのアクセスを許可して、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、SSO の設定を完了するために、アカウントを GitHub Enterprise Managed User に割り当てます。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で、 **[GitHub Enterprise Managed User]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] リストで自分のアカウントを選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. **[ロールの選択]** ダイアログで、 **[Enterprise Owner]\(エンタープライズ所有者\)** ロールを選択してから、画面の下部にある **[選択]** ボタンをクリックします。 アカウントは、次のチュートリアルでアカウントをプロビジョニングするときに、GitHub インスタンスのエンタープライズ所有者として割り当てられます。 
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-github-enterprise-managed-user-sso"></a>GitHub Enterprise Managed User SSO の構成
 
-**GitHub Enterprise Managed User** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** および Azure portal からコピーした適切な URL を [GitHub Enterprise Managed User サポート チーム](mailto:support@github.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**GitHub Enterprise Managed User** 側でシングル サインオンを構成するには、次のものが必要になります。
 
-### <a name="create-github-enterprise-managed-user-test-user"></a>GitHub Enterprise Managed User のテスト ユーザーの作成
+1. 上記の AAD Enterprise Managed User Application からの URL: ログイン URL、Azure AD 識別子、ログアウト URL
+1. GitHub Enterprise の最初の管理者ユーザーのアカウント名とパスワード。 資格情報は、GitHub Solutions Engineering 担当者からパスワード リセット電子メールで送られてきます。 
 
-このセクションでは、GitHub Enterprise Managed User に B.Simon というユーザーを作成します。 GitHub Enterprise Managed User では、Just-In-Time プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ GitHub Enterprise Managed User に存在しない場合は、GitHub Enterprise Managed User にアクセスしようとしたときに新しいユーザーが作成されます。
+### <a name="enable-github-enterprise-managed-user-saml-sso"></a>GitHub Enterprise Managed User SAML SSO の有効化
 
-GitHub Enterprise Managed User は、自動ユーザー プロビジョニングもサポートしています。自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/saas-apps/github-enterprise-managed-user-provisioning-tutorial)を参照してください。
+このセクションでは、上記の AAD から提供されている情報を取得し、それらを Enterprise 設定に入力して、SSO のサポートを有効にします。
 
-## <a name="test-sso"></a>SSO のテスト 
-
-このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
-
-#### <a name="sp-initiated"></a>SP Initiated:
-
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる GitHub Enterprise Managed User のサインオン URL にリダイレクトされます。  
-
-* GitHub Enterprise Managed User のサインオン URL に直接移動し、そこからログイン フローを開始します。
-
-#### <a name="idp-initiated"></a>IDP Initiated:
-
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した GitHub Enterprise Managed User に自動的にサインインされます 
-
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [GitHub Enterprise Managed User] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した GitHub Enterprise Managed User に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
-
+1. [https://resources.azure.com](https://github.com) に移動します
+1. 右上隅の [サインイン] をクリックします。
+1. 最初の管理者ユーザー アカウントの資格情報を入力します。 ログイン ハンドルの形式は `<your enterprise short code>_admin` にします。
+1. `https://github.com/enterprises/` `<your enterprise name>` に移動します。 この情報は、Solutions Engineering 担当者から提供されます。
+1. 左側のナビゲーション メニューで、 **[設定]** 、 **[セキュリティ]** の順に選択します。
+1. **[SAML 認証の有効化]** チェックボックスをオンにします。
+1. サインオン URL を入力します。 この URL は、上の AAD からコピーしたログイン URL です。
+1. 発行者を入力します。 この URL は、上の AAD からコピーした Azure AD 識別子です。
+1. 公開証明書を入力します。 上でダウンロードした base64 証明書を開いて、そのファイルのテキストの内容をこのダイアログに貼り付けます。
+1. **[Test SAML configuration]\(SAML 構成のテスト\)** をクリックします。 これにより、Azure AD 資格情報でログインして SAML SSO が正しく構成されていることを確認するためのダイアログが開きます。 自分の AAD 資格情報でログインします。 検証に成功すると **[Passed: Successfully authenticated your SAML SSO identity]\(成功: SAML SSO ID が正常に認証されました\)** メッセージが表示されます。
+1. **[保存]** をクリックしてこれらの設定を保持します。
+1. 回復用コードは安全な場所に保存 (ダウンロード、印刷、またはコピー) してください。
+1. **[SAML 認証を有効にする]** をクリックします。
+1. この時点で、SSO が設定されたアカウントだけが Enterprise にログインできます。 SSO によってサポートされるアカウントをプロビジョニングするには、下のプロビジョニングに関するドキュメントの手順に従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 
-GitHub Enterprise Managed User を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+GitHub Enterprise Managed User では、すべてのアカウントが自動ユーザー プロビジョニングによって作成されることが **必要** です。自動ユーザー プロビジョニングの構成方法の詳細は、[こちら](./github-enterprise-managed-user-provisioning-tutorial.md)をご覧ください。

@@ -2,22 +2,18 @@
 title: Network Performance Monitor から接続モニターに移行する
 titleSuffix: Azure Network Watcher
 description: Network Performance Monitor から接続モニターに移行する方法について説明します。
-services: network-watcher
-documentationcenter: na
 author: vinynigam
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: be12a9054fd67b243530ff671c10fa53acafc308
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 84daa5527617584d420db02b012bec28760a146c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366353"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614564"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Network Performance Monitor から接続モニターに移行する
 
@@ -51,14 +47,14 @@ Network Performance Monitor (NPM) から機能が向上した新しい接続モ�
 
 Network Performance Monitor から接続モニターにテストを移行するには、次のようにします。
 
-1. Network Watcher で、 **[Connection Monitor]\(接続モニター\)** を選択し、 **[Migrate tests from NPM]\(NPM からのテストの移行\)** タブを選択します。 
+1. Network Watcher で、 **[接続モニター]** を選択して、 **[NPM からテストをインポートする]** タブを選択します。 
 
     :::image type="content" source="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png" alt-text="Network Performance Monitor から接続モニターにテストを移行する" lightbox="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png":::
     
 1. ドロップダウン リストで、お使いのサブスクリプションとワークスペースを選択してから、移行する NPM 機能を選択します。 
 1. **[インポート]** を選択してテストを移行します。
 * ワークスペースで NPM が有効になっていない場合は、"No valid NPM config found" (有効な NPM 構成が見つかりませんでした) というエラーが表示されます。 
-* 手順 2 で選択した機能にテストが存在しない場合、"選択したワークスペースには、<feature> 構成がありません" というエラーが表示されます。
+* 手順 2 で選択した機能にテストが存在しない場合、"選択したワークスペースには、\<feature\> 構成がありません" というエラーが表示されます。
 * 有効なテストがない場合は、"Workspace selected does not have valid tests" (選択したワークスペースには有効なテストがありません) というエラーが表示されます。
 * テストには、現在はアクティブでないが、過去にアクティブだった可能性のあるエージェントが含まれている場合があります。 "いくつかのテストに、アクティブではなくなったエージェントが含まれています。 非アクティブなエージェントの一覧 - {0}。 これらのエージェントは、過去に実行されていた可能性がありますが、シャットダウンされたか、今はもう実行されていません。 エージェントを有効にして、接続モニターに移行してください。 非アクティブなエージェントが含まれていないテストを移行するには、[続行] をクリックします。" というエラーが表示されます。
 
@@ -77,6 +73,23 @@ Network Performance Monitor から接続モニターにテストを移行する�
 * NPM のテストを手動で無効にします。 それまでの間、それらに対して引き続き同じ料金が発生します。 
 * NPM を無効にしている間に、NWConnectionMonitorTestResult テーブルと NWConnectionMonitorPathResult テーブルのアラートを再作成するか、メトリックを使用します。 
 * 外部統合を NWConnectionMonitorTestResult テーブルと NWConnectionMonitorPathResult テーブルに移行します。 外部統合の例は、Power BI や Grafana のダッシュボードや、セキュリティ情報イベント管理 (SIEM) システムとの統合などです。
+
+## <a name="common-errors-encountered"></a>よく発生するエラー
+
+移行中に発生する一般的なエラーの例を次に示します。 
+
+| エラー  |    理由   |
+|---|---|
+| 有効な NPM 構成が見つかりませんでした。 構成を確認するには、NPM UI にアクセスしてください     |     このエラーは、ユーザーが [NPM からテストをインポートする] を選択してテストを移行するとき、ワークスペース内で NPM が有効になっていない場合に発生します   |
+|選択されたワークスペースに 'サービス接続モニター' 構成がありません    |       このエラーは、ユーザーが NPM のサービス接続モニターから接続モニターにテストを移行しているとき、サービス接続モニター内に構成済みのテストが存在しない場合に発生します。 |
+|選択されたワークスペースに 'ExpressRoute モニター' 構成がありません    |     このエラーは、ユーザーが NPM の ExpressRoute モニターから接続モニターにテストを移行しているとき、ExpressRoute モニター内に構成済みのテストが存在しない場合に発生します。  |
+|選択されたワークスペースには、'パフォーマンス モニター' 構成がありません    |      このエラーは、ユーザーが NPM のパフォーマンス モニターから接続モニターにテストを移行しているとき、パフォーマンス モニター内に構成済みのテストが存在しない場合に発生します。 |
+|選択されたワークスペースに、有効な '{0}' テストがありません    |      このエラーは、ユーザーがテストを NPM から接続モニターに移行しているとき、ユーザーが移行するために選択した機能内に有効なテストが存在しない場合に発生します  |
+|移行を試行する前に、選択したサブスクリプションと、選択した LA ワークスペースの場所で Network Watcher 拡張機能を有効にしてください      |      このエラーは、ユーザーが NPM から接続モニターにテストを移行しているとき、選択した LA ワークスペースで Network Watcher 拡張機能が有効になっていない場合に発生します。 ユーザーは、テストを移行する前に NW 拡張機能を有効にする必要があります |
+|アクティブではなくなったエージェントを含む {1} テストがいくつかあります。 非アクティブなエージェントの一覧 - {0}。 これらのエージェントは、過去に実行されていた可能性がありますが、シャットダウンされたか、今はもう実行されていません。 エージェントを有効にして、接続モニターに移行してください。 非アクティブなエージェントが含まれていないテストを移行するには、[続行] をクリックします。       |    このエラーは、ユーザーが NPM から接続モニターにテストを移行しているとき、選択した一部のテストに、非アクティブな Network Watcher Agents が含まれているか、またはアクティブではなくなったものの過去にアクティブであったためにシャットダウンされたような NW Agents が含まれている場合に発生します。 ユーザーはこのようなテストの選択を解除し、引き続き、前述の非アクティブなエージェントを含まないテストを選択して移行することができます  |
+|ご利用の {1} テストには、アクティブではなくなったエージェントが含まれています。 非アクティブなエージェントの一覧 - {0}。 これらのエージェントは、過去に実行されていた可能性がありますが、シャットダウンされたか、今はもう実行されていません。 エージェントを有効にして、接続モニターに移行してください。     | このエラーは、ユーザーが NPM から接続モニターにテストを移行しているとき、選択したテストに、非アクティブな Network Watcher Agents が含まれているか、またはアクティブではなくなったものの過去にアクティブであったためにシャットダウンされたような NW Agents が含まれている場合に発生します。 ユーザーはエージェントを有効にしてから、引き続きこれらのテストを接続モニターに移行する必要があります    |
+|接続モニターへのテストのインポート中にエラーが発生しました     |    このエラーは、ユーザーが NPM から CM にテストを移行しようとしたとき、エラーが原因で移行が成功しなかった場合に発生します。 |
+
 
 
 ## <a name="next-steps"></a>次の手順

@@ -1,20 +1,23 @@
 ---
-title: Azure Data Factory の If Condition アクティビティ
-description: 条件に基づく処理フローは、If Condition アクティビティを使用して制御できます。
-author: dcstwh
-ms.author: weetok
+title: If Condition アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
+description: If Condition アクティビティでは、Azure Data Factory または Synapse Analytics パイプラインの条件に基づいて処理フローを制御できます。
+author: chez-charlie
+ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: cd745f90598666e1fc5c849de335c81a2380d99f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/09/2021
+ms.custom: devx-track-azurepowershell, synapse
+ms.openlocfilehash: 04c0a91a7f4848f2422c0f6ed1e117686345bf78
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786228"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811683"
 ---
-# <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory の If Condition アクティビティ
+# <a name="if-condition-activity-in-azure-data-factory-and-synapse-analytics-pipelines"></a>Azure Data Factory と Azure Synapse Analytics パイプラインの If Condition アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが実行されます。 
@@ -73,7 +76,7 @@ ifFalseActivities | 式が `false` に評価されたときに実行される一
 この例のパイプラインでは、入力フォルダーから出力フォルダーにデータをコピーします。 出力フォルダーは、パイプライン パラメーター routeSelection の値によって決まります。 routeSelection の値が true である場合、データは outputPath1 にコピーされます。 一方、routeSelection の値が falseである場合、データは outputPath2 にコピーされます。 
 
 > [!NOTE]
-> このセクションでは、パイプラインを実行するための JSON の定義とサンプル PowerShell コマンドを紹介しています。 Azure PowerShell と JSON 定義を使用して Data Factory パイプラインを作成するための詳細な手順が記載されているチュートリアルについては、[Azure PowerShell を使用したデータ ファクトリの作成に関するチュートリアル](quickstart-create-data-factory-powershell.md)を参照してください。
+> このセクションでは、パイプラインを実行するための JSON の定義とサンプル PowerShell コマンドを紹介しています。 Azure PowerShell と JSON 定義を使用してパイプラインを作成するための詳細な手順が記載されているチュートリアルについては、[Azure PowerShell を使用したデータ ファクトリの作成に関するチュートリアル](quickstart-create-data-factory-powershell.md)を参照してください。
 
 ### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>IF-Condition アクティビティのあるパイプライン (Adfv2QuickStartPipeline.json)
 
@@ -284,7 +287,7 @@ $result.Error -join "`r`n"
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
+サポートされている他の制御フロー アクティビティを参照してください。 
 
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)

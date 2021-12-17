@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Maps のドキュメント
-summary: Microsoft Azure Maps は、あらゆる業界の開発者に強力な地理空間機能を提供します。 これらの地理空間機能は、最新マッピング データと共に提供されます。 Azure Maps は、Web とモバイル アプリケーションの両方で使用できます。 Azure Maps は、Azure One API に準拠した REST API のセットです。 次に示すのは、Azure Maps で提供されるサービス (マップ、検索、ルート指定、トラフィック、モビリティ、天気、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、Creator、空間演算) の概要です。 Web と Android の SDK を使用すると、開発が簡単になり、柔軟性が高く、複数のプラットフォーム間で移植性が確保されます。
+summary: Microsoft Azure Maps は、あらゆる業界の開発者に強力な地理空間機能を提供します。 これらの地理空間機能は、最新マッピング データと共に提供されます。 Azure Maps は、Web とモバイル アプリケーションの両方で使用できます。 Azure Maps は、Azure One API に準拠した REST API のセットです。 次に示すのは、Azure Maps で提供されるサービス (マップ、検索、ルート指定、トラフィック、天気、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、Creator、空間演算) の概要です。 Web と Android の SDK を使用すると、開発が簡単になり、柔軟性が高く、複数のプラットフォーム間で移植性が確保されます。
 metadata:
   title: Azure Maps のドキュメント | Microsoft Docs
   description: Azure Maps と、それを使用して地理空間サービスを Web またはモバイル アプリケーションに提供する方法について説明します。
   ms.service: azure-maps
   ms.topic: landing-page
-  author: anastasia-ms
-  ms.author: v-stharr
-  ms.date: 1/15/2020
-  ms.openlocfilehash: 17113e3a2564ed56ecbcf8e34de27c4fe398ce03
-  ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+  author: stevemunk
+  ms.author: v-munksteve
+  ms.date: 10/13/2021
+  ms.openlocfilehash: 21efc1c783be18875d17f72879d7251beec28641
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/18/2020
-  ms.locfileid: "97680673"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "130000482"
 landingContent:
 - title: Azure Maps について
   linkLists:
@@ -42,6 +42,8 @@ landingContent:
       url: quick-demo-map-app.md
     - text: Azure Maps を使用して Android アプリを作成する
       url: quick-android-map.md
+    - text: Azure Maps を使用して iOS アプリを作成する
+      url: quick-iOS-app.md
   - linkListType: concept
     links:
     - text: Maps アカウントの適切な価格レベルを選択する
@@ -83,13 +85,13 @@ landingContent:
   - linkListType: reference
     links:
     - text: 変換サービス
-      url: /rest/api/maps/conversion
+      url: /rest/api/maps/v2/conversion
     - text: データセット サービス
-      url: /rest/api/maps/dataset
+      url: /rest/api/maps/v2/dataset
     - text: タイルセット サービス
-      url: /rest/api/maps/tileset
+      url: /rest/api/maps/v2/tileset
     - text: 機能の状態セット サービス
-      url: /rest/api/maps/featurestate
+      url: /rest/api/maps/v2/feature-state
 - title: Web SDK を使用した開発
   linkLists:
   - linkListType: concept
@@ -150,14 +152,22 @@ landingContent:
       url: android-map-add-line-layer.md
     - text: 多角形レイヤーを追加する
       url: how-to-add-shapes-to-android-map.md
+    - text: ヒート マップ レイヤーを追加する
+      url: map-add-heat-map-layer-android.md
+    - text: ポイント データのクラスタリング
+      url: clustering-point-data-android-sdk.md
     - text: データドリブンのスタイルの式を使用する
       url: data-driven-style-expressions-android-sdk.md
-    - text: マップにタイル レイヤーを追加する
-      url: how-to-add-tile-layer-android-map.md
-    - text: マップに図形を追加する
-      url: how-to-add-shapes-to-android-map.md
-    - text: トラフィック データを表示する
-      url: how-to-show-traffic-android.md
+- title: iOS SDK を使用した開発
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Maps を使用して iOS アプリを作成する
+      url: quick-iOS-app.md
+  - linkListType: how-to-guide
+    links:
+    - text: iOS マップ コントロールの概要
+      url: how-to-use-ios-map-control-library.md
 - title: Location Based Services を使用した開発
   linkLists:
   - linkListType: concept
@@ -226,22 +236,12 @@ landingContent:
       url: power-bi-visual-understanding-layers.md
     - text: アクセスを管理する
       url: power-bi-visual-manage-access.md
-- title: モビリティ サービスを使用した開発
+- title: Power Apps での Azure Maps
   linkLists:
-  - linkListType: concept
-    links:
-    - text: モビリティ サービス
-      url: mobility-service-data-structure.md
   - linkListType: how-to-guide
     links:
-    - text: 公共輸送機関のルートを要求する
-      url: how-to-request-transit-data.md
-    - text: 公共輸送機関のリアルタイム データを要求する
-      url: how-to-request-real-time-data.md
-  - linkListType: reference
-    links:
-    - text: モビリティ サービス
-      url: /rest/api/maps/mobility
+    - text: 対話型マップ コンポーネント
+      url: /powerapps/maker/canvas-apps/geospatial-component-map
 - title: Weather Service を使用した開発
   linkLists:
   - linkListType: concept
@@ -249,7 +249,7 @@ landingContent:
     - text: Weather Service の概念
       url: weather-services-concepts.md
     - text: Weather Service の FAQ
-      url: weather-services-faq.md
+      url: weather-services-faq.yml
   - linkListType: tutorial
     links:
     - text: Azure Notebooks (Python) を使用した気象データの分析

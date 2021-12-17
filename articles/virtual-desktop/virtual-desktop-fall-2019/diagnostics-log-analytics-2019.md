@@ -1,30 +1,30 @@
 ---
-title: Windows Virtual Desktop (クラシック) の診断ログ分析 - Azure
-description: Windows Virtual Desktop (クラシック) の診断機能でログ分析を使用する方法について説明します。
+title: Azure Virtual Desktop (クラシック) の診断ログ分析 - Azure
+description: Azure Virtual Desktop (クラシック) の診断機能でログ分析を使用する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 9cfa50e13756692295c84b02d02dd71228b16eb9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0be29603225361b2f275f081c1ad52c5c6c394db
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445003"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736168"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) の診断機能でログ分析を使用する
+# <a name="use-log-analytics-for-the-diagnostics-feature-in-azure-virtual-desktop-classic"></a>Azure Virtual Desktop (クラシック) の診断機能でログ分析を使用する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../diagnostics-log-analytics.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../diagnostics-log-analytics.md)を参照してください。
 
-Windows Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 この機能は、Windows Virtual Desktop ロールが割り当てられているユーザーがサービスを使用するたびに、診断情報をログに記録します。 各ログには、そのアクティビティで Windows Virtual Desktop ロールが関係している情報、そのセッション中に表示されるすべてのエラー メッセージ、テナント情報、ユーザー情報が格納されます。 診断機能は、ユーザーと管理者の両方のアクションのアクティビティ ログを作成します。 各アクティビティ ログは、次の 3 つの主なカテゴリに分類されます。
+Azure Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 この機能により、Azure Virtual Desktop ロールが割り当てられているユーザーがサービスを使用するたびに、診断情報がログに記録されます。 各ログには、そのアクティビティに関与した Azure Virtual Desktop ロールに関する情報、そのセッション中に表示されるすべてのエラー メッセージ、テナント情報、ユーザー情報が格納されます。 診断機能は、ユーザーと管理者の両方のアクションのアクティビティ ログを作成します。 各アクティビティ ログは、次の 3 つの主なカテゴリに分類されます。
 
 - フィード サブスクリプション アクティビティ: ユーザーが Microsoft リモート デスクトップ アプリケーションを通じてフィードに接続しようとする場合。
 - 接続アクティビティ: ユーザーが Microsoft リモート デスクトップ アプリケーションを通じてデスクトップまたは RemoteApp に接続しようとする場合。
 - 管理アクティビティ: 管理者がホスト プールの作成、アプリ グループへのユーザーの割り当て、ロール割り当ての作成などの管理操作をシステムに対して実行する場合。
 
-診断ロール サービス自体が Windows Virtual Desktop の一部であるため、Windows Virtual Desktop に到達しない接続は診断結果に表示されません。 Windows Virtual Desktop 接続の問題は、ユーザーにネットワーク接続の問題が発生しているときに発生する可能性があります。
+診断ロール サービス自体が Azure Virtual Desktop の一部であるため、Azure Virtual Desktop に到達しない接続は診断結果に表示されません。 Azure Virtual Desktop 接続の問題は、ユーザーにネットワーク接続の問題が発生しているときに発生する場合があります。
 
 ## <a name="why-you-should-use-log-analytics"></a>Log Analytics を使用する理由
 
@@ -32,7 +32,7 @@ Windows Virtual Desktop では、管理者が単一のインターフェイス�
 
 ## <a name="before-you-get-started"></a>開始する前に
 
-診断機能で Log Analytics を使用するには、まず[ワークスペースを作成する](../../azure-monitor/vm/quick-collect-windows-computer.md#create-a-workspace)必要があります。
+診断機能で Log Analytics を使用するには、まず[ワークスペースを作成する](../../azure-monitor/logs/quick-create-workspace.md)必要があります。
 
 ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)」の指示に従って、次の情報を取得します。
 
@@ -43,9 +43,9 @@ Windows Virtual Desktop では、管理者が単一のインターフェイス�
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>診断データをワークスペースにプッシュする
 
-Windows Virtual Desktop テナントからワークスペースの Log Analytics に診断データをプッシュできます。 この機能は、最初にテナントを作成する時点で、ワークスペースをテナントにリンクすることにより設定できます。または、既存のテナントを使用して後で設定することもできます。
+Azure Virtual Desktop テナントからワークスペースの Log Analytics に診断データをプッシュできます。 この機能は、最初にテナントを作成する時点で、ワークスペースをテナントにリンクすることにより設定できます。または、既存のテナントを使用して後で設定することもできます。
 
-新しいテナントの設定中にテナントを Log Analytics ワークスペースにリンクするには、次のコマンドレットを実行して、TenantCreator ユーザー アカウントで Windows Virtual Desktop にサインインします。
+新しいテナントの設定中にテナントを Log Analytics ワークスペースにリンクするには、次のコマンドレットを実行して、TenantCreator ユーザー アカウントで Azure Virtual Desktop にサインインします。
 
 ```powershell
 Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com

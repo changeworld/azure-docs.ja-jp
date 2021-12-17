@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bdeb9336aa94198d0448d697ca01304825877bd4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98745636"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561368"
 ---
 # <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>例:Azure Machine Learning を使用してカスタム スキルを作成およびデプロイする 
 
@@ -31,7 +31,7 @@ Azure Machine Learning でアスペクトベースのセンチメント モデ�
 > * デプロイされたモデルからの出力をカスタム スキルとして取り込む
 
 > [!IMPORTANT] 
-> このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 現在、.NET SDK によるサポートはありません。
+> このスキルはパブリック プレビュー段階にあり、[追加利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で提供されます。 [プレビューの REST API](/rest/api/searchservice/index-preview) では、このスキルがサポートされています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -78,8 +78,6 @@ Azure Machine Learning でアスペクトベースのセンチメント モデ�
 
 ノートブックのセクション 4 には、スキルセットとインデクサーを更新する 4 つのセルがあります。 また、ポータルを使用して、新しいスキルを選択してスキルセットに適用してから、インデクサーを実行して検索サービスを更新することもできます。
 
-> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Active-Learning-with-Azure-Cognitive-Search/player#time=19m35s:paused/03/player]
-
 ポータルで [スキルセット] に移動し、[スキルセットの定義 (JSON)] リンクを選択します。 ポータルには、ノートブックの最初のセルで作成されたスキルセットの JSON が表示されます。 画面の右側には、スキル定義テンプレートを選択できるドロップダウン メニューがあります。 Azure Machine Learning (AML) テンプレートを選択します。 Azure ML ワークスペースの名前と、推論クラスターにデプロイされたモデルのエンドポイントを指定します。 このテンプレートはエンドポイントの URI とキーで更新されます。
 
 > :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="スキルセット定義テンプレート":::
@@ -100,7 +98,7 @@ Azure Machine Learning でアスペクトベースのセンチメント モデ�
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
+ポータルの左側のナビゲーション ウィンドウにある **[All resources]\(すべてのリソース\)** または **[Resource groups]\(リソース グループ\)** リンクを使って、リソースを検索および管理できます。
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。
 

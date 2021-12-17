@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c3ff91cbfb6423099040a6ea46eeb66f5461f48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 830e0904d6aa905a621b245adae2b2d94b46e243
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589674"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847168"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>BYOS (Bring Your Own Storage) を Application Insights Profiler および Visual Studio スナップショット デバッガー用に構成する
 
@@ -124,19 +124,19 @@ BYOS をコードレベルの診断 (プロファイラー/デバッガー) 用�
     Azure CLI をインストールするには、[Azure CLI の公式ドキュメント](/cli/azure/install-azure-cli)を参照してください。
 
 1. Application Insights CLI 拡張機能をインストールします。
-    ```powershell
+    ```azurecli
     az extension add -n application-insights
     ```
 
 1. ご使用のストレージ アカウントを Application Insights リソースに接続します。
 
     パターン:
-    ```powershell
+    ```azurecli
     az monitor app-insights component linked-storage link --resource-group "{resource_group_name}" --app "{application_insights_name}" --storage-account "{storage_account_name}"
     ```
     
     例:
-    ```powershell
+    ```azurecli
     az monitor app-insights component linked-storage link --resource-group "byos-test" --app "byos-test-westus2-ai" --storage-account "byosteststoragewestus2"
     ```
     
@@ -152,7 +152,7 @@ BYOS をコードレベルの診断 (プロファイラー/デバッガー) 用�
     ```
 
     > [!NOTE]
-    > Application Insights リソースにリンクするストレージ アカウントの更新を実行するには、[Application Insights CLI に関するドキュメント](/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage)を参照してください。
+    > Application Insights リソースにリンクするストレージ アカウントの更新を実行するには、[Application Insights CLI に関するドキュメント](/cli/azure/monitor/app-insights/component/linked-storage)を参照してください。
 
 #### <a name="configure-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して構成する
 

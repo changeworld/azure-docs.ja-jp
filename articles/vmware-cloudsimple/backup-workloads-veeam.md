@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - Veeam を使用してプライベート クラウド上のワークロード仮想マシンをバックアップする
 description: Azure ベースの CloudSimple プライベート クラウドで実行されている仮想マシンを Veeam B&R 9.5 を使用してバックアップする方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7be606b3e23a594e67acf3f169d88353403d8577
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0223741e1d774fa11ff6ff22725c824a81c0ba33
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899339"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336565"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Veeam B&R を使用して CloudSimple プライベート クラウド上のワークロード VM をバックアップする
 
@@ -222,7 +222,7 @@ Veeam によって使用されるポートのネットワーク トラフィッ�
 5. vCenter で、[Veeam のシステム要件](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)に従って、Veeam のバックアップ サーバーとプロキシ サーバー用の VM を作成します。 Windows 2012 R2 または Linux を使用できます。 詳細については、[Linux バックアップ リポジトリを使用するための要件](https://www.veeam.com/kb2216)に関するページを参照してください。
 6. インストール可能な Veeam ISO を CDROM デバイスとして Veeam バックアップ サーバー VM にマウントします。
 7. Windows 2012 R2 マシン (Veeam インストールのターゲット) への RDP セッションを使用して、Windows 2012 R2 VM に [Veeam B&R 9.5u3 をインストール](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)します。
-8. Veeam バックアップ サーバー VM の内部 IP アドレスを特定し、その IP アドレスが静的となるように DHCP サーバーで構成します。 これを行うために必要とされる厳密な手順は、DHCP サーバーによって異なります。 例として、<a href="https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html" target="_blank">静的 DHCP マッピング</a>に関する Netgate の記事では、pfSense ルーターを使用して DHCP サーバーを構成する方法について説明しています。
+8. Veeam バックアップ サーバー VM の内部 IP アドレスを特定し、その IP アドレスが静的となるように DHCP サーバーで構成します。 これを行うために必要とされる厳密な手順は、DHCP サーバーによって異なります。 例として、<a href="https://docs.netgate.com/pfsense/en/latest/services/dhcp/index.html" target="_blank">静的 DHCP マッピング</a>に関する Netgate の記事では、pfSense ルーターを使用して DHCP サーバーを構成する方法について説明しています。
 
 ### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veeam コンソール:Veeam バックアップおよび復旧ソフトウェアをインストールする
 
@@ -302,4 +302,4 @@ Veeam バックアップおよび復旧サーバーのパブリック IP アド�
 
 * [マネージド ディスク上の XFS ボリュームの作成 - RedHat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-xfs)
 * [CentOS 7 で NFS マウントを設定する方法 - HowToForge](https://www.howtoforge.com/nfs-server-and-client-on-centos-7)
-* [DHCP サーバーの構成 - Netgate](https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html)
+* [DHCP サーバーの構成 - Netgate](https://docs.netgate.com/pfsense/en/latest/services/dhcp/index.html)

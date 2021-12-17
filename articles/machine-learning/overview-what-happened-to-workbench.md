@@ -10,18 +10,18 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: c800901ae139b16e75613b0cc8de3a9485186896
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bba667b70099e3f88e1ff62ae3472144556a0d1
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521375"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862220"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
 Azure Machine Learning Workbench アプリケーションとその他のいくつかの初期機能は、**2018 年 9 月** のリリースで非推奨とされ、改善された [アーキテクチャ](concept-azure-machine-learning-architecture.md)への移行のために置き換えられました。
 
-エクスペリエンスの向上のため、このリリースには、お客様からのフィードバックをきっかけとする重要なアップデートが多く含まれています。 実験の実施からモデルのデプロイに至るまで、コア機能は変更されていません。 ただし、堅牢な <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a>、R SDK、[Azure CLI](reference-azure-machine-learning-cli.md) を使用して、機械学習のタスクとパイプラインを実現できるようになっています。
+エクスペリエンスの向上のため、このリリースには、お客様からのフィードバックをきっかけとする重要なアップデートが多く含まれています。 実験の実施からモデルのデプロイに至るまで、コア機能は変更されていません。 ただし、堅牢な <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a> と [Azure CLI](reference-azure-machine-learning-cli.md) を使用して、機械学習のタスクとパイプラインを実現できるようになっています。
 
 以前のバージョンの Azure Machine Learning で作成された成果物のほとんどは、独自のローカル ストレージやクラウド ストレージに保管されています。 これらの成果物が消失することはありません。
 
@@ -35,13 +35,13 @@ Azure Machine Learning Workbench アプリケーションとその他のいく�
 
 Azure Machine Learning の最新リリースには、次の機能が含まれています。
 + [簡略化された Azure リソースのモデル](concept-azure-machine-learning-architecture.md)。
-+ 実験とコンピューティング先を管理するための[新しいポータル UI](how-to-track-experiments.md)。
++ 実験とコンピューティング先を管理するための[新しいポータル UI](how-to-log-view-metrics.md)。
 + 新しく、より包括的な Python <a href="/python/api/overview/azure/ml/intro" target="_blank">SDK</a>。
 + 機械学習のための拡張された新しい [Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
 [アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすいように再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning ワークスペース](concept-workspace.md)だけです。 ワークスペースは、[Azure portal](how-to-manage-workspace.md) ですばやく作成することができます。 ワークスペースを使用することで、複数のユーザーが、トレーニングやコンピューティングターゲットのデプロイ、モデルの実験、Docker イメージ、デプロイされたモデルなどを格納できます。
 
-現在のリリースには新しく改善された CLI と SDK クライアントがありますが、デスクトップ ワークベンチ アプリケーション自体は廃止されました。 実験は、[Azure Machine Learning Studio の ワークスペース ダッシュボード](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)で管理できます。 ダッシュボードを使用して、実験履歴の取得、ワークスペースに接続されているコンピューティング ターゲットの管理、モデルと Docker イメージの管理、さらには Web サービスのデプロイも行います。
+現在のリリースには新しく改善された CLI と SDK クライアントがありますが、デスクトップ ワークベンチ アプリケーション自体は廃止されました。 実験は、[Azure Machine Learning Studio の ワークスペース ダッシュボード](how-to-log-view-metrics.md#view-the-experiment-in-the-web-portal)で管理できます。 ダッシュボードを使用して、実験履歴の取得、ワークスペースに接続されているコンピューティング ターゲットの管理、モデルと Docker イメージの管理、さらには Web サービスのデプロイも行います。
 
 <a name="timeline"></a>
 
@@ -85,7 +85,7 @@ run = exp.submit(source_directory=script_folder,
 
 以前の CLI のサポートが終了したので、モデルを再デプロイしたり、お客様が最初にご自分のモデル管理アカウントを使用してデプロイした Web サービスを管理したりすることはできなくなりました。 ただし、これらの Web サービスは Azure Container Service (ACS) がサポートされている限りは引き続き機能します。
 
-最新バージョンでは、モデルは Web サービスとして Azure Container Instances (ACI) または Azure Kubernetes Service (AKS) クラスターにデプロイされます。 また、FPGA や Azure IoT Edge にデプロイすることもできます。
+最新バージョンでは、モデルは Web サービスとして Azure Container Instances (ACI) または Azure Kubernetes Service (AKS) クラスターにデプロイされます。 FPGA をデプロイすることもできます。
 
 詳細については、次の記事を参照してください。
 + [モデルをデプロイする場所と方法](how-to-deploy-and-where.md)
@@ -95,13 +95,12 @@ run = exp.submit(source_directory=script_folder,
 
 [Azure Machine Learning の最新のアーキテクチャ](concept-azure-machine-learning-architecture.md)について確認してください。
 
-サービスの概要については、「[Azure Machine Learning とは](overview-what-is-azure-ml.md)」を参照してください。
+サービスの概要については、「[Azure Machine Learning とは](overview-what-is-azure-machine-learning.md)」を参照してください。
 
-任意の方法で最初の実験を作成します。
+最初に、「[クイック スタート: Azure Machine Learning サービスの基本操作](quickstart-create-resources.md)」をお読みください。  その後、これらのリソースを使用して、お好きな方法で最初の実験を作成します。
 
-  + [独自の環境を使用する](tutorial-1st-experiment-sdk-setup-local.md)
-  + [Python ノートブックを使用する](tutorial-1st-experiment-sdk-setup.md)
-  + [R Markdown を使用する](https://github.com/Azure/azureml-sdk-for-r) 
+  + ["Hello world!" Python スクリプトを実行する (パート 1/3)](tutorial-1st-experiment-hello-world.md)
+  + [Jupyter Notebook を使用してイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
   + [自動機械学習を使用する](tutorial-designer-automobile-price-train-score.md) 
   + [デザイナーのドラッグ アンド ドロップ機能を使用する](tutorial-first-experiment-automated-ml.md) 
-  + [CLI に対する ML 拡張機能を使用する](tutorial-train-deploy-model-cli.md)
+  + [CLI に対する ML 拡張機能を使用する](how-to-train-cli.md)

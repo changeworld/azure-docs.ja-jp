@@ -1,7 +1,6 @@
 ---
-title: FortiGate デプロイ ガイド | Microsoft Docs
+title: FortiGate デプロイ ガイド
 description: 次世代のファイアウォール製品である Fortinet FortiGate を設定して使用します。
-services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.reviewer: celested
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: jeedes
-ms.openlocfilehash: cdaa6a9601452100ab90ef8b0f2191002f256b74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1b3a2dca9e11e12a72ec99685ff71beb279473e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95025463"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353941"
 ---
 # <a name="fortigate-azure-virtual-machine-deployment-guide"></a>FortiGate Azure 仮想マシン デプロイ ガイド
 
@@ -217,4 +216,4 @@ FortiGate VM がデプロイされる環境に対してパブリックにルー�
 
 ## <a name="configure-fortigate-ssl-vpn"></a>FortiGate SSL VPN を構成する
 
-https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial に記載されている手順に従います。
+「[チュートリアル: Azure Active Directory シングル サインオン (SSO) と FortiGate SSL VPN の統合](../../fortigate-ssl-vpn-tutorial.md)」にある手順に従います。

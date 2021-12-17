@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 15d62f40b50617fd1f6e543cb404a0d38361d3bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf0de37d2736f84505708b26d4cab9274b3621e0
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94836497"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730786"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する
 
@@ -80,7 +80,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 5. Azure AD Identity Protection では、「*資格情報が漏洩したユーザー*」レポートを提供するために、選択されたサインイン方法には関係なくパスワード ハッシュの同期が必要です。 組織は主要なサインイン方法が失敗した場合、パスワード ハッシュ同期が失敗イベントの前に構成されていれば、パスワード ハッシュ同期にフェールオーバーできます。
 
 > [!NOTE]
-> Azure AD Identity Protection には、[Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) ライセンスが必要です。
+> Azure AD Identity Protection には、[Azure AD Premium P2](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) ライセンスが必要です。
 
 ## <a name="detailed-considerations"></a>詳細な考慮事項
 
@@ -95,7 +95,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
     パスワード ハッシュ同期を使用する多要素認証が必要な組織は、Azure AD Multi-Factor Authentication または[条件付きアクセス カスタム コントロール](../../active-directory/conditional-access/controls.md#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。
 
 > [!NOTE]
-> Azure AD の条件付きアクセスでは [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) ライセンスが必要です。
+> Azure AD の条件付きアクセスでは [Azure AD Premium P1](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) ライセンスが必要です。
 
 * **ビジネス継続性**。 クラウド認証と共にパスワード ハッシュ同期を使用することは、すべての Microsoft データセンターに対応するようにスケーリングするクラウド サービスとして、高い可用性を実現します。 パスワード ハッシュ同期が長期間ダウンしないようにするには、2 つめ Azure AD Connect サーバーを、スタンバイ構成のステージング モードで展開します。
 
@@ -114,7 +114,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 
 * **ユーザー エクスペリエンス**。 ユーザーのサインイン エクスペリエンスを向上させるには、パススルー認証と共にシームレス SSO を展開します。 シームレス SSO によって、ユーザーのサインイン後に不要なプロンプトが表示されないようになります。
 
-* **高度なシナリオ**。 パススルー認証では、サインインの時点でオンプレミスのアカウント ポリシーが適用されます。 たとえば、オンプレミスのユーザーのアカウントの状態が無効、ロックアウト、[パスワードが期限切れ](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)であるか、ログオンの試行時にユーザーに許可されているサインイン時間が超過した場合、アクセスは拒否されます。
+* **高度なシナリオ**。 パススルー認証では、サインインの時点でオンプレミスのアカウント ポリシーが適用されます。 たとえば、オンプレミスのユーザーのアカウントの状態が無効、ロックアウト、[パスワードが期限切れ](../../active-directory/hybrid/how-to-connect-pta-faq.yml#what-happens-if-my-user-s-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication-)であるか、ログオンの試行時にユーザーに許可されているサインイン時間が超過した場合、アクセスは拒否されます。
 
     パススルー認証を使用する多要素認証が必要な組織は、Azure AD Multi-Factor Authentication (MFA) または[条件付きアクセス カスタム コントロール](../../active-directory/conditional-access/controls.md#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。 高度な機能では、パススルー認証を選択するかどうかにかかわらず、パスワード ハッシュ同期が必要になります。 たとえば、Identity Protection の漏洩した資格情報のレポートです。
 
@@ -124,7 +124,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 
 * **考慮事項**。 エージェントがオンプレミスで発生した重大な障害によってユーザーの資格情報を検証できない場合は、パススルー認証のバックアップの認証方法としてパスワード ハッシュ同期を使用できます。 パスワードハッシュ同期へのフェールオーバーは自動的には行われないため、Azure AD Connect を使用してサインイン方法を手動で切り替える必要があります。
 
-    代替 ID のサポートなど、パススルー認証におけるその他の考慮事項については、[よく寄せられる質問](../../active-directory/hybrid/how-to-connect-pta-faq.md)をご覧ください。
+    代替 ID のサポートなど、パススルー認証におけるその他の考慮事項については、[よく寄せられる質問](../../active-directory/hybrid/how-to-connect-pta-faq.yml)をご覧ください。
 
 展開手順については、[パススルー認証の実装](../../active-directory/hybrid/how-to-connect-pta.md)に関する記事をご覧ください。
 
@@ -180,7 +180,7 @@ Azure AD では検証できないルーティング不可能なドメインの�
 |TLS/SSL 証明書の要件|いいえ|いいえ|はい|
 |正常性の監視ソリューション|必要なし|エージェントの状態は [Azure Active Directory 管理センター](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)によって提供される|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |会社のネットワーク内のドメインに参加しているデバイスからクラウドのリソースへのユーザーのシングル サインオン|[シームレス SSO](../../active-directory/hybrid/how-to-connect-sso.md) を使用して実行|[シームレス SSO](../../active-directory/hybrid/how-to-connect-sso.md) を使用して実行|はい|
-|サポートされているサインインの種類|UserPrincipalName + パスワード<br><br>[シームレス SSO](../../active-directory/hybrid/how-to-connect-sso.md) を使用した Windows 統合認証<br><br>[代替ログイン ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + パスワード<br><br>[シームレス SSO](../../active-directory/hybrid/how-to-connect-sso.md) を使用した Windows 統合認証<br><br>[代替ログイン ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + パスワード<br><br>sAMAccountName + パスワード<br><br>Windows 統合認証<br><br>[証明書とスマート カード認証](/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[代替ログイン ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|サポートされているサインインの種類|UserPrincipalName + パスワード<br><br>[シームレス SSO](../../active-directory/hybrid/how-to-connect-sso.md) を使用した Windows 統合認証<br><br>[代替ログイン ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + パスワード<br><br>[シームレス SSO](../../active-directory/hybrid/how-to-connect-sso.md) を使用した Windows 統合認証<br><br>[代替ログイン ID](../../active-directory/hybrid/how-to-connect-pta-faq.yml)|UserPrincipalName + パスワード<br><br>sAMAccountName + パスワード<br><br>Windows 統合認証<br><br>[証明書とスマート カード認証](/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[代替ログイン ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Windows Hello for Business のサポート|[キー信頼モデル](/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[キー信頼モデル](/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Windows Server 2016 ドメインの機能レベルが必要*|[キー信頼モデル](/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[証明書信頼モデル](/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |多要素認証のオプション|[Azure AD MFA](/azure/multi-factor-authentication/)<br><br>[条件付きアクセスを使用するカスタム コントロール*](../../active-directory/conditional-access/controls.md)|[Azure AD MFA](/azure/multi-factor-authentication/)<br><br>[条件付きアクセスを使用するカスタム コントロール*](../../active-directory/conditional-access/controls.md)|[Azure AD MFA](/azure/multi-factor-authentication/)<br><br>[Azure MFA サーバー](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[サード パーティの MFA](/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[条件付きアクセスを使用するカスタム コントロール*](../../active-directory/conditional-access/controls.md)|
 |サポートされるユーザー アカウントの状態|無効なアカウント<br>(最大 30 分の遅延)|無効なアカウント<br><br>アカウントのロックアウト<br><br>アカウント期限切れ<br><br>パスワード期限切れ<br><br>サインイン時間|無効なアカウント<br><br>アカウントのロックアウト<br><br>アカウント期限切れ<br><br>パスワード期限切れ<br><br>サインイン時間|

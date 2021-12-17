@@ -1,18 +1,20 @@
 ---
-title: 'クラシック仮想ネットワークを Azure Resource Manager VNet に接続する: ポータル | Microsoft Docs'
-description: VPN Gateway とポータルを使用して従来の VNets を Resource Manager VNets に接続する手順
+title: 'クラシック仮想ネットワークを Azure Resource Manager VNet に接続する: ポータル'
+titleSuffix: Azure VPN Gateway
+description: ポータルを使用してクラシック VNet を Resource Manager VNet に接続する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9d31bcaad01b9b762e57bd619d45c1f53ffb201e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b50fd13be06e3186e3ce3d3fc90bd60bf6d6e474
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100376804"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729582"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -220,7 +222,7 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 
 ### <a name="1-connect-to-your-azure-account"></a>1.Azure アカウントに接続する
 
-管理者特権を使って PowerShell コンソールを開き、Azure アカウントにログインします。 ログイン後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。 次のコマンドレットは、Resource Manager デプロイ モデルの Azure アカウント用のログイン資格情報をユーザーに求めます。
+管理者特権を使って PowerShell コンソールを開き、Azure アカウントにログインします。 ログイン後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。 次のコマンドレットを実行すると、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)の Azure アカウント用のログイン資格情報を入力するよう求められます。
 
 ```powershell
 Connect-AzAccount

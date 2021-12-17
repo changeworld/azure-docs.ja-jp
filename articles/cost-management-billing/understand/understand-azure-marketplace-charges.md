@@ -2,20 +2,20 @@
 title: Azure 外部サービスの課金について
 description: Azure 外部サービス (旧称 Marketplace) の課金について説明します。
 author: bandersmsft
-ms.reviewer: judupont
+ms.reviewer: sapnakeshari
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 10/20/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8da85ec5781ff9575cf380092fea9e41d6af8786
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c3ac9a13342d6e3fb46c9a1c709a22b67b6eeb9a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686124"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252024"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Azure 外部サービスの料金について
 外部サービスは、Azure Marketplace でサードパーティ ソフトウェア ベンダーによって公開されています。 たとえば、SendGrid は、Azure で購入できる外部サービスですが、Microsoft が公開したものではありません。 一部の Microsoft 製品も、Azure Marketplace で販売されています。
@@ -49,6 +49,8 @@ You can view a list of the external services that are on each subscription withi
 ## <a name="external-spending-for-ea-customers"></a>EA のお客様の外部支出
 
 EA のお客様は、EA ポータルで外部サービスの支払いを表示し、レポートをダウンロードすることができます。 最初に、[EA お客様向け Azure Marketplace](https://ea.azure.com/helpdocs/azureMarketplace) をご覧ください。
+
+直接 EA を使用しているお客様は、[Azure portal](https://portal.azure.com) で外部サービスの支出を確認できます。 [使用量 + 請求金額] メニューに移動し、Azure Marketplace の料金を表示してダウンロードします。
 
 ## <a name="view-and-download-invoices-for-external-services"></a>外部サービスの請求書を表示してダウンロードする
 

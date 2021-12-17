@@ -7,17 +7,21 @@ ms.subservice: extensions
 author: amjads1
 ms.author: amjads
 ms.collection: windows
-ms.date: 06/26/2020
-ms.openlocfilehash: 7757bd765bcb02782b6199f71c4a6e460b7b8143
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 11/02/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 41a46f2ccb925a51aec92bad94d1c1e2164745f4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559020"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312041"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows 用の Log Analytics 仮想マシン拡張機能
 
 Azure Monitor ログでは、クラウドとオンプレミスの資産全体にわたって監視機能を提供します。 Windows 用の Log Analytics エージェント仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Windows 用の Log Analytics 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
+
+> [!NOTE]
+> Azure Arc 対応サーバーを使用すると、Log Analytics エージェント VM 拡張機能を Azure 以外の Windows や Linux マシンにデプロイ、削除、更新して、ハイブリッド マシンのライフサイクルを通じた管理を簡素化できます。 詳細については、[Azure Arc 対応サーバーを使用した VM 拡張機能の管理](../../azure-arc/servers/manage-vm-extensions.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,6 +30,7 @@ Azure Monitor ログでは、クラウドとオンプレミスの資産全体に
 サポートされる Windows オペレーティング システムの詳細については、「[ エージェントの概要](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)」の記事を参照してください。
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
+
 次の表は、Windows Log Analytics VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 
 
 | Log Analytics Windows Agent バンドルのバージョン | Log Analytics Windows VM 拡張機能のバージョン | リリース日 | リリース ノート |
@@ -33,7 +38,7 @@ Azure Monitor ログでは、クラウドとオンプレミスの資産全体に
 | 10.20.18053| 1.0.18053.0 | 2020 年 10 月   | <ul><li>新しいエージェント トラブルシューティング ツール</li><li>エージェントが Azure サービスに対する証明書の変更を処理する方法を更新</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | 2020 年 8 月   | <ul><li>Azure Arc の問題を解決</li></ul> |
 | 10.20.18038 | 1.0.18038 | 2020 年 4 月   | <ul><li>Azure Monitor Private Link スコープを使用した Private Link 経由の接続を有効化</li><li>ワークスペースへのインジェストの急増を回避するインジェスト調整の追加</li><li>追加の Azure Government クラウドおよびリージョンのサポートを追加</li><li>HealthService.exe がクラッシュするバグの解消</li></ul> |
-| 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>SHA-2 コード署名サポートを追加</li><li>VM 拡張機能のインストールと管理を改善</li><li>Azure Arc for Servers 統合のバグを解決</li><li>カスタマー サポート用の組み込みのトラブルシューティング ツールを追加</li><li>追加の Azure Government リージョンのサポートを追加</li> |
+| 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>SHA-2 コード署名サポートを追加</li><li>VM 拡張機能のインストールと管理を改善</li><li>Azure Arc 対応サーバーの統合に関するバグを解決</li><li>カスタマー サポート用の組み込みのトラブルシューティング ツールを追加</li><li>追加の Azure Government リージョンのサポートを追加</li> |
 | 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li></ul> |
 | 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li><li> MaxExpressionDepth を 10000 に引き上げ </li></ul> |
 | 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li><li> プロキシ接続時に既定の資格情報を無効にする機能を追加 (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH のサポート) </li></ul>|
@@ -45,12 +50,12 @@ Azure Monitor ログでは、クラウドとオンプレミスの資産全体に
 | 8.0.11072 | 1.0.11072 | 2017 年 9 月 | |
 | 8.0.11049 | 1.0.11049 | 2017 年 2 月 | |
 
+### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-### <a name="azure-security-center"></a>Azure Security Center
-
-Azure Security Center は自動的に Log Analytics エージェントをプロビジョニングし、Azure サブスクリプションの既定の Log Analytics ワークスペースに接続します。 Azure Security Center を使用している場合は、このドキュメントの手順を実行しないでください。 実行すると、構成されているワークスペースが上書きされ、Azure Security Center との接続が中断されます。
+Microsoft Defender for Cloud は自動的に Log Analytics エージェントをプロビジョニングし、Azure サブスクリプションの既定のログ分析ワークスペースに接続します。 Microsoft Defender for Cloud を使用している場合は、このドキュメントの手順は実行しないでください。 実行すると、構成されているワークスペースが上書きされ、Microsoft Defender for Cloud との接続が中断されます。
 
 ### <a name="internet-connectivity"></a>インターネット接続
+
 Windows 用の Log Analytics エージェント拡張機能では、ターゲットの仮想マシンがインターネットに接続されている必要があります。 
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
@@ -80,6 +85,7 @@ Windows 用の Log Analytics エージェント拡張機能では、ターゲッ
     }
 }
 ```
+
 ### <a name="property-values"></a>プロパティ値
 
 | 名前 | 値/例 |
@@ -98,7 +104,7 @@ Windows 用の Log Analytics エージェント拡張機能では、ターゲッ
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時に Log Analytics エージェント拡張機能を実行できます。 Log Analytics エージェント VM 拡張機能を含むサンプル テンプレートは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)にあります。 
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時に Log Analytics エージェント拡張機能を実行できます。 Log Analytics エージェント VM 拡張機能を含むサンプル テンプレートは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/oms-extension-windows-vm)にあります。 
 
 >[!NOTE]
 >このテンプレートでは、複数のワークスペースに報告するようにエージェントを構成する場合に複数のワークスペース ID とワークスペース キーを指定することはサポートされていません。 複数のワークスペースに報告するようにエージェントを構成するには、「[ワークスペースの追加または削除](../../azure-monitor/agents/agent-manage.md#adding-or-removing-a-workspace)」を参照してください。  
@@ -106,7 +112,6 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/templates/child-resource-name-type.md)に関する記事を参照してください。 
 
 次の例では、Log Analytics 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
-
 
 ```json
 {

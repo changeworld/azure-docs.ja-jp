@@ -4,34 +4,144 @@ summary: BareMetal インフラストラクチャを使用して、Microsoft Azu
 metadata:
   title: BareMetal インフラストラクチャのドキュメント
   description: BareMetal インフラストラクチャを使用して、Microsoft Azure で仮想マシンを作成、デプロイ、管理する方法について説明します。
-  services: virtual-machines
+  services: baremetal-infrastructure
   ms.service: baremetal-infrastructure
   ms.topic: landing-page
-  author: shortpatti
-  ms.author: v-patsho
-  ms.date: 12/31/2020
-  ms.openlocfilehash: 285421d12b656290ef5ddbe21136345b718e0ca1
-  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  author: Ajayan1008
+  ms.author: v-hborys
+  ms.date: 08/27/2021
+  ms.openlocfilehash: e5eb67ce6a1baa7c5764b927f9595b73518ebce3
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/23/2021
-  ms.locfileid: "98730274"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123109336"
 landingContent:
 - title: BareMetal インフラストラクチャについて
   linkLists:
   - linkListType: overview
     links:
     - text: Azure の BareMetal インフラストラクチャとは
-      url: workloads/sap/baremetal-overview-architecture.md
+      url: concepts-baremetal-infrastructure-overview.md
     - text: 用語の確認
       url: know-baremetal-terms.md
+    - text: Azure での BareMetal インスタンスの接続
+      url: connect-baremetal-infrastructure.md
+- title: Oracle 用 BareMetal インフラストラクチャ
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Oracle 用 BareMetal インフラストラクチャの概要
+      url: workloads/oracle/oracle-baremetal-overview.md
+    - text: Oracle ワークロード向けの BareMetal SKU
+      url: workloads/oracle/oracle-baremetal-skus.md
+    - text: Oracle 用 BareMetal のストレージ
+      url: workloads/oracle/oracle-baremetal-storage.md
+    - text: 修正プログラムの適用に関する考慮事項
+      url: workloads/oracle/oracle-baremetal-patching.md
+    - text: イーサネット構成
+      url: workloads/oracle/oracle-baremetal-ethernet.md
+    - text: Oracle 用 BareMetal のアーキテクチャ
+      url: workloads/oracle/oracle-baremetal-architecture.md
+    - text: Oracle 用の BareMetal のプロビジョニング
+      url: workloads/oracle/oracle-baremetal-provision.md
   - linkListType: reference
     links:
-    - text: BareMetal ワークロードの種類
-      url: ../virtual-machines/workloads/sap/get-started.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
-- title: BareMetal インスタンス ユニット
-  linkLists:
+    - text: 高可用性とディザスター リカバリー
+      url: workloads/oracle/concepts-oracle-high-availability.md
+    - text: 高可用性機能
+      url: workloads/oracle/high-availability-features.md
+    - text: オプションと考慮事項
+      url: workloads/oracle/options-considerations-high-availability.md
+    - text: 復旧方法を選択する
+      url: workloads/oracle/oracle-high-availability-recovery.md
   - linkListType: how-to-guide
     links:
-    - text: Azure での BareMetal インスタンス ユニットの管理
-      url: workloads/sap/baremetal-infrastructure-portal.md
+    - text: SnapCenter の概要
+      url: workloads/oracle/netapp-snapcenter-integration-oracle-baremetal.md
+    - text: トラフィックをルーティングするように SnapCenter を設定する
+      url: workloads/oracle/set-up-snapcenter-to-route-traffic.md
+    - text: SnapCenter を構成する
+      url: workloads/oracle/configure-snapcenter-oracle-baremetal.md
+    - text: オンデマンド バックアップを作成する
+      url: workloads/oracle/create-on-demand-backup-oracle-baremetal.md
+    - text: Oracle Database を復元する
+      url: workloads/oracle/restore-oracle-database-baremetal.md
+- title: SAP HANA on Azure (L インスタンス)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 認定
+      url: ../virtual-machines/workloads/sap/hana-certification.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: HLI で利用可能な SKU
+      url: ../virtual-machines/workloads/sap/hana-available-skus.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: サイズ変更
+      url: ../virtual-machines/workloads/sap/hana-sizing.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: オンボードの要件
+      url: ../virtual-machines/workloads/sap/hana-onboarding-requirements.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: SAP HANA のデータ階層化と拡張ノード
+      url: ../virtual-machines/workloads/sap/hana-data-tiering-extension-nodes.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: 運用モデルと責任
+      url: ../virtual-machines/workloads/sap/hana-operations-model.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: 互換性のあるオペレーティング システム
+      url: ../virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: HLI でサポートされるシナリオ
+      url: ../virtual-machines/workloads/sap/hana-supported-scenario.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+  - linkListType: architecture
+    links:
+    - text: 全般的なアーキテクチャ
+      url: ../virtual-machines/workloads/sap/hana-architecture.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: ネットワーク アーキテクチャ
+      url: ../virtual-machines/workloads/sap/hana-network-architecture.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: ストレージ アーキテクチャ
+      url: ../virtual-machines/workloads/sap/hana-storage-architecture.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+  - linkListType: get-started
+    links:
+    - text: HLI のデプロイ
+      url: ../virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: HANA L インスタンスへの Azure VM の接続
+      url: ../virtual-machines/workloads/sap/hana-connect-azure-vm-large-instances.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: HANA L インスタンスの ExpressRoute への VNet の接続
+      url: ../virtual-machines/workloads/sap/hana-connect-vnet-express-route.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: 追加のネットワーク要件
+      url: ../virtual-machines/workloads/sap/hana-additional-network-requirements.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: 構成の検証
+      url: ../virtual-machines/workloads/sap/hana-installation.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: HANA のインストールの例
+      url: ../virtual-machines/workloads/sap/hana-example-installation.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+  - linkListType: reference
+    links:
+    - text: 高可用性とディザスター リカバリー
+      url: ../virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: バックアップと復元
+      url: ../virtual-machines/workloads/sap/hana-backup-restore.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: 原則と準備
+      url: ../virtual-machines/workloads/sap/hana-concept-preparation.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: ディザスター リカバリーのフェールオーバー手順
+      url: ../virtual-machines/workloads/sap/hana-failover-procedure.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: HLI の監視
+      url: ../virtual-machines/workloads/sap/troubleshooting-monitoring.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: HANA 側からの監視とトラブルシューティング
+      url: ../virtual-machines/workloads/sap/hana-monitor-troubleshoot.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: SAP on Azure の監視
+      url: ../virtual-machines/workloads/sap/monitor-sap-on-azure.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: Azure Monitor for SAP Solutions のプロバイダー
+      url: ../virtual-machines/workloads/sap/azure-monitor-providers.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: Azure Monitor for SAP Solutions をデプロイする - Azure portal
+      url: ../virtual-machines/workloads/sap/azure-monitor-sap-quickstart.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: Azure Monitor for SAP Solutions でアラートを構成する
+      url: ../virtual-machines/workloads/sap/azure-monitor-alerts-portal.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+  - linkListType: how-to-guide
+    links:
+    - text: STONITH を使用した HA セットアップ
+      url: ../virtual-machines/workloads/sap/ha-setup-with-stonith.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: OS のバックアップ
+      url: ../virtual-machines/workloads/sap/large-instance-os-backup.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: HANA Large Instances の Kdump を有効にする
+      url: ../virtual-machines/workloads/sap/hana-large-instance-enable-kdump.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: HANA Large Instances 向けの OS アップグレード
+      url: ../virtual-machines/workloads/sap/os-upgrade-hana-large-instance.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: SUSE Linux 用 SMT サーバーの設定
+      url: ../virtual-machines/workloads/sap/hana-setup-smt.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: SAP HANA Large Instances の予約の購入
+      url: /azure/cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity

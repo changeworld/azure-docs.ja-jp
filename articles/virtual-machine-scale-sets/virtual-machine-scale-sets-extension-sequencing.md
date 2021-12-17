@@ -8,15 +8,18 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: extensions
 ms.date: 01/30/2019
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 1b5aea1f0f0101231408dc9ad7b57a30f2c86256
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 1aa6a3291ef5d770104697669ec20468d91efc66
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788159"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690505"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>仮想マシン スケール セット内の拡張機能のプロビジョニングをシーケンス処理する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 均一のスケール セット
+
 Azure 仮想マシンの拡張機能は、デプロイ後の構成と管理、監視、セキュリティなどの機能を提供します。 通常、運用環境のデプロイでは、目的の結果を実現するために、VM インスタンス用に構成された複数の拡張機能の組み合わせを使用します。
 
 仮想マシン上で複数の拡張機能を使用する場合は、同じ OS リソースを必要とする拡張機能が同時にこれらのリソースを取得しようとしていないことを確認することが重要です。 また、一部の拡張機能は、環境設定やシークレットなどの必須構成を提供するために他の拡張機能に依存します。 適切な順序とシーケンス処理が設定されていないと、依存する拡張機能のデプロイは失敗することがあります。

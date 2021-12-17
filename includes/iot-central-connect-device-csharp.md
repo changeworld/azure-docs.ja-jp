@@ -1,27 +1,31 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: 0383949dd9b0aeaa185613474d91d0416169ab1f
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 32afd7c4fff650e41d04a4ed809ad700cacc4e36
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491145"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516726"
 ---
+[![コードを参照](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Samples/device/PnpDeviceSamples/Thermostat)
+
 ## <a name="prerequisites"></a>前提条件
 
 この記事の手順を完了するには、次のリソースが必要です。
 
-* **カスタム アプリケーション** テンプレートを使用して作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](../articles/iot-central/core/quick-deploy-iot-central.md)に関するページをご覧ください。 アプリケーションは、2020 年 7 月 14 日以降に作成されている必要があります。
-* [Visual Studio (Community、Professional、Enterprise のいずれか)](https://visualstudio.microsoft.com/downloads/) がインストールされている開発マシン。
-* サンプル コードが格納された [Microsoft Azure IoT Samples for C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub リポジトリのローカル コピー。 このリンク ([ZIP のダウンロード](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)) を使用してリポジトリのコピーをダウンロードしてください。 次に、ローカル コンピューター上の適切な場所にファイルを解凍します。
+[!INCLUDE [iot-central-prerequisites-basic](iot-central-prerequisites-basic.md)]
+
+- [Visual Studio (Community、Professional、Enterprise のいずれか)](https://visualstudio.microsoft.com/downloads/) がインストールされている開発マシン。
+
+- サンプル コードが格納された [Microsoft Azure IoT Samples for C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub リポジトリのローカル コピー。 このリンク ([ZIP のダウンロード](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)) を使用してリポジトリのコピーをダウンロードしてください。 次に、ローカル コンピューター上の適切な場所にファイルを解凍します。
 
 ## <a name="review-the-code"></a>コードの確認
 
-先ほどダウンロードした Microsoft Azure IoT Samples for C# リポジトリのコピーにある *azure-iot-samples-csharp-master\iot-hub\Samples\device\IoTHubDeviceSamples.sln"* ソリューション ファイルを Visual Studio で開きます。 **ソリューション エクスプローラー** で、 *[PnpDeviceSamples] > [TemperatureController]* フォルダーを展開し、*Program.cs* および *TemperatureControllerSample.cs* ファイルを開いて、このサンプルのコードを表示します。
+先ほどダウンロードした Microsoft Azure IoT Samples for C# リポジトリのコピーにある *azure-iot-samples-csharp-main\iot-hub\Samples\device\IoTHubDeviceSamples.sln"* ソリューション ファイルを Visual Studio で開きます。 **ソリューション エクスプローラー** で、 *[PnpDeviceSamples] > [TemperatureController]* フォルダーを展開し、*Program.cs* および *TemperatureControllerSample.cs* ファイルを開いて、このサンプルのコードを表示します。
 
 このサンプルを実行して IoT Central に接続すると、Device Provisioning Service (DPS) を使用してデバイスが登録され、接続文字列が生成されます。 このサンプルでは、必要な DPS 接続情報がその環境から取得されます。
 

@@ -2,19 +2,18 @@
 title: チュートリアル - Azure IoT Edge を使用して Linux デバイス用のモジュールを開発する
 description: このチュートリアルでは、Linux コンテナーを使用して Linux デバイス用の IoT Edge モジュールを開発するための、開発マシンとクラウド リソースの設定について説明します
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fea8f52ebf40ba8195de134098693f90315bb384
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: abf39ce59bec57d765ab981eae94b1b49b41e4b1
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461421"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390085"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>チュートリアル: Linux コンテナーを使用して IoT Edge モジュールを開発する
 
@@ -44,7 +43,7 @@ Visual Studio Code を使用して、コードを開発し、IoT Edge を実行�
 * コンテナー エンジンを実行できるほとんどのオペレーティング システムを使用して、Linux デバイス用の IoT Edge モジュールを開発することができます。 このチュートリアルでは、Windows コンピューターを使用しますが、macOS または Linux での既知の相違点を指摘します。
 * このチュートリアルの後半でモジュール テンプレート パッケージをプルするために、[Git](https://git-scm.com/) をインストールします。  
 * [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
+* [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)。
 
 Azure IoT Edge デバイス:
 
@@ -81,6 +80,7 @@ IoT Edge モジュールを開発する場合は、開発マシンと、モジ�
 >Linux ARM64 デバイスのサポートは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)でご利用いただけます。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレビュー)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
 
 このチュートリアルでは、Visual Studio Code の開発手順を説明します。 Visual Studio を使用する場合は、「[Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする](how-to-visual-studio-develop-module.md)」に記載されている手順を参照してください。
+
 ## <a name="install-container-engine"></a>コンテナー エンジンをインストールする
 
 IoT Edge モジュールはコンテナーとしてパッケージ化されるので、それらをビルドおよび管理するためには、開発マシン上にコンテナー エンジンが必要です。 機能のサポートと人気があるため、開発には Docker Desktop をお勧めします。 Windows で Docker Desktop を使用すると、Linux コンテナーと Windows コンテナーを切り替えて、さまざまな種類の IoT Edge デバイス用のモジュールを容易に開発することができます。
@@ -152,18 +152,33 @@ Visual Studio Code のコマンド パレットで、次を検索して選択し
   * レジストリ資格情報セクションで、アドレスは、ソリューションを作成したときに指定した情報から自動的に入力されています。 ただし、ユーザー名とパスワードは、.env ファイルに格納されている変数を参照します。 この構成はセキュリティのためです.env ファイルは git では無視されますが、デプロイ テンプレートはそうではないからです。
   * ソリューションを作成したときにイメージ リポジトリを指定しましたが、SampleModule セクションでコンテナー イメージは入力されていません。 このプレースホルダーは、SampleModule フォルダー内の **module.json** ファイルを指しています。 そのファイルに移動すると、イメージ フィールドにはリポジトリが含まれているだけでなく、バージョンとコンテナーのプラットフォームで構成されるタグ値も含まれていることが分かります。 バージョンは、開発サイクルの一部として手動で反復することができ、コンテナー プラットフォームは、このセクションの後半で紹介するスイッチャーを使用して選択します。
 
+### <a name="set-iot-edge-runtime-version"></a>IoT Edge ランタイム バージョンを設定する
+
+IoT Edge 拡張機能は、デプロイ アセットを作成するときに、IoT Edge ランタイムの最新の安定バージョンを既定として使用します。 現在、最新の安定バージョンはバージョン 1.2 です。 1\.1 の長期サポート バージョンまたはそれより前の 1.0 バージョンを実行しているデバイスのモジュールを開発している場合は、Visual Studio Code の IoT Edge ランタイム バージョンを更新して一致させます。
+
+1. **[ビュー]**  >  **[コマンド パレット]** を選択します。
+
+1. コマンド パレットで、**Azure IoT Edge: Set default IoT Edge runtime version** コマンドを入力して実行します。
+
+1. 一覧から IoT Edge デバイスが実行されているランタイム バージョンを選択します。
+
+新しいランタイム バージョンを選択すると、ランタイム モジュール イメージへの変更を反映するように配置マニフェストが動的に更新されます。
+
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>レジストリの資格情報を IoT Edge エージェントに提供する
 
 コンテナー レジストリの資格情報は、環境ファイルに格納され、IoT Edge ランタイムと共有されます。 ランタイムでは、コンテナー イメージを IoT Edge デバイスにプルするためにこれらの資格情報が必要です。
 
 >[!NOTE]
->「[**プロジェクト テンプレートを作成する**](#create-a-project-template)」手順で、**localhost: 5000** の値を Azure コンテナー レジストリのログイン サーバーの値で置き換えていない場合は、 **.env** ファイルと、配置マニフェストの registryCredentials セクションは見つかりません。 
+>「[**プロジェクト テンプレートを作成する**](#create-a-project-template)」手順で、**localhost: 5000** の値を Azure コンテナー レジストリのログイン サーバーの値で置き換えていない場合は、 **.env** ファイルと、配置マニフェストの registryCredentials セクションは見つかりません。
 
 IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
 1. モジュール ソリューション内の **.env** ファイルを開きます。
 2. Azure コンテナー レジストリからコピーした **username** と **password** の値を追加します。
 3. 変更内容を .env ファイルに保存します。
+
+>[!NOTE]
+>このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルやリポジトリスコープ トークンのような最小特権の認証オプションを使用することをお勧めします。 詳細については、[[コンテナー レジストリへのアクセスを管理する]](production-checklist.md#manage-access-to-your-container-registry) を参照してください。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 
@@ -226,10 +241,10 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
    ```
 
    `--password-stdin` の使用を推奨するセキュリティ警告が表示される場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスをご覧ください。
-   
+
 3. Azure Container Registry にログインする
 
-   ```cmd/sh
+   ```azurecli
    az acr login -n <ACR registry name>
    ```
 

@@ -3,34 +3,30 @@ title: JavaScript とページ レイアウトのバージョン
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C で JavaScript を有効にし、ページ レイアウトのバージョンを使用する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 08/12/2021
 ms.custom: project-no-code, devx-track-js
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d234e57f7c11b0d9f2cd212bde93a8b8e478ef41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59061c1f7c66558cc6daf1e50b7c9c2ad1378da3
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781366"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130217047"
 ---
-# <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C における JavaScript とページ レイアウトのバージョン
+# <a name="enable-javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C における JavaScript とページ レイアウトのバージョンの有効化
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-::: zone pivot="b2c-custom-policy"
+Azure Active Directory B2C (Azure AD B2C) [HTML テンプレート](customize-ui-with-html.md)を使用して、ユーザーの ID エクスペリエンスを作成できます。 HTML テンプレートには、特定の HTML タグと属性のみを含めることができます。 &lt;b&gt;、&lt;i&gt;、&lt;u&gt;、&lt;h1&gt;、&lt;hr&gt; などの基本的な HTML タグを使用できます。 &lt;script&gt; や &lt;iframe&gt; などの高度なタグは、セキュリティ上の理由から削除されます。
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-::: zone-end
-
-Azure AD B2C では、ユーザー フローとカスタム ポリシーのユーザー インターフェイス要素に対する HTML、CSS、JavaScript を含むパッケージ コンテンツのセットが提供されています。 アプリケーションで JavaScript を有効にするには、次の手順を実行します。
+JavaScript を有効にし、HTML タグと属性を拡張するには、次のようにします。
 
 ::: zone pivot="b2c-user-flow"
 
@@ -53,7 +49,7 @@ Azure AD B2C では、ユーザー フローとカスタム ポリシーのユ�
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 
-## <a name="select-a-page-layout-version"></a>ページ レイアウトのバージョンを選択する
+## <a name="begin-setting-up-a-page-layout-version"></a>ページ レイアウト バージョンの設定を開始する
 
 JavaScript クライアント側コードを有効にする場合は、JavaScript の基になる要素を変更不可にする必要があります。 変更不可になっていないと、何らかの変更によってユーザー フローのページで予期しない動作が発生する可能性があります。 これらの問題を回避するには、ページ レイアウトの使用を強制し、ページ レイアウト バージョンを指定して、JavaScript の基になっているコンテンツ定義を確実に不変にします。 JavaScript を有効にする予定がない場合でも、ページに対してページ レイアウトのバージョンを指定できます。
 
@@ -63,7 +59,7 @@ JavaScript クライアント側コードを有効にする場合は、JavaScrip
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. ポリシー ("B2C_1_SignupSignin" など) を選択して開きます。
-1. **[Page layouts]\(ページ レイアウト\)** を選択します。 **[レイアウト名]** を選択し、 **[ページ レイアウト バージョン (プレビュー)]** を選択します。
+1. **[Page layouts]\(ページ レイアウト\)** を選択します。 **[レイアウト名]** を選択し、 **[ページ レイアウト バージョン]** を選択します。
 
 さまざまなページ レイアウトのバージョンの詳細については、[ページ レイアウトのバージョン変更ログ](page-layout.md)に関する記事を参照してください。
 
@@ -73,9 +69,10 @@ JavaScript クライアント側コードを有効にする場合は、JavaScrip
 
 ::: zone pivot="b2c-custom-policy"
 
-アプリケーションのユーザー インターフェイスの要素に[ページ レイアウト](contentdefinitions.md#select-a-page-layout)を選択します。
+カスタム ポリシー ページのページ レイアウト バージョンを指定するには、次のようにします。
 
-カスタム ポリシーのコンテンツ定義の "*すべて*" に対して、ページ `contract` バージョンを使用して [ページ レイアウト バージョン](contentdefinitions.md#migrating-to-page-layout)を定義します。 値の形式には、次のように `contract` という語が含まれている必要があります: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 ページ バージョンで[ページ レイアウトに移行する](contentdefinitions.md#migrating-to-page-layout)方法について説明します。
+1. アプリケーションのユーザー インターフェイスの要素に[ページ レイアウト](contentdefinitions.md#select-a-page-layout)を選択します。
+1. カスタム ポリシーのコンテンツ定義の "*すべて*" に対して、ページ `contract` バージョンを使用して [ページ レイアウト バージョン](contentdefinitions.md#migrating-to-page-layout)を定義します。 値の形式には、次のように `contract` という語が含まれている必要があります: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 
 
 次の例は、コンテンツ定義識別子と、対応する **DataUri** をページ コントラクトと共に示しています。 
 
@@ -146,16 +143,17 @@ JavaScript クライアント側コードを有効にする場合は、JavaScrip
 
 JavaScript を使用して、アプリケーションのインターフェイスをカスタマイズするときに、次のガイドラインに従います。
 
-- `<a>` HTML 要素ではクリック イベントをバインドしないでください。
-- Azure AD B2C コードやコメントへの依存関係は使用しないでください。
-- Azure AD B2C の HTML 要素の順序や階層は変更しないでください。 UI 要素の順序を制御するには、Azure AD B2C のポリシーを使用します。
+- 非推奨 
+    - `<a>` HTML 要素でクリック イベントをバインドする。
+    - Azure AD B2C コードやコメントへの依存関係を使用する。
+    - Azure AD B2C の HTML 要素の順序や階層を変更する。 UI 要素の順序を制御するには、Azure AD B2C のポリシーを使用します。
 - 任意の RESTful サービスを呼び出すことができますが、次の考慮事項があります。
     - クライアント側の HTTP 呼び出しを許可するために、RESTful サービス CORS を設定することが必要な場合があります。
     - RESTful サービスは必ずセキュリティ保護し、HTTPS プロトコルのみを使用してください。
     - JavaScript を直接使用して Azure AD B2C のエンドポイントを呼び出すことはしないでください。
 - JavaScript を埋め込んだり、外部の JavaScript ファイルにリンクしたりできます。 外部の JavaScript ファイルを使用する場合は、相対 URL ではなく必ず絶対 URL を使用してください。
 - JavaScript フレームワーク: 
-    - Azure AD B2C では、[特定のバージョンの jQuery](page-layout.md#jquery-version) を使用します。 別のバージョンの jQuery を含めないでください。 同じページに複数のバージョンを使用すると、問題が発生します。
+    - Azure AD B2C では、[特定のバージョンの jQuery](page-layout.md#jquery-and-handlebars-versions) を使用します。 別のバージョンの jQuery を含めないでください。 同じページに複数のバージョンを使用すると、問題が発生します。
     - RequireJS の使用はサポートされていません。
     - ほとんどの JavaScript フレームワークは、Azure AD B2C ではサポートされていません。
 - `window.SETTINGS`、`window.CONTENT` オブジェクト (現在の UI 言語など) を呼び出すことによって、Azure AD B2C の設定を読み取ることができます。 これらのオブジェクトの値は変更しないでください。
@@ -241,4 +239,4 @@ function addTermsOfUseLink() {
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Active Directory B2C でのアプリケーションのユーザー インターフェイスのカスタマイズ](customize-ui-with-html.md)に関する記事を参照して、アプリケーションのユーザー インターフェイスをカスタマイズする方法の詳細を確認します。
+[Azure Active Directory B2C でアプリケーションのユーザー インターフェイスをカスタマイズする](customize-ui-with-html.md)方法の詳細を確認してください。

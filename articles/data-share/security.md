@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 12/17/2020
-ms.openlocfilehash: 4e62645dd5a7a8336df4fccf12daebc730a91168
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 770ee01d054aec084e9abd609af28e8125844e0f
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97678426"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895870"
 ---
 # <a name="security-overview-for-azure-data-share"></a>Azure Data Share のセキュリティの概要
 
@@ -30,8 +30,7 @@ Azure Data Share では、データ共有に使用されているデータ ス�
 共有が作成または受信されると、Data Share リソースに対する適切なアクセス許可を持つユーザーは、変更を加えることができます。 共有を作成または受信したユーザーが組織を離れた場合、共有が終了されたり、データのフローが停止されたりすることはありません。 Data Share リソースに対する適切なアクセス許可を持つ他のユーザーは、引き続き共有を管理できます。
 
 ## <a name="share-data-from-or-to-data-stores-with-firewall-enabled"></a>ファイアウォールが有効になっているデータ ストアとの間でデータを共有する
-ファイアウォールがオンになっているストレージ アカウントとの間でデータを共有するには、ストレージ アカウントで **[信頼された Microsoft サービスを許可する]** を有効にする必要があります。 詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](
-https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)」を参照してください。
+ファイアウォールがオンになっているストレージ アカウントとの間でデータを共有するには、ストレージ アカウントで **[信頼された Microsoft サービスを許可する]** を有効にする必要があります。 詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../storage/common/storage-network-security.md#trusted-microsoft-services)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

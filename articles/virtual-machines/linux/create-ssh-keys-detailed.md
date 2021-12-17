@@ -5,22 +5,24 @@ author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 07/31/2020
+ms.date: 02/17/2021
 ms.author: cynthn
-ms.openlocfilehash: 9d888de78432558cda8e08c3de91be9673231b47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 349289abd3b03f231df96cc6fefb88f5035fc0fa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554719"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432892"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>詳細な手順: Azure の Linux VM に対する認証用に SSH キーを作成して管理する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 Secure Shell (SSH) キーの組を使用すると、認証に SSH キーを使う Linux 仮想マシンを作成できます。 この記事では、SSH クライアント接続用の SSH RSA 公開/秘密キー ファイル ペアを作成して使用する方法について説明します。
 
 すぐに使用できるコマンドについては、[Azure での Linux VM 用の SSH 公開/秘密キー ペアの作成方法](mac-create-ssh-keys.md)に関する記事をご覧ください。
 
-SSH キーを作成し、それを使って **Windows** コンピューターに接続する方法については、「[Azure 上の Windows で SSH キーを使用する方法](ssh-from-windows.md)」を参照してください。 また、[Azure portal](../ssh-keys-portal.md) を使用して、VM を作成するための SSH キーをポータルで作成して管理することもできます。
+SSH キーを作成し、それを使って **Windows** コンピューターから Linux VM に接続する方法については、「[Azure 上の Windows で SSH キーを使用する方法](ssh-from-windows.md)」を参照してください。 また、[Azure portal](../ssh-keys-portal.md) を使用して、VM を作成するための SSH キーをポータルで作成して管理することもできます。
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 

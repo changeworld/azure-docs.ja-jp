@@ -1,20 +1,20 @@
 ---
-title: チュートリアル:Bing 地図から Web サービスを移行する | Microsoft Azure Maps
+title: 'チュートリアル: Bing 地図から Microsoft Azure Maps に Web サービスを移行する'
 description: Bing 地図から Microsoft Azure Maps に Web サービスを移行する方法に関するチュートリアルです。
-author: rbrundritt
-ms.author: richbrun
-ms.date: 12/07/2020
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 244305dcc454287f2c68ec9b9c71145fb9a28641
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97679071"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473986"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>チュートリアル:Bing 地図から Web サービスを移行する
 
@@ -44,27 +44,27 @@ Azure Maps と Bing 地図では、どちらの場合も REST Web サービス�
 | Spatial Data Services (SDS)           | [検索](/rest/api/maps/search) + [ルート](/rest/api/maps/route) + その他の Azure サービス |
 | タイム ゾーン                             | [タイム ゾーン](/rest/api/maps/timezone)  |
 | トラフィック インシデント                     | [トラフィック インシデントの詳細](/rest/api/maps/traffic/gettrafficincidentdetail)                     |
-| Elevation                             | [Elevation (プレビュー)](/rest/api/maps/elevation)
+| Elevation                             | [昇格](/rest/api/maps/elevation)
 
 次のサービス API は、Azure Maps では現在使用できません。
 
--   巡回ルートの最適化 - 対応予定。 Azure Maps ルート API は、車両が １ つの場合における巡回セールスマンの最適化には対応していません。
--   映像メタデータ - 主に Bing 地図のタイル URL を取得する目的で使用します。 Azure Maps には、マップ タイルに直接アクセスためのスタンドアロンのサービスがあります。
+* 巡回ルートの最適化 - 対応予定。 Azure Maps ルート API は、車両が １ つの場合における巡回セールスマンの最適化には対応していません。
+* 映像メタデータ - 主に Bing 地図のタイル URL を取得する目的で使用します。 Azure Maps には、マップ タイルに直接アクセスためのスタンドアロンのサービスがあります。
 
 Azure Maps には、必要になる可能性のある追加の REST Web サービスがいくつか用意されています。
 
--   [Azure Maps Creator (プレビュー)](./creator-indoor-maps.md) - 建物や空間のプライベートなデジタル ツインを独自に作成できます。
--   [Spatial Operations](/rest/api/maps/spatial) - ジオフェンシングなどの複雑な空間計算や空間演算をサービスにオフロードします。
--   [マップ タイル](/rest/api/maps/render/getmaptile) - Azure Maps のラスターおよびベクター タイル形式の道路タイルとイメージ タイルにアクセスできます。
--   [バッチ ルート指定](/rest/api/maps/route/postroutedirectionsbatchpreview) - 1 つのバッチで一定期間にわたり最大 1,000 件のルート要求を実行できます。 処理の高速化のため、ルートはサーバー上で並列に計算されます。
--   [トラフィック](/rest/api/maps/traffic) フロー - ラスターおよびベクター タイル形式のリアルタイムのトラフィック フロー データにアクセスできます。
--   [位置情報 API (プレビュー)](/rest/api/maps/geolocation/getiptolocationpreview) - IP アドレスの位置情報を取得します。
--   [Weather サービス](/rest/api/maps/weather) - リアルタイムと予測の気象データにアクセスできます。
+* [Azure Maps Creator](./creator-indoor-maps.md) - 建物や空間のプライベートなデジタル ツインを独自に作成できます。
+* [Spatial Operations](/rest/api/maps/spatial) - ジオフェンシングなどの複雑な空間計算や空間演算をサービスにオフロードします。
+* [マップ タイル](/rest/api/maps/render/getmaptile) - Azure Maps のラスターおよびベクター タイル形式の道路タイルとイメージ タイルにアクセスできます。
+* [バッチ ルート指定](/rest/api/maps/route/postroutedirectionsbatchpreview) - 1 つのバッチで一定期間にわたり最大 1,000 件のルート要求を実行できます。 処理の高速化のため、ルートはサーバー上で並列に計算されます。
+* [トラフィック](/rest/api/maps/traffic) フロー - ラスターおよびベクター タイル形式のリアルタイムのトラフィック フロー データにアクセスできます。
+* [位置情報 API (プレビュー)](/rest/api/maps/geolocation/get-ip-to-location) - IP アドレスの位置情報を取得します。
+* [Weather サービス](/rest/api/maps/weather) - リアルタイムと予測の気象データにアクセスできます。
 
 次のベスト プラクティス ガイドも確認してください。
 
--   [検索のベスト プラクティス](./how-to-use-best-practices-for-search.md)
--   [ルート指定のベスト プラクティス](./how-to-use-best-practices-for-routing.md)
+* [検索のベスト プラクティス](./how-to-use-best-practices-for-search.md)
+* [ルート指定のベスト プラクティス](./how-to-use-best-practices-for-routing.md)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -78,11 +78,11 @@ Azure Maps には、必要になる可能性のある追加の REST Web サー�
 
 Azure Maps では、住所のジオコーディング方法が複数提供されています。
 
--   [自由形式の住所のジオコーディング](/rest/api/maps/search/getsearchaddress): 1 行の住所文字列 (`"1 Microsoft way, Redmond, WA"` など) を指定します。要求は直ちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要がある場合に推奨されます。
--   [構造化された住所のジオコーディング](/rest/api/maps/search/getsearchaddressstructured): 単一の住所の一部 (番地、市区町村、国、郵便番号など) を指定します。要求はただちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要があり、データが既に個別の住所の一部として解析されている場合に推奨されます。
--   [住所のバッチ ジオコーディング](/rest/api/maps/search/postsearchaddressbatchpreview): 最大 10,000 個の住所を含む要求を作成します。これらの住所は一定期間内に処理されます。 すべての住所はサーバーで並行してジオコーディングされ、完了すると、完全な結果セットをダウンロードできます。 このサービスは、大きなデータ セットをジオコーディングする場合に推奨されます。
--   [あいまい検索](/rest/api/maps/search/getsearchfuzzy): この API は、住所のジオコーディングと目的地検索を組み合わせたものです。 住所、場所、ランドマーク、目的地、または目的地のカテゴリを自由形式の文字列として指定することができます。要求はただちに処理されます。 この API は、ユーザーが同じテキスト ボックスから住所や目的地を検索できるアプリケーションに適しています。
--   [あいまいバッチ検索](/rest/api/maps/search/postsearchfuzzybatchpreview): 最大 10,000 個の住所、場所、ランドマーク、または目的地を含む要求を作成します。これらは一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
+* [自由形式の住所のジオコーディング](/rest/api/maps/search/getsearchaddress): 1 行の住所文字列 (`"1 Microsoft way, Redmond, WA"` など) を指定します。要求は直ちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要がある場合に推奨されます。
+* [構造化された住所のジオコーディング](/rest/api/maps/search/getsearchaddressstructured): 単一の住所の一部 (番地、市区町村、国、郵便番号など) を指定します。要求はただちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要があり、データが既に個別の住所の一部として解析されている場合に推奨されます。
+* [住所のバッチ ジオコーディング](/rest/api/maps/search/postsearchaddressbatchpreview): 最大 10,000 個の住所を含む要求を作成します。これらの住所は一定期間内に処理されます。 すべての住所はサーバーで並行してジオコーディングされ、完了すると、完全な結果セットをダウンロードできます。 このサービスは、大きなデータ セットをジオコーディングする場合に推奨されます。
+* [あいまい検索](/rest/api/maps/search/getsearchfuzzy): この API は、住所のジオコーディングと目的地検索を組み合わせたものです。 住所、場所、ランドマーク、目的地、または目的地のカテゴリを自由形式の文字列として指定することができます。要求はただちに処理されます。 この API は、ユーザーが同じテキスト ボックスから住所や目的地を検索できるアプリケーションに適しています。
+* [あいまいバッチ検索](/rest/api/maps/search/postsearchfuzzybatchpreview): 最大 10,000 個の住所、場所、ランドマーク、または目的地を含む要求を作成します。これらは一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
 
 次の表では、構造化されたおよび自由形式の住所のジオコーディングについて、Bing 地図 API パラメーターと、それに相当する Azure Maps 内の API パラメーターを相互参照で示しています。
 
@@ -135,9 +135,9 @@ Azure Maps では、以下もサポートされます。
 
 Azure Maps では、逆ジオコーディング方法が複数の提供されています。
 
--   [住所の逆ジオコーダー](/rest/api/maps/search/getsearchaddressreverse): 1 つの地理座標を指定すると、そのおよその住所が取得されます。要求はただちに処理されます。
--   [交差点の逆ジオコーダー](/rest/api/maps/search/getsearchaddressreversecrossstreet): 1 つの地理座標を指定すると周辺の交差点情報 (たとえば、最初の交差点や主要交差点など) が取得されます。要求はただちに処理されます。
--   [住所のバッチ逆ジオコーダー](/rest/api/maps/search/postsearchaddressreversebatchpreview): 最大 10,000 個の座標を含む要求が作成されます。これらの座標は一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
+* [住所の逆ジオコーダー](/rest/api/maps/search/getsearchaddressreverse): 1 つの地理座標を指定すると、そのおよその住所が取得されます。要求はただちに処理されます。
+* [交差点の逆ジオコーダー](/rest/api/maps/search/getsearchaddressreversecrossstreet): 1 つの地理座標を指定すると周辺の交差点情報 (たとえば、最初の交差点や主要交差点など) が取得されます。要求はただちに処理されます。
+* [住所のバッチ逆ジオコーダー](/rest/api/maps/search/postsearchaddressreversebatchpreview): 最大 10,000 個の座標を含む要求が作成されます。これらの座標は一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
 
 次の表では、Bing 地図 API パラメーターと、それに相当する Azure Maps 内の API パラメーターを相互参照で示しています。
 
@@ -178,10 +178,10 @@ Azure Maps の逆ジオコーディング API には、Bing 地図では利用�
 
 いくつかの Azure Maps 検索 API では、自動提案シナリオに使用可能な予測モードがサポートされています。 Bing 地図の Autosuggest API に最も近いのは、Azure Maps の[あいまい検索](/rest/api/maps/search/getsearchfuzzy) API です。 次の API も予測モードに対応しています。クエリに `&typeahead=true` を追加してください。
 
--   [自由形式の住所のジオコーディング](/rest/api/maps/search/getsearchaddress): 1 行の住所文字列 (`"1 Microsoft way, Redmond, WA"` など) を指定します。要求は直ちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要がある場合に推奨されます。
--   [あいまい検索](/rest/api/maps/search/getsearchfuzzy): この API は、住所のジオコーディングと目的地検索を組み合わせたものです。 住所、場所、ランドマーク、目的地、または目的地のカテゴリを自由形式の文字列として指定することができます。要求はただちに処理されます。 この API は、ユーザーが同じテキスト ボックスから住所や目的地を検索できるアプリケーションに適しています。
--   [POI 検索](/rest/api/maps/search/getsearchpoi): 目的地を名前で検索します。 たとえば、`"starbucks"` などです。
--   [POI カテゴリ検索](/rest/api/maps/search/getsearchpoicategory): 目的地をカテゴリで検索します。 たとえば、"restaurant" などです。
+* [自由形式の住所のジオコーディング](/rest/api/maps/search/getsearchaddress): 1 行の住所文字列 (`"1 Microsoft way, Redmond, WA"` など) を指定します。要求は直ちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要がある場合に推奨されます。
+* [あいまい検索](/rest/api/maps/search/getsearchfuzzy): この API は、住所のジオコーディングと目的地検索を組み合わせたものです。 住所、場所、ランドマーク、目的地、または目的地のカテゴリを自由形式の文字列として指定することができます。要求はただちに処理されます。 この API は、ユーザーが同じテキスト ボックスから住所や目的地を検索できるアプリケーションに適しています。
+* [POI 検索](/rest/api/maps/search/getsearchpoi): 目的地を名前で検索します。 たとえば、`"starbucks"` などです。
+* [POI カテゴリ検索](/rest/api/maps/search/getsearchpoicategory): 目的地をカテゴリで検索します。 たとえば、"restaurant" などです。
 
 ## <a name="calculate-routes-and-directions"></a>ルートと道順を計算する
 
@@ -197,9 +197,8 @@ Azure Maps を使用してルートと道順を計算することができます
 
 Azure Maps のルート指定サービスでは、ルート計算用に次の API が提供されます。
 
--   [ルート計算](/rest/api/maps/route/getroutedirections): ルートが計算されます。要求はただちに処理されます。 この API では、GET 要求と POST 要求の両方がサポートされます。 大量のウェイポイントを指定する場合、または多くのルート オプションを使用する場合は、URL 要求が長くなりすぎて問題が発生することがないように POST 要求が推奨されます。
--   [ルートのバッチ処理](/rest/api/maps/route/postroutedirectionsbatchpreview): 最大 1,000 個のルート要求を含む要求が作成されます。これらの座標は一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
--   [Mobility Service (プレビュー)](/rest/api/maps/mobility): 公共輸送を使用するルートと道順が計算されます。
+* [ルート計算](/rest/api/maps/route/getroutedirections): ルートが計算されます。要求はただちに処理されます。 この API では、GET 要求と POST 要求の両方がサポートされます。 大量のウェイポイントを指定する場合、または多くのルート オプションを使用する場合は、URL 要求が長くなりすぎて問題が発生することがないように POST 要求が推奨されます。
+* [ルートのバッチ処理](/rest/api/maps/route/postroutedirectionsbatchpreview): 最大 1,000 個のルート要求を含む要求が作成されます。これらの座標は一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
 
 次の表では、Bing 地図 API パラメーターと、それに相当する Azure Maps 内の API パラメーターを相互参照で示しています。
 
@@ -364,8 +363,8 @@ Azure Maps には、静的マップ イメージにデータを重ねてレン�
 
 Azure Maps のレンダリング サービスでは、静的マップ イメージを生成できるだけでなく、ラスター (PNG) およびベクター形式のマップ タイルに直接アクセスすることもできます。
 
--   [マップ タイル](/rest/api/maps/render/getmaptile) - ベース マップ (道路、境界、背景) のラスター (PNG) およびベクター タイルを取得します。
--   [マップ イメージ タイル](/rest/api/maps/render/getmapimagerytile) - 航空写真と衛星画像のタイルを取得します。
+* [マップ タイル](/rest/api/maps/render/getmaptile) - ベース マップ (道路、境界、背景) のラスター (PNG) およびベクター タイルを取得します。
+* [マップ イメージ タイル](/rest/api/maps/render/getmapimagerytile) - 航空写真と衛星画像のタイルを取得します。
 
 ### <a name="pushpin-url-parameter-format-comparison"></a>プッシュピン URL パラメーターの形式の比較
 
@@ -451,7 +450,7 @@ Azure Maps では、URL で *path* パラメーターを指定することによ
 
 > `&path=pathStyles||pathLocation1|pathLocation2|...`
 
-経路の位置について、Azure Maps では座標を `longitude latitude` 形式にする必要がありますが、Bing 地図では `latitude,longitude` 形式が使用されます。 さらに、Azure Maps では、経度と緯度を **コンマではなくスペース** で区切ることにも注意してください。 現在、Azure Maps では、エンコードされた経路はサポートされません。 大きなデータ セットを GeoJSON 塗りつぶしとして Azure Maps データ ストレージ API に読み込むことができます。[こちら](./how-to-render-custom-data.md#get-data-from-azure-maps-data-storage)を参照してください。
+経路の位置について、Azure Maps では座標を `longitude latitude` 形式にする必要がありますが、Bing 地図では `latitude,longitude` 形式が使用されます。 さらに、Azure Maps では、経度と緯度を **コンマではなくスペース** で区切ることにも注意してください。 現在、Azure Maps では、エンコードされた経路はサポートされません。 大きなデータ セットを GeoJSON 塗りつぶしとして Azure Maps データ ストレージ API に読み込むことができます。[こちら](./how-to-render-custom-data.md#upload-pins-and-path-data)を参照してください。
 
 Azure Maps で経路のスタイルを追加するには、形式 `optionNameValue` を使用します。複数のスタイルを指定する場合は、`optionName1Value1|optionName2Value2` のようにパイプ (`|`) 文字で区切ります。 オプションの名前と値は区切らないことに注意してください。 Azure Maps で経路のスタイルを設定するには、次のスタイル オプション名を使用します。
 
@@ -472,7 +471,7 @@ Azure Maps で経路のスタイルを追加するには、形式 `optionNameVal
 
 Azure Maps には、場所のセット間の移動時間と移動距離を距離行列として計算するための API が用意されています。 Azure Maps の距離行列 API は、Bing 地図の距離行列 API に相当します。
 
--   [ルート マトリックス](/rest/api/maps/route/postroutematrixpreview): 出発地と目的地のセットについて移動時間と移動距離が非同期で計算されます。 要求あたり最大 700 個のセルがサポートされます (出発地の数 × 目的地の数)。 この制限を念頭に置いて考えられるマトリックス ディメンションの例としては、`700x1`、`50x10`、`10x10`、`28x25`、`10x70` があります。
+* [ルート マトリックス](/rest/api/maps/route/postroutematrixpreview): 出発地と目的地のセットについて移動時間と移動距離が非同期で計算されます。 要求あたり最大 700 個のセルがサポートされます (出発地の数 × 目的地の数)。 この制限を念頭に置いて考えられるマトリックス ディメンションの例としては、`700x1`、`50x10`、`10x10`、`28x25`、`10x70` があります。
 
 > [!NOTE]
 > 距離行列 API に対する要求は、要求の本文で出発地と目的地の情報を指定した POST 要求を使用してのみ作成できます。</p>
@@ -501,7 +500,7 @@ Azure Maps には、場所のセット間の移動時間と移動距離を距離
 
 Azure Maps では、等時線を計算するための API が提供されます。これは、指定された時間内または燃料や充電の残量内で出発地点から任意の方向に移動できる領域をカバーするポリゴンです。 Azure Maps のルートのレンダリング API は、Bing 地図の等時線 API に相当します。
 
--   [ルート](/rest/api/maps/route/getrouterange)範囲**:指定された時間内、距離内、または使用可能な燃料や充電の残量内で出発地点から任意の方向に移動できる領域をカバーするポリゴンを計算します。
+* [ルート](/rest/api/maps/route/getrouterange)範囲**:指定された時間内、距離内、または使用可能な燃料や充電の残量内で出発地点から任意の方向に移動できる領域をカバーするポリゴンを計算します。
 
 > [!NOTE]
 > Azure Maps では、クエリの出発地を座標で指定する必要があります。 住所は、最初にジオコーディングする必要があります。</p>
@@ -530,19 +529,19 @@ Azure Maps では、等時線を計算するための API が提供されます�
 
 Bing 地図で目的地データを検索するには、次の API を使用します。
 
--   **ローカル検索:** 名前またはエンティティの種類 (カテゴリ) を指定して、近くにある目的地を検索します (放射状検索)。 この API に最も近い Azure Maps の API は、[POI 検索](/rest/api/maps/search/getsearchpoi)と [POI カテゴリ検索](/rest/api/maps/search/getsearchpoicategory)です。
--   **位置情報認識**:ある場所から特定の距離内にある目的地を検索します。 この API に最も近い Azure Maps の API は、[近隣検索](/rest/api/maps/search/getsearchnearby)です。
--   **ローカル情報:** 特定の座標から指定の最大走行時間内または最長走行距離内にある目的地を検索します。 これは、Azure Maps では、まず等時線を計算してから[ジオメトリ内検索](/rest/api/maps/search/postsearchinsidegeometry) API に渡すことで実現できます。
+* **ローカル検索:** 名前またはエンティティの種類 (カテゴリ) を指定して、近くにある目的地を検索します (放射状検索)。 この API に最も近い Azure Maps の API は、[POI 検索](/rest/api/maps/search/getsearchpoi)と [POI カテゴリ検索](/rest/api/maps/search/getsearchpoicategory)です。
+* **位置情報認識**:ある場所から特定の距離内にある目的地を検索します。 この API に最も近い Azure Maps の API は、[近隣検索](/rest/api/maps/search/getsearchnearby)です。
+* **ローカル情報:** 特定の座標から指定の最大走行時間内または最長走行距離内にある目的地を検索します。 これは、Azure Maps では、まず等時線を計算してから[ジオメトリ内検索](/rest/api/maps/search/postsearchinsidegeometry) API に渡すことで実現できます。
 
 Azure Maps には、目的地を検索するための複数の検索 API が用意されています。
 
--   [POI 検索](/rest/api/maps/search/getsearchpoi): 目的地を名前で検索します。 たとえば、`"starbucks"` などです。
--   [POI カテゴリ検索](/rest/api/maps/search/getsearchpoicategory): 目的地をカテゴリで検索します。 たとえば、"restaurant" などです。
--   [近隣検索](/rest/api/maps/search/getsearchnearby): ある場所から特定の距離内にある目的地を検索します。
--   [あいまい検索](/rest/api/maps/search/getsearchfuzzy): この API は、住所のジオコーディングと目的地検索を組み合わせたものです。 住所、場所、ランドマーク、目的地、または目的地のカテゴリを自由形式の文字列として指定することができます。要求はただちに処理されます。 この API は、ユーザーが同じテキスト ボックスから住所や目的地を検索できるアプリケーションに適しています。
--   [ジオメトリ内検索](/rest/api/maps/search/postsearchinsidegeometry):指定されたジオメトリ (ポリゴン) 内にある目的地を検索します。
--   [ルートに沿った検索](/rest/api/maps/search/postsearchalongroute): 指定されたルートに沿って目的地を検索します。
--   [あいまいバッチ検索](/rest/api/maps/search/postsearchfuzzybatchpreview): 最大 10,000 個の住所、場所、ランドマーク、または目的地を含む要求を作成します。これらは一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
+* [POI 検索](/rest/api/maps/search/getsearchpoi): 目的地を名前で検索します。 たとえば、`"starbucks"` などです。
+* [POI カテゴリ検索](/rest/api/maps/search/getsearchpoicategory): 目的地をカテゴリで検索します。 たとえば、"restaurant" などです。
+* [近隣検索](/rest/api/maps/search/getsearchnearby): ある場所から特定の距離内にある目的地を検索します。
+* [あいまい検索](/rest/api/maps/search/getsearchfuzzy): この API は、住所のジオコーディングと目的地検索を組み合わせたものです。 住所、場所、ランドマーク、目的地、または目的地のカテゴリを自由形式の文字列として指定することができます。要求はただちに処理されます。 この API は、ユーザーが同じテキスト ボックスから住所や目的地を検索できるアプリケーションに適しています。
+* [ジオメトリ内検索](/rest/api/maps/search/postsearchinsidegeometry):指定されたジオメトリ (ポリゴン) 内にある目的地を検索します。
+* [ルートに沿った検索](/rest/api/maps/search/postsearchalongroute): 指定されたルートに沿って目的地を検索します。
+* [あいまいバッチ検索](/rest/api/maps/search/postsearchfuzzybatchpreview): 最大 10,000 個の住所、場所、ランドマーク、または目的地を含む要求を作成します。これらは一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
 
 [検索のベスト プラクティス](./how-to-use-best-practices-for-search.md)に関するドキュメントを、必ずご覧ください。
 
@@ -557,11 +556,11 @@ Bing 地図では、対話型のマップ コントロールでトラフィッ�
 
 また、Azure Maps の対話型のマップ コントロールには、インシデント データが統合されています。 Azure Maps では、次のトラフィック サービス API も用意されています。
 
--   [トラフィック フロー セグメント](/rest/api/maps/traffic/gettrafficflowsegment):指定された座標に最も近い道路フラグメントについて、速度と移動時間の情報を提供します。
--   [トラフィック フロー タイル](/rest/api/maps/traffic/gettrafficflowtile):トラフィック フローのデータが含まれるラスター タイルとベクター タイルを提供します。 これらは、Azure Maps のコントロールや、Leaflet などのサードパーティ製マップ コントロールで使用できます。 ベクター タイルは、高度なデータ分析にも使用可能です。
--   [トラフィック インシデントの詳細](/rest/api/maps/traffic/gettrafficincidentdetail):境界ボックス内、ズーム レベル内、およびトラフィック モデル内に含まれるトラフィック インシデントの詳細を提供します。
--   [トラフィック インシデント タイル](/rest/api/maps/traffic/gettrafficincidenttile):トラフィック インシデントのデータが含まれるラスター タイルとベクター タイルを提供します。
--   [トラフィック インシデント ビューポート](/rest/api/maps/traffic/gettrafficincidentviewport):トラフィック モデルの ID など、要求に記載されているビューポートの法的情報や技術情報を取得します。
+* [トラフィック フロー セグメント](/rest/api/maps/traffic/gettrafficflowsegment):指定された座標に最も近い道路フラグメントについて、速度と移動時間の情報を提供します。
+* [トラフィック フロー タイル](/rest/api/maps/traffic/gettrafficflowtile):トラフィック フローのデータが含まれるラスター タイルとベクター タイルを提供します。 これらは、Azure Maps のコントロールや、Leaflet などのサードパーティ製マップ コントロールで使用できます。 ベクター タイルは、高度なデータ分析にも使用可能です。
+* [トラフィック インシデントの詳細](/rest/api/maps/traffic/gettrafficincidentdetail):境界ボックス内、ズーム レベル内、およびトラフィック モデル内に含まれるトラフィック インシデントの詳細を提供します。
+* [トラフィック インシデント タイル](/rest/api/maps/traffic/gettrafficincidenttile):トラフィック インシデントのデータが含まれるラスター タイルとベクター タイルを提供します。
+* [トラフィック インシデント ビューポート](/rest/api/maps/traffic/gettrafficincidentviewport):トラフィック モデルの ID など、要求に記載されているビューポートの法的情報や技術情報を取得します。
 
 次の表では、Bing 地図のトラフィック API パラメーターと、それに相当する Azure Maps 内のトラフィック インシデントの詳細 API パラメーターを相互参照で示しています。
 
@@ -579,7 +578,7 @@ Bing 地図では、対話型のマップ コントロールでトラフィッ�
 
 Azure Maps には、座標が位置する場所のタイム ゾーンを取得するための API が用意されています。 Azure Maps のタイム ゾーン API は、Bing 地図のタイム ゾーン API に相当します。
 
--   [座標によるタイム ゾーン](/rest/api/maps/timezone/gettimezonebycoordinates):座標を指定して、その座標が位置する場所のタイム ゾーンの詳細を取得します。
+* [座標によるタイム ゾーン](/rest/api/maps/timezone/gettimezonebycoordinates):座標を指定して、その座標が位置する場所のタイム ゾーンの詳細を取得します。
 
 次の表では、Bing 地図 API パラメーターと、それに相当する Azure Maps 内の API パラメーターを相互参照で示しています。
 
@@ -595,11 +594,11 @@ Azure Maps には、座標が位置する場所のタイム ゾーンを取得�
 
 Azure Maps プラットフォームでは、この API に加えて、タイム ゾーン名と ID の変換に役立つ他のタイム ゾーン API も多数用意されています。
 
--   [ID によるタイム ゾーン](/rest/api/maps/timezone/gettimezonebyid): 指定された IANA タイム ゾーン ID について現在、履歴、将来のタイム ゾーンに関する情報が返されます。
--   [タイム ゾーン列挙型 IANA](/rest/api/maps/timezone/gettimezoneenumiana): IANA タイム ゾーン ID の完全な一覧が返されます。 IANA サービスの更新は、1 日以内にシステムに反映されます。 
--   [タイム ゾーン列挙型 Windows](/rest/api/maps/timezone/gettimezoneenumwindows): Windows タイム ゾーン ID の完全な一覧が返されます。
--   [タイム ゾーン IANA バージョン](/rest/api/maps/timezone/gettimezoneianaversion): Azure Maps で現在使用されている IANA のバージョン番号が返されます。 
--   [タイム ゾーン Windows から IANA](/rest/api/maps/timezone/gettimezonewindowstoiana): 有効な Windows タイム ゾーン ID が指定された場合、対応する IANA ID が返されます。 1 つの Windows ID に対して複数の IANA ID が返される場合があります。
+* [ID によるタイム ゾーン](/rest/api/maps/timezone/gettimezonebyid): 指定された IANA タイム ゾーン ID について現在、履歴、将来のタイム ゾーンに関する情報が返されます。
+* [タイム ゾーン列挙型 IANA](/rest/api/maps/timezone/gettimezoneenumiana): IANA タイム ゾーン ID の完全な一覧が返されます。 IANA サービスの更新は、1 日以内にシステムに反映されます。 
+* [タイム ゾーン列挙型 Windows](/rest/api/maps/timezone/gettimezoneenumwindows): Windows タイム ゾーン ID の完全な一覧が返されます。
+* [タイム ゾーン IANA バージョン](/rest/api/maps/timezone/gettimezoneianaversion): Azure Maps で現在使用されている IANA のバージョン番号が返されます。 
+* [タイム ゾーン Windows から IANA](/rest/api/maps/timezone/gettimezonewindowstoiana): 有効な Windows タイム ゾーン ID が指定された場合、対応する IANA ID が返されます。 1 つの Windows ID に対して複数の IANA ID が返される場合があります。
 
 ## <a name="spatial-data-services-sds"></a>Spatial Data Services (SDS)
 
@@ -615,15 +614,15 @@ Bing 地図の Spatial Data Services では、3 つの主要な機能が提供�
 
 Bing 地図では、1 つのバッチ ジオコーディング要求で最大 200,000 個の住所を解析できます。 この要求はキューに入れられ、データ セットのサイズとサービスにかかる負荷に応じて、通常は数分から数時間の間に処理されます。 要求に含まれる住所ごとに、トランザクションが生成されました。
 
-Azure Maps にもバッチ ジオコーディング サービスはありますが、1 つの要求で渡すことのできる住所は最大 10,000 個であり、要求の処理にかかる時間は、データ セットのサイズとサービスにかかる負荷にもよりますが数秒から数分です。 要求に含まれる住所ごとに、トランザクションが生成されました。 Azure Maps でバッチ ジオコーディング サービスを利用できるのは、S1 サービス レベルのみです。
+Azure Maps にもバッチ ジオコーディング サービスはありますが、1 つの要求で渡すことのできる住所は最大 10,000 個であり、要求の処理にかかる時間は、データ セットのサイズとサービスにかかる負荷にもよりますが数秒から数分です。 要求に含まれる住所ごとに、トランザクションが生成されました。 Azure Maps でバッチ ジオコーディング サービスを利用できるのは、Gen 2 または S1 価格レベルのみです。 価格レベルの詳細については、「[Azure Maps での適切な価格レベルの選択](choose-pricing-tier.md)」を参照してください。
 
-Azure Maps での大量の住所のジオコーディングでは、標準の検索 API に並列要求を行う方法もあります。 これらのサービスでは、要求ごとに 1 つの住所しか受け入れられませんが、使用量制限のない S0 サービス レベルでも使用可能です。 S0 サービス レベルでは、1 つのアカウントから 1 秒あたり最大 50 個の要求を Azure Maps プラットフォームに行うことができます。 そのため、これらの制限の範囲内で処理を行うのであれば、1 時間に最大 18 万個の住所をジオコーディングできます。 S1 サービス レベルでは、1 つのアカウントから 1 秒あたりに実行可能なクエリの数に関する制限の規定はないため、この価格レベルでは大量のデータを短時間で処理できます。ただし、バッチ ジオコーディング サービスを使うと、転送されるデータの総量を抑え、ネットワーク トラフィックを大幅に削減できます。
+Azure Maps での大量の住所のジオコーディングでは、標準の検索 API に並列要求を行う方法もあります。 これらのサービスでは、要求ごとに 1 つの住所しか受け入れられませんが、使用量制限のない S0 サービス レベルでも使用可能です。 S0 サービス レベルでは、1 つのアカウントから 1 秒あたり最大 50 個の要求を Azure Maps プラットフォームに行うことができます。 そのため、これらの制限の範囲内で処理を行うのであれば、1 時間に最大 18 万個の住所をジオコーディングできます。 Gen 2 または S1 価格レベルでは 1 つのアカウントから 1 秒あたりに実行可能なクエリの数に関する制限の規定がないため、この価格レベルを使用するとより多くのデータをより高速に処理できます。また、バッチ ジオコーディング サービスを使うことで、転送されるデータの総量を抑え、ネットワーク トラフィックを大幅に削減できます。
 
--   [自由形式の住所のジオコーディング](/rest/api/maps/search/getsearchaddress): 1 行の住所文字列 (`"1 Microsoft way, Redmond, WA"` など) を指定します。要求は直ちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要がある場合に推奨されます。
--   [構造化された住所のジオコーディング](/rest/api/maps/search/getsearchaddressstructured): 単一の住所の一部 (番地、市区町村、国、郵便番号など) を指定します。要求はただちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要があり、データが既に個別の住所の一部として解析されている場合に推奨されます。
--   [住所のバッチ ジオコーディング](/rest/api/maps/search/postsearchaddressbatchpreview): 最大 10,000 個の住所を含む要求を作成します。これらの住所は一定期間内に処理されます。 すべての住所はサーバーで並行してジオコーディングされ、完了すると、完全な結果セットをダウンロードできます。 このサービスは、大きなデータ セットをジオコーディングする場合に推奨されます。
--   [あいまい検索](/rest/api/maps/search/getsearchfuzzy): この API は、住所のジオコーディングと目的地検索を組み合わせたものです。 住所、場所、ランドマーク、目的地、または目的地のカテゴリを自由形式の文字列として指定することができます。要求はただちに処理されます。 この API は、ユーザーが同じテキスト ボックスから住所や目的地を検索できるアプリケーションに適しています。
--   [あいまいバッチ検索](/rest/api/maps/search/postsearchfuzzybatchpreview): 最大 10,000 個の住所、場所、ランドマーク、または目的地を含む要求を作成します。これらは一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
+* [自由形式の住所のジオコーディング](/rest/api/maps/search/getsearchaddress): 1 行の住所文字列 (`"1 Microsoft way, Redmond, WA"` など) を指定します。要求は直ちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要がある場合に推奨されます。
+* [構造化された住所のジオコーディング](/rest/api/maps/search/getsearchaddressstructured): 単一の住所の一部 (番地、市区町村、国、郵便番号など) を指定します。要求はただちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要があり、データが既に個別の住所の一部として解析されている場合に推奨されます。
+* [住所のバッチ ジオコーディング](/rest/api/maps/search/postsearchaddressbatchpreview): 最大 10,000 個の住所を含む要求を作成します。これらの住所は一定期間内に処理されます。 すべての住所はサーバーで並行してジオコーディングされ、完了すると、完全な結果セットをダウンロードできます。 このサービスは、大きなデータ セットをジオコーディングする場合に推奨されます。
+* [あいまい検索](/rest/api/maps/search/getsearchfuzzy): この API は、住所のジオコーディングと目的地検索を組み合わせたものです。 住所、場所、ランドマーク、目的地、または目的地のカテゴリを自由形式の文字列として指定することができます。要求はただちに処理されます。 この API は、ユーザーが同じテキスト ボックスから住所や目的地を検索できるアプリケーションに適しています。
+* [あいまいバッチ検索](/rest/api/maps/search/postsearchfuzzybatchpreview): 最大 10,000 個の住所、場所、ランドマーク、または目的地を含む要求を作成します。これらは一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
 
 ### <a name="get-administrative-boundary-data"></a>行政境界データの取得
 
@@ -633,13 +632,15 @@ Azure Maps では、行政境界 (国、州、郡、都市、郵便番号) に�
 
 要点は次のとおりです。
 
-1.  次のいずれかの検索 API に、取得したい境界に関するクエリを渡します。
-    -   [自由形式の住所のジオコーディング](/rest/api/maps/search/getsearchaddress)
-    -   [構造化された住所のジオコーディング](/rest/api/maps/search/getsearchaddressstructured)
-    -   [住所のバッチ ジオコーディング](/rest/api/maps/search/postsearchaddressbatchpreview)
-    -   [あいまい検索](/rest/api/maps/search/getsearchfuzzy)
-    -   [あいまいバッチ検索](/rest/api/maps/search/postsearchfuzzybatchpreview)
-2.  目的の結果にジオメトリ ID が含まれていれば、その ID を[ポリゴン検索 API](/rest/api/maps/search/getsearchpolygon) に渡します。
+1. 次のいずれかの検索 API に、取得したい境界に関するクエリを渡します。
+
+   * [自由形式の住所のジオコーディング](/rest/api/maps/search/getsearchaddress)
+   * [構造化された住所のジオコーディング](/rest/api/maps/search/getsearchaddressstructured)
+   * [住所のバッチ ジオコーディング](/rest/api/maps/search/postsearchaddressbatchpreview)
+   * [あいまい検索](/rest/api/maps/search/getsearchfuzzy)
+   * [あいまいバッチ検索](/rest/api/maps/search/postsearchfuzzybatchpreview)
+
+1. 目的の結果にジオメトリ ID が含まれていれば、その ID を[ポリゴン検索 API](/rest/api/maps/search/getsearchpolygon) に渡します。
 
 ### <a name="host-and-query-spatial-business-data"></a>空間ビジネス データのホストおよび照会
 
@@ -651,15 +652,15 @@ Bing 地図の Spatial Data Services では、ビジネス データをホスト
 
 以下に、Azure で空間データをホストおよび照会する場合に役立つリソースをいくつか紹介します。
 
--   [Azure SQL の空間データ型の概要](/sql/relational-databases/spatial/spatial-data-types-overview)
--   [Azure SQL の空間機能 - ニアレストネイバー クエリ](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor)
--   [Azure Cosmos DB の地理空間機能の概要](../cosmos-db/sql-query-geospatial-intro.md)
+* [Azure SQL の空間データ型の概要](/sql/relational-databases/spatial/spatial-data-types-overview)
+* [Azure SQL の空間機能 - ニアレストネイバー クエリ](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor)
+* [Azure Cosmos DB の地理空間機能の概要](../cosmos-db/sql-query-geospatial-intro.md)
 
 ## <a name="client-libraries"></a>クライアント ライブラリ
 
 Azure Maps には、次のプログラミング言語用のクライアント ライブラリが用意されています。
 
--   JavaScript、TypeScript、Node.js - [ドキュメント](./how-to-use-services-module.md) \| [NPM パッケージ](https://www.npmjs.com/package/azure-maps-rest)
+* JavaScript、TypeScript、Node.js - [ドキュメント](./how-to-use-services-module.md) \| [NPM パッケージ](https://www.npmjs.com/package/azure-maps-rest)
 
 その他のプログラミング言語用のオープンソース クライアント ライブラリには、次のものがあります。
 

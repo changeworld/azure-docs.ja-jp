@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b58b73235bba53bb174ebb17a63ad76cf71bcf1
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97347744"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787803"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service に対する TLS 相互認証の構成
 
@@ -44,11 +44,11 @@ az webapp update --set clientCertEnabled=true --name <app-name> --resource-group
 
 1. **[Client exclusion paths]\(クライアントの除外パス\)** の横にある編集アイコンをクリックします。
 
-1. **[新しいパス]** をクリックし、パスを指定して、 **[OK]** をクリックします。
+1. **[新しいパス]** をクリックし、1 つのパスか、`,` または `;` で区切られたパスの一覧を指定して、 **[OK]** をクリックします。
 
 1. ページの上部にある **[保存]** をクリックします。
 
-次のスクリーンショットでは、アプリの `/public` パスの下にあるものは、クライアント証明書を必要としません。
+次のスクリーンショットでは、`/public` で始まるアプリのパスは、クライアント証明書を必要としません。 パスの照合では、大文字と小文字は区別されません。
 
 ![証明書不要のパス][exclusion-paths]
 
@@ -60,7 +60,71 @@ ASP.NET の場合は、**HttpRequest.ClientCertificate** プロパティを通�
 
 他のアプリケーション スタック (Node.js や PHP など) の場合は、`X-ARR-ClientCert` 要求ヘッダー内の base64 エンコード値を通じて、アプリでクライアント証明書を使用できます。
 
-## <a name="aspnet-sample"></a>ASP.NET のサンプル
+## <a name="aspnet-5-aspnet-core-31-sample"></a>ASP.NET 5 +、ASP.NET Core 3.1 サンプル
+
+ASP.NET Core の場合、転送された証明書を解析するミドルウェアが提供されます。 転送されたプロトコル ヘッダーを使用するために、別のミドルウェアが提供されています。 転送された証明書を受け入れるには、両方が存在している必要があります。 [Certificateauthentication オプション](/aspnet/core/security/authentication/certauth)には、カスタム証明書検証ロジックを配置できます。
+
+```csharp
+public class Startup
+{
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllersWithViews();
+        // Configure the application to use the protocol and client ip address forwared by the frontend load balancer
+        services.Configure<ForwardedHeadersOptions>(options =>
+        {
+            options.ForwardedHeaders =
+                ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+        });       
+        
+        // Configure the application to client certificate forwarded the frontend load balancer
+        services.AddCertificateForwarding(options => { options.CertificateHeader = "X-ARR-ClientCert"; });
+
+        // Add certificate authentication so when authorization is performed the user will be created from the certificate
+        services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).AddCertificate();
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+        else
+        {
+            app.UseExceptionHandler("/Home/Error");
+            app.UseHsts();
+        }
+        
+        app.UseForwardedHeaders();
+        app.UseCertificateForwarding();
+        app.UseHttpsRedirection();
+
+        app.UseAuthentication()
+        app.UseAuthorization();
+
+        app.UseStaticFiles();
+
+        app.UseRouting();
+        
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+        });
+    }
+}
+```
+
+## <a name="aspnet-webforms-sample"></a>ASP.NET WebForms のサンプル
 
 ```csharp
     using System;

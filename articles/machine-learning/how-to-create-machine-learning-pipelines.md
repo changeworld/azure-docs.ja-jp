@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 機械学習パイプラインを作成して実行し、機械学習 (ML) フェーズをつなげるワークフローを作成して管理します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.reviewer: sgilley
 ms.author: nilsp
 author: NilsPohlmann
-ms.date: 03/02/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 38fd5b779c3a8ae71c2e4fafcaf65921b1be3f93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python,contperf-fy21q1
+ms.openlocfilehash: 29c9284d972a6f95b95485685f206d96c77a8e71
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642271"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563114"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
 
@@ -30,7 +30,7 @@ ML タスクの CI/CD オートメーションには [Azure パイプライン](
 
 ML パイプラインはコンピューティング先で実行します (「[Azure Machine Learning でのコンピューティング先とは](./concept-compute-target.md)」を参照)。 パイプラインでは、サポートされている [Azure Storage](../storage/index.yml) の場所に対してデータを読み取ったり書き込んだりすることができます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -79,7 +79,7 @@ def_file_store = Datastore(ws, "workspacefilestore")
 
 ### <a name="configure-data-with-dataset-and-outputfiledatasetconfig-objects"></a>`Dataset` オブジェクトと `OutputFileDatasetConfig` オブジェクトを使用してデータを構成する
 
-パイプラインにデータを提供する方法には、[データセット](/python/api/azureml-core/azureml.core.dataset.Dataset) オブジェクトを使用することをお勧めします。 `Dataset` オブジェクトでは、データストアに存在するデータ、データストアからアクセス可能なデータ、または Web URL でアクセス可能なデータが指し示されています。 `Dataset` クラスは抽象クラスであるため、`FileDataset` (1 つ以上のファイルを参照)、または区切られたデータ列を含む 1 つ以上のファイルによって作成された `TabularDataset` のいずれかのインスタンスを作成します。
+パイプラインにデータを提供する方法には、[データセット](/python/api/azureml-core/azureml.core.dataset.Dataset) オブジェクトを使用することをお勧めします。 `Dataset` オブジェクトでは、データストアに存在するデータ、データストアからアクセス可能なデータ、または Web URL でアクセス可能なデータが指し示されています。 `Dataset` クラスは抽象クラスであるため、`FileDataset` (1 つ以上のファイルを参照)、または区切られたデータ列を含む 1 つ以上のファイルによって作成される `TabularDataset` のいずれかのインスタンスを作成します。
 
 `Dataset` は、[from_file](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true-) や [from_delimited_files](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) などのメソッドを使用して作成します。
 
@@ -162,7 +162,7 @@ aml_run_config.target = compute_target
 
 USE_CURATED_ENV = True
 if USE_CURATED_ENV :
-    curated_environment = Environment.get(workspace=ws, name="AzureML-Tutorial")
+    curated_environment = Environment.get(workspace=ws, name="AzureML-sklearn-0.24-ubuntu18.04-py37-cpu")
     aml_run_config.environment = curated_environment
 else:
     aml_run_config.environment.python.user_managed_dependencies = False
@@ -170,7 +170,7 @@ else:
     # Add some packages relied on by data prep step
     aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
         conda_packages=['pandas','scikit-learn'], 
-        pip_packages=['azureml-sdk', 'azureml-dataprep[fuse,pandas]'], 
+        pip_packages=['azureml-sdk', 'azureml-dataset-runtime[fuse,pandas]'], 
         pin_sdk_version=False)
 ```
 
@@ -284,11 +284,11 @@ ws = Run.get_context().experiment.workspace
 
 ## <a name="caching--reuse"></a>キャッシュと再利用  
 
-パイプラインの動作を最適化およびカスタマイズするためには、キャッシュと再利用に関連するいくつかのことを実行できます。 たとえば、次のようなことを選択できます。
+パイプラインの動作を最適化およびカスタマイズするために、キャッシュと再利用に関連するいくつかのことを実行できます。 たとえば、次のようなことを選択できます。
 + [ステップ定義](/python/api/azureml-pipeline-steps/)中に `allow_reuse=False` を設定して、**既定のステップ実行出力の再利用をオフにします**。 共同環境でパイプラインを使用する際は再利用が鍵となります。不要な再実行を除去することで機敏性が提供されるからです。 ただし、再利用しないことも選択できます。
-+ `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)` を使用して、**1 回の実行で全ステップの出力の再生成を強制します**。
++ `pipeline_run = exp.submit(pipeline, regenerate_outputs=True)` を使用して、**1 回の実行で全ステップの出力の再生成を強制します**。
 
-既定では、ステップの `allow_reuse` が有効になり、ステップの定義に指定されている `source_directory` がハッシュ化されます。 したがって、ある特定のステップのスクリプトが同じ場合 (`script_name`、inputs、およびパラメーター)、` source_directory` では他に何か変更されることはなく、前のステップ実行の出力が再利用されて、ジョブはコンピューティングに送信されず、代わりに、前の実行の結果が次のステップで即時使用可能になります。
+既定では、ステップの `allow_reuse` が有効になり、ステップの定義に指定されている `source_directory` がハッシュ化されます。 したがって、ある特定のステップのスクリプトが同じ (`script_name`、入力、およびパラメーター) で、かつ ` source_directory` でそれ以外に何も変更されていない場合、前のステップ実行の出力が再利用されて、ジョブはコンピューティングに送信されず、代わりに、前の実行の結果が次のステップで即時使用可能になります。
 
 ```python
 step = PythonScriptStep(name="Hello World",
@@ -298,6 +298,9 @@ step = PythonScriptStep(name="Hello World",
                         allow_reuse=False,
                         hash_paths=['hello_world.ipynb'])
 ```
+
+> [!Note]
+> データ入力の名前が変更された場合、基になるデータが変更されない _場合でも_、ステップは再実行されます。 入力データ (`data.as_input(name=...)`) の `name` フィールドは明示的に設定する必要があります。 この値を明示的に設定しない場合、`name` フィールドはランダムな guid に設定され、ステップの結果は再利用されません。
 
 ## <a name="submit-the-pipeline"></a>パイプラインを送信する
 

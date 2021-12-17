@@ -2,18 +2,17 @@
 title: チュートリアル:Azure Blob に対する REST と AI
 titleSuffix: Azure Cognitive Search
 description: Postman と Azure Cognitive Search REST API を使用した、Blob Storage のコンテンツに対するテキスト抽出と自然言語処理の例を、順を追って説明します。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: 21f0d141567f17c470732088c6a93a2ae7ed3c67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc1be51c506123ae18d0006be693b100f2e5af1b
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94738052"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727136"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:REST と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
@@ -185,7 +184,7 @@ Azure Cognitive Search では、エンリッチメントはインデックス作
 
    | スキル                 | 説明    |
    |-----------------------|----------------|
-   | [エンティティの認識](cognitive-search-skill-entity-recognition.md) | BLOB コンテナーのコンテンツから、人、組織、および場所の名前を抽出します。 |
+   | [エンティティの認識](cognitive-search-skill-entity-recognition-v3.md) | BLOB コンテナーのコンテンツから、人、組織、および場所の名前を抽出します。 |
    | [言語検出](cognitive-search-skill-language-detection.md) | コンテンツの言語を検出します。 |
    | [テキスト分割](cognitive-search-skill-textsplit.md)  | キー フレーズの抽出スキルを呼び出す前に、大きいコンテンツを小さいチャンクに分割します。 キー フレーズ抽出は、50,000 文字以下の入力を受け入れます。 いくつかのサンプル ファイルは、分割してこの制限内に収める必要があります。 |
    | [キー フレーズ抽出](cognitive-search-skill-keyphrases.md) | 上位のキー フレーズを抜き出します。 |
@@ -200,7 +199,7 @@ Azure Cognitive Search では、エンリッチメントはインデックス作
       "skills":
       [
         {
-          "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+          "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
           "categories": [ "Person", "Organization", "Location" ],
           "defaultLanguageCode": "en",
           "inputs": [

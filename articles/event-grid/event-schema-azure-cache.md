@@ -2,19 +2,19 @@
 title: Event Grid ソースとしての Azure Cache for Redis
 description: Azure Event Grid の Azure Cache for Redis イベントに対して用意されているプロパティについて説明します
 ms.topic: conceptual
-ms.date: 02/11/2021
+ms.date: 09/15/2021
 author: curib
 ms.author: cauribeg
-ms.openlocfilehash: 1a2995bc9ef40cd4eab320ce1bb4c5faf61e0e6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa890dd62ce6c5695128e666556cd00f9a08711b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371279"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626933"
 ---
 # <a name="azure-cache-for-redis-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Cache for Redis
 
-この記事では、Azure Cache for Redis のイベントのプロパティとスキーマについて説明します。  イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 
+この記事では、Azure Cache for Redis のイベントのプロパティとスキーマについて説明します。  イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 
 
 ## <a name="available-event-types"></a>使用可能なイベントの種類
 これらのイベントは、クライアントで Azure Cache for Redis REST API を呼び出してエクスポート、インポート、またはスケーリングを行うとトリガーされます。 ファイルの部分置換イベントは Redis 更新プログラムによってトリガーされます。
@@ -182,7 +182,7 @@ ms.locfileid: "100371279"
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -199,7 +199,7 @@ ms.locfileid: "100371279"
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -214,7 +214,7 @@ ms.locfileid: "100371279"
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `timestamp` | string | イベントが発生した時刻。 |
 | `name` | string | イベントの名前です。 |

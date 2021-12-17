@@ -3,7 +3,7 @@ title: Azure portal を使用して Windows 仮想マシンをプロビジョニ
 description: このガイドでは、Azure portal を使用して Windows 仮想マシンに SQL Server をプロビジョニングするために使用できるオプションについて説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f0b7e04becd42180df3393d7036294c1629cdc21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bc4efc0be1e216a10328f5476f592a3dc1156f0
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499494"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167099"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Azure portal を使用して SQL Server がインストールされた Windows 仮想マシンをプロビジョニングする方法
 
@@ -31,7 +31,7 @@ ms.locfileid: "102499494"
 このガイドは、SQL Server VM を作成する目的にも使用できますし、 Azure Portal で使用できるオプションを参照する目的にも使用できます。
 
 > [!TIP]
-> SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
+> SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.yml)に関するページをご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -79,14 +79,14 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
     1. **[リージョン]** で場所を選択します。 
     1. このガイドでは、 **[可用性オプション]** の設定を _[インフラストラクチャ冗長は必要ありません]_ のままにしておきます。 可用性オプションの詳細については、[可用性](../../../virtual-machines/availability.md)に関するページを参照してください。 
     1. **[イメージ]** の一覧で、_Free SQL Server License:SQL Server 2017 Developer on Windows Server 2016_ という名前のイメージを選択します。  
-    1. 仮想マシンの **[サイズ]** で **[サイズの変更]** を選択し、 **[A2 Basic]** プランを選択します。 予期しない課金を防ぐために、利用を終了したリソースは必ずクリーンアップしてください。 運用時のワークロードについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)」のマシンのサイズと構成に関する推奨事項を参照してください。
+    1. 仮想マシンの **[サイズ]** で **[サイズの変更]** を選択し、 **[A2 Basic]** プランを選択します。 予期しない課金を防ぐために、利用を終了したリソースは必ずクリーンアップしてください。 運用時のワークロードについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](./performance-guidelines-best-practices-checklist.md)」のマシンのサイズと構成に関する推奨事項を参照してください。
 
     ![インスタンスの詳細](./media/create-sql-vm-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
 > **[サイズの選択]** ウィンドウに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この見積もり料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この見積もり料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 また、「[SQL Server Azure VM の料金ガイダンス](pricing-guidance.md)」と[仮想マシンのサイズ](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
-* **[管理者アカウント]** で、ユーザー名とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
+* **[管理者アカウント]** で、ユーザー名とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。
 
    ![[Administrator account] (管理者アカウント)](./media/create-sql-vm-portal/basics-administrator-account.png)
 
@@ -285,4 +285,4 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure での SQL Server の使用に関するその他の情報については、[Azure 仮想マシンにおける SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md) に関する記事と[よく寄せられる質問](frequently-asked-questions-faq.md)に関するページを参照してください。
+Azure での SQL Server の使用に関するその他の情報については、[Azure 仮想マシンにおける SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md) に関する記事と[よく寄せられる質問](frequently-asked-questions-faq.yml)に関するページを参照してください。

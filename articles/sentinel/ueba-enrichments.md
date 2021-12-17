@@ -1,42 +1,78 @@
 ---
-title: Azure Sentinel UEBA エンリッチメント リファレンス | Microsoft Docs
-description: この記事では、Azure Sentinel のエンティティ行動分析によって生成されるエンティティ エンリッチメントを示します。
-services: sentinel
-cloud: na
-documentationcenter: na
+title: Microsoft Sentinel UEBA エンリッチメント リファレンス | Microsoft Docs
+description: この記事では、Microsoft Sentinel のエンティティ行動分析によって生成されるエンティティ エンリッチメントを示します。
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
-ms.date: 01/04/2021
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: daba8fc1f645b51dc8668c806be63744b6ae0842
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 843e1eafa02687cefddf310c467cfd9a56717f5d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97901629"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132711402"
 ---
-# <a name="azure-sentinel-ueba-enrichments-reference"></a>Azure Sentinel UEBA エンリッチメント リファレンス
+# <a name="microsoft-sentinel-ueba-enrichments-reference"></a>Microsoft Sentinel UEBA エンリッチメント リファレンス
 
-以下の表では、セキュリティ インシデントの調査の絞り込みと明確化に使用できるエンティティ エンリッチメントの一覧を示して説明します。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-最初の 2 つの表である **ユーザー分析情報** と **デバイス分析情報** には、Active Directory と Azure AD および Microsoft 脅威インテリジェンスのソースからのエンティティ情報が含まれます。
+この記事では、 **[ログ]** 内にあり、[エンティティの詳細ページ](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages)で言及される Microsoft Sentinel **BehaviorAnalytics** テーブルと、そのテーブル内のエンティティ エンリッチメント フィールドの詳細について説明します。この内容を活用することにより、セキュリティ インシデントの調査に焦点を当てて明確にすることができます。
 
-<a name="baseline-explained"></a>**アクティビティ分析情報の表** 以下にある残りの表には、Azure Sentinel のエンティティ行動分析によって作成される行動プロファイルに基づくエンティティ情報が含まれます。 アクティビティは、使用されるたびに動的にコンパイルされるベースラインに対して分析されます。 各アクティビティには、この動的なベースラインの派生元であるルックバック期間が定義されています。 この期間は、この表の「[**ベースライン**](#activity-insights-tables)」列で指定されています。
+BehaviorAnalytics テーブルに含まれる以下の 3 つの動的フィールドについて、[下の表](#entity-enrichments-dynamic-fields)で説明します。
 
-> [!NOTE] 
-> 3 つの表すべての「**エンリッチメント名**」フィールドには、2 行の情報が示されています。 1 行目には、エンリッチメントの "フレンドリ名" が **太字** で示されています。 " *(斜体とかっこ)* " で示された 2 行目は、「[**行動分析テーブル**](identify-threats-with-entity-behavior-analytics.md#data-schema)」に格納されるエンリッチメントのフィールド名です。
+[UsersInsights](#usersinsights-field) および [DevicesInsights](#devicesinsights-field) フィールドには、Active Directory または Azure AD および Microsoft 脅威インテリジェンス ソースのエンティティ情報が格納されます。
 
-## <a name="user-insights-table"></a>ユーザー分析情報の表
+[ActivityInsights](#activityinsights-field) フィールドには、Microsoft Sentinel のエンティティ行動分析によって作成される行動プロファイルに基づくエンティティ情報が格納されます。 
+
+<a name="baseline-explained"></a>ユーザー アクティビティは、使用されるたびに動的にコンパイルされるベースラインに対して分析されます。 各アクティビティには、この動的なベースラインの派生元であるルックバック期間が定義されています。 このルックバック期間は、この表の「[**ベースライン**](#activityinsights-field)」列で指定されています。
+
+> [!NOTE]
+> すべての [エンティティ エンリッチメント フィールド](#entity-enrichments-dynamic-fields)表の「**エンリッチメント名**」列には、2 行の情報が表示されます。 
+>
+> - 1 行目には、エンリッチメントの "フレンドリ名" が **太字** で示されています。
+> - " *(斜体とかっこ)* " で示された 2 行目は、「[**行動分析テーブル**](#behavioranalytics-table)」に格納されるエンリッチメントのフィールド名です。
+
+> [!IMPORTANT]
+> 記載されている機能は、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
+>
+## <a name="behavioranalytics-table"></a>BehaviorAnalytics テーブル
+
+次の表に、Microsoft Sentinel の各[エンティティの詳細ページ](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages)に表示される行動分析データを示します。
+
+| フィールド                     | 型 | 説明                                                  |
+|---------------------------|------|--------------------------------------------------------------|
+| **TenantId**              | string | テナントの一意の ID 番号。                             |
+| **SourceRecordId**        | string | EBA イベントの一意の ID 番号。                          |
+| **TimeGenerated**         | DATETIME | アクティビティの発生のタイムスタンプ。                   |
+| **TimeProcessed**         | DATETIME | EBA エンジンによるアクティビティの処理のタイムスタンプ。 |
+| **ActivityType**          | string | アクティビティの高レベルのカテゴリ。                        |
+| **ActionType**            | string | アクティビティの標準化名。                            |
+| **UserName**              | string | アクティビティを開始したユーザーのユーザー名。           |
+| **UserPrincipalName**     | string | アクティビティを開始したユーザーの完全なユーザー名。      |
+| **EventSource**           | string | 元のイベントを提供したデータ ソース。               |
+| **SourceIPAddress**       | string | アクティビティが開始された元の IP アドレス。               |
+| **SourceIPLocation** | string | アクティビティが開始された元の国 (IP アドレスからエンリッチ処理済み)。 |
+| **SourceDevice**          | string | アクティビティを開始したデバイスのホスト名。         |
+| **DestinationIPAddress**  | string | アクティビティのターゲットの IP アドレス。                   |
+| **DestinationIPLocation** | string | アクティビティのターゲットの国 (IP アドレスからエンリッチ処理済み)。 |
+| **DestinationDevice**     | string | ターゲット デバイスの名前。                                  |
+| **UsersInsights**         | 動的 | 関連するユーザーのコンテキスト エンリッチメント ([詳細は後述](#usersinsights-field))。 |
+| **DevicesInsights**       | 動的 | 関連するデバイスのコンテキスト エンリッチメント ([詳細は後述](#devicesinsights-field))。 |
+| **ActivityInsights**      | 動的 | プロファイリングに基づくアクティビティのコンテキスト分析 ([詳細は後述](#activityinsights-field))。 |
+| **InvestigationPriority** | INT | 0 から 10 の異常スコア (0 = 無害、10 = きわめて異常)。   |
+
+
+
+## <a name="entity-enrichments-dynamic-fields"></a>エンティティ エンリッチメントの動的フィールド
+
+### <a name="usersinsights-field"></a>UsersInsights フィールド
+
+次の表では、BehaviorAnalytics テーブルの **UsersInsights** 動的フィールドで使用されるエンリッチメントについて説明します。
 
 | エンリッチメント名 | 説明 | 値の例 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **Account display name** (アカウントの表示名)<br>*(AccountDisplayName)* | ユーザーのアカウント表示名。 | Admin、Hayden Cook |
 | **アカウントのドメイン**<br>*(AccountDomain)* | ユーザーのアカウント ドメイン名。 |  |
 | **Account object ID** (アカウント オブジェクト ID)<br>*(AccountObjectID)* | ユーザーのアカウント オブジェクト ID。 | a58df659-5cab-446c-9dd0-5a3af20ce1c2 |
@@ -47,10 +83,12 @@ ms.locfileid: "97901629"
 | **On premises SID** (オンプレミス SID)<br>*(OnPremisesSID)* | アクションに関連するユーザーのオンプレミスの SID。 | S-1-5-21-1112946627-1321165628-2437342228-1103 |
 |
 
-## <a name="device-insights-table"></a>デバイス分析情報の表
+### <a name="devicesinsights-field"></a>DevicesInsights フィールド
+
+次の表では、BehaviorAnalytics テーブルの **DevicesInsights** 動的フィールドで使用されるエンリッチメントについて説明します。
 
 | エンリッチメント名 | 説明 | 値の例 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **ブラウザー**<br>*(Browser)* | アクションで使用されたブラウザー。 | Microsoft Edge、Chrome |
 | **デバイス ファミリ**<br>*(DeviceFamily)* | アクションで使用されたデバイス ファミリ。 | Windows |
 | **Device type** (デバイスの種類)<br>*(DeviceType)* | アクションで使用されたクライアント デバイスの種類 | デスクトップ |
@@ -62,7 +100,9 @@ ms.locfileid: "97901629"
 | **User agent family** (ユーザー エージェント ファミリ)<br>*(UserAgentFamily)* | アクションで使用されたユーザー エージェント ファミリ。 | Chrome、Microsoft Edge、Firefox |
 |
 
-## <a name="activity-insights-tables"></a>アクティビティ分析情報の表
+### <a name="activityinsights-field"></a>ActivityInsights フィールド
+
+次の表では、BehaviorAnalytics テーブルの **ActivityInsights** 動的フィールドで使用されるエンリッチメントについて説明します。
 
 #### <a name="action-performed"></a>実行されたアクション
 
@@ -153,7 +193,7 @@ ms.locfileid: "97901629"
 
 | エンリッチメント名 | [ベースライン](#baseline-explained) (日数) | 説明 | 値の例 |
 | --- | --- | --- | --- |
-| **Last time user performed action** (ユーザーによる最後のアクションの実行)<br>*(LastTimeUserPerformedAction)* | 180 | ユーザーが同じアクションを最後に実行した日時。 | <Timestamp> |
+| **Last time user performed action** (ユーザーによる最後のアクションの実行)<br>*(LastTimeUserPerformedAction)* | 180 | ユーザーが同じアクションを最後に実行した日時。 | \<Timestamp\> |
 | **Similar action wasn't performed in the past** (過去に類似のものが実行されたことのないアクション)<br>*(SimilarActionWasn'tPerformedInThePast)* | 30 | 同じリソース プロバイダー内に、そのユーザーによって実行されたアクションはありません。 | True、False |
 | **Source IP location** (ソース IP の場所)<br>*(SourceIPLocation)* | *N/A* | アクションのソース IP から解決された国。 | [Surrey、England] |
 | **Uncommon high volume of operations** (一般的でない大量の操作)<br>*(UncommonHighVolumeOfOperations)* | 7 | ユーザーが同じプロバイダー内で類似の操作を大量に実行しました。 | True、False |
@@ -162,3 +202,71 @@ ms.locfileid: "97901629"
 | **Unusual number of devices deleted** (異常な数のデバイスの削除)<br>*(UnusualNumberOfDevicesDeleted)* | 5 | ユーザーが異常な数のデバイスを削除しました。 | True、False |
 | **Unusual number of users added to group** (異常な数のユーザーのグループへの追加)<br>*(UnusualNumberOfUsersAddedToGroup)* | 5 | ユーザーが異常な数のユーザーをグループに追加しました。 | True、False |
 |
+
+
+## <a name="identityinfo-table-public-preview"></a>IdentityInfo テーブル (パブリック プレビュー)
+
+Microsoft Sentinel ワークスペースの [UEBA を有効](enable-entity-behavior-analytics.md)にした後、Azure Active Directory のデータが、Microsoft Sentinel で使用するために Log Analytics の **IdentityInfo** テーブルに同期されます。 Azuer AD から同期されたユーザー データを分析ルールに埋め込み、ユース ケースに合うように分析を強化して、擬陽性を減らすことができます。
+
+初期同期には数日かかる可能性がありますが、データは一度で完全に同期されます。
+
+- Azure AD でユーザー プロファイルに対して行われた変更は、15 分以内に **IdentityInfo** テーブルで更新されます。
+
+- グループとロールの情報は、**IdentityInfo** テーブルと Azure AD の間で毎日同期されます。
+
+- 古いレコードが完全に更新されるように、Microsoft Sentinel では 21 日ごとに Azure AD 全体と同期し直します。
+
+- **IdentityInfo** テーブルの既定の保有期間は 30 日です。
+
+
+> [!NOTE]
+> 現在サポートされているのは組み込みロールだけです。
+>
+> 削除されたグループ (ユーザーがグループから削除された場所) についてのデータは、現在サポートされていません。
+>
+
+次の表は、Log Analytics の **IdentityInfo** テーブルに含まれているユーザー ID データを示しています。
+
+| フィールド                      | 型     | 説明                                                                                                             |
+| --------------------------- | -------- | -------------------------------------------------------- |
+| **AccountCloudSID**             | string   | アカウントの Azure AD セキュリティ識別子。       |
+| **AccountCreationTime**         | DATETIME | ユーザー アカウントが作成された日付 (UTC)。    |
+| **AccountDisplayName**          | string   | ユーザー アカウントの表示名。           |
+| **AccountDomain**               | string   | ユーザー アカウントのドメイン名。  |
+| **AccountName**                 | string   | ユーザー アカウントのユーザー名。      |
+| **AccountObjectId**             | string   | ユーザー アカウントの Azure Active Directory オブジェクト ID。           |
+| **AccountSID**                  | string   | ユーザー アカウントのオンプレミス セキュリティ識別子。      |
+| **AccountTenantId**             | string   | ユーザー アカウントの Azure Active Directory テナント ID。    |
+| **AccountUPN**                  | string   | ユーザー アカウントのユーザー プリンシパル名。     |
+| **AdditionalMailAddresses**     | 動的  | ユーザーの追加のメール アドレス。   |
+| **AssignedRoles**               | 動的  | ユーザー アカウントが割り当てられた Azure AD ロール。    |
+| **City (市)**                        | string   | ユーザー アカウントの市。   |
+| **Country (国)**                     | string   | ユーザー アカウントの国。   |
+| **DeletedDateTime**             | DATETIME | ユーザーが削除された日時。       |
+| **部門**                  | string   | ユーザー アカウントの部門。    |
+| **GivenName**                   | string   | ユーザー アカウントの名。     |
+| **GroupMembership**             | 動的  | ユーザー アカウントがメンバーになっている Azure AD グループ。      |
+| **IsAccountEnabled**            | bool     | ユーザー アカウントが Azure AD で有効になっているかどうかの表示。    |
+| **JobTitle**                    | string   | ユーザー アカウントの役職。    |
+| **MailAddress**                 | string   | ユーザー アカウントのプライマリ メール アドレス。    |
+| **マネージャー**                     | string   | ユーザー アカウントのマネージャーの別名。     |
+| **OnPremisesDistinguishedName** | string   | Azure AD の識別名 (DN)。 識別名は、コンマで接続された相対識別名 (RDN) のシーケンスです。 |
+| **電話**                       | string   | ユーザー アカウントの電話番号。       |
+| **SourceSystem**                | string   | ユーザー データの生成元のシステム。   |
+| **State**                       | string   | ユーザー アカウントの地理的な状態。  |
+| **StreetAddress**               | string   | ユーザー アカウントのオフィスの番地。    |
+| **Surname**                     | string   | ユーザーの姓名の姓。 アカウント。      |
+| **TenantId**                    | string   |          ユーザーのテナント ID。   |
+| **TimeGenerated**               | DATETIME | イベントが生成された時刻 (UTC)。       |
+| **Type**                        | string   | テーブルの名前。          |
+| **UserState**                   | string   | Azure AD におけるユーザー アカウントの現在の状態 (アクティブ、無効、休止、ロックアウト)。  |
+| **UserStateChangedOn**          | DATETIME | アカウントの状態が最後に変更された日付 (UTC)。     |
+| **UserType**                    | string   | ユーザーの種類。         |
+
+
+## <a name="next-steps"></a>次の手順
+
+このドキュメントでは、Microsoft Sentinel のエンティティ行動分析テーブルのスキーマについて説明しました。
+
+- [エンティティ行動分析](identify-threats-with-entity-behavior-analytics.md)の詳細を確認する。
+- 調査で [UEBA を使用](investigate-with-ueba.md)する。

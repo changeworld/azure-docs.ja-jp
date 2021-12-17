@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.openlocfilehash: 753d214b520affb59722bc29dbabc50c6e5968f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92991ef4b9889b0be2e887884ed46086b87ff9f3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91538723"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588886"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS の反復的アプリ設計
 
@@ -52,8 +52,6 @@ Language Understanding (LUIS) アプリは、反復を使用して最も効率�
 エンティティのスキーマは、ユーザーの発話から抽出されるデータであるエンティティに注目します。 たとえば、ユーザーが "ピザを 3 つ注文したい" と言ったとします。 抽出されるエンティティには、_3_ と _ピザ_ の 2 つがあります。 これらは注文を行うという意図を達成するために使用されます。
 
 エンティティのスキーマの場合、発話の意図は、クライアント アプリケーションにとってはあまり重要ではありません。
-
-エンティティのスキーマを編成する場合、すべての発話の例を **None** (なし) の意図に追加する方法が一般的です。
 
 ### <a name="example-of-a-mixed-schema"></a>混合スキーマの例
 

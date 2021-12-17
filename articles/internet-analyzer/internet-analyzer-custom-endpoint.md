@@ -2,17 +2,17 @@
 title: カスタム エンドポイントを作成する | Microsoft Docs
 description: この記事では、Internet Analyzer リソースを使用して測定するカスタム エンドポイントを構成する方法について説明します。
 services: internet-analyzer
-author: mattcalder
+author: KumudD
 ms.service: internet-analyzer
 ms.topic: how-to
 ms.date: 10/16/2019
-ms.author: mebeatty
-ms.openlocfilehash: 6ca71bce726f16eeacc96e10eb654bb3e21c5924
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: kumud
+ms.openlocfilehash: caf4f93dc1a9341a4dca3b7df110f263eb47fd16
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84744087"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455108"
 ---
 # <a name="measure-custom-endpoints-to-evaluate-in-your-internet-analyzer-tests"></a>Internet Analyzer テストで評価するカスタム エンドポイントを測定する 
 

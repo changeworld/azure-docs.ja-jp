@@ -4,29 +4,33 @@ titleSuffix: Azure Machine Learning
 description: 分離された Azure Virtual Network を使用して、Azure Machine Learning 推論環境をセキュリティで保護します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.author: peterlu
-author: peterclu
-ms.date: 10/23/2020
+ms.author: jhirono
+author: jhirono
+ms.date: 11/05/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 1a1a9158c06a12caaeb5702f2fdf7da3c801c143
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: df790ee9480333b806ff1903d5e81d81a83177cd
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573440"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723006"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning 推論環境をセキュリティで保護する
 
 この記事では、Azure Machine Learning で仮想ネットワークを使用して、推論環境をセキュリティで保護する方法について説明します。
 
-この記事は、Azure Machine Learning ワークフローをセキュリティで保護する手順を説明する全 5 パートからなるシリーズのパート 4 です。 まずは[パート 1:VNet の概要](how-to-network-security-overview.md)に関するページを読んで、アーキテクチャ全体を理解することを強くお勧めします。 
-
-このシリーズの他の記事は次のとおりです。
-
-[1.VNet の概要](how-to-network-security-overview.md) > [ワークスペースをセキュリティで保護する](how-to-secure-workspace-vnet.md) > [3.トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md) > **4.推論環境をセキュリティで保護する** > [5.Studio の機能を有効にする](how-to-enable-studio-virtual-network.md)
+> [!TIP]
+> この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
+>
+> * [Virtual Network の概要](how-to-network-security-overview.md)
+> * [ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
+> * [トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
+> * [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+> * [カスタム DNS を使用する](how-to-custom-dns.md)
+> * [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)
 
 この記事では、仮想ネットワークで次の推論リソースをセキュリティで保護する方法について説明します。
 > [!div class="checklist"]
@@ -48,38 +52,53 @@ ms.locfileid: "103573440"
 
     ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](../role-based-access-control/built-in-roles.md#networking)に関するページを参照してください
 
+## <a name="limitations"></a>制限事項
+
+### <a name="azure-container-instances"></a>Azure Container Instances
+
+* 仮想ネットワークで Azure Container Instances を使用する場合、仮想ネットワークは、Azure Machine Learning ワークスペースと同じリソース グループに含まれている必要があります。 それ以外の場合、仮想ネットワークは異なるリソース グループ内に配置することができます。
+* ワークスペースに __プライベート エンドポイント__ がある場合、Azure Container Instances に使用される仮想ネットワークは、ワークスペースのプライベート エンドポイントで使用されているものと同じである必要があります。
+* 仮想ネットワーク内で Azure Container Instances を使用する場合、ご使用のワークスペースの Azure Container Registry (ACR) をその仮想ネットワーク内に配置することはできません。
+
+### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+
+* ワークスペースに __プライベート エンドポイント__ がある場合、Azure Kubernetes Service クラスターは、ワークスペースと同じ Azure リージョンに存在する必要があります。
+* [パブリックの完全修飾ドメイン名 (FQDN) とプライベート AKS クラスター](../aks/private-clusters.md#create-a-private-aks-cluster-with-a-public-fqdn)を使用することは Azure Machine Learning では __サポートされていません__。
+
 <a id="aksvnet"></a>
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-仮想ネットワーク内で AKS クラスターを使用するには、次のネットワーク要件を満たす必要があります。
+> [!IMPORTANT]
+> 仮想ネットワークで AKS クラスターを使用するには、最初に「[Azure Kubernetes サービス (AKS) における高度なネットワークの構成](../aks/configure-azure-cni.md#prerequisites)」の前提条件に従います。
 
-> [!div class="checklist"]
-> * [Azure Kubernetes サービス (AKS) における高度なネットワークの構成](../aks/configure-azure-cni.md#prerequisites)に記載されている前提条件に従っている必要があります。
-> * AKS インスタンスと仮想ネットワークは同じリージョンに存在する必要があります。 仮想ネットワークでワークスペースによって使用される Azure Storage アカウントをセキュリティで保護する場合、それらもまた AKS インスタンスと同じ仮想ネットワークに存在する必要があります。
 
 仮想ネットワーク内の AKS をワークスペースに追加するには、次の手順を使用します。
 
 1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインし、お使いのサブスクリプションとワークスペースを選択します。
+1. 左側の __[Compute]\(コンピューティング\)__ を選択し、中央の __[Inference clusters]\(推論クラスター\)__ を選択して、 __[+ 新規]__ を選択します。
 
-1. 左側にある __[Compute]__ を選択します。
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-inference.png" alt-text="[推論クラスターの作成] ダイアログのスクリーンショット":::
 
-1. 中央から __[推論クラスター]__ を選択し、 __[+]__ を選択します。
+1. __[推論クラスターの作成]__ ダイアログから __[新規作成]__ を選択し、クラスターに使用する VM サイズを選択します。 最後に、 __[次へ]__ を選択します。
 
-1. __[New Inference Cluster]\(新しい推論クラスター\)__ ダイアログで、 __[ネットワーク構成]__ の下の __[詳細]__ を選択します。
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-inference-vm.png" alt-text="VM 設定のスクリーンショット":::
 
-1. このコンピューティング リソースを仮想ネットワークを使用するように構成するには、次の操作を実行します。
+1. __[Configure Settings]\(構成の設定\)__ セクションで __[Compute name]\(コンピューティング名\)__ を入力し、 __[Cluster Purpose]\(クラスターの目的\)__ 、 __[ノード数]__ 、 __[Advanced]\(詳細\)__ の順に選択してネットワークの設定を表示します。 __[仮想ネットワークの構成]__ 領域で、次の値を設定します。
 
-    1. __[リソース グループ]__ ボックスの一覧で、目的の仮想ネットワークが含まれているリソース グループを選択します。
-    1. __[仮想ネットワーク]__ ボックスの一覧で、目的のサブネットが含まれている仮想ネットワークを選択します。
-    1. __[サブネット]__ ボックスの一覧で、サブネットを選択します。
-    1. __[Kubernetes サービスのアドレス範囲]__ ボックスに、Kubernetes サービスのアドレス範囲を入力します。 このアドレス範囲は、Classless Inter-Domain Routing (CIDR) 表記の IP 範囲を使用して、クラスターで使用できる IP アドレスを定義します。 どのサブネットの IP 範囲とも重複していてはなりません (例: 10.0.0.0/16)。
-    1. __[Kubernetes DNS サービスの IP アドレス]__ ボックスに、Kubernetes DNS サービスの IP アドレスを入力します。 この IP アドレスは Kubernetes DNS サービスに割り当てられます。 Kubernetes サービスのアドレス範囲内に含まれるアドレスを指定する必要があります (例: 10.0.0.10)。
-    1. __[Docker ブリッジ アドレス]__ ボックスに、Docker ブリッジ アドレスを入力します。 この IP アドレスは Docker ブリッジに割り当てられます。 サブネットの IP 範囲または Kubernetes サービスのアドレス範囲内にすることはできません (例: 172.17.0.1/16)。
+    * 使用する __仮想ネットワーク__ を設定します。
 
-   ![Azure Machine Learning:Machine Learning コンピューティングの仮想ネットワークの設定](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
+        > [!TIP]
+        > ワークスペースがプライベート エンドポイントを使用して仮想ネットワークに接続する場合、 __[仮想ネットワーク]__ 選択フィールドが灰色表示されます。
 
-1. Web サービスとしてのモデルを AKS にデプロイすると、推論要求を処理するスコアリング エンドポイントが作成されます。 仮想ネットワークを制御する NSG グループに、スコアリング エンドポイントの IP アドレスに対して有効になっているインバウンド セキュリティ規則があることを確認します (仮想ネットワークの外部から呼び出す場合)。
+    * クラスターの作成先となる __[サブネット]__ を設定します。
+    * __[Kubernetes サービスのアドレス範囲]__ フィールドに、Kubernetes サービスのアドレス範囲を入力します。 このアドレス範囲は、Classless Inter-Domain Routing (CIDR) 表記の IP 範囲を使用して、クラスターで使用できる IP アドレスを定義します。 どのサブネットの IP 範囲とも重複していてはなりません (例: 10.0.0.0/16)。
+    * __[Kubernetes DNS サービスの IP アドレス]__ フィールドに、Kubernetes DNS サービスの IP アドレスを入力します。 この IP アドレスは Kubernetes DNS サービスに割り当てられます。 Kubernetes サービスのアドレス範囲内に含まれるアドレスを指定する必要があります (例: 10.0.0.10)。
+    * __[Docker ブリッジ アドレス]__ フィールドに、Docker ブリッジ アドレスを入力します。 この IP アドレスは Docker ブリッジに割り当てられます。 サブネットの IP 範囲または Kubernetes サービスのアドレス範囲内にすることはできません (例: 172.18.0.1/16)。
+
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-inference-settings.png" alt-text="ネットワーク設定の構成のスクリーンショット":::
+
+1. Web サービスとしてのモデルを AKS にデプロイすると、推論要求を処理するスコアリング エンドポイントが作成されます。 仮想ネットワークを制御するネットワーク セキュリティ グループ (NSG) に、スコアリング エンドポイントの IP アドレスに対して有効になっているインバウンド セキュリティ規則があることを確認します (仮想ネットワークの外部から呼び出す場合)。
 
     スコアリング エンドポイントの IP アドレスを確認するには、デプロイされたサービスのスコアリング URI を確認します。 スコアリング URI の表示の詳細については、[Web サービスとしてデプロイされたモデルを使用する](how-to-consume-web-service.md#connection-information)ことに関する記事をご覧ください。
 
@@ -154,17 +173,11 @@ AKS クラスターと仮想ネットワークの間のトラフィックを分�
 * __プライベート AKS クラスター__: この方法では、Azure Private Link を使用して、デプロイまたは管理操作用のクラスターとの通信をセキュリティで保護します。
 * __内部 AKS ロード バランサー__: この方法では、AKS へのデプロイのエンドポイントが、仮想ネットワーク内でプライベート IP を使用するように構成します。
 
-> [!WARNING]
-> 内部ロード バランサーは、kubenet を使用する AKS クラスターでは機能しません。 内部ロード バランサーとプライベート AKS クラスターを同時に使用する場合は、Azure Container Networking Interface (CNI) を使用してプライベート AKS クラスターを構成します。 詳細については、「[Azure Kubernetes Service で Azure CNI ネットワークを構成する](../aks/configure-azure-cni.md)」を参照してください。
-
 ### <a name="private-aks-cluster"></a>プライベート AKS クラスター
 
 既定では AKS クラスターには、パブリック IP アドレスを持つコントロール プレーンまたは API サーバーがあります。 プライベート AKS クラスターを作成することによって、プライベート コントロール プレーンを使用するように AKS を構成できます。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](../aks/private-clusters.md)」を参照してください。
 
 プライベート AKS クラスターを作成したら、Azure Machine Learning で使用する[仮想ネットワークにクラスターをアタッチします](how-to-create-attach-kubernetes.md)。
-
-> [!IMPORTANT]
-> プライベート リンクが有効な AKS クラスターを Azure Machine Learning と共に使用する前に、この機能を有効にするためにサポート インシデントを開始する必要があります。 詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
 
 ### <a name="internal-aks-load-balancer"></a>内部 AKS ロード バランサー
 
@@ -218,10 +231,19 @@ except:
 az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
 
-> [!IMPORTANT]
-> CLI を使用して作成できるのは、内部ロード バランサーを使用する AKS クラスターのみです。 内部ロード バランサーを使用するように既存のクラスターをアップグレードする az ml コマンドはありません。
+内部ロード バランサーを使用するように既存の AKS クラスターをアップグレードするには、次のコマンドを使用します。
 
-詳細については、[az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスを参照してください。
+```azurecli
+az ml computetarget update aks \
+                           -n myaks \
+                           --load-balancer-subnet mysubnet \
+                           --load-balancer-type InternalLoadBalancer \
+                           --workspace-name myworkspace \
+                           -g myresourcegroup
+```
+
+
+詳細については、[az ml computetarget create aks](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_aks) と [az ml computetarget update aks](/cli/azure/ml(v1)/computetarget/update#az_ml_computetarget_update_aks) のリファレンスを参照してください。
 
 ---
 
@@ -248,16 +270,7 @@ aks_target.wait_for_completion(show_output = True)
 
 ## <a name="enable-azure-container-instances-aci"></a>Azure Container Instances (ACI) を有効にする
 
-Azure Container Instances は、モデルのデプロイ時に動的に作成されます。 Azure Machine Learning で仮想ネットワーク内に ACI を作成できるようにするには、デプロイで使用されるサブネットに対して __サブネットの委任__ を有効にする必要があります。
-
-> [!WARNING]
-> 仮想ネットワークで Azure Container Instances を使用する場合、仮想ネットワークには次のことが必要です。
-> * Azure Machine Learning ワークスペースと同じリソース グループ内にあること。
-> * ワークスペースに __プライベート エンドポイント__ がある場合、Azure Container Instances に使用される仮想ネットワークは、ワークスペースのプライベート エンドポイントで使用されているものと同じである必要があります。
->
-> 仮想ネットワーク内で Azure Container Instances を使用する場合、ご使用のワークスペースの Azure Container Registry (ACR) をその仮想ネットワーク内に配置することはできません。
-
-ワークスペースに対する仮想ネットワークで ACI を使用するには、次の手順のようにします。
+Azure Container Instances は、モデルのデプロイ時に動的に作成されます。 Azure Machine Learning で仮想ネットワーク内に ACI を作成できるようにするには、デプロイで使用されるサブネットに対して __サブネットの委任__ を有効にする必要があります。 ワークスペースに対する仮想ネットワークで ACI を使用するには、次の手順のようにします。
 
 1. 仮想ネットワークでサブネットの委任を有効にするには、「[サブネットの委任を追加または削除する](../virtual-network/manage-subnet-delegation.md)」の記事に書かれている情報を使用します。 仮想ネットワークを作成するときに委任を有効にすることも、既存のネットワークに委任を追加することもできます。
 
@@ -272,11 +285,11 @@ Azure Container Instances は、モデルのデプロイ時に動的に作成さ
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事は、全 5 パートからなる仮想ネットワーク シリーズのパート 4 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
+この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
 
-* [パート 1: 仮想ネットワークの概要](how-to-network-security-overview.md)
-* [パート 2: ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
-* [パート 3: トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
-* [パート 5: スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
-
-名前の解決については、[カスタム DNS](how-to-custom-dns.md) の使用に関する記事も参照してください。
+* [Virtual Network の概要](how-to-network-security-overview.md)
+* [ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
+* [トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
+* [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+* [カスタム DNS を使用する](how-to-custom-dns.md)
+* [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)

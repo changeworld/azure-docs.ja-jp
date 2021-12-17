@@ -2,14 +2,14 @@
 author: MikeRayMSFT
 ms.service: azure-arc
 ms.topic: include
-ms.date: 09/05/2020
+ms.date: 07/30/2021
 ms.author: mikeray
-ms.openlocfilehash: 929a2775ab678d37b20865a6d6edc1cf17230b06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3634717f8715540a13167b62a7469939c9aeb84c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90931590"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733565"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -17,8 +17,10 @@ ms.locfileid: "90931590"
 
 - [クライアント ツールがインストールされていること](../articles/azure-arc/data/install-client-tools.md)
 
-   ツールには、`azdata`、Azure Data Studio、Azure CLI が含まれています。
+   Azure Data Studio と Azure CLI などのツールです。
 
-   Azure Data Studio に、データ サービスに応じて **Azure Data CLI**、**Azure Arc**、**PostgreSQL** の拡張機能をインストールする
+   Azure Data Studio には、(データ サービスに応じて) **Azure Arc** と **PostgreSQL** の拡張機能をインストールします。
+   
+   Azure CLI には、`arcdata` の拡張機能をインストールします。
 
 - [Azure Arc データ コントローラーがインストールされていること](../articles/azure-arc/data/create-data-controller.md)

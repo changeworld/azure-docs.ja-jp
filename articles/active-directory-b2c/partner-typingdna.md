@@ -3,19 +3,19 @@ title: Azure Active Directory B2C による TypingDNA
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 認証を TypingDNA と統合して、ユーザーの入力パターンに基づく ID 検証と文章校正を支援する方法について説明します。また、多要素認証を強制する ID 検証ソリューションを提供し、決済サービス指令 2 (PSD2) の SCA 要件への準拠を支援します。
 author: gargi-sinha
-manager: celestedg
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: afaac48d263082a17c7ba58996f4000366de0211
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 7c580974206a5eb4186180c997a33a5be2d02090
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256550"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035792"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して TypingDNA を構成するためのチュートリアル
 

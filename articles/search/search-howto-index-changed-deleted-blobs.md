@@ -2,22 +2,22 @@
 title: 変更および削除された BLOB
 titleSuffix: Azure Cognitive Search
 description: Azure Blob Storage からインポートする最初の検索インデックスの構築後、後続のインデックス作成では、変更または削除された BLOB のみを取得できます。 この記事では詳細について説明します。
+author: gmndrg
+ms.author: gimondra
 manager: nitinme
-author: MarkHeff
-ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 79d5583f8c9e562a0d21a91c210aa6259472661d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab13e8901d507f6499a0eeba336a3f7717795ee7
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383536"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892193"
 ---
 # <a name="change-and-deletion-detection-in-blob-indexing-azure-cognitive-search"></a>BLOB インデックス作成での変更と削除の検出 (Azure Cognitive Search)
 
-最初の検索インデックスが作成された後、以降のインデクサー ジョブでは、新規および変更されたドキュメントのみを取得することができます。 Azure Blob Storage のものである検索コンテンツの場合、スケジュールを使用してインデックス作成をトリガーすると、変更の検出が自動的に行われます。 既定では、サービスによって、BLOB の `LastModified` タイムスタンプの指定に従い、変更された BLOB のみのインデックスが再作成されます。 検索インデクサーでサポートされている他のデータ ソースとは対照的に、BLOB には常にタイムスタンプがあるため、変更検出ポリシーを手動で設定する必要がなくなります。
+最初の検索インデックスが作成された後、以降のインデクサー ジョブでは、新規および変更されたドキュメントのみを取得することができます。 検索コンテンツが Azure Blob Storage または Azure Data Lake Storage Gen2 のものである場合、スケジュールを使用してインデックス作成をトリガーすると、変更の検出が自動的に行われます。 既定では、サービスによって、BLOB の `LastModified` タイムスタンプの指定に従い、変更された BLOB のみのインデックスが再作成されます。 検索インデクサーでサポートされている他のデータ ソースとは対照的に、BLOB には常にタイムスタンプがあるため、変更検出ポリシーを手動で設定する必要がなくなります。
 
 変更の検出は指定されていますが、削除検出は指定されていません。 削除されたドキュメントを検出する場合は、必ず "論理的な削除" アプローチを使用してください。 BLOB を完全に削除すると、対応するドキュメントが Search インデックスから削除されません。
 
@@ -26,9 +26,16 @@ ms.locfileid: "100383536"
 + 次に説明する、ネイティブ BLOB の論理的な削除 (プレビュー)
 + [カスタム メタデータを使用した論理的な削除](#soft-delete-using-custom-metadata)
 
+> [!NOTE] 
+> Azure Data Lake Storage Gen2 では、ディレクトリの名前を変更できます。 ディレクトリの名前を変更しても、そのディレクトリ内の BLOB のタイムスタンプは更新されません。 その結果、インデクサーはこれらの BLOB の再インデックス作成を行いません。 ディレクトリの名前を変更した後、ディレクトリの BLOB が新しい URL を持つことから再インデックス作成を行う必要がある場合は、ディレクトリ内のすべての BLOB の `LastModified` タイムスタンプを更新する必要があります。これにより、インデクサーが将来の実行中に再インデックス作成の必要性を認識できるようになります。 Azure Blob Storage の仮想ディレクトリは変更できないため、この問題は発生しません。
+
 ## <a name="native-blob-soft-delete-preview"></a>ネイティブ BLOB の論理的な削除 (プレビュー)
 
+<<<<<<< HEAD
 この削除検出方法の場合、Cognitive Search で Azure Blob Storage の[ネイティブ BLOB の論理的な削除](../storage/blobs/soft-delete-blob-overview.md)機能を使用して、BLOB が論理的に削除された状態に移行したかどうかを判断します。 この状態の BLOB が検出されると、この情報が検索インデクサーで使用され、対応するドキュメントがインデックスから削除されます。
+=======
+この削除検出方法では、Cognitive Search で Azure Blob Storage の[ネイティブ BLOB の論理的な削除](../storage/blobs/soft-delete-blob-overview.md)機能を使用して、BLOB が論理的に削除された状態に移行したかどうかを判断します。 この状態の BLOB が検出されると、この情報が検索インデクサーで使用され、対応するドキュメントがインデックスから削除されます。
+>>>>>>> repo_sync_working_branch
 
 > [!IMPORTANT]
 > ネイティブ BLOB の論理的な削除のサポートはプレビュー段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 [REST API バージョン 2020-06-30-Preview](./search-api-preview.md) で、この機能を提供しています。 現時点では、ポータルと .NET SDK によるサポートはありません。
@@ -97,7 +104,7 @@ BLOB ストレージと Cognitive Search の両方で実行する手順はあり
     }
     ```
 
-1. インデクサーによって BLOB が処理され、インデックスからドキュメントが削除されると、Azure Blob Storage の BLOB を削除できます。
+1. インデクサーによって BLOB が処理され、インデックスからドキュメントが削除されたら、Azure Blob Storage の BLOB を削除できます。
 
 ### <a name="reindexing-undeleted-blobs-using-custom-metadata"></a>削除が取り消された BLOB のインデックスの再作成 (カスタム メタデータを使用)
 

@@ -3,20 +3,18 @@ title: 検索結果をフィルター処理する方法 - Bing Web Search API
 titleSuffix: Azure Cognitive Services
 description: "'responseFilter' クエリ パラメーターを使用すれば、Bing が応答に取り込む回答の種類 (たとえば、画像、ビデオ、ニュースなど) をフィルター処理することができます。"
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.author: scottwhi
-ms.openlocfilehash: 571314009b6f58e5c2ab6aac02cfebc82c53f42f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bc11b3f59246c736f8c099e97637c3605405924
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96351863"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625492"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>検索応答に含まれる回答をフィルタリングする  
 

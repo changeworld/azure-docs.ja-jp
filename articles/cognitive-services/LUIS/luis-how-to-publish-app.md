@@ -10,13 +10,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 01/12/2021
-ms.openlocfilehash: 8e78fc5bd49aaf2b31fdc83ced132e2a39ca83d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/28/2021
+ms.openlocfilehash: 8c006a47f6967be5387e462a2387d1b59195b685
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100558912"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430783"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>アクティブでトレーニング済みのアプリをステージング エンドポイントまたは運用環境エンドポイントに発行する
 
@@ -44,7 +44,7 @@ ms.locfileid: "100558912"
 
 ### <a name="publishing-regions"></a>公開リージョン
 
-このアプリは、 **[管理]**  ->  **[[Azure リソース]](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** ページの LUIS ポータルに追加された LUIS 予測エンドポイント リソースに関連付けられているすべてのリージョンに発行されます。
+このアプリは、 **[管理]**  ->  **[[Azure リソース]](luis-how-to-azure-subscription.md#assign-luis-resources)** ページの LUIS ポータルに追加された LUIS 予測エンドポイント リソースに関連付けられているすべてのリージョンに発行されます。
 
 たとえば、[www.luis.ai](https://www.luis.ai) で作成されたアプリの場合、**westus** と **eastus** の 2 つのリージョンで LUIS リソースを作成し、それらをリソースとしてアプリに追加すると、アプリは両方のリージョンに発行されます。 LUIS のリージョンの詳細については、[リージョン](luis-reference-regions.md)に関するページを参照してください。
 
@@ -71,9 +71,9 @@ ms.locfileid: "100558912"
 
 <a name="enable-sentiment-analysis"></a>
 
-感情分析を使用すると、LUIS を [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) と統合して、感情分析とキーフレーズ分析を提供できます。
+感情分析を使用すると、LUIS を[言語サービス](https://azure.microsoft.com/services/cognitive-services/text-analytics/)と統合して、感情分析とキーフレーズ分析を提供できます。
 
-Text Analytics キーを指定する必要はなく、Azure アカウントに対するこのサービスの課金はありません。
+言語サービスのキーを指定する必要はなく、Azure アカウントに対するこのサービスの課金はありません。
 
 センチメント データは 1 と 0 の間のスコアで、1 に近いほどポジティブなセンチメントを示し、0 に近いほどネガティブな感情を示します。 `positive`、`neutral`、`negative` のセンチメント ラベルは、サポートされているカルチャによって異なります。 現時点では、センチメント ラベルがサポートされているのは英語のみです。
 

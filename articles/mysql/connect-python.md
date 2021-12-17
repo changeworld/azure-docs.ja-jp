@@ -11,14 +11,16 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: a4391ecb7175b0e473b47cc3de43fd113795bc6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ccf84102aa48c6afe5efe24b500eeb8269db5b3
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889027"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724845"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Python を使用して Azure Database for MySQL に接続してデータを照会する
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 このクイックスタートでは、Python を使用して Azure Database for MySQL に接続します。 Mac、Ubuntu Linux、Windows の各プラットフォームから SQL ステートメントを使用して、データベース内のデータを照会、挿入、更新、削除できます。 
 
@@ -74,6 +76,19 @@ Azure portal から Azure Database for MySQL に接続するために必要な�
    
    :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="Azure Database for MySQL サーバー名 2":::
 
+## <a name="running-the-python-code-samples"></a>Python コード サンプルの実行
+
+この記事の各コード例では、次のことを行います。
+
+1. テキスト エディターで新しいファイルを作成します。
+2. ファイルにコード例を追加します。 コード内の `<mydemoserver>`、`<myadmin>`、`<mypassword>`、および `<mydatabase>` の各プレースホルダーを、実際の MySQL サーバーとデータベースの値に置き換えます。
+1. Azure Database for MySQL のサーバー上では SSL は既定で有効になっています。 ローカル環境から接続するには、[DigiCertGlobalRootG2 SSL 証明書](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)をダウンロードする必要がある場合があります。 コードの `ssl_ca` 値を、コンピューター上のこのファイルへのパスに置き換えます。
+1. *.py* 拡張子を付けてファイルをプロジェクト フォルダーに保存します (たとえば、*C:\pythonmysql\createtable.py*、 */home/username/pythonmysql/createtable.py*)。
+1. コードを実行するために、コマンド プロンプトまたは `bash` シェルを開き、ディレクトリを対象のプロジェクト フォルダー (たとえば、`cd pythonmysql`) に変更します。 `python` コマンドに続けてファイル名 (たとえば、`python createtable.py`) を入力し、Enter キーを押します。 
+   
+   > [!NOTE]
+   > Windows で *python.exe* が見つからない場合は、Python のパスを PATH 環境変数に追加するか、*python.exe* への完全パス (たとえば、`C:\python27\python.exe createtable.py`) を指定してください。
+
 ## <a name="step-1-create-a-table-and-insert-data"></a>手順 1:テーブルを作成してデータを挿入する
 
 次のコードを使用して、サーバーとデータベースに接続し、テーブルを作成した後、**INSERT** SQL ステートメントを使用してデータを読み込みます。コードによって mysql.connector ライブラリがインポートされ、以下のメソッドが使用されます。
@@ -82,25 +97,23 @@ Azure portal から Azure Database for MySQL に接続するために必要な�
 - [cursor.close()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-close.html) は、カーソルの使用が終了したときに使用されます。
 - [conn.close()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlconnection-close.html) は、接続を閉じます。
 
-> [!IMPORTANT]
-> - SSL は、既定で有効になっています。 ローカル環境から接続するには、[DigiCertGlobalRootG2 SSL 証明書](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)をダウンロードする必要がある場合があります。
-> - `<mydemoserver>`、`<myadmin>`、`<mypassword>`、および `<mydatabase>` の各プレースホルダーを、実際の MySQL サーバーとデータベースの値に置き換えます。
-
 ```python
 import mysql.connector
 from mysql.connector import errorcode
 
 # Obtain connection string information from the portal
+
 config = {
   'host':'<mydemoserver>.mysql.database.azure.com',
   'user':'<myadmin>@<mydemoserver>',
   'password':'<mypassword>',
   'database':'<mydatabase>',
   'client_flags': [mysql.connector.ClientFlag.SSL],
-  'ssl_ca': '/var/wwww/html/DigiCertGlobalRootG2.crt.pem'
+  'ssl_ca': '<path-to-SSL-cert>/DigiCertGlobalRootG2.crt.pem'
 }
 
 # Construct connection string
+
 try:
    conn = mysql.connector.connect(**config)
    print("Connection established")
@@ -146,6 +159,35 @@ else:
 このコードでは、[fetchall()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) メソッドを使用してデータ行を読み取り、結果セットをコレクション行に保持し、`for` 反復子を使用して行をループ処理します。
 
 ```python
+import mysql.connector
+from mysql.connector import errorcode
+
+# Obtain connection string information from the portal
+
+config = {
+  'host':'<mydemoserver>.mysql.database.azure.com',
+  'user':'<myadmin>@<mydemoserver>',
+  'password':'<mypassword>',
+  'database':'<mydatabase>',
+  'client_flags': [mysql.connector.ClientFlag.SSL],
+  'ssl_ca': '<path-to-SSL-cert>/DigiCertGlobalRootG2.crt.pem'
+}
+
+# Construct connection string
+
+try:
+   conn = mysql.connector.connect(**config)
+   print("Connection established")
+except mysql.connector.Error as err:
+  if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+    print("Something is wrong with the user name or password")
+  elif err.errno == errorcode.ER_BAD_DB_ERROR:
+    print("Database does not exist")
+  else:
+    print(err)
+else:
+  cursor = conn.cursor()
+
   # Read data
   cursor.execute("SELECT * FROM inventory;")
   rows = cursor.fetchall()
@@ -155,6 +197,11 @@ else:
   for row in rows:
     print("Data row = (%s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2])))
 
+  # Cleanup
+  conn.commit()
+  cursor.close()
+  conn.close()
+  print("Done.")
 ```
 
 ## <a name="step-3-update-data"></a>手順 3:データの更新
@@ -162,9 +209,44 @@ else:
 接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。 コードは mysql.connector ライブラリをインポートし、[cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) メソッドを使用して MySQL データベースに対して SQL クエリを実行します。 
 
 ```python
+import mysql.connector
+from mysql.connector import errorcode
+
+# Obtain connection string information from the portal
+
+config = {
+  'host':'<mydemoserver>.mysql.database.azure.com',
+  'user':'<myadmin>@<mydemoserver>',
+  'password':'<mypassword>',
+  'database':'<mydatabase>',
+  'client_flags': [mysql.connector.ClientFlag.SSL],
+  'ssl_ca': '<path-to-SSL-cert>/DigiCertGlobalRootG2.crt.pem'
+}
+
+# Construct connection string
+
+try:
+   conn = mysql.connector.connect(**config)
+   print("Connection established")
+except mysql.connector.Error as err:
+  if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+    print("Something is wrong with the user name or password")
+  elif err.errno == errorcode.ER_BAD_DB_ERROR:
+    print("Database does not exist")
+  else:
+    print(err)
+else:
+  cursor = conn.cursor()
+
   # Update a data row in the table
-  cursor.execute("UPDATE inventory SET quantity = %s WHERE name = %s;", (200, "banana"))
+  cursor.execute("UPDATE inventory SET quantity = %s WHERE name = %s;", (300, "apple"))
   print("Updated",cursor.rowcount,"row(s) of data.")
+
+  # Cleanup
+  conn.commit()
+  cursor.close()
+  conn.close()
+  print("Done.")
 ```
 
 ## <a name="step-4-delete-data"></a>手順 4:データの削除
@@ -172,10 +254,44 @@ else:
 接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 コードは mysql.connector ライブラリをインポートし、[cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) メソッドを使用して MySQL データベースに対して SQL クエリを実行します。 
 
 ```python
+import mysql.connector
+from mysql.connector import errorcode
+
+# Obtain connection string information from the portal
+
+config = {
+  'host':'<mydemoserver>.mysql.database.azure.com',
+  'user':'<myadmin>@<mydemoserver>',
+  'password':'<mypassword>',
+  'database':'<mydatabase>',
+  'client_flags': [mysql.connector.ClientFlag.SSL],
+  'ssl_ca': '<path-to-SSL-cert>/DigiCertGlobalRootG2.crt.pem'
+}
+
+# Construct connection string
+
+try:
+   conn = mysql.connector.connect(**config)
+   print("Connection established")
+except mysql.connector.Error as err:
+  if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+    print("Something is wrong with the user name or password")
+  elif err.errno == errorcode.ER_BAD_DB_ERROR:
+    print("Database does not exist")
+  else:
+    print(err)
+else:
+  cursor = conn.cursor()
 
   # Delete a data row in the table
   cursor.execute("DELETE FROM inventory WHERE name=%(param1)s;", {'param1':"orange"})
   print("Deleted",cursor.rowcount,"row(s) of data.")
+  
+  # Cleanup
+  conn.commit()
+  cursor.close()
+  conn.close()
+  print("Done.")  
 ```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

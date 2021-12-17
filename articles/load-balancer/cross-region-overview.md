@@ -13,32 +13,28 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 8e14b22895c4734f1efd8688a5b20c946422a080
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8b8cebfe18b52de7b904989907d587a4519c8e3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225627"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254629"
 ---
 # <a name="cross-region-load-balancer-preview"></a>リージョン間ロード バランサー (プレビュー)
 
-Azure Load Balancer では、ロード バランサーのフロントエンドに到着した受信トラフィックを、バックエンド プールのインスタンスに分配できます。
-
-Azure Standard Load Balancer では、リージョン間の負荷分散がサポートされ、次のような geo 冗長 HA シナリオを実現できます。
+Azure Standard Load Balancer では、リージョン間の負荷分散がサポートされ、次のような geo 冗長高可用性シナリオを実現できます。
 
 * 複数のリージョンから発信された受信トラフィック。
 * 次の最適なリージョンのデプロイへの[即時グローバル フェールオーバー](#regional-redundancy)。
 * [超低遅延](#ultra-low-latency)を使用した、最も近い Azure リージョンへのリージョン間の負荷分散。
 * 1 つのエンドポイントの背後で[スケールアップまたはスケールダウン](#ability-to-scale-updown-behind-a-single-endpoint)する機能。
-* [[静的 IP]](#static-ip)
+* 静的なエニーキャスト グローバル IP アドレス
 * [クライアント IP の保持](#client-ip-preservation)
 * 学習曲線のない、[既存のロード バランサーに基づく](#build-cross-region-solution-on-existing-azure-load-balancer)ソリューション
 
 > [!IMPORTANT]
 > リージョン間ロード バランサーは、現在プレビューの段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-リージョン間の負荷分散では、リージョンの標準的なロード バランサーと同等のハイ パフォーマンスと低待機時間の利点を得られます。 
 
 リージョン間ロード バランサーのフロントエンド IP 構成は静的であり、[ほとんどの Azure リージョン](#participating-regions)にわたって公開されます。
 
@@ -83,8 +79,8 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
-### <a name="static-ip"></a>静的 IP
-リージョン間ロード バランサーには静的パブリック IP が付属しています。これにより、IP アドレスを同じままにすることができます。 静的 IP の詳細については、[こちら](../virtual-network/public-ip-addresses.md#allocation-method)を参照してください
+### <a name="static-anycast-global-ip-address"></a>静的なエニーキャスト グローバル IP アドレス
+リージョン間ロード バランサーには静的パブリック IP が付属しています。これにより、IP アドレスを同じままにすることができます。 静的 IP の詳細については、[こちら](../virtual-network/ip-services/public-ip-addresses.md#ip-address-assignment)を参照してください
 
 ### <a name="client-ip-preservation"></a>クライアント IP の保持
 リージョン間ロード バランサーは、レイヤー 4 のパススルー ネットワーク ロード バランサーです。 このパススルーによって、パケットの元の IP が保持されます。  元の IP は、仮想マシン上で実行するコードで使用できます。 この保持機能により、IP アドレスに固有のロジックを適用できます。
@@ -108,7 +104,7 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 > [!NOTE]
 > リージョン間ロード バランサーまたはグローバル層のパブリック IP をデプロイできるのは、上記の 7 つのリージョンのいずれかに限られます。
 
-**参加リージョン** は、ロード バランサーのグローバル パブリック IP を使用できる場所です。 
+**参加リージョン** は、ロード バランサーのグローバル パブリック IP が公開されている場所です。
 
 ユーザーが開始したトラフィックは、Microsoft のコア ネットワークを経由して、最も近い参加リージョンに到達します。 
 
@@ -141,6 +137,8 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 
 * リージョン間 IPv6 フロントエンド IP 構成はサポートされていません。 
 
+* UDP トラフィックは、リージョン間ロード バランサーではサポートされていません。 
+
 * 現在、正常性プローブを構成することはできません。 既定の正常性プローブによって、リージョン ロード バランサーに関する可用性情報が 20 秒ごとに自動的に収集されます。 
 
 * Azure Kubernetes Service (AKS) との統合は現在使用できません。 AKS クラスターがバックエンドでデプロイされている Standard ロード バランサーを使用してリージョン間ロード バランサーをデプロイした場合、接続が切断される場合があります。
@@ -152,5 +150,5 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 ## <a name="next-steps"></a>次の手順
 
 - 「[チュートリアル:Azure portal を使用してリージョン間ロード バランサーを作成する](tutorial-cross-region-portal.md)」を参照して、リージョン間ロードバランサーを作成する。
-- 「[パブリック標準ロード バランサーを作成する](quickstart-load-balancer-standard-public-portal.md)」を参照して、標準リージョン ロード バランサーを作成する。
+- [リージョン間ロード バランサー](https://www.youtube.com/watch?v=3awUwUIv950)についてさらに詳しく学習する。
 - [Azure Load Balancer](load-balancer-overview.md) についてさらに詳しく学習する。

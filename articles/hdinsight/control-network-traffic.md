@@ -4,12 +4,12 @@ description: Azure HDInsight クラスターへのインバウンドおよびア
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 66b078e8dfa1daa100978f04283e9bba7158bddf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 78d61c1d775b2e710448283e283252b1cb85c802
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867034"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857894"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Azure HDInsight のネットワーク トラフィックを制御する
 
@@ -31,7 +31,7 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
 
 2. 自分のリージョンで HDInsight が必要とするサービス タグを特定します。 これらのサービス タグを取得するには、次の複数の方法があります。
     1. [Azure HDInsight のネットワーク セキュリティ グループ (NSG) サービス タグ](hdinsight-service-tags.md)に関するページで、公開されているサービス タグの一覧を調べます。 
-    2. この一覧に自分のリージョンが存在しない場合は、[Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用して、そのリージョンのサービス タグを検索します。
+    2. この一覧に自分のリージョンが存在しない場合は、[Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) を使用して、そのリージョンのサービス タグを検索します。
     3. この API を使用できない場合は、[サービス タグの JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードし、目的のリージョンを検索します。
 
 

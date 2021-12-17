@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery による VMware Vm と物理サーバーのディザスター リカバリー時のスケールアウト プロセス サーバーのセットアップ | Microsoft Docs
 description: この記事では、VMware Vm と物理サーバーのディザスター リカバリー時に、スケールアウト プロセス サーバーをセットアップする方法について説明します。
-author: Rajeswari-Mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/23/2019
-ms.author: ramamill
-ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 9f98b37bf45593d55f9fe90c97dfc8b924f657cd
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019144"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576726"
 ---
 # <a name="scale-with-additional-process-servers"></a>追加のプロセス サーバーによるスケール
 

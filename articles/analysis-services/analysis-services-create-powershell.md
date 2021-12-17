@@ -4,16 +4,16 @@ description: このクイックスタートでは、PowerShell を使って Azur
 author: minewiskan
 ms.author: owend
 ms.reviewer: minewiskan
-ms.date: 08/31/2020
+ms.date: 10/12/2021
 ms.topic: quickstart
 ms.service: azure-analysis-services
-ms.custom: devx-track-azurepowershell - references_regions - devx-track-azurepowershell - mode-api
-ms.openlocfilehash: f1902a7192fc2153725e2b1d1e76f23cbd1426f3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: references_regions, devx-track-azurepowershell, mode-api
+ms.openlocfilehash: 6bbf32d7a33588bdc247857a7c700599cd7acb9e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769359"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060138"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>クイック スタート: サーバーを作成する - PowerShell
 

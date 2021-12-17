@@ -1,28 +1,28 @@
 ---
-title: Windows Virtual Desktop サービスの接続に関するトラブルシューティング - Azure
-description: Windows Virtual Desktop テナント環境でサービス接続を設定するときの問題を解決する方法です。
+title: Azure Virtual Desktop サービスの接続に関するトラブルシューティング - Azure
+description: Azure Virtual Desktop テナント環境でサービス接続を設定するときの問題を解決する方法です。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 10/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 68468276546eade7c068f1aa48d3ac65fc8aadaa
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 8f87adc97039eda25b29116108069d685fd0a8bd
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445382"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767127"
 ---
-# <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop サービスの接続
+# <a name="azure-virtual-desktop-service-connections"></a>Azure Virtual Desktop サービスの接続
 
 >[!IMPORTANT]
->これは、Azure Resource Manager Windows Virtual Desktop オブジェクトを使用する Windows Virtual Desktop を対象としたコンテンツです。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[この記事](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)を参照してください。
 
-Windows Virtual Desktop クライアントの接続に関する問題を解決するには、この記事を使います。
+Azure Virtual Desktop クライアントの接続に関する問題を解決するには、この記事を使います。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 
-フィードバックを行い、製品チームや [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) のその他のアクティブなコミュニティメンバーと Windows Virtual Desktop Service について話し合うことができます。
+フィードバックを行い、製品チームや [Azure Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/bd-p/AzureVirtualDesktopForum) のその他のアクティブなコミュニティメンバーと Azure Virtual Desktop Service について話し合うことができます。
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>ユーザーが接続しても何も表示されない (フィードなし)
 
@@ -38,7 +38,7 @@ Windows Virtual Desktop クライアントの接続に関する問題を解決�
 
 3. Web クライアントを使っている場合は、キャッシュされた資格情報の問題がないことを確認します。
 
-4. ユーザーが Azure Active Directory (AD) ユーザー グループのメンバーである場合は、そのユーザー グループが配布グループではなくセキュリティ グループであることを確認します。 Windows Virtual Desktop では Azure AD 配布グループはサポートされません。
+4. ユーザーが Azure Active Directory (AD) ユーザー グループのメンバーである場合は、そのユーザー グループが配布グループではなくセキュリティ グループであることを確認します。 Azure Virtual Desktop では Azure AD 配布グループはサポートされません。
 
 ## <a name="user-loses-existing-feed-and-no-remote-resource-is-displayed-no-feed"></a>ユーザーの既存のフィードが失われ、リモート リソースが表示されない (フィードなし)
 
@@ -55,9 +55,9 @@ Windows Virtual Desktop クライアントの接続に関する問題を解決�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
-- Windows Virtual Desktop 環境を作成しているときや、Windows Virtual Desktop 環境でホスト プールを作成しているときに発生した問題を解決するには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
-- Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
-- Windows Virtual Desktop エージェントまたはセッション接続に関連する問題のトラブルシューティングについては、「[Windows Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする](troubleshoot-agent.md)」を参照してください。
-- Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
+- Azure Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
+- Azure Virtual Desktop 環境を作成しているときや、Azure Virtual Desktop 環境でホスト プールを作成しているときに発生した問題を解決するには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
+- Azure Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md) に関する記事を参照してください。
+- Azure Virtual Desktop エージェントまたはセッション接続に関連する問題のトラブルシューティングについては、「[Azure Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする](troubleshoot-agent.md)」を参照してください。
+- Azure Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Azure Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
 - トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)」を参照してください。

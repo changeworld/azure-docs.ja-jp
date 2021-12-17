@@ -2,15 +2,15 @@
 title: Azure Automation での Linux Update エージェントに関する問題のトラブルシューティング
 description: この記事では、Update Management で Linux Windows Update エージェントの問題を解決する方法について説明します。
 services: automation
-ms.date: 01/25/2021
+ms.date: 11/01/2021
 ms.topic: troubleshooting
 ms.subservice: update-management
-ms.openlocfilehash: da7c0ea670b4c4201930ce5d0f01e7bd9d9835e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99758393b3d6545d534563a67f1346f7622b56db
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100581036"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477100"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Linux Update エージェントに関する問題のトラブルシューティング
 
@@ -49,20 +49,13 @@ Azure マシンの場合は、ポータルの **[Update Agent Readiness]\(Update
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-オペレーティング システム チェックでは、Hybrid Runbook Worker が次のいずれかのオペレーティング システムを実行しているかどうかが確認されます。
-
-|オペレーティング システム  |Notes  |
-|---------|---------|
-|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための "yum" が必須です。         |
-|Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
-|SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
-|Ubuntu 14.04 LTS、16.04 LTS、および 18.04 LTS (x86/x64)      |Linux エージェントは、更新リポジトリへのアクセスが必要です。         |
+オペレーティング システム チェックでは、[サポートされるオペレーティング システム](../update-management/operating-system-requirements.md#supported-operating-systems)のいずれかが Hybrid Runbook Worker によって実行されているかどうかが確認されます。
 
 ## <a name="monitoring-agent-service-health-checks"></a>監視エージェント サービスの正常性チェック
 
 ### <a name="log-analytics-agent"></a>Log Analytics エージェント
 
-このチェックでは、Linux 用 Log Analytics エージェントがインストールされているかが確認されます。 インストールする方法については、「[Linux 用エージェントのインストール](../../azure-monitor/vm/quick-collect-linux-computer.md#install-the-agent-for-linux)」をご覧ください。
+このチェックでは、Linux 用 Log Analytics エージェントがインストールされているかが確認されます。 インストールする方法については、「[Linux 用エージェントのインストール](../../azure-monitor/vm/monitor-virtual-machine.md#agents)」をご覧ください。
 
 ### <a name="log-analytics-agent-status"></a>Log Analytics エージェントの状態
 
@@ -124,7 +117,13 @@ Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信�
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>オフライン トラブルシューティング
 
-スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 Python スクリプト [UM_Linux_Troubleshooter_Offline.py](https://github.com/Azure/updatemanagement/blob/main/UM_Linux_Troubleshooter_Offline.py) は GitHub にあります。 このスクリプトの出力例を次に示します。
+スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 Python スクリプト [UM_Linux_Troubleshooter_Offline.py](https://github.com/Azure/updatemanagement/blob/main/UM_Linux_Troubleshooter_Offline.py) は GitHub にあります。
+
+> [!NOTE]
+> 現在のバージョンのトラブルシューティング スクリプトでは、Ubuntu 20.04 はサポートされていません。
+>
+
+このスクリプトの出力例を次に示します。
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2

@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis でのデータ損失のトラブルシューティング
 description: 部分的なキーの損失、キーの有効期限、完全なキーの損失など、Azure Cache for Redis のデータ損失に関する問題を解決する方法について説明します。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 6db036752bab7b84b72a37b148eaec7aa5765ef3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02424338967d9a8bb376ba72938f30a4e217a83d
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92538597"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537445"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Azure Cache for Redis でのデータ損失のトラブルシューティング
 
@@ -121,4 +121,4 @@ Standard レベルと Premium レベルのキャッシュでは、レプリケ�
 - [Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング](cache-troubleshoot-server.md)
 - [最適なサービス レベルを選択する](cache-overview.md#choosing-the-right-tier)
 - [Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)
-- [Redis コマンドの実行方法](cache-development-faq.md#how-can-i-run-redis-commands)
+- [Redis コマンドの実行方法](cache-development-faq.yml#how-can-i-run-redis-commands-)

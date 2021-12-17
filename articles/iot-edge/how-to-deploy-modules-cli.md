@@ -2,19 +2,18 @@
 title: Azure CLI コマンド ラインからモジュールをデプロイする - Azure IoT Edge
 description: Azure CLI を Azure IoT Extension と共に使用して、デプロイ マニフェストによる構成のとおりに、IoT Edge モジュールを IoT Hub から IoT Edge デバイスにプッシュします。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: cc4308cf69ecb99fccb09a6668825397675983cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d43286be11de930e7a0d6d2887cada97dffaa274
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201144"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750792"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure CLI を使用して Azure IoT Edge モジュールをデプロイする
 

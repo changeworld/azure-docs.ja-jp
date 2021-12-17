@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: d4078d1403df01475c6055dded2bd012e97af98e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 33c4b7f00bcba89c973838c7382397c447d3464c
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557991"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204561"
 ---
 # <a name="tutorial-assess-sql-instances-for-migration-to-azure-sql"></a>チュートリアル: Azure SQL への移行のために SQL インスタンスを評価する
 
@@ -26,6 +26,8 @@ Azure への移行に取り組む過程では、オンプレミスのワーク�
 > [!NOTE]
 > チュートリアルでは、シナリオを試すための最も簡単な方法を説明し、可能な限り既定のオプションを使用します。 
 
+> [!NOTE]
+> SQL サーバーが VMware 以外のプラットフォームで実行されている場合。 [Data Migration Assistant を使用してAzure SQL Database へ移行する SQL Server データ資産の準備状態を評価します。](/sql/dma/dma-assess-sql-data-estate-to-sqldb)
 
 ## <a name="prerequisites"></a>前提条件
 

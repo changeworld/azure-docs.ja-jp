@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 05/27/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7c70e2e2d61da5a582bbb6d689c02cde7ffa992d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9cf0b5b895df6bd1a0849bb1aa5ba05c4de63fca
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010773"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439714"
 ---
 > [!IMPORTANT]
-> ゲートウェイ サブネットを使用する場合は、ゲートウェイ サブネットにネットワーク セキュリティ グループ (NSG) を関連付けないようにしてください。 このサブネットにネットワーク セキュリティ グループを関連付けると、Virtual Network ゲートウェイ (VPN、Express Route ゲートウェイ) が正常に動作しなくなることがあります。 ネットワーク セキュリティ グループの詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../articles/virtual-network/network-security-groups-overview.md)」を参照してください。
+> ゲートウェイ サブネットを使用する場合は、ゲートウェイ サブネットにネットワーク セキュリティ グループ (NSG) を関連付けないようにしてください。 このサブネットにネットワーク セキュリティ グループを関連付けると、仮想ネットワーク ゲートウェイ (VPN と Express Route ゲートウェイ) が正常に動作しなくなることがあります。 ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループの概要](../articles/virtual-network/network-security-groups-overview.md)に関するページを参照してください。
 > 
 >

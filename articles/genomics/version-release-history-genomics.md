@@ -3,18 +3,18 @@ title: バージョン リリース履歴
 titleSuffix: Microsoft Genomics
 description: 修正プログラムおよび新しい機能に関する Microsoft Genomics Python クライアントの更新のリリース履歴。
 services: genomics
-author: grhuynh
+author: vigunase
 manager: cgronlun
-ms.author: grhuynh
+ms.author: vigunase
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 20475e2cde1b42790740889cf341b3a0a0afccc0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3023f01b9a9ccbc3a56c509b1edc86885f2af41e
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "76991084"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255692"
 ---
 # <a name="version-release-history"></a>バージョン リリース履歴
 Microsoft Genomics チームは、修正プログラムおよび新しい機能のために Microsoft Genomics Python クライアントを更新します。 
@@ -27,7 +27,7 @@ Microsoft Genomics チームは、修正プログラムおよび新しい機能�
 Microsoft Genomics Python クライアントの新しいバージョンは、ほぼ年に 1 回リリースされます。 Microsoft Genomics Python クライアントの新しいバージョンがリリースされると、このページの修正プログラムと機能の一覧が更新されます。 新しいバージョンがリリースされると、以前のバージョンは少なくとも 90 日間、引き続きサポートされます。 以前のバージョンがサポートされなくなった場合は、このページで告知されます。 
 
 ### <a name="version-090"></a>バージョン 0.9.0
-バージョン 0.9.0 には、出力圧縮のサポートが含まれています。 これは、vcf または gvcf の出力で `-bgzip` に続けて `-tabix` を実行するのと同じです。 詳細については、[よく寄せられる質問](frequently-asked-questions-genomics.md)をご覧ください。 
+バージョン 0.9.0 には、出力圧縮のサポートが含まれています。 これは、vcf または gvcf の出力で `-bgzip` に続けて `-tabix` を実行するのと同じです。 詳細については、[よく寄せられる質問](frequently-asked-questions-genomics.yml)をご覧ください。 
 
 ### <a name="version-081"></a>バージョン 0.8.1
 バージョン 0.8.1 には、軽微なバグの修正が含まれています。  

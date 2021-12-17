@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:GitHub を使用してコードとしての Azure Policy を実装する
 description: このチュートリアルでは、エクスポート、GitHub アクション、および GitHub ワークフローを使用して、コードとしての Azure Policy ワークフローを実装します
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
-ms.openlocfilehash: 64957671597ad6df237f92176e10280dc45018c9
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 4bfbdf20fb0189f36832b40b1a924c5fbdc4fed9
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092757"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324704"
 ---
 # <a name="tutorial-implement-azure-policy-as-code-with-github"></a>チュートリアル:GitHub を使用してコードとしての Azure Policy を実装する
 
@@ -46,7 +46,7 @@ Azure portal からポリシー定義をエクスポートするには、次の�
    - **ディレクトリ**:Azure Policy リソースをエクスポートする "_ルート レベル フォルダー_"。 このディレクトリの下のサブフォルダーは、エクスポートされるリソースに基づいて作成されます。
 
 1. **[ポリシー]** タブで、省略記号を選択し、管理グループ、サブスクリプション、またはリソース グループの組み合わせを選択して、検索範囲を設定します。
-   
+
 1. **[Add policy definition(s)]\(ポリシー定義の追加\)** ボタンを使用して、エクスポートするオブジェクトのスコープを検索します。 開いたサイド ウィンドウ内で、エクスポートする各オブジェクトを選択します。 検索ボックスまたは種類によって選択をフィルター処理します。 エクスポートするオブジェクトをすべて選択したら、ページの下部にある **[追加]** ボタンを使用します。
 
 1. 選択した各オブジェクトについて、 _[Only Definition]\(定義のみ\)_ や _[Definition and Assignment(s)]\(定義と割り当て\)_ など、ポリシー定義の目的のエクスポート オプションを選択し ます。 次に、 **[Review + Export]\(確認 + エクスポート\)** タブまたは **[Next : Review + Export]\(次へ: 確認 + エクスポート\)** ボタンがページ下部にあるので選択します。
@@ -98,29 +98,27 @@ Azure Policy リソースは、選択した GitHub リポジトリと "_ルー�
 
 [Azure Policy Compliance Scan アクション](https://github.com/marketplace/actions/azure-policy-compliance-scan)を使用すると、1 つまたは複数のリソース、リソース グループ、またはサブスクリプションに対して [GitHub ワークフロー](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows)からオンデマンドのコンプライアンス評価スキャンをトリガーし、それらのリソースのコンプライアンスの状態に基づいてワークフロー パスを変更できます。 また、スケジュールされた時刻に実行するようにワークフローを構成して、最新のコンプライアンスの状態を都合のよいタイミングで取得することもできます。 必要に応じて、この GitHub アクションでは、スキャンされたリソースのコンプライアンスの状態に関するレポートを生成して、詳細な分析やアーカイブを行うこともできます。
 
-次の例では、サブスクリプションに対してコンプライアンス スキャンを実行します。 
+次の例では、サブスクリプションに対してコンプライアンス スキャンを実行します。
 
 ```yaml
 
 on:
-  schedule:    
+  schedule:
     - cron:  '0 8 * * *'  # runs every morning 8am
 jobs:
-  assess-policy-compliance:    
+  assess-policy-compliance:
     runs-on: ubuntu-latest
-    steps:         
+    steps:
     - name: Login to Azure
       uses: azure/login@v1
       with:
-        creds: ${{secrets.AZURE_CREDENTIALS}} 
+        creds: ${{secrets.AZURE_CREDENTIALS}}
 
-    
     - name: Check for resource compliance
       uses: azure/policy-compliance-scan@v0
       with:
         scopes: |
           /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-
 ```
 
 ## <a name="review"></a>確認

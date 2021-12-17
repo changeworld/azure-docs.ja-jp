@@ -8,24 +8,21 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/14/2020
-ms.openlocfilehash: bc809cf02b827b7498890cb7d929c44bd360ab53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/30/2021
+ms.openlocfilehash: 73fc178efb78ca1c305a65a154c60f3c49778df9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99094711"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727140"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>チュートリアル:Azure AD グループにディレクトリ閲覧者ロールを割り当てて、ロールの割り当てを管理する
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-> [!NOTE]
-> この記事のグループへの **ディレクトリ閲覧者** ロールの割り当ては、**パブリック プレビュー** 段階にあります。 
-
 この記事では、Azure Active Directory (Azure AD) でグループを作成し、そのグループに [**ディレクトリ閲覧者**](../../active-directory/roles/permissions-reference.md#directory-readers)ロールを割り当てる方法について説明します。 ディレクトリ閲覧者アクセス許可により、グループの所有者は、[Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、および [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) の[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) など、グループにメンバーを追加できます。 これにより、[全体管理者](../../active-directory/roles/permissions-reference.md#global-administrator)または[特権ロール管理者](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)が、テナント内の各 Azure SQL 論理サーバー ID にディレクトリ閲覧者ロールを直接割り当てる必要がなくなります。
 
-このチュートリアルでは、「[クラウド グループを使用して Azure Active Directory でロールの割り当てを管理する (プレビュー)](../../active-directory/roles/groups-concept.md)」で紹介されている機能を使用します。 
+このチュートリアルでは、「[Azure AD グループを使用してロールの割り当てを管理する](../../active-directory/roles/groups-concept.md)」で紹介されている機能を使用します。 
 
 ディレクトリ閲覧者ロールを Azure SQL の Azure AD グループに割り当てる利点の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
 
@@ -41,7 +38,7 @@ ms.locfileid: "99094711"
 1. この初期設定には、[全体管理者](../../active-directory/roles/permissions-reference.md#global-administrator)または[特権ロール管理者](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)のアクセス許可を持つユーザーが必要です。
 1. 特権ユーザーに [Azure portal](https://portal.azure.com) にサインインしてもらいます。
 1. **Azure Active Directory** リソースに移動します。 **[マネージド]** で、 **[グループ]** に移動します。 新しいグループを作成するために、 **[新しいグループ]** を選択します。
-1. グループの種類として **[セキュリティ]** を選択し、残りのフィールドに入力します。 **[グループに Azure AD ロールを割り当てることができる (プレビュー)]** 設定が **[はい]** に切り替わっていることを確認します。 次に、Azure AD の **ディレクトリ閲覧者** ロールをグループに割り当てます。
+1. グループの種類として **[セキュリティ]** を選択し、残りのフィールドに入力します。 **[グループに Azure AD ロールを割り当てることができる]** 設定が **[はい]** に切り替わっていることを確認します。 次に、Azure AD の **ディレクトリ閲覧者** ロールをグループに割り当てます。
 1. 作成されたグループに、Azure AD ユーザーを所有者として割り当てます。 グループの所有者には、Azure AD 管理者ロールが割り当てられていない通常の AD ユーザーを指定できます。 所有者は、SQL Database、SQL Managed Instance、または Azure Synapse を管理しているユーザーである必要があります。
 
    :::image type="content" source="media/authentication-aad-directory-readers-role/new-group.png" alt-text="aad-new-group":::
@@ -55,7 +52,7 @@ ms.locfileid: "99094711"
 
 作成されたグループを確認および管理するには、Azure portal の **[グループ]** ペインに戻り、対象のグループ名を検索します。 グループを選択したら、 **[管理]** 設定の **[所有者]** および **[メンバー]** メニューで追加の所有者とメンバーを追加できます。 また、グループの **割り当てられたロール** を確認することもできます。
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="[メンバー]、[所有者]、[割り当てられたロール (プレビュー)] の設定メニューを開くリンクが強調表示されている [グループ] ウィンドウのスクリーンショット。":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="[メンバー]、[所有者]、[割り当てられたロール] の設定メニューを開くリンクが強調表示されている [グループ] ウィンドウのスクリーンショット。":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>Azure SQL マネージド ID をグループに追加する
 
@@ -94,15 +91,15 @@ SQL Managed Instance では、[マネージド インスタンスの Azure AD �
 ## <a name="directory-readers-role-assignment-using-powershell"></a>PowerShell を使用したディレクトリ閲覧者ロールの割り当て
 
 > [!IMPORTANT]
-> [全体管理者](../../active-directory/roles/permissions-reference.md#global-administrator)または[特権ロール管理者](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)は、これらの初期手順を実行する必要があります。 PowerShell に加えて、Azure AD には、[Azure AD でロールの割り当てが可能なグループを作成する](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api)ための Microsoft Graph API が用意されています。
+> [全体管理者](../../active-directory/roles/permissions-reference.md#global-administrator)または[特権ロール管理者](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)は、これらの初期手順を実行する必要があります。 PowerShell に加えて、Azure AD には、[Azure AD でロールの割り当てが可能なグループを作成する](../../active-directory/roles/groups-create-eligible.md#microsoft-graph-api)ための Microsoft Graph API が用意されています。
 
-1. 次のコマンドを使用して、Azure AD プレビュー PowerShell モジュールをダウンロードします。 場合によっては、管理者として PowerShell を実行する必要があります。
+1. 次のコマンドを使用して、Azure AD PowerShell モジュールをダウンロードします。 場合によっては、管理者として PowerShell を実行する必要があります。
 
     ```powershell
-    Install-Module azureadpreview
-    Import-Module azureadpreview
+    Install-Module azuread
+    Import-Module azuread
     #To verify that the module is ready to use, use the following command:
-    Get-Module azureadpreview
+    Get-Module azuread
     ```
 
 1. Azure AD テナントに接続します。

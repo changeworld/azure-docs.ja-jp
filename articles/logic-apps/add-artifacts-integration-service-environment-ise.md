@@ -3,19 +3,19 @@ title: 統合サービス環境にリソースを追加する
 description: ロジック アプリ、統合アカウント、カスタム コネクタ、およびマネージド コネクタを統合サービス環境 (ISE) に追加する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: azla
 ms.topic: conceptual
-ms.date: 02/28/2020
-ms.openlocfilehash: 147247c663311cfb3e05a986c6fb2bffbb41158b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 02/28/2021
+ms.openlocfilehash: 5cb857c7aec7246c3b6b763e39c6f36c4de24db1
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92675206"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111986081"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) にリソースを追加する
 
-[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成したら、ロジック アプリ、統合アカウント、コネクタなどのリソースを追加して、Azure 仮想ネットワーク内のリソースにアクセスできるようにします。 たとえば、ISE の作成後に使用可能になる ISE マネージド コネクタは、ロジック アプリ デザイナーに自動的には表示されません。 これらの ISE コネクタを使用するには、手動で[これらのコネクタを追加して ISE にデプロイ](#add-ise-connectors-environment)し、ロジック アプリ デザイナーに表示されるようにする必要があります。
+[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成したら、**Consumption** ロジック アプリ、統合アカウント、コネクタなどのリソースを追加して、Azure 仮想ネットワーク内のリソースにアクセスできるようにします。 たとえば、ISE の作成後に使用可能になる ISE マネージド コネクタは、ロジック アプリ デザイナーに自動的には表示されません。 これらの ISE コネクタを使用するには、手動で[これらのコネクタを追加して ISE にデプロイ](#add-ise-connectors-environment)し、ロジック アプリ デザイナーに表示されるようにする必要があります。
 
 > [!IMPORTANT]
 > ISE でロジック アプリと統合アカウントを連携させるには、両方とも "*同じ ISE*" を場所として使用する必要があります。
@@ -32,7 +32,7 @@ ms.locfileid: "92675206"
 
 ## <a name="create-logic-apps"></a>ロジック アプリを作成する
 
-統合サービス環境 (ISE) で実行されるロジック アプリを構築するには、次の手順を実行します。
+統合サービス環境 (ISE) で実行されるロジック アプリを開発するには、次の手順のようにします。
 
 1. ISE をまだ開いていない場合は、見つけて開きます。 ISE メニューの **[設定]** で、 **[ロジック アプリ]**  >  **[追加]** の順に選択します。
 
@@ -40,14 +40,16 @@ ms.locfileid: "92675206"
 
 1. 作成するロジック アプリに関する情報を指定します。次に例を示します。
 
-   ![[ロジック アプリ] のスクリーンショット。[作成] ウィンドウにサンプル情報が入力されています。](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
+   ![情報の例が入力されている [ロジック アプリの作成] ペインを示すスクリーンショット。](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
-   | **名前** | はい | 作成するロジック アプリの名前 |
+   | **ロジック アプリ名** | はい | 作成するロジック アプリの名前 |
    | **サブスクリプション** | はい | 使用する Azure サブスクリプションの名前。 |
-   | **リソース グループ** | はい | 使用する Azure リソース グループ (新規または既存) の名前 |
-   | **場所** | はい | **[統合サービス環境]** で、使用する ISE を選択します (まだ選択していない場合)。 <p><p> **重要**:統合アカウントでロジック アプリを使用するには、どちらも同じ ISE を使用する必要があります。 |
+   | **リソース グループ** | はい | 使用する新規または既存の Azure リソース グループの名前 |
+   | **[リージョン]** | はい | ロジック アプリの Azure リージョン。後で選択する ISE の場所と一致します |
+   | **統合サービス環境に関連付ける*** | はい | 使用する ISE を選択できるようにするには、このオプションを選択します。 |
+   | **統合サービス環境** | はい | 一覧から、使用する ISE を選択します (まだ選択されていない場合)。 <p><p>**重要**: ロジック アプリで統合アカウントを使用するには、どちらも同じ ISE を使用する必要があります。 |
    ||||
 
 1. 完了したら **[作成]** を選択します。
@@ -80,7 +82,7 @@ ISE を使用する統合アカウントを作成するには、次の手順を�
    | **サブスクリプション** | はい | 使用する Azure サブスクリプションの名前 |
    | **リソース グループ** | はい | 使用する Azure リソース グループ (新規または既存) の名前 |
    | **価格レベル** | はい | 統合アカウントに使用する価格レベル |
-   | **場所** | はい | **[統合サービス環境]** で、ロジック アプリが使用するものと同じ ISE を選択します (まだ選択していない場合)。 <p><p> **重要**:ロジック アプリで統合アカウントを使用するには、どちらも同じ ISE を使用する必要があります。 |
+   | **場所** | はい | 一覧から、 **[統合サービス環境]** で、ロジック アプリが使用するものと同じ ISE を選択します (まだ選択していない場合)。 <p><p>**重要**: ロジック アプリで統合アカウントを使用するには、どちらも同じ ISE を使用する必要があります。 |
    ||||
 
 1. 完了したら **[作成]** を選択します。
@@ -115,7 +117,7 @@ ISE を作成すると、マネージド ISE コネクタはロジック アプ�
 
    ![マネージド コネクタを表示する](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. **[新しいマネージド コネクタの追加]** ウィンドウの **[コネクタの検索]** ボックスの一覧を開きます。 使用したいが、まだ ISE にデプロイされていない ISE コネクタを選択します。 **［作成］** を選択します
+1. **[新しいマネージド コネクタの追加]** ウィンドウの **[コネクタの検索]** ボックスの一覧を開きます。 使用したいが、まだ ISE にデプロイされていない ISE コネクタを見つけて選択します。 完了したら **[作成]** を選択します。
 
    ![ISE にデプロイする ISE コネクタを選択します](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 

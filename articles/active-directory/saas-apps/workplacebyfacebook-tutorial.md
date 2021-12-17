@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 3f66da38d3303b47c2a9b6cefeee19af6bf64ec1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 477dcc9935185861f551f89e7376f705c29ccb29
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725509"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285084"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workplace by Facebook の統合
 
@@ -41,9 +41,9 @@ ms.locfileid: "98725509"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Workplace by Facebook では、**SP** によって開始される SSO がサポートされます
-* Workplace by Facebook では、**Just-In-Time プロビジョニング** がサポートされます
-* Workplace by Facebook では、**[自動ユーザー プロビジョニング](workplacebyfacebook-provisioning-tutorial.md)** がサポートされます
+* Workplace by Facebook では、**SP** Initiated SSO がサポートされます。
+* Workplace by Facebook では、**Just-In-Time プロビジョニング** がサポートされます。
+* Workplace by Facebook では、 **[自動ユーザー プロビジョニング](workplace-by-facebook-provisioning-tutorial.md)** がサポートされます。
 * Workplace by Facebook Mobile アプリケーションを Azure AD と共に構成して SSO を有効にできるようになりました。 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 
@@ -83,11 +83,11 @@ Workplace by Facebook に対する Azure AD SSO を構成してテストする�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. (ワークプレースに受信者 URL として表示される) **[サインオン URL]** ボックスに、`https://.workplace.com/work/saml.php` のパターンを使用して URL を入力します。
+    a. (ワークプレースに受信者 URL として表示される) **[サインオン URL]** ボックスに、`https://.facebook.com/work/saml.php` のパターンを使用して URL を入力します。
 
-    b. (ワークプレースにオーディエンス URL として表示される) **[識別子 (エンティティ ID)]** ボックスに、`https://www.workplace.com/company/` のパターンを使用して URL を入力します。
+    b. (ワークプレースにオーディエンス URL として表示される) **[識別子 (エンティティ ID)]** ボックスに、`https://www.facebook.com/company/` のパターンを使用して URL を入力します。
 
-    c. (ワークプレースに Assertion Consumer Service URL として表示される) **[応答 URL]** ボックスに、`https://.workplace.com/work/saml.php` のパターンを使用して URL を入力します。
+    c. (ワークプレースに Assertion Consumer Service URL として表示される) **[応答 URL]** ボックスに、`https://.facebook.com/work/saml.php` のパターンを使用して URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 Workplace コミュニティの適切な値については、Workplace Company Dashboard の認証ページを参照してください。この点については、このチュートリアルの中で後述します。
@@ -139,19 +139,21 @@ Workplace by Facebook に対する Azure AD SSO を構成してテストする�
     > [!NOTE]
     > SAML 認証プロセスの一環として、Azure AD にパラメーターを渡すために Workplace が最大サイズ 2.5 KBのクエリ文字列を使用する可能性があります。
 
-1. 左側のナビゲーション パネルで **[Security]\(セキュリティ\)**  >  **[Authentication]\(認証\)** タブに移動します。
+1. **[管理者パネル]**  >  **[セキュリティ]**  >  **[認証]** タブに移動します。
 
-    ![管理パネル](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
+    ![管理パネル](./media/workplacebyfacebook-tutorial/security.png)
 
     a. **[Single-sign on (SSO)]\(シングル サインオン (SSO)\)** オプションをオンにします。
+
+    b. 新規ユーザーの場合は、規定値として **[SSO]** を選択します。
     
-    b. **[+Add new SSO Provider]\(+ 新しい SSO プロバイダーの追加\)** をクリックします。
+    c. **[+Add new SSO Provider]\(+ 新しい SSO プロバイダーの追加\)** をクリックします。
     > [!NOTE]
     > [Password login]\(パスワード ログイン\) チェック ボックスもオンにしてください。 証明書のロールオーバー中に管理自身がロックアウトされてしまうことを防ぐために、そのような場合のログイン目的でこのオプションが必要になることがあります。
 
-1. **[認証]** タブで **[シングル サインオン (SSO)]** を選択し、次の手順を実行します。
+1. **[シングル サインオン(SSO) の設定]** ポップアップ ウィンドウで、次の手順に従います。
 
-    ![[認証] タブ](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
+    ![[認証] タブ](./media/workplacebyfacebook-tutorial/single-sign-on-setup.png)
 
     a. **[Name of the SSO Provider]\(SSO プロバイダーの名前\)** に、SSO インスタンスの名前を入力します (例: Azureadsso)。
 
@@ -159,7 +161,7 @@ Workplace by Facebook に対する Azure AD SSO を構成してテストする�
 
     c. **[SAML Issuer URL]\(SAML 発行者の URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
-    d. Azure Portal からダウンロードした **Base-64 でエンコードされた証明書** をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[SAML Certificate]\(SAML 証明書\)** ボックスに貼り付けます。
+    d. Azure portal からダウンロードした **証明書(Base64)** をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[SAML 証明書]** テキストボックスに貼り付けます。
 
     e. インスタンスの **[Audience URL]\(対象 URL\)** をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子 (エンティティ ID)]** ボックスに貼り付けます。
 
@@ -205,7 +207,7 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 
 * Workplace by Facebook のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Workplace by Facebook] タイルをクリックすると、Workplace by Facebook のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Workplace by Facebook] タイルをクリックすると、Workplace by Facebook のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="test-sso-for-workplace-by-facebook-mobile"></a>Workplace by Facebook (モバイル) の SSO をテストする
 
@@ -231,4 +233,4 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 
 ## <a name="next-steps"></a>次のステップ
 
-Workplace by Facebook を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Workplace by Facebook を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

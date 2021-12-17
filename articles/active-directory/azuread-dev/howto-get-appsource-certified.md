@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: d9a4da6fe65fda07609c7399518fa324017ea44c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 020b9f61af668e1e0e29a3a93ee5cdc5d8803e81
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649347"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440292"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する方法
 
@@ -39,7 +39,7 @@ OpenID Connect を使用してアプリケーションを Azure AD と統合す�
 アプリケーションでマルチテナント機能を有効にするには、次の手順を実行します。
 1. [Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) のアプリケーション登録の情報で `Multi-Tenanted` プロパティを `Yes` に設定します。 既定で Azure portal で作成されたアプリケーションは、 *[シングル テナント](#single-tenant-applications)* として構成されます。
 1. `common` エンドポイントに要求を送信するようにコードを更新します。 これを行うには、エンドポイントを `https://login.microsoftonline.com/{yourtenant}` から `https://login.microsoftonline.com/common*` に更新します。
-1. ASP. NET などの一部のプラットフォームでは、コードを更新して複数の発行者を許可する必要もあります。
+1. ASP.NET などの一部のプラットフォームでは、コードを更新して複数の発行者を許可する必要もあります。
 
 マルチテナントの詳細については、[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (Azure AD) ユーザーがサインインできるようにする方法](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)に関するページを参照してください。
 
@@ -47,7 +47,7 @@ OpenID Connect を使用してアプリケーションを Azure AD と統合す�
 
 *シングル テナント アプリケーション* は、定義された Azure AD インスタンスのユーザーからのサインインのみを許可するアプリケーションです。 外部ユーザー (他の組織の職場または学校のアカウント、あるいは個人のアカウントを含む) は、アプリケーションが登録されている Azure AD インスタンスに各ユーザーをゲスト アカウントとして追加したあと、シングルテナント アプリケーションにサインインできるようになります。 
 
-[Azure AD B2B コラボレーション](../external-identities/what-is-b2b.md)を使用して Azure AD にゲスト アカウントとしてユーザーを追加できます。また、この処理は[プログラム](../../active-directory-b2c/code-samples.md)で実行できます。 B2B を使用する場合、ユーザーは、サインインに招待が必要ないセルフサービス ポータルを作成できます。 詳細については、「[Azure AD B2B コラボレーションのサインアップ用のセルフ サービス ポータル](../external-identities/self-service-portal.md)」を参照してください。
+[Azure AD B2B コラボレーション](../external-identities/what-is-b2b.md)を使用して Azure AD にゲスト アカウントとしてユーザーを追加できます。また、この処理は[プログラム](../../active-directory-b2c/integrate-with-app-code-samples.md)で実行できます。 B2B を使用する場合、ユーザーは、サインインに招待が必要ないセルフサービス ポータルを作成できます。 詳細については、「[Azure AD B2B コラボレーションのサインアップ用のセルフ サービス ポータル](../external-identities/self-service-portal.md)」を参照してください。
 
 シングルテナント アプリケーションで *お問い合わせ* エクスペリエンスを有効にすることはできますが、AppSource でお勧めしているシングルクリック/無料試用版のエクスペリエンスを有効にする場合は、代わりにアプリケーションのマルチテナント機能を有効にします。
 

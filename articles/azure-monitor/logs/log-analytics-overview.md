@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: d83cc4045f09ed0f704a0d61c6b303406835eb44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bcdfb35fc8bf854746b4bde0ea3af5f8cadc7989
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052298"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217793"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Azure Monitor の Log Analytics の概要
 Log Analytics は、Azure portal のツールであり、Azure Monitor ログのデータでのログ クエリの編集と実行に使用します。 一連のレコードを返す単純なクエリを作成後、Log Analytics の機能を使用して、それらのレコードを並べ替え、フィルター、および分析できます。 また、より高度なクエリを作成して統計分析を実行し、結果をグラフで視覚化して特定の傾向を識別することもできます。 クエリの結果を対話的に操作する場合でも、ログ クエリ アラートやブックなどの他の Azure Monitor の機能で使用する場合でも、クエリ結果の書き込みとテストのためのツールとして Log Analytics を使用します。 
@@ -26,7 +26,9 @@ Azure portal の **[Azure Monitor]** メニューの **[ログ]** から Log Ana
 
 [![Log Analytics の起動](media/log-analytics-overview/start-log-analytics.png)](media/log-analytics-overview/start-log-analytics.png#lightbox)
 
-Log Analytics を起動すると、最初に表示されるのは、[クエリの例](../logs/example-queries.md)を含むダイアログ ボックスです。 これらはソリューション別に分類されており、特定の要件に一致するクエリを参照または検索できます。 まさに必要としている処理を行うものを見つけたり、エディターに読み込んだり、必要に応じて変更したりできます。 クエリの例を参照することは実際、独自のクエリを記述する方法を学ぶのに最適です。 もちろん、空のスクリプトからクエリを自分で作成する場合は、クエリの例は閉じてかまいません。 画面上部にある **[クエリ]** をクリックするだけで、クエリの例を元に戻すことができます。
+Log Analytics を起動すると、最初に表示されるのは、[クエリの例](../logs/queries.md)を含むダイアログ ボックスです。 これらはソリューション別に分類されており、特定の要件に一致するクエリを参照または検索できます。 ちょうど必要なものが見つかるかもしれませんし、そうでなければ、どれか 1 つをロードし、必要に応じてエディタで修正することもできます。 クエリの例を参照することは実際、独自のクエリを記述する方法を学ぶのに最適です。 
+
+もちろん、空のスクリプトからクエリを自分で作成する場合は、クエリの例は閉じてかまいません。 画面上部にある **[クエリ]** をクリックするだけで、クエリの例を元に戻すことができます。
 
 ## <a name="log-analytics-interface"></a>Log Analytics のインターフェイス
 次の図は、Log Analytics のさまざまなコンポーネントを示しています。

@@ -1,15 +1,15 @@
 ---
 title: Visual Studio を使用して関数を Azure Storage に接続する
 description: Visual Studio を使用して、出力バインドを追加して C# クラス ライブラリ関数を Azure Storage に接続する方法を説明します。
-ms.date: 07/22/2019
+ms.date: 05/30/2021
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 635392212027c73e5aa954eb671be31228796a0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b5d6e4919db9fcf41eea8704878d10606833658
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96185132"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829552"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Visual Studio を使用して関数を Azure Storage に接続する
 
@@ -33,7 +33,7 @@ ms.locfileid: "96185132"
 
 1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。 
 
-1. **[アクション]** で **[Azure App Service の設定を編集する]** を選択します。 
+1. **[ホスティング]** の下の **[発行]** タブで、3 つのドット ( **...** ) を展開し、 **[Azure App Service の設定を管理する]** を選択します。 
 
     ![アプリケーション設定を編集する](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
 
@@ -49,9 +49,15 @@ Queue storage の出力バインドを使用しているため、このプロジ
 
 1. コンソールで次の [Install-Package](/nuget/tools/ps-ref-install-package) コマンドを実行して、ストレージ拡張機能をインストールします。
 
-    ```Command
-    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.6
-    ````
+    # <a name="in-process"></a>[インプロセス](#tab/in-process) 
+    ```bash
+    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage 
+    ```
+    # <a name="isolated-process"></a>[分離プロセス](#tab/isolated-process)
+    ```bash
+    Install-Package Microsoft.Azure.Functions.Worker.Extensions.Storage.Queues -IncludePrerelease
+    ```
+    ---
 
 これで、Storage の出力バインドをプロジェクトに追加できるようになります。
 

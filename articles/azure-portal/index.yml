@@ -1,68 +1,55 @@
 ### YamlMime:Landing
 title: Azure Portal のドキュメント
-summary: Azure Portal は、コマンドライン ツールに代えて使用できる、Web ベースの統合コンソールです。 Azure Portal を使用して、ご自分の Azure サブスクリプションを管理できます。 簡単な Web アプリから複雑なクラウド デプロイまで、すべてを構築、管理、監視することができます。 リソースを整理して表示するカスタム ダッシュボードを作成したり、最適なエクスペリエンスを提供するアクセシビリティ オプションを構成したりできます。
+summary: Azure portal は、コマンドライン ツールに代えて使用できる、Web ベースの統合コンソールです。 Azure Portal を使用して、ご自分の Azure サブスクリプションを管理できます。 簡単な Web アプリから複雑なクラウド デプロイまで、すべてを構築、管理、監視することができます。 リソースを整理して表示するカスタム ダッシュボードを作成したり、最適なエクスペリエンスを提供するアクセシビリティ オプションを構成したりできます。
 metadata:
   title: Azure Portal のドキュメント
   description: Azure Portal の Web ベース コンソールを使用して自分の Azure サブスクリプションとリソースを管理する方法について説明します。 Azure Portal は、コマンドライン ツールの代わりに使用できます。
   services: Azure portal
   ms.topic: landing-page
+  ms.service: azure
   ms.collection: collection
-  ms.date: 08/05/2020
-  ms.openlocfilehash: c1617f295a101ae645743d60fdbe82a09d936ea2
-  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+  ms.date: 03/15/2021
+  ms.openlocfilehash: 05adb8aa5c131b59340ddf30a0907b1871f92af1
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/07/2020
-  ms.locfileid: "96749013"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253850"
 landingContent:
-- title: Azure Portal について
+- title: Azure portal について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Portal とは
+    - text: Azure portal とは
       url: azure-portal-overview.md
+    - text: Azure Quickstart Center を使用したオンボード
+      url: azure-portal-quickstart-center.md
     - text: サポートされているブラウザーとデバイス
       url: azure-portal-supported-browsers-devices.md
-- title: Azure Portal のカスタマイズ
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: ポータルの基本設定を設定する
-      url: set-preferences.md
-    - text: カスタム ダッシュボードの作成と共有
-      url: azure-portal-dashboards.md
-    - text: ご自分のお気に入りの管理
-      url: azure-portal-add-remove-sort-favorites.md
-- title: Azure Portal へのアクセスの管理
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Azure Portal の URL をセーフリストに追加する
-      url: azure-portal-safelist-urls.md
-    - text: ダッシュボードの Azure ロールベースのアクセス制御
-      url: azure-portal-dashboard-share-access.md
-  - linkListType: learn
-    links:
-    - text: Azure でのリソースの管理
-      url: /learn/paths/manage-resources-in-azure/
-    - text: Azure ロールベースのアクセス制御 (Azure RBAC) を使用した Azure リソースのセキュリティ保護
-      url: /learn//modules/secure-azure-resources-with-rbac/
 - title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Azure Quickstart Center を使用したオンボード
-      url: azure-portal-quickstart-center.md
+    - text: ポータルで VM を作成する
+      url: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - text: ダッシュボードを作成する - Azure CLI
+      url: quickstart-portal-dashboard-azure-cli.md
+    - text: ダッシュボードを作成する - Azure PowerShell
+      url: quickstart-portal-dashboard-powershell.md
+    - text: ダッシュボードを作成する - Resource Manager テンプレート
+      url: quick-create-template.md
   - linkListType: how-to-guide
     links:
-    - text: Azure Portal の使い方に関するビデオ シリーズ
+    - text: Azure portal の使い方に関するビデオ シリーズ
       url: azure-portal-video-series.md
-  - linkListType: learn
+- title: サポート リクエストの作成と管理
+  linkLists:
+  - linkListType: how-to-guide
     links:
-    - text: Azure 基礎
-      url: /learn/paths/azure-fundamentals/
-    - text: クラウドの概念 - クラウド コンピューティングの原則
-      url: /learn/modules/principles-cloud-computing/
+    - text: Azure サポート要求を作成する
+      url: supportability/how-to-create-azure-support-request.md
+    - text: Azure サポート リクエストを管理する
+      url: supportability/how-to-manage-azure-support-request.md
 - title: ユーザー アクセシビリティ オプション
   linkLists:
   - linkListType: reference
@@ -73,11 +60,29 @@ landingContent:
     links:
     - text: ハイ コントラストを有効にする
       url: set-preferences.md#choose-a-theme-or-enable-high-contrast
-- title: サポート リクエストの作成と管理
+- title: Azure Portal へのアクセスの管理
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure portal の URL をセーフリストに追加する
+      url: azure-portal-safelist-urls.md
+    - text: ダッシュボードの Azure ロールベースのアクセス制御
+      url: azure-portal-dashboard-share-access.md
+  - linkListType: learn
+    links:
+    - text: Azure でのリソースの管理
+      url: /learn/paths/manage-resources-in-azure/
+    - text: Azure ロールベースのアクセス制御 (Azure RBAC) でリソースをセキュリティ保護する
+      url: /learn/modules/secure-azure-resources-with-rbac
+- title: Azure Portal のカスタマイズ
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure サポート要求を作成する
-      url: ../azure-portal/supportability/how-to-create-azure-support-request.md
-    - text: リージョンまたは SKU のサブスクリプションに関する問題のトラブルシューティング
-      url: ../azure-portal/supportability/sku-series-unavailable.md
+    - text: Azure portal の設定を管理する
+      url: set-preferences.md
+    - text: リソース情報の表示とフィルター処理
+      url: manage-filter-resource-views.md
+    - text: ダッシュボードを作成する - Azure portal UI
+      url: azure-portal-dashboards.md
+    - text: お気に入りの追加、削除、並べ替え
+      url: azure-portal-add-remove-sort-favorites.md

@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 04/02/2021
+ms.date: 10/26/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: cfb42b82943f03c3633ff69662ab841bf587ede4
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 83fd6bd8d0baaed3fce91ed7e704f9c2f44484bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221859"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031729"
 ---
 # <a name="tutorial-clean-up-resources"></a>チュートリアル:リソースをクリーンアップする
 

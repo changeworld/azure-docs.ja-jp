@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/06/2020
-ms.openlocfilehash: 59f81103e72be6c0f1b629981fdb53c8467000a9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2fd44eb0eca6986111a8300bdd4f48bda611d08d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037423"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569604"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor のコンテナー監視ソリューション
 
@@ -18,15 +18,20 @@ ms.locfileid: "102037423"
 
 この記事では、Docker と Windows のコンテナー ホストを 1 か所で表示して管理できる、Azure Monitor のコンテナー監視ソリューションを設定して使用する方法について説明します。 Docker は、IT インフラストラクチャへのソフトウェアのデプロイを自動化するコンテナーを作成するために使用されるソフトウェア仮想化システムです。
 
+> [!IMPORTANT]
+> Container Monitoring ソリューションは段階的に廃止します。Kubernetes 環境のモニターには、[Azure Monitor Container 分析情報](container-insights-onboard.md)の使用をお勧めします
+
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 このソリューションは、どのコンテナーが実行中か、何のコンテナー イメージが実行中か、コンテナーがどこで実行中かを表示します。 コンテナーで使用されるコマンドを示す詳細な監査情報を確認できます。 また、Docker または Windows ホストをリモートで確認しなくても、一元化されたログを表示および検索して、コンテナーのトラブルシューティングを行うことができます。 ホストで余分なリソースを使用しているコンテナーや、ノイズが大きいコンテナーを特定できます。 また、コンテナーについて、CPU、メモリ、ストレージ、ネットワークの使用量とパフォーマンスに関する情報を一元的に確認できます。 Windows を実行しているコンピューターでは、Windows Server、Hyper-V、Docker の各コンテナーのログを一元化して比較できます。 このソリューションは、次のコンテナー オーケストレーターをサポートしています。
 
 - Docker Swarm
 - DC/OS
-- Kubernetes
 - Service Fabric
-- Red Hat OpenShift
+
+Kubernetes と Red Hat OpenShift のモニターには、Azure Monitor Container 分析情報の使用をお勧めします。
+- AKS ([AKS で Container 分析情報を設定する](container-insights-enable-existing-clusters.md))
+- Red Hat OpenShift ([Azure Arc を使用して Container 分析情報を設定する](container-insights-enable-arc-enabled-clusters.md))
 
 [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) にデプロイされたコンテナーがある場合は、[Service Fabric ソリューション](../../service-fabric/service-fabric-diagnostics-oms-setup.md)とこのソリューションの両方を有効にして、クラスターイベントの監視を含めることをお勧めします。 Service Fabric ソリューションを有効にする前に、[Service Fabric ソリューションの使用](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md)に関する記事を確認して、提供される内容とその使用方法を理解してください。
 
@@ -95,7 +100,7 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
 
 2. Log Analytics エージェントを使って Docker をインストールし､使用します｡ ご使用のオペレーティング システムと Docker Orchestrator に基づいて、次のメソッドを使用してエージェントを構成できます。
    - スタンドアロン ホストの場合
-     - サポートされている Linux オペレーティング システムでは、Docker をインストールして実行し、[Log Analytics エージェント for Linux](../vm/quick-collect-linux-computer.md) をインストールして構成します。  
+     - サポートされている Linux オペレーティング システムでは、Docker をインストールして実行し、[Log Analytics エージェント for Linux](../vm/monitor-virtual-machine.md) をインストールして構成します。  
      - CoreOS で、Log Analytics エージェント for Linux を実行することはできません。 代わりに、コンテナー化されたバージョンの Log Analytics エージェント Linux を実行できます。 Azure Government Cloud のコンテナーで作業をしている場合は、CoreOS を含む Linux コンテナー ホストまたは CoreOS を含む Azure Government Linux コンテナー ホストに関するセクションを参照してください。
      - Windows Server 2016 および Windows 10 では、Docker エンジンとクライアントをインストールした後、エージェントを接続して情報を収集し、Azure Monitor に送信します。 Windows 環境をご利用の場合は、「[Windows コンテナー ホストをインストールして構成する](#install-and-configure-windows-container-hosts)」を確認します。
    - Docker の複数ホストのオーケストレーションの場合
@@ -111,7 +116,7 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
 Windows を実行しているコンピューターに Docker エンジンをインストールして構成する方法の詳細については、「[Windows 上の Docker エンジン](/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 
 > [!IMPORTANT]
-> Docker は、コンテナー ホストに [Log Analytics エージェント for Linux](../vm/quick-collect-linux-computer.md) をインストールする **前** に起動しておく必要があります。 Docker をインストールした後で Log Analytics エージェント for Linux をインストールしている場合は、エージェントをインストールし直す必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
+> Docker は、コンテナー ホストに [Log Analytics エージェント for Linux](../vm/monitor-virtual-machine.md) をインストールする **前** に起動しておく必要があります。 Docker をインストールした後で Log Analytics エージェント for Linux をインストールしている場合は、エージェントをインストールし直す必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux コンテナー ホストをインストールして構成する
 
@@ -126,7 +131,7 @@ Docker をインストールした後で、コンテナー ホストの次の設
 監視するコンテナーを起動します。 次の例に変更を加えて使用してください。
 
 ```
-sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
+sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always mcr.microsoft.com/azuremonitor/containerinsights/ciprod:microsoft-oms-latest
 ```
 
 **CoreOS を含むすべての Azure Government Linux コンテナー ホスト**
@@ -134,12 +139,12 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 監視するコンテナーを起動します。 次の例に変更を加えて使用してください。
 
 ```
-sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
+sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always mcr.microsoft.com/azuremonitor/containerinsights/ciprod:microsoft-oms-latest
 ```
 
 **インストール済みの Linux エージェントからコンテナー内のエージェントの使用への切り替え**
 
-直接インストールしたエージェントを過去に使用したことがあり、代わりにコンテナーで実行されているエージェントを使用したい場合は、まず Log Analytics エージェント for Linux を削除する必要があります。 Log Analytics エージェント for Linux を正しくアンインストール方法については、「[Log Analytics エージェント for Linux のアンインストール](../vm/quick-collect-linux-computer.md)」をご覧ください。  
+直接インストールしたエージェントを過去に使用したことがあり、代わりにコンテナーで実行されているエージェントを使用したい場合は、まず Log Analytics エージェント for Linux を削除する必要があります。 Log Analytics エージェント for Linux を正しくアンインストール方法については、「[Log Analytics エージェント for Linux のアンインストール](../vm/monitor-virtual-machine.md)」をご覧ください。  
 
 #### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>Log Analytics エージェント for Docker Swarm を構成する
 
@@ -148,7 +153,7 @@ Docker Swarm で、Log Analytics エージェントをグローバル サービ�
 - マスター ノードで、次を実行します。
 
     ```
-    sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --mount type=bind,source=/var/lib/docker/containers,destination=/var/lib/docker/containers -e WSID="<WORKSPACE ID>" -e KEY="<PRIMARY KEY>" -p 25225:25225 -p 25224:25224/udp  --restart-condition=on-failure microsoft/oms
+    sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --mount type=bind,source=/var/lib/docker/containers,destination=/var/lib/docker/containers -e WSID="<WORKSPACE ID>" -e KEY="<PRIMARY KEY>" -p 25225:25225 -p 25224:25224/udp  --restart-condition=on-failure mcr.microsoft.com/azuremonitor/containerinsights/ciprod:microsoft-oms-latest
     ```
 
 ##### <a name="secure-secrets-for-docker-swarm"></a>Docker Swarm 用のシークレットを保護する
@@ -177,15 +182,15 @@ Docker Swarm の場合、ワークスペース ID と主キーのシークレッ
 3. 次のコマンドを実行して、コンテナー化された Log Analytics エージェントにシークレットをマウントします。
 
     ```
-    sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --mount type=bind,source=/var/lib/docker/containers,destination=/var/lib/docker/containers --secret source=WSID,target=WSID --secret source=KEY,target=KEY  -p 25225:25225 -p 25224:25224/udp --restart-condition=on-failure microsoft/oms
+    sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --mount type=bind,source=/var/lib/docker/containers,destination=/var/lib/docker/containers --secret source=WSID,target=WSID --secret source=KEY,target=KEY  -p 25225:25225 -p 25224:25224/udp --restart-condition=on-failure mcr.microsoft.com/azuremonitor/containerinsights/ciprod:microsoft-oms-latest
     ```
 
 #### <a name="configure-a-log-analytics-agent-for-red-hat-openshift"></a>Log Analytics エージェント for Red Hat OpenShift を構成する
 
 Red Hat OpenShift に Log Analytics エージェントを追加してコンテナーの監視データの収集を開始するには、次の 3 通りの方法があります｡
 
-* OpenShift の各ノードに直接 [Log Analytics エージェント for Linux をインストールする](../vm/quick-collect-linux-computer.md)  
-* Azure 内に存在する OpenShift の各ノードで [Log Analytics VM 拡張機能を有効にする](../vm/quick-collect-azurevm.md)  
+* OpenShift の各ノードに直接 [Log Analytics エージェント for Linux をインストールする](../vm/monitor-virtual-machine.md)  
+* Azure 内に存在する OpenShift の各ノードで [Log Analytics VM 拡張機能を有効にする](../vm/monitor-virtual-machine.md)  
 * Log Analytics エージェントを OpenShift デーモン セットとしてインストールする  
 
 このセクションでは、Log Analytics エージェントを OpenShift デーモン セットとしてインストールするために必要な手順を説明します。  
@@ -214,7 +219,7 @@ Red Hat OpenShift に Log Analytics エージェントを追加してコンテ�
     ```
     [ocpadmin@khm-0 ~]$ oc describe ds oms  
     Name:           oms  
-    Image(s):       microsoft/oms  
+    Image(s):       mcr.microsoft.com/azuremonitor/containerinsights/ciprod:microsoft-oms-latest  
     Selector:       name=omsagent  
     Node-Selector:  zone=default  
     Labels:         agentVersion=1.4.0-12  
@@ -278,7 +283,7 @@ Log Analytics エージェント デーモン セットの yaml ファイルを�
     ```
     [ocpadmin@khocp-master-0 ~]$ oc describe ds oms  
     Name:           oms  
-    Image(s):       microsoft/oms  
+    Image(s):       mcr.microsoft.com/azuremonitor/containerinsights/ciprod:microsoft-oms-latest  
     Selector:       name=omsagent  
     Node-Selector:  zone=default  
     Labels:         agentVersion=1.4.0-12  
@@ -508,9 +513,9 @@ Windows コンテナーで使用する Docker デーモン構成の詳細につ�
 
 #### <a name="install-windows-agents"></a>Windows エージェントのインストール
 
-Windows および Hyper-V コンテナーの監視を有効にするには、コンテナー ホストである Windows コンピューターに Microsoft Monitoring Agent (MMA) をインストールします。 Windows を実行しているオンプレミス環境のコンピューターの場合は、[Windows コンピューターの Azure Monitor への接続](../agents/agent-windows.md)に関するページを参照してください。 Azure で実行されている仮想マシンの場合は、[仮想マシン拡張機能](../vm/quick-collect-azurevm.md)を使用して Azure Monitor に接続します。
+Windows および Hyper-V コンテナーの監視を有効にするには、コンテナー ホストである Windows コンピューターに Microsoft Monitoring Agent (MMA) をインストールします。 Windows を実行しているオンプレミス環境のコンピューターの場合は、[Windows コンピューターの Azure Monitor への接続](../agents/agent-windows.md)に関するページを参照してください。 Azure で実行されている仮想マシンの場合は、[仮想マシン拡張機能](../vm/monitor-virtual-machine.md)を使用して Azure Monitor に接続します。
 
-Service Fabric で実行されている Windows コンテナーを監視できます。 ただし、現在 Service Fabric でサポートされているのは、[Azure で実行される仮想マシン](../vm/quick-collect-azurevm.md)と[オンプレミス環境で Windows を実行するコンピューター](../agents/agent-windows.md)のみです。
+Service Fabric で実行されている Windows コンテナーを監視できます。 ただし、現在 Service Fabric でサポートされているのは、[Azure で実行される仮想マシン](../vm/monitor-virtual-machine.md)と[オンプレミス環境で Windows を実行するコンピューター](../agents/agent-windows.md)のみです。
 
 Windows でコンテナー監視ソリューションが正しく設定されていることを確認できます。 管理パックが正常にダウンロードされているかどうかを確認するには、*ContainerManagement.xxx* を探します。 ファイルは C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs フォルダーにあります。
 
@@ -526,9 +531,9 @@ Azure ポータルから *[ソリューション ギャラリー]* に移動し�
 
 データは、次のエージェントの種類によって 3 分ごとに収集されます。
 
-- [Log Analytics エージェント for Linux](../vm/quick-collect-linux-computer.md)
+- [Log Analytics エージェント for Linux](../vm/monitor-virtual-machine.md)
 - [Windows エージェント](../agents/agent-windows.md)
-- [Log Analytics VM 拡張機能](../vm/quick-collect-azurevm.md)
+- [Log Analytics VM 拡張機能](../vm/monitor-virtual-machine.md)
 
 ### <a name="container-records"></a>コンテナー レコード
 
@@ -639,4 +644,3 @@ Log Analytics が開き、コンテナーの状態に関する情報が表示さ
 ## <a name="next-steps"></a>次のステップ
 
 [ログをクエリ](../logs/log-query-overview.md)して、詳細なコンテナー データ レコードを確認します。
-

@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: f480f7821ea3443c76c551f45ac74d136f417060
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 9f62afe8a8f1c5c9f05a335ae049b3f2a39763d4
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277302"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388624"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -57,7 +57,7 @@ Media Services では、[ダイナミック パッケージ](encode-dynamic-pack
 
 ![パススルー ライブ イベントからのビデオおよびオーディオ フィードがどのように取り込まれ処理されるかを示す図。](./media/live-streaming/pass-through.svg)
 
-パススルー **ライブ イベント** を使用する場合は、オンプレミス ライブ エンコーダーを活用して、マルチ ビットレート ビデオ ストリームを生成し、(RTMP または Fragmented MP4 入力プロトコルを使用して) ライブ イベントへの投稿フィードとして送信します。 その後、ライブ イベントは、追加のコード変換なしでダイナミック パッケージャー (ストリーミング エンドポイント) への受信ビデオ ストリームを通過します。 このようなパススルー ライブ イベントは、長時間実行されるライブ ストリームや 24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 
+パススルー **ライブ イベント** (基本的または標準) を使用する場合は、オンプレミス ライブ エンコーダーを活用して、マルチ ビットレート ビデオ ストリームを生成し、(RTMP または Fragmented MP4 入力プロトコルを使用して) ライブ イベントへの投稿フィードとして送信します。 その後、ライブ イベントは、追加のコード変換なしでダイナミック パッケージャー (ストリーミング エンドポイント) への受信ビデオ ストリームを通過します。 このようなパススルー ライブ イベントは、長時間実行されるライブ ストリームや 24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 
 
 ### <a name="live-encoding"></a>ライブ エンコード  
 
@@ -117,7 +117,8 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
 - [ライブ イベントの種類の機能の比較](live-event-types-comparison-reference.md)
 - [状態と課金](live-event-states-billing-concept.md)
 - [待機時間](live-event-latency-reference.md)
+- [クォータと制限](limits-quotas-constraints-reference.md)
 
-## <a name="live-streaming-questions"></a>ライブ ストリーミングの質問
+## <a name="live-streaming-faq"></a>ライブ ストリーミングの FAQ
 
-[ライブ ストリーミングの質問](questions-collection.md#live-streaming)に関する記事を参照してください。
+[FAQ のライブ ストリーミングの質問](frequently-asked-questions.yml)に関するページを参照してください。

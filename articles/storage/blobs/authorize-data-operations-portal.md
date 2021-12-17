@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 06/08/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a12936f8f9f84dacfab4850253df665ae7758be1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 35ea4317b78a9f732d095d9f024d7465ebd1828e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102613250"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615702"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Azure portal で BLOB データへのアクセスの承認方法を選択する
 
-[Azure portal](https://portal.azure.com) を使用して BLOB データにアクセスするときに、ポータルでは内部的に Azure Storage への要求が発行されます。 Azure Storage への要求は、Azure AD アカウントまたはストレージ アカウント アクセス キーのいずれかを使用して承認できます。 ポータルでは、どの方法を使用しているかを示し、適切なアクセス許可がある場合は、それら 2 つを切り替えることができます。  
+[Azure portal](https://portal.azure.com) を使用して BLOB データにアクセスするときに、ポータルでは内部的に Azure Storage への要求が発行されます。 Azure Storage への要求は、Azure AD アカウントまたはストレージ アカウント アクセス キーのいずれかを使用して承認できます。 ポータルでは、どの方法を使用しているかを示し、適切なアクセス許可がある場合は、それら 2 つを切り替えることができます。
 
 また、Azure portal で個々の BLOB アップロード操作を承認する方法を指定することもできます。 既定では、ユーザーが BLOB アップロード操作を承認するために既に使用している任意の方法がポータルによって使用されますが、BLOB をアップロードするときにこの設定を変更できます。
 
@@ -30,11 +30,12 @@ Azure portal で BLOB データへのアクセスを承認する方法に応じ�
 
 ### <a name="use-the-account-access-key"></a>アカウント アクセス キーを使用する
 
-アカウント アクセス キーを使用して BLOB データにアクセスするには、Azure RBAC アクション **Microsoft.Storage/storageAccounts/listkeys/action** を含む Azure ロールが割り当てられている必要があります。 この Azure ロールは、組み込みロールまたはカスタム ロールのどちらでも構いません。 **Microsoft.Storage/storageAccounts/listkeys/action** をサポートする組み込みロールには、次が含まれます。
+アカウント アクセス キーを使用して BLOB データにアクセスするには、Azure RBAC アクション **Microsoft.Storage/storageAccounts/listkeys/action** を含む Azure ロールが割り当てられている必要があります。 この Azure ロールは、組み込みロールまたはカスタム ロールのどちらでも構いません。 **Microsoft.Storage/storageAccounts/listkeys/action** をサポートする組み込みロールには、権限が最小のものから最大のものの順に、次のものが含まれます。
 
-- Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール
-- Azure Resource Manager の[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロール
-- [Storage Account の共同作成者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)ロール
+- [閲覧者とデータ アクセス](../../role-based-access-control/built-in-roles.md#reader-and-data-access) ロール
+- [Storage Account の共同作成者ロール](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+- Azure Resource Manager の[共同作成者ロール](../../role-based-access-control/built-in-roles.md#contributor)
+- Azure Resource Manager の[所有者ロール](../../role-based-access-control/built-in-roles.md#owner)
 
 Azure portal で BLOB データにアクセスしようとすると、ポータルではまず **Microsoft.Storage/storageAccounts/listkeys/action** を含むロールがお客様に割り当てられているかどうかが確認されます。 このアクションを持つロールが割り当てられている場合、ポータルでは BLOB データにアクセスするためにアカウント キーが使用されます。 このアクションを持つロールが割り当てられていない場合、ポータルは、Azure AD アカウントを使用してデータへのアクセスを試みます。
 
@@ -48,20 +49,16 @@ Azure portal で BLOB データにアクセスしようとすると、ポータ�
 
 Azure AD アカウントを使用して、Azure portal から BLOB データにアクセスするには、次のステートメントが両方とも自分に当てはまる必要があります。
 
-- Azure Resource Manager の[リーダー](../../role-based-access-control/built-in-roles.md#reader)ロールが、少なくとも、ストレージ アカウント以上のレベルを範囲として割り当てられている。 **リーダー** 役割は最も制限の厳しいアクセス許可を付与しますが、ストレージ アカウントの管理リソースへのアクセス権を付与する別の Azure Resource Manager ロールも受け入れることができます。
 - BLOB データへのアクセスを提供する組み込みロールまたはカスタム ロールのいずれかが割り当てられている。
+- Azure Resource Manager の[リーダー](../../role-based-access-control/built-in-roles.md#reader)ロールが、少なくとも、ストレージ アカウント以上のレベルを範囲として割り当てられている。 **リーダー** 役割は最も制限の厳しいアクセス許可を付与しますが、ストレージ アカウントの管理リソースへのアクセス権を付与する別の Azure Resource Manager ロールも受け入れることができます。
 
-**リーダー** ロールの割り当てまたは別の Azure Resource Manager ロールの割り当てが必要であるため、ユーザーは Azure portal でストレージ アカウントの管理リソースを表示したり移動したりできます。 BLOB データへのアクセスを許可する Azure ロールでは、ストレージ アカウントの管理リソースへのアクセスは許可されません。 ポータルで BLOB データにアクセスするためには、ユーザーにはストレージ アカウント リソースを移動する許可が必要です。 この要件に関する詳細については、「[ポータルへのアクセス用の閲覧者ロールの割り当て](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access)」を参照してください。
+Azure Resource Manager **閲覧者** ロールを持つユーザーは、ストレージ アカウントのリソースを見ることはできますが、変更することはできません。 これは Azure Storage 内のデータに読み取りアクセス許可を提供しませんが、アカウント管理リソースに対してのみです。 ユーザーが Azure portal 内の BLOB コンテナーに移動できるようにするには、**閲覧者** ロールが必要です。
 
-BLOB データへのアクセスをサポートする組み込みロールには、次が含まれます。
-
-- [ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner):Azure Data Lake Storage Gen2 の POSIX アクセス制御の管理。
-- [ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor):blob に対する読み取り/書き込み/削除アクセス許可。
-- [ストレージ BLOB データ閲覧者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader):blob の読み取り専用アクセス許可。
+BLOB データへのアクセスをサポートする組み込みロールの詳細については、「[Azure Active Directory を使用して BLOB へのアクセスを承認する](authorize-access-azure-active-directory.md)」をご覧ください。
 
 カスタム ロールは、組み込みロールによって提供される同じアクセス許可のさまざまな組み合わせをサポートできます。 Azure カスタム ロールを作成する方法の詳細については、「[Azure のカスタム ロール](../../role-based-access-control/custom-roles.md)」と「[Azure リソースのロール定義の概要](../../role-based-access-control/role-definitions.md)」を参照してください。
 
-> [!IMPORTANT]
+> [!NOTE]
 > Azure portal の Storage Explorer のプレビュー バージョンでは、BLOB データを表示および変更するための Azure AD 資格情報の使用はサポートされていません。 Azure portal の Storage Explorer では、データは常にアカウント キーを使用してアクセスされます。 Azure portal で Storage Explorer を使用するには、**Microsoft. Storage/storageAccounts/listkeys/action** を含むロールが割り当てられている必要があります。
 
 ## <a name="navigate-to-blobs-in-the-azure-portal"></a>Azure portal で BLOB に移動する
@@ -113,7 +110,5 @@ BLOB アップロード操作を承認する方法を指定するには、次の
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを認証する](../common/storage-auth-aad.md)
-- [Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-portal.md)
-- [Azure CLI を使用して BLOB およびキュー データにアクセスするための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-cli.md)
-- [Azure PowerShell モジュールを使用して BLOB およびキュー データにアクセスするための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-powershell.md)
+- [Azure Storage 内のデータへのアクセスを認可する](../common/authorize-data-access.md)
+- [BLOB データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)

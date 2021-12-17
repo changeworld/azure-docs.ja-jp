@@ -2,23 +2,26 @@
 title: 'クイックスタート: Language Understanding (LUIS) SDK クライアント ライブラリと REST API'
 description: LUIS SDK クライアント ライブラリと REST API を使用して LUIS アプリを作成し、クエリを実行します。
 ms.topic: quickstart
-ms.date: 03/29/2021
+ms.date: 10/20/2021
 ms.service: cognitive-services
 ms.author: aahi
 manager: nitinme
 ms.subservice: language-understanding
 author: aahill
 keywords: Azure, 人工知能, AI, 自然言語処理, NLP, LUIS, Azure LUIS, 自然言語理解, AI チャットボット, チャットボット メーカー, 自然言語の理解
-ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020, ignite-fall-2021
 zone_pivot_groups: programming-languages-set-luis
-ms.openlocfilehash: ca45266ce4b8ca784c3d54aafb80a66efaf2a1da
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c98bbd885bb2646ff32c856aecc219cae326d01c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278917"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043872"
 ---
 # <a name="quickstart-language-understanding-luis-client-libraries-and-rest-api"></a>クイックスタート: Language Understanding (LUIS) クライアント ライブラリと REST API
+
+> [!NOTE]
+> 新しいバージョンの Language Understanding 機能が、Azure Cognitive Service for Language の一部として使用できるようになりました。 詳しくは、[Azure Cognitive Service for Language のドキュメント](../language-service/index.yml)参照してください。 Language Service 内の言語理解機能については、「[Conversational Language Understanding](../language-service/conversational-language-understanding/overview.md)」、「[カスタム固有表現認識](../language-service/custom-named-entity-recognition/overview.md)」、「[カスタム分類](../language-service/custom-classification/overview.md)」を参照してください。
 
 C#、Python、または JavaScript を使用したこのクイックスタートでは、LUIS SDK クライアント ライブラリを使用して Azure LUIS 人工知能 (AI) アプリを作成し、クエリを実行します。 また、cURL を使用して、REST API で要求を送信することもできます。
 

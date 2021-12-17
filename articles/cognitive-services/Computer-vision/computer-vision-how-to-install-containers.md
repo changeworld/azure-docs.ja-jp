@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/09/2021
+ms.date: 10/14/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: オンプレミス、OCR、Docker、コンテナー
-ms.openlocfilehash: 1b4af5dddf8878118bc5f222532cc9e2d0f9dd66
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 8692ebd01c794165fc93e1aaaae912b33a4c1b52
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308796"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062778"
 ---
 # <a name="install-read-ocr-docker-containers"></a>Read OCR Docker コンテナーをインストールする
 
@@ -26,6 +26,9 @@ ms.locfileid: "107308796"
 コンテナーを使用すると、独自の環境で Computer Vision API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Computer Vision コンテナーをダウンロード、インストール、実行する方法について説明します。
 
 *Read* OCR コンテナーを使用すると、JPEG、PNG、BMP、PDF、TIFF の各ファイル形式をサポートするイメージとドキュメントから、印刷されたテキストおよび手書きのテキストを抽出できます。 詳細については、[Read API 攻略ガイド](Vision-API-How-to-Topics/call-read-api.md)に関するページを参照してください。
+
+## <a name="whats-new"></a>新機能
+Read コンテナーの既存のユーザーは、122 の言語をサポートし、パフォーマンスと AI が全体的に強化された、新しい `3.2-model-2021-09-30-preview` バージョンの Read コンテナーを利用できます。 [ダウンロードの手順](#docker-pull-for-the-read-ocr-container)に従って作業を開始してください。
 
 ## <a name="read-32-container"></a>Read 3.2 コンテナー
 
@@ -49,7 +52,7 @@ Read 3.2 OCR コンテナーは、次のものを備えています。
 
 |必須|目的|
 |--|--|
-|Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
+|Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/install/#server) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
 |Computer Vision リソース |コンテナーを使用するためには、以下が必要です。<br><br>Azure **Computer Vision** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
 
@@ -88,12 +91,19 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |-----------|------------|
-| Read 2.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
+| Read 3.2 model-2021-09-30-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-model-2021-09-30-preview` |
 | Read 3.2 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2` |
+| Read 2.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
 
 ### <a name="docker-pull-for-the-read-ocr-container"></a>Read OCR コンテナー用の Docker pull
+
+最新のプレビューについては、以下を参照してください。
+
+```bash
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-model-2021-09-30-preview
+```
 
 # <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
@@ -124,6 +134,12 @@ docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 
 `docker run` コマンドの[例](computer-vision-resource-container-config.md#example-docker-run-commands)を利用できます。
 
+最新のプレビューでは、3.2 パスを次のように置き換えます。
+
+```
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-model-2021-09-30-preview
+```
+
 # <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
 ```bash
@@ -134,12 +150,22 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-このコマンドでは次のことが行われます。
+このコマンドは、次の操作を行います。
 
 * コンテナー イメージから Read OCR コンテナーを実行します。
 * 8 つの CPU コアと 18 ギガバイト (GB) のメモリを割り当てます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
+
+また、環境変数を使用してコンテナーを実行することもできます。
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+--env Eula=accept \
+--env Billing={ENDPOINT_URI} \
+--env ApiKey={API_KEY} \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2
+```
 
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 
@@ -158,6 +184,15 @@ ApiKey={API_KEY}
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
+また、環境変数を使用してコンテナーを実行することもできます。
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+--env Eula=accept \
+--env Billing={ENDPOINT_URI} \
+--env ApiKey={API_KEY} \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
+```
 ---
 
 
@@ -180,11 +215,15 @@ ApiKey={API_KEY}
 
 <!--  ## Validate container is running -->
 
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+[!INCLUDE [Container API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="query-the-containers-prediction-endpoint"></a>コンテナーの予測エンドポイントに対するクエリの実行
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
+
+最新のプレビューについては、以下を参照してください。
+
+3\.2 と同じ Swagger パスを使用しますが、5000 番ポートで 3.2 を既にデプロイしている場合は別のポートを使用します。
 
 # <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
@@ -198,6 +237,7 @@ ApiKey={API_KEY}
 
 ### <a name="asynchronous-read"></a>非同期読み取り
 
+最新のプレビューでは、追加の `"modelVersion": "2021-09-30-preview"` を除いて、すべてが 3.2 と同じです。
 
 # <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
@@ -427,6 +467,8 @@ JSON 応答オブジェクトには、非同期バージョンと同じオブジ
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
+[!INCLUDE [Diagnostic container](../containers/includes/diagnostics-container.md)]
+
 ## <a name="billing"></a>課金
 
 Cognitive Services コンテナーでは、Azure アカウントの対応するリソースを使用して、Azure に課金情報が送信されます。
@@ -452,6 +494,6 @@ Cognitive Services コンテナーでは、Azure アカウントの対応する�
 
 * 構成設定について、[コンテナーの構成](computer-vision-resource-container-config.md)を確認する
 * [OCR の概要](overview-ocr.md)に関するページを読み、印刷および手書きのテキストの認識に関する詳細について確認する
-* コンテナーでサポートされているメソッドの詳細について、[Read API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) を参照する。
-* [よく寄せられる質問 (FAQ)](FAQ.md) を参照して、Computer Vision 機能に関連する問題を解決する。
+* コンテナーでサポートされているメソッドの詳細について、[Read API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) を参照する。
+* [よく寄せられる質問 (FAQ)](FAQ.yml) を参照して、Computer Vision 機能に関連する問題を解決する。
 * さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

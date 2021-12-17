@@ -7,14 +7,13 @@ ms.author: rohink
 ms.date: 10/20/2020
 ms.topic: quickstart
 ms.service: dns
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 2115062db8615ca782cb987903e5ebfc83400cd2
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mode-portal
+ms.openlocfilehash: 5fe697473352b9fa2fe877b40e3bb404334aae40
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535446"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077745"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure プライベート DNS ゾーンを作成する
 

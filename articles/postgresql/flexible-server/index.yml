@@ -1,27 +1,29 @@
 ### YamlMime:Landing
-title: フレキシブル サーバー (プレビュー) のドキュメント
-summary: Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー) は、フル マネージドのサービスとしての PostgreSQL データベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Azure Database for PostgreSQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 クイックスタート、チュートリアル、およびサンプルを使用して、フレキシブル サーバーの使用方法を学習してください。
+title: フレキシブル サーバーのドキュメント
+summary: Azure Database for PostgreSQL 柔軟なサーバーは、予測可能なパフォーマンスと動的なスケーラビリティを備えたミッションクリティカルなワークロードを処理できるサービスとしての完全に管理された PostgreSQL データベースです。 Azure Database for PostgreSQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 クイックスタート、チュートリアル、およびサンプルを使用して、フレキシブル サーバーの使用方法を学習してください。
 metadata:
-  title: Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー)
-  description: Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー) は、PostgreSQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。
+  title: Azure Database for PostgreSQL - フレキシブル サーバー
+  description: Azure Database for PostgreSQL 柔軟なサーバーは、Microsoft cloud のリレーショナルデータベースサービスであり、開発者向けに構築され、PostgreSQL community edition を搭載しています。
   author: sunilagarwal
   ms.author: sunila
-  ms.date: 09/22/2020
+  ms.date: 11/30/2021
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 215a34c7adcd9f5628bb164deecaf94d2b885b1d
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: a9f0d9faf5ff1f1d9a6db416363f86c779c64ae5
+  ms.sourcegitcommit: dcf3424d7149fceaea0340eb0657baa2c27882a5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91710670"
+  ms.lasthandoff: 11/30/2021
+  ms.locfileid: "133268660"
 landingContent:
-- title: フレキシブル サーバー (プレビュー) について
+- title: フレキシブル サーバーについて
   linkLists:
   - linkListType: overview
     links:
     - text: フレキシブル サーバーとは
       url: overview.md
+    - text: フレキシブル サーバーを無料で試す
+      url: how-to-deploy-on-azure-free-account.md
   - linkListType: quickstart
     links:
     - text: フレキシブル サーバーを作成する
@@ -42,14 +44,22 @@ landingContent:
       url: concepts-compute-storage.md
     - text: ネットワーキング
       url: concepts-networking.md
+    - text: ファイアウォール ルール
+      url: concepts-firewall-rules.md
     - text: Postgres のバージョン
       url: concepts-supported-versions.md
     - text: 拡張機能
       url: concepts-extensions.md
+    - text: セキュリティ
+      url: concepts-security.md
     - text: Monitor
       url: concepts-monitoring.md
     - text: 論理レプリケーション
       url: concepts-logical.md
+    - text: インテリジェント チューニング
+      url: concepts-intelligent-tuning.md
+    - text: Azure Advisor の推奨事項
+      url: concepts-azure-advisor-recommendations.md
   - linkListType: how-to-guide
     links:
     - text: サーバーを管理する
@@ -60,6 +70,10 @@ landingContent:
       url: how-to-scale-compute-storage-portal.md
     - text: サーバーを再起動する
       url: how-to-restart-server-portal.md
+    - text: プライベート ネットワークの設定
+      url: how-to-manage-virtual-network-portal.md
+    - text: TLS を使用して安全に接続する
+      url: how-to-connect-tls-ssl.md
     - text: ログの構成とアクセス
       url: howto-configure-and-access-logs.md
     - text: メンテナンスのスケジュール

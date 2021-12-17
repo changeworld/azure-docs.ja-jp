@@ -1,12 +1,12 @@
 ---
 title: Azure IoT Hub の MQTT サポートについて | Microsoft Docs
 description: MQTT プロトコルを使用して IoT Hub デバイスに接続されているエンドポイントに接続するデバイスのサポート。 Azure IoT デバイス SDK での組み込み MQTT サポートについての情報も含まれます。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - amqp
 - mqtt
@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 9678648b6417138e216ba2dce3a3605bb4c1bce4
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: f7f529f678b8828087fc59fcc1cecd210ce64a9f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169234"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551560"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -54,10 +54,10 @@ MQTT プロトコルをサポートする[デバイス SDK](https://github.com/A
 
 | Language | MQTT プロトコルのパラメーター | MQTT over WebSocket プロトコルのパラメーター
 | --- | --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt.Mqtt | azure-iot-device-mqtt.MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol).MQTT | IotHubClientProtocol.MQTT_WS |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/javascript/simple_sample_device.js) | azure-iot-device-mqtt.Mqtt | azure-iot-device-mqtt.MqttWs |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/main/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol).MQTT | IotHubClientProtocol.MQTT_WS |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype).Mqtt | MQTT が失敗した場合、TransportType.Mqtt は MQTT over WebSocket にフォールバックします。 MQTT over WebSocket のみを指定するには、TransportType.Mqtt_WebSocket_Only を使用します |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/main/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype).Mqtt | MQTT が失敗した場合、TransportType.Mqtt は MQTT over WebSocket にフォールバックします。 MQTT over WebSocket のみを指定するには、TransportType.Mqtt_WebSocket_Only を使用します |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | 既定で MQTT をサポートします | 呼び出しに `websockets=True` を追加してクライアントを作成します |
 
 次のフラグメントでは、Azure IoT Node.js SDK を使用しているときに MQTT over WebSocket プロトコルを指定する方法を示しています。
@@ -84,7 +84,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 |Node.js     |   180 秒      |     いいえ    |
 |Java     |    230 秒     |     いいえ    |
 |C     | 240 秒 |  [はい](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
-|C#     | 300 秒 |  [はい](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
+|C#     | 300 秒 |  [はい](https://github.com/Azure/azure-iot-sdk-csharp/blob/main/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
 |Python   | 60 秒 |  いいえ   |
 
 [MQTT 仕様](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)に従って、IoT Hub のキープアライブ ping の間隔は、クライアントのキープアライブ値の 1.5 倍です。 ただし、IoT Hub では、すべての Azure サービスは Azure ロードバランサーの TCP アイドル タイムアウト (29.45 分) にバインドされているため、サーバー側のタイムアウトの最大値は 29.45 分 (1,767 秒) に制限されます。 
@@ -111,7 +111,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 これらのサンプルでは、Eclipse Mosquitto ライブラリを使用して、IoT ハブに実装されている MQTT ブローカーにメッセージを送信します。
 
-[Azure IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)の規則を使用するようにサンプルを調整する方法については、「[チュートリアル - MQTT を使用して IoT プラグ アンド プレイ デバイス クライアントを開発する](../iot-pnp/tutorial-use-mqtt.md)」を参照してください。
+[Azure IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md)の規則を使用するようにサンプルを調整する方法については、「[チュートリアル - MQTT を使用して IoT プラグ アンド プレイ デバイス クライアントを開発する](../iot-develop/tutorial-use-mqtt.md)」を参照してください。
 
 このリポジトリには、次のものが含まれます。
 
@@ -123,7 +123,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 * DeviceTwinMQTTWin32: Windows マシン上の Azure IoT ハブにあるデバイスのデバイス ツイン イベントに対してクエリを実行し、サブスクライブするためのコードが含まれています。
 
-* PnPMQTTWin32: IoT プラグ アンド プレイのデバイス機能を使用して、Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。 詳細については、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)に関するページをご覧ください
+* PnPMQTTWin32: IoT プラグ アンド プレイのデバイス機能を使用して、Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。 詳細については、[IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md)に関するページをご覧ください
 
 **Linux の場合:**
 
@@ -158,11 +158,11 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
   > [!NOTE]
-  > X.509 証明書の認証を使用する場合は、SAS トークン パスワードは不要です。 詳細については、「[Azure IoT Hub での X.509 セキュリティの設定](iot-hub-security-x509-get-started.md)」を参照し、[TLS/SSL 構成セクション](#tlsssl-configuration)のコードの説明に従ってください。
+  > X.509 証明書の認証を使用する場合は、SAS トークン パスワードは不要です。 詳細については、「[Azure IoT Hub での X.509 セキュリティの設定](./tutorial-x509-scripts.md)」を参照し、[TLS/SSL 構成セクション](#tlsssl-configuration)のコードの説明に従ってください。
 
-  SAS トークンの生成方法について詳しくは、[IoT Hub のセキュリティ トークンの使用](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)に関するページにあるデバイスのセクションをご覧ください。
+  SAS トークンの生成方法について詳しくは、[IoT Hub のセキュリティ トークンの使用](iot-hub-dev-guide-sas.md#use-sas-tokens-as-a-device)に関するページにあるデバイスのセクションをご覧ください。
 
-  テスト時には、クロスプラットフォームの [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) または CLI 拡張機能コマンド [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) を使用して SAS トークンを簡単に生成し、コピーして自分のコードに貼り付けることができます。
+  テスト時には、クロスプラットフォームの [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) または CLI 拡張機能コマンド [az iot hub generate-sas-token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token) を使用して SAS トークンを簡単に生成し、コピーして自分のコードに貼り付けることができます。
 
 ### <a name="for-azure-iot-tools"></a>Azure IoT Tools の場合
 
@@ -263,7 +263,7 @@ client.tls_insecure_set(False)
 
 client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
-client.publish("devices/" + device_id + "/messages/events/", "{id=123}", qos=1)
+client.publish("devices/" + device_id + "/messages/events/", '{"id":123}', qos=1)
 client.loop_forever()
 ```
 

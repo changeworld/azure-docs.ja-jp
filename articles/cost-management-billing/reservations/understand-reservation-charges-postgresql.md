@@ -6,13 +6,13 @@ ms.author: sumuth
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: ace362872f0b7ba8e2f3d0302c887e2465c62982
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.date: 09/15/2021
+ms.openlocfilehash: b0ecadb5a7553b70cba5bf6572981ede1ebcaf42
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240343"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567629"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバーに対する予約割引の適用方法
 
@@ -20,7 +20,7 @@ Azure Database for PostgreSQL 単一サーバーの予約容量を購入する�
 
 ## <a name="how-reservation-discount-is-applied"></a>予約割引の適用方法
 
-予約割引は、"* **使用しないと失われます** _"。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。</br>
+予約割引は、***使用しないと失われます***。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。</br>
 
 リソースをシャットダウンすると、予約割引は、指定されたスコープ内の別の一致するリソースに自動的に適用されます。 指定したスコープ内に一致するリソースが見つからない場合、予約済み時間は失われます。
 
@@ -30,15 +30,15 @@ Azure Database for PostgreSQL 単一サーバーの予約容量の割引は、�
 
 次の例は、購入したコア数と実行する時間に応じて、Azure Database for PostgreSQL 単一サーバーの予約容量割引がどのように適用されるかを示しています。
 
-_ **例 1** : 8 仮想コア用の Azure Database for PostgreSQL 単一サーバーの予約容量を購入するとします。 予約の残りの属性と一致する 16 仮想コアの Azure Database for PostgreSQL 単一サーバーを実行している場合、PostgreSQL 単一サーバーのコンピューティング使用量の 8 仮想コアに対して従量課金制の料金が請求され、1 時間分の 8 仮想コアの PostgreSQL 単一サーバーのコンピューティング使用量に対して予約割引が適用されます。</br>
+* **例 1**: 8 仮想コア用の Azure Database for PostgreSQL 単一サーバーの予約容量を購入するとします。 予約の残りの属性と一致する 16 仮想コアの Azure Database for PostgreSQL 単一サーバーを実行している場合、PostgreSQL 単一サーバーのコンピューティング使用量の 8 仮想コアに対して従量課金制の料金が請求され、1 時間分の 8 仮想コアの PostgreSQL 単一サーバーのコンピューティング使用量に対して予約割引が適用されます。</br>
 
 以降の例では、購入する Azure Database for PostgreSQL 単一サーバーの予約容量は、16 仮想コアの Azure Database for PostgreSQL 単一サーバー用であり、残りの予約属性は実行中の PostgreSQL 単一サーバーと一致するものとします。
 
-* **例 2** :8 仮想コアを持つ 2 つの Azure Database for PostgreSQL 単一サーバーを 1 時間実行します。 16 仮想コアの予約割引は、8 仮想コア Azure Database for PostgreSQL 単一サーバーの両方のコンピューティング使用量に適用されます。
+* **例 2**:8 仮想コアを持つ 2 つの Azure Database for PostgreSQL 単一サーバーを 1 時間実行します。 16 仮想コアの予約割引は、8 仮想コア Azure Database for PostgreSQL 単一サーバーの両方のコンピューティング使用量に適用されます。
 
-* **例 3** :一方の 16 仮想コア Azure Database for PostgreSQL 単一サーバーを、午後 1 時から午後 1 時 30 分まで実行します。 もう一方の 16 仮想コア Azure Database for PostgreSQL 単一サーバーを、午後 1 時 30 分から午後 2 時まで実行します。 いずれも予約割引が適用されます。
+* **例 3**:一方の 16 仮想コア Azure Database for PostgreSQL 単一サーバーを、午後 1 時から午後 1 時 30 分まで実行します。 もう一方の 16 仮想コア Azure Database for PostgreSQL 単一サーバーを、午後 1 時 30 分から午後 2 時まで実行します。 いずれも予約割引が適用されます。
 
-* **例 4** :一方の 16 仮想コア Azure Database for PostgreSQL 単一サーバーを、午後 1 時から午後 1 時 45 分まで実行します。 もう一方の 16 仮想コア Azure Database for PostgreSQL 単一サーバーを、午後 1 時 30 分から午後 2 時まで実行します。 15 分間の重復分には、従量課金制の料金が適用されます。 残りの時間の計算使用量には、予約割引が適用されます。
+* **例 4**:一方の 16 仮想コア Azure Database for PostgreSQL 単一サーバーを、午後 1 時から午後 1 時 45 分まで実行します。 もう一方の 16 仮想コア Azure Database for PostgreSQL 単一サーバーを、午後 1 時 30 分から午後 2 時まで実行します。 15 分間の重復分には、従量課金制の料金が適用されます。 残りの時間の計算使用量には、予約割引が適用されます。
 
 Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[Azure の予約の使用状況](./understand-reserved-instance-usage-ea.md)に関するページを参照してください。
 

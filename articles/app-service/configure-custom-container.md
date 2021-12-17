@@ -1,15 +1,16 @@
 ---
 title: カスタム コンテナーを構成する
 description: Azure App Service でカスタム コンテナーを構成する方法について説明します。 この記事では、最も一般的な構成タスクを紹介しています。
-ms.topic: article
-ms.date: 02/23/2021
+ms.topic: how-to
+ms.date: 10/22/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 7bfebe318d93a544c964d70ea0a28144a7f0e43b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7e4d861418739660eb948e289af32d673a269b91
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764245"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435759"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service のカスタム コンテナーを構成する
 
@@ -33,23 +34,23 @@ ms.locfileid: "107764245"
 
 カスタム Windows イメージの場合は、必要なフレームワークに合った適切な[親イメージ (ベース イメージ)](https://docs.docker.com/develop/develop-images/baseimages/)を選択する必要があります。
 
-- .NET Framework のアプリをデプロイするには、Windows Server Core [長期サービス チャネル (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) リリースに基づく親イメージを使用します。 
-- .NET Core のアプリをデプロイするには、Windows Server Nano [半期サービス チャネル (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) リリースに基づく親イメージを使用します。 
+- .NET Framework のアプリをデプロイするには、Windows Server 2019 Core [長期サービス チャネル (LTSC)](/windows-server/get-started/servicing-channels-comparison#long-term-servicing-channel-ltsc) リリースに基づく親イメージを使用します。 
+- .NET Core のアプリをデプロイするには、Windows Server 2019 Nano [半期サービス チャネル (SAC)](/windows-server/get-started/servicing-channels-comparison#semi-annual-channel) リリースに基づく親イメージを使用します。 
 
 アプリの起動中は、親イメージのダウンロードに多少の時間がかかります。 ただし、Azure App Service にあらかじめキャッシュされている次のいずれかの親イメージを使用することで、起動時間を短縮することができます。
 
-- [mcr.microsoft.com/windows/servercore](https://hub.docker.com/_/microsoft-windows-servercore):2004
+- [mcr.microsoft.com/windows/servercore](https://hub.docker.com/_/microsoft-windows-servercore):20H2
 - [mcr.microsoft.com/windows/servercore](https://hub.docker.com/_/microsoft-windows-servercore):ltsc2019
-- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.8-windowsservercore-2004
+- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.8-windowsservercore-20H2
 - [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.8-windowsservercore-ltsc2019
-- [mcr.microsoft.com/dotnet/core/runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/):3.1-nanoserver-2004
-- [mcr.microsoft.com/dotnet/core/runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/):3.1-nanoserver-1909
-- [mcr.microsoft.com/dotnet/core/runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/):3.1-nanoserver-1903
-- [mcr.microsoft.com/dotnet/core/runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/):3.1-nanoserver-1809
-- [mcr.microsoft.com/dotnet/core/aspnet](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/):3.1-nanoserver-2004
-- [mcr.microsoft.com/dotnet/core/aspnet](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/):3.1-nanoserver-1909
-- [mcr.microsoft.com/dotnet/core/aspnet](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/):3.1-nanoserver-1903
-- [mcr.microsoft.com/dotnet/core/aspnet](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/):3.1-nanoserver-1809
+- [mcr.microsoft.com/dotnet/runtime](https://hub.docker.com/_/microsoft-dotnet-runtime/):5.0-nanoserver-20H2
+- [mcr.microsoft.com/dotnet/runtime](https://hub.docker.com/_/microsoft-dotnet-runtime/):5.0-nanoserver-1809
+- [mcr.microsoft.com/dotnet/aspnet](https://hub.docker.com/_/microsoft-dotnet-aspnet/):5.0-nanoserver-20H2
+- [mcr.microsoft.com/dotnet/aspnet](https://hub.docker.com/_/microsoft-dotnet-aspnet/):5.0-nanoserver-1809
+- [mcr.microsoft.com/dotnet/runtime](https://hub.docker.com/_/microsoft-dotnet-runtime/):3.1-nanoserver-20H2
+- [mcr.microsoft.com/dotnet/runtime](https://hub.docker.com/_/microsoft-dotnet-runtime/):3.1-nanoserver-1809
+- [mcr.microsoft.com/dotnet/aspnet](https://hub.docker.com/_/microsoft-dotnet-aspnet/):3.1-nanoserver-20H2
+- [mcr.microsoft.com/dotnet/aspnet](https://hub.docker.com/_/microsoft-dotnet-aspnet/):3.1-nanoserver-1809
 
 ::: zone-end
 
@@ -70,6 +71,68 @@ az webapp config container set --name <app-name> --resource-group <group-name> -
 ```
 
 *\<username>* および *\<password>* には、プライベート レジストリ アカウントのログイン資格情報を指定します。
+
+## <a name="use-managed-identity-to-pull-image-from-azure-container-registry"></a>マネージド ID を使用して Azure Container Registry からイメージをプルする
+
+次の手順を実行し、マネージド ID を使用して ACR からプルするための Web アプリを構成します。 この手順では、システム割り当てマネージド ID を使用しますが、ユーザー割り当てマネージド ID も使用できます。
+
+1. [`az webapp identity assign`](/cli/azure/webapp/identity#az_webapp_identity-assign) コマンドを使用して、Web アプリの[システム割り当てマネージド ID](./overview-managed-identity.md) を有効にします。
+
+    ```azurecli-interactive
+    az webapp identity assign --resource-group <group-name> --name <app-name> --query principalId --output tsv
+    ```
+    `<app-name>` は、前のステップで使用した名前に置き換えてください。 コマンドからは、--クエリ引数と --出力引数のフィルターを通じて、割り当てられた ID のサービス プリンシパル ID が出力されます。このサービス プリンシパルは、この後すぐに使用します。
+1. Azure Container Registry のリソース ID を取得します。
+    ```azurecli-interactive
+    az acr show --resource-group <group-name> --name <registry-name> --query id --output tsv
+    ```
+    `<registry-name>` をレジストリの名前に置き換えます。 コマンドからは、--クエリ引数と --出力引数のフィルターを通じて、Azure Container Registry のリソース ID が出力されます。
+1. コンテナー レジストリへのアクセス許可をマネージド ID に与えます。
+
+    ```azurecli-interactive
+    az role assignment create --assignee <principal-id> --scope <registry-resource-id> --role "AcrPull"
+    ```
+
+    次の値を置き換えます。
+    - `<principal-id>` を、`az webapp identity assign` コマンドで得たサービス プリンシパル ID に置き換えます。
+    - `<registry-resource-id>` を `az acr show` コマンドで得たコンテナー レジストリの ID に置き換えます
+
+    これらのアクセス許可の詳細については、「[Azure ロールベースのアクセス制御とは](../role-based-access-control/overview.md)」を参照してください。
+
+1. マネージ ID を使用して Azure Container Registry からプルするようにアプリを構成します。
+
+    ```azurecli-interactive
+    az webapp config set --resource-group <group-name> --name <app-name> --generic-configurations '{"acrUseManagedIdentityCreds": true}'
+    ```
+
+    次の値を置き換えます。
+    - `<app-name>`: Web アプリの名前。
+    >[!Tip]
+    > PowerShell コンソールを使用してコマンドを実行する場合は、この手順と次の手順で `--generic-configurations` 引数の文字列をエスケープする必要があります。 例: `--generic-configurations '{\"acrUseManagedIdentityCreds\": true'`
+1. (省略可能) アプリで[ユーザー割り当てマネージド ID](overview-managed-identity.md#add-a-user-assigned-identity) を使用する場合は、これが Web アプリ上で構成されていることを確認してから、追加の `acrUserManagedIdentityID` プロパティを設定し、クライアント ID を指定します。
+    
+    ```azurecli-interactive
+    az identity show --resource-group <group-name> --name <identity-name> --query clientId --output tsv
+    ```
+    ユーザー割り当てマネージド ID の `<identity-name>` を置き換え、出力 `<client-id>` を使用して、ユーザー割り当てマネージドを構成します。
+
+    ```azurecli-interactive
+    az  webapp config set --resource-group <group-name> --name <app-name> --generic-configurations '{"acrUserManagedIdentityID": "<client-id>"}'
+    ```
+
+これで設定がすべて完了しました。Web アプリでは、Azure Container Registry からプルするために、マネージド ID が使用されます。 
+
+::: zone pivot="container-linux"
+
+## <a name="use-an-image-from-a-network-protected-registry"></a>ネットワークで保護されたレジストリからイメージを使用する
+
+仮想ネットワークまたはオンプレミス内のレジストリに接続してプルするには、VNet 統合機能を使用して、アプリを仮想ネットワークに接続する必要があります。 これは、プライベート エンドポイントを使用する Azure Container Registry の場合にも必要です。 ネットワークと DNS 解決が構成されている場合は、アプリ設定 `WEBSITE_PULL_IMAGE_OVER_VNET=true` を設定して、VNet を介したイメージ プルのルーティングを有効にします。
+
+```azurecli-interactive
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_PULL_IMAGE_OVER_VNET=true
+```
+
+::: zone-end
 
 ## <a name="i-dont-see-the-updated-container"></a>更新されたコンテナーが表示されない
 
@@ -198,7 +261,7 @@ Docker ログにアクセスするには、いくつかの方法があります�
 - [Azure Portal](#in-azure-portal)
 - [Kudu コンソールから](#from-the-kudu-console)
 - [Kudu API を使用する](#with-the-kudu-api)
-- [ログを Azure Monitor に送信する](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview)
+- [ログを Azure Monitor に送信する](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor)
 
 ### <a name="in-azure-portal"></a>Azure Portal
 
@@ -232,7 +295,7 @@ PowerShell では次のとおりです。
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_MEMORY_LIMIT_MB"=2000}
 ```
 
-この値は MB 単位で定義されており、ホストの合計物理メモリ以下である必要があります。 たとえば、8 GB の RAM を備えた App Service プランでは、すべてのアプリの累積合計 `WEBSITE_MEMORY_LIMIT_MB` が 8 GB を超えないようにする必要があります。 各価格レベルで使用できるメモリ量に関する情報については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/windows/)」の **Premium コンテナー (Windows) プラン** に関するセクションを参照してください。
+この値は MB 単位で定義されており、ホストの合計物理メモリ以下である必要があります。 たとえば、8 GB の RAM を備えた App Service プランでは、すべてのアプリの累積合計 `WEBSITE_MEMORY_LIMIT_MB` が 8 GB を超えないようにする必要があります。 各価格レベルで使用できるメモリ量に関する情報については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/windows/)」の **Premium v3 サービス プラン** に関するセクションを参照してください。
 
 ## <a name="customize-the-number-of-compute-cores"></a>コンピューティング コアの数をカスタマイズする
 
@@ -258,7 +321,7 @@ Get-ComputerInfo | ft CsNumberOfLogicalProcessors # Total number of enabled logi
 Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
 ```
 
-プロセッサは、マルチコアまたはハイパースレッディングのプロセッサにすることができます。 各価格レベルで使用できるコア数に関する情報については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/windows/)」の **Premium コンテナー (Windows) プラン** に関するセクションを参照してください。
+プロセッサは、マルチコアまたはハイパースレッディングのプロセッサにすることができます。 各価格レベルで使用できるコア数に関する情報については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/windows/)」の **Premium v3 サービス プラン** に関するセクションを参照してください。
 
 ## <a name="customize-health-ping-behavior"></a>正常性 ping の動作をカスタマイズする
 
@@ -322,6 +385,37 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
     > - `Ciphers` には、`aes128-cbc,3des-cbc,aes256-cbc` の項目を少なくとも 1 つ含める必要があります。
     > - `MACs` には、`hmac-sha1,hmac-sha1-96` の項目を少なくとも 1 つ含める必要があります。
 
+- [ssh-keygen を使用](https://man.openbsd.org/ssh-keygen.1)して SSH キーを作成するための ssh_setup スクリプト ファイルをリポジトリに追加します。
+
+    ```
+    #!/bin/sh
+
+    if [ ! -f "/etc/ssh/ssh_host_rsa_key" ]; then
+        # generate fresh rsa key
+        ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
+    fi
+
+    if [ ! -f "/etc/ssh/ssh_host_dsa_key" ]; then
+        # generate fresh dsa key
+        ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
+    fi
+
+    if [ ! -f "/etc/ssh/ssh_host_ecdsa_key" ]; then
+        # generate fresh ecdsa key
+        ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -N '' -t dsa
+    fi
+
+    if [ ! -f "/etc/ssh/ssh_host_ed25519_key" ]; then
+        # generate fresh ecdsa key
+        ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -N '' -t dsa
+    fi
+
+    #prepare run dir
+        if [ ! -d "/var/run/sshd" ]; then
+        mkdir -p /var/run/sshd
+    fi
+    ```
+
 - Dockerfile で、次のコマンドを追加します。
 
     ```Dockerfile
@@ -332,11 +426,18 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
     # Copy the sshd_config file to the /etc/ssh/ directory
     COPY sshd_config /etc/ssh/
 
+    # Copy and configure the ssh_setup file
+    RUN mkdir -p /tmp
+    COPY ssh_setup.sh /tmp
+    RUN chmod +x /tmp/ssh_setup.sh \
+        && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null)
+
     # Open port 2222 for SSH access
     EXPOSE 80 2222
     ```
 
-    この構成は、コンテナーへの外部接続を許可しません。 コンテナーのポート 2222 は、プライベート仮想ネットワークのブリッジ ネットワーク内でのみアクセスでき、インターネット上の攻撃者からはアクセスできません。
+    > [!NOTE] 
+    > ルート パスワードは、コンテナーとの SSH セッションにアクセスできるように App Service によって使用される `Docker!` と正確に同じである必要があります。 この構成は、コンテナーへの外部接続を許可しません。 コンテナーのポート 2222 は、プライベート仮想ネットワークのブリッジ ネットワーク内でのみアクセスでき、インターネット上の攻撃者からはアクセスできません。
 
 - コンテナーのスタートアップ スクリプトで、SSH サーバーを起動します。
 
@@ -370,7 +471,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 ```yaml
 wordpress:
-  image: wordpress:latest
+  image: <image name:tag>
   volumes:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
@@ -384,6 +485,8 @@ wordpress:
 - 認証/認可
 - マネージド ID
 - CORS
+- VNET 統合は、Docker Compose シナリオではサポートされていません。
+- 現在、Azure App Service の Docker Compose には 4,000 文字の制限があります。
 
 ### <a name="docker-compose-options"></a>Docker Compose のオプション
 
@@ -403,7 +506,7 @@ wordpress:
 #### <a name="unsupported-options"></a>サポートされていないオプション
 
 - build (禁止)
-- depends_on (無視)
+- [depends_on](faq-app-service-linux.yml#how-do-i-use-depends-on-) (無視)
 - networks (無視)
 - secrets (無視)
 - ports (80 および 8080 以外) (無視)
@@ -429,4 +532,5 @@ wordpress:
 
 または、その他のリソースを参照してください:
 
-[Windows/Linux コンテナーで証明書を読み込む](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)
+- [環境変数とアプリ設定のリファレンス](reference-app-settings.md)
+- [Windows/Linux コンテナーで証明書を読み込む](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)

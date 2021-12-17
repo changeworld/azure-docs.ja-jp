@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: fa3a2366f007ff1481e7c84f049e606586392037
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1bde9622dd649d24de26f38a282d075a46bbaee2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96742954"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773761"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
 
-Azure AD Multi-Factor Authentication の NPS 拡張機能でエラーが発生した場合、この記事を使ってすばやく解決してください。 NPS 拡張機能のログは、NPS 拡張機能がインストールされているサーバーで **[カスタム ビュー]**  >  **[サーバー ロール]**  >  **[Network Policy and Access Services]\(ネットワーク ポリシーと Access Services\)** を選択すると表示されるイベント ビューアーで確認できます。
+Azure AD Multi-Factor Authentication の NPS 拡張機能でエラーが発生した場合、この記事を使ってすばやく解決してください。 NPS 拡張機能のログは、NPS 拡張機能がインストールされているサーバー上で **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[AzureMfa]**  >  **[AuthN]**  >  **[AuthZ]** を選択すると表示されるイベント ビューアーで確認できます。
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>一般的なエラーのトラブルシューティング手順
 
@@ -51,14 +51,14 @@ Azure AD Multi-Factor Authentication の NPS 拡張機能でエラーが発生�
 | エラー コード | エラー メッセージ | トラブルシューティングの手順 |
 | ---------- | ------------- | --------------------- |
 | **AccessDenied** | 呼び出し元のテナントに、ユーザーの認証を行うためのアクセス許可がありません | テナント ドメインとユーザー プリンシパル名 (UPN) のドメインが同じかどうかを確認します。 たとえば、user@contoso.com が、Contoso テナントに対して認証しようとしていることを確認します。 UPN は、Azure のテナントの有効なユーザーを表します。 |
-| **AuthenticationMethodNotConfigured** | 指定した認証方法が、ユーザーに対して構成されていません | 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md)」の説明に従って、ユーザーに認証方法を追加または確認してもらいます。 |
+| **AuthenticationMethodNotConfigured** | 指定した認証方法が、ユーザーに対して構成されていません | 「[2 段階認証設定の管理](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7)」の説明に従って、ユーザーに認証方法を追加または確認してもらいます。 |
 | **AuthenticationMethodNotSupported** | 指定した認証方法がサポートされていません。 | このエラーを含むすべてのログを収集し、[サポートに連絡](#contact-microsoft-support)します。 サポートに連絡するとき、ユーザー名と、エラーをトリガーしたセカンダリ検証方法をお伝えください。 |
-| **BecAccessDenied** | MSODS Bec 呼び出しによってアクセス拒否が返されました。テナントでユーザー名が定義されていない可能性があります | ユーザーは、オンプレミスの Active Directory に存在しますが、AD Connect で Azure AD に同期されていません。 または、テナント用のユーザーがありません。 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md)」の説明に従って、ユーザーを Azure AD に追加し、そのユーザーに認証方法を追加してもらいます。 |
+| **BecAccessDenied** | MSODS Bec 呼び出しによってアクセス拒否が返されました。テナントでユーザー名が定義されていない可能性があります | ユーザーは、オンプレミスの Active Directory に存在しますが、AD Connect で Azure AD に同期されていません。 または、テナント用のユーザーがありません。 「[2 段階認証設定の管理](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7)」の説明に従って、ユーザーを Azure AD に追加し、そのユーザーに認証方法を追加してもらいます。 |
 | **InvalidFormat** または **StrongAuthenticationServiceInvalidParameter** | 電話番号の形式を認識できません | ユーザーに確認の電話番号を修正してもらいます。 |
 | **InvalidSession** | 指定したセッションが無効か、有効期限が切れている可能性があります | セッション完了までの時間が 3 分を超えました。 認証要求を開始してから 3 分以内にユーザーが確認コードを入力していること、またはアプリの通知に応答していることを確認します。 問題が解決しない場合は、クライアント、NAS サーバー、NPS サーバー、および Azure AD MFA のエンドポイント間でネットワーク待ち時間が発生していないことを確認します。  |
-| **NoDefaultAuthenticationMethodIsConfigured** | 既定の認証方法が、ユーザーに対して構成されていません | 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md)」の説明に従って、ユーザーに認証方法を追加または確認してもらいます。 ユーザーが既定の認証方法を選択し、その方法を自身のアカウントに対して構成していることを確認します。 |
+| **NoDefaultAuthenticationMethodIsConfigured** | 既定の認証方法が、ユーザーに対して構成されていません | 「[2 段階認証設定の管理](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7)」の説明に従って、ユーザーに認証方法を追加または確認してもらいます。 ユーザーが既定の認証方法を選択し、その方法を自身のアカウントに対して構成していることを確認します。 |
 | **OathCodePinIncorrect** | 入力したコードと PIN が誤っています。 | このエラーは、NPS 拡張機能では発生しません。 このエラーが発生した場合、トラブルシューティング方法については、[サポートにお問い合わせください](#contact-microsoft-support)。 |
-| **ProofDataNotFound** | プルーフ データが、指定した認証方法に対して構成されていません。 | 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md)」の説明に従って、ユーザーに別の認証方法を試してもらうか、新しい認証方法を追加してもらいます。 認証方法が適切に設定されていることを確認した後も、このエラーが引き続き発生する場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
+| **ProofDataNotFound** | プルーフ データが、指定した認証方法に対して構成されていません。 | 「[2 段階認証設定の管理](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7)」の説明に従って、ユーザーに別の認証方法を試してもらうか、新しい認証方法を追加してもらいます。 認証方法が適切に設定されていることを確認した後も、このエラーが引き続き発生する場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
 | **SMSAuthFailedWrongCodePinEntered** | 入力したコードと PIN が誤っています。 (OneWaySMS) | このエラーは、NPS 拡張機能では発生しません。 このエラーが発生した場合、トラブルシューティング方法については、[サポートにお問い合わせください](#contact-microsoft-support)。 |
 | **TenantIsBlocked** | テナントがブロックされています | [サポートにお問い合わせください](#contact-microsoft-support)。お問い合わせの際は、Azure portal の Azure AD プロパティ ページの *[テナント ID]* をご用意ください。 |
 | **UserNotFound** | 指定したユーザーが見つかりませんでした | テナントが Azure AD でアクティブとして表示されなくなりました。 サブスクリプションがアクティブで、必要なファースト パーティー アプリがあることを確認します。 また、証明書サブジェクトが意図したとおりであること、およびその証明書が引き続き有効で、サービス プリンシパルで登録されていることを確認します。 |
@@ -95,7 +95,7 @@ Azure AD Multi-Factor Authentication の NPS 拡張機能でエラーが発生�
 
 ### <a name="troubleshoot-user-accounts"></a>ユーザー アカウントをトラブルシューティングする
 
-[2 段階認証で問題が発生](../user-help/multi-factor-authentication-end-user-troubleshoot.md)している場合は、その問題を自己診断できるようユーザーをサポートします。
+[2 段階認証で問題が発生](https://support.microsoft.com/account-billing/common-problems-with-two-step-verification-for-a-work-or-school-account-63acbb9b-16a1-47b9-8619-6a865e8071a5)している場合は、その問題を自己診断できるようユーザーをサポートします。
 
 ### <a name="health-check-script"></a>正常性チェック スクリプト
 

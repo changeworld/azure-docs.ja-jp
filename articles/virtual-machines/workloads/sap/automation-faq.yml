@@ -1,0 +1,79 @@
+### YamlMime:FAQ
+metadata:
+  title: SAP デプロイの自動化に関するよくあるご質問
+  description: Azure での SAP デプロイ自動化フレームワークに関する一般的なエラーを処理する方法。
+  author: jhajduk
+  ms.author: kimforss
+  ms.reviewer: kimforss
+  ms.date: 11/17/2021
+  ms.topic: faq
+  ms.service: virtual-machines-sap
+  ms.openlocfilehash: 11871f0751c0608cfae68e358f44caab8ca60668
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132725176"
+title: Azure の SAP デプロイ自動化フレームワークに関する FAQ
+summary: "## <a name=\"frequently-asked-questions\"></a>よく寄せられる質問\n\nこの記事では、[Azure の SAP デプロイ自動化フレームワーク](automation-deployment-framework.md)に関するよくあるご質問 (FAQ) に対する回答を提供します。\n  \n"
+sections:
+- name: Terraform デプロイ
+  questions:
+  - question: "\"パラメーター ファイルが正しくありません\" というエラーは何を意味しますか?\n"
+    answer: >
+      デプロイを実行すると、このエラーが表示される場合があります。 適切なフェーズのパラメーター ファイルへの正しいパスを渡していることを確認してください。 たとえば、コントロール プレーン、ランドスケープ、システムなどです。
+  - question: "入力ファイルを使用して複数の SAP システムを作成できますか? \n"
+    answer: >
+      現在、CSV ファイルなどの入力ファイルを使用して複数の SAP システムを作成することはできません。
+  - question: "名前付け規則はどのようにしてカスタマイズしますか? \n"
+    answer: >
+      SAP 自動化フレームワークの名前付け規則は、Azure の名前付け標準と入念に一致するようになっています。 独自の名前付け規則を使用する場合は、[カスタム名前付けモジュールの手順に従ってください](automation-naming-module.md)。
+  - question: "\"キー コンテナーに対するシークレット取得の権限ない\" というエラーは何を意味しますか?\n"
+    answer: "`Error: checking for existing Secret….User, group, or application…does not have secrets get permission on key vault` というエラーが表示される場合があります。\nデプロイ資格情報には、デプロイ キー コンテナーからシークレットを読み取るために十分なアクセス許可が付与されている必要があります。 また、ユーザーのキー コンテナー内の `SPN AppID` と `SPN Secret` が正しいことを確認してください。 \n"
+  - question: "\"クライアントが Microsoft.Authorization/roleAssignments/write アクションの実行を認可されていない\" というエラーは何を意味しますか?\n"
+    answer: "`authorization.RoleAssignment.Client#Create: The client… with object ID… does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope…or scope is invalid` というエラーが表示される場合があります。\nデプロイ用の正しいアプリケーション ID とアプリケーション シークレットを渡していることを確認してください。 デプロイ資格情報キー コンテナーのシークレットを確認して、資格情報の詳細を検証します。 \n"
+  - question: "\"ID を持つリソースが既に存在しています...このリソースを State にインポートする必要があります\" というエラーは何を意味しますか?\n"
+    answer: >
+      `A resource with ID…already exists - to be managed via Terraform this resource needs to be imported into the State` というエラーが表示される場合があります。 このエラーは、Azure リソースが Terraform デプロイの外部で追加されたことを意味します。 状態ファイル [automation-advanced_state_management.md](bash/automation-advanced_state_management.md) を更新して修正します。
+  - question: >
+      空白エラーが原因で複数行コマンドが失敗するのはなぜですか?
+    answer: >
+      デプロイ コマンドの形式が正しいことを確認してください。 エディターを使用して、デプロイ コマンドを正しい形式にしてから実行してください。
+  - question: "\"/tmp/terraform_273760270.sh の実行エラー\" とはどういう意味ですか?\n"
+    answer: >
+      `error executing "/tmp/terraform_273760270.sh": Process exited with status 127` というエラーが表示される場合があります。
+
+      このエラーは、`sap-hana/deploy/terraform/terraform-units/modules/sap_deployer/templates/configure_deployer.sh.tmpl` の行末に問題があるという意味です。
+
+      CRLF ではなく、LF の行末を使用してこのファイルを保存してください。 Windows 環境でこのファイルを開くと、行末が元の LF から CRLF に変更される可能性があります。
+  - question: "\"building account: getting authenticated object ID: Error parsing json result from the Azure CLI\" というエラーは何を意味しますか?\n"
+    answer: "`Error: building account: getting authenticated object ID: Error parsing json result from the Azure CLI: Error waiting for the Azure CLI: exit status 1: ERROR: Error occurred in request., ConnectionError: HTTPSConnectionPool(host='graph.windows.net', port=443): Max retries exceeded with url: /d1ffef09-2e44-4182-ad9c-d55a72c588a8/me?api-version=1.6 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x040F73E8>: Failed to establish a new connection: [Errno 11002] getaddrinfo failed'))` というエラーが表示される場合があります。\nコマンド `az logout` を使用してログアウトします。 `az login` を使用してもう一度ログインし、問題を解決します。 \n"
+  - question: "\"KeyVault シークレットが存在しません\" というエラーは何を意味しますか? \n"
+    answer: "`Error: KeyVault Secret <SECRET-NAME> …does not exist` というエラーが表示される場合があります。ここで、`<SECRET-NAME>` はシークレットの名前です。\nユーザーのキー コンテナーに次のシークレットが含まれていることを確認してください。 `<ENVIRONMENT>` は自分の環境名に置き換えます。 \n  - `<ENVIRONMENT>-subscription-id`\n  - `<ENVIRONMENT>-tenant-id`\n  - `<ENVIRONMENT>-client-id`\n  - `<ENVIRONMENT>-client-secret`\n"
+  - question: "\"アクセス キーまたは SAS トークンを指定するか、Azure AD Authentication を有効にする必要がある\" というエラーは何を意味しますか?\n"
+    answer: >
+      `Either an Access Key / SAS Token or the Resource Group for the Storage Account must be specified - or Azure AD Authentication must be enabled when deploying the workload zone` というエラーが表示される場合があります。
+
+      `storageaccountname` パラメーターに正しい値を渡していることを確認してください。 パラメーターで、Terraform 状態ファイルをコンテナー化するアカウントを指定していることを確認します。
+  - question: "\"リポジトリ のパスが正しくありません\" というエラーは 何を意味しますか?\n"
+    answer: "`New-SAPAutomationRegion` を実行すると、`The repository path: \\<REPO-PATH\\> is incorrect!` というエラーが表示される場合があります。ここで、`<REPO-PATH>` はリポジトリのパスです。\n`sap_deployment_automation.ini` ファイルのパスを見つけます。 このファイルの場所は、実行環境によって異なります。 可能性のある場所は、Windows では `My Documents`、Linux では `~/sap_deployment_automation` です。 `sap_deployment_automation.ini`` file under the ` の共通` `リポジトリ変数に、リポジトリへの完全修飾パスを入力します。 \n"
+  - question: >
+      ランドスケープ フェーズ中に "エラー読み込み状態エラー" というエラーが表示されるのはなぜですか?
+    answer: >
+      ランドスケープ フェーズの実行中に、`Error loading state error` というエラーが表示される場合があります。
+
+      `sap_deployment_automation.ini` ファイルのパスを見つけます。 このファイルの場所は、実行環境によって異なります。 可能性のある場所は、Windows では `My Documents`、Linux では `~/sap_deployment_automation` です。 SAP_Automated_Deployment.ini ファイルを確認します。 各キーの値で、状態ファイル名の前に相対パスが付いていないことを確認します。 状態ファイルの値には、関連するストレージ アカウントの状態ファイルの名前しか含めることはできません。 このアカウントは、SAP ライブラリのリソース グループに属しています。
+  - question: "\"blobName を空の文字列にすることはできません\" というエラーは何を意味しますか?\n"
+    answer: "ワークロード ゾーンをデプロイするときに `Error loading state: blobs.Client#Get: Invalid input: blobName' cannot be an empty string` というエラーが発生する場合があります。\nワークロード ゾーンが正常にデプロイされなかった場合は、`WORKSPACES\\Landscape\\<ENVIRONMENT-FOLDER>` 内の `.terraform` フォルダーを削除します。 その後、ワークロード ゾーンのデプロイを再試行してください。 \n"
+  - question: "\"シークレットを設定できませんでした\" というエラーは何を意味しますか?\n"
+    answer: "ワークロード ゾーンをデプロイするときに `Could not set the secrets.` というエラーが発生する場合があります。\nこのエラー メッセージは、ワークロード ゾーンに作成されているキー コンテナーを示しています。 `vault` パラメーターにデプロイ資格情報のキー コンテナー名を渡す必要があります。 \n"
+  - question: "\"このリージョンでは 'netAppAccounts' が制限されています\" というエラーは何を意味しますか? \n"
+    answer: "`'netAppAccounts' has been restricted in this region` というエラーが表示される場合があります。\nこのエラーは、サブスクリプションが `netAppAccounts` リソース プロバイダーに登録されていないという意味です。 [プロバイダーを登録](/azure/azure-netapp-files/azure-netapp-files-register)して問題を解決してください。 \n"
+- name: Ansible 構成
+  questions:
+  - question: "\"SSH キー シークレットの詳細を取得してください\" というエラーは何を意味しますか?\n"
+    answer: >
+      `test_menu.sh` から SAP HANA ソフトウェアをデプロイするときに、致命的なエラー `Retrieve SSH Key Secret Details` が発生する場合があります。
+
+      ユーザー資格情報のキー コンテナー内のシークレットの名前が、環境の名前付けプレフィックスと一致していることを確認してください。 たとえば、`DEV-<ID>-SAP01` を `DEV-<ID>-SAP` に変更する必要がある場合があります。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n> [!div class=\"nextstepaction\"]\n> [Azure の SAP デプロイ自動化フレームワークの概要](automation-get-started.md)"

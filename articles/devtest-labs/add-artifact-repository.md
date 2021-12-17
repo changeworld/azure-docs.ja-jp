@@ -1,14 +1,15 @@
 ---
-title: Azure DevTest Labs でラボにアーティファクト リポジトリを追加する | Microsoft Docs
+title: ラボへの成果物リポジトリの追加
 description: Azure DevTest Labs で、パブリックの成果物リポジトリにはないツールを、自分のラボに自分専用の成果物リポジトリを指定して格納する方法について説明します。
-ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: da4e345b18a46226853d71bbf66af0487f1a761f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.date: 10/19/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 16c555e73639ee9c34ac353b43e828c1a6afbbe4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502197"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229296"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs でラボにアーティファクト リポジトリを追加する
 DevTest Labs では、VM の作成時または VM が作成された後に VM に追加されるアーティファクトを指定できます。 このアーティファクトには、VM にインストールするツールやアプリケーションがあります。 アーティファクトは、GitHub または Azure DevOps リポジトリから読み込まれた JSON ファイルで定義されます。
@@ -45,9 +46,9 @@ DevTest Labs によって維持されている[パブリック アーティフ�
 7. **[セキュリティ] > [個人用アクセス トークン]** タブで、 **[+ 新しいトークン]** を選択します。
 8. **[Create a new personal access token]\(新しい個人用アクセス トークンの作成\)** ページで、次の操作を行います。
    1. トークンの **[名前]** を入力します。
-   2. **[組織]** の一覧で、 **[アクセス可能なすべての組織]** を選択します。
+   2. **[組織]** ボックスの一覧で、リポジトリが属している組織を選択します。
    3. **[有効期限 (UTC)]** の一覧で、 **[90 日間]** 、または顧客が定義した有効期限日を選択します。
-   4. [スコープ] には、 **[フル アクセス]** オプションを選択します。
+   4. スコープの **[カスタム定義]** オプションを選択し、 **[コード (読み取りのみ)]** を選択します。
    5. **［作成］** を選択します
 9. **[個人用アクセス トークン]** の一覧に新しいトークンが表示されます。 **[トークンのコピー]** を選択し、後ほど必要になるため、トークンの値を保存します。
 10. 「ラボのレポジトリへの接続」のセクションに進みます。
@@ -74,12 +75,12 @@ DevTest Labs によって維持されている[パブリック アーティフ�
 6. **[保存]** を選択します。
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
-Azure Resource Management (Azure Resource Manager) テンプレートは、作成する Azure 内のリソースが記載された JSON ファイルです。 これらのテンプレートの詳細については、[Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/template-syntax.md)に関するページを参照してください。
+Azure Resource Management (Azure Resource Manager) テンプレートは、作成する Azure 内のリソースが記載された JSON ファイルです。 これらのテンプレートの詳細については、[Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/syntax.md)に関するページを参照してください。
 
 このセクションでは、Azure Resource Manager テンプレートを使用してラボにアーティファクト リポジトリを追加する手順を示します。  このテンプレートでは、ラボがまだ存在しない場合は作成されます。
 
 ### <a name="template"></a>Template
-この記事で使用されるサンプル テンプレートは、パラメーター経由で次の情報を収集します。 ほとんどのパラメーターには適切な既定値がありますが、指定する必要がある値もいくつかあります。 ラボ名、アーティファクト リポジトリの URI、およびリポジトリのセキュリティ トークンを指定する必要があります。
+この記事で使用されるサンプル テンプレートは、パラメーター経由で次の情報を収集します。 ほとんどのパラメーターには適切な既定値がありますが、指定する必要がある値もいくつかあります。 ラボ名、アーティファクト リポジトリの URI、およびリポジトリのセキュリティ トークンを指定します。
 
 - ラボ名。
 - DevTest Labs ユーザー インターフェイス (UI) でのアーティファクト リポジトリの表示名。 既定値は `Team Repository` です。
@@ -293,7 +294,7 @@ $propertiesObject = @{
     status = 'Enabled'
 }
 
-Write-Verbose @"Properties to be passed to New-AzResource:$($propertiesObject | Out-String)"
+Write-Verbose "Properties to be passed to New-AzResource:$($propertiesObject | Out-String)"
 
 #Resource will be added to current subscription.
 $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'
@@ -344,12 +345,12 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 | ArtifactRepositoryName | 新しいアーティファクト リポジトリの名前。 リポジトリの名前が指定されていない場合、このスクリプトではランダムな名前が作成されます。 |
 | ArtifactRepositoryDisplayName | アーティファクト リポジトリの表示名。 これは、ラボのすべてのアーティファクト リポジトリを表示したときに Azure Portal (https://portal.azure.com) ) に表示される名前です。 |
 | RepositoryUri | リポジトリへの URI。 例: `https://github.com/<myteam>/<nameofrepo>.git` または `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`。|
-| RepositoryBranch | アーティファクト ファイルが見つかるブランチ。 既定値は 'master' です。 |
+| RepositoryBranch | アーティファクト ファイルが見つかるブランチ。 既定値は `master` です。 |
 | FolderPath | アーティファクトが見つかるフォルダー。 既定値は '/Artifacts' です。 |
 | PersonalAccessToken | GitHub または VSOGit リポジトリにアクセスするためのセキュリティ トークン。 個人用アクセス トークンを取得するための手順については、前提条件のセクションを参照してください。 |
-| SourceType | アーティファクトが VSOGit または GitHub リポジトリのどちらであるかを示します。 |
+| SourceType | アーティファクトが VSOGit または GitHub リポジトリのどちらであるかを示します |
 
-リポジトリ自体には、識別のための内部名が必要です。これは、Azure Portal に表示される表示名とは異なります。 内部名は、Azure Portal の使用時には表示されませんが、Azure REST API または Azure PowerShell の使用時に表示されます。 スクリプトのユーザーが名前を指定していない場合は、このスクリプトによって名前が提供されます。
+リポジトリ自体には、識別のための内部名が必要です。これは、Azure portal に表示される表示名とは異なります。 内部名は、Azure portal の使用時には表示されませんが、Azure REST API または Azure PowerShell の使用時に表示されます。 スクリプトのユーザーが名前を指定していない場合は、このスクリプトによって名前が提供されます。
 
 ```powershell
 #Set artifact repository name, if not set by user

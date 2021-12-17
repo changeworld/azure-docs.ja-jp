@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: 3f26de72839fcaa39bff4d827aba757721736934
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e99d08e638569c68043bb67f090bc7ce41982ca
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664904"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215036"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>リダイレクトを使用して Azure Database for MariaDB に接続する
 
@@ -21,6 +21,9 @@ ms.locfileid: "98664904"
 [Azure portal](https://portal.azure.com) にサインインします。 エンジン バージョン 10.2 または 10.3 を使用する Azure Database for MariaDB サーバーを作成します。 
 
 詳細については、[Azure portal](quickstart-create-mariadb-server-database-using-azure-portal.md) または [Azure CLI](quickstart-create-mariadb-server-database-using-azure-cli.md) を使用した Azure Database for MariaDB サーバーの作成を参照してください。
+
+> [!IMPORTANT]
+> リダイレクトは、[Azure Database for MariaDB 用の Private Link](concepts-data-access-security-private-link.md) では現在サポートされていません。
 
 ## <a name="enable-redirection"></a>リダイレクトを有効化する
 

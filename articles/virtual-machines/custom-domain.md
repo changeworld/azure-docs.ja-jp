@@ -9,21 +9,24 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2021
 ms.author: jamesser
 ms.reviewer: cynthn
-ms.openlocfilehash: c4797420904b6dc03550f658c2aa950a4de99c9c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 5bd9adb8354c3919a63e3de2e850513641af12a3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107250928"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696550"
 ---
 # <a name="add-custom-domain-to-azure-vm-or-resource"></a>Azure VM またはリソースにカスタム ドメインを追加する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット
+
 
 Azure では、ご利用の VM またはリソースにカスタム ドメインを接続する方法が複数あります。 パブリック IP (Virtual Machine、Load Balancer、Application Gateway) を持つリソースの場合、最も簡単な方法は、対応するドメイン レジストラーに A レコード セットを作成することです。 
 
 ## <a name="prerequisites"></a>前提条件 
 - Web サーバーが実行されている VM が必要です。 [クイックスタート](./linux/quick-create-cli.md)を使用して、VM を作成し、NGINX を追加することができます。
 
-- VM には、Web からアクセスできる必要があります (ポート 80 または 443 を開く)。 デプロイのセキュリティ保護を強化するために、最初に、ご利用の VM をロード バランサーまたは Application Gateway の内側に配置します。 詳細については、[クイックスタート: ロード バランサー](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal?tabs=option-1-create-load-balancer-standard)に関するページを参照してください。
+- VM には、Web からアクセスできる必要があります (ポート 80 または 443 を開く)。 デプロイのセキュリティ保護を強化するために、最初に、ご利用の VM をロード バランサーまたは Application Gateway の内側に配置します。 詳細については、[クイックスタート: ロード バランサー](../load-balancer/quickstart-load-balancer-standard-public-portal.md?tabs=option-1-create-load-balancer-standard)に関するページを参照してください。
 
 - 既存のドメインと DNS 設定へのアクセス権が必要です。 詳細については、[Azure App Service のカスタム ドメインを購入](../app-service/manage-custom-dns-buy-domain.md)に関するページをご覧ください。
 
@@ -73,4 +76,3 @@ A レコード エントリが DNS レコード テーブルに追加されま�
 ## <a name="next-steps"></a>次のステップ
 [Application Gateway での TLS 終端とエンド ツー エンド TLS の概要](../application-gateway/ssl-overview.md)。
 
- 

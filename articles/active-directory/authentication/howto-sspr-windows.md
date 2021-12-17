@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa2d910c017d3cc626f737bdab50315aef8d1e77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4b704e1226348f834be8f4af237443994cb456e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491387"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732725"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Windows のサインイン画面で Azure Active Directory のセルフサービス パスワード リセットを有効にする
 
@@ -45,6 +45,7 @@ Windows のサインイン画面から SSPR を使用する場合は、次の制
     - *HideFastUserSwitching* が有効または 1 に設定されている
     - *DontDisplayLastUserName* が有効または 1 に設定されている
     - *NoLockScreen* が有効または 1 に設定されている
+    - *BlockNonAdminUserInstall* が有効または 1 に設定されている
     - *EnableLostMode* がデバイスで設定されている
     - Explorer.exe をカスタム シェルで置き換える
 - 次の具体的な 3 つの設定を組み合わせると、この機能が動作しなくなる可能性があります。
@@ -185,7 +186,7 @@ Windows デバイスで SSPR を構成すると、ユーザーにとっては何
 
 ユーザーがサインインを試みると、ログイン画面に **[パスワードのリセット]** または **[パスワードを忘れた場合]** リンクが表示されます。これらのリンクを選択することで、ログイン画面でセルフサービス パスワード リセット機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
 
-この機能を使用する場合のユーザー向けの詳細については、「[職場または学校のパスワードをリセットする](../user-help/active-directory-passwords-update-your-own-password.md)」を参照してください
+この機能を使用する場合のユーザー向けの詳細については、「[職場または学校のパスワードをリセットする](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)」を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

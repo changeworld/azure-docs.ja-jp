@@ -3,16 +3,17 @@ title: Azure Data Factory におけるデータ移動のセキュリティに関
 description: Azure Data Factory におけるデータ移動の保護について説明します。
 author: nabhishek
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 33b1ad381b3f7865768f9e39295a2985f8aa5234
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d0f23ef8bd8514bc046da890e7b9b6d1d3b3d4b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375104"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218714"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -80,7 +81,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 ## <a name="hybrid-scenarios-using-data-management-gateway"></a>ハイブリッド シナリオ (Data Management Gateway を使用)
 ハイブリッド シナリオでは、オンプレミス ネットワーク、仮想ネットワーク (Azure)、または仮想プライベート クラウド (Amazon) 内に Data Management Gateway をインストールする必要があります。 ゲートウェイは、ローカル データ ストアにアクセスできる必要があります。 ゲートウェイの詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」を参照してください。 
 
-![Data Management Gateway のチャネル](media/data-factory-data-movement-security-considerations/data-management-gateway-channels.png)
+:::image type="content" source="media/data-factory-data-movement-security-considerations/data-management-gateway-channels.png" alt-text="Data Management Gateway のチャネル":::
 
 **コマンド チャネル** は、Data Factory のデータ移動サービスと Data Management Gateway 間で通信できるようにします。 通信には、アクティビティに関連する情報が含まれます。 データ チャネルは、オンプレミス データ ストアとクラウド データ ストア間でデータを転送するために使用されます。    
 
@@ -100,7 +101,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 #### <a name="click-once-credentials-manager-app"></a>ClickOnce 資格情報マネージャー アプリケーション
 パイプラインの作成時に、Azure Portal またはコピー ウィザードから ClickOnce ベースの認証情報マネージャー アプリケーションを起動できます。 このアプリケーションでは、資格情報がプレーンテキストで転送されません。 既定では、資格情報マネージャー アプリは、通信をセキュリティで保護するために、ゲートウェイ コンピューターのポート **8050** を使用します。 このポートは、必要に応じて変更できます。  
   
-![ゲートウェイの HTTPS ポート](media/data-factory-data-movement-security-considerations/https-port-for-gateway.png)
+:::image type="content" source="media/data-factory-data-movement-security-considerations/https-port-for-gateway.png" alt-text="ゲートウェイの HTTPS ポート":::
 
 現在、Data Management Gateway では 1 つの **証明書** を使用します。 この証明書は、ゲートウェイのインストール時に作成されます (2016 年 11 月以降に作成された Data Management Gateway およびバージョン 2.4.xxxx.x 以降に適用されます)。 この証明書は独自の SSL または TLS 証明書に置き換えることができます。 この証明書は、ClickOnce 資格情報マネージャー アプリケーションがデータ ストアの資格情報を設定する際にゲートウェイ コンピューターに安全に接続するために使用します。 ゲートウェイ コンピューターで Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) を使用して、データ ストアの資格情報をオンプレミスに安全に格納します。 
 
@@ -132,11 +133,11 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 **ExpressRoute:**
  
-![ExpressRoute とゲートウェイの使用](media/data-factory-data-movement-security-considerations/express-route-for-gateway.png) 
+:::image type="content" source="media/data-factory-data-movement-security-considerations/express-route-for-gateway.png" alt-text="ExpressRoute とゲートウェイの使用"::: 
 
 **IPSec VPN:**
 
-![IPSec VPN とゲートウェイの使用](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
+:::image type="content" source="media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png" alt-text="IPSec VPN とゲートウェイの使用":::
 
 ### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>ゲートウェイのファイアウォール構成とフィルタリング IP アドレス
 
@@ -162,7 +163,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 | ------------- | ----------- | 
 | 8050 (TCP) | 資格情報マネージャー アプリケーションがゲートウェイでオンプレミス データ ストアの資格情報を安全に設定するために必要です。 | 
 
-![ゲートウェイのポートの要件](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
+:::image type="content" source="media/data-factory-data-movement-security-considerations/gateway-port-requirements.png" alt-text="ゲートウェイのポートの要件":::
 
 #### <a name="ip-configurationsfiltering-in-data-store"></a>データ ストアの IP 構成またはフィルタリング
 クラウドのデータ ストアによっては、アクセス元のマシンの IP アドレスを承認する必要もあります。 ゲートウェイ コンピューターの IP アドレスがファイアウォールで適切に承認または構成されるようにします。

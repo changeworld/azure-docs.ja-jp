@@ -1,47 +1,44 @@
 ---
-title: チュートリアル - Azure 内で Linux 仮想マシンの負荷分散を行う
+title: チュートリアル - 高可用性のために VM の負荷を分散する
 description: このチュートリアルでは、Azure CLI を使用して、セキュリティで保護された高可用性アプリケーションのために 3 台の Windows 仮想マシン間で負荷分散を行うロード バランサーを作成する方法について説明します
-services: virtual-machines
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.subservice: networking
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/13/2017
+ms.date: 04/20/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 433bbd51618cfb5624c8ed2c549e1793488f0e81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33be1136005d6a8e54906372056bed0a96978453
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553767"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698981"
 ---
-# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure 内の Linux 仮想マシンを負荷分散して高可用性アプリケーションを作成する方法
+# <a name="tutorial-load-balance-vms-for-high-availability"></a>チュートリアル: 高可用性のために VM の負荷を分散する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 負荷分散では、着信要求を複数の仮想マシンに分散させることで高可用性を提供します。 このチュートリアルでは、トラフィックを分散し高可用性を提供する、Azure Load Balancer のさまざまなコンポーネントについて説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure Load Balancer を作成する
-> * ロード バランサーの正常性プローブの作成
-> * ロード バランサーのトラフィック ルールを作成する
-> * cloud-init を使用して、基本的な Node.js アプリを作成する
+> * ロード バランサーの作成
+> * 正常性プローブの作成
+> * トラフィック規則を作成する
+> * cloud-init を使用して基本的な Node.js アプリをインストールする
 > * 仮想マシンを作成してロード バランサーにアタッチする
 > * 動作中のロード バランサーを表示する
-> * ロード バランサーに VM を追加または削除する
+> * ロード バランサーに対して VM を追加または削除する
 
 このチュートリアルでは、[Azure Cloud Shell](../../cloud-shell/overview.md) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[使ってみる]** を選択します。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="azure-load-balancer-overview"></a>Azure Load Balancer の概要
+
 Azure Load Balancer は、着信トラフィックを正常な VM に分散することで高可用性を実現する第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーの正常性プローブは、各 VM の特定のポートを監視し、稼働している VM にのみトラフィックを分散します。
 
 1 つまたは複数のパブリック IP アドレスが含まれるフロントエンド IP 構成を定義します。 このフロントエンド IP 構成によって、ロード バランサーとアプリケーションにインターネット経由でアクセスできるようになります。 

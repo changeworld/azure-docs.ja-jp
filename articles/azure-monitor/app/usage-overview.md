@@ -1,26 +1,25 @@
 ---
-title: Azure Application Insights による利用状況分析 | Microsoft docs
+title: Application Insights による利用状況分析 | Azure Monitor
 description: ユーザーを理解し、提供しているアプリでユーザーが何を実行するかを理解します。
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.openlocfilehash: d9de1e10363f2100b9dfe557dc12e0be951ce6b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/30/2021
+ms.openlocfilehash: 67739c94afeb841450eb465fe5cd5259093e2e78
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489040"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729325"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
-最も人気のある Web アプリまたはモバイル アプリの機能は何か。 そのアプリによりユーザーは目標を達成したか。 特定の時点でアプリを離れたか。その後、利用を再開したか。  [Azure Application Insights](./app-insights-overview.md) は、ユーザーのアプリの使用方法に関する強力な洞察を得るのに役立ちます。 アプリを更新するたびに、アプリがユーザーにどの程度役立っているかを確認できます。 この知識により、次の開発サイクルに関してデータ駆動型の意思決定を行うことができます。
+最も人気のある Web アプリまたはモバイル アプリの機能は何か。 そのアプリによりユーザーは目標を達成したか。 特定の時点でアプリを離れたか。その後、利用を再開したか。  [Application Insights](./app-insights-overview.md) は、ユーザーのアプリの使用方法に関する強力な洞察を得るのに役立ちます。 アプリを更新するたびに、アプリがユーザーにどの程度役立っているかを確認できます。 この知識により、次の開発サイクルに関してデータ駆動型の意思決定を行うことができます。
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Cijb]
 
 ## <a name="send-telemetry-from-your-app"></a>アプリからテレメトリを送信する
 
 Application Insights をアプリのサーバー コードと Web ページの両方にインストールすることにより、最適な操作環境が得られます。 アプリのクライアントおよびサーバー コンポーネントから Azure Portal に分析用のテレメトリが送信されます。
 
-1. **サーバー コード:** [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md)、または [その他](./platforms.md)のアプリ向けの適切なモジュールをインストールします。
+1. **サーバー コード:** [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-in-process-agent.md)、[Node.js](./nodejs.md)、または [その他](./platforms.md)のアプリ向けの適切なモジュールをインストールします。
 
     * "*サーバー コードをインストールしたくない場合は、[Azure Application Insights リソースの作成](./create-new-resource.md)のみを行ってください。* "
 
@@ -47,7 +46,7 @@ Application Insights をアプリのサーバー コードと Web ページの�
 
 3. **モバイル アプリ コード:** [このガイド](../app/mobile-center-quickstart.md)に従い、App Center SDK を使ってアプリからイベントを収集し、これらのイベントのコピーを分析のために Application Insights に送信します。
 
-4. **テレメトリの取得:** プロジェクトをデバッグ モードで数分間実行し、Application Insights の [概要] ブレードで結果を確認します。
+4. **テレメトリの取得:** プロジェクトをデバッグ モードで数分間実行し、Application Insights の [概要] ウィンドウで結果を確認します。
 
     アプリを発行し、アプリのパフォーマンスを監視してユーザーがアプリを使って何をしているか確認します。
 
@@ -56,7 +55,7 @@ Application Insights をアプリのサーバー コードと Web ページの�
 
 [ユーザー] および [セッション] レポートでは、ページごとまたはカスタム イベントごとにデータをフィルター処理し、場所、環境、ページなどのプロパティでデータをセグメント化できます。 独自のフィルターを追加することもできます。
 
-![スクリーン キャプチャからは、架空の会社の [ユーザー概要] ページを確認できます。](./media/usage-overview/users.png)  
+:::image type="content" source="./media/usage-overview/users.png" alt-text="棒グラフが表示されている [ユーザー] タブの画面キャプチャ。" lightbox="./media/usage-overview/users.png":::
 
 右側の洞察では、データのセットで興味深いパターンが示されています。  
 
@@ -73,11 +72,11 @@ Application Insights をアプリのサーバー コードと Web ページの�
 - 実際のユーザー データに基づいて仮説を立てます 
 - 製品でリテンション期間が問題になるかどうかを確認します。 
 
-![スクリーン キャプチャからは、[リテンション期間の概要] ページを確認できます。ユーザーがアプリの使用を再開する頻度に関する情報が表示されています。](./media/usage-overview/retention.png) 
+:::image type="content" source="./media/usage-overview/retention.png" alt-text="ユーザーがアプリの使用を再開する頻度に関する情報が表示されているリテンション期間ブックの画面キャプチャ。" lightbox="./media/usage-overview/retention.png":::
 
 上部のリテンション期間コントロールでは、特定のイベントと時間範囲を定義して、リテンション期間を計算できます。 中央のグラフは、指定した時間範囲別のリテンション期間全体のパーセンテージを視覚的に表しています。 下部のグラフは、特定の期間における個々のリテンション期間を表しています。 この詳細レベルでは、ユーザーが何を実行し、どのような理由でユーザーが使用を再開するかをさらに詳しく把握できます。  
 
-[リテンション期間について詳細](usage-retention.md)
+[リテンション期間ブックの詳細](usage-retention.md)
 
 ## <a name="custom-business-events"></a>カスタム ビジネス イベント
 
@@ -87,12 +86,11 @@ Application Insights をアプリのサーバー コードと Web ページの�
 
 ページ ビューでは、役立つイベントを表すことができる場合もありますが、通常そうではないことがほとんどです。 ユーザーは、製品を購入しなくても製品ページを開くことができます。 
 
-特定のビジネス イベントを使用して、サイトからユーザーの進行状況をグラフ化できます。 さまざまなオプションについて、ユーザーの嗜好や、どの段階で使用を止め、どのような問題が発生しているかを確認できます。 この知識があれば、開発バックログでの優先順位について情報に基づいた意思決定を行うことができます。
+特定のビジネス イベントを使用して、サイトからユーザーの進行状況をグラフ化できます。 さまざまなオプションについて、ユーザーの嗜好や、どの段階で使用を止め、どのような問題が発生しているかをご確認ください。 この知識があれば、開発バックログでの優先順位について情報に基づいた意思決定を行うことができます。
 
 イベントは、アプリのクライアント側からログに記録することができます。
 
 ```JavaScript
-
     appInsights.trackEvent("ExpandDetailTab", {DetailTab: tabName});
 ```
 
@@ -107,14 +105,15 @@ Application Insights をアプリのサーバー コードと Web ページの�
     tc.TrackEvent("CompletedPurchase");
 ```
 
-これらのイベントにプロパティ値をアタッチできます。これにより、ポータルでイベントを確認するときに、イベントをフィルター処理または分割できます。 また、匿名ユーザー ID などのプロパティの標準セットが各イベントにアタッチされます。これにより、個人ユーザーのアクティビティのシーケンスを追跡できます。
+これらのイベントにプロパティ値をアタッチできます。これにより、ポータルでイベントを確認するときに、イベントをフィルター処理または分割できます。 匿名ユーザー ID などのプロパティの標準セットも各イベントにアタッチされます。これにより、個人ユーザーのアクティビティのシーケンスを追跡できます。
 
 [カスタム イベント](./api-custom-events-metrics.md#trackevent)と[プロパティ](./api-custom-events-metrics.md#properties)の詳細については、こちらを参照してください。
 
 ### <a name="slice-and-dice-events"></a>イベントの詳細な分析
 
 [ユーザー]、[セッション]、および [イベント] ツールでは、ユーザー、イベント名、プロパティごとにカスタム イベントを詳細に分析することができます。
-![スクリーン キャプチャからは、架空の会社の [ユーザー概要] ページを確認できます。](./media/usage-overview/users.png)  
+
+:::image type="content" source="./media/usage-overview/events.png" alt-text="AnalyticsItemsOperation によってフィルター処理され、AppID で分割された [イベント] タブの画面キャプチャ。" lightbox="./media/usage-overview/events.png":::
   
 ## <a name="design-the-telemetry-with-the-app"></a>アプリでのテレメトリの設計
 

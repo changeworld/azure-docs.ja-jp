@@ -1,18 +1,18 @@
 ---
 title: 'クイックスタート: Azure Blob Storage クライアント ライブラリ - Ruby'
 description: Azure Blob Storage にストレージ アカウントとコンテナーを作成します。 Ruby 用ストレージ クライアント ライブラリを使用して、BLOB の作成、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 12/04/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 96b47afb11a0105e8f6d6b58e8862994493389f4
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c34c042598e94cb2a86d1a068caca40bd3240b29
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277978"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587482"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-ruby"></a>クイックスタート: Ruby 用 Azure Blob Storage クライアント ライブラリ
 

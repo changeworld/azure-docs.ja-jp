@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 63db8375379144b2ede78d9e7010a350b3f69b12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fade080e631385acec46fc59c41e6624280ae9e7
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726412"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122070151"
 ---
 # <a name="orchestrator-function-code-constraints"></a>オーケストレーター関数コードの制約
 
@@ -30,7 +30,7 @@ Durable Functions は、ステートフル アプリの構築を可能にする�
 
 | API のカテゴリ | 理由 | 回避策 |
 | ------------ | ------ | ---------- |
-| 日付と時刻  | 現在の日付または時刻を返す API は、再生ごとに異なる値が返されるため、非決定論的です。 | .NET の [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) プロパティ、JavaScript の `currentUtcDateTime` API、または Python の `current_utc_datetime` API を使用します。これらは再生時に安全です。 |
+| 日付と時刻  | 現在の日付または時刻を返す API は、再生ごとに異なる値が返されるため、非決定論的です。 | .NET の [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) プロパティ、JavaScript の `currentUtcDateTime` API、または Python の `current_utc_datetime` API を使用します。これらは再生時に安全です。 同様に、"stopwatch" 型オブジェクト ([.NET の Stopwatch クラス](/dotnet/api/system.diagnostics.stopwatch)など) は避けます。 経過時間を測定する必要がある場合は、実行の開始時に `CurrentUtcDateTime` の値を格納し、実行が終了した時点でその値を `CurrentUtcDateTime` から減算します。 |
 | GUID と UUID  | ランダムな GUID または UUID を返す API は、再生のたびに異なる値が生成されるため、非決定論的です。 | ランダムな GUID を安全に生成するには、[NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) (.NET)、`newGuid` (JavaScript)、`new_guid` (Python) を使用します。 |
 | ランダムな数値 | ランダムな数値を返す API は、再生のたびに異なる値が生成されるため、非決定論的です。 | アクティビティ関数を使用してオーケストレーションに乱数を返します。 アクティビティ関数の戻り値は、常に安全に再生できます。 |
 | バインド | 入力および出力のバインドでは、通常、I/O が実行され、非決定論的です。 [オーケストレーション クライアント](durable-functions-bindings.md#orchestration-client)および[エンティティ クライアント](durable-functions-bindings.md#entity-client)のバインドも、オーケストレーター関数で直接使用することはできません。 | クライアント関数またはアクティビティ関数内では、入力および出力のバインドを使用します。 |

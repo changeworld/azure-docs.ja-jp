@@ -2,13 +2,14 @@
 title: Azure PowerShell を使用した Azure マネージド ディスクのバックアップ
 description: Azure PowerShell を使用して Azure マネージド ディスクをバックアップする方法について説明します。
 ms.topic: conceptual
-ms.date: 03/26/2021
-ms.openlocfilehash: 2e286128185c1ac7fe4861a9b06de52e10d4139a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/17/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4aab90bdd5a8ee4ecafd0dbfec81052da6b39f69
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629765"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264600"
 ---
 # <a name="back-up-azure-managed-disks-using-azure-powershell"></a>Azure PowerShell を使用した Azure マネージド ディスクのバックアップ
 
@@ -154,7 +155,50 @@ $snapshotrg = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx/resourceGroups/snapshotrg"
 
 ### <a name="assign-permissions"></a>アクセス許可の割り当て
 
-ユーザーは、コンテナー (コンテナー MSI で表示) および関連するディスクやディスク RG に対していくつかのアクセス許可を RBAC を介して割り当てる必要があります。 これらは、ポータルまたは PowerShell を使用して実行できます。 関連するすべてのアクセス許可については、[このセクション](backup-managed-disks.md#configure-backup)のポイント 1、2、3 で詳しく説明しています。
+ユーザーは、コンテナー (コンテナー MSI で表示) および関連するディスクやディスク RG に対していくつかのアクセス許可を RBAC を介して割り当てる必要があります。 これらは、ポータルまたは PowerShell を使用して実行できます。
+
+バックアップ コンテナーは、マネージド ID を使用して他の Azure リソースにアクセスします。 マネージド ディスクのバックアップを構成するには、バックアップ コンテナーのマネージド ID に、スナップショットが作成および管理されるソース ディスクとリソース グループに対する一連のアクセス許可を付与する必要があります。
+
+システム割り当てマネージド ID は、1 つのリソースにつき 1 つに限定されており、このリソースのライフサイクルに関連付けられています。 マネージド ID には、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してアクセス許可を付与できます。 マネージド ID は、Azure リソースでのみ使用できる、特殊な種類のサービス プリンシパルです。 [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の詳細を確認してください。
+
+マネージド ディスクのバックアップを構成するには、次の前提条件を確認します。
+
+- バックアップ コンテナーのマネージド ID に、バックアップする必要のあるソース ディスクに対する **ディスク バックアップの閲覧者** ロールを割り当てます。
+
+  1. バックアップする必要があるディスクに移動します。
+  1. **[アクセス制御 (IAM)]** に移動して、 **[ロールの割り当ての追加]** を選択します。
+  1. 右側のコンテキスト ウィンドウで、 **[ロール]** ドロップダウン リストから **[ディスク バックアップの閲覧者]** を選択します。
+  1. バックアップ コンテナーのマネージド ID を選択して **[保存]** をクリックします。
+  
+     >[!Tip]
+     >バックアップ コンテナーのマネージド ID を選択するには、そのコンテナーの名前を入力します。
+
+  :::image type="content" source="./media/backup-managed-disks-ps/assign-disk-backup-reader-role-inline.png" alt-text="バックアップ コンテナーのマネージド ID に、バックアップする必要のあるソース ディスクに対するディスク バックアップの閲覧者ロールを割り当てるプロセスを示すスクリーンショット。" lightbox="./media/backup-managed-disks-ps/assign-disk-backup-reader-role-expanded.png":::
+
+- バックアップ コンテナーのマネージド ID に、Azure Backup サービスによってバックアップが作成および管理されるリソース グループに対する **ディスク スナップショットの共同作成者** ロールを割り当てます。 ディスクのスナップショットは、サブスクリプション内のリソース グループに格納されます。 Azure Backup サービスでスナップショットを作成、保存、管理できるようにするには、バックアップ コンテナーへのアクセス許可を指定する必要があります。
+
+  1. リソース グループに移動します。 たとえば、リソース グループが「_SnapshotRG_」で、バックアップするディスクと同じサブスクリプション内にあるとします。
+  1. **[アクセス制御 (IAM)]** に移動して、 **[ロールの割り当ての追加]** を選択します。
+  1. 右側のコンテキスト ウィンドウで、 **[ロール]** ドロップダウン リストから **[ディスク スナップショットの共同作成者]** を選択します。 
+  1. バックアップ コンテナーのマネージド ID を選択して **[保存]** をクリックします。
+  
+     >[!Tip]
+     >バックアップ コンテナーのマネージド ID を選択するには、コンテナー名を入力します。
+
+  :::image type="content" source="./media/backup-managed-disks-ps/assign-disk-snapshot-contributor-role-inline.png" alt-text="バックアップ コンテナーのマネージド ID に、リソース グループに対するディスク スナップショットの共同作成者ロールを割り当てるプロセスを示すスクリーンショット。" lightbox="./media/backup-managed-disks-ps/assign-disk-snapshot-contributor-role-expanded.png":::
+
+- バックアップ コンテナーのマネージド ID に、スナップショット データストアとして機能するソース ディスクとリソース グループに対する適切なロールが割り当てられていることを確認します。
+
+  1. **[バックアップ コンテナー]**  ->  **[ID]** の順に移動し、 **[Azure でのロールの割り当て]** を選択します。
+ 
+     :::image type="content" source="./media/backup-managed-disks-ps/select-azure-role-assignments-inline.png" alt-text="Azure のロールの割り当ての選択を示すスクリーンショット。" lightbox="./media/backup-managed-disks-ps/select-azure-role-assignments-expanded.png":::
+
+  1. ロール、リソース名、リソースの種類が正しいことを確認します。
+ 
+     :::image type="content" source="./media/backup-managed-disks-ps/verify-role-assignment-details-inline.png" alt-text="ロール、リソース名、リソースの種類の確認を示すスクリーンショット。" lightbox="./media/backup-managed-disks-ps/verify-role-assignment-details-expanded.png":::
+
+>[!Note]
+>ポータルではロールの割り当てが正しく反映されますが、バックアップ コンテナーのマネージド ID にアクセス許可が適用されるまでに 15 分から 30 分程度かかります。
 
 ### <a name="prepare-the-request"></a>要求を準備する
 

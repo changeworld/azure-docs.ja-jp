@@ -7,14 +7,17 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: aa67a858d0396badc25a625b23dc2f2fdf1bdff9
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 4a366d704e942c74bfa32e9a0819cfda2126b2d1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551375"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456615"
 ---
 # <a name="np-series"></a>NP シリーズ 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+
 NP シリーズの仮想マシンでは、機械学習の推論、ビデオのトランスコード、データベースの検索と分析など、ワークロードを加速させるために [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA を利用しています。 また、NP シリーズの VM は Intel Xeon 8171M (Skylake) の CPU を搭載し、全コア ターボ クロック速度は 3.2 GHz です。
 
 [Premium Storage](premium-storage-performance.md): サポートされています<br>
@@ -23,10 +26,10 @@ NP シリーズの仮想マシンでは、機械学習の推論、ビデオの�
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 VM 世代サポート: 第 1 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています<br>
 <br>
 
-| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | FPGA | FPGA メモリ:GiB | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) | 
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | FPGA | FPGA メモリ:GiB | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) | 
 |---|---|---|---|---|---|---|---|
 | Standard_NP10s | 10 | 168 | 736  | 1 | 64  | 8 | 1/7500 | 
 | Standard_NP20s | 20 | 336 | 1474 | 2 | 128 | 16 | 2/15000 | 
@@ -39,14 +42,25 @@ VM 世代サポート: 第 1 世代<br>
 
 ##  <a name="frequently-asked-questions"></a>よく寄せられる質問
 
+**Q:** NP VM のクォータを要求するにはどうすればよいですか?
+
+**A:** [VM シリーズでの制限の引き上げ](../azure-portal/supportability/per-vm-quota-requests.md)に関するページの説明に従ってください。 NP VM は、米国東部、米国西部 2、西ヨーロッパ、東南アジアで利用できます。
+
 **Q:** 使用すべき Vitis のバージョンを教えてください。 
 
-**A:** Xilinx では [Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html) を推奨しています。
-
+**A:** Xilinx では、[Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html) を推奨しています。開発用 VM マーケットプレース オプション (Ubuntu 18.04 および Centos 7.8 用の Vitis 2020.2 開発用 VM) を使用することもできます。
 
 **Q:** ソリューションを開発するために NP VM を使用する必要がありますか。 
 
-**A:** いいえ。オンプレミスで開発し、クラウドにデプロイできます。 構成証明のドキュメントに従って、NP VM にデプロイしてください。 
+**A:** いいえ。オンプレミスで開発し、クラウドにデプロイできます。 [構成証明のドキュメント](./field-programmable-gate-arrays-attestation.md)に従って、NP VM にデプロイしてください。 
+
+**Q:** NP VM で FPGA をプログラミングするとき、構成証明から返されたどのファイルを使用すべきですか。
+
+**A:** 構成証明によって、2 つの xclbins (**design.bit.xclbin** および **design.azure.xclbin**) が返されます。 **design.azure.xclbin** を使用してください。
+
+**Q:** すべての XRT/プラットフォーム ファイルはどこで入手できますか。
+
+**A:** すべてのファイルについては、Xilinx の [Microsoft Azure](https://www.xilinx.com/microsoft-azure.html) サイトを参照してください。
 
 **Q:** 使用すべき XRT のバージョンを教えてください。
 
@@ -111,11 +125,22 @@ VM 世代サポート: 第 1 世代<br>
 
 **A:** これは無視しても問題ありません。 
 
-**Q:** XRT に関してオンプレミス と NP の 各VM の違いは何ですか。 
+**Q:** オンプレミス VM と NP VM の違いは何ですか。
 
-**A:** Azure では、XDMA 2.1 プラットフォームは Host_Mem (SB) および DDR データ保有機能のみをサポートします。 
+**A:**  
+<br>
+<b>- XOCL/XCLMGMT について: </b>
+<br>
+Azure NP VM では、XOCL ドライバーを使用するロール エンドポイント (デバイス ID 5005) のみが存在します。
 
-Host_Mem(SB) (1Gb RAM) を有効にするには: sudo xbutil host_mem --enable --size 1g 
+オンプレミス FPGA では、XCLMGMT ドライバーを使用する管理エンドポイント (デバイス ID 5004) と、XOCL ドライバーを使用するロール エンドポイント (デバイス ID 5005) の両方が存在します。
+
+<br>
+<b>- XRT について: </b>
+<br>
+Azure NP VM では、XDMA 2.1 プラットフォームは、Host_Mem(SB) および DDR データ保有機能のみをサポートします。 
+<br>
+Host_Mem(SB) (最大 1Gb RAM) を有効にするには: sudo xbutil host_mem --enable --size 1g 
 
 Host_Mem(SB) を無効にするには: sudo xbutil host_mem --disable 
 
@@ -136,7 +161,9 @@ Host_Mem(SB) を無効にするには: sudo xbutil host_mem --disable
 
 **A:** xbutil クエリを実行し、下の部分を確認する必要があります。 
 
-## <a name="other-sizes"></a>その他のサイズ
+
+
+## <a name="other-sizes-and-information"></a>その他のサイズと情報
 
 - [汎用](sizes-general.md)
 - [メモリの最適化](sizes-memory.md)
@@ -144,6 +171,10 @@ Host_Mem(SB) を無効にするには: sudo xbutil host_mem --disable
 - [GPU の最適化](sizes-gpu.md)
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 - [旧世代](sizes-previous-gen.md)
+
+料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+
+ディスクの種類の詳細については、「[Azure で利用できるディスクの種類](disks-types.md)」を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

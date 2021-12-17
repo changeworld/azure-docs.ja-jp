@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 08/22/2020
-ms.openlocfilehash: db4fd52dad82542f20e58ebb3b8526c5be7f2f88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 023e86b5ecc7d0b5871ba2207d09c762a3c424b1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91327325"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950958"
 ---
 # <a name="app-schema-definition"></a>アプリ スキーマ定義
 
@@ -68,7 +68,7 @@ LUIS アプリは `.json` または `.lu` で表され、すべての意図、�
 | 要素                  | コメント                              |
 |--------------------------|--------------------------------------|
 | "hierarchicals": [],     | 非推奨。[機械学習エンティティ](luis-concept-entity-types.md)を使用してください。   |
-| "composites": [],        | 非推奨。[機械学習エンティティ](luis-concept-entity-types.md)を使用してください。 [複合エンティティ](reference-entity-composite.md)のリファレンス。 |
+| "composites": [],        | 非推奨。[機械学習エンティティ](luis-concept-entity-types.md)を使用してください。 [複合エンティティ](./reference-entity-machine-learned-entity.md)のリファレンス。 |
 | "closedLists": [],       | [リスト エンティティ](reference-entity-list.md)のリファレンス。主にエンティティの特徴として使用されます。    |
 | "versionId":"0.1",      | LUIS アプリのバージョン。|
 | "name": "example-app",   | LUIS アプリの名前。 |

@@ -1,18 +1,18 @@
 ---
-title: Azure Percept での高度な開発
+title: Azure Percept を使用した高度な開発
 description: Azure Percept の高度な開発ツールの詳細について説明します。
-author: mimcco
-ms.author: mimcco
+author: tsampige
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4abe8e07a8311bab9b6e98746d0fc05bd2e89395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bfa0cc1a853d843ef5c41c4e1d9337accd6f2805
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956113"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221988"
 ---
 # <a name="advanced-development-with-azure-percept"></a>Azure Percept を使用した高度な開発
 

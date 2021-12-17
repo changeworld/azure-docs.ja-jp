@@ -4,16 +4,16 @@ titleSuffix: Azure Data Science Virtual Machine
 description: 分析と機械学習を行うために、Azure でデータ サイエンス用仮想マシンを構成および作成します。
 services: machine-learning
 ms.service: data-science-vm
-author: gvashishtha
-ms.author: gopalv
+author: cjgronlund
+ms.author: cgronlun
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 53c7eb899578a044ecca0900da722c594bdac8dc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ab55e1600b412570c54ad291b6954bccefc7cd1d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691843"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548110"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>クイック スタート:Windows 用データ サイエンス仮想マシンを設定する
 
@@ -66,5 +66,5 @@ VM にインストールされて構成されたツールを使い始めるこ�
 ## <a name="next-steps"></a>次のステップ
 
 * **[スタート]** メニューを開いて DSVM 上のツールを調べます。
-* Azure Machine Learning については、「[Azure Machine Learning とは](../overview-what-is-azure-ml.md)」を参照し、[チュートリアル](../index.yml)をお試しください。
+* Azure Machine Learning については、「[Azure Machine Learning とは](../overview-what-is-azure-machine-learning.md)」を参照し、[チュートリアル](../index.yml)をお試しください。
 * [Azure での Windows Data Science Virtual Machine を使用したデータ サイエンス](./vm-do-ten-things.md)に関する記事を参照してください。

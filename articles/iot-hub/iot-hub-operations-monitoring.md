@@ -1,20 +1,19 @@
 ---
 title: Azure IoT Hub 操作の監視 (非推奨) | Microsoft Docs
 description: Azure IoT Hub 操作の監視を使用して、IoT Hub に対する操作の状態をリアルタイムで監視する方法。
-author: robinsh
-manager: philmea
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c18ac32531a6087689c85508ac177b81c209b67c
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94408126"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553365"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub 操作の監視 (非推奨)
 
@@ -37,7 +36,7 @@ IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 
 ## <a name="how-to-enable-operations-monitoring"></a>操作の監視を有効にする方法
 
-1. IoT Hub を作成します。 IoT ハブの作成方法の手順については、[使用開始](quickstart-send-telemetry-dotnet.md)に関するガイドを参照してください。
+1. IoT Hub を作成します。 IoT ハブの作成方法の手順については、[使用開始](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)に関するガイドを参照してください。
 
 2. IoT Hub のブレードを開きます。 このブレードで、 **[操作の監視]** をクリックします。
 

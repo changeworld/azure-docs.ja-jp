@@ -2,13 +2,16 @@
 title: Azure ファイル共有を復元する
 description: Azure portal を使用して、Azure Backup によって作成された復元ポイントからファイル共有全体または特定のファイルを復元する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/12/2020
-ms.openlocfilehash: 35ca0936ae6efba716adb51f43326cdd5bfa2d98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/03/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 464c9927f901a373310ad6d1c0812a5a5de1eaaa
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89376776"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846842"
 ---
 # <a name="restore-azure-file-shares"></a>Azure ファイル共有を復元する
 
@@ -26,37 +29,25 @@ ms.locfileid: "89376776"
 
 ### <a name="select-the-file-share-to-restore"></a>復元するファイル共有を選択する
 
-1. [Azure portal](https://portal.azure.com/) で、ファイル共有のバックアップを構成するために使用した Recovery Services コンテナーを開きます。
+1. [Azure portal](https://portal.azure.com/) で、**バックアップ センター** に移動し、 **[復元]** をクリックします。
 
-1. [概要] ペインの **[保護された項目]** セクションで **[バックアップ項目]** を選択します。
+   :::image type="content" source="./media/restore-afs/backup-center-restore-inline.png" alt-text="Azure ファイル共有の復元プロセスの開始を示すスクリーンショット。" lightbox="./media/restore-afs/backup-center-restore-expanded.png":::
 
-    ![バックアップ項目の選択](./media/restore-afs/backup-items.png)
+1. データソースの種類として **[Azure Files (Azure Storage)]** を選択し、復元するファイル共有を選択して、 **[続行]** をクリックします。
 
-1. **[バックアップ項目]** を選択すると、[概要] ペインの隣に新しいペインが開き、すべてのバックアップ管理の種類が一覧表示されます。
-
-    ![バックアップの管理の種類](./media/restore-afs/backup-management.png)
-
-1. **[バックアップ項目]** ペインで、 **[バックアップの管理の種類]** の下から **[Azure Storage (Azure Files)]** を選択します。 このコンテナーを使用してバックアップされたすべてのファイル共有とそれに対応するストレージ アカウントの一覧が表示されます。
-
-    ![すべてのファイル共有の一覧](./media/restore-afs/file-shares.png)
-
-1. Azure ファイル共有の一覧から、復元操作を実行するファイル共有を選択します。
+   :::image type="content" source="./media/restore-afs/azure-file-share-select-instance.png" alt-text="バックアップ項目の選択を示すスクリーンショット。":::
 
 ### <a name="full-share-recovery"></a>完全な共有の回復
 
 この復元オプションを使用すると、元の場所または別の場所に完全なファイル共有を復元できます。
 
-1. 「[復元するファイル共有を選択する](#select-the-file-share-to-restore)」セクションの手順 5 で、復元するファイル共有を選択した後に表示される **[バックアップ項目]** ペインで **[共有の復元]** オプションを選択します。
-
-   ![共有の復元を選択する](./media/restore-afs/restore-share.png)
-
-1. **[共有の復元]** を選択すると、 **[復元]** ペインが開きます。 復元操作を実行するために使用する復元ポイントを選択するには、 **[復元ポイント]** テキスト ボックスの下にある **[選択]** リンク テキストを選択し ます。
+1. 前の手順で **[続行]** を選択した後、 **[復元]** ウィンドウが開きます。 復元操作を実行するために使用する復元ポイントを選択するには、 **[復元ポイント]** テキスト ボックスの下にある **[選択]** リンク テキストを選択し ます。
 
     ![[選択] を選択して復元ポイントを選択する](./media/restore-afs/select-restore-point.png)
 
 1. 右側に **[復元ポイントの選択]** コンテキスト ペインが開き、選択したファイル共有で使用可能な復元ポイントが一覧表示されます。 復元操作を実行するために使用する復元ポイントを選択し、 **[OK]** を選択します。
 
-    ![復元ポイントの選択](./media/restore-afs/restore-point.png)
+   :::image type="content" source="./media/restore-afs/azure-file-share-select-restore-point-inline.png" alt-text="復元ポイントの選択を示すスクリーンショット。" lightbox="./media/restore-afs/azure-file-share-select-restore-point-expanded.png":::
 
     >[!NOTE]
     >既定では、 **[復元ポイントの選択]** ペインには、過去 30 日間の復元ポイントが一覧表示されます。 特定の期間に作成された復元ポイントを確認する場合は、適切な **[開始時刻]** と **[終了時刻]** を選択して範囲を指定し、 **[最新の情報に更新]** ボタンを選択します。
@@ -72,7 +63,7 @@ ms.locfileid: "89376776"
 
 1. **[復元]** を選択して復元操作を開始します。
 
-    ![[復元] を選択して開始する](./media/restore-afs/click-restore.png)
+   :::image type="content" source="./media/restore-afs/azure-file-share-original-location-recovery.png" alt-text="[復元] を選択して開始するのを示すスクリーンショット。":::
 
 #### <a name="restore-to-an-alternate-location-full-share-recovery"></a>別の場所に復元する (完全な共有の復元)
 
@@ -83,13 +74,16 @@ ms.locfileid: "89376776"
 1. 競合がある場合にスキップするか上書きするかを選択します。
 1. すべてのボックスに適切な値を入力したら、 **[復元]** を選択して復元操作を開始します。
 
-    ![別の場所を選択する](./media/restore-afs/alternate-location.png)
+   :::image type="content" source="./media/restore-afs/azure-file-share-alternate-location-recovery.png" alt-text="[別の場所] の選択を示すスクリーンショット。":::
 
 ### <a name="item-level-recovery"></a>項目レベルの回復
 
 この復元オプションを使用すると、個々のファイルまたはフォルダーを元の場所または別の場所に復元できます。
 
-1. 「[復元するファイル共有を選択する](#select-the-file-share-to-restore)」セクションの手順 5 で、復元するファイル共有を選択した後に表示される **[バックアップ項目]** ペインで **[ファイルの回復]** オプションを選択します。
+1. **バックアップ センター** に移動し、データソースの種類として **[Azure Storage (Azure Files)]** を選択して、メニューから **[バックアップ インスタンス]** を選択します。
+1. 項目レベルの回復を実行するファイル共有を選択します。
+
+   [バックアップ項目] メニューに **[ファイルの回復]** オプションが表示されます。
 
     ![[ファイルの回復] を選択する](./media/restore-afs/file-recovery.png)
 
@@ -153,10 +147,10 @@ ms.locfileid: "89376776"
 
 また、Recovery Services コンテナーから復元の進行状況を監視することもできます。
 
-1. 復元操作をトリガーした Recovery Services コンテナーを開きます。
-1. さまざまなワークロードに対して実行されている操作の状態を確認するには、[概要] ペインの **[監視]** セクションで **[バックアップ ジョブ]** を選択します。
+1. **バックアップ センター** に移動し、メニューから **[バックアップ ジョブ]** をクリックします。
+1. 必要なデータソースの種類とジョブの状態で、ジョブをフィルター処理します。
 
-    ![バックアップ ジョブの選択](./media/restore-afs/backup-jobs.png)
+   :::image type="content" source="./media/restore-afs/backup-center-jobs-inline.png" alt-text="[バックアップ ジョブ] の選択を示すスクリーンショット。" lightbox="./media/restore-afs/backup-center-jobs-expanded.png":::
 
 1. ファイル共有に対応するワークロード名を選択すると、**転送されたデータ** や **復元されたファイルの数** など、復元操作の詳細が表示されます。
 

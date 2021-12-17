@@ -1,27 +1,27 @@
 ---
-title: Azure Synapse Analytics への予約割引の適用方法 | Microsoft Docs
+title: Azure Synapse Analytics への予約割引の適用方法 (データ ウェアハウスのみ) | Microsoft Docs
 description: コストを節約するために Azure Synapse Analytics に予約割引を適用する方法を説明します。
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: f0bd57befc0ec30473065ac69026a77e21e30e5c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: edbd58bcc1a499be364c415e4292e481da27f83f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682605"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464644"
 ---
-# <a name="how-reservation-discounts-apply-to-azure-synapse-analytics"></a>Azure Synapse Analytics への予約割引の適用方法
+# <a name="how-reservation-discounts-apply-to-azure-synapse-analytics-data-warehousing-only"></a>Azure Synapse Analytics への予約割引の適用方法 (データ ウェアハウスのみ)
 
 Azure Synapse Analytics の予約容量を購入した後で、そのリージョン内に存在するプロビジョニング済みのインスタンスに予約割引が自動的に適用されます。 予約割引は、Azure Synapse Analytics cDWU 測定ごとに発生した使用量に適用されます。 ストレージとネットワークは従量課金制で課金されます。
 
 ## <a name="reservation-discount-application"></a>適用される予約割引
 
-Azure Synapse Analytics の予約容量割引は、実行中のウェアハウスに 1 時間単位で適用されます。 ウェアハウスを 1 時間デプロイしないと、その 1 時間の予約容量は無駄になります。 持ち越すことはできません。
+Azure Synapse Analytics の予約容量割引は、実行中のデータ ウェアハウスに 1 時間単位で適用されます。 ウェアハウスを 1 時間デプロイしないと、その 1 時間の予約容量は無駄になります。 持ち越すことはできません。
 
 購入後は、購入した予約が、任意の時点でのウェアハウスの実行によって発生する Azure Synapse Analytics 使用量と照合されます。 一部のウェアハウスをシャットダウンすると、予約割引はその他の一致するウェアハウスに自動的に適用されます。
 

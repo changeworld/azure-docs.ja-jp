@@ -1,26 +1,27 @@
 ---
-title: Azure Data Factory でのパイプラインの実行アクティビティ
-description: パイプラインの実行アクティビティを使用して、ある Data Factory パイプラインを別の Data Factory パイプラインから呼び出す方法について説明します。
-author: dcstwh
-ms.author: weetok
+title: パイプラインの実行アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Execute Pipeline アクティビティを使用して、Azure Data Factory または Synapse Analytics の 1 つのパイプラインから、別のパイプラインを呼び出す方法について説明します。
+author: chez-charlie
+ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: a24bd6988a9bc8f15723ebf931f2751a09c42e26
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/09/2021
+ms.openlocfilehash: 047548a39c16c5f6b6ee3f7d359a8664c87e7062
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783746"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128566598"
 ---
-# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行アクティビティ
+# <a name="execute-pipeline-activity-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory および Synapse Analytics の Execute Pipeline アクティビティ
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-パイプラインの実行アクティビティを使用すると、Data Factory のパイプラインが別のパイプラインを呼び出すことができます。
-
-
+Execute Pipeline アクティビティを使用すると、Data Factory または Synapse の 1 つのパイプラインから別のパイプラインを呼び出すことができます。
 
 ## <a name="syntax"></a>構文
 
@@ -66,7 +67,7 @@ name | パイプラインの実行アクティビティの名前。 | String | �
 type | **ExecutePipeline** に設定する必要があります。 | String | はい
 pipeline | このパイプラインが呼び出す依存パイプラインへのパイプライン参照。 パイプライン参照オブジェクトには、**referenceName** と **type** の 2 つのプロパティがあります。 ReferenceName プロパティは、参照パイプラインの名前を指定します。 type プロパティを PipelineReference に設定する必要があります。 | PipelineReference | はい
 parameters | 呼び出されたパイプラインに渡されるパラメーター | パラメーター名を引数値にマップする JSON オブジェクト | いいえ
-waitOnCompletion | 依存パイプラインの実行が終了するまでアクティビティの実行を待機するかどうかを定義します。 既定値は false です。 | ブール型 | いいえ
+waitOnCompletion | 依存パイプラインの実行が終了するまでアクティビティの実行を待機するかどうかを定義します。 既定値は true です。 | ブール型 | いいえ
 
 ## <a name="sample"></a>サンプル
 このシナリオでは、次の 2 つのパイプラインがあります。
@@ -253,7 +254,7 @@ waitOnCompletion | 依存パイプラインの実行が終了するまでアク�
 
 ```
 ## <a name="next-steps"></a>次のステップ
-Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
+サポートされている他の制御フロー アクティビティを参照してください。 
 
 - [ForEach アクティビティ](control-flow-for-each-activity.md)
 - [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md)

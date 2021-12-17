@@ -7,44 +7,46 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: quickstart
-ms.date: 12/02/2020
+ms.topic: include
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01149eed5cc4195ca501507e7fe1d66fffecb84d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ceeb1804c9332d9e0d3e11336ff92e8aacc8516c
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327249"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129585269"
 ---
 光学式文字認識 REST API を使用して、印刷されたテキストや手書きのテキストを読み取ります。
 
 > [!NOTE]
-> このクイックスタートでは、cURL コマンドを使用して REST API を呼び出します。 また、プログラミング言語を使用して REST API を呼び出すこともできます。 GitHub のサンプルを参照して、[C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/ComputerVision/REST)、[Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/ComputerVision/REST)、[Java](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/java/ComputerVision/REST)、[JavaScript](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/ComputerVision/REST)、[Go](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/go/ComputerVision/REST) の例をご確認ください。
+> このクイックスタートでは、cURL コマンドを使用して REST API を呼び出します。 また、プログラミング言語を使用して REST API を呼び出すこともできます。 GitHub のサンプルを参照して、<bpt id="p1">[</bpt>C#<ept id="p1">](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/ComputerVision/REST)</ept>、<bpt id="p2">[</bpt>Python<ept id="p2">](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/ComputerVision/REST)</ept>、<bpt id="p3">[</bpt>Java<ept id="p3">](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/java/ComputerVision/REST)</ept>、<bpt id="p4">[</bpt>JavaScript<ept id="p4">](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/ComputerVision/REST)</ept>、<bpt id="p5">[</bpt>Go<ept id="p5">](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/go/ComputerVision/REST)</ept> の例をご確認ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/) 
-* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成</a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+* Azure サブスクリプション - <bpt id="p1">[</bpt>無料アカウントを作成します<ept id="p1">](https://azure.microsoft.com/free/cognitive-services/)</ept> 
+* Azure サブスクリプションを入手したら、Azure portal で <ph id="ph1"><a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="</ph>Computer Vision リソースを作成<ph id="ph2">"  target="_blank"></ph>Computer Vision リソースを作成<ph id="ph3"></a></ph>し、キーとエンドポイントを取得します。 デプロイされたら、 <bpt id="p1">**</bpt>[リソースに移動]<ept id="p1">**</ept> をクリックします。
   * 対象のアプリケーションを Computer Vision サービスに接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
-  * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
-* インストールされた [cURL](https://curl.haxx.se/)
+  * Free 価格レベル (<ph id="ph1">`F0`</ph>) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* インストールされた <bpt id="p1">[</bpt>cURL<ept id="p1">](https://curl.haxx.se/)</ept>
 
 
+## <a name="extract-printed-and-handwritten-text"></a>印刷されたテキストと手書きテキストの抽出
 
-## <a name="read-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストを読み取る
+OCR サービスを使用すると、画像またはドキュメント内の可視テキストを抽出し、文字ストリームに変換することができます。 テキスト抽出の詳細については、[光学式文字認識 (OCR)](../overview-ocr.md) の概要を参照してください。
 
-OCR サービスは、画像に映っているテキストを読み取って、文字ストリームに変換することができます。 テキスト認識の詳細については、[光学式文字認識 (OCR) の概要](../overview-ocr.md)を参照してください。
+
+### <a name="call-the-read-api"></a>Read API を呼び出す
 
 このサンプルを作成して実行するには、次の手順を実行します。
 
 1. テキスト エディターに次のコマンドをコピーします。
 1. 必要に応じて、コマンドに次の変更を加えます。
-    1. `<subscriptionKey>` 値を、サブスクリプション キーに置き換えます。
-    1. 要求 URL (`westcentralus`) の最初の部分を独自のエンドポイント URL 内のテキストに置き換えます。
+    1. <ph id="ph1">`<subscriptionKey>`</ph> 値を、サブスクリプション キーに置き換えます。
+    1. 要求 URL (<ph id="ph1">`westcentralus`</ph>) の最初の部分を独自のエンドポイント URL 内のテキストに置き換えます。
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
-    1. 必要に応じて、要求本文の画像 URL (`https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\`) を、分析する別の画像の URL に変更します。
+    1. 必要に応じて、要求本文の画像 URL (<ph id="ph1">`https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\`</ph>) を、分析する別の画像の URL に変更します。
 1. コマンド プロンプト ウィンドウを開きます。
 1. テキスト エディターからコマンド プロンプト ウィンドウにコマンドを貼り付けて、コマンドを実行します。
 
@@ -52,12 +54,17 @@ OCR サービスは、画像に映っているテキストを読み取って、�
 curl -v -X POST "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/read/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\"}"
 ```
 
-応答には `Operation-Location` ヘッダーが含まれ、その値は一意の URL になります。 この URL を使用して、読み取り操作の結果に対してクエリを実行します。 URL の有効期間は 48 時間です。
+応答には <ph id="ph1">`Operation-Location`</ph> ヘッダーが含まれ、その値は一意の URL になります。 この URL を使用して、読み取り操作の結果に対してクエリを実行します。 URL の有効期間は 48 時間です。
+
+### <a name="how-to-use-preview-features"></a>プレビュー機能の使用方法
+プレビューの言語と機能については、最新のプレビューを使用するための[モデル バージョンの指定方法](../Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional)に関するページを参照してください。 プレビュー モデルには、現在の GA の言語と機能に対する拡張機能が含まれています。
+
+### <a name="get-read-results"></a>読み取りの結果を取得する
 
 1. テキスト エディターに次のコマンドをコピーします。
-1. URL を前の手順でコピーした `Operation-Location` 値に置き換えます。
+1. URL を前の手順でコピーした <ph id="ph1">`Operation-Location`</ph> 値に置き換えます。
 1. 必要に応じて、コマンドに次の変更を加えます。
-    1. `<subscriptionKey>` 値を、サブスクリプション キーに置き換えます。
+    1. <ph id="ph1">`<subscriptionKey>`</ph> 値を、サブスクリプション キーに置き換えます。
 1. コマンド プロンプト ウィンドウを開きます。
 1. テキスト エディターからコマンド プロンプト ウィンドウにコマンドを貼り付けて、コマンドを実行します。
 
@@ -131,7 +138,9 @@ curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/re
 
 ## <a name="next-steps"></a>次のステップ
 
-OCR API の詳細を確認します。 API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005/console)をお試しください。
+このクイックスタートでは、Read REST API を呼び出す方法について説明しました。 次は、Read API の機能の詳細について学習しましょう。
 
 > [!div class="nextstepaction"]
-> [OCR API の詳細](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
+><bpt id="p1">[</bpt>Read API を呼び出す<ept id="p1">](../Vision-API-How-to-Topics/call-read-api.md)</ept>
+
+* <bpt id="p1">[</bpt>OCR の概要<ept id="p1">](../overview-ocr.md)</ept>

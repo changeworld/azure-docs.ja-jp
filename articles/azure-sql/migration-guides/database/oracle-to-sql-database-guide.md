@@ -5,24 +5,24 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
-author: MashaMSFT
-ms.author: mathoma
+ms.topic: how-to
+author: cawrites
+ms.author: chadam
 ms.date: 08/25/2020
-ms.openlocfilehash: 9ae7e8c4544d2e8bd9dc4ff846aabb0c7f7f9358
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 0a6f7bca2e6a3a1f0ac10f868ddeffe72d082c28
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284257"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746676"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>移行ガイド: Oracle から Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-このガイドでは、[SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant for Oracle (SSMA for Oracle) を使用して、Oracle のスキーマを Azure SQL Database に[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。
+このガイドでは、[SQL Server Migration](https://azure.microsoft.com/migration/sql-server/) Assistant for Oracle (SSMA for Oracle) を使用して、Oracle スキーマを Azure SQL Database に[移行する](https://azure.microsoft.com/migration/migration-journey)方法について説明します。
 
-その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。
+その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,7 +32,7 @@ Oracle スキーマの SQL Database への移行を始める前に:
 - [SSMA for Oracle](https://www.microsoft.com/download/details.aspx?id=54258) をダウンロードします。
 - ターゲットの [SQL Database](../../database/single-database-create-quickstart.md) インスタンスを用意します。
 - [SSMA for Oracle に必要なアクセス許可](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql)と[プロバイダー](/sql/ssma/oracle/connect-to-oracle-oracletosql)を取得します。
- 
+
 ## <a name="pre-migration"></a>移行前
 
 前提条件を満たしたら、環境のトポロジを検出し、[Azure Cloud 移行](https://azure.microsoft.com/migration)の実現可能性を評価する準備が整いました。 プロセスのこの部分では、移行する必要があるデータベースのインベントリを実行し、移行に関する潜在的な問題や障害の有無についてそれらのデータベースを評価し、発見していなかったおそれがあるすべての項目を解決します。
@@ -41,10 +41,10 @@ Oracle スキーマの SQL Database への移行を始める前に:
 
 SSMA for Oracle を使用すると、データベース オブジェクトとデータを確認し、移行についてデータベース オブジェクトを評価し、SQL Database にデータベース オブジェクトを移行して、最後にそのデータベースにデータを移行することができます。
 
-評価を作成するには、次のようにします。
+評価を作成するには:
 
 1. [SSMA for Oracle](https://www.microsoft.com/download/details.aspx?id=54258) を開きます。
-1. **[ファイル]** を選択し、 **[新しいプロジェクト]** を選択します。
+1. **[ファイル]** を選択してから、 **[新しいプロジェクト]** を選択します。
 1. プロジェクト名と、プロジェクトを保存する場所を入力します。 次に、ドロップダウンリストから移行ターゲットとして **[Azure SQL Database]** を選択し、 **[OK]** を選択します。
 
    ![[Oracle への接続] を示すスクリーンショット。](./media/oracle-to-sql-database-guide/connect-to-oracle.png)
@@ -55,7 +55,7 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 
    ![Oracle スキーマの選択を示すスクリーンショット。](./media/oracle-to-sql-database-guide/select-schema.png)
 
-1. **[Oracle Metadata Explorer]\(Oracle メタデータ エクスプローラー\)** で、移行する Oracle スキーマを右クリックし、 **[レポートの作成]** を選択して HTML レポートを生成します。 または、データベースを選択し、 **[レポートの作成]** タブを選択してもかまいません。
+1. **[Oracle Metadata Explorer]\(Oracle メタデータ エクスプローラー\)** で、移行する Oracle スキーマを右クリックし、 **[レポートの作成]** を選択して HTML レポートを生成します。 代わりに、データベースを選択し、 **[レポートの作成]** タブを選択してもかまいません。
 
    ![[レポートの作成] を示すスクリーンショット。](./media/oracle-to-sql-database-guide/create-report.png)
 
@@ -78,7 +78,7 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 
 ### <a name="convert-the-schema"></a>スキーマの変換
 
-スキーマを変換するには、次のようにします。
+スキーマを変換するには:
 
 1. (省略可能) 動的またはアドホック クエリをステートメントに追加します。 ノードを右クリックし、 **[Add statements]\(ステートメントの追加\)** を選択します。
 1. **[Azure SQL Database への接続]** タブを選択します。
@@ -111,9 +111,9 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 
 1. **[Azure SQL Database Metadata Explorer]\(Azure SQL Database メタデータ エクスプローラー\)** の **[データベース]** ノードでデータベースを右クリックし、 **[Synchronize with Database]\(データベースと同期\)** を選択して、スキーマを発行します。
 
-   ![[データベースとの同期] を示すスクリーンショット。](./media/oracle-to-sql-database-guide/synchronize-with-database.png)
+   ![[Synchronize with Database]\(データベースと同期\) を示すスクリーンショット。](./media/oracle-to-sql-database-guide/synchronize-with-database.png)
 
-1. 自分のソース プロジェクトとターゲット間のマッピングを確認します。
+1. ソース プロジェクトとターゲットの間のマッピングを確認します。
 
    ![[Synchronize with the Database]\(データベースとの同期\) のレビューを示すスクリーンショット。](./media/oracle-to-sql-database-guide/synchronize-with-database-review.png)
 
@@ -124,7 +124,7 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 1. Oracle と SQL Database 両方の接続の詳細を入力します。
 1. 移行が完了したら、**データ移行レポート** を表示します。
 
-   ![[データ移行レポート] を示すスクリーンショット。](./media/oracle-to-sql-database-guide/data-migration-report.png)
+   ![[Data Migration Report]\(データ移行レポート\) を示すスクリーンショット。](./media/oracle-to-sql-database-guide/data-migration-report.png)
 
 1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) を使用してお使いの SQL Database インスタンスに接続し、データとスキーマを確認して移行を検証します。
 
@@ -141,22 +141,110 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 
 ### <a name="remediate-applications"></a>アプリケーションを修復する
 
-データがターゲット環境に移行された後、以前にソースを使用していたすべてのアプリケーションは、ターゲットの使用を開始する必要があります。 このタスクを実現するために、場合によってはアプリケーションの変更が必要になります。
+データがターゲット環境に移行された後、以前にソースを使用していたすべてのアプリケーションは、ターゲットの使用を開始する必要があります。 このタスクを実行するには、場合によってはアプリケーションの変更が必要になります。
 
 [Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) は、Java ソース コードを分析し、データ アクセス API の呼び出しとクエリを検出できるようにする Visual Studio Code の拡張機能です。 このツールキットを使用すると、新しいデータベース バックエンドをサポートするために対処する必要があることが、単一ペインのビューに表示されます。 詳細については、[Oracle からの Java アプリケーションの移行](https://techcommunity.microsoft.com/t5/microsoft-data-migration/migrate-your-java-applications-from-oracle-to-sql-server-with/ba-p/368727)に関するブログ記事を参照してください。
 
 ### <a name="perform-tests"></a>テストを実行する
 
-データベース移行に対するテスト アプローチは、次のアクティビティで構成されています。
+データベース移行に対するテスト アプローチは、次のアクティビティで構成されます。
 
-1. **検証テストを作成する**: データベースの移行をテストするには、SQL クエリを使用する必要があります。 ソース データベースとターゲット データベースの両方に対して実行する検証クエリを作成する必要があります。 検証クエリには、定義したスコープが含まれている必要があります。
+1. **検証テストを作成する**: データベース移行をテストするには、SQL クエリを使用する必要があります。 ソース データベースとターゲット データベースの両方に対して実行する検証クエリを作成する必要があります。 その検証クエリでは、定義されているスコープに対応する必要があります。
 1. **テスト環境を設定する**: このテスト環境には、ソース データベースとターゲット データベースのコピーを含める必要があります。 必ずテスト環境を分離してください。
-1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
-1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
+1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行した後、結果を分析します。
+1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行した後、結果を分析および比較します。
+
+### <a name="validate-migrated-objects"></a>移行されたオブジェクトを検証する
+
+Microsoft SQL Server Migration Assistant for Oracle Tester (SSMA Tester) を使用すると、移行されたデータベース オブジェクトをテストできます。 SSMA Tester は、変換されたオブジェクトが同じように動作することを検証するために使用されます。
+
+#### <a name="create-test-case"></a>テスト ケースの作成
+
+1. SSMA for Oracle を開き、 **[Tester]\(Tester\)** 、 **[新しいテストケース]** の順に選択します。
+   ![新しいテスト ケースの作成を示すスクリーンショット。](./media/oracle-to-sql-database-guide/ssma-tester-new.png)
+
+1. 新しいテスト ケースに関して、次の情報を指定します。
+
+   **[名前]:** テスト ケースを識別する名前を入力します。
+
+   **[作成日]:** 今日の日付が自動的に定義されます。
+
+   **[最終更新日]:** 自動的に入力され、変更することはできません。
+
+   **[説明]:** テスト ケースの目的を示すための任意の追加情報を入力します。
+
+   ![テスト ケースの初期化手順を示すスクリーンショット。](./media/oracle-to-sql-database-guide/tester-init-test-case.png)
+
+1. 左側にある Oracle のオブジェクト ツリーから、テスト ケースの一部であるオブジェクトを選択します。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-select-configure-objects.png" alt-text="オブジェクトを選択して構成するステップを示すスクリーンショット。":::
+
+   この例では、ストアド プロシージャ `ADD_REGION` とテーブル `REGION` が選択されています。
+
+     詳細については、「[テストするオブジェクトの選択と構成](/sql/ssma/oracle/selecting-and-configuring-objects-to-test-oracletosql)」を参照してください。
+
+1. 次に、左側のウィンドウの Oracle のオブジェクト ツリーから、テーブル、外部キー、その他の依存オブジェクトを選択します。
+
+   :::image type="content" source="./media//oracle-to-sql-database-guide/tester-select-configure-affected.png" alt-text="影響を受けるオブジェクトを選択して構成するステップを示すスクリーンショット。":::
+
+   詳細については、「[影響を受けるオブジェクトの選択と構成](/sql/ssma/oracle/selecting-and-configuring-affected-objects-oracletosql)」を参照してください。
+
+1. オブジェクトの評価シーケンスを確認します。 順序を変更するにはグリッド内のボタンをクリックします。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/test-call-ordering.png" alt-text="テスト オブジェクトの実行シーケンスを指定するステップを示すスクリーンショット。":::
+
+1. 前の手順で指定した情報を確認して、テスト ケースを最終処理します。 テスト シナリオに基づいて、テストの実行オプションを構成します。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-finalize-case.png" alt-text="オブジェクトを最終処理するステップを示すスクリーンショット。":::
+
+   テスト ケースの設定の詳細については、「[テスト ケースの準備の終了](/sql/ssma/oracle/finishing-test-case-preparation-oracletosql)」を参照してください
+
+1. [完了] をクリックして、テスト ケースを作成します。
+
+   :::image type="content" source="./media//oracle-to-sql-database-guide/tester-test-repo.png" alt-text="リポジトリをテストするステップを示すスクリーンショット。":::
+
+#### <a name="run-test-case"></a>テスト ケースを実行する
+
+SSMA Tester でテスト ケースが実行されると、テスト対象に選択したオブジェクトがテスト エンジンによって実行されて、検証レポートが生成されます。
+
+1. テスト リポジトリからテスト ケースを選択し、[実行] をクリックします。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-repo-run.png" alt-text="テスト リポジトリの確認を示すスクリーンショット。":::
+
+1. 起動テスト ケースを確認し、[実行] をクリックします。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-run-test-case.png" alt-text="テスト ケースを実行するステップを示すスクリーンショット":::
+
+1. 次に、Oracle ソースの資格情報を指定します。 資格情報を入力した後、[接続] をクリックします。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-oracle-connect.png" alt-text="Oracle ソースに接続するステップを示すスクリーンショット":::
+
+1. 対象の SQL Server の資格情報を入力し、[接続] をクリックします。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-sql-connect.png" alt-text="SQL ターゲットに接続するステップを示すスクリーンショット。":::
+
+   成功すると、テスト ケースは初期化ステージに移動します。
+
+1. リアルタイムの進行状況バーに、テスト実行の実行状態が示されます。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-run-status.png" alt-text="テスト担当者にテストの進行状況を示すスクリーンショット。":::
+
+1. テストの完了後にレポートを確認します。 レポートには、統計、テストの実行中に発生したエラー、および詳細レポートが表示されます。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-test-result.png" alt-text="サンプル テスターのテスト レポートを示すスクリーンショット":::
+
+1. [詳細] をクリックすると、詳細情報が表示されます。
+
+   合格したデータ検証の例。
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-test-success.png" alt-text="サンプル テスターの合格レポートを示すスクリーンショット。":::
+
+   失敗したデータ検証の例。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-test-failed.png" alt-text="テスターの不合格レポートを示すスクリーンショット。":::
 
 ### <a name="optimize"></a>最適化
 
-移行後フェーズは、データの精度の問題の調整、完全性の確認、およびワークロードのパフォーマンスの問題への対処のために非常に重要です。
+移行後の段階は、発生したデータの精度の問題を調整したり、完全性を検証したり、ワークロードでのパフォーマンスの問題に対処したりするために非常に重要です。
 
 > [!NOTE]
 > これらの問題と、それらを軽減するための具体的な手順の詳細については、「[移行後の検証および最適化ガイド](/sql/relational-databases/post-migration-validation-and-optimization-guide)」を参照してください。
@@ -167,11 +255,10 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 
 | **タイトルとリンク**                                                                                                                                          | **説明**                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションまたはデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。                                                          |
-| [Oracle インベントリ スクリプト成果物](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | この資産には、Oracle システム テーブルにヒットし、スキーマの種類、オブジェクトの種類、および状態別にオブジェクトの数を提供する PL/SQL クエリが含まれています。 また、各スキーマの生データの概算値と、各スキーマ内のテーブルのサイズ設定も提供されます。結果は CSV 形式で格納されます。                                                                                                               |
-| [SSMA Oracle 評価コレクションと統合の自動化](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | このリソースのセットでは、エントリとして .csv ファイル (プロジェクトのフォルダー内の sources.csv) を使用して、コンソール モードで SSMA 評価を実行するために必要な xml ファイルが生成されます。 source.csv は、既存の Oracle インスタンスのインベントリに基づいて、顧客によって提供されます。 出力ファイルは、AssessmentReportGeneration_source_1.xml、ServersConnectionFile.xml、および VariableValueFile.xml です。|
-| [SSMA for Oracle の一般的なエラーとその修正方法](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | Oracle では、WHERE 句に非スカラー条件を割り当てることができます。 しかし、SQL Server ではこの種類の条件はサポートされていません。 その結果、SSMA for Oracle によって WHERE 句に非スカラー条件が含まれるクエリは変換されません。 代わりに、エラー O2SS0001 が生成されます。 このホワイト ペーパーでは、この問題とその解決方法について詳しく説明しています。          |
-| [Oracle から SQL Server への移行に関するハンドブック](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | このドキュメントでは、Oracle スキーマを最新バージョンの SQL Server データベースに移行する場合に関連するタスクに焦点が当てられています。 移行によって機能の変更が必要な場合は、そのデータベースを使用するアプリケーションでの各変更によって生じる可能性のある影響について、慎重に検討する必要があります。                                                     |
+| [データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130) | このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションまたはデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。                                                          |
+| [Oracle インベントリ スクリプト成果物](https://www.microsoft.com/download/details.aspx?id=103121)                 | この資産には、Oracle システム テーブルにヒットし、スキーマの種類、オブジェクトの種類、および状態別にオブジェクトの数を提供する PL/SQL クエリが含まれています。 また、各スキーマの生データの概算値と、各スキーマ内のテーブルのサイズ設定も提供されます。結果は CSV 形式で格納されます。                                                                                                               |
+| [SSMA Oracle 評価コレクションと統合の自動化](https://www.microsoft.com/download/details.aspx?id=103120)                                             | このリソースのセットでは、エントリとして .csv ファイル (プロジェクトのフォルダー内の sources.csv) を使用して、コンソール モードで SSMA 評価を実行するために必要な xml ファイルが生成されます。 source.csv は、既存の Oracle インスタンスのインベントリに基づいて、顧客によって提供されます。 出力ファイルは、AssessmentReportGeneration_source_1.xml、ServersConnectionFile.xml、および VariableValueFile.xml です。|
+| [Oracle から SQL DB - データベース比較ユーティリティ](https://www.microsoft.com/download/details.aspx?id=103016)|SSMA for Oracle Tester は、データベース オブジェクトの変換とデータ移行を自動的に検証するために推奨されるツールであり、データベース比較機能のスーパーセットです。<br /><br />別のデータ検証オプションを探している場合は、データベース比較ユーティリティを使用して、すべてのまたは選択したテーブル、行、および列の行または列レベルまでデータを比較できます。|
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 

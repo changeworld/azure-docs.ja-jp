@@ -2,18 +2,16 @@
 title: Azure Monitor ブックの蜂の巣の視覚化
 description: Azure Monitor ブックの蜂の巣の視覚化について説明します。
 services: azure-monitor
-author: lgayhardt
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.author: lagayhar
-ms.openlocfilehash: c91912f711b912c54c1673f2f92e998b4d9ea9db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ba24669f04966d9ee3cfa5af4cd677e83ad3ea7a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101736935"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256612"
 ---
 # <a name="honey-comb-visualizations"></a>蜂の巣の視覚化
 
@@ -95,4 +93,4 @@ ms.locfileid: "101736935"
 ## <a name="next-steps"></a>次の手順
 
 - [ブックで複合バー レンダラー](workbooks-composite-bar.md)を作成する方法を確認します。
-- [Azure Monitor ログ データを Power BI にインポートする](./powerbi.md)方法を確認します。
+- [Azure Monitor ログ データを Power BI にインポートする](../logs/log-powerbi.md)方法を確認します。

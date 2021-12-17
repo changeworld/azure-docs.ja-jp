@@ -6,21 +6,26 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/08/2021
+ms.date: 07/23/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: ef1ed584a609b2e4baa27111e47343df99146f5a
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 1e40e8cb31019fa8a9dd35f41dc677225d613180
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257502"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720589"
 ---
 # <a name="soft-delete-for-blobs"></a>BLOB の論理的な削除
 
 BLOB の論理的な削除を使用すると、削除されたデータがシステムに一定の期間保持されることにより、個々の BLOB、スナップショット、またはバージョンが誤った削除または上書きから保護されます。 保持期間中は、論理的に削除されたオブジェクトを削除された時点の状態に復元することができます。 保持期間が経過すると、オブジェクトは完全に削除されます。
 
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+> [!IMPORTANT]
+> 階層型名前空間機能が有効になっているアカウントでの論理的な削除は、現在プレビュー段階であり、すべての Azure リージョンでグローバルに利用できます。
+> ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+>
+>
+> プレビューに登録するには、[こちらのフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pUOVRVOUpDRUtHVUtDUUtMVTZUR0tUMjZWNy4u)を参照してください。
 
 ## <a name="recommended-data-protection-configuration"></a>推奨されるデータ保護の構成
 
@@ -46,12 +51,12 @@ BLOB の論理的な削除は、BLOB データの包括的なデータ保護戦�
 
 BLOB の論理的な削除を無効にすると、論理的な削除の保持期間が経過するまでは、ストレージ アカウント内の論理的に削除されたオブジェクトに引き続きアクセスして復旧できます。
 
-BLOB のバージョン管理は、汎用 v2、ブロック BLOB、Blob Storage の各アカウントで使用できます。 階層型名前空間が Azure Data Lake Storage Gen2 で使用できるストレージ アカウントは、現在、サポートされていません。
+BLOB のバージョン管理は、汎用 v2、ブロック BLOB、Blob Storage の各アカウントで使用できます。 階層型名前空間を持つストレージ アカウントは、現在サポートされていません。
 
 バージョン 2017-07-29 以降の Azure Storage REST API では、BLOB の論理的な削除がサポートされています。
 
 > [!IMPORTANT]
-> BLOB の論理的な削除は、個々の BLOB、スナップショット、またはバージョンの復元のみに使用できます。 コンテナーとその内容を復元するには、ストレージ アカウントでコンテナーの論理的な削除を有効にする必要があります。 BLOB データを完全に保護するために、コンテナーの論理的な削除と BLOB のバージョン管理を BLOB の論理的な削除と共に有効にすることをお勧めします。 詳細については、「[データ保護の概要](data-protection-overview.md)」を参照してください。
+> BLOB の論理的な削除は、個々の BLOB、スナップショット、(階層型名前空間の) ディレクトリ、またはバージョンの復元のみに使用できます。 コンテナーとその内容を復元するには、ストレージ アカウントでコンテナーの論理的な削除を有効にする必要があります。 BLOB データを完全に保護するために、コンテナーの論理的な削除と BLOB のバージョン管理を BLOB の論理的な削除と共に有効にすることをお勧めします。 詳細については、「[データ保護の概要](data-protection-overview.md)」を参照してください。
 >
 > BLOB 論理的な削除を使用して、ストレージ アカウントの削除から保護することはできません。 ストレージ アカウントを削除から保護するには、ストレージ アカウント リソースに対してロックを構成します。 ストレージ アカウントのロックの詳細については、「[Azure Resource Manager のロックをストレージ アカウントに適用する](../common/lock-account-resource.md)」を参照してください。
 
@@ -63,9 +68,14 @@ BLOB にスナップショットがある場合、スナップショットも削
 
 ベース BLOB を削除せずに、アクティブなスナップショットを 1 つ以上削除することもできます。 この場合、スナップショットは論理的に削除されます。
 
+階層型名前空間機能が有効になっているアカウントでディレクトリが削除された場合、ディレクトリとそのすべての内容は、論理的な削除としてマークされます。
+
 論理的に削除されたオブジェクトは、明示的に表示または一覧表示されない限り、非表示になります。 論理的に削除されたオブジェクトを一覧表示する方法の詳細については、「[論理的に削除された BLOB を管理および復元する](soft-delete-blob-manage.md)」を参照してください。
 
 ### <a name="how-overwrites-are-handled-when-soft-delete-is-enabled"></a>論理的な削除が有効になっているときに上書きが処理される方法
+
+> [!IMPORTANT]
+> このセクションは、階層型名前空間を持つアカウントには適用されません。
 
 [Put Blob](/rest/api/storageservices/put-blob)、[Put Block List](/rest/api/storageservices/put-block-list)、[Copy Blob](/rest/api/storageservices/copy-blob) などの操作を呼び出すと、BLOB 内のデータが上書きされます。 BLOB の論理的な削除が有効になっている場合、BLOB を上書きすると、書き込み操作の前に、BLOB の状態の論理的に削除されたスナップショットが自動的に作成されます。 保持期間が終了すると、論理的に削除されたスナップショットは完全に削除されます。
 
@@ -81,7 +91,9 @@ Premium Storage アカウントの場合、論理的に削除されたスナッ�
 
 ### <a name="restoring-soft-deleted-objects"></a>論理的に削除されたオブジェクトの復元
 
-保持期間内に [Undelete Blob](/rest/api/storageservices/undelete-blob) 操作を呼び出すことで、論理的に削除された BLOB を復元できます。 **Undelete Blob** 操作を実行すると、BLOB とそれに関連付けられている論理的に削除されたスナップショットが復元されます。 保持期間中に削除されたすべてのスナップショットが復元されます。
+保持期間内に [Undelete Blob](/rest/api/storageservices/undelete-blob) 操作を呼び出すことで、論理的に削除された BLOB または (階層型名前空間の) ディレクトリを復元できます。 **Undelete Blob** 操作を実行すると、BLOB とそれに関連付けられている論理的に削除されたスナップショットが復元されます。 保持期間中に削除されたすべてのスナップショットが復元されます。
+
+階層型名前空間を持つアカウントでは、**BLOB の削除の取り消し** 操作を使用して、論理的に削除されたディレクトリとそのすべての内容を復元することもできます。 論理的に削除された BLOB を含むディレクトリの名前を変更すると、それらの論理的に削除された BLOB はディレクトリから切断されます。 それらの BLOB を復元するには、ディレクトリの名前を元の名前に戻すか、元のディレクトリ名を使用する別のディレクトリを作成する必要があります。 そうしないと、これらの論理的に削除された BLOB を復元しようとしたときにエラーが発生します。
 
 論理的に削除されていない BLOB に対して **Undelete Blob** を呼び出すと、その BLOB に関連付けられている論理的に削除されたすべてのスナップショットが復元されます。 BLOB にスナップショットがなく、論理的に削除されていない場合、**Undelete Blob** を呼び出しても何も行われません。
 
@@ -92,6 +104,9 @@ Premium Storage アカウントの場合、論理的に削除されたスナッ�
 論理的に削除されたオブジェクトを復元する方法の詳細については、「[論理的に削除された BLOB を管理および復元する](soft-delete-blob-manage.md)」を参照してください。
 
 ## <a name="blob-soft-delete-and-versioning"></a>BLOB の論理的な削除とバージョン管理
+
+> [!IMPORTANT]
+> バージョン管理は、階層型名前空間があるアカウントではサポートされていません。
 
 ストレージ アカウントで BLOB のバージョン管理と BLOB の論理的な削除の両方が有効になっている場合、BLOB を上書きすると、新しいバージョンが自動的に作成されます。 新しいバージョンは論理的に削除されず、論理的な削除の保有期間が過ぎても削除されません。 論理的に削除されたスナップショットは作成されません。 ある BLOB を削除すると、その BLOB の現在のバージョンが前のバージョンになり、現在のバージョンは存在しなくなります。 新しいバージョンは作成されず、論理的に削除されたスナップショットは作成されません。
 
@@ -106,14 +121,16 @@ Premium Storage アカウントの場合、論理的に削除されたスナッ�
 
 ## <a name="blob-soft-delete-protection-by-operation"></a>操作による BLOB の論理的な削除の保護
 
-次の表では、BLOB の論理的な削除が有効になっている場合に、BLOB のバージョン管理を有効または無効にしたときの、削除操作と書き込み操作の想定される動作について説明します。
+次の表は、BLOB の論理的な削除が有効にされていて、BLOB のバージョン管理が有効または無効にされている場合の、削除操作と書き込み操作の想定される動作を示しています。
+
+### <a name="storage-account-no-hierarchical-namespace"></a>ストレージ アカウント (階層型名前空間なし)
 
 | REST API の操作 | 論理的な削除が有効 | 論理的な削除とバージョン管理が有効 |
 |--|--|--|
 | [Delete Storage Account](/rest/api/storagerp/storageaccounts/delete) | 変更はありません。 削除されたアカウントのコンテナーと BLOB は復旧できません。 | 変更はありません。 削除されたアカウントのコンテナーと BLOB は復旧できません。 |
 | [Delete Container](/rest/api/storageservices/delete-container) | 変更はありません。 削除されたコンテナーの BLOB は復旧できません。 | 変更はありません。 削除されたコンテナーの BLOB は復旧できません。 |
 | [Delete Blob](/rest/api/storageservices/delete-blob) | BLOB の削除に使った場合、その BLOB は論理的に削除済みとしてマークされます。 <br /><br /> BLOB のスナップショットを削除するために使用した場合、そのスナップショットは論理的に削除済みとしてマークされます。 | BLOB を削除するために使用した場合、現在のバージョンが前のバージョンになり、現在のバージョンは削除されます。 新しいバージョンは作成されず、論理的に削除されたスナップショットは作成されません。<br /><br /> BLOB のバージョンを削除するために使用した場合、そのバージョンは論理的に削除済みとしてマークされます。 |
-| [BLOB の削除の取り消し](/rest/api/storageservices/delete-blob) | 保持期間内に削除された BLOB とすべてのスナップショットが復元されます。 | 保持期間内に削除された BLOB とすべてのバージョンが復元されます。 |
+| [BLOB の削除の取り消し](/rest/api/storageservices/undelete-blob) | 保持期間内に削除された BLOB とすべてのスナップショットが復元されます。 | 保持期間内に削除された BLOB とすべてのバージョンが復元されます。 |
 | [Put Blob](/rest/api/storageservices/put-blob)<br />[Put Block List](/rest/api/storageservices/put-block-list)<br />[Copy Blob](/rest/api/storageservices/copy-blob)<br />[Copy Blob from URL](/rest/api/storageservices/copy-blob) | アクティブな BLOB に対して呼び出した場合、操作の前の BLOB の状態のスナップショットが自動的に生成されます。 <br /><br /> 論理的に削除された BLOB に対して呼び出した場合、同じ種類の BLOB で置き換えられている場合にのみ、BLOB の以前の状態のスナップショットが生成されます。 BLOB の種類が異なる場合は、既存のすべての論理的に削除されたデータが完全に削除されます。 | 操作の前の BLOB の状態をキャプチャした新しいバージョンが、自動的に生成されます。 |
 | [Put Block](/rest/api/storageservices/put-block) | アクティブな BLOB にブロックをコミットするために使用した場合、変更はありません。<br /><br />論理的に削除された BLOB にブロックをコミットするために使用した場合、新しい BLOB が作成され、論理的に削除された BLOB の状態をキャプチャするためにスナップショットが自動的に生成されます。 | 変更はありません。 |
 | [Put Page](/rest/api/storageservices/put-page)<br />[Put Page from URL](/rest/api/storageservices/put-page-from-url) | 変更はありません。 この操作を使って上書きまたは消去されるページ BLOB のデータは保存されず、復旧できません。 | 変更はありません。 この操作を使って上書きまたは消去されるページ BLOB のデータは保存されず、復旧できません。 |
@@ -121,6 +138,29 @@ Premium Storage アカウントの場合、論理的に削除されたスナッ�
 | [Set Blob Properties](/rest/api/storageservices/set-blob-properties) | 変更はありません。 上書きされた BLOB のプロパティは復旧できません。 | 変更はありません。 上書きされた BLOB のプロパティは復旧できません。 |
 | [Set Blob Metadata](/rest/api/storageservices/set-blob-metadata) | 変更はありません。 上書きされた BLOB のメタデータは復旧できません。 | 操作の前の BLOB の状態をキャプチャした新しいバージョンが、自動的に生成されます。 |
 | [Set Blob Tier](/rest/api/storageservices/set-blob-tier) | ベース BLOB は新しい層に移動されます。 アクティブなスナップショットまたは論理的に削除されたスナップショットは、元の層に残ります。 論理的に削除されたスナップショットは作成されません。 | ベース BLOB は新しい層に移動されます。 アクティブなバージョンまたは論理的に削除されたバージョンは、元の層に残ります。 新しいバージョンは作成されません。 |
+
+### <a name="storage-account-hierarchical-namespace"></a>ストレージ アカウント (階層型名前空間)
+
+|**REST API の操作**|**論理的な削除が有効**|
+|---|---|
+|[パス - 削除](/rest/api/storageservices/datalakestoragegen2/path/delete) |論理的に削除された BLOB またはディレクトリが作成されます。 論理的に削除されたオブジェクトは、保有期間が経過すると削除されます。|
+|[Delete Blob](/rest/api/storageservices/delete-blob)|論理的に削除されたオブジェクトが作成されます。 論理的に削除されたオブジェクトは、保有期間が経過すると削除されます。 論理的な削除は、スナップショットを含む BLOB とスナップショットに対してはサポートされません。|
+|[パス - 作成](/rest/api/storageservices/datalakestoragegen2/path/create) (BLOB またはディレクトリの名前が変更される) | 既存の操作先の BLOB または空のディレクトリは、論理的に削除され、ソースによって置き換えられます。 論理的に削除されたオブジェクトは、保有期間が経過すると削除されます。|
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。
+
+| ストレージ アカウントの種類 | Blob Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> | SFTP <sup>1</sup> |
+|--|--|--|--|--|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>  <sup>3</sup>            | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>  <sup>3</sup>            | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+
+<sup>1</sup> Data Lake Storage Gen2、ネットワーク ファイル システム (NFS) 3.0 プロトコル、セキュア ファイル転送プロトコル (SFTP) のサポートでは、すべて階層型名前空間が有効になっているストレージ アカウントが必要です。
+
+<sup>2</sup>    機能はプレビュー レベルでサポートされています。
+
+<sup>3</sup>    詳細については、「[Azure Data Lake Storage Gen2 に関する既知の問題](data-lake-storage-known-issues.md)」を参照してください。 これらの問題は、階層型名前空間機能が有効になっているすべてのアカウントに適用されます。
 
 ## <a name="pricing-and-billing"></a>価格と課金
 
@@ -134,11 +174,11 @@ BLOB が上書きまたは削除されるとき、スナップショットまた
 
 Blob Storage の料金の詳細については、[Blob Storage の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)に関するページを参照してください。
 
-## <a name="blob-soft-delete-and-virtual-machine-disks"></a>BLOB の論理的な削除と仮想マシンのディスク  
+## <a name="blob-soft-delete-and-virtual-machine-disks"></a>BLOB の論理的な削除と仮想マシンのディスク
 
-BLOB の論理的な削除は、内部のページ BLOB である Premium と Standard の両方のアンマネージド ディスクで使用できます。 論理的な削除は、**Delete Blob**、**Put Blob**、**Put Block List**、**Copy Blob** の各操作についてのみ、削除または上書きされたデータの復旧に役立ちます。
+BLOB の論理的な削除は、内部のページ BLOB である Premium と Standard の両方のアンマネージド ディスクで使用できます。 論理的な削除は、[Delete Blob](/rest/api/storageservices/delete-blob)、[Put Blob](/rest/api/storageservices/put-blob)、[Put Block List](/rest/api/storageservices/put-block-list)、[Copy Blob](/rest/api/storageservices/copy-blob) の各操作についてのみ、削除または上書きされたデータの復旧に役立ちます。
 
-**Put Page** を呼び出すことで上書きされたデータは復旧できません。 Azure 仮想マシンからアンマネージド ディスクへの書き込みには、**Put Page** の呼び出しが使用されます。そのため、Azure VM からアンマネージド ディスクへの書き込みを、論理的な削除を使用して元に戻すことはできません。
+[Put Page](/rest/api/storageservices/put-page) を呼び出すことで上書きされたデータは復旧できません。 Azure 仮想マシンからアンマネージド ディスクへの書き込みには、[Put Page](/rest/api/storageservices/put-page) の呼び出しが使用されます。そのため、Azure VM からアンマネージド ディスクへの書き込みを、論理的な削除を使用して元に戻すことはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

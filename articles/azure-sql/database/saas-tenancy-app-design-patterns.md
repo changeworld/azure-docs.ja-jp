@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: scoriani
+ms.author: scoriani
+ms.reviewer: mathoma
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 8a13c641d50a68d9661b4aa6caf8effb82d53dd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf25325f12fba6edaf106dc582f843c0c3c0adec
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92793230"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693415"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>マルチテナント SaaS データベース テナント パターン
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -115,7 +115,7 @@ Azure SQL Database には、100,000 個を大きく超えるような多数の�
 
 #### <a name="automation"></a>オートメーション
 
-管理操作は、[DevOps][http-visual-studio-devops-485m] モデルを使って、スクリプト化して提供できます。  操作を自動化して、アプリケーションに公開することもできます。
+管理操作は、[DevOps](/azure/devops/user-guide/what-is-azure-devops) モデルを使って、スクリプト化して提供できます。  操作を自動化して、アプリケーションに公開することもできます。
 
 たとえば、単一のテナントを以前のポイント イン タイムまで自動的に復旧できます。  復旧するには、テナントを格納する 1 つの単一テナント データベースを復元するだけでかまいません。  この復元が他のテナントに影響を及ぼすことはなく、必ず個々のテナントごとに極めて詳細なレベルで管理操作が行われます。
 

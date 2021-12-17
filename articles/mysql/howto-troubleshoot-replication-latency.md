@@ -7,16 +7,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
-ms.openlocfilehash: 92513a8c24b5106e3a59c8cfa4d743e900b957bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fac788db67bd96f60a2655f10d5f0a74d02b2c01
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98249773"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165497"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Azure Database for MySQL のレプリケーション待ち時間のトラブルシューティング
 
-[!INCLUDE[applies-to-single-flexible-server](./includes/applies-to-single-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
 [読み取りレプリカ](concepts-read-replicas.md)機能を使用すると、Azure Database for MySQL サーバーから、読み取り専用のレプリカ サーバーにデータをレプリケートできます。 読み取りおよびレポート クエリをアプリケーションから複数のレプリカ サーバーにルーティングすることによって、ワークロードをスケールアウトできます。 このセットアップにより、ソース サーバーの負荷が軽減されます。 また、スケーリングにより、アプリケーションの全体的なパフォーマンスと待機時間も改善されます。
 
@@ -32,7 +32,7 @@ ms.locfileid: "98249773"
 この記事では、Azure Database for MySQL でレプリケーション待機時間のトラブルシューティングを行う方法について説明します。 レプリカ サーバーでレプリケーション待機時間が長くなるいくつかの一般的な原因についても説明します。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった "_スレーブ_" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 >
 
 ## <a name="replication-concepts"></a>レプリケーションの概念
@@ -104,7 +104,7 @@ mysql> SHOW SLAVE STATUS;
 |Slave_IO_Running| IO スレッドが実行されているかどうかを示します。 値は `Yes` である必要があります。 値が `NO` の場合は、レプリケーションが中断されている可能性があります。|
 |Slave_SQL_Running| SQL スレッドが実行されているかどうかを示します。 値は `Yes` である必要があります。 値が `NO` の場合は、レプリケーションが中断されている可能性があります。|
 |Exec_Master_Log_Pos| レプリカによって適用されている Relay_Master_Log_File の位置を示します。 待機時間がある場合、この位置シーケンスが Read_Master_Log_Pos より小さくなるはずです。|
-|Relay_Log_Space|リレー ログのサイズの上限を示します。 `relay_log_space_limit` のように `SHOW GLOBAL VARIABLES` のクエリを実行することによって、サイズを確認できます。|
+|Relay_Log_Space|既存のすべてのリレー ログ ファイルの合計サイズを示します。 `relay_log_space_limit` のように `SHOW GLOBAL VARIABLES` のクエリを実行することによって、上限サイズを確認できます。|
 |Seconds_Behind_Master| レプリケーション待機時間を秒単位で表示します。|
 |Last_IO_Errno|IO スレッドのエラー コードを表示します (存在する場合)。 これらのコードの詳細については、[MySQL サーバーのエラー メッセージ リファレンス](https://dev.mysql.com/doc/mysql-errors/5.7/en/server-error-reference.html)に関するページを参照してください。|
 |Last_IO_Error| IO スレッドのエラー メッセージを表示します (存在する場合)。|

@@ -7,16 +7,16 @@ ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: cpp
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma
 ms.date: 12/12/2018
-ms.openlocfilehash: 0460317a47a1cf01707990b6f92532d4ade01439
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c874ccdf2f94bf07aab51d8510065d9e259daa44
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643282"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694528"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C と C++ を使用して SQL Database に接続する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

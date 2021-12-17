@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, OpenShift, aquasec, Twistlock, Red Hat
-ms.openlocfilehash: 77e75232b7f9d23f1d07931cc7dc231174e1312d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 167a031098feb7764b205b81bcf63f68422be10e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100633564"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308207"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift クラスター内で特権コンテナーを実行する
 
@@ -181,7 +181,7 @@ oc create -f twistlock_route.yaml
 
 Twistlock のドキュメントに従います。
 
-### <a name="install-defender"></a>Defender をインストールする
+### <a name="install-defender-for-cloud"></a>Defender for Cloud をインストールする
 
 手順 2 の `oc create -f defender.yaml` では、クラスター ロールとクラスター ロール バインドの作成時にエラーが表示されます。
 これらは無視してかまいません。

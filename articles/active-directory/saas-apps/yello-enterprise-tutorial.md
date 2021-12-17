@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: dc9c8e622840d30f1d18ab783cc20e2659a1b5e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2c2ef0d4fabc15823e78527bb00ebb398deecc8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735563"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340592"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-yello-enterprise"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Yello Enterprise の統合
 
@@ -137,9 +137,9 @@ Yello Enterprise に対して Azure AD SSO を構成してテストするには�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Yello Enterprise に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 [マイ アプリ] で [Yello Enterprise] タイルをクリックすると、SSO を設定した Yello Enterprise に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 [マイ アプリ] で [Yello Enterprise] タイルをクリックすると、SSO を設定した Yello Enterprise に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Yello Enterprise を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Yello Enterprise を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

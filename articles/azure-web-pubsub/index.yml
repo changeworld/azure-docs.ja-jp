@@ -1,0 +1,54 @@
+### YamlMime:Landing
+title: Azure Web PubSub サービスに関するドキュメント
+summary: Azure Web PubSub サービスは、開発者がリアルタイムの機能と発行-サブスクライブ パターンを使って Web アプリケーションを簡単に作成できるようにするための Azure マネージド サービスです。
+metadata:
+  title: Azure Web PubSub サービスに関するドキュメント
+  description: さまざまな言語とフレームワークをサポートする WebSocket に基づいて、リアルタイム Web アプリを簡単に作成およびスケーリングします。
+  ms.service: azure-web-pubsub
+  ms.topic: landing-page
+  author: yjin81
+  ms.author: yajin1
+  ms.date: 01/27/2021
+  ms.openlocfilehash: b04fedf6e0eb1840ea6b86956fe979e675c6b927
+  ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/30/2021
+  ms.locfileid: "123185527"
+landingContent:
+- title: Azure Web PubSub サービスについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Web PubSub サービスとは
+      url: overview.md
+    - text: Azure Web PubSub サービスの主要な概念
+      url: key-concepts.md
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: インスタンスに接続する
+      url: quickstart-cli-try.md
+    - text: 単純なチャットルーム サーバーレス アプリケーションから始める
+      url: quickstart-serverless.md
+    - text: Azure Functions を使用したサーバーレス開発
+      url: tutorial-serverless-notification.md
+  - linkListType: how-to-guide
+    links:
+    - text: チャット アプリを構築する
+      url: tutorial-build-chat.md
+    - text: サービスがサポートするサブプロトコルを使用したクライアント ストリーミング
+      url: tutorial-subprotocol.md
+    - text: 認証とアクセス許可
+      url: tutorial-permission.md
+- title: ライブ デモ
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: ホワイトボード
+      url: https://azure.github.io/azure-webpubsub/demos/whiteboard
+    - text: 簡単なチャット
+      url: https://azure.github.io/azure-webpubsub/demos/chat
+    - text: コード ストリーミング
+      url: https://azure.github.io/azure-webpubsub/demos/code-streaming

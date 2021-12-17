@@ -5,41 +5,29 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: include
-ms.date: 03/28/2018
+ms.date: 04/15/2021
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 03cf20e5c796a7092dc16c466934f377c945ad48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33159ab6dd014a153c8fd317fd291aeca033d6e9
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96509432"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717837"
 ---
 ストレージ アカウントは、Azure ファイル共有またはその他のストレージ リソース (BLOB やキューなど) をデプロイできるストレージの共有プールです。 1 つのストレージ アカウントに格納できる共有の数に制限はありません。 1 つの共有に格納できるファイルの数に制限はなく、ストレージ アカウントの容量の上限までファイルを格納できます。
 
 ストレージ アカウントを作成するには、以下の手順を実行します。
 
 1. 左側のメニューで、 **[+]** を選択してリソースを作成します。
-1. 検索ボックスに「**ストレージ アカウント**」と入力し、 **[ストレージ アカウント - Blob、File、Table、Queue]** を選択してから、 **[作成]** を選択します。
-    ![ストレージ アカウントの文字がリソース検索ダイアログに入力されたところを示すスクリーンショット](../articles/storage/files/media/storage-how-to-use-files-portal/create-storage-account-1.png)
+1. **[ストレージ アカウント]** を選択して、ストレージ アカウントを作成します。
+
+    :::image type="content" source="../articles/storage/files/media/storage-how-to-use-files-portal/create-storage-account-1.png" alt-text="[リソースの作成] ブレードの [ストレージ アカウント] オプションのスクリーンショット。" lightbox="../articles/storage/files/media/storage-how-to-use-files-portal/create-storage-account-1.png":::
 
 1. **[名前]** に「*mystorageacct*」と入力し、それに続けて、一意の名前であることを示す緑色のチェック マークが表示されるまでランダムな数字をいくつか入力します。 ストレージ アカウント名はすべて小文字で、グローバルに一意である必要があります。 ストレージ アカウント名をメモしておきます。 これは後で使用します。 
-1. **[デプロイ モデル]** で、既定値の **[Resource Manager]** をそのまま選択します。 Azure Resource Manager とクラシック デプロイ モデルの違いの詳細については、[デプロイ モデルとリソースの状態](../articles/azure-resource-manager/management/deployment-models.md)に関するページを参照してください。
 1. **[パフォーマンス]** では、既定値の **[Standard]** を選択したままにします。
-    
-    > [!NOTE]
-    > このクイックスタートでは、Standard ファイル共有を作成しますが、Premium ファイル共有を使用する場合は、 **[Premium]** を選択します。
-
-1. **[アカウントの種類]** で **[StorageV2]** を選択します。 ストレージ アカウントの種類の詳細については、[Azure ストレージ アカウント](../articles/storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
-
-    > [!NOTE]
-    > このクイックスタートでは、汎用 v2 アカウントを作成します。 Premium ファイル共有を使用する場合は、代わりに **[FileStorage]** を選択します。
-
-1. **[レプリケーション]** で **[ローカル冗長ストレージ (LRS)]** を選択します。 
-1. **[安全な転送が必須]** では常に **[有効]** を選択することをお勧めします。 このオプションの詳細については、[転送中の暗号化](../articles/storage/common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
+1. **[レプリケーション]** で **[ローカル冗長ストレージ (LRS)]** を選択します。
 1. **[サブスクリプション]** で、ストレージ アカウントを作成するときに使用したサブスクリプションを選択します。 利用しているサブスクリプションが 1 つだけの場合は、それが既定値となります。
 1. **[リソース グループ]** で **[新規作成]** を選択します。 名前として、「*myResourceGroup*」と入力します。
 1. **[場所]** で **[米国東部]** を選択します。
-1. **[仮想ネットワーク]** で既定のオプションである **[無効]** のままにします。 
-1. ストレージ アカウントを見つけやすくするために、 **[ダッシュボードにピン留めする]** を選択します。
 1. 終わったら、 **[作成]** を選択してデプロイを開始します。

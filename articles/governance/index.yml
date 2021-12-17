@@ -10,220 +10,202 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 01/29/2021
-  ms.openlocfilehash: 9f9d2c694196b48aa4905a3783cb16609727b951
-  ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/10/2021
-  ms.locfileid: "100099134"
+  ms.date: 07/09/2021
 highlightedContent:
   items:
-  - title: ガバナンスの概要
-    itemType: overview
-    url: ./azure-management.md
-  - title: ガバナンスに関する YouTube チャンネル
-    itemType: video
-    url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
-  - title: クラウド導入フレームワークのガバナンス
-    itemType: architecture
-    url: /azure/architecture/cloud-adoption/governance
-  - title: Azure でのクラウド ガバナンス戦略を構築する
-    itemType: learn
-    url: /learn/modules/build-cloud-governance-strategy-azure/
+    - title: ガバナンスの概要
+      itemType: overview
+      url: ./azure-management.md
+    - title: ガバナンスに関する YouTube チャンネル
+      itemType: video
+      url: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
+    - title: クラウド導入フレームワークのガバナンス
+      itemType: architecture
+      url: /azure/architecture/cloud-adoption/governance
+    - title: Azure でのクラウド ガバナンス戦略を構築する
+      itemType: learn
+      url: /learn/modules/build-cloud-governance-strategy-azure/
 productDirectory:
   title: コンポーネントとサービス
   items:
-  - title: Azure 管理グループ
-    imageSrc: ./media/management-groups.svg
-    links:
-    - url: ./management-groups/overview.md
-      text: 概要
-    - url: ./management-groups/how-to/protect-resource-hierarchy.md
-      text: リソース階層の保護
-    - url: ./management-groups/index.yml
-      text: 詳細を表示 >
-  - title: Azure Policy
-    imageSrc: ./media/azure-policy.svg
-    links:
-    - url: ./policy/overview.md
-      text: 概要
-    - url: ./policy/how-to/get-compliance-data.md
-      text: コンプライアンスの評価
-    - url: ./policy/concepts/policy-for-kubernetes.md
-      text: Kubernetes の構成を管理する
-    - url: ./policy/concepts/guest-configuration.md
-      text: VM 構成の管理
-    - url: ./policy/index.yml
-      text: 詳細を表示 >
-  - title: Azure Blueprint
-    imageSrc: ./media/azure-blueprints.svg
-    links:
-    - url: ./blueprints/overview.md
-      text: 概要
-    - url: ./blueprints/tutorials/protect-new-resources.md
-      text: リソースの保護
-    - url: ./blueprints/index.yml
-      text: 詳細を表示 >
-  - title: Azure Resource Graph
-    imageSrc: ./media/azure-resource-graph.svg
-    links:
-    - url: ./resource-graph/overview.md
-      text: 概要
-    - url: ./resource-graph/concepts/explore-resources.md
-      text: Azure リソースの探索
-    - url: ./resource-graph/how-to/get-resource-changes.md
-      text: 変更を追跡する
-    - url: ./resource-graph/index.yml
-      text: 詳細を表示 >
-  - title: Cost Management
-    imageSrc: ./media/cost-management.svg
-    links:
-    - url: ../cost-management-billing/cost-management-billing-overview.md
-      text: 概要
-    - url: ../cost-management-billing/costs/aws-integration-manage.md
-      text: AWS のコストと使用量の管理
-    - url: ../cost-management-billing/index.yml
-      text: 詳細を表示 >
+    - title: Azure 管理グループ
+      imageSrc: ./media/management-groups.svg
+      links:
+        - url: ./management-groups/overview.md
+          text: 概要
+        - url: ./management-groups/how-to/protect-resource-hierarchy.md
+          text: リソース階層の保護
+        - url: ./management-groups/index.yml
+          text: 詳細を表示 >
+    - title: Azure Policy
+      imageSrc: ./media/azure-policy.svg
+      links:
+        - url: ./policy/overview.md
+          text: 概要
+        - url: ./policy/how-to/get-compliance-data.md
+          text: コンプライアンスの評価
+        - url: ./policy/concepts/policy-for-kubernetes.md
+          text: Kubernetes の構成を管理する
+        - url: ./policy/concepts/guest-configuration.md
+          text: VM 構成の管理
+        - url: ./policy/index.yml
+          text: 詳細を表示 >
+    - title: Azure Blueprint
+      imageSrc: ./media/azure-blueprints.svg
+      links:
+        - url: ./blueprints/overview.md
+          text: 概要
+        - url: ./blueprints/tutorials/protect-new-resources.md
+          text: リソースの保護
+        - url: ./blueprints/index.yml
+          text: 詳細を表示 >
+    - title: Azure Resource Graph
+      imageSrc: ./media/azure-resource-graph.svg
+      links:
+        - url: ./resource-graph/overview.md
+          text: 概要
+        - url: ./resource-graph/concepts/explore-resources.md
+          text: Azure リソースの探索
+        - url: ./resource-graph/how-to/get-resource-changes.md
+          text: 変更を追跡する
+        - url: ./resource-graph/index.yml
+          text: 詳細を表示 >
+    - title: Cost Management
+      imageSrc: ./media/cost-management.svg
+      links:
+        - url: ../cost-management-billing/cost-management-billing-overview.md
+          text: 概要
+        - url: ../cost-management-billing/costs/aws-integration-manage.md
+          text: AWS のコストと使用量の管理
+        - url: ../cost-management-billing/index.yml
+          text: 詳細を表示 >
 tools:
   title: サンプル
   summary: ポリシー定義、コンプライアンス ブループリント、リソース クエリなど
   items:
-  - title: Azure Policy
-    imageSrc: ./media/azure-policy.svg
-    url: ./policy/samples/index.md
-  - title: Azure Blueprint
-    imageSrc: ./media/azure-blueprints.svg
-    url: ./blueprints/samples/index.md
-  - title: Azure Resource Graph
-    imageSrc: ./media/azure-resource-graph.svg
-    url: ./resource-graph/samples/starter.md
-  - title: Cost Management
-    imageSrc: ./media/cost-management.svg
-    url: https://github.com/Azure-Samples/Cost-Management-Samples
+    - title: Azure Policy
+      imageSrc: ./media/azure-policy.svg
+      url: ./policy/samples/index.md
+    - title: Azure Blueprint
+      imageSrc: ./media/azure-blueprints.svg
+      url: ./blueprints/samples/index.md
+    - title: Azure Resource Graph
+      imageSrc: ./media/azure-resource-graph.svg
+      url: ./resource-graph/samples/starter.md
+    - title: Cost Management
+      imageSrc: ./media/cost-management.svg
+      url: 'https://github.com/Azure-Samples/Cost-Management-Samples'
 additionalContent:
   sections:
-  - title: 開発者向けリソース
-    items:
-    - title: 管理グループ
-      links:
-      - text: Azure CLI
-        url: /cli/azure/account/management-group
-      - text: Azure PowerShell
-        url: /powershell/module/az.resources/#resources
-      - text: Azure SDK for .NET
-        url: /dotnet/api/overview/azure/managementgroups
-      - text: Azure SDK for Go
-        url: https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups
-      - text: Azure SDK for JavaScript
-        url: /javascript/api/@azure/arm-managementgroups/managementgroups
-      - text: Azure SDK for Python
-        url: /python/api/azure-mgmt-managementgroups/azure.mgmt.managementgroups
-      - text: REST
-        url: /rest/api/resources/managementgroups
-      - text: Resource Manager テンプレート
-        url: /azure/templates/microsoft.management/managementgroups
-    - title: Azure Policy
-      links:
-      - text: Azure CLI
-        url: /cli/azure/policy
-      - text: Azure PowerShell
-        url: /powershell/module/az.resources/#policy
-        note: (ポリシー)
-      - text: Azure PowerShell
-        url: /powershell/module/az.policyinsights#policy-insights
-        note: (ポリシーの分析情報)
-      - text: Azure PowerShell
-        url: https://www.powershellgallery.com/packages/Az.GuestConfiguration
-        note: (ゲスト構成)
-      - text: REST
-        url: /rest/api/policy-insights/
-        note: (ポリシーの分析情報)
-      - text: REST
-        url: /rest/api/resources/policyassignments
-        note: (割り当て)
-      - text: REST
-        url: /rest/api/resources/policydefinitions
-        note: (定義)
-      - text: REST
-        url: /rest/api/resources/policyexemptions
-        note: (除外)
-      - text: REST
-        url: /rest/api/resources/policysetdefinitions
-        note: (イニシアティブ)
-      - text: REST
-        url: /rest/api/guestconfiguration/
-        note: (ゲスト構成)
-      - text: Resource Manager テンプレート
-        url: /azure/templates/microsoft.authorization/allversions
-    - title: Azure Policy (その他)
-      links:
-      - text: Azure SDK for .NET
-        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
-        note: (割り当て)
-      - text: Azure SDK for .NET
-        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
-        note: (ポリシー定義)
-      - text: Azure SDK for JavaScript
-        url: /javascript/api/@azure/arm-policy
-        note: (ポリシー)
-      - text: Azure SDK for JavaScript
-        url: /javascript/api/@azure/arm-policyinsights
-        note: (ポリシーの分析情報)
-      - text: Azure SDK for Python
-        url: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
-    - title: Azure Blueprint
-      links:
-      - text: ブループリントの関数
-        url: ./blueprints/reference/blueprint-functions.md
-      - text: Azure CLI
-        url: /cli/azure/ext/blueprint/blueprint
-      - text: Azure PowerShell
-        url: /powershell/module/az.blueprint/#blueprint
-      - text: Azure PowerShell
-        url: https://www.powershellgallery.com/packages/Az.Blueprint
-        note: (PS ギャラリー モジュール)
-      - text: Azure SDK for .NET
-        url: /dotnet/api/overview/azure/blueprints/management
-      - text: REST
-        url: /rest/api/blueprints/
-    - title: Azure Resource Graph
-      links:
-      - text: Azure CLI
-        url: /cli/azure/ext/resource-graph/graph
-      - text: Azure PowerShell
-        url: /powershell/module/az.resourcegraph/#resourcegraph
-      - text: Azure SDK for .NET
-        url: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
-      - text: Azure SDK for .NET
-        url: https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceGraph/
-        note: (NuGet)
-      - text: Azure SDK for Go
-        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph
-      - text: Azure SDK for Java
-        url: /java/api/overview/azure/resourcegraph/management
-      - text: Azure SDK for Java
-        url: https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0-beta/jar
-        note: (Maven)
-      - text: Azure SDK for JavaScript
-        url: /javascript/api/@azure/arm-resourcegraph
-      - text: Azure SDK for Python
-        url: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph
-      - text: Azure SDK for Ruby
-        url: https://rubygems.org/gems/azure_mgmt_resourcegraph
-        note: (Gem)
-      - text: REST
-        url: /rest/api/azure-resourcegraph/
-      - text: Resource Manager テンプレート
-        url: /azure/templates/microsoft.resourcegraph/allversions
-    - title: Cost Management
-      links:
-      - text: REST
-        url: /rest/api/cost-management
-        note: (コスト管理)
-      - text: REST
-        url: /rest/api/consumption
-        note: (使用)
-      - text: Resource Manager テンプレート
-        url: /azure/templates/microsoft.consumption/budgets
-  footer: '[UserVoice](https://feedback.azure.com/forums/915958-azure-governance) | [Microsoft Tech Community - Azure のガバナンス](https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance) | [Azure サポート](https://azure.microsoft.com/support/create-ticket/)'
+    - title: 開発者向けリソース
+      items:
+        - title: 管理グループ
+          links:
+            - text: Azure CLI
+              url: /cli/azure/account/management-group
+            - text: Azure PowerShell
+              url: /powershell/module/az.resources/#resources
+            - text: Azure SDK for .NET
+              url: /dotnet/api/overview/azure/managementgroups
+            - text: Azure SDK for Go
+              url: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups'
+            - text: Azure SDK for JavaScript
+              url: /javascript/api/@azure/arm-managementgroups/managementgroups
+            - text: Azure SDK for Python
+              url: /python/api/azure-mgmt-managementgroups/azure.mgmt.managementgroups
+            - text: REST
+              url: /rest/api/managementgroups
+            - text: Resource Manager テンプレート
+              url: /azure/templates/microsoft.management/managementgroups
+        - title: Azure Policy
+          links:
+            - text: Azure CLI
+              url: /cli/azure/policy
+            - text: Azure PowerShell
+              url: /powershell/module/az.resources/#policy
+              note: (Policy)
+            - text: Azure PowerShell
+              url: /powershell/module/az.policyinsights#policy-insights
+              note: (Policy Insights)
+            - text: Azure PowerShell
+              url: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
+              note: (Guest Configuration)
+            - text: REST
+              url: /rest/api/policy/
+              note: (Policy)
+            - text: REST
+              url: /rest/api/guestconfiguration/
+              note: (Guest Configuration)
+            - text: Resource Manager テンプレート
+              url: /azure/templates/microsoft.authorization/allversions
+        - title: Azure Policy (その他)
+          links:
+            - text: Azure SDK for .NET
+              url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+              note: (Assignments)
+            - text: Azure SDK for .NET
+              url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+              note: (Policy Definitions)
+            - text: Azure SDK for JavaScript
+              url: /javascript/api/@azure/arm-policy
+              note: (Policy)
+            - text: Azure SDK for JavaScript
+              url: /javascript/api/@azure/arm-policyinsights
+              note: (Policy Insights)
+            - text: Azure SDK for Python
+              url: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
+        - title: Azure Blueprint
+          links:
+            - text: ブループリントの関数
+              url: ./blueprints/reference/blueprint-functions.md
+            - text: Azure CLI
+              url: /cli/azure/blueprint
+            - text: Azure PowerShell
+              url: /powershell/module/az.blueprint/#blueprint
+            - text: Azure PowerShell
+              url: 'https://www.powershellgallery.com/packages/Az.Blueprint'
+              note: (PS Gallery Module)
+            - text: Azure SDK for .NET
+              url: /dotnet/api/overview/azure/blueprints/management
+            - text: REST
+              url: /rest/api/blueprints/
+        - title: Azure Resource Graph
+          links:
+            - text: Azure CLI
+              url: /cli/azure/graph
+            - text: Azure PowerShell
+              url: /powershell/module/az.resourcegraph/#resourcegraph
+            - text: Azure SDK for .NET
+              url: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
+            - text: Azure SDK for .NET
+              url: 'https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceGraph/'
+              note: (NuGet)
+            - text: Azure SDK for Go
+              url: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2021-03-01/resourcegraph'
+            - text: Azure SDK for Java
+              url: /java/api/overview/azure/resourcegraph/management
+            - text: Azure SDK for Java
+              url: 'https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0/jar'
+              note: (Maven)
+            - text: Azure SDK for JavaScript
+              url: /javascript/api/@azure/arm-resourcegraph
+            - text: Azure SDK for Python
+              url: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph
+            - text: Azure SDK for Ruby
+              url: 'https://rubygems.org/gems/azure_mgmt_resourcegraph'
+              note: (Gem)
+            - text: REST
+              url: /rest/api/azure-resourcegraph/
+            - text: Resource Manager テンプレート
+              url: /azure/templates/microsoft.resourcegraph/allversions
+        - title: Cost Management
+          links:
+            - text: REST
+              url: /rest/api/cost-management
+              note: (Cost Management)
+            - text: REST
+              url: /rest/api/consumption
+              note: (Consumption)
+            - text: Resource Manager テンプレート
+              url: /azure/templates/microsoft.consumption/budgets
+  footer: '[UserVoice](https://feedback.azure.com/d365community/forum/675ae472-f324-ec11-b6e6-000d3a4f0da0) | [Microsoft Tech Community - Azure Governance](https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance) | [Azure Support](https://azure.microsoft.com/support/create-ticket/)'

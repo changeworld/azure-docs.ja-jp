@@ -1,8 +1,7 @@
 ---
-title: Microsoft Azure Virtual Network への VPN スループットを検証する
-description: この記事は、オンプレミスのリソースから Azure 仮想マシンへのネットワーク スループットを検証する際に役立ちます。
+title: 仮想ネットワークへの VPN スループットを検証する
+description: オンプレミスのリソースから Azure 仮想マシンへのネットワーク スループットを検証する方法について説明します。
 titleSuffix: Azure VPN Gateway
-services: vpn-gateway
 author: cherylmc
 manager: dcscontentpm
 ms.service: vpn-gateway
@@ -10,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 2d5b51e8cfbfcb5f771e9da524231f8ddfc40a9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52d928762d64ce0612ed8e7063c1b2fb2028e870
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660935"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273384"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>仮想ネットワークへの VPN スループットを検証する方法
 
@@ -47,7 +46,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
 1. インターネット サービス プロバイダー (ISP) の帯域幅を特定します。
 1. VM、VPN Gateway、または ISP のうち最小の帯域幅を取って、予想されるスループットを計算します。これは、1秒あたりのメガビット数を 8 で除算 (/) して測定されます。
 
-計算したスループットが、アプリケーションのベースライン スループット要件を満たしていない場合は、ボトルネックとして識別されるリソースの帯域幅を増加する必要があります。 Azure VPN Gateway のサイズを変更するには、「[ゲートウェイの SKU を変更する](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。 仮想マシンのサイズを変更するには、「[VM のサイズを変更する](../virtual-machines/windows/resize-vm.md)」を参照してください。 予想されるインターネット帯域幅が得られない場合は、ISP に問い合わせることもできます。
+計算したスループットが、アプリケーションのベースライン スループット要件を満たしていない場合は、ボトルネックとして識別されるリソースの帯域幅を増加する必要があります。 Azure VPN Gateway のサイズを変更するには、「[ゲートウェイの SKU を変更する](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。 仮想マシンのサイズを変更するには、「[VM のサイズを変更する](../virtual-machines/resize-vm.md)」を参照してください。 予想されるインターネット帯域幅が得られない場合は、ISP に問い合わせることもできます。
 
 > [!NOTE]
 > VPN Gateway のスループットは、すべてのサイト間接続\VNET 間接続、またはポイント対サイト接続の集合です。
@@ -217,7 +216,7 @@ Make インストールは高速です
 
 > [!Note]
 > VM と Gateway 間でのスループット テスト中に中間ホップ (仮想アプライアンスなど) がないことを確認します。
-> 上記の iPERF/NTTTCP テストの結果が (全体的なスループットに関して) 良くない場合は、次の記事を参照して、問題の考えられる根本原因の背後にある主な要因を理解してください: https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+> 上記の iPERF/NTTTCP テストの結果が (全体的なスループットに関して) 良くない場合は、[この記事](../virtual-network/virtual-network-tcpip-performance-tuning.md)を参照して、問題の考えられる根本原因の背後にある主な要因を理解してください: 
 
 特に、これらのテスト中にクライアントとサーバーから同時に収集されたパケット キャプチャ トレース (Wireshark/ネットワーク モニター) の分析は、良くないパフォーマンスの評価に役立ちます。 これらのトレースに、パケット損失、長い待ち時間、MTU サイズ、 断片化、TCP 0 ウィンドウ、誤順序のフラグメントなどが含まれる可能性があります。
 

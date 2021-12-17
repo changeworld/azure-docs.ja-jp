@@ -11,12 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: 385e6109a80c8e1e455f98b5d02ca5762f8051c7
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b5f40025cc0db1f0a08e0d3e084752c16646c9d6
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281423"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703321"
 ---
 # <a name="update-media-services-v3-after-rolling-storage-access-keys"></a>ストレージ アクセス キーをローリングした後に Media Services v3 を更新する
 

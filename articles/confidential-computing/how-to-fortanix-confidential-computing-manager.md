@@ -1,19 +1,20 @@
 ---
 title: Azure マネージド アプリケーションでの Fortanix Confidential Computing Manager
 description: Azure portal でマネージド アプリケーションに Fortanix Confidential Computing Manager (CCM) をデプロイする方法について説明します。
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.author: jencook
-ms.openlocfilehash: 757ce9b7502316bbc8a5b8f27ba672048b7bbace
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: stempesta
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: fa811a3f528fb0d1bf20e053910540a6204eb724
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563423"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315916"
 ---
 # <a name="fortanix-confidential-computing-manager-in-an-azure-managed-application"></a>Azure マネージド アプリケーションでの Fortanix Confidential Computing Manager
 
@@ -33,7 +34,7 @@ Fortanix は、Azure インフラストラクチャ上に構築された製品�
 
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
 
-    :::image type="content" source="media/how-to-fortanix-confidential-computing-manager/azure-portal.png" alt-text="Azure portal。":::
+    :::image type="content" source="media/how-to-fortanix-confidential-computing-manager/Azure-portal.png" alt-text="Azure portal。":::
 
 2. 検索バーで「Fortanix Confidential Computing Manager」を検索すると、Fortanix CCM の Marketplace リストが表示されます。 **[Fortanix Confidential Computing Manager on Azure]\(Azure 上の Fortanix Confidential Computing Manager\)** を選択します。
 
@@ -117,9 +118,8 @@ Fortanix は、Azure インフラストラクチャ上に構築された製品�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure マネージド アプリを使用してノードを Fortanix の Confidential Computing Manager に登録しました。 ノード登録により、アプリケーション イメージを変換して、コンフィデンシャル コンピューティング仮想マシン上で実行できます。 Azure におけるコンフィデンシャル コンピューティング仮想マシンの詳細については、「[仮想マシン上のソリューション](virtual-machine-solutions.md)」を参照してください。
+このクイックスタートでは、Azure マネージド アプリを使用してノードを Fortanix の Confidential Computing Manager に登録しました。 ノード登録により、アプリケーション イメージを変換して、コンフィデンシャル コンピューティング仮想マシン上で実行できます。 Azure におけるコンフィデンシャル コンピューティング仮想マシンの詳細については、「[仮想マシン上のソリューション](virtual-machine-solutions-sgx.md)」を参照してください。
 
 Azure のコンフィデンシャル コンピューティング オファリングの詳細については、[Azure でのコンフィデンシャル コンピューティング](overview.md)に関する記事を参照してください。
 
 Azure 上で ([Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) や [Scone](https://sconedocs.github.io)などの) 他のサードパーティ オファリングを使用して同様のタスクを実行する方法について学習します。
-

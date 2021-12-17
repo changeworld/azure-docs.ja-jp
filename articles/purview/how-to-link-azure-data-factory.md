@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/24/2021
-ms.openlocfilehash: c9f2a21a1183637ec4648868cccd6f343b003f0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/01/2021
+ms.openlocfilehash: 2ba2c135a0b07df6c6a4802c241b064b2ef94335
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026625"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851491"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -20,39 +20,36 @@ ms.locfileid: "105026625"
 
 ## <a name="view-existing-data-factory-connections"></a>既存の Data Factory 接続を表示する
 
-系列情報をプッシュするために、複数の Azure Data Factory を 1 つの Azure Purview Data Catalog に接続できます。 現在の制限では、Purview の管理センターから一度に最大 10 個の Data Factory アカウントを接続できます。 Purview Data Catalog に接続されている Data Factory アカウントの一覧を表示するには、次の操作を行います。
+系列情報をプッシュするために、複数の Azure Data Factory を 1 つの Azure Purview に接続できます。 現在の制限では、Purview の管理センターから一度に最大 10 個の Data Factory アカウントを接続できます。 Purview アカウントに接続されている Data Factory アカウントの一覧を表示するには、次のことを行います。
 
-1. 左側のナビゲーション ウィンドウで **[管理センター]** を選択します。
-2. **[外部接続]** で **[Data Factory 接続]** を選択します。
+1. 左側のナビゲーション ウィンドウで **[管理]** を選択します。
+2. **[Lineage connections]\(系列接続\)** で、 **[Data Factory]** を選択します。
 3. Data Factory 接続の一覧が表示されます。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/data-factory-connection.png" alt-text="Data Factory 接続の一覧を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/data-factory-connection.png":::
 
 4. 次の接続の **[状態]** のさまざまな値に注意してください。
 
-    - **接続済み**: Data Factory はデータ カタログに接続されています。
+    - **接続中**: データ ファクトリは Purview アカウントに接続されています。
     - **切断**: Data Factory はカタログにアクセスできますが、別のカタログに接続されています。 その結果、データ系列がこのカタログに自動的には報告されません。
     - **アクセス不可**: 現在のユーザーは Data Factory にアクセスできないため、接続の状態は不明です。
- >[!Note]
- >Data Factory 接続を表示するには、次の Purview ロールのいずれかが割り当てられている必要があります。
- >- Contributor
- >- 所有者
- >- Reader
- >- User Access Administrator
+
+>[!Note]
+>Data Factory の接続を表示するには、次のロールが割り当てられている必要があります。 管理グループからのロールの継承はサポートされていません。
+>ルート コレクションに対する **コレクション管理者** ロール。
 
 ## <a name="create-new-data-factory-connection"></a>新しい Data Factory 接続を作成する
 
 >[!Note]
->Data Factory 接続を追加または削除するには、次の Purview ロールのいずれかが割り当てられている必要があります。
->- 所有者
->- User Access Administrator
+>Data Factory の接続を追加または削除するには、次のロールが割り当てられている必要があります。 管理グループからのロールの継承はサポートされていません。
+>ルート コレクションに対する **コレクション管理者** ロール。
 >
-> さらに、ユーザーはデータ ファクトリの "所有者" または "共同作成者" である必要があります。 
+> さらに、ユーザーはデータ ファクトリの "所有者" または "共同作成者" である必要があります。
 
-既存の Data Factory アカウントを Purview Data Catalog に接続するには、次の手順に従います。
+既存のデータ ファクトリを Purview アカウントに接続するには、次の手順に従います。 [Data Factory を ADF から Purview アカウントに接続する](../data-factory/connect-data-factory-to-azure-purview.md)こともできます。
 
-1. 左側のナビゲーション ウィンドウで **[管理センター]** を選択します。
-2. **[外部接続]** で **[Data Factory 接続]** を選択します。
+1. 左側のナビゲーション ウィンドウで **[管理]** を選択します。
+2. **[Lineage connections]\(系列接続\)** で、 **[Data Factory]** を選択します。
 3. **[Data Factory connection] (Data Factory 接続)** ページで **[新規]** を選択します。
 
 4. 一覧から Data Factory アカウントを選択し、 **[OK]** を選択します。 この一覧を制限するために、サブスクリプション名でフィルター処理することもできます。
@@ -63,34 +60,25 @@ ms.locfileid: "105026625"
 
     選択されている Data Factory のいずれかが他の Purview アカウントに既に接続されている場合は、警告メッセージが表示されます。 [OK] を選択すると、他の Purview アカウントとの Data Factory 接続は切断されます。 追加の確認は必要ありません。
 
-
-    :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="Azure Data Factory を切断するという警告を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png":::
+    :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="Azure Data Factory を切断するという警告を示すスクリーンショット。":::
 
 >[!Note]
->一度に 10 個までの Data Factory の追加がサポートされるようになりました。 一度に 10 個を超える Data Factory を追加する場合は、サポート チケットを提出してください。
+>一度に 10 個までのデータ ファクトリの追加がサポートされるようになりました。 一度に 10 個を超えるデータ ファクトリを追加する場合は、サポート チケットを提出してください。
 
-### <a name="how-does-the-authentication-work"></a>認証のしくみ
+### <a name="how-authentication-works"></a>認証のしくみ
 
-Purview ユーザーがアクセス権を持つ Data Factory を登録すると、バックエンドで以下が実行されます。
+データ ファクトリのマネージド ID は、データ ファクトリから Purview への系列のプッシュ操作を認証するために使用されます。 UI 上で Purview にデータ ファクトリを接続すると、ロールの割り当てが自動的に追加されます。
 
-1. **Data Factory マネージド ID** が次の Purview RBAC ロールに追加されます: **Purview データ キュレーター**。
-
-    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Azure Data Factory MSI を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
-     
-2. 系列メタデータを Purview にプッシュバックできるようにするために、Data Factory パイプラインを再実行する必要があります。
-3. 実行後に Data Factory メタデータが Purview にプッシュされます。
+データ ファクトリのマネージド ID に、Purview **ルート コレクション** の **データ キュレーター** ロールを付与します。 詳細については、[Azure Purview でのアクセス制御](../purview/catalog-permissions.md)および[コレクションを使用したロールの追加とアクセスの制限](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)に関連するページを参照してください。
 
 ### <a name="remove-data-factory-connections"></a>Data Factory 接続を削除する
+
 Data Factory 接続を削除するには、次の操作を行います。
 
 1. **[Data Factory connection] (Data Factory 接続)** ページで、1 つ以上の Data Factory 接続の横にある **[削除]** ボタンを選択します。
 2. ポップアップの **[確認]** を選択して、選択されている Data Factory 接続を削除します。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="接続を削除する Data Factory を選択する方法を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
-
-## <a name="configure-a-self-hosted-integration-runtime-to-collect-lineage"></a>系列を収集するようにセルフホステッド統合ランタイムを構成する
-
-Data Factory のコピー アクティビティの系列は、SQL データベースなどのオンプレミス データ ストアで使用できます。 Azure Data Factory でのデータ移動のためにセルフホステッド統合ランタイムを実行しており、Azure Purview で系列をキャプチャしたい場合は、バージョンが 5.0 以降であることを確認してください。 セルフホステッド統合ランタイムの詳細については、「[セルフホステッド統合ランタイムを作成して構成する](../data-factory/create-self-hosted-integration-runtime.md)」を参照してください。
 
 ## <a name="supported-azure-data-factory-activities"></a>サポートされる Azure Data Factory アクティビティ
 
@@ -105,83 +93,19 @@ Azure Purview は、次の Azure Data Factory アクティビティからラン�
 
 以降のセクションで説明されているように、Data Factory と Purview の間の統合では、Data Factory がサポートするデータ システムのサブセットのみがサポートされています。
 
-### <a name="data-factory-copy-activity-support"></a>Data Factory のコピー アクティビティのサポート
+[!INCLUDE[data-factory-supported-lineage-capabilities](includes/data-factory-common-supported-capabilities.md)]
 
-| データ ストア | サポートされています | 
-| ------------------- | ------------------- | 
-| Azure Blob Storage | はい |
-| Azure Cognitive Search | はい | 
-| Azure Cosmos DB (SQL API) \* | はい | 
-| Azure Cosmos DB の MongoDB 用 API \* | はい |
-| Azure Data Explorer \* | はい | 
-| Azure Data Lake Storage Gen1 | はい | 
-| Azure Data Lake Storage Gen2 | はい | 
-| Azure Database for Maria DB \* | はい | 
-| Azure Database for MySQL \* | はい | 
-| Azure Database for PostgreSQL \* | はい |
-| Azure File Storage | はい | 
-| Azure SQL Database \* | はい | 
-| Azure SQL Managed Instance \* | はい | 
-| Azure Synapse Analytics \* | はい | 
-| Azure Table Storage | はい |
-| Amazon S3 | はい | 
-| Hive \* | はい | 
-| SAP ECC \* | はい |
-| SAP テーブル | はい |
-| SQL Server \* | はい | 
-| Teradata \* | はい |
+### <a name="execute-ssis-package-support"></a>SSIS パッケージの実行のサポート
 
-*\* Azure Purview は現在、系列またはスキャンのためのクエリやストアド プロシージャをサポートしていません。系列は、テーブルとビューのソースだけに制限されています。*
+[サポートされるデータ ストア](how-to-lineage-sql-server-integration-services.md#supported-data-stores)を参照してください。
 
-> [!Note]
-> Data Factory のコピー アクティビティでは、系列の機能で特定のパフォーマンスのオーバーヘッドが発生します。 Purview で Data Factory 接続を設定している場合は、特定のコピー ジョブが完了するまでの時間が長くなることがあります。 この影響は多くの場合、とても無視できません。 コピー ジョブが完了するまでの時間が通常より大幅に長くなっている場合は、その時間の比較をサポートに連絡してください。
+## <a name="access-secured-azure-purview-account"></a>セキュリティで保護された Azure Purview アカウントにアクセスする
+      
+Purview アカウントがファイアウォールで保護されている場合、Purview プライベート エンドポイントを利用して、[セキュリティで保護されている Purview アカウントに Data Factory でアクセスする](../data-factory/how-to-access-secured-purview-account.md)方法について説明します。
 
-#### <a name="known-limitations-on-copy-activity-lineage"></a>コピー アクティビティの系列に関する既知の制限事項
+## <a name="bring-data-factory-lineage-into-purview"></a>Data Factory の系列を Purview に取り込む
 
-現在、次のコピー アクティビティの機能を使用する場合、系列はまだサポートされていません。
-
-- バイナリ形式を使用して Azure Data Lake Storage Gen1 にデータをコピーする。
-- PolyBase または COPY ステートメントを使用して、Azure Synapse Analytics にデータをコピーする。
-- バイナリ、区切りテキスト、Excel、JSON、および XML ファイルの圧縮設定。
-- Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics、SQL Server、および SAP テーブルのソース パーティション オプション。
-- ファイルベースのストアのソース パーティション検出オプション。
-- ファイルごとの最大行数設定を使用して、ファイルベースのシンクにデータをコピーする。
-- コピー中に列を追加する。
-
-データ系列の追加では、次のコネクタのデータ資産スキーマ ([資産] -> [スキーマ] タブに表示) がレポートされます。
-
-- Azure Blob、Azure File Storage、ADLS Gen1、ADLS Gen2、Amazon S3 の CSV ファイルと Parquet ファイル
-- Azure Data Explorer、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics、SQL Server、Teradata
-
-### <a name="data-factory-data-flow-support"></a>Data Factory Data Flow のサポート
-
-| データ ストア | サポートされています |
-| ------------------- | ------------------- | 
-| Azure Blob Storage | はい |
-| Azure Data Lake Storage Gen1 | はい |
-| Azure Data Lake Storage Gen2 | はい |
-| Azure SQL Database \* | はい |
-| Azure Synapse Analytics \* | はい |
-
-*\* Azure Purview は現在、系列またはスキャンのためのクエリやストアド プロシージャをサポートしていません。系列は、テーブルとビューのソースだけに制限されています。*
-
-### <a name="data-factory-execute-ssis-package-support"></a>Data Factory の SSIS パッケージの実行のサポート
-
-| データ ストア | サポートされています |
-| ------------------- | ------------------- |
-| Azure Blob Storage | はい |
-| Azure Data Lake Storage Gen1 | はい |
-| Azure Data Lake Storage Gen2 | はい |
-| Azure File Storage | はい |
-| Azure SQL Database \* | はい |
-| Azure SQL Managed Instance \*| はい |
-| Azure Synapse Analytics \* | はい |
-| SQL Server \* | はい |
-
-*\* Azure Purview は現在、系列またはスキャンのためのクエリやストアド プロシージャをサポートしていません。系列は、テーブルとビューのソースだけに制限されています。*
-
-> [!Note]
-> Azure Data Lake Storage Gen2 の一般提供が開始されました。 今すぐ使用を開始することをお勧めします。 詳細については、[製品に関するページ](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/)を参照してください。
+エンドツーエンドのチュートリアルについては、「[チュートリアル: Data Factory 系列データを Azure Purview にプッシュする](../data-factory/turorial-push-lineage-to-purview.md)」に従ってください。
 
 ## <a name="supported-lineage-patterns"></a>サポートされる系列パターン
 
@@ -189,7 +113,7 @@ Azure Purview でサポートされる系列のパターンはいくつかあり
 
 系列情報を送信するように Data Factory を構成するには、「[系列の使用を開始する](catalog-lineage-user-guide.md#get-started-with-lineage)」を参照してください。
 
-系列ビューの情報を検索するための追加の方法には、次のようないくつかのものがあります。
+系列ビューの情報を検索するための他の方法には、次のようなものがあります。
 
 - **[系列]** タブで、図形をマウスでポイントすると、そのアセットに関する追加情報がツールヒントにプレビューされます。
 - ノードまたはエッジを選択すると、それが属するアセットの種類が表示されるか、またはアセットが切り替えられます。
@@ -205,7 +129,7 @@ Azure Purview でサポートされる系列のパターンはいくつかあり
 - 1 つのシンク/出力: *Customer1.csv* (Azure BLOB)
 - 1 つのプロセス: *CopyCustomerInfo1\#Customer1.csv* (Data Factory のコピー アクティビティ)
 
-:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage.png" alt-text="1:1 の Data Factory のコピー操作の系列を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/adf-copy-lineage.png":::
+:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage.png" alt-text="1:1 の Data Factory のコピー操作の系列を示すスクリーンショット。":::
 
 ### <a name="data-movement-with-11-lineage-and-wildcard-support"></a>1:1 の系列とワイルドカードのサポートを使用したデータ移動
 
@@ -245,5 +169,8 @@ Data Flow アクティビティを使用してデータ操作 (merge や join �
 
 ## <a name="next-steps"></a>次のステップ
 
-- [カタログ系列ユーザー ガイド](catalog-lineage-user-guide.md)
-- [系列のための Azure Data Share へのリンク](how-to-link-azure-data-share.md)
+[チュートリアル: Data Factory 系列データを Azure Purview にプッシュする](../data-factory/turorial-push-lineage-to-purview.md)
+
+[カタログ系列ユーザー ガイド](catalog-lineage-user-guide.md)
+
+[系列のための Azure Data Share へのリンク](how-to-link-azure-data-share.md)

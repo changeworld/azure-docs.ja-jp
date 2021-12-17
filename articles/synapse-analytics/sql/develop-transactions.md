@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 8af6802f785718ca6064a34c98d9f6dafc046a2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44e4b35d7e67e566b3ccef61cf5fa22077e844c7
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594769"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861810"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールでトランザクションを使用する
 
@@ -43,7 +43,7 @@ ms.locfileid: "104594769"
 
 ## <a name="gen2"></a>Gen2
 
-| [DWU](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | ディストリビューションあたりの上限 (GB) | ディストリビューション数 | 最大トランザクション サイズ (GB) | ディストリビューションあたりの行数 | トランザクションあたりの最大行数 |
+| [DWU](resource-consumption-models.md#data-warehouse-units) | ディストリビューションあたりの上限 (GB) | ディストリビューション数 | 最大トランザクション サイズ (GB) | ディストリビューションあたりの行数 | トランザクションあたりの最大行数 |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -64,7 +64,7 @@ ms.locfileid: "104594769"
 
 ## <a name="gen1"></a>Gen1
 
-| [DWU](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | ディストリビューションあたりの上限 (GB) | ディストリビューション数 | 最大トランザクション サイズ (GB) | ディストリビューションあたりの行数 | トランザクションあたりの最大行数 |
+| [DWU](resource-consumption-models.md#data-warehouse-units) | ディストリビューションあたりの上限 (GB) | ディストリビューション数 | 最大トランザクション サイズ (GB) | ディストリビューションあたりの行数 | トランザクションあたりの最大行数 |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -81,7 +81,7 @@ ms.locfileid: "104594769"
 
 トランザクション サイズ制限は、トランザクションあたりまたは操作あたりで適用されます。 すべての同時実行トランザクションにまたいで適用されることはありません。 そのため、このデータ量をログに書き込むことが各トランザクションに許可されます。
 
-ログに書き込まれるデータ量を最適化および最小化する方法については、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事を参照してください。
+ログに書き込まれるデータ量を最適化および最小化する方法については、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?context=/azure/synapse-analytics/context/context)に関する記事を参照してください。
 
 > [!WARNING]
 > 最大トランザクション サイズは、HASH または ROUND_ROBIN で分散し、データが均等に分散されたテーブルでのみ達成できます。 トランザクションによりデータが書き込まれ、分散が傾斜する場合、最大トランザクション サイズに到達する前に上限に到達する可能性があります。
@@ -204,4 +204,4 @@ THROW は、専用 SQL プールで例外を発生させるための最新の実
 
 ## <a name="next-steps"></a>次のステップ
 
-トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。 [専用 SQL プール](best-practices-dedicated-sql-pool.md)と[サーバーレス SQL プール](best-practices-serverless-sql-pool.md) のベスト プラクティス ガイドも用意されています。
+トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?context=/azure/synapse-analytics/context/context)に関する記事をご覧ください。 [専用 SQL プール](best-practices-dedicated-sql-pool.md)と[サーバーレス SQL プール](best-practices-serverless-sql-pool.md) のベスト プラクティス ガイドも用意されています。

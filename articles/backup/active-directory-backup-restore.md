@@ -3,12 +3,12 @@ title: Active Directory のバックアップおよび復元
 description: Active Directory ドメイン コントローラーのバックアップと復元の方法について説明します。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 8db2dab605e90e4748b11a632d6651c23d631b6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bc6458895965d4c37667e0cff3051a4e4e8288e
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98733555"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107898209"
 ---
 # <a name="back-up-and-restore-active-directory-domain-controllers"></a>Active Directory ドメイン コントローラーのバックアップおよび復元
 
@@ -23,7 +23,13 @@ Active Directory のバックアップと、破損、セキュリティ侵害、
 
 - 少なくとも 1 つのドメイン コントローラーが確実にバックアップされるようにします。 複数のドメイン コントローラーをバックアップする場合は、[FSMO (フレキシブル シングル マスター操作) ロール](/windows-server/identity/ad-ds/plan/planning-operations-master-role-placement)を保持しているものすべてが確実にバックアップされるようにします。
 
-- Active Directory を頻繁にバックアップします。 廃棄標識の有効期間 (既定では60日) よりも古いオブジェクトは "廃棄済み" になり、有効と見なされなくなるため、バックアップは廃棄標識の有効期間を超えないようにしてください。
+- Active Directory を頻繁にバックアップします。 バックアップの経過期間が、廃棄の有効期間 (TSL) を超えないようにしてください。これは、TLS よりも古いオブジェクトが "廃棄済み" となり、有効と見なされなくなるためです。
+  - 既定の TSL は、Windows Server 2003 SP2 以降でビルドされたドメインの場合、180 日です。
+  - 構成された TSL を確認するには、次の PowerShell スクリプトを使用します。
+
+    ```powershell
+    (Get-ADObject $('CN=Directory Service,CN=Windows NT,CN=Services,{0}' -f (Get-ADRootDSE).configurationNamingContext) -Properties tombstoneLifetime).tombstoneLifetime
+    ```
 
 - ドメイン コントローラーを復元する方法に関する手順を含む、明確なディザスター リカバリー計画を用意します。 Active Directory フォレストの復元を準備する場合は、「[Active Directory フォレストの復旧ガイド](/windows-server/identity/ad-ds/manage/ad-forest-recovery-guide)」を参照してください。
 

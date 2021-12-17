@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 06/23/2020
-  ms.openlocfilehash: aaa2115609e08077ad29e5e8b9eefb4d8a65147e
-  ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+  ms.date: 08/27/2021
+  ms.openlocfilehash: 30615824c5aa8b47af5ccdf89b1b56835d9e9ae2
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/24/2020
-  ms.locfileid: "95805656"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123106288"
 landingContent:
 - title: Service Bus メッセージングについて
   linkLists:
@@ -71,8 +71,6 @@ landingContent:
       url: service-bus-python-how-to-use-queues.md
     - text: PHP
       url: service-bus-php-how-to-use-queues.md
-    - text: Ruby
-      url: service-bus-ruby-how-to-use-queues.md
 - title: メッセージの発行とサブスクライブ
   linkLists:
   - linkListType: quickstart
@@ -87,8 +85,6 @@ landingContent:
       url: service-bus-python-how-to-use-topics-subscriptions.md
     - text: PHP
       url: service-bus-php-how-to-use-topics-subscriptions.md
-    - text: Ruby
-      url: service-bus-ruby-how-to-use-topics-subscriptions.md
 - title: 監視と管理
   linkLists:
   - linkListType: how-to-guide
@@ -96,9 +92,7 @@ landingContent:
     - text: PowerShell を使用したエンティティのプロビジョニング
       url: service-bus-manage-with-ps.md
     - text: Azure Monitor を使用した Service Bus の監視
-      url: service-bus-metrics-azure-monitor.md
-    - text: 診断ログの設定
-      url: service-bus-diagnostic-logs.md
+      url: monitor-service-bus-reference.md
     - text: メッセージ エンティティの一時停止と再アクティブ化
       url: entity-suspend.md
     - text: Azure Resource Manager テンプレートの使用

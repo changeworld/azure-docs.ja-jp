@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/03/2021
+ms.date: 06/09/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c0fbb1280fc2a7eaca1d97e7e016cf480873c8b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0017344d745b29162aa36a492c31c1c48e6dd4d6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666577"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466525"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
@@ -62,6 +62,7 @@ HANA のストレージ構成を選択する際の基本原則は次のとおり
 - 「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」および[ディスクの種類の選択](../../disks-types.md)に関する記事に基づいて、ストレージの種類を決定します。
 - VM のサイズ設定や決定を行うときは、VM の全体的な I/O スループットと IOPS の上限を考慮します。 VM の全体的なストレージ スループットについては、「[メモリ最適化済み仮想マシンのサイズ](../../sizes-memory.md)」をご覧ください。
 - ストレージ構成を決定するときは、 **/hana/data** ボリューム構成で VM の全体的なスループットの上限を超えないようにします。 セーブポイントの書き込みにより、SAP HANA は I/O を積極的に発行できます。 セーブポイントを書き込むと、 **/hana/data** ボリュームのスループットの上限にすぐに達する可能性があります。 **/hana/data** ボリュームが構築されているディスクのスループットが、VM で許可されるスループットよりも高い場合、セーブポイントの書き込みで使用されるスループットが、再実行ログ書き込みのスループット要求の妨げとなる状況に陥る可能性があります。 アプリケーションのスループットに影響を与える可能性のある状況
+- HANA システム レプリケーションの使用を検討している場合は、HANA システム レプリケーションの構成に参加しているすべての VM の **/hana/data** と **/hana/log** にまったく同じ種類の Azure Storage を使用する必要があります。 たとえば、同じ HANA システム レプリケーション構成内で、ある VM の **/hana/data** に Azure Premium Storage を使用し、別の VM の **/hana/log** に Azure Ultra Disk を使用することはサポートされていません。
 
 
 > [!IMPORTANT]
@@ -69,7 +70,7 @@ HANA のストレージ構成を選択する際の基本原則は次のとおり
 
 
 ## <a name="stripe-sets-versus-sap-hana-data-volume-partitioning"></a>ストライプ セットと SAP HANA データ ボリュームのパーティション分割
-Azure Premium Storage を使用すると、複数の Azure ディスクにわたって **/hana/data** または **/hana/log** ボリューム、またはその両方をストライピングするときに、最適な価格/パフォーマンス比に達しない場合があります。 より大きなディスク ボリュームをデプロイするほど、必要な IOPS またはスループットが増え、そうしなくて済みます。 これまでは、Linux の一部である LVM と MDADM ボリューム マネージャーを使用することで、これが実現されていました。 ディスクをストライピングする方法は、数十年間使用され、よく知られています。 これらのストライプ ボリュームは、必要になる可能性のある IOPS またはスループットの能力を利用できるようになるためにメリットがありますが、これらのストライプ ボリュームの管理に関しては複雑さが増します。 ボリュームの容量に拡張する必要がある場合は特にそうなります。 少なくとも **/hana/data** に対しては、SAP は複数の Azure ディスクにまたがるストライピングと同じ目標を達成する代替方法を導入しました。 SAP HANA 2.0 SPS03 以降、HANA IndexServer は、さまざまな Azure ディスクに配置されている複数の HANA データ ファイル間で I/O アクティビティをストライピングできます。 この利点は、複数の Azure ディスクにまたがるストライプ ボリュームの作成と管理を行う必要がないことです。 データ ボリュームのパーティション分割の SAP HANA 機能の詳細については、次を参照してください。
+Azure Premium Storage を使用すると、複数の Azure ディスクにわたって **/hana/data** または **/hana/log** ボリューム、またはその両方をストライピングするときに、最適な価格/パフォーマンス比に達しない場合があります。 より大きなディスク ボリュームをデプロイするほど、必要な IOPS またはスループットが増え、そうしなくて済みます。 これまでは、Linux の一部である LVM と MDADM ボリューム マネージャーを使用することで、これが実現されていました。 ディスクをストライピングする方法は、数十年間使用され、よく知られています。 これらのストライプ ボリュームは、必要になる可能性のある IOPS またはスループットの能力を利用できるようになるためにメリットがありますが、これらのストライプ ボリュームの管理に関しては複雑さが増します。 ボリュームの容量に拡張する必要がある場合は特にそうなります。 少なくとも **/hana/data** に対しては、SAP は複数の Azure ディスクにまたがるストライピングと同じ目標を達成する代替方法を導入しました。 SAP HANA 2.0 SPS03 以降では、HANA IndexServer を使用してさまざまな Azure ディスクに配置されている複数の HANA データ ファイル間で I/O アクティビティをストライピングできます。 この利点は、複数の Azure ディスクにまたがるストライプ ボリュームの作成と管理を行う必要がないことです。 データ ボリュームのパーティション分割の SAP HANA 機能の詳細については、次を参照してください。
 
 - [HANA 管理者ガイド](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
 - [SAP HANA に関するブログ - データ ボリュームのパーティション分割](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
@@ -153,6 +154,9 @@ LVM または mdadm を使用して、複数の Azure Premium ディスクにま
 > [!NOTE]
 > Azure Premium Storage を含むシナリオでは、バースト機能が構成に実装されます。 ストレージ テスト ツールを使おうとしているときには、その内容を問わず、[Azure Premium ディスクのバースト動作](../../disk-bursting.md)を考慮に入れてください。 SAP HWCCT または HCMT ツールによって提供されるストレージ テストを実行する場合、一部のテストが、蓄積できるバースト クレジットを超えるため、すべてのテストが基準を満たすことは想定されていません (特に、すべてのテストが中断なく連続して実行される場合)。
 
+> [!NOTE]
+> M32ts と M32ls の VM で HCMT/HWCCT ディスク テストを使用すると、ディスク スループットが予想よりも低くなる可能性があります。 ディスク バーストや、基になるディスクの I/O スループットが十分にプロビジョニングされている場合でも同様です。 観察された動作の根本原因は、HCMT/HWCCT ストレージ テスト ファイルが、Premium Storage データ ディスクの読み取りキャッシュに完全にキャッシュされたことでした。 このキャッシュは、仮想マシンをホストするコンピューティング ホスト上に配置され、HCMT/HWCCT のテスト ファイルを完全にキャッシュできます。 このような場合は、「[M シリーズ](../../m-series.md)」記事の **キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位)** の列に記載されているクォータが関係します。 特に M32ts および M32ls の場合、読み取りキャッシュに対するスループットのクォータは 400 MB/秒しかありません。テスト ファイルが完全にキャッシュされた結果、ディスク バーストまたはより高いプロビジョニングされた I/O スループットにもかかわらず、テストが最大スループット 400 MB/秒をわずかに下回る可能性があります。 別の方法として、Azure Premium Storage データ ディスクで読み取りキャッシュを有効にせずにテストすることもできます。
+
 
 > [!NOTE]
 > 運用環境シナリオでは、[IAAS に関する SAP ドキュメント](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)で、特定の VM の種類が SAP HANA でサポートされているかどうかを確認してください。
@@ -166,14 +170,17 @@ SAP **/hana/data** ボリュームの構成:
 | M32ts | 192 GiB | 500 MBps | 4 x P6 | 200 MBps | 680 MBps | 960 | 14,000 |
 | M32ls | 256 GiB | 500 MBps | 4 x P6 | 200 MBps | 680 MBps | 960 | 14,000 |
 | M64ls | 512 GiB | 1,000 MBps | 4 x P10 | 400 MBps | 680 MBps | 2,000 | 14,000 |
-| M64s | 1,000 GiB | 1,000 MBps | 4 x P15 | 500 MBps | 680 MBps | 4,400 | 14,000 |
-| M64ms | 1,750 GiB | 1,000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9,200 | 14,000 |  
-| M128s | 2,000 GiB | 2,000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9,200| 14,000 | 
-| M128ms | 3,800 GiB | 2,000 MBps | 4 x P30 | 800 MBps | バースティングなし | 20,000 | バースティングなし | 
+| M32dms_v2、M32ms_v2 | 875 GiB  | 500 MBps | 4 x P15 | 500 MBps | 680 MBps | 4,400 | 14,000 |
+| M64s、M64ds_v2、M64s_v2 | 1,024 GiB | 1,000 MBps | 4 x P15 | 500 MBps | 680 MBps | 4,400 | 14,000 |
+| M64ms、M64dms_v2、M64ms_v2 | 1,792 GiB | 1,000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9,200 | 14,000 |  
+| M128s、M128ds_v2、M128s_v2 | 2,048 GiB | 2,000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9,200| 14,000 | 
+| M192ids_v2、M192is_v2 | 2,048 GiB | 2,000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9,200| 14,000 | 
+| M128ms、M128dms_v2、M128ms_v2 | 3,892 GiB | 2,000 MBps | 4 x P30 | 800 MBps | バースティングなし | 20,000 | バースティングなし | 
+| M192ims、M192idms_v2 | 4,096 GiB | 2,000 MBps | 4 x P30 | 800 MBps | バースティングなし | 20,000 | バースティングなし | 
 | M208s_v2 | 2,850 GiB | 1,000 MBps | 4 x P30 | 800 MBps | バースティングなし | 20,000| バースティングなし | 
 | M208ms_v2 | 5,700 GiB | 1,000 MBps | 4 x P40 | 1,000 MBps | バースティングなし | 30,000 | バースティングなし |
 | M416s_v2 | 5,700 GiB | 2,000 MBps | 4 x P40 | 1,000 MBps | バースティングなし | 30,000 | バースティングなし |
-| M416ms_v2 | 11,400 GiB | 2,000 MBps | 4 x P50 | 2,000 MBps | バースティングなし | 30,000 | バースティングなし |
+| M416ms_v2 | 11,400 GiB | 2,000 MBps | 4 x P50 | 1,000 MBps | バースティングなし | 30,000 | バースティングなし |
 
 
 **/hana/log** ボリュームの場合、 構成は次のようになります。
@@ -183,10 +190,13 @@ SAP **/hana/data** ボリュームの構成:
 | M32ts | 192 GiB | 500 MBps | 3 x P10 | 300 MBps | 510 MBps | 1,500 | 10,500 | 
 | M32ls | 256 GiB | 500 MBps | 3 x P10 | 300 MBps | 510 MBps | 1,500 | 10,500 | 
 | M64ls | 512 GiB | 1,000 MBps | 3 x P10 | 300 MBps | 510 MBps | 1,500 | 10,500 | 
-| M64s | 1,000 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
-| M64ms | 1,750 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
-| M128s | 2,000 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500|  
-| M128ms | 3,800 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
+| M32dms_v2、M32ms_v2 | 875 GiB | 500 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
+| M64s、M64ds_v2、M64s_v2 | 1,024 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
+| M64ms、M64dms_v2、M64ms_v2 | 1,792 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
+| M128s、M128ds_v2、M128s_v2 | 2,048 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500| 
+| M192ids_v2、M192is_v2 | 2,048 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500| 
+| M128ms、M128dms_v2、M128ms_v2 | 3,892 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |
+| M192idms_v2、M192ims_v2 | 4,096 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
 | M208s_v2 | 2,850 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
 | M208ms_v2 | 5,700 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
 | M416s_v2 | 5,700 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
@@ -200,10 +210,13 @@ SAP **/hana/data** ボリュームの構成:
 | M32ts | 192 GiB | 500 MBps | 1 x P15 | 1 x P6 | 1 x P6 |
 | M32ls | 256 GiB | 500 MBps |  1 x P15 | 1 x P6 | 1 x P6 |
 | M64ls | 512 GiB | 1000 MBps | 1 x P20 | 1 x P6 | 1 x P6 |
-| M64s | 1,000 GiB | 1,000 MBps | 1 x P30 | 1 x P6 | 1 x P6 |
-| M64ms | 1,750 GiB | 1,000 MBps | 1 x P30 | 1 x P6 | 1 x P6 | 
-| M128s | 2,000 GiB | 2,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
-| M128ms | 3,800 GiB | 2,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 |
+| M32dms_v2、M32ms_v2 | 875 GiB | 500 MBps | 1 x P30 | 1 x P6 | 1 x P6 |
+| M64s、M64ds_v2、M64s_v2 | 1,024 GiB | 1,000 MBps | 1 x P30 | 1 x P6 | 1 x P6 |
+| M64ms、M64dms_v2、M64ms_v2 | 1,792 GiB | 1,000 MBps | 1 x P30 | 1 x P6 | 1 x P6 | 
+| M128s、M128ds_v2、M128s_v2 | 2,048 GiB | 2,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
+| M192ids_v2、M192is_v2  | 2,048 GiB | 2,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
+| M128ms、M128dms_v2、M128ms_v2 | 3,892 GiB | 2,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 |
+| M192idms_v2、M192ims_v2  | 4,096 GiB | 2,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 |
 | M208s_v2 | 2,850 GiB | 1,000 MBps |  1 x P30 | 1 x P10 | 1 x P6 |
 | M208ms_v2 | 5,700 GiB | 1,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
 | M416s_v2 | 5,700 GiB | 2,000 MBps |  1 x P30 | 1 x P10 | 1 x P6 | 
@@ -212,7 +225,7 @@ SAP **/hana/data** ボリュームの構成:
 
 推奨されるさまざまなボリュームのストレージ スループットが、実行するワークロードに対応できるかどうかを確認します。 ワークロードに **/hana/data** および **/hana/log** のより大きなボリュームが必要な場合は、Azure Premium Storage VHD の数を増やす必要があります。 記載されている数よりも多くの VHD でボリュームのサイズを設定すると、その Azure 仮想マシンの種類の制限内で IOPS と I/O スループットが向上します。
 
-Azure 書き込みアクセラレータは、[Azure マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)との連携でのみ動作します。 そのため、少なくとも、 **/hana/log** ボリュームを形成する Azure Premium Storage ディスクはマネージド ディスクとしてデプロイする必要があります。 Azure 書き込みアクセラレータの詳細と制限事項については、[書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)に関する記事をご覧ください。
+Azure 書き込みアクセラレータは、[Azure マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)でのみ動作します。 そのため、少なくとも、 **/hana/log** ボリュームを形成する Azure Premium Storage ディスクはマネージド ディスクとしてデプロイする必要があります。 Azure 書き込みアクセラレータの詳細と制限事項については、[書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)に関する記事をご覧ください。
 
 Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) ファミリおよび [Edsv4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series) の HANA 認定 VM の場合、 **/hana/data** および **/hana/log** ボリュームに ANF を使用する必要があります。 または、 **/hana/log** ボリュームにのみ、Azure Premium Storage ではなく Azure Ultra Disk Storage を利用する必要があります。 その結果、Azure Premium Storage 上の **/hana/data** ボリュームの構成は次のようになります。
 
@@ -236,7 +249,7 @@ Ultra Disk 上の **/hana/log** など、その他のボリュームの場合、
 
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>SAP HANA 用の Azure Ultra Disk ストレージ構成
-もう 1 つの Azure Storage の種類は、[Azure Ultra Disk](../../disks-types.md#ultra-disk) と呼ばれます。 これまでに提供されていた Azure Storage と Ultra Disk との大きな違いは、ディスク機能がディスク サイズにバインドされなくなることです。 顧客として、Ultra Disk に次の機能を定義できます。
+もう 1 つの Azure Storage の種類は、[Azure Ultra Disk](../../disks-types.md#ultra-disks) と呼ばれます。 これまでに提供されていた Azure Storage と Ultra Disk との大きな違いは、ディスク機能がディスク サイズにバインドされなくなることです。 顧客として、Ultra Disk に次の機能を定義できます。
 
 - 4 GiB から 65,536 GiB のディスク範囲のサイズ
 - 100 IOPS から 160K IOPS の IOPS の範囲 (最大値は VM の種類によっても異なる)
@@ -247,10 +260,10 @@ Ultra Disk によって、自分のサイズ、IOPS、ディスク スループ�
 Ultra Disk のその他の利点は、Premium Storage と比較して読み取り待ち時間が短いことです。 読み取り待機時間が短いということは、HANA の起動時間とその後のメモリへのデータの読み込みを短縮する必要がある場合に利点があります。 Ultra Disk ストレージの利点は、HANA によってセーブポイントが書き込まれているときにも感じることができます。 
 
 > [!NOTE]
-> Ultra Disk は、まだ、すべての Azure リージョンには存在しておらず、すべての種類の VM がサポートされているわけでもありません。 使用可能な Ultra Disk、サポートされている VM ファミリの詳細については、「[Azure で利用できるディスクの種類](../../disks-types.md#ultra-disk)」を参照してください。
+> Ultra Disk は、まだ、すべての Azure リージョンには存在しておらず、すべての種類の VM がサポートされているわけでもありません。 使用可能な Ultra Disk、サポートされている VM ファミリの詳細については、「[Azure で利用できるディスクの種類](../../disks-types.md#ultra-disks)」を参照してください。
 
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>純粋な Ultra Disk 構成を使用した運用環境で推奨されるストレージ ソリューション
-この構成では、 **/hana/data** ボリュームと **/hana/log** ボリュームを別々に保持します。 推奨値は、[SAP TDI ストレージに関するホワイトペーパー](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) で推奨されているように SAP HANA およびストレージ構成に対して VM の種類を認定するために SAP が用意している KPI から導出されます。
+この構成では、 **/hana/data** ボリュームと **/hana/log** ボリュームを別々に保持します。 推奨値は、[SAP TDI ストレージに関するホワイトペーパー](https://archive.sap.com/kmuuid2/70c8e423-c8aa-3210-3fae-e043f5c1ca92/SAP%20HANA%20TDI%20-%20Storage%20Requirements.pdf) で推奨されているように SAP HANA およびストレージ構成に対して VM の種類を認定するために SAP が用意している KPI から導出されます。
 
 推奨事項は、この記事で既に説明したように、SAP の最小要件を超えていることがよくあります。 一覧表示される推奨事項は、SAP による推奨サイズと、さまざまな種類の VM で提供される最大ストレージ スループットの間の妥協点です。
 
@@ -268,10 +281,13 @@ Ultra Disk のその他の利点は、Premium Storage と比較して読み取�
 | M32ts | 192 GiB | 500 MB/秒 | 250 GB | 400 MBps | 2,500 | 96 GB | 250 MBps  | 1,800 |
 | M32ls | 256 GiB | 500 MB/秒 | 300 GB | 400 MBps | 2,500 | 256 GB | 250 MBps  | 1,800 |
 | M64ls | 512 GiB | 1,000 MB/秒 | 620 GB | 400 MBps | 3,500 | 256 GB | 250 MBps  | 1,800 |
-| M64s | 1,000 GiB | 1,000 MB/秒 |  1,200 GB | 600 MBps | 5,000 | 512 GB | 250 MBps  | 2,500 |
-| M64ms | 1,750 GiB | 1,000 MB/秒 | 2,100 GB | 600 MBps | 5,000 | 512 GB | 250 MBps  | 2,500 |
-| M128s | 2,000 GiB | 2,000 MB/秒 |2,400 GB | 750 MBps | 7,000 | 512 GB | 250 MBps  | 2,500 | 
-| M128ms | 3,800 GiB | 2,000 MB/秒 | 4,800 GB | 750 MBps |9,600 | 512 GB | 250 MBps  | 2,500 | 
+| M32dms_v2、M32ms_v2 | 875 GiB | 500 MB/秒 |  1,200 GB | 600 MBps | 5,000 | 512 GB | 250 MBps  | 2,500 |
+| M64s、M64ds_v2、M64s_v2 | 1,024 GiB | 1,000 MB/秒 |  1,200 GB | 600 MBps | 5,000 | 512 GB | 250 MBps  | 2,500 |
+| M64ms、M64dms_v2、M64ms_v2 | 1,792 GiB | 1,000 MB/秒 | 2,100 GB | 600 MBps | 5,000 | 512 GB | 250 MBps  | 2,500 |
+| M128s、M128ds_v2、M128s_v2 | 2,048 GiB | 2,000 MB/秒 |2,400 GB | 750 MBps | 7,000 | 512 GB | 250 MBps  | 2,500 |
+| M192ids_v2、M192is_v2 | 2,048 GiB | 2,000 MB/秒 |2,400 GB | 750 MBps | 7,000 | 512 GB | 250 MBps  | 2,500 | 
+| M128ms、M128dms_v2、M128ms_v2 | 3,892 GiB | 2,000 MB/秒 | 4,800 GB | 750 MBps |9,600 | 512 GB | 250 MBps  | 2,500 | 
+| M192idms_v2、M192ims_v2 | 4,096 GiB | 2,000 MB/秒 | 4,800 GB | 750 MBps |9,600 | 512 GB | 250 MBps  | 2,500 | 
 | M208s_v2 | 2,850 GiB | 1,000 MB/秒 | 3,500 GB | 750 MBps | 7,000 | 512 GB | 250 MBps  | 2,500 | 
 | M208ms_v2 | 5,700 GiB | 1,000 MB/秒 | 7,200 GB | 750 MBps | 14,400 | 512 GB | 250 MBps  | 2,500 | 
 | M416s_v2 | 5,700 GiB | 2,000 MB/秒 | 7,200 GB | 1,000 MBps | 14,400 | 512 GB | 400 MBps  | 4,000 | 
@@ -308,11 +324,14 @@ HANA 用 ANF の詳細については、「[SAP HANA 用 Azure NetApp Files 上�
 | E64v3 | 432 GiB | 1,200 MB/秒 | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 1 ミリ秒未満のストレージ待機時間は達成されません<sup>1</sup> |
 | E64ds_v4 | 504 GiB | 1200 MB/秒 |  7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 1 ミリ秒未満のストレージ待機時間は達成されません<sup>1</sup> |
 | M64ls | 512 GiB | 1,000 MB/秒 | 7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 10,000 に制限されます<sup>2</sup> |
-| M64s | 1,000 GiB | 1,000 MB/秒 | 7 x P15 | 1 x E30 | 1 x E6 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 10,000 に制限されます<sup>2</sup> |
-| M64ms | 1,750 GiB | 1,000 MB/秒 | 6 x P20 | 1 x E30 | 1 x E6 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 10,000 に制限されます<sup>2</sup> |
-| M128s | 2,000 GiB | 2,000 MB/秒 |6 x P20 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |
+| M32dms_v2、M32ms_v2 | 875 GiB | 500 MB/秒 | 6 x P15 | 1 x E30 | 1 x E6 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 5,000 に制限されます<sup>2</sup> |
+| M64s、M64ds_v2、M64s_v2 | 1,024 GiB | 1,000 MB/秒 | 7 x P15 | 1 x E30 | 1 x E6 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 10,000 に制限されます<sup>2</sup> |
+| M64ms、M64dms_v2、M64ms_v2| 1,792 GiB | 1,000 MB/秒 | 6 x P20 | 1 x E30 | 1 x E6 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 10,000 に制限されます<sup>2</sup> |
+| M128s、M128ds_v2、M128s_v2 | 2,048 GiB | 2,000 MB/秒 |6 x P20 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |
+| M192ids_v2、M192is_v2 | 2,048 GiB | 2,000 MB/秒 |6 x P20 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |
+| M128ms、M128dms_v2、M128ms_v2  | 3,800 GiB | 2,000 MB/秒 | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |
+| M192idms_v2、M192ims_v2  | 4,096 GiB | 2,000 MB/秒 | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |
 | M208s_v2 | 2,850 GiB | 1,000 MB/秒 | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 10,000 に制限されます<sup>2</sup> |
-| M128ms | 3,800 GiB | 2,000 MB/秒 | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |
 | M208ms_v2 | 5,700 GiB | 1,000 MB/秒 | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 10,000 に制限されます<sup>2</sup> |
 | M416s_v2 | 5,700 GiB | 2,000 MB/秒 | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |
 | M416ms_v2 | 11400 GiB | 2,000 MB/秒 | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | データとログの組み合わせボリュームのために書き込みアクセラレータを使用すると、IOPS 量が 20,000 に制限されます<sup>2</sup> |

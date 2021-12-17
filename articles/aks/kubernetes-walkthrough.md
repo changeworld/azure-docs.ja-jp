@@ -13,12 +13,12 @@ ms.custom:
 - seo-python-october2019
 - devx-track-azurecli
 - contperf-fy21q1
-ms.openlocfilehash: 8adfd1a6e26a3381653ca9a794b124e201b9d481
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: cda15b8d0dfd5074fca75283589c3ea173310b4e
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106723"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769952"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Kubernetes Service クラスターをデプロイする
 
@@ -38,6 +38,7 @@ Windows Server ノード プールの作成の詳細については、[Windows S
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - この記事では、Azure CLI のバージョン 2.0.64 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
+- クラスターの作成に使用している ID には、適切な最小限のアクセス許可が与えられています。 AKS のアクセスと ID の詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション](concepts-identity.md)」を参照してください。
 
 > [!NOTE]
 > このクイックスタートのコマンドを、Azure Cloud Shell ではなくローカルで実行する場合は、管理者としてコマンドを実行してください。
@@ -74,25 +75,23 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="enable-cluster-monitoring"></a>クラスターの監視を有効にする
 
-1. *Microsoft.OperationsManagement* と *Microsoft.OperationalInsights* がサブスクリプションで登録されていることを確認してください。 登録状態を確認するには:
+*Microsoft.OperationsManagement* と *Microsoft.OperationalInsights* がサブスクリプションで登録されていることを確認してください。 登録状態を確認するには:
 
-    ```azurecli
-    az provider show -n Microsoft.OperationsManagement -o table
-    az provider show -n Microsoft.OperationalInsights -o table
-    ```
+```azurecli
+az provider show -n Microsoft.OperationsManagement -o table
+az provider show -n Microsoft.OperationalInsights -o table
+```
  
-    登録されていない場合は、次を使用して、*Microsoft.OperationsManagement* と *Microsoft.OperationalInsights* を登録します。
+登録されていない場合は、次を使用して、*Microsoft.OperationsManagement* と *Microsoft.OperationalInsights* を登録します。
  
-    ```azurecli
-    az provider register --namespace Microsoft.OperationsManagement
-    az provider register --namespace Microsoft.OperationalInsights
-    ```
-
-2. [Azure Monitor for containers][azure-monitor-containers] を、 *--enable-addons monitoring* パラメーターを使用して有効にします。 
+```azurecli
+az provider register --namespace Microsoft.OperationsManagement
+az provider register --namespace Microsoft.OperationalInsights
+```
 
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
 
-[az aks create][az-aks-create] コマンドを使用して、AKS クラスターを作成します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 
+[az aks create][az-aks-create] コマンドを、[Azure Monitor for containers][azure-monitor-containers] を有効にする *--enable-addons monitoring* パラメーターと共に使用して、AKS クラスターを作成します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
@@ -144,7 +143,7 @@ Kubernetes クラスターを管理するには、Kubernetes のコマンドラ�
 * Redis インスタンス。 
 
 次の 2 つの [Kubernetes サービス][kubernetes-service]も作成されます。
-* Redis インスタンスの内部サービス。
+* Redis インスタンス用の内部サービス。
 * インターネットから Azure Vote アプリケーションにアクセスするための外部サービス。
 
 1. `azure-vote.yaml` という名前でファイルを作成します。
@@ -167,7 +166,7 @@ Kubernetes クラスターを管理するには、Kubernetes のコマンドラ�
             app: azure-vote-back
         spec:
           nodeSelector:
-            "beta.kubernetes.io/os": linux
+            "kubernetes.io/os": linux
           containers:
           - name: azure-vote-back
             image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
@@ -210,7 +209,7 @@ Kubernetes クラスターを管理するには、Kubernetes のコマンドラ�
             app: azure-vote-front
         spec:
           nodeSelector:
-            "beta.kubernetes.io/os": linux
+            "kubernetes.io/os": linux
           containers:
           - name: azure-vote-front
             image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
@@ -264,7 +263,7 @@ Kubernetes クラスターを管理するには、Kubernetes のコマンドラ�
 kubectl get service azure-vote-front --watch
 ```
 
-`azure-vote-front` サービスの **EXTERNAL-IP** の出力は、最初は *pending* として表示されます。
+`azure-vote-front` サービスの **[EXTERNAL-IP]** の出力は、最初は *pending* と表示されます。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -300,7 +299,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 このクイック スタートでは、Kubernetes のデプロイを作成するために、既存のコンテナー イメージを使用しました。 関連するアプリケーション コード、Dockerfile、Kubernetes マニフェスト ファイルは、[GitHub で入手できます。][azure-vote-app]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Kubernetes クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。 AKS クラスターの [Kubernetes Web ダッシュボードにアクセス][kubernetes-dashboard]します。
 

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/19/2021
 ms.custom: dpalled
-ms.openlocfilehash: 5e8e5367daa532fa0cc36a18cd28b382e7cd8f78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e7c38001578caa5e23b6c0458f70171d8dcf630
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98682904"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113564502"
 ---
 # <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure Digital Twins と Time Series Insights Gen2 間のモデルの同期
 
@@ -82,10 +82,10 @@ TSID が一意である必要があり、1 つの階層でのみ表すことが�
 
 > [!Note]
 >
-> このコード スニペットの例では、読者がこのチュートリアルの[パート 01](../digital-twins/tutorial-end-to-end.md#set-up-the-sample-function-app) をよく理解しており、このコード変更が "ProcessHubToDTEvents&quot; 関数内で行われたことを前提とします。
+> このコード スニペットの例では、読者がこのチュートリアルの[パート 01](../digital-twins/tutorial-end-to-end.md#set-up-the-sample-function-app) をよく理解しており、このコード変更が "ProcessHubToDTEvents" 関数内で行われたことを前提とします。
 
 ```csharp
-if (propertyPath.Equals(&quot;/Flow"))
+if (propertyPath.Equals("/Flow"))
 {
 //Update the flow value property of the flow meter
 await AdtUtilities.UpdateTwinProperty(client, twinId, "replace",

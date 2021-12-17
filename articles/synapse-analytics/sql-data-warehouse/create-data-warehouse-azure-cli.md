@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 11/20/2020
 ms.author: jrasnick
 ms.custom: azure-synapse, devx-track-azurecli
-ms.openlocfilehash: 532c06cc49f9fddab09c6678ee5fff9fe32347cb
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 3903aa0be5ffa63bc4292371c59002846ec9363c
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565935"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107892096"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-with-azure-cli"></a>クイックスタート: Azure CLI を使用して Synapse SQL プールを作成する
 
@@ -77,43 +77,43 @@ SQL プールを作成します。 この例では、サービス目標として
 > [!NOTE]
 > 以前に作成したワークスペースが必要です。 詳細については、「[クイック スタート: Azure CLI を使用して Azure Synapse ワークスペースを作成する](../quickstart-create-workspace-cli.md)」を参照してください。
 
-SQL プールを作成するには、[az synapse sql pool create](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_create) コマンドを使用します。
+SQL プールを作成するには、[az synapse sql pool create](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_create) コマンドを使用します。
 
 ```azurecli
 az synapse sql pool create --resource-group myResourceGroup --name mySampleDataWarehouse \
    --performance-level "DW1000c" --workspace-name testsynapseworkspace
 ```
 
-パラメーター オプションの詳細については、「[az synapse sql pool](/cli/azure/ext/synapse/synapse/sql/pool)」を参照してください。
+パラメーター オプションの詳細については、「[az synapse sql pool](/cli/azure/synapse/sql/pool)」を参照してください。
 
-[az synapse sql pool list](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_list) コマンドを使用すると、対象の SQL プールを確認できます。
+[az synapse sql pool list](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_list) コマンドを使用すると、対象の SQL プールを確認できます。
 
 ```azurecli
 az synapse sql pool list --resource-group myResourceGroup --workspace-name testsynapseworkspace
 ```
 
-既存のプールを更新するには、[az synapse sql pool update](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_update) コマンドを使用します。
+既存のプールを更新するには、[az synapse sql pool update](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_update) コマンドを使用します。
 
 ```azurecli
 az synapse sql pool update --resource-group myResourceGroup --name mySampleDataWarehouse \
    --workspace-name testsynapseworkspace
 ```
 
-プールを一時停止するには、[az synapse sql pool pause](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_pause) コマンドを使用します。
+プールを一時停止するには、[az synapse sql pool pause](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_pause) コマンドを使用します。
 
 ```azurecli
 az synapse sql pool pause --resource-group myResourceGroup --name mySampleDataWarehouse \
    --workspace-name testsynapseworkspace
 ```
 
-一時停止しているプールを開始するには、[az synapse sql pool resume](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_resume) コマンドを使用します。
+一時停止しているプールを開始するには、[az synapse sql pool resume](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_resume) コマンドを使用します。
 
 ```azurecli
 az synapse sql pool resume --resource-group myResourceGroup --name mySampleDataWarehouse \
    --workspace-name testsynapseworkspace
 ```
 
-既存の SQL プールを削除するには、[az synapse sql pool delete](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_delete) コマンドを使用します。
+既存の SQL プールを削除するには、[az synapse sql pool delete](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_delete) コマンドを使用します。
 
 ```azurecli
 az synapse sql pool delete --resource-group myResourceGroup --name mySampleDataWarehouse \

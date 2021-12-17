@@ -6,22 +6,22 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 06/14/2021
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 52da3c28faa375f8b308e3fe78329fec4f996af9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 845a2d7af740b804d25250753c02c2791da82944
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97804056"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414937"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi の Azure IoT Hub への接続 (C)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-このチュートリアルでは、まず Raspbian を実行する Raspberry Pi の操作の基礎について説明します。 次に、[Azure IoT Hub](about-iot-hub.md) を使って、デバイスをクラウドにシームレスに接続する方法について説明します。 Windows 10 IoT Core サンプルについては、[Windows デベロッパー センター](https://www.windowsondevices.com/)を参照してください。
+このチュートリアルでは、Raspberry Pi OS で動作する Raspberry Pi の基本的な使用方法を最初に説明します。 次に、[Azure IoT Hub](about-iot-hub.md) を使って、デバイスをクラウドにシームレスに接続する方法について説明します。 Windows 10 IoT Core サンプルについては、[Windows デベロッパー センター](https://www.windowsondevices.com/)を参照してください。
 
 キットをお持ちでない場合は、 [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)をお試しください。 または、[こちら](https://azure.microsoft.com/develop/iot/starter-kits)で新しいキットを購入してください。
 
@@ -93,25 +93,25 @@ ms.locfileid: "97804056"
 
 次に、Raspberry Pi を設定します。
 
-### <a name="install-the-raspbian-operating-system-for-pi"></a>Pi の Raspbian オペレーティング システムのインストール
+### <a name="install-the-raspberry-pi-os"></a>Raspberry Pi OS をインストールする
 
-microSD カードに Raspbian イメージをインストールするための準備をします。
+Raspberry Pi OS のイメージをインストールする MicroSD カードを用意します。
 
-1. Raspbian をダウンロードします。
+1. Raspberry Pi OS をダウンロードします。
 
-   1. [Raspbian Stretch with Desktop をダウンロード](https://www.raspberrypi.org/software/)します (.ZIP ファイル)。
+   1. [デスクトップ環境付きの Raspberry Pi OS をダウンロードします](https://www.raspberrypi.org/software/) (.zip ファイル)。
 
-   2. コンピューター上のフォルダーに Raspbian イメージを抽出します。
+   2. コンピューターのフォルダーにイメージを抽出します。
 
-2. microSD カードに Raspbian をインストールします。
+2. Raspberry Pi OS を MicroSD カードにインストールします。
 
    1. [Etcher SD カード書き込みユーティリティをダウンロードしてインストールします](https://etcher.io/)。
 
-   2. Etcher を実行し、手順 1. で抽出した Raspbian イメージを選択します。
+   2. Etcher を実行し、ステップ 1 で抽出した Raspberry Pi OS のイメージを選択します。
 
    3. microSD カード ドライブを選択します。 適切なドライブが既に選択されている場合があります。
 
-   4. [Flash (フラッシュ)] をクリックして、microSD カードに Raspbian をインストールします。
+   4. [Flash]\(フラッシュ\) をクリックして Raspberry Pi OS を microSD カードにインストールします。
 
    5. インストールが完了したら、コンピューターから microSD カードを取り出します。 Etcher では完了時に microSD カードを自動的に取り出すか、マウント解除するため、microSD カードを直接取り出しても問題ありません。
 
@@ -119,11 +119,11 @@ microSD カードに Raspbian イメージをインストールするための�
 
 ### <a name="enable-ssh-and-spi"></a>SSH および SPI の有効化
 
-1. Pi をモニター、キーボード、およびマウスに接続し、Pi を起動してから、`pi` をユーザー名として、`raspberry` をパスワードとして使用して Raspbian にサインインします。
+1. Pi をモニター、キーボード、マウスに接続し、Pi を起動し、ユーザー名に `pi` を、パスワードに `raspberry` を使用してRaspberry Pi OS にサインインします。
  
 2. Raspberry アイコン > **[Preferences]\(設定)**  >  **[Raspberry Pi Configuration]\(Raspberry Pi 構成)** の順にクリックします。
 
-   ![[Raspbian Preferences] (Raspbian 設定)メニュー](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
+   ![Raspberry Pi OS の [Preferences]\(設定\)](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
 3. **[Interfaces]** タブで、**[SPI]** と **[SSH]** を **[Enable]** に設定し、**[OK]** をクリックします。 物理センサーがなく、シミュレートされたセンサー データを使用する場合は、この手順は省略可能です。
 
@@ -190,11 +190,10 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 1. 次のコマンドを実行して、サンプル アプリケーションを複製します。
 
    ```bash
-   sudo apt-get install git-core
    git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-client-app.git
    ```
 
-2. セットアップ スクリプトを実行します。
+2. このサンプルには、開発環境を用意し、当サンプルをビルドするための、セットアップ スクリプトが付属しています。 セットアップ スクリプトを実行します。
 
    ```bash
    cd ./iot-hub-c-raspberrypi-client-app
@@ -208,7 +207,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 
 ### <a name="build-and-run-the-sample-application"></a>サンプル アプリケーションをビルドして実行する
 
-1. 次のコマンドを実行して、サンプル アプリケーションをビルドします。
+1. セットアップ スクリプトによって、サンプルは既にビルドされています。 ですが、サンプル アプリケーションに変更を加えてリビルドする必要がある場合は、次のコマンドを実行します。
 
    ```bash
    cmake . && make
@@ -235,6 +234,15 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 デバイスから IoT ハブが受信するメッセージを監視する方法の 1 つに、Azure IoT Tools for Visual Studio Code を使用することがあります。 詳細については、「[Visual Studio Code 用 Azure IoT Tools を使用してデバイスと IoT Hub の間のメッセージを送受信する](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)」を参照してください。
 
 デバイスから送信されたデータを処理する詳しい方法については、次のセクションに進んでください。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このトピックで作成したリソースは、このドキュメント セットの他のチュートリアルとクイックスタートでも使用できます。 引き続き他のクイックスタートまたはチュートリアルを実行する予定があるなら、このトピックで作成したリソースは削除しないでください。 引き続き作業する予定がなければ、次の手順に従って、このトピックで Azure portal を使用して作成したリソースはすべて削除してください。
+
+1. Azure portal の左側のメニューで **[All resources]\(すべてのリソース\)** を選択し、そこで、作成した IoT Hub を選択します。 
+1. IoT Hub の概要ペインの上部にある **[Delete]\(削除\)** をクリックします。
+1. ハブ名を入力してもう一度 **[Delete]\(削除\)** をクリックし、IoT Hub を完全に削除することを確認します。
+
 
 ## <a name="next-steps"></a>次のステップ
 

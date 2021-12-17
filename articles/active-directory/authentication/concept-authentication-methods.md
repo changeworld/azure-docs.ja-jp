@@ -5,26 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 07/01/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: ee10aa7c461aca65f385c735f6e9aaa28af7f9e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5adc3bd8ef03b2613198518fc22284686c2bfee9
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471698"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730753"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory で使用できる認証方法と検証方法
 
-Azure Active Directory (Azure AD) のアカウントのサインイン エクスペリエンスの一部として、ユーザーが自分自身を認証する方法はいくつかあります。 従来、ユーザーが資格情報を提供していた最も一般的な方法は、ユーザー名とパスワードです。 Azure AD の先進的な認証とセキュリティ機能を使用して、基本パスワードをよりセキュアな認証方法で補完したり置き換えたりする必要があります。
+Microsoft では、Windows Hello や FIDO2 セキュリティ キー、Microsoft Authenticator アプリといった、非常に安全なサインイン イベントを提供できるパスワードレスの認証方法を推奨しています。 ユーザーはユーザー名やパスワードなど、他の一般的な方法を使用してサインインすることもできますが、パスワードはより安全な認証方法に置き換えるべきです。
 
 ![Azure AD における認証方法の強度と推奨の表](media/concept-authentication-methods/authentication-methods.png)
-
-Windows Hello、FIDO2 セキュリティ キー、Microsoft Authenticator アプリなどのパスワードレス認証方法は、最も安全なサインイン イベントを提供します。
 
 Azure AD Multi-Factor Authentication (MFA) を使用すると、ユーザーがサインイン時にパスワードのみを使用する場合と比べて、セキュリティが強化されます。 ユーザーに対して、プッシュ通知に応答する、ソフトウェアまたはハードウェア トークンのコードを入力する、または SMS や電話に応答するなど、追加の形式での認証を要求することができます。
 
@@ -68,13 +66,13 @@ Azure AD Multi-Factor Authentication (MFA) を使用すると、ユーザーが�
 | Windows Hello for Business     | はい                    | MFA                       |
 | Microsoft Authenticator アプリ    | Yes                    | MFA と SSPR              |
 | FIDO2 セキュリティ キー             | はい                    | MFA                       |
-| OATH ハードウェア トークン (プレビュー) | いいえ                     | MFA                       |
-| OATH ソフトウェア トークン           | いいえ                     | MFA                       |
+| OATH ハードウェア トークン (プレビュー) | いいえ                     | MFA と SSPR              |
+| OATH ソフトウェア トークン           | いいえ                     | MFA と SSPR              |
 | SMS                            | Yes                    | MFA と SSPR              |
 | 音声通話                     | いいえ                     | MFA と SSPR              |
 | Password                       | はい                    |                           |
 
-これらの認証方法は、すべて Azure portal で構成できます。また、[Microsoft Graph REST API ベータ版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)を使用して構成することが増えています。
+これらの認証方法は、すべて Azure portal で構成できます。また、[Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview) を使用して構成することが増えています。
 
 各認証方法のしくみの詳細については、次の概念に関する個別の記事を参照してください。
 
@@ -104,7 +102,7 @@ SSPR の概念の詳細については、[Azure AD のセルフサービス パ�
 
 MFA の概念の詳細については、[Azure AD Multi-Factor Authentication のしくみ][concept-mfa]に関する記事を参照してください。
 
-[Microsoft Graph REST API ベータ版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)を使用した認証方法の構成の詳細について確認してください。
+[Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview) を使用した認証方法の構成の詳細を確認してください。
 
 使用されている認証方法を確認するには、[PowerShell を使用した Azure AD Multi-Factor Authentication の認証方法の分析](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)に関する記事を参照してください。
 

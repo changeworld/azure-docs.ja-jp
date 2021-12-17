@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Percolate の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Percolate の統合'
 description: このチュートリアルでは、Azure Active Directory と Percolate の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,28 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 10/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 913ffc0670e40e749bd28382d492a16891fdc5c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad44d1fd0f1968549dec090f9895c3c62a589eb0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522268"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329877"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-percolate"></a>チュートリアル:Azure Active Directory と Percolate との統合
+# <a name="tutorial-azure-ad-sso-integration-with-percolate"></a>チュートリアル: Azure AD SSO と Percolate の統合
 
-このチュートリアルでは、Percolate と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、Percolate と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Percolate を統合すると、次のことができます。
 
-この統合には、次の利点があります。
-
-* Azure AD を使用して、Percolate にアクセスするユーザーを管理できます。
-* ユーザーが自分の Azure AD アカウントを使用して自動的に Percolate にサインイン (シングル サインオン) できるようにすることができます。
-* 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+* Percolate にアクセスできる Azure AD ユーザーを制御する。
+* ユーザーが自分の Azure AD アカウントを使用して Percolate に自動的にサインインできるようにする。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,61 +43,40 @@ Percolate と Azure AD の統合を構成するには、次のものが必要で
 
 Azure AD への Percolate の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Percolate を追加する必要があります。
 
-1. [Azure portal](https://portal.azure.com) の左側のウィンドウで、 **[Azure Active Directory]** を選択します。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Percolate**」と入力します。
+1. 結果のパネルから **[Percolate]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-    ![[Azure Active Directory] を選択します。](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-percolate"></a>Percolate に対する Azure AD SSO の構成とテスト
 
-2. **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に移動します。
+**B.Simon** というテスト ユーザーを使用して、Percolate に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Percolate の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+Percolate に対して Azure AD SSO を構成してテストするには、次の手順を実行します。
 
-3. アプリケーションを追加するには、ウィンドウの上部の **[新しいアプリケーション]** を選択します。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[Percolate SSO の構成](#configure-percolate-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[Percolate テスト ユーザーの作成](#create-percolate-test-user)** - Percolate で B.Simon に対応するユーザーを作成し、Azure AD のそのユーザーにリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-    ![[新しいアプリケーション] を選択する](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-4. 検索ボックスに「**Percolate**」と入力します。 検索結果で **[Percolate]** を選択し、 **[追加]** を選択します。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-     ![[検索結果]](common/search-new-app.png)
+1. Azure portal の **Percolate** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、Britta Simon という名前のテスト ユーザーを使用して、Percolate で Azure AD のシングル サインオンを構成およびテストします。
-シングル サインオンを有効にするには、Azure AD ユーザーと Percolate の対応するユーザーの間で、関係を確立する必要があります。
-
-Percolate で Azure AD のシングル サインオンを構成およびテストするには、以下の手順を完了する必要があります。
-
-1. **[Azure AD のシングル サインオンを構成](#configure-azure-ad-single-sign-on)** して、この機能をユーザーに対して有効にします。
-2. アプリケーション側で **[Percolate シングル サインオンを構成](#configure-percolate-single-sign-on)** します。
-3. Azure AD のシングル サインオンをテストするための **[Azure AD テスト ユーザーを作成](#create-an-azure-ad-test-user)** します。
-4. **[Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)** て、Azure AD のシングル サインオンをそのユーザーに対して有効にします。
-5. ユーザーの Azure AD 表現にリンクされた **[Percolate テスト ユーザーを作成](#create-a-percolate-test-user)** します。
-6. **[シングル サインオンをテスト](#test-single-sign-on)** して、この構成が機能することを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal で Azure AD のシングル サインオンを有効にします。
-
-Percolate で Azure AD シングル サインオンを構成するには、次の手順を実行します。
-
-1. [Azure portal](https://portal.azure.com/) の **Percolate** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![[シングル サインオン] の選択](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログ ボックスで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン方式の選択](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
-
-    ![[編集] アイコン](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** ダイアログ ボックスでは、IdP-initiated モードでアプリケーションを構成するためのアクションは必要ありません。 アプリは既に Azure と統合されています。
 
-    ![[Percolate のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
+5. SP Initiated モードでアプリケーションを構成する場合は、 **[追加の URL を設定します]** を選択し、 **[サインオン URL]** ボックスに **https://percolate.com/app/login** と入力します。
 
-5. SP-initiated モードでアプリケーションを構成する場合は、 **[追加の URL を設定します]** を選択し、 **[サインオン URL]** ボックスに **https://percolate.com/app/login** と入力します。
-
-   ![[追加の URL を設定します] のスクリーンショット。[サインオン URL] というテキスト ボックスが強調表示されています。](common/metadata-upload-additional-signon.png)
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**コピー** アイコンを選択して **[アプリのフェデレーション メタデータ URL]** をコピーします。 この URL を保存します。
 
     ![アプリのフェデレーション メタデータ URL のコピー](common/copy-metadataurl.png)
@@ -112,23 +85,41 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
 
     ![構成 URL をコピーする](common/copy-configuration-urls.png)
 
-    1. **[ログイン URL]** 。
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-    1. **[Azure AD 識別子]** 。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-    1. **[ログアウト URL]** 。
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
-### <a name="configure-percolate-single-sign-on"></a>Percolate シングル サインオンの構成
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、Percolate へのアクセスを許可することで、B.Simon が Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Percolate]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-percolate-sso"></a>Percolate SSO を構成する
 
 1. 新しい Web ブラウザー ウィンドウで、管理者として Percolate にサインインします。
 
 2. ホーム ページの左側で、 **[設定]** を選択します。
     
-    ![[設定] を選択する](./media/percolate-tutorial/configure01.png)
+    ![[設定] を選択する](./media/percolate-tutorial/menu.png)
 
 3. 左側のウィンドウで、 **[組織]** の下にある **[SSO]** を選択します。
 
-    ![[組織] の下にある [SSO] の選択](./media/percolate-tutorial/configure02.png)
+    ![[組織] の下にある [SSO] の選択](./media/percolate-tutorial/metadata.png)
 
     1. **[ログイン URL]** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
@@ -146,57 +137,7 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
 
     1. **[保存]** を選択します。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-
-このセクションでは、Azure portal で Britta Simon という名前のテスト ユーザーを作成します。
-
-1. Azure portal で、左側のウィンドウの **[Azure Active Directory]** を選択し、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[すべてのユーザー] を選択する](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] を選択する](common/new-user.png)
-
-3. **[ユーザー]** ダイアログ ボックスで、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-  
-    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
-
-    1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
-
-    1. **［作成］** を選択します
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に Percolate へのアクセスを許可することで、このユーザーが Azure AD シングル サインオンを使用できるようにします。
-
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Percolate]** を選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で、 **[Percolate]** を選択します。
-
-    ![アプリケーションの一覧](common/all-applications.png)
-
-3. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーとグループ] が左のウィンドウで選択されている画面のスクリーンショット。](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーとグループ] の選択](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 画面の下部にある **[選択]** ボタンをクリックします。
-
-7. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
-
-### <a name="create-a-percolate-test-user"></a>Percolate テスト ユーザーの作成
+### <a name="create-percolate-test-user"></a>Percolate テスト ユーザーの作成
 
 Azure AD ユーザーが Percolate にサインインできるようにするには、それらを Percolate に追加する必要があります。 手動で追加する必要があります。
 
@@ -206,11 +147,11 @@ Azure AD ユーザーが Percolate にサインインできるようにするに
 
 2. 左側のウィンドウで、 **[組織]** の下にある **[ユーザー]** を選択します。 **[新しいユーザー]** を選択します。
 
-    ![[新しいユーザー] の選択](./media/percolate-tutorial/configure03.png)
+    ![[新しいユーザー] の選択](./media/percolate-tutorial/users.png)
 
 3. **[ユーザーの作成]** ページで、以下の手順を実行します。
 
-    ![[ユーザーの作成] ページ](./media/percolate-tutorial/configure04.png)
+    ![[ユーザーの作成] ページ](./media/percolate-tutorial/new-user.png)
 
     1. **[電子メール]** ボックスに、ユーザーの電子メール アドレスを入力します。 たとえば、「 brittasimon@contoso.com 」のように入力します。
 
@@ -218,16 +159,22 @@ Azure AD ユーザーが Percolate にサインインできるようにするに
 
     1. **[ユーザーの作成]** を選択します。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+## <a name="test-sso"></a>SSO のテスト
 
-ここで、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストする必要があります。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [Percolate] タイルを選択すると、SSO を設定した Percolate インスタンスに自動的にサインインします。 詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Percolate のサインオン URL にリダイレクトされます。  
 
-- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](./tutorial-list.md)
+* Percolate のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Percolate に自動的にサインインします。 
+
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Percolate] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Percolate に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+Percolate を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

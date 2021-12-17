@@ -16,30 +16,10 @@
         - name: ARM テンプレート
           displayName: Resource Manager
           href: quick-setup-auto-provision-rm.md
-    - name: 対称キー デバイスをプロビジョニングする
-      items:
-        - name: C
-          href: quick-create-simulated-device-symm-key.md
-        - name: Java
-          href: quick-create-simulated-device-symmetric-key-java.md
-        - name: C#
-          href: quick-create-device-symmetric-key-csharp.md
-        - name: Node.js
-          href: quick-create-device-symmetric-key-node.md
-        - name: Python
-          href: quick-create-device-symmetric-key-python.md
-    - name: X.509 証明書デバイスをプロビジョニングする
-      items:
-        - name: C
-          href: quick-create-simulated-device-x509.md
-        - name: Java
-          href: quick-create-simulated-device-x509-java.md
-        - name: C#
-          href: quick-create-simulated-device-x509-csharp.md
-        - name: Node.js
-          href: quick-create-simulated-device-x509-node.md
-        - name: Python
-          href: quick-create-simulated-device-x509-python.md
+    - name: シミュレートされた対称キーのデバイスをプロビジョニングする
+      href: quick-create-simulated-device-symm-key.md
+    - name: シミュレートされた X.509 証明書デバイスをプロビジョニングする
+      href: quick-create-simulated-device-x509.md
 - name: チュートリアル
   items:
     - name: 1 - 登録グループを使用してデバイスのセットをプロビジョニングする
@@ -59,39 +39,13 @@
 - name: サンプル
   items:
     - name: シミュレートされた TPM デバイス構成証明のサンプル
-      items:
-        - name: C
-          href: quick-create-simulated-device.md
-        - name: Java
-          href: quick-create-simulated-device-tpm-java.md
-        - name: C#
-          href: quick-create-simulated-device-tpm-csharp.md
-        - name: Node.js
-          href: quick-create-simulated-device-tpm-node.md
-        - name: Python
-          href: quick-create-simulated-device-tpm-python.md
+      href: quick-create-simulated-device-tpm.md
     - name: DPS API を使用してデバイス登録を作成する
       items:
         - name: X.509 証明書の構成証明を使用したグループ登録
-          items:
-            - name: Java
-              href: quick-enroll-device-x509-java.md
-            - name: C#
-              href: quick-enroll-device-x509-csharp.md
-            - name: Node.js
-              href: quick-enroll-device-x509-node.md
-            - name: Python
-              href: quick-enroll-device-x509-python.md
+          href: quick-enroll-device-x509.md
         - name: TPM 構成証明を使用した個々のデバイスの登録
-          items:
-            - name: Java
-              href: quick-enroll-device-tpm-java.md
-            - name: C#
-              href: quick-enroll-device-tpm-csharp.md
-            - name: Node.js
-              href: quick-enroll-device-tpm-node.md
-            - name: Python
-              href: quick-enroll-device-tpm-python.md
+          href: quick-enroll-device-tpm.md
 - name: 概念
   items:
     - name: DPS の用語
@@ -118,8 +72,6 @@
   items:
     - name: 開発
       items:
-        - name: IoT Hub に対する MXChip IoT DevKit の接続
-          href: how-to-connect-mxchip-iot-devkit.md
         - name: デバイスから追加データを送信する方法
           href: how-to-send-additional-data.md
         - name: カスタム割り当てポリシーを使用したデバイスのプロビジョニング
@@ -144,16 +96,22 @@
           href: how-to-control-access.md
         - name: IP フィルター処理を構成する
           href: iot-dps-ip-filtering.md
+        - name: 公衆ネットワーク アクセスを管理しています
+          href: public-network-access.md
     - name: IoT Edge デバイスのプロビジョニング
       items:
         - name: Linux
-          href: ../iot-edge/how-to-auto-provision-simulated-device-linux.md
+          href: ../iot-edge/how-to-provision-devices-at-scale-linux-tpm.md
           maintainContext: true
         - name: Windows
-          href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
+          href: ../iot-edge/how-to-provision-devices-at-scale-windows-tpm.md
           maintainContext: true
-    - name: トラブルシューティング
-      href: how-to-troubleshoot-dps.md
+    - name: トラブルシューティングと FAQ
+      items:
+        - name: DPS のトラブルシューティング
+          href: how-to-troubleshoot-dps.md
+        - name: DPS の FAQ
+          href: dps-faq.yml
 - name: リファレンス
   items:
     - name: REST API
@@ -175,7 +133,9 @@
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-dps/toc.json&bc=/azure/iot-dps/breadcrumb/toc.json
+    - name: IoT 用語集
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-dps/toc.json&bc=/azure/iot-dps/breadcrumb/toc.json
     - name: Azure IoT のサービス
       items:
         - name: IoT Hub
@@ -186,10 +146,8 @@
           href: /microsoft-iot-central/
         - name: IoT Edge
           href: ../iot-edge/index.yml
-        - name: IoT ソリューション アクセラレータ
-          href: ../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights
@@ -213,7 +171,7 @@
         - name: iOS プラットフォーム
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: IoT デバイス カタログ向けの Azure 認定
-      href: 'https://catalog.azureiotsolutions.com/'
+      href: 'https://devicecatalog.azure.com/'
     - name: Azure IoT デベロッパー センター
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: 顧客データ要求

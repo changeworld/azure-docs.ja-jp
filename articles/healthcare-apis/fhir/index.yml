@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure API for FHIR のドキュメント
-summary: Azure API for FHIR は、標準ベースでコンプライアンスに準拠している医療データ用マネージド API であり、アクションにつながる分析と機械学習のためのソリューションを実現できます。
+title: FHIR サービスのドキュメント
+summary: Azure Healthcare API (プレビュー) の FHIR サービス ドキュメント ページ。 FHIR サービスは、アクション可能な分析と機械学習のソリューションを可能にする、医療データ用の管理された標準ベースの準拠 API です。
 metadata:
-  title: Azure API for FHIR のドキュメント - チュートリアル、ハウツー ガイド
-  description: Azure API for FHIR は、標準ベースでコンプライアンスに準拠している医療データ用マネージド API であり、アクションにつながる分析と機械学習のためのソリューションを実現できます。
+  title: FHIR サービスのドキュメント
+  description: FHIR サービスは、アクション可能な分析と機械学習のソリューションを可能にする、医療データ用の管理された標準ベースの準拠 API です。
   services: healthcare-apis
   ms.service: healthcare-apis
   ms.subservice: fhir
@@ -12,48 +12,68 @@ metadata:
   author: matjazl
   ms.author: matjazl
   ms.date: 08/13/2020
-  ms.openlocfilehash: d633b5376832672ecc7c917e24728666b889e16c
-  ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
-  ms.translationtype: HT
+  ms.openlocfilehash: ec3efbffe7b6e7b93fb336383297784749181c5f
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.translationtype: MT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/11/2021
-  ms.locfileid: "103018558"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124782405"
 landingContent:
-- title: Azure API for FHIR の開始
+- title: FHIR サービスから開始する
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure API for FHIR とは
+    - text: FHIR サービスとは
       url: overview.md
-    - text: Azure IoT Connector for FHIR (プレビュー) とは
-      url: overview.md#azure-iot-connector-for-fhir-preview
   - linkListType: quickstart
     links:
-    - text: FHIR 用の API サーバーのデプロイ
-      url: fhir-paas-portal-quickstart.md
-    - text: Azure IoT Connector for FHIR (プレビュー) をデプロイする
-      url: iot-fhir-portal-quickstart.md
-- title: チュートリアルの設定
+    - text: ポータルを使用して FHIR サービスをデプロイする
+      url: fhir-portal-quickstart.md
+    - text: ARM テンプレートを使用して FHIR サービスをデプロイする
+      url: fhir-service-resource-manager-template.md
+- title: FHIR サービスへのアクセス
   linkLists:
-  - linkListType: tutorial
+  - linkListType: concept
     links:
-    - text: FHIR サービスからデータを読み取る JavaScript アプリのデプロイ
-      url: tutorial-web-app-fhir-server.md
-    - text: Postman を使用して FHIR API にアクセスする
-      url: access-fhir-postman-tutorial.md
-    - text: サードパーティ アプリと医療記録の SMART 統合
-      url: use-smart-on-fhir-proxy.md
-    - text: Azure IoT Hub を通じてデバイス データを受信する
-      url: device-data-through-iot-hub.md
-- title: AD 認証用のアプリの登録
+    - text: Azure AD for FHIR サービス
+      url: azure-active-directory-identity-configuration.md
+    - text: アクセス トークンの検証
+      url: fhir-service-access-token-validation.md
+  - linkListType: learn
+    links:
+    - text: Postman を使用したアクセス
+      url: ./../use-postman.md
+- title: FHIR 検索機能
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: FHIR 検索の概要
+      url: overview-of-search.md
+  - linkListType: how-to-guide
+    links:
+    - text: カスタム検索パラメーターの定義
+      url: how-to-do-custom-search.md
+    - text: インデックス再作成ジョブの実行方法
+      url: how-to-run-a-reindex.md
+    - text: 検索の例
+      url: search-samples.md
+- title: 相互運用性と患者アクセス
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: リソース アプリを登録する
-      url: register-resource-azure-ad-client-app.md
-    - text: 機密クライアント アプリを登録する
-      url: register-confidential-azure-ad-client-app.md
-    - text: パブリック クライアント アプリを登録する
-      url: register-public-azure-ad-client-app.md
-    - text: サービス クライアント アプリを登録する
-      url: register-service-azure-ad-client-app.md
+    - text: CMS 相互運用性と患者アクセスに関する規則の概要
+      url: centers-for-medicare-tutorial-introduction.md
+    - text: CARIN Blue Button 実装ガイド
+      url: carin-implementation-guide-blue-button-tutorial.md
+    - text: Da Vinci 採用医薬品集
+      url: davinci-drug-formulary-tutorial.md
+- title: FHIR 操作
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: プロファイルの検証
+      url: validation-against-profiles.md
+    - text: Patient-everything
+      url: patient-everything.md
+    - text: $member-match 操作
+      url: tutorial-member-match.md

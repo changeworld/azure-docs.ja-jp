@@ -1,5 +1,6 @@
 ---
-title: '接続できない Azure サイト間 VPN 接続のトラブルシューティング: Azure VPN Gateway'
+title: 接続できない Azure サイト間 VPN 接続のトラブルシューティング
+titleSuffix: Azure VPN Gateway
 description: 突然停止して再接続できないサイト間 VPN 接続をトラブルシューティングする方法を説明します。
 services: vpn-gateway
 author: chadmath
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: cebb05b35379573fc9797e89dee3c0c2bf3de6e2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 878c63b090510124fe03848d4f5aa1b3243f78d5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867289"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729466"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>トラブルシューティング: Azure サイト間 VPN が動作を停止して接続できない
 
@@ -58,7 +59,7 @@ Azure VPN 接続の共有キーを確認するには、次のいずれかの方�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure Resource Manager デプロイ モデルの場合:
+[Azure Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)の場合:
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>

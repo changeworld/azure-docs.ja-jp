@@ -1,5 +1,5 @@
 ---
-title: Azure File Storage での Storage Explorer の使用 | Microsoft Docs
+title: Azure Files での Storage Explorer の使用 | Microsoft Docs
 description: Storage Explorer を使用してファイル共有やファイルを操作する方法について説明します。
 services: storage
 documentationcenter: na
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 84f6473c25a5be11eeda7cd2b311d93a7226a78c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 634310ea429f950daa6b25c4203dea199adf4103
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96488393"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036639"
 ---
-# <a name="using-storage-explorer-with-azure-file-storage"></a>Azure File Storage での Storage Explorer の使用
+# <a name="using-storage-explorer-with-azure-files"></a>Azure Files での Storage Explorer の使用
 
-Azure File Storage は、標準のサーバー メッセージ ブロック (SMB) プロトコルを使用してクラウドでファイル共有を提供するサービスです。 SMB 2.1 と SMB 3.0 の両方がサポートされます。 Azure File Storage を使用すると、コストがかかる書き換えを行わずに、ファイル共有に依存しているレガシ アプリケーションをすばやく Azure に移行することができます。 File Storage を使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。 この記事では、Storage Explorer を使用してファイル共有とファイルを操作する方法について説明します。
+Azure Files は、標準のサーバー メッセージ ブロック (SMB) プロトコルを使用してクラウドでファイル共有を提供するサービスです。 SMB 2.1 と SMB 3.0 の両方がサポートされます。 Azure Files を使用すると、コストがかかる書き換えを行わずに、ファイル共有に依存しているレガシ アプリケーションをすばやく Azure に移行することができます。 File Storage を使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。 この記事では、Storage Explorer を使用してファイル共有とファイルを操作する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,13 +33,13 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 - [Azure ストレージ アカウントまたはサービスに接続する](./vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
-## <a name="create-a-file-share"></a>ファイル共有の作成
+## <a name="create-a-file-share"></a>ファイル共有を作成する
 
 すべてのファイルは、ファイル共有 (ファイルをわかりやすく論理的にまとめたもの) に存在している必要があります。 アカウントに含めることができるファイル共有の数には制限がなく、各共有に格納できるファイルの数にも制限はありません。
 
 次の手順では、Storage Explorer 内にファイル共有を作成する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 
 1. 左側のウィンドウで、ファイル共有を作成するストレージ アカウントを展開します。
 
@@ -61,7 +61,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 次の手順では、Storage Explorer 内でファイル共有の内容を表示する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 
 1. 左側のウィンドウで、表示するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -72,7 +72,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
     ![共有を開く](media/vs-azure-tools-storage-explorer-files/image4.png)
 
 1. ファイル共有の内容がメイン ウィンドウに表示されます。
-    
+
     ![Storage Explorer のファイル共有のメイン ウィンドウのスクリーンショット。共有の内容を確認できます。](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>ファイル共有の削除
@@ -81,7 +81,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 次の手順では、Storage Explorer からファイル共有を削除する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 
 1. 左側のウィンドウで、表示するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -92,7 +92,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
     ![削除](media/vs-azure-tools-storage-explorer-files/image6.png)
 
 1. 確認のダイアログで **[はい]** を選択します。
-    
+
     ![確認のダイアログ](media/vs-azure-tools-storage-explorer-files/image7.png)
 
 ## <a name="copy-a-file-share"></a>ファイル共有のコピー
@@ -101,7 +101,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、あるストレージ アカウントから別のストレージ アカウントにファイル共有をコピーする方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 
 1. 左側のウィンドウで、コピーするファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -121,7 +121,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、ファイル共有の SAS を作成する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 
 1. 左側のウィンドウで、SAS を取得するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -138,16 +138,16 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 1. SAS オプションの指定が完了したら、 **[作成]** を選択します。
 
 1. 2 番目の **[Shared Access Signature]** ダイアログが表示されます。このダイアログには、ファイル共有と共に、ストレージ リソースへのアクセスに使用できる URL とクエリ文字列が表示されます。 クリップボードにコピーする URL の横にある **[コピー]** を選択します。
-    
+
     ![2 番目の SAS ダイアログ](media/vs-azure-tools-storage-explorer-files/image12.png)
 
 1. 完了したら、 **[閉じる]** を選択します。
 
 ## <a name="manage-access-policies-for-a-file-share"></a>ファイル共有のアクセス ポリシー管理
 
-次の手順では、ファイル共有のアクセス ポリシーを管理 (追加と削除) する方法を説明します。 アクセス ポリシーは、決められた期間、ストレージ ファイル リソースにアクセスするために利用者が使用する SAS URL の作成に使用されます。
+次の手順では、ファイル共有のアクセス ポリシーを管理 (追加と削除) する方法を説明します。 アクセス ポリシーは、決められた期間、Azure Files リソースにアクセスするために利用者が使用する SAS URL の作成に使用されます。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 
 1. 左側のウィンドウで、アクセス ポリシーを管理するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -158,11 +158,11 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
     ![Manage access policies context menu](media/vs-azure-tools-storage-explorer-files/image13.png)
 
 1. **[アクセス ポリシー]** ダイアログには、選択したファイル共有用に既に作成されているアクセス ポリシーの一覧が表示されます。
-    
+
     ![アクセス ポリシー](media/vs-azure-tools-storage-explorer-files/image14.png)
 
 1. アクセス ポリシーの管理タスクに応じて、以下の手順に従います。
-    
+
     - **新しいアクセス ポリシーを追加する** - **[追加]** を選択します。 生成後、 **[アクセス ポリシー]** ダイアログには、新しく追加されたアクセス ポリシー (既定の設定) が表示されます。
 
     - **アクセス ポリシーを編集する** - 必要な編集を行い、 **[保存]** を選択します。
@@ -170,9 +170,9 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
     - **アクセス ポリシーを削除する** - 削除するアクセス ポリシーの横にある **[削除]** を選択します。
 
 1. 先ほど作成したアクセス ポリシーを使用して新しい SAS URL を作成します。
-    
+
     ![SAS の取得](media/vs-azure-tools-storage-explorer-files/image15.png)
-    
+
     ![SAS の名前とプロパティ](media/vs-azure-tools-storage-explorer-files/image16.png)
 
 ## <a name="managing-files-in-a-file-share"></a>ファイル共有内のファイルの管理
@@ -181,7 +181,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、ファイル共有内のファイル (とフォルダー) を管理する方法を説明します。
 
-1.  ストレージ エクスプローラーを開きます。
+1.  Storage Explorer を開きます。
 
 1.  左側のウィンドウで、管理するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -202,7 +202,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
         a.  メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Files (ファイルのアップロード)]** を選択します。
 
         ![ファイルをアップロードする](media/vs-azure-tools-storage-explorer-files/image18.png)
-        
+
         b. **[Upload Files (ファイルのアップロード)]** ダイアログで、 **[ファイル]** ボックスの右側にある省略記号 ( **[...]** ) ボタンをクリックし、アップロードするファイルを選択します。
 
         ![ファイルの追加](media/vs-azure-tools-storage-explorer-files/image19.png)
@@ -210,7 +210,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
         c. **[アップロード]** を選択します。
 
     - **ファイル共有にフォルダーをアップロードする**
-        
+
         a. メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Folder (フォルダーのアップロード)]** を選択します。
 
         ![Upload folder menu](media/vs-azure-tools-storage-explorer-files/image20.png)
@@ -222,21 +222,21 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
         d. **[アップロード]** を選択します。
 
     - **ローカル コンピューターにファイルをダウンロードする**
-        
+
         a. ダウンロードするファイルを選択します。
-        
+
         b. メイン ウィンドウのツール バーで、 **[ダウンロード]** を選択します。
-        
+
         c. **[Specify where to save the downloaded file (ダウンロードしたファイルを保存する場所の指定)]** ダイアログで、ファイルのダウンロード先の場所と、その場所に付ける名前を指定します。
 
         d. **[保存]** を選択します。
 
     - **ローカル コンピューターでファイルを開く**
-        
+
         a.  開くファイルを選択します。
-        
+
         b.  メイン ウィンドウのツール バーで、 **[開く]** を選択します。
-        
+
         c.  ファイルがダウンロードされ、その基になるファイルの種類に関連付けられているアプリケーションを使用して開かれます。
 
     - **ファイルをクリップボードにコピーする**
@@ -257,7 +257,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
         c. 確認のダイアログで **[はい]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [最新の Storage Explorer のリリース ノートとビデオ](https://www.storageexplorer.com/)を確認します。
 

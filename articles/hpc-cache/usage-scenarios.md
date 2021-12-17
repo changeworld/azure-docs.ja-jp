@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache のシナリオ
 description: コンピューティング ジョブが Azure HPC Cache で適切に動作するかどうかを確認する方法について説明します
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/29/2021
-ms.author: v-erkel
-ms.openlocfilehash: 36e0135102fbede5505e96fb1aa255588b2f2ae2
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.author: femila
+ms.openlocfilehash: 40434634fde18a9ff9e63f9e2174cd412182b500
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259904"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078562"
 ---
 # <a name="is-your-job-a-good-fit-for-azure-hpc-cache"></a>ジョブが Azure HPC Cache に適しているかどうか
 
@@ -19,7 +19,7 @@ Azure HPC Cache を使用すると、さまざまな分野で、ハイ パフォ
 
 また、「[概要](hpc-cache-overview.md)」の記事では、Azure HPC Cache をいつ使用するかの概要とユース ケースのいくつかの例を示しています。
 
-また、プレビュー段階にある、[NFS でマウントされた BLOB ストレージ](../storage/blobs/network-file-system-protocol-support.md)を効果的に使用する方法についても、[この記事](nfs-blob-considerations.md)をお読みください。
+また、[NFS でマウントされた BLOB ストレージ](../storage/blobs/network-file-system-protocol-support.md)を効果的に使用する方法については、[この記事](nfs-blob-considerations.md)も参照してください。
 
 ## <a name="nfs-version-30-applications"></a>NFS バージョン 3.0 アプリケーション
 
@@ -54,4 +54,4 @@ Azure HPC Cache を使用すれば、Azure Blob Storage をネイティブに呼
 ## <a name="next-steps"></a>次のステップ
 
 * キャッシュを計画および構成する方法の詳細については、「[概要](hpc-cache-overview.md)」と「[前提条件](hpc-cache-prerequisites.md)」の記事を参照してください
-* Azure HPC Cache で [NFS 対応の Blob ストレージ](nfs-blob-considerations.md) (プレビュー) を使用する場合の考慮事項を確認する
+* Azure HPC Cache で [NFS 対応の BLOB ストレージ](nfs-blob-considerations.md)を使用する場合の考慮事項を確認する

@@ -3,18 +3,18 @@ title: Azure Automation 更新プログラムの評価を表示する
 description: この記事では、Update Management のデプロイに関して、更新プログラムの評価を表示する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 09/17/2020
+ms.date: 06/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 39df5888a330a92ae043e34c3043da5b1f566345
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1607ad99ffb78a90bcc143ab20829709cec77561
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92221683"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706496"
 ---
 # <a name="view-update-assessments-in-update-management"></a>Update Management で更新プログラムの評価を表示する
 
-Update Management には、ご利用のマシン、不足している更新プログラム、更新プログラムのデプロイ、およびスケジュールされている更新プログラムのデプロイに関する情報が表示されます。 選択された Arc 対応サーバーから、または構成されているすべてのマシンとサーバーにおける Automation アカウントから、選択した Azure 仮想マシンにスコープを指定して評価情報を表示できます。
+Update Management には、ご利用のマシン、不足している更新プログラム、更新プログラムのデプロイ、およびスケジュールされている更新プログラムのデプロイに関する情報が表示されます。 選択された Azure Arc 対応サーバーから、または構成されているすべてのマシンとサーバーにおける Automation アカウントから、選択した Azure 仮想マシンにスコープを指定して評価情報を表示できます。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -28,13 +28,13 @@ Update Management には、ご利用のマシン、不足している更新プ�
 
 [ ![Azure VM の Update Management 評価ビュー](./media/view-update-assessments/update-assessment-azure-vm.png)](./media/view-update-assessments/update-assessment-azure-vm-expanded.png#lightbox)
 
-Arc 対応サーバーからの更新プログラムの評価を表示するには、 **[サーバー - Azure Arc]** に移動し、一覧からお使いのサーバーを選択します。 左側のメニューで、 **[ゲスト + ホストの更新プログラム]** を選択します。 **[ゲスト + ホストの更新プログラム]** ページで、 **[Go to Update Management]\(Update Management に移動\)** を選択します。
+Azure Arc 対応サーバーからの更新プログラムの評価を表示するには、 **[サーバー - Azure Arc]** に移動し、一覧からお使いのサーバーを選択します。 左側のメニューで、 **[ゲスト + ホストの更新プログラム]** を選択します。 **[ゲスト + ホストの更新プログラム]** ページで、 **[Go to Update Management]\(Update Management に移動\)** を選択します。
 
-Update Management には、ご利用の Arc 対応マシン、不足している更新プログラム、更新プログラムのデプロイ、スケジュールされている更新プログラムのデプロイに関する情報が表示されます。
+Update Management には、ご利用の Azure Arc 対応マシン、不足している更新プログラム、更新プログラムのデプロイ、スケジュールされている更新プログラムのデプロイに関する情報が表示されます。
 
 [ ![Arc 対応サーバーについての Update Management 評価ビュー](./media/view-update-assessments/update-assessment-arc-server.png)](./media/view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
 
-Automation アカウントからの Arc 対応サーバーを含め、すべてのマシンの更新プログラムの評価を表示するには、 **[Automation アカウント]** に移動し、Update Management が有効になっている Automation アカウントを一覧から選択します。 Automation アカウントで、左側のメニューから **[更新の管理]** を選択します。
+Automation アカウントからの Azure Arc 対応サーバーを含め、すべてのマシンの更新プログラムの評価を表示するには、 **[Automation アカウント]** に移動し、Update Management が有効になっている Automation アカウントを一覧から選択します。 Automation アカウントで、左側のメニューから **[更新の管理]** を選択します。
 
 ご使用の環境の更新プログラムが、 **[更新の管理]** ページに一覧表示されます。 更新プログラムが不足していると識別された場合は、 **[不足している更新プログラム]** タブに、それらの一覧が表示されます。
 
@@ -46,6 +46,9 @@ Automation アカウントからの Arc 対応サーバーを含め、すべて�
 
 [ ![更新ステータスの表示](./media/view-update-assessments/missing-updates.png)](./media/view-update-assessments/missing-updates-expanded.png#lightbox)
 
+> [!NOTE]
+> Windows Defender の定義の更新状態について表示される情報は、Log Analytics ワークスペースからまとめられた最後のデータに基づいており、最新ではない可能性があります。 この動作の詳細については、「[Windows Defender の更新プログラムが常に "見つからない" と表示される](../troubleshoot/update-management.md#windows-defender-update-missing-status)」を参照してください。
+ 
 更新プログラムのほかの場所をクリックすると、[ログ検索] ペインが開きます。 その更新プログラムについて、ログ検索のクエリが事前に定義されています。 詳細情報を表示するには、このクエリを変更するか、独自のクエリを作成します。
 
 [ ![ログのクエリ結果の表示](./media/view-update-assessments/logsearch-results.png)](./media/view-update-assessments/logsearch-results-expanded.png#lightbox)

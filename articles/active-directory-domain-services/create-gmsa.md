@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: f975d3e0e605b7c24b9fd31dc8fc78f0f37bb6b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93a809c4f7943e7f71cb0821718172d4c40c5aad
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619986"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070463"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でグループで管理されるサービス アカウント (gMSA) を作成する
 
@@ -107,7 +107,7 @@ gMSA の詳細については、「[グループの管理されたサービス �
 [create-custom-ou]: create-ou.md
 
 <!-- EXTERNAL LINKS -->
-[New-ADOrganizationalUnit]: /powershell/module/addsadministration/New-AdOrganizationalUnit
-[New-ADServiceAccount]: /powershell/module/addsadministration/New-AdServiceAccount
+[New-ADOrganizationalUnit]: /powershell/module/activedirectory/new-adorganizationalunit
+[New-ADServiceAccount]: /powershell/module/activedirectory/New-AdServiceAccount
 [gmsa-overview]: /windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview
 [gmsa-start]: /windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts

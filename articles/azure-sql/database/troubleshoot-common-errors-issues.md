@@ -3,19 +3,19 @@ title: Azure SQL Database との接続に関する一般的な問題のトラブ
 description: Azure SQL Database の接続の問題をトラブルシューティングし、Azure SQL Database または Azure SQL Managed Instance 固有のその他の問題を解決する手順について説明します
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: development
+ms.subservice: connect
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
-ms.reviewer: sstein,vanto
-ms.date: 01/14/2021
-ms.openlocfilehash: ec61f2c67576d6e144d8d4bb7e8ecaaa157db0a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mathoma,vanto
+ms.date: 11/04/2021
+ms.openlocfilehash: e445574d69096605f16a6a097f005e020674f6a2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98233374"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851707"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,6 +30,7 @@ Azure インフラストラクチャには、SQL Database サービス内で負�
 
 | エラー コード | 重大度 | 説明 |
 | ---:| ---:|:--- |
+| 926 |14 |データベース 'replicatedmaster' を開くことができません。 このデータベースは、復旧により問題ありと設定されています。 詳細については、SQL Server のエラー ログを参照してください。<br/><br/>このエラーは、以前のプライマリによってログがシャットダウンされている間に、再構成の最終段階の短期間に SQL Managed Instance のエラー ログに記録されることがあります。<br/>このエラー メッセージを含むその他の一時的ではないシナリオについては、[MSSQL エラーのドキュメント](/sql/relational-databases/errors-events/mssqlserver-926-database-engine-error)を参照してください。|
 | 4060 |16 |ログインで要求されたデータベース "%.&#x2a;ls" を開くことができません。 ログインに失敗しました。 詳細については、[エラー 4000 から 4999](/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) を参照してください。|
 | 40197 |17 |要求の処理中にサービスでエラーが発生しました。 再試行してください。 エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。 障害の種類や発生したフェールオーバーに関する詳細な情報は、エラー 40197 のメッセージに埋め込まれたエラー コード (%d) から得られます。 エラー 40197 のメッセージ内に埋め込まれているエラー コードは、40020、40143、40166、40540 などです。<br/><br/>再接続すると、自動的にデータベースの正常なコピーに接続されます。 アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。 詳細については、「[一時エラー](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
 | 40501 |20 |サービスは現在ビジー状態です。 10 秒後に要求を再試行してください。 インシデント ID: %ls。 コード: %d。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[論理 SQL サーバー リソースの制限](resource-limits-logical-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL Managed Instance のリソースの制限](../managed-instance/resource-limits.md)。|
@@ -43,7 +44,7 @@ Azure インフラストラクチャには、SQL Database サービス内で負�
 
 1. アプリケーションによって報告されたエラーで発生している既知の障害については、 [Microsoft Azure サービス ダッシュボード](https://azure.microsoft.com/status) を参照してください。
 2. Azure SQL Database など、クラウド サービスに接続するアプリケーションは、定期的な再構成イベントを想定し、アプリケーション エラーをユーザーに示すのではなく、再試行ロジックを実装してこれらのエラーを処理します。
-3. データベースがリソースの制限に近づくと、一時的な接続の問題に見える場合があります。 [リソース制限](resource-limits-logical-server.md#what-happens-when-database-resource-limits-are-reached)に関するページを参照してください。
+3. データベースがリソースの制限に近づくと、一時的な接続の問題に見える場合があります。 [リソース制限](resource-limits-logical-server.md#what-happens-when-resource-limits-are-reached)に関するページを参照してください。
 4. 接続の問題が解消されない場合、アプリケーションでのエラーの継続時間が 60 秒を超えた場合、または 1 日にエラーが複数回発生した場合は、 **Azure サポート** サイトの [[サポートの要求]](https://azure.microsoft.com/support/options) を選択して、サポート要求を送信してください。
 
 #### <a name="implementing-retry-logic"></a>再試行ロジックの実装
@@ -69,15 +70,15 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 ### <a name="error-26-error-locating-server-specified"></a>エラー 26:指定されたサーバーの位置を特定しているときにエラーが発生しました
 
-``System.Data.SqlClient.SqlException: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.(provider: SQL Network Interfaces, error: 26 – Error Locating Server/Instance Specified)``
+`System.Data.SqlClient.SqlException: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.(provider: SQL Network Interfaces, error: 26 – Error Locating Server/Instance Specified)`
 
 #### <a name="error-40-could-not-open-a-connection-to-the-server"></a>エラー 40:サーバーへの接続を開けませんでした
 
-``A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)``
+`A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)`
 
 #### <a name="error-10053-a-transport-level-error-has-occurred-when-receiving-results-from-the-server"></a>エラー 10053:サーバーから結果を受信しているときに、トランスポート レベルのエラーが発生しました
 
-``10053: A transport-level error has occurred when receiving results from the server. (Provider: TCP Provider, error: 0 - An established connection was aborted by the software in your host machine)``
+`10053: A transport-level error has occurred when receiving results from the server. (Provider: TCP Provider, error: 0 - An established connection was aborted by the software in your host machine)`
 
 これらの問題は、アプリケーションでサーバーに接続できない場合に発生します。
 
@@ -97,14 +98,14 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 ### <a name="login-failed-for-user--user-name-"></a>ユーザー '< User name >' はログインできませんでした
 
-``Login failed for user '<User name>'.This session has been assigned a tracing ID of '<Tracing ID>'. Provide this tracing ID to customer support when you need assistance. (Microsoft SQL Server, Error: 18456)``
+`Login failed for user '<User name>'.This session has been assigned a tracing ID of '<Tracing ID>'. Provide this tracing ID to customer support when you need assistance. (Microsoft SQL Server, Error: 18456)`
 
 この問題を解決するには、サービス管理者に連絡し、有効なユーザー名とパスワードを提供するよう依頼してください。
 
 通常、サービス管理者は、次の手順を使用してログイン資格情報を追加します。
 
 1. SQL Server Management Studio (SSMS) を使用して、サーバーにログインします。
-2. master データベースで次の SQL クエリを実行して、ログイン名が無効になっているかどうかを確認します。
+2. `master` データベースで次の SQL クエリを実行して、ログイン名が無効になっているかどうかを確認します。
 
    ```sql
    SELECT name, is_disabled FROM sys.sql_logins;
@@ -127,12 +128,12 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 5. SSMS オブジェクト エクスプローラーで、 **[データベース]** を展開します。
 6. ユーザーにアクセス許可を付与するデータベースを選択します。
 7. **[セキュリティ]** を右クリックし、 **[New]\(新規\)** 、 **[ユーザー]** を選択します。
-8. プレースホルダーを含む生成されたスクリプトでは、次の SQL クエリを編集して実行します。
+8. 生成されたプレースホルダーを含むスクリプト (以下はサンプル) で、[こちら](/sql/ssms/template/replace-template-parameters)に記載された手順に従ってテンプレート パラメーターを置き換え、実行します。
 
    ```sql
-   CREATE USER <user_name, sysname, user_name>
-   FOR LOGIN <login_name, sysname, login_name>
-   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>;
+   CREATE USER [<user_name, sysname, user_name>]
+   FOR LOGIN [<login_name, sysname, login_name>]
+   WITH DEFAULT_SCHEMA = [<default_schema, sysname, dbo>];
    GO
 
    -- Add user to the database owner role
@@ -151,19 +152,19 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 ### <a name="systemdatasqlclientsqlexception-0x80131904-connection-timeout-expired"></a>System.Data.SqlClient.SqlException (0x80131904):接続がタイムアウトしました
 
-``System.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired. The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement. This could be because the pre-login handshake failed or the server was unable to respond back in time. The duration spent while attempting to connect to this server was - [Pre-Login] initialization=3; handshake=29995;``
+`System.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired. The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement. This could be because the pre-login handshake failed or the server was unable to respond back in time. The duration spent while attempting to connect to this server was - [Pre-Login] initialization=3; handshake=29995;`
 
 ### <a name="systemdatasqlclientsqlexception-0x80131904-timeout-expired"></a>System.Data.SqlClient.SqlException (0x80131904):タイムアウトに達しました
 
-``System.Data.SqlClient.SqlException (0x80131904): Timeout expired. The timeout period elapsed prior to completion of the operation or the server is not responding.``
+`System.Data.SqlClient.SqlException (0x80131904): Timeout expired. The timeout period elapsed prior to completion of the operation or the server is not responding.`
 
 ### <a name="systemdataentitycoreentityexception-the-underlying-provider-failed-on-open"></a>System.Data.Entity.Core.EntityException:基になるプロバイダーがオープンで失敗しました
 
-``System.Data.Entity.Core.EntityException: The underlying provider failed on Open. -> System.Data.SqlClient.SqlException: Timeout expired. The timeout period elapsed prior to completion of the operation or the server is not responding. -> System.ComponentModel.Win32Exception: The wait operation timed out``
+`System.Data.Entity.Core.EntityException: The underlying provider failed on Open. -> System.Data.SqlClient.SqlException: Timeout expired. The timeout period elapsed prior to completion of the operation or the server is not responding. -> System.ComponentModel.Win32Exception: The wait operation timed out`
 
 ### <a name="cannot-connect-to--server-name-"></a>< server name > に接続できません
 
-``Cannot connect to <server name>.ADDITIONAL INFORMATION:Connection Timeout Expired. The timeout period elapsed during the post-login phase. The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections. The duration spent while attempting to connect to this server was - [Pre-Login] initialization=231; handshake=983; [Login] initialization=0; authentication=0; [Post-Login] complete=13000; (Microsoft SQL Server, Error: -2) For help, click: http://go.microsoft.com/fwlink?ProdName=Microsoft%20SQL%20Server&EvtSrc=MSSQLServer&EvtID=-2&LinkId=20476 The wait operation timed out``
+`Cannot connect to <server name>.ADDITIONAL INFORMATION:Connection Timeout Expired. The timeout period elapsed during the post-login phase. The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections. The duration spent while attempting to connect to this server was - [Pre-Login] initialization=231; handshake=983; [Login] initialization=0; authentication=0; [Post-Login] complete=13000; (Microsoft SQL Server, Error: -2) For help, click: http://go.microsoft.com/fwlink?ProdName=Microsoft%20SQL%20Server&EvtSrc=MSSQLServer&EvtID=-2&LinkId=20476 The wait operation timed out`
 
 これらの例外は、接続またはクエリの問題が原因で発生する可能性があります。 このエラーが接続の問題によって発生したことを確認する場合は、「[エラーの原因が接続の問題かどうかを確認する](#confirm-whether-an-error-is-caused-by-a-connectivity-issue)」を参照してください。
 
@@ -173,7 +174,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 ### <a name="error-10928-resource-id-d"></a>エラー 10928: リソース ID: %d
 
-``10928: Resource ID: %d. The %s limit for the database is %d and has been reached. See http://go.microsoft.com/fwlink/?LinkId=267637 for assistance. The Resource ID value in error message indicates the resource for which limit has been reached. For sessions, Resource ID = 2.``
+`10928: Resource ID: %d. The %s limit for the database is %d and has been reached. See http://go.microsoft.com/fwlink/?LinkId=267637 for assistance. The Resource ID value in error message indicates the resource for which limit has been reached. For sessions, Resource ID = 2.`
 
 この問題に対処するには、次のいずれかの方法を試してみてください。
 
@@ -202,11 +203,11 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 ### <a name="error-10929-resource-id-1"></a>エラー 10929:リソース ID:1
 
-``10929: Resource ID: 1. The %s minimum guarantee is %d, maximum limit is %d and the current usage for the database is %d. However, the server is currently too busy to support requests greater than %d for this database. See http://go.microsoft.com/fwlink/?LinkId=267637 for assistance. Otherwise, please try again later.``
+`10929: Resource ID: 1. The %s minimum guarantee is %d, maximum limit is %d and the current usage for the database is %d. However, the server is currently too busy to support requests greater than %d for this database. See http://go.microsoft.com/fwlink/?LinkId=267637 for assistance. Otherwise, please try again later.`
 
 ### <a name="error-40501-the-service-is-currently-busy"></a>エラー 40501:サービスは現在ビジー状態です
 
-``40501: The service is currently busy. Retry the request after 10 seconds. Incident ID: %ls. Code: %d.``
+`40501: The service is currently busy. Retry the request after 10 seconds. Incident ID: %ls. Code: %d.`
 
 これは、リソースの制限を超えていることを示すエンジン調整エラーです。
 
@@ -214,7 +215,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 ### <a name="error-40544-the-database-has-reached-its-size-quota"></a>エラー 40544:データベースのサイズ クォータに達しました
 
-``40544: The database has reached its size quota. Partition or delete data, drop indexes, or consult the documentation for possible resolutions. Incident ID: <ID>. Code: <code>.``
+`40544: The database has reached its size quota. Partition or delete data, drop indexes, or consult the documentation for possible resolutions. Incident ID: <ID>. Code: <code>.`
 
 このエラーは、データベースのサイズ クォータに達したときに発生します。
 
@@ -244,17 +245,17 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 ### <a name="error-40549-session-is-terminated-because-you-have-a-long-running-transaction"></a>エラー 40549:トランザクションが長時間実行されているため、セッションを終了しました
 
-``40549: Session is terminated because you have a long-running transaction. Try shortening your transaction.``
+`40549: Session is terminated because you have a long-running transaction. Try shortening your transaction.`
 
 このエラー メッセージが繰り返し表示される場合は、これらの手順に従って問題を解決してみてください。
 
-1. sys.dm_exec_requests ビューを確認し、開いているセッションで total_elapsed_time 列の値が大きいものがないか調べます。 次の SQL スクリプトを実行して、この確認を行います。
+1. `sys.dm_exec_requests`高い値を持つオープン セッションを表示する`total_elapsed_time`列を選択します。 次の SQL スクリプトを実行して、この確認を行います。
 
    ```sql
    SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) 動的管理関数と問題のあるクエリの session_id を使用して、ヘッド ブロッカーの **入力バッファー** を特定します。次に例を示します。
+2. [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) 動的管理関数と問題のあるクエリの `session_id` を使用して、ヘッド ブロッカーの入力バッファーを特定します。次に例を示します。
 
    ```sql 
    SELECT * FROM sys.dm_exec_input_buffer (100,0);
@@ -262,14 +263,14 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 3. クエリを調整します。
 
-    > [!Note]
+    > [!NOTE]
     > Azure SQL Database におけるブロッキングのトラブルシューティングの詳細については、「[Azure SQL Database のブロックの問題の概要と解決策](understand-resolve-blocking.md)」を参照してください。
 
 また、クエリのバッチ処理も検討してください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](../performance-improve-use-batching.md)」を参照してください。
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>エラー 40551:TEMPDB の使用量が多すぎるため、セッションを終了しました
 
-``40551: The session has been terminated because of excessive TEMPDB usage. Try modifying your query to reduce the temporary table space usage.``
+`40551: The session has been terminated because of excessive TEMPDB usage. Try modifying your query to reduce the temporary table space usage.`
 
 この問題を回避するには、次の手順に従ってください。
 
@@ -279,7 +280,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 ### <a name="error-40552-the-session-has-been-terminated-because-of-excessive-transaction-log-space-usage"></a>エラー 40552:トランザクション ログの使用領域が多すぎるため、セッションを終了しました
 
-``40552: The session has been terminated because of excessive transaction log space usage. Try modifying fewer rows in a single transaction.``
+`40552: The session has been terminated because of excessive transaction log space usage. Try modifying fewer rows in a single transaction.`
 
 この問題を解決するには、次の方法を試してください。
 
@@ -290,13 +291,19 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
   > [!NOTE]
   > インデックスの再構築の場合は、更新されるフィールドの平均サイズを、平均インデックス サイズに置き換える必要があります。
 
+  > [!NOTE]
+  > Azure SQL Database と Azure SQL Managed Instance でのフル トランザクション ログのトラブルシューティングの特定詳細については、「[Azure SQL Database と Azure SQL Managed Instance でのトランザクション ログ エラーのトラブルシューティング](troubleshoot-transaction-log-errors-issues.md)」を参照してください。
+
+
 ### <a name="error-40553-the-session-has-been-terminated-because-of-excessive-memory-usage"></a>エラー 40553:メモリの使用量が多すぎるため、セッションを終了しました
 
-``40553 : The session has been terminated because of excessive memory usage. Try modifying your query to process fewer rows.``
+`40553: The session has been terminated because of excessive memory usage. Try modifying your query to process fewer rows.`
 
 この問題を回避するには、クエリを最適化してみてください。
 
 詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)」を参照してください。
+
+他のメモリ不足エラーおよびサンプル クエリについて詳しくは、「[Azure SQL Database によるメモリ不足エラーのトラブルシューティング](troubleshoot-memory-errors-issues.md)」を参照してください。
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>その他のリソース ガバナンス エラー メッセージの表
 
@@ -309,7 +316,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 | 40550 |16 |取得したロックの数が多すぎるため、セッションを終了しました。 1 つのトランザクションで読み取る行または変更する行の数を減らしてください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](../performance-improve-use-batching.md)」を参照してください。|
 | 40551 |16 |`TEMPDB` の使用領域が多すぎるため、セッションを終了しました。 クエリを変更して一時テーブルの使用領域を減らしてください。<br/><br/>一時オブジェクトを使用している場合は、セッションで不要となった一時オブジェクトを削除して `TEMPDB` データベースの領域を節約してください。 SQL Database での tempdb の使用については、「[SQL Database の Tempdb データベース](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)」を参照してください。|
 | 40552 |16 |トランザクション ログの使用領域が多すぎるため、セッションを終了しました。 1 回のトランザクションで変更する行を減らしてください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](../performance-improve-use-batching.md)」を参照してください。<br/><br/>`bcp.exe` ユーティリティまたは `System.Data.SqlClient.SqlBulkCopy` クラスを使用して一括挿入を実行する場合は、1 回のトランザクションでサーバーにコピーされる行数を `-b batchsize` オプションまたは `BatchSize` オプションで制限してください。 `ALTER INDEX` ステートメントでインデックスを再構築する場合は、`REBUILD WITH ONLINE = ON` オプションの使用を検討してください。 仮想コア購入モデルでのトランザクション ログ サイズについては、次を参照してください。 <br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL Managed Instance のリソースの制限](../managed-instance/resource-limits.md)。|
-| 40553 |16 |メモリの使用量が多すぎるため、セッションを終了しました。 クエリを変更して、処理する行を減らしてください。<br/><br/>Transact-SQL コード内の `ORDER BY` 操作と `GROUP BY` 操作の数を減らすことで、クエリのメモリ要件を抑えられます。 データベースのスケーリングについては、[単一データベースのリソースのスケーリング](single-database-scale.md)に関する記事と、[エラスティック プールのリソースのスケーリング](elastic-pool-scale.md)に関する記事を参照してください。|
+| 40553 |16 |メモリの使用量が多すぎるため、セッションを終了しました。 クエリを変更して、処理する行を減らしてください。<br/><br/>Transact-SQL コード内の `ORDER BY` 操作と `GROUP BY` 操作の数を減らすことで、クエリのメモリ要件を抑えられます。 データベースのスケーリングについては、[単一データベースのリソースのスケーリング](single-database-scale.md)に関する記事と、[エラスティック プールのリソースのスケーリング](elastic-pool-scale.md)に関する記事を参照してください。 メモリ不足エラーおよびサンプル クエリについて詳しくは、「[Azure SQL Database によるメモリ不足エラーのトラブルシューティング](troubleshoot-memory-errors-issues.md)」を参照してください。|
 
 ## <a name="elastic-pool-errors"></a>エラスティック プールのエラー
 
@@ -340,7 +347,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 ## <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>このログインで要求されたデータベース "master" を開けません。 ログインに失敗しました
 
-この問題は、アカウントに master データベースにアクセスするアクセス許可がないために発生します。 しかし、既定では、SQL Server Management Studio (SSMS) で master データベースへの接続が試行されます。
+この問題は、アカウントに `master` データベースにアクセスするアクセス許可がないために発生します。 しかし、既定では、SQL Server Management Studio (SSMS) で `master` データベースへの接続が試行されます。
 
 この問題を解決するには、次の手順に従ってください。
 
@@ -396,3 +403,8 @@ ClientConnectionId:<Client connection ID>
 
 - [Azure SQL Database 接続アーキテクチャ](./connectivity-architecture.md)
 - [Azure SQL Database と Azure Synapse Analytics のネットワーク アクセスの制御](./network-access-controls-overview.md)
+
+## <a name="see-also"></a>関連項目
+
+- [Azure SQL Database および Azure SQL Managed Instance のトランザクション エラーのトラブルシューティング](troubleshoot-transaction-log-errors-issues.md)
+- [SQL Database と SQL Managed Instance での一時的な接続エラーのトラブルシューティング](troubleshoot-common-connectivity-issues.md)

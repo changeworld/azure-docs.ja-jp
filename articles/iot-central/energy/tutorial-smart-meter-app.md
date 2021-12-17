@@ -1,108 +1,105 @@
 ---
-title: チュートリアル:IoT Central でスマート メーター分析アプリを作成する
-description: チュートリアル:Azure IoT Central アプリケーション テンプレートを使用してスマート メーター監視アプリケーションを作成する方法について説明します。
+title: チュートリアル - Azure IoT スマート メーター監視 | Microsoft Docs
+description: このチュートリアルでは、IoT Central のスマート メーター監視アプリケーション テンプレートをデプロイして使用する方法について説明します。
 author: op-ravi
 ms.author: omravi
-ms.date: 12/11/2020
+ms.date: 08/02/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d9b5af45ab9a1003cc25e8b1ea2059b83bc715c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a332ab10ce4e7c38442288165c56d1161081cd9c
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833305"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179483"
 ---
-# <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>チュートリアル:スマート メーター監視アプリ テンプレートを作成して操作する 
+# <a name="tutorial-deploy-and-walk-through-the-smart-meter-monitoring-app-template"></a>チュートリアル:スマート メーター監視アプリ テンプレートをデプロイして利用する 
 
-このチュートリアルでは、スマート メーター監視アプリケーションの作成プロセスについて説明します。これには、シミュレートされたデータを含むサンプル デバイス モデルが含まれます。 このチュートリアルでは、次のことについて説明します。
+IoT Central の "*スマート メーター監視*" アプリケーション テンプレートとこの記事のガイダンスを使用して、エンドツーエンドのスマート メーター監視ソリューションを開発します。
 
-> [!div class="checklist"]
-> * スマート メーター アプリを無料で作成する
-> * アプリケーションのチュートリアル
-> * リソースをクリーンアップする
+  :::image type="content" source="media/tutorial-iot-central-smart-meter/smart-meter-app-architecture.png" alt-text="スマート メーターのアーキテクチャ。":::
 
+このアーキテクチャは、次のコンポーネントで構成されます。 一部のソリューションでは、ここに記載されているすべてのコンポーネントが必要ではない場合があります。
 
-サブスクリプションをお持ちでない場合は、[無料試用版アカウントを作成](https://azure.microsoft.com/free)します
+### <a name="smart-meters-and-connectivity"></a>スマート メーターと接続性
+
+スマート メーターは、すべてのエネルギー アセットの中でも最も重要なデバイスの 1 つです。 これを使ってエネルギー消費データを記録し、監視やその他のユース ケース (請求書や需要応答など) のために公共事業体に伝達できます。 メーターの種類に基づいて、ゲートウェイ、またはその他の中間デバイスや中間システム (エッジ デバイス、ヘッドエンド システムなど) を使用して IoT Central に接続できます。 直接接続できないデバイスを接続するには、IoT Central デバイス ブリッジを構築します。 IoT Central デバイス ブリッジはオープン ソース ソリューションであり、詳細については[こちら](../core/howto-build-iotc-device-bridge.md)で確認できます。 
+
+### <a name="iot-central-platform"></a>IoT Central プラットフォーム
+
+Azure IoT Central は、IoT ソリューションの構築を簡素化し、IoT の管理、運用、開発の負担とコストを削減するために役立つプラットフォームです。 IoT Central を使用すると、大規模なモノのインターネット (IoT) アセットを簡単に接続、監視、管理できます。 スマート メーターを IoT Central に接続すると、アプリ テンプレートにはデバイス モデル、コマンド、ダッシュボードなどの組み込みの機能が使用されます。 また、アプリ テンプレートには、ほぼリアルタイムのメーター データの監視、分析、ルール、視覚化など、ウォーム パス シナリオにも IoT Central ストレージが使用されます。 
+
+### <a name="extensibility-options-to-build-with-iot-central"></a>IoT Central を使用して構築する拡張オプション
+
+IoT Central プラットフォームには、次の 2 つの拡張オプションがあります。継続的データ エクスポート (CDE) と API。 顧客とパートナーは、特定のニーズに合わせてこれらのオプションのいずれかを選択し、ソリューションをカスタマイズすることができます。 たとえば、あるパートナーは Azure Data Lake Storage (ADLS) を使用して CDE を構成しました。 バッチ処理、監査、報告などの目的で、長期的なデータ保持やその他のコールド パス ストレージ シナリオに ADLS が使用されています。
+
+このチュートリアルでは、次の作業を行う方法について説明します。
+
+- スマート メーター アプリを無料で作成する
+- アプリケーションのチュートリアル
+- リソースをクリーンアップする
 
 ## <a name="prerequisites"></a>前提条件
-- なし
-- Azure サブスクリプションをお勧めしますが、試すことは必須ではありません。
 
-## <a name="create-a-smart-meter-monitoring-app"></a>スマート メーター監視アプリを作成する 
+* このアプリをデプロイするために必要な前提条件は特にありません。
+* 無料価格プランを使用するか、Azure サブスクリプションを使用することができます。
 
-このアプリケーションは、次の 3 つの簡単な手順で作成できます。
+## <a name="create-a-smart-meter-monitoring-application"></a>スマート メーター監視アプリケーションを作成する
 
-1. [Azure IoT Central のホーム ページ](https://apps.azureiotcentral.com)を開き、 **[ビルド]** をクリックして新しいアプリケーションを作成します。 
-1. **[エネルギー]** タブを選択し、 **[Smart meter monitoring]\(スマート メーター監視\)** アプリケーション タイルの下にある **[アプリの作成]** をクリックします。
+1. [Azure IoT Central ビルド](https://aka.ms/iotcentral) Web サイトに移動します。 次に、Microsoft 個人アカウントか、職場または学校アカウントを使用してサインインします。 左側のナビゲーションバーから **[ビルド]** を選択し、 **[Energy]\(エネルギー\)** タブを選択します。
 
-    > [!div class="mx-imgBorder"]
-    > ![アプリをビルドする](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
-    
+    :::image type="content" source="media/tutorial-iot-central-smart-meter/smart-meter-build.png" alt-text="スマート メーターのテンプレート":::
 
-1. **[アプリの作成]** を選択すると、 **[新しいアプリケーション]** フォームが開きます。 次の図に示すように、必要な詳細を入力します。
-    * **アプリケーション名**:IoT Central アプリケーションの名前を選択します。 
-    * **URL**: IoT Central URL を選択すると、プラットフォームによってその一意性が検証されます。
-    * **7 日間の無料試用版**:Azure サブスクリプションが既にある場合は、既定の設定をお勧めします。 Azure サブスクリプションをお持ちでない場合は、無料試用版から始めてください。
-    * **課金情報**:アプリケーション自体は無料です。 アプリのリソースをプロビジョニングするには、ディレクトリ、Azure サブスクリプション、リージョンの詳細が必要です。
-    * ページの下部にある **[作成]** ボタンをクリックすると、アプリが 1 分ほどで作成されます。
+1. **[Smart meter monitoring]\(スマート メーター監視\)** で **[アプリの作成]** を選択します。
 
-        ![[新しいアプリケーション] フォーム](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+詳細については、「[IoT Central アプリケーションを作成する](../core/howto-create-iot-central-application.md)」を参照してください。
 
-        ![[新しいアプリケーション] フォームの課金情報](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
+## <a name="walk-through-the-application"></a>アプリケーションを調べる
 
-### <a name="verify-the-application-and-simulated-data"></a>アプリケーションとシミュレートされたデータを検証する
+以降のセクションでは、アプリケーションの主な機能について見ていきます。
 
-新しく作成されたスマート メーター アプリは自分のアプリなので、いつでも変更できます。 変更する前に、アプリがデプロイされ、期待どおりに動作することを確認しましょう。
+### <a name="dashboard"></a>ダッシュボード
 
-アプリの作成とデータのシミュレーションを確認するには、 **[ダッシュボード]** にアクセスします。 いくつかのデータを含むタイルが表示される場合、アプリのデプロイは成功しています。 データのシミュレーションには、データの生成に数分かかる場合があるため、1 から 2 分待ちます。 
-
-## <a name="application-walk-through"></a>アプリケーションのチュートリアル
-正常にデプロイされたアプリ テンプレートには、サンプルのスマート メーター デバイス、デバイス モデル、およびダッシュボードが付属しています。 
+デプロイされたアプリケーション テンプレートには、サンプルのスマート メーター デバイス、デバイス モデル、およびダッシュボードが付属しています。 
 
 Adatum は、スマート メーターを監視および管理する架空のエネルギー会社です。 スマート メーター監視ダッシュボードには、スマート メーターのプロパティ、データ、サンプル コマンドが表示されます。 これにより、オペレーターおよびサポート チームは、サポート インシデントに備えて、事前に次のアクティビティを実行できます。 
-* マップ上の最新のメーター情報とその設置場所を確認する
+* マップ上の最新のメーター情報とその設置[場所](../core/howto-use-location-data.md)を確認する
 * メーター ネットワークと接続の状態を事前に確認する 
 * ネットワークの正常性の最小および最大の電圧の測定値を監視する 
 * エネルギー、電力、および電圧の傾向を確認して、異常なパターンを把握する 
 * 計画と課金のためのエネルギー総消費量を追跡する
 * 再接続メーターやファームウェア バージョンの更新などのコマンドと制御操作。 テンプレートでは、コマンド ボタンには使用可能な機能が表示され、実際のコマンドは送信されません。 
 
-> [!div class="mx-imgBorder"]
-> ![スマート メーター監視ダッシュボード](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
+:::image type="content" source="media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png" alt-text="スマート メーター監視ダッシュボード。":::
 
 ### <a name="devices"></a>デバイス
+
 アプリには、サンプルのスマート メーター デバイスが付属しています。 デバイスの詳細を確認するには、 **[デバイス]** タブをクリックします。
 
-> [!div class="mx-imgBorder"]
-> ![スマート メーター デバイス](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
+:::image type="content" source="media/tutorial-iot-central-smart-meter/smart-meter-devices.png" alt-text="スマート メーター デバイス。":::
 
 サンプル デバイス **SM0123456789** リンクをクリックすると、デバイスの詳細が表示されます。 **[プロパティの更新]** ページ上でデバイスの書き込み可能なプロパティを更新し、ダッシュボードで更新された値を視覚化できます。
 
-> [!div class="mx-imgBorder"]
-> ![スマート メーターのプロパティ](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
+:::image type="content" source="media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png" alt-text="スマート メーターのプロパティ。":::
 
 ### <a name="device-template"></a>デバイス テンプレート
+
 **[デバイス テンプレート]** タブをクリックして、スマート メーター デバイス モデルを表示します。 モデルには、データ、プロパティ、コマンド、およびビューの事前定義インターフェイスがあります。
 
-> [!div class="mx-imgBorder"]
-> ![スマート メーター デバイス テンプレート](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
-
+:::image type="content" source="media/tutorial-iot-central-smart-meter/smart-meter-device-template.png" alt-text="スマート メーター デバイス テンプレート。":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
 このアプリケーションの引き続き使用しない場合は、次の手順でアプリケーションを削除します。
 
 1. 左側のペインで、[管理] タブを開きます。
 1. [アプリケーションの設定] を選択し、ページの下部にある [削除] ボタンをクリックします。 
 
-    > [!div class="mx-imgBorder"]
-    > ![アプリケーションを削除する](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png" alt-text="アプリケーションを削除する。":::
 
 ## <a name="next-steps"></a>次のステップ
 
-スマート メーター アプリのアーキテクチャの詳細については、次の記事を参照してください。
+> [チュートリアル: ソーラー パネル アプリケーション テンプレートをデプロイして利用する](tutorial-solar-panel-app.md)
 
-> [!div class="nextstepaction"]
-> [スマート メーター アプリケーションのアーキテクチャ](./concept-iot-central-smart-meter-app.md)

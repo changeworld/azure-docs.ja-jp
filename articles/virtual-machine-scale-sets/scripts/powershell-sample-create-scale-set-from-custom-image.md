@@ -1,20 +1,20 @@
 ---
 title: Azure PowerShell のサンプル - カスタム VM イメージを使用する
 description: このスクリプトでは、カスタム VM イメージを VM インスタンスのソースとして使用する仮想マシン スケール セットを作成します。
-author: axayjo
-ms.author: akjosh
+author: mamccrea
+ms.author: mamccrea
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.date: 03/27/2018
 ms.reviewer: cynthn
 ms.custom: akjosh, devx-track-azurepowershell
-ms.openlocfilehash: 34a786c133d38e40cfa614ddceed53a6cf52b617
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2adc24bb6c00854ef44511d73d441d02949de945
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89078930"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221180"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>PowerShell を使用してカスタム VM イメージから仮想マシン スケール セットを作成する
 このスクリプトでは、カスタム VM イメージを VM インスタンスのソースとして使用する仮想マシン スケール セットを作成します。

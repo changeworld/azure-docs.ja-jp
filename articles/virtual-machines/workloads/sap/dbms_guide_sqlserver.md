@@ -2,25 +2,23 @@
 title: SAP ワークロードのための SQL Server Azure Virtual Machines DBMS のデプロイ | Microsoft Docs
 description: SAP ワークロードのための SQL Server Azure Virtual Machines DBMS のデプロイ
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
 manager: bburns
-editor: ''
 tags: azure-resource-manager
 keywords: Azure、SQL Server、SAP、AlwaysOn
 ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/08/2021
+ms.date: 06/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05a0aeb43b13dc4db28ca8c56fc668756a2a4510
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 74c67e9aa143dafcf63c242cd83c20a85236c66e
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258726"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070453"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -238,7 +236,7 @@ ms.locfileid: "107258726"
 [resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
-[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
+[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
 [sap-templates-3-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image%2Fazuredeploy.json
@@ -253,7 +251,7 @@ ms.locfileid: "107258726"
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
-[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
+[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
 [virtual-machines-azurerm-versus-azuresm]:../../../resource-manager-deployment-model.md
@@ -320,17 +318,17 @@ ms.locfileid: "107258726"
 
 一般的に、Azure IaaS で SAP ワークロードを実行するには、最新の SQL Server リリースを使用することを検討することをお勧めします。 最新の SQL Server リリースは、Azure のサービスと機能の一部との統合性が向上しています。 または、Azure IaaS インフラストラクチャで操作を最適化するように変更します。
 
-続行する前に、「Azure Virtual Machines 上の SQL Server とは何か (Windows)」 [https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview ] の記事を確認することをお勧めします。
+続行する前に、「[Azure Virtual Machines 上の SQL Server とは何か (Windows)](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)」の記事を確認することをお勧めします。
 
 以降のセクションでは、上記のリンクにあるドキュメントの一部の情報を集約して説明しています。 SAP に関する特記事項についても説明し、いくつかの概念についてはさらに詳しく説明します。 ただし、SQL Server に特化したドキュメントを読み取る前に、上記のドキュメントに目を通すことを強くお勧めします。
 
 先に進む前に知っておくべき IaaS での SQL Server に固有の情報があります。
 
 * **SQL バージョンのサポート**: SAP のお客様に対しては、Microsoft Azure Virtual Machines で SQL Server 2008 R2 以降がサポートされています。 これより前のエディションはサポートされていません。 詳細については、この一般的な [サポートの説明](https://support.microsoft.com/kb/956893) を確認してください。 マイクロソフトは基本的には SQL Server 2008 をサポートしています。 ただし、SQL Server 2008 R2 で導入された SAP の重要な機能によって、SQL Server 2008 R2 が SAP の最小リリースとなっています。 一般的に、Azure IaaS で SAP ワークロードを実行するには、最新の SQL Server リリースを使用することを検討することをお勧めします。 最新の SQL Server リリースは、Azure のサービスと機能の一部との統合性が向上しています。 または、Azure IaaS インフラストラクチャで操作を最適化するように変更します。 そのため、このドキュメントは SQL Server 2016 と SQL Server 2017 に制限されています。
-* **SQL のパフォーマンス**: Microsoft Azure がホストする Virtual Machines は、他のパブリック クラウド仮想化製品と比べて良好に機能しますが、個々の結果は異なる場合があります。 「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)」の記事を参照してください。
+* **SQL のパフォーマンス**: Microsoft Azure がホストする Virtual Machines は、他のパブリック クラウド仮想化製品と比べて良好に機能しますが、個々の結果は異なる場合があります。 「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)」の記事を参照してください。
 * **Azure Marketplace からのイメージの使用**: 新しい Microsoft Azure VM をデプロイする最も早い方法は、Azure Marketplace からのイメージを使用することです。 Azure Marketplace には、最新の SQL Server リリースを含むイメージがあります。 SQL Server が既にインストールされているイメージは、SAP NetWeaver アプリケーション用にすぐに使用することができません。 その理由は、それらのイメージ内に既定の SQL Server 照合順序がインストールされており、SAP NetWeaver システムで必要な照合順序がインストールされていないためです。 このようなイメージを使用するには、「[Microsoft Azure Marketplace からの SQL Server イメージの使用][dbms-guide-5.6]」の章に記載されている手順をご確認ください。 
-*  **1 つの Azure VM 内で SQL Server の複数インスタンスのサポート**: このデプロイ方法はサポートされています。 ただし、リソースの制限事項 (特に、使用している VM の種類のネットワークとストレージの帯域幅に関するもの) に注意してください。 詳細については、「[Azure の仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/sizes)」を参照してください。 これらのクォータ制限により、オンプレミスで実装できるのと同じマルチインスタンス アーキテクチャを実装できなくなる可能性があります。 1 つの VM 内で使用可能なリソースを共有する構成と干渉に関しては、オンプレミスと同じ考慮事項を考慮する必要があります。
-*  **1 つの VM 内の 1 つの SQL Server インスタンス内で複数の SAP データベース**: 上記のように、このような構成はサポートされています。 1 つの SQL Server インスタンスの共有リソースを共有する複数の SAP データベースに関する考慮事項は、オンプレミス デプロイの場合と同じです。 さらに、特定の VM の種類にアタッチできるディスク数などの他の制限も考慮してください。 また、「[Azure の仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/sizes)」で詳しく説明されているように、特定の VM の種類のネットワークと記憶域のクォータ制限もあります。 
+*  **1 つの Azure VM 内で SQL Server の複数インスタンスのサポート**: このデプロイ方法はサポートされています。 ただし、リソースの制限事項 (特に、使用している VM の種類のネットワークとストレージの帯域幅に関するもの) に注意してください。 詳細については、「[Azure の仮想マシンのサイズ](../../sizes.md)」を参照してください。 これらのクォータ制限により、オンプレミスで実装できるのと同じマルチインスタンス アーキテクチャを実装できなくなる可能性があります。 1 つの VM 内で使用可能なリソースを共有する構成と干渉に関しては、オンプレミスと同じ考慮事項を考慮する必要があります。
+*  **1 つの VM 内の 1 つの SQL Server インスタンス内で複数の SAP データベース**: 上記のように、このような構成はサポートされています。 1 つの SQL Server インスタンスの共有リソースを共有する複数の SAP データベースに関する考慮事項は、オンプレミス デプロイの場合と同じです。 さらに、特定の VM の種類にアタッチできるディスク数などの他の制限も考慮してください。 また、「[Azure の仮想マシンのサイズ](../../sizes.md)」で詳しく説明されているように、特定の VM の種類のネットワークと記憶域のクォータ制限もあります。 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>SAP 関連 SQL Server のデプロイメントの VM/VHD 構造に関する推奨事項
@@ -352,7 +350,7 @@ SQL Server と SAP データベースを実行し、D:\ ドライブに tempdb �
 上の図は簡易な場合を示しています。 記事「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」で説明されているように、Azure Storage の種類、ディスクの数とサイズはさまざまな要素によって変わります。 ただし一般的な推奨事項は次のとおりです。
 
 - SQL Server データ ファイルを含む 1 つの大きなボリュームを使用します。 この構成の背景には、現実には I/O ワークロードが異なり、データベース ファイルのサイズが異なる多数の SAP データベースが存在するという理由があります。
-- パフォーマンスが十分であれば、tempdb には D:\ ドライブを使用してください。 D:\ ドライブに配置した tempdb によってワークロード全体のパフォーマンスが制限される場合は、[この記事](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)で推奨されているように、tempdb を別の Azure Premium Storage または Ultra Disk のディスクに移動することを検討する必要があります。
+- パフォーマンスが十分であれば、tempdb には D:\ ドライブを使用してください。 D:\ ドライブに配置した tempdb によってワークロード全体のパフォーマンスが制限される場合は、[この記事](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)で推奨されているように、tempdb を別の Azure Premium Storage または Ultra Disk のディスクに移動することを検討する必要があります。
 
 
 ### <a name="special-for-m-series-vms"></a>M シリーズ VM のみの特殊な推奨事項
@@ -382,7 +380,7 @@ SQL Server 2014 以降では、Azure Blob ストアの周囲に VHD の "ラッ�
 * 前述の別の Azure Storage アカウントに VHD を分散させることについての考慮事項は、このデプロイ方法の場合にも適用されます。 Azure ストレージ アカウントの制限に対する I/O 操作数を意味します。
 * VM のストレージ I/O クォータを考慮する代わりに、SQL Server のデータとログ ファイルを表すストレージ BLOB に対するトラフィックが、特定の VM の種類の VM のネットワーク帯域幅に反映されます。 具体的な VM の種類のネットワークとストレージの帯域幅については、記事「[Azure の Windows 仮想マシンのサイズ](../../sizes.md)」を参照してください。
 * ネットワーク クォータを介してファイル I/O をプッシュすると、主にストレージ クォータが孤立し、VM の全体の帯域幅が部分的にしか使用されません。
-* Azure Premium Storage がさまざまなディスク サイズに対して持っている IOPS と I/O スループットのパフォーマンス目標は適用されません。 たとえ、作成した BLOB が Azure Premium Storage 上にある場合でもそうです。 目標については、記事「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](../../disks-types.md#premium-ssd)」を参照してください。 Azure Premium Storage に格納されている BLOB に SQL Server のデータ ファイルとログ ファイルを直接配置した結果のパフォーマンスの特性は、Azure Premium Storage 上の VHD と異なる場合があります。
+* Azure Premium Storage がさまざまなディスク サイズに対して持っている IOPS と I/O スループットのパフォーマンス目標は適用されません。 たとえ、作成した BLOB が Azure Premium Storage 上にある場合でもそうです。 目標については、記事「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](../../disks-types.md#premium-ssds)」を参照してください。 Azure Premium Storage に格納されている BLOB に SQL Server のデータ ファイルとログ ファイルを直接配置した結果のパフォーマンスの特性は、Azure Premium Storage 上の VHD と異なる場合があります。
 * Azure Premium Storage ディスクで使用できるホスト ベースのキャッシュは、SQL Server データ ファイルを Azure BLOB に直接デプロイするときには使用できません。
 * M シリーズの VM では、Azure Write Accelerator を使用して SQL Server トランザクション ログ ファイルに対してミリ秒未満の書き込みをサポートすることはできません。 
 
@@ -430,7 +428,7 @@ Azure でのさまざまな SQL Server のバックアップ方法について�
 ### <a name="azure-backup-for-sql-server-vms"></a>SQL Server VM 用の Azure Backup
 2018 年 6 月現在、この SQL Server の新しいバックアップ方法は、Azure Backup Services によるパブリック プレビューとして提供されています。 SQL Server をバックアップする方法は、他のサード パーティ製ツールが、SQL Server VSS/VDI インターフェイスなどを使用してバックアップを対象の場所にストリーミングする方法と同じです。 この場合、対象の場所は Azure Recovery Service コンテナーです。
 
-このバックアップ方法の詳細な説明と、中央のバックアップ構成、監視、管理のさまざまな利点については、[こちら](../../../backup/backup-azure-sql-database.md)を参照してください。 
+このバックアップ方法の詳細な説明と、中央のバックアップ構成、監視、管理のさまざまな利点については、[SQL Server データベースの Azure へのバックアップ](../../../backup/backup-azure-sql-database.md)に関するページを参照してください。
 
 
 ### <a name="third-party-backup-solutions"></a>サード パーティのバックアップ ソリューション
@@ -475,7 +473,7 @@ Microsoft は Windows Server 2016 で[記憶域スペース ダイレクト](/wi
 ### <a name="sql-server-log-shipping"></a>SQL Server ログ配布
 高可用性 (HA) のメソッドの 1 つは、SQL Server ログ配布です。 HA 構成に参加している VM で名前解決を行えているのであれば、何も問題はありません。 Azure でのセットアップは、ログ配布の設定とログ配布に関する原則に関連してオンプレミスで実行されるセットアップとは異なります。 記事「[ログ配布について (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server)」で SQL Server のログ配布の詳細を確認できます。
 
-1 つの Azure リージョン内で高可用を達成する目的で、SQL Server のログ配布機能が Azure で使用されることはほとんどありませんでした。 ただし、以下のシナリオでは、SAP ユーザーは Azure と適切に連携してログ配布を使用していました。
+1 つの Azure リージョン内で高可用を達成する目的で、SQL Server のログ配布機能が Azure で使用されることはほとんどありませんでした。 ただし、以下のシナリオでは、SAP ユーザーは Azure と適切に連携するログ配布を使用していました。
 
 - ある Azure リージョンから別の Azure リージョンへのディザスター リカバリー シナリオ
 - オンプレミスから Azure リージョンへのディザスター リカバリー構成
@@ -488,9 +486,9 @@ SAP でサポートされているデータベース ミラーリング (SAP Not
 
 クラウドのみのデプロイの時点で、最も簡単な方法は 1 つのドメイン内にそれらの DBMS VM (および理想的には専用の SAP VM) を持つことができるように Azure で別のドメインをセットアップすることです。
 
-ドメインをセットアップできない場合は、<https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql> に記載されているように、データベース ミラーリング エンドポイントの証明書を使用することもできます。
+ドメインを使用できない場合は、「[データベース ミラーリング エンドポイントでの証明書の使用 (Transact-SQL)](/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql)」で説明されているように、データベース ミラーリング エンドポイントに証明書を使用することもできます。
 
-Azure でのデータベース ミラーリングのセットアップのチュートリアルについては、<https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> を参照してください。 
+Azure でデータベース ミラーリングを設定するチュートリアルについては、「[データベース ミラーリング (SQL Server)](/sql/database-engine/database-mirroring/database-mirroring-sql-server)」を参照してください。
 
 ### <a name="sql-server-always-on"></a>SQL Server AlwaysOn
 AlwaysOn は SAP オンプレミスでサポートされており (SAP Note [1772688] を参照)、この機能は Azure の SAP との組み合わせでサポートされています。 オンプレミスでは可能ですが、現時点で Azure では AD/DNS オブジェクトを作成できないため、SQL Server 可用性グループ リスナー (Azure 可用性セットと混同しないこと) のデプロイに関する特別な考慮事項があります。 そのため、Azure 固有の動作に対応するために、いくつかの別のインストール手順が必要です。
@@ -513,12 +511,17 @@ Azure VM の SQL Server で Always On をデプロイする方法の詳細につ
 >[!NOTE]
 > 可用性グループ リスナーの仮想 IP アドレスに Azure Load Balancer を構成する場合は、DirectServerReturn が構成されていることを確認します。 このオプションを構成すると、SAP アプリケーション レイヤーと DBMS レイヤーの間のネットワーク ラウンド トリップの待機時間が短縮されます。 
 
+>[!NOTE]
+>[Azure 仮想マシン上の SQL Server Always On 可用性グループの概要](../../../azure-sql/virtual-machines/windows/availability-group-overview.md)に関するページで、SQL Server の [Direct Network Name (DNN) リスナー](../../../azure-sql/virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md)についてご確認ください。 この新機能は、SQL Server 2019 CU8 で導入されました。 この新機能により、可用性グループ リスナーの仮想 IP アドレスを処理する、Azure ロード バランサーの使用が廃止されます。
+
+
 SQL Server Always On は、Azure for SAP ワークロードのデプロイで使用される最も一般的な高可用性とディザスター リカバリー機能です。 ほとんどのユーザーは、単一の Azure リージョン内で高可用性のために Always On を使用しています。 デプロイが 2 つのノードのみに制限されている場合、接続には 2 つの選択肢があります。
 
-- 可用性グループ リスナーを使用します。 可用性グループ リスナーを使用する場合、Azure Load Balancer をデプロイする必要があります。 この方法は、既定のデプロイ方法です。 SAP アプリケーションは、単一のノードとではなく、可用性グループ リスナーと接続するように構成されます。
-- SQL Server データベース ミラーリングの接続パラメーターを使用します。 この場合、両方のノードに名前を付ける方法で SAP アプリケーションの接続を構成する必要があります。 このような SAP 側構成の詳細については、SAP Note [#965908](https://launchpad.support.sap.com/#/notes/965908) を参照してください。 このオプションを使用する場合、可用性グループ リスナーを構成する必要はありません。 また、SQL Server の高可用性のために Azure Load Balancer を構成する必要はありません。 その結果、SQL Server インスタンスへの着信トラフィックは Azure Load Balancer 経由でルーティングされないので、SAP アプリケーション レイヤーと DBMS レイヤーの間のネットワーク待機時間は短くなります。 ただし、このオプションは、可用性グループを 2 つのインスタンスにまたがるように制限する場合にのみ機能する点に注意してください。 
+- 可用性グループ リスナーを使用します。 可用性グループ リスナーを使用する場合、Azure Load Balancer をデプロイする必要があります。 
+- 代わりに、[Direct Network Name (DNN) リスナー](../../../azure-sql/virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md)を使用できる SQL Server 2019 CU8 以降のリリースを使用します。 これにより、Azure ロード バランサーの要件が排除されます。
+- SQL Server データベース ミラーリングの接続パラメーターを使用します。 この場合、両方のノードに名前を付ける方法で SAP アプリケーションの接続を構成する必要があります。 このような SAP 側構成の詳細については、SAP Note [#965908](https://launchpad.support.sap.com/#/notes/965908) を参照してください。 このオプションを使用する場合、可用性グループ リスナーを構成する必要はありません。 また、SQL Server の高可用性のために Azure Load Balancer を構成する必要はありません。 ただし、このオプションは、可用性グループを 2 つのインスタンスにまたがるように制限する場合にのみ機能する点に注意してください。 
 
-Azure リージョン間にディザスター リカバリー機能のために SQL Server Always On 機能を利用しているお客様はごく少数です。 一部のユーザーは、セカンダリ レプリカからバックアップを実行する機能も使用しています。 
+かなりの数の顧客が、Azure リージョン間のディザスター リカバリー機能に対して SQL Server Always On 機能を利用しています。 一部のユーザーは、セカンダリ レプリカからバックアップを実行する機能も使用しています。 
 
 ## <a name="sql-server-transparent-data-encryption"></a>SQL Server Transparent Data Encryption
 SAP SQL Server データベースを Azure にデプロイするときに、SQL Server [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) を使用しているお客様はたくさんいます。 SQL Server TDE 機能は SAP によって完全にサポートされています (SAP Note [#1380493](https://launchpad.support.sap.com/#/notes/1380493) を参照)。 
@@ -535,7 +538,7 @@ SAP SQL Server データベースをオンプレミスから Azure に移行す�
 SAP ワークロードがない、またはほとんどない TDE 暗号化のアプリケーションを扱う場合、SAP データベースに TDE を適用する処理をオンプレミスで実行するか、Azure で実行するかについて、実際の構成でテストすることをお勧めします。 TDE が適用された後のインフラストラクチャのオーバープロビジョニングとインフラストラクチャの縮小という点で、Azure の方が柔軟です。
 
 ### <a name="using-azure-key-vault"></a>Azure Key Vault の使用
-Azure は、暗号キーを格納する [Key Vault](https://azure.microsoft.com/services/key-vault/) のサービスを提供しています。 一方、SQL Server は、TDE 証明書のストアとして Azure Key Vault を利用するコネクタを用意しています。
+Azure は、暗号キーを格納する [Key Vault](https://azure.microsoft.com/services/key-vault/) のサービスを提供しています。 一方、SQL Server は、TDE 証明書のストアとして Azure Key Vault を使用するコネクタを用意しています。
 
 Azure Key Vault を SQL Server TDE に使用する方法の詳細については、以下のドキュメントを参照してください。
 

@@ -7,13 +7,13 @@ author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.author: tyao
-ms.openlocfilehash: 805c3ba0360fcffe2bfd4217c0ef625fe61e5d64
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.author: duau
+ms.openlocfilehash: d30b73d1e80273d766f4f94224798ddb04763195
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030581"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633252"
 ---
 # <a name="connect-azure-front-door-premium-to-a-web-app-origin-with-private-link"></a>Private Link を使用して Azure Front Door Premium を Web アプリの配信元に接続する
 

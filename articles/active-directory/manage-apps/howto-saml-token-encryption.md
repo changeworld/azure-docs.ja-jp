@@ -1,34 +1,35 @@
 ---
-title: Azure Active Directory での SAML トークン暗号化
+title: SAML トークン暗号化
 description: Azure Active Directory の SAML トークン暗号化を構成する方法について説明します。
+titleSuffix: Azure AD
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: iangithinji
-ms.reviewer: paulgarn
+ms.author: davidmu
+ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c06a499cccb03e6726ee19542d7eb79e0c99b43
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: d15e4425b7506ada2ac1dcaf9f83bb4112a21639
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375731"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617646"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Azure AD SAML トークン暗号化の構成方法
+# <a name="configure-azure-active-directory-saml-token-encryption"></a>Azure Active Directory の SAML トークン暗号化を構成する
 
 > [!NOTE]
-> トークン暗号化は、Azure Active Directory (Azure AD) のプレミアム機能です。 Azure AD のエディション、機能、および価格について詳しくは、[Azure AD の価格](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
+> トークン暗号化は、Azure Active Directory (Azure AD) のプレミアム機能です。 Azure AD のエディション、機能、および価格について詳しくは、[Azure AD の価格](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)に関するページをご覧ください。
 
 SAML トークン暗号化を使用すると、それをサポートしているアプリケーションで、暗号化された SAML アサーションを使用できるようになります。 アプリケーションに対してこれが構成されている場合、Azure AD は、Azure AD に格納されている証明書から取得した公開キーを使用して、そのアプリケーションから出力された SAML アサーションを暗号化します。 アプリケーションでは、対応する秘密キーを使用してトークンを復号化する必要があります。これにより、現在サインインしているユーザーの認証の証拠として、そのトークンを使用できるようになります。
 
 Azure AD とアプリケーションの間で SAML アサーションを暗号化すると、トークンの内容がインターセプトされるのをより強力に防護して、個人や会社のデータが侵害されるのを防ぐことができます。
 
-トークン暗号化を使用しなかった場合でも、Azure AD の SAML トークンがネットワーク上でクリア テキストのまま渡されることはありません。 Azure AD では、トークンの要求/応答の交換が、暗号化された HTTPS/TLS チャネル経由で行われるようにする必要があります。これにより、IDP、ブラウザー、およびアプリケーション間の通信が、暗号化されたリンク経由で行われるようになります。 お客様の環境でトークン暗号化を使用するメリットを、追加の証明書の管理で生じるオーバーヘッドと比較して検討してください。   
+トークン暗号化を使用しなかった場合でも、Azure AD の SAML トークンがネットワーク上でクリア テキストのまま渡されることはありません。 Azure AD では、トークンの要求/応答の交換が、暗号化された HTTPS/TLS チャネル経由で行われるようにする必要があります。これにより、IDP、ブラウザー、およびアプリケーション間の通信が、暗号化されたリンク経由で行われるようになります。 お客様の環境でトークン暗号化を使用するメリットを、追加の証明書の管理で生じるオーバーヘッドと比較して検討してください。
 
 トークン暗号化を構成するには、公開キーを含んだ X.509 証明書ファイルを、アプリケーションを表す Azure AD アプリケーション オブジェクトにアップロードする必要があります。 X.509 証明書を取得する方法としては、アプリケーション自体からダウンロードする方法と、アプリケーション ベンダーから取得する方法があります (アプリケーション ベンダーから暗号化キーが提供される場合)。アプリケーションでユーザーが秘密キーを指定する必要がある場合は、暗号化ツールと、アプリケーションのキー ストアにアップロードされた秘密キー部分、および Azure AD にアップロードされた対応する公開キー証明書を使用して、秘密キーを作成できます。
 

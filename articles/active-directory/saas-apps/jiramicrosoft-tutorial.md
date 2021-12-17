@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 75b8230a1027bbf3ff3d73fb35ce65107c2db7e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58cf0e45fef054273bf39a9d955da5c0c09a259f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98730674"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132295285"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と JIRA SAML SSO by Microsoft の統合
 
@@ -35,7 +35,7 @@ Microsoft Azure Active Directory アカウントと Atlassian JIRA サーバー�
 JIRA SAML SSO by Microsoft と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-- JIRA Core と Software 6.4 から 8.14.0、または JIRA Service Desk 3.0 から 4.11.1 が、Windows 64 ビット版にインストールおよび構成されている必要があります
+- JIRA Core と Software 6.4 から 8.17.1、または JIRA Service Desk 3.0 から 4.16.1 が、Windows 64 ビット版にインストールおよび構成されている必要があります
 - JIRA サーバーの HTTPS が有効になっていること
 - JIRA プラグインがサポートされているバージョンであること (下記のセクションをご覧ください)
 - JIRA サーバーが認証のためにインターネット、特に Azure AD ログイン ページにアクセスでき、Azure AD からトークンを受け取れること
@@ -56,8 +56,8 @@ JIRA SAML SSO by Microsoft と Azure AD の統合を構成するには、次の�
 
 ## <a name="supported-versions-of-jira"></a>サポートされている JIRA のバージョン
 
-* JIRA Core と Software:6.4 から 8.14.0
-* JIRA Service Desk 3.0.0 から 4.11.1
+* JIRA Core とソフトウェア: 6.4 から 8.17.1
+* JIRA Service Desk 3.0 から 4.16.1
 * JIRA は 5.2 もサポートします。 詳細については、[Microsoft Azure Active Directory single sign-on for JIRA 5.2](jira52microsoft-tutorial.md) に関する記事を参照してください。
 
 > [!NOTE]
@@ -254,9 +254,8 @@ JIRA SAML SSO by Microsoft に対して Azure AD シングル サインオンを
 
 * JIRA SAML SSO by Microsoft のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリの [JIRA SAML SSO by Microsoft] タイルをクリックすると、JIRA SAML SSO by Microsoft のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリの [JIRA SAML SSO by Microsoft] タイルをクリックすると、JIRA SAML SSO by Microsoft のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-JIRA SAML SSO by Microsoft を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+JIRA SAML SSO by Microsoft を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

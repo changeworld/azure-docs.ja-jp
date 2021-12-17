@@ -6,17 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 08/16/2021
 ms.author: tamram
-ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eb8bbf852803df53c43cef90bd2229bfcddd60d4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7b5f2e6e8f883470826343c0aee1103a9a245be4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766189"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437545"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>ストレージ アカウントがレプリケートされる方法を変更する
 
@@ -39,14 +38,14 @@ Azure Storage には、以下の種類のレプリケーションが用意され
 
 | 切り替え | 先: LRS | 先: GRS/RA-GRS | 先: ZRS | 先: GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>元: LRS</b> | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する<sup>1、2</sup> | 手動の移行を実行する <br /><br /> OR <br /><br /> ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br /> OR <br /><br /> まず GRS/RA-GRS に切り替えてから、ライブ マイグレーションを要求する<sup>1</sup> |
-| <b>元: GRS/RA-GRS</b> | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし | 手動の移行を実行する <br /><br /> OR <br /><br /> まず LRS に切り替えてから、ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br /> OR <br /><br /> ライブ マイグレーションを要求する |
-| <b>元: ZRS</b> | 手動の移行を実行する | 手動の移行を実行する | 該当なし | ライブ マイグレーションを要求する |
+| <b>元: LRS</b> | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する<sup>1、2</sup> | 手動の移行を実行する <br /><br /> OR <br /><br /> ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br /> OR <br /><br /> まず GRS/RA-GRS に切り替えてから、ライブ マイグレーションを要求する<sup>3</sup> |
+| <b>元: GRS/RA-GRS</b> | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし | 手動の移行を実行する <br /><br /> OR <br /><br /> まず LRS に切り替えてから、ライブ マイグレーションを要求する<sup>3</sup> | 手動の移行を実行する <br /><br /> OR <br /><br /> ライブ マイグレーションを要求する<sup>3</sup> |
+| <b>元: ZRS</b> | 手動の移行を実行する | 手動の移行を実行する | 該当なし | ライブ マイグレーションを要求する<sup>3</sup> |
 | <b>元: GZRS/RA-GZRS</b> | 手動の移行を実行する | 手動の移行を実行する | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし |
 
 <sup>1</sup> 1 回限りのエグレス料金が発生します。<br />
 <sup>2</sup> ストレージ アカウントにアーカイブ層の BLOB が含まれる場合、LRS から GRS への移行はサポートされません。<br />
-<sup>3</sup> ZRS から GZRS/RA-GZRS への変換またはその逆の変換は、次のリージョンではサポートされていません: 米国東部 2、米国東部、西ヨーロッパ。
+<sup>3</sup> ライブ マイグレーションは、Standard 汎用 v2 と Premium ファイル共有アカウントでサポートされています。 Premium ブロック BLOB やページ BLOB ストレージ アカウントでは、ライブ マイグレーションはサポートされていません
 
 > [!CAUTION]
 > (RA-)GRS または (RA-)GZRS アカウントに対して[アカウントのフェールオーバー](storage-disaster-recovery-guidance.md)を実行した場合、アカウントはフェールオーバー後の新しいプライマリ リージョンでローカル冗長 (LRS) になります。 フェールオーバーによって作成される LRS アカウントに対する ZRS または GZRS へのライブ マイグレーションは、サポートされていません。 これは、いわゆるフェールバック操作の場合にも当てはまります。 たとえば、RA-GZRS からセカンダリ リージョンの LRS へのアカウントのフェールオーバーを実行してから、それをもう一度 RA-GRS に構成し、元のプライマリ リージョンへの別のアカウントのフェイルオーバーを実行した場合、プライマリ リージョンの RA-GZRS への元のライブ マイグレーションについて、サポートに問い合わせることはできません。 代わりに、ZRS または GZRS への手動移行を実行する必要があります。
@@ -62,10 +61,10 @@ Azure Storage には、以下の種類のレプリケーションが用意され
 Azure portal でストレージ アカウントの冗長オプションを変更するには、以下の手順に従います。
 
 1. Azure Portal のストレージ アカウントに移動します。
-1. **[構成]** 設定を選択します。
+1. **[設定]** で **[構成]** を選択します。
 1. **[レプリケーション]** 設定を更新します。
 
-![ポータルでレプリケーション オプションを変更する方法を示すスクリーンショット](media/redundancy-migration/change-replication-option.png)
+    :::image type="content" source="media/redundancy-migration/change-replication-option.png" alt-text="ポータルでレプリケーション オプションを変更する方法を示すスクリーンショット。" lightbox="media/redundancy-migration/change-replication-option.png":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -109,9 +108,11 @@ az storage account update \
 
 ライブ マイグレーション中にはストレージ アカウント内のデータにアクセスでき、持続性や可用性が失われることはありません。 移行プロセスの間、Azure Storage の SLA は維持されます。 ライブ マイグレーションに関連するデータ損失はありません。 サービス エンドポイント、アクセス キー、Shared Access Signature、およびその他のアカウント オプションは、移行後も変更されません。
 
-ZRS は汎用 v2 アカウントにのみ対応しているため、ZRS へのライブ マイグレーションの要求を送信する前に、必ずストレージ アカウントをアップグレードしてください。 詳細については、「[汎用 v2 ストレージ アカウントにアップグレードする](storage-account-upgrade.md)」を参照してください。 ストレージ アカウントには、ライブ マイグレーションによって移行するデータが含まれている必要があります。
+Standard パフォーマンスでは、ZRS は汎用 v2 アカウントにのみ対応しているため、汎用 v1 アカウントの場合は、ZRS へのライブ マイグレーションの要求を送信する前に、必ずストレージ アカウントをアップグレードしてください。 詳細については、「[汎用 v2 ストレージ アカウントにアップグレードする](storage-account-upgrade.md)」を参照してください。 ストレージ アカウントには、ライブ マイグレーションによって移行するデータが含まれている必要があります。
 
-ライブ マイグレーションは、LRS または GRS のレプリケーションを使用するストレージ アカウントについてのみサポートされます。 自分のアカウントが RA-GRS を使用している場合は、続行する前に、まず自分のアカウントのレプリケーションの種類を LRS または GRS のいずれかに変更する必要があります。 この中間の手順により、移行前に RA GRS によって提供される読み取り専用のセカンダリ エンドポイントが削除されます。
+Premium パフォーマンスでは、Premium ファイル共有アカウントはライブ マイグレーションに対応していますが、Premium ブロック BLOB や Premium ページ BLOB アカウントは対応していません。
+
+ご使用のアカウントで RA-GRS が使用されている場合は、ライブ マイグレーションを続行する前に、まずご使用のアカウントのレプリケーションの種類を LRS または GRS のいずれかに変更する必要があります。 この中間の手順により、RA-GRS によって提供される読み取り専用のセカンダリ エンドポイントが削除されます。
 
 Microsoft はお客様のライブ マイグレーションの要求に速やかに対応しますが、ライブ マイグレーションがいつ完了するかについての保証はありません。 データを特定の日付までに ZRS に移行する必要がある場合は、手動の移行を実行することをお勧めします。 一般的に、アカウントで保存しているデータが多いほど、データの移行には時間がかかります。
 
@@ -122,7 +123,7 @@ Microsoft はお客様のライブ マイグレーションの要求に速やか
 - ZRS から LRS、GRS、または RA-GRS にデータを移行したい。
 - ストレージ アカウントにアーカイブ層のデータが含まれている。
 
-ライブ マイグレーションは [Azure サポート ポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)から要求できます。 
+ライブ マイグレーションは [Azure サポート ポータル](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)から要求できます。
 
 > [!IMPORTANT]
 > 複数のストレージ アカウントを移行する必要がある場合は、1 つのサポートチケットを作成し、 **[詳細]** タブで変換するアカウントの名前を指定します。
@@ -148,9 +149,9 @@ Microsoft はお客様のライブ マイグレーションの要求に速やか
 1. **[詳細]** タブで必要な追加情報を入力し、 **[確認および作成]** を選択して、サポート チケットを確認し、送信します。 サポート担当者から連絡があり、お客様が必要なサポートを提供します。
 
 > [!NOTE]
-> Premium ファイル共有 (FileStorage アカウント) は、LRS と ZRS でのみ使用できます。
+> Premium ファイル共有は、LRS と ZRS でのみ使用できます。
 >
-> GZRS ストレージ アカウントでは、現在アーカイブ層はサポートされていません。 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
+> GZRS ストレージ アカウントでは、現在アーカイブ層はサポートされていません。 詳細については、「[BLOB データのホット、クールおよびアーカイブ アクセス層](../blobs/access-tiers-overview.md)」を参照してください。
 >
 > マネージド ディスクは LRS にのみ使用できます。ZRS に移行することはできません。 Standard SSD マネージド ディスクのスナップショットとイメージを、Standard HDD ストレージに格納できます。また、[LRS オプションと ZRS オプションから選択](https://azure.microsoft.com/pricing/details/managed-disks/)できます。 可用性セットとの統合については、「[Azure マネージド ディスクの概要](../../virtual-machines/managed-disks-overview.md#integration-with-availability-sets)」を参照してください。
 
@@ -197,7 +198,7 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 
 データがレプリケートされる方法の変更に関連するコストは、変換のパスによって異なります。 Azure Storage の冗長性のオファリングは、コストが最小から最大の順に、LRS、ZRS、GRS、RA-GRS、GZRS、RA-GZRS となっています。
 
-たとえば、LRS "*から*" 他の種類のレプリケーションに移行する場合、より高度な冗長性レベルに移行するので、追加料金が発生します。 GRS または RA-GRS "*に*" 移行する場合、(プライマリ リージョン内の) データがリモートのセカンダリ リージョンにレプリケートされているため、エグレス帯域幅の料金がかかります。 この料金は初回セットアップ時に 1 回だけかかる料金です。 データがコピーされた後に、追加の移行料金はかかりません。 帯域幅の料金の詳細については、[Azure Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
+たとえば、LRS "*から*" 他の種類のレプリケーションに移行する場合、より高度な冗長性レベルに移行するので、追加料金が発生します。 GRS または RA-GRS "*への*" 移行では、ストレージ アカウント全体がセカンダリ リージョンにレプリケートされるため、移行時にエグレス帯域幅の料金が発生します。 それ以降のプライマリ リージョンへの書き込みでも、セカンダリ リージョンへの書き込みをレプリケートするためのエグレス帯域幅の料金が発生します。 帯域幅の料金の詳細については、[Azure Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
 
 ストレージ アカウントを GRS から LRS に移行した場合、追加のコストは発生しませんが、レプリケートされたデータはセカンダリ ロケーションから削除されます。
 

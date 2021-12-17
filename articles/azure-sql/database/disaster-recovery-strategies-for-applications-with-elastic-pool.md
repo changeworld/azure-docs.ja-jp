@@ -7,16 +7,16 @@ ms.subservice: elastic-pools
 ms.custom: sqldbrb-1
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: sstein
+author: emlisa
+ms.author: emlisa
+ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: 0463d11466859c0f30901a0afd960bdc7b2599a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0bb4d980a64c42c9639b416f6d04516830b32562
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91357787"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167169"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>Azure SQL Database エラスティック プールを使用したアプリケーションのディザスター リカバリー戦略
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

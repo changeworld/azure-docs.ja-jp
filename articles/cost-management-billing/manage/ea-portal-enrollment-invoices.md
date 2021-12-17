@@ -3,18 +3,18 @@ title: Azure エンタープライズ加入契約の請求書
 description: この記事では、Azure Enterprise の請求書を管理および操作する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/05/2021
+ms.date: 08/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 71ba1d6e1e45c5c2e72e2be620158b1aa4b71582
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 77f463d34ebd05e39876933d65631371acff1707
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430813"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515720"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ加入契約の請求書
 
@@ -231,7 +231,7 @@ Azure 前払いを超過分に適用するには、次の条件を満たす必�
 - 利用可能な Azure 前払い額に、過去のすべての未払い Azure 請求書を含め、発生したすべての料金が含まれている。
 - 完了する請求期間が、完全に終了している必要がある。 毎月 5 日が過ぎると、課金が完全に終了します。
 - 相殺する請求期間が、完全に終了している必要がある。
-- Azure 前払い割引 (ACD) が、実際の新しい前払いから、以前の消費額に対して計画された資金を差し引いた額に基づいている。 この要件は、発生した超過料金にのみ適用されます。 これは、Azure 前払いを消費するサービスに対してのみ有効です。そのため、Azure Marketplace の料金には適用されません。 Azure Marketplace の料金は個別に請求されます。
+- Azure 前払い割引 (APD) が、実際の新しい前払いから、以前の消費額に対して計画された資金を差し引いた額に基づいている。 この要件は、発生した超過料金にのみ適用されます。 これは、Azure 前払いを消費するサービスに対してのみ有効です。そのため、Azure Marketplace の料金には適用されません。 Azure Marketplace の料金は個別に請求されます。
 
 超過分の相殺を完了する場合は、お客様またはアカウント チームがサポート リクエストを開くことができます。 エンタープライズ管理者または請求先担当者からのメールによる承認が必要です。
 
@@ -316,7 +316,7 @@ Azure 前払いは、Azure サービスに対する前払い金額です。 Azur
 
 標準的な請求サイクルの終了時に超過使用がない場合、個別請求の料金は個別に請求されます。 このプロセスは、オーストラリア、日本、シンガポールのお客様に適用されます。
 
-以下のサービスは個別に請求されます。
+次のサービスは、個別に請求される料金の例です。 料金が個別に請求されるサービスの完全な一覧を取得するには、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)を送信してください。
 
 - Canonical
 - Citrix XenApp Essentials

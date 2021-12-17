@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: SmartNoise オープンソース ライブラリを使用して、Azure Machine Learning モデルに差分プライバシーのベスト プラクティスを適用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, responsible-ml
+ms.subservice: enterprise-readiness
+ms.topic: how-to
+ms.custom: responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 01/21/2020
-ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.openlocfilehash: 98790b7e4e78d98936f80dd46f1ba83b7a4e945a
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98681406"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561539"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning で差分プライバシーを使用する (プレビュー)
 
@@ -27,7 +27,7 @@ SmartNoise Python オープンソース ライブラリを使用して、Azure M
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 - [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-smartnoise-python-libraries"></a>SmartNoise Python ライブラリをインストールする
@@ -56,6 +56,8 @@ import opendp.smartnoise.sql
 SmartNoise パッケージを Docker と併用することもできます。
 
 Spark、Jupyter、サンプル コードを含む Docker コンテナー内でライブラリを使用するには、`opendp/smartnoise` イメージをプルします。
+
+[!INCLUDE [pull-image-include](../../includes/pull-image-include.md)]
 
 ```sh
 docker pull opendp/smartnoise:privacy

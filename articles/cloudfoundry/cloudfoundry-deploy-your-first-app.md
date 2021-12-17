@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 1cffc36cbd4f24bbcbb5996a323ffa963e311693
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 9ebfd3a9ce02ece7fc36fdce004dac29539f4fae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530965"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737106"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする
 
@@ -22,7 +22,7 @@ ms.locfileid: "107530965"
 
 Azure に Cloud Foundry 環境を作成する方法はいくつかあります。
 
-- Azure Marketplace の [Pivotal Cloud Foundry オファー][pcf-azuremarketplace]を使用して、PCF Operations Manager と Azure Service Broker が含まれる標準環境を作成する。 マーケットプレースのオファーをデプロイする[全手順][pcf-azuremarketplace-pivotaldocs]は、Pivotal のドキュメントで確認できます。
+- Azure Marketplace の Pivotal Cloud Foundry オファーを使用して、PCF Operations Manager と Azure Service Broker が含まれる標準環境を作成する。 マーケットプレースのオファーをデプロイする[全手順][pcf-azuremarketplace-pivotaldocs]は、Pivotal のドキュメントで確認できます。
 - [Pivotal Cloud Foundry を手動でデプロイする][pcf-custom]ことでカスタマイズされた環境を作成する。
 - Cloud Foundry 環境のデプロイを調整する VM である [BOSH](https://bosh.io) ディレクターをセットアップすることで、[オープン ソースの Cloud Foundry パッケージを直接デプロイする][oss-cf-bosh]。
 
@@ -141,7 +141,6 @@ cf scale -i 2 hello-spring-cloud
 
 <!-- LINKS -->
 
-[pcf-azuremarketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
 [pcf-custom]: https://docs.pivotal.io/pivotalcf/1-10/customizing/azure.html
 [oss-cf-bosh]: https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs
 [pcf-azuremarketplace-pivotaldocs]: https://docs.pivotal.io/ops-manager/2-10/install/pcf_azure.html

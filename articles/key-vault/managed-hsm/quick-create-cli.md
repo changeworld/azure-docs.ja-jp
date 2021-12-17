@@ -2,33 +2,32 @@
 title: クイックスタート - Azure Managed HSM をプロビジョニングしてアクティブにする
 description: Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする方法を紹介するクイックスタート。
 services: key-vault
-author: amitbapat
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: quickstart
-ms.date: 09/15/2020
-ms.author: ambapat
-ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/21/2021
+ms.author: mbaldwin
+ms.openlocfilehash: 13eba035fc81b6ca26ccf56cefc8c955d9af972e
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91756820"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132229"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする
 
 Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、**FIPS 140-2 レベル 3** 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。 Managed HSM の詳細については、[概要](overview.md)に関するページを参照してください。 
 
-このクイックスタートでは、Azure CLI を使用してマネージド HSM を作成し、アクティブにします。 この作業を完了したら、シークレットを格納します。
+このクイックスタートでは、Azure CLI を使用してマネージド HSM を作成し、アクティブにします。
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
 * Microsoft Azure サブスクリプション。 サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
-* Azure CLI バージョン 2.12.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
-* お使いのサブスクリプション内のマネージド HSM。 「[クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする](quick-create-cli.md)」を参照して、マネージド HSM をプロビジョニングしてアクティブにします。
+* Azure CLI バージョン 2.25.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -42,10 +41,10 @@ az login
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*ContosoResourceGroup* という名前のリソース グループを *eastus2* の場所に作成します。
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*ContosoResourceGroup* という名前のリソース グループを *centralus* の場所に作成します。
 
 ```azurecli-interactive
-az group create --name "ContosoResourceGroup" --location eastus2
+az group create --name "ContosoResourceGroup" --location centralus
 ```
 
 ## <a name="create-a-managed-hsm"></a>Managed HSM を作成する
@@ -63,11 +62,11 @@ Managed HSM リソースを作成するには、次の入力を指定する必�
 - Azure の場所。
 - 初期管理者のリスト。
 
-次の例では、**ContosoMHSM** という名前の HSM を、リソース グループ **ContosoResourceGroup** に作成して、**米国東部 2** に配置し、**現在サインインしているユーザー** を唯一の管理者としています。
+次の例では、**ContosoMHSM** という名前の HSM を、**米国中部** に存在するリソース グループ **ContosoResourceGroup** に作成します。**現在サインインしているユーザー** が唯一の管理者であり、論理的な削除に対して **28 日間の保持期間** が設定されています。 マネージド HSM の論理的な削除の詳細については、[こちら](soft-delete-overview.md)をお読みください。
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
-az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "East US 2" --administrators $oid
+az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "centralus" --administrators $oid --retention-days 28
 ```
 
 > [!NOTE]
@@ -127,4 +126,5 @@ az group delete --name ContosoResourceGroup
 
 - [Managed HSM の概要](overview.md)に関するページを読む
 - [マネージド HSM におけるキーの管理](key-management.md)について学習する
+- [マネージド HSM のロール管理](role-management.md)について学習する
 - [Managed HSM のベスト プラクティス](best-practices.md)を確認する

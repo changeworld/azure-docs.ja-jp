@@ -3,21 +3,70 @@ title: Azure Automation Update Management に関する問題のトラブルシ�
 description: この記事では、Azure Automation Update Management に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 01/13/2021
+ms.date: 06/10/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c16b032502401b633532ab0fcf9518aa85a1b8d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bf9804b0881e02b1a4f58e5923c33840d06e37e2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579733"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706480"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
-この記事では、Update Management 機能をマシンにデプロイするときに発生する可能性がある問題について説明します。 根本的な問題を特定するためのハイブリッド Runbook Worker エージェント用のエージェント トラブルシューティング ツールがあります。 トラブルシューティング ツールの詳細については、「[Windows Update エージェントの問題をトラブルシューティングする](update-agent-issues.md)」と「[Linux Update エージェントに関する問題のトラブルシューティング](update-agent-issues-linux.md)」を参照してください。 その他の機能のデプロイについては、[「機能のデプロイに関する問題のトラブルシューティング」](onboarding.md)を参照してください。
+この記事では、Update Management 機能を使用してマシンの更新プログラムを評価および管理するときに発生する可能性がある問題について説明します。 根本的な問題の特定に役立つ、Hybrid Runbook Worker エージェントのエージェント トラブルシューティング ツールがあります。 トラブルシューティング ツールの詳細については、「[Windows Update エージェントの問題をトラブルシューティングする](update-agent-issues.md)」と「[Linux Update エージェントに関する問題のトラブルシューティング](update-agent-issues-linux.md)」を参照してください。 その他の機能のデプロイについては、[「機能のデプロイに関する問題のトラブルシューティング」](onboarding.md)を参照してください。
 
 >[!NOTE]
 >Windows マシンに Update Management をデプロイしているときに問題が発生した場合は、Windows イベント ビューアーを開き、ローカル コンピューターの **[アプリケーションとサービス ログ]** の下にある **Operations Manager** イベント ログを確認します。 イベント ID が 4502 でイベントの詳細に `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` が含まれるイベントを探します。
+
+## <a name="scenario-windows-defender-update-always-show-as-missing"></a><a name="windows-defender-update-missing-status"></a>シナリオ: Windows Defender の更新プログラムが常に "見つからない" と表示される
+
+### <a name="issue"></a>問題
+
+Windows Defender の定義更新プログラム (**KB2267602**) が、インストール時の評価では常に "見つからない" と表示され、Windows Update の履歴に基づく検証時には "最新" と表示されます。
+
+### <a name="cause"></a>原因
+
+定義更新プログラムは 1 日に複数回公開されます。 そのため、同じ日に公開され、更新プログラム ID とバージョンが異なる KB2267602 の複数のリリースが表示される可能性があります。
+
+Update Management の評価は、11 時間に 1 回実行されます。 この例では、午前 10 時に評価が実行され、その時点でバージョン 1.237.316.0 が利用可能でした。 Log Analytics ワークスペースで **Update** テーブルを検索すると、**UpdateState** が **Needed** と表示された状態で定義更新プログラム 1.237.316.0 が表示されます。 スケジュールされたデプロイが数時間後 (たとえば、午後 1 時) に実行され、その時点でバージョン 1.237.316.0 が引き続き利用可能であるか、新しいバージョンが利用可能である場合、その新しいバージョンがインストールされ、**UpdateRunProgress** テーブルに書き込まれるレコードにこれが反映されます。 ただし、**Update** テーブルでは、次の評価が実行されるまで、引き続きバージョン 1.237.316.0 が **Needed** と表示されます。 評価が再度実行されたときには、利用可能な新しい定義更新プログラムがない可能性があるため、**Update** テーブルに、定義更新プログラムのバージョン 1.237.316.0 が見つからないと表示されたり、必要に応じて利用可能な新しいバージョンが表示されたりすることはありません。 定義更新プログラムの頻度により、ログ検索で複数のバージョンが返される可能性があります。 
+
+### <a name="resolution"></a>解決方法
+
+次のログ クエリを実行して、インストールされている定義更新プログラムが正しく報告されていることを確認します。 このクエリでは、**Updates** テーブルの KB2267602 の生成時刻、バージョン、更新プログラム ID が返されます。 *Computer* の値をマシンの完全修飾名に置き換えます。
+
+```kusto
+Update
+| where TimeGenerated > ago(14h) and OSType != "Linux" and (Optional == false or Classification has "Critical" or Classification has "Security") and SourceComputerId in ((
+    Heartbeat
+    | where TimeGenerated > ago(12h) and OSType =~ "Windows" and notempty(Computer)
+    | summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+    | where Solutions has "updates"
+    | distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by Computer, SourceComputerId, UpdateID
+| where UpdateState =~ "Needed" and Approved != false and Computer == "<computerName>"
+| render table
+```
+
+クエリからは、次のような結果が返されます。
+
+:::image type="content" source="./media/update-management/example-query-updates-table.png" alt-text="Updates テーブルのログ クエリの結果を示す例。":::
+
+次のログ クエリを実行して、**UpdatesRunProgress** テーブルの KB2267602 の生成時刻、バージョン、更新プログラム ID を取得します。 このクエリは、Update Management からインストールされたのか、Microsoft Update からマシンに自動インストールされたのかを把握するのに役立ちます。 *CorrelationId* の値を更新プログラムの Runbook ジョブの GUID (つまり、**Patch-MicrosoftOMSComputer** Runbook ジョブの **MasterJOBID** プロパティの値) に置き換え、*SourceComputerId* をマシンの GUID に置き換える必要があります。
+
+```kusto
+UpdateRunProgress
+| where OSType!="Linux" and CorrelationId=="<master job id>" and SourceComputerId=="<source computer id>"
+| summarize arg_max(TimeGenerated, Title, InstallationStatus) by UpdateId
+| project TimeGenerated, id=UpdateId, displayName=Title, InstallationStatus
+```
+
+クエリからは、次のような結果が返されます。
+
+:::image type="content" source="./media/update-management/example-query-updaterunprogress-table.png" alt-text="UpdatesRunProgress テーブルのログ クエリの結果を示す例。":::
+
+**Updates** テーブルのログ クエリの結果の **TimeGenerated** の値が、マシンに更新プログラムをインストールした時点のタイムスタンプまたは **UpdateRunProgress** テーブルのログ クエリの結果のタイムスタンプ (つまり、**TimeGenerated** 値) よりも前である場合は、次の評価を待ちます。 その後、**Updates** テーブルに対してログ クエリを再度実行します。 KB2267602 の更新プログラムが表示されないか、新しいバージョンで表示されます。 最新の評価の後もなお **Updates** テーブルに同じバージョンが **Needed** と表示されるにもかかわらず、それが既にインストールされている場合は、Azure サポート インシデントを開く必要があります。
 
 ## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a><a name="updates-linux-installed-different"></a>シナリオ:Linux 更新プログラムが保留中として表示され、インストールされる更新プログラムが異なる
 
@@ -29,7 +78,7 @@ Linux マシンの場合、Update Management には、 **[セキュリティ]** 
 
 お使いの Linux マシンに対して保留になっている OS 更新プログラムの評価が終わると、Linux ディストリビューション ベンダーが提供する [Open Vulnerability and Assessment Language](https://oval.mitre.org/) (OVAL) が分類のために Update Management によって使用されます。 セキュリティの問題または脆弱性に対処する更新プログラムについて明記された OVAL ファイルに基づき、Linux 更新プログラムが **[セキュリティ]** か **[その他]** として分類されます。 ただし、更新プログラムが実行されるとき、YUM、APT、ZYPPER などの適切なパッケージ マネージャーを使用し、Linux マシン上で実行され、インストールされます。 Linux ディストリビューションのパッケージ マネージャーには、更新プログラムを分類する別のメカニズムが与えられていることがあります。結果は、Update Management によって OVAL ファイルから取得されるものと異なる場合があります。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決策
 
 Linux マシン、適用できる更新プログラム、ディストリビューションのパッケージ マネージャー別のその分類を手動で確認できます。 お使いのパッケージ マネージャーによって **[セキュリティ]** として分類された更新プログラムを理解するには、次のコマンドを実行します。
 
@@ -73,7 +122,7 @@ Error details: Failed to enable the Update solution
 
 * **[コンプライアンス]** に、マシンの状態が `Non-compliant` と表示されている場合もあります。 同時に、**エージェントの Desktop Analytics** でエージェントが `Disconnected` として報告されます。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 * OS に応じて、[Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行します。
 
@@ -131,7 +180,7 @@ Error details: Failed to enable the Update solution
 
 * 自分のワークスペースで定義したクォータに達していて、それ以上のデータの格納が妨げられている可能性があります。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 1. OS に応じて、[Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行します。
 
@@ -144,7 +193,7 @@ Error details: Failed to enable the Update solution
    | summarize by Computer, Solutions
    ```
 
-    クエリ結果にマシンが表示されない場合は、最近チェックインされていません。 ローカルの構成に問題がある可能性があるため、[エージェントを再インストールする](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows)必要があります。
+    クエリ結果にマシンが表示されない場合は、最近チェックインされていません。 ローカルの構成に問題がある可能性があるため、[エージェントを再インストールする](../../azure-monitor/agents/agent-windows.md)必要があります。
 
     コンピューターがクエリ結果に一覧表示されている場合は、**Solutions** プロパティの下に **updates** が一覧表示されていることを確認します。 これにより、Update Management に登録されていることが確認できます。 そうでない場合は、スコープ構成に問題がないかどうかを確認します。 [スコープの構成](../update-management/scope-configuration.md)では、Update Management 用に構成されるマシンが決定されます。 対象のコンピューターのスコープ構成を構成するには、「[ワークスペースでのマシンの有効化](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)」を参照してください。
 
@@ -174,7 +223,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 Automation リソース プロバイダーがサブスクリプションに登録されていません。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 Automation リソース プロバイダーを登録するには、Azure portal で次の手順に従います。
 
@@ -188,11 +237,13 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 5. 一覧に表示されていない場合は、「[リソース プロバイダーの登録エラーの解決](../../azure-resource-manager/templates/error-register-resource-provider.md)」の手順に従って、Microsoft.Automation プロバイダーを登録します。
 
-## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>シナリオ:動的スケジュールでスケジュールされた更新で一部のマシンが見つからない
+## <a name="scenario-scheduled-update-did-not-patch-some-machines"></a><a name="scheduled-update-missed-machines"></a>シナリオ: スケジュールされた更新プログラムで一部のマシンにパッチが適用されなかった
 
 ### <a name="issue"></a>問題
 
-更新プレビューに含まれるすべてのマシンが、スケジュールされた実行中に修正プログラムが適用されたマシンの一覧に表示されません。
+更新プレビューに含まれているマシンが、スケジュールされた実行中にパッチが適用されたマシンの一覧にすべて表示されないか、または動的グループの選択したスコープの VM がポータルの更新プレビューの一覧に表示されません。
+
+更新プレビューの一覧は、選択したスコープの [Azure Resource Graph](../../governance/resource-graph/overview.md) クエリによって取得されたすべてのマシンで構成されます。 スコープは、システム Hybrid Runbook Worker がインストールされていて、ユーザーがアクセス許可を持っているマシンでフィルター処理されます。
 
 ### <a name="cause"></a>原因
 
@@ -201,6 +252,12 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 * 動的クエリのスコープで定義されているサブスクリプションが、登録済みの Automation リソース プロバイダーに対して構成されていません。
 
 * スケジュールが実行されたときに、マシンが使用できなかったか、マシンに適切なタグがありませんでした。
+
+* 選択したスコープに対する適切なアクセス権がありません。
+
+* Azure Resource Graph クエリで、予期されるマシンが取得されません。
+
+* システム Hybrid Runbook Worker がマシンにインストールされていません。
 
 ### <a name="resolution"></a>解決方法
 
@@ -238,31 +295,15 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 7. 更新スケジュールを再実行し、指定した動的グループでのデプロイにすべてのマシンが含まれることを確認します。
 
-## <a name="scenario-expected-machines-dont-appear-in-preview-for-dynamic-group"></a><a name="machines-not-in-preview"></a>シナリオ:予期されるマシンが動的グループのプレビューに表示されない
-
-### <a name="issue"></a>問題
-
-動的グループの選択したスコープの VM が、Azure portal のプレビュー一覧に表示されません。 この一覧は、選択したスコープに対して ARG クエリによって取得されたすべてのマシンで構成されます。 スコープは、Hybrid Runbook Worker がインストールされていて、ユーザーがアクセス許可を持っているマシンでフィルター処理されます。
-
-### <a name="cause"></a>原因
-
-この問題の考えられる原因は次のとおりです。
-
-* 選択したスコープに対する適切なアクセス権がありません。
-* ARG クエリで、予期されるマシンが取得されません。
-* Hybrid Runbook Worker がマシンにインストールされていません。
-
-### <a name="resolution"></a>解決方法 
-
 #### <a name="incorrect-access-on-selected-scopes"></a>選択したスコープに対する正しくないアクセス権
 
 Azure portal には、ユーザーが特定のスコープで書き込みアクセス権を持っているマシンのみが表示されます。 スコープに対する適切なアクセス権がない場合は、「[チュートリアル: Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](../../role-based-access-control/quickstart-assign-role-user-portal.md)」を参照してください。
 
-#### <a name="arg-query-doesnt-return-expected-machines"></a>ARG クエリで予期されるマシンが返されない
+#### <a name="resource-graph-query-doesnt-return-expected-machines"></a>Resource Graph クエリで予期されるマシンが返されない
 
 以下の手順のようにして、クエリが正常に機能しているかどうかを確認します。
 
-1. Azure portal の Resource Graph エクスプローラー ブレードで、次のように書式設定された ARG クエリを実行します。 このクエリでは、Update Management で動的グループを作成したときに選択したフィルターが模倣されます。 「[Update Management を利用して動的グループを使用する](../update-management/configure-groups.md)」を参照してください。
+1. Azure portal の Resource Graph エクスプローラー ブレードで、次のように書式設定された Azure Resource Graph クエリを実行します。 Azure Resource Graph を初めて使用する場合は、この[クイックスタート](../../governance/resource-graph/first-query-portal.md)を参照して、Resource Graph エクスプローラーの操作方法を学習してください。 このクエリでは、Update Management で動的グループを作成したときに選択したフィルターが模倣されます。 「[Update Management を利用して動的グループを使用する](../update-management/configure-groups.md)」を参照してください。
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -287,7 +328,7 @@ Azure portal には、ユーザーが特定のスコープで書き込みアク�
 
 #### <a name="hybrid-runbook-worker-not-installed-on-machines"></a>Hybrid Runbook Worker がマシンにインストールされていない
 
-マシンは ARG クエリの結果には表示されますが、動的グループのプレビューにはやはり表示されません。 この場合、マシンがハイブリッド workerとして指定されていないため、Azure Automation ジョブや Update Management ジョブを実行できない可能性があります。 表示されるはずのマシンが Hybrid Runbook Worker として設定されていることを確認するには、次のようにします。
+マシンは Azure Resource Graph クエリの結果には表示されますが、動的グループのプレビューにはやはり表示されません。 この場合、マシンがシステム Hybrid Runbook Worker として指定されていないため、Azure Automation や Update Management のジョブを実行できないおそれがあります。 表示されるはずのマシンがシステム Hybrid Runbook Worker として設定されていることを確認するには、次のようにします。
 
 1. Azure portal で、正しく表示されないマシンの Automation アカウントに移動します。
 
@@ -297,11 +338,19 @@ Azure portal には、ユーザーが特定のスコープで書き込みアク�
 
 4. そのマシンにハイブリッド worker が存在することを確認します。
 
-5. マシンがハイブリッド worker として設定されていない場合は、「[Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する](../automation-hybrid-runbook-worker.md)」の手順を使用して調整します。
+5. マシンがシステム Hybrid Runbook Worker として設定されていない場合は、次のいずれかの方法を使用して有効にする方法を確認してください。
 
-6. マシンを Hybrid Runbook Worker グループに参加させます。
+   - 1 台以上の Azure マシンと Azure 以外のマシン (Azure Arc 対応サーバーを含む) に対しては、お使いの [Automation アカウント](../update-management/enable-from-automation-account.md)から。
 
-7. プレビューに表示されないすべてのマシンに対して上記の手順を繰り返します。
+   - <bpt id="p1">**</bpt>Enable-AutomationSolution<ept id="p1">**</ept> <bpt id="p2">[</bpt>Runbook<ept id="p2">](enable-from-runbook.md)</ept> を使用した Azure VM のオンボードの自動化。
+
+   - <bpt id="p1">[</bpt>選択した Azure VM<ept id="p1">](enable-from-vm.md)</ept> に対しては、Azure portal の <bpt id="p2">**</bpt>[仮想マシン]<ept id="p2">**</ept> ページから。 このシナリオは、Linux VM 用と Windows VM 用があります。
+
+   - [複数の Azure VM](../update-management/enable-from-portal.md) に対しては、Azure portal の **[仮想マシン]** ページからそれらを選択することで。
+
+   有効にする方法は、マシンが実行されている環境に基づいています。
+
+6. プレビューに表示されないすべてのマシンに対して上記の手順を繰り返します。
 
 ## <a name="scenario-update-management-components-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>シナリオ:Update Management のコンポーネントが有効になっているが、VM は構成中と表示されたままである
 
@@ -323,7 +372,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 * デプロイしている VM イメージの複製元が、Windows 用の Log Analytics エージェントがインストールされた状態でシステム準備 (sysprep) を使用して準備されなかった複製マシンである可能性があります。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 VM の問題を正確に特定するには、Automation アカウントにリンクされた Log Analytics ワークスペースで、次のクエリを実行します。
 
@@ -335,7 +384,7 @@ Update
 
 #### <a name="communication-with-automation-account-blocked"></a>Automation アカウントとの通信がブロックされる
 
-[ネットワークの計画](../update-management/overview.md#ports)に関する記事にアクセスし、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。
+[ネットワークの計画](../update-management/plan-deployment.md#ports)に関する記事にアクセスし、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。
 
 #### <a name="duplicate-computer-name"></a>コンピューター名の重複
 
@@ -371,7 +420,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 このエラーは、更新プログラムの展開に含まれる別のテナントの Azure VM を持つ更新プログラムの展開を作成するときに発生します。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 次の回避策を使用して、これらの項目をスケジュールします。 スケジュールを作成するには、`ForUpdateConfiguration` パラメーターを指定して [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule) コマンドレットを使用します。 次に、[New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration) コマンドレットを使用して、他のテナントのマシンを `NonAzureComputer` パラメーターに渡します。 以下の例は、その方法を示しています。
 
@@ -395,7 +444,7 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 Windows Update はいくつかのレジストリ キーによって変更でき、そのいずれかによって再起動の動作が変更されることがあります。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 「[レジストリを編集して自動更新を構成する](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)」と、[「再起動の管理に使われるレジストリ キー](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)」に記載されているレジストリ キーを確認して、マシンが正しく構成されていることを確認します。
 
@@ -403,10 +452,10 @@ Windows Update はいくつかのレジストリ キーによって変更でき�
 
 ### <a name="issue"></a>問題
 
-マシンが `Failed to start` の状態と表示されます。 マシンの特定の詳細情報を表示すると、次のエラーが表示されます。
+あるマシンに `Failed to start` または `Failed` 状態が表示されます。 マシンの特定の詳細情報を表示すると、次のエラーが表示されます。
 
 ```error
-Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
+For one or more machines in schedule, UM job run resulted in either Failed or Failed to start state. Guide available at https://aka.ms/UMSucrFailed.
 ```
 
 ### <a name="cause"></a>原因
@@ -421,9 +470,11 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 ### <a name="resolution"></a>解決方法
 
+REST API を使用することで、プログラミングによりさらに多くの詳細を取得できます。 ソフトウェア更新プログラムの構成マシン実行の一覧を取得する方法か、ソフトウェア更新プログラムの構成マシン実行を 1 つ ID 別に取得する方法については、「[ソフトウェア更新プログラムの構成マシン実行](/rest/api/automation/softwareupdateconfigurationmachineruns)」を参照してください。
+
 該当する場合は、更新プログラムの展開に[動的グループ](../update-management/configure-groups.md)を使用します。 さらに、次の手順を実行できます。
 
-1. コンピューターまたはサーバーが[要件](../update-management/overview.md#system-requirements)を満たしていることを確認します。
+1. コンピューターまたはサーバーが[要件](../update-management/operating-system-requirements.md)を満たしていることを確認します。
 2. Hybrid Runbook Worker エージェントのトラブルシューティングツールを使用して、Hybrid Runbook Worker への接続を確認します。 このトラブルシューティング ツールの詳細については、[更新エージェントの問題のトラブルシューティング](update-agent-issues.md)に関する記事を参照してください。
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>シナリオ:展開なしで更新プログラムがインストールされる
@@ -436,7 +487,7 @@ Update Management に Windows マシンを登録すると、展開なしで更�
 
 Windows では、更新プログラムは、使用可能になるとすぐに自動的にインストールされます。 この動作が原因で、更新プログラムをマシンに展開するスケジュールを設定しなかった場合、混乱が生じる可能性があります。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` の既定値は、4: `auto download and install` に設定されています。
 
@@ -458,7 +509,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 マシンが既に Update Management 用の別のワークスペースにデプロイされています。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 1. 「[Update Management のポータルにマシンが表示されない](#nologs)」の手順に従って、マシンのレポート先が正しいワークスペースであることを確認します。
 2. [Hybrid Runbook グループを削除する](../automation-windows-hrw-install.md#remove-a-hybrid-worker-group)ことにより、マシン上のアーティファクトをクリーンアップしてから、再試行します。
@@ -489,7 +540,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 プロキシ、ゲートウェイ、またはファイアウォールがネットワーク通信をブロックしている可能性があります。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 ネットワークを見直し、適切なポートとアドレスが許可されていることを確認します。 Update Management および Hybrid Runbook Worker で必要なポートとアドレスの一覧については、[ネットワーク要件](../automation-hybrid-runbook-worker.md#network-planning)を参照してください。
 
@@ -507,7 +558,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Hybrid Runbook Worker が自己署名証明書を生成できませんでした。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 **C:\ProgramData\Microsoft\Crypto\RSA** フォルダーへの読み取りアクセスがシステム アカウントにあることを確認してから、再試行します。
 
@@ -515,11 +566,13 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 
 ### <a name="issue"></a>問題
 
-更新の既定のメンテナンス時間は 120 分です。 メンテナンス期間は、最大 6 時間つまり 360 分まで増やすことができます。
+更新の既定のメンテナンス時間は 120 分です。 メンテナンス期間は、最大 6 時間つまり 360 分まで増やすことができます。 エラー メッセージ `For one or more machines in schedule, UM job run resulted in Maintenance Window Exceeded state. Guide available at https://aka.ms/UMSucrMwExceeded.` が表示されることがあります
 
 ### <a name="resolution"></a>解決方法
 
 正常に開始した後、更新プログラムの実行中にこれが発生した理由を理解するには、実行で影響を受けたマシンからの[ジョブ出力を確認](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment)します。 マシンからの特定のエラー メッセージが見つかれば、調査して対処することができます。  
+
+REST API を使用することで、プログラミングによりさらに多くの詳細を取得できます。 ソフトウェア更新プログラムの構成マシン実行の一覧を取得する方法か、ソフトウェア更新プログラムの構成マシン実行を 1 つ ID 別に取得する方法については、「[ソフトウェア更新プログラムの構成マシン実行](/rest/api/automation/softwareupdateconfigurationmachineruns)」を参照してください。
 
 スケジュール済みの更新プログラムの展開で失敗したものがあれば編集し、メンテナンス期間を延長します。
 
@@ -536,7 +589,7 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 
 更新エージェント (Windows 上の Windows Update エージェント、Linux ディストリビューション用のパッケージ マネージャー) が正しく構成されていません。 Update Management は、必要な更新プログラム、パッチの状態、展開されたパッチの結果を提供するために、マシンの更新エージェントを利用しています。 この情報がないと、Update Management は必要なパッチやインストール済みのパッチを適切にレポートすることができません。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 マシンで更新プログラムをローカルで実行してみてください。 この操作が失敗する場合は、通常、更新エージェントの構成にエラーがあることを意味します。
 
@@ -554,7 +607,7 @@ HRESULT が表示される場合は、赤で表示された例外をダブルク
 |例外  |解決策または対策  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | [Windows Update エラー コード一覧](https://support.microsoft.com/help/938205/windows-update-error-code-list)で該当するエラー コードを検索して、例外の原因に関する詳細を確認します。        |
-|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | これらはネットワーク接続の問題を示しています。 マシンが Update Management にネットワーク接続されていることを確認します。 必要なポートとアドレスの一覧については、「[ネットワークの計画](../update-management/overview.md#ports)」セクションを参照してください。        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | これらはネットワーク接続の問題を示しています。 マシンが Update Management にネットワーク接続されていることを確認します。 必要なポートとアドレスの一覧については、「[ネットワークの計画](../update-management/plan-deployment.md#ports)」セクションを参照してください。        |
 |`0x8024001E`| サービスまたはシステムがシャットダウン中のため、更新操作が完了しませんでした。|
 |`0x8024002E`| Windows Update サービスが無効です。|
 |`0x8024402C`     | WSUS サーバーを使用している場合は、レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` の下の `WUServer` と `WUStatusServer` のレジストリ値で正しい WSUS サーバーが指定されていることを確認します。        |
@@ -586,7 +639,7 @@ HRESULT が表示される場合は、赤で表示された例外をダブルク
 * マシンにアクセスできません。
 * 更新プログラムに、解決されていない依存関係がありました。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 正常に開始した後に更新プログラムの実行中にエラーが発生した場合は、実行で影響を受けたマシンからの[ジョブ出力を確認](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment)します。 マシンからの特定のエラー メッセージが見つかれば、調査して対処することができます。 Update Management で更新プログラムをデプロイするには、パッケージ マネージャーが正常である必要があります。
 
@@ -620,7 +673,7 @@ WSUS と SCCM 用にマシンが構成されているかどうかを確認する
 
 ### <a name="installing-updates-by-classification-on-linux"></a>Linux での更新プログラムの分類別インストール
 
-分類 ([緊急更新プログラムとセキュリティ更新プログラム]) 別に Linux に更新プログラムを展開する場合、特に CentOS に関する重要な注意事項があります。 これらの制限事項は、[Update Management の概要に関するページ](../update-management/overview.md#linux)に記載されています。
+分類 ([緊急更新プログラムとセキュリティ更新プログラム]) 別に Linux に更新プログラムを展開する場合、特に CentOS に関する重要な注意事項があります。 これらの制限事項は、[Update Management の概要に関するページ](../update-management/overview.md#update-classifications)に記載されています。
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 が常に欠落している
 

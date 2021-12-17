@@ -1,19 +1,19 @@
 ---
 title: ExpressRoute を使用して Azure 仮想ネットワークを CloudSimple に接続する - Azure VMware Solution by CloudSimple
 description: Azure 仮想ネットワークと CloudSimple 環境間の接続のピアリング情報を取得する方法について説明します。
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3fedfbe55fd8ea3d2b4cc910df631e40bc74e210
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98f38a7222b569dc4c1a8a9ecef0fd6bd6818ede
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899067"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339031"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>ExpressRoute を使用して Azure 仮想ネットワークを CloudSimple に接続する
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 機械学習の公平性と、Fairlearn Python パッケージを使用して不公平性を評価および軽減する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 04/02/2021
+ms.date: 10/21/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 45c63780eac021301e5b01c0ff8abea7d704a4cf
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 80eac2c705582ca210ad6eb35e7a3fab08896fba
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220523"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559905"
 ---
 # <a name="machine-learning-fairness-preview"></a>機械学習の公平性 (プレビュー)
 

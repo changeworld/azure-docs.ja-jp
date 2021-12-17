@@ -1,20 +1,20 @@
 ---
 title: VNet ピアリングと Azure Bastion のアーキテクチャ
-description: この記事では、VNet ピアリングと Azure Bastion を一緒に使用して VM に接続する方法について説明します。
+description: VNet ピアリングと Azure Bastion を一緒に使用して VM に接続する方法について説明します。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: f72a3739fac1e7d6afdafd2676ea6fcefe847b2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e5f474f08116cea39b565e76a9736b3e94eec9f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101710585"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668794"
 ---
-# <a name="vnet-peering-and-azure-bastion-preview"></a>VNet ピアリングと Azure Bastion のアーキテクチャ (プレビュー)
+# <a name="vnet-peering-and-azure-bastion"></a>VNet ピアリングと Azure Bastion
 
 Azure Bastion と VNet ピアリングは一緒に使用できます。 VNet ピアリングが構成されている場合、ピアリングされた各 VNet に Azure Bastion をデプロイする必要はありません。 つまり、Azure Bastion ホストが 1 つの仮想ネットワーク (VNet) 内に構成されている場合は、追加の Bastion ホストをデプロイしなくても、ピアリングされた VNet にデプロイされている VM に接続するために使用できます。 VNet ピアリングの詳細については、[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)に関するページを参照してください。
 
@@ -45,21 +45,21 @@ VNet ピアリングが構成されている場合、Azure Bastion はハブ ア
    * 仮想マシンのプライベート IP を使用する NIC に対する閲覧者ロール。
    * Azure Bastion リソースに対する閲覧者ロール。
    * Virtual Network の閲覧者ロール (ピアリングされた仮想ネットワークがない場合は不要)。
-3. **[接続]** ドロップダウン メニューにある Bastion を表示するには、 **[サブスクリプション] > [グローバル サブスクリプション]** で、アクセス権を持つサブスクリプションを選択する必要があります。
+3. **[Connect]\(接続\)** ドロップ ダウン メニューに Bastion を表示するには、 **[Subscription]\(サブスクリプション\) > [global subscription]\(グローバル サブスクリプション\)** で、アクセス権のあるサブスクリプションを選択する必要があります。
 4. 接続する仮想マシンを選択します。
 5. ピアリングされた VNet 全体で Azure Bastion がシームレスに検出されます。
-6. 1 回クリックすると、ブラウザーで RDP または SSH セッションが開きます。 RDP と SSH の同時セッションの制限については、[RDP と SSH のセッション](bastion-faq.md#limits)に関するページを参照してください。
+6. 1 回クリックすると、ブラウザーで RDP または SSH セッションが開きます。
 
-  :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="のインスタンスに接続するときには、":::
+Azure Bastion を介した VM への接続に関する詳細については、以下を参照してください。
 
-   Azure Bastion を介した VM への接続に関する詳細については、以下を参照してください。
-
-   * [VM に接続する - RDP](bastion-connect-vm-rdp.md)。
-   * [VM に接続する - SSH](bastion-connect-vm-ssh.md)。
+   * [RDP で Windows VM に接続する方法に関する記事](bastion-connect-vm-rdp-windows.md)
+   * [SSH で Windows VM に接続する方法に関する記事](bastion-connect-vm-ssh-windows.md)
+   * [SSH で Linux VM に接続する方法に関する記事](bastion-connect-vm-ssh-linux.md)
+   * [RDP で Linux VM に接続する方法に関する記事](bastion-connect-vm-rdp-linux.md)
 
 ## <a name="faq"></a>よく寄せられる質問
 
-[!INCLUDE [FAQ for VNet peering](../../includes/bastion-faq-peering-include.md)]
+よく寄せられる質問については、Bastion VNet ピアリングの [FAQ](bastion-faq.md#peering) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

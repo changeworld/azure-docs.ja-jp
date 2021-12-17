@@ -1,20 +1,20 @@
 ---
-title: Azure Certified Device の要件
-description: Azure Certified Device プログラムの要件
+title: Azure Certified Device 認定の要件
+description: Azure Certified Device 認定の要件
 author: cbroad
 ms.author: cbroad
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Azure Certified Device Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 497ffa4b3026491d6aa95df87708b3b1f2f1619e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 8e68cf180927e000c93c4c2d73d25d4ae6ccf0f8
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308287"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538140"
 ---
-# <a name="azure-certified-device-requirements"></a>Azure Certified Device の要件 
+# <a name="azure-certified-device-certification-requirements"></a>Azure Certified Device 認定の要件 
 (以前の IoT Hub)
 
 このドキュメントでは、Azure Certified Device カタログで表されるデバイス固有の機能について説明します。 機能とは、ソフトウェアの実装またはソフトウェアとハードウェアの実装の組み合わせである場合がある、単一のデバイス属性です。 
@@ -51,7 +51,7 @@ Azure Certified Device 認定では次のことが保証されています。
 | **適用対象**          | 任意のデバイス                                                   |
 | **OS**                  | 非依存                                                     |
 | **検証タイプ**     | 自動                                                    |
-| **検証**          | デバイスでは、埋め込みコードを再コンパイルしなくても、ターゲット DPS ID スコープの所有権を簡単に入力できます。 Microsoft では、デバイスが DPS をサポートしていることを検証するために、テストを実行するための [ポータル ワークフロー](https://certify.azure.com)を提供しています **1.** ユーザーは、構成証明メソッド (x.509、TPM、および SAS キー) のいずれかを選択する必要があります **2.** 認証方法に応じて、ユーザーは、**a)** X.509 証明書を AICS マネージド DPS スコープにアップロードする、**b)** SAS キーまたは保証キーをデバイスに実装する、などの対応するアクションを実行する必要があります |
+| **検証**          | デバイスでは、ターゲット DPS ID スコープの所有権を簡単に入力できます。 Microsoft では、デバイスが DPS をサポートしていることを検証するために、テストを実行するための [ポータル ワークフロー](https://certify.azure.com)を提供しています **1.** ユーザーは、構成証明メソッド (x.509、TPM、および SAS キー) のいずれかを選択する必要があります **2.** 認証方法に応じて、ユーザーは、**a)** X.509 証明書を AICS マネージド DPS スコープにアップロードする、**b)** SAS キーまたは保証キーをデバイスに実装する、などの対応するアクションを実行する必要があります |
 | **リソース**           | [Device Provisioning Service の概要](../iot-dps/about-iot-dps.md) |
 
 **[実装されている場合] クラウドからデバイス: テストの目的は、メッセージがクラウドからデバイスに送信されることを確認することです**                                                              
@@ -86,3 +86,14 @@ Azure Certified Device 認定では次のことが保証されています。
 | **検証タイプ**                       | 自動                                                       |
 | **検証**                            | デバイスは IoT Hub にテレメトリ スキーマを送信する必要があります。 Microsoft では、テストを実行するための[ポータル ワークフロー](https://certify.azure.com)を提供しています。 デバイス ツインのプロパティ (実装されている場合) **1.** AICS は、デバイス ツインの JSON で読み取り/書き込み可能なプロパティを検証します **2.** ユーザーは、変更する JSON ペイロードを指定する必要があります **3.** AICS は、デバイスが受信した IoT Hub メッセージと ACK メッセージから送信された、指定された必要なプロパティを検証します |
 | **リソース**                             | **a)** [認定手順](./overview.md) (すべての追加リソースを含む) **b)** [IoT Hub でデバイス ツインを使用する](../iot-hub/iot-hub-devguide-device-twins.md) |
+
+**[必須] 再コンパイルの制限: このポリシーの目的は、デバイスをデプロイするために、ユーザーがコードを再コンパイルする必要がないことをデバイスが既定で保証することです。**
+
+| **名前**                                  | AzureCertified.Policy.LimitRecompile                                      |
+| ----------------------------------------- | ------------------------------------------------------------ |
+| **ターゲットの可用性**                   | ポリシー                                            |
+| **適用対象**                            | 任意のデバイス                                                   |
+| **OS**                                    | 非依存                                                     |
+| **検証タイプ**                       | ポリシー                                                       |
+| **検証**                            | ユーザーのデバイス構成を簡素化するには、デバイスのソース コードを再コンパイルしてデプロイすることなく、すべてのデバイスを Azure に接続するように構成できる必要があります。 これには、スコープ ID などの DPS 情報が含まれます。これらの情報は、構成設定として設定する必要があるため、コンパイルしないでください。 ただし、デバイスに特定のセキュリティで保護されたハードウェアが含まれている場合、またはユーザーがコードをコンパイルしてデプロイすることを期待する酌量すべき状況がある場合は、認定チームに連絡して例外のレビューを依頼してください。 |
+| **リソース**                             | **a)** [デバイス プロビジョニング サービスの概要](../iot-dps/about-iot-dps.md)  **b)** [DPS の ID スコープ転送用のサンプル構成ファイル](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/serializer/samples/devicetwin_simplesample) |

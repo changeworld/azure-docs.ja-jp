@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 5f003b68283217f7877dc650ae4f07ddc5a31012
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f8ac0c985018d8d4c3858a9ff47ac2b188539161
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789341"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003460"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions デプロイ スロット
 
@@ -212,7 +212,7 @@ Azure Functions デプロイ スロットには、次の制限があります。
 
 - アプリで使用できるスロットの数は、プランによって異なります。 従量課金プランでは 1 つのデプロイ スロットのみが許可されます。 App Service プランで実行されているアプリでは、追加のスロットを使用できます。
 - スロットをスワップすると、`AzureWebJobsSecretStorageType` アプリ設定が `files` に等しいアプリのキーがリセットされます。
-- スロットは、Linux 従量課金プランでは使用できません。
+- スロットが有効になっている場合、Functions アプリはポータルで読み取り専用モードに設定されます。
 
 ## <a name="support-levels"></a>サポート レベル
 
@@ -224,10 +224,10 @@ Azure Functions デプロイ スロットには、次の制限があります。
 | OS/ホスティング プラン           | サポートのレベル     |
 | ------------------------- | -------------------- |
 | Windows Consumption       | 一般公開 |
-| Windows Premium           | 一般公開  |
+| Windows Premium           | 一般公開 |
 | Windows Dedicated         | 一般公開 |
-| Linux Consumption         | プレビュー          |
-| Linux Premium             | 一般公開  |
+| Linux Consumption         | 一般公開 |
+| Linux Premium             | 一般公開 |
 | Linux Dedicated           | 一般公開 |
 
 ## <a name="next-steps"></a>次のステップ

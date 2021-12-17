@@ -3,17 +3,17 @@ title: Azure API Management ポリシーでの名前付きの値の使用方法
 description: Azure API Management ポリシーでの名前付きの値の使用方法を説明します。 名前付きの値には、リテラル文字列、ポリシー式、および Azure Key Vault に格納されているシークレットを含めることができます。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
-ms.author: apimpm
-ms.openlocfilehash: b0e076f3b248942870ba58a51c85c3df1f1277a4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.author: danlep
+ms.openlocfilehash: 72bc12589cb63e2fcecc5568dbf628ccacb85394
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750610"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224651"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーで名前付きの値を使用する
 
@@ -33,7 +33,7 @@ ms.locfileid: "107750610"
 
 プレーンテキストの値またはシークレットには[ポリシー式](./api-management-policy-expressions.md)を含めることができます。 たとえば、式 `@(DateTime.Now.ToString())` では、現在の日付と時刻を含む文字列が返されます。
 
-名前付きの値の属性の詳細については、API Management の [REST API リファレンス](/rest/api/apimanagement/2020-06-01-preview/namedvalue/createorupdate)のページを参照してください。
+名前付きの値の属性の詳細については、API Management の [REST API リファレンス](/rest/api/apimanagement/2021-04-01-preview/named-value/create-or-update)のページを参照してください。
 
 ## <a name="key-vault-secrets"></a>キー コンテナーのシークレット
 
@@ -42,7 +42,7 @@ ms.locfileid: "107750610"
 API Management のセキュリティ向上に役立つため、キー コンテナーのシークレットを使用することをお勧めします。
 
 * キー　コンテナーに格納されているシークレットは、サービス間で再利用できます
-* きめ細かい[アクセス ポリシー](../key-vault/general/security-overview.md#privileged-access)をシークレットに適用できます
+* きめ細かい[アクセス ポリシー](../key-vault/general/security-features.md#privileged-access)をシークレットに適用できます
 * キー コンテナーで更新されたシークレットは、API Management で自動的にローテーションされます。 キー コンテナー内で更新が行われると、4 時間以内に API Management 内の名前付きの値が更新されます。 また、Azure portal または管理 REST API を使用して、シークレットを手動で更新することもできます。
 
 ### <a name="prerequisites-for-key-vault-integration"></a>キー コンテナー統合の前提条件
@@ -206,4 +206,3 @@ az apim nv delete --resource-group apim-hello-word-resource-group \
     -   [ポリシー式](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
-

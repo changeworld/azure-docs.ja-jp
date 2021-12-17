@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-storage
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 787f9ada921e1580a34431568e87c41496b37f6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7f13a9dfb45bbf7780ac7aca8796bda9855b0a9
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563202"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073869"
 ---
 # <a name="lsv2-series"></a>Lsv2 シリーズ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大ブーストが可能な [AMD EPYC<sup>TM</sup> 7551 プロセッサ](https://www.amd.com/en/products/epyc-7000-series)上で実行され、高スループット、低待ち時間、直接マッピングされたローカル NVMe ストレージを特長としています。 Lsv2 シリーズの VM には、同時マルチスレッド構成で 8 から 80 vCPU のサイズが用意されています。  vCPU あたり 8 GiB のメモリ、8 vCPU あたり 1 つの 1.92 TB NVMe SSD M.2 デバイスが用意され、L80s v2 では最大 19.2 TB (10 x 1.92 TB) を使用できます。
 
@@ -47,7 +49,7 @@ Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大�
 
 <sup>1</sup> Lsv2 シリーズの VM には、OS ページング/スワップ ファイル用の標準 SCSI ベースの一時リソース ディスクがあります (Windows の場合は D:、Linux の場合は /dev/sdb)。 このディスクは、8 vCPU ごとに 80 GiB のストレージ、4,000 IOPS、および 80 MBps の転送速度を提供します (たとえば、Standard_L80s_v2 は、40,000 IOPS および 800 MBPS で 800 GiB を提供します)。 これにより、NVMe ドライブを確実にアプリケーション専用にすることができます。 このディスクはエフェメラルであり、すべてのデータは停止/割り当て解除時に失われます。
 
-<sup>2</sup> ローカル NVMe ディスクはエフェメラルであり、VM を停止/割り当て解除した場合これらのディスク上のデータは失われます。
+<sup>2</sup> ローカル NVMe ディスクはエフェメラルであり、VM を停止/割り当て解除した場合これらのディスク上のデータは失われます。 ローカル NVMe ディスクは、[ホストでの暗号化](disk-encryption.md#supported-vm-sizes)を有効にした場合でも、[Azure Storage 暗号化](disk-encryption.md)によって暗号化されません。
 
 <sup>3</sup> Hyper-V NVMe Direct テクノロジにより、ゲスト VM スペースに安全にマッピングされたローカル NVMe ドライブへの無制限のアクセスが提供されます。  最大のパフォーマンスを実現するには、Azure Marketplace から最新の WS2019 ビルドまたは Ubuntu 18.04 または 16.04 のいずれかを使用する必要があります。  書き込みのパフォーマンスは、IO サイズ、ドライブの負荷、および容量使用率によって異なります。
 
@@ -86,7 +88,7 @@ Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大�
 
 料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disk)
+ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disks)
 
 
 ## <a name="next-steps"></a>次のステップ

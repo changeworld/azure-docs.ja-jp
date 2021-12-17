@@ -3,12 +3,12 @@ title: Azure Batch のノードとプール
 description: コンピューティング ノードとプールについて、およびそれらが Azure Batch ワークフローで開発の観点からどのように使用されるかについて説明します。
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 7d4c2d45849deb011498efe4c8a1ae91724b9acd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d5556bd719f982995c9353003f2c9dccc1e1a48
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563897"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443397"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch のノードとプール
 
@@ -90,7 +90,7 @@ Cloud Services 内の worker ロールと同様、"*OS バージョン*" を指�
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>仮想マシン プールのカスタム イメージ
 
-カスタム イメージを使用してプールを作成する方法については、「[Shared Image Gallery を使用してカスタム プールを作成する](batch-sig-images.md)」を参照してください。
+カスタム イメージを使用してプールを作成する方法については、「[Azure Compute Gallery を使用してカスタム プールを作成する](batch-sig-images.md)」を参照してください。
 
 または、[マネージド イメージ](batch-custom-images.md) リソースを使用して、仮想マシンのカスタム プールを作成することもできます。 Azure VM からカスタムの Linux イメージを準備する方法の詳細については、「[仮想マシンまたは VHD のイメージを作成する方法](../virtual-machines/linux/capture-image.md)」を参照してください。 Azure VM からカスタム Windows イメージを準備する方法については、「[Azure で一般化された VM の管理対象イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」を参照してください。
 

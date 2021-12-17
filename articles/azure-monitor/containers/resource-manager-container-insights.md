@@ -5,15 +5,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 68bad5b4bfcef4f0f633bce7e3e352486aed3fdf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7e2a38e2bf008901a1ba18c18dd282e91898036e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039191"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966941"
 ---
 # <a name="resource-manager-template-samples-for-container-insights"></a>Container insights 用の Resource Manager テンプレートのサンプル
-この記事には、Azure Monitor で仮想マシンに対して Log Analytics エージェントをデプロイし構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+この記事には、Azure Monitor で仮想マシンに対して Log Analytics エージェントをデプロイし構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

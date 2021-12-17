@@ -3,12 +3,12 @@ title: Container insights の監視コスト | Microsoft Docs
 description: この記事では、Container insights によって収集されるメトリックとインベントリ データの監視コストについて説明します。これにより、お客様が使用量と関連コストを管理できるようになります。
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 78387e950d476126d7c2065a530844e44fd59b4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2ff3616b3c78bbd7202acb08ffb3e46e0f7591b0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728911"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738501"
 ---
 # <a name="understand-monitoring-costs-for-container-insights"></a>Container insights の監視コストについて
 
@@ -37,7 +37,7 @@ Azure Monitor の価格モデルは、主に、Log Analytics ワークスペー�
 
 - Prometheus メトリックのアクティブなスクレイピング
 
-- *kube-apiserver* および *kube-controller-manager* マスター コンポーネントによって生成されるログ データを分析できる、AKS クラスター内の Kubernetes マスター ノード ログの [診断ログの収集](../../aks/view-control-plane-logs.md)。
+- *kube-apiserver* および *kube-controller-manager* マスター コンポーネントによって生成されるログ データを分析できる、AKS クラスター内の Kubernetes マスター ノード ログの [診断ログの収集](../../aks/monitor-aks.md#configure-monitoring)。
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>Kubernetes クラスターから収集されるもの
 
@@ -108,7 +108,7 @@ Container insights には、Log Analytics ワークスペースにログ デー�
 - 5 つの Kubernetes サービス (kube-system ポッド、サービス、名前空間を含む)
 - 収集頻度 = 60 秒 (既定値)
 
-1 時間あたりに生成されるデータのテーブルとボリュームは、割り当てられた Log Analytics ワークスペースで確認できます。 これらの各テーブルの詳細については、「[コンテナー レコード](container-insights-log-search.md#container-records)」を参照してください。
+1 時間あたりに生成されるデータのテーブルとボリュームは、割り当てられた Log Analytics ワークスペースで確認できます。 これらの各テーブルの詳細については、「[Azure Monitor ログ テーブル](../../aks/monitor-aks-reference.md#azure-monitor-logs-tables)」を参照してください。
 
 |テーブル | 見積もりサイズ (MB/時間) |
 |------|---------------|
@@ -138,7 +138,7 @@ Container insights には、Log Analytics ワークスペースにログ デー�
 - コンテナー ログ (アプリケーションログ) ごとの取り込まれた課金対象のデータ
 - Kubernetes 名前空間ごとの取り込まれた課金対象のコンテナー ログ
 - クラスター名別に分離された、取り込まれた課金対象のコンテナー ログ データ
-- ログソース エントリ別の、取り込まれた課金対象コンテナー ログ データ
+- ログ ソース エントリ別の、取り込まれた課金対象コンテナー ログ データ
 - 診断マスター ノード ログ別の、取り込まれた課金対象の診断データ
 
 [![[データ使用状況] ブック](media/container-insights-cost/data-usage-workbook.png)](media/container-insights-cost/data-usage-workbook.png#lightbox)

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos アカウント用の仮想ネットワーク ベースのアクセスを構成する
 description: このドキュメントでは、Azure Cosmos DB の仮想ネットワーク サービス エンドポイントのセットアップに必要な手順について説明します。
-author: markjbrown
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/13/2020
-ms.author: mjbrown
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1d63d21f4c49e3c7aef035208477ac9fc79f2e51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/07/2021
+ms.author: thweiss
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 42e38162409c5762f43807f483b091fbb88638af
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94637185"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113493281"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) からの Azure Cosmos DB へのアクセスを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -47,6 +47,9 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 1. 追加する Azure 仮想ネットワークの **サブスクリプション** を選択します。 Azure Cosmos DB アカウントへのアクセスを提供する Azure **仮想ネットワーク** と **サブネット** を選択します。 次に、 **[有効化]** を選択して、サービス エンドポイントを持つ選択したネットワークを "Microsoft.AzureCosmosDB" に対して有効にします。 完了したら、 **[追加]** を選択します。
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="仮想ネットワークとサブネットを選択する":::
+
+   > [!NOTE]
+   > VNET サービスのエンドポイントを設定したときは、効果が行き渡るのに 15 分程度かかる場合があり、この間エンドポイントの挙動が不安定になることがあります。
 
 1. 仮想ネットワークから Azure Cosmos DB アカウントへのアクセスを有効にすると、この選択したサブネットからのトラフィックのみが許可されます。 追加した仮想ネットワークとサブネットは、次のスクリーン ショットのように表示されます。
 

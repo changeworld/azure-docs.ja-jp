@@ -3,36 +3,40 @@
 - name: 概要
   items:
     - name: Azure FXT Edge Filer とは
-      href: fxt-overview.md
+      href: overview.md
 - name: チュートリアル
   items:
     - name: 1 - ハードウェアをインストールする
-      href: fxt-install.md
+      href: install.md
     - name: 2 - ネットワーク ポートにケーブルを接続して電源を供給する
-      href: fxt-network-power.md
+      href: network-power.md
     - name: 3 - ハードウェア パスワードを設定する
-      href: fxt-node-password.md
+      href: node-password.md
     - name: 4 - クラスターを作成する
-      href: fxt-cluster-create.md
+      href: cluster-create.md
     - name: 5 - クラスター ノードを追加する
-      href: fxt-add-nodes.md
+      href: add-nodes.md
     - name: 6 - バックエンド ストレージを追加して仮想名前空間を構成する
-      href: fxt-add-storage.md
+      href: add-storage.md
     - name: 7 - クラスターのネットワーク設定を構成する
-      href: fxt-configure-network.md
+      href: configure-network.md
     - name: 8 - クライアントをマウントする
-      href: fxt-mount-clients.md
+      href: mount-clients.md
 - name: 操作方法ガイド
   items:
     - name: Azure FXT Edge Filer ハードウェアを監視する
-      href: fxt-monitor.md
+      href: monitor.md
     - name: ハードウェア ノードの電源を安全にオフにする
-      href: fxt-power-off.md
+      href: power-off.md
 - name: リソース
   items:
     - name: ハードウェア仕様
-      href: fxt-specs.md
+      href: specs.md
     - name: その他のドキュメント
-      href: fxt-additional-doc.md
+      href: additional-doc.md
+    - name: サポートされる暗号
+      href: supported-ciphers.md
+    - name: ネットワーク ポート
+      href: port-list.md
     - name: サポート チケットを開く
-      href: fxt-support-ticket.md
+      href: support-ticket.md

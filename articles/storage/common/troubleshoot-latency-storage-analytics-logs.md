@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 1e6033f9a8f4cecd2429eca67a3d58e54d7ae1f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b59b7d42b162a369862974c0599d972fa1957ee
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99221110"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636688"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Storage Analytics ログを使用した待ち時間のトラブルシューティング
 
@@ -31,7 +31,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 
 2. 次の PowerShell スクリプトを使用して、未加工の形式のログを表形式に変換します。
 
-   ```Powershell
+   ```powershell
    $Columns = 
         (   "version-number",
             "request-start-time",
@@ -65,7 +65,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
             "client-request-id"
         )
 
-   $logs = Import-Csv “REPLACE THIS WITH FILE PATH” -Delimiter ";" -Header $Columns
+   $logs = Import-Csv "REPLACE THIS WITH FILE PATH" -Delimiter ";" -Header $Columns
 
    $logs | Out-GridView -Title "Storage Analytic Log Parser"
    ```
@@ -73,25 +73,25 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 3. 次に示すように、スクリプトによって GUI ウィンドウが起動され、情報を列でフィルター処理できます。
 
    ![Storage Analytics ログ パーサー ウィンドウ](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
- 
+
 4. "operation-type" に基づいてログ エントリを絞り込み、問題の期間中に作成されたログ エントリを探します。
 
    ![operation-type のログ エントリ](media/troubleshoot-latency-storage-analytics-logs/operation-type.png)
 
 5. この問題が発生した期間中では、次の値が重要になります。
 
-   * Operation-type = GetBlob
-   * request-status = SASNetworkError
-   * End-to-End-Latency-In-Ms = 8453
-   * Server-Latency-In-Ms = 391
+   - Operation-type = GetBlob
+   - request-status = SASNetworkError
+   - End-to-End-Latency-In-Ms = 8453
+   - Server-Latency-In-Ms = 391
 
    エンドツーエンドの待ち時間は、次の式を使用して計算されます。
 
-   * エンドツーエンドの待ち時間 = サーバーの待ち時間 + クライアントの待ち時間
+   - エンドツーエンドの待ち時間 = サーバーの待ち時間 + クライアントの待ち時間
 
    ログ エントリを使用してクライアントの待ち時間を計算します。
 
-   * クライアントの待ち時間 = エンドツーエンドの待ち時間 - サーバーの待ち時間
+   - クライアントの待ち時間 = エンドツーエンドの待ち時間 - サーバーの待ち時間
 
         例:8453 – 391 = 8062 ms
 
@@ -110,58 +110,58 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 
 「推奨される手順」の手順 5 の説明に従って、次の値を確認します。
 
-* エンドツーエンドの待ち時間
-* サーバーの待ち時間
-* クライアントの待ち時間
+- エンドツーエンドの待ち時間
+- サーバーの待ち時間
+- クライアントの待ち時間
 
 **RequestStatus = Success** の **GetBlob 操作** において **最大時間** が **クライアントの待ち時間** で費やされている場合、これは Azure Storage がクライアントにデータを書き込むために大量の時間を費やしていることを示します。 この待ち時間は、クライアント側の問題を示しています。
 
 **推奨事項:**
 
-* クライアントのコードを調査します。
-* Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。 
+- クライアントのコードを調査します。
+- Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。
 
 ### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob 操作:RequestStatus = (SAS)NetworkError
 
 「推奨される手順」の手順 5 の説明に従って、次の値を確認します。
 
-* エンドツーエンドの待ち時間
-* サーバーの待ち時間
-* クライアントの待ち時間
+- エンドツーエンドの待ち時間
+- サーバーの待ち時間
+- クライアントの待ち時間
 
 **RequestStatus = (SAS)NetworkError** の **GetBlob 操作** において **最大時間** が **クライアントの待ち時間** で費やされている場合、最も一般的な問題は、ストレージ サービスでタイムアウトが期限切れになる前にクライアントが切断されていることです。
 
 **推奨事項:**
 
-* クライアントのコードを調べて、Storage サービスからクライアントが切断した理由とタイミングを把握してください。
-* Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。 
+- クライアントのコードを調べて、Storage サービスからクライアントが切断した理由とタイミングを把握してください。
+- Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。
 
 ### <a name="put-operation-requeststatus--success"></a>Put 操作:RequestStatus = Success
 
 「推奨される手順」の手順 5 の説明に従って、次の値を確認します。
 
-* エンドツーエンドの待ち時間
-* サーバーの待ち時間
-* クライアントの待ち時間
+- エンドツーエンドの待ち時間
+- サーバーの待ち時間
+- クライアントの待ち時間
 
 **RequestStatus = Success** の **Put 操作** において **最大時間** が **クライアントの待ち時間** で費やされている場合、これはクライアントが Azure Storage にデータを送信するのに時間がかかっていることを示します。 この待ち時間は、クライアント側の問題を示しています。
 
 **推奨事項:**
 
-* クライアントのコードを調査します。
-* Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。 
+- クライアントのコードを調査します。
+- Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。
 
 ### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put 操作:RequestStatus = (SAS)NetworkError
 
 「推奨される手順」の手順 5 の説明に従って、次の値を確認します。
 
-* エンドツーエンドの待ち時間
-* サーバーの待ち時間
-* クライアントの待ち時間
+- エンドツーエンドの待ち時間
+- サーバーの待ち時間
+- クライアントの待ち時間
 
 **RequestStatus = (SAS)NetworkError** の **PutBlob 操作** において **最大時間** が **クライアントの待ち時間** で費やされている場合、最も一般的な問題は、ストレージ サービスでタイムアウトが期限切れになる前にクライアントが切断されていることです。
 
 **推奨事項:**
 
-* クライアントのコードを調べて、Storage サービスからクライアントが切断した理由とタイミングを把握してください。
-* Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。
+- クライアントのコードを調べて、Storage サービスからクライアントが切断した理由とタイミングを把握してください。
+- Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。

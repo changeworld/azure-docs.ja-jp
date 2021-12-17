@@ -7,12 +7,12 @@ ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: cddc7b931bf59412d4a7ec8e6b0eecfe148f3d5e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d106830a4fb2d0b7060a38d978bcd71e0fd08eff
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749278"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077309"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault と Azure Policy を統合する
 
@@ -35,15 +35,20 @@ ms.locfileid: "107749278"
 
 ## <a name="available-built-in-policy-definitions"></a>使用できる "組み込み" ポリシー定義
 
-Key Vault には、キー、証明書、シークレット オブジェクトを管理するために使用できる一連のポリシーが作成されています。 これらのポリシーは "組み込み" であるため、有効にするためにカスタム JSON を記述する必要がなく、Azure portal で割り当てのために使用できます。 組織のニーズに合わせて特定のパラメーターをカスタマイズすることもできます。
+Key Vault には、キー コンテナーとそのキー、証明書、シークレット オブジェクトを管理するために使用できる一連のポリシーが作成されています。 これらのポリシーは "組み込み" であるため、有効にするためにカスタム JSON を記述する必要がなく、Azure portal で割り当てのために使用できます。 組織のニーズに合わせて特定のパラメーターをカスタマイズすることもできます。
 
 # <a name="certificate-policies"></a>[証明書ポリシー](#tab/certificates)
 
-### <a name="certificates-should-have-the-specified-maximum-validity-period-preview"></a>証明書には最長有効期間を指定する必要がある (プレビュー)
+### <a name="manage-certificates-that-are-within-a-specified-number-of-days-of-expiration"></a>有効期限までの期間が指定された日数内である証明書を管理する 
 
-このポリシーでは、キー コンテナーに格納されている証明書の最大有効期間を管理できます。 セキュリティ実務の観点からは、証明書の最大有効期間を制限することをお勧めします。 証明書の秘密キーが、検出されることなく侵害された場合、有効期間の短い証明書を使用していれば、損害が続く概算時間を最小限に抑え、攻撃者にとっての証明書の価値を減らすことになります。
+適切に監視されていない証明書が、有効期限の前にローテーションされない場合、サービスの停止が発生する可能性があります。 このポリシーは、キー コンテナーに格納されている証明書が確実に監視されるようにするうえで非常に重要です。 このポリシーは、180 日、90 日、60 日、30 日間のしきい値など、有効期限の異なるしきい値を指定して複数回適用することをお勧めします。 このポリシーは、組織内の証明書の有効期限を監視し、トリアージするために使用できます。 
 
-### <a name="certificates-should-use-allowed-key-types-preview"></a>証明書には、許可されたキーの種類が使用されている必要がある (プレビュー)
+
+### <a name="certificates-should-have-the-specified-lifetime-action-triggers"></a>証明書には、指定された有効期間アクション トリガーが必要である  
+
+このポリシーでは、有効期限までの期間が一定日数内である証明書、または使用できる有効期間の一定割合に達した証明書に対して指定される、有効期間のアクションを管理できます。
+
+### <a name="certificates-should-use-allowed-key-types"></a>証明書は、許可されたキーの種類を使用する必要がある  
 
 このポリシーでは、キー コンテナーに格納できる証明書の種類を制限できます。 このポリシーを使用して、証明書の秘密キーが RSA、ECC、または HSM ベースであることを確認できます。 次の一覧から、どの証明書の種類が許可されるかを選択できます。
 
@@ -52,19 +57,15 @@ Key Vault には、キー、証明書、シークレット オブジェクトを
 - ECC
 - ECC - HSM
 
-### <a name="certificates-should-have-the-specified-lifetime-action-triggers-preview"></a>証明書には、指定された有効期間アクション トリガーが必要である (プレビュー)
+### <a name="certificates-should-be-issued-by-the-specified-integrated-certificate-authority"></a>証明書は、指定の統合された証明機関によって発行される必要がある  
 
-このポリシーでは、有効期限までの期間が一定日数内である証明書、または使用できる有効期間の一定割合に達した証明書に対して指定される、有効期間のアクションを管理できます。
+Key Vault によって統合された証明機関 (Digicert または GlobalSign) を使用していて、これらのプロバイダーのいずれかまたは両方をユーザーに使用させる場合は、選択を監査または適用するためにこのポリシーを使用できます。 このポリシーは、証明書の発行ポリシーで選択された CA と、キー コンテナーで定義された CA プロバイダーを評価します。 このポリシーは、キー コンテナー内での自己署名証明書の作成を監査または拒否するためにも使用できます。
 
-### <a name="certificates-should-be-issued-by-the-specified-integrated-certificate-authority-preview"></a>証明書は、指定の統合された証明機関によって発行される必要がある (プレビュー)
-
-Key Vault によって統合された証明機関 (Digicert または GlobalSign) を使用していて、これらのプロバイダーのいずれかまたは両方をユーザーに使用させる場合は、選択を監査または適用するためにこのポリシーを使用できます。 このポリシーは、キー コンテナー内での自己署名証明書の作成を監査または拒否するためにも使用できます。
-
-### <a name="certificates-should-be-issued-by-the-specified-non-integrated-certificate-authority-preview"></a>証明書は、指定の統合されていない証明機関によって発行される必要がある (プレビュー)
+### <a name="certificates-should-be-issued-by-the-specified-non-integrated-certificate-authority"></a>証明書は、指定の統合されていない証明機関によって発行される必要がある  
 
 内部の証明機関またはキー コンテナーと統合されていない証明機関を使用していて、提供するリストの証明機関をユーザーに使用させたい場合は、このポリシーを使用して、発行者名別の証明機関の許可リストを作成できます。 このポリシーは、キー コンテナー内での自己署名証明書の作成を監査または拒否するためにも使用できます。
 
-### <a name="certificates-using-elliptic-curve-cryptography-should-have-allowed-curve-names-preview"></a>楕円曲線暗号を使用する証明書には、許可されている曲線名が必要である (プレビュー)
+### <a name="certificates-using-elliptic-curve-cryptography-should-have-allowed-curve-names"></a>楕円曲線暗号を使用する証明書には、許可されている曲線名が必要である 
 
 楕円曲線暗号または ECC 証明書を使用する場合は、下の一覧に示した曲線名の許可リストをカスタマイズできます。 既定のオプションでは、以下の曲線名がすべて許可されます。
 
@@ -73,7 +74,7 @@ Key Vault によって統合された証明機関 (Digicert または GlobalSign
 - P-384
 - P-521
 
-## <a name="certificates-using-rsa-cryptography-manage-minimum-key-size-for-rsa-certificates-preview"></a>RSA 暗号化を使用する証明書で RSA 証明書の最小キー サイズを管理する (プレビュー)
+### <a name="certificates-using-rsa-cryptography-manage-minimum-key-size-for-rsa-certificates"></a>RSA 暗号化を使用する証明書で RSA 証明書の最小キー サイズを管理する  
 
 RSA 証明書を使用する場合は、証明書が持っている必要がある最小のキー サイズを選択できます。 下の一覧から 1 つのオプションを選択できます。
 
@@ -81,13 +82,13 @@ RSA 証明書を使用する場合は、証明書が持っている必要があ�
 - 3072 ビット
 - 4096 ビット
 
-## <a name="manage-certificates-that-are-within-a-specified-number-of-days-of-expiration-preview"></a>有効期限までの期間が指定された日数内である証明書を管理する (プレビュー)
+### <a name="certificates-should-have-the-specified-maximum-validity-period-preview"></a>証明書には最長有効期間を指定する必要がある (プレビュー)
 
-適切に監視されていない証明書が、有効期限の前にローテーションされない場合、サービスの停止が発生する可能性があります。 このポリシーは、キー コンテナーに格納されている証明書が確実に監視されるようにするうえで非常に重要です。 このポリシーは、180 日、90 日、60 日、30 日間のしきい値など、有効期限の異なるしきい値を指定して複数回適用することをお勧めします。 このポリシーは、組織内の証明書の有効期限を監視し、トリアージするために使用できます。
+このポリシーでは、キー コンテナーに格納されている証明書の最大有効期間を管理できます。 セキュリティ実務の観点からは、証明書の最大有効期間を制限することをお勧めします。 証明書の秘密キーが、検出されることなく侵害された場合、有効期間の短い証明書を使用していれば、損害が続く概算時間を最小限に抑え、攻撃者にとっての証明書の価値を減らすことになります。
 
 # <a name="key-policies"></a>[キーのポリシー](#tab/keys)
 
-### <a name="keys-should-not-be-active-for-longer-than-the-specified-number-of-days-preview"></a>キーを指定された日数より長くアクティブにすることはできない (プレビュー)
+### <a name="keys-should-not-be-active-for-longer-than-the-specified-number-of-days"></a>指定された日数より長くキーをアクティブにすることはできない 
 
 指定された日数を超えてキーがアクティブになっていないことを確認するには、このポリシーを使用して、キーがアクティブになっている期間を監査することができます。
 
@@ -95,7 +96,7 @@ RSA 証明書を使用する場合は、証明書が持っている必要があ�
 
 **キーをアクティブ化した日が設定されていない場合** は、このポリシーによって、キーの **作成日** から現在の日付までの経過日数が計算されます。 その日数が設定したしきい値を超えている場合、キーはポリシーに準拠していないとマークされます。
 
-### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>キーは、指定された暗号化の種類である RSA または EC である必要がある (プレビュー)
+### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec"></a>キーは、特定の暗号化の種類 (RSA または EC) である必要がある 
 
 このポリシーを使用すると、キー コンテナーに格納できるキーの種類を制限できます。 このポリシーを使用して、キーが RSA、ECC、または HSM ベースであることを確認できます。 次の一覧から、どの証明書の種類が許可されるかを選択できます。
 
@@ -104,7 +105,7 @@ RSA 証明書を使用する場合は、証明書が持っている必要があ�
 - ECC
 - ECC - HSM
 
-### <a name="keys-using-elliptic-curve-cryptography-should-have-the-specified-curve-names-preview"></a>楕円曲線暗号を使用するキーには、指定された曲線名が必要である (プレビュー)
+### <a name="keys-using-elliptic-curve-cryptography-should-have-the-specified-curve-names"></a>楕円曲線暗号を使用するキーに曲線名を指定する必要がある 
 
 楕円曲線暗号または ECC キーを使用する場合は、下の一覧に示した曲線名の許可リストをカスタマイズできます。 既定のオプションでは、以下の曲線名がすべて許可されます。
 
@@ -113,29 +114,29 @@ RSA 証明書を使用する場合は、証明書が持っている必要があ�
 - P-384
 - P-521
 
-### <a name="keys-should-have-expirations-dates-set-preview"></a>キーには有効期限が設定されている必要がある (プレビュー)
+### <a name="keys-should-have-expirations-dates-set"></a>キーには有効期限が設定されている必要がある 
 
 このポリシーによって、キー コンテナー内のすべてのキーを監査し、有効期限が設定されていないキーに、準拠していないというフラグを設定します。 また、このポリシーを使用すると、有効期限が設定されていないキーの作成をブロックすることもできます。
 
-### <a name="keys-should-have-more-than-the-specified-number-of-days-before-expiration-preview"></a>キーの有効期限まで、指定された日数より長い必要がある (プレビュー)
+### <a name="keys-should-have-more-than-the-specified-number-of-days-before-expiration"></a>キーの有効期限には、指定された日数より先の日付を指定する必要がある 
 
 キーの有効期限が近すぎると、キーをローテーションする組織での遅延によって障害が発生するおそれがあります。 キーは、エラーに対処するための十分な時間を確保するために、有効期限よりも指定された日数だけ前にローテーションされる必要があります。 このポリシーを使用すると、有効期限に近すぎるキーを監査し、このしきい値を日単位で設定できます。 また、このポリシーを使用して、有効期限に近すぎる新しいキーが作成されないようにすることもできます。
 
-### <a name="keys-should-be-backed-by-a-hardware-security-module-preview"></a>キーは、ハードウェア セキュリティ モジュール ベースである必要がある (プレビュー)
+### <a name="keys-should-be-backed-by-a-hardware-security-module"></a>ハードウェア セキュリティ モジュールによってキーをサポートする必要がある 
 
 HSM は、キーを格納するハードウェア セキュリティ モジュールです。 HSM によって、暗号化キーの物理的な保護レイヤーが提供されます。 暗号化キーは、ソフトウェア キーよりも高いレベルのセキュリティを提供する物理 HSM から離れることはできません。 一部の組織には、HSM キーの使用を必須とするコンプライアンス要件があります。 このポリシーを使用して、HSM ベースでないキー コンテナーに格納されているキーを監査します。 また、このポリシーを使用して、HSM ベースでない新しいキーの作成をブロックすることもできます。 このポリシーは、すべてのキーの種類 (RSA と ECC) に適用されます。
 
-### <a name="keys-using-rsa-cryptography-should-have-a-specified-minimum-key-size-preview"></a>RSA 暗号を使用するキーに、キーの最小サイズを指定する必要がある (プレビュー)
+### <a name="keys-using-rsa-cryptography-should-have-a-specified-minimum-key-size"></a>RSA 暗号を使用するキーにキーの最小サイズを指定する必要がある 
 
 キーのサイズが小さい RSA キーを使用することは、安全な設計手法ではありません。 最小限のキー サイズを使用する必要がある監査および認定の基準が適用される場合があります。 次のポリシーを使用すると、キー コンテナーの最小キー サイズ要件を設定できます。 この最小要件を満たしていないキーを監査することができます。 また、このポリシーを使用して、キーの最小サイズ要件を満たしていない新しいキーの作成をブロックすることもできます。
 
-### <a name="keys-should-have-the-specified-maximum-validity-period-preview"></a>キーには最長有効期間を指定する必要がある (プレビュー)
+### <a name="keys-should-have-the-specified-maximum-validity-period"></a>キーには最長有効期間を指定する必要がある
 
 キー コンテナー内でのキーの最長有効期間を日単位で指定して、組織のコンプライアンス要件を管理します。 設定したしきい値よりも有効期間が長いキーは、準拠していないとしてマークされます。 また、このポリシーを使用して、指定した最長有効期間よりも長い有効期限が設定されている新しいキーの作成をブロックすることもできます。
 
 # <a name="secret-policies"></a>[シークレットのポリシー](#tab/secrets)
 
-### <a name="secrets-should-not-be-active-for-longer-than-the-specified-number-of-days-preview"></a>シークレットを指定された日数より長くアクティブにすることはできない (プレビュー)
+### <a name="secrets-should-not-be-active-for-longer-than-the-specified-number-of-days"></a>指定された日数より長くシークレットをアクティブにすることはできない 
 
 指定された日数を超えてシークレットがアクティブになっていないことを確認するには、このポリシーを使用して、シークレットがアクティブになっている期間を監査することができます。
 
@@ -143,21 +144,35 @@ HSM は、キーを格納するハードウェア セキュリティ モジュ�
 
 **シークレットをアクティブ化した日が設定されていない場合** は、このポリシーによって、シークレットの **作成日** から現在の日付までの経過日数が計算されます。 その日数が設定したしきい値を超えている場合、シークレットはポリシーに準拠していないとマークされます。
 
-### <a name="secrets-should-have-content-type-set-preview"></a>シークレットにはコンテンツの種類を設定する必要がある (プレビュー)
+### <a name="secrets-should-have-content-type-set"></a>シークレットにはコンテンツの種類を設定する必要がある 
 
 プレーンテキストまたはエンコードされたファイルをキー コンテナー シークレットとして格納できます。 ただし、パスワード、接続文字列、またはキーとして格納されている証明書に対して、異なるローテーション ポリシーと制限を設定することが組織で必要になる場合があります。 コンテンツの種類のタグは、ユーザーがシークレットの値を読み取らずに、シークレット オブジェクトに何が格納されているかを確認するのに役立ちます。 このポリシーを使用して、コンテンツの種類のタグが設定されていないシークレットを監査できます。 また、このポリシーを使用して、コンテンツの種類のタグが設定されていない場合に、新しいシークレットが作成されないようにすることもできます。
 
-### <a name="secrets-should-have-expiration-date-set-preview"></a>シークレットには有効期限が設定されている必要がある (プレビュー)
+### <a name="secrets-should-have-expiration-date-set"></a>シークレットには有効期限を設定する必要がある 
 
 このポリシーによって、キー コンテナー内のすべてのシークレットを監査し、有効期限が設定されていないシークレットに、準拠していないというフラグを設定します。 また、このポリシーを使用すると、有効期限が設定されていないシークレットの作成をブロックすることもできます。
 
-### <a name="secrets-should-have-more-than-the-specified-number-of-days-before-expiration-preview"></a>シークレットの有効期限まで、指定された日数より長い必要がある (プレビュー)
+### <a name="secrets-should-have-more-than-the-specified-number-of-days-before-expiration"></a>シークレットの有効期限は、指定された日数より先の日付を指定する必要がある 
 
 シークレットの有効期限が近すぎると、シークレットをローテーションする組織での遅延によって障害が発生するおそれがあります。 シークレットは、エラーに対処するための十分な時間を確保するために、有効期限よりも指定された日数だけ前にローテーションされる必要があります。 このポリシーを使用すると、有効期限に近すぎるシークレットを監査し、このしきい値を日単位で設定できます。 また、このポリシーを使用して、有効期限に近すぎる新しいシークレットが作成されないようにすることもできます。
 
-### <a name="secrets-should-have-the-specified-maximum-validity-period-preview"></a>シークレットには最長有効期間を指定する必要がある (プレビュー)
+### <a name="secrets-should-have-the-specified-maximum-validity-period"></a>シークレットには最長有効期間を指定する必要がある 
 
 キー コンテナー内でのシークレットの最長有効期間を日単位で指定して、組織のコンプライアンス要件を管理します。 設定したしきい値よりも有効期間が長いシークレットは、準拠していないとしてマークされます。 また、このポリシーを使用して、指定した最長有効期間よりも長い有効期限が設定されている新しいシークレットの作成をブロックすることもできます。
+
+# <a name="key-vault-policies"></a>[Key Vault ポリシー](#tab/keyvault)
+
+### <a name="key-vault-should-use-a-virtual-network-service-endpoint"></a>Key Vault で仮想ネットワーク サービス エンドポイントを使用する必要がある
+
+このポリシーは、仮想ネットワーク サービス エンドポイントを使用するように構成されていないすべての Key Vault を監査します。
+
+### <a name="resource-logs-in-key-vault-should-be-enabled"></a>Key Vault のリソース ログを有効にする必要がある
+
+リソース ログが有効になっていることを監査します。 これにより、セキュリティ インシデントが発生した場合やお使いのネットワークが侵害された場合に、調査目的で使用するアクティビティ証跡を再作成できます
+
+### <a name="key-vaults-should-have-purge-protection-enabled"></a>キー コンテナーで消去保護が有効になっている必要がある
+
+悪意でキー コンテナーが削除されると、データが完全に失われる可能性があります。 組織内の悪意のある内部関係者が、キー コンテナーの削除と消去を実行できるおそれがあります。 消去保護では、論理的に削除されたキー コンテナーに必須の保有期間を適用することによって、内部関係者の攻撃から組織を保護します。 組織や Microsoft の内部にいるどのユーザーも、論理的な削除の保有期間中にキー コンテナーを消去することはできなくなります。
 
 ---
 
@@ -228,15 +243,25 @@ HSM は、キーを格納するハードウェア セキュリティ モジュ�
 
 ## <a name="feature-limitations"></a>機能の制限
 
-ポリシーに "拒否" 効果を割り当てると、非準拠リソースの作成の拒否が開始されるのに最大 30 分 (平均的な場合) かかり、最長の場合は 1 時間かかることがあります。 コンテナー内の既存コンポーネントのポリシー評価では、ポータル UI でコンプライアンスの結果を表示できるようになるまで最大 1 時間 (平均的な場合) かかり、最長の場合は 2 時間かかることがあります。 コンプライアンスの結果が "未開始" と表示される場合は、以下の理由が原因の可能性があります。
+ポリシーに "拒否" 効果を割り当てると、非準拠リソースの作成の拒否が開始されるのに最大 30 分 (平均的な場合) かかり、最長の場合は 1 時間かかることがあります。 この遅延は、次のシナリオを示しています。
+1.  ポリシーが割り当てられる
+2.  既存のポリシー割り当てが変更される
+3.  既存のポリシーを含むスコープに新しい KeyVault (リソース) が作成される。
+
+コンテナー内の既存コンポーネントのポリシー評価では、ポータル UI でコンプライアンスの結果を表示できるようになるまで最大 1 時間 (平均的な場合) かかり、最長の場合は 2 時間かかることがあります。 コンプライアンスの結果が "未開始" と表示される場合は、以下の理由が原因の可能性があります。
 - ポリシーの評価がまだ完了していません。 最初の評価の待機時間は、最悪のシナリオでは最大 2 時間かかる場合があります。 
 - ポリシー割り当てのスコープ内にキー コンテナーがありません。
 - ポリシー割り当てのスコープ内に、証明書が含まれるキー コンテナーがありません。
+
+
+
 
 > [!NOTE]
 > Azure Policy の[リソース プロバイダーのモード](../../governance/policy/concepts/definition-structure.md#resource-provider-modes) (Azure Key Vault のものなど) を使用すると、[[コンポーネント コンプライアンス]](../../governance/policy/how-to/get-compliance-data.md#component-compliance) ページにコンプライアンスに関する情報が表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
+- [キー コンテナーの Azure Policy のログ記録とよく寄せられる質問](../general/troubleshoot-azure-policy-for-key-vault.md)
 - [Azure Policy サービス](../../governance/policy/overview.md)の詳細を確認する
 - Key Vault のサンプルを参照する:[Key Vault の組み込みのポリシー定義](../../governance/policy/samples/built-in-policies.md#key-vault)
+- [キー コンテナーの Azure セキュリティ ベンチマーク ガイダンス](/security/benchmark/azure/baselines/key-vault-security-baseline?source=docs#network-security)について確認する

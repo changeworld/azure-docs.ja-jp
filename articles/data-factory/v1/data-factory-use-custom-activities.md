@@ -2,18 +2,19 @@
 title: Azure Data Factory パイプラインでカスタム アクティビティを使用する
 description: カスタム アクティビティを作成して Azure Data Factory パイプラインで使用する方法について説明します。
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: 3832175910f3a6d3e6a7de8da932b32436cc2452
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 643d8aa51c3d676232f2dee748a4627c21be0c83
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393022"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067472"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory バージョン 1 パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -26,7 +27,7 @@ ms.locfileid: "100393022"
 Azure Data Factory パイプラインでは、2 種類のアクティビティを使用できます。
 
 - [サポートされるソース データ ストアとシンク データ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の間でデータを移動する[データ移動アクティビティ](data-factory-data-movement-activities.md)。
-- Azure HDInsight、Azure Batch、Azure Machine Learning Studio (classic) などのコンピューティング サービスを使用してデータを変換する[データ変換アクティビティ](data-factory-data-transformation-activities.md)
+- Azure HDInsight、Azure Batch、ML Studio (クラシック) などのコンピューティング サービスを使用してデータを変換する[データ変換アクティビティ](data-factory-data-transformation-activities.md)。
 
 Data Factory でサポートされていないデータ ストアとの間でデータを移動するには、独自のデータ移動ロジックで **カスタム アクティビティ** を作成し、パイプラインでそのアクティビティを使用します。 同じように、Data Factory でサポートされていない方法でデータを変換/処理するには、独自のデータ変換ロジックでカスタム アクティビティを作成し、パイプラインでそのアクティビティを使用します。
 
@@ -382,7 +383,7 @@ public IDictionary<string, string> Execute(
     > [!IMPORTANT]
     > カスタム アクティビティの zip ファイル内のファイルは、いずれもサブフォルダーがない **最上位レベル** に置く必要があります。
 
-    ![バイナリ出力ファイル](./media/data-factory-use-custom-activities/Binaries.png)
+    :::image type="content" source="./media/data-factory-use-custom-activities/Binaries.png" alt-text="バイナリ出力ファイル":::
 
 13. **customactivitycontainer** という名前の BLOB コンテナーがまだ存在していない場合は、作成します。
 
@@ -428,17 +429,17 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
    2. **[新規]** ブレードの **[データ + 分析]** をクリックします。
    3. **[データ分析]** ブレードの **[Data Factory]** をクリックします。
 
-      ![新しい Azure Data Factory メニュー](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
+      :::image type="content" source="media/data-factory-use-custom-activities/new-azure-data-factory-menu.png" alt-text="新しい Azure Data Factory メニュー":::
 2. **[新しい Data Factory]** ブレードで、[名前] フィールドに「**CustomActivityFactory**」と入力します。 Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー **"データ ファクトリ名 "CustomActivityFactory" は使用できません"** が表示された場合は、データ ファクトリの名前を変更し (**yournameCustomActivityFactory** など)、作成し直してください。
 
-    ![新しい Azure Data Factory ブレード](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
+    :::image type="content" source="media/data-factory-use-custom-activities/new-azure-data-factory-blade.png" alt-text="新しい Azure Data Factory ブレード":::
 3. **[リソース グループ名]** をクリックし、既存のリソース グループを選択するか、リソース グループを作成します。
 4. 作成する Data Factory に適した **サブスクリプション** と **リージョン** を使用していることを確認します。
 5. **[新しい Data Factory]** ブレードで **[作成]** をクリックします。
 6. 作成した Data Factory は、Azure ポータルの **ダッシュボード** に表示されます。
 7. Data Factory が正常に作成されると、Data Factory の内容を示す [Data Factory] ブレードが表示されます。
 
-    ![[Data Factory] ブレード](media/data-factory-use-custom-activities/data-factory-blade.png)
+    :::image type="content" source="media/data-factory-use-custom-activities/data-factory-blade.png" alt-text="[Data Factory] ブレード":::
 
 ### <a name="step-2-create-linked-services"></a>手順 2:リンクされたサービスを作成します
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。 この手順では、Azure Storage アカウントと Azure Batch アカウントを Data Factory にリンクします。
@@ -447,16 +448,16 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 1. **[CustomActivityFactory]** の **[Data Factory]** ブレードで、 **[作成およびデプロイ]** をクリックします。 Data Factory エディターが起動します。
 2. コマンド バーの **[新しいデータ ストア]** をクリックし、 **[Azure Storage]** を選択します。 Azure Storage のリンクされたサービスを作成するための JSON スクリプトがエディターに表示されます。
 
-    ![[新しいデータ ストア] - [Azure Storage]](media/data-factory-use-custom-activities/new-data-store-menu.png)
+    :::image type="content" source="media/data-factory-use-custom-activities/new-data-store-menu.png" alt-text="[新しいデータ ストア] - [Azure Storage]":::
 3. `<accountname>` は Azure Storage アカウントの名前に、`<accountkey>` は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)に関するページを参照してください。
 
-    ![Azure Storage のリンクされたサービス](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
+    :::image type="content" source="media/data-factory-use-custom-activities/azure-storage-linked-service.png" alt-text="Azure Storage のリンクされたサービス":::
 4. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
 #### <a name="create-azure-batch-linked-service"></a>Azure Batch のリンクされたサービスの作成
 1. Data Factory Editor のツール バーで **[...More(...詳細)]** をクリックして **[新しい計算]** をクリックし、メニューから **[Azure Batch]** を選択します。
 
-    ![[新しい計算] - [Azure Batch]](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
+    :::image type="content" source="media/data-factory-use-custom-activities/new-azure-compute-batch.png" alt-text="[新しい計算] - [Azure Batch]":::
 2. JSON スクリプトを次のように変更します。
 
    1. **accountName** プロパティに Azure Batch アカウント名を指定します。 **[Azure Batch アカウント] ブレード** の **URL** は、`http://accountname.region.batch.azure.com` という形式です。 JSON の **batchUri** プロパティについては、URL から `accountname.` を削除し、`accountName` JSON プロパティには `accountname` を使用する必要があります。
@@ -632,13 +633,13 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 ### <a name="monitor-the-pipeline"></a>パイプラインの監視
 1. Azure ポータルの [Data Factory] ブレードで、 **[ダイアグラム]** をクリックします。
 
-    ![Diagram tile](./media/data-factory-use-custom-activities/DataFactoryBlade.png)
+    :::image type="content" source="./media/data-factory-use-custom-activities/DataFactoryBlade.png" alt-text="Diagram tile":::
 2. [ダイアグラム] ビューで、OutputDataset をクリックします。
 
-    ![[ダイアグラム] ビュー](./media/data-factory-use-custom-activities/diagram.png)
+    :::image type="content" source="./media/data-factory-use-custom-activities/diagram.png" alt-text="[ダイアグラム] ビュー":::
 3. 5つの出力スライスが準備完了状態であることが、表示されます。 準備完了状態にない場合、まだ生成されていません。
 
-   ![出力スライス](./media/data-factory-use-custom-activities/OutputSlices.png)
+   :::image type="content" source="./media/data-factory-use-custom-activities/OutputSlices.png" alt-text="出力スライス":::
 4. **adftutorial** コンテナー内の BLOB ストレージに出力ファイルが生成されていることを確認します。
 
    ![カスタム アクティビティの出力][image-data-factory-output-from-custom-activity]
@@ -669,15 +670,15 @@ Visual Studio で Data Factory プロジェクトを作成する場合は、次�
 ## <a name="data-factory-and-batch-integration"></a>Data Factory と Batch の統合
 Data Factory サービスによって、Azure Batch に **adf-poolname: job-xxx** という名前のジョブが作成されます。 左側のメニューで **[ジョブ]** をクリックします。
 
-![Azure Data Factory - Batch ジョブ](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
+:::image type="content" source="media/data-factory-use-custom-activities/data-factory-batch-jobs.png" alt-text="Azure Data Factory - Batch ジョブ":::
 
 スライスのアクティビティの実行ごとに、1 つのタスクが作成されます。 5 個のスライスを処理する準備ができた場合、このジョブに 5 個のタスクが作成されています。 Batch プール内に複数のコンピューティング ノードがある場合は、2 つ以上のスライスを並列で実行できます。 コンピューティング ノードごとの最大タスクが 1 より大きな値に設定されている場合、同じコンピューティング ノードで複数のスライスを実行することもできます。
 
-![Azure Data Factory - Batch ジョブのタスク](media/data-factory-use-custom-activities/data-factory-batch-job-tasks.png)
+:::image type="content" source="media/data-factory-use-custom-activities/data-factory-batch-job-tasks.png" alt-text="Azure Data Factory - Batch ジョブのタスク":::
 
 次の図は、Azure Data Factory と Batch のタスク間の関係を示しています。
 
-![Data Factory と Batch](./media/data-factory-use-custom-activities/DataFactoryAndBatch.png)
+:::image type="content" source="./media/data-factory-use-custom-activities/DataFactoryAndBatch.png" alt-text="Data Factory と Batch":::
 
 ## <a name="troubleshoot-failures"></a>エラーをトラブルシューティングする
 トラブルシューティングには、いくつかの基本的な技術があります。
@@ -1032,7 +1033,6 @@ GitHub の [Azure Data Factory - ローカル環境](https://github.com/gbrueckl
 | サンプル | カスタム アクティビティの動作 |
 | --- | --- |
 | [HTTP データ ダウンローダー](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Data Factory のカスタム C# アクティビティを使用して、HTTP エンドポイントから Azure Blob Storage にデータをダウンロードします。 |
-| [Twitter センチメント分析のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Azure Machine Learning Studio (classic) モデルを呼び出し、センチメント分析、スコア付け、予測などを行います。 |
 | [R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |既に R がインストールされている HDInsight クラスターで RScript.exe を実行し、R スクリプトを呼び出します。 |
 | [クロス AppDomain .NET アクティビティ](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Data Factory 起動ツールによって使用されているアセンブリ バージョンとは別のバージョンを使用します。 |
 | [Azure Analysis Services でモデルを再処理する](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample) |  Azure Analysis Services でモデルを再処理します。 |
@@ -1048,7 +1048,7 @@ GitHub の [Azure Data Factory - ローカル環境](https://github.com/gbrueckl
 
 
 [developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
-[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
+[cmdlet-reference]: /powershell/resourcemanager/Azurerm.DataFactories/v2.2.0/Azurerm.DataFactories
 
 [new-azure-batch-account]: /previous-versions/azure/mt125880(v=azure.100)
 [new-azure-batch-pool]: /previous-versions/azure/mt125936(v=azure.100)

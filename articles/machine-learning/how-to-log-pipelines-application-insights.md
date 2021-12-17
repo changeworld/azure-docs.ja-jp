@@ -6,16 +6,16 @@ services: machine-learning
 author: NilsPohlmann
 ms.author: nilsp
 ms.service: machine-learning
-ms.subservice: core
-ms.date: 08/11/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7ed27eba66b3d18bed8017934fce85928b961392
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: mlops
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python
+ms.openlocfilehash: 682bfc9e5707ec8b6d3993616f354a591fc835f3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520049"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562392"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Application Insights でアラートとデバッグ用に機械学習パイプラインのログ ファイルを収集する
 

@@ -3,18 +3,18 @@ title: クイック スタート - PowerShell を使用した Azure API Manageme
 description: Azure PowerShell を使用して新しい Azure API Management インスタンスを作成します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurepowershell
 ms.date: 09/14/2020
-ms.author: apimpm
-ms.openlocfilehash: eb2c42d26a85a07518a018ba5b8817f13d3cd17f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: dcc6c96eb634316554a939688766feb153479778
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90707067"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590762"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-powershell"></a>クイック スタート」を参照してください。PowerShell を使用して新しい Azure API Management サービス インスタンスを作成する
 

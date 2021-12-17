@@ -1,14 +1,14 @@
 ---
 title: ポリシーのコンプライアンス データを取得する
 description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 Azure リソースのコンプライアンスの詳細を取得する方法を説明します。
-ms.date: 03/16/2021
+ms.date: 06/29/2021
 ms.topic: how-to
-ms.openlocfilehash: cdd23d685750fb8a5d3803f4b6030e7e67bbddce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38811d67c54bf87476d1015ab6b45497094d12ca
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598543"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767844"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
@@ -36,6 +36,8 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 
 - Azure Resource Manager、REST API、またはサポート対象の SDK を介した割り当てで、リソースがスコープでデプロイまたは更新される。 このシナリオでは、個々のリソースに対する効果的なイベント (追加、監査、拒否、展開) とコンプライアンス ステータスの情報が、約 15 分後にポータルおよび SDKで利用可能です。 このイベントによって、他のリソースの評価が行われることはありません。
 
+- サブスクリプション (リソースの種類 `Microsoft.Resource/subscriptions` ) が、サブスクリプション リソースの種類をターゲットとしたポリシー定義が割り当てられている[管理グループ階層](../../management-groups/overview.md)内で、作成または移動されています。 サブスクリプションでサポートされている影響 (audit、auditIfNotExist、deployIfNotExists、modify)、ログ記録、および修復アクションの評価には、約 30 分かかります。
+
 - [ポリシー適用除外](../concepts/exemption-structure.md)が作成、更新、または削除される。 このシナリオでは、定義された適用除外スコープに対して、対応する割り当てが評価されます。
 
 - 標準コンプライアンス評価サイクル。 24 時間に 1 回、割り当てが自動的に再評価されます。 多くのリソースの大きなポリシーまたはイニシアティブでは時間がかかることがあるため、評価サイクルがいつ完了するかを事前に予想することはできません。 完了すると、更新されたコンプライアンス結果をポータルと SDK で使用できるようになります。
@@ -53,22 +55,21 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 
 [Azure Policy Compliance Scan アクション](https://github.com/marketplace/actions/azure-policy-compliance-scan)を使用して、1 つまたは複数のリソース、リソース グループ、またはサブスクリプションに対して [GitHub ワークフロー](https://docs.github.com/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows)からオンデマンドの評価スキャンをトリガーし、リソースのコンプライアンス状態に基づいてワークフローをゲートします。 また、スケジュールされた時刻に実行するようにワークフローを構成することもできます。これにより、最新のコンプライアンス状態を都合のよいタイミングで取得できます。 必要に応じて、この GitHub アクションでは、スキャンされたリソースのコンプライアンス状態に関するレポートを生成し、詳細な分析やアーカイブを行うことができます。
 
-次の例では、サブスクリプションに対してコンプライアンス スキャンを実行しています。 
+次の例では、サブスクリプションに対してコンプライアンス スキャンを実行しています。
 
 ```yaml
 on:
-  schedule:    
+  schedule:
     - cron:  '0 8 * * *'  # runs every morning 8am
 jobs:
-  assess-policy-compliance:    
+  assess-policy-compliance:
     runs-on: ubuntu-latest
-    steps:         
+    steps:
     - name: Login to Azure
       uses: azure/login@v1
       with:
-        creds: ${{secrets.AZURE_CREDENTIALS}} 
+        creds: ${{secrets.AZURE_CREDENTIALS}}
 
-    
     - name: Check for resource compliance
       uses: azure/policy-compliance-scan@v0
       with:
@@ -113,9 +114,9 @@ $job = Start-AzPolicyComplianceScan -AsJob
 ```azurepowershell-interactive
 $job
 
-Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
---     ----            -------------   -----         -----------     --------             -------
-2      Long Running O… AzureLongRunni… Running       True            localhost            Start-AzPolicyCompliance…
+Id     Name              PSJobTypeName     State         HasMoreData     Location             Command
+--     ----              -------------     -----         -----------     --------             -------
+2      Long Running O... AzureLongRunni... Running       True            localhost            Start-AzPolicyCompliance...
 ```
 
 対応スキャンが完了すると、**State** プロパティが _Completed_ に変わります。
@@ -176,10 +177,10 @@ Visual Studio Code 用の Azure Policy 拡張機能では、特定のリソー�
 > [!NOTE]
 > DeployIfNotExist 効果と AuditIfNotExist 効果が非準拠となるためには、IF ステートメントが TRUE で、存在条件が FALSE である必要があります。 TRUE のとき、IF 条件は関連するリソースの既存の条件の評価をトリガーします。
 
-たとえば、ContosoRG というリソース グループがあり、このリソース グループの一部のストレージ アカウント (赤で強調表示されているアカウント) がパブリック ネットワークに公開されているとします。
+たとえば、ContosoRG というリソース グループがあり、その一部のストレージ アカウント (赤で強調表示されている) がパブリック ネットワークに公開されているとします。
 
 :::image type="complex" source="../media/getting-compliance-data/resource-group01.png" alt-text="Contoso R G リソース グループ内のパブリック ネットワークに公開されているストレージ アカウントの図。" border="false":::
-   Contoso R G リソース グループ内の 5 つのストレージ アカウントのイメージを示す図。  ストレージ アカウント 1 と 3 は青ですが、ストレージ アカウント 2、4、および 5 は赤です。
+   Contoso R G リソース グループ内の 5 つのストレージ アカウントのイメージを示す図。 ストレージ アカウント 1 と 3 は青ですが、ストレージ アカウント 2、4、および 5 は赤です。
 :::image-end:::
 
 この例では、セキュリティ リスクに注意する必要があります。 これで、作成したポリシー割り当てが、ContosoRG リソース グループ内のすべての包含されて適用除外でないストレージ アカウントに対して評価されます。 3 つの非準拠のストレージ アカウントを監査し、結果としてそれらの状態を **非準拠** に変更します。
@@ -195,7 +196,7 @@ Visual Studio Code 用の Azure Policy 拡張機能では、特定のリソー�
 - **未開始**:ポリシーまたはリソースの評価サイクルが開始されていません。
 - **未登録**:Azure Policy リソース プロバイダーが登録されていないか、ログインしたアカウントにコンプライアンス データを読み取るアクセス許可がありません。
 
-Azure Policy では、定義内の **type**、**name**、または **kind** フィールドを使用して、リソースの一致が判別されます。 リソースが一致している場合、適用可能と見なされ、**準拠**、**非準拠**、**適用除外** のいずれかの状態になります。 **type**、**name**、または **kind** のいずれかが定義の唯一のプロパティである場合は、すべての包含されて適用除外でないリソースが適用可能と見なされ、評価されます。
+Azure Policy では、定義内の **type**、**name**、または **kind** フィールドを使用してリソースが一致かどうかを調べます。 リソースが一致している場合、適用可能と見なされ、**準拠**、**非準拠**、**適用除外** のいずれかの状態になります。 **name** または **kind** のいずれかが定義内の唯一のプロパティである場合、適用除外ではない、含まれているすべてのリソースが適用可能であると見なされ、評価されます。
 
 コンプライアンス対応率は、**準拠** および **適用除外** のリソースを "_総リソース数_" で割って算出されます。 "_総リソース数_" は、**準拠**、**非準拠**、**適用除外**、および **競合** の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、**準拠** または **適用除外** の個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが **非準拠** です。
 全体的なリソース コンプライアンスは 95% (19/20) となります。
@@ -227,7 +228,7 @@ Azure portal には、環境のコンプライアンス状態を視覚化して�
 
 :::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="[Component Compliance]\(コンポーネントのコンプライアンス\) タブと、リソース プロバイダー モードの割り当てに対するコンプライアンスの詳細のスクリーンショット。" border="false":::
 
-リソースのコンプライアンス ページに戻って、詳細情報を収集するイベントの行を右クリックし、 **[アクティビティ ログの表示]** を選択します。 アクティビティ ログ ページが開き、事前にフィルター処理されて、割り当ておよびイベントの詳細が検索して表示されます。 アクティビティ ログは、これらのイベントに関する追加のコンテキストと情報を提供します。
+リソースのコンプライアンス ページに戻って、詳細情報を収集するイベントの行を選択したままにし (または右クリックし)、 **[アクティビティ ログの表示]** を選択します。 アクティビティ ログ ページが開き、事前にフィルター処理されて、割り当ておよびイベントの詳細が検索して表示されます。 アクティビティ ログは、これらのイベントに関する追加のコンテキストと情報を提供します。
 
 :::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Azure Policy アクティビティおよび評価のアクティビティ ログのスクリーンショット。" border="false":::
 

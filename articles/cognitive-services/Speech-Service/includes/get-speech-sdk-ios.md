@@ -1,19 +1,19 @@
 ---
-author: trevorbye
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: trbye
-ms.openlocfilehash: 31634abe2768ec47ee2aa66051a7a363f83c6009
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: eur
+ms.openlocfilehash: 942bf206454047f54765d096a2ac97fcabb895ab
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043223"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252466"
 ---
 :::row:::
     :::column span="3":::
-        iOS 向けの開発時には、2つの音声Sdk を利用できます。 Objective-C音声SDK は、iOS Cocoアポストロフィパッケージとしてネイティブに使用できます。 また、.NET音声SDK は .NET Standard 2.0 を実装しているため、Xamarin で使用することもできます。
+        iOS 用に開発する場合は、次の音声 SDK を使用できます。 Objective-C/Swift 音声 SDK は、iOS CocoaPod パッケージとしてネイティブに使用できます。 または、Xamarin.iOS および Unity アプリケーション フレームワークで .NET Speech SDK を使用することもできます。
     :::column-end:::
     :::column:::
         <br>
@@ -58,7 +58,7 @@ end
 
 :::row:::
     :::column span="3":::
-        Xamarin iOS は、.NET 開発者向けの完全な iOS SDK を公開しています。 Visual Studio でC#またはF#を使用して、完全にネイティブな iOS アプリをビルドします。 詳細は、<a href="/xamarin/ios/" target="_blank">Xamarin.iOS </a>を参照してください。
+        Xamarin iOS は、.NET 開発者向けの完全な iOS SDK を公開しています。 Visual Studio で C# を使用して、完全にネイティブな iOS アプリをビルドします。 詳細は、<a href="/xamarin/ios/" target="_blank">Xamarin.iOS </a>を参照してください。
     :::column-end:::
     :::column:::
         <br>

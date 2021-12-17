@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 7fd9e504448d55b4a2ef8c10b4ba1176cb2e3402
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2b43fb9b816ff52c3e52bf8c39843c34651aea4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96172637"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315001"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>すべてのアプリを Azure AD と統合するための 5 つの手順
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) には、簡単に開始できるようにす�
 
 次に、従業員が頻繁に使用しているアプリケーションを検出し、それらを Azure AD に統合するための作業に優先順位を付けます。
 
-まず、Microsoft Cloud App Security の [Cloud Discovery ツール](/cloud-app-security/tutorial-shadow-it)を使用して、ネットワークの "シャドウ" IT (つまり、IT 部門で管理されていないアプリ) を検出して管理できます。 [Microsoft Defender Advanced Threat Protection (ATP) を使用](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)して、検出プロセスを簡素化および拡張できます。
+まず、Microsoft Defender for Cloud Apps の [Cloud Discovery ツール](/cloud-app-security/tutorial-shadow-it)を使用して、ネットワークの "シャドウ" IT (つまり、IT 部門で管理されていないアプリ) を検出して管理できます。 [Microsoft Defender Advanced Threat Protection (ATP) を使用](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)して、検出プロセスを簡素化および拡張できます。
 
 さらに、Azure portal の [AD FS アプリケーション アクティビティ レポート](../manage-apps/migrate-adfs-application-activity.md)を使用して、組織内のすべての AD FS アプリ、それらにサインインした一意のユーザー数、およびそれらを Azure AD と統合するための互換性を検出できます。
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) には、簡単に開始できるようにす�
 
 ![図は、オンプレミスのアプリ、基幹業務アプリ、SaaS アプリ、Azure AD 経由の Office 365 がすべて Active Directory と AD FS に点線で接続されていることを示しています。](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 
-ID 管理ソリューションの[中心として ADFS を Azure AD に置き換える](../manage-apps/migrate-adfs-apps-to-azure.md)ことで、この構成をアップグレードできます。 これにより、従業員がアクセスする必要があるすべてのアプリのサインオンが可能になり、上記の他の利点に加えて、[MyApps ポータル](../user-help/my-apps-portal-end-user-access.md)経由で、従業員が必要とするビジネス アプリケーションを簡単に見つけられるようになります。
+ID 管理ソリューションの[中心として ADFS を Azure AD に置き換える](../manage-apps/migrate-adfs-apps-to-azure.md)ことで、この構成をアップグレードできます。 これにより、従業員がアクセスする必要があるすべてのアプリのサインオンが可能になり、上記の他の利点に加えて、[MyApps ポータル](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)経由で、従業員が必要とするビジネス アプリケーションを簡単に見つけられるようになります。
 
 ![図は、Active Directory と AD FS 経由のオンプレミスのアプリ、基幹業務アプリ、SaaS アプリ、Office 365 がすべて Azure Active Directory に点線で接続されていることを示しています。](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-2.png)
 
@@ -86,11 +86,11 @@ Azure AD が中心の ID プロバイダーになると、フェデレーショ�
 
 ## <a name="4-integrate-on-premises-applications"></a>4.オンプレミスのアプリケーションを統合する
 
-従来、アプリケーションは、企業ネットワークに接続している間のみアクセスを許可することによって、セキュリティが維持されてきました。 しかし、接続が拡大している世界では、お客様、パートナー、従業員が世界のどこにいても、アプリにアクセスできるようにする必要があります。 [Azure AD アプリケーション プロキシ](../manage-apps/what-is-application-proxy.md) (AppProxy) は、既存のオンプレミス アプリを Azure AD に接続する Azure AD の機能であり、それを実行するために、エッジ サーバーやその他の追加のインフラストラクチャを保守する必要がありません。
+従来、アプリケーションは、企業ネットワークに接続している間のみアクセスを許可することによって、セキュリティが維持されてきました。 しかし、接続が拡大している世界では、お客様、パートナー、従業員が世界のどこにいても、アプリにアクセスできるようにする必要があります。 [Azure AD アプリケーション プロキシ](../app-proxy/what-is-application-proxy.md) (AppProxy) は、既存のオンプレミス アプリを Azure AD に接続する Azure AD の機能であり、それを実行するために、エッジ サーバーやその他の追加のインフラストラクチャを保守する必要がありません。
 
 ![図は、動作中のアプリケーション プロキシ サービスを示しています。 ユーザーが "https://sales.contoso.com" にアクセスすると、その要求が、Azure Active Directory の "https://sales-contoso.msappproxy.net" 経由で、オンプレミスのアドレス "http://sales" にリダイレクトされます。](./media/five-steps-to-full-application-integration-with-azure-ad\app-proxy.png)
 
-「[チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](../manage-apps/application-proxy-add-on-premises-application.md)」を使用して、アプリケーション プロキシを有効にし、オンプレミス アプリケーションを Azure AD テナントに追加できます。
+「[チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](../app-proxy/application-proxy-add-on-premises-application.md)」を使用して、アプリケーション プロキシを有効にし、オンプレミス アプリケーションを Azure AD テナントに追加できます。
 
 さらに、F5 Big-IP APM や Zscaler Private Access などのアプリケーション配信コントローラーを統合することもできます。 これらを Azure AD と統合することにより、パートナー製品のトラフィック管理とセキュリティ機能に加えて、Azure AD の先進の認証および ID 管理を実現できます。 このソリューションは、[安全なハイブリッド アクセス](../manage-apps/secure-hybrid-access.md)と呼ばれています。 現在、次のサービスのいずれかを使用している場合は、それらを Azure AD と統合する手順を説明したチュートリアルが用意されています。
 

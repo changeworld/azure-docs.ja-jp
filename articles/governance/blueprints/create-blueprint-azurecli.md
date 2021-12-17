@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:Azure CLI を使用してブループリントを作成する
 description: このクイックスタートでは、Azure Blueprints と Azure CLI を使用して、成果物を作成、定義、デプロイします。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: fbe5c12f1c94d4b59dbdc2a97b6a4cb9af5a2328
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5cf89799fc0be32bcfaaae57ec32de83cda53c6f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563669"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323199"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>クイック スタート:Azure CLI で Azure Blueprint を定義して割り当てる
 
@@ -117,7 +117,7 @@ Azure CLI でブループリントの定義と割り当てを管理できるよ�
 
      > [!NOTE]
      > ブループリントの定義をインポートするときは、_blueprint.json_ というファイル名を使用します。
-     > このファイル名は [az blueprint import](/cli/azure/ext/blueprint/blueprint#ext_blueprint_az_blueprint_import) を呼び出すときに使用されます。
+     > このファイル名は [az blueprint import](/cli/azure/blueprint#az_blueprint_import) を呼び出すときに使用されます。
 
      既定では、ブループリント オブジェクトが既定のサブスクリプションに作成されます。 管理グループを指定するには、**managementgroup** パラメーターを使用します。 サブスクリプションを指定するには、**subscription** パラメーターを使用します。
 

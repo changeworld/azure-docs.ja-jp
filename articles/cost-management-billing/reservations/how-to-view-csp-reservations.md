@@ -6,20 +6,20 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 9b4f3375f3d334b21a0f7d169fec9025cd911857
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 490adca7f1e0f7c5e614e164f9e21af9bc36d77b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684390"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653326"
 ---
 # <a name="view-azure-reservations-as-a-cloud-solution-provider-csp"></a>クラウド ソリューション プロバイダー (CSP) として Azure の予約を表示する
 
 クラウド ソリューション プロバイダーは、顧客用に購入された予約にアクセスできます。 Azure portal の予約を表示するには、次の情報を使用します。
 
-1. 全体管理者に連絡して、テナントに**管理エージェント** として追加してもらいます。
+1. 全体管理者に連絡して、テナントに **管理エージェント** として追加してもらいます。
     このオプションは、パートナー センターの全体管理者が使用できます。 **[設定]** (ページの右上にある歯車記号) の **[ユーザー管理]** の下にあります。  
 1. 管理エージェントの権限を取得したら、 **[Admin on Behalf Of]\(代理管理\)** リンクを使用して Azure portal にアクセスします。
 1. パートナー センター > **[顧客]** > 顧客の詳細を展開 > **[Microsoft Azure の管理ポータル]** の順に移動します。

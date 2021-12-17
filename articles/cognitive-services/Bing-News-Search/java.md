@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-java
-ms.openlocfilehash: f49de67504c3d3fea39d4c12ab4b06790693ad68
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3d8c75f49f332361c0e1dcaefa30dda36ee7e1fa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351965"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039033"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>クイック スタート:Java と Bing News Search REST API を使用してニュース検索を実行する
 
@@ -33,7 +33,7 @@ ms.locfileid: "96351965"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Development Kit(JDK) 7 または 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+* [Java Development Kit(JDK) 7 または 8](/azure/developer/java/fundamentals/java-support-on-azure)。
 * [Gson ライブラリ](https://github.com/google/gson)。
 
 
@@ -121,7 +121,7 @@ ms.locfileid: "96351965"
 3. アプリケーションのメイン メソッドで、検索メソッドを呼び出して結果を表示します。
 
     ```java
-   public static void main (String[] args) {
+    public static void main (String[] args) {
        System.out.println("Searching the Web for: " + searchTerm);
        SearchResults result = SearchNews(searchTerm);
     

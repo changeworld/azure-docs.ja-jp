@@ -4,26 +4,26 @@ titleSuffix: Azure Machine Learning
 description: Azure Container Instances を使用して Web サービスとして Azure Machine Learning のモデルをデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, deploy
+ms.subservice: mlops
+ms.topic: how-to
+ms.custom: deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/12/2020
-ms.openlocfilehash: 1eaf58f4f951547e6e4e461803e79844f99e630a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 10/21/2021
+ms.openlocfilehash: 148cce3452bdf27a2a8962aa5f7b58d924a8eb8f
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501741"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553806"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Azure Container Instances にモデルをデプロイする
 
-Azure Machine Learning を使用して Azure Container Instances (ACI) にモデルを Web サービスとしてデプロイする方法を説明します。 次のいずれかの条件に当てはまる場合に Azure Container Instances を使用します。
+Azure Machine Learning を使用して Azure Container Instances (ACI) にモデルを Web サービスとしてデプロイする方法を説明します。 次の場合に、Azure Container Instances を使用します。
 
-- モデルを迅速にデプロイおよび検証する必要があります。 事前に ACI コンテナーを作成する必要はありません。 これらはデプロイ プロセスの一部として作成されます。
-- 開発中のモデルをテストします。 
+- 独自の Kubernetes クラスターを管理したくない場合
+- サービスのレプリカが 1 つしかなくても問題ない場合 (アップタイムに影響する可能性があります)
 
 ACI の利用可能なクォータとリージョンについては、[Azure Container Instances のクォータとリージョンの可用性](../container-instances/container-instances-quotas.md)に関する記事を参照してください。
 
@@ -38,7 +38,7 @@ ACI の利用可能なクォータとリージョンについては、[Azure Con
 
 - ワークスペースに登録されている機械学習モデル。 モデルが登録されていない場合は、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
-- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
+- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-setup-vs-code.md)。
 
 - この記事の __Python__ コード スニペットは、次の変数が設定されていることを前提としています。
 
@@ -89,16 +89,16 @@ print(service.state)
 CLI を使用してデプロイするには、次のコマンドを使用します。 登録されているモデルの名前とバージョンに `mymodel:1` を置き換えます。 このサービスに付ける名前に `myservice` を置き換えます。
 
 ```azurecli-interactive
-az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aci-deploy-config.md)]
 
-詳細については、[az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。 
+詳細については、[az ml model deploy](/cli/azure/ml/model#az_ml_model_deploy) のリファレンスを参照してください。 
 
 ## <a name="using-vs-code"></a>VS Code　を使用する
 
-[VS Code を使用したモデルのデプロイ](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)に関する記事を参照してください。
+[VS Code でリソースを管理する方法](how-to-manage-resources-vscode.md)を参照してください。
 
 > [!IMPORTANT]
 > テストするための ACI コンテナーを事前に作成する必要はありません。 ACI コンテナーは必要に応じて作成されます。
@@ -108,7 +108,7 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 ## <a name="next-steps"></a>次のステップ
 
-* [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
+* [カスタム Docker イメージを使用してモデルをデプロイする方法](./how-to-deploy-custom-container.md)
 * [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
 * [Web サービスを更新する](how-to-deploy-update-web-service.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)

@@ -1,19 +1,19 @@
 ---
 title: 'クイックスタート: Node.js で Azure Cache for Redis を使用する'
 description: このクイック スタートでは、Node.js と node_redis で Azure Cache for Redis を使用する方法について説明します。
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2018
-ms.author: yegu
+ms.author: cauribeg
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: e4c58d67668a67eee38a73d46a2a40ca29c1dfd8
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c975794d09cdd9f7f9de538fdf2debfb37bea2d3
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121254"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537830"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>クイックスタート: Node.js で Azure Cache for Redis を使用する
 
@@ -26,26 +26,31 @@ ms.locfileid: "102121254"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-- [node_redis](https://github.com/mranney/node_redis)。これは `npm install redis` コマンドでインストールできます。 
+- [node_redis](https://github.com/mranney/node_redis)。これは `npm install redis` コマンドでインストールできます。
 
 他の Node.js クライアントを使用する例については、 [Node.js Redis クライアント](https://redis.io/clients#nodejs)に関するセクションに記載されている Node.js クライアントの個々のドキュメントを参照してください。
 
 ## <a name="create-a-cache"></a>キャッシュの作成
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
+[!INCLUDE [redis-cache-access-keys](includes/redis-cache-access-keys.md)]
 
 **[ホスト名]** と **[プライマリ]** アクセス キーの環境変数を追加します。 コードに機密情報を直接含める代わりに、これらの変数をコードから使用します。
 
+```powershell
+set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
+set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
+
+```powershell
 set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 ## <a name="connect-to-the-cache"></a>キャッシュに接続する
 
-[node_redis](https://github.com/mranney/node_redis) の最新のビルドでは、TLS を使用した Azure Cache for Redis への接続をサポートしています。 次の例では、TLS エンドポイント 6380 を使用して Azure Cache for Redis に接続する方法を示しています。 
+[node_redis](https://github.com/mranney/node_redis) の最新のビルドでは、TLS を使用した Azure Cache for Redis への接続をサポートしています。 次の例では、TLS エンドポイント 6380 を使用して Azure Cache for Redis に接続する方法を示しています。
 
 ```js
 var redis = require("redis");
@@ -55,7 +60,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
     {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
 ```
 
-コード内の操作ごとに新しい接続を作成しないでください。 可能な限り接続を再利用してください。 
+コード内の操作ごとに新しい接続を作成しないでください。 可能な限り接続を再利用してください。
 
 ## <a name="create-a-new-nodejs-app"></a>新しい Node.js アプリを作成する
 
@@ -105,7 +110,7 @@ testCache();
 
 Node.js でスクリプトを実行します。
 
-```
+```powershell
 node redistest.js
 ```
 
@@ -115,12 +120,12 @@ node redistest.js
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、再利用することができます。
+次のチュートリアルに進む場合は、このクイックスタートで作成されたリソースを保持し、それを再利用できます。
 
-クイック スタートのサンプル アプリケーションの使用を終える場合は、課金を避けるために、このクイック スタートで作成した Azure リソースを削除することができます。 
+クイックスタートのサンプル アプリケーションの使用を終える場合は、課金を避けるために、このクイックスタートで作成した Azure リソースを削除することができます。
 
 > [!IMPORTANT]
-> いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、個々のブレードから各リソースを個別に削除することができます。
+> いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルをホストするためのリソースを、保持するリソースが含まれる既存のリソース グループ内に作成した場合、リソース グループを削除する代わりに、左側で各リソースを個別に削除できます。
 >
 
 [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。

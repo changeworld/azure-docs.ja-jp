@@ -1,0 +1,218 @@
+### YamlMime:FAQ
+metadata:
+  title: SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
+  description: この記事では、SSIS 統合ランタイムでの SSIS パッケージ実行に関するトラブルシューティングのガイダンスを提供します
+  ms.service: data-factory
+  ms.subservice: integration-services
+  ms.topic: conceptual
+  ms.author: sawinark
+  author: swinarko
+  ms.reviewer: sawinark
+  ms.custom: seo-lt-2019
+  ms.date: 10/22/2021
+  ms.openlocfilehash: 1f515165d7afe590d77dd7e16da2f70da99e1d0d
+  ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/05/2021
+  ms.locfileid: "131849123"
+title: SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
+summary: >
+  [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+
+  この記事では、SSIS 統合ランタイムで SQL Server Integration Services (SSIS) パッケージを実行しているときに見つかる可能性がある最も一般的なエラーを取り扱います。 ここでは、考えられる原因とそのエラーを解決するためのアクションについて説明します。
+sections:
+- name: 全般
+  questions:
+  - question: >
+      トラブルシューティングのためのログがある場所
+    answer: >
+      Azure Data Factory ポータルを使用して、SSIS パッケージの実行アクティビティの出力を確認します。 この出力には、実行結果、エラー メッセージ、および操作 ID が含まれています。 詳細については、「[パイプラインの監視](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline)」を参照してください。
+
+
+      実行の詳細なログを確認するには、SSIS カタログ (SSISDB) を使用します。 詳細については、「[実行中のパッケージとその他の操作の監視](/sql/integration-services/performance/monitor-running-packages-and-other-operations)」を参照してください。
+- name: 一般的なエラー、原因、解決策
+  questions:
+  - question: >
+      エラー メッセージ:"接続がタイムアウトしました" または "要求の処理中にサービスでエラーが発生しました。 もう一度やり直してください。 "
+    answer: >
+      考えられる原因と推奨されるアクションを次に示します。
+
+      * データ ソースまたは宛先が過負荷になっています。 データ ソースまたは宛先の負荷を調べて、十分な容量があるかどうかを確認します。 たとえば、Azure SQL Database を使用した場合、そのデータベースがタイムアウトする可能性があればスケールアップを検討します。
+
+      * SSIS 統合ランタイムとデータ ソースまたは宛先との間のネットワークが不安定です (特に複数のリージョンにまたがる接続やオンプレミスと Azure の間の接続の場合)。 次の手順に従って、SSIS パッケージ内で再試行パターンを適用します。
+        * エラー時に SSIS パッケージを副作用 (たとえば、データの損失またはデータの重複) なしに再実行できることを確認します。
+        * **[全般]** タブで、 **[SSIS パッケージの実行]** アクティビティの **[再試行]** および **[再試行の間隔]** を構成します。:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png" alt-text="[全般] タブでプロパティを設定する":::
+        * ADO.NET および OLE DB のソースまたは宛先コンポーネントでは、SSIS パッケージまたは SSIS アクティビティの接続マネージャーで **ConnectRetryCount** および **ConnectRetryInterval** を設定します。
+  - question: >
+      エラー メッセージ: "ADO NET 変換元では、接続 '...' を取得できませんでした。" と "SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。 "
+    answer: >
+      この問題は、通常、SSIS 統合ランタイムからデータ ソースまたは宛先にアクセスできないことを意味します。 その理由はさまざまです。 次のアクションを試してください。
+
+      * データ ソースまたは宛先の名前または IP を正しく渡していることを確認します。
+
+      * ファイアウォールが正しく設定されていることを確認します。
+
+      * データ ソースまたは宛先がオンプレミスの場合は、仮想ネットワークが正しく構成されていることを確認します。
+        * 同じ仮想ネットワーク内に Azure VM をプロビジョニングすることで、この問題が仮想ネットワークの構成によるものかどうかを確認できます。 その後、Azure VM からデータ ソースまたは宛先にアクセスできるかどうかを確認します。
+        * SSIS 統合ランタイムで仮想ネットワークを使用する方法の詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](join-azure-ssis-integration-runtime-virtual-network.md)」を参照してください。
+  - question: >
+      エラー メッセージ:"ADO NET 変換元では、接続 '...' を取得できませんでした。" と "マネージド接続マネージャーを作成できませんでした。 "
+    answer: >
+      考えられる原因は、パッケージで使用されている ADO.NET プロバイダーが SSIS 統合ランタイムにインストールされていないことです。 このプロバイダーは、カスタム セットアップを使用してインストールできます。 カスタム セットアップの詳細については、「[Azure-SSIS 統合ランタイムの設定のカスタマイズ](how-to-configure-azure-ssis-ir-custom-setup.md)」を参照してください。
+  - question: >
+      エラー メッセージ: "接続 '...' が見つかりませんでした。"
+    answer: >
+      以前のバージョンの SQL Server Management Studio (SSMS) における既知の問題によってこのエラーが発生する可能性があります。 このパッケージに、デプロイの実行に SSMS を使用するマシンにインストールされていないカスタム コンポーネント (SSIS Azure Feature Pack やパートナー コンポーネントなど) が含まれている場合、SSMS ではそのコンポーネントが削除され、エラーが発生します。 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) を、この問題が解決されている最新バージョンにアップグレードしてください。
+  - question: >
+      エラー メッセージ: "SSIS Executor の終了コード: -1073741819。 "
+    answer: >
+      * 考えられる原因と推奨される操作:
+        * このエラーは、複数の Excel ソースまたは宛先がマルチスレッドで並列で実行されているときに、Excel のソースと宛先の制限によって発生する場合があります。 この制限を回避するには、順番に実行されるように Excel コンポーネントを変更するか、別々のパッケージに分割して、ExecuteOutOfProcess プロパティを True に設定して "パッケージ実行タスク" を通じてトリガーします。
+  - question: >
+      エラー メッセージ: "ディスクに十分な領域がありません"
+    answer: >
+      このエラーは、ローカル ディスクが SSIS 統合ランタイム ノードで使い果たされていることを意味します。 お使いのパッケージまたはカスタム セットアップによってディスク領域が大量に消費されているかどうかを確認します。
+
+      * ディスクがお使いのパッケージによって消費されている場合は、パッケージの実行が終了した後に解放されます。
+
+      * ディスクがお使いのカスタム セットアップによって消費されている場合は、SSIS 統合ランタイムを停止し、スクリプトを変更してから、もう一度統合ランタイムを開始する必要があります。 カスタム セットアップ用に指定した Azure BLOB コンテナー全体が SSIS 統合ランタイム ノードにコピーされるため、そのコンテナーの下に不要なコンテンツがないかどうかを確認してください。
+  - question: >
+      エラー メッセージ:マスターからリソースを取得できませんでした。 Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException:Code:300004。 Description:Load ファイル "***" が失敗しました。 "
+    answer: >
+      * 考えられる原因と推奨される操作:
+        * SSIS アクティビティがファイル システム (パッケージ ファイルまたはプロジェクト ファイル) からパッケージを実行している場合、プロジェクト、パッケージ、または構成ファイルに SSIS アクティビティで指定したパッケージ アクセス資格情報でにアクセスできない場合にこのエラーが発生します。
+          * Azure File を使用する場合:
+            * ファイル パスは \\\\\<storage account name\>.file.core.windows.net\\\<file share path\> で始めます
+            * ドメインは "Azure" にします
+            * ユーザー名は \<storage account name\> にします
+            * パスワードは \<storage access key\> にします
+          * オンプレミスのファイルを使用する場合は、Azure-SSIS 統合ランタイムがオンプレミスのファイル共有にアクセスできるように、VNet、パッケージ アクセス資格情報、およびアクセス許可が適切に構成されていることを確認してください。
+  - question: >
+      エラー メッセージ: "接続に指定されたファイル名 '...' は無効です"
+    answer: >
+      * 考えられる原因と推奨される操作:
+        * 無効なファイル名が指定されている
+        * 接続マネージャー内で、短い時間ではなく FQDN (完全修飾ドメイン名) を使用していることを確認します。
+  - question: >
+      エラー メッセージ: "ファイル '...' を開くことができません"
+    answer: >
+      このエラーは、SSIS 統合ランタイムでパッケージの実行時にファイルがローカル ディスク内に見つからない場合に発生します。 次のアクションを試してください。
+
+      * SSIS 統合ランタイムで実行されているパッケージでは絶対パスを使用しないでください。 代わりに、現在実行中の作業ディレクトリ (.) または一時フォルダー (%TEMP%) を使用してください。
+
+      * SSIS 統合ランタイム ノード上にファイルを保持する必要がある場合は、[セットアップのカスタマイズ](how-to-configure-azure-ssis-ir-custom-setup.md)に関するページの説明に従ってファイルを準備します。 作業ディレクトリ内のすべてのファイルは、実行が完了した後にクリーンアップされます。
+
+      * SSIS 統合ランタイム ノードにファイルを格納する代わりに、Azure Files を使用します。 詳細については、「[Azure Files 共有を使用する](/sql/integration-services/lift-shift/ssis-azure-files-file-shares#use-azure-file-shares)」を参照してください。
+  - question: >
+      エラー メッセージ:"データベース 'SSISDB' のサイズ クォータに達しました"
+    answer: >
+      考えられる原因は、Azure SQL データベースまたは SQL Managed Instance に作成された SSISDB データベースがクォータに達したことです。 次のアクションを試してください。
+
+      * データベースの DTU を増やすことを検討します。 詳細は、[論理サーバーの SQL Database 制限](../azure-sql/database/resource-limits-logical-server.md)に関するページにあります。
+
+      * お使いのパッケージによって大量のログが生成されているかどうかを確認します。 その場合は、これらのログをクリーンアップするようエラスティック ジョブを構成できます。 詳細については、「[Azure Elastic Database ジョブで SSISDB のログをクリーンアップする](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md)」を参照してください。
+  - question: >
+      エラー メッセージ:"データベースの要求制限 ... に達しました。 "
+    answer: >
+      SSIS 統合ランタイムで多数のパッケージが並列に実行されている場合、SSISDB がその要求制限に達したことが原因でこのエラーが発生する可能性があります。 この問題を解決するには、SSISDB の DTU を増やすことを検討してください。 詳細は、[論理サーバーの SQL Database 制限](../azure-sql/database/resource-limits-logical-server.md)に関するページにあります。
+  - question: >
+      エラー メッセージ: "SSIS 操作が予期しない操作状態で失敗しました: ... "
+    answer: >
+      ほとんどの場合、このエラーは一時的な問題が原因で発生するため、パッケージの実行を再試行します。 次の手順に従って、SSIS パッケージ内で再試行パターンを適用します。
+
+
+      * エラー時に SSIS パッケージを副作用 (たとえば、データの損失またはデータの重複) なしに再実行できることを確認します。
+
+      * **[全般]** タブで、 **[SSIS パッケージの実行]** アクティビティの **[再試行]** および **[再試行の間隔]** を構成します。:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png" alt-text="[全般] タブでプロパティを設定する":::
+
+      * ADO.NET および OLE DB のソースまたは宛先コンポーネントでは、SSIS パッケージまたは SSIS アクティビティの接続マネージャーで **ConnectRetryCount** および **ConnectRetryInterval** を設定します。
+  - question: >
+      エラー メッセージ:"アクティブなワーカーがありません。 "
+    answer: >
+      通常、このエラーは、SSIS 統合ランタイムが異常な状態にあることを意味します。 Azure portal で状態と詳細なエラーを確認します。 詳細については、「[Azure-SSIS 統合ランタイム](./monitor-integration-runtime.md#azure-ssis-integration-runtime)」を参照してください。
+  - question: >
+      エラー メッセージ: "カスタム セットアップ用に指定された Azure BLOB コンテナーにアクセスできないため、統合ランタイムはアップグレードできず、最終的に機能しなくなります。 "
+    answer: >
+      このエラーは、カスタム セットアップ用に構成されたストレージに SSIS 統合ランタイムからアクセスできない場合に発生します。 指定した Shared Access Signature (SAS) URI が有効で、期限切れになっていないかどうかを確認します。
+  - question: >
+      エラー メッセージ:"Microsoft OLE DB Provider for Analysis Services。 'Hresult: 0x80004005 説明:' COM エラー: COM エラー: mscorlib; 呼び出しのターゲットから例外がスローされました"
+    answer: "考えられる原因の 1 つは、Azure Analysis Services の認証用に、Azure AD Multi-Factor Authentication が有効になっているユーザー名またはパスワードが構成されていることです。 この認証は、SSIS 統合ランタイムではサポートされていません。 Azure Analysis Services の認証には、サービス プリンシパルを使用してみてください。\n\n1. 「[サービス プリンシパルによる自動化](../analysis-services/analysis-services-service-principal.md)」の説明に従って、サービス プリンシパルを準備します。\n2. 接続マネージャーで、 **[特定のユーザー名とパスワードを使用する]** を構成します。ユーザー名として **app: *&lt;AppID&gt;* @*&lt;TenantID&gt;** *、パスワードとして clientSecret を設定します。 正しい形式のユーザー名の例を次に示します。\n \n   `app:12345678-9012-3456-789a-bcdef012345678@9abcdef0-1234-5678-9abc-def0123456789abc`\n1. 接続マネージャーで、 **[特定のユーザー名とパスワードを使用する]** を構成します。ユーザー名として **AppID**、パスワードとして **clientSecret** を設定します。\n"
+  - question: >
+      エラー メッセージ: "ADONET 変換元では、接続 {GUID} を取得できませんでした。エラー メッセージ: ユーザー 'NT AUTHORITY\ANONYMOUS LOGON'" はログインできませんでした (マネージド ID の使用時)"
+    answer: >
+      *ConnectUsingManagedIdentity* パラメーターが **True** のときは、接続マネージャーの認証方法を **[Active Directory パスワード認証]** として構成していないことを確認してください。 代わりに **[SQL 認証]** として構成できます。これは、*ConnectUsingManagedIdentity* が設定されている場合は無視されます。
+  - question: >
+      エラー メッセージ: "OData ソース [...] での 0xC020801F: ランタイム接続マネージャーからマネージド接続を取得できません"
+    answer: >
+      考えられる原因の 1 つは、SSIS 統合ランタイムでトランスポート層セキュリティ (TLS) が有効になっていないことです。これは、OData ソースに必要です。 [セットアップをカスタマイズする] を使用して、SSIS 統合ランタイムで TLS を有効にできます。 詳細については、「[SSIS から Project Online Odata に接続することはできません](/office365/troubleshoot/cant-connect-project-online-odata-from-ssis)」と「[Azure-SSIS 統合ランタイムの設定のカスタマイズ](how-to-configure-azure-ssis-ir-custom-setup.md)」を参照してください。
+  - question: >
+      エラー メッセージ: "操作 guid ... のステージング タスクの要求は次のエラーのため失敗します: ステージング操作のディスパッチに失敗しました。エラー メッセージ: Microsoft.SqlServer.IntegrationServices.AisAgentCore.AisAgentException: データ プロキシの読み込みに失敗しました。 "
+    answer: >
+      Azure-SSIS 統合ランタイムがセルフホステッド統合ランタイムで構成されていることを確認します。 詳細については、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md)」を参照してください。
+  - question: >
+      エラー メッセージ:"Staging task status:失敗。 ステージング タスク エラー: ErrorCode: 2010、ErrorMessage: セルフホステッド統合ランタイム ... がオフラインです "
+    answer: >
+      セルフホステッド統合ランタイムがインストールおよび開始されていることを確認します。 詳細については、「[セルフホステッド統合ランタイムを作成して構成する](create-self-hosted-integration-runtime.md)」を参照してください。
+  - question: >
+      エラー メッセージ: "ステージング タスク エラー: ErrorCode: 2906、ErrorMessage: パッケージの実行に失敗しました。 出力: {"OperationErrorMessages": "エラー: 要求された OLE DB プロバイダー ... が登録されていません。 64 ビット ドライバーがインストールされていない場合は、32 ビット モードでパッケージを実行してください... "
+    answer: >
+      パッケージ内の OLE DB コネクタによって使用される対応するプロバイダーが、セルフホステッド統合ランタイム マシンに適切にインストールされていることを確認します。 詳細については、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)」を参照してください。
+  - question: >
+      エラー メッセージ: "ステージング タスク エラー: ErrorCode: 2906、ErrorMessage: パッケージの実行に失敗しました。 出力: {"OperationErrorMessages": "エラー: System.IO.FileLoadException: ファイルまたはアセンブリ 'Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35' またはその依存関係の 1 つが読み込めませんでした。 見つかったアセンブリのマニフェスト定義がアセンブリ参照と一致しません。'... "
+    answer: >
+      考えられる原因の 1 つは、セルフホステッド統合ランタイムがインストールされていないか、適切にアップグレードされていないことです。 最新のセルフホステッド統合ランタイムをダウンロードして再インストールすることをお勧めします。 詳細については、「[セルフホステッド統合ランタイムを作成して構成する](create-self-hosted-integration-runtime.md#installation-best-practices)」を参照してください。
+  - question: >
+      エラー メッセージ: "ステージング タスクに失敗しました。 TaskStatus: 失敗, ErrorCode: 2906, ErrorMessage: パッケージの実行に失敗しました。 詳細を確認するには、同じ行で実行した操作の出力を選択してください。, 出力: {"OperationErrorMessages": "4/14/2021 7:10:35 AM +00:00 : = 名前付きパイプ プロキシの開始に失敗しました..."
+    answer: >
+      セルフホステッド IR サービスを実行しているアカウントにセキュリティ ポリシーを正しく割り当てているかどうかを確認します。 “SSIS パッケージの実行” に Windows 認証を使用する場合、または実行時の認証情報を SSIS カタログ (SSISDB) に設定している場合、使用する Windows アカウントにも同じセキュリティ ポリシーを割り当てる必要があります。 詳細については、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md#enable-windows-authentication-for-on-premises-tasks)」を参照してください。
+  - question: >
+      エラー メッセージ:"メタデータを要求するときは、接続を確立する必要があります。 オフラインで作業している場合は、[SSIS] メニューの [オフライン作業] をオフにし、接続を有効にしてください"
+    answer: >
+      * 考えられる原因と推奨される操作:
+        * 実行ログに "The component does not support using connection manager with ConnectByProxy value setting true (ConnectByProxy 値の設定が true の場合、コンポーネントは接続マネージャーの使用をサポートしていません)" という警告メッセージも表示される場合は、"ConnectByProxy" がまだサポートされていないコンポーネントで接続マネージャーが使用されていることを意味します。 サポート対象のコンポーネントについては、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-use-a-proxy)」を参照してください。
+        * 実行ログは、[SSMS レポート](/sql/integration-services/performance/monitor-running-packages-and-other-operations#reports)または SSIS パッケージ実行アクティビティで指定したログ フォルダー内にあります。
+        * 別の方法として、vNet を使用してオンプレミスのデータにアクセスすることもできます。 詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](join-azure-ssis-integration-runtime-virtual-network.md)」を参照してください。
+  - question: >
+      エラー メッセージ:"Staging task status:失敗。 ステージング タスク エラー: ErrorCode: 2906, ErrorMessage: パッケージの実行に失敗しました。 出力: {"OperationErrorMessages": "SSIS Executor 終了コード: -1.\n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }} "
+    answer: >
+      Visual C++ ランタイムがセルフホステッド統合ランタイム マシンにインストールされていることを確認します。 詳細については、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)」を参照してください。
+  - question: >
+      複数のパッケージの実行が予期せずにトリガーされた
+    answer: >
+      * 考えられる原因と推奨される操作:
+        * SSIS パッケージの実行をトリガーするために、ADF ストアド プロシージャ アクティビティまたはルックアップ アクティビティが使用されます。 t-sql コマンドによって、一時的な問題が発生し、再実行がトリガーされ、複数のパッケージが実行されることがあります。
+        * 代わりに ExecuteSSISPackage アクティビティを使用してください。これにより、ユーザーがアクティビティで再試行回数を設定しない限り、パッケージの実行は再実行されません。 詳細については、[SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行](how-to-invoke-ssis-package-ssis-activity.md)に関するページを参照してください。
+        * 実行が既にトリガーされているかどうかを確認して、t-sql コマンドを再実行できるように調整します。
+  - question: >
+      パッケージの実行に時間がかかりすぎる
+    answer: >
+      考えられる原因と推奨されるアクションを次に示します。
+
+
+      * SSIS 統合ランタイムでスケジュール設定されているパッケージの実行が多すぎます。 これらのすべての実行は、キュー内で順番を待つことになります。
+        * 次の数式を使用して、最大値を確認します。
+
+          IR あたりの最大並列実行数 = ノード数 * ノードあたりの最大並列実行数
+        * ノード数とノードあたりの最大並列実行数を設定する方法については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)」を参照してください。
+      * SSIS 統合ランタイムが停止しているか、異常な状態にあります。 SSIS 統合ランタイムの状態とエラーを確認する方法については、「[Azure-SSIS 統合ランタイム](monitor-integration-runtime.md#azure-ssis-integration-runtime)」を参照してください。
+
+
+      さらに、 **[全般]** タブでタイムアウトを設定することもお勧めします。:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png" alt-text="[全般] タブでプロパティを設定する":::。
+  - question: >
+      パッケージの実行のパフォーマンスが低い
+    answer: >-
+      次のアクションを試してください。
+
+
+      * SSIS 統合ランタイムがデータ ソースや宛先と同じリージョンにあることを確認します。
+
+
+      * パッケージの実行のログ レベルを **[パフォーマンス]** に設定して、実行内の各コンポーネントの実行時間の情報を収集します。 詳細については、「[Integration Services (SSIS) のログ記録](/sql/integration-services/performance/integration-services-ssis-logging)」を参照してください。
+
+
+      * Azure portal で IR ノードのパフォーマンスを確認します。
+        * SSIS 統合ランタイムを監視する方法については、「[Azure-SSIS 統合ランタイム](monitor-integration-runtime.md#azure-ssis-integration-runtime)」を参照してください。
+        * Azure portal でデータ ファクトリのメトリックを表示することで、SSIS 統合ランタイムの CPU またはメモリの履歴を確認できます。
+          :::image type="content" source="media/ssis-integration-runtime-ssis-activity-faq/monitor-metrics-ssis-integration-runtime.png" alt-text="SSIS 統合ランタイムのメトリックを監視する":::

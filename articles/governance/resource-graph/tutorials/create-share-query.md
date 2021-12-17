@@ -1,14 +1,14 @@
 ---
-title: チュートリアル:Azure portal でのクエリの管理
+title: 'チュートリアル: Azure portal でのクエリの管理'
 description: このチュートリアルでは、Azure portal で Resource Graph クエリを作成し、新しいクエリを他のユーザーと共有します。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
-ms.openlocfilehash: 7240a843cfa041137b28284e396c8a4b62a81926
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 669864333dd20d87c13a9ad049250ef5ca20bd7e
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98916681"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324785"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>チュートリアル:Azure portal で Azure Resource Graph クエリを作成して共有する
 
@@ -44,7 +44,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
    **[クエリの実行]** を選択すると、下のウィンドウにクエリの結果が表示されます。
 
-   このクエリについて詳しくは、[サンプル – 仮想マシンの数の取得 (OS の種類別)](../samples/starter.md#count-os) に関する記事をご覧ください。
+   このクエリについて詳しくは、[サンプル - 仮想マシンの数の取得 (OS の種類別)](../samples/starter.md#count-os) に関する記事をご覧ください。
 
 1. **[保存]** または **[名前を付けて保存]** を選択します。 **[クエリの保存]** ウィンドウで、名前に「**Count VMs by OS**」と入力し、種類は **[プライベート クエリ]** のままにして、下部にある **[保存]** を選択します。 タブのタイトルが、 **[クエリ 1]** から **[Count VMs by OS]** に変わります。
 
@@ -52,7 +52,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
 1. **[クエリを開く]** を選択します。 種類が **[プライベート クエリ]** であることを確認します。 保存した名前 "**Count VMs by OS**" が、 **[クエリ名]** の一覧に表示されるようになります。 保存したクエリのタイトル リンクを選択すると、そのクエリの名前の新しいタブに読み込まれます。
 
-   > [!NOTE] 
+   > [!NOTE]
    > 保存されているクエリを開き、タブにその名前が表示されている状態で、 **[保存]** ボタンを選択すると、行った変更でクエリが更新されます。 この開いているクエリから新しいクエリを作成して保存するには、 **[名前を付けて保存]** を選択して、新しいクエリを保存したときと同じようにします。
 
 1. 保存したクエリを削除するには、 **[クエリを開く]** を再び選択し、 **[種類]** フィールドが **[プライベート クエリ]** に設定されていることを確認します。 保存されている `Count VMs by OS` クエリの行で、 **[削除]** (ごみ箱アイコン) を選択します。 確認ダイアログ ボックスで、 **[はい]** を選択してクエリの削除を完了します。
@@ -71,10 +71,10 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
    | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
-    
+
    **[クエリの実行]** を選択すると、下のウィンドウにクエリの結果が表示されます。
 
-   このクエリについて詳しくは、[サンプル – 仮想マシンの数の取得 (OS の種類別)](../samples/starter.md#count-os) に関する記事をご覧ください。
+   このクエリについて詳しくは、[サンプル - 仮想マシンの数の取得 (OS の種類別)](../samples/starter.md#count-os) に関する記事をご覧ください。
 
 1. **[保存]** または **[名前を付けて保存]** を選択します。
 
@@ -87,10 +87,10 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 1. **['resource-graph-queries' リソース グループに発行します]** チェック ボックスをオンのままにし、 **[リソース グループの場所]** を **[(米国) 米国中西部]** に設定します。
 
 1. **[クエリの保存]** ウィンドウの下部にある **[保存]** を選択します。 タブのタイトルが、 **[クエリ 1]** から **[Count VMs by OS]** に変わります。 **resource-graph-queries** リソース グループを初めて使うときは、リソース グループが作成されるので、保存に予想以上の時間がかかります。
-   
+
    :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="新しいクエリを共有クエリとして保存する" border="false":::
 
-   > [!NOTE] 
+   > [!NOTE]
    > 既存のリソース グループの名前を指定して共有クエリをそこに保存する場合は、 **['resource-graph-queries' リソース グループに発行します]** チェック ボックスをオフにすることができます。 クエリに既定の名前のリソース グループを使用すると、共有クエリを探すのが容易になります。 また、そのリソース グループの目的もより明確になります。 ただし、既存のアクセス許可に基づくセキュリティ上の理由から、既存のリソース グループを選択することもあります。
 
 1. Azure portal で Azure Resource Graph エクスプローラーから別の場所に移動し、再びエクスプローラーに戻ります。 保存したクエリが表示されなくなり、 **[クエリ 1]** タブに戻っていることに注意してください。
@@ -99,7 +99,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
    :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="アイコンの付いたクエリを表示する" border="false":::
 
-   > [!NOTE] 
+   > [!NOTE]
    > 保存されているクエリを開き、タブにその名前が表示されている状態では、 **[保存]** ボタンにより、行った変更でクエリが更新されます。 新しいクエリを作成して保存するには、 **[名前を付けて保存]** を選択して、新しいクエリを保存したときと同じようにします。
 
 ## <a name="discover-shared-queries"></a>共有クエリを見つける
@@ -122,7 +122,7 @@ Azure portal の Resource Graph クエリ ページには、ログインして�
 ### <a name="list-resource-groups-resources"></a>リソース グループのリソースの一覧を表示する
 
 Resource Graph クエリは、リソース グループの一部である他のリソースと共に一覧表示されます。
-Resource Graph クエリを選択すると、そのクエリのページが開きます。 省略記号およびショートカット メニュー オプション (右クリックによって起動) は、Resource Graph クエリ ページと同じように動作します。
+Resource Graph クエリを選択すると、そのクエリのページが開きます。 省略記号およびショートカット メニュー オプション (選択したままにするか、右クリックによって起動) は、Resource Graph クエリ ページと同じように動作します。
 
 ### <a name="query-resource-graph"></a>Resource Graph のクエリを実行する
 
@@ -154,7 +154,7 @@ Resource Graph 共有クエリは、`{{shared-query-uri}}` 構文 (プレビュ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、プライベート クエリと共有クエリを作成しました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
+このチュートリアルでは、プライベート クエリと共有クエリを作成しました。 Resource Graph 言語の詳細については、クエリ言語の詳細ページに進んでください。
 
 > [!div class="nextstepaction"]
 > [クエリ言語に関する詳細情報を入手します](../concepts/query-language.md)

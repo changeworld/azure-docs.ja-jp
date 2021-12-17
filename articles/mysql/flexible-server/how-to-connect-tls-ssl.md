@@ -6,27 +6,26 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 399cf8087d39f78184cfdae4b9f0e34efecaea66
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 2f73d6c8969cd6915c1a571eb6196bcf8f901bd6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491605"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468140"
 ---
 # <a name="connect-to-azure-database-for-mysql---flexible-server-with-encrypted-connections"></a>暗号化された接続を使用して Azure Database for MySQL - フレキシブル サーバーに接続する
 
-> [!IMPORTANT]
-> Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Azure Database for MySQL フレキシブル サーバーでは、Secure Sockets Layer (SSL) とトランスポート層セキュリティ (TLS) の暗号化を使用した MySQL サーバーへのクライアント アプリケーションの接続がサポートされます。 TLS は、データベース サーバーとクライアント アプリケーションの間の暗号化されたネットワーク接続を保証する業界標準のプロトコルであり、ユーザーがコンプライアンス要件に準拠できるようにします。
 
-Azure Database for MySQL フレキシブル サーバーでは、トランスポート層セキュリティ (TLS 1.2) を使用する暗号化された接続が既定でサポートされ、TLS 1.0 と TLS 1.1 を使用する受信接続はすべて既定では拒否されます。 フレキシブル サーバーに対する暗号化された接続の強制または TLS のバージョンの構成は、この記事で説明されているように変更できます。 
+Azure Database for MySQL フレキシブル サーバーでは、トランスポート層セキュリティ (TLS 1.2) を使用する暗号化された接続が既定でサポートされ、TLS 1.0 と TLS 1.1 を使用する受信接続はすべて既定では拒否されます。 フレキシブル サーバーに対する暗号化された接続の強制または TLS のバージョンの構成は、この記事で説明されているように変更できます。
 
 次に、フレキシブル サーバーで使用できる SSL と TLS の設定のさまざまな構成を示します。
 
-| 通信の種類   | サーバー パラメーターの設定      | 説明                                    |
+| シナリオ   | サーバー パラメーターの設定      | 説明                                    |
 |------------|--------------------------------|------------------------------------------------|
-|SSL を無効にする (暗号化された接続) | require_secure_transport = OFF |レガシ アプリケーションで MySQL サーバーへの暗号化された接続がサポートされていない場合、require_secure_transport=OFF を設定すると、フレキシブル サーバーへの暗号化された接続の強制を無効にできます。|
+|SSL 強制を無効にする | require_secure_transport = OFF |レガシ アプリケーションで MySQL サーバーへの暗号化された接続がサポートされていない場合、require_secure_transport=OFF を設定すると、フレキシブル サーバーへの暗号化された接続の強制を無効にできます。|
 |バージョン 1.2 より前の TLS で SSL を強制する | require_secure_transport = ON および tls_version = TLSV1 または TLSV1.1| レガシ アプリケーションで暗号化された接続がサポートされているが、バージョン 1.2 より前の TLS が必要な場合は、暗号化された接続を有効にできますが、アプリケーションでサポートされている TLS のバージョン (v1.0 または v1.1) での接続を許可するようにフレキシブル サーバーを構成します|
 |TLS バージョン 1.2 で SSL を強制する (既定の構成)|require_secure_transport = ON および tls_version = TLSV1.2| これは、フレキシブル サーバーに推奨される既定の構成です。|
 |TLS バージョン 1.3 で SSL を強制する (MySQL v8.0 以降でサポート)| require_secure_transport = ON および tls_version = TLSV1.3| これは、新しいアプリケーションの開発に便利であり、推奨されます|
@@ -35,32 +34,36 @@ Azure Database for MySQL フレキシブル サーバーでは、トランスポ
 > フレキシブル サーバーでの SSL 暗号の変更はサポートされていません。 tls_version が TLS バージョン 1.2 に設定されている場合、FIPS 暗号スイートが既定で強制されます。 バージョン 1.2 以外の TLS の場合、SSL 暗号は、MySQL Community のインストールに付随する既定値に設定されます。
 
 この記事では、次のことについて説明します。
-* フレキシブル サーバーを構成する 
-  * SSL を無効にする 
+
+* フレキシブル サーバーを構成する
+  * SSL を無効にする
   * バージョン 1.2 より前の TLS で SSL を強制する
-* mysql コマンド ラインを使用してフレキシブル サーバーに接続する 
+* mysql コマンド ラインを使用してフレキシブル サーバーに接続する
   * 暗号化された接続を無効にする
   * 暗号化された接続を有効にする
 * 接続の暗号化の状態を確認する
 * さまざまなアプリケーション フレームワークを使用して、暗号化された接続でフレキシブル サーバーに接続する
 
-## <a name="disable-ssl-on-your-flexible-server"></a>フレキシブル サーバーで SSL を無効にする
+## <a name="disable-ssl-enforcement-on-your-flexible-server"></a>フレキシブル サーバーで SSL 強制を無効にする
+
 クライアント アプリケーションが暗号化された接続をサポートしていない場合、フレキシブル サーバーに対して、暗号化された接続の強制を無効にする必要があります。 暗号化された接続の強制を無効にするには、スクリーンショットに示されているように require_secure_transport サーバー パラメーターを OFF に設定し、このサーバー パラメーターの構成を保存して有効にします。 require_secure_transport は、ただちに有効になる **動的サーバー パラメーター** であるため、有効にするためにサーバーを再起動する必要はありません。
 
 > :::image type="content" source="./media/how-to-connect-tls-ssl/disable-ssl.png" alt-text="Azure Database for MySQL フレキシブル サーバーで SSL を無効にする方法を示すスクリーンショット。":::
 
 ### <a name="connect-using-mysql-command-line-client-with-ssl-disabled"></a>SSL を無効にした mysql コマンド ライン クライアントを使用して接続する
 
-次の例は、mysql コマンド ライン インターフェイスを使用してサーバーに接続する方法を示しています。 `--ssl-mode=DISABLED` 接続文字列設定を使用して、mysql クライアントからの TLS/SSL 接続を無効にします。 値を実際のサーバー名とパスワードに置き換えてください。 
+次の例は、mysql コマンド ライン インターフェイスを使用してサーバーに接続する方法を示しています。 `--ssl-mode=DISABLED` 接続文字列設定を使用して、mysql クライアントからの TLS/SSL 接続を無効にします。 値を実際のサーバー名とパスワードに置き換えてください。
 
 ```bash
- mysql.exe -h mydemoserver.mysql.database.azure.com -u myadmin -p --ssl-mode=DISABLED 
+ mysql.exe -h mydemoserver.mysql.database.azure.com -u myadmin -p --ssl-mode=DISABLED
 ```
+
 require_secure_transport を OFF に設定しても、暗号化された接続がサーバー側でサポートされなくなるということではないので注意してださい。 フレキシブル サーバーに対して require_secure_transport を OFF に設定した場合でも、クライアントが暗号化された接続を使用して接続すると、それはそのまま受け入れられます。 次に示す、require_secure_transport=OFF で構成されたフレキシブル サーバーへの mysql クライアントを使用した接続も、下のように正常に機能します。
 
 ```bash
  mysql.exe -h mydemoserver.mysql.database.azure.com -u myadmin -p --ssl-mode=REQUIRED
 ```
+
 ```output
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 17
@@ -94,6 +97,7 @@ mysql> show global variables like '%require_secure_transport%';
 ## <a name="connect-using-mysql-command-line-client-with-tlsssl"></a>TLS/SSL で mysql コマンド ライン クライアントを使用して接続する
 
 ### <a name="download-the-public-ssl-certificate"></a>パブリック SSL 証明書をダウンロードする
+
 クライアント アプリケーションで暗号化された接続を使用するには、下のスクリーンショットに示されているように、Azure portal の [ネットワーク] ブレードでも入手できる[パブリック SSL 証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)をダウンロードする必要があります。
 
 > :::image type="content" source="./media/how-to-connect-tls-ssl/download-ssl.png" alt-text="Azure portal からパブリック SSL 証明書をダウンロードする方法を示すスクリーンショット。":::
@@ -104,15 +108,16 @@ mysql> show global variables like '%require_secure_transport%';
 
 *パブリック アクセス (使用できる IP アドレス)* を使用してフレキシブル サーバーを作成した場合は、サーバー上のファイアウォール規則の一覧にローカル IP アドレスを追加できます。
 
-ローカル環境からサーバーに接続するには、[mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) または [MySQL Workbench](./connect-workbench.md) のどちらかを選択できます。 
+ローカル環境からサーバーに接続するには、[mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) または [MySQL Workbench](./connect-workbench.md) のどちらかを選択できます。
 
-次の例は、mysql コマンド ライン インターフェイスを使用してサーバーに接続する方法を示しています。 `--ssl-mode=REQUIRED` 接続文字列設定を使用して、TLS/SSL 証明書の検証を適用します。 ローカルの証明書ファイルのパスを `--ssl-ca` パラメーターに渡します。 値を実際のサーバー名とパスワードに置き換えてください。 
+次の例は、mysql コマンド ライン インターフェイスを使用してサーバーに接続する方法を示しています。 `--ssl-mode=REQUIRED` 接続文字列設定を使用して、TLS/SSL 証明書の検証を適用します。 ローカルの証明書ファイルのパスを `--ssl-ca` パラメーターに渡します。 値を実際のサーバー名とパスワードに置き換えてください。
 
 ```bash
 sudo apt-get install mysql-client
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
+
 > [!Note]
 > `--ssl-ca` に渡された値が、保存済みの証明書のファイル パスと一致することを確認します。
 
@@ -129,7 +134,8 @@ TLS/SSL を使用して MySQL サーバーに接続していることを確認�
 ```dos
 mysql> status
 ```
-接続が暗号化されていることを確認します。そのために、出力に **SSL: Cipher in use is ** (SSL: 使用中の暗号: ) と表示されているとを確認します。 この暗号スイートは例を示しており、クライアントによっては別の暗号スイートが表示されることがあります。
+
+接続が暗号化されていることを確認します。そのために、出力に "**SSL: Cipher in use is**" (SSL: 使用中の暗号) と表示されているとを確認します。 この暗号スイートは例を示しており、クライアントによっては別の暗号スイートが表示されることがあります。
 
 ## <a name="connect-to-your-flexible-server-with-encrypted-connections-using-various-application-frameworks"></a>さまざまなアプリケーション フレームワークを使用して、暗号化された接続でフレキシブル サーバーに接続する
 
@@ -138,7 +144,8 @@ Azure portal でサーバーに使用できる [接続文字列] ページで事
 アプリケーションから TLS/SSL 経由でフレキシブル サーバーへの暗号化された接続を確立するには、次のコード サンプルを参照してください。
 
 ### <a name="wordpress"></a>WordPress
-[SSL パブリック証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)をダウンロードして、wp-config.php 内で ```// ** MySQL settings - You can get this info from your web host ** //``` 行の後に次の行を追加します。
+
+[SSL パブリック証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)をダウンロードして、wp-config.php 内で ```// **MySQL settings - You can get this info from your web host** //``` 行の後に次の行を追加します。
 
 ```php
 //** Connect with SSL** //
@@ -238,6 +245,7 @@ db, _ := sql.Open("mysql", connectionString)
 
 ```java
 # generate truststore and keystore in code
+
 String importCert = " -import "+
     " -alias mysqlServerCACert "+
     " -file " + ssl_ca +
@@ -252,6 +260,7 @@ sun.security.tools.keytool.Main.main(importCert.trim().split("\\s+"));
 sun.security.tools.keytool.Main.main(genKey.trim().split("\\s+"));
 
 # use the generated keystore and truststore
+
 System.setProperty("javax.net.ssl.keyStore","path_to_keystore_file");
 System.setProperty("javax.net.ssl.keyStorePassword","password");
 System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file");
@@ -267,6 +276,7 @@ conn = DriverManager.getConnection(url, properties);
 
 ```java
 # generate truststore and keystore in code
+
 String importCert = " -import "+
     " -alias mysqlServerCACert "+
     " -file " + ssl_ca +
@@ -281,6 +291,7 @@ sun.security.tools.keytool.Main.main(importCert.trim().split("\\s+"));
 sun.security.tools.keytool.Main.main(genKey.trim().split("\\s+"));
 
 # use the generated keystore and truststore
+
 System.setProperty("javax.net.ssl.keyStore","path_to_keystore_file");
 System.setProperty("javax.net.ssl.keyStorePassword","password");
 System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file");
@@ -310,9 +321,32 @@ using (var connection = new MySqlConnection(builder.ConnectionString))
 }
 ```
 
+### <a name="nodejs"></a>Node.js
+
+```node
+var fs = require('fs');
+var mysql = require('mysql');
+const serverCa = [fs.readFileSync("/var/www/html/DigiCertGlobalRootCA.crt.pem", "utf8")];
+var conn=mysql.createConnection({
+    host:"mydemoserver.mysql.database.azure.com",
+    user:"myadmin",
+    password:"yourpassword",
+    database:"quickstartdb",
+    port:3306,
+    ssl: {
+        rejectUnauthorized: true,
+        ca: serverCa
+    }
+});
+conn.connect(function(err) {
+  if (err) throw err;
+});
+```
+
 ## <a name="next-steps"></a>次のステップ
-- [MySQL Workbench を使用して Azure Database for MySQL フレキシブル サーバーに接続し、そのデータにクエリを実行する](./connect-workbench.md)
-- [PHP を使用して Azure Database for MySQL フレキシブル サーバーに接続し、そのデータにクエリを実行する](./connect-php.md)
-- [Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーの仮想ネットワークを作成および管理する](./how-to-manage-virtual-network-cli.md)。
-- [Azure Database for MySQL フレキシブル サーバーでのネットワーク](./concepts-networking.md)の詳細を確認する
-- [Azure Database for MySQL フレキシブル サーバーのファイアウォール規則](./concepts-networking.md#public-access-allowed-ip-addresses)の詳細を確認する
+
+* [MySQL Workbench を使用して Azure Database for MySQL フレキシブル サーバーに接続し、そのデータにクエリを実行する](./connect-workbench.md)
+* [PHP を使用して Azure Database for MySQL フレキシブル サーバーに接続し、そのデータにクエリを実行する](./connect-php.md)
+* [Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーの仮想ネットワークを作成および管理する](./how-to-manage-virtual-network-cli.md)。
+* [Azure Database for MySQL フレキシブル サーバーでのネットワーク](./concepts-networking.md)の詳細を確認する
+* [Azure Database for MySQL フレキシブル サーバーのファイアウォール規則](./concepts-networking-public.md#public-access-allowed-ip-addresses)の詳細を確認する

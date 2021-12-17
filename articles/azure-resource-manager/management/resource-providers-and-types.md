@@ -2,14 +2,14 @@
 title: リソース プロバイダーとリソースの種類
 description: Azure Resource Manager をサポートするリソース プロバイダーについて説明します。 ここでは、そのスキーマと利用可能な API バージョン、およびリソースをホストできるリージョンについて説明します。
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 584f3065d0e696f2ee379a8cf6c048994a1e68d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/15/2021
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c048da5d7027885bf30b512d9e16e5851697c8b4
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493137"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522652"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure リソース プロバイダーと種類
 
@@ -32,16 +32,21 @@ ms.locfileid: "103493137"
 
 ## <a name="register-resource-provider"></a>リソース プロバイダーの登録
 
-リソース プロバイダーを使用する前に、Azure サブスクリプションにリソース プロバイダーを登録する必要があります。 登録により、サブスクリプションがリソース プロバイダーと連携するように構成されます。 一部のリソース プロバイダーが既定で登録されています。 既定で登録されているリソース プロバイダーの一覧については、「[Azure サービスのリソース プロバイダー](azure-services-resource-providers.md)」を参照してください。
-
-その他のリソース プロバイダーは、特定のアクションを実行すると自動的に登録されます。 Azure Resource Manager テンプレートをデプロイすると、必要なすべてのリソース プロバイダーが自動的に登録されます。 ポータルを使用してリソースを作成すると、通常、リソース プロバイダーが自動的に登録されます。 他のシナリオでは、場合によっては、リソース プロバイダーを手動で登録する必要があります。 
-
-この記事では、リソース プロバイダーの登録状態を確認し、必要に応じて登録する方法について説明します。 リソース プロバイダーの `/register/action` 操作を実行するためのアクセス許可が必要です。 このアクセス許可は、共同作成者ロールと所有者ロールに含まれます。
+リソース プロバイダーを使用する前に、Azure サブスクリプションにリソース プロバイダーを登録する必要があります。 登録により、サブスクリプションがリソース プロバイダーと連携するように構成されます。 
 
 > [!IMPORTANT]
 > リソース プロバイダーの登録は、それを使用する準備ができた場合のみ行ってください。 登録手順により、サブスクリプション内で最小限の特権を維持できます。 悪意のあるユーザーは、登録されていないリソース プロバイダーを使用することはできません。
 
-アプリケーション コードによって、**登録中** 状態にあるリソース プロバイダーのリソースの作成がブロックされるべきではありません。 リソース プロバイダーを登録すると、サポートされているリージョンごとに操作が個別に実行されます。 リージョンにリソースを作成する際は、そのリージョンでのみ登録を完了する必要があります。 登録中の状態にあるリソース プロバイダーがブロックされないようにすることで、すべてのリージョンの完了まで待機するよりもはるかに早くアプリケーションを続行できます。
+一部のリソース プロバイダーが既定で登録されています。 既定で登録されているリソース プロバイダーの一覧については、「[Azure サービスのリソース プロバイダー](azure-services-resource-providers.md)」を参照してください。
+
+その他のリソース プロバイダーは、特定のアクションを実行すると自動的に登録されます。 ポータルを使用してリソースを作成すると、通常、リソース プロバイダーが自動的に登録されます。 Azure Resource Manager テンプレートまたは Bicep ファイルをデプロイすると、テンプレートに定義されているリソース プロバイダーが自動的に登録されます。 ただし、テンプレート内のリソースによって、テンプレート内にないサポート リソース (監視やセキュリティ リソースなど) を作成する場合は、これらのリソース プロバイダーを手動で登録する必要があります。
+
+他のシナリオでは、場合によっては、リソース プロバイダーを手動で登録する必要があります。
+
+> [!IMPORTANT]
+> アプリケーション コードによって、**登録中** 状態にあるリソース プロバイダーの **リソースの作成がブロックされるべきではありません**。 リソース プロバイダーを登録すると、サポートされているリージョンごとに操作が個別に実行されます。 リージョンにリソースを作成する際は、そのリージョンでのみ登録を完了する必要があります。 登録中の状態にあるリソース プロバイダーがブロックされないようにすることで、すべてのリージョンの完了まで待機するよりもはるかに早くアプリケーションを続行できます。
+
+リソース プロバイダーの `/register/action` 操作を実行するためのアクセス許可が必要です。 このアクセス許可は、共同作成者ロールと所有者ロールに含まれます。
 
 サブスクリプション内に特定のリソース プロバイダーからのリソースの種類がまだある場合、そのリソース プロバイダーの登録を解除することはできません。
 
@@ -67,6 +72,10 @@ ms.locfileid: "103493137"
 6. 登録するリソース プロバイダーを探し、 **[登録]** を選択します。 サブスクリプションで最小限の特権を維持するには、使用する準備ができたリソース プロバイダーのみ登録します。
 
    :::image type="content" source="./media/resource-providers-and-types/register-resource-provider.png" alt-text="リソース プロバイダーの登録":::
+
+> [!IMPORTANT]
+> [前述のように](#register-resource-provider)、****登録中** 状態にあるリソース プロバイダーのリソースの作成をブロックしないでください。** 登録中の状態にあるリソース プロバイダーがブロックされないようにすることで、すべてのリージョンの完了まで待機するよりもはるかに早くアプリケーションを続行できます。
+
 
 ### <a name="view-resource-provider"></a>リソース プロバイダーの表示
 
@@ -102,7 +111,7 @@ Azure ですべてのリソース プロバイダーおよびサブスクリプ�
 Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
 ```
 
-これは次のような結果を返します。
+このコマンドによって次の情報が返されます。
 
 ```output
 ProviderNamespace                RegistrationState
@@ -126,7 +135,7 @@ Microsoft.CognitiveServices      Registered
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
-これは次のような結果を返します。
+このコマンドによって次の情報が返されます。
 
 ```output
 ProviderNamespace : Microsoft.Batch
@@ -135,13 +144,16 @@ ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
 Locations         : {West Europe, East US, East US 2, West US...}
 ```
 
+> [!IMPORTANT]
+> [前述のように](#register-resource-provider)、****登録中** 状態にあるリソース プロバイダーのリソースの作成をブロックしないでください。** 登録中の状態にあるリソース プロバイダーがブロックされないようにすることで、すべてのリージョンの完了まで待機するよりもはるかに早くアプリケーションを続行できます。
+
 特定のリソース プロバイダーの情報を表示するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
 Get-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
-これは次のような結果を返します。
+このコマンドによって次の情報が返されます。
 
 ```output
 {ProviderNamespace : Microsoft.Batch
@@ -158,7 +170,7 @@ Locations         : {West Europe, East US, East US 2, West US...}
 (Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes.ResourceTypeName
 ```
 
-次のような結果が返されます。
+このコマンドによって次の情報が返されます。
 
 ```output
 batchAccounts
@@ -175,7 +187,7 @@ API バージョンは、リリース プロバイダーがリリースする RE
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).ApiVersions
 ```
 
-次のような結果が返されます。
+このコマンドによって次の情報が返されます。
 
 ```output
 2017-05-01
@@ -193,7 +205,7 @@ API バージョンは、リリース プロバイダーがリリースする RE
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
-次のような結果が返されます。
+このコマンドによって次の情報が返されます。
 
 ```output
 West Europe
@@ -211,7 +223,7 @@ Azure ですべてのリソース プロバイダーおよびサブスクリプ�
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
 ```
 
-これは次のような結果を返します。
+このコマンドによって次の情報が返されます。
 
 ```output
 Provider                         Status
@@ -243,7 +255,7 @@ az provider register --namespace Microsoft.Batch
 az provider show --namespace Microsoft.Batch
 ```
 
-これは次のような結果を返します。
+このコマンドによって次の情報が返されます。
 
 ```output
 {
@@ -256,13 +268,16 @@ az provider show --namespace Microsoft.Batch
 }
 ```
 
+> [!IMPORTANT]
+> [前述のように](#register-resource-provider)、****登録中** 状態にあるリソース プロバイダーのリソースの作成をブロックしないでください。** 登録中の状態にあるリソース プロバイダーがブロックされないようにすることで、すべてのリージョンの完了まで待機するよりもはるかに早くアプリケーションを続行できます。
+
 リソース プロバイダーのリソースの種類を表示するには、次のコマンドを使用します。
 
 ```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceType" --out table
 ```
 
-次のような結果が返されます。
+このコマンドによって次の情報が返されます。
 
 ```output
 Result
@@ -281,7 +296,7 @@ API バージョンは、リリース プロバイダーがリリースする RE
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].apiVersions | [0]" --out table
 ```
 
-次のような結果が返されます。
+このコマンドによって次の情報が返されます。
 
 ```output
 Result
@@ -301,7 +316,7 @@ Result
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].locations | [0]" --out table
 ```
 
-次のような結果が返されます。
+このコマンドによって次の情報が返されます。
 
 ```output
 Result
@@ -315,7 +330,11 @@ West US
 
 ## <a name="next-steps"></a>次のステップ
 
+<<<<<<< HEAD
 * リソース マネージャーのテンプレートの作成の詳細については、 [Azure Resource Manager のテンプレートの作成](../templates/template-syntax.md)に関するページを参照してください。 
+=======
+* リソース マネージャーのテンプレートの作成の詳細については、 [Azure リソース マネージャーのテンプレートの作成](../templates/syntax.md)に関するページを参照してください。 
+>>>>>>> repo_sync_working_branch
 * リソース プロバイダーのテンプレートのスキーマを表示するには、「[テンプレート リファレンス](/azure/templates/)」を参照してください。
 * リソース プロバイダーを Azure サービスにマップされるリストについては、「[Resource providers for Azure services](azure-services-resource-providers.md)」 (Azure サービスのリソースプロバイダー) を参照してください。
 * リソース プロバイダーの操作を表示するには、「[Azure REST API](/rest/api/)」を参照してください。

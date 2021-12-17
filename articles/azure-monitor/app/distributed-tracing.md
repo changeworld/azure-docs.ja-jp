@@ -7,12 +7,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a47b41a8b7f4e18be58c32c97cf279b9229f26da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4f32c0803bb5815599c81ca6c89335fa6e1ffac
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579515"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455171"
 ---
 # <a name="what-is-distributed-tracing"></a>分散トレースとは
 
@@ -44,6 +44,17 @@ Azure Monitor では、[アプリケーション マップ](./app-map.md) ビュ
 適切な Application Insights SDK がインストールおよび構成されると、トレース情報は、SDK 依存関係の自動コレクターによって一般的なフレームワーク、ライブラリ、テクノロジが自動収集されます。 サポートされるテクノロジの完全なリストは、「[依存関係の自動収集](./auto-collect-dependencies.md)」で利用できます。
 
  さらに、任意のテクノロジは、[TelemetryClient](./api-custom-events-metrics.md) 上の [TrackDependency](./api-custom-events-metrics.md) への呼び出しによって手動で追跡できます。
+
+## <a name="enable-via-opentelemetry"></a>OpenTelemetry 経由での有効化
+
+Application Insights で新たに、[OpenTelemetry](https://opentelemetry.io/) を使用した分散トレースがサポートされるようになりました。 OpenTelemetry は、Application Insights にトレース、メトリック、ログを送信するための、ベンダーに依存しないインストルメンテーションを提供します。 最初に、OpenTelemetry コミュニティは分散トレースを取り上げました。 メトリックとログはまだ進行中です。 完全な可観測性ストーリーには 3 つの重要な要素がすべて含まれますが、現在、[.NET、Python、JavaScript 用の Azure Monitor OpenTelemetry ベースのエクスポーター プレビュー オファリング](opentelemetry-enable.md)には分散トレースのみが含まれています。 ただし、Java OpenTelemetry ベースの Azure Monitor オファリングは GA であり、完全にサポートされています。 
+
+次のページは、Microsoft の OpenTelemetry ベースのオファリングを有効にして構成するための言語ごとのガイダンスで構成されています。 重要なこととして、OpenTelemetry が各プロジェクトに適切かどうかを判定できるように、Microsoft は各オファリングの使用可能な機能や制限事項を共有しています。
+
+* [.NET](opentelemetry-enable.md?tabs=net)
+* [Java](java-in-process-agent.md)
+* [Node.js](opentelemetry-enable.md?tabs=nodejs)
+* [Python](opentelemetry-enable.md?tabs=python)
 
 ## <a name="enable-via-opencensus"></a>OpenCensus を使用して有効にする
 

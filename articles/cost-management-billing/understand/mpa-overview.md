@@ -6,14 +6,14 @@ ms.reviewer: amberb
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 4dff56db9f1450ff7eb2a2b9ca6f4ca648e2ac38
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 62156836a37cff8e209fe8f97847b8a8c7889272
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150089"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710935"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft Partner Agreement の課金アカウントの概要
 
@@ -29,7 +29,7 @@ Microsoft Partner Agreement の課金アカウントには、ビジネスで使�
 
 ![Microsoft Partner Agreement の課金階層を示した図](./media/mpa-overview/mpa-hierarchy.svg)
 
-組織の**全体管理者**ロールおよび**管理エージェント** ロールを持つユーザーは、課金アカウント、課金プロファイル、および顧客を管理できます。 詳細については、[パートナー センターでのユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)に関するページを参照してください。
+組織の **全体管理者** ロールおよび **管理エージェント** ロールを持つユーザーは、課金アカウント、課金プロファイル、および顧客を管理できます。 詳細については、[パートナー センターでのユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)に関するページを参照してください。
 
 ## <a name="billing-profiles"></a>課金プロファイル
 
@@ -84,4 +84,4 @@ CSP の [2 層モデル](/partner-center)の間接プロバイダーは、Azure 
 
 - [ 用に追加の Azure サブスクリプションを作成する](../manage/create-subscription.md)
 - [Azure Billing API シリーズ](/rest/api/billing/)を使用して、課金データを独自のレポート システムに統合する
-- [パートナー向けの Azure Cost Management のクイックスタート ガイド](../costs/get-started-partners.md)
+- [パートナー向けの Cost Management のクイックスタート ガイド](../costs/get-started-partners.md)

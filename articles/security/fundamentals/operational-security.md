@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: ab54243eb7109965941cf60edd9358133550c7d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 797f8b3ae5812ce4eaadc410252bd2ba2bc4e706
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046642"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297508"
 ---
 # <a name="azure-operational-security"></a>Azure で運用可能なセキュリティ
 ## <a name="introduction"></a>はじめに
@@ -43,7 +43,7 @@ Azure で運用可能なセキュリティとは、ユーザーのデータ、�
 このホワイト ペーパーでは、Microsoft Azure クラウド プラットフォーム内での Azure で運用可能なセキュリティに対する Microsoft の取り組みと、次のサービスについて説明します。
 1.  [Azure Monitor](../../azure-monitor/index.yml)
 
-2.  [Azure Security Center](../../security-center/security-center-introduction.md)
+2.  [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md)
 
 3.  [Azure Monitor](../../azure-monitor/overview.md)
 
@@ -112,15 +112,15 @@ Azure Backup で保護されるデータは、特定の地域リージョンに�
 
 必要な更新プログラムをインストールするために、デプロイ作成時に [Azure Automation](../../automation/automation-intro.md) の Runbook が使用されます。 このプロセスはすべてポータルで管理するため、根底にある詳細について配慮する必要はありません。
 
-## <a name="azure-security-center"></a>Azure Security Center
+## <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 サービス内では、Azure サブスクリプションに対してだけでなく[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)に対してもポリシーを定義できるので、より細かい定義が行えます。
+Microsoft Defender for Cloud は、Azure リソースを保護するのに役立ちます。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 サービス内では、Azure サブスクリプションに対してだけでなく[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)に対してもポリシーを定義できるので、より細かい定義が行えます。
 
 ### <a name="security-policies-and-recommendations"></a>セキュリティ ポリシーと推奨事項
 
 セキュリティ ポリシーは、指定されたサブスクリプションまたはリソース グループ内のリソースに推奨されるコントロールのセットを定義します。
 
-Security Center では、セキュリティに関する会社の要件、アプリケーションの種類、データの機密度に合わせてポリシーを定義できます。
+Defender for Cloud では、セキュリティに関する会社の要件、アプリケーションの種類、データの機密度に合わせてポリシーを定義できます。
 
 ![セキュリティ ポリシーと推奨事項](./media/operational-security/azure-operational-security-fig5.png)
 
@@ -130,11 +130,11 @@ Security Center では、セキュリティに関する会社の要件、アプ�
 
 ### <a name="data-collection"></a>データ コレクション
 
-Security Center では、仮想マシン (VM) のセキュリティ状態へのアクセス、セキュリティ推奨事項の提供、脅威についての警告を行うために、その仮想マシンからデータを収集します。 最初に Security Center にアクセスするときは、サブスクリプション内のすべての VM に対してデータ収集が有効になっています。 データ収集は有効にしておくことをお勧めしますが、Security Center のポリシーでデータ収集をオフにして、オプトアウトすることもできます。
+Defender for Cloud では、仮想マシン (VM) のセキュリティ状態へのアクセス、セキュリティ推奨事項の提供、脅威についての警告を行うために、その仮想マシンからデータを収集します。 最初に Defender for Cloud にアクセスするときは、サブスクリプション内のすべての VM に対してデータ収集が有効になっています。 データ収集は有効にしておくことをお勧めしますが、Defender for Cloud のポリシーでデータ収集をオフにして、オプトアウトすることもできます。
 
 ### <a name="data-sources"></a>データ ソース
 
-- Azure Security Center は、セキュリティ状態の可視化、脆弱性の識別、軽減策の提案、アクティブな脅威の検出のために、次のソースからのデータを分析します。
+- Microsoft Defender for Cloud では、次のソースからのデータを分析して、セキュリティの状態の可視化、脆弱性の特定、軽減策の提案、アクティブな脅威の検出を行います。
 
 -   Azure サービス: デプロイされた Azure サービスの構成についての情報を、サービスのリソース プロバイダーと通信して使用します。
 
@@ -146,7 +146,7 @@ Security Center では、仮想マシン (VM) のセキュリティ状態への�
 
 ### <a name="data-protection"></a>データ保護
 
-Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログ、クラッシュ ダンプ ファイルなど、セキュリティに関連するさまざまなデータを収集、処理しています。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
+Microsoft Defender for Cloud では、脅威の防止、検出、脅威への対応を支援するために、構成情報、メタデータ、イベント ログ、クラッシュ ダンプ ファイルなど、セキュリティ関連のデータを収集および処理します。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
 
 -   **データの分離**: データはサービス全体を通じて、各コンポーネントに論理的に分割されて保存されます。 すべてのデータは組織ごとにタグ付けされます。 このタグ付けはデータのライフ サイクルにおいて継続され、サービスの各層で強制されます。
 
@@ -156,11 +156,11 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
 
 ### <a name="data-location"></a>データの場所
 
-Azure Security Center は、クラッシュ ダンプ ファイルの一時的なコピーを収集し、悪用の試行と成功した侵害の証拠がないか分析します。 Azure Security Center は、この分析をワークスペースと同じ geo 内で行い、分析が完了すると、一時的なコピーを削除します。 マシン アーティファクトは、VM と同じリージョンに一元的に格納されます。
+Microsoft Defender for Cloud は、クラッシュ ダンプ ファイルの一時的なコピーを収集し、悪用の試行と成功した侵害の証拠がないか分析します。 Microsoft Defender for Cloud は、この分析をワークスペースと同じ geo 内で行い、分析が完了すると、一時的なコピーを削除します。 マシン アーティファクトは、VM と同じリージョンに一元的に格納されます。
 
 -   **ストレージ アカウント**: ストレージ アカウントは、仮想マシンが実行されているリージョンごとに指定されます。 そうすることで、データの収集元となる仮想マシンと同じリージョンにデータを格納することができます。
 
--   **Azure Security Center ストレージ**: パートナーの警告、推奨事項、セキュリティの正常性状態を含むセキュリティ警告に関する情報は、現在米国内に一元的に保存されます。 この情報には、仮想マシンから収集された関連の構成情報やセキュリティ イベントが含まれる場合があります。これらは、セキュリティ警告、推奨事項、またはセキュリティの正常性状態をユーザーに提供するために必要な情報です。
+-   **Microsoft Defender for Cloud ストレージ**: パートナーの警告、推奨事項、セキュリティの正常性状態を含むセキュリティ警告に関する情報は、現在米国内に一元的に保存されます。 この情報には、仮想マシンから収集された関連の構成情報やセキュリティ イベントが含まれる場合があります。これらは、セキュリティ警告、推奨事項、またはセキュリティの正常性状態をユーザーに提供するために必要な情報です。
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -341,4 +341,4 @@ Microsoft は、攻撃に強く、回復力のあるクラウド インフラス
 
 Microsoft のセキュリティ データと分析を使用することにより、よりインテリジェントで効果的な脅威の検出を実行できます。
 
-- [Azure Security Center の計画および運用](../../security-center/security-center-planning-and-operations-guide.md) 組織のセキュリティ要件とクラウド管理モデルに応じて Security Center の利用を最適化できる、一連の手順とタスクについて説明します。
+- [Microsoft Defender for Cloud の計画および運用](../../security-center/security-center-planning-and-operations-guide.md) 組織のセキュリティ要件とクラウド管理モデルに応じて Defender for Cloud の利用を最適化できる、一連の手順とタスクについて説明します。

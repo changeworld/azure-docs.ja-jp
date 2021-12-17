@@ -1,28 +1,33 @@
 ---
-title: Azure Sentinel でハンティング ライブストリームを使用して脅威を検出する | Microsoft Docs
-description: この記事では、Azure Sentinel でハンティング ライブストリームを使用してデータを追跡する方法を説明します。
+title: Microsoft Sentinel でハンティング ライブストリームを使用して脅威を検出する | Microsoft Docs
+description: この記事では、Microsoft Sentinel でハンティング ライブストリームを使用してデータを追跡する方法を説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: how-to
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/14/2020
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 441a5407d760851a2df08c3e4df2b8bdaa84cde2
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84783165"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720836"
 ---
-# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Azure Sentinel でハンティング ライブストリームを使用して脅威を検出する
+# <a name="use-hunting-livestream-in-microsoft-sentinel-to-detect-threats"></a>Microsoft Sentinel でハンティング ライブストリームを使用して脅威を検出する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+> [!IMPORTANT]
+>
+> - クロスリソース クエリのエクスペリエンス (以下のマークされた項目を参照) は、現在 **プレビュー段階** です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+>
 
 ハンティング ライブストリームを使用して、イベントの発生時に新たに作成したクエリをテストしたり、一致が見つかった場合にセッションから通知を取得したり、必要に応じて調査を開始したりできるようにする対話型セッションを作成します。 どのような Log Analytics クエリを使用したライブストリーム セッションでも、すばやく作成できます。
 
@@ -51,7 +56,7 @@ ms.locfileid: "84783165"
     1. クエリを右クリックし、 **[Add to Livestream]\(ライブストリームに追加\)** を選択します。 次に例を示します。
     
     > [!div class="mx-imgBorder"]
-    > ![Azure Sentinel ハンティング クエリからライブストリーム セッションを作成する](./media/livestream/livestream-from-query.png)
+    > ![Microsoft Sentinel ハンティング クエリからライブストリーム セッションを作成する](./media/livestream/livestream-from-query.png)
 
 1. ゼロからライブストリーム セッションを作成するには、次のようにします。 
     
@@ -61,14 +66,17 @@ ms.locfileid: "84783165"
 1. **[Livestream]\(ライブストリーム\)** ウィンドウで、次を実行します。
     
     - クエリからライブストリームを開始した場合は、クエリを確認し、必要があれば変更を加えてください。
-    - ゼロからライブストリームの作成を開始した場合は、クエリを作成します。 
+    - ゼロからライブストリームの作成を開始した場合は、クエリを作成します。
+
+    > [!NOTE]
+    > ライブストリームでは、Azure Data Explorer 内のデータの **クロスリソース クエリ** (プレビュー段階) がサポートされています。 [**クロスリソース クエリの詳細をご確認ください**](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md#cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer)。
 
 1. コマンド バーで、 **[再生]** を選択します。
     
     コマンド バーの下にあるステータス バーに、ライブストリーム セッションが実行中であるか一時停止しているかが示されます。 次の例では、セッションが実行中です。
     
     > [!div class="mx-imgBorder"]
-    > ![Azure Sentinel ハンティングからライブストリーム セッションを作成する](./media/livestream/livestream-session.png)
+    > ![Microsoft Sentinel ハンティングからライブストリーム セッションを作成する](./media/livestream/livestream-session.png)
 
 1. コマンド バーで、 **[保存]** を選択します。
     
@@ -81,7 +89,7 @@ ms.locfileid: "84783165"
 1. 表示または編集するライブストリーム セッションを選択します。 次に例を示します。
     
     > [!div class="mx-imgBorder"]
-    > ![Azure Sentinel ハンティング クエリからライブストリーム セッションを作成する](./media/livestream/livestream-tab.png)
+    > ![Microsoft Sentinel ハンティング クエリからライブストリーム セッションを作成する](./media/livestream/livestream-tab.png)
     
     選択したライブストリーム セッションが開き、再生、一時停止、編集などを行うことができるようになります。
 
@@ -104,7 +112,7 @@ ms.locfileid: "84783165"
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Sentinel でハンティング ライブストリームを使用する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+この記事では、Microsoft Sentinel でハンティング ライブストリームを使用する方法を説明しました。 Microsoft Sentinel の詳細については、次の記事を参照してください。
 
 - [脅威を事前に検出する](hunting.md)
 - [ノートブックを使用して自動化された検出キャンペーンを実行する](notebooks.md)

@@ -9,19 +9,20 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 276f5f4542ecea42c665764b8c4e5f66f2531126
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 30246166650cddc1c89fa3a2ca377c163fb5847b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552713"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697752"
 ---
-# <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure 用の SLES または openSUSE 仮想マシンの準備
+# <a name="prepare-a-sles-or-opensuse-leap-virtual-machine-for-azure"></a>Azure 用の SLES または openSUSE Leap 仮想マシンの準備を行う
 
+**適用対象:** :heavy_check_mark: Linux VMs :heavy_check_mark: フレキシブル スケール セット **適用対象:** :heavy_check_mark: ユニフォーム スケール セット
 
-この記事では、既に SUSE または openSUSE Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。 .vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。 詳細については、「 [Hyper-V の役割のインストールと仮想マシンの構成](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))」を参照してください。
+この記事は、SUSE または openSUSE Leap Linux オペレーティング システムが既に仮想ハード ディスクにインストールしてある前提で書かれています。 .vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。 詳細については、「 [Hyper-V の役割のインストールと仮想マシンの構成](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))」を参照してください。
 
-## <a name="sles--opensuse-installation-notes"></a>SLES/openSUSE のインストールに関する注記
+## <a name="sles--opensuse-leap-installation-notes"></a>SLES / openSUSE Leap のインストールに関する注記
 * Azure で Linux を準備する際のその他のヒントについては、「 [Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes) 」も参照してください。
 * VHDX 形式は Azure ではサポートされていません。サポートされるのは **固定 VHD** のみです。  Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 * Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。 必要な場合は、[LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) または [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) をデータ ディスク上で使用できます。
@@ -29,7 +30,7 @@ ms.locfileid: "102552713"
 * Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。 詳細については、[Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes)のセクションを参照してください。
 
 ## <a name="use-suse-studio"></a>SUSE Studio を使用する
-[SUSE Studio](https://studioexpress.opensuse.org/) を使用すると、Azure および Hyper-V 用の SLES イメージと openSUSE イメージを簡単に作成、管理できます。 独自の SLES イメージや openSUSE イメージをカスタマイズする場合はこの方法をお勧めします。
+[SUSE Studio](https://studioexpress.opensuse.org/) では、Azure および Hyper-V 用の SLES または openSUSE Leap のイメージを簡単に作成、管理できます。 SLES または openSUSE Leap のイメージをカスタマイズする場合は、この方法をお勧めします。
 
 SUSE では、独自の VHD を構築する代わりに、[VM Depot](https://www.microsoft.com/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf)に SLES の BYOS (Bring Your Own Subscription) イメージを発行することもできます。
 
@@ -157,23 +158,23 @@ SUSE では、独自の VHD を構築する代わりに、[VM Depot](https://www
 16. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ---
-## <a name="prepare-opensuse-131"></a>openSUSE 13.1 以上の準備
+## <a name="prepare-opensuse-152"></a>バージョン 15.2 以上の openSUSE を準備する
 1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
 3. シェルでコマンド "`zypper lr`" を実行します。 このコマンドから次のような出力が返された場合、リポジトリは予想どおりに構成されているため、調整は不要です (バージョン番号が異なる場合があります)。
 
    | # | エイリアス                 | 名前                  | Enabled | 更新
    | - | :-------------------- | :-------------------- | :------ | :------
-   | 1 | Cloud:Tools_13.1      | Cloud:Tools_13.1      | はい     | はい
-   | 2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | はい     | はい
-   | 3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | はい     | はい
+   | 1 | Cloud:Tools_15.2      | Cloud:Tools_15.2      | はい     | はい
+   | 2 | openSUSE_15.2_OSS     | openSUSE_15.2_OSS     | はい     | はい
+   | 3 | openSUSE_15.2_Updates | openSUSE_15.2_Updates | はい     | はい
 
     コマンドによって "No repositories defined..." が返された場合は、次のコマンドを実行してこれらのリポジトリを追加します。
 
     ```console
-    # sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_13.1 Cloud:Tools_13.1
-    # sudo zypper ar -f https://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
-    # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
+    # sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_15.2 Cloud:Tools_15.2
+    # sudo zypper ar -f https://download.opensuse.org/distribution/15.2/repo/oss openSUSE_15.2_OSS
+    # sudo zypper ar -f http://download.opensuse.org/update/15.2 openSUSE_15.2_Updates
     ```
 
     "`zypper lr`" コマンドをもう一度実行してリポジトリが追加されたことを確認できます。 更新したリポジトリのいずれかが有効になっていない場合は、次のコマンドを使用して有効にします。

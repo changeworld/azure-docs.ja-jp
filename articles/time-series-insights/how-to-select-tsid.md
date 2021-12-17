@@ -1,21 +1,21 @@
 ---
 title: 時系列 ID の選択のベスト プラクティス - Azure Time Series Insights | Microsoft Docs
 description: Azure Time Series Insights Gen2 で時系列 ID を選択する場合のベスト プラクティスについて説明します。
-author: shipramishra
-ms.author: shmishr
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: 8aefa6efa5f10dae8a28e7126b91b7b5f6ac77a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a15b0c74ebe9a4696c2b61b6dd3b16d9f4b9d10
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950741"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730915"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>タイム シリーズ ID の選択に関するベスト プラクティス
 
@@ -37,7 +37,7 @@ ms.locfileid: "104950741"
 > * *変更できません* プロパティ： 一度作成した後は変更できません。
 
 > [!TIP]
-> イベント ソースが IoT ハブの場合、時系列 ID は、***iothub-connection-device-id*** になる可能性があります。
+> イベント ソースが IoT ハブである場合、時系列 ID は ***iothub-connection-device-id*** になる可能性があります。IoT Plug and Play デバイス モデルを使用する予定がある場合、またはコンポーネントなしでそれらを使用している場合は、将来必要な場合に備え、複合キーの一部として ***dt-subject*** を含める必要があります。
 
 従うべき主なベストプラクティスは、次のとおりです：
 

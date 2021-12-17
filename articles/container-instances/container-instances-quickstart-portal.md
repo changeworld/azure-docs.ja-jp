@@ -3,16 +3,13 @@ title: クイックスタート - コンテナー インスタンスに Docker �
 description: このクイック スタートでは、Azure portal を使用して、分離された Azure コンテナー インスタンスで実行されているコンテナー化された Web アプリをすばやくデプロイします
 ms.date: 08/24/2020
 ms.topic: quickstart
-ms.custom:
-- mvc
-- devx-track-js
-- mode-portal
-ms.openlocfilehash: c0189bbd04e454205b34a6415ab6109f95b6f51a
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mvc, devx-track-js, mode-portal
+ms.openlocfilehash: 380ae62aeab3744a75bf9d01b0f321d41da041c5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536230"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045299"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してコンテナー インスタンスを Azure 内にデプロイする
 

@@ -39,14 +39,14 @@
       href: service-dependencies.md
     - name: 場所の条件
       href: location-condition.md
+    - name: ワークロード ID
+      href: workload-identity.md
+    - name: デバイスのフィルター
+      href: concept-condition-filters-for-devices.md
     - name: What if ツール
       href: what-if-tool.md
     - name: 継続的アクセス評価
       href: concept-continuous-access-evaluation.md
-    - name: カスタム コントロール
-      href: controls.md
-    - name: クラシック ポリシーの移行
-      href: policy-migration.md
 - name: 操作方法ガイド
   expanded: true
   items:
@@ -56,52 +56,58 @@
       href: howto-conditional-access-apis.md
     - name: 一般的な条件付きアクセス ポリシー
       items:
-        - name: レガシ認証をブロックする
-          href: howto-conditional-access-policy-block-legacy.md
         - name: 管理者に対して MFA を必須にする
           href: howto-conditional-access-policy-admin-mfa.md
-        - name: Azure 管理のために MFA を必須にする
-          href: howto-conditional-access-policy-azure-management.md
-        - name: すべてのユーザーに対して MFA を必須にする
-          href: howto-conditional-access-policy-all-users-mfa.md
-        - name: サインイン リスクベースの条件付きアクセス
-          href: howto-conditional-access-policy-risk.md
-        - name: ユーザー リスクベースの条件付きアクセス
-          href: howto-conditional-access-policy-risk-user.md
         - name: セキュリティ情報の登録のセキュリティ保護
           href: howto-conditional-access-policy-registration.md
+        - name: レガシ認証をブロックする
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: すべてのユーザーに対して MFA を必須にする
+          href: howto-conditional-access-policy-all-users-mfa.md
+        - name: Azure 管理のために MFA を必須にする
+          href: howto-conditional-access-policy-azure-management.md
+        - name: 危険なサインインに対して MFA を必須にする
+          href: howto-conditional-access-policy-risk.md
+        - name: 危険なユーザーに対してパスワード変更を必須にする
+          href: howto-conditional-access-policy-risk-user.md
+        - name: 準拠デバイスまたはハイブリッド参加デバイスを必須にする
+          href: howto-conditional-access-policy-compliant-device.md
+        - name: 承認済みのアプリまたはアプリ保護ポリシーを必須にする
+          href: howto-policy-approved-app-or-app-protection.md
         - name: 場所ごとにアクセスをブロックする
           href: howto-conditional-access-policy-location.md
-        - name: Require compliant devices (準拠しているデバイスが必須)
-          href: howto-conditional-access-policy-compliant-device.md
         - name: アクセスのブロック
           href: howto-conditional-access-policy-block-access.md
-    - name: レガシ認証をブロックする
-      href: block-legacy-authentication.md
+    - name: 回復力の既定値を構成する
+      href: resilience-defaults.md
     - name: レポート専用モードを構成する
       href: howto-conditional-access-insights-reporting.md
-    - name: 承認済みクライアント アプリを必須にする
-      href: app-based-conditional-access.md
-    - name: アプリの保護ポリシーを必須にする
-      href: app-protection-based-conditional-access.md
-    - name: マネージド デバイスを必須にする
-      href: require-managed-devices.md
-    - name: 信頼されていないネットワークからのアクセスの試行に対して MFA を必須にする
-      href: untrusted-networks.md
+    - name: レガシ認証をブロックする
+      href: block-legacy-authentication.md
     - name: 利用規約が必須
       href: terms-of-use.md
     - name: サインインの頻度とブラウザーの永続性の制御
       href: howto-conditional-access-session-lifetime.md
     - name: トラブルシューティング
       items:
+        - name: ポリシーの変更のトラブルシューティング
+          href: troubleshoot-policy-changes-audit-log.md
         - name: サインインに関する問題のトラブルシューティング
           href: troubleshoot-conditional-access.md
         - name: What If ツールを使用したトラブルシューティング
           href: troubleshoot-conditional-access-what-if.md
+        - name: 継続的アクセス評価のトラブルシューティング
+          href: howto-continuous-access-evaluation-troubleshoot.md
         - name: よく寄せられる質問
           href: faqs.md
-    - name: クラシック ポリシーを移行する
-      href: policy-migration-mfa.md
+    - name: カスタム コントロール
+      href: controls.md
+    - name: クラシック ポリシー
+      items:
+        - name: クラシック ポリシーの移行
+          href: policy-migration.md
+        - name: クラシック ポリシーを移行する
+          href: policy-migration-mfa.md
 - name: リファレンス
   items:
     - name: ベータ版 Graph API
@@ -117,11 +123,11 @@
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム
-      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+      href: 'https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789'
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-active-directory.html
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+      href: 'https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing'
     - name: サービスの更新情報
       href: ../fundamentals/whats-new.md
     - name: Stack Overflow

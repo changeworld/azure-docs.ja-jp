@@ -1,14 +1,14 @@
 ---
-title: ラボ内の VM を Azure DevTest Labs で再起動する | Microsoft Docs
+title: ラボ内の VM を再起動する
 description: この記事では、Azure DevTest Labs で仮想マシン (VM) をすばやく簡単に再起動する手順について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: d2bcbcbea613aa84da91789fb9f118afd7023fab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07d580421c4f4bca8fbf81e7d300d1e38873c386
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481992"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625185"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>ラボ内の VM を Azure DevTest Labs で再起動する
 この記事の手順に従うと、DevTest Labs で仮想マシンをすばやく簡単に再起動することができます。 VM を再起動する前に、次をご考慮ください。

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: bce09fad6ffa169a019628498a686226eff266c7
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: a97d855730a67111f66d201b6ca177975540d535
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384980"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427887"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Azure Cloud Services をデプロイするための前提条件 (延長サポート)
 
@@ -35,6 +35,7 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
        <Subnet name="<subnet-name>"/> 
      </Subnets> 
     </InstanceAddress> 
+  </AddressAssignments> 
 ```
 
 #### <a name="virtual-network-located-in-different-resource-group"></a>異なるリソース グループにある仮想ネットワーク
@@ -46,6 +47,7 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
         <Subnet name="<subnet-name>"/> 
        </Subnets> 
      </InstanceAddress> 
+   </AddressAssignments>
 ```
 ### <a name="2-remove-the-old-plugins"></a>2) 古いプラグインを削除する
 
@@ -74,19 +76,19 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
 
 | 前のサイズ名 | 更新後のサイズ名 | 
 |---|---|
-| ExtraSmall | Standard_A0 | 
-| 小 | Standard_A1 |
-| Medium | Standard_A2 | 
-| 大 | Standard_A3 | 
-| ExtraLarge | Standard_A4 | 
-| A5 | Standard_A5 | 
-| A6 | Standard_A6 | 
-| A7 | Standard_A7 |  
-| A8 | Standard_A8 | 
-| A9 | Standard_A9 |
-| A10 | Standard_A10 | 
-| A11 | Standard_A11 | 
-| MSODSG5 | Standard_MSODSG5 | 
+| ExtraSmall | Standard_A1_v2 | 
+| 小 | Standard_A1_v2 |
+| Medium | Standard_A2_v2 | 
+| Large | Standard_A4_v2 | 
+| ExtraLarge | Standard_A8_v2 | 
+| A5 | Standard_A2m_v2 | 
+| A6 | Standard_A4m_v2 | 
+| A7 | Standard_A8m_v2 |  
+| A8 | 非推奨 | 
+| A9 | 非推奨 |
+| A10 | 非推奨 | 
+| A11 | 非推奨 | 
+| MSODSG5 | 非推奨 | 
 
  たとえば、`<WorkerRole name="WorkerRole1" vmsize="Medium"` は `<WorkerRole name="WorkerRole1" vmsize="Standard_A2"` になります。
  
@@ -110,6 +112,9 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
 ```xml
 <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
 ```
+## <a name="access-control"></a>アクセス制御
+
+ネットワーキング リソースが含まれるサブスクリプションには、Cloud Services のために[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)以上のアクセス権を与える必要があります (拡張サポート)。 詳細については、[RBAC 組み込みロール](../role-based-access-control/built-in-roles.md)に関するページを参照してください。
 
 ## <a name="key-vault-creation"></a>Key Vault の作成 
 
@@ -118,5 +123,5 @@ Key Vault は、Cloud Services (延長サポート) に関連付けられてい�
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。
-- Cloud Services (延長サポート) の[よく寄せられる質問](faq.md)を確認します。
+- Cloud Services (延長サポート) の[よく寄せられる質問](faq.yml)を確認します。
 - [Cloud Services (延長サポート) のサンプル リポジトリ](https://github.com/Azure-Samples/cloud-services-extended-support)に関する記事を確認します。

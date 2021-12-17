@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 3/17/2021
-ms.openlocfilehash: b626012ad825b263e4f837159a067ed1d817d93a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/13/2021
+ms.openlocfilehash: 201b6dfce65317f03bf1e97b97a16db3fd8c4c69
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608748"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505785"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Microsoft のセールス チームとパートナーによる共同販売の概要
 
@@ -44,11 +44,11 @@ Azure の共同販売ステータス:
 
 - 共同販売の準備が未完了
 - 共同販売の準備完了
-- Azure IP 共同販売インセンティブ対象
+- Azure IP 共同販売インセンティブ
 
 ビジネス アプリケーションの共同販売ステータス
-- Business Applications 共同販売インセンティブ対象 Standard
-- Business Applications 共同販売インセンティブ対象 Premium  
+- Business Applications 共同販売インセンティブ Standard
+- Business Applications 共同販売インセンティブ Premium  
 
 これらの共同販売ステータスを取得するための要件の詳細については、「[共同販売の要件](co-sell-requirements.md)」を参照してください。
 
@@ -56,13 +56,13 @@ Azure の共同販売ステータス:
 
 共同販売の準備完了ステータスでは、貴社のソリューションが Microsoft のセールス チームに公開されます。 Microsoft のセールス チームおよび Microsoft パートナーとの共同販売は、Microsoft が管理する顧客の広大なコミュニティにリーチし、ビジネスの成長を加速する営業案件について協力するために役立ちます。
 
-共同販売の準備完了および Azure IP 共同販売ステータスを取得する方法については、[共同販売の準備完了および共同販売インセンティブ対象の要件](co-sell-requirements.md)に関するページを参照してください。
+共同販売の準備完了および Azure IP 共同販売ステータスを取得する方法については、[共同販売の準備完了および共同販売インセンティブの要件](co-sell-requirements.md)に関するページを参照してください。
 
-## <a name="benefits-of-co-sell-incentivized-status"></a>共同販売インセンティブ対象ステータスの利点
+## <a name="benefits-of-co-sell-incentive-status"></a>共同販売インセンティブ ステータスの利点
 
-_共同販売インセンティブ対象_ ステータスには、_Azure IP 共同販売インセンティブ対象_ と _Business Applications 共同販売対象 (Standard および Premium)_ が含まれます。 これらのステータスは、Microsoft のセールス チームがプランを販売するインセンティブになります。 このステータスを取得するには、共同販売の準備完了ステータスも取得する必要があります。 共同販売インセンティブ対象ステータスでは、共同販売の準備完了ステータスの恩恵をすべて受けられます。また、Microsoft のセールス チームに対する追加のインセンティブがあり、コマーシャル マーケットプレースでさらなる恩恵の対象となります。
+_共同販売インセンティブ対象_ ステータスには、_Azure IP 共同販売インセンティブ対象_ と _Business Applications 共同販売対象 (Standard および Premium)_ が含まれます。 これらのステータスは、Microsoft のセールス チームがプランを販売するインセンティブになります。 このステータスを取得するには、共同販売の準備完了ステータスも取得する必要があります。 共同販売インセンティブ ステータスでは、共同販売の準備完了ステータスの恩恵をすべて受けられます。また、Microsoft のセールス チームに対する追加のインセンティブがあり、コマーシャル マーケットプレースでさらなる恩恵の対象となります。
 
-Azure IP 共同販売インセンティブ対象ステータスは、これらのプランの種類に適用されます。
+Azure IP 共同販売インセンティブ ステータスは、これらのプランの種類に適用されます。
 
 - Azure Application
 - Azure Container
@@ -70,23 +70,21 @@ Azure IP 共同販売インセンティブ対象ステータスは、これら�
 - IoT Edge モジュール
 - サービスとしてのソフトウェア (SaaS)
 
-Business Applications 共同販売インセンティブ対象 (Standard および Premium) ステータスは、これらのプランの種類に適用されます。
+Business Applications 共同販売インセンティブ (Standard および Premium) ステータスは、これらのプランの種類に適用されます。
 
-- Dynamics 365 for Customer Engagement および PowerApps
+- Dynamics 365 for Customer Engagement & Power Apps
 - Dynamics 365 for Operations
 
 "_Azure IP 共同販売インセンティブ対象_" ステータスを取得したプランでは、コマーシャル マーケットプレースでこれらの恩恵を得られます。
 
-- マーケットプレース サービス料金は 20% から 10% に引き下げられます。 この割引は、コマーシャル マーケットプレースを通じて販売される貴社の IaaS (サービスとしてのインフラストラクチャ) ソリューションまたは SaaS (サービスとしてのソフトウェア) ソリューションに適用されます。 詳細については、「[コマーシャル マーケットプレースのサービス料金](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees)」を参照してください。
-- クラウド ソリューション プロバイダー (CSP) パートナーは、10% のインセンティブを受けて貴社の IaaS ソリューションまたは SaaS プランを販売します。 CSP プログラムについて詳しくは、「[クラウド ソリューション プロバイダー プログラム](cloud-solution-providers.md)」をご覧ください。
-- Azure Marketplace を介したプランの売上は、顧客の Azure 従量課金のコミットメントに寄与します。 対象となるお客様には、Azure portal で **Azure 特典対象** とマークされたプランが表示されます。 詳細については、「[Azure の消費コミットメントのベネフィット](azure-consumption-commitment-benefit.md)」を参照してください。
-- _Azure IP 共同販売インセンティブ対象_ ステータスを達成する、または [Microsoft ビジネス アプリケーション ISV コネクト プログラム](business-applications-isv-program.md)に登録していてステータスが共同販売の準備完了である場合、オンライン ストアのプラン リスト ページに **Microsoft 推奨ソリューション** バッジが表示されます。 このバッジは、特定の業界またはソリューション分野で、オファーの品質、パフォーマンス、顧客ニーズへの対応能力の向上を促進します。
+- Azure Marketplace を介したプランの売上は、顧客の Azure 従量課金のコミットメントに寄与します。 対象となるお客様には、**Azure 特典対象** とマークされたプランが Azure portal に表示されます。 MACC プログラムで顧客にもたらされるメリットと、MACC に対して有効になっているソリューションを見つける方法の詳細については、「[Azure の消費コミットメントのベネフィット](/marketplace/azure-consumption-commitment-benefit)」を参照してください。 パブリッシャーが取引可能なオファーを MACC に登録する方法の詳細については、[Azure の消費コミットメントの登録](azure-consumption-commitment-enrollment.md)に関するページを参照してください。
+- "_Azure IP 共同販売インセンティブ対象_" ステータスを達成する、または [Microsoft ビジネス アプリケーション ISV コネクト プログラム](business-applications-isv-program.md)に登録していてステータスが共同販売の準備完了であるプランには、オンライン ストア ([Azure Marketplace](https://azuremarketplace.microsoft.com/) と [AppSource](https://appsource.microsoft.com/)) のプラン リスト ページに **Microsoft 推奨ソリューション** バッジが表示されます。  プランが対応する状態になってから、優先されるソリューション バッジがオンライン ストアに表示されるまでに最大で 30 日間かかることがあります。 このバッジは、特定の業界またはソリューション分野で、オファーの品質、パフォーマンス、顧客ニーズへの対応能力の向上を促進します。
 
-共同販売の準備完了および共同販売インセンティブ対象ステータスを取得する方法については、[共同販売の準備完了および共同販売インセンティブ対象の要件](co-sell-requirements.md)に関するページを参照してください。
+共同販売の準備完了および共同販売インセンティブ ステータスを取得する方法については、[共同販売の準備完了および共同販売インセンティブの要件](co-sell-requirements.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 要件については、[共同販売の準備完了および共同販売インセンティブ対象の要件](co-sell-requirements.md)に関するページを参照してください
-- プランを共同販売用に構成するには、「[コマーシャル マーケットプレース プランの共同販売を構成する](commercial-marketplace-co-sell.md)」を参照してください
+- 要件については、[共同販売の準備完了および共同販売インセンティブの要件](co-sell-requirements.md)に関するページを参照してください
+- プランを共同販売用に構成するには、「[コマーシャル マーケットプレース プランの共同販売を構成する](co-sell-configure.md)」を参照してください
 - 共同販売ステータスを確認するには、[プランの共同販売ステータスの確認](co-sell-status.md)に関するページを参照してください。
 - [Microsoft との共同販売](https://partner.microsoft.com/membership/sell-with-microsoft)について詳しく確認します。

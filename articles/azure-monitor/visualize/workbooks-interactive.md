@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: 2cb284e1978ad6c890835318c51c6095891397cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdf7b67a15cf8bd40dadbb709a2829408fa42a57
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101723012"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230557"
 ---
 # <a name="interactive-workbooks"></a>対話型ブック
 

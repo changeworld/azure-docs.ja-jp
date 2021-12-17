@@ -3,19 +3,19 @@ title: 空間分析コンテナーのテレメトリとログ
 titleSuffix: Azure Cognitive Services
 description: 空間分析では、各コンテナーに対する共通の構成フレームワークの洞察、ロギング、およびセキュリティの設定が用意されています。
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: 901e857a346b0955726c5755e23595efefbc2ca1
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.date: 06/08/2021
+ms.author: pafarley
+ms.openlocfilehash: 34f9948905a51fd020a0942836a37d2c9737f4e3
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589501"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059830"
 ---
 # <a name="telemetry-and-troubleshooting"></a>テレメトリとトラブルシューティング
 
@@ -23,19 +23,49 @@ ms.locfileid: "107589501"
 
 ## <a name="enable-visualizations"></a>視覚化の有効化
 
-動画フレームで AI 分析情報イベントの視覚化を有効にするには、デスクトップ マシン上で `.debug` バージョンの[空間分析操作](spatial-analysis-operations.md)を使用する必要があります。 Azure Stack Edge デバイス上では視覚化を使用できません。 使用できるデバッグ操作は 4 つあります。
+動画フレームで AI 分析情報イベントの視覚化を有効にするには、デスクトップ マシンまたは Azure VM で `.debug` バージョンの[空間分析操作](spatial-analysis-operations.md)を使用する必要があります。 Azure Stack Edge デバイス上では視覚化を使用できません。 使用できるデバッグ操作は 4 つあります。
 
-デバイスが Azure Stack Edge デバイスでない場合は、[デスクトップ マシン](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)のデプロイ マニフェスト ファイルを編集して、`DISPLAY` 環境変数に正しい値を使用します。 ホスト コンピューターの `$DISPLAY` 変数と一致している必要があります。 デプロイ マニフェストを更新した後、コンテナーを再デプロイします。
+デバイスがローカル デスクトップ マシンまたは Azure GPU VM (リモート デスクトップが有効) である場合、任意の操作の `.debug` バージョンに切り替えて、出力を視覚化できます。
 
-デプロイが完了したら、 `.Xauthority` ファイルをホストコンピューターからコンテナーにコピーし、再起動することが必要になる場合があります。 次のサンプルでは、 `peopleanalytics` は、ホストコンピューター上のコンテナーの名前になります。
+1.  ローカルでデスクトップを開くか、空間分析を実行しているホスト コンピューターのリモート デスクトップ クライアントを使用してデスクトップを開きます。 
+2.  ターミナルから `xhost +` を実行します。
+3.  `spaceanalytics` モジュールの下にある[配置マニフェスト](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)を `DISPLAY` 環境変数の値で更新します。 その値は、ホスト コンピューターのターミナルで `echo $DISPLAY` を実行すると確認できます。
+    ```
+    "env": {        
+        "DISPLAY": {
+            "value": ":11"
+            }
+    }
+    ```
+4. デバッグ モードで実行する配置マニフェストのグラフを更新します。 次の例では、operationId を cognitiveservices.vision.spatialanalysis-personcrossingpolygon.debug に更新します。 ビジュアライザー ウィンドウを有効にするには、新しいパラメーター `VISUALIZER_NODE_CONFIG` が必要です。 すべての操作はデバッグ フレーバーで使用できます。 共有ノードを使用する場合は、cognitiveservices.vision.spatialanalysis.debug 操作を使用して、インスタンス パラメーターに `VISUALIZER_NODE_CONFIG` を追加します。 
 
-```bash
-sudo docker cp $XAUTHORITY peopleanalytics:/root/.Xauthority
-sudo docker stop peopleanalytics
-sudo docker start peopleanalytics
-xhost +
-```
+    ```
+    "zonecrossing": {
+        "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon.debug",
+        "version": 1,
+        "enabled": true,
+        "parameters": {
+            "VIDEO_URL": "Replace http url here",
+            "VIDEO_SOURCE_ID": "zonecrossingcamera",
+            "VIDEO_IS_LIVE": false,
+            "VIDEO_DECODE_GPU_INDEX": 0,
+            "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0 }",
+            "CAMERACALIBRATOR_NODE_CONFIG": "{ \"gpu_index\": 0}",
+            "VISUALIZER_NODE_CONFIG": "{ \"show_debug_video\": true }",
+            "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"threshold\":35.0}]}"
+        }
+    }
+    ```
+    
+5. 再デプロイすると、ホスト コンピューターでビジュアライザー ウィンドウが表示されます。
+6. デプロイが完了したら、`.Xauthority` ファイルをホスト コンピューターからコンテナーにコピーし、再起動することが必要になる場合があります。 次のサンプルでは、 `peopleanalytics` は、ホストコンピューター上のコンテナーの名前になります。
 
+    ```bash
+    sudo docker cp $XAUTHORITY peopleanalytics:/root/.Xauthority
+    sudo docker stop peopleanalytics
+    sudo docker start peopleanalytics
+    xhost +
+    ```
 
 ## <a name="collect-system-health-telemetry"></a>システム正常性テレメトリの収集
 
@@ -301,14 +331,6 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 フェッチ ログのライン、時刻、およびサイズを確認します。これらの設定が適切であれば、 ***DoPost*** を `true` に置き換え、同じフィルターを使用してログを宛先にプッシュします。 
 
 問題を解決するときに、Azure Blob Storage からログをエクスポートできます。 
-
-## <a name="common-issues"></a>一般的な問題
-
-モジュール ログで次のメッセージが表示される場合は、お使いの Azure サブスクリプションを承認される必要があることを意味する場合があります。 
-
-"Container is not in a valid state. Subscription validation failed with status 'Mismatch'. Api Key is not intended for the given container type." (コンテナーは有効な状態ではありません。サブスクリプションの検証は、状態 '不一致' で失敗しました。API キーは、指定されたコンテナーの種類を対象としていません。)
-
-詳細については、「[コンテナーを実行するための承認を要求する](spatial-analysis-container.md#request-approval-to-run-the-container)」を参照してください。
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>Azure Stack Edge デバイスの問題解決
 

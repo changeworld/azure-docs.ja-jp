@@ -1,17 +1,18 @@
 ---
 title: Azure Data Factory UI を使用して Azure データ ファクトリを作成する
 description: Azure Blob Storage 内のある場所から別の場所へデータをコピーするパイプラインを使用して、データ ファクトリを作成します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: quickstart
-ms.date: 12/14/2020
-ms.author: jingwang
-ms.openlocfilehash: 8b33005b7f0d08e6da963457813b012199d89f5f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 07/05/2021
+ms.author: jianleishen
+ms.openlocfilehash: ad2e2edf916b5b2c4309ed18c5a3349e67adfc33
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655102"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749892"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>クイック スタート:Azure Data Factory UI を使用してデータ ファクトリを作成する 
 
@@ -26,7 +27,7 @@ ms.locfileid: "104655102"
 > [!NOTE]
 > Azure Data Factory を初めて使用する場合は、このクイック スタートを実行する前に、「[Azure Data Factory の概要](introduction.md)」を参照してください。 
 
-[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
+[!INCLUDE [data-factory-quickstart-prerequisites](includes/data-factory-quickstart-prerequisites.md)] 
 
 ### <a name="video"></a>ビデオ 
 このビデオを視聴すると、Data Factory UI を理解できます。 
@@ -65,9 +66,9 @@ ms.locfileid: "104655102"
 
 1. **[確認と作成]** を選択し、検証に成功したら **[作成]** を選択します。 作成後、 **[リソースに移動]** を選択して、 **[Data factory]** ページに移動します。 
 
-1. **[作成と監視]** タイルを選択して、別のブラウザー タブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
+1. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のブラウザー タブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
    
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[作成と監視] タイルが含まれた Azure Data Factory のホーム ページ。":::
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio] タイルを含む、Azure Data Factory のホーム ページ。":::
    
    > [!NOTE]
    > Web ブラウザーが "承認中" でスタックしていることがわかったら、 **[サードバーティの Cookie とサイト データをブロックする]** チェック ボックスをオフにします。 または、オンにしたまま、**login.microsoftonline.com** の例外を作成してから、アプリを再度開いてみてください。

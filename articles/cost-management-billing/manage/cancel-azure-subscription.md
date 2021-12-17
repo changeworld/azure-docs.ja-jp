@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 05/20/2021
 ms.author: banders
-ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c8961575a4055c94a36a89da0d99d2aed4c6e50c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735777"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563585"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure サブスクリプションの取り消し
 
@@ -36,9 +36,11 @@ ms.locfileid: "98735777"
 
 |サブスクリプションの種類     |取り消すことができるユーザー  |
 |---------|---------|
-|Azure Web サイトで Azure にサインアップするときに作成されたサブスクリプション。 たとえば、[Azure 無料アカウント](https://azure.microsoft.com/offers/ms-azr-0044p/)または[従量課金制料金のアカウント](https://azure.microsoft.com/offers/ms-azr-0003p/)にサインアップした場合や、[Visual Studio サブスクライバー](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)としてサインアップした場合です。 |  サブスクリプションの所有者とアカウント管理者  |
-|[Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) と [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  サブスクリプションの所有者とアカウント所有者       |
+|Azure Web サイトで Azure にサインアップするときに作成されたサブスクリプション。 たとえば、[Azure 無料アカウント](https://azure.microsoft.com/offers/ms-azr-0044p/)または[従量課金制料金のアカウント](https://azure.microsoft.com/offers/ms-azr-0003p/)にサインアップした場合や、[Visual Studio サブスクライバー](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)としてサインアップした場合です。 |  サービス管理者とサブスクリプション所有者  |
+|[Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) と [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  サービス管理者とサブスクリプション所有者       |
 |[Azure プラン](https://azure.microsoft.com/offers/ms-azr-0017g/)と [DevTest 用 Azure プラン](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  サブスクリプションの所有者      |
+
+サービス管理者またはサブスクリプション所有者ロールがないアカウント管理者は、Azure サブスクリプションを取り消すことはできません。 ただし、アカウント管理者は、自分自身をサービス管理者にしてから、サブスクリプションを取り消すことができます。 詳細については、「[サービス管理者を変更する](../../role-based-access-control/classic-administrators.md#change-the-service-administrator)」を参照してください。
 
 
 ## <a name="cancel-subscription-in-the-azure-portal"></a>Azure portal でサブスクリプションを取り消す
@@ -68,14 +70,20 @@ Azure Web サイトか Azure portal からサポート プランを購入した�
 
 Microsoft では、サブスクリプションが取り消された後、お客様がデータにアクセスする必要がある場合や気が変わった場合に備えて、データを完全に削除するまで 30 から 90 日待ちます。 データの保持に対しては課金されません。 詳しくは、[Microsoft Trust Center の Microsoft によるデータの管理方法](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)に関するページをご覧ください。
 
-## <a name="delete-free-trial-subscription"></a>無料試用版サブスクリプションの削除
+## <a name="delete-free-trial-or-pay-as-you-go-subscriptions"></a>無料試用版または従量課金制サブスクリプションを削除する
 
-無料試用版サブスクリプションをお持ちの場合は、サブスクリプションが自動的に削除されるまで 30 日待つ必要はありません。 サブスクリプションは、取り消してから "*3 日*" 後に削除できます。 **[サブスクリプションの削除]** オプションは、サブスクリプションを取り消してから 3 日後まで使用できません。
+無料試用版サブスクリプションまたは従量課金制サブスクリプションをお持ちの場合、サブスクリプションが自動的に削除されるまで 90 日間待つ必要はありません。 サブスクリプションは、取り消してから "*3 日*" 後に削除できます。 **[サブスクリプションの削除]** オプションは、サブスクリプションを取り消してから 3 日後まで使用できません。
 
 1. サブスクリプションを取り消した日から 3 日待ちます。
 1. Azure portal の [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ページでサブスクリプションを選択します。
 1. 削除するサブスクリプションを選択します。
 1. **[概要]** を選択し、 **[サブスクリプションの削除]** を選択します。
+
+**注:** サブスクリプションを取り消してから 90 日後に、そのサブスクリプションは自動的に削除されます。
+
+## <a name="delete-other-subscriptions"></a>他のサブスクリプションを削除する
+
+手動で削除できる種類のサブスクリプションは、無料試用版と従量課金制サブスクリプションのみです。 他の種類のサブスクリプションはすべて、[サブスクリプションの取り消し](#cancel-subscription-in-the-azure-portal)手続きにより削除されます。 つまり、無料試用版と従量課金制サブスクリプション以外のサブスクリプションは、直接削除することができません。 ただし、サブスクリプションを取り消した後、[Azure サポート リクエスト](https://go.microsoft.com/fwlink/?linkid=2083458)を作成して、サブスクリプションを直ちに削除するよう依頼することはできます。
 
 ## <a name="reactivate-a-subscription"></a>サブスクリプションの再アクティブ化
 

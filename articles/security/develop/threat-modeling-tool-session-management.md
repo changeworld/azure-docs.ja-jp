@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: a1f4d4a3bb78da82753d651e1a73cf244096d5df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e89d80d26cd9a967bd4651828104c4b00a0d367
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94518103"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131047632"
 ---
 # <a name="security-frame-session-management"></a>セキュリティ フレーム:セッションの管理
 | 製品/サービス | [アーティクル] |
@@ -205,7 +205,7 @@ Session.Abandon() メソッドを呼び出して、ユーザーのセッショ�
 
 ### <a name="example"></a>例
 cookie を使うすべての HTTP ベースのアプリケーションでは、web.config に次の構成を実装することにより、cookie の定義で HttpOnly を指定する必要があります。
-```XML
+```xml
 <system.web>
 .
 .
@@ -226,7 +226,7 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 
 ### <a name="example"></a>例 
 次のコード例は、Web.config ファイルで requireSSL 属性を設定しています。
-```XML
+```xml
 <authentication mode="Forms">
   <forms loginUrl="member_login.aspx" cookieless="UseCookies" requireSSL="true"/>
 </authentication>
@@ -243,7 +243,7 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 
 ### <a name="example"></a>例
 正しい構成を次に示します。
-```XML
+```xml
 <federatedAuthentication>
 <cookieHandler mode="Custom"
                        hideFromScript="true"
@@ -382,7 +382,7 @@ void Page_Init (object sender, EventArgs e) {
 | **手順** | セッションのタイムアウトは、Web サーバーで定義されている期間中にユーザーが Web サイト上でアクションを何も実行しないと発生するイベントを表します。 サーバー側では、イベントはユーザー セッションの状態を "無効" (たとえば、"もう使われない") に変更し、Web サーバーにそれを破棄する (そこに含まれるすべてのデータを削除する) ように指定します。 次のコード例では、Web.config ファイルでタイムアウト セッション属性を 15 分に設定しています。|
 
 ### <a name="example"></a>例
-```XML 
+```xml
 <configuration>
   <system.web>
     <sessionState mode="InProc" cookieless="true" timeout="15" />
@@ -402,7 +402,7 @@ void Page_Init (object sender, EventArgs e) {
 | **手順** | フォーム認証チケット cookie のタイムアウトを 15 分に設定します。|
 
 ### <a name="example"></a>例
-```XML
+```xml
 <forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
 </forms>
 ```
@@ -417,7 +417,7 @@ void Page_Init (object sender, EventArgs e) {
 | **手順** | Webアプリケーションが証明書利用者であり、ADFS が STS の場合、認証 Cookie (FedAuth トークン) の有効期間は web.config の次の構成で設定できます。|
 
 ### <a name="example"></a>例
-```XML
+```xml
   <system.identityModel.services>
     <federationConfiguration>
       <!-- Set requireSsl=true; domain=application domain name used by FedAuth cookies (Ex: .gdinfra.com); -->

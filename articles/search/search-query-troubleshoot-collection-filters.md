@@ -2,29 +2,17 @@
 title: OData コレクション フィルターのトラブルシューティング
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search のクエリでの OData コレクション フィルターのエラーを解決するためのアプローチについて説明します。
-manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: bevloh
+ms.author: beloh
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: 3050f701c11773207aa6054d4d08d908d87b2ce7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/06/2021
+ms.openlocfilehash: 0b80869f3f2cf7754a7dbca8882fa22a38539f3a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88932068"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048066"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Azure Cognitive Search での OData コレクション フィルターのトラブルシューティング
 
@@ -40,7 +28,7 @@ Azure Cognitive Search でコレクションのフィールドの [フィルタ�
 | --- | --- | --- |
 | The function 'ismatch' has no parameters bound to the range variable 's'. Only bound field references are supported inside lambda expressions ('any' or 'all'). Please change your filter so that the 'ismatch' function is outside the lambda expression and try again. (関数 'ismatch' に範囲変数 's' にバインドされたパラメーターがありません。ラムダ式内ではバインドされたフィールド参照のみがサポートされます ('any' または 'all')。'ismatch' 関数がラムダ式の外部になるようにフィルターを変更して、もう一度お試しください。) | ラムダ式の内部での `search.ismatch` または `search.ismatchscoring` の使用 | [複雑なコレクションのフィルター処理に関する規則](#bkmk_complex) |
 | Invalid lambda expression. Found a test for equality or inequality where the opposite was expected in a lambda expression that iterates over a field of type Collection(Edm.String). For 'any', please use expressions of the form 'x eq y' or 'search.in(...)'. For 'all', please use expressions of the form 'x ne y', 'not (x eq y)', or 'not search.in(...)'. (無効なラムダ式です。Collection(Edm.String) 型のフィールドに対して反復処理を行うラムダ式において、逆のテストが必要な場所で等値または非等値のテストが見つかりました。'any' の場合は、'x eq y' または 'search.in(...)' の形式の式を使用してください。'all' の場合は、'x ne y'、'not (x eq y)'、または 'not search.in(...)' の形式の式を使用してください。) | `Collection(Edm.String)` 型のフィールドでのフィルター処理 | [文字列コレクションのフィルター処理に関する規則](#bkmk_strings) |
-| Invalid lambda expression. Found an unsupported form of complex Boolean expression. For 'any', please use expressions that are 'ORs of ANDs', also known as Disjunctive Normal Form. For example: '(a and b) or (c and d)' where a, b, c, and d are comparison or equality sub-expressions. For 'all', please use expressions that are 'ANDs of ORs', also known as Conjunctive Normal Form. For example: '(a or b) and (c or d)' where a, b, c, and d are comparison or inequality sub-expressions. Examples of comparison expressions: 'x gt 5', 'x le 2'. Example of an equality expression: 'x eq 5'. Example of an inequality expression: 'x ne 5'. (無効なラムダ式です。サポートされない形式の複合ブール式が見つかりました。'any' の場合は、'ORs of ANDs' (選言標準形) の式を使用してください。例: '(a and b) or (c and d)'、ここで a、b、c、d は比較または等値サブ式。'all' の場合は、'ANDs of ORs' (連言標準形) の式を使用してください。例: '(a or b) and (c or d)'、ここで a、b、c、d は比較または非等値サブ式。比較式の例: 'x gt 5'、'x le 2'。等値式の例: 'x eq 5'。非等値式の例: 'x ne 5'。) | `Collection(Edm.DateTimeOffset)`、`Collection(Edm.Double)`、`Collection(Edm.Int32)`、または `Collection(Edm.Int64)` 型のフィールドでのフィルター処理 | [比較可能なコレクションのフィルター処理に関する規則](#bkmk_comparables) |
+| Invalid lambda expression. Found an unsupported form of complex Boolean expression. For 'any', please use expressions that are 'ORs of ANDs', also known as Disjunctive Normal Form. For example: `(a and b) or (c and d)` where a, b, c, and d are comparison or equality sub-expressions. For 'all', please use expressions that are 'ANDs of ORs', also known as Conjunctive Normal Form. For example: `(a or b) and (c or d)` where a, b, c, and d are comparison or inequality sub-expressions. Examples of comparison expressions: 'x gt 5', 'x le 2'. Example of an equality expression: 'x eq 5'. Example of an inequality expression: 'x ne 5'. (無効なラムダ式です。サポートされない形式の複合ブール式が見つかりました。'any' の場合は、'ORs of ANDs' (選言標準形) の式を使用してください。例: '(a and b) or (c and d)'、ここで a、b、c、d は比較または等値サブ式。'all' の場合は、'ANDs of ORs' (連言標準形) の式を使用してください。例: '(a or b) and (c or d)'、ここで a、b、c、d は比較または非等値サブ式。比較式の例: 'x gt 5'、'x le 2'。等値式の例: 'x eq 5'。非等値式の例: 'x ne 5'。) | `Collection(Edm.DateTimeOffset)`、`Collection(Edm.Double)`、`Collection(Edm.Int32)`、または `Collection(Edm.Int64)` 型のフィールドでのフィルター処理 | [比較可能なコレクションのフィルター処理に関する規則](#bkmk_comparables) |
 | Invalid lambda expression. Found an unsupported use of geo.distance() or geo.intersects() in a lambda expression that iterates over a field of type Collection(Edm.GeographyPoint). For 'any', make sure you compare geo.distance() using the 'lt' or 'le' operators and make sure that any usage of geo.intersects() is not negated. For 'all', make sure you compare geo.distance() using the 'gt' or 'ge' operators and make sure that any usage of geo.intersects() is negated. (無効なラムダ式です。Collection(Edm.GeographyPoint) 型のフィールドを反復処理するラムダ式で、geo.distance() または geo.intersects() のサポートされない使用が見つかりました。'any' の場合は、'lt' または 'le' 演算子を使用して geo.distance() を比較していること、および geo.intersects() のどの使用も否定されていないことを確認してください。'all' の場合は、'gt' または 'ge' 演算子を使用して geo.distance() を比較していること、および geo.intersects() のどの使用も否定されていることを確認してください。) | `Collection(Edm.GeographyPoint)` 型のフィールドでのフィルター処理 | [GeographyPoint コレクションのフィルター処理に関する規則](#bkmk_geopoints) |
 | Invalid lambda expression. Complex Boolean expressions are not supported in lambda expressions that iterate over fields of type Collection(Edm.GeographyPoint). For 'any', please join sub-expressions with 'or'; 'and' is not supported. For 'all', please join sub-expressions with 'and'; 'or' is not supported. (無効なラムダ式です。Collection(Edm.GeographyPoint) 型のフィールドを反復処理するラムダ式では、複合フール式はサポートされていません。'any' の場合は、'or' でサブ式を結合してください。'and' はサポートされていません。'all' の場合は、'and' でサブ式を結合してください。'or' はサポートされていません。) | `Collection(Edm.String)` または `Collection(Edm.GeographyPoint)` 型のフィールドでのフィルター処理 | [文字列コレクションのフィルター処理に関する規則](#bkmk_strings) <br/><br/> [GeographyPoint コレクションのフィルター処理に関する規則](#bkmk_geopoints) |
 | Invalid lambda expression. Found a comparison operator (one of 'lt', 'le', 'gt', or 'ge'). Only equality operators are allowed in lambda expressions that iterate over fields of type Collection(Edm.String). For 'any', please use expressions of the form 'x eq y'. For 'all', please use expressions of the form 'x ne y' or 'not (x eq y)'. (無効なラムダ式です。Collection(Edm.String) 型のフィールドを反復処理するラムダ式では、等値演算子のみが許可されます。'any' の場合は、'x eq y' の形式の式を使用してください。'all' の場合は、'x ne y' または 'not (x eq y)' の形式の式を使用してください。) | `Collection(Edm.String)` 型のフィールドでのフィルター処理 | [文字列コレクションのフィルター処理に関する規則](#bkmk_strings) |
@@ -171,10 +159,10 @@ Azure Cognitive Search でコレクションのフィールドの [フィルタ�
 
     また、次の式は使用できますが、条件が重複しているため役には立ちません。
     - `ratings/any(r: r ne 5 or r gt 7)`
-  - `eq`、`lt`、`le`、`gt`、または `ge` を含む単純な比較式は、`and`/`or` と組み合わせることができます。 次に例を示します。
+  - `eq`、`lt`、`le`、`gt`、または `ge` を含む単純な比較式は、`and`/`or` と組み合わせることができます。 たとえば、次のように入力します。
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - `and` (積) で組み合わされた比較式を、`or` を使ってさらに組み合わせることができます。 この形式は、ブール ロジックでは "[選言標準形](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF) と呼ばれます。 次に例を示します。
+  - `and` (積) で組み合わされた比較式を、`or` を使ってさらに組み合わせることができます。 この形式は、ブール ロジックでは "[選言標準形](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF) と呼ばれます。 たとえば、次のように入力します。
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
 - `all` に関する規則:
   - 単純な等値式を他の任意の式と組み合わせることはできません。 たとえば、次の式は使用できます。
@@ -185,10 +173,10 @@ Azure Cognitive Search でコレクションのフィールドの [フィルタ�
 
     また、次の式は使用できますが、条件が重複しているため役には立ちません。
     - `ratings/all(r: r eq 5 and r le 7)`
-  - `ne`、`lt`、`le`、`gt`、または `ge` を含む単純な比較式は、`and`/`or` と組み合わせることができます。 次に例を示します。
+  - `ne`、`lt`、`le`、`gt`、または `ge` を含む単純な比較式は、`and`/`or` と組み合わせることができます。 たとえば、次のように入力します。
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - `or` (和) で組み合わされた比較式を、`and` を使ってさらに組み合わせることができます。 この形式は、ブール ロジックでは "[連言標準形](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF) と呼ばれます。 次に例を示します。
+  - `or` (和) で組み合わされた比較式を、`and` を使ってさらに組み合わせることができます。 この形式は、ブール ロジックでは "[連言標準形](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF) と呼ばれます。 たとえば、次のように入力します。
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>

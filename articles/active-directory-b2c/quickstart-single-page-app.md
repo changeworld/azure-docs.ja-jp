@@ -3,35 +3,37 @@ title: 'クイックスタート: シングルページ アプリ (SPA) のサ�
 titleSuffix: Azure AD B2C
 description: このクイックスタートでは、Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル シングルページ アプリケーションを実行します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 04/04/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 6471d1b5a5ad2b8ba34080ae1220872fa0e2e232
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4ab049f739ff1ec940234cb6559c88547a47b20
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93421058"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036685"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイックスタート: Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 
-Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビジネス、顧客を保護するためのクラウド ID 管理を提供します。 Azure AD B2C に対応したアプリケーションは、オープンな標準プロトコルを使用し、ソーシャル アカウントやエンタープライズ アカウントで認証を行うことができます。 このクイック スタートでは、シングル ページ アプリケーションにソーシャル ID プロバイダーを使ってサインインし、Azure AD B2C で保護された Web API を呼び出します。
+Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビジネス、顧客を保護するためのクラウド ID 管理を提供します。 Azure AD B2C に対応したアプリケーションは、オープンな標準プロトコルを使用し、ソーシャル アカウントやエンタープライズ アカウントで認証を行うことができます。 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+このクイック スタートでは、シングル ページ アプリケーションにソーシャル ID プロバイダーを使ってサインインし、Azure AD B2C で保護された Web API を呼び出します。
+
+<!--[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] -->
 
 ## <a name="prerequisites"></a>前提条件
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Node.js](https://nodejs.org/en/download/)
 - Facebook、Google、または Microsoft のソーシャル アカウント
-- GitHub からのコード サンプル: [ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)
+- GitHub からのコード サンプル: [ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa):
 
-    [zip アーカイブをダウンロードする](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip)か、リポジトリを複製することができます。
+    [zip アーカイブをダウンロードする](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip)か、リポジトリを複製できます
 
     ```console
     git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
@@ -42,7 +44,8 @@ Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビ�
 1. Node.js のコマンド プロンプトから次のコマンドを実行してサーバーを起動します。
 
     ```console
-    npm install && npm update
+    npm install
+    npm update
     npm start
     ```
 
@@ -75,19 +78,16 @@ Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビ�
 
 このシングルページ アプリケーション サンプルは、保護された Web API リソースへの要求にアクセス トークンを追加します。
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
+<!-- ## Clean up resources
 
-他の Azure AD B2C クイックスタートやチュートリアルを試す場合は、Azure AD B2C テナントを使用できます。 不要になったら、[Azure AD B2C テナントを削除する](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant)ことができます。
+You can use your Azure AD B2C tenant if you plan to try other Azure AD B2C quickstarts or tutorials. When no longer needed, you can [delete your Azure AD B2C tenant](faq.yml#how-do-i-delete-my-azure-ad-b2c-tenant-).-->
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、サンプルのシングルページ アプリケーションを使用して次のことを行いました。
+<!---In this quickstart, you used a sample single-page application to:
 
-- ソーシャル ID プロバイダーを使用してサインインする
-- Azure AD B2C ユーザー アカウントを作成する (サインイン時に自動的に作成されます)
-- Azure AD B2C によって保護された Web API を呼び出す
+- Sign in with a social identity provider
+- Create an Azure AD B2C user account (created automatically at sign-in)
+- Call a web API protected by Azure AD B2C -->
 
-独自の Azure AD B2C テナントを作成してみましょう。
-
-> [!div class="nextstepaction"]
-> [Azure Portal で Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)
+- [Azure portal で Azure Active Directory B2C テナント](tutorial-create-tenant.md)の作成を開始します。

@@ -1,20 +1,20 @@
 ---
 title: Azure CLI を使用して Azure Content Delivery Network (CDN) のプロファイルとエンドポイントを作成する
 description: Azure CDN のプロファイル、エンドポイント、配信元グループ、配信元、およびカスタム ドメインを作成するための Azure CLI サンプル スクリプト。
-author: asudbring
-ms.author: allensu
+author: duongau
+ms.author: duau
 manager: danielgi
 ms.date: 03/09/2021
 ms.topic: sample
 ms.service: azure-cdn
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ce01c1f851a5dbaedc85d848b12bf0b0831a16ef
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 46966ed6e4e0db1be50919d368bf1ff2fd0fa85a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104723494"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476854"
 ---
 # <a name="create-an-azure-cdn-profile-and-endpoint-using-the-azure-cli"></a>Azure CLI を使用して Azure CDN のプロファイルとエンドポイントを作成する
 

@@ -3,14 +3,14 @@ title: Azure Policy を使用してクラスターをセキュリティで保護
 description: Azure Policy を使用して、Azure Kubernetes Service (AKS) クラスターをセキュリティで保護します。
 ms.service: container-service
 ms.topic: how-to
-ms.date: 02/17/2021
+ms.date: 09/01/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6462c2987155925b7df5241d8fb6aa13c1e37b89
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e4a70b32da22d5900e169b22cabde2654cb2dcfe
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777727"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548332"
 ---
 # <a name="secure-your-cluster-with-azure-policy"></a>Azure Policy でクラスターをセキュリティで保護する
 
@@ -35,6 +35,24 @@ Azure Kubernetes Service (AKS) クラスターのセキュリティを強化す�
 1. **[スコープ]** には、Azure Policy アドオンが有効な AKS クラスターのリソース グループを設定します。
 1. **[パラメーター]** ページを選択し、 **[効果]** を `audit` から `deny` に更新して、ベースライン イニシアチブに違反している新しいデプロイをブロックします。 評価から除外する名前空間を追加することもできます。 この例では、規定値のままにしておきます。
 1. **[確認と作成]** 、 **[作成]** の順に選択して、ポリシーの割り当てを送信します。
+
+## <a name="create-and-assign-a-custom-policy-definition-preview"></a>カスタム ポリシー定義を作成して割り当てる (プレビュー)
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+カスタム ポリシーを使用すると、Azure を使用する際の規則を定義することができます。 たとえば、次の条件を適用できます。
+- セキュリティの実行
+- コスト管理
+- 組織固有のルール (名前付けや場所など)
+
+カスタム ポリシーを作成する前に、[一般的なパターンとサンプルの一覧][azure-policy-samples]を確認して、該当するケースがすでにカバーされていないかどうかを確認してください。
+
+カスタム ポリシー定義は JSON で記述されます。 カスタム ポリシーの作成について詳しくは、「[Azure Policy の定義の構造][azure-policy-definition-structure]」と「[カスタム ポリシー定義の作成][custom-policy-tutorial-create]」を参照してください。
+
+> [!NOTE]
+> Azure Policy では、*templateInfo* と呼ばれる新しいプロパティを利用して、ユーザーが制約テンプレートのソースの種類を定義できるようになりました。 ポリシー定義で *templateInfo* を定義すれば、*constraintTemplate* や *constraint* プロパティを定義する必要はありません。 その場合でも、*apiGroups* と *kinds* の定義は必要です。 詳細については、[Azure Policy の効果について][azure-policy-effects-audit]のページを参照してください。
+
+カスタム ポリシー定義を作成したら、「[ポリシー定義の割り当て][custom-policy-tutorial-assign]」に関するページを参照し、Kubernetes クラスターにポリシーを割り当てる手順を確認してください。
 
 ## <a name="validate-a-azure-policy-is-running"></a>Azure Policy が実行されていることを検証する
 
@@ -95,7 +113,7 @@ kubectl apply -f nginx-privileged.yaml
 次の出力例に示すように、このポッドは想定どおりスケジュールできません。
 
 ```console
-$ kubectl apply -f privileged.yaml
+$ kubectl apply -f nginx-privileged.yaml
 
 Error from server ([denied by azurepolicy-container-no-privilege-00edd87bf80f443fa51d10910255adbc4013d590bec3d290b4f48725d4dfbdf9] Privileged container is not allowed: nginx-privileged, securityContext: {"privileged": true}): error when creating "privileged.yaml": admission webhook "validation.gatekeeper.sh" denied the request: [denied by azurepolicy-container-no-privilege-00edd87bf80f443fa51d10910255adbc4013d590bec3d290b4f48725d4dfbdf9] Privileged container is not allowed: nginx-privileged, securityContext: {"privileged": true}
 ```
@@ -174,6 +192,11 @@ Azure Policy のしくみの詳細については、次を参照してくださ�
 [azure-policy]: ../governance/policy/overview.md
 [azure-policy-addon]: ../governance/policy/concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-aks
 [azure-policy-addon-remove]: ../governance/policy/concepts/policy-for-kubernetes.md#remove-the-add-on-from-aks
-[azure-policy-assign-policy]: ../governance/policy/concepts/policy-for-kubernetes.md#assign-a-built-in-policy-definition
+[azure-policy-assign-policy]: ../governance/policy/concepts/policy-for-kubernetes.md#assign-a-policy-definition
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md
+[azure-policy-effects-audit]: ../governance/policy/concepts/effects.md#audit-properties
+[custom-policy-tutorial-create]: ../governance/policy/tutorials/create-custom-policy-definition.md
+[custom-policy-tutorial-assign]: ../governance/policy/concepts/policy-for-kubernetes.md#assign-a-policy-definition
+[azure-policy-samples]: ../governance/policy/samples/index.md
+[azure-policy-definition-structure]: ../governance/policy/concepts/definition-structure.md

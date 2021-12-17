@@ -1,24 +1,27 @@
 ---
-title: Windows Virtual Desktop ポータルのアプリ グループを管理する - Azure
-description: Azure portal を使用して Windows Virtual Desktop アプリ グループを管理する方法。
+title: Azure Virtual Desktop ポータルのアプリ グループを管理する - Azure
+description: Azure portal を使用して Azure Virtual Desktop アプリ グループを管理する方法。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 10/09/2020
+ms.date: 07/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 65ca13cba07230a7bf606a398e28761aced14857
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: c020e239c566accfe10f0ad298bf76f2c749309b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446011"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740144"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してアプリ グループを管理する
 
 >[!IMPORTANT]
->これは、Azure Resource Manager Windows Virtual Desktop オブジェクトを使用する Windows Virtual Desktop を対象としたコンテンツです。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/manage-app-groups-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/manage-app-groups-2019.md)を参照してください。
 
-Windows Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自のスタート メニュー アプリを公開することができます。
+Azure Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自のスタート メニュー アプリを公開することができます。
+
+>[!NOTE]
+>MSIX アプリをユーザー セッションに動的にアタッチすることや、アプリ パッケージをカスタム仮想マシン (VM) イメージに追加して、組織のアプリを発行することができます。 詳細については、「[Azure Virtual Desktop を使用してカスタム アプリをホストする方法](./remote-app-streaming/custom-apps.md)」を参照してください。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -34,8 +37,10 @@ Azure portal または PowerShell を使用してホスト プールとセッシ
    
     >[!NOTE]
     > US Gov ポータルにサインインする場合は、代わりに [https://portal.azure.us/](https://portal.azure.us/) にアクセスしてください。
+    >
+    >Azure China ポータルにアクセスする場合は、[https://portal.azure.cn/](https://portal.azure.cn/) に移動します。
 
-2.  **[Windows Virtual Desktop]** を検索して選択します。
+2.  **[Azure Virtual Desktop]** を検索して選択します。
 
 3. アプリケーション グループは、直接追加することも、既存のホスト プールから追加することもできます。 以下のオプションを選択してください。
 
@@ -124,7 +129,31 @@ Azure portal または PowerShell を使用してホスト プールとセッシ
 - 後でダウンロードして保存できるよう、構成に基づいて Azure Resource Manager テンプレートへのリンクを作成する。
 
 >[!IMPORTANT]
->Azure Active Directory テナントごとに、200 のアプリケーション グループのみを作成できます。 ユーザーのフィードを取得するサービスに制限があるため、この制限を追加しました。 この制限は、Windows Virtual Desktop (クラシック) で作成されたアプリ グループには適用されません。
+>Azure Active Directory テナントごとに、200 のアプリケーション グループのみを作成できます。 ユーザーのフィードを取得するサービスに制限があるため、この制限を追加しました。 この制限は、Azure Virtual Desktop (クラシック) で作成されたアプリ グループには適用されません。
+
+## <a name="edit-or-remove-an-app"></a>アプリを編集または削除する
+
+アプリ グループのアプリを編集または削除するには、次の手順に従います。
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+   
+   >[!NOTE]
+   >US Gov ポータルにサインインする場合は、代わりに [https://portal.azure.us/](https://portal.azure.us) にアクセスしてください。
+
+2. **[Azure Virtual Desktop]** を検索して選択します。
+
+3. 次のいずれかのオプションを選択して、アプリケーション グループを直接追加するか、既存のホスト プールから追加できます。
+
+    - 新しいアプリケーション グループを直接追加するには、ページの左側にあるメニューから **[アプリケーション グループ]** を選択し、編集するアプリ グループを選択します。
+    - 既存のホスト プール内のアプリ グループを編集するには、画面の左側にあるメニューから **[ホスト プール]** を選択し、ホスト プールの名前を選択してから、画面の左側に表示されるメニューから **[アプリケーション グループ]** を選択し、編集するアプリ グループを選択します。
+
+4. ページの左側にあるメニューから **[アプリケーション]** を選択します。
+
+5. アプリケーションを削除する場合は、そのアプリケーションの横にあるチェック ボックスをオンにし、ページの上部にあるメニューから **[削除]** を選択します。
+
+6. アプリケーションの詳細を編集する場合は、アプリケーション名を選択します。 これにより、編集メニューが開きます。
+
+7. 変更が完了したら、 **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Cache for Redis のタイムアウトのトラブルシューティング
 description: Redis サーバーでの修正プログラムの適用や StackExchange.Redis タイムアウト例外など、Azure Cache for Redis における一般的なタイムアウト問題を解決する方法について説明します。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 10/18/2019
-ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/3/2021
+ms.openlocfilehash: 09f461b5d64b52ded281e338e1307876d7e5f86b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88213454"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843824"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Azure Cache for Redis のタイムアウトのトラブルシューティング
 
@@ -41,43 +41,29 @@ StackExchange.Redis は、同期操作のために `synctimeout` という名前
 
 | エラー メッセージのメトリック | 詳細 |
 | --- | --- |
-| inst |最後のタイム スライスで発行されたコマンドは 0 です |
-| mgr |ソケット マネージャーが `socket.select` を実行しています。これは、何かを実行する必要があるソケットを示すよう OS に要求していることを示します。 リーダーは、何も実行する必要がないと認識しているため、ネットワークからアクティブに読み取っていません。 |
-| queue |合計 73 個の実行中の操作があります。 |
-| qu |実行中の操作のうちの 6 個が未送信キューに存在し、まだ発信ネットワークに書き込まれていません。 |
-| qs |実行中の操作のうちの 67 個がサーバーに送信されましたが、応答はまだ使用可能になっていません。 応答は `Not yet sent by the server` または `sent by the server but not yet processed by the client.` の場合があります。 |
-| qc |実行中の操作のうちの 0 個が応答を受信しましたが、完了ループで待機しているため、まだ完了としてマークされていません。 |
-| wr |アクティブなライターが存在します (6 個の未送信要求は無視されていないことを示します)。バイト数/アクティブなライター数 |
-| in |アクティブなリーダーはなく、NIC で読み取ることができるバイト数はゼロです。これは、"バイト数/アクティブなリーダー数" で表されます。 |
+| `inst` |最後のタイム スライスで発行されたコマンドは 0 です |
+| `mgr` |ソケット マネージャーが `socket.select` を実行しています。これは、何かを実行する必要があるソケットを示すよう OS に要求していることを示します。 リーダーは、何も実行する必要がないと認識しているため、ネットワークからアクティブに読み取っていません。 |
+| `queue` |合計 73 個の実行中の操作があります。 |
+| `qu` |実行中の操作のうちの 6 個が未送信キューに存在し、まだ発信ネットワークに書き込まれていません。 |
+| `qs`|実行中の操作のうちの 67 個がサーバーに送信されましたが、応答はまだ使用可能になっていません。 応答は `Not yet sent by the server` または `sent by the server but not yet processed by the client.` の場合があります。 |
+| `qc` |実行中の操作のうちの 0 個が応答を受信しましたが、完了ループで待機しているため、まだ完了としてマークされていません。 |
+| `wr` |アクティブなライターがあります (6 個の未送信要求は無視されていないことを意味します)。これは、"バイト数/アクティブなライター数" で表されます。 |
+| `in` |アクティブなリーダーはなく、NIC で読み取ることができるバイト数はゼロです。これは、"バイト数/アクティブなリーダー数" で表されます。 |
 
-次の手順を使用して、考えられる根本原因を調査できます。
+前の例外の例では、`IOCP` セクションと `WORKER` セクションのそれぞれに、`Min` 値より大きい `Busy` 値が含まれています。 この違いは、`ThreadPool` の設定を調整する必要があることを意味します。 スレッド プールがバースト時にすばやくスケールアップするように、[ThreadPool 設定を構成できます](cache-management-faq.yml#important-details-about-threadpool-growth)。
 
-1. ベスト プラクティスとして、StackExchange.Redis クライアントを使用するときに、次のパターンを使用して接続していることを確認します。
+次の手順を使用して、考えられる根本原因を排除できます。
 
-    ```csharp
-    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-    {
-        return ConnectionMultiplexer.Connect("cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
+1. ベスト プラクティスとして、「[接続の回復力](cache-best-practices-connection.md#using-forcereconnect-with-stackexchangeredis)」の記事で説明されているように、ForceReconnect パターンを使用して、停止している接続の検出と置換を行うようにしてください。
 
-    });
+   StackExchange.Redis の使用方法の詳細については、[StackExchange.Redis を使用したキャッシュへの接続](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)に関するページを参照してください。 
 
-    public static ConnectionMultiplexer Connection
-    {
-        get
-        {
-            return lazyConnection.Value;
-        }
-    }
-    ```
+1. サーバーとクライアント アプリケーションが Azure の同じリージョン内に存在することを確認します。 たとえば、キャッシュは米国東部にあるが、クライアントが米国西部にあり、要求が `synctimeout` の間隔内に完了しない場合はタイムアウトになることがあります。あるいは、ローカルの開発用コンピューターからデバッグしている場合はタイムアウトになることがあります。
 
-    詳細については、 [StackExchange.Redis を使用するキャッシュへの接続](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)に関するページを参照してください。
-
-1. サーバーとクライアント アプリケーションが Azure の同じリージョン内に存在することを確認します。 たとえば、キャッシュは米国東部にあるが、クライアントが米国西部にあり、要求が `synctimeout` の間隔内に完了しない場合はタイムアウトになることがあります。あるいは、ローカルの開発用コンピューターからデバッグしている場合はタイムアウトになることがあります。 
-
-    キャッシュとクライアントを同じ Azure リージョン内に配置することを強くお勧めします。 リージョン間呼び出しを含むシナリオの場合は、接続文字列に `synctimeout` プロパティを含めて、`synctimeout` の間隔を既定の 5000 ミリ秒間隔より大きい値に設定する必要があります。 次の例は、Azure Cache for Redis によって提供された StackExchange.Redis 用の接続文字列 (`synctimeout` は 2000 ミリ秒) のスニペットを示しています。
+    キャッシュとクライアントを同じ Azure リージョン内に配置することを強くお勧めします。 リージョン間呼び出しを含むシナリオの場合は、接続文字列に `synctimeout` プロパティを含めて、`synctimeout` の間隔を既定の 5000 ミリ秒間隔より大きい値に設定する必要があります。 次の例は、Azure Cache for Redis によって提供された StackExchange.Redis 用の接続文字列 (`synctimeout` は 8,000 ミリ秒) のスニペットを示しています。
 
     ```output
-    synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    synctimeout=8000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
     ```
 
 1. 最新バージョンの [StackExchange.Redis NuGet パッケージ](https://www.nuget.org/packages/StackExchange.Redis/)を使用するようにしてください。 タイムアウトの信頼性を高めるため、コードに示されるバグは常に修正されています。したがって、最新バージョンを使用することが重要です。
@@ -121,5 +107,5 @@ StackExchange.Redis は、同期操作のために `synctimeout` という名前
 
 - [Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング](cache-troubleshoot-client.md)
 - [Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング](cache-troubleshoot-server.md)
-- [キャッシュのベンチマークを実行およびテストする方法](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [キャッシュのベンチマークを実行およびテストする方法](cache-management-faq.yml#how-can-i-benchmark-and-test-the-performance-of-my-cache-)
 - [Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure Static Web Apps のデプロイ トークンをリセットする (プレビュー)
+title: Azure Static Web Apps のデプロイ トークンをリセットする
 description: Azure Static Web Apps サイトのトークンをリセットする
 services: static-web-apps
 author: webmaxru
@@ -7,14 +7,14 @@ ms.author: masalnik
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 1/31/2021
-ms.openlocfilehash: fe1edb2693993d02a705039c18b04c8d1b7b9725
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d516a448240e32f58318689d985bc0aad906b9f
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743772"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814012"
 ---
-# <a name="reset-deployment-tokens-in-azure-static-web-apps-preview"></a>Azure Static Web Apps のデプロイ トークンをリセットする (プレビュー)
+# <a name="reset-deployment-tokens-in-azure-static-web-apps"></a>Azure Static Web Apps のデプロイ トークンをリセットする
 
 新しい Azure Static Web Apps サイトを作成するとき、Azure ではデプロイ中にアプリケーションを識別するために使用されるトークンが生成されます。 プロビジョニング時に、このトークンはシークレットとして GitHub リポジトリに格納されます。 この記事では、このトークンの使用と管理の方法について説明します。
 

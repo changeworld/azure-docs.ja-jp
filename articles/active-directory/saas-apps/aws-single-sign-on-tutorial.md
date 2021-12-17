@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と AWS Single Sign-on の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と AWS Single Sign-on の統合'
 description: Azure Active Directory と AWS Single Sign-on の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/12/2021
+ms.date: 10/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 2d0b9e45dc5de0cd4550cf4b9f944fd33ebd7e7e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b6154d6542e0f61326c31aeca7abc15d671935ea
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720730"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336375"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と AWS Single Sign-on の統合
+# <a name="tutorial-azure-ad-sso-integration-with-aws-single-sign-on"></a>チュートリアル: Azure AD SSO と AWS Single Sign-on の統合
 
 このチュートリアルでは、AWS Single Sign-on と Azure Active Directory (Azure AD) を統合する方法について説明します。 AWS Single Sign-on を Azure AD と統合すると、次のことができます。
 
@@ -80,7 +80,7 @@ AWS Single Sign-on で Azure AD SSO を構成してテストするには、次�
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-    b. **フォルダー ロゴ** をクリックして、「**AWS Single Sign-on の SSO の構成**」セクション (ポイント 8) でダウンロードしたメタデータ ファイルを選択し、 **[追加]** をクリックします。
+    b. **フォルダー ロゴ** をクリックして、「 **[AWS Single Sign-on の SSO の構成](#configure-aws-single-sign-on-sso)** 」セクションでダウンロードするように説明されているメタデータ ファイルを選択し、 **[追加]** をクリックします。
 
     ![Image2](common/browse-upload-metadata.png)
 
@@ -240,9 +240,9 @@ AWS Single Sign-on で Azure AD SSO を構成してテストするには、次�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した AWS Single Sign-on に自動的にサインインされます 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [AWS Single Sign-on] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した AWS Single Sign-on に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [AWS Single Sign-on] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した AWS Single Sign-on に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-AWS Single Sign-on を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+AWS Single Sign-on を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

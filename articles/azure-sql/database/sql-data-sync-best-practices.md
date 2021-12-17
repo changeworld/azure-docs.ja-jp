@@ -3,20 +3,20 @@ title: Azure SQL データ同期のベスト プラクティス
 description: Azure SQL データ同期の構成と実行に関するベスト プラクティスについて説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 12/20/2018
-ms.openlocfilehash: ee15bfaa1d69e2e5047e7d24986f8e4e7d5b8b31
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 7b18b7ddcb6c2f737263cdaa7dd3e51cbde3da52
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180243"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715037"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL データ同期のベスト プラクティス 
 
@@ -54,7 +54,7 @@ Azure SQL Database では、単一の資格情報セットのみをサポート�
 
 ### <a name="auditing"></a>監査
 
-同期グループ内のデータベース レベルで監査を有効にすることをお勧めします。 
+同期グループ内のデータベース レベルで監査を有効にすることをお勧めします。 [Azure SQL データベースの監査を有効にする](./auditing-overview.md)方法、または[SQL Server データベースの監査を有効にする](/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15)方法について説明します。
 
 ## <a name="setup"></a>セットアップ
 

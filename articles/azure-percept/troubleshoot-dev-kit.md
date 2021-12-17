@@ -1,95 +1,88 @@
 ---
-title: Azure Percept DK と IoT Edge に関する一般的な問題をトラブルシューティングする
-description: Azure Percept DK の一般的な問題に対するトラブルシューティングのヒントを入手する
-author: mimcco
-ms.author: mimcco
+title: Azure Percept DK デバイスのトラブルシューティング
+description: Azure Percept DK と IoT Edge の一般的な問題に対するトラブルシューティングのヒントを入手する
+author: juniem
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 03/25/2021
+ms.date: 08/10/2021
 ms.custom: template-how-to
-ms.openlocfilehash: c9c62ec07873272b956877ec51d8765ae0bbd100
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8db131bd39ae8ebe27720a7d725f6ab8082dfd83
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605639"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780017"
 ---
-# <a name="azure-percept-dk-troubleshooting"></a>Azure Percept DK のトラブルシューティング
+# <a name="troubleshoot-the-azure-percept-dk-device"></a>Azure Percept DK デバイスのトラブルシューティング
 
-Azure Percept DK の一般的なトラブルシューティングのヒントについては、以下のガイダンスを参照してください。
+このトラブルシューティング記事の目的は、Azure Percept DK ユーザーが開発キットに関する一般的な問題を迅速に解決できるようにすることです。 追加のサポートが必要な場合のログの収集に関するガイダンスも提供します。
 
-## <a name="general-troubleshooting-commands"></a>一般的なトラブルシューティング コマンド
+## <a name="log-collection"></a>ログ コレクション
+このセクションでは、収集するログとその収集方法に関するガイダンスを示します。
 
-これらのコマンドを実行するには、 [SSH で開発キットに接続](./how-to-ssh-into-percept-dk.md)し、コマンドを SSH クライアント プロンプトに入力します。
+### <a name="how-to-collect-logs"></a>ログを収集する方法
+1. [SSH 経由](./how-to-ssh-into-percept-dk.md)で開発キットに接続します。
+1. SSH ターミナル ウィンドウ内で必要なコマンドを実行します。 ログ収集コマンドの一覧については、次のセクションを参照してください。
+1. 詳しく分析するために、出力を .txt ファイルにリダイレクトし、次の構文を使用します。
+    ```console
+    sudo [command] > [file name].txt
+    ```
+1. .txt ファイルのアクセス許可を変更して、コピーできるようにします。
+    ```console
+    sudo chmod 666 [file name].txt
+    ```
+1. SCP を介してファイルをホスト PC にコピーします。
+    ```console
+    scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
+    ```
 
-詳しく分析するために、出力を .txt ファイルにリダイレクトするには、次の構文を使用します。
+    ```[local host file path]``` は、.txt ファイルのコピー先となるホスト PC 上の場所を指します。 ```[remote username]``` は、[セットアップ エクスペリエンス](./quickstart-percept-dk-set-up.md)中に選択された SSH ユーザー名です。
 
-```console
-sudo [command] > [file name].txt
-```
+### <a name="log-types-and-commands"></a>ログの種類とコマンド
 
-.txt ファイルのアクセス許可を変更して、コピーできるようにします。
+|ログの目的      |収集するタイミング         |command                     |
+|-----------------|---------------------------|----------------------------|
+|*サポート バンドル* - ほとんどのカスタマー サポート リクエストに必要なログのセットが用意されています。|サポートを要求するたびに収集します。|```sudo iotedge support-bundle --since 1h``` <br><br>*"--since 1h" を任意の期間に変更できます。例: "--6h" (6 時間)、"6d" (6 日間)、"6m" (6 分)*|
+|*OOBE ログ* - セットアップ エクスペリエンスの詳細を記録します。|セットアップ エクスペリエンス中に問題が検出されたときに収集します。|```sudo journalctl -u oobe -b```|
+|*edgeAgent logs* - デバイス上で実行されているすべてのモジュールのバージョン番号を記録します。|1 つ以上のモジュールが動作していない場合に収集します。|```sudo iotedge logs edgeAgent```|
+|*モジュール コンテナー ログ* - 特定の IoT Edge モジュール コンテナーの詳細を記録します|モジュールに問題が検出されたときに収集します|```sudo iotedge logs [container name]```|
+|*ネットワーク ログ* -Wi-Fi サービスとネットワーク スタックをカバーするログのセット。|Wi-Fi またはネットワークの問題が検出されたときに収集します。|```sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd > network_log.txt```<br><br>```cat /etc/os-release && cat /etc/os-subrelease && cat /etc/adu-version && rpm -q ztpd > system_ver.txt```<br><br>両方のコマンドを実行します。 各コマンドによって複数のログが収集され、1 つの出力に格納されます。|
 
-```console
-sudo chmod 666 [file name].txt
-```
+> [!WARNING]
+> `support-bundle` コマンドからの出力には、ホスト、デバイス名とモジュール名、モジュールによってログに記録された情報などが含まれる場合があります。パブリック フォーラムで出力を共有する場合は、この点に注意してください。
 
-出力を .txt ファイルにリダイレクトしたら、SCP を使用してファイルをホスト PC にコピーします。
+## <a name="troubleshooting-commands"></a>コマンドのトラブルシューティング
+開発キットで発生する可能性のある問題のトラブルシューティングに使用できる一連のコマンドを次に示します。 これらのコマンドを実行するには、まず [SSH 経由](./how-to-ssh-into-percept-dk.md)で開発キットに接続する必要があります。 
 
-```console
-scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
-```
+Azure IoT Edge コマンドの詳細については、[Azure IoT Edge デバイスのトラブルシューティングに関するドキュメント](../iot-edge/troubleshoot.md)を参照してください。 
 
-```[local host file path]``` は、.txt ファイルのコピー先となるホスト PC 上の場所を指します。 ```[remote username]``` は、[セットアップ エクスペリエンス](./quickstart-percept-dk-set-up.md)中に選択された SSH ユーザー名です。
-
-Azure IoT Edge コマンドの詳細については、[Azure IoT Edge デバイスのトラブルシューティングに関するドキュメント](../iot-edge/troubleshoot.md)を参照してください。
-
-|カテゴリ:         |コマンド:                    |関数:                  |
+|機能         |使用する場合                    |command                 |
 |------------------|----------------------------|---------------------------|
-|OS                |```cat /etc/os-release```         |Mariner イメージ バージョンを確認します |
-|OS                |```cat /etc/os-subrelease```      |派生イメージ バージョンを確認します |
-|OS                |```cat /etc/adu-version```        |ADU バージョンを確認します |
-|気温       |```cat /sys/class/thermal/thermal_zone0/temp``` |開発キットの温度を確認します |
-|Wi-Fi             |```sudo journalctl -u hostapd.service``` |SoftAP ログを確認します|
-|Wi-Fi             |```sudo journalctl -u wpa_supplicant.service``` |Wi-Fi サービス ログを確認します |
-|Wi-Fi             |```sudo journalctl -u ztpd.service```  |Wi-Fi ゼロタッチ プロビジョニング サービスのログを確認します |
-|Wi-Fi             |```sudo journalctl -u systemd-networkd``` |Mariner ネットワーク スタックのログを確認します |
-|Wi-Fi             |```sudo cat /etc/hostapd/hostapd-wlan1.conf``` |WiFi アクセス ポイントの構成の詳細を確認します |
-|OOBE              |```sudo journalctl -u oobe -b```       |OOBE ログを確認します |
-|テレメトリ         |```sudo azure-device-health-id```      |一意のテレメトリ HW_ID を検索します |
-|Azure IoT Edge          |```sudo iotedge check```          |一般的な問題について、構成と接続のチェックを実行します |
-|Azure IoT Edge          |```sudo iotedge logs [container name]``` |音声モジュールやビジョン モジュールなどのコンテナーログを確認します |
-|Azure IoT Edge          |```sudo iotedge support-bundle --since 1h``` |モジュールのログ、Azure IoT Edge セキュリティ マネージャーのログ、コンテナー エンジンのログ、```iotedge check``` JSON 出力など、直近 1 時間にさかのぼって有益なデバッグ情報を収集します |
-|Azure IoT Edge          |```sudo journalctl -u iotedge -f``` |Azure IoT Edge Security Manager のログを確認します |
-|Azure IoT Edge          |```sudo systemctl restart iotedge``` |Azure IoT Edge セキュリティ デーモンを再起動します |
-|Azure IoT Edge          |```sudo iotedge list```           |デプロイされている Azure IoT Edge モジュールを一覧表示します |
-|その他             |```df [option] [file]```          |指定されたファイル システムの空き領域と合計領域に関する情報を表示します |
-|その他             |`ip route get 1.1.1.1`        |デバイスの IP とインターフェイスの情報を表示します |
-|その他             |<code>ip route get 1.1.1.1 &#124; awk '{print $7}'</code> <br> `ifconfig [interface]` |デバイスの IP アドレスのみを表示します |
+|開発キットのソフトウェア バージョンを確認します。|開発キットにあるソフトウェアのバージョンを確認する必要があるときに、いつでも使用できます。|```cat /etc/os-release && cat /etc/os-subrelease && cat /etc/adu-version```|
+|開発キットの温度を確認します|開発キットがオーバーヒートしていると思われる場合に使用します。|```cat /sys/class/thermal/thermal_zone0/temp```|
+|開発キットのテレメトリ ID を確認します|開発キットの一意のテレメトリ ID を知る必要がある場合に使用します。|```sudo azure-device-health-id```|
+|IoT Edge の状態を確認します|クラウドに接続している IoT Edge モジュールに問題がある場合に使用します。|```sudo iotedge check```|
+|Azure IoT Edge セキュリティ デーモンを再起動します|IoT Edge が応答していないか、正常に動作していない場合に使用します。|```sudo systemctl restart iotedge``` |
+|デプロイされている Azure IoT Edge モジュールを一覧表示します|開発キットにデプロイされているすべてのモジュールを確認する必要がある場合に使用します|```sudo iotedge list``` |
+|指定されたファイル システムの使用可能/合計領域を表示します|開発キット上の使用可能なストレージを知る必要がある場合に使用します。|```df [option] [file]```|
+|開発キットの IP およびインターフェイス情報を表示します|開発キットの IP アドレスを知る必要がある場合に使用します。|`ip route get 1.1.1.1`        | 
+|開発キットの IP アドレスのみを表示します|開発キットの IP アドレスのみが必要で、他のインターフェイス情報は必要ない場合に使用します。|<code>ip route get 1.1.1.1 &#124; awk '{print $7}'</code> <br> `ifconfig [interface]` |
 
-
-```journalctl``` Wi-Fi コマンドは、次のように 1 つにまとめることができます。
-
-```console
-sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd -b
-```
-
-## <a name="docker-troubleshooting-commands"></a>Docker のトラブルシューティング コマンド
-
-|コマンド:                        |関数:                  |
-|--------------------------------|---------------------------|
-|```sudo docker ps``` |[実行中のコンテナーを表示します](https://docs.docker.com/engine/reference/commandline/ps/) |
-|```sudo docker images``` |[デバイス上にあるイメージを表示します](https://docs.docker.com/engine/reference/commandline/images/)|
-|```sudo docker rmi [image id] -f``` |[デバイスからイメージを削除します](https://docs.docker.com/engine/reference/commandline/rmi/) |
-|```sudo docker logs -f edgeAgent``` <br> ```sudo docker logs -f [module_name]``` |[指定したモジュールのコンテナーのログを取得します](https://docs.docker.com/engine/reference/commandline/logs/) |
-|```sudo docker image prune``` |[未解決のイメージをすべて削除します](https://docs.docker.com/engine/reference/commandline/image_prune/) |
-|```sudo watch docker ps``` <br> ```watch ifconfig [interface]``` |Docker コンテナーのダウンロード状態を確認します |
-
-## <a name="usb-updates"></a>USB の更新
+## <a name="usb-update-errors"></a>USB 更新エラー
 
 |エラー:                                    |解決方法:                                               |
 |------------------------------------------|--------------------------------------------------------|
-|LIBUSB_ERROR_XXX during USB flash via UUU (UUU での USB フラッシュ中に LIBUSB_ERROR_XXX が発生しました) |このエラーは、UUU 更新中に USB 接続に失敗したことが原因で発生します。 PC 上の USB ポートまたはPercept DK キャリア ボードに USB ケーブルが適切に接続されていない場合、この形式のエラーが発生します。 USB ケーブルの両端を抜いてから再度つなぎ、ケーブルを軽く揺すって、しっかり接続されていることを確認します。 ほとんどの場合、これで問題は解決します。 |
+|LIBUSB_ERROR_XXX during USB flash via UUU (UUU での USB フラッシュ中に LIBUSB_ERROR_XXX が発生しました) |このエラーは、UUU 更新中に USB 接続に失敗したことが原因で発生します。 PC 上の USB ポートまたはPercept DK キャリア ボードに USB ケーブルが適切に接続されていない場合、この形式のエラーが発生します。 USB ケーブルの両端を抜いてから再度つなぎ、ケーブルを軽く揺すって、しっかり接続されていることを確認します。|
+
+## <a name="clearing-hard-drive-space-on-the-azure-percept-dk"></a>Azure Percept DK 上のハード ドライブ領域の消去
+Azure Percept DK 上のハード ドライブ領域を占有するコンポーネントには、docker コンテナー ログと docker コンテナー自体の 2 つがあります。 コンテナー ログがすべてのハード領域を使い尽くしていないことを確認するために、Azure Percept DK にはログのローテーションが組み込まれています。これにより、新しいログが生成されると、古いログがローテーションされます。
+
+docker コンテナーの数が原因でハード ドライブ領域の問題が発生する場合は、次の手順に従って未使用のコンテナーを削除できます。
+1. [開発キットに SSH で接続](./how-to-ssh-into-percept-dk.md)します
+1. コマンド `docker system prune` を実行します。
+
+これにより、未使用のすべてのコンテナー、ネットワーク、イメージ、および必要に応じてボリュームが削除されます。 詳細については、[このページを参照してください](https://docs.docker.com/engine/reference/commandline/system_prune/)。
 
 ## <a name="azure-percept-dk-carrier-board-led-states"></a>Azure Percept DK キャリア ボードの LED の状態
 

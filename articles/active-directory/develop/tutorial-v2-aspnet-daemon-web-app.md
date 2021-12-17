@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, has-adal-ref
+ms.openlocfilehash: 0deaa92659cbd022444c0e4d43389f39ebbaa51c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653764"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050358"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>チュートリアル:Microsoft ID プラットフォームを使用したマルチテナント デーモンを作成する
 
@@ -94,7 +94,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 ### <a name="choose-the-azure-ad-tenant"></a>Azure AD テナントを選択する
 
 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
 
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>クライアント アプリを登録する (dotnet-web-daemon-v2)
@@ -233,7 +233,7 @@ Visual Studio によってプロジェクトが発行され、ブラウザーで
 1. 同じ URL を、 **[認証]**  >  **[リダイレクト URI]** メニューの値のリストに追加します。 複数のリダイレクト URL がある場合には、リダイレクト URL ごとにそのアプリ サービスの URI を使用している新しいエントリを用意する必要があります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
-必要がなくなったら、「[アプリケーションの登録](#register-your-application)」の手順で作成したアプリ オブジェクトを削除します。  アプリケーションを削除するには、「[自分または自分の組織が作成したアプリケーションを削除する](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization)」の手順に従います。
+必要がなくなったら、「[アプリケーションの登録](#register-your-application)」の手順で作成したアプリ オブジェクトを削除します。  アプリケーションを削除するには、「[自分または自分の組織が作成したアプリケーションを削除する](./howto-remove-app.md#remove-an-application-authored-by-you-or-your-organization)」の手順に従います。
 
 ## <a name="get-help"></a>ヘルプの参照
 
@@ -245,7 +245,7 @@ Visual Studio によってプロジェクトが発行され、ブラウザーで
 
 MSAL.NET にバグを見つけた場合は、[MSAL.NET GitHub の Issues](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues) に問題を提起してください。
 
-ご提案をお寄せいただく場合は、[ユーザーの声の投稿ページ](https://feedback.azure.com/forums/169401-azure-active-directory)にアクセスしてください。
+ご提案をお寄せいただく場合は、[ユーザーの声の投稿ページ](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)にアクセスしてください。
 
 ## <a name="next-steps"></a>次のステップ
 

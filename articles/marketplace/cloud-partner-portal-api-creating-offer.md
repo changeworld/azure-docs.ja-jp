@@ -7,12 +7,12 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/29/2020
-ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ea679864d722306b9a7375e732a8ce90d1eed9f
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87420228"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069902"
 ---
 # <a name="create-or-modify-an-offer"></a>オファーを作成または変更する
 
@@ -275,7 +275,7 @@ ms.locfileid: "87420228"
 
 ## <a name="uploading-artifacts"></a>成果物のアップロード
 
-イメージやロゴなどの成果物は、Web 上のアクセス可能な場所にアップロードした後、上記の例のように、PUT 要求の URI として組み込むことにより、共有する必要があります。 これらのファイルが Azure Marketplace のストレージに存在しないことが検出されると、ストレージにファイルがダウンロードされます。  その結果、将来の GET 要求ではこれらのファイルに対して Azure Marketplace サービスの URL が返されます。
+イメージやロゴなどの成果物は、Web 上のアクセス可能な場所にアップロードした後、上記の例のように、PUT 要求の URI として組み込むことにより、共有する必要があります。 これらのファイルは、Azure Marketplace のストレージに存在しないことが検出されると、ストレージにダウンロードされます。 その結果、将来の GET 要求ではこれらのファイルに対して Azure Marketplace サービスの URL が返されます。
 
 ## <a name="categories-and-industries"></a>カテゴリと業界
 
@@ -392,9 +392,9 @@ ms.locfileid: "87420228"
 
 ### <a name="microsoft-appsource-categories"></a>Microsoft AppSource のカテゴリ
 
-これらのカテゴリとその各キーは、SaaS、PowerBI アプリ、Dynamics 365 business central、Dynamics 365 for customer engagement、および Dynamics 365 for operation のプランの種類に適用されます。 太字の斜体の項目 (***analytics*** など) はカテゴリで、標準テキストの項目 (advanced-analytics など) はその下のサブカテゴリです。 スペーシングまたは大文字小文字を変更せずに、正確なキー値を使用してください。
+これらのカテゴリとその各キーは、SaaS、Power BI アプリ、Dynamics 365 business central、Dynamics 365 for customer engagement、および Dynamics 365 for operation のプランの種類に適用されます。 太字の斜体の項目 (***analytics*** など) はカテゴリで、標準テキストの項目 (advanced-analytics など) はその下のサブカテゴリです。 スペーシングまたは大文字小文字を変更せずに、正確なキー値を使用してください。
 
-| カテゴリ | SaaS のキー | Dynamics 365 business central、Dynamics 365 for customer engagement、Dynamics 365 for operation のキー | PowerBI アプリのキー |
+| カテゴリ | SaaS のキー | Dynamics 365 business central、Dynamics 365 for customer engagement、Dynamics 365 for operation のキー | Power BI アプリ キー |
 | --- | --- | --- | --- |
 | ***分析** _ | _*_analytics_*_ | _*_Analytics_*_ | _ *_Analytics_** |
 | 高度な分析 | advanced-analytics | advanced-analytics | advanced-analytics |
@@ -494,9 +494,9 @@ ms.locfileid: "87420228"
 
 ### <a name="microsoft-appsource-industries"></a>Microsoft AppSource の業界
 
-これらの業界とその各キーは、SaaS、PowerBI アプリ、Dynamics 365 business central、Dynamics 365 for customer engagement、および Dynamics 365 for operation のプランの種類に適用されます。 太字の斜体の項目 (***自動車*** など) はカテゴリで、標準テキストの項目 (AutomotiveL2 など) はその下のサブカテゴリです。 スペーシングまたは大文字小文字を変更せずに、正確なキー値を使用してください。
+これらの業界とその各キーは、SaaS、Power BI アプリ、Dynamics 365 business central、Dynamics 365 for customer engagement、および Dynamics 365 for operation のプランの種類に適用されます。 太字の斜体の項目 (***自動車*** など) はカテゴリで、標準テキストの項目 (AutomotiveL2 など) はその下のサブカテゴリです。 スペーシングまたは大文字小文字を変更せずに、正確なキー値を使用してください。
 
-| 業界 | SaaS、Dynamics 365 business central、Dynamics 365 for customer engagement、Dynamics 365 for operation のキー | PowerBI アプリのキー |
+| 業界 | SaaS、Dynamics 365 business central、Dynamics 365 for customer engagement、Dynamics 365 for operation のキー | Power BI アプリ キー |
 | --- | --- | --- |
 | ***自動車** _ | _*_自動車_*_ | _ *_automotive_** |
 | 自動車 | AutomotiveL2 | AutomotiveL2 |

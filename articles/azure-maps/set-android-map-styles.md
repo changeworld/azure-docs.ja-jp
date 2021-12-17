@@ -1,20 +1,20 @@
 ---
 title: Android マップでマップ スタイルを設定する | Microsoft Azure Maps
 description: マップのスタイルを設定する 2 つの方法について説明します。 スタイルを調整するため、レイアウト ファイルまたはアクティビティ クラスで Azure Maps Android SDK を使用する方法について説明します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 9dcb5b84faa47b7307ce8441003e8591d7c2757b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1d16131c51527ead525bf17143892d15229658d2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604789"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072429"
 ---
 # <a name="set-map-style-android-sdk"></a>マップ スタイルを設定する (Android SDK)
 
@@ -22,21 +22,25 @@ ms.locfileid: "105604789"
 
 ## <a name="prerequisites"></a>前提条件
 
-必ず、[クイック スタート:Android アプリの作成](quick-android-map.md)に関するドキュメントの手順を完了してください。
+[クイックスタート: Android アプリの作成](quick-android-map.md)に関する記事の手順を必ず完了してください。
+
+>[!IMPORTANT]
+>このセクションの手順には、Gen 1 または Gen 2 価格レベルの Azure Maps アカウントが必要です。 価格レベルの詳細については、「[Azure Maps での適切な価格レベルの選択](choose-pricing-tier.md)」を参照してください。
+
 
 ## <a name="set-map-style-in-the-layout"></a>レイアウトでのマップ スタイルの設定
 
 マップ スタイルは、マップ コントロールの追加時に、アクティビティ クラスのレイアウト ファイルで設定できます。 次のコードは、中央の場所、ズーム レベル、およびマップ スタイルを設定します。
 
-```XML
-<com.microsoft.azure.maps.mapcontrol.MapControl
+```xml
+<com.azure.android.maps.control.MapControl
     android:id="@+id/mapcontrol"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:mapcontrol_centerLat="47.602806"
-    app:mapcontrol_centerLng="-122.329330"
-    app:mapcontrol_zoom="12"
-    app:mapcontrol_style="grayscale_dark"
+    app:azure_maps_centerLat="47.602806"
+    app:azure_maps_centerLng="-122.329330"
+    app:azure_maps_zoom="12"
+    app:azure_maps_style="grayscale_dark"
     />
 ```
 
@@ -200,6 +204,47 @@ map.setCamera(
 ::: zone-end
 
 境界ボックスの縦横比はマップの縦横比とは異なる場合があります。そのため、マップには、多くの場合、境界ボックス領域全体が表示されますが、垂直方向または水平方向の一方のみがきついことがよくあります。
+
+### <a name="animate-map-view"></a>マップ ビューをアニメーション化する
+
+マップのカメラ オプションを設定するときに、アニメーション オプションを使用して、現在のマップ ビューと次のマップ ビューの間の切り替えも作成できます。 これらのオプションでは、カメラの移動に必要なアニメーションの種類と継続時間を指定します。
+
+| オプション | 説明 |
+|--------|-------------|
+| `animationDuration(Integer durationMs)` | カメラがビュー間でアニメーション化する時間をミリ秒単位 (ms) で指定します。 |
+| `animationType(AnimationType animationType)` | 実行するアニメーションの切り替えの種類を指定します。<br/><br/> - `JUMP` - 即時に変更します。<br/> - `EASE` - カメラの設定を段階的に変更します。<br/> - `FLY` - 円弧のようなフライトに続き、カメラの設定を段階的に変更します。 |
+
+次のコードは、3 秒間の `FLY` アニメーションを使用してマップ ビューをアニメーション化する方法を示しています。
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+map.setCamera(
+    center(Point.fromLngLat(-122.33, 47.6)),
+    zoom(12),
+    animationType(AnimationType.FLY), 
+    animationDuration(3000)
+);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.setCamera(
+    center(Point.fromLngLat(-122.33, 47.6)),
+    zoom(12.0),
+    AnimationOptions.animationType(AnimationType.FLY),
+    AnimationOptions.animationDuration(3000)
+)
+```
+
+::: zone-end
+
+次に、ニューヨークからシアトルにマップ ビューをアニメーション化する上記のコードを示します。
+
+![ニューヨークからシアトルにカメラをアニメーション化するマップ](media/set-android-map-styles/android-animate-camera.gif)
 
 ## <a name="next-steps"></a>次のステップ
 

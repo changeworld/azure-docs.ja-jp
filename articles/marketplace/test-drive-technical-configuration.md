@@ -4,21 +4,24 @@ description: 体験版について説明します。 体験版があれば、新
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 10/26/2021
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04eab06f0ce8aefa675b89613611c0ec9a93f9b6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462899"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847358"
 ---
 # <a name="test-drive-technical-configuration"></a>体験版の技術的な構成
 
 Microsoft コマーシャル マーケットプレースの [体験版] オプションを使用すると、自社製品の主要な機能に関する実践的なセルフガイド ツアーを構成できます。 体験版があれば、新規顧客は購入を決める前にオファーを試すことができます。 詳細については、「[体験版とは](what-is-test-drive.md)」を参照してください。
 
 オファーの体験版を提供する必要がなくなった場合は、 **[オファーのセットアップ]** ページに戻り、 **[体験版を有効にする]** をオフにします。 すべてのオファーの種類に体験版を使用できるわけではありません。
+
+> [!TIP]
+> コマーシャル マーケットプレースでの体験版の顧客のビューを表示するには、「[Azure Marketplace とは](/marketplace/azure-marketplace-overview#take-action-on-a-listing)」や「[Microsoft AppSource とは](/marketplace/appsource-overview)」を参照してください。
 
 ## <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
@@ -97,10 +100,8 @@ Microsoft が体験版のデプロイを代行できるようにするには、�
 
 ホストされている体験版を一覧表示して構成するための詳しい手順については、「[ホストされた体験版の詳細な構成](./test-drive-hosted-detailed-config.md)」ページを参照してください。
 
-## <a name="additional-resources"></a>その他のリソース
-
 ## <a name="next-steps"></a>次のステップ
 
 - [体験版のベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF、ポップアップ ブロックがオフになっていることを確認してください)
-- [商業マーケットプレースで既存のオファーを更新する](partner-center-portal/update-existing-offer.md)
+- [商業マーケットプレースで既存のオファーを更新する](update-existing-offer.md)

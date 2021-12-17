@@ -1,22 +1,22 @@
 ---
-title: 特定のユーザーがいつアプリにアクセスできるようになるかを確認する
-description: 非常に重要なユーザーが、Azure AD でユーザー プロビジョニング向けに構成したアプリケーションにいつアクセスできるようになるかを確認する方法を説明します。
+title: Azure Active Directory アプリケーションのプロビジョニングで、特定のユーザーがいつアプリケーションにアクセスできるようになるかを確認する
+description: 非常に重要なユーザーが、Azure Active Directory でユーザー プロビジョニング向けに構成したアプリケーションにいつアクセスできるようになるかを確認する方法
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/03/2019
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9835ba2b6db2d71d0ff5825f2eb1996133e75537
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: ef678a9e8a2db46315722eb54f0c4e428355e68d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530827"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991605"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>ユーザー プロビジョニングの状態を確認する
 

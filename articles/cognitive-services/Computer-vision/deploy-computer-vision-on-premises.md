@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aahi
-ms.openlocfilehash: 36091c62814cffd78c5f8132e01820070968af52
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 9256e6a19c299a80dcd5e1981cf09948ec2e058a
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284943"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047572"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes と Helm と共に Computer Vision コンテナーを使用する
 
@@ -168,7 +168,7 @@ spec:
 同じ *templates* フォルダーで、次のヘルパー関数をコピーして `helpers.tpl` に貼り付けます。 `helpers.tpl` には、Helm テンプレートの生成に役立つ便利な関数が定義されています。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 この用語は、ソフトウェアから削除された時点でこの記事から削除されます。
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ```yaml
 {{- define "rabbitmq.hostname" -}}
@@ -357,7 +357,7 @@ replicaset.apps/read-6cbbb6678   3         3         3       3s
 
 <!--  ## Validate container is running -->
 
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+[!INCLUDE [Container API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -372,7 +372,7 @@ Azure Kubernetes Service (AKS) での Helm を使用したアプリケーショ�
 [azure-cli]: /cli/azure/install-azure-cli
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
-[helm-install]: https://helm.sh/docs/using_helm/#installing-helm
+[helm-install]: https://helm.sh/docs/intro/install/
 [helm-install-cmd]: https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
 [helm-charts]: https://helm.sh/docs/topics/charts/
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

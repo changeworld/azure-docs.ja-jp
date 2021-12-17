@@ -2,13 +2,14 @@
 title: リソースをテナントにデプロイする
 description: Azure Resource Manager テンプレートでテナントのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: 0b17b8741d1701720de86d8039be3b6cd28ace5c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 09/14/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 0e998c4c26afc456a83cdb0c06a5ccb3906364df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781903"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606572"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>ARM テンプレートを使用したテナントのデプロイ
 
@@ -17,12 +18,6 @@ ms.locfileid: "107781903"
 ## <a name="supported-resources"></a>サポートされているリソース
 
 すべてのリソースの種類をテナント レベルにデプロイできるわけではありません。 このセクションでは、サポートされているリソースの種類を示します。
-
-Azure ポリシーでは、以下を使用します。
-
-* [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
-* [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
-* [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 
 Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を使用します。
 
@@ -50,6 +45,8 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 
 * [tenantConfigurations](/azure/templates/microsoft.portal/tenantconfigurations)
 
+組み込みのポリシー定義はテナントレベルのリソースですが、カスタム ポリシー定義をテナントにデプロイすることはできません。 組み込みのポリシー定義をリソースに割り当てる例については、「[Tenantresourceid の例](./template-functions-resource.md#tenantresourceid-example)」を参照してください。
+
 ## <a name="schema"></a>スキーマ
 
 テナントのデプロイに使用するスキーマは、リソース グループのデプロイ用のスキーマとは異なります。
@@ -58,8 +55,8 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    ...
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+  ...
 }
 ```
 
@@ -67,8 +64,8 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-    ...
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  ...
 }
 ```
 
@@ -196,5 +193,5 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 ## <a name="next-steps"></a>次のステップ
 
-* ロールの割り当ての詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する](../../role-based-access-control/role-assignments-template.md)」を参照してください。
+* ロールの割り当ての詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる](../../role-based-access-control/role-assignments-template.md)」を参照してください。
 * また、[サブスクリプション レベル](deploy-to-subscription.md)または[管理グループ レベル](deploy-to-management-group.md)でテンプレートをデプロイすることもできます。

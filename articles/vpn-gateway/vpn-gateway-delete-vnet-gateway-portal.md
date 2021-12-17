@@ -1,18 +1,19 @@
 ---
-title: 'Azure VPN Gateway:ゲートウェイを削除する: ポータル'
-description: Azure portal を使用して仮想ネットワーク ゲートウェイを削除する
+title: '仮想ネットワーク ゲートウェイの削除: ポータル'
+titleSuffix: Azure VPN Gateway
+description: Azure portal を使用して仮想ネットワーク ゲートウェイを削除する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.date: 02/10/2021
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 413fd8c7f03ef44abe4bece39ca717c533dea66b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c65c860e54d327c4ec24474658968577387fbc49
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376388"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729544"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>ポータルを使用して仮想ネットワーク ゲートウェイを削除する
 
@@ -28,7 +29,7 @@ ms.locfileid: "100376388"
 * リソース グループ内の一部のリソースを保持する必要がある場合は、仮想ネットワーク ゲートウェイの削除が少し複雑になります。 仮想ネットワーク ゲートウェイを削除する前に、まず、そのゲートウェイに依存しているリソースをすべて削除する必要があります。 従う手順は、作成した接続の種類と、各接続に依存するリソースによって異なります。
 
 > [!IMPORTANT]
-> この記事の手順は、Resource Manager デプロイ モデルに適用されます。 クラシック デプロイ モデルを使用してデプロイされた VPN ゲートウェイを削除するには、[ゲートウェイの削除 (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md) に関する記事の手順に従います。
+> この記事の手順は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に適用されます。 クラシック デプロイ モデルを使用してデプロイされた VPN ゲートウェイを削除するには、[ゲートウェイの削除 (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md) に関する記事の手順に従います。
 
 ## <a name="delete-a-vpn-gateway"></a>VPN ゲートウェイの削除
 
@@ -60,7 +61,7 @@ ms.locfileid: "100376388"
 
 ## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="deleterg"></a>リソース グループを削除して VPN ゲートウェイを削除する
 
-リソース グループにどのリソースも保持する必要がなく、単に最初からやり直したい場合は、リソース グループ全体を削除できます。 すべてを削除するには、これが簡単な方法です。 次の手順は、Resource Manager デプロイ モデルに該当します。
+リソース グループにどのリソースも保持する必要がなく、単に最初からやり直したい場合は、リソース グループ全体を削除できます。 すべてを削除するには、これが簡単な方法です。 次の手順は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)にのみ該当します。
 
 1. **[すべてのリソース]** でリソース グループを見つけ、クリックしてブレードを開きます。
 1. **[削除]** をクリックします。 [削除] ブレードに関連するリソースを表示します。 これらのリソースをすべて削除することを確認します。 削除しない場合は、この記事の上部にある「VPN ゲートウェイの削除」の手順を実行してください。

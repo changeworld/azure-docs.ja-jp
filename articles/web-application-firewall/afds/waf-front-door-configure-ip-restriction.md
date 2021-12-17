@@ -6,13 +6,14 @@ author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 ms.date: 12/22/2020
-ms.author: tyao
-ms.openlocfilehash: 65e378c0380804c13e4b42d855aede7781b93592
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: victorh
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e9022db23ac425cd958180954373ff4a924e9818
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211670"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507134"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Azure Front Door 用の Web アプリケーション ファイアウォールで IP 制限規則を構成する
 
@@ -33,7 +34,7 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
 1. Azure portal で、 **[Create a resource]/(リソースの作成/)** を選択し、検索ボックスに「**Web application firewall**」と入力して、 **[Web Application Firewall (WAF)]/(Web アプリケーション ファイアウォール (WAF)/)** を選択します。
 2. **［作成］** を選択します
 3. **[Create a WAF policy]/(WAF ポリシーの作成/)** ページで、次の値を使用して **[基本]** タブを完成させます。
-   
+
    |設定  |値  |
    |---------|---------|
    |次に対するポリシー     |グローバル WAF (フロント ドア)|
@@ -57,7 +58,7 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
    |規則の種類     |一致したもの|
    |Priority    |100|
    |一致の種類     |IP アドレス|
-   |一致変数|RemoteAddr|
+   |一致変数|SocketAddr|
    |操作|[次の値を含まない]|
    |IP アドレスまたは範囲|10.10.10.0/24|
    |THEN|トラフィックを拒否する|
@@ -95,9 +96,10 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
 
 ### <a name="create-a-waf-policy"></a>WAF ポリシーを作成する
 
-[az network front-door waf-policy create](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-create) コマンドを使用して WAF ポリシーを作成します。 次の例で、ポリシー名 *IPAllowPolicyExampleCLI* を一意のポリシー名に置き換えます。
+[az network front-door waf-policy create](/cli/azure/network/front-door/waf-policy#az_network_front_door_waf_policy_create) コマンドを使用して WAF ポリシーを作成します。
+次の例で、ポリシー名 *IPAllowPolicyExampleCLI* を一意のポリシー名に置き換えます。
 
-```azurecli-interactive 
+```azurecli-interactive
 az network front-door waf-policy create \
   --resource-group <resource-group-name> \
   --subscription <subscription ID> \
@@ -105,13 +107,13 @@ az network front-door waf-policy create \
   ```
 ### <a name="add-a-custom-ip-access-control-rule"></a>カスタム IP アクセス制御規則を追加する
 
-[az network front-door waf-policy custom-rule create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule#ext-front-door-az-network-front-door-waf-policy-rule-create) コマンドを使用して、たった今作成した WAF ポリシーのカスタム IP アクセス制御規則を追加します。
+[az network front-door waf-policy custom-rule create](/cli/azure/network/front-door/waf-policy/rule#az_network_front_door_waf_policy_rule_create) コマンドを使用して、たった今作成した WAF ポリシーのカスタム IP アクセス制御規則を追加します。
 
 次の例で以下を実行します。
 -  *IPAllowPolicyExampleCLI* を、先ほど作成した一意のポリシーに置き換えます。
 -  *ip-address-range-1*、*ip-address-range-2* を独自の範囲に置き換えます。
 
-最初に、前の手順で作成したポリシーの IP 許可規則を作成します。 
+最初に、前の手順で作成したポリシーの IP 許可規則を作成します。
 > [!NOTE]
 > 規則には次の手順で追加される一致条件が必要なため、 **--defer** が必要です。
 
@@ -128,17 +130,17 @@ az network front-door waf-policy rule create \
 
 ```azurecli
 az network front-door waf-policy rule match-condition add \
---match-variable RemoteAddr \
+--match-variable SocketAddr \
 --operator IPMatch \
 --values "ip-address-range-1" "ip-address-range-2" \
 --negate true \
 --name IPAllowListRule \
   --resource-group <resource-group-name> \
-  --policy-name IPAllowPolicyExampleCLI 
+  --policy-name IPAllowPolicyExampleCLI
   ```
-                                                   
-### <a name="find-the-id-of-a-waf-policy"></a>WAF ポリシーの ID を見つける 
-[az network front-door waf-policy show](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-show) コマンドを使用して、WAF ポリシーの ID を見つけます。 次の例の *IPAllowPolicyExampleCLI* を、先ほど作成した一意のポリシーに置き換えます。
+
+### <a name="find-the-id-of-a-waf-policy"></a>WAF ポリシーの ID を見つける
+[az network front-door waf-policy show](/cli/azure/network/front-door/waf-policy#az_network_front_door_waf_policy_show) コマンドを使用して、WAF ポリシーの ID を見つけます。 次の例の *IPAllowPolicyExampleCLI* を、先ほど作成した一意のポリシーに置き換えます。
 
    ```azurecli
    az network front-door  waf-policy show \
@@ -148,7 +150,7 @@ az network front-door waf-policy rule match-condition add \
 
 ### <a name="link-a-waf-policy-to-an-azure-front-door-front-end-host"></a>WAF ポリシーを Azure Front Door のフロントエンド ホストにリンクする
 
-[az network front-door update](/cli/azure/ext/front-door/network/front-door#ext-front-door-az-network-front-door-update) コマンドを使用して、Azure Front Door の *WebApplicationFirewallPolicyLink* ID をポリシー ID に設定します。 *IPAllowPolicyExampleCLI* を、前に作成した一意のポリシーに置き換えます。
+[az network front-door update](/cli/azure/network/front-door#az_network_front_door_update) コマンドを使用して、Azure Front Door の *WebApplicationFirewallPolicyLink* ID をポリシー ID に設定します。 *IPAllowPolicyExampleCLI* を、前に作成した一意のポリシーに置き換えます。
 
    ```azurecli
    az network front-door update \
@@ -178,10 +180,10 @@ Azure PowerShell には、Azure リソースを管理するために [Azure Reso
 
     ```
     Install-Module PowerShellGet -Force -AllowClobber
-    ``` 
+    ```
 
-3. 次のコマンドを使用して Az.FrontDoor モジュールをインストールします。 
-    
+3. 次のコマンドを使用して Az.FrontDoor モジュールをインストールします。
+
     ```
     Install-Module -Name Az.FrontDoor
     ```
@@ -190,15 +192,15 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
 
 ### <a name="define-an-ip-match-condition"></a>IP の一致条件を定義する
 IP の一致条件を定義するには、[New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) コマンドを使います。
-次の例で、*ip-address-range-1* と *ip-address-range-2* を独自の範囲に置き換えます。    
+次の例で、*ip-address-range-1* と *ip-address-range-2* を独自の範囲に置き換えます。
 ```powershell
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
--MatchVariable  RemoteAddr `
+-MatchVariable  SocketAddr `
 -OperatorProperty IPMatch `
 -MatchValue "ip-address-range-1", "ip-address-range-2"
 -NegateCondition 1
 ```
-     
+
 ### <a name="create-a-custom-ip-allow-rule"></a>カスタム IP 許可規則を作成する
 
 アクションを定義して優先順位を設定するには、[New-AzFrontDoorWafCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) コマンドを使用します。 次の例では、リストに一致する、クライアント IP からではない要求が禁止されます。
@@ -240,7 +242,7 @@ WAF ポリシー オブジェクトを既存のフロントエンド ホスト�
 
 
 ## <a name="configure-a-waf-policy-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用して WAF ポリシーを構成する
-カスタム IP 制限規則を使用して Azure Front Door ポリシーと WAF ポリシーを作成するテンプレートを表示するには、[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-clientip) にアクセスしてください。
+カスタム IP 制限規則を使用して Azure Front Door ポリシーと WAF ポリシーを作成するテンプレートを表示するには、[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-waf-clientip) にアクセスしてください。
 
 
 ## <a name="next-steps"></a>次のステップ

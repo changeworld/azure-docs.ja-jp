@@ -1,19 +1,19 @@
 ### YamlMime:Landing
 title: Azure Database for MySQL のドキュメント
-summary: Azure Database for MySQL は、MySQL Community Edition を基盤としたリレーショナル データベース サービスです。シングル サーバーまたはフレキシブル サーバー (プレビュー) を使用して Azure に MySQL データベースをホストすることができます。 フルフル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。
+summary: Azure Database for MySQL は、MySQL Community Edition を基盤としたリレーショナル データベース サービスです。シングル サーバーまたはフレキシブル サーバーを使用して Azure で MySQL データベースをホストすることができます。 フルフル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。
 metadata:
-  description: Azure Database for MySQL は、MySQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。 シングル サーバーまたはフレキシブル サーバー (プレビュー) を選んで Azure に MySQL データベースをデプロイすることができます。
+  description: Azure Database for MySQL は、MySQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。 シングル サーバーまたはフレキシブル サーバーを選んで Azure に MySQL データベースをデプロイすることができます。
   author: savjani
   ms.author: pariks
-  ms.date: 09/03/2019
+  ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 95ce5c287eb8b6b3ee745ff9305fb7861fa09989
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.openlocfilehash: 79331b7a1016c90bfa26f109f975571e99e07056
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102040517"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132551066"
 landingContent:
 - title: Azure Database for MySQL について
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
       url: select-right-deployment-type.md
     - text: サポートされている MySQL のバージョンについて
       url: concepts-supported-versions.md
+    - text: Azure 無料アカウントを使用して無料で開始する
+      url: flexible-server/how-to-deploy-on-azure-free-account.md
   - linkListType: whats-new
     links:
     - text: ブログを確認する
@@ -35,8 +37,14 @@ landingContent:
     links:
     - text: シングル サーバーとは
       url: single-server-overview.md
+    - text: シングル サーバーの新機能
+      url: single-server-whats-new.md
     - text: すべてのシングル サーバーのドキュメントを見る
       url: single-server/index.yml
+  - linkListType: whats-new
+    links:
+    - text: シングル サーバーの新機能
+      url: single-server-whats-new.md
   - linkListType: concept
     links:
     - text: サーバーの概念
@@ -51,7 +59,7 @@ landingContent:
       url: quickstart-create-mysql-server-database-using-azure-portal.md
     - text: Azure CLI を使用してサーバーを作成する
       url: quickstart-create-mysql-server-database-using-azure-cli.md
-- title: フレキシブル サーバー (プレビュー)
+- title: フレキシブル サーバー
   linkLists:
   - linkListType: overview
     links:
@@ -59,6 +67,10 @@ landingContent:
       url: flexible-server/overview.md
     - text: すべてのフレキシブル サーバーのドキュメントを見る
       url: flexible-server/index.yml
+  - linkListType: whats-new
+    links:
+    - text: フレキシブル サーバーの新機能
+      url: flexible-server/whats-new.md
   - linkListType: concept
     links:
     - text: サーバーの概念
@@ -93,13 +105,35 @@ landingContent:
       url: flexible-server/connect-php.md
     - text: Python を使用してフレキシブル サーバーに接続する
       url: flexible-server/connect-python.md
+- title: 移行
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Database for MySQL への移行に使用する適切なツールを選択する
+      url: how-to-decide-on-right-migration-tools.md
+    - text: Azure Database for MySQL の移行ガイド
+      url: migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md
+    - text: dbForge Studio for MySQL
+      url: concepts-migrate-dbforge-studio-for-mysql.md
+    - text: ダンプと復元
+      url: concepts-migrate-dump-restore.md
+    - text: インポートとエクスポート
+      url: concepts-migrate-import-export.md
+    - text: MySQL Workbench を使用して Amazon RDS for MySQL を移行する
+      url: how-to-migrate-rds-mysql-workbench.md
+    - text: データイン レプリケーションを使用して Amazon RDS for MySQL を移行する
+      url: how-to-migrate-rds-mysql-data-in-replication.md
+    - text: 最小限のダウンタイムでの移行
+      url: howto-migrate-online.md
+    - text: 移行中または移行後の一般的なエラー
+      url: howto-troubleshoot-common-errors.md
 - title: データの管理と移行
   linkLists:
   - linkListType: concept
     links:
     - text: Azure portal を使用してシングル サーバーを管理する
       url: howto-create-manage-server-portal.md
-    - text: Azure portal を使用してフレキシブル サーバー (プレビュー) を管理する
+    - text: Azure portal を使用してフレキシブル サーバーを管理する
       url: flexible-server/how-to-manage-server-portal.md
     - text: ダンプと復元を使用して移行する
       url: concepts-migrate-dump-restore.md
@@ -107,10 +141,14 @@ landingContent:
       url: concepts-migrate-import-export.md
   - linkListType: how-to-guide
     links:
+    - text: MySQL Workbench を使用して RDS MySQL を移行する
+      url: how-to-migrate-rds-mysql-workbench.md
     - text: データ移行サービスを使用して移行する
       url: howto-migrate-online.md
     - text: Azure データ移行ガイド
       url: https://datamigration.microsoft.com/scenario/mysql-to-azuremysql?step=1
+    - text: 一般的なエラーのトラブルシューティング
+      url: howto-troubleshoot-common-errors.md
 - title: アプリケーション開発
   linkLists:
   - linkListType: concept
@@ -125,8 +163,10 @@ landingContent:
     links:
     - text: シングル サーバー上にデータベースを設計する
       url: tutorial-design-database-using-portal.md
-    - text: VNET でフレキシブル サーバーを使用した Web アプリを作成する
+    - text: VNET 内のフレキシブル サーバーを使用した Web アプリを作成する
       url: flexible-server/tutorial-webapp-server-vnet.md
+    - text: フレキシブル サーバーを使用して AKS に Spring Boot アプリをデプロイする
+      url: flexible-server/tutorial-deploy-springboot-on-aks-vnet.md
     - text: フレキシブル サーバーを使用した PHP (Laravel) Web アプリを作成する
       url: flexible-server/tutorial-php-database-app.md
     - text: シングル サーバーを使用した PHP (Laravel) Web アプリを作成する
@@ -141,8 +181,10 @@ landingContent:
       url: https://dev.mysql.com/doc/connector-net/en/
   - linkListType: deploy
     links:
-    - text: 一般的なタスクのための Azure CLI スクリプト
+    - text: Azure CLI サンプル - シングル サーバー
       url: ./sample-scripts-azure-cli.md
+    - text: Azure CLI サンプル - フレキシブル サーバー
+      url: flexible-server/sample-scripts-azure-cli.md
     - text: Azure Resource Manager のテンプレート
       url: /azure/templates/microsoft.dbformysql/allversions
   - linkListType: reference

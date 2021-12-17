@@ -4,18 +4,16 @@ titleSuffix: Azure Machine Learning
 description: Azure Kubernetes Service と Azure Container Instances での一般的な Docker デプロイ エラーの回避、解決、またはトラブルシューティング方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-author: gvashishtha
-ms.author: gopalv
-ms.date: 11/25/2020
+ms.subservice: mlops
+ms.date: 10/21/2021
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 8bec083e62bec6a0311487c1e64e780ad14f451b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 13e2413400506d06f4b9c36cc92ec3038ef10e04
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518265"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558328"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>リモートでのモデル デプロイのトラブルシューティング 
 
@@ -31,7 +29,7 @@ Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install)。
 * [Azure CLI](/cli/azure/install-azure-cli)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
@@ -59,7 +57,7 @@ Azure Machine Learning で非ローカル コンピューティングにモデ�
 
 デプロイされた Web サービスからログを取得するには、以下を実行します。
 
-```bash
+```azurecli
 az ml service get-logs --verbose --workspace-name <my workspace name> --name <service name>
 ```
 
@@ -84,6 +82,28 @@ print(service.get_logs())
 ## <a name="debug-locally"></a>ローカル デバッグ
 
 モデルを ACI または AKS にデプロイする際に問題が発生した場合は、ローカル Web サービスとしてデプロイしてください。 ローカル Web サービスを使用すると、問題のトラブルシューティングが簡単になります。 ローカルでのデプロイのトラブルシューティングについては、[ローカルでのトラブルシューティングに関する記事](./how-to-troubleshoot-deployment-local.md)を参照してください。
+
+## <a name="azure-machine-learning-inference-http-server"></a>Azure Machine Learning 推論 HTTP サーバー
+
+ローカル推論サーバーを使用すると、エントリ スクリプト (`score.py`) をすばやくデバッグできます。 基になるスコア スクリプトにバグがある場合、サーバーはモデルの初期化やサービスの提供に失敗します。 代わりに、例外と、問題が発生した場所がスローされます。 [Azure Machine Learning 推論 HTTP サーバーの詳細](how-to-inference-server-http.md)
+
+1. [Pypi](https://pypi.org/) フィードから `azureml-inference-server-http` パッケージをインストールします。
+
+    ```bash
+    python -m pip install azureml-inference-server-http
+    ```
+
+2. サーバーを起動し、エントリ スクリプトとして `score.py` を設定します。
+
+    ```bash
+    azmlinfsrv --entry_script score.py
+    ```
+
+3. `curl` を使用して、スコアリング要求をサーバーに送信します。
+
+    ```bash
+    curl -p 127.0.0.1:5001/score
+    ```
 
 ## <a name="container-cannot-be-scheduled"></a>コンテナーをスケジュールできない
 
@@ -189,11 +209,13 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
 
 次のエラーに対して、これらのアクションを実行します。
 
-|エラー  | 解決方法  |
+|エラー  | 解像度  |
 |---------|---------|
+| 409 競合エラー| 操作が既に進行中の場合、同じ Web サービスでの新しい操作は、409 競合エラーで応答します。 たとえば、Web サービスの作成または更新操作の進行中に、新しい削除操作がトリガーされた場合、エラーがスローされます。 |
 |Web サービスのデプロイ時のイメージ構築エラー     |  イメージ構成用の pip の依存関係として "pynacl==1.2.1" を Conda ファイルに追加します。       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   デプロイで使用される VM の SKU を、メモリがより多い SKU に変更します。 |
 |FPGA エラー     |  FPGA クォータを要求して承認されるまでは、FPGA にモデルをデプロイできません。 アクセスを要求するには、クォータ要求フォーム https://aka.ms/aml-real-time-ai に入力します。       |
+
 
 ## <a name="advanced-debugging"></a>高度なデバッグ
 

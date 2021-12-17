@@ -8,16 +8,16 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 03/07/2021
 ms.custom: ''
-ms.openlocfilehash: a4f206d68df3cd8dd4dd5b1b411d316e7aacde92
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 6654d1e167eefea1544262dab279b15b87b6b2ba
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077111"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460297"
 ---
 # <a name="generate-arm-template-for-cloud-services-extended-support-using-the-azure-portal"></a>Azure portal を使用して Cloud Services (延長サポート) 用の ARM テンプレートを生成する
 
-この記事では、[Azure portal](https://portal.azure.com) からクラウド サービス用の ARM テンプレートとパラメーター ファイルをダウンロードする方法について説明します。 PowerShell を使用して、ARM テンプレートとパラメーター ファイルをデプロイで使用して、クラウド サービスを作成または更新できます。
+この記事では、[Azure portal](https://portal.azure.com) からクラウド サービス用の ARM テンプレートとパラメーター ファイルをダウンロードする方法について説明します。 PowerShell を使用して、ARM テンプレートとパラメーター ファイルをデプロイで使用して、クラウド サービスを作成または更新できます
 
 ## <a name="get-arm-template-via-portal"></a>ポータルを使用して ARM テンプレートを取得する
 
@@ -34,6 +34,6 @@ ms.locfileid: "106077111"
     :::image type="content" source="media/download-template-portal-2.png" alt-text="イメージは、Azure portal 上のパッケージの SAS URI と構成の SAS URI パラメーターを示しています。":::
   
 ## <a name="next-steps"></a>次のステップ 
-- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
+- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.yml)を確認します。
 - [Azure portal](deploy-portal.md) を使用してクラウド サービス (延長サポート) をデプロイする
   

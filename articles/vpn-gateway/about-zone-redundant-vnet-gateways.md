@@ -1,19 +1,19 @@
 ---
-title: Azure Availability Zones でのゾーン冗長仮想ネットワーク ゲートウェイについて
-description: VPN および ExpressRoute ゲートウェイを Azure Availability Zones にデプロイして、仮想ネットワーク ゲートウェイに回復性、スケーラビリティ、より高い可用性をもたらします。
+title: Azure Availability Zones でのゾーン冗長仮想ネットワーク ゲートウェイ
+description: 仮想ネットワーク ゲートウェイに回復性、スケーラビリティ、より高い可用性をもたらすために、VPN および ExpressRoute ゲートウェイを Azure Availability Zones にデプロイする方法について説明します。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 05/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2d0e6464e81c0b0d04b9a0f483bcd14f075fa399
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0482146a7070083c795a60a4b01fdede7e1b3bf1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065164"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067386"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Azure Availability Zones でのゾーン冗長仮想ネットワーク ゲートウェイについて
 
@@ -39,7 +39,7 @@ ms.locfileid: "106065164"
 
 ## <a name="gateway-skus"></a><a name="gwskus"></a>ゲートウェイの SKU
 
-ゾーン冗長ゲートウェイとゾーン ゲートウェイは、新しいゲートウェイ SKU として使用できます。 Azure AZ リージョン内に新しい仮想ネットワーク ゲートウェイ SKU が追加されました。 これらの SKU は ExpressRoute および VPN Gateway の対応する既存の SKU と似ていますが、ゾーン冗長ゲートウェイとゾーン ゲートウェイに固有であるという点が異なります。 これらの SKU は、SKU 名に含まれる "AZ" で特定できます。
+ゾーン冗長ゲートウェイとゾーン ゲートウェイは、ゲートウェイ SKU として使用できます。 Azure AZ リージョン内に新しい仮想ネットワーク ゲートウェイ SKU が追加されました。 これらの SKU は ExpressRoute および VPN Gateway の対応する既存の SKU と似ていますが、ゾーン冗長ゲートウェイとゾーン ゲートウェイに固有であるという点が異なります。 これらの SKU は、SKU 名に含まれる "AZ" で特定できます。
 
 ゲートウェイ SKU の詳細については、[VPN ゲートウェイ SKU](vpn-gateway-about-vpngateways.md#gwsku) と [ExpressRoute ゲートウェイ SKU](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku) に関する記事を参照してください。
 
@@ -64,17 +64,17 @@ ms.locfileid: "106065164"
 
 ## <a name="faq"></a><a name="faq"></a>FAQ
 
-### <a name="what-will-change-when-i-deploy-these-new-skus"></a>これらの新しい SKU をデプロイすると何が変わりますか。
+### <a name="what-will-change-when-i-deploy-these-skus"></a>これらの SKU をデプロイすると何が変わりますか。
 
 お客様の観点からは、ゾーン冗長性を備えたゲートウェイをデプロイできるようになります。 つまり、すべてのゲートウェイ インスタンスが複数の Azure Availability Zones にわたってデプロイされ、それぞれの Availability Zone が別々の障害ドメインおよび更新ドメインとなります。 これにより、ゲートウェイの信頼性、可用性、およびゾーン障害に対する回復性が向上します。
 
 ### <a name="can-i-use-the-azure-portal"></a>Azure Portal を使用することはできますか。
 
-はい、Azure portal を使用して新しい SKU をデプロイできます。 ただし、これらの新しい SKU が表示されるのは、Azure Availability Zones がある Azure リージョンのみとなります。
+はい、Azure portal を使用してこれらの SKU をデプロイできます。 ただし、これらの SKU が表示されるのは、Azure Availability Zones がある Azure リージョンのみとなります。
 
-### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>新しい SKU を使用する場合、どのようなリージョンを利用できますか。
+### <a name="what-regions-are-available-for-me-to-use-these-skus"></a>これらの SKU を使用する場合、どのようなリージョンを利用できますか。
 
-新しい SKU は、Azure Availability Zones がある Azure リージョン (米国中部、フランス中部、北ヨーロッパ、西ヨーロッパ、米国西部 2、米国東部、米国東部 2、東南アジア、東日本、英国南部) でご利用いただけます。 将来的には、他の Azure パブリック リージョンでもゾーン冗長ゲートウェイを利用できるようになる予定です。
+これらの SKU は、Azure Availability Zones がある Azure リージョンで利用できます。 詳細については、「[Azure のリージョンと Availability Zones](../availability-zones/az-region.md#azure-regions-with-availability-zones)」をご覧ください。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>既存の仮想ネットワーク ゲートウェイをゾーン冗長ゲートウェイまたはゾーン ゲートウェイに変更、移行、アップグレードすることはできますか。
 

@@ -1,17 +1,18 @@
 ---
 title: Azure Data Factory のマッピング データ フローを使用して固定長テキスト ファイルを処理する
 description: Azure Data Factory のマッピング データ フローを使用して固定長テキスト ファイルを処理する方法について説明します。
-author: balakreshnan
+author: kromerm
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 2297364e8f1a531b4512f2497bc4d99963d61179
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58bd77eb815a510328c49ca7c614b0bc680a4b94
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386205"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571430"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Data Factory のマッピング データ フローを使用して固定長テキスト ファイルを処理する
 
@@ -25,13 +26,13 @@ Microsoft Azure Data Factory のマッピング データ フローを使用す�
 
 2. 固定幅ファイルの処理に使用されるデータ フロー アクティビティを追加します。
 
-    ![固定幅パイプライン](media/data-flow/fwpipe.png)
+    :::image type="content" source="media/data-flow/fwpipe.png" alt-text="固定幅パイプライン":::
 
 3. データ フロー アクティビティで、 **[New mapping data flow]\(新しいマッピング データ フロー\)** を選択します。
 
 4. ソース、派生列、選択、およびシンクの変換を追加します。
 
-    ![固定幅データ フロー](media/data-flow/fw2.png)
+    :::image type="content" source="media/data-flow/fw2.png" alt-text="固定幅データ フロー":::
 
 5. 新しいデータ セットを使用するようにソース変換を構成します。これは区切りテキスト型になります。
 
@@ -63,27 +64,27 @@ Microsoft Azure Data Factory のマッピング データ フローを使用す�
 
 10. 式ビルダーで、次のように入力します。
 
-    ```substring(Column_1,1,4)```
+    `substring(Column_1,1,4)`
 
-    ![派生列](media/data-flow/fwderivedcol1.png)
+    :::image type="content" source="media/data-flow/fwderivedcol1.png" alt-text="派生列":::
 
 11. 解析する必要があるすべての列について、手順 10 を繰り返します。
 
 12. **[Inspect]\(検査\)** タブを選択すると、生成される新しい列が表示されます。
 
-    ![検査](media/data-flow/fwinspect.png)
+    :::image type="content" source="media/data-flow/fwinspect.png" alt-text="検査":::
 
 13. SELECT 変換を使用して、変換に必要のない列をすべて削除します。
 
-    ![SELECT 変換](media/data-flow/fwselect.png)
+    :::image type="content" source="media/data-flow/fwselect.png" alt-text="SELECT 変換":::
 
 14. シンクを使用して、データをフォルダーに出力します。
 
-    ![固定幅シンク](media/data-flow/fwsink.png)
+    :::image type="content" source="media/data-flow/fwsink.png" alt-text="固定幅シンク":::
 
     出力は次のようになります。
 
-    ![固定幅出力](media/data-flow/fxdoutput.png)
+    :::image type="content" source="media/data-flow/fxdoutput.png" alt-text="固定幅出力":::
 
   固定幅データがそれぞれ 4 文字で分割され、Col1、Col2、Col3、Col4 などに割り当てられます。 前の例に基づいて、データは 4 つの列に分割されます。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 19ead7fe063992e95588641f7fd739081cf54a2f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9e037a1ba1ba3c0820321662d4f3feffa6dd2b35
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578415"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050624"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデーモン アプリ - トークンを取得する
 
@@ -65,7 +65,7 @@ MSAL Python では、構成ファイルは次のコード スニペットのよ�
 
 > [!IMPORTANT]
 > MSAL がバージョン 1.0 のアクセス トークンを受け入れるリソースのためのアクセス トークンを要求すると、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープから目的の対象ユーザーを解析します。
-> したがって、Azure SQL Database (**https:\//database.windows.net**) のように、リソースで想定される対象がスラッシュで終わる場合 (Azure SQL Database では `https://database.windows.net/`) は、`https://database.windows.net//.default` のスコープを要求する必要があります (二重スラッシュに注意してください)。MSAL.NET の問題「[#747: リソース URL の末尾のスラッシュが省略されたため、SQL 認証エラーが発生した](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)」も参照してください。
+> したがって、Azure SQL Database () のように、 `https://database.windows.net` リソースは、末尾がスラッシュ (Azure SQL Database の場合) であることを想定している場合は、 `https://database.windows.net/` のスコープを要求する必要があり `https://database.windows.net//.default` ます。 (二重スラッシュに注意してください)。「MSAL.NET issue [#747: `Resource url's trailing slash is omitted, which caused sql auth failure`](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)」も参照してください。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 

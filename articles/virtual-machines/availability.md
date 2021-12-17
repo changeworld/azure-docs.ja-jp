@@ -7,31 +7,35 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 821c50b5cb48bddb586c3589326a7f31c7bafded
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b474cbfa60c4f7cdabacf17082b06aeeffb715c8
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604534"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161237"
 ---
 # <a name="availability-options-for-azure-virtual-machines"></a>Azure Virtual Machines の可用性オプション
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
+
 この記事では、Azure 仮想マシン (VM) の可用性オプションの概要を説明します。
 
-## <a name="availability-zones"></a>可用性ゾーン
 
+## <a name="availability-zones"></a>可用性ゾーン
 [可用性ゾーン](../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context)は、VM 上のアプリケーションとデータの可用性を維持するための制御レベルを拡張します。 可用性ゾーンとは、Azure リージョン内の物理的に独立したゾーンのことです。 サポートされている Azure リージョンごとに 3 つの可用性ゾーンがあります。 
 
 可用性ゾーンはそれぞれ異なる電源、ネットワーク、および冷却装置を持ちます。 複数のゾーンにレプリケートされた VM を使用するソリューションを設計することで、1 つのデータセンターで障害が発生してもアプリケーションとデータを保護することができます。 1 つのゾーンが侵害された場合、レプリケートされたアプリとデータが別のゾーンですぐに利用可能になります。 
 
+
+## <a name="virtual-machines-scale-sets"></a>Virtual Machines スケール セット 
+[Azure Virtual Machine スケール セット](flexible-virtual-machine-scale-sets.md)では、負荷分散が行われる VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 スケール セット自体にはコストはかかりません。料金は、作成した各 VM インスタンスに対してのみ発生します。
+
+スケール セット内の仮想マシンは、複数の可用性ゾーン、1 つの可用性ゾーン、またはリージョンにデプロイすることもできます。 可用性ゾーンのデプロイ オプションは、[.オーケストレーション モード](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context)によって異なる場合があります。
+
+
 ## <a name="availability-sets"></a>可用性セット
 [可用性セット](availability-set-overview.md)は VM の論理グループで、これによって Azure は、冗長性と可用性を提供するためにアプリケーションが構築された方法を理解することができます。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つの可用性セット内に 2 つ以上の VM を作成することをお勧めします。 可用性セット自体にはコストはかかりません。料金は、作成した各 VM インスタンスに対してのみ発生します。
 
-
-## <a name="virtual-machines-scale-sets"></a>Virtual Machines スケール セット 
-
-[Azure Virtual Machine スケール セット](../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context)では、負荷分散が行われる VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つのスケール セット内に 2 つ以上の VM を作成することをお勧めします。 スケール セット自体にはコストはかかりません。料金は、作成した各 VM インスタンスに対してのみ発生します。
-
-スケール セット内の仮想マシンは、1 つの可用性ゾーン (リージョン) にデプロイすることもできます。 可用性ゾーンのデプロイ オプションは、[.オーケストレーション モード](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context)によって異なる場合があります。
 
 ## <a name="load-balancer"></a>Load Balancer
 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) と可用性ゾーンまたは可用性セットを結合することで、アプリケーションの回復性を最大化できます。 Azure Load Balanceは、複数の仮想マシンにトラフィックを振り分けます。 当社の標準層の仮想マシンには Azure Load Balanceが含まれています。 すべての仮想マシン層に Azure Load Balancer が含まれているわけではありません。 仮想マシンの負荷分散の詳細については、[Linux](linux/tutorial-load-balancer.md) または [Windows](windows/tutorial-load-balancer.md) の **仮想マシンの負荷分散** に関する記事をご覧ください。
@@ -47,6 +51,7 @@ Azure Storage では、計画されたイベントや計画外のイベント (�
 
 詳細については、「[Azure Storage の冗長性](../storage/common/storage-redundancy.md)」を参照してください。
 
+
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 組織は、計画済みまたは計画外の停止が発生した場合のために、お使いのデータの安全性を確保し、お使いのアプリやワークロードをオンラインにし、ビジネス継続性とディザスター リカバリー (BCDR) の戦略を導入する必要があります。
 
@@ -57,6 +62,6 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 - オンプレミス VM、Azure Stack VM、物理サーバー。
 
 ## <a name="next-steps"></a>次のステップ
-- [可用性ゾーンに仮想マシンを作成する](/azure/virtual-machines/linux/create-cli-availability-zone)
-- [可用性セットに仮想マシンを作成する](/azure/virtual-machines/linux/tutorial-availability-sets)
+- [可用性ゾーンに仮想マシンを作成する](./linux/create-cli-availability-zone.md)
+- [可用性セットに仮想マシンを作成する](./linux/tutorial-availability-sets.md)
 - [仮想マシン スケール セットを作成する](../virtual-machine-scale-sets/quick-create-portal.md)

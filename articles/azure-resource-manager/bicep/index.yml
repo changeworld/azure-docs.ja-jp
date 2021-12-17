@@ -1,0 +1,123 @@
+### YamlMime:Landing
+title: Bicep のドキュメント
+summary: Bicep は、Azure リソースを宣言によってデプロイするための言語です。 Azure Resource Manager テンプレート (ARM テンプレート) の開発には、JSON ではなく Bicep を使用できます。
+metadata:
+  title: Bicep のドキュメント
+  description: Bicep ファイルを開発し、それらを使用して Azure リソースをデプロイする方法について説明します
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  ms.subservice: Bicep
+  ms.topic: landing-page
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 11/17/2021
+  ms.openlocfilehash: 7c825fcb85cc311b77e8ea851815a58974a5edf4
+  ms.sourcegitcommit: 1244a72dbec39ac8cf16bb1799d8c46bde749d47
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/18/2021
+  ms.locfileid: "132754825"
+landingContent:
+- title: Bicep
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Bicep とは
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: Ignite 2021 プレゼンテーション
+      url: https://www.youtube.com/embed/sc1kJfcRQgY
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Bicep ファイルの作成 - VS Code
+      url: quickstart-create-bicep-use-visual-studio-code.md
+  - linkListType: learn
+    links:
+    - text: Bicep の概要
+      url: /learn/modules/introduction-to-infrastructure-as-code-using-bicep/
+    - text: Bicep を使用したデプロイ
+      url: /learn/modules/deploy-azure-resources-by-using-bicep-templates/
+    - text: 子および拡張機能リソースをデプロイする
+      url: /learn/modules/child-extension-bicep-templates/
+- title: Bicep ファイルを作成する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Bicep ファイルの構造と構文
+      url: ./file.md
+    - text: パラメーターを定義する
+      url: ./parameters.md
+    - text: 変数の定義
+      url: ./variables.md
+    - text: リソースを定義する
+      url: ./resource-declaration.md
+    - text: モジュールを定義する
+      url: ./modules.md
+    - text: 出力を定義する
+      url: outputs.md
+  - linkListType: reference
+    links:
+    - text: 関数
+      url: ./bicep-functions.md
+    - text: 演算子
+      url: ./operators.md
+    - text: データ型
+      url: ./data-types.md
+    - text: Azure クイック スタート テンプレート
+      url: https://azure.microsoft.com/resources/templates/
+- title: Bicep ファイルをデプロイする
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Bicep とパイプライン
+      url: add-template-to-azure-pipelines.md
+    - text: Bicep と GitHub Actions
+      url: deploy-github-actions.md
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell
+      url: deploy-powershell.md
+    - text: Azure CLI
+      url: deploy-cli.md
+    - text: Cloud Shell
+      url: deploy-cloud-shell.md
+    - text: what-if のデプロイ
+      url: deploy-what-if.md
+- title: スコープ付きのデプロイ
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Resource group
+      url: deploy-to-resource-group.md
+    - text: サブスクリプション
+      url: deploy-to-subscription.md
+    - text: 管理グループ
+      url: deploy-to-management-group.md
+    - text: Tenant
+      url: deploy-to-tenant.md
+    - text: 拡張リソースの範囲設定
+      url: scope-extension-resources.md
+- title: ガイダンスとパターン
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ベスト プラクティス
+      url: best-practices.md
+    - text: 構成セット パターン
+      url: patterns-configuration-set.md
+    - text: 共有変数ファイル パターン
+      url: patterns-shared-variable-file.md
+- title: リファレンス コンテンツの確認
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Bicep リソースのリファレンス
+      url: /azure/templates/
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource

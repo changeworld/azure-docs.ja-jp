@@ -4,12 +4,12 @@ description: Azure HDInsight でクエリ結果をフェッチしているとき
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
-ms.openlocfilehash: 474fa5e084acfa508a4391075b3c78d96b01aa46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5b1ec7fec182d5b0b6f2d68467d6e3e84fdb5f3c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930739"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601408"
 ---
 # <a name="scenario-apache-hive-view-times-out-when-fetching-a-query-result-in-azure-hdinsight"></a>シナリオ: Azure HDInsight でクエリ結果をフェッチしているときに Apache Hive ビューがタイムアウトになる
 
@@ -30,16 +30,19 @@ Hive ビューの既定のタイムアウト値が、実行しているクエリ
 
 ## <a name="resolution"></a>解決方法
 
-`/etc/ambari-server/conf/ambari.properties` で次のプロパティを設定して、Apache Ambari Hive ビューのタイムアウト値を増加してください。
+1. `/etc/ambari-server/conf/ambari.properties` で **両方のヘッドノードに対して** 次のプロパティを設定して、Apache Ambari Hive ビューのタイムアウト値を増やしてください。
+  ```
+  views.ambari.request.read.timeout.millis=300000
+  views.request.read.timeout.millis=300000
+  views.ambari.hive.<HIVE_VIEW_INSTANCE_NAME>.result.fetch.timeout=300000
+  ```
+  `HIVE_VIEW_INSTANCE_NAME` の値は、Hive ビューの URL の末尾にあります。
 
-```
-views.ambari.request.read.timeout.millis=300000
-views.request.read.timeout.millis=300000
-views.ambari.hive.<HIVE_VIEW_INSTANCE_NAME>.result.fetch.timeout=300000
-```
-
-`HIVE_VIEW_INSTANCE_NAME` の値は、Hive ビューの URL の末尾にあります。
+2. 次を実行して、アクティブな Ambari サーバーを再起動します。 アクティブな Ambari サーバーではないというエラー メッセージが表示された場合は、次のヘッドノードに ssh 接続して、この手順を繰り返してください。
+  ```
+  sudo ambari-server restart
+  ```
 
 ## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

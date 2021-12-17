@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 996523d507f0a4f2850e936df39a38769bc47cde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 689c934d9d175b4e40c7f7d65b3b710bbe4a94fe
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101091297"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059452"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal を介して DMS を使用し、Azure DB for PostgreSQL - 単一サーバーを Azure DB for PostgreSQL - 単一サーバーにオンラインで移行または更新する
 
@@ -40,7 +40,7 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 > 最適な移行エクスペリエンスのために、ターゲット データベースと同じ Azure リージョンに Azure Database Migration Service のインスタンスを作成することをお勧めします。 リージョンや地域をまたいでデータを移動する場合、移行プロセスが遅くなり、エラーが発生する可能性があります。
 
 > [!IMPORTANT]
-> Azure Database for PostgreSQL からの移行は、PostgreSQL バージョン 10 以降でサポートされています。 また、このチュートリアルを使用して、ある Azure Database for PostgreSQL インスタンスから別の Azure Database for PostgreSQL インスタンスまたは Hyperscale (Citus) インスタンスに移行することもできます。
+> Azure Database for PostgreSQL からの移行は、PostgreSQL バージョン 9.x 以降でサポートされています。 また、このチュートリアルを使用して、ある Azure Database for PostgreSQL インスタンスから別の Azure Database for PostgreSQL インスタンスまたは Hyperscale (Citus) インスタンスに移行することもできます。 PostgreSQL 9.5 および 9.6 から移行するには、ソース インスタンスに[追加の論理レプリケーション特権](#run-the-migration)が必要です。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,7 +49,7 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 * サポートされている移行とバージョンの組み合わせについては、「[Azure Database Migration Service によってサポートされる移行シナリオの状態](./resource-scenario-status.md)」を確認してください。 
 * **DVD Rental** データベースが稼働している既存の [Azure Database for PostgreSQL](../postgresql/index.yml) バージョン 10 以降のインスタンス。 
 
-    また、ターゲットの Azure Database for PostgreSQL のバージョンは、オンプレミスの PostgreSQL バージョンと同じかそれ以降である必要があることに注意してください。 たとえば、PostgreSQL 10 は Azure Database for PostgreSQL 10 または 11 に移行できますが、Azure Database for PostgreSQL 9.6 には移行できません。
+    また、ターゲットの Azure Database for PostgreSQL のバージョンは、オンプレミスの PostgreSQL バージョンと同じかそれ以降である必要があることに注意してください。 たとえば、PostgreSQL 10 は Azure Database for PostgreSQL 10 または 11 に移行できますが、Azure Database for PostgreSQL 9.6 には移行できません。 
 
 * データの移行先となるターゲット データベース サーバーとして、[Azure Database for PostgreSQL サーバーを作成](../postgresql/quickstart-create-server-database-portal.md)するか、[Azure Database for PostgreSQL - Hyperscale (Citus) サーバーを作成](../postgresql/quickstart-create-hyperscale-portal.md)します。
 * Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](../virtual-network/index.yml)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
@@ -105,74 +105,11 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
     ```
     psql -h mypgserver-source.postgres.database.azure.com  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql
     ```
+    
+   > [!NOTE]
+   > 移行サービスにより、外部キーの有効化/無効化が内部的に処理され、信頼性のある堅牢なデータ移行が確保されるようトリガーされます。 そのため、ターゲット データベース スキーマの変更は検討する必要はありません。
 
-4. 外部キー削除スクリプトを抽出し、ターゲット (Azure Database for PostgreSQL) に追加するには、PgAdmin または psql で次のスクリプトを実行します。
-
-   > [!IMPORTANT]
-   > スキーマに外部キーがあると、移行の初回の読み込みと継続的同期が失敗します。
-
-    ```
-    SELECT Q.table_name
-        ,CONCAT('ALTER TABLE ','"', table_schema,'"', '.','"', table_name ,'"', STRING_AGG(DISTINCT CONCAT(' DROP CONSTRAINT ','"', foreignkey,'"'), ','), ';') as DropQuery
-            ,CONCAT('ALTER TABLE ','"', table_schema,'"', '.','"', table_name,'"', STRING_AGG(DISTINCT CONCAT(' ADD CONSTRAINT ','"', foreignkey,'"', ' FOREIGN KEY (','"', column_name,'"', ')', ' REFERENCES ','"', foreign_table_schema,'"', '.','"', foreign_table_name,'"', '(','"', foreign_column_name,'"', ')',' ON UPDATE ',update_rule,' ON DELETE ',delete_rule), ','), ';') as AddQuery
-    FROM
-        (SELECT
-        S.table_schema,
-        S.foreignkey,
-        S.table_name,
-        STRING_AGG(DISTINCT S.column_name, ',') AS column_name,
-        S.foreign_table_schema,
-        S.foreign_table_name,
-        STRING_AGG(DISTINCT S.foreign_column_name, ',') AS foreign_column_name,
-        S.update_rule,
-        S.delete_rule
-    FROM
-        (SELECT DISTINCT
-        tc.table_schema,
-        tc.constraint_name AS foreignkey,
-        tc.table_name,
-        kcu.column_name,
-        ccu.table_schema AS foreign_table_schema,
-        ccu.table_name AS foreign_table_name,
-        ccu.column_name AS foreign_column_name,
-        rc.update_rule AS update_rule,
-        rc.delete_rule AS delete_rule
-        FROM information_schema.table_constraints AS tc
-        JOIN information_schema.key_column_usage AS kcu ON tc.constraint_name = kcu.constraint_name AND tc.table_schema = kcu.table_schema
-        JOIN information_schema.constraint_column_usage AS ccu ON ccu.constraint_name = tc.constraint_name AND ccu.table_schema = tc.table_schema
-        JOIN information_schema.referential_constraints as rc ON rc.constraint_name = tc.constraint_name AND rc.constraint_schema = tc.table_schema
-    WHERE constraint_type = 'FOREIGN KEY'
-        ) S
-        GROUP BY S.table_schema, S.foreignkey, S.table_name, S.foreign_table_schema, S.foreign_table_name,S.update_rule,S.delete_rule
-        ) Q
-        GROUP BY Q.table_schema, Q.table_name;
-    ```
-
-5. クエリの結果内の外部キー削除 (2 列目) を実行します。
-
-6. ターゲット データベース内のトリガーを無効にするには、以下のスクリプトを実行します。
-
-   > [!IMPORTANT]
-   > データ内のトリガー (insert または update) により、ソースからデータがレプリケートされる前にターゲットにデータの整合性が適用されます。 そのため、移行時は **ターゲットの** すべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを再度有効にすることをお勧めします。
-
-    ```
-    SELECT DISTINCT CONCAT('ALTER TABLE ', event_object_schema, '.', event_object_table, ' DISABLE TRIGGER ', trigger_name, ';')
-    FROM information_schema.triggers
-    ```
-
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
-
-1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
-
-   ![ポータルのサブスクリプションの表示](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/portal-select-subscriptions.png)
-
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択してから、 **[リソース プロバイダー]** を選びます。
-
-    ![リソース プロバイダーの表示](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/portal-select-resource-provider.png)
-
-3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
-
-    ![リソース プロバイダーの登録](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/portal-register-resource-provider.png)
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 
 ## <a name="create-a-dms-instance"></a>DMS インスタンスを作成する
 

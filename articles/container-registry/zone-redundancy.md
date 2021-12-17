@@ -2,14 +2,14 @@
 title: 高可用性のためのゾーン冗長レジストリ
 description: Azure Container Registry でのゾーン冗長の有効化について説明します。 Azure 可用性ゾーンでコンテナー レジストリまたはレプリケーションを作成します。 ゾーン冗長は、Premium サービス レベルの機能です。
 ms.topic: article
-ms.date: 02/23/2021
+ms.date: 09/13/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 8c1ab42aa505448bd81ff42eba54727b24773c60
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: ca475f61c3164f54682a22f459e1f8f768073f1f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479017"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586819"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>回復性と高可用性のために Azure Container Registry でゾーン冗長を有効にする
 
@@ -21,7 +21,12 @@ ms.locfileid: "107479017"
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
-* 現在は、米国東部、米国東部 2、米国西部 2、北ヨーロッパ、西ヨーロッパ、東日本の各リージョンでサポートされています。
+* 現在は、次のリージョンでサポートされています: 
+  
+    |アメリカ  |ヨーロッパ  |アフリカ  |アジア太平洋  |
+    |---------|---------|---------|---------|
+    |ブラジル南部<br/>カナダ中部<br/>米国中部<br/>米国東部<br/>米国東部 2<br/>米国中南部<br/>米国政府バージニア州<br/>米国西部 2<br/>米国西部 3     |フランス中部<br/>ドイツ中西部<br/>北ヨーロッパ<br/>ノルウェー東部<br/>西ヨーロッパ<br/>英国南部      |南アフリカ北部<br/>        |オーストラリア東部<br/>インド中部<br/>東日本<br/>韓国中部<br/>  |
+
 * 可用性ゾーンへのリージョンの変換は、現在はサポートされていません。 リージョンで可用性ゾーンのサポートを有効にするには、可用性ゾーンのサポートを有効にして、必要なリージョンにレジストリを作成するか、可用性ゾーンのサポートを有効にしてレプリケートされたリージョンを追加する必要があります。
 * リージョンでゾーン冗長を無効にすることはできません。
 * [ACR タスク](container-registry-tasks-overview.md)では、可用性ゾーンはまだサポートされていません。
@@ -244,4 +249,4 @@ az deployment group create \
 ## <a name="next-steps"></a>次のステップ
 
 * [可用性ゾーンがサポートされているリージョン](../availability-zones/az-region.md)について、さらに確認する。
-* Azure での[信頼性](/azure/architecture/framework/resiliency/overview)の構築について、さらに確認する。
+* Azure での[信頼性](/azure/architecture/framework/resiliency/app-design)の構築について、さらに確認する。

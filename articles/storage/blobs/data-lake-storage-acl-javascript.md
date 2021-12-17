@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Storage Gen2 で JavaScript (Node.js) を使用して ACL を設定する
+title: Azure Data Lake Storage Gen2 で JavaScript (Node.js) を使用して ACL を管理する
 description: JavaScript 用の Azure Storage Data Lake クライアント ライブラリを使用して、階層型名前空間 (HNS) が有効になっているストレージ アカウントでアクセス制御リスト (ACL) を管理します。
 author: normesta
 ms.service: storage
@@ -9,22 +9,22 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: 21b4977102a484d8a3a680450a9cb6f77c7e3fbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf09d9956a2cc7cea6831b52df45abc7f0fbb1b1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722754"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555453"
 ---
 # <a name="use-javascript-sdk-in-nodejs-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で JavaScript (Node.js の SDK) を使用して ACL を管理する
 
-この記事では、Node.js を使用して、ディレクトリとファイルのアクセス制御リストを取得、設定、更新する方法について説明します。 
+この記事では、Node.js を使用して、ディレクトリとファイルのアクセス制御リストを取得、設定、更新する方法について説明します。
 
 [パッケージ (ノード パッケージ マネージャー)](https://www.npmjs.com/package/@azure/storage-file-datalake) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples) | [フィードバックを送る](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- Azure サブスクリプション。 詳細については、[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 - 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](create-data-lake-storage-account.md)の手順に従います。
 
@@ -32,10 +32,10 @@ ms.locfileid: "104722754"
 
 - 次のセキュリティのアクセス許可のいずれか。
 
-  - ターゲット コンテナー、親リソース グループ、またはサブスクリプションのいずれかのスコープで[ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが割り当てられた、プロビジョニングされた Azure Active Directory (AD) [セキュリティ プリンシパル](../../role-based-access-control/overview.md#security-principal)。  
+  - ターゲット コンテナー、親リソース グループ、またはサブスクリプションのいずれかのスコープで[ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが割り当てられた、プロビジョニングされた Azure Active Directory (AD) [セキュリティ プリンシパル](../../role-based-access-control/overview.md#security-principal)。
 
   - ACL 設定を適用する予定のターゲット コンテナーまたはディレクトリの所有ユーザー。 ACL を再帰的に設定する場合、これには、ターゲット コンテナーまたはディレクトリ内のすべての子項目が含まれます。
-  
+
   - ストレージ アカウント キー。
 
 ## <a name="set-up-your-project"></a>プロジェクトの設定
@@ -46,7 +46,7 @@ ms.locfileid: "104722754"
 npm install @azure/storage-file-datalake
 ```
 
-このステートメントをコード ファイルの先頭に配置して、`storage-file-datalake` パッケージをインポートします。 
+このステートメントをコード ファイルの先頭に配置して、`storage-file-datalake` パッケージをインポートします。
 
 ```javascript
 const {
@@ -58,7 +58,7 @@ StorageSharedKeyCredential
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する
 
-この記事のスニペットを使用するには、ストレージ アカウントを表す **DataLakeServiceClient** インスタンスを作成する必要があります。 
+この記事のスニペットを使用するには、ストレージ アカウントを表す **DataLakeServiceClient** インスタンスを作成する必要があります。
 
 ### <a name="connect-by-using-azure-active-directory-ad"></a>Azure Active Directory (AD) を使用して接続する
 
@@ -67,24 +67,24 @@ StorageSharedKeyCredential
 
 [JS 用 Azure ID クライアント ライブラリ](https://www.npmjs.com/package/@azure/identity) を使用して、Azure AD でアプリケーションを認証できます。
 
-クライアント ID、クライアント シークレット、およびテナント ID を取得します。 これを行うには、「[クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する](../common/storage-auth-aad-app.md)」を参照してください。 このプロセスの一環として、次のいずれかの[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) ロールをセキュリティ プリンシパルに割り当てる必要があります。 
+クライアント ID、クライアント シークレット、およびテナント ID を取得します。 これを行うには、「[クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する](../common/storage-auth-aad-app.md)」を参照してください。 このプロセスの一環として、次のいずれかの[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) ロールをセキュリティ プリンシパルに割り当てる必要があります。
 
 |Role|ACL 設定機能|
 |--|--|
 |[ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|アカウント内のすべてのディレクトリとファイル。|
 |[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)|セキュリティ プリンシパルによって所有されているディレクトリとファイルのみ。|
 
-この例では、クライアント ID、クライアント シークレット、およびテナント ID を使用して **DataLakeServiceClient** インスタンスを作成します。  
+この例では、クライアント ID、クライアント シークレット、およびテナント ID を使用して **DataLakeServiceClient** インスタンスを作成します。
 
 ```javascript
 function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantID) {
 
   const credential = new ClientSecretCredential(tenantID, clientID, clientSecret);
-  
+
   const datalakeServiceClient = new DataLakeServiceClient(
       `https://${accountName}.dfs.core.windows.net`, credential);
 
-  return datalakeServiceClient;             
+  return datalakeServiceClient;
 }
 ```
 
@@ -93,7 +93,7 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 
 ### <a name="connect-by-using-an-account-key"></a>アカウント キーを使用して接続する
 
-これはアカウントに接続する最も簡単な方法です。 
+これはアカウントに接続する最も簡単な方法です。
 
 この例では、アカウント キーを使用して **DataLakeServiceClient** インスタンスを作成します。
 
@@ -101,14 +101,14 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 
 function GetDataLakeServiceClient(accountName, accountKey) {
 
-  const sharedKeyCredential = 
+  const sharedKeyCredential =
      new StorageSharedKeyCredential(accountName, accountKey);
-  
+
   const datalakeServiceClient = new DataLakeServiceClient(
       `https://${accountName}.dfs.core.windows.net`, sharedKeyCredential);
 
-  return datalakeServiceClient;             
-}      
+  return datalakeServiceClient;
+}
 
 ```
 
@@ -120,12 +120,12 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 この例では、`my-directory` という名前のディレクトリの ACL を取得して設定します。 この例では、所有ユーザーには読み取り、書き込み、実行のアクセス許可を付与し、所有グループには読み取りと実行のアクセス許可のみを付与し、他のすべてのユーザーには読み取りアクセスを付与します。
 
 > [!NOTE]
-> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認している場合は、アクセスを承認するためにアプリケーションで使用されているセキュリティ プリンシパルに、[ストレージ BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)が割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)」を参照してください。
+> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認している場合は、アクセスを承認するためにアプリケーションで使用されているセキュリティ プリンシパルに、[ストレージ BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)が割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)に関するページを参照してください。
 
 ```javascript
 async function ManageDirectoryACLs(fileSystemClient) {
 
-    const directoryClient = fileSystemClient.getDirectoryClient("my-directory"); 
+    const directoryClient = fileSystemClient.getDirectoryClient("my-directory");
     const permissions = await directoryClient.getAccessControl();
 
     console.log(permissions.acl);
@@ -176,12 +176,12 @@ async function ManageDirectoryACLs(fileSystemClient) {
 この例では、`upload-file.txt` という名前のファイルの ACL を取得して設定します。 この例では、所有ユーザーには読み取り、書き込み、実行のアクセス許可を付与し、所有グループには読み取りと実行のアクセス許可のみを付与し、他のすべてのユーザーには読み取りアクセスを付与します。
 
 > [!NOTE]
-> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認している場合は、アクセスを承認するためにアプリケーションで使用されているセキュリティ プリンシパルに、[ストレージ BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)が割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)」を参照してください。
+> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認している場合は、アクセスを承認するためにアプリケーションで使用されているセキュリティ プリンシパルに、[ストレージ BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)が割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)に関するページを参照してください。
 
 ```javascript
 async function ManageFileACLs(fileSystemClient) {
 
-  const fileClient = fileSystemClient.getFileClient("my-directory/uploaded-file.txt"); 
+  const fileClient = fileSystemClient.getFileClient("my-directory/uploaded-file.txt");
   const permissions = await fileClient.getAccessControl();
 
   console.log(permissions.acl);
@@ -221,7 +221,7 @@ async function ManageFileACLs(fileSystemClient) {
 
 ];
 
-await fileClient.setAccessControl(acl);        
+await fileClient.setAccessControl(acl);
 }
 ```
 

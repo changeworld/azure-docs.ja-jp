@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:Azure Blob Storage ライブラリ v12 - JavaScript
 description: このクイックスタートでは、JavaScript 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 09/17/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e26a375ebdc97026de09511b0bc0f11fe073e41
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 610e955a948af4e41a32741b7132cdadb322bbab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280124"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609234"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>クイック スタート:Node.js の JavaScript v12 SDK を使用して BLOB を管理する
 
@@ -21,18 +21,16 @@ ms.locfileid: "106280124"
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](/javascript/api/@azure/storage-blob)
-* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
-* [パッケージ (ノード パッケージ マネージャー)](https://www.npmjs.com/package/@azure/storage-blob)
-* [サンプル](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+- [API リファレンス ドキュメント](/javascript/api/@azure/storage-blob)
+- [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
+- [パッケージ (ノード パッケージ マネージャー)](https://www.npmjs.com/package/@azure/storage-blob)
+- [サンプル](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure Storage のアカウント [ストレージ アカウントの作成](../common/storage-account-create.md)。
 - [Node.js](https://nodejs.org/en/download/)。
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>設定
 
@@ -115,9 +113,9 @@ npm install
 
 Azure Blob Storage は、大量の非構造化データを格納するために最適化されています。 非構造化データとは、特定のデータ モデルや定義に従っていないデータであり、テキスト データやバイナリ データなどがあります。 Blob Storage には、3 種類のリソースがあります。
 
-* ストレージ アカウント
-* ストレージ アカウント内のコンテナー
-* コンテナー内の BLOB
+- ストレージ アカウント
+- ストレージ アカウント内のコンテナー
+- コンテナー内の BLOB
 
 次の図に、これらのリソースの関係を示します。
 
@@ -125,20 +123,20 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 これらのリソースとやり取りするには、以下の JavaScript クラスを使用します。
 
-* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。
-* [ContainerClient](/javascript/api/@azure/storage-blob/containerclient):`ContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
-* [BlobClient](/javascript/api/@azure/storage-blob/blobclient):`BlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
+- [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。
+- [ContainerClient](/javascript/api/@azure/storage-blob/containerclient):`ContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
+- [BlobClient](/javascript/api/@azure/storage-blob/blobclient):`BlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
 
 ## <a name="code-examples"></a>コード例
 
 これらのコード例のスニペットでは、JavaScript 用 Azure Blob Storage クライアント ライブラリを使用して以下を実行する方法を示します。
 
-* [接続文字列を取得する](#get-the-connection-string)
-* [コンテナーの作成](#create-a-container)
-* [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
-* [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
-* [BLOB をダウンロードする](#download-blobs)
-* [コンテナーの削除](#delete-a-container)
+- [接続文字列を取得する](#get-the-connection-string)
+- [コンテナーの作成](#create-a-container)
+- [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
+- [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
+- [BLOB をダウンロードする](#download-blobs)
+- [コンテナーの削除](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>接続文字列を取得する
 
@@ -314,6 +312,12 @@ Done
 > [!div class="nextstepaction"]
 > [JavaScript 開発者センターの Azure](/azure/developer/javascript/)
 
+<<<<<<< HEAD
 * Azure Blob Storage を使用する Web アプリをデプロイする方法については、「[チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)」を参照してください。
 * Blob Storage のサンプル アプリの詳細については、[Azure Blob Storage クライアント ライブラリ v12 JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) ページを参照してください。
 * 詳細については、[JavaScript 用 Azure Blob Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)に関するページを参照してください。
+=======
+- Azure BLOB ストレージを使用する Web アプリをデプロイする方法については、「[チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)」を参照してください。
+- Blob Storage のサンプル アプリの詳細については、[Azure Blob Storage クライアント ライブラリ v12 JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) ページを参照してください。
+- 詳細については、[JavaScript 用 Azure Blob Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)に関するページを参照してください。
+>>>>>>> repo_sync_working_branch

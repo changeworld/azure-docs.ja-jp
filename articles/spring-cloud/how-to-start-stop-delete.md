@@ -1,20 +1,20 @@
 ---
-title: Azure Spring Cloud アプリケーションを開始、停止、削除する | Microsoft Docs
-description: Azure Spring Cloud アプリケーションを開始、停止、および削除する方法
-author: bmitchell287
+title: Azure Spring Cloud のアプリケーションを開始、停止、削除する | Microsoft Docs
+description: Azure Spring Cloud のアプリケーションを開始、停止、削除する方法
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.author: brendm
-ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 46d79de612a17c7b21e7cc51dcf4904209e1625d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: karler
+ms.custom: devx-track-java
+ms.openlocfilehash: 0e27f7ac841635f33bc40db739df4cf2240e2149
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877444"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484761"
 ---
-# <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>Azure Spring Cloud アプリケーションを開始、停止、削除する
+# <a name="start-stop-and-delete-an-application-in-azure-spring-cloud"></a>Azure Spring Cloud のアプリケーションを開始、停止、削除する
 
 **この記事の適用対象:** ✔️ Java ✔️ C#
 
@@ -32,7 +32,7 @@ ms.locfileid: "104877444"
 ## <a name="using-the-azure-cli"></a>Azure CLI の使用
 
 > [!NOTE]
-> オプションのパラメーターを使用して、Azure CLI で既定値を構成できます。 Azure CLI の詳細については、[リファレンス ドキュメント](/cli/azure/ext/spring-cloud/spring-cloud)を参照してください。  
+> オプションのパラメーターを使用して、Azure CLI で既定値を構成できます。 Azure CLI の詳細については、[リファレンス ドキュメント](/cli/azure/spring-cloud)を参照してください。
 
 まず、次のように Azure CLI 用の Azure Spring Cloud 拡張機能をインストールします。
 

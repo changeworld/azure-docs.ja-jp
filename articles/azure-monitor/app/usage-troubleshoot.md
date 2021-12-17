@@ -1,17 +1,14 @@
 ---
-title: ユーザー分析ツールをトラブルシューティングする - Azure Application Insights
+title: ユーザー分析ツールをトラブルシューティングする - Application Insights
 description: トラブルシューティング ガイド - Application Insights でのサイトとアプリの利用状況の分析。
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 07/11/2018
-ms.reviewer: mbullwin
-ms.openlocfilehash: a1d77016fdf94de4fdd574b0d4cbd22d6b0b8490
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/30/2021
+ms.openlocfilehash: 05d7af4fd56d79e34400fe999375502563eedd45
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024746"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131811"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights のユーザー動作分析ツールをトラブルシューティングする
 [Application Insights のユーザー動作分析ツール](usage-overview.md): [ユーザー、セッション、イベント](usage-segmentation.md)、[じょうご](usage-funnels.md)、[ユーザー フロー](usage-flows.md)、[リテンション](usage-retention.md)、またはコーホートについて質問がありますか? いくつかの答えを次に示します。

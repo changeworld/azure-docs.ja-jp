@@ -2,17 +2,31 @@
 title: Azure Backup Server を使用した SQL Server のバックアップ
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用して SQL Server データベースのバックアップを構成する方法について説明します。
 ms.topic: conceptual
-ms.date: 03/24/2017
-ms.openlocfilehash: e79b5263b248312b7170288be24ab5fc196042a7
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 07/28/2021
+ms.openlocfilehash: f97fc81b051b8c7d76ee1769b82ad4a2d489357b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518662"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722761"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Azure Backup Server を使用して SQL Server を Azure にバックアップする
 
-この記事は、Microsoft Azure Backup Server (MABS) を使用して SQL Server データベースのバックアップを設定する際に役に立ちます。
+Microsoft Azure Backup Server (MABS) は、SQL Server データベースのバックアップと回復機能を提供します。 SQL Server データベースをバックアップするだけでなく、SQL Server コンピューターのシステム バックアップや完全なベアメタル バックアップを実行できます。 MABS で保護できるものは以下です。
+
+- スタンドアロンの SQL Server インスタンス
+- SQL Server フェールオーバー クラスター インスタンス (FCI)
+
+>[!Note]
+>MABS v3 UR2 では、クラスターの共有ボリューム (CSV) を使用して、SQL Server フェールオーバー クラスター インスタンス (FCI) をサポートしています。
+>
+>Azure 上で記憶域スペース ダイレクトを使用した SQL Server FCI、および Azure 共有ディスクを使用した SQL Server FCIの保護は、この機能によってサポートされています。 Azure Virtual Machine 上にデプロイされている SQL FCI インスタンスを保護するには、Azure VM に DPM サーバーをデプロイする必要があります。
+>
+>以下の設定の SQL Server AlwaysOn 可用性グループ
+>- [セカンダリを優先]
+>- [セカンダリのみ]
+>- 1 次式
+>- [任意のレプリカ]
 
 SQL Server データベースをバックアップし、それを Azure から回復するには:
 

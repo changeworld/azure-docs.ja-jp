@@ -5,15 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.custom: devx-track-csharp
-ms.openlocfilehash: e67f924806909d55d17151c36f28f81312223b23
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/22/2021
+ms.custom: devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: c197d60e3718bdc7a4db41d7873bff7ed46c2fb4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782777"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242937"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK を使用した Azure Data Factory の作成、監視、および管理
 > [!NOTE]

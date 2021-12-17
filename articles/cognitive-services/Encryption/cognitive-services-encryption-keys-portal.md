@@ -6,14 +6,14 @@ services: cognitive-services
 author: erindormier
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/28/2020
+ms.date: 04/07/2021
 ms.author: egeaney
-ms.openlocfilehash: 88a723abc606a527232b7c1949f35c1fedfdba50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ffafa5618de85a0d47a5cf8317aae6d6b5d6987
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706845"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323871"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Cognitive Services 用に Azure Key Vault でカスタマー マネージド キーを構成する
 
@@ -23,13 +23,17 @@ Cognitive Services 用に Azure Key Vault でカスタマー マネージド キ
 
 * [Custom Vision による保存データの暗号化](../custom-vision-service/encrypt-data-at-rest.md)
 * [Face サービスによる保存データの暗号化](../face/encrypt-data-at-rest.md)
-* [Form Recognizer による保存データの暗号化](../form-recognizer/encrypt-data-at-rest.md)
+* [Form Recognizer による保存データの暗号化](../../applied-ai-services/form-recognizer/encrypt-data-at-rest.md)
 
 ## <a name="language"></a>Language
 
 * [Language Understanding サービスでの保存データの暗号化](../LUIS/encrypt-data-at-rest.md)
 * [QnA Maker での保存データの暗号化](../QnAMaker/encrypt-data-at-rest.md)
 * [Translator による保存データの暗号化](../translator/encrypt-data-at-rest.md)
+
+## <a name="speech"></a>音声
+
+* [音声による保存データの暗号化](../speech-service/speech-encryption-of-data-at-rest.md)
 
 ## <a name="decision"></a>決定
 

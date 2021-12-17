@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
-ms.openlocfilehash: 89d7a6f8beb004f57a00dfe75e4cc387c8591b1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1b057b8bfaacc0f2f26dcf8688d7439e6506c8b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101716586"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502789"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>カスタム コマンドによる保存データの暗号化
 

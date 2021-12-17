@@ -3,14 +3,14 @@ title: Azure HDInsight クラスターの仮想ネットワークの作成
 description: Azure Virtual Network を作成して HDInsight を他のクラウド リソースまたはデータセンター内のリソースに接続する方法について説明します。
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive, devx-track-azurecli
-ms.date: 04/16/2020
-ms.openlocfilehash: 43d57eac94cabb5c648183911e0c0bf72889946d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: hdinsightactive, devx-track-azurecli, devx-track-azurepowershell
+ms.date: 05/12/2021
+ms.openlocfilehash: 642ec1908298c331777776f886e005e715a727f2
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946072"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730642"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Azure HDInsight クラスターの仮想ネットワークの作成
 
@@ -34,11 +34,11 @@ Azure HDInsight での仮想ネットワークの使用に関する背景情報�
 
 このセクションの例では、ネットワーク セキュリティ グループ規則を作成する方法について説明します。 これらのルールにより、HDInsight が Azure 管理サービスと通信できるようになります。 例を使用する前に、利用している Azure リージョンの IP アドレスと一致するように、IP アドレスを調整します。 この情報については、[HDInsight 管理 IP アドレス](hdinsight-management-ip-addresses.md)に関する記事を参照してください。
 
-### <a name="azure-resource-management-template"></a>Azure Resource Management テンプレート
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
-次の Resource Management テンプレートは、受信トラフィックを制限するが HDInsight が必要とする IP アドレスからのトラフィックは許可する仮想ネットワークを作成します。 さらに、このテンプレートは、仮想ネットワークに HDInsight クラスターを作成します。
+次の Resource Manager テンプレートは、受信トラフィックは制限するが HDInsight で必要な IP アドレスからのトラフィックは許可する仮想ネットワークを作成します。 さらに、このテンプレートは、仮想ネットワークに HDInsight クラスターを作成します。
 
-* [セキュリティで保護された Azure Virtual Network と HDInsight Hadoop クラスターのデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
+* [セキュリティで保護された Azure Virtual Network と HDInsight Hadoop クラスターのデプロイ](https://azure.microsoft.com/resources/templates/hdinsight-secure-vnet/)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -366,6 +366,60 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 4. 構成を使用するには、バインドを再起動します。 たとえば、「`sudo service bind9 restart` 」のように、両方の DNS サーバーで入力します。
 
 これらの手順を完了した後には、完全修飾ドメイン名 (FQDN) を使用して、仮想ネットワーク内のリソースに接続できます。 これで、仮想ネットワークに HDInsight をインストールできるようになりました。
+
+## <a name="test-your-settings-before-deploying-an-hdinsight-cluster"></a>HDInsight クラスターをデプロイする前に設定をテストする
+
+クラスターをデプロイする前に、計画されているクラスターと同じ VNet およびサブネット内の仮想マシンで [networkValidator ツール](https://github.com/Azure-Samples/hdinsight-diagnostic-scripts/blob/main/HDInsightNetworkValidator)を実行して、さまざまなネットワーク構成設定が正しいことを確認できます。
+
+**仮想マシンをデプロイして networkValidator.sh スクリプトを実行するには**
+
+1. [Azure portal の Ubuntu Server 18.04 LTS ページ](https://portal.azure.com/?feature.customportal=false#create/Canonical.UbuntuServer1804LTS-ARM)を開き、 **[作成]** をクリックします。
+
+1. **[基本]** タブの **[プロジェクトの詳細]** で、サブスクリプションを選択し、既存のリソース グループを選択するか、新しいグループを作成します。
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/project-details.png" alt-text="Azure サブスクリプションと仮想マシンのリソース グループを選択する場所を示す [プロジェクトの詳細] セクションのスクリーンショット。":::
+
+1. **[インスタンスの詳細]** で、一意の **仮想マシン名** を入力し、VNet と同じ **リージョン** を選択します。 **[可用性オプション]** で *[インフラストラクチャ冗長は必要ありません]* を選択し、 **[イメージ]** で *Ubuntu 18.04 LTS* を選択します。 **[Azure スポット インスタンス]** は空白のままにし、 **[サイズ]** には Standard_B1s (以上) を選択します。
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/instance-details.png" alt-text="仮想マシンの名前を指定し、そのリージョン、イメージ、サイズを選択する、[インスタンスの詳細] セクションのスクリーンショット。":::
+
+1. **[管理者アカウント]** で **[パスワード]** を選択し、管理者アカウントのユーザー名とパスワードを入力します。 
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/administrator-account.png" alt-text="認証の種類を選択し、管理者の資格情報を入力する、[管理者アカウント] セクションのスクリーンショット。":::
+
+1. **[受信ポートの規則]**  >  **[パブリック受信ポート]** で、 **[選択したポートを許可する]** を選択し、ドロップダウンから **[SSH (22)]** を選択して、 **[次へ: ディスク >]** をクリックします。
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/inbound-port-rules.png" alt-text="受信接続が許可されるポートを選択する、[受信ポートの規則] セクションのスクリーンショット。":::
+
+1. **[ディスクのオプション]** で、"*OS ディスクの種類に Standard SSD*" を選択し、 **[次へ: ネットワーク >]** をクリックします。
+
+1. **[ネットワーク]** ページの **[ネットワーク インターフェイス]** で、HDInsight クラスターの追加先となる **仮想ネットワーク** と **サブネット** を選択し、ページの下部にある **[確認および作成]** ボタンを選択します。
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/vnet.png" alt-text="仮想マシンを追加する VNet とサブネットを選択する、[ネットワーク インターフェイス] セクションのスクリーンショット。":::
+
+1. **[仮想マシンの作成]** ページで、これから作成しようとしている VM の詳細を確認できます。 準備ができたら **[作成]** を選択します。
+
+1. デプロイが完了したら、 **[リソースに移動]** を選択します。
+
+1. 新しい VM のページで、パブリック IP アドレスを選択し、それをクリップボードにコピーします。
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/ip-address.png" alt-text="仮想マシンの IP アドレスをコピーする方法を示すスクリーンショット。":::
+
+**/networkValidator.sh スクリプトを実行する**
+
+1. 新しい仮想マシンに SSH 接続します。
+1. 次のコマンドを使用して、[GitHub](https://github.com/Azure-Samples/hdinsight-diagnostic-scripts/tree/main/HDInsightNetworkValidator) から仮想マシンにすべてのファイルをコピーします。
+
+    `wget -i https://raw.githubusercontent.com/Azure-Samples/hdinsight-diagnostic-scripts/main/HDInsightNetworkValidator/all.txt`
+
+1. テキスト エディターで params.txt ファイルを開き、すべての変数に値を追加します。 関連する検証を省略する場合は、空の文字列 ("") を使用します。
+1. `sudo chmod +x ./setup.sh` を実行して setup.sh を実行可能にし、`sudo ./setup.sh` を使用してそれを実行して、Python 2.x の pip と必要な Python 2.x モジュールをインストールします。
+1. `sudo python2 ./networkValidator.py` を使用してメイン スクリプトを実行します。
+1. スクリプトが完了すると、[概要] セクションに、チェックが成功し、クラスターを作成できるかどうかが示されます。または、問題が発生したかどうかが示されます。その場合は、エラー出力と関連ドキュメントを確認してエラーを修正する必要があります。
+
+    エラーを修正したら、スクリプトを再度実行して進行状況を確認できます。
+1. チェックが完了し、概要に "SUCCESS: You can create your HDInsight cluster in this VNet/Subnet."\(成功: この VNet またはサブネットに HDInsight クラスターを作成できます。\) と表示されたら、 クラスターを作成できます。 
+1. 検証スクリプトの実行が完了したら、新しい仮想マシンを削除します。 
 
 ## <a name="next-steps"></a>次のステップ
 

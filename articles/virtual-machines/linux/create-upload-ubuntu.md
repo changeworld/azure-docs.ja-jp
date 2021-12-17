@@ -1,26 +1,27 @@
 ---
 title: Azure 上での Ubuntu Linux VHD の作成とアップロード
 description: Ubuntu Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
-author: danielsollondon
+author: srijang
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 06/06/2020
-ms.author: danis
-ms.openlocfilehash: 92ceecd16a428593764fe5ab6478cc4ea7ab91d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/28/2021
+ms.author: srijangupta
+ms.openlocfilehash: 2079e50d92c7253c7c4f642c9a51e56aa1bfae2c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554617"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689801"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure 用の Ubuntu 仮想マシンの準備
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: 柔軟なスケール セット 
 
 Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) でダウンロードできます。 Azure 用に特殊な Ubuntu イメージを独自に構築する必要がある場合は、以下の手動の手順を使用するのではなく、このように動作している既知の VHD を基にして、必要に応じてカスタマイズすることをお勧めします。 最新のイメージ リリースは、常に次の場所にあります。
 
-* Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
-* Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
+* Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64-azure.vhd.zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64-azure.vhd.zip)
+* Ubuntu 20.04/Focal:  [focal-server-cloudimg-amd64-azure.vhd.zip](https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64-azure.vhd.zip)
 
 ## <a name="prerequisites"></a>前提条件
 この記事では、既に Ubuntu Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。 .vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。 詳細については、「 [Hyper-V の役割のインストールと仮想マシンの構成](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))」を参照してください。
@@ -51,7 +52,7 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
     # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
     ```
 
-    Ubuntu 16.04 および Ubuntu 18.04:
+    Ubuntu 18.04 および Ubuntu 20.04:
 
     ```console
     # sudo sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
@@ -61,7 +62,7 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
 
 4. Ubuntu Azure イメージでは、[Azure 向けに調整されたカーネル](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)が使用されるようになりました。 次のコマンドを実行して、オペレーティング システムを Azure 向けに調整された最新カーネルに更新し、Azure Linux ツール (Hyper-V の依存関係を含む) をインストールします。
 
-    Ubuntu 16.04 および Ubuntu 18.04:
+    Ubuntu 18.04 および Ubuntu 20.04:
 
     ```console
     # sudo apt update
@@ -81,7 +82,7 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
 
 6. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。  通常これが既定です。
 
-7. cloud-init (プロビジョニング エージェント) と Azure Linux エージェント (ゲスト拡張機能ハンドラー) をインストールします。 cloud-init では、netplan を使用して、プロビジョニングおよびその後の各ブート中にシステム ネットワークが構成されます。
+7. cloud-init (プロビジョニング エージェント) と Azure Linux エージェント (ゲスト拡張機能ハンドラー) をインストールします。 cloud-init では、`netplan` を使用して、プロビジョニングおよびその後の各ブート中にシステム ネットワークが構成されます。
 
     ```console
     # sudo apt update
@@ -91,17 +92,17 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
    > [!Note]
    >  `NetworkManager` パッケージおよび `NetworkManager-gnome` パッケージがインストールされている場合、`walinuxagent` パッケージによってこれらのパッケージが削除されます。
 
-8. Azure での cloud-init のプロビジョニングと競合する可能性のある、cloud-init の既定の構成と残った netplan 成果物を削除します。
+8. Azure での cloud-init のプロビジョニングと競合する可能性のある、cloud-init の既定の構成と残った `netplan` 成果物を削除します。
 
     ```console
-    # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
+    # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
     # rm -f /etc/cloud/ds-identify.cfg
     # rm -f /etc/netplan/*.yaml
     ```
 
 9. cloud-init を構成して、Azure データソースを使用してシステムをプロビジョニングするようにします。
 
-    ```console
+    ```bash
     # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
     datasource_list: [ Azure ]
     EOF
@@ -163,7 +164,7 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
 12. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
     > [!NOTE]
-    > `sudo waagent -force -deprovision+user` コマンドは、システムをクリーンアップし、再プロビジョニングに適した状態にしようとします。 `+user` オプションを指定すると、前回プロビジョニングされたユーザー アカウントおよび関連付けられたデータも削除されます。
+    > `sudo waagent -force -deprovision+user` コマンドでは、システムをクリーンアップし、再プロビジョニングに適した状態にすることで、イメージを一般化します。 `+user` オプションを指定すると、前回プロビジョニングされたユーザー アカウントおよび関連付けられたデータも削除されます。
 
     > [!WARNING]
     > 上記のコマンドを使用したプロビジョニング解除により、イメージからすべての機密情報が削除され、イメージが再配布に適した状態になることが保証されるわけではありません。

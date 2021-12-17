@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: b7b115f909c57470bfbdab9cc44e6a258f85b8f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5864397579c46b1e55e2f8443776ca349abc22e8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685920"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586345"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の用語を確認します。
 
@@ -51,7 +51,7 @@ ms.locfileid: "88685920"
 | アカウント所有者メール アドレス | Microsoft Azure アカウントが登録されたアカウントのメール アドレス。 <br /><br />メール アドレスを変更するには、「[Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する方法](../manage/change-azure-account-profile.md)」を参照してください。 |
 
 ### <a name="understand-the-invoice-summary"></a>請求書の要約について
-**請求書の要約**セクションには、直近の請求期間以降の合計取引金額と、現在の使用料金が一覧表示されます。
+**請求書の要約** セクションには、直近の請求期間以降の合計取引金額と、現在の使用料金が一覧表示されます。
 
 ![請求書の要約セクション](./media/understand-invoice/invoice-summary-section.png)
 

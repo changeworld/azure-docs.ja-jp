@@ -2,13 +2,13 @@
 title: Event Grid ソースとしての Azure サブスクリプション
 description: Azure Event Grid のサブスクリプション イベントに対して用意されているプロパティについて説明します
 ms.topic: reference
-ms.date: 02/12/2021
-ms.openlocfilehash: b9753ecfb46f5ac5f383f19e3d409e703c144d48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: b7a09dd16d6620dca74a45f796cccf2308a53396
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363187"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629220"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>Event Grid ソースとしての Azure サブスクリプション
 
@@ -419,7 +419,7 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -434,7 +434,7 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -448,7 +448,7 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `authorization` | object | 操作の要求された承認。 |
 | `claims` | object | 要求のプロパティ。 詳細については、[JWT 認証](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)に関する記事を参照してください。 |

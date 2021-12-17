@@ -1,19 +1,17 @@
 ---
 title: PHP で Azure Service Bus トピックを使用する方法
-description: このチュートリアルでは、PHP アプリケーションから Azure Service Bus のトピックとサブスクリプションを使用する方法について説明します。
+description: この記事では、PHP アプリケーションから Azure Service Bus のトピックとサブスクリプションを使用する方法について説明します。
 ms.devlang: PHP
-ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: 706f523fdfb3c710bb16b048cfc68ce98875adb1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.topic: how-to
+ms.date: 07/27/2021
+ms.openlocfilehash: 860666e21e1cabbe33dc27bc31fcab8393d0128e
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88066204"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053105"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>クイックスタート: PHP で Service Bus のトピックとサブスクリプションを使用する方法
-
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>PHP で Service Bus のトピックとサブスクリプションを使用する方法
 
 この記事では、Service Bus のトピックとサブスクリプションの使用方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) を利用しています。 紹介するシナリオは次のとおりです。
 
@@ -23,12 +21,16 @@ ms.locfileid: "88066204"
 - サブスクリプションからメッセージを受信する
 - トピックとサブスクリプションを削除する
 
+> [!IMPORTANT]
+> 2021 年 2 月の時点で、Azure SDK for PHP は廃止フェーズに入っており、Microsoft による公式なサポートの対象でなくなりました。 詳細については、GitHub の[こちらのお知らせ](https://github.com/Azure/azure-sdk-for-php#important-annoucement)を参照してください。 この記事は間もなく廃止されます。 
+ 
+
 ## <a name="prerequisites"></a>前提条件
-1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+1. Azure サブスクリプション。 この記事の手順を完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
 2. 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認して、Service Bus の **名前空間** を作成し、**接続文字列** を取得します。
 
     > [!NOTE]
-    > このクイック スタートでは、**PHP** を使用して **トピック** とその中に含まれる **サブスクリプション** を作成します。 
+    > この記事では、**PHP** を使用して **トピック** およびそのトピックへの **サブスクリプション** を作成します。 
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
 Microsoft Azure Blob service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
@@ -258,7 +260,7 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピック サイズの上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus quotas]」を参照してください。
+Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 100 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピック サイズの上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus quotas]」を参照してください。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 サブスクリプションからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveSubscriptionMessage` メソッドを使用する方法です。 メッセージは、[*ReceiveAndDelete* と *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode) の 2 つの異なるモードで受信できます。 **PeekLock** が既定値です。

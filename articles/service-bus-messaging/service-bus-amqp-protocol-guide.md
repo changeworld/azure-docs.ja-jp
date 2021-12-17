@@ -2,13 +2,13 @@
 title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド | Microsoft Docs
 description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 1a299843b402d03543adbf9a9efdf86800abd564
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624491"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063762"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -52,7 +52,7 @@ AMQP は、"*コンテナー*" という通信プログラムを呼び出しま�
 
 そのためネットワーク接続はコンテナーに固定されます。 ネットワーク接続は、クライアント ロールのコンテナーによって開始されます。クライアント ロールのコンテナーが、受信側ロールのコンテナーに対して送信 TCP ソケット接続を確立し、受信側ロールは受信 TCP 接続を待機してそれを受け入れます。 接続ハンドシェイクには、プロトコル バージョンのネゴシエーション、トランスポート レベルのセキュリティ (TLS/SSL) の使用に関する宣言 (またはネゴシエーション)、SASL に基づく接続スコープでの認証/承認ハンドシェイクが含まれます。
 
-Azure Service Bus では、常時 TLS の使用が必須となります。 Azure Service Bus は、TCP ポート 5671 での接続に対応しています。これによって AMQP プロトコル ハンドシェイクに移行する前に、TCP 接続が TLS に重ね合わされます。また、Azure Service Bus は、TCP ポート 5672 での接続に対応しています。これによってサーバーは、AMQP に規定されたモデルに従って、TLS に必要な接続の更新を速やかに実施することができます。 AMQP WebSocket のバインディングでは、TCP ポート 443 上にトンネルが作成されます。このトンネルが AMQP の 5671 接続に相当します。
+Azure Service Bus または Azure Event Hubs では、常時 TLS の使用が必須となります。 Azure Service Bus は、TCP ポート 5671 での接続に対応しています。これによって AMQP プロトコル ハンドシェイクに移行する前に、TCP 接続が TLS に重ね合わされます。また、Azure Service Bus は、TCP ポート 5672 での接続に対応しています。これによってサーバーは、AMQP に規定されたモデルに従って、TLS に必要な接続の更新を速やかに実施することができます。 AMQP WebSocket のバインディングでは、TCP ポート 443 上にトンネルが作成されます。このトンネルが AMQP の 5671 接続に相当します。
 
 Service Bus では、接続と TLS のセットアップ後、SASL の機構に関して次の 2 つの選択肢が用意されています。
 
@@ -67,7 +67,7 @@ Service Bus では、接続と TLS のセットアップ後、SASL の機構に�
 
 基本的にこのウィンドウ型のモデルは、TCP のウィンドウ型フロー制御の概念と似ていますが、ソケット内のセッション レベルの概念である点が異なります。 このプロトコルの概念は、複数の同時セッションを可能にするものであり、ちょうど高速道路の追い越し車線のように、優先度の高いトラフィックが、抑制された通常のトラフィックを追い越すことができるようになっています。
 
-現在、Azure Service Bus では各接続につき厳密に 1 つのセッションが使用されます。 Service Bus Standard の場合､Service Bus の最大フレーム サイズは 262,144 バイト (256 KB) です｡ Service Bus Premium および Event Hubs の場合は、これが 1,048,576 (1 MB) になります。 セッション レベルで特定のスロットル ウィンドウを Service Bus が強制的に適用することはありませんが、リンク レベルのフロー制御の一環として Service Bus は、ウィンドウを定期的にリセットします ([次のセクション](#links)を参照)。
+現在、Azure Service Bus では各接続につき厳密に 1 つのセッションが使用されます。 Service Bus Standard の場合､Service Bus の最大フレーム サイズは 262,144 バイト (256 KB) です｡ Service Bus Premium および Event Hubs の場合は、これが 1,048,576 (100 MB) になります。 セッション レベルで特定のスロットル ウィンドウを Service Bus が強制的に適用することはありませんが、リンク レベルのフロー制御の一環として Service Bus は、ウィンドウを定期的にリセットします ([次のセクション](#links)を参照)。
 
 接続、チャネル、セッションは一時的にしか存在しません。 根底の接続がダウンした場合、接続、TLS トンネル、SASL 承認コンテキスト、セッションを再度確立する必要があります。
 
@@ -368,11 +368,10 @@ CBS には、メッセージング インフラストラクチャによって提
 
 | トークンの種類 | トークンの説明 | 本文の型 | Notes |
 | --- | --- | --- | --- |
-| amqp:jwt |JSON Web トークン (JWT) |AMQP 値 (string) |まだ使用できません。 |
-| amqp:swt |Simple Web Token (SWT) |AMQP 値 (string) |AAD/ACS によって発行された SWT トークンでのみサポートされます。 |
+| jwt |JSON Web トークン (JWT) |AMQP 値 (string) | |
 | servicebus.windows.net:sastoken |Service Bus SAS トークン |AMQP 値 (string) |- |
 
-トークンには、権限を与える作用があります。 Service Bus は、3 つの基本的な権限として、"Send" (送信を許可)、"Listen" (受信を許可)、"Manage" (エンティティの操作を許可) を認識します。 AAD/ACS によって明示的に発行された SWT トークンは、これらの権限を要求 (claim) として含んでいます。 Service Bus の SAS トークンは、名前空間またはエンティティに対して構成されている規則を参照し、それらの規則が権限で構成されています。 したがって、その規則に関連付けられているキーでトークンに署名すると、トークンが個別の権限を表すようになります。 エンティティには、*put-token* を使ってトークンが関連付けられます。接続クライアントは、このトークンの権限に従ってエンティティを操作することができます。 クライアントが "*送信側*" の役割を担うリンクには "Send" 権限が、"*受信側*" の役割を担うリンクには "Listen" 権限が必要となります。
+トークンには、権限を与える作用があります。 Service Bus は、3 つの基本的な権限として、"Send" (送信を許可)、"Listen" (受信を許可)、"Manage" (エンティティの操作を許可) を認識します。 Service Bus の SAS トークンは、名前空間またはエンティティに対して構成されている規則を参照し、それらの規則が権限で構成されています。 したがって、その規則に関連付けられているキーでトークンに署名すると、トークンが個別の権限を表すようになります。 エンティティには、*put-token* を使ってトークンが関連付けられます。接続クライアントは、このトークンの権限に従ってエンティティを操作することができます。 クライアントが "*送信側*" の役割を担うリンクには "Send" 権限が、"*受信側*" の役割を担うリンクには "Listen" 権限が必要となります。
 
 応答メッセージには、次の *application-properties* 値があります。
 
@@ -405,12 +404,7 @@ Service Bus の現在の実装では、SASL の "ANONYMOUS" 方式との組み�
 | | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
 ## <a name="next-steps"></a>次のステップ
-
-AMQP の詳細については、次のリンクを参照してください。
-
-* [Service Bus AMQP の概要]
-* [パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]
-* [Windows Server 用 Service Bus の AMQP]
+AMQP の詳細については、[「Azure Service Bus AMQP の概要」](service-bus-amqp-overview.md)を参照してください。
 
 [this video course]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
 [1]: ./media/service-bus-amqp-protocol-guide/amqp1.png
@@ -418,6 +412,3 @@ AMQP の詳細については、次のリンクを参照してください。
 [3]: ./media/service-bus-amqp-protocol-guide/amqp3.png
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
-[Service Bus AMQP の概要]: service-bus-amqp-overview.md
-[パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]: 
-[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

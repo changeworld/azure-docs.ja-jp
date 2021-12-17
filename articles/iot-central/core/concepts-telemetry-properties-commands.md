@@ -3,21 +3,19 @@ title: Azure IoT Central のテレメトリ、プロパティ、およびコマ�
 description: Azure IoT Central デバイス テンプレートを使用すると、実装する必要のある、デバイスのテレメトリ、プロパティ、およびコマンドを指定できます。 デバイスが IoT Central と交換できるデータの形式について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/19/2020
+ms.date: 08/25/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 995f4670b17d55fe04d5c30a834ea4be576a8348
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 3c30662a9ca85265f43e78ad9dd3f33c70c167a5
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106489980"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479942"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>テレメトリ、プロパティ、およびコマンドのペイロード
-
-"_この記事は、デバイス開発者を対象としています。_ "
 
 Azure IoT Central のデバイス テンプレートは、以下を定義するブループリントです。
 
@@ -25,7 +23,7 @@ Azure IoT Central のデバイス テンプレートは、以下を定義する�
 * デバイスが IoT Central と同期するプロパティ。
 * IoT Central がデバイスに対して呼び出すコマンド。
 
-この記事では、デバイス開発者に向けて、デバイス テンプレートで定義されたテレメトリ、プロパティ、およびコマンドについてデバイスが送受信する JSON ペイロードについて説明します。
+この記事では、デバイス テンプレートで定義されたテレメトリ、プロパティ、およびコマンドについてデバイスが送受信する JSON ペイロードについて説明します。
 
 この記事では、利用可能なすべての種類のテレメトリ、プロパティ、およびコマンドのペイロードについては説明しませんが、例では全種類のキーを示します。
 
@@ -480,7 +478,7 @@ IoT Central では、デバイスからアプリケーションに送信され�
 { "BooleanProperty": false }
 ```
 
-デバイス モデルの次のスニペットは、`boolean` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、`long` 型のプロパティの定義を示しています。
 
 ```json
 {
@@ -1048,6 +1046,15 @@ IoT Central Web UI では、コマンドに **[オフラインの場合にキュ
 
 オフライン コマンドは、[IoT Hub のクラウドからデバイスへのメッセージ](../../iot-hub/iot-hub-devguide-messages-c2d.md)を使用して、コマンドとペイロードをデバイスに送信します。
 
+デバイスが受信するメッセージのペイロードは、パラメーターの生の値です。 `method-name` というカスタム プロパティは、IoT Central コマンドの名前を格納します。 ペイロードの例を次の表に示します。
+
+| IoT Central 要求スキーマ | デバイスによって受信されたペイロードの例 |
+| -------------------------- | ---------------------------------- |
+| 要求パラメーターなし       | `@`                                |
+| Double                     | `1.23`                             |
+| String                     | `sample string`                    |
+| Object                     | `{"StartTime":"2021-01-05T08:00:00.000Z","Bank":2}` |
+
 デバイス モデルの次のスニペットは、コマンドの定義を示しています。 このコマンドには、datetime フィールドと列挙型を持つオブジェクト パラメーターが含まれています。
 
 ```json
@@ -1127,4 +1134,4 @@ IoT Central Web UI では、コマンドに **[オフラインの場合にキュ
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者として、デバイス テンプレートについて学んだので、次のステップとして、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を読み、デバイスを IoT Central に登録する方法と IoT Central でデバイスの接続を保護する方法の詳細を把握することをお勧めします。
+デバイス テンプレートについて学んだので、次のステップとして、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を読み、デバイスを IoT Central に登録する方法と IoT Central でデバイスの接続を保護する方法の詳細を把握することをお勧めします。

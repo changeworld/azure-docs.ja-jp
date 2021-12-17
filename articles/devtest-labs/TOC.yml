@@ -1,16 +1,18 @@
-- name: DevTest Labs のドキュメント
+- name: Azure DevTest Labs のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: DevTest ラボについて
+    - name: DevTest ラボとは
       href: devtest-lab-overview.md
-    - name: Azure DevTest Labs と Lab Services
-      href: lab-services-overview.md
 - name: クイック スタート
   items:
+    - name: ラボの作成 - ポータル
+      href: devtest-lab-create-lab.md
     - name: ラボの作成 - Resource Manager テンプレート
       displayName: Resource Manager
       href: create-lab-windows-vm-template.md
+    - name: ラボの作成 - REST API
+      href: quickstarts/create-lab-rest.md
 - name: チュートリアル
   items:
     - name: ラボを設定する
@@ -68,13 +70,11 @@
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/devtest-labs-security-baseline?toc=/azure/devtest-labs/TOC.json
 - name: 操作方法ガイド
   items:
     - name: ラボの構成
       items:
-        - name: ラボを作成する
-          href: devtest-lab-create-lab.md
         - name: ネットワークが分離されたラボを作成する
           href: network-isolation.md
         - name: Resource Manager テンプレートを使ってラボを作成または変更する
@@ -213,7 +213,7 @@
               href: devtest-lab-upload-vhd-using-azcopy.md
             - name: PowerShell を使用して VHD ファイルをアップロードする
               href: devtest-lab-upload-vhd-using-powershell.md
-            - name: Storage Explorer を使用して VHD ファイルをアップロードする
+            - name: ストレージ エクスプローラーを使用して VHD ファイルをアップロードする
               href: devtest-lab-upload-vhd-using-storage-explorer.md
         - name: 数式を管理する
           href: devtest-lab-manage-formulas.md
@@ -319,4 +319,4 @@
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=devtest-lab'
     - name: よく寄せられる質問
-      href: devtest-lab-faq.md
+      href: devtest-lab-faq.yml

@@ -1,0 +1,47 @@
+### YamlMime:FAQ
+metadata:
+  title: Microsoft Defender for Cloud に関する FAQ - 仮想マシンについての質問
+  description: Microsoft Defender for Cloud に関してよく寄せられる質問(脅威の防止、検出、対応に役立つ製品)
+  services: security-center
+  documentationcenter: na
+  author: memildin
+  manager: rkarlin
+  ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
+  ms.service: defender-for-cloud
+  ms.devlang: na
+  ms.topic: conceptual
+  ms.tgt_pltfrm: na
+  ms.workload: na
+  ms.date: 11/09/2021
+  ms.author: memildin
+  ms.openlocfilehash: 06bda44580a05b470489bca67c3464786c856cb3
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132493766"
+title: FAQ - 仮想マシンに関する質問
+summary: ''
+sections:
+- name: 無視
+  questions:
+  - question: >
+      サポートされる仮想マシンのタイプは何ですか。
+    answer: >
+      監視と推奨事項は、[クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)のどちらで作成された仮想マシン (VM) でも利用できます。
+
+
+      サポートされるプラットフォームの一覧については、「[Microsoft Defender for Cloud でサポートされているプラットフォーム](security-center-os-coverage.md)」を参照してください。
+  - question: >
+      Microsoft Defender for Cloud が Azure VM で実行されているマルウェア対策ソリューションを認識しないのはなぜですか?
+    answer: >
+      Microsoft Defender for Cloud では、Azure 拡張機能によりインストールされたマルウェア対策ソリューションを可視化できます。 たとえば、Defender for Cloud では、お客様のイメージにプレインストールされていたマルウェア対策ソリューションや、お客様が独自のプロセス (構成管理システムなど) で仮想マシンにインストールしたマルウェア対策ソリューションは検出できません。
+  - question: >
+      VM で "スキャン データがありません" というメッセージが表示されるのはなぜですか。
+    answer: >
+      このメッセージが表示されるのは、VM のスキャン データがない場合です。 Microsoft Defender for Cloud でデータ収集が有効になると、スキャン データが取り込まれるまでにある程度の時間 (1 時間未満) がかかる場合があります。 スキャン データの初回作成以降でも、スキャン データが存在しなかったり、最近のスキャン データがなかったりする場合にはこのメッセージが表示される可能性があります。 停止状態の VM のスキャン データは取り込まれません。 スキャン データが最近取り込まれていない場合 (Windows エージェントの保持ポリシーに従い、既定値は 30 日間) にも、このメッセージが表示されることがあります。
+  - question: >
+      Defender for Cloud  は、オペレーティング システムの脆弱性、システムの更新、およびエンドポイントの保護の問題をどのくらいの頻度でスキャンしますか。
+    answer: "脆弱性、更新プログラム、その他の問題を Defender for Cloud  がスキャンするときの待ち時間は次の通りです。\n\n- オペレーティング システムのセキュリティ構成 - データは 48 時間以内に更新されます\n- システムの更新プログラム - 24 時間以内にデータを更新\n- Endpoint Protection の問題 - 8 時間以内にデータを更新\n\nDefender for Cloud は通常、1 時間ごとに新しいデータをスキャンし、それに応じて推奨事項を更新します。 \n\n> [!NOTE]\n> Defender for Cloud では、Log Analytics エージェントを使用してデータを収集して格納します。 詳細については、[クラウドプラットフォームへの移行に関する Microsoft Defenderを参照してください。](./enable-data-collection.md)\n"
+  - question: "\"VM Agent is Missing? (VM エージェントが見つかりません)\" というメッセージが表示されるのはなぜですか。\n"
+    answer: データ収集を有効にするには、VM エージェントが VM にインストールされている必要があります。 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 他の VM への VM エージェントのインストール方法については、 [VM エージェントと拡張機能](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)に関するブログ投稿を参照してください。

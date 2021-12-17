@@ -2,15 +2,13 @@
 title: マネージド アプリと通知
 description: マネージド アプリケーション インスタンスでの作成、更新、削除、およびエラーに関する通知を受け取るように、Webhook エンドポイントを使用して Managed Application を構成します。
 ms.topic: conceptual
-ms.author: ilahat
-author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: 2a2e9d429d494c35c49a5b0a3e10b291fd8f24a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef87fc014b2870602aa05b758afaffdde046f659
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100633939"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060852"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure Managed Applications と通知
 
@@ -61,7 +59,7 @@ Azure Managed Application の通知を使用することで、パブリッシャ
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>Azure Marketplace マネージド アプリケーション通知の追加
-詳細については、「[Azure アプリケーション オファーを作成する](../../marketplace/create-new-azure-apps-offer.md)」を参照してください。
+詳細については、「[Azure アプリケーション オファーを作成する](../../marketplace/azure-app-offer-setup.md)」を参照してください。
 
 ![Azure portal での Azure Marketplace マネージド アプリケーション通知の追加](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>Event triggers (イベント トリガー)

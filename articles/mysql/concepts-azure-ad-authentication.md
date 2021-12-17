@@ -1,19 +1,21 @@
 ---
 title: Active Directory 認証 - Azure Database for MySQL
 description: Azure Database for MySQL での認証に関する Azure Active Directory の概念について説明します
-author: sunilagarwal
-ms.author: sunila
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: e3afa7e7129c34aae8487affe979bd7704580a1e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea70b094c1b53a5ec4a7c80705e4ac795e6d8629
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612451"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598295"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Microsoft Azure Active Directory (Azure AD) 認証は、Azure AD で定義された ID を使用して Azure Database for MySQL に接続できるよう設計されています。
 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理でき、アクセス許可の管理が容易になります。
@@ -38,7 +40,7 @@ Azure Active Directory 認証を構成して使用するには、次の手順に
 > [!NOTE]
 > Azure AD を作成して設定し、Azure Database for MySQL で Azure AD を構成する方法については、[Azure Database for MySQL 向けの Azure AD での構成とサインイン](howto-configure-sign-in-azure-ad-authentication.md)に関するページを参照してください。
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>アーキテクチャ
 
 次の概要図は、Azure Database for MySQL で Azure AD 認証を使用した場合の認証のしくみをまとめたものです。 矢印は通信経路を示します。
 
@@ -52,7 +54,7 @@ Azure AD 認証を使用すると、MySQL サーバーの管理者アカウン�
 
 ## <a name="permissions"></a>アクセス許可
 
-Azure AD を使用して認証できる新しいユーザーを作成するには、設計された Azure AD 管理者である必要があります。 このユーザーは、特定の Azure Database for MySQL サーバー用に Azure AD 管理者アカウントを構成することで割り当てられます。
+Azure AD を使用して認証できる新しいユーザーを作成するには、指定された Azure AD 管理者である必要があります。 このユーザーは、特定の Azure Database for MySQL サーバー用に Azure AD 管理者アカウントを構成することで割り当てられます。
 
 新しい Azure AD データベース ユーザーを作成するには、Azure AD 管理者として接続する必要があります。 これについては、[Azure Database for MySQL 向けの Azure AD での構成とログイン](howto-configure-sign-in-azure-ad-authentication.md)に関するページで説明されています。
 

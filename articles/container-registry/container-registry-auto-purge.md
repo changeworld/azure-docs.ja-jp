@@ -2,24 +2,21 @@
 title: タグとマニフェストを消去する
 description: 消去コマンドを使用すると、経過時間とタグ フィルターに基づいて Azure Container Registry から複数のタグとマニフェストを削除できるほか、必要に応じて消去操作をスケジュールすることができます。
 ms.topic: article
-ms.date: 02/19/2021
-ms.openlocfilehash: 562d1940459cb1594b7cd9aca2af280b05a4e419
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/07/2021
+ms.openlocfilehash: bb1a8a2a9af0e7ab96b5ae12bd10500e700dfa39
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784193"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089076"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure Container Registry からイメージを自動的に消去する
 
 開発ワークフローの一部として Azure Container Registry を使用すると、レジストリは短時間で不要なイメージやその他の成果物によりすぐにいっぱいになる可能性があります。 特定の期間よりも前のタグをすべて削除することも、指定した名前フィルターに一致したタグをすべて削除することもできます。 複数の成果物をすばやく削除できるように、この記事では、オンデマンドまたは[スケジュールされた](container-registry-tasks-scheduled.md) ACR タスクとして実行できる `acr purge` コマンドを紹介します。 
 
-`acr purge` コマンドは現在、GitHub の [acr-cli](https://github.com/Azure/acr-cli) リポジトリのソース コードから作成された、パブリック コンテナー イメージ (`mcr.microsoft.com/acr/acr-cli:0.4`) で配布されています。
+`acr purge` コマンドは現在、GitHub の [acr-cli](https://github.com/Azure/acr-cli) リポジトリのソース コードから作成された、パブリック コンテナー イメージ (`mcr.microsoft.com/acr/acr-cli:0.4`) で配布されています。 `acr purge` は現在プレビューの段階です。
 
 Azure Cloud Shell または Azure CLI のローカル インストールを使用して、この記事の ACR タスクの例を実行できます。 これをローカルで使用したい場合は、バージョン 2.0.76 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。 
-
-> [!IMPORTANT]
-> 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 
 > [!WARNING]
 > `acr purge` コマンドを使用する際は注意してください。削除されたイメージ データは回復することができません。 (イメージ名ではなく) マニフェスト ダイジェストによってイメージをプルするシステムを使用している場合は、タグなしのイメージを消去しないでください。 このようなシステムでは、タグの付いていないイメージを削除すると、レジストリからイメージをプルできなくなります。 マニフェストでプルするのではなく、*一意のタグ付け* スキームの [推奨されるベスト プラクティス](container-registry-image-tag-version.md)を採用することを検討してください。

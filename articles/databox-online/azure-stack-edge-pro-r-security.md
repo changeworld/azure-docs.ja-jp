@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/09/2021
+ms.date: 06/03/2021
 ms.author: alkohli
-ms.openlocfilehash: f4f7e5f69e6b496395b74dbdcd58b3ada0a7f349
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: a68394b5db25565b44db0347a685d6cd67540170
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285202"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985708"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Azure Stack Edge Pro R および Azure Stack Edge Mini R のセキュリティとデータ保護
 
@@ -51,7 +51,7 @@ Azure Stack Edge サービスは、Azure でホストされる管理サービス
     - デバイス ソフトウェアについては、受信および送信トラフィックを対象に既定のファイアウォール ログがデバイスから収集されます。 これらのログは、サポート パッケージにバンドルされます。
     - デバイス ハードウェアについては、デバイスのシャーシの開閉などのすべてのデバイス シャーシ イベントがデバイスに記録されます。
 
-    ハードウェアおよびソフトウェアの侵入イベントを含む特定のログと、ログを取得する方法の詳細については、[高度なセキュリティ ログの収集](azure-stack-edge-gpu-troubleshoot.md)に関するページを参照してください。
+    ハードウェアおよびソフトウェアの侵入イベントを含む特定のログと、ログを取得する方法の詳細については、[高度なセキュリティ ログの収集](azure-stack-edge-gpu-troubleshoot.md#gather-advanced-security-logs)に関するページを参照してください。
 
 
 ### <a name="protect-the-device-via-activation-key"></a>アクティブ化キーでデバイスを保護する

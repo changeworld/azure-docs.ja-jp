@@ -4,7 +4,7 @@ description: Azure Active Directory で利用可能になった、ユーザー�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5038bde01a6b183a25a47f3b4e206c1ce80e6b6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 905ad2f69285aae96081637cd1ae458ef82de1d3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98127840"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985202"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory でのユーザー管理の機能強化 (プレビュー)
 
@@ -70,7 +70,6 @@ Microsoft ではエクスペリエンスの向上のため、皆様からのフ�
 - 会社名:ユーザーが関連付けられている会社の名前。
 - 招待の状態:ゲスト ユーザーの招待の状態。
 - 電子メール:ユーザーの電子メール。
-- 前回のサインイン: ユーザーが最後にサインインした日付。 このプロパティは、監査ログを読み取るアクセス許可を持つユーザーにのみ表示されます (Reporting_ApplicationAuditLogs_Read)
 
 ![[すべてのユーザー] と [削除済みのユーザー] ページに表示される新しいユーザー プロパティ](./media/users-search-enhanced/user-properties.png)
 

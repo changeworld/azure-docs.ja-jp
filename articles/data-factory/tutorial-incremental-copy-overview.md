@@ -4,15 +4,16 @@ description: これらのチュートリアルでは、ソース データ ス�
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 7161fb30c8b445681b4cd577d8f8ac9fff5106df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 543acb129d23a0b74434535306aca801d2f5fdd2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739247"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763635"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>ソース データ ストアからターゲット データ ストアにデータを増分読み込みする
 
@@ -23,7 +24,7 @@ ms.locfileid: "101739247"
 ## <a name="delta-data-loading-from-database-by-using-a-watermark"></a>基準値を使用してデータベースから差分データを読み込む
 このケースでは、ソース データベースにおける基準値を定義します。 基準値とは、最終更新タイムスタンプやインクリメントされるキーを格納する列のことです。 差分読み込みソリューションでは、古い基準値から新しい基準値までの間に生じた変更済みのデータが読み込まれます。 このアプローチのワークフローを表したのが次の図です。 
 
-![基準値を使用するためのワークフロー](media/tutorial-incremental-copy-overview/workflow-using-watermark.png)
+:::image type="content" source="media/tutorial-incremental-copy-overview/workflow-using-watermark.png" alt-text="基準値を使用するためのワークフロー":::
 
 具体的な手順については、次のチュートリアルを参照してください。 
 - [Azure SQL Database 内の 1 つのテーブルから Azure Blob Storage にデータを増分コピーする](tutorial-incremental-copy-powershell.md)
@@ -37,13 +38,13 @@ Change Tracking テクノロジは、SQL Server と Azure SQL Database におい
 
 このアプローチのワークフローを表したのが次の図です。
 
-![Change Tracking を使用するためのワークフロー](media/tutorial-incremental-copy-overview/workflow-using-change-tracking.png)
+:::image type="content" source="media/tutorial-incremental-copy-overview/workflow-using-change-tracking.png" alt-text="Change Tracking を使用するためのワークフロー":::
 
 具体的な手順については、次のチュートリアルを参照してください。 <br/>
 - [Change Tracking テクノロジを使用して Azure SQL Database から Azure Blob Storage にデータを増分コピーする](tutorial-incremental-copy-change-tracking-feature-powershell.md)
 
 ## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>LastModifiedDate を使用して新しいファイルと変更済みのファイルを読み込む
-LastModifiedDate を使用して、新しいファイルと変更されたファイルのみをターゲット ストアにコピーすることができます。 ADF はソース ストアのすべてのファイルをスキャンし、LastModifiedDate に基づいてファイル フィルターを適用して、前回以降の新しいファイルと更新されたファイルのみをターゲット ストアにコピーします。  ADF に大量のファイルをスキャンさせるが、ターゲットにコピーするのは少数のファイルだけの場合でも、ファイルのスキャンに時間がかかることは変わらないため、この場合も長時間の実行が見込まれることに注意してください。   
+LastModifiedDate を使用して、新しいファイルと変更されたファイルのみをターゲット ストアにコピーすることができます。 ADF はソース ストアのすべてのファイルをスキャンし、LastModifiedDate に基づいてファイル フィルターを適用して、前回以降の新しいファイルと更新されたファイルのみをターゲット ストアにコピーします。  ADF で大量のファイルをスキャンするが、数個のファイルしかコピー先にコピーしない場合、ファイルのスキャン プロセスがあるため、やはり長い時間がかかることに注意してください。   
 
 具体的な手順については、次のチュートリアルを参照してください。 <br/>
 - [LastModifiedDate に基づいて新しいファイルと変更済みのファイルを Azure Blob Storage から Azure Blob Storage に増分コピーする](tutorial-incremental-copy-lastmodified-copy-data-tool.md)

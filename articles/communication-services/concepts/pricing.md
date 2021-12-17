@@ -2,19 +2,17 @@
 title: 通話 (音声またはビデオ) およびチャットの価格シナリオ
 titleSuffix: An Azure Communication Services concept document
 description: Communication Services の価格モデルについて説明します。
-author: mikben
-manager: jken
-services: azure-communication-services
-ms.author: mikben
-ms.date: 03/10/2021
-ms.topic: overview
+author: nmurav
+ms.author: nmurav
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 5f7b1e6d600f5d3652ce6a66a72cbfbf33b336c4
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 5d08f964899faf9fe438a0df68c6fe4401fd01c7
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091873"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859382"
 ---
 # <a name="pricing-scenarios"></a>価格シナリオ
 
@@ -26,7 +24,7 @@ Azure Communication Services を使用すると、音声またはビデオによ
 
 ### <a name="pricing"></a>価格
 
-通話および画面共有のサービスは、グループ通話に対して参加者あたり $0.004/分で、参加者ごとに分単位で課金されます。 可能な各種の呼び出しフローを理解するには、[こちらのページ](./call-flows.md)を参照してください。
+通話および画面共有のサービスは、グループ通話に対して参加者あたり $0.004/分で、参加者ごとに分単位で課金されます。 Azure Communication Services では、データ エグレスに対して課金されません。 可能な各種の呼び出しフローを理解するには、[こちらのページ](./call-flows.md)を参照してください。
 
 通話の各参加者は、通話に接続されている 1 分ごとに課金されます。 これは、ユーザーがビデオ通話、音声通話、画面共有のいずれを行っているかに関係なく当てはまります。
 
@@ -51,19 +49,34 @@ Alice が、仕事仲間の Bob と Charlie とグループ通話を行いまし
 Alice は、Bob の `+1-425` で始まる米国の電話番号に対し、アプリから PSTN 通話を行います。
 
 - Alice は JS SDK を使用してアプリを作成しました。
-- この通話は合計 5 分間続きます。
+- この通話は合計 10 分間続きます。
 
 **コストの計算**
 
 - アプリから Communication Services サーバーへの VoIP レッグの参加者 1 名 (Alice) x 10 分 x $0.004 (1 参加者レッグ、1 分あたり) = $0.04
-- Communication Services サーバーから米国電話番号への PSTN 発信レッグの参加者 1 名 (Charlie) x 10 分 x $0.013 (1 参加者レッグ、1 分あたり) = $0.13
+- Communication Services サーバーから米国の電話番号への PSTN 発信レッグの参加者 1 名 (Bob) x 10 分 x $0.013 (1 参加者レッグ、1 分あたり) = $0.13
 
-注: `+1-425` に対する米国の混合料金は $0.013 です。 詳細については、 https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv) のリンクを参照してください。
+> [!Note]
+> `+1-425` に対する米国の混合料金は $0.013 です。 詳細については、 https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv) のリンクを参照してください。
 
-**グループ通話の総コスト**: $0.04 + $0.13 = $0.17
 
+**通話の総コスト**: $0.04 + $0.13 = $0.17
 
-### <a name="pricing-example-group-audio-call-using-js-sdk-and-1-pstn-leg"></a>価格の例: JS SDK と 1 PSTN レッグを使用してグループ音声通話を行う
+### <a name="pricing-example-outbound-call-from-app-using-js-sdk-via-azure-communication-services-direct-routing"></a>価格の例: Azure Communication Services のダイレクト ルーティングを使用したアプリからの送信呼び出し (JS SDK)
+
+Alice は、Azure Communication Services のダイレクト ルーティングを使用して、Azure Communication Services アプリから電話番号 (Bob) への送信呼び出しを行います。
+- Alice は JS SDK を使用してアプリを作成しました。
+- 呼び出しは、Communication Services のダイレクト ルーティングを介して接続されたセッション境界コントローラー (SBC) に移動します。
+- この通話は合計 10 分間続きます。 
+
+**コストの計算**
+
+- アプリから Communication Services サーバーへの VoIP レッグの参加者 1 名 (Alice) x 10 分 x $0.004 (1 参加者レッグ、1 分あたり) = $0.04
+- Communication Services サーバーから SBC への Communication Services ダイレクト ルーティング発信レッグの参加者 1 名 (Bob) x 10 分 x $0.004 (1 参加者レッグ、1 分あたり) = $0.04。
+
+**通話の総コスト**: $0.04 + $0.04 = $0.08
+
+### <a name="pricing-example-group-audio-call-using-js-sdk-and-one-pstn-leg"></a>価格の例: JS SDK と 1 PSTN レッグを使用してグループ音声通話を行う
 
 Alice と Bob は VOIP 通話を行っています。 Bob は、Charlie の PSTN 番号 (`+1-425` で始まる米国の電話番号) で、通話を Charlie にエスカレートしました。
 
@@ -85,13 +98,15 @@ Alice と Bob は VOIP 通話を行っています。 Bob は、Charlie の PSTN
 Alice は医師として、患者である Bob を診察する予定です。 Alice は Teams デスクトップ アプリケーションから診察に参加します。 Bob には、医療機関の Web サイトを使用して参加するためのリンクが送信されます。このリンクを通じて、Communication Services JavaScript SDK を使用した診察に接続することができます。 Bob は携帯電話から Web ブラウザー (iPhone と Safari) を使用して診察に参加します。 仮想診察の間はチャットが利用できます。
 
 - この通話は合計 30 分間続きます。
-- Alice と Bob は通話全体に参加します。 Alice は、通話が開始されてから 5 分後にビデオをオンにし、13 分間画面を共有します。 Bob は通話が終わるまでビデオをオンにします。
+- Bob は会議に参加すると、Teams のポリシーに従って Teams ミーティング ロビーに配置されます。 1 分後、彼が会議に参加することを Alice が認めます。
+- Bob が会議への参加を認められた後、Alice と Bob は通話全体に参加します。 Alice は、通話が開始されてから 5 分後にビデオをオンにし、13 分間画面を共有します。 Bob は通話が終わるまでビデオをオンにします。
 - Alice は 5 件のメッセージを送信し、うち 3 件に Bob が返信します。
 
 
 **コストの計算**
 
-- 1 人の参加者 (Bob) x 30 分 x 参加者あたり $0.004/分 = $0.12 [ビデオとオーディオの両方が同じ料金で課金されます]
+- Teams ロビーに接続された 1 人の参加者 (Bob) x 1 分 x 参加者 1 名につき毎分 $0.004 (ロビーは会議の通常料金で課金されます) = $0.004
+- 1 人の参加者 (Bob) x 29 分 x 参加者あたり $0.004/分 = $0.116 [ビデオとオーディオの両方が同じ料金で課金されます]
 - 1 人の参加者 (Alice) x 30 分 x 参加者あたり $0.000/分 = $0.0*
 - 1 人の参加者 (Bob) x 3 件のチャット メッセージ x $0.0008 = $0.0024
 - 1 人の参加者 (Alice) x 5 件のチャット メッセージ x $0.000  = $0.0*
@@ -99,9 +114,38 @@ Alice は医師として、患者である Bob を診察する予定です。 Al
 \* Alice の参加は、Teams のライセンスによってカバーされています。 Azure の請求書には、Teams ユーザーが Communication Services ユーザーと交わしたチャット メッセージと時間 (分) が表示されますが、これはあくまで参考のためです。Teams クライアント側から送信されたメッセージと時間 (分) は課金されません。
 
 **診察の総コスト**:
-- Communication Services JavaScript SDK を使用して参加するユーザー: $0.12 + $0.0024 = $0.1224
+- Communication Services JavaScript SDK を使用して参加するユーザー: $0.004 + $0.116 + $0.0024 = $0.1224
 - Teams デスクトップ アプリケーションで参加するユーザー: $0 (Teams ライセンスに含まれています)
 
+
+## <a name="call-recording"></a>通話レコーディング
+
+Azure Communication Services を使用すると、PSTN、WebRTC、会議、SIP インターフェイスの通話をレコーディングできます。 現在、通話レコーディングでは、混合オーディオ + ビデオ MP4 と混合オーディオ専用 MP3/WAV 出力形式がサポートされています。 通話レコーディング SDK は、Java と C# で使用できます。 詳細については、[こちらのページ](../quickstarts/voice-video-calling/call-recording-sample.md)を参照してください。
+
+### <a name="price"></a>Price
+
+混合オーディオ + ビデオ形式の場合は $0.01/分、混合オーディオのみの場合は $0.002/分が課金されます。
+
+### <a name="pricing-example-record-a-call-in-a-mixed-audiovideo-format"></a>価格の例: 混合オーディオ + ビデオ形式で通話をレコーディングする
+
+Alice が、仕事仲間の Bob と Charlie とグループ通話を行いました。 
+
+- この通話は合計 60 分間続きました。 そして、レコーディングは 60 分間アクティブでした。
+- Bob は 30 分間、Alice と Charlie は 60 分間通話に参加していました。
+
+**コストの計算**
+- 会議の長さに対して課金されます。 (会議の長さは、ユーザーがレコーディングを開始してから、明示的に停止するまで、または誰も会議に残っていない時点までのタイムラインです)。
+- 60 分 x $0.01/分 (1 レコーディングあたり) = $0.6
+
+### <a name="pricing-example-record-a-call-in-a-mixed-audioonly-format"></a>価格の例: 混合オーディオ専用形式で通話をレコーディングする
+
+Alice は Jane との通話を開始します。 
+
+- この通話は合計 60 分間続きました。 レコーディングは 45 分間続きました。
+
+**コストの計算**
+- レコーディングの長さに対して課金されます。 
+- 45 分 x $0.002/分 (1 レコーディングあたり) = $0.09
 
 ## <a name="chat"></a>チャット
 
@@ -152,7 +196,7 @@ Rose はメッセージを表示し、チャットを開始します。 その�
 
 #### <a name="united-states-calling-prices"></a>米国の通話価格
 
-次の価格には、通信に必要な税と料金が含まれています (2021 年 6 月 30 日まで)。
+次の価格には、通信に必要な税と料金が含まれています。
 
 |数値型   |電話をかける   |電話を受ける|
 |--------------|-----------|------------|
@@ -161,7 +205,7 @@ Rose はメッセージを表示し、チャットを開始します。 その�
 
 #### <a name="other-calling-destinations"></a>その他の通話の宛先
 
-次の価格には、通信に必要な税と料金が含まれています (2021 年 6 月 30 日まで)。
+次の価格には、通信に必要な税と料金が含まれています。
 
 |発信先   |1 分あたりの価格|
 |-----------|------------|
@@ -173,10 +217,10 @@ Rose はメッセージを表示し、チャットを開始します。 その�
 
 ### <a name="sms"></a>SMS
 
-SMS の価格は従量課金制です。 価格は、メッセージの宛先に基づく、メッセージごとの料金となっています。 メッセージは、無料電話番号から米国内の電話番号に送信することができます。 SMS メッセージの送信にローカル (固定) 電話番号は使用できないので注意してください。
+SMS の価格は従量課金制です。 価格は、メッセージの宛先に基づく、メッセージ セグメントごとの料金となっています。 メッセージ セグメントの詳細については、[こちら](./telephony-sms/sms-faq.md#what-is-the-sms-character-limit)を参照してください。 メッセージは、無料電話番号から米国内の電話番号に送信することができます。 SMS メッセージの送信にローカル (固定) 電話番号は使用できないので注意してください。
 
-次の価格には、通信に必要な税と料金が含まれています (2021 年 6 月 30 日まで)。
+次の価格には、通信に必要な税と料金が含まれています。
 
 |国   |メッセージを送信する|メッセージを受信する|
 |-----------|------------|------------|
-|USA (無料電話番号)    |$0.0075/メッセージ   | $0.0075/メッセージ |
+|USA (無料電話番号)    |$0.0075/メッセージ セグメント  | $0.0075/メッセージ セグメント |

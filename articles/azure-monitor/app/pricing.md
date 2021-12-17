@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 3/30/2021
+ms.date: 8/23/2021
 ms.reviewer: lagayhar
-ms.openlocfilehash: e048e788e674e90a62b15784c590c07e5d36b816
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8183e52e5b475f08df3631021d8ea6d3120525c8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078402"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772593"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -33,26 +33,24 @@ Application Insights の課金のしくみについてご質問がある場合�
 
 ### <a name="workspace-based-application-insights"></a>ワークスペースベースの Application Insights
 
-[ワークスペースベースの Application Insights リソース](create-workspace-resource.md)と呼ばれる、Log Analytics ワークスペースにデータを送信する Application Insights リソースについては、Application Insights データが配置されているワークスペースによって、データ インジェストとリテンション期間の課金が行われます。 これにより、従量課金制に加えて容量予約を含む Log Analytics [価格モデル](../logs/manage-cost-storage.md#pricing-model) のすべてのオプションを利用できます。 Log Analytics には、データ保持に関するオプションが他にもあります。たとえば、[データの種類別のリテンション期間](../logs/manage-cost-storage.md#retention-by-data-type)などです。 ワークスペース内の Application Insights データの種類には、課金なしで 90 日分のリテンション期間が付与されます。 Web テストの使用およびカスタム メトリック ディメンションに対するアラートの有効化は、引き続き Application Insights を通じて報告されます。 [[使用量と推定コスト]](../logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs)、[[Azure Cost Management + Billing]\(Azure Cost Management + 請求\)](../logs/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) および [[Log Analytics queries]\(Log Analytics クエリ\)](#data-volume-for-workspace-based-application-insights-resources) を使用して、Log Analytics 内でデータ インジェストとリテンション期間のコストを追跡する方法について説明します。 
+[ワークスペースベースの Application Insights リソース](create-workspace-resource.md)と呼ばれる、Log Analytics ワークスペースにデータを送信する Application Insights リソースについては、Application Insights データが配置されているワークスペースによって、データ インジェストとリテンション期間の課金が行われます。 これにより、従量課金制に加えて **コミットメント層** を含む Log Analytics [価格モデル](../logs/manage-cost-storage.md#pricing-model) のすべてのオプションを利用できるようになります。 コミットメント層では、従量課金制よりも最大で 30% 低い価格が提供されます。 Log Analytics には、データ保持に関するオプションが他にもあります。たとえば、[データの種類別のリテンション期間](../logs/manage-cost-storage.md#retention-by-data-type)などです。 ワークスペース内の Application Insights データの種類には、課金なしで 90 日分のリテンション期間が付与されます。 Web テストの使用およびカスタム メトリック ディメンションに対するアラートの有効化は、引き続き Application Insights を通じて報告されます。 [[使用量と推定コスト]](../logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs)、[[Azure Cost Management + Billing]\(Azure Cost Management + 請求\)](../logs/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) および [[Log Analytics queries]\(Log Analytics クエリ\)](#data-volume-for-workspace-based-application-insights-resources) を使用して、Log Analytics 内でデータ インジェストとリテンション期間のコストを追跡する方法について説明します。 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>アプリケーションを管理するためのコストの見積もり
 
-Application Insights をまだ使用していない場合は、[Azure Monitor 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=monitor)を使用して、Application Insights の使用コストを見積もることができます。 まず、[検索] ボックスに「Azure Monitor」と入力し、結果として表示される Azure Monitor タイルをクリックします。 ページを下にスクロールして Azure Monitor に移動し、[種類] ドロップダウンから [Application Insights] を選択します。  知りたいことは Application Insights によるアプリケーションの監視で収集されるデータの量なので、ここでは 1 か月間に収集することが予想されるデータの GB 数を入力できます。
+Application Insights をまだ使用していない場合は、[Azure Monitor 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=monitor)を使用して、Application Insights の使用コストを見積もることができます。 まず、[検索] ボックスに「Azure Monitor」と入力し、結果として表示される Azure Monitor タイルをクリックします。 ページを下にスクロールして [Azure Monitor] に移動し、[Application Insights] セクションを展開します。 見積もりコストは、取り込まれたログ データの量に依存します。  データ量の見積もりには 2 つの手法があります。
 
-これに対応する方法は 2 つあります。1 つは、ASP.NET SDK で利用できる既定の監視とアダプティブ サンプリングを使用する方法で、もう 1 つは他の似た顧客の実績に基づいてデータ インジェストを推定する方法です。
+1. 他の同様のアプリケーションで生成される内容に基づき、考えられるデータ インジェストを見積もる。あるいは 
+2. 既定の監視とアダプティブ サンプリングを使用する。これは ASP.NET SDK にあります。
+
+### <a name="learn-from-what-similar-applications-collect"></a>同様のアプリケーションの収集内容から学習する
+
+Application Insights の Azure Monitoring Pricing 電卓で、クリックして **[Estimate data volume based on application activity]\(アプリケーション アクティビティに基づいてデータ量を見積もる\)** を有効にします。 アプリケーションに関する情報を (クライアント側テレメトリを収集する場合、1 か月あたりの要求数とページ ビュー数) を入力すると、類似アプリケーションによって収集されたデータ量の中央値と 90 パーセンタイル量が表示されます。 これらのアプリケーションでの Application Insights の構成は範囲が広いので (既定の[サンプリング](./sampling.md)を使用しているものや、サンプルを使用していないものなど)、サンプリングを使用して、取り込まれるデータの量が中央値のレベルよりはるかに少なくなるように制御できます。 
 
 ### <a name="data-collection-when-using-sampling"></a>サンプリングを使用する場合のデータ収集
 
 ASP.NET SDK の[アダプティブ サンプリング](sampling.md#adaptive-sampling)を使用すると、データ ボリュームが自動的に調整されて、既定の Application Insights 監視に対して指定されている最大トラフィック レート内に維持されます。 アプリケーションが少量のテレメトリを生成している場合 (デバッグ時や使用量が少ない場合など)、量が構成されている秒あたりイベント数レベルを下回っている限り、サンプリング プロセッサによって項目がドロップされることはありません。 量の多いアプリケーションの場合、既定のしきい値である 5 イベント/秒では、アダプティブ サンプリングによって 1 日あたりのイベント数は 432,000 に制限されます。 サンプリングは各ノードに対してローカルに行われるため、標準的な平均イベント サイズである 1 KB を使用すると、アプリケーションがホストされているノードごとに、1 か月 (31 日) あたり 13.4 GB のテレメトリに対応します。
 
-> [!NOTE]
-> Azure Monitor ログ データのサイズは、GB 単位で計算されます (1 GB = 10 ^ 9 バイト)。
-
 アダプティブ サンプリングがサポートされていない SDK の場合は、[インジェスト サンプリング](./sampling.md#ingestion-sampling)を使用できます。この機能では、保持するデータの割合に基づいて、または Web サーバーと Web ブラウザーから送信されるトラフィックを減らすために [ASP.NET、ASP.NET Core、および Java の Web サイトでは固定レートのサンプリング](sampling.md#fixed-rate-sampling)で、Application Insights によってデータが受信されたときにサンプリングされます
-
-### <a name="learn-from-what-similar-customers-collect"></a>似た顧客の収集を参考にする
-
-Application Insights 用の Azure Monitoring 料金計算ツールでは、"アプリケーションのアクティビティに基づいてデータ量を見積もる" 機能を有効にした場合、アプリケーションに関する情報を (クライアント側テレメトリを収集する場合、1 か月あたりの要求数とページ ビュー数) を入力すると、類似アプリケーションによって収集されたデータ量の中央値と 90 パーセンタイル量が表示されます。 これらのアプリケーションでの Application Insights の構成は範囲が広いので (既定の[サンプリング](./sampling.md)を使用しているものや、サンプルを使用していないものなど)、サンプリングを使用して、取り込まれるデータの量が中央値のレベルよりはるかに少なくなるように制御できます。 しかし、これは、他の似た顧客が行っていることを理解するための出発点となります。
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>ご自分の使用量を理解してコストを見積もる
 
@@ -180,7 +178,7 @@ union (AppAvailabilityResults),
 
 Azure では、[Azure Cost Management と課金](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json)ハブに便利な機能が多数用意されています。 たとえば、"コスト分析" 機能を使用すると、Azure リソースに対するご自分の支出を表示できます。 リソースの種類 (Application Insights の場合は microsoft.insights/components) でフィルターを追加すると、支出を追跡できます。 次に、[グループ化] で [測定カテゴリ] または [測定] を選択します。  現在の価格プランの Application Insights リソースについては、すべての Azure Monitor コンポーネントに対して 1 つのログ バックエンドがあるため、ほとんどの使用量は [測定] カテゴリの Log Analytics として表示されます。 
 
-[Azure portal から使用状況をダウンロード](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)することで、使用状況をさらに詳しく理解できます。
+[Azure portal から使用状況をダウンロード](../../cost-management-billing/understand/download-azure-daily-usage.md)することで、使用状況をさらに詳しく理解できます。
 ダウンロードしたスプレッドシートでは、Azure リソースごとに、1 日あたりの使用量を確認できます。 この Excel スプレッドシートでは、Application Insights のリソースからの使用量を検索することができます。それには、まず、[測定カテゴリ] 列でフィルター処理を行って "Application Insights" と "Log Analytics" を表示し、次に [インスタンス ID] 列に対するフィルター ("contains microsoft.insights/components") を追加します。  すべての Azure Monitor コンポーネントに対して 1 つのログ バックエンドがあるため、ほとんどの Application Insights の使用量は、メーターでは Log Analytics の測定カテゴリで報告されます。  Application Insights の測定カテゴリで報告されるのは、従来の価格レベルおよび複数ステップ Web テストでの Application Insights リソースのみです。  使用量は "消費量" 列に表示され、各エントリの単位は "測定単位" 列に表示されます。  詳細については、「[Microsoft Azure の課金内容を確認する](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。
 
 ## <a name="managing-your-data-volume"></a>データ ボリュームの管理
@@ -197,8 +195,11 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
  
 * **日次上限**:Azure portal で Application Insights リソースを作成する場合、日次上限は 100 GB/日に設定されます。 Visual Studio から Application Insights リソースを作成する場合の既定値は小 (32.3 MB/日) です。 日次上限の既定値は、テストを容易にするために設定されます。 アプリを実稼働環境にデプロイする前に、ユーザーが日次上限を上げることになります。 
 
-    高トラフィック アプリケーション用に最大値の引き上げを要求する場合を除き、最大の上限は 1,000 GB/日です。
+    高トラフィック アプリケーション用に最大値の引き上げを要求する場合を除き、Application Insights での上限は 1,000 GB/日です。
     
+    > [!TIP]
+    > ワークスペース ベースの Application Insights リソースがある場合、Application Insights の上限を使用するのではなく、[ワークスペースの日次上限](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume)を使用してインジェストとコストを制限することをお勧めします。
+
     日次上限に関する警告メールは、Application Insights リソースの次のロールのメンバーであるアカウントに送信されます: "ServiceAdmin"、"AccountAdmin"、"CoAdmin"、"Owner"。
 
     日次上限を設定する場合はご注意ください。 意図は、"*日次上限に達しない*" ようにすることです。 日次上限に達した場合、その日の残りの時間についてデータが失われ、アプリケーションを監視することはできません。 日次上限を変更するには、 **[日次ボリューム上限]** オプションを使用します。 このオプションには、 **[使用量と推定コスト]** ウィンドウでアクセスできます (これについてはこの記事で後ほど詳しく説明します)。
@@ -210,6 +211,9 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 ## <a name="manage-your-maximum-daily-data-volume"></a>ご自分のデータの 1 日の最大ボリュームを管理する
 
 日次ボリューム上限を使用すると、収集されるデータを制限できます。 ただし、上限に達した場合は、その日の残りの時間についてアプリケーションから送信されたすべてのテレメトリが失われます。 アプリケーションが日次上限に達することは "*望ましくありません*"。 日次上限に達した後は、アプリケーションの正常性とパフォーマンスを追跡できません。
+
+> [!WARNING]
+> ワークスペース ベースの Application Insights リソースがある場合、[ワークスペースの日次上限](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume)を使用してインジェストとコストを制限することをお勧めします。 Application Insights の日次上限では、場合によっては選択したレベルまでインジェストが制限されない可能性があります (Application Insights リソースによって大量のデータが取り込まれる場合、Application Insights の日次上限を引き上げる必要が生じることがあります)。
 
 日次ボリューム上限を使用する代わりに、[サンプリング](./sampling.md)を使用して、データ ボリュームを目的のレベルに調整してください。 その後、アプリケーションが予期せず大量のテレメトリの送信を開始した場合に、"最後の手段" としてのみ日次上限を使用します。
 
@@ -227,7 +231,7 @@ Application Insights の使用量と推定コストを確認し、データ イ�
 
 ### <a name="create-alerts-for-the-daily-cap"></a>日次上限のアラートを作成する
 
-Application Insights の日次上限では、取り込まれたデータ ボリュームが警告レベルまたは日次上限レベルに達したときに、Azure アクティビティ ログにイベントが作成されます。  [これらのアクティビティ ログ イベントに基づいてアラートを作成](../alerts/alerts-activity-log.md#create-with-the-azure-portal)できます。 これらのイベントのシグナル名:
+Application Insights の日次上限では、取り込まれたデータ ボリュームが警告レベルまたは日次上限レベルに達したときに、Azure アクティビティ ログにイベントが作成されます。  [これらのアクティビティ ログ イベントに基づいてアラートを作成](../alerts/alerts-activity-log.md#azure-portal)できます。 これらのイベントのシグナル名:
 
 * Application Insights コンポーネントの日次上限の警告しきい値に到達しました
 

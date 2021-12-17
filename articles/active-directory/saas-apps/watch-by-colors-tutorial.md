@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Watch by Colors の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Watch by Colors の統合'
 description: Azure Active Directory と Watch by Colors の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 10/19/2021
 ms.author: jeedes
-ms.openlocfilehash: fae276049ec3ff6c4bf96be38ff0d2a952731a15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a48fd180e0f40039f36e0f76471fdba6e101e52
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92636784"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132303528"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Watch by Colors の統合
+# <a name="tutorial-azure-ad-sso-integration-with-watch-by-colors"></a>チュートリアル: Azure AD SSO と Watch by Colors の統合
 
 このチュートリアルでは、Watch by Colors と Azure Active Directory (Azure AD) を統合する方法について説明します。 Watch by Colors を Azure AD と統合すると、次のことができます。
 
 * Watch by Colors にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Watch by Colors に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,24 +37,24 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Watch by Colors では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Watch by Colors では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
-## <a name="adding-watch-by-colors-from-the-gallery"></a>ギャラリーからの Watch by Colors の追加
+## <a name="add-watch-by-colors-from-the-gallery"></a>ギャラリーから Watch by Colors を追加する
 
 Azure AD への Watch by Colors の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Watch by Colors を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Watch by Colors**」と入力します。
 1. 結果パネルで **[Watch by Colors]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Watch by Colors の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-watch-by-colors"></a>Watch by Colors の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Watch by Colors に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Watch by Colors の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Watch by Colors に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Watch by Colors に対して Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -69,9 +67,9 @@ Watch by Colors に対する Azure AD SSO を構成してテストするには�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Watch by Colors** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Watch by Colors** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -79,7 +77,7 @@ Watch by Colors に対する Azure AD SSO を構成してテストするには�
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** テキスト ボックスに URL として「`https://app.colorscorporation.com/login`」と入力します。
+    **[サインオン URL]** テキスト ボックスに、URL として「`https://app.colorscorporation.com/login`」と入力します。
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
@@ -104,13 +102,7 @@ Watch by Colors に対する Azure AD SSO を構成してテストするには�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Watch by Colors]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
@@ -129,11 +121,11 @@ Watch by Colors に対する Azure AD SSO を構成してテストするには�
 
 4. ページの右上隅で、 **[profile]\(プロファイル\)**  >  **[Account Settings]\(アカウント設定\)**  >  **[SSO (Single Sign On)]\(SSO (シングル サインオン)\)** の順にクリックします。
 
-    ![SSO が無効になっている [Account Settings]\(アカウント設定\) ページを示すスクリーンショット。](./media/watch-by-colors-tutorial/config01.png)
+    ![SSO が無効になっている [Account Settings]\(アカウント設定\) ページを示すスクリーンショット。](./media/watch-by-colors-tutorial/account.png)
 
 5. **[SSO (Single Sign On)]\(SSO (シングル サインオン)\)** ページで、次の手順を実行します。
 
-    ![[SAML Setup]\(SAML のセットアップ\) タブを示すスクリーンショット。ここで、SAML を有効にできます。](./media/watch-by-colors-tutorial/config02.png)
+    ![[SAML Setup]\(SAML のセットアップ\) タブを示すスクリーンショット。ここで、SAML を有効にできます。](./media/watch-by-colors-tutorial/profile.png)
 
     a. **[Enable SAML]\(SAML を有効にする\)** を **[ON]\(オン\)** に切り替えます。
 
@@ -153,11 +145,11 @@ Azure AD ユーザーが Watch by Colors にサインインできるようにす
 
 1. ページの右上隅で、 **[profile]\(プロファイル\)**  >  **[Users]\(ユーザー\)**  >  **[Add User]\(ユーザーの追加\)** の順にクリックします。
 
-    ![[Users]\(ユーザー\) ページを示すスクリーンショット。](./media/watch-by-colors-tutorial/config03.png)
+    ![[Users]\(ユーザー\) ページを示すスクリーンショット。](./media/watch-by-colors-tutorial/user.png)
 
 1. **[User Details]\(ユーザーの詳細\)** ページで、次の手順を実行します。
 
-    ![[User Details]\(ユーザーの詳細\) ページを示すスクリーンショット。ここで説明されている値を入力できます。](./media/watch-by-colors-tutorial/config04.png)
+    ![[User Details]\(ユーザーの詳細\) ページを示すスクリーンショット。ここで説明されている値を入力できます。](./media/watch-by-colors-tutorial/details.png)
 
     a. **[名]** ボックスに、ユーザーの名を入力します (例: **B**)。
 
@@ -173,16 +165,20 @@ Azure AD ユーザーが Watch by Colors にサインインできるようにす
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [Watch by Colors] タイルをクリックすると、SSO を設定した Watch by Colors に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Watch by Colors のサインオン URL にリダイレクトされます。  
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Watch by Colors のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Watch by Colors に自動的にサインインされます。 
 
-- [Azure AD を使用して Watch by Colors を試す](https://aad.portal.azure.com/)
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Watch by Colors] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Watch by Colors に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+Watch by Colors を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

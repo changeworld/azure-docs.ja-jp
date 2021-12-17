@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/10/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 31a653df08108bc4f5d75e6dbbc6f31144be8b7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e19ceed6cd84606a282c5da2dd48ee134ad922a0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956028"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132333145"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thrive-lxp"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とThrive LXP の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "104956028"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Thrive LXP では、**SP** 開始 SSO がサポートされます。
+* Thrive LXP では、[自動化されたユーザー プロビジョニング](thrive-lxp-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-thrive-lxp-from-the-gallery"></a>ギャラリーからの Thrive LXP の追加
 
@@ -49,7 +50,6 @@ Azure AD への Thrive LXP の統合を構成するには、ギャラリーか�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Thrive LXP**」と入力します。
 1. 結果のパネルから **[Thrive LXP]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-thrive-lxp"></a>Thrive LXP の Azure AD SSO の構成とテスト
 
@@ -92,6 +92,7 @@ Thrive LXP に対して Azure AD SSO を構成してテストするには、次�
 1. **[Thrive LXP のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -124,6 +125,8 @@ Thrive LXP に対して Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、Thrive LXP で Britta Simon というユーザーを作成します。 [Thrive LXP サポート チーム](mailto:support@thrivelearning.com)と連携して、Thrive LXP プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
+Thrive LXP では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./thrive-lxp-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -132,8 +135,8 @@ Thrive LXP に対して Azure AD SSO を構成してテストするには、次�
 
 * Thrive LXP のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Thrive LXP] タイルをクリックすると、Thrive LXP サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Thrive LXP] タイルをクリックすると、Thrive LXP サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Thrive LXP を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Thrive LXP を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

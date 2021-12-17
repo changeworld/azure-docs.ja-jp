@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 02/11/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: b88b36ba8ec1d2d612adbbf19a6cf1e91fbb2cfd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05dd347914d7be942c00232de78cf89484f07555
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377756"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555326"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの配置
 
@@ -138,8 +138,8 @@ Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの一部であ�
 次に、スケール アウトしてサーバー グループに 3 つ目のワーカー ノードを追加し、何が起こるかを観察します。 4 つ目のポッドでホストされる 4 つ目の PostgreSQL インスタンスが作成されます。
 スケール アウトするには、次のコマンドを実行します。
 
-```console
-azdata arc postgres server edit --name postgres01 --workers 3
+```azurecli
+az postgres arc-server edit --name postgres01 --workers 3 --k8s-namespace arc3 --use-k8s
 ```
 
 これにより、次の出力が生成されます。
@@ -151,16 +151,21 @@ postgres01 is Ready
 
 Azure Arc データ コントローラーにデプロイされているサーバー グループを一覧表示し、サーバー グループが 3 つのワーカーで実行されていることを確認します。 次のコマンドを実行します。
 
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace arc3 --use-k8s
 ```
 
 次のように、2 つのワーカーから 3 つのワーカーにスケール アウトされたことを確認します。
 
 ```output
-Name        State    Workers
-----------  -------  ---------
-postgres01  Ready    3
+[
+  {
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Ready",
+    "workers": 3
+  }
+]
 ```
 
 前に行ったように、サーバー グループで合計 4 つのポッドが使用されていることを確認します。
@@ -198,10 +203,10 @@ Node:         aks-agentpool-42715708-vmss000000
 
 |サーバー グループのロール|サーバー グループのポッド|ポッドがホストされている Kubernetes 物理ノード
 |-----|-----|-----
-|コーディネーター|postgres01-0|aks-agentpool-42715708-vmss000000
-|ワーカー|postgres01-1|aks-agentpool-42715708-vmss000002
-|ワーカー|postgres01-2|aks-agentpool-42715708-vmss000003
-|ワーカー|postgres01-3|aks-agentpool-42715708-vmss000000
+|コーディネーター|postgres01c-0|aks-agentpool-42715708-vmss000000
+|ワーカー|postgres01w-1|aks-agentpool-42715708-vmss000002
+|ワーカー|postgres01w-2|aks-agentpool-42715708-vmss000003
+|ワーカー|postgres01w-3|aks-agentpool-42715708-vmss000000
 
 また、新しいワーカー (postgres01w-2) のポッドが、コーディネーターと同じノードに配置されていることがわかります。 
 
@@ -246,7 +251,7 @@ Kubernetes クラスターでホストされているワークロードの数が
 
 ## <a name="scale-out-aks"></a>AKS をスケール アウトする
 
-AKS クラスターと Azure Arc 対応 PostgreSQL Hyperscale サーバーの両方を水平方向にスケーリングすることで、Azure Arc 対応 PostgreSQL Hyperscale の高パフォーマンスを最大限に活用できることを説明します。
+AKS クラスターと Azure Arc 対応 PostgreSQL Hyperscale サーバーの両方を水平方向にスケーリングすることで、Azure Arc 対応 PostgreSQL Hyperscale のハイ パフォーマンスを最大限に活用できることを示します。
 AKS クラスターに 5 つ目のノードを追加してみましょう。
 
 :::row:::
@@ -286,8 +291,8 @@ Kubernetes クラスターの新しい物理ノードによって、Azure Arc �
 
 5 つ目の物理ノードでは、まだワークロードをホストしていません。 Azure Arc 対応 PostgreSQL Hyperscale をスケール アウトすると、Kubernetes では新しい PostgreSQL ポッドの配置が最適化されます。また、より多くのワークロードが既にホストされている物理ノード上にこれを併置することはできません。 次のコマンドを実行して、Azure Arc 対応 PostgreSQL Hyperscale を 3 つのワーカーから 4 つのワーカーにスケーリングします。 操作の最後に、サーバー グループが構成され、5 つの PostgreSQL インスタンス (1 つのコーディネーターと 4 つのワーカー) に分散されます。
 
-```console
-azdata arc postgres server edit --name postgres01 --workers 4
+```azurecli
+az postgres arc-server edit --name postgres01 --workers 4 --k8s-namespace arc3 --use-k8s
 ```
 
 これにより、次の出力が生成されます。
@@ -299,16 +304,21 @@ postgres01 is Ready
 
 データ コントローラーにデプロイされているサーバー グループを一覧表示し、サーバー グループが 4 つのワーカーで実行されていることを確認します。
 
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace arc3 --use-k8s
 ```
 
 3 つのワーカーから 4 つのワーカーにスケール アウトされたことを確認します。 
 
 ```console
-Name        State    Workers
-----------  -------  ---------
-postgres01  Ready    4
+[
+  {
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Ready",
+    "workers": 4
+  }
+]
 ```
 
 前に行ったように、サーバー グループで 4 つのポッドが使用されていることを確認します。
@@ -370,4 +380,4 @@ Kubernetes では、負荷が最も少ない Kubernetes クラスターの物理
 
 ## <a name="next-steps"></a>次の手順
 
-[ワーカー ノードを追加して Azure Arc 対応 PostgreSQL Hyperscale サーバー グループをスケールアウトする](scale-out-postgresql-hyperscale-server-group.md)
+[ワーカー ノードを追加して Azure Arc 対応 PostgreSQL Hyperscale サーバー グループをスケールアウトする](scale-out-in-postgresql-hyperscale-server-group.md)

@@ -3,8 +3,7 @@ title: Azure Portal を使用した Azure DDoS Protection Standard の管理
 description: Azure DDoS Protection Standard を使用して攻撃を軽減する方法について説明します。
 services: ddos-protection
 documentationcenter: na
-author: KumudD
-manager: mtillman
+author: aletheatoh
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
-ms.author: kumud
-ms.openlocfilehash: b38f2831136b0ccec4aa241135f2fd342c939845
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: yitoh
+ms.openlocfilehash: 803d89dedc59c53001f078492d956e5e50d5411b
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936888"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305124"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>クイックスタート: Azure DDoS Protection Standard の作成と構成
 
@@ -76,7 +75,7 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 
 ### <a name="enable-ddos-protection-for-all-virtual-networks"></a>すべての仮想ネットワークの DDoS 保護を有効にする
 
-この[ポリシー](https://aka.ms/ddosvnetpolicy)により、定義されているスコープ内で、DDoS Protection Standard が有効にされていない仮想ネットワークが検出された後、必要に応じて、VNet を保護するための関連付けを作成する修復タスクが作成されます。 このポリシーをデプロイする方法の詳細な手順については、 https://aka.ms/ddosvnetpolicy-techcommunity を参照してください。
+この[組み込みポリシー](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d)により、定義されているスコープ内で、DDoS Protection Standard が有効にされていない仮想ネットワークが検出された後、必要に応じて、VNet を保護するための関連付けを作成する修復タスクが作成されます。 組み込みポリシーの完全な一覧については、「[Azure DDoS Protection Standard 用 Azure Policy 組み込みポリシー定義](policy-reference.md)」を参照してください。 
 
 ## <a name="validate-and-test"></a>検証とテスト
 

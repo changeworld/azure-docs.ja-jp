@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: overview
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: sstein
-ms.date: 12/05/2019
-ms.openlocfilehash: cac17bbac96d44d8d9bfce2e168de4ea6d4c5c08
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mathoma
+ms.date: 11/09/2021
+ms.openlocfilehash: fa127df408ce8da080e6e0543f92fbdb001b4547
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100364955"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136888"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database のエラスティック クエリの概要 (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,9 +29,9 @@ ms.locfileid: "100364955"
 
 T-SQL のみで Azure SQL Database 内のデータベースにわたってクエリを実行します。 これにより、リモート データベースの読み取り専用クエリが可能になり、現在の SQL Server のお客様が 3 部および 4 部構成名または SQL Database へのリンク サーバーを使用してアプリケーションを移行できるようになります。
 
-### <a name="available-on-standard-tier"></a>Standard レベルで利用可能
+### <a name="available-on-all-service-tiers"></a>すべてのサービス レベルで使用可能
 
-エラスティック クエリは、Standard と Premium の両方のサービス レベルでサポートされます。 下位のサービス レベルのパフォーマンスに関する制限事項については、後述の「プレビューの制限事項」をご覧ください。
+エラスティック クエリは、Azure SQL Database のすべてのサービス レベルでサポートされます。 下位のサービス レベルのパフォーマンスに関する制限事項については、後述の「プレビューの制限事項」をご覧ください。
 
 ### <a name="push-parameters-to-remote-databases"></a>リモート データベースにパラメーターをプッシュする
 
@@ -139,7 +139,7 @@ DDL ステートメントを実行すると、ローカル テーブルである
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
-* Standard サービス レベルでは、初回のエラスティック クエリの実行に数分かかる場合があります。 これは、エラスティック クエリ機能の読み込みに要する時間です。サービス レベルおよびコンピューティング サイズが上位になるほど、読み込みのパフォーマンスが高くなります。
+* エラスティック クエリの初回実行は、比較的小さなリソースと Standard および General Purpose サービス レベルの場合で数分かかる場合があります。 これは、エラスティック クエリ機能の読み込みに要する時間です。サービス レベルおよびコンピューティング サイズが上位になるほど、読み込みのパフォーマンスが高くなります。
 * SSMS または SSDT の外部データ ソースまたは外部テーブルからのスクリプト処理はまだサポートされていません。
 * SQL Database の Import/Export では、外部データ ソースと外部テーブルはまだサポートされていません。 Import/Export を使用する必要がある場合は、エクスポートの前にこれらのオブジェクトを削除し、インポート後にこれらのオブジェクトを再作成します。
 * 現在、エラスティック クエリでは、外部テーブルへの読み取り専用アクセスだけがサポートされています。 ただし、外部テーブルが定義されているデータベースでは、完全な T-SQL 機能を使用できます。 これは、SELECT <column_list> INTO <local_table> を使用して一時的な結果を保持する場合や、外部テーブルを参照するエラスティック クエリ データベースでストアド プロシージャを定義する場合などに便利です。

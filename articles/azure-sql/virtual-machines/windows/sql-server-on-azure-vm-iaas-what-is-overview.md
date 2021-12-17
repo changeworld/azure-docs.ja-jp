@@ -1,5 +1,5 @@
 ---
-title: Azure Windows 仮想マシンでの SQL Server の概要 | Microsoft Docs
+title: Azure Windows Virtual Machines 上の SQL Server の概要
 description: クラウド内の Azure Virtual Machines 上の SQL Server の全エディションを、オンプレミスのハードウェアを一切管理することなく実行する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -7,20 +7,21 @@ author: MashaMSFT
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-sql
+ms.subservice: service-overview
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b4b1234b88eafedbd03b78241baaa40231a6cbd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 168f0bb17a63dea874f782fdb04906526822de81
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97356805"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071897"
 ---
-# <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
+# <a name="what-is-sql-server-on-windows-azure-virtual-machines"></a>Azure Windows Virtual Machines 上の SQL Server とは
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -51,7 +52,7 @@ Azure では、Azure VM で実行されている SQL Server 向けのエンタ�
 
 ## <a name="performance"></a>パフォーマンス
 
-Azure 仮想マシンは、さまざまなワークロードのニーズを満たす複数のマシンのサイズを提供します。 また、SQL Server VM では、パフォーマンス要件に合わせて最適化される自動化されたストレージの構成も提供されます。 SQL Server VM のストレージの構成の詳細については、「[SQL Server VM のストレージの構成](storage-configuration.md)」を参照してください。 パフォーマンスを微調整するには、「[Azure Virtual Machines 上の SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)」を参照してください。
+Azure 仮想マシンは、さまざまなワークロードのニーズを満たす複数のマシンのサイズを提供します。 また、SQL Server VM では、パフォーマンス要件に合わせて最適化される自動化されたストレージの構成も提供されます。 SQL Server VM のストレージの構成の詳細については、「[SQL Server VM のストレージの構成](storage-configuration.md)」を参照してください。 パフォーマンスを微調整するには、「[Azure Virtual Machines 上の SQL Server のパフォーマンスに関するベスト プラクティス](./performance-guidelines-best-practices-checklist.md)」を参照してください。
 
 ## <a name="get-started-with-sql-server-vms"></a>SQL Server VM の使用を開始する
 
@@ -132,7 +133,7 @@ Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソ
 - [SQL Server 仮想マシンを作成する](sql-vm-create-portal-quickstart.md)
 
 ## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a> SQL Server VM イメージの更新ポリシー
-Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](frequently-asked-questions-faq.md#images) に関するページの「**イメージ**」セクションを参照してください。
+Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](./frequently-asked-questions-faq.yml) に関するページの「**イメージ**」セクションを参照してください。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
 既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 データの収集の詳細については、「[SQL Server のプライバシーに関する声明](/sql/sql-server/sql-server-privacy)」を参照してください。
@@ -146,7 +147,7 @@ Azure に保持される仮想マシン イメージは、サポートされる�
 
 ### <a name="networking"></a>ネットワーク
 * [仮想ネットワークの概要](../../../virtual-network/virtual-networks-overview.md)
-* [Azure 内の IP アドレス](../../../virtual-network/public-ip-addresses.md)
+* [Azure 内の IP アドレス](../../../virtual-network/ip-services/public-ip-addresses.md)
 * [Azure Portal での完全修飾ドメイン名の作成](../../../virtual-machines/create-fqdn.md)
 
 ### <a name="sql"></a>SQL
@@ -161,7 +162,7 @@ Azure Virtual Machines における SQL Server の概要:
 
 SQL Server VM についてよく寄せられる質問とその回答:
 
-* [Azure Virtual Machines における SQL Server に関する FAQ](frequently-asked-questions-faq.md)
+* [Azure Virtual Machines における SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 
 IaaS の SQL Server で N 層アプリケーションを実行するための参照アーキテクチャを表示する
 

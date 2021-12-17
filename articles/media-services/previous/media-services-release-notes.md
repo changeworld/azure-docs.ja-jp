@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe42b98813f1687c78827b355a707b0147d6d2a4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 1554551ac9690c261d3a85be406de3fdae86ed89
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067284"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712398"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -27,8 +27,7 @@ ms.locfileid: "106067284"
 
 この Azure Media Services のリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
 
-> [!NOTE]
-> Media Services v2 に新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
+[!INCLUDE [v2 deprecation notice](../latest/includes/v2-deprecation-notice.md)]
 
 お客様に影響する問題の修正に尽力できるように、製品に関するご意見、ご要望をお寄せください。 問題の報告または質問を行うには、[Azure Media Services MSDN フォーラム] に投稿してください。 
 
@@ -60,7 +59,7 @@ Media Services REST API バージョン履歴の詳細については、[Azure M
  
 - 24 時間 365 日体制のライブ イベント サポート
 - ARM REST API、.NET Core 用のクライアント SDK、Node.js、Python、Java、Go、Ruby。
-- カスタマー マネージド キー、信頼されたストレージ統合、プライベート リンクのサポート、[その他](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- カスタマー マネージド キー、信頼されたストレージ統合、プライベート リンクのサポート、[その他](../latest/migrate-v-2-v-3-migration-benefits.md)
 
 #### <a name="action-required"></a>必須のアクション:
 
@@ -89,7 +88,7 @@ Media Services REST API バージョン履歴の詳細については、[Azure M
 
 ### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、これらの従来のメディア プロセッサに取って代わります。
+*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 Azure Media Services Video Indexer が、これらの従来のメディア プロセッサに取って代わります。
 
 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。
 
@@ -444,7 +443,7 @@ Azure Media Services パッケージおよび暗号化機能で次のバグが�
 
 ## <a name="may-2014-release"></a><a id="may_changes_14"></a>2014 年 5 月のリリース
 ### <a name="general-media-services-updates"></a><a id="may_14_changes"></a>Media Services の全般的な更新
-[ダイナミック パッケージ]を使用して、HLS バージョン 3 をストリーミングできるようになりました。 HLS バージョン 3 をストリーミングするには、*.ism/manifest(format=m3u8-aapl-v3) をオリジン ロケーター パスに追加します。 詳細については、[このフォーラム](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3)を参照してください。
+[ダイナミック パッケージ]を使用して、HLS バージョン 3 をストリーミングできるようになりました。 HLS バージョン 3 をストリーミングするには、*.ism/manifest(format=m3u8-aapl-v3) をオリジン ロケーター パスに追加します。 詳細については、[このフォーラム](https://social.msdn.microsoft.com/Forums/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3)を参照してください。
 
 動的パッケージが、PlayReady による Smooth Streaming 静的暗号化に基づく、PlayReady による HLS (バージョン 3 と バージョン 4) 暗号化の配信もサポートするようになりました。 PlayReady による Smooth Streaming の暗号化方法の詳細については、[PlayReady による Smooth Streaming の保護](/previous-versions/azure/dn189154(v=azure.100))に関するページをご覧ください。
 

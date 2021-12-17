@@ -4,13 +4,13 @@ description: リソース式は、リソース中心の Azure Monitor ログ ク
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/10/2018
-ms.openlocfilehash: 9a5e5c7959a243d6c9d243b706524f624ffa3cdb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 08/19/2021
+ms.openlocfilehash: cf49ee6f0913721d3c71c0d42e5f11a2aeeb2025
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047215"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514650"
 ---
 # <a name="resource-expression-in-azure-monitor-log-query"></a>Azure Monitor ログ クエリの resource() 式
 

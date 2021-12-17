@@ -6,14 +6,14 @@ author: willzhan
 manager: femila
 ms.service: media-services
 ms.topic: how-to
-ms.date: 03/25/2021
+ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: acff3e77b92110c818ea0ab0f8281aef87e9db81
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: fec32eda9d82a7526a14befeab833d58b7792ccf
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068546"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633743"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Media Services v3 を使用した iOS 用のオフラインの FairPlay ストリーミング
 
@@ -49,18 +49,18 @@ iOS 10 以降のデバイスの FairPlay 用にオフライン DRM を実装す�
 
     - [Apple FairPlay ライセンスの要件と構成](drm-fairplay-license-overview.md)
     - [DRM 動的暗号化とライセンス配信サービスの使用](drm-protect-with-drm-tutorial.md)
-    - オンライン FPS ストリーミングの構成を含む .NET サンプル:[ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
+    - オンライン FPS ストリーミングの構成を含む .NET サンプル:[ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L493)
 * Apple Developer Network から FPS SDK を入手します。 FPS SDK には、2 つのコンポーネントが含まれています。
 
     - FPS Server SDK には、キー セキュリティ モジュール (KSM)、クライアントのサンプル、仕様、テスト ベクターのセットが含まれています。
     - FPS Deployment Pack には、D 関数、仕様および FPS 証明書生成方法の説明、顧客固有の秘密キー、アプリケーション秘密キーが含まれています。 Apple は、ライセンスのあるコンテンツ プロバイダーに対してのみ、FPS Deployment Pack を発行します。
 * [https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git ) を複製します。 
 
-    [.NET を使用した DRM の暗号化](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM)に関する記事にあるコードを変更して FairPlay の構成を追加する必要があります。  
+    [.NET を使用した DRM の暗号化](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/main/AMSV3Tutorials/EncryptWithDRM)に関する記事にあるコードを変更して FairPlay の構成を追加する必要があります。  
 
 ## <a name="configure-content-protection-in-azure-media-services"></a>Azure Media Services でコンテンツ保護を構成する
 
-[GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L189) メソッドで、次の操作を行います。
+[GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L192) メソッドで、次の操作を行います。
 
 FairPlay ポリシー オプションを設定するコードをコメント解除します。
 
@@ -82,7 +82,7 @@ options.Add(
 
 ## <a name="enable-offline-mode"></a>オフライン モードを有効にする
 
-オフライン モードを有効にするには、カスタム StreamingPolicy を作成し、[CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L561) で StreamingLocator を作成するときに、その名前を使用します。
+オフライン モードを有効にするには、カスタム StreamingPolicy を作成し、[CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L538) で StreamingLocator を作成するときに、その名前を使用します。
  
 ```csharp
 CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
@@ -199,4 +199,4 @@ FPS Server SDK のバージョン 3 またはバージョン 4 サンプルで�
 
 ## <a name="offline-fairplay-questions"></a>オフラインの FairPlay の質問
 
-[オフラインの FairPlay の質問](questions-collection.md#why-does-only-audio-play-but-not-video-during-offline-mode)に関する記事を参照してください。
+[FAQ のオフラインの FairPlay の質問](frequently-asked-questions.yml)に関するページを参照してください。

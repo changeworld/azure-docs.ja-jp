@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 10/30/2020
-ms.subservice: hybrid
+ms.subservice: compliance
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65e1217041d85b66664792d9475cdfcb517559b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 692f2ca4e57644ff321bb47cdf4238360bf4bb68
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96172437"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447989"
 ---
 # <a name="what-is-identity-lifecycle-management"></a>ID ライフサイクル管理とは
 

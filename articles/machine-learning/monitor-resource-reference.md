@@ -3,19 +3,19 @@ title: Azure Machine Learning データの監視のリファレンス | Microsof
 description: Azure Machine Learning の監視に関するリファレンス ドキュメント。 Azure Monitor で収集して利用できるデータとリソースについて説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
-ms.date: 04/07/2021
-ms.openlocfilehash: de4d934144d6721db8c00d7199061842e518e44f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 10/21/2021
+ms.openlocfilehash: a4af35e4eded2a715ada162f565ee265c0c2be74
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031071"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560140"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning データの監視のリファレンス
 
@@ -139,12 +139,34 @@ RunType ディメンションの有効な値は次のとおりです。
 | AmlComputeCpuGpuUtilization | AmlComputeCpuGpuUtilization |
 | AmlComputeJobEvent | AmlComputeJobEvent |
 | AmlRunStatusChangedEvent | AmlRunStatusChangedEvent |
+| ModelsChangeEvent | ModelsChangeEvent |
+| ModelsReadEvent | ModelsReadEvent |
+| ModelsActionEvent | ModelsActionEvent |
+| DeploymentReadEvent | DeploymentReadEvent |
+| DeploymentEventACI | DeploymentEventACI |
+| DeploymentEventAKS | DeploymentEventAKS |
+| InferencingOperationAKS | InferencingOperationAKS |
+| InferencingOperationACI | InferencingOperationACI |
+| EnvironmentChangeEvent | EnvironmentChangeEvent |
+| EnvironmentReadEvent | EnvironmentReadEvent |
+| DataLabelChangeEvent | DataLabelChangeEvent |
+| DataLabelReadEvent | DataLabelReadEvent |
+| ComputeInstanceEvent | ComputeInstanceEvent |
+| DataStoreChangeEvent | DataStoreChangeEvent |
+| DataStoreReadEvent | DataStoreReadEvent |
+| DataSetChangeEvent | DataSetChangeEvent |
+| DataSetReadEvent | DataSetReadEvent |
+| PipelineChangeEvent | PipelineChangeEvent |
+| PipelineReadEvent | PipelineReadEvent |
+| RunEvent | RunEvent |
+| RunReadEvent | RunReadEvent |
+
 
 ## <a name="schemas"></a>スキーマ
 
 次のスキーマは、Azure Machine Learning によって使用されています
 
-### <a name="amlcomputejobevents-table"></a>AmlComputeJobEvents テーブル
+### <a name="amlcomputejobevent-table"></a>AmlComputeJobEvent テーブル
 
 | プロパティ | 説明 |
 |:--- |:---|
@@ -173,7 +195,7 @@ RunType ディメンションの有効な値は次のとおりです。
 | JobErrorMessage | ジョブ エラーの詳細なメッセージ |
 | NodeId | ジョブが実行されている場所で作成されたノードの ID |
 
-### <a name="amlcomputeclusterevents-table"></a>AmlComputeClusterEvents テーブル
+### <a name="amlcomputeclusterevent-table"></a>AmlComputeClusterEvent テーブル
 
 | プロパティ | 説明 |
 |:--- |:--- |
@@ -216,7 +238,7 @@ RunType ディメンションの有効な値は次のとおりです。
 | ClusterErrorCodes | クラスターの作成中またはスケーリング中に受信したエラー コード |
 | CreationApiVersion | クラスターの作成時に使用される API バージョン |
 
-### <a name="amlcomputeclusternodeevents-table"></a>AmlComputeClusterNodeEvents テーブル
+### <a name="amlcomputeclusternodeevent-table"></a>AmlComputeClusterNodeEvent テーブル
 
 | プロパティ | 説明 |
 |:--- |:--- |
@@ -240,6 +262,156 @@ RunType ディメンションの有効な値は次のとおりです。
 | StartTaskStartTime | タスクがノードに割り当てられて開始された時刻 |
 | StartTaskEndTime | ノードに割り当てられたタスクが終了した時刻 |
 | TotalE2ETimeInSeconds | ノードがアクティブだった合計時間 |
+
+### <a name="amlcomputeinstanceevent-table"></a>AmlComputeInstanceEvent テーブル
+
+| プロパティ | 説明 |
+|:--- |:--- |
+| Type | ログ イベントの名前、AmlComputeInstanceEvent |
+| TimeGenerated | ログ エントリが生成された時刻 (UTC) |
+| Level | イベントの重大度レベル。 Informational、Warning、Error、Critical のいずれかである必要があります。 |
+| ResultType | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
+| CorrelationId | 関連するイベントのセットをグループ化するために使用される GUID (該当する場合)。 |
+| OperationName | ログ エントリに関連付けられた操作の名前 |
+| ID | 操作を実行したユーザーまたはアプリケーションの ID。 |
+| AadTenantId | 操作が送信された AAD テナント ID。 |
+| AmlComputeInstanceName | "ログエントリに関連付けられているコンピューティング インスタンスの名前。 |
+
+### <a name="amldatalabelevent-table"></a>AmlDataLabelEvent テーブル
+
+| プロパティ | 説明 |
+|:--- |:--- |
+| Type | ログ イベントの名前、AmlDataLabelEvent |
+| TimeGenerated | ログ エントリが生成された時刻 (UTC) |
+| Level | イベントの重大度レベル。 Informational、Warning、Error、Critical のいずれかである必要があります。 |
+| ResultType | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
+| CorrelationId | 関連するイベントのセットをグループ化するために使用される GUID (該当する場合)。 |
+| OperationName | ログ エントリに関連付けられた操作の名前 |
+| ID | 操作を実行したユーザーまたはアプリケーションの ID。 |
+| AadTenantId | 操作が送信された AAD テナント ID。 |
+| AmlProjectId | AML プロジェクトの一意識別子。 |
+| AmlProjectName | AML プロジェクトの名前。 |
+| AmlLabelNames | プロジェクトに対して作成されるラベル クラス名。 |
+| AmlDataStoreName | プロジェクトのデータが格納されているデータ ストアの名前。 |
+
+### <a name="amldatasetevent-table"></a>AmlDataSetEvent テーブル
+
+| プロパティ | 説明 |
+|:--- |:--- |
+| Type | ログ イベントの名前、AmlDataSetEvent |
+| TimeGenerated | ログ エントリが生成された時刻 (UTC) |
+| Level | イベントの重大度レベル。 Informational、Warning、Error、Critical のいずれかである必要があります。 |
+| ResultType | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
+| AmlWorkspaceId | AML ワークスペースの GUID と一意の ID。 |
+| OperationName | ログ エントリに関連付けられた操作の名前 |
+| ID | 操作を実行したユーザーまたはアプリケーションの ID。 |
+| AadTenantId | 操作が送信された AAD テナント ID。 |
+| AmlDatasetId | AML データ セットの ID。 |
+| AmlDatasetName | AML データ セットの名前。 |
+
+### <a name="amldatastoreevent-table"></a>AmlDataStoreEvent テーブル
+
+| プロパティ | 説明 |
+|:--- |:--- |
+| Type | ログ イベントの名前、AmlDataStoreEvent |
+| TimeGenerated | ログ エントリが生成された時刻 (UTC) |
+| Level | イベントの重大度レベル。 Informational、Warning、Error、Critical のいずれかである必要があります。 |
+| ResultType | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
+| AmlWorkspaceId | AML ワークスペースの GUID と一意の ID。 |
+| OperationName | ログ エントリに関連付けられた操作の名前 |
+| ID | 操作を実行したユーザーまたはアプリケーションの ID。 |
+| AadTenantId | 操作が送信された AAD テナント ID。 |
+| AmlDatastoreName | AML データ ストアの名前。 |
+
+### <a name="amldeploymentevent-table"></a>AmlDeploymentEvent テーブル
+
+| プロパティ | 説明 |
+|:--- |:--- |
+| Type | ログ イベントの名前、AmlDeploymentEvent |
+| TimeGenerated | ログ エントリが生成された時刻 (UTC) |
+| Level | イベントの重大度レベル。 Informational、Warning、Error、Critical のいずれかである必要があります。 |
+| ResultType | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
+| OperationName | ログ エントリに関連付けられた操作の名前 |
+| ID | 操作を実行したユーザーまたはアプリケーションの ID。 |
+| AadTenantId | 操作が送信された AAD テナント ID。 |
+| AmlServiceName | AML サービスの名前。 |
+
+### <a name="amlinferencingevent-table"></a>AmlInferencingEvent テーブル
+
+| プロパティ | 説明 |
+|:--- |:--- |
+| Type | ログ イベントの名前、AmlInferencingEvent |
+| TimeGenerated | ログ エントリが生成された時刻 (UTC) |
+| Level | イベントの重大度レベル。 Informational、Warning、Error、Critical のいずれかである必要があります。 |
+| ResultType | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
+| OperationName | ログ エントリに関連付けられた操作の名前 |
+| ID | 操作を実行したユーザーまたはアプリケーションの ID。 |
+| AadTenantId | 操作が送信された AAD テナント ID。 |
+| AmlServiceName | AML サービスの名前。 |
+
+### <a name="amlmodelsevent-table"></a>AmlModelsEvent テーブル
+
+| プロパティ | 説明 |
+|:--- |:--- |
+| Type | ログ イベントの名前、AmlModelsEvent |
+| TimeGenerated | ログ エントリが生成された時刻 (UTC) |
+| Level | イベントの重大度レベル。 Informational、Warning、Error、Critical のいずれかである必要があります。 |
+| ResultType | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
+| OperationName | ログ エントリに関連付けられた操作の名前 |
+| ID | 操作を実行したユーザーまたはアプリケーションの ID。 |
+| AadTenantId | 操作が送信された AAD テナント ID。 |
+| ResultSignature | イベントの HTTP 状態コード。 一般的な値は、200、201、202 などです。 |
+| AmlModelName | AML モデルの名前。 |
+
+### <a name="amlpipelineevent-table"></a>AmlPipelineEvent テーブル
+
+| プロパティ | 説明 |
+|:--- |:--- |
+| Type | ログ イベントの名前、AmlPipelineEvent |
+| TimeGenerated | ログ エントリが生成された時刻 (UTC) |
+| Level | イベントの重大度レベル。 Informational、Warning、Error、Critical のいずれかである必要があります。 |
+| ResultType | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
+| AmlWorkspaceId | AML ワークスペースの GUID と一意の ID。 |
+| AmlWorkspaceId | AML ワークスペースの名前。 |
+| OperationName | ログ エントリに関連付けられた操作の名前 |
+| ID | 操作を実行したユーザーまたはアプリケーションの ID。 |
+| AadTenantId | 操作が送信された AAD テナント ID。 |
+| AmlModuleId | モジュールの GUID と一意の ID。|
+| AmlModelName | AML モデルの名前。 |
+| AmlPipelineId | AML パイプラインの ID。 |
+| AmlParentPipelineId | 親 AML パイプラインの ID (複製の場合)。 |
+| AmlPipelineDraftId | AML パイプライン ドラフトの ID。 |
+| AmlPipelineDraftName | AML パイプライン ドラフトの名前。 |
+| AmlPipelineEndpointId | AML パイプライン エンドポイントの ID。 |
+| AmlPipelineEndpointName | AML パイプライン エンドポイントの名前。 |
+
+
+### <a name="amlrunevent-table"></a>AmlRunEvent テーブル
+
+| プロパティ | 説明 |
+|:--- |:--- |
+| Type | ログ イベントの名前、AmlRunEvent |
+| TimeGenerated | ログ エントリが生成された時刻 (UTC) |
+| Level | イベントの重大度レベル。 Informational、Warning、Error、Critical のいずれかである必要があります。 |
+| ResultType | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
+| OperationName | ログ エントリに関連付けられた操作の名前 |
+| AmlWorkspaceId | AML ワークスペースの GUID と一意の ID。 |
+| ID | 操作を実行したユーザーまたはアプリケーションの ID。 |
+| AadTenantId | 操作が送信された AAD テナント ID。 |
+| RunId | 実行の一意の ID。 |
+
+### <a name="amlenvironmentevent--table"></a>AmlEnvironmentEvent テーブル
+
+| プロパティ | 説明 |
+|:--- |:--- |
+| Type | ログ イベントの名前、AmlEnvironmentEvent |
+| TimeGenerated | ログ エントリが生成された時刻 (UTC) |
+| Level | イベントの重大度レベル。 Informational、Warning、Error、Critical のいずれかである必要があります。 |
+| OperationName | ログ エントリに関連付けられた操作の名前 |
+| ID | 操作を実行したユーザーまたはアプリケーションの ID。 |
+| AadTenantId | 操作が送信された AAD テナント ID。 |
+| AmlEnvironmentName | AML 環境構成の名前。 |
+| AmlEnvironmentVersion | AML 環境構成バージョンの名前。 |
 
 
 ## <a name="see-also"></a>関連項目

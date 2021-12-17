@@ -1,55 +1,51 @@
 ---
 title: マネージド ID
 description: Media Services を Azure マネージド ID と共に使用することができます。
-keywords: ''
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 1/29/2020
+ms.date: 05/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 0bbfb54d6ba7483e96633bdf05bb580e5517d216
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 02f832c7fc25003950d6a112d951c07d1332e08a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277744"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454370"
 ---
 # <a name="managed-identities"></a>マネージド ID
 
 異なるサービス間でやり取りされる通信のセキュリティを確保するシークレットと資格情報の管理は、開発者に共通の課題です。 Azure のマネージド ID を使用すれば、開発者が資格情報を管理する必要がなくなります。Azure リソースの ID は Azure AD から提供され、その ID を使用して Azure Active Directory (Azure AD) トークンが取得されます。
 
-現在、Media Services でマネージド ID を使用できるシナリオは 2 つあります。
+## <a name="media-services-managed-identity-scenarios"></a>Media Services のマネージド ID のシナリオ
 
-- Media Services アカウントのマネージド ID を使用してストレージ アカウントにアクセスする。
+Media Services でマネージド ID を使用できるシナリオは 3 つあります。
 
-- Media Services アカウントのマネージド ID を使用して Key Vault にアクセスし、顧客キーにアクセスする。
+- [Key Vault に Media Services アカウントのアクセス許可を付与し、カスタマー マネージド キーを有効にする](security-encrypt-data-managed-identity-cli-tutorial.md)
+- [Media Services アカウントにストレージ アカウントへのアクセス許可を付与して、Media Services が Azure Storage Network ACL をバイパスできるようにする](security-access-storage-managed-identity-cli-tutorial.md)
+- 他のサービス (VM や [Azure Functions](security-function-app-managed-identity-cli-tutorial.md) など) による Media Services へのアクセスを許可する
 
-次の 2 つのセクションでは、2 つのシナリオの手順について説明します。
+最初の 2 つのシナリオでは、マネージド ID を使用して、他のサービスへの "*Media Services アカウント*" のアクセス許可を付与します。  3 番目のシナリオでは、Media Services へのアクセスに使用されるマネージド ID が "*サービス*" に含まれています。
 
-## <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>Media Services アカウントのマネージド ID を使用してストレージ アカウントにアクセスする
+:::image type="content" source="media/diagrams/managed-identities-scenario-comparison.svg" alt-text="マネージド ID シナリオの比較":::
 
-1. マネージド ID が割り当てられた Media Services アカウントを作成します。
-1. 自分が所有しているストレージ アカウントに、マネージド ID プリンシパルのアクセス権を付与します。
-1. Media Services では、マネージド ID を使用して、ユーザーに代わってストレージ アカウントにアクセスできるようになります。
+> [!NOTE]
+> これらのシナリオは組み合わせることができます。 Media Services アカウント (たとえば、カスタマー マネージド キーにアクセスするためなど) と、Azure Functions リソースの両方に対してマネージド ID を作成して、Media Services アカウントにアクセスできます。
 
-## <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>Media Services アカウントのマネージド ID を使用して Key Vault にアクセスし、顧客キーにアクセスする
+## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
 
-1. マネージド ID が割り当てられた Media Services アカウントを作成します。
-1. 自分が所有している Key Vault に、マネージド ID プリンシパルのアクセス権を付与します。
-1. 顧客キー ベースのアカウントの暗号化を使用するように Media Services アカウントを構成します。
-1. Media Services は、マネージド ID を使用して、ユーザーに代わって Key Vault にアクセスします。
+これらのチュートリアルを試すと、Media Services でマネージド ID を使用する方法を実際に体験することができます。
 
-カスタマー マネージド キーと Key Vault の詳細については、「[Media Services での Bring Your Own Key (カスタマー マネージド キー)](concept-use-customer-managed-keys-byok.md)」を参照してください。
+- [CLI: Key Vault のキーを使用して Media Services アカウントにデータを暗号化する](security-encrypt-data-managed-identity-cli-tutorial.md)
+- [CLI: 不明な IP アドレスからの要求をブロックするように構成されているストレージ アカウントへの Media Services のアクセスを許可する](security-access-storage-managed-identity-cli-tutorial.md)
+- [CLI: 関数アプリに Media Services アカウントへのアクセス権を付与する](security-function-app-managed-identity-cli-tutorial.md)
+- [PORTAL: Azure portal を使用して Media Services でカスタマー マネージド キーまたは BYOK を使用する](security-customer-managed-keys-portal-tutorial.md)
+- [POSTMAN/REST: Media Services REST API でカスタマー マネージド キーまたは BYOK を使用する](security-customer-managed-keys-rest-postman-tutorial.md)
 
-## <a name="tutorials"></a>チュートリアル
-
-これらのチュートリアルには、前述の両方のシナリオが含まれます。
-
-- [Azure portal を使用して Media Services でカスタマー マネージド キーまたは BYOK を使用する](security-customer-managed-keys-portal-tutorial.md)
-- [Media Services REST API でカスタマー マネージド キーまたは BYOK を使用する](security-customer-managed-keys-rest-postman-tutorial.md)。
-
-## <a name="next-steps"></a>次のステップ
+## <a name="further-reading"></a>関連項目
 
 マネージド ID がお客様とお客様の Azure アプリケーションにどのように役立つかの詳細については、[Azure AD のマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
+
+Azure Functions の詳細については、[Azure Functions](../../azure-functions/functions-overview.md) に関するページを参照してください。

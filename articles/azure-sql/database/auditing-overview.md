@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.topic: conceptual
-author: DavidTrigano
-ms.author: datrigan
+author: Rupp29
+ms.author: arupp
 ms.reviewer: vanto
-ms.date: 03/17/2021
+ms.date: 08/25/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 512f43c102aa40707170021ec1b1fd6372437d64
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577700"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793545"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 - **分析** 。 疑わしいイベント、異常な活動、および傾向を発見できます。
 
 > [!IMPORTANT]
-> Azure SQL Database と Azure Synapse の監査は、可用性とパフォーマンスのために最適化されています。 アクティビティ量が非常に多いか、またはネットワークの負荷が高いときに、Azure SQL Database と Azure Synapse では、操作の続行を可能にするために、一部の監査イベントが記録されない場合があります。
+> Azure SQL Database、Azure Synapse、Azure SQL Managed Instance の監査は、可用性とパフォーマンスのために最適化されています。 アクティビティ量が非常に多いか、またはネットワークの負荷が高いときに、Azure SQL Database、Azure Synapse、Azure SQL Managed Instance では、操作の続行を可能にするために、一部の監査イベントが記録されない場合があります。
 
 ### <a name="auditing-limitations"></a>監査の制限事項
 
@@ -77,13 +77,14 @@ SQL Database 監査を使用して、以下を行うことができます。
 
 - 監査ログは Azure サブスクリプションの Azure Blob Storage 内にある **追加 BLOB** に書き込まれます
 - 監査ログは .xel 形式であり、[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) を使用して開くことができます。
-- サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成するには、[Azure Storage で提供される手順](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)に従います。 不変 BLOB ストレージを構成するときに、 **[さらに追加を許可する]** を選択していることを確認します。
+- サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成するには、[Azure Storage で提供される手順](../../storage/blobs/immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)に従います。 不変 BLOB ストレージを構成するときに、 **[さらに追加を許可する]** を選択していることを確認します。
 - VNet またはファイアウォールの背後にある Azure Storage アカウントに監査ログを書き込むことができます。 具体的な手順については、[VNet とファイアウォールの背後にあるストレージ アカウントに監査を書き込む](audit-write-storage-account-behind-vnet-firewall.md)方法に関する記事を参照してください。
 - ログの形式、ストレージ フォルダーの階層、および命名規則の詳細については、[BLOB 監査ログ形式のリファレンス](./audit-log-format.md)に関するドキュメントを参照してください。
 - [読み取り専用レプリカ](read-scale-out.md)での監査は自動的に有効になります。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](audit-log-format.md)」を参照してください。
-- Azure AD Authentication を使用している場合は、失敗したログインのレコードは SQL 監査ログに表示 "*されません*"。 失敗したログインの監査レコードを表示するには、これらのイベントの詳細をログに記録している [Azure Active Directory ポータル](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)にアクセスする必要があります。
+- Azure AD Authentication を使用している場合は、失敗したログインのレコードは SQL 監査ログに表示 "*されません*"。 失敗したログインの監査レコードを表示するには、これらのイベントの詳細をログに記録している [Azure Active Directory ポータル](../../active-directory/reports-monitoring/concept-sign-ins.md)にアクセスする必要があります。
 - ログインはゲートウェイによって、データベースが置かれている特定のインスタンスにルーティングされます。  AAD ログインの場合、そのユーザーを使用し、要求されたデータベースへのログインを試行する前に、資格情報が検証されます。  不合格になった場合、要求されたデータベースがアクセスされることはなく、監査は行われません。  SQL ログインの場合、要求されたデータで資格情報が検証されます。そのため、この場合、監査できます。  ログイン成功 (明らかにデータベースにアクセスできる) は、いずれの場合も監査されます。
 - 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](threat-detection-overview.md)に関するページを参照してください。
+- 監査が有効になっているデータベースが別の Azure SQL 論理サーバーにコピーされた後、監査が失敗したことを通知する電子メールを受信する場合があります。 これは既知の問題であり、監査は新しくコピーされたデータベースで想定どおりに機能するはずです。
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>サーバーの監査を設定する
 
@@ -100,7 +101,7 @@ Azure SQL Database および Azure Synapse の監査では、監査レコード�
 
   > [!NOTE]
   > - 一時停止している専用 SQL プールで監査を有効にすることはできません。 監査を有効にするには、専用 SQL プールの一時停止を解除します。 専用 SQL プールの詳細については、[こちら](../..//synapse-analytics/sql/best-practices-dedicated-sql-pool.md)を参照してください。
-  > - Azure portal または PowerShell コマンドレットを使用して、監査が Log Analytics ワークスペースまたはハブの送信先に対して構成されている場合、[診断設定](../../azure-monitor/essentials/diagnostic-settings.md)は "SQLSecurityAuditEvents" カテゴリが有効の状態で作成されます。
+  > - Azure portal または PowerShell コマンドレットを使用して、監査が Log Analytics ワークスペースまたはイベント ハブの送信先に対して構成されている場合、[診断設定](../../azure-monitor/essentials/diagnostic-settings.md)は "SQLSecurityAuditEvents" カテゴリが有効の状態で作成されます。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. **[SQL データベース]** ウィンドウまたは **[SQL サーバー]** ウィンドウの [セキュリティ] 見出しの下にある **[監査]** に移動します。
@@ -118,10 +119,7 @@ Azure SQL Database および Azure Synapse の監査では、監査レコード�
 
 Azure SQL Server に対する Microsoft サポートの操作の監査では、サポート リクエスト時に Microsoft サポートのエンジニアがサーバーにアクセスする必要がある場合に、彼らの操作を監査することができます。 監査に伴い、この機能を使用することで、従業員の透明性が増し、異常検出、トレンドの視覚化、データ損失防止が可能になります。
 
-Microsoft サポートの操作の監査を有効にするには、 **[Azure SQL Server]** ウィンドウの [セキュリティ] 見出しの **[監査]** に移動して、 **[Microsoft サポート操作の監査]** を **[オン]** に切り替えます。
-
-  > [!IMPORTANT]
-  > Microsoft サポートの操作の監査では、ストレージ アカウントの保存先はサポートされていません。 この機能を有効にするには、Log Analytics ワークスペースまたは Event Hub の保存先を構成する必要があります。
+Microsoft サポートの操作の監査を有効にするには、Azure の **[SQL Server]** ペインの [セキュリティ] 見出しの **[監査]** に移動して、 **[Enable Auditing of Microsoft support operations]\(Microsoft サポートの操作の監査を有効にする\)** を **[オン]** に切り替えます。
 
 ![Microsoft サポートの操作のスクリーンショット](./media/auditing-overview/support-operations.png)
 
@@ -131,6 +129,10 @@ Log Analytics ワークスペースの Microsoft サポート業務の監査ロ�
 AzureDiagnostics
 | where Category == "DevOpsOperationsAudit"
 ```
+
+この監査ログ用に別の保存先を選択することも、サーバーに対して同じ監査構成を使用することもできます。
+
+:::image type="content" source="media/auditing-overview/auditing-support-operation-log-destination.png" alt-text="サポート操作に対する監査の監査構成のスクリーンショット":::
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>ストレージ保存先への監査
 
@@ -157,7 +159,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
 
 ## <a name="analyze-audit-logs-and-reports"></a><a id="subheading-3"></a>監査ログとレポートを分析する
 
-監査ログを Azure Monitor ログに書き込む場合:
+監査ログを Log Analytics に書き込む場合:
 
 - [Azure Portal](https://portal.azure.com) を使用します。 関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** を選択します。
 
@@ -270,9 +272,9 @@ Geo レプリケーション データベースでは、プライマリ デー�
 **REST API**:
 
 - [データベース監査ポリシーの作成または更新](/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [サーバー監査ポリシーの作成または更新](/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [サーバー監査ポリシーの作成または更新](/rest/api/sql/2017-03-01-preview/server-auditing-settings/create-or-update)
 - [データベース監査ポリシーの取得](/rest/api/sql/database%20auditing%20settings/get)
-- [サーバー監査ポリシーの取得](/rest/api/sql/server%20auditing%20settings/get)
+- [サーバー監査ポリシーの取得](/rest/api/sql/2017-03-01-preview/server-auditing-settings/get)
 
 WHERE 句のサポートによってフィルタリングを強化した拡張ポリシー:
 
@@ -290,9 +292,15 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 
 以下の例で確認できるように、[Azure Resource Manager](../../azure-resource-manager/management/overview.md) テンプレートを使用して Azure SQL Database の監査を管理できます。
 
-- [Azure BLOB ストレージ アカウントに監査ログを書き込むように監査機能を有効にした Azure SQL Database をデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
-- [Log Analytics に監査ログを書き込むように監査機能を有効にした Azure SQL Database をデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
-- [Event Hubs に監査ログを書き込むように監査機能を有効にした Azure SQL Database をデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+- [Azure BLOB ストレージ アカウントに監査ログを書き込むように監査機能を有効にした Azure SQL Database をデプロイする](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-blob-storage/)
+- [Log Analytics に監査ログを書き込むように監査機能を有効にした Azure SQL Database をデプロイする](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-oms/)
+- [Event Hubs に監査ログを書き込むように監査機能を有効にした Azure SQL Database をデプロイする](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-eventhub/)
 
 > [!NOTE]
 > リンクされたサンプルは、外部の公開リポジトリにあり、保証なしに "手を加えず" に提供され、Microsoft サポート プログラム/サービスのサポート対象ではなありません。
+
+## <a name="see-also"></a>関連項目
+
+- Channel 9 の Data Exposed エピソード「[Azure SQL 監査の新機能](https://channel9.msdn.com/Shows/Data-Exposed/Whats-New-in-Azure-SQL-Auditing)」。
+- [SQL Managed Instance の監査](../managed-instance/auditing-configure.md)
+- [SQL Server の監査](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)

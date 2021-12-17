@@ -4,14 +4,15 @@ description: データベース ワークロードの宛先として Azure SQL M
 author: chugugrace
 ms.author: chugu
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 9/12/2019
-ms.openlocfilehash: 3d2bc60f8ba7120f8d962500c06be50e905c11a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/22/2021
+ms.openlocfilehash: 4696a5405be18ca5ef0f95df9eea20756c02cacf
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373591"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852201"
 ---
 # <a name="ssis-migration-with-azure-sql-managed-instance-as-the-database-workload-destination"></a>データベース ワークロードの宛先として Azure SQL Managed Instance を使用した SSIS の移行
 

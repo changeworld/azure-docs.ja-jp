@@ -1,18 +1,18 @@
 ---
 title: Azure Bastion で VM と NSG を使用する
-description: Azure Bastion では、ネットワーク セキュリティ グループを使用できます。 この構成に必要なサブネットについて説明します。
+description: Azure Bastion でのネットワーク セキュリティ グループの使用について説明します。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 06/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: b6a0dee4c3fef1be4f4b9f910b4c6256b4924a2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adccd5873030adcc5c286ed8d23326796c27ab9c
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101700220"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080980"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG アクセスと Azure Bastion を使用する
 
@@ -48,22 +48,22 @@ Azure Bastion は、***AzureBastionSubnet*** に対して明示的にデプロ�
    * **Azure Load Balancer からのイングレス トラフィック:** 正常性プローブの場合は、**AzureLoadBalancer** サービス タグからのポート 443 受信を有効にします。 これにより、Azure Load Balancer は接続を検出できます
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Azure Bastion 接続のインバウンド セキュリティ規則のスクリーンショット。":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Azure Bastion 接続のインバウンド セキュリティ規則のスクリーンショット。" lightbox="./media/bastion-nsg/inbound.png":::
 
 * **エグレス トラフィック:**
 
-   * **ターゲット VM へのエグレス トラフィック:** Azure Bastion は、プライベート IP 経由でターゲット VM にリーチします。 NSG では、他のターゲット VM サブネットへのエグレス トラフィックをポート 3389 と 22 に許可する必要があります。
+   * **ターゲット VM へのエグレス トラフィック:** Azure Bastion は、プライベート IP 経由でターゲット VM にリーチします。 NSG では、他のターゲット VM サブネットへのエグレス トラフィックをポート 3389 と 22 に許可する必要があります。 Standard SKU の一部としてカスタム ポート機能を使用している場合、NSG では代わりに、他のターゲット VM サブネットへのエグレス トラフィックを、ターゲット VM で開いたカスタム値に許可する必要があります。
    * **Azure Bastion データ プレーンへのエグレス トラフィック:** Azure Bastion の基盤コンポーネント間でのデータ プレーン通信については、ポート 8080, 5701 で、**VirtualNetwork** サービス タグから **VirtualNetwork** サービス タグへの送信を有効にします。 これにより、Azure Bastion のコンポーネントが相互に通信できるようになります。
    * **Azure の他のパブリックエンド ポイントへのエグレス トラフィック:** Azure Bastion から Azure 内のさまざまなパブリック エンドポイントに接続できる必要があります (たとえば、診断ログや測定ログを格納するため)。 このため、Azure Bastion には **AzureCloud** サービス タグに対する 443 への送信が必要です。
    * **インターネットへのエグレス トラフィック:** Azure Bastion は、セッションと証明書の検証のためにインターネットと通信できる必要があります。 そのため、ポート 80 で **インターネット** への送信を有効にすることをお勧めします。
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Azure Bastion 接続のアウトバウンド セキュリティ規則のスクリーンショット。":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Azure Bastion 接続のアウトバウンド セキュリティ規則のスクリーンショット。" lightbox="./media/bastion-nsg/outbound.png":::
 
 ### <a name="target-vm-subnet"></a>ターゲット VM サブネット
 これは、RDP/SSH で接続するターゲット仮想マシンを含むサブネットです。
 
-   * **Azure Bastion からのイグレス トラフィック:** Azure Bastion は、プライベート IP 経由でターゲット VM にリーチします。 プライベート IP 経由のターゲット VM 側で RDP/SSH ポート (それぞれポート 3389/22) が開かれている必要があります。 ベスト プラクティスとして、この規則に Azure Bastion サブネットの IP アドレス範囲を追加して、ターゲット VM サブネット内のターゲット VM で Bastion によってのみこれらのポートが開かれるよにすることができます。
+   * **Azure Bastion からのイグレス トラフィック:** Azure Bastion は、プライベート IP 経由でターゲット VM にリーチします。 RDP または SSH ポート (それぞれポート 3389 または 22。Standard SKU の一部としてカスタム ポート機能を使用している場合は、カスタム ポート値) を、ターゲット VM 側でプライベート IP 経由で開く必要があります。 ベスト プラクティスとして、この規則に Azure Bastion サブネットの IP アドレス範囲を追加して、ターゲット VM サブネット内のターゲット VM で Bastion によってのみこれらのポートが開かれるよにすることができます。
 
 
 ## <a name="next-steps"></a>次のステップ

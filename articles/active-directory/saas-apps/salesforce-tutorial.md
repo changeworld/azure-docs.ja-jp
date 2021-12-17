@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 0f800d2d42d0d8815021f1582b04750d87aa5abc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5617c91bedcb0b399ffe1627e76692007e7ca30
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651437"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132299697"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Salesforce の統合
 
@@ -177,6 +177,14 @@ Salesforce に対して Azure AD SSO を構成してテストするには、次�
 
     ![シングル サインオンの構成 (ユーザー プロビジョニングは有効です)](./media/salesforce-tutorial/salesforcexml.png)
 
+    > [!NOTE]
+    > SAML JIT を構成した場合は、「 **[Azure AD SSO の構成](#configure-azure-ad-sso)** 」セクションで追加の手順を行う必要があります。 Salesforce アプリケーションでは特定の SAML アサーションが使用されるため、SAML トークン属性の構成に特定の属性が必要です。 次のスクリーンショットには、Salesforce で必要な属性の一覧が示されています。
+    
+    ![JIT に必須の属性のウィンドウを示すスクリーンショット。](./media/salesforce-tutorial/just-in-time-attributes-required.png)
+    
+    SAML JIT でユーザーをプロビジョニングする場合に問題が引き続き発生する場合は、「[Just-In-Time プロビジョニング要件と SAML アサーション フィールド](https://help.salesforce.com/s/articleView?id=sf.sso_jit_requirements.htm&type=5)」を参照してください。 一般に、JIT が失敗すると、次のようなエラーが表示される場合があります。`We can't log you in because of an issue with single sign-on. Contact your Salesforce admin for help.`
+
+
 1. Salesforce の左側のナビゲーション ウィンドウで、 **[Company Settings]\(会社の設定\)** をクリックして関連するセクションを展開し、 **[My Domain]\(マイ ドメイン\)** をクリックします。
 
     ![シングル サインオンの構成 (マイ ドメイン)](./media/salesforce-tutorial/sf-my-domain.png)
@@ -204,7 +212,7 @@ Salesforce に対して Azure AD SSO を構成してテストするには、次�
 
 * Salesforce のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Salesforce] タイルをクリックすると、SSO を設定した Salesforce に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリ ポータルで [Salesforce] タイルをクリックすると、SSO を設定した Salesforce に自動的にサインインします。 マイ アプリ ポータルの詳細については、[マイ アプリ ポータルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="test-sso-for-salesforce-mobile"></a>Salesforce (モバイル) の SSO をテストする
 
@@ -230,4 +238,4 @@ Salesforce に対して Azure AD SSO を構成してテストするには、次�
 
 ## <a name="next-steps"></a>次の手順
 
-Salesforce を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Salesforce を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

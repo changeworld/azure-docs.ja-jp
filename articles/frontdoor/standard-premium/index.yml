@@ -10,12 +10,12 @@ metadata:
   author: duongau
   ms.author: duau
   ms.date: 02/18/2020
-  ms.openlocfilehash: 0fe35a2e83bb6737b1ff273390e5fb0c4db7bc6d
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.openlocfilehash: 35263f4ae7b49d5d97dbe9713208ab9267c1a8be
+  ms.sourcegitcommit: 11ca7ba5a017429c22a6b0bc02acb70b83a2984a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101740326"
+  ms.lasthandoff: 11/19/2021
+  ms.locfileid: "132814174"
 landingContent:
 - title: Azure Front Door Standard/Premium (プレビュー) について
   linkLists:
@@ -54,7 +54,7 @@ landingContent:
     - text: 出発地
       url: concept-origin.md
     - text: 正常性プローブ
-      url: concept-health-probes.md
+      url: /azure/frontdoor/front-door-health-probes
   - linkListType: how-to-guide
     links:
     - text: 配信元グループを構成する
@@ -82,7 +82,7 @@ landingContent:
     - text: Azure Front Door Standard/Premium の WAF
       url: ../../web-application-firewall/afds/afds-overview.md
     - text: DDoS 保護
-      url: concept-ddos.md
+      url: /azure/frontdoor/front-door-ddos
   - linkListType: how-to-guide
     links:
     - text: Private Link を有効にする
@@ -117,8 +117,6 @@ landingContent:
     links:
     - text: ルーティングに関する一般的な問題
       url: troubleshoot-route-issues.md
-    - text: 許可された証明機関
-      url: troubleshoot-allowed-certificate-authority.md
 - title: Azure Front Door について
   linkLists:
   - linkListType: overview

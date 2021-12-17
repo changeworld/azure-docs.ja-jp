@@ -5,16 +5,16 @@ services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: dnethi
-ms.author: mikeray
+ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 12/09/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 1c7ccec6228a6dcfb457bda8f6ecd384775d4b27
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 01d8aa850c5f816026561ca64541724bd8c3b832
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669544"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738584"
 ---
 # <a name="update-service-principal-credentials"></a>サービス プリンシパルの資格情報を更新
 
@@ -22,7 +22,6 @@ ms.locfileid: "104669544"
 
 たとえば、サービス プリンシパルのテナント ID、クライアント ID、およびクライアント シークレットの特定の値セットを使用してデータ コントローラーをデプロイした後、これらの値の 1 つまたは複数を変更する場合は、データ コントローラーのシークレットを更新する必要があります。  テナント ID、クライアント ID、またはクライアント シークレットを更新する手順を次に示します。 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="background"></a>バックグラウンド
 

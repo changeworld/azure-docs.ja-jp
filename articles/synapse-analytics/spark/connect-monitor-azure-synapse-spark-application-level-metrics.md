@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Synapse Spark アプリケーション レベルのメトリックの接続と監視
+title: API を使用して Apache Spark アプリケーションのメトリックを収集する
 description: チュートリアル - Synapse Prometheus コネクタを使用して、既存のオンプレミス Prometheus サーバーを Azure Synapse ワークスペースと統合し、ほぼリアルタイムの Azure Spark アプリケーション メトリックを取得する方法について説明します。
 services: synapse-analytics
 author: jejiang
@@ -9,27 +9,27 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: d22975199eedae353f2dc12588671ae4b54c85ab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b2810d97651c6819996c79ce554fa2feee2a6c65
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109320"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539643"
 ---
-# <a name="tutorial-connect-and-monitor-azure-synapse-spark-application-level-metrics"></a>チュートリアル: Azure Synapse Spark アプリケーション レベルのメトリックの接続と監視
+#  <a name="collect-apache-spark-applications-metrics-using-apis"></a>API を使用して Apache Spark アプリケーションのメトリックを収集する
 
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、Synapse Prometheus コネクタを使用して、既存のオンプレミス Prometheus サーバーを Azure Synapse ワークスペースと統合し、ほぼリアルタイムの Azure Spark アプリケーション メトリックを取得する方法について説明します。 
+このチュートリアルでは、Synapse Prometheus コネクタを使用して、既存のオンプレミス Prometheus サーバーを Azure Synapse ワークスペースと統合し、ほぼリアルタイムの Apache Spark アプリケーション メトリックを取得する方法について説明します。 
 
-このチュートリアルでは、Azure Synapse REST メトリック API についても説明します。 独自の監視および診断ツールキットを構築したり、監視システムと統合したりするために、REST API を使用して Spark アプリケーション メトリック データを取得することができます。
+このチュートリアルでは、Azure Synapse REST メトリック API についても説明します。 独自の監視および診断ツールキットを構築したり、お使いの監視システムと統合するために、REST API を使用して Apache Spark アプリケーション メトリック データを取得することができます。
 
 ## <a name="use-azure-synapse-prometheus-connector-for-your-on-premises-prometheus-servers"></a>オンプレミスの Prometheus サーバーで Azure Synapse Prometheus コネクタを使用する
 
 [Azure Synapse Prometheus コネクタ](https://github.com/microsoft/azure-synapse-spark-metrics)はオープンソースのプロジェクトです。 Synapse Prometheus コネクタでは、以下を可能にするために、ファイルベースのサービス探索方法を使用します。
  - AAD サービス プリンシパルを介して Synapse ワークスペースに対する認証を行います。
  - ワークスペースの Apache Spark アプリケーションの一覧を取得します。 
- - Prometheus のファイルベースの構成を使用して Spark アプリケーションのメトリックを取得します。 
+ - Prometheus のファイルベースの構成を使用して Apache Spark アプリケーションのメトリックを取得します。 
 
 ### <a name="1-prerequisite"></a>1.前提条件
 
@@ -176,27 +176,27 @@ curl -X GET -H 'Content-Type: application/x-www-form-urlencoded' \
 
 ### <a name="2-list-running-applications-in-the-azure-synapse-workspace"></a>2.Azure Synapse ワークスペースで実行中のアプリケーションを一覧表示する
 
-[監視 - Spark ジョブの一覧の取得](/rest/api/synapse/data-plane/monitoring/getsparkjoblist)に関するドキュメントに従って、Synapse ワークスペースの Spark アプリケーションの一覧を取得します。
+[監視 - Apache Spark ジョブ リストの取得](/rest/api/synapse/data-plane/monitoring/getsparkjoblist)に関するドキュメントに従って、Synapse ワークスペース用の Apache Spark アプリケーションの一覧を取得します。
 
 
-### <a name="3-collect-spark-application-metrics-with-the-prometheus-or-rest-apis"></a>3.Prometheus または REST API を使用して Spark アプリケーションのメトリックを収集する
+### <a name="3-collect-apache-spark-application-metrics-with-the-prometheus-or-rest-apis"></a>3. Prometheus または REST API を使用して Apache Spark アプリケーションのメトリックを収集する
 
 
-#### <a name="collect-spark-application-metrics-with-the-prometheus-api"></a>Prometheus API を使用して Spark アプリケーションのメトリックを収集する
+#### <a name="collect-apache-spark-application-metrics-with-the-prometheus-api"></a>Prometheus API を使用して Apache Spark アプリケーションのメトリックを収集する
 
-Prometheus API によって、指定された Spark アプリケーションの最新のメトリックを取得します
+Prometheus API によって、指定した Apache Spark アプリケーションの最新のメトリックを取得します
 
 ```
 GET https://{endpoint}/livyApi/versions/{livyApiVersion}/sparkpools/{sparkPoolName}/sessions/{sessionId}/applications/{sparkApplicationId}/metrics/executors/prometheus?format=html
 ```
 
-| パラメーター          | 必須 | 説明                                                                               |
-| ------------------ | -------- | ----------------------------------------------------------------------------------------- |
-| endpoint           | True     | ワークスペース開発エンドポイント (例: https://myworkspace.dev.azuresynapse.net )。 |
-| livyApiVersion     | True     | 要求の有効な api-version。 現時点では 2019-11-01-preview                    |
-| sparkPoolName      | True     | Spark プールの名前。                                                                   |
-| sessionID          | True     | セッションの識別子。                                                               |
-| sparkApplicationId | True     | Spark アプリケーション ID                                                                      |
+| パラメーター          | 必須 | 説明                                                                                 |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------|
+| endpoint           | True     | ワークスペース開発エンドポイント (例: `https://myworkspace.dev.azuresynapse.net.`) |
+| livyApiVersion     | True     | 要求の有効な api-version。 現時点では 2019-11-01-preview                      |
+| sparkPoolName      | True     | Spark プールの名前。                                                                     |
+| sessionID          | True     | セッションの識別子。                                                                 |
+| sparkApplicationId | True     | Spark アプリケーション ID                                                                        |
 
 サンプルの要求: 
 
@@ -221,19 +221,19 @@ metrics_executor_completedTasks_total{application_id="application_1605509647837_
 
 ```
 
-#### <a name="collect-spark-application-metrics-with-the-rest-api"></a>REST API を使用して Spark アプリケーションのメトリックを収集する
+#### <a name="collect-apache-spark-application-metrics-with-the-rest-api"></a>REST API を使用して Apache Spark アプリケーションのメトリックを収集する
 
 ```
 GET https://{endpoint}/livyApi/versions/{livyApiVersion}/sparkpools/{sparkPoolName}/sessions/{sessionId}/applications/{sparkApplicationId}/executors
 ```
 
-| パラメーター          | 必須 | 説明                                                                               |
-| ------------------ | -------- | ----------------------------------------------------------------------------------------- |
-| endpoint           | True     | ワークスペース開発エンドポイント (例: https://myworkspace.dev.azuresynapse.net )。 |
-| livyApiVersion     | True     | 要求の有効な api-version。 現時点では 2019-11-01-preview                    |
-| sparkPoolName      | True     | Spark プールの名前。                                                                   |
-| sessionID          | True     | セッションの識別子。                                                               |
-| sparkApplicationId | True     | Spark アプリケーション ID                                                                      |
+| パラメーター          | 必須 | 説明                                                                                 |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------|
+| endpoint           | True     | ワークスペース開発エンドポイント (例: `https://myworkspace.dev.azuresynapse.net.`) |
+| livyApiVersion     | True     | 要求の有効な api-version。 現時点では 2019-11-01-preview                      |
+| sparkPoolName      | True     | Spark プールの名前。                                                                     |
+| sessionID          | True     | セッションの識別子。                                                                 |
+| sparkApplicationId | True     | Spark アプリケーション ID                                                                        |
 
 要求のサンプル
 
@@ -285,4 +285,4 @@ GET https://myworkspace.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview
 
 ### <a name="4-build-your-own-diagnosis-and-monitoring-tools"></a>4.独自の診断および監視ツールを構築する
 
-Prometheus API と REST API は、実行中の Spark アプリケーションに関する豊富なメトリック データを提供します。Prometheus API と REST API を使用して、アプリケーション関連のメトリック データを収集できます。 また、よりニーズに合った独自の診断および監視ツールを構築できます。
+Prometheus API と REST API は、実行中の Apache Spark アプリケーションに関する豊富なメトリック データを提供します。Prometheus API と REST API を使用して、アプリケーション関連のメトリック データを収集できます。 また、よりニーズに合った独自の診断および監視ツールを構築できます。

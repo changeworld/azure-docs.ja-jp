@@ -7,14 +7,16 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 729c988bcf64cab30cf7644c85a5749ff9c592b7
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87284916"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137004"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure 仮想マシンでのカスタム データと cloud-init
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット
 
 プロビジョニング時にスクリプトまたはその他のメタデータを Microsoft Azure 仮想マシンに挿入する必要がある場合があります。  他のクラウドでは、この概念は多くの場合、ユーザー データと呼ばれます。  Microsoft Azure には、カスタム データと呼ばれる同様の機能があります。 
 
@@ -82,7 +84,7 @@ Azure では、現在、次の 2 つのプロビジョニング エージェン�
 
 ## <a name="faq"></a>よく寄せられる質問
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>VM の作成後にカスタム データを更新できますか?
-単一の VM の場合、VM モデルのカスタム データは更新できませんが、VMSS の場合、[REST API](/rest/api/compute/virtualmachinescalesets/update) を使用して VMSS カスタム データを更新できます (PS または AZ CLI クライアントには適用されません)。 VMSS モデルのカスタム データを更新すると、次のようになります。
+単一の VM の場合、VM モデルのカスタム データは更新できませんが、VMSS の場合、[REST API](/rest/api/compute/virtualmachinescalesets/update)、[Az CLI](/cli/azure/vmss?view=azure-cli-latest#az_vmss_update)、または [Az PowerShell](/powershell/module/az.compute/update-azvmss?view=azps-6.6.0) を使用して VMSS カスタム データを更新できます。 VMSS モデルのカスタム データを更新すると、次のようになります。
 * VMSS の既存のインスタンスは、再イメージ化されるまで、更新されたカスタム データを取得しません。
 * VMSS のアップグレードされた既存のインスタンスは、更新されたカスタム データを取得しません。
 * 新しいインスタンスは、新しいカスタム データを受け取ります。
@@ -92,4 +94,4 @@ Azure では、現在、次の 2 つのプロビジョニング エージェン�
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>カスタム データは IMDS で使用できますか?
-いいえ、この機能は現在使用できません。
+カスタム データは IMDS では使用できません。 代わりに、IMDS を使用してユーザー データを使用することをお勧めします。 詳細については、[Azure Instance Metadata Service を介したユーザー データ](./linux/instance-metadata-service.md?tabs=linux#get-user-data)に関するセクションをご覧ください。

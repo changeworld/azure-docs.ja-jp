@@ -3,20 +3,20 @@ title: Azure CLI:単一データベースを作成する
 description: この Azure CLI サンプル スクリプトを使用して単一データベースを作成します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 00346accbccd67f542a8496ac097b0236c56a08c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 76f7d0314e382508c6290e80db4960addbc15c24
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773821"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688962"
 ---
 # <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>Azure CLI を使用して単一データベースを作成し、ファイアウォール規則を構成する
 

@@ -12,12 +12,12 @@ metadata:
   ms.date: 07/08/2020
   ms.custom: seo-azure-migrate
   keywords: azure migrate, azure migration, azure migrate assessment tool, azure migrate tool, azure migrate documentation, azure migration documentation
-  ms.openlocfilehash: 40a510aa30ad76f4d6007bad337415c133d667e0
-  ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+  ms.openlocfilehash: a7f9dfd7d40bc8ae50836020dc115e0d2de88994
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/21/2020
-  ms.locfileid: "92318156"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131468539"
 landingContent:
 - title: Azure Migrate について
   linkLists:
@@ -96,7 +96,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: サービス機能のリクエスト
-      url: https://feedback.azure.com/forums/907195-azure-migrate
+      url: https://feedback.azure.com/d365community/forum/cd45915f-0f25-ec11-b6e6-000d3a4f09d0
     - text: フォーラムでの質問
       url: /answers/topics/azure-migrate.html
     - text: Azure Tech Community

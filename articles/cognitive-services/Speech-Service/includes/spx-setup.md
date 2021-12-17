@@ -1,16 +1,17 @@
 ---
-author: v-demjoh
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/15/2020
-ms.author: v-demjoh
-ms.openlocfilehash: ec34ba7b2d3bc026376aeb1cb91847d8eac1cac5
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 04/28/2021
+ms.author: eric-urban
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 197c186f87eacfb19412c12bc171b46fd59b0ef2
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073699"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501976"
 ---
 ## <a name="download-and-install"></a>ダウンロードしてインストールする
 
@@ -28,13 +29,16 @@ Windows に Speech CLI をインストールするには、次の手順に従い
 「`spx`」と入力して、Speech CLI のヘルプを表示します。
 
 > [!NOTE]
-> NuGet の代わりに、Speech CLI の [zip アーカイブ](https://aka.ms/speech/spx-zips.zip)をダウンロードして抽出し、`spx-zips` ディレクトリからお使いのプラットフォームを検索して抽出し、`spx` パスをシステムの **PATH** 変数に追加することができます。
-
+> NuGet を使用せずに、Speech CLI for Windows を [ZIP ファイル](https://aka.ms/speech/spx-windows)としてダウンロードして展開することもできます。
 
 ### <a name="font-limitations"></a>フォントの制限事項
 
 Windows の Speech CLI では、ローカル コンピューター上のコマンド プロンプトで使用できるフォントのみを表示できます。
+<<<<<<< HEAD
 [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701)では、Speech CLI によって対話的に生成されるすべてのフォントがサポートされます。
+=======
+[Windows ターミナル](https://www.microsoft.com/p/windows-terminal/9n0dx20hk701)では、Speech CLI によって対話的に生成されるすべてのフォントがサポートされます。
+>>>>>>> repo_sync_working_branch
 
 ファイルに出力すると、メモ帳などのテキスト エディターや、Microsoft Edge などの Web ブラウザーでも、すべてのフォントを表示できます。
 
@@ -45,7 +49,7 @@ Speech CLI を使用する x64 アーキテクチャでは、次の Linux ディ
 * CentOS 7/8
 * Debian 9/10 
 * Red Hat Enterprise Linux (RHEL) 7/8
-* Ubuntu 16.04/18.04/20.04
+* Ubuntu 16.04 (9 月まで)、Ubuntu 18.04/20.04
 
 > [!NOTE]
 > 追加のアーキテクチャが Speech SDK (Speech CLI ではない) によってサポートされています。 詳細については、「[Speech SDK について](../speech-sdk.md)」を参照してください。
@@ -57,13 +61,23 @@ Linux の x64 CPU で Speech CLI をインストールするには、次の手�
 
     `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI`
 
+3. RHEL または CentOS Linux で、[Linux 用の OpenSSL を構成](../how-to-configure-openssl-linux.md)します。
+4. Ubunutu 20.04 Linux に、[GStreamer をインストール](../how-to-use-codec-compressed-audio-input-streams.md)します。
+
 「`spx`」と入力して、Speech CLI のヘルプを表示します。
 
 > [!NOTE]
-> NuGet の代わりに、[zip アーカイブ](https://aka.ms/speech/spx-zips.zip)でバイナリをダウンロードし、`spx-netcore-30-linux-x64.zip` を新しい `~/spx` ディレクトリに抽出し、バイナリに `sudo chmod +r+x spx` を入力して、PATH システム変数に `~/spx` パスを追加することもできます。
+> NuGet を使用せずに、Linux バイナリを [ZIP ファイル](https://aka.ms/speech/spx-linux)としてダウンロードすることもできます。
+> `spx-netcore-30-linux-x64.zip` を新しい `~/spx` ディレクトリに抽出し、バイナリに対する「`sudo chmod +r+x spx`」を入力して、PATH システム変数に `~/spx` パスを追加します。
 
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker のインストール (Windows、Linux、macOS)](#tab/dockerinstall)
+
+> [!IMPORTANT]
+> Docker コンテナー内で Speech CLI を実行するときは、コンピューターのマイクを使用することはできません。 ただし、ローカルにマウントされたディレクトリ内のオーディオ ファイルを読み取って保存することができます。 
+
+> [!NOTE]
+> 次の例では、パブリック コンテナー イメージを Docker Hub からプルします。 匿名の pull request を行うのではなく、最初に Docker Hub アカウント (`docker login`) で認証を行うことをお勧めします。 パブリック コンテンツを使用するときの信頼性を向上させるには、プライベートの Azure Container Registry にイメージをインポートして管理します。 [パブリック イメージの操作に関する詳細を参照してください](../../../container-registry/buffer-gate-public-content.md)。
 
 Docker コンテナー内に Speech CLI をインストールするには、次の手順に従います。
 
@@ -126,9 +140,6 @@ Windows では、このコマンドを入力して、対話型のコマンド �
 ```console
 docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
-
-> [!WARNING]
-> Docker コンテナー内で Speech CLI を実行するときは、コンピューターのマイクを使用することはできません。 ただし、ローカルにマウントされたディレクトリ内のオーディオ ファイルを読み取って保存することができます。 
 
 <!-- Need to troubleshoot issues with docker pull image
 

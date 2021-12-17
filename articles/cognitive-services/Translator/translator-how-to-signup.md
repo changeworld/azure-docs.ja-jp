@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: a0d8532d19aff41bc5e7defb3b58462e81018749
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02d1e509068c2332164fea7236fe1fe554b3ef02
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101712931"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439274"
 ---
 # <a name="create-a-translator-resource"></a>Translator リソースを作成する
 
-この記事では、Azure portal で Translator リソースを作成する方法について説明します。 [Azure Translator](translator-info-overview.md) は、クラウドベースの機械翻訳サービスであり、REST API の [Azure Cognitive Services](../what-are-cognitive-services.md) ファミリに含まれます。 Azure リソースは、作成するサービスのインスタンスです。 Azure サービスに対するすべての API 要求には、アクセスを認証するために、**エンドポイント** URL と読み取り専用の **サブスクリプション キー** が必要です。
+この記事では、Azure portal で Translator リソースを作成する方法について説明します。 [Azure Translator](translator-overview.md) は、クラウドベースの機械翻訳サービスであり、REST API の [Azure Cognitive Services](../what-are-cognitive-services.md) ファミリに含まれます。 Azure リソースは、作成するサービスのインスタンスです。 Azure サービスに対するすべての API 要求には、アクセスを認証するために、**エンドポイント** URL と読み取り専用の **サブスクリプション キー** が必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,7 +32,7 @@ Translator サービスには、2 つの異なるリソースの種類を使用�
 * **単一サービス** リソースの種類を使用すると、1 つのサービス API キーとエンドポイントにアクセスできます。  
 
 * **マルチサービス** リソースの種類を使用すると、1 つの API キーとエンドポイントを使用して複数の Cognitive Services にアクセスできます。 現在、Cognitive Services リソースは次のサービスで使用できます。
-  * Language ([Translator](../translator/translator-info-overview.md)、[Language Understanding (LUIS)](../luis/what-is-luis.md)、[Text Analytics](../text-analytics/overview.md))  
+  * Language ([Translator](../translator/translator-overview.md)、[Language Understanding (LUIS)](../luis/what-is-luis.md)、[Language service](../text-analytics/overview.md))  
   * Vision ([Computer Vision](../computer-vision/overview.md))、([Face](../face/overview.md))  
   * Decision ([Content Moderator](../content-moderator/overview.md))  
 

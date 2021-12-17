@@ -7,14 +7,14 @@ metadata:
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 02/26/2020
+  ms.date: 09/21/2021
   ms.author: magoedte
-  ms.openlocfilehash: 0d0caca2d51781d899765820d691f88b7ab6f2e9
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.openlocfilehash: ed9df4d3242f64f950e52ecd3003150b1eb103f7
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101686378"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128624446"
 landingContent:
 - title: Azure Arc 対応サーバーを使用してマシンを Azure に接続する
   linkLists:
@@ -22,30 +22,40 @@ landingContent:
     links:
     - text: Azure Arc 対応サーバーとは
       url: overview.md
-  - linkListType: architecture
+  - linkListType: deploy
     links:
-    - text: 大規模なデプロイを計画する
+    - text: 展開を計画する
       url: plan-at-scale-deployment.md
   - linkListType: get-started
     links:
-    - text: Azure portal から Azure Arc へのマシンの接続
+    - text: デプロイ スクリプトを使用して Azure Arc にマシンを接続する
       url: onboard-portal.md
     - text: サービス プリンシパルを使用したマシンの大規模な接続
       url: onboard-service-principal.md
-    - text: PowerShell DSC を使用してマシンを Azure に接続する
-      url: onboard-dsc.md
+    - text: Windows Admin Center を使用してマシンを Azure に接続する
+      url: onboard-windows-admin-center.md
 - title: 10 分間のクイック スタート
   linkLists:
   - linkListType: quickstart
     links:
     - text: Arc 対応サーバー エージェントをデプロイする
       url: ./learn/quick-enable-hybrid-vm.md
+- title: トレーニング
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Microsoft Learn ラーニング パス
+      url: /learn/paths/manage-hybrid-infrastructure-with-azure-arc
 - title: 概念実証
   linkLists:
   - linkListType: sample
     links:
     - text: ジャンプスタート
       url: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_servers/
+  - linkListType: get-started
+    links:
+    - text: Azure VM を使用して Arc 対応サーバーをテストする
+      url: plan-evaluate-on-azure-virtual-machine.md
 - title: 参照アーキテクチャ
   linkLists:
   - linkListType: architecture

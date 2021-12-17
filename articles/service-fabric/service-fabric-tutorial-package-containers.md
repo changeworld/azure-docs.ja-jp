@@ -4,12 +4,12 @@ description: このチュートリアルでは、Yeoman を使用して Azure Se
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 995291a783d14a6d2db8ed8319c720f55c009d91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 611409b7588f231bb09c3fe57ef4fc29199e0367
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92738849"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112202492"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>チュートリアル: Yeoman を使用して Service Fabric アプリケーションとしてコンテナーをパッケージ化およびデプロイする
 
@@ -83,7 +83,7 @@ Yeoman を使用して作成したアプリケーションに別のコンテナ�
 1. *./TestContainer* のように、ディレクトリのレベルを **TestContainer** ディレクトリに変更します。
 2. `yo azuresfcontainer:AddService` を実行します。
 3. サービスに 'aazurevoteback'a という名前を付けます。
-4. Redis のコンテナー イメージ パス ('alpine:redis') を指定します。
+4. Redis のコンテナー イメージ パス ("redis:alpine") を指定します。
 5. Enter を押して、Commands セクションを空のままにします。
 6. インスタンス数を "1" に指定します。
 
@@ -91,7 +91,7 @@ Yeoman を使用して作成したアプリケーションに別のコンテナ�
 
 ```bash
 ? Name of the application service: azurevoteback
-? Input the Image Name: alpine:redis
+? Input the Image Name: redis:alpine
 ? Commands:
 ? Number of instances of guest container application: 1
    create TestContainer/azurevotebackPkg/ServiceManifest.xml
@@ -270,7 +270,7 @@ sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azu
 ./install.sh
 ```
 
-ブラウザーを開いて、Service Fabric Explorer (http:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer) に移動します。 アプリケーション ノードを展開し、アプリケーションの種類のエントリとインスタンスのエントリがあることを確認します。
+ブラウザーを開いて、Service Fabric Explorer (https:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer) に移動します。 アプリケーション ノードを展開し、アプリケーションの種類のエントリとインスタンスのエントリがあることを確認します。
 
 ![Service Fabric Explorer][sfx]
 
@@ -375,7 +375,6 @@ sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azu
    <CodePackage Name="code" Version="1.0.0">
       <EntryPoint>
          <ContainerHost>
-            <ImageName>alpine:redis</ImageName>
             <Commands></Commands>
          </ContainerHost>
       </EntryPoint>

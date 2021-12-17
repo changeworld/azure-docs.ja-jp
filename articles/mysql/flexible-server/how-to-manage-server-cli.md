@@ -6,22 +6,23 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 4ef1408d5f7afc3b78ab021cdd25eedd75110849
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a2836e2c319810b48a20742cebaa816b6c20ffe1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776934"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438077"
 ---
-# <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバー (プレビュー) を管理する
+# <a name="manage-an-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーを管理する
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
-
-この記事では、Azure でデプロイされたフレキシブル サーバー (プレビュー) を管理する方法を示します。 管理タスクには、コンピューティングとストレージのスケーリング、管理者パスワードのリセット、サーバーの詳細の表示が含まれます。
+この記事では、Azure にデプロイされたフレキシブル サーバーを管理する方法を示します。 管理タスクには、コンピューティングとストレージのスケーリング、管理者パスワードのリセット、サーバーの詳細の表示が含まれます。
 
 ## <a name="prerequisites"></a>前提条件
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。 この記事では、Azure CLI バージョン 2.0 以降をローカルで実行している必要があります。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+
+この記事では、Azure CLI バージョン 2.0 以降をローカルで実行している必要があります。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 [az login](/cli/azure/reference-index#az_login) コマンドを使用して、アカウントにログインする必要があります。 **id** プロパティに注意してください。これは、お使いの Azure アカウントの **サブスクリプション ID** を参照します。
 
@@ -35,8 +36,8 @@ az login
 az account set --subscription <subscription id>
 ```
 
-> [!Important]
-> フレキシブル サーバーをまだ作成していない場合は、1 つ作成して、こちらのハウツー ガイドから始めてください。
+> [!IMPORTANT]
+>フレキシブル サーバーをまだ作成していない場合は、1 つ作成して、こちらのハウツー ガイドから始めてください。
 
 ## <a name="scale-compute-and-storage"></a>コンピューティングとストレージのスケーリング
 
@@ -55,8 +56,8 @@ resource-group | myresourcegroup | Azure リソース グループの名前を�
 sku-name|Standard_D4ds_v4|コンピューティング レベルの名前とサイズを入力します。 省略表現の Standard_{VM サイズ} という規則に従います。 詳細については、[価格レベル](../concepts-pricing-tiers.md)に関するページを参照してください。
 storage-size | 6144 | サーバーのストレージ容量 (単位はメガバイト)。 最小値は 5120 で、1024 ずつ増加します。
 
-> [!Important]
-> - ストレージをスケールアップすることはできますが、ストレージをスケールダウンすることはできません
+> [!IMPORTANT]
+>- ストレージをスケールアップすることはできますが、ストレージをスケールダウンすることはできません
 
 
 ## <a name="manage-mysql-databases-on-a-server"></a>サーバー上の MySQL データベースを管理します。
@@ -75,8 +76,8 @@ storage-size | 6144 | サーバーのストレージ容量 (単位はメガバ�
 az mysql flexible-server update --resource-group myresourcegroup --name mydemoserver --admin-password <new-password>
 ```
 
-> [!Important]
->  パスワードは、8 文字以上 128 文字以下にしてください。
+> [!IMPORTANT]
+> パスワードは、8 文字以上 128 文字以下にしてください。
 > パスワードには、英大文字、英小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。
 
 ## <a name="delete-a-server"></a>サーバーの削除

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: 42c5b315c9c3560c400c685448a11dc61bf64eb6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6f9a64efc516b9af3e92938fabc81c1deb23657f
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215614"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066359"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure プライベート エンドポイントの DNS 構成
 
@@ -44,7 +44,10 @@ Azure サービスについては、次の表に示すように、推奨され�
 |---|---|---|
 | Azure Automation (Microsoft.Automation/automationAccounts)/Webhook、DSCAndHybridWorker | privatelink.azure-automation.net | azure-automation.net |
 | Azure SQL Database (Microsoft.Sql/servers) / sqlServer | privatelink.database.windows.net | database.windows.net |
-| Azure Synapse Analytics (Microsoft.Sql/servers) / sqlServer  | privatelink.database.windows.net | database.windows.net |
+| Azure Synapse Analytics (Microsoft.Synapse/workspaces) / Sql  | privatelink.sql.azuresynapse.net | sql.azuresynapse.net |
+| Azure Synapse Analytics (Microsoft.Synapse/workspaces)/SqlOnDemand  | privatelink.sql.azuresynapse.net | sqlondemand.azuresynapse.net |
+| Azure Synapse Analytics (Microsoft.Synapse/workspaces)/Dev  | privatelink.dev.azuresynapse.net | dev.azuresynapse.net |
+| Azure Synapse Studio (Microsoft.Synapse/privateLinkHubs) / Web | privatelink.azuresynapse.net | azuresynapse.net |
 | ストレージ アカウント (Microsoft.Storage/storageAccounts)/BLOB (blob、blob_secondary) | privatelink.blob.core.windows.net | blob.core.windows.net |
 | ストレージ アカウント (Microsoft.Storage/storageAccounts)/テーブル (table、table_secondary) | privatelink.table.core.windows.net | table.core.windows.net |
 | ストレージ アカウント (Microsoft.Storage/storageAccounts)/キュー (queue、queue_secondary) | privatelink.queue.core.windows.net | queue.core.windows.net |
@@ -56,6 +59,7 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)/Cassandra | privatelink.cassandra.cosmos.azure.com | cassandra.cosmos.azure.com |
 | Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)/Gremlin | privatelink.gremlin.cosmos.azure.com | gremlin.cosmos.azure.com |
 | Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)/テーブル | privatelink.table.cosmos.azure.com | table.cosmos.azure.com |
+| Azure Batch (Microsoft.Batch/batchAccounts)/Batch アカウント | privatelink.{region}.batch.azure.com | {region}.batch.azure.com |
 | Azure Database for PostgreSQL - シングル サーバー (Microsoft DBforPostgreSQL/servers)/postgresqlServer | privatelink.postgres.database.azure.com | postgres.database.azure.com |
 | Azure Database for MySQL (Microsoft.DBforMySQL/servers)/mysqlServer | privatelink.mysql.database.azure.com | mysql.database.azure.com |
 | Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
@@ -63,9 +67,9 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Kubernetes Service - Kubernetes API (Microsoft.ContainerService/managedClusters)/管理 | privatelink.{region}.azmk8s.io | {region}.azmk8s.io |
 | Azure Search (Microsoft.Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
 | Azure Container Registry (Microsoft.ContainerRegistry/registries)/レジストリ | privatelink.azurecr.io | azurecr.io |
-| Azure App Configuration (Microsoft.Appconfiguration/configurationStores)/configurationStore | privatelink.azconfig.io | azconfig.io |
-| Azure Backup (Microsoft.RecoveryServices/vaults)/コンテナー | privatelink.{region}.backup.windowsazure.com | {region}.backup.windowsazure.com |
-| Azure Site Recovery (Microsoft.RecoveryServices/vaults)/コンテナー | {region}.privatelink.siterecovery.windowsazure.com | {region}.hypervrecoverymanager.windowsazure.com |
+| Azure App Configuration (Microsoft.AppConfiguration/configurationStores)/configurationStores | privatelink.azconfig.io | azconfig.io |
+| Azure Backup (Microsoft.RecoveryServices/vaults)/AzureBackup | privatelink.{region}.backup.windowsazure.com | {region}.backup.windowsazure.com |
+| Azure Site Recovery (Microsoft.RecoveryServices/vaults)/AzureSiteRecovery | privatelink.siterecovery.windowsazure.com | {region}.hypervrecoverymanager.windowsazure.com |
 | Azure Event Hubs (Microsoft.EventHub/namespaces)/名前空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Service Bus (Microsoft.ServiceBus/namespaces)/名前空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure IoT Hub (Microsoft.Devices/IotHubs)/iotHub | privatelink.azure-devices.net<br/>privatelink.servicebus.windows.net<sup>1</sup> | azure-devices.net<br/>servicebus.windows.net |
@@ -75,12 +79,17 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Web Apps (Microsoft.Web/sites)/サイト | privatelink.azurewebsites.net | azurewebsites.net |
 | Azure Machine Learning (Microsoft.MachineLearningServices/workspaces)/amlworkspace | privatelink.api.azureml.ms<br/>privatelink.notebooks.azure.net | api.azureml.ms<br/>notebooks.azure.net<br/>instances.azureml.ms<br/>aznbcontent.net |
 | SignalR (Microsoft.SignalRService/SignalR) / signalR | privatelink.service.signalr.net | service.signalr.net |
-| Azure Monitor (Microsoft.Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.net | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.net |
+| Azure Monitor (Microsoft.Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.net <br/> privatelink.blob.core.windows.net | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.net <br/> blob.core.windows.net |
 | Cognitive Services (Microsoft.CognitiveServices/accounts)/アカウント | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
 | Azure File Sync (Microsoft.StorageSync/storageSyncServices) / afs |  privatelink.afs.azure.net  |  afs.azure.net  |
 | Azure Data Factory (Microsoft.DataFactory/factories) / dataFactory |  privatelink.datafactory.azure.net  |  datafactory.azure.net  |
 | Azure Data Factory (Microsoft.DataFactory/factories) / portal |  privatelink.adf.azure.com  |  adf.azure.com  |
 | Azure Cache for Redis (Microsoft.Cache/Redis) / redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
+| Azure Cache for Redis Enterprise (Microsoft.Cache/RedisEnterprise)/redisCache | privatelink.redisenterprise.cache.azure.net | redisenterprise.cache.azure.net |
+| Azure Purview (Microsoft.Purview)| privatelink.purview.azure.com | purview.azure.com |
+| Azure Purview (Microsoft.Purview)| privatelink.purviewstudio.azure.com | purview.azure.com |
+| Azure Digital Twins (Microsoft.DigitalTwins) / digitalTwinsInstances | privatelink.digitaltwins.azure.net | digitaltwins.azure.net |
+| Azure HDInsight (Microsoft.HDInsight) | privatelink.azurehdinsight.net | azurehdinsight.net |
 
 <sup>1</sup>IoT Hub の組み込みのイベント ハブ互換エンドポイントで使用します。 詳細については、[IoT Hub の組み込みエンドポイントに対するプライベート リンクのサポート](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint)に関するページを参照してください。
 
@@ -97,6 +106,7 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Database for PostgreSQL - シングル サーバー (Microsoft DBforPostgreSQL/servers)/postgresqlServer | privatelink.postgres.database.chinacloudapi.cn | postgres.database.chinacloudapi.cn |
 | Azure Database for MySQL (Microsoft.DBforMySQL/servers)/mysqlServer | privatelink.mysql.database.chinacloudapi.cn  | mysql.database.chinacloudapi.cn  |
 | Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)/mariadbServer | privatelink.mariadb.database.chinacloudapi.cn | mariadb.database.chinacloudapi.cn |
+| Azure HDInsight (Microsoft.HDInsight) | privatelink.azurehdinsight.cn | azurehdinsight.cn |
 
 ## <a name="dns-configuration-scenarios"></a>DNS の構成シナリオ
 
@@ -138,7 +148,7 @@ DNS は、プライベート エンドポイント IP アドレスを正常に�
 > この構成には単一のプライベート DNS ゾーンが必要です。 異なる仮想ネットワークに対して同じ名前を使って複数のゾーンを作成する場合、手作業で DNS レコードをマージする必要があります。
 
 > [!IMPORTANT]
-> 別のサブスクリプションのハブおよびスポーク モデルでプライベート エンドポイントを使用している場合は、ハブで同じプライベート DNS ゾーンを再利用します。
+> 異なるサブスクリプション、または同じサブスクリプション内で、ハブ アンド スポーク モデルのプライベート エンドポイントを使用している場合、同じプライベート DNS ゾーンを、ゾーンから DNS 解決が必要なクライアントを含むすべてのスポークおよびハブ仮想ネットワークにリンクします。
 
 このシナリオには、[ハブおよびスポーク](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) ネットワーク トポロジがあります。 スポーク ネットワークによってプライベート エンドポイントが共有されます。 スポーク仮想ネットワークは同じプライベート DNS ゾーンにリンクされます。 
 
@@ -146,7 +156,7 @@ DNS は、プライベート エンドポイント IP アドレスを正常に�
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>DNS フォワーダーを使用しているオンプレミスのワークロード
 
-オンプレミスのワークロードでプライベート エンドポイントの FQDN を解決するには、DNS フォワーダーを使用して、Azure で Azure サービス [パブリック DNS ゾーン](#azure-services-dns-zone-configuration)を解決します。
+オンプレミスのワークロードでプライベート エンドポイントの FQDN を解決するには、DNS フォワーダーを使用して、Azure で Azure サービス [パブリック DNS ゾーン](#azure-services-dns-zone-configuration)を解決します。 [DNS フォワーダー](/windows-server/identity/ad-ds/plan/reviewing-dns-concepts#resolving-names-by-using-forwarding)は、プライベート DNS ゾーンにリンクされている仮想ネットワークで実行されている仮想マシンで、他の仮想ネットワークまたはオンプレミスからの DNS クエリをプロキシできます。 クエリが Azure DNS に仮想ネットワークから生成される必要があるため、これが必要になります。 DNS プロキシのオプションには、DNS サービスを実行する Windows、DNS サービスを実行する Linux、[Azure Firewall](../firewall/dns-settings.md) があります。
 
 次のシナリオは、Azure に DNS フォワーダーがあるオンプレミス ネットワーク用です。 このフォワーダーにより、サーバーレベルのフォワーダー経由の DNS クエリが、Azure で提供される DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) に解決されます。 
 

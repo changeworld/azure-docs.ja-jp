@@ -1,17 +1,18 @@
 ---
 title: Azure Key Vault への資格情報の格納
 description: Azure Data Factory で実行時に自動的に取得できる、Azure Key Vault で使用されたデータ ストアの資格情報を格納する方法を説明します。
-author: linda33wj
+author: nabhishek
 ms.service: data-factory
+ms.subservice: security
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.author: jingwang
-ms.openlocfilehash: 00c28a9ede01a74f4ae64109d277276050047461
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: abnarain
+ms.openlocfilehash: 2ac261adeade46b14651583cf28803cab039d754
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653766"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743168"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Azure Key Vault への資格情報の格納
 
@@ -47,11 +48,11 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 
 **[接続]**  ->  **[リンクされたサービス]**  ->  **[新規]** を選択します。 新しいリンクされたサービスで、"Azure Key Vault" を検索して選択します。
 
-![Azure Key Vault の検索](media/store-credentials-in-key-vault/search-akv.png)
+:::image type="content" source="media/store-credentials-in-key-vault/search-akv.png" alt-text="Azure Key Vault の検索":::
 
 資格情報が格納されるプロビジョニングされた Azure Key Vault を選択します。 **テスト接続** を実行し、AKV 接続が有効なことを確認します。 
 
-![Azure Key Vault を構成する](media/store-credentials-in-key-vault/configure-akv.png)
+:::image type="content" source="media/store-credentials-in-key-vault/configure-akv.png" alt-text="Azure Key Vault を構成する":::
 
 **JSON の例:**
 
@@ -85,7 +86,7 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 >[!TIP]
 >SQL Server や Blob ストレージなどのリンクされたサービスにおける接続文字列を使用した接続については、AKV でのパスワードなどの secret フィールドのみを格納するか、AKV の接続文字列全体を確認するかを選択できます。 どちらのオプションも UI で入手できます。
 
-![Azure Key Vault のシークレットの構成](media/store-credentials-in-key-vault/configure-akv-secret.png)
+:::image type="content" source="media/store-credentials-in-key-vault/configure-akv-secret.png" alt-text="Azure Key Vault のシークレットの構成":::
 
 **JSON の例: ("password" セクションをご覧ください)**
 

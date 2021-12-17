@@ -1,19 +1,19 @@
 ---
 title: サイト間 VPN および VNet 間接続の IPsec/IKE ポリシー:Azure portal
 titleSuffix: Azure VPN Gateway
-description: Azure Resource Manager と Azure portal を使用して、Azure VPN Gateway でサイト間または VNet 間接続の IPsec/IKE ポリシーを構成します。
+description: Azure portal を使用し、Azure VPN Gateway でサイト間または VNet 間接続の IPsec/IKE ポリシーを構成する方法について説明します。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 04/28/2021
 ms.author: yushwang
-ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04dd5a1e8907d7314f9d96a81ae6965c943dc60c
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98878546"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229272"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>S2S VPN または VNet 対 VNet 接続用の IPsec/IKE ポリシーを構成する:Azure portal
 

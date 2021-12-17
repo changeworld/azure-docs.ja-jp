@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 51bfd632e854132be27a7b971cf03e9fe5b00138
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 652347a2b63581a613088497ef8b3cb7df4ee8ec
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504305"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448749"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -82,7 +82,7 @@ ms.locfileid: "102504305"
     - [タグ付けの戦略](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing)。
     - VM と他のインフラストラクチャ コンポーネントおよび論理名の名前付け規則。
 5.  Microsoft Professional または Premier サポート契約。 Microsoft の Premier サポート契約をお持ちの場合は、Microsoft テクニカル アカウント マネージャー (TAM) を確認してください。 SAP のサポート要件については、[SAP サポート ノート #2015553](https://launchpad.support.sap.com/#/notes/2015553) を参照してください。
-6.  Azure サブスクリプションの数と、サブスクリプションのコア クォータ。 必要に応じて、[Azure サブスクリプションのクォータを増やすサポート リクエストを開きます](../../../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+6.  Azure サブスクリプションの数と、サブスクリプションのコア クォータ。 必要に応じて、[Azure サブスクリプションのクォータを増やすサポート リクエストを開きます](../../../azure-portal/supportability/regional-quota-requests.md)。
 7.  Azure への SAP データの移行に関するデータの削減とデータ移行計画。 SAP NetWeaver システムについては、大容量のデータ量を制限する方法についてのガイドラインが SAP にあります。 SAP ERP システムでのデータ管理に関する[こちらの SAP ガイド](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2)を参照してください。 一部のコンテンツは、一般に NetWeaver と S/4HANA システムにも適用されます。
 8.  自動化されたデプロイのアプローチ。 Azure へのインフラストラクチャ デプロイの自動化の目的は、決定論的な方法でデプロイし、決定論的な結果を得ることです。 多くのお客様は、PowerShell または CLI ベースのスクリプトを使用します。 しかしながら、SAP 用に Azure インフラストラクチャをデプロイしたり、SAP ソフトウェアをインストールしたりすることに使用できるさまざまなオープン ソース テクノロジがあります。 GitHub で例を見つけることができます。
     - [Azure Cloud での SAP の自動デプロイ](https://github.com/Azure/sap-hana)
@@ -110,9 +110,9 @@ ms.locfileid: "102504305"
            -  [Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 サイズ設定では *キャッシュされていないディスクの最大スループット* を検討することが重要です。
    2. ストレージ。
         - ドキュメント「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」を確認してください。
-        - SAP アプリケーション レイヤーを表す VM や、さほどパフォーマンスが要求されない DBMS デプロイには、最小要件として [Azure Standard SSD ストレージ](../../disks-types.md#standard-ssd)を使用します。
-        - 一般に、[Azure Standard HDD ディスク](../../disks-types.md#standard-hdd)を使用することはお勧めしません。
-        - リモートでのパフォーマンスが重視される DBMS VM には、[Azure Premium Storage](../../disks-types.md#premium-ssd) を使用します。
+        - SAP アプリケーション レイヤーを表す VM や、さほどパフォーマンスが要求されない DBMS デプロイには、最小要件として [Azure Standard SSD ストレージ](../../disks-types.md#standard-ssds)を使用します。
+        - 一般に、[Azure Standard HDD ディスク](../../disks-types.md#standard-hdds)を使用することはお勧めしません。
+        - リモートでのパフォーマンスが重視される DBMS VM には、[Azure Premium Storage](../../disks-types.md#premium-ssds) を使用します。
         - [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用します。
         - M シリーズの DBMS ログ ドライブには、Azure 書き込みアクセラレータを使用します。 [書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)に関する記事に記載されている書き込みアクセラレータの制限と使用方法に注意してください。
         - DBMS のさまざまな種類については、[一般的な SAP 関連の DBMS ドキュメント](./dbms_guide_general.md)と、一般ドキュメントで参照されている DBMS ごとの個別ドキュメントを確認してください。
@@ -196,10 +196,10 @@ ms.locfileid: "102504305"
 
 1.  古いプラットフォームから Azure にシステムを移行する前に、CPU 使用率、ストレージのスループット、IOPS データなどのリソース消費データを収集します。 このデータは特に DBMS レイヤーのユニットから収集しますが、アプリケーション レイヤーのユニットからも収集します。 また、ネットワークとストレージの待機時間を測定します。
 2.  お使いのシステムの可用性の使用時間パターンを記録します。 目的は、非運用システムを毎日 1 日中使用できるようにする必要があるか、それとも週や月の特定の期間にシャットダウンできる非運用システムがあるかを、明らかにすることです。
-3.  Azure 内の VM 用にご自身の独自の OS イメージを作成する必要があるかどうか、または Shared Image Gallery のイメージを使用するかどうかを、テストして決定します。 Shared Image Gallery のイメージを使用する場合は、OS ベンダーとのサポート契約を反映した正しいイメージを使用する必要があります。 一部の OS ベンダーでは、Shared Image Gallery を使用して、独自のライセンス イメージを持ち込むことができます。 他の OS イメージについては、Azure によって見積もられる価格にサポートが含まれています。 独自の OS イメージを作成する場合は、次の記事でドキュメントを確認できます。
+3.  Azure 内の VM 用にご自身の独自の OS イメージを作成する必要があるかどうか、または Azure Compute Gallery (旧称 Shared Image Gallery) のイメージを使うかどうかを、テストして決定します。 Azure Compute Gallery のイメージを使う場合は、OS ベンダーとのサポート契約を反映した正しいイメージを使う必要があります。 一部の OS ベンダーでは、Azure Compute Gallery を使って、独自のライセンス イメージを持ち込むことができます。 他の OS イメージについては、Azure によって見積もられる価格にサポートが含まれています。 独自の OS イメージを作成する場合は、次の記事でドキュメントを確認できます。
     -   [Azure にデプロイされた Windows VM の一般化されたイメージの構築](../../windows/capture-image-resource.md)
     -   [Azure にデプロイされた Linux VM の一般化されたイメージの構築](../../linux/capture-image.md)
-3.  Shared Image Gallery の SUSE および Red Hat Linux イメージを使用する場合は、Shared Image Gallery 内の、Linux ベンダーによって提供されている SAP 用のイメージを使用する必要があります。
+3.  Azure Compute Gallery の SUSE および Red Hat Linux イメージを使う場合、Azure Compute Gallery で、Linux ベンダーによって提供されている SAP 用のイメージを使う必要があります。
 4.  Microsoft サポート契約に関する SAP のサポート要件を満たすことを確認します。 [SAP サポート ノート #2015553](https://launchpad.support.sap.com/#/notes/2015553) を参照してください。 HANA Large Instances については、「[オンボードの要件](./hana-onboarding-requirements.md)」を参照してください。
 4.  最適なダウンタイムを選択できるよう、適切なユーザーが[計画メンテナンスの通知](https://azure.microsoft.com/blog/a-new-planned-maintenance-experience-for-your-virtual-machines/)を受け取ることを確認します。
 5.  [Channel 9](https://channel9.msdn.com/) などのチャネルで Azure に関するプレゼンテーションを頻繁にチェックし、デプロイに適用できる可能性のある新しい機能を確認します。
@@ -298,7 +298,7 @@ ms.locfileid: "102504305"
 3. システムをシャットダウンできる時間を最適化します。  
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次の記事を参照してください。
 
 - [SAP NetWeaver のための Azure Virtual Machines の計画と実装](./planning-guide.md)

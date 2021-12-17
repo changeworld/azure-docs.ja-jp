@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: f847ef4f4490b64212e4cdcce3f9a89e94c7cd37
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 800d52ca0cbc574add0640c8acf41713ed401071
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058597"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215242"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -55,7 +55,7 @@ Azure Standard Load Balancer を使用して実現できる主なシナリオは
 
 - **[内部](./quickstart-load-balancer-standard-internal-portal.md)** および **[外部](./quickstart-load-balancer-standard-public-portal.md)** トラフィックを Azure 仮想マシンに負荷分散する。
 
-- ゾーンの **[内部で](./tutorial-load-balancer-standard-public-zonal-portal.md)** 、および複数のゾーンに **[わたって](./tutorial-load-balancer-standard-public-zone-redundant-portal.md)** リソースを分散することによって、可用性を向上させる。
+- ゾーンの **[内部で](./tutorial-load-balancer-standard-public-zonal-portal.md)** 、および複数のゾーンに **[わたって](./quickstart-load-balancer-standard-public-portal.md)** リソースを分散することによって、可用性を向上させる。
 
 - Azure 仮想マシンの **[アウトバウンド接続](./load-balancer-outbound-connections.md)** を構成する。
 
@@ -63,7 +63,7 @@ Azure Standard Load Balancer を使用して実現できる主なシナリオは
 
 - **[ポート転送](./tutorial-load-balancer-port-forwarding-portal.md)** を使用して、仮想ネットワーク内の仮想マシンにパブリック IP アドレスとポートでアクセスする。
 
-- **[IPv6](../virtual-network/ipv6-overview.md)** の **[負荷分散](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** のサポートを有効にする。
+- **[IPv6](../virtual-network/ip-services/ipv6-overview.md)** の **[負荷分散](./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** のサポートを有効にする。
 
 - Standard Load Balancer は [Azure Monitor](../azure-monitor/overview.md) を通じて多次元メトリックを提供します。  これらのメトリックは、フィルター処理し、グループ化し、特定のディメンションに分割することができます。  サービスのパフォーマンスと正常性に関する現在と過去の分析情報を提供します。 [[Azure Load Balancer の分析情報]](./load-balancer-insights.md) には、これらのメトリックがわかりやすく可視化された事前構成済みのダッシュボードが用意されています。  リソースの正常性もサポートされます。 詳細については、 **[Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)** に関するページを参照してください。
 

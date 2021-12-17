@@ -3,18 +3,18 @@ title: クォータの増加を要求する
 description: このページでは、Azure SQL Database と Azure SQL Managed Instance のクォータを増やすためのサポート リクエストを作成する方法について説明します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: deployment-configuration
 ms.topic: how-to
 author: sachinpMSFT
 ms.author: sachinp
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 06/04/2020
-ms.openlocfilehash: 27719663acfbdbcd7293defc4b746153359adb61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5530becdcbe150ddc7ab2608bdf964ac269ed99
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251856"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409021"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のクォータの増加を要求する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,7 +54,7 @@ SQL Database 用の Azure portal から新しいサポート リクエストを�
 
    ![[詳細を入力] リンク](./media/quota-increase-request/provide-details-link.png)
 
-**[詳細を入力]** をクリックすると、 **[クォータの詳細]** ウィンドウが表示され、追加情報を追加できるようになります。 次のセクションでは、**SQL Database** および **SQL Database Managed Instance** のクォータの種類に対するさまざまなオプションについて説明します。
+**[詳細を入力]** をクリックすると、 **[クォータの詳細]** ウィンドウが表示され、追加情報を追加できるようになります。 次のセクションでは、**SQL Database** および **SQL Managed Instance** のクォータの種類に対するさまざまなオプションについて説明します。
 
 ## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a> SQL Database のクォータの種類
 
@@ -110,7 +110,7 @@ SQL Database 用の Azure portal から新しいサポート リクエストを�
 
 ### <a name="request-enabling-specific-hardware-in-a-region"></a>リージョンでの特定のハードウェアの有効化を要求する
 
-使用する[ハードウェアの世代](service-tiers-vcore.md#hardware-generations)が自分のリージョンで使用できない場合は (「[ハードウェアの可用性](service-tiers-vcore.md#hardware-availability)」を参照)、次の手順を使用してそれを要求できます。
+使用するハードウェアの世代が自分のリージョンで使用できない場合は、次の手順を使用してそれを要求できます。 ハードウェアの世代とリージョンの可用性の詳細については、[「SQL Database のハードウェアの世代 」](./service-tiers-sql-database-vcore.md#hardware-generations) または[「SQL Managed Instance のハードウェア 世代」](../managed-instance/service-tiers-managed-instance-vcore.md#hardware-generations)を参照してください。
 
 1. **[その他のクォータ要求]** というクォータの種類を選択します。
 

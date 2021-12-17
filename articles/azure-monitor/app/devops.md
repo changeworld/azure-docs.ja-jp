@@ -1,14 +1,14 @@
 ---
 title: Web アプリのパフォーマンスの監視 - Azure Application Insights
-description: 開発運用サイクルへの Application Insights の組み込み
+description: DevOps サイクルへの Application Insights の組み込み
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: bc897cc0259894964e0b6164219b1e5459e824b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8124e8fdc184ab284d486ed167841043da8334a6
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579572"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616228"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights を使用した Web アプリおよびサービスの詳細な診断
 ## <a name="why-do-i-need-application-insights"></a>Application Insights が必要な理由
@@ -157,7 +157,7 @@ Application Insights では、アラートが発生したときに、作業項�
 ## <a name="next-steps"></a>次のステップ
 Application Insights の操作は簡単です。 主なオプションは次のとおりです。
 
-* [IIS サーバー](./monitor-performance-live-website-now.md)、および [Azure App Service](./app-insights-overview.md) 用。
-* 開発中のプロジェクトをインストルメント化します。 これは、[ASP.NET](./asp-net.md) または [Java](./java-get-started.md) アプリだけでなく、[Node.js](./nodejs.md) や[他の種類](./platforms.md)のホストでも実行できます。 
+* [IIS サーバー](./status-monitor-v2-overview.md)
+* 開発中のプロジェクトをインストルメント化します。 これは、[ASP.NET](./asp-net.md) または [Java](./java-in-process-agent.md) アプリ、および [Node.js](./nodejs.md) や[他の種類](./platforms.md)のホストでも実行できます。 
 * 短いコード スニペットを追加して、 [任意の Web ページ](./javascript.md) をインストルメント化します。
 

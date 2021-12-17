@@ -1,24 +1,24 @@
 ---
 title: Azure の支払いに関する問題のトラブルシューティング
-description: Microsoft Azure portal またはアカウント センターで支払い情報アカウントを更新しようとしたときに発生する問題を解決します。
-author: v-miegge
-ms.reviewerr: dcscontentpm
+description: Azure portal で支払い情報アカウントを更新しようとしたときに発生する問題を解決します。
+author: bandersmsft
+ms.reviewer: lishepar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
-ms.author: jaserano
-ms.openlocfilehash: 77ca8e8425326cec31fce345600bdd0174ab5f4e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.date: 05/13/2021
+ms.author: banders
+ms.openlocfilehash: a8e2ddd11724b39f6439cc59de012c0a60ab0ff6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131855"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438742"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Azure の支払いに関する問題のトラブルシューティング
 
-Microsoft Azure portal または Azure アカウント センターで、支払い情報アカウントを更新しようとしたときに、問題またはエラーが発生する場合があります。
+Microsoft Azure portal で支払い情報アカウントを更新しようとしたときに問題またはエラーが発生する場合があります。
 
 この問題を解決するには、以下のトピックの中から、発生しているエラーに最も近いものを選択してください。
 
@@ -30,7 +30,7 @@ Microsoft Azure portal または Azure アカウント センターで、支払�
 
 対象のサブスクリプション用とは違うメール ID が使用されている可能性があります。
 
-この問題をトラブルシューティングするには、[Azure portal または Azure アカウント センターにおける "サブスクリプションが見つかりません" のサインイン エラー](no-subscriptions-found.md)に関するページを参照してください。
+この問題をトラブルシューティングするには、[Azure portal における "サブスクリプションが見つかりません" のサインイン エラー](no-subscriptions-found.md)に関するページを参照してください。
 
 ## <a name="unable-to-use-a-virtual-or-prepaid-credit-or-debit-card-as-a-payment-method"></a>バーチャルまたはプリペイド式のクレジット カードやデビット カードを支払い方法として使用することはできません。
 
@@ -55,7 +55,7 @@ Microsoft Azure portal または Azure アカウント センターで、支払�
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>サブスクリプションに対する支払いができない
 
-次のようなエラー メッセージが表示されることがあります。"*お支払い期限を過ぎています。お客様のお支払い方法に問題があります*" または "*申し訳ございませんが、情報を保存できません。ブラウザーを閉じて、もう一度やり直してください*"。この場合、カードが金融機関によって拒否されたため、カードに保留中の支払いがあります。
+「*お支払い期限を過ぎています。お客様のお支払い方法に問題があります*」または「*申し訳ございませんが、情報を保存できません。ブラウザーを閉じて、もう一度やり直してください。* 」というエラー メッセージが表示された場合、カードが金融機関によって拒否されたために、保留中の支払いがカードにあります。
 
 支払いに必要な残高がクレジット カードにあることを確認してください。 ない場合は、支払いに他のカードを使用するか、または金融機関に問い合わせて問題を解決してください。
 

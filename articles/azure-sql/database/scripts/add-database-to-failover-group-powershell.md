@@ -4,19 +4,19 @@ description: Azure PowerShell サンプル スクリプトを使用して、Azur
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: emlisa
+ms.author: emlisa
+ms.reviewer: mathoma
 ms.date: 07/16/2019
-ms.openlocfilehash: 34d296e51f25c492d7f66347a2e2b190c39e83f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 651c19be68f4a468b116b193bfbe03f439ad1369
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94594132"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163586"
 ---
 # <a name="use-powershell-to-add-a-database-to-a-failover-group"></a>PowerShell を使用してフェールオーバー グループにデータベースを追加する
 
@@ -46,7 +46,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| command | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | サーバーを作成します。 |

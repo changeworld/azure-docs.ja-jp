@@ -4,23 +4,21 @@ description: Azure Data Factory で使用可能なデータ ラングリング�
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 659f6527d43e1b45a11fddf774050ca6d42bfe12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/06/2021
+ms.openlocfilehash: c0a646624054aca3bc043f4ee573dac274f2aa77
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896665"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129809915"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>データ ラングリングのための Power Query の変換関数
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory のデータ ラングリングを使用すると、Power Query ```M``` スクリプトを Data Flow スクリプトに変換することにより、コード不要のアジャイルなデータ準備とラングリングをクラウド規模で実行できます。 ADF は [Power Query Online](/powerquery-m/power-query-m-reference) と統合されており、データ フローの Spark インフラストラクチャを使用した Spark の実行を介して、Power Query ```M``` 関数をデータ ラングリングで使用できるようにします。 
-
-> [!NOTE]
-> ADF の Power Query は現在、パブリック プレビューで提供されています。
 
 現時点では、Power Query M 関数は、作成中に利用可能であっても、そのすべてがデータ ラングリングでサポートされているわけではありません。 マッシュアップを作成しているとき、関数がサポートされていない場合は、次のエラー メッセージが表示されます。
 
@@ -63,8 +61,8 @@ Azure Data Factory のデータ ラングリングを使用すると、Power Que
 * 論理列としての行フィルター
 * 数値、テキスト、論理、日付、および日時の定数
 
-<a name="mergingjoining-tables"></a>テーブルのマージ/結合
-----------------------
+## <a name="mergingjoining-tables"></a>テーブルのマージ/結合
+
 * Power Query は入れ子になった結合を生成します (Table.NestedJoin。ユーザーは [Table.AddJoinColumn](/powerquery-m/table-addjoincolumn) を手動で書き込むこともできます)。
     ユーザーはその後、入れ子になった結合列を入れ子になっていない結合に展開する必要があります (Table.ExpandTableColumn、他のコンテキストではサポートされていない)。
 * M 関数 [Table.Join](/powerquery-m/table-join) を直接記述することで、追加の拡張手順は不要になりますが、結合されたテーブル間に重複する列名がないことをユーザーが確認する必要があります
@@ -99,6 +97,66 @@ Azure Data Factory のデータ ラングリングを使用すると、Power Que
 | 行レベルのエラー処理 | 行レベルのエラー処理は現在サポートされていません。 たとえば、列から数値以外の値を除外する方法の 1 つは、テキスト列を数値に変換することです。 変換が失敗したすべてのセルはエラー状態になり、フィルター処理する必要があります。 このシナリオは、スケールアウトされた M では実現できません。 |
 | Table.Transpose | サポートされていません |
 | Table.Pivot | サポートされていません |
+| Table.SplitColumn | 部分的にサポートされています。 |
+
+## <a name="m-script-workarounds"></a>M スクリプトの回避策
+
+### ```SplitColumn```
+
+長さおよび位置で分割する代替方法を以下に示します。
+
+* Table.AddColumn(Source, "First characters", each Text.Start([Email], 7), type text)
+* Table.AddColumn(#"Inserted first characters", "Text range", each Text.Middle([Email], 4, 9), type text)
+
+このオプションは、リボンの [抽出] オプションからアクセスできます
+
+:::image type="content" source="media/wrangling-data-flow/power-query-split.png" alt-text="Power Query の [列の追加]":::
+
+### ```Table.CombineColumns```
+
+* Table.AddColumn(RemoveEmailColumn, "Name", each [FirstName] & " " & [LastName])
+
+### <a name="pivots"></a>ピボット
+
+* PQ エディターから [ピボット変換] を選択し、ピボット列を選択します。
+
+![Power Query Pivot Common](media/wrangling-data-flow/power-query-pivot-1.png)
+
+* 次に、値列と集計関数を選択します。
+
+![Power Query Pivot Selector](media/wrangling-data-flow/power-query-pivot-2.png)
+
+* [OK] をクリックすると、ピボット値でエディターのデータが更新されます。
+* 変換がサポートされていない可能性があるという警告メッセージも表示されます。
+* この警告を修正するには、PQ エディターを使用して、ピボットの一覧を手動で展開します。
+* リボンから [詳細エディター] オプションを選択します。
+* ピボット値の一覧を手動で展開します。
+* List. Distinct () を次のような値の一覧に置き換えます。
+```
+#"Pivoted column" = Table.Pivot(Table.TransformColumnTypes(#"Changed column type 1", {{"genres", type text}}), {"Drama", "Horror", "Comedy", "Musical", "Documentary"}, "genres", "Rating", List.Average)
+in
+  #"Pivoted column"
+```
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWNbBf]
+
+### <a name="formatting-datetime-columns"></a>日付/時刻列の書式設定
+
+Power Query ADF を使用するときに日付/時刻の書式を設定するには、次の設定に従って設定してください。
+
+![Power Query の [型の変更]](media/data-flow/power-query-date-2.png)
+
+1. Power Query の UI で列を選択し、[型の変更] > [日付/時刻] を選択します
+2. 警告メッセージが表示されます
+3. 詳細エディターを開き、```TransformColumnTypes``` を ```TransformColumns``` に変更します。 入力データに基づいて書式とカルチャを指定します。
+
+![Power Query エディター](media/data-flow/power-query-date-3.png)
+
+```
+#"Changed column type 1" = Table.TransformColumns(#"Duplicated column", {{"start - Copy", each DateTime.FromText(_, [Format = "yyyy-MM-dd HH:mm:ss", Culture = "en-us"]), type datetime}})
+```
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWNdQg]
 
 ## <a name="next-steps"></a>次のステップ
 

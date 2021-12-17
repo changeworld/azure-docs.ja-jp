@@ -3,12 +3,12 @@ title: コンテナー グループでマネージド ID を有効にする
 description: ここでは、他のサービスで認証できるマネージド ID を Azure Container Instances で有効にする方法を説明します。
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: f8f3c646487d86f4e1bce13ccbf28992b8b1497a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 03b129b3aa986bb9858280e08c2532ef73806e91
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764011"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057858"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances でマネージド ID を使用する方法
 
@@ -278,13 +278,13 @@ az container exec \
 
 コンテナーの bash シェルで、次のコマンドを実行します。 まず、マネージド ID を使用して Azure CLI にログインします。
 
-```bash
+```azurecli
 az login --identity
 ```
 
 実行中のコンテナーから、キー コンテナーのシークレットを取得します。
 
-```bash
+```azurecli
 az keyvault secret show \
   --name SampleSecret \
   --vault-name mykeyvault --query value
@@ -292,7 +292,7 @@ az keyvault secret show \
 
 シークレットの値が取得されます。
 
-```bash
+```output
 "Hello Container Instances"
 ```
 
@@ -358,7 +358,7 @@ az keyvault secret show \
 
 1 つまたは複数のユーザー割り当て ID を有効にすることができます。
 
-```YAML
+```yaml
 identity:
   type: UserAssigned
   userAssignedIdentities:
@@ -367,7 +367,7 @@ identity:
 
 ### <a name="system-assigned-identity"></a>システム割り当て ID
 
-```YAML
+```yaml
 identity:
   type: SystemAssigned
 ```
@@ -376,7 +376,7 @@ identity:
 
 各コンテナー グループで、1 つのシステム割り当て ID と、1 つまたは複数のユーザー割り当て ID の両方を有効化できます。
 
-```YAML
+```yml
 identity:
   type: SystemAssigned, UserAssigned
   userAssignedIdentities:

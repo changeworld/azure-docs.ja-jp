@@ -5,14 +5,14 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 11/12/2021
 ms.custom: mvc
-ms.openlocfilehash: f461778f988fafeacc480e100b00be7d4c165dfb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1c9e0c5a6a0672ec36bfef1d2f8d909b0ddea984
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612519"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397682"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate 検出および評価を使用して Hyper-V で実行されているサーバーを検出する
 
@@ -91,7 +91,7 @@ Hyper-V 統合サービスを設定する | ホストによって管理されて
 ### <a name="run-the-script"></a>スクリプトを実行する
 
 1. [Microsoft ダウンロード センター](https://aka.ms/migrate/script/hyperv)からスクリプトをダウンロードします。 このスクリプトは、Microsoft によって暗号的に署名されています。
-2. MD5 または SHA256 ハッシュ ファイルを使用して、スクリプトの整合性を検証します。 ハッシュタグの値は以下に記載されています。 このコマンドを実行して、スクリプトのハッシュを生成します。
+2. SHA256 ハッシュ ファイルを使用して、スクリプトの整合性を検証します。 ハッシュタグの値は以下のとおりです。 このコマンドを実行して、スクリプトのハッシュを生成します。
 
     ```powershell
     C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
@@ -106,11 +106,10 @@ Hyper-V 統合サービスを設定する | ホストによって管理されて
     ```powershell
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
-ハッシュ値は次のとおりです。
+ハッシュ値は以下のとおりです。
 
 **ハッシュ** |  **Value**
 --- | ---
-MD5 | 0ef418f31915d01f896ac42a80dc414e
 SHA256 | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 
 ## <a name="set-up-a-project"></a>プロジェクトの設定
@@ -138,13 +137,14 @@ SHA256 | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 Azure Migrate には軽量の Azure Migrate アプライアンスが使用されます。 このアプライアンスによって、サーバー検出が実行され、サーバーの構成とパフォーマンス メタデータが Azure Migrate に送信されます。 アプライアンスは、プロジェクトからダウンロードできる VHD ファイルをデプロイすることで設定できます。
 
 > [!NOTE]
-> なんらかの理由で、テンプレートを使用してアプライアンスを設定できない場合は、既存の Windows Server 2016 サーバー上で PowerShell スクリプトを使用して設定できます。 [詳細については、こちらを参照してください](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。
+> なんらかの理由で、テンプレートを使用してアプライアンスを設定できない場合は、既存の Windows Server 2016 サーバー上で PowerShell スクリプトを使用して設定できます。 [詳細については、こちらを参照してください](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。<br/>
+> VHD テンプレートを使用してアプライアンスをデプロイする方法は、Azure Government クラウドではサポートされません。 Azure Government クラウド用のアプライアンスをデプロイする方法について[詳細をご覧ください](./deploy-appliance-script-government.md)。
 
 このチュートリアルでは、次のように、Hyper-V 環境で実行されているサーバーにアプライアンスを設定します。
 
 1. アプライアンス名を指定し、ポータルでプロジェクト キーを生成します。
 1. Azure portal から圧縮された Hyper-V VHD をダウンロードします。
-1. アプライアンスを作成し、Azure Migrate: Discovery and Assessment に接続できることを確認します。
+1. アプライアンスを作成し、それが Azure Migrate: 検出および評価に接続できることを確認します。
 1. 初回のアプライアンス構成を行い、プロジェクト キーを使用してプロジェクトに登録します。
 
 ### <a name="1-generate-the-project-key"></a>1.プロジェクト キーを生成する
@@ -176,13 +176,13 @@ Azure Migrate には軽量の Azure Migrate アプライアンスが使用され
 
         **シナリオ** | **ダウンロード** | **SHA256**
         --- | --- | ---
-        Hyper-V (8.91 GB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
+        Hyper-V (8.91 GB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140422) |  91A435962F0DC9C7032DE0288D578171A76CC07563AC543C5E1EB25CD31BB231
 
     - Azure Government の場合:
 
         **シナリオ** _ | _ *ダウンロード** | **SHA256**
         --- | --- | ---
-        Hyper-V (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
+        Hyper-V (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140424) |  3C00F9EB54CC6C55E127EDE47DFA28CCCF752697377EB1C9F3435E75DA5AA029
 
 ### <a name="3-create-an-appliance"></a>3.アプライアンスを作成する
 
@@ -224,11 +224,11 @@ Azure Migrate には軽量の Azure Migrate アプライアンスが使用され
       - サポートされるのは HTTP プロキシのみです。
       - プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
     - **時刻同期**:時刻が確認されます。 サーバーの検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
-    - **更新プログラムのインストール**: Azure Migrate: Discovery and Assessment によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
+    - **更新プログラムのインストール**: Azure Migrate の検出および評価によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. ポータルからコピーした **プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Azure Migrate: Discovery and Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. ポータルからコピーした **プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Azure Migrate: Discovery and Assessment]\(Azure Migrate: 検出および評価\) > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
 1. Azure で認証するには、デバイス コードが必要です。 **[ログイン]** をクリックすると、次に示すように、デバイス コードを含むモーダルが開きます。
 
     ![デバイス コードを示すモーダル](./media/tutorial-discover-vmware/device-code.png)

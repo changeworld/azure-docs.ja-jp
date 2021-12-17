@@ -7,14 +7,13 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: b283cacf94ff3567428787e50a3d7db9ba91fd9c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d88cdf68ddf1abfc8beb3d3357943d5c08c94af9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864042"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006755"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -89,7 +88,7 @@ Web ページでマップ コントロールを使用するには、次のいず
 
     認証にサブスクリプション キーを使用している場合は、`<head>` 要素内の最初の `<script>` 要素の下に、次のスクリプト要素をコピーして貼り付けます。 `<Your Azure Maps Key>` を実際の Azure Maps プライマリ サブスクリプション キーに置き換えます。
 
-     ```HTML
+    ```html
     <script type="text/javascript">
         function InitMap()
         {
@@ -200,9 +199,9 @@ Web ページでマップ コントロールを使用するには、次のいず
 
    ![レンダリングされた結果を示すマップ イメージ](./media/how-to-use-map-control/map-of-seattle.png)
 
-## <a name="localizing-the-map&quot;></a>マップのローカライズ
+## <a name="localizing-the-map"></a>マップのローカライズ
 
-Azure Maps には、レンダリングされたマップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバルな `atlas` 名前空間に追加します。これにより、アプリ内のすべてのマップ コントロール インスタンスにより、これらの設定が既定で使用されます。 以下では、言語をフランス語 (&quot;fr-FR") に、地域ビューを "auto" に設定します。
+Azure Maps には、レンダリングされたマップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバルな `atlas` 名前空間に追加します。これにより、アプリ内のすべてのマップ コントロール インスタンスにより、これらの設定が既定で使用されます。 以下では、言語をフランス語 ("fr-FR") に、地域ビューを "auto" に設定します。
 
 ```javascript
 atlas.setLanguage('fr-FR');

@@ -4,16 +4,16 @@ description: Azure Red Hat OpenShift で Azure Files StorageClass を作成す�
 ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 10/16/2020
-author: grantomation
-ms.author: b-grodel
+author: georgewallace
+ms.author: gwallace
 keywords: aro、openshift、az aro、red hat、cli、azure file
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 039aa3cce6615e71960db810ae383d22d7bcd909
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 04e89b9e7d953784d7a5ef4062cedec50257a1e0
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212979"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166752"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 で Azure Files StorageClass を作成する
 
@@ -68,7 +68,7 @@ OpenShift 永続ボリュームのバインダー サービス アカウント�
 ```bash
 ARO_API_SERVER=$(az aro list --query "[?contains(name,'$CLUSTER')].[apiserverProfile.url]" -o tsv)
 
-oc login -u kubeadmin -p $(az aro list-credentials -g $ARO_RESOURCE_GROUP -n $CLUSTER --query=kubeadminPassword -o tsv) $APISERVER
+oc login -u kubeadmin -p $(az aro list-credentials -g $ARO_RESOURCE_GROUP -n $CLUSTER --query=kubeadminPassword -o tsv) $ARO_API_SERVER
 
 oc create clusterrole azure-secret-reader \
     --verb=create,get \
@@ -117,18 +117,21 @@ oc patch storageclass azure-file -p '{"metadata": {"annotations":{"storageclass.
 
 新しいアプリケーションを作成し、それにストレージを登録します。
 
+> [!NOTE]
+> `httpd-example` テンプレートを使用するには、プル シークレットを有効にして ARO クラスターをデプロイする必要があります。 詳しくは、[Red Hat プルシークレットの取得](tutorial-create-cluster.md#get-a-red-hat-pull-secret-optional)に関するセクションをご覧ください。
+
 ```bash
 oc new-project azfiletest
-oc new-app -template httpd-example
+oc new-app httpd-example
 
 #Wait for the pod to become Ready
 curl $(oc get route httpd-example -n azfiletest -o jsonpath={.spec.host})
 
-oc set volume dc/httpd-example --add --name=v1 -t pvc --claim-size=1G -m /data
+#If you have set the storage class by default, you can omit the --claim-class parameter
+oc set volume dc/httpd-example --add --name=v1 -t pvc --claim-size=1G -m /data --claim-class='azure-file'
 
 #Wait for the new deployment to rollout
 export POD=$(oc get pods --field-selector=status.phase==Running -o jsonpath={.items[].metadata.name})
-oc exec $POD -- bash -c "mkdir ./data"
 oc exec $POD -- bash -c "echo 'azure file storage' >> /data/test.txt"
 
 oc exec $POD -- bash -c "cat /data/test.txt"

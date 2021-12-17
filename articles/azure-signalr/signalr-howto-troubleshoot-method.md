@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: ed8775c6544791571746b0f3784a60ce2af0de7a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a85e61536e04bd670cd49127f906c69727acc8e9
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726976"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113134981"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>接続とメッセージ配信に関する問題のトラブルシューティング方法
 
@@ -27,9 +27,17 @@ ms.locfileid: "105726976"
 
 * `Classic` モードの場合は、「[クラシック モードのトラブルシューティング](#classic_mode_tsg)」を参照してください
 
-<a name="default_mode_tsg"></a>
+次に、サービス トレースをキャプチャしてトラブルシューティングを行う必要があります。 トレースをキャプチャする方法については、「[サービス トレースをキャプチャする方法](#how-to-capture-service-traces)」を参照してください。
 
 [トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
+
+## <a name="how-to-capture-service-traces"></a>サービス トレースをキャプチャする方法
+
+トラブルシューティング プロセスを省力化するために、Azure SignalR サービスには、**接続性** や **メッセージング** のカテゴリについてのサービス トレースを公開する **ライブ トレース ツール** が用意されています。 トレースには、接続の接続イベントと切断イベント、メッセージの着信イベントと発信イベントなどが含まれます。 **ライブ トレース ツール** を使用すると、ライブ トレースのキャプチャ、表示、並べ替え、フィルタリング、エクスポートを実行することができます。 詳細については、[ライブ トレース ツールの使用方法](./signalr-howto-troubleshoot-live-trace.md)に関するページを参照してください。
+
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
+
+<a name="default_mode_tsg"></a>
 
 ## <a name="default-mode-troubleshooting"></a>既定モードのトラブルシューティング
 

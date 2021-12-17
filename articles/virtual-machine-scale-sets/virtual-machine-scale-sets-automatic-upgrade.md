@@ -1,22 +1,24 @@
 ---
 title: Azure 仮想マシン スケール セットを使用した OS イメージの自動アップグレード
 description: スケール セット内の VM インスタンス上の OS イメージを自動的にアップグレードする方法について説明します
-author: avirishuv
-ms.author: avverma
+author: mayanknayar
+ms.author: manayar
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: automatic-os-upgrade
-ms.date: 06/26/2020
+ms.date: 07/29/2021
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 047eab6cb90caa18362830c8c74656f76865a9ec
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f4b5c58eb8811db9042d92416c4c37fa30234149
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762877"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432949"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 スケール セットでの自動 OS イメージ アップグレードを有効にすると、スケール セット内のすべてのインスタンスの OS ディスクが安全かつ自動的にアップグレードされるようになり、更新プログラムの管理が簡素化されます。
 
@@ -25,20 +27,42 @@ OS の自動アップグレードには、次の特徴があります。
 - 構成すると、イメージ発行元によって公開された最新の OS イメージが、ユーザーの介入なしでスケール セットに自動的に適用されます。
 - 新しいイメージが発行元によって発行されるたびに、ローリングの方法でバッチごとにインスタンスをアップグレードします。
 - アプリケーション正常性プローブおよび[アプリケーション正常性拡張機能](virtual-machine-scale-sets-health-extension.md)と統合されます。
-- すべての VM サイズについて、Windows と Linux の両方のイメージで動作します。
+- すべての VM サイズに対して、また、[Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) から入手したカスタム イメージを含む Windows イメージと Linux イメージの両方に対して動作します。
 - 自動アップグレードはいつでも停止できます (OS のアップグレードは、手動でも開始できます)。
 - VM の OS ディスクが、最新バージョンのイメージで作成された新しい OS ディスクに置き換えられます。 永続化されているデータ ディスクは保持されたまま、構成済みの拡張機能とカスタム データ スクリプトが実行されます。
 - [拡張機能のシーケンス処理](virtual-machine-scale-sets-extension-sequencing.md)がサポートされています。
-- 自動 OS イメージ アップグレードは、任意の規模のスケール セットで有効にすることができます。
+- すべてのサイズのスケール セットで有効にできます。
 
 ## <a name="how-does-automatic-os-image-upgrade-work"></a>OS イメージの自動アップグレードのしくみ
 
-アップグレードは、VM の OS ディスクを、最新のイメージ バージョンを使用して作成された新しいディスクに置き換えることによって実行されます。 永続化されているデータ ディスクは保持されたまま、すべての構成済みの拡張機能とカスタム データ スクリプトが OS ディスク上で実行されます。 アプリケーションのダウンタイムを最小限に抑えるため、アップグレードはバッチで行われ、いつでもスケール セットの 20% を超えてアップグレードされることはありません。 また、Azure Load Balancer アプリケーション正常性プローブや[アプリケーション正常性拡張機能](virtual-machine-scale-sets-health-extension.md)を統合することもできます。 アプリケーションのハートビートを組み込み、アップグレード プロセスでのバッチごとのアップグレードの成功を検証することをお勧めします。
+アップグレードは、VM の OS ディスクを、最新のイメージ バージョンを使用して作成された新しいディスクに置き換えることによって実行されます。 すべての構成済み拡張機能とカスタム データ スクリプトは OS ディスク上で実行されますが、データ ディスクは保持されます。 アプリケーションのダウンタイムを最小限に抑えるため、アップグレードはバッチで行われ、いつでもスケール セットの 20% を超えてアップグレードされることはありません。
 
-アップグレード プロセスは次のように実行されます。
+Azure Load Balancer アプリケーション正常性プローブまたは[アプリケーション正常性拡張機能](virtual-machine-scale-sets-health-extension.md)を統合して、アップグレードのアプリケーションの正常性を追跡できます。 アップグレードの成功を検証するために、アプリケーション ハートビートを組み込むことをお勧めします。
+
+### <a name="availability-first-updates"></a>可用性優先の更新
+以下で説明するプラットフォームの調整された更新の可用性優先モデルにより、Azure の可用性構成が複数の可用性レベルで尊重されます。
+
+**複数のリージョン間:**
+- Azure 全体のデプロイが失敗するのを防ぐために、更新は Azure 全体を段階的に移動します。
+- 1 つの "フェーズ" には 1 つ以上のリージョンを含めることができます。前のフェーズで対象の VM が正常に更新された場合にのみ、更新はフェーズ間を移動します。
+- geo ペア リージョンは同時に更新されず、同じリージョン フェーズに置くことはできません。
+- 更新の成功は、更新後に VM の正常性を追跡することによって測定できます。
+
+**リージョン内:**
+- 異なる Availability Zones の VM は、同じ更新で同時に更新されることはありません。
+
+**"セット" 内:**
+- 共通のスケール セット内のすべての VM が同時に更新されることはありません。  
+- 共通の仮想マシン スケール セット内の VM は、以下に示すように、バッチにグループ化され、更新ドメインの境界内で更新されます。
+
+プラットフォームの調整された更新プロセスに従って、サポートされている OS プラットフォーム イメージのアップグレードが毎月ロールアウトされます。 Azure Compute Gallery から入手したカスタム イメージの場合、イメージのアップグレードは、その新しいイメージが公開され、そのスケール セットのリージョンに[レプリケート](../virtual-machines/shared-image-galleries.md#replication)された時に、特定の Azure リージョンに対してのみ開始されます。
+
+### <a name="upgrading-vms-in-a-scale-set"></a>スケール セット内の VM のアップグレード
+
+スケール セットのリージョンは、プラットフォーム イメージ用の可用性優先プロセスまたは Shared Image Gallery の新しいカスタム イメージ バージョンのレプリケートによるイメージ アップグレードの対象となります。 その後、イメージ アップグレードは、バッチ処理された方法で次のように個々のスケール セットに適用されます。
 1. アップグレード プロセスを開始する前に、オーケストレーターは異常なインスタンスが全体的なスケール セットの 20% を超えていないことを確認します。
-2. アップグレード オーケストレーターは、どの 1 つのバッチも最大で合計インスタンス数の 20% であり、1 つの仮想マシンの最小バッチ サイズを満たしているという条件で、アップグレードする VM インスタンスのバッチを識別します。
-3. VM インスタンスの選択したバッチの OS ディスクは、最新のイメージから作成された新しい OS ディスクに置き換えられます。 スケール セット モデルに指定されたすべての拡張機能と構成は、アップグレードされたインスタンスに適用されます。
+2. アップグレード オーケストレーターは、どの 1 つのバッチも最大で合計インスタンス数の 20% であり、1 つの仮想マシンの最小バッチ サイズを満たしているという条件で、アップグレードする VM インスタンスのバッチを識別します。 最小スケール セット サイズの要件はなく、インスタンス数が 5 以下のスケール セットは、アップグレード バッチごとに 1 つの VM を持ちます (最小バッチ サイズ)。
+3. 選択されたアップグレード バッチの各 VM の OS ディスクは、最新のイメージから作成された新しい OS ディスクに置き換えられます。 スケール セット モデルに指定されたすべての拡張機能と構成は、アップグレードされたインスタンスに適用されます。
 4. 構成済みのアプリケーション正常性プローブやアプリケーション正常性拡張機能があるスケール セットの場合、アップグレードはインスタンスが正常になるまで 5 分間待機した後、次のバッチのアップグレードに進みます。 アップグレードから 5 分以内にインスタンスの正常性が回復しない場合は、既定でそのインスタンスの以前の OS ディスクが復元されます。
 5. また、アップグレード オーケストレーターでは、アップグレード後に異常が発生したインスタンスの割合も追跡されます。 アップグレード処理中に異常なアップグレード済みインスタンスの割合が 20% を超えた場合、アップグレードは停止します。
 6. 上記のプロセスは、スケール セット内のすべてのインスタンスがアップグレードされるまで続行されます。
@@ -49,7 +73,7 @@ OS の自動アップグレードには、次の特徴があります。
 >OS の自動アップグレードでは、スケール セットの参照イメージ SKU はアップグレードされません。 SKU (Ubuntu 16.04-LTS から 18.04-LTS など) を変更するには、目的のイメージ SKU を使用して直接[スケール セット モデル](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)を更新する必要があります。 既存のスケール セットに対して、イメージ発行者とオファーを変更することはできません。  
 
 ## <a name="supported-os-images"></a>サポート対象の OS イメージ
-現時点では、特定の OS プラットフォーム イメージのみがサポートされています。 カスタム イメージが [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) を介してスケール セットで使用されている場合は、その[カスタム イメージ](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)はサポートされます。
+現時点では、特定の OS プラットフォーム イメージのみがサポートされています。 カスタム イメージが [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) を介してスケール セットで使用されている場合は、そのカスタム イメージは[サポートされます](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)。
 
 現時点では、以下のプラットフォーム SKU がサポートされています (定期的に追加されます)。
 
@@ -60,40 +84,43 @@ OS の自動アップグレードには、次の特徴があります。
 | OpenLogic               | CentOS        | 7.5                |
 | MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
 | MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    |
-| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-smalldisk |
 | MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-with-Containers |
 | MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter |
-| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-smalldisk |
 | MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-with-Containers |
-| MicrosoftWindowsServer  | WindowsServer | Datacenter-Core-1903-with-Containers-smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Core |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Core-with-Containers |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-gensecond |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>OS イメージの自動アップグレードを構成するための要件
 
 - イメージの *version* プロパティを *latest* に設定する必要があります。
-- Service Fabric 以外のスケール セットには、アプリケーション正常性プローブまたは[アプリケーション正常性拡張機能](virtual-machine-scale-sets-health-extension.md)を使用します。
+- Service Fabric 以外のスケール セットや、ノードの種類がステートレス専用の Bronze の持続性の Service Fabric スケール セットに対しては、アプリケーション正常性プローブか[アプリケーション正常性拡張機能](virtual-machine-scale-sets-health-extension.md)を使用します。
 - コンピューティング API バージョン 2018-10-01 以降を使用します。
 - スケール セット モデルで指定された外部リソースが利用可能であり、更新可能であることを確認してください。 例としては、VM 拡張プロパティ内のブートストラップ ペイロードの SAS URI、ストレージ アカウント内のペイロード、モデル内のシークレットへの参照などが挙げられます。
-- Windows 仮想マシンを使用するスケール セットの場合、コンピューティング API バージョン 2019-03-01 以降、スケール セット モデル定義で *virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates* プロパティを *false* に設定する必要があります。 上記のプロパティを使用すると、OS ディスクを交換せずにオペレーティング システムの修正プログラムを "Windows Update" で適用する VM 内アップグレードを実行できます。 スケール セットで OS イメージの自動アップグレードが有効な場合は、"Windows Update" による追加の更新プログラムは不要です。
+- Windows 仮想マシンを使用するスケール セットの場合、コンピューティング API バージョン 2019-03-01 以降、スケール セット モデル定義で *virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates* プロパティを *false* に設定する必要があります。 *enableAutomaticUpdates* プロパティを使用すると、OS ディスクを交換せずにオペレーティング システムのパッチを "Windows Update" で適用する VM 内パッチが可能になります。 スケール セットで OS イメージの自動アップグレードが有効になっている場合は、Windows Update による追加のパッチ処理は不要です。
 
 ### <a name="service-fabric-requirements"></a>Service Fabric の要件
 
 Service Fabric を使用している場合は、次の条件が満たされていることを確認します。
--   Service Fabric の[持続性レベル](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)はシルバーまたはゴールドであり、ブロンズではありません (OS の自動アップグレードがサポートされるステートレス専用ノードタイプを除く)。
+-   Service Fabric の[持続性レベル](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)はシルバーまたはゴールドであり、ブロンズではありません (OS イメージの自動アップグレードをサポートするステートレス専用のノードの種類を除く)。
 -   スケール セット モデル定義の Service Fabric 拡張機能には、TypeHandlerVersion 1.1 以降が必要です。
 -   持続性レベルは、スケール セット モデル定義の Service Fabric クラスターと Service Fabric 拡張機能で同じである必要があります。
-- 追加の正常性プローブやアプリケーション正常性拡張機能を使用する必要はありません。
+- Silver または Gold の持続性については、追加の正常性プローブやアプリケーション正常性拡張機能を使用する必要はありません。 ノードの種類がステートレス専用の Bronze の持続性には、追加の正常性プローブが必要です。
+- プロパティ *virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates* プロパティは、スケール セット モデルの定義で *false* に設定する必要があります。 *enableAutomaticUpdates* プロパティを使用すると、"Windows Update" を使用した VM 内パッチが可能になりますが、このプロパティは Service Fabric スケール セットではサポートされていません。
 
 Service Fabric クラスターと Service Fabric 拡張機能で持続性の設定に不一致がないことを確認します。これは、一致しない場合にアップグレード エラーが発生する可能性があるためです。 持続性レベルは、[このページ](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)で説明されているガイドラインに従って変更できます。
 
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>カスタム イメージの OS イメージの自動アップグレード
 
-OS イメージの自動アップグレードは、[Shared Image Gallery](../virtual-machines/shared-image-galleries.md) を介して展開されているカスタム イメージでサポートされています。 その他のカスタム イメージは、OS イメージの自動アップグレードではサポートされていません。
+OS イメージの自動アップグレードは、[Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) を介して展開されているカスタム イメージでサポートされています。 その他のカスタム イメージは、OS イメージの自動アップグレードではサポートされていません。
 
 ### <a name="additional-requirements-for-custom-images"></a>カスタム イメージのその他の要件
 - OS イメージの自動アップグレードのセットアップおよび構成プロセスは、このページの[構成に関するセクション](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade)で詳しく説明されているように、すべてのスケール セットについて同一です。
-- OS イメージの自動アップグレードに向けて構成されたスケール セット インスタンスは、新しいバージョンのイメージが発行され、そのスケール セットのリージョンに[レプリケートされた](../virtual-machines/shared-image-galleries.md#replication)ときに、Shared Image Gallery のイメージの最新バージョンにアップグレードされます。 スケールがデプロイされているリージョンに新しいイメージがレプリケートされていない場合、スケール セット インスタンスは最新バージョンにアップグレードされません。 リージョンのイメージ レプリケーションによって、スケール セットの新しいイメージのロールアウトを制御することができます。
+- OS イメージの自動アップグレードに向けて構成されたスケール セット インスタンスは、新しいバージョンのイメージが発行され、そのスケール セットのリージョンに[レプリケートされた](../virtual-machines/shared-image-galleries.md#replication)ときに、Azure Compute Gallery のイメージの最新バージョンにアップグレードされます。 スケールがデプロイされているリージョンに新しいイメージがレプリケートされていない場合、スケール セット インスタンスは最新バージョンにアップグレードされません。 リージョンのイメージ レプリケーションによって、スケール セットの新しいイメージのロールアウトを制御することができます。
 - そのギャラリー イメージの最新バージョンから、新しいイメージ バージョンを除外しないでください。 ギャラリー イメージの最新バージョンから除外されたイメージ バージョンは、OS イメージの自動アップグレードによってスケール セットにロールアウトされません。
 
 > [!NOTE]
@@ -107,7 +134,7 @@ OS イメージの自動アップグレードを構成するには、スケー�
 次の例は、スケール セット モデルでの自動 OS アップグレードを設定する方法について説明したものです。
 
 ```
-PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2019-12-01`
+PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2021-03-01`
 ```
 
 ```json
@@ -163,7 +190,7 @@ OS のアップグレード中は、スケール セット内の VM インスタ
 ```
 
 > [!NOTE]
-> Service Fabric と OS 自動アップグレードを使用している場合、Service Fabric で実行されているサービスの高可用性を維持するために、新しい OS イメージは更新ドメインごとにロールアウトされます。 Service Fabric で OS の自動アップグレードを利用するには、シルバー以上の持続性レベルを使用するように、クラスターのノードタイプが構成されている必要があります。 ブロンズ持続性レベルの場合、OS の自動アップグレードは、ステートレス ノードタイプでのみサポートされます。 Service Fabric クラスターの持続性の特徴の詳細については、[こちらのドキュメント](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)を参照してください。
+> Service Fabric と OS 自動アップグレードを使用している場合、Service Fabric で実行されているサービスの高可用性を維持するために、新しい OS イメージは更新ドメインごとにロールアウトされます。 Service Fabric で OS の自動アップグレードを利用するには、クラスターのノードの種類が、シルバー以上の持続性レベルを使用するように構成されている必要があります。 ブロンズの持続性レベルの場合、OS イメージの自動アップグレードは、ステートレスのノードの種類でのみサポートされます。 Service Fabric クラスターの持続性の特徴の詳細については、[こちらのドキュメント](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)を参照してください。
 
 ### <a name="keep-credentials-up-to-date"></a>資格情報を最新に保つ
 スケール セットが外部のリソースにアクセスするときに資格情報を使用する場合、たとえば、VM 拡張機能がストレージ アカウントの SAS トークンを使用するように構成されている場合には、資格情報が最新であることを確認してください。 証明書やトークンなどの資格情報の期限が切れている場合は、アップグレードは失敗し、VM の最初のバッチは障害が発生した状態になります。
@@ -189,7 +216,7 @@ Azure PowerShell、Azure CLI 2.0、または REST API を使用して、スケ�
 次の例では、[REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) を使用して、*myResourceGroup* という名前のリソース グループ内の *myScaleSet* という名前のスケール セットの状態をチェックします。
 
 ```
-GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
+GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2021-03-01`
 ```
 
 GET 呼び出しは、次の例の出力に似たプロパティを返します。
@@ -249,7 +276,7 @@ az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSe
 
 ### <a name="rest-api"></a>REST API
 ```
-GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2019-12-01`
+GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2021-03-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -274,7 +301,7 @@ az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServ
 [OS アップグレードの開始](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API 呼び出しを使用してローリング アップグレードを開始し、すべての仮想マシン スケール セット インスタンスを、入手できる最新のイメージ OS バージョンに移行します。 入手できる最新の OS バージョンを既に実行しているインスタンスは影響を受けません。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
 
 ```
-POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
+POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2021-03-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -291,11 +318,6 @@ Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetNam
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"
 ```
 
-## <a name="deploy-with-a-template"></a>テンプレートを使用したデプロイ
-
-テンプレートを使用して、[Ubuntu 16.04-LTS](https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json) などのサポート済みイメージの自動 OS アップグレードを使用したスケール セットをデプロイできます。
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Azure." /></a>
-
 ## <a name="next-steps"></a>次のステップ
-スケール セットを使用して OS の自動アップグレードを使用する方法の例については、[GitHub リポジトリ](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade)を参照してください。
+> [!div class="nextstepaction"]
+> [アプリケーション正常性拡張機能について確認する](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md)

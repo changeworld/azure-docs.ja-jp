@@ -11,34 +11,34 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: d1d29e939ab01f6311b665eaec8425b7cd38f207
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83c08d603ab69cb06e3b82a11dd15daaf0410d52
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729463"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304859"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>チュートリアル:Shmoop For Schools と Azure Active Directory の統合
 
 このチュートリアルでは、Shmoop For Schools と Azure Active Directory (Azure AD) を統合する方法について説明します。 Shmoop For Schools と Azure AD を統合すると、次のことができます。
 
-* Shmoop For Schools にアクセスできるユーザーを Azure AD で制御する。
-* ユーザーが自分の Azure AD アカウントを使用して Shmoop For Schools に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
+- Shmoop For Schools にアクセスできるユーザーを Azure AD で制御する。
+- ユーザーが自分の Azure AD アカウントを使用して Shmoop For Schools に自動的にサインインできるようにする。
+- 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
 開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* シングル サインオン (SSO) が有効な Shmoop For Schools のサブスクリプション。
+- Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+- シングル サインオン (SSO) が有効な Shmoop For Schools のサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Shmoop For Schools では、**SP** によって開始される SSO がサポートされます
-* Shmoop For Schools では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+- Shmoop For Schools では、**SP** によって開始される SSO がサポートされます
+- Shmoop For Schools では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-shmoop-for-schools-from-the-gallery"></a>ギャラリーからの Shmoop For Schools の追加
 
@@ -58,10 +58,10 @@ Azure AD への Shmoop For Schools の統合を構成するには、ギャラリ
 Shmoop For Schools に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+   1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+   1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 2. **[Shmoop For Schools SSO の構成](#configure-shmoop-for-schools-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Shmoop For Schools テスト ユーザーの作成](#create-shmoop-for-schools-test-user)** - Shmoop For Schools で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+   1. **[Shmoop For Schools テスト ユーザーの作成](#create-shmoop-for-schools-test-user)** - Shmoop For Schools で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -76,29 +76,29 @@ Shmoop For Schools に対して Azure AD SSO を構成してテストするに�
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
+   a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://schools.shmoop.com/<uniqueid>`
+   b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://schools.shmoop.com/<uniqueid>`
 
-    > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Shmoop For Schools クライアント サポート チーム](mailto:support@shmoop.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+   > [!NOTE]
+   > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Shmoop For Schools クライアント サポート チーム](mailto:support@shmoop.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. Shmoop For Schools アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![image](common/default-attributes.png)
+   ![image](common/default-attributes.png)
 
 1. その他に、Shmoop For Schools アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | 名前 |  ソース属性|
-    | --------- | --------------- |
-    | role      | user.assignedroles |
+   | 名前 | ソース属性   |
+   | ---- | ------------------ |
+   | role | user.assignedroles |
 
-    > [!NOTE]
-    > Shmoop For Schools では、**[教師]** と **[学生]** の 2 つのユーザー ロールがサポートされます。 ユーザーに適切なロールを割り当てられるように、Azure AD でそのロールを設定します。 Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)を参照してください。
+   > [!NOTE]
+   > Shmoop For Schools では、**[教師]** と **[学生]** の 2 つのユーザー ロールがサポートされます。 ユーザーに適切なロールを割り当てられるように、Azure AD でそのロールを設定します。 Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)を参照してください。
 
 1. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+   ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -107,10 +107,10 @@ Shmoop For Schools に対して Azure AD SSO を構成してテストするに�
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-    1. **[名前]** フィールドに「`B.Simon`」と入力します。  
-    1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
-    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-    1. **Create** をクリックしてください。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -137,15 +137,14 @@ Shmoop For Schools に対して Azure AD SSO を構成してテストするに�
 
 ## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Shmoop For Schools のサインオン URL にリダイレクトされます。 
+- Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Shmoop For Schools のサインオン URL にリダイレクトされます。
 
-* Shmoop For Schools のサインオン URL に直接移動し、そこからログイン フローを開始します。
+- Shmoop For Schools のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Shmoop For Schools] タイルをクリックすると、Shmoop For Schools のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+- Microsoft マイ アプリを使用することができます。 マイ アプリで [Shmoop For Schools] タイルをクリックすると、Shmoop For Schools のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Shmoop For Schools を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Shmoop For Schools を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

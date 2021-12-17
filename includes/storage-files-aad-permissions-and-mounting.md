@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
-ms.custom: include file
-ms.openlocfilehash: 4773446ec0007ffbed99bc01939d1f92f5823d99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: afd94ba7a91d18ef1bc1321c6fbbb9688bc21255
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95561103"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110721794"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>ID にアクセス許可を割り当てる
 
@@ -126,7 +126,7 @@ Windows エクスプローラーを使用して、ルート ディレクトリ�
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>icacls を使用して NTFS アクセス許可を構成する
 
-ルート ディレクトリを含む、ファイル共有下のすべてのディレクトリとファイル共有に完全なアクセス許可を付与するには、次の Windows コマンドを使用します。 例中のプレースホルダーをお客様独自の値に置き換えてください。
+ルート ディレクトリを含む、ファイル共有下のすべてのディレクトリとファイル共有に完全なアクセス許可を付与するには、次の Windows コマンドを使用します。 例中のプレースホルダーを独自の値に置き換えてください。
 
 ```
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
@@ -142,7 +142,7 @@ icacls を使用して NTFS アクセス許可を設定する方法や、サポ�
 
 ![ユーザー認証のための Azure AD サインイン画面を示すスクリーン ショット](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-以下のコマンドを使用して Azure ファイル共有をマウントします。 プレースホルダーをお客様独自の値に置き換えてください。 認証済みなので、ストレージ アカウント キー、オンプレミスの AD DS の資格情報、または Azure AD DS の資格情報を指定する必要はありません。 オンプレミスの AD DS または Azure AD DS のいずれかを使用した認証では、シングル サインオン エクスペリエンスがサポートされています。 AD DS の資格情報を使用したマウントで問題が発生した場合は、「[Windows での Azure Files に関する問題のトラブルシューティング](../articles/storage/files/storage-troubleshoot-windows-file-connection-problems.md)」を参照してください。
+以下のコマンドを使用して Azure ファイル共有をマウントします。 プレースホルダー値をお客様独自の値に置き換えてください。 認証済みなので、ストレージ アカウント キー、オンプレミスの AD DS の資格情報、または Azure AD DS の資格情報を指定する必要はありません。 オンプレミスの AD DS または Azure AD DS のいずれかを使用した認証では、シングル サインオン エクスペリエンスがサポートされています。 AD DS の資格情報を使用したマウントで問題が発生した場合は、「[Windows での Azure Files に関する問題のトラブルシューティング](../articles/storage/files/storage-troubleshoot-windows-file-connection-problems.md)」を参照してください。
 
 ```
 $connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445

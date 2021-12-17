@@ -3,19 +3,19 @@ title: クイック スタート:意図を認識する、JavaScript - Speech サ
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
-author: erhopf
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
-ms.author: erhopf
-ms.openlocfilehash: 9c4c450057b32292d58bcc00f04b3073c78c18a1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.author: eur
+ms.openlocfilehash: 920495b3f293c06da760d6287ec26b847584047f
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136155"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507542"
 ---
 > [!div class="nextstepaction"]
 > [GitHub で JavaScript サンプルを探索する](https://aka.ms/speech/github-javascript)

@@ -2,28 +2,32 @@
 title: Azure Active Directory B2C を使用して QQ アカウントでのサインアップおよびサインインを設定する
 description: Azure Active Directory B2C を使用するアプリケーションで QQ アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3456ecb1de4b6197b274f09a0d25c31c51f43ca0
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: ea4be3d86c45982b61c4e3df80e6fa4f5144fb92
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028844"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130227781"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して QQ アカウントでのサインアップおよびサインインを設定する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
+::: zone pivot="b2c-user-flow"
+
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+::: zone-end
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,7 +62,8 @@ Azure Active Directory B2C (Azure AD B2C) で QQ アカウントを持つユー�
 ## <a name="configure-qq-as-an-identity-provider"></a>QQ を ID プロバイダーとして構成する
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[ID プロバイダー]** を選択してから、 **[QQ (プレビュー)]** を選択します。
 1. **[名前]** を入力します。 たとえば、「*QQ*」とします。
@@ -89,15 +94,16 @@ Azure Active Directory B2C (Azure AD B2C) で QQ アカウントを持つユー�
 Azure AD B2C テナントで前に記録したクライアント シークレットを格納する必要があります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
-5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-6. **オプション** については、`Manual`を選択します。
-7. ポリシー キーの **名前** を入力します。 たとえば、「 `QQSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
-8. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
-9. **[キー使用法]** として [`Signature`] を選択します。
-10. **Create** をクリックしてください。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
+1. **オプション** については、`Manual`を選択します。
+1. ポリシー キーの **名前** を入力します。 たとえば、「 `QQSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+1. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
+1. **[キー使用法]** として [`Signature`] を選択します。
+1. **Create** をクリックしてください。
 
 ## <a name="configure-qq-as-an-identity-provider"></a>QQ を ID プロバイダーとして構成する
 

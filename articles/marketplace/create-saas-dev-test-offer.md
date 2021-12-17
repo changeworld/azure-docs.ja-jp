@@ -1,21 +1,21 @@
 ---
-title: テスト オファーの作成
-description: Microsoft パートナー センターのコマーシャル マーケットプレイス プログラムで、運用オファーをテストするために、別個の開発オファーを作成する方法。
+title: テスト SaaS オファーを作成する
+description: Azure Marketplace で運用プランをテストするための別の開発プランを作成します。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 03/25/2021
-ms.openlocfilehash: 893d38d7dcf2ef0910bc46d3e9bfd168c2a89162
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/20/2021
+ms.openlocfilehash: 3c71dc08f58c73cf1fe35d4c2b42d30b30867a1e
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543365"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559036"
 ---
-# <a name="create-a-test-offer"></a>テスト オファーの作成
+# <a name="create-a-test-saas-offer"></a>テスト SaaS オファーを作成する
 
 運用オファーとは別の環境で開発する場合は、個別のテストおよび開発 (DEV) オファーと、個別の運用 (PROD) オファーを作成します。 別個の DEV オファーを使用する利点の詳細については、「[SaaS オファーの計画](plan-saas-offer.md#test-offer)」を参照してください。
 
@@ -94,10 +94,11 @@ Marketplace カスタム メーター ディメンションなどの、価格モ
 | ------------ | ------------- |
 | $0.00 | 合計トランザクション コストをゼロに設定して、財務に影響を与えないようにします。 この価格は、メータリング API の呼び出しや、ソリューションの開発中のオファーの購入プランのテストに使用します。 |
 | 0\.01 から 49.99 ドル | この価格範囲を使用して、分析、レポート、および購入のプロセスをテストします。 |
-| 50.00 ドル以上 | この価格範囲を使用して、ペイアウトをテストします。 ペイアウト スケジュールの詳細については、「[支払いスケジュールとプロセス](/partner-center/payout-policy-details)」を参照してください。 |
+| $50.00 - $100.00 | この価格範囲を使用して、ペイアウトをテストします。 ペイアウト スケジュールの詳細については、「[支払いスケジュールとプロセス](/partner-center/payout-policy-details)」を参照してください。 |
 |||
 
-テストでストア サービスの料金が請求されないようにするには、[サポート チケット](support.md)を開きます。
+> [!IMPORTANT]
+>  テストでストア サービスの料金が請求されないようにするには、テスト購入から 7 日以内に[サポート チケット](support.md)を開きます。
 
 #### <a name="free-trial"></a>無料試用版
 

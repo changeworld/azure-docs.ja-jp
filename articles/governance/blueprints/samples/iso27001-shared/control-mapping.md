@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 共有サービス ブループリント サンプルのコントロール
 description: ISO 27001 共有サービスのブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 02/05/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 64266e72bf2aa24ac7fbf70f87f27739709fa0be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31cc7bea93de75e8b3f6d21813d79a32c26085df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99626344"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632065"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービスのブループリント サンプルのコントロール マッピング
 
@@ -100,7 +100,7 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>A.10.1.1 暗号化コントロールの使用に関するポリシー
 
-このブループリントでは、特定の暗号化コントロールを実施し、脆弱な暗号化設定の使用を監査するための、13 個の [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、暗号化コントロールの使用に関するポリシーを徹底させることができます。 最適でない暗号化構成が Azure リソースのどこに存在しているかを把握することにより、適切な是正措置を実施し、リソースの構成を情報セキュリティ ポリシーに準拠させることができます。 このブループリントによって割り当てられるポリシーでは、次の要件が定義されています: BLOB ストレージ アカウントとデータ レイク ストレージの暗号化を実施する。SQL データベースで透過的データ暗号化を実施する。ストレージ アカウント、SQL データベース、仮想マシン ディスク、および自動化アカウント変数の中に、暗号化されていないものがないか監査する。ストレージ アカウント、Function App、Web App、API Apps、および Redis Cache に対する接続の中に、安全でないものがないか監査する。仮想マシンのパスワード暗号化に脆弱なものがないか監査する。暗号化されていない Service Fabric 通信がないか監査する。
+このブループリントでは、特定の暗号化コントロールを実施し、脆弱な暗号化設定の使用を監査するための、13 個の [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、暗号化コントロールの使用に関するポリシーを徹底させることができます。 最適でない暗号化構成が Azure リソースのどこに存在しているかを把握することにより、適切な是正措置を実施し、リソースの構成を情報セキュリティ ポリシーに準拠させることができます。 このブループリントによって割り当てられるポリシーでは、次の要件が定義されています: Blob Storage アカウントと Data Lake Storage の暗号化を実施する。SQL データベースで透過的データ暗号化を実施する。ストレージ アカウント、SQL データベース、仮想マシン ディスク、および自動化アカウント変数の中に、暗号化されていないものがないか監査する。ストレージ アカウント、Function App、Web App、API Apps、および Redis Cache に対する接続の中に、安全でないものがないか監査する。仮想マシンのパスワード暗号化に脆弱なものがないか監査する。暗号化されていない Service Fabric 通信がないか監査する。
 
 - Function App には HTTPS 経由でのみアクセスできるようにする
 - Web アプリケーションには HTTPS を介してのみアクセスできるようにする
@@ -178,7 +178,7 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 
 ## <a name="a1321-information-transfer-policies-and-procedures"></a>A.13.2.1 情報転送のポリシーと手順
 
-このブループリントでは、ストレージ アカウントや Redis Cache との接続の安全性を監査する 2 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、Azure サービスとの情報転送のセキュリティを強化できます。
+このブループリントでは、ストレージ アカウントや Azure Cache for Redis との接続の安全性を監査する 2 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、Azure サービスとの情報転送のセキュリティを強化できます。
 
 - Azure Cache for Redis へのセキュリティで保護された接続のみを有効にする必要がある
 - ストレージ アカウントへの安全な転送を有効にする必要がある

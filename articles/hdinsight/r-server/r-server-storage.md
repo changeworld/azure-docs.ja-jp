@@ -2,25 +2,27 @@
 title: HDInsight の ML Services 向けの Azure storage ソリューション - Azure
 description: HDInsight の ML Services で利用できるさまざまなストレージ オプションについて説明します
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/02/2020
-ms.openlocfilehash: ddc48025de164ff68fb539a293e06bae09171742
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 56b7181cafc9a17c2fdb468e1a47d664499dcdcc
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943908"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252915"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML Services 向けの Azure storage ソリューション
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 HDInsight 上の ML Services には、分析結果を含んだオブジェクトや、データ、コードを永続化するための異なるストレージ ソリューションがあります。 そのソリューションの例を次に示します。
 
 - [Azure BLOB Storage](https://azure.microsoft.com/services/storage/blobs/)
 - [Azure Data Lake Storage Gen1](https://azure.microsoft.com/services/storage/data-lake-storage/)
-- [Azure File Storage](https://azure.microsoft.com/services/storage/files/)
+- [Azure Files](https://azure.microsoft.com/services/storage/files/)
 
-ご自身の HDInsight クラスターで、複数の Azure ストレージ アカウント (またはコンテナー) にアクセスすることもできます。 Azure File Storage は、エッジ ノード用としての利便性に優れたデータ ストレージ オプションです。このストレージを選択した場合、Azure Storage ファイル共有を Linux ファイル システムなどにマウントすることができます。 ただし Azure ファイル共有は、サポートされている オペレーティング システム (Windows や Linux など) を使用している任意のシステムでマウントし、使用することができます。
+ご自身の HDInsight クラスターで、複数の Azure ストレージ アカウント (またはコンテナー) にアクセスすることもできます。 Azure Files は、エッジ ノード用としての利便性に優れたデータ ストレージ オプションです。このストレージを選択した場合、Azure ファイル共有を Linux ファイル システムなどにマウントすることができます。 ただし Azure ファイル共有は、サポートされている オペレーティング システム (Windows や Linux など) を使用している任意のシステムでマウントし、使用することができます。
 
 HDInsight で Apache Hadoop クラスターを作成するときに、**Azure Blob Storage** アカウントまたは **Data Lake Storage Gen1** のどちらかを指定します。 そのアカウントの特定のストレージ コンテナーが、作成したクラスターのファイル システム (Hadoop 分散ファイル システムなど) を保持します。 詳しい情報とガイダンスについては、次のドキュメントを参照してください。
 
@@ -162,14 +164,14 @@ hadoop fs -copyFromLocal /usr/lib64/R Server-7.4.1/library/RevoScaleR/SampleData
 hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 ```
 
-## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>HDInsight で ML Services を使って Azure File Storage を使用する
+## <a name="use-azure-files-with-ml-services-on-hdinsight"></a>HDInsight の ML Services で Azure Files を使用する
 
 [Azure Files](https://azure.microsoft.com/services/storage/files/) という、エッジ ノード上で使用できる便利なデータ ストレージを選択することも可能です。 Azure Files を使用すると、Azure Storage ファイル共有を Linux ファイル システムにマウントできます。 このストレージは特に、HDFS ではなくエッジ ノード上でネイティブ ファイル システムを使用する方がよい場合に、後で必要となる可能性があるデータ ファイル、R スクリプト、結果オブジェクトを格納するのに便利です。
 
 Azure Files の大きな利点は、サポートされている OS (Windows や Linux など) を使用している任意のシステムで、ファイル共有をマウントして使用できることです。 たとえば、チーム内のメンバーが所有する他の HDInsight クラスターや、Azure VM、オンプレミスのシステムでも使用できます。 詳細については、次を参照してください。
 
-- [Linux で Azure File Storage を使用する方法](../../storage/files/storage-how-to-use-files-linux.md)
-- [Windows で Azure File Storage を使用する方法](../../storage/files/storage-dotnet-how-to-use-files.md)
+- [Linux で Azure Files を使用する方法](../../storage/files/storage-how-to-use-files-linux.md)
+- [Windows で Azure Files を使用する方法](../../storage/files/storage-dotnet-how-to-use-files.md)
 
 ## <a name="next-steps"></a>次のステップ
 

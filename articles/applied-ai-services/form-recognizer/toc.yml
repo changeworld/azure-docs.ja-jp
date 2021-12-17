@@ -1,0 +1,199 @@
+items:
+  - name: Azure Form Recognizer のドキュメント
+    href: index.yml
+  - name: 概要
+    expanded: true
+    items:
+      - name: Azure Form Recognizer とは?
+        href: overview.md
+      - name: 言語のサポート
+        href: language-support.md
+      - name: 価格
+        href: 'https://azure.microsoft.com/pricing/details/form-recognizer/'
+      - name: サービスの制限
+        href: service-limits.md
+      - name: 新機能
+        href: whats-new.md
+  - name: クイックスタート
+    items:
+      - name: Form Recognizer v2.1
+        items:
+          - name: サンプル ラベル付けツール
+            href: quickstarts/try-sample-label-tool.md
+          - name: クライアント ライブラリと REST API
+            href: quickstarts/get-started-sdk-rest-api.md
+      - name: Form Recognizer v3.0 | プレビュー
+        items:
+          - name: Form Recognizer Studio (プレビュー)
+            href: quickstarts/try-v3-form-recognizer-studio.md
+          - name: REST API (プレビュー)
+            href: quickstarts/try-v3-rest-api.md
+          - name: C# SDK (プレビュー)
+            href: quickstarts/try-v3-csharp-sdk.md
+          - name: Java SDK (プレビュー)
+            href: quickstarts/try-v3-java-sdk.md
+          - name: JavaScript SDK (プレビュー)
+            href: quickstarts/try-v3-javascript-sdk.md
+          - name: Python SDK (プレビュー)
+            href: quickstarts/try-v3-python-sdk.md
+  - name: 操作方法ガイド
+    items:
+      - name: Form Recognizer v3.0 (プレビュー) への移行
+        href: v3-migration-guide.md
+      - name: SDK と REST API を使う (v2.1)
+        href: how-to-guides/try-sdk-rest-api.md
+      - name: Azure BLOB コンテナーの SAS トークンを生成する
+        href: generate-sas-tokens.md
+      - name: カスタム モデル
+        items:
+          - name: カスタム モデルを構築してトレーニングする
+            items:
+              - name: トレーニング データ セットを集める
+                href: build-training-data-set.md
+              - name: サンプル ラベル付けツールのデプロイ
+                href: deploy-label-tool.md
+              - name: サンプル ラベル付けツールを使用してカスタム モデルをトレーニングする
+                href: label-tool.md
+              - name: テーブル タグを使用したカスタム フォーム モデルのトレーニング
+                href: supervised-table-tags.md
+          - name: カスタム モデルを作成する
+            href: compose-custom-models.md
+      - name: モデルのバックアップと復旧
+        href: disaster-recovery.md
+      - name: コンテナーの使用
+        items:
+          - name: コンテナーのインストールと実行
+            displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+            href: containers/form-recognizer-container-install-run.md
+          - name: コンテナーを構成する
+            href: containers/form-recognizer-container-configuration.md
+            displayName: 'docker, container, run, billing, apikey, logging'
+          - name: コンテナー イメージ タグ
+            href: containers/form-recognizer-container-image-tags.md
+          - name: Container Instances の使用
+            href: ../../cognitive-services/containers/azure-container-instance-recipe.md
+      - name: エンタープライズ対応
+        items:
+          - name: 仮想ネットワークの設定
+            href: ../../cognitive-services/cognitive-services-virtual-networks.md?context=/azure/applied-ai-services/form-recognizer/context/context
+          - name: マネージド ID の作成と使用
+            href: managed-identity-byos.md
+          - name: カスタマー マネージド キーを使用する
+            href: encrypt-data-at-rest.md
+          - name: Azure AD 認証を使用する
+            href: ../../cognitive-services/authentication.md?context=/azure/applied-ai-services/form-recognizer/context/context
+  - name: サンプル
+    items:
+      - name: C#/.NET
+        href: /samples/azure/azure-sdk-for-net/azure-form-recognizer-client-sdk-samples/
+      - name: Java
+        href: /java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-stable#examples
+      - name: Python
+        href: /samples/azure/azure-sdk-for-python/formrecognizer-samples/
+      - name: JavaScript
+        href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
+  - name: AI の責任ある使用
+    items:
+      - name: 透明性に関するメモ
+        items:
+          - name: Azure Form Recognizer のシナリオ
+            href: /legal/cognitive-services/form-recognizer/fr-transparency-note?context=/azure/applied-ai-services/form-recognizer/context/context
+          - name: 特性と制限
+            href: /legal/cognitive-services/form-recognizer/fr-characteristics-and-limitations?context=/azure/applied-ai-services/form-recognizer/context/context
+      - name: 統合と責任ある使用
+        href: /legal/cognitive-services/form-recognizer/fr-guidance-integration-responsible-use?context=/azure/applied-ai-services/form-recognizer/context/context
+      - name: データ、プライバシー、セキュリティ
+        href: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/applied-ai-services/form-recognizer/context/context
+  - name: 概念
+    items:
+      - name: モデルの概要
+        href: concept-model-overview.md
+      - name: Form Recognizer スタジオ | プレビュー
+        href: concept-form-recognizer-studio.md
+      - name: 一般的なドキュメント モデル | プレビュー
+        href: concept-general-document.md
+      - name: レイアウト モデル
+        href: concept-layout.md
+      - name: 請求書モデル
+        href: concept-invoice.md
+      - name: レシート モデル
+        href: concept-receipt.md
+      - name: 身分証明書モデル
+        href: concept-id-document.md
+      - name: 名刺モデル
+        href: concept-business-card.md
+      - name: カスタム モデル
+        href: concept-custom.md
+  - name: チュートリアル
+    items:
+      - name: Azure Form Recognizer と AI Builder のワークフロー
+        expanded: true
+        items:
+          - name: Custom
+            href: /ai-builder/create-form-processing-model?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
+          - name: 請求書
+            href: /ai-builder/flow-invoice-processing?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
+          - name: Receipt
+            href: /ai-builder/flow-receipt-processing?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
+          - name: 身分証明書
+            href: /ai-builder/id-reader?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/cognitive-services/applied-ai-services/breadcrumb/toc.json
+          - name: 名刺
+            href: /ai-builder/flow-business-card-reader?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
+      - name: Cognitive Search で Azure Form Recognizer を使用する
+        href: ../../search/cognitive-search-custom-skill-form.md
+      - name: Azure Functions で Azure Form Recognizer を使用する
+        href: tutorial-azure-function.md
+  - name: 関連項目
+    items:
+      - name: エラー コードとメッセージ v3.0 (プレビュー)
+        href: preview-error-guide.md
+      - name: Azure Form Recognizer REST API v3.0 (プレビュー)
+        items:
+          - name: REST API v3.0 リファレンス
+            href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument'
+          - name: クライアント ライブラリと SDK
+            items:
+              - name: .NET
+                href: 'https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.AI.FormRecognizer/4.0.0-beta.1/index.html'
+              - name: Python
+                href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-formrecognizer/3.2.0b1/index.html'
+              - name: Java
+                href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-formrecognizer/4.0.0-beta.1/index.html'
+              - name: JavaScript
+                href: 'https://azuresdkdocs.blob.core.windows.net/$web/javascript/azure-ai-form-recognizer/4.0.0-beta.1/index.html'
+      - name: Azure Form Recognizer REST API v2.1
+        items:
+          - name: REST API v2.1 リファレンス
+            href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm'
+          - name: クライアント ライブラリと SDK
+            items:
+              - name: .NET
+                href: /dotnet/api/overview/azure/ai.formrecognizer-readme
+              - name: Python
+                href: /python/api/azure-ai-formrecognizer/
+              - name: Java
+                href: /java/api/overview/azure/ai-formrecognizer-readme
+              - name: JavaScript
+                href: /javascript/api/overview/azure/ai-form-recognizer-readme
+      - name: Azure Form Recognizer REST API v2.0
+        items:
+          - name: REST API v2.0 リファレンス
+            href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
+          - name: SDK のガイド
+            href: api-v2-0/reference-sdk-api-v2-0.md
+  - name: リソース
+    items:
+      - name: 顧客の紹介
+        href: resource-customer-stories.md
+      - name: Azure のロードマップ
+        href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+      - name: エンタープライズ対応
+        items:
+          - name: リージョンのサポート
+            href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+          - name: コンプライアンスと認定資格
+            href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+      - name: サポート オプションとヘルプ オプション
+        href: ../../cognitive-services/cognitive-services-support-options.md?context=/azure/applied-ai-services/form-recognizer/context/context
+      - name: プライバシーと Cookie
+        href: 'https://privacy.microsoft.com/en-US/privacystatement'

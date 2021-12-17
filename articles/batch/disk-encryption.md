@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/16/2021
 ms.author: peshultz
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 01d2ea03768a09c1ad4e019b9e8ed43a26443637
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 5d332a6e48e288988599adbfb6e173676ae8d3a3
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728520"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891808"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>ディスク暗号化が有効になっているプールを作成する
 

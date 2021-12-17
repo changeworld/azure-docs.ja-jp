@@ -7,20 +7,20 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: beb5930e98a5c5498349dc3aa773423ee5d281bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8d7e05ba1e4a21ded5d90de6bea301e4cd94451a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792473"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547650"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>マネージド ID を使用して Azure Database for PostgreSQL に接続する
 
-この記事では、Azure Virtual Machine (VM) のユーザー割り当て ID を使用して、Azure Database for PostgreSQL サーバーにアクセスする方法について説明します。 管理対象サービス ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。 
+システム割り当てとユーザー割り当ての両方のマネージド ID を使用して、Azure Database for PostgreSQL に対する認証を行うことができます。 この記事では、Azure 仮想マシン (VM) のシステム割り当てマネージド ID を使って、Azure Database for PostgreSQL サーバーにアクセスする方法について説明します。 マネージド ID は Azure によって自動的に管理され、それを使用すると、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスで認証を行うことができます。
 
 学習内容は次のとおりです。
 - VM に Azure Database for PostgreSQL サーバーへのアクセスを許可する
-- VM のユーザー割り当て ID を表すユーザーをデータベースに作成する
+- VM のシステム割り当て ID を表すユーザーをデータベースに作成する
 - VM ID を使用してアクセス トークンを取得し、それを使用して Azure Database for PostgreSQL サーバーにクエリを実行する
 - C# サンプル アプリケーションにトークン取得を実装する
 
@@ -32,39 +32,24 @@ ms.locfileid: "107792473"
 - [Azure AD 認証](howto-configure-sign-in-aad-authentication.md)が構成されている Azure Database for PostgreSQL データベース サーバーが必要
 - C# のサンプルを理解するため、[C# を使用した接続](connect-csharp.md)方法に関するガイドにまず目を通している
 
-## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>VM のユーザー割り当てマネージド ID を作成する
+## <a name="creating-a-system-assigned-managed-identity-for-your-vm"></a>VM 用のシステム割り当てマネージド ID の作成
 
-[az identity create](/cli/azure/identity#az_identity_create) コマンドを使用して、サブスクリプション内に ID を作成します。 使用している仮想マシンが実行されているのと同じリソース グループを使用することも、別のものを使用することもできます。
+[az vm identity assign](/cli/azure/vm/identity/) と `identity assign` コマンドを使用して、既存の VM に対するシステム割り当て ID を有効にします。
 
 ```azurecli-interactive
-az identity create --resource-group myResourceGroup --name myManagedIdentity
+az vm identity assign -g myResourceGroup -n myVm
 ```
 
-後の手順で ID を構成するために、[az identity show](/cli/azure/identity#az_identity_show) コマンドを使用して、ID のリソース ID とクライアント ID を変数に格納します。
+システム割り当てマネージド ID のアプリケーション ID を取得します。これは、次のいくつかの手順で必要です。
 
 ```azurecli
-# Get resource ID of the user-assigned identity
-resourceID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query id --output tsv)
-
-# Get client ID of the user-assigned identity
-clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
-```
-
-これで、[az vm identity assign](/cli/azure/vm/identity#az_vm_identity_assign) コマンドを使用して、ユーザー割り当て ID を VM に割り当てることができるようになりました。
-
-```azurecli
-az vm identity assign --resource-group myResourceGroup --name myVM --identities $resourceID
-```
-
-セットアップを完了するため、クライアント ID の値を表示します。この値は、この後のいくつかの手順で必要になります。
-
-```bash
-echo $clientID
+# Get the client ID (application ID) of the system-assigned managed identity
+az ad sp list --display-name vm-name --query [*].appId --out tsv
 ```
 
 ## <a name="creating-a-postgresql-user-for-your-managed-identity"></a>マネージド ID の PostgreSQL ユーザーを作成する
 
-ここで、Azure AD 管理者ユーザーとして PostgreSQL データベースに接続し、次の SQL ステートメントを実行します。
+次に、Azure AD 管理者ユーザーとして PostgreSQL データベースに接続し、次の SQL ステートメントを実行します。`CLIENT_ID` は、システム割り当てマネージド ID 用に取得したクライアント ID に置き換えます。
 
 ```sql
 SET aad_validate_oids_in_tenant = off;
@@ -101,7 +86,7 @@ psql -h SERVER --user USER@SERVER DBNAME
 
 このセクションでは、VM のユーザー割り当てマネージド ID を使用してアクセス トークンを取得し、それを使用して Azure Database for PostgreSQL を呼び出す方法を説明します。 Azure Database for PostgreSQL では Azure AD 認証がネイティブにサポートされるため、Azure リソースのマネージド ID を使用して取得されたアクセス トークンを直接受け入れることができます。 PostgreSQL への接続を作成する場合は、[パスワード] フィールドにアクセス トークンを渡します。
 
-アクセス トークンを使用して PostgreSQL への接続を開く .NET のコード例を次に示します。 このコードは、VM のユーザー割り当てマネージド ID のエンドポイントにアクセスするため、VM 上で実行する必要があります。 アクセス トークン メソッドを使用するには、.NET Framework 4.6 以降または .NET Core 2.2 以降が必要です。 HOST、USER、DATABASE、CLIENT_ID の値は置き換えてご使用ください。
+アクセス トークンを使用して PostgreSQL への接続を開く .NET のコード例を次に示します。 システム割り当てマネージド ID を使用して、Azure AD からアクセス トークンを取得するには、このコードを VM 上で実行する必要があります。 HOST、USER、DATABASE、CLIENT_ID の値は置き換えてご使用ください。
 
 ```csharp
 using System;
@@ -112,41 +97,34 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Npgsql;
+using Azure.Identity;
 
 namespace Driver
 {
     class Script
     {
-        // Obtain connection string information from the portal
-        //
+        // Obtain connection string information from the portal for use in the following variables
         private static string Host = "HOST";
         private static string User = "USER";
         private static string Database = "DATABASE";
-        private static string ClientId = "CLIENT_ID";
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             //
             // Get an access token for PostgreSQL.
             //
-            Console.Out.WriteLine("Getting access token from Azure Instance Metadata service...");
+            Console.Out.WriteLine("Getting access token from Azure AD...");
 
             // Azure AD resource ID for Azure Database for PostgreSQL is https://ossrdbms-aad.database.windows.net/
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fossrdbms-aad.database.windows.net&client_id=" + ClientId);
-            request.Headers["Metadata"] = "true";
-            request.Method = "GET";
             string accessToken = null;
 
             try
             {
                 // Call managed identities for Azure resources endpoint.
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                var sqlServerTokenProvider = new DefaultAzureCredential();
+                accessToken = (await sqlServerTokenProvider.GetTokenAsync(
+                    new Azure.Core.TokenRequestContext(scopes: new string[] { "https://ossrdbms-aad.database.windows.net/.default" }) { })).Token;
 
-                // Pipe response Stream to a StreamReader and extract access token.
-                StreamReader streamResponse = new StreamReader(response.GetResponseStream());
-                string stringResponse = streamResponse.ReadToEnd();
-                var list = JsonSerializer.Deserialize<Dictionary<string, string>>(stringResponse);
-                accessToken = list["access_token"];
             }
             catch (Exception e)
             {
@@ -159,7 +137,7 @@ namespace Driver
             //
             string connString =
                 String.Format(
-                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4};SSLMode=Prefer",
+                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4}; SSLMode=Prefer",
                     Host,
                     User,
                     Database,
@@ -189,12 +167,12 @@ namespace Driver
 このコマンドを実行すると、次のような出力が表示されます。
 
 ```
-Getting access token from Azure Instance Metadata service...
+Getting access token from Azure AD...
 Opening connection using access token...
 
 Connected!
 
-Postgres version: PostgreSQL 11.6, compiled by Visual C++ build 1800, 64-bit
+Postgres version: PostgreSQL 11.11, compiled by Visual C++ build 1800, 64-bit
 ```
 
 ## <a name="next-steps"></a>次のステップ

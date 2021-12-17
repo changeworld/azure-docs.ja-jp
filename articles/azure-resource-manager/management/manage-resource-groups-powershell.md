@@ -3,14 +3,15 @@ title: リソース グループの管理 - Azure PowerShell
 description: Azure PowerShell を使用して、Azure Resource Manager 経由でリソース グループを管理します。 リソース グループを作成、一覧表示、および削除する方法を示します。
 author: mumian
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 09/10/2021
 ms.author: jgao
-ms.openlocfilehash: fb8cd45842e2f9b64048aa939f7b6adc9b0e6e0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c3bb028186155cc3af47f8efb293b7dbe61e13c9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98703684"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124731058"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure PowerShell を使用して Azure Resource Manager リソース グループを管理する
 
@@ -23,84 +24,76 @@ ms.locfileid: "98703684"
 
 ## <a name="what-is-a-resource-group"></a>リソース グループとは
 
-リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 リソース グループには、ソリューションのすべてのリソースか、グループとして管理したいリソースのみを含めることができます。 組織のニーズに合わせてリソースをリソース グループに割り当てる方法を指定してください。 通常は、同じライフサイクルを共有するリソースを同じリソース グループに追加して、グループとして簡単にデプロイ、更新、および削除できるようにします。
+リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 リソース グループには、ソリューションのすべてのリソースか、グループとして管理したいリソースのみを含めることができます。 組織にとって最も有用になるように、リソースをリソース グループに追加する方法を決定します。 通常は、同じライフサイクルを共有するリソースを同じリソース グループに追加して、グループとして簡単にデプロイ、更新、および削除できるようにします。
 
-リソース グループには、リソースについてのメタデータが格納されます。 そのため、リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。
-
-リソース グループには、リソースについてのメタデータが格納されます。 リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。
+リソース グループには、リソースについてのメタデータが格納されます。 リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。
 
 ## <a name="create-resource-groups"></a>リソース グループを作成する
 
-次の PowerShell スクリプトでは、リソース グループを作成します。
+リソース グループを作成するには、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用します。
 
 ```azurepowershell-interactive
-New-AzResourceGroup -Name demoResourceGroup -Location westus
+New-AzResourceGroup -Name exampleGroup -Location westus
 ```
 
 ## <a name="list-resource-groups"></a>リソース グループの一覧を表示する
 
-次の PowerShell スクリプトでは、サブスクリプションの下にリソース グループを一覧表示します。
+サブスクリプションのリソース グループのを一覧表示するには、[Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) を使用します。
 
 ```azurepowershell-interactive
 Get-AzResourceGroup
 ```
 
-1 つのリソース グループを取得するには、次のスクリプトを使用します。
+1 つのリソース グループを取得するには、そのリソース グループの名前を指定します。
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-
-Get-AzResourceGroup -Name $resourceGroupName
+Get-AzResourceGroup -Name exampleGroup
 ```
 
 ## <a name="delete-resource-groups"></a>リソース グループを削除する
 
-次の PowerShell スクリプトはリソース グループを削除します。
+リソース グループを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用します。
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-
-Remove-AzResourceGroup -Name $resourceGroupName
+Remove-AzResourceGroup -Name exampleGroup
 ```
 
 Azure Resource Manager によってリソースの削除の順序が決定される方法の詳細については、「[Azure Resource Manager によるリソース グループの削除](delete-resource-group.md)」を参照してください。
 
-## <a name="deploy-resources-to-an-existing-resource-group"></a>リソースを既存のリソース グループにデプロイする
+## <a name="deploy-resources"></a>リソースのデプロイ
 
-「[Deploy resources to an existing resource group (リソースを既存のリソース グループにデプロイする)](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group)」をご覧ください。
+Azure リソースをデプロイするには、Azure PowerShell を使用するか、Azure Resource Manager (ARM) テンプレートまたは Bicep ファイルをデプロイします。
 
-リソース グループのデプロイを検証するには、[Test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment) をご覧ください。
+次の例では、ストレージ アカウントを作成します。 ストレージ アカウントに指定する名前は、Azure 全体で一意である必要があります。
 
-## <a name="deploy-a-resource-group-and-resources"></a>リソース グループとリソースをデプロイする
+```azurepowershell-interactive
+New-AzStorageAccount -ResourceGroupName exampleGroup -Name examplestore -Location westus -SkuName "Standard_LRS"
+```
 
-Resource Manager テンプレートを使用して、リソース グループを作成し、そのグループにリソースをデプロイできます。 詳しくは、「[リソース グループを作成してリソースをデプロイする](../templates/deploy-to-subscription.md#resource-groups)」をご覧ください。
+ARM テンプレートまたは Bicep ファイルをデプロイするには[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) を使用します。
 
-## <a name="redeploy-when-deployment-fails"></a>デプロイに失敗したときに再デプロイする
+```azurepowershell-interactive
+New-AzResourceGroupDeployment -ResourceGroupName exampleGroup -TemplateFile storage.bicep
+```
 
-この機能は、"*エラー時のロールバック*" とも呼ばれます。 詳細については、「[デプロイに失敗したときに再デプロイする](../templates/rollback-on-error.md)」を参照してください。
+ARM テンプレートのデプロイの詳細については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](../templates/deploy-powershell.md)」をご覧ください。
 
-## <a name="move-to-another-resource-group-or-subscription"></a>別のリソース グループまたはサブスクリプションに移動する
-
-グループ内のリソースを別のリソース グループに移動できます。 詳細については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](move-resource-group-and-subscription.md)」を参照してください。
+Bicep ファイルのデプロイの詳細については、「[Bicep と Azure PowerShell を使用してリソースをデプロイする](../bicep/deploy-powershell.md)」をご覧ください。
 
 ## <a name="lock-resource-groups"></a>リソース グループをロックする
 
-ロックすることで、組織内の他のユーザーが重要なリソース (Azure サブスクリプション、リソース グループ、リソースなど) を誤って削除または変更することを防ぎます。 
+ロックすることによって、組織内の他のユーザーが重要なリソースを誤って削除したり変更したりするのを防ぎます。 
 
-次のスクリプトでは、リソース グループをロックして、そのリソース グループを削除できないようにします。
+リソース グループとそのリソースが削除されるのを防ぐには、[New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) を使用します。
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-
-New-AzResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName $resourceGroupName 
+New-AzResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName exampleGroup
 ```
 
-次のスクリプトでは、リソース グループのすべてのロックを取得します。
+リソース グループのロックを取得するには、[Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock) を使用します。
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-
-Get-AzResourceLock -ResourceGroupName $resourceGroupName 
+Get-AzResourceLock -ResourceGroupName exampleGroup
 ```
 
 詳細については、[「Azure Resource Manager によるリソースのロック」](lock-resources.md)を参照してください。
@@ -111,104 +104,7 @@ Get-AzResourceLock -ResourceGroupName $resourceGroupName
 
 ## <a name="export-resource-groups-to-templates"></a>リソース グループをテンプレートにエクスポートする
 
-リソース グループを設定したら、リソース グループの Resource Manager テンプレートを表示できます。 テンプレートのエクスポートには、2 つの利点があります。
-
-- テンプレートに完全なインフラストラクチャが含まれているため、ソリューションの将来のデプロイを自動化します。
-- ソリューションを表す JavaScript Object Notation (JSON) を調べることで、テンプレートの構文を確認できます。
-
-リソース グループ内のすべてのリソースをエクスポートするには、[Export-AzResourceGroup](/powershell/module/az.resources/Export-AzResourceGroup) コマンドレットを使用して、リソース グループ名を指定します。
-
-```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-
-Export-AzResourceGroup -ResourceGroupName $resourceGroupName
-```
-
-これでテンプレートはローカル ファイルとして保存されます。
-
-リソース グループ内のすべてのリソースをエクスポートする代わりに、どのリソースをエクスポートするかを選択できます。
-
-1 つのリソースをエクスポートするには、そのリソースの ID を渡します。
-
-```azurepowershell-interactive
-$resource = Get-AzResource `
-  -ResourceGroupName <resource-group-name> `
-  -ResourceName <resource-name> `
-  -ResourceType <resource-type>
-Export-AzResourceGroup `
-  -ResourceGroupName <resource-group-name> `
-  -Resource $resource.ResourceId
-```
-
-複数のリソースをエクスポートするには、リソース ID を配列で渡します。
-
-```azurepowershell-interactive
-Export-AzResourceGroup `
-  -ResourceGroupName <resource-group-name> `
-  -Resource @($resource1.ResourceId, $resource2.ResourceId)
-```
-
-テンプレートをエクスポートするときには、テンプレート内でパラメーターを使用するかどうかを指定できます。 既定では、リソース名用のパラメーターが含められますが、既定値はありません。 そのパラメーターの値は、デプロイ時に渡す必要があります。
-
-```json
-"parameters": {
-  "serverfarms_demoHostPlan_name": {
-    "defaultValue": null,
-    "type": "String"
-  },
-  "sites_webSite3bwt23ktvdo36_name": {
-    "defaultValue": null,
-    "type": "String"
-  }
-}
-```
-
-リソース内では、パラメーターは名前用に使用されます。
-
-```json
-"resources": [
-  {
-    "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2016-09-01",
-    "name": "[parameters('serverfarms_demoHostPlan_name')]",
-    ...
-  }
-]
-```
-
-テンプレートをエクスポートするときに `-IncludeParameterDefaultValue` パラメーターを使用する場合、テンプレート パラメーターには、現在の値に設定される既定値が含められます。 その既定値を使用することも、異なる値を渡して既定値を上書きすることもできます。
-
-```json
-"parameters": {
-  "serverfarms_demoHostPlan_name": {
-    "defaultValue": "demoHostPlan",
-    "type": "String"
-  },
-  "sites_webSite3bwt23ktvdo36_name": {
-    "defaultValue": "webSite3bwt23ktvdo36",
-    "type": "String"
-  }
-}
-```
-
-テンプレートをエクスポートするときに `-SkipResourceNameParameterization` パラメーターを使用する場合、リソース名用のパラメーターはテンプレートに含められません。 代わりに、リソース名はリソースに対して直接、現在の値に設定されます。 この名前はデプロイ時にカスタマイズすることはできません。
-
-```json
-"resources": [
-  {
-    "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2016-09-01",
-    "name": "demoHostPlan",
-    ...
-  }
-]
-```
-
-テンプレートのエクスポート機能は、Azure Data Factory リソースのエクスポートをサポートしていません。 Data Factory リソースをエクスポートする方法については、「[Azure Data Factory のデータ ファクトリをコピーまたは複製する](../../data-factory/copy-clone-data-factory.md)」を参照してください。
-
-クラシック デプロイ モデルを使用して作成されたリソースをエクスポートするには、[Resource Manager デプロイ モデルに移行する](../../virtual-machines/migration-classic-resource-manager-overview.md)必要があります。
-
-詳細については、「[Azure portal のテンプレートへの単一および複数リソースのエクスポート](../templates/export-template-portal.md)」を参照してください。
+ARM テンプレートの作成に役立てるために、既存のリソースからテンプレートをエクスポートできます。 詳細については、「[Azure PowerShell を使用してテンプレートをエクスポートする](../templates/export-template-powershell.md)」を参照してください。 
 
 ## <a name="manage-access-to-resource-groups"></a>リソース グループへのアクセスを管理する
 
@@ -217,6 +113,4 @@ Export-AzResourceGroup `
 ## <a name="next-steps"></a>次のステップ
 
 - Azure Resource Manager については、「[Azure Resource Manager の概要](overview.md)」を参照してください。
-- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](../templates/template-syntax.md)」を参照してください。
-- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](../index.yml)のページをご覧ください。
-- Azure Resource Manager テンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)のページをご覧ください。
+- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](../templates/syntax.md)」を参照してください。

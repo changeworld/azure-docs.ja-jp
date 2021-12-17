@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Analytics 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Data Lake Analytics に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 04/14/2021
+ms.date: 09/17/2021
 ms.topic: sample
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-lake-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 3a405567dcb70cad5763736ce482d9770658fcd4
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 264647b1440e3f49d66774f231b4acbb83bf5e61
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502635"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597563"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics 用の Azure Policy 規制コンプライアンス コントロール
 

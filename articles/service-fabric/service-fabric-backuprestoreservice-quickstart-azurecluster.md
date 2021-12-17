@@ -3,23 +3,23 @@ title: Azure Service Fabric での定期的なバックアップと復元
 description: アプリケーションデータの定期バックアップを可能にする Service Fabric の定期バックアップと復元機能を使用します。
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: 42097b50277e78b3f0e8f5e61a2bf70cc08dbc02
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a9eef80b78f95a4941b3795f86b44511ee8a50b
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103198726"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444960"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターでの定期的なバックアップと復元
 > [!div class="op_single_selector"]
-> * [Azure 上のクラスター](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
+> * [Azure 上のクラスター](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 > * [スタンドアロン クラスター](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
-> 
+>
 
 Service Fabric は、信頼性に優れた分散型のマイクロサービス ベースのクラウド アプリケーションの開発と管理を簡単にする分散システム プラットフォームです。 ステートレスなマイクロ サービスとステートフルなマイクロ サービスの両方を実行できます。 ステートフル サービスは、要求と応答、または完全なトランザクションを超えて変更可能な信頼できる状態を維持できます。 災害が原因でステートフル サービスの長時間のダウンや情報の損失が発生した場合、再開後にサービスの提供を続行するためには、最新のバックアップの状態を復元する必要があります。
 
 Service Fabric は、複数のノードの状態をレプリケートして、サービスの高可用性を確保します。 クラスター内の 1 つのノードに障害が発生しても、サービスは引き続き利用できます。 ただし、広範な障害が発生した場合でも、サービス データの信頼性を確保しておくことをお勧めします。
- 
+
 たとえば、次のような状況を防ぐために、サービスのデータをバックアップすることが望まれます。
 - Service Fabric クラスター全体が永久に失われた場合。
 - サービス パーティションのレプリカの過半数の完全な損失。
@@ -29,7 +29,7 @@ Service Fabric は、複数のノードの状態をレプリケートして、�
 
 Service Fabric には、ポイントインタイムの[バックアップと復元](service-fabric-reliable-services-backup-restore.md)を行う API が組み込まれています。 アプリケーション開発者は、これらの API を使用して、サービスの状態を定期的にバックアップできます。 さらに、サービス管理者が特定の時点 (アプリケーションをアップグレードする前など) にサービスの外部からバックアップをトリガーすることを望んでいるのであれば、開発者は、バックアップ (および復元) を API としてサービスから公開する必要があります。 バックアップの管理には、追加コストが発生します。 たとえば、完全バックアップに続けて、30 分ごとに 5 回の増分バックアップを実行したい場合があるとします。 完全バックアップを実行した後、その前に実行された増分バックアップを削除できます。 このアプローチではコードを追加する必要であり、それによってアプリケーションの開発中に追加コストが発生します。
 
-Service Fabric のバックアップと復元サービスを使用すると、ステートフル サービスに格納された情報を簡単かつ自動的にバックアップできます。 定期的にアプリケーション データをバックアップすることは、データが失われたりサービスを利用できなくなったりしないように保護するために不可欠です。 Service Fabric には、オプションで提供されるバックアップと復元サービスがあります。このサービスを使用すると、追加のコードを記述することなく、ステートフルな Reliable Services の定期的なバックアップを構成できます (Actor Services も対象になります)。 これまでに実行したバックアップも簡単に復元できます。 
+Service Fabric のバックアップと復元サービスを使用すると、ステートフル サービスに格納された情報を簡単かつ自動的にバックアップできます。 定期的にアプリケーション データをバックアップすることは、データが失われたりサービスを利用できなくなったりしないように保護するために不可欠です。 Service Fabric には、オプションで提供されるバックアップと復元サービスがあります。このサービスを使用すると、追加のコードを記述することなく、ステートフルな Reliable Services の定期的なバックアップを構成できます (Actor Services も対象になります)。 これまでに実行したバックアップも簡単に復元できます。
 
 
 Service Fabric には、定期的なバックアップと復元機能に関連する次の機能を実現するための一連の API が用意されています。
@@ -63,7 +63,7 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
 
 ```powershell
 
-    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 
 ```
 
@@ -77,7 +77,7 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
 
 
 ### <a name="using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
-最初に、"_バックアップと復元サービス_" をクラスターで有効にする必要があります。 デプロイするクラスター用テンプレートを用意します。 [サンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)を使用することも、Resource Manager テンプレートを作成することもできます。 次の手順で、"_バックアップと復元サービス_" を有効にします。
+最初に、"_バックアップと復元サービス_" をクラスターで有効にする必要があります。 デプロイするクラスター用テンプレートを用意します。 [サンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.servicefabric/service-fabric-secure-cluster-5-node-1-nodetype)を使用することも、Resource Manager テンプレートを作成することもできます。 次の手順で、"_バックアップと復元サービス_" を有効にします。
 
 1. まず、`Microsoft.ServiceFabric/clusters` リソースの `apiversion` が **`2018-02-01`** に設定されていることを確認し、設定されていない場合は次のスニペットのように更新します。
 
@@ -91,7 +91,7 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
     }
     ```
 
-2. 下のスニペットに示すように、次の `addonFeatures` セクションを `properties` セクションの下に追加することで、"_バックアップと復元サービス_" を有効にします。 
+2. 下のスニペットに示すように、次の `addonFeatures` セクションを `properties` セクションの下に追加することで、"_バックアップと復元サービス_" を有効にします。
 
     ```json
         "properties": {
@@ -102,7 +102,7 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
         }
 
     ```
-3. 資格情報を暗号化する X.509 証明書を構成します。 これは、ストレージに接続するために提供された証明書が永続化の前に暗号化されることを保証するために重要です。 下のスニペットに示すように、次の `BackupRestoreService` セクションを `fabricSettings` セクションの下に追加することで、暗号化証明書を有効にします。 
+3. 資格情報を暗号化する X.509 証明書を構成します。 これは、ストレージに接続するために提供された証明書が永続化の前に暗号化されることを保証するために重要です。 下のスニペットに示すように、次の `BackupRestoreService` セクションを `fabricSettings` セクションの下に追加することで、暗号化証明書を有効にします。
 
     ```json
     "properties": {
@@ -119,7 +119,12 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
     }
     ```
 
+    > [!NOTE]
+    > \[Thumbprint\] は、暗号化に使用する有効な証明書の拇印に置き換える必要があります。
+    >
+    
 4. 上記の変更でクラスター テンプレートを更新したら、その変更を適用して、デプロイ/アップグレードを完了します。 完了すると、"_バックアップと復元サービス_" がクラスターで実行されます。 このサービスの URI は `fabric:/System/BackupRestoreService` です。サービスは、Service Fabric エクスプローラーでシステム サービス セクションの下に置くことができます。 
+
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Reliable Stateful サービスと Reliable Actors の定期バックアップの有効化
 Reliable Stateful サービスと Reliable Actors の定期バックアップを有効にする手順について説明します。 これらの手順は、以下を前提としています。
@@ -129,7 +134,7 @@ Reliable Stateful サービスと Reliable Actors の定期バックアップを
 
 ### <a name="create-backup-policy"></a>バックアップ ポリシーを作成する
 
-最初の手順は、バックアップ スケジュール、バックアップ データのターゲット ストレージ、ポリシー名、完全バックアップをトリガーする前に許可される増分バックアップの最大数、バックアップ ストレージ用のアイテム保持ポリシーを記述するバックアップ ポリシーの作成です。 
+最初の手順は、バックアップ スケジュール、バックアップ データのターゲット ストレージ、ポリシー名、完全バックアップをトリガーする前に許可される増分バックアップの最大数、バックアップ ストレージ用のアイテム保持ポリシーを記述するバックアップ ポリシーの作成です。
 
 バックアップ ストレージには、先ほど作成した Azure ストレージ アカウントを使用します。 コンテナー `backup-container` は、バックアップを格納するために構成されます。 まだ存在しない場合は、バックアップのアップロード中に、この名前のコンテナーが作成されます。 Azure Storage アカウントの有効な接続文字列を `ConnectionString`に指定して、`account-name` を実際のストレージ アカウント名に、`account-key` を実際のストレージ アカウント キーにそれぞれ置き換えます。
 
@@ -159,7 +164,7 @@ $ScheduleInfo = @{
     ScheduleKind = 'FrequencyBased'
 }
 
-$RetentionPolicy = @{ 
+$RetentionPolicy = @{
     RetentionPolicyType = 'Basic'
     RetentionDuration =  'P10D'
 }
@@ -212,10 +217,10 @@ $body = (ConvertTo-Json $BackupPolicyReference)
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/EnableBackup?api-version=6.4"
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
-``` 
+```
 
 #### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用
-Service Fabric Explorer の [詳細設定モード](service-fabric-visualizing-your-cluster.md#backup-and-restore) が有効になっていることを確認します 
+Service Fabric Explorer の [詳細設定モード](service-fabric-visualizing-your-cluster.md#backup-and-restore) が有効になっていることを確認します
 
 1. アプリケーションを選択し、アクションを実行します。 [Enable/Update Application Backup]\(アプリケーションのバックアップを有効化/更新する\) をクリックします。
 
@@ -228,7 +233,7 @@ Service Fabric Explorer の [詳細設定モード](service-fabric-visualizing-y
 
 ### <a name="verify-that-periodic-backups-are-working"></a>定期バックアップが動作していることを確認する
 
-アプリケーション レベルでのバックアップを有効にすると、アプリケーションの下で Reliable Stateful サービスと Reliable Actors に属しているすべてのパーティションで、バックアップ ポリシーに従って定期バックアップが開始されます。 
+アプリケーション レベルでのバックアップを有効にすると、アプリケーションの下で Reliable Stateful サービスと Reliable Actors に属しているすべてのパーティションで、バックアップ ポリシーに従って定期バックアップが開始されます。
 
 ![パーティションがバックアップされる正常性イベント][0]
 
@@ -239,7 +244,7 @@ _GetBackups_ API を使用して、アプリケーションの Reliable Stateful
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
 
 ```powershell
-    
+
 Get-SFApplicationBackupList -ApplicationId WordCount
 ```
 
@@ -269,7 +274,7 @@ BackupType              : Full
 EpochOfLastBackupRecord : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
 LsnOfLastBackupRecord   : 3334
 CreationTimeUtc         : 2018-04-06T20:55:16Z
-FailureError            : 
+FailureError            :
 
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
 BackupChainId           : b9577400-1131-4f88-b309-2bb1e943322c
@@ -281,7 +286,7 @@ BackupType              : Incremental
 EpochOfLastBackupRecord : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
 LsnOfLastBackupRecord   : 3552
 CreationTimeUtc         : 2018-04-06T21:10:27Z
-FailureError            : 
+FailureError            :
 
 BackupId                : 69436834-c810-4163-9386-a7a800f78359
 BackupChainId           : b9577400-1131-4f88-b309-2bb1e943322c
@@ -293,7 +298,7 @@ BackupType              : Incremental
 EpochOfLastBackupRecord : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
 LsnOfLastBackupRecord   : 3764
 CreationTimeUtc         : 2018-04-06T21:25:36Z
-FailureError            : 
+FailureError            :
 ```
 
 #### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用

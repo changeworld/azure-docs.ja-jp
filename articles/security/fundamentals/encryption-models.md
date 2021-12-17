@@ -4,7 +4,6 @@ description: この記事では、Microsoft Azure のデータ暗号化モデル
 services: security
 documentationcenter: na
 author: msmbaldwin
-manager: rkarlin
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
 ms.service: security
 ms.subservice: security-fundamentals
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
+ms.date: 10/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: f76b2811531b49c9312a02a581e876f9ef569a2a
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: a939ec6093d6c06e9a7aeb0d7c46bdce2d78223a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750970"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335558"
 ---
 # <a name="data-encryption-models"></a>データ暗号化モデル
 
@@ -91,7 +90,7 @@ Microsoft がキーを管理するサーバー側暗号化では、サービス�
 
 保存データを暗号化し、暗号化キーを管理することが要件であるシナリオの場合、Key Vault のユーザー管理キーを使用したサーバー側暗号化を利用できます。 一部のサービスでは Azure Key Vault のルート キー暗号化キーのみを保存し、暗号化されたデータ暗号化キーは、データに近い内部の場所に保存されます。 このシナリオでは、お客様は Key Vault に自分のキーを使用 (BYOK – Bring Your Own Key) するか、新しいものを生成して、必要なリソースを暗号化します。 リソース プロバイダーは、すべての暗号化操作のルート キーとして、構成されたキーの暗号化キーを使用して、暗号化と暗号化解除の操作を実行します。
 
-キーの暗号化キーを失うことは、データを失うことを意味します。 そのため、キーは削除しないでください。 キーは作成またはローテーションのたびにバックアップしてください。 [論理削除](../../key-vault/general/soft-delete-overview.md)は、キーの暗号化キーを格納するあらゆる Vault で有効にしてください。 キーを削除する代わりに、[有効化] を False に設定するか、有効期限を設定してください。
+キーの暗号化キーを失うことは、データを失うことを意味します。 そのため、キーは削除しないでください。 キーは作成またはローテーションのたびにバックアップしてください。 不注意または悪意による暗号化削除から保護するため、キー暗号化キーを格納するコンテナーでは、必ず[論理的な削除と消去保護](../../key-vault/general/soft-delete-overview.md)を有効にしてください。 キーを削除する代わりに、キー暗号化キーを enabled ではなく、 false に設定することをお勧めします。
 
 ### <a name="key-access"></a>キーへのアクセス
 
@@ -102,7 +101,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 保存データの暗号化または復号化で使用するキーを取得するには、Resource Manager サービス インスタンスとして実行されるサービス ID は UnwrapKey (復号化のためのキーを取得するため) と WrapKey (新しいキーの作成時にキー コンテナーにキーを挿入するため) を取得する必要があります。
 
 >[!NOTE]
->Key Vault の承認の詳細については、[Azure Key Vault ドキュメント](../../key-vault/general/security-overview.md)のキー コンテナーのセキュリティ保護に関するページを参照してください。
+>Key Vault の承認の詳細については、[Azure Key Vault ドキュメント](../../key-vault/general/security-features.md)のキー コンテナーのセキュリティ保護に関するページを参照してください。
 
 **長所**
 
@@ -148,8 +147,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | **AI と機械学習**      |                    |                    |                    |
 | Azure Cognitive Search           | はい                | はい                | -                  |
 | Azure Cognitive Services         | はい                | はい                | -                  |
-| Azure Machine Learning           | はい                | はい                | -                  |
-| Azure Machine Learning Studio (クラシック) | はい         | プレビュー、RSA 2048 ビット | -               |
+| Azure Machine Learning           | はい                | Yes                | -                  |
 | Content Moderator                | はい                | はい                | -                  |
 | Face                             | はい                | はい                | -                  |
 | Language Understanding           | はい                | はい                | -                  |
@@ -187,54 +185,51 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | Service Bus                      | はい                | はい                | -                  |
 | Site Recovery                    | はい                | はい                | -                  |
 | **データベース**                    |                    |                    |                    |
-| Virtual Machines 上の SQL Server   | はい                | はい                | はい                |
+| Virtual Machines 上の SQL Server   | はい                | Yes                | はい                |
 | Azure SQL データベース               | はい                | はい、RSA 3072 ビット  | はい                |
 | Azure SQL Database for MariaDB   | はい                | -                  | -                  |
 | Azure SQL Database for MySQL     | はい                | はい                | -                  |
 | Azure SQL Database for PostgreSQL | はい               | はい                | -                  |
 | Azure Synapse Analytics          | はい                | はい、RSA 3072 ビット  | -                  |
 | SQL Server Stretch Database      | はい                | はい、RSA 3072 ビット  | はい                |
-| Table Storage                    | はい                | はい                | はい                |
-| Azure Cosmos DB                  | はい                | はい                | -                  |
+| Table Storage                    | はい                | Yes                | はい                |
+| Azure Cosmos DB                  | はい ([詳細](../../cosmos-db/database-security.md?tabs=sql-api))              | はい ([詳細](../../cosmos-db/how-to-setup-cmk.md))                | -                  |
 | Azure Databricks                 | はい                | はい                | -                  |
 | Azure Database Migration Service | はい                | 該当なし\*              | -                  |
-| **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | はい                | -                  | -                  |
-| Azure Repos                      | はい                | -                  | -                  |
 | **ID**                     |                    |                    |                    |
 | Azure Active Directory           | はい                | -                  | -                  |
 | Azure Active Directory Domain Services | はい          | はい                | -                  |
 | **統合**                  |                    |                    |                    |
-| Service Bus                      | はい                | はい                | はい                |
+| Service Bus                      | はい                | Yes                | はい                |
 | Event Grid                       | はい                | -                  | -                  |
 | API Management                   | はい                | -                  | -                  |
 | **IoT サービス**                 |                    |                    |                    |
-| IoT Hub                          | はい                | はい                | はい                |
+| IoT Hub                          | はい                | Yes                | はい                |
 | IoT Hub Device Provisioning      | はい                | はい                | -                  |
 | **管理とガバナンス**    |                    |                    |                    |
 | Azure Site Recovery              | はい                | -                  | -                  |
 | Azure Migrate                    | はい                | はい                | -                  |
 | **メディア**                        |                    |                    |                    |
-| Media Services                   | はい                | はい                | はい                |
+| Media Services                   | はい                | Yes                | はい                |
 | **Security**                     |                    |                    |                    |
-| Azure Security Center for IoT    | はい                | はい                | -                  |
-| Azure Sentinel                   | はい                | はい                | -                  |
+| Microsoft Defender for IoT    | Yes                | Yes                | -                  |
+| Microsoft Sentinel                   | Yes                | はい                | -                  |
 | **Storage**                      |                    |                    |                    |
-| Blob Storage                     | はい                | はい                | はい                |
-| Premium Blob Storage             | はい                | はい                | はい                |
+| Blob Storage                     | はい                | Yes                | はい                |
+| Premium Blob Storage             | はい                | Yes                | はい                |
 | Disk Storage                     | はい                | はい                | -                  |
 | Ultra Disk Storage               | はい                | はい                | -                  |
 | マネージド Disk Storage             | はい                | はい                | -                  |
 | File Storage                     | はい                | はい                | -                  |
 | File Premium Storage             | はい                | はい                | -                  |
 | File Sync                        | はい                | はい                | -                  |
-| Queue Storage                    | はい                | はい                | はい                |
+| Queue Storage                    | はい                | Yes                | はい                |
 | Avere vFXT                       | はい                | -                  | -                  |
 | Azure Cache for Redis            | はい                | 該当なし\*              | -                  |
 | Azure NetApp Files               | はい                | はい                | -                  |
 | Archive Storage                  | はい                | はい                | -                  |
-| StorSimple                       | はい                | はい                | はい                |
-| Azure Backup                     | はい                | はい                | はい                |
+| StorSimple                       | はい                | Yes                | はい                |
+| Azure Backup                     | はい                | Yes                | はい                |
 | Data Box                         | はい                | -                  | はい                |
 | Data Box Edge                    | はい                | はい                | -                  |
 

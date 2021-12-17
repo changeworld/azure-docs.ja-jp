@@ -1,14 +1,14 @@
 ---
-title: Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する
+title: Azure CLI を使用して Azure DevTest Labs で仮想マシンを作成して管理する
 description: Azure DevTest Labs を使って Azure CLI で仮想マシンを作成して管理する方法を説明します
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 95e0add8ce14e47c609b1ae951673c261316293f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 52d98993de35ccc4b02fb95579719fb68b4017ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763543"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599546"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する
 このクイック スタートでは、ラボで開発用コンピューターを作成、起動、接続、更新、およびクリーンアップする方法について説明します。 

@@ -2,23 +2,23 @@
 title: チュートリアル - ユーザー フローとカスタム ポリシーを作成する - Azure Active Directory B2C
 description: このチュートリアルでは、Azure Active Directory B2C 内のアプリケーションに対するサインアップ、サインイン、およびユーザー プロファイルの編集を実行できるようにするユーザー フローとカスタム ポリシーの Azure portal での作成方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/08/2021
-ms.author: mimart
+ms.date: 10/18/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e41c1e74dbe428ee38d4480a1587050b7f96a55f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 5cdf2cfb9b530721a8de31501c2f763f0c61bd21
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226228"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240891"
 ---
-# <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C 内にユーザー フローを作成する
+# <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C でユーザー フローとカスタム ポリシーを作成する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -39,20 +39,22 @@ ms.locfileid: "107226228"
 
 ::: zone pivot="b2c-user-flow"
 > [!IMPORTANT]
-> ユーザー フローのバージョンを参照する方法が変更されました。 これまでは、V1 (運用対応) バージョンと V1.1 および V2 (プレビュー) バージョンが提供されていました。 現在は、ユーザー フローは **推奨** (次世代プレビュー) バージョンと **標準** (一般提供) バージョンに統合されています。 V1.1 と V2 の従来のプレビュー ユーザー フローはすべて、**2021 年 8 月 1 日** までに非推奨になる予定です。 詳細については、[Azure AD B2C のユーザー フローのバージョン](user-flow-versions.md)に関するページを参照してください。
+> ユーザー フローのバージョンを参照する方法が変更されました。 これまでは、V1 (運用対応) バージョンと V1.1 および V2 (プレビュー) バージョンが提供されていました。 今回、ユーザー フローが 2 つのバージョンに統合されました。最新の機能を備えた **推奨** ユーザー フローと **標準 (レガシ)** ユーザー フローです。 レガシ プレビュー ユーザー フロー (V1.1 および V2) はすべて非推奨です。 詳細については、[Azure AD B2C のユーザー フローのバージョン](user-flow-versions.md)に関するページを参照してください。 *これらの変更は、Azure パブリック クラウドにのみ適用されます。その他の環境では、[レガシ ユーザー フローのバージョンの管理](user-flow-versions-legacy.md)が引き続き使用されます。* 
 ::: zone-end
 
 ## <a name="prerequisites"></a>前提条件
 
 ::: zone pivot="b2c-user-flow"
 - まだ持っていない場合は、[お使いの Azure サブスクリプションにリンクされている Azure AD B2C テナント](tutorial-create-tenant.md)を作成します。
-- Azure AD B2C と通信できるように、自分が作成した[テナントにアプリケーションを登録](tutorial-register-applications.md)します。
+- [Web アプリケーションを登録](tutorial-register-applications.md)し、[ID トークンの暗黙的な許可を有効に](tutorial-register-applications.md#enable-id-token-implicit-grant)します。
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
 - まだ持っていない場合は、[お使いの Azure サブスクリプションにリンクされている Azure AD B2C テナント](tutorial-create-tenant.md)を作成します。
-- Azure AD B2C と通信できるように、自分が作成した[テナントにアプリケーションを登録](tutorial-register-applications.md)します。
-- [Facebook アカウントでのサインアップとサインインの設定](identity-provider-facebook.md)に関する記事の手順を完了して、Facebook アプリケーションを構成します。 Facebook アプリケーションがなくてもカスタム ポリシーを使用できますが、カスタム ポリシーでソーシャル ログインを有効にする方法を見せる目的でこのチュートリアルで使用されています。
+- [Web アプリケーションを登録](tutorial-register-applications.md)し、[ID トークンの暗黙的な許可を有効に](tutorial-register-applications.md#enable-id-token-implicit-grant)します。
+
+
 ::: zone-end
 
 ::: zone pivot="b2c-user-flow"
@@ -61,14 +63,12 @@ ms.locfileid: "107226228"
 サインアップとサインイン ユーザー フローは、サインアップ エクスペリエンスとサインイン エクスペリエンスの両方を 1 つの構成で処理します。 アプリケーションのユーザーは、状況に応じて正しいパスに誘導されます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータルツールバーの **[Directory + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
-
-    ![B2C テナント、ディレクトリとサブスクリプションのペイン、Azure portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
-
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[ポリシー]** で、 **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
 
-    ![[新しいユーザー フロー] ボタンが強調表示されているポータル内の [ユーザー フロー] ページ](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
+    ![[新しいユーザー フロー] ボタンが強調表示されているポータル内の [ユーザー フロー] ページ](./media/tutorial-create-user-flows/sign-up-sign-in-user-flow.png)
 
 1. **[ユーザー フローを作成する]** ページで、 **[サインアップとサインイン]** ユーザー フローを選択します。
 
@@ -145,10 +145,11 @@ ms.locfileid: "107226228"
 > この記事では、テナントを手動で設定する方法について説明します。 この記事からプロセス全体を自動化できます。 自動化すると、Azure AD B2C [SocialAndLocalAccountsWithMFA スターター パック ](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) がデプロイされます。これにより、サインアップとサインイン、パスワードのリセット、プロファイル編集の体験が提供されます。 以下のチュートリアルを自動化するには、[IEF セットアップ アプリ](https://aka.ms/iefsetup)にアクセスし、指示に従います。
 
 
-## <a name="add-signing-and-encryption-keys"></a>署名および暗号化キーを追加します。
+## <a name="add-signing-and-encryption-keys-for-identity-experience-framework-applications"></a>Identity Experience Framework アプリケーションに署名および暗号化キーを追加する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[ポリシー]** を選択してから **[Identity Experience Framework]** を選択します。
 
@@ -170,16 +171,6 @@ ms.locfileid: "107226228"
 1. **[キー使用法]** には **[暗号化]** を選択します。
 1. **［作成］** を選択します
 
-### <a name="create-the-facebook-key"></a>Facebook のキーを作成します。
-
-ポリシー キーとして、Facebook アプリケーションの [[アプリ シークレット]](identity-provider-facebook.md)を追加します。 この記事の前提条件の一部として作成したアプリケーションのアプリ シークレットを使用できます。
-
-1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-1. **オプション** については、`Manual`を選択します。
-1. **名前** には、`FacebookSecret`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
-1. **シークレット** で、developers.facebook.com から Facebook アプリケーションの *アプリ シークレット* を入力します。 この値はシークレットであり、アプリケーション ID ではありません。
-1. **[キー使用法]** には **[署名]** を選択します。
-1. **［作成］** を選択します
 
 ## <a name="register-identity-experience-framework-applications"></a>Identity Experience Framework アプリケーションを登録する
 
@@ -225,8 +216,11 @@ Azure AD B2C テナントにアプリケーションを登録するには、**�
 次に、アプリケーションをパブリック クライアントとして扱うよう指定します。
 
 1. 左側のメニューの **[管理]** セクションで、 **[認証]** を選択します。
-1. **[詳細設定]** の **[パブリック クライアント フローを許可する]** セクションで、 **[次のモバイルとデスクトップのフローを有効にする]** を **[はい]** に設定します。 **"allowPublicClient": true** がアプリケーション マニフェストで確実に設定されているようにします。 
+1. **[詳細設定]** の **[パブリック クライアント フローを許可する]** セクションで、 **[次のモバイルとデスクトップのフローを有効にする]** を **[はい]** に設定します。 
 1. **[保存]** を選択します。
+1. **"allowPublicClient": true** がアプリケーション マニフェストで確実に設定されているようにします。
+    1. 左側のメニューの **[管理]** で **[マニフェスト]** を選択し、アプリケーション マニフェストを開きます
+    1. **allowPublicClient** キーを見つけ、その値が **true** に設定されていることを確認します。
 
 次に、*IdentityExperienceFramework* 登録で前に公開した API スコープに、アクセス許可を付与します。
 
@@ -235,10 +229,9 @@ Azure AD B2C テナントにアプリケーションを登録するには、**�
 1. **[自分の API]** タブ、**IdentityExperienceFramework** アプリケーションの順に選択します。
 1. **[アクセス許可]** で、前に定義した **[user_impersonation]** スコープを選択します。
 1. **[アクセス許可の追加]** を選択します. 指示に従って、数分待ってから次の手順に進みます。
-1. **[<テナント名> に管理者の同意を与えます]** を選択します。
-1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも *クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
-1. **[Accept]\(承認\)** を選択します。
-1. **[最新の情報に更新]** を選択した後、スコープの **[状態]** に、"... に付与されました" が表示されることを確認します (offline_access、openid、および user_impersonation)。 アクセス許可が反映されるまでに数分かかる場合があります。
+1. [<テナント名> に管理者の同意を与えます] を選択します。
+1. **[はい]** を選択します。
+1. **[最新の情報に更新]** を選択し、スコープの **[状態]** に、"Granted for ..." (... に付与されました) と表示されていることを確認します。
 
 * * *
 
@@ -254,6 +247,7 @@ Azure AD B2C テナントにアプリケーションを登録するには、**�
 各スターター パックには以下が含まれています。
 
 - **ベース ファイル** - ベースにはいくつかの変更が必要です。 例:*TrustFrameworkBase.xml*
+- **ローカライズ ファイル** - このファイルは、ローカライズの変更が実行される場所です。 例: *TrustFrameworkLocalization.xml*
 - **拡張ファイル** - このファイルは、構成変更の大半が実行される場所です。 例:*TrustFrameworkExtensions.xml*
 - **証明書利用者ファイル** - アプリケーションによって呼び出される、タスク固有のファイルです。 例 :*SignUpOrSignin.xml*、*ProfileEdit.xml*、*PasswordReset.xml*
 
@@ -282,16 +276,52 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 1. `ProxyIdentityExperienceFrameworkAppId` の両方のインスタンスを、前に作成した ProxyIdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。
 1. ファイルを保存します。
 
+## <a name="add-facebook-as-an-identity-provider"></a>Facebook を ID プロバイダーとして追加する
+
+**SocialAndLocalAccounts** スターター パックには、Facebook のソーシャル サインインが含まれています。 Facebook はカスタム ポリシーを使用するための必須条件では "*ありません*" が、ここではカスタム ポリシーでソーシャル ログインを連携できることを示す目的で使用されています。
+
+### <a name="create-facebook-application"></a>Facebook アプリケーションを作成する
+
+「[Facebook アプリケーションの作成](identity-provider-facebook.md#create-a-facebook-application)」で説明した手順を使用して、Facebook の "アプリ ID" と "アプリ シークレット" を取得します。 [Facebook アカウントを使用したサインアップとサインインの設定](identity-provider-facebook.md)に関する記事に記載されている前提条件と残りの手順はスキップしてください。 
+
+### <a name="create-the-facebook-key"></a>Facebook のキーを作成します。
+
+ポリシー キーとして、Facebook アプリケーションの [[アプリ シークレット]](identity-provider-facebook.md)を追加します。 この記事の前提条件の一部として作成したアプリケーションのアプリ シークレットを使用できます。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. [概要] ページで、 **[ポリシー]** を選択してから **[Identity Experience Framework]** を選択します。
+1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
+1. **オプション** については、`Manual`を選択します。
+1. **名前** には、`FacebookSecret`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
+1. **シークレット** で、developers.facebook.com から Facebook アプリケーションの *アプリ シークレット* を入力します。 この値はシークレットであり、アプリケーション ID ではありません。
+1. **[キー使用法]** には **[署名]** を選択します。
+1. **［作成］** を選択します
+
+### <a name="update-trustframeworkextensionsxml-in-custom-policy-starter-pack"></a>カスタム ポリシー スターター パックの TrustFrameworkExtensions.xml を更新する
+`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** ファイルで `client_id` の値を Facebook アプリケーションの ID と置き換え、変更を保存します。
+
+   ```xml
+   <TechnicalProfile Id="Facebook-OAUTH">
+     <Metadata>
+     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
+       <Item Key="client_id">00000000000000</Item>
+   ```
+
+
 ## <a name="upload-the-policies"></a>ポリシーをアップロードします。
 
 1. Azure portal で B2C テナントに移動し、 **[Identity Experience Framework]** を選択します。
 1. **[カスタム ポリシーのアップロード]** を選択します。
 1. 次の順序でポリシー ファイルをアップロードします。
     1. *TrustFrameworkBase.xml*
-    1. *TrustFrameworkExtensions.xml*
-    1. *SignUpOrSignin.xml*
-    1. *ProfileEdit.xml*
-    1. *PasswordReset.xml*
+    2. *TrustFrameworkLocalization.xml*
+    3. *TrustFrameworkExtensions.xml*
+    4. *SignUpOrSignin.xml*
+    5. *ProfileEdit.xml*
+    6. *PasswordReset.xml*
 
 ファイルをアップロードすると、Azure によって、それぞれに `B2C_1A_` が追加されます。
 
@@ -307,25 +337,9 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 1. メール アドレスを使用してサインアップします。
 1. もう一度 **[今すぐ実行]** を選択します。
 1. 同じアカウントでサインインし、構成が正しく行われていることを確認します。
-
-## <a name="add-facebook-as-an-identity-provider"></a>Facebook を ID プロバイダーとして追加する
-
-[前提条件](#prerequisites)で説明したように、Facebook はカスタム ポリシーを使用するための必須条件では "*ありません*" が、カスタム ポリシーでソーシャル ログインを連携できることを示す目的でここでは使用されています。
-
-1. `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** ファイルで、`client_id` の値を Facebook アプリケーション ID に置き換えます。
-
-   ```xml
-   <TechnicalProfile Id="Facebook-OAUTH">
-     <Metadata>
-     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
-       <Item Key="client_id">00000000000000</Item>
-   ```
-
-1. *TrustFrameworkExtensions.xml* ファイルをテナントにアップロードします。
-1. **[カスタム ポリシー]** ページで、**B2C_1A_signup_signin** を選択します。
-1. **[今すぐ実行]** を選択し、Facebook でサインインする Facebook を選択し、カスタム ポリシーをテストします。
-
+1. 再び **[今すぐ実行]** を選択し、Facebook でサインインする Facebook を選択し、カスタム ポリシーをテストします。
 ::: zone-end
+
 ## <a name="next-steps"></a>次のステップ
 
 この記事で学習した内容は次のとおりです。
@@ -335,7 +349,17 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 > * プロファイル編集ユーザー フローを作成する
 > * パスワードのリセット ユーザー フローを作成する
 
-次に、Azure AD B2C を使用して、アプリケーションでユーザーをサインインおよびサインアップする方法を学習します。 下記のリンクを使用して ASP.NET Web アプリケーションに移動するか、目次の「**ユーザーを認証する**」の下にある別のアプリケーションに移動してください。
+次に、Azure AD B2C を使用して、アプリケーションでユーザーをサインインおよびサインアップする方法を学習します。 下記のリンクされたサンプル アプリに従ってください。
 
-> [!div class="nextstepaction"]
-> [チュートリアル: Azure AD B2C を使用して Web アプリケーションで認証を有効にする >](tutorial-web-app-dotnet.md)
+- [サンプル ASP.NET Core Web アプリを構成する](configure-authentication-sample-web-app.md)
+- [Web API を呼び出すサンプル ASP.NET Core Web アプリを構成する](configure-authentication-sample-web-app-with-api.md)
+- [サンプル Python Web アプリケーションで認証を構成する](configure-authentication-sample-python-web-app.md)
+- [サンプルのシングルページ アプリケーション (SPA) を構成する](configure-authentication-sample-spa-app.md)
+- [サンプル Angular シンプルページ アプリを構成する](configure-authentication-sample-angular-spa-app.md)
+- [サンプル Android モバイル アプリを構成する](configure-authentication-sample-android-app.md)
+- [サンプル iOS モバイル アプリを構成する](configure-authentication-sample-ios-app.md)
+- [サンプル WPF デスクトップ アプリケーションで認証を構成する](configure-authentication-sample-wpf-desktop-app.md)
+- [Web API で認証を有効にする](enable-authentication-web-api.md)
+- [SAML アプリケーションを構成する](saml-service-provider.md) 
+
+「[Azure AD B2C アーキテクチャ詳細情報シリーズ](https://www.youtube.com/playlist?list=PLOPotgzC07IKXXCTZcrpuLWbVe3y51kfm)」の詳細情報もご覧ください。

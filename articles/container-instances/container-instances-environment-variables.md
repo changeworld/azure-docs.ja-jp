@@ -3,12 +3,13 @@ title: コンテナー インスタンスで環境変数を設定する
 description: Azure Container Instances で実行するコンテナーで環境変数を設定する方法を説明します
 ms.topic: article
 ms.date: 04/17/2019
-ms.openlocfilehash: 9d95ee3d64460aa5e11f450c9e582cdc0de4f0ae
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: eb41aeac02250a77aa8f106580b60cd6971791aa
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790799"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183429"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>コンテナー インスタンスで環境変数を設定する
 
@@ -178,7 +179,7 @@ properties:
           value: 'my-exposed-value'
         - name: 'SECRET'
           secureValue: 'my-secret-value'
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       ports: []
       resources:
         requests:
@@ -226,7 +227,7 @@ JSON の応答を見ると、セキュリティで保護されていない環境
 実行中のコンテナーでコマンドを実行できる [az container exec][az-container-exec] コマンドを使えば、セキュリティで保護された環境変数が設定されていることを確認できます。 次のコマンドを実行して、コンテナーで対話型の bash セッションを開始します。
 
 ```azurecli-interactive
-az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/bash"
+az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/sh"
 ```
 
 コンテナー内の対話型のシェルを開くと、`SECRET` 変数の値にアクセスできます。

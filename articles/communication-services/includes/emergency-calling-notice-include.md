@@ -2,15 +2,15 @@
 author: boris-bazilevskiy
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.author: bobazile
 ms.custom: emergency_calling
-ms.openlocfilehash: c00e297860400a0921867940e39e822b9c8ecf87
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b31a5bb03be360a6680b0565720f31069f008360
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598794"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107822"
 ---
 > [!IMPORTANT]
 > **Azure Communication Services では、緊急通話はサポートされません**

@@ -3,12 +3,12 @@ title: ZIP パッケージからアプリを実行する
 description: アトミック性を備えたアプリの ZIP パッケージをデプロイします。 ZIP デプロイ プロセス中のアプリの動作の予測可能性と信頼性を向上させます。
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: d3315370342f54091598aa3f77f70f03bda4ad33
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 99de9745b75bd21a0fb3126c51b38b047e9b77f4
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772741"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135295"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>ZIP パッケージから Azure App Service のアプリを直接実行する
 
@@ -53,7 +53,7 @@ az webapp deployment source config-zip --resource-group <group-name> --name <app
 
 ## <a name="run-from-external-url-instead"></a>代わりに外部 URL から実行する
 
-Azure Blob Storage などの外部 URL からパッケージを実行することもできます。 [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用して、パッケージ ファイルを Blob Storage アカウントにアップロードします。 [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 付きのプライベート ストレージ コンテナーを使用して、App Service ランタイムがパッケージに安全にアクセスできるようにする必要があります。 
+Azure Blob Storage などの外部 URL からパッケージを実行することもできます。 [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用して、パッケージ ファイルを Blob Storage アカウントにアップロードします。 [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) を利用するプライベート ストレージ コンテナーを使用するか、[マネージド ID を使用](#fetch-a-package-from-azure-blob-storage-using-a-managed-identity)して、App Service ランタイムがパッケージに安全にアクセスできるようにする必要があります。 
 
 ファイルを Blob Storage にアップロードし、ファイルの SAS URL を取得したら、`WEBSITE_RUN_FROM_PACKAGE` アプリ設定を URL に設定します。 次の例では、Azure CLI を使用してそれを行っています。
 
@@ -62,6 +62,10 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ```
 
 更新されたパッケージを同じ名前で Blob Storage に発行する場合は、更新されたパッケージが App Service に読み込まれるように、アプリを再起動する必要があります。
+
+### <a name="fetch-a-package-from-azure-blob-storage-using-a-managed-identity"></a>マネージド ID を使用して Azure Blob Storage からパッケージをフェッチする
+
+[!INCLUDE [Run from package via Identity](../../includes/app-service-run-from-package-via-identity.md)]
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

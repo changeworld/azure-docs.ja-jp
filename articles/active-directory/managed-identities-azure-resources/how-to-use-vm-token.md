@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ee7739d9dbfd34190dc1e856b98fdd21be15743
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: f923cafa9e43d965674050e43c2f2c6a14917dea
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364942"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266140"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
 
@@ -54,7 +54,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 | [C# を使用してトークンを取得する](#get-a-token-using-c) | C# クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
 | [Java を使用してトークンを取得する](#get-a-token-using-java) | Java クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
 | [Go を使用してトークンを取得する](#get-a-token-using-go) | Go クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
-| [Azure PowerShell を使用してトークンを取得する](#get-a-token-using-azure-powershell) | PowerShell クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
+| [PowerShell を使用してトークンを取得する](#get-a-token-using-powershell) | PowerShell クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
 | [CURL を使用してトークンを取得する](#get-a-token-using-curl) | Bash/CURL クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
 | トークンのキャッシュの処理 | 有効期限が切れたアクセス トークンの処理に関するガイダンス |
 | [エラー処理](#error-handling) | Azure リソース トークン エンドポイントのマネージド ID から返される HTTP エラーを処理するためのガイダンス |
@@ -236,7 +236,7 @@ func main() {
       fmt.Println("Error creating URL: ", err)
       return 
     }
-    msi_parameters := url.Values{}
+    msi_parameters := msi_endpoint.Query()
     msi_parameters.Add("resource", "https://management.azure.com/")
     msi_endpoint.RawQuery = msi_parameters.Encode()
     req, err := http.NewRequest("GET", msi_endpoint.String(), nil)
@@ -282,7 +282,7 @@ func main() {
 }
 ```
 
-## <a name="get-a-token-using-azure-powershell"></a>Azure PowerShell を使用してトークンを取得する
+## <a name="get-a-token-using-powershell"></a>PowerShell を使用してトークンを取得する
 
 次の例では、PowerShell クライアントから Azure リソース REST エンドポイントのマネージド ID を使用して、以下を実行する方法を示します。
 
@@ -367,6 +367,9 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 |           | unsupported_response_type | このメソッドを使用したアクセス トークンの取得は、承認サーバーによってサポートされていません。 |  |
 |           | invalid_scope | 要求されたスコープが無効、不明、または形式が正しくありません。 |  |
 | 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、 *\<file path\>* のログを参照してください | Azure リソースのマネージド ID が VM 上で有効なことを確認します。 VM の構成についてサポートが必要な場合は、「[Azure portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](./services-support-managed-identities.md)」で、サービスの一覧と、そのリソース ID を参照してください。
+
+> [!IMPORTANT]
+> - IMDS をプロキシの背後で使用することは想定されておらず、サポートされていません。 プロキシをバイパスする方法の例については、「[Azure Instance Metadata Samples (Azure インスタンス メタデータ サンプル)](https://github.com/microsoft/azureimds)」をご覧ください。  
 
 ## <a name="retry-guidance"></a>再試行のガイダンス 
 

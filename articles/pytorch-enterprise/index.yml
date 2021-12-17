@@ -1,0 +1,30 @@
+### YamlMime:Landing
+title: Azure 上の PyTorch Enterprise のドキュメント
+summary: PyTorch Enterprise では、PyTorch 開発者向けに長期的なサポート、優先順位が設定されたトラブルシューティング、Azure ソリューションとの統合が提供されます。
+metadata:
+  author: alonbochman
+  description: PyTorch 開発者向けの長期的なサポート、優先順位が設定されたトラブルシューティング、Azure ソリューションとの統合。
+  ms.author: alonbochman
+  ms.collection: na
+  ms.date: 07/06/2021
+  ms.service: pytorch-enterprise
+  ms.topic: landing-page
+  ms.openlocfilehash: 6a00ad68978dedd393c62ad9aee052dfce3d27f9
+  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 07/10/2021
+  ms.locfileid: "113598507"
+landingContent:
+- title: PyTorch Enterprise とは
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: PyTorch Enterprise とは
+      url: pte-overview.md
+- title: 内容
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: PyTorch Enterprise のサポート範囲
+      url: support-boundaries.md

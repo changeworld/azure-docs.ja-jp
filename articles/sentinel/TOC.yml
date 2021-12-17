@@ -1,325 +1,374 @@
-- name: Azure Sentinel のドキュメント
+- name: Microsoft Sentinel のドキュメント
   href: index.yml
 - name: 概要
-  href: overview.md
-- name: Azure Sentinel の新着情報
-  href: whats-new.md
-- name: クイックスタート
   expanded: true
   items:
-    - name: Azure Sentinel のオンボード
+    - name: Microsoft Sentinel について
+      href: overview.md
+    - name: Microsoft Sentinel の新機能
+      href: whats-new.md
+- name: クイックスタート
+  items:
+    - name: Microsoft Sentinel にオンボードする
       href: quickstart-onboard.md
-    - name: アラートの視覚化
-      href: quickstart-get-visibility.md
 - name: チュートリアル
   items:
-    - name: 組み込みの分析を使用して脅威を検出する
-      href: tutorial-detect-threats-built-in.md
-    - name: カスタム ルールを作成して脅威を検出する
-      href: tutorial-detect-threats-custom.md
-    - name: データを監視する
-      href: tutorial-monitor-your-data.md
-    - name: インシデントの調査
-      href: tutorial-investigate-cases.md
-    - name: 脅威に対応する
+    - name: UEBA を使用して調査する
+      href: investigate-with-ueba.md
+    - name: Microsoft Sentinel に対する KQL クエリを作成する (Learn モジュール)
+      href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
+    - name: オートメーションを使用して脅威に対応する
       href: tutorial-respond-threats-playbook.md
+    - name: ノートブックと MSTICPy の概要
+      href: notebook-get-started.md
+    - name: Microsoft Sentinel から Power BI レポートを作成する
+      href: powerbi.md
+    - name: おとりのハニートークンをデプロイおよび監視する
+      href: monitor-key-vault-honeytokens.md
 - name: 概念
   items:
-    - name: エンティティを使用したデータの分類
-      href: entities-in-azure-sentinel.md
-    - name: アクセスを管理する
+    - name: Microsoft Sentinel の前提条件
+      href: prerequisites.md
+    - name: ベスト プラクティス
       items:
-        - name: Azure Sentinel のアクセス許可
+        - name: 概要
+          href: best-practices.md
+        - name: ワークスペース アーキテクチャ
+          href: best-practices-workspace-architecture.md
+        - name: データ コレクション
+          href: best-practices-data.md
+    - name: Architecture
+      items:
+        - name: ロールとアクセス許可
           href: roles.md
-        - name: リソースによるアクセスの管理
-          href: resource-context-rbac.md
-    - name: 高度なマルチステージ攻撃の検出
-      href: fusion.md
-    - name: UEBA を使用した高度な脅威の特定
-      href: identify-threats-with-entity-behavior-analytics.md
-    - name: 脅威インテリジェンスの Azure Sentinel へのインポート
-      href: import-threat-intelligence.md
-    - name: 独自の機械学習プラットフォームを使用する
-      href: bring-your-own-ml.md
-    - name: Microsoft 365 Defender と Azure Sentinel の統合
-      href: microsoft-365-defender-sentinel-integration.md
-    - name: ウォッチリストで外部データを使用する
-      href: watchlists.md
-    - name: ロールを使用したアクセス許可の割り当て
-      href: roles.md
-    - name: ワークスペースおよびテナント全体での Azure Sentinel の拡張
-      href: extend-sentinel-across-workspaces-tenants.md
-    - name: 複数のテーブルにわたってデータを正規化する
-      href: normalization.md
-    - name: セキュリティ
-      items:
+        - name: コストと課金
+          href: billing.md
+        - name: ワークスペースおよびテナント全体での Microsoft Sentinel の拡張
+          href: extend-sentinel-across-workspaces-tenants.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
-- name: 操作方法ガイド
-  items:
-    - name: データ ソースの接続
-      href: connect-data-sources.md
+          href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=%2fazure%2fsentinel%2fTOC.json
+    - name: Microsoft Sentinel のコンテンツ
       items:
-        - name: サービス間の接続
+        - name: Sentinel のコンテンツについて
+          href: sentinel-solutions.md
+        - name: コンテンツ ハブ カタログ
+          href: sentinel-solutions-catalog.md
+    - name: データの収集と分析
+      items:
+        - name: データ収集方法
+          href: connect-data-sources.md
+        - name: 正規化と Advanced SIEM Information Model (ASIM)
           items:
-            - name: AWS CloudTrail
+            - name: ASIM の概要
+              href: normalization.md
+            - name: ASIM スキーマ
+              href: normalization-about-schemas.md
+            - name: ASIM パーサー
+              href: normalization-about-parsers.md
+            - name: ASIM コンテンツ
+              href: normalization-content.md
+        - name: エンティティを使用したデータの分類
+          href: entities.md
+    - name: 脅威インテリジェンス
+      items:
+        - name: Microsoft Sentinel の脅威インテリジェンスについて
+          href: understand-threat-intelligence.md
+        - name: 脅威インテリジェンスの統合
+          href: threat-intelligence-integration.md
+    - name: 脅威の検出
+      items:
+        - name: 組み込みの脅威検出ルール
+          href: detect-threats-built-in.md
+        - name: ほぼリアルタイム (NRT) の分析ルール
+          href: near-real-time-rules.md
+        - name: ユーザーとエンティティの行動分析 (UEBA)
+          href: identify-threats-with-entity-behavior-analytics.md
+        - name: 異常検出ルール
+          href: soc-ml-anomalies.md
+        - name: マルチステージ攻撃 (Fusion)
+          href: fusion.md
+    - name: 脅威の捜索
+      href: hunting.md
+    - name: SOAR
+      items:
+        - name: オーケストレーション、オートメーション、および対応
+          href: automation.md
+        - name: オートメーション ルール
+          href: automate-incident-handling-with-automation-rules.md
+        - name: プレイブック
+          href: automate-responses-with-playbooks.md
+        - name: 独自の機械学習を使用する
+          href: bring-your-own-ml.md
+    - name: Microsoft 365 Defender の統合
+      href: microsoft-365-defender-sentinel-integration.md
+- name: 方法
+  items:
+    - name: ワークスペース アーキテクチャを設計する
+      items:
+        - name: 概要
+          href: design-your-workspace-architecture.md
+        - name: サンプル ワークスペースの設計
+          href: sample-workspace-designs.md
+        - name: コストの計画と管理
+          href: billing.md
+        - name: ワークスペース アクセスの管理
+          href: resource-context-rbac.md
+    - name: Microsoft Sentinel に移行する
+      href: migration.md
+    - name: Microsoft Sentinel のコンテンツを管理する
+      items:
+        - name: すぐに使えるコンテンツを検出してデプロイする
+          href: sentinel-solutions-deploy.md
+        - name: リポジトリからカスタム コンテンツをデプロイする
+          href: ci-cd.md
+    - name: データを収集する
+      items:
+        - name: データ ソースを接続する
+          href: data-connectors-reference.md
+        - name: 上位のコネクタ
+          expanded: true
+          items:
+            - name: アマゾン ウェブ サービス (AWS) ログ
               href: connect-aws.md
             - name: Azure Active Directory
               href: connect-azure-active-directory.md
-            - name: '[Azure Activity Log (Azure アクティビティ ログ)]'
-              href: connect-azure-activity.md
-            - name: Azure AD Identity Protection
-              href: connect-azure-ad-identity-protection.md
-            - name: ASC からの Azure Defender アラート
-              href: connect-azure-security-center.md
-            - name: Azure DDoS Protection
-              href: connect-azure-ddos-protection.md
-            - name: Azure Firewall
-              href: connect-azure-firewall.md
-            - name: Azure Information Protection
-              href: connect-azure-information-protection.md
-            - name: Azure Key Vault
-              href: connect-azure-key-vault.md
-            - name: Azure Kubernetes Service (AKS)
-              href: connect-azure-kubernetes-service.md
-            - name: Azure SQL データベース ログ
-              href: connect-azure-sql-logs.md
-            - name: Azure Web アプリケーション ファイアウォール (WAF)
-              href: connect-azure-waf.md
-            - name: Defender for IoT (旧称 ASC for IoT)
-              href: connect-asc-iot.md
-            - name: ドメイン ネーム サーバー
-              href: connect-dns.md
-            - name: Dynamics 365 (新規)
-              href: connect-dynamics-365.md
+            - name: Microsoft Defender for Cloud
+              href: connect-defender-for-cloud.md
             - name: Microsoft 365 Defender
               href: connect-microsoft-365-defender.md
-              expanded: true
-              items:
-                - name: Cloud App Security
-                  href: connect-cloud-app-security.md
-                - name: Microsoft Defender for Endpoint (旧称 MDATP)
-                  href: connect-microsoft-defender-advanced-threat-protection.md
-                - name: Microsoft Defender for Identity (旧称 Azure ATP)
-                  href: connect-azure-atp.md
-                - name: Microsoft Defender for Office 365 (旧称 Office 365 ATP)
-                  href: connect-office-365-advanced-threat-protection.md
-            - name: Office 365 (Teams も対象)
-              href: connect-office-365.md
-            - name: Windows ファイアウォール
-              href: connect-windows-firewall.md
             - name: Windows セキュリティ イベント
-              href: connect-windows-security-events.md
-        - name: 外部ソリューションの接続
+              href: data-connectors-reference.md#windows-security-events-via-ama
+        - name: 種類別の接続手順
           items:
-            - name: Agari のフィッシング対策とブランド保護
-              href: connect-agari-phishing-defense.md
-            - name: Alcide kAudit
-              href: connect-alcide-kaudit.md
-            - name: Active Directory 用の Alsid
-              href: connect-alsid-active-directory.md
-            - name: Apache HTTP Server
-              href: connect-apache-http-server.md
-            - name: Barracuda WAF
-              href: connect-barracuda.md
-            - name: Barracuda CloudGen Firewall
-              href: connect-barracuda-cloudgen-firewall.md
-            - name: BETTER Mobile Threat Defense
-              href: connect-better-mtd.md
-            - name: Beyond Security beSECURE
-              href: connect-besecure.md
-            - name: Cisco Meraki
-              href: connect-cisco-meraki.md
-            - name: Cisco Umbrella
-              href: connect-cisco-umbrella.md
-            - name: Cisco Unified Computing System
-              href: connect-cisco-ucs.md
-            - name: Citrix Analytics (セキュリティ)
-              href: connect-citrix-analytics.md
-            - name: F5 BIG-IP
-              href: connect-f5-big-ip.md
-            - name: Forcepoint DLP
-              href: connect-forcepoint-dlp.md
-            - name: Google ワークスペース (G Suite)
-              href: connect-google-workspace.md
-            - name: Infoblox NIOS
-              href: connect-infoblox.md
-            - name: Juniper SRX
-              href: connect-juniper-srx.md
-            - name: NXLog DNS ログ
-              href: connect-nxlog-dns.md
-            - name: NXLog LinuxAudit
-              href: connect-nxlog-linuxaudit.md
-            - name: Okta SSO
-              href: connect-okta-single-sign-on.md
-            - name: Orca Security
-              href: connect-orca-security-alerts.md
-            - name: Perimeter 81
-              href: connect-perimeter-81-logs.md
-            - name: Proofpoint On Demand
-              href: connect-proofpoint-pod.md
-            - name: Proofpoint TAP
-              href: connect-proofpoint-tap.md
-            - name: Pulse Connect Secure
-              href: connect-pulse-connect-secure.md
-            - name: Qualys VM
-              href: connect-qualys-vm.md
-            - name: Salesforce Service Cloud
-              href: connect-salesforce-service-cloud.md
-            - name: Sophos Cloud Optix
-              href: connect-sophos-cloud-optix.md
-            - name: Sophos XG Firewall
-              href: connect-sophos-xg-firewall.md
-            - name: Squadra Technologies secRMM
-              href: connect-squadra-secrmm.md
-            - name: Squid Proxy
-              href: connect-squid-proxy.md
-            - name: Symantec ICDX
-              href: connect-symantec.md
-            - name: Symantec Proxy SG
-              href: connect-symantec-proxy-sg.md
-            - name: Symantec VIP
-              href: connect-symantec-vip.md
-            - name: syslog
-              href: connect-syslog.md
-            - name: VMware Carbon Black Cloud Endpoint Standard
-              href: connect-vmware-carbon-black.md
-            - name: VMware ESXi
-              href: connect-vmware-esxi.md
-            - name: Zimperium Mobile Threat Defense
-              href: connect-zimperium-mtd.md
-            - name: Logstash を使用して接続する
-              href: connect-logstash.md
-            - name: CEF ベースのソリューション
+            - name: Azure、Windows、Microsoft コネクタ
+              href: connect-azure-windows-microsoft-services.md
+            - name: Syslog ソースを介した CEF
               href: connect-common-event-format.md
-              items:
-                - name: 手順 1 ログ フォワーダーをデプロイする
-                  href: connect-cef-agent.md
-                - name: 手順 2 セキュリティ ソリューションを構成する
-                  href: connect-cef-solution-config.md
-                  items:
-                    - name: AI Vectra 検出
-                      href: connect-ai-vectra-detect.md
-                    - name: Akamai セキュリティ イベント
-                      href: connect-akamai-security-events.md
-                    - name: Aruba ClearPass
-                      href: connect-aruba-clearpass.md
-                    - name: Broadcom Symantec DLP
-                      href: connect-broadcom-symantec-dlp.md
-                    - name: Check Point
-                      href: connect-checkpoint.md
-                    - name: Cisco ASA
-                      href: connect-cisco.md
-                    - name: Citrix WAF
-                      href: connect-citrix-waf.md
-                    - name: CyberArk Enterprise Password Vault
-                      href: connect-cyberark.md
-                    - name: ExtraHop Reveal(x)
-                      href: connect-extrahop.md
-                    - name: F5 ASM
-                      href: connect-f5.md
-                    - name: Forcepoint CASB、NGFW
-                      href: connect-forcepoint-casb-ngfw.md
-                    - name: Fortinet
-                      href: connect-fortinet.md
-                    - name: Illusive Networks AMS
-                      href: connect-illusive-attack-management-system.md
-                    - name: Imperva WAF Gateway
-                      href: connect-imperva-waf-gateway.md
-                    - name: One Identity Safeguard
-                      href: connect-one-identity.md
-                    - name: Palo Alto Networks
-                      href: connect-paloalto.md
-                    - name: Thycotic Secret Server
-                      href: connect-thycotic-secret-server.md
-                    - name: Trend Micro Deep Security
-                      href: connect-trend-micro.md
-                    - name: Trend Micro TippingPoint
-                      href: connect-trend-micro-tippingpoint.md
-                    - name: WireX Systems NFP
-                      href: connect-wirex-systems.md
-                    - name: Zscaler
-                      href: connect-zscaler.md
-                - name: 手順 3 接続を検証する
-                  href: connect-cef-verify.md
+            - name: Syslog (生) ソース
+              href: connect-syslog.md
+            - name: Microsoft Sentinel データ コレクター API
+              href: connect-rest-api-template.md
+            - name: Azure Functions API の接続
+              href: connect-azure-functions-template.md
+            - name: カスタム ログ ソース
+              href: connect-custom-logs.md
+        - name: ログ フォワーダーをデプロイする
+          href: connect-log-forwarder.md
+        - name: CEF/Syslog データ コレクションのトラブルシューティング
+          href: troubleshooting-cef-syslog.md
+        - name: Logstash を使用して接続する
+          href: connect-logstash.md
         - name: カスタム コネクタを作成する
           href: create-custom-connector.md
-        - name: 脅威インテリジェンスの接続
-          href: connect-threat-intelligence.md
         - name: Azure Stack VM の接続
           href: connect-azure-stack.md
         - name: データ コネクタの正常性を監視する
           href: monitor-data-connector-health.md
-    - name: ユーザーとエンティティの動作分析の有効化
-      href: enable-entity-behavior-analytics.md
-    - name: データ フィールドをエンティティにマップする
-      href: map-data-fields-to-entities.md
-    - name: 複数のテナントの管理 (MSSP)
-      href: multiple-tenants-service-providers.md
-    - name: 複数のワークスペースでインシデントを操作する
-      href: multiple-workspace-view.md
-    - name: カスタマー マネージド キー (CMK) の設定
-      href: customer-managed-keys.md
-    - name: アラートのカスタム詳細を表示する
-      href: surface-custom-details-in-alerts.md
-    - name: アラートからのインシデントの作成
-      href: create-incidents-from-alerts.md
-    - name: インシデント メトリックを使用して SOC をより適切に管理する
-      href: manage-soc-with-incident-metrics.md
-    - name: Azure Sentinel クエリとアクティビティの監査
-      href: audit-sentinel-data.md
-    - name: 検出
-      href: hunting.md
+        - name: Azure Data Explorer を統合する
+          href: store-logs-in-azure-data-explorer.md
+    - name: 脅威インテリジェンスの使用
       items:
-        - name: ノートブックを使用した検出
-          href: notebooks.md
-        - name: ブックマークを使用した検出
+        - name: 脅威インテリジェンス プラットフォームの接続
+          href: connect-threat-intelligence-tip.md
+        - name: STIX/TAXII フィードへの接続
+          href: connect-threat-intelligence-taxii.md
+        - name: 脅威インジケーターの操作
+          href: work-with-threat-indicators.md
+    - name: データの監視と視覚化
+      items:
+        - name: 収集されたデータを視覚化する
+          href: get-visibility.md
+        - name: Azure Monitor ブックを使用する
+          href: ./monitor-your-data.md
+    - name: 脅威の検出とデータの分析
+      items:
+        - name: 脅威検出ルールを作成する
+          items:
+            - name: スケジュール済みのクエリ ルールを作成する
+              href: detect-threats-custom.md
+            - name: データ フィールドをエンティティにマップする
+              href: map-data-fields-to-entities.md
+            - name: アラートのカスタム詳細を表示する
+              href: surface-custom-details-in-alerts.md
+            - name: アラートの詳細をカスタマイズする
+              href: customize-alert-details.md
+            - name: 分析ルールのエクスポートとインポート
+              href: import-export-analytics-rules.md
+            - name: ほぼリアルタイム (NRT) の分析ルールを作成する
+              href: create-nrt-rules.md
+            - name: 異常検出ルールを操作する
+              href: work-with-anomaly-rules.md
+            - name: 分析ルールのテンプレート バージョンを管理する
+              href: manage-analytics-rule-templates.md
+            - name: 分析ルールでインジェスト遅延を処理する
+              href: ingestion-delay.md
+            - name: 微調整に関する推奨事項を取得する
+              href: detection-tuning.md
+        - name: ユーザーとエンティティの行動分析 (UEBA) を有効にする
+          href: enable-entity-behavior-analytics.md
+        - name: すぐに使用できる異常ルールを使用する
+          href: work-with-anomaly-rules.md
+        - name: マルチステージ攻撃 (Fusion) ルールを構成する
+          href: configure-fusion-rules.md
+        - name: 擬陽性の処理
+          href: false-positives.md
+        - name: Microsoft セキュリティ アラートからインシデントを作成する
+          href: create-incidents-from-alerts.md
+        - name: ウォッチリストを使用する
+          href: watchlists.md
+    - name: 脅威の探索
+      items:
+        - name: Jupyter Notebook を使用して追求する
+          items:
+            - name: 概要
+              href: notebooks.md
+            - name: Jupyter Notebook 用の高度な MSTICPy 設定
+              href: notebooks-msticpy-advanced.md
+            - name: Azure Synapse での大規模なセキュリティ分析
+              href: notebooks-with-synapse.md
+        - name: ブックマークを使用して追求する
           href: bookmarks.md
-        - name: ライブストリームを使用した検出
+        - name: ライブストリームを使用して追求する
           href: livestream.md
-    - name: Azure Sentinel の削除
-      href: offboard.md
+    - name: 調査と対応
+      items:
+        - name: インシデントを調査する
+          href: investigate-cases.md
+        - name: カスタム エンティティ アクティビティを作成する
+          href: customize-entity-activities.md
+        - name: Microsoft Teams で共同作業する
+          href: collaborate-in-microsoft-teams.md
+        - name: Microsoft Sentinel へのプレイブックの認証
+          href: authenticate-playbooks-to-sentinel.md
+        - name: プレイブックでトリガーとアクションを使用する
+          href: playbook-triggers-actions.md
+        - name: テンプレートからプレイブックをカスタマイズする
+          href: use-playbook-templates.md
+        - name: ウォッチリストとプレイブックの両方でアクティビティを自動化する
+          href: automate-playbook-watchlist.md
+    - name: Microsoft Sentinel を管理する
+      items:
+        - name: MSSP 用 Microsoft Sentinel
+          items:
+            - name: 複数のテナントの管理 (MSSP)
+              href: multiple-tenants-service-providers.md
+            - name: 複数のワークスペースでインシデントを操作する
+              href: multiple-workspace-view.md
+            - name: Microsoft Sentinel で知的財産を管理する
+              href: mssp-protect-intellectual-property.md
+        - name: カスタマー マネージド キーを設定する
+          href: customer-managed-keys.md
+        - name: インシデント メトリックを使用して SOC を管理する
+          href: manage-soc-with-incident-metrics.md
+        - name: Azure アクティビティ ログを使用した Microsoft Sentinel の監査
+          href: audit-sentinel-data.md
+        - name: ワークスペースから Microsoft Sentinel を削除する
+          href: offboard.md
+- name: SAP と Microsoft Sentinel の統合
+  items:
+    - name: SAP の継続的な脅威監視のデプロイ
+      href: sap-deploy-solution.md
+    - name: デプロイ要件
+      href: sap-solution-detailed-requirements.md
+    - name: 使用可能な SAP ログ
+      href: sap-solution-log-reference.md
+    - name: SAP ブック、ルール、およびウォッチリスト
+      href: sap-solution-security-content.md
+    - name: SNC 接続を使用して SAP データ コネクタをデプロイする
+      href: sap-solution-deploy-snc.md
+    - name: エキスパートの構成オプション
+      href: sap-solution-deploy-alternate.md
+    - name: SAP ソリューションのデプロイのトラブルシューティング
+      href: sap-deploy-troubleshoot.md
 - name: リファレンス
   items:
-    - name: 上位の Azure Sentinel ブック
-      href: top-workbooks.md
-    - name: Azure RBAC ロール
+    - name: Microsoft Sentinel REST-API
+      href: /rest/api/securityinsights/
+    - name: 管理リファレンス
       items:
-        - name: すべての Azure ロール
-          href: ../role-based-access-control/built-in-roles.md#all
-        - name: Azure Sentinel のロール
-          href: ../role-based-access-control/built-in-roles.md#security
-    - name: REST API
+        - name: Microsoft Sentinel Logic Apps コネクタ
+          href: /connectors/azuresentinel/
+        - name: Azure CLI
+          href: /cli/azure/sentinel
+        - name: Microsoft Sentinel PowerShell
+          href: /powershell/module/az.securityinsights/
+        - name: Azure RBAC ロール
+          items:
+            - name: すべての Azure ロール
+              href: ../role-based-access-control/built-in-roles.md#all
+            - name: Microsoft Sentinel ロール
+              href: ../role-based-access-control/built-in-roles.md#security
+    - name: データ収集のリファレンス
       items:
-        - name: Azure Sentinel REST-API
-          href: /rest/api/securityinsights/
-        - name: REST-API を使用したハンティング クエリの管理
-          href: hunting-with-rest-api.md
-        - name: REST-API を使用してウォッチリストを管理する
-          href: watchlist-with-rest-api.md
-    - name: Azure Sentinel Logic Apps コネクタ
-      href: /connectors/azuresentinel/
-    - name: エンティティのリファレンス
-      href: entities-reference.md
-    - name: ネットワーク正規化スキーマ
-      href: normalization-schema.md
-    - name: データ ソース スキーマ リファレンス
-      href: data-source-schema-reference.md
-    - name: Kusto クエリ言語
+        - name: データ ソース スキーマ リファレンス
+          href: data-source-schema-reference.md
+        - name: CEF ログ フィールドのマッピング
+          href: cef-name-mapping.md
+        - name: 正規化
+          items:
+            - name: 認証正規化スキーマ
+              href: authentication-normalization-schema.md
+            - name: DNS 正規化スキーマ
+              href: dns-normalization-schema.md
+            - name: DHCP 正規化スキーマ
+              href: dhcp-normalization-schema.md
+            - name: ファイル イベント正規化スキーマ
+              href: file-event-normalization-schema.md
+            - name: ネットワーク正規化スキーマ
+              href: network-normalization-schema.md
+            - name: プロセス イベント正規化スキーマ
+              href: process-events-normalization-schema.md
+            - name: レジストリ イベント正規化スキーマ
+              href: registry-event-normalization-schema.md
+            - name: レガシ ネットワーク正規化スキーマ
+              href: normalization-schema-v1.md
+        - name: Windows セキュリティ イベント セット
+          href: windows-security-event-id-reference.md
+    - name: 検出と分析リファレンス
       items:
-        - name: Kusto クエリの概要
-          href: /azure/data-explorer/kusto/query/
-        - name: Kusto クエリ言語のクイック リファレンス
-          href: /azure/data-explorer/kql-quick-reference
-    - name: UEBA エンリッチメント
-      href: ueba-enrichments.md
+        - name: 上位の Microsoft Sentinel ブック
+          href: top-workbooks.md
+        - name: エンティティのリファレンス
+          href: entities-reference.md
+        - name: UEBA エンリッチメント
+          href: ueba-enrichments.md
+        - name: マルチステージ攻撃の検出のシナリオ
+          href: fusion-scenario-reference.md
+        - name: ウォッチリスト テンプレートのスキーマ
+          href: watchlist-schemas.md
+        - name: Kusto クエリ言語
+          items:
+            - name: Kusto クエリの概要
+              href: /azure/data-explorer/kusto/query/
+            - name: Kusto クエリ言語のクイック リファレンス
+              href: /azure/data-explorer/kql-quick-reference
+            - name: Azure Monitor ログ クエリの最適化
+              href: ../azure-monitor/logs/query-optimization.md
+        - name: REST API - サンプル
+          items:
+            - name: REST-API を使用したハンティング クエリの管理
+              href: hunting-with-rest-api.md
+            - name: REST API を使用した地理位置情報データによるエンティティの強化
+              href: geolocation-data-api.md
+        - name: Microsoft 365 Defender にオンボードされない Defender for Cloud Apps アラート
+          href: ./microsoft-365-defender-sentinel-integration.md#microsoft-365-defender-incidents-and-microsoft-incident-creation-rules
+    - name: オートメーションと応答の参照
+      items:
+        - name: SOAR コンテンツのカタログ
+          href: sentinel-soar-content.md
 - name: リソース
   items:
     - name: 有用なリソース
       href: resources.md
-    - name: Azure Sentinel ブログ
+    - name: サンプル ワークスペース アーキテクチャ
+      href: sample-workspace-designs.md
+    - name: Microsoft Sentinel のブログ
       href: 'https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/azure-sentinel/'
+    - name: 米国政府機関向けクラウドで利用できる機能
+      href: ../security/fundamentals/feature-availability.md
+    - name: アーカイブされた新機能 (6 か月より前)
+      href: whats-new-archive.md

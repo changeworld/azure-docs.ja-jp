@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 492663ca35ed04da09e7f0d198444a4d40178e2b
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: a911e468443fe49bb1edc18af3d3412edc8eb8cc
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104867527"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112678218"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight での機械学習
 
-HDInsight ではビッグ データでの機械学習が可能であるため、大量 (数ペタバイト、場合によっては数エクサバイト) の構造化、非構造化、および高速移動データから貴重な洞察を得る機能が提供されます。 HDInsight には、SparkML と Apache Spark MLlib、R、Apache Hive、Microsoft Cognitive Toolkit などのいくつかの機械学習オプションがあります。
+HDInsight ではビッグ データでの機械学習が可能であるため、大量 (数ペタバイト、場合によっては数エクサバイト) の構造化、非構造化、および高速移動データから貴重な洞察を得る機能が提供されます。 HDInsight には、SparkML と Apache Spark MLlib、Apache Hive、Microsoft Cognitive Toolkit などのいくつかの機械学習オプションがあります。
 
 ## <a name="sparkml-and-mllib"></a>SparkML と MLlib
 
@@ -22,23 +22,13 @@ HDInsight ではビッグ データでの機械学習が可能であるため、
 
 Apache Spark 用の Microsoft Machine Learning ライブラリは [MMLSpark](https://github.com/Azure/mmlspark) です。 このライブラリは、Spark 上でのデータ サイエンティストの生産性を高め、実験の速度を向上させ、さらに非常に大規模なデータセットに対してディープ ラーニングを含む最先端の機械学習手法を活用するように設計されています。 文字列のインデックス作成、機械学習アルゴリズムによって予測されるレイアウトへのデータの強制的な移行、特徴ベクトルのアセンブルなどのスケーラブルな ML モデルを構築する場合、MMLSpark は SparkML の低レベルの API の上に 1 つのレイヤーを提供します。 MMLSpark ライブラリはこれらのタスクや、PySpark でモデルを構築するためのその他の一般的なタスクを簡略化します。
 
-## <a name="r"></a>R
-
-[R](https://www.r-project.org/) は現在、世界で最も普及している統計プログラミング言語です。 これは、ユーザー数が 250 万を超え、さらに増加しているコミュニティを抱えるオープンソースのデータ視覚化ツールです。 その増大するユーザー ベースと 8,000 を超える提供パッケージにより、R は、機械学習が必要な多くの企業にとって有望な選択肢です。 大量のデータセットとモデルで使用されるように準備された ML Services を使用して HDInsight クラスターを作成できます。 この機能は、データ サイエンティストや統計学者に、クラスターのセットアップやメンテナンスのオーバーヘッドなしで HDInsight を通してオンデマンドで拡張できる使い慣れた R インターフェイスを提供します。
-
-:::image type="content" source="./media/hdinsight-machine-learning-overview/training-for-prediction.png" alt-text="R Server での予測のためのトレーニング" border="false":::
-
-クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。  ScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、クラスターのノード間で R スクリプトを実行することもできます。
-
-Spark を使用した HDInsight 上の ML Services により、Spark コンピューティング コンテキストを使用して、クラスターのノード間でトレーニングを並列化できます。 必要に応じて、使用可能なすべてのコアを並列に使用して、エッジ ノード上で直接 R スクリプトを実行できます。 あるいは、クラスター内のすべてのノードにわたって分散された処理を開始するために、エッジ ノードからコードを実行できます。 Spark を使用した HDInsight 上の ML Services では、必要に応じて、オープン ソースの R パッケージからの関数を並列化することも可能です。
-
 ## <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning と Apache Hive
 
 Azure Machine Learning には、予測分析をモデル化するためのツールと、予測モデルをすぐに使用できる web サービスとして、デプロイするための完全管理型のサービスが用意されています。 Azure Machine Learning は、予測モデルの作成、テスト、操作可能化、および管理のために使用できる、クラウド内の完全な予測分析ソリューションです。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
 
 :::image type="content" source="./media/hdinsight-machine-learning-overview/azure-machine-learning.png" alt-text="Microsoft Azure 機械学習の概要" border="false":::
 
-[Hive クエリ](../machine-learning/team-data-science-process/create-features-hive.md)を使用して、HDInsight Hadoop クラスター内のデータの特徴を作成します。 *特徴エンジニアリング* は、学習プロセスを容易にする生データの特徴を作成することによって、学習アルゴリズムの予測能力を向上させようとします。 Azure Machine Learning Studio (クラシック) から HiveQL クエリを実行し、[データのインポート モジュール](../machine-learning/classic/import-data.md)を使用して、Hive で処理され、Blob Storage に格納されているデータにアクセスできます。
+[Hive クエリ](/azure/architecture/data-science-process/create-features-hive)を使用して、HDInsight Hadoop クラスター内のデータの特徴を作成します。 *特徴エンジニアリング* は、学習プロセスを容易にする生データの特徴を作成することによって、学習アルゴリズムの予測能力を向上させようとします。 Azure Machine Learning Studio (クラシック) から HiveQL クエリを実行し、[データのインポート モジュール](../machine-learning/classic/import-data.md)を使用して、Hive で処理され、Blob Storage に格納されているデータにアクセスできます。
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 
@@ -53,9 +43,9 @@ Azure Machine Learning には、予測分析をモデル化するためのツー
 * [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](spark/apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](spark/apache-spark-machine-learning-mllib-ipython.md)
 * [Apache Mahout で映画のレコメンデーションを生成する](hadoop/apache-hadoop-mahout-linux-mac.md)
-* [Apache Hive と Azure Machine Learning](../machine-learning/team-data-science-process/create-features-hive.md)
-* [Apache Hive と Azure Machine Learning の詳細](../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [HDInsight での Apache Spark を使用した機械学習](../machine-learning/team-data-science-process/spark-overview.md)
+* [Apache Hive と Azure Machine Learning](/azure/architecture/data-science-process/create-features-hive)
+* [Apache Hive と Azure Machine Learning の詳細](/azure/architecture/data-science-process/hive-walkthrough)
+* [HDInsight での Apache Spark を使用した機械学習](/azure/architecture/data-science-process/spark-overview)
 
 ### <a name="deep-learning-resources"></a>ディープ ラーニングのリソース
 

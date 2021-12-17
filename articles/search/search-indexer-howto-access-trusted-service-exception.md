@@ -7,13 +7,13 @@ author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: e139c15ef6de00376a4e1a88000d263c3486994b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.openlocfilehash: 73512b0c1729fbdbbc62e0063670de8405ddbcb5
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92101377"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113000286"
 ---
 # <a name="indexer-access-to-azure-storage-using-the-trusted-service-exception-azure-cognitive-search"></a>信頼されたサービスの例外を使用した Azure Storage へのインデクサー アクセス (Azure Cognitive Search)
 
@@ -25,6 +25,9 @@ Azure Storage アカウントのデータにアクセスする Azure Cognitive S
 ## <a name="step-1-configure-a-connection-using-a-managed-identity"></a>手順 1:マネージド ID を使用して接続を構成する
 
 「[マネージド ID を使用して、Azure Storage アカウントへの接続を設定する](search-howto-managed-identities-storage.md)」の指示に従います。 完了すると、信頼されたサービスとして Azure Active Directory に検索サービスが登録され、 Azure Storage でデータや情報にアクセスする検索 ID 固有の権限を付与するアクセス許可が付与されます。
+
+> [!NOTE]
+> この手順では、ポータルを使用して Cognitive Search を信頼されたサービスとして構成する方法について説明します。 これをコードで実現するには、[REST API](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update)、[Azure PowerShell](search-manage-powershell.md#create-a-service-with-a-system-assigned-managed-identity)、または [Azure CLI](search-manage-azure-cli.md#create-a-service-with-a-system-assigned-managed-identity) を使用します。
 
 ## <a name="step-2-allow-trusted-microsoft-services-to-access-the-storage-account"></a>手順 2:信頼された Microsoft サービスによるストレージ アカウントへのアクセスを許可する
 

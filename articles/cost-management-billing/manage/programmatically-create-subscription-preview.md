@@ -1,24 +1,24 @@
 ---
-title: プレビュー API を使用してプログラムで Azure サブスクリプションを作成する
-description: プレビュー バージョンの REST API、Azure CLI、Azure PowerShell を使用して、プログラムで追加の Azure サブスクリプションを作成する方法について説明します。
+title: レガシ API を使用してプログラムで Azure サブスクリプションを作成する
+description: レガシ バージョンの REST API、Azure CLI、Azure PowerShell を使用して、プログラムで追加の Azure サブスクリプションを作成する方法について説明します。
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 06/09/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b524869998dd2464ed359ec61ce655a807899aaa
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 5ef00531c4f13ecd43cb7bd1d691f67d996c5f73
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565718"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769653"
 ---
-# <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>プレビュー API を使用してプログラムで Azure サブスクリプションを作成する
+# <a name="programmatically-create-azure-subscriptions-with-legacy-apis"></a>レガシ API を使用してプログラムで Azure サブスクリプションを作成する
 
-この記事は、以前のプレビュー API を使用してプログラムで Azure サブスクリプションを作成する場合に役に立ちます。 この記事では、Azure Resource Manager を使用してプログラムからサブスクリプションを作成する方法について説明します。
+この記事は、レガシ プレビュー API を使用してプログラムで Azure サブスクリプションを作成する場合に役に立ちます。 この記事では、Azure Resource Manager を使用してプログラムからサブスクリプションを作成する方法について説明します。
 
 さまざまな Azure 契約サブスクリプションの種類で使用できる最新の API バージョンに関して、次のような新しい記事があります。
 
@@ -165,7 +165,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| 要素名  | 必須 | 種類   | 説明                                                                                               |
+| 要素名  | 必須 | Type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | いいえ      | String | サブスクリプションの表示名です。 指定されていない場合は、"Microsoft Azure エンタープライズ" などのプラン名に設定されます。                                 |
 | `offerType`   | はい      | String | サブスクリプションのオファーです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
@@ -183,7 +183,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| 要素名  | 必須 | 種類   | 説明 |
+| 要素名  | 必須 | Type   | 説明 |
 |---------------|----------|--------|----|
 | `Name` | いいえ      | String | サブスクリプションの表示名です。 指定されていない場合は、"*Microsoft Azure エンタープライズ*" などのプラン名に設定されます。 |
 | `OfferType`   | はい      | String | サブスクリプション オファー。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
@@ -192,19 +192,18 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `OwnerSignInName`    | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するユーザーのメール アドレス。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。|
 | `OwnerApplicationId` | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。 このパラメーターを使用している場合、サービス プリンシパルには[ディレクトリへの読み取りアクセス権](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)が必要です。|
 
-すべてのパラメーターの完全な一覧については、[New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription) を参照してください。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 まず、`az extension add --name subscription` を実行してこのプレビュー拡張機能をインストールします。
 
-次の [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create) コマンドを実行します。その際、`<enrollmentAccountObjectId>` を最初のステップでコピーした `name` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) で置き換えます。 所有者を指定するには、[ユーザー オブジェクト ID を取得する方法](grant-access-to-create-subscription.md#userObjectId)を参照してください。
+次の [az account create](/cli/azure/account#-ext-subscription-az-account-create) コマンドを実行します。その際、`<enrollmentAccountObjectId>` を最初のステップでコピーした `name` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) で置き換えます。 所有者を指定するには、[ユーザー オブジェクト ID を取得する方法](grant-access-to-create-subscription.md#userObjectId)を参照してください。
 
 ```azurecli-interactive
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| 要素名  | 必須 | 種類   | 説明 |
+| 要素名  | 必須 | Type   | 説明 |
 |---------------|----------|--------|------------|
 | `display-name` | いいえ      | String | サブスクリプションの表示名です。 指定されていない場合は、"*Microsoft Azure エンタープライズ*" などのプラン名に設定されます。|
 | `offer-type`   | はい      | String | サブスクリプションのオファーです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
@@ -213,7 +212,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `owner-upn`    | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するユーザーのメール アドレス。 `owner-object-id` の代わりにこのパラメーターを使用することができます。|
 | `owner-spn` | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `owner-object-id` の代わりにこのパラメーターを使用することができます。 このパラメーターを使用している場合、サービス プリンシパルには[ディレクトリへの読み取りアクセス権](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)が必要です。|
 
-すべてのパラメーターの完全な一覧については、[az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create) を参照してください。
+すべてのパラメーターの完全な一覧については、[az account create](/cli/azure/account#-ext-subscription-az-account-create) を参照してください。
 
 ---
 
@@ -358,14 +357,14 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| 要素名  | 必須 | 種類   | 説明                                                                                               |
+| 要素名  | 必須 | Type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | はい      | String | サブスクリプションの表示名です。|
 | `billingProfileId`   | はい      | String | サブスクリプションの料金に対して課金される課金プロファイルの ID です。  |
 | `skuId` | はい      | String | Azure プランの種類を決定する SKU ID です。 |
 | `owners`      | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するユーザーまたはサービス プリンシパルのオブジェクト ID です。  |
 | `costCenter` | いいえ      | String | サブスクリプションに関連付けられているコスト センターです。 使用状況の CSV ファイルに表示されます。 |
-| `managementGroupId` | いいえ      | String | サブスクリプションが追加される管理グループの ID です。 管理グループの一覧を取得するには、「[管理グループ - 一覧表示](/rest/api/resources/managementgroups/list)」の API を参照してください。 API からの管理グループの ID を使用します。 |
+| `managementGroupId` | いいえ      | String | サブスクリプションが追加される管理グループの ID です。 管理グループの一覧を取得するには、「[管理グループ - 一覧表示](/rest/api/managementgroups/entities/list)」の API を参照してください。 API からの管理グループの ID を使用します。 |
 
 監視対象の `subscriptionCreationResult` オブジェクトが返されます。 サブスクリプションの作成が完了すると、`subscriptionCreationResult` オブジェクトから、サブスクリプション ID を持つ `subscriptionLink` オブジェクトが返されます。
 
@@ -527,7 +526,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| 要素名  | 必須 | 種類   | 説明                                                                                               |
+| 要素名  | 必須 | Type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | はい      | String | サブスクリプションの表示名です。|
 | `skuId` | はい      | String | Azure プランの SKU ID です。 種類が Microsoft Azure プランであるサブスクリプションには *0001* を使用します。 |

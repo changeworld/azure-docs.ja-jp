@@ -5,22 +5,18 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/02/2021
-ms.openlocfilehash: 1ba2b7d648c86912118b83a566bf2eb0800baee2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 1b5ed1cd49ac4117dac6ff0a6e3bdb916299ec44
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101747640"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457413"
 ---
-# <a name="frequently-asked-questions-about-azure-managed-instance-for-apache-cassandra-preview"></a>Azure Managed Instance for Apache Cassandra についてよく寄せられる質問 (プレビュー)
+# <a name="frequently-asked-questions-about-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra についてよく寄せられる質問
 
 この記事では、Azure Managed Instance for Apache Cassandra についてよく寄せられる質問について取り上げます。 マネージド インスタンスを使用すべき場面とその利点、スループットの制限、サポート対象のリージョン、構成の詳細について説明します。
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="general-faq"></a>一般的な FAQ
 
@@ -40,11 +36,15 @@ Azure Managed Instance for Apache Cassandra は、Azure Cosmos DB チームに�
 
 #### <a name="can-i-deploy-azure-managed-instance-for-apache-cassandra-in-any-region"></a>Azure Managed Instance for Apache Cassandra はどのリージョンにでもデプロイできますか?
 
-プレビュー期間中、マネージド インスタンスを利用できるのは限られたリージョンのみとなります。
+現在、マネージド インスタンスは限られた数のリージョンで使用できます。
 
 ### <a name="what-are-the-storage-and-throughput-limits-of-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra のストレージとスループットの制限を教えてください
 
 これらの制限は、選択した仮想マシンの SKU によって異なります。
+
+### <a name="how-are-cassandra-repairs-carried-out-in-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra では、Cassandra の修復はどのように実行されますか?
+
+[cassandra-reaper.io](http://cassandra-reaper.io/) を使用します。 これは自動的に実行されるように設定されています。
 
 ### <a name="what-is-the-cost-of-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra のコストを教えてください
 
@@ -72,7 +72,7 @@ Azure Managed Instance for Apache Cassandra は、データセンター間での
 
 ### <a name="where-can-i-give-feedback-on-azure-managed-instance-for-apache-cassandra-features"></a>Azure Managed Instance for Apache Cassandra の機能に関するフィードバックはどこに送ればよいですか?
 
-フィードバックは、[UserVoice のフィードバック](https://feedback.azure.com/forums/263030-azure-cosmos-db?category_id=398548)から、"Managed Apache Cassandra" カテゴリを使用してお寄せください。
+フィードバックは、[UserVoice のフィードバック](https://feedback.azure.com/d365community/forum/3002b3be-0d25-ec11-b6e6-000d3a4f0858?c=e6e5c7c4-0d25-ec11-b6e6-000d3a4f0858#)から、"Managed Apache Cassandra" カテゴリを使用してお寄せください。
 
 アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
 

@@ -1,26 +1,38 @@
 ---
-title: BLOB インデクサーを構成する
+title: Azure Blob Storage にあるデータのインデックスを作成する
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search でのフルテキスト検索操作用に BLOB コンテンツのインデックス付けを自動化するように Azure Blob インデクサーを設定します。
+description: Azure Cognitive Search でのフルテキスト検索操作とナレッジ マイニング用に BLOB コンテンツのインデックス付けを自動化するように Azure Blob インデクサーを設定します。
+author: gmndrg
+ms.author: gimondra
 manager: nitinme
-author: MarkHeff
-ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 05/14/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 6f70ae726cf41395e46760dc5cf7da5b4d61478a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f4f90b83a21eb85a9ccc3ae11de4582d50ab2363
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802898"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892212"
 ---
-# <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>Cognitive Search で BLOB のインデックス作成を構成する方法
+# <a name="index-data-from-azure-blob-storage"></a>Azure Blob Storage にあるデータのインデックスを作成する
 
-BLOB インデクサーは、Azure Blob Storage から Cognitive Search インデックスにコンテンツを取り込むために使用されます。 BLOB インデクサーは [AI エンリッチメント](cognitive-search-concept-intro.md)で頻繁に使用されます。アタッチされた[スキルセット](cognitive-search-working-with-skillsets.md)によって、検索可能なコンテンツを作成するためのイメージと自然言語の処理が追加されます。 ただし、AI エンリッチメントを使用せずに BLOB インデクサーを使用して、PDF、Microsoft Office ドキュメント、ファイル形式などのテキストベースのドキュメントからコンテンツを取り込むこともできます。
+この記事では、コンテンツを抽出して Azure Cognitive Search で検索できるようにするために、Azure Blob インデクサーを構成する方法を説明します。 このワークフローでは、Azure Cognitive Search に検索インデックスを作成し、Azure Blob Storage から抽出された既存のコンテンツやメタデータと共にその検索インデックスをロードします。
 
-この記事では、両方のシナリオで BLOB インデクサーを構成する方法について説明します。 インデクサーの概念について理解が不十分な場合は、BLOB のインデックス作成に進む前に、「[Azure Cognitive Search のインデクサー](search-indexer-overview.md)」および[検索インデクサーの作成](search-howto-create-indexers.md)に関するページを先にお読みください。
+BLOB インデクサーは [AI エンリッチメント](cognitive-search-concept-intro.md)で頻繁に使用されます。アタッチされた[スキルセット](cognitive-search-working-with-skillsets.md)によって、BLOB コンテナー内の検索不可能なコンテンツ タイプから検索可能なコンテンツを作成するためのイメージと自然言語の処理が追加されます。
+
+この記事では、テキストに特化したインデックス作成用に Azure Blob インデクサーを構成する方法について説明します。 Azure Blob Storage のインデクサーは、次のうち任意のクライアントを使用して設定できます。
+
+* [Azure Portal](https://ms.portal.azure.com)
+* Azure Cognitive Search [REST API](/rest/api/searchservice/Indexer-operations)
+* Azure Cognitive Search [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
+
+この記事では REST API を使用します。 
+
+## <a name="supported-access-tiers"></a>サポートされているアクセス層
+
+Blob Storage の[アクセス層](../storage/blobs/access-tiers-overview.md)には、ホット、クール、アーカイブがあります。 インデクサーがアクセスできるのは、ホットとクールのみです。 
 
 <a name="SupportedFormats"></a>
 
@@ -59,7 +71,7 @@ BLOB のデータ ソース定義は、次の例のようになります。
 
 **フル アクセス ストレージ アカウントの接続文字列**: `{ "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>;" }`
 
-この接続文字列は、ストレージ アカウント ブレードに移動し、[設定]、[キー] と選択する (クラシック ストレージ アカウントの場合) か、[設定]、[アクセス キー] と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure Portal から取得できます。
+この接続文字列は、ストレージ アカウント ブレードに移動し、[設定] > [キー] と選択する (クラシック ストレージ アカウントの場合) か、[セキュリティとネットワーク] > [アクセス キー] と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure portal から取得できます。
 
 **ストレージ アカウントの Shared Access Signature** (SAS) の接続文字列: `{ "connectionString" : "BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl;" }`
 
@@ -113,6 +125,7 @@ api-key: [admin key]
 > [!IMPORTANT]
 > インデックス内のキー フィールドに対して明示的なマッピングが存在しない場合、Azure Cognitive Search は自動的に `metadata_storage_path` をキーおよび Base-64 エンコード キー値として使用します (上記の 2 つ目の選択肢)。
 >
+> カスタム メタデータ プロパティをキーとして使用する場合は、そのプロパティを変更しないでください。 キー プロパティが変更されると、インデクサーでは同じ BLOB に対して重複したドキュメントを追加します。
 
 #### <a name="example"></a>例
 
@@ -294,7 +307,7 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 インデックス作成中に通常発生するエラーには、サポートされていないコンテンツの種類、コンテンツの欠落、BLOB のサイズ超過などがあります。
 
-既定では、BLOB インデクサーは、サポートされていないコンテンツの種類 (画像など) が含まれる BLOB を検出するとすぐに停止されます。 `excludedFileNameExtensions` パラメーターを使用して特定のコンテンツの種類をスキップできます。 ただし、エラーが発生した場合でもインデックスの作成を継続し、後から個々のドキュメントをデバッグすることができます。 インデクサーのエラーの詳細については、「[インデクサーの一般的な問題のトラブルシューティング](search-indexer-troubleshooting.md)」および「[インデクサーのエラーと警告](cognitive-search-common-errors-warnings.md)」を参照してください。
+既定では、BLOB インデクサーは、サポートされていないコンテンツの種類 (画像など) が含まれる BLOB を検出するとすぐに停止されます。 `excludedFileNameExtensions` パラメーターを使用して特定のコンテンツの種類をスキップできます。 ただし、エラーが発生した場合でもインデックスの作成を継続し、後から個々のドキュメントをデバッグすることができます。 インデクサーのエラーの詳細については、[インデクサーのトラブルシューティング ガイド](search-indexer-troubleshooting.md)および[インデクサーのエラーと警告](cognitive-search-common-errors-warnings.md)に関するページを参照してください。
 
 ### <a name="respond-to-errors"></a>エラーに応答する
 

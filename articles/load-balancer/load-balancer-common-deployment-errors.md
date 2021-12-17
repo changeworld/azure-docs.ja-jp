@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: ae3899a61e942695fed1e3da5fc543b298a42e24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da7d31d018853b340be4506af48a602e7cb2765b
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94695556"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437938"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Azure Load Balancer での一般的な Azure デプロイ エラーのトラブルシューティング
 
@@ -35,7 +35,7 @@ ms.locfileid: "94695556"
 |CannotUseInactiveHealthProbe| 仮想マシン スケール セットの正常性に関して構成されたルールで使用されていないプローブは、使用できません。 設定されているプローブがアクティブに使用されていることを確認します。 |
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| 同じ種類 (内部、パブリック) のロード バランサーを複数使用することはできません。 最大で 1 つの内部ロード バランサーと 1 つのパブリック ロード バランサーを使用できます。 |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | Basic Load Balancer は、複数配置グループの仮想マシン スケール セットまたは複数の可用性ゾーンにまたがる仮想マシン スケール セットではサポートされていません。 代わりに Standard Load Balancer を使用します。 |
-|MarketplacePurchaseEligibilityFailed | サブスクリプションが EA サブスクリプションであるため、購入を有効にするには、適切な管理者アカウントに切り替えます。 詳細については、[こちら](../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase)を参照してください。 |
+|MarketplacePurchaseEligibilityFailed | サブスクリプションが EA サブスクリプションであるため、購入を有効にするには、適切な管理者アカウントに切り替えます。 詳細については、[こちら](../marketplace/marketplace-faq-publisher-guide.yml#what-could-block-a-customer-from-completing-a-purchase-)を参照してください。 |
 |ResourceDeploymentFailure| ロード バランサーがエラー状態になっている場合は、次の手順に従ってエラー状態から復帰します。<ol><li>https://resources.azure.com に移動し、Azure portal の資格情報でサインインします。</li><li>**[Read/Write]\(読み取り/書き込み\)** を選択します。</li><li>左側で、 **[Subscriptions]\(サブスクリプション\)** を展開し、更新する Load Balancer を含むサブスクリプションを展開します。</li><li>**[ResourceGroups]** を展開し、更新する Load Balancer を含むリソース グループを展開します。</li><li>**[Microsoft. Network]**  >  **[LoadBalancers]** を選択し、更新する Load Balancer である **[LoadBalancer_1]** を選択します。</li><li>**[LoadBalancer_1]** の表示ページで、 **[GET]\(取得\)**  >  **[Edit]\(編集\)** を選択 します。</li><li>**ProvisioningState** の値を **Failed** から **Succeeded** に更新します。</li><li>**[PUT]** を選択します。</li></ol>|
 |  |  |
 

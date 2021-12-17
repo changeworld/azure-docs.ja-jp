@@ -7,17 +7,16 @@ author: nitinme
 manager: nitinme
 keywords: Cognitive Services, コグニティブ インテリジェンス, コグニティブ ソリューション, AI サービス, コグニティブな理解, コグニティブ機能
 ms.service: cognitive-services
-ms.subservice: ''
 ms.topic: overview
-ms.date: 10/22/2020
+ms.date: 10/08/2021
 ms.author: nitinme
-ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: c89131cc34d45ea94f3bb290ac11ec86f4b83be3
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.custom: cog-serv-seo-aug-2020, ignite-fall-2021
+ms.openlocfilehash: e19c16d8ee1142374461fb0fdc95c59c84ef8b36
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587614"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073322"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
@@ -42,8 +41,6 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 |[Computer Vision](./computer-vision/index.yml "Computer Vision")|Computer Vision サービスを使用すると、画像を処理して情報を返すための高度なコグニティブ アルゴリズムにアクセスできます。 サービスを開始するには、[Computer Vision のクイックスタート](./computer-vision/quickstarts-sdk/client-library.md)に関する記事をご覧ください。|
 |[Custom Vision Service](./custom-vision-service/index.yml "Custom Vision Service")|Custom Vision Service を使用すると、独自の画像分類器を構築、デプロイ、改良できます。 画像分類器は、視覚特性に基づいて画像にラベルを適用する AI サービスです。 |
 |[Face](./face/index.yml "Face")| Face サービスは、顔属性の検出と認識を有効にする、高度な顔アルゴリズムへのアクセスを提供します。 サービスを開始するには、[Face のクイックスタート](./face/quickstarts/client-libraries.md)に関する記事をご覧ください。|
-|[Form Recognizer](./form-recognizer/index.yml "Form Recognizer")|Form Recognizer では、キーと値のペアおよびテーブル データを識別して form ドキュメントから抽出し、その後、元のファイルにあるリレーションシップを含む構造化データを出力します。 開始するには、[Form Recognizer のクイックスタート](./form-recognizer/quickstarts/client-library.md)に関する記事をご覧ください。|
-|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer は、ビデオから洞察を抽出できます。 開始するには、[Video Indexer のクイックスタート](/azure/media-services/video-indexer/video-indexer-get-started)に関する記事をご覧ください。|
 
 ## <a name="speech-apis"></a>Speech API
 
@@ -59,19 +56,17 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
-|[Language Understanding LUIS](./luis/index.yml "Language Understanding")|Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話テキストに適用して、全体の意味を予測し、関連性のある詳細な情報を引き出す、クラウドベースの会話型 AI サービスです。 開始するには、[LUIS のクイックスタート](./luis/get-started-portal-build-app.md)に関する記事をご覧ください。|
+|[Azure Cognitive Service for Language](./language-service/index.yml "言語サービス")| Azure Cognitive Service for Language からは、テキストを理解して分析するための自然言語処理 (NLP) 機能がいくつか提供されます。|
+|[Language Understanding LUIS](./luis/index.yml "Language Understanding")|Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話テキストに適用して、全体の意味を予測し、関連性のある詳細な情報を引き出す、クラウドベースの会話型 AI サービスです。 開始するには、[LUIS のクイックスタート](./luis/luis-get-started-create-app.md)に関する記事をご覧ください。|
 |[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker を使用すると、半構造化コンテンツから質疑応答サービスを構築できます。 開始するには、[QnA Maker のクイックスタート](./qnamaker/quickstarts/create-publish-knowledge-base.md)に関する記事をご覧ください。|
-|[Text Analytics](./text-analytics/index.yml "Text Analytics")| Text Analytics によって、未加工のテキストに対して、感情分析、キー フレーズ抽出、および言語検出のための自然言語処理が提供されます。 開始するには、[Text Analytics のクイックスタート](./text-analytics/quickstarts/client-libraries-rest-api.md)に関する記事をご覧ください。|
 |[Translator](./translator/index.yml "Translator")|Translator は、ほぼリアルタイムでのマシン ベースのテキスト翻訳を提供します。|
-| [Immersive Reader](./immersive-reader/index.yml "イマーシブ リーダー") | Immersive Reader は、スクリーン リーダーや読解機能をアプリケーションに追加するものです。 サービスを開始するには、[イマーシブ リーダーのクイックスタート](./immersive-reader/quickstarts/client-libraries.md)をご覧ください。 |
 
 ## <a name="decision-apis"></a>Decision API
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
-|[Anomaly Detector](./anomaly-detector/index.yml "Anomaly Detector") |Anomaly Detector では、時系列データを監視し、その中の異常を検出できます。 開始するには、[Anomaly Detector のクイックスタート](./anomaly-detector/quickstarts/client-libraries.md)に関する記事をご覧ください。|
+|[Anomaly Detector](./anomaly-detector/index.yml "Anomaly Detector") |Anomaly Detector では、時系列データを監視し、その中の異常を検出できます。 サービスを開始するには、[Anomaly Detector のクイックスタート](./anomaly-detector/quickstarts/client-libraries.md)に関する記事をご覧ください。|
 |[Content Moderator](./content-moderator/overview.md "Content Moderator")|Content Moderator は、不快感を与えたり、望ましくなかったり、危険であったりする可能性があるコンテンツを監視します。 開始するには、[Content Moderator のクイックスタート](./content-moderator/client-libraries.md)に関する記事をご覧ください。|
-|[Metrics Advisor](./metrics-advisor/index.yml) (プレビュー) | Metrics Advisor には、多変量の時系列データに対するカスタマイズ可能な異常検出機能と、そのサービスの使用を支援するあらゆる機能を備えた Web ポータルがあります。 開始するには、[Metrics Advisor のクイックスタート](./metrics-advisor/quickstarts/rest-api-and-client-library.md)に関する記事をご覧ください。 |
 |[Personalizer](./personalizer/index.yml "Personalizer")|Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにします。 開始するには、[Personalizer のクイックスタート](./personalizer/quickstart-personalizer-sdk.md)に関する記事をご覧ください。|
 
 ## <a name="search-apis"></a>検索 API
@@ -88,7 +83,7 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 |[Bing Custom Search](/azure/cognitive-services/bing-custom-search "Bing Custom Search")|Bing Custom Search は、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。|
 |[Bing Entity Search](/azure/cognitive-services/bing-entities-search/ "Bing Entity Search")|Bing Web Search では、ユーザーのクエリに関連があると Bing が判断したエンティティに関する情報が返されます。|
 |[Bing Image Search](/azure/cognitive-services/bing-image-search "Bing Image Search")|Bing Image Search は、ユーザーのクエリに関連すると判断されたイメージの表示を返します。|
-|[Bing Visual Search](/azure/cognitive-services/bing-visual-search "Bing Visual Search")|Bing Visual Search は、画像 (見た目が似ている画像、画像内にある製品のショッピング ソース、関連検索) に関する分析情報を返します。|
+|[Bing Visual Search](/azure/cognitive-services/bing-visual-search "Bing Visual Search")|Bing Visual Search は、画像 (見た目が似ている画像、画像で示している製品を購入できる場所および関連検索) に関する分析情報を返します。|
 |[Bing Local Business Search](/azure/cognitive-services/bing-local-business-search/ "Bing Local Business Search")| Bing Local Business Search API を使用すると、アプリケーションでは検索クエリに基づいて地元企業に関する連絡先や場所の情報を検索できます。|
 |[Bing Spell Check](/azure/cognitive-services/bing-spell-check/ "Bing Spell Check")|Bing Spell Check を使用して、コンテキストに応じた文法およびスペル チェックを実行できます。|
 
@@ -134,7 +129,7 @@ Azure Cognitive Services には、[Azure Virtual Networks](cognitive-services-vi
 
 Cognitive Services の API は、Microsoft マネージド データ センターの拡大しているネットワーク上でホストされます。 [Azure リージョン一覧](https://azure.microsoft.com/regions "Azure リージョンの一覧")で API ごとのリージョン別の提供状況がわかります。
 
-まだサポートされていないリージョンを探しているのですか。 [UserVoice フォーラム](https://cognitive.uservoice.com/ "UserVoice フォーラム")に機能要求を記入してご連絡ください。
+まだサポートされていないリージョンを探しているのですか。 [UserVoice フォーラム](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858)に機能要求を記入してご連絡ください。
 
 ## <a name="supported-cultural-languages"></a>サポートされる言語 (カルチャ)
 
@@ -153,5 +148,4 @@ Cognitive Services には、インテリジェント アプリケーションの
 ## <a name="next-steps"></a>次のステップ
 
 * [Cognitive Services アカウントを作成する](cognitive-services-apis-create-account.md "Cognitive Services アカウントを作成する")
-* [Cognitive Services ドキュメントの新着情報](whats-new-docs.md "Cognitive Services ドキュメントの新着情報")
 * [Cognitive Services のコストを計画および管理する](plan-manage-costs.md)

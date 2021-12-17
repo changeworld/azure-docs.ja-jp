@@ -1,36 +1,34 @@
 ---
-title: Azure Stack Edge Pro デバイスをリセットして再アクティブ化する | Microsoft Docs
-description: ご利用の Azure Stack Edge Pro デバイスのデータをワイプし、再アクティブ化する方法について説明します。
+title: Azure Stack Edge デバイスのリセットと再アクティブ化
+description: ご利用の Azure Stack Edge デバイスのデータをワイプし、その後で再アクティブ化する方法について説明します。
 services: databox
 author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/03/2020
+ms.date: 09/20/2021
 ms.author: alkohli
-ms.openlocfilehash: 95fbe5dc4a934fee10c558f640bc24f261203a33
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4f37d453072277da4cb4ecade03cf3f58f28460e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443529"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005672"
 ---
-# <a name="reset-and-reactivate-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスをリセットして再アクティブ化する
+# <a name="reset-and-reactivate-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスをリセットして再アクティブ化する
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-この記事では、デバイスで問題が発生した場合や、何らかの理由で最初からやり直す必要がある場合に、Azure Stack Edge Pro デバイスをリセット、再構成、および再アクティブ化する方法について説明します。
+この記事では、デバイスで問題が発生した場合や、何らかの理由で最初からやり直す必要がある場合に、Azure Stack Edge デバイスをリセット、再構成、および再アクティブ化する方法について説明します。
 
 デバイスをリセットしてデータを削除した後、デバイスを新しいリソースとして再アクティブ化する必要があります。 デバイスをリセットするとデバイスの構成が削除されるため、ローカル Web UI を使用してデバイスを再構成する必要があります。
 
-この記事では、次のことについて説明します。
+たとえば、既存の Azure Stack Edge リソースを新しいサブスクリプションに移動する必要が生じる場合があります。 これを行うには、次のようにします。
 
-> [!div class="checklist"]
->
-> * デバイス上のデータ ディスクのデータを削除する
-> * 新しい注文を作成し、デバイスを再構成してアクティブ化することで、デバイスを再アクティブ化する
+1. 「[デバイスのリセット](#reset-device)」の手順に従って、デバイス上のデータをリセットします。
+2. 既存のデバイスで新しいサブスクリプションを使用する新しいリソースを作成し、デバイスをアクティブ化します。 「[デバイスを再アクティブ化する](#reactivate-device)」の手順に従います。
 
-## <a name="reset-data-from-the-device"></a>デバイスのデータをリセットする
+## <a name="reset-device"></a>デバイスのリセット
 
 デバイス上のデータ ディスクのデータを削除するには、ご利用のデバイスをリセットする必要があります。
 
@@ -67,4 +65,4 @@ ms.locfileid: "102443529"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge Pro デバイスに接続する](azure-stack-edge-gpu-deploy-connect.md)方法を確認します。
+- [Azure Stack Edge デバイスに接続する](azure-stack-edge-gpu-deploy-connect.md)方法を確認します。

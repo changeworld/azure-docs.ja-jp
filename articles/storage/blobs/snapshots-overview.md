@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: debce0a1b4c09bb89cdceb1cd29e59e1976c939a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e55d74139bb37c44fb736a8c5e31c08b6e379b21
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539156"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720608"
 ---
 # <a name="blob-snapshots"></a>BLOB のスナップショット
 
@@ -25,7 +25,12 @@ ms.locfileid: "99539156"
 
 ## <a name="about-blob-snapshots"></a>BLOB スナップショットについて
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+> [!IMPORTANT]
+> アカウントのスナップショットで階層型名前空間機能を有効にしているものは現在、プレビュー段階です。
+> ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+>
+>
+> プレビューに登録するには、[こちらのフォーム](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u)を参照してください。
 
 スナップショットが作成された日時を示す **DateTime** 値が BLOB の URI に追加される点を除き、BLOB のスナップショットはベース BLOB とまったく同じです。 たとえば、ページ BLOB の URI が `http://storagesample.core.blob.windows.net/mydrives/myvhd` の場合、スナップショットの URI は `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z` のようになります。
 
@@ -66,7 +71,7 @@ VHD ファイルは、VM ディスクの現時点の情報と状態の格納に�
 
 スナップショット (BLOB の読み取り専用コピー) を作成すると、別途データ ストレージ料金がアカウントに課金される場合があります。 不要なコストを抑えるためにも、アプリケーションを設計する際は、この料金が発生するしくみを理解しておくことが重要です。
 
-BLOB のバージョンと同様に、BLOB のスナップショットは、アクティブなデータと同じレートで課金されます。 スナップショットの課金方法は、ベース BLOB またはそのいずれかのスナップショット (バージョン) のどちらに対して層を明示的に設定したかによって異なります。 BLOB 層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
+BLOB のバージョンと同様に、BLOB のスナップショットは、アクティブなデータと同じレートで課金されます。 スナップショットの課金方法は、ベース BLOB またはそのいずれかのスナップショット (バージョン) のどちらに対して層を明示的に設定したかによって異なります。 BLOB 層の詳細については、「[BLOB データのホット、クール、およびアーカイブ アクセス層](access-tiers-overview.md)」を参照してください。
 
 BLOB またはスナップショットの層を変更していない場合は、その BLOB、そのスナップショット、およびそれが持つ可能性があるすべてのバージョンにわたるデータの一意のブロックに対して課金されます。 詳細については、「[BLOB 層が明示的に設定されていない場合の課金](#billing-when-the-blob-tier-has-not-been-explicitly-set)」を参照してください。
 
@@ -152,6 +157,19 @@ BLOB の論理的な削除が有効になっている場合に、層が明示的
 |-|-|
 | BLOB の論理的な削除とバージョン管理の両方が有効になっている場合 | 層に関係なく、すべての既存バージョンがコンテンツ全体の長さで。 |
 | BLOB の論理的な削除は有効になっているが、バージョン管理は無効になっている場合 | 層に関係なく、すべての既存の論理的な削除のスナップショットがコンテンツ全体の長さで。 |
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。
+
+| ストレージ アカウントの種類 | Blob Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> | SFTP <sup>1</sup> |
+|--|--|--|--|--|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>              | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>              | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+
+<sup>1</sup> Data Lake Storage Gen2、ネットワーク ファイル システム (NFS) 3.0 プロトコル、セキュア ファイル転送プロトコル (SFTP) のサポートでは、すべて階層型名前空間が有効になっているストレージ アカウントが必要です。
+
+<sup>2</sup>    機能はプレビュー レベルでサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,31 +1,31 @@
 ---
 title: Azure Stack Edge Pro GPU ストレージ アカウント管理 | Microsoft Docs
-description: Azure portal を使用して Azure Stack Edge Pro のストレージ アカウントを管理する方法について説明します。
+description: Azure portal を使用して Azure Stack Edge Pro GPU のストレージ アカウントを管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 08/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 2d9520c8f97171dbf2f46aa2c94b9e1e280ed86c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c5cb61bf7450ea4668c6368d75615cdf43c2c40
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201275"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195874"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro の Edge ストレージ アカウントを管理する
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro-gpu"></a>Azure portal を使用して Azure Stack Edge Pro GPU の Edge ストレージ アカウントを管理する
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-この記事では、Azure Stack Edge Pro の Edge ストレージ アカウントを管理する方法について説明します。 Azure Stack Edge Pro の管理は、Azure portal またはローカル Web UI を通じて行うことができます。 Azure portal を使用して、デバイスの Edge ストレージ アカウントを追加または削除します。
+この記事では、Azure Stack Edge Pro の Edge ストレージ アカウントを管理する方法について説明します。 Azure Stack Edge Pro GPU の管理は、Azure portal またはローカル Web UI を通じて行うことができます。 Azure portal を使用して、デバイスの Edge ストレージ アカウントを追加または削除します。
 
 ## <a name="about-edge-storage-accounts"></a>Edge ストレージ アカウントについて
 
-SMB、NFS、または REST プロトコルを使用して、Azure Stack Edge Pro デバイスからデータを転送できます。 REST API を使用して BLOB ストレージにデータを転送するには、Edge ストレージ アカウントを Azure Stack Edge Pro に作成する必要があります。 
+SMB、NFS、または REST プロトコルを使用して、Azure Stack Edge Pro GPU デバイスからデータを転送できます。 REST API を使用して BLOB ストレージにデータを転送するには、Edge ストレージ アカウントをデバイスに作成する必要があります。 
 
-Azure Stack Edge Pro デバイスに追加した Edge ストレージ アカウントは、Azure ストレージ アカウントにマップされます。 Edge ストレージ アカウントに書き込まれたデータは、自動的にクラウドにプッシュされます。
+Azure Stack Edge Pro GPU デバイスに追加した Edge ストレージ アカウントは、Azure ストレージ アカウントにマップされます。 Edge ストレージ アカウントに書き込まれたデータは、自動的にクラウドにプッシュされます。
 
 2 種類のアカウントと、これらの各アカウントから Azure へのデータの流れについて説明する図を次に示します。
 
@@ -83,9 +83,13 @@ Edge ストレージ アカウントを削除するには、次の手順のよ�
 
 ## <a name="sync-storage-keys"></a>ストレージ キーの同期
 
-デバイスの Edge (ローカル) ストレージ アカウントのアクセス キーを同期できます。 
+各 Azure Storage アカウントには、2 つの 512 ビット ストレージ アクセス キーがあります。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。 Azure Stack Edge デバイスがクラウド ストレージ サービス プロバイダー (この場合は Azure) にアクセスするときは、これら 2 つのキーのどちらかを指定する必要があります。
 
-ストレージ アカウントのアクセス キーを同期するには、次の手順を実行します。
+Azure 管理者は、ストレージ アカウントに (Azure Storage サービスを介して) 直接アクセスすることによって、アクセス キーを再生成または変更できます。 Azure Stack Edge サービスとデバイスでは、この変更が自動的に表示されません。
+ 
+Azure Stack Edge に変更を通知するには、Azure Stack Edge サービスにアクセスし、ストレージ アカウントにアクセスして、アクセス キーを同期する必要があります。 その後、サービスは最新のキーを取得し、キーを暗号化して、デバイスに送信します。 デバイスが新しいキーを取得すると、引き続き Azure Storage アカウントにデータを転送できます。 
+ 
+デバイスに新しいキーを提供するには、Azure portal にアクセスし、ストレージ アクセス キーを同期します。 次の手順を実行します。 
 
 1. リソース内で、管理するストレージ アカウントを選択します。 上部のコマンド バーから **[ストレージ キーの同期]** を選択します。
 

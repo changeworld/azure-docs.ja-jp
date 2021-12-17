@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: how-to
-ms.date: 09/11/2020
+ms.date: 06/25/2021
 ms.author: pafarley
-ms.openlocfilehash: fd4ad1443f466a78abfc569d5f52f6bdeff2d5be
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d247626607f5fd4b517d7436c21ae33ed5727220
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048886"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353324"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>通知とバックアップのために Azure Storage を統合する
 
@@ -28,19 +28,18 @@ Custom Vision プロジェクトを Azure Blob Storage キューと統合して�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure の Custom Vision リソース。 それがない場合は、Azure portal に移動し、[新しい Custom Vision リソースを作成してください](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true)。 現在、この機能では、Cognitive Services リソース (オール イン ワン キー) はサポートされていません。
-- BLOB コンテナーがある Azure ストレージ アカウント。 このステップに関してヘルプが必要な場合は、[Azure Storage ラボの演習 1](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) に従ってください。
-* [PowerShell バージョン 6.0 以降](/powershell/scripting/install/installing-powershell-core-on-windows)、または同様のコマンド ライン アプリケーション。
+- BLOB コンテナーがある Azure ストレージ アカウント。 このステップに関してヘルプが必要な場合は、[ストレージのクイックスタート](../../storage/blobs/storage-quickstart-blobs-portal.md) に従ってください。
+- [PowerShell バージョン 6.0 以降](/powershell/scripting/install/installing-powershell-core-on-windows)、または同様のコマンド ライン アプリケーション。
 
 ## <a name="set-up-azure-storage-integration"></a>Azure ストレージの統合をセットアップする
 
 Azure portal で Custom Vision トレーニング リソースに移動し、 **[ID]** ページを選択して、システム割り当てマネージド ID を有効にします。
 
-次に、Azure portal でストレージ リソースに移動します。 **[アクセス制御 (IAM)]** ページに移動し、各統合機能に対してロールの割り当てを追加します。
-* モデルのバックアップ機能を使用する場合は、Custom Vision トレーニング リソースを選択して、**ストレージ BLOB データ共同作成者** ロールを割り当てます。 
-* 次に、通知キュー機能を使用する場合は、Custom Vision トレーニング リソースを選択して、**ストレージ キュー データ共同作成者** を割り当てます。
+次に、Azure portal でストレージ リソースに移動します。 **[アクセス制御 (IAM)]** ページに移動して **[ロールの割り当ての追加 (プレビュー)]** を選択します。 次のどちらかまたは両方の統合機能用にロールの割り当てを追加してください。
+* モデルのバックアップ機能を使用する場合は、 **[ストレージ BLOB データ共同作成者]** ロールを選択し、Custom Vision トレーニング リソースをメンバーとして追加します。 **[Review + assign]\(確認と割り当て\)** を選択して完了します。
+* 通知キュー機能を使用する場合は、 **[ストレージ キュー データ共同作成者]** ロールを選択し、Custom Vision トレーニング リソースをメンバーとして追加します。 **[Review + assign]\(確認と割り当て\)** を選択して完了します。
 
-> [!div class="mx-imgBorder"]
-> ![ストレージ アカウントのロール割り当て追加ページ](./media/storage-integration/storage-access.png)
+ロールの割り当てについては、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ### <a name="get-integration-urls"></a>統合 URL を取得する
 

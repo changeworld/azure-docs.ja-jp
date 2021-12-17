@@ -2,7 +2,6 @@
 title: ダウンストリーム IoT Edge デバイスを接続する - Azure IoT Edge | Microsoft Docs
 description: Azure IoT Edge ゲートウェイ デバイスに接続するように IoT Edge デバイスを構成する方法。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/01/2021
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: e0912fb452a7f587fef19de835eea111b349a9a4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 7b76f98d13e959529aab2c16776ed34cb0f1a906
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310021"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706687"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム IoT Edge デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -54,6 +53,8 @@ ms.locfileid: "107310021"
 
 親デバイスになれるのは IoT Edge デバイスのみですが、IoT Edge デバイスと IoT デバイスは両方とも子になることができます。 親は多数の子を持つことができますが、子は 1 つの親しか持つことができません。 ゲートウェイ階層は、あるデバイスの子が別のデバイスの親になるように親子セットを連結することで作成されます。
 
+既定では、親は最大 100 の子を持つことができます。 この制限を変更するには、親デバイスの edgeHub モジュールで **Maxconnectedclients** 環境変数を設定します。
+
 <!-- TODO: graphic of gateway hierarchy -->
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
@@ -78,15 +79,20 @@ Azure portal では、新しいデバイス ID を作成するとき、または
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI の [azure-iot](/cli/azure/ext/azure-iot) 拡張機能には、IoT リソースを管理するためのコマンドが用意されています。 新しいデバイス ID を作成するとき、または既存のデバイスを編集することで、IoT および IoT Edge デバイスの親子関係を管理できます。
+Azure CLI の [azure-iot](/cli/azure/iot) 拡張機能には、IoT リソースを管理するためのコマンドが用意されています。 新しいデバイス ID を作成するとき、または既存のデバイスを編集することで、IoT および IoT Edge デバイスの親子関係を管理できます。
 
-[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) コマンド セットを使用すると、指定したデバイスの親子関係を管理できます。
+[az iot hub device-identity](/cli/azure/iot/hub/device-identity) コマンド セットを使用すると、指定したデバイスの親子関係を管理できます。
 
 `create` コマンドには、デバイス作成時に子デバイスを追加したり親デバイスを設定したりするためのパラメーターが含まれています。
 
 `add-children`、`list-children`、および `remove-children`、または `get-parent` と`set-parent` など、追加の device-identity コマンドを使用すると、既存のデバイスの親子関係を管理できます。
 
 ---
+
+>[!NOTE]
+>プログラムで親子関係を確立する場合は、C#、Java、または Node.js の [IoT Hub Service SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用できます。
+>
+>C# SDK を使用した子デバイスの割り当て例は、[こちら](https://github.com/Azure/azure-iot-sdk-csharp/blob/main/e2e/test/iothub/service/RegistryManagerE2ETests.cs)です。 タスク `RegistryManager_AddAndRemoveDeviceWithScope()` は、プログラムで 3 層階層を作成する方法を示しています。 第 1 層にある IoT Edge デバイスは、親として機能します。 第 2 層にある別の IoT Edge デバイスは、子と親の両方として機能します。 最後の第 3 層にある IoT デバイスは、最下層の子デバイスとして機能します。
 
 ## <a name="prepare-certificates"></a>証明書の準備
 
@@ -114,7 +120,7 @@ IoT Edge をゲートウェイとして設定する手順は、IoT Edge をダ�
 
 セキュリティで保護された接続を有効にするには、ゲートウェイ シナリオ内のすべての IoT Edge デバイスを、一意のデバイス CA 証明書と、ゲートウェイ階層内のすべてのデバイスで共有されるルート CA 証明書のコピーを使用して構成する必要があります。
 
-IoT Edge は自分のデバイスに既にインストールされている必要があります。 そうでない場合は、[IoT Edge デバイスを IoT Hub に登録する](how-to-register-device.md)と[Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge.md)の手順に従ってください。
+IoT Edge は自分のデバイスに既にインストールされている必要があります。 されていない場合は、手順に従って、[1 つの Linux IoT Edge デバイスを手動でプロビジョニング](how-to-provision-single-device-linux-symmetric.md)します。
 
 このセクションの手順では、この記事の前半で説明した **ルート CA 証明書** および **デバイス CA 証明書と秘密キー** を参照しています。 それらの証明書を別のデバイスで作成した場合は、それらをこのデバイスで使用できるようにします。 USB ドライブを使用したり、[Azure Key Vault](../key-vault/general/overview.md) などのサービスを使用したり、[セキュア ファイル コピー](https://www.ssh.com/ssh/scp/)などの機能を使用して、ファイルを物理的に転送できます。
 
@@ -143,7 +149,11 @@ IoT Edge は自分のデバイスに既にインストールされている必�
    ```
 
    >[!TIP]
-   >構成ファイルがデバイスにまだ存在しない場合は、`/etc/aziot/config.toml.edge.template` をテンプレートとして使用して作成します。
+   >デバイスにまだ構成ファイルが存在しない場合は、次のコマンドを使用し、テンプレート ファイルに基づいて作成します。
+   >
+   >```bash
+   >sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   >```
 
 1. 構成ファイルで **ホスト名** セクションを見つけます。 `hostname` パラメーターが含まれる行をコメント解除し、IoT Edge デバイスの完全修飾ドメイン名 (FQDN) または IP アドレスになるように、値を更新します。
 
@@ -380,7 +390,7 @@ API プロキシ モジュールは、ほとんどの一般的なゲートウェ
                        "edgeAgent": {
                            "settings": {
                                "image": "mcr.microsoft.com/azureiotedge-agent:1.2",
-                               "createOptions": ""
+                               "createOptions": "{}"
                            },
                            "type": "docker"
                        },
@@ -416,7 +426,7 @@ API プロキシ モジュールは、ほとんどの一般的なゲートウェ
 
 1. 次のコマンドを入力して、IoT Edge デバイスへのデプロイを作成します。
 
-   ```bash
+   ```azurecli
    az iot edge set-modules --device-id <device_id> --hub-name <iot_hub_name> --content ./<deployment_file_name>.json
    ```
 

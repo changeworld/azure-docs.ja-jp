@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 12/16/2020
-ms.openlocfilehash: 852c44f5edc5c0b0f5f655f63ab040927bd9bc7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/10/2021
+ms.openlocfilehash: 605405965e4c6bc17321401245866f9b21f3a988
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963681"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760063"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share でサポートされているデータ ストア
 
@@ -50,7 +50,7 @@ Azure Data Share を使用すると、データ コンシューマーはデー�
 | Data Explorer ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>ストレージ アカウントからの共有
-Azure Data Share では、Azure Data Lake Storage Gen1 および Azure Data Lake Storage Gen2 からのファイル、フォルダー、ファイル システムの共有がサポートされています。 また、Azure Blob Storage からの BLOB、フォルダー、コンテナーの共有もサポートされています。 現時点では、ブロック BLOB のみがサポートされています。 
+Azure Data Share では、Azure Data Lake Storage Gen1 および Azure Data Lake Storage Gen2 からのファイル、フォルダー、ファイル システムの共有がサポートされています。 また、Azure Blob Storage からの BLOB、フォルダー、コンテナーの共有もサポートされています。 ブロック、追加、またはページの BLOB を共有できます。これらは、ブロック BLOB として受信されます。
 
 ファイル システム、コンテナー、またはフォルダーがスナップショットベースの共有で共有されている場合、データ コンシューマーは共有データの完全なコピーを作成することを選択できます。 または、増分スナップショット機能を使用して、新しいファイルまたは更新されたファイルのみをコピーすることもできます。 
 
@@ -68,7 +68,7 @@ Azure Data Share では、Azure SQL Database および Azure Synapse Analytics (
 詳細については、「[Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信](how-to-share-from-sql.md)」を参照してください。
 
 ## <a name="share-from-data-explorer"></a>Data Explorer からの共有
-Azure Data Share では、Azure Data Explorer クラスターからデータベースをインプレース共有する機能がサポートされています。 データ プロバイダーは、データベースまたはクラスターのレベルで共有することができます。 
+Azure Data Share では、Azure Data Explorer クラスターからデータベースをインプレース共有する機能がサポートされています。 データ プロバイダーは、データベースまたはクラスターのレベルで共有することができます。 Data Share API を使用してデータを共有している場合は、特定のテーブルも共有できます。  
 
 データがデータベース レベルで共有されている場合、データ コンシューマーは、データ プロバイダーが共有したデータベースにのみアクセスできます。 プロバイダーがデータをクラスター レベルで共有した場合、データ コンシューマーは、データ プロバイダーが今後作成するデータベースも含めて、プロバイダーのクラスターからすべてのデータベースにアクセスできます。
 

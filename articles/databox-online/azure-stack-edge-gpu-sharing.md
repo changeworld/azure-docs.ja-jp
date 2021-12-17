@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 07/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ff1c7b79a49b0b659056c89af3c61f28b72ebc50
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b1fd1d77a8b2e6f7da3a88bc4d7f57336d18237c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645243"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736717"
 ---
 # <a name="gpu-sharing-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの GPU 共有
 
@@ -26,7 +26,7 @@ ms.locfileid: "105645243"
 
 ## <a name="using-gpu-with-vms"></a>VM での GPU の使用
 
-Azure Stack Edge Pro デバイスでは、VM ワークロードをデプロイするときに GPU を共有できません。 GPU は 1 つの VM にのみマップできます。 これは、1 つの GPU があるデバイスには 1 つの GPU VM、2 つの GPU が搭載されているデバイスには 2 つの VM のみ持つことができることを意味します。 コンテナー化されたワークロード用に Kubernetes が構成されたデバイスで GPU VM を使用する場合も、考慮する必要がある他の要因があります。 詳細については、「[GPU VM と Kubernetes](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#gpu-vms-and-kubernetes)」を参照してください。
+Azure Stack Edge Pro デバイスでは、VM ワークロードをデプロイするときに GPU を共有できません。 GPU は 1 つの VM にのみマップできます。 これは、1 つの GPU があるデバイスには 1 つの GPU VM、2 つの GPU が搭載されているデバイスには 2 つの VM のみ持つことができることを意味します。 コンテナー化されたワークロード用に Kubernetes が構成されたデバイスで GPU VM を使用する場合も、考慮する必要がある他の要因があります。 詳細については、「[GPU VM と Kubernetes](azure-stack-edge-gpu-overview-gpu-virtual-machines.md#gpu-vms-and-kubernetes)」を参照してください。
 
 
 ## <a name="using-gpu-with-containers"></a>コンテナーでの GPU の使用

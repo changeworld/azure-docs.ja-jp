@@ -3,18 +3,19 @@ title: Log Replay Service を使用して SQL Managed Instance にデータベ�
 description: Log Replay Service を使用して SQL Server から SQL Managed Instance にデータベースを移行する方法について説明します
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.subservice: migration
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: sstein
-ms.date: 03/31/2021
-ms.openlocfilehash: 8e78db5b9d496c2ac13c9f1214b386770c11e21e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.reviewer: mathoma
+ms.date: 09/21/2021
+ms.openlocfilehash: 8dbe12ec428820f14cce427e4780ec4d5d4fd5c8
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075902"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893312"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Log Replay Service (プレビュー) を使用して SQL Server から SQL Managed Instance にデータベースを移行する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -67,7 +68,7 @@ LRS は "*オートコンプリート*" または "*連続*" モードで開始�
     
 | 操作 | 説明 |
 | :----------------------------- | :------------------------- |
-| **1.データベース バックアップを SQL Server から Blob Storage にコピーします**。 | [Azcopy](../../storage/common/storage-use-azcopy-v10.md) または [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、SQL Server の完全バックアップ、差分バックアップ、ログ バックアップを Blob Storage コンテナーにコピーします。 <br /><br />任意のファイル名を使用します。 LRS では固有のファイル名前付け規則は必要ありません。<br /><br />複数のデータベースを移行する場合は、データベースごとに個別のフォルダーが必要です。 |
+| **1.データベース バックアップを SQL Server から Blob Storage にコピーします**。 | [AzCopy](../../storage/common/storage-use-azcopy-v10.md) または [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、SQL Server の完全バックアップ、差分バックアップ、ログ バックアップを Blob Storage コンテナーにコピーします。 <br /><br />任意のファイル名を使用します。 LRS では固有のファイル名前付け規則は必要ありません。<br /><br />複数のデータベースを移行する場合は、データベースごとに個別のフォルダーが必要です。 |
 | **2.クラウドで LRS を開始します**。 | サービスの再起動は、コマンドレット: PowerShell ([start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) または Azure CLI ([az_sql_midb_log_replay_start cmdlets](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)) のいずれかを使用して実行できます。 <br /><br /> Blob Storage 上のバックアップ フォルダーを指す各データベースで、LRS を個別に開始します。 <br /><br /> サービスを開始すると、Blob Storage コンテナーからバックアップが取得され、復元が SQL Managed Instance で開始されます。<br /><br /> LRS を連続モードで開始した場合は、最初にアップロードされたすべてのバックアップが復元された後、サービスにより、フォルダーにアップロードされる新しいファイルが監視されます。 サービスが停止されるまで、ログ シーケンス番号 (LSN) チェーンに基づいてログが連続して適用されます。 |
 | **2.1.操作の進行状況を監視します**。 | 復元操作の進行状況は、コマンドレット: PowerShell ([get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) または Azure CLI ([az_sql_midb_log_replay_show cmdlets](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)) のいずれかを使用して監視できます。 |
 | **2.2.必要に応じて、操作を停止します**。 | 移行プロセスを停止する必要がある場合は、コマンドレット: PowerShell ([stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) または Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)) のいずれかを使用できます。 <br /><br /> 操作を停止すると、SQL Managed Instance で復元しようとしているデータベースが削除されます。 操作を停止した後に、データベースの LRS を再開することはできません。 移行プロセスを最初からやり直す必要があります。 |
@@ -88,11 +89,6 @@ LRS は "*オートコンプリート*" または "*連続*" モードで開始�
 - プロビジョニングされた Azure Blob Storage コンテナー
 - BLOB ストレージ コンテナーに対して読み取りとリストのアクセス許可が付与された Shared Access Signature (SAS) セキュリティ トークンが生成されている
 
-### <a name="migration-of-multiple-databases"></a>複数のデータベースの移行
-異なるデータベースのバックアップ ファイルは、Blob Storage 上の個別のフォルダーに配置する必要があります。
-
-LRS は、Blob Storage 上の適切なフォルダーを指すデータベースごとに個別に開始します。 LRS は、1 つのマネージド インスタンスごとに最大 100 個の同時復元プロセスをサポートできます。
-
 ### <a name="azure-rbac-permissions"></a>Azure RBAC アクセス許可
 指定したクライアントを介して LRS を実行するには、次のいずれかの Azure ロールが必要です。
 - サブスクリプションの所有者ロール
@@ -106,7 +102,8 @@ LRS は、Blob Storage 上の適切なフォルダーを指すデータベース
 - 1 つのファイルを使用するのではなく、完全バックアップと差分バックアップを複数のファイルに分割します。
 - バックアップの圧縮を有効にします。
 - リリースされる最新のコマンドレットに常に更新されるため、Cloud Shell を使用してスクリプトを実行します。
-- LRS を開始してから 47 時間以内に移行を完了するように計画します。 これは、システム管理されているソフトウェア パッチのインストールが行われない猶予期間です。
+- LRS を開始してから 36 時間以内に移行を完了するように計画します。 これは、システム管理されているソフトウェア パッチのインストールが行われない猶予期間です。
+- 個々のデータベースのすべてのバックアップ ファイルを 1 つのフォルダーに配置します。 同じデータベースにサブフォルダーを使用しないでください。
 
 > [!IMPORTANT]
 > - 移行プロセスが完了するまで、LRS で復元中のデータベースを使用することはできません。 
@@ -165,7 +162,7 @@ Azure Blob Storage は、SQL Server と SQL Managed Instance 間のバックア�
 
 LRS を使用したマネージド インスタンスへのデータベースの移行では、次の方法を使用して Blob Storage にバックアップをアップロードできます。
 - SQL Server ネイティブの [BACKUP TO URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) 機能を使用する
-- [Azcopy](../../storage/common/storage-use-azcopy-v10.md) または [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer) を使用して、バックアップを BLOB コンテナーにアップロードする
+- [AzCopy](../../storage/common/storage-use-azcopy-v10.md) または [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer) を使用して、バックアップを BLOB コンテナーにアップロードする
 - Azure portal で Storage Explorer を使用する
 
 ### <a name="make-backups-from-sql-server-directly-to-blob-storage"></a>SQL Server のバックアップを Blob Storage に直接作成する
@@ -329,7 +326,7 @@ az sql midb log-replay start <required parameters> &
 ```
 
 > [!IMPORTANT]
-> LRS を開始すると、システムで管理されているソフトウェア パッチが 47 時間停止されます。 この時間枠を過ぎると、自動化された次のソフトウェア パッチによって、LRS が自動的に停止されます。 その場合、移行を再開することはできないため、最初からやり直す必要があります。 
+> LRS を開始すると、システムで管理されているソフトウェア パッチが 36 時間停止されます。 この時間枠を過ぎると、自動化された次のソフトウェア パッチによって、LRS が自動的に停止されます。 その場合、移行を再開することはできないため、最初からやり直す必要があります。 
 
 ## <a name="monitor-the-migration-progress"></a>移行の進行状況を監視する
 
@@ -384,15 +381,33 @@ Azure CLI を使用して LRS 連続モードで移行プロセスを完了す�
 az sql midb log-replay complete -g mygroup --mi myinstance -n mymanageddb --last-backup-name "backup.bak"
 ```
 
+### <a name="migration-of-multiple-databases"></a>複数のデータベースの移行
+異なるデータベースのバックアップ ファイルは、Azure Blob Storage コンテナー内の個別のフォルダーに配置する必要があります。 1 つのデータベースのすべてのバックアップ ファイルを同じフォルダー内に配置する必要があります。これは、個別のデータベースにサブフォルダーを使用できないためです。 LRS は、Azure Blob Storage コンテナーと個々のデータベース フォルダーの完全な URI パスを指すように、データベースごとに個別に開始する必要があります。
+
+複数のデータベースに対して LRS を呼び出すときに必要なフォルダー構造と URI 仕様の例を次に示します。 各データベースに対して LRS を個別に開始し、Azure Blob Storage コンテナーと個々のデータベース フォルダーへの完全な URI パスを指定します。
+
+```URI
+-- Place all backup files for database 1 in its own separate folder within a storage container. No further subfolders are allowed under database1 folder for this database.
+https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/database1/<all database 1 backup files>
+
+-- Place all backup files for database 2 in its own separate folder within a storage container. No further subfolders are allowed under database2 folder for this database.
+https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/database2/<all database 2 backup files>
+
+-- Place all backup files for database 2 in its own separate folder within a storage container. No further subfolders are allowed under database3 folder for this database.
+https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/database3/<all database 3 backup files>
+```
+
 ## <a name="functional-limitations"></a>機能制限
 
 LRS の機能制限は次のとおりです。
 - 復元中のデータベースを、移行プロセス中の読み取り専用アクセスに使用することはできません。
-- LRS を開始すると、システムで管理されているソフトウェア パッチが 47 時間ブロックされます。 この時間枠が終了した後、次のソフトウェア更新プログラムにより、LRS が停止されます。 その後、LRS を最初からやり直す必要があります。
+- LRS を開始すると、システムで管理されているソフトウェア パッチが 36 時間ブロックされます。 この時間枠が終了した後、次のソフトウェア更新プログラムにより、LRS が停止されます。 その後、LRS を最初からやり直す必要があります。
 - LRS では、SQL Server のデータベースを `CHECKSUM` オプションを有効にしてバックアップする必要があります。
 - LRS によって使用される SAS トークンは Azure Blob Storage コンテナー全体に対して生成される必要があり、読み取りとリストのアクセス許可のみ付与されている必要があります。
 - 異なるデータベースのバックアップ ファイルは、Blob Storage 上の個別のフォルダーに配置する必要があります。
-- LRS は、Blob Storage 上のバックアップ ファイルがある個別のフォルダーを指すデータベースごとに個別に開始する必要があります。
+- ファイル名に % 文字と $ 文字が含まれるバックアップ ファイルは LRS で使用できません。 そのようなファイル名は変更を検討してください。
+- 個々のデータベースのサブフォルダーにバックアップを配置することはサポートされていません。 1 つのデータベースのすべてのバックアップは、1 つのフォルダーのルートに配置する必要があります。
+- 複数のデータベースの場合、バックアップ ファイルは、データベースごとに個別のフォルダーに配置する必要があります。 LRS は、個々のデータベース フォルダーを含む完全な URI パスを指すデータベースごとに個別に開始する必要があります。 
 - LRS は、1 つのマネージド インスタンスごとに最大 100 個の同時復元プロセスをサポートできます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング

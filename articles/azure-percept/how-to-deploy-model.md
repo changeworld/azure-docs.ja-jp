@@ -1,20 +1,20 @@
 ---
 title: Azure Percept DK にビジョン AI モデルをデプロイする
 description: Azure Percept Studio から Azure Percept DK にビジョン AI モデルをデプロイする方法について説明します
-author: elqu20
-ms.author: v-elqu
+author: tsampige
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.custom: template-how-to
-ms.openlocfilehash: 01bd3709050d8a2b57c1bf51920308188546fb31
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 55948f2beede0597a30dd557a82ee297c6a540ea
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035485"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006375"
 ---
-# <a name="deploy-a-vision-ai-model-to-your-azure-percept-dk"></a>Azure Percept DK にビジョン AI モデルをデプロイする
+# <a name="deploy-a-vision-ai-model-to-azure-percept-dk"></a>Azure Percept DK にビジョン AI モデルをデプロイする
 
 Azure Percept Studio 内から Azure Percept DK にビジョン AI モデルをデプロイするには、このガイドに従ってください。
 

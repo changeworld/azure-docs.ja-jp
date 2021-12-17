@@ -3,19 +3,19 @@ title: Web エンドポイントからコマンドを更新する
 titleSuffix: Azure Cognitive Services
 description: Web エンドポイントの呼び出しを使用して、コマンドの状態を更新する方法について説明します。
 services: cognitive-services
-author: nitinme
+author: eric-urban
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: nitinme
-ms.openlocfilehash: d0b77e6af36f0a71405f6c032bfdd121abeb0071
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: eur
+ms.openlocfilehash: b1bc8cc4420c2865cefcb8b719a566f68f4d250e
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97560272"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131511257"
 ---
 # <a name="update-a-command-from-a-web-endpoint"></a>Web エンドポイントからコマンドを更新する
 
@@ -120,7 +120,7 @@ Azure 関数と既存の Custom Commands アプリを接続します。
 1. **[Test]** を選択します。
 1. 数回 `increment` を送信します (`IncrementCounter` コマンドの例の文)。
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/increment-counter-example.png" alt-text="インクリメント カウンターの例を示すスクリーンショット。":::
+    > :::image type="content" source="./media/custom-commands/increment-counter-example-no-mic.png" alt-text="インクリメント カウンターの例を示すスクリーンショット。":::
 
 Azure 関数によってターンごとに `Counter` パラメーターの値がどのようにインクリメントされるかを確認してください。
 

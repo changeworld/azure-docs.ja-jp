@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 6d92b7c2f01a7e9ef12bc2bb422cfb6ed0076f73
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e6c09cfb749542f268c6a6bf749328698b98688e
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039378"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178464"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Operations Manager の既存のお客様向けの Azure Monitor
 この記事では、[System Center Operations Manager](/system-center/scom/welcome) を現在使用しており、ビジネス アプリケーションやその他のリソースを Azure に移行する際に [Azure Monitor](overview.md) への移行を計画しているお客様に向けたガイダンスを提供します。 最終的な目標はクラウドへの全面的な移行であり、ビジネス面と IT 運用の要件について妥協することなく、可能な限り多くの Operations Manager 機能を Azure Monitor に置き換えると想定しています。 
@@ -25,7 +25,7 @@ ms.locfileid: "102039378"
 
 
 ## <a name="general-strategy"></a>全般的な方針
-プラットフォームが根本的に異なっているため、Operations Manager から Azure Monitor にアセットを変換する移行ツールはありません。 代わりに、Operations Manager を使用し続けしている間に、移行によって[標準的な Azure Monitor 実装](deploy.md)を構成します。 Azure Monitor をカスタマイズして、さまざまなアプリケーションやコンポーネントの要件を満たす場合や、より多くの機能が追加された場合は、Operations Manager で、さまざまな管理パックおよびエージェントの、インベントリからの削除を開始できます。
+プラットフォームが根本的に異なっているため、Operations Manager から Azure Monitor にアセットを変換する移行ツールはありません。 代わりに、Operations Manager を使用し続けしている間に、移行によって[標準的な Azure Monitor 実装](best-practices.md)を構成します。 Azure Monitor をカスタマイズして、さまざまなアプリケーションやコンポーネントの要件を満たす場合や、より多くの機能が追加された場合は、Operations Manager で、さまざまな管理パックおよびエージェントの、インベントリからの削除を開始できます。
 
 この記事で推奨される一般的な方針は、[クラウド監視ガイド](/azure/cloud-adoption-framework/manage/monitor/)と同じです。このガイドでは、クラウドへの段階的移行を行えるようする[ハイブリッド クラウド監視](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring)の方針が勧められています。 一部の機能が重複する可能性もありますが、この方針では、新しいプラットフォームに慣れながら既存のビジネス プロセスを維持できます。 Operations Manager の機能から離れるのは、Azure Monitor に置き換え可能なときだけです。 複数の監視ツールを使用すると複雑さが増しますが、オンプレミスまたは他のクラウド内に存在する可能性があるサーバー ソフトウェアやインフラストラクチャ コンポーネントを監視する Operations Manager の機能を維持しながら、次世代のクラウド ワークロードを監視する Azure Monitor の機能を活用できます。 
 
@@ -115,7 +115,7 @@ Azure Monitor ではまだ提供できない機能については、引き続き
 
 [![VM insights のマップ](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
 
-VM insights を使用すると、Azure Virtual Machines に加えて、オンプレミスのマシンや、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用する他のクラウド内のマシンを、監視することができます。 Arc 対応サーバーを使用すると、Azure の外部 (企業ネットワークや Azure 以外のクラウド プロバイダー) でホストされている Windows と Linux のマシンを、ネイティブの Azure 仮想マシンと同じように管理することができます。
+VM insights を使用すると、Azure Virtual Machines に加えて、オンプレミスのマシンや、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用する他のクラウド内のマシンを、監視することができます。 Azure Arc 対応サーバーを使用すると、Azure の外部 (企業ネットワークや Azure 以外のクラウド プロバイダー) でホストされている Windows と Linux のマシンを、ネイティブの Azure 仮想マシンと同じように管理することができます。
 
 
 

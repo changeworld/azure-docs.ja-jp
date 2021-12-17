@@ -2,13 +2,13 @@
 title: 'クイックスタート: C を使用してイベントを送信する - Azure Event Hubs'
 description: 'クイックスタート: この記事では、Azure Event Hubs にイベントを送信する C アプリケーションを作成するためのチュートリアルを提供します。'
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 09/23/2021
+ms.openlocfilehash: 5f93e3cac123db184f4a669f87f90adfebdce5b0
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85315667"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215265"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>クイックスタート: C を使用して Azure Event Hubs にイベントを送信する
 

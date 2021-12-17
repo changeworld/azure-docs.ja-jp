@@ -7,16 +7,16 @@ ms.subservice: development
 ms.custom: sqldbrb=1, devx-track-dotnet
 ms.devlang: ''
 ms.topic: reference
-author: stevestein
-ms.author: sstein
-ms.reviewer: genemi
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: mathoma
 ms.date: 06/11/2020
-ms.openlocfilehash: 0d009522ea0d0986233983f8725549b618ffb537
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38a0e1587e6082f5f0554f049e8affdd77a3962d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91444868"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706546"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 用の 1433 以外のポート
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

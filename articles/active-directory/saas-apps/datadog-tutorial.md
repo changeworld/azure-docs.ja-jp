@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 791e215cbfe219cffa57cca652c00103095afd24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23bdf05960af9eb94a2b003af113e7d66c4ea69e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101647236"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132338347"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Datadog の統合
 
@@ -60,7 +60,7 @@ Datadog に対して Azure AD SSO を構成してテストするには、次の�
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Datadog SSO の構成](#configure-datadog-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Datadog テスト ユーザーの作成](#create-datadog-test-user)** - Datadog で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+    1. Datadog テスト ユーザーの作成 - Datadog で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -68,29 +68,30 @@ Datadog に対して Azure AD SSO を構成してテストするには、次の�
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. Azure portal の **Datadog** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
-1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+
 1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
-   ![基本的な SAML 構成を編集する](common/edit-urls.png)
-
-1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
+1. アプリケーションは Azure と事前に統合済みのため、 **[基本的な SAML 構成]** セクションでは、ユーザーは何のアクションも実行しません。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** ボックスに、`https://app.datadoghq.com/account/login/id/<CUSTOM_IDENTIFIER>` という形式で URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Datadog クライアント サポート チーム](mailto:support@datadoghq.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 この値は、[Datadog の SAML 設定](https://app.datadoghq.com/organization-settings/login-methods/saml)にある実際のサインオン URL で更新します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。 IdP Initiated ログインと SP Initiated ログインを一緒に使用するには、Azure 内に構成されている ACS URL の両方のバージョンが必要です。
 
 1. **[保存]** をクリックします。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページの **[ユーザー属性と要求]** で、鉛筆アイコンをクリックして設定を編集します。
 
-    ![証明書のダウンロードのリンク](common/metadataxml.png)
+1. **[グループ要求を追加する]** ボタンをクリックします。 Azure AD では既定で、グループ要求名は URL です。 例: `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups`。 これを **groups** などの表示名の値に変更する場合は、 **[詳細オプション]** を選択し、グループ要求の名前を **groups** に変更します。
+
+   > [!NOTE]
+   > ソース属性は `Group ID` に設定されています。 これは、Azure AD 内のグループの UUID です。 つまり、グループ ID は、グループ名としてではなく、グループ要求属性値として Azure AD によって送信されます。 グループ名ではなくグループ ID にマップするように Datadog のマッピングを変更する必要があります。 詳細については、[Datadog の SAML マッピング](https://docs.datadoghq.com/account_management/saml/#mapping-saml-attributes-to-datadog-roles)に関するページを参照してください。
+
+1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
 1. **[Datadog のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
-
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -118,15 +119,11 @@ Datadog に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-datadog-sso"></a>Datadog SSO の構成
 
-**Datadog** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Datadog サポート チーム](mailto:support@datadoghq.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
-### <a name="create-datadog-test-user"></a>Datadog テスト ユーザーの作成
-
-このセクションでは、Datadog で B.Simon というユーザーを作成します。 [Datadog サポート チーム](mailto:support@datadoghq.com)と連携して、Datadog プラットフォームにユーザーを追加してください。
+**Datadog** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** を [Datadog の SAML 設定](https://app.datadoghq.com/organization-settings/login-methods/saml)でアップロードする必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
+次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
 #### <a name="sp-initiated"></a>SP Initiated:
 
@@ -138,7 +135,7 @@ Datadog に対して Azure AD SSO を構成してテストするには、次の�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Datadog に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Datadog] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Datadog に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリ ポータルで [Datadog] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Datadog に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリ ポータルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ### <a name="enable-all-users-from-your-tenant-to-authenticate-with-the-app"></a>テナントのすべてのユーザーがアプリで認証できるようにする
 
@@ -158,4 +155,4 @@ Datadog に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-Datadog を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Datadog を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

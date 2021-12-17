@@ -1,79 +1,81 @@
 ---
-title: Azure Cosmos DB のメトリックを使用した監視とデバッグ
+title: Azure Cosmos DB の分析情報を使用した監視とデバッグ
 description: Azure Cosmos DB のメトリックを使用して、一般的な問題をデバッグし、データベースを監視します。
-author: kanshiG
-ms.author: govindk
+ms.author: esarroyo
+author: StefArroyo
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 11/08/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0711d764514e45d3c28e26cf99b45dc711ef201c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ba9fac9fef3e418cc48bc3185ca91af89dd7946f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868258"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057064"
 ---
-# <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
+# <a name="monitor-and-debug-with-insights-in-azure-cosmos-db"></a>Azure Cosmos DB の分析情報を使用した監視とデバッグ
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB には、スループット、ストレージ、整合性、可用性、および待機時間のメトリックが用意されています。 Azure portal では、これらのメトリックの集計ビューが提供されます。 Azure Monitor API から Azure Cosmos DB メトリックを表示することもできます。 メトリックのディメンション値 (コンテナー名など) は、大文字と小文字が区別されません。 そのため、これらのディメンション値に対して文字列比較を行う場合は、大文字と小文字を区別しない比較を使用する必要があります。 Azure Monitor からメトリックを表示する方法の詳細については、[Azure Monitor からのメトリックの取得](./monitor-cosmos-db.md)に関する記事を参照してください。
+Azure Cosmos DB には、スループット、ストレージ、整合性、可用性、および待機時間の分析情報が用意されています。 Azure portal では、これらのメトリックの集計ビューが提供されます。 Azure Monitor API から Azure Cosmos DB メトリックを表示することもできます。 メトリックのディメンション値 (コンテナー名など) は、大文字と小文字が区別されません。 そのため、これらのディメンション値に対して文字列比較を行う場合は、大文字と小文字を区別しない比較を使用する必要があります。 Azure Monitor からメトリックを表示する方法の詳細については、[Azure Monitor からのメトリックの取得](./monitor-cosmos-db.md)に関する記事を参照してください。
 
-この記事では、一般的なユース ケースと、Azure Cosmos DB メトリックを使用してこれらの問題を分析およびデバッグする手順について説明します。 メトリックは 5 分間隔で収集され、7 日間保持されます。
+この記事では、一般的なユース ケースと、Azure Cosmos DB 分析情報を使用してこれらの問題を分析およびデバッグする手順について説明します。 既定では、メトリックの分析情報は 5 分ごとに収集され、7 日間保持されます。
 
-## <a name="view-metrics-from-azure-portal"></a>Azure portal からメトリックを表示する
+## <a name="view-insights-from-azure-portal"></a>Azure portal から分析情報を表示する
 
-1. [Azure portal](https://portal.azure.com/) にサインインします
+1. [Azure portal](https://portal.azure.com/) にサインインし、Azure Cosmos DB アカウントに移動します。
 
-1. **[メトリック]** ウィンドウを開きます。 既定では、[メトリック] ウィンドウには、Azure Cosmos アカウント内のすべてのデータベースのストレージ、インデックス、要求単位のメトリックが表示されます。 これらのメトリックをデータベース、コンテナー、またはリージョン別にフィルター処理することができます。 特定の時間の粒度でメトリックをフィルター処理することもできます。 スループット、ストレージ、可用性、待機時間、および一貫性の各メトリックの詳細が、別々のタブで提供されます。 
+1. アカウントのメトリックは、 **[メトリック]** ペインまたは **[分析情報]** ペインのいずれかで表示できます。
 
-   :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Azure portal での Cosmos DB のパフォーマンス メトリック":::
+   * **メトリック:** このペインには、一定の間隔で収集され、ある時点でのシステムのある側面を表す数値メトリックが表示されます。 たとえば、[サーバー側の待機時間メトリック](monitor-server-side-latency.md)、[正規化された要求ユニット使用率メトリック](monitor-normalized-request-units.md)などを表示し、監視することができます。
 
-**[メトリック]** ウィンドウから、次のメトリックを入手できます。 
+   * **分析情報:** このペインでは、Azure Cosmos DB 用にカスタマイズされた監視エクスペリエンスを利用できます。 Azure Monitor で収集されたものと同じメトリックとログが使用され、アカウントの集計されたビューが表示されます。
 
-* **スループット メトリック** - このメトリックでは、消費された要求の数、またはコンテナーに対してプロビジョニングされたスループットまたはストレージの容量を超過しているために失敗した (応答コード 429) 要求の数が示されます。
+1. **[分析情報]** ペインを開きます。 [分析情報] ペインには、既定でアカウント内のすべてのコンテナーのスループット、要求、ストレージ、可用性、待機時間、システム、アカウント管理のメトリックが表示されます。 分析情報を表示する **[時間範囲]** 、 **[データベース]** 、 **[コンテナー]** を選択することができます。 **[概要]** タブには、選択したデータベースとコンテナーの RU/s 使用量、データ使用量、インデックス使用量、調整された要求数、正規化された RU/s 消費量が表示されます。
 
-* **ストレージ メトリック** - このメトリックでは、データのサイズとインデックスの使用状況が示されます。
+   :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Azure portal での Cosmos DB のパフォーマンス メトリック" lightbox="./media/use-metrics/performance-metrics.png" :::
 
-* **可用性メトリック** - このメトリックでは、1 時間あたりの要求の合計に対する成功した要求の割合が示されます。 成功率は、Azure Cosmos DB の SLA によって定義されます。
+1. **[分析情報]** ペインから、次のメトリックを入手できます。
 
-* **待機時間メトリック** - このメトリックでは、アカウントが動作しているリージョンで Azure Cosmos DB によって観察された読み取りと書き込みの待機時間が示されます。 Geo レプリケートされたアカウントのリージョン間での待機時間を視覚化することができます。 このメトリックでは、エンド ツー エンドの要求の待機時間は表されません。
+   * **スループット** - このタブには、要求ユニットのうち、消費されたもの、またはコンテナーに対してプロビジョニングされたスループットまたはストレージ容量が超過したために失敗した (応答コード 429) ものの合計数が表示されます。
 
-* **整合性メトリック** - このメトリックでは、選択した整合性モデルの最終的な整合性が示されます。 マルチリージョン アカウントでは、このメトリックには、選択したリージョン間でのレプリケーションの待機時間も示されます。
+   * **要求** - このタブには、状態コードごと、操作の種類ごとの処理済み要求の合計数と、失敗した要求 (429 応答コード) の数が表示されます。 コンテナーにプロビジョニングされたスループットまたはストレージ容量を超過すると、要求は失敗します。
 
-* **システム メトリック** - このメトリックでは、プライマリ パーティションによって処理されているメタデータ要求の数が示されます。 スロットルされた要求を識別するためにも役立ちます。
+   * **ストレージ** - このタブには、選択した期間のデータとインデックスの使用量のサイズが表示されます。
 
-次のセクションで、Azure Cosmos DB のメトリックを使用する一般的なシナリオについて説明します。 
+   * **可用性** - このタブには、1 時間あたりの要求の合計に対する成功した要求の割合が表示されます。 成功率は、Azure Cosmos DB の SLA によって定義されます。
+
+   * **待機時間** - このタブには、アカウントが動作しているリージョンで Azure Cosmos DB によって観察された読み取りと書き込みの待機時間が表示されます。 Geo レプリケートされたアカウントのリージョン間での待機時間を視覚化することができます。 また、さまざまな操作別のサーバー側の待機時間も確認できます。 このメトリックでは、エンド ツー エンドの要求の待機時間は表されません。
+
+   * **システム** - このタブには、プライマリ パーティションによって処理されているメタデータ要求の数が表示されます。 スロットルされた要求を識別するためにも役立ちます。
+
+   * **アカウント管理** - このタブには、アカウントの作成、削除、キーの更新、ネットワークとレプリケーションの設定など、アカウント管理アクティビティのメトリックが表示されます。
+
+次のセクションで、Azure Cosmos DB のメトリックを使用する一般的なシナリオについて説明します。
 
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>成功した要求数とエラーになった要求数の把握
 
-まず [Azure Portal](https://portal.azure.com) を開き、 **[メトリック]** ブレードに移動します。 このブレードで、[1 分あたりに容量を超過した要求の数] グラフを見つけます。 このグラフには、状態コードで区分された毎分の合計要求が表示されます。 HTTP 状態コードの詳細については、「[HTTP Status Codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)」(Azure Cosmos DB の HTTP 状態コード) を参照してください。
+まず [Azure portal](https://portal.azure.com) を開き、 **[分析情報]** ブレードに移動します。 このブレードから **[要求]** タブを開くと、状態コードと操作の種類ごとに分けられた合計要求数を示すグラフが表示されます。 HTTP 状態コードの詳細については、「[HTTP Status Codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)」(Azure Cosmos DB の HTTP 状態コード) を参照してください。
 
 最も一般的なエラー状態コードは 429 (レート制限/調整) です。 このエラーは、Azure Cosmos DB への要求がプロビジョニングされたスループットを超えることを意味します。 この問題の最も一般的な解決策は、そのコレクションの [RU をスケール アップ](./set-throughput.md)することです。
 
-:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="毎分の要求数":::
+:::image type="content" source="media/use-metrics/request-count.png" alt-text="毎分の要求数" lightbox= "media/use-metrics/request-count.png":::
 
-## <a name="determine-the-throughput-distribution-across-partitions"></a>パーティション全体のスループットの分散を決める
+## <a name="determine-the-throughput-consumption-by-a-partition-key-range"></a>パーティション キーの範囲ごとにスループット消費量を判断する
 
-適切なカーディナリティのパーティション キーを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コンテナーのスループットの分散を決めるには、[Azure Portal](https://portal.azure.com) の **[メトリック]** ブレードに移動します。 **[スループット]** タブの **[各物理パーティションによる 1 秒あたりの最大消費 RU]** グラフにストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データの分散が不適切な例です。
+適切なカーディナリティのパーティション キーを持つことは、スケーラブルなアプリケーションのために重要です。 パーティション キーの範囲の ID ごとに分けられたパーティション コンテナーのスループットの分散を判断するには、 **[分析情報]** ペインに移動します。 **[スループット]** タブを開くと、さまざまなパーティション キー範囲にわたる正規化された RU/s 消費量がグラフに表示されます。
 
-:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="1 つのパーティションの使用率が高い":::
+:::image type="content" source="media/use-metrics/throughput-consumption-partition-key-range.png" alt-text="パーティション キー範囲 ID ごとの正規化されたスループット消費量" lightbox="media/use-metrics/throughput-consumption-partition-key-range.png":::
 
-スループット分散が不均一の場合、*ホット* パーティションが発生します。また、その結果、要求が調整され、再パーティションが必要になる可能性があります。 Azure Cosmos DB でのパーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](./partitioning-overview.md)」を参照してください。
+このグラフを使用して、ホット パーティションがあるかどうかを特定できます。 スループット分散が不均一の場合、*ホット* パーティションが発生します。また、その結果、要求が調整され、再パーティションが必要になる可能性があります。 分散の偏りの原因となっているパーティション キーを特定した後は、必要に応じて、より分散されたパーティション キーでコンテナーを再パーティションします。 Azure Cosmos DB でのパーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](./partitioning-overview.md)」を参照してください。
 
-## <a name="determine-the-storage-distribution-across-partitions"></a>パーティション全体のストレージの分散を決める
+## <a name="determine-the-data-and-index-usage"></a>データとインデックスの使用量を判断する
 
-適切なカーディナリティのパーティションを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コンテナーのストレージの分散を決めるには、[Azure portal](https://portal.azure.com) の [メトリック] ブレードに移動します。 [ストレージ] タブの [上位パーティション キーで使用されるデータとインデックスのストレージ] グラフに、ストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データ ストレージの分散が不適切なことを示しています。
+データ使用量、インデックス使用量、ドキュメント使用量によってパーティション コンテナーのストレージの分散を判断することが重要です。 インデックス使用量を最小限に抑え、データ使用量を最大化し、クエリを最適化することができます。 このデータを取得するには、 **[分析情報]** ペインに移動し、 **[ストレージ]** タブを開きます。
 
-:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="不適切なデータ分散の例":::
-
-グラフのパーティションをクリックすると、パーティション キーの分散が偏っている根本原因を確認できます。
-
-:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="パーティション キーによる分散の偏り":::
-
-分散の偏りの原因となっているパーティション キーを特定した後は、必要に応じて、より分散されたパーティション キーでコンテナーを再パーティションします。 Azure Cosmos DB でのパーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](./partitioning-overview.md)」を参照してください。
+:::image type="content" source="media/use-metrics/data-index-consumption.png" alt-text="データ、インデックス、ドキュメントの消費量" lightbox="media/use-metrics/data-index-consumption.png" :::
 
 ## <a name="compare-data-size-against-index-size"></a>データ サイズとインデックス サイズを比較する
 

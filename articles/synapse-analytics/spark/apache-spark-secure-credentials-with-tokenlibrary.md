@@ -10,12 +10,12 @@ ms.date: 11/19/2020
 ms.author: martinle
 ms.reviewer: nirav
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: a588b37b270917524453419619fdad6f88f92338
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1290fdb907272d4a47e4b11430fc47955a259951
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101693579"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860863"
 ---
 # <a name="secure-credentials-with-linked-services-using-the-tokenlibrary"></a>リンクされたサービスと TokenLibrary を使用して資格情報をセキュリティで保護する
 
@@ -25,7 +25,7 @@ Synapse では、リソース間の認証に既定で Azure Active Directory (AA
 
 Azure Key Vault からシークレットを取得する場合は、Azure Key Vault にリンクされたサービスを作成することをお勧めします。  Synapse ワークスペースの管理サービス ID (MSI) に、Azure Key Vault に対するシークレット取得権限があることを確認してください。  Synapse は、Synapse ワークスペースの管理サービス ID を使用して Azure Key Vault に対して認証を行います。 リンクされたサービスを使用せずに Azure Key Vault に直接接続する場合は、ユーザーの Azure Active Directory 資格情報を使用して認証を行います。
 
-詳細については、[リンクされたサービス](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+詳細については、[リンクされたサービス](../../data-factory/concepts-linked-services.md?context=/azure/synapse-analytics/context/context)に関するページを参照してください。
 
 ## <a name="usage"></a>使用法
 
@@ -139,7 +139,7 @@ display(df.limit(10))
 %%pyspark
 # Python code
 spark.conf.set("spark.storage.synapse.linkedServiceName", "<lINKED SERVICE NAME>")
-spark.conf.set("fs.azure.sas.token.provider.type", "com.microsoft.azure.synapse.tokenlibrary.LinkedServiceBasedTokenProvider")
+spark.conf.set("fs.azure.account.oauth.provider.type", "com.microsoft.azure.synapse.tokenlibrary.LinkedServiceBasedTokenProvider")
 
 df = spark.read.csv('abfss://<CONTAINER>@<ACCOUNT>.dfs.core.windows.net/<DIRECTORY PATH>')
 

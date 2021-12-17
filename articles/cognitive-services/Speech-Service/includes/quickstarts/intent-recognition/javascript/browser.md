@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: trbye
+ms.author: eur
 ms.custom: devx-track-js
-ms.openlocfilehash: bbd7091eb2139801956d77ec8b3ca821c935ac64
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: b4510d750461c1fd693996c464d3dfe28e82fb27
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98109504"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507533"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>定型コードを使用して開始する
 
@@ -31,7 +31,7 @@ ms.locfileid: "98109504"
 
 次に、入力ボックス用の基本的な UI をいくつか追加して、Speech SDK の JavaScript を参照し、承認トークン (利用可能な場合) を取得します。
 
-```html  
+```html
 <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
   <div id="content" style="display:none">
     <table width="100%">
@@ -132,7 +132,7 @@ ms.locfileid: "98109504"
     });
   </script>
 ```
- 
+
 ## <a name="create-a-speech-configuration"></a>Speech 構成を作成する
 
 `SpeechRecognizer` オブジェクトを初期化するには、サブスクリプション キーとサブスクリプション リージョンを使用する構成を作成する必要があります。 このコードを `startRecognizeOnceAsyncButton.addEventListener()` メソッドに挿入します。
@@ -178,7 +178,7 @@ ms.locfileid: "98109504"
 
 `LanguageUnderstandingModel` と意図認識エンジンを関連付け、認識させる意図を追加する必要があります。 ホーム オートメーション用のあらかじめ構築されたドメインの意図を使用します。
 
-次のコードを `IntentRecognizer` の下に挿入します。 `"YourLanguageUnderstandingAppId"` は必ずお客様の LUIS app ID で置き換えてください。 
+次のコードを `IntentRecognizer` の下に挿入します。 `"YourLanguageUnderstandingAppId"` は必ずお客様の LUIS app ID で置き換えてください。
 
 ```JavaScript
         if (appId.value !== "" && appId.value !== "YOUR_LANGUAGE_UNDERSTANDING_APP_ID") {
@@ -205,9 +205,9 @@ ms.locfileid: "98109504"
         recognizer.recognizeOnceAsync(
           function (result) {
             window.console.log(result);
-  
+
             phraseDiv.innerHTML = result.text + "\r\n";
-  
+
             statusDiv.innerHTML += "(continuation) Reason: " + SpeechSDK.ResultReason[result.reason];
             switch (result.reason) {
               case SpeechSDK.ResultReason.RecognizedSpeech:
@@ -215,7 +215,7 @@ ms.locfileid: "98109504"
                 break;
               case SpeechSDK.ResultReason.RecognizedIntent:
                 statusDiv.innerHTML += " Text: " + result.text + " IntentId: " + result.intentId;
-                
+
                 // The actual JSON returned from Language Understanding is a bit more complex to get to, but it is available for things like
                 // the entity name and type if part of the intent.
                 statusDiv.innerHTML += " Intent JSON: " + result.properties.getProperty(SpeechSDK.PropertyId.LanguageUnderstandingServiceResponse_JsonResult);
@@ -228,7 +228,7 @@ ms.locfileid: "98109504"
               case SpeechSDK.ResultReason.Canceled:
                 var cancelDetails = SpeechSDK.CancellationDetails.fromResult(result);
                 statusDiv.innerHTML += " CancellationReason: " + SpeechSDK.CancellationReason[cancelDetails.reason];
-              
+
               if (cancelDetails.reason === SpeechSDK.CancellationReason.Error) {
                 statusDiv.innerHTML += ": " + cancelDetails.errorDetails;
               }
@@ -239,7 +239,7 @@ ms.locfileid: "98109504"
           },
           function (err) {
             window.console.log(err);
-    
+
             phraseDiv.innerHTML += "ERROR: " + err;
             startIntentRecognizeAsyncButton.disabled = false;
           });
@@ -247,7 +247,7 @@ ms.locfileid: "98109504"
 
 ## <a name="check-your-code"></a>コードを確認する
 
- [!code-html [SampleCode](~/samples-cognitive-services-speech-sdk/quickstart/javascript/browser/index-intent-recognition.html)]
+ [!code-html [SampleCode](~/samples-cognitive-services-speech-sdk/quickstart/javascript/browser/intent-recognition/index.html)]
 
 ## <a name="create-the-token-source-optional"></a>トークン ソースを作成する (省略可能)
 

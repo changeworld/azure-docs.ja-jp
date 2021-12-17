@@ -3,7 +3,7 @@ title: Azure CDN でのファイル圧縮によるパフォーマンスの向上
 description: Azure CDN でファイルを圧縮して、ファイル転送速度とページ読み込みパフォーマンスを向上させる方法を説明します。
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
-ms.author: allensu
-ms.openlocfilehash: 11a2dbfc9c6da60e4dd96f65d2a20165a3663e8c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: duau
+ms.openlocfilehash: b179c9a34e9e7c696d18dcd13ef110c089703eb2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601544"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454905"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN でのファイル圧縮によるパフォーマンスの向上
 ファイル圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるため、ファイルの転送速度とページ読み込みのパフォーマンスを向上させることができる簡単で効率的な方法です。 ファイル圧縮により、帯域幅のコストを軽減し、ユーザーへの応答を改善することができます。
@@ -97,7 +97,8 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Azure CDN Standard from Microsoft プロファイル
 
 **Azure CDN Standard from Microsoft** プロファイルの場合、対象ファイルのみが圧縮されます。 圧縮を実行可能にするためのファイルの条件は、次のとおりです。
-- ただし、ファイルは[圧縮用に構成されている](#enabling-compression) MIME の種類である必要があります。
+- ファイルは[圧縮用に構成されている](#enabling-compression) MIME の種類である必要がある
+- 配信元の応答に "ID" *コンテンツエンコーディング* ヘッダーのみを含める
 - 1 KB より大きい
 - 8 MB 未満
 
@@ -121,11 +122,8 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 - gzip (GNU zip)
 - DEFLATE
 - bzip2
-- brotli 
 
-要求で複数の圧縮の種類がサポートされている場合、それらの圧縮の種類は brotli 圧縮よりも優先されます。
-
-アセットの要求で brotli 圧縮が指定され (HTTP ヘッダーは `Accept-Encoding: br`)、要求がキャッシュ ミスになった場合、Azure CDN は POP サーバー上で直接アセットの brotli 圧縮を行います。 その後、圧縮ファイルがキャッシュから提供されます。
+Verizon の Azure CDN は brotli 圧縮に対応していません。 HTTP 要求にヘッダー `Accept-Encoding: br` がある場合、CDN の応答は圧縮されません。
 
 ### <a name="azure-cdn-standard-from-akamai-profiles"></a>Azure CDN Standard from Akamai プロファイル
 

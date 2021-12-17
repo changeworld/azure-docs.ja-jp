@@ -1,25 +1,25 @@
 ---
-title: チュートリアル:ポータルで Azure Firewall DNAT を使用してインバウンド インターネット トラフィックをフィルター処理する
-description: このチュートリアルでは、Azure portal を使用して Azure Firewall DNAT をデプロイして構成する方法を学習します。
+title: ポータルで Azure Firewall DNAT を使用してインバウンド インターネット トラフィックをフィルター処理する
+description: この記事では、Azure portal を使用して Azure Firewall DNAT をデプロイおよび構成する方法について説明します。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
-ms.date: 03/01/2021
+ms.topic: how-to
+ms.date: 04/29/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a1d3bdae1e870b094472a63d4b808d9df95c129d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f31cffc6996ffe5b733ba322584cb400afcc5093
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741907"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291912"
 ---
-# <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>チュートリアル:Azure portal で Azure Firewall DNAT を使用してインバウンド インターネット トラフィックをフィルター処理する
+# <a name="filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Azure portal で Azure Firewall DNAT を使用してインバウンド インターネット トラフィックをフィルター処理する
 
 インバウンド インターネット トラフィックの変換とサブネットに対するフィルター処理を行うように Azure Firewall 宛先ネットワーク アドレス変換 (DNAT) を構成できます。 DNAT を構成すると、NAT ルール コレクションの動作は、**Dnat** に設定されます。 その後、NAT ルール コレクション内の各ルールを使用して、ファイアウォールのパブリック IP アドレスおよびポートをプライベート IP アドレスおよびポートに変換できます。 DNAT ルールは、変換されたトラフィックを許可するための対応するネットワーク ルールを暗黙的に追加します。 セキュリティ上の理由から、ネットワークへの DNAT アクセスを許可するための特定のインターネット ソースを追加し、ワイルドカードは使用しないようにすることが推奨されています。 Azure Firewall ルール処理ロジックの詳細については、「[Azure Firewall ルール処理ロジック](rule-processing.md)」を参照してください。
 
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * テスト ネットワーク環境を設定する
@@ -27,6 +27,9 @@ ms.locfileid: "101741907"
 > * 既定のルートを作成する
 > * DNAT ルールを構成する
 > * ファイアウォールをテストする
+
+> [!NOTE]
+> この記事では、従来のファイアウォール規則を使用してファイアウォールを管理します。 推奨される方法は、[ファイアウォール ポリシー](../firewall-manager/policy-overview.md)を使用することです。 ファイアウォール ポリシーを使用してこの手順を実行するには、「[チュートリアル: Azure portal で Azure Firewall DNAT ポリシーを使用してインバウンド インターネット トラフィックをフィルター処理する](tutorial-firewall-dnat-policy.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-up-the-network-environment"></a>ネットワーク環境を設定する
 
-このチュートリアルでは、2 つのピアリングされた VNet を作成します。
+この記事では、2 つのピアリングされた VNet を作成します。
 
 - **VN-Hub** - ファイアウォールはこの VNet 内にあります。
 - **VN-Spoke** - ワークロード サーバーはこの VNet 内にあります。
@@ -142,6 +145,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 デプロイが完了したら、仮想マシンのプライベート IP アドレスをメモしてください。 これは、後でファイアウォールを構成するときに使用します。 仮想マシンの名前を選択し、 **[設定]** で **[ネットワーク]** を選択して、プライベート IP アドレスを見つけます。
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="deploy-the-firewall"></a>ファイアウォールをデプロイする
 
 1. ポータルのホーム ページから **[リソースの作成]** を選択します。
@@ -217,20 +222,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-次のチュートリアルのためにファイアウォール リソースを残しておくことができます。不要であれば、**RG-DNAT-Test** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除します。
+さらにテストを行うために、ファイアウォール リソースを残しておいてもかまいませんが、不要であれば、**RG-DNAT-Test** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、以下の内容を学習しました。
-
-> [!div class="checklist"]
-> * テスト ネットワーク環境を設定する
-> * ファイアウォールをデプロイする
-> * 既定のルートを作成する
-> * DNAT ルールを構成する
-> * ファイアウォールをテストする
-
 次に、Azure Firewall のログを監視することができます。
 
-> [!div class="nextstepaction"]
-> [チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)
+[チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)

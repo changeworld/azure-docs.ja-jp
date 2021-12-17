@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 91f6db79b7d18dc8b34ba1712d74a92000d63528
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0b2f4d4af71f964752161973cd086fa679a8a68
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953682"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285324"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>チュートリアル:Azure Active Directory SSO と Kemp LoadMaster Azure AD integration の統合
 
@@ -33,11 +33,14 @@ ms.locfileid: "104953682"
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Kemp LoadMaster Azure AD integration でのシングル サインオン (SSO) が有効なサブスクリプション
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Kemp LoadMaster Azure AD integration では、**IDP** Initiated SSO がサポートされます
+* Kemp LoadMaster Azure AD integration では、**IDP** Initiated SSO がサポートされます。
 
 ## <a name="add-kemp-loadmaster-azure-ad-integration-from-the-gallery"></a>ギャラリーからの Kemp LoadMaster Azure AD integration の追加
 
@@ -209,7 +212,7 @@ Kemp LoadMaster Azure AD integration に対して Azure AD SSO を構成して�
  
 ### <a name="import-idp-certificate"></a>IdP 証明書をインポートする
 
-Kemp LoadMaster Azure AD integration Web Console に移動する 
+Kemp LoadMaster Azure AD integration Web Console に移動します。 
 
 1. [Certificates and Authority]\(証明書と機関\) の [Intermediate Certificates]\(中間証明書\) をクリックします。
 
@@ -251,7 +254,7 @@ Kemp LoadMaster Azure AD integration Web Console に移動する
 
 ### <a name="set-authentication"></a>認証を設定する  
  
-Kemp LoadMaster Azure AD integration Web Console で次の手順を実行します
+Kemp LoadMaster Azure AD integration Web Console で次の手順を実行します。
 
 1. [Virtual Services]\(仮想サービス\) をクリックします。
 
@@ -273,7 +276,7 @@ Kemp LoadMaster Azure AD integration Web Console で次の手順を実行しま�
 
 ### <a name="verify-the-changes"></a>変更を確認する 
  
-アプリケーションの URL にアクセスします 
+アプリケーションの URL にアクセスします。 
 
 以前の認証されていないアクセスではなく、テナントのログイン ページが表示されます。 
 
@@ -371,8 +374,8 @@ d. [Server-Side configuration]\(サーバー側の構成\) で、以前に作成
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Kemp LoadMaster Azure AD integration に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Kemp LoadMaster Azure AD integration] タイルをクリックすると、SSO を設定した Kemp LoadMaster Azure AD integration に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Kemp LoadMaster Azure AD integration] タイルをクリックすると、SSO を設定した Kemp LoadMaster Azure AD integration に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Kemp LoadMaster Azure AD integration を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Kemp LoadMaster Azure AD integration を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

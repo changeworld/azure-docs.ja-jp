@@ -4,22 +4,23 @@ description: Privileged Identity Management (PIM) で特権アクセス グル�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/03/2020
+ms.date: 11/09/2020
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c9e2580d2a88fbbab755f0c3df2f923bdc45548
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72f848dae3eda447edee40b0da18f09fed50462c
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688350"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157048"
 ---
 # <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>Privileged Identity Management に特権アクセス グループ (プレビュー) を持ち込む
 
@@ -30,6 +31,7 @@ Azure Active Directory (Azure AD) では、Azure AD 組み込みロールをク�
 「[Azure Active Directory でロールを割り当て可能なグループを作成する](../roles/groups-create-eligible.md)」の説明に従って、Azure AD でロールを割り当て可能なグループを作成できます。 グループを Privileged Identity Management で管理下に置くには、そのグループの所有者である必要があります。
 
 1. 特権ロール管理者ロールのアクセス許可で [Azure AD にサインインします](https://aad.portal.azure.com)。
+
 1. **[グループ]** を選択し、PIM で管理する、ロールを割り当て可能なグループを選択します。 リストを検索およびフィルター処理することができます。
 
     ![PIM で管理する、ロールを割り当て可能なグループを見つける](./media/groups-discover-groups/groups-list-in-azure-ad.png)
@@ -44,12 +46,9 @@ Azure Active Directory (Azure AD) では、Azure AD 組み込みロールをク�
 
 > [!NOTE]
 > 特権アクセス グループは、いったん管理されると、これを管理から除外することはできません。 これにより、別のリソース管理者が Privileged Identity Management 設定を削除できなくなります。
->
 
 > [!IMPORTANT]
-> Azure Active Directory から特権アクセス グループを削除した場合、[特権アクセス グループ (プレビュー)] ブレードからそのグループが削除されるまでに最大 24 時間かかることがあります。 
->
-
+> Azure Active Directory から特権アクセス グループを削除した場合、[特権アクセス グループ (プレビュー)] ブレードからそのグループが削除されるまでに最大 24 時間かかることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 

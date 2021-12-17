@@ -1,17 +1,17 @@
 ---
 title: チュートリアル - Azure API Management で製品を作成して発行する
 description: このチュートリアルでは、Azure API Management で製品を作成して発行します。 製品が発行されると、開発者は製品の API の利用を開始できます。
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: tutorial
 ms.date: 02/09/2021
-ms.author: apimpm
-ms.openlocfilehash: d0420b92fc94e0a1a9c8a4057f419a57a9909223
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: f9d4b1565cc217aaa149e34fc278da779a3d869e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545158"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643329"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>チュートリアル:製品を作成して発行する  
 
@@ -163,7 +163,7 @@ az apim product api delete --resource-group apim-hello-word-resource-group \
 ---
 
 > [!TIP]
-> [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) または PowerShell コマンドを通じてカスタム サブスクリプション キーを使用して、製品へのユーザーのサブスクリプションを作成または更新できます。
+> [REST API](/rest/api/apimanagement/2020-12-01/subscription/create-or-update) または PowerShell コマンドを通じてカスタム サブスクリプション キーを使用して、製品へのユーザーのサブスクリプションを作成または更新できます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: 3a9eb73aab381f90ae51300bff1250348916c2ab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/22/2021
+ms.openlocfilehash: fa6e6274bb574899c7dab6430e966002fb656c57
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779598"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264296"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -35,11 +36,11 @@ ms.locfileid: "104779598"
 ## <a name="launch-the-monitoring-and-management-app"></a>監視と管理アプリの起動
 監視と管理アプリを起動するには、データ ファクトリの **[Data Factory]** ブレードで **[監視と管理]** タイルをクリックします。
 
-![Data Factory ホーム ページの監視タイル](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/MonitoringAppTile.png" alt-text="Data Factory ホーム ページの監視タイル":::
 
 監視と管理アプリが別のウィンドウで開いたことがわかります。  
 
-![監視と管理アプリ](./media/data-factory-monitor-manage-app/AppLaunched.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/AppLaunched.png" alt-text="監視と管理アプリ":::
 
 > [!NOTE]
 > 承認中であることを示すメッセージが表示されたまま Web ブラウザーが固まってしまう場合は、**サード パーティの Cookie とサイト データをブロック** するチェック ボックスをオフにします。または、チェック ボックスはオンにしたままにし、**login.microsoftonline.com** に対する例外を作成してから、もう一度アプリを開いてください。
@@ -70,7 +71,7 @@ ms.locfileid: "104779598"
 * 選択したオブジェクトのプロパティは、右側のウィンドウにある [プロパティ] ウィンドウに表示されます。
 * 該当する場合は、選択したオブジェクトの JSON 定義が表示されます (リンクされたサービス、データセット、パイプラインなど)。
 
-![Resource Explorer](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ResourceExplorer.png" alt-text="Resource Explorer":::
 
 アクティビティ ウィンドウの概念の詳細については、[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関する記事をご覧ください。
 
@@ -83,51 +84,51 @@ ms.locfileid: "104779598"
 
 パイプラインは、有効になっている場合 (一時停止状態ではない場合)、緑の線付きで示されます。
 
-![実行中のパイプライン](./media/data-factory-monitor-manage-app/PipelineRunning.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/PipelineRunning.png" alt-text="実行中のパイプライン":::
 
 ダイアグラム ビューで選択し、コマンド バーのボタンを使用して、パイプラインを一時停止、再開、または終了できます。
 
-![コマンド バーの一時停止/再開ボタン](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png" alt-text="コマンド バーの一時停止/再開ボタン":::
  
 ダイアグラム ビューには、パイプライン用の 3 つのコマンド バー ボタンがあります。 2 番目のボタンを使用すると、パイプラインを一時停止できます。 一時停止しても、現在実行中のアクティビティが終了することはありません。アクティビティは完了するまで続行されます。 3 番目のボタンは、パイプラインを一時停止し、実行中の既存のアクティビティを終了します。 最初のボタンはパイプラインを再開します。 パイプラインを一時停止すると、パイプラインの色が変わります。 たとえば、一時停止したパイプラインは次の図のようになります。 
 
-![一時停止されたパイプライン](./media/data-factory-monitor-manage-app/PipelinePaused.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/PipelinePaused.png" alt-text="一時停止されたパイプライン":::
 
 Ctrl キーを使用して、複数のパイプラインを同時に選択できます。 コマンド バー ボタンを使用して、一度に複数のパイプラインを一時停止/再開することができます。
 
 パイプラインを右クリックし、パイプラインを中断、再開、または終了するオプションを選択することもできます。 
 
-![パイプラインのコンテキスト メニュー](./media/data-factory-monitor-manage-app/right-click-menu-for-pipeline.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/right-click-menu-for-pipeline.png" alt-text="パイプラインのコンテキスト メニュー":::
 
 **[パイプラインを開く]** オプションをクリックすると、そのパイプラインのすべてのアクティビティが表示されます。 
 
-![パイプラインを開くメニュー](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/OpenPipelineMenu.png" alt-text="パイプラインを開くメニュー":::
 
 開かれたパイプラインのビューには、パイプラインのすべてのアクティビティが表示されます。 この例では、コピー アクティビティというアクティビティが 1 つだけあります。 
 
-![開いているパイプライン](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/OpenedPipeline.png" alt-text="開いているパイプライン":::
 
 前のビューに戻るには、上部にある階層リンク メニューのデータ ファクトリ名をクリックします。
 
 パイプライン ビューでは、出力データセットを選択するか、出力データセット上にマウスを移動すると、そのデータセットの [アクティビティ ウィンドウ] ポップアップ ウィンドウが表示されます。
 
-![[アクティビティ ウィンドウ] ポップアップ ウィンドウ](./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png" alt-text="[アクティビティ ウィンドウ] ポップアップ ウィンドウ":::
 
 アクティビティ ウィンドウをクリックすると、右側のウィンドウにある **[プロパティ]** ウィンドウにその詳細が表示されます。
 
-![アクティビティ ウィンドウのプロパティ](./media/data-factory-monitor-manage-app/ActivityWindowProperties.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ActivityWindowProperties.png" alt-text="アクティビティ ウィンドウのプロパティ":::
 
 右側のウィンドウで、 **[アクティビティ ウィンドウ エクスプローラー]** タブに切り替えると、さらに詳しい情報が表示されます。
 
-![[アクティビティ ウィンドウ エクスプローラー] タブへのアクセス方法を示すスクリーンショット。](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png" alt-text="[アクティビティ ウィンドウ エクスプローラー] タブへのアクセス方法を示すスクリーンショット。":::
 
 アクティビティが試行されるたびに、 **[試行]** セクションに **解決された変数** も表示されます。
 
-![解決された変数](./media/data-factory-monitor-manage-app/ResolvedVariables.PNG)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ResolvedVariables.PNG" alt-text="解決された変数":::
 
 **[スクリプト]** タブに切り替えて、選択したオブジェクトの JSON スクリプト定義を確認します。   
 
-![[スクリプト] タブ](./media/data-factory-monitor-manage-app/ScriptTab.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ScriptTab.png" alt-text="[スクリプト] タブ":::
 
 アクティビティ ウィンドウは、次の 3 か所で確認できます。
 
@@ -137,16 +138,16 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 [アクティビティ ウィンドウ] ポップアップとアクティビティ ウィンドウ エクスプローラーでは、左矢印と右矢印を使用して前の週と次の週にスクロールすることができます。
 
-![アクティビティ ウィンドウ エクスプローラーの左矢印と右矢印](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png" alt-text="アクティビティ ウィンドウ エクスプローラーの左矢印と右矢印":::
 
 ダイアグラム ビューの下部には、拡大、縮小、画面に合わせたサイズ変更、100 % 表示、レイアウト ロックの各ボタンが表示されます。 **レイアウト ロック** ボタンは、ダイアグラム ビューでテーブルやパイプラインを誤って移動するのを防ぎます。 このボタンは既定でオンになっています。 このボタンをオフにすると、ダイアグラム内でエンティティを移動できます。 オフにするときに、最後のボタンを使用してテーブルやパイプラインを自動的に配置できます。 マウス ホイールを使用して、拡大または縮小することもできます。
 
-![ダイアグラム ビューの拡大/縮小コマンド](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png" alt-text="ダイアグラム ビューの拡大/縮小コマンド":::
 
 ### <a name="activity-windows-list"></a>[アクティビティ ウィンドウ] 一覧
 中央のウィンドウの下部にある [アクティビティ ウィンドウ] 一覧には、リソース エクスプローラーまたはダイアグラム ビューで選択したデータセットのすべてのアクティビティ ウィンドウが表示されます。 既定では、この一覧は降順になっています。つまり、最新のアクティビティ ウィンドウが先頭に表示されます。
 
-![[アクティビティ ウィンドウ] 一覧](./media/data-factory-monitor-manage-app/ActivityWindowsList.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ActivityWindowsList.png" alt-text="[アクティビティ ウィンドウ] 一覧":::
 
 この一覧は自動的に更新されないので、ツール バーの更新ボタンを使用して手動で更新します。  
 
@@ -212,7 +213,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 一覧でアクティビティ ウィンドウをクリックすると、右側にある **[アクティビティ ウィンドウ エクスプローラー]** または **[プロパティ]** ウィンドウに詳細が表示されます。
 
-![アクティビティ ウィンドウの詳細の表示方法を示すスクリーンショット。](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png" alt-text="アクティビティ ウィンドウの詳細の表示方法を示すスクリーンショット。":::
 
 ### <a name="refresh-activity-windows"></a>アクティビティ ウィンドウの更新
 詳細は自動的に更新されないので、コマンド バーの 更新ボタン (2 番目のボタン) を使用して、アクティビティ ウィンドウの一覧を手動で更新します。  
@@ -220,14 +221,14 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 ### <a name="properties-window"></a>[プロパティ] ウィンドウ
 [プロパティ] ウィンドウは、監視と管理アプリの右端のウィンドウにあります。
 
-![[プロパティ] ウィンドウ](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/PropertiesWindow.png" alt-text="[プロパティ] ウィンドウ":::
 
 ここには、リソース エクスプローラー (ツリー ビュー)、ダイアグラム ビュー、または [アクティビティ ウィンドウ] 一覧で選択した項目のプロパティが表示されます。
 
 ### <a name="activity-window-explorer"></a>[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]
 **[アクティビティ ウィンドウ エクスプローラー]** ウィンドウは、監視と管理アプリの右端のウィンドウにあります。 ここには、[アクティビティ ウィンドウ] ポップアップ ウィンドウまたは [アクティビティ ウィンドウ] 一覧で選択したアクティビティ ウィンドウの詳細が表示されます。
 
-![[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png" alt-text="[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]":::
 
 別のアクティビティ ウィンドウに切り替えるには、上部にあるカレンダー ビューでそのアクティビティ ウィンドウをクリックします。 上部にある左矢印/右矢印ボタンを使用して、前の週または次の週のアクティビティ ウィンドウを表示することもできます。
 
@@ -236,14 +237,14 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 ### <a name="script"></a>スクリプト
 **[スクリプト]** タブを使用して、選択した Data Factory エンティティ (リンクされたサービス、データセット、またはパイプライン) の JSON 定義を表示できます。
 
-![[スクリプト] タブ](./media/data-factory-monitor-manage-app/ScriptTab.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ScriptTab.png" alt-text="[スクリプト] タブ":::
 
 ## <a name="use-system-views"></a>システム ビューの使用
 監視と管理アプリには、既成のシステム ビュー (**最近のアクティビティ ウィンドウ**、**失敗したアクティビティ ウィンドウ**、**進行中のアクティビティ ウィンドウ**) が用意されています。これらを使用すると、データ ファクトリの最近のアクティビティ ウィンドウ、失敗したアクティビティ ウィンドウ、進行中のアクティビティ ウィンドウを表示できます。
 
 左側の **[監視ビュー]** タブをクリックして切り替えます。
 
-![Monitoring Views tab](./media/data-factory-monitor-manage-app/MonitoringViewsTab.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/MonitoringViewsTab.png" alt-text="Monitoring Views tab":::
 
 現在、3 つのシステム ビューがサポートされています。 (中央のウィンドウの下部にある) [アクティビティ ウィンドウ] 一覧に最近のアクティビティ ウィンドウ、失敗したアクティビティ ウィンドウ、または進行中のアクティビティ ウィンドウを表示するオプションを選択します。
 
@@ -254,7 +255,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 ## <a name="sort-and-filter-activity-windows"></a>アクティビティ ウィンドウの並べ替えとフィルター処理
 アクティビティ ウィンドウをフィルター処理するには、コマンド バーの **[開始時刻]** と **[終了時刻]** の設定を変更します。 開始時刻と終了時刻を変更したら、終了時刻の横にあるボタンをクリックして、[アクティビティ ウィンドウ] 一覧を更新します。
 
-![開始時刻と終了時刻](./media/data-factory-monitor-manage-app/StartAndEndTimes.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/StartAndEndTimes.png" alt-text="開始時刻と終了時刻":::
 
 > [!NOTE]
 > 現時点では、監視と管理アプリの時刻はすべて UTC 形式です。
@@ -263,7 +264,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 **[アクティビティ ウィンドウ]** の一覧で、列の名前 (例: 状態) をクリックします。
 
-![[アクティビティ ウィンドウ] 一覧の列メニュー](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png" alt-text="[アクティビティ ウィンドウ] 一覧の列メニュー":::
 
 次の操作を実行できます。
 
@@ -273,20 +274,20 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 列にフィルターを指定すると、その列のフィルター ボタンが有効になります。このボタンは、列の値がフィルター処理された値であることを示しています。
 
-![[アクティビティ ウィンドウ] 一覧の列のフィルター処理](./media/data-factory-monitor-manage-app/ActivityWindowsListFilterInColumn.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ActivityWindowsListFilterInColumn.png" alt-text="[アクティビティ ウィンドウ] 一覧の列のフィルター処理":::
 
 フィルターをクリアするには、同じポップアップ ウィンドウを使用できます。 [アクティビティ ウィンドウ] 一覧のすべてのフィルターをクリアするには、コマンド バーのフィルターのクリア ボタンをクリックします。
 
-![[アクティビティ ウィンドウ] 一覧のすべてのフィルターのクリア](./media/data-factory-monitor-manage-app/ClearAllFiltersActivityWindowsList.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/ClearAllFiltersActivityWindowsList.png" alt-text="[アクティビティ ウィンドウ] 一覧のすべてのフィルターのクリア":::
 
 ## <a name="perform-batch-actions"></a>バッチ操作の実行
 ### <a name="rerun-selected-activity-windows"></a>選択したアクティビティ ウィンドウを再実行する
 アクティビティ ウィンドウを選択し、1 つ目のコマンド バー ボタンの下向き矢印をクリックして、 **[再実行]**  /  **[パイプラインのアップストリームによる再実行]** を選択します。 **[パイプラインのアップストリームによる再実行]** を選択すると、アップストリーム アクティビティ ウィンドウもすべて再実行されます。
-    ![Rerun a activity window](./media/data-factory-monitor-manage-app/ReRunSlice.png)
+    :::image type="content" source="./media/data-factory-monitor-manage-app/ReRunSlice.png" alt-text="Rerun a activity window":::
 
 また、一覧で複数のアクティビティ ウィンドウを選択して、それらを同時に再実行することもできます。 状態 (例: **失敗**) でアクティビティ ウィンドウをフィルター処理し、アクティビティ ウィンドウが失敗した原因となる問題を解決した後に、失敗したアクティビティ ウィンドウを再実行できます。 一覧にあるアクティビティ ウィンドウのフィルター処理の詳細については、次のセクションを参照してください。  
 
 ### <a name="pauseresume-multiple-pipelines"></a>複数のパイプラインを一時停止/再開する
 Ctrl キーを使用して、複数のパイプラインを複数選択できます。 (次の図の赤い四角形で強調表示されている) コマンド バー ボタンを使用して、これらのパイプラインを一時停止/再開できます。
 
-![コマンド バーの一時停止/再開ボタン](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
+:::image type="content" source="./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png" alt-text="コマンド バーの一時停止/再開ボタン":::

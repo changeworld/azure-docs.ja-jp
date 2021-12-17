@@ -3,18 +3,18 @@ title: クイックスタート - コスト分析を使用して Azure のコス
 description: このクイック スタートは、コスト分析を使用して Azure 組織のコストを調査および分析するために役立ちます。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2021
+ms.date: 07/28/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 83f2d87e3f4a03ff17526ea5706e4f87b8f39487
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: 52afb1398217fc8a3a885704ea1e689a6f4b1393
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882451"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711440"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート:コスト分析を使用してコストを調査および分析する
 
@@ -32,7 +32,7 @@ Azure コストを正しく制御して最適化するには、コストが組�
 
 コスト分析では、さまざまな種類の Azure アカウントがサポートされています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。
 
-Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](./assign-access-acm-data.md)に関するページを参照してください。
+Cost Management データに対するアクセス権の割り当てについては、[データに対するアクセス権の割り当て](./assign-access-acm-data.md)に関するページを参照してください。
 
 新しいサブスクリプションをご利用の場合、すぐには Cost Management 機能を使用できません。 すべての Cost Management 機能を使用できるようになるまでに、最大 48 時間かかる場合があります。
 
@@ -68,11 +68,9 @@ Azure Cost Management データに対するアクセス権の割り当てにつ�
 
 ### <a name="understand-forecast"></a>予測について
 
-コスト予測では、選択した期間における推定コストの予測が表示されます。 このモデルは、時系列回帰モデルに基づいています。 コストを正確に予測するために、少なくとも 10 日間のコストと使用状況の最新データが必要です。 指定の期間に対して、予測モデルでは、予測期間のトレーニング データの同等の部分が必要です。 たとえば、3 か月の予測には、少なくとも 3 か月間のコストと使用状況の最新データが必要です。
+コスト予測では、最近の使用状況に基づいて、選択した期間の推定コストの予測が表示されます。 コスト分析で予算が設定されている場合は、予測支出が予算しきい値を超える可能性が高い時期を確認できます。 予測モデルでは、最大 1 年間の将来のコストを予測できます。 選択したディメンションの詳細な予測コストを表示するには、フィルターを選択します。
 
-このモデルでは、最大 6 か月間のトレーニング データを使用して、1 年間のコストを予測します。 予測が変更されるには、少なくとも 7 日間のトレーニング データが必要です。 予測は、コストや使用パターンにおける急増や急減など、大幅な変化に基づいています。 予測では、 **[Group by]\(グループ化\)** プロパティ内の項目ごとに個々の予測が生成されることはありません。 合計の累積コストの予測のみが提供されます。 複数の通貨を使用する場合、モデルではコストの予測が米国ドルでのみ提供されます。
-
-モデルはデータの急減および急増に依存するため、予約インスタンスのような大規模の購入は予測を人為的に膨らませる原因となります。 予測期間と購入規模は、予測が影響を受ける期間に影響を与えます。 支出が安定すると、予測は通常に戻ります。
+予測モデルは、時系列回帰モデルに基づいています。 コストを正確に予測するために、少なくとも 10 日間のコストと使用状況の最新データが必要です。 指定の期間に対して、予測モデルでは、予測期間のトレーニング データの同等の部分が必要です。 たとえば、3 か月の予測には、少なくとも 3 か月間のコストと使用状況の最新データが必要です。
 
 ## <a name="customize-cost-views"></a>コスト ビューをカスタマイズする
 
@@ -115,7 +113,7 @@ Azure Cost Management データに対するアクセス権の割り当てにつ�
 
 ほとんどの Azure リソースでは、タグ付けがサポートされています。 ただし、一部のタグは Cost Management および請求で使用できません。 また、リソース グループのタグはサポートされていません。 タグのサポートは、タグがリソースに適用された "*後*" にレポートされた使用状況に適用されます。 タグは、過去のコスト データには適用されません。
 
-Azure タグ ポリシーを使用してコスト データの可視性を向上させる方法については、[Azure Cost Management でタグ ポリシーを確認する方法](https://www.youtube.com/watch?v=nHQYcYGKuyw)に関するビデオをご覧ください。
+Azure タグ ポリシーを使用してコスト データの可視性を向上させる方法については、[Cost Management を使用してタグ ポリシーを確認する方法](https://www.youtube.com/watch?v=nHQYcYGKuyw)に関するビデオをご覧ください。
 
 今月の Azure サービス コストの表示を次に示します。
 
@@ -149,68 +147,13 @@ Azure タグ ポリシーを使用してコスト データの可視性を向上
 
 コスト分析を Azure portal のダッシュボードにピン留めするか、またはコスト分析へのリンクをコピーすることで、カスタマイズされたビューを保存して他のユーザーと共有します。
 
-ポータルを使用してコストに関する知識を組織で共有する方法の詳細については、ビデオ「[Azure Cost Management のビューを共有、保存する](https://www.youtube.com/watch?v=kQkXXj-SmvQ)」をご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
+ポータルを使用してコストに関する知識を組織で共有する方法の詳細については、[Cost Management でのビューの共有と保存](https://www.youtube.com/watch?v=kQkXXj-SmvQ)に関するビデオをご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-コスト分析をピン留めするには、右上隅または "<Subscription Name> | コスト分析" のすぐ後ろにあるピン アイコンを選択します。 コスト分析をピン留めすると、メイン グラフまたはテーブル ビューだけが保存されます。 他のユーザーがタイルにアクセスできるようにするには、ダッシュボードを共有します。 共有ではダッシュボードの構成だけが共有され、基になるデータへのアクセス権は他のユーザーに付与されません。 コストへのアクセス権がないのに、共有ダッシュボードにアクセスすると、"アクセス拒否" メッセージが表示されます。
+コスト分析をピン留めするには、右上隅または * **["サブスクリプション名"** _ | _*コスト分析]** のすぐ後ろにあるピン アイコンを選択します。 コスト分析をピン留めすると、メイン グラフまたはテーブル ビューだけが保存されます。 他のユーザーがタイルにアクセスできるようにするには、ダッシュボードを共有します。 共有ではダッシュボードの構成だけが共有され、基になるデータへのアクセス権は他のユーザーに付与されません。 コストへのアクセス権がないのに、共有ダッシュボードにアクセスすると、"アクセス拒否" メッセージが表示されます。
 
 コスト分析へのリンクを共有するには、ウィンドウの上部にある **[共有]** を選択します。 カスタム URL が表示され、この特定のスコープに対するこの特定のビューが開かれます。 コストへのアクセス権がない場合にこの URL を受け取ると、"アクセス拒否" メッセージが表示されます。
-
-## <a name="download-usage-data"></a>使用状況データのダウンロード
-
-### <a name="portal"></a>[ポータル](#tab/azure-portal)
-
-詳細な分析、独自のデータとの結合、独自のシステムへの統合などのために、データをダウンロードすることが必要になる場合があります。 Cost Management では、いくつかのオプションが提供されています。 まず、コスト分析で得られるような簡単な概要が必要な場合は、必要とするビューを作成します。 次に、 **[エクスポート]** を選択し、 **[データを CSV にダウンロード]** または **[データを Excel にダウンロード]** を選択してダウンロードします。 Excel のダウンロードでは、スコープ、クエリ構成、合計、生成日など、ダウンロードの生成に使用したビューに関するより多くのコンテキストが提供されます。
-
-完全な未集計のデータセットが必要な場合は、課金アカウントからダウンロードします。 次に、ポータルの左側のナビゲーション ウィンドウにあるサービスの一覧から、 **[コストの管理と請求]** に移動します。 該当する場合は、課金アカウントを選択します。 **[使用量 + 請求金額]** に移動し、請求期間の **[ダウンロード]** アイコンを選択します。
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-まず、Azure CLI の環境を準備します。
-
-[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
-
-サブスクリプションの月度累計使用量情報を照会するには、サインイン後、[az costmanagement query](/cli/azure/ext/costmanagement/costmanagement#ext_costmanagement_az_costmanagement_query) コマンドを使用します。
-
-```azurecli
-az costmanagement query --timeframe MonthToDate --type Usage \
-   --scope "subscriptions/00000000-0000-0000-0000-000000000000"
-```
-
-**--dataset-filter** などのパラメーターを使用してクエリを絞り込むこともできます。
-
-```azurecli
-az costmanagement query --timeframe MonthToDate --type Usage \
-   --scope "subscriptions/00000000-0000-0000-0000-000000000000" \
-   --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
-```
-
-**--dataset-filter** パラメーターには、JSON 文字列または `@json-file` を指定します。
-
-[az costmanagement export](/cli/azure/ext/costmanagement/costmanagement/export) コマンドを使用して、利用状況データを Azure ストレージ アカウントにエクスポートすることもできます。 そこからデータをダウンロードすることができます。
-
-1. リソース グループを作成するか、または既存のリソース グループを使用します。 リソース グループを作成するには、[az group create](/cli/azure/group#az_group_create) コマンドを実行します。
-
-   ```azurecli
-   az group create --name TreyNetwork --location "East US"
-   ```
-
-1. エクスポートを受信するためのストレージ アカウントを作成するか、既存のストレージ アカウントを使用します。 アカウントを作成するには、[az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用します。
-
-   ```azurecli
-   az storage account create --resource-group TreyNetwork --name cmdemo
-   ```
-
-1. [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) コマンドを実行して、エクスポートを作成します。
-
-   ```azurecli
-   az costmanagement export create --name DemoExport --type Usage \
-   --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-account-id cmdemo \
-   --storage-container democontainer --timeframe MonthToDate --storage-directory demodirectory
-   ```
-
----
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

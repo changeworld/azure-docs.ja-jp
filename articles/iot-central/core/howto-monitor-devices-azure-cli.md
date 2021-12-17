@@ -1,33 +1,31 @@
 ---
 title: Azure IoT Central エクスプローラーを使用してデバイスの接続を監視する
 description: IoT Central エクスプローラー CLI を使用して、デバイスのメッセージを監視し、デバイス ツインの変更を観察します。
-author: viv-liu
-ms.author: viviali
-ms.date: 03/27/2020
+author: dominicbetts
+ms.author: dobett
+ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
-manager: corywink
-ms.openlocfilehash: 62981686c7aadc713c4abc78075be8613fe0af45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c257b9df42af31c443ae3e609d578db6adeb1c8
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199308"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154833"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI を使用してデバイスの接続性を監視する
 
-*このトピックの対象は、デバイス開発者とソリューション ビルダーにです。*
-
 Azure CLI IoT 拡張機能を使用して、デバイスから IoT Central に送信されるメッセージを確認し、デバイス ツインでの変更を観察します。 このツールを使用し、デバイスの接続状態をデバッグし、観察し、クラウドに達しないデバイス メッセージの問題や、ツイン変更に応答しないデバイスの問題を診断できます。
 
-[詳細については、Azure CLI 拡張機能のリファレンスを参照してください。](/cli/azure/ext/azure-iot/iot/central)
+[詳細については、Azure CLI 拡張機能のリファレンスを参照してください。](/cli/azure/iot/central)
 
 ## <a name="prerequisites"></a>前提条件
 
-+ Azure CLI がインストールされており、バージョンが 2.7.0 以降であること。 `az --version` を実行し、Azure CLI のバージョンを確認してください。 インストールと更新の方法は [Azure CLI ドキュメント](/cli/azure/install-azure-cli)でご確認いただけます。
-+ Azure の職場または学校アカウント。IoT Central アプリケーションにユーザーとして追加されます。
+Azure の職場または学校アカウント。IoT Central アプリケーションにユーザーとして追加されます。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3](../../../includes/azure-cli-prepare-your-environment-h3.md)]
 
 ## <a name="install-the-iot-central-extension"></a>IoT Central 拡張機能をインストールする
 
@@ -80,4 +78,4 @@ az iot central device twin show --app-id <app-id> --device-id <device-id>
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者にお勧めする次の手順は、[Azure IoT Central のデバイス接続機能](./concepts-get-connected.md)に関する記事を読むことです。
+次の手順は、[Azure IoT Central のデバイス接続機能](./concepts-get-connected.md)に関する記事を読むことをお勧めします。

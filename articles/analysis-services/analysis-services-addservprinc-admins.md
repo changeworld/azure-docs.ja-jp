@@ -4,16 +4,16 @@ description: Azure Analysis Services のサーバー管理者ロールに自動�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 05/14/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f28d7e46acd5d9c22729ff7878f44a27d5cb6363
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93100730"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065694"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>サーバー管理者ロールへのサービス プリンシパルの追加 
 
@@ -103,7 +103,7 @@ Azure Resource Manager テンプレートを使用して Analysis Services サ�
 
 Azure portal と API シリーズのほとんどの部分では、マネージド ID はサービス プリンシパルのオブジェクト ID を使用して識別されます。 ただし、Analysis Services では、クライアント ID を使用して識別する必要があります。 サービス プリンシパルのクライアント ID を取得するには、Azure CLI を使用できます。
 
-```bash
+```azurecli
 az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
 ```
 

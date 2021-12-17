@@ -1,18 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 のセキュリティの概要 | Microsoft Docs
 description: 認証、承認、ネットワーク分離、データ保護、監査など、Azure Data Lake Storage Gen1 のセキュリティ機能について説明します。
-services: data-lake-store
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.author: twooley
-ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 2a3f52cfaacf3912c250bbd99322ffa5b0b26a74
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92146296"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446203"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 のセキュリティ
 
@@ -101,7 +100,7 @@ Data Lake Storage Gen1 では、アカウントに格納されているデータ
 
 ![アクティビティ ログ](./media/data-lake-store-security-overview/activity-logs.png "アクティビティ ログ")
 
-アクティビティ ログの操作の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
+アクティビティ ログの操作の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-monitor/essentials/activity-log.md)」を参照してください。
 
 ### <a name="diagnostics-logs"></a>診断ログ
 
@@ -115,7 +114,7 @@ Data Lake Storage Gen1 の診断ログの操作の詳細については、「[Da
 
 企業顧客は、セキュリティで保護された使いやすいデータ分析クラウド プラットフォームを求めています。 Data Lake Storage Gen1 は、Azure Active Directory 統合による ID 管理と認証、ACL ベースの承認、ネットワーク分離、転送中のデータや保存データの暗号化、監査を通して、これらの要件への対処に役立つように設計されています。
 
-Data Lake Storage Gen1 に追加を希望する機能がある場合には、[Data Lake Storage Gen1 UserVoice フォーラム](https://feedback.azure.com/forums/327234-data-lake)からフィードバックをお送りください。
+Data Lake Storage Gen1 に追加を希望する機能がある場合には、[Data Lake Storage Gen1 UserVoice フォーラム](https://feedback.azure.com/d365community/forum/7fd97106-7326-ec11-b6e6-000d3a4f032c)からフィードバックをお送りください。
 
 ## <a name="see-also"></a>関連項目
 

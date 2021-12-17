@@ -2,7 +2,6 @@
 title: IoT Edge ログを取得する - Azure IoT Edge
 description: IoT Edge モジュール ログの取得と Azure Blob Storage へのアップロードを行います。
 author: v-tcassi
-manager: philmea
 ms.author: v-tcassi
 ms.date: 11/12/2020
 ms.topic: conceptual
@@ -10,12 +9,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: c06120d1a2e8aa6aa0c006c6f40fed6fab44c5b7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 75b89acff320b3083c098a0546882d80bdcfc5ad
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200697"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060898"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge の展開からログを取得する
 
@@ -35,7 +34,7 @@ IoT Edge エージェント モジュールに含まれているダイレクト 
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Timestamp}` は `yyyy-MM-dd hh:mm:ss.fff zzz` のように書式設定する必要があり、`{Log Level}` は次の表に従って指定する必要があります。この表にある重大度レベルは、[Syslog 標準の重大度コード](https://wikipedia.org/wiki/Syslog#Severity_level)に基づいたものです。
+`{Timestamp}` は `yyyy-MM-dd HH:mm:ss.fff zzz` のように書式設定する必要があり、`{Log Level}` は次の表に従って指定する必要があります。この表にある重大度レベルは、[Syslog 標準の重大度コード](https://wikipedia.org/wiki/Syslog#Severity_level)に基づいたものです。
 
 | 値 | Severity |
 |-|-|
@@ -53,6 +52,9 @@ IoT Edge エージェント モジュールに含まれているダイレクト 
 ## <a name="retrieve-module-logs"></a>モジュール ログを取得する
 
 **GetModuleLogs** ダイレクト メソッドを使用して、IoT Edge モジュールのログを取得します。
+
+>[!TIP]
+>Azure portal の IoT Edge のトラブルシューティング ページは、モジュール ログを表示するための簡単なエクスペリエンスを提供します。 詳細については、[「Azure portal から IoT Edge デバイスを監視およびトラブルシューティングする」](troubleshoot-in-portal.md)を参照してください。
 
 このメソッドは、次のスキーマを持つ JSON ペイロードを受け取ります。
 
@@ -76,7 +78,7 @@ IoT Edge エージェント モジュールに含まれているダイレクト 
     }
 ```
 
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | schemaVersion | string | `1.0` |
 | items | JSON 配列 | `id` および `filter` の組を含む配列。 |
@@ -185,7 +187,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | sasURL | string (URI) | [Azure Blob Storage コンテナーへの書き込みアクセスを含む共有アクセス署名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer)。 |
 
@@ -199,7 +201,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
@@ -210,7 +212,7 @@ az iot hub invoke-module-method \
 次の呼び出しによって、すべてのモジュールから最新の100 のログ行を、圧縮された JSON 形式でアップロードします。
 
 ```azurecli
-az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d <device id> -m \$edgeAgent --method-payload \
+az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
 '
     {
         "schemaVersion": "1.0",
@@ -232,7 +234,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 次の呼び出しによって、edgeAgent および edgeHub からの最新の 100 のログ行と、tempSensor モジュールからの最新の 1000 のログ行が、圧縮されていないテキスト形式でアップロードします。
 
 ```azurecli
-az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d <device id> -m \$edgeAgent --method-payload \
+az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
 '
     {
         "schemaVersion": "1.0",
@@ -302,7 +304,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | schemaVersion | string | `1.0` |
 | sasURL | string (URI) | [Azure Blob Storage コンテナーへの書き込みアクセスを含む共有アクセス署名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -323,7 +325,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
@@ -381,9 +383,9 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
-| status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
+| status | string | `NotStarted`、`Running`、`Completed`、`Failed`、'Cancelled'、`Unknown` のいずれか。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
 | correlationId | string   | アップロード要求の状態を照会するための ID。 |
 

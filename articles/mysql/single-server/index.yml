@@ -5,15 +5,15 @@ metadata:
   description: Azure Database for MySQL - シングル サーバーは、MySQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。
   author: mksuni
   ms.author: sumuth
-  ms.date: 09/20/2020
+  ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: a2ae6e91481da51c77f3c73f4fd9b5d31169952d
-  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+  ms.openlocfilehash: fdf4c52b5f5b7fdc212d887d5b22ea1839fcb089
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/07/2020
-  ms.locfileid: "96749132"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130214998"
 landingContent:
 - title: シングル サーバーについて
   linkLists:
@@ -23,8 +23,8 @@ landingContent:
       url: ../single-server-overview.md
   - linkListType: whats-new
     links:
-    - text: ブログを確認する
-      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+    - text: シングル サーバーの新機能
+      url: ../single-server-whats-new.md
 - title: 作業開始
   linkLists:
   - linkListType: quickstart
@@ -95,12 +95,20 @@ landingContent:
     links:
     - text: サーバー パラメーターの構成
       url: ../howto-server-parameters.md
+    - text: Azure Database for MySQL への移行に使用する適切なツールを選択する
+      url: ../how-to-decide-on-right-migration-tools.md
+    - text: 単一サーバーからフレキシブル サーバーに移行する
+      url: ../howto-migrate-single-flexible-minimum-downtime.md
     - text: データ移行サービスを使用して移行する
       url: ../howto-migrate-online.md
     - text: ダンプと復元を使用して移行する
       url: ../concepts-migrate-dump-restore.md
     - text: インポートとエクスポートを使用して移行する
       url: ../concepts-migrate-import-export.md
+    - text: MySQL Workbench を使用して RDS MySQL を移行する
+      url: ../how-to-migrate-rds-mysql-workbench.md
+    - text: データイン レプリケーションを使用して RDS for MySQL を移行する
+      url: ../how-to-migrate-rds-mysql-data-in-replication.md
 - title: ビジネス継続性
   linkLists:
   - linkListType: concept

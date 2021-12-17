@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/12/2021
+ms.date: 05/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 7360ad5abc7342043152c2da11038b624b0bfadc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0404c8d137f90f5ead2f2b3bd3c9754ab1a45608
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649985"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132291581"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub Enterprise Cloud - Enterprise Account の統合
 
@@ -30,7 +30,7 @@ ms.locfileid: "101649985"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* [GitHub Enterprise Account](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/about-enterprise-accounts)。
+* [GitHub Enterprise Account](https://docs.github.com/en/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)。
 * Enterprise Account オーナーである GitHub ユーザー アカウント。 
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -123,8 +123,8 @@ GitHub Enterprise Cloud - Enterprise Account に対して Azure AD SSO を構成
 
 ## <a name="enable-and-test-saml-for-the-enterprise-account-and-its-organizations"></a>Enterprise Account とその組織の SAML の有効化とテスト
 
-**GitHub Enterprise Cloud - Enterprise Account** 側でシングル サインオンを構成するには、[この GitHub ドキュメント](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/enforcing-security-settings-in-your-enterprise-account#enabling-saml-single-sign-on-for-organizations-in-your-enterprise-account)に記載されている手順に従います。 
-1. [Enterprise Account オーナー](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/roles-in-an-enterprise#enterprise-owner)であるユーザー アカウントを使用して GitHub.com にサインインします。 
+**GitHub Enterprise Cloud - Enterprise Account** 側でシングル サインオンを構成するには、[この GitHub ドキュメント](https://docs.github.com/en/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-security-settings-in-your-enterprise#enabling-saml-single-sign-on-for-organizations-in-your-enterprise-account)に記載されている手順に従います。 
+1. [Enterprise Account オーナー](https://docs.github.com/en/enterprise-cloud@latest/admin/user-management/managing-users-in-your-enterprise/roles-in-an-enterprise#enterprise-owner)であるユーザー アカウントを使用して GitHub.com にサインインします。 
 1. アプリの `Login URL` フィールドの値を Azure portal からコピーし、GitHub Enterprise Account の SAML 設定の `Sign on URL` フィールドに貼り付けます。 
 1. アプリの `Azure AD Identifier` フィールドの値を Azure portal からコピーし、GitHub Enterprise Account の SAML 設定の `Issuer` フィールドに貼り付けます。 
 1. 上記の手順でダウンロードした **証明書 (Base64)** ファイルの内容を Azure portal からコピーし、GitHub Enterprise Account の SAML 設定の適切なフィールドに貼り付けます。 
@@ -150,4 +150,4 @@ Enterprise Account 内の組織の組織所有者は、[GitHub 組織に参加�
 
 ## <a name="next-steps"></a>次のステップ
 
-GitHub Enterprise Cloud - Enterprise Account を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+GitHub Enterprise Cloud - Enterprise Account を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

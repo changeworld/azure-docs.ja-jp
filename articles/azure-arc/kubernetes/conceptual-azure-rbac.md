@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: この記事では、Azure Arc 対応 Kubernetes での Azure RBAC 機能の概念について説明します
-ms.openlocfilehash: 7eb55ed819b6487697b5c2d64cdbabe2bbdae8a3
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 126e85eb312b977eb90e27971e8e65180542b069
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450792"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679964"
 ---
 # <a name="azure-rbac-on-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes での Azure RBAC
 

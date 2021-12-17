@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 1f2c767d45bb08e25a057c7db1f380ceb250f607
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d02f0e8ff3d8d6da37e0e457cea2e4878ff1a2b0
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864909"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930013"
 ---
-# <a name="delete-using-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールを使用して削除する (プレビュー)
+# <a name="delete-using-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールを使用して削除する
 
 この記事では、Azure NetApp Files で使用できる Azure アプリケーション整合性スナップショット ツールの delete コマンドを実行するためのガイドを提供します。
 

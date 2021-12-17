@@ -5,19 +5,21 @@ ms.author: makromer
 author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: troubleshooting
-ms.date: 03/25/2021
-ms.openlocfilehash: 72ab685b58f7d940fe4d682cacba6212fe80ced8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/01/2021
+ms.openlocfilehash: f41d53207eb00e4044e523e481de444a615a5d88
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933085"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389401"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory でマッピング データ フローをトラブルシューティングする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
+<<<<<<< HEAD
 この記事では、Azure Data Factory でマッピング データ フローのための一般的なトラブルシューティング方法について説明します。
 
 ## <a name="common-error-codes-and-messages"></a>一般的なエラー コードとメッセージ 
@@ -317,6 +319,9 @@ ms.locfileid: "105933085"
 ### <a name="error-code-df-excel-invalidfile"></a>エラー コード: DF-Excel-InvalidFile
 - **メッセージ**: 無効な Excel ファイルが指定されていますが、.xlsx と .xls のみがサポートされています。
 
+=======
+この記事では、Azure Data Factory でマッピング データ フローのための一般的なトラブルシューティング方法について説明します。  特定のエラー メッセージ、および関連する原因と推奨事項については、[一般的なデータ フローのエラー コードとメッセージ](data-flow-troubleshoot-errors.md)に関するページを参照してください。
+>>>>>>> repo_sync_working_branch
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>その他のトラブルシューティングのヒント
 - **問題**: 予期しない例外が発生し、実行が失敗しました。
@@ -445,13 +450,35 @@ ms.locfileid: "105933085"
  改善後、解析された列の結果は次のようになります。<br/>
   `A "" (empty string) B "" (empty string)`<br/>
 
+###  <a name="internal-server-errors"></a>内部サーバー エラー
+
+内部サーバー エラーの原因となる可能性がある特定のシナリオを次に示します。
+
+#### <a name="scenario-1-not-choosing-the-appropriate-compute-sizetype-and-other-factors"></a>シナリオ 1: コンピューティングの適切なサイズや種類、その他の要因が選択されていない
+
+  データ フローの正常な実行は、コンピューティングのサイズと種類、処理するソースとシンクの数、パーティションの指定、関連する変換、データセットのサイズ、データの偏りなど、さまざまな要因に依存します。<br/>
+  
+  詳細なガイドについては、[Integration Runtime のパフォーマンス](concepts-integration-runtime-performance.md)に関するページを参照してください。
+
+#### <a name="scenario-2-using-debug-sessions-with-parallel-activities"></a>シナリオ 2: 並列アクティビティでのデバッグ セッションの使用
+
+  パイプラインに ForEach のようなコンストラクトが含まれるデータ フロー デバッグ セッションを使用して実行をトリガーすると、同じクラスターに複数の並列実行が送信される可能性があります。 この状況では、メモリ不足などのリソースの問題のため、クラスターの障害に関する問題が実行中に発生する可能性があります。<br/>
+  
+  変更を発行した後に、パイプライン アクティビティで定義されている適切な統合ランタイム構成を使用して実行を送信するには、 **[今すぐトリガー]** または **[デバッグ]**  >  **[アクティビティ ランタイムを使用]** を選択します。
+
+#### <a name="scenario-3-transient-issues"></a>シナリオ 3: 一時的な問題
+
+  実行に関係するマイクロサービスの一時的な問題により、実行が失敗する可能性があります。<br/>
+  
+  パイプライン アクティビティに再試行を構成すると、一時的な問題による問題が解決されることがあります。 詳細なガイドについては、「[アクティビティ ポリシー](concepts-pipelines-activities.md#activity-json)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングの詳細について、次のリソースを参照してください。
 
-*  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
+- [一般的なマッピング データ フローのエラーとメッセージ](data-flow-troubleshoot-errors.md)
+- [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+- [Data Factory の機能のリクエスト](/answers/topics/azure-data-factory.html)
+- [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+- [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
+- [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)

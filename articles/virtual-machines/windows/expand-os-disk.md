@@ -1,29 +1,25 @@
 ---
-title: Azure で Windows VM の OS ドライブを展開する
-description: Resource Manager デプロイ モデルで Azure PowerShell を使用して仮想マシンの OS ドライブのサイズを拡張します。
-services: virtual-machines
-documentationcenter: ''
+title: Azure 内の Windows VM に接続されている仮想ハード ディスクを拡張する
+description: Resource Manager デプロイ モデルで Azure PowerShell を使用して、仮想マシンに接続されている仮想ハード ディスクのサイズを拡張します。
 author: kirpasingh
 manager: roshar
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
 ms.service: virtual-machines
 ms.collection: windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 09/02/2020
+ms.date: 11/02/2021
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: af57bc396349286c3edcaefc8385ddbaec066226
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell, references_regions, ignite-fall-2021
+ms.openlocfilehash: d744bf5ec5619985aaa899183657504c7e3afeff
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199447"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466677"
 ---
-# <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>仮想マシンの OS ドライブを展開する方法
+# <a name="how-to-expand-virtual-hard-disks-attached-to-a-windows-virtual-machine"></a>Windows 仮想マシンに接続されている仮想ハード ディスクを拡張する方法
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 [Azure Marketplace](https://azure.microsoft.com/marketplace/) からイメージをデプロイしてリソース グループに新しい仮想マシン (VM) を作成するとき、多くの場合、既定の OS ドライブは 127 GB です (一部のイメージでは既定の OS ディスク サイズが小さくなります)。 VM にデータ ディスクを追加することは可能であり (数は、選択されている SKU によって決まります)、また、アプリケーションと、CPU を負荷の高いワークロードはこれらの追加ディスクにインストールすることが推奨されていますが、多くの場合、次のような特定のシナリオをサポートするために OS ドライブの拡張が必要になります。
 
@@ -37,31 +33,54 @@ ms.locfileid: "103199447"
 > 
 > ディスクを拡張した後、大きいディスクを活用するには、[OS 内のボリュームを拡張する](#expand-the-volume-within-the-os)必要があります。
 
+## <a name="resize-without-downtime-preview"></a>ダウンタイムなしでサイズを変更する (プレビュー)
+
+VM の割り当てを解除せずに、マネージド ディスクのサイズを変更できるようになりました。
+
+このプレビューには、次の制限事項があります。
+
+[!INCLUDE [virtual-machines-disks-expand-without-downtime-restrictions](../../../includes/virtual-machines-disks-expand-without-downtime-restrictions.md)]
+
+この機能に登録するには、次のコマンドを使用します。
+
+```azurepowershell
+Register-AzProviderFeature -FeatureName "LiveResize" -ProviderNamespace "Microsoft.Compute"
+```
+
+登録が完了するまでに数分かかることがあります。 登録を確認するには、次のコマンドを使用します。
+
+```azurepowershell
+Register-AzProviderFeature -FeatureName "LiveResize" -ProviderNamespace "Microsoft.Compute"
+```
+
 ## <a name="resize-a-managed-disk-in-the-azure-portal"></a>Azure portal でマネージド ディスクのサイズを変更する
 
-1. [Azure portal](https://portal.azure.com) で、ディスクを拡張する仮想マシンに移動します。 **[停止]** を選択して VM の割り当てを解除します。
-2. VM が停止したら、左側のメニューの **[設定]** で **[ディスク]** を選択します。
+> [!IMPORTANT]
+> **LiveResize** を有効にし、「[ダウンタイムなしでサイズを変更する (プレビュー)](#resize-without-downtime-preview)」の要件をディスクが満たしている場合は、手順 1 を省略できます。 Azure portal にダウンタイムを発生させずにディスクのサイズを変更するには、次のリンクを使用する必要があります。[https://aka.ms/iaasexp/DiskLiveResize](https://aka.ms/iaasexp/DiskLiveResize)
+
+1. [Azure portal](https://aka.ms/iaasexp/DiskLiveResize) で、ディスクを拡張する仮想マシンに移動します。 **[停止]** を選択して VM の割り当てを解除します。
+1. 左側のメニューの **[設定]** で、 **[ディスク]** を選択します。
 
     :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="メニューの [設定] セクションで [ディスク] オプションが選択されているのを示すスクリーンショット。":::
 
  
-3. **[ディスク名]** で、サイズを変更するディスクを選択します。
+1. **[ディスク名]** で、サイズを変更するディスクを選択します。
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="ディスク名が選択されている [ディスク] ウィンドウを示すスクリーンショット。":::
 
-4. 左側のメニューの **[設定]** で、 **[Size + performance]\(サイズおよびパフォーマンス\)** を選択します。
+1. 左側のメニューの **[設定]** で、 **[Size + performance]\(サイズおよびパフォーマンス\)** を選択します。
 
     :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="メニューの [設定] セクションで [サイズおよびパフォーマンス] オプションが選択されているのを示すスクリーンショット。":::
 
-5. **[Size + performance]\(サイズおよびパフォーマンス\)** で、必要なディスク サイズを選択します。
+1. **[Size + performance]\(サイズおよびパフォーマンス\)** で、必要なディスク サイズを選択します。
    
    > [!WARNING]
-   > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 OS ディスクで許可される最大値は、2,048 GB です。 (VHD BLOB はこのサイズよりも大きくすることができます。ただし、OS の実行に使用できるのは、最初の 2,048 GB の領域のみです。)
+   > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 OS ディスクで許可される最大値は、4,095 GB です。 (VHD BLOB はこのサイズよりも大きくすることができます。ただし、OS の実行に使用できるのは、最初の 4,095 GB の領域のみです。)
    > 
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="ディスク サイズが選択された[Size + performance]\(サイズおよびパフォーマンス\) ペインを示すスクリーンショット。":::
 
-6. ページの下部にある **[サイズ変更]** を選択します。
+1. ページの下部にある **[サイズ変更]** を選択します。
 
     :::image type="content" source="./media/expand-os-disk/save.png" alt-text="[サイズ変更] ボタンが選択された [Size + performance]\(サイズおよびパフォーマンス\) ペインを示すスクリーンショット。":::
 
@@ -77,26 +96,29 @@ ms.locfileid: "103199447"
     Select-AzSubscription –SubscriptionName 'my-subscription-name'
     ```
 
-2. リソース グループ名と VM 名を設定します。
+1. リソース グループ名と VM 名を設定します。
    
     ```powershell
     $rgName = 'my-resource-group-name'
     $vmName = 'my-vm-name'
     ```
 
-3. VM への参照を取得します。
+1. VM への参照を取得します。
    
     ```powershell
     $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
 
-4. ディスクのサイズを変更する前に VM を停止します。
+    > [!IMPORTANT]
+    > **LiveResize** を有効にし、「[ダウンタイムなしでサイズを変更する (プレビュー)](#resize-without-downtime-preview)」の要件をディスクが満たしている場合は、手順 4 と 6 を省略できます。
+
+1. ディスクのサイズを変更する前に VM を停止します。
    
     ```powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
 
-5. マネージド OS ディスクへの参照を取得します。 マネージド OS ディスクのサイズを目的の値に設定し、ディスクを更新します。
+1. マネージド OS ディスクへの参照を取得します。 マネージド OS ディスクのサイズを目的の値に設定し、ディスクを更新します。
    
     ```powershell
     $disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
@@ -104,10 +126,10 @@ ms.locfileid: "103199447"
     Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
     ```   
     > [!WARNING]
-    > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 OS ディスクで許可される最大値は、2,048 GB です。 (VHD BLOB はこのサイズよりも大きくすることができます。ただし、OS の実行に使用できるのは、最初の 2,048 GB の領域のみです。)
+    > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 OS ディスクで許可される最大値は、4,095 GB です。 (VHD BLOB はこのサイズよりも大きくすることができます。ただし、OS の実行に使用できるのは、最初の 4,095 GB の領域のみです。)
     > 
          
-6. VM の更新には数秒かかる可能性があります。 コマンドの実行が完了したら、VM を再起動します。
+1. VM の更新には数秒かかる可能性があります。 コマンドの実行が完了したら、VM を再起動します。
    
     ```powershell
     Start-AzVM -ResourceGroupName $rgName -Name $vmName
@@ -126,26 +148,26 @@ ms.locfileid: "103199447"
     Select-AzSubscription –SubscriptionName 'my-subscription-name'
     ```
 
-2. リソース グループ名と VM 名を設定します。
+1. リソース グループ名と VM 名を設定します。
    
     ```powershell
     $rgName = 'my-resource-group-name'
     $vmName = 'my-vm-name'
     ```
 
-3. VM への参照を取得します。
+1. VM への参照を取得します。
    
     ```powershell
     $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
 
-4. ディスクのサイズを変更する前に VM を停止します。
+1. ディスクのサイズを変更する前に VM を停止します。
    
     ```powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
 
-5. アンマネージド OS ディスクのサイズを目的の値に設定し、VM を更新します。
+1. アンマネージド OS ディスクのサイズを目的の値に設定し、VM を更新します。
    
     ```powershell
     $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
@@ -157,7 +179,7 @@ ms.locfileid: "103199447"
     > 
     > 
    
-6. VM の更新には数秒かかる可能性があります。 コマンドの実行が完了したら、VM を再起動します。
+1. VM の更新には数秒かかる可能性があります。 コマンドの実行が完了したら、VM を再起動します。
    
     ```powershell
     Start-AzVM -ResourceGroupName $rgName -Name $vmName
@@ -236,13 +258,13 @@ VM のディスクを拡張したら、OS に移動して、新しい領域を�
 
 1. VM への RDP 接続を開きます。
 
-2. コマンド プロンプトを開き、「**diskpart**」と入力します。
+1. コマンド プロンプトを開き、「**diskpart**」と入力します。
 
-3. **DISKPART** プロンプトで「`list volume`」と入力します。 拡張するボリュームをメモします。
+1. **DISKPART** プロンプトで「`list volume`」と入力します。 拡張するボリュームをメモします。
 
-4. **DISKPART** プロンプトで「`select volume <volumenumber>`」と入力します。 これにより、同じディスク上の連続した空の領域に拡張する必要があるボリューム *volumenumber* が選択されます。
+1. **DISKPART** プロンプトで「`select volume <volumenumber>`」と入力します。 これにより、同じディスク上の連続した空の領域に拡張する必要があるボリューム *volumenumber* が選択されます。
 
-5. **DISKPART** プロンプトで「`extend [size=<size>]`」と入力します。 これにより、選択したボリュームがメガバイト (MB) 単位の *size* で拡張されます。
+1. **DISKPART** プロンプトで「`extend [size=<size>]`」と入力します。 これにより、選択したボリュームがメガバイト (MB) 単位の *size* で拡張されます。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 09/13/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46cc8ef1158c02190f905cbe8eb1d12ea7be50a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3875beb50cf0bf1a177889a2f49b730d2528e204
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644937"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388002"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>プライマリ更新トークンとは
 
@@ -29,7 +29,7 @@ ms.locfileid: "101644937"
 PRT の要求と使用においては、次の Windows コンポーネントが重要な役割を果たします。
 
 * **クラウド認証プロバイダー** (CloudAP): CloudAP は Windows サインイン用の最新の認証プロバイダーであり、Windows 10 デバイスにログインしているユーザーを検証します。 ID プロバイダーは、CloudAP が提供するプラグイン フレームワークを利用して、その ID プロバイダーの資格情報を使った Windows への認証を有効にすることができます。
-* **Web アカウント マネージャー** (WAM): WAM は Windows 10 デバイスでの既定のトークン ブローカーです。 また ID プロバイダーは、WAM が提供するプラグイン フレームワークを利用して、その ID プロバイダーを利用しているアプリケーションへの SSO を有効にすることができます。
+* **Web アカウント マネージャー** (WAM): WAM は Windows 10 デバイスでの既定のトークン ブローカーです。 また ID プロバイダーは、WAM が提供するプラグイン フレームワークを利用して、その ID プロバイダーを利用しているアプリケーションへの SSO を有効にすることができます。 (Windows Server 2016 LTSC ビルドには含まれていません)
 * **Azure AD CloudAP プラグイン**: CloudAP フレームワーク上に構築される Azure AD 固有のプラグインであり、Windows サインイン中に Azure AD を使用してユーザーの資格情報を確認します。
 * **Azure AD WAM プラグイン**: WAM フレームワーク上に構築される Azure AD 固有のプラグインであり、Azure AD を認証に利用するアプリケーションへの SSO を有効にします。
 * **Dsreg**: Windows 10 上の Azure AD 固有のコンポーネントであり、すべてのデバイス状態のデバイス登録プロセスを処理します。
@@ -59,13 +59,16 @@ PRT は Windows 10 デバイス上でのユーザー認証中に発行され、2
 
 * **Azure AD 参加済み** または **ハイブリッド Azure AD 参加済み**: PRT は、ユーザーが自分の組織の資格情報を使用してサインインするとき、Windows ログオン中に発行されます。 PRT は、パスワードや Windows Hello for Business など、Windows 10 でサポートされているすべての資格情報と共に発行されます。 このシナリオでは、Azure AD CloudAP プラグインが PRT のプライマリ機関です。
 * **Azure AD 登録済みデバイス**: PRT は、ユーザーが自分の Windows 10 デバイスにセカンダリの職場アカウントを追加するときに発行されます。 ユーザーは 2 つの異なる方法で Windows 10 にアカウントを追加できます。  
-   * (Outlook などの) アプリにサインインした後、 **[Use this account everywhere on this device]\(このデバイス上のどこでもこのアカウントを使用する\)** のプロンプトからアカウントを追加する
+   * アプリ (Outlook など) にサインインした後で、 **[組織がデバイスを管理できるようにする]** プロンプトからアカウントを追加する
    * **[設定]**  >  **[アカウント]**  >  **[Access Work or School]\(職場または学校にアクセスする\)**  >  **[接続]** からアカウントを追加する
 
 Azure AD 登録済みデバイスのシナリオでは、この Azure AD アカウントで Windows ログオンは発生しないため、Azure AD WAM プラグインが PRT のプライマリ機関です。
 
 > [!NOTE]
 > サード パーティの ID プロバイダーは、Windows 10 デバイスで PRT 発行を有効にするために、WS-Trust プロトコルをサポートする必要があります。 WS-Trust がない場合、Hybrid Azure AD 参加済みまたは Azure AD 参加済みデバイスでユーザーに PRT を発行することはできません。 ADFS では、usernamemixed エンドポイントのみが必要です。 adfs/services/trust/2005/windowstransport と adfs/services/trust/13/windowstransport はどちらも、イントラネットに接続するエンドポイントとしてのみ有効にする必要があります。Web アプリケーション プロキシを介してエクストラネットに接続するエンドポイントとしては **公開しないでください**。
+
+> [!NOTE]
+> Azure AD 条件付きアクセス ポリシーは、PRT の発行時、評価されません
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>PRT の有効期間はどれくらいですか?
 
@@ -76,7 +79,7 @@ Azure AD 登録済みデバイスのシナリオでは、この Azure AD アカ�
 Windows で、PRT は 2 つの主要コンポーネントによって使用されます。
 
 * **Azure AD CloudAP プラグイン**: Windows サインイン中に、Azure AD CloudAP プラグインが、ユーザーから提供された資格情報を使用して Azure AD から PRT を要求します。 また、PRT をキャッシュして、ユーザーがインターネット接続にアクセスできないときのキャッシュ サインインを有効にします。
-* **Azure AD WAM プラグイン**: ユーザーがアプリケーションにアクセスしようとすると、Azure AD WAM プラグインが PRT を使用して Windows 10 で SSO を有効にします。 Azure AD WAM プラグインは PRT を使用して、トークン要求を WAM に依存するアプリケーションについて更新トークンとアクセス トークンを要求します。 また、ブラウザーの要求に PRT を挿入して、ブラウザー上で SSO を有効にします。 Windows 10 でのブラウザー SSO は、Microsoft Edge (ネイティブ) および Chrome ([Windows 10 アカウント](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en)または [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) 拡張機能を経由) でサポートされています。
+* **Azure AD WAM プラグイン**: ユーザーがアプリケーションにアクセスしようとすると、Azure AD WAM プラグインが PRT を使用して Windows 10 で SSO を有効にします。 Azure AD WAM プラグインは PRT を使用して、トークン要求を WAM に依存するアプリケーションについて更新トークンとアクセス トークンを要求します。 また、ブラウザーの要求に PRT を挿入して、ブラウザー上で SSO を有効にします。 Windows 10 のブラウザー SSO は Microsoft Edge (ネイティブ)、Chrome ([Windows 10 Accounts](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) または [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) 拡張機能経由で) または Mozilla Firefox v 91 以上 ([Firefox Windows SSO 設定](https://support.mozilla.org/kb/windows-sso)) でサポートされています
 
 ## <a name="how-is-a-prt-renewed"></a>PRT はどのように更新されますか?
 
@@ -90,6 +93,9 @@ PRT は 2 つの異なる方法で更新されます。
 ADFS 環境では、PRT を更新するために、ドメイン コントローラーへの直接の通信経路を確保する必要はありません。 PRT の更新には、WS-Trust プロトコルを使用してプロキシで有効になっている /adfs/services/trust/2005/usernamemixed と /adfs/services/trust/13/usernamemixed エンドポイントのみが必要です。
 
 Windows トランスポート エンドポイントは、パスワードが変更された場合にのみパスワード認証に必要であり、PRT の更新には必要ありません。
+
+> [!NOTE]
+> Azure AD 条件付きアクセス ポリシーは、PRT の更新時、評価されません。
 
 ### <a name="key-considerations"></a>重要な考慮事項
 
@@ -109,7 +115,7 @@ TPM を使用してこれらのキーをセキュリティで保護すること�
 
 **アプリ トークン**: アプリが WAM 経由でトークンを要求すると、Azure AD は更新トークンとアクセス トークンを発行します。 ただし、WAM はアクセス トークンをアプリに返すだけであり、そのキャッシュ内の更新トークンは、ユーザーのデータ保護アプリケーション プログラミング インターフェイス (DPAPI) キーで暗号化することによってセキュリティで保護します。 WAM は、セッション キーを使用して要求に署名し、さらにアクセス トークンを発行することによって、更新トークンを安全に使用します。 DPAPI キーは、Azure AD 自体で Azure AD ベースの対称キーによってセキュリティで保護されます。 デバイスが DPAPI キーを使用してユーザー プロファイルを復号化する必要がある場合、セッション キーによって暗号化された DPAPI キーを Azure AD が提供し、CloudAP プラグインがこれの復号化を TPM に要求します。 この機能によって、更新トークンのセキュリティ保護の整合性が確保され、アプリケーションで独自の保護メカニズムが実装されるのを回避します。  
 
-**ブラウザーの Cookie**: Windows 10 では、Azure AD はブラウザー SSO を、Internet Explorer および Microsoft Edge ではネイティブに、Google Chrome では Windows 10 アカウント拡張機能を介してサポートします。 Cookie だけでなく Cookie が送信されるエンドポイントも保護するようにセキュリティが構築されています。 ブラウザーの Cookie の保護方法は PRT と同じであり、セッション キーを利用して Cookie に署名することによって保護されます。
+**ブラウザーの Cookie**: Windows 10 の Azure AD では、ブラウザー SSO は Internet Explorer と Microsoft Edge ではネイティブで、Google Chrome では Windows 10 アカウント拡張機能を介して、Mozilla Firefox v 91 以上ではブラウザー設定を介してサポートされます。 Cookie だけでなく Cookie が送信されるエンドポイントも保護するようにセキュリティが構築されています。 ブラウザーの Cookie の保護方法は PRT と同じであり、セッション キーを利用して Cookie に署名することによって保護されます。
 
 ユーザーがブラウザーとの対話を開始すると、ブラウザー (または拡張機能) が COM ネイティブ クライアント ホストを呼び出します。 ネイティブ クライアント ホストは、許可されているドメインのいずれかの配下にあるページであることを確認します。 ブラウザーは nonce を含むその他のパラメーターをネイティブ クライアント ホストに送信できますが、ネイティブ クライアント ホストはホスト名の検証を保証します。 ネイティブ クライアント ホストは PRT Cookie を CloudAP プラグインに要求し、プラグインは TPM で保護されたセッション キーを使用して Cookie を作成し、署名します。 PRT Cookie はセッション キーによって署名されるため、改ざんは非常に困難です。 この PRT Cookie は、Azure AD で発信元デバイスを検証するための要求ヘッダーに含まれます。 Chrome ブラウザーを使用している場合、ネイティブ クライアント ホストのマニフェストで明示的に定義されている拡張機能のみがそれを呼び出すことができ、任意の拡張機能がこれらの要求を行うことを防ぎます。 Azure AD は PRT Cookie を検証したら、セッション Cookie をブラウザーに発行します。 このセッション Cookie には、PRT を使用して発行されたのと同じセッション キーも含まれています。 後続の要求の間、セッション キーが検証されます。このとき、Cookie は事実上デバイスにバインドされ、他の場所からの再生を防ぎます。
 
@@ -118,12 +124,10 @@ TPM を使用してこれらのキーをセキュリティで保護すること�
 特定のシナリオで、PRT が多要素認証 (MFA) 要求を受けることがあります。 アプリケーションのトークンを要求するために MFA ベースの PRT が使用されると、MFA 要求がアプリ トークンに転送されます。 この機能は、それが必要なすべてのアプリでの MFA チャレンジを防ぐことによって、シームレスなエクスペリエンスをユーザーに提供します。 PRT は次の方法で MFA 要求を取得できます。
 
 * **Windows Hello for Business を使用してサインイン**: Windows Hello for Business は、パスワードを置き換え、暗号化キーを使用して強力な 2 要素認証を提供します。 Windows Hello for Business はデバイス上のユーザーに固有であり、それ自体がプロビジョニングのために MFA を必要とします。 ユーザーが Windows Hello for Business を使用してログインすると、ユーザーの PRT が MFA 要求を取得します。 スマート カード認証が ADFS から MFA 要求を生成する場合、このシナリオはスマート カードでログインしているユーザーにも当てはまります。
-   * Windows Hello for Business は多要素認証と見なされ、PRT 自体が更新されると MFA 要求が更新されるため、ユーザーが WIndows Hello for Business を使用してサインインすると MFA の期間は継続的に延長されます
+   * Windows Hello for Business は多要素認証と見なされ、PRT 自体が更新されると MFA 要求が更新されるため、ユーザーが Windows Hello for Business を使用してサインインすると MFA の期間は継続的に延長されます。
 * **WAM 対話型サインイン中の MFA**: WAM を通じたトークン要求中に、ユーザーがアプリにアクセスするために MFA を実行する必要がある場合、この対話中に更新される PRT には MFA 要求が刻印されます。
    * この場合、MFA 要求は継続的に更新されないため、MFA 期間はディレクトリで設定された有効期間に基づきます。
    * 以前の既存の PRT と RT がアプリへのアクセスに使用されている場合、PRT と RT は最初の認証の証明と見なされます。 2 番目の証明と刻印された MFA 要求で、新しい AT が必要になります。 これにより、新しい PRT と RT も発行されます。
-* **デバイス登録中の MFA**: [デバイスの登録を MFA に要求する](device-management-azure-portal.md#configure-device-settings)ように管理者が Azure AD でデバイス設定を構成した場合、ユーザーは登録を完了するために MFA を実行する必要があります。 このプロセスの間、ユーザーに発行される PRT は、登録中に取得された MFA 要求を持ちます。 この機能は、参加操作を行ったユーザーにのみ適用され、そのデバイスにサインインしている他のユーザーには適用されません。
-   * WAM の対話型サインインと同様、MFA 要求は継続的に更新されないため、MFA の期間はディレクトリで設定された有効期間に基づきます。
 
 Windows 10 では、PRT のパーティション分割されたリストを資格情報ごとに保持します。 したがって、Windows Hello for Business、パスワード、またはスマート カードのそれぞれに PRT があります。 このパーティション分割により、使用する資格情報に基づいて MFA 要求が分離され、トークン要求中に混同されないことが保証されます。
 
@@ -182,9 +186,9 @@ Windows 10 では、PRT のパーティション分割されたリストを資�
 | 手順 | 説明 |
 | :---: | --- |
 | A | (Outlook、OneNote などの) アプリケーションが WAM に対するトークン要求を開始します。 WAM はさらに、トークン要求の処理を Azure AD WAM プラグインに依頼します。 |
-| B | アプリケーションの更新トークンが既に利用可能な場合、Azure AD WAM プラグインはそれを使用してアクセス トークンを要求します。 デバイス バインディングの証明を提供するために、WAM プラグインはセッション キーを使用して要求に署名します。 Azure AD はセッション キーを検証し、アプリのアクセス トークンと新しい更新トークンを、セッション キーによって暗号化して発行します。 WAM プラグインはトークンの復号化を Cloud AP プラグインに要求し、これが次に、セッション キーを使用した復号化を TPM に要求します。その結果、WAM プラグインは両方のトークンを取得します。 次に、WAM プラグインはアクセス トークンのみをアプリケーションに提供する一方で、更新トークンを DPAPI で再暗号化してそれ自身のキャッシュに保存します  |
+| B | アプリケーションの更新トークンが既に利用可能な場合、Azure AD WAM プラグインはそれを使用してアクセス トークンを要求します。 デバイス バインディングの証明を提供するために、WAM プラグインはセッション キーを使用して要求に署名します。 Azure AD はセッション キーを検証し、アプリのアクセス トークンと新しい更新トークンを、セッション キーによって暗号化して発行します。 WAM プラグインはトークンの復号化を CloudAP プラグインに要求し、次に CloudAP プラグインがセッション キーを使用した復号化を TPM に要求します。その結果、WAM プラグインは両方のトークンを取得します。 次に、WAM プラグインはアクセス トークンのみをアプリケーションに提供する一方で、更新トークンを DPAPI で再暗号化してそれ自身のキャッシュに保存します  |
 | C |  アプリケーションの更新トークンがまだ利用できない場合、Azure AD WAM プラグインは PRT を使用してアクセス トークンを要求します。 所有の証明を提供するために、WAM プラグインはセッション キーを使用して、PRT が含まれている要求に署名します。 Azure AD は、PRT に埋め込まれたセッション キーと比較することによってセッション キーの署名を検証し、デバイスが有効であることを確認し、アプリケーションのアクセス トークンと更新トークンを発行します。 さらに、Azure AD は (更新サイクルに基づいて) 新しい PRT を発行でき、それらはすべてセッション キーによって暗号化されます。 |
-| D | WAM プラグインはトークンの復号化を Cloud AP プラグインに要求し、これが次に、セッション キーを使用した復号化を TPM に要求します。その結果、WAM プラグインは両方のトークンを取得します。 次に、WAM プラグインはアクセス トークンのみをアプリケーションに提供する一方で、更新トークンを DPAPI で再暗号化してそれ自身のキャッシュに保存します。 WAM プラグインはこのアプリケーションに対して、今後は更新トークンを使用します。 WAM プラグインはさらに、新しい PRT を Cloud AP プラグインに返します。Cloud AP プラグインは、自身のキャッシュ内でそれを更新する前に、Azure AD で PRT を検証します。 これ以降、Cloud AP プラグインは新しい PRT を使用します。 |
+| D | WAM プラグインはトークンの復号化を CloudAP プラグインに要求し、次に CloudAP プラグインがセッション キーを使用した復号化を TPM に要求します。その結果、WAM プラグインは両方のトークンを取得します。 次に、WAM プラグインはアクセス トークンのみをアプリケーションに提供する一方で、更新トークンを DPAPI で再暗号化してそれ自身のキャッシュに保存します。 WAM プラグインはこのアプリケーションに対して、今後は更新トークンを使用します。 WAM プラグインはさらに、新しい PRT を CloudAP プラグインに返します。CloudAP プラグインは、自身のキャッシュ内でそれを更新する前に、Azure AD で PRT を検証します。 これ以降、CloudAP プラグインは新しい PRT を使用します。 |
 | E | WAM は新しく発行されたアクセス トークンを WAM に提供し、次に WAM がそれを呼び出し元のアプリケーションに返します|
 
 ### <a name="browser-sso-using-prt"></a>PRT を使用したブラウザー SSO
@@ -201,7 +205,7 @@ Windows 10 では、PRT のパーティション分割されたリストを資�
 | F | Azure AD は PRT Cookie のセッション キー署名を検証し、nonce を検証し、デバイスがテナント内で有効であることを確認し、Web ページの ID トークンと、ブラウザーの暗号化されたセッション Cookie を発行します。 |
 
 > [!NOTE]
-> 上の手順で説明されているブラウザー SSO フローは、Microsoft Edge の InPrivate や Google Chrome の Incognito (Microsoft Accounts 拡張機能の使用時) など、プライベート モードのセッションには該当しません。
+> 上の手順で説明されているブラウザー SSO フローは、Microsoft Edge の InPrivate、Google Chrome のシークレット モード (Microsoft Accounts 拡張機能の使用時)、Mozilla Firefox v 91 以上のプライベート モードなどのプライベート モードのセッションには該当しません
 
 ## <a name="next-steps"></a>次のステップ
 

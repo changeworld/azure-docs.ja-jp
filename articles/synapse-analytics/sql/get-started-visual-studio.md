@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: ef8e2a3d1a6b78e8f2b6b9a900ed2485c1a4a5d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d534794737f93cd71ee9820f72e6c5ead08ca2b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96451597"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860999"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio と SSDT を使用して Synapse SQL に接続する
 
@@ -36,9 +36,10 @@ Visual Studio を使用して Azure Synapse Analytics を使用した専用 SQL 
 
 このチュートリアルを使用するには、次のコンポーネントが必要です。
 
-* 既存の専用 SQL プール。 存在しない場合は、[専用 SQL プールの作成](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照して、この前提条件を完了してください。
-* Visual Studio 用の SSDT。 Visual Studio をお持ちの方は既にこのコンポーネントを所有していると思われます。 インストールの手順とオプションの詳細については、 [Visual Studio と SSDT のインストール](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
-* 完全修飾 SQL サーバー名。 このサーバー名を確認するには、[専用 SQL プールへの接続](connect-overview.md)に関するページを参照してください。
+- 既存の Synapse ワークスペース。作成する必要がある場合は、「[Synapse ワークスペースの作成](../get-started-create-workspace.md)」を参照してください
+- 専用 SQL プール。 まだ無い場合は、[専用 SQL プールの作成](../get-started-analyze-sql-pool.md#create-a-dedicated-sql-pool)に関するページを参照してください。
+- Visual Studio 用の SSDT。 Visual Studio をお持ちの方は既にこのコンポーネントを所有していると思われます。 インストールの手順とオプションの詳細については、 [Visual Studio と SSDT のインストール](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?context=/azure/synapse-analytics/context/context)に関するページを参照してください。
+- 完全修飾 SQL サーバー名。 このサーバー名を確認するには、[専用 SQL プールへの接続](connect-overview.md)に関するページを参照してください。
 
 ## <a name="1-connect-to-a-dedicated-sql-pool"></a>1.専用 SQL プールに接続する
 1. Visual Studio 2019 を開きます。
@@ -81,5 +82,5 @@ Visual Studio を使用して Azure Synapse Analytics を使用した専用 SQL 
 
 ## <a name="next-steps"></a>次のステップ
 これで接続してクエリを実行することができます。[Power BI でデータを視覚化](get-started-power-bi-professional.md)してみてください。
-Azure Active Directory 認証を使用するために環境を構成する方法については、[専用 SQL プールの認証](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+Azure Active Directory 認証を使用するために環境を構成する方法については、[専用 SQL プールの認証](sql-authentication.md?tabs=provisioned)に関するページを参照してください。
  

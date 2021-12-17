@@ -1,55 +1,65 @@
 ---
-title: チュートリアル - Azure IoT Central を使用して患者の継続的なモニタリング アプリを作成する | Microsoft Docs
-description: このチュートリアルでは、Azure IoT Central アプリケーション テンプレートを使用して患者の継続的なモニタリング アプリケーションを作成する方法について説明します。
+title: チュートリアル - Azure IoT 患者の継続的なモニタリング | Microsoft Docs
+description: このチュートリアルでは、IoT Central の患者の継続的なモニタリング アプリケーション テンプレートをデプロイして使用する方法について説明します。
 author: philmea
 ms.author: philmea
-ms.date: 09/24/2019
+ms.date: 08/02/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 56ff43980aafc75d5936b86c6ba2cd400311c5fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d5b00526219b0a4ade24b7522ea4826236fd70e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719102"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057763"
 ---
-# <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>チュートリアル:患者の継続的なモニタリング アプリ テンプレートのデプロイとウォークスルー
+# <a name="tutorial-deploy-and-walkthrough-the-continuous-patient-monitoring-app-template"></a>チュートリアル: 患者の継続的なモニタリング アプリ テンプレートをデプロイして利用する
 
-このチュートリアルでは、ソリューション ビルダーを対象に、IoT Central の患者の継続的なモニタリング アプリケーション テンプレートをデプロイして作業を開始する方法について説明します。 テンプレートをデプロイして使用する方法をご覧ください。
+:::image type="content" source="media/cpm-architecture.png" alt-text="患者の継続的なモニタリングのアーキテクチャ":::
+
+## <a name="bluetooth-low-energy-ble-medical-devices"></a>Bluetooth Low Energy (BLE) の医療機器
+
+医療の IoT ソリューションで使用される多くの医療ウェアラブルは BLE デバイスです。 それらのデバイスはクラウドと直接通信することができません。クラウド ソリューションとは、ゲートウェイを使用してデータを交換する必要があります。 このアーキテクチャでは、ゲートウェイとして携帯電話アプリケーションを使用します。
+
+## <a name="mobile-phone-gateway"></a>携帯電話ゲートウェイ
+
+携帯電話アプリケーションの主な機能は、医療機器から BLE データを収集し、それを IoT Central に伝達することです。 また、患者は、このアプリの指示に従ってデバイスのセットアップを行ったり、個人の健康データを閲覧したりします。 ソリューションによっては、タブレット ゲートウェイや、病院の部屋に据え付けられた静的ゲートウェイが使用される場合もあります。 アプリケーション開発作業を開始するための出発点としては、Android および iOS 用のオープンソースのサンプル モバイル アプリケーションを使用できます。 詳細については、[GitHub の Continuous Patient Monitoring サンプル モバイル アプリ](https://github.com/iot-for-all/iotc-cpm-sample)に関するページを参照してください。
+
+## <a name="export-to-azure-api-for-fhirreg"></a>Azure API for FHIR にエクスポートする&reg;
+
+Azure IoT Central は HIPAA に準拠し、HITRUST&reg; 認定を受けています。 [Azure API for FHIR](../../healthcare-apis/fhir/overview.md) を使用して他のサービスに患者の健康データを送信することもできます。 Azure API for FHIR は、臨床医療データを対象とした標準ベースの API です。 [Azure IoT Connector for FHIR](../../healthcare-apis/fhir/iot-fhir-portal-quickstart.md) を介すことで、IoT Central からの継続的なデータ エクスポート先として Azure API for FHIR を使用することができます。
+
+## <a name="machine-learning"></a>機械学習
+
+医療チームの意思決定を支援するため、FHIR データに対し機械学習モデルを使用して分析情報を生成します。 詳細については、[Azure Machine Learning のドキュメント](../../machine-learning/index.yml)を参照してください。
+
+## <a name="provider-dashboard"></a>プロバイダー ダッシュボード
+
+Azure API for FHIR データを使用して患者分析情報ダッシュボードを作成するか、医療チームが使う電子医療記録に直接データを統合します。 医療チームはダッシュボードを使用して、患者を補助したり、早い段階で悪化の徴候を発見したりすることができます。 詳細については、「[Power BI プロバイダー ダッシュボードを構築する](tutorial-health-data-triage.md)」のチュートリアルを参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
-> [!div class="checklist"]
-> * アプリケーション テンプレートを作成する
-> * アプリケーション テンプレートのウォークスルーを行う
+- アプリケーション テンプレートを作成する
+- アプリケーション テンプレートのウォークスルーを行う
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお勧めします。 また、7 日間無料の試用版を使用することもできます。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で作成できます。
+- このアプリをデプロイするために必要な前提条件は特にありません。
+- 無料価格プランを使用するか、Azure サブスクリプションを使用することができます。
 
-## <a name="create-an-application-template"></a>アプリケーション テンプレートを作成する
+## <a name="create-continuous-patient-monitoring-application"></a>患者の継続的なモニタリング アプリケーションを作成する
 
-[Azure IoT Central のアプリケーション マネージャーの Web サイト](https://apps.azureiotcentral.com/)に移動します。 左側のナビゲーション バーから **[ビルド]** を選択し、 **[Healthcare]\(ヘルスケア\)** タブを選択します。
+1. [Azure IoT Central ビルド](https://aka.ms/iotcentral) Web サイトに移動します。 次に、Microsoft 個人アカウントか、職場または学校アカウントを使用してサインインします。 左側のナビゲーションバーから **[ビルド]** を選択し、 **[Healthcare]\(医療\)** タブを選択します。:::image type="content" source="media/app-manager-health.png" alt-text="アプリケーション テンプレート":::
 
-:::image type="content" source="media/app-manager-health.png" alt-text="ヘルスケア アプリのテンプレート":::
+1. **[患者の継続的なモニタリング]** で **[アプリの作成]** を選択します。
 
-**[アプリの作成]** ボタンを選択してアプリケーションの作成を開始し、Microsoft の個人用アカウント、職場アカウント、または学校アカウントを使用してサインインします。 **[新しいアプリケーション]** ページが表示されます。
+詳細については、「[IoT Central アプリケーションを作成する](../core/howto-create-iot-central-application.md)」を参照してください。
 
-![ヘルスケア アプリケーションの作成](media/app-manager-health-create.png)
+## <a name="walk-through-the-application"></a>アプリケーションを調べる
 
-![ヘルスケア アプリケーションの作成の課金情報](media/app-manager-health-create-billinginfo.png)
-
-アプリケーションを作成するには、次のようにします。
-
-1. Azure IoT Central が、ユーザーが選択したテンプレートに基づいて自動的にアプリケーション名を提案します。 この名前をそのまま使用することも、独自のわかりやすいアプリケーション名を入力することもできます (**患者の継続的なモニタリング** など)。 また、Azure IoT Central は、アプリケーション名に基づいて、一意の URL プレフィックスも生成します。 この URL プレフィックスは、もっと覚えやすいものに変更することもできます。
-
-2. "*無料*" 料金プランまたはいずれかの "*標準*" 料金プランを選択して、アプリケーションを作成できます。 無料プランを使用して作成するアプリケーションは、有効期限が切れるまでの 7 日間は無料で、最大で 5 つの無料デバイスを使用できます。 有効期限が切れる前にいつでも、アプリケーションを無料プランから標準料金プランに切り替えることができます。 無料プランを選択する場合は、連絡先情報を入力し、Microsoft から情報やヒントを受け取るかどうかを選択します。 標準プランを使用して作成するアプリケーションでは、最大 2 つの無料デバイスがサポートされ、課金のために Azure サブスクリプション情報の入力が必要になります。
-
-3. ページの下部にある **[作成]** を選択して、アプリケーションをデプロイします。
-
-## <a name="walk-through-the-application-template"></a>アプリケーション テンプレートのウォークスルーを行う
+以降のセクションでは、アプリケーションの主な機能について見ていきます。
 
 ### <a name="dashboards"></a>ダッシュボード
 
@@ -75,9 +85,9 @@ Azure サブスクリプションをお勧めします。 また、7 日間無�
 
 **[デバイス テンプレート]** を選択した場合、デバイスの種類が 2 つテンプレートに表示されます。
 
-* **Smart Vitals Patch**:このデバイスは、各種の生存徴候を測定する修正プログラムを表します。 病院の内外の患者を監視するために使用します。 テンプレートを選択すると、パッチがバッテリ レベルやデバイス温度などのデバイス データを送信するだけでなく、呼吸数や血圧などの患者の健康データも送信していることを確認できます。
+- **Smart Vitals Patch**:このデバイスは、各種の生存徴候を測定する修正プログラムを表します。 病院の内外の患者を監視するために使用します。 テンプレートを選択すると、パッチがバッテリ レベルやデバイス温度などのデバイス データを送信するだけでなく、呼吸数や血圧などの患者の健康データも送信していることを確認できます。
 
-* **Smart Knee Brace**:このデバイスは、患者が膝関節置換術から回復する際に使用する膝関節支持帯を表します。 このテンプレートを選択すると、デバイス データ、関節可動域、加速などの能力が表示されます。
+- **Smart Knee Brace**:このデバイスは、患者が膝関節置換術から回復する際に使用する膝関節支持帯を表します。 このテンプレートを選択すると、デバイス データ、関節可動域、加速などの能力が表示されます。
 
 :::image type="content" source="media/smart-vitals-device-template.png" alt-text="Smart patch テンプレート":::
 
@@ -91,11 +101,11 @@ Azure サブスクリプションをお勧めします。 また、7 日間無�
 
 **[Rules]\(ルール\)** を選択すると、次の 3 つのルールがテンプレートに表示されます。
 
-* **Brace temperature high (関節支持帯の温度が高い)** :このルールは、Smart Knee Brace のデバイス温度について、95&deg;F を超える状態が 5 分を超えたときトリガーされます。 このルールを使用して、患者とケア チームにアラートを出し、遠隔操作でデバイスを冷却します。
+- **Brace temperature high (関節支持帯の温度が高い)** :このルールは、Smart Knee Brace のデバイス温度について、95&deg;F を超える状態が 5 分を超えたときトリガーされます。 このルールを使用して、患者とケア チームにアラートを出し、遠隔操作でデバイスを冷却します。
 
-* **Fall detected (転倒を検出)** :このルールは、患者の転倒が検出されるとトリガーされます。 このルールを使用して、転倒した患者を支援するためのオペレーション チームを配置するアクションを構成します。
+- **Fall detected (転倒を検出)** :このルールは、患者の転倒が検出されるとトリガーされます。 このルールを使用して、転倒した患者を支援するためのオペレーション チームを配置するアクションを構成します。
 
-* **Patch battery low (パッチのバッテリーが低下している)** :このルールは、デバイスのバッテリ レベルが 10% を下回ったときにトリガーされます。 このルールを使用して、デバイスの充電のための患者への通知をトリガーします。
+- **Patch battery low (パッチのバッテリーが低下している)** :このルールは、デバイスのバッテリ レベルが 10% を下回ったときにトリガーされます。 このルールを使用して、デバイスの充電のための患者への通知をトリガーします。
 
 :::image type="content" source="media/brace-temp-rule.png" alt-text="ルール":::
 
@@ -119,9 +129,6 @@ Azure サブスクリプションをお勧めします。 また、7 日間無�
 
 :::image type="content" source="media/knee-brace-dashboard.png" alt-text="膝関節支持帯のダッシュボード":::
 
-### <a name="data-export"></a>データのエクスポート
-
-データのエクスポートを使用すると、デバイス データを、[Azure API for FHIR](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir) などの他の Azure サービスに継続的にエクスポートできます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

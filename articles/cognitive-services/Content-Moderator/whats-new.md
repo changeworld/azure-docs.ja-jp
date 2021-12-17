@@ -8,16 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 09/28/2021
 ms.author: pafarley
-ms.openlocfilehash: 8bbb6033fd4045664a20df7e2b2c14b8a8837214
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: f6dd45ae1bfbcc6ce601de7247ec44265f14cd47
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725046"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362308"
 ---
 # <a name="whats-new-in-content-moderator"></a>Content Moderator の新機能
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
 

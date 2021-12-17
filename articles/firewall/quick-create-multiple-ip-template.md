@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 33d110f327a381241fd9dbf55996a6e3f9fd3a43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94f884c04aa8d01704f9e84afd3d9bcfe9b35c62
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92057979"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692113"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>クイック スタート:複数のパブリック IP アドレスを使用した Azure Firewall の作成 - ARM テンプレート
 
@@ -25,7 +25,7 @@ ms.locfileid: "92057979"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ffw-docs-qs%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "92057979"
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/fw-docs-qs)からのものです。
 
-:::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/fw-docs-qs/azuredeploy.json":::
 
 このテンプレートには、次の複数の Azure リソースが定義されています。
 
@@ -57,20 +57,20 @@ ARM テンプレートを Azure にデプロイします。
 
 1. **[Azure に配置する]** を選択して Azure にサインインし、テンプレートを開きます。 このテンプレートは、Azure Firewall、ネットワーク インフラストラクチャ、2 つの仮想マシンを作成します。
 
-   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ffw-docs-qs%2Fazuredeploy.json)
 
 2. ポータルの **[Create an Azure Firewall with multiple IP public addresses]\(複数のパブリック IP アドレスを持つ Azure Firewall の作成\)** ページで、次の値を入力または選択します。
-   - サブスクリプション:既存のサブスクリプションから選択します 
+   - サブスクリプション:既存のサブスクリプションから選択します
    - リソース グループ: 既存のリソース グループから選択するか、 **[Create new]\(新規作成\)** を選択し、 **[OK]** を選択します。
    - 場所:場所を選択します。
-   - 管理者ユーザー名: 管理者ユーザー アカウントのユーザー名を入力します 
+   - 管理者ユーザー名: 管理者ユーザー アカウントのユーザー名を入力します
    - 管理者パスワード: 管理者パスワードまたはキーを入力します
 
 3. **[上記の使用条件に同意する]** を選択し、 **[購入]** を選択します。 このデプロイの完了には、10 分以上かかる場合があります。
 
 ## <a name="validate-the-deployment"></a>デプロイの検証
 
-デプロイされたリソースを Azure portal で確認します。 ファイアウォールのパブリック IP アドレスをメモしてください。  
+デプロイされたリソースを Azure portal で確認します。 ファイアウォールのパブリック IP アドレスをメモしてください。
 
 リモート デスクトップ接続を使用して、ファイアウォールのパブリック IP アドレスに接続します。 接続に成功すれば、ファイアウォールの NAT 規則によってバックエンド サーバーへの接続が許可されていることの証明となります。
 

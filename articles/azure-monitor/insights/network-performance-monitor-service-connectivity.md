@@ -2,15 +2,15 @@
 title: Network Performance Monitor ソリューションのサービス接続 - Azure Log Analytics
 description: Network Performance Monitor のサービス接続モニター機能を使って、TCP ポートが開いている任意のエンドポイントへのネットワーク接続を監視します。
 ms.topic: conceptual
-author: abshamsft
-ms.author: absha
+author: KumudD
+ms.author: kumud
 ms.date: 02/20/2018
-ms.openlocfilehash: a5b42e61af398e111b2014f3734a0011a4bee778
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6891b8a2de388a554c0b0282857f32b31dfb465
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101734164"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794255"
 ---
 # <a name="service-connectivity-monitor"></a>サービス接続モニター
 

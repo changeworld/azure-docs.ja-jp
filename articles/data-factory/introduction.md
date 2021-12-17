@@ -4,14 +4,15 @@ description: データの移動と変換を調整、自動化するクラウド 
 author: dcstwh
 ms.author: weetok
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: overview
-ms.date: 09/30/2019
-ms.openlocfilehash: 8fef4bbc0c0e77c1e152b8c2c44254e091b0e5a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/08/2021
+ms.openlocfilehash: e9925b8c01cbaaeaf28815a7188118ff2060d507
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392546"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208022"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
 
@@ -31,11 +32,17 @@ Azure Data Factory は、このようなデータ シナリオを解決するプ
 
 さらに、ビジネス インテリジェンス (BI) アプリケーションから利用できるよう、Azure Synapse Analytics などのデータ ストアに、変換済みのデータを公開することもできます。 Azure Data Factory を使うと、最終的に、生データを意味のあるデータ ストアとデータ レイクに整理し、より的確な意思決定に活用できます。
 
-![Data Factory の最上位ビュー](media/data-flow/overview.png)
+:::image type="content" source="media/data-flow/overview.png" alt-text="Data Factory の最上位ビュー":::
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
 Data Factory には、包括的なエンド ツー エンドのプラットフォームをデータ エンジニアに提供する、相互接続された一連のシステムが含まれています。
+
+このビジュアル ガイドは、Data Factory アーキテクチャの概要を示しています。
+
+:::image type="content" source="media\introduction\data-factory-visual-guide-small.png" alt-text="Azure Data Factory の完全なシステム アーキテクチャを 1 つの高解像度画像で示した詳細なビジュアル ガイド。" lightbox="media\introduction\data-factory-visual-guide.png":::
+
+詳細を表示するには、前の画像をクリックして拡大するか、[高解像度画像](/azure/data-factory/media/introduction/data-factory-visual-guide.png)を参照してください。 
 
 ### <a name="connect-and-collect"></a>接続と収集
 
@@ -53,7 +60,7 @@ Data Factory を使用すれば、データ パイプラインの[コピー ア�
 変換を手動でコーディングしたい場合でも、ADF は、HDInsight Hadoop、Spark、Data Lake Analytics、Machine Learning などのコンピューティング サービス上で目的の変換を実行するための外部アクティビティをサポートしています。
 
 ### <a name="cicd-and-publish"></a>CI/CD と公開
-Data Factory では、Azure DevOps と GitHub を使用して、データ パイプラインの [CI/CD の完全なサポートを提供](continuous-integration-deployment.md)します。 ETL プロセスの開発とデリバリを段階的に進めたうえで、完成した製品を公開することが可能です。 生データが変換されてビジネスに即応して利用できる形態になったら、このデータを、ビジネス ユーザーがビジネス インテリジェンス ツールから参照できる Azure Data Warehouse、Azure SQL Database、Azure CosmosDB、またはその他の分析エンジンに読み込みます。
+Data Factory では、Azure DevOps と GitHub を使用して、データ パイプラインの [CI/CD の完全なサポートを提供](continuous-integration-delivery.md)します。 ETL プロセスの開発とデリバリを段階的に進めたうえで、完成した製品を公開することが可能です。 生データが変換されてビジネスに即応して利用できる形態になったら、このデータを、ビジネス ユーザーがビジネス インテリジェンス ツールから参照できる Azure Data Warehouse、Azure SQL Database、Azure CosmosDB、またはその他の分析エンジンに読み込みます。
 ### <a name="monitor"></a>モニター
 データ統合パイプラインを正常に構築してデプロイし、変換したデータからビジネス価値を生み出せるようになったなら、スケジュール化したアクティビティとパイプラインを監視して、成功率と失敗率を確認することができます。 Azure Data Factory には、Azure Monitor、API、PowerShell、Azure Monitor ログ、Azure portal の正常性パネルを利用してパイプラインを監視する、ビルトイン サポートが用意されています。
 
@@ -90,6 +97,9 @@ Data Factory ではリンクされたサービスは 2 つの目的に使用さ�
 - SQL Server データベース、Oracle データベース、ファイル共有、Azure Blob Storage アカウント、その他の **データ ストア** を表すため。 サポートされるデータ ストアの一覧については、「[コピー アクティビティ](copy-activity-overview.md)」を参照してください。
 
 - アクティビティの実行をホストできる **コンピューティング リソース** を表すため。 たとえば、HDInsightHive アクティビティは HDInsight Hadoop クラスターで実行されます。 変換アクティビティとサポートされているコンピューティング環境の一覧については、「[データの変換](transform-data.md)」を参照してください。
+
+### <a name="integration-runtime"></a>統合ランタイム
+Data Factory で、アクティビティは、実行されるアクションを定義します。 リンクされたサービスは、ターゲットのデータ ストアやコンピューティング サービスを定義します。 統合ランタイムは、アクティビティとリンクされたサービスとを橋渡しします。  リンクされたサービスまたはアクティビティによって参照され、アクティビティが実行されたりディスパッチされたりするコンピューティング環境を提供します。 これにより、できるだけターゲットのデータ ストアやコンピューティング サービスに近いリージョンでアクティビティを実行して効率を最大化できる一方、セキュリティとコンプライアンスの必要も満たせます。
 
 ### <a name="triggers"></a>トリガー
 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 さまざまな種類のイベントに合わせて、さまざまな種類のトリガーがあります。

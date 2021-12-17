@@ -2,19 +2,20 @@
 title: Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure Data Factory を作成する
 description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、サンプルの Azure Data Factory パイプラインを作成します。
 ms.service: data-factory
+ms.subservice: tutorials
 tags: azure-resource-manager
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: jburchel, jingwang
 ms.topic: quickstart
-ms.custom: subject-armqs
-ms.date: 07/16/2020
-ms.openlocfilehash: c579b6d723533e751e08a80a578195c03e945607
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: subject-armqs, devx-track-azurepowershell
+ms.date: 07/05/2021
+ms.openlocfilehash: 9a567c5b61449cdfd72fac1a946760bccce2bebe
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783338"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124769714"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Data Factory を作成する
 
@@ -33,7 +34,7 @@ ms.locfileid: "104783338"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
+[:::image type="content" source="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.datafactory%2Fdata-factory-v2-blob-to-blob-copy%2Fazuredeploy.json" alt-text="Azure にデプロイする](../media/template-deployments/deploy-to-azure.svg)":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,9 +55,9 @@ Jane, Doe
 
 ## <a name="review-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-data-factory-v2-blob-to-blob-copy/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datafactory&pageNumber=1&sort=Popular)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-data-factory-v2-blob-to-blob-copy/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.datafactory/data-factory-v2-blob-to-blob-copy/azuredeploy.json":::
 
 テンプレート内には次の Azure リソースが定義されています。
 
@@ -72,7 +73,7 @@ Jane, Doe
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 テンプレートによって、Azure Data Factory アカウント、ストレージ アカウント、および BLOB コンテナーが作成されます。
 
-    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
+    [:::image type="content" source="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.datafactory%2Fdata-factory-v2-blob-to-blob-copy%2Fazuredeploy.json" alt-text="Azure にデプロイする](../media/template-deployments/deploy-to-azure.svg)":::
 
 2. 次の値を選択または入力します。
 
@@ -130,11 +131,11 @@ Jane, Doe
 
 ### <a name="start-trigger"></a>トリガーを開始する
 
-1. **[データ ファクトリ]** ページに移動し、作成したデータ ファクトリを選択します。 
+1. **[データ ファクトリ]** ページに移動し、作成したデータ ファクトリを選択します。
 
-2. **[作成と監視]** タイルを選択します。 
+2. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択します。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="作成と監視":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-open-tile.png" alt-text="作成と監視":::
 
 2. **[作成]** タブ:::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author.png" border="false":::を選択します。
 
@@ -158,13 +159,13 @@ Jane, Doe
 
 ### <a name="verify-the-output-file"></a>出力ファイルを検証する
 
-パイプラインでは、BLOB コンテナー内に出力フォルダーが自動的に作成されます。 そのうえで、input フォルダーから output フォルダーに emp.txt ファイルをコピーします。 
+パイプラインでは、BLOB コンテナー内に出力フォルダーが自動的に作成されます。 そのうえで、input フォルダーから output フォルダーに emp.txt ファイルをコピーします。
 
-1. Azure portal の **[コンテナー]** ページで、 **[最新の情報に更新]** を選択して出力フォルダーを表示します。 
+1. Azure portal の **[コンテナー]** ページで、 **[最新の情報に更新]** を選択して出力フォルダーを表示します。
 
 2. フォルダー一覧で、 **[output]** を選択します。
 
-3. **emp.txt** が output フォルダーにコピーされていることを確認します。 
+3. **emp.txt** が output フォルダーにコピーされていることを確認します。
 
     :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="出力":::
 
@@ -172,13 +173,13 @@ Jane, Doe
 
 このクイックスタートで作成したリソースは、2 とおりの方法でクリーンアップすることができます。 [Azure リソース グループを削除](../azure-resource-manager/management/delete-resource-group.md)します。この場合、そのリソース グループに含まれているすべてのリソースが対象となります。 他のリソースをそのまま維持する場合は、このチュートリアルで作成したデータ ファクトリだけを削除してください。
 
-リソース グループを削除すると、その中のデータ ファクトリも含めて、すべてのリソースが削除されます。 次のコマンドを実行して、リソース グループ全体を削除します。 
+リソース グループを削除すると、その中のデータ ファクトリも含めて、すべてのリソースが削除されます。 次のコマンドを実行して、リソース グループ全体を削除します。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
-リソース グループ全体ではなく、データ ファクトリだけを削除する場合は、次のコマンドを実行します。 
+リソース グループ全体ではなく、データ ファクトリだけを削除する場合は、次のコマンドを実行します。
 
 ```azurepowershell-interactive
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName

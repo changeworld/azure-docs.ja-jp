@@ -3,24 +3,27 @@ title: Azure での VM とスケール セットの拡張機能の自動アッ�
 description: Azure で仮想マシンと仮想マシン スケール セットの拡張機能の自動アップグレードを有効にする方法について説明します。
 author: mayanknayar
 ms.service: virtual-machines
-ms.subservice: automatic-extension-upgrade
+ms.subservice: extensions
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 08/10/2021
 ms.author: manayar
-ms.openlocfilehash: bf9e802e2485e84211044ce650c7748e789e752e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a7368ee52808dc56e3532f2edfb41e00c7737a7e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762607"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216463"
 ---
-# <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>プレビュー:Azure での VM とスケール セットの拡張機能の自動アップグレード
+# <a name="automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Azure での VM とスケール セットの拡張機能の自動アップグレード
 
-拡張機能の自動アップグレードは、Azure VM と Azure Virtual Machine Scale Sets 用をプレビューで利用できます。 VM またはスケール セットで拡張機能の自動アップグレードが有効になっていると、拡張機能の発行元がその拡張機能の新しいバージョンをリリースするたびに、拡張機能が自動的にアップグレードされます。
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+
+拡張機能の自動アップグレードは、Azure VM と Azure Virtual Machine Scale Sets で利用できます。 VM またはスケール セットで拡張機能の自動アップグレードが有効になっていると、拡張機能の発行元がその拡張機能の新しいバージョンをリリースするたびに、拡張機能が自動的にアップグレードされます。
 
  拡張機能の自動アップグレードには、次の機能があります。
-- Azure VM と Azure Virtual Machine Scale Sets でサポートされています。 Service Fabric Virtual Machine Scale Sets は現在はサポートされていません。
+- Azure VM と Azure Virtual Machine Scale Sets でサポートされています。
 - アップグレードは、可用性優先のデプロイ モデルで適用されます (後で詳述)。
 - Virtual Machine Scale Sets では、スケール セットの仮想マシンの 20% 以上が 1 回のバッチでアップグレードされます。 最小バッチ サイズは 1 仮想マシンです。
 - すべての VM サイズ、および Windows と Linux の両方の拡張機能で動作します。
@@ -29,20 +32,13 @@ ms.locfileid: "107762607"
 - サポートされている各拡張機能は個別に登録され、どの拡張機能を自動的にアップグレードするかを選択できます。
 - すべてのパブリック クラウド リージョンでサポートされています。
 
-
-> [!IMPORTANT]
-> 拡張機能の自動アップグレードは、現在、パブリック プレビュー段階です。 後述するパブリック プレビュー機能を使用するためには、オプトイン手順が必要です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-
 ## <a name="how-does-automatic-extension-upgrade-work"></a>拡張機能の自動アップグレードのしくみ
 拡張機能のアップグレード プロセスにより、VM 上の既存の拡張機能のバージョンが、拡張機能の発行元によって発行された、同じ拡張機能の新しいバージョンに置き換えられます。 新しい拡張機能がインストールされた後、VM の正常性が監視されます。 アップグレードが完了してから 5 分以内に VM が正常な状態にならない場合、拡張機能のバージョンは前のバージョンにロールバックされます。
 
 拡張機能の更新が失敗した場合は、自動的に再試行されます。 再試行は、ユーザーの介入なしに、数日に 1 回試行されます。
 
 ### <a name="availability-first-updates"></a>可用性優先の更新
-プラットフォームの調整された更新の可用性優先モデルにより、Azure の可用性構成が複数の可用性レベルで尊重されるようになります。
+プラットフォームの調整された更新の可用性優先モデルにより、Azure の可用性構成が複数の可用性レベルで尊重されます。
 
 更新中の仮想マシンのグループについては、Azure プラットフォームで更新がオーケストレーションされます。
 
@@ -53,8 +49,8 @@ ms.locfileid: "107762607"
 - 更新の成功は、更新後に VM の正常性を追跡することによって測定できます。 VM の正常性は、VM のプラットフォーム正常性インジケーターによって追跡されます。 Virtual Machine Scale Sets の場合、VM の正常性は、アプリケーション正常性プローブまたはアプリケーション正常性拡張機能によって追跡されます (スケール セットに適用される場合)。
 
 **リージョン内:**
-- 異なる Availability Zones の VM は同時に更新されません。
-- 可用性セットの一部ではない単一の VM は、サブスクリプション内のすべての VM が同時に更新されることを回避するために、ベストエフォート方式でバッチ処理されます。  
+- 異なる Availability Zones の VM は、同じ更新で同時に更新されることはありません。
+- 可用性セットの一部ではない個々の VM は、サブスクリプション内のすべての VM が同時に更新されることを回避するために、ベスト エフォート方式でバッチ処理されます。  
 
 **"セット" 内:**
 - 共通の可用性セット内またはスケール セット内のすべての VM が同時に更新されることはありません。  
@@ -75,75 +71,16 @@ ms.locfileid: "107762607"
 スケール セットのアップグレード オーケストレーターにより、各バッチをアップグレードする前に、スケール セット全体の正常性が確認されます。 バッチのアップグレード中に、他の計画メンテナンスまたは計画外メンテナンスのアクティビティが同時に発生することがあり、それによってスケール セット仮想マシンの正常性が影響を受ける場合があります。 そのような場合、スケール セットのインスタンスの 20% より多くが異常な状態になると、スケール セットのアップグレードは現在のバッチが終了した時点で停止します。
 
 ## <a name="supported-extensions"></a>サポートされる拡張機能
-拡張機能の自動アップグレードのプレビューでは、次の拡張機能がサポートされています (さらに、定期的に追加されます)。
-- Dependency Agent – [Windows](./extensions/agent-dependency-windows.md) と [Linux](./extensions/agent-dependency-linux.md)
-- [アプリケーション正常性拡張機能](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md) – Windows と Linux
-
-
-## <a name="enabling-preview-access"></a>プレビュー アクセスの有効化
-プレビュー機能を有効にするには、以下で詳しく説明するように、サブスクリプションごとに **AutomaticExtensionUpgradePreview** 機能を 1 回のみオプトインする必要があります。
-
-### <a name="rest-api"></a>REST API
-次の例では、お使いのサブスクリプションでプレビューを有効にする方法について説明します。
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticExtensionUpgradePreview/register?api-version=2015-12-01`
-```
-
-機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには:
-
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticExtensionUpgradePreview?api-version=2015-12-01`
-```
-
-サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2020-06-01`
-```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-[Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドレットを使用して、サブスクリプションでのプレビューを有効にします。
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName AutomaticExtensionUpgradePreview -ProviderNamespace Microsoft.Compute
-```
-
-機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには:
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName AutomaticExtensionUpgradePreview -ProviderNamespace Microsoft.Compute
-```
-
-サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli"></a>Azure CLI
-[az feature register](/cli/azure/feature#az_feature_register) を使用して、サブスクリプションでのプレビューを有効にします。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name AutomaticExtensionUpgradePreview
-```
-
-機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには:
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name AutomaticExtensionUpgradePreview
-```
-
-サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+拡張機能の自動アップグレードでは、次の拡張機能がサポートされています (さらに多くの拡張機能が定期的に追加されます)。
+- Dependency Agent – [Linux](./extensions/agent-dependency-linux.md) および [Windows](./extensions/agent-dependency-windows.md)
+- [アプリケーション正常性拡張機能](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md) – Linux および Windows
+- [ゲスト構成拡張機能](./extensions/guest-configuration.md) – Linux および Windows
+- Key Vault – [Linux](./extensions/key-vault-linux.md) および [Windows](./extensions/key-vault-windows.md)
 
 
 ## <a name="enabling-automatic-extension-upgrade"></a>拡張機能の自動アップグレードの有効化
-拡張機能の自動アップグレードを拡張機能に対して有効にするには、プロパティ *enableAutomaticUpgrade* が *true* に設定され、すべての拡張機能の定義に個別に追加されていることを確認する必要があります。
 
+拡張機能の自動アップグレードを拡張機能に対して有効にするには、プロパティ `enableAutomaticUpgrade` が `true` に設定され、各拡張機能の定義に個別に追加されていることを確認する必要があります。
 
 ### <a name="rest-api-for-virtual-machines"></a>Virtual Machines の REST API
 Azure VM で拡張機能に対して拡張機能の自動アップグレードを有効にするには (この例では Dependency Agent 拡張機能)、次のようにします。

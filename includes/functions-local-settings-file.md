@@ -2,19 +2,20 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 04/14/2019
+ms.date: 07/15/2021
 ms.author: glenga
-ms.openlocfilehash: 190524251d139e1421c1aac93d5a4dd523068a7a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 33a4b0f7d25162cf258e9ef6ad4ee438d6b76c8e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105957948"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741372"
 ---
-## <a name="local-settings-file"></a>ローカル設定ファイル
+## <a name="local-settings"></a>ローカル設定
 
-local.settings.json ファイルには、アプリの設定、接続文字列、およびローカルの開発ツールによって使用される設定が格納されます。 local.settings.json ファイル内の設定は、プロジェクトをローカルで実行している場合にのみ使用されます。 ローカル設定ファイルの構造は次のとおりです。
+Azure の関数アプリで実行する場合、関数に必要な設定は[アプリ設定に安全に保存](../articles/azure-functions/functions-how-to-use-azure-function-app-settings.md#settings)されます。 ローカル開発中は、これらの設定はその代わりに local.settings.json ファイルの `Values` オブジェクトに追加されます。 local.settings.json ファイルには、ローカルの開発ツールによって使用される設定も格納されます。 
 
+<<<<<<< HEAD
 ```json
 {
   "IsEncrypted": false,
@@ -58,3 +59,6 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 | **`FUNCTIONS_WORKER_RUNTIME_VERSION`** | `~7` |ローカルでの実行時に使用される PowerShell 7 を示します。 設定されていない場合は、PowerShell Core 6 が使用されます。 この設定は、ローカルでの実行時にのみ使用されます。 Azure で実行する場合、PowerShell ランタイムのバージョンは、`powerShellVersion` サイト構成設定によって決まります。これは、[ポータルで設定](../articles/azure-functions/functions-reference-powershell.md#changing-the-powershell-version)できます。 | 
 
 [`AzureWebJobsStorage`]: ../articles/azure-functions/functions-app-settings.md#azurewebjobsstorage
+=======
+local.settings.json には接続文字列などのシークレットが含まれている場合があるため、リモート リポジトリには絶対に格納しないようにしてください。 ローカル設定の詳細については、「[ローカル設定ファイル](../articles/azure-functions/functions-develop-local.md#local-settings-file)」を参照してください。
+>>>>>>> repo_sync_working_branch

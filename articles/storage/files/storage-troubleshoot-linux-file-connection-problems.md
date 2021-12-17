@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e680ba10c507ef83591b56652ee8e95c4d665dda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6277e42daf370cef65724f8958a9851ecd51d57c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96492065"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216747"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Linux での Azure Files に関する問題のトラブルシューティング (SMB)
 
@@ -23,29 +23,25 @@ ms.locfileid: "96492065"
 > [!IMPORTANT]
 > この記事の内容は SMB 共有にのみ適用されます。 NFS 共有の詳細については、「[Azure NFS ファイル共有に関するトラブルシューティング](storage-troubleshooting-files-nfs.md)」を参照してください。
 
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Azure ファイル共有を接続またはマウントできない
 
 ### <a name="cause"></a>原因
 
 この問題の一般的な原因は次のとおりです。
 
-- 互換性のない Linux ディストリビューション クライアントを使用しています。 次の Linux ディストリビューションを使用して、Azure ファイル共有に接続することをお勧めします。
-
-|   | SMB 2.1 <br>(同じ Azure リージョン内の VM 上のマウント) | SMB 3.0 <br>(オンプレミスおよびクロスリージョンからのマウント) |
-| --- | :---: | :---: |
-| **Ubuntu Server** | 14.04+ | 16.04+ |
-| **RHEL** | 7+ | 7.5+ |
-| **CentOS** | 7+ |  7.5+ |
-| **Debian** | 8+ |   |
-| **openSUSE** | 13.2+ | 42.3 以降 |
-| **SUSE Linux Enterprise Server** | 12 | 12 SP3+ |
-
-- CIFS ユーティリティ (cifs-utils) がクライアントにインストールされていません。
-- SMB/CIFS の最小バージョン 2.1 がクライアントにインストールされていません。
-- SMB 3.0 暗号化がクライアントでサポートされていません。 上記の表では、暗号化を使用してオンプレミスや複数のリージョンにまたがるマウントをサポートする Linux ディストリビューションの一覧を示しています。 他のディストリビューションの場合は、カーネル 4.11 以降のバージョンが必要です。
-- サポートされていない TCP ポート 445 経由でストレージ アカウントに接続しようとしています。
+- 使用している Linux ディストリビューションの SMB クライアントが最新ではありません。クライアントに互換性があって、なおかつ Azure で利用できる一般的な Linux ディストリビューションについては、[Linux での Azure Files の使用](storage-how-to-use-files-linux.md)に関するページを参照してください。
+- クライアントに SMB ユーティリティ (cifs-utils) がインストールされていません。
+- SMB の最小バージョン 2.1 がクライアントで利用できません。
+- SMB 3.x 暗号化がクライアントでサポートされていません。 上記の表では、暗号化を使用してオンプレミスや複数のリージョンにまたがるマウントをサポートする Linux ディストリビューションの一覧を示しています。 他のディストリビューションの場合は、カーネル 4.11 以降のバージョンが必要です。
 - Azure VM から Azure ファイル共有に接続しようとしていますが、VM はストレージ アカウントと同じリージョンにありません。
-- [[安全な転送が必須]]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定がストレージ アカウントで有効になっている場合、Azure Files は暗号化付き SMB 3.0 を使った接続のみを許可します。
+- [[安全な転送が必須]](../common/storage-require-secure-transfer.md) 設定がストレージ アカウントで有効になっている場合、Azure Files は暗号化付き SMB 3.x を使った接続のみを許可します。
 
 ### <a name="solution"></a>解決策
 
@@ -121,17 +117,17 @@ Linux では、次のようなエラー メッセージが表示されます。
     - その後は、並行して書き込みを拡張せずにファイルをコピーします: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
-## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>SMB 3.0 を使用して Azure Files をマウントするときの"マウント エラー (115): 操作は現在実行中です"
+## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-3x"></a>SMB 3.x を使用して Azure Files をマウントするときの "マウント エラー (115): 操作は現在実行中です"
 
 ### <a name="cause"></a>原因
 
-一部の Linux ディストリビューションは、SMB 3.0 の暗号化機能を現時点ではサポートしていません。 ユーザーが SMB 3.0 を使用して Azure Files をマウントしようとしたときに、機能が見つからないために "115" エラー メッセージが表示される場合があります。 完全な暗号化機能を持つ SMB 3.0 は、Ubuntu 16.04 以降を使用している場合にのみサポートされます。
+一部の Linux ディストリビューションは、SMB 3.x の暗号化機能を現時点ではサポートしていません。 ユーザーが SMB 3.x を使用して Azure Files をマウントしようとしたときに、機能が見つからないために "115" エラー メッセージが表示される場合があります。 完全な暗号化機能を備えた SMB 3.x は、Ubuntu 16.04 以降を使用している場合にのみサポートされます。
 
 ### <a name="solution"></a>解決策
 
-Linux 用の SMB 3.0 の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできます。 Linux ディストリビューションによっては、4.11 カーネルから以前のバージョンの Linux カーネルへの移植変更が加えられている場合があります。 使用している Linux のバージョンが暗号化を使用した SMB 3.0 をサポートしているかどうかを判断するには、「[Linux で Azure Files を使用する](storage-how-to-use-files-linux.md)」を参照してください。 
+Linux 用の SMB 3.x の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできます。 Linux ディストリビューションによっては、4.11 カーネルから以前のバージョンの Linux カーネルへの移植変更が加えられている場合があります。 使用している Linux のバージョンが暗号化を使用した SMB 3.x をサポートしているかどうかを判断するには、[Linux での Azure Files の使用](storage-how-to-use-files-linux.md)に関するページを参照してください。 
 
-Linux SMB クライアントが暗号化をサポートしていない場合は、ファイル共有と同じデータ センターにある Azure Linux VM から SMB 2.1 を使用して Azure Files をマウントします。 ストレージ アカウントで [[安全な転送が必須]]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が無効になっていることを確認します。 
+Linux SMB クライアントが暗号化をサポートしていない場合は、ファイル共有と同じデータ センターにある Azure Linux VM から SMB 2.1 を使用して Azure Files をマウントします。 ストレージ アカウントで [[安全な転送が必須]](../common/storage-require-secure-transfer.md) 設定が無効になっていることを確認します。 
 
 <a id="noaaccessfailureportal"></a>
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Azure ファイル共有にアクセスするか、Azure ファイル共有を削除しようとしたときに "アクセス権なし" というエラーが発生する  
@@ -291,7 +287,7 @@ Linux カーネルの再接続に関するこの問題は、以下の変更の�
 
 最新バージョンのカーネルにアップグレードできない場合は、Azure ファイル共有にファイルを保持し、30 秒以下の間隔で書き込みを実行することによって、この問題を回避できます。 これは、ファイルの作成日/変更日が書き換えられるような書き込み操作である必要があります。 そうでない場合、キャッシュされた結果が取得され、操作によって再接続がトリガーされない可能性があります。
 
-## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-30"></a>SMB 3.0 を使用して Azure ファイル共有をマウントするときの、"CIFS VFS: error -22 on ioctl to get interface list" (CIFS VFS: インターフェイス リストを取得するための ioctl でのエラー -22)
+## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-3x"></a>SMB 3.x を使用して Azure ファイル共有をマウントするときの、"CIFS VFS: error -22 on ioctl to get interface list" (CIFS VFS: インターフェイス リストを取得するための ioctl でのエラー -22)
 
 ### <a name="cause"></a>原因
 このエラーは、Azure Files では[現在 SMB マルチチャネルがサポートされていない](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)ために、ログに記録されます。

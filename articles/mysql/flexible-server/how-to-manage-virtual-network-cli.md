@@ -6,24 +6,22 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 7da8062f18d737af9d19df54863bc56c7268910c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5767eacad78b775514483d7c2e90de7d74eee7fe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776918"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468045"
 ---
-# <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL - フレキシブル サーバーの仮想ネットワークの作成と管理
+# <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL フレキシブル サーバーの仮想ネットワークの作成と管理
 
-> [!IMPORTANT]
-> Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります
 
 Azure Database for MySQL フレキシブル サーバーでは、フレキシブル サーバーに接続するために、2 種類の相互に排他的なネットワーク接続方法をサポートしています。 次の 2 つのオプションがあります。
 
 - パブリック アクセス (許可された IP アドレス)
 - プライベート アクセス (VNet 統合)
 
-この記事では、Azure CLI を使用した **プライベート アクセス (VNet 統合)** での MySQL サーバーの作成について重点的に説明します。 *プライベート アクセス (VNet 統合)* を使用すると、フレキシブル サーバーを独自の [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) にデプロイできます。 Azure Virtual Network では、非公開で、セキュリティで保護されたネットワーク通信が提供されます。 プライベート アクセスでは、MySQL サーバーへの接続は仮想ネットワーク内のみに制限されます。 詳細については、「[プライベート アクセス (VNet 統合)](./concepts-networking.md#private-access-vnet-integration)」を参照してください。
+この記事では、Azure CLI を使用した **プライベート アクセス (VNet 統合)** での MySQL サーバーの作成について重点的に説明します。 *プライベート アクセス (VNet 統合)* を使用すると、フレキシブル サーバーを独自の [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) にデプロイできます。 Azure Virtual Network では、非公開で、セキュリティで保護されたネットワーク通信が提供されます。 プライベート アクセスでは、MySQL サーバーへの接続は仮想ネットワーク内のみに制限されます。 詳細については、「[プライベート アクセス (VNet 統合)](./concepts-networking-vnet.md)」を参照してください。
 
 Azure Database for MySQL フレキシブル サーバーでは、サーバーの作成時にのみ、サーバーを仮想ネットワークとサブネットにデプロイできます。 フレキシブル サーバーを仮想ネットワークとサブネットにデプロイした後は、別の仮想ネットワーク、サブネット、または "*パブリック アクセス (許可された IP アドレス)* " に移動することはできません。
 
@@ -84,4 +82,4 @@ Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-s
 ## <a name="next-steps"></a>次のステップ
 - [Azure Database for MySQL フレキシブル サーバーでのネットワーク](./concepts-networking.md)の詳細を確認します。
 - [Azure portal を使用して Azure Database for MySQL フレキシブル サーバー仮想ネットワークを作成および管理](./how-to-manage-virtual-network-portal.md)します。
-- [Azure Database for MySQL フレキシブル サーバー仮想ネットワーク](./concepts-networking.md#private-access-vnet-integration)の詳細を理解します。
+- [Azure Database for MySQL フレキシブル サーバー仮想ネットワーク](./concepts-networking-vnet.md#private-access-vnet-integration)の詳細を理解します。

@@ -1,18 +1,19 @@
 ---
 title: 仮想ネットワーク向けの Azure IoT Device Provisioning Service (DPS) サポート
 description: Azure IoT Device Provisioning Service (DPS) で仮想ネットワーク接続パターンを使用する方法
-services: iot-hub
-author: wesmc7777
+services: iot-dps
+author: anastasia-ms
 ms.service: iot-dps
+manager: lizross
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.author: wesmc
-ms.openlocfilehash: f1409a931195d236b2729e629e4603c606137593
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/06/2021
+ms.author: v-stharr
+ms.openlocfilehash: 8d90a033f5af5afb55be9585756a7235dc6d89d7
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94959783"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659319"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>仮想ネットワーク向けの Azure IoT Hub Device Provisioning Service (DPS) サポート
 
@@ -20,15 +21,13 @@ ms.locfileid: "94959783"
 
 DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub も同じ VNET で構成されます。 IoT Hub の VNET のサポートと構成の詳細については、[IoT Hub 仮想ネットワークのサポート](../iot-hub/virtual-network-support.md)に関するページを参照してください。
 
-
-
 ## <a name="introduction"></a>はじめに
 
 既定では、DPS ホスト名は、インターネット経由でパブリックにルーティング可能な IP アドレスを持つパブリック エンドポイントにマップされます。 このパブリック エンドポイントは、すべての顧客に表示されます。 パブリック エンドポイントへのアクセスは、ワイドエリア ネットワークやオンプレミス ネットワークを経由して IoT デバイスによって実行できます。
 
 いくつかの理由から、お客様は DPS などの Azure リソースへの接続を制限することをお勧めします。 これらの理由には以下のものが含まれます。
 
-* パブリック インターネット経由での接続の露出を防止します。 IoT ハブと DPS リソースのネットワーク レベルの分離によって追加のセキュリティ レイヤーを導入することで、露出を減らすことができます。
+* パブリック インターネット経由での接続の露出を防止します。 IoT ハブと DPS リソースのネットワーク レベルの分離によって追加のセキュリティ レイヤーを導入することで、露出を減らすことができます
 
 * オンプレミスのネットワーク資産からのプライベート接続エクスペリエンスを有効にし、データとトラフィックが Azure バックボーン ネットワークに直接送信されるようにする。
 
@@ -41,7 +40,6 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 オンプレミス ネットワークで動作するデバイスは、[仮想プライベートネットワーク (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](https://azure.microsoft.com/services/expressroute/) プライベート ピアリングを使用して Azure の VNET に接続し、プライベート エンドポイントを介して DPS リソースにアクセスできます。 
 
 プライベート エンドポイントは、Azure リソースにアクセス可能な、顧客所有の VNET 内に割り当てられたプライベート IP アドレスです。 DPS リソース向けのプライベート エンドポイントがあると、VNET 内で動作するデバイスが、パブリック エンドポイントへのトラフィックを許可することなく、DPS リソースによるプロビジョニングを要求できるようになります。
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,6 +62,11 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 * 現在の DPS VNET のサポートは、DPS へのデータ イングレスのみが対象です。 データ エグレス (DPS から IoT Hub へのトラフィック) は、専用の VNET ではなく、内部のサービス間のメカニズムを使用します。 DPS と IoT Hub 間での VNET ベースの完全なエグレス ロックダウンのサポートは、現在使用できません。
 
 * 最短待機時間割り当てポリシーを使用して、待機時間が最も短いデバイスを IoT ハブに割り当てます。 この割り当てポリシーは、仮想ネットワーク環境では信頼できません。 
+
+>[!NOTE]
+>**データ所在地に関する考慮事項:**
+>
+>DPS では **グローバル デバイス エンドポイント** (`global.azure-devices-provisioning.net`) が提供されます。 ただし、グローバル エンドポイントを使用すると、DPS インスタンスが最初に作成されたリージョンの外部にデータがリダイレクトされる可能性があります。 最初の DPS リージョン内にデータ所在地を確保するには、プライベートエンド ポイントを使用します。
 
 ## <a name="set-up-a-private-endpoint"></a>プライベート エンドポイントを設定する
 
@@ -104,12 +107,43 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
     ページの下部の **[次へ:構成]** をクリックして、プライベート エンドポイントの VNET を構成します。
 
 4. _プライベート エンドポイントの構成の作成_ ページで、プライベート エンドポイントの作成先となる仮想ネットワークとサブネットを指定します。
- 
+
     ページの下部の **[次へ:タグ]** をクリックし、必要に応じて、リソースのタグを指定します。
 
     ![プライベート エンドポイントの構成](./media/virtual-network-support/create-private-endpoint-configuration.png)
 
-6. **[確認および作成]** 、引き続き **[作成]** をクリックして、プライベート エンドポイント リソースを作成します。
+5. **[確認および作成]** 、引き続き **[作成]** をクリックして、プライベート エンドポイント リソースを作成します。
+
+## <a name="use-private-endpoints-with-devices"></a>デバイスでプライベート エンドポイントを使用する
+
+デバイス プロビジョニング コードでプライベート エンドポイントを使用するには、[Azure portal](https://portal.azure.com) 内の DPS リソースの概要ページに示されているように、DPS リソースの特定の **サービス エンドポイント** を使用する必要があります 。 サービス エンドポイントは次のように設定されています。
+
+`<Your DPS Tenant Name>.azure-devices-provisioning.net`
+
+ドキュメントと SDK で示されているほとんどのサンプル コードでは、**グローバル デバイス エンドポイント** (`global.azure-devices-provisioning.net`) と **ID スコープ** を使用して、特定の DPS リソースを解決します。 プライベート エンドポイントを使用して DPS リソースに接続し、デバイスをプロビジョニングするときに、グローバル デバイス エンドポイントの代わりにサービス エンドポイントを使用します。
+
+たとえば、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のプロビジョニング デバイス クライアント サンプル ([pro_dev_client_sample](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/prov_dev_client_sample)) は、[prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) のグローバル プロビジョニング URI (`global_prov_uri`) として **グローバル デバイス エンドポイント** を使用するように設計されています。
+
+:::code language="c" source="~/iot-samples-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c" range="60-64" highlight="4":::
+
+:::code language="c" source="~/iot-samples-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c" range="138-144" highlight="3":::
+
+プライベート エンドポイントでサンプルを使用するには、DPS リソースにサービス エンドポイントを使用するように、上記の強調表示されたコードを変更します。 たとえば、サービス エンドポイントが `mydps.azure-devices-provisioning.net` の場合、コードは次のようになります。
+
+```C
+static const char* global_prov_uri = "global.azure-devices-provisioning.net";
+static const char* service_uri = "mydps.azure-devices-provisioning.net";
+static const char* id_scope = "[ID Scope]";
+```
+
+```C
+    PROV_DEVICE_RESULT prov_device_result = PROV_DEVICE_RESULT_ERROR;
+    PROV_DEVICE_HANDLE prov_device_handle;
+    if ((prov_device_handle = Prov_Device_Create(service_uri, id_scope, prov_transport)) == NULL)
+    {
+        (void)printf("failed calling Prov_Device_Create\r\n");
+    }
+```
 
 
 ## <a name="request-a-private-endpoint"></a>プライベート エンドポイントを要求する

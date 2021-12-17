@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: c2d0cfc15457d45701f129ae329295064d773a09
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 887138730d0d023a388b3203367a45e8a677fd1e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604109"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005978"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でユーザーを作成する
 
@@ -31,7 +31,7 @@ Azure Database for PostgreSQL サーバーを作成すると、3 つの既定の
 
 サーバーの管理者ユーザーは、azure_pg_admin ロールのメンバーです。 ただし、サーバー管理者アカウントは azure_superuser ロールの一部ではありません。 このサービスは管理対象の PaaS サービスなので、Microsoft だけがスーパー ユーザー ロールの一部になります。
 
-[PostgreSQL 製品のドキュメント](https://www.postgresql.org/docs/current/static/sql-createrole.html)で説明されているように、PostgreSQL エンジンは特権を使ってデータベース オブジェクトへのアクセスを制御します。 Azure Database for PostgreSQL でサーバー管理者ユーザーが付与される特権は、LOGIN、NOSUPERUSER、INHERIT、CREATEDB、CREATEROLE、NOREPLICATION です
+[PostgreSQL 製品のドキュメント](https://www.postgresql.org/docs/current/static/sql-createrole.html)で説明されているように、PostgreSQL エンジンは特権を使ってデータベース オブジェクトへのアクセスを制御します。 Azure Database for PostgreSQL では、サーバー管理者ユーザーには LOGIN、NOSUPERUSER、INHERIT、CREATEDB、CREATEROLE、REPLICATION の各特権が付与されます。
 
 サーバー管理者ユーザー アカウントを使うと、他のユーザーを作成して、azure_pg_admin ロールをそれらのユーザーに付与できます。 また、サーバー管理者アカウントを使って、個々のデータベースとスキーマに対するアクセス権を持つ特権の少ないユーザーとロールを作成することもできます。
 
@@ -75,6 +75,14 @@ Azure Database for PostgreSQL サーバーを作成すると、3 つの既定の
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;
    ```
+
+   ユーザーがテーブルに "ロール" を作成すると、このテーブルはそのユーザーの所有になります。 他のユーザーからそのテーブルにアクセスする必要がある場合は、このユーザーに対してテーブル単位で権限を与える必要があります。
+
+   次に例を示します。 
+
+    ```sql
+    GRANT SELECT ON ALL TABLES IN SCHEMA <schema_name> TO <db_user>;
+    ```
 
 5. 指定したデータベースを指定し、新しいユーザー名とパスワードを使って、サーバーにログインします。 この例は、psql のコマンド ラインです。 このコマンドでは、ユーザー名のパスワード入力が求められます。 実際のサーバー名、データベース名、およびユーザー名に置き換えます。
 

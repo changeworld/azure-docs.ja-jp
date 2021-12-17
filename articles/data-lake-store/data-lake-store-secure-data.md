@@ -1,23 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護 | Microsoft Docs
 description: グループおよびアクセス制御リストを使用して Azure Data Lake Storage Gen1 内のデータをセキュリティ保護する方法を説明します
-services: data-lake-store
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: ca35e65f-3986-4f1b-bf93-9af6066bb716
+author: normesta
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
-ms.author: twooley
-ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 8e2127f8ea144693dcfdf09e1dbad5f075e4646c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92370697"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620770"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護
 Azure Data Lake Storage Gen1 のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、Azure ロールベースのアクセス制御 (Azure RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。

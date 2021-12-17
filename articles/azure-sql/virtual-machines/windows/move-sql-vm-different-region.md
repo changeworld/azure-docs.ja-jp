@@ -3,7 +3,7 @@ title: 仮想マシンを別のリージョンに移動する (Azure Site Recove
 description: Azure 内のあるリージョンから別のリージョンに SQL Server 仮想マシンを移行する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/30/2019
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00b2b42090e88d375f12daccdae37ad0b2ba28b9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97360154"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219377"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Azure Site Recovery を使用して Azure 内の別のリージョンに SQL Server VM を移動する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -66,7 +66,7 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
 - 実際の環境に適した、最も一般的に使用されるネットワーク リソースをソース VM の構成に基づいて作成する場合は、次のドキュメントを参照してください。 
     - [ネットワーク セキュリティ グループ](../../../virtual-network/tutorial-filter-network-traffic.md) 
     - [Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
-    - [パブリック IP アドレス](../../../virtual-network/virtual-network-public-ip-address.md)
+    - [パブリック IP アドレス](../../../virtual-network/ip-services/virtual-network-public-ip-address.md)
     - その他のネットワーク コンポーネントについては、[ネットワークに関するドキュメント](../../../virtual-network/virtual-networks-overview.md)を参照してください。
 - ターゲット リージョンへの最終的な移動を行う前に構成をテストしたい場合は、ターゲット リージョンに手動で非運用ネットワークを作成します。 運用環境のネットワークへの影響が最小限で済むため、この手順をお勧めします。 
 
@@ -154,6 +154,6 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
 詳細については、次の記事を参照してください。 
 
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Windows VM における SQL Server に関するよくあるご質問](frequently-asked-questions-faq.md)
+* [Windows VM における SQL Server に関するよくあるご質問](frequently-asked-questions-faq.yml)
 * [Windows VM における SQL Server に関する料金ガイダンス](pricing-guidance.md)
-* [Windows VM における SQL Server のリリース ノート](doc-changes-updates-release-notes.md)
+* [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)

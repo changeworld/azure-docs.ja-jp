@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 09/27/2021
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 778523869715916bf1e4c32af59ea7a0081df91b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d557a35c9e98a8941a94d5871f578101d935580
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103313"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153750"
 ---
 # <a name="how-to-discover-endpoints"></a>エンドポイントを検出する方法
 

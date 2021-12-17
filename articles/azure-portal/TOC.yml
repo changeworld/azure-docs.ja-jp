@@ -11,7 +11,7 @@
 - name: クイックスタート
   items:
     - name: ポータルで VM を作成する
-      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+      href: ../virtual-machines/windows/quick-create-portal.md?context=/azure/azure-portal/context/context
     - name: ダッシュボードを作成する
       items:
         - name: Azure CLI
@@ -21,27 +21,27 @@
         - name: ARM テンプレート
           displayName: Resource Manager
           href: quick-create-template.md
-- name: 概念
-  items:
-    - name: Azure ロールベースのアクセス制御を使用したダッシュボードの共有
-      href: azure-portal-dashboard-share-access.md
-    - name: プログラムによる Azure ダッシュボードの作成
-      href: azure-portal-dashboards-create-programmatically.md
-      displayName: 'Azure CLI, az portal dashboard, az portal'
 - name: 操作方法ガイド
   items:
     - name: Azure portal の設定を管理する
       href: set-preferences.md
+    - name: Azure portal の設定を管理する (古いバージョン)
+      href: original-preferences.md
     - name: お気に入りの追加、削除、並べ替え
       href: azure-portal-add-remove-sort-favorites.md
     - name: リソース情報の表示とフィルター処理
       href: manage-filter-resource-views.md
     - name: Azure ダッシュボードを作成する
       items:
-        - name: Azure ダッシュボードの作成と共有
+        - name: Azure ダッシュボードを作成する
           href: azure-portal-dashboards.md
+        - name: Azure ダッシュボードを共有する
+          href: azure-portal-dashboard-share-access.md
         - name: カスタムのマークダウン タイルを使用する
           href: azure-portal-markdown-tile.md
+        - name: プログラムによる Azure ダッシュボードの作成
+          href: azure-portal-dashboards-create-programmatically.md
+          displayName: 'Azure CLI, az portal dashboard, az portal'
     - name: Azure portal の使い方に関するビデオ シリーズ
       href: azure-portal-video-series.md
     - name: サポート リクエストの作成と管理
@@ -50,22 +50,20 @@
           href: supportability/how-to-create-azure-support-request.md
         - name: Azure サポート リクエストを管理する
           href: supportability/how-to-manage-azure-support-request.md
-        - name: クォータの増加を要求
+    - name: クォータの増加を要求
+      items:
+        - name: vCPU クォータの増加
           items:
-            - name: コンピューティング vCPU の上限を引き上げる
-              items:
-                - name: Resource Manager デプロイ モデル
-                  items:
-                    - name: VM シリーズ vCPU の上限を引き上げる
-                      href: supportability/per-vm-quota-requests.md
-                    - name: リージョンにおける合計 vCPU の上限を引き上げる
-                      href: supportability/regional-quota-requests.md
-                    - name: スポットのクォータの上限を引き上げる
-                      href: supportability/low-priority-quota.md
-                - name: クラシック デプロイ モデル
-                  href: supportability/classic-deployment-model-quota-increase-requests.md
-            - name: ネットワークの上限を引き上げる
-              href: supportability/networking-quota-requests.md
+            - name: VM ファミリの vCPU クォータの増加
+              href: supportability/per-vm-quota-requests.md
+            - name: リージョンの vCPU クォータの増加
+              href: supportability/regional-quota-requests.md
+            - name: スポット vCPU クォータの増加
+              href: supportability/spot-quota.md
+        - name: クラシック デプロイの vCPU クォータの増加
+          href: supportability/classic-deployment-model-quota-increase-requests.md
+        - name: ネットワーク クォータの増加
+          href: supportability/networking-quota-requests.md
     - name: Azure portal に関する問題のトラブルシューティング
       items:
         - name: 削除されたダッシュボードの復旧
@@ -76,26 +74,28 @@
   items:
     - name: キーボード ショートカット
       href: azure-portal-keyboard-shortcuts.md
-    - name: Azure portal の URL をセーフリストに追加する
+    - name: Azure portal の URL
       href: azure-portal-safelist-urls.md
     - name: Azure ダッシュボードの構造
       href: azure-portal-dashboards-structure.md
     - name: Azure CLI
-      href: /cli/azure/ext/portal/portal
+      href: /cli/azure/portal
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: リソース
   items:
-    - name: Azure のロードマップ
+    - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/'
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-portal
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'
     - name: Azure のビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest'
+    - name: 製品フィードバック
+      href: 'https://feedback.azure.com/d365community/forum/a222eda7-2425-ec11-b6e6-000d3a4f09d0'

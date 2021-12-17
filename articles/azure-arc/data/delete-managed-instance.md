@@ -4,28 +4,27 @@ description: Azure Arc 対応 SQL Managed Instance を削除する
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: dnethi
+ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: e531349e8f404380d9f0601caa3b66557c297062
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19f5befde22ed7b16302b7da5df313c476b47194
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90932626"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733562"
 ---
 # <a name="delete-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance を削除する
 この記事では、Azure Arc 対応 SQL Managed Instance を削除する方法について説明します。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="view-existing-azure-arc-enabled-sql-managed-instances"></a>既存の Azure Arc 対応 SQL Managed Instance を表示する
 SQL Managed Instance を表示するには、次のコマンドを実行します。
 
-```console
-azdata arc sql mi list
+```azurecli
+az sql mi-arc list --k8s-namespace <namespace> --use-k8s
 ```
 
 出力は次のようになります。
@@ -39,14 +38,14 @@ demo-mi 1/1         10.240.0.4:32023  Ready
 ## <a name="delete-a-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance を削除する
 SQL Managed Instance を削除するには、次のコマンドを実行します。
 
-```console
-azdata arc sql mi delete -n <NAME_OF_INSTANCE>
+```azurecli
+az sql mi-arc delete -n <NAME_OF_INSTANCE> --k8s-namespace <namespace> --use-k8s
 ```
 
 出力は次のようになります。
 
-```console
-# azdata arc sql mi delete -n demo-mi
+```azurecli
+# az sql mi-arc delete -n demo-mi --k8s-namespace <namespace> --use-k8s
 Deleted demo-mi from namespace arc
 ```
 
@@ -90,7 +89,7 @@ persistentvolumeclaim "logs-demo-mi-0" deleted
   
 
 > [!NOTE]
-> 示しているように、PVC を削除しないと、最終的に Kubernetes クラスターがエラーをスローする状況になる可能性があります。 このようなエラーには、このストレージの問題によってポッドが削除される可能性があるため (通常の Kubernetes 動作)、azdata を使用して Kubernetes クラスターにログインできなくなる場合があります。
+> 示しているように、PVC を削除しないと、最終的に Kubernetes クラスターがエラーをスローする状況になる可能性があります。 このようなエラーには、Kubernetes API からリソースを作成、読み取り、更新、削除できなくなる場合や、このストレージの問題によって、コントローラー ポッドが Kubernetes ノードから削除される可能性がある (通常の Kubernetes 動作) `az arcdata dc export` などのコマンドを実行できる場合があります。
 >
 > たとえば、次のようなメッセージがログに表示されます。  
 > - Annotations:    microsoft.com/ignore-pod-health: true  

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 01/29/2021
+ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像認識アプリ、Custom Vision
-ms.openlocfilehash: d25b226f5dfff34aa572b40d1e4de142cf8e0b7b
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 180ddc450dc172d7fa3eb08ed7466f89f4679195
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221246"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351743"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>クイックスタート: Custom Vision Web サイトで分類子を構築する
 

@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 4d4f9c90fd96365216480164f29f08fad92eb9d0
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 3667a201e293a844fbcd60b4f00c43aee03ca550
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104787344"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015651"
 ---
 # <a name="tutorial-configure-the-opc-publisher"></a>チュートリアル: OPC Publisher の構成
 
@@ -44,7 +44,7 @@ OPC UA 対応の資産にアクセスする場合は、X.509 証明書とそれ�
 
 ## <a name="configuration-via-configuration-file"></a>構成ファイルを使用した構成
 
-OPC Publisher を構成する最も簡単な方法は、構成ファイルの使用です。 構成ファイルの例とその形式に関するドキュメントは、このリポジトリの [`publishednodes.json`](https://raw.githubusercontent.com/Azure/iot-edge-opc-publisher/master/opcpublisher/publishednodes.json) ファイルで提供されています。
+OPC Publisher を構成する最も簡単な方法は、構成ファイルの使用です。 構成ファイルの例とその形式に関するドキュメントは、このリポジトリの [`publishednodes.json`](https://raw.githubusercontent.com/Azure/Industrial-IoT/main/components/opc-ua/src/Microsoft.Azure.IIoT.OpcUa.Edge.Publisher/tests/Engine/publishednodes.json) ファイルで提供されています。
 構成ファイルの構文は時間の経過と共に変更されています。OPC Publisher は、引き続き古い形式を読み取ることはできますが、構成を保持する際に最新の形式に変換します。これは、定期的に自動で行われます。
 
 基本的な構成ファイルは次のようになります。
@@ -85,7 +85,7 @@ OPC Publisher のグローバル設定に使用できるコマンドライン引
 ## <a name="configuration-via-the-built-in-opc-ua-server-interface"></a>組み込みの OPC UA サーバー インターフェイスを使用した構成
 
 >[!NOTE] 
-> この機能は、OPC Publisher のバージョン 2.5 以前でのみ使用できます。**
+> この機能は、OPC Publisher のバージョン 2.5 以前でのみ使用できます。
 
 OPC Publisher には、ポート 62222 で実行される、組み込みの OPC UA サーバーがあります。 これには、次の 3 つの OPC UA メソッドが実装されています。
 
@@ -98,9 +98,9 @@ OPC Publisher には、ポート 62222 で実行される、組み込みの OPC 
 ## <a name="configuration-via-iot-hub-direct-methods"></a>IoT Hub のダイレクト メソッドを使用した構成
 
 >[!NOTE] 
-> この機能は、OPC Publisher のバージョン 2.5 以前でのみ使用できます。**
+> この機能は、OPC Publisher のバージョン 2.5 以前でのみ使用できます。
 
-OPC Publisher には、次の [IoT Hub のダイレクトメソッド](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods)が実装されています。これらは、[IoT Hub Device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) を使用して、(世界中のどこからでも) アプリケーションから呼び出すことができます。
+OPC Publisher には、次の [IoT Hub のダイレクトメソッド](../iot-hub/iot-hub-devguide-direct-methods.md)が実装されています。これらは、[IoT Hub Device SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用して、(世界中のどこからでも) アプリケーションから呼び出すことができます。
 
   - PublishNodes
   - UnpublishNodes

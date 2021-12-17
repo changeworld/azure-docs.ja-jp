@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 10/22/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: bd46e7b2f0713da67842def47dfeadc837027d8f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7fb94b8e714c62a92b0fe9411af97f69e0a50423
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027970"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229562"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure portal でのアカウント管理者のタスク
 
@@ -25,6 +25,11 @@ ms.locfileid: "97027970"
 - Azure イン オープン プラン サブスクリプションにクレジットを追加する
 
 これらのすべてのタスクを実行するには、アカウント管理者である必要があります。
+
+## <a name="accounts-portal-is-retiring"></a>アカウント ポータルは廃止される
+
+アカウント ポータルは廃止され、ユーザーは 2021 年 12 月 31 日までに Azure portal にリダイレクトされます。 アカウント ポータルでサポートされている機能は、Azure portal に移行されます。 この記事では、Azure portal で最も一般的な操作のいくつかを実行する方法について説明します。
+
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>サブスクリプションの支払い方法に移動する
 
@@ -179,6 +184,58 @@ Azure イン オープン プランのライセンス サブスクリプショ�
     - 追加するクレジットの金額を指定します。
 
 1. **[適用]** をクリックします
+
+## <a name="usage-details-files-comparison"></a>使用状況詳細ファイルの比較
+
+次の情報を使用すると、アカウント ポータルのファイルの v1 および v2 バージョンで使用可能なフィールドと、Azure portal の使用状況詳細ファイルの最新バージョンとの間の対応がわかります。
+
+| V1 | V2 | Azure portal |
+| --- | --- | --- |
+| 追加情報 | 追加情報 | AdditionalInfo: |
+| 通貨 | 通貨 | BillingCurrency |
+| 請求期間 | 請求期間 | BillingPeriodEndDate |
+| 請求期間 | 請求期間 | BillingPeriodStartDate |
+| サービス | 使用サービス | ConsumedService |
+| 値 | 値 | コスト |
+| 使用日 | 使用日 | Date |
+| 名前 | 測定カテゴリ | MeterCategory |
+| ResourceGuid | Meter Id | MeterId |
+| リージョン | 測定リージョン | MeterRegion |
+| リソース | 測定名 | MeterName  |
+| Type | 測定サブカテゴリ | MeterSubcategory |
+| 使用量 | Consumed Quantity | 数量 |
+| コンポーネント | リソース グループ | ResourceGroup |
+|   | インスタンス ID | ResourceId |
+| サブ リージョン | リソースの場所 | ResourceLocation |
+| サービス情報 1 | サービス情報 1 | ServiceInfo1 |
+| サービス情報 2 | サービス情報 2 | ServiceInfo2 |
+| サブスクリプション ID | サブスクリプション ID | SubscriptionId |
+| サブスクリプション名 | サブスクリプション名 | SubscriptionName |
+|   | Tags | Tags |
+| ユニット | ユニット | UnitOfMeasure |
+| | 料金 | UnitPrice |
+
+最新の使用状況詳細ファイルで使用できるフィールドについて詳しくは、「[Azure の利用状況と請求金額ファイル内の用語について](../understand/understand-usage.md)」をご覧ください。
+
+次のフィールドは、アカウント ポータルのファイルの v1 および v2 バージョンからのものです。 これらは、最新の使用状況詳細ファイルでは利用できなくなりました。
+
+| V1 | V2 |
+| --- | --- |
+| 注文 ID | 注文 ID |
+| 説明 | 説明 |
+| 請求日 (契約応当日) | 請求日 (契約応当日) |
+| プラン名 | プラン名 |
+| サービス名 | サービス名 |
+| サブスクリプションの状態 | サブスクリプションの状態 |
+| サブスクリプションの追加の状態 | サブスクリプションの追加の状態 |
+| プロビジョニング状態 | プロビジョニング状態 |
+| SKU | SKU |
+| Included | 含まれる量 |
+| Billable | 超過量 |
+| コミットメント以内 | コミットメント以内 |
+| コミットメント レート | コミットメント レート |
+| 超過料金 | 超過料金 |
+| コンポーネント |  |
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 バーチャル カードやプリペイド カードはサポートされません。 有効なクレジット カードを追加または更新するときにエラーが発生する場合は、ブラウザーをプライベート モードで開いてみてください。

@@ -4,15 +4,16 @@ description: このチュートリアルでは、データ フローを使用し
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2021
-ms.date: 02/09/2021
-ms.openlocfilehash: cb8d44353e826df14ed3baab2c4ca66ffed4a569
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/04/2021
+ms.openlocfilehash: 246b1988a7a632e9c3b332f7adbdf908f1084457
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100416792"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798258"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>マッピング データ フローを使用して Delta Lake のデータを変換する
 
@@ -53,26 +54,26 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
 この手順では、データ フロー アクティビティが含まれるパイプラインを作成します。
 
-1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
+1. ホーム ページで **[調整]** を選択します。
 
-   ![パイプラインの作成](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="ADF のホーム ページを示すスクリーンショット。":::
 
 1. パイプラインの **[全般]** タブで、パイプラインの **名前** として「**DeltaLake**」と入力します。
-1. ファクトリの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
-
-    ![Data Flow アクティビティ](media/tutorial-data-flow/dataflow1.png)
 1. **[アクティビティ]** ウィンドウで、 **[移動と変換]** アコーディオンを展開します。 ウィンドウから **Data Flow** アクティビティをパイプライン キャンバスにドラッグ アンド ドロップします。
 
-    ![Data Flow アクティビティをドロップできるパイプライン キャンバスを示すスクリーンショット。](media/tutorial-data-flow/activity1.png)
+    :::image type="content" source="media/tutorial-data-flow/activity1.png" alt-text="Data Flow アクティビティをドロップできるパイプライン キャンバスを示すスクリーンショット。":::
 1. **[Data Flow の追加]** ポップアップで、 **[新しい Data Flow の作成]** を選択し、データ フローに **DeltaLake** という名前を付けます。 終了したら、[完了] をクリックします。
 
-    ![新しいデータ フローを作成するときにデータ フローの名前を指定する場所を示すスクリーンショット。](media/tutorial-data-flow/activity2.png)
+    :::image type="content" source="media/tutorial-data-flow/activity2.png" alt-text="新しいデータ フローを作成するときにデータ フローの名前を指定する場所を示すスクリーンショット。":::
+1. パイプライン キャンバスの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>データ フロー キャンバスでの変換ロジックの作成
+    :::image type="content" source="media/tutorial-data-flow/dataflow1.png" alt-text="[データ フローのデバッグ] のスライダーを示すスクリーンショット。":::
+
+## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>データ フロー キャンバスでの変換ロジックの作成
 
 このチュートリアルでは、2 つのデータ フローを生成します。 最初のデータ フローは、上記のムービーの CSV ファイルから新しい Delta Lake を生成するためにシンクする単純なソースです。 最後に、以下のフロー デザインを作成して、Delta Lake のデータを更新します。
 
-![最終的なフロー](media/data-flow/data-flow-tutorial-6.png &quot;最終的なフロー")
+:::image type="content" source="media/data-flow/data-flow-tutorial-6.png" alt-text="最終的なフロー":::
 
 ### <a name="tutorial-objectives"></a>チュートリアルの目標
 
@@ -94,7 +95,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 1. シンク変換を追加します。
 1. Delta はインライン データセット型です。 ADLS Gen2 ストレージ アカウントを指す必要があります。
    
-   ![インライン データセット](media/data-flow/data-flow-tutorial-5.png "インライン データセット")
+   :::image type="content" source="media/data-flow/data-flow-tutorial-5.png" alt-text="インライン データセット":::
 
 1. ADF で Delta Lake を作成するストレージ コンテナー内のフォルダー名を選択します。
 1. パイプライン デザイナーに戻り、[デバッグ] をクリックしてデバッグ モードでパイプラインを実行し、キャンバス上のこのデータ フロー アクティビティだけを使用します。 これにより、ADLS Gen2 に新しい Delta Lake が生成されます。
@@ -106,16 +107,16 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 1. 同じ派生列で、既存の年を取得し、その年を 2021 に変更して、2021 年のムービーを作成します。 1960 年を選択してみましょう。
 1. 3 つの派生列は次のようになります。
 
-   ![派生列](media/data-flow/data-flow-tutorial-2.png "派生列")
+   :::image type="content" source="media/data-flow/data-flow-tutorial-2.png" alt-text="派生列":::
    
 1. ```Update, insert, delete, and upsert``` ポリシーは、行の変更変換で作成されます。 派生列の後に、行の変更変換を追加します。
 1. 変更行ポリシーは、次のようになります。
 
-   ![行の変更](media/data-flow/data-flow-tutorial-3.png "行の変更")
+   :::image type="content" source="media/data-flow/data-flow-tutorial-3.png" alt-text="行の変更":::
    
 1. 変更行の種類ごとに適切なポリシーを設定したので、シンク変換に適切な更新ルールが設定されていることを確認します。
 
-   ![Sink](media/data-flow/data-flow-tutorial-4.png "シンク")
+   :::image type="content" source="media/data-flow/data-flow-tutorial-4.png" alt-text="Sink":::
    
 1. ここでは、ADLS Gen2 データ レイクに Delta Lake シンクを使用して、挿入、更新、削除を許可しています。 
 1. キー列は、movie 主キー列と year 列で構成される複合キーです。 これは、1960 年行を複製して仮の 2021 年ムービーを作成したためです。 こうして一意性を提供することによって、既存の行を検索するときの競合が回避されます。

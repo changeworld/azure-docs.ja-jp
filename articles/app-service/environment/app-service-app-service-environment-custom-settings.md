@@ -1,24 +1,25 @@
 ---
 title: カスタム設定の構成
 description: Azure App Service Environment 全体に適用する設定を構成します。 その作業を Azure Resource Manager テンプレートで行う方法について説明します。
-author: ccompy
+author: madsd
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 01/29/2021
-ms.author: ccompy
+ms.date: 11/03/2021
+ms.author: madsd
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5c1e81d02aa35a40a296f04e456be09eeed10331
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c90357a77d8ea95675fb17ecbde5c8dfb94b49ea
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99226391"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524989"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service Environment のカスタム構成設定
-## <a name="overview"></a>概要
-App Service Environment (ASE) は単一の顧客に分離されるため、 App Service Environment にのみ適用できる特定の構成設定があります。 この記事では、 App Service Environment で使用可能な、固有の各種カスタマイズについて説明します。
 
-App Service Environment がない場合は、 [App Service Environment の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
+## <a name="overview"></a>概要
+App Service Environment (ASE) は単一の顧客に分離されるため、App Service Environment にのみ適用できる特定の構成設定があります。 この記事では、App Service Environment で使用可能な、固有の各種カスタマイズについて説明します。
+
+App Service Environment がない場合は、[ASEv3 の作成方法](./creation.md)に関するページを参照してください。
 
 App Service Environment のカスタマイズは、新しい **clusterSettings** 属性の配列を使って保存できます。 この属性は、Azure Resource Manager の *hostingEnvironments* エンティティの "Properties" ディクショナリにあります。
 
@@ -27,7 +28,7 @@ App Service Environment のカスタマイズは、新しい **clusterSettings**
 ```json
 "resources": [
 {
-    "apiVersion": "2015-08-01",
+    "apiVersion": "2021-03-01",
     "type": "Microsoft.Web/hostingEnvironments",
     "name": ...,
     "location": ...,
@@ -38,7 +39,7 @@ App Service Environment のカスタマイズは、新しい **clusterSettings**
                 "value": "valueOfCustomSetting"
             }
         ],
-        "workerPools": [ ...],
+        "internalLoadBalancingMode": ...,
         etc...
     }
 }
@@ -49,7 +50,7 @@ Resource Manager テンプレートに **clusterSettings** 属性を含めて、
 ## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Azure リソース エクスプローラーを使った App Service Environment の更新
 App Service Environment は、 [Azure リソース エクスプローラー](https://resources.azure.com)を使って更新することもできます。  
 
-1. Resource Explorer で、App Service Environment のノードに移動します (**subscriptions** > **resourceGroups** > **providers** > **Microsoft.Web** > **hostingEnvironments** の順に移動)。 次に、更新する App Service Environment をクリックします。
+1. リソース エクスプローラーで、App Service Environment のノードに移動します (**subscriptions** >  **{サブスクリプション名}**  > **resourceGroups** >  **{リソース グループ名}**  > **providers** > **Microsoft.Web** > **hostingEnvironments** の順に移動)。 次に、更新する App Service Environment をクリックします。
 2. 右側のペインで、上部のツールバーの **[読み取り/書き込み]** をクリックし、リソース エクスプローラーでの対話型の編集を許可します。  
 3. 青色の **[編集]** ボタンをクリックし、Resource Manager テンプレートを編集可能にします。
 4. 右側のペインの一番下までスクロールします。 **clusterSettings** 属性は一番下にあります。ここで、値の入力または更新ができます。
@@ -61,7 +62,7 @@ App Service Environment は、 [Azure リソース エクスプローラー](htt
 
 ## <a name="enable-internal-encryption"></a>内部暗号化を有効にする
 
-App Service Environment は、内部コンポーネントまたはシステム内の通信を表示できないブラック ボックス システムとして動作します。 より高いスループットを実現するために、内部コンポーネント間の暗号化は既定では有効になっていません。 監視またはアクセスの対象としてトラフィックにアクセスすることはできないため、システムの安全性は確保されています。 それにもかかわらず、データ パスを端から端まで完全に暗号化する必要があるコンプライアンス要件が存在する場合は、clusterSetting を使用して完全なデータ パスの暗号化を有効にする方法があります。  
+App Service Environment は、内部コンポーネントまたはシステム内の通信を表示できないブラック ボックス システムとして動作します。 より高いスループットを実現するために、内部コンポーネント間の暗号化は既定では有効になっていません。 監視またはアクセスの対象としてトラフィックにアクセスすることはできないため、システムの安全性は確保されています。 それにもかかわらず、データ パスを端から端まで完全に暗号化する必要があるコンプライアンス要件が存在する場合は、clusterSetting を使用して完全なデータ パスの暗号化を有効にする方法があります。
 
 ```json
 "clusterSettings": [
@@ -107,8 +108,4 @@ ASE では、既定の暗号スイートの変更がサポートされていま�
 > SChannel が認識できない間違った値を暗号スイートに設定すると、ご利用のサーバーに対するすべての TLS 通信が機能しなくなります。 この場合は、 *clusterSettings* から **FrontEndSSLCipherSuiteOrder** エントリを削除し、更新された Resource Manager テンプレートを送信して、既定の暗号スイート設定に戻す必要があります。  この機能は慎重に使用してください。
 
 ## <a name="get-started"></a>作業開始
-Azure クイック スタート Resource Manager テンプレートのサイトには、 [App Service Environment を作成](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)するための基本定義を含むテンプレートが用意されています。
-
-<!-- LINKS -->
-
-<!-- IMAGES -->
+Azure クイック スタート Resource Manager テンプレートのサイトには、 [App Service Environment を作成](https://azure.microsoft.com/resources/templates/web-app-asp-app-on-asev3-create/)するための基本定義を含むテンプレートが用意されています。

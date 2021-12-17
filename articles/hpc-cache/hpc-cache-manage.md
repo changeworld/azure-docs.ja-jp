@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache を管理して更新する
 description: Azure portal または Azure CLI を使用して Azure HPC Cache を管理および更新する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/08/2021
-ms.author: v-erkel
-ms.openlocfilehash: b34beb65bb8c4136887651d8365c937b17718572
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 07/08/2021
+ms.author: femila
+ms.openlocfilehash: 46d891172c3290b4ce21723561f0689bedd7b22d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471878"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087801"
 ---
 # <a name="manage-your-cache"></a>キャッシュを管理する
 
@@ -33,6 +33,9 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 * [ **[削除]**](#delete-the-cache) - キャッシュを完全に破棄します
 
 これらのオプションの詳細については、以下をご覧ください。
+
+> [!TIP]
+> また、個々のストレージ ターゲットを管理できます。詳細については、[ストレージ ターゲットの表示と管理](manage-storage-targets.md)に関する説明ページを参照してください。
 
 キャッシュ管理タスクをデモンストレーションする[ビデオ](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)を視聴するには、次の画像をクリックしてください。
 
@@ -60,13 +63,13 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-[az hpc-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) コマンドを使用して、一時的にキャッシュを一時停止します。 このアクションが有効になるのは、キャッシュの状態が **[正常]** または **[低下]** の場合のみです。
+[az hpc-cache stop](/cli/azure/hpc-cache#az_hpc_cache_stop) コマンドを使用して、一時的にキャッシュを一時停止します。 このアクションが有効になるのは、キャッシュの状態が **[正常]** または **[低下]** の場合のみです。
 
 停止するまで、キャッシュの内容がストレージ ターゲットに自動的にフラッシュされます。 この処理には時間がかかることがありますが、データの一貫性が確保されます。
 
 アクションが完了すると、キャッシュの状態が **[Stopped]\(停止\)** に変わります。
 
-停止しているキャッシュを再アクティブ化するには、[az hpc-cache start](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-start) を使用します。
+停止しているキャッシュを再アクティブ化するには、[az hpc-cache start](/cli/azure/hpc-cache#az_hpc_cache_start) を使用します。
 
 開始コマンドまたは停止コマンドを実行すると、操作が完了するまでコマンド ラインに "Running" というステータス メッセージが表示されます。
 
@@ -115,7 +118,7 @@ $ az hpc-cache start --name doc-cache0629
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-[az hpc-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) を使用して、すべての変更されたデータをキャッシュからストレージ ターゲットに書き込むよう強制します。
+[az hpc-cache flush](/cli/azure/hpc-cache#az_hpc_cache_flush) を使用して、すべての変更されたデータをキャッシュからストレージ ターゲットに書き込むよう強制します。
 
 例:
 
@@ -163,9 +166,9 @@ $
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-Azure CLI では、キャッシュの状態レポートの最後に新しいソフトウェア情報が含まれています。 (確認するには、[az hpc-cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) を使用します。)メッセージで "upgradeStatus" という文字列を探します。
+Azure CLI では、キャッシュの状態レポートの最後に新しいソフトウェア情報が含まれています。 (確認するには、[az hpc-cache show](/cli/azure/hpc-cache#az_hpc_cache_show) を使用します。)メッセージで "upgradeStatus" という文字列を探します。
 
-[az hpc-cache upgrade-firmware](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-upgrade-firmware) を使用して、更新プログラム (存在する場合) を適用します。
+[az hpc-cache upgrade-firmware](/cli/azure/hpc-cache#az_hpc_cache_upgrade-firmware) を使用して、更新プログラム (存在する場合) を適用します。
 
 利用可能な更新プログラムがない場合、この操作による影響はありません。
 
@@ -227,7 +230,7 @@ Microsoft Service and Support に要請された場合は、このコントロ�
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-キャッシュを完全に削除するには、Azure CLI コマンド [az hpc-cache delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) を使用します。
+キャッシュを完全に削除するには、Azure CLI コマンド [az hpc-cache delete](/cli/azure/hpc-cache#az_hpc_cache_delete) を使用します。
 
 例:
 ```azurecli
@@ -247,14 +250,6 @@ $
 
 ---
 
-## <a name="cache-metrics-and-monitoring"></a>キャッシュのメトリックと監視
-
-概要ページには、キャッシュのスループット、1 秒あたりの操作数、待機時間など、いくつかの基本的なキャッシュ統計情報のグラフが表示されます。
-
-![サンプル キャッシュについて前述の統計情報を示している、3 つの折れ線グラフのスクリーンショット](media/hpc-cache-overview-stats.png)
-
-これらのグラフは、Azure の組み込みの監視および分析ツールの一部です。 その他のツールとアラートは、ポータルのサイドバーにある **[監視]** という見出しの下にあるページから利用できます。 詳細については、[Azure 監視のドキュメント](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal)のポータルに関するセクションを参照してください。
-
 ## <a name="view-warnings"></a>警告の表示
 
 キャッシュが異常な状態になった場合は、 **[警告]** ページを確認してください。 このページに表示されるキャッシュ ソフトウェアから送られる通知は、その状態を理解するのに役立ちます。
@@ -271,5 +266,5 @@ $
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure のメトリックと統計ツール](../azure-monitor/index.yml)について確認する
+* [統計を使用してキャッシュを監視する](metrics.md)
 * [Azure HPC Cache に関する支援](hpc-cache-support-ticket.md)を依頼する

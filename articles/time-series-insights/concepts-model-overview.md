@@ -1,21 +1,22 @@
 ---
 title: タイム シリーズ モデル - Azure Time Series Insights Gen2 | Microsoft Docs
 description: Azure Time Series Insights Gen2 のタイム シリーズ モデルについて学習します。
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: msrsrinivasan
+ms.author: radhsrin
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 37c24f2d785bbdd9847e0dadaa47969f5b090ef2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8af48403b9c683b34cc2446cf17b99fc2280d8a6
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101698095"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784853"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 のタイム シリーズ モデル
 

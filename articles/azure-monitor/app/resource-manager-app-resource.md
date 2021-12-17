@@ -2,19 +2,18 @@
 title: Application Insights リソース用の Resource Manager テンプレートのサンプル
 description: Azure Monitor で Application Insights リソースをデプロイするためのサンプル Azure Resource Manager テンプレート。
 ms.topic: sample
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 07/08/2020
-ms.openlocfilehash: 6a64ed1d0d7a133930bf48e7d764c8d170d9824a
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9287fd1345e9b6ba52696ce90f270bf301d8e654
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383357"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059910"
 ---
 # <a name="resource-manager-template-samples-for-creating-application-insights-resources"></a>Application Insights リソースを作成するための Resource Manager テンプレートのサンプル
 
-この記事には、[従来の Application Insights リソース](../app/create-new-resource.md)と新しい[ワークスペースベースのプレビュー版 Application Insights リソース](../app/create-workspace-resource.md)のデプロイおよび構成を行うためのサンプル [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+この記事には、[従来の Application Insights リソース](../app/create-new-resource.md)と新しい[ワークスペースベースのプレビュー版 Application Insights リソース](../app/create-workspace-resource.md)のデプロイおよび構成を行うためのサンプル [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -50,7 +49,7 @@ ms.locfileid: "106383357"
         "tagsArray": {
             "type": "object",
             "metadata": {
-            "description": "See documentation on tags:https://docs.microsoft.com/azure/azure-resource-manager/management/tag-resources."
+            "description": "See documentation on tags: https://docs.microsoft.com/azure/azure-resource-manager/management/tag-resources."
           }
         },
         "requestSource": {
@@ -137,7 +136,7 @@ ms.locfileid: "106383357"
         "tagsArray": {
             "type": "object",
             "metadata": {
-            "description": "See documentation on tags:https://docs.microsoft.com/azure/azure-resource-manager/management/tag-resources."
+            "description": "See documentation on tags: https://docs.microsoft.com/azure/azure-resource-manager/management/tag-resources."
             }
         },
         "requestSource": {

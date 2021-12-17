@@ -2,13 +2,13 @@
 title: プロパティの複数のインスタンスを定義する
 description: Azure Resource Manager テンプレート (ARM テンプレート) で copy 操作を使用して、リソースのプロパティを作成する際に複数回反復処理する方法について説明します。
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: 16c293f1c3aff64aeb8b6cae4b7f1aa14dcd0a77
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.date: 05/07/2021
+ms.openlocfilehash: 1f5a93b8c0759a9baccb8c5d5bc7dab25b181791
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480003"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954689"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM テンプレートでのプロパティの反復処理
 
@@ -19,8 +19,6 @@ ms.locfileid: "107480003"
 [resources](copy-resources.md)、[variables](copy-variables.md)、および [outputs](copy-outputs.md) でもコピー ループを使用できます。
 
 ## <a name="syntax"></a>構文
-
-# <a name="json"></a>[JSON](#tab/json)
 
 テンプレートの resources セクションに `copy` 要素を追加して、プロパティに対する項目の数を設定します。 この copy 要素には、次の一般的な形式があります。
 
@@ -40,36 +38,6 @@ ms.locfileid: "107480003"
 
 `input` プロパティは、繰り返すプロパティを指定します。 `input` プロパティの値から構築された要素の配列を作成します。
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-ループを使用すると、次の方法で複数のプロパティを宣言できます。
-
-- 配列の反復処理:
-
-  ```bicep
-  <property-name>: [for <item> in <collection>: {
-    <properties>
-  }]
-  ```
-
-- 配列の要素を反復処理します
-
-  ```bicep
-  <property-name>: [for (<item>, <index>) in <collection>: {
-    <properties>
-  }]
-  ```
-
-- ループ インデックスの使用
-
-  ```bicep
-  <property-name>: [for <index> in range(<start>, <stop>): {
-    <properties>
-  }]
-  ```
-
----
-
 ## <a name="copy-limits"></a>コピー制限
 
 count は 800 を超えることはできません。
@@ -86,8 +54,6 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 ## <a name="property-iteration"></a>プロパティの反復処理
 
 次の例は、仮想マシンで `dataDisks` プロパティにコピー ループを適用する方法を示しています。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -251,30 +217,6 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-@minValue(0)
-@maxValue(16)
-@description('The number of dataDisks to be returned in the output array.')
-param numberOfDataDisks int = 16
-
-resource vmName 'Microsoft.Compute/virtualMachines@2020-06-01' = {
-  ...
-  properties: {
-    storageProfile: {
-      ...
-      dataDisks: [for i in range(0, numberOfDataDisks): {
-        lun: i
-        createOption: 'Empty'
-        diskSizeGB: 1023
-      }]
-    }
-    ...
-  }
-}
-```
-
 デプロイされたテンプレートは次のようになります。
 
 ```json
@@ -304,11 +246,7 @@ resource vmName 'Microsoft.Compute/virtualMachines@2020-06-01' = {
       ...
 ```
 
----
-
 リソースの反復処理とプロパティの反復処理は同時に使用できます。 プロパティの反復処理を名前で参照します。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -342,37 +280,13 @@ resource vmName 'Microsoft.Compute/virtualMachines@2020-06-01' = {
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resource vnetname_resource 'Microsoft.Network/virtualNetworks@2018-04-01' = [for i in range(0, 2): {
-  name: concat(vnetname, i)
-  location: resourceGroup().location
-  properties: {
-    addressSpace: {
-      addressPrefixes: [
-        addressPrefix
-      ]
-    }
-    subnets: [for j in range(0, 2): {
-      name: 'subnet-${j}'
-      properties: {
-        addressPrefix: subnetAddressPrefix[j]
-      }
-    }]
-  }
-}]
-```
-
----
-
 ## <a name="example-templates"></a>サンプル テンプレート
 
 次の例は、プロパティに対して複数の値を作成する一般的なシナリオを示しています。
 
 |Template  |説明  |
 |---------|---------|
-|[VM deployment with a variable number of data disks](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |仮想マシンと共に複数のデータ ディスクをデプロイします。 |
+|[VM deployment with a variable number of data disks](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-windows-copy-datadisks) |仮想マシンと共に複数のデータ ディスクをデプロイします。 |
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -381,5 +295,5 @@ resource vnetname_resource 'Microsoft.Network/virtualNetworks@2018-04-01' = [for
   - [ARM テンプレートでのリソースの反復処理](copy-resources.md)
   - [ARM テンプレートでの変数の反復処理](copy-variables.md)
   - [ARM テンプレートでの出力の反復処理](copy-outputs.md)
-- テンプレートのセクションの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+- テンプレートのセクションの詳細については、「[ARM テンプレートの構造と構文について](./syntax.md)」を参照してください。
 - テンプレートをデプロイする方法の詳細については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。

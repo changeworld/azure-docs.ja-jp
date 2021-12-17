@@ -1,24 +1,25 @@
 ---
-title: Windows Virtual Desktop で組み込みアプリを発行する - Azure
-description: Windows Virtual Desktop で組み込みアプリを発行する方法。
+title: Azure Virtual Desktop で組み込みアプリを発行する - Azure
+description: Azure Virtual Desktop で組み込みアプリを発行する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 68db8e9d50dff0bb4580476bae990374830a2a1f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: fc704b992100430c247260b730929e6bc049b98d
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445824"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753073"
 ---
-# <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Windows Virtual Desktop で組み込みアプリを発行する
+# <a name="publish-built-in-apps-in-azure-virtual-desktop"></a>Azure Virtual Desktop で組み込みアプリを発行する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/publish-apps-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/publish-apps-2019.md)を参照してください。
 
-この記事では、Windows Virtual Desktop 環境でアプリを発行する方法について説明します。
+この記事では、Azure Virtual Desktop 環境でアプリを発行する方法について説明します。
 
 ## <a name="publish-built-in-apps"></a>組み込みアプリの公開
 
@@ -33,7 +34,7 @@ ms.locfileid: "106445824"
    ```
 
 >[!NOTE]
-> Windows Virtual Desktop は、インストール場所が `C:\Program Files\WindowsApps` で始まるアプリの発行のみをサポートします。
+> Azure Virtual Desktop は、インストール場所が `C:\Program Files\WindowsApps` で始まるアプリの発行のみをサポートします。
 
 ## <a name="update-app-icons"></a>アプリ アイコンの更新
 
@@ -49,6 +50,6 @@ New-AzWvdApplication -Name -ResourceGroupName -ApplicationGroupName -FilePath "s
 
 ## <a name="next-steps"></a>次のステップ
 
-- フィードを構成して、ユーザーのためにアプリを表示する方法を整理する方法について、「[Windows Virtual Desktop ユーザー用のフィードをカスタマイズする](customize-feed-for-virtual-desktop-users.md)」を参照してください。
+- フィードを構成して、ユーザーのためにアプリを表示する方法を整理する方法について、「[Azure Virtual Desktop ユーザー用のフィードをカスタマイズする](customize-feed-for-virtual-desktop-users.md)」を参照してください。
 - MSIX アプリのアタッチ機能について、「[MSIX アプリのアタッチを設定する](app-attach.md)」を参照してください。
 

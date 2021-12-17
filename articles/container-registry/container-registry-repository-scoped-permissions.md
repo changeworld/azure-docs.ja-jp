@@ -3,12 +3,13 @@ title: Azure Container Registry でのリポジトリに対するアクセス許
 description: イメージのプルやプッシュまたは他のアクションを実行するための、Premium レジストリ内の特定のリポジトリをスコープとするアクセス許可を持つトークンを作成します。
 ms.topic: article
 ms.date: 02/04/2021
-ms.openlocfilehash: 0ac479b696a377509cee6459efd8bbb9de940d2a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 560722669dc663799af3219393cb7bdc4acdf3ab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781399"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037988"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>リポジトリ スコープのアクセス許可を持つトークンを作成する
 
@@ -28,7 +29,7 @@ ms.locfileid: "107781399"
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
 * 現在、リポジトリ スコープのアクセス許可を、サービス プリンシパルやマネージド ID などの Azure Active Directory ID に割り当てることはできません。
-* [匿名プル アクセス](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)に対して有効になっているレジストリにスコープ マップを作成することはできません。
+* [匿名プル アクセス](container-registry-faq.yml#how-do-i-enable-anonymous-pull-access-)に対して有効になっているレジストリにスコープ マップを作成することはできません。
 
 ## <a name="concepts"></a>概念
 
@@ -76,7 +77,8 @@ ms.locfileid: "107781399"
 ```azurecli
 az acr token create --name MyToken --registry myregistry \
   --repository samples/hello-world \
-  content/write content/read
+  content/write content/read \
+  --output json
 ```
 
 出力には、トークンの詳細が表示されます。 既定では、有効期限がない 2 つのパスワードが生成されますが、必要に応じて有効期限を設定することもできます。 パスワードは、後で認証に使用するので、安全な場所に保存することをお勧めします。 そのパスワードを再度取得することはできませんが、新しいパスワードを生成することはできます。
@@ -426,8 +428,13 @@ az acr token delete --name MyToken --registry myregistry
 ## <a name="next-steps"></a>次のステップ
 
 * スコープ マップとトークンを管理するには、[az acr scope-map][az-acr-scope-map] および [az acr token][az-acr-token] コマンド グループの追加コマンドを使用します。
+<<<<<<< HEAD
 * Azure Active Directory ID、サービス プリンシパル、管理者アカウントの使用など、Azure Container Registry で認証を行うための他のオプションについては、[認証の概要](container-registry-authentication.md)に関するページを参照してください。
 
+=======
+* Azure Active Directory ID、サービス プリンシパル、管理者アカウントの使用など、Azure コンテナー レジストリで認証を行うための他のオプションについては、[認証の概要](container-registry-authentication.md)に関するページを参照してください。
+* [接続されたレジストリ](intro-connected-registry.md)と[アクセス](overview-connected-registry-access.md)のためのトークンの使用について説明します。
+>>>>>>> repo_sync_working_branch
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

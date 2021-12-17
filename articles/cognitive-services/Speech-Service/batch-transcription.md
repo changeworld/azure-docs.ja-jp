@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/23/2020
+ms.date: 06/17/2021
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e48fead4d4364fd84f178388dbfb9158296e687b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5f8533c5962b21ad1c23e3b618b66fae73bb8ab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98659973"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056725"
 ---
 # <a name="how-to-use-batch-transcription"></a>バッチ文字起こしの使用方法
 
@@ -37,7 +37,8 @@ ms.locfileid: "98659973"
 詳細な API を確認してテストできます。これは、[Swagger ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)で入手できます。
 
 バッチ文字起こしジョブは、ベスト エフォート ベースでスケジュールされます。
-ジョブが実行状態になるタイミングを見積もることはできませんが、通常のシステム負荷では数分以内に発生します。 いったん実行状態になると、文字起こしはオーディオのランタイム再生速度よりも速く発生します。
+ジョブが実行状態になるタイミングを見積もることはできませんが、通常のシステム負荷では数分以内に発生します。
+いったん実行状態になると、文字起こしはオーディオのランタイム再生速度よりも速く発生します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,7 +50,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](overview.md
 モデルをカスタマイズする予定がある場合は、[音響のカスタマイズ](./how-to-custom-speech-train-model.md)と[言語のカスタマイズ](./how-to-custom-speech-train-model.md)の手順に従ってください。 作成されたモデルをバッチ文字起こしで使用するには、モデルの場所が必要です。 モデルの詳細 (`self` プロパティ) を調べると、モデルの場所を取得できます。 デプロイされたカスタム エンドポイントは、バッチ文字起こしサービスには "*必要ありません*"。
 
 >[!NOTE]
-> REST API の一部として、バッチ文字起こしには[クォータと制限](speech-services-quotas-and-limits.md#batch-transcription)のセットがあり、これらはレビューすることをお勧めします。 大量のオーディオ ファイルを効率的に文字起こしするためのバッチ文字起こし機能を最大限に活用するには、要求ごとに常に複数のファイルを送信するか、または文字起こしするオーディオ ファイルを含む Blob Storage コンテナーを指定することをお勧めします。 このサービスにより、ターンアラウンド時間を短縮しながらファイルの文字起こしが同時に行われます。 1 つの要求での複数ファイルの使用は非常に単純で簡単です。「[構成](#configuration)」セクションを参照してください。 
+> REST API の一部として、バッチ文字起こしには[クォータと制限](speech-services-quotas-and-limits.md#batch-transcription)のセットがあり、これらはレビューすることをお勧めします。 大量のオーディオ ファイルを効率的に文字起こしするためのバッチ文字起こし機能を最大限に活用するには、要求ごとに常に複数のファイルを送信するか、または文字起こしするオーディオ ファイルを含む Blob Storage コンテナーを指定することをお勧めします。 このサービスにより、ターンアラウンド時間を短縮しながらファイルの文字起こしが同時に行われます。 1 つの要求での複数ファイルの使用は非常に単純で簡単です。「[構成](#configuration)」セクションを参照してください。
 
 ## <a name="batch-transcription-api"></a>バッチ文字起こし API
 
@@ -66,7 +67,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](overview.md
 
 ### <a name="configuration"></a>構成
 
-構成パラメーターは JSON として提供されます。 
+構成パラメーターは JSON として提供されます。
 
 **1 つ以上の個別のファイルを文字起こししています。** 複数のファイルを文字起こしする場合は、1 つの要求で複数のファイルを送信することをお勧めします。 次の例では、3 つのファイルを使用しています。
 
@@ -187,7 +188,8 @@ Speech Service の他の機能と同様に、[使用開始ガイド](overview.md
 ## <a name="batch-transcription-result"></a>バッチ文字起こしの結果
 
 オーディオ入力ごとに、1 つの文字起こし結果ファイルが作成されます。
-[文字起こしファイルの取得](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)操作から、この文字起こしの結果ファイルの一覧が返されます。 特定の入力ファイルの文字起こしファイルを見つけるには、`kind` == `Transcription` および `name` == `{originalInputName.suffix}.json` を使用して、返されたすべてのファイルをフィルター処理します。
+[文字起こしファイルの取得](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)操作から、この文字起こしの結果ファイルの一覧が返されます。
+特定の入力ファイルの文字起こしファイルを見つけるには、`kind` == `Transcription` および `name` == `{originalInputName.suffix}.json` を使用して、返されたすべてのファイルをフィルター処理します。
 
 各文字起こし結果ファイルの形式は次のとおりです。
 
@@ -208,10 +210,10 @@ Speech Service の他の機能と同様に、[使用開始ガイド](overview.md
   ],
   "recognizedPhrases": [                // results for each phrase and each channel individually
     {
-      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"          
+      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"
       "speaker": 1,                     // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
       "channel": 0,                     // channel number of the result
-      "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration 
+      "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration
       "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
       "offsetInTicks": 700000.0,        // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
       "durationInTicks": 15900000.0,    // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
@@ -297,7 +299,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](overview.md
 
 ダイアライゼーションを要求するには、次に示す HTTP 要求のように、`diarizationEnabled` プロパティを追加して `true` に設定します。
 
- ```json
+```json
 {
   "contentUrls": [
     "<URL to an audio file to transcribe>",
@@ -320,13 +322,16 @@ Speech Service の他の機能と同様に、[使用開始ガイド](overview.md
 バッチ文字起こしサービスは、送信された多数の文字起こしを処理できます。 [文字起こしの取得](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)を実行して、文字起こしの状態を照会できます。
 結果を取得した後は、サービスから定期的に[文字起こしの削除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)を呼び出します。 または、`timeToLive` プロパティを設定して、確実に結果が最終的に削除されるようにします。
 
+> [!TIP]
+> [インジェスト クライアント](ingestion-client.md) ツールおよび結果として得られるソリューションを使用して、大量のオーディオを処理することができます。
+
 ## <a name="sample-code"></a>サンプル コード
 
 完全なサンプルは、[GitHub サンプル リポジトリ](https://aka.ms/csspeech/samples)の `samples/batch` サブディレクトリにあります。
 
 カスタム モデルを使用している場合は、サブスクリプション情報、サービス リージョン、文字起こしするオーディオ ファイルを指す URI、モデルの場所を使用してサンプル コードを更新します。
 
-[!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptiondefinition)]
+[!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/batchclient/program.cs#transcriptiondefinition)]
 
 サンプル コードでは、クライアントが設定されて、文字起こし要求が送信されます。 その後、状態情報がポーリングされて、文字起こしの進行状況に関する詳細が表示されます。
 

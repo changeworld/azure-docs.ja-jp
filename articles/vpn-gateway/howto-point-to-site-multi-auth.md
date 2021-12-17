@@ -1,19 +1,19 @@
 ---
 title: 'P2S VPN と複数の認証の種類を使用して VNet に接続する: ポータル'
 titleSuffix: Azure VPN Gateway
-description: Azure portal で複数の認証の種類を使用して、P2S 経由で VNet に接続します。
+description: 複数の認証の種類を使用して、P2S 経由で VNet に接続する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 07/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: d405f4b10808b7d39c0d116f2c9006c85532b4f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83267eb652e4adf0b8261c45cebfc118cec867c0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743845"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754535"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-multiple-authentication-types-azure-portal"></a>複数の認証の種類を使用して VNet へのポイント対サイト VPN 接続を構成する: Azure portal
 
@@ -41,7 +41,8 @@ Azure サブスクリプションを持っていることを確認します。 A
 * **[リソース グループ]:** TestRG1
 * **[場所]:** 米国東部
 * **GatewaySubnet:** 10.1.255.0/27<br>
-* **仮想ネットワーク ゲートウェイ名:** VNet1GW
+* **SKU:** VpnGw2
+* **世代:** 第 2 世代
 * **ゲートウェイの種類:** VPN
 * **VPN の種類:** ルート ベース
 * **パブリック IP アドレス名:** VNet1GWpip
@@ -66,7 +67,12 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
-[!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+デプロイの状態は、ゲートウェイの [概要] ページで確認できます。 ゲートウェイの作成とデプロイが完了するまでに 45 分以上かかることがよくあります。 ゲートウェイの作成後は、ポータルの仮想ネットワークを調べることで、ゲートウェイに割り当てられている IP アドレスを確認できます。 ゲートウェイは、接続されたデバイスとして表示されます。
+
+[!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="client-address-pool"></a><a name="addresspool"></a>クライアント アドレス プール
 
@@ -124,6 +130,6 @@ VPN クライアント構成ファイルを生成してインストールする�
 
 ## <a name="next-steps"></a>次のステップ
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/network-overview.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-network/network-overview.md)」を参照してください。
 
 P2S のトラブルシューティング情報については、[Azure ポイント対サイト接続のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)に関するページを参照してください。

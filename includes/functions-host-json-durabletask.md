@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d1b2cbefe64add5048d4e3c7946277b1461a5434
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bbe2473c570a9b31d0c56e1069d7798dc3475fd6
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607093"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123078316"
 ---
 [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md) の構成設定。
 
@@ -103,18 +103,18 @@ ms.locfileid: "105607093"
 |---------|---------|----------|
 |hubName|DurableFunctionsHub|代替[タスク ハブ](../articles/azure-functions/durable/durable-functions-task-hubs.md)名を使用すると、複数の Durable Functions アプリケーションが同じストレージ バックエンドを使用している場合でも、これらのアプリケーションを互いに分離できます。|
 |controlQueueBatchSize|32|コントロール キューから一度にプルするメッセージの数。|
-|controlQueueBufferThreshold| **従量課金プラン**: 32 <br> **専用プランまたは Premium プラン**: 256 |一度にメモリにバッファー処理できる制御キュー メッセージの数。その時点で、ディスパッチャーは、追加のメッセージがデキューされるまで待機します。|
+|controlQueueBufferThreshold| **Python の従量課金プラン**: 32 <br> **JavaScript および C# の従量課金プラン**: 128 <br> **専用プランまたは Premium プラン**: 256 |一度にメモリにバッファー処理できる制御キュー メッセージの数。その時点で、ディスパッチャーは、追加のメッセージがデキューされるまで待機します。|
 |partitionCount |4|コントロール キューのパーティション数。 1 から 16 までの正の整数を使用できます。|
 |controlQueueVisibilityTimeout |5 分|デキューされたコントロール キュー メッセージの表示タイムアウト。|
 |workItemQueueVisibilityTimeout |5 分|デキューされた作業項目キュー メッセージの表示タイムアウト。|
 |maxConcurrentActivityFunctions | **従量課金プラン**: 10 <br> **専用プランまたは Premium プラン**: 現在のマシンのプロセッサ数の 10 倍|1 つのホスト インスタンスで同時に処理できるアクティビティ関数の最大数。|
 |maxConcurrentOrchestratorFunctions | **従量課金プラン**: 5 <br> **専用プランまたは Premium プラン**: 現在のマシンのプロセッサ数の 10 倍 |1 つのホスト インスタンスで同時に処理できるオーケストレーター関数の最大数。|
 |maxQueuePollingInterval|30 秒|コントロールおよび作業項目キューの最大ポーリング間隔 (*hh:mm:ss* 形式)。 値が高くなるほどメッセージ処理の待機時間が長くなる可能性があります。 値が低くなるほどストレージ コストが高くなる可能性があります。これは、ストレージ トランザクションが増加するからです。|
-|azureStorageConnectionStringName |AzureWebJobsStorage|基になる Azure Storage リソースの管理に使用される Azure Storage 接続文字列を含むアプリ設定の名前。|
+|connectionStringName (2.x)<br/>azureStorageConnectionStringName (1.x) |AzureWebJobsStorage|基になる Azure Storage リソースの管理に使用される Azure Storage 接続文字列を含むアプリ設定の名前。|
 |azureStorageConnectionStringName||履歴テーブルとインスタンス テーブルに使用する接続文字列の名前。 指定しない場合は、`connectionStringName` (Durable 2.x) または `azureStorageConnectionStringName` (Durable 1.x) 接続が使用されます。|
 |trackingStoreNamePrefix||`trackingStoreConnectionStringName` が指定されているときに履歴テーブルとインスタンス テーブルに使用されるプレフィックス。 設定されていない場合、既定のプレフィックス値は `DurableTask` になります。 `trackingStoreConnectionStringName` が指定されていない場合、履歴テーブルとインスタンス テーブルは `hubName` 値をプレフィックスとして使用し、`trackingStoreNamePrefix` の設定はすべて無視されます。|
 |traceInputsAndOutputs |false|関数呼び出しの入力と出力をトレースするかどうかを示す値。 関数の実行イベントをトレースした場合の既定の動作では、関数呼び出しのシリアル化された入力および出力のバイト数が記録されます。 この動作により、ログが肥大化することも、機密情報が誤って公開されることもなく、入力および出力に関する最小限の情報が示されます。 このプロパティを true に設定すると、既定の関数ログ記録によって、関数の入力および出力の内容全体がログに記録されます。|
-|logReplayEvents|false|オーケストレーションの再生イベントを Application Insights に書き込むかどうかを示す値。|
+|traceReplayEvents|false|オーケストレーションの再生イベントを Application Insights に書き込むかどうかを示す値。|
 |eventGridTopicEndpoint ||Azure Event Grid カスタム トピック エンドポイントの URL。 このプロパティが設定されている場合は、オーケストレーションのライフ サイクル通知イベントがこのエンドポイントに発行されます。 このプロパティは、アプリ設定の解決をサポートします。|
 |eventGridKeySettingName ||`EventGridTopicEndpoint` での Azure Event Grid カスタム トピックによる認証に使用されるキーを含むアプリ設定の名前。|
 |eventGridPublishRetryCount|0|Event Grid トピックへの発行が失敗した場合に再試行する回数。|

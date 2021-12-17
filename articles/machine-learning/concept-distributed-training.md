@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: f87175500fcf5bdbcf9a5c2f499f6bab96b37b63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 517eb0a0abfc00349b42e1948192ad53baca9c8b
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102498967"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122603701"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure Machine Learning を使用した分散トレーニング
 
@@ -24,11 +24,12 @@ ms.locfileid: "102498967"
 
 ## <a name="deep-learning-and-distributed-training"></a>ディープ ラーニングと分散トレーニング 
 
-分散トレーニングには主に、[データ並列](#data-parallelism)と[モデル並列](#model-parallelism)の 2 つの種類があります。 ディープ ラーニング モデルにおける分散トレーニングでは、[Azure Machine Learning SDK in Python](/python/api/overview/azure/ml/intro) は、人気のあるフレームワークの PyTorch および TensorFlow との統合をサポートしています。 どちらのフレームワークも、分散トレーニングにおいてデータ並列を採用しており、コンピューティング速度を最適化するために [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) を活用できます。 
+分散トレーニングには主に、[データ並列](#data-parallelism)と[モデル並列](#model-parallelism)の 2 つの種類があります。 ディープ ラーニング モデルにおける分散トレーニングでは、[Azure Machine Learning SDK in Python](/python/api/overview/azure/ml/intro) は、人気のあるフレームワークの PyTorch および TensorFlow との統合をサポートしています。 どちらのフレームワークも、分散トレーニングにおいてデータ並列を採用しており、コンピューティング速度を最適化するために [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) を活用できます。
 
-* [PyTorch を使用した分散トレーニング](how-to-train-pytorch.md#distributed-training)
 
-* [TensorFlow を使用した分散トレーニング](how-to-train-tensorflow.md#distributed-training)
+* [PyTorch を使用した分散トレーニング](how-to-train-distributed-gpu.md#pytorch)
+
+* [TensorFlow を使用した分散トレーニング](how-to-train-distributed-gpu.md#tensorflow)
 
 分散トレーニングを必要としない ML モデルについては、Python SDK を使用してモデルをトレーニングするさまざまな方法について、「[Azure Machine Learning を使用してモデルをトレーニングする](concept-train-machine-learning-model.md#python-sdk)」を参照してください。
 
@@ -52,5 +53,4 @@ ms.locfileid: "102498967"
 
 * Python SDK を利用し、[モデル トレーニング用のコンピューティング ターゲットを使用する](how-to-set-up-training-targets.md)方法について学習します。
 * 技術的な例については、[リファレンス アーキテクチャ シナリオ](/azure/architecture/reference-architectures/ai/training-deep-learning)を参照してください。
-* [TensorFlow を使用して ML モデルをトレーニングする](how-to-train-tensorflow.md)。
-* [PyTorch を使用してモデルをトレーニングする](how-to-train-pytorch.md)。
+* [分散 GPU トレーニング ガイド](how-to-train-distributed-gpu.md)で MPI、TensorFlow、PyTorch に関するヒントを検索する 

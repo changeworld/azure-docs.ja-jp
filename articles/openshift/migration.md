@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: 移行、aro、OpenShift、Red Hat
-ms.openlocfilehash: 371672de83a6d745d7b367f8327a64e11059923e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f166b393350971a48b23420daa9917b6ba7bbe1
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653280"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038042"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 3.11 から Azure Red Hat OpenShift 4 への移行
 
@@ -94,7 +94,7 @@ Azure Red Hat OpenShift 4 では、次の PersistentVolume プラグインがサ
 - NFS
 - Red Hat OpenShift Container Storage
 
-これらのストレージの種類の構成の詳細については、[永続ストレージの構成](https://access.redhat.com/documentation/azure_red_hat_openshift/4/html/storage/configuring-persistent-storage)に関するページを参照してください。
+これらのストレージの種類の構成の詳細については、[永続ストレージの構成](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.7/html/storage/configuring-persistent-storage)に関するページを参照してください。
 
 ### <a name="registry"></a>レジストリ
 

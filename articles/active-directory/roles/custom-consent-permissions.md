@@ -12,20 +12,20 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
-ms.openlocfilehash: f9c2c15bbfcf9a9271e629ef26c11ecc4cbaaa6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b920df34358c83fa69274f0d7b52f889cd15010
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98740110"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724828"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するアプリへの同意のアクセス許可
 
 この記事では、Azure Active Directory (Azure AD) のカスタム ロールの定義に対して現在利用可能なアプリへの同意のアクセス許可について説明します。 この記事には、アプリへの同意とアクセス許可に関連したいくつかの一般的なシナリオに必要なアクセス許可が記載されています。
 
-## <a name="required-license-plan"></a>必要とされるライセンス プラン
+## <a name="license-requirements"></a>ライセンスの要件
 
-この機能を使用するためには、Azure AD 組織に Azure AD Premium P1 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="app-consent-permissions"></a>アプリへの同意のアクセス許可
 
@@ -34,7 +34,7 @@ ms.locfileid: "98740110"
 > [!NOTE]
 > 現在、この記事に記載されているアクセス許可を、Azure AD 管理ポータルからカスタム ディレクトリ ロールの定義に追加することはできません。 この記事に記載されているアクセス許可を有する[カスタム ディレクトリ ロールは、Azure AD PowerShell を使用して作成](custom-create.md#create-a-role-using-powershell)する必要があります。
 
-### <a name="granting-delegated-permissions-to-apps-on-behalf-of-self-user-consent"></a>自己の代理となるアプリに、委任されたアクセス許可を付与する (ユーザーの同意)
+#### <a name="granting-delegated-permissions-to-apps-on-behalf-of-self-user-consent"></a>自己の代理となるアプリに、委任されたアクセス許可を付与する (ユーザーの同意)
 
 アプリへの同意ポリシーの適用を条件に、自己の代理となることへの同意 (ユーザーの同意) をユーザーがアプリケーションに与えられるようにします。
 
@@ -44,7 +44,7 @@ ms.locfileid: "98740110"
 
 たとえば、`microsoft-user-default-low` という ID を持つ、組み込みのアプリへの同意ポリシーが適用されることを条件に、アプリが自己の代理となることへの同意をユーザーが与えられるようにするには、`...managePermissionGrantsForSelf.microsoft-user-default-low` というアクセス許可を使用することになります。
 
-### <a name="granting-permissions-to-apps-on-behalf-of-all-admin-consent"></a>すべてのユーザーの代理となるアプリにアクセス許可を付与する (管理者の同意)
+#### <a name="granting-permissions-to-apps-on-behalf-of-all-admin-consent"></a>すべてのユーザーの代理となるアプリにアクセス許可を付与する (管理者の同意)
 
 委任されたアクセス許可とアプリケーションのアクセス許可 (アプリ ロール) の両方について、テナント全体の管理者の同意をアプリに委任します。
 
@@ -54,7 +54,7 @@ ms.locfileid: "98740110"
 
 たとえば、`low-risk-any-app` という ID を持つ、カスタムの[アプリへの同意ポリシー](../manage-apps/manage-app-consent-policies.md)が適用されることを条件に、ロールを割り当てられたユーザーが、テナント全体の管理者の同意をアプリに付与できるようにするには、`microsoft.directory/servicePrincipals/managePermissionGrantsForAll.low-risk-any-app` というアクセス許可を使用することになります。
 
-### <a name="managing-app-consent-policies"></a>アプリへの同意ポリシーを管理する
+#### <a name="managing-app-consent-policies"></a>アプリへの同意ポリシーを管理する
 
 [アプリへの同意ポリシー](../manage-apps/manage-app-consent-policies.md)の作成、更新、削除を委任します。
 
@@ -65,14 +65,15 @@ ms.locfileid: "98740110"
 
 ## <a name="full-list-of-permissions"></a>アクセス許可の全一覧
 
-権限 | 説明
----------- | -----------
-microsoft.directory/servicePrincipals/managePermissionGrantsForSelf.{id} | 自己の代理となることへの同意 (ユーザーの同意) をアプリに与える権限が、アプリへの同意ポリシー `{id}` の適用を条件に付与されます。
-microsoft.directory/servicePrincipals/managePermissionGrantsForAll.{id} | すべてのユーザーの代理となることへの同意 (テナント全体の管理者の同意) をアプリに与える権限が、アプリへの同意ポリシー `{id}` の適用を条件に付与されます。
-microsoft.directory/permissionGrantPolicies/standard/read | アプリへの同意ポリシーの読み取り権限が付与されます。
-microsoft.directory/permissionGrantPolicies/basic/update | 既存のアプリへの同意ポリシーにある基本的なプロパティを更新する権限が付与されます。
-microsoft.directory/permissionGrantPolicies/create | アプリへの同意ポリシーの作成権限が付与されます。
-microsoft.directory/permissionGrantPolicies/delete | アプリへの同意ポリシーの削除権限が付与されます。
+> [!div class="mx-tableFixed"]
+> | 権限 | 説明 |
+> | ---------- | ----------- |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForSelf.{id} | 自己の代理となることへの同意 (ユーザーの同意) をアプリに与える権限が、アプリへの同意ポリシー `{id}` の適用を条件に付与されます。 |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForAll.{id} | すべてのユーザーの代理となることへの同意 (テナント全体の管理者の同意) をアプリに与える権限が、アプリへの同意ポリシー `{id}` の適用を条件に付与されます。 |
+> | microsoft.directory/permissionGrantPolicies/standard/read | アプリへの同意ポリシーの読み取り権限が付与されます。 |
+> | microsoft.directory/permissionGrantPolicies/basic/update | 既存のアプリへの同意ポリシーにある基本的なプロパティを更新する権限が付与されます。 |
+> | microsoft.directory/permissionGrantPolicies/create | アプリへの同意ポリシーの作成権限が付与されます。 |
+> | microsoft.directory/permissionGrantPolicies/delete | アプリへの同意ポリシーの削除権限が付与されます。 |
 
 ## <a name="next-steps"></a>次の手順
 

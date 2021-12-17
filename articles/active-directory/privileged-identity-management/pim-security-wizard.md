@@ -4,22 +4,23 @@ description: 検出と分析情報 (以前のセキュリティ ウィザード)
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/01/2020
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21331670a04dc94905af0f1535a5eb06e7f083ae
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92372431"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669608"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Azure AD ロールの検出と分析情報 (プレビュー) (以前のセキュリティ ウィザード)
 
@@ -68,4 +69,3 @@ Azure Active Directory (Azure AD) 組織内で Privileged Identity Management (P
 ## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)
-- [Privileged Identity Management を管理するために、他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)

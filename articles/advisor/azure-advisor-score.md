@@ -3,12 +3,12 @@ title: Advisor スコアを使用して Azure ワークロードを最適化す�
 description: Azure Advisor スコアを使用して Azure を最大限に活用します。
 ms.topic: article
 ms.date: 09/09/2020
-ms.openlocfilehash: 11b20bc3b4d604d3a7ff4608cd1c21f129c1cb6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc9bcee7d19d9e8ed7b550e7298d615d397c6f8b
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97630124"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484718"
 ---
 # <a name="optimize-azure-workloads-by-using-advisor-score"></a>Advisor スコアを使用して Azure ワークロードを最適化する
 
@@ -72,7 +72,7 @@ Advisor スコアの計算は、次の 4 つのステップにまとめること
    * 長期にわたる推奨事項が含まれるリソースでは、スコアに対する影響が大きくなります。
    * Advisor 上で延期または無視したリソースは、スコアの計算から完全に除かれます。
 
-Advisor は、このモデルを Advisor カテゴリ レベルで適用して、カテゴリごとに 1 つのアドバイザー スコアを付けます。 **セキュリティ** では、[セキュリティ スコア](../security-center/secure-score-security-controls.md#introduction-to-secure-score) モデルが使用されます。 単純平均により、最終的な Advisor スコアが生成されます。
+Advisor は、このモデルを Advisor カテゴリ レベルで適用して、カテゴリごとに 1 つのアドバイザー スコアを付けます。 **セキュリティ** では、[セキュリティ スコア](../defender-for-cloud/secure-score-security-controls.md#introduction-to-secure-score) モデルが使用されます。 単純平均により、最終的な Advisor スコアが生成されます。
 
 ## <a name="advisor-score-faqs"></a>Advisor スコアに関するよく寄せられる質問
 
@@ -98,7 +98,7 @@ Advisor からの推奨事項を無視すると、スコアの計算から除外
 
 ### <a name="why-did-my-score-change"></a>スコアが変更されたのはなぜですか。
 
-影響を受けたリソースを修復すると、Advisor によって推奨されているベスト プラクティスを採用したことで、スコアが変更される場合があります。 自分または自分のサブスクリプションに対するアクセス許可を持つユーザーが、リソースを変更または新規作成した場合に、スコアに変動が見られることもあります。 スコアは、すべてのリソースの総コストに対する、コストの影響を受けるリソースの比率に基づきます。
+Advisor が推奨するベスト プラクティスを採用して、影響を受けたリソースを修復すると、スコアが変更される場合があります。 自分または自分のサブスクリプションに対するアクセス許可を持つユーザーが、リソースを変更または新規作成した場合に、スコアに変動が見られることもあります。 スコアは、すべてのリソースの総コストに対する、コストの影響を受けるリソースの比率に基づきます。
 
 ### <a name="how-does-advisor-calculate-the-retail-cost-of-resources-on-a-subscription"></a>Advisor によって、サブスクリプションにおけるリソースのリテール コストは、どのように計算されますか?
 

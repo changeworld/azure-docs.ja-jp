@@ -3,13 +3,13 @@ title: Azure Kubernetes Service に関する一般的な問題のトラブルシ
 description: Azure Kubernetes Service (AKS) を使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
 services: container-service
 ms.topic: troubleshooting
-ms.date: 06/20/2020
-ms.openlocfilehash: 1d3dff19bd75bfa4e7564eb4b188ffe68d605025
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/24/2021
+ms.openlocfilehash: c21c5a981f091c9c4b0e340f3c0ae1481cd486c6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952033"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455912"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -22,7 +22,7 @@ Microsoft のエンジニアによって公開された、ポッド、ノード�
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>作成時またはアップグレード中に `quota exceeded` エラーが発生します。 どうすればよいですか。 
 
- [さらに多くのコアを要求します](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+ [さらに多くのコアを要求します](../azure-portal/supportability/regional-quota-requests.md)。
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>高度なネットワークを使用して AKS クラスターをデプロイしているときに `insufficientSubnetSize` エラーが発生します。 どうすればよいですか。
 
@@ -62,7 +62,7 @@ Microsoft のエンジニアによって公開された、ポッド、ノード�
 * ポッド自体。`kubectl describe pod <pod-name>` を使用します。
 * ログ。`kubectl logs <pod-name>` を使用します。
 
-ポッドの問題のトラブルシューティング方法について詳しくは、「[Debug applications (アプリケーションをデバッグする)](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)」をご覧ください。
+ポッドの問題のトラブルシューティングを行う方法の詳細については、Kubernetes ドキュメントの[ポッドのデバッグ](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)に関するページを参照してください。
 
 ## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>`kubectl` または API サーバーに接続する他のサードパーティ製ツールを使用すると、`TCP timeouts` が発生します
 AKS には、サービス レベル目標 (SLO) とサービス レベル アグリーメント (SLA) を保証するために、コア数に応じて垂直方向にスケーリングする HA コントロール プレーンがあります。 接続のタイムアウトが発生している場合は、以下を確認してください。
@@ -89,9 +89,25 @@ AKS には、サービス レベル目標 (SLO) とサービス レベル アグ
 
 API サーバーに接続するために、ポート 22、9000、および 1194 が開いていることを確認します。 `kubectl get pods --namespace kube-system` コマンドを使用して、`tunnelfront` または `aks-link` ポッドが *kube-system* 名前空間で実行されているかどうかを確認します。 そうでない場合は、ポッドを強制的に削除すると、再起動されます。
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>AKS API に接続するときに、クライアントから `"tls: client offered only unsupported versions"` を取得しています。   どうすればいいですか。
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>AKS API に接続するときに、クライアントから `"tls: client offered only unsupported versions"` を取得しています。 どうすればよいですか。
 
 AKS でサポートされる TLS の最小バージョンは TLS 1.2 です。
+
+## <a name="my-application-is-failing-with-argument-list-too-long"></a>アプリケーションが `argument list too long` で失敗している
+
+次のようなエラー メッセージが表示される場合があります。
+
+```
+standard_init_linux.go:228: exec user process caused: argument list too long
+```
+
+次の 2 つの原因が考えられます。
+- 実行可能ファイルに指定された引数リストが長すぎる
+- 実行可能ファイルに指定された環境変数のセットが大きすぎる
+
+1 つの名前空間に多数のサービスがデプロイされている場合、環境変数のリストが大きくなりすぎることがあり、Kubelet でその実行可能ファイルを実行しようとすると上記のエラー メッセージが生成されます。 このエラーが発生するのは、アクティブな各サービスのホストとポートを記録する環境変数が Kubelet によって挿入されたためです。これにより、サービスでこの情報を使用して別のサービスを見つけることができます (詳細については、[Kubernetes のドキュメント](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#accessing-the-service)を参照してください)。 
+
+回避策として、[ポッド仕様](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#podspec-v1-core)内で `enableServiceLinks: false` を設定することによって、この Kubelet の動作を無効にすることができます。**ただし**、サービスがこれらの環境変数に依存して他のサービスを特定している場合は、エラーが発生します。 1 つの解決策は、([CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/coredns/) を使用して) サービス解決に環境変数ではなく DNS を使用することです。 もう 1 つの方法は、アクティブになっているサービスの数を減らすことです。
 
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>アップグレードまたはスケーリングを行おうとすると、`"Changing property 'imageReference' is not allowed"` エラーが発生します。 この問題を解決するにはどうすればよいですか。
 
@@ -104,9 +120,9 @@ AKS クラスター内のエージェント ノードのタグを変更したこ
 このエラーは、複数の理由でクラスターがエラー状態になったときに発生します。 以前に失敗した操作を再試行する前に、次の手順に従ってクラスターのエラー状態を解決してください。
 
 1. クラスターが `failed` 状態から回復するまで、`upgrade` 操作と `scale` 操作は成功しません。 一般的な根本問題と解決策は次のとおりです。
-    * **計算 (CRP) クォータが不足** している状態でのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-portal/supportability/resource-manager-core-quotas-request.md)に従って計算クォータの引き上げを依頼します。
+    * **計算 (CRP) クォータが不足** している状態でのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-portal/supportability/regional-quota-requests.md)に従って計算クォータの引き上げを依頼します。
     * 高度なネットワーク リソースと **不十分なサブネット (ネットワーク) リソース** を使用したクラスターのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-resource-manager/templates/error-resource-quota.md#solution)に従ってリソース クォータの引き上げを依頼します。
-2. アップグレードの失敗の根本原因が解決されると、クラスターは成功状態になるはずです。 成功状態が確認されたら、元の操作を再試行します。
+2. アップグレードの失敗の根本的な原因を解決したら、元の操作を再試行します。 この再試行操作により、クラスターは成功した状態になるはずです。 
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>クラスターをアップグレードまたはスケーリングしようとしたときに、クラスターがアップグレード中であるか、アップグレードに失敗したというエラーが表示されます。
 
@@ -147,7 +163,7 @@ AKS クラスターを別のサブスクリプションに移動した場合、�
 * クラスター名は 1 ～ 63 文字にする必要があります。 使用できる文字は、英字、数字、ダッシュ、およびアンダースコアのみです。 先頭と末尾の文字は、文字または数字にしてください。
 * AKS Node/*MC_* リソース グループ名は、リソース グループ名とリソース名を結合します。 `MC_resourceGroupName_resourceName_AzureRegion` の自動生成された構文は、80 文字以内にする必要があります。 必要な場合は、リソース グループ名または AKS クラスター名の長さを短くします。 また、[ノード リソース グループ名をカスタマイズする](cluster-configuration.md#custom-resource-group-name)こともできます。
 * *dnsPrefix* の最初と最後は英数字の値にする必要があり、1 から 54 文字の間にする必要があります。 有効な文字には英数字の値とハイフン (-) が含まれます。 *dnsPrefix* にはピリオド (.) などの特殊文字を含めることはできません。
-* AKS ノード プール名はすべて小文字にする必要があり、linux ノード プールの場合は 1 - 11 文字、windows ノード プールの場合は 1 - 6 文字にする必要があります。 名前は英字で始める必要があり、使用できる文字は英数字のみです。
+* AKS ノード プール名はすべて小文字にする必要があり、Linux ノード プールの場合は 1 - 11 文字、Windows ノード プールの場合は 1 - 6 文字にする必要があります。 名前は英字で始める必要があり、使用できる文字は英数字のみです。
 * Linux ノードに管理者のユーザー名を設定する *admin-username* は、文字で始まる必要があります。文字、数字、ハイフン、アンダースコアのみを含めることができ、最大文字数は 64 文字です。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>クラスターを作成、更新、スケーリング、削除、またはアップグレードしようとすると、別の操作が進行中のためその操作は許可されませんというエラーを受け取ります。
@@ -215,6 +231,10 @@ Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The
 
 この[例](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)のように Azure Firewall を使用している場合は、この問題が発生する可能性があります。その理由は、アプリケーション ルールを使用したファイアウォール経由の有効期間の長い TCP 接続に、ファイアウォール上で Go `keepalives` を終了させるバグ (Q1CY21 で解決される) が存在することにあります。 この問題が解決されるまでは、(アプリケーション ルールではなく) ネットワーク ルールを AKS API サーバー IP に追加することで軽減できます。
 
+## <a name="when-resuming-my-cluster-after-a-stop-operation-why-is-my-node-count-not-in-the-autoscaler-min-and-max-range"></a>停止操作を実行した後でクラスターを再開するときに、ノード数が、自動スケーリングの最小数と最大数の間の範囲にないのはなぜですか。
+
+クラスターの自動スケーリングを使用している場合は、クラスターのバックアップを起動するときに、現在のノード数が、設定した最小数と最大数の間の範囲に収まらない場合があります。 これは正しい動作です。 クラスターは、ワークロードを実行するために必要なノード数で開始します。これは、オートスケーラー設定の影響を受けません。 クラスターでスケーリング操作が実行されるときに、この最小値と最大値は現在のノード数に反映され、やがて、クラスターのノード数は設定した範囲内に収まります。その後、クラスターを停止するまでこの範囲内にあります。
+
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure Storage および ASK のトラブルシューティング
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure Disk の MountOptions で UID と `GID` を設定するときにエラーが発生する
@@ -260,39 +280,15 @@ initContainers:
     mountPath: /data
 ```
 
-### <a name="azure-disk-detach-failure-leading-to-potential-race-condition-issue-and-invalid-data-disk-list"></a>競合状態の問題および無効なデータ ディスク リストにつながるAzure ディスクのデタッチの失敗
-
-Azure Disk のデタッチに失敗すると、エクスポネンシャル バックオフを使用してディスクのデタッチを最大 6 回再試行します。 また、データ ディスク リストにノード レベルのロックを約 3 分間保持します。 ディスク リストがその間に手動で更新された場合、ノード レベルのロックによって保持されていたディスク リストが古くなり、ノードが不安定になる可能性があります。
-
-この問題は、次のバージョンの Kubernetes で修正されました。
-
-| Kubernetes バージョン | 修正済みのバージョン |
-|--|:--:|
-| 1.12 | 1.12.9 以上 |
-| 1.13 | 1.13.6 以上 |
-| 1.14 | 1.14.2 以上 |
-| 1.15 以上 | 該当なし |
-
-この問題の修正プログラムがインストールされていないバージョンの Kubernetes を使用していて、ノードのディスク リストが古くなっている場合は、一括操作として VM からすべての存在しないディスクをデタッチすることで、軽減することが可能です。 **存在しないディスクを個別にデタッチすると失敗する場合があります。**
-
 ### <a name="large-number-of-azure-disks-causes-slow-attachdetach"></a>多数の Azure ディスクによってアタッチ/デタッチが遅くなる
 
-単一のノード VM を対象とする Azure ディスクのアタッチ/デタッチ操作の数が 10 を超える場合、またはその数が 3 を超え、単一の仮想マシン スケール セット プールを対象とする場合には、操作が順次実行されるために、予想よりも低速になることがあります。 この問題は既知の制限であり、現時点では回避策はありません。 [数を超える並列アタッチ/デタッチをサポートするための、ユーザーの声の項目はこちらです](https://feedback.azure.com/forums/216843-virtual-machines/suggestions/40444528-vmss-support-for-parallel-disk-attach-detach-for)。
+単一のノード VM を対象とする Azure ディスクのアタッチ/デタッチ操作の数が 10 を超える場合、またはその数が 3 を超え、単一の仮想マシン スケール セット プールを対象とする場合には、操作が順次実行されるために、予想よりも低速になることがあります。 この問題は、ツリー内 Azure Disk ドライバーの既知の制限です。 [Azure Disk CSI ドライバー](https://github.com/kubernetes-sigs/azuredisk-csi-driver)によって、バッチ操作でのディスクのアタッチ/デタッチに関するこの問題が解決されました。
 
 ### <a name="azure-disk-detach-failure-leading-to-potential-node-vm-in-failed-state"></a>エラー状態のノード VM につながる Azure Disk デタッチ エラー
 
 一部のエッジ ケースでは、Azure Disk のデタッチが部分的に失敗し、ノード VM がエラー状態のままになる場合があります。
 
-この問題は、次のバージョンの Kubernetes で修正されました。
-
-| Kubernetes バージョン | 修正済みのバージョン |
-|--|:--:|
-| 1.12 | 1.12.10 以上 |
-| 1.13 | 1.13.8 以上 |
-| 1.14 | 1.14.4 以上 |
-| 1.15 以上 | 該当なし |
-
-この問題の修正プログラムがインストールされていないバージョンの Kubernetes を使用していて、ノードがエラー状態である場合は、次のいずれかを使用して VM の状態を手動で更新することで、軽減が可能です。
+ノードがエラー状態である場合は、次のいずれかを使用して VM の状態を手動で更新することで、軽減できます。
 
 * 可用性セットベースのクラスターの場合:
     ```azurecli
@@ -306,21 +302,12 @@ Azure Disk のデタッチに失敗すると、エクスポネンシャル バ�
 
 ## <a name="azure-files-and-aks-troubleshooting"></a>Azure Files および AKS のトラブルシューティング
 
-### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>推奨される Kubernetes for Azure File の安定したバージョンは何ですか。
- 
-| Kubernetes バージョン | 推奨されるバージョン |
-|--|:--:|
-| 1.12 | 1.12.6 以上 |
-| 1.13 | 1.13.4 以上 |
-| 1.14 | 1.14.0 以上 |
-
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Azure Files を使用する場合の既定の mountOptions は何ですか。
 
 推奨設定
 
 | Kubernetes バージョン | fileMode および dirMode の値|
 |--|:--:|
-| 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 以上 | 0777 |
 
 ストレージ クラス オブジェクトでマウント オプションを指定できます。 次の例では、*0777* が設定されます。
@@ -383,24 +370,6 @@ persistentvolume-controller (combined from similar events): Failed to provision 
 
 [Azure Files で静的プロビジョニング](azure-files-volume.md)を使用することによって、この問題を軽減できます。
 
-### <a name="azure-files-fails-to-remount-in-windows-pod"></a>Windows ポッドで Azure Files を再マウントできない
-
-Azure Files がマウントされている Windows ポッドが削除され、同じノードで再作成されるようにスケジュールされている場合、マウントは失敗します。 このエラーは、Azure Files マウントが既にノードにマウントされているために `New-SmbGlobalMapping` コマンドが失敗することが原因で発生します。
-
-例えば、次のようなエラー メッセージが表示される場合があります。
-
-```console
-E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (\"42c0ea39-1af9-11e9-8941-000d3af95268\")" failed. No retries permitted until 2019-01-18 08:15:53.0410149 +0000 GMT m=+732.446642701 (durationBeforeRetry 1s). Error: "MountVolume.SetUp failed for volume \"pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (UniqueName: \"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\") pod \"deployment-azurefile-697f98d559-6zrlf\" (UID: \"42c0ea39-1af9-11e9-8941-000d3af95268\") : azureMount: SmbGlobalMapping failed: exit status 1, only SMB mount is supported now, output: \"New-SmbGlobalMapping : Generic failure \\r\\nAt line:1 char:190\\r\\n+ ... ser, $PWord;New-SmbGlobalMapping -RemotePath $Env:smbremotepath -Cred ...\\r\\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\r\\n    + CategoryInfo          : NotSpecified: (MSFT_SmbGlobalMapping:ROOT/Microsoft/...mbGlobalMapping) [New-SmbGlobalMa \\r\\n   pping], CimException\\r\\n    + FullyQualifiedErrorId : HRESULT 0x80041001,New-SmbGlobalMapping\\r\\n \\r\\n\""
-```
-
-この問題は、次のバージョンの Kubernetes で修正されました。
-
-| Kubernetes バージョン | 修正済みのバージョン |
-|--|:--:|
-| 1.12 | 1.12.6 以上 |
-| 1.13 | 1.13.4 以上 |
-| 1.14 以上 | 該当なし |
-
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>ストレージ アカウント キーが変更されたため Azure Files マウントが失敗する
 
 ストレージ アカウント キーが変更されている場合、Azure Files マウント エラーが発生することがあります。
@@ -432,14 +401,10 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 
 このエラーは、上流クラスターのオートスケーラー競合状態が原因で発生します。 このような場合、クラスター オートスケーラーは実際にクラスター内にあるものとは異なる値で終了します。 この状態を修正するには、[クラスター オートスケーラー][cluster-autoscaler]を無効にしてから再度有効にします。
 
-### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>低速のディスクの接続では、`GetAzureDiskLun` の実行に 10 分から 15 分かかり、エラーが発生します
-
-Kubernetes の **1.15.0 より古いバージョン** では、**WaitForAttach でディスクの LUN を見つけることができない** などのエラーが発生する場合があります。  この問題を回避するには、約 15 分間待機してから再試行します。
-
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>kubernetes.io プレフィックスでノード ラベルを使用すると、Kubernetes 1.16 へのアップグレードが失敗するのはなぜですか
 
-Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) では、kubelet でノードに適用できるのは、[kubernetes.io プレフィックスで定義されているラベルのサブセットのみ](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/)です。 AKS では、影響を受けるワークロードにダウンタイムが発生する可能性があるため、ユーザーの同意なしにアクティブなラベルを自動的に削除することはできません。
+Kubernetes 1.16 では、kubelet でノードに適用できるのは、[kubernetes.io プレフィックスで定義されているラベルのサブセットのみ](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/)です。 AKS では、影響を受けるワークロードにダウンタイムが発生する可能性があるため、ユーザーの同意なしにアクティブなラベルを自動的に削除することはできません。
 
 そのため、次のようにしてこの問題を回避できます。
 
@@ -452,5 +417,5 @@ AKS により、この軽減策を改善するために、ノード プールで
 
 
 <!-- LINKS - internal -->
-[view-master-logs]: ./view-control-plane-logs.md
+[view-master-logs]: monitor-aks-reference.md#resource-logs
 [cluster-autoscaler]: cluster-autoscaler.md

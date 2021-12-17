@@ -1,30 +1,33 @@
 ---
-title: 'Azure VPN Gateway: 構成設定'
-description: Resource Manager デプロイ モデルで作成された仮想ネットワーク用の VPN Gateway のリソースと設定について説明します。
+title: Azure VPN Gateway の構成設定
+description: VPN Gateway のリソースおよび構成設定について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/21/2020
+ms.date: 07/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1aba87b2139fb8a7d395fb3180d2074e47310fa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ce7cd023527f18015d460727c54f0c04dae9df31
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010814"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729584"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 
 VPN ゲートウェイは、仮想ネットワークとオンプレミスの場所の間でパブリック接続を使って暗号化されたトラフィックを送信する仮想ネットワーク ゲートウェイの一種です。 VPN ゲートウェイを使用して、Azure バックボーン経由で仮想ネットワーク間にトラフィックを送信できます。
 
-VPN Gateway の接続は複数のリソースの構成に依存し、それぞれに構成可能な設定が含まれます。 このセクションでは、Resource Manager デプロイ モデルに作成される仮想ネットワークの VPN ゲートウェイに関するリソースと設定について説明します。 各接続ソリューションの説明とトポロジ ダイアグラムについては、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」をご覧ください。
+VPN Gateway の接続は複数のリソースの構成に依存し、それぞれに構成可能な設定が含まれます。 この記事の各セクションでは、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)で作成された仮想ネットワークの VPN ゲートウェイに関連するリソースと設定について説明します。 各接続ソリューションの説明とトポロジ ダイアグラムについては、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」をご覧ください。
 
 この記事の値は、VPN ゲートウェイ (-GatewayType Vpn を使用する仮想ネットワーク ゲートウェイ) に適用されます。 この記事では、すべてのゲートウェイの種類またはゾーン冗長ゲートウェイについては説明されていません。
 
 * -GatewayType 'ExpressRoute' に適用される値については、「[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](../expressroute/expressroute-about-virtual-network-gateways.md)」をご覧ください。
 
 * ゾーン冗長ゲートウェイについては、[ゾーン冗長ゲートウェイについて](about-zone-redundant-vnet-gateways.md)の記事をご覧ください。
+
+* アクティブ/アクティブ ゲートウェイについては、[高可用性接続](vpn-gateway-highlyavailable.md)に関するページを参照してください。
 
 * 仮想 WAN については、「[Virtual WAN について](../virtual-wan/virtual-wan-about.md)」をご覧ください。
 
@@ -75,7 +78,7 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 ###  <a name="resizing-or-changing-a-sku"></a><a name="resizechange"></a>SKU のサイズ変更または変更
 
-VPN ゲートウェイがあり、別のゲートウェイ SKU を使用する場合、使用可能なオプションは、ゲートウェイ SKU のサイズを変更するか、別の SKU に変更することです。 別のゲートウェイ SKU に変更する場合、既存のゲートウェイを完全に削除して、新しいゲートウェイを作成します。 ゲートウェイの作成には、最大で 45 分かかる場合があります。 これと比較して、ゲートウェイ SKU のサイズを変更する場合は、ゲートウェイを削除して再構築する必要がないため、ダウンタイムはあまりありません。 ゲートウェイ SKU を変更する代わりにサイズを変更するオプションが利用できる場合は、そのオプションを利用するようにしてください。 ただし、サイズ変更に関する以下の規則があります。
+VPN ゲートウェイがあり、別のゲートウェイ SKU を使用する場合、使用可能なオプションは、ゲートウェイ SKU のサイズを変更するか、別の SKU に変更することです。 別のゲートウェイ SKU に変更する場合、既存のゲートウェイを完全に削除して、新しいゲートウェイを作成します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。 これと比較して、ゲートウェイ SKU のサイズを変更する場合は、ゲートウェイを削除して再構築する必要がないため、ダウンタイムはあまりありません。 ゲートウェイ SKU を変更する代わりにサイズを変更するオプションが利用できる場合は、そのオプションを利用するようにしてください。 ただし、サイズ変更に関する以下の規則があります。
 
 1. Basic SKU を除き、同じ世代 (Generation1 または Generation2) 内で VPN ゲートウェイ SKU を別の VPN ゲートウェイ SKU にサイズ変更することができます。 たとえば、Generation1 の VpnGw1 は Generation1 の VpnGw2 にサイズ変更できますが、Generation2 の VpnGw2 にはサイズ変更できません。
 2. 古いゲートウェイ SKU では、Basic、Standard、HighPerformance SKU の間でサイズ変更できます。
@@ -97,7 +100,7 @@ VPN ゲートウェイがあり、別のゲートウェイ SKU を使用する�
 
 ## <a name="connection-types"></a><a name="connectiontype"></a>接続の種類
 
-Resource Manager デプロイ モデルの各構成では、仮想ネットワーク ゲートウェイの接続の種類を指定する必要があります。 `-ConnectionType` に使用できる Resource Manager PowerShell 値は次のとおりです。
+[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)の各構成では、仮想ネットワーク ゲートウェイの接続の種類を指定する必要があります。 `-ConnectionType` に使用できる Resource Manager PowerShell 値は次のとおりです。
 
 * IPsec
 * Vnet2Vnet

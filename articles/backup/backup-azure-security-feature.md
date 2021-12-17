@@ -3,13 +3,16 @@ title: ハイブリッド バックアップを保護するセキュリティ機
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します
 ms.reviewer: utraghuv
 ms.topic: conceptual
-ms.date: 06/08/2017
-ms.openlocfilehash: 8c671b1b54b937f518f7179bb6940f31a28a78d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: eebf21c5b967d08d3f38eef74239dbff0e3d4e7d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841020"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443428"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 
@@ -20,15 +23,18 @@ ms.locfileid: "94841020"
 - **復旧**。 削除日から 14 日間は、削除されたバックアップ データが保持されます。 これにより、特定の期間内のデータの復旧性が確保され、攻撃が行われてもデータが失われることはありません。 また、保持される最小復旧ポイントの数が非常に増えたため、データの破損を防ぐことができます。
 
 > [!NOTE]
-> サービスとしてのインフラストラクチャ (IaaS) VM バックアップを使用している場合は、セキュリティ機能を有効にしないでください。 現時点ではこれらの機能を IaaS VM バックアップで使用することはできません。そのため、これらの機能を有効にしても効果はありません。 セキュリティ機能は、次に示す機能を使用している場合にのみ有効にする必要があります。 <br/>
->
-> - **Azure Backup エージェント**。 エージェントの最小バージョンは 2.0.9052 です。 これらの機能を有効にした後、重要な操作を実行するためにエージェントをこのバージョンにアップグレードする必要があります。 <br/>
-> - **Azure Backup Server**。 Azure Backup エージェントの最小バージョンは 2.0.9052 (Azure Backup Server Update 1) です。 <br/>
-> - **System Center Data Protection Manager**。 Azure Backup エージェントの最小バージョンは 2.0.9052 (Data Protection Manager 2012 R2 UR12 または Data Protection Manager 2016 UR2) です。 <br/>
+> これらの機能は、Recovery Services コンテナーでのみ使用できます。 新しく作成されるすべての Recovery Services コンテナーでは、これらの機能が既定で有効になります。 既存の Recovery Services コンテナーでは、次のセクションで説明する手順に従ってこれらの機能を有効にできます。 機能が有効になったら、そのコンテナーに登録されているすべての Recovery Services エージェント コンピューター、Azure Backup Server インスタンス、および Data Protection Manager サーバーに機能が適用されます。
 
-> [!NOTE]
-> これらの機能は、Recovery Services コンテナーでのみ使用できます。 新しく作成されるすべての Recovery Services コンテナーでは、これらの機能が既定で有効になります。 既存の Recovery Services コンテナーでは、次のセクションで説明する手順に従ってこれらの機能を有効にできます。 機能が有効になったら、そのコンテナーに登録されているすべての Recovery Services エージェント コンピューター、Azure Backup Server インスタンス、および Data Protection Manager サーバーに機能が適用されます。 この設定の有効化は 1 回限りの操作であり、これらの機能を有効にした後で無効にすることはできません。
->
+## <a name="minimum-version-requirements"></a>最小バージョンの要件
+
+次を使用している場合にのみ、セキュリティ機能を有効にしてください。
+
+- **Azure Backup エージェント**: エージェントの最小バージョンは _2.0.9052_ です。 これらの機能を有効にした後、重要な操作を実行するためにエージェンのバージョンをアップグレードしてください。
+- **Azure Backup Server**: Azure Backup エージェントの最小バージョンは _2.0.9052_ _(Azure Backup Server Update 1)_ です。
+- **System Center Data Protection Manager**: Azure Backup エージェントの最小バージョンは _2.0.9052_ _(Data Protection Manager 2012 R2 UR12_/ _Data Protection Manager 2016 UR2)_ です。
+
+>[!Note]
+>サービスとしてのインフラストラクチャ (IaaS) VM バックアップを使用している場合は、セキュリティ機能を有効にしないでください。 現時点では、これらの機能は IaaS VM バックアップでは使用できないため、有効にしても効果はありません。
 
 ## <a name="enable-security-features"></a>セキュリティ機能の有効化
 
@@ -51,13 +57,13 @@ Recovery Services コンテナーを作成している場合、すべてのセ�
 5. **[Have you configured Azure AD Multi-Factor Authentication?]\(Azure AD Multi-Factor Authentication を構成しましたか?\)]** ドロップダウン リストから値を選択して、[Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) を有効にしたかどうかを確認します。 有効にした場合は、Azure portal へのサインイン時に別のデバイス (携帯電話など) から認証を実行するように求められます。
 
    Backup で重要な操作を実行する場合、Azure Portal で使用可能なセキュリティ PIN を入力する必要があります。 Azure AD Multi-Factor Authentication を有効にすると、セキュリティ レイヤーが追加されます。 有効な Azure 資格情報を持ち、2 番目のデバイスから認証された承認済みのユーザーのみが Azure Portal にアクセスできます。
-6. セキュリティ設定を保存するには、 **[有効]** を選択して、 **[保存]** を選択します。 **有効** を選択できるのは、前の手順で **Have you configured Azure AD Multi-Factor Authentication?\(Azure AD Multi-Factor Authentication を構成しましたか?\)** リストから値を選択した場合のみです。
+6. セキュリティ設定を保存するには、 **[有効]** を選択して、 **[保存]** を選択します。
 
     ![セキュリティ設定のスクリーンショット](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
 ## <a name="recover-deleted-backup-data"></a>削除されたバックアップ データの復旧
 
-Backup では、削除されたバックアップ データが 14 日間保持され、**バックアップの停止 (バックアップ データの削除を含む)** 操作を実行した場合でも、データがすぐに削除されることはありません。 14 日以内にこのデータを復元するには、使用しているものに応じて次の手順を実行します。
+セキュリティ機能の設定が有効になっている場合、Azure Backup は削除されたバックアップ データを 14 日間保持し、バックアップ データの削除操作によるバックアップの停止操作が実行された場合は直ちに削除しません。 14 日以内にこのデータを復元するには、使用しているものに応じて次の手順を実行します。
 
 **Azure Recovery Services エージェント** ユーザーの場合:
 
@@ -83,8 +89,10 @@ Backup では、削除されたバックアップ データが 14 日間保持�
 重要な操作の認証レイヤー追加の一環として、**保護の停止 (データの削除を含む)** 操作や **パスフレーズの変更** 操作の実行時に、セキュリティ PIN の入力が求められます。
 
 > [!NOTE]
->
-> 現時点、セキュリティ PIN は、DPM および MABS の **保護の停止 (データの削除を含む)** ではサポートされていません。
+> 現在、次の DPM および MABS バージョンでは、オンライン ストレージへの **[データを削除して保護を停止]** に対してセキュリティ PIN がサポートされています。
+>- DPM 2016 UR9 以降
+>- DPM 2019 UR1 以降
+>- MABS v3 UR1 以降 
 
 この PIN を受け取るには次のようにします。
 
@@ -114,7 +122,7 @@ Backup では、削除されたバックアップ データが 14 日間保持�
 | --- | --- | --- |
 | ポリシーの変更 |バックアップ ポリシーを変更できませんでした。 エラー:サービスの内部エラー [0x29834] が発生したため、現在の操作を実行できませんでした。 しばらくしてから、操作をやり直してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |**原因:**<br/>このエラーは、セキュリティ設定が有効になっており、リテンション範囲を上記の最小値を下回るように減らそうとしたものの、サポートされていないバージョンを使用している場合に発生します (サポート対象のバージョンは、この記事の最初の「注意」に記載されています)。 <br/>**推奨される操作:**<br/> このケースでは、指定した最小リテンション期間 (日次の場合は 7 日間、週次の場合は 4 週間、月次の場合は 3 か月、年次の場合は 1 年) を上回るようにリテンション期間を設定し、ポリシー関連の更新を進めます。 必要に応じて、バックアップ エージェント、Azure Backup Server、または DPM UR を更新して、すべてのセキュリティ更新プログラムを適用する方法もお勧めです。 |
 | パスフレーズの変更 |入力されたセキュリティ PIN が正しくありません。 (ID: 100130) この操作を完了するには、正しいセキュリティ PIN を指定してください。 |**原因:**<br/> このエラーは、重大な操作 (パスフレーズの変更など) を実行している間に、無効または有効期限の切れたセキュリティ PIN を入力すると発生します。 <br/>**推奨される操作:**<br/> 操作を完了するには、有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure portal にサインインし、Recovery Services コンテナーで [設定]、[プロパティ]、[セキュリティ PIN の生成] の順に移動します。 パスフレーズの変更にはこの PIN を使用します。 |
-| パスフレーズの変更 |操作に失敗しました。 ID: 120002 |**原因:**<br/>このエラーは、セキュリティ設定が有効になっており、パスフレーズを変更しようとしたものの、サポートされていないバージョンを使用している場合に発生します (サポート対象のバージョンは、この記事の最初の「注意」に記載されています)。<br/>**推奨される操作:**<br/> パスフレーズを変更するには、まずバックアップ エージェントを 2.0.9052 以上、Azure Backup Server を update 1 以上、DPM を 2012 R2 UR12 または DPM 2016 UR2 (以下のリンクからダウンロード) に更新してから有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure portal にサインインし、Recovery Services コンテナーで [設定]、[プロパティ]、[セキュリティ PIN の生成] の順に移動します。 パスフレーズの変更にはこの PIN を使用します。 |
+| パスフレーズの変更 |操作に失敗しました。 ID: 120002 |**原因:**<br/>このエラーは、セキュリティ設定が有効になっており、パスフレーズを変更しようとしたものの、サポートされていないバージョンを使用している場合に発生します (サポート対象のバージョンは、この記事の最初の「注意」に記載されています)。<br/>**推奨される操作:**<br/> パスフレーズを変更するには、まず Backup エージェントをバージョン 2.0.9052 以上に、Azure Backup Server を Update 1 以上に、DPM を DPM 2012 R2 UR12 または DPM 2016 UR2 (以下のダウンロード リンク) 以上に更新してから、有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure portal にサインインし、Recovery Services コンテナーで [設定]、[プロパティ]、[セキュリティ PIN の生成] の順に移動します。 パスフレーズの変更にはこの PIN を使用します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

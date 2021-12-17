@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 450a089c6cc1c77ac26cb0aa339277d5c49b41c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 26d2b6123e40f163d261009ff1c2f706f7597825
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594786"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309607"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL の統計
 
@@ -205,7 +205,7 @@ CREATE STATISTICS col1_stats
 ```sql
 CREATE STATISTICS col1_stats
     ON dbo.table1 (col1)
-    WITH SAMPLE = 50 PERCENT;
+    WITH SAMPLE 50 PERCENT;
 ```
 
 #### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>一部の行のみの単一列統計の作成
@@ -233,7 +233,7 @@ CREATE STATISTICS stats_col1
 CREATE STATISTICS stats_col1
     ON table1 (col1)
     WHERE col1 > '2000101' AND col1 < '20001231'
-    WITH SAMPLE = 50 PERCENT;
+    WITH SAMPLE 50 PERCENT;
 ```
 
 詳細については、「[CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true)」をご覧ください。
@@ -251,10 +251,10 @@ CREATE STATISTICS stats_col1
 CREATE STATISTICS stats_2cols
     ON table1 (product_category, product_sub_category)
     WHERE product_category > '2000101' AND product_category < '20001231'
-    WITH SAMPLE = 50 PERCENT;
+    WITH SAMPLE 50 PERCENT;
 ```
 
-*product\_category* と *product\_sub\_category* の間には相関関係が存在するため、これらの列に同時にアクセスする場合は複数列統計オブジェクトが役立ちます。
+*product\_category* と *product\_sub\_category* の間には相関関係が存在するため、これらの列に同時にアクセスする場合は複数列統計オブジェクトが役立ちます。 このテーブルに対してクエリを実行すると、複数列統計では、結合、GROUP BY 集計、個別のカウント、WHERE フィルターのカーディナリティ推定が向上します (プライマリ統計列がフィルターに含まれる場合)。
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>テーブルのすべての列の統計の作成
 
@@ -884,6 +884,6 @@ WHERE   st.[user_created] = 1
 
 ## <a name="next-steps"></a>次のステップ
 
-専用 SQL プールのクエリのパフォーマンスをさらに向上させる方法については、[ワークロードの監視](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)と[専用 SQL プールのベスト プラクティス](best-practices-dedicated-sql-pool.md#maintain-statistics)に関するページを参照してください。
+専用 SQL プールのクエリのパフォーマンスをさらに向上させる方法については、[ワークロードの監視](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?context=/azure/synapse-analytics/context/context)と[専用 SQL プールのベスト プラクティス](best-practices-dedicated-sql-pool.md#maintain-statistics)に関するページを参照してください。
 
 サーバーレス SQL プールのクエリのパフォーマンスをさらに向上させる方法については、[サーバーレス SQL プールのベスト プラクティス](best-practices-serverless-sql-pool.md)に関するページを参照してください。

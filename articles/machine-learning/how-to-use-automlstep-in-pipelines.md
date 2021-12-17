@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: AutoMLStep では、パイプラインで自動機械学習を使用することができます。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.author: laobri
 author: lobrien
 manager: cgronlun
-ms.date: 02/28/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: 0de3c9a7cf464f38a1a12d8bc19451fb1158a5ad
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python, automl
+ms.openlocfilehash: a3b1adb3a60b40b027b844230d7c6fca64d8cbe4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520508"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553306"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python の Azure Machine Learning パイプラインで自動 ML を使用する
 
@@ -25,7 +25,7 @@ Azure Machine Learning の自動 ML 機能は、考えられる方法をすべ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
 * Azure Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。  
 
@@ -248,7 +248,7 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 |`OutputTabularDatasetConfig`| パフォーマンスが高い | 
 || `OutputFileDatasetConfig` からの自然なルート | 
 || パイプラインの実行後にデータが永続化されない |
-|| [`OutputTabularDatasetConfig` 手法を示す Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
+||  |
 | 登録済み `Dataset` | パフォーマンスが低い |
 | | さまざまな方法で生成できる | 
 | | データが永続化され、ワークスペース全体で表示される |
@@ -450,7 +450,7 @@ with open(model_filename, "rb" ) as f:
 # ... inferencing code not shown ...
 ```
 
-既存のモデルの読み込みと操作の詳細については、「[Azure Machine Learning で既存のモデルを使用する](how-to-deploy-existing-model.md)」を参照してください。
+既存のモデルの読み込みと操作の詳細については、「[Azure Machine Learning で既存のモデルを使用する](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="download-the-results-of-an-automated-ml-run"></a>自動 ML 実行の結果をダウンロードする
 

@@ -9,26 +9,28 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/3/2020
+ms.date: 10/18/2021
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: cfbcc8523ff1d5858317a3654b58ec7b2d23607a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q4, aaddev
+ms.openlocfilehash: 94abf8e362dabea48c0fa20c488d7b1ca3c70093
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99582028"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451789"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報
 
 Microsoft ID プラットフォームでは、OAuth 2.0 [クライアント資格情報付与](v2-oauth2-client-creds-grant-flow.md)フローや [On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) (OBO) フローなど、クライアント シークレットを使用できるあらゆる場所で、アプリケーションが認証用の独自の資格情報を使用することが許可されています。
 
-アプリケーションが認証を行うために使用できる資格情報の 1 つの形式は、アプリケーションが所有する証明書を使用して署名された [JSON Web トークン](./security-tokens.md#json-web-tokens-and-claims) (JWT) アサーションです。
+アプリケーションが認証を行うために使用できる資格情報の 1 つの形式は、アプリケーションが所有する証明書を使用して署名された [JSON Web トークン](./security-tokens.md#json-web-tokens-and-claims) (JWT) アサーションです。 これについては、`private_key_jwt`クライアント認証オプションの[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)仕様」を参照してください。
+
+アプリケーションの資格情報として別の id プロバイダーによって発行された JWT の使用に関心がある場合は、[ワークロード IDフェデレーション](workload-identity-federation.md)でフェデレーションポリシーを設定する方法を参照してください。
 
 ## <a name="assertion-format"></a>アサーションの形式
 
-アサーションを計算するには、自分が選択した言語の多数ある JWT ライブラリの中からいずれかを使用できます。[MSAL は、`.WithCertificate()` のこのような使用をサポートしています](msal-net-client-assertions.md)。 この情報は、トークンによって[ヘッダー](#header)、[要求](#claims-payload)、および[署名](#signature)で伝達されます。
+アサーションを計算するには、自分が選択した言語の多数ある JWT ライブラリの中からいずれかを使用できます。[MSAL は、`.WithCertificate()` のこのような使用をサポートしています](msal-net-client-assertions.md)。 この情報は、トークンによってヘッダー、要求、および署名で伝達されます。
 
 ### <a name="header"></a>ヘッダー
 
@@ -42,12 +44,12 @@ Microsoft ID プラットフォームでは、OAuth 2.0 [クライアント資�
 
 要求の種類 | 値 | 説明
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "aud" (対象ユーザー) 要求では、JWT が意図する受信者 (ここでは Azure AD) を指定します。[[RFC 7519、セクション 4.1.3]](https://tools.ietf.org/html/rfc7519#section-4.1.3) を参照してください。  この場合、その受信者はログイン サーバー (login.microsoftonline.com) です。
-exp | 1601519414 | "exp" (有効期限) 要求は、JWT の処理を受け入れることができなくなる時刻を指定します。 [[RFC 7519、セクション 4.1.4]](https://tools.ietf.org/html/rfc7519#section-4.1.4) を参照してください。  これにより、そのときまでアサーションを使用できるようになるため、間隔を短く (最大でも `nbf` の 5 ～ 10 分後に) してください。  Azure AD では、現在 `exp` の時刻に制限は設定されていません。 
-iss | {ClientID} | "iss" (発行者) 要求では、JWT を発行したプリンシパル (この場合はクライアント アプリケーション) を指定します。  GUID (アプリケーション ID) を使用します。
-jti | (Guid) | "jti" (JWT ID) 要求は、JWT の一意の識別子を提供します。 識別子の値は、同じ値が誤って異なるデータ オブジェクトに割り当てられる可能性が無視できるほど低くなる方法で割り当てる必要があります。複数の発行者を使用するアプリケーションの場合は、異なる発行者が生成した値が競合しないように防ぐ必要があります。 "jti" 値は大文字と小文字が区別される文字列です。 [[RFC 7519、セクション 4.1.7]](https://tools.ietf.org/html/rfc7519#section-4.1.7)
-nbf | 1601519114 | "nbf" (指定時刻よりも後) 要求では、指定した時刻よりも後に JWT の処理を受け入れることができるようになります。 [[RFC 7519、セクション 4.1.5]](https://tools.ietf.org/html/rfc7519#section-4.1.5)  現在の時刻を使用するのが適切です。 
-sub | {ClientID} | "sub" (主題) 要求では、JWT の件名 (この場合はお使いのアプリケーション) を指定します。 `iss` と同じ値を使用します。 
+`aud` | `https://login.microsoftonline.com/{tenantId}/v2.0` | "aud" (対象ユーザー) 要求では、JWT が意図する受信者 (ここでは Azure AD) を指定します。[[RFC 7519、セクション 4.1.3]](https://tools.ietf.org/html/rfc7519#section-4.1.3) を参照してください。  この場合、その受信者はログイン サーバー (login.microsoftonline.com) です。
+`exp` | 1601519414 | "exp" (有効期限) 要求は、JWT の処理を受け入れることができなくなる時刻を指定します。 [[RFC 7519、セクション 4.1.4]](https://tools.ietf.org/html/rfc7519#section-4.1.4) を参照してください。  これにより、そのときまでアサーションを使用できるようになるため、間隔を短く (最大でも `nbf` の 5 ～ 10 分後に) してください。  Azure AD では、現在 `exp` の時刻に制限は設定されていません。 
+`iss` | {ClientID} | "iss" (発行者) 要求では、JWT を発行したプリンシパル (この場合はクライアント アプリケーション) を指定します。  GUID (アプリケーション ID) を使用します。
+`jti` | (Guid) | "jti" (JWT ID) 要求は、JWT の一意の識別子を提供します。 識別子の値は、同じ値が誤って異なるデータ オブジェクトに割り当てられる可能性が無視できるほど低くなる方法で割り当てる必要があります。複数の発行者を使用するアプリケーションの場合は、異なる発行者が生成した値が競合しないように防ぐ必要があります。 "jti" 値は大文字と小文字が区別される文字列です。 [[RFC 7519、セクション 4.1.7]](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+`nbf` | 1601519114 | "nbf" (指定時刻よりも後) 要求では、指定した時刻よりも後に JWT の処理を受け入れることができるようになります。 [[RFC 7519、セクション 4.1.5]](https://tools.ietf.org/html/rfc7519#section-4.1.5)  現在の時刻を使用するのが適切です。 
+`sub` | {ClientID} | "sub" (主題) 要求では、JWT の件名 (この場合はお使いのアプリケーション) を指定します。 `iss` と同じ値を使用します。 
 
 ### <a name="signature"></a>署名
 
@@ -94,7 +96,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ### <a name="uploading-the-certificate-file"></a>証明書ファイルのアップロード
 
 クライアント アプリケーションの Azure アプリ登録で、以下を実行します。
-1. **[証明書とシークレット]** を選択します。
+1. **[証明書とシークレット]** 、 **[証明書]** の順に選択します。
 2. **[証明書のアップロード]** をクリックし、アップロードする証明書ファイルを選択します。
 3. **[追加]** をクリックします。
   証明書がアップロードされると、サムプリント、開始日、有効期限の値が表示されます。

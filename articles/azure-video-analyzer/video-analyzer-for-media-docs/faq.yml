@@ -1,0 +1,159 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Video Analyzer for Media (旧称 Video Indexer) に関してよく寄せられる質問 - Azure
+  titleSuffix: Azure Video Analyzer for Media
+  description: この記事では、Azure Video Analyzer for Media (旧称 Video Indexer) に関してよく寄せられる質問に対する回答を提供します。
+  services: azure-video-analyzer
+  author: Juliako
+  manager: femila
+  ms.topic: article
+  ms.subservice: azure-video-analyzer-media
+  ms.date: 05/25/2021
+  ms.author: juliako
+  ms.openlocfilehash: b6b28c84c8a46df55394a026c0998be8bbc2c7bb
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/04/2021
+  ms.locfileid: "130044196"
+title: Video Analyzer for Media についてよく寄せられる質問
+summary: この記事では、Azure Video Analyzer for Media (旧称 Video Indexer) に関してよく寄せられる質問に回答します。
+sections:
+- name: 一般的な質問
+  questions:
+  - question: Video Analyzer for Media とは
+    answer: "Video Analyzer for Media  は、Microsoft Azure Media Services に含まれている人工知能サービスです。 Video Analyzer for Media  は、ビデオから詳細な分析情報を簡単に抽出するための複数の機械学習モデルのオーケストレーションを提供します。 高度で正確な分析情報を提供するために、Video Analyzer for Media はビデオの複数のチャネル (オーディオ、音声、およびビジュアル) を使用しています。 Video Analyzer for Media の分析情報は、コンテンツの見つけやすさやアクセシビリティを向上させたり、新しい収益機会を創出したり、分析情報を利用する新しい体験を構築したりするといった、さまざまな方法で使用できます。 Video Analyzer for Media は、アカウント内のモデルのテスト、構成、およびカスタマイズのための Web ベースのインターフェイスを提供します。 開発者は、REST ベースの API を使用して、Video Analyzer for Media を実稼働システムに統合することができます。 \n"
+  - question: Video Analyzer for Media でできること
+    answer: >
+      Video Analyzer for Media がメディア ファイルに対して実行できる操作の一部を次に示します。
+
+
+      * 音声の識別と抽出、および話者の識別を行います。
+
+      * ビデオの画面に表示されるテキストの識別と抽出を行います。
+
+      * ビデオ ファイル内のオブジェクトを検出します。
+
+      * オーディオ トラックおよびビデオの画面に表示されるテキストからブランド (Microsoft など) を識別します。
+
+      * 有名人のデータベースおよびユーザー定義の顔のデータベースから顔を検出して認識します。
+
+      * オーディオおよびビデオのコンテキスト内で話題には登場するが、特に取り上げられているわけではないトピックを抽出します。
+
+      * オーディオ トラックから字幕またはサブタイトルを作成します。
+
+
+      Video Analyzer for Media 機能の詳細については、[概要](video-indexer-overview.md)に関するページを参照してください。
+  - question: Video Analyzer for Media の使用を開始するにはどうすればよいですか?
+    answer: >
+      Video Analyzer for Media には、Web ベースのインターフェイスなら 600 分、API 経由であれば 2,400 分ご利用いただける無料試用版が含まれています。 [Video Analyzer for Media の Web ベースのインターフェイスにログイン](https://www.videoindexer.ai/)して、任意の Web ID を使用してご自分で試してみることができます。Azure サブスクリプションを設定する必要はありません。 Video Analyzer for Media の使用方法について理解を深めるには、[この簡単な概要ラボ](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)の手順に従ってください。
+
+
+      ビデオやオーディオ ファイルに大規模にインデックスを付けるために、Video Analyzer for Media を有料の Microsoft Azure サブスクリプションに接続することができます。 詳しい料金情報については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)に関するページをご覧ください。
+
+
+      詳しい開始方法については、[作業の開始](video-indexer-get-started.md)に関するページをご覧ください。
+  - question: Video Analyzer for Media を使用するにはコーディングのスキルが必要ですか?
+    answer: >
+      Video Analyzer for Media の Web ベースのインターフェイスを使用して、アカウントを評価、構成、および管理することができます。その際、**コーディングは必要ありません**。  より複雑なアプリケーションを開発する準備が整ったら、[Video Analyzer for Media API](https://api-portal.videoindexer.ai/) を使用して、独自のアプリケーション、Web サイト、または Azure Functions や [Azure Logic Apps のようなサーバーレス テクノロジを使用したカスタムのワークフロー](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)に Video Analyzer for Media を統合することができます。
+  - question: Video Analyzer for Media を使用するには機械学習のスキルが必要ですか?
+    answer: いいえ、Video Analyzer for Media は、複数の機械学習モデルを 1 つのパイプラインに統合します。 Video Analyzer for Media を使用してビデオ ファイルやオーディオ ファイルのインデックスを作成すると、1 つの共有のタイムラインで抽出された分析情報の完全なセットが取得されます。お客様の方で機械学習のスキルやアルゴリズムの知識の必要はありません。
+  - question: Video Analyzer for Media では、どのようなメディア形式がサポートされていますか?
+    answer: >
+      Video Analyzer for Media では、ほとんどすべての一般的なメディア形式がサポートされています。 詳細については、[Azure Media Encoder Standard の形式](../../media-services/latest/encode-media-encoder-standard-formats-reference.md)の一覧を参照してください。
+  - question: メディア ファイルを Video Analyzer for Media にアップロードするには、どうすればよいですか。また、どのような制限がありますか?
+    answer: "Video Analyzer for Media の Web ベース ポータルでは、ファイルのアップロード ダイアログを使用するか、ソース ファイルを直接ホストする URL を指定して、メディア ファイルをアップロードできます ([例](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)を参照)。 iFrame や埋め込みコードを使用しているメディア コンテンツをホストする URL は、動作しません ([例](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)を参照)。 \n\n詳細については、この[攻略ガイド](./upload-index-videos.md)を参照してください。\n"
+  - question: Video Analyzer for Media がメディアから分析情報を抽出するには、どの程度の時間がかかりますか?
+    answer: >
+      ビデオまたはオーディオ ファイルにインデックスを付けるために要する時間は、Video Analyzer for Media API または Video Analyzer for Media の Web ベース インターフェイスのどちらを使用する場合も、複数のパラメーターによって決まります。パラメーターには、ファイルの長さと品質、ファイルから見つかる分析情報の数、使用可能な[予約ユニット](../../media-services/previous/media-services-scale-media-processing-overview.md)の数、[ストリーミング エンドポイント](../../media-services/previous/media-services-streaming-endpoints-overview.md)が有効かどうかなどがあります。 予想を確かなものにするには、独自のコンテンツを含むいくつかのテスト ファイルを実行して平均を取ることをお勧めします。
+  - question: Video Analyzer for Media でプロセスを自動化するカスタマイズされたワークフローを作成できますか?
+    answer: >
+      はい、Video Analyzer for Media を Logic Apps、Flow、[Azure Functions](https://azure.microsoft.com/services/functions/) などのサーバーレス テクノロジに統合できます。 [Logic Apps](https://azure.microsoft.com/services/logic-apps/) と [Flow](https://flow.microsoft.com/en-us/) の Video Analyzer for Media 用のコネクタについては、[こちら](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)をご覧ください。 パートナーによって実行されたいくつかのオートメーション プロジェクトを、[Video Analyzer for Media サンプル](https://github.com/Azure-Samples/media-services-video-indexer) リポジトリで見ることができます。
+  - question: Video Analyzer for Media はどの Azure リージョンで利用できますか?
+    answer: >
+      Video Analyzer for Media を利用できる Azure リージョンについては、[リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all)のページをご覧ください。
+  - question: 特定のユース ケースに合わせて Video Analyzer for Media モデルをカスタマイズできますか?
+    answer: "はい。 Video Analyzer for Media では、使用可能なモデルの一部をニーズに合わせてカスタマイズできます。 \n\nたとえば、Person モデルでは、1,000,000 人の有名人の顔がすぐに認識されますが、そのデータベースにはない他の顔を認識するようにトレーニングすることもできます。 \n\n詳細については、[Person](customize-person-model-overview.md)、[Brands](customize-brands-model-overview.md)、[Language](customize-language-model-overview.md) モデルのカスタマイズに関する記事を参照してください。 \n"
+  - question: ライブラリ内のビデオを編集できますか。
+    answer: "はい。 ライブラリの表示で **[ビデオの編集]** ボタンを押すか、プレーヤーの表示で **[エディターで開く]** ボタンをクリックして **[プロジェクト]** タブに移動します。新しいプロジェクトを作成し、ライブラリからさらにビデオを追加して、それらをまとめて編集できます。完了したら、ビデオをレンダリングしてダウンロードすることができます。 \n\n新しいビデオについての分析情報を得るには、Video Analyzer for Media でインデックスを付けます。ビデオとその分析情報がライブラリに表示されるようになります。\n"
+  - question: 複数のオーディオ ストリームまたはチャネルにインデックスを付けることができますか。
+    answer: 複数のオーディオ ストリームがある場合、Video Analyzer for Media では最初に検出されたストリームだけが処理されます。 Video Analyzer for Media で処理されるオーディオ ストリームでは、さまざまなチャネル (存在する場合) が取得され、モノとしてまとめて処理されます。 ストリーム/チャネルの操作では、インデックスを付ける前に、ファイルに ffmpeg コマンドを使用できます。
+  - question: Media Services アカウントに接続されているストレージ アカウントを、ファイアウォールの内側に配置することはできますか。
+    answer: "有料の Video Analyzer for Media アカウントでは、ストレージ アカウントに接続されている指定の Media Services アカウントが使用されます。 現在、ファイアウォールの内側にある接続されたストレージ アカウントを使用するには、正確な手順を Video Analyzer for Media のサポートに問い合わせる必要があります。 \n\nAzure portal で新しいサポート リクエストを開くには、[サポート リクエスト](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)に移動してください。\n"
+  - question: Video Analyzer for Media の SLA はどうなっていますか。
+    answer: >
+      Video Analyzer for Media については Azure Media Service の SLA が適用されます。[SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) に関するページを参照してください。 SLA は Video Analyzer for Media の有料アカウントのみに適用され、無料試用版には適用されません。
+- name: プライバシーに関する質問
+  questions:
+  - question: Video Analyzer for Media によってインデックスが付けられるビデオやオーディオのファイルは保存されますか?
+    answer: はい、Video Analyzer for Media の Web サイトまたは API を使用して Video Analyzer for Media からファイルを削除しない限り、ビデオとオーディオのファイルは保存されます。 無料試用版では、インデックスを付けたビデオ ファイルおよびオーディオ ファイルは、米国東部の Azure リージョンに保存されます。 それ以外の場合、ビデオ ファイルとオーディオ ファイルは Azure サブスクリプションのストレージ アカウントに保存されます。
+  - question: Video Analyzer for Media Portal に保存されているファイルを削除できますか?
+    answer: はい、ビデオおよびオーディオのファイルだけでなく、Video Analyzer for Media によってそれらから抽出されたメタデータや分析情報も削除することができます。 Video Analyzer for Media からファイルを削除すると、そのファイルとそのメタデータおよび分析情報は Video Analyzer for Media から完全に削除されます。 ただし、Azure ストレージに独自のバックアップ ソリューションを実装している場合、ファイルは Azure ストレージに残ります。
+  - question: Video Analyzer for Media アカウントへのユーザー アクセスを制御できますか?
+    answer: はい、アカウント管理者だけが、自分のアカウントにユーザーを招待したりメンバーを削除したりすることができ、編集特権を持つユーザーと読み取り専用アクセスを持つユーザーを割り当てることもできます。
+  - question: Video Analyzer for Media でインデックスを作成したり保存したりしたビデオおよびオーディオのファイルと、抽出されたメタデータと分析情報には、誰がアクセスできますか?
+    answer: ビデオのプライバシー設定がパブリックになっているビデオやオーディオのコンテンツには、ビデオやオーディオのコンテンツとその分析情報へのリンクを持つすべてのユーザーがアクセスできます。 ビデオのプライバシー設定がプライベートになっているビデオやオーディオのコンテンツには、ビデオやオーディオのコンテンツのアカウントに招待されたユーザーのみがアクセスできます。 コンテンツのプライバシーの設定は、Video Analyzer for Media で抽出されるメタデータと分析情報にも適用されます。 プライバシーの設定は、ビデオ ファイルやオーディオ ファイルをアップロードするときに割り当てます。 また、インデックスの作成後にプライバシーの設定を変更することもできます。
+  - question: Video Analyzer for Media でインデックスを作成したり保存されたりしたビデオやオーディオ ファイル、および抽出されたメタデータと分析情報に対して、Microsoft はどのようなアクセス権を持っていますか?
+    answer: >
+      [Azure オンライン サービス条件](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) に従い、お客様はご自分のコンテンツを完全に所有し、Microsoft は、お客様のコンテンツと、Video Analyzer for Media でお客様のコンテンツから抽出されたメタデータと分析情報に、OST と Microsoft のプライバシーに関する声明に従ってのみアクセスします。
+  - question: 自分の Video Analyzer for Media アカウントで作成したカスタム モデルを他のアカウントで使用できますか?
+    answer: "いいえ、自分のアカウントで作成したカスタム モデルは、他のアカウントでは使用できません。 Video Analyzer for Media では、現在、自分のアカウントで[ブランド](customize-brands-model-overview.md)、[言語](customize-language-model-overview.md)、および[人](customize-person-model-overview.md)のカスタム モデルを作成できます。 これらのモデルは、モデルを作成したアカウントでのみ使用できます。\n   \n"
+  - question: Video Indexer によってインデックスが付けられたコンテンツは、使用中の Video Indexer がある Azure リージョン内に保持されますか?
+    answer: >
+      はい、コンテンツとその分析情報は、その Azure リージョン内に保持されます (シンガポールとブラジル南部リージョンを除く)。ただし、複数の Azure リージョンが使用されるように Azure サブスクリプションを手動構成した場合を除きます。
+
+
+      リージョン内の顧客データは、BCDR のために、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md#azure-regional-pairs)にレプリケートされます。
+  - question: Video Analyzer for Media のプライバシー ポリシーはどうなっていますか。
+    answer: >
+      Video Analyzer for Media には [Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement)が適用されます。 プライバシーに関する声明では、Microsoft が処理する個人データ、Microsoft がそれをどのように処理し、何の目的でそれを処理するかについて説明しています。 プライバシーについて詳しくは、[Microsoft Trust Center](https://www.microsoft.com/trustcenter) を参照してください。
+  - question: Video Analyzer for Media には、どのような認証がありますか?
+    answer: >
+      Video Analyzer for Media は、現在のところ SOC 認証を取得しています。 Video Analyzer for Media の認証を確認するには、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure) を参照してください。
+  - question: プライベート ビデオとパブリック ビデオの違いは何ですか。
+    answer: "Video Analyzer for Media にビデオをアップロードするとき、プライベートとパブリックという 2 つのプライバシー設定から選択できます。 パブリック ビデオには、匿名ユーザーや身元が不明のユーザーを含め、誰でもアクセスできます。 プライベート ビデオは、アカウント メンバーにのみ限定されます。 \n"
+  - question: パブリックとしてビデオをアップロードしたら、不適切または不快なコンテンツのフラグが付けられました。これは何を意味しますか。
+    answer: "Video Analyzer for Media にビデオがアップロードされると、不適切なコンテンツが一般公開されないよう、アルゴリズムとモデルによってコンテンツが自動的に分析されます。 過激な描写のコンテンツが含まれるものとビデオが疑われた場合、パブリックとして設定することができなくなります。 ただし、アカウント メンバーであれば、プライベート ビデオとしてアクセスできます (表示したり、分析情報や抽出された成果物をダウンロードしたり、アカウント メンバーが利用できるその他の操作を実行したりできます)。   \n\nパブリック アクセス用にビデオを設定するには、以下のいずれかを実行します。 \n\n* 独自のインターフェイス レイヤー (アプリや Web サイトなど) を構築し、それを利用して Video Analyzer for Media サービスを操作します。 この方法では、ビデオは Microsoft のポータル内でプライベートになり、ユーザーはインターフェイス経由でビデオを操作できます。 たとえば、独自のインターフェイスで分析情報を取得したり、ビデオの視聴を許可したりできます。 \n* コンテンツの人間によるレビューを要求します。過激な描写のコンテンツでなければ、制限が解除されることがあります。 \n\n    ユーザーがインターフェイス レイヤーとして、かつパブリック (認証なし) の視聴目的で Video Analyzer for Media Web サイトを直接使用する場合、このオプションを試すことができます。 \n"
+- name: API に関する質問
+  questions:
+  - question: Video Analyzer for Media ではどのような API が提供されていますか?
+    answer: >
+      Video Analyzer for Media の API では、インデックス作成、メタデータの抽出、アセット管理、翻訳、埋め込み、モデルのカスタマイズなどができます。 Video Analyzer for Media API の使用方法の詳細については、[Video Analyzer for Media 開発者ポータル](https://api-portal.videoindexer.ai/)を参照してください。
+  - question: Video Analyzer for Media ではどのようなクライアント SDK が提供されていますか?
+    answer: 現在のところ、クライアント SDK は提供されていません。 Video Analyzer for Media チームは SDK に取り組んでいる最中で、まもなく提供開始の予定です。
+  - question: Video Analyzer for Media の API の使用を開始するにはどうすればよいですか?
+    answer: >
+      [チュートリアル: Video Analyzer for Media API の使用を開始する](video-indexer-use-apis.md)に従ってください。
+  - question: Video Analyzer for Media API と Azure Media Service v3 API の違いは何ですか?
+    answer: >
+      現在、Video Analyzer for Media API と Azure Media Services v3 API によって提供される機能には重複があります。 両方のサービスを比較する方法の詳細については、[こちら](compare-video-indexer-with-media-services-presets.md)をご覧ください。
+  - question: API アクセス トークンとは何で、なぜ必要なのでしょうか?
+    answer: >
+      Video Analyzer for Media API には Authorization API (承認 API) と Operations API (操作 API) が含まれています。 Authorizations API に含まれている呼び出しによって、アクセス トークンがユーザーに付与されます。 Operations API の各呼び出しは、呼び出しの承認スコープと一致するアクセス トークンに関連付けられている必要があります。
+
+
+      セキュリティ上の目的のために、Video Analyzer for Media API を使用するためにアクセス トークンが必要になります。 この情報により、すべての呼び出しが、ユーザーまたはユーザーのアカウントへのアクセス許可を持つ人物から送信されたものであることが保証されます。 
+  - question: アカウント アクセス トークン、ユーザー アクセス トークン、ビデオ アクセス トークンはどう違うのですか?
+    answer: >
+      * アカウント レベル - アカウント レベルのアクセス トークンを使用すると、アカウント レベルまたはビデオ レベルに対して操作を実行できます。 たとえば、動画のアップロード、すべてのビデオの一覧表示、動画の分析情報の取得です。
+
+      * ユーザー レベル - ユーザー レベルのアクセス トークンを使用すると、ユーザー レベルに対して操作を実行できます。 たとえば、関連付けられたアカウントの取得などです。
+
+      * ビデオ レベル - ビデオ レベルのアクセス トークンを使用すると、特定のビデオに対して操作を実行できます。 たとえば、ビデオの分析情報、キャプションのダウンロード、ウィジェットの取得などです。
+  - question: どのくらいの頻度で新しいアクセス トークンを取得する必要がありますか。 アクセス トークンの有効期限はいつ切れますか?
+    answer: アクセス トークンは 1 時間ごとに期限が切れるため、1 時間ごとに新しいアクセス トークンを生成する必要があります。
+  - question: Video Analyzer for Media の開発者ポータルにはどのようなログイン オプションがありますか?
+    answer: >
+      [ログイン情報](release-notes.md#october-2020)に関するリリース ノートを参照してください。
+
+
+      ID プロバイダーを使用して電子メール アカウントを登録した後は、この電子メール アカウントを別の ID プロバイダーで使用することはできません。
+- name: 課金に関する質問
+  questions:
+  - question: Video Analyzer for Media のコストはどれくらいですか?
+    answer: >
+      Video Analyzer for Media では、インデックスを作成するコンテンツ入力の長さに基づいた、単純な従量課金制の価格モデルを使用しています。 エンコード、ストリーミング、ストレージ、ネットワークの使用状況、およびメディア占有ユニットについては追加料金が適用されることがあります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)に関するページを参照してください。
+  - question: Video Analyzer for Media の使用料はいつ請求されますか?
+    answer: インデックス付きのためビデオを送信した場合、ユーザーはインデックスをビデオ分析、オーディオ分析、またはその両方として定義します。 これにより、課金される SKU が決まります。 処理中に重大レベルのエラーが発生した場合、エラー コードが応答として返されます。 こうした場合、課金は行われません。  重大なエラーは、コード内のバグか、サービスが持つ内部的異存の重大なエラーによって発生します。 間違った認識や分析情報の抽出などのエラーは重大と見なされず、応答が返されます。 有効な (エラーのないコード) 応答が返された場合はすべて、課金が行われます。
+  - question: Video Analyzer for Media では無料試用版が提供されていますか?
+    answer: はい、Video Analyzer for Media には、完全なサービスおよび API 機能を提供する無料試用版が用意されています。 Web ベースのインターフェイスのユーザーについてはビデオ 600 分、API ユーザーについては 2,400 分のクォータがあります。

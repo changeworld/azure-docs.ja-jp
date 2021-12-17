@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: 216c45bf097718f6a696e64c8bd9c8718fc0185e
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 84510afb4a6bac20f7b0496bf99a3e2a5d2571f9
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445370"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132040420"
 ---
 Python 用 Anomaly Detector クライアント ライブラリを使ってみます。 サービスによって提供されるアルゴリズムを使用してパッケージをインストールするには、次の手順に従います。 Anomaly Detector サービスにより、業界、シナリオ、データ量に関係なく、最適なモデルを自動的に使用することで、時系列データ内の異常を検出できます。
 
@@ -117,6 +117,12 @@ for index, row in data_file.iterrows():
 ```python
 request = DetectRequest(series=series, granularity=TimeGranularity.daily)
 ```
+
+入力引数の説明: 'series': 要求に必要です。 配列またはリスト型で、12 ポイント以上、8640 ポイント以下を保持する必要があります。 タイムスタンプで昇順に並べ替える必要があり、重複するタイムスタンプを持つことはできません。 'granularity': 要求に必要です。 指定できるのは、'daily'、'minutely'、'hourly'、'weekly'、'monthly'、'yearly'、'secondly' のいずれかのみです。
+'customInterval': 0 より大きい整数にする必要があります。
+'period': 0 以上の整数にする必要があります。
+'maxAnomalyRatio': 系列ポイントの 50% 未満にする必要があります (0 < maxAnomalyRatio < 0.5)。
+'sensitivity': 0 から 99 までの整数にする必要があります。
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>データ セット全体で異常を検出する
 

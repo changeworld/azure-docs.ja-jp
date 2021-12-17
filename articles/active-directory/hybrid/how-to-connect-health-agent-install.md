@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a3aff7b99dad910a9691eef2004df856ca883789
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bec934ec67d952d037a3f06758cb8c3f272b21a6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224386"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059188"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -42,12 +42,11 @@ ms.locfileid: "103224386"
 | 送信トラフィックの TLS 検査がフィルター処理されているか無効になっている。 | ネットワーク層で送信トラフィックの TLS 検査または終了が設定されている場合、エージェントの登録手順またはデータのアップロード操作が失敗する可能性があります。 詳細については、[TLS 検査の設定](/previous-versions/tn-archive/ee796230(v=technet.10))に関するページを参照してください。 |
 | サーバー上のファイアウォール ポートでエージェントが実行されている。 |エージェントが Azure AD Connect Health サービス エンドポイントと通信できるように、次のファイアウォール ポートが開いている必要があります。 <br /><li>TCP ポート 443</li><li>TCP ポート 5671</li> <br />エージェントの最新バージョンでは、ポート 5671 は必要ありません。 ポート 443 のみが必要になるように、最新バージョンにアップグレードしてください。 詳細については、「[ハイブリッド ID で必要なポートとプロトコル](./reference-connect-ports.md)」を参照してください。 |
 | Internet Explorer のセキュリティ強化が有効になっている場合に、指定された Web サイトを許可する。  |Internet Explorer のセキュリティ強化が有効になっている場合は、エージェントをインストールするサーバーで次の Web サイトを許可します。<br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https:\//aadcdn.msftauth.net</li><li>Azure AD によって信頼されている組織のフェデレーション サーバー (たとえば、https:\//sts.contoso.com)</li> <br />詳細については、[Internet Explorer の構成方法](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)に関するページを参照してください。 ネットワークにプロキシがある場合は、この表の最後に示されている注意を参照してください。|
-| PowerShell バージョン 4.0 以降がインストールされている。 | Windows Server 2012 には、PowerShell バージョン 3.0 が含まれています。 このバージョンは、エージェントには十分では "*ありません*"。</br></br> Windows Server 2012 R2 以降には、要件を満たす最新バージョンの PowerShell が含まれています。|
+| PowerShell バージョン 5.0 以降がインストールされている。 | Windows Server 2016 には、PowerShell バージョン 5.0 が含まれています。 
 |FIPS (Federal Information Processing Standards) が無効になっている。|Azure AD Connect Health エージェントで FIPS はサポートされていません。|
 
 > [!IMPORTANT]
 > Windows Server Core では、Azure AD Connect Health エージェントのインストールがサポートされていません。
-
 
 > [!NOTE]
 > ロックダウンが頻繁で、非常に制限されている環境がある場合は、Internet Explorer のセキュリティ強化のために、表に記載されたものだけではなく、さらに URL を追加する必要があります。 また、次のセクションの表に記載されている URL も追加してください。  
@@ -174,7 +173,7 @@ PowerShell ウィンドウが開き、エージェント登録プロセスが開
 3. 右側の **[現在のログをフィルター]** を選択します。
 4. **[イベント ソース]** で **[AD FS の監査]** を選択します。
 
-    監査ログの詳細については、「[操作に関する質問](reference-connect-health-faq.md#operations-questions)」を参照してください。
+    監査ログの詳細については、「[操作に関する質問](./reference-connect-health-faq.yml)」を参照してください。
 
     ![[現在のログをフィルター] ウィンドウを示すスクリーンショット。 [イベント ソース] フィールドで "AD FS の監査" が選択されています。](./media/how-to-connect-health-agent-install/adfsaudit.png)
 
@@ -210,7 +209,7 @@ Azure AD Connect を正常にインストールした後、Azure AD Connect Heal
 
 次の PowerShell コマンドを使用して、Sync 用 Azure AD Connect Health エージェントを手動で登録します。 Azure AD Connect Health サービスは、エージェントが正常に登録された後で開始されます。
 
-`Register-AzureADConnectHealthSyncAgent -AttributeFiltering $false -StagingMode $false`
+`Register-AzureADConnectHealthSyncAgent -AttributeFiltering $true -StagingMode $false`
 
 このコマンドは次のパラメーターを受け取ります。
 
@@ -264,7 +263,6 @@ Azure AD Connect を正常にインストールした後、Azure AD Connect Heal
     import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\AdHealthAdds"
      
     Register-AzureADConnectHealthADDSAgent -Credential $myCreds
-    
     ```
 
 完了したら、次のタスクのうち 1 つ以上を行うことでローカル アカウントのアクセスを削除できます。 
@@ -278,10 +276,9 @@ Azure AD Connect を正常にインストールした後、Azure AD Connect Heal
 適切なエージェントの *setup.exe* ファイルをインストールしたら、ロールに応じて次の PowerShell コマンドを使用して、エージェントを登録できます。 PowerShell ウィンドウを開き、適切なコマンドを実行します。
 
 ```powershell
-    Register-AzureADConnectHealthADFSAgent
-    Register-AzureADConnectHealthADDSAgent
-    Register-AzureADConnectHealthSyncAgent
-
+Register-AzureADConnectHealthADFSAgent
+Register-AzureADConnectHealthADDSAgent
+Register-AzureADConnectHealthSyncAgent
 ```
 
 > [!NOTE]
@@ -292,8 +289,6 @@ Azure AD Connect を正常にインストールした後、Azure AD Connect Heal
 > Register-AzureADConnectHealthADDSAgent -UserPrincipalName upn-of-the-user
 > Register-AzureADConnectHealthSyncAgent -UserPrincipalName upn-of-the-user
 > ```
->
-
 
 これらのコマンドは、`Credential` をパラメーターとして受け入れて非対話的に登録を完了するか、Server Core を実行しているマシンで登録を完了します。 次の点に留意します。
 * `Credential` は、パラメーターとして渡される PowerShell 変数内で取得できます。
@@ -407,5 +402,5 @@ role パラメーターは、現在、以下の値を受け取ります。
 * [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)
 * [Azure AD Connect Health for Sync の使用](how-to-connect-health-sync.md)
 * [Azure AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)
-* [Azure AD Connect Health の FAQ](reference-connect-health-faq.md)
+* [Azure AD Connect Health の FAQ](reference-connect-health-faq.yml)
 * [Azure AD Connect Health のバージョン履歴](reference-connect-health-version-history.md)

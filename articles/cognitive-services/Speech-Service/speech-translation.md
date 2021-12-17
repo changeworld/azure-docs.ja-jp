@@ -3,25 +3,23 @@ title: 音声翻訳の概要 - Speech Service
 titleSuffix: Azure Cognitive Services
 description: 音声翻訳を使用すると、音声のエンド ツー エンドでリアルタイムの多言語翻訳機能を、アプリケーション、ツール、デバイスに追加することができます。 同じ API を、音声間の翻訳と、音声テキスト変換の両方に使用できます。 この記事は、音声翻訳サービスの利点と機能の概要になっています。
 services: cognitive-services
-author: erhopf
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.author: erhopf
+ms.author: eur
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 音声翻訳
-ms.openlocfilehash: 99541d7fe9eaa867860af93bc1423d476ce8bf4a
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3c71682028f1fb54b55e9faddde5928883f44916
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449938"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485572"
 ---
 # <a name="what-is-speech-translation"></a>音声翻訳とは何か
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 この概要では、[多言語のオーディオ ストリームをリアルタイムで音声間の](language-support.md#speech-translation)翻訳または音声テキスト変換できる音声翻訳サービスの利点と機能について説明します。 Speech SDK を使用すると、アプリケーション、ツール、およびデバイスから、提供されたオーディオのソース トランスクリプションや翻訳出力にアクセスすることができます。 音声の検出中には中間トランスクリプションと翻訳結果が返され、最終的な結果は、合成された音声に変換することができます。
 
@@ -45,7 +43,7 @@ ms.locfileid: "106449938"
 
 ## <a name="sample-code"></a>サンプル コード
 
-Speech SDK のサンプル コードは、GitHub 上で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、連続的および単発の認識/翻訳、カスタム モデルの使用など、一般的なシナリオについて説明されています。
+Speech SDK のサンプル コードは、GitHub 上で入手できます。 これらのサンプルは、ファイルやストリームからの音声の読み取り、連続的および開始時の認識や翻訳、カスタム モデルの使用など、一般的なシナリオを対象としています。
 
 * [音声テキスト変換と翻訳のサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 

@@ -4,12 +4,12 @@ description: Azure CLI を使用して、サーバーレス Python Function App 
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d0037cea24b1989c4f7a4d2ddd6bf3f8f7e812b3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dd40b2c723e7aa6780db1c8ac96b2fc2bea20da4
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762283"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277950"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Azure CLI を使用してファイル共有を Python Function App にマウントする
 

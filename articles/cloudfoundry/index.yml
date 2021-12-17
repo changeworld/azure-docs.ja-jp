@@ -6,17 +6,16 @@ metadata:
   description: Cloud Foundry は、さまざまな言語やフレームワークで開発された 12 ファクター アプリケーションをビルド、デプロイ、運用するためのオープンソースの PaaS です。
   services: multiple
   ms.service: multiple
-  ms.devlang: devops
   ms.topic: landing-page
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: 8191a179474db5e9d60e0cd10fb1efff189a3a73
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 2c36fd37ff604f070cbe9eb334ae363165e1b970
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88224970"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130264543"
 landingContent:
 - title: Cloud Foundry on Azure について
   linkLists:
@@ -29,7 +28,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Cloud Foundry on Azure のデプロイ
-      url: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
+      url: ./cloudfoundry-deploy-your-first-app.md
   - linkListType: how-to-guide
     links:
     - text: 初めてのアプリのデプロイ

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/18/2020
+ms.date: 08/25/2021
 ms.author: alkohli
-ms.openlocfilehash: e84f39fa5b9245d1874e60d651156e99c0885040
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa37d5dc9957e39d7fe4f47404bc9aaf249f192f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97678927"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226405"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>ローカル Web UI を使用して Data Box および Data Box Heavy を管理する
 
@@ -95,6 +95,27 @@ Data Box を再起動するには、次の手順を実行します。
 3. 確認を求められたら、 **[OK]** を選択して続行します。
 
    デバイスは、シャットダウンしてから再起動します。
+
+## <a name="get-share-credentials"></a>共有の資格情報を取得する 
+
+対象のデバイス上の共有に接続するために使用するユーザー名とパスワードを確認する必要がある場合は、ローカル Web UI の **[接続とコピー]** で共有の資格情報を見つけることができます。
+
+デバイスを注文するときに、デバイス上の共有に対して既定のシステム生成のパスワードを使用するか、独自のパスワードを使用するかを選択できます。 どちらにしても、共有パスワードは工場で設定され、変更することはできません。 
+
+共有の資格情報を取得するには:
+
+1. ローカル Web UI で、 **[接続とコピー]** に移動します。 **[SMB]** を選択して、お使いのストレージ アカウントに関連付けられている共有用のアクセス資格情報を取得します。
+
+   ![Data Box のローカル Web UI の [接続とコピー] ページを示すスクリーンショット。 [接続とコピー] メニュー項目と [SMB] オプションが強調表示されています。](media/data-box-local-web-ui-admin/get-share-credentials-01.png)
+
+1. **[共有にアクセスしてデータをコピーする]** ダイアログ ボックスで、コピー アイコンを使用して、共有に対応する **ユーザー名** と **パスワード** をコピーします。 ダイアログ ボックスを閉じるには、 **[OK]** を選択します。
+
+   ![Data Box の SMB 共有のローカル Web UI の [共有にアクセスしてデータをコピーする] ダイアログ ボックスを示すスクリーンショット。 [ストレージ アカウント] と [パスワード] オプションのコピー アイコンと [OK] ボタンが強調表示されています。](media/data-box-local-web-ui-admin/get-share-credentials-02.png)
+
+> [!NOTE]
+> 誤ったパスワードを使用したことが原因で共有への接続試行が何回か失敗すると、そのユーザー アカウントは共有からロックアウトされます。 アカウントのロックは数分後に解除され、共有にもう一度接続できるようになります。  
+> - Data Box 4.1 以降: ログイン試行が 5 回失敗した後、アカウントは 15 分間ロックされます。 
+> - Data Box 4.0 以前: ログイン試行が 3 回失敗した後、アカウントは 30 分間ロックされます。
 
 ## <a name="download-bom-or-manifest-files"></a>BOM またはマニフェスト ファイルのダウンロード
 

@@ -1,14 +1,15 @@
-- name: Azure
-  tocHref: /azure/
-  topicHref: /azure/index
-  items:
-    - name: HDInsight
-      tocHref: /azure/hdinsight/
-      topicHref: /azure/hdinsight/index
-      items:
-        - name: ML サービス
-          tocHref: /azure/hdinsight/hadoop/
-          topicHref: /azure/hdinsight/r-server/index
-        - name: ML サービス
-          tocHref: /azure/hdinsight/domain-joined/
-          topicHref: /azure/hdinsight/r-server/index
+items:
+  - name: Azure
+    tocHref: /azure/
+    topicHref: /azure/index
+    items:
+      - name: HDInsight
+        tocHref: /azure/hdinsight/
+        topicHref: /azure/hdinsight/index
+        items:
+          - name: ML サービス
+            tocHref: /azure/hdinsight/hadoop/
+            topicHref: /azure/hdinsight/r-server/index
+          - name: ML サービス
+            tocHref: /azure/hdinsight/domain-joined/
+            topicHref: /azure/hdinsight/r-server/index

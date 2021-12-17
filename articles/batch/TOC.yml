@@ -31,15 +31,6 @@
     - name: ファイルの並列処理 - Python
       displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
-    - name: Arnold を使用したシーンのレンダリング
-      displayName: tutorial
-      href: tutorial-rendering-cli.md
-    - name: Batch Explorer を使用したレンダリング
-      displayName: tutorial
-      href: tutorial-rendering-batchexplorer-blender.md
-    - name: 並列 R シミュレーション
-      displayName: 'tutorial, doAzureParallel, rstudio'
-      href: tutorial-r-doazureparallel.md
     - name: Batch と Functions を使用した OCR
       displayName: 'trigger, optical'
       href: tutorial-batch-functions.md
@@ -53,7 +44,7 @@
         - name: Azure のコード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=batch'
         - name: Batch のサンプル リポジトリ
-          href: 'https://github.com/Azure/azure-batch-samples'
+          href: 'https://github.com/Azure-Samples/azure-batch-samples'
     - name: Azure CLI
       items:
         - name: Batch サービス モードでの Batch アカウントの作成
@@ -76,7 +67,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/batch-security-baseline?toc=/azure/batch/TOC.json
         - name: セキュリティの運用方法
           href: security-best-practices.md
     - name: Batch サービスのワークフローとリソース
@@ -123,6 +114,10 @@
           href: private-connectivity.md
         - name: 顧客管理キーの構成
           href: batch-customer-managed-key.md
+        - name: リージョン間の移動
+          href: account-move.md
+        - name: 簡素化されたコンピューティング ノード通信を使用する
+          href: simplified-compute-node-communication.md
     - name: Azure AD による認証
       items:
         - name: Batch サービスでの Azure AD
@@ -158,6 +153,9 @@
           href: batch-sig-images.md
         - name: マネージド イメージ リソースを使用してプールを作成する
           href: batch-custom-images.md
+        - name: Availability Zones 間でプールを作成する
+          displayName: 'region, zonal policy'
+          href: create-pool-availability-zones.md
         - name: ディスク暗号化が有効になっているプールを作成する
           href: disk-encryption.md
         - name: 仮想ネットワーク内にプールを作成する
@@ -169,9 +167,16 @@
         - name: パブリック IP アドレスのないプールを作成する
           displayName: private
           href: batch-pool-no-public-ip-address.md
+        - name: エフェメラル OS ディスク ノードを持つプールを作成する
+          href: create-pool-ephemeral-os-disk.md
+        - name: プールで拡張機能を使用する
+          href: create-pool-extensions.md
         - name: マネージド ID の構成
           displayName: user-assigned
           href: managed-identity-pools.md
+        - name: 証明書のローテーションを有効にする
+          displayName: 'key vault, keyvault, automatic'
+          href: automatic-certificate-rotation.md
         - name: 仮想ファイル システムをマウントする
           href: virtual-file-mount.md
         - name: Azure ファイル共有をマウントする
@@ -238,11 +243,11 @@
           displayName: command line
           href: batch-cli-get-started.md
         - name: Batch CLI テンプレートの使用
-          diplayName: extension
+          displayName: extension
           href: batch-cli-templates.md
-    - name: Batch Node.js SDK の使用
+    - name: Batch JavaScript SDK を使用する
       displayName: json
-      href: batch-nodejs-get-started.md
+      href: batch-js-get-started.md
     - name: ワークロードの実行
       items:
         - name: MPI
@@ -275,19 +280,19 @@
     - name: Azure CLI
       href: /cli/azure/batch
     - name: Azure PowerShell
-      href: /powershell/module/az.batch
+      href: /powershell/module/az.batch/
     - name: .NET
       href: /dotnet/api/overview/azure/batch
     - name: Java
       href: /java/api/overview/azure/batch
-    - name: Node.js
+    - name: JavaScript
       href: /javascript/api/overview/azure/batch
     - name: Python
       href: /python/api/overview/azure/batch
     - name: REST
       items:
         - name: Batch サービス
-          href: /rest/api/batchservice
+          href: /rest/api/batchservice/
         - name: Batch Management
           href: /rest/api/batchmanagement/
     - name: Resource Manager テンプレート
@@ -327,13 +332,13 @@
     - name: Batch Explorer
       href: 'https://azure.github.io/BatchExplorer/'
     - name: Batch のフィードバック
-      href: 'https://feedback.azure.com/forums/269742-batch'
+      href: 'https://feedback.azure.com/d365community/forum/7462aa60-0c25-ec11-b6e6-000d3a4f07b8'
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: ブログ
       href: /archive/blogs/windowshpc/
     - name: Azure での HPC
-      href: /azure/architecture/topics/high-performance-computing/
+      href: /azure/architecture/topics/high-performance-computing
     - name: Batch に関する Microsoft Q&A 質問ページ
       href: /answers/topics/azure-batch.html
     - name: 価格

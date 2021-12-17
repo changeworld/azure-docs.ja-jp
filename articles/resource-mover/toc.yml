@@ -26,6 +26,8 @@
       href: support-matrix-move-region-azure-vm.md
     - name: リージョン間での Azure SQL の移動をサポートする
       href: support-matrix-move-region-sql.md
+    - name: 拡張リソースの種類の移動をサポートする
+      href: support-matrix-extension-resource-types.md
 - name: ハウツー ガイド
   items:
     - name: リージョン間で移動する
@@ -50,3 +52,7 @@
       href: /azure/templates/microsoft.migrate/allversions
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
+- name: 監視
+  items:
+    - name: リージョン間の移動を監視する
+      href: move-across-region-dashboard.md

@@ -1,35 +1,31 @@
 ---
-title: Windows Virtual Desktop MSIX アプリのアタッチ ポータル - Azure
-description: Azure portal を使用して MSIX アプリ アタッチを Windows Virtual Desktop 用に設定する方法。
+title: Azure Virtual Desktop MSIX アプリのアタッチ ポータル - Azure
+description: Azure portal を使用して MSIX アプリ アタッチを Azure Virtual Desktop 用に設定する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0d7598e332539b8203d55bbcb1cf497811c32540
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: ec462d04402f20d801c43cebd7f4561eb6177f1c
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366557"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707122"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portal で MSIX アプリのアタッチを設定する
 
-この記事では、Windows Virtual Desktop 環境で MSIX アプリのアタッチを設定する方法について説明します。
+この記事では、Azure Virtual Desktop 環境で MSIX アプリのアタッチを設定する方法について説明します。
 
 ## <a name="requirements"></a>必要条件
 
->[!IMPORTANT]
->作業を開始する前に、必ず[こちらのフォーム](https://aka.ms/enablemsixappattach)に記入して送信し、サブスクリプションで MSIX アプリ アタッチを有効にしてください。 承認されたリクエストがない場合、MSIX アプリ アタッチは機能しません。 リクエストの承認には、営業日に最大で 24 時間かかる可能性があります。 リクエストが受諾されて完了すると、電子メールが届きます。
-
 MSIX アプリ アタッチを構成するために必要な項目を次に示します。
 
-- 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop (classic) のデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Windows Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
-- 少なくとも 1 つのアクティブなセッション ホストが含まれている Windows Virtual Desktop ホスト プール。
-- このホスト プールは検証環境に存在している必要があります。 
+- 機能する Azure Virtual Desktop のデプロイ。 Azure Virtual Desktop (クラシック) のデプロイ方法については、「[Azure Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Azure Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
+- 少なくとも 1 つのアクティブなセッション ホストが含まれている Azure Virtual Desktop ホスト プール。
 - MSIX パッケージ化ツール。
 - MSIX のパッケージされたアプリケーションは、ファイル共有にアップロードされる MSIX イメージに展開されます。
-- MSIX パッケージが格納される Windows Virtual Desktop デプロイ内のファイル共有。
+- MSIX パッケージが格納される Azure Virtual Desktop デプロイ内のファイル共有。
 - MSIX イメージをアップロードしたファイル共有には、ホスト プール内のすべての仮想マシン (VM) からアクセスできる必要もあります。 ユーザーには、イメージにアクセスするための読み取り専用アクセス許可が必要になります。
 - 証明書が公的に信頼されていない場合は、「[証明書をインストールする](app-attach.md#install-certificates)」の手順に従ってください。
 
@@ -52,9 +48,6 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 
 ```
 
->[!NOTE]
->Hyper-v を有効にした後で、仮想マシンを再起動することをお勧めします。
-
 ## <a name="configure-the-msix-app-attach-management-interface"></a>MSIX アプリ アタッチ管理インターフェイスを構成する
 
 次に、Azure portal 用の MSIX アプリ アタッチ管理インターフェイスをダウンロードして構成する必要があります。
@@ -76,10 +69,7 @@ MSIX イメージを追加するには、次のようにします。
 
 1. Azure portal を開きます。
 
-2. 検索バーに「**Windows Virtual Desktop**」と入力し、サービス名を選択します。
-
-      > [!div class="mx-imgBorder"]
-      > ![Azure portal で、ユーザーが検索バーのドロップダウン メニューから [Windows Virtual Desktop] を選択しているスクリーンショット。 [Windows Virtual Desktop] が赤で強調表示されています。](media/find-and-select.png)
+2. 検索バーに「**Azure Virtual Desktop**」と入力し、サービス名を選択します。
 
 3. MSIX アプリを配置するホスト プールを選択します。
 
@@ -107,7 +97,7 @@ MSIX イメージを追加するには、次のようにします。
 
 7.  **[状態]** では、希望する状態を選択します。
     -  **[アクティブ]** 状態の場合、ユーザーはパッケージを操作できます。
-    -  **[非アクティブ]** 状態の場合は、Windows Virtual Desktop によってパッケージは無視されて、ユーザーに配布されません。
+    -  **[非アクティブ]** 状態の場合は、Azure Virtual Desktop によってパッケージは無視されて、ユーザーに配布されません。
 
 8. 終了したら、 **[追加]** を選択します。
 
@@ -119,7 +109,7 @@ MSIX イメージが既にある場合は、スキップして、「[MSIX アプ
 
 アプリを発行するには、次のようにします。
 
-1. Windows Virtual Desktop リソース プロバイダーで、 **[アプリケーション グループ]** タブを選択します。
+1. Azure Virtual Desktop リソース プロバイダーで、 **[アプリケーション グループ]** タブを選択します。
 
 2. アプリを発行するアプリケーション グループを選択します。
 
@@ -173,7 +163,7 @@ MSIX アプリをアプリ グループに割り当てたら、ユーザーに�
 
 ## <a name="change-msix-package-state"></a>MSIX パッケージの状態を変更する
 
-次に、パッケージの処理内容に応じて、MSIX パッケージの状態を **[アクティブ]** または **[非アクティブ]** に変更する必要があります。 アクティブ パッケージとは、発行後にユーザーが操作できるパッケージのことです。 非アクティブ パッケージは Windows Virtual Desktop によって無視されるため、ユーザーは内部のアプリを操作できません。
+次に、パッケージの処理内容に応じて、MSIX パッケージの状態を **[アクティブ]** または **[非アクティブ]** に変更する必要があります。 アクティブ パッケージとは、発行後にユーザーが操作できるパッケージのことです。 非アクティブ パッケージは Azure Virtual Desktop によって無視されるため、ユーザーは内部のアプリを操作できません。
 
 ### <a name="change-state-with-the-applications-list"></a>アプリケーション一覧を使用して状態を変更する
 
@@ -225,11 +215,11 @@ MSIX パッケージをホスト プールから削除するには、次のよ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスして、コミュニティにこの機能に関する質問をします。
+[Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) で、コミュニティにこの機能に関する質問を行うことができます。
 
-また、Windows Virtual Desktop についてのフィードバックは、[Windows Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。
+また、Azure Virtual Desktop についてのフィードバックは、[Azure Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。
 
 役に立つその他の記事を次に示します。
 
 - [MSIX アプリのアタッチの用語集](app-attach-glossary.md)
-- [MSIX アプリ アタッチに関するごよくある質問](app-attach-faq.md)
+- [MSIX アプリ アタッチに関するごよくある質問](app-attach-faq.yml)

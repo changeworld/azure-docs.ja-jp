@@ -3,19 +3,17 @@ title: " Web サービスを更新する"
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning に既にデプロイされている Web サービスを更新する方法について説明します。 モデル、環境、入力スクリプトなどの設定を更新できます。
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
+ms.subservice: mlops
+ms.topic: how-to
 ms.reviewer: larryfr
-ms.author: gopalv
-author: gvashishtha
-ms.date: 07/31/2020
+ms.date: 10/21/2021
 ms.custom: deploy
-ms.openlocfilehash: da018f212844e1587ad0e434902e49765f72e521
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae53790d2fc119f1242f44326e8ca40b8483f9eb
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520099"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557264"
 ---
 # <a name="update-a-deployed-web-service"></a>デプロイされた Web サービスを更新する
 
@@ -37,6 +35,14 @@ Web サービスを更新するには、`update` メソッドを使用します�
 > 新しいバージョンのモデルを作成するときは、それを使用したい各サービスを手動で更新する必要があります。
 >
 > Azure Machine Learning デザイナーから発行された Web サービスを、SDK を使用して更新することはできません。
+
+> [!IMPORTANT]
+> Azure Kubernetes Service では、[Blobfuse FlexVolume ドライバー](https://github.com/Azure/kubernetes-volume-drivers/blob/master/flexvolume/blobfuse/README.md) (バージョン 1.16 以下の場合) および [Blob CSI ドライバー](https://github.com/kubernetes-sigs/blob-csi-driver/blob/master/README.md) (バージョン 1.17 以上の場合) が使用されます。 
+>
+> そのため、クラスターのバージョンに合った正しい blobfuse 方式にデプロイするためには、クラスターのアップグレード後、Web サービスを再デプロイまたは更新することが重要です。
+
+> [!NOTE]
+> 操作が既に進行中の場合、同じ Web サービスでの新しい操作は、409 競合エラーで応答します。 たとえば、Web サービスの作成または更新操作の進行中に、新しい削除操作がトリガーされた場合、エラーがスローされます。
 
 **SDK を使用する**
 
@@ -86,14 +92,14 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 >
 > 新しいエントリ スクリプトまたは環境を使用するようにサービスを更新するには、[推論構成ファイル](./reference-azure-machine-learning-cli.md#inference-configuration-schema)を作成し、それを `ic` パラメーターで指定します。
 
-詳細については、[az ml service update](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-update) のドキュメントを参照してください。
+詳細については、[az ml service update](/cli/azure/ml(v1)/service?view=azure-cli-latest#az_ml_v1__service_update&preserve-view=true) のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [失敗したデプロイのトラブルシューティング](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md)
 * [Web サービスを使用するクライアント アプリケーションを作成する](how-to-consume-web-service.md)
-* [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
+* [カスタム Docker イメージを使用してモデルをデプロイする方法](./how-to-deploy-custom-container.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)

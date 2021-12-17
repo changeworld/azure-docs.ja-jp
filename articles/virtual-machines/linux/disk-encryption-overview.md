@@ -9,22 +9,24 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1ea83dc62c2752e34584b89de2cdb6dbde3dfa0
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 8fa9941d068b6062e8e0350aa9d711aa29808ee5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443920"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342663"
 ---
-# <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption 
+# <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure Disk Encryption は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を使用して、Azure 仮想マシン (VM) の OS とデータ ディスクにボリューム暗号化が提供されます。これは、ディスク暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](../../key-vault/index.yml) に統合されています。
 
 Azure Disk Encryption は、Virtual Machines と同じように、ゾーン回復性を備えています。 詳細については、「[Availability Zones をサポートする Azure サービス](../../availability-zones/az-region.md)」を参照してください。
 
-[Azure Security Center](../../security-center/index.yml) を使用している場合、暗号化されていない VM があると警告を受け取ります。 アラートは高重要度として表示され、このような VM は暗号化することをお勧めします。
+[Microsoft Defender for Cloud](../../security-center/index.yml) を使用している場合、暗号化されていない VM があると警告されます。 アラートは高重要度として表示され、このような VM は暗号化することをお勧めします。
 
-![Azure Security Center のディスク暗号化アラート](media/disk-encryption/security-center-disk-encryption-fig1.png)
+![Microsoft Defender for Cloud のディスク暗号化アラート](media/disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!WARNING]
 > - これまで Azure AD で Azure Disk Encryption を使用して VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 詳細については、「[Azure AD での Azure Disk Encryption (以前のリリース)](disk-encryption-overview-aad.md)」を参照してください。 
@@ -38,7 +40,7 @@ Azure Disk Encryption は、Virtual Machines と同じように、ゾーン回�
 
 Linux VM は、[さまざまなサイズ](../sizes.md)で利用できます。 Azure Disk Encryption は、第 1 世代と第 2 世代の VM でサポートされています。 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
 
-「[ローカル一時ディスクを持たない Azure VM のサイズ](../azure-vms-no-temp-disk.md)」を参照してください。
+「[ローカル一時ディスクを持たない Azure VM のサイズ](../azure-vms-no-temp-disk.yml)」を参照してください。
 
 また、Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) または次の最小メモリ要件を満たしていない仮想マシンでは利用できません。
 
@@ -63,12 +65,16 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 
 | Publisher | プラン | SKU | URN | 暗号化がサポートされているボリュームの種類 |
 | --- | --- |--- | --- |
+| Canonical | Ubuntu | 20.04-LTS | Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest | OS とデータ ディスク |
+| Canonical | Ubuntu | 20.04-DAILY-LTS | Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts:latest | OS とデータ ディスク |
+| Canonical | Ubuntu | 20.04-LTS Gen2 | Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest | OS とデータ ディスク |
+| Canonical | Ubuntu | 20.04-DAILY-LTS Gen2 |Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts-gen2:latest | OS とデータ ディスク |
 | Canonical | Ubuntu | 18.04-LTS | Canonical:UbuntuServer:18.04-LTS:latest | OS とデータ ディスク |
 | Canonical | Ubuntu 18.04 | 18.04-DAILY-LTS | Canonical:UbuntuServer:18.04-DAILY-LTS:latest | OS とデータ ディスク |
 | Canonical | Ubuntu 16.04 | 16.04-DAILY-LTS | Canonical:UbuntuServer:16.04-DAILY-LTS:latest | OS とデータ ディスク |
 | Canonical | Ubuntu 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical:UbuntuServer:14.04.5-LTS:latest | OS とデータ ディスク |
 | Canonical | Ubuntu 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | OS とデータ ディスク |
-| RedHat | RHEL 8-LVM | 8-LVM | RedHat:RHEL:8-LVM:latest | OS とデータ ディスク (後述する注を参照してください) |
+| RedHat | RHEL 8-LVM | 8-LVM | RedHat:RHEL:8-LVM:8.2.20200905 | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 8.2 | 8.2 | RedHat:RHEL:8.2:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 8.1 | 8.1 | RedHat:RHEL:8.1:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 7-LVM | 7-LVM | RedHat:RHEL:7-LVM:7.9.2020111202 | OS とデータ ディスク (後述する注を参照してください) |
@@ -102,9 +108,13 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 | SUSE | SLES HPC 12-SP3 | 12-SP3 | SUSE:SLES-HPC:12-SP3:latest | データ ディスクのみ |
 
 > [!NOTE]
-> RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい Azure Disk Encryption の実装がサポートされます。  
+> RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい Azure Disk Encryption の実装がサポートされます。
 >
 > ADE は、RHEL のサブスクリプション持ち込み Gold Image でもサポートされています。ただし、サブスクリプションが登録された **後** でのみサポートされます。 詳細については、「[Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)」を参照してください。
+> 
+> 特定のオファーの種類に対する ADE サポートは、発行元によって提供される有効期限の終了日を超えて拡張されません。 
+> 
+> レガシ ADE ソリューション (AAD 資格情報を使用) は、新しい VM には推奨されません。また、RHEL 7.8 より後の RHEL バージョンと互換性がありません。
 
 ## <a name="additional-vm-requirements"></a>追加の VM 要件
 

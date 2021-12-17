@@ -1,52 +1,46 @@
 ---
-title: Azure 上のコンフィデンシャル コンピューティング仮想マシン
+title: SGX エンクレーブを使用して構築する - Azure Virtual Machines
 description: コンフィデンシャル コンピューティング ワークロードを可能にする Intel SGX ハードウェアについて説明します。
-services: virtual-machines
-author: JenCook
+author: stempesta
 ms.service: virtual-machines
-ms.subservice: confidential-computing
+ms.subservice: workloads
 ms.workload: infrastructure
 ms.topic: conceptual
-ms.date: 9/3/2020
-ms.author: JenCook
-ms.openlocfilehash: 554260b2a2760380d3bb2d91ee25b4a03bf2f1ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/01/2021
+ms.author: stempesta
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3ac8c9ddced2fd37c829277c925b8953e7c71151
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551370"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310017"
 ---
-# <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Azure Confidential Computing 仮想マシン (VM) の概要
+# <a name="build-with-sgx-enclaves"></a>SGX エンクレーブを使用して構築する 
 
+Azure コンフィデンシャル コンピューティングでは、[DCsv2 シリーズ](../virtual-machines/dcv2-series.md)と [DCsv3/DCdsv3 シリーズ](../virtual-machines/dcv3-series.md)*の仮想マシン (VM) が提供されています。 これらの VM には、[Intel® Software Guard Extensions (SGX)](https://intel.com/sgx) が装備されています。 
 
-Azure は、仮想環境でコンフィデンシャル コンピューティングを提供する初めてのクラウド プロバイダーです。 Microsoft は、ハードウェアとアプリケーションの間の抽象化レイヤーとしての機能を果たす仮想マシンを開発してきました。 必要に応じて冗長性と可用性を確保しつつ、ワークロードを大規模に実行することができます。  
+Intel SGX テクノロジを使用すると、お客様はデータを保護するエンクレーブを作成し、CPU でデータが処理されている間もデータの暗号化を維持できます。 オペレーティング システム (OS) とハイパーバイザーは、データにアクセスできません。 物理的にアクセスできるデータ センターの管理者も、データにはアクセスできません。
 
-## <a name="intel-sgx-enabled-virtual-machines"></a>Intel SGX 対応の仮想マシン
+## <a name="enclaves-concept"></a>エンクレーブの概念
 
-Azure Confidential Computing の仮想マシンでは、CPU ハードウェアの一部が、アプリケーション内の一部のコードとデータ用に予約されています。 この制限された領域がエンクレーブです。 
+エンクレーブは、ハードウェアのプロセッサやメモリの、セキュリティで保護された部分です。 デバッガーを使用しても、エンクレーブ内のデータやコードを見ることはできません。 信頼されていないコードによってエンクレーブ メモリ内のコンテンツの変更が試みられた場合、SGX により環境が無効にされて、操作は拒否されます。 これらの固有の機能は、シークレットが暗号化されていない状態でアクセスできるようになるのを防ぐのに役立ちます。  
 
-![VM モデル](media/overview/hardware-backed-enclave.png)
+![エンクレーブでセキュリティ保護されたデータを示す VM モデルの図。](media/overview/hardware-backed-enclave.png)
 
-Azure Confidential Computing インフラストラクチャは現在、特殊な SKU の仮想マシン (VM) で構成されています。 これらの VM は、Software Guard Extension (Intel SGX) を搭載した Intel プロセッサ上で動作します。 [Intel SGX](https://intel.com/sgx) は、コンフィデンシャル コンピューティングの核となる保護機能の強化を実現するコンポーネントです。 
+エンクレーブは、セキュリティで保護されたロックボックスと考えることができます。 暗号化されたコードとデータをロックボックスに格納します。 外側からは何も見えません。 エンクレーブには、データを解読するためのキーを提供します。 データを返送する前に、エンクレーブによってデータが処理されて再暗号化されます。
 
-現在 Azure では、ハードウェアベースのエンクレーブ作成用に、Intel SGX テクノロジを基盤とする [DCsv2 シリーズ](../virtual-machines/dcv2-series.md)を提供しています。 DCsv2 シリーズの VM で動作するセキュア エンクレーブベースのアプリケーションを構築すれば、アプリケーションのデータとコードをその使用中に保護することができます。 
+各エンクレーブには、設定されたサイズの暗号化されたページ キャッシュ (EPC) があります。 EPC によって、エンクレーブが保持できるメモリの量が決まります。 [DCsv2 シリーズ](../virtual-machines/dcv2-series.md)の VM では、最大 168 MiB が保持されます。 [DCsv3/DCdsv3 シリーズ](../virtual-machines/dcv3-series.md)*の VM では、メモリを集中的に使用するワークロードにために最大 256 GB が保持されます。
 
-ハードウェアベースの信頼できるエンクレーブを使用した Azure Confidential Computing 仮想マシンのデプロイについて、[詳しい情報](virtual-machine-solutions.md)をご覧いただけます。
+> [!NOTE]
+> \* DCsv3 と DCdsv3 は、2021 年 11 月 1 日現在、**パブリック プレビュー** 段階です。
 
-## <a name="enclaves"></a>エンクレーブ
+詳しくは、[ハードウェア ベースの信頼されたエンクレーブを使用して Intel SGX VM をデプロイする方法](virtual-machine-solutions-sgx.md)に関するページをご覧ください。
 
-エンクレーブは、ハードウェアのプロセッサやメモリの、セキュリティで保護された部分です。 デバッガーを使用しても、エンクレーブ内のデータやコードを表示することはできません。 信頼されていないコードがエンクレーブ メモリの内容を変更しようとすると、環境が無効になって操作が拒否されます。
+## <a name="developing-for-enclaves"></a>エンクレーブ向けの開発
 
-基本的に、エンクレーブはセキュリティで保護されたボックスと考えてください。 暗号化されたコードとデータは、箱の中に置くことになります。 箱の外からは何も見えません。 データを取り出す際は、まずデータの暗号化を解除するためのキーをエンクレーブに与えます。その後データは処理され、再び暗号化したうえで、エンクレーブから取り出されます。
-
-各エンクレーブには、各エンクレーブが保持できるメモリの量を決定する、暗号化されたページ キャッシュ (EPC) のサイズが設定されています。 DCsv2 仮想マシンが大きくなるほど、EPC メモリの量が増えます。 VM サイズあたりの最大 EPC については、[DCsv2 の仕様](../virtual-machines/dcv2-series.md)に関するページを参照してください。
-
-
-
-### <a name="developing-applications-to-run-inside-enclaves"></a>エンクレーブ内で実行するアプリケーションの開発
-アプリケーションの開発時には、[ソフトウェア ツール](application-development.md)を使用して、エンクレーブ内に一部のコードとデータを隠蔽することができます。 信頼された環境の外からはだれもコードとデータを表示したり変更したりできないよう、これらのツールによって保護されます。 
+[エンクレーブで実行されるアプリケーションの開発には、さまざまなソフトウェア ツール](application-development.md)を使用できます。 これらのツールは、エンクレーブ内のコードとデータの一部をシールドするのに役立ちます。 信頼できる環境の外部にいるユーザーが、これらのツールでデータを表示または変更できないことを確認してください。
 
 ## <a name="next-steps"></a>次の手順
-- Azure Confidential Computing 仮想マシンにソリューションをデプロイするための[ベスト プラクティス](virtual-machine-solutions.md)を参照する
-- [DCsv2 シリーズ仮想マシンをデプロイする](quick-create-portal.md)
+- [DCsv2 または DCsv3/DCdsv3 シリーズの仮想マシンをデプロイする](quick-create-portal.md)
 - OE SDK を使用して、[エンクレーブ対応アプリケーションを開発する](application-development.md)

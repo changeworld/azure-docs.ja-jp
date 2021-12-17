@@ -2,21 +2,20 @@
 title: Azure IoT Hub メッセージの形式について | Microsoft Docs
 description: 開発者ガイド - IoT Hub メッセージの形式と予期される内容について説明します。
 author: ash2017
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 07/01/2021
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 21f22f9aa31210b1690d0be562643d94901ce58a
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 40cbc1c5046c944a8915f1db38805cacb95b2889
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079048"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294777"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -61,8 +60,30 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 | iothub-connection-module-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **moduleId** が含まれます。 | いいえ | connectionModuleId |
 | iothub-connection-auth-generation-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **connectionDeviceGenerationId** (「[デバイス ID のプロパティ](iot-hub-devguide-identity-registry.md#device-identity-properties)」を参照) が含まれています。 | いいえ |connectionDeviceGenerationId |
 | iothub-connection-auth-method |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。| いいえ | connectionAuthMethod |
-| dt-dataschema | この値は、IoT Hub で、device-to-cloud メッセージに対して設定されます。 デバイス接続で設定されたデバイス モデル ID が含まれます。 | いいえ | N/A |
-| dt-subject | device-to-cloud メッセージを送信しているコンポーネントの名前。 | はい | 該当なし |
+| dt-dataschema | この値は、IoT Hub で、device-to-cloud メッセージに対して設定されます。 デバイス接続で設定されたデバイス モデル ID が含まれます。 | いいえ | $dt-dataschema |
+| dt-subject | device-to-cloud メッセージを送信しているコンポーネントの名前。 | はい | $dt-subject |
+
+## <a name="application-properties-of-d2c-iot-hub-messages"></a>**D2C** IoT Hub メッセージのアプリケーション プロパティ
+
+アプリケーション プロパティの一般的な用途として、デバイスからメッセージが送信された日時の記録があります。この場合、`iothub-creation-time-utc` プロパティを使用してデバイスからタイムスタンプを送信します。 このタイムスタンプの形式は、タイムゾーン情報を含まない UTC であることが必要です。 たとえば `2021-04-21T11:30:16Z` は有効ですが、`2021-04-21T11:30:16-07:00` は有効ではありません。
+
+```json
+{
+  "applicationId":"5782ed70-b703-4f13-bda3-1f5f0f5c678e",
+  "messageSource":"telemetry",
+  "deviceId":"sample-device-01",
+  "schema":"default@v1",
+  "templateId":"urn:modelDefinition:mkuyqxzgea:e14m1ukpn",
+  "enqueuedTime":"2021-01-29T16:45:39.143Z",
+  "telemetry":{
+    "temperature":8.341033560421833
+  },
+  "messageProperties":{
+    "iothub-creation-time-utc":"2021-01-29T16:45:39.021Z"
+  },
+  "enrichments":{}
+}
+```
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT Hub メッセージのシステム プロパティ
 
@@ -71,7 +92,7 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 | message-id |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式:ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。  |はい|
 | sequence-number |IoT Hub によって各 C2D メッセージに割り当てられる数値 (デバイスとキューごとに一意)。 |いいえ|
 | to |[C2D](iot-hub-devguide-c2d-guidance.md) メッセージで指定される宛先。 |いいえ|
-| absolute-expiry-time |メッセージの有効期限の日時。 |いいえ| 
+| absolute-expiry-time |メッセージの有効期限の日時。 |はい| 
 | correlation-id |通常、要求/応答パターンで要求の MessageId を格納する、応答メッセージの文字列プロパティ。 |はい|
 | user-id |メッセージの送信元を指定するために使用される ID。 IoT Hub でメッセージが生成されると、 `{iot hub name}`に設定されます。 |はい|
 | iothub-ack |フィードバック メッセージのジェネレーター。 このプロパティは、デバイスがメッセージを使用した結果としてのフィードバック メッセージの生成を IoT Hub に要求するために、C2D メッセージで使用されます。 使用可能な値: **none** (既定値): フィードバック メッセージは生成されません。**positive**: メッセージが完了した場合にフィードバック メッセージを受信します。**negative**: デバイスでメッセージが完了しないまま、メッセージの有効期限が切れた場合 (または最大配信数に達した場合) にフィードバック メッセージを受信します。**full**: positive と negative の両方の値を意味します。 |はい|
@@ -129,4 +150,4 @@ D2C メッセージでのデバイスのなりすましを回避するために�
 
 * IoT Hub でのメッセージ サイズの制限については、[IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)に関するページをご覧ください。
 
-* IoT Hub メッセージをさまざまなプログラミング言語で作成し、読み取る方法については、[クイック スタート](quickstart-send-telemetry-node.md)をご覧ください。
+* IoT Hub メッセージをさまざまなプログラミング言語で作成し、読み取る方法については、[クイック スタート](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)をご覧ください。

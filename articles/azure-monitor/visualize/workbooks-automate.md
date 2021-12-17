@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 9d4aac17ca823f4eaa0f52ab260b1daca3f52f94
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d48cefcae16829bc0a58cdb4f4a43f52d78f8460
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109749"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751404"
 ---
 # <a name="programmatically-manage-workbooks"></a>プログラムでブックを管理する
 
@@ -193,7 +193,7 @@ ms.locfileid: "106109749"
 | `workbookType` | ブックが表示されるギャラリー。 サポートされる値には、workbook、`tsg`、Azure Monitor などがあります。 |
 | `workbookSourceId` | ブックを関連付けるリソース インスタンスの ID。 新しいブックは、このリソース インスタンスに関連して表示されます (たとえば、 _[ブック]_ の下にあるリソースの目次内)。 自分のブックを Azure Monitor のブック ギャラリーに表示したい場合は、リソース ID ではなく文字列 _Azure Monitor_ を使用します。 |
 | `workbookId` | このブック インスタンスの一意の GUID。 新しい GUID を自動的に作成するには、 _[newGuid()]_ を使用します。 |
-| `kind` | 作成されるブックを共有とプライベートのいずれにするかを指定するために使用します。 共有ブックには値 _shared_ を使用し、プライベート ブックには _user_ を使用します。 |
+| `kind` | 作成されるブックを共有するかどうかの指定に使用します。 すべての新しいブックで、値 _shared_ が使用されます。 |
 | `location` | ブックの作成先となる Azure の場所。 リソース グループと同じ場所に作成するには、 _[resourceGroup().location]_ を使用します |
 | `serializedData` | ブックで使用されるコンテンツまたはペイロードが格納されます。 ブック UI で Resource Manager テンプレートを使用して値を取得します |
 
@@ -206,9 +206,105 @@ ms.locfileid: "106109749"
 | `tsg` | Application Insights の [トラブルシューティング ガイド] ギャラリー |
 | `usage` | Application Insights の _[使用法]_ の下にある _[その他]_ ギャラリー |
 
+### <a name="working-with-json-formatted-workbook-data-in-the-serializeddata-template-parameter"></a>serializedData テンプレート パラメーターの JSON 形式ブック データの操作
+
+Azure ブック用に Azure Resource Manager テンプレートをエクスポートするときに、エクスポートされた `serializedData` テンプレート パラメーターの内部に固定のリソース リンクが埋め込まれていることがよくあります。 これらには、機密である可能性があるサブスクリプション ID やリソース グループ名などの値や、その他の種類のリソース ID が含まれます。
+
+次の例では、文字列操作を行わずに、エクスポートしたブック Azure Resource Manager テンプレートをカスタマイズする方法を示しています。 この例で示しているパターンの意図は、Azure portal からエクスポートした未変更のデータを処理することです。 プログラムでブックを管理するときは、埋め込まれた機密の値をマスクで完全に除外することもベスト プラクティスであるため、ここではサブスクリプション ID とリソース グループをマスクしています。 生の受信値 `serializedData` に対するその他の変更は加えられていません。
+
+```json
+{
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workbookDisplayName": {
+      "type": "string"
+    },
+    "workbookSourceId": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().id]"
+    },
+    "workbookId": {
+      "type": "string",
+      "defaultValue": "[newGuid()]"
+    }
+  },
+  "variables": {
+    // serializedData from original exported Azure Resource Manager template
+    "serializedData": "{\"version\":\"Notebook/1.0\",\"items\":[{\"type\":1,\"content\":{\"json\":\"Replace with Title\"},\"name\":\"text - 0\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"{\\\"version\\\":\\\"ARMEndpoint/1.0\\\",\\\"data\\\":null,\\\"headers\\\":[],\\\"method\\\":\\\"GET\\\",\\\"path\\\":\\\"/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups\\\",\\\"urlParams\\\":[{\\\"key\\\":\\\"api-version\\\",\\\"value\\\":\\\"2019-06-01\\\"}],\\\"batchDisabled\\\":false,\\\"transformers\\\":[{\\\"type\\\":\\\"jsonpath\\\",\\\"settings\\\":{\\\"tablePath\\\":\\\"$..*\\\",\\\"columns\\\":[]}}]}\",\"size\":0,\"queryType\":12,\"visualization\":\"map\",\"tileSettings\":{\"showBorder\":false},\"graphSettings\":{\"type\":0},\"mapSettings\":{\"locInfo\":\"AzureLoc\",\"locInfoColumn\":\"location\",\"sizeSettings\":\"location\",\"sizeAggregation\":\"Count\",\"opacity\":0.5,\"legendAggregation\":\"Count\",\"itemColorSettings\":null}},\"name\":\"query - 1\"}],\"isLocked\":false,\"fallbackResourceIds\":[\"/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/XXXXXXX\"]}",
+
+    // parse the original into a JSON object, so that it can be manipulated
+    "parsedData": "[json(variables('serializedData'))]",
+
+    // create new JSON objects that represent only the items/properties to be modified
+    "updatedTitle": {
+      "content":{
+        "json": "[concat('Resource Group Regions in subscription \"', subscription().displayName, '\"')]"
+      }
+    },
+    "updatedMap": {
+      "content": {
+        "path": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups')]"
+      }
+    },
+
+    // the union function applies the updates to the original data
+    "updatedItems": [
+      "[union(variables('parsedData')['items'][0], variables('updatedTitle'))]",
+      "[union(variables('parsedData')['items'][1], variables('updatedMap'))]"
+    ],
+
+    // copy to a new workbook object, with the updated items
+    "updatedWorkbookData": {
+      "version": "[variables('parsedData')['version']]",
+      "items": "[variables('updatedItems')]",
+      "isLocked": "[variables('parsedData')['isLocked']]",
+      "fallbackResourceIds": ["[parameters('workbookSourceId')]"]
+    },
+
+    // convert back to an encoded string
+    "reserializedData": "[string(variables('updatedWorkbookData'))]"
+  },
+  "resources": [
+    {
+      "name": "[parameters('workbookId')]",
+      "type": "microsoft.insights/workbooks",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2018-06-17-preview",
+      "dependsOn": [],
+      "kind": "shared",
+      "properties": {
+        "displayName": "[parameters('workbookDisplayName')]",
+        "serializedData": "[variables('reserializedData')]",
+        "version": "1.0",
+        "sourceId": "[parameters('workbookSourceId')]",
+        "category": "workbook"
+      }
+    }
+  ],
+  "outputs": {
+    "workbookId": {
+      "type": "string",
+      "value": "[resourceId( 'microsoft.insights/workbooks', parameters('workbookId'))]"
+    }
+  },
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#"
+}
+```
+
+この例では、次の手順によって、エクスポートした Azure Resource Manager テンプレートのカスタマイズを容易にしています。
+1. 前のセクションで説明したように、ブックを Azure Resource Manager テンプレートとしてエクスポートします。
+2. テンプレートの `variables` セクションで、次を実行します。
+    1. `serializedData` 値を JSON オブジェクト変数に解析します。これにより、ブックの内容を表す項目の配列を含む JSON 構造体が作成されます。
+    2. 変更する項目またはプロパティのみを表す新しい JSON オブジェクトを作成します。
+    3. `union()` 関数を使用して、JSON 内容項目の新しいセット (`updatedItems`) を投影し、元の JSON 項目に変更を適用します。
+    4. 新しいブック オブジェクト `updatedWorkbookData` を作成します。これには、元の解析済みデータからの `updatedItems` および `version`/`isLocked` データと、`fallbackResourceIds` の訂正されたセットが含まれます。
+    5. 新しい JSON コンテンツをシリアル化して、新しい文字列変数 `reserializedData` に戻します。
+3. 元の `serializedData` プロパティの代わりに新しい `reserializedData` 変数を使用します。
+4. 更新された Azure Resource Manager テンプレートを使用して新しいブック リソースをデプロイします。
+
 ### <a name="limitations"></a>制限事項
 技術的な理由により、このメカニズムを使用して Application Insights の _[ブック]_ ギャラリーにブック インスタンスを作成することはできません。 この制限については、解決に取り組んでいる最中です。 その間は、[トラブルシューティング ガイド] ギャラリー (workbookType: `tsg`) を使用して Application Insights に関連するブックをデプロイすることをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 
-新しい [Azure Monitor for Storage エクスペリエンス](../insights/storage-insights-overview.md)を強化するためにブックがどのように使用されているかを確認してください。
+新しい[ストレージ分析情報エクスペリエンス](../../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)を強化するためにブックがどのように使用されているかを確認してください。

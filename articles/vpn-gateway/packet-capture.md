@@ -1,5 +1,6 @@
 ---
-title: Azure VPN Gateway:パケット キャプチャを構成する
+title: VPN ゲートウェイのパケット キャプチャを構成する
+titleSuffix: Azure VPN Gateway
 description: VPN ゲートウェイで使用でき、問題の原因を絞り込むのに役立つパケット キャプチャ機能について説明します。
 services: vpn-gateway
 author: anzaman
@@ -7,12 +8,13 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alzam
-ms.openlocfilehash: 0983139d1c9af235eba4c9f99da7bc9dea3f231b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c7a781a497ce6b3e4511eff3ba5818bab1a1a2b8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726616"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681627"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>VPN ゲートウェイのパケット キャプチャを構成する
 
@@ -328,6 +330,12 @@ Azure portal でパケット キャプチャを設定できます。
 
 次の例は、パケット キャプチャを開始および停止する PowerShell コマンドを示しています。 パラメーター オプションの詳細については、「[AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)」を参照してください。
 
+>
+### <a name="prerequisite"></a>前提条件
+
+* パケット キャプチャ データは、サブスクリプションのストレージ アカウントに記録する必要があります。 [ストレージ アカウントの作成](../storage/common/storage-account-create.md)に関する記事を参照してください。
+* パケット キャプチャを停止するには、ストレージ アカウントの `SASUrl` を生成する必要があります。 [ユーザー委任 SAS の作成](../storage/blobs/storage-blob-user-delegation-sas-create-powershell.md)に関する記事を参照してください。
+
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>VPN ゲートウェイのパケット キャプチャを開始する
 
 ```azurepowershell-interactive
@@ -342,6 +350,8 @@ Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroup
 Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName" -SasUrl "YourSASURL"
 ```
 
+パラメーター オプションの詳細については、「[Stop-AzVirtualNetworkGatewayPacketCapture](/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture)」を参照してください。
+
 ### <a name="start-packet-capture-for-a-vpn-gateway-connection"></a>VPN ゲートウェイ接続のパケット キャプチャを開始する
 
 ```azurepowershell-interactive
@@ -355,6 +365,8 @@ Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourRes
 ```azurepowershell-interactive
 Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName" -SasUrl "YourSASURL"
 ```
+
+パラメーター オプションの詳細については、「[Stop-AzVirtualNetworkGatewayConnectionPacketCapture](/powershell/module/az.network/stop-azvirtualnetworkgatewayconnectionpacketcapture)」を参照してください。
 
 ## <a name="key-considerations"></a>重要な考慮事項
 

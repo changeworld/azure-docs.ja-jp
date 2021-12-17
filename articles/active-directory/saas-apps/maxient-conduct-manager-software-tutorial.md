@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 4b57b3fbb338774eb8d66fc4d3c0c817e19aff4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2790ae787831fb5dfa81656d32473c98ac4bb4bd
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92458202"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739945"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Maxient Conduct Manager Software の統合
 
@@ -64,7 +64,7 @@ Maxient Conduct Manager Software で Azure AD SSO を構成してテストしま
 Maxient Conduct Manager Software を使用して Azure AD の SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD SSO を構成する](#configure-azure-ad-sso)** - ユーザーが Maxient Conduct Manager Software で使用するための認証を行えるようにします
-    1. **[Maxient を使用するようにすべてのユーザーを割り当てる](#assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software)** - 組織のすべてのユーザーが認証できるようにします
+   - **[[ユーザーの割り当てが必要] を [いいえ] に設定する](#set-user-assignment-required-to-no)** - 組織のすべてのユーザーが認証できるようにします。
 1. **[Maxient で Azure AD セットアップをテストする](#test-with-maxient)** - 構成が機能するかどうか、正しい属性がリリースされているかどうかを確認します
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -90,21 +90,15 @@ Maxient Conduct Manager Software を使用して Azure AD の SSO を構成し�
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
-### <a name="assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software"></a>Maxient Conduct Manager Software の認証を行えるようにすべてのユーザーを割り当てる
+<a name="set-user-assignment-required-to-no"></a>
+    
+### <a name="set-user-assignment-required-to-no"></a>[ユーザーの割り当てが必要] を [いいえ] に設定します to No
 
-このセクションでは、Azure システムを使用して Maxient Conduct Manager Software を認証するために、すべてのアカウントにアクセス権を付与します。  Maxient が正常に機能するためには、この手順が **必須** であることに注意することが重要です。  Maxient では Azure AD システムを活用してユーザーが "*認証*" されます。 ユーザーの "*承認*" は、実行しようとしている特定の関数に対して、Maxient システム内で実行されます。 Maxient では、これらの決定を行うためにディレクトリの属性は使用されません。
+Maxient が正常に機能するためには、この手順が **必須** であることに注意することが重要です。  Maxient では Azure AD システムを活用してユーザーが "*認証*" されます。 ユーザーの "*承認*" は、実行しようとしている特定の関数に対して、Maxient システム内で実行されます。 Maxient では、これらの決定を行うためにディレクトリの属性は使用されません。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Maxient Conduct Manager Software]** を選択します。
-1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
-1. **[ユーザーとグループ]** ダイアログで、すべてのユーザー (または適切なグループ) を選択して、Maxient で認証できるように **割り当て** ます。
+1. アプリの概要ページで、[ユーザーの割り当てが必要] の設定を [いいえ] に切り替えます。
 
 ## <a name="test-with-maxient"></a>Maxient でテストする 
 

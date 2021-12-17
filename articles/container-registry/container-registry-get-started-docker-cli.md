@@ -2,14 +2,14 @@
 title: コンテナー イメージのプッシュとプル
 description: Docker CLI を使用した、Azure のプライベート コンテナー レジストリに対する Docker イメージのプッシュとプル
 ms.topic: article
-ms.date: 01/23/2019
-ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 48f5f1707881ac8461e12212be631d3b80c16ca7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/12/2021
+ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurepowershell
+ms.openlocfilehash: 0fd44ae001bd7f120b6c903a4109dd0e6268e19e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783829"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062958"
 ---
 # <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Docker CLI を使用した、Azure のコンテナー レジストリへの最初のイメージのプッシュ
 
@@ -19,17 +19,36 @@ ms.locfileid: "107783829"
 
 ## <a name="prerequisites"></a>前提条件
 
+<<<<<<< HEAD
 * **Azure Container Registry** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
+=======
+* **Azure Container Registry** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure portal](container-registry-get-started-portal.md)、[Azure CLI](container-registry-get-started-azure-cli.md)、または [Azure PowerShell](container-registry-get-started-powershell.md) を使用します。
+>>>>>>> repo_sync_working_branch
 * **Docker CLI** - Docker もローカルにインストールする必要があります。 Docker では、[macOS][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
 ## <a name="log-in-to-a-registry"></a>レジストリへのログイン
 
-プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。 コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr#az_acr_login)を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、Azure CLI にログインし、レジストリに対して認証を行います。
+プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr#az_acr_login)を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、Azure CLI にログインし、レジストリに対して認証を行います。
 
 ```azurecli
 az login
 az acr login --name myregistry
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+PowerShell で作業する場合に推奨される方法は、Azure PowerShell のコマンドレット [Connect-AzContainerRegistry](/powershell/module/az.containerregistry/connect-azcontainerregistry) を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、Azure にログインし、レジストリに対して認証を行います。
+
+```azurepowershell
+Connect-AzAccount
+Connect-AzContainerRegistry -Name myregistry
+```
+
+---
 
 [docker login](https://docs.docker.com/engine/reference/commandline/login/) でログインすることもできます。 たとえば、オートメーション シナリオで、[レジストリにサービス プリンシパルを割り当てる](container-registry-authentication.md#service-principal)ことができます。 次のコマンドを実行するときは、サービス プリンシパルの appID (ユーザー名) とパスワードの入力を求められたら、対話形式で入力します。 ログイン資格情報の管理のベスト プラクティスについては、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドのリファレンスを参照してください。
 
@@ -114,11 +133,34 @@ Nginx イメージが不要になった場合は、[docker rmi](https://docs.doc
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
+<<<<<<< HEAD
+=======
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+>>>>>>> repo_sync_working_branch
 Azure Container Registry からイメージを削除するには、Azure CLI コマンド [az acr repository delete](/cli/azure/acr/repository#az_acr_repository_delete) を使用できます。 たとえば、次のコマンドは、`samples/nginx:latest` タグによって参照されるマニフェスト、固有のレイヤー データ、およびそのマニフェストを参照するその他すべてのタグを削除します。
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+[Az.ContainerRegistry](/powershell/module/az.containerregistry) Azure PowerShell モジュールには、コンテナー インスタンスからイメージを削除するための複数のコマンドが含まれています。 [Remove-AzContainerRegistryRepository](/powershell/module/az.containerregistry/remove-azcontainerregistryrepository) を使用すると、特定の名前空間 (`samples:nginx` など) のすべてのイメージが削除され、[Remove-AzContainerRegistryManifest](/powershell/module/az.containerregistry/remove-azcontainerregistrymanifest) を使用すると、特定のタグまたはマニフェストが削除されます。
+
+次の例では、`Remove-AzContainerRegistryRepository` コマンドレットを使用して、`samples:nginx` 名前空間のすべてのイメージを削除します。
+
+```azurepowershell
+Remove-AzContainerRegistryRepository -RegistryName myregistry -Name samples/nginx
+```
+
+次の例では、`Remove-AzContainerRegistryManifest` コマンドレットを使用して、`samples/nginx:latest` タグによって参照されるマニフェスト、固有のレイヤー データ、およびそのマニフェストを参照するその他すべてのタグを削除します。
+
+```azurepowershell
+Remove-AzContainerRegistryManifest -RegistryName myregistry -RepositoryName samples/nginx -Tag latest
+```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2017
+ms.date: 09/17/2021
 ms.author: monicar
-ms.openlocfilehash: 785c87e8136430557af819cd8c7ab1db8f54c060
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 223e75d0a02997187eec609324014493e2fa34df
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507723"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660991"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集:Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -28,6 +28,7 @@ Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウ�
 
 * [Microsoft Azure とアマゾン ウェブ サービス](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) - Azure サービスとそれに対応する AWS サービスの定義。<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
 * [クラウド コンピューティング用語](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 業界における一般的なクラウド用語についての解説
+* [Azure の基本的な概念](/azure/cloud-adoption-framework/ready/considerations/fundamental-concepts) - Azure 向けの Microsoft Cloud 導入フレームワーク。
 
 ## <a name="account"></a>account
 Azure サブスクリプションへのアクセスおよび管理に使用するアカウント。 Azure アカウントと呼ばれることが多いですが、既存の職場アカウント、学校アカウント、個人用 Microsoft アカウントのいずれかを指定できます。 [無料試用版](https://azure.microsoft.com)にサインアップする際に、Azure サブスクリプションを管理するためのアカウントを作成することもできます。  
@@ -104,7 +105,7 @@ Azure ソリューションの一部であるアイテム。 各 Azure サービ
 
 ## <a name="resource-manager-template"></a><a name="arm-template"></a>Resource Manager テンプレート
 1 つ以上の Azure リソースを宣言により定義すると共に、デプロイされるリソース間の依存関係を定義する JSON ファイル。 このテンプレートを使えば、リソースを一貫性のある形で繰り返しデプロイできます。  
-「[Resource Manager テンプレートの作成](./azure-resource-manager/templates/template-syntax.md)」をご覧ください。
+「[Resource Manager テンプレートの作成](./azure-resource-manager/templates/syntax.md)」をご覧ください。
 
 ## <a name="resource-provider"></a>リソース プロバイダー
 Resource Manager でデプロイおよび管理できるリソースを提供するサービス。 各リソース プロバイダーは、デプロイされたリソースを利用するための操作を提供します。 リソース プロバイダーには、Azure Portal、Azure PowerShell、プログラミング用のいくつかの SDK からアクセスできます。  
@@ -119,7 +120,7 @@ Resource Manager でデプロイおよび管理できるリソースを提供す
 「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」をご覧ください。
 
 ## <a name="shared-access-signature-sas"></a><a name="sas"></a>Shared Access Signature (SAS)
-アカウント キーを公開することなく、リソースへの制限付きアクセスを付与することができる署名。 たとえば、[Azure Storage は SAS を使用](./storage/common/storage-sas-overview.md)して、クライアントに LOB などのオブジェクトへのアクセス権を付与します。 [IoT Hub は SAS を使用](iot-hub/iot-hub-devguide-security.md#security-tokens)して、デバイスに利用統計情報を送信する許可を与えます。
+アカウント キーを公開することなく、リソースへの制限付きアクセスを付与することができる署名。 たとえば、[Azure Storage は SAS を使用](./storage/common/storage-sas-overview.md)して、クライアントに LOB などのオブジェクトへのアクセス権を付与します。 [IoT Hub は SAS を使用](iot-hub/iot-hub-dev-guide-sas.md#security-tokens)して、デバイスに利用統計情報を送信する許可を与えます。
 
 ## <a name="storage-account"></a>ストレージ アカウント
 Azure Storage の Azure BLOB、Queue、Table、ファイルの各サービスにアクセスできるアカウント。 ストレージ アカウント名は、Azure Storage データ オブジェクトの一意の名前空間を定義します。  
@@ -132,6 +133,9 @@ Azure サービスを入手する権利を与える、お客様と Microsoft の
 ## <a name="tag"></a>tag
 管理や課金の要件に合わせてリソースを分類できる、インデックスの用語。 リソースが複雑に絡み合っている場合は、タグを使用してこれらの資産をわかりやすく視覚化することができます。 たとえば、組織内で同じロールを果たしている複数リソース、または同じ部門に属している複数リソースにタグを付けることができます。  
 「[タグを使用した Azure リソースの整理](./azure-resource-manager/management/tag-resources.md)」をご覧ください。
+
+## <a name="tenant"></a>Tenant
+テナントとは、製品、サービス、またはアプリケーションのインスタンスに対して特定の特権を持つアクセスを共有するユーザーまたは組織のグループです。 Azure Active Directory では、テナントとは、組織が Microsoft 365 などのクラウド アプリケーションにサインアップするときに受け取る Azure Active Directory のインスタンスです。 各 Azure AD テナントは独立しており、他の Azure AD テナントとは切り離されています。 マルチテナントとは、複数の組織が共有するアプリケーションのインスタンスのことであり、各組織はインスタンスへの個別のアクセス権を持っています。
 
 ## <a name="update-domain"></a>ドメインの更新
 同時に更新される可用性セット内の仮想マシンのコレクション。 同じ更新ドメイン内の仮想マシンは、計画的なメンテナンス中に同時に再起動されます。 Azure では、複数の更新ドメインを同時に再起動することはありません。 このドメインは、アップグレード ドメインとも呼ばれています。  

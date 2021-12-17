@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: tutorial
-ms.date: 01/22/2018
-ms.openlocfilehash: f25e3d9f3b3d6319493856e3b15c894301289c29
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/22/2021
+ms.openlocfilehash: 8c26992ab292f0c75a5ad61000bad0de8eb8a8b7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783019"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040777"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -47,30 +48,40 @@ ms.locfileid: "104783019"
 この手順では、Azure PowerShell を使用して、 **FirstDataFactoryPSH** という名前の Azure データ ファクトリを作成します。 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行して入力データを変換する HDInsight Hive アクティビティなどを含めることができます。 それでは、この手順でデータ ファクトリの作成から始めましょう。
 
 1. Azure PowerShell を起動し、次のコマンドを実行します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+
    * 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
-     ```PowerShell
+
+     ```powershell
      Connect-AzAccount
-     ```    
+     ```
+
    * 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
-     ```PowerShell
+
+     ```powershell
      Get-AzSubscription  
      ```
+
    * 次のコマンドを実行して、使用するサブスクリプションを選択します。 このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
-     ```PowerShell
+
+     ```powershell
      Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
-     ```     
+     ```
+
 2. 次のコマンドを実行して、 **ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
     
-    ```PowerShell
+    ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
+
     このチュートリアルの一部の手順は、ADFTutorialResourceGroup という名前のリソース グループを使用することを前提としています。 異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループを使用する必要があります。
+
 3. **New-AzDataFactory** コマンドレットを実行して、**FirstDataFactoryPSH** という名前のデータ ファクトリを作成します。
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
     ```
-   以下の点に注意してください。
+
+次のことを考慮してください。
 
 * Azure Data Factory の名前はグローバルに一意にする必要があります。 " **Data factory 名 "FirstDataFactoryPSH" は利用できません**" というエラーが発生した場合は、名前を変更します (yournameFirstDataFactoryPSH など)。 このチュートリアルの手順の実行中に、この名前を ADFTutorialFactoryPSH の代わりに使用します。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
 * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
@@ -79,14 +90,16 @@ ms.locfileid: "104783019"
 
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
 
-    ```PowerShell
+    ```powershell
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
-      Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
 
-    ```PowerShell
+    Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
+
+    ```powershell
     Get-AzResourceProvider
     ```
+
   * Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com) にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
 
 パイプラインを作成する前に、まず、Data Factory エンティティをいくつか作成する必要があります。 最初に、データ ストアやコンピューティングをデータ ストアにリンクするリンクされたサービスを作成し、リンクされたデータ ストア内の入力/出力データを表す入力データセットと出力データセットを定義した後、これらのデータセットを使用するアクティビティを含むパイプラインを作成します。
@@ -115,19 +128,21 @@ ms.locfileid: "104783019"
 2. Azure PowerShell で ADFGetStarted フォルダーに切り替えます。
 3. **New-AzDataFactoryLinkedService** コマンドレットを使用して、リンクされたサービスを作成できます。 このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、*ResourceGroupName* パラメーターと *DataFactoryName* パラメーターの値を渡す必要があります。 または、**Get-AzDataFactory** を使用して **DataFactory** オブジェクトを取得すると、コマンドレットを実行するたびに *ResourceGroupName* と *DataFactoryName* を入力しなくてもオブジェクトを渡すことができます。 **Get-AzDataFactory** コマンドレットの出力を **$df** 変数に割り当てるには、次のコマンドを実行します。
 
-    ```PowerShell
-    $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
+    ```powershell
+    $df = Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
 4. これで、**New-AzDataFactoryLinkedService** コマンドレットを実行して、リンクされた **StorageLinkedService** サービスを作成できます。
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryLinkedService $df -File .\StorageLinkedService.json
     ```
+
     **Get-AzDataFactory** コマンドレットを実行せず出力を **$df** 変数に割り当てていない場合は、*ResourceGroupName* と *DataFactoryName* パラメーターの値を次のように指定する必要があります。
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName FirstDataFactoryPSH -File .\StorageLinkedService.json
     ```
+
     チュートリアルの途中で Azure PowerShell を閉じた場合、次に Azure PowerShell を起動したときに、 **Get-AzDataFactory** コマンドレットを実行してチュートリアルを完了する必要があります。
 
 ### <a name="create-azure-hdinsight-linked-service"></a>Azure HDInsight のリンクされたサービスを作成する
@@ -168,8 +183,8 @@ ms.locfileid: "104783019"
 
      詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 2. **New-AzDataFactoryLinkedService** コマンドレットを実行して、HDInsightOnDemandLinkedService という名前のリンクされたサービスを作成します。
-    
-    ```PowerShell
+
+    ```powershell
     New-AzDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
     ```
 
@@ -217,7 +232,7 @@ ms.locfileid: "104783019"
    | external |Data Factory サービスによって入力データが生成されない場合は、このプロパティを true に設定します。 |
 2. 次のコマンドを Azure PowerShell で実行して、Data Factory データセットを作成します。
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryDataset $df -File .\InputTable.json
     ```
 
@@ -246,10 +261,12 @@ ms.locfileid: "104783019"
       }
     }
     ```
+
     この JSON では、**AzureBlobOutput** という名前のデータセットを定義します。これは、パイプラインのアクティビティの出力データを表します。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
+
 2. 次のコマンドを Azure PowerShell で実行して、Data Factory データセットを作成します。
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryDataset $df -File .\OutputTable.json
     ```
 
@@ -322,9 +339,10 @@ ms.locfileid: "104783019"
 
 2. Azure Blob Storage の **adfgetstarted/inputdata** フォルダーに **input.log** ファイルがあることを確認し、次のコマンドを実行してパイプラインをデプロイします。 **start** と **end** が過去の日時に設定され、**isPaused** が false に設定されているため、パイプライン (パイプラインのアクティビティ) はデプロイするとすぐに実行されます。
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryPipeline $df -File .\MyFirstPipelinePSH.json
     ```
+
 3. これで、Azure PowerShell を使用して最初のパイプラインを作成できました。
 
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
@@ -332,17 +350,19 @@ ms.locfileid: "104783019"
 
 1. **Get-AzDataFactory** を実行し、出力を **$df** 変数に割り当てます。
 
-    ```PowerShell
-    $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
+    ```powershell
+    $df = Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
+
 2. **Get-AzDataFactorySlice** を実行し、**EmpSQLTable** のすべてのスライスの詳細を表示します。これは、パイプラインの出力テーブルです。
 
-    ```PowerShell
+    ```powershell
     Get-AzDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
     ```
+
     ここで指定した StartDateTime がパイプライン JSON で指定されている開始時刻と同じであることに注意してください。 出力例を次に示します。
 
-    ```PowerShell
+    ```output
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : FirstDataFactoryPSH
     DatasetName       : AzureBlobOutput
@@ -354,15 +374,16 @@ ms.locfileid: "104783019"
     LatencyStatus     :
     LongRetryCount    : 0
     ```
+
 3. **Get-AzDataFactoryRun** を実行して、特定のスライスに関するアクティビティの実行の詳細を取得します。
 
-    ```PowerShell
+    ```powershell
     Get-AzDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
     ```
 
     出力例を次に示します。 
 
-    ```PowerShell
+    ```output
     Id                  : 0f6334f2-d56c-4d48-b427-d4f0fb4ef883_635268096000000000_635292288000000000_AzureBlobOutput
     ResourceGroupName   : ADFTutorialResourceGroup
     DataFactoryName     : FirstDataFactoryPSH
@@ -381,9 +402,10 @@ ms.locfileid: "104783019"
     PipelineName        : MyFirstPipeline
     Type                : Script
     ```
+
     スライスが **準備完了** 状態または **失敗** 状態になるまで、このコマンドレットを実行し続けることができます。 スライスが準備完了状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  オンデマンド HDInsight クラスターの作成には、通常、しばらく時間がかかります。
 
-    ![output data](./media/data-factory-build-your-first-pipeline-using-powershell/three-ouptut-files.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-powershell/three-ouptut-files.png" alt-text="output data":::
 
 > [!IMPORTANT]
 > オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。 そのため、パイプラインによるスライスの処理に **約 30 分** かかると想定してください。

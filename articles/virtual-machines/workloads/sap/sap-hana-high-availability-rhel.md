@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/12/2021
+ms.date: 11/02/2021
 ms.author: radeltch
-ms.openlocfilehash: 3d1b05560c02f3bf4de199a3d5cad48907ee16fb
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: e323b39c5164c1263ed12d5fa8965a692b0b952f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365809"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427914"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性
 
@@ -41,7 +41,7 @@ ms.locfileid: "107365809"
 [2009879]:https://launchpad.support.sap.com/#/notes/2009879
 
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
-[template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
+[template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 
 オンプレミス開発の場合、HANA システム レプリケーションまたは共有記憶域を使用して、SAP HANA の高可用性を実現できます。
 Azure 仮想マシン (VM) 上では、Azure VM HANA システム レプリケーションが現在サポートされている唯一の高可用性機能です。
@@ -597,10 +597,14 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 
 2. **[A]** クラスターでは、<sid\>adm の各クラスター ノードで sudoers を構成する必要があります。 この例では、新しいファイルを作成することで実現します。 `root` としてコマンドを実行します。    
     ```bash
-    cat << EOF > /etc/sudoers.d/20-saphana
-    # Needed for SAPHanaSR python hook
-    hn1adm ALL=(ALL) NOPASSWD: /usr/sbin/crm_attribute -n hana_hn1_site_srHook_*
-    EOF
+    sudo visudo -f /etc/sudoers.d/20-saphana
+    # Insert the following lines and then save
+    Cmnd_Alias SITE1_SOK   = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_SITE1 -v SOK -t crm_config -s SAPHanaSR
+    Cmnd_Alias SITE1_SFAIL = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_SITE1 -v SFAIL -t crm_config -s SAPHanaSR
+    Cmnd_Alias SITE2_SOK   = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_SITE2 -v SOK -t crm_config -s SAPHanaSR
+    Cmnd_Alias SITE2_SFAIL = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_SITE2 -v SFAIL -t crm_config -s SAPHanaSR
+    hn1adm ALL=(ALL) NOPASSWD: SITE1_SOK, SITE1_SFAIL, SITE2_SOK, SITE2_SFAIL
+    Defaults!SITE1_SOK, SITE1_SFAIL, SITE2_SOK, SITE2_SFAIL !requiretty
     ```
 
 3. **[A]** 両方のノードで SAP HANA を開始します。 <sid\>adm として実行します。  
@@ -679,7 +683,7 @@ op start timeout=3600 op stop timeout=3600 \
 op monitor interval=61 role="Slave" timeout=700 \
 op monitor interval=59 role="Master" timeout=700 \
 op promote timeout=3600 op demote timeout=3600 \
-promotable meta notify=true clone-max=2 clone-node-max=1 interleave=true
+promotable notify=true clone-max=2 clone-node-max=1 interleave=true
 
 sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
 sudo pcs resource create nc_<b>HN1</b>_<b>03</b> azure-lb port=625<b>03</b>
@@ -718,7 +722,7 @@ sudo pcs property set maintenance-mode=false
 
 SAP HANA 2.0 SPS 01 以降では、SAP HANA システム レプリケーションでアクティブ/読み取り可能のセットアップを使用できます。この場合、読み取り処理の多いワークロードに対して SAP HANA システム レプリケーションのセカンダリ システムを積極的に活用できます。 クラスターでこのような設定をサポートするには、2 番目の仮想 IP アドレスが必要です。これにより、セカンダリ読み取りが有効な SAP HANA データベースにクライアントからアクセスできます。 引き継ぎの実行後もセカンダリ レプリケーション サイトにアクセスできるようにするには、クラスターが SAPHana リソースのセカンダリに仮想 IP アドレスを移行する必要があります。
 
-このセクションでは、2 番目の仮想 IP を使用して Red Hat 高可用性クラスターで HANA のアクティブ/読み取り可能のシステム レプリケーションを管理するために必要な追加の手順について説明します。    
+このセクションでは、2 番目の仮想 IP を使用して Red Hat 高可用性クラスターで HANA のアクティブ/読み取り可能のシステム レプリケーションを管理するために必要な追加の手順について説明します。
 
 先に進む前に、上に記載したドキュメントを参照して、SAP HANA データベースを管理する Red Hat 高可用性クラスターの構成が完了していることを確認してください。  
 
@@ -726,7 +730,7 @@ SAP HANA 2.0 SPS 01 以降では、SAP HANA システム レプリケーショ�
 
 ### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>アクティブ/読み取り可能のセットアップ用の Azure Load Balancer の追加設定
 
-2 番目の仮想 IP をプロビジョニングするための追加の手順を進めるには、「[手動デプロイ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#manual-deployment)」セクションの説明に従って Azure Load Balancer の構成が完了していることを確認してください。
+2 番目の仮想 IP をプロビジョニングするための追加の手順を進めるには、「[手動デプロイ](#manual-deployment)」セクションの説明に従って Azure Load Balancer の構成が完了していることを確認してください。
 
 1. **標準** ロード バランサーの場合は、前のセクションで作成したのと同じロード バランサーで、下の追加手順に従います。
 
@@ -756,7 +760,7 @@ SAP HANA 2.0 SPS 01 以降では、SAP HANA システム レプリケーショ�
 
 ### <a name="configure-hana-activeread-enabled-system-replication"></a>HANA アクティブ/読み取り可能のシステム レプリケーションの構成
 
-HANA システム レプリケーションを構成する手順については、「[SAP HANA 2.0 システム レプリケーションの構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-sap-hana-20-system-replication)」セクションを参照してください。 読み取り可能なセカンダリ シナリオをデプロイする場合、2 番目のノードでシステム レプリケーションを構成するときに、次のコマンドを **hanasid** adm として実行します。
+HANA システム レプリケーションを構成する手順については、「[SAP HANA 2.0 システム レプリケーションの構成](#configure-sap-hana-20-system-replication)」セクションを参照してください。 読み取り可能なセカンダリ シナリオをデプロイする場合、2 番目のノードでシステム レプリケーションを構成するときに、次のコマンドを **hanasid** adm として実行します。
 
 ```
 sapcontrol -nr 03 -function StopWait 600 10 
@@ -777,10 +781,9 @@ pcs resource create secnc_HN1_03 ocf:heartbeat:azure-lb port=62603
 
 pcs resource group add g_secip_HN1_03 secnc_HN1_03 secvip_HN1_03
 
-RHEL 8.x: 
-pcs constraint colocation add g_secip_HN1_03 with slave SAPHana_HN1_03-clone 4000
-RHEL 7.x:
-pcs constraint colocation add g_secip_HN1_03 with slave SAPHana_HN1_03-master 4000
+pcs constraint location g_secip_HN1_03 rule score=INFINITY hana_hn1_sync_state eq SOK and hana_hn1_roles eq 4:S:master1:master:worker:master
+
+pcs constraint location g_secip_HN1_03 rule score=4000 hana_hn1_sync_state eq PRIM and hana_hn1_roles eq 4:P:master1:master:worker:master
 
 pcs property set maintenance-mode=false
 ```
@@ -810,13 +813,13 @@ sudo pcs status
 
 読み取り可能なセカンダリが構成されている HANA クラスターをテストするときに、2 番目の仮想 IP の動作に注意してください。
 
-1. **SAPHana_HN1_HDB03** クラスター リソースを **hn1-db-1** に移行すると、2 番目の仮想 IP がもう一方のサーバー **hn1-db-0** に移行します。 AUTOMATED_REGISTER = "false" に設定していて、HANA システム レプリケーションが自動的に登録されていない場合は、2 番目の仮想 IP は **hn1-0** で実行されます。このサーバーが使用可能で、クラスター サービスがオンラインになっているためです。  
+1. **SAPHana_HN1_03** クラスター リソースをセカンダリ サイト **hn1-db-1** に移行すると、2 番目の仮想 IP は、同じサイト **hn1-db-1** で引き続き実行されます。 リソースに AUTOMATED_REGISTER = "true" を設定していて、HANA システム レプリケーションが **hn1-db-0** に自動的に登録されている場合、2 番目の仮想 IP も **hn1-db-0** に移動します。
 
-2. サーバーのクラッシュをテストする場合、2 番目の仮想 IP リソース (**rsc_secip_HN1_HDB03**) と Azure Load Balancer のポート リソース (**rsc_secnc_HN1_HDB03**) は、プライマリ仮想 IP リソースと共にプライマリ サーバー上で実行されます。  セカンダリ サーバーが停止している間、読み取り可能な HANA データベースに接続されているアプリケーションは、プライマリ HANA データベースに接続します。 この動作が想定されているのは、セカンダリ サーバーが使用できない間、読み取り可能な HANA データベースに接続されているアプリケーションがアクセス不能にならないようにするためです。
-
-3. セカンダリ サーバーが使用可能で、クラスター サービスがオンラインになっているときは、HANA システム レプリケーションがセカンダリとして登録されていなくても、2 番目の仮想 IP とポート リソースが自動的にセカンダリ サーバーに移行します。 そのサーバーでクラスター サービスを開始する前に、セカンダリ HANA データベースを読み取り可能として登録しておく必要があります。 パラメーター AUTOMATED_REGISTER = true を設定することで、セカンダリを自動的に登録するように HANA インスタンスのクラスター リソースを構成できます。
+2. サーバーのクラッシュをテストする場合、2 番目の仮想 IP リソース (**rsc_secvip_HN1_03**) と Azure Load Balancer のポート リソース (**secnc_HN1_03**) は、プライマリ仮想 IP リソースと共にプライマリ サーバー上で実行されます。 そのため、セカンダリ サーバーが停止している間、読み取り可能な HANA データベースに接続されているアプリケーションは、プライマリ HANA データベースに接続します。 この動作が想定されているのは、セカンダリ サーバーが使用できない間、読み取り可能な HANA データベースに接続されているアプリケーションがアクセス不能にならないようにするためです。
    
-4. フェールオーバーとフォールバックの間は、2 番目の仮想 IP を使用して HANA データベースに接続するアプリケーションの既存の接続が中断される場合があります。  
+3. 2 つ目の仮想 IP アドレスのフェールオーバーとフォールバックの間に、2 番目の仮想 IP を使用して HANA データベースに接続するアプリケーションの既存の接続は、中断されることがあります。
+
+この設定により、正常な SAP HANA インスタンスが実行されているノードに 2 番目の仮想 IP リソースが割り当てられる時間が最大になります。
 
 ## <a name="test-the-cluster-setup"></a>クラスターの設定をテストする
 

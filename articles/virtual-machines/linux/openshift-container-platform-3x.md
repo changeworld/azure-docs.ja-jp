@@ -10,20 +10,22 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: ce3f56530a7bad6eecd4c2edd3b21debe8c75a24
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fd77fbdc7e8a3a417c886280a52bdf3f27e559f1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102214152"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074405"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>OpenShift Container Platform 3.11 を Azure へデプロイする
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure で OpenShift Container Platform 3.11 をデプロイするには、次のいずれかの方法を使用できます。
 
 - [OpenShift Container Platform のドキュメント](https://docs.openshift.com/container-platform)の手順を実行するには、事前に必要な Azure インフラストラクチャ コンポーネントを手動でデプロイする必要があります。
 - また、OpenShift Container Platform クラスターのデプロイを簡略化する既存の [Resource Manager テンプレート](https://github.com/Microsoft/openshift-container-platform/)を使用することもできます。
-- 別のオプションとして、[Azure Marketplace プラン](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)の使用があります。
+- 別のオプションとして、Azure Marketplace プランの使用があります。
 
 どのオプションでも、Red Hat サブスクリプションが必要です。 デプロイ中に、Red Hat Enterprise Linux インスタンスは Red Hat サブスクリプションに登録され、OpenShift Container Platform の資格を含むプール ID に接続されます。
 有効な Red Hat Subscription Manager (RHSM) のユーザー名、パスワード、およびプール ID があることを確認してください。 アクティブ化キー、組織 ID、およびプール ID を使用できます。 これらの情報は、 https://access.redhat.com にサインインして確認できます。
@@ -280,7 +282,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 | `domainName` | 使用するカスタム ドメインの名前 (該当する場合)。 完全なプライベート クラスターをデプロイしない場合は、"none" に設定します |  | なし |
 | `masterClusterDnsType` | OpenShift Web コンソールのドメインの種類。 'default' では、マスター インフラ パブリック IP の DNS ラベルが使用されます。 'custom' を使用して独自の名前を定義できます | default <br> custom | default |
 | `masterClusterDns` | `masterClusterDnsType` に 'custom' を選択した場合に、OpenShift Web コンソールへのアクセスに使用するカスタム DNS 名 |  | console.contoso.com |
-| `routingSubDomainType` | 'nipio' に設定した場合、`routingSubDomain` では nip.io が使用されます。  ルーティングに使用する独自のドメインがある場合は、'custom' を使用します | nipio <br> custom | nipio |
+| `routingSubDomainType` | に設定されている場合 `nipio` 、 `routingSubDomain` はを使用 `nip.io` します。  ルーティングに使用する独自のドメインがある場合は、'custom' を使用します | `nipio` <br> custom | `nipio` |
 | `routingSubDomain` | `routingSubDomainType` に 'custom' を選択した場合に、ルーティングに使用するワイルドカード DNS 名 |  | apps.contoso.com |
 | `virtualNetworkNewOrExisting` | 既存の Virtual Network を使用するか、新しい Virtual Network を作成するかを選択します | existing <br> new | new |
 | `virtualNetworkResourceGroupName` | `virtualNetworkNewOrExisting` に 'new' を選択した場合、新しい Virtual Network 用のリソース グループの名前 |  | resourceGroup().name |

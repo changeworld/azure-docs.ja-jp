@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 30c5c5be89f8a318de8690430d4d248817961fc2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: c05e97b1325a0d924c173df19ed5d83831d079bb
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93360311"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113507287"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Azure PowerShell を使用して、複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
 
@@ -156,6 +156,26 @@ $fabrikamRule = New-AzApplicationGatewayRequestRoutingRule `
   -RuleType Basic `
   -HttpListener $fabrikamListener `
   -BackendAddressPool $fabrikamPool `
+  -BackendHttpSettings $poolSettings
+```
+
+### <a name="add-priority-to-routing-rules"></a>ルーティング規則に優先度を追加する
+
+```azurepowershell-interactive
+$contosoRule = New-AzApplicationGatewayRequestRoutingRule `
+  -Name wccontosoRule `
+  -RuleType Basic `
+  -Priority 200 `
+  -HttpListener $wccontosoListener `
+  -BackendAddressPool $wccontosoPool `
+  -BackendHttpSettings $poolSettings
+
+$fabrikamRule = New-AzApplicationGatewayRequestRoutingRule `
+  -Name shopcontosoRule `
+  -RuleType Basic `
+  -Priority 100 `
+  -HttpListener $shopcontosoListener `
+  -BackendAddressPool $shopcontosoPool `
   -BackendHttpSettings $poolSettings
 ```
 

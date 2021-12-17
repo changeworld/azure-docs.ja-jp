@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 4eda6eaf69fad6f8600651660ae4ac6223fe8f8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 233afd9b103a250633c5e49776fc0dfda55a0389
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438065"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112250"
 ---
 # <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>IoT Edge モジュールを使用して、Azure Stack Edge Pro GPU デバイスで Kubernetes ステートレス アプリケーションを実行する
 
@@ -56,7 +56,7 @@ Azure Stack Edge Pro デバイスに Web サーバー アプリ モジュール�
 1. **[IoT Edge モジュールの追加]** で:
 
     1. デプロイする Web サーバー アプリ モジュールの **名前** を指定します。
-    2. **[モジュールの設定]** タブで、モジュール イメージの **[イメージ URI]** を指定します。 指定した名前とタグに一致するモジュールが取得されます。 この場合は、`nginx:stable` によって、パブリック [Docker リポジトリ](https://hub.docker.com/_/nginx/)から、(stable としてタグ付けされた) 安定した nginx イメージがプルされます。
+    2. **[モジュールの設定]** タブで、モジュール イメージの **[イメージ URI]** を指定します。 指定した名前とタグに一致するモジュールが取得されます。 このケースでは、`mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine` によって、パブリック `mcr.microsoft.com` レジストリから、(1.15.5-alpine としてタグ付けされた) nginx イメージがプルされます。
 
         ![IoT Edge モジュールの追加](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/set-module-settings-1.png)    
 

@@ -1,20 +1,20 @@
 ---
 title: チュートリアル - Google Maps から Web サービスを移行する | Microsoft Azure Maps
 description: Web サービスを Google Maps から Microsoft Azure Maps に移行する方法に関するチュートリアルです。
-author: rbrundritt
-ms.author: richbrun
-ms.date: 08/19/2020
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 06/23/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d2b80dfa091d6a2b892c8baf8e9c35084c5bee4e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 33bb2f240c46ac7e2192c84dbfd46906a6cc88f4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076390"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429678"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>チュートリアル:Google マップから Web サービスを移行する
 
@@ -50,7 +50,7 @@ Azure Maps と Google マップでは、どちらの場合も REST Web サービ
 | Speed Limits            | 「[座標の逆ジオコーディング](#reverse-geocode-a-coordinate)」セクションを参照してください。         |         
 | 静的マップ              | [Render](/rest/api/maps/render/getmapimage)                       |                         
 | タイム ゾーン               | [タイム ゾーン](/rest/api/maps/timezone)                              |                         
-| Elevation               | [Elevation (プレビュー)](/rest/api/maps/elevation)                   | 
+| Elevation               | [昇格](/rest/api/maps/elevation)                   | 
 
 次のサービス API は、Azure Maps では現在使用できません。
 
@@ -60,7 +60,7 @@ Azure Maps と Google マップでは、どちらの場合も REST Web サービ
 - Nearest Roads - Web SDK を使用して実現できますが ([こちら](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic)を参照)、現在サービスとしては提供されていません。
 - 静的ストリート ビュー
 
-Azure Maps には、必要になる可能性のある追加の REST Web サービスがいくつか用意されています。
+Azure Maps には、役立つ可能性のある REST Web サービスが他にもいくつか用意されています。
 
 - [空間演算](/rest/api/maps/spatial): ジオフェンシングなどの複雑な空間計算や空間演算をサービスにオフロードします。
 - [交通情報](/rest/api/maps/traffic): 交通流量や事故に関するリアルタイム データにアクセスできます。
@@ -121,7 +121,7 @@ Azure Maps では、複数の逆ジオコーディング メソッドが提供�
 
 [検索のベスト プラクティス](how-to-use-best-practices-for-search.md)を参照してください。
 
-Azure Maps の逆ジオコーディング API には、Google マップでは利用できない追加機能がいくつかあります。 ご自分のアプリケーションを移行する際に、それらの機能をアプリに統合することもできます。
+Azure Maps の逆ジオコーディング API には、Google マップでは利用できないその他の機能がいくつかあります。 ご自分のアプリケーションを移行する際に、それらの機能をアプリに統合することもできます。
 
 * 速度制限のデータを取得する
 * 道路使用情報を取得する (地方の道路、幹線道路、自動車専用道路、ランプなど)
@@ -203,7 +203,6 @@ Azure Maps のルート指定サービスでは、ルート指定の計算用と
 
 - [**ルート計算**](/rest/api/maps/route/getroutedirections): ルートが計算されます。要求はただちに処理されます。 この API では、GET 要求と POST 要求の両方がサポートされます。 大量のウェイポイントを指定する場合、または多くのルート オプションを使用する場合は、URL 要求が長くなりすぎて問題が発生することがないように POST 要求が推奨されます。 Azure Maps の POST Route Direction には、数千の[サポート ポイント](/rest/api/maps/route/postroutedirections#supportingpoints)を受け取り、それらを使用してポイント間の論理ルート パスを再作成するオプションがあります (Snap to Road)。 
 - [**ルートのバッチ処理**](/rest/api/maps/route/postroutedirectionsbatchpreview): 最大 1,000 個のルート要求を含む要求が作成されます。これらの座標は一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
-- [**Mobility Service (プレビュー)**](/rest/api/maps/mobility): 公共輸送を使用するルートと道順が計算されます。
 
 次の表では、Google マップ API パラメーターと、それに相当する Azure Maps の API パラメーターを相互参照で示しています。
 
@@ -221,28 +220,26 @@ Azure Maps のルート指定サービスでは、ルート指定の計算用と
 | `origin`                       | `query`                            |
 | `region`                       | *N/A* - これはジオコーディング関連の機能です。 Azure Maps ジオコーディング API を使用する場合は、*countrySet* パラメーターを使用します。  |
 | `traffic_model`               | *N/A* - 交通情報データを *traffic* パラメーターで使用する必要がある場合のみ指定できます。 |
-| `transit_mode`                | [Mobility Service (プレビュー) のドキュメントを参照してください](/rest/api/maps/mobility) |
-| `transit_routing_preference` | [Mobility Service (プレビュー) のドキュメントを参照してください](/rest/api/maps/mobility) |
 | `units`                        | *N/A* - Azure Maps ではメートル法のみが使用されます。  |
 | `waypoints`                    | `query`                            |
 
 > [!TIP]
 > Azure Maps ルート API から返されるのは、既定では概要だけです。 距離と時間、ルートの座標が返されます。 道案内の指示を取得するには、`instructionsType` パラメーターを使用します。 また、概要とルートをフィルター処理するには、`routeRepresentation` パラメーターを使用します。
 
-Azure Maps のルート指定 API には、Google マップでは利用できない追加の機能があります。 ご自分のアプリを移行する際は、これらの機能の使用を検討してください。有効活用できる可能性があります。
+Azure Maps のルート指定 API には、これらの他に、Google マップでは利用できない機能があります。 ご自分のアプリを移行する際は、これらの機能の使用を検討してください。有効活用できる可能性があります。
 
 * ルートの種類のサポート: 最短、最速、スリリング、最も燃費が良い。
-* 追加の移動モードのサポート: バス、バイク、タクシー、トラック、ライトバン。
+* 他の移動モードのサポート: バス、バイク、タクシー、トラック、ライトバン。
 * 150 個のウェイポイントのサポート。
 * 1 つの要求で複数の移動時間を計算: 過去の交通量、現在の交通量、交通量なし。
-* 追加の道路の種類を回避: 自動車の相乗り用車線、未舗装道路、既に使用したことがある道路。
+* 他の道路の種類を回避: 自動車の相乗り用車線、未舗装道路、既に使用したことがある道路。
 * 回避するカスタム領域を指定。
 * ルートで上れる標高を制限。
 * エンジンの仕様に基づくルート。 エンジンの仕様と、燃料または充電の残量とに基づいて内燃自動車または電気自動車のルートを計算。
 * 商用車両のルート パラメーターをサポート (車両の寸法、重量、アクセル回数、積み荷の種類など)。
 * 車両の最大速度を指定。
 
-これに加えて、Azure Maps のルート サービスでは、[ルーティング可能な範囲の計算](/rest/api/maps/route/getrouterange)もサポートされます。 ルーティング可能な範囲の計算は、等時間マップとも呼ばれます。 その際、出発地点から任意の方向に移動できる領域をカバーする多角形が生成されます。 そのすべては、指定された時間内または燃料や充電の残量内で行われます。
+さらに、Azure Maps のルート サービスでは、[ルーティング可能な範囲の計算](/rest/api/maps/route/getrouterange)もサポートされます。 ルーティング可能な範囲の計算は、等時間マップとも呼ばれます。 その際、出発地点から任意の方向に移動できる領域をカバーする多角形が生成されます。 そのすべては、指定された時間内または燃料や充電の残量内で行われます。
 
 [ルート指定のベスト プラクティス](how-to-use-best-practices-for-routing.md)に関するドキュメントをご覧ください。
 
@@ -294,7 +291,7 @@ Azure Maps のレンダリング サービスでは、静的マップ画像を�
 &markers=markerStyles|markerLocation1|markerLocation2|...
 ```
 
-さらにスタイルを追加するには、URL に `markers` パラメーターを使用して、別のスタイルや場所のセットを指定します。
+他のスタイルを追加するには、URL に `markers` パラメーターを使用して、別のスタイルや場所のセットを指定します。
 
 マーカーの場所は、"緯度,経度" の形式で指定します。
 
@@ -325,7 +322,7 @@ Google マップのカスタム アイコンには、次のスタイル オプ�
 &pins=iconType|pinStyles||pinLocation1|pinLocation2|...
 ```
 
-さらに別のスタイルを使用するには、URL に `pins` パラメーターを追加して、別のスタイルや場所のセットを指定します。
+他のスタイルを使用するには、URL に `pins` パラメーターをさらに追加して、別のスタイルや場所のセットを指定します。
 
 Azure Maps では、ピンの位置を "経度 緯度" 形式で指定する必要があります。 Google マップでは、"緯度,経度" 形式が使用されます。 Azure Maps 形式では、経度と緯度をコンマではなくスペースで区切ることにも注意してください。
 
@@ -375,7 +372,7 @@ Azure Maps では、ピンの位置を "経度 緯度" 形式で指定する必�
 &path=pathStyles|pathLocation1|pathLocation2|...
 ```
 
-さらに別のスタイルを使用するには、URL に `path` パラメーターを追加して、別のスタイルや場所のセットを指定します。
+URL に `path` パラメーターをさらに追加して、別のスタイルや場所のセットを指定することにより、他のスタイルを使用します。
 
 経路の位置は、`latitude1,longitude1|latitude2,longitude2|…` 形式で指定します。 経路は、エンコードすることも、地点の住所を含めることもできます。
 
@@ -402,7 +399,7 @@ Azure Maps では、ピンの位置を "経度 緯度" 形式で指定する必�
 &path=pathStyles||pathLocation1|pathLocation2|...
 ```
 
-経路の位置については、Azure Maps の場合、座標を "経度 緯度" 形式にする必要があります。 Google マップでは、"緯度,経度" 形式が使用されます。 Azure Maps 形式では、経度と緯度をコンマではなくスペースで区切ることにも注意してください。 Azure Maps では、エンコードされた経路または地点の住所はサポートされません。 大きなデータ セットは、GeoJSON ファイルとして Azure Maps データ ストレージ API に読み込みます。[こちら](how-to-render-custom-data.md#get-data-from-azure-maps-data-storage)を参照してください。
+経路の位置については、Azure Maps の場合、座標を "経度 緯度" 形式にする必要があります。 Google マップでは、"緯度,経度" 形式が使用されます。 Azure Maps 形式では、経度と緯度をコンマではなくスペースで区切ることにも注意してください。 Azure Maps では、エンコードされた経路または地点の住所はサポートされません。 大きなデータ セットは、GeoJSON ファイルとして Azure Maps データ ストレージ API に読み込みます。[こちら](how-to-render-custom-data.md#upload-pins-and-path-data)を参照してください。
 
 経路のスタイルは、`optionNameValue` 形式で追加します。 複数のスタイルは、パイプ (\|) 文字で区切ります (例: `optionName1Value1|optionName2Value2`)。 オプションの名前と値との間に区切りはありません。 Azure Maps で経路のスタイルを設定するには、次のスタイル オプション名を使用します。
 
@@ -468,7 +465,7 @@ Azure Maps には、座標のタイム ゾーンを取得するための API が
 | `location`                  | `query`             |
 | `timestamp`                 | `timeStamp`         |
 
-この API 以外にも、Azure Maps には、多数のタイム ゾーン API が用意されています。 これらの API は、タイム ゾーンの名前または ID に基づいて時刻を変換します。
+この API 以外にも、Azure Maps には、多くのタイム ゾーン API が用意されています。 これらの API は、タイム ゾーンの名前または ID に基づいて時刻を変換します。
 
 - [**ID によるタイム ゾーン**](/rest/api/maps/timezone/gettimezonebyid): 指定された IANA タイム ゾーン ID について現在、履歴、将来のタイム ゾーンに関する情報が返されます。
 - [**タイム ゾーン列挙型 IANA**](/rest/api/maps/timezone/gettimezoneenumiana): IANA タイム ゾーン ID の完全な一覧が返されます。 IANA サービスの更新は、1 日以内にシステムに反映されます。

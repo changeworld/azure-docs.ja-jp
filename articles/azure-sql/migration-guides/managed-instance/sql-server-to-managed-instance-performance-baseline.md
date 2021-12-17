@@ -1,23 +1,23 @@
 ---
-title: 'SQL Server から Azure SQL Managed Instance へ: パフォーマンス分析'
+title: 'SQL Server から Azure SQL Managed Instance へ: パフォーマンス ベースライン'
 description: SQL Server データベースを Azure SQL Managed Instance に移行するときにパフォーマンス ベースラインを作成して比較する方法について学習します。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: mokabiru
+ms.topic: how-to
+author: mokabiru
+ms.author: mokabiru
+ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: a97dabe36efb252b04c1b5c8fa741d33a6c92703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee51e3ee0fd9f0084e8dddf03a9e181b38bc2fb4
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023675"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689407"
 ---
-# <a name="migration-performance-sql-server-to--azure-sql-managed-instance-performance-analysis"></a>移行のパフォーマンス: SQL Server から Azure SQL Managed Instance への場合のパフォーマンス分析
+# <a name="migration-performance-sql-server-to--azure-sql-managed-instance-performance-baseline"></a>移行のパフォーマンス: SQL Server から Azure SQL Managed Instance への場合のパフォーマンス ベースライン
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 SQL Managed Instance でのワークロードのパフォーマンスを、SQL Server で実行される元のワークロードのものと比較するためのパフォーマンス ベースラインを作成します。 

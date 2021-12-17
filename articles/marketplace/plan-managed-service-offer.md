@@ -1,6 +1,6 @@
 ---
-title: Microsoft コマーシャル マーケットプレース向けのマネージド サービス オファーを計画する
-description: Microsoft パートナー センターでコマーシャル マーケットプレース プログラムを使用して、Azure Marketplace 向けの新しいマネージド サービス オファーを計画する方法。
+title: コマーシャル マーケットプレース向けのマネージド サービス オファーを計画する
+description: パートナー センターで Azure Marketplace 向けのマネージド サービス オファーを計画します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
@@ -8,18 +8,18 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: f096e53f8054039f361bde1c5f2adffac615c53d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f167cd82c6a66a175923b3b318623ab9a2bd1cf
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371942"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070852"
 ---
-# <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレース向けのマネージド サービス オファーを計画する方法
+# <a name="plan-a-managed-service-offer"></a>管理サービス オファーの計画
 
-この記事では、パートナー センターを使用して、マネージド サービス オファーを Microsoft コマーシャル マーケットプレースに公開するための要件について説明します。
+この記事では、パートナー センターを使用して、マネージド サービス オファーをコマーシャル マーケットプレースに公開するための要件について説明します。
 
-マネージド サービスは、Azure Lighthouse によるテナント間およびマルチテナント管理を可能にする Azure Marketplace のオファーです。 詳細については、「[Azure Lighthouse とは](../lighthouse/overview.md)」をご覧ください。 顧客は、マネージド サービス オファーを購入するときに、1 つ以上のサブスクリプションまたはリソース グループを委任できます。 その後、Azure Lighthouse の [Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)機能を使用して、これらのリソースを操作できます。
+マネージド サービスは、Azure Lighthouse によるテナント間およびマルチテナント管理を可能にする Azure Marketplace のオファーです。 詳細については、「[Azure Lighthouse とは](../lighthouse/overview.md)」をご覧ください。 顧客は、マネージド サービス オファーを購入するときに、1 つ以上のサブスクリプションまたはリソース グループを委任できます。 その後、Azure Lighthouse の [Azure の委任されたリソース管理](../lighthouse/concepts/architecture.md)機能を使用して、これらのリソースを操作できます。
 
 ## <a name="eligibility-requirements"></a>資格要件
 
@@ -98,9 +98,9 @@ HTML タグを使用して説明の書式を設定できます。 HTML 書式設
 
 **Marketplace メディア - ロゴ**: オファーの大サイズのロゴの PNG ファイルを提供します。 パートナー センターでは、これを使用して中と小のロゴが作成されます。 必要に応じて、これらのロゴを後で別の画像に置き換えることもできます。
 
-* 大のロゴ (216 x 216 から 350 x 350 ピクセル) は、Azure Marketplace のオファー登録情報に表示されます。
+* 大のロゴ (216 x 216 ピクセルから 350 x 350 ピクセルまで) は、Azure Marketplace のオファー登録情報に表示されます。
 * 新しいリソースが作成されると、中のロゴ (90 x 90 ピクセル) が表示されます。
-* 小のロゴ (48 x 48 ピクセル) は、Azure Marketplace での検索結果で使用されます。
+* 小のロゴ (48 x 48 ピクセル) は Azure Marketplace での検索結果で使用されます。
 
 お客様のロゴについては、これらのガイドラインに従ってください。
 
@@ -110,7 +110,7 @@ HTML タグを使用して説明の書式を設定できます。 HTML 書式設
 * 透明な背景を使用している場合は、ロゴおよびテキストが白、黒、または青ではないことを確認します。
 * ロゴの外観はフラットにする必要があります。 グラデーションは避けます。 ロゴにはテキストを使用しないでください (会社またはブランドの名前であっても)。
 
-**Marketplace メディア - スクリーンショット** (省略可能): オファーの機能を示す画像を最大 5 つ追加します。 イメージはすべて、1280 x 720 ピクセルのサイズで PNG 形式である必要があります。
+**Marketplace メディア - スクリーンショット** (省略可能): オファーの機能を示す画像を最大 5 つ追加します。 イメージはすべて、1280 x 720 ピクセルのサイズで PNG 形式にする必要があります。
 
 **Marketplace メディア - ビデオ** (省略可能): オファーをデモンストレーションするビデオを最大 5 つアップロードします。 動画は YouTube または Vimeo でホストされていて、サムネイル (1280 x 720 PNG ファイル) が付属している必要があります。
 

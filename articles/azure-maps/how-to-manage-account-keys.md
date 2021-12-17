@@ -3,17 +3,17 @@ title: Azure portal で Azure Maps アカウントを管理する | Microsoft Az
 description: Azure portal を使用して Azure Maps アカウントを管理する方法について説明します。 新しいアカウントを作成する方法と、既存のアカウントを削除する方法を確認します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/27/2020
+ms.date: 04/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c618e8193bed1f35cbbe884d5725c4ecfb25dd75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c18af6904a474164544962acf381014bfaa38b1
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96013090"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325161"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure Maps アカウントを管理する
 
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. 新しいアカウントの情報を入力します。
 
-[![Azure portal で Azure Maps アカウント情報を入力する](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
+:::image type="content" source="./media/how-to-manage-account-keys/create-account.png" border="true" alt-text="Azure portal で Azure Maps アカウント情報を入力する。":::
 
 ## <a name="delete-an-account"></a>アカウントの削除
 

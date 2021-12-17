@@ -6,16 +6,19 @@ keywords: dsc, powershell, azure, 拡張機能
 services: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: b272993cdb1b89e63190d2c8c9ef80db2327ccc1
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 3aaadbb6f972838984f4ec01347537f21e244f14
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167517"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491471"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Azure Desired State Configuration 拡張機能のバージョン履歴を使用する
 
 Azure、Windows Server、および Windows Management Framework (WMF) (Windows PowerShell など) から提供される拡張機能と新機能をサポートするために、Azure Desired State Configuration (DSC) VM [拡張機能](../virtual-machines/extensions/dsc-overview.md)は必要に応じて更新されています。
+
+> [!NOTE]
+> DSC 拡張機能を有効にする前に、[ゲスト構成](../governance/policy/concepts/guest-configuration.md)という名前の Azure Policy の機能によって管理された、新しいバージョンの DSC が現在プレビューで利用可能になっていることに注意してください。 ゲスト構成サービスでは、DSC 拡張機能と Azure Automation State Configuration の機能のほか、顧客のフィードバックで最も一般的に要求されている機能が組み合わされています。 ゲスト構成にはまた、[Arc 対応サーバー](../azure-arc/servers/overview.md)によるハイブリッド マシンのサポートも含まれています。
 
 この記事では、Azure DSC VM 拡張機能の各バージョンに関する情報、サポートする環境、新しい機能や変更に関するコメントや注意事項について説明します。
 

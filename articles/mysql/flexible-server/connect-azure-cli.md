@@ -7,28 +7,29 @@ ms.service: mysql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: e0fd5969a3c4f84b6e8f98e99335bf120179e7af
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 26c25afc997ee86f0fe23f944ae5afad34269e92
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481091"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468121"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>クイックスタート: Azure CLI から Azure Database for MySQL - フレキシブル サーバーに接続してクエリを実行する
 
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-このクイックスタートでは、Azure CLI と ```az mysql flexible-server connect``` コマンドを使用して Azure Database for MySQL フレキシブル サーバーに接続する方法を紹介します。 このコマンドを使用すると、データベース サーバーとの接続をテストしたり、サーバーに対して直接クエリを実行したりすることができます。  コマンドを対話モードで実行して、複数のクエリを実行することもできます。
+このクイックスタートでは、Azure CLI で ```az mysql flexible-server connect``` を使用して Azure Database for MySQL フレキシブル サーバーに接続し、```az mysql flexible-server execute``` コマンドで単一のクエリまたは SQL ファイルを実行する方法を示します。 このコマンドを使用すると、データベース サーバーとの接続をテストしたり、クエリを実行したりすることができます。 対話モードを使用して、複数のクエリを実行することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure アカウント。 所有していない場合は、[無料試用版を入手](https://azure.microsoft.com/free/)してください。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 
+
+    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 - [Azure CLI](/cli/azure/install-azure-cli) の最新バージョン (2.20.0 以降) をインストールする
-- Azure CLI から ```az login``` コマンドを使用してログインする 
+- Azure CLI を使用して ```az login``` コマンドでログインする
 - ```az config param-persist on``` を使用してパラメーターの永続化を有効にする。 パラメーターの永続化により、リソース グループや場所など、多数の引数を繰り返さなくてもローカル コンテキストを使用できるようになります。
 
-## <a name="create-an-mysql-flexible-server"></a>MySQL フレキシブル サーバーを作成する
+## <a name="create-a-mysql-flexible-server"></a>MySQL フレキシブル サーバーの作成
 
 最初に作成するのは、マネージド MySQL サーバーです。 [Azure Cloud Shell](https://shell.azure.com/) から次のスクリプトを実行して、このコマンドから返された **サーバー名**、**ユーザー名**、**パスワード** をメモします。
 
@@ -46,7 +47,7 @@ az mysql flexible-server db create -d newdatabase
 ```
 
 ## <a name="view-all-the-arguments"></a>すべての引数を確認する
-```--help``` 引数を指定すると、このコマンドのすべての引数を確認できます。 
+```--help``` 引数を指定すると、このコマンドのすべての引数を確認できます。
 
 ```azurecli
 az mysql flexible-server connect --help
@@ -76,39 +77,6 @@ Successfully connected to mysqldemoserver1.
 - サーバー管理者のユーザー名とパスワードが正しいかどうかを確認します。
 - クライアント マシンにファイアウォール規則が構成されているかどうかを確認します。
 - 仮想ネットワークにプライベート アクセスを使用してサーバーを構成した場合、クライアント マシンが同じ仮想ネットワークに存在することを確認します。
-
-## <a name="run-single-query"></a>単一のクエリを実行する
-単一のクエリを実行するには、次のコマンドに ```--querytext``` 引数 (```-q```) を指定して実行します。
-
-```azurecli
-az mysql flexible-server connect -n <server-name> -u <username> -p "<password>" -d <database-name> --querytext "<query text>"
-```
-
-**例:**
-```azurecli
-az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase -q "select * from table1;" --output table
-```
-
-出力は次のようになります。
-
-```output
-Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-Successfully connected to mysqldemoserver1.
-Ran Database Query: 'select * from table1;'
-Retrieving first 30 rows of query output, if applicable.
-Closed the connection to mysqldemoserver1
-Local context is turned on. Its information is saved in working directory C:\Users\sumuth. You can run `az local-context off` to turn it off.
-Your preference of  are now saved to local context. To learn more, type in `az local-context --help`
-Txt    Val
------  -----
-test   200
-test   200
-test   200
-test   200
-test   200
-test   200
-test   200
-```
 
 ## <a name="run-multiple-queries-using-interactive-mode"></a>対話モードを使用して複数のクエリを実行する
 対話 (**interactive**) モードを使用して、複数のクエリを実行することができます。 対話モードを有効にするには、次のコマンドを実行します。
@@ -153,6 +121,59 @@ Local context is turned on. Its information is saved in working directory C:\myd
 Your preference of  are now saved to local context. To learn more, type in `az local-context --help`
 ```
 
+## <a name="run-single-query"></a>単一のクエリを実行する
+単一のクエリを実行するには、次のコマンドに ```--querytext``` 引数 (```-q```) を指定して実行します。
+
+```azurecli
+az mysql flexible-server execute -n <server-name> -u <username> -p "<password>" -d <database-name> --querytext "<query text>"
+```
+
+**例:**
+```azurecli
+az mysql flexible-server execute -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase -q "select * from table1;" --output table
+```
+
+出力は次のようになります。
+
+```output
+Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+Successfully connected to mysqldemoserver1.
+Ran Database Query: 'select * from table1;'
+Retrieving first 30 rows of query output, if applicable.
+Closed the connection to mysqldemoserver1
+Local context is turned on. Its information is saved in working directory C:\Users\sumuth. You can run `az local-context off` to turn it off.
+Your preference of  are now saved to local context. To learn more, type in `az local-context --help`
+Txt    Val
+-----  -----
+test   200
+test   200
+test   200
+test   200
+test   200
+test   200
+test   200
+```
+
+## <a name="run-sql-file"></a>SQL ファイルを実行する
+SQL ファイルを実行するには、コマンドで ```--file-path``` 引数 (```-q```) を使用します。
+
+```azurecli
+az mysql flexible-server execute -n <server-name> -u <username> -p "<password>" -d <database-name> --file-path "<file-path>"
+```
+
+**例:**
+```azurecli
+az mysql flexible-server execute -n mysqldemoserver -u dbuser -p "dbpassword" -d flexibleserverdb -f "./test.sql"
+```
+
+出力は次のようになります。
+
+```output
+Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+Running sql file '.\test.sql'...
+Successfully executed the file.
+Closed the connection to mysqldemoserver.
+```
 
 ## <a name="next-steps"></a>次の手順
 

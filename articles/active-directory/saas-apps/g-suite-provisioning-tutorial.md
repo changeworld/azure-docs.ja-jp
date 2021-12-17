@@ -2,21 +2,21 @@
 title: チュートリアル:G Suite を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から G Suite に対してユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2021
-ms.author: Zhchia
-ms.openlocfilehash: f6ef2f91d178db01e618c19df55705bc9c1209e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: fca85673ba31b71eda9e9b4242062093ae588aed
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104583753"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046983"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -110,11 +110,11 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、TestApp でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!NOTE]
-> G Suite の Directory API エンドポイントについて詳しくは、[Directory API](https://developers.google.com/admin-sdk/directory) に関するページをご覧ください。
+> G Suite の Directory API エンドポイントの詳細については、[Directory API のリファレンス ドキュメント](https://developers.google.com/admin-sdk/directory)を参照してください。
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Azure AD で G Suite の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。 ユーザーは portal.azure.com にログインする必要があり、aad.portal.azure.com を使用できなくなります
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。 ユーザーは `portal.azure.com` にログインする必要があり、`aad.portal.azure.com` を使用することはできません。
 
     ![[エンタープライズ アプリケーション] ブレード](./media/g-suite-provisioning-tutorial/enterprise-applications.png)
 
@@ -273,7 +273,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * 10/17/2020 - G Suite の追加のユーザーおよびグループ属性に対するサポートが追加されました。
 * 10/17/2020 - G Suite ターゲットの属性名が、[ここで](https://developers.google.com/admin-sdk/directory)定義されている内容に一致するように更新されました。
 * 10/17/2020 - 既定の属性マッピングが更新されました。
-* 03/18/2021 - 新しいユーザーについては、ID ではなくマネージャーのメールが同期されるようになりました。 マネージャーを ID としてプロビジョニングされている既存のユーザーについては、[Microsoft Graph](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) を通じて再開することができます。その際、メールが確実にプロビジョニングされるよう、スコープは "フル" とします。 この変更は GSuite プロビジョニング ジョブにのみ影響し、Goov2OutDelta で始まる古いプロビジョニング ジョブには影響しません。 マネージャーのメールがプロビジョニングされるのは、ユーザーが最初に作成されたときか、またはマネージャーが変わったときであることに注意してください。 マネージャーが自分のメール アドレスを変更しても、マネージャーのメールはプロビジョニングされません。 
+* 03/18/2021 - 新しいユーザーについては、ID ではなくマネージャーのメールが同期されるようになりました。 マネージャーを ID としてプロビジョニングされている既存のユーザーについては、[Microsoft Graph](/graph/api/synchronization-synchronizationjob-restart?preserve-view=true&tabs=http&view=graph-rest-beta) を通じて再開することができます。その際、メールが確実にプロビジョニングされるよう、スコープは "フル" とします。 この変更は GSuite プロビジョニング ジョブにのみ影響し、Goov2OutDelta で始まる古いプロビジョニング ジョブには影響しません。 マネージャーのメールがプロビジョニングされるのは、ユーザーが最初に作成されたときか、またはマネージャーが変わったときであることに注意してください。 マネージャーが自分のメール アドレスを変更しても、マネージャーのメールはプロビジョニングされません。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

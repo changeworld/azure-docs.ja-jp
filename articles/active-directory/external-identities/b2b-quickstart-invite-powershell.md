@@ -10,17 +10,14 @@ ms.date: 08/28/2018
 ms.topic: quickstart
 ms.service: active-directory
 ms.subservice: B2B
-ms.custom:
-- it-pro
-- seo-update-azuread-jan
-- mode-api
+ms.custom: it-pro, seo-update-azuread-jan, mode-api
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 765d8ea99167512e553cef9cc6f7fed583eff469
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 42dd773bd88b7f51aa23fda8463a31ec2d41a6bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529820"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052486"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>クイック スタート: PowerShell を使用してゲスト ユーザーを追加する
 
@@ -30,36 +27,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-### <a name="install-the-latest-azureadpreview-module"></a>最新の AzureADPreview モジュールをインストールする
-最新バージョンの Azure AD PowerShell for Graph モジュール (AzureADPreview) をインストールしていることを確認します。 
-
-最初に、どのモジュールをインストールしているかをチェックします。 管理者特権で Windows PowerShell を開き (管理者として実行)、次のコマンドを実行します。
- 
-```powershell  
-Get-Module -ListAvailable AzureAD*
-```
-
-最新のバージョンがあることを示すメッセージなしで AzureADPreview モジュールが表示されれば、問題ありません。 それ以外の場合は、出力に基づいて次のいずれかを行います。
-
-- 結果が返らない場合は、次のコマンドを実行して AzureADPreview モジュールをインストールします。
-  
-   ```powershell  
-   Install-Module AzureADPreview
-   ```
-- 結果に AzureAD モジュールだけが表示される場合は、次のコマンドを実行して AzureADPreview モジュールをインストールします。 
-
-   ```powershell 
-   Uninstall-Module AzureAD 
-   Install-Module AzureADPreview 
-   ```
-- 結果に AzureADPreview モジュールだけが表示されるが、最新のバージョンがあることを示すメッセージが表示される場合は、次のコマンドを実行してそのモジュールをインストールします。 
-
-   ```powershell 
-   Uninstall-Module AzureADPreview 
-   Install-Module AzureADPreview 
-  ```
-
-信頼されていないリポジトリからモジュールをインストールしていることを示すメッセージが表示される場合があります。 これは、PSGallery リポジトリを信頼されたリポジトリとして事前に設定していない場合に発生します。 **Y** キーを押してモジュールをインストールします。
+### <a name="powershell-module"></a>PowerShell モジュール
+[Graph 用 Azure AD V2 PowerShell モジュール](/powershell/azure/active-directory/install-adv2) (AzureAD) または [Graph 用 Azure AD V2 PowerShell モジュール プレビュー バージョン](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (AzureADPreview) をインストールします。
 
 ### <a name="get-a-test-email-account"></a>テスト用の電子メール アカウントを取得する
 

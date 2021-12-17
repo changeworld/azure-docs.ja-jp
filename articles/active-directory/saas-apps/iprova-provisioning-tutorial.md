@@ -2,25 +2,25 @@
 title: チュートリアル:iProva を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: iProva に対してユーザー アカウントの自動的なプロビジョニングとプロビジョニング解除を実行するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/29/2019
-ms.author: Zhchia
-ms.openlocfilehash: dbaea9d4aaea982165c96af00f75524b15fa3015
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: e3ff62f4099e4098c2ca695d0e7c07bbc5c08b0a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96178097"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746101"
 ---
 # <a name="tutorial-configure-iprova-for-automatic-user-provisioning"></a>チュートリアル:iProva を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、Azure Active Directory (Azure AD) が、ユーザー、グループ、またはその両方を iProva に対して自動的にプロビジョニングおよびプロビジョニング解除するよう構成するために、[iProva](https://www.iProva.com/) と Azure AD で実行する手順を示すことです。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
+このチュートリアルの目的は、Azure Active Directory (Azure AD) が、ユーザー、グループ、またはその両方を iProva に対して自動的にプロビジョニングおよびプロビジョニング解除するよう構成するために、[iProva](https://www.iProva.com/) と Azure AD で実行する手順を示すことです。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 このチュートリアルを使用する前に、すべての要件を理解し、満たしていることを確認してください。 質問がある場合は、Infoland にお問い合わせください。
 
 > [!NOTE]
 > 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
@@ -29,7 +29,7 @@ ms.locfileid: "96178097"
 ## <a name="capabilities-supported"></a>サポートされる機能
 > [!div class="checklist"]
 > * iProva でユーザーを作成する
-> * アクセスが不要になった場合に iProva のユーザーを削除する
+> * アクセスが不要になった場合に iProva のユーザーを削除または無効にする
 > * Azure AD と iProva の間でユーザー属性の同期を維持する
 > * iProva でグループとグループ メンバーシップをプロビジョニングする
 > * iProva への[シングル サインオン](./iprova-tutorial.md) (推奨)
@@ -102,7 +102,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナント URL]** フィールドと **[シークレット トークン]** フィールドに、先ほど取得した **SCIM 2.0 ベース URL と [Permanent Token]\(永続的なトークン\)** の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から iProva への接続を確保します。 接続できない場合は、使用中の iProva アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナント URL]** に、先ほど取得した **SCIM 2.0 ベース URL と永続的なトークン** の値を入力し、それに /scim/ を追加します。 また、**シークレット トークン** も追加します。 **[Permanent token]\(永続的なトークン\)** ボタンを使用することで、iProva でシークレット トークンを生成できます。 **[テスト接続]** をクリックして、Azure AD から iProva への接続を確保します。 接続できない場合は、使用中の iProva アカウントに管理者アクセス許可があることを確認してから、もう一度試します。 
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -120,32 +120,12 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
    |---|---|
    |active|Boolean|
    |displayName|String|
-   |title|String|
    |emails[type eq "work"].value|String|
    |preferredLanguage|String|
    |userName|String|
-   |addresses[type eq "work"].country|String|
-   |addresses[type eq "work"].locality|String|
-   |addresses[type eq "work"].postalCode|String|
-   |addresses[type eq "work"].formatted|String|
-   |addresses[type eq "work"].region|String|
-   |addresses[type eq "work"].streetAddress|String|
-   |addresses[type eq "other"].formatted|String|
-   |name.givenName|String|
-   |name.familyName|String|
-   |name.formatted|String|
-   |phoneNumbers[type eq "fax"].value|String|
-   |phoneNumbers[type eq "mobile"].value|String|
    |phoneNumbers[type eq "work"].value|String|
    |externalId|String|
-   |roles[primary eq "True"].display|String|
-   |roles[primary eq "True"].type|String|
-   |roles[primary eq "True"].value|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
+
 
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to iProva]\(Azure Active Directory グループを iProva に同期する\)** を選択します。
@@ -156,6 +136,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
       |---|---|
       |displayName|String|
       |members|リファレンス|
+      |externalID|String|
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

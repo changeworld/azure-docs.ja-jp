@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 56af49b6fa862c93822293056752182b534ac442
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: beef6768f9b2fb05efb77c16c32b0acbe46d1e85
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98942262"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732484"
 ---
 # <a name="analyze-data-with-apache-spark"></a>Apache Spark を使用してデータを分析する
 
 このチュートリアルでは、Azure Open Datasets と Apache Spark を使用して、探索的データ分析を実行する方法について説明します。 その後、Azure Synapse Analytics の Synapse Studio ノートブックで結果を視覚化できます。
 
-具体的には、[ニューヨーク市 (NYC) のタクシー](https://azure.microsoft.com/en-us/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)のデータセットを分析します。 データは Azure Open Datasets から入手できます。 このデータセットのサブセットには、イエロー タクシー乗車に関する情報 (各乗車、出発と到着の時刻、場所、料金、その他の関心の高い属性に関する情報) が格納されます。
+具体的には、[ニューヨーク市 (NYC) のタクシー](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)のデータセットを分析します。 データは Azure Open Datasets から入手できます。 このデータセットのサブセットには、イエロー タクシー乗車に関する情報 (各乗車、出発と到着の時刻、場所、料金、その他の関心の高い属性に関する情報) が格納されます。
   
 ## <a name="before-you-begin"></a>始める前に
 [Apache Spark プールの作成チュートリアル](../articles/../quickstart-create-apache-spark-pool-studio.md)に従って、Apache Spark プールを作成します。 

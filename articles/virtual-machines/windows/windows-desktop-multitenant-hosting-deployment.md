@@ -8,18 +8,20 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
-ms.custom: rybaker, chmimckitt
-ms.openlocfilehash: bb86ba6867ad796ef0f5eeb1357a6df9e93e9f9e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: rybaker, chmimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 96cd1c079a4d3705dbddaffcaf23c44191e38543
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555773"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622419"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法 
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: 柔軟なスケール セット
+
 接続ユーザーごとに Windows 10 Enterprise E3/E5 または Windows Virtual Desktop Access (ユーザー サブスクリプション ライセンスまたはアドオン ユーザー サブスクリプション ライセンス) をご利用中のお客様は、Windows 10 のマルチテナント ホスティング権限により、他のライセンスを購入することなく、Windows 10 ライセンスをクラウドに移行し、Azure 上で Windows 10 Virtual Machines を実行することができます。 マルチテナント ホスティング権限は、Windows 10 (バージョン 1703 以降) でのみ使用できます。
 
-詳細については、[Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関するページを参照してください。
+詳細については、[Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting)に関するページを参照してください。
 
 > [!NOTE]
 > - 開発またはテストのために Windows 7、8.1、10のイメージを使用する方法については、[開発/テスト シナリオのための Azure での Windows クライアント](client-images.md)に関するページを参照してください。
@@ -30,7 +32,7 @@ ms.locfileid: "102555773"
 [Microsoft 管理センター](/microsoft-365/admin/admin-overview/about-the-admin-center)を使用して、ユーザーに Windows 10 のサポートされているライセンスが割り当てられているかどうかを確認できます。
 
 > [!IMPORTANT]
-> Azure で Windows 10 のイメージを使用するには、ユーザーに以下のいずれかのサブスクリプション ライセンスが必要です。 これらのいずれかのサブスクリプション ライセンスがない場合は、[クラウド サービス パートナー](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)を通じて、または [Microsoft](https://www.microsoft.com/microsoft-365?rtc=1) から直接購入できます。
+> Azure で運用ワークロードのために Windows 10 のイメージを使用するには、ユーザーに以下のいずれかのサブスクリプション ライセンスが **必要** です。 これらのいずれかのサブスクリプション ライセンスがない場合は、[クラウド サービス パートナー](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)を通じて、または [Microsoft](https://www.microsoft.com/microsoft-365?rtc=1) から直接購入できます。
 
 **対象となるサブスクリプション ライセンス:**
 
@@ -54,7 +56,6 @@ rs4-pro                     Windows-10 MicrosoftWindowsDesktop eastus
 rs4-pron                    Windows-10 MicrosoftWindowsDesktop eastus   
 rs5-enterprise              Windows-10 MicrosoftWindowsDesktop eastus   
 rs5-enterprisen             Windows-10 MicrosoftWindowsDesktop eastus   
-rs5-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
 rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus  
 ```
 
@@ -90,7 +91,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Azure Resource Manager テンプレートを使用してデプロイする** Resource Manager テンプレートでは、`licenseType` の追加パラメーターを指定できます。 [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)で詳細を確認できます。 VHD を Azure にアップロードした後、コンピューティング プロバイダーの一部としてライセンスの種類を含めるように Resource Manager テンプレートを編集し、テンプレートを通常どおりデプロイします。
+**Azure Resource Manager テンプレートを使用してデプロイする** Resource Manager テンプレートでは、`licenseType` の追加パラメーターを指定できます。 [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/syntax.md)で詳細を確認できます。 VHD を Azure にアップロードした後、コンピューティング プロバイダーの一部としてライセンスの種類を含めるように Resource Manager テンプレートを編集し、テンプレートを通常どおりデプロイします。
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -131,4 +132,4 @@ Azure では、ビルトイン Administrator アカウントですべての Wind
 
 ## <a name="next-steps"></a>次の手順
 - [Windows 10 の VDAの構成](/windows/deployment/vda-subscription-activation)に関する詳細情報を確認します
-- [Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関する詳細情報を確認します
+- [Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting)に関する詳細情報を確認します

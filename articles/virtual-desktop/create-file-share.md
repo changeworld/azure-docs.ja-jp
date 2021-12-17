@@ -1,21 +1,21 @@
 ---
 title: ドメイン コントローラーを使用して Azure Files のファイル共有を作成する - Azure
-description: Active Directory ドメインが設定された既存の Windows Virtual Desktop ホスト プールにある Azure ファイル共有上に、FSLogix プロファイル コンテナーを設定します。
+description: Active Directory ドメインが設定された既存の Azure Virtual Desktop ホスト プール内の Azure ファイル共有上に、FSLogix プロファイル コンテナーを設定します。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e859da6b3ac38ddb89c998d172c39f2549455aaa
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 013a2d377ef4e30848d29c43c7275c6644cf4549
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447932"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593061"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure Files および AD DS を使用してプロファイル コンテナーを作成する
 
-この記事では、既存の Windows Virtual Desktop ホスト プール上のドメイン コントローラーによって認証された Azure ファイル共有を作成する方法について説明します。 このファイル共有は、ストレージのプロファイルの格納に利用できます。
+この記事では、既存の Azure Virtual Desktop ホスト プール上のドメイン コントローラーによって認証された Azure ファイル共有を作成する方法について説明します。 このファイル共有は、ストレージのプロファイルの格納に利用できます。
 
 このプロセスでは、オンプレミスのディレクトリ サービスである Active Directory Domain Services (AD DS) を使用します。 Azure AD DS を使った FSLogix プロファイル コンテナーの作成方法の詳細については、[Azure Files を使った FSLogix プロファイル コンテナーの作成](create-profile-container-adds.md)に関するページを参照してください。
 
@@ -39,8 +39,8 @@ ms.locfileid: "106447932"
 
     - 新しいリソース グループを作成します。
     - ストレージ アカウント用に一意の名前を入力します。
-    - **[場所]** については、Windows Virtual Desktop ホスト プールと同じ場所を選択することをお勧めします。
-    - **[パフォーマンス]** には **[Standard]** を選択します (IOPS の要件によって異なります。 詳細については、「[Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション](store-fslogix-profile.md)」を参照してください)。
+    - **[場所]** については、Azure Virtual Desktop ホスト プールと同じ場所を選択することをお勧めします。
+    - **[パフォーマンス]** には **[Standard]** を選択します (IOPS の要件によって異なります。 詳細については、[Azure Virtual Desktop 内の FSLogix プロファイル コンテナーのストレージ オプション](store-fslogix-profile.md)に関するページをご覧ください)。
     - **[アカウントの種類]** については、 **[StorageV2]** または **[FileStorage]** を選択します (パフォーマンス レベルが Premium の場合のみ有効です)。
     - **[レプリケーション]** には **[ローカル冗長ストレージ (LRS)]** を選択します。
 
@@ -75,11 +75,11 @@ ms.locfileid: "106447932"
      > [!div class="mx-imgBorder"]
      > ![[構成] ページで Azure Active Directory (AD) が有効になった状態のスクリーンショット。](media/active-directory-enabled.png)
 
-## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>Windows Virtual Desktop のユーザーに Azure RBAC のアクセス許可を割り当てる
+## <a name="assign-azure-rbac-permissions-to-azure-virtual-desktop-users"></a>Azure Virtual Desktop のユーザーに Azure RBAC のアクセス許可を割り当てる
 
 FSLogix プロファイルをストレージ アカウントに保存する必要があるユーザー全員に、記憶域ファイル データの SMB 共有の共同作成者ロールを割り当てる必要があります。
 
-Windows Virtual Desktop セッション ホストにサインインするユーザーには、ファイル共有にアクセスするためのアクセス許可が必要です。 Azure ファイル共有に対するアクセス権を付与する際には、従来の Windows 共有の場合と同じように、共有レベルと NTFS レベルの両方でアクセス許可を構成する必要があります。
+Azure Virtual Desktop セッション ホストにサインインするユーザーには、ファイル共有にアクセスするためのアクセス許可が必要です。 Azure ファイル共有に対するアクセス権を付与する際には、従来の Windows 共有の場合と同じように、共有レベルと NTFS レベルの両方でアクセス許可を構成する必要があります。
 
 共有レベルのアクセス許可を構成するには、適切なアクセス許可が設定されたロールを各ユーザーに割り当てます。 アクセス許可は、個々のユーザーまたは Azure AD グループに割り当てることができます。 詳細については、[ID にアクセス許可を割り当てる](../storage/files/storage-files-identity-ad-ds-assign-permissions.md)方法に関するページを参照してください。
 
@@ -167,7 +167,7 @@ NTFS のアクセス許可を構成するには:
 
     *NT Authority\Authenticated Users* と *BUILTIN\Users* はどちらも、既定で一定のアクセス許可が割り当てられています。 これらのユーザーはその既定のアクセス許可により、他のユーザーのプロファイル コンテナーを読み取ることができます。 これに対して、「[プロファイル コンテナーと Office コンテナーで使用するストレージ アクセス許可を構成する](/fslogix/fslogix-storage-config-ht)」に記載されているアクセス許可では、ユーザーが他のユーザーのプロファイル コンテナーの中を見ることができません。
 
-4. Windows Virtual Desktop ユーザーが自分のプロファイル コンテナーを作成できるようにしつつ、作成者以外はそのプロファイル コンテナーにアクセスできないようにするために、次のコマンドを実行します。
+4. Azure Virtual Desktop ユーザーが自分のプロファイル コンテナーを作成できるようにしながら、作成者以外がそのプロファイル コンテナーにアクセスできないようにするには、次のコマンドを実行します。
 
      ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
@@ -176,8 +176,8 @@ NTFS のアクセス許可を構成するには:
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-     - <mounted-drive-letter> の部分は、ドライブのマップに使用したドライブ文字に置き換えます。
-     - <user-email> の部分は、共有にアクセスする必要があるユーザーか、そのユーザーが含まれる Active Directory グループの UPN に置き換えます。
+     - \<mounted-drive-letter\> の部分は、ドライブのマップに使用したドライブ文字に置き換えます。
+     - \<user-email\> の部分は、共有にアクセスする必要があるユーザーか、そのユーザーが含まれる Active Directory グループの UPN に置き換えます。
 
      次に例を示します。
 
@@ -194,7 +194,7 @@ NTFS のアクセス許可を構成するには:
 
 セッション ホスト VM に FSLogix を構成するには:
 
-1. RDP を使用して、Windows Virtual Desktop ホスト プールのセッション ホスト VM に接続します。
+1. RDP を使用して、Azure Virtual Desktop ホスト プールのセッション ホスト VM に接続します。
 
 2. [FSLogix をダウンロードし、インストールします](/fslogix/install-ht)。
 
@@ -220,7 +220,7 @@ FSLogix のインストールと構成が完了したら、ホスト プール�
 
 セッションに対するアクセス許可を確認するには:
 
-1. Windows Virtual Desktop 上でセッションを開始します。
+1. Azure Virtual Desktop 上でセッションを開始します。
 
 2. Azure portal を開きます。
 

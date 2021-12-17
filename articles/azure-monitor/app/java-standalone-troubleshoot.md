@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights の Java エージェントの�
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9bcd0ead2516b040a5a5aee4a7fae042a5f678a2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: dc78df7075c53b05a5dbd51182711de54a799180
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449989"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455209"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>トラブルシューティング ガイド:Azure Monitor Application Insights for Java
 
@@ -17,7 +17,7 @@ ms.locfileid: "106449989"
 
 ## <a name="check-the-self-diagnostic-log-file"></a>自己診断ログ ファイルを確認する
 
-既定では、Application Insights の Java 3.0 エージェントにより、`applicationinsights-agent-3.0.3.jar` ファイルが保持されているディレクトリに `applicationinsights.log` という名前のログ ファイルが生成されます。
+既定では、Application Insights Java 3.x によって、`applicationinsights-agent-3.2.2.jar` ファイルが保持されているディレクトリに `applicationinsights.log` という名前のログ ファイルが生成されます。
 
 このログ ファイルは、発生している問題に関するヒントを得るために最初に確認する場所です。
 
@@ -27,7 +27,9 @@ ms.locfileid: "106449989"
 
 ## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>Application Insights Java 2.x SDK からアップグレードする
 
-アプリケーションで Application Insights Java 2.x SDK を既に使用している場合は、使用し続けてかまいません。 これは Java 3.0 エージェントによって検出されます。 詳細については、「[Application Insights Java 2.x SDK からのアップグレード](./java-standalone-upgrade-from-2x.md)」をご覧ください。
+アプリケーションで Application Insights Java 2.x SDK を既に使用している場合は、使用し続けてかまいません。
+Application Insights Java 3.x エージェントによって、2.x SDK を介して送信しているカスタム テレメトリの検出、キャプチャ、関連付けが行われます。一方で、テレメトリの重複を防ぐために、2.x SDK によって実行される自動収集が抑制されます。
+詳細については、「[Application Insights Java 2.x SDK からのアップグレード](./java-standalone-upgrade-from-2x.md)」をご覧ください。
 
 ## <a name="upgrade-from-application-insights-java-30-preview"></a>Application Insights Java 3.0 Preview からアップグレードする
 

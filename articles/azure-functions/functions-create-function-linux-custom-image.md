@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: 7950bfb4a57db812da87f4e5f76f3075d50a8293
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a6e3ad07f9ba46bd15fe662f370ae2ffc3deb4a8
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782278"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830536"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -59,40 +59,44 @@ Azure Functions では、[カスタム ハンドラー](functions-custom-handler
 
 + [Docker ID](https://hub.docker.com/signup)
 
-[!INCLUDE [functions-cli-verify-prereqs](../../includes/functions-cli-verify-prereqs.md)]
-
-+ `docker login` を実行して Docker にサインインします。 Docker が動作していない場合、このコマンドは失敗します。その場合は、Docker を起動してコマンドを再試行してください。
-
 [!INCLUDE [functions-cli-create-venv](../../includes/functions-cli-create-venv.md)]
 
 ## <a name="create-and-test-the-local-functions-project"></a>ローカル関数プロジェクトを作成してテストする
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-ターミナルまたはコマンド プロンプトで、自分が選択した言語に合わせて次のコマンドを実行し、`LocalFunctionsProject` という名前のフォルダーに関数アプリ プロジェクトを作成します。  
+ターミナルまたはコマンド プロンプトで、自分が選択した言語に合わせて次のコマンドを実行し、現在のフォルダーに関数アプリ プロジェクトを作成します。  
 ::: zone-end  
 ::: zone pivot="programming-language-csharp"  
+
+# <a name="in-process"></a>[インプロセス](#tab/in-process)
 ```console
-func init LocalFunctionsProject --worker-runtime dotnet --docker
+func init --worker-runtime dotnet --docker
 ```
+
+# <a name="isolated-process"></a>[分離プロセス](#tab/isolated-process)
+```console
+func init --worker-runtime dotnet-isolated --docker
+```
+---
 ::: zone-end  
 ::: zone pivot="programming-language-javascript"  
 ```console
-func init LocalFunctionsProject --worker-runtime node --language javascript --docker
+func init --worker-runtime node --language javascript --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
 ```console
-func init LocalFunctionsProject --worker-runtime powershell --docker
+func init --worker-runtime powershell --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 ```console
-func init LocalFunctionsProject --worker-runtime python --docker
+func init --worker-runtime python --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
 ```console
-func init LocalFunctionsProject --worker-runtime node --language typescript --docker
+func init --worker-runtime node --language typescript --docker
 ```
 ::: zone-end
 ::: zone pivot="programming-language-java"  
@@ -134,38 +138,48 @@ Maven により、_artifactId_ という名前の新しいフォルダーにプ�
 
 ::: zone pivot="programming-language-other"  
 ```console
-func init LocalFunctionsProject --worker-runtime custom --docker
+func init --worker-runtime custom --docker
 ```
 ::: zone-end
 
 `--docker` オプションによって、プロジェクトの `Dockerfile` が生成されます。これにより、Azure Functions および選択されたランタイムで使用するための適切なカスタム コンテナーが定義されます。
 
-プロジェクト フォルダーに移動します。
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
-```console
-cd LocalFunctionsProject
-```
-::: zone-end  
 ::: zone pivot="programming-language-java"  
+プロジェクト フォルダーに移動します。
+
 ```console
 cd fabrikam-functions
 ```
 ::: zone-end  
+::: zone pivot="programming-language-csharp"  
+
+# <a name="in-process"></a>[インプロセス](#tab/in-process)
+Dockerfile を変更する必要はありません。
+# <a name="isolated-process"></a>[分離プロセス](#tab/isolated-process)
+Dockerfile を開き、最初の `FROM` ステートメントの後に次の行を追加します (まだ存在しない場合)。
+
+```docker
+# Build requires 3.1 SDK
+COPY --from=mcr.microsoft.com/dotnet/core/sdk:3.1 /usr/share/dotnet /usr/share/dotnet
+```
+---
+::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前で、`--template` 引数は関数のトリガーを指定するものです。 `func new` によって、関数と同じ名前のサブフォルダーが作成されます。ここには、プロジェクト用に選択した言語に適したコード ファイルと、*function.json* という名前の構成ファイルが含まれます。
+次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前で、`--template` 引数は関数のトリガーを指定するものです。 `func new` により、お使いのプロジェクトに C# コード ファイルが作成されます。
 
 ```console
-func new --name HttpExample --template "HTTP trigger"
+func new --name HttpExample --template "HTTP trigger" --authlevel anonymous
 ```
 ::: zone-end
 
-::: zone pivot="programming-language-other" 
+::: zone pivot="programming-language-other,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
 次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前で、`--template` 引数は関数のトリガーを指定するものです。 `func new` によって、関数と同じ名前のサブフォルダーが作成されます。このサブフォルダーには、*function.json* という名前の構成ファイルが含まれます。
 
 ```console
-func new --name HttpExample --template "HTTP trigger"
+func new --name HttpExample --template "HTTP trigger" --authlevel anonymous
 ```
-
+::: zone-end  
+::: zone pivot="programming-language-other" 
 テキスト エディターで、プロジェクト フォルダー内に *handler.R* という名前のファイルを作成します。 その内容として、以下を追加します。
 
 ```r
@@ -251,7 +265,7 @@ runServer("0.0.0.0", PORT, app)
 関数をローカルでテストするために、プロジェクト フォルダーのルートでローカルの Azure Functions ランタイム ホストを起動します。 
 ::: zone pivot="programming-language-csharp"  
 ```console
-func start --build  
+func start  
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-powershell,programming-language-python"   
@@ -320,14 +334,16 @@ docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
 docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
-ローカル コンテナーでイメージが実行状態になったら、ブラウザーで `http://localhost:8080` を開きます。以下に示したプレースホルダー画像が表示されます。 この時点で画像が表示されるということは、Azure で実行されるときと同じように、ローカル コンテナーで関数が実行されているということです。つまり、*function.json* に `"authLevel": "function"` プロパティで定義されたアクセス キーによって関数は保護されています。 ただし、Azure の関数アプリに対してまだコンテナーが発行されていないため、そのキーはまだ利用できません。 ローカル コンテナーに対してテストしたい場合は、Docker を停止し、承認プロパティを `"authLevel": "anonymous"` に変更して、イメージをリビルドしてから Docker を再起動してください。 その後、*function.json* で `"authLevel": "function"` をリセットします。 詳細については、[承認キー](functions-bindings-http-webhook-trigger.md#authorization-keys)に関するセクションを参照してください。
+::: zone pivot="programming-language-csharp"
+# <a name="in-process"></a>[インプロセス](#tab/in-process)
+イメージがローカル コンテナーで開始したら、`http://localhost:8080/api/HttpExample?name=Functions` に移動します。そこに、前と同じ "hello" メッセージが表示されるはずです。 作成した HTTP トリガー関数は匿名承認を使用するため、コンテナーで実行されている関数は、アクセス キーを取得しなくても呼び出すことができます。 詳細については、「[承認キー]」を参照してください。
+# <a name="isolated-process"></a>[分離プロセス](#tab/isolated-process)
+イメージがローカル コンテナーで開始したら、`http://localhost:8080/api/HttpExample` に移動します。そこに、前と同じ挨拶メッセージが表示されるはずです。 作成した HTTP トリガー関数は匿名承認を使用するため、コンテナーで実行されている関数は、アクセス キーを取得しなくても呼び出すことができます。 詳細については、「[承認キー]」を参照してください。
 
-![コンテナーがローカルで実行されていることを示すプレースホルダー画像](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
-
+---
 ::: zone-end
-::: zone pivot="programming-language-java"  
-ローカル コンテナーでイメージが実行状態になったら、`http://localhost:8080/api/HttpExample?name=Functions` に移動します。そこに、前と同じ "hello" メッセージが表示されます。 Maven アーキタイプでは、匿名の承認を使用する、HTTP によってトリガーされる関数が生成されるため、関数はコンテナーで実行されている場合でも呼び出すことができます。 
+::: zone pivot="programming-language-java,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
+イメージがローカル コンテナーで開始したら、`http://localhost:8080/api/HttpExample?name=Functions` に移動します。そこに、前と同じ "hello" メッセージが表示されるはずです。 作成した HTTP トリガー関数は匿名承認を使用するため、コンテナーで実行されている関数は、アクセス キーを取得しなくても呼び出すことができます。 詳細については、「[承認キー]」を参照してください。
 ::: zone-end  
 
 コンテナー内の関数アプリを確認したら、**Ctrl** + **C** キーで Docker を停止します。
@@ -352,43 +368,85 @@ Docker Hub は、イメージのホストとしてイメージ サービスと�
 
 ## <a name="create-supporting-azure-resources-for-your-function"></a>関数用の関連 Azure リソースを作成する
 
-関数コードを Azure にデプロイするには、3 つのリソースを作成する必要があります。
+関数コードを Azure にデプロイする前に、3 つのリソースを作成する必要があります。
 
-- リソース グループ。関連リソースの論理コンテナーです。
-- Azure ストレージ アカウント。プロジェクトについての状態とその他の情報を保持します。
+- [リソース グループ](../azure-resource-manager/management/overview.md)。関連リソースの論理コンテナーです。
+- [ストレージ アカウント](../storage/common/storage-account-create.md)。関数についての情報 (状態など) を維持する目的で使用されます。
 - 関数アプリ。関数コードを実行するための環境となります。 関数アプリは、ローカルの関数プロジェクトと対応関係にあります。これを使用すると、リソースの管理、デプロイ、共有を容易にするための論理ユニットとして関数をグループ化できます。
 
-Azure CLI コマンドを使用して、これらの項目を作成しましょう。 それぞれのコマンドからは、完了時に JSON 出力が返されます。
+以下のコマンドを使用してこれらの項目を作成します。 Azure CLI と PowerShell の両方がサポートされます。
 
-1. [az login](/cli/azure/reference-index#az_login) コマンドを使用して、Azure にサインインします。
+1. まだ Azure にサインインしていない場合は、Azure にサインインします。
 
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
     az login
     ```
-    
-1. [az group create](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。 次の例では、`AzureFunctionsContainers-rg` という名前のリソース グループを `westeurope` リージョンに作成します。 (リソース グループとリソースは通常、近くのリージョンに作成します。`az account list-locations` コマンドから返される利用可能なリージョンを使用してください。)
 
-    ```azurecli
-    az group create --name AzureFunctionsContainers-rg --location westeurope
+    [az login](/cli/azure/reference-index#az_login) コマンドで Azure アカウントにサインインします。
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    ```azurepowershell
+    Connect-AzAccount
     ```
-    
-    > [!NOTE]
-    > Linux と Windows のアプリを同じリソース グループ内でホストすることはできません。 Windows の関数アプリまたは Web アプリで `AzureFunctionsContainers-rg` という名前のリソース グループが存在する場合、別のリソース グループを使用する必要があります。
-    
-1. [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用して、リソース グループとリージョン内に汎用ストレージ アカウントを作成します。 次の例の `<storage_name>` は適宜、グローバルに一意の名前に置き換えてください。 名前は 3 文字から 24 文字とし、小文字のみを使用する必要があります。 `Standard_LRS` では、標準的な汎用アカウントを指定します。
 
+    [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットで Azure アカウントにサインインします。
+
+    ---
+
+1. 選択したリージョンに `AzureFunctionsContainers-rg` という名前のリソース グループを作成します。
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
     ```azurecli
-    az storage account create --name <storage_name> --location westeurope --resource-group AzureFunctionsContainers-rg --sku Standard_LRS
+    az group create --name AzureFunctionsContainers-rg --location <REGION>
     ```
-    
-    このチュートリアルでは、ストレージ アカウントに関して数セントの料金が発生します。
-    
-1. コマンドを使用して、Azure Functions 用の Premium プランを `myPremiumPlan` という名前で作成します。価格レベルは **Elastic Premium 1** (`--sku EP1`)、リージョンは西ヨーロッパ (`-location westeurope`) または最寄りのリージョン、作成先は Linux コンテナー (`--is-linux`) とします。
+ 
+    [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 上記のコマンドで、[az account list-locations](/cli/azure/account#az_account_list_locations) コマンドから返された使用可能なリージョン コードを使用して、`<REGION>` を自分の近くのリージョンに置き換えます。
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+    ```azurepowershell
+    New-AzResourceGroup -Name AzureFunctionsContainers-rg -Location <REGION>
+    ```
+
+    [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 リソース グループとリソースは通常、近くのリージョンに作成します。[Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドレットから返される利用可能なリージョンを使用してください。
+
+    ---
+
+1. リソース グループとリージョン内に汎用ストレージ アカウントを作成します。
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
     ```azurecli
-    az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
-    ```   
+    az storage account create --name <STORAGE_NAME> --location <REGION> --resource-group AzureFunctionsContainers-rg --sku Standard_LRS
+    ```
 
+    [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドでストレージ アカウントを作成します。 
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+    ```azurepowershell
+    New-AzStorageAccount -ResourceGroupName AzureFunctionsContainers-rg -Name <STORAGE_NAME> -SkuName Standard_LRS -Location <REGION>
+    ```
+
+    [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドレットでストレージ アカウントを作成します。
+
+    ---
+
+    前の例の `<STORAGE_NAME>` は、適宜、Azure Storage 内で一意の名前に置き換えてください。 名前は 3 文字から 24 文字とし、小文字のみを使用する必要があります。 `Standard_LRS` は汎用アカウントを指定します。これは [Functions でサポート](storage-considerations.md#storage-account-requirements)されています。
+    
+1. コマンドを使用して、Azure Functions 用の Premium プランを `myPremiumPlan` という名前で作成します。価格レベルは **Elastic Premium 1** (`--sku EP1`) とし、`<REGION>` を指定し、作成先を Linux コンテナー (`--is-linux`) とします。
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    ```azurecli
+    az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location <REGION> --number-of-workers 1 --sku EP1 --is-linux
+    ```
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+    ```powershell
+    New-AzFunctionAppPlan -ResourceGroupName AzureFunctionsContainers-rg -Name MyPremiumPlan -Location <REGION> -Sku EP1 -WorkerType Linux
+    ```
+    ---
     ここでは、必要に応じてスケーリングできる Premium プランを使用します。 ホスティングについて詳しくは、「[Azure Functions のホスティング プランの比較](functions-scale.md)」をご覧ください。 コストを計算するには、[Functions の価格に関するページ](https://azure.microsoft.com/pricing/details/functions/)を参照してください。
 
     また、このコマンドを実行すると、関連する Azure Application Insights インスタンスが同じリソース グループにプロビジョニングされます。このインスタンスを使用することで、関数アプリを監視したりログを確認したりすることができます。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。 このインスタンスは、アクティブにするまでコストが発生しません。
@@ -397,45 +455,66 @@ Azure CLI コマンドを使用して、これらの項目を作成しましょ�
 
 Azure 上の関数アプリでは、ホスティング プランで関数の実行を管理します。 このセクションでは、前のセクションの Azure リソースを使用して、Docker Hub 上のイメージから関数アプリを作成し、Azure Storage への接続文字列を使用してそれを構成します。
 
-1. [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドを使用して関数アプリを作成します。 次の例の `<storage_name>` は、前のセクションで使用したストレージ アカウントの名前に置き換えてください。 また、`<app_name>` は適宜グローバルに一意の名前に、`<docker_id>` は実際の Docker ID に置き換えます。
+1. 次のコマンドを使用して、関数アプリを作成します。
 
-    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
-    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime <functions runtime stack> --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+    az functionapp create --name <APP_NAME> --storage-account <STORAGE_NAME> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --deployment-container-image-name <DOCKER_ID>/azurefunctionsimage:v1.0.0
     ```
-    ::: zone-end
-    ::: zone pivot="programming-language-other"
-    ```azurecli
-    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime custom --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+
+    [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドで、*deployment-container-image-name* パラメーターは関数アプリに使用するイメージを指定します。 デプロイに使用されているイメージに関する情報は、[az functionapp config container show](/cli/azure/functionapp/config/container#az_functionapp_config_container_show) コマンドを使用して表示できます。 [az functionapp config container set](/cli/azure/functionapp/config/container#az_functionapp_config_container_set) コマンドを使用して、別のイメージからデプロイすることもできます。
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+    ```azurepowershell
+    New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsContainers-rg -PlanName myPremiumPlan -StorageAccount <STORAGE_NAME> -DockerImageName <DOCKER_ID>/azurefunctionsimage:v1.0.0
     ```
-    ::: zone-end
+    ---
     
-    *deployment-container-image-name* パラメーターでは、関数アプリに使用するイメージを指定します。 デプロイに使用されているイメージに関する情報は、[az functionapp config container show](/cli/azure/functionapp/config/container#az_functionapp_config_container_show) コマンドを使用して表示できます。 [az functionapp config container set](/cli/azure/functionapp/config/container#az_functionapp_config_container_set) コマンドを使用して、別のイメージからデプロイすることもできます。
-
-1. 作成したストレージ アカウントの接続文字列を [az storage account show-connection-string](/cli/azure/storage/account) コマンドで表示します。 `<storage-name>` を、上で作成したストレージ アカウントの名前に置き換えます。
-
-    ```azurecli
-    az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
-    ```
+    この例では、`<STORAGE_NAME>` を、前のセクションで使用したストレージ アカウントの名前に置き換えます。 また、`<APP_NAME>` は適宜グローバルに一意の名前に、`<DOCKER_ID>` は実際の DockerHub ID に置き換えます。    
     
-1. [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_ppsettings_set) コマンドを使用して、この設定を関数アプリに追加します。 次のコマンドで、`<app_name>` を関数アプリの名前に置き換え、`<connection_string>` を前の手順の接続文字列 ("DefaultEndpointProtocol=" で始まる長いエンコード文字列) に置き換えます。
+    > [!TIP]  
+    > host.json ファイルで [`DisableColor` の設定](functions-host-json.md#console)を使用して、ANSI 制御文字がコンテナー ログに書き込まれないようにすることができます。 
+
+1. 次のコマンドを使用して、作成したストレージ アカウントの接続文字列を取得します。
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    ```azurecli
+    az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <STORAGE_NAME> --query connectionString --output tsv
+    ```
+
+    ストレージ アカウントの接続文字列は、[az storage account show-connection-string](/cli/azure/storage/account) コマンドを使用することで返されます。 
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+    ```azurepowershell
+    $storage_name = "glengagtestdockerstorage"
+    $key = (Get-AzStorageAccountKey -ResourceGroupName AzureFunctionsContainers-rg -Name $storage_name)[0].Value
+    $string = "DefaultEndpointsProtocol=https;EndpointSuffix=core.windows.net;AccountName=" + $storage_name + ";AccountKey=" + $key
+    Write-Output($string) 
+    ```
+    [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) コマンドレットによって返されるキーは、ストレージ アカウントの接続文字列を作成するために使用されます。
+
+    ---    
+
+    `<STORAGE_NAME>` を、前に作成したストレージ アカウントの名前に置き換えます。
+
+1. 次のコマンドを使用して、この設定を関数アプリに追加します。 
  
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
-    az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
+    az functionapp config appsettings set --name <APP_NAME> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<CONNECTION_STRING>
     ```
+    [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_ppsettings_set) コマンドによって、設定が作成されます。 
 
-    > [!TIP]
-    > Bash では、クリップボードではなく、シェル変数を使用して接続文字列をキャプチャできます。 まず、次のコマンドを使用して、接続文字列の変数を作成します。
-    > 
-    > ```bash
-    > storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
-    > ```
-    > 
-    > 次に、2 つ目のコマンドで変数を参照します。
-    > 
-    > ```azurecli
-    > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
-    > ```
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+    ```azurepowershell
+    Update-AzFunctionAppSetting -Name <APP_NAME> -ResourceGroupName AzureFunctionsContainers-rg -AppSetting @{"AzureWebJobsStorage"="<CONNECTION_STRING>"}
+    ```
+    [Update-AzFunctionAppSetting](/powershell/module/az.functions/update-azfunctionappsetting) コマンドレットによって、設定が作成されます。
+
+    ---
+
+    このコマンドで、`<APP_NAME>` を関数アプリの名前に、`<CONNECTION_STRING>` を前の手順の接続文字列に置き換えます。 接続は、`DefaultEndpointProtocol=` で始まる長いエンコードされた文字列である必要があります。
+ 
 
 1. 関数でこの接続文字列を使用してストレージ アカウントにアクセスできるようになりました。
 
@@ -444,82 +523,47 @@ Azure 上の関数アプリでは、ホスティング プランで関数の実�
 
 ## <a name="verify-your-functions-on-azure"></a>Azure 上で関数を確認する
 
-Azure 上の関数アプリにイメージをデプロイしたら、HTTP 要求を使用して関数を呼び出すことができます。 *function.json* 定義に `"authLevel": "function"` プロパティが存在するので、まずアクセス キー ("関数キー" とも呼ばれます) を取得して、それを URL パラメーターとしてエンドポイントへの要求に含める必要があります。
+イメージを Azure の関数アプリにデプロイしたら、関数を前のように HTTP 要求を通じて呼び出すことができます。
+ブラウザーで、次のような URL に移動します。
 
-1. Azure portal を使用するか、または Azure CLI と `az rest` コマンドを使用して、アクセス (関数) キーを含む関数の URL を取得します。
+::: zone pivot="programming-language-java,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+`https://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`  
+::: zone-end  
+::: zone pivot="programming-language-csharp"  
+# <a name="in-process"></a>[インプロセス](#tab/in-process) 
+`https://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`
+# <a name="isolated-process"></a>[分離プロセス](#tab/isolated-process)
+`https://<APP_NAME>.azurewebsites.net/api/HttpExample`
 
-    # <a name="portal"></a>[ポータル](#tab/portal)
+---
+:::zone-end  
 
-    1. Azure portal にサインインし、"**関数アプリ**" を検索して選択します。
-
-    1. 検証する関数を選択します。
-
-    1. 左側のナビゲーション パネルで **[関数]** を選択し、検証する関数を選択します。
-
-        ![Azure portal で関数を選択する](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
-
-    
-    1. **[関数の URL の取得]** を選択します。
-
-        ![Azure portal から関数 URL を取得する](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
-
-    
-    1. ポップアップ ウィンドウで、 **[default (function key)]\(既定 (関数キー)\)** を選択し、URL をクリップボードにコピーします。 `?code=` に続く文字列がキーです
-
-        ![既定の関数アクセス キーを選択する](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
-
-
-    > [!NOTE]  
-    > 関数アプリはコンテナーとしてデプロイされるため、ポータルでその関数コードを変更することはできません。 ローカル イメージでプロジェクトを更新して、再度イメージをレジストリにプッシュした後、Azure に再デプロイする必要があります。 後続のセクションで継続的デプロイを設定することができます。
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
-
-    1. 次の形式で URL 文字列を構成します。`<subscription_id>`、`<resource_group>`、`<app_name>` はそれぞれ、実際の Azure サブスクリプション ID、関数アプリのリソース グループ、関数アプリの名前に置き換えてください。
-
-        ```
-        "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Web/sites/<app_name>/host/default/listKeys?api-version=2018-11-01"
-        ```
-
-        たとえば、URL は次のようなアドレスになります。
-
-        ```
-        "/subscriptions/1234aaf4-1234-abcd-a79a-245ed34eabcd/resourceGroups/AzureFunctionsContainers-rg/providers/Microsoft.Web/sites/msdocsfunctionscontainer/host/default/listKeys?api-version=2018-11-01"
-        ```
-
-        > [!TIP]
-        > 便宜上、URL を環境変数に代入して `az rest` コマンドで使用することもできます。
-    
-    1. 次の `az rest` コマンド (Azure CLI バージョン 2.0.77 以降で利用可能) を実行します。`<uri>` は、直前の手順の URI 文字列 (引用符を含む) に置き換えてください。
-
-        ```azurecli
-        az rest --method post --uri <uri> --query functionKeys.default --output tsv
-        ```
-
-    1. コマンドの出力は関数キーです。 関数の完全な URL は `https://<app_name>.azurewebsites.net/api/<function_name>?code=<key>` です。`<app_name>`、`<function_name>`、`<key>` は、お客様固有の値に置き換えてください。
-    
-        > [!NOTE]
-        > ここで取得したキーは、関数アプリに含まれるすべての関数で使用できる "*ホスト*" キーです。一方、ポータル用に示した方法で取得されるのは、1 つの関数についてのキーだけです。
-
-    ---
-
-1. 関数 URL をブラウザーのアドレス バーに貼り付けます。この URL の末尾にパラメーター `&name=Azure` を追加してください。 "Hello, Azure" のようなテキストがブラウザーに表示されます。
-
-    ![ブラウザーでの関数の応答。](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
-
-1. 承認をテストするために、URL から `code=` パラメーターを取り除き、関数から応答がないことを確認します。
-
+`<APP_NAME>` をお使いの関数アプリの名前に置き換えます。 この URL にアクセスすると、この関数をローカルで実行したときと同様の出力がブラウザーに表示されるはずです。
 
 ## <a name="enable-continuous-deployment-to-azure"></a>Azure への継続的デプロイを有効にする
 
 レジストリ内のイメージを更新するたびに、イメージのデプロイを Azure Functions に自動的に更新させることができます。
 
-1. [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_config) コマンドを使用して継続的デプロイを有効にします。`<app_name>` は、実際の関数アプリの名前に置き換えてください。
+1. 次のコマンドを使用して継続的デプロイを有効にし、Webhook URL を取得します。
 
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
-    az functionapp deployment container config --enable-cd --query CI_CD_URL --output tsv --name <app_name> --resource-group AzureFunctionsContainers-rg
+    az functionapp deployment container config --enable-cd --query CI_CD_URL --output tsv --name <APP_NAME> --resource-group AzureFunctionsContainers-rg
     ```
     
-    このコマンドは、継続的デプロイを有効にして、デプロイの Webhook URL を返します。 (この URL は、後から [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_show_cd_url) コマンドを使用していつでも取得できます。)
+    [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_config) コマンドは、継続的デプロイを有効にして、デプロイの Webhook URL を返します。 この URL は、後から [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_show_cd_url) コマンドを使用していつでも取得できます。
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+    ```azurepowershell
+    Update-AzFunctionAppSetting -Name <APP_NAME> -ResourceGroupName AzureFunctionsContainers-rg -AppSetting @{"DOCKER_ENABLE_CI" = "true"}
+    Get-AzWebAppContainerContinuousDeploymentUrl -Name <APP_NAME> -ResourceGroupName AzureFunctionsContainers-rg
+    ```
+    
+    `DOCKER_ENABLE_CI` アプリケーション設定は、コンテナー リポジトリから継続的デプロイを有効にするかどうかを制御します。  [Get-AzWebAppContainerContinuousDeploymentUrl](/powershell/module/az.websites/get-azwebappcontainercontinuousdeploymenturl) コマンドレットは、デプロイ Webhook の URL を返します。
+
+    ---    
+
+    これまでと同様に、`<APP_NAME>` をお使いの関数アプリ名に置き換えます。 
 
 1. デプロイの Webhook URL をクリップボードにコピーします。
 
@@ -589,14 +633,18 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 
-## <a name="write-to-an-azure-storage-queue"></a>Azure Storage キューに書き込む
+## <a name="write-to-azure-queue-storage"></a>Azure Queue Storage に書き込む
 
 Azure Functions を使用すると、独自の統合コードを記述することなく他の Azure サービスやリソースに関数を接続できます。 これらの *バインド* は、入力と出力の両方を表し、関数定義内で宣言されます。 バインドからのデータは、パラメーターとして関数に提供されます。 "*トリガー*" は、特殊な種類の入力バインドです。 関数はトリガーを 1 つしか持てませんが、複数の入力および出力バインドを持つことができます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
 
-このセクションでは、関数と Azure Storage キューを統合する方法について説明します。 この関数に追加する出力バインドは、HTTP 要求のデータをキュー内のメッセージに書き込みます。
+このセクションでは、関数と Azure Queue Storage を統合する方法について説明します。 この関数に追加する出力バインドは、HTTP 要求のデータをキュー内のメッセージに書き込みます。
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 ::: zone-end
+
+::: zone pivot="programming-language-csharp"  
+## <a name="register-binding-extensions"></a>バインディング拡張機能を登録する
+::: zone-end 
 
 [!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
@@ -613,7 +661,7 @@ Azure Functions を使用すると、独自の統合コードを記述するこ�
 
 ## <a name="add-code-to-use-the-output-binding"></a>出力バインディングを使用するコードを追加する
 
-キュー バインディングが定義されたら、`msg` 出力パラメーターを受け取ってメッセージをキューに書き込むように関数を更新することができます。
+キュー バインディングが定義されたら、バインディング パラメーターを使用してメッセージをキューに書き込むように関数を更新することができます。
 ::: zone-end
 
 ::: zone pivot="programming-language-python"     
@@ -682,3 +730,5 @@ az group delete --name AzureFunctionsContainer-rg
 + [関数の監視](functions-monitoring.md)
 + [スケールとホスティングのオプション](functions-scale.md)
 + [Kubernetes ベースのサーバーレス ホスティング](functions-kubernetes-keda.md)
+
+[承認キー]: functions-bindings-http-webhook-trigger.md#authorization-keys

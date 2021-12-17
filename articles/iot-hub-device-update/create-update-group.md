@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/17/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: a0894047db1ed7687a1a0f5f87fc4020ddf7c694
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c9f1294f1d2f80689cdb417ad16357cc5fbcece
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101678635"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089328"
 ---
 # <a name="create-device-groups-in-device-update-for-iot-hub"></a>Device Update for IoT Hub でデバイス グループを作成する
 Device Update for IoT Hub を使用すると、IoT デバイスのグループに更新プログラムをデプロイできます。
@@ -21,6 +21,7 @@ Device Update for IoT Hub を使用すると、IoT デバイスのグループ�
 * [Device Update for IoT Hub が有効になっている IoT ハブにアクセスできること](create-device-update-account.md)。 IoT ハブには、S1 (Standard) レベル以上を使用することをお勧めします。 
 * Device Update 用にプロビジョニングされている、IoT ハブ内の IoT デバイス (またはシミュレーター)。
 * [少なくとも 1 つの更新プログラムが、プロビジョニング済みのデバイスに正常にインポートされていること。](import-update.md)
+* [モジュールまたはデバイス レベルの ID](device-update-agent-provisioning.md) でデバイス更新エージェントを IoT デバイスにインストールして開始する
 
 ## <a name="add-a-tag-to-your-devices"></a>デバイスにタグを追加する  
 
@@ -44,20 +45,20 @@ Device Update にデバイスを登録したら、RegistryManager を使用し�
 
 ### <a name="using-jobs"></a>ジョブの使用
 
-[これら](../iot-hub/iot-hub-devguide-jobs.md)の例に従って、Device Update のタグを追加または更新するジョブを、複数のデバイスに対してスケジュールできます。 [詳細については、こちらを参照してください](../iot-hub/iot-hub-csharp-csharp-schedule-jobs.md)。
+[これら](../iot-hub/iot-hub-devguide-jobs.md)の例に従って、Device Update のタグを追加または更新するジョブを、複数のデバイスに対してスケジュールできます。 ジョブを使用して、デバイス ツインまたはモジュール ツイン (Device Update エージェントがモジュール ID として設定されている場合) を更新できます。 [詳細情報](../iot-hub/iot-hub-csharp-csharp-schedule-jobs.md)
 
   > [!NOTE] 
-  > このアクションは、IOT Hub の現在のメッセージ クォータに反しているため、一度に変更するデバイス ツイン タグの数は 50,000 以下にすることをお勧めします。そうしないと、IOT Hub の 1 日のメッセージ クォータを超過した場合に IOT Hub のユニットをさらに購入する必要が生じる場合があります。 詳細については、「[クォータと調整](../iot-hub/iot-hub-devguide-quotas-throttling.md#quotas-and-throttling)」を参照してください。
+  > このアクションは、IOT Hub の現在のメッセージ クォータに反しているため、一度に最大 50,000 のデバイスまたはモジュールのツイン タグのみを変更することをお勧めします。そうしないと、IOT Hub の 1 日のメッセージ クォータを超過した場合に IOT Hub のユニットをさらに購入する必要が生じる場合があります。 詳細については、「[クォータと調整](../iot-hub/iot-hub-devguide-quotas-throttling.md#quotas-and-throttling)」を参照してください。
 
 ### <a name="direct-twin-updates"></a>ツインの直接更新
 
-タグは、デバイス ツインに直接追加したり更新したりすることもできます。
+タグは、デバイス ツインやモジュール ツインに直接追加したり更新したりすることもできます。
 
 1. [Azure portal](https://portal.azure.com) にログインし、自分の IoT ハブに移動します。
 
-2. 左側のナビゲーション ウィンドウの [IoT デバイス] または [IoT Edge] から、対象の IoT デバイスを見つけて、デバイス ツインに移動します。
+2. 左側のナビゲーション ウィンドウの [IoT デバイス] または [IoT Edge] から、対象の IoT デバイスを見つけて、[デバイス ツイン] または [Device Update モジュール]、およびそのモジュール ツインに移動します (これは、デバイス更新エージェントがモジュール ID として設定されている場合に利用可能です)。
 
-3. デバイス ツインで、Device Update の既存のタグ値を null に設定することで削除します。
+3. [デバイス ツイン] または [モジュール ツイン] で、Device Update の既存のタグ値を null に設定することで削除します。
 
 4. 次に示すように、Device Update の新しいタグ値を追加します。 [タグを含むデバイス ツイン JSON ドキュメントの例。](../iot-hub/iot-hub-devguide-device-twins.md#device-twins)
 

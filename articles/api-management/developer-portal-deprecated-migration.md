@@ -4,17 +4,17 @@ titleSuffix: Azure API Management
 description: API Management で、レガシ開発者ポータルから新しい開発者ポータルに移行する方法について説明します。
 services: api-management
 documentationcenter: API Management
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 04/15/2021
-ms.author: apimpm
-ms.openlocfilehash: e4f9f3822b58886f7d453d52402b078d8401133f
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.author: danlep
+ms.openlocfilehash: f09f83fdac6de53f59801e33dd9e668b1009136c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738884"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642569"
 ---
 # <a name="migrate-to-the-new-developer-portal"></a>新しい開発者ポータルへの移行
 
@@ -53,7 +53,7 @@ ms.locfileid: "107738884"
 - 明示的に定義された非推奨のポータル URL を含めるように既定の電子メール通知テンプレートを変更した場合は、ポータルの URL パラメーターを使用するか、新しいポータルの URL を指すようにそれらを変更します。 代わりに組み込みポータルの URL パラメーターがテンプレートで使用されている場合、変更は必要ありません。
 - "*イシュー*" と "*アプリケーション*" は、新しい開発者ポータルではサポートされていません。
 - ID プロバイダーとしての Facebook、Microsoft、Twitter、および Google との直接統合は、新しい開発者ポータルではサポートされていません。 Azure AD B2C を経由してこれらのプロバイダーと統合できます。
-- 委任を使用する場合は、アプリケーションの戻り先 URL を変更し、"*SSO URL の生成*" エンドポイントの代わりに、"[*共有アクセス トークンの取得*" API エンドポイント](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken)を使用します。
+- 委任を使用する場合は、アプリケーションの戻り先 URL を変更し、"*SSO URL の生成*" エンドポイントの代わりに、"[*共有アクセス トークンの取得*" API エンドポイント](/rest/api/apimanagement/2020-12-01/user/get-shared-access-token)を使用します。
 - Azure AD を ID プロバイダーとして使用する場合は、次のことを行います。
 
     - アプリケーションの戻り先 URL を、新しい開発者ポータル ドメインを指すように変更します。

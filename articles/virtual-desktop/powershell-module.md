@@ -1,28 +1,29 @@
 ---
-title: Windows Virtual Desktop の PowerShell モジュール - Azure
-description: Windows Virtual Desktop 用の PowerShell モジュールをインストールして設定する方法について説明します。
+title: Azure Virtual Desktop の PowerShell モジュール - Azure
+description: Azure Virtual Desktop 用 PowerShell モジュールをインストールして設定する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 07/20/2021
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: fdd74a09e49a352d18cf4ceccf406a25bf6dffb3
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 916ce455d2d053746afb37b6b6dcc84168083b61
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445841"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464567"
 ---
-# <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用 PowerShell モジュールを設定する
+# <a name="set-up-the-powershell-module-for-azure-virtual-desktop"></a>Azure Virtual Desktop 用 PowerShell モジュールを設定する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager との統合で Windows Virtual Desktop に適用されます。
+>このコンテンツは、Azure Resource Manager との統合で Azure Virtual Desktop に適用されます。
 
-Windows Virtual Desktop PowerShell モジュールは、Azure PowerShell モジュールに統合されています。 この記事では、Windows Virtual Desktop のコマンドレットを実行できるように PowerShell モジュールを設定する方法について説明します。
+Azure Virtual Desktop PowerShell モジュールは、Azure PowerShell モジュールに統合されています。 この記事では、Azure Virtual Desktop 用コマンドレットを実行できるように PowerShell モジュールを設定する方法について説明します。
 
 ## <a name="set-up-your-powershell-environment"></a>PowerShell 環境をセットアップする
 
-モジュールの使用を開始するには、まず、[最新バージョンの PowerShell Core](/powershell/scripting/install/installing-powershell#powershell-core) をインストールします。 現在、Windows Virtual Desktop のコマンドレットは PowerShell Core でのみ機能します。
+モジュールの使用を開始するには、まず、[最新バージョンの PowerShell Core](/powershell/scripting/install/installing-powershell#powershell-core) をインストールします。 現在、Azure Virtual Desktop のコマンドレットは PowerShell Core でのみ機能します。
 
 次に、PowerShell セッションで使用するために、DesktopVirtualization モジュールをインストールする必要があります。
 
@@ -46,6 +47,12 @@ Connect-AzAccount
 > 
 > ```powershell
 > Connect-AzAccount -EnvironmentName AzureUSGovernment
+> ```
+> 
+> Azure China ポータルに接続するには、次のコマンドレットを実行します。
+> 
+> ```powershell
+> Connect-AzAccount -EnvironmentName AzureChinaCloud
 > ```
 
 Azure アカウントにサインインするには、Connect コマンドレットを実行するときに生成されるコードが必要です。 サインインするには、<https://microsoft.com/devicelogin> に移動し、コードを入力してから、Azure 管理者の資格情報を使用してサインインします。
@@ -136,11 +143,11 @@ New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -W
 
 ## <a name="next-steps"></a>次のステップ
 
-PowerShell モジュールの設定が完了したので、コマンドレットを実行して Windows Virtual Desktop であらゆる処理を実行できます。 モジュールを使用できるいくつかの場所を以下に示します。
+PowerShell モジュールの設定が完了したので、コマンドレットを実行して Azure Virtual Desktop 内であらゆる処理を実行できます。 モジュールを使用できるいくつかの場所を以下に示します。
 
-- まったく独自の Windows Virtual Desktop 環境を設定するには、[Windows Virtual Desktop のチュートリアル]()を実行してください。
+- [Azure Virtual Desktop のチュートリアル]()を実行して、まったく独自の Azure Virtual Desktop 環境を設定する。
 - [PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)
-- [Windows Virtual Desktop の負荷分散方法を構成する](configure-host-pool-load-balancing.md)
+- [Azure Virtual Desktop の負荷分散方法を構成する](configure-host-pool-load-balancing.md)
 - [個人用デスクトップ ホスト プールの割り当ての種類を構成する](configure-host-pool-personal-desktop-assignment-type.md)
 - その他にもたくさんあります。
 

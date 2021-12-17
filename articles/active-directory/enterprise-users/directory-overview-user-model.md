@@ -3,10 +3,10 @@ title: Azure Active Directory でのユーザー、グループ、ライセン�
 description: Azure Active Directory における割り当てライセンス、管理者ロール、グループ メンバーシップとユーザーとの関係
 keywords: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.author: curtand
 ms.reviewer: krbain
-ms.date: 12/02/2020
+ms.date: 09/01/2021
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c253e75c7924a05c940b1d09b6f0c3fd281f696
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: fce67f5f6adf39b70fd6a84dbb959cfc1d7c5237
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056948"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129986988"
 ---
 # <a name="what-is-enterprise-user-management"></a>エンタープライズ ユーザー管理の概要
 

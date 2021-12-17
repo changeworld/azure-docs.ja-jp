@@ -2,14 +2,14 @@
 title: Azure Active Directory を使用した Azure Batch サービスの認証
 description: Batch は、Batch サービスからの認証に Azure AD をサポートしています。 次の 2 つの方法のいずれかで認証する方法について説明します。
 ms.topic: how-to
-ms.date: 10/20/2020
-ms.custom: has-adal-ref
-ms.openlocfilehash: 2ceefa538c44208750da8986fcf3d161f0c0865f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 05/13/2021
+ms.custom: has-adal-ref, subject-rbac-steps
+ms.openlocfilehash: c7f365c7db4a8bc273e67d66a56a826021306f3a
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180022"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123315090"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -81,10 +81,8 @@ Batch アプリケーションを登録するには、[クイックスタート�
 1. アプリの登録の一覧から、アプリケーションの名前を検索します。
 1. アプリケーションを選択して **[API のアクセス許可]** を選択します。
 1. **[API のアクセス許可]** セクションで、 **[アクセス許可の追加]** を選択します。
-1. **[API の選択]** で、Batch API を検索します。 API が見つかるまで、次の各文字列を検索します。
-    1. **Microsoft Azure Batch**
-    1. **ddbf3205-c6bd-46ae-8127-60eb93363864** は Batch API の ID です。
-1. Batch API が見つかったら、それを選択して **[選択]** を選びます。
+1. **[API を選択する]** で "Microsoft Azure Batch" と検索すると、Batch API が見つかります。 **ddbf3205-c6bd-46ae-8127-60eb93363864** が、Batch API の アプリケーション ID です。
+1. Batch API を選択して **[選択]** を選択します。
 1. **[アクセス許可の選択]** で、 **[Access Azure Batch Service] (Azure Batch サービスへのアクセス)** の横にあるチェック ボックスをオンにして **[アクセス許可を追加する]** を選択します。
 
 これで、 **[API のアクセス許可]** セクションに、Azure AD アプリケーションに Microsoft Graph と Batch サービス API の両方へのアクセス権があることが示されます。 アプリを Azure AD に最初に登録する際に、Microsoft Graph へのアクセス許可が自動的に付与されます。
@@ -114,14 +112,9 @@ Azure Portal で次の手順に従います。
 
 1. Azure Portal ポータルで、アプリケーションで使用する Batch アカウントに移動します。
 1. Batch アカウントの **[設定]** セクションで、 **[アクセス制御 (IAM)]** を選択します。
-1. **[ロールの割り当て]** タブを選択します。
-1. **[ロールの割り当ての追加]** を選択します。
-1. **[ロール]** ドロップダウン リストで、アプリケーションに *[共同作成者]* または *[リーダー]* のいずれかのロールを選択します。 これらのロールの詳細については、[Azure portal での Azure ロールベースのアクセス制御の概要](../role-based-access-control/overview.md)に関するページを参照してください。
-1. **[選択]** フィールドに、アプリケーションの名前を入力します。 一覧からアプリケーションを選択してから、 **[保存]** を選択します。
+1. [[共同作成者]](../role-based-access-control/built-in-roles.md#contributor) または [[閲覧者]](../role-based-access-control/built-in-roles.md#reader) ロールのいずれかをアプリケーションに割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 この時点で、Azure ロールが割り当てられたアプリケーションがアクセス制御の設定に表示されている必要があります。
-
-![アプリケーションに Azure ロールを割り当てる](./media/batch-aad-auth/app-rbac-role.png)
 
 ### <a name="assign-a-custom-role"></a>カスタム ロールを割り当てる
 
@@ -412,4 +405,3 @@ credentials = ServicePrincipalCredentials(
 - [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)と[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルを作成する方法](../active-directory/develop/howto-create-service-principal-portal.md)について学習します。
 - [Active Directory を使用した Batch 管理ソリューションの認証](batch-aad-auth-management.md)について学習します。
 - Azure AD トークンを使用して認証される Batch クライアントを作成する方法を示す Python の例については、サンプルの「[Python スクリプトを使用して Azure Batch のカスタム イメージをデプロイする](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md)」を参照してください。
-

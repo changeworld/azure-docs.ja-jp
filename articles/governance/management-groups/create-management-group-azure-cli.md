@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:Azure CLI を使用して管理グループを作成する
 description: このクイックスタートでは、Azure CLI を使用して、リソースを階層で整理する管理グループを作成します。
-ms.date: 02/05/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fe38882bd3b025635662e228ae919a24b03dee78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51d8f6e9a13bd09cd5f7d0dd423639f07ee59c05
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99592451"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324968"
 ---
 # <a name="quickstart-create-a-management-group-with-the-azure-cli"></a>クイック スタート:Azure CLI を使用して管理グループを作成する
 

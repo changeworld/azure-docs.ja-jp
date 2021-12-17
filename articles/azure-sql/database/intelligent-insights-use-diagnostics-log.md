@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: danimir
-ms.author: danil
-ms.reviewer: wiassaf, sstein
+author: AlainDormehlMSFT
+ms.author: aldorme
+ms.reviewer: mathoma, wiassaf
 ms.date: 06/12/2020
-ms.openlocfilehash: b03c21eea18c966616154b5cfc5df5d8924fd335
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f163d34c83ace01d0af4085dfc6c14d8211c975
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589310"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284880"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>Azure SQL Database と Azure SQL Managed Instance のパフォーマンスに関する問題を含んだ Intelligent Insights のパフォーマンス診断ログを使用する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -138,7 +138,7 @@ Intelligent Insights パフォーマンス ログの最後の部分には、識�
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Intelligent Insights パフォーマンス ログは、[Azure Monitor ログ]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションで使用できます。
+Intelligent Insights パフォーマンス ログは、[Azure Monitor ログ](../../azure-monitor/insights/azure-sql.md)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションで使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

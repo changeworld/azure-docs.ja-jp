@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 589ed3f046623f513a3e8418ef038eec8e495d17
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498933"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864481"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection - 回復性の高いソリューションの設計
 
@@ -264,7 +264,11 @@ Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (
 
 
 > [!NOTE]
+<<<<<<< HEAD
 > パブリック IP を使用する仮想ネットワーク内での PowerApps 用 Azure App Service Environment または API 管理は、どちらもネイティブにはサポートされていません。
+=======
+> パブリック IP を使用する仮想ネットワーク内での Azure App Service Environment for Power Apps 環境または API 管理は、どちらもネイティブにはサポートされていません。
+>>>>>>> repo_sync_working_branch
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,15 +4,16 @@ description: Azure Data Factory を使用してオンプレミスまたはクラ
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 10/22/2021
 robots: noindex
-ms.openlocfilehash: ce29b5a112d70575a721b0b527947fd95868da80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc38fbcb09f5d088a42f7754eb32bebf176cdbf8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382924"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259716"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP ソースからデータを移動する
 

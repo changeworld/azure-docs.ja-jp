@@ -3,12 +3,12 @@ title: 静的送信 IP を構成する
 description: イングレスとエグレスにファイアウォールのパブリック IP アドレスを使用する Azure Container Instances ワークロード用の Azure ファイアウォールとユーザー定義ルートを構成する
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 1cd0ff48da58706a1be59caf4b9d5974dc5f552a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a03c59652b9409d54bbe63c63a31fdd2228ac34e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790817"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878688"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>コンテナー グループへの送信と受信トラフィック用の 1 つのパブリック IP アドレスを構成する
 
@@ -290,15 +290,15 @@ az container logs \
 [az-container-create]: /cli/azure/container#az_container_create
 [az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_create
 [az-extension-add]: /cli/azure/extension#az_extension_add
-[az-network-firewall-update]: /cli/azure/ext/azure-firewall/network/firewall#ext-azure-firewall-az-network-firewall-update
+[az-network-firewall-update]: /cli/azure/network/firewall#az_network_firewall_update
 [az-network-public-ip-show]: /cli/azure/network/public-ip/#az_network_public_ip_show
 [az-network-route-table-create]:/cli/azure/network/route-table/#az_network_route_table_create
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az_network_route_table_route_create
-[az-network-firewall-ip-config-list]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-list
+[az-network-firewall-ip-config-list]: /cli/azure/network/firewall/ip-config#az_network_firewall_ip_config_list
 [az-network-vnet-subnet-update]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_update
 [az-container-exec]: /cli/azure/container#az_container_exec
 [az-vm-create]: /cli/azure/vm#az_vm_create
 [az-vm-open-port]: /cli/azure/vm#az_vm_open_port
 [az-vm-list-ip-addresses]: /cli/azure/vm#az_vm_list_ip_addresses
-[az-network-firewall-application-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/application-rule#ext-azure-firewall-az-network-firewall-application-rule-create
-[az-network-firewall-nat-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/nat-rule#ext-azure-firewall-az-network-firewall-nat-rule-create
+[az-network-firewall-application-rule-create]: /cli/azure/network/firewall/application-rule#az_network_firewall_application_rule_create
+[az-network-firewall-nat-rule-create]: /cli/azure/network/firewall/nat-rule#az_network_firewall_nat_rule_create

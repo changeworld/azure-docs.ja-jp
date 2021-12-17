@@ -4,13 +4,13 @@ description: 強力な分析情報を提供できるクエリを使用して、L
 ms.topic: article
 author: rboucher
 ms.author: robb
-ms.date: 07/01/2020
-ms.openlocfilehash: 276ea1e2f083da7ab4a6ab44e60bc7e0832e8651
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 10/27/2021
+ms.openlocfilehash: 67981c51fc3213d2a2f7e2b9e0834c51874a6a4a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030938"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465404"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Log Analytics ダッシュボードの視覚化のアップグレード
 

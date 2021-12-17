@@ -4,15 +4,15 @@ description: パートナー センターでの Microsoft コマーシャル マ
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
-ms.date: 09/02/2020
-ms.openlocfilehash: e97171e61814b832e78f7bd815d8d6f341a90840
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/05/2021
+ms.openlocfilehash: e91e85982bb021193224010e2bd51df301240c69
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91858174"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277982"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>コマーシャル マーケットプレース オファーのプランと価格
 
@@ -68,7 +68,7 @@ ms.locfileid: "91858174"
 プランを作成すると、 **[プランの概要]** ページに、プランの名前、ID、その他の詳細、現在の公開状態、使用可能なアクションの一覧が表示されます。 使用可能なアクションはプランの状態によって異なり、次のものが含まれる場合があります。
 
 - プランの状態が **[ドラフト]** の場合 – ドラフトの削除。
-- プランの状態が **[ライブ]** の場合 – プランの販売の停止、またはプライベート対象ユーザーの同期。
+- プランの状態が **[ライブ]** の場合 – プランの配布の停止、またはプライベート対象ユーザーの同期。
 
 次のスクリーンショットは 2 つのドラフト オファーを示しています。
 
@@ -80,7 +80,7 @@ ms.locfileid: "91858174"
 
 - **市場**: すべてのプランは、少なくとも 1 つの市場で利用できる必要があります。  Microsoft がパートナーに代わって消費税および使用税を送金する、"税送金済み" の国のみを選択するオプションがあります。
 - **価格**: 価格モデルは、Azure マネージド アプリケーション、SaaS、および Azure 仮想マシン オファーのプランのみに適用されます。 同じオファーのすべてのプランで同じ価格モデルを使用する必要があります。  
-- **プランの可視性**: オファーの種類によっては、プライベート対象ユーザーを定義したり、Azure Marketplace でオファーまたはプランを非表示にしたりすることができます。 詳細については、この記事の後半の「[プランの可視性](#plan-visibility)」を参照してください。
+- **プランの可視性**: オファーの種類によっては、プライベート対象ユーザーを定義したり、Azure Marketplace でオファーまたはプランを非表示にしたりできます。 詳細については、この記事の後半の「[プランの可視性](#plan-visibility)」を参照してください。
 
 > [!TIP]
 > ターゲットとする顧客基盤の使用パターンに最も適したプランを作成することをお勧めします。 これにより、ユーザーは使用状況の変化に基づいて頻繁にプランを切り替える必要がなくなります。 3 つの従量制課金プランを含む SaaS プランの例については、「[サンプル オファー](./partner-center-portal/saas-metered-billing.md#sample-offer)」を参照してください。
@@ -100,7 +100,7 @@ ms.locfileid: "91858174"
 > [!IMPORTANT]
 > オファー公開後は、価格モデルの選択を変更できません。
 
-定額の SaaS オファーとマネージド アプリケーション オファーでは、マーケットプレース メータリング サービスを使用した従量制課金がサポートされています。 これは使用量ベースの課金モデルであり、お客様が使用量ベースで支払う帯域幅や電子メールなどの非標準ユニットを定義することができます。 [マネージド アプリケーション](./partner-center-portal/azure-app-metered-billing.md)と [SaaS アプリ](./partner-center-portal/saas-metered-billing.md)の従量制課金の詳細については、関連ドキュメントを参照してください。
+定額の SaaS オファーとマネージド アプリケーション オファーでは、マーケットプレース メータリング サービスを使用した従量制課金がサポートされています。 これは使用量ベースの課金モデルであり、お客様が使用量ベースで支払う帯域幅や電子メールなどの非標準ユニットを定義することができます。 [マネージド アプリケーション](marketplace-metering-service-apis.md)と [SaaS アプリ](./partner-center-portal/saas-metered-billing.md)の従量制課金の詳細については、関連ドキュメントを参照してください。
 
 ## <a name="custom-prices"></a>カスタム価格
 
@@ -126,7 +126,7 @@ ms.locfileid: "91858174"
 
 ## <a name="plan-visibility"></a>プランの可視性
 
-オファーの種類によっては、プランを一般公開することも、特定の (プライベート) 対象ユーザーのみが使用できるようにすることもできます。 プライベート プランを含むオファーは Azure portal に発行されます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](private-offers.md)」を参照してください。
+オファーの種類によっては、プランを一般公開することも、特定の (プライベート) 対象ユーザーのみが使用できるようにすることもできます。 プライベート プランを含むオファーは Azure portal に発行されます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート プラン](private-plans.md)」を参照してください。
 
 プライベート対象ユーザーを定義するには、オファーの種類に応じて、Azure テナント ID または Azure サブスクリプション ID を使用します。 最大 10 個の ID を手動で入力するか、最大 10,00 個のサブスクリプション ID または 20,000 個のテナント ID (該当する方) を .csv ファイルでインポートすることができます。 また、プランがないコンサルティング サービスと Dynamics 365 オファーのプライベート対象ユーザーを定義することもできます。
 
@@ -146,7 +146,7 @@ Azure 仮想マシンおよび SaaS プランの取引可能オファーにつ�
 > - Azure 仮想マシン 
 > - SaaS 
 > - Dynamics 365 Business Central
-> - Dynamics 365 for Customer Engagement および PowerApps
+> - Dynamics 365 for Customer Engagement & Power Apps
 > - Dynamics 365 for Operations
 >
 > リスト オプションの詳細については、「[公開オプションを選定する](determine-your-listing-type.md)」を参照してください。
@@ -162,9 +162,9 @@ Azure 仮想マシンおよび SaaS プランの取引可能オファーにつ�
 > [!NOTE]
 > お客様がプランの支払いを開始した後は、無料試用版をサポートする別のプランに切り替えた場合でも、同じオファーで無料試用版を再度取得することはできません。
 
-無料試用版に現在参加しているお客様のサブスクリプションに関する情報を取得するには、新しい API プロパティの `isFreeTrial` を使用します。このプロパティは、true または false としてマークされます。 詳細については、[SaaS サブスクリプションの取得 API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#get-subscription) に関する記事を参照してください。
+無料試用版に現在参加しているお客様のサブスクリプションに関する情報を取得するには、新しい API プロパティの `isFreeTrial` を使用します。このプロパティは、true または false としてマークされます。 詳細については、[SaaS サブスクリプションの取得 API](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#get-subscription) に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 既存のオファーに対してプランを追加または更新する方法については、「[コマーシャル マーケットプレースでの既存のオファーを更新する](./partner-center-portal/update-existing-offer.md)」を参照してください。
+- 既存のオファーに対してプランを追加または更新する方法については、「[コマーシャル マーケットプレースでの既存のオファーを更新する](./update-existing-offer.md)」を参照してください。
 - トランザクション オプションと関連する価格モデルの詳細については、「[コマーシャル マーケットプレースの販売機能](./marketplace-commercial-transaction-capabilities-and-considerations.md)」を参照してください。

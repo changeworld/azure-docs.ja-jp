@@ -1,18 +1,18 @@
 ---
-title: Azure IoT DPS の IP 接続フィルター | Microsoft Docs
-description: Azure IoT DPS インスタンスへの特定の IP アドレスからの接続をブロックする IP フィルター処理を使用する方法。 個別の IP アドレスまたは一定の範囲の IP アドレスからの接続をブロックできます。
-author: wesmc7777
-ms.author: wesmc
+title: Microsoft Azure IoT DPS の IP 接続フィルター
+description: Azure IoT DPS インスタンスへの特定の IP アドレスからの接続をブロックする IP フィルター処理を使用する方法。
+author: anastasia-ms
+ms.author: v-stharr
 ms.service: iot-dps
 services: iot-dps
-ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: e1b175a176255da465433b2db45cb3cb67d360d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.date: 11/12/2021
+ms.openlocfilehash: 9354b1e3bfc57951cff919b0c14e3bc950939d8f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98934494"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485310"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Azure IoT DPS の IP 接続フィルターを使用する
 
@@ -26,57 +26,105 @@ ms.locfileid: "98934494"
 
 * DPS の管理者によって疑わしいと識別された IP アドレスからのトラフィックを拒否する必要がある場合。
 
+>[!Note]
+>IP フィルタリングが有効になっている場合は、Azure portal を使用してサービス操作を実行することができなくなります (登録の管理など)。 ポータルを使用してサービス操作を実行するには、IP フィルタリングを一時的に非アクティブ化し、作業を完了してから、IP フィルタリング機能を再度有効にする必要があります。 独自のクライアントを使用し、IP フィルターの非アクティブ化を回避するには、マシンの IP アドレスを `ipFilterRules` に追加し、CLI を使用して DPS で登録を管理します。
+
 ## <a name="how-filter-rules-are-applied"></a>フィルター規則の適用方法
 
 IP フィルター規則は、DPS インスタンス レベルで適用されます。 したがって、IP フィルター規則は、サポートされているプロトコルを使用するデバイスおよびバックエンド アプリからのすべての接続に適用されます。
 
 DPS インスタンスの拒否 IP 規則に一致する IP アドレスからの接続試行に対しては、認証されていないアクセスを示す 401 状態コードとその説明が返されます。 IP 規則に関する記述は応答メッセージに含まれません。
 
+> [!IMPORTANT]
+> IP アドレスを拒否すると、他の Azure サービスが DPS インスタンスと対話できなくなる可能性があります。
+
 ## <a name="default-setting"></a>既定の設定
 
-既定では、ポータルの DPS の **[IP フィルター]** グリッドは空白になっています。 この既定の設定は、DPS が任意の IP アドレスからの接続を受け入れることを意味します。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。
+既定では、IP フィルタリングが無効になっており、 **[パブリック ネットワーク アクセス]** は [すべてのネットワーク] に設定されています。 この既定の設定は、DPS が任意の IP アドレスからの接続を受け入れること、つまり、0.0.0.0/0 という IP アドレス範囲を受け入れるルールに準拠することを意味します。
 
-![IoT DPS の既定の IP フィルター設定](./media/iot-dps-ip-filtering/ip-filter-default.png)
+:::image type="content" source="./media/iot-dps-ip-filtering/ip-filter-default.png" alt-text="IoT DPS の既定の IP フィルター設定":::
 
-## <a name="add-or-edit-an-ip-filter-rule"></a>IP フィルター規則の追加または編集
+## <a name="add-an-ip-filter-rule"></a>IP フィルター規則の追加
 
-IP フィルター規則を追加するには、 **[+ IP フィルター規則の追加]** を選択します。
+IP フィルター規則を追加するには:
 
-![IoT DPS への IP フィルター規則の追加](./media/iot-dps-ip-filtering/ip-filter-add-rule.png)
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
-**[IP フィルター規則の追加]** を選択したら、フィールドに入力します。
+2. 左側のメニューまたはポータル ページで、 **[すべてのリソース]** を選択します。
 
-![[IP フィルター規則の追加] を選択した後](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
+3. ご利用の Device Provisioning Service を選択します。
 
-* IP フィルター規則の **名前** を指定します。 これは、一意であり、長さが最大 128 文字の、大文字と小文字を区別しない英数字の文字列である必要があります。 ASCII 7 ビット英数字と `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` のみを使用できます。
+4. 左側の **[設定]** メニューで *[ネットワーク]* を選択します。
 
-* 1 つの IPv4 アドレスか、または CIDR 表記法で記述した IP アドレス ブロックを指定します。 たとえば、CIDR 表記 192.168.100.0/22 は、192.168.100.0 ～ 192.168.103.255 までの 1,024 個の IPv4 アドレスを表します。
+5. **[パブリック ネットワーク アクセス]** の [Selected IP ranges]\(選択された IP 範囲\) を選択します。
 
-* IP フィルター規則の **[アクション]** として **[許可]** または **[ブロック]** を選択します。
+6. **[+ IP フィルター規則の追加]** を選択します。
 
-フィールドに入力したら、 **[保存]** を選択して規則を保存します。 更新が進行中であることを通知するアラートが表示されます。
+    :::image type="content" source="./media/iot-dps-ip-filtering/ip-filter-add-rule.png" alt-text="IoT DPS に IP フィルター規則を追加する。":::
 
-![IP フィルター規則の保存に関する通知](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
+7. 以下のフィールドを設定します。
 
-IP フィルター規則が最大値の 100 個に達すると、 **[追加]** オプションは無効になります。
+    | フィールド | 説明|
+    |-------|------------|
+    | **名前** |長さが最大 128 文字で、大文字と小文字を区別しない一意の英数字文字列。 ASCII 7 ビット英数字と `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` のみを使用できます。|
+    | **アドレス範囲** |1 つの IPv4 アドレスか、または CIDR 表記法で記述した IP アドレス ブロック。 たとえば、CIDR 表記 192.168.100.0/22 は、192.168.100.0 ～ 192.168.103.255 までの 1,024 個の IPv4 アドレスを表します。|
+    | **操作** |**[許可]** または **[拒否]** を選択します。|
 
-既存の規則を編集するには、変更するデータを選択して変更を加え、 **[保存]** を選択して編集内容を保存します。
+    :::image type="content" source="./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png" alt-text="[IP フィルター規則の追加] を選択した後。":::
 
-> [!NOTE]
-> IP アドレスを拒否すると、他の Azure サービスが DPS インスタンスと対話できなくなる可能性があります。
+8. **[保存]** を選択します。 更新が進行中であることを通知するアラートが表示されます。
+
+    :::image type="content" source="./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png" alt-text="IP フィルター規則の保存に関する通知。":::
+
+    >[!Note]
+    > IP フィルター規則が最大値の 100 個に達すると、 **[+ IP フィルター規則の追加]** は無効になります。
+
+## <a name="edit-an-ip-filter-rule"></a>IP フィルター規則の編集
+
+既存のルールを編集するには:
+
+1. 変更する IP フィルター規則データを選択します。
+
+    :::image type="content" source="./media/iot-dps-ip-filtering/ip-filter-rule-edit.png" alt-text="IP フィルター規則を編集する。":::
+
+2. 変更を行います。
+
+3. **[保存]** を選択します。
 
 ## <a name="delete-an-ip-filter-rule"></a>IP フィルター規則の削除
 
-IP フィルター規則を削除するには、その行のごみ箱アイコンを選択し、次に **[保存]** を選択します。 規則が削除されて、変更が保存されます。
+IP フィルター規則を削除するには:
 
-![IoT DPS の IP フィルター規則の削除](./media/iot-dps-ip-filtering/ip-filter-delete-rule.png)
+1. 削除する IP 規則の行にある削除アイコンを選択します。
 
+    :::image type="content" source="./media/iot-dps-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT DPS IP フィルター規則を削除する。":::
 
-## <a name="update-ip-filter-rules-in-code"></a>コード内の IP フィルター規則を更新する
+2. **[保存]** を選択します。
 
-Azure リソース プロバイダーの REST エンドポイントを使用して、DPS IP フィルターを取得および変更できます。 [createorupdate メソッド](/rest/api/iot-dps/iotdpsresource/createorupdate)の `properties.ipFilterRules` を参照してください。
+## <a name="ip-filter-rule-evaluation"></a>IP フィルター規則の評価
 
-DPS IP フィルター規則の更新は、現在 Azure CLI または Azure PowerShell ではサポートされていませんが、Azure Resource Manager テンプレートを使用して実行できます。 Resource Manager テンプレートの使用方法については、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)に関する記事をご覧ください。 以下のテンプレートの例では、DPS IP フィルター規則を作成、編集、削除する方法を示しています。
+IP フィルター規則は順番に適用されます。 IP アドレスと最初に一致した規則によって、許可または拒否のアクションが決まります。
+
+たとえば、範囲 192.168.100.0/22 内のアドレスを許可し、それ以外のアドレスをすべて拒否するには、グリッドの最初の規則でアドレス範囲 192.168.100.0/22 を許可する必要があります。 さらに、次の規則で範囲 0.0.0.0/0 を使用してすべてのアドレスを拒否する必要があります。
+
+IP フィルター規則の順序を変更するには:
+
+1. 移動する規則を選択します。
+
+2. 目的の場所に規則をドラッグ アンド ドロップします。
+
+3. **[保存]** を選択します。
+
+## <a name="update-ip-filter-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した IP フィルター規則の更新
+
+DPS IP フィルターは次の 2 とおりの方法で更新できます。
+
+1. IoT Hub Resource REST API メソッドを呼び出します。 REST を使用して IP フィルター規則を更新する方法については、[「Iot Hub リソース - Update」メソッド](/api/iothub/iot-hub-resource/update)の[「定義」セクション](/api/iothub/iot-hub-resource/update#definitions)の「`IpFilterRule`」を参照してください。
+
+2. Azure Resource Manager テンプレートを使用します。 Resource Manager テンプレートの使い方のガイダンスについては、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)に関するページを参照してください。 Azure Resource Manager テンプレートを使用して DPS IP フィルター規則を作成、編集、削除する方法については、以降の例で紹介します。
+
+    >[!NOTE]
+    >Azure CLI と Azure PowerShell は現在、DPS IP フィルター規則の更新をサポートしていません。
 
 ### <a name="add-an-ip-filter-rule"></a>IP フィルター規則の追加
 
@@ -238,20 +286,6 @@ DPS IP フィルター規則の更新は、現在 Azure CLI または Azure Powe
     ] 
 }
 ```
-
-
-
-## <a name="ip-filter-rule-evaluation"></a>IP フィルター規則の評価
-
-IP フィルター規則は順に適用され、IP アドレスと一致する最初の規則に基づいて許可アクションまたは拒否アクションが決定されます。
-
-たとえば、範囲 192.168.100.0/22 内のアドレスを許可し、それ以外のアドレスをすべて拒否するには、グリッドの最初の規則でアドレス範囲 192.168.100.0/22 を許可する必要があります。 さらに、次の規則で範囲 0.0.0.0/0 を使用してすべてのアドレスを拒否する必要があります。
-
-グリッド内の IP フィルター規則の順序を変更するには、行の先頭のドットが縦に 3 つ並んだ部分をクリックし、ドラッグ アンド ドロップします。
-
-新しい IP フィルター規則の順序を保存するには、 **[保存]** をクリックします。
-
-![DPS IP フィルター規則の順序の変更](./media/iot-dps-ip-filtering/ip-filter-rule-order.png)
 
 ## <a name="next-steps"></a>次のステップ
 

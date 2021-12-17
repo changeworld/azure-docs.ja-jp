@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 機械学習モデルのトレーニングに使用できるデータ インジェスト オプションの長所と短所について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 02/26/2020
+ms.date: 10/21/2021
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: a096375e32e3d8a6760da88fe5ec86a70d364aff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e3a880851597486c4b5388134d13ac021684fa2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98872097"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554091"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning ワークフローのデータ インジェスト オプション
 

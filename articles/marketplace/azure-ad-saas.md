@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 674f267d3d99dd22c1ae06b6d32587761d5983ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 224fda3a9f308bfb0b6683d58bbc6de3c2822259
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93124919"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059319"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー
 
@@ -53,7 +53,7 @@ Azure AD を利用すると、コマーシャル マーケットプレースの�
 | ------------ | ------------- | ------------- |
 | 1.購入者は、Azure AD の ID を使用してコマーシャル マーケットプレースにサインインし、SaaS オファーを選択します。 | 発行元には、必要な操作はありません。 | 適用なし |
 | 2.購入後、購入者は Azure Marketplace の **[アカウントの構成]** または AppSource の **[今すぐ構成]** を選択します。これにより、購入者はこのオファー用の発行元のランディング ページへ誘導されます。 購入者は Azure AD SSO を使用して発行元の SaaS アプリケーションにサインインできる必要があり、Azure AD 管理者の承認を必要としない最小限の同意のみが必ず求められます。 | Azure AD または Microsoft アカウント (MSA) ID でユーザーを受信し、必要な追加のプロビジョニングやセットアップが容易になるように、オファーの[ランディング ページ](azure-ad-transactable-saas-landing-page.md)を設計します。 | 必須 |
-| 3.発行元は、SaaS フルフィルメント API からの購入の詳細情報を要求します。 | ランディング ページのアプリケーション ID から生成された[アクセス トークン](./partner-center-portal/pc-saas-registration.md)を使用し、[解決エンドポイントを呼び出して](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)購入に関する詳細情報を取得します。 | 必須 |
+| 3.発行元は、SaaS フルフィルメント API からの購入の詳細情報を要求します。 | ランディング ページのアプリケーション ID から生成された[アクセス トークン](./partner-center-portal/pc-saas-registration.md)を使用し、[解決エンドポイントを呼び出して](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription)購入に関する詳細情報を取得します。 | 必須 |
 | 4.発行者は、Azure AD と Microsoft Graph API を通して、発行元の SaaS アプリケーションで購入者をプロビジョニングするために必要な会社とユーザーの詳細を収集します。  | Azure AD ユーザー トークンを分解して、名前と電子メールを調べます。または、[Microsoft Graph API を呼び出し](/graph/use-the-api)、委任されたアクセス許可を使用して、ログインしているユーザーに関する[情報を取得](/graph/api/user-get)します。 | 必須 |
 ||||
 
@@ -67,8 +67,8 @@ Azure AD を利用すると、コマーシャル マーケットプレースの�
 
 | プロセスの手順 | 発行元のアクション | 発行元での推奨または必須 |
 | ------------ | ------------- | ------------- |
-| 5.発行元は、SaaS フルフィルメント API を使用して、SaaS アプリケーションに対するサブスクリプションを管理します。 | [SaaS フルフィルメント API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) を通じて、サブスクリプションの変更やその他の管理タスクを処理します。<br><br>プロセスの手順 3 に説明されているように、この手順ではアクセス トークンが必要になります。 | 必須 |
-| 6.従量制課金を利用している場合、発行元は使用状況のイベントを測定サービス API に出力します。 | SaaS アプリによって使用状況に基づく課金が行われる場合は、[Marketplace の測定サービス API ](./partner-center-portal/marketplace-metering-service-apis.md)を通じて使用状況の通知を行います。<br><br>手順 3 に説明されているように、この手順ではアクセス トークンが必要になります。 | 測定では必須 |
+| 5.発行元は、SaaS フルフィルメント API を使用して、SaaS アプリケーションに対するサブスクリプションを管理します。 | [SaaS フルフィルメント API](./partner-center-portal/pc-saas-fulfillment-apis.md) を通じて、サブスクリプションの変更やその他の管理タスクを処理します。<br><br>プロセスの手順 3 に説明されているように、この手順ではアクセス トークンが必要になります。 | 必須 |
+| 6.従量制課金を利用している場合、発行元は使用状況のイベントを測定サービス API に出力します。 | SaaS アプリによって使用状況に基づく課金が行われる場合は、[Marketplace の測定サービス API ](marketplace-metering-service-apis.md)を通じて使用状況の通知を行います。<br><br>手順 3 に説明されているように、この手順ではアクセス トークンが必要になります。 | 測定では必須 |
 ||||
 
 ## <a name="process-steps-for-user-management"></a>ユーザー管理のプロセスの手順

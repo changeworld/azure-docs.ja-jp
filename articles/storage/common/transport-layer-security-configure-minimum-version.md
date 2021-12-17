@@ -6,16 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 07/07/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 257cd8dce2a080203f116a6f0d5b7c7ebd6d13f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c69e8a5030717dd76a887968f40034595b9cd939
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593178"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739025"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>ストレージ アカウントへの要求に必要な最小バージョンのトランスポート層セキュリティ (TLS) を適用する
 
@@ -23,7 +24,7 @@ ms.locfileid: "104593178"
 
 現在、Azure Storage では、次の 3 つのバージョンの TLS プロトコルがサポートされています: 1.0、1.1、および 1.2。 Azure Storage では、パブリック HTTPS エンドポイントに対して TLS 1.2 が使用されますが、下位互換性のために TLS 1.0 と TLS 1.1 もまだサポートされています。
 
-既定では、Azure Storage アカウントで、クライアントによる最も古いバージョンの TLS、TLS 1.0、およびそれ以降でのデータの送受信が許可されます。 より厳密なセキュリティ対策を実施するために、クライアントで新しいバージョンの TLS を使用してデータを送受信することを要求するように、ストレージ アカウントを構成することができます。 ストレージ アカウントで最小バージョンの TLS が要求されている場合、それより古いバージョンで行われた要求はすべて失敗します。
+Azure ストレージ アカウントでは、クライアントが最も古いバージョンの TLS である TLS 1.0 以降を使用してデータを送受信することが許可されます。 より厳密なセキュリティ対策を実施するために、クライアントで新しいバージョンの TLS を使用してデータを送受信することを要求するように、ストレージ アカウントを構成することができます。 ストレージ アカウントで最小バージョンの TLS が要求されている場合、それより古いバージョンで行われた要求はすべて失敗します。
 
 この記事では、DRAG (検出-修復-監査-ガバナンス) フレームワークを使用して、ストレージ アカウントに対するセキュリティで保護された TLS を継続的に管理する方法について説明します。
 
@@ -93,7 +94,9 @@ StorageBlobLogs
 
 ストレージ アカウントの TLS の最小バージョンを構成するには、アカウントに対して **MinimumTlsVersion** バージョンを設定します。 このプロパティは、Azure Resource Manager デプロイ モデルで作成されたすべてのストレージ アカウントで使用できます。 Azure Resource Manager デプロイ モデルの詳細については、「[ストレージ アカウントの概要](storage-account-overview.md)」を参照してください。
 
-**MinimumTlsVersion** プロパティは既定では設定されず、明示的に設定するまで値は返されません。  プロパティ値が **null** の場合は、ストレージ アカウントで TLS バージョン 1.0 以降で送信された要求が許可されます。
+**MinimumTlsVersion** プロパティの既定値は、設定方法によって異なります。 Azure portal でストレージ アカウントを作成する場合、TLS の最小バージョンは既定で 1.2 に設定されます。 PowerShell、Azure CLI、または Azure Resource Manager テンプレートを使用してストレージ アカウントを作成する場合、**MinimumTlsVersion** プロパティは既定では設定されず、明示的に設定するまで値は返されません。
+
+**MinimumTlsVersion** プロパティが設定されていない場合、コンテキストに応じてその値が **null** または空の文字列として表示されることがあります。 プロパティが設定されていない場合は、ストレージ アカウントでは TLS バージョン 1.0 以降で送信された要求が許可されます。
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
@@ -102,10 +105,10 @@ Azure portal でストレージ アカウントを作成する場合、TLS の�
 Azure portal を使用して既存のストレージ アカウントの TLS の最小バージョンを構成するには、これらの手順に従います。
 
 1. Azure Portal のストレージ アカウントに移動します。
-1. **[構成]** 設定を選択します。
-1. 次の図に示すように、 **[TLS の最小バージョン]** で、ドロップダウンを使用して、このストレージ アカウントのデータにアクセスするために必要な TLS の最小バージョンを選択します。
+1. **[設定]** の下で **[構成]** を選択します。
+1. **[TLS の最小バージョン]** で、ドロップダウンを使用して、このストレージ アカウントのデータにアクセスするために必要な TLS の最小バージョンを選択します。
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Azure portal で TLS の最小バージョンを構成する方法を示すスクリーンショット":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Azure portal で TLS の最小バージョンを構成する方法を示すスクリーンショット。" lightbox="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -120,7 +123,7 @@ $location = "<location>"
 
 # Create a storage account with MinimumTlsVersion set to TLS 1.1.
 New-AzStorageAccount -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -Name $accountName `
     -Location $location `
     -SkuName Standard_GRS `
     -MinimumTlsVersion TLS1_1
@@ -130,7 +133,7 @@ New-AzStorageAccount -ResourceGroupName $rgName `
 
 # Update the MinimumTlsVersion version for the storage account to TLS 1.2.
 Set-AzStorageAccount -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -Name $accountName `
     -MinimumTlsVersion TLS1_2
 
 # Read the MinimumTlsVersion property.

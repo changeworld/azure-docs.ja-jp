@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 07/17/2021
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b61636d6048f63ae962d4f755a29c02e6785d5e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a9ef41dcb85ddd8478078a927759190a6475840
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100557541"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652109"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -42,7 +42,7 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 
 1. **[従来の管理者]** タブをクリックします。
 
-    ![[従来の管理者] が開かれているスクリーンショット](./media/classic-administrators/classic-administrators.png)
+    ![[従来の管理者] が開かれているスクリーンショット](./media/shared/classic-administrators.png)
 
 1. **[追加]**  >  **[共同管理者の追加]** をクリックして、[共同管理者の追加] ウィンドウを開きます。
 
@@ -87,7 +87,7 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 
 1. **[従来の管理者]** タブをクリックします。
 
-1. 削除する共同管理者の横にチェック マークを追加します。
+1. 削除する共同管理者の横にチェック マークを付けます。
 
 1. **[削除]** をクリックします。
 
@@ -97,7 +97,9 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 
 ## <a name="change-the-service-administrator"></a>サービス管理者を変更する
 
-サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。 既定の設定では、Azure サブスクリプションにサインアップした時点では、サービス管理者とアカウント管理者は同じです。 アカウント管理者ロールのユーザーには、Azure portal へのアクセス権が与えられません。 サービス管理者ロールのユーザーには、Azure portal へのフル アクセス権が与えられます。 アカウント管理者とサービス管理者が同じユーザーの場合、サービス管理者を別のユーザーに変更すると、アカウント管理者は Azure portal にアクセスできなくなります。 ただし、アカウント管理者はいつでもアカウント センターを使用して、サービス管理者を自身に戻すことができます。
+サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。 既定の設定では、Azure サブスクリプションにサインアップした時点では、サービス管理者とアカウント管理者は同じです。
+
+アカウント管理者ロールのユーザーは、Azure portal にアクセスして課金を管理できますが、サブスクリプションを取り消すことはできません。 サービス管理者ロールのユーザーは、Azure portal へのフル アクセスが与えられ、サブスクリプションを取り消すことができます。 アカウント管理者は、自身をサービス管理者にすることができます。
 
 Azure portal でサービス管理者を変更するには、次の手順に従います。
 
@@ -109,7 +111,7 @@ Azure portal でサービス管理者を変更するには、次の手順に従�
 
 1. 次に、左側のナビゲーションで、 **[プロパティ]** をクリックします。
 
-1. **[サービス管理者]** をクリックします。
+1. **[サービス管理者の変更]** をクリックします。
 
     ![Azure portal でサブスクリプションの [プロパティ] を示すスクリーンショット](./media/classic-administrators/service-admin.png)
 
@@ -131,6 +133,26 @@ Azure サブスクリプションごとに 1 人のサービス管理者のみ�
 アカウント管理者が Azure AD アカウントの場合は、サービス管理者を同じディレクトリ内の Azure AD アカウントに変更することはできますが、別のディレクトリには変更できません。 たとえば、abby@contoso.com は、サービス管理者を bob@contoso.com に変更できますが、john@notcontoso.com に変更することは、john@notcontoso.com が contoso.com ディレクトリに存在しない場合はできません。
 
 Microsoft アカウントと Azure AD アカウントの詳細については、「[Azure Active Directory とは](../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
+
+## <a name="remove-the-service-administrator"></a>サービス管理者を削除する
+
+サービス管理者を削除する場合があります。たとえば、彼らが会社を退職したときです。 サービス管理者を削除する場合、サブスクリプションの孤立化を回避するには、サブスクリプションのスコープで[所有者](built-in-roles.md#owner)ロールが割り当てられているユーザーがいる必要があります。 サブスクリプションの所有者は、サービス管理者と同じアクセス権を持っています。
+
+1. サブスクリプションの所有者または共同管理者として [Azure portal](https://portal.azure.com) にサインインします。
+
+1. [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開き、サブスクリプションを選択します。
+
+1. **[アクセス制御 (IAM)]** をクリックします。
+
+1. **[従来の管理者]** タブをクリックします。
+
+1. サービス管理者の横にチェック マークを付けます。
+
+1. **[削除]** をクリックします。
+
+1. 表示されるメッセージ ボックスで、 **[はい]** をクリックします。
+
+    ![サービス管理者の削除のスクリーンショット。](./media/classic-administrators/service-admin-remove.png)
 
 ## <a name="view-the-account-administrator"></a>アカウント管理者を表示する
 

@@ -11,23 +11,23 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: f7c5dbaf30965fdd5f438f0351cfa2cd60e05b70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc2150f63e0392f94c17f90ab41f80de91336c7b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92746552"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620162"
 ---
 # <a name="secure-access-to-application-data"></a>アプリケーション データへのアクセスをセキュリティで保護する
 
-このチュートリアルは、シリーズの第 3 部です。 ストレージ アカウントへのアクセスをセキュリティで保護する方法について説明します。 
+このチュートリアルは、シリーズの第 3 部です。 ストレージ アカウントへのアクセスをセキュリティで保護する方法について説明します。
 
 シリーズの第 3 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * SAS トークンを使用してサムネイル画像にアクセスする
-> * サーバー側暗号化を有効にする
-> * HTTPS のみの転送を有効にする
+> - SAS トークンを使用してサムネイル画像にアクセスする
+> - サーバー側暗号化を有効にする
+> - HTTPS のみの転送を有効にする
 
 [Azure Blob Storage](../common/storage-introduction.md#blob-storage) には、アプリケーションのファイルを格納する堅牢なサービスを提供しています。 このチュートリアルでは、[前のトピック][previous-tutorial]の続きとして、Web アプリケーションのストレージ アカウントに対するアクセスをセキュリティで保護する方法について説明します。 完了すると、画像は暗号化され、Web アプリは安全な SAS トークンを使用してサムネイル画像にアクセスできるようになります。
 
@@ -39,11 +39,23 @@ ms.locfileid: "92746552"
 
 チュートリアル シリーズの今回は、サムネイルへのアクセスに SAS トークンを使用します。 この手順では、*thumbnails* コンテナーのパブリック アクセスを `off` に設定します。
 
-```bash
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+$blobStorageAccount="<blob_storage_account>"
+
+blobStorageAccountKey=(Get-AzStorageAccountKey -ResourceGroupName myResourceGroup -AccountName $blobStorageAccount).Key1
+
+Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName $blobStorageAccount -KeyName $blobStorageAccountKey -AllowBlobPublicAccess $false
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
-    --account-name $blobStorageAccount --query [0].value --output tsv) 
+    --account-name $blobStorageAccount --query [0].value --output tsv)
 
 az storage container set-permission \
     --account-name $blobStorageAccount \
@@ -52,18 +64,7 @@ az storage container set-permission \
     --public-access off
 ```
 
-```powershell
-$blobStorageAccount="<blob_storage_account>"
-
-blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
-    --account-name $blobStorageAccount --query [0].value --output tsv) 
-
-az storage container set-permission `
-    --account-name $blobStorageAccount `
-    --account-key $blobStorageAccountKey `
-    --name thumbnails `
-    --public-access off
-```
+---
 
 ## <a name="configure-sas-tokens-for-thumbnails"></a>サムネイルの SAS トークンを構成する
 
@@ -73,7 +74,7 @@ az storage container set-permission `
 
 次のコマンドの `<web-app>` は、Web アプリの名前です。
 
-```bash
+```azurecli
 az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
 
 az webapp deployment source config --name <web_app> \
@@ -189,9 +190,9 @@ HTTP/1.1 400 The account being accessed does not support http.
 シリーズの第 3 部では、ストレージ アカウントに対するアクセスをセキュリティで保護する方法について学びました。
 
 > [!div class="checklist"]
-> * SAS トークンを使用してサムネイル画像にアクセスする
-> * サーバー側暗号化を有効にする
-> * HTTPS のみの転送を有効にする
+> - SAS トークンを使用してサムネイル画像にアクセスする
+> - サーバー側暗号化を有効にする
+> - HTTPS のみの転送を有効にする
 
 次はシリーズの第 4 部に進み、クラウド ストレージ アプリケーションの監視とトラブルシューティングの方法を学びます。
 

@@ -1,34 +1,41 @@
 ---
-title: Azure AD を使用してアクセス許可の分類を構成する
+title: アクセス許可の分類を構成する
+titleSuffix: Azure AD
 description: 委任されたアクセス許可の分類を管理する方法について説明します。
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/01/2020
-ms.author: iangithinji
+ms.date: 10/23/2021
+ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: be58f5cd18d32302d1e92f00afb7d7e0aae09410
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 7981bdf26d3bafe301667e02af3fecdf53931021
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374473"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548446"
 ---
 # <a name="configure-permission-classifications"></a>アクセス許可の分類を構成する
 
-アクセス許可の分類を使用すると、組織のポリシーとリスク評価に応じて、さまざまなアクセス許可の影響を特定できます。 たとえば、同意ポリシーでアクセス許可の分類を使用して、ユーザーが同意を許可された一連のアクセス許可を識別できます。
-
-## <a name="manage-permission-classifications"></a>アクセス許可の分類を管理する
+この記事では、Azure Active Directory (Azure AD) でアクセス許可の分類を構成する方法について説明します。 アクセス許可の分類を使用すると、組織のポリシーとリスク評価に応じて、さまざまなアクセス許可の影響を特定できます。 たとえば、同意ポリシーでアクセス許可の分類を使用して、ユーザーが同意を許可された一連のアクセス許可を識別できます。
 
 現時点では、"低影響" のアクセス許可の分類のみがサポートされています。 管理者の同意を必要としない委任されたアクセス許可のみを "低影響" として分類できます。
 
-> [!TIP]
-> 基本サインインに必要な最小アクセス許可は `openid`、`profile`、`email`、`User.Read`、`offline_access` です。これらはすべて、Microsoft Graph の委任さまたアクセス許可です。 これらのアクセス許可を使用すると、アプリはサインインしているユーザーの完全プロファイルの詳細を読み取ることができ、ユーザーがアプリを使用しなくなった場合でもこのアクセスを維持できます。
+基本サインインに必要な最小アクセス許可は `openid`、`profile`、`email`、`User.Read`、`offline_access` です。これらはすべて、Microsoft Graph の委任さまたアクセス許可です。 これらのアクセス許可を使用すると、アプリはサインインしているユーザーの完全プロファイルの詳細を読み取ることができ、ユーザーがアプリを使用しなくなった場合でもこのアクセスを維持できます。
+
+## <a name="prerequisites"></a>前提条件
+
+アクセス許可の分類を構成するには、次が必要です。
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 次のいずれかのロール: グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者。
+
+## <a name="manage-permission-classifications"></a>アクセス許可の分類を管理する
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -119,11 +126,4 @@ ms.locfileid: "107374473"
 
 詳細については、以下を参照してください。
 
-* [ユーザーの同意設定を構成する](configure-user-consent.md)
-* [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
-* [アプリケーションへの同意を管理する方法と同意要求を評価する方法](manage-consent-requests.md)
-* [アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
-* [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
-
-ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
-* [Microsoft Q&A の Azure AD](/answers/topics/azure-active-directory.html)
+- 「[Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)」に移動します

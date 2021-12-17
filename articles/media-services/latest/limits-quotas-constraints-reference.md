@@ -3,20 +3,20 @@ title: Azure Media Services のクォータと制限
 description: このトピックでは Microsoft Azure Media Services のクォータと制限について説明します。
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali-ms
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/23/2020
+ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9b1e43968569fb7c185043e1dd249c65fcadddfb
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: a269f2d93730b6219a2d29d797d94c101b5fdc57
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278662"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129052825"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services のクォータと制限
@@ -49,14 +49,6 @@ ms.locfileid: "106278662"
 
 <sup>1</sup> Azure Blob Storage では現在、1 つの BLOB でサポートされる最大サイズは 5 TB です。 Media Services ではさらに、サービスで使用される VM サイズに基づく別の制限が適用されます。 サイズの上限は、アップロードするファイルのほかに、Media Services 処理 (エンコードまたは分析) の結果として生成されるファイルにも適用されます。 ソース ファイルが 260 GB を超える場合、Job は失敗する可能性があります。 
 
-以下の表では、メディア占有ユニット S1、S2、S3 での制限を示します。 ソース ファイルがこの表に定義されている上限を超える場合、エンコード ジョブは失敗します。 4K 解像度の長時間ソースをエンコードする場合、必要なパフォーマンスを確保するためには、S3 メディア占有ユニットを使用する必要があります。 S3 メディア占有ユニットに関する 260 GB の制限を超える 4K コンテンツがある場合は、サポート チケットを開きます。
-
-|メディア占有ユニットの種類|最大入力サイズ (GB)|
-|---|---|
-|S1 |    26|
-|S2    | 60|
-|S3    |260|
-
 <sup>2</sup> ストレージ アカウントは、同じ Azure サブスクリプションからのものである必要があります。
 
 ## <a name="jobs-encoding--analyzing-limits"></a>Job (エンコードおよび分析) の制限
@@ -82,7 +74,7 @@ ms.locfileid: "106278662"
 | ライブ イベントあたりのライブ出力 |3 <sup>(5)</sup> |
 | ライブ出力の最大期間 | [DVR ウィンドウのサイズ](live-event-cloud-dvr-time-how-to.md) |
 
-<sup>4</sup> ライブイベントの制限の詳細については、[ライブ イベントの種類の比較と制限](live-event-types-comparison-reference.md)に関する記事を参照してください。
+<sup>4</sup> ライブイベントの制限の詳細については、[ライブ イベントの種類の比較と制限](live-event-types-comparison-reference.md)に関する記事を参照してください。 選択したストリーミング ユース ケースとリージョナル データセンターに基づき、AMS では、Media Services アカウントにつき 5 つを超えるライブ イベントを収納できます。 アカウント クォータを増やすには、サポート リクエストを提出してください。
 
 <sup>5</sup> ライブ出力は作成すると開始され、削除されると停止します。
 

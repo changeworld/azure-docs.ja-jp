@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files のリージョン間レプリケーションのトラブルシューティング | Microsoft Docs
+title: Azure NetApp Files のリージョン間レプリケーション エラーのトラブルシューティング | Microsoft Docs
 description: Azure NetApp Files のリージョン間レプリケーションに関する問題のトラブルシューティングに役立つエラー メッセージと解決策について説明します。
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: d3d944646689e9e6189b0343e8bf67c8fb0abcbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bae0ed7fc15843c50af9dca860367d2074af33ec
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590927"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256275"
 ---
-# <a name="troubleshoot-cross-region-replication"></a>リージョン間レプリケーションのトラブルシューティング
+# <a name="troubleshoot-cross-region-replication-errors"></a>リージョン間レプリケーションのエラーのトラブルシューティング
 
 この記事では、Azure NetApp Files のリージョン間レプリケーションに関する問題のトラブルシューティングに役立つエラー メッセージと解決策について説明します。 
 

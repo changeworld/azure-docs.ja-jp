@@ -2,21 +2,21 @@
 title: 'チュートリアル: Storegate を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure Active Directory を構成して、ユーザー アカウントを Storegate に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/15/2019
-ms.author: Zhchia
-ms.openlocfilehash: c984beff630ef90ea33a13e2fef1bca0189c2314
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: thwimmer
+ms.openlocfilehash: fbe15ecbb602859aba7d0bce930885f61e679898
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94357943"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759224"
 ---
 # <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>チュートリアル: Storegate を構成し、自動ユーザー プロビジョニングに対応させる
 

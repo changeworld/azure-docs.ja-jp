@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: 管理者の追加の概要'
+title: 'クイックスタート: 管理者の追加の概要'
 description: このチュートリアルでは、ワークスペースに別の管理ユーザーを追加する方法について説明します。
 services: synapse-analytics
 author: saveenr
@@ -10,12 +10,13 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/02/2021
-ms.openlocfilehash: 8b854dfcff7dfb4d03038b542308b6f3ebb6d491
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 7a03715a89b5319e341d1704719b020e1b61ef1d
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553500"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113219422"
 ---
 # <a name="add-an-administrator-to-your-synapse-workspace"></a>Synapse ワークスペースに管理者を追加する
 
@@ -27,12 +28,20 @@ ms.locfileid: "106553500"
 
 ## <a name="azure-rbac-owner-role-for-the-workspace"></a>Azure RBAC: ワークスペースの所有者ロール
 
-`ryan@contoso.com` を、ワークスペースの Azure RBAC **所有者** ロールに割り当てます。
-
 1. Azure portal を開き、Synapse ワークスペースを開きます。
 1. 左側で、 **[アクセス制御 (IAM)]** を選択します。
-1. `ryan@contoso.com` を **所有者** ロールに追加します。 
-1. **[保存]** をクリックします。
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | 所有者 |
+    | アクセスの割り当て先 | User |
+    | メンバー | ryan@contoso.com |
+
+    ![Azure portal でロール割り当てページを追加します。](../../includes/role-based-access-control/media/add-role-assignment-page.png)
+
+1. **[保存]** を選択します。 
  
  
 ## <a name="synapse-rbac-synapse-administrator-role-for-the-workspace"></a>Synapse RBAC: ワークスペースの Synapse 管理者ロール
@@ -40,22 +49,28 @@ ms.locfileid: "106553500"
 `ryan@contoso.com` を、ワークスペースの Synapse RBAC **Synapse 管理者** ロールに割り当てます。
 
 1. Synapse Studio でワークスペースを開きます。
-1. 左側で、 **[管理]** をクリックして管理ハブを開きます。
-1. **[セキュリティ]** で、 **[アクセス制御]** をクリックします。
-1. **[追加]** をクリックします。
+1. 左側で、 **[管理]** を選択して管理ハブを開きます。
+1. **[セキュリティ]** で **[アクセス制御]** を選択します。
+1. **[追加]** を選択します。
 1. **[スコープ]** は **[ワークスペース]** に設定されたままにします。
 1. `ryan@contoso.com` を、**Synapse 管理者** ロールに割り当てます。 
-1. 次に、 **[適用]** をクリックします。
+1. 次に、**[適用]** を選択します。
  
-## <a name="azure-rbac-role-assignments-on-the-primary-storage-account"></a>Azure RBAC: プライマリ ストレージ アカウントでのロールの割り当て
-
-`ryan@contoso.com` を、ワークスペースのプライマリ ストレージ アカウントで **所有者** ロールに割り当てます。
-`ryan@contoso.com` を、ワークスペースのプライマリ ストレージ アカウントで **Azure Storage Blob データ共同作成者** ロールに割り当てます。
+## <a name="azure-rbac-role-assignments-on-the-workspaces-primary-storage-account"></a>Azure RBAC: ワークスペースのプライマリ ストレージ アカウントでのロールの割り当て
 
 1. Azure portal で、ワークスペースのプライマリ ストレージ アカウントを開きます。
-1. 左側で、 **[アクセス制御 (IAM)]** をクリックします。
-1. `ryan@contoso.com` を **所有者** ロールに追加します。 
-1. `ryan@contoso.com` を、**Azure Storage Blob データ共同作成者** ロールに割り当てます
+1. 左側で、 **[アクセス制御 (IAM)]** を選択します。
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | ロール 1 | 所有者 |
+    | ロール 2| Azure Storage Blob データ共同作成者|
+    | アクセスの割り当て先 | User |
+    | メンバー | ryan@contoso.com |
+
+    ![Azure portal でロール割り当てページを追加します。](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ## <a name="dedicated-sql-pools-db_owner-role"></a>専用 SQL プール: db_owner ロール
 

@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: d7734fde529c24e8113ea3b019d343b7223f0122
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/16/2021
+ms.openlocfilehash: d925b4542a5d03340558f302a2251b4c191de2e0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91929644"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601294"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Azure Cognitive Search で最新の REST API にアップグレードする
 
@@ -85,7 +85,7 @@ API バージョン 2019-05-06 および 2019-05-06 プレビュー以降、デ�
 
 #### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>名前付きエンティティの認識コグニティブ スキルは廃止されました
 
-コード内で[名前付きエンティティの認識](cognitive-search-skill-named-entity-recognition.md)スキルを呼び出した場合、その呼び出しは失敗します。 これに代わる機能は、[エンティティの認識](cognitive-search-skill-entity-recognition.md)です。 他の変更を行うことなく、スキルの参照を置換できる必要があります。 API の署名は、両方のバージョンで同じです。 
+コード内で[名前付きエンティティの認識](cognitive-search-skill-named-entity-recognition.md)スキルを呼び出した場合、その呼び出しは失敗します。 これに代わる機能は、[エンティティ認識スキル (V3)](cognitive-search-skill-entity-recognition-v3.md) です。 「[非推奨の Cognitive Search スキル](cognitive-search-skill-deprecated.md)」に記載されている推奨事項に従い、サポートされているスキルに移行してください。
 
 ### <a name="upgrading-complex-types"></a>複合型のアップグレード
 

@@ -3,13 +3,13 @@ title: Visual Studio Code を使用して Azure Functions を開発する
 description: Visual Studio Code 用 Azure Functions 拡張機能を使用して、Azure Functions を開発およびテストする方法を説明します。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 08/21/2019
-ms.openlocfilehash: d4353e6be313d61716933879efa930e22472781b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 02/21/2021
+ms.openlocfilehash: d7ed95080763d32f8a940066c2c6c5d80c25b0dc
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99493950"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862407"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -69,7 +69,7 @@ Azure Storage アカウントなどのその他の必要なリソースは、[Vi
 
 + [Debugger for Java 拡張機能](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)。
 
-+ [Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) を推奨。 他のサポートされているバージョンについては、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。
++ [Java 8](/azure/developer/java/fundamentals/java-support-on-azure) を推奨。 他のサポートされているバージョンについては、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。
 
 + [Maven 3 以降](https://maven.apache.org/)
 
@@ -85,7 +85,7 @@ Azure Storage アカウントなどのその他の必要なリソースは、[Vi
 
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows) を推奨。 バージョン情報については、「[PowerShell のバージョン](functions-reference-powershell.md#powershell-versions)」を参照してください。
 
-+ [.NET Core 3.1 ランタイム](https://www.microsoft.com/net/download)と [.NET Core 2.1 ランタイム](https://dotnet.microsoft.com/download/dotnet-core/2.1)の両方  
++ [.NET Core 3.1 ランタイム](https://dotnet.microsoft.com/download)と [.NET Core 2.1 ランタイム](https://dotnet.microsoft.com/download/dotnet/2.1)の両方  
 
 + [Visual Studio Code 用 PowerShell 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)。  
 
@@ -129,7 +129,7 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
 * **host.json**:Functions のホストを構成できます。 これらの設定は、関数をローカルで実行している場合と、Azure で実行している場合に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
 
-* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 これらの設定は、関数をローカルで実行するときにのみ使用されます。 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
+* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 これらの設定は、関数をローカルで実行するときにのみ使用されます。 詳細については、「[ローカル設定ファイル](#local-settings)」を参照してください。
 
     >[!IMPORTANT]
     >local.settings.json ファイルにはシークレットを含めることができるため、それをプロジェクト ソース管理から除外する必要があります。
@@ -383,7 +383,7 @@ Azure で関数を実行する場合、拡張機能により、Azure アカウ�
 
 ### <a name="run-functions-locally"></a>関数をローカルで実行する
 
-ローカル ランタイムは、Azure で関数アプリをホストしているのと同じランタイムです。 ローカル設定は、[local.settings.json ファイル](#local-settings-file)から読み取られます。 Functions プロジェクトをローカルで実行するには、[追加要件](#run-local-requirements)を満たす必要があります。
+ローカル ランタイムは、Azure で関数アプリをホストしているのと同じランタイムです。 ローカル設定は、[local.settings.json ファイル](#local-settings)から読み取られます。 Functions プロジェクトをローカルで実行するには、[追加要件](#run-local-requirements)を満たす必要があります。
 
 #### <a name="configure-the-project-to-run-locally"></a>ローカルで実行するようにプロジェクトを構成する
 
@@ -399,7 +399,7 @@ Functions ランタイムは、HTTP と Webhook を除くすべてのトリガ�
 
 3. 前の手順を繰り返し、関数に必要なその他のすべての接続について、**Values** 配列に一意のキーを追加します。
 
-詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
+詳細については、「[ローカル設定ファイル](#local-settings)」を参照してください。
 
 #### <a name="debug-functions-locally"></a><a name="debugging-functions-locally"></a>関数をローカルでデバッグする  
 
@@ -503,7 +503,7 @@ Azure Functions 拡張機能には、Azure の関数アプリと対話するた�
 | **Connect to GitHub Repository** | 関数アプリを GitHub リポジトリに接続します。 |
 | **Copy Function URL** | Azure で実行されている、HTTP によってトリガーされる関数のリモート URL を取得します。 詳細については、[デプロイされた関数の URL を取得する](#get-the-url-of-the-deployed-function)ことに関するセクションを参照してください。 |
 | **Create function app in Azure** | Azure のサブスクリプションに新しいアプリを作成します。 詳細については、[Azure で新しい関数アプリを発行する](#publish-to-azure)方法に関するセクションを参照してください。        |
-| **Decrypt Settings** | [ローカル設定](#local-settings-file)を復号化します。これは、**Azure Functions: Encrypt Settings** によって暗号化されています。  |
+| **Decrypt Settings** | [ローカル設定](#local-settings)を復号化します。これは、**Azure Functions: Encrypt Settings** によって暗号化されています。  |
 | **Delete Function App** | Azure のサブスクリプションから関数アプリを削除します。 App Service プランに他のアプリがない場合は、それも削除することを選択できます。 ストレージ アカウントやリソース グループなどの他のリソースは削除されません。 すべてのリソースを削除するには、代わりに[リソース グループを削除](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources)してください。 ローカル プロジェクトには影響はありません。 |
 |**Delete Function**  | Azure の関数アプリから既存の関数を削除します。 この削除はローカル プロジェクトに影響を与えないため、代わりに、関数をローカルで削除してから、[プロジェクトを再発行する](#republish-project-files)ことを検討してください。 |
 | **Delete Proxy** | Azure の関数アプリから Azure Functions プロキシを削除します。 プロキシについて詳しくは、「[Azure Functions プロキシの操作](functions-proxies.md)」をご覧ください。 |
@@ -511,7 +511,7 @@ Azure Functions 拡張機能には、Azure の関数アプリと対話するた�
 | **Disconnect from Repo**  | Azure の関数アプリとソース管理リポジトリの間の[継続的デプロイ](functions-continuous-deployment.md)接続を削除します。 |
 | **Download Remote Settings** | Azure の選択した関数アプリから local.settings.json ファイルに設定をダウンロードします。 ローカル ファイルが暗号化されている場合は、復号化され、更新されて、再び暗号化されます。 2 つの場所で値が競合する設定がある場合は、続行する方法を選択するように求められます。 このコマンドを実行する前に local.settings.json ファイルに変更を必ず保存してください。 |
 | **Edit settings** | Azure の既存の関数アプリ設定の値を変更します。 このコマンドは、local.settings.json ファイルの設定に影響を与えません。  |
-| **Encrypt settings** | [ローカル設定](#local-settings-file)で `Values` 配列の個別の項目を暗号化します。 このファイルでは、`IsEncrypted` も `true` に設定されます。これは、ローカル ランタイムが設定を使用する前に復号化することを指定します。 貴重な情報が漏洩するリスクを減らすために、ローカル設定を暗号化します。 Azure では、アプリケーション設定は常に、暗号化されて格納されます。 |
+| **Encrypt settings** | [ローカル設定](#local-settings)で `Values` 配列の個別の項目を暗号化します。 このファイルでは、`IsEncrypted` も `true` に設定されます。これは、ローカル ランタイムが設定を使用する前に復号化することを指定します。 貴重な情報が漏洩するリスクを減らすために、ローカル設定を暗号化します。 Azure では、アプリケーション設定は常に、暗号化されて格納されます。 |
 | **Execute Function Now** | 管理 API を使用して関数を手動で開始します。 このコマンドは、デバッグ中のローカルでのテスト、および Azure で実行されている関数に対するテストの両方に使用されます。 Azure で関数をトリガーすると、まず、拡張機能により、管理キーが自動的に取得されます。これは、Azure で関数を開始するリモート管理 API を呼び出すために使用されます。 API に送信されるメッセージの本文は、トリガーの種類によって異なります。 タイマー トリガーでは、データを渡す必要はありません。 |
 | **Initialize Project for Use with VS Code** | 必要な Visual Studio Code プロジェクト ファイルを既存の Functions プロジェクトに追加します。 このコマンドは、Core Tools を使用して作成したプロジェクトを操作するために使用します。 |
 | **Install or Update Azure Functions Core Tools** | ローカルで関数を実行するために使用される [Azure Functions Core Tools] をインストールまたは更新します。 |

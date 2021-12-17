@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - CloudSimple プライベート クラウド用の DNS を構成する
 description: オンプレミスのワークステーションから、CloudSimple プライベート クラウド上の vCenter サーバーにアクセスするための DNS 名前解決を設定する方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 63822050512421895b0cfed08fb141f77da20b03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdba8e173736d6e334485043968d708e4e522064
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899254"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305562"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>オンプレミスのワークステーションからのプライベート クラウドの vCenter にアクセスするための名前解決用に DNS を構成する
 
@@ -43,10 +43,10 @@ DNS の構成には、次のどちらかのオプションを使用します。
 
 構成する具体的なファイルおよびパラメーターは、個々の DNS セットアップによって異なる場合があります。
 
-たとえば、既定の BIND サーバー構成の場合、DNS サーバー上の /etc/named.conf ファイルを編集し、次のゾーン情報を追加します。
+たとえば、既定の BIND サーバー構成の場合、DNS サーバー上の `/etc/named.conf` ファイルを編集し、次のゾーン情報を追加します。
 
 > [!NOTE]
->この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+>この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ```
 zone "az.cloudsimple.io"

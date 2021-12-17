@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 2291d1fa7f890296c59661060f5a823d8eb194ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90ce78bfab0cacbaea871402394fe8963775844c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104654392"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824667"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>カスタム アラートを構成して、アドバタイズされるルートを監視する
 
@@ -64,7 +64,7 @@ Automation アカウントを作成するには、特権とアクセス許可が
 
 ### <a name="1-create-an-automation-account"></a><a name="about"></a>1.Automation アカウントの作成
 
-実行アクセス許可を持つ Automation アカウントを作成します。 手順については、「[Azure Automation アカウントを作成する](../automation/automation-quickstart-create-account.md)」をご覧ください。
+実行アクセス許可を持つ Automation アカウントを作成します。 手順については、「[Azure Automation アカウントを作成する](../automation/quickstarts/create-account-portal.md)」をご覧ください。
 
 :::image type="content" source="./media/custom-route-alert-portal/create-account.png" alt-text="Automation アカウントの追加" lightbox="./media/custom-route-alert-portal/create-account-expand.png":::
 
@@ -271,25 +271,25 @@ Azure Logic Apps は、収集とアクションのすべてのプロセスのオ
 
 ### <a name="workflow"></a>ワークフロー
 
-このワークフローでは、ExpressRoute ゲートウェイを定期的に監視するロジック アプリを作成します。 新しい項目が存在する場合、ロジック アプリから項目ごとにメールが送信されます。 完成したロジック アプリの大まかなワークフローは、次のようになります。
+このロジック アプリでは、ExpressRoute ゲートウェイを定期的に監視するワークフローを作成します。 新しい項目が存在する場合、ワークフローから項目ごとにメールが送信されます。 完成した大まかなワークフローは、次の例のようになります。
 
 :::image type="content" source="./media/custom-route-alert-portal/logic-apps-workflow.png" alt-text="ロジック アプリのワークフロー":::
 
 ### <a name="1-create-a-logic-app"></a>1.ロジック アプリを作成します
 
-**ロジック アプリ デザイナー** で、 **[空のロジック アプリ]** テンプレートを使用してロジック アプリを作成します。 手順については、[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)に関する記事を参照してください。
+**ロジック アプリ デザイナー** で、 **[空のロジック アプリ]** テンプレートを使用してロジック アプリを作成します。 手順については、[初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
 
 :::image type="content" source="./media/custom-route-alert-portal/blank-template.png" alt-text="空のテンプレート":::
 
 ### <a name="2-add-a-trigger"></a>2.トリガーの追加
 
-すべてのロジック アプリは、トリガーによって開始されます。 トリガーは、特定のイベントが発生するか特定の条件が満たされたときに起動されます。 トリガーが起動されるたびに、Azure Logic Apps エンジンによって、ワークフローを開始および実行するロジック アプリ インスタンスが作成されます。
+すべてのワークフローは、トリガーで開始されます。 トリガーは、特定のイベントが発生するか特定の条件が満たされたときに起動されます。 トリガーが起動するたびに、Azure Logic Apps により新しいワークフロー インスタンスが作成され、実行されます。
 
-事前に定義された時間スケジュールに基づいてロジック アプリを定期的に実行するには、組み込みの **[定期的なスケジュール]** をワークフローに追加します。 検索ボックスに「**スケジュール**」と入力します。 **[トリガー]** を選択します。 トリガーの一覧で、 **[定期的なスケジュール]** を選択します。
+事前に定義された時間スケジュールに基づいてワークフローを定期的に実行するには、組み込みの **繰り返し** トリガーをワークフローに追加します。 検索ボックスに「**スケジュール**」と入力します。 **[スケジュール]** アイコンを選択します。 トリガーの一覧で、 **[繰り返し]** を選択します。
 
 :::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="定期的なスケジュール":::
 
-[定期的なスケジュール] トリガーでは、そのワークフローを繰り返し実行するためのタイムゾーンと繰り返しを設定できます。 ロジック アプリのトリガーには、間隔と頻度の組み合わせでそのスケジュールを定義します。 適切な最小繰り返し頻度を設定するために、次の要因を考慮してください。
+繰り返しトリガーでは、そのワークフローを繰り返し実行するためのタイムゾーンと繰り返しを設定できます。 ワークフローのトリガーには、間隔と頻度の組み合わせでそのスケジュールを定義します。 適切な最小繰り返し頻度を設定するために、次の要因を考慮してください。
 
 * Automation Runbook の PowerShell スクリプトは、完了するまでに時間がかかります。 実行時間は、監視する ExpressRoute ゲートウェイの数によって異なります。 繰り返しの頻度が短すぎると、ジョブのキューが発生します。
 
@@ -303,7 +303,7 @@ Azure Logic Apps は、収集とアクションのすべてのプロセスのオ
 
 ### <a name="3-create-a-job"></a><a name="job"></a>3.ジョブの作成
 
-ロジック アプリは、コネクタを介して他のアプリ、サービス、およびプラットフォームにアクセスします。 このワークフローの次のステップでは、前に定義した Azure Automation アカウントにアクセスするコネクタを選択します。
+ロジック アプリ ワークフローは、コネクタを介して他のアプリ、サービス、およびプラットフォームにアクセスします。 次のステップでは、前に定義した Azure Automation アカウントにアクセスするコネクタを選択します。
 
 1. **Logic Apps デザイナー** で、 **[繰り返し]** の下にある **[新しいステップ]** を選択します。 **[アクションを選択してください]** と検索ボックスの下の **[すべて]** を選択します。
 2. 検索ボックスに、「**Automation Accounts**」と入力して検索します。 **[ジョブの作成]** を選択します。 **[ジョブの作成]** は、前に作成した Automation Runbook を起動するために使用されます。
@@ -334,7 +334,7 @@ Azure Logic Apps は、収集とアクションのすべてのプロセスのオ
 
 ### <a name="5-parse-the-json"></a><a name="parse"></a>5.JSON を解析する
 
-「Azure Automation のジョブの作成アクション」 (前のステップ) に含まれる情報によって、JSON オブジェクトが生成されます。 Logic Apps の **[JSON の解析]** は、JSON コンテンツのプロパティとその値からユーザー フレンドリなトークンを作成するための組み込みアクションです。 その後、これらのプロパティをワークフローで使用できます。
+「Azure Automation のジョブの作成アクション」 (前のステップ) に含まれる情報によって、JSON オブジェクトが生成されます。 組み込みの **[JSON の解析]** アクションは、JSON コンテンツのプロパティとその値からユーザー フレンドリなトークンを作成します。 その後、これらのプロパティをワークフローで使用できます。
 
 1. アクションを追加します。 **[ジョブの出力を取得します] -> [アクション]** で、 **[新しいステップ]** を選択します。
 2. **[アクションを選択してください]** の検索ボックスで、「parse json」と入力して、このアクションを提供するコネクタを検索します。 **[アクション]** リストの中から、使用するデータ操作に対して **[JSON の解析]** アクションを選択します。

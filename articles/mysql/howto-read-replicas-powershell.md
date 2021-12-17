@@ -5,16 +5,18 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 8/24/2020
+ms.date: 06/17/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fe33730fc11bfc18b7d67471e1077fb9490385d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4980692be64c2a8b3918d2dbaab5ef9c983f453
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94541931"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778827"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>PowerShell を使用して Azure Database for MySQL の読み取りレプリカを作成し、管理する方法
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 この記事では、PowerShell を使用して Azure Database for MySQL サービスの読み取りレプリカを作成および管理する方法を学習します。 読み取りレプリカの詳細については、[概要](concepts-read-replicas.md)を参照してください。
 
@@ -39,6 +41,8 @@ PowerShell をローカルで使用する場合は、[Connect-AzAccount](/powers
 
 > [!IMPORTANT]
 > 読み取りレプリカ機能は、汎用とメモリ最適化のどちらかの価格レベルにおける Azure Database for MySQL サーバーにのみ使用可能です。 ソース サーバーがこれらの価格レベルのいずれであるかを確認します。
+>
+>プライマリ サーバーで GTID が有効になっている場合 (`gtid_mode` = ON)、新しく作成されたレプリカでも GTID が有効になり、GTID ベースのレプリケーションが使用されます。 詳細については、「[グローバル トランザクション識別子 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)」を参照してください。
 
 ### <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 
@@ -66,7 +70,8 @@ Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
   New-AzMySqlReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
 ```
 
-レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。
+> [!NOTE]
+> レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
 
 既定では、**Sku** パラメーターが指定されていない限り、読み取りレプリカはソースと同じサーバー構成で作成されます。
 
@@ -106,6 +111,16 @@ Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegrou
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
+
+### <a name="known-issue"></a>既知の問題
+
+General Purpose および Memory Optimized レベルのサーバーで使用されるストレージには、General Purpose ストレージ v1 (最大 4 TB をサポート) と General Purpose ストレージ v2 (最大 16 TB のストレージ をサポート) の 2 つの世代があります。
+ソース サーバーとレプリカ サーバーでストレージの種類が同じである必要があります。 [General Purpose ストレージ v2](./concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) は一部のリージョンでは使用できないため、読み取りレプリカ作成のために PowerShell で場所を使用するときは必ず、正しいレプリカ リージョンを選択してください。 ソース サーバーのストレージの種類を特定する方法については、[サーバーが実行されているストレージの種類の判別方法](./concepts-pricing-tiers.md#how-can-i-determine-which-storage-type-my-server-is-running-on)に関するリンクを参照してください。 
+
+ソース サーバーの読み取りレプリカを作成できないリージョンを選択した場合、次の図に示すようにデプロイが実行を継続し、 *"リソース プロビジョニング操作が、許可されているタイムアウト期間内に完了しませんでした。"* というエラーでタイムアウトになる問題が発生します。
+
+[ :::image type="content" source="media/howto-read-replicas-powershell/replcia-ps-known-issue.png" alt-text="読み取りレプリカに関する CLI のエラー":::](media/howto-read-replicas-powershell/replcia-ps-known-issue.png#lightbox)
+
 
 ## <a name="next-steps"></a>次のステップ
 

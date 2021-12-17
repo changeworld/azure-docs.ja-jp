@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: 5ecf2992fa9ea56f73748a9f1f98c75f9076c68f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5de8a9f50dd280f8eb3a52ad0bd39a00e58c789
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656891"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652080"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mysql-using-azure-portal"></a>Azure portal を使用した Azure Database for MySQL での TLS 設定の構成
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 この記事では、接続のために許可された TLS の最小バージョンを適用して、構成されている TLS の最小バージョンより低い TLS バージョンのすべての接続を確認して拒否することによりネットワーク セキュリティを向上させるように Azure Database for MySQL サーバーを構成する方法について説明します。
 

@@ -2,13 +2,13 @@
 title: Azure Batch 内のファイルおよびディレクトリ
 description: Azure Batch のファイルとディレクトリについて、およびそれらがワークフローでどのように使用されるかについて、開発の観点から説明します。
 ms.topic: conceptual
-ms.date: 08/03/2020
-ms.openlocfilehash: eafea6c234c3b261521f8a791b7a03e25388f02a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.openlocfilehash: 63fe8848617cedc12f668bb0efd86e3b1cab7b79
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87552640"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007987"
 ---
 # <a name="files-and-directories-in-azure-batch"></a>Azure Batch 内のファイルおよびディレクトリ
 

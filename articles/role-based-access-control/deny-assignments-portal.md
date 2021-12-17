@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1e644d81c2a47ec07833010ae93f4dbb0c57474b
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 1581139a2bd941f32afbcd4f0ecbefc60c068d80
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077841"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353477"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure 拒否割り当てを一覧表示する
 
@@ -92,14 +92,14 @@ ms.locfileid: "106077841"
 
     | アクションの種類 | 説明 |
     | --- | --- |
-    | **アクション**  | 拒否された管理操作です。 |
-    | **NotActions** | 拒否された管理操作から除外された管理操作です。 |
-    | **DataActions**  | 拒否されたデータ操作です。 |
-    | **NotDataActions** | 拒否されたデータ操作から除外されたデータ操作です。 |
+    | **アクション**  | 拒否されたコントロール プレーン アクション。 |
+    | **NotActions** | 拒否されたコントロール プレーン アクションから除外されたコントロール プレーン アクション。 |
+    | **DataActions**  | 拒否されたデータ プレーン アクション。 |
+    | **NotDataActions** | 拒否されたデータ プレーン アクションから除外されたデータ プレーン アクション。 |
 
     前のスクリーンショットの例で有効なアクセス許可は、次のとおりです。
 
-    - データ プレーンのすべての記憶域の操作は、計算の操作以外すべて拒否されます。
+    - データ プレーン上のストレージ アクションは、コンピューティング アクションを除き、すべて拒否されます。
 
 1. 拒否割り当てのプロパティを表示するには、 **[プロパティ]** をクリックします。
 

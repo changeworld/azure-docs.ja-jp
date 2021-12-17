@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/08/2020
+ms.date: 07/13/2021
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 522e3c3e22730ee038f2a77585b698b3ed89921e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97937095"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132321836"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -72,7 +72,7 @@ ms.locfileid: "97937095"
 5. Azure AD MFA NPS 拡張機能を使用して VPN アクセスを保護している場合は、VPN ソリューションを [SAML アプリ](../manage-apps/view-applications-portal.md)としてフェデレーションすることを検討し、以下に推奨されるようにアプリのカテゴリを決定します。 
 
 >[!NOTE]
-> リスクに基づくポリシーを使用するには、[Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) ライセンスが必要です。
+> リスクに基づくポリシーを使用するには、[Azure AD Premium P2](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) ライセンスが必要です。
 
 次の例では、アプリやリソースにアクセスするユーザーに対して回復性があるアクセス制御を提供するために作成する必要があるポリシーについて説明します。 この例では、アクセス提供対象のユーザーを含むセキュリティ グループ **AppUsers**、コア管理者を含むグループ **CoreAdmins**、緊急アクセス用アカウントを含むグループ **EmergencyAccess** が必要です。
 この例のポリシー セットでは、**AppUsers** で選択されているユーザーが、信頼済みデバイスから接続している場合、または MFA などの強力な認証を提供した場合に、選択されたアプリへのアクセス権をユーザーに付与します。 緊急アカウントとコア管理者は除外されます。
@@ -122,7 +122,7 @@ ms.locfileid: "97937095"
 * [Azure AD のセルフサービス パスワード リセット (SSPR)](./tutorial-enable-sspr.md) および [Azure AD のパスワード保護](./howto-password-ban-bad-on-premises-deploy.md)を展開し、ユーザーが禁止されているありふれたパスワードや条件を使用しないようにします。
 * 単にフル アクセスにフォールバックするのではなく、特定の認証レベルが満たされていない場合はアプリ内でアクセスを制限するポリシーを使用します。 次に例を示します。
   * Exchange および SharePoint に制限されたセッション要求を送信するバックアップ ポリシーを構成します。
-  * 組織で Microsoft Cloud App Security が使用されている場合は、フォールバックするポリシーで、MCAS を適用し、MCAS によって読み取り専用アクセスを許可してアップロードを許可しないことを検討します。
+  * 組織で Microsoft Defender for Cloud Apps を使用している場合、Defender for Cloud Apps を使用するポリシーにフォールバックし、読み取り専用アクセスは許可するが、アップロードは許可しないことを検討してください。
 * 中断中にポリシーを簡単に見つけられるよう、ポリシーに名前を付けます。 ポリシー名には次の要素を含めます。
   * ポリシーの *ラベル番号*。
   * 表示するテキスト。このポリシーは緊急時のみを対象としています。 次に例を示します。**ENABLE IN EMERGENCY**
@@ -273,8 +273,8 @@ NPS 拡張機能を無効にする:
  緊急事態が発生し、組織で以前に軽減策またはコンティンジェンシー計画を実施したことがない場合で、既に条件付きアクセス ポリシーを使用して MFA を強制しているときは、「[ユーザー ロックアウトのコンティンジェンシー](#contingencies-for-user-lockout)」セクションの推奨事項に従います。
 組織でユーザーごとの MFA レガシ ポリシーを使用している場合は、次の代替手段を検討します。
 
-1. 企業ネットワークに送信 IP アドレスがある場合は、それを信頼できる IP として追加し、企業ネットワークに対してのみ認証を有効にできます。
-   1. 送信 IP アドレスのインベントリがない場合、または企業ネットワークの内部と外部でアクセスを有効にする必要があった場合は、0.0.0.0/1 と 128.0.0.0/1 を指定することにより、IPv4 アドレス空間全体を信頼できる IP アドレスとして追加できます。
+- 企業ネットワークに送信 IP アドレスがある場合は、それを信頼できる IP として追加し、企業ネットワークに対してのみ認証を有効にできます。
+- 送信 IP アドレスのインベントリがない場合、または企業ネットワークの内部と外部でアクセスを有効にする必要があった場合は、0.0.0.0/1 と 128.0.0.0/1 を指定することにより、IPv4 アドレス空間全体を信頼できる IP アドレスとして追加できます。
 
 >[!IMPORTANT]
  > アクセスのブロックを解除するために信頼できる IP アドレスの範囲を広げた場合、IP アドレスに関連するリスク検出 (たとえば、あり得ない移動や未知の場所) は生成されなくなります。
@@ -286,7 +286,7 @@ NPS 拡張機能を無効にする:
 
 * [Azure AD Authentication のドキュメント](./howto-mfaserver-iis.md)
 * [Azure AD で緊急アクセス用管理者アカウントを管理する](../roles/security-emergency-access.md)
-* [Azure Active Directory でネームド ロケーションを構成する](../reports-monitoring/quickstart-configure-named-locations.md)
+* [Azure Active Directory でネームド ロケーションを構成する](../conditional-access/location-condition.md)
   * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings)
 * [ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](../devices/hybrid-azuread-join-plan.md)
 * [Windows Hello for Business の展開ガイド](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)

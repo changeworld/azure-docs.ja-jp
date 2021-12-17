@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f569fdac19c4f765828d24f4d6615fdd7bafef8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 803b356f2011328b47ff17a12176e3c6b22f5497
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89010904"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579498"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>共有キーによる承認を使用して REST API 操作を呼び出す
 
@@ -268,7 +268,7 @@ Content-Length: 1511
 ## <a name="creating-the-authorization-header"></a>Authorization ヘッダーの作成
 
 > [!TIP]
-> Azure Storage で、BLOB およびキューのために Azure Active Directory (Azure AD) の統合がサポートされるようになりました。 Azure AD では、Azure Storage への要求を承認するためのよりシンプルなエクスペリエンスを提供します。 Azure AD を使用して REST 操作を承認する方法の詳細については、「[Azure Active Directory での承認](/rest/api/storageservices/authorize-with-azure-active-directory)」を参照してください。 Azure Storage との Azure AD の統合の概要については、「[Authenticate access to Azure Storage using Azure Active Directory](storage-auth-aad.md)」 (Azure Active Directory を使用した Azure Storage へのアクセスの認証) を参照してください。
+> Azure Storage で、BLOB およびキューのために Azure Active Directory (Azure AD) の統合がサポートされるようになりました。 Azure AD では、Azure Storage への要求を承認するためのよりシンプルなエクスペリエンスを提供します。 Azure AD を使用して REST 操作を承認する方法の詳細については、「[Azure Active Directory での承認](/rest/api/storageservices/authorize-with-azure-active-directory)」を参照してください。 Azure Storage との Azure AD の統合の概要については、「[Authenticate access to Azure Storage using Azure Active Directory](authorize-data-access.md)」 (Azure Active Directory を使用した Azure Storage へのアクセスの認証) を参照してください。
 
 [Azure Storage に対する要求の承認](/rest/api/storageservices/authorize-requests-to-azure-storage)方法を (コードではなく) 概念的に説明した記事があります。
 

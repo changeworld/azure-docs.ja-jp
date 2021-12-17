@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: 2e06616914f1e78a71a540fbd64021c0e1bfcbab
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9901caefe7d50b1042ea5c621bb064efc8c3eb0b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785975"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045275"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SQL データベースのワークフローを自動化する
 
@@ -78,6 +78,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
    |----------------|-------------|
    | [**Azure AD 統合**](../azure-sql/database/authentication-aad-overview.md) | - 非 ISE と ISE 両方の SQL Server コネクタをサポートします。 <p><p>- Azure Active Directory (Azure AD) でデータベースへのアクセス権を持つ有効な ID が必要です。 <p>詳細については、以下のトピックを参照してください。 <p>- [Azure SQL セキュリティの概要 - 認証](../azure-sql/database/security-overview.md#authentication) <br>- [Azure SQL へのデータベース アクセスを承認する - 認証と承認](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL - Azure AD 統合認証](../azure-sql/database/authentication-aad-overview.md) |
    | [**SQL Server 認証**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | - 非 ISE と ISE 両方の SQL Server コネクタをサポートします。 <p><p>- 作成されてデータベースに格納されている有効なユーザー名と強力なパスワードが必要です。 <p>詳細については、以下のトピックを参照してください。 <p>- [Azure SQL セキュリティの概要 - 認証](../azure-sql/database/security-overview.md#authentication) <br>- [Azure SQL へのデータベース アクセスを承認する - 認証と承認](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | **Managed Identity** | - 非 ISE と ISE 両方の SQL Server コネクタをサポートします。 <p><p>-[データベースへのアクセス権](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md)を持つ有効なマネージド id、SQL Server リソースへの **SQL DB 共同作成者** ロールのアクセス、および SQL Server リソースを含むリソースグループへの **共同作成者** のアクセス権が必要です。 <p>詳細については、「 [SQL-Server-Level ロール](/sql/relational-databases/security/authentication-access/server-level-roles)」を参照してください。
    |||
 
    この例では、**Azure AD 統合** を使用します。

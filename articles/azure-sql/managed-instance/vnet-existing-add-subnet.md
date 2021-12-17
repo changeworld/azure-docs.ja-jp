@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: この記事では、Azure SQL Managed Instance をデプロイできる既存の仮想ネットワークとサブネットの構成方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova
+ms.reviewer: mathoma, bonova
 ms.date: 03/17/2020
-ms.openlocfilehash: 461acc07ee2217a38f7bb59805d4c7e0de4a1e22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af71ea69b0ed89538223f1291594e216b1fc4c14
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91617657"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745752"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の既存の仮想ネットワークを構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

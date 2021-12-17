@@ -10,12 +10,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: ea418576ab8fe06964a61e48f16393e1a0566ce8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 42d35abfb3b3cea82355d2ed610a2ccc72c13f6d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182249"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004542"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions のウォームアップ トリガー
 
@@ -240,7 +240,7 @@ public void run( ExecutionContext context) {
 
 ## <a name="trigger---limits"></a>トリガー - 制限
 
-* ウォームアップ トリガーは、[Premium プラン](./functions-premium-plan.md)で実行されているアプリでのみ使用できます。
+* ウォームアップ トリガーは、[従量課金プラン](./consumption-plan.md)で実行されているアプリでは使用できません。
 * ウォームアップ トリガーはスケールアウト操作中にのみ呼び出され、再起動やその他の非スケール スタートアップ中には呼び出されません。 ロジックで、ウォームアップ トリガーを使用せずに、すべての必要な依存関係を読み込めることを確認する必要があります。 これを実現するには、遅延読み込みがお勧めのパターンです。
 * インスタンスが既に実行中の場合、ウォームアップ トリガーを呼び出すことはできません。
 * 関数アプリごとに使用できるウォームアップ トリガー関数は 1 つのみです。

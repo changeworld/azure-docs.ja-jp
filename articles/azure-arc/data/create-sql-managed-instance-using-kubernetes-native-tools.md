@@ -4,21 +4,20 @@ description: Kubernetes ツールを使用して SQL マネージド インス�
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: dnethi
+ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 02/11/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: d23df80a3f80ed96779297bac12ef0ed8d2927d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 502b3ffc28e1eb1880e2611b0bf33dbe4cf1aeb4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687925"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675309"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>Kubernetes ツールを使用して Azure SQL マネージド インスタンスを作成する
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +29,7 @@ Kubernetes ツールを使用して SQL マネージド インスタンスを作
 
 ## <a name="overview"></a>概要
 
-SQL マネージド インスタンスを作成するには、システム管理者のログインとパスワードを安全に格納するための Kubernetes シークレットと、sqlmanagedinstance カスタム リソース定義に基づいて SQL マネージド インスタンスのカスタム リソースを、作成する必要があります。
+SQL マネージド インスタンスを作成するには、システム管理者のログインとパスワードを安全に格納するための Kubernetes シークレットと、SqlManagedInstance カスタム リソース定義に基づいて SQL マネージド インスタンスのカスタム リソースを作成する必要があります。
 
 ## <a name="create-a-yaml-file"></a>yaml ファイルを作成する
 
@@ -42,32 +41,54 @@ SQL マネージド インスタンスを作成するには、システム管理
 apiVersion: v1
 data:
   password: <your base64 encoded password>
-  username: <your base64 encoded user name. 'sa' is not allowed>
+  username: <your base64 encoded username>
 kind: Secret
 metadata:
   name: sql1-login-secret
 type: Opaque
 ---
-apiVersion: sql.arcdata.microsoft.com/v1alpha1
-kind: sqlmanagedinstance
+apiVersion: sql.arcdata.microsoft.com/v1
+kind: SqlManagedInstance
 metadata:
   name: sql1
+  annotations:
+    exampleannotation1: exampleannotationvalue1
+    exampleannotation2: exampleannotationvalue2
+  labels:
+    examplelabel1: examplelabelvalue1
+    examplelabel2: examplelabelvalue2
 spec:
-  limits:
-    memory: 4Gi
-    vcores: "4"
-  requests:
-    memory: 2Gi
-    vcores: "1"
-  service:
-    type: LoadBalancer
+  security:
+    adminLoginSecret: sql1-login-secret
+  scheduling:
+    default:
+      resources:
+        limits:
+          cpu: "2"
+          memory: 4Gi
+        requests:
+          cpu: "1"
+          memory: 2Gi
+  services:
+    primary:
+      type: LoadBalancer
   storage:
+    backups:
+      volumes:
+      - className: default # Use default configured storage class or modify storage class based on your Kubernetes environment
+        size: 5Gi
     data:
-      className: default
-      size: 5Gi
+      volumes:
+      - className: default # Use default configured storage class or modify storage class based on your Kubernetes environment
+        size: 5Gi
+    datalogs:
+      volumes:
+      - className: default # Use default configured storage class or modify storage class based on your Kubernetes environment
+        size: 5Gi
     logs:
-      className: default
-      size: 1Gi
+      volumes:
+      - className: default # Use default configured storage class or modify storage class based on your Kubernetes environment
+        size: 5Gi
 ```
 
 ### <a name="customizing-the-login-and-password"></a>ログインとパスワードのカスタマイズ
@@ -87,7 +108,6 @@ PowerShell
 
 #Example
 #[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('example'))
-
 ```
 
 Linux/macOS
@@ -114,7 +134,7 @@ echo -n '<your string to encode here>' | base64
 - コア数の制限値は、課金のために **必要** です。
 - それ以外のリソースの要求と制限は省略可能です。
 - コア数の制限と要求を指定する場合は、正の整数値にする必要があります。
-- コア数の要求を指定する場合は、2 コア以上を指定する必要があります。
+- コア数の要求を指定する場合は、1 コア以上を指定する必要があります。
 - メモリ値の形式は、Kubernetes の表記に従います。  
 - メモリ要求を指定する場合は、2 Gi 以上にする必要があります。
 - 一般的なガイドラインとして、運用環境のユース ケースの場合は、1 コアごとに 4 GB の RAM が必要です。
@@ -138,7 +158,6 @@ kubectl create -n <your target namespace> -f <path to your yaml file>
 #kubectl create -n arc -f C:\arc-data-services\sqlmi.yaml
 ```
 
-
 ## <a name="monitoring-the-creation-status"></a>作成状態の監視
 
 SQL マネージド インスタンスの作成が完了するまでに数分かかります。 次のコマンドを使用して、別のターミナル ウィンドウで進行状況を監視できます。
@@ -157,10 +176,10 @@ kubectl get pods --namespace arc
 次のようなコマンドを実行して、特定のポッドの作成状態を確認することもできます。  これは特に、何らの問題をトラブルシューティングするのに役立ちます。
 
 ```console
-kubectl describe po/<pod name> --namespace arc
+kubectl describe pod/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/sql1-0 --namespace arc
+#kubectl describe pod/sql1-0 --namespace arc
 ```
 
 ## <a name="troubleshooting-creation-problems"></a>作成の問題のトラブルシューティング

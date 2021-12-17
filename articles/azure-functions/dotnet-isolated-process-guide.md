@@ -1,30 +1,29 @@
 ---
-title: Azure Functions での .NET 5.0 の .NET 分離プロセス ガイド
-description: .NET 分離プロセスを使用して、Azure において C# 関数を .NET 5.0 でアウトプロセスで実行する方法について説明します。
+title: 分離されたプロセスにおける C# Azure Functions の実行のガイド
+description: .NET 5.0 以降のバージョンをサポートする Azure で C# 関数を実行するために .NET 分離プロセスを使用する方法について説明します。
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 06/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4da685c247427e78297df1753779ee9b5c7866b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+recommendations: false
+ms.openlocfilehash: b12841b83e4c2f6f2756ddffdd4adc7bde77e73a
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023199"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401271"
 ---
-# <a name="guide-for-running-functions-on-net-50-in-azure"></a>Azure において関数を .NET 5.0 で実行するためのガイド
+# <a name="guide-for-running-c-azure-functions-in-an-isolated-process"></a>分離されたプロセスにおける C# Azure Functions の実行のガイド
 
-この記事では、C# を使用して、Azure Functions でアウトプロセスで実行する .NET 分離プロセス関数を開発する方法について説明します。 アウトプロセスで実行することで、関数コードを Azure Functions ランタイムから切り離すことができます。 これは、現在の .NET 5.0 リリースを対象とする関数を作成して実行する方法にもなります。 
+この記事では、C# を使用して、Azure Functions でアウトプロセスで実行する .NET 分離プロセス関数を開発する方法について説明します。 アウトプロセスで実行することで、関数コードを Azure Functions ランタイムから切り離すことができます。 分離プロセス C# 関数は、.NET 5.0 と .NET 6.0 の両方で実行されます。 [インプロセス C# クラス ライブラリ関数](functions-dotnet-class-library.md)は、.NET 5.0 ではサポートされていません。 
 
 | 作業の開始 | 概念| サンプル |
 |--|--|--| 
-| <ul><li>[Visual Studio Code の使用](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vscode)</li><li>[コマンド ライン ツールの使用](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-cli)</li><li>[Visual Studio の使用](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vs)</li></ul> | <ul><li>[ホスティング オプション](functions-scale.md)</li><li>[Monitoring](functions-monitoring.md)</li> | <ul><li>[リファレンスのサンプル](https://github.com/Azure/azure-functions-dotnet-worker/tree/main/samples)</li></ul> |
-
-.NET 5.0 をサポートしたり関数をアウトプロセスで実行したりする必要がない場合は、代わりに [C# クラス ライブラリ関数を開発](functions-dotnet-class-library.md)することをお勧めします。
+| <ul><li>[Visual Studio Code の使用](create-first-function-vs-code-csharp.md?tabs=isolated-process)</li><li>[コマンド ライン ツールの使用](create-first-function-cli-csharp.md?tabs=isolated-process)</li><li>[Visual Studio の使用](functions-create-your-first-function-visual-studio.md?tabs=isolated-process)</li></ul> | <ul><li>[ホスティング オプション](functions-scale.md)</li><li>[Monitoring](functions-monitoring.md)</li> | <ul><li>[リファレンスのサンプル](https://github.com/Azure/azure-functions-dotnet-worker/tree/main/samples)</li></ul> |
 
 ## <a name="why-net-isolated-process"></a>なぜ .NET 分離プロセスなのか?
 
-これまで Azure Functions で唯一サポートされていた .NET 関数の緊密統合モードは、ホストと同じプロセスで[クラス ライブラリとして](functions-dotnet-class-library.md)実行されました。 このモードにより、ホスト プロセスと関数の間の統合が深くなります。 たとえば、.NET クラス ライブラリ関数は、バインドの API と型を共有できます。 しかし、この統合では、ホスト プロセスと .NET 関数の間の結合がより緊密になっている必要もあります。 たとえば、インプロセスで実行中の .NET 関数が Functions ランタイムと同じ .NET のバージョンで実行される必要があります。 これらの制約がなく実行できるように、分離プロセスでの実行を選べるようになりました。 このプロセス分離を使用すれば、Functions ランタイムでネイティブにサポートされていない、現在の .NET リリース (.NET 5.0 など) を使用する関数を開発することもできます。
+これまで Azure Functions で唯一サポートされていた .NET 関数の緊密統合モードは、ホストと同じプロセスで[クラス ライブラリとして](functions-dotnet-class-library.md)実行されました。 このモードにより、ホスト プロセスと関数の間の統合が深くなります。 たとえば、.NET クラス ライブラリ関数は、バインドの API と型を共有できます。 しかし、この統合では、ホスト プロセスと .NET 関数の間の結合がより緊密になっている必要もあります。 たとえば、インプロセスで実行中の .NET 関数が Functions ランタイムと同じ .NET のバージョンで実行される必要があります。 これらの制約がなく実行できるように、分離プロセスでの実行を選べるようになりました。 このプロセス分離を使用すれば、Functions ランタイムでネイティブにサポートされていない、現在の .NET リリース (.NET 5.0 など) を使用する関数を開発することもできます。 分離プロセスとインプロセス C# クラス ライブラリ関数は、どちらも .NET 6.0 で実行されます。 詳しくは、[サポートされるバージョン](#supported-versions)をご覧ください。 
 
 これらの関数は別個のプロセスで実行されるため、.NET 分離関数アプリと .NET クラス ライブラリ関数アプリの間には[特徴と機能の違い](#differences-with-net-class-library-functions)がいくつかあります。
 
@@ -36,16 +35,14 @@ ms.locfileid: "105023199"
 + プロセスの完全制御: アプリの起動を制御でき、使用する構成や起動するミドルウェアを制御できます。
 + 依存関係の挿入: プロセスを完全制御できるため、現在の .NET 動作を使用して、依存関係の挿入や関数アプリへのミドルウェアの組み込みを行えます。 
 
-## <a name="supported-versions"></a>サポートされているバージョン
-
-アウトプロセスでの実行が現在サポートされている .NET の唯一のバージョンは .NET 5.0 です。
+[!INCLUDE [functions-dotnet-supported-versions](../../includes/functions-dotnet-supported-versions.md)]
 
 ## <a name="net-isolated-project"></a>.NET 分離プロジェクト
 
-.NET 分離関数プロジェクトとは、基本的には .NET 5.0 を対象とする .NET コンソール アプリ プロジェクトです。 以下は、.NET 分離プロジェクトで必要となる基本的なファイルです。
+.NET 分離関数プロジェクトは、基本的には、サポートされる .NET ランタイムをターゲットとする .NET コンソール アプリ プロジェクトです。 以下は、.NET 分離プロジェクトで必要となる基本的なファイルです。
 
 + [host.json](functions-host-json.md) ファイル
-+ [local.settings.json](functions-run-local.md#local-settings-file) ファイル
++ [local.settings.json](functions-develop-local.md#local-settings-file) ファイル
 + プロジェクトと依存関係を定義する C# プロジェクト ファイル (.csproj)
 + アプリのエントリ ポイントである Program.cs ファイル。
 
@@ -73,6 +70,8 @@ ms.locfileid: "105023199"
 次のコードは [HostBuilder] パイプラインの例を示します。
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_startup":::
+
+このコードでは `using Microsoft.Extensions.DependencyInjection;` が必要です。 
 
 [HostBuilder] は、完全に初期化された [IHost] インスタンス (これを非同期で実行して関数アプリを起動します) をビルドして返すために使用します。 
 
@@ -103,7 +102,7 @@ ms.locfileid: "105023199"
  
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_dependency_injection" :::
 
-詳細については、「[ASP.NET Core での依存関係の挿入](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true)」を参照してください。
+このコードでは `using Microsoft.Extensions.DependencyInjection;` が必要です。 詳細については、「[ASP.NET Core での依存関係の挿入](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true)」を参照してください。
 
 ### <a name="middleware"></a>ミドルウェア
 
@@ -141,7 +140,7 @@ HTTP トリガーの場合、要求と応答のデータにアクセスするに
 
 ### <a name="output-bindings"></a>出力バインディング
 
-出力バインディングに書き込むには、関数メソッドに、バインドされたサービスへの書き込み方法を定義した出力バインディング属性を適用する必要があります。 メソッドによって返される値は、出力バインディングに書き込まれます。 たとえば、次の例では、出力バインディングを使用して、`functiontesting2` という名前のメッセージ キューに文字列値を書き込みます。
+出力バインディングに書き込むには、関数メソッドに、バインドされたサービスへの書き込み方法を定義した出力バインディング属性を適用する必要があります。 メソッドによって返される値は、出力バインディングに書き込まれます。 たとえば、次の例では、出力バインディングを使用して、`myqueue-output` という名前のメッセージ キューに文字列値を書き込みます。
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
 
@@ -177,11 +176,11 @@ HTTP トリガーは、受信した HTTP 要求メッセージを、関数に渡
 
 ## <a name="differences-with-net-class-library-functions"></a>.NET クラス ライブラリ関数との相違点
 
-このセクションでは、インプロセスで実行される .NET クラス ライブラリ関数と比較した場合の、.NET 5.0 でアウトプロセスで実行される機能と動作の違いの現在の状態について説明します。
+このセクションでは、インプロセスで実行される .NET クラス ライブラリ関数と比較した場合の、.NET 5.0 でアウトプロセスで実行される機能面と動作面での違いの現在の状態について説明します:
 
-| 機能/動作 |  インプロセス (.NET Core 3.1) | アウトプロセス (.NET 5.0) |
+| 機能/動作 |  インプロセス | アウトプロセス  |
 | ---- | ---- | ---- |
-| .NET のバージョン | LTS (.NET Core 3.1) | 現行 (.NET 5.0) |
+| .NET のバージョン | .NET Core 3.1<br/>.NET 6.0 | .NET 5.0<br/>.NET 6.0 |
 | コア パッケージ | [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) | [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/)<br/>[Microsoft.Azure.Functions.Worker.Sdk](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk) | 
 | バインディング拡張機能パッケージ | [Microsoft.Azure.WebJobs.Extensions.*](https://www.nuget.org/packages?q=Microsoft.Azure.WebJobs.Extensions)  | [Microsoft.Azure.Functions.Worker.Extensions.*](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions) の下 | 
 | ログ記録 | [ILogger] が関数に渡される | [ILogger] は [FunctionContext] から取得される |
@@ -197,11 +196,7 @@ HTTP トリガーは、受信した HTTP 要求メッセージを、関数に渡
 | 依存関係の挿入 | [サポートされています](functions-dotnet-dependency-injection.md)  | [サポートされています](#dependency-injection) |
 | ミドルウェア | サポートされていません | サポートされています |
 | コールド スタート時間 | 通常 | 長くなります。これは、Just-In-Time スタートアップのためです。 遅延の可能性を減らすために、Windows ではなく Linux で実行してください。 |
-| ReadyToRun | [サポート状況](functions-dotnet-class-library.md#readytorun) | _TBD_ |
-
-## <a name="known-issues"></a>既知の問題
-
-.NET 分離プロセス関数を実行するときの既知の問題の回避策については、[こちらの既知の問題に関するページ](https://aka.ms/AAbh18e)を参照してください。 問題を報告するには、[こちらの GitHub リポジトリで問題を作成](https://github.com/Azure/azure-functions-dotnet-worker/issues/new/choose)してください。  
+| ReadyToRun | [サポート状況](functions-dotnet-class-library.md#readytorun) | _TBD_ | 
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -224,4 +219,4 @@ HTTP トリガーは、受信した HTTP 要求メッセージを、関数に渡
 [HttpResponseData]: /dotnet/api/microsoft.azure.functions.worker.http.httpresponsedata?view=azure-dotnet&preserve-view=true
 [HttpRequest]: /dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true
 [ObjectResult]: /dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true
-[JsonSerializerOptions]: /api/system.text.json.jsonserializeroptions?view=net-5.0&preserve-view=true
+[JsonSerializerOptions]: /dotnet/api/system.text.json.jsonserializeroptions?view=net-5.0&preserve-view=true

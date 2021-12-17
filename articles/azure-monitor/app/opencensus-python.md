@@ -2,27 +2,42 @@
 title: Azure Monitor を使用して Python アプリを監視する | Microsoft Docs
 description: OpenCensus Python を Azure Monitor に接続する手順について説明します
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 10/12/2021
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: 69472da4f774a1dfae86e1891255907ad711175a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+author: lzchen
+ms.author: lechen
+ms.openlocfilehash: 12c455eb2cd3114b043e19ddd37ca3497143914b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047424"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244983"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
-Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、Python アプリケーションの分散トレース、メトリック収集、およびログ記録をサポートします。 この記事では、OpenCensus for Python を設定し、監視データを Azure Monitor に送信するプロセスについて説明します。
+Azure Monitor では、Python アプリケーションの分散トレース、メトリック収集、およびログ記録がサポートされています。
+
+Microsoft でサポートされている、Python アプリケーションのデータの追跡とエクスポートを行うソリューションは、[Azure Monitor エクスポーター](#instrument-with-opencensus-python-sdk-with-azure-monitor-exporters)を介した [Opencensus Python SDK](#introducing-opencensus-python-sdk) です。
+
+その他の Python 用テレメトリ SDK はサポートされていないため、テレメトリ ソリューションとして使用することはお勧めしません。
+
+OpenCensus が [OpenTelemetry](https://opentelemetry.io/) に統合されつつあることはご存知かと思います。 しかし、Microsoft では、OpenTelemetry が成熟するまでは、OpenCensus をお勧めしています。
+
+> [!NOTE]
+> プレビューの [OpenTelemetry ベースの Python オファリングを](opentelemetry-enable.md?tabs=python)利用できます。 [詳細については、こちらを参照してください](opentelemetry-overview.md)。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-- Python のインストール。 この記事では [Python 3.7.0](https://www.python.org/downloads/release/python-370/) を使用しますが、他のバージョンでも軽微な変更で使用できる可能性があります。 SDK では、Python のバージョン 2.7 および 3.6 以上をサポートしています。
+- Python のインストール。 この記事では [Python 3.7.0](https://www.python.org/downloads/release/python-370/) を使用しますが、他のバージョンでも軽微な変更で使用できる可能性があります。 Opencensus Python SDK でサポートされているのは、Python v2.7 および v3.4 以降のみです。
 - Application Insights の[リソース](./create-new-resource.md)を作成します。 リソースの独自のインストルメンテーション キー (ikey) が割り当てられます。
 
-## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Azure Monitor 用の OpenCensus Python SDK を使用したインストルメント化
+## <a name="introducing-opencensus-python-sdk"></a>Opencensus Python SDK の概要
+
+[OpenCensus](https://opencensus.io) は、分散トレース、メトリック、ログ テレメトリを収集できる一連のオープン ソース ライブラリです。 [Azure Monitor エクスポーター](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)を使用すれば、収集したこのテレメトリを Application Insights に送信できます。 この記事では、Python 用の OpenCensus および Azure Monitor エクスポーターを設定し、監視データを Azure Monitor に送信するプロセスについて説明します。
+
+## <a name="instrument-with-opencensus-python-sdk-with-azure-monitor-exporters"></a>OpenCensus Python SDK と Azure Monitor エクスポーターを使用したインストルメント化
 
 OpenCensus Azure Monitor エクスポーターをインストールします。
 
@@ -132,6 +147,9 @@ Azure Monitor に表示されるテレメトリの種類にマップされる、
     # Use properties in logging statements
     logger.warning('action', extra=properties)
     ```
+
+> [!NOTE]
+> Application Insights インストルメンテーションの使用の一部として、診断データが収集され、Microsoft に送信されます。 このデータは、Application Insights の実行と改善に役立ちます。 重要でないデータ収集を無効にするオプションがあります。 [詳細については、こちらを参照してください](./statsbeat.md)。
 
 #### <a name="configure-logging-for-django-applications"></a>Django アプリケーション用にログ記録を構成する
 
@@ -331,6 +349,54 @@ OpenCensus.stats では 4 つの集計メソッドがサポートされますが
 
 1. エクスポーターによって、一定の間隔でメトリック データが Azure Monitor に送信されます。 既定値は 15 秒ごとです。 1 つのメトリックを追跡しているので、このメトリック データは、それに含まれる値およびタイムスタンプに関係なく、間隔ごとに送信されます。 値は累積的であり、増加のみ可能です。再起動時に 0 にリセットできます。 `customMetrics` でデータを見つけることができますが、`customMetrics` プロパティの valueCount、valueSum、valueMin、valueMax、および valueStdDev は有効に使用されていません。
 
+### <a name="setting-custom-dimensions-in-metrics"></a>メトリックでのカスタム ディメンションの設定
+
+OpenCensus Python SDK を使用すると、`tags` の方法でメトリック テレメトリにカスタム ディメンションを追加できます。これは、基本的にキーと値のペアのディクショナリです。 
+
+1. 使用するタグをタグ マップに挿入します。 タグ マップは、使用可能なすべてのタグの一種の "プール" として機能します。
+
+    ```python
+    ...
+    tmap = tag_map_module.TagMap()
+    tmap.insert("url", "http://example.com")
+    ...
+    ```
+
+1. 特定の `View` について、タグ キーを使用して、そのビューでメトリックを記録するときに使用するタグを指定します。
+
+    ```python
+    ...
+    prompt_view = view_module.View("prompt view",
+                                "number of prompts",
+                                ["url"], # <-- A sequence of tag keys used to specify which tag key/value to use from the tag map
+                                prompt_measure,
+                                aggregation_module.CountAggregation())
+    ...
+    ```
+
+1. 測定マップで記録する場合、必ずタグ マップを使用してください。 `View` で指定されるタグ キーは、記録に使用されるタグ マップ内に存在する必要があります。
+
+    ```python
+    ...
+    mmap = stats_recorder.new_measurement_map()
+    mmap.measure_int_put(prompt_measure, 1)
+    mmap.record(tmap) # <-- pass the tag map in here
+    ...
+    ```
+
+1. `customMetrics` テーブルでは、`prompt_view` を使用して出力されるすべてのメトリック レコードにカスタム ディメンション `{"url":"http://example.com"}` があります。
+
+1. 同じキーを使用して異なる値を持つタグを生成するには、それらに対して新しいタグ マップを作成します。
+
+    ```python
+    ...
+    tmap = tag_map_module.TagMap()
+    tmap2 = tag_map_module.TagMap()
+    tmap.insert("url", "http://example.com")
+    tmap2.insert("url", "https://www.wikipedia.org/wiki/")
+    ...
+    ```
+
 #### <a name="performance-counters"></a>パフォーマンス カウンター
 
 既定では、メトリック エクスポーターによって、Azure Monitor に一連のパフォーマンス カウンターが送信されます。 これを無効にするには、メトリックス エクスポーターのコンストラクターで `enable_standard_metrics` フラグを `False` に設定します。
@@ -455,6 +521,13 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 - `proxies`:Azure Monitor にデータを送信するために使用する一連のプロキシを指定します。 詳細については、「[proxies](https://requests.readthedocs.io/en/master/user/advanced/#proxies)」 (プロキシ) を参照してください。
 - `storage_path`:ローカル ストレージ フォルダーが存在する場所へのパス (未送信のテレメトリ)。 `opencensus-ext-azure` v 1.0.3 以降の既定のパスは、OS の一時ディレクトリ + `opencensus-python` + `your-ikey` です。 v1.0.3 より前の既定のパスは、$USER + `.opencensus` + `.azure` + `python-file-name` です。
 
+## <a name="authentication-preview"></a>認証 (プレビュー)
+> [!NOTE]
+> 認証機能は、`opencensus-ext-azure` v1.1b0 以降で利用できます。
+
+Azure Monitor エクスポーターはそれぞれ、Azure Active Directory (AAD) による OAuth 認証を用いて安全にテレメトリのペイロードを送信する構成をサポートします。
+詳細については、[認証](./azure-ad-authentication.md)に関するドキュメントを参照してください。
+
 ## <a name="view-your-data-with-queries"></a>クエリを使用してデータを表示する
 
 アプリケーションから送信されたテレメトリ データは、 **[Logs(Analytics)]** (ログ (分析)) タブを使用して表示できます。
@@ -489,4 +562,3 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 * [可用性テスト](./monitor-web-app-availability.md): サイトが Web で表示できることを確認するためのテストを作成します。
 * [スマート診断](./proactive-diagnostics.md): これらのテストは自動的に実行されます。セットアップするために何かをする必要はありません。 アプリの要求が失敗する割合が異常な場合に通知します。
 * [メトリック アラート](../alerts/alerts-log.md): メトリックがしきい値を超えた場合に警告するようにアラートを設定 します。 メトリック アラートはカスタム メトリックで設定し、コード化してアプリに組み込むことができます。
-

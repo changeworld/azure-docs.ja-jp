@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Canvas の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Canvas の統合'
 description: Azure Active Directory と Canvas の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: a71dac55c860348f31ce8da27ab050a6c71a5c68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bfd75937c84f11f2829920850c3148d92cccd05d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653053"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132296539"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-canvas"></a>チュートリアル:Azure Active Directory と Canvas の統合
+# <a name="tutorial-azure-ad-sso-integration-with-canvas"></a>チュートリアル: Azure AD SSO と Canvas の統合
 
 このチュートリアルでは、Canvas と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Canvas を統合すると、次のことができます。
 
@@ -37,7 +37,7 @@ ms.locfileid: "101653053"
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Canvas では、**SP** によって開始される SSO がサポートされます
+* Canvas では、**SP** Initiated SSO がサポートされます。
 
 ## <a name="add-canvas-from-the-gallery"></a>ギャラリーからの Canvas の追加
 
@@ -63,7 +63,7 @@ Canvas に対する Azure AD SSO を構成してテストするには、次の�
     1. **[Canvas のテスト ユーザーの作成](#create-canvas-test-user)** - Canvas で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
@@ -75,14 +75,12 @@ Canvas に対する Azure AD SSO を構成してテストするには、次の�
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![[Canvas のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
+    b. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<tenant-name>.instructure.com`
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<tenant-name>.instructure.com`
-
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<tenant-name>.instructure.com/saml2`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<tenant-name>.instructure.com/saml2`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Canvas クライアント サポート チーム](https://community.canvaslms.com/community/help)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値を実際の識別子とサインオン URL で更新してください。 これらの値を取得するには、[Canvas クライアント サポート チーム](https://community.canvaslms.com/community/help)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、 **[SAML 署名証明書]** ダイアログを開きます。
 
@@ -120,17 +118,17 @@ Canvas に対する Azure AD SSO を構成してテストするには、次の�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="configure-canvas-sso"></a>Canvas の SSO の構成
+## <a name="configure-canvas-sso"></a>Canvas の SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Canvas 企業サイトに管理者としてログインします。
 
 2. **[コース] \> [管理アカウント] \> [Microsoft]** の順にクリックします。
 
-    ![キャンバス](./media/canvas-lms-tutorial/ic775990.png "キャンバス")
+    ![キャンバス](./media/canvas-lms-tutorial/course.png "キャンバス")
 
 3. 左側のナビゲーション ウィンドウで **[認証]** を選択し、 **[新しい SAML 構成を追加]** をクリックします。
 
-    ![認証](./media/canvas-lms-tutorial/ic775991.png "認証")
+    ![認証](./media/canvas-lms-tutorial/tools.png "認証")
 
 4. [現在の統合] ページで、次の手順を実行します。
 
@@ -162,19 +160,19 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
 
 2. **[コース] \> [管理アカウント] \> [Microsoft]** の順にクリックします。
 
-   ![キャンバス](./media/canvas-lms-tutorial/ic775990.png "キャンバス")
+   ![キャンバス](./media/canvas-lms-tutorial/course.png "キャンバス")
 
 3. **[ユーザー]** をクリックします。
 
-   ![スクリーンショットは、[ユーザー] が選択されている [Canvas] メニューを示しています。](./media/canvas-lms-tutorial/ic775995.png "ユーザー")
+   ![スクリーンショットは、[ユーザー] が選択されている [Canvas] メニューを示しています。](./media/canvas-lms-tutorial/user.png "ユーザー")
 
 4. **[新しいユーザーの追加]** をクリックします。
 
-   ![スクリーンショットは、[新しいユーザーの追加] ボタンを示しています。](./media/canvas-lms-tutorial/ic775996.png "ユーザー")
+   ![スクリーンショットは、[新しいユーザーの追加] ボタンを示しています。](./media/canvas-lms-tutorial/add-user.png "ユーザー")
 
 5. [新しいユーザーの追加] ダイアログ ページで、次の手順を実行します。
 
-   ![ユーザーの追加](./media/canvas-lms-tutorial/ic775997.png "ユーザーの追加")
+   ![ユーザーの追加](./media/canvas-lms-tutorial/name.png "ユーザーの追加")
 
    a. **[Full Name] \(フルネーム)** テキスト ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
 
@@ -189,7 +187,7 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
 > [!NOTE]
 > 他の Canvas ユーザー アカウント作成ツールや、Canvas から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
@@ -197,8 +195,8 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
 
 * Canvas のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Canvas] タイルをクリックすると、SSO を設定した Canvas に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Canvas] タイルをクリックすると、SSO を設定した Canvas に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Canvas を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Canvas を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

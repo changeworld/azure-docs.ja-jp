@@ -1,20 +1,20 @@
 ---
 title: Android マップへのバブル レイヤーの追加 | Microsoft Azure Maps
 description: マップ上のポイントを固定サイズの円としてレンダリングする方法について説明します。 この目的で Azure Maps Android SDK を使用してバブル レイヤーを追加し、カスタマイズする方法を参照してください。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: f3c175f30c5c0e6206f4fee274e0f3f000e55a74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ef4d397520e375059cfcfaca0786bafbb41ccc1e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100170"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430632"
 ---
 # <a name="add-a-bubble-layer-to-a-map-android-sdk"></a>マップにバブル レイヤーを追加する (Android SDK)
 
@@ -169,7 +169,7 @@ map.layers.add(
 
 ::: zone-end
 
-次のスクリーンショットは、上記のコードにより、バブル レイヤーにポイントがレンダリングされ、シンボル レイヤーを使ってポイントのテキスト ラベルがレンダリングされた状態を示しています。
+次のスクリーンショットは、上記のコードにより、バブル レイヤーにポイントがレンダリングされ、シンボル レイヤーを使ってポイントのテキスト ラベルがレンダリングされている状態を示しています。
 
 ![バブル レイヤーを使用してレンダリングされたポイントと、シンボル レイヤーを使用したテキスト ラベルを含むマップ](media/map-add-bubble-layer-android/android-bubble-symbol-layer.png)
 
@@ -179,6 +179,9 @@ map.layers.add(
 
 > [!div class="nextstepaction"]
 > [データ ソースを作成する](create-data-source-android-sdk.md)
+
+> [!div class="nextstepaction"]
+> [ポイント データをクラスタリングする](clustering-point-data-android-sdk.md)
 
 > [!div class="nextstepaction"]
 > [シンボル レイヤーを追加する](how-to-add-symbol-to-android-map.md)

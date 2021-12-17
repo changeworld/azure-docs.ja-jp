@@ -1,20 +1,23 @@
 ---
 title: 強制トンネリングについて
 description: 仮想ネットワークでアウトバウンド トラフィックが強制トンネリングされている場合に App Service Environment を正しく機能させるための設定方法について説明します。
-author: ccompy
+author: madsd
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.topic: quickstart
 ms.date: 05/29/2018
-ms.author: ccompy
+ms.author: madsd
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 95a4d00a27a0da363561f469b4c5e9e2ad16463c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0d43424e038328f82d3639891aa85397f68d3ad
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97510500"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519612"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>強制トンネリングを使用した App Service Environment の構成
+> [!NOTE]
+> これは、Isolated App Service プランで使用される App Service Environment v2 に関する記事です。
+> 
 
 App Service Environment (ASE) は、ユーザーの Azure 仮想ネットワーク内に Azure App Service をデプロイしたものです。 多くのユーザーは、VPN または Azure ExpressRoute 接続を使用して、Azure 仮想ネットワークをオンプレミス ネットワークの拡張網として構成しています。 このとき、インターネットに向かうトラフィックを VPN や仮想アプライアンスにリダイレクトすることを強制トンネリングといいます。 アウトバウンド ネットワーク トラフィックの調査と監査には、よく仮想アプライアンスが使用されます。 
 
@@ -95,7 +98,7 @@ ASE から外に出て行く送信トラフィックを、Azure Storage に向�
 
 3. ご利用の App Service Environment からインターネットに向かうすべての送信トラフィックに使用されるアドレスを取得します。 トラフィックをオンプレミスでルーティングする場合、それらのアドレスはご利用の NAT またはゲートウェイの IP となります。 NVA を経由するよう App Service Environment の送信トラフィックをルーティングする場合は、その NVA のパブリック IP がエグレス アドレスになります。
 
-4. _既存の App Service Environment でエグレス アドレスを設定するには:_ resources.azure.com にアクセスして Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name> に移動します。 すると、ご利用の App Service Environment を表す JSON を確認できます。 一番上に **読み取り/書き込み** の表示があることを確認してください。 **[編集]** を選択します。 一番下までスクロールします。 **userWhitelistedIpRanges** の値を **null** から次のような値に変更します。 エグレス アドレス範囲として設定するアドレスを使用してください。 
+4. _既存の App Service 環境でエグレス アドレスを設定するには:_ resources.azure.com にアクセスして Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name> に移動します。 すると、ご利用の App Service Environment を表す JSON を確認できます。 一番上に **読み取り/書き込み** の表示があることを確認してください。 **[編集]** を選択します。 一番下までスクロールします。 **userWhitelistedIpRanges** の値を **null** から次のような値に変更します。 エグレス アドレス範囲として設定するアドレスを使用してください。 
 
     ```json
     "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"]

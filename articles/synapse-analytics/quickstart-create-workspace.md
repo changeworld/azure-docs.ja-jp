@@ -9,12 +9,13 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d38f1f294f60b73e8f1e69169a75333eb175c9f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 0f593d801bdcc477d6084a395630211393ffa9c7
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600158"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217289"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>クイック スタート:Synapse ワークスペースを作成する
 このクイックスタートでは、Azure portal を使用して Azure Synapse ワークスペースを作成する手順について説明します。
@@ -48,9 +49,17 @@ Azure Synapse ワークスペースが作成された後、Synapse Studio を開
 
 1. [Azure Portal](https://portal.azure.com)を開きます。
 1. 既存の ADLSGEN2 ストレージ アカウントに移動する
-1. 左ペインで **[アクセス制御 (IAM)]** を選択します。 次に、以下のロールを割り当てるか、それらが既に割り当てられていることを確認します。
-    * **所有者** ロールに自分自身を割り当てます。
-    * **ストレージ BLOB データ所有者** ロールに自分自身を割り当てます。
+1. **[アクセス制御 (IAM)]** を選択します。
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | 所有者とストレージ BLOB のデータ所有者 |
+    | アクセスの割り当て先 | ユーザー |
+    | メンバー | ユーザー名 |
+
+    ![Azure portal でロール割り当てページを追加します。](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 1. 左ペインで **[コンテナー]** を選択し、コンテナーを作成します。
 1. コンテナーには任意の名前を付けることができます。 このドキュメントでは、このコンテナーに **users** という名前を付けます。
 1. 既定の設定である **[パブリック アクセス レベル]** をそのまま使用し、 **[作成]** を選択します。
@@ -60,11 +69,20 @@ Azure Synapse ワークスペースが作成された後、Synapse Studio を開
 Azure Synapse ワークスペースのマネージド ID には、既にストレージ アカウントへのアクセス権がある可能性があります。 確認するには、次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com) を開き、ワークスペース用に選択したプライマリ ストレージ アカウントを開きます。
-1. 左ペインから **[アクセス制御 (IAM)]** を選択します。
-1. 以下のロールを割り当てるか、それらが既に割り当てられていることを確認します。 ここでは、ワークスペース ID とワークスペース名に同じ名前を使用します。
-    * ストレージ アカウントの **[ストレージ BLOB データ共同作成者]** ロールに、ワークスペース ID として **myworkspace** を割り当てます。
-    * ワークスペース名として **myworkspace** を割り当てます。
+1. **[アクセス制御 (IAM)]** を選択します。
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | ストレージ BLOB データ共同作成者 |
+    | アクセスの割り当て先 | マネージド ID |
+    | メンバー | マイ ワークスペース  |
 
+    > [!NOTE]
+    > マネージド ID の名前は、ワークスペース名でもあります。
+
+    ![Azure portal でロール割り当てページを追加します。](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 1. **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,16 +1,16 @@
 ---
 title: 土壌水分ヒートマップを生成する
 description: Azure FarmBeats で土壌水分ヒートマップを生成する方法について説明します。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.openlocfilehash: dd8d688355e0f71ce77cdbc6012d788c7b16d825
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.openlocfilehash: d318f7aad20f4bdf8ccb8db53c20c2426216b4dd
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173785"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422500"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>土壌水分ヒートマップを生成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "102173785"
 
 ## <a name="deploy-sensors"></a>センサーを配置する
 
-土壌水分センサーは、ファームに対して物理的に配置する必要があります。 土壌水分センサーは、Microsoft によって承認された任意のパートナー ([Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/) および [Teralytic](https://teralytic.com/)) から購入できます。 ファームへの物理的なセットアップは、センサーのプロバイダーと連携して行ってください。
+土壌水分センサーは、ファームに対して物理的に配置する必要があります。 土壌水分センサーは、Microsoft によって承認された任意のパートナー ([Davis Instruments](https://www.davisinstruments.com/products/enviromonitor-gateway-us-lte) および [Teralytic](https://teralytic.com/)) から購入できます。 ファームへの物理的なセットアップは、センサーのプロバイダーと連携して行ってください。
 
 ## <a name="get-soil-moisture-sensor-data-from-partner"></a>パートナーから土壌水分センサー データを入手する
 

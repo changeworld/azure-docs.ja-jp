@@ -4,12 +4,12 @@ description: Azure Service Fabric で初めての Windows コンテナー アプ
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 197423670ffe05f15fdc5bfd351efdfba33b53cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc819ea0141cac1305ca7a9c52d452b2f6e2961a
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96533776"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137382"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 
@@ -384,7 +384,7 @@ Windows Server コンテナーは、OS の異なるバージョン間では互�
          </ImageOverrides> 
       </ContainerHostPolicies> 
 ```
-WIndows Server 2016 のビルド バージョンは 14393 であり、Windows Server バージョン 1709 のビルド バージョンは 16299 です。 サービス マニフェストは、引き続き、次に示すようにコンテナー サービスごとに 1 つのイメージのみを指定します。
+Windows Server 2016 のビルド バージョンは 14393 であり、Windows Server バージョン 1709 のビルド バージョンは 16299 です。 サービス マニフェストは、引き続き、次に示すようにコンテナー サービスごとに 1 つのイメージのみを指定します。
 
 ```xml
 <ContainerHost>
@@ -598,6 +598,97 @@ Service Fabric ランタイムの 6.2 バージョン以降では、カスタム
     } 
 ]
 ```
+
+## <a name="entrypoint-override"></a>EntryPoint のオーバーライド
+ServiceFabric Runtime の 8.2 バージョンでは、**コンテナー** と **exe ホスト** コード パッケージのエントリ ポイントをオーバーライドできます。 これは、すべてのマニフェスト要素が同じままであるものの、コンテナー イメージを変更する必要があり、さらに別のアプリの種類のバージョンをプロビジョニングする必要がなくなった場合、あるいはテストまたは運用シナリオに基づいて異なる引数を渡す必要があり、エントリ ポイントは変わらない場合に使用できます。
+
+コンテナー エントリ ポイントをオーバーライドする方法の例を次に示します。
+
+### <a name="applicationmanifestxml"></a>ApplicationManifest.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest ApplicationTypeName="MyFirstContainerType"
+                     ApplicationTypeVersion="1.0.0"
+                     xmlns="http://schemas.microsoft.com/2011/01/fabric"
+                     xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+  <Parameters>
+    <Parameter Name="ImageName" DefaultValue="myregistry.azurecr.io/samples/helloworldapp" />
+    <Parameter Name="Commands" DefaultValue="commandsOverride" />
+    <Parameter Name="FromSource" DefaultValue="sourceOverride" />
+    <Parameter Name="EntryPoint" DefaultValue="entryPointOverride" />
+  </Parameters>
+  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion
+       should match the Name and Version attributes of the ServiceManifest element defined in the
+       ServiceManifest.xml file. -->
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Guest1Pkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+    <Policies>
+      <CodePackagePolicy CodePackageRef="Code">
+        <EntryPointOverride>
+         <ContainerHostOverride>
+            <ImageOverrides>
+              <Image Name="[ImageName]" />
+            </ImageOverrides>
+            <Commands>[Commands]</Commands>
+            <FromSource>[Source]</FromSource>
+            <EntryPoint>[EntryPoint]</EntryPoint>
+          </ContainerHostOverride>
+        </EntryPointOverride>
+      </CodePackagePolicy>
+    </Policies>
+  </ServiceManifestImport>
+</ApplicationManifest>
+```
+### <a name="servicemanifestxml"></a>ServiceManifest.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceManifest Name="Guest1Pkg"
+                 Version="1.0.0"
+                 xmlns="http://schemas.microsoft.com/2011/01/fabric"
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+  <ServiceTypes>
+    <!-- This is the name of your ServiceType.
+         The UseImplicitHost attribute indicates this is a guest service. -->
+    <StatelessServiceType ServiceTypeName="Guest1Type" UseImplicitHost="true" />
+  </ServiceTypes>
+
+  <!-- Code package is your service executable. -->
+  <CodePackage Name="Code" Version="1.0.0">
+    <EntryPoint>
+      <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
+      <ContainerHost>
+        <ImageName>default imagename</ImageName>
+        <Commands>default cmd</Commands>
+        <EntryPoint>default entrypoint</EntryPoint>
+        <FromSource>default source</FromSource>
+      </ContainerHost>
+    </EntryPoint>
+  </CodePackage>
+
+  <ConfigPackage Name="Config" Version="1.0.0" />
+</ServiceManifest>
+```
+アプリケーション マニフェストのオーバーライドを指定すると、イメージ名 myregistry.azurecr.io/samples/helloworldapp、コマンド commandsOverride、ソース sourceOverride、エントリ ポイント entryPointOverride のコンテナーが開始されます。
+
+同様に、**ExeHost** をオーバーライドする方法の例を次に示します。
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Policies>
+  <CodePackagePolicy CodePackageRef="Code">
+    <EntryPointOverride>
+      <ExeHostOverride>
+        <Program>[Program]</Program>
+        <Arguments>[Entry]</Arguments>
+      </ExeHostOverride>
+    </EntryPointOverride>
+  </CodePackagePolicy>
+</Policies>
+```
+> [!NOTE]
+> エントリ ポイントのオーバーライドは、SetupEntryPoint ではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 * [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。

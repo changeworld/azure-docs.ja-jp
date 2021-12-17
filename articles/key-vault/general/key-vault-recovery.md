@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 author: msmbaldwin
 ms.date: 09/30/2020
-ms.openlocfilehash: c3ffbba9546ada54a42c3f2c2aa5d98da599b353
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 45f56812f0d6645c9ac75ce62f9f0659acc358fe
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749735"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970077"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>論理的な削除と消去保護を使用した Azure Key Vault の回復の管理
 
@@ -34,6 +34,8 @@ Key Vault の詳細については、以下を参照してください。
   |---|---|
   |Microsoft.KeyVault/locations/deletedVaults/read|論理的に削除された Key Vault のプロパティを表示します。|
   |Microsoft.KeyVault/locations/deletedVaults/purge/action|論理的に削除された Key Vault を消去します。|
+  |Microsoft.KeyVault/locations/operationResults/read| コンテナーの消去状態を確認するために必要です|
+  |[Key Vault Contributor](../../role-based-access-control/built-in-roles.md#key-vault-contributor)|論理的に削除されたコンテナーを回復するために必要です|
 
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>論理的な削除および消去保護とは
@@ -398,6 +400,5 @@ Key Vault の詳細については、以下を参照してください。
 - [Key Vault の Azure CLI コマンド](/cli/azure/keyvault)
 - [Azure Key Vault のバックアップ](backup.md)
 - [Key Vault のログ記録を有効にする方法](howto-logging.md)
-- [キー コンテナーへのアクセスをセキュリティで保護する](security-overview.md)
+- [Azure Key Vault セキュリティ機能](security-features.md)
 - [Azure Key Vault 開発者ガイド](developers-guide.md)
-- [キー コンテナーを使用するためのベスト プラクティス](security-overview.md)

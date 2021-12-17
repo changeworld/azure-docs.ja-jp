@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Citrix ShareFile の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と Citrix ShareFile の統合'
 description: Azure Active Directory と Citrix ShareFile の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,38 +9,40 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 09/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 03f2ec7aef1faadcb72d6c7a5a058c7d06596539
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b59f3da3f2bd56a895a0e6b97d6052622e6b51d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729680"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132333469"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>チュートリアル: Azure Active Directory と Citrix ShareFile の統合
+# <a name="tutorial-azure-ad-sso-integration-with-citrix-sharefile"></a>チュートリアル: Azure AD SSO と Citrix ShareFile の統合
 
-このチュートリアルでは、Citrix ShareFile と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Citrix ShareFile と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Citrix ShareFile と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Citrix ShareFile を統合すると、次のことができます。
 
-* Citrix ShareFile にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが Azure AD アカウントで自動的に Citrix ShareFile にサインインできるようにします (シングル サインオン)。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Citrix ShareFile にアクセスできるユーザーを Azure AD で制御する。
+* ユーザーが自分の Azure AD アカウントを使用して Citrix ShareFile に自動的にサインインできるようにする。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と Citrix ShareFile の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の試用版を入手できます。
-* Citrix ShareFile でのシングル サインオンが有効なサブスクリプション。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Citrix ShareFile でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Citrix ShareFile では、**SP** によって開始される SSO がサポートされます
+* Citrix ShareFile では、**SP** Initiated SSO がサポートされます。
 
-## <a name="adding-citrix-sharefile-from-the-gallery"></a>ギャラリーからの Citrix ShareFile の追加
+## <a name="add-citrix-sharefile-from-the-gallery"></a>ギャラリーからの Citrix ShareFile の追加
 
 Azure AD への Citrix ShareFile の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Citrix ShareFile を追加する必要があります。
 
@@ -66,36 +68,40 @@ Citrix ShareFile で Azure AD シングル サインオンを構成し、テス�
     1. **[Citrix ShareFile テスト ユーザーの作成](#create-citrix-sharefile-test-user)** - Citrix ShareFile で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. Azure portal の **Citrix ShareFile** アプリケーション統合ページ上で、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。 
 
-    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.sharefile.com/saml/login` という形式で URL を入力します。
+    a. **[識別子 (エンティティ ID)]** テキストボックスに、次のいずれかのパターンを使用して URL を入力します。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。
+    | **Identifier** |
+    |--------|
+    | `https://<tenant-name>.sharefile.com` |
+    | `https://<tenant-name>.sharefile.com/saml/info` |
+    | `https://<tenant-name>.sharefile1.com/saml/info` |
+    | `https://<tenant-name>.sharefile1.eu/saml/info` |
+    | `https://<tenant-name>.sharefile.eu/saml/info` |
 
-    - `https://<tenant-name>.sharefile.com`
-    - `https://<tenant-name>.sharefile.com/saml/info`
-    - `https://<tenant-name>.sharefile1.com/saml/info`
-    - `https://<tenant-name>.sharefile1.eu/saml/info`
-    - `https://<tenant-name>.sharefile.eu/saml/info`
-
-    c. **[応答 URL]** ボックスに、 のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、次のいずれかの形式で URL を入力します。
     
-    - `https://<tenant-name>.sharefile.com/saml/acs`
-    - `https://<tenant-name>.sharefile.eu/saml/<URL path>`
-    - `https://<tenant-name>.sharefile.com/saml/<URL path>`
+    | **応答 URL** |
+    |-------|
+    | `https://<tenant-name>.sharefile.com/saml/acs` |
+    | `https://<tenant-name>.sharefile.eu/saml/<URL path>` |
+    | `https://<tenant-name>.sharefile.com/saml/<URL path>` |
+
+    c. **[サインオン URL]** ボックスに、`https://<tenant-name>.sharefile.com/saml/login` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得する場合は、[Citrix ShareFile クライアント サポート チーム](https://www.citrix.co.in/products/citrix-content-collaboration/support.html)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得する場合は、[Citrix ShareFile クライアント サポート チーム](https://www.citrix.co.in/products/citrix-content-collaboration/support.html)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -202,7 +208,6 @@ Citrix ShareFile で Azure AD シングル サインオンを構成し、テス�
 
 * Microsoft マイ アプリを使用することができます。 マイ アプリで [Citrix ShareFile] タイルをクリックすると、Citrix ShareFile のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-
 ## <a name="next-steps"></a>次のステップ
 
-Citrix ShareFile を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Citrix ShareFile を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

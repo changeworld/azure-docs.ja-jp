@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2d8663fa9344ffc2a554b6d7bb1fe3f1614b5b2
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75649507"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951422"
 ---
 # <a name="reference-deployment-template-artifact"></a>リファレンス: デプロイ テンプレートの成果物
 
-この記事は、Azure Managed Applications の *mainTemplate.json* 成果物のリファレンスです。 デプロイ テンプレートの作成の詳細については、[Azure Resource Manager テンプレート](../templates/template-syntax.md)に関する記事を参照してください。
+この記事は、Azure Managed Applications の *mainTemplate.json* 成果物のリファレンスです。 デプロイ テンプレートの作成の詳細については、[Azure Resource Manager テンプレート](../templates/syntax.md)に関する記事を参照してください。
 
 ## <a name="deployment-template"></a>デプロイ テンプレート
 
@@ -53,7 +53,7 @@ ms.locfileid: "75649507"
     },
     "zipFileBlobUri": {
       "type": "string",
-      "defaultValue": "https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip/functionpackage.zip",
+      "defaultValue": "https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.customproviders/custom-rp-with-function/artifacts/functionzip/functionpackage.zip",
       "metadata": {
         "description": "The Uri to the uploaded function zip file"
       }

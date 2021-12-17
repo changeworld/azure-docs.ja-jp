@@ -3,22 +3,22 @@ title: 式関数のリァレンス ガイド
 description: Azure Logic Apps および Power Automate の式に含まれる関数のリファレンス ガイド
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: reference
-ms.date: 03/30/2021
-ms.openlocfilehash: 53e96f4057b35fa6c849ec643ac1c9e0c7d5b402
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 09/09/2021
+ms.openlocfilehash: f242521b5ef683a125d86d7109b3e36d4d2e02be
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076549"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136996"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および [Power Automate](/flow/getting-started) でのワークフロー定義の場合、一部の[式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)では、ワークフローの実行開始時にはまだ存在しない可能性がある値が実行時のアクションから取得されます。 これらの式でこのような値を参照または処理するには、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)によって提供される "*関数*" を使用できます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および [Power Automate](/power-automate/getting-started) でのワークフロー定義の場合、一部の[式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)では、ワークフローの実行開始時にはまだ存在しない可能性がある値が実行時のアクションから取得されます。 これらの式でこのような値を参照または処理するには、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)によって提供される "*関数*" を使用できます。
 
 > [!NOTE]
-> このリファレンス ページは、Azure Logic Apps と Power Automate の両方に適用されますが、Azure Logic Apps のドキュメントに記載されています。 このページでは特にロジック アプリについて参照されていますが、これらの関数はフローとロジック アプリの両方で動作します。 Power Automate での関数と式について詳しくは、[条件での式の使用](/flow/use-expressions-in-conditions)に関する記事をご覧ください。
+> このリファレンス ページは、Azure Logic Apps と Power Automate の両方に適用されますが、Azure Logic Apps のドキュメントに記載されています。 このページでは特にロジック アプリ ワークフローについて参照されていますが、これらの関数はフローとロジック アプリ ワークフローの両方で動作します。 Power Automate での関数と式について詳しくは、[条件での式の使用](/power-automate/use-expressions-in-conditions)に関する記事をご覧ください。
 
 たとえば、整数や浮動小数点数の合計が必要なときは、[add() 関数](../logic-apps/workflow-definition-language-functions-reference.md#add)などの数学関数を使って値を計算できます。 関数を使用して実行できるタスクの他の例を示します。
 
@@ -62,11 +62,25 @@ ms.locfileid: "106076549"
 
 どちらの例でも、`customerName` プロパティに結果を割り当てています。
 
-式の関数に関するその他の注意事項を次に示します。
+<a name="function-considerations"></a>
+
+## <a name="considerations-for-using-functions"></a>関数の使用に関する考慮事項
+
+* デザイナーは、デザイン時に関数パラメーターとして使用されるランタイム式を評価しません。 デザイナーでは、すべての式をデザイン時に完全に評価できる必要があります。
 
 * 関数パラメーターは左から右に評価されます。
-
+ 
 * パラメーターの定義の構文において、パラメーターの後に疑問符 (?) が付いている場合は、そのパラメーターが省略可能であることを意味します。 たとえば、[getFutureTime()](#getFutureTime) をご覧ください。
+
+* プレーンテキストでインラインで表示される関数式では、代わりに式の補間形式を使用するために中かっこ ({}) を囲む必要があります。 この形式は、解析の問題を回避するのに役立ちます。 関数式がプレーンテキストでインラインで表示されない場合は、中かっこは必要ありません。
+
+  次の例は、正しい構文と正しくない構文を示しています。
+
+  **正しい**: `"<text>/@{<function-name>('<parameter-name>')}/<text>"`
+ 
+  **正しくない**: `"<text>/@<function-name>('<parameter-name>')/<text>"`
+ 
+  **OK**: `"@<function-name>('<parameter-name>')"`
 
 次のセクションでは、一般的な目的に基づいて関数を整理します。または、これらの関数を[アルファベット順](#alphabetical-list)で参照することもできます。
 
@@ -202,7 +216,7 @@ Logic Apps を使用すると、base64 エンコードまたはデコードが�
 * `decodeDataUri(<value>)`
 
 > [!NOTE]
-> これらの関数のいずれかを、ロジック アプリ デザイナーを使用して (たとえば、式エディターを使用して) ワークフローに手動で追加した場合、デザイナーから移動し、デザイナーに戻ると、デザイナーからその関数が消え、パラメーター値だけが残されます。 この動作は、関数のパラメーター値を編集せずに、この関数を使用するトリガーまたはアクションを選択した場合にも発生します。 この結果は、関数の可視性のみに影響し、その結果には影響しません。 コード ビューでは、関数への影響はありません。 ただし、関数のパラメーター値を編集すると、関数とその結果が両方ともコード ビューから削除され、関数のパラメーター値だけが残されます。
+> これらの関数のいずれかを、ワークフロー デザイナーの使用中に、手動で直接トリガーまたはアクションに追加した、または式エディターを使用して追加したいずれかの場合、デザイナーから移動し、その後デザイナーに戻ると、デザイナーからその関数が消え、パラメーター値だけが残されます。 この動作は、関数のパラメーター値を編集せずに、この関数を使用するトリガーまたはアクションを選択した場合にも発生します。 この結果は、関数の可視性のみに影響し、その結果には影響しません。 コード ビューでは、関数への影響はありません。 ただし、関数のパラメーター値を編集すると、関数とその結果が両方ともコード ビューから削除され、関数のパラメーター値だけが残されます。
 
 <a name="math-functions"></a>
 
@@ -1003,9 +1017,7 @@ base64ToBinary('<value>')
 base64ToBinary('aGVsbG8=')
 ```
 
-返される結果:
-
-`"0110000101000111010101100111001101100010010001110011100000111101"`
+たとえば、HTTP アクションを使用して要求を送信しているとします。 base64 でエンコードされた文字列を `base64ToBinary()` でバイナリ データに変換し、要求でそのデータをコンテンツ タイプ `application/octet-stream` を使用して送信できます。
 
 <a name="base64ToString"></a>
 
@@ -1044,7 +1056,7 @@ base64ToString('aGVsbG8=')
 
 ### <a name="binary"></a>binary
 
-文字列のバイナリ バージョンを返します。
+文字列の base64 エンコード バイナリ バージョンを返します。
 
 ```
 binary('<value>')
@@ -1057,20 +1069,13 @@ binary('<value>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*binary-for-input-value*> | String | 指定した文字列のバイナリ バージョン |
+| <*binary-for-input-value*> | String | 指定した文字列の base64 エンコード バイナリ バージョン |
 ||||
 
 *例*
 
-この例は、"hello" という文字列をバイナリ文字列に変換します。
-
-```
-binary('hello')
-```
-
-返される結果:
-
-`"0110100001100101011011000110110001101111"`
+たとえば、画像またはビデオ ファイルを返す HTTP アクションを使用している場合です。 `binary()` を使用して、値を base-64 でエンコードされたコンテンツ エンベロープ モデルに変換できます。 その後、`Compose` などの他のアクションでコンテンツ エンベロープを再利用できます。
+この関数式を使用し、要求でコンテンツ タイプ `application/octet-stream` の文字列バイトを送信できます。
 
 <a name="body"></a>
 
@@ -1145,8 +1150,8 @@ bool(<value>)
 
 | 入力値 | 種類 | 戻り値 |
 | ----------- | ---------- | ---------------------- |
-| `bool(1)` | Integer | `true` |
-| `bool(0)` | Integer    | `false` |
+| `bool(1)` | 整数型 | `true` |
+| `bool(0)` | 整数型    | `false` |
 | `bool(-1)` | Integer | `true` |
 | `bool('true')` | String | `true` |
 | `bool('false')` | String | `false` |
@@ -1194,15 +1199,6 @@ coalesce(null, null, null)
 
 2 つ以上の文字列を結合し、結合された文字列を返します。
 
-> [!NOTE]
-> Azure Logic Apps を使用すると、base64 エンコードおよびデコードが自動的または暗黙的に実行されるため、エンコードまたはデコードを必要とするデータと共に `concat()` 関数を使用するときに、これらの変換を手動で実行する必要はありません。
-> 
-> * `concat('data:;base64,',<value>)`
-> * `concat('data:,',encodeUriComponent(<value>))`
-> 
-> ただし、デザイナーでこの関数を使用すると、デザイナーで予期しないレンダリング動作が発生する可能性があります。 関数のパラメーター値を編集しない場合、これらの動作は関数の可視性のみに影響を与え、その結果には影響しません。編集した場合は、関数とその結果がコードから削除されます。 
-> 詳細については、「[Base64 のエンコードとデコード](#base64-encoding-decoding)」を参照してください。
-
 ```
 concat('<text1>', '<text2>', ...)
 ```
@@ -1214,8 +1210,16 @@ concat('<text1>', '<text2>', ...)
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*text1text2...* > | String | 入力文字列を結合して作成された文字列 |
+| <*text1text2...* > | String | 入力文字列を結合して作成された文字列。 <p><p>**注**: この結果の長さは 104,857,600 文字以下にする必要があります。 |
 ||||
+
+> [!NOTE]
+> Azure Logic Apps を使用すると、base64 エンコードおよびデコードが自動的または暗黙的に実行されるため、エンコードまたはデコードを必要とするデータと共に `concat()` 関数を使用するときに、これらの変換を手動で実行する必要はありません。
+>
+> * `concat('data:;base64,',<value>)`
+> * `concat('data:,',encodeUriComponent(<value>))`
+>
+> ただし、デザイナーでこの関数を使用すると、デザイナーで予期しないレンダリング動作が発生する可能性があります。 関数のパラメーター値を編集しない場合、これらの動作は関数の可視性のみに影響を与え、その結果には影響しません。編集した場合は、関数とその結果がコードから削除されます。 詳細については、「[Base64 のエンコードとデコード](#base64-encoding-decoding)」を参照してください。
 
 *例*
 
@@ -1284,7 +1288,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*destinationTimeZone*> | はい | String | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*destinationTimeZone*> | はい | String | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、[Microsoft Windows の既定のタイム ゾーン](/windows-hardware/manufacture/desktop/default-time-zones)に関するページを参照してください。 |
 | <*format*> | いいえ | String | [単一の書式指定子](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss.fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報が保持されます。 |
 |||||
 
@@ -1326,8 +1330,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*sourceTimeZone*> | はい | String | ソース タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
-| <*destinationTimeZone*> | はい | String | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*sourceTimeZone*> | はい | String | ソース タイム ゾーンの名前。 タイム ゾーン名については、[Microsoft Windows の既定のタイム ゾーン](/windows-hardware/manufacture/desktop/default-time-zones)に関する記事を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*destinationTimeZone*> | はい | String | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、[Microsoft Windows の既定のタイム ゾーン](/windows-hardware/manufacture/desktop/default-time-zones)に関する記事を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
 | <*format*> | いいえ | String | [単一の書式指定子](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss.fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報が保持されます。 |
 |||||
 
@@ -1369,7 +1373,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*sourceTimeZone*> | はい | String | ソース タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*sourceTimeZone*> | はい | String | ソース タイム ゾーンの名前。 タイム ゾーン名については、[Microsoft Windows の既定のタイム ゾーン](/windows-hardware/manufacture/desktop/default-time-zones)に関する記事を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
 | <*format*> | いいえ | String | [単一の書式指定子](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss.fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報が保持されます。 |
 |||||
 
@@ -1915,8 +1919,7 @@ first(createArray(0, 1, 2))
 
 ### <a name="float"></a>float
 
-浮動小数点数の文字列バージョンを実際の浮動小数点数に変換します。
-この関数は、ロジック アプリやフローなどのアプリにカスタム パラメーターを渡す場合にのみ使用できます。
+浮動小数点数の文字列バージョンを実際の浮動小数点数に変換します。 この関数は、ロジック アプリやフローなどのアプリにカスタム パラメーターを渡す場合にのみ使用できます。
 
 ```
 float('<value>')
@@ -1924,12 +1927,12 @@ float('<value>')
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | はい | String | 変換する有効な浮動小数点数を含む文字列 |
+| <*value*> | はい | String | 変換する有効な浮動小数点数を含む文字列。 最小値と最大値は、float データ型の制限と同じです。 |
 |||||
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*float-value*> | Float | 指定した文字列の浮動小数点数 |
+| <*float-value*> | Float | 指定した文字列の浮動小数点数。 最小値と最大値は、float データ型の制限と同じです。 |
 ||||
 
 *例*
@@ -2355,7 +2358,7 @@ indexOf('hello world', 'world')
 
 ### <a name="int"></a>INT
 
-文字列の整数バージョンを返します。
+整数の文字列バージョンを実際の整数値に変換します。
 
 ```
 int('<value>')
@@ -2363,12 +2366,12 @@ int('<value>')
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | はい | String | 変換する文字列 |
+| <*value*> | はい | String | 変換する整数の文字列バージョン。 最小値と最大値は、整数データ型の制限と同じです。 |
 |||||
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*integer-result*> | Integer | 指定した文字列の整数バージョン |
+| <*integer-result*> | Integer | 指定した文字列の整数バージョン。 最小値と最大値は、整数データ型の制限と同じです。 |
 ||||
 
 *例*
@@ -2591,7 +2594,7 @@ json('{"fullName": "Sophia Owen"}')
 
 この例では、`json()` および `xml()` の各関数を使用して、ルート要素に 1 つの子要素を含む XML を、その子要素に対する `person` という名前の JSON オブジェクトに変換します。
 
-`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))`
+`json(xml('<?xml version="1.0"?> <root> <person id="1"> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))`
 
 返される結果:
 
@@ -2614,7 +2617,7 @@ json('{"fullName": "Sophia Owen"}')
 
 この例では、`json()` および `xml()` の各関数を使用して、ルート要素に複数の子要素を含む XML を、それらの子要素に対する JSON オブジェクトを含む `person` という名前の配列に変換します。
 
-`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> <person id='2'> <name>John Doe</name> <occupation>Engineer</occupation> </person> </root>'))`
+`json(xml('<?xml version="1.0"?> <root> <person id="1"> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> <person id="2"> <name>John Doe</name> <occupation>Engineer</occupation> </person> </root>'))`
 
 返される結果:
 
@@ -2691,7 +2694,7 @@ join([<collection>], '<delimiter>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*char1*><*delimiter*><*char2*><*delimiter*>... | String | 指定した配列内のすべての項目から作成された結果の文字列 |
+| <*char1*><*delimiter*><*char2*><*delimiter*>... | String | 指定した配列内のすべての項目から作成された結果の文字列。 <p><p>**注**: この結果の長さは 104,857,600 文字以下にする必要があります。 |
 ||||
 
 *例*
@@ -3307,7 +3310,7 @@ range(<startIndex>, <count>)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*startIndex*> | はい | Integer | 最初の項目として配列を開始する整数値 |
-| <*count*> | はい | Integer | 配列内の整数の数 |
+| <*count*> | はい | Integer | 配列内の整数の数。 `count` パラメーター値は、10 万を超えない正の整数である必要があります。 <p><p>**注**: `startIndex` 値と `count` 値の合計は、2,147,483,647 以下である必要があります。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3724,7 +3727,7 @@ split('<text>', '<delimiter>')
 | [<*substring1*>,<*substring2*>,...] | Array | コンマで区切られた、元の文字列からの部分文字列を含む配列 |
 ||||
 
-*例*
+*例 1*
 
 この例では、区切り記号として指定した文字に基づいて指定された文字列からの部分文字列を含む配列を作成します。
 
@@ -3733,6 +3736,16 @@ split('a_b_c', '_')
 ```
 
 返される配列の結果: `["a","b","c"]`
+
+*例 2*
+  
+この例では、文字列に区切り記号が存在しない場合、1 つの要素を持つ配列が作成されます。
+
+```
+split('a_b_c', ' ')
+```
+
+返される配列の結果: `["a_b_c"]`
 
 <a name="startOfDay"></a>
 
@@ -4754,9 +4767,9 @@ xml('<value>')
 
 *例 1*
 
-この例は、JSON オブジェクトを含む次の文字列の XML バージョンを作成します。
+この例は、文字列を XML に変換します。
 
-`xml(json('{ \"name\": \"Sophia Owen\" }'))`
+`xml('<name>Sophia Owen</name>')`
 
 返される結果の XML:
 
@@ -4765,6 +4778,18 @@ xml('<value>')
 ```
 
 *例 2*
+
+この例は、JSON オブジェクトを含む次の文字列の XML バージョンを作成します。
+
+`xml(json('{ "name": "Sophia Owen" }'))`
+
+返される結果の XML:
+
+```xml
+<name>Sophia Owen</name>
+```
+
+*例 3*
 
 次のような JSON オブジェクトがあるものとします。
 
@@ -4779,7 +4804,7 @@ xml('<value>')
 
 この例は、この JSON オブジェクトを含む文字列の XML を作成します。
 
-`xml(json('{\"person\": {\"name\": \"Sophia Owen\", \"city\": \"Seattle\"}}'))`
+`xml(json('{"person": {"name": "Sophia Owen", "city": "Seattle"}}'))`
 
 返される結果の XML:
 

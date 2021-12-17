@@ -3,14 +3,14 @@ title: レジストリの geo レプリケーション
 description: geo レプリケートされた Azure Container Registry の作成と管理の概要について説明します。これにより、レジストリからマルチマスター リージョン レプリカを持つ複数のリージョンにサービスを提供できるようになります。 geo レプリケーションは、Premium サービス レベルの機能です。
 author: stevelas
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 06/28/2021
 ms.author: stevelas
-ms.openlocfilehash: 3e5b064ec37b855186f633677e2b1a3f615a6736
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c616c3e196547d72825759de94792cc6573a12d9
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783865"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113037978"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -25,8 +25,13 @@ geo レプリケートされたレジストリには次の利点があります�
 * リージョンの障害が発生した場合のレジストリの復元
 
 > [!NOTE]
+<<<<<<< HEAD
 > コンテナー イメージのコピーを複数の Azure Container Registry に保持する必要がある場合、Azure Container Registry も[イメージのインポート](container-registry-import-images.md)をサポートします。 たとえば DevOps ワークフローでは、Docker コマンドを使用する必要なしに、開発レジストリから運用レジストリにイメージをインポートできます。
 >
+=======
+> * コンテナー イメージのコピーを複数の Azure コンテナー レジストリに保持する必要がある場合、Azure Container Registry も[イメージのインポート](container-registry-import-images.md)をサポートします。 たとえば DevOps ワークフローでは、Docker コマンドを使用する必要なしに、開発レジストリから運用レジストリにイメージをインポートできます。
+> * レジストリを geo レプリケートするのではなく、別の Azure リージョンに移動する場合は、「[コンテナー レジストリを別のリージョンに手動で移動する](manual-regional-move.md)」を参照してください。
+>>>>>>> repo_sync_working_branch
 
 ## <a name="example-use-case"></a>ユース ケースの例
 Contoso では、米国、カナダ、ヨーロッパにまたがる パブリック プレゼンスの Web サイトを運用しています。 Contoso は、ネットワーク上の近い場所にあるローカルのコンテンツでこれらの市場に対応するために、米国西部、米国東部、カナダ中部、西ヨーロッパで [Azure Kubernetes Service](../aks/index.yml) (AKS) クラスターを実行しています。 Docker イメージとしてデプロイされた Web サイト アプリケーションでは、すべてのリージョンで同じコードとイメージを使用します。 リージョンのローカルのコンテンツは、各リージョンに独自にプロビジョニングされたデータベースから取得されます。 各リージョン デプロイには、ローカル データベースなどのリソースの独自の構成があります。
@@ -58,7 +63,7 @@ Azure Container Registry の geo レプリケーション機能を使用する�
 
 * すべてのリージョンにまたがる 1 つのレジストリ (`contoso.azurecr.io`) を管理すれば済む。
 * すべてのリージョンで同じイメージ URL (`contoso.azurecr.io/public/products/web:1.2`) が使用されるので、イメージのデプロイの 1 つの構成を管理すれば済む。
-* 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR が管理する。 ACR は一意のレイヤーのみをレプリケートし、リージョン間のデータ転送を削減する。 
+* 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR によって自動管理される。 ACR は一意のレイヤーのみをレプリケートし、リージョン間のデータ転送を削減する。 
 * 特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成する。
 * リージョンの障害に対して回復性がある高可用性レジストリを提供します。
 
@@ -66,7 +71,7 @@ Azure Container Registry では、耐障害性と可用性に優れた Azure Con
 
 ## <a name="configure-geo-replication"></a>geo レプリケーションの構成
 
-geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。 Azure CLI の [az acr replication](/cli/azure/acr/replication) コマンドなどのツールを使用して geo レプリケーションを管理することや、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)を使用して geo レプリケーションが有効なレジストリをデプロイすることもできます。
+geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。 Azure CLI の [az acr replication](/cli/azure/acr/replication) コマンドなどのツールを使用して geo レプリケーションを管理することや、[Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/container-registry-geo-replication/)を使用して geo レプリケーションが有効なレジストリをデプロイすることもできます。
 
 geo レプリケーションは、[Premium レジストリ](container-registry-skus.md)の機能です。 レジストリがまだ Premium でない場合は、[Azure Portal](https://portal.azure.com) で Basic および Standard から Premium に変更できます。
 
@@ -102,6 +107,13 @@ ACR は、構成済みのレプリカ間でイメージの同期を開始しま�
 * geo レプリケーションされたレジストリへのプッシュ更新に依存するワークフローを管理するには、プッシュ イベントに応答するように [Webhook](container-registry-webhook.md) を構成することをお勧めします。 geo レプリケーションされたレジストリ内にリージョンの Webhook を設定して、geo レプリケーションされたすべてのリージョンにわたってプッシュ イベントが完了したときにそれを追跡できます。
 * コンテンツ レイヤーを表す BLOB にサービスを提供するために、Azure Container Registry ではデータ エンドポイントを使用します。 各レジストリの geo レプリケートされたリージョンで、レジストリの[専用データ エンドポイント](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)を有効にすることができます。 これらのエンドポイントを使用すると、スコープが厳密に設定されたファイアウォール アクセス規則を構成できます。 トラブルシューティング時には、レプリケートされたデータを維持したまま、必要に応じて[レプリケーションへのルーティングを無効にする](#temporarily-disable-routing-to-replication)ことができます。
 * 仮想ネットワークのプライベート エンドポイントを使用して、レジストリの [Private Link](container-registry-private-link.md) を構成した場合、geo レプリケートされた各リージョンの専用データ エンドポイントが既定で有効になります。 
+
+## <a name="considerations-for-high-availability"></a>高可用性に関する考慮事項
+
+* 高可用性と回復性に関して、[ゾーン冗長](zone-redundancy.md)の有効化をサポートするリージョンにレジストリを作成することをお勧めします。 また、各レプリカ リージョンのゾーン冗長を有効にすることもお勧めします。
+* レジストリのホーム リージョン (作成元となったリージョン) またはそのいずれかのレプリカ リージョンで障害が発生しても、コンテナー イメージのプッシュ、プルなど、データ プレーン操作には geo レプリケーションされたレジストリを利用可能です。 
+* レジストリのホーム リージョンが利用不可となった場合、ネットワーク ルールの構成、可用性ゾーンの有効化、レプリカの管理など、レジストリ管理操作は実行できないことがあります。
+* geo レプリケーションされたレジストリが、Azure Key Vault に格納された[カスタマー マネージド キー](container-registry-customer-managed-keys.md)で暗号化されているとき、レジストリの高可用性を計画するには、キー コンテナーの[フェールオーバーと冗長性](../key-vault/general/disaster-recovery-guidance.md)に関するガイダンスを確認してください。
 
 ## <a name="delete-a-replica"></a>レプリカの削除
 

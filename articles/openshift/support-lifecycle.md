@@ -5,13 +5,13 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
-ms.date: 03/06/2021
-ms.openlocfilehash: 35cbaf2b6d2618d116d2dd322ae5ac28f578cecc
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/16/2021
+ms.openlocfilehash: 2c1eeb97fecac449e85aa0a5d1987dc6ef2c4b4f
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303544"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614272"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 のサポート ライフサイクル
 
@@ -97,10 +97,11 @@ Azure Red Hat OpenShift SRE チームは、事前に通知することなく、�
 
 |OCP のバージョン|アップストリームのリリース|Azure Red Hat OpenShift の一般提供|有効期限切れ|
 |-|-|-|-|
-|4.3|2020 年 1 月|2020 年 4 月| 2020 年 8 月|
 |4.4.|2020 年 5 月|2020 年 7 月|4.6 一般公開|
-|4.5|2020 年 7 月| 2020 年 11 月|4.7 一般公開
+|4.5|2020 年 7 月| 2020 年 11 月|4.7 一般公開|
 |4.6|2020 年 10 月| 2021 年 2 月|4.8 一般公開|
+|4.7|2021 年 2 月| 2021 年 7 月 15 日|4.9 GA|
+|4.8|2021 年 7 月| 2021 年 9 月 15 日|4.10 GA|
 
 ## <a name="faq"></a>よく寄せられる質問
 
@@ -114,7 +115,7 @@ N-2 以前のバージョンを使用している場合は、サポート対象�
 
 **"サポート外" とは**
 
-ARO クラスターで、サポートされているバージョンの一覧にない OpenShift バージョンが実行されている場合、または[サポートされていないクラスター構成](https://docs.microsoft.com/azure/openshift/support-policies-v4)を使用している場合、クラスターは "サポート対象外" になります。 その結果、次のような影響が出ています。
+ARO クラスターで、サポートされているバージョンの一覧にない OpenShift バージョンが実行されている場合、または[サポートされていないクラスター構成](./support-policies-v4.md)を使用している場合、クラスターは "サポート対象外" になります。 その結果、次のような影響が出ています。
 - クラスターのサポート チケットを開くときに、クラスターをサポートされているバージョンにアップグレードするように求められます。 サポートを受ける前であり、バージョンのサポート終了後の 30 日間の猶予期間内である場合を除きます。 
 - サポート外のクラスターに対するランタイムまたは SLA の保証は、すべて無効になります。
 - サポート外のクラスターには、ベスト エフォートでのみパッチが適用されます。

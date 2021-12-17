@@ -1,19 +1,20 @@
 ---
 title: Synapse ワークスペースのマネージド ID にアクセス許可を付与する
 description: Azure Synapse ワークスペースのマネージド ID のアクセス許可を構成する方法について説明する記事。
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 04/15/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 46fe27205a2c30d6cb2319bf620c6fe1ee34c31e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 009f611e1c80f4c4e0e7bafaa80036d809b3393d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96458999"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853075"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity"></a>ワークスペースのマネージド ID にアクセス許可を付与する
 
@@ -21,14 +22,6 @@ ms.locfileid: "96458999"
 
 >[!NOTE]
 >このドキュメントの残りの部分では、このワークスペース マネージド ID をマネージド ID と呼びます。
-
-## <a name="grant-managed-identity-permissions-to-the-dedicated-sql-pool"></a>マネージド ID に専用 SQL プールへのアクセス許可を付与する
-
-マネージド ID によって、ワークスペース内の専用 SQL プールへのアクセス許可が付与されます。 アクセス許可が付与されていると、専用 SQL プール関連のアクティビティを実行するパイプラインを調整できます。 Azure portal を使用して Azure Synapse ワークスペースを作成するときに、専用 SQL プールに対する CONTROL アクセス許可をマネージド ID に付与できます。
-
-Azure Synapse ワークスペースの作成時に、 **[セキュリティ]** を選択します。 次に、 **[Allow pipelines (running as workspace's system assigned identity) to access SQL pools]\((ワークスペースのシステム割り当て ID として実行されている) パイプラインに SQL プールへのアクセスを許可する\)** を選択します。
-
-![専用 SQL プールに対する CONTROL アクセス許可](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
 ## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>マネージド ID に ADLS Gen2 ストレージ アカウントへのアクセス許可を付与する
 
@@ -72,41 +65,26 @@ Azure portal で、ADLS Gen2 ストレージ アカウントを開き、左側�
 それと同じコンテナーまたはファイルシステムを選択して、*ストレージ BLOB データ共同作成者* ロールをマネージド ID に付与します。
 ![選択する必要があるコンテナーまたはファイル システムを示すスクリーンショット。](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
-#### <a name="step-3-navigate-to-access-control"></a>手順 3:アクセス制御に移動する
+#### <a name="step-3-open-access-control-and-add-role-assignment"></a>手順 3: アクセス制御を開き、ロールの割り当てを追加するする
 
-**[アクセス制御 (IAM)]** を選択します。
+1. **[アクセス制御 (IAM)]** を選択します。
 
-![[アクセス制御 (IAM)]](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-8.png)
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
 
-#### <a name="step-4-add-a-new-role-assignment"></a>手順 4:新しいロールの割り当てを追加する
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | ストレージ BLOB 共同作成者 |
+    | アクセスの割り当て先 | マネージド ID |
+    | メンバー | マネージド ID 名  |
 
-**[+ 追加]** を選択します。
+    > [!NOTE]
+    > マネージド ID の名前は、ワークスペース名でもあります。
 
-![新しいロールの割り当てを追加する](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
-#### <a name="step-5-select-the-azure-role"></a>手順 5:Azure ロールを選択する
-
-**[ストレージ BLOB データ共同作成者]** ロールを選択します。
-
-![Azure ロールを選択する](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-10.png)
-
-#### <a name="step-6-select-the-azure-ad-security-principal"></a>手順 6:Azure AD セキュリティ プリンシパルを選択する
-
-**[アクセスの割り当て先]** ドロップダウンで **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
-
-![Azure AD セキュリティ プリンシパルを選択する](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-11.png)
-
-#### <a name="step-7-search-for-the-managed-identity"></a>手順 7:マネージド ID を検索する
-
-マネージド ID の名前は、ワークスペース名でもあります。 マネージド ID を検索するには、 **[選択]** に Azure Synapse ワークスペース名を入力します。 マネージド ID が表示されます。
-
-![マネージド ID を検索する](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-12.png)
-
-#### <a name="step-8-select-the-managed-identity"></a>手順 8:マネージド ID を選択する
-
-**[選択したメンバー]** に対してマネージド ID を選択します。 **[保存]** を選択して、ロールの割り当てを追加します。
-
-![マネージド ID を選択する](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-13.png)
+1. **[保存]** を選択して、ロールの割り当てを追加します。
 
 #### <a name="step-9-verify-that-the-storage-blob-data-contributor-role-is-assigned-to-the-managed-identity"></a>手順 9:ストレージ BLOB データ共同作成者ロールがマネージド ID に割り当てられていることを確認する
 
@@ -119,4 +97,4 @@ Azure portal で、ADLS Gen2 ストレージ アカウントを開き、左側�
 
 ## <a name="next-steps"></a>次のステップ
 
-[ワークスペースのマネージド ID](./synapse-workspace-managed-identity.md) の詳細を確認する
+[ワークスペースのマネージド ID](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics) の詳細を確認する

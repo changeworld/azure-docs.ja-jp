@@ -6,21 +6,23 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 4b218a9481fdd5970fd6fc8fa6a1d071161e5b58
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e100acf7006c3ab4ad5fad9281f372a37ac8c6b4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313366"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663670"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql-single-server"></a>Azure Database for MySQL シングル サーバーのルート CA の変更について
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL シングル サーバーにより、標準のメンテナンスとセキュリティのベスト プラクティスの一環として、**2021 年 2 月 15 日 (2021/02/15)** にルート証明書の変更が正常に完了しました。 この記事では、変更点、影響を受けるリソース、アプリケーションでデータベース サーバーへの接続を確実に維持するために必要な手順について、詳しく説明します。
 
 > [!NOTE]
 > この記事は、[Azure Database for MySQL シングル サーバー](single-server-overview.md)にのみ適用されます。 [Azure Database for MySQL - フレキシブル サーバー](flexible-server/overview.md)の場合、SSL を介した通信に必要な証明書は [DigiCert グローバル ルート CA](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) です。
 >
-> この記事には、Microsoft が使用しなくなった "_スレーブ_" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 >
 
 #### <a name="why-is-a-root-certificate-update-required"></a>なぜルート証明書の更新が必要なのですか?

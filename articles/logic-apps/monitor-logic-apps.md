@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 3c3d1930234c178a56227830ef0702450ddf4a8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39971500d89ba8cbc1bbaf4938884bf2eba20813
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580666"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536624"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Azure Logic Apps での実行状態の監視、トリガー履歴の確認、アラートの設定
 
@@ -20,7 +20,7 @@ ms.locfileid: "100580666"
 リアルタイムでのイベントの監視と高度なデバッグを行うには、[Azure Monitor ログ](../azure-monitor/overview.md)を使用してロジック アプリの診断ログを設定します。 この Azure サービスを使用すると、クラウド環境とオンプレミス環境を監視して、可用性とパフォーマンスをより簡単に維持することができます。 これにより、トリガー イベント、実行イベント、アクション イベントなどのイベントを検索して表示できます。 この情報を [Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)に格納することで、この情報の検索と分析に役立つ[ログ クエリ](../azure-monitor/logs/log-query-overview.md)を作成できます。 この診断データは、Azure Storage や Azure Event Hubs などの他の Azure サービスで使用することもできます。 詳細については、「[Azure Monitor を使用してロジック アプリを監視する](../logic-apps/monitor-logic-apps-log-analytics.md)」を参照してください。
 
 > [!NOTE]
-> [内部アクセス エンドポイント](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)を使用するように作成された [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) でロジック アプリを実行する場合、*仮想ネットワーク内からのみ*、ロジック アプリの実行履歴の入力と出力を表示してアクセスできます。 プライベート エンドポイントと、実行履歴へのアクセス元として使用するコンピューターの間にネットワーク接続があることを確認します。 たとえば、クライアント コンピューターは、ISE の仮想ネットワーク内、または ISE の仮想ネットワークに接続されている仮想ネットワーク内に配置できます (たとえば、ピアリングや仮想プライベート ネットワークを使用します)。 詳細については、「[ISE エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 
+> [内部アクセス エンドポイント](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)を使用するように作成された [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) でロジック アプリを実行する場合、*仮想ネットワーク内からのみ*、ロジック アプリの実行履歴の入力と出力を表示してアクセスできます。 プライベート エンドポイントと、実行履歴へのアクセス元として使用するコンピューターの間にネットワーク接続があることを確認します。 たとえば、クライアント コンピューターは、ISE の仮想ネットワーク内、または ISE の仮想ネットワークに接続されている仮想ネットワーク内に配置できます (たとえば、ピアリングや仮想プライベート ネットワークを使用します)。 詳細については、「[ISE エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。
 
 <a name="review-runs-history"></a>
 
@@ -43,7 +43,8 @@ ms.locfileid: "100580666"
    [概要] ウィンドウの **[実行の履歴]** の下に、ロジック アプリの過去、現在、および待機中の実行がすべて表示されます。 一覧に多数の実行が表示され、必要なエントリが見つからない場合は、一覧をフィルター処理してみてください。
 
    > [!TIP]
-   > 実行の状態が表示されない場合は、 **[更新]** を選択して [概要] ページを更新してみてください。 条件が満たされなかったか、データが見つからなかったためにスキップされたトリガーに対しては、実行は行われません。
+   > 実行の状態が表示されない場合は、 **[更新]** を選択して [概要] ページを更新してみてください。
+   > 条件が満たされなかったか、データが見つからなかったためにスキップされたトリガーに対しては、実行は行われません。
 
    ![概要、実行の履歴、およびその他のロジック アプリ情報](./media/monitor-logic-apps/overview-pane-logic-app-details-run-history.png)
 
@@ -91,7 +92,9 @@ ms.locfileid: "100580666"
      そのステップの入力や出力などの情報を表示できるようになりました。次に例を示します。
 
    > [!NOTE]
-   > Logic Apps サービス内では、実行時の詳細情報とイベントはすべて暗号化されます。 これらの暗号化が解除されるのは、ユーザーがそのデータの表示を要求したときのみです。 [実行履歴の入力と出力を非表示にしたり](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate)、[Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) を使用して、この情報へのユーザー アクセスを制御したりすることができます。
+   > Logic Apps サービス内では、実行時の詳細情報とイベントはすべて暗号化されます。
+   > これらの暗号化が解除されるのは、ユーザーがそのデータの表示を要求したときのみです。
+   > [実行履歴の入力と出力を非表示にしたり](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate)、[Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) を使用して、この情報へのユーザー アクセスを制御したりすることができます。
 
 <a name="review-trigger-history"></a>
 
@@ -189,10 +192,10 @@ ms.locfileid: "100580666"
 
 > [!TIP]
 > アラートからロジック アプリを実行するために、[要求トリガー](../connectors/connectors-native-reqres.md)をワークフローに含めることができます。これにより、次の例のようなタスクを実行できます。
-> 
-> * [Slack に投稿する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
-> * [テキストを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
-> * [メッセージをキューに追加する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
+>
+> * [Slack に投稿する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-slack-with-logic-app)
+> * [テキストを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-text-message-with-logic-app)
+> * [メッセージをキューに追加する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-queue-with-logic-app)
 
 ## <a name="next-steps"></a>次のステップ
 

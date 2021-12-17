@@ -5,15 +5,17 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/26/2020
-ms.openlocfilehash: fd303804706f9ae210e6714cc8698c94c39ebef6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/17/2021
+ms.openlocfilehash: 26e93c85a6968a994a7f4e3a14df1e0910442def
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106855"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429503"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを作成し、管理する方法
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL - フレキシブル サーバーの読み取りレプリカは、プレビュー段階です。
@@ -21,7 +23,10 @@ ms.locfileid: "105106855"
 この記事では、Azure portal を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを作成および管理する方法について説明します。
 
 > [!Note]
-> 高可用性が有効になっているサーバーでは、レプリカはサポートされていません。 
+>
+> * 高可用性が有効になっているサーバーでは、レプリカはサポートされていません。
+>
+> * プライマリ サーバーで GTID が有効になっている場合 (`gtid_mode` = ON)、新しく作成されたレプリカでも GTID が有効になり、GTID ベースのレプリケーションが使用されます。 詳細については、「[グローバル トランザクション識別子 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +35,7 @@ ms.locfileid: "105106855"
 ## <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 
 > [!IMPORTANT]
-> 既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
+>既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
 
 読み取りレプリカ サーバーは、次の手順を使用して作成できます。
 
@@ -44,7 +49,7 @@ ms.locfileid: "105106855"
 
    :::image type="content" source="./media/how-to-read-replica-portal/add-replica.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
-5. レプリカ サーバーの名前を入力します。
+5. レプリカ サーバーの名前を入力します。 リージョンで Availability Zones がサポートされている場合は、任意の可用性ゾーンを選択することができます。
 
     :::image type="content" source="./media/how-to-read-replica-portal/replica-name.png" alt-text="Azure Database for MySQL - レプリカ名":::
 
@@ -60,11 +65,11 @@ ms.locfileid: "105106855"
 ## <a name="stop-replication-to-a-replica-server"></a>レプリカ サーバーへのレプリケーションを停止します。
 
 > [!IMPORTANT]
-> サーバーへのレプリケーションの停止は、元に戻すことができません。 ソースとレプリカの間のレプリケーションを停止すると、元に戻すことはできません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーをもう一度レプリカにすることはできません。
+>サーバーへのレプリケーションの停止は、元に戻すことができません。 ソースとレプリカの間のレプリケーションを停止すると、元に戻すことはできません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーをもう一度レプリカにすることはできません。
 
 Azure Portal からソースとレプリカ サーバー間のレプリケーションを停止するには、次の手順を使用します。
 
-1. Azure portal で、ソースの Azure Database for MySQL フレキシブル サーバーを選択します。 
+1. Azure portal で、ソースの Azure Database for MySQL フレキシブル サーバーを選択します。
 
 2. **[設定]** で、メニューから **[レプリケーション]** を選択します。
 
@@ -96,14 +101,14 @@ Azure Portal からソースとレプリカ サーバー間のレプリケーシ
 
    :::image type="content" source="./media/how-to-read-replica-portal/delete-replica.png" alt-text="Azure Database for MySQL - レプリカの削除":::
 
-5. レプリカの名前を入力して、 **[削除]** をクリックし、レプリカの削除を確定します。  
+5. レプリカの名前を入力して、 **[削除]** をクリックし、レプリカの削除を確定します。
 
    :::image type="content" source="./media/how-to-read-replica-portal/delete-replica-confirm.png" alt-text="Azure Database for MySQL - レプリカ確定の削除":::
 
 ## <a name="delete-a-source-server"></a>ソース サーバーを削除する
 
 > [!IMPORTANT]
-> ソース サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、ソース サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
+>ソース サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、ソース サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
 
 ソース サーバーを Azure Portal から削除するには、次の手順を使用します。
 
@@ -113,7 +118,7 @@ Azure Portal からソースとレプリカ サーバー間のレプリケーシ
 
    [:::image type="content" source="./media/how-to-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL - ソースの削除":::](./media/how-to-read-replica-portal/delete-master-overview.png#lightbox)
 
-3. ソース サーバーの名前を入力して、 **[削除]** をクリックし、ソース サーバーの削除を確定します。  
+3. ソース サーバーの名前を入力して、 **[削除]** をクリックし、ソース サーバーの削除を確定します。
 
    :::image type="content" source="./media/how-to-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL - ソースの削除の確認":::
 

@@ -8,30 +8,30 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a369ed26ca91dbf951b28b99250c6307608c5eb3
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 5f92ecca8ccecda0f4ba6e7e87dc0287c75ed41b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749080"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761621"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>コンテナー アクセス ポリシーから Azure ロールベースのアクセス制御のアクセス許可モデルへの移行
 
-コンテナー アクセス ポリシー モデルは、キー、シークレット、証明書へのアクセスを提供するために Key Vault に組み込まれた既存の承認システムです。 Key Vault スコープで、セキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、マネージド ID) に個々のアクセス許可を割り当てることにより、アクセスを制御できます。 
+コンテナー アクセス ポリシー モデルは、キー、シークレット、証明書へのアクセスを提供するために Key Vault に組み込まれた既存の認可システムです。 Key Vault スコープで、セキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、マネージド ID) に個々のアクセス許可を割り当てることにより、アクセスを制御できます。 
 
 Azure ロールベースのアクセス制御 (Azure RBAC) は [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 上に構築された承認システムであり、Azure リソースに対するアクセスをきめ細かく管理できます。 Azure RBAC では、ロールの割り当てを作成することによって、リソースへのアクセスを制御します。これには、セキュリティ プリンシパル、ロールの定義 (定義済みの一連のアクセス許可)、スコープ (リソースのグループまたは個々のリソース) の 3 つの要素が含まれます。 詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページを参照してください。
 
 Azure RBAC に移行する前に、その利点と制限事項を理解しておくことが重要です。
 
 コンテナー アクセス ポリシーよりも優れている Azure RBAC の主な利点は以下のとおりです。
-- Azure リソースの統一されたアクセス制御モデルを提供 - Azure サービス間で同じ API を使用
+- Azure サービス間で同じ API を使用して、Azure リソースの統一されたアクセス制御モデルを提供する
 - 管理者向けの一元化されたアクセス管理 - すべての Azure リソースを 1 つのビューで管理
 - 時間ベースのアクセス制御を実現する [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) との統合
-- 拒否の割り当て - 特定のスコープでセキュリティ プリンシパルを除外する機能 詳細については、「[Azure 拒否割り当てについて](../../role-based-access-control/deny-assignments.md)」を参照してください
+- 拒否の割り当て - 特定のスコープでセキュリティ プリンシパルを除外する機能。 詳細については、「[Azure 拒否割り当てについて](../../role-based-access-control/deny-assignments.md)」を参照してください
 
 Azure RBAC の短所は以下のとおりです。
 - ロールの割り当ての待機時間 - ロールの割り当てが適用されるまでに数分かかることがあります。 コンテナー アクセス ポリシーはすぐに割り当てられます。
-- ロールの割り当て数が制限 - サブスクリプションあたり 2000 のロール割り当てと Key Vault あたり 1024 のアクセス ポリシー
+- ロールの割り当て数の制限 - Azure RBAC では、サブスクリプションごとにすべてのサービスに対して 2000 のロールのみを割り当てることができますが、Key Vault では 1024 のアクセス ポリシーが可能です
 
 ## <a name="access-policies-to-azure-roles-mapping"></a>Azure ロール マッピングへのアクセス ポリシー
 
@@ -65,7 +65,7 @@ Azure RBAC には、ユーザー、グループ、サービス プリンシパ�
 - SharePoint Online カスタマー キー
 - Azure Information BYOK
 
-### <a name="access-policies-templates-to-azure-roles-mapping"></a>Azure ロール マッピングへのアクセス ポリシー テンプレート
+### <a name="access-policy-templates-to-azure-roles-mapping"></a>Azure ロール マッピングへのアクセス ポリシー テンプレート
 | アクセス ポリシー テンプレート | 操作 | Azure ロール |
 | --- | --- | --- |
 | キー、シークレット、および証明書の管理 | キー: すべての操作 <br>証明書: すべての操作<br>シークレット: すべての操作 | Key Vault Administrator |
@@ -76,7 +76,7 @@ Azure RBAC には、ユーザー、グループ、サービス プリンシパ�
 | 証明書管理 | 証明書: すべての操作 | Key Vault Certificates Officer|
 | SQL Server コネクタ | キー: 取得、一覧表示、キーを折り返す、キーの折り返しを解除 | Key Vault Crypto Service Encryption User|
 | Azure Data Lake Storage または Azure Storage | キー: 取得、一覧表示、キーの折り返しを解除 | N/A<br> カスタム ロールが必要|
-| Azure Backup | キー: 取得、一覧表示、バックアップ<br> 証明書: 取得、一覧表示、バックアップ | N/A<br> カスタム ロールが必要|
+| Azure Backup | キー: 取得、一覧表示、バックアップ<br> シークレット: 取得、一覧表示、バックアップ | N/A<br> カスタム ロールが必要|
 | Exchange Online カスタマー キー | キー: 取得、一覧表示、キーを折り返す、キーの折り返しを解除 | Key Vault Crypto Service Encryption User|
 | Exchange Online カスタマー キー | キー: 取得、一覧表示、キーを折り返す、キーの折り返しを解除 | Key Vault Crypto Service Encryption User|
 | Azure Information BYOK | キー: 取得、復号化、署名 | N/A<br>カスタム ロールが必要|
@@ -91,7 +91,7 @@ Key Vault 用の Azure RBAC では、次のスコープでロールを割り当�
 - Key Vault リソース
 - 個々のキー、シークレット、証明書
 
-コンテナー アクセス ポリシーのアクセス許可モデルは、Key Vault リソース レベルでのみポリシーを割り当てることができるように制限されています。 
+コンテナー アクセス ポリシーのアクセス許可モデルは、Key Vault リソース レベルでのみポリシーを割り当てることができるように制限されています。
 
 一般に、アプリケーションごとに 1 つのキー コンテナーを持ち、キー コンテナー レベルでアクセスを管理することをお勧めします。 他のスコープでアクセスを管理すると、アクセス管理が簡単になる場合があります。
 

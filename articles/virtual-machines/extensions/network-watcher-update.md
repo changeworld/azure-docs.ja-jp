@@ -14,12 +14,13 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: 42efe2927b4d711f7fa66a96ebd25f1a62bf654a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8efe40fd4a60da7fa77e642d8ad95b3495d9771e
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563610"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094597"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>Network Watcher 拡張機能を最新バージョンに更新する
 
@@ -33,7 +34,7 @@ ms.locfileid: "102563610"
 
 ## <a name="latest-version"></a>最新バージョン
 
-現在の Network Watcher 拡張機能の最新バージョンは `1.4.1693.1` です。
+現在の Network Watcher 拡張機能の最新バージョンは `1.4.1974.1` です。
 
 ## <a name="update-your-extension-using-a-powershell-script"></a>PowerShell スクリプトを使用して拡張機能を更新する
 一度に複数の VM を更新する必要がある、大規模なデプロイを使用するお客様。 選択した VM を手動で更新するには、次のセクションを参照してください。 
@@ -58,7 +59,7 @@ param(
     [Parameter(Mandatory=$false)]
     [Switch] $NoUpdate = $false,
     [Parameter(Mandatory=$false)]
-    [string] $MinVersion = "1.4.1654.1"
+    [string] $MinVersion = "1.4.1974.1"
 )
 
 
@@ -180,7 +181,7 @@ Get-AzVM -ResourceGroupName "SampleRG" -Name "Sample-VM" -Status
 Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux"
 
 #Windows command
-Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "NetworkWatcherAgentWindows" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -ForceRerun "True"
+Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name " AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -ForceRerun "True"
 
 ```
 

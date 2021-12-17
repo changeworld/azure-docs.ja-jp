@@ -3,16 +3,17 @@ title: Azure Data Factory を使用した SSIS パッケージの呼び出し - 
 description: この記事では、ストアド プロシージャ アクティビティを使用して SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインから呼び出す方法を説明します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 10/22/2021
 ms.author: jingwang
-ms.openlocfilehash: 6c831fa1c6351840693f2b10a22f59c5cc424d0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f6b574bd24d7bd284d985aeb9a129d2143819e1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392886"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016513"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す
 この記事では、ストアド プロシージャ アクティビティを使用して SSIS パッケージを Azure Data Factory パイプラインから呼び出す方法を説明します。 
@@ -39,18 +40,21 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 次の手順では、データ ファクトリを作成する方法を説明します。 このデータ ファクトリにストアド プロシージャ アクティビティを含むパイプラインを作成します。 ストアド プロシージャ アクティビティが SSISDB データベース内でストアド プロシージャを実行して、SSIS パッケージを実行します。
 
 1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../../azure-resource-manager/management/overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
-   
-     ```powershell
+
+    ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 
     リソース グループが既に存在する場合、上書きしないようお勧めします。 `$ResourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
+
 2. Azure リソース グループを作成するには、次のコマンドを実行します。 
 
     ```powershell
     $ResGrp = New-AzResourceGroup $resourceGroupName -location 'eastus'
     ``` 
-    リソース グループが既に存在する場合、上書きしないようお勧めします。 `$ResourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。 
+
+    リソース グループが既に存在する場合、上書きしないようお勧めします。 `$ResourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
+
 3. データ ファクトリ名の変数を定義します。 
 
     > [!IMPORTANT]
@@ -62,7 +66,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
 5. データ ファクトリを作成するには、$ResGrp 変数の Location および ResourceGroupName プロパティを使用して、次の **New-AzDataFactory** コマンドレットを実行します。 
     
-    ```powershell       
+    ```powershell
     $df = New-AzDataFactory -ResourceGroupName $ResourceGroupName -Name $dataFactoryName -Location "East US"
     ```
 

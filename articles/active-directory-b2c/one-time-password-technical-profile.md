@@ -3,20 +3,21 @@ title: ワンタイム パスワード (OTP) の確認を有効にする
 titleSuffix: Azure AD B2C
 description: Azure AD B2C カスタム ポリシーを使用してワンタイム パスワード (OTP) シナリオを設定する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/19/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: b2c-support
+ms.openlocfilehash: c54f5636ee7af8142bf5fcd401a2160a69cf550c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97881193"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131436899"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーでワンタイム パスワードの技術プロファイルを定義する
 
@@ -76,7 +77,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | CodeExpirationInSeconds | いいえ | コードの有効期限までの時間 (秒)。 最小値: `60`、最大値: `1200`、既定値: `600`。 コード (`ReuseSameCode` を使用した同じコード、または新しいコード) が提供されるたびに、コードの有効期限が延長されます。 この時間は、再試行タイムアウトの設定にも使用されます (最大試行回数に達すると、この時間が経過するまで、ユーザーは新しいコードの取得を試行できなくなります)。 |
 | CodeLength | いいえ | コードの長さ。 既定値は `6` です。 |
 | CharacterSet | いいえ | 正規表現で使用するように書式設定された、コードの文字セット。 たとえば、「 `a-z0-9A-Z` 」のように入力します。 既定値は `0-9` です。 文字セットには、指定したセット内の少なくとも 10 個の異なる文字を含める必要があります。 |
-| NumRetryAttempts | いいえ | コードが無効と見なされるまでの確認の試行回数。 既定値は `5` です。 |
+| NumRetryAttempts | いいえ | コードが無効と見なされるまでの確認の試行回数。 既定値は `5` です。 たとえば、NumRetryAttempts を 2 に設定した場合、許容される試行回数は 2 回だけです (初回 + 再試行 1 回)。 コードが正しいかどうかに関係なく、3 回目の試行で、最大試行回数に到達したという例外がスローされます。|
 | NumCodeGenerationAttempts | No | 識別子ごとの最大コード生成試行回数。 指定しない場合の既定値は 10 です。 |
 | 操作 | はい | 実行する操作。 指定できる値: `GenerateCode`。 |
 | ReuseSameCode | いいえ | 指定されたコードの有効期限が切れておらず、まだ有効である場合に、新しいコードを生成するのではなく、同じコードを指定する必要があるかどうか。 既定値は `false` です。  |

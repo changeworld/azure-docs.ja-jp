@@ -5,24 +5,21 @@ description: この記事では、Application Gateway 上の Web アプリケー
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 05/20/2020
+ms.date: 07/30/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e01f9ac8966223e11ad218af7bf6fbb2462f28f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7cc82630b2f65bdd94e02e71b3c2521fc5734a9e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83714901"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315045"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Azure Application Gateway 上の Azure Web Application Firewall でのボット保護の概要
 
 すべてのインターネット トラフィックの約 20 % は、問題のあるボットからのものです。 それらは、スクレーピング、スキャン、Web アプリケーションでの脆弱性の検索などを行います。 これらのボットは、Web アプリケーション ファイアウォール (WAF) で停止されると攻撃できません。 また、バックエンドやその他の基盤となるインフラストラクチャなどのリソースやサービスを使い尽くすこともできません。
 
-マネージド ボット保護規則セットを WAF に対して有効にし、既知の悪意のある IP アドレスからの要求をブロックしたりログに記録したりすることができます。 この IP アドレスのソースは、Microsoft の脅威インテリジェンス フィードです。 インテリジェント セキュリティ グラフは、Microsoft の脅威インテリジェンスを動作させる機能です。Azure Security Center を含む複数のサービスによって使用されます。
-
-> [!IMPORTANT]
-> ボット保護規則セットは、現在パブリック プレビュー段階であり、プレビュー サービス レベル アグリーメントで提供されます。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「 [Microsoft Azure プレビューの追加利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。 
+マネージド ボット保護規則セットを WAF に対して有効にし、既知の悪意のある IP アドレスからの要求をブロックしたりログに記録したりすることができます。 この IP アドレスのソースは、Microsoft の脅威インテリジェンス フィードです。 インテリジェント セキュリティ グラフは Microsoft の脅威インテリジェンスの動力となるものであり、Microsoft Defender for Cloud を含む複数のサービスによって使用されます。
 
 ## <a name="use-with-owasp-rulesets"></a>OWASP ルールセットで使用する
 
@@ -63,4 +60,4 @@ ms.locfileid: "83714901"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Application Gateway での Web アプリケーション ファイアウォールのボット保護を構成する (プレビュー)](bot-protection.md)
+- [Azure Application Gateway での Web アプリケーション ファイアウォール用にボット保護を構成する](bot-protection.md)

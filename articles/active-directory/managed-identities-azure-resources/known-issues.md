@@ -16,13 +16,13 @@ ms.workload: identity
 ms.date: 04/08/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: 8d2b6323a15595e57e7e89c6a83f9f718422e1d7
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.custom: ''
+ms.openlocfilehash: bc43eef81a7c7bc5d66f1144bf8fc2c2e148bc49
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226924"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397711"
 ---
 # <a name="known-issues-with-managed-identities"></a>マネージド ID に関する既知の問題
 

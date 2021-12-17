@@ -3,21 +3,21 @@ title: チュートリアル:認証コード フローを使用する JavaScript
 titleSuffix: Microsoft identity platform
 description: このチュートリアルでは、ユーザーのサインインを処理すると共に、認証コード フローを使用して Microsoft ID プラットフォームからアクセス トークンを取得し、Microsoft Graph API を呼び出すことができる JavaScript SPA を作成します。
 services: active-directory
-author: hahamil
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 07/17/2020
-ms.author: hahamil
+ms.date: 10/12/2021
+ms.author: marsma
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 1ec046ca6b42a5ca8f33b0347c562c85abd42684
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffd447d4fcacad1185d8ad95778e0a9d22cb16ce
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98756178"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066017"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>チュートリアル:認証コード フローを使用して、ユーザーをサインインさせ、JavaScript シングルページ アプリ (SPA) から Microsoft Graph API を呼び出す
 
@@ -49,13 +49,13 @@ MSAL.js 2.0 は、ブラウザーで暗黙的な許可のフローではなく�
 
 ## <a name="get-the-completed-code-sample"></a>完成したコード サンプルを入手する
 
-代わりに、このチュートリアルの完成したサンプル プロジェクトをダウンロードすることもできます。 Node.js などのローカル Web サーバーを使用してプロジェクトを実行するには、[ms-identity-javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) リポジトリを複製します。
+代わりに、このチュートリアルの完成したサンプル プロジェクトをダウンロードすることもできます。 [ms-identity-javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) リポジトリを複製します。 
 
 `git clone https://github.com/Azure-Samples/ms-identity-javascript-v2`
 
-その後、コード サンプルを実行前に構成するために、[構成手順](#register-your-application)に進みます。
+ダウンロードしたプロジェクトをローカル開発環境で実行するには、まず、「[プロジェクトを作成する](#create-your-project)」の手順 1 で説明されているように、アプリケーション用の localhost サーバーを作成します。 完了したら、[構成手順](#register-your-application)に進んでコード サンプルを構成できます。
 
-チュートリアルを続行してアプリケーションを自分でビルドする場合は、次のセクション「[前提条件](#prerequisites)」に進みます。
+チュートリアルを続行してアプリケーションを自分でビルドする場合は、次のセクション「[プロジェクトを作成する](#create-your-project)」に進みます。
 
 ## <a name="create-your-project"></a>プロジェクトを作成する
 
@@ -574,7 +574,7 @@ ID トークンには、表示名など、ユーザーについての基本的�
 1. ユーザーが適切なタイミングでサインインできるようにするか、アプリケーションが後で `acquireTokenSilent` を再試行できるように、ユーザーに対して対話形式でのサインインが必要であることを視覚的に示します。 他に中断なく使用できる機能がアプリケーションにある場合は、一般に、この方法が使用されます。 たとえば、使用可能な非認証コンテンツがアプリケーションに含まれている場合が考えられます。 この場合、ユーザーは、保護されたリソースにアクセスしたり、古くなった情報を更新したりするためにサインインするタイミングを決定できます。
 
 > [!NOTE]
-> このチュートリアルでは、既定で `loginPopup` および `acquireTokenPopup` メソッドを使用します。 Internet Explorer を使用している場合は、Internet Explorer とポップアップ ウィンドウに[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)があるため、`loginRedirect` および `acquireTokenRedirect` メソッドを使用することをお勧めします。 リダイレクト メソッドを使用して同じ結果を実現する例については、GitHub の [*authRedirect.js*](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js) を参照してください。
+> このチュートリアルでは、既定で `loginPopup` および `acquireTokenPopup` メソッドを使用します。 Internet Explorer を使用している場合は、Internet Explorer とポップアップ ウィンドウに[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)があるため、`loginRedirect` および `acquireTokenRedirect` メソッドを使用することをお勧めします。 リダイレクト メソッドを使用して同じ結果を実現する例については、GitHub の [*authRedirect.js*](https://github.com/Azure-Samples/ms-identity-javascript-v2/blob/master/app/authRedirect.js) を参照してください。
 
 ## <a name="call-the-microsoft-graph-api"></a>Microsoft Graph API を呼び出す
 

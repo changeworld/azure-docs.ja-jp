@@ -1,23 +1,27 @@
 ---
 title: Azure Resource Manager テンプレートを使用して VM 拡張機能を有効にする
 description: この記事では、Azure Resource Manager テンプレートを使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 03/01/2021
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 88296cd4f410defcaf7db15507ddac42e80cba2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d0d23aa44de29eb71f64e80b8422a826ef7fa0f4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688265"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348019"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>ARM テンプレートを使用して VM 拡張機能を有効にする
 
 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure Arc 対応サーバーでサポートされている Azure VM 拡張機能をデプロイする方法を示します。
 
-VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 Arc 対応サーバーによってサポートされている VM 拡張機能の場合、Azure PowerShell を使用して Linux または Windows マシンにサポートされている VM 拡張機能をデプロイできます。 以下の各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 Azure Arc 対応サーバーによってサポートされている VM 拡張機能の場合、その機能を Azure PowerShell を使用して Linux または Windows マシンにデプロイできます。 以下の各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 >[!NOTE]
 >複数の拡張機能をまとめてバッチ処理することができますが、順番にインストールされます。 最初の拡張機能のインストールが完了すると、次の拡張機能のインストールが試行されます。
+
+> [!NOTE]
+> Azure Arc 対応サーバーでは、Azure 仮想マシンへの VM 拡張機能のデプロイと管理はサポートされていません。 Azure VM については、次の [VM 拡張機能の概要](../../virtual-machines/extensions/overview.md)に関する記事をご覧ください。
 
 ## <a name="deploy-the-log-analytics-vm-extension"></a>Log Analytics VM 拡張機能をデプロイする
 
@@ -139,7 +143,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 カスタム スクリプト拡張機能を使用するため、Windows および Linux で実行する次のサンプルが提供されています。 カスタム スクリプト拡張機能に慣れていない場合は、「[Windows でのカスタムのスクリプト拡張機能](../../virtual-machines/extensions/custom-script-windows.md)」または [Linux 用のカスタム スクリプト拡張機能](../../virtual-machines/extensions/custom-script-linux.md)に関する記事をご覧ください。 ハイブリッド マシンでこの拡張機能を使用するときに理解しておく必要のある異なる特徴がいくつかあります。
 
-* Azure VM カスタム スクリプト拡張機能でサポートされているオペレーティング システムの一覧は、Azure Arc 対応サーバーには適用されません。 Arc 対応サーバーでサポートされている OS の一覧は、[こちら](agent-overview.md#supported-operating-systems)で確認できます。
+* Azure VM カスタム スクリプト拡張機能でサポートされているオペレーティング システムの一覧は、Azure Arc 対応サーバーには適用されません。 Azure Arc 対応サーバーでサポートされている OS の一覧は、[こちら](agent-overview.md#supported-operating-systems)で確認できます。
 
 * Azure Virtual Machine Scale Sets またはクラシック VM に関する構成の詳細は適用できません。
 
@@ -323,7 +327,6 @@ Azure Monitor 依存関係エージェント拡張機能を使用するため、
       "properties": {
         "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
         "type": "DependencyAgentLinux",
-        "typeHandlerVersion": "9.5",
         "autoUpgradeMinorVersion": true
       }
     }
@@ -361,7 +364,6 @@ Azure Monitor 依存関係エージェント拡張機能を使用するため、
       "properties": {
         "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
         "type": "DependencyAgentWindows",
-        "typeHandlerVersion": "9.5",
         "autoUpgradeMinorVersion": true
       }
     }
@@ -427,7 +429,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
           "secretsManagementSettings": {
@@ -497,7 +498,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForWindows",
-      "typeHandlerVersion": "1.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
@@ -529,15 +529,15 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 テンプレート ファイルをディスクに保存します。 それにより、次のコマンドを使用して、接続されたコンピューターに拡張機能をデプロイできます。
 
 > [!NOTE]
-> VM 拡張機能では、Key Vault に対する認証を行うために、システム割り当て ID が割り当てられている必要があります。 Windows と Linux の Arc 対応サーバーについては、[マネージド ID を使用して Key Vault に対する認証を行う方法](managed-identity-authentication.md)に関するページを参照してください。
+> VM 拡張機能では、Key Vault に対する認証を行うために、システム割り当て ID が割り当てられている必要があります。 Windows と Linux の Azure Arc 対応サーバーについては、[マネージド ID を使用して Key Vault に対する認証を行う方法](managed-identity-authentication.md)に関するページを参照してください。
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
 ```
 
-## <a name="deploy-the-azure-defender-integrated-scanner"></a>Azure Defender 統合スキャナーのデプロイ
+## <a name="deploy-the-microsoft-defender-for-cloud-integrated-scanner"></a>Microsoft Defender for Cloud に組み込まれているスキャナーをデプロイする
 
-Azure Defender 統合スキャナー拡張機能を使用するため、Windows および Linux で実行する次のサンプルが提供されています。 統合スキャナーに詳しくない場合は、ハイブリッド マシン向けの [Azure Defender の脆弱性評価ソリューションの概要](../../security-center/deploy-vulnerability-assessment-vm.md)に関するページを参照してください。
+Microsoft Defender for Cloud に組み込まれているスキャナー拡張機能を使用する方法を提示する目的で、Windows および Linux で実行する次のサンプルが提供されています。 この組み込みスキャナーに詳しくない場合は、ハイブリッド マシン向けの [Microsoft Defender for Cloud の脆弱性評価ソリューションの概要](../../security-center/deploy-vulnerability-assessment-vm.md)に関するページを参照してください。
 
 ### <a name="template-file-for-windows"></a>Windows 用テンプレート ファイル
 
@@ -558,7 +558,7 @@ Azure Defender 統合スキャナー拡張機能を使用するため、Windows 
       },
       "resources": [
         {
-          "type": "resourceType/providers/WindowsAgent.AzureSecurityCenter",
+          "type": "Microsoft.HybridCompute/machines/providers/serverVulnerabilityAssessments",
           "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
           "apiVersion": "[parameters('apiVersionByEnv')]"
         }
@@ -595,7 +595,7 @@ Azure Defender 統合スキャナー拡張機能を使用するため、Windows 
       },
       "resources": [
         {
-          "type": "resourceType/providers/LinuxAgent.AzureSecurityCenter",
+          "type": "Microsoft.HybridCompute/machines/providers/serverVulnerabilityAssessments",
           "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
           "apiVersion": "[parameters('apiVersionByEnv')]"
         }

@@ -5,14 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: f60ff3c8511472ee456d392257b815c0ab64f69c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/22/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2e507117f355e2cfea903a1aea7c2d2d52fea466
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779802"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "131454062"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -34,7 +36,7 @@ ms.locfileid: "104779802"
 
 アクティビティは 0 個以上の入力[データセット](data-factory-create-datasets.md)を受け取り、1 個以上の出力[データセット](data-factory-create-datasets.md)を生成できます。 次の図は、Data Factory でのパイプライン、アクティビティ、データセットの関係を示しています。
 
-![パイプライン、アクティビティ、データセットの関係](media/data-factory-create-pipelines/relationship-pipeline-activity-dataset.png)
+:::image type="content" source="media/data-factory-create-pipelines/relationship-pipeline-activity-dataset.png" alt-text="パイプライン、アクティビティ、データセットの関係":::
 
 パイプラインを使用すると、各アクティビティを個別に管理するのではなく、セットとして管理できます。 たとえば、パイプライン内のアクティビティを個別に扱うのではなく、パイプラインのデプロイ、スケジュール設定、中断、再開を行うことができます。
 
@@ -45,7 +47,7 @@ Data Factory では、データ移動アクティビティとデータ変換ア�
 ### <a name="data-movement-activities"></a>データ移動アクティビティ
 Data Factory のコピー アクティビティは、ソース データ ストアからシンク データ ストアにデータをコピーします。 Data Factory は次のデータ ストアをサポートしています。 また、任意のソースのデータを任意のシンクに書き込むことができます。 データ ストアをクリックすると、そのストアとの間でデータをコピーする方法がわかります。
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
 > \* が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
@@ -53,7 +55,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。
 
 ### <a name="data-transformation-activities"></a>データ変換アクティビティ
-[!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
+[!INCLUDE [data-factory-transformation-activities](includes/data-factory-transformation-activities.md)]
 
 詳細については、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事を参照してください。
 
@@ -133,7 +135,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 | type | アクティビティの種類。 アクティビティの種類については、[データ移動アクティビティ](#data-movement-activities)に関するセクションと、[データ変換アクティビティ](#data-transformation-activities)に関するセクションを参照してください。 |はい |
 | inputs |アクティビティで使用される入力テーブル<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |はい |
 | outputs |アクティビティで使用される出力テーブル。<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |はい |
-| linkedServiceName |アクティビティで使用される、リンクされたサービスの名前。 <br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 |HDInsight アクティビティおよび Azure Machine Learning スタジオ (クラシック) バッチ スコアリング アクティビティの場合は "はい" <br/><br/>それ以外の場合は "いいえ" |
+| linkedServiceName |アクティビティで使用される、リンクされたサービスの名前。 <br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 |HDInsight アクティビティおよび ML Studio (クラシック) バッチ スコアリング アクティビティの場合は "はい" <br/><br/>それ以外の場合は "いいえ" |
 | typeProperties |**typeProperties** セクションのプロパティは、アクティビティの種類によって異なります。 アクティビティの typeProperties を確認するには、前のセクションでアクティビティのリンクをクリックしてください。 | いいえ |
 | policy |アクティビティの実行時の動作に影響するポリシーです。 指定されていない場合は、既定のポリシーが使用されます。 |いいえ |
 | scheduler | "scheduler" プロパティは、アクティビティのスケジュールを定義するために使用します。 サブプロパティは、 [データセットの availability](data-factory-create-datasets.md#dataset-availability)プロパティにあるサブプロパティと同じです。 |いいえ |
@@ -152,7 +154,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 | longRetryInterval |TimeSpan |00:00:00 |長い再試行の間の遅延 |
 
 ## <a name="sample-copy-pipeline"></a>コピー パイプラインのサンプル
-次のサンプル パイプラインでは、**Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](data-factory-data-movement-activities.md)により、Azure の BLOB ストレージから Azure SQL Database にデータをコピーします。
+次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](data-factory-data-movement-activities.md)により、Azure の BLOB ストレージから Azure SQL Database にデータをコピーします。
 
 ```json
 {
@@ -270,13 +272,13 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 
 2 つのアクティビティを連鎖させるには、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 2 つ目のアクティビティは、1 つ目のアクティビティが正常に完了した後にのみ実行されます。
 
-![同じパイプラインでのアクティビティの連鎖](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
+:::image type="content" source="./media/data-factory-create-pipelines/chaining-one-pipeline.png" alt-text="同じパイプラインでのアクティビティの連鎖":::
 
 このサンプルでは、パイプラインに 2 つのアクティビティ Activity1 と Activity2 が含まれています。 Activity1 は Dataset1 を入力として受け取り、出力として Dataset2 を生成します。 Activity2 は Dataset2 を入力として受け取り、出力として Dataset3 を生成します。 Activity1 の出力 (Dataset2) は Activity2 の入力であるため、Activity2 が実行されるのは、Activity1 が正常に完了して Dataset2 スライスを生成した後です。 Activity1 が何らかの理由で失敗し、Dataset2 スライスが生成されない場合、Activity 2 はそのスライス (9 AM から 10 AM など) に対して実行されません。
 
 別のパイプラインに含まれるアクティビティを連鎖することもできます。
 
-![2 つのパイプラインでのアクティビティの連鎖](./media/data-factory-create-pipelines/chaining-two-pipelines.png)
+:::image type="content" source="./media/data-factory-create-pipelines/chaining-two-pipelines.png" alt-text="2 つのパイプラインでのアクティビティの連鎖":::
 
 このサンプルの Pipeline1 には、Dataset1 を入力として受け取り、Dataset2 を出力として生成するアクティビティのみが含まれます。 Pipeline2 にも、Dataset2 を入力として受け取り、Dataset3 を出力として生成するアクティビティのみが含まれます。
 

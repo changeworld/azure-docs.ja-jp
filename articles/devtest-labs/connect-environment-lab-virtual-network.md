@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs のラボの VNet に環境を接続する | Microsoft Docs
+title: ラボの VNet 環境に接続するには
 description: Azure DevTest Labs のラボの仮想ネットワークに環境 (Service Fabric クラスターなど) を接続する方法を説明します
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 980c6317ded70db374c2b948075f060754168b0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbe2ecc78cfbca0bd055725a81cffff01935f377
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511962"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128634807"
 ---
 # <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Azure DevTest Labs のラボの仮想ネットワークに環境を接続する
 Azure DevTest Labs では、[組み込みネットワーク](devtest-lab-configure-vnet.md)を使用してラボに VM を簡単に作成できます。 大きな柔軟性を備えており、[マルチ VM 環境を作成する](devtest-lab-test-env.md)ことができます。 この記事では、環境内の VM をラボの仮想ネットワークに接続する方法を示します。 この機能を使用するシナリオの 1 つは、ラボの VNet に接続された SQL Server データ層を使用して N 層アプリを設定し、ラボ内のテスト VM がそれに接続できるようにする場合です。  

@@ -1,28 +1,28 @@
 ---
-title: Azure Service Bus キューの使用 | Microsoft Docs
-description: このチュートリアルでは、.NET Core コンソール アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信します。
-ms.topic: quickstart
+title: .NET (古いバージョン) で Azure Service Bus キューを使用する
+description: この記事では、.NET Core コンソール アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信します。
+ms.topic: how-to
 ms.tgt_pltfrm: dotnet
-ms.date: 09/01/2020
+ms.date: 07/27/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8e70884838d56003694e2da09668527ce5b6c7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86ff3608a0575413b6c5c30eec05ec0bb898247e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652991"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748059"
 ---
-# <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
-このチュートリアルでは、.NET Core コンソール アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信します。
+# <a name="send-and-receive-messages-from-azure-service-bus-queues-using-net-old-package"></a>.NET (古いパッケージ) を使用して Azure Service Bus キューとの間でメッセージを送受信する
+この記事では、.NET Core コンソール アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信します。
 
 > [!WARNING]
-> このクイックスタートでは、以前の Microsoft.Azure.ServiceBus パッケージを使用します。 最新の Azure.Messaging.ServiceBus パッケージを使用するクイックスタートについては、[Azure.Messaging.ServiceBus パッケージを使用したイベントの送受信](service-bus-dotnet-get-started-with-queues.md)に関するページを参照してください。 
+> この記事では、古い Microsoft.Azure.ServiceBus パッケージを使用します。 最新の Azure.Messaging.ServiceBus パッケージを使用する記事については、[Azure.Messaging.ServiceBus パッケージを使用したイベントの送受信](service-bus-dotnet-get-started-with-queues.md)に関するページを参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs)。
-- [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
-- Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+- [NET Core SDK](https://dotnet.microsoft.com/download) バージョン 2.0 以降。
+- Azure サブスクリプション。 この記事の手順を完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
 - 使用するキューがない場合は、「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の記事にある手順に従って、キューを作成します。
 
   - Service Bus キューの概要を読みます。

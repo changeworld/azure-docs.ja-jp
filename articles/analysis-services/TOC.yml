@@ -44,7 +44,7 @@
     - name: サポートされるデータ ソース
       href: analysis-services-datasource.md
     - name: ネットワーク接続に関する FAQ
-      href: analysis-services-network-faq.md
+      href: analysis-services-network-faq.yml
 - name: 操作方法
   items:
     - name: サーバー
@@ -104,13 +104,13 @@
     - name: PowerShell
       href: analysis-services-powershell.md
     - name: REST
-      href: /rest/api/analysisservices
+      href: /rest/api/analysisservices/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.analysisservices/servers
     - name: DAX
-      href: /dax/data-analysis-expressions-dax-reference
+      href: /dax/
     - name: Power Query M
-      href: /powerquery-m/power-query-m-reference
+      href: /powerquery-m/
     - name: Tabular Model Scripting Language (TMSL)
       href: /analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference?view=azure-analysis-services-current&preserve-view=true
     - name: 表形式オブジェクト モデル (TOM)
@@ -126,9 +126,9 @@
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?query=Analysis%20Services'
     - name: Azure の状態
-      href: 'https://azure.microsoft.com/status/'
+      href: 'https://status.azure.com/'
     - name: フィードバック
-      href: 'https://feedback.azure.com/forums/556165-azure-analysis-services'
+      href: 'https://feedback.azure.com/d365community/forum/d92323a0-0525-ec11-b6e6-000d3a4f0858'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/analysis-services/'
     - name: 料金計算ツール

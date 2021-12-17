@@ -5,23 +5,22 @@ description: Visual Studio Code で Azure Machine Learning コンピューティ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to
+ms.topic: how-to
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 04/08/2021
-ms.openlocfilehash: 14f0d15d48193267c224f3497c24651ca3249b0b
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 10/21/2021
+ms.openlocfilehash: 11d9e42d2a54caa723fc7e3add7ebfb9d236048d
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028592"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558404"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する (プレビュー)
 
 この記事では、Visual Studio Code を使用して Azure Machine Learning コンピューティング インスタンスに接続する方法について説明します。
 
-[Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md)は、データ サイエンティスト向けのクラウドベースのフルマネージド ワークステーションであり、IT 管理者用の管理およびエンタープライズ対応機能を備えています。
+[Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md)は、データ サイエンティスト向けのクラウドベースのフル マネージド ワークステーションであり、IT 管理者用の管理およびエンタープライズ対応機能を備えています。
 
 Visual Studio Code からコンピューティング インスタンスに接続するには、次の 2 つの方法があります。
 
@@ -32,29 +31,14 @@ Visual Studio Code からコンピューティング インスタンスに接続
 
 開発用にリモート コンピューティング インスタンスを構成するには、いくつかの前提条件を満たす必要があります。
 
-* Visual Studio Code の Azure Machine Learning 拡張機能 詳細については、[Visual Studio Code の Azure Machine Learning 拡張機能セットアップ ガイド](tutorial-setup-vscode-extension.md)を参照してください。
+* Visual Studio Code の Azure Machine Learning 拡張機能 詳細については、[Visual Studio Code の Azure Machine Learning 拡張機能セットアップ ガイド](how-to-setup-vs-code.md)を参照してください。
 * Azure Machine Learning ワークスペース。 まだ用意していない場合は、[Visual Studio Code の Azure Machine Learning 拡張機能を使用して新しいワークスペースを作成](how-to-manage-resources-vscode.md#create-a-workspace)します。
 * Azure Machine Learning コンピューティング インスタンス。 用意していない場合は、[Visual Studio Code の Azure Machine Learning 拡張機能を使用して新しいコンピューティング インスタンスを作成](how-to-manage-resources-vscode.md#create-compute-instance)します。
 
+> [!IMPORTANT]
+> ファイアウォールの内側のコンピューティング インスタンスに接続するには、「[ファイアウォールの内側で Azure Machine Learning のワークスペースを使用する](how-to-access-azureml-behind-firewall.md#visual-studio-code-hosts)」を参照してください。
+
 リモート コンピューティング インスタンスに接続するには:
-
-# <a name="vs-code"></a>[VS Code](#tab/extension)
-
-### <a name="azure-machine-learning-extension"></a>Azure Machine Learning 拡張機能
-
-1. VS Code で、Azure Machine Learning 拡張機能を起動します。
-1. 拡張機能の **[Compute instances]\(コンピューティング インスタンス\)** ノードを展開します。
-1. 接続するコンピューティング インスタンスを右クリックし、 **[Connect to Compute Instance]\(コンピューティング インスタンスへの接続\)** を選択します。
-
-:::image type="content" source="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png" alt-text="コンピューティング インスタンスへの接続: Visual Studio Code Azure ML 拡張機能" lightbox="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png":::
-
-### <a name="command-palette"></a>コマンド パレット
-
-1. VS Code で **[表示] > [コマンド パレット]** を選択し、コマンド パレットを開きます。
-1. ボックス **[Azure ML: Connect to Compute Instance]\(Azure ML: コンピューティング インスタンスへの接続\)** に入力します。
-1. サブスクリプションを選択します。
-1. ワークスペースを選択します。
-1. コンピューティング インスタンスを選択するか、新規に作成します。
 
 # <a name="studio"></a>[スタジオ](#tab/studio)
 
@@ -78,6 +62,24 @@ Visual Studio Code からコンピューティング インスタンスに接続
 
 :::image type="content" source="media/how-to-set-up-vs-code-remote/studio-notebook-compute-instance-vs-code-launch.png" alt-text="コンピューティング インスタンスへの接続: VS Code Azure ML Notebook" lightbox="media/how-to-set-up-vs-code-remote/studio-notebook-compute-instance-vs-code-launch.png":::
 
+# <a name="vs-code"></a>[VS Code](#tab/extension)
+
+### <a name="azure-machine-learning-extension"></a>Azure Machine Learning 拡張機能
+
+1. VS Code で、Azure Machine Learning 拡張機能を起動します。
+1. 拡張機能の **[Compute instances]\(コンピューティング インスタンス\)** ノードを展開します。
+1. 接続するコンピューティング インスタンスを右クリックし、 **[Connect to Compute Instance]\(コンピューティング インスタンスへの接続\)** を選択します。
+
+:::image type="content" source="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png" alt-text="コンピューティング インスタンスへの接続: Visual Studio Code Azure ML 拡張機能" lightbox="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png":::
+
+### <a name="command-palette"></a>コマンド パレット
+
+1. VS Code で **[表示] > [コマンド パレット]** を選択し、コマンド パレットを開きます。
+1. ボックス **[Azure ML: Connect to Compute Instance]\(Azure ML: コンピューティング インスタンスへの接続\)** に入力します。
+1. サブスクリプションを選択します。
+1. ワークスペースを選択します。
+1. コンピューティング インスタンスを選択するか、新規に作成します。
+
 ---
 
 リモート コンピューティング インスタンスの新しいウィンドウが起動します。 リモート コンピューティング インスタンスに接続しようとすると、次のタスクが実行されます。
@@ -99,7 +101,7 @@ Visual Studio Code からコンピューティング インスタンスに接続
 
 コンピューティング インスタンスをリモート Jupyter Notebook サーバーとして構成するには、いくつかの前提条件が必要です。
 
-* Visual Studio Code の Azure Machine Learning 拡張機能 詳細については、[Visual Studio Code の Azure Machine Learning 拡張機能セットアップ ガイド](tutorial-setup-vscode-extension.md)を参照してください。
+* Visual Studio Code の Azure Machine Learning 拡張機能 詳細については、[Visual Studio Code の Azure Machine Learning 拡張機能セットアップ ガイド](how-to-setup-vs-code.md)を参照してください。
 * Azure Machine Learning ワークスペース。 まだ用意していない場合は、[Visual Studio Code の Azure Machine Learning 拡張機能を使用して新しいワークスペースを作成](how-to-manage-resources-vscode.md#create-a-workspace)します。
 
 コンピューティング インスタンスに接続するには、次のようにします。

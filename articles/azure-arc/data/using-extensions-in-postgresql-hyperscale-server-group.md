@@ -1,37 +1,38 @@
 ---
 title: PostgreSQL 拡張機能を使用する
 description: PostgreSQL 拡張機能を使用する
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: e247e372237572586e5a4647d24d9ed6067ea823
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52e024043726c463c0bea5b9b16421a0674a2cd2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104949789"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558841"
 ---
-# <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループで PostgreSQL 拡張機能を使用する
+# <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応の PostgreSQL Hyperscale サーバー グループで PostgreSQL 拡張機能を使用する
 
 PostgreSQL は、拡張機能で使用する場合に最適です。 実際、独自の Hyperscale 機能の主要素は、Microsoft 提供の `citus` 拡張機能です。これは既定でインストールされ、Postgres で、複数ノード間のデータの透過的なシャード化を可能にします。
-
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="supported-extensions"></a>サポートされる拡張機能
 標準の [`contrib`](https://www.postgresql.org/docs/12/contrib.html) 拡張機能と以下の拡張機能は、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのコンテナーに既にデプロイされています。
-- [`citus`](https://github.com/citusdata/citus)、v: 9.4。 [Citus Data](https://www.citusdata.com/) の Citus 拡張機能は、PostgreSQL エンジンに Hyperscale 機能を提供するものであるため、既定で読み込まれます。 Azure Arc PostgreSQL Hyperscale サーバーグループからの Citus 拡張機能の削除は、サポートされていません。
-- [`pg_cron`](https://github.com/citusdata/pg_cron)、v: 1.2
+- [`citus`](https://github.com/citusdata/citus)、v: 10.2。 [Citus Data](https://www.citusdata.com/) の Citus 拡張機能は、PostgreSQL エンジンに Hyperscale 機能を提供するものであるため、既定で読み込まれます。 Azure Arc PostgreSQL Hyperscale サーバーグループからの Citus 拡張機能の削除は、サポートされていません。
+- [`pg_cron`](https://github.com/citusdata/pg_cron)、v: 1.3
 - [`pgaudit`](https://www.pgaudit.org/)、v: 1.4
 - plpgsql、v: 1.0
 - [`postgis`](https://postgis.net)、v: 3.0.2
 - [`plv8`](https://plv8.github.io/)、v: 2.3.14
+- [`pg_partman`](https://github.com/pgpartman/pg_partman)、v: 4.4.1/
+- [`tdigest`](https://github.com/tvondra/tdigest)、v: 1.0.1
 
 時間が経過して変化があったときには、この一覧に対する更新が投稿されます。
 
@@ -52,18 +53,18 @@ PostgreSQL は、拡張機能で使用する場合に最適です。 実際、�
 |`postgis`      |いいえ       |はい        |
 |`plv8`      |いいえ       |はい        |
 
-## <a name="add-extensions-to-the-shared_preload_libraries"></a>拡張機能を shared_preload_libraries に追加する
-shared_preload_libraries の詳細については、[こちら](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES)の PostgreSQL ドキュメントを参照してください。
+## <a name="add-extensions-to-the-shared_preload_libraries"></a>`shared_preload_libraries` に拡張機能を追加する
+`shared_preload_libraries` の詳細については、[こちら](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES)の PostgreSQL ドキュメントを参照してください。
 - この手順は、`contrib` に含まれる拡張機能については必要ありません
-- この手順は、shared_preload_libraries で事前に読み込む必要がない拡張機能については必要ありません。 これらの拡張機能については、次の段落「[拡張機能の作成](#create-extensions)」を飛ばし進むことができます。
+- この手順は、shared_preload_libraries で事前に読み込む必要がない拡張機能については必要ありません。 これらの拡張機能については、次の段落「[拡張機能の作成](#create-extensions)」に進むことができます。
 
 ### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>サーバー グループの作成時に拡張機能を追加する
-```console
-azdata arc postgres server create -n <name of your postgresql server group> --extensions <extension names>
+```azurecli
+az postgres arc-server create -n <name of your postgresql server group> --extensions <extension names> --k8s-namespace <namespace> --use-k8s
 ```
 ### <a name="add-an-extension-to-an-instance-that-already-exists"></a>既に存在するインスタンスに拡張機能を追加する
-```console
-azdata arc postgres server edit -n <name of your postgresql server group> --extensions <extension names>
+```azurecli
+az postgres arc-server server edit -n <name of your postgresql server group> --extensions <extension names> --k8s-namespace <namespace> --use-k8s
 ```
 
 
@@ -72,33 +73,32 @@ azdata arc postgres server edit -n <name of your postgresql server group> --exte
 ## <a name="show-the-list-of-extensions-added-to-shared_preload_libraries"></a>shared_preload_libraries に追加された拡張機能の一覧を表示する
 次のコマンドのいずれかを実行します。
 
-### <a name="with-an-azdata-cli-command"></a>azdata CLI コマンドを使用する
-```console
-azdata arc postgres server show -n <server group name>
+### <a name="with-cli-command"></a>CLI コマンドを使用する
+```azurecli
+az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 出力をスクロールし、サーバー グループの仕様の engine\extensions セクションを確認します。 次に例を示します。
 ```console
-"engine": {
+  "spec": {
+    "dev": false,
+    "engine": {
       "extensions": [
         {
           "name": "citus"
-        },
-        {
-          "name": "pg_cron"
         }
-      ]
-    },
+      ],
 ```
 ### <a name="with-kubectl"></a>kubectl を使用する
 ```console
-kubectl describe postgresql-12s/postgres02
+kubectl describe postgresqls/<server group name> -n <namespace>
 ```
 出力をスクロールし、サーバー グループの仕様の engine\extensions セクションを確認します。 次に例を示します。
 ```console
-Engine:
+Spec:
+  Dev:  false
+  Engine:
     Extensions:
-      Name:  citus
-      Name:  pg_cron
+      Name:   citus
 ```
 
 
@@ -184,8 +184,8 @@ SELECT name, address FROM coffee_shops ORDER BY geom <-> ST_SetSRID(ST_MakePoint
 
 ここでは、`pg_cron` を shared_preload_libraries に追加することで、それを PostgreSQL サーバー グループ上で有効にしましょう。
 
-```console
-azdata postgres server update -n pg2 -ns arc --extensions pg_cron
+```azurecli
+az postgres arc-server update -n pg2 -ns arc --extensions pg_cron
 ```
 
 サーバー グループは、拡張機能のインストールを完了するために再起動します。 これには 2 ～ 3 分かかることがあります。

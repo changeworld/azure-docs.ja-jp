@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: b4153b07b153a9ee0b16dc032ab5e7810e236d7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa2904768023120fb2b08a52a23bb33e71e4d2f6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98936266"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219150"
 ---
-# <a name="deploy-an-anomaly-detector-module-to-iot-edge"></a>Anomaly Detector モジュールを IoT Edge にデプロイします
+# <a name="deploy-an-anomaly-detector-univariate-module-to-iot-edge"></a>Anomaly Detector 一変量モジュールを IoT Edge にデプロイする
 
 Cognitive Services [Anomaly Detector](../anomaly-detector-container-howto.md) モジュールを IoT Edge デバイスにデプロイする方法について説明します。 IoT Edge にデプロイされると、このモジュールは、他のモジュールと共にコンテナー インスタンスとして IoT Edge 内で実行されます。 これにより、標準の Docker コンテナー環境で実行されている Anomaly Detector コンテナー インスタンスとまったく同じ API が公開されます。 
 
@@ -58,7 +58,7 @@ Cognitive Services [Anomaly Detector](../anomaly-detector-container-howto.md) �
 
 6. **[Update]\(更新\)** を選択します。
 
-7. **Next:ルート** を選択して、ルートを定義します。 すべてのモジュールから、すべてのメッセージが Azure IoT Hub に送信されるように定義します。
+7. **Next:ルート** を選択して、ルートを定義します。 すべてのモジュールから、すべてのメッセージが Azure IoT Hub に送信されるように定義します。 ルートを宣言する方法については、[IoT Edge でのルートの確立](../../../iot-edge/module-composition.md?view=iotedge-2020-11&preserve-view=true)に関する記事を参照してください。
 
 8. **[次へ: 確認および作成]** を選択します。 IoT Edge デバイスにデプロイされるすべてのモジュールを定義した JSON ファイルをプレビューできます。
     
@@ -68,11 +68,13 @@ Cognitive Services [Anomaly Detector](../anomaly-detector-container-howto.md) �
 
 11. 下にスクロールして、一覧表示されているモジュールを表示します。 新しいモジュールについてランタイムの状態が実行中であることを確認します。 
 
-IoT Edge デバイスのランタイムの状態をトラブルシューティングするには、[トラブルシューティング ガイド](../../../iot-edge/troubleshoot.md)をご覧ください
+IoT Edge デバイスのランタイムの状態をトラブルシューティングするには、[トラブルシューティング ガイド](../../../iot-edge/troubleshoot.md)をご覧ください。
 
 ## <a name="test-anomaly-detector-on-an-iot-edge-device"></a>IoT Edge デバイスで Anomaly Detector をテストする
 
 Azure Cognitive Services コンテナーが実行されている Azure IoT Edge デバイスへの HTTP 呼び出しを行います。 コンテナーには、REST ベースのエンドポイント API が用意されています。 モジュール API には、ホスト `http://<your-edge-device-ipaddress>:5000` を使用します。
+
+または、Azure IoT Edge デバイスで [Anomaly Detector クライアント ライブラリを使用してモジュール クライアントを作成](../quickstarts/client-libraries.md?tabs=linux&pivots=programming-language-python)し、エッジで実行中の Azure Cognitive Services コンテナーを呼び出すこともできます。 ホスト エンドポイント `http://<your-edge-device-ipaddress>:5000` を使用し、ホスト キーを空のままにします。 
 
 エッジ デバイスでポート 5000 での受信方向の通信がまだ許可されていない場合は、新しい **受信ポート規則** を作成する必要があります。 
 

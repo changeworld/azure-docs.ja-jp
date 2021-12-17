@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 6b861baea93c2c57b8f66ebac928a7e4fd3adfa8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cbfbc0f020504b17d9c2cbe3ca7d3f807ec28cd
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95487807"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403620"
 ---
 IoT プラグ アンド プレイを使用すると、基礎となるデバイスの実装に関する知識がなくてもデバイスのモデルを操作できるため、IoT が簡略化されます。 このクイックスタートでは、Python を使用して、ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスに接続して制御する方法について説明します。
 
@@ -72,11 +72,11 @@ pip install azure-iot-hub
 1. *registry_manager_pnp_sample.py* ファイルを開き、コードを確認します。 このサンプルは、**IoTHubRegistryManager** クラスを使用して IoT プラグ アンド プレイ デバイスと対話する方法を示しています。
 
 > [!NOTE]
-> これらのサービス サンプルでは、**IoT Hub サービス クライアント** からの **IoTHubRegistryManager** クラスを使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](../articles/iot-pnp/concepts-developer-guide-service.md)を参照してください。
+> これらのサービス サンプルでは、**IoT Hub サービス クライアント** からの **IoTHubRegistryManager** クラスを使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](../articles/iot-develop/concepts-developer-guide-service.md)を参照してください。
 
 ### <a name="get-the-device-twin"></a>デバイス ツインを取得する
 
-「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](../articles/iot-pnp/set-up-environment.md)」では、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
+「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](../articles/iot-develop/set-up-environment.md)」では、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
 
 * **IOTHUB_CONNECTION_STRING**: 先ほどメモした IoT ハブ接続文字列。
 * **IOTHUB_DEVICE_ID**: `"my-pnp-device"`。

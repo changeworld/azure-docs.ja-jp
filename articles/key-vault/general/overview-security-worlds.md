@@ -1,45 +1,39 @@
 ---
 title: Azure Key Vault セキュリティ ワールド | Microsoft Docs
-description: Azure Key Vault はマルチテナント サービスです。 Azure の各場所で HSM のプールが使用されます。 地理的リージョン内のすべての場所で、暗号化境界が共有されます。
+description: Azure Key Vault はマルチテナント サービスです。 各 Azure リージョンで HSM のプールを使用します。 地理的リージョン内のすべてのリージョンで、暗号化境界が共有されます。
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
-manager: rkarlin
 ms.date: 07/03/2017
-ms.openlocfilehash: d21deea13aac3d40c452a183c340d3108a1a01f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0753108df52f0dcaea1d6c79eab266eeb000889a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936330"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747223"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault セキュリティ ワールドと地理的境界
 
-Azure Key Vault はマルチ テナント サービスであり、Azure の場所それぞれでハードウェア セキュリティ モジュール (HSM) のプールが使用されています。 
+Azure 製品は多くの [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)で利用でき、各 Azure 地域には 1 つ以上のリージョンが含まれています。 たとえば、ヨーロッパ地域には、北ヨーロッパと西ヨーロッパの 2 つのリージョンが含まれていますが、ブラジル地域の唯一のリージョンはブラジル南部です。
 
-地理的に同じリージョンに属する Azure の場所にある HSM はすべて、同じ暗号化境界 (Thales セキュリティ ワールド) を共有しています。 たとえば、米国 geo ロケーションに属する米国東部と米国西部は、同じセキュリティ ワールドを使用します。 また、日本でもすべての Azure の場所が同じセキュリティ ワールドを共有しています。オーストラリア、インドなどの Azure の場所も同様です。 
+Azure Key Vault は、ハードウェア セキュリティ モジュール (HSM) のプールを使用するマルチ テナント サービスです。 地域内のすべての HSM は、"セキュリティ ワールド" と呼ばれる同じ暗号化境界を共有します。 すべての地域が 1 つのセキュリティ ワールドに対応し、その逆も同様です。
+
+米国東部と米国西部は、地域 (米国) に属しているため、同じセキュリティ ワールドを共有します。 同様に、日本のすべての Azure リージョンは、同じセキュリティ ワールドを共有しています。オーストラリアのすべての Azure リージョンも同様です。
+
+>[!NOTE]
+> 例外として、米国防総省東部と米国防総省中部には、独自のセキュリティ ワールドがあります。
 
 ## <a name="backup-and-restore-behavior"></a>バックアップと復元動作
 
-1 つの Azure の場所のキー コンテナーから取得したキーのバックアップは、次の両方の条件を満たしていれば、別の Azure の場所のキー コンテナーに復元できます。
+1 つの Azure リージョンのキー コンテナーから取得したキーのバックアップは、次の両方の条件を満たしていれば、別の Azure リージョンのキー コンテナーに復元できます。
 
-- Azure の場所の両方が同じ地理的な場所に属している
-- キー コンテナーの両方が同じ Azure サブスクリプションに属している
+- 両方の Azure リージョンが同じ地域に属している。
+- 両方のキー コンテナーが同じ Azure サブスクリプションに属している。
 
-たとえば、インド西部にあるキー コンテナーで、指定したキーのサブスクリプションによって取得されたバックアップは、同じサブスクリプションおよび geo ロケーション、つまりインド西部、インド中部、またはインド南部にある別のキー コンテナーにのみ復元できます。
+たとえば、インド西部のキー コンテナー内のキーのバックアップを、インド地域 (インド西部、インド中部、インド南部の各リージョン) の同じサブスクリプション内の別のキー ボールトに復元できます。
 
-## <a name="regions-and-products"></a>リージョンと製品
+## <a name="next-steps"></a>次のステップ
 
-- [Azure リージョン](https://azure.microsoft.com/regions/)
-- [リージョン別の Microsoft 製品](https://azure.microsoft.com/regions/services/)
-
-リージョンは、表の大見出しとして表示されている、セキュリティ ワールドにマップされます。
-
-リージョン別の製品の記事では、たとえば **[米国]** タブには米国東部、米国中部、米国西部が含まれ、すべて米国リージョンにマップしています。 
-
->[!NOTE]
->例外として、米国防総省東部と米国防総省中部には、独自のセキュリティ ワールドがあります。 
-
-同様に、 **[ヨーロッパ]** タブでは、北ヨーロッパと西ヨーロッパの両方がヨーロッパ リージョンにマップしています。 **[アジア太平洋]** タブも同様です。
+- [リージョン別の Microsoft 製品](https://azure.microsoft.com/regions/services/)を参照する

@@ -2,22 +2,26 @@
 title: Azure Functions でプロキシを操作する
 description: Azure Functions プロキシ の使用方法の概要
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.openlocfilehash: fb263239f99bcb4ec4c893b700d5c1cce078659f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/08/2021
+ms.openlocfilehash: 415d090aff611a3c7fc7cd7fb1c511b43b0702db
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96601375"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058620"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
 この記事では、Azure Functions プロキシ を構成および操作する方法について説明します。 この機能を使用すると、他のリソースによって実装される、関数アプリのエンドポイントを指定することができます。 これらのプロキシを使用して、大きな API を複数の関数アプリに分割できます (マイクロサービス アーキテクチャでのように)。その場合でも、クライアントには単一の API サーフェスとして表示されます。
 
+プロキシの実行には標準の Functions の料金が適用されます。 詳細については、[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページを参照してください。
+
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE] 
-> プロキシの実行には標準の Functions の料金が適用されます。 詳細については、[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページを参照してください。
+> プロキシは Azure Functions [バージョン](./functions-versions.md) 1.x ～ 3.x で使用できます。
+> 
+> アプリケーションに [Azure API Management](../api-management/api-management-key-concepts.md) を使用することも検討してください。 Functions プロキシと同じ機能に加え、OpenAPI 統合、レート制限、高度なポリシーなど、API を構築し、保守管理するためのその他のツールを提供します。 
 
 ## <a name="create-a-proxy"></a><a name="create"></a>プロキシを作成する
 

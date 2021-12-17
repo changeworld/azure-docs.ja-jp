@@ -1,16 +1,16 @@
 ---
-title: Azure VMware Solution 向け vRealize Operations の設定
+title: Azure VMware Solution 向け vRealize 操作の構成
 description: Azure VMware Solution のプライベート クラウド向けに vRealize Operations を設定する方法について説明します。
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: 8015bb61a7401b4c97807e0256e06d4967c39026
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b4c854eefb11eaeb42153f39280d8251c2aa8476
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802490"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434014"
 ---
-# <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Azure VMware Solution 向け vRealize Operations の設定
+# <a name="configure-vrealize-operations-for-azure-vmware-solution"></a>Azure VMware Solution 向け vRealize 操作の構成
 
 
 vRealize Operations Manager は、VMware インフラストラクチャ管理者がシステム リソースの監視に使用できる運用管理プラットフォームです。 これらのシステム リソースとしては、アプリケーションレベルのオブジェクトまたはインフラストラクチャ レベルのオブジェクト (物理および仮想の両方) があります。 ほとんどの VMware 管理者は、vRealize Operations を使用して VMware プライベート クラウドのコンポーネント (vCenter、ESXi、NSX-T、vSAN、VMware HCX) を監視および管理していました。  プロビジョニングされた各 Azure VMware Solution プライベート クラウドには、専用の vCenter、NSX-T、vSAN、HCX デプロイが含まれています。 
@@ -37,7 +37,7 @@ vRealize Operations Manager は、VMware インフラストラクチャ管理者
 ## <a name="on-premises-vrealize-operations-managing-azure-vmware-solution-deployment"></a>Azure VMware Solution を管理するオンプレミスの vRealize Operations の展開
 ほとんどの顧客には、1 つ以上のオンプレミスの vCenter ドメインを管理するために既存のオンプレミスの vRealize Operations の展開があります。 彼らは、Azure VMware Solution プライベート クラウドをプロビジョニングするときに、Azure ExpressRoute またはレイヤー 3 VPN ソリューションを使用して、オンプレミス環境をプライベート クラウドに接続します。  
 
-:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Azure VMware Solution を管理するオンプレミスの vRealize Operations の展開" border="false":::
+:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Azure VMware Solution を管理するオンプレミスの vRealize Operations の展開を示す図。" border="false":::
 
 vRealize Operations 機能を Azure VMware Solution プライベート クラウドにまで拡張するには、[プライベート クラウド リソース用のアダプター インスタンス](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.config.doc/GUID-640AD750-301E-4D36-8293-1BFEB67E2600.html)を作成します。 これにより、Azure VMware Solution プライベート クラウドからデータが収集され、オンプレミスの vRealize Operations に取り込まれます。 オンプレミスの vRealize Operations Manager インスタンスは、Azure VMware Solution 上の vCenter および NSX-T Manager に直接接続できます。 必要に応じて、Azure VMware Solution プライベート クラウドに vRealize Operations Remote Collector をデプロイできます。 このコレクターにより、プライベート クラウドから収集したデータが圧縮して暗号化された後、ExpressRoute または VPN ネットワークを経由して、オンプレミスで実行されている vRealize Operations Manager に送信されます。 
 
@@ -53,7 +53,7 @@ vRealize Operations 機能を Azure VMware Solution プライベート クラウ
 >[!IMPORTANT]
 >現在、このオプションは VMware ではサポートされていません。
 
-:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-2.png" alt-text="Azure VMware Solution で動作する vRealize Operations" border="false":::
+:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-2.png" alt-text="Azure VMware Solution で動作する vRealize Operations を示す図。" border="false":::
 
 インスタンスがデプロイされたら、vCenter、ESXi、NSX-T、vSAN、HCX からデータを収集するように vRealize Operations を構成できます。 
 
@@ -69,11 +69,11 @@ vRealize Operations 機能を Azure VMware Solution プライベート クラウ
 
 vCenter Server クラウド アカウントを使用して Azure VMware Solution vCenter を vRealize Operations Manager に接続すると、警告が表示されます。
 
-:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="警告: アダプター インスタンスの作成に成功しました":::
+:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="アダプター インスタンスが正常に作成されたという警告メッセージを示すスクリーンショット。":::
 
 この警告が発生するのは、Azure VMware Solution の **cloudadmin\@vsphere.local** ユーザーに、登録に必要なすべての vCenter Server アクションを実行するための十分な特権がないためです。 ただし、次に示すように、アダプター インスタンスでデータ収集を行うには十分な特権です。
 
-:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="データ収集を実行するアダプター インスタンス":::
+:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="データを収集するアダプター インスタンスを示すスクリーンショット。":::
 
 詳細については、「[vCenter アダプター インスタンスの構成に必要な特権](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.core.doc/GUID-3BFFC92A-9902-4CF2-945E-EA453733B426.html)」を参照してください。
 

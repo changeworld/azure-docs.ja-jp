@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services ラボ アカウント迅速設定ガイド
 description: 管理者はこのガイドに従って、学校内で使用するラボ アカウントをすばやく作成できます。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: e1f36b6d0983c10926a790d42edef3736e848a59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8b233464da7e6a5c5529e0057240d839282faf46
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669391"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177348"
 ---
 # <a name="lab-account-setup-guide"></a>ラボ アカウント設定ガイド
 管理者の場合は、Azure Lab Services 環境を設定する前に、まず、ご自分の Azure サブスクリプション内で "*ラボ アカウント*" を作成する必要があります。 ラボ アカウントは 1 つまたは複数のラボに使用するコンテナーで、ほんの数分で設定できます。

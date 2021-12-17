@@ -4,12 +4,13 @@ description: Cloud Services、Virtual Machines、Web Apps の自動スケール�
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 4b763f39d3b88a7884e89dddbc2c483c1bb84d31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8a3c8b06862c4a429d0e8974c8e3e00113ac5915
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101717776"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316859"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor の自動スケールの一般的なメトリック
 
@@ -20,6 +21,7 @@ Azure Monitor の自動スケールを使用すると、テレメトリ デー�
 Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](../../api-management/api-management-key-concepts.md)にのみ適用されます。 他の Azure サービスでは、異なるスケーリング方法が使用されています。
 
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Resource Manager ベースの VM のコンピューティング メトリック
+
 既定では、Resource Manager ベースの Virtual Machines と Virtual Machine Scale Sets によって基本 (ホスト レベル) メトリックが出力されます。 また、Azure VM と VMSS の診断データ収集を構成する場合は、Azure 診断拡張機能によってゲスト OS パフォーマンス カウンター (一般に「ゲスト OS メトリック」と呼ばれる) も出力されます。  自動スケールの規則では、これらすべてのメトリックを使用します。
 
 VMSS リソースに使用できるメトリックを確認するには、`Get MetricDefinitions` API/PoSH/CLI を使用します。
@@ -31,12 +33,14 @@ VM Scale Sets を使用し、特定のメトリックが一覧に表示されな
 上記のいずれかに該当する場合は、「[PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする](../../virtual-machines/extensions/diagnostics-windows.md)」を参照し、PowerShell で Azure VM 診断拡張機能を構成してメトリックを有効に変更してください。 また、この記事には、診断構成ファイルの例も紹介されています。
 
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Resource Manager ベースの Windows と Linux VM のホスト メトリック
+
 以下のホスト レベルのメトリックは、Windows と Linux の両方のインスタンスで Azure VM と VMSS に既定で出力されます。 以下のメトリックでは Azure VM について説明しますが、ゲスト VM にインストールされているエージェントを介してではなく、Azure VM ホストから収集されます。 自動スケールの規則では、以下のメトリックを使用する場合があります。
 
 - [Resource Manager ベースの Windows と Linux VM のホスト メトリック](../essentials/metrics-supported.md#microsoftcomputevirtualmachines)
 - [Resource Manager ベースの Windows と Linux VM Scale Sets のホスト メトリック](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Resource Manager ベースの Windows VM のゲスト OS メトリック
+
 診断拡張機能を使用して Azure で VM を作成すると、診断は有効になります。 診断拡張機能では、VM 内から取得した一連のメトリックを出力します。 これで、既定では出力されないメトリックから自動スケールができます。
 
 メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
@@ -78,6 +82,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \LogicalDisk(_Total)\Free Megabytes |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>ゲスト OS メトリック Linux VM
+
 診断拡張機能を使用して Azure で VM を作成すると、既定で診断は有効になります。
 
 メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
@@ -130,9 +135,11 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \NetworkInterface\TotalCollisions |Count |
 
 ## <a name="commonly-used-app-service-server-farm-metrics"></a>一般的に使用される App Service (サーバー ファーム) のメトリック
+
 HTTP キューの長さなどの一般的な Web サーバー メトリックに基づいて、自動スケールを実行することもできます。 そのメトリック名は **HttpQueueLength** です。  次のセクションに、使用できるサーバー ファーム (App Service) のメトリックを一覧表示します。
 
 ### <a name="web-apps-metrics"></a>Web Apps のメトリック
+
 Web Apps メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
 
 ```
@@ -151,6 +158,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | BytesSent |バイト |
 
 ## <a name="commonly-used-storage-metrics"></a>一般的に使用される Storage のメトリック
+
 Storage キューの長さ (Storage キュー内のメッセージ数) に応じてスケールすることができます。 Storage キューの長さは特殊なメトリックであり、しきい値は、1 インスタンスあたりのメッセージ数です。 たとえば、2 つのインスタンスがあり、しきい値が 100 に設定されている場合、キュー内の合計メッセージ数が 200 になるとスケーリングが発生します。 インスタンスごとに 100 メッセージある場合や、120 と 80 メッセージ、またはその他の合計で最大 200 メッセージ以上となる組み合わせがあります。
 
 この設定は、Azure Portal の **[設定]** ブレードで構成します。 VM Scale Sets の場合、Resource Manager テンプレートの [自動スケール] 設定で *ApproximateMessageCount* として *metricName* を使用するように更新し、*metricResourceUri* としてストレージ キューの ID を渡すことができます。
@@ -161,7 +169,7 @@ Storage キューの長さ (Storage キュー内のメッセージ数) に応じ
 "metricName": "ApproximateMessageCount",
 "metricNamespace": "",
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
- ```
+```
 
 (非従来の) ストレージ アカウントの場合、metricTrigger は、次のようになります。
 
@@ -172,6 +180,7 @@ Storage キューの長さ (Storage キュー内のメッセージ数) に応じ
 ```
 
 ## <a name="commonly-used-service-bus-metrics"></a>一般的に使用される Service Bus のメトリック
+
 Service Bus キューの長さ (Service Bus キュー内のメッセージ数) に応じてスケールすることができます。 Service Bus キューの長さは特殊なメトリックであり、しきい値は、1 インスタンスあたりのメッセージ数です。 たとえば、2 つのインスタンスがあり、しきい値が 100 に設定されている場合、キュー内の合計メッセージ数が 200 になるとスケーリングが発生します。 インスタンスごとに 100 メッセージある場合や、120 と 80 メッセージ、またはその他の合計で最大 200 メッセージ以上となる組み合わせがあります。
 
 VM Scale Sets の場合、Resource Manager テンプレートの [自動スケール] 設定で *ApproximateMessageCount* として *metricName* を使用するように更新し、*metricResourceUri* としてストレージ キューの ID を渡すことができます。
@@ -184,5 +193,4 @@ VM Scale Sets の場合、Resource Manager テンプレートの [自動スケ�
 
 > [!NOTE]
 > Service Bus の場合、リソース グループの概念は存在しませんが、Azure Resource Manager でリージョンごとに既定のリソース グループが作成されます。 通常、リソース グループは 'Default-ServiceBus-[region]' 形式です。 たとえば、'Default-ServiceBus-EastUS'、'Default-ServiceBus-WestUS'、'Default-ServiceBus-AustraliaEast' などです。
->
->
+

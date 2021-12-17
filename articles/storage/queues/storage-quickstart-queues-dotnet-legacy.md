@@ -1,20 +1,20 @@
 ---
 title: クイック スタート:.NET 用 Azure Storage v11 を使用してキューを管理する
 description: このクイック スタートでは、.NET 用 Azure Storage クライアント ライブラリを使用して、キューを作成し、そこにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って処理する方法について説明します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10ab1c487095fe1587a3c665d8a06e0d5cbab7e0
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: a86d77252bd7618faf9e94a69e4b0d6ef1e56b08
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275891"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651524"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>クイック スタート:.NET 用 Azure Storage SDK v11 を使用してキューを管理する
 
@@ -31,19 +31,19 @@ ms.locfileid: "106275891"
 
 ### <a name="windows"></a>Windows
 
-- [.NET Core for Windows](https://www.microsoft.com/net/download/windows) または [.NET Framework](https://www.microsoft.com/net/download/windows) (Visual Studio for Windows に付属) をインストールする
+- [Windows 用 .NET Core SDK](https://dotnet.microsoft.com/download) または [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) (Visual Studio for Windows に付属) をインストールする
 - [Visual Studio for Windows](https://www.visualstudio.com/) をインストールする。 .NET Core を使用する場合、Visual Studio のインストールは任意です。
 
 .NET Core と .NET Framework の選択については、[サーバー アプリ用 .NET Core と .NET Framework の選択](/dotnet/standard/choosing-core-framework-server)に関するページを参照してください。
 
 ### <a name="linux"></a>Linux
 
-- [Linux 用 .NET Core](https://www.microsoft.com/net/download/linux) をインストールする
+- [Linux 用 .NET Core SDK](/dotnet/core/install/linux) をインストールする
 - オプションで、[Visual Studio Code](https://www.visualstudio.com/) および [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)をインストールする
 
 ### <a name="macos"></a>macOS
 
-- [macOS 用 .NET Core](https://www.microsoft.com/net/download/macos) をインストールする。
+- [macOS 用 .NET Core SDK](https://dotnet.microsoft.com/download) をインストールする。
 - オプションで、[Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac/) をインストールする
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
@@ -283,4 +283,4 @@ Azure Queue Storage を使用する .NET 開発については、以下の追加
 > [!div class="nextstepaction"]
 > [アプリケーションと Azure Queue Storage の間で通信する](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
-- .NET Core の詳細については、「[Get started with .NET in 10 minutes (10 分で .NET を使い始める)](https://www.microsoft.com/net/learn/get-started/)」を参照してください。
+- .NET Core の詳細については、「[Get started with .NET in 10 minutes (10 分で .NET を使い始める)](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro)」を参照してください。

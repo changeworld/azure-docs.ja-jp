@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/10/2021
+ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: f321b18e498cf0b1f12c921feed8e0d95c410874
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2297ff1e029aecbd37daa94022a77208c71fd34
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953427"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132280395"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lexonis-talentscape"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Lexonis TalentScape の統合
 
@@ -33,14 +33,17 @@ ms.locfileid: "104953427"
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * シングル サインオン (SSO) が有効な Lexonis TalentScape サブスクリプション。
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Lexonis TalentScape では、**SP および IDP** 開始の SSO がサポートされます
-* Lexonis TalentScape では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Lexonis TalentScape では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* Lexonis TalentScape では、**Just In Time** ユーザー プロビジョニングがサポートされます。
 
-## <a name="adding-lexonis-talentscape-from-the-gallery"></a>ギャラリーからの Lexonis TalentScape の追加
+## <a name="add-lexonis-talentscape-from-the-gallery"></a>ギャラリーからの Lexonis TalentScape の追加
 
 Azure AD への Lexonis TalentScape の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Lexonis TalentScape を追加する必要があります。
 
@@ -50,7 +53,6 @@ Azure AD への Lexonis TalentScape の統合を構成するには、ギャラ�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Lexonis TalentScape**」と入力します。
 1. 結果のパネルから **[Lexonis TalentScape]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-lexonis-talentscape"></a>Lexonis TalentScape の Azure AD SSO の構成とテスト
 
@@ -75,7 +77,7 @@ Lexonis TalentScape に対して Azure AD SSO を構成してテストするに�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
     a. **[識別子]** ボックスに、`https://<CUSTOMER_NAME>.lexonis.com/` の形式で URL を入力します。
 
@@ -105,6 +107,7 @@ Lexonis TalentScape に対して Azure AD SSO を構成してテストするに�
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -149,11 +152,11 @@ Lexonis TalentScape に対して Azure AD SSO を構成してテストするに�
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Lexonis TalentScape に自動的にサインインされます 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Lexonis TalentScape に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Lexonis TalentScape] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Lexonis TalentScape に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Lexonis TalentScape] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Lexonis TalentScape に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Lexonis TalentScape を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Lexonis TalentScape を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

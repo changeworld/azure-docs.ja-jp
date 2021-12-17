@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: 1799aff8bff96d404ddcbefbf58a5f5014cdba6a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b876cd702a2398e8dcb0e1a0be5fffce0615e58d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871590"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750821"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight の Hive Warehouse Connector でサポートされる Apache Spark の操作
 
@@ -74,7 +74,7 @@ Spark では、Hive によって管理される ACID テーブルへの書き込
     hive.createTable("sampletable_colorado").column("clientid","string").column("querytime","string").column("market","string").column("deviceplatform","string").column("devicemake","string").column("devicemodel","string").column("state","string").column("country","string").column("querydwelltime","double").column("sessionid","bigint").column("sessionpagevieworder","bigint").create()
     ```
 
-1. テーブル `hivesampletable` をフィルターします (列 `state` = `Colorado`)。 この Hive クエリでは、`write` 関数を使用して Hive テーブル `sampletable_colorado` に保存されている Spark データフレームが返されます。
+1. テーブル `hivesampletable` をフィルターします (列 `state` = `Colorado`)。 この Hive クエリからは Spark DataFrame が返され、結果は `write` 関数を使用して Hive テーブル `sampletable_colorado` に保存されます。
 
     ```scala
     hive.table("hivesampletable").filter("state = 'Colorado'").write.format("com.hortonworks.spark.sql.hive.llap.HiveWarehouseConnector").mode("append").option("table","sampletable_colorado").save()
@@ -106,7 +106,7 @@ localhost ポート 9999 の Spark ストリームから Hive テーブルにデ
 
 1. 次の手順を実行して、作成した Spark ストリームのためのデータを生成します。
     1. 同じ Spark クラスターで2番目の SSH セッションを開きます。
-    1. コマンド プロンプトで、「`nc -lk 9999`」と入力します。 このコマンドでは、netcat ユーティリティを使用して、コマンド ラインから指定のポートにデータを送信します。
+    1. コマンド プロンプトで、「`nc -lk 9999`」と入力します。 このコマンドでは、`netcat` ユーティリティを使用して、コマンド ラインから指定のポートにデータを送信します。
 
 1. 最初の SSH セッションに戻り、ストリーミング データを保持する新しい Hive テーブルを作成します。 spark-shell で、次のコマンドを入力します。
 
@@ -137,10 +137,11 @@ localhost ポート 9999 の Spark ストリームから Hive テーブルにデ
     hive.table("stream_table").show()
     ```
 
-2番目の SSH セッションで、**Ctrl + C** を使用して netcat を停止します。 最初の SSH セッションで、`:q` を使用して spark-shell を終了します。
+2 番目の SSH セッションで、**Ctrl + C** を使用して `netcat` を停止します。 最初の SSH セッションで、`:q` を使用して spark-shell を終了します。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Apache Spark および Apache Hive との HWC の統合](./apache-hive-warehouse-connector.md)
 * [HDInsight での対話型クエリの使用](./apache-interactive-query-get-started.md)
 * [HWC と Apache Zeppelin の統合](./apache-hive-warehouse-connector-zeppelin.md)
+* [HWC でサポートされる API](./hive-warehouse-connector-apis.md)

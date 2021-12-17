@@ -1,15 +1,15 @@
 ---
 title: 'クイック スタート: .NET Core を使用した新しいポリシー割り当て'
 description: このクイックスタートでは、.NET Core を使用して、準拠していないリソースを特定するための Azure Policy 割り当てを作成します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b89a0db419b1e7213e9742e4a39d073445d05189
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 62e9b5634f5535e9a462a094ea6adee29695ee03
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091788"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324493"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-net-core"></a>クイック スタート: .NET Core を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -55,7 +55,7 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
    using Microsoft.Rest;
    using Microsoft.Azure.Management.ResourceManager;
    using Microsoft.Azure.Management.ResourceManager.Models;
-   
+
    namespace policyAssignment
    {
        class Program
@@ -71,7 +71,7 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
                string strPolicyDefID = args[6];
                string strDescription = args[7];
                string strScope = args[8];
-   
+
                var authContext = new AuthenticationContext($"https://login.microsoftonline.com/{strTenant}");
                var authResult = await authContext.AcquireTokenAsync(
                    "https://management.core.windows.net",
@@ -168,7 +168,7 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
    using Microsoft.Rest;
    using Microsoft.Azure.Management.PolicyInsights;
    using Microsoft.Azure.Management.PolicyInsights.Models;
-   
+
    namespace policyAssignment
    {
        class Program
@@ -180,12 +180,12 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
                string strClientSecret = args[2];
                string strSubscriptionId = args[3];
                string strName = args[4];
-   
+
                var authContext = new AuthenticationContext($"https://login.microsoftonline.com/{strTenant}");
                var authResult = await authContext.AcquireTokenAsync(
                    "https://management.core.windows.net",
                    new ClientCredential(strClientId, strClientSecret));
-   
+
                using (var client = new PolicyInsightsClient(new TokenCredentials(authResult.AccessToken)))
                {
                    var policyQueryOptions = new QueryOptions
@@ -193,7 +193,7 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
                        Filter = $"IsCompliant eq false and PolicyAssignmentId eq '{strName}'",
                        Apply = "groupby(ResourceId)"
                    };
-   
+
                    var response = await client.PolicyStates.ListQueryResultsForSubscriptionAsync(
                        "latest", strSubscriptionId, policyQueryOptions);
                    Console.WriteLine(response.Odatacount);

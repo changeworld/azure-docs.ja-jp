@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3f7d6f8ca285fdc024db9ba952af9f7d169e7188
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ace250e843e0e9fd0a99e4948c344abd65a3beec
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678476"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140013"
 ---
 # <a name="optimizing-transactions-in-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールでトランザクションを最適化する
 
@@ -419,4 +419,4 @@ END
 
 ## <a name="next-steps"></a>次のステップ
 
-分離レベルとトランザクションの制限について詳しくは、[専用 SQL プールのトランザクション](sql-data-warehouse-develop-transactions.md)に関する記事をご覧ください。  その他のベスト プラクティスの概要については、[専用 SQL プールのベスト プラクティス](sql-data-warehouse-best-practices.md)に関する記事を参照してください。
+分離レベルとトランザクションの制限について詳しくは、[専用 SQL プールのトランザクション](sql-data-warehouse-develop-transactions.md)に関する記事をご覧ください。  その他のベスト プラクティスの概要については、[専用 SQL プールのベスト プラクティス](../sql/best-practices-dedicated-sql-pool.md)に関する記事を参照してください。

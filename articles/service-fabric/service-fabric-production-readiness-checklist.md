@@ -3,12 +3,12 @@ title: Azure Service Fabric の運用環境の準備状況チェックリスト
 description: ベスト プラクティスに従って、Service Fabric アプリケーションとクラスターの運用準備をします。
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: a03df40a8ce213c5de9ed7017d47713c4de3449d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5872de420b72f9b453c4b64cd7790a14c0d5d305
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87835869"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732202"
 ---
 # <a name="production-readiness-checklist"></a>運用環境の準備状況チェックリスト
 
@@ -34,7 +34,7 @@ ms.locfileid: "87835869"
 1. 自動アップグレードは、運用環境クラスターではオフにして、開発環境クラスターとステージング クラスターではオンにします (必要に応じてロールバック)。 
 1. サービスの目標復旧時点 (RPO) を確立し、[ディザスター リカバリー プロセス](service-fabric-disaster-recovery.md)を設定してそれをテストします。
 1. クラスターの手動またはプログラムを使用した[スケーリング](service-fabric-cluster-scaling.md)を計画します。
-1. クラスター ノードへの[修正プログラムの適用](service-fabric-patch-orchestration-application.md)を計画します。 
+1. クラスター ノードへの[修正プログラムの適用](how-to-patch-cluster-nodes-windows.md)を計画します。 
 1. 最新の変更が継続的にテストされるように、CI/CD パイプラインを確立します。 たとえば、[Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) または [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster) を使用して
 1. [Fault Analysis Service](service-fabric-testability-overview.md) と制御された[混乱](service-fabric-controlled-chaos.md)の誘発を使用して、負荷の下で開発クラスターとステージング クラスターをテストします。 
 1. アプリケーションの[スケーリング](service-fabric-concepts-scalability.md)を計画します。 

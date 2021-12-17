@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: dd9f35a0b7c3bb5c2c5888765e4ebac436b4cde1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cb27140e38fa264973bb29d8137b270297a3b0e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711129"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462085"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -123,7 +123,7 @@ Linux マシンの場合、使用する portNumber を手動で変更する必�
 
 ### <a name="configure-the-solution"></a>ソリューションの構成 
 
-1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview) から Network Performance Monitor ソリューションをワークスペースに追加します。 [Solutions Gallery からの Azure Monitor ソリューションの追加](./solutions.md)に関するページで説明されている手順も使用できます。 
+1. [Solutions Gallery からの Azure Monitor ソリューションの追加](./solutions.md#install-a-monitoring-solution)に関する記事で説明されている手順に従って Network Performance Monitor ソリューションをワークスペースに追加します。 これは、接続モニター内で Azure 以外のエンドポイントを使用する場合に必要です。
 2. Log Analytics ワークスペースを開いて、 **[概要]** タイルを選びます。 
 3. "*このソリューションにはさらに構成が必要です*" というメッセージが表示されている **[Network Performance Monitor]** タイルを選択します。
 
@@ -291,11 +291,11 @@ Azure portal を介してアラートを作成する NPM ユーザーの場合:
 
 ## <a name="pricing"></a>価格
 
-価格についての情報は、[オンライン](network-performance-monitor-pricing-faq.md)で入手できます。
+価格についての情報は、[オンライン](network-performance-monitor-pricing-faq.yml)で入手できます。
 
 ## <a name="provide-feedback"></a>フィードバックの提供 
 
-* **UserVoice:** Network Performance Monitor の機能について皆さんのアイデアを投稿できます。 [UserVoice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)をご覧ください。 
+* **UserVoice:** Network Performance Monitor の機能について皆さんのアイデアを投稿できます。 [UserVoice ページ](https://feedback.azure.com/d365community/forum/aa68334e-1925-ec11-b6e6-000d3a4f09d0?c=611733d4-1b25-ec11-b6e6-000d3a4f09d0)をご覧ください。 
 
 * **コーホートへの参加:** Microsoft が実施しているコーホートにぜひご参加ください。 その一環として、新機能にいち早く触れることができます。ネットワーク パフォーマンス モニターの機能向上にぜひご協力ください。 参加にご興味がある方は、こちらの[簡単なアンケート](https://aka.ms/npmcohort)にご回答ください。 
 

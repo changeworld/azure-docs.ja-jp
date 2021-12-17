@@ -5,15 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec7ecb77d37ed1cdf1d13aa7191f5d50e0008c20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4402cac05520e8e3dd76b8894335d314ec87d64
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98790801"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080025"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>チュートリアル: クラウドでイベントを発行してサブスクライブする
 
@@ -27,7 +28,7 @@ ms.locfileid: "98790801"
 * **Azure サブスクリプション**: まだお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free)を作成してください。 
 * **Azure IoT Hub および IoT Edge デバイス**: まだお持ちでない場合は、[Linux](../../iot-edge/quickstart-linux.md) または [Windows](../../iot-edge/quickstart.md) デバイスのクイック スタートの手順に従ってください。
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-deploy-iot-edge.md)]
 
 ## <a name="create-an-azure-function-in-the-azure-portal"></a>Azure portal で Azure 関数を作成する
 
@@ -107,7 +108,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 サブスクライバーは、トピックに発行されたイベントの受信登録ができます。 イベントを受信するには、サブスクライバーは関心のあるトピックに関する Event Grid サブスクリプションを作成する必要があります。
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 次の内容を含む subscription2.json を作成します。 ペイロードの詳細については、[API のドキュメント](api.md)を参照してください。
 

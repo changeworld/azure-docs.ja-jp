@@ -1,8 +1,7 @@
 ---
 title: Azure AD テナントのアプリ要求をカスタマイズする (PowerShell)
 titleSuffix: Microsoft identity platform
-description: このページでは、Azure Active Directory の要求のマッピングについて説明します。
-services: active-directory
+description: 特定の Azure Active Directory テナントのアプリケーションに対するトークンに組み込むクレーム (属性情報) をカスタマイズする方法を説明します。
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -10,437 +9,44 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 06/16/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 4c7474b001284286ed589f6b7995db6bc7fd50af
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 71677a085627f46a995530c522a3a480be188042
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075068"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351006"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
+# <a name="customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant"></a>テナントに存在する特定のアプリに対するトークンに組み込むクレームをカスタマイズする
+
+要求とは、そのユーザーに発行するトークンの中にあるユーザーに関する ID プロバイダーが提示した情報を指します。 テナント管理者は、自身のテナントの特定のアプリケーションに対するトークンに組み込むクレームをカスタマイズできます。 要求のマッピング ポリシーを使用すると、次の操作を行うことができます。
+
+- トークンに組み込むクレームを選ぶ。
+- まだ存在しない種類のクレームを作成する。
+- 特定のクレームに入れるデータのソースを指定、変更する。
+
+クレームのカスタマイズでは、WS-Fed、SAML、OAuth、OpenID Connect のプロトコルに対するクレームマッピング ポリシーを構成できます。
 
 > [!NOTE]
-> この機能は、現在ポータルで提供されている[要求のカスタマイズ](active-directory-saml-claims-customization.md)に取って代わり、そのカスタマイズに優先します。 このドキュメントで詳しく説明している Graph/PowerShell の方法に加えて、ポータルを使用して、同じアプリケーションの要求をカスタマイズすると、そのアプリケーションに対して発行されたトークンは、ポータルの構成を無視します。 このドキュメントで詳しく説明した方法で行った構成は、ポータルには反映されません。
+> これは、Azure portal で提供している[クレームのカスタマイズ](active-directory-saml-claims-customization.md)の後継機能です。 同一のアプリケーションに対し、このドキュメントで詳述する Microsoft Graph または Powershell を利用した方法に加えて、Azure portal でもクレームをカスタマイズした場合、そのアプリケーションのトークンでは、Azure portal での構成は無視されます。 このドキュメントで詳しく説明した方法で行った構成は、ポータルには反映されません。
 
-この機能は、テナント管理者が、テナントの特定のアプリケーションに対するトークンに出力された要求をカスタマイズするときに使用します。 要求のマッピング ポリシーを使用すると、次の操作を行うことができます。
+この記事では、[クレームマッピング ポリシーの種類](reference-claims-mapping-policy-type.md)の使い方が分かるように、いくつかのよくある使用方法を説明します。
 
-- トークンに含める要求を選択する。
-- まだ存在しない要求の種類を作成する。
-- 特定の要求で出力されたデータのソースを選択または変更する。
+## <a name="get-started"></a>はじめに
 
-> [!NOTE]
-> この機能は現在パブリック プレビューの段階です。 変更を元に戻すか、削除できるように準備しておいてください。 機能は、パブリック プレビュー期間中、すべての Azure Active Directory (Azure AD) サブスクリプションで使用できます。 ただし、この機能が一般公開された後は、機能の一部で Azure AD Premium サブスクリプションが必要になる場合があります。 この機能は、WS-Fed、SAML、OAuth、OpenID Connect の各プロトコルについて、要求のマッピング ポリシーの構成をサポートしています。
+次の例では、サービス プリンシパルのポリシーを作成、更新、リンク、および削除します。 クレームマッピング ポリシーは、サービス プリンシパル オブジェクトにのみ割り当てることができます。 Azure AD に慣れていない場合は、こうした例を確認する前に、[Azure AD テナントを取得する方法](quickstart-create-new-tenant.md)について学習することをお勧めします。
 
-## <a name="claims-mapping-policy-type"></a>要求のマッピング ポリシーの種類
-
-Azure AD では、**ポリシー** オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
-
-要求のマッピング ポリシーは **ポリシー** オブジェクトの一種であり、特定のアプリケーションに対して発行されたトークンに出力される要求を変更します。
-
-## <a name="claim-sets"></a>要求セット
-
-トークンで使用する方法とタイミングを定義する要求のセットがあります。
-
-| 要求セット | 説明 |
-|---|---|
-| コア要求セット | ポリシーに関係なく、すべてのトークンに提示されます。 また、この要求は制限付きと見なされ、変更できません。 |
-| 基本要求セット | コア要求セットの他にトークンに対して既定で出力される要求が含まれます。 要求のマッピング ポリシーを使用して基本要求を省略したり変更したりできます。 |
-| 制限付き要求セット | ポリシーを使用して変更することはできません。 データ ソースを変更できず、要求を生成するときに変換が適用されません。 |
-
-### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>表 1:JSON Web トークン (JWT) 制限付き要求セット
-
-| 要求の種類 (名前) |
-| ----- |
-| _claim_names |
-| _claim_sources |
-| access_token |
-| account_type |
-| acr |
-| actor |
-| actortoken |
-| aio |
-| altsecid |
-| amr |
-| app_chain |
-| app_displayname |
-| app_res |
-| appctx |
-| appctxsender |
-| appid |
-| appidacr |
-| assertion |
-| at_hash |
-| aud |
-| auth_data |
-| auth_time |
-| authorization_code |
-| azp |
-| azpacr |
-| c_hash |
-| ca_enf |
-| cc |
-| cert_token_use |
-| client_id |
-| cloud_graph_host_name |
-| cloud_instance_name |
-| cnf |
-| code |
-| controls |
-| credential_keys |
-| csr |
-| csr_type |
-| deviceid |
-| dns_names |
-| domain_dns_name |
-| domain_netbios_name |
-| e_exp |
-| email |
-| endpoint |
-| enfpolids |
-| exp |
-| expires_on |
-| grant_type |
-| graph |
-| group_sids |
-| groups |
-| hasgroups |
-| hash_alg |
-| home_oid |
-| `http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant` |
-| `http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod` |
-| `http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration` |
-| `http://schemas.microsoft.com/ws/2008/06/identity/claims/expired` |
-| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
-| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
-| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
-| iat |
-| identityprovider |
-| idp |
-| in_corp |
-| instance |
-| ipaddr |
-| isbrowserhostedapp |
-| iss |
-| jwk |
-| key_id |
-| key_type |
-| mam_compliance_url |
-| mam_enrollment_url |
-| mam_terms_of_use_url |
-| mdm_compliance_url |
-| mdm_enrollment_url |
-| mdm_terms_of_use_url |
-| nameid |
-| nbf |
-| netbios_name |
-| nonce |
-| oid |
-| on_prem_id |
-| onprem_sam_account_name |
-| onprem_sid |
-| openid2_id |
-| password |
-| polids |
-| pop_jwk |
-| preferred_username |
-| previous_refresh_token |
-| primary_sid |
-| puid |
-| pwd_exp |
-| pwd_url |
-| redirect_uri |
-| refresh_token |
-| refreshtoken |
-| request_nonce |
-| resource |
-| role |
-| roles |
-| scope |
-| scp |
-| sid |
-| signature |
-| signin_state |
-| src1 |
-| src2 |
-| sub |
-| tbid |
-| tenant_display_name |
-| tenant_region_scope |
-| thumbnail_photo |
-| tid |
-| tokenAutologonEnabled |
-| trustedfordelegation |
-| unique_name |
-| upn |
-| user_setting_sync_url |
-| username |
-| uti |
-| ver |
-| verified_primary_email |
-| verified_secondary_email |
-| wids |
-| win_ver |
-
-### <a name="table-2-saml-restricted-claim-set"></a>表 2:SAML 制限付き要求セット
-
-| 要求の種類 (URI) |
-| ----- |
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/expired`|
-|`http://schemas.microsoft.com/identity/claims/accesstoken`|
-|`http://schemas.microsoft.com/identity/claims/openid2_id`|
-|`http://schemas.microsoft.com/identity/claims/identityprovider`|
-|`http://schemas.microsoft.com/identity/claims/objectidentifier`|
-|`http://schemas.microsoft.com/identity/claims/puid`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1]`|
-|`http://schemas.microsoft.com/identity/claims/tenantid`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod`|
-|`http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/groups`|
-|`http://schemas.microsoft.com/claims/groups.link`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/role`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/wids`|
-|`http://schemas.microsoft.com/2014/09/devicecontext/claims/iscompliant`|
-|`http://schemas.microsoft.com/2014/02/devicecontext/claims/isknown`|
-|`http://schemas.microsoft.com/2012/01/devicecontext/claims/ismanaged`|
-|`http://schemas.microsoft.com/2014/03/psso`|
-|`http://schemas.microsoft.com/claims/authnmethodsreferences`|
-|`http://schemas.xmlsoap.org/ws/2009/09/identity/claims/actor`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/samlissuername`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/confirmationkey`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/primarygroupsid`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/authorizationdecision`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/authentication`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarygroupsid`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarysid`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/denyonlysid`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlywindowsdevicegroup`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdeviceclaim`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdevicegroup`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsfqbnversion`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/windowssubauthority`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsuserclaim`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/x500distinguishedname`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/ispersistent`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier`|
-|`http://schemas.microsoft.com/identity/claims/scope`|
-
-## <a name="claims-mapping-policy-properties"></a>要求のマッピング ポリシーのプロパティ
-
-出力される要求内容とデータの送信元を制御するには、要求のマッピング ポリシーのプロパティを使用します。 ポリシーが設定されていない場合は、アプリケーションが受信するように選んだコア要求セット、基本要求セット、[省略可能な要求](active-directory-optional-claims.md)を含むトークンが発行されます。
+クレームマッピング ポリシーを作成するときは、トークンのディレクトリ スキーマ拡張属性からクレームを発信するよう設定することもできます。 `ClaimsSchema` 要素の *ID* ではなく、拡張属性の *ExtensionID* を使用します。  拡張属性の詳細については、[ディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。
 
 > [!NOTE]
-> コア要求セット内の要求については、このプロパティの設定に関係なく、すべてのトークンに提示されます。
-
-### <a name="include-basic-claim-set"></a>Include 基本要求セット
-
-**文字列:** IncludeBasicClaimSet
-
-**データ型**: ブール値 (True または False)
-
-**概要:** このプロパティは、基本要求セットが、このポリシーの影響を受けるトークンに含まれるかどうかを判断します。
-
-- True に設定されている場合、基本要求セット内のすべての要求が、ポリシーの影響を受けるトークンに出力されます。
-- False に設定されている場合、基本要求セット内の要求は、同じポリシーの要求スキーマ プロパティに個別に追加されない限り、トークンに追加されません。
-
-
-
-### <a name="claims-schema"></a>要求スキーマ
-
-**文字列:** ClaimsSchema
-
-**データ型**: 1 つ以上の要求スキーマ エントリを含む JSON BLOB
-
-**概要:** このプロパティは、基本要求セットやコア要求セットのほか、ポリシーの影響を受けるトークンにどの要求を提示するかを定義します。
-このプロパティで定義されている要求スキーマ エントリごとに、特定の情報が必要です。 データのソース (**Value**、**Source/ID ペア**、または **Source/ExtensionID ペア**) と、どの要求としてデータを出力するか (**要求の種類**) を指定します。
-
-### <a name="claim-schema-entry-elements"></a>要求スキーマ エントリ要素
-
-**値:** 値要素では、静的な値が、要求に出力されるデータとして定義されます。
-
-**ソース/ID ペア:** ソース要素と ID 要素では、要求内のデータのソースが定義されます。
-
-**Source/ExtensionID ペア:** Source と ExtensionID 要素は、要求内のデータのソースであるディレクトリ スキーマ拡張属性を定義します。 詳細については、「[要求でディレクトリ スキーマ拡張属性を使用する](active-directory-schema-extensions.md)」を参照してください。
-
-ソース要素を次のいずれかの値に設定します。
-
-- "user":要求のデータは、ユーザー オブジェクトのプロパティです。
-- "application":要求のデータは、アプリケーション (クライアント) のサービス プリンシパルのプロパティです。
-- "resource":要求のデータは、リソースのサービス プリンシパルのプロパティです。
-- "audience":要求のデータは、トークン (クライアントかリソースのいずれかのサービス プリンシパル) の対象ユーザーであるサービス プリンシパルのプロパティです。
-- "company":要求のデータは、リソース テナントの会社のオブジェクトのプロパティです。
-- "transformation":要求のデータは、要求からの変換です (この記事の後述の「要求の変換」セクションを参照してください)。
-
-ソースが transformation の場合、**TransformationID** 要素も、この要求の定義に含める必要があります。
-
-ID 要素により、ソースのどのプロパティが要求の値を提供するかが特定されます。 次の表は、ソースの各値に対して有効な ID の値を示しています。
-
-#### <a name="table-3-valid-id-values-per-source"></a>表 3:ソースごとに有効な ID 値
-
-| source | id | 説明 |
-|-----|-----|-----|
-| User | surname | surname |
-| User | givenname | 名 |
-| User | displayName | 表示名 |
-| User | objectid | ObjectID |
-| User | mail | 電子メール アドレス |
-| User | userprincipalname | ユーザー プリンシパル名 |
-| User | department|部署|
-| User | onpremisessamaccountname | オンプレミスの SAM のアカウント名 |
-| User | netbiosname| NetBios 名 |
-| User | dnsdomainname | DNS ドメイン名 |
-| User | onpremisesecurityidentifier | オンプレミスのセキュリティ ID |
-| User | companyname| 組織名 |
-| User | streetaddress | 番地 |
-| User | postalcode | 郵便番号 |
-| User | preferredlanguage | 優先言語 |
-| User | onpremisesuserprincipalname | オンプレミスの UPN |
-| User | mailNickname | メールのニックネーム |
-| User | extensionattribute1 | 拡張属性 1 |
-| User | extensionattribute2 | 拡張属性 2 |
-| User | extensionattribute3 | 拡張属性 3 |
-| User | extensionattribute4 | 拡張属性 4 |
-| User | extensionattribute5 | 拡張属性 5 |
-| User | extensionattribute6 | 拡張属性 6 |
-| User | extensionattribute7 | 拡張属性 7 |
-| User | extensionattribute8 | 拡張属性 8 |
-| User | extensionattribute9 | 拡張属性 9 |
-| User | extensionattribute10 | 拡張属性 10 |
-| User | extensionattribute11 | 拡張属性 11 |
-| User | extensionattribute12 | 拡張属性 12 |
-| User | extensionattribute13 | 拡張属性 13 |
-| User | extensionattribute14 | 拡張属性 14 |
-| User | extensionattribute15 | 拡張属性 15 |
-| User | othermail | その他のメール |
-| User | country | 国/リージョン |
-| User | city | City |
-| User | state | State |
-| User | jobtitle | 役職 |
-| User | employeeid | 従業員 ID |
-| User | facsimiletelephonenumber | ファックスの電話番号 |
-| User | assignedroles | ユーザーに割り当てられたアプリ ロールの一覧|
-| アプリケーション、リソース、対象ユーザー | displayName | 表示名 |
-| アプリケーション、リソース、対象ユーザー | objectid | ObjectID |
-| アプリケーション、リソース、対象ユーザー | tags | サービス プリンシパル タグ |
-| [会社] | tenantcountry | テナントの国/リージョン |
-
-**TransformationID:** TransformationID 要素は、ソース要素が "transformation" に設定されている場合にのみ指定する必要があります。
-
-- この要素は、この要求のデータを生成する方法を定義する、**ClaimsTransformation** プロパティの変換エントリの ID 要素と一致する必要があります。
-
-**要求の種類:** **JwtClaimType** 要素と **SamlClaimType** 要素は、この要求スキーマ エントリが、どの要求を参照するかを定義します。
-
-- JwtClaimType には、JWT に出力する要求の名前を含める必要があります。
-- SamlClaimType には、SAML トークンに出力する要求の URI を含める必要があります。
-
-* **onPremisesUserPrincipalName 属性:** 代替 ID を使用する場合、オンプレミスの userPrincipalName 属性は Azure AD の onPremisesUserPrincipalName 属性と同期されます。 この属性は、代替 ID が構成されている場合にのみ使用できますが、MS Graph ベータ版 (https://graph.microsoft.com/beta/me/ ) から使用することもできます。
-
-> [!NOTE]
-> 制限付き要求セット内の要求の名前と URI を、要求の種類の要素に使用することはできません。 詳細については、この記事の後述の「例外と制限事項」セクションを参照してください。
-
-### <a name="claims-transformation"></a>要求の変換
-
-**文字列:** ClaimsTransformation
-
-**データ型**: 1 つ以上の変換エントリを含む JSON BLOB
-
-**概要:** このプロパティを使用して、共通の変換をソース データに適用し、要求スキーマで指定された要求の出力データを生成します。
-
-**ID:** ID 要素を使用して、TransformationID 要求スキーマ エントリのこの変換エントリを参照します。 この値は、このポリシー内の変換エントリごとに一意である必要があります。
-
-**TransformationMethod:** TransformationMethod 要素は、要求のデータを生成するときに実行される操作を特定します。
-
-選択した方法に基づいて、一連の入力と出力が想定されます。 **InputClaims** 要素、**InputParameters** 要素、**OutputClaims** 要素を使用して入出力を定義します。
-
-#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4:変換方法と想定される入出力
-
-|TransformationMethod|想定される入力|想定される出力|説明|
-|-----|-----|-----|-----|
-|Join|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
-|ExtractMailPrefix|電子メールまたは UPN|抽出された文字列|ExtensionAttributes 1-15 または、UPN やユーザーのメール アドレス値 (johndoe@contoso.com など) を格納するその他のあらゆるスキーマ拡張。 メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 \@ 記号がない場合、元の入力文字列がそのまま返されます。|
-
-**InputClaims:** InputClaims 要素を使用して、要求スキーマ エントリから変換にデータを渡します。 この要素には 2 つの属性があります。**ClaimTypeReferenceId** と **TransformationClaimType** です。
-
-- **ClaimTypeReferenceId** は要求スキーマ エントリの ID 要素と結合され、該当する入力要求を検索します。
-- **TransformationClaimType** は、この入力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される入力のいずれかと一致する必要があります。
-
-**InputParameters:** InputParameters 要素を使用して、定数値を変換に渡します。 この要素には 2 つの属性があります。**Value** と **ID** です。
-
-- **Value** は、渡される実際の定数値です。
-- **ID** は、入力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される入力のいずれかと一致する必要があります。
-
-**OutputClaims:** OutputClaims 要素を使用して、変換によって生成されたデータを保持し、そのデータを要求スキーマ エントリに関連付けます。 この要素には 2 つの属性があります。**ClaimTypeReferenceId** と **TransformationClaimType** です。
-
-- **ClaimTypeReferenceId** は要求スキーマ エントリの ID と結合され、該当する出力要求を検索します。
-- **TransformationClaimType** は、出力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される出力のいずれかと一致する必要があります。
-
-### <a name="exceptions-and-restrictions"></a>例外と制限事項
-
-**SAML NameID と UPN:** NameID と UPN の値のソース属性と、許可される要求変換には、制限があります。 表 5 と表 6 を参照して、使用できる値を確認してください。
-
-#### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5:SAML NameID のデータ ソースとして許可されている属性
-
-|source|id|説明|
-|-----|-----|-----|
-| User | mail|電子メール アドレス|
-| User | userprincipalname|ユーザー プリンシパル名|
-| User | onpremisessamaccountname|オンプレミスの Sam のアカウント名|
-| User | employeeid|従業員 ID|
-| User | extensionattribute1 | 拡張属性 1 |
-| User | extensionattribute2 | 拡張属性 2 |
-| User | extensionattribute3 | 拡張属性 3 |
-| User | extensionattribute4 | 拡張属性 4 |
-| User | extensionattribute5 | 拡張属性 5 |
-| User | extensionattribute6 | 拡張属性 6 |
-| User | extensionattribute7 | 拡張属性 7 |
-| User | extensionattribute8 | 拡張属性 8 |
-| User | extensionattribute9 | 拡張属性 9 |
-| User | extensionattribute10 | 拡張属性 10 |
-| User | extensionattribute11 | 拡張属性 11 |
-| User | extensionattribute12 | 拡張属性 12 |
-| User | extensionattribute13 | 拡張属性 13 |
-| User | extensionattribute14 | 拡張属性 14 |
-| User | extensionattribute15 | 拡張属性 15 |
-
-#### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>表 6:SAML NameID の許可されている変換方法
-
-| TransformationMethod | 制限 |
-| ----- | ----- |
-| ExtractMailPrefix | なし |
-| Join | 結合されているサフィックスは、リソース テナントの確認済みドメインである必要があります。 |
-
-### <a name="cross-tenant-scenarios"></a>テナント間のシナリオ
-
-要求のマッピング ポリシーは、ゲスト ユーザーには適用されません。 要求のマッピング ポリシーがサービス プリンシパルに割り当てられたアプリケーションに、ゲスト ユーザーがアクセスしようとすると、既定のトークンが発行されます (ポリシーの効力がなくなります)。
-
-## <a name="claims-mapping-policy-assignment"></a>要求のマッピング ポリシーの割り当て
-
-要求のマッピング ポリシーは、サービス プリンシパル オブジェクトにのみ割り当てることができます。
-
-### <a name="example-claims-mapping-policies"></a>要求のマッピング ポリシーのサンプル
-
-Azure AD では、特定のサービス プリンシパルに対するトークンに発行された要求をカスタマイズできる場合、多くのシナリオが考えられます。 このセクションでは、要求のマッピング ポリシーの種類を使用する方法を理解するうえで役に立つ、一般的なシナリオをいくつか取り上げて説明します。
-
-要求のマッピングポリシーを作成するときに、トークンのディレクトリ スキーマ拡張属性から要求を出力することもできます。 `ClaimsSchema` 要素の *ID* ではなく、拡張属性の *ExtensionID* を使用します。  拡張属性の詳細については、[ディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。
-
-#### <a name="prerequisites"></a>前提条件
-
-次の例では、サービス プリンシパルのポリシーを作成、更新、リンク、および削除します。 Azure AD に慣れていない場合は、こうした例を確認する前に、[Azure AD テナントを取得する方法](quickstart-create-new-tenant.md)について学習することをお勧めします。
+> クレームマッピング ポリシーを構成するには、[パブリック プレビュー版 Azure AD PowerShell モジュール](https://www.powershellgallery.com/packages/AzureADPreview)が必要です。 PowerShell モジュールはプレビュー版ですが、Azure のクレームマッピングおよびトークン作成ランタイムは一般公開しています。 プレビュー版の PowerShell モジュールに更新する場合、構成スクリプトの更新あるいは変更が必要な場合があります。 
 
 使用を開始するには、次の手順を実行します。
 
 1. 最新版の [Azure AD PowerShell モジュール パブリック プレビュー リリース](https://www.powershellgallery.com/packages/AzureADPreview)をダウンロードします。
-1. Connect コマンドを実行して、Azure AD 管理者アカウントにサインインします。 新しいセッションを開始するたびにこのコマンドを実行します。
+1. [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0-preview&preserve-view=true) を実行して Azure AD 管理者アカウントにサインインします。 新しいセッションを開始するたびにこのコマンドを実行します。
 
    ``` powershell
    Connect-AzureAD -Confirm
@@ -451,11 +57,18 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
    Get-AzureADPolicy
    ```
 
-#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>例:サービス プリンシパルに対して発行されたトークンから基本要求を省略するために、ポリシーを作成して割り当てる
+次に、クレームマッピング ポリシーを作成してサービス プリンシパルに割り当てます。  よくある使用方法については、これらの例をご覧ください。
+- [トークンから基本要求を除外する](#omit-the-basic-claims-from-tokens)
+- [EmployeeID と TenantCountry を要求としてトークンに含める](#include-the-employeeid-and-tenantcountry-as-claims-in-tokens)
+- [トークンで要求変換を使用する](#use-a-claims-transformation-in-tokens)
 
-この例では、リンクされたサービス プリンシパルに対して発行されたトークンから、基本要求セットを削除するポリシーを作成します。
+クレームマッピング ポリシーを作成したら、トークンにカスタム クレームを組み込むことを承認するよう、アプリケーションを設定します。  詳しくは「[セキュリティに関する考慮事項](#security-considerations)」を読んでください。
 
-1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、トークンから基本要求セットを削除します。
+## <a name="omit-the-basic-claims-from-tokens"></a>トークンから基本要求を除外する
+
+この例では、リンク サービス プリンシパルに対して発行されたトークンから、[基本要求セット](reference-claims-mapping-policy-type.md#claim-sets)を削除するポリシーを作成します。
+
+1. クレームマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、トークンから基本要求セットを削除します。
    1. ポリシーを作成するには、このコマンドを実行します。
 
       ``` powershell
@@ -474,16 +87,19 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-#### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>例:サービス プリンシパルに対して発行されたトークンに、EmployeeID と TenantCountry を要求として含めるために、ポリシーを作成して割り当てる
+## <a name="include-the-employeeid-and-tenantcountry-as-claims-in-tokens"></a>EmployeeID と TenantCountry を要求としてトークンに含める
 
 この例では、リンクされたサービス プリンシパルに対して発行されたトークンに、EmployeeID と TenantCountry を追加するポリシーを作成します。 EmployeeID は、SAML トークンと JWT の両方で名前要求の種類として出力されます。 TenantCountry は、SAML トークンと JWT の両方で国/リージョン要求の種類として出力されます。 この例では、操作を続行し、トークンに基本要求セットを含めます。
 
-1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
+1. クレームマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
    1. ポリシーを作成するには、次のコマンドを実行します。
 
       ``` powershell
-      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/employeeid","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
+      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/employeeid","JwtClaimType":"employeeid"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
+
+      > [!WARNING]
+      > ディレクトリの拡張属性に対するクレームマッピング ポリシーを定義するときは、`ClaimsSchema` 配列の中で `ID` プロパティの代わりに `ExtensionID` プロパティを使用します。
 
    2. 新しいポリシーを表示し、ポリシーの ObjectId を取得するには、次のコマンドを実行します。
 
@@ -498,11 +114,11 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>例:サービス プリンシパルに対して発行されたトークンで要求変換を使用するポリシーを作成して割り当てる
+## <a name="use-a-claims-transformation-in-tokens"></a>トークンで要求変換を使用する
 
 この例では、リンクされたサービス プリンシパルに対して発行された JWT に、カスタム要求 "JoinedData" を出力するポリシーを作成します。 この要求には、ユーザー オブジェクトの extensionattribute1 属性に格納されたデータと ".sandbox" を結合して作成された値が追加されます。 この例では、トークンで基本要求セットを除外します。
 
-1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
+1. クレームマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
    1. ポリシーを作成するには、次のコマンドを実行します。
 
       ``` powershell
@@ -524,17 +140,274 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
-トークンを受信するアプリケーションは、クレーム値が Azure AD によって正式に発行され、改ざんできないという事実に依存します。 ただし、クレーム マッピング ポリシーを使用してトークンの内容を変更すると、これらの想定が正しくなくなる可能性があります。 アプリケーションは、悪意のあるアクターによって作成されたクレーム マッピング ポリシーからそれ自体を保護するために、トークンがクレーム マッピング ポリシーの作成者によって変更されたことを明示的に認識する必要があります。 これは、次の方法で実現できます。
+トークンを受信するアプリケーションは、クレーム値が Azure AD によって正式に発行され、改ざんできないという事実に依存します。 ただし、クレームマッピング ポリシーによってトークンの内容を変更すると、この前提は通用しなくなります。 悪意のある目的で作成されたクレームマッピング ポリシーからアプリケーションを保護するため、アプリケーションでは、クレームマッピング ポリシーの作成者がトークンを変更したことを、明示的に確認する必要があります。 これは、次のいずれかの方法で実施できます。
 
-- カスタム署名キーを構成する
-- マップされたクレームを受け入れるようにアプリケーション マニフェストを更新する。
+- [カスタム署名キーを構成する](#configure-a-custom-signing-key)
+- または、[アプリケーション マニフェストを編集](#update-the-application-manifest)して、マッピングしたクレームを承認する。
  
 これを行わないと、Azure AD は[`AADSTS50146` エラー コード](reference-aadsts-error-codes.md#aadsts-error-codes)を返します。
 
-### <a name="custom-signing-key"></a>カスタム署名キー
+### <a name="configure-a-custom-signing-key"></a>カスタム署名キーを構成する
 
-サービス プリンシパル オブジェクトにカスタム署名キーを追加するには、Azure PowerShell コマンドレット [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) を使用して、ご自身のアプリケーション オブジェクトの証明書キー資格情報を作成します。
+マルチテナントのアプリでは、カスタム署名キーを使用するべきです。  アプリ マニフェストには `acceptMappedClaims` を設定しないでください。 Azure portal でアプリをセットアップすると、アプリ登録オブジェクトとサービス プリンシパルがテナントに作成されます。  そのアプリでは Azure グローバル サインイン キーを使用します。このキーではトークンのクレームをカスタマイズできません。  トークンにカスタム クレームを使用するには、証明書からカスタム サインイン キーを作成してサービス プリンシパルに追加します。  テスト目的で、自己署名証明書を使用してもかまいません。 カスタム署名キーを設定した後、アプリケーションのコードで[トークン署名キーを承認する](#validate-token-signing-key)必要があります。
 
+次の情報をサービス プリンシパルに追加します。
+
+- 秘密キー ([キー資格情報](/graph/api/resources/keycredential))
+- パスワード ([パスワード資格情報](/graph/api/resources/passwordcredential))
+- 公開キー ([キー資格情報](/graph/api/resources/keycredential))
+
+証明書からエクスポートした PFX ファイルから、base-64 でエンコードした秘密キーと公開キーを抽出します。 “Sign” に使用する `keyCredential` の `keyId` が `passwordCredential` の `keyId` に一致することを確認します。 証明書の拇印のハッシュを取得することで、`customkeyIdentifier` を生成できます。
+
+#### <a name="request"></a>Request
+
+カスタム署名キーをサービス プリンシプルに追加する HTTP PATCH 要求の形式を、次に示します。  `keyCredentials` プロパティの “key” の値は、読みやすいように短縮してあります。 この値は base-64 でエンコードしてあります。 秘密キーでは、プロパティの “usage” (用途) は “Sign” です。 公開キーでは、プロパティの “usage” (用途) は “Verify” です。
+
+```
+PATCH https://graph.microsoft.com/v1.0/servicePrincipals/f47a6776-bca7-4f2e-bc6c-eec59d058e3e
+
+Content-type: servicePrincipals/json
+Authorization: Bearer {token}
+
+{
+    "keyCredentials":[
+        {
+            "customKeyIdentifier": "lY85bR8r6yWTW6jnciNEONwlVhDyiQjdVLgPDnkI5mA=",
+            "endDateTime": "2021-04-22T22:10:13Z",
+            "keyId": "4c266507-3e74-4b91-aeba-18a25b450f6e",
+            "startDateTime": "2020-04-22T21:50:13Z",
+            "type": "X509CertAndPassword",
+            "usage": "Sign",
+            "key":"MIIKIAIBAz.....HBgUrDgMCERE20nuTptI9MEFCh2Ih2jaaLZBZGeZBRFVNXeZmAAgIH0A==",
+            "displayName": "CN=contoso"
+        },
+        {
+            "customKeyIdentifier": "lY85bR8r6yWTW6jnciNEONwlVhDyiQjdVLgPDnkI5mA=",
+            "endDateTime": "2021-04-22T22:10:13Z",
+            "keyId": "e35a7d11-fef0-49ad-9f3e-aacbe0a42c42",
+            "startDateTime": "2020-04-22T21:50:13Z",
+            "type": "AsymmetricX509Cert",
+            "usage": "Verify",
+            "key": "MIIDJzCCAg+gAw......CTxQvJ/zN3bafeesMSueR83hlCSyg==",
+            "displayName": "CN=contoso"
+        }
+
+    ],
+    "passwordCredentials": [
+        {
+            "customKeyIdentifier": "lY85bR8r6yWTW6jnciNEONwlVhDyiQjdVLgPDnkI5mA=",
+            "keyId": "4c266507-3e74-4b91-aeba-18a25b450f6e",
+            "endDateTime": "2022-01-27T19:40:33Z",
+            "startDateTime": "2020-04-20T19:40:33Z",
+            "secretText": "mypassword"
+        }
+    ]
+}
+```
+
+#### <a name="configure-a-custom-signing-key-using-powershell"></a>PowerShell でカスタム署名キーを設定する
+
+PowerShell で [MSAL Public Client Application のインスタンスを作成し](msal-net-initializing-client-applications.md#initializing-a-public-client-application-from-code)、[Authorization Code Grant](v2-oauth2-auth-code-flow.md) フローで Microsoft Graph に対する委任権限アクセス トークンを取得します。 このアクセス トークンを使用して Microsoft Graph を呼び出し、サービス プリンシパルに対してカスタム署名キーを設定します。 カスタム署名キーを設定した後、アプリケーションのコードで[トークン署名キーを承認する](#validate-token-signing-key)必要があります。
+
+このスクリプトを実行するには、次のものが必要です。
+1. アプリケーションのサービス プリンシパルのオブジェクト ID。Azure portal の [[Enterprise Applications]\(エンタープライズ アプリケーション\)](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) の目的のアプリケーションの項目の **[Overview]\(概要\)** ブレードで確認できます。
+2. ユーザーをサインインさせ、Microsoft Graph を呼び出すアクセス トークンを取得するためのアプリの登録。 Azure portal の [[App registrations]\(アプリの登録)\](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) の目的のアプリケーションの項目の **[Overview]\(概要\)** ブレードで、このアプリのアプリケーション (クライアント) ID を取得します。 アプリを登録するには、次のものを設定する必要があります。
+    - **[Mobile and desktop applications]\(モバイルおよびデスクトップアプリケーション\)** プラットフォーム構成に、リダイレクト URI として http://localhost を設定する。
+    - **[API permissions]\(API 使用権限\)** で、Microsoft Graph 委任権限の **Application.ReadWrite.All** と **User.Read** を設定する (これらの権限には管理者の同意を与える必要があります)。
+3. ログインして Microsoft Graph アクセス トークンを取得するユーザー。 このユーザーは、次の Azure AD 管理者ロールのどれかを持っている必要があります (サービス プリンシパルの更新に必要です)。
+    - クラウド アプリケーション管理者
+    - アプリケーション管理者
+    - グローバル管理者
+4. アプリケーションのカスタム署名キーに設定する証明書。 自己署名証明書を作成する方法と、信頼できる証明機関から証明書を取得する方法があります。 スクリプトでは、証明書に含まれる次のものを使用します。
+    - 公開キー (通常 .cer ファイル)
+    - PKCS#12 形式の秘密キー (.pfx ファイル)
+    - 秘密キーのパスワード (.pfx ファイル)
+
+> [!IMPORTANT]
+> Azure AD では他の形式をサポートしていないため、秘密キーは PKCS#12 形式である必要があります。 誤った形式を使用した場合、証明書情報を保持する `keyCredentials` の存在するサービス プリンシパルを Microsoft Graph で PATCH すると、“Invalid certificate: Key value is invalid certificate” (無効な証明書: キーの値が無効な証明書です) というエラーが発生する場合があります。
+
+```powershell
+
+$fqdn="fourthcoffeetest.onmicrosoft.com" # this is used for the 'issued to' and 'issued by' field of the certificate
+$pwd="mypassword" # password for exporting the certificate private key
+$location="C:\\temp" # path to folder where both the pfx and cer file will be written to
+
+# Create a self-signed cert
+$cert = New-SelfSignedCertificate -certstorelocation cert:\currentuser\my -DnsName $fqdn
+$pwdSecure = ConvertTo-SecureString -String $pwd -Force -AsPlainText
+$path = 'cert:\currentuser\my\' + $cert.Thumbprint
+$cerFile = $location + "\\" + $fqdn + ".cer"
+$pfxFile = $location + "\\" + $fqdn + ".pfx"
+ 
+# Export the public and private keys
+Export-PfxCertificate -cert $path -FilePath $pfxFile -Password $pwdSecure
+Export-Certificate -cert $path -FilePath $cerFile
+
+$ClientID = "<app-id>"
+$loginURL       = "https://login.microsoftonline.com"
+$tenantdomain   = "fourthcoffeetest.onmicrosoft.com"
+$redirectURL = "http://localhost" # this reply URL is needed for PowerShell Core 
+[string[]] $Scopes = "https://graph.microsoft.com/.default"
+$pfxpath = $pfxFile # path to pfx file
+$cerpath = $cerFile # path to cer file
+$SPOID = "<service-principal-id>"
+$graphuri = "https://graph.microsoft.com/v1.0/serviceprincipals/$SPOID"
+$password = $pwd  # password for the pfx file
+ 
+ 
+# choose the correct folder name for MSAL based on PowerShell version 5.1 (.Net) or PowerShell Core (.Net Core)
+ 
+if ($PSVersionTable.PSVersion.Major -gt 5)
+    { 
+        $core = $true
+        $foldername =  "netcoreapp2.1"
+    }
+else
+    { 
+        $core = $false
+        $foldername = "net45"
+    }
+ 
+# Load the MSAL/microsoft.identity/client assembly -- needed once per PowerShell session
+[System.Reflection.Assembly]::LoadFrom((Get-ChildItem C:/Users/<username>/.nuget/packages/microsoft.identity.client/4.32.1/lib/$foldername/Microsoft.Identity.Client.dll).fullname) | out-null
+  
+$global:app = $null
+  
+$ClientApplicationBuilder = [Microsoft.Identity.Client.PublicClientApplicationBuilder]::Create($ClientID)
+[void]$ClientApplicationBuilder.WithAuthority($("$loginURL/$tenantdomain"))
+[void]$ClientApplicationBuilder.WithRedirectUri($redirectURL)
+ 
+$global:app = $ClientApplicationBuilder.Build()
+  
+Function Get-GraphAccessTokenFromMSAL {
+    [Microsoft.Identity.Client.AuthenticationResult] $authResult  = $null
+    $AquireTokenParameters = $global:app.AcquireTokenInteractive($Scopes)
+    [IntPtr] $ParentWindow = [System.Diagnostics.Process]::GetCurrentProcess().MainWindowHandle
+    if ($ParentWindow)
+    {
+        [void]$AquireTokenParameters.WithParentActivityOrWindow($ParentWindow)
+    }
+    try {
+        $authResult = $AquireTokenParameters.ExecuteAsync().GetAwaiter().GetResult()
+    }
+    catch {
+        $ErrorMessage = $_.Exception.Message
+        Write-Host $ErrorMessage
+    }
+     
+    return $authResult
+}
+  
+$myvar = Get-GraphAccessTokenFromMSAL
+if ($myvar)
+{
+    $GraphAccessToken = $myvar.AccessToken
+    Write-Host "Access Token: " $myvar.AccessToken
+    #$GraphAccessToken = "eyJ0eXAiOiJKV1QiL ... iPxstltKQ"
+    
+ 
+    #  this is for PowerShell Core
+    $Secure_String_Pwd = ConvertTo-SecureString $password -AsPlainText -Force
+ 
+    # reading certificate files and creating Certificate Object
+    if ($core)
+    {
+        $pfx_cert = get-content $pfxpath -AsByteStream -Raw
+        $cer_cert = get-content $cerpath -AsByteStream -Raw
+        $cert = Get-PfxCertificate -FilePath $pfxpath -Password $Secure_String_Pwd
+    }
+    else
+    {
+        $pfx_cert = get-content $pfxpath -Encoding Byte
+        $cer_cert = get-content $cerpath -Encoding Byte
+        # Write-Host "Enter password for the pfx file..."
+        # calling Get-PfxCertificate in PowerShell 5.1 prompts for password
+        # $cert = Get-PfxCertificate -FilePath $pfxpath
+        $cert = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($pfxpath, $password)
+    }
+ 
+    # base 64 encode the private key and public key
+    $base64pfx = [System.Convert]::ToBase64String($pfx_cert)
+    $base64cer = [System.Convert]::ToBase64String($cer_cert)
+ 
+    # getting id for the keyCredential object
+    $guid1 = New-Guid
+    $guid2 = New-Guid
+ 
+    # get the custom key identifier from the certificate thumbprint:
+    $hasher = [System.Security.Cryptography.HashAlgorithm]::Create('sha256')
+    $hash = $hasher.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($cert.Thumbprint))
+    $customKeyIdentifier = [System.Convert]::ToBase64String($hash)
+ 
+    # get end date and start date for our keycredentials
+    $endDateTime = ($cert.NotAfter).ToUniversalTime().ToString( "yyyy-MM-ddTHH:mm:ssZ" )
+    $startDateTime = ($cert.NotBefore).ToUniversalTime().ToString( "yyyy-MM-ddTHH:mm:ssZ" )
+ 
+    # building our json payload
+    $object = [ordered]@{    
+    keyCredentials = @(       
+         [ordered]@{            
+            customKeyIdentifier = $customKeyIdentifier
+            endDateTime = $endDateTime
+            keyId = $guid1
+            startDateTime = $startDateTime 
+            type = "X509CertAndPassword"
+            usage = "Sign"
+            key = $base64pfx
+            displayName = "CN=fourthcoffeetest" 
+        },
+        [ordered]@{            
+            customKeyIdentifier = $customKeyIdentifier
+            endDateTime = $endDateTime
+            keyId = $guid2
+            startDateTime = $startDateTime 
+            type = "AsymmetricX509Cert"
+            usage = "Verify"
+            key = $base64cer
+            displayName = "CN=fourthcoffeetest"   
+        }
+        )  
+    passwordCredentials = @(
+        [ordered]@{
+            customKeyIdentifier = $customKeyIdentifier
+            keyId = $guid1           
+            endDateTime = $endDateTime
+            startDateTime = $startDateTime
+            secretText = $password
+        }
+    )
+    }
+ 
+    $json = $object | ConvertTo-Json -Depth 99
+    Write-Host "JSON Payload:"
+    Write-Output $json
+ 
+    # Request Header
+    $Header = @{}
+    $Header.Add("Authorization","Bearer $($GraphAccessToken)")
+    $Header.Add("Content-Type","application/json")
+ 
+    try 
+    {
+        Invoke-RestMethod -Uri $graphuri -Method "PATCH" -Headers $Header -Body $json
+    } 
+    catch 
+    {
+        # Dig into the exception to get the Response details.
+        # Note that value__ is not a typo.
+        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
+        Write-Host "StatusDescription:" $_.Exception.Response.StatusDescription
+    }
+ 
+    Write-Host "Complete Request"
+}
+else
+{
+    Write-Host "Fail to get Access Token"
+}
+```
+
+#### <a name="validate-token-signing-key"></a>トークン署名キーを承認する
 要求のマッピングが有効なアプリでは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーを検証する必要があります。 使用する必要がある OpenID Connect メタデータ ドキュメントのフォーマットは次のとおりです。
 
 ```
@@ -543,13 +416,17 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 ### <a name="update-the-application-manifest"></a>アプリケーション マニフェストを更新する
 
-別の方法として、[アプリケーション マニフェスト](reference-app-manifest.md)で `acceptMappedClaims` プロパティを `true` に設定することもできます。 「[apiApplication リソースの種類](/graph/api/resources/apiapplication#properties)」に記載されているように、これにより、カスタム署名キーを指定せずに、アプリケーションでクレーム マッピングが使用できます。
+シングル テナントのアプリでは、[アプリケーション マニフェスト](reference-app-manifest.md)で `acceptMappedClaims` プロパティを `true` に設定できます。  「[apiApplication リソースの種類](/graph/api/resources/apiapplication#properties)」に記載されているように、これにより、カスタム署名キーを指定せずに、アプリケーションでクレーム マッピングが使用できます。 
+
+> [!WARNING]
+> マルチテナント アプリでは `acceptMappedClaims` プロパティを `true` に設定しないでください。悪意のある者がアプリのクレームマッピング ポリシーを作成することを許可してしまう場合があります。
 
 これを行うには、要求されたトークンの対象ユーザーが Azure AD テナントの検証済みドメイン名を使用する必要があります。つまり、(アプリケーション マニフェスト内で `identifierUris` によって表される) `Application ID URI` を例えば `https://contoso.com/my-api` に設定するか、(単に既定のテナント名を使用して) `https://contoso.onmicrosoft.com/my-api` に設定する必要があります。
 
 検証済みのドメインを使用していない場合、Azure AD は `AADSTS501461` エラー コードを、 *[AcceptMappedClaims is only supported for a token audience matching the application GUID or an audience within the tenant's verified domains. Either change the resource identifier, or use an application-specific signing key]\(AcceptMappedClaims は、アプリケーション GUID に一致するトークン対象ユーザー、またはテナントの検証済みドメイン内の対象ユーザーでのみサポートされています。リソース識別子を変更するか、アプリケーション固有の署名キーを使用してください\)* というメッセージと共に返します。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
+- 詳しくは、[クレームマッピング ポリシーの種類](reference-claims-mapping-policy-type.md)に関する参考記事をご覧ください。
 - SAML トークンで発行された要求を Azure portal でカスタマイズする方法については、「[方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md)」を参照してください。
 - 拡張属性の詳細については、[要求でのディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。

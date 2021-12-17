@@ -1,22 +1,22 @@
 ---
-title: Azure AD ギャラリー アプリへのユーザー プロビジョニングの構成に関する問題
-description: 既に Azure AD アプリケーション ギャラリーに一覧表示されているアプリケーションにユーザー プロビジョニングを構成するときの一般的な問題をトラブルシューティングする方法について説明します。
+title: Azure Active Directory ギャラリー アプリへのユーザー プロビジョニングの構成に関する問題
+description: 既に Azure Active Directory アプリケーション ギャラリーに一覧表示されているアプリケーションにユーザー プロビジョニングを構成するときの一般的な問題をトラブルシューティングする方法
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/03/2019
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: asteen
-ms.openlocfilehash: 651bc199a43881add7faa00a9d1cf78000de6944
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: asteen, arvinh
+ms.openlocfilehash: f10813f94bd00488834cace3cd6985374f2c2d4d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256274"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991871"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題
 

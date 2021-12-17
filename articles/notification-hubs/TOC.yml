@@ -86,8 +86,12 @@
       href: samples.md
     - name: PowerShell
       href: samples-powershell.md
+    - name: UWP React Native サンプルの概要
+      href: uwp-react.md
 - name: 概念
   items:
+    - name: 可用性ゾーン
+      href: availability-zones.md
     - name: トランスポート層セキュリティ (TLS)
       href: notification-hubs-tls12.md
     - name: エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
@@ -117,6 +121,8 @@
       href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
     - name: 登録情報を一括でエクスポートおよびインポートする
       href: export-modify-registrations-bulk.md
+    - name: リージョン間でリソースを移動する
+      href: move-registrations.md
     - name: SDK を使用した Notification Hub の作成
       items:
         - name: Notification Hub の作成 - .NET
@@ -158,7 +164,7 @@
     - name: .NET
       href: /dotnet/api/microsoft.azure.notificationhubs
     - name: Azure CLI
-      href: /cli/azure/ext/notification-hub/notification-hub
+      href: /cli/azure/notification-hub
     - name: PowerShell
       href: /powershell/module/az.notificationhubs
     - name: REST
@@ -168,7 +174,7 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: notification-hubs-push-notification-faq.md
+      href: notification-hubs-push-notification-faq.yml
     - name: Google GCM から FCM に移行する
       href: notification-hubs-gcm-to-fcm.md
     - name: SDK
@@ -182,7 +188,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-notificationhub'
     - name: 機能をリクエストする
-      href: 'https://feedback.azure.com/forums/218849-notification-hubs'
+      href: 'https://feedback.azure.com/d365community/forum/405a1b30-8b26-ec11-b6e6-000d3a4f0789'
     - name: 利用可能なリージョン
       href: 'https://azure.microsoft.com/regions/services/'
     - name: サポート オプション

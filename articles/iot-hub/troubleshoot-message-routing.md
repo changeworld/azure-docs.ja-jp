@@ -1,18 +1,18 @@
 ---
 title: Azure IoT メッセージ ルーティングのトラブルシューティング
-description: Azure IoT メッセージ ルーティングのトラブルシューティングを実行する方法
+description: Azure IoT Hub メッセージ ルーティングのトラブルシューティングを実行する方法
 author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 3abff5645775d724042acba3ee2461c7cad771a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daa0b1dd47884b104cc353a7483d71ff7eded2c7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149666"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287862"
 ---
 # <a name="troubleshooting-message-routing"></a>メッセージ ルーティングのトラブルシューティング
 
@@ -59,11 +59,13 @@ ms.locfileid: "103149666"
 
 フォールバック ルートを通じて、既存のいずれのルートのクエリ条件も満たさないすべてのメッセージが、[Event Hubs](../event-hubs/index.yml) との互換性がある[組み込みのイベント ハブ](iot-hub-devguide-messages-read-builtin.md) (messages/events) に送信されます。 メッセージ ルーティングが有効になっている場合は、フォールバック ルート機能を有効にすることができます。 組み込みのエンドポイントへのルートがなく、フォールバック ルートが有効になっている場合は、ルートのどのクエリ条件とも一致しないメッセージのみが組み込みのエンドポイントに送信されます。 また、既存のすべてのルートを削除する場合は、組み込みのエンドポイントですべてのデータを受信するために、フォールバック ルートを有効にする必要があります。
 
-Azure portal の [メッセージ ルーティング] ブレードで、フォールバック ルートを有効または無効にすることができます。 また、Azure Resource Manager で [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) を使用して、フォールバック ルート用にカスタム エンドポイントが使用されるようにすることもできます。
+フォールバック ルートを通じて、既存のいずれのルートのクエリ条件のいずれも満たさないすべてのメッセージが、[Event Hubs](../event-hubs/index.yml) との互換性がある[組み込みの Event Hubs](iot-hub-devguide-messages-read-builtin.md) (messages/events) に送信されます。 メッセージ ルーティングが有効になっている場合は、フォールバック ルート機能を有効にすることができます。 組み込みのエンドポイントへのルートがなく、フォールバック ルートが有効になっている場合は、ルートのどのクエリ条件とも一致しないメッセージのみが組み込みのエンドポイントに送信されます。 また、既存のすべてのルートを削除する場合は、組み込みのエンドポイントですべてのデータを受信するために、フォールバック ルートを有効にする必要があります。
+
+Azure portal で IoT Hub のメッセージ ルーティング ブレードを使用して、フォールバック ルートを有効または無効にすることができます。 また、Azure Resource Manager で [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) を使用して、フォールバック ルート用のカスタム エンドポイントを使用するようにも設定できます。
 
 ## <a name="last-known-errors-for-iot-hub-routing-endpoints"></a>IoT Hub ルーティング エンドポイント対する最新の既知のエラー
 
-<a id="last-known-errors"></a>
+<a id="last-known-errors"></a>  <!-- why are we using anchors? robin -->
 [!INCLUDE [iot-hub-include-last-known-errors](../../includes/iot-hub-include-last-known-errors.md)]
 
 ## <a name="routes-resource-logs"></a>ルート リソース ログ

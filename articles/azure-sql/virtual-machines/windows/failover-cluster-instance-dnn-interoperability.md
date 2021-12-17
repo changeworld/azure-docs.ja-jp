@@ -3,7 +3,7 @@ title: SQL Server FCI および DNN との機能の相互運用性
 description: '特定の SQL Server 機能および分散ネットワーク名 (DNN) リソースと、Azure VM 上の SQL Server のフェールオーバー クラスター インスタンスを一緒に操作する場合の追加の考慮事項について説明します。 '
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -11,17 +11,21 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
-ms.author: mathoma
-ms.openlocfilehash: 3c92aa3b35240831fad14919dc73609d803c610a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/10/2021
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: adacd4e8264b7fcd4c0389f8d575247a17a664aa
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358216"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158960"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>SQL Server FCI および DNN との機能の相互運用性
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の複数のサブネットに SQL Server VM を作成することで、フェールオーバー クラスター インスタンスに対して分散ネットワーク名 (DNN) が不要になります。
 
 特定の SQL Server 機能では、ハードコーディングされた仮想ネットワーク名 (VNN) が使用されます。 そのため、分散ネットワーク名 (DNN) リソースを Azure VM 上のフェールオーバー クラスター インスタンスおよび SQL Server と一緒に使用する場合には、いくつかの追加の考慮事項があります。 
 
@@ -175,8 +179,10 @@ GO
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、次を参照してください。 
+詳細については、以下をご覧ください。
 
-- [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server フェールオーバー クラスター インスタンス](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)
+- [フェールオーバー クラスター インスタンスの概要](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)
 

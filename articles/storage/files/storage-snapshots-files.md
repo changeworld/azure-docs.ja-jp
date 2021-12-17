@@ -7,16 +7,22 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d415ef165da18312a458d7d14fba18acd1bf44cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f7e3aaff497968419285464f361a1d3ad237d3c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84235602"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263213"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Files の共有スナップショットの概要
-
 Azure Files には、ファイル共有の共有スナップショットを作成する機能があります。 共有スナップショットは、その時点の共有状態をキャプチャします。 この記事では、共有スナップショットで提供される機能と、それらをカスタムのユース ケースに活用する方法を説明します。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="when-to-use-share-snapshots"></a>共有スナップショットを使用する目的
 
@@ -61,7 +67,7 @@ http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.
 
 共有スナップショットは増分的に保存されますが、共有を復元するために保持する必要があるのは最新の共有スナップショットだけです。 共有スナップショットを削除すると、その共有スナップショットに固有のデータのみが削除されます。 アクティブなスナップショットには、(共有スナップショットが作成された時点の) データを参照して元の場所または別の場所に復元するために必要な情報がすべて含まれます。 項目レベルで復元することができます。
 
-スナップショットは、5 TB の共有制限にカウントされません。 合計領域のうち共有スナップショットが占有する領域に制限はありません。 ストレージ アカウントの制限は、引き続き適用されます。
+スナップショットのサイズは、共有サイズの上限に対してカウントされません。 合計領域のうち共有スナップショットが占有する領域に制限はありません。 ストレージ アカウントの制限は、引き続き適用されます。
 
 ## <a name="limits"></a>制限
 
@@ -94,7 +100,7 @@ Azure Files で現在許可されている共有スナップショットの最�
 ## <a name="next-steps"></a>次のステップ
 - 次のツールで共有スナップショットを操作する方法:
     - [Azure ファイル共有のバックアップ](../../backup/azure-file-share-backup-overview.md)
-    - [PowerShell](storage-how-to-use-files-powershell.md)
-    - [CLI](storage-how-to-use-files-cli.md)
+    - [PowerShell](./storage-how-to-use-files-portal.md)
+    - [CLI](./storage-how-to-use-files-portal.md)
     - [Windows](storage-how-to-use-files-windows.md#accessing-share-snapshots-from-windows)
     - [共有スナップショットに関してよく寄せられる質問](storage-files-faq.md#share-snapshots)

@@ -4,7 +4,7 @@ description: Azure Portal で Azure Active Directory レポートを使用して
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.service: active-directory
 ms.topic: how-to
@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4de9f5a21f38f741dcf65d285446d9482716d4f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcbe0727c655b06212551b9c4cb155679a7aa9d3
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85608128"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995012"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>方法: Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする
 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign
 2. **[Azure Active Directory]** を選択し、**[監視]** セクションの **[サインイン]** を選択します。 
 3. ユーザー名またはオブジェクト識別子、アプリケーション名または日付のいずれかで指定されたフィルターを使って、エラーを絞り込みます。 さらに、**[状態]** ドロップダウンから **[失敗]** を選択して、失敗したサインインのみを表示します。 
 
-    ![結果をフィルター](./media/howto-troubleshoot-sign-in-errors/filters.png)
+    ![結果のフィルター処理](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
 4. 調査する必要がある失敗したサインインを特定します。 そのサインインを選択し、追加の詳細ウィンドウを開いて、失敗したサインインに関する詳細情報を確認します。 **[サインインのエラー コード]** と **[エラーの理由]** をメモします。 
 
@@ -57,11 +57,11 @@ Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign
 
 6. 失敗の理由ではエラーについて説明します。 たとえば、上記のシナリオでの失敗の理由は、**ユーザー名またはパスワードが無効、またはオンプレミスのユーザー名またはパスワードが無効** です。 この修正プログラムは、単に適切なユーザー名とパスワードでもう一度サインインするためのものです。
 
-7. [サインインのエラー コードの参照](reference-sign-ins-error-codes.md)でエラー コード (この例では **50126**) を検索することで、修復に関するアイデアなどの追加情報を取得できます。 
+7. [サインインのエラー コードの参照](./concept-sign-ins.md)でエラー コード (この例では **50126**) を検索することで、修復に関するアイデアなどの追加情報を取得できます。 
 
 8. 他のすべてが失敗した場合、または推奨されるアクションを行っても問題が解決しない場合は、**[トラブルシューティングおよびサポート]** タブの手順に従って、[サポート チケットをオープン](../fundamentals/active-directory-troubleshooting-support-howto.md)にしてください。 
 
 ## <a name="next-steps"></a>次のステップ
 
-* [サインインのエラー コードの参照](reference-sign-ins-error-codes.md)
+* [サインインのエラー コードの参照](./concept-sign-ins.md)
 * [サインイン レポートの概要](concept-sign-ins.md)

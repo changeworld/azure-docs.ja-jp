@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と GitHub Enterprise Cloud Organization の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と GitHub Enterprise Cloud Organization の統合 | Microsoft Docs'
 description: Azure Active Directory と GitHub Enterprise Cloud Organization の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/24/2020
+ms.date: 09/08/2021
 ms.author: jeedes
-ms.openlocfilehash: c87f66e48aa7b39a7f3fc5f9b8572dd6925abbc0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6a56077adc6456d5d1ea6d5180a21560e193bb8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732159"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285741"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-a-github-enterprise-cloud-organization"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub Enterprise Cloud Organization の統合
+# <a name="tutorial-azure-ad-sso-integration-with-a-github-enterprise-cloud-organization"></a>チュートリアル: Azure AD SSO と GitHub Enterprise Cloud Organization の統合
 
 このチュートリアルでは、GitHub Enterprise Cloud **Organization** と Azure Active Directory (Azure AD) を統合する方法について説明します。 GitHub Enterprise Cloud Organization と Azure AD を統合すると、次のことができます。
 
@@ -27,19 +27,18 @@ ms.locfileid: "98732159"
 
 ## <a name="prerequisites"></a>前提条件
 
-GitHub Enterprise Cloud Organization と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) に作成された GitHub 組織 ([GitHub Enterprise 課金プラン](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)が必要)
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) に作成された GitHub 組織 ([GitHub Enterprise 課金プラン](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)が必要)。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* GitHub では、**SP** によって開始される SSO がサポートされます
+* GitHub では、**SP** Initiated SSO がサポートされます。
 
-* GitHub では、[**自動化された** ユーザー プロビジョニング (組織の招待)](github-provisioning-tutorial.md) がサポートされます
-
+* GitHub では、[**自動化された** ユーザー プロビジョニング (組織の招待)](github-provisioning-tutorial.md) がサポートされます。
 
 ## <a name="adding-github-from-the-gallery"></a>ギャラリーからの GitHub の追加
 
@@ -77,15 +76,14 @@ GitHub に対する Azure AD SSO を構成してテストするには、次の�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-   a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<Organization ID>/sso`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<Organization ID>`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<Organization ID>`
+    b. **[応答 URL]** ボックスに、`https://github.com/orgs/<Organization ID>/saml/consume` のパターンを使用して URL を入力します
 
-    c. **[応答 URL]** ボックスに、`https://github.com/orgs/<Organization ID>/saml/consume` のパターンを使用して URL を入力します
-
+    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<Organization ID>/sso`
 
     > [!NOTE]
-    > これは実際の値ではないので注意してください。 実際のサインオン URL、識別子、および応答 URL で値を更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、GitHub 管理者セクションに移動します。
+    > これは実際の値ではないので注意してください。 実際の識別子、応答 URL、サインオン URL にこれらの値を置き換える必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、GitHub 管理者セクションに移動します。
 
 5. GitHub アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **[Unique User Identifier (Name ID)]\(一意のユーザー ID (名前 ID)\)** は **user.userprincipalname** にマップされています。 GitHub アプリケーションでは、 **[Unique User Identifier (Name ID)]\(一意のユーザー ID (名前 ID)\)** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
@@ -98,7 +96,6 @@ GitHub に対する Azure AD SSO を構成してテストするには、次の�
 7. **[GitHub のセットアップ]** セクションで、要件どおりの適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
-
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -137,7 +134,7 @@ GitHub に対する Azure AD SSO を構成してテストするには、次の�
 
 3. **[Enable SAML authentication]\(SAML 認証を有効にする\)** チェック ボックスをオンにしてシングル サインオンの構成フィールドを表示し、次の手順を実行します。
 
-    ![[Enable S A M L authentication (S A M L 認証を有効にする)] と U R L のテキスト ボックスが強調表示されている [S A M L single sign-on]\(S A M L シングル サインオン\) セクションを示すスクリーンショット。](./media/github-tutorial/saml-sso.png)
+    ![[Enable S A M L authentication (S A M L 認証を有効にする)] と U R L のテキスト ボックスが強調表示されている [S A M L single sign-on]\(S A M L シングル サインオン\) セクションを示すスクリーンショット。](./media/github-tutorial/authentication.png)
 
     a. **シングル サインオン URL** の値をコピーして、この値を、Azure portal の **[基本的な SAML 構成]** の **[サインオン URL]** テキスト ボックスに貼り付けます。
     
@@ -157,11 +154,11 @@ GitHub に対する Azure AD SSO を構成してテストするには、次の�
     
     e. GitHub の URL が Azure アプリ登録の URL と一致するように、**Assertion Consumer Service URL** (応答 URL) を既定の URL から更新します。
 
-    ![image](./media/github-tutorial/tutorial_github_sha.png)
+    ![画像を示すスクリーンショット。](./media/github-tutorial/certificate.png)
 
 5. **[Test SAML configuration (SAML 構成のテスト)]** をクリックして、SSO の際に検証の失敗やエラーがないことを確認します。
 
-    ![設定](./media/github-tutorial/test.png)
+    ![設定を示すスクリーンショット。](./media/github-tutorial/test.png)
 
 6. **[保存]**
 
@@ -182,13 +179,13 @@ GitHub に対する Azure AD SSO を構成してテストするには、次の�
 
 3. **[Invite member]\(メンバーの招待\)** をクリックします。
 
-    ![ユーザーの招待](./media/github-tutorial/invite-member.png "ユーザーの招待")
+    ![[Invite Users]\(ユーザーの招待\) を示すスクリーンショット。](./media/github-tutorial/invite-member.png "ユーザーの招待")
 
 4. **[メンバーの招待]** ダイアログ ページで、次の手順を実行します。
 
     a. **[Email]\(電子メール\)** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
 
-    ![ユーザーの招待](./media/github-tutorial/email-box.png "[ユーザーの招待]")
+    ![[Invite People]\(ユーザーの招待\) を示すスクリーンショット。](./media/github-tutorial/email-box.png "[ユーザーの招待]")
 
     b. **[Send Invitation]\(招待状の送信\)** をクリックします。
 
@@ -205,8 +202,8 @@ GitHub に対する Azure AD SSO を構成してテストするには、次の�
 
 * GitHub のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [GitHub] タイルをクリックすると、GitHub のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [GitHub] タイルをクリックすると、GitHub のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-GitHub を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+GitHub を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

@@ -5,19 +5,19 @@ description: PowerShell と Azure CLI を使用して、Azure SQL Database や A
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 03/12/2019
-ms.openlocfilehash: 67bcd8597314530f26481ef840644ffbc056b033
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/23/2021
+ms.openlocfilehash: c14d209f5f4b846b51a99ac875e2304129b4e765
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777565"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090279"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>Transparent Data Encryption (TDE) 保護機能をローテーションする
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -32,6 +32,9 @@ ms.locfileid: "107777565"
 
 > [!IMPORTANT]
 > ロールオーバー後に以前のバージョンのキーは削除しないでください。 キーがロール オーバーされると、古いデータベース バックアップなど、一部のデータは引き続き以前のキーで暗号化されます。
+
+> [!NOTE]
+> この記事は、Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics (専用 SQL プール (旧 SQL DW)) に適用されます。 Synapse ワークスペース内の専用 SQL プールの透過的データ暗号化に関するドキュメントについては、[Azure Synapse Analytics の暗号化](../../synapse-analytics/security/workspaces-encryption.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

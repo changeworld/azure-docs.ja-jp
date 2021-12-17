@@ -4,23 +4,24 @@ description: Azure AD Privileged Identity Management (PIM) でロールを割り
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/18/2020
+ms.date: 11/09/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62012b910ad1e08291760a2aea0747bf5d4c024d
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91534422"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157574"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループ (プレビュー) の資格を割り当てる
 
@@ -33,7 +34,8 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 これらの手順に従って、ユーザーを特権アクセス グループのメンバーまたは所有者の適用対象にすることができます。
 
-1. 全体管理者またはグループ所有者のアクセス許可を持つ [Azure AD にサインイン](https://aad.portal.azure.com)します。
+1. [グローバル管理者](../roles/permissions-reference.md#global-administrator)のロール、特権ロール管理者のロール、またはグループの所有者のロールであるユーザーを使用して、[Azure AD 管理センター](https://aad.portal.azure.com/)にサインインします。
+
 1. **[グループ]** を選択し、管理対象とする、ロールを割り当て可能なグループを選択します。 リストを検索またはフィルター処理することができます。
 
     ![PIM で管理する、ロールを割り当て可能なグループを見つける](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
@@ -56,7 +58,10 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 1. **[割り当ての種類]** リストで **[対象]** または **[アクティブ]** を選択します。 特権アクセス グループには、2 つの異なる割り当ての種類があります。
 
-    - **[対象]** 割り当ての場合、このロールのメンバーは、ロールを使用するにはアクションを実行する必要があります。 要求されるアクションには、多要素認証 (MFA) チェックの実行、業務上の妥当性の指定、指定された承認者に対する承認要求などがあります。
+    - **[対象]** 割り当ての場合、このロールのメンバーは、ロールを使用するにはアクションを実行する必要があります。 要求されるアクションには、多要素認証 (MFA) チェックの実行、業務上の妥当性の指定、指定された承認者に対する承認要求などがあります。 
+
+      > [!Important]
+      > Azure AD ロールに昇格するために使用される特権アクセス グループについては、資格のあるメンバーの割り当ての承認プロセスを求めることをお勧めします。 承認せずにアクティブ化できる割り当てでは、アクセス許可を持つ別の管理者が対象ユーザーのパスワードをリセットしてしまうというセキュリティリスクに対して脆弱なままである可能性があります。
 
     - **[アクティブ]** 割り当ての場合、ロールを使用するために何らかのアクションを実行することをメンバーに要求しません。 アクティブ割り当てされたメンバーは、ロールによって提供される特権を常に所有します。
 

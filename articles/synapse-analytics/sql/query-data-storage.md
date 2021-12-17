@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d299afca0bd8070a1da738e02812b64c41a7101c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9070f6c6a30f094f5b7cf2d8b0c5d5b0f5e5151
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675041"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967384"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してストレージ ファイルにクエリを実行する
 
@@ -34,6 +34,7 @@ Azure Storage ファイルに格納されているデータに対するインプ
 - [複数のファイルまたはフォルダーに対してクエリを実行する](#query-multiple-files-or-folders)
 - [PARQUET ファイル形式](#query-parquet-files)
 - [CSV および区切りテキストに対してクエリを実行する (フィールド ターミネータ、行ターミネータ、エスケープ文字)](#query-csv-files)
+- [DELTA LAKE 形式](#query-delta-lake-format)
 - [選択した列のサブセットの読み取り](#read-a-chosen-subset-of-columns)
 - [スキーマ推論](#schema-inference)
 - [filename 関数](#filename-function)
@@ -46,7 +47,7 @@ Parquet ソース データに対してクエリを実行するには、FORMAT =
 
 ```syntaxsql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
@@ -67,6 +68,19 @@ WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ESCAPE_CHAR パラメーターは、FIELDQUOTE が有効かどうかに関係なく適用されます。 引用文字をエスケープするために使用されることはありません。 引用文字は、別の引用文字でエスケープする必要があります。 引用文字は、値が引用文字で囲まれている場合にのみ、列の値の中で使用できます。
 - FIELDTERMINATOR ='field_terminator' は、使用するフィールド ターミネータを指定します。 既定のフィールド ターミネータはコンマ (" **,** ") です。
 - ROWTERMINATOR ='row_terminator' は、使用する行ターミネータを指定します。 既定の行ターミネータは、改行文字  **\r\n** です。
+
+
+## <a name="query-delta-lake-format"></a>DELTA LAKE 形式に対してクエリを実行する
+
+Delta Lake ソース データに対してクエリを実行するには、FORMAT = 'DELTA' を使用し、Delta Lake ファイルを含むルート フォルダーを参照します。
+
+```syntaxsql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder', FORMAT = 'DELTA') 
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
+```
+
+ルート フォルダーには、`_delta_log` というサブフォルダーを含める必要があります。 使用例については、記事「[Delta Lake 形式に対してクエリを実行する](query-delta-lake-format.md)」を参照してください。
 
 ## <a name="file-schema"></a>ファイル スキーマ
 
@@ -96,15 +110,12 @@ WITH (
 
 `OPENROWSET` ステートメントから WITH 句を省略することで、基になるファイルからスキーマを自動検出 (推論) するようにサービスに指示できます。
 
-> [!NOTE]
-> これは現在、PARQUET ファイル形式でのみ機能します。
-
 ```sql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 ```
 
-最適なパフォーマンスが得られる[適切な推定データ型](best-practices-sql-on-demand.md#check-inferred-data-types)が使用されていることを確認してください。 
+最適なパフォーマンスが得られる[適切な推定データ型](./best-practices-serverless-sql-pool.md#check-inferred-data-types)が使用されていることを確認してください。 
 
 ## <a name="query-multiple-files-or-folders"></a>複数のファイルまたはフォルダーに対してクエリを実行する
 

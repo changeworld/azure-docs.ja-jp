@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 5ed5ac90f446f74c54488f6d0cf23adbd63a3e1e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2b93496244ed36ce2ca08dfd48b7bb176d6cdd40
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606880"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949461"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>チュートリアル - PowerShell を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -33,7 +33,7 @@ Azure Dedicated HSM サービスでは、完全な管理制御と完全な管理
 
 ![複数リージョン デプロイ](media/tutorial-deploy-hsm-powershell/high-availability.png)
 
-このチュートリアルでは、既存の仮想ネットワーク (上の VNET 1 を参照) に対する、HSM のペアと必須の ExpressRoute ゲートウェイ (上の Subnet 1 を参照) の統合を中心に説明しています。  他のすべてのリソースは、標準の Azure リソースです。 同じ統合プロセスを、上の VNET 3 における Subnet 4 の HSM に使用できます。
+このチュートリアルでは、既存の仮想ネットワーク (上の VNET 1 を参照) に対する、HSM のペアと必須の [ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) (上の Subnet 1 を参照) の統合を中心に説明しています。  他のすべてのリソースは、標準の Azure リソースです。 同じ統合プロセスを、上の VNET 3 における Subnet 4 の HSM に使用できます。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -52,7 +52,7 @@ Azure Dedicated HSM は、現時点では Azure portal で使用できません�
 
 ## <a name="provisioning-a-dedicated-hsm"></a>専用 HSM のプロビジョニング
 
-HSM のプロビジョニングと、ExpressRoute ゲートウェイを介した既存の仮想ネットワークへの統合は、追加の構成アクティビティに備えて HSM デバイスの到達可能性と基本的な可用性を確保するために、SSH コマンドライン ツールを使用して検証されます。 以下のコマンドでは、HSM リソースと関連ネットワーク リソースを作成するために Resource Manager テンプレートを使用します。
+HSM のプロビジョニングと、[ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)を介した既存の仮想ネットワークへの統合は、追加の構成アクティビティに備えて HSM デバイスの到達可能性と基本的な可用性を確認するために、SSH コマンドライン ツールを使用して検証されます。 以下のコマンドでは、HSM リソースと関連ネットワーク リソースを作成するために Resource Manager テンプレートを使用します。
 
 ### <a name="validating-feature-registration"></a>機能登録の検証
 
@@ -68,7 +68,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -Feat
 
 ### <a name="creating-hsm-resources"></a>HSM リソースの作成
 
-HSM デバイスは、お客様の仮想ネットワークにプロビジョニングされます。 これは、サブネットが必要であることを意味します。 仮想ネットワークと物理デバイスの間の通信を可能にするうえで、HSM は ExpressRoute ゲートウェイに依存しています。最後に、Thales クライアント ソフトウェアを使用して HSM デバイスにアクセスするために、仮想マシンが必要です。 使いやすいように、これらのリソースは対応するパラメーター ファイルと共にテンプレート ファイルに集められています。 ファイルは、HSMrequest@Microsoft.com で直接 Microsoft に問い合わせて入手できます。
+HSM デバイスは、お客様の仮想ネットワークにプロビジョニングされます。 これは、サブネットが必要であることを意味します。 仮想ネットワークと物理デバイスの間の通信を可能にするうえで、HSM は [ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)に依存しています。最後に、Thales クライアント ソフトウェアを使用して HSM デバイスにアクセスするために、仮想マシンが必要です。 使いやすいように、これらのリソースは対応するパラメーター ファイルと共にテンプレート ファイルに集められています。 ファイルは、HSMrequest@Microsoft.com で直接 Microsoft に問い合わせて入手できます。
 
 ファイルを入手したら、パラメーター ファイルを編集して、お客様にとって望ましい名前をリソースに指定する必要があります。 つまり、"value": "" のある行を編集します。
 

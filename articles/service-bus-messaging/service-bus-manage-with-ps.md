@@ -2,13 +2,14 @@
 title: PowerShell で Azure Service Bus リソースを管理する | Microsoft ドキュメント
 description: この記事では Azure PowerShell モジュールを使用して、Service Bus のエンティティ (名前空間、キュー、トピック、サブスクリプション) を作成および管理する方法について説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 41fe10c13c77871845cadf93890768064f6dc143
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88065745"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627978"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>PowerShell モジュールで Service Bus リソースを管理する
 
@@ -18,7 +19,7 @@ Azure Resource Manager テンプレートでも Service Bus エンティティ�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>[前提条件]
+## <a name="prerequisites"></a>前提条件
 
 開始する前に、次の前提条件を満たす必要があります。
 
@@ -161,7 +162,6 @@ Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -Queu
 
 * [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
 * [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
-* [Service Bus PowerShell Scripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->
 

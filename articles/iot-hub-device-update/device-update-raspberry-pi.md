@@ -1,17 +1,17 @@
 ---
 title: Raspberry Pi 3 B+ 参照 Yocto イメージを使用した Device Update for Azure IoT Hub のチュートリアル | Microsoft Docs
 description: Raspberry Pi 3 B+ 参照 Yocto イメージを使用した Device Update for Azure IoT Hub を開始します。
-author: valls
+author: ValOlson
 ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 143a7c411bea6a451645c860b7b5d12d2aa8d9f5
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: ded90c34a3e43f202c815dc593b3420cf5d88e41
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121338"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518947"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Raspberry Pi 3 B+ 参照イメージを使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -19,7 +19,7 @@ Device Update for IoT Hub では、イメージベースとパッケージベー
 
 イメージ更新を使用すると、デバイスの最終状態の信頼性が高くなります。 通常、運用前環境と運用環境の間でイメージ更新の結果をレプリケートする方が簡単です。そうすれば、パッケージやその依存関係の場合と同様の課題が生じることがないからです。 アトミックな性質のため、A/B フェールオーバー モデルを簡単に導入することもできます。
 
-このチュートリアルでは、Device Update for IoT Hub を使用して、エンド ツー エンドのイメージベースの更新を行う手順について説明します。 
+このチュートリアルでは、Raspberry Pi 3 B+ ボードで Device Update for IoT Hub を使用して、エンド ツー エンドのイメージベースの更新を行う手順について説明します。 
 
 このチュートリアルで学習する内容は次のとおりです。
 > [!div class="checklist"]
@@ -30,12 +30,14 @@ Device Update for IoT Hub では、イメージベースとパッケージベー
 > * イメージの更新プログラムをデプロイする
 > * 更新プログラムのデプロイを監視する
 
+注: このチュートリアルで取り上げるイメージ更新プログラムは、Raspberry Pi B3 ボードで検証されています。
+
 ## <a name="prerequisites"></a>前提条件
 * まだ [Device Update アカウントとインスタンス](create-device-update-account.md)を作成していない場合は作成します (IoT ハブの構成も含む)。
 
 ## <a name="download-image"></a>イメージをダウンロードする
 
-特定の [Device Update GitHub のリリース](https://github.com/Azure/iot-hub-device-update/releases)では、"資産" の一部として利用できるイメージが 3 つあります。 基本イメージ (adu-base-image) と 1 つの更新イメージ (adu-update-image) が用意されているため、デバイス上で SD カードをフラッシュしなくても、さまざまなバージョンへのロールアウトを試すことができます。 そのためには、インポートの一部として、それらの更新イメージを Device Update for IoT Hub サービスにアップロードする必要があります。
+[Device Update GitHub リリース ページ](https://github.com/Azure/iot-hub-device-update/releases)の「アセット」にサンプル イメージが用意されています。 .gz ファイルは、Raspberry Pi B3+ ボードにフラッシュできる基本イメージであり、swUpdate ファイルは、Device Update for IoT Hub を使用してインポートする更新プログラムです。 
 
 ## <a name="flash-sd-card-with-image"></a>イメージを使用した SD カードのフラッシュ
 
@@ -77,17 +79,19 @@ Device Update for Azure IoT Hub ソフトウェアには、次のライセンス
    
 エージェントを使用する前に、ライセンス条項をお読みください。 インストールして使用すると、これらの条項に同意したものと見なされます。 ライセンス条項に同意しない場合は、Device Update for IoT Hub エージェントをお使いいただけません。
 
-## <a name="create-device-in-iot-hub-and-get-connection-string"></a>IoT Hub でデバイスを作成し、接続文字列を取得する
+## <a name="create-device-or-module-in-iot-hub-and-get-connection-string"></a>IoT Hub でデバイスまたはモジュールを作成し、接続文字列を取得する
 
 次に、デバイスを Azure IoT Hub に追加する必要があります。  Azure IoT Hub 内から、デバイスの接続文字列が生成されます。
 
 1. Azure portal から Azure IoT Hub を起動します。
 2. 新しいデバイスを作成します。
-3. ページの左側で、[エクスプローラー] > [IoT デバイス] の順に移動し、[新規] を選択します。
+3. ページの左側で、[IoT デバイス] に移動し、[新規] を選択します。
 4. [デバイス ID] にデバイスの名前を指定します。[キーの自動生成] チェックボックスがオンになっていることを確認します。
 5. [保存] を選択します。
-6. [デバイス] ページに戻ると、作成したデバイスが一覧に表示されているはずです。 そのデバイスを選択します。
-7. デバイス ビューで、[プライマリ接続文字列] の横にある [コピー] アイコンを選択します。
+6. [デバイス] ページに戻ると、作成したデバイスが一覧に表示されているはずです。 
+7. デバイスの接続文字列を取得します。
+    - 方法 1 モジュール ID で Device Update エージェントを使用する: 同じ [デバイス] ページで、上部にある [+ モジュール ID の追加] をクリックします。 "IoTHubDeviceUpdate" という名前の新しい Device Update モジュールを作成し、ユース ケースに適用される他のオプションを選択して、[保存] をクリックします。 新しく作成された [モジュール] をクリックし、モジュール ビューで、[プライマリ接続文字列] の横の [コピー] アイコンを選択します。
+    - 方法 2 デバイス ID で Device Update エージェントを使用する: デバイス ビューで、[プライマリ接続文字列] の横の [コピー] アイコンを選択します。
 8. 後で以下の手順で使用できるように、コピーした文字をどこかに貼り付けておきます。
    **このコピーした文字列は、対象のデバイスの接続文字列** です。
 
@@ -110,9 +114,9 @@ Device Update for Azure IoT Hub ソフトウェアには、次のライセンス
 
 ## <a name="connect-the-device-in-device-update-iot-hub"></a>デバイスを Device Update IoT Hub に接続する
 
-1. ページの左側で、[エクスプローラー] の下にある [IoT デバイス] を選択します。
+1. ページの左側で [IoT デバイス] を選択します。
 2. お使いのデバイス名が含まれるリンクを選択します。
-3. ページの上部で [デバイス ツイン] を選択します。
+3. IoT デバイス ID を使用して Device Update に直接接続する場合は、ページの上部にある [デバイス ツイン] を選択します。 それ以外の場合は、上記で作成したモジュールを選択し、その [モジュール ツイン] をクリックします。
 4. デバイス ツインのプロパティの "reported" セクションで、Linux カーネルのバージョンを探します。
 新しいデバイス (Device Update から更新プログラムを受信していないもの) の場合、[DeviceManagement:DeviceInformation:1.swVersion](device-update-plug-and-play.md) 値は、デバイスで実行されているファームウェアのバージョンを表します。  デバイスに更新プログラムが適用されると、Device Update では [AzureDeviceUpdateCore:ClientMetadata:4.installedUpdateId](device-update-plug-and-play.md) プロパティ値を使用して、デバイスで実行されているファームウェアのバージョンを表します。
 5. 基本および更新イメージ ファイルのファイル名にはバージョン番号が付いています。
@@ -141,11 +145,11 @@ Device Update for Azure IoT Hub ソフトウェアには、次のライセンス
 
 ## <a name="import-update"></a>更新プログラムをインポートする
 
-1. [手順](import-update.md)に従ってインポート マニフェストを作成します。
-2. 左側のナビゲーション バーの [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
+1. [サンプル インポート マニフェスト](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0/TutorialImportManifest_Pi.json)と[サンプル イメージ更新プログラム](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/adu-update-image-raspberrypi3-0.6.5073.1.swu)をダウンロードします。
+2. [Azure portal](https://portal.azure.com/) にログインし、Device Update がある IoT Hub に移動します。 次に、左側のナビゲーション バーの [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
 3. [更新プログラム] タブを選択します。
 4. [+ 新しい更新プログラムのインポート] を選択します。
-5. [インポート マニフェスト ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 先ほど作成したインポート マニフェストを選択します。  次に、[1 つまたは複数の更新プログラム ファイルの選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 IoT デバイスにデプロイしたい更新ファイルを選択します。
+5. [インポート マニフェスト ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 上記の手順 1. でダウンロードした "_サンプル インポート マニフェスト_" を選択します。  次に、[1 つまたは複数の更新プログラム ファイルの選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 上記の手順 1. でダウンロードした "_サンプル更新プログラム ファイル_" を選択します。
    
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="更新ファイルの選択を示すスクリーンショット。" lightbox="media/import-update/select-update-files.png":::
 
@@ -169,13 +173,13 @@ Device Update for Azure IoT Hub ソフトウェアには、次のライセンス
 
 1. 以前に Device Update インスタンスに接続した IoT Hub にアクセスします。
 
-2. 左側のナビゲーション バーの [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
+2. 左側のナビゲーション バーの [デバイス管理] にある [更新] オプションを選択します。
 
 3. ページの上部にある [グループ] タブを選択します。 
 
 4. [追加] ボタンを選択して、新しいグループを作成します。
 
-5. 前の手順で作成した IoT Hub のタグを一覧から選択します。 [更新プログラム グループの作成] を選択します。
+5. 前の手順で作成した IoT Hub のタグを一覧から選択します。 [グループの作成] を選択します。
 
    :::image type="content" source="media/create-update-group/select-tag.PNG" alt-text="タグの選択を示すスクリーンショット。" lightbox="media/create-update-group/select-tag.PNG":::
 

@@ -3,13 +3,14 @@ title: デプロイ履歴
 description: Azure Resource Manager のデプロイ操作を、ポータル、PowerShell、Azure CLI、および REST API を使用して表示する方法について説明します。
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: e7ed2096a696efdc9a2654a8fd0c294c82cbd4f7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 11/10/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 60bc06ab15e7f36a5c67ff5fc4de9da8bad28f88
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781867"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310289"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ履歴の表示
 
@@ -17,7 +18,7 @@ Azure Resource Manager では、デプロイ履歴を表示することができ
 
 リソース グループのデプロイ履歴は、800 件のデプロイに制限されます。 この制限に近づくと、デプロイは履歴から自動的に削除されます。 詳細については、「[デプロイ履歴からの自動削除](deployment-history-deletions.md)」を参照してください。
 
-特定のデプロイ エラーの解決については、 [Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](common-deployment-errors.md)に関するページを参照してください。
+特定のデプロイ エラーの解決方法については、「[よくある Azure デプロイ エラーのトラブルシューティングに関する記事](common-deployment-errors.md)」を参照してください。
 
 ## <a name="get-deployments-and-correlation-id"></a>デプロイと関連付け ID の取得
 
@@ -29,15 +30,15 @@ Azure Resource Manager では、デプロイ履歴を表示することができ
 
 1. **[デプロイ]** の下のリンクを選択します。
 
-   ![デプロイ履歴の選択](./media/deployment-history/select-deployment-history.png)
+   :::image type="content" source="media/deployment-history/select-deployment-history.png" alt-text="デプロイの成功を示すリソース グループの概要のスクリーンショット。":::
 
 1. デプロイ履歴からいずれかのデプロイを選択します。
 
-   ![デプロイの選択](./media/deployment-history/select-details.png)
+   :::image type="content" source="media/deployment-history/select-details.png" alt-text="リソース デプロイの強調表示されたリンクのスクリーンショット。":::
 
 1. デプロイの概要が表示され、関連付け ID を確認できます。
 
-    ![デプロイの概要](./media/deployment-history/show-correlation-id.png)
+   :::image type="content" source="media/deployment-history/show-correlation-id.png" alt-text="関連付け ID が強調表示されているデプロイ履歴のスクリーンショット。":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -47,7 +48,7 @@ Azure Resource Manager では、デプロイ履歴を表示することができ
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
 ```
 
-リソース グループから特定のデプロイを取得するには、**DeploymentName** パラメーターを追加します。
+リソース グループから特定のデプロイを取得するには、`DeploymentName` パラメーターを追加します。
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
@@ -61,13 +62,13 @@ Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName Ex
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-リソース グループのデプロイを一覧表示するには、[az deployment group list](/cli/azure/group/deployment#az_deployment_group_list) を使用します。
+リソース グループのすべてのデプロイを一覧表示するには、[az deployment group list](/cli/azure/deployment/group#az_deployment_group_list) を使用します。
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-特定のデプロイを取得するには、[az deployment group show](/cli/azure/group/deployment#az_deployment_group_show) を使用します。
+特定のデプロイを取得するには、[az deployment group show](/cli/azure/deployment/group#az_deployment_group_show) を使用します。
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -87,7 +88,7 @@ az deployment group show --resource-group ExampleGroup --name ExampleDeployment 
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}
 ```
 
-特定のデプロイを取得するには、 次の操作を行います。 要求で使用する最新の API バージョン番号については、「[デプロイ - 取得](/rest/api/resources/deployments/get)」を参照してください。
+特定のデプロイを取得するには、次の操作を行います。 要求で使用する最新の API バージョン番号については、「[デプロイ - 取得](/rest/api/resources/deployments/get)」を参照してください。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
@@ -103,7 +104,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
    "provisioningState": "Failed",
    "timestamp": "2019-11-26T14:18:36.4518358Z",
    "duration": "PT26.2091817S",
-   "correlationId": "47ff4228-bf2e-4ee5-a008-0b07da681230",
+   "correlationId": "11111111-1111-1111-1111-111111111111",
    ...
  }
 }
@@ -119,35 +120,35 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
 1. デプロイの概要で、 **[操作の詳細]** を選択します。
 
-    ![操作の詳細の選択](./media/deployment-history/get-operation-details.png)
+   :::image type="content" source="media/deployment-history/get-operation-details.png" alt-text="操作の詳細のリンクが強調表示されている、失敗したデプロイのスクリーンショット。":::
 
 1. 該当するデプロイ手順の詳細が表示されます。 エラーが発生した場合は、この詳細にエラー メッセージが表示されます。
 
-    ![操作の詳細の表示](./media/deployment-history/see-operation-details.png)
+   :::image type="content" source="media/deployment-history/see-operation-details.png" alt-text="失敗したデプロイの操作の詳細のスクリーンショット。":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-リソース グループにデプロイするためのデプロイ操作を表示するには、[Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation) コマンドを使用します。
+リソース グループにデプロイするためのデプロイ操作を表示するには、[Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azresourcegroupdeploymentoperation) コマンドを使用します。
 
 ```azurepowershell-interactive
-Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy
+Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
 ```
 
 失敗した操作を表示するには、**Failed** 状態で操作をフィルターします。
 
 ```azurepowershell-interactive
-(Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy).Properties | Where-Object ProvisioningState -eq Failed
+Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Name ExampleDeployment | Where-Object { $_.ProvisioningState -eq "Failed" }
 ```
 
 失敗した操作のステータス メッセージを取得するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-((Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy ).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage.error
+(Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Name ExampleDeployment | Where-Object { $_.ProvisioningState -eq "Failed" }).StatusMessage
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-リソース グループにデプロイするためのデプロイ操作を表示するには、[az deployment operation group list](/cli/azure/deployment/operation/group#az_deployment-operation-group-list) コマンドを使用します。 Azure CLI 2.6.0 以降である必要があります。
+リソース グループにデプロイするためのデプロイ操作を表示するには、[az deployment operation group list](/cli/azure/deployment/operation/group#az_deployment_operation_group_list) コマンドを使用します。 Azure CLI 2.6.0 以降である必要があります。
 
 ```azurecli-interactive
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
@@ -156,13 +157,13 @@ az deployment operation group list --resource-group ExampleGroup --name ExampleD
 失敗した操作を表示するには、**Failed** 状態で操作をフィルターします。
 
 ```azurecli-interactive
-az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment --query "[?properties.provisioningState=='Failed']"
 ```
 
 失敗した操作のステータス メッセージを取得するには、次のコマンドを使用します。
 
 ```azurecli-interactive
-az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
 ```
 
 # <a name="http"></a>[HTTP](#tab/http)
@@ -179,15 +180,15 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 {
   "value": [
     {
-      "id": "/subscriptions/xxxx/resourceGroups/examplegroup/providers/Microsoft.Resources/deployments/exampledeploy/operations/13EFD9907103D640",
-      "operationId": "13EFD9907103D640",
+      "id": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/examplegroup/providers/Microsoft.Resources/deployments/exampledeployment/operations/1234567890ABCDEF",
+      "operationId": "1234567890ABCDEF",
       "properties": {
         "provisioningOperation": "Create",
         "provisioningState": "Failed",
         "timestamp": "2019-11-26T14:18:36.3177613Z",
         "duration": "PT21.0580179S",
-        "trackingId": "9d3cdac4-54f8-486c-94bd-10c20867b8bc",
-        "serviceRequestId": "01a9d0fe-896b-4c94-a30f-60b70a8f1ad9",
+        "trackingId": "11111111-1111-1111-1111-111111111111",
+        "serviceRequestId": "11111111-1111-1111-1111-111111111111",
         "statusCode": "BadRequest",
         "statusMessage": {
           "error": {
@@ -196,9 +197,9 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
           }
         },
         "targetResource": {
-          "id": "/subscriptions/xxxx/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/storageq2czadzfgizc2",
+          "id": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/storage",
           "resourceType": "Microsoft.Storage/storageAccounts",
-          "resourceName": "storageq2czadzfgizc2"
+          "resourceName": "storage"
         }
       }
     },
@@ -211,6 +212,6 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
 ## <a name="next-steps"></a>次のステップ
 
-* 特定のデプロイ エラーの解決については、 [Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](common-deployment-errors.md)に関するページを参照してください。
-* 履歴でのデプロイの管理方法の詳細については、「[デプロイ履歴からの自動削除](deployment-history-deletions.md)」を参照してください。
-* デプロイを実行する前に検証するには、 [Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](deploy-powershell.md)に関するページを参照してください。
+- 特定のデプロイ エラーの解決方法については、「[よくある Azure デプロイ エラーのトラブルシューティングに関する記事](common-deployment-errors.md)」を参照してください。
+- 履歴でのデプロイの管理方法の詳細については、「[デプロイ履歴からの自動削除](deployment-history-deletions.md)」を参照してください。
+- デプロイ前に、テンプレートによって行われる変更をプレビューするには、「[ARM テンプレートのデプロイの what-if 操作](deploy-what-if.md)」を参照してください。

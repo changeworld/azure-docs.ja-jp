@@ -3,7 +3,7 @@ title: ドメインに依存しないワークグループ可用性グループ�
 description: Azure の SQL Server 仮想マシンで、Active Directory ドメインに依存しないワークグループ Always On 可用性グループを構成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
@@ -13,13 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
-ms.author: mathoma
-ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 29037a52284bb8af8adb68090f484061db6b9100
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359457"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157032"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>ワークグループ可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -135,7 +136,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="enable-the-availability-group-feature"></a>可用性グループ機能を有効にする 
 
-この手順では、可用性グループ機能を有効にします。 この手順に慣れていない場合は、[可用性グループのチュートリアル](availability-group-manually-configure-tutorial.md#enable-availability-groups)を参照してください。 
+この手順では、可用性グループ機能を有効にします。 この手順に慣れていない場合は、[可用性グループのチュートリアル](availability-group-manually-configure-tutorial-single-subnet.md#enable-availability-groups)を参照してください。 
 
 ## <a name="create-keys-and-certificates"></a>キーと証明書を作成する
 
@@ -280,7 +281,7 @@ GO
 
 ## <a name="configure-an-availability-group"></a>可用性グループを構成する
 
-この手順では、可用性グループを構成して、そこにデータベースを追加します。 この時点ではリスナーを作成しないでください。 この手順に慣れていない場合は、[可用性グループのチュートリアル](availability-group-manually-configure-tutorial.md#create-the-availability-group)を参照してください。 フェールオーバーとフェールバックを開始して、すべてが正常に動作していることを確認します。 
+この手順では、可用性グループを構成して、そこにデータベースを追加します。 この時点ではリスナーを作成しないでください。 この手順に慣れていない場合は、[可用性グループのチュートリアル](availability-group-manually-configure-tutorial-single-subnet.md#create-the-availability-group)を参照してください。 フェールオーバーとフェールバックを開始して、すべてが正常に動作していることを確認します。 
 
    > [!NOTE]
    > 同期プロセス中にエラーが発生した場合は、最初のノード (`AGNode1` など) 上にクラスター リソースを作成するために `NT AUTHORITY\SYSTEM` sysadmin 権限を一時的に付与することが必要になる場合があります。 
@@ -292,4 +293,11 @@ GO
 
 ## <a name="next-steps"></a>次のステップ
 
-[Az SQL VM CLI](./availability-group-az-commandline-configure.md) を使用して、可用性グループを構成することもできます。
+可用性グループがデプロイされたら、[Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)を最適化することを検討します。 
+
+
+詳細については、以下をご覧ください。
+
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
+- [AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

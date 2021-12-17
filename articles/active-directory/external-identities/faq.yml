@@ -1,0 +1,136 @@
+### YamlMime:FAQ
+metadata:
+  title: B2B コラボレーションの FAQ - Azure Active Directory | Microsoft Docs
+  description: Azure Active Directory B2B コラボレーションに関してよく寄せられる質問への回答を示します。
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: B2B
+  ms.topic: reference
+  ms.date: 10/21/2021
+  ms.author: mimart
+  author: msmimart
+  manager: celestedg
+  ms.reviewer: mal
+  ms.custom: it-pro, seo-update-azuread-jan
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 661d38755cdaeea830b025fa2747b45d43b4c5d2
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132490157"
+title: Azure Active Directory B2B コラボレーションの FAQ
+summary: >
+  Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関するよく寄せられる質問 (FAQ) は、新しいトピックを追加して定期的に更新されています。
+
+
+  > [!IMPORTANT]
+
+  > - **2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-web-view-sign-in-support)必要があります。
+
+  > - **2021 年 11 月 1 日以降**、既存のすべてのテナントに対して電子メールのワンタイム パスコード機能をオンにし、新しいテナントに対して既定で有効にするように、変更の展開を開始します。 この変更の一環として、B2B コラボレーションの招待の引き換え中に、Microsoft は、管理されていない (「バイラル」) 新しい Azure AD アカウントとテナントの作成を停止します。 休暇中の中断およびデプロイ ロックダウンを最小限に抑えるために、大多数のテナントに 2022 年 1 月に変更が公開されます。 電子メール ワンタイム パスコード機能を有効にするのは、これによりゲスト ユーザーにシームレスなフォールバック認証方法が提供されるからです。 ただし、この機能が自動的に有効にならないようにする場合は、[無効にする](one-time-passcode.md#disable-email-one-time-passcode)ことができます。
+sections:
+- name: 全般
+  questions:
+  - question: >
+      B2B コラボレーションのゲスト ユーザー向けに、より直感的にするため、サインイン ページをカスタマイズすることはできますか。
+    answer: >
+      もちろんあります。 [この機能に関するブログ記事](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)をご覧ください。 組織のサインイン ページをカスタマイズする方法の詳細については、「[サインイン ページとアクセス パネル ページに会社のブランドを追加する](../fundamentals/customize-branding.md)」をご覧ください。
+  - question: >
+      B2B コラボレーションのユーザーは、SharePoint Online と OneDrive にアクセスできますか。
+    answer: >
+      はい。 ただし、SharePoint Online で、ユーザー選択ウィンドウを使用して既存のゲスト ユーザーを検索する機能は、既定で **オフ** になっています。 既存のゲスト ユーザーを検索するオプションを有効にするには、**ShowPeoplePickerSuggestionsForGuestUsers** を **On** に設定します。 この設定は、テナント レベルで、またはサイト コレクション レベルで有効にできます。 この設定を変更するには、Set-SPOTenant および Set-SPOSite コマンドレットを使用します。 これらのコマンドレットにより、メンバーは、ディレクトリ内のすべての既存のゲスト ユーザーを検索できます。 テナントのスコープの変更は、既にプロビジョニングされている SharePoint Online サイトには影響しません。
+  - question: >
+      CSV のアップロード機能は、まだサポートされていますか。
+    answer: >
+      はい。 .csv ファイルのアップロード機能の使用の詳細については、[この PowerShell サンプル](code-samples.md)をご覧ください。
+  - question: >
+      招待の電子メールは、どのようにカスタマイズできますか。
+    answer: >
+      [B2B 招待 API](customize-invitation-api.md) を使用して、招待元プロセスのほぼすべてをカスタマイズすることができます。
+  - question: >
+      ゲスト ユーザーは、多要素認証方法をリセットできますか。
+    answer: >
+      はい。 ゲスト ユーザーは、通常のユーザーと同じように、多要素認証方法をリセットできます。
+  - question: >
+      多要素認証のライセンスに責任を持つのはどちらの組織ですか。
+    answer: >
+      招待側組織が多要素認証を実行します。 招待側組織は、多要素認証を使用している B2B ユーザーに対する十分なライセンスがあることを確認する必要があります。
+  - question: >
+      パートナー組織で、既に多要素認証を設定している場合はどうなりますか。 パートナー組織の多要素認証を信頼し、自分の組織の多要素認証は使用しなくても構いませんか。
+    answer: >
+      この機能は、現時点ではサポートされていません。 お客様の組織のリソースへのアクセスで多要素認証が必要な場合、パートナー組織では、お客様の (招待側) 組織の多要素認証に登録する必要があります。
+  - question: >
+      招待の遅延は、どのように使用するのですか。
+    answer: >
+      組織で、B2B コラボレーション ユーザーを追加し、必要に応じてそれらのユーザーをアプリケーションにプロビジョニングして、招待を送信したいと考える場合があります。 B2B コラボレーションの招待 API を使用して、オンボード ワークフローをカスタマイズできます。
+  - question: >
+      Exchange のグローバル アドレス一覧にゲスト ユーザーを表示できますか。
+    answer: >
+      はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳細については、[Microsoft 365 グループごとのゲスト アクセスに関する記事](/microsoft-365/solutions/per-group-guest-access)の「グローバル アドレス一覧にゲストを追加する」を参照してください。
+  - question: >
+      ゲスト ユーザーを制限付き管理者にできますか。
+    answer: >
+      そして、 詳細については、[ゲスト ユーザーのロールへの追加](./add-users-administrator.md)に関するページをご覧ください。
+  - question: >
+      Azure AD B2B コラボレーションでは、B2B ユーザーの Azure ポータルへのアクセスを許可していますか。
+    answer: >
+      B2B コラボレーション ユーザーは、制限付き管理者のロールが割り当てられない限り、Azure portal にアクセスする必要はありません。 ただし、制限付き管理者のロールを割り当てられている B2B コラボレーション ユーザーは portal にアクセスできます。 また、これらのいずれかの管理者ロールが割り当てられていないゲスト ユーザーがポータルにアクセスすると、ユーザーは、エクスペリエンスの特定の部分にアクセスできます。 ゲスト ユーザー ロールは、ディレクトリのアクセス許可の一部を持ちます。
+  - question: >
+      ゲスト ユーザーに対して Azure Portal へのアクセスをブロックできますか。
+    answer: "はい。 すべてのゲスト ユーザーと外部ユーザーの Azure portal へのアクセスをブロックする条件付きアクセス ポリシーを作成できます。 このポリシーを構成する場合は、誤ってメンバーと管理者のアクセスをブロックしないように注意してください。\n\n1. [Azure portal](https://portal.azure.com/) にセキュリティ管理者または条件付きアクセス管理者としてサインインします。\n2. Azure Portal で、 **[Azure Active Directory]** を選びます。 \n3. **[管理]** で、 **[セキュリティ]** を選択します。\n4. **[保護]** で、 **[条件付きアクセス]** を選択します。 **[新しいポリシー]** を選択します。\n5. **[新規]** ページの **[名前]** テキスト ボックスに、ポリシーの名前 (たとえば、\"Block guests from accessing the portal\" など) を入力します。\n6. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。\n7. **[含める]** タブで、 **[ユーザーとグループの選択]** を選択し、 **[すべてのゲストおよび外部ユーザー (プレビュー)]** を選択します。\n9. **[Done]** を選択します。\n10. **[新規]** ページの **[割り当て]** セクションで、 **[クラウド アプリまたは操作]** を選択します。\n11. **[クラウド アプリまたは操作]** ページで、 **[アプリを選択]** を選択し、 **[選択]** を選択します。\n12. **[選択]** ページで **[Microsoft Azure Management]** を選択し、 **[選択]** を選択します。\n13. **[クラウド アプリまたは操作]** ページで、 **[完了]** を選択します。\n"
+  - question: >
+      Azure AD B2B コラボレーションは、多要素認証とコンシューマー電子メール アカウントをサポートしていますか。
+    answer: >
+      はい。 Azure AD B2B コラボレーションでは、多要素認証とコンシューマー電子メール アカウントのどちらもサポートされています。
+  - question: >
+      Azure AD B2B コラボレーション ユーザーのパスワード リセットはサポートされていますか。
+    answer: "Azure AD テナントがユーザーのホーム ディレクトリである場合、管理者は Azure portal から[ユーザーのパスワードをリセットする](../fundamentals/active-directory-users-reset-password-azure-portal.md)ことができます。 ただし、別の Azure AD ディレクトリまたは外部の ID プロバイダーによって管理されているアカウントでサインインしているゲスト ユーザーのパスワードを、直接リセットすることはできません。 パスワードをリセットできるのは、ゲスト ユーザーまたはユーザーのホーム ディレクトリの管理者だけです。 ゲスト ユーザーに対するパスワード リセットの動作の例をいくつか次に示します。\n \n* \"Guest\" (UserType==Guest) とマークされている Azure AD テナントのゲスト ユーザーは、[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 経由で SSPR に登録することができません。 このような種類のゲスト ユーザーは、[https://aka.ms/sspr](https://aka.ms/sspr) 経由でのみ SSPR を実行することができます。 \n* Microsoft アカウント (たとえば guestuser@live.com) でサインインしたゲスト ユーザーは、Microsoft アカウントのセルフサービス パスワード リセット (SSPR) を使用して、自分のパスワードをリセットすることができます。 「[Microsoft アカウントのパスワードをリセットする方法](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)」をご覧ください。\n* Google アカウントまたはそれ以外の外部 ID プロバイダーでサインインしたゲスト ユーザーは、ID プロバイダーの SSPR 方法を使用して、自分のパスワードをリセットできます。 たとえば、Google アカウント guestuser@gmail.com のゲスト ユーザーは、「[パスワードを変更または再設定する](https://support.google.com/accounts/answer/41078)」の手順に従って自分のパスワードをリセットできます。\n* ID テナントが Just-In-Time (JIT) テナントまたは \"バイラル\" テナント (つまり、独立したアンマネージド Azure テナント) である場合は、ゲスト ユーザーだけが自分のパスワードをリセットできます。 場合によっては、組織が、従業員が仕事用メール アドレスを使用してサービスにサインアップするときに作成される[バイラル テナントの管理を引き継ぎます](../enterprise-users/domains-admin-takeover.md)。 組織がバイラル テナントを引き継いだ後は、その組織の管理者しか、ユーザーのパスワードをリセットしたり SSPR を有効にしたりできなくなります。 必要に応じて、招待側の組織としては、ディレクトリからゲスト ユーザー アカウントを削除し、招待を再送信することができます。\n\n* ゲスト ユーザーのホーム ディレクトリが Azure AD テナントの場合は、管理者がユーザーのパスワードをリセットできます。 たとえば、管理者がオンプレミスの Active Directory からユーザーを作成または同期し、UserType を Guest に設定したような場合です。 このユーザーは管理者のディレクトリに所属しているため、管理者は Azure portal からユーザーのパスワードをリセットできます。\n"
+  - question: >
+      Microsoft Dynamics 365 は、Azure AD B2B コラボレーションをオンラインでサポートしていますか。
+    answer: >
+      はい、Dynamics 365 (オンライン) では、Azure AD B2B コラボレーションがサポートされています。 詳細については、Dynamics 365 に関する記事「[Azure Active Directory B2B コラボレーションでユーザーを招待する](/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration)」を参照してください。
+  - question: >
+      新しく作成した B2B コラボレーション ユーザー用の初期パスワードの有効期間はどうなっていますか。
+    answer: "Azure AD には、文字、パスワードの強度、およびアカウント ロックアウトに関する要件の固定セットがあり、これはすべての Azure AD クラウド ユーザー アカウントにも同様に適用されます。 クラウド ユーザー アカウントは、次のような別の ID プロバイダーとフェデレーションされないアカウントです。 \n* Microsoft アカウント\n* Facebook\n* Active Directory フェデレーション サービス (AD FS)\n* (B2B コラボレーション用の) 別のクラウド テナント\n\nフェデレーション アカウントの場合、パスワード ポリシーは、オンプレミス テナントに適用されるポリシーとユーザーの Microsoft アカウント設定に依存します。\n"
+  - question: >
+      組織で、アプリケーションにテナント ユーザーとゲスト ユーザーに対して異なるエクスペリエンスを設定したいと考える場合があります。 これを行うための標準的なガイダンスはありますか。 ID プロバイダー要求の存在は、使用する正しいモデルですか。
+    answer: >
+      ゲスト ユーザーは、任意の ID プロバイダーを使用して認証できます。 詳細については、[B2B コラボレーション ユーザーのプロパティ](user-properties.md)に関するページをご覧ください。 **UserType** プロパティを使用して、ユーザー エクスペリエンスを決定します。 **UserType 要求** は、現在トークンに含まれていません。 アプリケーションで Microsoft Graph API を使用して、ディレクトリでユーザーを照会して、UserType を取得する必要があります。
+  - question: >
+      ソリューションを共有し、アイデアを提供するための B2B コラボレーション コミュニティにはどこからアクセスできますか。
+    answer: "B2B コラボレーションを向上させるためのフィードバックは絶えず受け付けています。 ユーザー シナリオ、ベスト プラクティス、また Azure AD B2B コラボレーションに関する意見を提供してください。 [マイクロソフト Tech コミュニティ](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)のディスカッションにご参加ください。\n \nまた、[B2B Collaboration Ideas](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas) でも、ご意見の送信や、今後の機能への投票を行うことができます。\n"
+  - question: >
+      ユーザーがすぐに "準備" できるように、自動的に引き換えられる招待を送信できますか。 それとも、ユーザーは常に引き換えの URL をクリックする必要があるのですか。
+    answer: >
+      招待元は、UI、PowerShell スクリプト、または API を使用して、取引先組織の他のユーザーを招待できます。 その後、招待元はゲスト ユーザーに共有アプリへの直接リンクを送信できます。 ほとんどの場合、メール招待状を開いて、引き換えの URL をクリックする必要はなくなります。 「[Azure Active Directory B2B コラボレーションの招待の利用](redemption-experience.md)」をご覧ください。
+  - question: >
+      招待されたパートナーがフェデレーションを使用して独自のオンプレミス認証を追加するとき、B2B コラボレーションはどのように機能しますか?
+    answer: "パートナーの Azure AD テナントがオンプレミス認証インフラストラクチャにフェデレーションされている場合、オンプレミスのシングル サインオン (SSO) が自動的に実行されます。 パートナーに Azure AD テナントがない場合、新しいユーザーに対し Azure AD アカウントが作成されます。 \n"
+  - question: >
+      Azure AD B2B は gmail.com および outlook.com の電子メール アドレスを受け付けず、このようなアカウントに対しては、B2C が使われていたと思います。
+    answer: >
+      マイクロソフトでは、サポートされる ID に関して、B2B と business-to-consumer (B2C) のコラボレーションの違いをなくしています。 使用される ID は、B2B と B2C のどちらを使うかを選択する十分な理由になりません。 コラボレーション オプションの選択については、「[Azure Active Directory での B2B コラボレーションと B2C の比較](compare-with-b2c.md)」をご覧ください。
+  - question: >
+      B2B コラボレーションのために Azure AD B2C ローカル アカウントを Azure AD テナントに招待することはできますか。
+    answer: >
+      いいえ。 Azure AD B2C ローカル アカウントは、Azure AD B2C テナントへのサインインにのみ使用できます。 このアカウントを使用して Azure AD テナントにサインインすることはできません。 B2B コラボレーションのために Azure AD B2C ローカル アカウントを Azure AD テナントに招待することはサポートされていません。
+  - question: >
+      Azure B2B ゲスト ユーザーをサポートするのはどのアプリケーションとサービスですか。
+    answer: "すべての Azure AD 統合型アプリケーションでは、Azure B2B ゲスト ユーザーをサポートできますが、ゲスト ユーザーを認証するにはテナントとして設定されたエンドポイントを使用する必要があります。 また、ゲスト ユーザーがアプリに対して認証を行うと発行される SAML トークン内の[要求をカスタマイズする](claims-mapping.md)ことも必要になる場合があります。 \n"
+  - question: >
+      パートナーが多要素認証を使用していない場合に、B2B ゲスト ユーザーに多要素認証を強制できますか。
+    answer: >
+      はい。 詳細については、「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」を参照してください。
+  - question: >
+      SharePoint では、外部ユーザーに対して "許可" または "拒否" リストを定義できます。 これを Azure で実行できますか。
+    answer: "はい。 Azure AD B2B コラボレーションでは、許可リストとブロックリストをサポートしています。 \n"
+  - question: >
+      Azure AD B2B を使用する必要があるライセンスは何ですか。
+    answer: >
+      組織が B2B Azure AD を使用するために必要なライセンスの詳細については、[External Identities の価格](external-identities-pricing.md)に関するページを参照してください。
+  - question: >
+      B2B コラボレーション ユーザーは、UPN 以外の電子メール アドレスでサインインできますか?
+    answer: >
+      正解です。 B2B コラボレーション用の代替ログイン ID としての電子メールの詳細については、[電子メール アドレスを使用した B2B ゲスト ユーザーのサインイン](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-use-email-signin#b2b-guest-user-sign-in-with-an-email-address)に関するページを参照してください。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n[Azure AD B2B コラボレーションとは](what-is-b2b.md)"

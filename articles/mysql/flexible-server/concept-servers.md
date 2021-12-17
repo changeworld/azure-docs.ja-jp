@@ -6,17 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a7978410dbe28a5da5dae81cb380d118fe13a159
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea421471de279edc512c22c80d21daeebec106fe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869380"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468216"
 ---
-# <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバー (プレビュー) でのサーバーの概念
+# <a name="server-concepts-in-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーでのサーバーの概念
 
-> [!IMPORTANT] 
-> Azure Database for MySQL フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 この記事では、Azure Database for MySQL フレキシブル サーバーの使用に関する考慮事項とガイドラインを示します。
 
@@ -49,7 +48,7 @@ Azure Database for MySQL フレキシブル サーバーを使用すると、使
 サーバーが **停止** 状態にある場合、サーバーのコンピューティングは課金されません。 ただし、サーバーが再び起動されたときにデータ ファイルを使用できるようにするため、サーバーのストレージは維持されているため、ストレージは引き続き課金されます。
 
 > [!IMPORTANT]
-> サーバーを **停止** すると、それ以降連続して 7 日間は、その状態のままになります。 この期間内に手動で **開始** しないと、サーバーは 7 日の終わりに自動的に開始されます。 サーバーを使用していない場合は、再び **停止** することができます。
+> サーバーを **停止** すると、それ以降連続して 30 日間は、その状態のままになります。 この期間内に手動で **起動** しない場合、サーバーは 30 日が経過した時点で自動的に起動されます。 サーバーを使用していない場合は、再び **停止** することができます。
 
 サーバーが停止されている間、サーバーで管理操作を実行することはできません。 サーバーの構成設定を変更するには、[サーバーを起動する](how-to-stop-start-server-portal.md)必要があります。 [停止と開始の制限事項](./concepts-limitations.md#stopstart-operation)に関するページを参照してください。
 
@@ -61,7 +60,7 @@ Azure Database for MySQL フレキシブル サーバーを使用すると、使
 |-----|-----|-----|-----|
 |*mysql.az_kill*|processlist_id|該当なし|[`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で実行されているステートメントを終了した後、指定された processlist_id に関連する接続を終了します。|
 |*mysql.az_kill_query*|processlist_id|該当なし|[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で現在実行されているステートメントを終了します。 接続自体をアクティブのままにします。|
-|*mysql.az_load_timezone*|該当なし|なし|[タイム ゾーン テーブル](../howto-server-parameters.md#working-with-the-time-zone-parameter)を読み込み、`time_zone`パラメーターを名前付きの値に設定できるようにします (例: "US/Pacific")。|
+|*mysql.az_load_timezone*|該当なし|該当なし|[タイム ゾーン テーブル](../howto-server-parameters.md#working-with-the-time-zone-parameter)を読み込み、`time_zone`パラメーターを名前付きの値に設定できるようにします (例: "US/Pacific")。|
 
 
 ## <a name="next-steps"></a>次のステップ

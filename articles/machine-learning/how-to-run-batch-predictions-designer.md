@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: バッチ予測パイプラインを作成する方法について説明します。 このパイプラインは、パラメータ化された Web サービスとしてデプロイし、HTTP ライブラリからトリガーします。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: keli19
 author: likebupt
-ms.date: 02/05/2021
-ms.topic: conceptual
-ms.custom: how-to, designer
-ms.openlocfilehash: 34d0d31296214355b85c52e4564e9bf6658b2005
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: designer
+ms.openlocfilehash: da37ffd719585c5f4d00d2cac1411ee3057a8472
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962936"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562145"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用してバッチ予測を実行する
 
@@ -30,6 +30,8 @@ ms.locfileid: "105962936"
 > * エンドポイントのバージョンを管理する
 
 SDK を使用してバッチ スコアリング サービスを設定する方法については、付属の[ガイド](./tutorial-pipeline-batch-scoring-classification.md)を参照してください。
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,7 +67,7 @@ SDK を使用してバッチ スコアリング サービスを設定する方�
 
 このセクションでは、予測を行う別のデータセットを指定するためのデータセット パラメーターを作成します。
 
-1. データセット モジュールを選択します。
+1. データセット コンポーネントを選択します。
 
 1. キャンバスの右側にペインが表示されます。 ペインの下部で **[Set as pipeline parameter]\(パイプライン パラメーターとして設定\)** を選択します。
    
@@ -151,13 +153,13 @@ REST 呼び出しを行うには、OAuth 2.0 ベアラー型認証ヘッダー�
 
 推論パイプラインではモデルのみが更新され、データ変換は更新されないことに注意してください。
 
-更新された変換を推論パイプラインで使用するには、変換モジュールの変換出力をデータセットとして登録する必要があります。
+更新された変換を推論パイプラインで使用するには、変換コンポーネントの変換出力をデータセットとして登録する必要があります。
 
 ![変換データセットの登録方法を示すスクリーンショット](./media/how-to-run-batch-predictions-designer/register-transformation-dataset.png)
 
-次に、推論パイプラインの **TD-** モジュールを、登録したデータセットに手動で置き換えます。
+次に、推論パイプラインの **TD-** コンポーネントを、登録したデータセットに手動で置き換えます。
 
-![変換モジュールの置換方法を示すスクリーンショット](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
+![変換コンポーネントの置換方法を示すスクリーンショット](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
 
 その後、更新されたモデルおよび変換と共に推論パイプラインを送信し、公開できます。
 

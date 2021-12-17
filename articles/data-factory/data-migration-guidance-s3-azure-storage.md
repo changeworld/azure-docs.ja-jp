@@ -4,15 +4,16 @@ description: Azure Data Factory を使用して Amazon S3 から Azure Storage �
 ms.author: yexu
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 2be8a9c7476bda6952ed1eaa15d29fe9c01b59a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a3039b800c47f84ac41bdbfcf7abf7506bde6cd
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371313"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208041"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory を使用して Amazon S3 から Azure Storage にデータを移行する 
 
@@ -33,7 +34,7 @@ ADF には、さまざまなレベルで並列処理を可能にするサーバ�
 
 複数のお客様が、スループットを 2 GBps 以上に維持したまま、Amazon S3 から Azure Blob Storage に数百万個単位のファイルで構成されるペタバイト単位のデータを移行することに成功しています。 
 
-![図は、AWS S3 ストア内のいくつかのファイル パーティションと Azure BLOB Storage ADLS Gen2 へのコピー アクションを示しています。](media/data-migration-guidance-s3-to-azure-storage/performance.png)
+:::image type="content" source="media/data-migration-guidance-s3-to-azure-storage/performance.png" alt-text="図は、AWS S3 ストア内のいくつかのファイル パーティションと Azure BLOB Storage ADLS Gen2 へのコピー アクションを示しています。":::
 
 上の図は、さまざまなレベルの並列処理で優れたデータ移動速度を実現する方法を示しています。
  
@@ -57,7 +58,7 @@ ADF の既定では、HTTPS プロトコル経由の暗号化された接続を�
 
 パブリック インターネット経由でデータを移行する:
 
-![図は、AWS S3 ストアから Azure Storage への ADF Azure の Azure Integration Runtime を介した HTTP によるインターネット経由の移行を示しています。 ランタイムには、Data Factory を使用したコントロール チャネルがあります。](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
+:::image type="content" source="media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png" alt-text="図は、AWS S3 ストアから Azure Storage への ADF Azure の Azure Integration Runtime を介した HTTP によるインターネット上の移行を示しています。ランタイムには、Data Factory を使用したコントロール チャネルがあります。":::
 
 - このアーキテクチャでは、データはパブリック インターネット経由で HTTPS を使用して安全に転送されます。 
 - ソース Amazon S3 だけでなく、宛先の Azure Blob Storage または Azure Data Lake Storage Gen2 の両方が、すべてのネットワーク IP アドレスからのトラフィックを許可するように構成されています。  特定の IP 範囲へのネットワーク アクセスを制限する方法については、以下の 2 つ目のアーキテクチャを参照してください。 
@@ -66,7 +67,7 @@ ADF の既定では、HTTPS プロトコル経由の暗号化された接続を�
 
 プライベート リンク経由でデータを移行する: 
 
-![図は、AWS S3 ストアから、Azure 仮想マシン上のセルフホステッド統合ランタイムを経由し、VNet サービス エンドポイント、Azure Storage へのプライベート ピアリング接続を介した移行を示しています。 ランタイムには、Data Factory を使用したコントロール チャネルがあります。](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
+:::image type="content" source="media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png" alt-text="図は、AWS S3 ストアから、Azure 仮想マシン上のセルフホステッド統合ランタイムを経由し、VNet サービス エンドポイント、Azure Storage へのプライベート ピアリング接続を介した移行を示しています。ランタイムには、Data Factory を使用したコントロール チャネルがあります。":::
 
 - このアーキテクチャでは、データの移行は AWS Direct Connect と Azure Express Route 間のプライベート ピアリング リンクを介して行われるので、データがパブリック インターネット経由で転送されることはありません。  この場合、AWS VPC と Azure Virtual ネットワークを使用する必要があります。 
 - このアーキテクチャを実現するには、Azure 仮想ネットワーク内の Windows VM に ADF セルフホステッド統合ランタイムをインストールする必要があります。  セルフホステッド IR VM を手動でスケールアップするか、複数の VM (最大 4 ノード) にスケールアウトすることで、ネットワークとストレージの IOPS/帯域幅を完全に活用できます。 
@@ -80,7 +81,7 @@ ADF の既定では、HTTPS プロトコル経由の暗号化された接続を�
 - Amazon S3 アカウントに対して認証するには、[IAM アカウントのアクセス キー](./connector-amazon-simple-storage-service.md#linked-service-properties)を使用する必要があります。 
 - Azure Blob Storage に接続するには、複数の認証の種類がサポートされています。  [Azure リソースにはマネージド ID](./connector-azure-blob-storage.md#managed-identity) を使用することを強くお勧めします。Azure AD で自動的に管理されるADF ID を基にして構築されており、リンクされたサービス定義で資格情報を指定せずにパイプラインを構成できます。  また、[サービス プリンシパル](./connector-azure-blob-storage.md#service-principal-authentication)、[共有アクセス署名](./connector-azure-blob-storage.md#shared-access-signature-authentication)、または[ストレージ アカウント キー](./connector-azure-blob-storage.md#account-key-authentication)を使用して Azure Blob Storage に対する認証を行うこともできます。 
 - Azure Data Lake Storage Gen2 に接続するには、複数の認証の種類がサポートされています。  [サービス プリンシパル](./connector-azure-data-lake-storage.md#service-principal-authentication)または[ストレージ アカウント キー](./connector-azure-data-lake-storage.md#account-key-authentication)を使用することもできますが、[Azure リソースのマネージド ID](./connector-azure-data-lake-storage.md#managed-identity) を使用することを強くお勧めします。 
-- Azure リソースに対してマネージド ID を使用していない場合は、[Azure Key Vault に資格情報を格納](./store-credentials-in-key-vault.md)して、ADF のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。  これは、[CI/CD のベスト プラクティス](./continuous-integration-deployment.md#best-practices-for-cicd)の1 つでもあります。 
+- Azure リソースに対してマネージド ID を使用していない場合は、[Azure Key Vault に資格情報を格納](./store-credentials-in-key-vault.md)して、ADF のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。  これは、[CI/CD のベスト プラクティス](./continuous-integration-delivery.md#best-practices-for-cicd)の1 つでもあります。 
 
 ### <a name="initial-snapshot-data-migration"></a>初回のスナップショット データ移行 
 
@@ -118,7 +119,7 @@ ADF のコピー アクティビティによって報告された調整エラー
 
 S3 から Azure Blob Storage にデータを移行するために、次のパイプラインが構築されているとします。 
 
-![図は、データを移行するためのパイプラインを示しています。ストアド プロシージャに流れる Copy を含むパーティションごとに、手動トリガーは Lookup に流れ、ForEach に流れ、各パーティションのサブパイプラインに流れます。 パイプラインの外部では、ストアド プロシージャは Azure SQL DB に流れ、Azure SQL DB は Lookup に流れ、AWS S3 は Copy に流れ、これが BLOB ストレージに流れます。](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
+:::image type="content" source="media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png" alt-text="図はデータを移行するためのパイプラインを示しています。手動トリガーから Lookup に、その後 ForEach に進み、各パーティションのサブパイプラインに進みます。そのサブパイプラインに含まれるコピーからストアド プロシージャに進みます。パイプラインの外で、ストアド プロシージャが Azure SQL DB に進み、そこから Lookup に進みます。AWS S3 はコピーに進み、そこから BLOB Storage に進みます。":::
 
 ここでは、次のことを想定しています。 
 
@@ -131,7 +132,7 @@ S3 から Azure Blob Storage にデータを移行するために、次のパイ
 
 上記の前提条件に基づく推定料金は次のとおりです。 
 
-![推定料金を示す表のスクリーンショット。](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
+:::image type="content" source="media/data-migration-guidance-s3-to-azure-storage/pricing-table.png" alt-text="推定料金を示す表のスクリーンショット。":::
 
 ### <a name="additional-references"></a>その他のリファレンス 
 - [Amazon Simple Storage Service コネクタ](./connector-amazon-simple-storage-service.md)

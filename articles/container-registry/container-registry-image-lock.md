@@ -3,12 +3,12 @@ title: イメージのロック
 description: コンテナー イメージまたはリポジトリの属性を設定して、Azure Container Registry で削除や上書きができないようにします。
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 340beb1bb6666ddf0de7de38adee6be71f5f52bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0b2cdd770233833e45c84bea1916ddf7f6e1e317
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772345"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494554"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure Container Registry のコンテナー イメージをロックする
 
@@ -53,37 +53,37 @@ az acr repository show \
 
 ```azurecli
 az acr repository show \
-    --name myregistry --image image:tag \
+    --name myregistry --image myimage:tag \
     --output jsonc
 ```
 
 ### <a name="lock-an-image-by-tag"></a>タグでイメージをロックする
 
-*myregistry* の *myrepo/myimage:tag* イメージをロックするには、次の [az acr repository update][az-acr-repository-update] コマンドを実行します。
+*myregistry* の *myimage:tag* イメージをロックするには、次の [az acr repository update][az-acr-repository-update] コマンドを実行します。
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage:tag \
+    --name myregistry --image myimage:tag \
     --write-enabled false
 ```
 
 ### <a name="lock-an-image-by-manifest-digest"></a>マニフェスト ダイジェストでイメージをロックする
 
-マニフェスト ダイジェスト (`sha256:...` として表される、SHA-256 ハッシュ) で識別された *myrepo/myimage* イメージをロックするには、次のコマンドを実行します (1 つまたは複数のイメージ タグに関連付けられているマニフェスト ダイジェストを見つけるには、[az acr repository show-manifests][az-acr-repository-show-manifests] コマンドを実行します)。
+マニフェスト ダイジェスト (`sha256:...` として表される、SHA-256 ハッシュ) で識別された *myimage* イメージをロックするには、次のコマンドを実行します。 (1 つまたは複数のイメージ タグに関連付けられているマニフェスト ダイジェストを見つけるには、[az acr repository show-manifests][az-acr-repository-show-manifests] コマンドを実行します)。
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage@sha256:123456abcdefg \
+    --name myregistry --image myimage@sha256:123456abcdefg \
     --write-enabled false
 ```
 
 ### <a name="lock-a-repository"></a>リポジトリをロックする
 
-*myrepo/myimage* リポジトリと、それに含まれるすべてのイメージをロックするには、次のコマンドを実行します。
+*myrepo* リポジトリと、それに含まれるすべてのイメージをロックするには、次のコマンドを実行します。
 
 ```azurecli
 az acr repository update \
-    --name myregistry --repository myrepo/myimage \
+    --name myregistry --repository myrepo \
     --write-enabled false
 ```
 
@@ -91,57 +91,57 @@ az acr repository update \
 
 ### <a name="protect-an-image-from-deletion"></a>イメージが削除されないようにする
 
-*myrepo/myimage:tag* イメージの更新は許可するが、削除は許可しない場合は、次のコマンドを実行します。
+*myimage:tag* イメージの更新は許可するが、削除は許可しない場合は、次のコマンドを実行します。
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage:tag \
+    --name myregistry --image myimage:tag \
     --delete-enabled false --write-enabled true
 ```
 
 ### <a name="protect-a-repository-from-deletion"></a>リポジトリが削除されないようにする
 
-次のコマンドで *myrepo/myimage* リポジトリを設定し、削除できないようにします。 個々のイメージは引き続き、更新したり、削除したりすることができます。
+次のコマンドで *myrepo* リポジトリを設定し、削除できないようにします。 個々のイメージは引き続き、更新したり、削除したりすることができます。
 
 ```azurecli
 az acr repository update \
-    --name myregistry --repository myrepo/myimage \
+    --name myregistry --repository myrepo \
     --delete-enabled false --write-enabled true
 ```
 
 ## <a name="prevent-read-operations-on-an-image-or-repository"></a>イメージまたはリポジトリに対する読み取り操作ができないようにする
 
-*myrepo/myimage:tag* イメージに対する読み取り (プル) 操作ができないようにするには、次のコマンドを実行します。
+*myimage:tag* イメージに対する読み取り (プル) 操作ができないようにするには、次のコマンドを実行します。
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage:tag \
+    --name myregistry --image myimage:tag \
     --read-enabled false
 ```
 
-*myrepo/myimage:tag* リポジトリ内のすべてのイメージに対する読み取り操作ができないようにするには、次のコマンドを実行します。
+*myrepo* リポジトリ内のすべてのイメージに対する読み取り操作ができないようにするには、次のコマンドを実行します。
 
 ```azurecli
 az acr repository update \
-    --name myregistry --repository myrepo/myimage \
+    --name myregistry --repository myrepo \
     --read-enabled false
 ```
 
 ## <a name="unlock-an-image-or-repository"></a>イメージまたはリポジトリのロックを解除する
 
-*myrepo/myimage:tag* イメージの既定の動作を復元し、削除と更新ができるようにするには、次のコマンドを実行します。
+*myimage:tag* イメージの既定の動作を復元し、削除と更新ができるようにするには、次のコマンドを実行します。
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage:tag \
+    --name myregistry --image myimage:tag \
     --delete-enabled true --write-enabled true
 ```
 
-*myrepo/myimage:tag* リポジトリとすべてのイメージの既定の動作を復元し、削除と更新ができるようにするには、次のコマンドを実行します。
+*myrepo* リポジトリとすべてのイメージの既定の動作を復元し、削除と更新ができるようにするには、次のコマンドを実行します。
 
 ```azurecli
 az acr repository update \
-    --name myregistry --repository myrepo/myimage \
+    --name myregistry --repository myrepo \
     --delete-enabled true --write-enabled true
 ```
 

@@ -1,16 +1,16 @@
 ---
-author: stevestein
+author: MashaMSFT
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: service-overview
 ms.topic: include
 ms.date: 08/23/2019
-ms.author: sstein
-ms.openlocfilehash: 3cc8e836d39a38f950e15d31aeb3e3acdca45acc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mathoma
+ms.openlocfilehash: 3d1e050fd058a3c9883617f140646702badd5939
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84031753"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111594165"
 ---
 ## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Azure portal で Azure SQL リソースを作成して管理する
 

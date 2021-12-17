@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 61076b49d396c83a67635e46eb4f1b928b3f9e1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e59e95de15a34e11bba2071f5b22c722c6845a4
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933973"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552130"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network についてよく寄せられる質問 (FAQ)
 
@@ -80,10 +80,10 @@ VNet を使用して次のことが行えます。
 - x.x.x.0:ネットワーク アドレス
 - x.x.x.1:既定のゲートウェイ用に Azure によって予約されています
 - x.x.x.2、x.x.x.3:Azure DNS IP を VNet 空間にマッピングするために Azure によって予約されています
-- x.x.x.255:ネットワーク ブロードキャスト アドレス
+- x.x.x.255: サイズが /25 以上のサブネットのネットワーク ブロードキャスト アドレス。 これは、小さいサブネットでは異なるアドレスです。 
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>VNet およびサブネットは、どれくらい小規模に、また、大規模になるのでしょうか。
-サポートされる最小の IPv4 サブネットは /29、最大は /8 です (CIDR サブネット定義を使用)。  IPv6 のサブネットは、正確に /64 のサイズである必要があります。  
+サポートされる最小の IPv4 サブネットは /29、最大は /2 です (CIDR サブネット定義を使用)。  IPv6 のサブネットは、正確に /64 のサイズである必要があります。  
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>VNet を使用して、VLAN を Azure に接続できるでしょうか。
 いいえ。 VNet はレイヤー 3 のオーバーレイです。 Azure では、任意のレイヤー 2 のセマンティクスはサポートされません。
@@ -113,10 +113,10 @@ VNet では、TCP、UDP、および ICMP TCP/IP プロトコルを使用する�
 はい。 VNet で使用された CIDR ブロックを追加、削除、変更することができます。
 
 ### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>VNet でサービスを実行している場合、インターネットに接続できますか。
-はい。 VNet 内にデプロイされているすべてのサービスは、インターネットに送信接続できます。 Azure での送信インターネット接続について詳しくは、[送信接続](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 Resource Manager を使用してデプロイされたリソースに受信接続するには、リソースにパブリック IP アドレスが割り当てられている必要があります。 パブリック IP アドレスについて詳しくは、[パブリック IP アドレス](virtual-network-public-ip-address.md)に関する記事をご覧ください。 Azure にデプロイされたすべての Azure クラウド サービスには、パブリックにアドレス指定可能な VIP が割り当てられています。 PaaS ロールの入力エンドポイントと仮想マシンのエンドポイントを定義して、これらのサービスがインターネットからの接続を承諾できるようにします。
+はい。 VNet 内にデプロイされているすべてのサービスは、インターネットに送信接続できます。 Azure での送信インターネット接続について詳しくは、[送信接続](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 Resource Manager を使用してデプロイされたリソースに受信接続するには、リソースにパブリック IP アドレスが割り当てられている必要があります。 パブリック IP アドレスについて詳しくは、[パブリック IP アドレス](./ip-services/virtual-network-public-ip-address.md)に関する記事をご覧ください。 Azure にデプロイされたすべての Azure クラウド サービスには、パブリックにアドレス指定可能な VIP が割り当てられています。 PaaS ロールの入力エンドポイントと仮想マシンのエンドポイントを定義して、これらのサービスがインターネットからの接続を承諾できるようにします。
 
 ### <a name="do-vnets-support-ipv6"></a>VNet は IPv6 をサポートするでしょうか。
-はい。VNet は IPv4 専用かデュアル スタック (IPv4 + IPv6) になります。  詳細については、「[Azure Virtual Network の IPv6 の概要](./ipv6-overview.md)」をご覧ください。
+はい。VNet は IPv4 専用かデュアル スタック (IPv4 + IPv6) になります。  詳細については、「[Azure Virtual Network の IPv6 の概要](./ip-services/ipv6-overview.md)」をご覧ください。
 
 ### <a name="can-a-vnet-span-regions"></a>VNet は複数のリージョンで広がるでしょうか。
 いいえ。 VNet は、1 つのリージョンに制限されます。 ただし、仮想ネットワークは複数の可用性ゾーンにまたがります。 可用性ゾーンの詳細については、「[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 仮想ネットワーク ピアリングを使用して、別々のリージョンにある仮想ネットワークを接続できます。 詳細については、[仮想ネットワーク ピアリングの概要](virtual-network-peering-overview.md)に関する記事をご覧ください。
@@ -171,7 +171,7 @@ Azure で提供される DNS を使用したテナント間名前解決は、VNe
 一概には言えません。 VM が Resource Manager を使用してデプロイされた場合は、静的または動的な割り当て方法のどちらを使用して割り当てられていても、変更されることはありません。 VM がクラシック デプロイ モデルを使用してデプロイされた場合は、VM が停止 (割り当て解除) 状態になった後で起動された場合に、動的 IP アドレスが変更される可能性があります。 このアドレスは、いずれかのデプロイメント モデルを使用してデプロイされた VM が削除されると、その VM から解放されます。
 
 ### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>VM オペレーティング システム内の NIC に手動で IP アドレスを割り当てることはできますか。
-はい。ただし、必要な場合 (仮想マシンに複数の IP アドレスを割り当てる場合など) 以外はお勧めしません。 詳細については、[仮想マシンに複数の IP アドレスを追加する方法](virtual-network-multiple-ip-addresses-portal.md#os-config)に関する記事をご覧ください。 VM にアタッチされた Azure NIC に割り当てられている IP アドレスが変更され、VM オペレーティング システム内の IP アドレスと異なる場合は、VM への接続が失われます。
+はい。ただし、必要な場合 (仮想マシンに複数の IP アドレスを割り当てる場合など) 以外はお勧めしません。 詳細については、[仮想マシンに複数の IP アドレスを追加する方法](./ip-services/virtual-network-multiple-ip-addresses-portal.md#os-config)に関する記事をご覧ください。 VM にアタッチされた Azure NIC に割り当てられている IP アドレスが変更され、VM オペレーティング システム内の IP アドレスと異なる場合は、VM への接続が失われます。
 
 ### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>クラウド サービス デプロイ スロットを停止した場合や、オペレーティング システム内から VM をシャットダウンした場合、IP アドレスはどうなりますか。
 Nothing。 IP アドレス (パブリック VIP、パブリック、プライベート) は、クラウド サービス デプロイ スロットまたは VM に割り当てられたままとなります。
@@ -194,8 +194,8 @@ Nothing。 IP アドレス (パブリック VIP、パブリック、プライベ
 はい。 ASE (App Service Environment) を使用して VNet 内に Web Apps をデプロイし、VNet 統合を使用してアプリのバックエンドを VNet に接続し、サービス エンドポイントを使用してインバウンド トラフィックをアプリにロックダウンできます。 詳細については、次の記事を参照してください。
 
 * [App Service のネットワーク機能](../app-service/networking-features.md)
-* [App Service Environmentで Web Apps を作成する](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [アプリを Azure Virtual Network に統合する](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [App Service 環境で Web Apps を作成する](../app-service/environment/using.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [アプリを Azure Virtual Network に統合する](../app-service/overview-vnet-integration.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [App Service のアクセス制限](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Web ロールと worker ロール (PaaS) を持つ Cloud Services を VNet にデプロイすることはできますか。
@@ -231,6 +231,18 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 ### <a name="do-virtual-networks-store-customer-data"></a>顧客データは仮想ネットワークに格納されるのですか?
 いいえ。 仮想ネットワークに顧客データは格納されません。 
 
+### <a name="can-i-set-flowtimeoutinminutes-property-for-an-entire-subscription"></a>[FlowTimeoutInMinutes](/powershell/module/az.network/set-azvirtualnetwork?view=azps-6.5.0) プロパティをサブスクリプション全体に設定することはできますか？ 
+いいえ。 これは仮想ネットワークで設定する必要があります。 大規模なサブスクリプションに対してこのプロパティの設定を自動化する場合に以下が役立ちます。  
+```Powershell
+$Allvnet = Get-AzVirtualNetwork
+$time = 4 #The value should be between 4 and 30 minutes (inclusive) to enable tracking, or null to disable tracking. $null to disable. 
+ForEach ($vnet in $Allvnet)
+{
+    $vnet.FlowTimeoutInMinutes = $time
+    $vnet | Set-AzVirtualNetwork
+}
+```
+
 ## <a name="apis-schemas-and-tools"></a>API、スキーマ、およびツール
 
 ### <a name="can-i-manage-vnets-from-code"></a>VNet をコードから管理できますか。
@@ -258,12 +270,12 @@ VNet ピアリング (仮想ネットワーク ピアリング) を使用して�
 - Redis Cache 
 - Application Gateway (v1) SKU
 - Service Fabric
-- API Management
+- API Management (stv1)
 - Active Directory Domain Service (ADDS)
 - Logic Apps
 - HDInsight
 -   Azure Batch
-- App Service Environment
+- App Service 環境
 
 ExpressRoute、または VNet ゲートウェイ経由の VNet 対 VNet を介してこのようなリソースに接続できます。
 
@@ -419,15 +431,11 @@ Azure サービスに到達するには、NSG で送信接続を許可する必�
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure Synapse Analytics|   128|
-|Azure KeyVault|    127|
+|Azure KeyVault|    200 |
 |Azure Cosmos DB|   64|
 |Azure Event Hub|   128|
 |Azure Service Bus| 128|
 |Azure Data Lake Store V1|  100|
  
 >[!NOTE]
-> 制限は、Azure サービスの判断で変更される可能性があります。 サービスについて詳しくは、それぞれのサービス ドキュメントをご覧ください。 
-
-
-
-
+> 制限は、Azure サービスの判断で変更される可能性があります。 サービスについて詳しくは、それぞれのサービス ドキュメントをご覧ください。

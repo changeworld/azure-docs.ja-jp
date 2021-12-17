@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b3e097f1c41f3047dc4e9d6cae2a05a6b19dea9d
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: f66591f1f6fb20951a956e166645d63129f209b7
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554289"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638629"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>サポートされているオペレーティング システムとドライバー
 
 ### <a name="nvidia-tesla-cuda-drivers"></a>NVIDIA Tesla (CUDA) ドライバー
 
-NC、NCv2、NCv3、NCasT4_v3、ND、および NDv2 シリーズ VM (NV シリーズではオプション) の NVIDIA Tesla (CUDA) ドライバーは、次の表に示されているオペレーティング システムでのみサポートされます。 ドライバーのダウンロード リンクは、公開時現在のものです。 最新のドライバーについては、[NVIDIA](https://www.nvidia.com/) Web サイトを参照してください。
+NC、NCv2、NCv3、NCasT4_v3、ND、NDv2 シリーズ VM (NV シリーズではオプション) の NVIDIA Tesla (CUDA) ドライバーは、次の表に示されているオペレーティング システムでテストされます。 CUDA ドライバーは汎用的であり、Azure 固有ではありません。 最新のドライバーについては、[NVIDIA](https://www.nvidia.com/) Web サイトを参照してください。
 
 > [!TIP]
 > CUDA ドライバーを手動で Windows Server VM にインストールする代わりに、Azure [データ サイエンス仮想マシン](../articles/machine-learning/data-science-virtual-machine/overview.md) イメージをデプロイすることもできます。 Windows Server 2016 用の DSVM エディションでは、NVIDIA CUDA ドライバーや CUDA Deep Neural Network ライブラリなどのツールが事前にインストールされています。
@@ -40,13 +40,13 @@ Nvidia K80 GPU を搭載した NC シリーズでは、GRID およびグラフ�
 
 Nvidia の拡張機能では、常に最新のドライバーがインストールされます。 次に、古いバージョンに依存しているお客様用に、以前のバージョンへのリンクを示します。
 
-Windows Server 2019、Windows Server 2016 1607、1709、Windows 10 (ビルド 20H2 以下):
-- [GRID 12.1 (461.33)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe)
-- [GRID 12.0 (461.09)](https://download.microsoft.com/download/4/8/d/48d2d45b-bebc-44ad-9c58-e0b79a9d4ff2/461.09_grid_win10_server2016_server2019_64bit_azure_swl.exe) (.exe) 
+Windows Server 2019、Windows Server 2016 1607、1709、Windows 10 (ビルド 21H1 以下):
+- [GRID 13 (471.68)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe)
+- [GRID 12.2 (462.31)](https://download.microsoft.com/download/0/0/1/001f0edf-d852-4297-9cb7-10b31b1abf45/462.31_grid_win10_server2016_server2019_64bit_azure_swl.exe) (.exe) 
 
 Windows Server 2012 R2: 
-- [GRID 12.1 (461.33)](https://download.microsoft.com/download/9/9/c/99caf5c6-af9f-48b2-bcb0-af5ec64b8592/461.33_grid_server2012R2_64bit_azure_swl.exe) (.exe)
-- [GRID 12.0 (461.09)](https://download.microsoft.com/download/c/5/e/c5e7df99-364d-45f5-bff7-c253d59121f1/461.09_grid_server2012R2_64bit_azure_swl.exe) (.exe) 
+- [GRID 13 (471.68)](https://download.microsoft.com/download/9/b/4/9b4d4f8d-7962-4a67-839b-37cc95756759/471.68_grid_winserver2012R2_64bit_azure_swl.exe) (.exe)
+- [GRID 12.2 (462.31)](https://download.microsoft.com/download/1/2/0/120551f5-cc05-4911-bd29-88fb2747213c/462.31_grid_server2012R2_64bit_azure_swl.exe) (.exe) 
 
 
 以前のすべての Nvidia GRID ドライバー リンクの完全な一覧については、[GitHub](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json) を参照してください。

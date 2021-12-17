@@ -1,17 +1,17 @@
 ---
 title: マスター VHD イメージに Office をインストールする - Azure
-description: Windows Virtual Desktop マスター イメージに Office をインストールして、Azure 向けにカスタマイズする方法。
+description: Azure Virtual Desktop マスター イメージに Office をインストールして、Azure 向けにカスタマイズする方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ce4eb3d556b6dff833129d11b26d439066b63f2e
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: ca466110a3ac876df444aa380a4a2dde0384f1fa
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446845"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294126"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>マスター VHD イメージに Office をインストールする
 
@@ -22,7 +22,7 @@ ms.locfileid: "106446845"
 この記事では、Azure と Hyper-V マネージャーのどちらでプロビジョニングされているかにかかわらず、VM に対して昇格されたアクセス権があることも前提としています。 そうでない場合は、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](../role-based-access-control/elevate-access-global-admin.md)」を参照してください。
 
 >[!NOTE]
->これらの手順は、組織の既存のプロセスで使用できる Windows Virtual Desktop 固有の構成に対するものです。
+>これらの手順は、組織の既存のプロセスで使用できる Azure Virtual Desktop 固有の構成に対するものです。
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>共有コンピューターのアクティブ化モードで Office をインストールする
 
@@ -44,7 +44,7 @@ Office 展開ツールには、構成 XML ファイルが必要です。 次の�
    - 共有コンピューターのライセンス認証を有効にします。
 
 >[!NOTE]
->Visio のステンシル検索機能が Windows Virtual Desktop で期待どおりに動作しないことがあります。
+>Visio のステンシル検索機能が Azure Virtual Desktop で期待どおりに動作しないことがあります。
 
 このサンプル構成 XML では、以下の操作は行われません。
 
@@ -157,9 +157,9 @@ OneDrive は、通常はユーザーごとにインストールされます。 �
 
 ## <a name="microsoft-teams-and-skype-for-business"></a>Microsoft Teams と Skype for Business
 
-Windows Virtual Desktop では、Skype for Business はサポートされていません。
+Azure Virtual Desktop では、Skype for Business はサポートされていません。
 
-Microsoft Teams をインストールする方法については、「[Windows Virtual Desktop で Microsoft Teams を使用する](teams-on-wvd.md)」をご覧ください。 Windows Virtual Desktop での Microsoft Teams のメディア最適化はプレビューで使用できません。
+Microsoft Teams をインストールする方法については、[「Azure Virtual Desktop で Microsoft Teams を使用する」](./teams-on-avd.md)をご覧ください。 
 
 ## <a name="next-steps"></a>次のステップ
 

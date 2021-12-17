@@ -1,14 +1,14 @@
 ---
-title: Azure Lab Services - サポート情報の表示 (ラボ ユーザー)
+title: サポート情報の表示 (ラボ ユーザー)
 description: この記事では、ラボ ユーザーまたは教師が支援を受けるために使用できるサポート情報を表示する方法について説明します。
 ms.date: 06/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 8d0c8a3ad8ba92e606f19480bdb36483f377fa04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04789394209a076d0fc47757c12038b20ef54c39
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85443504"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179661"
 ---
 # <a name="view-support-information-lab-user-in-azure-lab-services"></a>サポート情報の表示 (Azure Lab Services のラボ ユーザー)
 この記事では、ユーザー本人が (ラボ ユーザーとして) 次のサポート情報を表示する方法について説明します。

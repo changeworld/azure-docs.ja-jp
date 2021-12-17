@@ -1,36 +1,36 @@
 ---
 title: Azure DNS プライベート ゾーンの自動登録機能とは
-description: Azure DNS プライベート ゾーンの自動登録機能の概要
+description: Azure DNS プライベート ゾーンの自動登録機能の概要。
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 04/26/2021
 ms.author: rohink
-ms.openlocfilehash: 2e5f41c0e149c99b5524c439c59e72afe554c776
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: befabd5e35957241fa640c28146e47f01153b72b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783899"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251682"
 ---
-# <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Azure DNS プライベート ゾーンの自動登録機能とは
+# <a name="what-is-the-auto-registration-feature-in-azure-dns-private-zones"></a>Azure DNS プライベート ゾーンの自動登録機能とは
 
-Azure DNS プライベート ゾーンの自動登録機能を使用すると、仮想ネットワークにデプロイされている仮想マシンの DNS レコード管理の問題が解消されます。 プライベート DNS ゾーンに[仮想ネットワークをリンク](./private-dns-virtual-network-links.md)し、すべての仮想マシンの自動登録を有効にすると、仮想ネットワークにデプロイされている仮想マシンの DNS レコードがプライベート DNS ゾーンに自動的に作成されます。 それらの仮想マシンの前方参照レコード (A レコード) に加えて、逆引き参照レコード (PTR レコード) も自動的に作成されます。
-仮想ネットワークに仮想マシンを追加すると、リンクされたプライベート DNS ゾーンにそれらの仮想マシンの DNS レコードも自動的に作成されます。
+Azure DNS プライベート ゾーンの自動登録機能では、仮想ネットワークにデプロイされている仮想マシンの DNS レコードが管理されます。 この設定を有効にした状態でプライベート DNS ゾーンと[仮想ネットワークをリンクする](./private-dns-virtual-network-links.md)と、 仮想ネットワークにデプロイされている仮想マシンごとに DNS レコードが作成されます。 
 
-仮想マシンを削除すると、その仮想マシンの DNS レコードはプライベート DNS ゾーンから自動的に削除されます。
+仮想マシンごとに、A レコードと PTR レコードが作成されます。 新しくデプロイされた仮想マシンの DNS レコードも、リンク先のプライベート DNS ゾーンで自動的に作成されます。 仮想マシンが削除されると、関連付けられている DNS レコードもプライベート DNS ゾーンから削除されます。
 
-自動登録は、仮想ネットワーク リンクの作成中に [Enable auto registration]\(自動登録を有効にする\) オプションを選択することで有効にできます。
+自動登録を有効にするには、仮想ネットワーク リンクの作成時、[自動登録を有効にする] のチェックボックスをオンにします。
 
-![自動登録を有効にする](./media/privatedns-concepts/enable-autoregistration.png)
+:::image type="content" source="./media/privatedns-concepts/enable-autoregistration.png" alt-text="仮想ネットワーク リンクの追加ページの [自動登録を有効にする] のスクリーンショット。":::
 
 ## <a name="restrictions"></a>制限
 
 * 自動登録は、仮想マシンに対してのみ機能します。 内部ロード バランサーなどの他のすべてのリソースについては、仮想ネットワークにリンクされているプライベート DNS ゾーンに DNS レコードを手動で作成できます。
 * DNS レコードは、プライマリ仮想マシンの NIC に対してのみ自動的に作成されます。 仮想マシンに複数の NIC がある場合は、他のネットワーク インターフェイスの DNS レコードを手動で作成できます。
-* DNS レコードは、プライマリ仮想マシンの NIC で DHCP が使用されている場合のみ自動的に作成されます。 (たとえば、[Azure で複数の IP アドレス](../virtual-network/virtual-network-multiple-ip-addresses-portal.md#os-config)を使用するように) 静的 IP アドレスが構成されている場合、自動登録では、その仮想マシンにレコードが作成されません。
+* DNS レコードは、プライマリ仮想マシンの NIC で DHCP が使用されている場合のみ自動的に作成されます。 [Azure に複数の IP アドレス](../virtual-network/ip-services/virtual-network-multiple-ip-addresses-portal.md#os-config)がある構成など、静的 IP を使用している場合、自動登録によってその仮想マシンにレコードが作成されることはありません。
 * IPv6 (AAAA レコード) の自動登録はサポートされていません。
+* 自動 VM DNS 登録が有効になっている場合、特定の仮想ネットワークを 1 つのプライベート DNS ゾーンにのみリンクできます。 ただし、複数の仮想ネットワークを 1 つの DNS ゾーンにリンクできます。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -38,4 +38,4 @@ Azure DNS プライベート ゾーンの自動登録機能を使用すると、
 
 * [プライベート ゾーンのシナリオ](./private-dns-scenarios.md)に関しては、Azure DNS のプライベート ゾーンで実現できるいくつかの一般的なシナリオを参照してください。
 
-* Azure DNS のプライベート ゾーンに関する一般的な質問と回答については、[プライベート DNS の FAQ](./dns-faq-private.md) に関する記事をご覧ください。特定の種類の操作で期待できる固有の動作についても説明があります。
+* Azure DNS のプライベート ゾーンに関する一般的な質問と回答については、[プライベート DNS の FAQ](./dns-faq-private.yml) に関する記事をご覧ください。特定の種類の操作で期待できる固有の動作についても説明があります。

@@ -4,22 +4,23 @@ description: このチュートリアルでは、Azure Resource Manager テン�
 author: savjani
 ms.author: pariks
 ms.service: mysql
-ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: fd5fa4e09dd3f73aa7a8f044ded04d504bd2f3dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 81d2dc2da69f050333223dc09434b9ef82e3c9f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97705474"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121786170"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用して Azure Database for MySQL サーバーをプロビジョニングする
 
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 [Azure Database for MySQL の REST API](/rest/api/mysql/) により、DevOps エンジニアは、Azure 内のマネージド MySQL サーバーおよびデータベースのプロビジョニング、構成、操作を自動化および統合できます。  API を使用して、Azure Database for MySQL サービス上の MySQL サーバーおよびデータベースを作成、列挙、管理、削除できます。
 
-Azure Resource Manager では、基になる REST API を利用して、コード概念としてのインフラストラクチャに合わせて、大規模デプロイに必要な Azure リソースを宣言およびプログラミングします。 テンプレートでは、Azure リソース名、SKU、ネットワーク、ファイアウォール構成、設定をパラメーター化し、1 回の作成で複数回使用できるようにします。  Azure Resource Manager テンプレートは、[Azure portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) または [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI) を使用して簡単に作成できます。 これらにより、アプリケーションのパッケージ化、標準化、およびデプロイの自動化が可能になり、DevOps CI/CD パイプライン内で統合できます。  たとえば、Azure Database for MySQL バックエンドと共に Web アプリをすばやくデプロイしようとする場合は、GitHub ギャラリーにあるこの[クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/)を使用してエンドツーエンドのデプロイを実行できます。
+Azure Resource Manager では、基になる REST API を利用して、コード概念としてのインフラストラクチャに合わせて、大規模デプロイに必要な Azure リソースを宣言およびプログラミングします。 テンプレートでは、Azure リソース名、SKU、ネットワーク、ファイアウォール構成、設定をパラメーター化し、1 回の作成で複数回使用できるようにします。  Azure Resource Manager テンプレートは、[Azure portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) または [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI) を使用して簡単に作成できます。 これらにより、アプリケーションのパッケージ化、標準化、およびデプロイの自動化が可能になり、DevOps CI/CD パイプライン内で統合できます。  たとえば、Azure Database for MySQL バックエンドと共に Web アプリをすばやくデプロイしようとする場合は、GitHub ギャラリーにあるこの[クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/webapp-managed-mysql/)を使用してエンドツーエンドのデプロイを実行できます。
 
 このチュートリアルでは、Azure Resource Manager テンプレートとその他のユーティリティを使用して、次のことを行う方法を説明します。
 
@@ -78,28 +79,28 @@ Azure Database for MySQL サーバー用の JSON テンプレート リファレ
 }
 ```
 この要求では、次の値をカスタマイズする必要があります。
-+   `name` - (ドメイン名を含めずに) MySQL サーバーの名前を指定します。
-+   `location` - MySQL サーバーに対して有効な Azure データ センター リージョンを指定します。 たとえば、westus2 です。
-+   `properties/version` - デプロイする MySQL サーバーのバージョンを指定します。 たとえば、5.6 や 5.7 です。
-+   `properties/administratorLogin` - サーバーに対する MySQL 管理者のログインを指定します。 管理者のサインイン名に azure_superuser、admin、administrator、root、guest、public は使用できません。
-+   `properties/administratorLoginPassword` - 上記で指定した MySQL 管理者ユーザーのパスワードを指定します。
-+   `properties/sslEnforcement` - 有効/無効を指定して、SslEnforcement を有効または無効にします。
-+   `storageProfile/storageMB` - サーバーに必要なプロビジョニングされたストレージの最大サイズをメガバイト単位で指定します。 たとえば、5120 です。
-+   `storageProfile/backupRetentionDays` - 必要なバックアップ保有期間の日数を指定します。 たとえば、7 です。 
-+   `storageProfile/geoRedundantBackup` - Geo DR の要件に応じて有効/無効を指定します。
-+   `sku/tier` -デプロイに対する Basic、GeneralPurpose、MemoryOptimized レベルを指定します。
-+   `sku/capacity` - 仮想コア容量を指定します。 指定できる値には、2、4、8、16、32、64 が含まれます。
-+   `sku/family` - Gen5 を指定して、サーバー デプロイ用のハードウェア世代を選択します。
-+   `sku/name` - TierPrefix_family_capacity を指定します。 たとえば、B_Gen5_1、GP_Gen5_16、MO_Gen5_32 です。 リージョンごとおよびレベルごとの有効な値については、[価格レベル](./concepts-pricing-tiers.md)のドキュメントをご覧ください。
-+   `resources/properties/virtualNetworkSubnetId` - Azure MySQL サーバーを配置する VNet 内のサブネットの Azure 識別子を指定します。 
-+   `tags(optional)` - 省略可能なタグを指定します。これは、課金などの目的でリソースを分類するために使用するキーと値のペアです。
++ `name` - (ドメイン名を含めずに) MySQL サーバーの名前を指定します。
++ `location` - MySQL サーバーに対して有効な Azure データ センター リージョンを指定します。 たとえば、westus2 です。
++ `properties/version` - デプロイする MySQL サーバーのバージョンを指定します。 たとえば、5.6 や 5.7 です。
++ `properties/administratorLogin` - サーバーに対する MySQL 管理者のログインを指定します。 管理者のサインイン名に azure_superuser、admin、administrator、root、guest、public は使用できません。
++ `properties/administratorLoginPassword` - 上記で指定した MySQL 管理者ユーザーのパスワードを指定します。
++ `properties/sslEnforcement` - 有効/無効を指定して、SslEnforcement を有効または無効にします。
++ `storageProfile/storageMB` - サーバーに必要なプロビジョニングされたストレージの最大サイズをメガバイト単位で指定します。 たとえば、5120 です。
++ `storageProfile/backupRetentionDays` - 必要なバックアップ保有期間の日数を指定します。 たとえば、7 です。 
++ `storageProfile/geoRedundantBackup` - Geo DR の要件に応じて有効/無効を指定します。
++ `sku/tier` -デプロイに対する Basic、GeneralPurpose、MemoryOptimized レベルを指定します。
++ `sku/capacity` - 仮想コア容量を指定します。 指定できる値には、2、4、8、16、32、64 が含まれます。
++ `sku/family` - Gen5 を指定して、サーバー デプロイ用のハードウェア世代を選択します。
++ `sku/name` - TierPrefix_family_capacity を指定します。 たとえば、B_Gen5_1、GP_Gen5_16、MO_Gen5_32 です。 リージョンごとおよびレベルごとの有効な値については、[価格レベル](./concepts-pricing-tiers.md)のドキュメントをご覧ください。
++ `resources/properties/virtualNetworkSubnetId` - Azure MySQL サーバーを配置する VNet 内のサブネットの Azure 識別子を指定します。 
++ `tags(optional)` - 省略可能なタグを指定します。これは、課金などの目的でリソースを分類するために使用するキーと値のペアです。
 
-組織での Azure Database for MySQL のデプロイを自動化するために Azure Resource Manager テンプレートの作成を予定している場合、Azure クイック スタートの GitHub ギャラリーにあるサンプルの [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet)から開始し、それに基づいて作成することをお勧めします。 
+組織での Azure Database for MySQL のデプロイを自動化するために Azure Resource Manager テンプレートの作成を予定している場合、Azure クイック スタートの GitHub ギャラリーにあるサンプルの [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.dbformysql/managed-mysql-with-vnet/azuredeploy.json)から開始し、それに基づいて作成することをお勧めします。 
 
 Azure Resource Manager テンプレートを使用したことがなく、これを試してみたい場合は、次の手順に従って開始できます。
-+   サンプルの [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet)を複製するか、Azure クイック スタート ギャラリーからダウンロードします。  
-+   azuredeploy.parameters.json を変更して設定に基づいてパラメーターの値を更新し、ファイルを保存します。 
-+   Azure CLI を使用し、次のコマンドを使用して Azure MySQL サーバーを作成します
++ サンプルの [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.dbformysql/managed-mysql-with-vnet/azuredeploy.json)を複製するか、Azure クイック スタート ギャラリーからダウンロードします。  
++ azuredeploy.parameters.json を変更して設定に基づいてパラメーターの値を更新し、ファイルを保存します。 
++ Azure CLI を使用し、次のコマンドを使用して Azure MySQL サーバーを作成します
 
 このチュートリアルのコード ブロックを実行するには、ブラウザーで Azure Cloud Shell を使用するか、お使いのコンピューターに Azure CLI をインストールします。
 
@@ -170,9 +171,9 @@ Azure Database for MySQL データベースに接続する方法を説明した�
 最初に、テーブルを作成してデータを読み込みます。 インベントリ情報を格納するテーブルを作成しましょう。
 ```sql
 CREATE TABLE inventory (
-    id serial PRIMARY KEY, 
-    name VARCHAR(50), 
-    quantity INTEGER
+  id serial PRIMARY KEY, 
+  name VARCHAR(50), 
+  quantity INTEGER
 );
 ```
 

@@ -5,18 +5,17 @@ description: クラスタリング、分類、または回帰の実験で教師�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to
+ms.topic: how-to
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
-ms.date: 05/07/2020
-ms.openlocfilehash: 27b18fdc2dda40f8361483e6ecce28d0ccbd0310
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.openlocfilehash: cae79937f1faa36488820d6266484fb43330e821
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93308234"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560798"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Azure Machine Learning のアルゴリズムの選択方法
 
@@ -32,7 +31,7 @@ ms.locfileid: "93308234"
 
 [Azure Machine Learning アルゴリズム チート シート](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri)は、最初の考慮事項である、「**データを使って何をしたいか**」について検討するのに役立ちます。 Machine Learning アルゴリズム チート シートで、目的のタスクを探して、予測分析ソリューション用の [Azure Machine Learning デザイナー](./concept-designer.md?WT.mc_id=docs-article-lazzeri)のアルゴリズムを見つけます。 
 
-Machine Learning デザイナーは、[多クラス デシジョン フォレスト](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri)、[レコメンデーション システム](./algorithm-module-reference/evaluate-recommender.md?WT.mc_id=docs-article-lazzeri)、[ニューラル ネットワーク回帰](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri)、[多クラス ニューラル ネットワーク](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri)、[K-Means クラスタリング](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri)などのアルゴリズムの包括的なポートフォリオを提供します。 各アルゴリズムは、機械学習の異なる種類の問題に対処するように設計されています。 完全な一覧、各アルゴリズムのしくみとパラメーターを調整してアルゴリズムを最適化する方法に関するドキュメントについては、「[Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス](./algorithm-module-reference/module-reference.md?WT.mc_id=docs-article-lazzeri)」を参照してください。
+Machine Learning デザイナーは、[多クラス デシジョン フォレスト](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri)、[レコメンデーション システム](./algorithm-module-reference/evaluate-recommender.md?WT.mc_id=docs-article-lazzeri)、[ニューラル ネットワーク回帰](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri)、[多クラス ニューラル ネットワーク](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri)、[K-Means クラスタリング](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri)などのアルゴリズムの包括的なポートフォリオを提供します。 各アルゴリズムは、機械学習の異なる種類の問題に対処するように設計されています。 完全な一覧、各アルゴリズムのしくみとパラメーターを調整してアルゴリズムを最適化する方法に関するドキュメントについては、[Machine Learning デザイナーのアルゴリズムとコンポーネントのリファレンス](./component-reference/component-reference.md?WT.mc_id=docs-article-lazzeri)に関するページを参照してください。
 
 > [!NOTE]
 > 機械学習アルゴリズム チート シートをダウンロードするには、「[Azure Machine Learning デザイナーの機械学習アルゴリズム チート シート](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri)」にアクセスします。
@@ -83,17 +82,17 @@ Machine Learning デザイナーは、[多クラス デシジョン フォレス
 
 ## <a name="accuracy"></a>精度
 
-機械学習の精度では、すべてのケースに対する真の結果の割合として、モデルの有効性を測定します。 Machine Learning デザイナーでは、[モデルの評価モジュール](./algorithm-module-reference/evaluate-model.md?WT.mc_id=docs-article-lazzeri)で業界標準の一連の評価メトリックを計算します。 このモジュールを使用して、トレーニング済みのモデルの精度を測定します。
+機械学習の精度では、すべてのケースに対する真の結果の割合として、モデルの有効性を測定します。 Machine Learning デザイナーでは、[モデルの評価コンポーネント](./algorithm-module-reference/evaluate-model.md?WT.mc_id=docs-article-lazzeri)で業界標準の一連の評価メトリックを計算します。 トレーニング済みのモデルの精度は、このコンポーネントで測定できます。
 
 可能な限り最も正確な回答を得ることが常に必要であるとは限りません。 使用目的によっては、近似で十分な場合があります。 その場合は、より近似的な方法を使用することで、処理時間を大幅に短縮できる場合があります。 さらに、近似的な方法には、当然ながらオーバーフィットを回避する傾向があります。
 
-モデルの評価モジュールを使用するには、次の 3 つの方法があります。
+モデルの評価コンポーネントは、次の 3 つの用途に使用できます。
 
 - モデルを評価するために、トレーニング データのスコアを生成する
 - モデルでスコアを生成するが、これらのスコアを予約済みのテスト セットでのスコアと比較する
 - 同じデータ セットを使用して、2 つの異なるが関連するモデルのスコアを比較する
 
-機械学習モデルの精度を評価するために使用できるメトリックとアプローチの完全な一覧については、「[モデルの評価モジュール](./algorithm-module-reference/evaluate-model.md?WT.mc_id=docs-article-lazzeri)」を参照してください。
+機械学習モデルの精度を評価するために使用できるメトリックとアプローチの完全な一覧については、[モデルの評価コンポーネント](./algorithm-module-reference/evaluate-model.md?WT.mc_id=docs-article-lazzeri)に関するページを参照してください。
 
 ## <a name="training-time"></a>トレーニング時間
 
@@ -105,9 +104,9 @@ Machine Learning デザイナーでは、機械学習モデルの作成と使用
 
 1.  特定の種類のアルゴリズムを選択し、そのパラメーターまたはハイパーパラメーターを定義してモデルを構成します。 
 
-2.  ラベル付けされていて、かつアルゴリズムに適合したデータを含んだデータセットを指定します。 データとモデルの両方を[モデルのトレーニング モジュール](./algorithm-module-reference/train-model.md?WT.mc_id=docs-article-lazzeri)に接続します。
+2.  ラベル付けされていて、かつアルゴリズムに適合したデータを含んだデータセットを指定します。 データとモデルの両方を[モデルのトレーニング コンポーネント](./algorithm-module-reference/train-model.md?WT.mc_id=docs-article-lazzeri)に接続します。
 
-3.  トレーニングの完了後、いずれかの[スコアリング モジュール](./algorithm-module-reference/score-model.md?WT.mc_id=docs-article-lazzeri)でトレーニング済みのモデルを使用し、新しいデータについて予測を行います。
+3.  トレーニングが完了したら、いずれかの[スコアリング コンポーネント](./algorithm-module-reference/score-model.md?WT.mc_id=docs-article-lazzeri)でトレーニング済みのモデルを使用し、新しいデータの予測を行います。
 
 ## <a name="linearity"></a>線形性
 
@@ -133,7 +132,7 @@ Machine Learning デザイナーでは、機械学習モデルの作成と使用
 
 パラメーターは、アルゴリズムを設定するときに使用します。 エラーの許容誤差や反復回数などのアルゴリズムの動作に影響を与える数値、またはアルゴリズムの動作方法のバリエーション間で設定するオプションです。 アルゴリズムのトレーニング時間と精度は、適切な設定を行うかどうかによって影響を受ける場合があります。 通常、パラメーター数の多いアルゴリズムは、適切な組み合わせを見つけるのに多くの試行錯誤が必要です。
 
-このため、Machine Learning デザイナーには、[モデルのハイパーパラメーターの調整モジュール](./algorithm-module-reference/tune-model-hyperparameters.md?WT.mc_id=docs-article-lazzeri)があります。このモジュールの目標は、機械学習モデルに最適なハイパーパラメーターを特定することです。 このモジュールでは、さまざまに組み合わせた設定を使って複数のモデルをビルドし、テストします。 その後、すべてのモデルについてメトリックを比較し、設定の組み合わせを求めます。 
+または Machine Learning デザイナーには[モデルのハイパーパラメーターの調整コンポーネント](./algorithm-module-reference/tune-model-hyperparameters.md?WT.mc_id=docs-article-lazzeri)があります。このコンポーネントの目的は、機械学習モデルに最適なハイパーパラメーターを決定することです。 このコンポーネントでは、さまざまな設定の組み合わせを使用し、複数のモデルをビルドおよびテストします。 その後、すべてのモデルについてメトリックを比較し、設定の組み合わせを求めます。 
 
 これは、パラメーター空間を確実に網羅する優れた方法ですが、パラメーターの数が増えるとモデルのトレーニングに必要な時間が指数関数的に増加します。 利点として、通常、パラメーターの数の多さはアルゴリズムがより柔軟であることを示します。 適切なパラメーター設定の組み合わせを見つけられる場合に、非常に高い精度を示すことが多くあります。
 
@@ -143,12 +142,12 @@ Machine Learning デザイナーでは、機械学習モデルの作成と使用
 
 特徴の数が多いと、一部の学習アルゴリズムは処理が遅くなり、実行不可能なほどトレーニング時間が長くなります。 [サポート ベクトル マシン](./algorithm-module-reference/two-class-support-vector-machine.md?WT.mc_id=docs-article-lazzeri)は、特徴の数が多いシナリオに特に適しています。 このため、情報の取得からテキストおよびイメージの分類まで、数多くのアプリケーションで使用されています。 サポート ベクトル マシンは、分類タスクと回帰タスクの両方に使用できます。
 
-特徴選択とは、指定された出力を前提として、統計的テストを入力に適用するプロセスを指します。 この目標は、出力の予測能力が高い列を特定することです。 Machine Learning デザイナーの[フィルターに基づく特徴選択モジュール](./algorithm-module-reference/filter-based-feature-selection.md?WT.mc_id=docs-article-lazzeri)には、選択肢となる複数の特徴選択アルゴリズムが用意されています。 このモジュールには、ピアソンの相関やカイ二乗値などの相関法が含まれています。
+特徴選択とは、指定された出力を前提として、統計的テストを入力に適用するプロセスを指します。 この目標は、出力の予測能力が高い列を特定することです。 Machine Learning デザイナーの[フィルターに基づく特徴選択コンポーネント](./algorithm-module-reference/filter-based-feature-selection.md?WT.mc_id=docs-article-lazzeri)には、選択可能な複数の特徴選択アルゴリズムがあります。 このコンポーネントには、ピアソンの相関やカイ二乗値などの相関法が含まれています。
 
-[順列の特徴量の重要度モジュール](./algorithm-module-reference/permutation-feature-importance.md?WT.mc_id=docs-article-lazzeri)を使用して、データ セットの一連の特徴量の重要度スコアを計算することもできます。 これらのスコアを利用すると、モデルで使用する最適な特徴を決定するのに役立ちます。
+[順列の特徴量の重要度コンポーネント](./algorithm-module-reference/permutation-feature-importance.md?WT.mc_id=docs-article-lazzeri)を使用して、お使いのデータ セットの一連の特徴量の重要度スコアを計算することもできます。 これらのスコアを利用すると、モデルで使用する最適な特徴を決定するのに役立ちます。
 
 ## <a name="next-steps"></a>次のステップ
 
  - [Azure Machine Learning デザイナーの詳細](./concept-designer.md?WT.mc_id=docs-article-lazzeri)
- - Azure Machine Learning デザイナーで使用可能なすべての機械学習アルゴリズムの詳細については、「[Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス](./algorithm-module-reference/module-reference.md?WT.mc_id=docs-article-lazzeri)」を参照してください
+ - Azure Machine Learning デザイナーで使用可能なすべての機械学習アルゴリズムの詳細については、[Machine Learning デザイナーのアルゴリズムとコンポーネントのリファレンス](./component-reference/component-reference.md?WT.mc_id=docs-article-lazzeri)に関するページを参照してください。
  - ディープ ラーニング、機械学習、AI の関係を調べるには、「[ディープ ラーニングと機械学習](./concept-deep-learning-vs-machine-learning.md?WT.mc_id=docs-article-lazzeri)」を参照してください

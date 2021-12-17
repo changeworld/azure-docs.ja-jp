@@ -2,14 +2,14 @@
 title: REST API を使用して Azure VM を復元する
 description: この記事では、REST API を使用して Azure 仮想マシンのバックアップの復元操作を管理する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 08/26/2021
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: da6b4cd6134f0cd1fd3d6e04e814bbf8aec9b07d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0aa66b5c853faf26320510b3fe78ac71cd9d8afc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452154"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820341"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
 
@@ -19,7 +19,7 @@ Azure Backup を使用した Azure 仮想マシンのバックアップが完了
 
 ## <a name="select-recovery-point"></a>Select Recovery point
 
-バックアップ項目の使用可能な復旧ポイントの一覧は、[復旧ポイント一覧取得 REST API](/rest/api/backup/recoverypoints/list) を使用して取得できます。 関連するすべての値を含む簡単な *GET* 操作です。
+バックアップ項目の使用可能な復旧ポイントの一覧は、[復旧ポイント一覧取得 REST API](/rest/api/backup/recovery-points/list) を使用して取得できます。 関連するすべての値を含む簡単な *GET* 操作です。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
@@ -31,9 +31,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>Responses
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
-|200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       [OK]  |
+|200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recovery-points/list#recoverypointresourcelist)      |       [OK]  |
 
 #### <a name="example-response"></a>応答の例
 
@@ -144,7 +144,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
@@ -216,7 +216,7 @@ X-Powered-By: ASP.NET
 
 Azure VM バックアップからのディスクの復元をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -246,7 +246,7 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 
 ### <a name="restore-disks-selectively"></a>選択的にディスクを復元する
 
-[選択的にディスクをバックアップ](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)している場合は、現在バックアップされているディスク リストが、[回復ポイントの概要](#select-recovery-point)および[詳細な応答](/rest/api/backup/recoverypoints/get)に記されます。 ディスクを選択的に復元することもできます。詳細については[こちら](selective-disk-backup-restore.md#selective-disk-restore)を参照してください。 バックアップ ディスクの一覧からディスクを選択的に復元するには、回復ポイントの応答からディスクの LUN を探し、次に示すように、[上記の要求本文](#example-request)に **restoreDiskLunList** プロパティを追加します。
+[選択的にディスクをバックアップ](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)している場合は、現在バックアップされているディスク リストが、[回復ポイントの概要](#select-recovery-point)および[詳細な応答](/rest/api/backup/recovery-points/get)に記されます。 ディスクを選択的に復元することもできます。詳細については[こちら](selective-disk-backup-restore.md#selective-disk-restore)を参照してください。 バックアップ ディスクの一覧からディスクを選択的に復元するには、回復ポイントの応答からディスクの LUN を探し、次に示すように、[上記の要求本文](#example-request)に **restoreDiskLunList** プロパティを追加します。
 
 ```json
 {
@@ -278,7 +278,7 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 
 Azure VM バックアップからのディスク交換をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -332,11 +332,280 @@ Azure VM バックアップからのディスク交換をトリガーする場�
           "originalStorageAccountOption": false,
           "encryptionDetails": {
             "encryptionEnabled": false
+          }
      }
  }
 ```
 
 [前に説明したディスクの復元](#responses)と同じように、応答を処理する必要があります。
+
+## <a name="cross-region-restore"></a>リージョンをまたがる復元
+
+VM を保護したコンテナーでリージョンをまたがる復元 (CRR) が有効になっている場合、バックアップ データはセカンダリ リージョンにレプリケートされます。 バックアップ データを使用して復元操作を実行できます。 REST API を使用してセカンダリ リージョンで復元操作をトリガーするには、次の手順を実行します。
+
+### <a name="select-recovery-point-in-secondary-region"></a>セカンダリ リージョンの回復ポイントの選択
+
+バックアップ項目の利用可能な回復ポイントの一覧を表示するには、[CRR の回復ポイントの一覧 REST API](/rest/api/backup/recovery-points-crr/list) を使用します。 関連するすべての値を含む簡単な GET 操作です。
+
+```http
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2018-12-20
+
+```
+
+`{containerName}` および `{protectedItemName}` は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)のように構成されています。 `{fabricName}` は "Azure" です。
+
+*GET* URI には、すべての必須パラメーターが含まれます。 追加の要求本文は必要ありません。
+
+>[!NOTE]
+>セカンダリ リージョンで復旧ポイントを取得するには、上の例のように API バージョン 2018-12-20 を使用します。
+
+#### <a name="responses"></a>Responses
+
+|名前  |種類  |説明  |
+|---------|---------|---------|
+|200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recovery-points-crr/list#recoverypointresourcelist)      |       [OK]  |
+
+#### <a name="example-response"></a>応答の例
+
+*GET* URI を送信すると、200 (OK) 応答が返されます。
+
+```http
+Headers:
+Pragma                        : no-cache
+X-Content-Type-Options        : nosniff
+x-ms-request-id               : bfc4a4e6-c585-46e0-8e38-f11a86093701
+x-ms-client-request-id        : 4344a9c2-70d8-482d-b200-0ca9cc498812,4344a9c2-70d8-482d-b200-0ca9cc498812
+Strict-Transport-Security     : max-age=31536000; includeSubDomains
+x-ms-ratelimit-remaining-subscription-resource-requests: 149
+x-ms-correlation-request-id   : bfc4a4e6-c585-46e0-8e38-f11a86093701
+x-ms-routing-request-id       : SOUTHINDIA:20210731T112441Z:bfc4a4e6-c585-46e0-8e38-f11a86093701
+Cache-Control                 : no-cache
+Date                          : Sat, 31 Jul 2021 11:24:40 GMT
+Server                        : Microsoft-IIS/10.0
+X-Powered-By                  : ASP.NET
+
+Body:
+{
+  "value": [
+    {
+      "id":
+"/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;testRG1;testVM/protectedItems/VM;iaasvmcontainerv2;testRG1;testVM/recoveryPoints/932895704780058094",
+      "name": "932895704780058094",
+      "type": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints",
+      "properties": {
+        "objectType": "IaasVMRecoveryPoint",
+        "recoveryPointType": "CrashConsistent",
+        "recoveryPointTime": "2021-07-31T09:24:34.687561Z",
+        "recoveryPointAdditionalInfo": "",
+        "sourceVMStorageType": "PremiumVMOnPartialPremiumStorage",
+        "isSourceVMEncrypted": false,
+        "isInstantIlrSessionActive": false,
+        "recoveryPointTierDetails": [
+          {
+            "type": 1,
+            "status": 1
+          }
+        ],
+        "isManagedVirtualMachine": true,
+        "virtualMachineSize": "Standard_D2s_v3",
+        "originalStorageAccountOption": false,
+        "osType": "Windows"
+      }
+    },
+    {
+      "id":
+"/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;testRG1;testVM/protectedItems/VM;iaasvmcontainerv2;testRG1;testVM/recoveryPoints/932891484644960954",
+      "name": "932891484644960954",
+      "type": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints",
+      "properties": {
+        "objectType": "IaasVMRecoveryPoint",
+        "recoveryPointType": "CrashConsistent",
+        "recoveryPointTime": "2021-07-30T09:20:01.8355052Z",
+        "recoveryPointAdditionalInfo": "",
+        "sourceVMStorageType": "PremiumVMOnPartialPremiumStorage",
+        "isSourceVMEncrypted": false,
+        "isInstantIlrSessionActive": false,
+        "recoveryPointTierDetails": [
+          {
+            "type": 1,
+            "status": 1
+          },
+          {
+            "type": 2,
+            "status": 1
+          }
+        ],
+        "isManagedVirtualMachine": true,
+        "virtualMachineSize": "Standard_D2s_v3",
+        "originalStorageAccountOption": false,
+        "osType": "Windows"
+      }
+    },
+.....
+```
+
+復旧ポイントは、上記の応答の `{name}` フィールドで示されます。
+
+### <a name="get-access-token"></a>アクセス トークンを取得する
+
+リージョンをまたがる復元を実行するには、セカンダリ リージョン内のレプリケートされた復元ポイントにアクセスする要求を承認するためのアクセス トークンが必要です。 アクセス トークンを取得するには、次の手順に従います。
+
+#### <a name="step-1"></a>手順 1:
+
+[AAD プロパティ API](/rest/api/backup/aad-properties/get) を使用して、セカンダリ リージョン (以下の例では *westus*) の AAD プロパティを取得します。
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/westus/backupAadProperties?api-version=2018-12-20
+```
+
+##### <a name="response-example"></a>応答の例
+
+応答は、次の形式で返されます。
+
+```json
+{
+  "properties": {
+    "tenantId": "00000000-0000-0000-0000-000000000000",
+    "audience": "https://RecoveryServices/IaasCoord/aadmgmt/wus",
+    "servicePrincipalObjectId": "00000000-0000-0000-0000-000000000000"
+  }
+}
+```
+
+#### <a name="step-2"></a>手順 2:
+
+[アクセス トークンの取得 API](/rest/api/backup/recovery-points-get-access-token-for-crr/get-access-token) を使用して、セカンダリ リージョンのレプリケートされた復元ポイントにアクセスするための要求を承認します。
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/accessToken?api-version=2018-12-20
+```
+
+要求本文に、前の手順で AAD プロパティ API によって返された応答の内容を貼り付けます。
+
+```json
+{
+  "properties": {
+    "tenantId": "00000000-0000-0000-0000-000000000000",
+    "audience": "https://RecoveryServices/IaasCoord/aadmgmt/wus",
+    "servicePrincipalObjectId": "00000000-0000-0000-0000-000000000000"
+  }
+}
+```
+
+##### <a name="response-example"></a>応答の例
+
+応答は、次の形式で返されます。
+
+```json
+{
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;testRG1;testVM/protectedItems/VM;iaasvmcontainerv2;testRG1;testVM/recoveryPoints/26083826328862",
+  "name": "932879774590051503",
+  "type": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints",
+    "properties": {
+        "objectType": "CrrAccessToken",
+        "accessTokenString": "<access-token-string>",
+        "subscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resourceGroupName": "testVaultRG",
+        "resourceName": "testVault",
+        "resourceId": "000000000000000000",
+        "protectionContainerId": 000000,
+        "recoveryPointId": "932879774590051503",
+        "recoveryPointTime": "7/26/2021 3:35:36 PM",
+        "containerName": "iaasvmcontainerv2;testRG1;testVM",
+        "containerType": "IaasVMContainer",
+        "backupManagementType": "AzureIaasVM",
+        "datasourceType": "VM",
+        "datasourceName": "testvm1234",
+        "datasourceId": "000000000000000000",
+        "datasourceContainerName": "iaasvmcontainerv2;testRG1;testVM",
+        "coordinatorServiceStampUri": "https://pod01-coord1.eus.backup.windowsazure.com",
+        "protectionServiceStampId": "00000000-0000-0000-0000-000000000000",
+        "protectionServiceStampUri": "https://pod01-prot1h-int.eus.backup.windowsazure.com",
+        "tokenExtendedInformation": "<IaaSVMRecoveryPointMetadataBase xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:type=\"IaaSVMRecoveryPointMetadata_V2015_09\" xmlns=\"http://windowscloudbackup.com/CloudCommon/V2011_09\"><MetadataVersion>V2015_09</MetadataVersion><ContainerType i:nil=\"true\" /><InstantRpGCId>ef4ab5a7-c2c0-4304-af80-af49f48af3d1;AzureBackup_testvm1234_932843259176972511;AzureBackup_20210726_033536;AzureBackupRG_eastus_1</InstantRpGCId><IsBlockBlobEnabled>true</IsBlockBlobEnabled><IsManagedVirtualMachine>true</IsManagedVirtualMachine><OriginalSAOption>false</OriginalSAOption><OsType>Windows</OsType><ReadMetadaFromConfigBlob i:nil=\"true\" /><RecoveryPointConsistencyType>CrashConsistent</RecoveryPointConsistencyType><RpDiskDetails i:nil=\"true\" /><SourceIaaSVMRPKeyAndSecret i:nil=\"true\" /><SourceIaaSVMStorageType>PremiumVMOnPartialPremiumStorage</SourceIaaSVMStorageType><VMSizeDescription>Standard_D2s_v3</VMSizeDescription><Zones xmlns:d2p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" i:nil=\"true\" /></IaaSVMRecoveryPointMetadataBase>",
+        "rpTierInformation": {
+            "InstantRP": "Valid",
+            "HardenedRP": "Valid"
+        },
+        "rpOriginalSAOption": false,
+        "rpIsManagedVirtualMachine": true,
+        "rpVMSizeDescription": "Standard_D2s_v3",
+        "bMSActiveRegion": "EastUS"
+    }
+}
+```
+
+### <a name="restore-disks-to-the-secondary-region"></a>セカンダリ リージョンへのディスクの復元
+
+項目をセカンダリ リージョンに復元するには、[リージョンをまたがる復元のトリガー API](/rest/api/backup/cross-region-restore/trigger) を使用します。
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupCrossRegionRestore?api-version=2018-12-20
+```
+
+要求本文には、次の 2 つの部分が必要です。
+
+1. ***crossRegionRestoreAccessDetails** _: 前の手順で実行した Get Access Token API 要求からの応答の _properties* ブロックを貼り付けて、要求本文のこのセグメントを埋める。
+
+1. ***restoreRequest** _: 要求本文の _restoreRequest* セグメントを埋めるには、前に取得した復旧ポイント ID と、ソース VM の Azure Resource Manager (ARM) ID、およびステージングの場所として使用されるセカンダリ リージョンのストレージ アカウントの詳細を渡す必要があります。 ディスクの復元を行うには、復旧タイプとして *[RestoreDisks]* を指定します。
+
+VM のディスクをセカンダリ リージョンに復元する要求本文の例を次に示します。
+
+```json
+ {
+  "crossRegionRestoreAccessDetails": {
+        "objectType": "CrrAccessToken",
+        "accessTokenString": "<access-token-string>",
+        "subscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resourceGroupName": "azurefiles",
+        "resourceName": "azurefilesvault",
+        "resourceId": "000000000000000000",
+        "protectionContainerId": 000000,
+        "recoveryPointId": "932879774590051503",
+        "recoveryPointTime": "7/26/2021 3:35:36 PM",
+        "containerName": "iaasvmcontainerv2;testRG1;testVM",
+        "containerType": "IaasVMContainer",
+        "backupManagementType": "AzureIaasVM",
+        "datasourceType": "VM",
+        "datasourceName": "testvm1234",
+        "datasourceId": "000000000000000000",
+        "datasourceContainerName": "iaasvmcontainerv2;testRG1;testVM",
+        "coordinatorServiceStampUri": "https://pod01-coord1.eus.backup.windowsazure.com",
+        "protectionServiceStampId": "00000000-0000-0000-0000-000000000000",
+        "protectionServiceStampUri": "https://pod01-prot1h-int.eus.backup.windowsazure.com",
+        "tokenExtendedInformation": "<IaaSVMRecoveryPointMetadataBase xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:type=\"IaaSVMRecoveryPointMetadata_V2015_09\" xmlns=\"http://windowscloudbackup.com/CloudCommon/V2011_09\"><MetadataVersion>V2015_09</MetadataVersion><ContainerType i:nil=\"true\" /><InstantRpGCId>ef4ab5a7-c2c0-4304-af80-af49f48af3d1;AzureBackup_testvm1234_932843259176972511;AzureBackup_20210726_033536;AzureBackupRG_eastus_1</InstantRpGCId><IsBlockBlobEnabled>true</IsBlockBlobEnabled><IsManagedVirtualMachine>true</IsManagedVirtualMachine><OriginalSAOption>false</OriginalSAOption><OsType>Windows</OsType><ReadMetadaFromConfigBlob i:nil=\"true\" /><RecoveryPointConsistencyType>CrashConsistent</RecoveryPointConsistencyType><RpDiskDetails i:nil=\"true\" /><SourceIaaSVMRPKeyAndSecret i:nil=\"true\" /><SourceIaaSVMStorageType>PremiumVMOnPartialPremiumStorage</SourceIaaSVMStorageType><VMSizeDescription>Standard_D2s_v3</VMSizeDescription><Zones xmlns:d2p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" i:nil=\"true\" /></IaaSVMRecoveryPointMetadataBase>",
+        "rpTierInformation": {
+            "InstantRP": "Valid",
+            "HardenedRP": "Valid"
+        },
+        "rpOriginalSAOption": false,
+        "rpIsManagedVirtualMachine": true,
+        "rpVMSizeDescription": "Standard_D2s_v3",
+        "bMSActiveRegion": "EastUS"
+    },
+    "restoreRequest": {
+        "affinityGroup": "",
+        "createNewCloudService": false,
+        "encryptionDetails": {
+            "encryptionEnabled": false
+        },
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "932879774590051503",
+        "recoveryType": "RestoreDisks",
+        "sourceResourceId":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG1/providers/Microsoft.Compute/virtualMachines/testVM",
+        "targetResourceGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG1",
+        "storageAccountId":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG1/providers/Microsoft.Storage/storageAccounts/testStorageAccount",
+        "region": "westus",
+        "affinityGroup": "",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "restoreDiskLunList": []
+    }
+}
+```
+
+プライマリ リージョンの復元操作と同様、これは非同期の操作であり、[個別に追跡](#restore-response)する必要があります。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

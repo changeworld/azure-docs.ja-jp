@@ -5,43 +5,33 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/01/2020
+ms.date: 10/28/2021
 ms.author: pafarley
-ms.openlocfilehash: 8cc4bc6907f83ce062fed82dde17815fc4debd67
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f20f73c37224abe1333d2577db8a54ef07eeed34
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719843"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520785"
 ---
 SKU と価格の情報の一覧については、以下を参照してください。 
 
 #### <a name="multi-service"></a>マルチサービス
 
-| サービス                    | 種類                      |
-|----------------------------|---------------------------|
+| サービス     | 種類    |
+|-------------|------------|
 | 複数のサービス。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/)に関するページを参照してください。            | `CognitiveServices`     |
 
 
 #### <a name="vision"></a>視覚
 
-| サービス                    | 種類                      |
-|----------------------------|---------------------------|
+| サービス    | 種類    |
+|------------|---------|
 | Computer Vision            | `ComputerVision`          |
 | Custom Vision - Prediction | `CustomVision.Prediction` |
 | Custom Vision - Training   | `CustomVision.Training`   |
 | Face                       | `Face`                    |
 | Form Recognizer            | `FormRecognizer`          |
-
-#### <a name="search"></a>検索
-
-| サービス            | 種類                  |
-|--------------------|-----------------------|
-| Bing Autosuggest   | `Bing.Autosuggest.v7` |
-| Bing Custom Search | `Bing.CustomSearch`   |
-| Bing Entity Search | `Bing.EntitySearch`   |
-| Bing Search        | `Bing.Search.v7`      |
-| Bing Spell Check   | `Bing.SpellCheck.v7`  |
 
 #### <a name="speech"></a>音声
 
@@ -56,7 +46,7 @@ SKU と価格の情報の一覧については、以下を参照してくださ�
 |--------------------|---------------------|
 | LUIS               | `LUIS`              |
 | QnA Maker          | `QnAMaker`          |
-| Text Analytics     | `TextAnalytics`     |
+| 言語サービス   | `TextAnalytics`     |
 | Text Translation   | `TextTranslation`   |
 
 #### <a name="decision"></a>決定

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workware の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Workware の統合'
 description: Azure Active Directory と Workware の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/21/2020
+ms.date: 10/12/2021
 ms.author: jeedes
-ms.openlocfilehash: f4996943fd95252be45f7a270d143f14e7f2d48a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37da17ab39e9f30114741319cdef6bc7036fa734
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181275"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284951"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workware"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workware の統合
+# <a name="tutorial-azure-ad-sso-integration-with-workware"></a>チュートリアル: Azure AD SSO と Workware の統合
 
 このチュートリアルでは、Workware と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Workware を統合すると、次のことができます。
 
@@ -37,9 +37,9 @@ ms.locfileid: "96181275"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Workware では、**IDP** Initiated SSO がサポートされます
+* Workware では、**IDP** によって開始される SSO がサポートされます。
 
-## <a name="adding-workware-from-the-gallery"></a>ギャラリーからの Workware の追加
+## <a name="add-workware-from-the-gallery"></a>ギャラリーからの Workware の追加
 
 Azure AD への Workware の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Workware を追加する必要があります。
 
@@ -50,7 +50,6 @@ Azure AD への Workware の統合を構成するには、ギャラリーから�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Workware**」と入力します。
 1. 結果のパネルから **Workware** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-workware"></a>Workware の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Workware に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Workware の関連ユーザーとの間にリンク関係を確立する必要があります。
@@ -58,10 +57,10 @@ Azure AD への Workware の統合を構成するには、ギャラリーから�
 Workware に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Workware の SSO の構成](#configure-workware-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[Workware のテスト ユーザーの作成](#create-workware-test-user)** - Workware で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+    1. **[Workware のテスト ユーザーの作成](#create-workware-test-user)** - Workware で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -70,15 +69,15 @@ Workware に対して Azure AD SSO を構成してテストするには、次の
 
 1. Azure portal の **Workware** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ページで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[識別子]** ボックスに、`<WORKWARE_URL>/WW/AuthServices` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`<WORKWARE_URL>/WW/AuthServices` の形式で値を入力します。
 
-    b. **[応答 URL]** ボックスに、`<WORKWARE_URL>/WW/AuthServices/Acs` のパターンを使用して URL を入力します
+    b. **[応答 URL]** テキスト ボックスに、`<WORKWARE_URL>/WW/AuthServices/Acs` のパターンを使用して値を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Workware クライアント サポート チーム](mailto:support@activeops.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -90,6 +89,7 @@ Workware に対して Azure AD SSO を構成してテストするには、次の
 1. **[Workware のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -126,27 +126,26 @@ Workware で SSO 機能を使用するには、次の設定を完了する必要
 
 #### <a name="set-up-sso-authentication-in-workware"></a>Workware で SSO 認証を設定する
 
-1. **[System Settings]\(システム設定\)** ページに移動し、 **[SSO Authentication]\(SSO 認証\)** をクリックします
+1. **[System Settings]\(システム設定\)** ページに移動し、 **[SSO Authentication]\(SSO 認証\)** をクリックします。
 
 1. **[SSO Authentication]\(SSO 認証\)** セクションで **[Add SSO Authentication]\(SSO 認証の追加\)** ボタンをクリックし、次の手順を実行します。 
 
     ![[SSO Authentication]\(SSO 認証\)](./media/workware-tutorial/authentication.png)
 
     1. **[External Identity Provider]\(外部 ID プロバイダー\)** で、IDP の名前を指定します。
-    1. **[Authentication Type]\(認証の種類\)** として **[SAML2.0]** を選択します
+    1. **[Authentication Type]\(認証の種類\)** として **[SAML2.0]** を選択します。
     1. **[Identity Provider SignIn URL]\(ID プロバイダーのサインイン URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を入力します。
     1. **[Identity Provider Issuer URL]\(ID プロバイダーの発行者 URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を入力します。
     1. **[Identity Provider Logout URL]\(ID プロバイダーのログアウト URL\)** ボックスに、Azure portal からコピーした **ログアウト URL** の値を入力します。
     1. **[Enable]\(有効にする\)** をクリックします。
     1. ダウンロードした **証明書** を Azure portal から **ID プロバイダー証明書** にアップロードします。
-    1. **[保存]**
-
+    1. **[保存]** をクリックします。
 
 ### <a name="create-workware-test-user"></a>Workware テスト ユーザーの作成
 
 1. Workware の Web サイトに管理者としてサインインします。
 
-1. **[Admin]\(管理\) > [Create / View]\(作成 / 表示\) > [User Accounts]\(ユーザー アカウント\) > [Add New]\(新規追加\)** の順に選択します
+1. **[Admin]\(管理\) > [Create / View]\(作成 / 表示\) > [User Accounts]\(ユーザー アカウント\) > [Add New]\(新規追加\)** の順に選択します。
 
 1. 次のページで、以下の手順を実行します。
 
@@ -162,11 +161,10 @@ Workware で SSO 機能を使用するには、次の設定を完了する必要
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Workware に自動的にサインインされます
+* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Workware に自動的にサインインされます。
 
-* Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Workware] タイルをクリックすると、SSO を設定した Workware に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Workware] タイルをクリックすると、SSO を設定した Workware に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Workware を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Workware を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

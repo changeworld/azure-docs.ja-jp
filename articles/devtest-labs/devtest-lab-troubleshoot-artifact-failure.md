@@ -1,14 +1,14 @@
 ---
 title: Azure DevTest Labs 仮想マシンでアーティファクトの失敗を診断する
 description: DevTest Labs からは、アーティファクトの失敗の診断に使用できる情報が提供されます。 この記事では、アーティファクトのエラーのトラブルシューティング方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 440ce6a537ac8d6a21ae8010bfbb3c38a82bf01e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7c343eee8c3484e12139c2bef963fc463ffc28d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85480815"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567451"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>ラボでアーティファクトの失敗を診断する 
 アーティファクトの作成後、作成が成功したか失敗したかを確認できます。 Azure DevTest Labs のアーティファクト ログには、アーティファクトの失敗の診断に使用できる情報が含まれています。 Windows VM のアーティファクト ログ情報を表示する場合、次のいずれかを選択できます。
@@ -49,4 +49,3 @@ ms.locfileid: "85480815"
 
 ## <a name="next-steps"></a>次のステップ
 * [ラボへの Git リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
-

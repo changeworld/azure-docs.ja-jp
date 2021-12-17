@@ -1,18 +1,17 @@
 ---
 title: 高度なフィルター処理 - Azure Event Grid IoT Edge | Microsoft Docs
 description: IoT Edge での Event Grid の高度なフィルター処理。
-author: HiteshMadan
 manager: rajarv
-ms.author: himad
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0f146f66e2779a9ee8187f3ac06c72d884e9d8a
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001050"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755629"
 ---
 # <a name="advanced-filtering"></a>高度なフィルター処理
 Event Grid では、json ペイロードの任意のプロパティに対してフィルターを指定できます。 これらのフィルターは一連の `AND` 条件としてモデル化されており、外側の各条件には省略可能な内側の `OR` 条件があります。 `AND` 条件ごとに、次の値を指定します。

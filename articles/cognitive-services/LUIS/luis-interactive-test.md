@@ -4,17 +4,24 @@ description: Language Understanding (LUIS) を使用して、アプリケーシ�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 31885eba16d59e2e48a08f84c56271b84e6c565f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: aahi
+author: aahill
+ms.manager: nitinme
+ms.date: 06/01/2021
+ms.openlocfilehash: d5263f85fa8cc2a9f1b55da32b4aa1418e304347
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98790920"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954255"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
 
-アプリの[テスト](luis-concept-test.md)は反復処理です。 ご自身の LUIS アプリをトレーニングした後、サンプルの発話を使用して、意図とエンティティが正しく認識されるかどうかをテストします。 正しく認識されない場合は、もう一度 LUIS アプリを更新し、トレーニングおよびテストを行います。
+
+テストは、LUIS にサンプル発話を提供し、LUIS が認識した意図およびエンティティの応答を取得するプロセスです。 LUIS で、対話形式で一度に 1 つずつ発話をテストすることも、発話のセットを提供することもできます。 テスト中に、現在のアクティブ モデルの予測応答と、発行済みのモデルの予測応答を比較できます。 
+
+
+アプリのテストは反復処理です。 ご自身の LUIS アプリをトレーニングした後、サンプルの発話を使用して、意図とエンティティが正しく認識されるかどうかをテストします。 正しく認識されない場合は、もう一度 LUIS アプリを更新し、トレーニングおよびテストを行います。
 
 <!-- anchors for H2 name changes -->
 <a name="train-your-app"></a>
@@ -22,13 +29,31 @@ ms.locfileid: "98790920"
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
-## <a name="train-before-testing"></a>テストの前にトレーニングする
+## <a name="interactive-testing"></a>対話型テスト
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の **サブスクリプション** と **作成リソース** を選択して、その作成リソースに割り当てられているアプリを表示します。
-1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
-1. アクティブなアプリの最新バージョンに対してテストを行うには、テストの前に、上部のメニューから **[トレーニング]** を選択します。
+対話型テストは、LUIS ポータルの **[Test]\(テスト\)** パネルから実行します。 発話を入力すると、意図とエンティティがどのように識別され、スコア付けされるかを確認することができます。 テスト パネルで発話の意図とエンティティが期待どおりに予測されない場合、LUIS によってその発話が新しい発話として **[Intent]\(意図\)** ページにコピーされます。 次に、エンティティのその発話の部分にラベルを付け、LUIS をトレーニングします。 
+
+一度に複数の発話をテストする場合は[バッチ テスト](./luis-how-to-batch-test.md)に関する記事を、予測スコアの詳細については[予測スコア](luis-concept-prediction-score.md)に関する記事を参照してください。
+
+最大 2 つのバージョンのアプリで、[エンドポイント](luis-glossary.md#endpoint)を使用してテストを実行できます。 アプリのメインまたはライブ バージョンを **運用** エンドポイントとして使用し、2 つ目のバージョンを **ステージング** エンドポイントに追加します。 この方法では、[LUIS](luis-reference-regions.md) ポータル サイトの [テスト] ウィンドウにある現在のモデルと、2 つの異なるエンドポイントにある 2 つのバージョンの合計 3 つのバージョンの発話が提供されます。 
+
+すべてのエンドポイントのテストが、ユーザーの使用量クォータに加算されます。 
+
+## <a name="logging"></a>ログ記録
+
+LUIS では、ログに記録されたすべての発話がクエリ ログに格納され、LUIS ポータルの **[Apps]\(アプリ\)** 一覧ページでダウンロードしたり、LUIS [オーサリング API](https://go.microsoft.com/fwlink/?linkid=2092087) で使用したりできます。 
+
+エンドポイントに対してテストを実行し、発話をログに記録したくない場合は、必ず `logging=false` クエリ文字列構成を使用してください。
+
+LUIS が確信を持てなかった発話はすべて、[LUIS](luis-reference-regions.md) ポータル サイトの **[[エンドポイントの発話の確認]](luis-how-to-review-endpoint-utterances.md)** ページに一覧表示されます。  
 
 ## <a name="test-an-utterance"></a>発話のテスト
+
+> [!NOTE]
+> モデルに変更を加えた後は、必ず LUIS を[トレーニング](luis-how-to-train.md)します。 LUIS アプリへの変更は、アプリをトレーニングするまで、テストで表示されません。
+> 1. LUIS ポータルにサインインし、自分のサブスクリプションと作成リソースを選択して、その作成リソースに割り当てられているアプリを表示します。
+> 2. [マイ アプリ] ページで自分のアプリの名前を選択して、そのアプリを開きます。
+> 3. アクティブなアプリの最新バージョンに対してテストを行うには、テストの前に、上部のメニューから [トレーニング] を選択します。
 
 テストの発話は、アプリでの発話の例とまったく同じにすることはできません。 テストの発話には、ユーザーが使用すると予想される単語の選択、語句の長さ、エンティティの使用法を含める必要があります。
 
@@ -127,3 +152,4 @@ LUIS エンドポイントが複数ある場合は、テストの [公開済み]
 
 * [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endpoint-utterances.md)
 * [LUIS アプリのパフォーマンスを向上させる機能を使用する](luis-how-to-add-features.md)
+* [ベスト プラクティス](luis-concept-best-practices.md)

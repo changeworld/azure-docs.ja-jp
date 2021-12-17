@@ -10,15 +10,18 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6dafa400f2ce2421db6775084befc0abeab70a04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70c3eaf554d1752b6aaa2a4ed1bfd05e9da67b5c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563220"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441155"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux VM のプロビジョニング
-一般化されたイメージ (共有イメージ ギャラリーまたはマネージド イメージ) から VM を作成すると、コントロール プレーンによって VM を作成し、VM にパラメーターと設定を渡すことができます。 これは、VM *プロビジョニング* と呼ばれます。 プロビジョニングでは、VM の起動時に VM で使用できる必須の VM Create パラメーター値 (hostname、username、password、SSH キー、customData) がプラットフォームによって作成されます。 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
+
+一般化されたイメージ (Azure Compute Gallery またはマネージド イメージ) から VM を作成すると、コントロール プレーンを使用して VM を作成し、VM にパラメーターと設定を渡すことができます。 これは、VM *プロビジョニング* と呼ばれます。 プロビジョニングでは、VM の起動時に VM で使用できる必須の VM Create パラメーター値 (hostname、username、password、SSH キー、customData) がプラットフォームによって作成されます。 
 
 イメージ内に組み込まれているプロビジョニング エージェントは、プラットフォームとのインターフェイスを作成し、複数の独立したプロビジョニング インターフェイスに接続することで、完了したプラットフォームにプロパティとシグナルを設定します。 
 

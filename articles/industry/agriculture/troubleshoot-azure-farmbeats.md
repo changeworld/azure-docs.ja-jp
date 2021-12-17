@@ -1,16 +1,16 @@
 ---
 title: Azure FarmBeats のトラブルシューティング
 description: この記事では、Azure FarmBeats のトラブルシューティングの方法について説明します。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.openlocfilehash: c45b6196b82682b37e253a33eed3940b68b4d61e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.openlocfilehash: 905b96f814ce89fee9fa24248e54eca3ddcb96cc
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172986"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351783"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Azure FarmBeats のトラブルシューティング
 
@@ -281,7 +281,7 @@ ms.locfileid: "102172986"
 
 ## <a name="collect-logs-manually"></a>ログを手動で収集する
 
-[Azure Storage Explorer をインストールしてデプロイします]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)。
+[Azure Storage Explorer をインストールしてデプロイします](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)。
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>データハブで Azure Data Factory ジョブのログまたは App Service のログを収集する
 

@@ -1,27 +1,29 @@
 ---
 title: SFTP サーバーとの間でデータをコピーする
-description: Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする方法について説明します。
-ms.author: jingwang
-author: linda33wj
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory および Azure Synapse Analytics パイプラインを使用して、SFTP サーバーとの間でデータをコピーする方法について説明します。
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: 19b32bed15a4d292a7427d8401e777c7761e45a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: 5e851a266dd74758987c5e6bdeef1d76e3d50db9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592032"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763958"
 ---
-# <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする
+# <a name="copy-data-from-and-to-the-sftp-server-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して SFTP サーバーとの間でデータをコピーする
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-sftp-connector.md)
 > * [現在のバージョン](connector-sftp.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、セキュリティで保護された FTP (SFTP) サーバーとの間でデータをコピーする方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、セキュリティで保護された FTP (SFTP) サーバーとの間でデータをコピーする方法について説明します。 詳細については、[Azure Data Factory](introduction.md) または [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -39,13 +41,37 @@ SFTP コネクタは、以下のアクティビティに対してサポートさ
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-次のセクションでは、SFTP に固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
+## <a name="create-an-sftp-linked-service-using-ui"></a>UI を使用して SFTP のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で SFTP のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. SFTP を検索し、SFTP コネクタを選択します。
+
+    :::image type="content" source="media/connector-sftp/sftp-connector.png" alt-text="SFTP コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-sftp/configure-sftp-linked-service.png" alt-text="SFTP のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、SFTP に固有のエンティティの定義に使用されるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -68,7 +94,7 @@ SFTP のリンクされたサービスでは、以下のプロパティがサポ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | userName | SFTP サーバーにアクセスできるユーザー。 |はい |
-| password | ユーザー (userName) のパスワード。 このフィールドを SecureString としてマークしてデータ ファクトリに安全に格納するか、[Azure キー コンテナーに格納されているシークレットを参照します](store-credentials-in-key-vault.md)。 | はい |
+| password | ユーザー (userName) のパスワード。 このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照します](store-credentials-in-key-vault.md)。 | はい |
 
 **例:**
 
@@ -105,8 +131,8 @@ SSH 公開キー認証を使用するには、"authenticationType" を **SshPubl
 |:--- |:--- |:--- |
 | userName | SFTP サーバーにアクセスできるユーザー。 |はい |
 | privateKeyPath | 統合ランタイムがアクセスできる秘密キー ファイルへの絶対パスを指定します。 これは、"connectVia" でセルフホステッド型の統合ランタイムが指定されている場合にのみ適用されます。 | `privateKeyPath` または `privateKeyContent` を指定します。  |
-| privateKeyContent | Base64 にエンコードされた SSH 秘密キーのコンテンツ。 SSH 秘密キーは、OpenSSH 形式にする必要があります。 このフィールドを SecureString としてマークしてデータ ファクトリに安全に格納するか、[Azure キー コンテナーに格納されているシークレットを参照します](store-credentials-in-key-vault.md)。 | `privateKeyPath` または `privateKeyContent` を指定します。 |
-| passPhrase | キー ファイルまたはキー コンテンツがパス フレーズで保護されている場合は、パス フレーズやパスワードを指定して、秘密キーの暗号化を解除します。 このフィールドを SecureString としてマークしてデータ ファクトリに安全に格納するか、[Azure キー コンテナーに格納されているシークレットを参照します](store-credentials-in-key-vault.md)。 | はい (秘密キー ファイルまたはキー コンテンツがパス フレーズで保護されている場合)。 |
+| privateKeyContent | Base64 にエンコードされた SSH 秘密キーのコンテンツ。 SSH 秘密キーは、OpenSSH 形式にする必要があります。 このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照します](store-credentials-in-key-vault.md)。 | `privateKeyPath` または `privateKeyContent` を指定します。 |
+| passPhrase | キー ファイルまたはキー コンテンツがパス フレーズで保護されている場合は、パス フレーズやパスワードを指定して、秘密キーの暗号化を解除します。 このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照します](store-credentials-in-key-vault.md)。 | はい (秘密キー ファイルまたはキー コンテンツがパス フレーズで保護されている場合)。 |
 
 > [!NOTE]
 > SFTP コネクタでは、RSA/DSA OpenSSH キーがサポートされます。 キー ファイルの内容が、"-----BEGIN [RSA/DSA] PRIVATE KEY-----" で始まることを確認します。 秘密キー ファイルが PPK 形式のファイルである場合は、PuTTY ツールを使用して PPK から OpenSSH 形式に変換します。 
@@ -210,7 +236,7 @@ SSH 公開キー認証を使用するには、"authenticationType" を **SshPubl
 
 データセットの定義に使用できるセクションとプロパティの完全な一覧については、 [データセット](concepts-datasets-linked-services.md)に関する記事を参照してください。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 SFTP では、形式ベースのデータセットの `location` 設定で、以下のプロパティがサポートされています。
 
@@ -252,7 +278,7 @@ SFTP では、形式ベースのデータセットの `location` 設定で、以
 
 ### <a name="sftp-as-source"></a>ソースとしての SFTP
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 SFTP では、形式ベースのコピー ソースの `storeSettings` 設定で、以下のプロパティがサポートされています。
 
@@ -316,7 +342,7 @@ SFTP では、形式ベースのコピー ソースの `storeSettings` 設定で
 
 ### <a name="sftp-as-a-sink"></a>シンクとしての SFTP
 
-[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
+[!INCLUDE [data-factory-v2-file-sink-formats](includes/data-factory-v2-file-sink-formats.md)]
 
 SFTP では、形式ベースのコピー シンクの `storeSettings` 設定で、以下のプロパティがサポートされています。
 
@@ -325,7 +351,7 @@ SFTP では、形式ベースのコピー シンクの `storeSettings` 設定で
 | type                     | `storeSettings` の下の *type* プロパティは、*SftpWriteSettings* に設定する必要があります。 | はい      |
 | copyBehavior             | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ       |
 | maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。 | いいえ       |
-| useTempFileRename | 一時ファイルにアップロードしてそれらの名前を変更するか、ターゲットのフォルダーまたはファイルの場所に直接書き込むかを指定します。 Azure Data Factory の既定では、最初に一時ファイルに書き込み、その後、アップロードが完了したらそれらの名前を変更します。 このシーケンスは、(1) 同じファイルに書き込み中の他のプロセスがある場合に、ファイルの破損に至る可能性がある競合を回避し、(2) 転送中に元のバージョンのファイルが確実に存在するようにするのに役立ちます。 実際の SFTP サーバーで名前の変更操作がサポートされていない場合は、このオプションを無効にして、ターゲット ファイルへの同時書き込みが発生しないようにします。 詳細については、この表の末尾にあるトラブルシューティングのヒントを参照してください。 | いいえ。 既定値は " *[はい]* " です。 |
+| useTempFileRename | 一時ファイルにアップロードしてそれらの名前を変更するか、ターゲットのフォルダーまたはファイルの場所に直接書き込むかを指定します。 既定では、最初に一時ファイルに書き込まれ、アップロードが完了したらそれらの名前が変更されます。 このシーケンスは、(1) 同じファイルに書き込み中の他のプロセスがある場合に、ファイルの破損に至る可能性がある競合を回避し、(2) 転送中に元のバージョンのファイルが確実に存在するようにするのに役立ちます。 実際の SFTP サーバーで名前の変更操作がサポートされていない場合は、このオプションを無効にして、ターゲット ファイルへの同時書き込みが発生しないようにします。 詳細については、この表の末尾にあるトラブルシューティングのヒントを参照してください。 | いいえ。 既定値は " *[はい]* " です。 |
 | operationTimeout | SFTP サーバーに対する各書き込み要求がタイムアウトになるまでの待機時間。規定値は 60 分 (01:00:00) です。|いいえ |
 
 >[!TIP]
@@ -387,20 +413,20 @@ SFTP では、形式ベースのコピー シンクの `storeSettings` 設定で
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-Lookup アクティビティのプロパティの詳細については、「[Azure Data Factory でのルックアップ アクティビティ](control-flow-lookup-activity.md)」を参照してください。
+Lookup アクティビティのプロパティについては、[Lookup アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
 
 ## <a name="getmetadata-activity-properties"></a>GetMetadata アクティビティのプロパティ
 
-GetMetadata アクティビティのプロパティの詳細については、「[Azure Data Factory の GetMetadata アクティビティ](control-flow-get-metadata-activity.md)」を参照してください。 
+GetMetadata アクティビティのプロパティについては、[GetMetadata アクティビティ](control-flow-get-metadata-activity.md)に関する記事を参照してください。 
 
 ## <a name="delete-activity-properties"></a>Delete アクティビティのプロパティ
 
-Delete アクティビティのプロパティの詳細については、「[Azure Data Factory の Delete アクティビティ](delete-activity.md)」を参照してください。
+Delete アクティビティのプロパティについては、[Delete アクティビティ](delete-activity.md)に関する記事を参照してください。
 
 ## <a name="legacy-models"></a>レガシ モデル
 
 >[!NOTE]
->次のモデルは、下位互換性のために引き続きそのままサポートされます。 Azure Data Factory の作成用 UI は新しいモデルを生成するように切り替えられているため、前に説明した新しいモデルを使用することをお勧めします。
+>次のモデルは、下位互換性のために引き続きそのままサポートされます。 作成 UI は新しいモデルを生成するように切り替えられているため、前に説明した新しいモデルを使用することをお勧めします。
 
 ### <a name="legacy-dataset-model"></a>レガシ データセット モデル
 
@@ -492,4 +518,4 @@ Delete アクティビティのプロパティの詳細については、「[Azu
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページを参照してください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

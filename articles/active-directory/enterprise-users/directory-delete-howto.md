@@ -4,22 +4,22 @@ description: セルフサービス組織を含む Azure AD 組織 (テナント)
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 10/20/2021
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2edc6fb98359c5360836bc369e5ae1928464df92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b6763ba1b465a0689ab076da69b0efc40d6bd9f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861032"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262624"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Azure Active Directory でテナントを削除する
 
@@ -27,9 +27,10 @@ Azure AD 組織 (テナント) を削除すると、その組織に含まれる�
 
 ## <a name="prepare-the-organization"></a>組織を準備する
 
-いくつかのチェックに合格するまで、Azure AD の組織を削除することはできません。 これらのチェックにより、Azure AD 組織の削除がユーザーのアクセス (Microsoft 365 へのサインインや Azure のリソースへのアクセスなど) に悪影響を及ぼすリスクが軽減されます。 たとえば、サブスクリプションに関連付けられた組織が誤って削除された場合、ユーザーはそのサブスクリプションの Azure リソースにアクセスできなくなります。 次の条件がチェックされます。
+いくつかのチェックに合格するまで、Azure AD の組織を削除することはできません。 これらのチェックにより、Azure AD 組織の削除がユーザーのアクセス (Microsoft 365 へのサインインや Azure のリソースへのアクセスなど) に悪影響を及ぼすリスクが軽減されます。 たとえば、サブスクリプションに関連付けられた組織が誤って削除された場合、ユーザーはそのサブスクリプションの Azure リソースにアクセスできなくなります。 次の条件を確認する必要があります。
 
-* 組織を削除するグローバル管理者 1 人を除き、ユーザーが Azure AD 組織 (テナント) 内に存在しないこと。 組織を削除するには、他のすべてのユーザーを削除しておく必要があります。 ユーザーがオンプレミスから同期されている場合は、まず同期を無効にする必要があります。また、Azure portal または Azure PowerShell のコマンドレットを使用して、クラウド組織内のユーザーを削除する必要があります。
+* すべての未処理の請求書と、期限または期限切れの請求額を支払う必要があります。
+* 組織を削除する全体管理者 1 人を除き、ユーザーが Azure AD テナント内に存在しないこと。 組織を削除するには、他のすべてのユーザーを削除しておく必要があります。 ユーザーがオンプレミスから同期されている場合は、まず同期を無効にする必要があります。また、Azure portal または Azure PowerShell のコマンドレットを使用して、クラウド組織内のユーザーを削除する必要があります。
 * 組織内にアプリケーションが存在しないこと。 組織を削除できるようにするには、すべてのアプリケーションを削除しておく必要があります。
 * その組織にリンクされる多要素認証プロバイダーが存在しない。
 * 組織に関連付けられている、Microsoft Online Services のサブスクリプション (Microsoft Azure、Microsoft 365、Azure AD Premium など) が存在しないこと。 たとえば、Azure で既定の Azure AD 組織が作成されている場合、Azure サブスクリプションが認証にこの組織を引き続き使用していれば、この組織を削除することはできません。 同様に、別のユーザーが組織にサブスクリプションを関連付けている場合、その組織を削除することはできません。
@@ -94,6 +95,15 @@ Microsoft 365 管理センターを使用して、サブスクリプションを
 8. 組織のサブスクリプションを削除して 72 時間が経過すると、Azure AD 管理センターに再度サインインすることができます。要求されているアクションや、組織の削除をブロックしているサブスクリプションはなくなっているはずです。 Azure AD 組織を正常に削除できます。
   
    ![削除画面でサブスクリプションのチェックに合格](./media/directory-delete-howto/delete-checks-passed.png)
+
+## <a name="enterprise-apps-with-no-way-to-delete"></a>削除する方法がないエンタープライズ アプリ
+
+ポータルで削除できないエンタープライズ アプリケーションがまだあることがわかった場合は、次の PowerShell コマンドを使用してそれらを削除できます。 この PowerShell コマンドの詳細については、「[Remove-AzureADServicePrincipal](/powershell/module/azuread/remove-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true)」を参照してください。
+
+1. 管理者として PowerShell を開きます。
+1. `Connect-AzAccount -tenant <TENANT_ID>` を実行します。
+1. Azure AD の全体管理者ロールにサインインする
+1. `Get-AzADServicePrincipal | ForEach-Object { Remove-AzADServicePrincipal -ObjectId $_.Id -Force}` を実行します。
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>削除をブロックする試用版サブスクリプションがある
 

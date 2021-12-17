@@ -1,26 +1,25 @@
 ---
-title: 時系列予測モデルを自動トレーニングする
+title: 時系列予測用に AutoML を設定する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning を使用して、自動化された機械学習で時系列予測回帰モデルをトレーニングする方法について説明します。
+description: Azure Machine Learning Python SDK で時系列予測モデルをトレーニングするために、Azure Machine Learning 自動 ML を設定します。
 services: machine-learning
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, automl
-ms.date: 08/20/2020
-ms.openlocfilehash: 161d565aa1d2dd08434ebd8ea155ac5a92e09ac0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.subservice: automl
+ms.topic: how-to
+ms.custom: contperf-fy21q1, automl, FY21Q4-aml-seo-hack
+ms.date: 10/21/2021
+ms.openlocfilehash: 45c8f82729bd4cb16e0d0d36d9a9e70b66a7dbe2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802915"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345351"
 ---
-# <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
+# <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>Python で時系列予測モデルをトレーニングするために、AutoML を設定する
 
-
-この記事では、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) の自動機械学習 (AutoML) を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
+この記事では、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) で、Azure Machine Learning 自動 ML を使用して時系列予測モデルをトレーニングするために、AutoML を設定する方法を説明します。
 
 これを行うには、次の手順を実行します。 
 
@@ -29,9 +28,10 @@ ms.locfileid: "104802915"
 > * [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) オブジェクトで特定の時系列パラメーターを構成します。
 > * 時系列データで予測を実行します。
 
-コードの作成経験が少ない場合は、「[チュートリアル:自動機械学習を使用して自転車シェアリング需要を予測する](tutorial-automated-ml-forecast.md)」で [Azure Machine Learning Studio](https://ml.azure.com/) の自動機械学習を使用して、時系列の予測を行う方法について参照してください。
+[Azure Machine Learning スタジオ](https://ml.azure.com/)の自動 ML を使用して、ロー コードで時系列予測を行う例は、「[チュートリアル:自動機械学習を使用して需要を予測する](tutorial-automated-ml-forecast.md)」をご覧ください。
 
 従来の時系列メソッドとは異なり、自動 ML では過去の時系列値が "ピボット" され、他の予測子と共にリグレッサーの追加のディメンションになります。 このアプローチでは、トレーニング中に複数のコンテキスト変数とそれらの相互関係を組み込みます。 複数の要因が予測に影響を与える可能性があるため、この方法は実際の予測シナリオに適しています。 たとえば、売上の予測では、履歴による傾向とのインタラクション、為替レート、および価格のすべてが、売上の結果に貢献します。 
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,9 +41,10 @@ ms.locfileid: "104802915"
 
 * この記事では、自動化された機械学習実験の設定にある程度精通していることを前提としています。 [チュートリアル](tutorial-auto-train-models.md)または[方法](how-to-configure-auto-train.md)に従って、自動化された機械学習実験の主要な設計パターンについて確認してください。
 
+    [!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
 ## <a name="preparing-data"></a>データの準備
 
-AutoML 内での予測回帰タスクの種類と回帰タスクの種類の最も重要な違いは、有効な時系列を表す機能がデータに含まれるという点です。 通常の時系列には、明確に定義され一貫した頻度があり、連続した期間のすべてのサンプル ポイントで値があります。 
+自動 ML の予測回帰タスクと回帰タスクの最大の違いは、有効な時系列を表す特徴量がデータに含まれているかどうかです。 通常の時系列には、明確に定義され一貫した頻度があり、連続した期間のすべてのサンプル ポイントで値があります。 
 
 ファイル `sample.csv` の次のスナップショットを見てください。
 このデータ セットは、A と B の 2 つの異なる店舗を持つ会社の日別の売上データです。 
@@ -116,7 +117,7 @@ automl_config = AutoMLConfig(task='forecasting',
                              **time_series_settings)
 ```
 
-AutoML でクロス検証を適用して[モデルのオーバーフィットを防止](concept-manage-ml-pitfalls.md#prevent-over-fitting)する方法について、詳細情報をご覧ください。
+AutoML でクロス検証を適用して[モデルのオーバーフィットを防止](concept-manage-ml-pitfalls.md#prevent-overfitting)する方法について、詳細情報をご覧ください。
 
 ## <a name="configure-experiment"></a>実験を構成する
 
@@ -144,9 +145,9 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 |-------|-------|-------|
 |`time_column_name`|時系列の構築とその頻度の推定に使用される入力データで、datetime 列を指定するために使用されます。|✓|
 |`forecast_horizon`|予測する今後の期間の数を定義します。 horizon とは、時系列頻度の単位です。 単位は、月ごとや週ごとなどの予測を実行する必要があるトレーニング データの時間間隔に基づきます。|✓|
-|`enable_dnn`|[予測 DNN を有効にします]()。||
-|`time_series_id_column_names`|タイムスタンプが同じ複数の行を含むデータ内の時系列を一意に識別するために使用される列名。 時系列識別子が定義されていない場合、データ セットは 1 つの時系列であると見なされます。 単一の時系列の詳細については、[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand) に関するページを参照してください。||
-|`freq`| 時系列データセットの頻度。 このパラメーターは、日ごと、週ごと、年ごとなどのイベントが発生することが予想される期間を表します。頻度は、[pandas のオフセットのエイリアス](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)である必要があります。 [頻度] について詳しくご覧ください。(#frequency--target-data-aggregation)||
+|`enable_dnn`|[予測 DNN を有効にします](#enable-deep-learning)。||
+|`time_series_id_column_names`|タイムスタンプが同じ複数の行を含むデータ内の時系列を一意に識別するために使用される列名。 時系列識別子が定義されていない場合、データ セットは 1 つの時系列であると見なされます。 単一の時系列の詳細については、[energy_demand_notebook](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) に関するページを参照してください。||
+|`freq`| 時系列データセットの頻度。 このパラメーターは、日ごと、週ごと、年ごとなどのイベントが発生することが予想される期間を表します。頻度は、[pandas のオフセットのエイリアス](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)である必要があります。 [頻度] の詳細を参照してください。(#frequency-target-data-aggregation)||
 |`target_lags`|データの頻度に基づいて対象の値を遅延させる行の数。 このラグは一覧または単一の整数として表されます。 独立変数と依存変数の間のリレーションシップが既定で一致しない場合、または関連付けられていない場合、ラグを使用する必要があります。 ||
 |`feature_lags`| `target_lags` が設定され、`feature_lags` が `auto` に設定されている場合、遅延する機能が自動 ML によって自動的に決定されます。 機能のタイム ラグを有効にすると、精度の向上に役立つ場合があります。 既定では、機能のタイム ラグは無効になっています。 ||
 |`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、*n* はトレーニング セットの全体のサイズになります。 モデルのトレーニング時に特定の量の履歴のみを考慮する場合は、このパラメーターを指定します。 [ターゲットのローリング ウィンドウ集計](#target-rolling-window-aggregation)について、詳細情報をご覧ください。||
@@ -286,7 +287,7 @@ Azure Machine Learning Studio を実験に使用している場合は、[Studio 
 ### <a name="enable-deep-learning"></a>ディープ ラーニングを有効にする
 
 > [!NOTE]
-> 自動機械学習での予測における DNN サポートは **プレビュー** 段階です。また、ローカルの実行はサポートされていません。
+> 自動機械学習での予測のための DNN サポートは **プレビュー** 段階です。ローカルでは実行できず、Databricks で開始して実行することもできません。
 
 深層ニューラル ネットワーク (DNN) を使用したディープ ラーニングを利用し、モデルのスコアを向上させることもできます。 自動 ML のディープ ラーニングを使用すると、一変量および多変量の時系列データを予測できます。
 
@@ -308,7 +309,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 Azure Machine Learning Studio で作成された AutoML 実験用の DNN を有効にするには、[Studio 入門にあるタスクの種類の設定に関するページ](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)を参照してください。
 
-DNN を使用した詳細なコード例については、[飲料生産予測 ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)をご参照ください。
+DNN を使用した詳細なコード例については、[飲料生産予測 ノートブック](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)をご参照ください。
 
 ### <a name="target-rolling-window-aggregation"></a>ターゲットのローリング ウィンドウ集計
 多くの場合、予測器が持つことができる最高の情報はターゲットの最近の値です。  ターゲットのローリング ウィンドウ集計を使用すると、データ値のローリング集計を特徴として追加できます。 これらの特徴を追加のコンテキスト データとして生成および使用すると、トレーニング モデルの精度が向上します。
@@ -319,7 +320,7 @@ DNN を使用した詳細なコード例については、[飲料生産予測 �
 
 ![ターゲットのローリング ウィンドウ](./media/how-to-auto-train-forecast/target-roll.svg)
 
-[ターゲットのローリング ウィンドウ集計の特徴](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)を利用した Python コードの例を参照してください。
+[ターゲットのローリング ウィンドウ集計の特徴](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)を利用した Python コードの例を参照してください。
 
 ### <a name="short-series-handling"></a>短い系列の処理
 
@@ -359,25 +360,34 @@ ws = Workspace.from_config()
 experiment = Experiment(ws, "Tutorial-automl-forecasting")
 local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
-```
+``` 
  
 ## <a name="forecasting-with-best-model"></a>最適モデルによる予測
 
 最適モデルのイテレーションを使用して、テスト データ セットの値を予測します。
 
-`forecast()` 関数を使用すると、予測を開始するタイミングを指定できます。これは、分類と回帰のタスクに通常使用される `predict()` とは異なります。
+[forecast_quantiles()](/python/api/azureml-train-automl-client/azureml.train.automl.model_proxy.modelproxy#forecast-quantiles-x-values--typing-any--y-values--typing-union-typing-any--nonetype----none--forecast-destination--typing-union-typing-any--nonetype----none--ignore-data-errors--bool---false-----azureml-data-abstract-dataset-abstractdataset) 関数を使用すると、予測を開始するタイミングを指定できます。これは、分類と回帰のタスクに通常使用される `predict()` メソッドとは異なります。 forecast_quantiles () メソッドでは既定で、不確実性の円すいを生じない、ポイント予測または平均/中央値予測が生成されます。 
 
-次の例では、最初に `y_pred` のすべての値を `NaN` に置き換えます。 このケースでは、予測の始まりはトレーニング データの最後になります。 ただし、`y_pred` の後半部分のみを `NaN` に置き換えた場合、この関数では前半の数値を変更しないまま、後半の `NaN` の値を予測します。 この関数は、予測値と調整された特徴の両方を返します。
+次の例では、最初に `y_pred` のすべての値を `NaN` に置き換えます。 このケースでは、予測の始まりはトレーニング データの最後です。 ただし、`y_pred` の後半部分のみを `NaN` に置き換えた場合、この関数では前半の数値を変更しないまま、後半の `NaN` の値を予測します。 この関数は、予測値と調整された特徴の両方を返します。
 
-`forecast()` 関数の `forecast_destination` パラメーターを使用して、指定した日付までの値を予測することもできます。
+`forecast_quantiles()` 関数の `forecast_destination` パラメーターを使用して、指定した日付までの値を予測することもできます。
 
 ```python
 label_query = test_labels.copy().astype(np.float)
 label_query.fill(np.nan)
-label_fcst, data_trans = fitted_model.forecast(
+label_fcst, data_trans = fitted_model.forecast_quantiles(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
+多くの場合、お客様は分布の特定の分位点での予測を把握しようとします。 たとえば、予測を使用して、在庫 (食料品や、クラウド サービスの仮想マシンなど) を制御します。 このような場合、コントロール ポイントは通常、"その品目を在庫として持ち、間違いなく不足にはならないようにしたい" といったことです。 以下は、予測で確認する分位点 (50 や 95 パーセンタイルなど) を指定する方法を示しています。 前述のコード例のように分位点を指定しない場合、50 パーセンタイルの予測のみが生成されます。 
+
+```python
+# specify which quantiles you would like 
+fitted_model.quantiles = [0.05,0.5, 0.9]
+fitted_model.forecast_quantiles(
+    test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
+```
+ 
 `actual_labels` の実際の値と `predict_labels` の予測値との二乗平均平方根誤差 (RMSE) を計算します。
 
 ```python
@@ -387,7 +397,8 @@ from math import sqrt
 rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
-
+ 
+ 
 モデル全体の精度は判別しているので、最も現実的な次の手順は、モデルを使用して不明な将来の値を予測することです。 
 
 テスト セット `test_data` と同じ形式ですが将来の日時を使用してデータ セットを提供すると、結果の予測セットは時系列手順ごとに予測された値になります。 データ セット内の最後の時系列レコードは 2018 年 12 月 31 日のものだったとします。 次の日 (または予測する必要のある数の期間、< = `forecast_horizon`) の需要を予測するには、2019 年 1 月 1 日の店舗ごとに 1 つの時系列レコードを作成します。
@@ -398,24 +409,112 @@ day_datetime,store,week_of_year
 01/01/2019,A,1
 ```
 
-必要な手順を繰り返して、この将来のデータをデータフレームに読み込んで、`best_run.forecast(test_data)` を実行して将来の値を予測します。
+必要な手順を繰り返して、この将来のデータをデータフレームに読み込んで、`best_run.forecast_quantiles(test_data)` を実行して将来の値を予測します。
 
 > [!NOTE]
 > `target_lags` や `target_rolling_window_size` が有効になっている場合、サンプル内の予測は、自動 ML を使用した予測ではサポートされません。
 
+## <a name="forecasting-at-scale"></a>大規模な予測 
+
+機械学習モデルの数が 1 つでは不十分で、複数の機械学習モデルが必要になるシナリオがあります。 たとえば、1 つのブランドについて店舗ごとに売上を予測したり、個々のユーザーに合わせてエクスペリエンスを調整したりするような場合です。 インスタンスごとにモデルを構築すると、多くの機械学習の問題で結果が向上する可能性があります。 
+
+グループ化とは、時系列を組み合わせてグループごとに個々のモデルをトレーニングできる時系列予測の概念です。 このアプローチは、平滑化やフィリングが必要な時系列がある場合、つまりグループ内で他のエンティティの履歴や傾向が役立つ可能性があるエンティティがある場合に特に役立ちます。 多数モデルおよび階層型時系列予測は、これらの大規模な予測シナリオ向けに自動機械学習を利用したソリューションです。 
+
+### <a name="many-models"></a>多数モデル
+
+自動機械学習を備えた Azure Machine Learning 多数モデル ソリューションを使用すると、ユーザーは何百万ものモデルを並列でトレーニングおよび管理できます。 多数モデルでは、ソリューション アクセラレータは [Azure Machine Learning パイプライン](concept-ml-pipelines.md)を利用してモデルをトレーニングします。 具体的には、[Pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29) オブジェクトと [ParalleRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep) が使用されるため、[ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig) を介して設定された特定の構成パラメーターが必要です。 
+
+
+次の図は、多数モデル ソリューションのワークフローを示しています。 
+
+![多数モデルの概念図](./media/how-to-auto-train-forecast/many-models.svg)
+
+次のコードは、ユーザーが多数モデルの実行を設定するために必要な主要なパラメーターを示しています。
+
+```python
+from azureml.train.automl.runtime._many_models.many_models_parameters import ManyModelsTrainParameters
+
+partition_column_names = ['Store', 'Brand']
+automl_settings = {"task" : 'forecasting',
+                   "primary_metric" : 'normalized_root_mean_squared_error',
+                   "iteration_timeout_minutes" : 10, #This needs to be changed based on the dataset. Explore how long training is taking before setting this value 
+                   "iterations" : 15,
+                   "experiment_timeout_hours" : 1,
+                   "label_column_name" : 'Quantity',
+                   "n_cross_validations" : 3,
+                   "time_column_name": 'WeekStarting',
+                   "max_horizon" : 6,
+                   "track_child_runs": False,
+                   "pipeline_fetch_max_batch_size": 15,}
+
+mm_paramters = ManyModelsTrainParameters(automl_settings=automl_settings, partition_column_names=partition_column_names)
+
+```
+
+### <a name="hierarchical-time-series-forecasting"></a>階層型時系列予測
+
+ほとんどのアプリケーションでは、お客様はマクロ レベルとミクロ レベルでビジネスの予測を理解する必要があります。つまり、異なる地理的な場所での製品の売上を予測したり、会社のさまざまな組織に対して予想される従業員の要求を把握したりといったことです。 機械学習モデルをトレーニングして階層データをインテリジェントに予測する機能が不可欠です。 
+
+階層型時系列は、地域や製品の種類などのディメンションに基づいて、一意の各系列が階層に配置される構造です。 次の例は、階層を形成する一意の属性を含むデータを示しています。 この階層は、ヘッドフォンやタブレットなどの製品の種類、製品の種類をアクセサリーとデバイスに分割する製品カテゴリ、製品が販売されている地域によって定義されます。 
+
+![階層データを表す生データ テーブルの例](./media/how-to-auto-train-forecast/hierarchy-data-table.svg)
+ 
+これをさらに視覚化するために、階層のリーフ レベルには、属性値の一意の組み合わせを含むすべての時系列が含まれています。 階層内のレベルを 1 つ上がるごとに、時系列を定義するためのディメンションが 1 つ少なくなると考えられ、下位レベルの子ノードの各セットが親ノードに集計されます。
+ 
+![データの階層ビジュアル](./media/how-to-auto-train-forecast/data-tree.svg)
+
+階層型時系列ソリューションは、多数モデル ソリューションを基盤として構築され、同じ構成設定を共有します。
+
+次のコードは、階層型時系列予測の実行を設定するための主要なパラメーターを示しています。 
+
+```python
+
+from azureml.train.automl.runtime._hts.hts_parameters import HTSTrainParameters
+
+model_explainability = True
+
+engineered_explanations = False # Define your hierarchy. Adjust the settings below based on your dataset.
+hierarchy = ["state", "store_id", "product_category", "SKU"]
+training_level = "SKU"# Set your forecast parameters. Adjust the settings below based on your dataset.
+time_column_name = "date"
+label_column_name = "quantity"
+forecast_horizon = 7
+
+
+automl_settings = {"task" : "forecasting",
+                   "primary_metric" : "normalized_root_mean_squared_error",
+                   "label_column_name": label_column_name,
+                   "time_column_name": time_column_name,
+                   "forecast_horizon": forecast_horizon,
+                   "hierarchy_column_names": hierarchy,
+                   "hierarchy_training_level": training_level,
+                   "track_child_runs": False,
+                   "pipeline_fetch_max_batch_size": 15,
+                   "model_explainability": model_explainability,# The following settings are specific to this sample and should be adjusted according to your own needs.
+                   "iteration_timeout_minutes" : 10,
+                   "iterations" : 10,
+                   "n_cross_validations": 2}
+
+hts_parameters = HTSTrainParameters(
+    automl_settings=automl_settings,
+    hierarchy_column_names=hierarchy,
+    training_level=training_level,
+    enable_engineered_explanations=engineered_explanations
+)
+```
 
 ## <a name="example-notebooks"></a>サンプルの Notebook
-次のような高度な予測の構成の詳細なコード例については、[予測サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)を参照してください。
 
-* [休日の検出と特性付け](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
-* [ローリング オリジン クロス検証](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
-* [構成可能なラグ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
-* [ローリング ウィンドウの集計機能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
-* [DNN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
+次のような高度な予測の構成の詳細なコード例については、[予測サンプル ノートブック](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml)を参照してください。
+
+* [休日の検出と特性付け](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [ローリング オリジン クロス検証](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [構成可能なラグ](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [ローリング ウィンドウの集計機能](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [DNN](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
 
 ## <a name="next-steps"></a>次のステップ
 
 * [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
 * [解釈可能性: 自動機械学習のモデルの説明 (プレビュー)](how-to-machine-learning-interpretability-automl.md) について学習する。 
-* [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)で AutoML を使用して複数のモデルをトレーニングする方法について学習する。
-* 自動機械学習を使用して実験を作成するためのエンド ツー エンドの例については、[チュートリアル](tutorial-auto-train-models.md)に従ってください。
+* 自動機械学習で実験を作成するエンドツーエンドの例は、[回帰モデルのトレーニングのチュートリアル](tutorial-auto-train-models.md)に関する記事をご覧ください。

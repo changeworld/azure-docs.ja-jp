@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Microsoft ID プラットフォームのドキュメント
-summary: Microsoft ID プラットフォームは、認証サービス、オープンソース ライブラリ、およびアプリケーション管理ツールです。 Microsoft が提供するクイックスタート、チュートリアル、コード サンプルを使用して、標準ベースの最新の認証ソリューションを作成する方法について説明します。 ユーザーと顧客が自分の Microsoft ID またはソーシャル アカウントを使用してサインインし、API または Microsoft Graph などの Microsoft API へのアクセスを承認するアプリケーションを構築します。
+summary: 開発者向けの Microsoft ID プラットフォームは、認証サービス、オープンソース ライブラリ、およびアプリケーション管理ツールです。 Microsoft が提供するクイックスタート、チュートリアル、コード サンプルを使用して、標準ベースの最新の認証ソリューションを作成する方法について説明します。 ユーザーと顧客が自分の Microsoft ID またはソーシャル アカウントを使用してサインインし、API または Microsoft Graph などの Microsoft API へのアクセスを承認するアプリケーションを構築します。
 metadata:
   ms.topic: landing-page
-  ms.date: 10/07/2020
+  ms.date: 05/11/2021
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 954712c2056a4251bc92b71c5b7cd2f1309804b2
-  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+  ms.openlocfilehash: 607672d77a71dbcbe60042a2b6c6fd586aab8fe3
+  ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/13/2020
-  ms.locfileid: "91962022"
+  ms.lasthandoff: 05/11/2021
+  ms.locfileid: "109750522"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -51,11 +51,11 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Angular
-      url: quickstart-v2-angular.md
-    - text: JavaScript - 認証コード フロー
-      url: quickstart-v2-javascript-auth-code.md
-    - text: JavaScript - 暗黙的フロー
-      url: quickstart-v2-javascript.md
+      url: tutorial-v2-angular-auth-code.md
+    - text: JavaScript
+      url: tutorial-v2-javascript-auth-code.md
+    - text: React
+      url: tutorial-v2-react.md
 - title: Web アプリ
   linkLists:
   - linkListType: get-started
@@ -66,6 +66,8 @@ landingContent:
       url: quickstart-v2-aspnet-core-webapp.md
     - text: Blazor サーバー
       url: tutorial-blazor-server.md
+    - text: Node.js および Express
+      url: tutorial-v2-nodejs-webapp-msal.md
 - title: モバイル/ネイティブ アプリ
   linkLists:
   - linkListType: get-started
@@ -116,13 +118,9 @@ landingContent:
       url: ../managed-identities-azure-resources/overview.md
     - text: マネージド ID と Azure VM
       url: ../managed-identities-azure-resources/how-managed-identities-work-vm.md
-- title: ドキュメントの最新情報
+- title: ID プラットフォーム ドキュメントの新着情報
   linkLists:
   - linkListType: whats-new
     links:
     - text: ドキュメントの最新情報
       url: whats-new-docs.md
-    - text: Microsoft Identity Web ライブラリの概要
-      url: microsoft-identity-web.md
-    - text: チュートリアル:Blazor Server
-      url: tutorial-blazor-server.md

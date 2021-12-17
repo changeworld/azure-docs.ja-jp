@@ -4,13 +4,13 @@ description: この記事では、Kafka 用 Azure Event Hubs で Debezium を使
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
-ms.date: 01/06/2021
-ms.openlocfilehash: 0ad1df23e71e652f7d380ffbabb542b81954e038
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/18/2021
+ms.openlocfilehash: 033f02c2dec0d03e185401d3f4bbe2eadc053758
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935174"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242238"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>変更データ キャプチャ用に Azure Event Hubs の Apache Kafka Connect のサポートを Debezium と統合する
 
@@ -19,13 +19,13 @@ ms.locfileid: "97935174"
 > [!WARNING]
 > Apache Kafka Connect フレームワークと Debezium プラットフォームおよびそのコネクタを共に使用することは、**Microsoft Azure 経由の製品サポートの対象外です**。
 >
-> Apache Kafka Connect では、その動的構成が、通常であれば無制限の保持期間を持つ圧縮されたトピックに保持されていることを前提としています。 Azure Event Hubs では[圧縮がブローカー機能として実装されていないため](event-hubs-federation-overview.md#log-projections)、保持されるイベントに時間ベースの保持期間の制限が常に課されます。これは、Azure Event Hubs が長期間のデータまたは構成ストアではなく、リアルタイムのイベント ストリーミング エンジンであるという原則から来ています。
+> Apache Kafka Connect では、その動的構成が、通常であれば無制限の保持期間を持つ圧縮されたトピックに保持されていることを前提としています。 Event Hubs では[圧縮がブローカー機能として実装されていないため](event-hubs-federation-overview.md#log-projections)、保持されるイベントに時間ベースの保持期間の制限が常に課されます。これは、Event Hubs が長期間のデータまたは構成ストアではなく、リアルタイムのイベント ストリーミング エンジンであるという原則から来ています。
 >
 > Apache Kafka プロジェクトではこれらの役割が混同されていても問題ないかもしれませんが、Azure では、このような情報は適切なデータベースまたは構成ストアで管理するのが最適であると考えられています。
 >
-> Apache Kafka Connect のシナリオの多くは正常に機能しますが、Apache Kafka と Azure Event Hubs の保持モデル間のこれらの概念的な違いのために、特定の構成が期待どおりに機能しなくなる可能性があります。 
+> Apache Kafka Connect のシナリオの多くは正常に機能しますが、Apache Kafka と Event Hubs の保持モデル間のこれらの概念的な違いのために、特定の構成が期待どおりに機能しなくなる可能性があります。 
 
-このチュートリアルでは、[Azure Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (Kafka 用)、[Azure DB for PostgreSQL](../postgresql/overview.md)、Debezium を使用して、Azure で変更データ キャプチャ ベースのシステムを設定する方法について説明します。 ここでは、PostgreSQL のデータベース変更を Azure Event Hubs の Kafka トピックにストリーミングするために [Debezium PostgreSQL コネクタ](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html)を使用します。
+このチュートリアルでは、[Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (Kafka 用)、[Azure DB for PostgreSQL](../postgresql/overview.md)、Debezium を使用して、Azure で変更データ キャプチャ ベースのシステムを設定する方法について説明します。 ここでは、PostgreSQL のデータベース変更を Event Hubs の Kafka トピックにストリーミングするために [Debezium PostgreSQL コネクタ](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html)を使用します
 
 > [!NOTE]
 > この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
@@ -50,7 +50,7 @@ ms.locfileid: "97935174"
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
 Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 名前空間とイベント ハブを作成する手順については、[イベント ハブの作成](event-hubs-create.md)に関するページを参照してください。 Event Hubs の接続文字列と完全修飾ドメイン名 (FQDN) を、後で使用するために取得します。 手順については、「[Get an Event Hubs connection string (Event Hubs の接続文字列を取得する)](event-hubs-get-connection-string.md)」を参照してください。 
 
-## <a name="setup-and-configure-azure-database-for-postgresql"></a>Azure Database for PostgreSQL を設定および構成する
+## <a name="set-up-and-configure-azure-database-for-postgresql"></a>Azure Database for PostgreSQL を設定および構成する
 [Azure Database for PostgreSQL](../postgresql/overview.md) は、オープン ソースの PostgreSQL データベース エンジンのコミュニティ バージョンに基づいたリレーショナル データベース サービスであり、2 つのデプロイ オプションである Single Server と Hyperscale (Citus) で使用できます。 Azure portal を使用して Azure Database for PostgreSQL サーバーを作成するには、[この手順](../postgresql/quickstart-create-server-database-portal.md)に従ってください。 
 
 ## <a name="setup-and-run-kafka-connect"></a>Kafka Connect を設定して実行する
@@ -61,7 +61,7 @@ Event Hubs サービスとの間で送受信を行うには、イベント ハ�
 - Debezium コネクタを使用した Kafka Connect クラスターの起動
 
 ### <a name="download-and-setup-debezium-connector"></a>Debezium コネクタをダウンロードして設定する
-このコネクタをダウンロードして設定するには、[Debezium のドキュメント](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-deploying-a-connector)にある最新の手順に従ってください。
+[Debezium のドキュメント](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-deploying-a-connector)にある最新の手順に従って、コネクタをダウンロードして設定します。
 
 - コネクタのプラグイン アーカイブをダウンロードします。 たとえば、コネクタのバージョン `1.2.0` をダウンロードするには、リンク https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.2.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz を使用します。
 - JAR ファイルを抽出し、それを [Kafka Connect の plugin.path](https://kafka.apache.org/documentation/#connectconfigs) にコピーします。
@@ -69,6 +69,9 @@ Event Hubs サービスとの間で送受信を行うには、イベント ハ�
 
 ### <a name="configure-kafka-connect-for-event-hubs"></a>Event Hubs 用に Kafka Connect を構成する
 Kafka Connect のスループットを Kafka から Event Hubs にリダイレクトする際に、最小限の再構成が必要となります。  次の `connect-distributed.properties` サンプルは、Event Hubs 上の Kafka エンドポイントに対して認証と通信を行うように Connect を構成する方法を示しています。
+
+> [!IMPORTANT]
+> Debezium により、テーブルごとのトピックと、一連のメタデータ トピックが自動的に作成されます。 Kafka の **トピック** は、Event Hubs のインスタンス (イベント ハブ) に対応します。 Apache Kafka と Azure Event Hubs の対応については、「[Kafka と Event Hubs の概念のマッピング](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping)」をご覧ください。 Event Hubs 名前空間内のイベント ハブの数には、レベル (Basic、Standard、Premium、Dedicated) に応じて異なる **制限** があります。 これらの制限については、「[クォータ](compare-tiers.md#quotas)」をご覧ください。
 
 ```properties
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 # e.g. namespace.servicebus.windows.net:9093
@@ -164,7 +167,7 @@ curl -s http://localhost:8083/connectors/todo-connector/status
 ```
 
 ## <a name="test-change-data-capture"></a>変更データ キャプチャをテストする
-動作中の変更データ キャプチャを確認するには、Azure PostgreSQL データベースのレコードを作成/更新/削除する必要があります。
+動作中の変更データ キャプチャを確認するには、Azure PostgreSQL データベースのレコードを作成、更新、削除する必要があります。
 
 まず、Azure PostgreSQL データベースに接続します (次の例では [psql](https://www.postgresql.org/docs/12/app-psql.html) を使用します)。
 
@@ -179,7 +182,7 @@ psql -h my-postgres.postgres.database.azure.com -p 5432 -U testuser@my-postgres 
 **テーブルを作成し、レコードを挿入する**
 
 ```sql
-CREATE TABLE todos (id SERIAL, description VARCHAR(50), todo_status VARCHAR(10), PRIMARY KEY(id));
+CREATE TABLE todos (id SERIAL, description VARCHAR(50), todo_status VARCHAR(12), PRIMARY KEY(id));
 
 INSERT INTO todos (description, todo_status) VALUES ('setup postgresql on azure', 'complete');
 INSERT INTO todos (description, todo_status) VALUES ('setup kafka connect', 'complete');
@@ -187,7 +190,7 @@ INSERT INTO todos (description, todo_status) VALUES ('configure and install conn
 INSERT INTO todos (description, todo_status) VALUES ('start connector', 'pending');
 ```
 
-これでコネクタが動作を開始し、`my-server.public.todos` という名前を持つ Event Hubs トピックに変更データ イベントを送信します。ここで、`my-server` は `database.server.name` の値であり、`public.todos` は (`table.whitelist` 構成に従って) 変更を追跡しているテーブルであるとします。
+これでコネクタが動作を開始し、`my-server.public.todos` という名前を持つ Event Hubs トピックに変更データ イベントを送信します。ここで、`my-server` は `database.server.name` の値であり、`public.todos` は (`table.whitelist` 構成に従って) 変更を追跡しているテーブルであるとします
 
 **Event Hubs トピックを確認する**
 
@@ -216,7 +219,7 @@ export TOPIC=my-server.public.todos
 kafkacat -b $BROKER -t $TOPIC -o beginning
 ```
 
-`todos` テーブルに追加した行に応答して PostgreSQL で生成された変更データ イベントを表す JSON ペイロードが表示されます。 そのペイロードのスニペットを次に示します。
+`todos` テーブルに追加した行に応答して、PostgreSQL で生成された変更データ イベントを表す JSON ペイロードが表示されます。 そのペイロードのスニペットを次に示します。
 
 
 ```json
@@ -289,7 +292,7 @@ tail -f /Users/foo/todos-cdc.txt
 
 
 ## <a name="cleanup"></a>クリーンアップ
-Kafka Connect は、イベント ハブのトピックを作成することによって、Connect クラスターが停止した後も永続的に存在する構成、オフセット、状態を格納します。 この永続化が不要である場合は、これらのトピックを削除することをお勧めします。 また、このチュートリアルの過程で作成された `my-server.public.todos` イベント ハブを削除することもできます。
+Kafka Connect は、イベント ハブのトピックを作成することによって、Connect クラスターが停止した後も永続的に存在する構成、オフセット、状態を格納します。 この永続化が不要である場合は、これらのトピックを削除することをお勧めします。 また、このチュートリアルで作成された `my-server.public.todos` イベント ハブを削除することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,17 +1,18 @@
 ---
 title: Azure Cache for Redis での redis-cli の使用
 description: クライアントとして Azure Cache for Redis とやり取りするためのコマンドライン ツールとして *redis-cli.exe* を使用する方法について説明します。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 042db51ab51e9da586f028b8aa99e66ffaa36639
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4e753f23a5dce895260c4b1daea0ae33947cc8f6
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775675"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538191"
 ---
 # <a name="use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Azure Cache for Redis での Redis コマンドライン ツールの使用
 
@@ -33,7 +34,7 @@ Windows プラットフォームでこのツールを利用するには､[Redis
 
 このセクションでは､Azure Portal からキーを取得します｡
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-access-keys.md)]
 
 
 ## <a name="enable-access-for-redis-cliexe"></a>redis-cli.exe に対するアクセスを有効化する
@@ -46,9 +47,9 @@ Azure Cache for Redis は、既定で TLS ポート (6380) のみが有効化さ
 
     **stunnel GUI Start** を実行してサーバーを起動する
 
-    タスクバーにある stunnel サーバーのアイコンを右クリックして､**Show Log Window** をクリックします｡
+    タスク バーにある stunnel サーバーのアイコンを右クリックして､ **[Show Log Window]\(ログ ウィンドウの表示\)** を選択します｡
 
-    stunnel ログ ウィンドウのメニューで **Configuration** > **Edit Configuration** をクリックして現在の構成ファイルを開きます｡
+    stunnel ログ ウィンドウのメニューで **[構成]**  >  **[Edit Configuration]\(構成の編集\)** を選択して現在の構成ファイルを開きます｡
 
     **Service definitions** の部分に以下の *redis-cli.exe* 用のエントリを追加します｡ `yourcachename` の部分は実際のキャッシュ名に置き換えてください｡ 
 
@@ -61,7 +62,7 @@ Azure Cache for Redis は、既定で TLS ポート (6380) のみが有効化さ
 
     構成ファイルを保存して閉じます｡ 
   
-    stunnel ログ ウィンドウのメニューで **Configuration** > **Reload Configuration** をクリックします｡
+    stunnel ログ ウィンドウのメニューで **[構成]**  >  **[Reload Configuration]\(構成の再読み込み\)** を選択します｡
 
 
 ## <a name="connect-using-the-redis-command-line-tool"></a>Redis コマンドライン ツールで接続する

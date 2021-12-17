@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 42a9a0ea23faa481140a46ec52b2214431dd723e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42c90d009aefb399e7635ec4a7cd09f884f3c51c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101098039"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437650"
 ---
 # <a name="origin-and-origin-group-in-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard または Premium (プレビュー) における配信元と配信元グループ
 
@@ -28,7 +28,7 @@ ms.locfileid: "101098039"
 
 ## <a name="origin"></a>出発地
 
-Azure Front Door Standard または Premium の配信元とは、クライアント要求を処理するアプリケーションのホスト名またはパブリック IP を指します。 Azure Front Door Standard または Premium では、配信元グループ内で Azure と Azure 以外の両方のリソースがサポートされています。 アプリケーションは、オンプレミスのデータセンターで、または別のクラウド プロバイダーを使用してホストすることもできます。 配信元を、データベース層やストレージ層と混同しないでください。 配信元は、アプリケーション バックエンドのパブリック エンドポイントと見なす必要があります。 Azure Front Door Standard または Premium の配信元グループに配信元を追加する場合は、次の情報も追加する必要があります。
+Azure Front Door Standard または Premium の配信元とは、クライアント要求を処理するアプリケーションのホスト名またはパブリック IP を指します。 Azure Front Door Standard/Premium では、Azure origin および Azure origin 以外の両方が、たとえば、ご自身のアプリケーションがオンプレミスのデータセンター内でホストされているとき、または他のクラウド プロバイダーを使ってホストされているときにサポートされます。 配信元を、データベース層やストレージ層と混同しないでください。 配信元は、アプリケーション バックエンドのエンドポイントと見なす必要があります。 Azure Front Door Standard または Premium の配信元グループに配信元を追加する場合は、次の情報も追加する必要があります。
 
 * **配信元の種類**: 追加するリソースの種類。 Front Door では、App Service、クラウド サービス、または Storage からのアプリケーション バックエンドの自動検出がサポートされています。 Azure または Azure 以外のバックエンドで別のリソースが必要な場合は、**カスタム ホスト** を選択します。
 

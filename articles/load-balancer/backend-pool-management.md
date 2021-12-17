@@ -8,12 +8,13 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: c49a721a4db758965c9cf8d71f5d73b5754b6088
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3c9d1b7152133bf03b8bcdba9a7b97e5bef4a648
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654477"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028291"
 ---
 # <a name="backend-pool-management"></a>バックエンド プールの管理
 バックエンド プールは、ロード バランサーの重要なコンポーネントです。 バックエンド プールは、指定された負荷分散規則のトラフィックを処理するリソースのグループを定義します。
@@ -22,7 +23,7 @@ ms.locfileid: "104654477"
 * ネットワーク インターフェイス カード (NIC)
 * IP アドレスと Virtual Network (VNET) のリソース ID の組み合わせ
 
-既存の仮想マシンと仮想マシン スケール セットを使用する場合は、NIC によってバックエンド プールを構成します。 この方法では、リソースとバックエンド プールの間に最も直接的なリンクが構築されます。 
+既存の仮想マシンと仮想マシン スケール セットを使用する場合は、NIC によってバックエンド プールを構成します。 この方法では、リソースとバックエンド プールの間に最も直接的なリンクが構築されます。
 
 後で仮想マシンと仮想マシン スケール セットを作成する予定の IP アドレス範囲を使用してバックエンド プールを事前に割り当てる場合は、IP アドレスと VNET ID の組み合わせによってバックエンド プールを構成します。
 
@@ -33,7 +34,7 @@ ms.locfileid: "104654477"
 * Azure PowerShell
 * Azure CLI
 * REST API
-* Azure Resource Manager のテンプレート 
+* Azure Resource Manager のテンプレート
 
 これらのセクションでは、各構成オプションについてバックエンド プールがどのように構造化されているかについて詳しく説明します。
 
@@ -42,7 +43,7 @@ ms.locfileid: "104654477"
 
 次の例では、バックエンド プールの作成と設定の操作に焦点を当て、このワークフローと関係を強調表示しています。
 
-  >[!NOTE] 
+  >[!NOTE]
   >ネットワーク インターフェイスを使用して構成されたバックエンド プールは、バックエンド プールでの操作の一部として更新できないことに注意してください。 バックエンド リソースの追加または削除は、リソースのネットワーク インターフェイス上で行う必要があります。
 
 ### <a name="powershell"></a>PowerShell
@@ -53,7 +54,7 @@ $resourceGroup = "myResourceGroup"
 $loadBalancerName = "myLoadBalancer"
 $backendPoolName = "myBackendPool"
 
-$backendPool = 
+$backendPool =
 New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
@@ -67,10 +68,10 @@ $nicname = "myNic"
 $location = "eastus"
 $vnetname = <your-vnet-name>
 
-$vnet = 
+$vnet =
 Get-AzVirtualNetwork -Name $vnetname -ResourceGroupName $resourceGroup
 
-$nic = 
+$nic =
 New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicname -LoadBalancerBackendAddressPool $backendPoolName -Subnet $vnet.Subnets[0]
 ```
 
@@ -105,9 +106,9 @@ $location = "eastus"
 $nic =
 Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
 
-$vmConfig = 
+$vmConfig =
 New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
- 
+
 # Create a virtual machine using the configuration
 $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
@@ -119,7 +120,7 @@ $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -V
 az network lb address-pool create \
 --resource-group myResourceGroup \
 --lb-name myLB \
---name myBackendPool 
+--name myBackendPool
 ```
 
 新しいネットワーク インターフェイスを作成して、バックエンド プールに追加します。
@@ -158,7 +159,7 @@ az vm create \
 
 ### <a name="resource-manager-template"></a>Resource Manager テンプレート
 
-この[クイックスタート Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/)に従って、ロード バランサーと仮想マシンをデプロイし、ネットワーク インターフェイスを使用して仮想マシンをバックエンド プールに追加します。
+この[クイックスタート Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-standard-create/)に従って、ロード バランサーと仮想マシンをデプロイし、ネットワーク インターフェイスを使用して仮想マシンをバックエンド プールに追加します。
 
 この[クイックスタート Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-ip-configured-backend-pool)に従って、ロード バランサーと仮想マシンをデプロイし、IP アドレスを使用して仮想マシンをバックエンド プールに追加します。
 
@@ -203,7 +204,7 @@ Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBala
 ネットワーク インターフェイスを作成して、バックエンド プールに追加します。 IP アドレスをバックエンド アドレスの 1 つに設定します。
 
 ```azurepowershell-interactive
-$nic = 
+$nic =
 New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicName -PrivateIpAddress 10.0.0.4 -Subnet $virtualNetwork.Subnets[0]
 ```
 
@@ -225,7 +226,7 @@ $location = "eastus"
 $nic =
 Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
 
-$vmConfig = 
+$vmConfig =
 New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 
 # Create a virtual machine using the configuration
@@ -233,7 +234,7 @@ $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -V
 ```
 
 ### <a name="cli"></a>CLI
-CLI を使用すると、コマンドライン パラメーターを使用するか、JSON 構成ファイルを使用して、バックエンド プールを設定できます。 
+CLI を使用すると、コマンドライン パラメーターを使用するか、JSON 構成ファイルを使用して、バックエンド プールを設定できます。
 
 コマンドライン パラメーターを使用して、バックエンド プールを作成して設定します。
 
@@ -307,21 +308,23 @@ az vm create \
   --admin-username azureuser \
   --generate-ssh-keys
 ```
- 
+
 ### <a name="limitations"></a>制限事項
 IP アドレスで構成されたバックエンド プールには、次の制限があります。
   * 使用できるのは Standard ロード バランサーのみ
   * バックエンド プール内の IP アドレスの上限は 100 個
   * バックエンド リソースは、ロード バランサーと同じ仮想ネットワークに存在する必要がある
   * IP ベースのバックエンド プールを使用するロード バランサーは、Private Link サービスとして機能することはできない
-  * この機能は Azure portal では現在サポートされていない
   * この機能では、ACI コンテナーは現在サポートされていない
   * Application Gateway などのロード バランサーやサービスは、ロード バランサーのバックエンド プールに配置できない
   * インバウンド NAT 規則を IP アドレスで指定することはできない
+
+>[!Important]
+> バックエンド プールが IP アドレス別に構成されている場合、既定の送信が有効な Basic ロード バランサーとして動作します。 既定でセキュリティで保護された構成の場合と、送信のニーズが厳しいアプリケーションの場合は、バックエンド プールを NIC 別に構成します。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure Load Balancer のバックエンド プール管理についてと、IP アドレスと仮想ネットワークを使用してバックエンド プールを構成する方法について学習しました。
 
 [Azure Load Balancer](load-balancer-overview.md) についてさらに詳しく学習する。
 
-IP ベースのバックエンド プール管理用の [REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerbackendaddresspools/createorupdate) を確認する。
+IP ベースのバックエンド プール管理用の [REST API](/rest/api/load-balancer/loadbalancerbackendaddresspools/createorupdate) を確認する。

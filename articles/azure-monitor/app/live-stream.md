@@ -2,14 +2,14 @@
 title: Live Metrics Stream による診断 - Azure Application Insights
 description: カスタム メトリックを使用して Web アプリをリアルタイムで監視し、エラー、トレース、イベントのライブ フィードを使用して問題を診断します。
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 10/12/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 865de94f1d9b4012a908643bbf87f38aeb8594a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c587cc9bdfa4fdc0483a99d9248fbd986c048e8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98679468"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026243"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
@@ -160,7 +160,7 @@ Application Insights Telemetry だけでなく、Windows パフォーマンス �
 ## <a name="secure-the-control-channel"></a>コントロール チャネルの保護
 
 > [!NOTE]
-> 現時点では、コード ベースの監視を使用して認証されたチャネルのみを設定できます。コードなしアタッチを使用してサーバーを認証することはできません。
+> 現時点では、Azure サービス統合 (または自動インストルメンテーション) を使用してサーバーを認証することはできませんが、手動インストルメンテーション (SDK) を使用して認証済みのチャネルを設定することはできません。
 
 LiveMetrics ポータルで指定したカスタム フィルター条件は、Application Insights SDK の Live Metrics コンポーネントに送信されます。 フィルターに顧客 ID などの機密情報が含まれている可能性があります。 インストルメンテーション キーに加え、シークレット API キーを使用してチャネルをセキュリティで保護できます。
 
@@ -175,7 +175,7 @@ LiveMetrics ポータルで指定したカスタム フィルター条件は、A
 
 applicationinsights.config ファイルで、AuthenticationApiKey を QuickPulseTelemetryModule に追加します。
 
-```XML
+```xml
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
       <AuthenticationApiKey>YOUR-API-KEY-HERE</AuthenticationApiKey>
 </Add>
@@ -233,8 +233,8 @@ Application Insights リソース内から API キーを作成し、Function App
 
 ![Live Metrics の認証オプション](./media/live-stream/live-stream-auth.png)
 
->[!NOTE]
->フィルター条件に CustomerID などの機密情報を入力する前に、認証済みチャネルを設定することを強くお勧めします。
+> [!NOTE]
+> フィルター条件に CustomerID などの機密情報を入力する前に、認証済みチャネルを設定することを強くお勧めします。
 >
 
 ## <a name="supported-features-table"></a>サポートされる機能の表
@@ -245,7 +245,7 @@ Application Insights リソース内から API キーを作成し、Function App
 | .NET Core (ターゲット =.NET Framework)| サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降)  |
 | .NET Core (ターゲット =.NET Core)     | サポート対象 (V2.4.1 以降) | サポート対象*          | サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降) | **サポートされていません**    |
 | Azure Functions v2               | サポートされています           | サポートされています           | サポートされています           | サポートされています           | **サポートされていません**    |
-| Java                             | サポート対象 (V2.0.0 以降) | サポート対象 (V2.0.0 以降) | **サポートされていません**   | **サポートされていません**   | **サポートされていません**    |
+| Java                             | サポート対象 (V2.0.0 以降) | サポート対象 (V2.0.0 以降) | **サポートされていません**   | サポート対象 (V3.2.0 以降) | **サポートされていません**    |
 | Node.js                          | サポート対象 (V1.3.0 以降) | サポート対象 (V1.3.0 以降) | **サポートされていません**   | サポート対象 (V1.3.0 以降) | **サポートされていません**    |
 
 基本メトリックには、要求、依存関係、例外率が含まれます。 パフォーマンス メトリック (パフォーマンス カウンター) には、メモリと CPU が含まれます。 テレメトリのサンプルには、失敗した要求と依存関係、例外、イベント、トレースに関する詳細情報のストリームが表示されます。

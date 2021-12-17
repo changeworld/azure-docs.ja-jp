@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: b943be684d84e1e193d9318e9f1c6423dcd38795
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 551ec61a167f81be638c72604d982e1903b33b91
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648927"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132295400"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>チュートリアル:JFrog Artifactory と Azure Active Directory の統合
 
@@ -76,29 +76,29 @@ JFrog Artifactory に対して Azure AD SSO を構成してテストするには
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`<servername>.jfrog.io` の形式で URL を入力します。
+    a. **[識別子]** テキスト ボックスに、Artifactory の URL を反映した URL を入力します。
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
     
-    - Artifactory 6.x の場合: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse`
-    - Artifactory 7.x の場合: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
+    - Artifactory セルフホステッドの場合: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse`
+    - Artifactory SaaS の場合: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
-    - Artifactory 6.x の場合: `https://<servername>.jfrog.io/<servername>/webapp/`
-    - Artifactory 7.x の場合: `https://<servername>.jfrog.io/ui/login`
+    - Artifactory セルフホステッドの場合: `https://<servername>.jfrog.io/<servername>/webapp/`
+    - Artifactory SaaS の場合: `https://<servername>.jfrog.io/ui/login`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[JFrog Artifactory Client クライアント サポート チーム](https://support.jfrog.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. JFrog Artifactory アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして [ユーザー属性] ダイアログを開きます。
+1. JFrog Artifactory アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして [ユーザー属性とクレーム] ダイアログを開きます。
 
     ![編集コントロールが強調表示された [ユーザー属性] 画面のスクリーンショット。](common/edit-attribute.png)
 
-1. これに加え、JFrog Artifactory では、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求 (プレビュー)]** ダイアログの **[ユーザー属性とクレーム]** セクションで、次の手順を実行します。
+1. これに加え、JFrog Artifactory では、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性とクレーム]** セクションで **[グループ要求を追加する]** をクリックし、次の手順を実行します。
 
-    a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある **ペン** をクリックします。
+    a。 **[Groups returned in claim]\(要求で返されるグループ\)** の横にある **[開く]** をクリックします。
 
     ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes & Claims]\(ユーザー属性と要求\) を示しています。](./media/jfrog-artifactory-tutorial/configuration-4.png)
 
@@ -114,8 +114,8 @@ JFrog Artifactory に対して Azure AD SSO を構成してテストするには
 
 6. [識別子] フィールド (手順 4. を参照) を使用して、Artifactory (SAML サービス プロバイダー名) を構成します。 **[JFrog Artifactory のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
-   - Artifactory 6.x の場合: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse` 
-   - Artifactory 7.x の場合: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
+   - Artifactory セルフホステッドの場合: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse` 
+   - Artifactory SaaS の場合: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -165,8 +165,8 @@ JFrog Artifactory に対して Azure AD SSO を構成してテストするには
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した JFrog Artifactory に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [JFrog Artifactory] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した JFrog Artifactory に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [JFrog Artifactory] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した JFrog Artifactory に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-JFrog Artifactory を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+JFrog Artifactory を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

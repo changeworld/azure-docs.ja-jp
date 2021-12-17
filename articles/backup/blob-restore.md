@@ -1,16 +1,16 @@
 ---
 title: Azure の BLOB を復元する
-description: Azure の BLOB を復元する方法について説明します (プレビュー)。
+description: Azure の BLOB を復元する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: 4cbd47ea654115f00095e30f7d5114aec0f2c85a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/05/2021
+ms.openlocfilehash: aaca425e2ea13948fbd52bf60ed30d64c29c27d3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743761"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767277"
 ---
-# <a name="restore-azure-blobs-in-preview"></a>Azure の BLOB を復元する (プレビュー)
+# <a name="restore-azure-blobs"></a>Azure の BLOB を復元する
 
 運用バックアップが構成されているストレージ アカウントのブロック BLOB は、保持期間内の任意の時点に復元できます。 また、復元の対象をストレージ アカウント内のすべてのブロック BLOB または BLOB のサブセットにすることができます。
 
@@ -84,4 +84,4 @@ ms.locfileid: "101743761"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Blob の運用バックアップの概要 (プレビュー)](blob-backup-overview.md)
+- [Azure Blob の運用バックアップの概要](blob-backup-overview.md)

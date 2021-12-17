@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace の Azure 仮想イメージをテストする
-description: Azure Marketplace で Azure 仮想マシン オファーをテストして送信する方法について学習します。
+description: Azure Marketplace で Azure 仮想マシン オファーをテストして送信します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: kriti-ms
-ms.author: krsh
+author: ebolton-cyber
+ms.author: edewebolton
 ms.date: 03/10/2021
-ms.openlocfilehash: 467b7d605b57c479d84fc995b4e0dc53b3ac5275
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 72873f93b80048f2da9cfe28a45f8d3032abfd46
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558297"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710186"
 ---
 # <a name="test-a-virtual-machine-image"></a>仮想マシン イメージをテストする
 
@@ -20,12 +20,12 @@ ms.locfileid: "105558297"
 
 ## <a name="deploy-an-azure-vm"></a>Azure VM をデプロイする
 
-Shared Image Gallery イメージから VM をデプロイするには、次の手順を実行します。
+Azure Compute Gallery (以前の Shared Image Gallery) のイメージから VM をデプロイするには:
 
-1. Shared Image Gallery イメージのバージョンに移動します。
-1. [VM の作成] をクリックします。
+1. Azure Compute Gallery のイメージ バージョンに移動します。
+1. **[VM の作成]** を選択します。
 1. 仮想マシン名を指定し、VM のサイズを選択します。
-1. [確認および作成] をクリックします。 検証に成功したら、[作成] をクリックします
+1. **[Review + create]\(レビュー + 作成\)** を選択します。 検証に合格したら、 **[作成]** を選択します。
 
 > [!NOTE]
 > vhd ファイルから VM を作成する必要がある場合は、[Azure Resource Manager テンプレートを準備する](#connect-the-certification-tool-to-a-vm-image)か、[PowerShell を使用して Azure VM をデプロイする](#how-to-use-powershell-to-consume-the-self-test-api)手順に従います。
@@ -34,7 +34,7 @@ Shared Image Gallery イメージから VM をデプロイするには、次の�
 
 VM オファーを送信する前に、次の手順を完了します。
 
-- 一般化されたイメージを使用して Azure VM をデプロイします。[承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-create-using-approved-base.md)に関するページまたは[独自のイメージを使用した仮想マシンの作成](azure-vm-create-using-own-image.md)に関するページを参照してください。
+- 一般化されたイメージを使用して Azure VM をデプロイします。[承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-use-approved-base.md)に関するページまたは[独自のイメージを使用した仮想マシンの作成](azure-vm-use-own-image.md)に関するページを参照してください。
 - 検証を実行します。
 
 ## <a name="run-validations"></a>検証を実行する
@@ -280,4 +280,4 @@ For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
 
 ## <a name="next-steps"></a>次の手順
 
-- [パートナー センター](https://partner.microsoft.com/)にサインインします。
+- [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2166002)にサインインします。

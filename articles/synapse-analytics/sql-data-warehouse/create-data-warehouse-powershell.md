@@ -10,17 +10,13 @@ ms.date: 4/11/2019
 ms.topic: quickstart
 ms.service: synapse-analytics
 ms.subservice: sql-dw
-ms.custom:
-- seo-lt-2019
-- azure-synapse
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: 65bf509c8eb654a9f7712fdf7b94ff7fa26a3d32
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell, seo-lt-2019, azure-synapse, mode-api
+ms.openlocfilehash: 261d8cfe1264b793d68574c5050ef6dcceacb7f7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537445"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013386"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>クイックスタート: Azure PowerShell で専用 SQL プール (以前の SQL DW) を作成する
 
@@ -115,7 +111,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 
 次の例では、以前に定義した変数を使用して専用 SQL プール (以前の SQL DW) を作成します。  サービス目標には DW100c を指定します。これは、専用 SQL プール (以前の SQL DW) 用の低コストの開始点です。
 
-```Powershell
+```powershell
 New-AzSqlDatabase `
     -ResourceGroupName $resourcegroupname `
     -ServerName $servername `

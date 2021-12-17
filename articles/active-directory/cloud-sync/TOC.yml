@@ -34,6 +34,8 @@
           href: how-to-prerequisites.md
         - name: Azure AD Connect クラウド プロビジョニング エージェントのインストール
           href: how-to-install.md
+        - name: CLI と PowerShell を使用してプロビジョニング エージェントをインストールする
+          href: how-to-install-pshell.md
         - name: クラウド同期の構成
           href: how-to-configure.md
         - name: オンデマンド プロビジョニング
@@ -56,14 +58,16 @@
           href: how-to-manage-registry-options.md
         - name: エージェントの gMSA PowerShell コマンドレット
           href: how-to-gmsa-cmdlets.md
-        - name: PowerShell を使用してプロビジョニング エージェントをインストールする
-          href: how-to-install-pshell.md
+        - name: クラウド同期を使用して usertype をマップする方法
+          href: how-to-map-usertype.md
     - name: 開発
       items:
         - name: 変換
           href: how-to-transformation.md
         - name: MS Graph API を使用してクラウドの同期をプログラムで構成する
           href: how-to-inbound-synch-ms-graph.md
+        - name: 式ビルダー
+          href: how-to-expression-builder.md
         - name: Azure AD の同期 API
           href: /graph/api/resources/synchronization-overview
     - name: トラブルシューティング
@@ -77,7 +81,7 @@
     - name: Azure AD Connect クラウド プロビジョニング エージェントのバージョン履歴
       href: reference-version-history.md
     - name: Azure AD Connect クラウド同期の FAQ
-      href: reference-cloud-sync-faq.md
+      href: reference-cloud-sync-faq.yml
     - name: AADCloudSyncTools PowerShell モジュール
       href: reference-powershell.md
     - name: 同期される属性

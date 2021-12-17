@@ -5,16 +5,19 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 53c0afa1cdb8c9920875b7ba694339107714bd54
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9f7d1c7238e742ab8d04cf349bd8560db861b801
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462208"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080709"
 ---
 # <a name="add-questions-and-answer-with-qna-maker-portal"></a>QnA Maker ポータルで質問と回答を追加する
 
 ナレッジ ベースを作成したら、質問と回答 (QnA) のペアを、回答をフィルター処理するためのメタデータと共に追加します。 次の表には Azure サービスの制限についての質問が記載されていますが、関係する Azure Search サービスはそれぞれ異なります。
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 <a name="qna-table"></a>
 

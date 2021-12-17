@@ -5,23 +5,23 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 03/02/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: e9c583db7493afc04b2c66553801f62d364b0a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca21e367752451f01c7ee8d1fc9596cfcb74029b
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419610"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094445"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>クイック スタート: Azure CLI を使用してルート サーバーを作成および構成する 
 
-この記事は、Azure CLI を使用して、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) とピアリングするように Azure Route Server を構成するのに役立ちます。 Azure Route Server では、NVA からルートを学習し、仮想ネットワーク内の仮想マシンに対してそれらをプログラムします。 また、NVA に仮想ネットワーク ルートをアドバタイズします。 詳細については、[Azure Route Server](overview.md) に関するページを参照してください。
+この記事は、Azure PowerShell を使用して、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) とピアリングするように Azure Route Server を構成するのに役立ちます。 Route Server では、NVA からルートを学習し、仮想ネットワーク内の仮想マシン上にそれらをプログラムします。 また、Azure Route Server は NVA に仮想ネットワーク ルートをアドバタイズします。 詳細については、[Azure Route Server](overview.md) に関するページを参照してください。
+
+:::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Azure CLI を使用した Route Server デプロイ環境の図。" border="false":::
 
 > [!IMPORTANT]
-> Azure Route Server (プレビュー) は現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> 9 月 1 日より前に作成した Azure Route Server があり、パブリック IP アドレスが関連付けられていない場合は、管理目的で IP アドレスを取得できるようにするため、Route Server を再作成する必要があります。
 
 ##  <a name="prerequisites"></a>前提条件 
 
@@ -29,9 +29,7 @@ ms.locfileid: "103419610"
 * 最新の Azure CLI があることを確認してください。ポータルで Azure Cloud Shell を使用することもできます。 
 * [Azure Route Server のサービスの制限](route-server-faq.md#limitations)を確認します。 
 
-##  <a name="create-a-route-server"></a>ルート サーバーを作成する 
-
-###  <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure アカウントにサインインしてサブスクリプションを選択します。 
+##  <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure アカウントにサインインしてサブスクリプションを選択します。 
 
 構成を始めるには、Azure アカウントにサインインします。 Cloud Shell の "試してみる" オプションを使用している場合は、自動的にサインインします。 接続については、次の例を参照してください。
 
@@ -48,76 +46,111 @@ az account list
 ExpressRoute 回線を作成するサブスクリプションを選択します。
 
 ```azurecli-interactive
-az account set --subscription "<subscription ID>"
+az account set \
+    --subscription "<subscription ID>"
 ```
 
-### <a name="create-a-resource-group-and-virtual-network"></a>リソース グループと仮想ネットワークを作成する 
+## <a name="create-a-resource-group-and-a-virtual-network"></a>リソース グループと仮想ネットワークを作成する 
 
-Azure Route Server を作成するには、デプロイをホストする仮想ネットワークが必要です。 次のコマンドを使用して、リソース グループと仮想ネットワークを作成します。 既に仮想ネットワークがある場合は、次のセクションに進むことができます。
+### <a name="create-a-resource-group"></a>リソース グループを作成する
+
+Azure Route Server を作成する前に、Route Server をホストするリソース グループを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、**myRouteServerRG** という名前のリソース グループを **westus** の場所に作成します。
 
 ```azurecli-interactive
-az group create -n "RouteServerRG" -l "westus" 
-az network vnet create -g "RouteServerRG" -n "myVirtualNetwork" --address-prefix "10.0.0.0/16" 
+az group create \
+    --name myRouteServerRG \
+    --location westus
+```
+
+### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+
+[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して仮想ネットワークを作成します。 この例では、**myVirtualNetwork** という名前の既定の仮想ネットワークを作成します。 既に仮想ネットワークがある場合は、次のセクションに進むことができます。
+
+```azurecli-interactive
+az network vnet create \
+    --name myVirtualNetwork \
+    --resource-group myRouteServerRG \
+    --address-prefix 10.0.0.0/16 
 ``` 
 
-### <a name="add-a-subnet"></a>サブネットの追加 
+### <a name="add-a-dedicated-subnet"></a>専用サブネットを追加する 
 
-1. *RouteServerSubnet* という名前のサブネットを追加して、Azure Route Server の情報をデプロイします。 このサブネットは、Azure Route Server 専用のサブネットです。 RouteServerSubnet は /27 またはそれより短いプレフィックス (/26、/25 など) でなければなりません。そうでないと、Azure Route Server を追加するときにエラー メッセージが表示されます。
+Azure Route Server には、*RouteServerSubnet* という名前の専用サブネットが必要です。 サブネットのサイズは、少なくとも /27 または短いプレフィックス (/26 や /25 など) である必要があります。そうでない場合は、Route Server をデプロイするときにエラー メッセージが表示されます。 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) を使用して **RouteServerSubnet** という名前のサブネット構成を作成します。
 
-    ```azurecli-interactive 
-    az network vnet subnet create -g "RouteServerRG" --vnet-name "myVirtualNetwork" --name "RouteServerSubnet" --address-prefix "10.0.0.0/24"  
-    ``` 
-
-1. RouteServerSubnet ID を取得します。 仮想ネットワーク内のすべてのサブネットのリソース ID を表示するには、このコマンドを使用します。 
+1. 次のコマンドを実行して、*RouteServerSubnet* を自分の仮想ネットワークに追加します。
 
     ```azurecli-interactive 
-    $subnet_id = $(az network vnet subnet show -n "RouteServerSubnet" --vnet-name "myVirtualNetwork" -g "RouteServerRG" --query id -o tsv) 
+    az network vnet subnet create \
+        --name RouteServerSubnet \
+        --resource-group myRouteServerRG \
+        --vnet-name myVirtualNetwork \
+        --address-prefix 10.0.0.0/24)
     ``` 
 
-RouteServerSubnet ID は次のようになります。 
+1. RouteServerSubnet ID を書き留めておきます。 *RouteServerSubnet* のリソース ID を取得して `subnet_id` 変数に格納するには、[az network vnet subnet show](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_show) を使用します。
 
-`/subscriptions/<subscriptionID>/resourceGroups/RouteServerRG/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/RouteServerSubnet`
+    ```azurecli-interactive 
+    subnet_id=$(az network vnet subnet show \
+        --name RouteServerSubnet \
+        --resource-group myRouteServerRG \
+        --vnet-name myVirtualNetwork \
+        --query id -o tsv) 
+
+    echo $subnet_id
+    ```
 
 ## <a name="create-the-route-server"></a>ルート サーバーを作成する 
 
-このコマンドを使用して、ルート サーバーを作成します。 
+1. Route Server の構成が管理されるバックエンド サービスへの接続を確保するために、パブリック IP アドレスの割り当てが必要です。 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) を使用して、**RouteServerIP** という名前の標準パブリック IP を作成します。
 
-```azurecli-interactive
-az network routeserver create -n "myRouteServer" -g "RouteServerRG" --hosted-subnet $subnet_id  
-``` 
+    ```azurecli-interactive
+    az network public-ip create \
+        --name RouteServerIP \
+        --resource-group myRouteServerRG \
+        --version IPv4 \
+        --sku Standard
+    ```
 
-この場所は、仮想ネットワークの場所と一致している必要があります。 HostedSubnet は、前のセクションで取得した RouteServerSubnet ID です。 
+2. [az network routeserver create](/cli/azure/network/routeserver#az_network_routeserver_create) を使用して Azure Route Server を作成します。 この例では、**myRouteServer** という名前の Azure Route Server を作成します。 *hosted-subnet* は、前のセクションで作成した RouteServerSubnet のリソース ID です。
 
-## <a name="create-peering-with-an-nva"></a>NVA とのピアリングを作成する 
+    ```azurecli-interactive
+    az network routeserver create \
+        --name myRouteServer \
+        --resource-group myRouteServerRG \
+        --hosted-subnet $subnet_id \
+        --public-ip-address RouteServerIP
+    ``` 
 
-次のコマンドを使用して、ルート サーバーから NVA へのピアリングを確立します。 
+## <a name="create-bgp-peering-with-an-nva"></a>NVA との BGP ピアリングを作成する 
+
+[az network routeserver peering create](/cli/azure/network/routeserver/peering#az_network_routeserver_peering_create) を使用して、Route Server と NVA の間に BGP ピアリングを確立します。 
+
+`peer-ip` は、NVA に割り当てられた仮想ネットワーク IP です。 `peer-asn` は、NVA で構成された自律システム番号 (ASN) です。 ASN は、65515 から 65520 の範囲に含まれているもの以外の 16 ビットの任意の数値にすることができます。 この ASN の範囲は Microsoft によって予約されています。
 
 ```azurecli-interactive 
-
-az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA1_name" 
-
+az network routeserver peering create \
+    --name myNVA \
+    --peer-ip 192.168.0.1 \
+    --peer-asn 65501 \
+    --routeserver myRouteServer \
+    --resource-group myRouteServerRG
 ``` 
 
-"nva_ip" は、NVA に割り当てられた仮想ネットワーク IP です。 "nva_asn" は、NVA で構成された自律システム番号 (ASN) です。 ASN は、65515 から 65520 の範囲に含まれているもの以外の 16 ビットの任意の数値にすることができます。 この ASN の範囲は Microsoft によって予約されています。 
-
-冗長性を確保するために、異なる NVA、または同じ NVA の別のインスタンスとのピアリングを設定するには、このコマンドを使用します。
-
-```azurecli-interactive 
-
-az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA2_name" 
-``` 
+冗長性を確保するために、異なる NVA、または同じ NVA の別のインスタンスとのピアリングを設定するには、異なる *PeerName*、*PeerIp*、および *PeerAsn* を使って上記と同じコマンドを使用します。
 
 ## <a name="complete-the-configuration-on-the-nva"></a>NVA の構成を完了する 
 
-NVA の構成を完了して BGP セッションを有効にするには、Azure Route Server の IP と ASN が必要です。 この情報は、このコマンドを使用して取得できます。 
+NVA の構成を完了して BGP セッションを有効にするには、Azure Route Server の IP と ASN が必要です。 この情報は、[az network routeserver show](/cli/azure/network/routeserver#az_network_routeserver_show) を使用して取得できます。
 
 ```azurecli-interactive 
-az network routeserver show -g "RouteServerRG" -n "myRouteServer" 
+az network routeserver show \
+    --name myRouteServer \
+    --resource-group myRouteServerRG 
 ``` 
 
-出力には次の情報が含まれます。 
+出力は次のようになります。
 
-```azurecli-interactive 
+``` 
 RouteServerAsn  : 65515 
 
 RouteServerIps  : {10.5.10.4, 10.5.10.5}  "virtualRouterAsn": 65515, 
@@ -134,53 +167,74 @@ RouteServerIps  : {10.5.10.4, 10.5.10.5}  "virtualRouterAsn": 65515,
 
 ## <a name="configure-route-exchange"></a>ルート交換を構成する 
 
-同じ VNet に ExpressRoute ゲートウェイと Azure VPN ゲートウェイがあり、それらでルートを交換する場合は、Azure Route Server でルート交換を有効にすることができます。
+同じ仮想ネットワーク内に ExpressRoute と Azure VPN ゲートウェイがあり、それらでルートを交換する場合は、Azure Route Server でルート交換を有効にできます。
 
 > [!IMPORTANT]
 > グリーンフィールド デプロイの場合は、Azure Route Server を作成する前に必ず Azure VPN ゲートウェイを作成してください。そうしないと、Azure VPN Gateway のデプロイが失敗します。
 > 
 
-1. Azure Route Server とゲートウェイ間のルート交換を有効にするには、このコマンドを使用します。
+1. Azure Route Server とゲートウェイ間のルート交換を有効にするには、`--allow-b2b-traffic`` フラグを **true** に設定して [az network routerserver update](/cli/azure/network/routeserver#az_network_routeserver_update) を使用します。
 
-```azurecli-interactive 
-az network routeserver update -g "RouteServerRG" -n "myRouteServer" --allow-b2b-traffic true 
+    ```azurecli-interactive 
+    az network routeserver update \
+        --name myRouteServer \
+        --resource-group myRouteServerRG \
+        --allow-b2b-traffic true 
+    ``` 
 
-``` 
+2. Azure Route Server とゲートウェイ間のルート交換を無効にするには、`--allow-b2b-traffic`` フラグを **false** に設定して [az network routerserver update](/cli/azure/network/routeserver#az_network_routeserver_update) を使用します。
 
-2. Azure Route Server とゲートウェイ間のルート交換を無効にするには、このコマンドを使用します。
-
-```azurecli-interactive
-az network routeserver update -g "RouteServerRG" -n "myRouteServer" --allow-b2b-traffic false 
-``` 
+    ```azurecli-interactive
+    az network routeserver update \
+        --name myRouteServer \
+        --resource-group myRouteServerRG \
+        --allow-b2b-traffic false 
+    ``` 
 
 ## <a name="troubleshooting"></a>トラブルシューティング 
 
-このコマンドを使用して、Azure Route Server によってアドバタイズおよび受信されたルートを表示できます。
+[az network routeserver peering list-advertised-routes](/cli/azure/network/routeserver/peering#az_network_routeserver_peering_list_advertised_routes) を使用して、Azure Route Server によってアドバタイズされたルートを表示します。
 
 ```azurecli-interactive 
-az network routeserver peering list-advertised-routes -g RouteServerRG --vrouter-name myRouteServer -n NVA1_name 
-az network routeserver peering list-learned-routes -g RouteServerRG --vrouter-name myRouteServer -n NVA1_name 
+az network routeserver peering list-advertised-routes \
+    --name myNVA \
+    --routeserver myRouteServer \
+    --resource-group myRouteServerRG
+```
+
+[az network routeserver peering list-learned-routes](/cli/azure/network/routeserver/peering#az_network_routeserver_peering_list_learned_routes) を使用して、Azure Route Server によって学習されたルートを表示します。
+
+```azurecli-interactive
+az network routeserver peering list-learned-routes \
+    --name myNVA \
+    --routeserver myRouteServer
+    --resource-group myRouteServerRG \
 ``` 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure Route Server が不要になった場合は、これらのコマンドを使用して BGP ピアリングを削除してから、ルート サーバーを削除します。 
+Azure Route Server が不要になった場合は、最初のコマンドを使用して BGP ピアリングを削除してから、2 番目のコマンドを使用して Route Server を削除します。 
 
-1. このコマンドを使用して、Azure Route Server と NVA の間の BGP ピアリングを削除します。
+1. [az network routeserver peering delete](/cli/azure/network/routeserver/peering#az_network_routeserver_peering_delete) を使用して、Azure Route Server と NVA の間の BGP ピアリングを削除します。
 
-```azurecli-interactive
-az network routeserver peering delete --routeserver-name "myRouteServer" -g "RouteServerRG" -n "NVA2_name" 
-``` 
+    ```azurecli-interactive
+    az network routeserver peering delete \
+        --name myNVA \
+        --routeserver myRouteServer \
+        --resource-group myRouteServerRG
+    ``` 
 
-2. このコマンドを使用して、Azure Route Server を削除します。 
+2. [az network routeserver delete](/cli/azure/network/routeserver#az_network_routeserver_delete) を使用して Azure Route Server を削除します。 
 
-```azurecli-interactive 
-az network routeserver delete -n "myRouteServer" -g "RouteServerRG" 
-``` 
+    ```azurecli-interactive 
+    az network routeserver delete \
+        --name myRouteServer \
+        --resource-group myRouteServerRG
+    ``` 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-Azure Route Server を作成した後、Azure Route Server が ExpressRoute および VPN Gateway とどのように連携するかについては、以下を参照してください。 
+Azure Route Server を作成した後、Azure Route Server と ExpressRoute および VPN Gateway との連携方法について引き続き学習するには、次を参照してください。 
 
 > [!div class="nextstepaction"]
 > [Azure ExpressRoute と Azure VPN のサポート](expressroute-vpn-support.md)

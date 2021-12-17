@@ -46,7 +46,7 @@
     - name: オンプレミスとクラウドの間でのデータ移動
       href: data-factory-move-data-between-onprem-and-cloud.md
     - name: よく寄せられる質問
-      href: data-factory-faq.md
+      href: data-factory-faq.yml
 - name: 操作方法
   items:
     - name: データの移動
@@ -139,9 +139,9 @@
           href: data-factory-hadoop-streaming-activity.md
         - name: HDInsight Spark アクティビティ
           href: data-factory-spark.md
-        - name: Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ
+        - name: ML Studio (クラシック) のバッチ実行アクティビティ
           href: data-factory-azure-ml-batch-execution-activity.md
-        - name: Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ
+        - name: ML Studio (クラシック) の更新リソース アクティビティ
           href: data-factory-azure-ml-update-resource-activity.md
         - name: ストアド プロシージャ アクティビティ
           href: data-factory-stored-proc-activity.md
@@ -208,7 +208,7 @@
     - name: Data Management Gateway のリリース ノート
       href: data-factory-gateway-release-notes.md
     - name: 機能をリクエストする
-      href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
+      href: /answers/topics/azure-data-factory.html
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
     - name: Stack Overflow

@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 05/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 56548bc770c68d9eab2df138a91e8719efae25cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e2b3c611c5bc06e29fb739f01dc69605509a63a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651529"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124795186"
 ---
 # <a name="tutorial-integrate-miro-with-azure-active-directory"></a>チュートリアル:Miro と Azure Active Directory の統合
 
-このチュートリアルでは、Miro と Azure Active Directory (Azure AD) を統合する方法について説明します。 Miro を Azure AD と統合すると、次のことができます。
+このチュートリアルでは、Miro と Azure Active Directory (Azure AD) を統合する方法について説明します。 このチュートリアルの別のバージョンについては、help.miro.com をご覧ください。 Miro を Azure AD と統合すると、次のことができます。
 
 * Miro にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Miro に自動的にサインインできるようにする。
@@ -37,6 +37,10 @@ ms.locfileid: "101651529"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
 * Miro では、**SP Initiated SSO と IDP Initiated SSO** のほか、**Just In Time** ユーザー プロビジョニングがサポートされます。
+* Miro では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](miro-provisioning-tutorial.md) (推奨) がサポートされます。
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="add-miro-from-the-gallery"></a>ギャラリーから Miro を追加する
 
@@ -74,19 +78,17 @@ Miro に対して Azure AD SSO を構成してテストするには、次の手�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    **[識別子]** ボックスに、`https://miro.com` という URL を入力します。
+    **[識別子]** ボックスに、`https://miro.com/` という URL を入力します。
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. **[SP]** 開始モードでアプリケーションを構成する場合は、 **[サインオン URL]** テキスト ボックスに次の URL を入力します: `https://miro.com/sso/login/`
 
-    **[サインオン URL]** テキスト ボックスに、URL として「`https://miro.com/sso/saml`」と入力します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。 これは、Miro 側で SSO を構成するために必要になります。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードしてコンピューターに保存します。
+   ![証明書のダウンロードのリンク](common/certificatebase64.png "証明書のダウンロードのリンク")
 
-   ![証明書のダウンロードのリンク](common/metadataxml.png)
+1. **[Miro のセットアップ]** セクションで、ログイン URL の値をコピーします。 これは、Miro 側で SSO を構成するために必要になります。
 
-1. **[Set up Miro]\(Miro の設定\)** セクションで、要件に基づいて適切な URL をコピーします。
-
-   ![構成 URL のコピー](common/copy-configuration-urls.png)
+   ![ログイン URL のコピー](./media/miro-tutorial/login.png "ログイン URL のコピー")
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -112,30 +114,37 @@ Miro に対して Azure AD SSO を構成してテストするには、次の手�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
+* または、アプリケーションの **[プロパティ]** にアクセスし、 **[ユーザーの割り当てが必要]** 
+![[割り当ての要件を無効にする]](./media/miro-tutorial/properties.png "割り当ての要件を無効にする") をオフに切り替えます。
+
 ## <a name="configure-miro-sso"></a>Miro の SSO の構成
 
-**Miro** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を Miro サポート チームに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+Miro 側にシングル サインオンを構成するには、以前にダウンロードした証明書と、以前にコピーしたログイン URL を使用します。 Miro アカウントの設定で、 **[Security]\(セキュリティ\)** セクションに移動し、 **[Enable SSO/SAML]\(SSO/SAML を有効にする\)** をオンに切り替えます。 
+
+1. **[SAML Sign-in URL]\(SAML サインイン URL\)** フィールドにログイン URL を貼り付けます。
+1. 証明書ファイルをテキスト エディターで開き、証明書のシーケンスをコピーします。 **[Key x509 Certificate]\(キー X509 証明書\)** フィールドにシーケンスを貼り付けます。
+![Miro の設定](./media/miro-tutorial/security.png "Miro の設定")
+
+1. **[Domains]\(ドメイン\)** フィールドにドメイン アドレスを入力し、 **[Add]\(追加\)** をクリックして、検証手順を実行します。 他にもドメイン アドレスがある場合は、これを繰り返します。 Miro の SSO 機能は、リストにドメインがあるエンド ユーザーに対して動作します。 
+![[ドメイン]](./media/miro-tutorial/add-domain.png "Domain")
+
+1. Just in Time プロビジョニング (Miro での登録時にユーザーをサブスクリプションにプルする) を使用するかどうかを決定し、 **[Save]\(保存\)** をクリックして Miro 側での SSO 構成を完了します。
+![Just in Time プロビジョニング](./media/miro-tutorial/save-configuration.png "Just in Time プロビジョニング") 
 
 ### <a name="create-miro-test-user"></a>Miro テスト ユーザーの作成
 
-このセクションでは、B. Simon というユーザーを Miro に作成します。 Miro は、必要に応じて有効にできる Just-In-Time プロビジョニングをサポートしています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ Miro に存在しない場合は、Miro にアクセスしようとしたときに新しいユーザーが作成されます。
+このセクションでは、B. Simon というユーザーを Miro に作成します。 Miro では、Just-In-Time ユーザー プロビジョニングがサポートされています。これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Miro にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
+このセクションでは、B.Simon というテスト ユーザーを使用し、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
 #### <a name="sp-initiated"></a>SP Initiated:
-
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Miro のサインオン URL にリダイレクトされます。  
 
 * Miro のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Miro に自動的にサインインされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックし、B.Simon としてログインすることを選択します。 SSO を設定した Miro サブスクリプションに自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Miro] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Miro に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
-## <a name="next-steps"></a>次のステップ
-
-Miro を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Miro] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Miro に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。

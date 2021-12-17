@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache の集約された名前空間について
 description: Azure HPC Cache の仮想名前空間を計画する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
-ms.author: v-erkel
-ms.openlocfilehash: 1c28f549cf93d77f6aef6bcde6a2225345a79cc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: femila
+ms.openlocfilehash: de93648ab6304f42b2650eb6bba80e7224d2d57f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91612950"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087763"
 ---
 # <a name="plan-the-aggregated-namespace"></a>集約された名前空間を計画する
 
@@ -48,7 +48,7 @@ Azure HPC Cache を使用すると、バックエンド ストレージ シス�
 | /goldline/templates/acme2017/sku980     | /templates/sku980      |
 | sourcecollection                        | /source/               |
 
-それぞれが一意のエクスポート パスを参照している限り、1 つの NFS ストレージ ターゲットに複数の仮想名前空間パスを使用できます。 (NFS ストレージ ターゲットごとに推奨される名前空間パスの最大数については、「[NFS 名前空間パス](add-namespace-paths.md#nfs-namespace-paths)」を参照してください)。
+それぞれが一意のエクスポート パスを参照している限り、1 つの NFS ストレージ ターゲットに複数の仮想名前空間パスを使用できます。 (1 つの NFS ストレージ ターゲットに複数の名前空間パスを使用する方法の詳細については、「[NFS 名前空間パス](add-namespace-paths.md#nfs-namespace-paths)」を参照してください。)
 
 NFS ソース パスは同じエクスポートのサブディレクトリであるため、同じストレージ ターゲットから複数の名前空間パスを定義する必要があります。
 

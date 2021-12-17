@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/01/2021
+ms.date: 08/25/2021
 ms.author: jeedes
-ms.openlocfilehash: bbf961e7b99efe29fd8b13c2104c33e42ae7d4be
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 2cdeed1457ad19abde6675033db001b5477e8ac4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286525"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132314281"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Envoy の統合
 
@@ -40,6 +40,8 @@ ms.locfileid: "106286525"
 * Envoy では、**SP** Initiated SSO がサポートされます。
 
 * Envoy では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+
+* Envoy では、[自動化されたユーザー プロビジョニング](envoy-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -78,7 +80,7 @@ Envoy に対して Azure AD SSO を構成してテストするには、次の手
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
     **[サインオン URL]** ボックスに、`https://app.envoy.com/a/saml/auth/<company-ID-from-Envoy>` という形式で URL を入力します。
 
@@ -127,27 +129,19 @@ Envoy に対して Azure AD SSO を構成してテストするには、次の手
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-2. ブラウザーに拡張機能を追加した後、**[Envoy のセットアップ]** をクリックすると、Envoy アプリケーションに移動します。 そこから、管理者の資格情報を入力して Envoy にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 7 が自動化されます。
+2. ブラウザーに拡張機能を追加した後、**[Envoy のセットアップ]** をクリックすると、Envoy アプリケーションに移動します。 そこから、管理者の資格情報を入力して Envoy にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 5 が自動化されます。
 
     ![セットアップの構成](common/setup-sso.png)
 
 3. Envoy を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Envoy 企業サイトにサインインして、次の手順を実行します。
 
-4. 上部のツールバーで **[設定]** をクリックします。
+4. **[Integrations]\(統合\)**  >  **[All integrations]\(すべての統合\)** に移動し、 **[Single sign-on]\(シングル サインオン\)** の SAML の **[Install]\(インストール\)** をクリックします。
 
-    ![Envoy](./media/envoy-tutorial/envoy-1.png "Envoy")
+    ![SAML 認証](./media/envoy-tutorial/integrations.png "[SAML 認証]")
 
-5. **[会社]** をクリックします。
+5. **[Enabled integrations]\(有効な組み込み\)** セクションに移動し、次の手順を実行します。
 
-    ![Company](./media/envoy-tutorial/envoy-2.png "[会社]")
-
-6. **[SAML]** をクリックします。
-
-    ![SAML](./media/envoy-tutorial/envoy-3.png "SAML")
-
-7. [**SAML Authentication**] 構成セクションで、以下の手順を実行します。
-
-    ![SAML 認証](./media/envoy-tutorial/envoy-4.png "SAML 認証")
+    ![シングル サインオン](./media/envoy-tutorial/configuration.png "シングル サインオン")
     
     >[!NOTE]
     >[HQ 場所 ID] の値は、アプリケーションによって自動的に生成されます。
@@ -156,11 +150,13 @@ Envoy に対して Azure AD SSO を構成してテストするには、次の手
     
     b. Azure portal からコピーした **ログイン URL** を **[IDENTITY PROVIDER HTTP SAML URL]\(ID プロバイダーの HTTP SAML URL\)** ボックスに貼り付けます。
     
-    c. **[変更を保存]** をクリックします。
+    c. **[保存]** をクリックします。
 
 ### <a name="create-envoy-test-user"></a>Envoy テスト ユーザーの作成
 
 このセクションでは、Britta Simon というユーザーを Envoy に作成します。 Envoy では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Envoy にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
+
+Envoy では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./envoy-provisioning-tutorial.md)をご覧ください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -170,8 +166,8 @@ Envoy に対して Azure AD SSO を構成してテストするには、次の手
 
 * Envoy のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Envoy] タイルをクリックすると、Envoy のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Envoy] タイルをクリックすると、Envoy のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Envoy を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Envoy を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

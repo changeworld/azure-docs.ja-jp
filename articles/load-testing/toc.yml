@@ -1,0 +1,58 @@
+- name: Azure ロード テストに関するドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Azure Load Testing とは
+      displayName: 'ALT, load, MALT'
+      href: overview-what-is-azure-load-testing.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: ロード &を実行する方法を作成する
+      href: quickstart-create-and-run-load-test.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: パフォーマンスのボトルネックを特定する
+      href: tutorial-identify-bottlenecks-azure-portal.md
+    - name: 継続的回帰テスト (CI/CD)
+      expanded: true
+      items:
+        - name: アクションを使用GitHubする
+          href: tutorial-cicd-github-actions.md
+        - name: アプリケーションを使用Azure Pipelines
+          href: tutorial-cicd-azure-pipelines.md
+- name: 方法
+  expanded: true
+  items:
+    - name: テストの実行を比較する
+      href: how-to-compare-multiple-test-runs.md
+    - name: サーバー側の監視を構成する
+      href: how-to-update-rerun-test.md
+    - name: 高スケールの読み込み用に構成する
+      href: how-to-high-scale-load.md
+    - name: テスト実行エラーのトラブルシューティング
+      href: how-to-find-download-logs.md
+    - name: テスト条件を定義する
+      href: how-to-define-test-criteria.md
+    - name: ロード テストのパラメーター化
+      href: how-to-parameterize-load-tests.md
+    - name: 診断から分析情報App Service取得する
+      href: how-to-appservice-insights.md
+    - name: テスト結果をエクスポートする
+      href: how-to-export-test-results.md
+    - name: マネージド ID の使用
+      href: how-to-use-a-managed-identity.md
+- name: リファレンス
+  items:
+    - name: テスト構成 YAML
+      href: reference-test-config-yaml.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/load-testing-service/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'

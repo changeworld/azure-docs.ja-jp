@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: f2c66b08d399ddf53686074079665e36be9aace7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0311948d679cee38dcc7113e4c0246c757409d95
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104870470"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233449"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; Smooth Streaming Client Porting Kit のライセンス
 
@@ -81,81 +81,10 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 中間製品契約と最終製品契約を締結済みの SSPK ライセンシーは、技術的な質問を [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)をクリックしてください。
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming Client 中間製品契約ライセンシー
-
-* Adroit Business Solutions, Inc
-* Advanced Digital Broadcast SA
-* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
-* Albis Technologies Ltd.
-* Alticast Corporation
-* Amazon Digital Services, Inc.
-* Arion Technology, Inc.
-* AVC Multimedia Software Co., Ltd.
-* Cavium, Inc.
-* EchoStar Purchasing Corporation
-* Enseo, Inc.
-* Fluendo S.A.
-* Guangzhou Shikun Electronics., Ltd.
-* HANDAN BroadInfoCom Co., Ltd.
-* Infomir GMBH
-* Irdeto USA Inc.
-* Liberty Global Services BV
-* MediaTek Inc.
-* MStar Co, Ltd
-* Nintendo Co., Ltd.
-* OpenTV, Inc.
-* Saffron Digital Limited
-* Sichuan Changhong Electric Co., Ltd
-* SoftAtHome
-* Sony Corporation
-* Tatung Technology Inc.
-* Top Victory Investments, Ltd.
-* Vestel Elektronik Sanayi ve Ticaret A.S.
-* VisualOn, Inc.
-* ZTE Corporation
+現在のライセンシーの一覧については、 https://go.microsoft.com/fwlink/?linkid=301271 を参照してください。
 
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Smooth Streaming Client 最終製品契約ライセンシー
-* Advanced Digital Broadcast SA
-* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
-* AmTRAN Technology Co., Ltd 
-* Arcadyan Technology Corporation
-* Arcelik A.S
-* Compal Electronics, Inc.
-* EXPRESS LUCK TECHNOLOGY LIMITED
-* Fluendo S.A.
-* FUNAI ELECTRIC CO., LTD
-* Hisense International Co., Ltd.
-* Hisense Visual Technology Co., Ltd
-* HKC Corporation Limited
-* Hong Kong Konka Ltd
-* Innolux Corporation
-* Jinpin Electrical Company Ltd.Zhuhai.S.E.Z
-* K-Tronics (Suzhou) Technology Co., Ltd. 
-* Kaonmedia Co., Ltd.
-* KDDI Corporation
-* Mega Fame Electronics Co. Limited
-* MIRC Electronics Limited
-* MOKA INTERNATIONAL LIMITED
-* ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
-* Panasonic Corporation
-* Qingdao Haier Optronics Co., Ltd.
-* Shenzhen ATEKO PHOTO Electricity Co.,Ltd.
-* Shenzhen Chuangwei-RGB Electronics Co.,Ltd.
-* Shenzhen Jiuzhou Electric Co., Ltd
-* Shenzhen KTC Technology Co., Ltd. 
-* Shenzhen Maxmade Technology Co., Ltd
-* Shenzhen MTC Co., Ltd
-* Shenzhen Skyworth Digital Technology Co., Ltd
-* Sichuan Changhong Electric Co., Ltd.
-* Skardin Industrial Corp.
-* Sky CP Ltd
-* SMARDTV GLOBAL SAS
-* SoftAtHome
-* Sony Corporation
-* Technicolor Delivery Technologies, SAS
-* Top Victory Investments, Ltd.
-* UMC Poland sp. z .o.o.
-* Vizio, Inc.
-* ZTE Corporation
+現在のライセンシーの一覧については、 https://go.microsoft.com/fwlink/?linkid=301271 を参照してください。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

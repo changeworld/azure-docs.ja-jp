@@ -3,26 +3,29 @@ title: cloud-init の理解
 description: cloud-init を使用した Azure VM のプロビジョニングについて理解を深めます。
 author: danielsollondon
 ms.service: virtual-machines
-ms.subservice: imaging
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 94dd57310375febb4bc9a55efa704a5fbf4e80e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: cloud-init
+ms.openlocfilehash: 38e020cc7541c6005fe3bc1209d6a31191e49404
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559445"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692212"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>cloud-init を深く知る
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
+
 [cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) の詳細を学んだり、深いレベルでトラブルシューティングするには、しくみを理解する必要があります。 このドキュメントでは、重要な部分を示し、Azure 固有の内容について説明します。
 
 一般化されたイメージに cloud-init が含まれ、VM がそのイメージから作成されるとき、cloud-init は構成を処理し、初期ブートの 5 つのステージを実行します。 これらのステージは、cloud-init が構成を適用するポイントを示すため重要です。 
 
 
 ## <a name="understand-cloud-init-configuration"></a>cloud-Init 構成を理解する
-プラットフォーム上で実行するように VM を構成することは、cloud-init がイメージ コンシューマーとして複数の構成を適用する必要があることを意味します。操作が必要になる主な構成は、複数の形式をサポートする `User data` (customData) です。これらについては、[こちら](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-formats)を参照してください。 また、追加の構成のためにスクリプト (/var/lib/cloud/scripts) を追加して実行する機能も用意されています。以下で詳しく説明します。
+プラットフォーム上で実行するように VM を構成することは、cloud-init でイメージ コンシューマーとして複数の構成を適用する必要があることを意味します。操作が必要になる主な構成は、複数の形式をサポートする `User data` (customData) です。 詳細については、[ユーザー データ形式と cloud-init 21.2 のドキュメント](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-formats)を参照してください。 また、追加の構成のためにスクリプト (/var/lib/cloud/scripts) を追加して実行する機能も用意されています。以下で詳しく説明します。
 
 いくつかの構成は、次のように、cloud-init に付属する Azure Marketplace イメージに既に組み込まれています。
 

@@ -7,14 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/09/2020
+ms.date: 09/10/2021
 ms.author: rolyon
-ms.openlocfilehash: 37d50c030a2b426cb3e9af57afb899b7fab68388
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 96e2f7176f85d5571ce73c4efdd592dd3964400d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778474"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124781524"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる
 
@@ -326,6 +327,93 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
     ```http
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111?api-version=2015-07-01
     ```
+
+## <a name="view-elevate-access-logs"></a>アクセス権の昇格ログを表示する
+
+アクセス許可が昇格されると、ログにエントリが 1 つ追加されます。 Azure AD の全体管理者は、アクセスがいつ昇格されたのか、および誰がそれを行ったのかを確認したい場合があります。 アクセス許可の昇格ログのエントリは、標準のアクティビティ ログではなく、ディレクトリのアクティビティ ログに表示されます。 このセクションでは、アクセス権の昇格ログを表示するさまざまな方法について説明します。
+
+### <a name="view-elevate-access-logs-using-the-azure-portal"></a>Azure portal を使用してアクセス権の昇格ログを表示する
+
+1. この記事の冒頭に記載されている手順に従って、アクセス権を昇格します。
+
+1. [Azure Portal](https://portal.azure.com) にグローバル管理者としてサインインします。
+
+1. **[監視]**  >  **[アクティビティ ログ]** を開きます。
+
+1. **[アクティビティ]** リストを **[ディレクトリ アクティビティ]** に変更します。
+
+1. アクセス権を昇格させるアクションを示す、次の操作を探します。
+
+    `Assigns the caller to User Access Administrator role`
+
+    ![監視のディレクトリ アクティビティ ログを示すスクリーンショット。](./media/elevate-access-global-admin/monitor-directory-activity.png)
+
+1. この記事の冒頭に記載されている手順に従って、昇格されたアクセス権を削除します。
+
+### <a name="view-elevate-access-logs-using-azure-cli"></a>Azure CLI を使用してアクセス権の昇格ログを表示する
+
+1. この記事の冒頭に記載されている手順に従って、アクセス権を昇格します。
+
+1. [az login](/cli/azure/reference-index#az_login) コマンドを使用して、全体管理者としてサインインします。
+
+1. [az rest](/cli/azure/reference-index#az_rest) コマンドを使用して、以下の呼び出しを行います。ここでは、タイムスタンプの例に示すように日付でフィルター処理を行い、ログを格納するファイル名を指定する必要があります。
+
+    `url` は API を呼び出して、Microsoft.Insights のログを取得します。 出力は指定したファイルに保存されます。
+
+    ```azurecli
+    az rest --url "https://management.azure.com/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2021-09-10T20:00:00Z'" > output.txt
+    ```
+
+1.  出力ファイルで、`elevateAccess` を検索します。
+
+    ログは次のようになります。ここでは、アクションが発生したタイミングを示すタイムスタンプと、呼び出したユーザーが表示されています。
+
+    ```json
+      "submissionTimestamp": "2021-08-27T15:42:00.1527942Z",
+      "subscriptionId": "",
+      "tenantId": "33333333-3333-3333-3333-333333333333"
+    },
+    {
+      "authorization": {
+        "action": "Microsoft.Authorization/elevateAccess/action",
+        "scope": "/providers/Microsoft.Authorization"
+      },
+      "caller": "user@example.com",
+      "category": {
+        "localizedValue": "Administrative",
+        "value": "Administrative"
+      },
+    ```
+
+1. この記事の冒頭に記載されている手順に従って、昇格されたアクセス権を削除します。
+
+### <a name="delegate-access-to-a-group-to-view-elevate-access-logs-using-azure-cli"></a>アクセスをグループに委任して、Azure CLI を使用してアクセス権の昇格ログを表示する
+
+アクセス権の昇格ログを定期的に取得できるようにしたい場合は、アクセス権をグループに委任してから、Azure CLI を使用します。
+
+1. **[Azure Active Directory]**  >  **[グループ]** を開きます。
+
+1. 新しいセキュリティ グループを作成し、グループ オブジェクト ID をメモします。
+
+1. この記事の冒頭に記載されている手順に従って、アクセス権を昇格します。
+
+1. [az login](/cli/azure/reference-index#az_login) コマンドを使用して、全体管理者としてサインインします。
+
+1. [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) コマンドを使用して、`Microsoft/Insights` にあるディレクトリ レベルでのみログを読み取りできるグループに [Reader](built-in-roles.md#reader) ロールを割り当てます。
+
+    ```azurecli
+    az role assignment create --assignee "{groupId}" --role "Reader" --scope "/providers/Microsoft.Insights"
+    ```
+
+1. 事前に作成したグループに、ログの閲覧を行うユーザーを追加します。
+
+1. この記事の冒頭に記載されている手順に従って、昇格されたアクセス権を削除します。
+
+これで、グループ内のユーザーが定期的に [az rest](/cli/azure/reference-index#az_rest) コマンドを実行して、アクセス権の昇格ログを表示できるようになりました。
+
+```azurecli
+az rest --url "https://management.azure.com/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2021-09-10T20:00:00Z'" > output.txt
+```
 
 ## <a name="next-steps"></a>次のステップ
 

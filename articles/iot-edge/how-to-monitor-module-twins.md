@@ -2,19 +2,18 @@
 title: モジュール ツインの監視 - Azure IoT Edge
 description: デバイス ツインとモジュール ツインを解釈して、接続性と正常性を判断する方法。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 05/29/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a5a31e15c88cef588c93f44c8fe5303d930b5b2c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 1bb022737c3c6f228e741681561867414c118592
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479374"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742250"
 ---
 # <a name="monitor-module-twins"></a>モジュール ツインの監視
 
@@ -220,6 +219,19 @@ IoT Edge が実行中かどうかを確認するには、[az iot hub invoke-modu
 * **az iot hub module-twin show** - モジュール ツインの定義を表示します。
 * **az iot hub module-twin update** - モジュール ツインの定義を更新します。
 * **az iot hub module-twin replace** - モジュール ツインの定義を対象の JSON に置き換えます。
+
+>[!TIP]
+>CLI コマンドを使用してランタイム モジュールをターゲットにするには、モジュール ID の `$` 文字をエスケープする必要がある場合があります。 次に例を示します。
+>
+>```azurecli
+>az iot hub module-twin show -m '$edgeAgent' -n <hub name> -d <device name>
+>```
+>
+>または:
+>
+>```azurecli
+>az iot hub module-twin show -m \$edgeAgent -n <hub name> -d <device name>
+>```
 
 ## <a name="next-steps"></a>次のステップ
 

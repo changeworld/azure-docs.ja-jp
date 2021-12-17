@@ -7,20 +7,23 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 04/04/2021
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: fb0ad93fb4a1269b4cca02b114c0427f0c44a31b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fd628c649d379e60ddf8ec772e1cf708f3e50d1
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96455351"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540281"
 ---
 # <a name="memory-and-concurrency-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのメモリおよびコンカレンシーの制限
 
 Azure Synapse Analytics のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。  
+
+> [!NOTE]
+> ワークロード管理ワークロード グループは、動的または静的なリソース クラスよりも柔軟で、要求とコンカレンシーごとにリソースを構成することができます。  詳細については、[ワークロード グループ](sql-data-warehouse-workload-isolation.md)と [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql) 構文に関するページを参照してください。
 
 ## <a name="data-warehouse-capacity-settings"></a>データ ウェアハウスの容量設定
 
@@ -131,5 +134,7 @@ Azure Synapse Analytics のさまざまなパフォーマンス レベルとリ�
 
 ワークロードをさらに最適化するためにリソース クラスを活用する方法の詳細については、次の記事を参照してください。
 
+* [ワークロード管理ワークロード グループ](sql-data-warehouse-workload-isolation.md)
+* [ワークロード グループを作成する](/sql/t-sql/statements/create-workload-group-transact-sql)
 * [ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)
 * [ワークロードの解析](analyze-your-workload.md)

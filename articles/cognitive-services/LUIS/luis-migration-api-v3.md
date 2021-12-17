@@ -2,19 +2,22 @@
 title: V3 API での予測エンドポイントの変更
 description: クエリ予測エンドポイント V3 API が変更されています。 このガイドでは、バージョン 3 のエンドポイント API に移行する方法について説明します。
 ms.service: cognitive-services
+author: aahill
+ms.manager: nitinme
+ms.author: aahi
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 06/30/2020
-ms.openlocfilehash: 59dfa439f6428f2db972a8f848887e1a74bc2622
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/28/2021
+ms.openlocfilehash: 6eb5e54f2c1d8a4e7d05204fcfa111ddcb9f951a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98624305"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692675"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 の予測エンドポイントの変更
 
-クエリ予測エンドポイント V3 API が変更されています。 このガイドでは、バージョン 3 のエンドポイント API に移行する方法について説明します。
+クエリ予測エンドポイント V3 API が変更されています。 このガイドでは、バージョン 3 のエンドポイント API に移行する方法について説明します。 現在、移行を完了する期限はありません。
 
 **一般公開状態** - この V3 API には、V2 API から大幅に変更された JSON の要求と応答が含まれています。
 
@@ -55,14 +58,12 @@ Bot Framework、Bing Spell Check V7 を使用する場合、または LUIS ア�
 
 影響を受けるクライアント アプリケーションまたは統合 (Bot Framework、Bing Spell Check V7) がなく、LUIS アプリの作成と予測エンドポイントの同時移行を問題なく実行できる場合は、V3 予測エンドポイントの使用を開始します。 V2 予測エンドポイントは引き続き使用可能であり、優れたフォールバック戦略です。
 
+Bing Spell Check API の使用方法の詳細については、[スペルミスの単語を修正する方法](luis-tutorial-bing-spellcheck.md)に関する記事を参照してください。
+
 
 ## <a name="not-supported"></a>サポートされていません
 
-### <a name="bing-spell-check"></a>Bing Spell Check
-
-この API は V3 予測エンドポイントではサポートされていません。スペル修正には引き続き V2 API 予測エンドポイントを使用してください。 V3 API を使用していてスペル修正が必要な場合は、LUIS API にテキストを送信する前に、クライアント アプリケーションで [Bing Spell Check](../bing-spell-check/overview.md) API を呼び出し、テキストを正しいスペルに変更します。
-
-## <a name="bot-framework-and-azure-bot-service-client-applications"></a>Bot Framework と Azure Bot Service クライアント アプリケーション
+### <a name="bot-framework-and-azure-bot-service-client-applications"></a>Bot Framework と Azure Bot Service クライアント アプリケーション
 
 Bot Framework の Version 4.7 がリリースされるまで、引き続き V2 API 予測エンドポイントを使用してください。
 

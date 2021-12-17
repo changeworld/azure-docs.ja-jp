@@ -4,15 +4,16 @@ description: この API を使用して、コマーシャル マーケットプ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 23aac2c94ffd909ca132cbc481998b9eda317156
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 487c1b4ad58eb17fc90bb78f0dbc4346de8a62d3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583554"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747238"
 ---
 # <a name="get-all-datasets-api"></a>すべてのデータセットの取得 API
 

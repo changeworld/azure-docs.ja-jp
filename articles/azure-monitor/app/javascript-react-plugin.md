@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 8b24ee9f620b50056ceb466ef5bdc38da97682a9
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: c95e408f116190bf90228f773a7d7c1530c6537e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490745"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217847"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK の React プラグイン
 
@@ -26,7 +26,7 @@ npm パッケージをインストールします。
 
 ```bash
 
-npm install @microsoft/applicationinsights-react-js
+npm install @microsoft/applicationinsights-react-js @microsoft/applicationinsights-web --save
 
 ```
 
@@ -128,8 +128,13 @@ import { useAppInsightsContext } from "@microsoft/applicationinsights-react-js";
 
 const MyComponent = () => {
     const appInsights = useAppInsightsContext();
-    
-    appInsights.trackMetric("Component 'MyComponent' is in use");
+    const metricData = {
+        average: engagementTime,
+        name: "React Component Engaged Time (seconds)",
+        sampleCount: 1
+      };
+    const additionalProperties = { "Component Name": 'MyComponent' };
+    appInsights.trackMetric(metricData, additionalProperties);
     
     return (
         <h1>My Component</h1>

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning でトレーニング中にデータストアを使用して Azure ストレージ サービスにアクセスする方法について説明します
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.author: sihhu
-author: MayMSFT
+ms.subservice: mldata
+ms.topic: how-to
+ms.author: yogipandey
+author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 11/03/2020
-ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 78b7bab204a08b474ea3c5cf5c2f7735c019a9c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.custom: contperf-fy21q1, devx-track-python, data4ml
+ms.openlocfilehash: 3c308761c0becae3a3f0d7eb3a33fc1bc76f5918
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519930"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867059"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Azure のストレージ サービスに接続する
 
@@ -29,11 +29,11 @@ Azure Machine Learning のデータ アクセス ワークフロー全体にお�
 ローコード エクスペリエンスについては、[Azure Machine Learning スタジオを使ってデータストアを作成して登録](how-to-connect-data-ui.md#create-datastores)する方法に関する記事を参照してください。
 
 >[!TIP]
-> この記事では、サービス プリンシパルや Shared Access Signature (SAS) トークンなど、資格情報ベースの認証資格情報を使用してストレージ サービスに接続することを前提としています。 資格情報がデータストアに登録されている場合は、ワークスペースの "*閲覧者*" ロールを持つすべてのユーザーがこれらの資格情報を取得できることに注意してください。 [ワークスペースの "*閲覧者*" ロールの詳細については、こちらをご覧ください。](how-to-assign-roles.md#default-roles) <br><br>これが懸念される場合は、[ID ベースのアクセスを使用してストレージ サービスに接続](how-to-identity-based-data-access.md)する方法に関するページを参照してください。 <br><br>この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。 
+> この記事では、サービス プリンシパルや Shared Access Signature (SAS) トークンなど、資格情報ベースの認証資格情報を使用してストレージ サービスに接続することを前提としています。 資格情報がデータストアに登録されている場合は、ワークスペースの "*閲覧者*" ロールを持つすべてのユーザーがこれらの資格情報を取得できることに注意してください。 [ワークスペースの "*閲覧者*" ロールの詳細については、こちらをご覧ください。](how-to-assign-roles.md#default-roles) <br><br>これが懸念される場合は、[ID ベースのアクセスを使用してストレージ サービスに接続](how-to-identity-based-data-access.md)する方法に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 - [サポートされている種類のストレージ](#matrix)を持つ Azure ストレージ アカウント。
 
@@ -91,18 +91,21 @@ Azure Machine Learning のデータ アクセス ワークフロー全体にお�
 
 Azure ストレージ サービスに安全に接続できるように、Azure Machine Learning では、対応するデータ ストレージ コンテナーにアクセスするためのアクセス許可が必要です。 このアクセスは、データストアの登録に使用される認証資格情報に依存します。 
 
+> [!NOTE]
+> このガイダンスは、[ID ベースのデータ アクセスを使用して作成されたデータストア](how-to-identity-based-data-access.md)にも適用されます。 
+
 ### <a name="virtual-network"></a>仮想ネットワーク 
 
-既定では、Azure Machine Learning は、ファイアウォールの内側または仮想ネットワーク内にあるストレージ アカウントとは通信できません。 データ ストレージ アカウントが **仮想ネットワーク** 内にある場合、Azure Machine Learning がデータにアクセスできるようにするためには、追加の構成手順が必要になります。 
+Azure Machine Learning では、ファイアウォールの背後または仮想ネットワークの内部にあるストレージ アカウントと通信するには追加の構成手順が必要です。 ストレージ アカウントがファイアウォールの背後にある場合は、[Azure portal 経由で IP アドレスの許可リストを設定](../storage/common/storage-network-security.md#managing-ip-network-rules)できます。
 
-> [!NOTE]
-> このガイダンスは、[ID ベースのデータ アクセスを使用して作成されたデータストア (プレビュー)](how-to-identity-based-data-access.md) にも適用されます。 
+Azure Machine Learning では、仮想ネットワークの外側にあるクライアントからの要求を受信できます。 サービスのデータを要求しているエンティティが安全であることを確認するには、[プライベート エンドポイントとワークスペースを使用](how-to-configure-private-link.md)します。
 
-**Python SDK ユーザーの場合**、コンピューティング ターゲットでトレーニング スクリプトを使用してデータにアクセスするには、コンピューティング ターゲットをストレージと同じ仮想ネットワークとサブネット内に配置する必要があります。  
+**Python SDK ユーザーの場合**、コンピューティング ターゲットでトレーニング スクリプトを使用してデータにアクセスするには、コンピューティング ターゲットをストレージと同じ仮想ネットワークとサブネット内に配置する必要があります。 
 
 **Azure Machine Learning スタジオ ユーザーの場合**、データセットのプレビュー、プロファイル、自動機械学習など、データセットからのデータの読み取りが可能であることに依存する機能がいくつかあります。 これらの機能で仮想ネットワークの内側にあるストレージを操作するには、[スタジオでワークスペースのマネージド ID](how-to-enable-studio-virtual-network.md) を使用して、Azure Machine Learning が仮想ネットワークの外部からストレージ アカウントにアクセスできるようにします。 
 
-Azure Machine Learning では、仮想ネットワークの外側にあるクライアントからの要求を受信できます。 サービスからのデータを要求しているエンティティが安全であることを確認するには、[ワークスペース用に Azure Private Link を設定](how-to-configure-private-link.md)します。
+> [!NOTE]
+> データ ストレージが仮想ネットワークの背後にある Azure SQL Database である場合は、Azure Machine Learning からストレージ アカウントにアクセスできるように、[Azure portal](https://ms.portal.azure.com/) 経由で *[パブリック アクセスの拒否]* を必ず **[いいえ]** に設定してください。
 
 ### <a name="access-validation"></a>アクセス検証
 
@@ -147,7 +150,8 @@ Azure Storage ソリューションをデータストアとして登録すると
 
 コードの少ないエクスペリエンスの方がよい場合は、[Azure Machine Learning Studio でのデータへの接続](how-to-connect-data-ui.md)に関する記事を参照してください。
 >[!IMPORTANT]
-> データストアの登録を解除し、同じ名前を使用して再登録しようとして失敗した場合は、ワークスペースの Azure Key Vault で、論理的な削除が有効になっていない可能性があります。 既定では、ワークスペースによって作成されたキー コンテナー インスタンスでは論理的な削除が有効になっていますが、既存のキー コンテナーを使用した場合、または 2020 年 10 月より前にワークスペースを作成した場合は、論理的な削除が有効になっていないことがあります。 論理的な削除を有効にする方法の詳細については、「[既存のキー コンテナーの論理的な削除を有効にする]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)」を参照してください。
+> データストアの登録を解除し、同じ名前を使用して再登録しようとして失敗した場合は、ワークスペースの Azure Key Vault で、論理的な削除が有効になっていない可能性があります。 既定では、ワークスペースによって作成されたキー コンテナー インスタンスでは論理的な削除が有効になっていますが、既存のキー コンテナーを使用した場合、または 2020 年 10 月より前にワークスペースを作成した場合は、論理的な削除が有効になっていないことがあります。 論理的な削除を有効にする方法の詳細については、「[既存のキー コンテナーの論理的な削除を有効にする](../key-vault/general/soft-delete-change.md#turn-on-soft-delete-for-an-existing-key-vault)」を参照してください。
+
 
 > [!NOTE]
 > データストア名は、小文字、数字、およびアンダースコアのみで構成する必要があります。 
@@ -226,7 +230,7 @@ Python SDK とスタジオを使用してデータストアを作成すること
 <a name="arm"></a>
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-datastore-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) には、データストアの作成に使用できる多数のテンプレートがあります。
+[https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices) には、データストアの作成に使用できる多数のテンプレートがあります。
 
 これらのテンプレートの使用に関する詳細については、「[Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します](how-to-create-workspace-template.md)」を参照してください。
 
@@ -278,7 +282,6 @@ Azure Machine Learning には、スコアリングにモデルを使用する方
 | ----- | :-----: | ----- |
 | [バッチ予測](./tutorial-pipeline-batch-scoring-classification.md) | ✔ | 大量のデータの予測を非同期的に行います。 |
 | [Web サービス](how-to-deploy-and-where.md) | &nbsp; | モデルを Web サービスとしてデプロイします。 |
-| [Azure IoT Edge モジュール](how-to-deploy-and-where.md) | &nbsp; | モデルを IoT Edge デバイスにデプロイします。 |
 
 SDK でデータストアへのアクセスが提供されない場合は、関連する Azure SDK を使用してデータにアクセスするカスタム コードを作成できる場合があります。 たとえば、BLOB またはファイルに格納されたデータには、[Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) というクライアント ライブラリを使用してアクセスすることができます。
 

@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 69fd86226375073c71903af5704ef3a635eeaffb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 110501087cc42662412e6446b9859f4078252455
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579913"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000690"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -155,7 +155,7 @@ Azure Advisor によって、100 のクエリ ページ サイズを使用して
 ## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>お使いの HBase クラスターで、クラスターのパフォーマンスの向上に高速書き込み機能を使用することを検討する
 Azure Advisor は過去 7 日間のシステム ログを分析し、お使いのクラスターで次のシナリオが発生したかどうかを識別します。
 1. WAL の同期時に長い待機時間が発生 
-2. 大量の書き込み要求 (1 時間に 1000 を超える avg_write_requests/second/node)
+2. 大量の書き込み要求 (1 時間に 3 回以上、1000 を超える avg_write_requests/second/node)
 
 これらの条件は、クラスターで書き込み時に長い待機時間が発生していることを示しています。 これは、お使いのクラスターで大量のワークロードが実行されたことが原因である可能性があります。お使いのクラスターのパフォーマンスを向上させるには、Azure HDInsight HBase の高速書き込み機能の利用を検討することをお勧めします。 HDInsight の Apache HBase クラスター用高速書き込み機能では、クラウド ストレージを使用する代わりに、Premium SSD マネージド ディスクをすべての RegionServer (ワーカー ノード) にアタッチします。 その結果、書き込み待機時間が短縮され、アプリケーションの回復性が向上します。 この機能の詳細については、[こちら](../hdinsight/hbase/apache-hbase-accelerated-writes.md#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)を参照してください。
 
@@ -173,13 +173,18 @@ Windows Virtual Desktop (WVD) を使用して、お客様の VM はユーザー�
 
 ## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>イマーシブ リーダー SDK の最新バージョンにアップグレードする
 このサブスクリプションのリソースに、古いバージョンのイマーシブ リーダー SDK が使用されていることがわかりました。 イマーシブ リーダー SDK の最新バージョンを使用すると、更新されたセキュリティ、パフォーマンス、および統合エクスペリエンスをカスタマイズおよび強化するための一連の拡張機能が提供されます。
-イマーシブ リーダー SDK の詳細については、[こちら](../cognitive-services/immersive-reader/index.yml)をご覧ください。
+イマーシブ リーダー SDK の詳細については、[こちら](../applied-ai-services/immersive-reader/index.yml)をご覧ください。
 
 ## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>セッションの上限を変更して VM のパフォーマンスを向上させる
 
 Advisor では、深さ優先が負荷分散アルゴリズムとして設定されているホスト プールがあること、およびそのホスト プールのセッション上限が 999999 以上であることが検出されます。 深さ優先の負荷分散では、最大セッション数を使用して、1 つのセッション ホストで同時セッションを持つことができるユーザーの最大数が決定されます。 最大セッション数が高すぎる場合、すべてのユーザー セッションは同じセッション ホストに送られるので、パフォーマンスと信頼性の問題が発生します。 そのため、ホスト プールを深さ優先で負荷分散するように設定する場合は、VM のデプロイと容量の構成に応じて、適切な最大セッション数を設定する必要があります。 
 
 Windows Virtual Desktop での負荷分散の詳細については、「[Windows 仮想デスクトップの負荷分散方法の構成](../virtual-desktop/troubleshoot-set-up-overview.md)」を参照してください。
+
+## <a name="upgrade-to-the-latest-version-of-the-azure-communication-services-sdks"></a>Azure Communication Services SDK を最新バージョンにアップグレードする
+
+特定の Azure Communication Services SDK の古いバージョンが使用され、Advisor により、このサブスクリプションのリソースが特定されました。 最新バージョンの Azure Communication Services SDK を使用すると、更新されたセキュリティ、パフォーマンス、および通信エクスペリエンスをカスタマイズおよび強化する一連の拡張機能が提供されます。
+詳細については、「[Azure Communication Services とは](../communication-services/overview.md)」と [Azure Advisor との統合](../communication-services/concepts/advisor-overview.md)に関するページを参照してください。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 

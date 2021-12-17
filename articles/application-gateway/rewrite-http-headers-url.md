@@ -1,22 +1,21 @@
 ---
-title: Azure Application Gateway で HTTP ヘッダーと URL を書き換える | Microsoft Docs
+title: Azure Application Gateway で HTTP ヘッダーと URL を書き換える
 description: この記事では、Azure Application Gateway での HTTP ヘッダーと URL の書き換えの概要を説明します
-services: application-gateway
 author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: azhussai
-ms.openlocfilehash: 3e7bdc92dc6268c712eecbd69ff014e2229b3b84
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: c4e4af8fb14c48988a593261365dcfde6c7a0657
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490966"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577281"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Application Gateway で HTTP ヘッダーと URL を書き換える
 
- Application Gateway を使用すると、選択した要求と応答のコンテンツを書き換えることができます。 この機能を使用すると、URL の変換、クエリ文字列パラメーター、および要求ヘッダーと応答ヘッダーの変更を行うことができます。 また、条件を追加することで、特定の条件が満たされた場合にのみ、URL または指定したヘッダーが確実に書き換えられるようにできます。 これらの条件は、要求と応答の情報に基づいています。
+Application Gateway を使用すると、選択した要求と応答のコンテンツを書き換えることができます。 この機能を使用すると、URL の変換、クエリ文字列パラメーター、および要求ヘッダーと応答ヘッダーの変更を行うことができます。 また、条件を追加することで、特定の条件が満たされた場合にのみ、URL または指定したヘッダーが確実に書き換えられるようにできます。 これらの条件は、要求と応答の情報に基づいています。
 
 >[!NOTE]
 >HTTP ヘッダーおよび URL の書き換え機能は、[Application Gateway v2 SKU](application-gateway-autoscaling-zone-redundant.md) でのみ使用できます
@@ -123,7 +122,7 @@ Application Gateway では、サーバー変数を使用して、サーバー、
 | sent_bytes                | クライアントに送信されたバイト数。                        |
 | server_port               | 要求を受け付けたサーバーのポート。              |
 | ssl_connection_protocol   | 確立された TLS 接続のプロトコル。               |
-| ssl_enabled               | 接続が TLS モードで動作する場合は “オン”。 それ以外の場合は、空の文字列です。 |
+| ssl_enabled               | 接続が TLS モードで動作する場合は "オン"。 それ以外の場合は、空の文字列です。 |
 | uri_path                  | Web クライアントがアクセスする必要があるホスト内の特定のリソースを識別します。 これは、引数を含まない要求 URI の部分です。 例: 要求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` では、uri_path 値は `/article.aspx` になります |
 
 ### <a name="mutual-authentication-server-variables-preview"></a>相互認証サーバー変数 (プレビュー)
@@ -139,7 +138,7 @@ Application Gateway は、相互認証のシナリオに対して次のサーバ
 | client_certificate_serial | 確立された SSL 接続用のクライアント証明書のシリアル番号。  |
 | client_certificate_start_date| クライアント証明書の開始日。 |
 | client_certificate_subject| 確立された SSL 接続のクライアント証明書の "サブジェクトの DN" 文字列。 |
-| client_certificate_verification| クライアント証明書検証の結果: *SUCCESS*、*FAILED:<reason>* 、証明書が存在しない場合は *NONE*。 | 
+| client_certificate_verification| クライアント証明書検証の結果: *SUCCESS*、*FAILED:\<reason\>* 、証明書が存在しない場合は *NONE*。 | 
 
 ## <a name="rewrite-configuration"></a>書き換えの構成
 
@@ -151,15 +150,15 @@ Application Gateway は、相互認証のシナリオに対して次のサーバ
 
 * **書き換え条件**: これはオプション構成です。 書き換え条件では、HTTP(S) の要求と応答の内容が評価されます。 HTTP(S) の要求または応答が書き換え条件に一致する場合、書き換えアクションが発生します。 複数の条件を 1 つのアクションと関連付けた場合は、すべての条件が満たされた場合にのみアクションが発生します。 つまり、操作は論理 AND 操作です。
 
-* **書き換えの種類**:使用できる書き換えには、次の 3 種類があります。
+* **書き換えの種類**: 使用できる書き換えには、次の 3 種類があります。
    * 要求ヘッダーの書き換え 
-   * 応答ヘッダーの書き換え。
-   * URL の書き換え:URL の書き換えには、3 つのコンポーネントがあります
+   * 応答ヘッダーの書き換え
+   * URL コンポーネントの書き換え
       * **URL パス**:パスの書き換え後の値。 
       * **URL クエリ文字列**:クエリ文字列の書き換え後の値。 
       * **パス マップの再評価**:URL パス マップを再評価するかどうかを決定するために使用します。 オフのままにすると、元の URL パスが使用され、URL パス マップのパス パターンと照合されます。 True に設定すると、URL パス マップが再評価され、書き換えられたパスと一致するかどうかがチェックされます。 このスイッチを有効にすると、書き換え後に要求を別のバックエンド プールにルーティングする際に役立ちます。
 
-## <a name="rewrite-configuration-common-pitfall"></a>書き込み構成に関する一般的な落とし穴
+## <a name="rewrite-configuration-common-pitfalls"></a>書き込み構成に関する一般的な落とし穴
 
 * 基本要求ルーティング規則では、[パス マップの再評価] を有効にすることはできません。 これは、基本的なルーティング規則の無限評価ループを防ぐためです。
 
@@ -191,7 +190,7 @@ Application Gateway では、要求をバックエンドに転送する前に、
 
 バックエンド アプリケーションでリダイレクト応答が送信されるとき、バックエンド アプリケーションで指定されているものとは別の URL にクライアントをリダイレクトしたい場合があります。 たとえば、アプリ サービスがアプリケーション ゲートウェイの背後でホストされており、クライアントに相対パスへのリダイレクトを行わせる必要があるときに、これを行えます。 (たとえば、contoso.azurewebsites.net/path1 から contoso.azurewebsites.net/path2 へのリダイレクトです)。
 
-App Service はマルチテナント サービスであるため、要求のホスト ヘッダーを使用して適切なエンドポイントに要求をルーティングします。 アプリ サービスの既定のドメイン名 *.azurewebsites.net (たとえば contoso.azurewebsites.net) は、アプリケーション ゲートウェイのドメイン名 (たとえば contoso.com) とは異なります。 クライアントからの元の要求には、ホスト名としてアプリケーション ゲートウェイのドメイン名 contoso.com が設定されているので、アプリケーション ゲートウェイでホスト名を contoso.azurewebsites.net に変更します。 アプリ サービスが適切なエンドポイントに要求をルーティングできるようにこの変更を行います。
+App Service はマルチテナント サービスであるため、要求のホスト ヘッダーを使用して適切なエンドポイントに要求をルーティングします。 アプリ サービスの既定のドメイン名 \*.azurewebsites.net (contoso.azurewebsites.net など) は、アプリケーション ゲートウェイのドメイン名 (contoso.com など) とは異なります。 クライアントからの元の要求には、ホスト名としてアプリケーション ゲートウェイのドメイン名 contoso.com が設定されているので、アプリケーション ゲートウェイでホスト名を contoso.azurewebsites.net に変更します。 アプリ サービスが適切なエンドポイントに要求をルーティングできるようにこの変更を行います。
 
 アプリ サービスでは、リダイレクト応答を送信するとき、その応答の場所ヘッダーで、アプリケーション ゲートウェイから受信した要求のものと同じホスト名が使用されます。 そのため、クライアントでは、アプリケーション ゲートウェイ (`contoso.com/path2`) を経由するのではなく、`contoso.azurewebsites.net/path2` に直接要求を行います。 アプリケーション ゲートウェイをバイパスすることは望ましくありません。
 
@@ -226,7 +225,7 @@ HTTP 要求または応答ヘッダーを評価し、ヘッダーまたはサー
 
 #### <a name="parameter-based-path-selection"></a>パラメーター ベースのパスの選択
 
-ヘッダーの値、URL の一部、または要求内のクエリ文字列の値に基づいてバックエンド プールを選択するシナリオを実現するには、URL 書き換え機能とパスベースのルーティングの組み合わせを使用できます。  たとえば、会社にショッピング Web サイトがあり、製品カテゴリがクエリ文字列として URL に渡され、そのクエリ文字列に基づいて要求をバックエンドにルーティングする場合は、次の手順を実行します。
+ヘッダーの値、URL の一部、または要求内のクエリ文字列の値に基づいてバックエンド プールを選択するシナリオを実現するには、URL 書き換え機能とパスベースのルーティングの組み合わせを使用できます。 たとえば、会社にショッピング Web サイトがあり、製品カテゴリがクエリ文字列として URL に渡され、そのクエリ文字列に基づいて要求をバックエンドにルーティングする場合は、次の手順を実行します。
 
 **ステップ 1:** 次の図に示すように、パス マップを作成します
 
@@ -234,11 +233,11 @@ HTTP 要求または応答ヘッダーを評価し、ヘッダーまたはサー
 
 **ステップ 2 (a):** 次の 3 つの書き換えルールを含む書き換えセットを作成します。 
 
-* 1 番目のルールには、*query_string* 変数が *category=shoes* であるかどうかをチェックする条件があり、URL パスを/*listing1* に書き換える、 **[パス マップの再評価]** が有効なアクションがあります
+* 1 番目のルールには、*query_string* 変数が *category=shoes* であるかどうかをチェックする条件があり、URL パスを /*listing1* に書き換える、 **[パス マップの再評価]** が有効なアクションがあります。
 
-* 2 番目のルールには、*query_string* 変数が *category=bags* であるかどうかをチェックする条件があり、URL パスを/*listing2* に書き換える、 **[パス マップの再評価]** が有効なアクションがあります
+* 2 番目のルールには、*query_string* 変数が *category=bags* であるかどうかをチェックする条件があり、URL パスを /*listing2* に書き換える、 **[パス マップの再評価]** が有効なアクションがあります。
 
-* 3 番目のルールには、*query_string* 変数が *category=accessories* であるかどうかをチェックする条件があり、URL パスを/*listing3* に書き換える、 **[パス マップの再評価]** が有効なアクションがあります
+* 3 番目のルールには、*query_string* 変数が *category=accessories* であるかどうかをチェックする条件があり、URL パスを /*listing3* に書き換える、 **[パス マップの再評価]** が有効なアクションがあります。
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL 書き換えシナリオ 1-2。":::
 
@@ -250,10 +249,10 @@ HTTP 要求または応答ヘッダーを評価し、ヘッダーまたはサー
 
 ここで、ユーザーが *contoso.com/listing?category=any* を要求した場合、パスマップのパス パターン (/listing1、/listing2、/listing3) がいずれも一致しないため、既定のパスと一致します。 上記の書き換えセットをこのパスに関連付けたため、この書き換えセットが評価されます。 クエリ文字列はこの書き換えセットの 3 つの書き換えルールのいずれの条件とも一致しないので、書き換えアクションが実行されないため、要求は既定のパスに関連付けられているバックエンド (*GenericList*) に変更されずにルーティングされます。
 
- ユーザーが *contoso.com/listing?category=shoes* を要求した場合は、再び既定のパスと一致します。 ただし、この場合、最初のルールの条件が一致するため、その条件に関連付けられているアクションが実行されます。これにより、URL パスが/*listing1* に書き換えられ、パスマップが再評価されます。 パスマップが再評価されると、要求はパターン */listing1* に関連付けられているパスと一致するようになり、要求はこのパターンに関連付けられているバックエンド (ShoesListBackendPool) にルーティングされます
+ユーザーが *contoso.com/listing?category=shoes* を要求した場合は、既定のパスと再び一致します。 ただし、この場合、最初のルールの条件が一致するため、その条件に関連付けられているアクションが実行されます。これにより、URL パスが/*listing1* に書き換えられ、パスマップが再評価されます。 パスマップが再評価されると、要求は、パターン */listing1* に関連付けられているパスと一致するようになり、このパターンに関連付けられているバックエンド (ShoesListBackendPool) にルーティングされます。
 
 >[!NOTE]
->このシナリオは、定義されている条件に基づいて、任意のヘッダーやクッキーの値、URL パス、クエリ文字列、またはサーバー変数に適用できます。また、基本的にこれらの条件に基づいて要求をルーティングすることができます。
+>このシナリオは、定義されている条件に基づいて、任意のヘッダーやクッキーの値、URL パス、クエリ文字列、またはサーバー変数に適用できます。また、基本的に、これらの条件に基づいて要求をルーティングできます。
 
 #### <a name="rewrite-query-string-parameters-based-on-the-url"></a>URL に基づいてクエリ文字列パラメーターを書き換える
 
@@ -275,7 +274,7 @@ HTTP 要求または応答ヘッダーを評価し、ヘッダーまたはサー
 
 URL の書き換えの場合は、要求がバックエンドに送信される前に、Application Gateway によって URL が書き換えられます。 変更がユーザーに表示されないため、ブラウザーでユーザーに表示される内容は変更されません。
 
-URL のリダイレクトの場合、Application Gateway は新しい URL を使用してリダイレクトの応答をクライアントに送信します。 そのため、クライアントは、リダイレクトで提供された新しい URL に要求を再送信する必要があります。 ブラウザーでユーザーに表示される URL は、新しい URL に更新されます
+URL のリダイレクトの場合は、Application Gateway が、新しい URL を使用してリダイレクトの応答をクライアントに送信します。 そのため、クライアントは、リダイレクトで提供された新しい URL に要求を再送信する必要があります。 ブラウザーでユーザーに表示される URL は、新しい URL に更新されます。
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="書き換えとリダイレクト。":::
 
@@ -283,7 +282,7 @@ URL のリダイレクトの場合、Application Gateway は新しい URL を使
 
 - 応答内に同じ名前のヘッダーが複数含まれている場合、これらのヘッダーのいずれかの値を書き換えると、応答内の他のヘッダーが破棄されます。 応答に複数の Set-Cookie ヘッダーを設定できるので、これは通常、Set-Cookie ヘッダーで発生します。 このようなシナリオの 1 つが、アプリ サービスをアプリケーション ゲートウェイとともに使用していて、アプリケーション ゲートウェイで Cookie ベースのセッション アフィニティを構成している場合です。 この場合、応答には 2 つの Set-Cookie ヘッダーが含まれ、1 つはアプリ サービスで使用されるもの (`Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`) で、もう 1 つはアプリケーション ゲートウェイ アフィニティ用 (`Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`) です。 このシナリオでどちらかの Set-Cookie ヘッダーを書き換えると、もう一方の Set-Cookie ヘッダーが応答から削除されることがあります。
 - アプリケーション ゲートウェイが要求をリダイレクトするように構成されている場合、またはカスタム エラー ページを表示するように構成されている場合は、書き換えはサポートされません。
-- ヘッダー名には、任意の英数字と、[RFC 7230](https://tools.ietf.org/html/rfc7230#page-27) で定義されている特定の記号を含めることができます。 現在、ヘッダー名には特殊文字のアンダースコアはサポートされません。
+- ヘッダー名には、任意の英数字と、[RFC 7230](https://tools.ietf.org/html/rfc7230#page-27) で定義されている特定の記号を含めることができます。 現在はヘッダー名内で特殊文字のアンダー スコア (\_) がサポートされていません。
 - 接続ヘッダーとアップグレード ヘッダーを書き換えることはできません
 
 ## <a name="next-steps"></a>次のステップ

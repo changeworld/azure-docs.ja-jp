@@ -1,20 +1,20 @@
 ---
 title: PowerShell から Azure Queue Storage を使用する方法 - Azure Storage
 description: PowerShell を使用して Azure Queue Storage で操作を実行する Azure Queue Storage を使用すると、HTTP または HTTPS によってアクセスできる大量のメッセージを格納できます。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/15/2019
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1436114a070dff7120a7de10937cbfa58644d305
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: a607d1c494aee2881e623e01e6cd9637cb94dc9d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276248"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582290"
 ---
 # <a name="how-to-use-azure-queue-storage-from-powershell"></a>PowerShell から Azure Queue Storage を使用する方法
 
@@ -196,6 +196,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 - [Storage PowerShell コマンドレット](/powershell/module/az.storage)
 
-### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー
 
 - [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。

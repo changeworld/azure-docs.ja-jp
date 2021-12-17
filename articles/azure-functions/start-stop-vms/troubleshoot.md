@@ -2,15 +2,15 @@
 title: VM の開始/停止のトラブルシューティング (プレビュー)
 description: この記事では、Azure VM の VM の開始/停止 (プレビュー) 機能を使用して、発生した問題をトラブルシューティングする方法について説明します。
 services: azure-functions
-ms.subservice: ''
-ms.date: 03/31/2021
+ms.subservice: start-stop-vms
+ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3c379c1eb36fc19368630188f1b584e1d8a7b8ad
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 2908f9a8383897ae0bda162e6f980e02d6c81bc1
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111102"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966991"
 ---
 # <a name="troubleshoot-common-issues-with-startstop-vms-preview"></a>VM の開始/停止 (プレビュー) に関する一般的な問題のトラブルシューティング
 
@@ -32,7 +32,7 @@ Azure 共有ダッシュボードを確認することで開始できます。 V
 
 VM の開始/停止 v2 (プレビュー) に使用される Azure ストレージ アカウントの **requestsstoretable** テーブルに書き込まれている、VM 上で実行された操作の詳細を確認できます。 それらのレコードを表示するには、こちらの手順を実行します。
 
-1. Azure portal でストレージ アカウントに移動し、左側のペインの [アカウント] で [**Storage Explorer (プレビュー)] を選択します。
+1. Azure portal でストレージ アカウントに移動し、左側のペインの [アカウント] で **[Storage Explorer (プレビュー)]** を選択します。
 1. **[テーブル]** を選択し、 **[requeststoretable]** を選択します。
 1. テーブル内の各レコードは、ロジック アプリのシナリオで定義されているターゲット スコープに基づいて Azure VM に対して実行された開始/停止アクションを表します。 レコードのプロパティ (TIMESTAMP、ACTION、TARGETTOPLEVELRESOURCENAME など) のいずれか 1 つを使用して結果をフィルター処理できます。
 
@@ -65,3 +65,5 @@ Azure Functions とロジック アプリの監視の詳細を確認してくだ
 * [Azure Functions の監視を構成する方法](../../azure-functions/configure-monitoring.md)。
 
 * [ロジック アプリの監視](../../logic-apps/monitor-logic-apps.md)。
+
+* デプロイ中に問題が発生した場合は、Start/Stop VMs v2 (プレビュー) を使用しているときの問題が発生しています。関連する質問がある場合は、[GitHub](https://github.com/microsoft/startstopv2-deployments/issues) に問題を送信できます。 このプレビュー バージョンでは、[Azure サポート サイト](https://azure.microsoft.com/support/options/)から Azure サポート インシデントを提出することはできません。 

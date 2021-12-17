@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 5bd218c0d94922b6137a964e3993f516216ca4b7
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 9a07f2b1d4b63005bff4a8963bd1258ad72e87ee
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104787352"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137276"
 ---
 # <a name="tutorial-visualize-data-with-time-series-insights-tsi"></a>チュートリアル: Time Series Insights (TSI) を使用してデータを視覚化する
 
@@ -54,13 +54,13 @@ TSI Explorer で、未割り当ての時系列インスタンスに注目して�
 
 利用統計情報をグラフで視覚化するには、TSI インスタンスを右クリックし、値を選択します。 グラフで使用される時間枠は、右上隅から調整できます。 複数のインスタンスの値は、同じ時間単位の選択で視覚化できます。
 
-詳細については、[クイック スタート: Azure Time Series Insights プレビューの探索](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)に関する記事を参照してください
+詳細については、[クイック スタート: Azure Time Series Insights プレビューの探索](../time-series-insights/quickstart-explore-tsi.md)に関する記事を参照してください
 
 ## <a name="define-and-apply-a-new-model"></a>新しいモデルを定義して適用する
 
 テレメトリ インスタンスは現時点では、単に未加工の形式であるため、適切にコンテキスト化する必要があります 
 
-TSI モデルの詳細については、[Azure Time Series Insights プレビューの時系列モデル](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm)に関する記事を参照してください
+TSI モデルの詳細については、[Azure Time Series Insights プレビューの時系列モデル](../time-series-insights/concepts-model-overview.md)に関する記事を参照してください
 
 1. 手順 1 - Explorer のモデル タブで、取り込まれた利用統計情報の新しい階層を定義します。 階層とは、TSI インスタンスを介したより直観的なナビゲーションに必要なメタ情報をユーザーが挿入できるようにする論理ツリー構造です。 ユーザーは、後でさまざまな TSI インスタンスに対してインスタンス化できる階層テンプレートを作成、削除、変更できます。
 
@@ -88,7 +88,7 @@ TSI モデルの詳細については、[Azure Time Series Insights プレビュ
 
 ## <a name="connect-time-series-insights-to-power-bi"></a>Power BI への Time Series Insights の接続
 
-Time Series Insights 環境を Power BI に接続することもできます。  詳細については、[TSI を Power BI に接続する方法](https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)と [Power BI で TSI からのデータを視覚化する方法](https://docs.microsoft.com/azure/time-series-insights/concepts-power-bi)に関する各記事を参照してください。
+Time Series Insights 環境を Power BI に接続することもできます。  詳細については、[TSI を Power BI に接続する方法](../time-series-insights/how-to-connect-power-bi.md)と [Power BI で TSI からのデータを視覚化する方法](../time-series-insights/concepts-power-bi.md)に関する各記事を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

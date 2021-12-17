@@ -1,29 +1,26 @@
 ---
 title: 外部 ASE の作成
 description: アプリが含まれる App Service Environment を作成する方法、またはスタンドアロンの (空の) ASE を作成する方法について説明します。
-author: ccompy
-ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
+author: madsd
 ms.topic: article
 ms.date: 06/13/2017
-ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: c953c31792b8d01199d409cbd91124138a6ebb15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: madsd
+ms.openlocfilehash: 771bfd60fb3124a3cc827bd6b35ac0de1dceef04
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92927449"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519688"
 ---
-# <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成
-
-Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内のサブネットに Azure App Service をデプロイしたものです。
+# <a name="create-an-external-app-service-environment"></a>外部 App Service 環境の作成
 
 > [!NOTE]
-> 各 App Service Environment には仮想 IP (VIP) があり、これを使用して App Service Environment と通信できます。
+> この記事は、Isolated App Service プランで使用される App Service Environment v2 に関するものです
+> 
 
-App Service Environment (ASE) をデプロイするには、次の 2 つの方法があります。
+Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内のサブネットに Azure App Service をデプロイしたものです。 App Service Environment (ASE) をデプロイするには、次の 2 つの方法があります。
 
-- 外部 IP アドレスの VIP を使用する。外部 ASE と呼ばれます。
+- 外部の公開 IP アドレスの VIP を使用する。外部 ASE と呼ばれます。
 - 内部 IP アドレスの VIP を使用する。内部エンドポイントは内部ロード バランサー (ILB) であるため、ILB ASE と呼ばれます。
 
 この記事では、外部 ASE を作成する方法について説明します。 ASE の概要については、[App Service Environment の概要][Intro]に関するページをご覧ください。 ILB ASE の作成方法について詳しくは、[ILB ASE の作成と使用][MakeILBASE]に関するページをご覧ください。
@@ -55,7 +52,7 @@ ASE を作成する方法は、3 つあります。
 
 ## <a name="create-an-ase-and-an-app-service-plan-together"></a>ASE と App Service プランを一緒に作成する
 
-App Service プランは、アプリのコンテナーです。 App Service でアプリを作成するときは、App Service プランを選択または作成します。App Service Environment に App Service プランが存在し、App Service プランにアプリが存在します。
+App Service プランは、アプリのコンテナーです。 App Service でアプリを作成するときは、App Service プランを選択または作成します。 App Service Environment に App Service プランが存在し、App Service プランにアプリが存在します。
 
 App Service プランを作成中に ASE を作成するには、次の手順を実行します。
 

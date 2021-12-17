@@ -3,15 +3,15 @@ title: 構成オプション - Azure Monitor Application Insights for Java
 description: Azure Monitor Application Insights for Java を構成する方法
 ms.topic: conceptual
 ms.date: 11/04/2020
-author: MS-jgol
 ms.custom: devx-track-java
-ms.author: jgol
-ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: 9c6fcc3fd0bff46bb3c1665b26502be188a3f83e
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449972"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158702"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
@@ -39,14 +39,14 @@ ms.locfileid: "106449972"
 
 ## <a name="configuration-file-path"></a>構成ファイルのパス
 
-Application Insights Java 3.0 は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.0.3.jar` と同じディレクトリに配置されていることが想定されています。
+Application Insights Java 3.x は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.2.3.jar` と同じディレクトリに配置されていることが想定されています。
 
 独自の構成ファイルのパスを指定するには、以下のいずれかを使用します
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境変数、または
 * `applicationinsights.configuration.file` Java システム プロパティ
 
-相対パスを指定すると、`applicationinsights-agent-3.0.3.jar` が配置されているディレクトリからの相対でパスが解決されます。
+相対パスを指定すると、`applicationinsights-agent-3.2.3.jar` が配置されているディレクトリからの相対でパスが解決されます。
 
 ## <a name="connection-string"></a>接続文字列
 
@@ -180,9 +180,22 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 > [!NOTE]
 > バージョン 3.0.2 以降では、`service.version` という名前のカスタム ディメンションを追加した場合、値はカスタム ディメンションとしてではなく、Application Insights ログ テーブルの `application_Version` 列に格納されます。
 
-## <a name="telemetry-processors-preview"></a>テレメトリ プロセッサ (プレビュー)
+## <a name="inherited-attribute-preview"></a>継承された属性 (プレビュー)
 
-この機能はプレビュー段階にあります。
+バージョン 3.2.0 以降、要求テレメトリでカスタム ディメンションをプログラムによって設定し、それに続く依存関係テレメトリに継承させたい場合は、以下のように行います。
+
+```json
+{
+  "inheritedAttributes": [
+    {
+      "key": "mycustomer",
+      "type": "string"
+    }
+  ]
+}
+```
+
+## <a name="telemetry-processors-preview"></a>テレメトリ プロセッサ (プレビュー)
 
 要求、依存関係、トレースのテレメトリに適用されるルールを構成できます。次に例を示します。
  * 機密データをマスクする
@@ -256,29 +269,6 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
 }
 ```
 
-## <a name="auto-collected-azure-sdk-telemetry"></a>自動収集 Azure SDK テレメトリ
-
-この機能はプレビュー段階にあります。
-
-最新の Azure SDK ライブラリの多くでは、テレメトリが生成されます。
-
-バージョン 3.0.3 以降では、このテレメトリの収集を有効にすることができます。
-
-```json
-{
-  "preview": {
-    "instrumentation": {
-      "azureSdk": {
-        "enabled": true
-      }
-    }
-  }
-}
-```
-
-環境変数 `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` を使用してこの機能を有効にすることもできます
-(JSON 構成で指定されている有効設定よりも優先されます)。
-
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>特定の自動収集テレメトリの抑制
 
 バージョン 3.0.3 以降では、こちらの構成オプションを使用して、特定の自動収集テレメトリを抑制できます。
@@ -286,6 +276,9 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
 ```json
 {
   "instrumentation": {
+    "azureSdk": {
+      "enabled": false
+    },
     "cassandra": {
       "enabled": false
     },
@@ -304,6 +297,9 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
     "mongo": {
       "enabled": false
     },
+    "rabbitmq": {
+      "enabled": false
+    },
     "redis": {
       "enabled": false
     },
@@ -314,24 +310,58 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
 }
 ```
 
-これらの環境変数を使用して、これらのインストルメンテーションを抑制することもできます
+これらの環境変数を `false` に設定することで、これらのインストルメンテーションを抑制することもできます。
 
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_AZURE_SDK_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_RABBITMQ_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED`
 
 (JSON 構成で指定されている有効設定よりも優先されます)。
 
-> 注: より細かい制御を検討している (たとえば、すべての Redis 呼び出しではなく、一部の Redis 呼び出しを抑制する) 場合は、[サンプリング オーバーライド](./java-standalone-sampling-overrides.md)を参照してください。
+> [!NOTE]
+> より細かい制御を検討している (たとえば、すべての Redis 呼び出しではなく、一部の Redis 呼び出しを抑制する) 場合は、[サンプリング オーバーライド](./java-standalone-sampling-overrides.md)を参照してください。
+
+## <a name="preview-instrumentations"></a>プレビュー インストルメンテーション
+
+バージョン 3.2.0 以降では、次のプレビュー インストルメンテーションを有効にすることができます。
+
+```
+{
+  "preview": {
+    "instrumentation": {
+      "apacheCamel": {
+        "enabled": true
+      },
+      "grizzly": {
+        "enabled": true
+      },
+      "quartz": {
+        "enabled": true
+      },
+      "springIntegration": {
+        "enabled": true
+      },
+      "akka": { 
+        "enabled": true
+      },
+    }
+  }
+}
+```
+> [!NOTE]
+> Akka インストルメンテーションはバージョン 3.2.2 から使用できます。
 
 ## <a name="heartbeat"></a>Heartbeat
 
-Application Insights Java 3.0 は、既定では 15 分ごとにハートビート メトリックを送信します。 ハートビート メトリックを使用してアラートをトリガーする場合は、このハートビートの頻度を増やすことができます。
+Application Insights Java 3.x は、既定では 15 分ごとにハートビート メトリックを送信します。
+ハートビート メトリックを使用してアラートをトリガーする場合は、このハートビートの頻度を増やすことができます。
 
 ```json
 {
@@ -346,7 +376,7 @@ Application Insights Java 3.0 は、既定では 15 分ごとにハートビー�
 
 ## <a name="http-proxy"></a>HTTP Proxy
 
-アプリケーションがファイアウォールの背後にあり、Application Insights に直接接続できない場合 ([Application Insights によって使用される IP アドレス](./ip-addresses.md)に関するページを参照)、HTTP プロキシを使用するように Application Insights Java 3.0 を構成できます。
+アプリケーションがファイアウォールの背後にあり、Application Insights に直接接続できない場合 ([Application Insights によって使用される IP アドレス](./ip-addresses.md)に関するページを参照)、HTTP プロキシを使用するように Application Insights Java 3.x を構成できます。
 
 ```json
 {
@@ -357,7 +387,7 @@ Application Insights Java 3.0 は、既定では 15 分ごとにハートビー�
 }
 ```
 
-グローバルの `-Dhttps.proxyHost` と `-Dhttps.proxyPort` が設定されている場合、Application Insights Java 3.0 によってそれらも考慮されます。
+Application Insights Java 3.x では、グローバル システム プロパティの `https.proxyHost` と `https.proxyPort` (および必要に応じて `http.nonProxyHosts`) が設定されている場合、それらが考慮されます。
 
 ## <a name="metric-interval"></a>メトリックの間隔
 
@@ -399,13 +429,45 @@ Application Insights Java 3.0 は、既定では 15 分ごとにハートビー�
 [//]: # "}"
 [//]: # "```"
 
+## <a name="authentication-preview"></a>認証 (プレビュー)
+> [!NOTE]
+> 認証機能は、3.2.0-BETA バージョン以降で利用できます
+
+これにより、Azure Active Directory 認証に必要な[トークン資格情報](/java/api/overview/azure/identity-readme#credentials)を生成するエージェントを設定できます。
+詳細については、[認証](./azure-ad-authentication.md)に関するドキュメントを参照してください。
+
+## <a name="instrumentation-keys-overrides-preview"></a>インストルメンテーション キーのオーバーライド (プレビュー)
+
+3\.2.3 以降、この機能はプレビュー段階にあります。
+
+インストルメンテーション キーのオーバーライドを使用すると、[既定のインストルメンテーション キー](#connection-string)をオーバーライドできます。次に例を示します。
+* 1 つの http パス プレフィックス `/myapp1` に 1 つのインストルメンテーション キーを設定します。
+* もう 1 つの http パス プレフィックス `/myapp2/` にもう 1 つのインストルメンテーション キーを設定します。
+
+```json
+{
+  "preview": {
+    "instrumentationKeyOverrides": [
+      {
+        "httpPathPrefix": "/myapp1",
+        "instrumentationKey": "12345678-0000-0000-0000-0FEEDDADBEEF"
+      },
+      {
+        "httpPathPrefix": "/myapp2",
+        "instrumentationKey": "87654321-0000-0000-0000-0FEEDDADBEEF"
+      }
+    ]
+  }
+}
+```
+
 ## <a name="self-diagnostics"></a>自己診断
 
-"自己診断" では、Application Insights Java 3.0 からの内部ログを参照します。
+"自己診断" では、Application Insights Java 3.x からの内部ログを参照します。
 
 この機能は、Application Insights 自体の問題を発見して診断する場合に役立ちます。
 
-Application Insights Java 3.0 は、既定では `applicationinsights.log` ファイルとコンソールの両方に `INFO` レベルでログを記録します。これらは次の構成に対応します。
+Application Insights Java 3.x は、既定では `applicationinsights.log` ファイルとコンソールの両方に `INFO` レベルでログを記録します。これらは次の構成に対応します。
 
 ```json
 {
@@ -425,7 +487,7 @@ Application Insights Java 3.0 は、既定では `applicationinsights.log` フ�
 
 `level` には、`OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG`、`TRACE` のいずれかを指定できます。
 
-`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.0.3.jar` があるディレクトリを基準にして解決されます。
+`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.2.3.jar` があるディレクトリを基準にして解決されます。
 
 `maxSizeMb` は、ロールオーバーされる前のログ ファイルの最大サイズです。
 

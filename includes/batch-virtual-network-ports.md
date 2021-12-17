@@ -10,15 +10,15 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 02/16/2021
+ms.date: 06/09/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: baf146bdd89d45c5d7e1ed359822a35d383b7b6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 694bf49db5a77e09d421b94797166bae2fe16685
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561918"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903087"
 ---
 ### <a name="general-requirements"></a>一般的な要件
 
@@ -61,7 +61,7 @@ ms.locfileid: "103561918"
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>ネットワーク セキュリティ グループ:サブネット レベルの規則の指定
 
-仮想ネットワークのサブネット レベルで NSG を指定する必要はありません。これは、Batch によってその独自の NSG が構成されるためです (上記参照)。 Batch の計算ノードがデプロイされているサブネットに関連付けられている NSG がある場合、またはカスタム NSG 規則を適用して既定の適用を上書きする場合は、次のテーブルに示すように、少なくとも受信および送信のセキュリティ規則を持つ NSG を構成する必要があります。
+Batch の計算ノードがデプロイされているサブネットに関連付けられている NSG がある場合、またはカスタム NSG 規則を適用して既定の適用を上書きする場合は、次のテーブルに示すように、少なくとも受信および送信のセキュリティ規則を持つ NSG を構成する必要があります。
 
 ポート 3389 (Windows) またはポート 22 (Linux) のインバウンド トラフィックは、外部ソースからの計算ノードに対するリモート アクセスを許可する必要がある場合にのみ構成します。 特定の MPI ランタイムでマルチインスタンス タスクをサポートする必要がある場合は、Linux でポート 22 の規則を有効にすることが必要になる場合があります。 これらのポートでトラフィックを許可することは、プール計算ノードを使用できるようにするために厳密には必要ありません。
 
@@ -70,14 +70,14 @@ ms.locfileid: "103561918"
 
 **[受信セキュリティ規則]**
 
-| ソース IP アドレス | 発信元サービス タグ | ソース ポート | 宛先 | 宛先ポート | Protocol | アクション |
+| ソース IP アドレス | 発信元サービス タグ | ソース ポート | 到着地 | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- | --- |
 | 該当なし | `BatchNodeManagement` [サービス タグ](../articles/virtual-network/network-security-groups-overview.md#service-tags) (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | * | Any | 29876 から 29877 | TCP | Allow |
 | Linux マルチインスタンス タスクのためにコンピューティング ノードまたはコンピューティング ノード サブネット (あるいは両方) にリモート アクセスするためのユーザー ソース IP (必要な場合) | 該当なし | * | Any | 3389 (Windows)、22 (Linux) | TCP | Allow |
 
 **アウトバウンド セキュリティ規則**
 
-| source | ソース ポート | 宛先 | 宛先サービス タグ | 宛先ポート | Protocol | アクション |
+| source | ソース ポート | 到着地 | 宛先サービス タグ | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- | --- |
 | Any | * | [サービス タグ](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | 443 | TCP | Allow |
 | Any | * | [サービス タグ](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `BatchNodeManagement` (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | 443 | TCP | Allow |
@@ -87,7 +87,7 @@ ms.locfileid: "103561918"
 ### <a name="pools-in-the-cloud-services-configuration"></a>クラウド サービスの構成におけるプール
 
 > [!WARNING]
-> クラウド サービス構成プールは非推奨です。 代わりに、仮想マシン構成プールを使用してください。
+> Cloud Services 構成プールは[非推奨](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)とされます。 代わりに、仮想マシン構成プールを使用してください。
 
 **サポートされる VNET** - クラシック VNET のみ
 
@@ -107,13 +107,13 @@ NSG を指定する必要はありません。Batch IP アドレスからプー�
 
 **[受信セキュリティ規則]**
 
-| ソース IP アドレス | ソース ポート | 宛先 | 宛先ポート | Protocol | アクション |
+| ソース IP アドレス | ソース ポート | 到着地 | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- |
 Any <br /><br />実際上は "すべて許可" が必要ですが、Batch サービス以外の IP アドレスをすべてフィルターで除外する ACL 規則が、Batch サービスにより各ノードのレベルで適用されます。 | * | Any | 10100、20100、30100 | TCP | Allow |
 | コンピューティング ノードへの RDP アクセスを許可する場合 (省略可能) | * | Any | 3389 | TCP | Allow |
 
 **アウトバウンド セキュリティ規則**
 
-| source | ソース ポート | 宛先 | 宛先ポート | Protocol | アクション |
+| source | ソース ポート | 到着地 | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- |
 | Any | * | Any | 443  | Any | Allow |

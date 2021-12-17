@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
-ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: a99e313a0c3fe9093137d4acaa64e789ef5e10e3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 6e35b814b8b6fce5f223200f1774b7da2fee7a8c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762211"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660972"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
 
@@ -177,7 +177,7 @@ steps:
 
 ホストしている OS によっては、YAML ファイルに次の YAML サンプルのいずれかを含める必要があります。
 
-#### <a name="windows-function-app"></a>Windows Function App
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Windows Function App をデプロイするには、次のスニペットを使用します。
 
@@ -194,7 +194,7 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-#### <a name="linux-function-app"></a>Linux Function App
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Linux Function App をデプロイするには、次のスニペットを使用します。
 
@@ -211,6 +211,7 @@ steps:
     #resourceGroupName: '<Resource Group Name>'
     #slotName: '<Slot name>'
 ```
+---
 
 ## <a name="template-based-pipeline"></a>テンプレート ベースのパイプライン
 
@@ -243,8 +244,6 @@ Azure Pipelines でアプリをビルドする方法は、アプリのプログ�
 新しいリリース パイプラインを作成するときに、Azure Functions のリリース テンプレートを検索します。
 
 ![Azure Functions のリリース テンプレートを検索する](media/functions-how-to-azure-devops/release-template.png)
-
-リリース テンプレートでは、デプロイ スロットへのデプロイはサポートされていません。
 
 ## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Azure CLI を使用してビルド パイプラインを作成する
 

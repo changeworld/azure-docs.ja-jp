@@ -1,10 +1,10 @@
-- name: Windows Virtual Desktop (クラシック)
+- name: Azure Virtual Desktop (クラシック)
   href: ../index.yml
 - name: 概要
   items:
-    - name: Windows Virtual Desktop とは
+    - name: Azure Virtual Desktop とは
       href: ../overview.md
-    - name: Windows Virtual Desktop のドキュメント
+    - name: Azure Virtual Desktop のドキュメント
       href: ../create-host-pools-azure-marketplace.md
 - name: チュートリアル
   items:
@@ -24,7 +24,7 @@
   items:
     - name: 手動で移行する
       href: ../manual-migration.md
-    - name: Windows Virtual Desktop リソースに接続する
+    - name: Azure Virtual Desktop リソースに接続する
       items:
         - name: Windows デスクトップ クライアントを使用して接続する
           href: connect-windows-7-10-2019.md
@@ -74,11 +74,13 @@
       href: publish-apps-2019.md
     - name: Azure AD の Multi-Factor Authentication を設定する
       href: ../set-up-mfa.md
+    - name: Azure Virtual Desktop クラシックを削除する
+      href: manual-delete.md
 - name: 概念
   items:
-    - name: Windows Virtual Desktop の環境
+    - name: Azure Virtual Desktop 環境
       href: environment-setup-2019.md
-    - name: Windows Virtual Desktop における委任されたアクセス
+    - name: Azure Virtual Desktop における委任されたアクセス
       href: delegated-access-virtual-desktop-2019.md
     - name: ホスト プールの負荷分散方法
       href: host-pool-load-balancing-2019.md
@@ -100,7 +102,7 @@
       href: troubleshoot-management-tool.md
     - name: リモート デスクトップ サービスの接続
       href: troubleshoot-service-connection-2019.md
-    - name: Windows Virtual Desktop PowerShell
+    - name: Azure Virtual Desktop PowerShell
       href: troubleshoot-powershell-2019.md
 - name: リファレンス
   items:

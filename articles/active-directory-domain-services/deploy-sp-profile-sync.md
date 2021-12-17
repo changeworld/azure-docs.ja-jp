@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/09/2020
+ms.date: 10/05/2021
 ms.author: justinha
-ms.openlocfilehash: 8fbde10ccf5a7f083f5fbddaadd6668d880a1fac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 955d37144220ec455f6f95bab2102123b54cd0c1
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619829"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536194"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>SharePoint Server のユーザー プロファイルの同期をサポートするように Azure Active Directory Domain Services を構成します。
 
@@ -37,8 +37,7 @@ SharePoint Server には、ユーザー プロファイルを同期するサー�
 * Azure AD DS マネージド ドメインに参加している Windows Server 管理 VM。
     * 必要に応じて、[管理 VM を作成する][tutorial-create-management-vm]チュートリアルを完了します。
 * Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
-* ユーザー プロファイル同期サービスの SharePoint サービス アカウント。
-    * 必要に応じて、「[SharePoint Server の管理アカウントとサービス アカウントを計画する][sharepoint-service-account]」を参照してください。
+* ユーザー プロファイル同期サービスの SharePoint サービス アカウントの名前。 "*プロファイル同期アカウント*" について詳しくは、「[SharePoint Server の管理アカウントとサービス アカウントを計画する][sharepoint-service-account]」を参照してください。 "*プロファイル同期アカウント*" 名を SharePoint サーバーの全体管理 Web サイトから取得するには、 **[アプリケーション管理]**  >  **[サービス アプリケーションの管理]**  >  **[User Profile Service Application]** をクリックします。 詳細については、「[SharePoint の Active Directory インポートを使用してプロファイルの同期を構成する (SharePoint Server)](/SharePoint/administration/configure-profile-synchronization-by-using-sharepoint-active-directory-import)」を参照してください。
 
 ## <a name="service-accounts-overview"></a>サービス アカウントの概要
 
@@ -69,9 +68,6 @@ Azure AD DS 管理 VM から、次の手順を実行します。
 
     ![SharePoint サービス アカウントを [AAD DC Service Accounts]\(AAD DC サービス アカウント\) セキュリティ グループに追加する](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
 
-## <a name="next-steps"></a>次のステップ
-
-詳細については、「[ユーザー プロファイルの同期を管理する (SharePoint Server)](/SharePoint/administration/manage-profile-synchronization)」を参照してください。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

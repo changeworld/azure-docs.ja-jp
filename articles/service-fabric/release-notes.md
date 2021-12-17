@@ -1,35 +1,71 @@
 ---
 title: Azure Service Fabric のリリース
 description: Azure Service Fabric のリリース ノート。 Service Fabric の最新の機能および強化に関する情報が含まれます。
-ms.date: 06/10/2019
+ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: f7e929000b85462e7fabf6d717c52abc454b47ad
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0555bf71402230cf8264a271ce3ac6cf59357c12
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313336"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134049"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
+この記事では、Service Fabric のランタイムと SDK に対する最新リリースと更新プログラムの詳細を提供します。
+
+次のリソースも使用できます。
 - <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">トラブルシューティング ガイド</a> 
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">問題点の追跡</a> 
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">サポート オプション</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">サポートされているバージョン</a> 
 - <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">コード サンプル</a>
 
-この記事では、Service Fabric のランタイムと SDK に対する最新リリースと更新プログラムの詳細を提供します。
+
+## <a name="service-fabric-82"></a>Service Fabric 8.2
+
+Service Fabric ランタイムの 8.2 リリースでは、ツールと SDK の更新プログラムと共に、さまざまな Azure リージョンへのロールアウトが開始されたことをお知らせします。 .NET SDK、Java SDK、および Service Fabric ランタイムの更新プログラムは、Web Platform Installer、NuGet パッケージ、Maven リポジトリから入手できます。
+
+### <a name="key-announcements"></a>重要なお知らせ
+- アップグレードによって影響が生じるかどうかを通知する API をクラスター マネージャーで公開します
+
+### <a name="service-fabric-82-releases"></a>Service Fabric 8.2 リリース
+| リリース日 | Release | 詳細情報 |
+|---|---|---|
+| 2021 年 10 月 29 日 | [Azure Service Fabric 8.2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-2-release/ba-p/2895108)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_82.md)|
+
+
+## <a name="service-fabric-81"></a>Service Fabric 8.1
+
+Service Fabric ランタイムの 8.1 リリースでは、ツールと SDK の更新プログラムと共に、さまざまな Azure リージョンへのロールアウトが開始されたことをお知らせします。 .NET SDK、Java SDK、および Service Fabric ランタイムの更新プログラムは、Web Platform Installer、NuGet パッケージ、Maven リポジトリから入手できます。
+
+### <a name="key-announcements"></a>重要なお知らせ
+- 補助レプリカのサポートを追加しました
+- **プレビュー** .NET 6.0 Service Fabric アプリケーションのサポートを追加しました
+- アプリケーションの説明を更新するための API サポートを追加しました
+- IPC の障害とプロセスのスタックを検出するために、Reconfiguration Agent (RA) と Reconfiguration Agent Proxy (RAP) の間に定期的な ping を追加しました
+- コンテナー化されていないアプリケーション用に liveness probe と readiness probe のサポートを追加しました
+- クラスターの更新がノード容量の更新に影響しないようにしました
+
+### <a name="service-fabric-81-releases"></a>Service Fabric 8.1 リリース
+| リリース日 | Release | 詳細情報 |
+|---|---|---|
+| 2021 年 7 月 28 日 | [Azure Service Fabric 8.1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-release/ba-p/2594194)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81.md)|
+| 2021 年 8 月 13 日 | [Azure Service Fabric 8.1 の最初の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-first-refresh-release/ba-p/2638798) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81CU1.md) |
+| 2021 年 9 月 9 日 | [Azure Service Fabric 8.1 の 2 回目の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-second-refresh-release/ba-p/2734904) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81CU2.md) |
+| 2021 年 10 月 6 日 | [Azure Service Fabric 8.1 の 3 回目の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-third-refresh-release/ba-p/2816117) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81CU3.md) |
+
 
 ## <a name="service-fabric-80"></a>Service Fabric 8.0
 
 Service Fabric ランタイムの 8.0 リリースでは、ツールと SDK の更新プログラムと共に、さまざまな Azure リージョンへのロールアウトが開始されたことをお知らせします。 .NET SDK、Java SDK、および Service Fabric ランタイムの更新プログラムは、Web Platform Installer、NuGet パッケージ、Maven リポジトリから入手できます。
 
-### <a name="key-announcements"></a>重要な発表
+### <a name="key-announcements"></a>重要なお知らせ
 
 - Windows 向け .NET 5 に対するサポートの **一般提供**
-- [ステートレス NodeType](https://docs.microsoft.com/azure/service-fabric/service-fabric-stateless-node-types) の **一般提供**
+- [ステートレス NodeType](./service-fabric-stateless-node-types.md) の **一般提供**
 - ステートレス サービス インスタンスを移動する機能
 - パラメーター化された DefaultLoad をアプリケーション マニフェストに追加する機能
 - シングルトン レプリカのアップグレード - 一部のクラスター レベル設定をアプリケーション レベルで定義する機能
@@ -44,18 +80,20 @@ Service Fabric ランタイムの 8.0 リリースでは、ツールと SDK の�
 - 安全に解放できるようになったらすぐに参照を解放するように StateManager を修正
 - ユーザー シークレットの格納中は、セントラル シークレット サービスの削除をブロック
 
-
 ### <a name="service-fabric-80-releases"></a>Service Fabric 8.0 リリース
 | リリース日 | Release | 詳細情報 |
 |---|---|---|
 | 2021 年 4 月 8 日 | [Azure Service Fabric 8.0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-release/ba-p/2260016)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80.md)|
+| 2021 年 5 月 17 日 | [Azure Service Fabric 8.0 の 最初の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-first-refresh-release/ba-p/2362556) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80CU1.md) |
+| 2021 年 6 月 17 日 | [Azure Service Fabric 8.0 の 2 回目の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-second-refresh-release/ba-p/2462979) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80CU2.md) |
+| 2021 年 7 月 28 日 | [Azure Service Fabric 8.0 の 3 回目の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-third-refresh-release/ba-p/2594180) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80CU3.md) |
 
 
 ## <a name="previous-versions"></a>以前のバージョン
 
 ### <a name="service-fabric-72"></a>Service Fabric 7.2
 
-#### <a name="key-announcements"></a>重要な発表
+#### <a name="key-announcements"></a>重要なお知らせ
 
 - **プレビュー**:[**Service Fabric マネージド クラスター**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572)がパブリック プレビューになりました。 Service Fabric マネージド クラスターは、Service Fabric クラスターを構成する基になるリソースを単一の ARM リソースにカプセル化することで、クラスターのデプロイと管理を簡素化することを目的としています。 詳細については、[Service Fabric マネージド クラスターの概要](./overview-managed-cluster.md)に関する記事を参照してください。
 - **プレビュー**:[**ノード数よりも多くの数のインスタンスを持つステートレス サービスのサポート**](./service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)がパブリック プレビューになりました。 配置ポリシーを使用すると、1 つのノードにパーティションの複数のステートレス インスタンスを作成できます。
@@ -88,9 +126,9 @@ Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危�
 7\.1 への更新は、[Azure portal](./service-fabric-cluster-upgrade-version-azure.md#manual-upgrades-with-azure-portal) を使用するか、[Azure Resource Manager デプロイ](./service-fabric-cluster-upgrade-version-azure.md#resource-manager-template)によって行うことができます。
 
 自動アップグレードを有効にした Service Fabric クラスターには、Microsoft が標準的なロールアウト手順を再開した時点で、7.1 更新プログラムが自動で届き始めます。 標準ロールアウトを開始する際は、別途、[Service Fabric テクノロジ コミュニティ サイト](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)で事前にお知らせいたします。
-また、6.5 から 7.1 までのメジャー リリースについて、サポート終了日の最新情報を[こちら](./service-fabric-versions.md#supported-versions)で公開しています。 
+また、6.5 から 7.1 までのメジャー リリースについて、サポート終了日の最新情報を[こちら](./service-fabric-versions.md)で公開しています。 
 
-#### <a name="key-announcements"></a>重要な発表
+#### <a name="key-announcements"></a>重要なお知らせ
 
 - [**Service Fabric アプリケーション用 Service Fabric マネージド ID**](./concepts-managed-identity.md) を **一般提供**
 - [**Ubuntu 18.04 のサポート**](./service-fabric-tutorial-create-vnet-and-linux-cluster.md)
@@ -143,7 +181,7 @@ Azure Service Fabric 7.0 の提供開始 Azure portal または Azure Resource M
 1 月には、標準のロールアウト手順を再開します。自動アップグレードが有効になっているクラスターは、7.0 更新プログラムの自動的な受信を開始します。 ロールアウトを開始する前に、別の発表を提供します。
 また、このポリシーが考慮されることを示すために、予定されているリリース日も更新します。 将来の[リリース スケジュール](https://github.com/Microsoft/service-fabric/#service-fabric-release-schedule)についてはこちらをご覧ください。
 
-#### <a name="key-announcements"></a>重要な発表
+#### <a name="key-announcements"></a>重要なお知らせ
  - [**アプリケーション サービスでの KeyVaultReference サポート (プレビュー)**](./service-fabric-keyvault-references.md)[マネージド ID](./concepts-managed-identity.md) が有効になっている Service Fabric アプリケーションは、環境変数、アプリケーション パラメーター、またはコンテナー リポジトリ資格情報として Key Vault シークレット URL を直接参照できるようになりました。 Service Fabric は、アプリケーションのマネージド ID を使用してシークレットを自動的に解決します。 
      
 - **ステートレス サービスのアップグレードの安全性の向上**:アプリケーションのアップグレード中に可用性を保証するために、使用可能と見なされる [ステートレス サービスの最小インスタンス数](/dotnet/api/system.fabric.description.statelessservicedescription)を定義するための新しい構成を導入しました。 以前は、すべてのサービスでこの値は 1 であり、変更できませんでした。 この新しいサービスごとの安全性チェックにより、アプリケーションのアップグレード中、クラスターのアップグレード中、Service Fabric の正常性と安全性のチェックに依存するその他のメンテナンス中に、サービスの稼働インスタンスの最小数を維持できるようになります。
@@ -212,15 +250,14 @@ Service Fabric 6.5 の新機能:
 | 2019 年 8 月 23 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
 | 2019 年 10 月 14 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md  |
 
-
 ### <a name="service-fabric-64-releases"></a>Service Fabric 6.4 のリリース
 
-| リリース日 | Release | 詳細情報 |
-|---|---|---|
-| 2018 年 11 月 30 日 | [Azure Service Fabric 6.4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/)  | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2018/12/Service-Fabric-6.4-Release.pdf)|
-| 2018 年 12 月 12 日 | [Windows クラスター向け Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)  | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2018/12/Links.pdf)  |
-| 2019 年 2 月 4 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2019/02/Service-Fabric-6.4CU3-Release-Notes.pdf) |
-| 2019 年 3 月 4 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2019/03/Service-Fabric-6.4CU4-Release-Notes.pdf)
-| 2019 年 4 月 8 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2019/04/Service-Fabric-6.4CU5-ReleaseNotes3.pdf)
-| 2019 年 5 月 2 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2019/05/Service-Fabric-64CU6-Release-Notes-V2.pdf)
-| 2019 年 5 月 28 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2019/05/Service_Fabric_64CU7_Release_Notes1.pdf)
+| リリース日 | Release |
+|---|---|
+| 2018 年 11 月 30 日 | [Azure Service Fabric 6.4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/) |
+| 2018 年 12 月 12 日 | [Windows クラスター向け Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
+| 2019 年 2 月 4 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
+| 2019 年 3 月 4 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
+| 2019 年 4 月 8 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
+| 2019 年 5 月 2 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
+| 2019 年 5 月 28 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |

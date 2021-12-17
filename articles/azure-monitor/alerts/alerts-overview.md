@@ -3,12 +3,12 @@ title: Azure でのアラートと通知監視の概要
 description: Azure Monitor のアラートの概要
 ms.topic: conceptual
 ms.date: 02/14/2021
-ms.openlocfilehash: 6785cfdf673e4c2da03ff26649c9336d57b699c8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee0d6cd4c895bbcd78767776a86bd63cfa4f5242
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038052"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747714"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -180,26 +180,22 @@ Azure Monitor の監視データを使用してインフラストラクチャま
 
 サブスクリプションに対して生成されたアラートをプログラムで照会したい場合があります。 たとえば、Azure portal の外部でカスタム ビューを作成したり、アラートを分析してパターンと傾向を特定したりする場合です。
 
-サブスクリプションに対して生成されたアラートをクエリするには、[Alert Management REST API](/rest/api/monitor/alertsmanagement/alerts) を使用するか、[Azure Resource Graph](../../governance/resource-graph/overview.md) と [REST API for Resources](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)を使用します。
+発生したアラートのクエリには、[Azure Resource Graph](../../governance/resource-graph/overview.md) と `AlertsManagementResources` スキーマを使用することをお勧めします。 Resource Graph は、複数のサブスクリプションにわたって生成されたアラートを管理しなければならない場合にお勧めします。
 
-リソース用の Resource Graph REST API を使用すると、大規模な警告インスタンスをクエリできます。 Resource Graph は、多くのサブスクリプションにわたって生成されたアラートを管理しなければならない場合にお勧めします。 
-
-次の Resource Graph REST API の要求例では、1つのサブスクリプション内のアラートの数を返します:
+次の Resource Graph REST API の要求例では、1 つのサブスクリプション内の前日のアラートを返します。
 
 ```json
 {
   "subscriptions": [
     <subscriptionId>
   ],
-  "query": "AlertsManagementResources | where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()"
+  "query": "alertsmanagementresources | where properties.essentials.lastModifiedDateTime > ago(1d) | project alertInstanceId = id, parentRuleId = tolower(tostring(properties['essentials']['alertRule'])), sourceId = properties['essentials']['sourceCreatedId'], alertName = name, severity = properties.essentials.severity, status = properties.essentials.monitorCondition, state = properties.essentials.alertState, affectedResource = properties.essentials.targetResourceName, monitorService = properties.essentials.monitorService, signalType = properties.essentials.signalType, firedTime = properties['essentials']['startDateTime'], lastModifiedDate = properties.essentials.lastModifiedDateTime, lastModifiedBy = properties.essentials.lastModifiedUserName"
 }
 ```
 
-Azure Resource Graph Explorer を使用して、ポータルでこの Resource Graph クエリの結果を確認することもできます: [portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+この Resource Graph クエリの結果は、ポータルで Azure Resource Graph Explorer を使用して確認することもできます: [portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/alertsmanagementresources%0A%7C%20where%20properties.essentials.lastModifiedDateTime%20%3E%20ago(1d)%0A%7C%20project%20alertInstanceId%20%3D%20id%2C%20parentRuleId%20%3D%20tolower(tostring(properties%5B 'essentials'%5D%5B'alertRule'%5D))%2C%20sourceId%20%3D%20properties%5B'essentials'%5D%5B'sourceCreatedId'%5D%2C%20alertName%20%3D%20name%2C%20severity%20%3D%20properties.essentials.severity%2C%20status%20%3D%20properties.essentials.monitorCondition%2C%20state%20%3D%20properties.essentials.alertState%2C%20affectedResource%20%3D%20properties.essentials.targetResourceName%2C%20monitorService%20%3D%20properties.essentials.monitorService%2C%20signalType%20%3D%20properties.essentials.signalType%2C%20firedTime%20%3D%20properties%5B'essentials'%5D%5B'startDateTime'%5D%2C%20lastModifiedDate%20%3D%20properties.essentials.lastModifiedDateTime%2C%20lastModifiedBy%20%3D%20properties.essentials.lastModifiedUserName)
 
-照会は、アラートの[必須](../alerts/alerts-common-schema-definitions.md#essentials)フィールドに対して行うことができます。
-
-[Alert Management REST API](/rest/api/monitor/alertsmanagement/alerts) を使用すると、[アラート コンテキスト](../alerts/alerts-common-schema-definitions.md#alert-context) フィールドなど、特定のアラートに関する詳細情報を取得できます。
+より小規模なクエリのシナリオでは、または、発生したアラートの更新が目的である場合は、[Alert Management REST API](/rest/api/monitor/alertsmanagement/alerts) を使用することもできます。
 
 ## <a name="smart-groups"></a>スマート グループ
 

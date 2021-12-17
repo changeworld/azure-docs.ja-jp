@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 07/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 39990a557315c3fcc79f2b9dab59f25f758ab2bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 97ba43602899ee60a6a2d24cdd699b12b8a1c687
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443116"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219711"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU のアクセス、電源、接続モードを管理する
 
@@ -37,7 +38,9 @@ ms.locfileid: "102443116"
 
 Azure Stack Edge Pro デバイスへのアクセスは、デバイスのパスワードを使用して制御されます。 パスワードは、ローカル Web UI を使用して変更できます。 また、Azure portal ではデバイスのパスワードをリセットすることもできます。
 
-デバイス ディスク上のデータへのアクセスは、保存時の暗号化キーによっても制御されます。
+デバイス ディスク上のデータへのアクセスは、保存時の暗号化キーによっても制御されます。 
+
+デバイスのローカル Web UI から HTTP または HTTPS 経由でリモート PowerShell セッションを開くことによって、デバイスにアクセスできます。
 
 ### <a name="change-device-password"></a>デバイスのパスワードを変更する
 
@@ -97,6 +100,21 @@ Azure Stack Edge Pro R と Azure Stack Edge Mini R デバイスでは、デバ�
 
     ![スクリーンショットに、[デバイスのパスワードをリセットします] ダイアログ ボックスが表示されてます。](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
+## <a name="enable-device-access-via-remote-powershell-over-http"></a>HTTP 経由でのリモート PowerShell を介したデバイス アクセスを有効にする
+
+HTTP または HTTPS 経由で、デバイスへのリモート PowerShell セッションを開くことができます。 既定では、HTTPS 経由で PowerShell セッションを介してデバイスにアクセスします。 ただし、信頼されたネットワークであれば、HTTP 経由でリモート PowerShell を有効にすることができます。
+
+ローカル UI で次の手順に従って、HTTP 経由でリモート PowerShell を有効にします。
+
+1. デバイスのローカル UI で、ページの右上隅から **[設定]** に移動します。
+1. **[有効]** を選択すると、HTTP 経由でデバイスのリモート PowerShell セッションを開くことができます。 この設定は、信頼されたネットワークでのみ有効にする必要があります。
+
+    ![スクリーンショットは、HTTP 経由でリモート PowerShell を有効にする設定を示しています。](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/enable-remote-powershell-http-1.png)
+
+1. **[適用]** を選択します。
+
+これで、HTTP 経由でデバイスの PowerShell インターフェイスに接続できるようになりました。 詳細については、[デバイスの PowerShell インターフェイスへの接続](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface)に関する記事を参照してください。
+
 ## <a name="manage-resource-access"></a>リソース アクセスの管理
 
 Azure Stack Edge または Data Box Gateway、IoT Hub、Azure Storage リソースを作成するには、リソース グループ レベルで共同作成者以上のアクセス許可が必要です。 対応するリソース プロバイダーも登録する必要があります。 アクティブ化キーと資格情報が関係する操作には、Microsoft Graph API へのアクセス許可も必要です。 これらについては以降のセクションで説明します。 
@@ -143,9 +161,12 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 デバイスは、既定の完全接続モードだけでなく、部分接続モードまたは完全切断モードで実行することもできます。 ここでは、これらの各モードについて説明します。
 
-- **完全接続** - これは、デバイスが動作する通常の既定モードです。 このモードでは、データのクラウドのアップロードとダウンロードの両方が有効です。 Azure portal またはローカル Web UI を使用して、デバイスを管理できます。
+- **完全接続** - これは、デバイスが動作する通常の既定モードです。 このモードでは、データのクラウドのアップロードとダウンロードの両方が有効です。 Azure portal またはローカル Web UI を使用して、デバイスを管理できます。 
 
-- **部分切断** – このモードでは、デバイスは共有データをアップロードもダウンロードもできませんが、Azure portal からデバイスを管理することはできます。
+    > [!NOTE]
+    > ネットワーク機能マネージャーのデプロイでは、Azure Stack Edge デバイスが **オンライン** であり、完全接続モードで動作している必要があります。
+
+- **部分切断** - このモードでは、デバイスは共有データをアップロードもダウンロードもできませんが、Azure portal からデバイスを管理することはできます。
 
     このモードは通常、従量制課金のサテライト ネットワークで使用され、目的はネットワーク帯域幅の消費量を最小限に抑えることです。 デバイス監視操作のため、最小限のネットワーク消費が発生する可能性があります。
 

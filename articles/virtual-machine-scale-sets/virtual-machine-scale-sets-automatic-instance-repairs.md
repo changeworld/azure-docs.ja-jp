@@ -8,15 +8,17 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: instance-protection
 ms.date: 02/28/2020
 ms.reviewer: jushiman
-ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 733f4602e43511924783f6bc8cb1bad29edb5ea0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 6134e1f4b4823b2198a1ecc316644ef0cd11ca33
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762913"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690537"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets の自動インスタンス修復
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 均一のスケール セット
 
 Azure Virtual Machine Scale Sets の自動インスタンス修復を有効にすると、正常なインスタンスのセットを維持することで、アプリケーションの高可用性を実現できます。 スケール セット内のインスタンスが[アプリケーション正常性拡張機能](./virtual-machine-scale-sets-health-extension.md)または [Load Balancer の正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md)によって報告された通り異常な状態であることが判明した場合、この機能により問題のあるインスタンスが削除され、新たに作成されたインスタンスにより置き換えられます。
 
@@ -38,7 +40,7 @@ Azure Virtual Machine Scale Sets の自動インスタンス修復を有効に�
 
 **スケール セット内のインスタンスの最大数**
 
-この機能は現在、インスタンスの数が 200 個以下のスケール セットに対してのみ使用できます。 スケール セットは、1 つの配置グループまたは複数の配置グループとしてデプロイできます。ただし、スケール セットに対して自動インスタンス修復が有効になっている場合、インスタンス数は 200 を超えることはできません。
+この機能は、現在、インスタンスの最大数が 500 個のスケール セットに対してのみ使用できます。 スケール セットは、1 つの配置グループまたは複数の配置グループとしてデプロイできます。ただし、スケール セットに対して自動インスタンス修復が有効になっている場合、インスタンス数は 500 を超えることはできません。
 
 **API バージョン**
 
@@ -62,13 +64,13 @@ Azure Virtual Machine Scale Sets の自動インスタンス修復を有効に�
 
 ### <a name="grace-period"></a>猶予期間
 
-スケール セットで実行される PUT、PATCH、または POST アクション (再イメージ化、再デプロイ、更新など) が原因でインスタンスの状態変更操作が開始されると、そのインスタンスの修復操作は、猶予期間が経過した後にのみ実行されます。 猶予期間は、インスタンスが正常な状態に戻るまでにかけられる期間です。 猶予期間は、状態の変更が完了した後に開始されます。 これは、修復操作が不完全または偶発的に実行されることを回避するのに役立ちます。 猶予期間は、スケール セット内に新しく作成されたインスタンス (修復操作の結果として作成されたインスタンスを含む) に適用されます。 猶予期間は、ISO 8601 形式では分単位で指定し、プロパティ *automaticRepairsPolicy.gracePeriod* を使用して設定できます。 猶予期間は 30 分から 90 分の範囲で指定でき、既定値は 30 分です。
+スケール セットで実行される PUT、PATCH、または POST アクション (再イメージ化、再デプロイ、更新など) が原因でインスタンスの状態変更操作が開始されると、そのインスタンスの修復操作は、猶予期間が経過した後にのみ実行されます。 猶予期間は、インスタンスが正常な状態に戻るまでにかけられる期間です。 猶予期間は、状態の変更が完了した後に開始されます。 これは、修復操作が不完全または偶発的に実行されることを回避するのに役立ちます。 猶予期間は、スケール セット内に新しく作成されたインスタンス (修復操作の結果として作成されたインスタンスを含む) に適用されます。 猶予期間は、ISO 8601 形式では分単位で指定し、プロパティ *automaticRepairsPolicy.gracePeriod* を使用して設定できます。 猶予期間は 10 分から 90 分の範囲で指定でき、既定値は 30 分です。
 
-### <a name="suspension-of-repairs"></a>修復の中断 
+### <a name="suspension-of-repairs"></a>修復の中断
 
 仮想マシン スケール セットでは、必要に応じて自動インスタンス修復を一時的に中断する機能が提供されます。 仮想マシン スケール セットのインスタンス ビューのプロパティ *orchestrationServices* の下にある自動修復の *serviceState* には、自動修復の現在の状態が表示されます。 スケール セットが自動修復にオプトインされると、パラメーター *serviceState* の値が *Running* に設定されます。 スケール セットの自動修復が中断されると、パラメーター *serviceState* は *Suspended* に設定されます。 スケール セットに *automaticRepairsPolicy* が定義されていても、自動修復機能が有効になっていない場合、パラメーター *serviceState* は *Not Running* に設定されます。
 
-修復操作を繰り返し実行した後も、スケール セット内の異常なものを置き換えるために新しく作成されたインスタンスが異常な状態のままになる場合、安全対策として、プラットフォームでは自動修復の *serviceState* が *Suspended* に更新されます。 自動修復の *serviceState* の値を *Running* に設定することで、もう一度自動修復を再開することができます。 詳細な手順については、スケール セットの[自動修復ポリシーのサービス状態の表示と更新](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy)に関するセクションを参照してください。 
+修復操作を繰り返し実行した後も、スケール セット内の異常なものを置き換えるために新しく作成されたインスタンスが異常な状態のままになる場合、安全対策として、プラットフォームでは自動修復の *serviceState* が *Suspended* に更新されます。 自動修復の *serviceState* の値を *Running* に設定することで、もう一度自動修復を再開することができます。 詳細な手順については、スケール セットの[自動修復ポリシーのサービス状態の表示と更新](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy)に関するセクションを参照してください。
 
 自動インスタンス修復プロセスは、次のように機能します。
 
@@ -80,7 +82,7 @@ Azure Virtual Machine Scale Sets の自動インスタンス修復を有効に�
 
 ## <a name="instance-protection-and-automatic-repairs"></a>インスタンスの保護と自動修復
 
-スケール セット内のインスタンスが[保護ポリシー](./virtual-machine-scale-sets-instance-protection.md)のいずれかを適用することで保護されている場合、そのインスタンスに対して自動修復は実行されません。 これは、次の両方の保護ポリシーに適用されます: "*スケールインから保護する*" および "*スケールセットから保護する*" アクション。 
+スケール セット内のインスタンスが[保護ポリシー](./virtual-machine-scale-sets-instance-protection.md)のいずれかを適用することで保護されている場合、そのインスタンスに対して自動修復は実行されません。 これは、次の両方の保護ポリシーに適用されます: "*スケールインから保護する*" および "*スケールセットから保護する*" アクション。
 
 ## <a name="terminatenotificationandautomaticrepairs"></a>終了通知と自動修復
 
@@ -90,20 +92,20 @@ Azure Virtual Machine Scale Sets の自動インスタンス修復を有効に�
 
 新しいスケール セットの作成時に自動修復ポリシーを有効にするには、この機能をオプトインするためのすべての[要件](#requirements-for-using-automatic-instance-repairs)が満たされていることを確認します。 エンドポイントの構成中に意図せず修復がトリガーされないように、スケール セット インスタンスのアプリケーション エンドポイントを正しく構成する必要があります。 新しく作成されたスケール セットの場合、すべてのインスタンスの修復は、猶予期間が終了するまで待機した後に実行されます。 スケール セットで自動インスタンス修復を有効にするには、仮想マシン スケール セット モデルで *automaticRepairsPolicy* オブジェクトを使用します。
 
-また、この[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-automatic-repairs-slb-health-probe)を使用して、ロード バランサーの正常性プローブと自動インスタンス修復を 30 分の猶予期間で有効にした仮想マシン スケール セットをデプロイすることもできます。
+また、この[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-automatic-repairs-slb-health-probe)を使用して、ロード バランサーの正常性プローブと自動インスタンス修復を 30 分の猶予期間で有効にした仮想マシン スケール セットをデプロイすることもできます。
 
 ### <a name="azure-portal"></a>Azure portal
- 
+
 次の手順では、新しいスケール セットを作成するときに自動修復ポリシーを有効にします。
- 
+
 1. **[仮想マシン スケール セット]** に移動します。
 1. **[+ 追加]** を選択して、新しいスケール セットを作成します。
-1. **[正常性]** タブに移動します。 
+1. **[正常性]** タブに移動します。
 1. **[正常性]** セクションを見つけます。
 1. **[アプリケーションの正常性を監視する]** オプションを有効にします。
 1. **[自動修復ポリシー]** セクションを見つけます。
 1. **[自動修復]** オプションを **[オン]** にします。
-1. **[Grace period (min)]\(猶予期間 (分)\)** で、猶予期間を分単位で指定します。指定できる値は 30 分から 90 分です。 
+1. **[Grace period (min)]\(猶予期間 (分)\)** で、猶予期間を分単位で指定します。指定できる値は 30 分から 90 分です。
 1. 新しいスケール セットの作成が完了したら、 **[確認と作成]** ボタンを選択します。
 
 ### <a name="rest-api"></a>REST API
@@ -166,15 +168,15 @@ az vmss create \
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure portal を使用して、既存のスケール セットの自動修復ポリシーを変更することができます。 
- 
+Azure portal を使用して、既存のスケール セットの自動修復ポリシーを変更することができます。
+
 1. 既存の仮想マシン スケール セットに移動します。
 1. 左側のメニューの **[設定]** で、 **[正常性と修復]** を選択します。
 1. **[アプリケーションの正常性を監視する]** オプションを有効にします。
 1. **[自動修復ポリシー]** セクションを見つけます。
 1. **[自動修復]** オプションを **[オン]** にします。
-1. **[Grace period (min)]\(猶予期間 (分)\)** で、猶予期間を分単位で指定します。指定できる値は 30 分から 90 分です。 
-1. 完了したら、 **[保存]** を選択します。 
+1. **[Grace period (min)]\(猶予期間 (分)\)** で、猶予期間を分単位で指定します。指定できる値は 30 分から 90 分です。
+1. 完了したら、 **[保存]** を選択します。
 
 ### <a name="rest-api"></a>REST API
 
@@ -212,7 +214,7 @@ Update-AzVmss `
 *[az vmss update](/cli/azure/vmss#az_vmss_update)* を使用して、既存のスケール セットの自動インスタンス修復ポリシーを更新する例を次に示します。
 
 ```azurecli-interactive
-az vmss update \  
+az vmss update \
   --resource-group <myResourceGroup> \
   --name <myVMScaleSet> \
   --enable-automatic-repairs true \
@@ -221,9 +223,9 @@ az vmss update \
 
 ## <a name="viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy"></a>自動インスタンス修復ポリシーのサービス状態の表示と更新
 
-### <a name="rest-api"></a>REST API 
+### <a name="rest-api"></a>REST API
 
-仮想マシン スケール セットで API バージョン 2019-12-01 以降を指定して「[インスタンス ビューの取得](/rest/api/compute/virtualmachinescalesets/getinstanceview)」を使用し、プロパティ *orchestrationServices* の下の自動修復の *serviceState* を表示します。 
+仮想マシン スケール セットで API バージョン 2019-12-01 以降を指定して「[インスタンス ビューの取得](/rest/api/compute/virtualmachinescalesets/getinstanceview)」を使用し、プロパティ *orchestrationServices* の下の自動修復の *serviceState* を表示します。
 
 ```http
 GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'
@@ -240,7 +242,7 @@ GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provider
 }
 ```
 
-仮想マシン スケール セットで API バージョン 2019-12-01 以降を指定して *setOrchestrationServiceState* API を使用し、自動修復の状態を設定します。 スケール セットが自動修復機能にオプトインされたら、この API を使用して、スケール セットの自動修復を中断または再開できます。 
+仮想マシン スケール セットで API バージョン 2019-12-01 以降を指定して *setOrchestrationServiceState* API を使用し、自動修復の状態を設定します。 スケール セットが自動修復機能にオプトインされたら、この API を使用して、スケール セットの自動修復を中断または再開できます。
 
  ```http
  POST '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/setOrchestrationServiceState?api-version=2019-12-01'
@@ -257,9 +259,9 @@ GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provider
 }
 ```
 
-### <a name="azure-cli"></a>Azure CLI 
+### <a name="azure-cli"></a>Azure CLI
 
-[get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view) コマンドレットを使用して、自動インスタンス修復の *serviceState* を表示します。 
+[get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view) コマンドレットを使用して、自動インスタンス修復の *serviceState* を表示します。
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -267,7 +269,7 @@ az vmss get-instance-view \
     --resource-group MyResourceGroup
 ```
 
-[set-orchestration-service-state](/cli/azure/vmss#az_vmss_set_orchestration_service_state) コマンドレットを使用して、自動インスタンス修復の *serviceState* を更新します。 スケール セットが自動修復機能にオプトインされたら、このコマンドレットを使用して、スケール セットの自動修復を中断または再開できます。 
+[set-orchestration-service-state](/cli/azure/vmss#az_vmss_set_orchestration_service_state) コマンドレットを使用して、自動インスタンス修復の *serviceState* を更新します。 スケール セットが自動修復機能にオプトインされたら、このコマンドレットを使用して、スケール セットの自動修復を中断または再開できます。
 
 ```azurecli-interactive
 az vmss set-orchestration-service-state \
@@ -311,7 +313,7 @@ Set-AzVmssOrchestrationServiceState `
 
 仮想マシンスケール セットのインスタンスに対して [Get Instance View API](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) を使用すると、アプリケーションの正常性状態を表示できます。 Azure PowerShell では、コマンドレット [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) を *InstanceView* フラグと共に使用できます。 アプリケーションの正常性状態は、プロパティ *vmHealth* に表示されます。
 
-Azure portal では、正常性状態も確認できます。 既存のスケール セットに移動し、左側のメニューから **[インスタンス]** を選択し、 **[正常性状態]** 列で各スケール セット インスタンスの正常性状態を確認します。 
+Azure portal では、正常性状態も確認できます。 既存のスケール セットに移動し、左側のメニューから **[インスタンス]** を選択し、 **[正常性状態]** 列で各スケール セット インスタンスの正常性状態を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

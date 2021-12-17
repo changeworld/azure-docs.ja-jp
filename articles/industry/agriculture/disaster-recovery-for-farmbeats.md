@@ -1,16 +1,16 @@
 ---
 title: FarmBeats のディザスター リカバリー
 description: この記事では、データの損失をデータ回復によって防ぐ方法について説明します。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 04/13/2020
-ms.author: v-ummehabiba
-ms.openlocfilehash: 9ece624546cab1b8b6fab8c19f4401bd050f6267
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.openlocfilehash: 132e084f8ceaa9fbfacd7609a4c4ae895a4e5cc6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179886"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751393"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>FarmBeats のディザスター リカバリー
 

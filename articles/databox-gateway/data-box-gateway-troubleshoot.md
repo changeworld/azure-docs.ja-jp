@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: troubleshooting
-ms.date: 03/20/2019
+ms.date: 06/09/2021
 ms.author: alkohli
-ms.openlocfilehash: e5280805090a83245e287c0b15a1735ee41e934e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a26d0fc53a89bab28ae8940eccf63797c1f92ab0
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96581352"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111981856"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Azure Data Box Gateway に関する問題のトラブルシューティング
 

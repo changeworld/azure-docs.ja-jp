@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 8be5ac75e2da3eaeae300fd36e152a24c9777e64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9148bbf83a8fadc6c71fd995fd4a444e7c6d7db4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99593741"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253136"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>新しい Application Gateway を使用して Application Gateway イングレス コントローラー (AGIC) をインストールする方法
 
@@ -74,7 +74,7 @@ ms.locfileid: "99593741"
 - [Azure Kubernetes Service](../aks/intro-kubernetes.md)
 - [Application Gateway](./overview.md) v2
 - 2 つの[サブネット](../virtual-network/virtual-networks-overview.md)を含む [Virtual Network](../virtual-network/virtual-networks-overview.md)
-- [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md)
+- [パブリック IP アドレス](../virtual-network/ip-services/virtual-network-public-ip-address.md)
 - [AAD ポッド ID](https://github.com/Azure/aad-pod-identity/blob/master/README.md) で使用される[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md)
 
 1. Azure Resource Manager テンプレートをダウンロードし、必要に応じてそのテンプレートを変更します。

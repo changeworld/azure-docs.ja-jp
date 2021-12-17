@@ -3,19 +3,19 @@ title: Speech SDK について - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech ソフトウェア開発キット (SDK) には Speech サービスの各種機能が多数含まれており、音声認識対応アプリケーションの開発が容易になります。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.author: trbye
-ms.openlocfilehash: 65e55d8e9d81f4045dde29c943f034ed0a24bf4c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: eur
+ms.openlocfilehash: b3d7eab14adb2e880b6c140f3dbe3a0d9145b189
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608087"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506569"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
 
@@ -48,12 +48,14 @@ Speech SDK は Speech サービスの機能が多数含まれていますが、�
 
 **テキスト読み上げ (TTS)** は、次のプラットフォームで使用できます。
 
-  - C++/Windows および Linux
-  - C#/Windows および UWP および Unity
+  - C++/Windows、Linux、および macOS
+  - C# (Framework および .NET Core)/Windows、UWP、Unity、Xamarin、Linux、および macOS
   - Java (Jre および Android)
+  - JavaScript (ブラウザーと NodeJS)
   - Python
   - Swift
   - Objective-C
+  - Go
   - TTS REST API は他のすべての状況で使用できます。
 
 ### <a name="voice-assistants"></a>音声アシスタント
@@ -69,15 +71,14 @@ Speech SDK を使用した[音声アシスタント](voice-assistants.md)によ�
 
 #### <a name="keyword-recognition"></a>キーワード認識
 
-Speech SDK では、[キーワード認識](./custom-keyword-basics.md)の概念をサポートしています。 キーワード認識では、音声でキーワードを識別した後、キーワードを聞くとアクションが行われます。 たとえば、「やあ、Cortana」という音声により、Cortana アシスタントがアクティブになります。
+Speech SDK では、[キーワード認識](custom-keyword-basics.md)の概念をサポートしています。 キーワード認識では、音声でキーワードを識別した後、キーワードを聞くとアクションが行われます。 たとえば、「やあ、Cortana」という音声により、Cortana アシスタントがアクティブになります。
 
 **キーワード認識** は、次のプラットフォームで使用できます。
 
   - C++/Windows および Linux
   - C#/Windows および Linux
   - Python/Windows および Linux
-  - Java/Windows および Linux および Android (Speech Devices SDK)
-  - キーワード認識機能は、どのような種類のマイクでも動作する可能性がありますが、公式のキーワード認識サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています
+  - Java/Windows および Linux および Android
 
 ### <a name="meeting-scenarios"></a>ミーティングのシナリオ
 
@@ -136,7 +137,7 @@ Speech サービスは、音声からテキスト、テキストから音声、�
 
 ### <a name="custom-speech-to-text"></a>カスタム音声変換
 
-独自環境での認識と文字起こしに音声テキスト変換を使用する場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 コードを使用しない Custom Speech モデルの作成と管理は、[Custom Speech Portal](https://aka.ms/customspeech) を通じて行うことができます。 Custom Speech モデルが発行されると、Speech SDK で利用できるようになります。
+独自環境での認識と文字起こしに音声テキスト変換を使用する場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 コードを使用しない Custom Speech モデルの作成と管理は、[Custom Speech Portal](./custom-speech-overview.md) を通じて行うことができます。 Custom Speech モデルが発行されると、Speech SDK で利用できるようになります。
 
 ### <a name="custom-text-to-speech"></a>カスタム テキスト読み上げ
 

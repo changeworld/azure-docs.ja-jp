@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 52e993a22a512a94c8b5b8b050205db0c4ce0b1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e13e8127377e99faea8da89912ee6f3d9fb1f20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100650322"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590330"
 ---
 # <a name="use-net-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>.NET を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する
 
@@ -49,11 +49,11 @@ using System.IO;
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する
 
-この記事のスニペットを使用するには、ストレージ アカウントを表す [DataLakeServiceClient](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) インスタンスを作成する必要があります。 
+この記事のスニペットを使用するには、ストレージ アカウントを表す [DataLakeServiceClient](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) インスタンスを作成する必要があります。
 
 ### <a name="connect-by-using-an-account-key"></a>アカウント キーを使用して接続する
 
-これはアカウントに接続する最も簡単な方法です。 
+これはアカウントに接続する最も簡単な方法です。
 
 この例では、アカウント キーを使用して [DataLakeServiceClient](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) インスタンスを作成します。
 
@@ -74,7 +74,7 @@ using System.IO;
 
 コンテナーは、ファイルのファイル システムとして機能します。 これは、[DataLakeServiceClient.CreateFileSystem](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) メソッドを呼び出すことで作成できます。
 
-この例では、`my-file-system` という名前のコンテナーを作成します。 
+この例では、`my-file-system` という名前のコンテナーを作成します。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD_DataLake.cs" id="Snippet_CreateContainer":::
 
@@ -82,19 +82,19 @@ using System.IO;
 
 [DataLakeFileSystemClient.CreateDirectoryAsync](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createdirectoryasync) メソッドを呼び出して、ディレクトリ参照を作成します。
 
-この例では、`my-directory` という名前のディレクトリをコンテナーに追加してから、`my-subdirectory` という名前のサブディレクトリを追加します。 
+この例では、`my-directory` という名前のディレクトリをコンテナーに追加してから、`my-subdirectory` という名前のサブディレクトリを追加します。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD_DataLake.cs" id="Snippet_CreateDirectory":::
 
 ## <a name="rename-or-move-a-directory"></a>ディレクトリの名前変更または移動
 
-[DataLakeDirectoryClient.RenameAsync](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.renameasync) メソッドを呼び出して、ディレクトリを名前変更または移動します。 目的のディレクトリのパスをパラメーターに渡します。 
+[DataLakeDirectoryClient.RenameAsync](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.renameasync) メソッドを呼び出して、ディレクトリを名前変更または移動します。 目的のディレクトリのパスをパラメーターに渡します。
 
 この例では、サブディレクトリの名前を `my-subdirectory-renamed` に変更します。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD_DataLake.cs" id="Snippet_RenameDirectory":::
 
-この例では、`my-subdirectory-renamed` という名前のディレクトリを `my-directory-2` という名前のディレクトリのサブディレクトリに移動します。 
+この例では、`my-subdirectory-renamed` という名前のディレクトリを `my-directory-2` という名前のディレクトリのサブディレクトリに移動します。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD_DataLake.cs" id="Snippet_MoveDirectory":::
 
@@ -102,7 +102,7 @@ using System.IO;
 
 [DataLakeDirectoryClient.Delete](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.delete) メソッドを呼び出して、ディレクトリを削除します。
 
-この例では、`my-directory` という名前のディレクトリを削除します。  
+この例では、`my-directory` という名前のディレクトリを削除します。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD_DataLake.cs" id="Snippet_DeleteDirectory":::
 
@@ -110,7 +110,7 @@ using System.IO;
 
 まず、[DataLakeFileClient](/dotnet/api/azure.storage.files.datalake.datalakefileclient) クラスのインスタンスを作成して、ターゲット ディレクトリにファイル参照を作成します。 [DataLakeFileClient.AppendAsync](/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync) メソッドを呼び出して、ファイルをアップロードします。 [DataLakeFileClient.FlushAsync](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flushasync) メソッドを呼び出して、アップロードを確実に完了します。
 
-この例では、`my-directory` という名前のディレクトリにテキスト ファイルをアップロードします。 
+この例では、`my-directory` という名前のディレクトリにテキスト ファイルをアップロードします。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD_DataLake.cs" id="Snippet_UploadFile":::
 
@@ -125,11 +125,11 @@ using System.IO;
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD_DataLake.cs" id="Snippet_UploadFileBulk":::
 
-## <a name="download-from-a-directory"></a>ディレクトリからダウンロードする 
+## <a name="download-from-a-directory"></a>ディレクトリからダウンロードする
 
-まず、ダウンロードするファイルを表す [DataLakeFileClient](/dotnet/api/azure.storage.files.datalake.datalakefileclient) インスタンスを作成します。 [DataLakeFileClient.ReadAsync](/dotnet/api/azure.storage.files.datalake.datalakefileclient.readasync) メソッドを使用し、戻り値を解析して [Stream](/dotnet/api/system.io.stream) オブジェクトを取得します。 任意の .NET ファイル処理 API を使用して、ストリームからファイルにバイトを保存します。 
+まず、ダウンロードするファイルを表す [DataLakeFileClient](/dotnet/api/azure.storage.files.datalake.datalakefileclient) インスタンスを作成します。 [DataLakeFileClient.ReadAsync](/dotnet/api/azure.storage.files.datalake.datalakefileclient.readasync) メソッドを使用し、戻り値を解析して [Stream](/dotnet/api/system.io.stream) オブジェクトを取得します。 任意の .NET ファイル処理 API を使用して、ストリームからファイルにバイトを保存します。
 
-この例では、[BinaryReader](/dotnet/api/system.io.binaryreader) と [FileStream](/dotnet/api/system.io.filestream) を使用してバイトをファイルに保存します。 
+この例では、[BinaryReader](/dotnet/api/system.io.binaryreader) と [FileStream](/dotnet/api/system.io.filestream) を使用してバイトをファイルに保存します。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD_DataLake.cs" id="Snippet_DownloadBinaryFromDirectory":::
 

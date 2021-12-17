@@ -6,98 +6,110 @@ metadata:
   description: Azure Event Grid を使用して、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応する方法について説明します。
   services: event-grid
   ms.service: event-grid
-  ms.subservice: 
+  ms.subservice: null
   ms.topic: landing-page
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 09/06/2019
-  ms.openlocfilehash: 5edd80414035591ede06ae1595ec562be0cd92be
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "87831959"
+  ms.date: 07/22/2021
 landingContent:
-- title: Event Grid について
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Event Grid とは
-      url: overview.md
-  - linkListType: concept
-    links:
-    - text: Event Grid の概念
-      url: concepts.md
-    - text: イベント ソース
-      url: overview.md#event-sources
-    - text: イベント ハンドラー
-      url: event-handlers.md
-    - text: イベント フィルター
-      url: event-filtering.md
-- title: シナリオ
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Blob Storage のイベントを Web エンドポイントにルーティングする
-      url: blob-event-quickstart-portal.md
-    - text: イベント ハンドラーとしての Azure Functions
-      url: custom-event-to-function.md
-    - text: イベント ハンドラーとしての Queue storage
-      url: custom-event-to-queue-storage.md
-    - text: イベント ハンドラーとしての Event Hubs
-      url: custom-event-to-eventhub.md
-    - text: カスタム イベントを Web エンドポイントにルーティングする
-      url: custom-event-quickstart-portal.md
-    - text: プライベート コンテナー レジストリからイベントを送信する
-      url: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
-  - linkListType: tutorial
-    links:
-    - text: VM が変更されたときに電子メールで通知する
-      url: monitor-virtual-machine-changes-event-grid-logic-app.md
-    - text: アップロードされたイメージのサイズ変更
-      url: resize-images-on-storage-blob-upload-event.md
-    - text: Automation Runbook のトリガー
-      url: ensure-tags-exists-on-new-virtual-machines.md
-    - text: IoT Hub デバイスが追加されたときにメールを送信する
-      url: publish-iot-hub-events-to-logic-apps.md
-    - text: Service Bus イベントへの応答
-      url: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - text: Event Hubs からのデータのストリーム配信
-      url: event-grid-event-hubs-integration.md
-    - text: Media Services イベントのルーティング
-      url: ..//media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - text: ハイブリッド接続へのルーティング
-      url: custom-event-to-hybrid-connection.md
-- title: 高度な概念
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: セキュリティと認証
-      url: security-authentication.md
-    - text: 配信と再試行
-      url: delivery-and-retry.md
-    - text: イベント ドメイン
-      url: event-domains.md
-    - text: geo ディザスター リカバリー
-      url: geo-disaster-recovery.md
-  - linkListType: architecture
-    links:
-    - text: キューとイベント向けの参照アーキテクチャ
-      url: /azure/architecture/reference-architectures/enterprise-integration/queues-events
-- title: カスタマイズ
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: カスタム イベントを Web エンドポイントにルーティングする
-      url: custom-event-quickstart-portal.md
-  - linkListType: how-to-guide
-    links:
-    - text: カスタム トピックの作成
-      url: scripts/event-grid-cli-create-custom-topic.md
-    - text: カスタム トピックへのサブスクライブ
-      url: scripts/event-grid-cli-subscribe-custom-topic.md
-    - text: カスタム トピックに投稿する
-      url: post-to-custom-topic.md
-    - text: Event Grid スキーマへのカスタム フィールドのマップ
-      url: input-mappings.md
+  - title: Event Grid について
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Event Grid とは
+            url: overview.md
+      - linkListType: concept
+        links:
+          - text: Event Grid の概念
+            url: concepts.md
+          - text: イベント ソース
+            url: overview.md#event-sources
+          - text: イベント ハンドラー
+            url: event-handlers.md
+          - text: イベント フィルター
+            url: event-filtering.md
+  - title: 高度な概念
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: セキュリティと認証
+            url: security-authentication.md
+          - text: 配信と再試行
+            url: delivery-and-retry.md
+          - text: イベント ドメイン
+            url: event-domains.md
+          - text: geo ディザスター リカバリー
+            url: geo-disaster-recovery.md
+      - linkListType: architecture
+        links:
+          - text: キューとイベント向けの参照アーキテクチャ
+            url: /azure/architecture/reference-architectures/enterprise-integration/queues-events
+  - title: カスタマイズ
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: カスタム イベントを Web エンドポイントにルーティングする
+            url: custom-event-quickstart-portal.md
+      - linkListType: how-to-guide
+        links:
+          - text: カスタム トピックの作成
+            url: scripts/event-grid-cli-create-custom-topic.md
+          - text: カスタム トピックへのサブスクライブ
+            url: scripts/event-grid-cli-subscribe-custom-topic.md
+          - text: カスタム トピックに投稿する
+            url: post-to-custom-topic.md
+          - text: Event Grid スキーマへのカスタム フィールドのマップ
+            url: input-mappings.md
+  - title: Kubernetes 上の Event Grid
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Kubernetes 上の Event Grid とは
+            url: ./kubernetes/overview.md
+          - text: 機能
+            url: ./kubernetes/features.md
+          - text: 概念
+            url: ./kubernetes/concepts.md
+      - linkListType: quickstart
+        links:
+          - text: クラウド イベントを Webhook にルーティングする
+            url: ./kubernetes/create-topic-subscription.md
+      - linkListType: how-to-guide
+        links:
+          - text: Event Grid 拡張機能のインストール
+            url: ./kubernetes/install-k8s-extension.md
+  - title: シナリオ
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Blob Storage のイベントを Web エンドポイントにルーティングする
+            url: blob-event-quickstart-portal.md
+          - text: イベント ハンドラーとしての Azure Functions
+            url: custom-event-to-function.md
+          - text: イベント ハンドラーとしての Queue storage
+            url: custom-event-to-queue-storage.md
+          - text: イベント ハンドラーとしての Event Hubs
+            url: custom-event-to-eventhub.md
+          - text: カスタム イベントを Web エンドポイントにルーティングする
+            url: custom-event-quickstart-portal.md
+          - text: プライベート コンテナー レジストリからイベントを送信する
+            url: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
+      - linkListType: tutorial
+        links:
+          - text: VM が変更されたときに電子メールで通知する
+            url: monitor-virtual-machine-changes-event-grid-logic-app.md
+          - text: アップロードされたイメージのサイズ変更
+            url: resize-images-on-storage-blob-upload-event.md
+          - text: Automation Runbook のトリガー
+            url: ensure-tags-exists-on-new-virtual-machines.md
+          - text: IoT Hub デバイスが追加されたときにメールを送信する
+            url: publish-iot-hub-events-to-logic-apps.md
+          - text: Service Bus イベントへの応答
+            url: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+          - text: Event Hubs からのデータのストリーム配信
+            url: event-grid-event-hubs-integration.md
+          - text: Media Services イベントのルーティング
+            url: ..//media-services/latest/monitoring/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
+          - text: ハイブリッド接続へのルーティング
+            url: custom-event-to-hybrid-connection.md

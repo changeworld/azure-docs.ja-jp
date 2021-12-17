@@ -1,21 +1,21 @@
 ---
-title: UserJourneys | Microsoft Docs
+title: UserJourneys
 description: Azure Active Directory B2C でカスタム ポリシーの UserJourneys 要素を指定します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
-ms.author: mimart
+ms.date: 08/31/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 05307fe2ad9e0a59fa11c30f2dc7154ba5076603
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: d297f2c9e32de22beba8c8bf63d4b62e73e8690c
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174667"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131057497"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -38,6 +38,7 @@ ms.locfileid: "102174667"
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | ポリシー内の他の要素から参照するために使用できるユーザー体験の識別子。 [証明書利用者ポリシー](relyingparty.md)の **DefaultUserJourney** 要素は、この属性をポイントします。 |
+| DefaultCpimIssuerTechnicalProfileReferenceId| いいえ | 既定のトークン発行者の技術プロファイル参照 ID。 [JWT トークン発行者](userjourneys.md)、[SAML トークン発行者](saml-issuer-technical-profile.md)、[OAuth2 カスタム エラー](oauth2-error-technical-profile.md)などです。 ユーザー体験またはサブ体験に既に別の `SendClaims` オーケストレーション ステップがある場合は、`DefaultCpimIssuerTechnicalProfileReferenceId` 属性をユーザー体験のトークン発行者の技術プロファイルに設定します。 |
 
 **UserJourney** 要素には、次の要素が含まれています。
 
@@ -110,33 +111,56 @@ ms.locfileid: "102174667"
 
 ### <a name="preconditions"></a>Preconditions
 
+オーケストレーション ステップは、オーケストレーション ステップで定義されている前提条件に基づいて、条件付きで実行できます。 `Preconditions` 要素には、評価する前提条件の一覧が含まれています。 前提条件の評価が満たされると、関連付けられているオーケストレーション ステップが次のオーケストレーション ステップに進みます。 
+
+Azure AD B2C では、一覧の順序で前提条件を評価します。 順序に基づく前提条件を使用すると、前提条件を適用する順序を設定できます。 満たされた最初の前提条件によって、後続のすべての前提条件がオーバーライドされます。 オーケストレーション ステップは、すべての前提条件が満たされていない場合にのみ実行されます。 
+
 **Preconditions** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| Precondition | 1:n | 使用される技術プロファイルによって、要求プロバイダーの選定に従ってクライアントをリダイレクトするか、サーバーの呼び出しで要求を交換します。 |
-
+| Precondition | 1:n | 評価する前提条件。 |
 
 #### <a name="precondition"></a>Precondition
-
-オーケストレーション ステップは、オーケストレーション ステップで定義されている前提条件に基づいて、条件付きで実行できます。 2 種類の前提条件があります。
- 
-- **Claims exist** - 指定した要求がユーザーの現在の要求バッグに存在する場合に、アクションを実行することが指定されます。
-- **Claim equals** - 指定した要求が存在し、その値が指定した値と等しい場合に、アクションを実行することが指定されます。 このチェックでは、大文字と小文字を区別する順序比較が実行されます。 要求の型がブール値の場合は、`True` または `False` を使用します。
 
 **Precondition** 要素には、次の属性が含まれています。
 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | `Type` | はい | この前提条件に対して実行するチェックまたはクエリの種類。 値に **ClaimsExist** を指定すると、指定した要求がユーザーの現在の要求セット内に存在する場合にアクションが実行されます。または、**ClaimEquals** を指定すると、指定した要求が存在し、その値が指定値と等しい場合にアクションが実行されます。 |
-| `ExecuteActionsIf` | Yes | 前提条件内のアクションを実行する必要があるかどうかを `true` または `false` のテストを使用して決定します。 |
+| `ExecuteActionsIf` | Yes | 前提条件が満たされていると見なす方法を決定します。 指定できる値は `true`(既定値) または`false`です。 値が `true` に設定されている場合は、要求が前提条件に一致するときに、その条件が満たされていると見なされます。  値が `false` に設定されている場合は、要求が前提条件に一致しないときに、その条件が満たされていると見なされます。  |
 
 **Precondition** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | 値 | 1:2 | 要求の種類の識別子。 要求は、ポリシー ファイルまたは親ポリシー ファイルの要求スキーマ セクションで、既に定義されています。 前提条件の種類が `ClaimEquals` の場合、2 番目の `Value` 要素には、チェックする値が含まれます。 |
-| アクション | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 `Action` の値を `SkipThisOrchestrationStep` に設定すると、関連付けられている `OrchestrationStep` は実行されません。 |
+| アクション | 1:1 | 前提条件の評価が満たされた場合に実行する必要のあるアクション。 指定できる値: `SkipThisOrchestrationStep`。 関連付けられているオーケストレーション ステップが次のオーケストレーション ステップに進みます。 |
+  
+それぞれの前提条件では 1 つの要求が評価されます。 2 種類の前提条件があります。
+ 
+- **ClaimsExist** - 指定した要求がユーザーの現在の要求バッグに存在する場合に、アクションを実行することが指定されます。
+- **ClaimEquals** - 指定した要求が存在し、その値が指定した値と等しい場合に、アクションを実行することが指定されます。 このチェックでは、大文字と小文字を区別する順序比較が実行されます。 要求の型がブール値の場合は、`True` または `False` を使用します。 
+
+    要求が null または未初期化の場合は、`ExecuteActionsIf` が `true` か `false` かにかかわらず、前提条件は無視されます。 ベスト プラクティスとして、要求が存在することと、値が等しいことの両方を確認します。
+
+ユーザーが `MfaPreference` を `Phone` に設定している場合に、ユーザーの MFA にチャレンジするというシナリオ例を考えます。 この条件付きロジックを実行するには、`MfaPreference` の要求が存在するかどうかを確認し、また要求の値が `Phone` に等しいかどうかを確認します。 次の XML は、このロジックを事前条件付きで実装する方法を示しています。 
+  
+```xml
+<Preconditions>
+  <!-- Skip this orchestration step if MfaPreference doesn't exist. -->
+  <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+    <Value>MfaPreference</Value>
+    <Action>SkipThisOrchestrationStep</Action>
+  </Precondition>
+  <!-- Skip this orchestration step if MfaPreference doesn't equal to Phone. -->
+  <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
+    <Value>MfaPreference</Value>
+    <Value>Phone</Value>
+    <Action>SkipThisOrchestrationStep</Action>
+  </Precondition>
+</Preconditions>
+```
 
 #### <a name="preconditions-examples"></a>前提条件の例
 

@@ -3,19 +3,19 @@ title: 音声コンテナーを構成する
 titleSuffix: Azure Cognitive Services
 description: Speech Service では、コンテナーごとに一般的な構成フレームワークが提供されているので、コンテナーのストレージ、ログとテレメトリ、セキュリティの設定を簡単に構成して管理できます。
 services: cognitive-services
-author: aahill
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: aahi
-ms.openlocfilehash: e65bb7c7d8fc04baec6b50a53519e689e748fbe1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/22/2021
+ms.author: eur
+ms.openlocfilehash: 8824e6cdf70fae19becb54d5a404b4cb8a9a344d
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96012171"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503567"
 ---
 # <a name="configure-speech-service-containers"></a>Speech Service コンテナーを構成する
 
@@ -76,7 +76,7 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 
 標準的な音声コンテナーでは、トレーニングやサービスのデータを格納するために入力マウントまたは出力マウントが使用されることはありません。 ただし、カスタム音声コンテナーはボリュームのマウントに依存します。
 
-ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](speech-container-howto.md#the-host-computer)のマウント場所にアクセスできないこともあります。
+ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](speech-container-howto.md#host-computer-requirements-and-recommendations)のマウント場所にアクセスできないこともあります。
 
 | 省略可能 | 名前 | データ型 | 説明 |
 | -------- | ---- | --------- | ----------- |
@@ -253,9 +253,9 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="speech-language-detection"></a>[音声言語検出](#tab/lid)
+## <a name="speech-language-identification"></a>[音声言語識別](#tab/lid)
 
-### <a name="basic-example-for-speech-language-detection"></a>音声言語検出の基本的な例
+### <a name="basic-example-for-speech-language-identification"></a>音声言語識別の基本的な例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
@@ -265,7 +265,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-speech-language-detection"></a>音声言語検出のログの例
+### <a name="logging-example-for-speech-language-identification"></a>音声言語識別のログ記録の例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \

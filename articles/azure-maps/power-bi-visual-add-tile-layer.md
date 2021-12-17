@@ -1,20 +1,20 @@
 ---
 title: Azure Maps Power BI ビジュアルにタイル レイヤーを追加する | Microsoft Azure Maps
 description: この記事では、Power BI 用の Microsoft Azure Maps ビジュアルでタイル レイヤーを使用する方法について説明します。
-author: rbrundritt
-ms.author: richbrun
-ms.date: 06/26/2020
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendle
+manager: eriklind
 ms.custom: ''
-ms.openlocfilehash: 6ab99f32932f39d5ad140b7a16d16ceae30fff54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7811174ce91de74f5fbc3f433c44e2aed223d01c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896210"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477005"
 ---
 # <a name="add-a-tile-layer"></a>タイル レイヤーを追加する
 
@@ -45,21 +45,21 @@ ms.locfileid: "92896210"
 
 Azure Maps ビジュアルでは、次の 3 種類のタイル サービスの名前付け規則がサポートされています。
 
--   **X、Y、ズーム表記** - X はタイル グリッド内のタイルの列の位置、Y はそのタイルの行の位置、ズーム表記はズーム レベルに基づく値です。
--   **Quadkey 表記** - x、y、ズーム情報を組み合わせて、1 つの文字列値にします。 この文字列値は、1 つのタイルの一意識別子になります。
--   **境界ボックス** -  境界ボックス座標形式 `{west},{south},{east},{north}` を使用して画像を指定します。 この形式は、[Web マッピング サービス (WMS)](https://www.opengeospatial.org/standards/wms) で一般的に使用されています。
+* **X、Y、ズーム表記** - X はタイル グリッド内のタイルの列の位置、Y はそのタイルの行の位置、ズーム表記はズーム レベルに基づく値です。
+* **Quadkey 表記** - x、y、ズーム情報を組み合わせて、1 つの文字列値にします。 この文字列値は、1 つのタイルの一意識別子になります。
+* **境界ボックス** -  境界ボックス座標形式 `{west},{south},{east},{north}` を使用して画像を指定します。 この形式は、[Web マッピング サービス (WMS)](https://www.opengeospatial.org/standards/wms) で一般的に使用されています。
 
 タイル URL は、タイル URL テンプレートの HTTPS URL であり、次のパラメーターを使用します。
 
--   `{x}` - タイルの X 位置。 `{y}` と `{z}` も必要です。
--   `{y}` - タイルの Y 位置。 `{x}` と `{z}` も必要です。
--   `{z}` - タイルのズーム レベル。 `{x}` と `{y}` も必要です。
--   `{quadkey}` - Bing Maps タイル システムの名前付け規則に基づくタイルの `quadkey` 識別子。
--   `{bbox-epsg-3857}` - EPSG 3857 空間参照系の `{west},{south},{east},{north}` 形式の境界ボックス文字列。
+* `{x}` - タイルの X 位置。 `{y}` と `{z}` も必要です。
+* `{y}` - タイルの Y 位置。 `{x}` と `{z}` も必要です。
+* `{z}` - タイルのズーム レベル。 `{x}` と `{y}` も必要です。
+* `{quadkey}` - Bing Maps タイル システムの名前付け規則に基づくタイルの `quadkey` 識別子。
+* `{bbox-epsg-3857}` - EPSG 3857 空間参照系の `{west},{south},{east},{north}` 形式の境界ボックス文字列。
 
-例として、Azure Maps の[気象レーダー タイル サービス](/rest/api/maps/renderv2/getmaptilepreview)の書式設定済みタイル URL を次に示します。 `[subscription-key]` は、Azure Maps のサブスクリプション キーのプレースホルダーです。
+例として、Azure Maps の[気象レーダー タイル サービス](/rest/api/maps/render-v2/get-map-tile)の書式設定済みタイル URL を次に示します。 `[subscription-key]` は、Azure Maps のサブスクリプション キーのプレースホルダーです。
 
-> `https://atlas.microsoft.com/map/tile?zoom={z}&x={x}&y={y}&tilesetId=microsoft.weather.radar.main&api-version=2.0&subscription-key=[subscription-key]`
+> `https://atlas.microsoft.com/map/tile?zoom={z}&x={x}&y={y}&tilesetId=microsoft.weather.radar.main&api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}`
 
 Azure Maps のタイル システムの詳細については、「[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)」を参照してください。
 

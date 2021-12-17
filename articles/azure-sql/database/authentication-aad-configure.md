@@ -5,25 +5,28 @@ description: Azure Active Directory を構成した後で、Azure AD 認証を�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
+ms.custom: azure-synapse, has-adal-ref, sqldbrb=2, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, sstein
-ms.date: 08/17/2020
-ms.openlocfilehash: c75364f2565611b6738996c082610229db0cb2a8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.reviewer: vanto
+ms.date: 08/11/2021
+ms.openlocfilehash: 1011306cb83403b13f90fe3969470ed9722da2e1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762229"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554195"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 この記事では、Azure Active Directory (Azure AD) インスタンスを作成して設定した後、[Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) で Azure AD を使用する方法を示します。 概要については、「[Azure Active Directory 認証](authentication-aad-overview.md)」を参照してください。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="azure-ad-authentication-methods"></a>Azure AD の認証方法
 
@@ -48,7 +51,13 @@ Azure AD ハイブリッド ID、セットアップ、および同期に関す�
 
 Azure AD インスタンスを作成し、ユーザーとグループを設定します。 Azure AD は初期の Azure AD のマネージド ドメインにすることができます。 また、Azure AD とフェデレーションされるオンプレミスの Active Directory Domain Services にすることもできます。
 
-詳細については、「[オンプレミス ID と Azure Active Directory の統合](../../active-directory/hybrid/whatis-hybrid-identity.md)」、[Azure AD への独自のドメイン名の追加](../../active-directory/fundamentals/add-custom-domain.md)に関するページ、「[Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)」(Microsoft Azure が Windows Server Active Directory とのフェデレーションに対応)、「[Azure AD ディレクトリの管理](../../active-directory/fundamentals/active-directory-whatis.md)」、[Windows PowerShell を使用した Azure AD の管理](/powershell/azure/)に関するページ、および「[Hybrid Identity Required Ports and Protocols](../../active-directory/hybrid/reference-connect-ports.md)」(ハイブリッド ID の必須ポートとプロトコル) を参照してください。
+詳細については、次を参照してください。
+- [オンプレミス ID と Azure Active Directory の統合](../../active-directory/hybrid/whatis-hybrid-identity.md)
+- [Azure AD への独自のドメイン名の追加](../../active-directory/fundamentals/add-custom-domain.md)
+- [Microsoft Azure での Windows Server Active Directory とのフェデレーションのサポート](https://azure.microsoft.com/blog/windows-azure-now-supports-federation-with-windows-server-active-directory/)
+- [Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)
+- [Windows PowerShell を使用して Azure AD を管理する](/powershell/module/azuread)
+- [ハイブリッド ID で必要なポートとプロトコル](../../active-directory/hybrid/reference-connect-ports.md)
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure サブスクリプションの Azure Active Directory への関連付けまたは追加
 
@@ -296,7 +305,7 @@ Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Serve
 **DisplayName** 入力パラメーターには、Azure AD の表示名またはユーザー プリンシパル名を使用できます。 たとえば、``DisplayName="John Smith"`` や ``DisplayName="johns@contoso.com"``す。 Azure AD グループの場合は、Azure AD の表示名のみがサポートされています。
 
 > [!NOTE]
-> Azure PowerShell コマンド ```Set-AzSqlServerActiveDirectoryAdministrator``` では、サポートされていないユーザーに対する Azure AD 管理者のプロビジョニングは禁止されていません。 サポートされていないユーザーのプロビジョニングは可能ですが、このようなユーザーはデータベースに接続できません
+> Azure PowerShell コマンド `Set-AzSqlServerActiveDirectoryAdministrator` では、サポートされていないユーザーに対する Azure AD 管理者のプロビジョニングは禁止されていません。 サポートされていないユーザーのプロビジョニングは可能ですが、このようなユーザーはデータベースに接続できません
 
 次の例では、オプションとして **ObjectID** を使用します。
 
@@ -338,6 +347,19 @@ CLI コマンドの詳細については、「[az sql server](/cli/azure/sql/ser
 > [!NOTE]
 > Azure Active Directory 管理者は、REST API を使用してプロビジョニングすることもできます。 詳細については、[Service Management REST API リファレンスと Azure SQL Database の操作](/rest/api/sql/)に関するページを参照してください。
 
+## <a name="set-or-unset-the-azure-ad-admin-using-service-principals"></a>サービス プリンシパルを使用して Azure AD 管理者を設定または設定解除する
+
+サービス プリンシパルを使用して Azure SQL の Azure AD 管理者を設定または設定解除することを計画している場合は、追加の API アクセス許可が必要です。 [Directory.Read.All](/graph/permissions-reference#application-permissions-18) アプリケーション API アクセス許可を、Azure AD 内で対象のアプリケーションに追加する必要があります。
+
+> [!NOTE]
+> Azure portal を Azure AD サービス プリンシパルとして使用することはできないため、Azure AD 管理者の設定に関するこのセクションは、PowerShell または CLI コマンドを使用する場合にのみ適用されます。
+
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Azure AD 内の Directory.Reader.All アクセス許可":::
+
+サービス プリンシパルには、[**SQL Server 共同作成者**](../../role-based-access-control/built-in-roles.md#sql-server-contributor)ロール (SQL Database の場合) または [**SQL Managed Instance の共同作成者**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)ロール (SQL Managed Instance の場合) も必要になります。
+
+詳細については、[サービス プリンシパル (Azure AD アプリケーション)](authentication-aad-service-principal.md) に関する記事を参照してください。
+
 ## <a name="configure-your-client-computers"></a>クライアント コンピューターを構成する
 
 Azure AD の ID を使用して SQL Database または Azure Synapse に接続するアプリケーションまたはユーザーが存在するすべてクライアント コンピューターには、次のソフトウェアをインストールする必要があります。
@@ -367,10 +389,14 @@ SQL Managed Instance では Azure AD サーバー プリンシパル (ログイ�
 > [!WARNING]
 > T-SQL の `CREATE LOGIN` ステートメントと `CREATE USER` ステートメントのユーザー名に含まれるコロン `:` やアンパサンド `&` などの特殊文字は、サポートされていません。
 
+> [!IMPORTANT]
+> 2048 を超える Azure AD のセキュリティ グループに属する Azure AD のユーザーとサービス プリンシパル (Azure AD アプリケーション) は、SQL Database、Managed Instance、または Azure Synapse でデータベースにログインすることはできません。
+
+
 Azure AD ベースの包含データベース ユーザー (データベースを所有するサーバー管理者以外) を作成するには、少なくとも **ALTER ANY USER** アクセス許可を持つユーザーとして、Azure AD の ID でデータベースに接続します。 その後、次の Transact-SQL 構文を使用します。
 
 ```sql
-CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
+CREATE USER [<Azure_AD_principal_name>] FROM EXTERNAL PROVIDER;
 ```
 
 *Azure_AD_principal_name* には、Azure AD ユーザーのユーザー プリンシパル名または Azure AD のグループの表示名を指定できます。
@@ -420,7 +446,7 @@ Azure AD 管理者が正しく設定されていることを確認するには�
 Azure AD ベースの包含データベース ユーザー (データベースを所有しているサーバー管理者以外) をプロビジョニングするには、そのデータベースへのアクセス権を持つ Azure AD の ID を使用してデータベースに接続します。
 
 > [!IMPORTANT]
-> Azure Active Directory 認証は、[SQL Server 2016 Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) および Visual Studio 2015 の [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) でサポートされています。 SSMS の 2016 年 8 月のリリースには、Active Directory Universal 認証のサポートも含まれます。これにより、管理者は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、またはモバイル アプリ通知を使用する Multi-Factor Authentication を要求できます。
+> Azure Active Directory 認証は、2016 年から [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) でサポートされ、2015 年から [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) でサポートされています。 SSMS の 2016 年 8 月のリリースには、Active Directory Universal 認証のサポートも含まれます。これにより、管理者は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、またはモバイル アプリ通知を使用する Multi-Factor Authentication を要求できます。
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Azure AD の ID で SSMS または SSDT を利用して接続する
 
@@ -508,9 +534,9 @@ conn.Open();
 サンプルの接続文字列を次に示します。
 
 ```csharp
-string ConnectionString =@"Data Source=n9lxnyuzhv.database.windows.net; Initial Catalog=testdb;"
+string ConnectionString = @"Data Source=n9lxnyuzhv.database.windows.net; Initial Catalog=testdb;";
 SqlConnection conn = new SqlConnection(ConnectionString);
-conn.AccessToken = "Your JWT token"
+conn.AccessToken = "Your JWT token";
 conn.Open();
 ```
 

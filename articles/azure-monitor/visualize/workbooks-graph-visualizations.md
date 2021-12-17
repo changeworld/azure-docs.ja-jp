@@ -2,18 +2,16 @@
 title: Azure Monitor ブックのグラフの視覚化
 description: Azure Monitor ブックのグラフのすべての視覚化について説明します。
 services: azure-monitor
-author: lgayhardt
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.author: lagayhar
-ms.openlocfilehash: a538eaf06013dcce6529c91816b419159a2600a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac1418ee2df60a79be104f1991908dcde0de6c07
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100604630"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072258"
 ---
 # <a name="graph-visualizations"></a>グラフの視覚化
 
@@ -102,7 +100,7 @@ ms.locfileid: "100604630"
 3. クエリの種類として **[ログ]** を選択し、リソースの種類 (たとえば、Application Insights) と、ターゲットにするリソースを選択します。
 4. クエリ エディターを使用して、分析用の KQL を入力します。
 
-     ```kusto
+    ```kusto
     let data = dependencies
     | summarize Calls = count() by App = appName, Request = operation_Name, Dependency = name
     | extend RequestId = strcat(App, '::', Request);

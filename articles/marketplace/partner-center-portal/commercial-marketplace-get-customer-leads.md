@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 10/01/2020
-ms.openlocfilehash: 1d5f2248d94796d5e3ee76301642a95abddebfe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/20/2021
+ms.openlocfilehash: e255c88d76d0f9a4a6c1256f36386beedee04683
+ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94489337"
+ms.lasthandoff: 07/11/2021
+ms.locfileid: "113601366"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>コマーシャル マーケットプレース オファーからの顧客リード
 
@@ -44,7 +44,7 @@ ms.locfileid: "94489337"
 
 ## <a name="connect-to-your-crm-system"></a>CRM システムに接続する
 
-[!INCLUDE [Links to lead configuration for different CRM systems](./includes/connect-lead-management.md)]
+[!INCLUDE [Connect lead management](../includes/customer-leads.md)]
 
 ## <a name="understand-lead-data"></a>リード データについて
 
@@ -98,4 +98,4 @@ ms.locfileid: "94489337"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [リード管理に関する FAQ とトラブルシューティング](../lead-management-faq.md)
+- [リード管理に関する FAQ とトラブルシューティング](../lead-management-faq.yml)

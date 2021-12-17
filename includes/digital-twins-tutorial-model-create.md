@@ -4,12 +4,12 @@ description: Azure Digital Twins のインクルード ファイル - コマン�
 ms.topic: include
 ms.date: 3/5/2021
 ms.author: baanders
-ms.openlocfilehash: a94b9304ecd6c6630f6ad45652e76d2879bbc1b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 784dde0790633adbbae0ae315ce0fd5c271bdb4c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463787"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766772"
 ---
 1. **バージョン番号を更新する**。このモデルのバージョンを更新することを示します。 そのためには、`@id` 値の末尾にある *1* を *2* に変更します。 現在のバージョン番号よりも大きい数値であれば、何でもかまいません。
 1. **プロパティを編集する**。 `Humidity` プロパティの名前を *HumidityLevel* に変更します (必要であれば、他の名前でもかまいません。 *HumidityLevel* 以外の名前を使用した場合は、その名前を覚えておいて、このチュートリアル全体の *HumidityLevel* の代わりにそれを使用し続けてください)。

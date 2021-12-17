@@ -5,16 +5,16 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 1/28/2020
+ms.date: 6/16/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 140a836882ad3abe048047120e4fe1ebc0a3067c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb275a2cced1a16bd1c5d05aed84d2cb7fd0da5b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018158"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463185"
 ---
-# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
+# <a name="read-input-in-any-format-using-net-custom-deserializers-preview"></a>.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る (プレビュー)
 
 .NET のカスタム逆シリアライザーを使用すると、Azure Stream Analytics ジョブで、3 つの[組み込みデータ形式](stream-analytics-parsing-json.md)に含まれない形式からデータを読み取ることができます。 この記事では、シリアル化の形式と、Azure Stream Analytics のクラウド ジョブとエッジ ジョブに対する .NET カスタム逆シリアライザーが定義されているインターフェイスについて説明します。 また、プロトコル バッファーと CSV 形式に対する逆シリアライザーの例もあります。
 
@@ -223,7 +223,7 @@ Stream Analytics のすべての入力には、**シリアル化形式** があ�
 
 ## <a name="region-support"></a>リージョンのサポート
 
-この機能は、次のリージョンで使用できます。
+Standard SKU を使用する場合、この機能は次のリージョンで利用できます。
 
 * 米国中西部
 * 北ヨーロッパ
@@ -232,7 +232,7 @@ Stream Analytics のすべての入力には、**シリアル化形式** があ�
 * 米国東部 2
 * 西ヨーロッパ
 
-追加リージョンの[サポートを要求する](https://aka.ms/ccodereqregion)ことができます。
+追加リージョンの[サポートを要求する](https://aka.ms/ccodereqregion)ことができます。 ただし、[Stream Analytics クラスター](./cluster-overview.md)を使用する場合、このようなリージョンの制限はありません。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -242,7 +242,7 @@ Stream Analytics のすべての入力には、**シリアル化形式** があ�
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>GetMetadataPropertyValue 関数と同様の入力から MetadataPropertyValue にアクセスすることはできますか?
 
-この機能はサポートされていません。 この機能が必要な場合は、[UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese) でこの要求に投票することができます。
+この機能はサポートされていません。 この機能が必要な場合は、[UserVoice](https://feedback.azure.com/d365community/idea/b4517302-b925-ec11-b6e6-000d3a4f0f1c) でこの要求に投票することができます。
 
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>他のユーザーが利用できるように、逆シリアライザーの実装をコミュニティと共有できますか?
 

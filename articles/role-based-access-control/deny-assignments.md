@@ -15,12 +15,12 @@ ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38427b0686e830939025075536ac79c95ebde4cd
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82733774"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362961"
 ---
 # <a name="understand-azure-deny-assignments"></a>Azure 拒否割り当てについて
 
@@ -58,10 +58,10 @@ ms.locfileid: "82733774"
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | はい | String | 拒否割り当ての表示名。 名前は、指定のスコープで一意である必要があります。 |
 > | `Description` | いいえ | String | 拒否割り当ての説明。 |
-> | `Permissions.Actions` | 少なくとも 1 つの Actions または DataActions | String[] | 拒否割り当てによってアクセスがブロックされる管理操作を指定する文字列の配列。 |
-> | `Permissions.NotActions` | いいえ | String[] | 拒否割り当てから除外される管理操作を指定する文字列の配列。 |
-> | `Permissions.DataActions` | 少なくとも 1 つの Actions または DataActions | String[] | 拒否割り当てによってアクセスがブロックされるデータ操作を指定する文字列の配列。 |
-> | `Permissions.NotDataActions` | いいえ | String[] | 拒否割り当てから除外されるデータ操作を指定する文字列の配列。 |
+> | `Permissions.Actions` | 少なくとも 1 つの Actions または DataActions | String[] | 拒否割り当てによってアクセスがブロックされるコントロール プレーン アクションを指定する文字列の配列。 |
+> | `Permissions.NotActions` | いいえ | String[] | 拒否割り当てから除外されるコントロール プレーン アクションを指定する文字列の配列。 |
+> | `Permissions.DataActions` | 少なくとも 1 つの Actions または DataActions | String[] | 拒否割り当てによってアクセスがブロックされるデータ プレーン アクションを指定する文字列の配列。 |
+> | `Permissions.NotDataActions` | いいえ | String[] | 拒否割り当てから除外されるデータ プレーン アクションを指定する文字列の配列。 |
 > | `Scope` | いいえ | String | 拒否割り当てが適用されるスコープを指定する文字列。 |
 > | `DoNotApplyToChildScopes` | いいえ | Boolean | 拒否割り当てが子スコープに適用されるかどうかを指定します。 既定値は false です。 |
 > | `Principals[i].Id` | はい | String[] | 拒否割り当てが適用される Azure AD プリンシパル オブジェクト ID (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) の配列。 すべてのプリンシパルを表すために空の GUID `00000000-0000-0000-0000-000000000000` に設定されます。 |

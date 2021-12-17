@@ -1,28 +1,28 @@
 ---
 title: 証明書のバインド
-description: App Service Environment の証明書に関連するさまざまなトピックについて説明します。 ASE の単一テナントアプリで証明書バインドがどのように機能するかについて説明します。
-author: ccompy
-ms.assetid: 9e21a7e4-2436-4e81-bb05-4a6ba70eeaf7
-ms.topic: article
-ms.date: 08/29/2018
-ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+description: App Service Environment v2 の証明書に関連するさまざまなトピックについて説明します。 ASE の単一テナントアプリで証明書バインドがどのように機能するかについて説明します。
+author: madsd
+ms.topic: overview
+ms.date: 11/15/2021
+ms.author: madsd
+ms.openlocfilehash: 0ecc9f29ae469cea01c29a23c5491320c37e7cc5
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88962045"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520999"
 ---
-# <a name="certificates-and-the-app-service-environment"></a>証明書と App Service Environment 
-
+# <a name="certificates-and-the-app-service-environment-v2"></a>証明書と App Service Environment v2
+> [!NOTE]
+> これは、Isolated App Service プランで使用される App Service Environment v2 に関する記事です
+> 
 App Service Environment (ASE) は、ご使用の Azure Virtual Network (VNet) 内で実行する Azure App Service のデプロイです。 これは、インターネットでアクセス可能なアプリケーション エンドポイントまたはご使用の VNet 内にあるアプリケーション エンドポイントを使用してデプロイできます。 インターネットでアクセス可能なエンドポイントを使用して ASE をデプロイすると、そのデプロイは外部 ASE と呼ばれます。 VNet 内にあるエンドポイントを使用して ASE をデプロイすると、そのデプロイは ILB ASE と呼ばれます。 ILB ASE の詳細については、[ILB ASE の作成と使用](./create-ilb-ase.md)に関するページを参照してください。
 
 ASE は、シングル テナント システムです。 シングル テナントのため、マルチテナントの App Service では使用できない ASE でのみ使用できるいくつかの機能があります。 
 
 ## <a name="ilb-ase-certificates"></a>ILB ASE 証明書 
 
-外部 ASE を使用している場合、アプリには [appname].[asename].p.azurewebsites.net で到達します。 既定では、ILB ASE を含め、すべての ASE が、その形式に従った証明書で作成されます。 ILB ASE がある場合、アプリには ILB ASE の作成時に指定したドメイン名に基づいて到達します。 アプリが TLS をサポートするためには、証明書をアップロードする必要があります。 内部証明機関を利用する、外部の発行者から証明書を購入する、自己署名証明書を使用する、のいずれかの手段で有効な TLS/SSL 証明書を取得します。 
+外部 ASE を使用している場合、アプリには &lt;appname&gt;.&lt;asename&gt;.p.azurewebsites.net でアクセスします。 既定では、ILB ASE を含め、すべての ASE が、その形式に従った証明書で作成されます。 ILB ASE がある場合、アプリには ILB ASE の作成時に指定したドメイン名に基づいて到達します。 アプリが TLS をサポートするためには、証明書をアップロードする必要があります。 内部証明機関を利用する、外部の発行者から証明書を購入する、自己署名証明書を使用する、のいずれかの手段で有効な TLS/SSL 証明書を取得します。 
 
 ILB ASE で証明書を構成するには、次の 2 つのオプションがあります。  ILB ASE に既定のワイルドカード証明書を設定するか、ASE 内の個別の Web アプリに証明書を設定します。  どちらを選択した場合でも、次の証明書属性を適切に構成する必要があります。
 
@@ -35,7 +35,7 @@ ILB ASE で証明書を構成するには、次の 2 つのオプションがあ
 
 ポータルで ILB ASE が作成されたら、その ILB ASE 用に証明書を設定する必要があります。 証明書が設定されるまで、ASE には、証明書が設定されていないことを示すバナーが表示されます。  
 
-アップロードする証明書は .pfx ファイルである必要があります。 証明書をアップロードすると、ASE で証明書を設定するためのスケール操作が実行されます。 
+アップロードする証明書は .pfx ファイルである必要があります。 証明書がアップロードされた後、証明書が使用されるまで約20分間の遅延が発生します。 
 
 ASE の作成と証明書のアップロードは、ポータルで 1 つのアクションとして実行することはできません。また、1 つのテンプレートとしても実行できません。 別々のアクションとして、[テンプレートからの ASE の作成](./create-from-template.md)に関するドキュメントに記載されているように、テンプレートを使用して証明書をアップロードすることはできます。  
 

@@ -6,17 +6,17 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 07/21/2021
 ms.author: alkohli
-ms.openlocfilehash: a15ebd43861e2116ddbb2d9055b289645962e203
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00ff58c2d11ba76889e1293bdb386c199cb3de00
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96573920"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589285"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期的なデータの転送用のソリューション
- 
+
 この記事では、定期的にデータを転送する場合のデータ転送ソリューションの概要を示します。 ネットワーク経由での定期的なデータ転送は、一定間隔での繰り返しまたは継続的なデータ移動として分類できます。 また、この記事では、推奨されるデータ転送と、このシナリオのそれぞれの主要な機能のマトリックスについても説明します。
 
 利用可能なすべてのデータ転送オプションの概要を理解するには、[Azure データ転送ソリューションの選択](storage-choose-data-transfer-solution.md)に関するページに移動します。
@@ -27,14 +27,16 @@ ms.locfileid: "96573920"
 
 - **スクリプト/プログラム ツール**– 一定間隔で発生するデータ転送では、AzCopy や Azure Storage REST API などのスクリプトおよびプログラム ツールを使用します。 これらのツールは、IT プロフェッショナルおよび開発者を対象としています。
 
-    - **AzCopy** - このコマンドライン ツールを使用すると、最適なパフォーマンスで Azure BLOB、Files、および Table ストレージとの間で相互に簡単にデータをコピーできます。 AzCopy はコンカレンシーと並列処理をサポートし、中断された場合にコピー操作を再開することができます。
-    - **Azure Storage REST API/SDK** – アプリケーションの構築時に、Azure Storage REST API に対するアプリケーションを開発し、複数の言語で提供される Azure SDK を使用できます。 REST API では、Azure との間で相互に高パフォーマンスのデータ コピーを行うことができるように特別に設計された、Azure Storage Data Movement Library を利用することもできます。
+  - **AzCopy** - このコマンドライン ツールを使用すると、最適なパフォーマンスで Azure BLOB、Files、および Table ストレージとの間で相互に簡単にデータをコピーできます。 AzCopy はコンカレンシーと並列処理をサポートし、中断された場合にコピー操作を再開することができます。
+  - **Azure Storage REST API/SDK** – アプリケーションの構築時に、Azure Storage REST API に対するアプリケーションを開発し、複数の言語で提供される Azure SDK を使用できます。 REST API では、Azure との間で相互に高パフォーマンスのデータ コピーを行うことができるように特別に設計された、Azure Storage Data Movement Library を利用することもできます。
 
-- **継続的なデータ インジェスト ツール** – 持続的かつ継続的なデータ インジェストには、Data Box オンライン転送デバイスの 1 つまたは Azure Data Factory を選択できます。 これらのツールは IT プロフェッショナルによって設定され、データ転送を透過的に自動化できます。
+- **継続的なデータ インジェスト ツール** – 連続する継続的なデータ インジェストの場合は、次のいずれかのオプションを選択できます。
 
-    - **Azure Data Factory** – 転送操作をスケールアウトする場合や、オーケストレーションとエンタープライズ レベルの監視機能が必要な場合は、Data Factory を使用する必要があります。 Azure Data Factory を使用すると、クラウド パイプラインを設定して、複数の Azure サービス間またはオンプレミスで、あるいは 2 つを組み合わせて、ファイルを定期的に転送することができます。 Azure Data Factory では、さまざまなデータ ストアからデータをインジェストし、データ移動とデータ転送を自動化する、データ駆動型ワークフローを調整することができます。
-    - **オンライン転送用の Azure Data Box** - Data Box Edge と Data Box Gateway はオンラインのネットワーク デバイスであり、Azure の内外へのデータの移動が可能です。 Data Box Edge は、人工知能 (AI) 対応 Edge コンピューティングを使用して、アップロードの前にデータを前処理します。 Data Box Gateway は、同じデータ転送機能を備えた、デバイスの仮想バージョンです。
+  - **オブジェクト レプリケーション** - オブジェクト レプリケーションは、ソーススとコピー先ストレージ アカウントのコンテナー間でブロック BLOB を非同期的にコピーします。 オブジェクト レプリケーションをソリューションとして使用すると、2 つの異なるストレージ アカウントのコンテナーの同期状態を維持できます。
+  - **Azure Data Factory** – 転送操作をスケールアウトする場合や、オーケストレーションとエンタープライズ レベルの監視機能が必要な場合は、Data Factory を使用する必要があります。 Azure Data Factory を使用すると、クラウド パイプラインを設定して、複数の Azure サービス間またはオンプレミスで、あるいは 2 つを組み合わせて、ファイルを定期的に転送することができます。 Azure Data Factory では、さまざまなデータ ストアからデータをインジェストし、データ移動とデータ転送を自動化する、データ駆動型ワークフローを調整することができます。
+  - **オンライン転送用の Azure Data Box** - Data Box Edge と Data Box Gateway はオンラインのネットワーク デバイスであり、Azure の内外へのデータの移動が可能です。 Data Box Edge は、人工知能 (AI) 対応 Edge コンピューティングを使用して、アップロードの前にデータを前処理します。 Data Box Gateway は、同じデータ転送機能を備えた、デバイスの仮想バージョンです。
 
+Data Box のオンライン転送デバイスまたは Azure Data Factory は、IT プロフェッショナルが設定し、データ転送を透過的に自動化できます。
 
 ## <a name="comparison-of-key-capabilities"></a>主な機能の比較
 
@@ -68,6 +70,6 @@ ms.locfileid: "96573920"
 - [AzCopy を使用してデータを転送する](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 - [Storage REST API を使用したデータ転送の詳細](/dotnet/api/overview/azure/storage)。
 - 以下の方法を理解します。
-    - [Data Box Gateway を使用してデータを転送する](../../databox-gateway/data-box-gateway-deploy-add-shares.md)します。
-    - [Azure に送信する前に Data Box Edge を使用してデータを変換する](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
+  - [Data Box Gateway を使用してデータを転送する](../../databox-gateway/data-box-gateway-deploy-add-shares.md)します。
+  - [Azure に送信する前に Data Box Edge を使用してデータを変換する](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
 - [Azure Data Factory を使用してデータを転送する方法を学習します](../../data-factory/tutorial-bulk-copy-portal.md)。

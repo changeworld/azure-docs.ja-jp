@@ -3,19 +3,20 @@ title: 会話の文字起こし (プレビュー) - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 会話の文字起こしは、会議のためのソリューションであり、認識、スピーカー ID、ダイアライゼーションを組み合わせて、会話の文字起こしが提供されます。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.author: trbye
-ms.openlocfilehash: 903e8db14a2830236ae81a2a3b5416491d03e8c7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: eur
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f72af708beff4e44b4fca6347eb17aca0ac54c0b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643243"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502732"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>会話の文字起こし (プレビュー) とは
 
@@ -54,11 +55,14 @@ ms.locfileid: "105643243"
 
 ## <a name="expected-inputs"></a>想定される入力
 
-- **マルチチャンネル オーディオ ストリーム** - 仕様と設計の詳細については、[Microsoft Speech Device SDK マイク](./speech-devices-sdk-microphone.md)に関するページを参照してください。 開発キットの詳細および購入については、[Microsoft Speech Device SDK の入手](./get-speech-devices-sdk.md)に関するページを参照してください。
-- **ユーザーの音声サンプル** - 会話の文字起こしには、会話の前にユーザー プロファイルが必要です。 各ユーザーからオーディオ録音を収集し、[署名生成サービス](https://aka.ms/cts/signaturegenservice)にその録音を送信して、音声を検証し、ユーザー プロファイルを生成する必要があります。
+- **マルチチャンネル オーディオ ストリーム** - 仕様と設計の詳細については、[Microsoft Speech Device SDK マイク](./speech-sdk-microphone.md)に関するページを参照してください。 開発キットの詳細および購入については、[Microsoft Speech Device SDK の入手](./get-speech-devices-sdk.md)に関するページを参照してください。
+- **ユーザーの音声サンプル** - 会話の文字起こしには、話者識別の会話の前にユーザー プロファイルが必要です。 各ユーザーからオーディオ録音を収集し、[署名生成サービス](https://aka.ms/cts/signaturegenservice)にその録音を送信して、音声を検証し、ユーザー プロファイルを生成する必要があります。
 
 > [!NOTE]
-> ユーザーの音声サンプルは省略可能です。 この入力がない場合、文字起こしでは複数の異なる話者が示されますが、事前登録されている特定の話者名を認識する代わりに、「Speaker1」、「Speaker2」などと表示されます。
+> 話者識別には、音声署名のユーザー音声サンプルが必要です。 音声サンプルのない話者は、"不明" として認識されます。 `DifferentiateGuestSpeakers` プロパティが有効になっている場合は、識別されていない話者も区別できます (以下の例を参照)。 その場合、文字起こしの出力では、事前に登録された特定の話者名として認識される代わりに、話者が "Guest_0"、"Guest_1" などと表示されます。
+> ```csharp
+> config.SetProperty("DifferentiateGuestSpeakers", "true");
+> ```
 
 
 ## <a name="real-time-vs-asynchronous"></a>リアルタイムと非同期

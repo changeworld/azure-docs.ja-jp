@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 79bcca688146b2c2382876b6a61bc0eee34382a1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 38d0b9db730d82642fafda4a42751c35d6cac0f8
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040959"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178444"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
@@ -284,7 +285,7 @@ _SecurityBaseline_ テーブルのみのアクセス権を持つロールを作�
 
 ### <a name="custom-logs"></a>カスタム ログ
 
- カスタム ログは、カスタム ログや HTTP Data Collector API などのデータ ソースから作成されます。 ログの種類を特定する最も簡単な方法は、[ログ スキーマの [カスタム ログ]](./log-analytics-tutorial.md#table-schema)に一覧表示されるテーブルを確認することです。
+ カスタム ログは、カスタム ログや HTTP Data Collector API などのデータ ソースから作成されます。 ログの種類を特定する最も簡単な方法は、[ログ スキーマの [カスタム ログ]](./log-analytics-tutorial.md#view-table-information)に一覧表示されるテーブルを確認することです。
 
  個々のカスタム ログに対するアクセスは付与できませんが、すべてのカスタム ログに対するアクセスを付与することはできます。 すべてのカスタム ログへのアクセス権を持つロールを作成するには、次の操作を使用してカスタム ロールを作成します。
 
@@ -311,4 +312,4 @@ _SecurityBaseline_ テーブルのみのアクセス権を持つロールを作�
 
 * [Log Analytics エージェントの概要](../agents/log-analytics-agent.md)に関するページを参照して、データセンターや他のクラウド環境内のコンピューターからデータを収集します。
 
-* 「[Azure Virtual Machines に関するデータの収集](../vm/quick-collect-azurevm.md)」を参照して、Azure VM からのデータ コレクションを構成します。
+* 「[Azure Virtual Machines に関するデータの収集](../vm/monitor-virtual-machine.md)」を参照して、Azure VM からのデータ コレクションを構成します。

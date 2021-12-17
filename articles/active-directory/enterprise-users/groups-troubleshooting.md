@@ -3,7 +3,7 @@ title: 動的グループ メンバーシップで問題を修正する - Azure 
 description: Azure Active Directory での動的グループ メンバーシップのトラブルシューティングのヒント
 services: active-directory
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: enterprise-users
@@ -13,62 +13,64 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41bfdf11bad28ab772b68839a5a7bf7776eb4dff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86aa2fb09180487efa5560f501054dabfd206a72
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96548105"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129986038"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>グループに関する問題のトラブルシューティングと解決
 
 ## <a name="troubleshooting-group-creation-issues"></a>グループの作成に関する問題のトラブルシューティング
 
-**Azure portal でセキュリティ グループの作成を無効にしましたが、Powershell を使用してまだグループを作成できます** Azure portal の **[User can create security groups in Azure portals]\(ユーザーは Azure portal でセキュリティ グループを作成できる\)** 設定は、管理者以外のユーザーがアクセス パネルまたは Azure portal でセキュリティ グループを作成できるかどうかを制御します。 Powershell を使用したセキュリティ グループの作成については制御されません。
+**Azure portal でセキュリティ グループの作成を無効にしたのに PowerShell でグループを作成できます**  
+Azure portal の **[User can create security groups in Azure portals]\(ユーザーは Azure portal でセキュリティ グループを作成できる\)** 設定は、管理者以外のユーザーがアクセス パネルまたは Azure portal でセキュリティ グループを作成できるかどうかを制御します。 Powershell を使用したセキュリティ グループの作成については制御されません。
 
 Powershell で管理者以外のユーザーによるグループの作成を無効にするには、次のようにします。
 1. 管理者以外のユーザーにグループの作成が許可されていることを確認します。
-   
 
    ```powershell
    Get-MsolCompanyInformation | Format-List UsersPermissionToCreateGroupsEnabled
    ```
 
-  
 2. `UsersPermissionToCreateGroupsEnabled : True` が返された場合は、管理者以外のユーザーはグループを作成できます。 この機能を無効にするには、次のコマンドを実行します。
-  
 
-   ``` 
+   ```powershell
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
    ```
 
-<br/>**Powershell で動的グループを作成しようとしたときに、最大許容グループ数のエラーが表示されました**<br/>
+**Powershell で動的グループを作成しようとしたときに、最大許容グループ数のエラーが表示されました**  
 Powershell で _動的グループ ポリシーの最大許容グループ数に達した_ ことを示すメッセージが表示される場合、組織内の動的グループの数が上限に達したことを意味します。 組織ごとの動的グループの最大数は 5,000 です。
 
 新しい動的グループを作成するには、まず既存の動的グループをいくつか削除する必要があります。 上限を増やす方法はありません。
 
 ## <a name="troubleshooting-dynamic-memberships-for-groups"></a>グループの動的メンバーシップのトラブルシューティング
 
-**グループに対するルールを構成しましたが、グループのメンバーシップが更新されません**<br/>
-1. ルール内のユーザー属性またはデバイス属性の値を確認します。 ルールを満たすユーザーが存在することを確認してください。 デバイスの場合は、デバイスのプロパティを調べて、同期された属性に予期される値が含まれていることを確認してください。<br/>
+**グループに対するルールを構成しましたが、グループのメンバーシップが更新されません**  
+1. ルール内のユーザー属性またはデバイス属性の値を確認します。 ルールを満たすユーザーが存在することを確認してください。
+デバイスの場合は、デバイスのプロパティを調べて、同期された属性に予期される値が含まれていることを確認してください。  
 2. メンバーシップの処理の状態を調べて、処理が完了しているかどうかを確認してください。 グループの **[概要]** ページで、[メンバーシップの処理状態](groups-create-rule.md#check-processing-status-for-a-rule)と最終更新日を確認できます。
 
 何も問題がなさそうな場合、グループが設定されるまでしばらく待ってください。 グループを初めて設定する場合、またはルールの変更後に設定する場合、Azure AD 組織のサイズによっては最大 24 時間かかる場合があります。
 
-**ルールの設定を変更したのですが、そのルールの既存のメンバーが削除されてしまいました**<br/>これは通常の動作です。 ルールを有効にしたり変更を加えたりするとグループの既存のメンバーは削除されます。 ルールの評価から返されたユーザーは、グループのメンバーとして追加されます。
+**ルールの設定を変更したのですが、そのルールの既存のメンバーが削除されてしまいました**  
+これは通常の動作です。 ルールを有効にしたり変更を加えたりするとグループの既存のメンバーは削除されます。 ルールの評価から返されたユーザーは、グループのメンバーとして追加されます。
 
-**ルールを追加または変更してもすぐにはメンバーシップの変更を確認できません。なぜでしょうか。**<br/>メンバーシップの評価に特化した機能が、非同期のバックグラウンド プロセスで定期的に実行されます。 プロセスにかかる時間は、ディレクトリ内のユーザー数と、ルールの結果として作成されるグループのサイズによって変わります。 ユーザー数の少ないディレクトリであれば通常、グループ メンバーシップの変更が数分以内に反映されます。 ディレクトリのユーザー数が多いと、変更が反映されるまでに 30 分以上かかる場合があります。
+**ルールを追加または変更してもすぐにはメンバーシップの変更を確認できません。なぜでしょうか。**  
+メンバーシップの評価に特化した機能が、非同期のバックグラウンド プロセスで定期的に実行されます。 プロセスにかかる時間は、ディレクトリ内のユーザー数と、ルールの結果として作成されるグループのサイズによって変わります。 ユーザー数の少ないディレクトリであれば通常、グループ メンバーシップの変更が数分以内に反映されます。 ディレクトリのユーザー数が多いと、変更が反映されるまでに 30 分以上かかる場合があります。
 
-**グループが今すぐ処理されるように強制するにはどうすればよいですか。**<br/>
-現時点では、グループの処理をオンデマンドで自動的にトリガーする方法はありません。 ただし、メンバーシップ ルールを更新して末尾に空白文字を追加すると、手動で再処理をトリガーできます。  
+**グループが今すぐ処理されるように強制するにはどうすればよいですか。**  
+現時点では、グループの処理をオンデマンドで自動的にトリガーする方法はありません。 ただし、メンバーシップ ルールを更新して末尾に空白文字を追加すると、手動で再処理をトリガーできます。
 
-**ルール処理エラーが発生しました**<br/>次の表は、一般的な動的メンバーシップ ルール エラーとその修正方法をまとめたものです。
+**ルール処理エラーが発生しました**  
+次の表は、一般的な動的メンバーシップ ルール エラーとその修正方法をまとめたものです。
 
 | ルール パーサー エラー | 間違った使用法 | 正しい使用法 |
 | --- | --- | --- |
 | エラー: 属性がサポートされていません。 |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/><br/>該当する属性が、[サポートされているプロパティ一覧](groups-dynamic-membership.md#supported-properties)に記載されていることを確認してください。 |
 | エラー: 属性で演算子がサポートされていません。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/><br/>プロパティの型に対してサポートされていない演算子が使用されています (この例では、-contains をブール型で使用することはできません)。 プロパティの型に合った適切な演算子を使用してください。 |
-| エラー: クエリ コンパイル エラー。 | 1. (user.department -eq "Sales") (user.department -eq "Marketing")<br>2.  (user.userPrincipalName -match "*@domain.ext") | 1. 演算子が不足しています。 結合述語を 2 つ使用してください (-and または -or)。<br>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br>2. -match に使用されている正規表現に誤りがあります<br>(user.userPrincipalName -match ".*@domain.ext")<br>あるいは: (user.userPrincipalName -match "@domain.ext$") |
+| エラー: クエリ コンパイル エラー。 | 1. (user.department -eq "Sales") (user.department -eq "Marketing")<br>2. (user.userPrincipalName -match "\*@domain.ext") | 1. 演算子が不足しています。 述語を結合するには -and か -or を使用します。<br>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br>2. -match に使用されている正規表現に誤りがあります<br>(user.userPrincipalName -match ".\*@domain.ext")<br>あるいは: (user.userPrincipalName -match "@domain.ext$") |
 
 ## <a name="next-steps"></a>次のステップ
 

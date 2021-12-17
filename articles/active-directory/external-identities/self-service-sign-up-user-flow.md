@@ -5,23 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 07/26/2021
 ms.author: mimart
 author: msmimart
-manager: celestedg
+manager: CelesteDG
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a59e573c9b24d9a8b5577b55d143fcaca67952f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 36bc5a283665abb03bd1c49a0a067b551bcc979d
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102120761"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720937"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app"></a>セルフサービス サインアップのユーザー フローをアプリに追加する
-
-> [!NOTE]
-> この記事で説明する機能の一部は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 構築するアプリケーションのために、ユーザーがアプリにサインアップして新しいゲスト アカウントを作成できるようにするユーザー フローを作成できます。 セルフサービス サインアップのユーザー フローでは、サインアップ時にユーザーが従う一連の手順、ユーザーに使用を許可する ID プロバイダー、収集するユーザー属性を定義します。 1 つのユーザー フローに、1 つ以上のアプリケーションを関連付けることができます。
 
@@ -32,9 +29,9 @@ ms.locfileid: "102120761"
 
 ### <a name="add-identity-providers-optional"></a>ID プロバイダーを追加する (省略可能)
 
-Azure AD は、セルフサービス サインアップ用の既定の ID プロバイダーです。 これは、ユーザーが既定で Azure AD アカウントを使用してサインアップできることを意味します。 セルフサービス サインアップのユーザー フローには、Google や Facebook、Microsoft アカウント (プレビュー)、電子メール ワンタイム パスコード (プレビュー) などのソーシャル ID プロバイダーを含めることもできます。
+Azure AD は、セルフサービス サインアップ用の既定の ID プロバイダーです。 これは、ユーザーが既定で Azure AD アカウントを使用してサインアップできることを意味します。 セルフサービス サインアップのユーザー フローには、Google や Facebook などのソーシャル ID プロバイダー、Microsoft アカウント、電子メール ワンタイム パスコードを含めることもできます。 詳細と例については、次の記事をご覧ください。
 
-- [Microsoft アカウント (プレビュー) ID プロバイダー](microsoft-account.md)
+- [Microsoft アカウント ID プロバイダー](microsoft-account.md)
 - [電子メール ワンタイム パスコード認証](one-time-passcode.md)
 - [ソーシャル ID プロバイダーの一覧に Facebook を追加する](facebook-federation.md)
 - [ソーシャル ID プロバイダーの一覧に Google を追加する](google-federation.md)

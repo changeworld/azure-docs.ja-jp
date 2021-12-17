@@ -8,12 +8,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 602f766429045d91748c0f0873744fe1d35b621d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93396942"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467015"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>カスタム ルート CA を使用して Azure Application Gateway の自己署名証明書を生成する
 
@@ -49,20 +50,21 @@ OpenSSL を使用してルート CA 証明書を作成します。
 
 ### <a name="create-the-root-key"></a>ルート キーを作成する
 
-1. OpenSSL がインストールされているコンピューターにサインインし、次のコマンドを実行します。 これでパスワードで保護されたキーが作成されます。
+1. OpenSSL がインストールされているコンピューターにサインインし、次のコマンドを実行します。 これにより暗号化されたキーが作成されます。
 
    ```
    openssl ecparam -out contoso.key -name prime256v1 -genkey
    ```
-1. プロンプトが表示されたら、強力なパスワードを入力します。 たとえば、9 文字以上の大文字、小文字、数字、記号の組み合わせです。
-
+   
 ### <a name="create-a-root-certificate-and-self-sign-it"></a>ルート証明書を作成して自己署名する
 
 1. 次のコマンドを使用して、CSR と証明書を生成します。
 
    ```
    openssl req -new -sha256 -key contoso.key -out contoso.csr
-
+   ```
+   
+   ```
    openssl x509 -req -sha256 -days 365 -in contoso.csr -signkey contoso.key -out contoso.crt
    ```
    上のコマンドで、ルート証明書が作成されます。 これを使用して、サーバー証明書に署名します。

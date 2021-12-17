@@ -3,14 +3,14 @@ title: Azure Functions 用 JavaScript 開発者向けリファレンス
 description: JavaScript を使用して関数を開発する方法について説明します。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 03/07/2021
+ms.date: 10/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 971fb2a3239614a708e14c109e567081f1ec9ff6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a4026334e4b0313513e57ac8ed78cd9f24f6e34
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614906"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028042"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -264,17 +264,15 @@ context.bindingData
 
 ### <a name="contextdone-method"></a>context.done メソッド
 
-```js
-context.done([err],[propertyBag])
-```
+**context.done** メソッドは、同期メソッドによって使用されます。
 
-ランタイムにコードが完了したことを知らせます。 関数で [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 宣言を使用する場合、`context.done()` を使用する必要はありません。 `context.done` コールバックは暗黙的に呼び出されます。 非同期関数は Node 8 以降のバージョンで使用できますが、それにはバージョン 2.x の Functions ランタイムが必要です。
+|同期実行|[非同期](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function)実行<br>(Node 8+、Functions ランタイム 2+)|
+|--|--|
+|必須: 関数が完了したとランタイムに通知する `context.done([err],[propertyBag])`。 これがない場合、実行はタイムアウトします。<br>`context.done` メソッドを使用すると、ランタイムに対するユーザー定義のエラーと、出力バインド データを含む JSON オブジェクトの両方を、戻すことができます。 `context.done` に渡されるプロパティは、`context.bindings` オブジェクトで設定されているすべてのものを上書きします。|不要: `context.done` - 暗黙的に呼び出されます。| 
 
-関数が非同期関数ではない場合、関数が完了したことをランタイムに通知するために **呼び出す必要があります** `context.done`。 これがない場合、実行はタイムアウトします。
-
-`context.done` メソッドを使用すると、ランタイムに対するユーザー定義のエラーと、出力バインド データを含む JSON オブジェクトの両方を、戻すことができます。 `context.done` に渡されるプロパティは、`context.bindings` オブジェクトで設定されているすべてのものを上書きします。
 
 ```javascript
+// Synchronous code only
 // Even though we set myOutput to have:
 //  -> text: 'hello world', number: 123
 context.bindings.myOutput = { text: 'hello world', number: 123 };
@@ -420,7 +418,7 @@ module.exports = function (context, req) {
 
 ## <a name="http-triggers-and-bindings"></a>HTTP トリガーとバインディング
 
-HTTP、webhook トリガー、および HTTP 出力バインディングでは、要求オブジェクトと応答オブジェクトを使用して HTTP メッセージングを表します。  
+HTTP、webhook トリガー、および HTTP 出力バインディングでは、要求オブジェクトと応答オブジェクトを使用して HTTP メッセージングを表します。
 
 ### <a name="request-object"></a>要求オブジェクト
 
@@ -491,6 +489,8 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
     context.done(null, res);   
     ```  
 
+要求と応答のキーは小文字であることに注意してください。
+
 ## <a name="scaling-and-concurrency"></a>スケーリングと同時性
 
 既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて node.js 用の追加のホストインスタンスを作成します。 関数は、さまざまなトリガー型の組み込み（ユーザー設定不可）しきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 詳細については、「[従量課金プランと Premium プランのしくみ](event-driven-scaling.md)」をご覧ください。
@@ -507,6 +507,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT は、要求に応じてアプリケーション�
 
 | Functions バージョン | Node バージョン (Windows) | Node バージョン (Linux) |
 |---|---| --- |
+| 4.x | `~14` | `node|14` |
 | 3.x (推奨) | `~14` (推奨)<br/>`~12`<br/>`~10` | `node|14` (推奨)<br/>`node|12`<br/>`node|10` |
 | 2.x  | `~12`<br/>`~10`<br/>`~8` | `node|10`<br/>`node|8`  |
 | 1.x | 6.11.2 (ランタイムによりロック) | 該当なし |
@@ -522,6 +523,8 @@ Linux 関数アプリの場合は、次の Azure CLI コマンドを実行して
 ```bash
 az functionapp config set --linux-fx-version "node|14" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
 ```
+
+Azure Functions のランタイム サポート ポリシーの詳細については、こちらの[記事](./language-support-policy.md)を参照してください。
 
 ## <a name="dependency-management"></a>依存関係の管理
 JavaScript コードでコミュニティ ライブラリを使用するには、次の例で示すように、Azure 内の関数アプリにすべての依存関係がインストールされている必要があります。
@@ -584,7 +587,7 @@ module.exports = function(context) {
 
 ### <a name="in-azure-cloud-environment"></a>Azure クラウド環境
 
-Azure で実行されている場合は、関数アプリで[アプリケーション設定](functions-app-settings.md) (サービス接続文字列など) を使用し、これらの設定を実行時に環境変数として公開できます。 
+Azure で実行されている場合は、関数アプリで[アプリケーション設定](functions-app-settings.md) (サービス接続文字列など) を設定して使用し、これらの設定を実行時に環境変数として公開できます。 
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
@@ -689,7 +692,7 @@ module.exports = myObj;
 
 Node.js プロセスは、`--inspect` パラメーターを指定して起動されると、指定されたポートでデバッグ クライアントをリッスンします。 Azure Functions 2.x では、環境変数またはアプリ設定 `languageWorkers:node:arguments = <args>` を追加することで、コードを実行する Node.js プロセスに渡す引数を指定できます。 
 
-ローカルでデバッグするには、[local.settings.json](./functions-run-local.md#local-settings-file) ファイルの `Values` の下に `"languageWorkers:node:arguments": "--inspect=5858"` を追加し、デバッガーをポート 5858 に接続します。
+ローカルでデバッグするには、[local.settings.json](./functions-develop-local.md#local-settings-file) ファイルの `Values` の下に `"languageWorkers:node:arguments": "--inspect=5858"` を追加し、デバッガーをポート 5858 に接続します。
 
 VS Code を使用してデバッグするときは、プロジェクトの launch.json ファイルの `port` 値を使用して、`--inspect` パラメーターが自動的に追加されます。
 

@@ -6,12 +6,12 @@ author: palma21
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jpalma
-ms.openlocfilehash: 5b13931bc6a13d988c21f728b996c51270769e0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c62e269ae20b8da974b4ba7ef72ac7171ee0e88d
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97368683"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577975"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes Service で CoreDNS をカスタマイズする
 
@@ -46,17 +46,15 @@ metadata:
   namespace: kube-system
 data:
   test.server: | # you may select any name here, but it must end with the .server file extension
-    <domain to be rewritten>.com:53 {
-        errors
-        cache 30
-        rewrite name substring <domain to be rewritten>.com default.svc.cluster.local
-        kubernetes cluster.local in-addr.arpa ip6.arpa {
-          pods insecure
-          upstream
-          fallthrough in-addr.arpa ip6.arpa
-        }
-        forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
-    }
+  <domain to be rewritten>.com:53 {
+  log
+  errors
+  rewrite stop {
+    name regex (.*)\.<domain to be rewritten>.com {1}.default.svc.cluster.local
+    answer name (.*)\.default\.svc\.cluster\.local {1}.<domain to be rewritten>.com
+  }
+  forward . /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
+}
 ```
 
 > [!IMPORTANT]
@@ -81,7 +79,7 @@ kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 ```
 
 > [!Note]
-> 上記のコマンドは正しいです。 `coredns` の変更中は、デプロイは **kube-dns** 名によって実行されます。
+> 上記のコマンドは正しいです。 `coredns` の変更中は、デプロイは **kube-dns** ラベルによって実行されます。
 
 ## <a name="custom-forward-server"></a>カスタム転送サーバー
 
@@ -179,13 +177,17 @@ metadata:
   namespace: kube-system
 data:
     test.override: | # you may select any name here, but it must end with the .override file extension
-          hosts example.hosts example.org { # example.hosts must be a file
-              10.0.0.1 example.org
+          hosts { 
+              10.0.0.1 example1.org
+              10.0.0.2 example2.org
+              10.0.0.3 example3.org
               fallthrough
           }
 ```
 
-## <a name="enable-logging-for-dns-query-debugging"></a>DNS クエリのデバッグ用にログ記録を有効にする 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+エンドポイントや解決策を調べるなど、CoreDNS の一般的なトラブルシューティング手順については、「[DNS 解決のデバッグ][coredns-troubleshooting]」を参照してください。
 
 DNS クエリのログ記録を有効にするには、次の構成を coredns-custom ConfigMap に適用します。
 
@@ -198,6 +200,12 @@ metadata:
 data:
   log.override: | # you may select any name here, but it must end with the .override file extension
         log
+```
+
+構成の変更を適用した後に、`kubectl logs` コマンドを使用して CoreDNS のデバッグ ログを表示します。 次に例を示します。
+
+```console
+kubectl logs --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="next-steps"></a>次のステップ
@@ -215,6 +223,7 @@ data:
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [coredns hosts]: https://coredns.io/plugins/hosts/
+[coredns-troubleshooting]: https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
 
 <!-- LINKS - internal -->
 [concepts-network]: concepts-network.md

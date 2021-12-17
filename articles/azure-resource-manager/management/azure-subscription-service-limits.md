@@ -2,13 +2,13 @@
 title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 3ef3e6f3b67e8c92e0137f36e19c62cba79e1c14
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 09/21/2021
+ms.openlocfilehash: 685a66e120a1387ce71d0d2902dfa54e390d1d66
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030825"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645498"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -70,8 +70,6 @@ Resource Manager API の読み取りと書き込みの制限については、�
 
 ## <a name="app-service-limits"></a>App Service の制限
 
-次の App Service の制限には、Web Apps、Mobile Apps、および API Apps の制限が含まれます。
-
 [!INCLUDE [azure-websites-limits](../../../includes/azure-websites-limits.md)]
 
 ## <a name="automation-limits"></a>Automation の制限
@@ -82,9 +80,13 @@ Resource Manager API の読み取りと書き込みの制限については、�
 
 [!INCLUDE [app-configuration-limits](../../../includes/app-configuration-limits.md)]
 
+## <a name="azure-api-for-fhir-service-limits"></a>Azure API for FHIR サービスの制限
+
+[!INCLUDE [functions-limits](../../../includes/azure-api-for-fhir-limits.md)]
+
 ## <a name="azure-cache-for-redis-limits"></a>Azure Cache for Redis の制限
 
-[!INCLUDE [redis-cache-service-limits](../../../includes/redis-cache-service-limits.md)]
+[!INCLUDE [redis-cache-service-limits](../../azure-cache-for-redis/includes/redis-cache-service-limits.md)]
 
 ## <a name="azure-cloud-services-limits"></a>Azure Cloud Services の制限
 
@@ -172,6 +174,15 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 [!INCLUDE [monitoring-limits](../../../includes/application-insights-limits.md)]
 
+
+## <a name="azure-data-factory-limits"></a>Azure Data Factory の制限
+
+[!INCLUDE [azure-data-factory-limits](../../../includes/azure-data-factory-limits.md)]
+
+## <a name="azure-netapp-files"></a>Azure NetApp Files
+
+[!INCLUDE [netapp-limits](../../../includes/netapp-service-limits.md)]
+
 ## <a name="azure-policy-limits"></a>Azure Policy の制限
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
@@ -180,7 +191,9 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 [!INCLUDE [quantum-limits](../../../includes/azure-quantum-limits.md)]
 
-## <a name="azure-role-based-access-control-limits"></a>Azure のロールベースのアクセス制御の制限
+## <a name="azure-rbac-limits"></a>Azure RBAC の制限
+
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) には、以下の制限が適用されます。
 
 [!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control/limits.md)]
 
@@ -220,13 +233,14 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 
 [!INCLUDE [cdn-limits](../../../includes/cdn-limits.md)]
 
-## <a name="data-factory-limits"></a>Data Factory の制限
-
-[!INCLUDE [azure-data-factory-limits](../../../includes/azure-data-factory-limits.md)]
 
 ## <a name="data-lake-analytics-limits"></a>Data Lake Analytics の制限
 
 [!INCLUDE [azure-data-lake-analytics-limits](../../../includes/azure-data-lake-analytics-limits.md)]
+
+## <a name="data-factory-limits"></a>Data Factory の制限
+
+[!INCLUDE [azure-data-factory-limits](../../../includes/azure-data-factory-limits.md)]
 
 ## <a name="data-lake-storage-limits"></a>Data Lake Storage の制限
 
@@ -240,6 +254,10 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 
 [!INCLUDE [database-migration-service-limits](../../../includes/database-migration-service-limits.md)]
 
+## <a name="device-update-for-iot-hub--limits"></a>Device Update for IoT Hub の制限
+
+[!INCLUDE [device-update-for-iot-hub-limits](../../../includes/device-update-for-iot-hub-limits.md)]
+
 ## <a name="digital-twins-limits"></a>Digital Twins の制限
 
 > [!NOTE]
@@ -252,8 +270,7 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 [!INCLUDE [event-grid-limits](../../../includes/event-grid-limits.md)]
 
 ## <a name="event-hubs-limits"></a>Event Hubs の制限
-
-[!INCLUDE [azure-servicebus-limits](../../../includes/event-hubs-limits.md)]
+[!INCLUDE [event-hubs-limits](../../../includes/event-hubs-limits.md)]
 
 ## <a name="iot-central-limits"></a>IoT Central の制限
 [!INCLUDE [iot-central-limits](../../../includes/iot-central-limits.md)]
@@ -324,10 +341,6 @@ Media Services v2 (レガシ) に固有の制限については、「[Media Serv
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
 
-## <a name="purview-limits"></a>Purview の制限
-
-Azure Purview のクォータの最新の値については、 [Azure Purview のクォータに関するページ](../../purview/how-to-manage-quotas.md)を参照してください
-
 ### <a name="traffic-manager-limits"></a>Traffic Manager の制限
 
 [!INCLUDE [traffic-manager-limits](../../../includes/traffic-manager-limits.md)]
@@ -352,6 +365,10 @@ Azure Purview のクォータの最新の値については、 [Azure Purview �
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
 
+## <a name="purview-limits"></a>Purview の制限
+
+Azure Purview のクォータの最新の値については、[Azure Purview のクォータに関するページ](../../purview/how-to-manage-quotas.md)を参照してください。
+
 ## <a name="service-bus-limits"></a>Service Bus の制限
 
 [!INCLUDE [azure-servicebus-limits](../../../includes/service-bus-quotas-table.md)]
@@ -364,9 +381,11 @@ Azure Purview のクォータの最新の値については、 [Azure Purview �
 
 SQL Database の制限については、[単一データベースの SQL Database のリソース制限](../../azure-sql/database/resource-limits-vcore-single-databases.md)、[エラスティック プールとプールされたデータベースの SQL Database のリソース制限](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)、および[SQL Managed Instance に対する SQL Database のリソース制限](../../azure-sql/managed-instance/resource-limits.md)に関する記事をご覧ください。
 
+Azure SQL Database 論理サーバーあたりのプライベート エンドポイントの最大数は 250 です。
+
 ## <a name="azure-synapse-analytics-limits"></a>Azure Synapse Analytics の制限
 
-Azure Synapse Analytics の制限については、[Azure Synaplse リソースの制限](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)に関する記事を参照してください。
+[!INCLUDE [synapse-analytics-limits](../../../includes/synapse-analytics-limits.md)]
 
 ## <a name="azure-files-and-azure-file-sync"></a>Azure Files と Azure File Sync
 Azure Files と Azure File Sync の制限については、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](../../storage/files/storage-files-scale-targets.md)」を参照してください。

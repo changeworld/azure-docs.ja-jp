@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 72bf8e76217e8a3bcecd381d8d61815c539dd196
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 6ed309637c03fc4701f2b973f64b2473f43b0d2a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209589"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734891"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使用して Parquet ファイルのクエリを実行する
 
@@ -41,6 +41,8 @@ from openrowset(
 > PARQUET ファイル内の文字列値が UTF-8 エンコードを使用してエンコードされているため、UTF-8 データベース照合順序 (`Latin1_General_100_BIN2_UTF8` など) を使用するようにしてください。
 > PARQUET ファイル内のテキスト エンコードと照合順序が一致しないと、予期しない変換エラーが発生する可能性があります。
 > 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_BIN2_UTF8` という T-SQL ステートメントを使用して簡単変更できます。
+
+`Latin1_General_100_BIN2_UTF8` 照合順序を使用すると、他の照合順序と比較して、さらにパフォーマンスが向上します。 `Latin1_General_100_BIN2_UTF8` 照合順序は、parquet 文字列の並べ替え規則と互換性があります。 SQL プールでは、クエリで必要なデータ (ファイル/列セグメントの排除) を含まない parquet ファイルの一部を削除できます。 他の照合順序を使用すると、parquet ファイルのすべてのデータが Synapse SQL に読み込まれ、フィルター処理は SQL プロセス内で行われます。 `Latin1_General_100_BIN2_UTF8` 照合順序には、parquet と CosmosDB でのみ機能する追加のパフォーマンス最適化があります。 欠点は、大文字と小文字の区別のようなきめ細かい比較規則が失われる点です。
 
 ### <a name="data-source-usage"></a>データ ソースの使用状況
 

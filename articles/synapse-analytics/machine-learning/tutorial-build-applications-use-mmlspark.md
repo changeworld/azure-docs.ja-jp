@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Microsoft Machine Learning for Apache Spark を使用して機械学習アプリケーションを構築する (プレビュー)'
-description: Microsoft Machine Learning for Apache Spark を使用して、Azure Synapse Analytics で機械学習アプリケーションを作成する方法について説明します。
+title: 'チュートリアル: Synapse Machine Learning を使用して機械学習アプリケーションをビルドする'
+description: Synapse Machine Learning を使用して、Azure Synapse Analytics で機械学習アプリケーションを作成する方法について説明します。
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
@@ -9,25 +9,25 @@ ms.reviewer: ''
 ms.date: 03/08/2021
 author: ruixinxu
 ms.author: ruxu
-ms.openlocfilehash: 5258d8f16e288e7df7e1286eb1902cc6ba6d10f7
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 03d7aec55e7a6146346ebbcc746ecbbd75b81d3f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227723"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318486"
 ---
-# <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>チュートリアル: Microsoft Machine Learning for Apache Spark を使用して機械学習アプリケーションを構築する (プレビュー)
+# <a name="tutorial-build-machine-learning-applications-using-synapse-machine-learning"></a>チュートリアル: Synapse Machine Learning を使用して機械学習アプリケーションをビルドする
 
-この記事では、Microsoft Machine Learning for Apache Spark ([MMLSpark](https://github.com/Azure/mmlspark)) を使用して機械学習アプリケーションを作成する方法について説明します。 MMLSpark によって Apache Spark の分散機械学習ソリューションが拡張され、[Azure Cognitive Services](../../cognitive-services/big-data/cognitive-services-for-big-data.md)、[OpenCV](https://opencv.org/)、[LightGBM](https://github.com/Microsoft/LightGBM) などの多くのディープ ラーニング ツールとデータ サイエンス ツールが追加されます。  MMLSpark を使用すると、効果的で拡張性の高い予測と分析のモデルをさまざまな Spark データ ソースから構築できます。
-Synapse Spark には、次のような組み込みの MMLSpark ライブラリが用意されています。
+この記事では、Synapse Machine Learning ([SynapseML](https://github.com/microsoft/SynapseML)) を使用して機械学習アプリケーションを作成する方法について説明します。 SynapseML によって Apache Spark の分散機械学習ソリューションが拡張され、[Azure Cognitive Services](../../cognitive-services/big-data/cognitive-services-for-big-data.md)、[OpenCV](https://opencv.org/)、[LightGBM](https://github.com/Microsoft/LightGBM) などの多くのディープ ラーニング ツールとデータ サイエンス ツールが追加されます。  SynapseML を使用すると、効果的で拡張性の高い予測と分析のモデルをさまざまな Spark データ ソースから構築できます。
+Synapse Spark には、次のような組み込みの SynapseML ライブラリが用意されています。
 
-- [Vowpal Wabbit](https://github.com/Azure/mmlspark/blob/master/docs/vw.md) – 機械学習用のライブラリ サービスであり、ツイートの感情分析などのテキスト分析を可能にします。
-- [Cognitive Services on Spark](https://github.com/Azure/mmlspark/blob/master/docs/cogsvc.md) - 異常検出などの認知データ モデリング サービスのソリューション設計を得るために、Azure Cognitive Services の機能を SparkML パイプラインに組み合わせます。
-- [LightGBM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) - LightGBM は、ツリー ベースの学習アルゴリズムを使用する勾配ブースティング フレームワークです。 分散と効率の向上を目指して設計されています。
+- [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit) – 機械学習用のライブラリ サービスであり、ツイートの感情分析などのテキスト分析を可能にします。
+- [Cognitive Services on Spark](https://arxiv.org/abs/1810.08744) - 異常検出などの認知データ モデリング サービスのソリューション設計を得るために、Azure Cognitive Services の機能を SparkML パイプラインに組み合わせます。
+- [LightGBM](https://github.com/Microsoft/LightGBM) - LightGBM は、ツリー ベースの学習アルゴリズムを使用する勾配ブースティング フレームワークです。 分散と効率の向上を目指して設計されています。
 - Conditional KNN - 条件付きクエリを使用したスケーラブル KNN モデル。
-- [HTTP on Spark](https://github.com/Azure/mmlspark/blob/master/docs/http.md) – Spark と HTTP プロトコルベースのアクセシビリティを統合するための分散マイクロサービス オーケストレーションを可能にします。
+- HTTP on Spark – Spark と HTTP プロトコルベースのアクセシビリティを統合するための分散マイクロサービス オーケストレーションを可能にします。
 
-このチュートリアルでは、MMLSpark で Azure Cognitive Services を使用するサンプルについて説明します。 
+このチュートリアルでは、SynapseML で Azure Cognitive Services を使用するサンプルについて説明します。 
 
 - Text Analytics - 文のセットのセンチメント (またはムード) を取得します。
 - Computer Vision - 画像のセットに関連付けられたタグ (1 単語の描写) を取得します。
@@ -39,33 +39,26 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 ## <a name="prerequisites"></a>前提条件 
 
 - Azure Data Lake Storage Gen2 ストレージ アカウントが既定のストレージとして構成されている [Azure Synapse Analytics ワークスペース](../get-started-create-workspace.md)。 使用する Data Lake Storage Gen2 ファイル システムの "*Storage Blob データ共同作成者*" である必要があります。
-- Azure Synapse Analytics ワークスペースの Spark プール。 詳細については、[Azure Synapse での Spark プールの作成](../quickstart-create-sql-pool-studio.md)に関する記事を参照してください。
+- Azure Synapse Analytics ワークスペースの Spark プール。 詳細については、[Azure Synapse での Spark プールの作成](../get-started-analyze-spark.md)に関する記事を参照してください。
 - [Azure Synapse での Cognitive Services の構成](./tutorial-configure-cognitive-services-synapse.md)に関するチュートリアルで説明されている事前構成手順。
 
 
 ## <a name="get-started"></a>開始
-はじめに、mmlspark をインポートし、サービス キーを構成します。 
+はじめに、SynapseML をインポートし、サービス キーを構成します。 
 
 ```python
-import mmlspark
-mmlspark.__spark_package_version__ # current version: 1.0.0-rc3-6-a862d6b1-SNAPSHOT
+import synapse.ml
 
-from mmlspark.cognitive import *
+from synapse.ml.cognitive import *
 from notebookutils import mssparkutils
 
 # A general Cognitive Services key for Text Analytics and Computer Vision (or use separate keys that belong to each service)
-service_key =  "ADD_YOUR_SUBSCRIPION_KEY" 
+cognitive_service_key = mssparkutils.credentials.getSecret("ADD_YOUR_KEY_VAULT_NAME", "ADD_YOUR_SERVICE_KEY","ADD_YOUR_KEY_VAULT_LINKED_SERVICE_NAME") 
 # A Bing Search v7 subscription key
-bing_search_key = "ADD_YOUR_SUBSCRIPION_KEY" 
+bingsearch_service_key = mssparkutils.credentials.getSecret("ADD_YOUR_KEY_VAULT_NAME", "ADD_YOUR_BING_SEARCH_KEY","ADD_YOUR_KEY_VAULT_LINKED_SERVICE_NAME")
 # An Anomaly Dectector subscription key
-anomaly_key =  "ADD_YOUR_SUBSCRIPION_KEY" 
-# Your linked key vault for Synapse workspace
-key_vault = "YOUR_KEY_VAULT_NAME"
+anomalydetector_key = mssparkutils.credentials.getSecret("ADD_YOUR_KEY_VAULT_NAME", "ADD_YOUR_ANOMALY_KEY","ADD_YOUR_KEY_VAULT_LINKED_SERVICE_NAME")
 
-
-cognitive_service_key = mssparkutils.credentials.getSecret(key_vault, service_key)
-bingsearch_service_key = mssparkutils.credentials.getSecret(key_vault, bing_search_key)
-anomalydetector_key = mssparkutils.credentials.getSecret(key_vault, anomaly_key)
 
 ```
 
@@ -87,7 +80,7 @@ df_sentences = spark.createDataFrame([
 # Run the Text Analytics service with options
 sentiment = (TextSentiment()
     .setTextCol("text")
-    .setLocation("eastasia")
+    .setLocation("eastasia") # Set the location of your cognitive service
     .setSubscriptionKey(cognitive_service_key)
     .setOutputCol("sentiment")
     .setErrorCol("error")
@@ -120,7 +113,7 @@ df_images = spark.createDataFrame([
 
 # Run the Computer Vision service. Analyze Image extracts information from/about the images.
 analysis = (AnalyzeImage()
-    .setLocation("eastasia")
+    .setLocation("eastasia") # Set the location of your cognitive service
     .setSubscriptionKey(cognitive_service_key)
     .setVisualFeatures(["Categories","Color","Description","Faces","Objects","Tags"])
     .setOutputCol("analysis_results")
@@ -247,7 +240,40 @@ display(anamoly_detector.transform(df_timeseriesdata).select("timestamp", "value
 |1973-02-01T00:00:00Z|837.0|false|
 |1973-03-01T00:00:00Z|9000.0|true|
 
+
+## <a name="speech-to-text-sample"></a>音声テキスト変換の例
+
+[音声テキスト変換](../../cognitive-services/speech-service/index-text-to-speech.yml)サービスでは、音声のストリームまたはファイルをテキストに変換します。 この例では、1 つのオーディオ ファイルをテキストに変換します。 
+
+```python
+# Create a dataframe with our audio URLs, tied to the column called "url"
+df = spark.createDataFrame([("https://mmlspark.blob.core.windows.net/datasets/Speech/audio2.wav",)
+                           ], ["url"])
+
+# Run the Speech-to-text service to translate the audio into text
+speech_to_text = (SpeechToTextSDK()
+    .setSubscriptionKey(service_key)
+    .setLocation("northeurope") # Set the location of your cognitive service
+    .setOutputCol("text")
+    .setAudioDataCol("url")
+    .setLanguage("en-US")
+    .setProfanity("Masked"))
+
+# Show the results of the translation
+display(speech_to_text.transform(df).select("url", "text.DisplayText"))
+```
+### <a name="expected-results"></a>予想される結果
+
+|url | DisplayText |
+|--|--|
+| `https://mmlspark.blob.core.windows.net/datasets/Speech/audio2.wav` | Custom Speech には、オーディオ データを Custom Speech ポータルから得られた認識結果と比較することによって、モデルの認識品質を視覚的に検査するツールがあります。 You can playback uploaded audio and determine if the provided recognition result is correct. This tool allows you to quickly inspect quality of Microsoft's baseline speech to text model or a trained custom model without having to transcribe any audio data.|
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+Spark インスタンスがシャットダウンされるようにするには、接続されているセッション (ノートブック) を終了します。 プールは、Apache Spark プールに指定されている **アイドル時間** に達したときにシャットダウンされます。 また、ノートブックの右上にあるステータス バーから **[セッションの停止]** を選択することもできます。
+
+![セッションの停止を示すスクリーンショット](./media/tutorial-build-applications-use-mmlspark/stop-session.png)
+
 ## <a name="next-steps"></a>次のステップ
 
-* [Synapse サンプル ノートブックをチェックアウトする](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks) 
-* [MMLSpark GitHub リポジトリ](https://github.com/Azure/mmlspark)
+* [Synapse サンプル ノートブックをチェックアウトする](https://github.com/Azure-Samples/Synapse/tree/main/MachineLearning) 
+* [SynapseML GitHub リポジトリ](https://github.com/microsoft/SynapseML)

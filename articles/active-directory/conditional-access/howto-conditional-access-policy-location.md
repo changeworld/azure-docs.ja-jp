@@ -5,22 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 11/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e257ab39257b23c52aaadbe32f0325e8d71a8409
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09510a64fdee1525ca18ee4985206faa18263b85
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98597982"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706895"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件付きアクセス:場所ごとにアクセスをブロックする
 
 条件付きアクセスで場所の条件を使用すると、ユーザーのネットワークの場所に基づいて、クラウド アプリへのアクセスを制御できます。 場所の条件は、一般に、トラフィックの発信元として不適切であると組織が認識している国またはリージョンからのアクセスをブロックするために使用されます。
+
+> [!NOTE]
+> 条件付きアクセス ポリシーは、第 1 段階認証が完了した後で適用されます。 条件付きアクセスはサービス拒否 (DoS) 攻撃などのシナリオに対する組織の防御の最前線を意図したものではありませんが、これらのイベントからのシグナルを使用してアクセス権を判定できます。
 
 ## <a name="define-locations"></a>場所を定義する
 
@@ -52,8 +55,10 @@ ms.locfileid: "98597982"
    1. 組織に対して作成したブロック対象の場所を選択します。
    1. **[選択]** をクリックします。
 1. **[アクセス制御]** で、 **[アクセスのブロック]** を選択し、さらに **[選択]** を選択します。
-1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
-1. **[作成]** を選択して、条件付きアクセス ポリシーを作成します。
+1. 設定を確認し、 **[ポリシーの有効化]** を **[レポート専用]** に設定します。
+1. **[作成]** を選択して、ポリシーを作成および有効化します。
+
+管理者は、[レポート専用モード](howto-conditional-access-insights-reporting.md)を使用して設定を確認したら、 **[ポリシーの有効化]** トグルを **[レポートのみ]** から **[オン]** に移動できます。
 
 ## <a name="next-steps"></a>次のステップ
 

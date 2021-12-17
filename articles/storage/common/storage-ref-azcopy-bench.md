@@ -8,18 +8,18 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c1028d0a4a458746c08fd6fa4f16aa952d9962a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6bd80367ab407be3d6b43750c6525b2d2ae30200
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87282009"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605869"
 ---
 # <a name="azcopy-benchmark"></a>azcopy ベンチマーク
 
 指定したコピー先との間でテスト データをアップロードまたはダウンロードすることで、パフォーマンス ベンチマークを実行します。 アップロードの場合、テスト データは自動的に生成されます。
 
-ベンチマーク コマンドでは、以下を除き、"copy" と同じプロセスが実行されます。 
+ベンチマーク コマンドでは、以下を除き、"copy" と同じプロセスが実行されます。
 
   - コピー元とコピー先の両方のパラメーターを必要とするのではなく、ベンチマークでは 1 つだけを受け取ります。 これは、アップロード先またはダウンロード元にする BLOB コンテナー、Azure Files 共有、または Azure Data Lake Storage Gen2 ファイル システムです。
 
@@ -28,16 +28,21 @@ ms.locfileid: "87282009"
   - アップロード ベンチマークの場合、ペイロードは、自動生成されるファイルの数と、ファイルの重要性を制御するコマンド ライン パラメーターによって記述されます。 生成プロセスは、すべてメモリ内で行われます。 ディスクは使用されません。
 
   - ダウンロードの場合、ペイロードは、ダウンロード元に既に存在するいずれかのファイルで構成されます。 (必要な場合は、テスト ファイルを生成する方法に関する下記の例を参照してください)。
-  
+
   - copy コマンドで使用できるオプションのパラメーターの一部のみがサポートされています。
-  
+
   - 追加の診断が測定および報告されます。
-  
+
   - アップロードの場合、既定の動作では、テスト実行の最後に、転送されたデータが削除されます。  ダウンロードの場合、データはローカルに一切保存されません。
 
-ベンチマーク モードは、最大スループットを提供する並列 TCP 接続の数に自動的に調整されます。 最後にその数値が表示されます。 自動調整が行われないようにするには、AZCOPY_CONCURRENCY_VALUE 環境変数を特定の数の接続に設定します。 
+ベンチマーク モードは、最大スループットを提供する並列 TCP 接続の数に自動的に調整されます。 最後にその数値が表示されます。 自動調整が行われないようにするには、AZCOPY_CONCURRENCY_VALUE 環境変数を特定の数の接続に設定します。
 
 一般的な認証の種類がすべてサポートされています。 ただし、アップロードのベンチマークを行う最も便利な方法は、一般に、SAS トークンを指定して空のコンテナーを作成し、SAS 認証を使用することです。 (ダウンロード モードでは、テスト データのセットがターゲット コンテナーに存在する必要があります。)
+
+## <a name="related-conceptual-articles"></a>関連する概念に関する記事
+
+- [AzCopy を使ってみる](storage-use-azcopy-v10.md)
+- [Azure Storage で AzCopy v10 のパフォーマンスを最適化する](storage-use-azcopy-optimize.md)
 
 ## <a name="examples"></a>例
 
@@ -50,11 +55,13 @@ azcopy benchmark [destination] [flags]
 ```azcopy
 azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>"
 ```
+
 サイズがそれぞれ 2 GiB の 100 個のファイルをアップロードするベンチマーク テストを実行します (10 Gbps などの高速ネットワークでのベンチマークに適しています)。
 
 ```azcopy
 azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>"--file-count 100 --size-per-file 2G
 ```
+
 ベンチマーク テストを実行しますが、サイズがそれぞれ 8 MiB の 50,000 個のファイルを使用し、それらの MD5 ハッシュを計算します (copy コマンドで `--put-md5` フラグが行う方法と同じです)。 ベンチマーク時の `--put-md5` の目的は、MD5 の計算が、選択されたファイルの数とサイズのスループットに影響を与えるかどうかをテストすることです。
 
 ```azcopy
@@ -104,7 +111,6 @@ azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-
 **--output-type** string  コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。 (既定値 "text")。
 
 **--trusted-microsoft-suffixes** string   Azure Active Directory ログイン トークンを送信できる追加のドメイン サフィックスを指定します。  既定値は " *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net" です。 ここに記載されているすべてが既定値に追加されます。 セキュリティのために、Microsoft Azure のドメインのみをここに入力してください。 複数のエンティティは、セミコロンで区切ります。
-
 
 ## <a name="see-also"></a>関連項目
 

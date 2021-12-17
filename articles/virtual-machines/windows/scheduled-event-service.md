@@ -7,14 +7,16 @@ ms.subservice: scheduled-events
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 866522da162d22621bd37bf9d2f2fa6838206e17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 678c59f8a2ca9a3d9f1030597d84ed9986bce8d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674687"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588525"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>Azure VM のスケジュールされたイベントを監視する
+
+**適用対象:** VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 更新プログラムは Azure のさまざまな部分に毎日適用され、そこで実行されているサービスをセキュリティで保護された最新の状態に保ちます。 計画された更新に加えて、計画外のイベントが発生することもあります。 たとえば、ハードウェアの性能低下や障害が検出された場合、Azure サービスでは計画外メンテナンスの実行が必要になることがあります。 ライブ マイグレーションとメモリ保持更新を使用し、通常は更新の影響を厳密にチェックするため、ほとんどの場合、これらのイベントは顧客に対してほぼ透過的に行われ、影響を与えることはなく、仮想マシンがせいぜい数秒凍結するくらいです。 ただし、アプリケーションによっては、仮想マシンが数秒凍結しただけで影響を受ける可能性があります。 こうしたアプリケーションの最適なエクスペリエンスを確保するためにも、今後の Azure メンテナンスについて事前に把握しておくことが重要です。 [Scheduled Events サービス](scheduled-events.md)には、今後のメンテナンスに関する通知を受けるためのプログラマティック インターフェイスが用意されているため、メンテナンスに適切に対応できます。 
 
@@ -156,7 +158,7 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
 
 1. **[新しいアラート ルール]** を選択します。 
 1. **[ルールの作成]** ページでは、 **[リソース]** として `collectorworkspace` をそのまま使用します。
-1. **[条件]** で、エントリ *[Whenever the customer log search is]\(顧客ログ検索がいつでも\)<login undefined>* を選択します。 **[シグナル ロジックの構成]** ページが開きます。
+1. **[条件]** で、エントリ *[Whenever the customer log search is]\(顧客ログ検索がいつでも\)\<login undefined\>* を選択します。 **[シグナル ロジックの構成]** ページが開きます。
 1. **[しきい値]** に「*0*」を入力して、 **[完了]** を選択します。
 1. **[アクション]** で、 **[アクショングループの作成]** を選択します。 **[アクション グループの追加]** ページが開きます。
 1. **[アクション グループ名]** に「*myActionGroup*」と入力します。

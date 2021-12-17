@@ -6,13 +6,13 @@ ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 420dade645d1a4ee32bb888aecb76b033d5756e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: afadabb0503cde997858fce1ff9d1e82ac6d2f89
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731303"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679522"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限を設定する
 
@@ -95,7 +95,7 @@ App Service Environment で実行されているアプリへのアクセスを�
 サービス エンドポイントにより、Application Gateway やその他の Web アプリケーション ファイアウォール (WAF) デバイスを使用してアプリを構成することができます。 また、セキュリティで保護されたバックエンドを使用して多層アプリケーションを構成することもできます。 詳細については、[ネットワーク機能と App Service](networking-features.md) に関する記事と、「[サービス エンドポイントと Application Gateway の統合](networking/app-gateway-with-service-endpoints.md)」を参照してください。
 
 > [!NOTE]
-> - 現在、IP Secure Sockets Layer (SSL) 仮想 IP (VIP) を使用する Web アプリに対しては、サービス エンドポイントがサポートされていません。
+> - 現在、IP ベースの TLS/SSL バインディングと仮想 IP (VIP) を使用する Web アプリに対しては、サービス エンドポイントがサポートされていません。
 >
 #### <a name="set-a-service-tag-based-rule"></a>サービス タグベースの規則を設定する
 
@@ -200,6 +200,9 @@ PowerShell の例:
     --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
   ```
 
+   > [!NOTE]
+   > Azure CLI でサービス タグ、HTTP ヘッダー、またはマルチソース規則を操作するには、バージョン 2.23.0 以降が必要です。 インストールされているモジュールのバージョンを確認するには、```az version``` を使用します。
+
 * [Azure PowerShell](/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule) を使用します。 次に例を示します。
 
 
@@ -208,7 +211,7 @@ PowerShell の例:
       -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
   ```
    > [!NOTE]
-   > サービス タグ、HTTP ヘッダー、またはマルチソース規則を操作するには、バージョン 5.7.0 以降が必要です。 インストールされているモジュールのバージョンを確認するには、**Get-InstalledModule -Name Az** を使用します。
+   > Azure PowerShell でサービス タグ、HTTP ヘッダー、またはマルチソース規則を操作するには、バージョン 5.7.0 以降が必要です。 インストールされているモジュールのバージョンを確認するには、```Get-InstalledModule -Name Az``` を使用します。
 
 次のいずれかを行うことにより、手動で値を設定することもできます。
 

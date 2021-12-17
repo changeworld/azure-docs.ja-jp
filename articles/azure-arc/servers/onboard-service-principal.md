@@ -1,20 +1,21 @@
 ---
 title: ハイブリッド マシンを大規模に Azure に接続する
 description: この記事では、サービス プリンシパルを使用して、Azure Arc 対応サーバーを使用する Azure にマシンを接続する方法について説明します。
-ms.date: 03/04/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: c1ad3d4619896ff46db266789a17bfca80712e70
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fb78440bf03970616d3d608dcea2de1dc86681bd
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175942"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323305"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>ハイブリッド マシンを大規模に Azure に接続する
 
-要件に応じたいくつかの柔軟なオプションを使用して、環境内の複数の Windows または Linux マシンに対して Azure Arc 対応サーバーを有効にすることができます。 Microsoft が提供するテンプレート スクリプトを使用すると、Azure Arc への接続の確立を含め、インストールのすべての手順を自動化できます。ただし、ターゲット マシンおよび Azure で管理者特権でのアクセス許可を持つアカウントを使用して、このスクリプトを対話的に実行する必要があります。
+要件に応じていくつかの柔軟なオプションを使用して、環境内の複数の Windows または Linux マシンに対して Azure Arc 対応サーバーを有効にすることができます。 Microsoft が提供するテンプレート スクリプトを使用すると、Azure Arc への接続の確立を含め、インストールのすべての手順を自動化できます。ただし、ターゲット マシンおよび Azure で管理者特権でのアクセス許可を持つアカウントを使用して、このスクリプトを対話的に実行する必要があります。
 
-Azure Arc 対応サーバーにマシンを接続するには、特権 ID を使用するのではなく、Azure Active Directory [サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)を使用して[対話的にマシンを接続する](onboard-portal.md)ことができます。 サービス プリンシパルは、`azcmagent` コマンドを使用してマシンを Azure に接続するために必要な最小限のアクセス許可のみが付与される、特殊な制限付きの管理用 ID です。 これは、テナント管理者のような、より高い特権を持つアカウントを使用するよりも安全で、アクセス制御セキュリティのベスト プラクティスに従っています。 サービス プリンシパルは、オンボード中にのみ使用され、その他の目的には使用されません。  
+Azure Arc 対応サーバーにマシンを接続するために、特権 ID を使用するのではなく、Azure Active Directory [サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)を使用して[対話的にマシンを接続する](onboard-portal.md)ことができます。 サービス プリンシパルは、`azcmagent` コマンドを使用してマシンを Azure に接続するために必要な最小限のアクセス許可のみが付与される、特殊な制限付きの管理用 ID です。 これは、テナント管理者のような、より高い特権を持つアカウントを使用するよりも安全で、アクセス制御セキュリティのベスト プラクティスに従っています。 サービス プリンシパルは、オンボード中にのみ使用され、その他の目的には使用されません。  
 
 Connected Machine エージェントをインストールして構成するためのインストール方法を使用するには、使用する自動化された方法に、マシンでの管理者のアクセス許可が付与されている必要があります。 Linux ではルート アカウントを使用し、Windows ではローカルの Administrators グループのメンバーとして実行します。
 
@@ -88,7 +89,7 @@ PowerShell を使用してサービス プリンシパルを作成するには�
     1. **[リソース グループ]** ドロップダウンの一覧で、マシンを管理するリソース グループを選択します。
     1. **[リージョン]** ドロップダウンの一覧で、サーバーのメタデータを格納する Azure リージョンを選択します。
     1. **[オペレーティング システム]** ドロップダウン リストで、スクリプトを実行するように構成されているオペレーティング システムを選択します。
-    1. マシンがプロキシ サーバー経由でインターネットに接続して通信を行っている場合は、プロキシ サーバーの IP アドレス、またはマシンでプロキシ サーバーとの通信に使用されている名前とポート番号を指定します。 `http://<proxyURL>:<proxyport>` の形式で値を入力します。
+    1. マシンがプロキシ サーバー経由でインターネットに接続して通信を行っている場合は、プロキシ サーバーの IP アドレス、またはマシンでプロキシ サーバーとの通信に使用されている名前とポート番号を指定します。 この構成を利用して、エージェントは HTTP プロトコルを使用してプロキシ サーバー経由で通信します。 `http://<proxyURL>:<proxyport>` の形式で値を入力します。
     1. **[次へ: 認証]** を選択します。
 
 1. **[認証]** ページの **[サービス プリンシパル]** ドロップダウン リストで、 **[Arc-for-servers]** を選択します。  次に、 **[次へ: タグ]** を選択します。
@@ -129,6 +130,6 @@ Windows の場合は `OnboardingScript.ps1`、Linux の場合は `OnboardingScri
 
 - トラブルシューティング情報は、[Connected Machine エージェントの問題解決ガイド](troubleshoot-agent-onboard.md)を参照してください。
 
-- [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
+- [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。
 
-- [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)の詳細を確認します。 Azure Monitor for VMs を使用してオペレーティング システムとワークロードの監視データを収集したい場合、それを Automation Runbook や機能 (Update Management など) を使用して管理したい場合、または他の Azure サービス ([Azure Security Center](../../security-center/security-center-introduction.md) など) を使用したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。
+- [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、予期された Log Analytics ワークスペースがマシンの報告先であることの確認、[VM 分析情報](../../azure-monitor/vm/vminsights-enable-policy.md)を使用した監視の有効化などの方法です。

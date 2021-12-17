@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d9d63c7a703987d7b17e6e03d8b5596d5f1dfa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5e6813391c8077e44e2bb09b71404242707df5a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560618"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459408"
 ---
 # <a name="securing-external-access-with-groups"></a>グループを使用して外部アクセスをセキュリティで保護する 
 
-グループは、アクセス制御戦略に不可欠な要素です。 Azure Active Directory (Azure AD) セキュリティ グループおよび Microsoft 365 (M365) グループは、リソースへのアクセスをセキュリティで保護するための基礎として使用できます。
+グループは、アクセス制御戦略に不可欠な要素です。 Azure Active Directory (Azure AD) セキュリティ グループおよび Microsoft 365 グループは、リソースへのアクセスをセキュリティで保護するための基礎として使用できます。
 
 グループは、次のアクセス制御メカニズムの基礎として使用するのに最適なオプションです。
 
@@ -30,7 +30,7 @@ ms.locfileid: "102560618"
 
 * エンタイトルメント管理アクセス パッケージ 
 
-* M365 リソース、Microsoft Teams、SharePoint サイトへのアクセス
+* Microsoft 365 リソース、Microsoft Teams、SharePoint サイトへのアクセス
 
 グループには、次のロールがあります。
 
@@ -52,7 +52,7 @@ ms.locfileid: "102560618"
 
       * また、[Azure Active Directory でセルフサービス グループ管理を設定する](../enterprise-users/groups-self-service-management.md)こともできます。 
 
-   * *既定では、すべてのユーザーが M365 グループを作成でき、グループは、テナント内のすべて (内部および外部) のユーザーが参加できるように開かれています*。 
+   * *既定では、すべてのユーザーが Microsoft 365 グループを作成でき、グループは、テナント内のすべて (内部および外部) のユーザーが参加できるように開かれています*。 
 
       * [Microsoft 365 グループの作成](/microsoft-365/solutions/manage-creation-of-groups)を特定のセキュリティ グループのメンバーに制限できます。 この設定を構成するには、Windows PowerShell を使用します。 
 
@@ -98,15 +98,15 @@ ms.locfileid: "102560618"
 
 ### <a name="types-of-groups"></a>グループの種類
 
-Azure AD セキュリティ グループおよび Microsoft 365 グループは両方とも、Azure AD ポータルまたは M365 管理ポータルから作成できます。 どちらの種類も、外部アクセスをセキュリティで保護するための基礎として使用できます。
+Azure AD セキュリティ グループおよび Microsoft 365 グループは両方とも、Azure AD ポータルまたは Microsoft 365 管理ポータルから作成できます。 どちらの種類も、外部アクセスをセキュリティで保護するための基礎として使用できます。
 
-|考慮事項 | Azure AD セキュリティ グループ (手動および動的)| Microsoft 365 グループ |
+| 考慮事項 | Azure AD セキュリティ グループ (手動および動的)| Microsoft 365 グループ |
 | - | - | - |
-| グループには何を含めることができるか?| ユーザー<br>グループ<br>サービス原則<br>デバイス| ユーザーのみ |
-| グループをどこに作成するか?| Azure AD ポータル<br>M365 ポータル (メールが有効になっている場合)<br>PowerShell<br>Microsoft Graph<br>エンド ユーザーのポータル| M365 ポータル<br>Azure AD ポータル<br>PowerShell<br>Microsoft Graph<br>Microsoft 365 アプリケーション内 |
-| 既定では、誰が作成するか?| 管理者 <br>エンド ユーザー| 管理者<br>エンド ユーザー |
-| 既定では、誰を追加できるか?| 内部ユーザー (メンバー)| テナント メンバーおよび任意の組織からのゲスト |
-| 何に対するアクセスを許可するか?| 割り当てられているリソースのみ。| グループ関連のすべてのリソース:<br>(グループのメールボックス、サイト、チーム、チャット、その他の含まれている M365 リソース)<br>グループが追加されるその他のリソース |
+| グループには何を含めることができるか?| ユーザー<br>グループ<br>サービス プリンシパル<br>デバイス| ユーザーのみ |
+| グループをどこに作成するか?| Azure AD ポータル<br>Microsoft 365 ポータル (メールが有効になっている場合)<br>PowerShell<br>Microsoft Graph<br>エンド ユーザーのポータル| Microsoft 365 ポータル<br>Azure AD ポータル<br>PowerShell<br>Microsoft Graph<br>Microsoft 365 アプリケーション内 |
+| 既定では、誰が作成するか?| 管理者 <br>ユーザー| 管理者<br>ユーザー |
+| 既定では、誰を追加できるか?| 内部ユーザー (テナント メンバー)| テナント メンバーおよび任意の組織からのゲスト |
+| 何に対するアクセスを許可するか?| 割り当てられているリソースのみ。| グループ関連のすべてのリソース:<br>(グループのメールボックス、サイト、チーム、チャット、その他の含まれている Microsoft 365 リソース)<br>グループが追加されるその他のリソース |
 | 併用できるもの| 条件付きアクセス<br>エンタイトルメント管理<br>グループ ライセンス| 条件付きアクセス<br>エンタイトルメント管理<br>秘密度ラベル |
 
 
@@ -127,9 +127,9 @@ Azure AD セキュリティ グループおよび Microsoft 365 グループは�
 
 Azure AD セキュリティ グループは、次の目的でも使用できます。
 
-* M365、Dynamics 365、Enterprise Mobility and Security などのサービスのライセンスを割り当てる。 詳細については、[グループベースのライセンス](./active-directory-licensing-whatis-azure-portal.md)に関する記事を参照してください。
+* Microsoft 365、Dynamics 365、Enterprise Mobility and Security などのサービスのライセンスを割り当てる。 詳細については、[グループベースのライセンス](./active-directory-licensing-whatis-azure-portal.md)に関する記事を参照してください。
 
-* 昇格された権限を割り当てる。 詳細については、[クラウド グループを使用してロールの割り当てを管理する (プレビュー)](../roles/groups-concept.md) に関する記事を参照してください。 
+* 昇格された権限を割り当てる。 詳細については、「[Azure AD グループを使用してロール割り当てを管理する](../roles/groups-concept.md)」をご覧ください。 
 
 [Azure portal](./active-directory-groups-create-azure-portal.md) でグループを作成するには、[Azure Active Directory]、[グループ] の順に移動します。 [PowerShell コマンドレット](../enterprise-users/groups-settings-v2-cmdlets.md)を使用して Azure AD セキュリティ グループを作成することもできます。 
 
@@ -150,19 +150,19 @@ Azure AD セキュリティ グループは、次の目的でも使用できま�
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365 グループ
 
-[Microsoft 365 グループ](/microsoft-365/admin/create-groups/office-365-groups)は、M365 全体でのすべてのアクセスを管理する基本的なメンバーシップ サービスです。 これは、[Azure portal](https://portal.azure.com/)、または [M365 ポータル](https://admin.microsoft.com/)から作成できます。 M365 グループを作成すると、コラボレーションに使用されるリソース グループへのアクセスを付与することになります。 これらのリソースの完全な一覧については、「[管理者向け Microsoft 365 グループの概要](/microsoft-365/admin/create-groups/office-365-groups)」を参照してください。
+[Microsoft 365 グループ](/microsoft-365/admin/create-groups/office-365-groups)は、Microsoft 365 全体でのすべてのアクセスを管理する基本的なメンバーシップ サービスです。 これは、[Azure portal](https://portal.azure.com/)、または [Microsoft 365 ポータル](https://admin.microsoft.com/)から作成できます。 Microsoft 365 グループを作成すると、コラボレーションに使用されるリソース グループへのアクセスを付与することになります。 これらのリソースの完全な一覧については、「[管理者向け Microsoft 365 グループの概要](/microsoft-365/admin/create-groups/office-365-groups)」を参照してください。
 
-M365 グループでは、ロールについて次のような違いがあります。
+Microsoft 365 グループでは、ロールについて次のような違いがあります。
 
-* **所有者** - グループ所有者は、メンバーの追加または削除を行うことができます。また、共有の受信トレイから会話を削除したり、グループ設定を変更したりできる固有のアクセス許可を持つことができます。 グループ所有者は、グループ名の変更、説明や画像の更新などを行うことができます。
+* **所有者** - グループ所有者は、メンバーの追加または削除を行うことができます。また、共有の受信トレイから会話を削除したり、グループ設定を変更したりできる固有の管理者のアクセス許可を持つことができます。 グループ所有者は、グループ名の変更、説明や画像の更新などを行うことができます。
 
-* **メンバー** - メンバーは、グループ内のすべてのものにアクセスできますが、グループ設定を変更することはできません。 既定では、グループのメンバーは自分のグループにゲストを招待できますが、管理者は[この設定を制御](/microsoft-365/admin/create-groups/manage-guest-access-in-groups)できます。
+* **メンバー** - グループ メンバーは、グループ内のすべてのものにアクセスできますが、グループ設定を変更することはできません。 既定では、グループ メンバーはグループに参加するようゲストを招待できます。 [その設定を制御](/microsoft-365/admin/create-groups/manage-guest-access-in-groups)できます。
 
 * **ゲスト** - グループのゲストは、組織外部のメンバーです。 既定では、ゲストに対して、チーム内の機能が多少制限されます。
 
  
 
-### <a name="m365-group-settings"></a>M365 グループの設定
+### <a name="microsoft-365-group-settings"></a>Microsoft 365 グループの設定
 
 設定時に、電子メール エイリアス、プライバシー、チームに対してグループを有効にするかどうかを選択します。 
 

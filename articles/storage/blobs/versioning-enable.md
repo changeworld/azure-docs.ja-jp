@@ -6,24 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 06/07/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 5b6bd16eacf4b1bbb7b93f5500813e7fa9dc7eef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: bcf69aba20a53e101cf85cf8ad9e249ca72d3a93
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100095845"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470492"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>BLOB のバージョン管理を有効にして管理する
 
 BLOB ストレージのバージョン管理を有効にすると、BLOB が変更または削除されたときに、以前のバージョンを自動的に維持できます。 BLOB のバージョン管理が有効になっていると、データが誤って変更または削除された場合に、以前のバージョンの BLOB を復元して復旧できます。
 
 この記事では、Azure portal または Azure Resource Manager テンプレートを使用してストレージ アカウントの BLOB のバージョン管理を有効または無効にする方法について説明します。 BLOB のバージョン管理については、[BLOB のバージョン管理](versioning-overview.md)に関するページをご覧ください。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="enable-blob-versioning"></a>BLOB のバージョン管理を有効にする
 
@@ -54,7 +52,7 @@ Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用してストレージ アカウントの BLOB のバージョン管理を有効にするには、まず、Azure CLI バージョン 2.2.0 以降をインストールします。 その後、次の例に示すように、[az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) コマンドを呼び出して、バージョン管理を有効にします。 山かっこ内の値は、実際の値に置き換えてください。
+Azure CLI を使用してストレージ アカウントの BLOB のバージョン管理を有効にするには、まず、Azure CLI バージョン 2.2.0 以降をインストールします。 その後、次の例に示すように、[az storage account blob-service-properties update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) コマンドを呼び出して、バージョン管理を有効にします。 山かっこ内の値は、実際の値に置き換えてください。
 
 ```azurecli
 az storage account blob-service-properties update \

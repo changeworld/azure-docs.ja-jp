@@ -5,24 +5,23 @@ services: automation
 ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 95ef52acedc9171ba86110a665d08ea97c59bfbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d6351b28e226ce3f6d51b38b93e895c7ab08ab2d
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575821"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653398"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Update Management を有効にする
 
-[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して、リソース グループ内の Azure Automation Update Management 機能を有効にすることができます。 この記事では、以下のことを自動化するサンプル テンプレートについて説明します。
+[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)を使用して、リソース グループ内の Azure Automation Update Management 機能を有効にすることができます。 この記事では、以下のことを自動化するサンプル テンプレートについて説明します。
 
 * Azure Monitor Log Analytics ワークスペースの作成を自動化します。
 * Azure Automation アカウントの作成を自動化します。
 * Automation アカウントを Log Analytics ワークスペースにリンクします。
 * サンプルの Automation Runbook をアカウントに追加します。
 * Update Management 機能を有効にします。
-
-このテンプレートでは、1 つ以上の Azure VM または Azure 以外の VM で、Update Management の有効化は自動化されません。
 
 サブスクリプションでサポートされているリージョンに Log Analytics ワークスペースと Automation アカウントが既にデプロイされている場合、これらはリンクされていません。 このテンプレートを使用すると、リンクが正常に作成され、Update Management がデプロイされます。
 
@@ -76,226 +75,223 @@ Azure Automation と Azure Monitor を初めて使用する場合は、次の構
 
     ```json
     {
-        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "workspaceName": {
-                "type": "string",
-                "metadata": {
-                    "description": "Workspace name"
-                }
-            },
-            "sku": {
-                "type": "string",
-                "allowedValues": [
-                    "pergb2018",
-                    "Free",
-                    "Standalone",
-                    "PerNode",
-                    "Standard",
-                    "Premium"
-                ],
-                "defaultValue": "pergb2018",
-                "metadata": {
-                    "description": "Pricing tier: perGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium), which are not available to all customers."
-                }
-            },
-            "dataRetention": {
-                "type": "int",
-                "defaultValue": 30,
-                "minValue": 7,
-                "maxValue": 730,
-                "metadata": {
-                    "description": "Number of days to retain data."
-                }
-            },
-            "location": {
-                "type": "string",
-                "defaultValue": "[resourceGroup().location]",
-                "metadata": {
-                    "description": "Specifies the location in which to create the workspace."
-                }
-            },
-            "automationAccountName": {
-                "type": "string",
-                "metadata": {
-                    "description": "Automation account name"
-                }
-            },
-            "automationAccountLocation": {
-                "type": "string",
-                "metadata": {
-                    "description": "Specifies the location in which to create the Automation account."
-                }
-            },
-            "sampleGraphicalRunbookName": {
-                "type": "String",
-                "defaultValue": "AzureAutomationTutorial"
-            },
-            "sampleGraphicalRunbookDescription": {
-                "type": "String",
-                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
-            },
-            "samplePowerShellRunbookName": {
-                "type": "String",
-                "defaultValue": "AzureAutomationTutorialScript"
-            },
-            "samplePowerShellRunbookDescription": {
-                "type": "String",
-                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
-            },
-            "samplePython2RunbookName": {
-                "type": "String",
-                "defaultValue": "AzureAutomationTutorialPython2"
-            },
-            "samplePython2RunbookDescription": {
-                "type": "String",
-                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
-            },
-            "_artifactsLocation": {
-                "type": "string",
-                "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-automation/",
-                "metadata": {
-                    "description": "URI to artifacts location"
-                }
-            },
-            "_artifactsLocationSasToken": {
-                "type": "securestring",
-                "defaultValue": "",
-                "metadata": {
-                    "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated"
-                }
-            }
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "workspaceName": {
+          "type": "string",
+          "metadata": {
+            "description": "Workspace name"
+          }
         },
-        "variables": {
+        "sku": {
+          "type": "string",
+          "defaultValue": "pergb2018",
+          "allowedValues": [
+            "pergb2018",
+            "Free",
+            "Standalone",
+            "PerNode",
+            "Standard",
+            "Premium"
+          ],
+          "metadata": {
+            "description": "Pricing tier: perGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium), which are not available to all customers."
+          }
+        },
+        "dataRetention": {
+          "type": "int",
+          "defaultValue": 30,
+          "minValue": 7,
+          "maxValue": 730,
+          "metadata": {
+            "description": "Number of days to retain data."
+          }
+        },
+        "location": {
+          "type": "string",
+          "defaultValue": "[resourceGroup().location]",
+          "metadata": {
+            "description": "Specifies the location in which to create the workspace."
+          }
+        },
+        "automationAccountName": {
+          "type": "string",
+          "metadata": {
+            "description": "Automation account name"
+          }
+        },
+        "sampleGraphicalRunbookName": {
+          "type": "String",
+          "defaultValue": "AzureAutomationTutorial"
+        },
+        "sampleGraphicalRunbookDescription": {
+          "type": "String",
+          "defaultValue": "An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
+        },
+        "samplePowerShellRunbookName": {
+          "type": "String",
+          "defaultValue": "AzureAutomationTutorialScript"
+        },
+        "samplePowerShellRunbookDescription": {
+          "type": "String",
+          "defaultValue": "An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
+        },
+        "samplePython2RunbookName": {
+          "type": "String",
+          "defaultValue": "AzureAutomationTutorialPython2"
+        },
+        "samplePython2RunbookDescription": {
+          "type": "String",
+          "defaultValue": "An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
+        },
+        "_artifactsLocation": {
+          "type": "string",
+          "defaultValue": "[deployment().properties.templateLink.uri]",
+          "metadata": {
+            "description": "URI to artifacts location"
+          }
+        },
+        "_artifactsLocationSasToken": {
+          "type": "securestring",
+          "defaultValue": "",
+          "metadata": {
+            "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated"
+          }
+        }
+      },
+      "variables": {
         "Updates": {
             "name": "[concat('Updates', '(', parameters('workspaceName'), ')')]",
             "galleryName": "Updates"
           }
-        },
-        "resources": [
-            {
-                "type": "Microsoft.OperationalInsights/workspaces",
-                "apiVersion": "2020-03-01-preview",
-                "name": "[parameters('workspaceName')]",
-                "location": "[parameters('location')]",
-                "properties": {
-                    "sku": {
-                        "name": "[parameters('sku')]"
-                    },
-                    "retentionInDays": "[parameters('dataRetention')]",
-                    "features": {
-                        "searchVersion": 1,
-                        "legacy": 0
-                    }
-                }
+      },
+      "resources": [
+        {
+          "type": "Microsoft.OperationalInsights/workspaces",
+          "apiVersion": "2020-08-01",
+          "name": "[parameters('workspaceName')]",
+          "location": "[parameters('location')]",
+          "properties": {
+            "sku": {
+              "name": "[parameters('sku')]"
             },
-            {
-                "apiVersion": "2015-11-01-preview",
-                "location": "[parameters('location')]",
-                "name": "[variables('Updates').name]",
-                "type": "Microsoft.OperationsManagement/solutions",
-                "id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.OperationsManagement/solutions/', variables('Updates').name)]",
-                "dependsOn": [
-                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
-                ],
-                "properties": {
-                    "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
-                },
-                "plan": {
-                    "name": "[variables('Updates').name]",
-                    "publisher": "Microsoft",
-                    "promotionCode": "",
-                    "product": "[concat('OMSGallery/', variables('Updates').galleryName)]"
-                }
-            },
-            {
-                "type": "Microsoft.Automation/automationAccounts",
-                "apiVersion": "2020-01-13-preview",
-                "name": "[parameters('automationAccountName')]",
-                "location": "[parameters('automationAccountLocation')]",
-                "dependsOn": [
-                    "[parameters('workspaceName')]"
-                ],
-                "properties": {
-                    "sku": {
-                        "name": "Basic"
-                    }
-                },
-                "resources": [
-                    {
-                        "type": "runbooks",
-                        "apiVersion": "2018-06-30",
-                        "name": "[parameters('sampleGraphicalRunbookName')]",
-                        "location": "[parameters('automationAccountLocation')]",
-                        "dependsOn": [
-                            "[parameters('automationAccountName')]"
-                        ],
-                        "properties": {
-                            "runbookType": "GraphPowerShell",
-                            "logProgress": "false",
-                            "logVerbose": "false",
-                            "description": "[parameters('sampleGraphicalRunbookDescription')]",
-                            "publishContentLink": {
-                                "uri": "[uri(parameters('_artifactsLocation'), concat('scripts/AzureAutomationTutorial.graphrunbook', parameters('_artifactsLocationSasToken')))]",
-                                "version": "1.0.0.0"
-                            }
-                        }
-                    },
-                    {
-                        "type": "runbooks",
-                        "apiVersion": "2018-06-30",
-                        "name": "[parameters('samplePowerShellRunbookName')]",
-                        "location": "[parameters('automationAccountLocation')]",
-                        "dependsOn": [
-                            "[parameters('automationAccountName')]"
-                        ],
-                        "properties": {
-                            "runbookType": "PowerShell",
-                            "logProgress": "false",
-                            "logVerbose": "false",
-                            "description": "[parameters('samplePowerShellRunbookDescription')]",
-                            "publishContentLink": {
-                                "uri": "[uri(parameters('_artifactsLocation'), concat('scripts/AzureAutomationTutorial.ps1', parameters('_artifactsLocationSasToken')))]",
-                                "version": "1.0.0.0"
-                            }
-                        }
-                    },
-                    {
-                        "type": "runbooks",
-                        "apiVersion": "2018-06-30",
-                        "name": "[parameters('samplePython2RunbookName')]",
-                        "location": "[parameters('automationAccountLocation')]",
-                        "dependsOn": [
-                            "[parameters('automationAccountName')]"
-                        ],
-                        "properties": {
-                            "runbookType": "Python2",
-                            "logProgress": "false",
-                            "logVerbose": "false",
-                            "description": "[parameters('samplePython2RunbookDescription')]",
-                            "publishContentLink": {
-                                "uri": "[uri(parameters('_artifactsLocation'), concat('scripts/AzureAutomationTutorialPython2.py', parameters('_artifactsLocationSasToken')))]",
-                                "version": "1.0.0.0"
-                            }
-                        }
-                    }
-                ]
-            },
-            {
-                "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
-                "apiVersion": "2020-03-01-preview",
-                "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-                "location": "[parameters('location')]",
-                "dependsOn": [
-                    "[parameters('workspaceName')]",
-                    "[parameters('automationAccountName')]"
-                ],
-                "properties": {
-                    "resourceId": "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccountName'))]"
-                }
+            "retentionInDays": "[parameters('dataRetention')]",
+            "features": {
+              "searchVersion": 1,
+              "legacy": 0
             }
-        ]
+          }
+        },
+        {
+            "apiVersion": "2015-11-01-preview",
+            "location": "[parameters('location')]",
+            "name": "[variables('Updates').name]",
+            "type": "Microsoft.OperationsManagement/solutions",
+            "id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.OperationsManagement/solutions/', variables('Updates').name)]",
+            "dependsOn": [
+                "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            ],
+            "properties": {
+                "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            },
+            "plan": {
+                "name": "[variables('Updates').name]",
+                "publisher": "Microsoft",
+                "promotionCode": "",
+                "product": "[concat('OMSGallery/', variables('Updates').galleryName)]"
+            }
+        },
+        {
+          "type": "Microsoft.Automation/automationAccounts",
+          "apiVersion": "2020-01-13-preview",
+          "name": "[parameters('automationAccountName')]",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[parameters('workspaceName')]"
+          ],
+          "identity": {
+            "type": "SystemAssigned"
+          },
+          "properties": {
+            "sku": {
+              "name": "Basic"
+            }
+          },
+          "resources": [
+            {
+              "type": "runbooks",
+              "apiVersion": "2020-01-13-preview",
+              "name": "[parameters('sampleGraphicalRunbookName')]",
+              "location": "[parameters('location')]",
+              "dependsOn": [
+                "[parameters('automationAccountName')]"
+              ],
+              "properties": {
+                "runbookType": "GraphPowerShell",
+                "logProgress": "false",
+                "logVerbose": "false",
+                "description": "[parameters('sampleGraphicalRunbookDescription')]",
+                "publishContentLink": {
+                  "uri": "[uri(parameters('_artifactsLocation'), concat('scripts/AzureAutomationTutorial.graphrunbook', parameters('_artifactsLocationSasToken')))]",
+                  "version": "1.0.0.0"
+                }
+              }
+            },
+            {
+              "type": "runbooks",
+              "apiVersion": "2020-01-13-preview",
+              "name": "[parameters('samplePowerShellRunbookName')]",
+              "location": "[parameters('location')]",
+              "dependsOn": [
+                "[parameters('automationAccountName')]"
+              ],
+              "properties": {
+                "runbookType": "PowerShell",
+                "logProgress": "false",
+                "logVerbose": "false",
+                "description": "[parameters('samplePowerShellRunbookDescription')]",
+                "publishContentLink": {
+                  "uri": "[uri(parameters('_artifactsLocation'), concat('scripts/AzureAutomationTutorial.ps1', parameters('_artifactsLocationSasToken')))]",
+                  "version": "1.0.0.0"
+                }
+              }
+            },
+            {
+              "type": "runbooks",
+              "apiVersion": "2020-01-13-preview",
+              "name": "[parameters('samplePython2RunbookName')]",
+              "location": "[parameters('location')]",
+              "dependsOn": [
+                "[parameters('automationAccountName')]"
+              ],
+              "properties": {
+                "runbookType": "Python2",
+                "logProgress": "false",
+                "logVerbose": "false",
+                "description": "[parameters('samplePython2RunbookDescription')]",
+                "publishContentLink": {
+                  "uri": "[uri(parameters('_artifactsLocation'), concat('scripts/AzureAutomationTutorialPython2.py', parameters('_artifactsLocationSasToken')))]",
+                  "version": "1.0.0.0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
+          "apiVersion": "2020-08-01",
+          "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[parameters('workspaceName')]",
+            "[parameters('automationAccountName')]"
+          ],
+          "properties": {
+            "resourceId": "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccountName'))]"
+          }
+        }
+      ]
     }
     ```
 
@@ -308,13 +304,17 @@ Azure Automation と Azure Monitor を初めて使用する場合は、次の構
     **PowerShell**
 
     ```powershell
-    New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deployUMSolutiontemplate.json
+    New-AzResourceGroupDeployment `
+        -Name <deployment-name> `
+        -ResourceGroupName <resource-group-name> `
+        -TemplateFile deployUMSolutiontemplate.json `
+        -_artifactsLocation "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.automation/101-automation/azuredeploy.json"
     ```
 
     **Azure CLI**
 
     ```azurecli
-    az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployUMSolutiontemplate.json
+    az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployUMSolutiontemplate.json --parameters _artifactsLocation="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.automation/101-automation/azuredeploy.json"
     ```
 
     デプロイが完了するまでに数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。

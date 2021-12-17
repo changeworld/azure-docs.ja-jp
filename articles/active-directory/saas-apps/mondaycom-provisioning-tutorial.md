@@ -3,8 +3,8 @@ title: チュートリアル:monday.com を構成し、Azure Active Directory �
 description: Azure AD から monday.com に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 7dba523e-c75a-4895-bad4-82239a263afe
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/24/2020
-ms.author: Zhchia
-ms.openlocfilehash: 0479e470f5d2f3880062c45a5e14981f8a4c1e56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 6c0dec8cc138c5bc49a9eebf23eebdc323686458
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743544"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323076"
 ---
 # <a name="tutorial-configure-mondaycom-for-automatic-user-provisioning"></a>チュートリアル:monday.com を構成し、自動ユーザー プロビジョニングに対応させる
 

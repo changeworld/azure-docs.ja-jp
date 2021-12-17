@@ -2,19 +2,18 @@
 title: Azure IoT Hub の cloud-to-device メッセージの理解 | Microsoft Docs
 description: この開発者ガイドでは、IoT ハブでの cloud-to-device メッセージングの使用方法について説明します。 これには、メッセージのライフサイクルおよび構成オプションに関する情報が含まれています。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 7bb3ca2b31eaef5c0639f30e0f2a329a37dfe7e0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f712f3f9928816e237504f504ec8ef28ec45d0e6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761783"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263567"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT ハブから cloud-to-device メッセージを送信する
 
@@ -97,12 +96,12 @@ cloud-to-device メッセージを送信するときに、サービスでは、�
 
 | プロパティ           | 説明 |
 | ------------------ | ----------- |
-| EnqueuedTimeUtc    | メッセージの結果が発生した日時を示すタイムスタンプ (たとえば、ハブでフィードバック メッセージが受信されたときや、元のメッセージの期限が切れたとき) |
-| OriginalMessageId  | このフィードバック情報が関連する cloud-to-device メッセージの *MessageId* |
-| StatusCode         | IoT ハブによって生成されるフィードバック メッセージで使用される、必須の文字列。 <br/> *Success* <br/> *Expired* <br/> *DeliveryCountExceeded* <br/> *拒否* <br/> *Purged* |
-| 説明        | *StatusCode* の文字列値 |
+| enqueuedTimeUtc    | メッセージの結果が発生した日時を示すタイムスタンプ (たとえば、ハブでフィードバック メッセージが受信されたときや、元のメッセージの期限が切れたとき) |
+| originalMessageId  | このフィードバック情報が関連する cloud-to-device メッセージの *MessageId* |
+| statusCode         | IoT ハブによって生成されるフィードバック メッセージで使用される、必須の文字列。 <br/> *Success* <br/> *Expired* <br/> *DeliveryCountExceeded* <br/> *拒否* <br/> *Purged* |
+| description        | *StatusCode* の文字列値 |
 | deviceId           | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの *DeviceId* |
-| DeviceGenerationId | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの *DeviceGenerationId* |
+| deviceGenerationId | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの *DeviceGenerationId* |
 
 cloud-to-device メッセージのフィードバックを元のメッセージと関連付けるには、サービスで *MessageId* を指定する必要があります。
 
@@ -111,12 +110,12 @@ cloud-to-device メッセージのフィードバックを元のメッセージ�
 ```json
 [
   {
-    "OriginalMessageId": "0987654321",
-    "EnqueuedTimeUtc": "2015-07-28T16:24:48.789Z",
-    "StatusCode": 0,
-    "Description": "Success",
-    "DeviceId": "123",
-    "DeviceGenerationId": "abcdefghijklmnopqrstuvwxyz"
+    "originalMessageId": "0987654321",
+    "enqueuedTimeUtc": "2015-07-28T16:24:48.789Z",
+    "statusCode": "Success",
+    "description": "Success",
+    "deviceId": "123",
+    "deviceGenerationId": "abcdefghijklmnopqrstuvwxyz"
   },
   {
     ...
@@ -141,13 +140,13 @@ cloud-to-device メッセージのフィードバックを元のメッセージ�
 | maxDeliveryCount          | デバイスごとの cloud-to-device キューの最大配信数 | 1 から 100; 既定値: 10 |
 | feedback.ttlAsIso8601     | サービス宛てのフィードバック メッセージの保有期間 | 最大 2 日の ISO_8601 書式による間隔 (最小 1 分); 既定値: 1 時間 |
 | feedback.maxDeliveryCount | フィードバック キューの最大配信数 | 1 から 100; 既定値: 10 |
-| feedback.lockDurationAsIso8601 | フィードバック キューの最大配信数 | 5 から 300 秒の ISO_8601 書式による間隔 (最短 5 秒)。既定値: 60 秒。 |
+| feedback.lockDurationAsIso8601 | フィードバック キューのロック期間 | 5 から 300 秒の ISO_8601 書式による間隔 (最短 5 秒)。既定値: 60 秒。 |
 
 構成オプションは、次のいずれかの方法で設定できます。
 
-* **Azure portal**: IoT ハブの **[設定]** で、 **[組み込みのエンドポイント]** を選択し、 **[cloud-to-device メッセージング]** を展開します。 (**feedback.maxDeliveryCount** および **feedback.lockDurationAsIso8601** プロパティの設定は、Azure portal では現在サポートされていません。)
+* **Azure portal**: IoT ハブの **[ハブ設定]** で、 **[組み込みのエンドポイント]** を選択し、 **[cloud-to-device メッセージング]** に移動します。 (**feedback.maxDeliveryCount** および **feedback.lockDurationAsIso8601** プロパティの設定は、Azure portal では現在サポートされていません。)
 
-    ![ポータルでの cloud-to-device メッセージングの構成オプションの設定](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
+:::image type="content" source="./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png" alt-text="ポータルでの cloud-to-device メッセージングの構成オプションの設定" border="true":::
 
 * **Azure CLI**: [az iot hub update](/cli/azure/iot/hub#az_iot_hub_update) コマンドを使用します。
 

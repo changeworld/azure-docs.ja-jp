@@ -5,19 +5,20 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 10/7/2020
-ms.openlocfilehash: 031246efa35eee5e2e4470b94d56e47cba0ad8ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 8/02/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a4c1d014e6b6c096df4e2dd943131ac6d1de7548
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038324"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747712"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md) を使用して Azure Monitor に[新しいメトリック アラート](./alerts-metric-near-real-time.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ 現在､新しくなったメトリック アラートは[この一群のリソースの種類](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)で利用することができます｡
+この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md) を使用して Azure Monitor に[新しいメトリック アラート](./alerts-metric-near-real-time.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ 現在､新しくなったメトリック アラートは[この一群のリソースの種類](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)で利用することができます｡
 
 > [!IMPORTANT]
 > リソースの種類のメトリック アラートを作成するためのリソース テンプレート、つまり Azure Log Analytics ワークスペース `Microsoft.OperationalInsights/workspaces` には、追加の手順が必要です。 詳細については、[ログのメトリック アラート - リソース テンプレート](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)に関するページを参照してください。
@@ -94,7 +95,6 @@ Resource Manager テンプレートを使用してアラートを作成するに
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
@@ -1017,6 +1017,10 @@ az deployment group create \
     --parameters @multidimensionalstaticmetricalert.parameters.json
 ```
 
+> [!NOTE]
+>
+> ディメンション値として "All" を使用することは、"\*" (現在および将来のすべての値) を選択することと同じです。
+
 
 ## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>複数のディメンションを監視する動的しきい値メトリック アラートのテンプレート
 
@@ -1318,7 +1322,6 @@ Azure Monitor のカスタム メトリックの詳細については、「[Azur
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
@@ -1649,7 +1652,6 @@ az deployment group create \
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
@@ -2296,7 +2298,6 @@ az deployment group create \
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
@@ -2938,7 +2939,6 @@ az deployment group create \
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",

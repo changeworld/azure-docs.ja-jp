@@ -4,22 +4,23 @@ description: Azure AD Privileged Identity Management (PIM) で管理できない
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 05/11/2020
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c72587c5486ed61215fd20c215a1dd194f4b7bc4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89cd7e3cfac71e194d8f32ae8b15c26da7f0615d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92372414"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336470"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Privileged Identity Management で管理できないロール
 
@@ -40,7 +41,8 @@ Privileged Identity Management では、次の従来のサブスクリプショ�
 Exchange 管理者や SharePoint 管理者など、Azure AD ロールと管理者ポータルのエクスペリエンスでは、すべての Microsoft 365 のロールがサポートされていますが、Exchange RBAC および SharePoint RBAC 内の特定のロールはサポートされていません。 これらの Microsoft 365 サービスの詳細については、[Microsoft 365 の管理者ロール](/office365/admin/add-users/about-admin-roles)に関するページをご覧ください。
 
 > [!NOTE]
-> SharePoint 管理者ロール、デバイス管理者ロール、および Microsoft セキュリティ センターとコンプライアンス センターにアクセスしようとしているすべてのロールの対象ユーザーは、ロールをアクティブ化した後、最大で数時間の遅延に遭遇する可能性があります。 これらのチームと協力して問題の解決に取り組んでいます。
+> - SharePoint 管理者ロール、デバイス管理者ロール、および Microsoft セキュリティ センターとコンプライアンス センターにアクセスしようとしているすべてのロールの対象ユーザーは、ロールをアクティブ化した後、最大で数時間の遅延に遭遇する可能性があります。 これらのチームと協力して問題の解決に取り組んでいます。
+> - Azure AD 参加済みデバイスのローカル管理者ロールのアクティブ化遅延について詳しくは、「[Azure AD 参加済みデバイスのローカル管理者グループの管理方法](../devices/assign-local-admin.md#manage-the-device-administrator-role)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

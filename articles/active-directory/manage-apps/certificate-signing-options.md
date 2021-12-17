@@ -1,26 +1,27 @@
 ---
-title: Azure AD アプリにおける SAML トークンの詳細な証明書署名オプション
+title: SAML トークンの詳細な証明書署名オプション
+titleSuffix: Azure AD
 description: Azure Active Directory の事前統合アプリ用の SAML トークンの詳細な証明書署名オプションの使い方について説明します。
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.author: iangithinji
-ms.reviewer: jeedes
+ms.date: 07/30/2021
+ms.author: davidmu
+ms.reviewer: saumadan
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bb58f59b3796311f52d78ef87c8918f9888c152
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: b3d1ccac8fa8ac0deddb8a581c583779b1fb2386
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377872"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611802"
 ---
-# <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory のギャラリー アプリ用の SAML トークンの詳細な証明書署名オプション
+# <a name="advanced-certificate-signing-options-in-a-saml-token-in-azure-active-directory"></a>Azure Active Directory の SAML トークンの詳細な証明書署名オプション
 
 現在、Azure Active Directory (Azure AD) では、Azure Active Directory アプリ ギャラリーにある数千の事前統合アプリケーションをサポートしています。 500 以上のアプリケーションが、[NetSuite](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) アプリケーションなどの [Security Assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) 2.0 プロトコルを使用することでシングル サインオンをサポートしています。 お客様が Azure AD によって SAML を使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してお客様をサインインします。 これらの SAML トークンは、Azure AD で、特定の標準的なアルゴリズムで生成された一意の証明書で署名されます。
 
@@ -52,7 +53,7 @@ Azure AD では、SAML 応答に署名するための次の 2 つの署名アル
 
 1. [Azure Active Directory ポータル](https://aad.portal.azure.com/)で、自分のアカウントにサインインします。 **Azure Active Directory 管理センター** のページが表示されます。
 1. 左側のウィンドウで、**[エンタープライズ アプリケーション]** を選択します。 自分のアカウントのエンタープライズ アプリケーションの一覧が表示されます。
-1. アプリケーションを選択します。 アプリケーションの概要ページが表示されます。
+1. アプリケーションを選択します。 アプリケーションの概要ページが表示されます。 この例では、Salesforce アプリケーションが使用されています。
 
    ![例: アプリケーションの概要ページ](./media/certificate-signing-options/application-overview-page.png)
 

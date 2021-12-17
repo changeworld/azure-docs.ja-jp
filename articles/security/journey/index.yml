@@ -1,0 +1,103 @@
+### YamlMime:Landing
+title: すべてのクラウド導入フェーズに関する Azure セキュリティのドキュメント
+summary: クラウドへの移行を検討している場合も既にクラウドに移行している場合も、クラウドのセキュリティに関する取り組みのすべてのフェーズに関するガイダンスを、ここで確認できます。
+metadata:
+  title: Azure のセキュリティの取り組みに関するドキュメント
+  description: Azure でのセキュリティの取り組みの各フェーズのガイダンスを確認します。
+  services: security
+  ms.service: security
+  ms.subservice: journey
+  ms.topic: landing-page
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 04/30/2021
+  ms.openlocfilehash: 301ed3864eb6a5bd6bdcb9153730e3443e5e5333
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110091596"
+landingContent:
+- title: Azure のセキュリティの利点を理解する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: クラウドにおける共同責任
+      url: ../fundamentals/shared-responsibility.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: エンドツーエンドのセキュリティ サービス
+      url: ../fundamentals/end-to-end.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: concept
+    links:
+    - text: Microsoft が Azure のインフラストラクチャをセキュリティで保護するしくみ
+      url: ../fundamentals/infrastructure.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Azure プラットフォームのセキュリティと整合性
+      url: ../fundamentals/platform.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: クラウドに安全に移行するための準備
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ビジネス全体にセキュリティを実装する
+      url: /azure/cloud-adoption-framework/get-started/security?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: concept
+    links:
+    - text: セキュリティ保護アーキテクチャを設計する
+      url: /azure/architecture/framework/security/security-principles?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: エンタープライズ規模のセキュリティ、ガバナンス、コンプライアンス
+      url: /azure/cloud-adoption-framework/ready/enterprise-scale/security-governance-and-compliance/?tabs=MigrationTools?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: ビジネスをクラウドに移行する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: セキュリティで保護されたワークロードの移行
+      url: /azure/cloud-adoption-framework/migrate/azure-migration-guide/?tabs=MigrationTools?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: overview
+    links:
+    - text: ガバナンスまたはコンプライアンスの戦略
+      url: /azure/cloud-adoption-framework/migrate/azure-best-practices/governance-or-compliance/?tabs=MigrationTools?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: クラウド ワークロードのセキュリティを確保して保護する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: セキュリティの運用方法
+      url: ../fundamentals/best-practices-and-patterns.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: セキュリティ制御とベースライン
+      url: ../benchmarks/introduction.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: concept
+    links:
+    - text: ID 管理
+      url: ../fundamentals/identity-management-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: ネットワークのセキュリティ
+      url: ../fundamentals/network-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: データ セキュリティと暗号化
+      url: ../fundamentals/encryption-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Microsoft Antimalware
+      url: ../fundamentals/antimalware.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: 仮想マシンのセキュリティ
+      url: ../fundamentals/virtual-machines-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: 脅威を検出、分析、軽減する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 脅威の防止
+      url: ../fundamentals/threat-detection.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: 脅威の分析
+      url: /azure/architecture/framework/security/design-threat-model?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: 疑わしいアクティビティを調査する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure ログ記録
+      url: ../fundamentals/log-audit.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: レビューと監査
+      url: /azure/architecture/framework/security/monitor-audit?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: ID とネットワークのリスク
+      url: /azure/architecture/framework/security/monitor-identity-network?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: セキュリティ投資を最適化する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ガバナンス、リスク、コンプライアンス
+      url: /azure/architecture/framework/security/monitor-audit?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: ID とネットワークのリスク
+      url: /azure/architecture/framework/security/monitor-test?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json

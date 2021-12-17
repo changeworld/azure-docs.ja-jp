@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
-ms.openlocfilehash: 0985afe3ddfd0d9de3c36ad6b030b6f259708c88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb38f70c20ad8a45ed1cb91d93e7a6f09a7d51df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87458253"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644374"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Azure Logic Apps でのメッセージの送信、受信、バッチ処理
 
@@ -153,9 +153,9 @@ ms.locfileid: "87458253"
       > [!IMPORTANT]
       > Visual Studio を使用している場合、選択するバッチ受信アプリが表示されないときは、バッチ受信アプリが既に作成されて Azure にデプロイ済みであることを確認します。 まだ済んでいない場合は、[バッチ受信ロジック アプリを Azure にデプロイ](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)する方法を確認してください。
 
-   1. アクションの一覧から、次のアクションを選択します。**Batch_messages - <*your-logic-app-name*>**
+   1. アクションの一覧から、**Batch_messages - \<*your-logic-app-name*\>** のアクションを選択します。
 
-      ![このアクションを選択: [メッセージのバッチ処理 - <your-logic-app>]](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
+      !["Batch_messages - \<your-logic-app\>" のアクションを選択する](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
 1. バッチ送信アプリのプロパティを設定します。
 
@@ -215,5 +215,4 @@ ms.locfileid: "87458253"
 
 * [EDI メッセージのバッチ処理と送信](../logic-apps/logic-apps-scenario-edi-send-batch-messages.md)
 * [JSON を使用してロジック アプリの定義に基づいて構築する](../logic-apps/logic-apps-author-definitions.md)
-* [Azure Logic Apps と関数を使用して Visual Studio でサーバーレス アプリを構築する](../logic-apps/logic-apps-serverless-get-started-vs.md)
 * [ロジック アプリの例外処理とエラーのログ記録](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)

@@ -8,21 +8,30 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 04/14/2021
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7c04afe76ced0abf40abf8e30362005fb269172
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: bf49cfd4d1e0e9b3e65354c9f6c89dd7efd71970
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534710"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739952"
 ---
 # <a name="create-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリを管理するためのカスタム ロールを作成する
 
 この記事では、Azure Active Directory (Azure AD) でユーザーとグループのエンタープライズ アプリの割り当てを管理するためのアクセス許可を持つカスタム ロールを作成する方法について説明します。 ロールの割り当ての要素と、サブタイプ、アクセス許可、プロパティ セットなどの用語の意味については、「[カスタムロールの概要](custom-overview.md)」を参照してください。
+
+## <a name="prerequisites"></a>前提条件
+
+- Azure AD Premium P1 または P2 ライセンス
+- 特権ロール管理者または全体管理者
+- PowerShell を使用する場合の AzureADPreview モジュール
+- Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
+
+詳細については、「[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)」をご覧ください。
 
 ## <a name="enterprise-app-role-permissions"></a>エンタープライズ アプリ ロールのアクセス許可
 
@@ -38,15 +47,16 @@ ms.locfileid: "107534710"
 1. `microsoft.directory/servicePrincipals/appRoleAssignedTo/update` アクセス許可を持つカスタム ロールを作成します
 1. エンタープライズ アプリへのユーザーとグループの割り当てを管理するためのアクセス許可を、ユーザーまたはグループに付与します。 これは、スコープを組織全体のレベルまたは単一のアプリケーションに設定できる場合です。
 
-## <a name="use-the-azure-ad-admin-center"></a>Azure AD 管理センターを使用する
+## <a name="azure-portal"></a>Azure portal
 
 ### <a name="create-a-new-custom-role"></a>新しいカスタム ロールを作成する
 
 >[!NOTE]
 > カスタム ロールは組織全体のレベルで作成および管理され、組織の [概要] ページからのみ使用できます。
 
-1. 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[Azure Active Directory]** を選択し、**[ロールと管理者]** を選択してから、**[新しいカスタム ロール]** を選択します。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[ロールと管理者]** を選択してから、 **[新しいカスタム ロール]** を選択します。
 
     ![Azure AD のロール一覧から新しいカスタム ロールを追加する](./media/custom-enterprise-apps/new-custom-role.png)
 
@@ -62,10 +72,12 @@ ms.locfileid: "107534710"
 
     ![これでカスタム ロールを作成できるようになりました](./media/custom-enterprise-apps/role-custom-create.png)
 
-### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>Azure AD ポータルを使用してユーザーにロールを割り当てる
+### <a name="assign-the-role-to-a-user-using-the-azure-portal"></a>Azure portal を使用してユーザーにロールを割り当てる
 
-1. 特権ロール管理者ロールのアクセス許可で [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[Azure Active Directory]** を選択し、次に **[ロールと管理者]** を選択します。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[ロールと管理者]** を選択します。
+
 1. **[ユーザーとグループの割り当てを管理するためのアクセス許可を付与する]** ロールを選択します。
 
     ![[ロールと管理者] を開き、カスタム ロールを検索する](./media/custom-enterprise-apps/select-custom-role.png)
@@ -82,24 +94,9 @@ ms.locfileid: "107534710"
 
     ![ユーザーのアクセス許可を確認する](./media/custom-enterprise-apps/verify-user-permissions.png)
 
-## <a name="use-azure-ad-powershell"></a>PowerShell Azure AD を使用する
+## <a name="powershell"></a>PowerShell
 
 詳細については、[カスタム ロールの作成と割り当て](custom-create.md)および [PowerShell を使用するリソース スコープでのカスタム ロールの割り当て](custom-assign-powershell.md)に関するページを参照してください。
-
-最初に、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)から Azure AD PowerShell モジュールをインストールします。 その後、次のコマンドを使用して、Azure AD PowerShell プレビュー モジュールをインポートします。
-
-```powershell
-Import-Module -Name AzureADPreview
-```
-
-モジュールが使用できる状態であることを確認するには、次のコマンドによって返されたバージョンを次に示されているものと照合します。
-
-```powershell
-Get-Module -Name AzureADPreview
-  ModuleType Version      Name                         ExportedCommands
-  ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...}
-```
 
 ### <a name="create-a-custom-role"></a>カスタム ロールを作成する
 
@@ -138,7 +135,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-## <a name="use-the-microsoft-graph-api"></a>Microsoft Graph API を使用する
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 Microsoft Graph API で提供された例を使用して、カスタム ロールを作成します。 詳細については、[カスタム ロールの作成と割り当て](custom-create.md)および [Microsoft Graph API を使用するカスタム ロールの割り当て](custom-assign-graph.md)に関するページを参照してください。
 
@@ -169,7 +166,7 @@ https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitionsIsEnabl
 }
 ```
 
-### <a name="assign-the-custom-role-using-microsoft-graph-api"></a>Microsoft Graph API を使用してカスタム ロールを割り当てる
+### <a name="assign-the-custom-role-using-the-microsoft-graph-api"></a>Microsoft Graph API を使用してカスタム ロールを割り当てる
 
 ロールの割り当てでは、セキュリティ プリンシパル ID (ユーザーまたはサービス プリンシパルにすることができます)、ロール定義 ID、および Azure AD リソース スコープを組み合わせます。 ロールの割り当ての要素について詳しくは、「[カスタム ロールの概要](custom-overview.md)」を参照してください
 

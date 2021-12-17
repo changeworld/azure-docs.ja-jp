@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2021
+ms.date: 10/11/2021
 ms.author: justinha
-ms.openlocfilehash: 779fd9bbfdd35061867fecc8d4be62b8768f43f9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 808b8ecf102fc8b305c1351d9af3d8dc08377964
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933306"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857002"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services のマネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ
 
@@ -63,7 +63,7 @@ Azure AD で作成されたユーザーは、Azure AD でパスワードを変�
 |:--- |:--- |
 | accountEnabled |userAccountControl (ACCOUNT_DISABLED ビットの設定または解除) |
 | city |l |
-| company |companyName |
+| companyName |companyName |
 | country |co |
 | department |department |
 | displayName |displayName |
@@ -76,7 +76,7 @@ Azure AD で作成されたユーザーは、Azure AD でパスワードを変�
 | mailNickname |SAMAccountName (自動生成される場合があります) |
 | manager |manager |
 | mobile |mobile |
-| objectid |msDS-AzureADObjectId |
+| objectid |msDS-aadObjectId |
 | onPremiseSecurityIdentifier |sidHistory |
 | passwordPolicies |userAccountControl (DONT_EXPIRE_PASSWORD ビットの設定または解除) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |

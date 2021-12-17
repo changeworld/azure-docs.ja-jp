@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: danimir
-ms.author: danil
-ms.reviewer: wiassaf, sstein
-ms.date: 03/23/2021
-ms.openlocfilehash: 6bd8d6001fcd3bfa487259aa219ff771f26a8a94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: NikaKinska
+ms.author: nnikolic
+ms.reviewer: mathoma, wiassaf
+ms.date: 10/18/2021
+ms.openlocfilehash: 564b82854769d0cff730c82f3cd4b99a67b08a41
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951285"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247973"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance での自動チューニング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,10 +48,6 @@ Azure SQL Database のデータベースに適用されるチューニング操�
 
 Azure SQL Database の自動チューニングの核となるロジックは、データベース エンジンの SQL Server 自動チューニング機能でも使用されています。 組み込みインテリジェンスのしくみに関する技術的な情報の詳細については、[SQL Server の自動チューニング](/sql/relational-databases/automatic-tuning/automatic-tuning)に関する記事をご覧ください。
 
-自動チューニングのしくみの概要と一般的な使用シナリオについては、埋め込みのビデオをご覧ください。
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-automatic-tuning/player]
-
 ## <a name="enable-automatic-tuning"></a>自動チューニングの有効化
 
 - [Azure SQL Database の自動チューニングは Azure portal で有効にするか](automatic-tuning-enable.md)、または [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) T-SQL ステートメントを使用します。
@@ -73,7 +69,7 @@ Azure SQL Database の自動チューニングでは、**CREATE INDEX**、**DROP
 
 Azure portal を使用してチューニングの推奨事項を手動で適用するか、または自動チューニングでチューニングの推奨事項を自律的に適用することができます。 システムで自律的にチューニングの推奨事項を適用する利点は、ワークロードのパフォーマンスが向上することが自動的に検証されることです。パフォーマンスの顕著な向上が検出されない場合、チューニングの推奨事項は自動的に元に戻されます。 頻繁に実行されないクエリがチューニングの推奨事項によって影響を受ける場合、設計上、検証フェーズに最大で 72 時間かかる可能性があることに注意してください。
 
-T-SQL を使用してチューニングの推奨事項を適用する場合は、パフォーマンスの自動検証および取り消しメカニズムは使用できません。 そのような方法で適用された推奨事項は、24 時間から 48 時間、アクティブなままになり、チューニングの推奨事項の一覧に表示された後、 自動的に取り消されます。 推奨事項をすぐに削除する場合は、Azure portal から破棄できます。
+T-SQL を使用してチューニングの推奨事項を適用する場合は、パフォーマンスの自動検証および取り消しメカニズムは使用できません。 そのような方法で適用された推奨事項は、24 時間から 48 時間、アクティブなままになり、チューニングの推奨事項の一覧に表示された後、システムによって自動的に取り消されます。 推奨事項をすぐに削除する場合は、Azure portal から破棄できます。
 
 自動チューニング オプションをデータベースごとに個別に有効または無効にすることも、サーバーレベルで構成し、サーバーから設定を継承するすべてのデータベースに適用することもできます。 サーバーでは、自動チューニングの設定について、Azure の既定値を継承できます。 現時点の Azure の既定値では、FORCE_LAST_GOOD_PLAN と CREATE_INDEX が有効に、DROP_INDEX が無効に設定されています。
 

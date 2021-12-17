@@ -1,0 +1,121 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Automanage for virtual machines に関する FAQ
+  description: Azure Automanage for virtual machines についてよく寄せられる質問に回答します。
+  author: deanwe
+  ms.service: virtual-machines
+  ms.subservice: automanage
+  ms.workload: infrastructure
+  ms.topic: troubleshooting
+  ms.date: 02/22/2021
+  ms.author: deanwe
+  ms.openlocfilehash: fff4dff979c1d37f7bda9c96e445a325f96b1f96
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131443815"
+title: Azure Automanage for VMs に関してよく寄せられる質問
+summary: >
+  この記事では、[Azure Automanage for virtual machines](automanage-virtual-machines.md) に関してよく寄せられる質問への回答を提供します。
+
+
+  この記事で Azure の問題に対処できない場合は、[MSDN および Stack Overflow の Azure 関連フォーラム](https://azure.microsoft.com/support/forums/)を参照してください。 問題をこれらのフォーラムまたは [Twitter の @AzureSupport](https://twitter.com/AzureSupport) に投稿できます。 Azure サポート要求を送信することもできます。 サポート リクエストを送信するには、[Azure サポート ページ](https://azure.microsoft.com/support/options/)で **[サポートの利用]** を選択します。
+sections:
+- name: Azure Automanage for virtual machines
+  questions:
+  - question: >
+      Azure Automanage を有効にするために必要な前提条件は何ですか?
+    answer: >
+      Azure Automanage を有効にするための前提条件は次のとおりです。
+
+      - サポートされている [Windows Server のバージョン](automanage-windows-server.md#supported-windows-server-versions)と [Linux ディストリビューション](automanage-linux.md#supported-linux-distributions-and-versions)
+
+      - VM はサポート対象のリージョンに存在する必要があります
+
+      - ユーザーは正しいアクセス許可を持っている必要があります
+
+      - スケール セット以外の VM のみ
+
+      - 現時点では、サンドボックス サブスクリプションは Automanage ではサポートされていません
+  - question: >
+      Automanage を有効にするために必要な Azure RBAC アクセス許可は何ですか?
+    answer: >
+      Automanage を有効にする場合は、VM が存在するリソース グループに対する共同作成者ロールが必要です。
+
+
+      サブスクリプションで初めて Automanage を有効にする場合は、サブスクリプションに対する所有者ロール、または共同作成者とユーザー アクセス管理者のロールが必要です。
+  - question: >
+      どのリージョンがサポートされていますか?
+    answer: >
+      サポートされているリージョンの完全な一覧については、[こちら](./automanage-virtual-machines.md#supported-regions)で確認できます。
+  - question: >
+      Azure Automanage によって自動化されるのはどのような機能ですか?
+    answer: >
+      Automanage を使用すると、VM のライフサイクル全体を通して、[こちら](automanage-virtual-machines.md)の一覧に記載されているサービスの登録、構成、監視が行われます。
+  - question: >
+      Azure Automanage は Azure Arc 対応 VM で動作しますか?
+    answer: >
+      現在、Automanage では、Arc 対応 VM はサポートされていません。
+  - question: "\"アップグレードが必要\" の状態は何を意味していますか?\n"
+    answer: >
+      Automanage では、オンボード用の新しい API (バージョン 2021-04-30-preview 以降) がサポートされています。 以前のバージョンの Automanage (バージョン 2020-06-30-preview) を使用している場合は、Automanage を無効にしてから、再び有効にする必要があります。 最新バージョンに自動的にオンボードされます。
+  - question: >
+      Azure Automanage の構成をカスタマイズできますか?
+    answer: >
+      お客様は、カスタム プロファイルを使用して、Azure Backup の保有期間など、特定のサービスの設定をカスタマイズできます。 変更できる設定の完全な一覧については、[こちら](automanage-virtual-machines.md#custom-profiles)のドキュメントを参照してください。
+  - question: >
+      Azure Automanage は、Linux と Windows 両方の VM で動作しますか?
+    answer: >
+      はい、サポートされている [Windows Server のバージョン](automanage-windows-server.md#supported-windows-server-versions)と [Linux ディストリビューション](automanage-linux.md#supported-linux-distributions-and-versions)をご確認ください。
+  - question: >
+      VM のセットに対してだけ Automanage を選択的に適用できますか?
+    answer: >
+      Automanage は、選択した新規および既存の VM をクリックしてポイントするだけで有効にできます。 また、Automanage はいつでも無効にすることができます。
+  - question: >
+      Azure Automanage では仮想マシン スケール セット内の VM はサポートされますか?
+    answer: >
+      いいえ、現在、Azure Automanage では仮想マシン スケール セット内の VM はサポートされていません。
+  - question: >
+      Azure Automanage のコストはどのくらいですか?
+    answer: >
+      パブリック プレビューの期間中は、Azure Automanage を追加料金なしで利用できます。 Azure Backup などのアタッチされた Azure リソースには、コストが発生します。
+  - question: >
+      Azure Policy を使用して Automanage を適用できますか?
+    answer: >
+      はい、ユーザーが定義したスコープ内のすべての VM に Automanage を自動的に適用する組み込みのポリシーがあります。 また、Automanage アカウントと共に環境構成 (DevTest または運用) も指定します。 Azure Policy による Automanage の有効化の詳細については、[こちら](virtual-machines-policy-enable.md)を参照してください。
+  - question: >
+      Automanage アカウントとは何ですか?
+    answer: >
+      Automanage アカウントは、以前のバージョンの Automanage (バージョン 2020-06-30-preview) を使用してオンボードされたマシンにのみ使用されます。 これは、自動化された操作が行われるセキュリティ コンテキストまたは ID を提供する MSI (マネージド サービス ID) です。
+  - question: >
+      構成の基本設定とはなんですか?
+    answer: >
+      構成の基本設定は、以前のバージョンの Automanage (バージョン 2020-06-30-preview) を使用してオンボードされたマシンにのみ使用されます。 設定のサブセットのカスタマイズがサポートされています。 これは、最新バージョンの Automanage でカスタム プロファイルにアップグレードされました。
+  - question: >
+      Automanage を有効にすると、選択したマシン以外のその他のマシンにも影響がありますか?
+    answer: >
+      VM が既存の Log Analytics ワークスペースにリンクされている場合は、そのワークスペースを再利用して次のソリューションを適用します。Change Tracking、インベントリ、Update Management。 そのワークスペースに接続されているすべてのマシンで、これらのソリューションが有効になります。
+  - question: >
+      自分のマシンの環境を変更することはできますか?
+    answer: >
+      現時点では、そのマシンの Automanage を無効にしてから、必要な環境と基本設定を使用して Automanage を再度有効にする必要があります。
+  - question: >
+      Update Management などのサービス用にマシンが既に構成されている場合、Automanage によってそれが再構成されますか?
+    answer: >
+      いいえ、Automanage では再構成は行われません。 そのサービスに関連付けられているリソースでドリフトの監視が開始されます。
+  - question: >
+      Automanage ポータルでマシンの状態が "失敗" になるのはなぜですか?
+    answer: >
+      状態が "*失敗*" になっている場合は、次のいくつかの方法でデプロイのトラブルシューティングを行うことができます。
+
+      * **[リソース グループ]** に移動し、リソース グループを選択し、 **[デプロイ]** をクリックして、"*失敗*" 状態とエラーの詳細を確認します。
+
+      * **[サブスクリプション]** に移動し、リソース グループを選択し、 **[デプロイ]** をクリックして、"*失敗*" 状態とエラーの詳細を確認します。
+
+      * マシンのアクティビティ ログにアクセスすることもできます。これには、"構成プロファイル割り当ての作成または更新" のエントリが含まれます。 これには、デプロイに関する詳細が含まれる場合もあります。
+  - question: >
+      Automanage のトラブルシューティングのサポートを受けるにはどうすればよいですか?
+    answer: >
+      [テクニカル サポート ケースのチケット](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出できます。 **[サービス]** オプションについては、"*監視と管理*" のセクションで *Automanage* を探して選択します。
+additionalContent: "\n## <a name=\"next-steps\"></a>次の手順\n\nAzure portal でAzure Automanage for virtual machines を有効にしてみてください。\n\n> [!div class=\"nextstepaction\"]\n> [Azure portal で Azure Automanage for virtual machines を有効にする](quick-create-virtual-machines-portal.md)"

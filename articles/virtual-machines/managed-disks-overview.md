@@ -2,20 +2,22 @@
 title: Azure Disk Storage の概要
 description: VM を使用するときにストレージ アカウントを管理する Azure マネージド ディスクの概要
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: eea5c800d7aa9c8d1e6c0c507136b86ab8bf21f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3a58291dcd0f6da13fb4c20f806f6450376f2be
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604034"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555724"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure マネージド ディスクの概要
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure マネージド ディスクは、Azure によって管理されて Azure Virtual Machines で使用されるブロックレベルの記憶域ボリュームです。 マネージド ディスクは、オンプレミス サーバーの物理ディスクと似ていますが、仮想化されています。 マネージド ディスクを使用した場合、ユーザーがすべきことは、サイズと種類を指定してディスクをプロビジョニングするだけです。 ディスクのプロビジョニング後、残りの作業は Azure によって行われます。
 
@@ -100,7 +102,7 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 ### <a name="temporary-disk"></a>一時ディスク
 
-ほとんどの VM には、マネージド ディスクではない一時ディスクが含まれています。 一時ディスクはアプリケーションやプロセスのために短期間の保存場所を提供するものであり、ページやスワップ ファイルなどのデータ格納のみを意図しています。 一時ディスクのデータは、[メンテナンス イベント](./understand-vm-reboots.md)中、または [VM の再デプロイ](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)時に失われる可能性があります。 VM を正常に標準再起動している間、一時ディスク上のディスクは残ります。 一時ディスクのない VM に関する詳細については、「[ローカル一時ディスクを持たない Azure VM のサイズ](azure-vms-no-temp-disk.md)」を参照してください。
+ほとんどの VM には、マネージド ディスクではない一時ディスクが含まれています。 一時ディスクはアプリケーションやプロセスのために短期間の保存場所を提供するものであり、ページやスワップ ファイルなどのデータ格納のみを意図しています。 一時ディスクのデータは、[メンテナンス イベント](./understand-vm-reboots.md)中、または [VM の再デプロイ](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)時に失われる可能性があります。 VM を正常に標準再起動している間、一時ディスク上のディスクは残ります。 一時ディスクのない VM に関する詳細については、「[ローカル一時ディスクを持たない Azure VM のサイズ](azure-vms-no-temp-disk.yml)」を参照してください。
 
 Azure Linux VM の一時ディスクは通常 /dev/sdb です。Windows VM の一時ディスクは既定で D: です。 一時ディスクは、ホストで暗号化を有効にしない限り、サーバー側暗号化によって暗号化されません。
 
@@ -110,10 +112,7 @@ Azure Linux VM の一時ディスクは通常 /dev/sdb です。Windows VM の�
 
 スナップショットは、使用されるサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量でマネージド ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。 スナップショットの使用サイズは、[Azure 利用状況レポート](../cost-management-billing/understand/review-individual-bill.md)で確認できます。 たとえば、スナップショットの使用データ サイズが 10 GiB の場合、**毎日** の利用状況レポートには、使用量として 10 GiB/(31 日) = 0.3226 が表示されます。
 
-マネージド ディスクでスナップショットを作成する方法の詳細については、次のリソースを参照してください。
-
-- [Windows でマネージド ディスクのスナップショットを作成する](windows/snapshot-copy-managed-disk.md)
-- [Linux でマネージド ディスクのスナップショットを作成する](linux/snapshot-copy-managed-disk.md)
+マネージド ディスクのスナップショットを作成する方法の詳細については、[マネージド ディスクのスナップショットを作成する](windows/snapshot-copy-managed-disk.md)方法に関する記事を参照してください。
 
 ### <a name="images"></a>イメージ
 
@@ -134,15 +133,19 @@ Azure Linux VM の一時ディスクは通常 /dev/sdb です。Windows VM の�
 
 ## <a name="disk-allocation-and-performance"></a>ディスクの割り当てとパフォーマンス
 
-次の図は、3 レベルのプロビジョニング システムを使用して、ディスクの帯域幅と IOPS がリアルタイムに割り当てられていることを示しています。
+次の図は、ディスクの帯域幅と IOPS のリアルタイムの割り当て、および IO が取ることのできる 3 つの異なるパスを示しています。 
 
-![帯域幅と IOPS 割り当てを示す 3 レベルのプロビジョニング システム](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
+![帯域幅と IOPS 割り当てを示す 3 レベルのプロビジョニング システムを示す図。](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
 
-第 1 レベルのプロビジョニングでは、ディスクごとの IOPS と帯域幅の割り当てを設定します。  第 2 レベルでは、コンピューティング サーバーで SSD プロビジョニングが実装されます。これは、キャッシュ (読み取り/書き込み、読み取り専用) が有効なディスクと、ローカル ディスクと一時ディスクを含む、サーバーの SSD に格納されているデータに対してのみ適用されます。 最後に、第 3 レベルとして VM ネットワークがプロビジョニングされます。これは、コンピューティング ホストで Azure Storage のバックエンドに送信されるすべての I/O に対して適用されます。 このスキームでは、VM でのローカル SSD の使用方法、アタッチされているディスクの数、およびアタッチされているディスクのパフォーマンスやキャッシュの種類といったさまざまな要素によって、VM のパフォーマンスが決まります。
+最初の IO パスは、キャッシュされていないマネージド ディスクのパスです。 このパスは、マネージド ディスクを使用し、ホスト キャッシュを none に設定している場合に使用されます。 このパスを使用する IO は、ディスク レベルのプロビジョニングに基づいて実行された後、IOP とスループットについては VM ネットワーク レベルのプロビジョニングに基づいて実行されます。   
+
+2 番目の IO パスは、キャッシュされたマネージド ディスクのパスです。 キャッシュされたマネージド ディスク IO では、VM に近い SSD が使用されます。これには独自の IOP とスループットがプロビジョニングさており、図では SSD レベルのプロビジョニングと表示されています。 キャッシュされたマネージド ディスクが読み取りを開始すると、要求は最初にデータがサーバー SSD 内にあるかどうかの確認を実行します。 データが存在しない場合、これはキャッシュ ミスとなり、IO は SSD レベルのプロビジョニング、ディスク レベルのプロビジョニング、および IOP とスループットの VM ネットワーク レベルのプロビジョニングに基づいて実行されます。 サーバー SSD 上に存在するキャッシュされた IO に対してサーバー SSD が読み取りを開始した場合、これはキャッシュ ヒットとなり、IO はその後 SSD レベルのプロビジョニングに基づいて実行されます。 キャッシュされたマネージド ディスクによって開始される書き込みは、常にキャッシュ ミスのパスをたどり、SSD レベル、ディスク レベル、および VM ネットワーク レベルのプロビジョニングを経由する必要があります。  
+
+最後に、3 番目のパスはローカルまたは一時ディスク用です。 これは、ローカルまたは一時ディスクをサポートする VM でのみ使用できます。 このパスを使用する IO は、IOP とスループットの SSD レベルのプロビジョニングに基づいて実行されます。   
 
 これらの制限の例として、Standard_DS1v1 の VM では、SSD とネットワーク レベルの制限により、キャッシュの設定が有効か無効かにかかわらず、P30 のディスクの 5,000 IOPS を達成することはできません。
 
-![Standard_DS1v1 の割り当ての例](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
+![Standard_DS1v1 の割り当て例を示す 3 レベルのプロビジョニング システムの図。](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
 
 Azure では、ディスク トラフィックに優先順位が付けられたネットワーク チャネルを使用します。これにより、他の低優先度のネットワーク トラフィックより優先されます。 これは、ネットワークの競合が発生した場合に、ディスクで予想されるパフォーマンスを保持するのに役立ちます。 同様に、Azure Storage では、自動負荷分散により、リソースの競合やその他の問題がバックグラウンドで処理されます。 Azure Storage では、ディスクを作成するときに必要なリソースを割り当て、トラフィック レベルを処理するためにリソースのプロアクティブおよびリアクティブな分散を適用します。 これにより、ディスクで確実に予想される IOPS とスループット ターゲットを維持できるようになります。 必要に応じて、VM レベルとディスク レベルのメトリックを使用して、パフォーマンスと設定のアラートを追跡できます。
 

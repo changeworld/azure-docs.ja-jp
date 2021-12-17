@@ -1,29 +1,29 @@
 ---
 title: チュートリアル - Azure IoT ハブでメトリックとログを設定して使用する
 description: チュートリアル - Azure IoT ハブでメトリックとログを設定して使用する方法について説明します。 これにより、ハブで発生している可能性がある問題の診断に役立つ分析のためのデータが提供されます。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 10/29/2020
-ms.author: robinsh
+ms.date: 10/19/2021
+ms.author: lizross
 ms.custom:
 - mvc
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 099b7f4e812e92503c7ed8e3eb733f2e49ccd8b9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 61b4ee2360d3559120399421ec424f30d6e8ea77
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768073"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550194"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>チュートリアル:IoT ハブでメトリックとログを設定して使用する
 
 Azure Monitor を使用して、IoT ハブのメトリックとログを収集できます。これらは、ソリューションの操作の監視と、発生した問題のトラブルシューティングに役立ちます。 この記事では、メトリックに基づいてグラフを作成する方法、メトリックに対してトリガーされるアラートを作成する方法、IoT Hub の操作とエラーを Azure Monitor ログに送信する方法、ログでエラーを確認する方法について説明します。
 
-このチュートリアルでは、[.NET でのテレメトリの送信に関するクイックスタート](quickstart-send-telemetry-dotnet.md)の Azure サンプルを使用して、IoT ハブにメッセージを送信します。 デバイスまたは別のサンプルを使用していつでもメッセージを送信できますが、いくつかの手順を適宜変更することが必要な場合があります。
+このチュートリアルでは、[.NET でのテレメトリの送信に関するクイックスタート](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)の Azure サンプルを使用して、IoT ハブにメッセージを送信します。 デバイスまたは別のサンプルを使用していつでもメッセージを送信できますが、いくつかの手順を適宜変更することが必要な場合があります。
 
 このチュートリアルを開始する前に、Azure Monitor の概念をある程度理解しておくと役立つものと思われます。 詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関する記事を参照してください。 IoT Hub によって出力されるメトリックとリソース ログの詳細については、[監視データのリファレンス](monitor-iot-hub-reference.md)に関する記事をご覧ください。
 
@@ -44,7 +44,7 @@ Azure Monitor を使用して、IoT ハブのメトリックとログを収集�
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-- 開発用マシン上に .NET Core SDK 2.1 以上が必要です。 複数のプラットフォームに対応する .NET Core SDK を [.NET](https://www.microsoft.com/net/download/all) からダウンロードできます。
+- 開発用マシン上に .NET Core SDK 2.1 以上が必要です。 複数のプラットフォームに対応する .NET Core SDK を [.NET](https://dotnet.microsoft.com/download) からダウンロードできます。
 
   開発コンピューターに現在インストールされている C# のバージョンは、次のコマンドを使って確認できます。
 
@@ -319,7 +319,7 @@ IoT Hub のクォータと調整制限の詳細については、[クォータ�
 >
 > アラートが IoT Hub によって完全に構成され、有効になるまでに最大 10 分かかることがあります。 最後のアラートを構成してから、シミュレートされたデバイス アプリを実行するまで、少なくとも 10 分お待ちください。
 
-[IoT デバイス シミュレーション](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)のソリューションをダウンロードします。 このリンクにより、複数のアプリケーションを含むリポジトリがダウンロードされます。探しているものは、iot-hub/Quickstarts/simulated-device/ にあります。
+[IoT デバイス シミュレーション](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)のソリューションをダウンロードします。 このリンクにより、複数のアプリケーションを含むリポジトリがダウンロードされます。探しているものは、iot-hub/Quickstarts/simulated-device/ にあります。
 
 1. ローカル ターミナル ウィンドウで、ソリューションのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
 

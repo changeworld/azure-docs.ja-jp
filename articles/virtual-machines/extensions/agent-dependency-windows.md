@@ -7,13 +7,14 @@ ms.subservice: extensions
 author: mgoedtel
 ms.author: magoedte
 ms.collection: windows
-ms.date: 03/29/2019
-ms.openlocfilehash: 429cc01f466c55283985729c3395bb2137e38fa6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fdfdb0ec6f9c265245ca4699aa6e2ab49dd4fdbd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566305"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744976"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Windows 用 Azure Monitor Dependency 仮想マシン拡張機能
 
@@ -131,8 +132,22 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
     -Publisher "Microsoft.Azure.Monitoring.DependencyAgent" `
     -ExtensionType "DependencyAgentWindows" `
     -TypeHandlerVersion 9.5 `
-    -Location WestUS 
+    -Location WestUS
 ```
+
+## <a name="automatic-extension-upgrade"></a>拡張機能の自動アップグレード
+依存関係拡張機能の[マイナー バージョンを自動的にアップグレード](../automatic-extension-upgrade.md)する新しい機能が、利用できるようになりました。
+
+拡張機能の自動アップグレードを拡張機能に対して有効にするには、プロパティ `enableAutomaticUpgrade` が `true` に設定され、拡張機能テンプレートに追加されているようにする必要があります。 このプロパティは、すべての VM または VM スケール セットで個別に有効にする必要があります。 [有効化](../automatic-extension-upgrade.md#enabling-automatic-extension-upgrade)のセクションで説明されているいずれかの方法を使用して、VM または VM スケール セットに対してこの機能を有効にします。
+
+VM または VM スケール セットで拡張機能の自動アップグレードが有効になっていると、拡張機能の発行元がその拡張機能の新しいバージョンをリリースするたびに、拡張機能が自動的にアップグレードされます。 このアップグレードは、[こちら](../automatic-extension-upgrade.md#how-does-automatic-extension-upgrade-work)で説明されているように、可用性優先の原則に従って安全に適用されます。
+
+`enableAutomaticUpgrade` 属性の機能は、`autoUpgradeMinorVersion` の機能とは異なります。 拡張機能の発行元が新しいバージョンがリリースしたとき、`autoUpgradeMinorVersion` 属性はマイナー バージョンの更新を自動的にトリガーしません。 `autoUpgradeMinorVersion` 属性は、デプロイ時に新しいマイナー バージョンが使用可能な場合に、それを拡張機能で使用する必要があるかどうかを示します。 ただし、デプロイされると、このプロパティが true に設定されていても、再デプロイされない限り、拡張機能でマイナー バージョンのアップグレードは行われません。
+
+拡張機能のバージョンを最新の状態に保つために、拡張機能のデプロイで `enableAutomaticUpgrade` を使用することをお勧めします。
+
+> [!IMPORTANT]
+> テンプレートに `enableAutomaticUpgrade` を追加する場合は、必ず API バージョン 2019-12-01 以上で使用してください。
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 

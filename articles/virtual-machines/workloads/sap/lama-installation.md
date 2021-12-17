@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 4772fdae06f23430d829fa411068b7af7a85b3dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: bebae71179153479d66891924ba2f7679838d8bc
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668709"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112297047"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
@@ -91,34 +92,19 @@ Azure コネクタでは、サービス プリンシパルを使用して Micros
 1. 値をメモします。 この値は、サービス プリンシパルのパスワードとして使用します
 1. アプリケーション ID をメモします。 この値は、サービス プリンシパルのユーザー名として使用します
 
-既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 それらにアクセスするためのサービス プリンシパルの権限を付与する必要があります。
+既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。
+SAP LaMa によって管理される SAP システムを含むすべてのリソース グループ用のリソース グループ スコープで、共同作成者ロールをサービス プリンシパルに割り当てます。
 
-1. [https://resources.azure.com](https://portal.azure.com ) に移動します
-1. [リソース グループ] ブレードを開きます
-1. 使用するリソース グループを選択します
-1. [アクセス制御 (IAM)] を選択します
-1. [ロールの割り当ての追加] をクリックします
-1. 共同作成者ロールを選択します
-1. 上記で作成したアプリケーションの名前を入力します
-1. [保存] をクリックします。
-1. SAP LaMa で使用するすべてのリソース グループについて、手順 3 ～ 8 を繰り返します
+詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ### <a name="use-a-managed-identity-to-get-access-to-the-azure-api"></a><a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>マネージド ID を使用して Azure API にアクセスする
 
 マネージド ID を使用できるようにするには、SAP LaMa インスタンスを、システムまたはユーザーによって割り当てられた ID を持つ Azure VM 上で実行する必要があります。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../../../active-directory/managed-identities-azure-resources/overview.md)」および「[Azure portal を使用して Azure VM で Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)」を参照してください。
 
-既定では、マネージド ID には、Azure のリソースにアクセスする権限はありません。 アクセス許可を付与する必要があります。
+既定では、マネージド ID には、Azure のリソースにアクセスする権限はありません。
+SAP LaMa によって管理される SAP システムを含むすべてのリソース グループ用のリソース グループ スコープで、共同作成者ロールを仮想マシン ID に割り当てます。
 
-1. [https://resources.azure.com](https://portal.azure.com ) に移動します
-1. [リソース グループ] ブレードを開きます
-1. 使用するリソース グループを選択します
-1. [アクセス制御 (IAM)] を選択します
-1. [追加] > [ロールの割り当ての追加] をクリックします
-1. 共同作成者ロールを選択します
-1. [アクセスの割り当て先] で [仮想マシン] を選択します
-1. SAP LaMa インスタンスが実行されている仮想マシンを選択します
-1. [保存] をクリックします。
-1. SAP LaMa で使用するすべてのリソース グループについて、この手順を繰り返します
+詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 SAP LaMa Azure コネクタの構成で、[Use Managed Identity]\(マネージド ID を使用する\) を選択して、マネージド ID の使用を有効にします。 システム割り当ての ID を使用する場合は、[ユーザー名] フィールドを空のままにしておきます。 ユーザー割り当ての ID を使用する場合は、[ユーザー名] フィールドにユーザー割り当ての ID を入力します。
 
@@ -146,7 +132,7 @@ Connection successful: (接続成功:)Connection to Microsoft cloud was successf
 
 ## <a name="provision-a-new-adaptive-sap-system"></a>新しい適応型 SAP システムのプロビジョニング
 
-新しい仮想マシンを手動でデプロイするか、または[クイック スタート リポジトリ](https://github.com/Azure/azure-quickstart-templates)内にあるいずれかの Azure テンプレートを使用できます。 このリポジトリには、[SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs)、[SAP NetWeaver アプリケーション サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)、および[データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-database)用のテンプレートが含まれています。 これらのテンプレートを使用すると、システム コピー/複製などの一部として新しいホストをプロビジョニングすることもできます。
+新しい仮想マシンを手動でデプロイするか、または[クイック スタート リポジトリ](https://github.com/Azure/azure-quickstart-templates)内にあるいずれかの Azure テンプレートを使用できます。 このリポジトリには、[SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-lama-ascs)、[SAP NetWeaver アプリケーション サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-lama-apps)、および[データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-lama-database)用のテンプレートが含まれています。 これらのテンプレートを使用すると、システム コピー/複製などの一部として新しいホストをプロビジョニングすることもできます。
 
 新しい仮想マシンおよび SAP インスタンスのデプロイが準備解除された場合に IP アドレスが "盗まれる" のを防ぐために、SAP LaMa で管理するすべての仮想マシンについて個別のサブネットを使用し、動的 IP アドレスは使用しないことをお勧めします。
 

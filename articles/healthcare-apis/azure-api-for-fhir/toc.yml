@@ -1,0 +1,195 @@
+items:
+  - name: Azure Healthcare API (プレビュー) のドキュメント
+    href: ../index.yml
+  - name: Azure API for FHIRドキュメント
+    href: index.yml
+  - name: 概要
+    expanded: true
+    items:
+      - name: Azure API for FHIR について
+        href: overview.md
+      - name: Azure IoT Connector for FHIR (プレビュー) について
+        href: overview.md#azure-iot-connector-for-fhir-preview
+  - name: クイックスタート
+    expanded: true
+    items:
+      - name: Azure API for FHIR をデプロイする
+        expanded: false
+        items:
+          - name: ポータルの使用
+            href: fhir-paas-portal-quickstart.md
+          - name: PowerShell の使用
+            href: fhir-paas-powershell-quickstart.md
+          - name: CLI の使用
+            href: fhir-paas-cli-quickstart.md
+          - name: ARM テンプレートの使用
+            displayName: Resource Manager
+            href: azure-api-fhir-resource-manager-template.md
+      - name: Azure IoT Connector for FHIR (プレビュー) をデプロイする
+        expanded: false
+        items:
+          - name: ポータルの使用
+            href: iot-fhir-portal-quickstart.md
+          - name: ARM テンプレートの使用
+            href: iot-azure-resource-manager-template-quickstart.md
+  - name: チュートリアル
+    expanded: true
+    items:
+      - name: JavaScript アプリケーションをデプロイする
+        expanded: false
+        items:
+          - name: 1. 初期セットアップと FHIR デプロイ
+            href: tutorial-web-app-fhir-server.md
+          - name: 2. パブリック クライアント アプリケーションの登録
+            href: tutorial-web-app-public-app-reg.md
+          - name: 3. Postman を使用したテスト セットアップ
+            href: tutorial-web-app-test-postman.md
+          - name: 4. Web アプリケーションの作成
+            href: tutorial-web-app-write-web-app.md
+      - name: SMART on FHIR プロキシを使用する
+        href: use-smart-on-fhir-proxy.md
+      - name: IoT デバイスからのデータの取り込み
+        expanded: false
+        items:
+          - name: Azure IoT Hub を通じてデバイス データを受信する
+            href: device-data-through-iot-hub.md
+      - name: 相互運用性と患者アクセス
+        expanded: false
+        items:
+          - name: CMS 相互運用性と患者アクセスに関する規則の概要
+            href: centers-for-medicare-tutorial-introduction.md
+          - name: CARIN Blue Button 実装ガイド
+            href: carin-implementation-guide-blue-button-tutorial.md
+          - name: Da Vinci 採用医薬品集
+            href: davinci-drug-formulary-tutorial.md
+          - name: Da Vinci PDex
+            href: davinci-pdex-tutorial.md
+          - name: Da Vinci Plan Net
+            href: davinci-plan-net.md
+  - name: 操作方法ガイド
+    expanded: true
+    items:
+      - name: アプリケーションの登録
+        expanded: false
+        items:
+          - name: Azure API for FHIR 用のアプリケーションの登録に関する概要
+            href: fhir-app-registration.md
+          - name: リソース アプリケーション
+            href: register-resource-azure-ad-client-app.md
+          - name: 機密クライアント アプリケーション
+            href: register-confidential-azure-ad-client-app.md
+          - name: パブリック クライアント アプリケーション
+            href: register-public-azure-ad-client-app.md
+          - name: サービス クライアント アプリケーション
+            href: register-service-azure-ad-client-app.md
+      - name: 設定の構成
+        expanded: false
+        items:
+          - name: その他の設定Azure API for FHIR構成する
+            href: azure-api-for-fhir-additional-settings.md
+          - name: Azure RBAC を構成する
+            href: configure-azure-rbac.md
+          - name: ローカル RBAC を構成する
+            href: configure-local-rbac.md
+          - name: データベース設定を構成する
+            href: configure-database.md
+          - name: 顧客管理キーの構成
+            href: customer-managed-key.md
+          - name: CORS を構成する
+            href: configure-cross-origin-resource-sharing.md
+          - name: エクスポートを構成する
+            href: ../data-transformation/configure-export-data.md
+          - name: Private Link を構成する
+            href: configure-private-link.md
+      - name: 検索
+        expanded: false
+        items:
+          - name: FHIR 検索の概要
+            href: overview-of-search.md
+          - name: カスタム検索パラメーターの定義
+            href: how-to-do-custom-search.md
+          - name: インデックス再作成ジョブの実行方法
+            href: how-to-run-a-reindex.md
+          - name: Azure API for FHIR を検索する
+            href: search-samples.md
+      - name: Operations
+        expanded: false
+        items:
+          - name: プロファイルの検証
+            href: validation-against-profiles.md
+          - name: データのエクスポート
+            expanded: false
+            items:
+              - name: データのエクスポート
+                href: ../data-transformation/export-data.md
+              - name: 匿名化エクスポート
+                href: ../data-transformation/de-identified-export.md
+              - name: データを Synapse に移動する
+                href: ../data-transformation/move-to-synapse.md
+          - name: データの変換
+            expanded: false
+            items:
+              - name: $convert-data と FHIR Converter 拡張機能のテンプレート
+                href: convert-data.md
+          - name: FHIR の patient-everything
+            href: patient-everything.md
+          - name: $member-match 操作
+            href: tutorial-member-match.md
+      - name: ID オブジェクト ID を見つける
+        href: find-identity-object-ids.md
+      - name: 診断ログと指標
+        expanded: false
+        items:
+          - name: Azure API for FHIR で診断ログを有効にする
+            href: enable-diagnostic-logging.md
+          - name: Azure IoT Connector for FHIR (プレビュー) のメトリックを表示および構成する
+            href: iot-metrics-display.md
+      - name: Azure API for FHIR のトークンを取得する - CLI
+        href: get-healthcare-apis-access-token-cli.md
+      - name: Azure IoT Connector for FHIR (プレビュー) のエラーのトラブルシューティングを行う
+        href: iot-troubleshoot-guide.md
+      - name: Azure API for FHIR の自動スケーリング
+        href: autoscale-azure-api-fhir.md
+      - name: Azure API for FHIR のディザスター リカバリー
+        href: disaster-recovery.md
+  - name: 概念
+    expanded: true
+    items:
+      - name: Azure AD と Azure API for FHIR の概要
+        href: azure-active-directory-identity-configuration.md
+      - name: アクセス トークンの検証
+        href: azure-api-fhir-access-token-validation.md
+      - name: カスタム HTTP ヘッダーを使用してデータを監査ログに追加する
+        href: use-custom-headers.md
+      - name: Azure IoT Connector for FHIR (プレビュー) の動作
+        expanded: false
+        items:
+          - name: Azure IoT Connector for FHIR (プレビュー) のデータ フロー
+            href: iot-data-flow.md
+          - name: Azure IoT Connector for FHIR (プレビュー) のマッピング テンプレート
+            href: iot-mapping-templates.md
+      - name: FHIR Rest API の機能
+        href: fhir-rest-api-capabilities.md
+      - name: セキュリティ
+        items:
+          - name: Azure Policy によるセキュリティ制御
+            href: ./security-controls-policy.md
+  - name: リソース
+    expanded: true
+    items:
+      - name: サポートされている機能
+        href: fhir-features-supported.md
+      - name: リリース ノート
+        href: release-notes.md
+      - name: FAQ
+        href: fhir-faq.yml
+      - name: GitHub プロジェクト
+        href: fhir-github-projects.md
+  - name: リファレンス
+    expanded: true
+    items:
+      - name: Azure CLI
+        href: /cli/azure/healthcareapis
+      - name: Azure Policy の組み込み
+        displayName: 'samples, policies, definitions'
+        href: ./policy-reference.md

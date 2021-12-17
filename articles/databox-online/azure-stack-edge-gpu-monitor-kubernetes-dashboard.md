@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 08/31/2021
 ms.author: alkohli
-ms.openlocfilehash: 19b3595228c29814e42af88696972fd81b156190
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 30e46f9425f4015893c08b94382e87cfa93c8be8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443048"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363157"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes ダッシュボードを使用して Azure Stack Edge Pro GPU デバイスを監視する
 
@@ -44,15 +44,31 @@ Azure Stack Edge Pro デバイスでは、Kubernetes ダッシュボードを "*
 Kubernetes ダッシュボードは "*読み取り専用*" で、ポート 31000 の Kubernetes マスター ノードで実行されます。 ダッシュボードにアクセスするには、次の手順に従います。 
 
 1. お使いのデバイスのローカル UI で、 **[デバイス]** 、 **[デバイス エンドポイント]** の順に移動します。 
-1. **[config のダウンロード]** を選択して、`kubeconfig` をダウンロードします。これによりダッシュボードにアクセスできるようになります。 `config.json` ファイルをローカル システムに保存します。
-1. Kubernetes ダッシュボード URL を選択して、ブラウザーでダッシュボードを開きます。
+1. **[Kubernetes ダッシュボード]** エンドポイントをコピーします。 Kubernetes ダッシュボードに接続するには、DNS エントリをクライアントの `C:\Windows\System32\Drivers\etc\hosts` ファイルに作成します。 
 
-    ![ローカル UI の [デバイス] ページの Kubernetes ダッシュボード URL](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-url-local-ui-1.png)
+    `<IP address of the Kubernetes dashboard>    <Kubernetes dashboard endpoint suffix>` 
+        
+    ![Kubernetes ダッシュボード エンドポイントの DNS エントリの追加](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/add-domain-name-service-entry-hosts-1.png) 
 
-1. **Kubernetes ダッシュボードのサインイン** ページで次を行います。
+1. **[Kubernetes ダッシュボード]** エンドポイントの行で、 **[config のダウンロード]** を選択します。この操作により、ダッシュボードにアクセスできるようにする `kubeconfig` をダウンロードします。 `config.json` ファイルをローカル システムに保存します。   
+
+1. ローカル UI から Kubernetes ダッシュボード証明書をダウンロードします。 
+    1. デバイスのローカル UI で、 **[証明書]** にアクセスします。
+    1. **[Kubernetes ダッシュボード エンドポイント証明書]** のエントリを見つけます。 このエントリの右側にある **[ダウンロード]** を選択して、ダッシュボードへのアクセスに使用するクライアント システムの証明書をダウンロードします。 
+
+    ![Kubernetes ダッシュボード エンドポイント証明書のダウンロード](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/download-kubernetes-dashboard-endpoint-certificate-1.png)  
+
+1. ダウンロードした証明書をクライアントにインストールします。 Windows クライアントを使用している場合は、次の手順を実行します。 
+    1. 証明書を選択し、 **[証明書のインポート ウィザード]** で、保存場所として **[ローカル コンピューター]** を選択します。 
+
+        ![クライアント 1 での証明書のインストール](media/azure-stack-edge-gpu-edge-container-registry/install-certificate-1.png) 
+    
+    1. 証明書を信頼されたルート ストアのローカル コンピューターにインストールします。 
+
+        ![クライアント 2 での証明書のインストール](media/azure-stack-edge-gpu-edge-container-registry/install-certificate-2.png) 
+1. Kubernetes ダッシュボード URL をコピーして、ブラウザーでダッシュボードを開くために使用します。 **Kubernetes ダッシュボードのサインイン** ページで次を行います。
     
     1. **kubeconfig** を選択します。 
-        ![kubeconfig オプションを選択](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png) 
     1. 省略記号 ( **...** ) を選択します。ローカル システムで以前にダウンロードした `kubeconfig` を参照して指定します。 **[サインイン]** を選択します。
         ![kubeconfig ファイルを参照](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
@@ -121,4 +137,5 @@ Kubernetes メトリック サーバーには、[ポッドの水平オートス�
 
 ## <a name="next-steps"></a>次のステップ
 
-[デバイスの問題をトラブルシューティングする](azure-stack-edge-gpu-troubleshoot.md)方法を学習する。
+[Azure Monitor を使用して監視](azure-stack-edge-gpu-enable-azure-monitor.md)する方法を確認する。
+[診断を実行してログを収集](azure-stack-edge-gpu-troubleshoot.md)する方法を確認する。

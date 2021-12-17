@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/22/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 90e81e30e26846bf05032dddf1441e8428bc7158
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.custom: aaddev, identityplatformtop40, has-adal-ref
+ms.openlocfilehash: 405843ad0d56a75dac20dc2a6c85d8bc15600312
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550984"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429103"
 ---
 # <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) の概要
 Microsoft Authentication Library (MSAL) を使用すると、ユーザーを認証し、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォームから[トークン](developer-glossary.md#security-token)を取得できます。 これは、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API へのセキュリティで保護されたアクセスを提供するために使用できます。 MSAL は、.NET、JavaScript、Java、Python、Android、iOS などの、さまざまなアプリケーション アーキテクチャとプラットフォームをサポートします。
@@ -31,6 +31,8 @@ MSAL では、多くのプラットフォームで API に一貫性があり、�
 * アプリケーションにサインインさせる対象ユーザー (自分の組織、複数の組織、職場、学校、Microsoft の個人アカウント、Azure AD B2C でのソーシャル ID、ソブリン クラウドのユーザー、国のクラウドのユーザー) の指定を支援します。
 * 構成ファイルからアプリケーションを設定する作業を支援します。
 * アクション可能な例外、ログ記録、テレメトリを公開することでアプリの問題解決を支援します。
+
+> [!VIDEO https://www.youtube.com/embed/zufQ0QRUHUk]
 
 ## <a name="application-types-and-scenarios"></a>アプリケーションの種類とシナリオ
 MSAL を使用し、Web アプリケーション、Web API、シングルページ アプリ (JavaScript)、モバイル アプリケーション、ネイティブ アプリケーション、デーモン、サーバー側アプリケーションといった多くの種類のアプリケーションからトークンを取得できます。
@@ -61,8 +63,8 @@ MSAL は次のような多くのアプリケーション シナリオで使用�
 | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Windows、macOS、Linux|
 | [MSAL React](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)| React と React ベースのライブラリ (Next.js、Gatsby.js) を使用したシングルページ アプリ|
 
-## <a name="differences-between-adal-and-msal"></a>ADAL と MSAL の違い
+## <a name="migrate-apps-that-use-adal-to-msal"></a>ADAL が使用されているアプリを MSAL に移行する
 
 Active Directory Authentication Library (ADAL) は開発者向け Azure AD (v1.0) エンドポイントと統合されます。そこでは、MSAL が Microsoft ID プラットフォームと統合されます。 v1.0 エンドポイントでは職場アカウントがサポートされますが、個人アカウントはサポートされません。 v2.0 エンドポイントは、Microsoft の個人アカウントと職場アカウントを 1 つの認証システムに統合します。 また、MSAL を使用するとき、Azure AD B2C の認証も取得できます。
 
-詳細については、「[migrating to MSAL.NET from ADAL.NET](msal-net-migration.md)」 (ADAL.NET から MSAL.NET に移行する) と「[migrating to MSAL.js from ADAL.js](msal-compare-msal-js-and-adal-js.md)」 (ADAL.js から MSAL.js に移行する) をお読みください。
+MSAL への移行方法の詳細については、「[Microsoft Authentication Library (MSAL) へのアプリケーションの移行](msal-migration.md)」を参照してください。

@@ -2,13 +2,13 @@
 title: メッセージ レプリケーション タスクのパターン - Azure Service Bus | Microsoft Docs
 description: この記事では、特定のメッセージ レプリケーション タスクのパターンを実装するための詳細なガイダンスを提供します
 ms.topic: article
-ms.date: 12/12/2020
-ms.openlocfilehash: d823ee7ccd4f53bfc3e10211a4f44908273a110d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 09/28/2021
+ms.openlocfilehash: 4effcb9f51532cb2ef87b18b264789c526b57585
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97663495"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211793"
 ---
 # <a name="message-replication-tasks-patterns"></a>メッセージ レプリケーション タスクのパターン
 
@@ -59,7 +59,7 @@ SRV レコードには、一般的な規則に従って、先頭に `_azure_serv
 
 | CNAME レコード                 | エイリアス
 |------------------------------|-------------------------------------------------------------
-| `servicebus.test.example.com`  | `test1.test.example.com`
+| `servicebus.test.example.com`  | `sb1.test.example.com`
 
 その後、明示的な CNAME および SRV レコードに対するクエリの実行を許可する DNS クライアントを使用して (Java および .NET の組み込みクライアントで許可されるのは、IP アドレスへの名前のシンプルな解決のみ)、目的のエンドポイントを解決できます。 たとえば、[DnsClient.NET](https://dnsclient.michaco.net/) の場合、参照関数は次のようになります。
 

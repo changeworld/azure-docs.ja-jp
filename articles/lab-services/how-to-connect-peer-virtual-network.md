@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services でピア ネットワークに接続する | Microsoft Docs
 description: ラボのネットワークと別のネットワークをピアとして接続する方法について説明します。 たとえば、オンプレミスの組織/大学のネットワークと Azure のラボの仮想ネットワークを接続します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 99ea72f11c8f389a15171a1fe3b376646494903a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd549061c5b40447afa11b82dfcfdb07d6b635ab
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96434245"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180706"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Azure Lab Services でラボのネットワークとピア仮想ネットワークを接続する
 
@@ -27,6 +27,9 @@ ms.locfileid: "96434245"
 
 > [!NOTE]
 > ラボ アカウントとピアリングされる予定の Azure Virtual Network の作成時には、ラボが作成される場所に、仮想ネットワークのリージョンがどのように影響するかを理解しておくことが重要です。  詳細については、管理者ガイドの「[リージョン (場所)](./administrator-guide.md#regionslocations)」セクションを参照してください。
+
+> [!NOTE]
+> [子供のインターネット保護法 (CIPA)](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act)に準拠するためなど、学校でコンテンツのフィルター処理を実行する必要がある場合は、サードパーティ製ソフトウェアを使用する必要があります。  詳細については、[ラボサービスを使用したコンテンツ フィルタリング](./administrator-guide.md#content-filtering)に関するガイダンスを参照してください。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>ラボ アカウントの作成時に構成する
 

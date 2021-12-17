@@ -4,12 +4,12 @@ description: ユーザー アカウントの種類とその構成方法につい
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.custom: seodec18
-ms.openlocfilehash: 02cad0bff9e76ec5db82c417f2439b12ef088045
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 5a071e03b27a2cb612118ad37e078ca8f8f86e08
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389283"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987976"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch のユーザー アカウントでタスクを実行する
 
@@ -18,7 +18,7 @@ ms.locfileid: "107389283"
 >
 > SSH を使用して Linux 仮想マシンの構成を実行しているノードに接続するには、[Ubuntu でリモート デスクトップを使用するための xrdp のインストールと構成](../virtual-machines/linux/use-remote-desktop.md)に関するページを参照してください。 RDP を使用して Windows を実行しているノードに接続するには、「[Windows が実行されている Azure 仮想マシンに接続してサインオンする方法](../virtual-machines/windows/connect-logon.md)」を参照してください。
 >
-> RDP を使用してクラウド サービスの構成を実行しているノードに接続するには、「[Azure Cloud Services のロールでのリモート デスクトップ接続の有効化](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)」をご覧ください。
+> RDP を使用して実行しているノードに接続するには、[Azure Cloud Services のロールでのリモート デスクトップ接続の有効化](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)に関するページをご覧ください。
 
 Azure Batch のタスクは、常にユーザー アカウントのもとで実行されます。 既定では、管理者権限のない標準ユーザー アカウントでタスクが実行されます。 特定のシナリオでは、タスクを実行するためのユーザー アカウントを構成したほうが良い場合もあります。 この記事では、ユーザー アカウントの種類、および自分のシナリオに合わせてユーザー アカウントを構成する方法について説明します。
 
@@ -139,7 +139,7 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserSc
 
 ### <a name="create-named-user-accounts"></a>名前付きユーザー アカウントを作成する
 
-Batch で名前付きユーザー アカウントを作成するには、ユーザー アカウントのコレクションをプールに追加します。 次のコード スニペットでは、.NET、Java、および Python で名前付きユーザー アカウントを作成する方法を示します。 これらのコード スニペットでは、プールで管理者と非管理者の両方の名前付きアカウントを作成する方法を説明します。 この例では、クラウド サービスの構成を使用してプールを作成し、Windows または Linux のプールを作成するときには、仮想マシンの構成で同じアプローチを使用します。
+Batch で名前付きユーザー アカウントを作成するには、ユーザー アカウントのコレクションをプールに追加します。 次のコード スニペットでは、.NET、Java、および Python で名前付きユーザー アカウントを作成する方法を示します。 これらのコード スニペットでは、プールで管理者と非管理者の両方の名前付きアカウントを作成する方法を説明します。
 
 #### <a name="batch-net-example-windows"></a>Batch .NET の例 (Windows)
 
@@ -147,7 +147,7 @@ Batch で名前付きユーザー アカウントを作成するには、ユー�
 CloudPool pool = null;
 Console.WriteLine("Creating pool [{0}]...", poolId);
 
-// Create a pool using the cloud service configuration.
+// Create a pool using Virtual Machine Configuration.
 pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
     targetDedicatedComputeNodes: 3,

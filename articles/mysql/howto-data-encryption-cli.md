@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2661e73b5ef1a820d28d71b93fd96db034e8daf6
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96519044"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114675335"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL のデータ暗号化
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure CLI を使用して Azure Database for MySQL のデータ暗号化を設定し、管理する方法について説明します。
 
@@ -63,6 +65,7 @@ Azure CLI を使用して Azure Database for MySQL のデータ暗号化を設�
 ```azurecli-interactive
 az keyvault key show --vault-name <key_vault_name> -n <key_name>
 ```
+* Azure Database for MySQL - 単一サーバーは、汎用またはメモリ最適化の価格レベルと、汎用ストレージ v2 である必要があります。 処理を進める前に、[カスタマー マネージド キーを使用したデータの暗号化](concepts-data-encryption-mysql.md#limitations)の制限事項を参照してください。
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>キー操作に対する適切なアクセス許可を設定する
 
@@ -280,4 +283,7 @@ Azure portal とは別に、新規および既存のサーバー用の Azure Res
 
 ## <a name="next-steps"></a>次のステップ
 
- データ暗号化の詳細については、「[カスタマー マネージド キーを使用した Azure Database for MySQL のデータの暗号化](concepts-data-encryption-mysql.md)」を参照してください。
+* [Azure Database for MySQL のデータ暗号化の検証](howto-data-encryption-validation.md)
+* [Azure Database for MySQL でのデータ暗号化のトラブルシューティング](howto-data-encryption-troubleshoot.md)
+* [カスタマー マネージド キーを使用したデータの暗号化の概念](concepts-data-encryption-mysql.md)。
+

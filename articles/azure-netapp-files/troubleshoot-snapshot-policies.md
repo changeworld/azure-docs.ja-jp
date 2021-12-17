@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files のスナップショット ポリシーのトラブルシューティング | Microsoft Docs
+title: Azure NetApp Files のスナップショット ポリシーに関するエラーのトラブルシューティング | Microsoft Docs
 description: Azure NetApp Files のスナップショット ポリシーの管理に関する問題のトラブルシューティングに役立つエラー メッセージと解決策について説明します。
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: 6ba8b18876bdae2754a6a772ce3909ff2f5a71b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6348e28b187b9d09f25eb50264b23aa3a521aae
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91651006"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224051"
 ---
-# <a name="troubleshoot-snapshot-policies"></a>スナップショット ポリシーのトラブルシューティング
+# <a name="troubleshoot-snapshot-policy-errors"></a>スナップショット ポリシーのエラーのトラブルシューティング
 
 この記事では、Azure NetApp Files のスナップショット ポリシーを管理するときに発生する可能性があるエラーのシナリオについて説明します。 問題に対処するのに役立つ可能性がある解決策も提供します。
 
@@ -36,4 +36,4 @@ ms.locfileid: "91651006"
 
 ## <a name="next-steps"></a>次のステップ  
 
-* [スナップショット ポリシーを管理する](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)
+* [スナップショット ポリシーを管理する](snapshots-manage-policy.md)

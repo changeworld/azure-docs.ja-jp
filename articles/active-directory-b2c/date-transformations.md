@@ -2,20 +2,21 @@
 title: カスタム ポリシーの日付要求変換の例
 description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの日付要求変換の例。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/16/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: b2c-support
+ms.openlocfilehash: 1f812a0afad78fc81d7844ebf1ec3b9a472f8862
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85202553"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007393"
 ---
 # <a name="date-claims-transformations"></a>日付要求変換
 
@@ -31,7 +32,7 @@ ms.locfileid: "85202553"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | leftOperand | string | 最初の要求の型。2 番目の要求よりも後である必要があります。 |
 | InputClaim | rightOperand | string | 2 番目の要求の型。最初の要求よりも前である必要があります。 |
-| InputParameter | AssertIfEqualTo | boolean | 左オペランドが右オペランドと等しい場合にこのアサーションを渡すかどうかを指定します。 |
+| InputParameter | AssertIfEqualTo | boolean | 左オペランドが右オペランドと等しい場合にこのアサーションでエラーをスローするかどうかを指定します。 左オペランドが右オペランドと等しく、値が `true` に設定されている場合、エラーがスローされます。 指定できる値は `true`(既定値) または`false`です。 |
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | 右オペランドがない場合にこのアサーションを渡すかどうかを指定します。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | INT | 2 つの日時の間で時刻が等しいと見なすことができるミリ秒数を指定します (たとえば、時刻の誤差を説明)。 |
 
@@ -39,7 +40,7 @@ ms.locfileid: "85202553"
 
 ![AssertStringClaimsAreEqual の実行](./media/date-transformations/assert-execution.png)
 
-次の例では、`currentDateTime` 要求を `approvedDateTime` 要求と比較します。 `currentDateTime` が `approvedDateTime` より後の場合にエラーがスローされます。 変換で、値が 5 分間 (30,000 ミリ秒) の差以内である場合に等価として扱われます。
+次の例では、`currentDateTime` 要求を `approvedDateTime` 要求と比較します。 `currentDateTime` が `approvedDateTime` より後の場合にエラーがスローされます。 変換で、値が 5 分間 (30,000 ミリ秒) の差以内である場合に等価として扱われます。 `AssertIfEqualTo` が `false` に設定されているので、値が等しい場合、エラー はスローされません。
 
 ```xml
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -54,6 +55,10 @@ ms.locfileid: "85202553"
   </InputParameters>
 </ClaimsTransformation>
 ```
+
+> [!NOTE]
+> 上記の例では、`AssertIfEqualTo`入力パラメーターを削除し、`currentDateTime` が `approvedDateTime` と等しい場合、エラーがスローされます。 `AssertIfEqualTo`既定値は `true` です。
+>
 
 `login-NonInteractive` 検証技術プロファイルによって、`AssertApprovedDateTimeLaterThanCurrentDateTime` 要求変換が呼び出されます。
 ```xml

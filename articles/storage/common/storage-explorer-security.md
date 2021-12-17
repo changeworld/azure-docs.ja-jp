@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: 283ec9999f9b4362035b6770383984efb0879d49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b82071c393cea168fccb5e06db85e71852bbd4f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92783761"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636764"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Storage Explorer セキュリティ ガイド
 
@@ -98,7 +98,7 @@ Storage Explorer を使用すると、Azure Blob Storage コンテナーのア�
 BLOB コンテナーのパブリック アクセスを有効にする場合は、次のガイドラインに従うことをお勧めします。
 
 - **機密データが含まれている可能性がある BLOB コンテナーでパブリック アクセスを有効にしない。** BLOB コンテナーに、プライベート データが存在しないことを確認します。
-- **BLOB またはコンテナー アクセスを持つ BLOB コンテナーに、機密である可能性があるデータをアップロードしない。** 
+- **BLOB またはコンテナー アクセスを持つ BLOB コンテナーに、機密である可能性があるデータをアップロードしない。**
 
 ## <a name="next-steps"></a>次の手順
 

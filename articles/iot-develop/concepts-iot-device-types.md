@@ -6,12 +6,12 @@ ms.author: rywinter
 ms.service: iot-develop
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: aa99594fe3de98635e37d15beebf015f15dc4f64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21eea79a6a448cd65bd12cde33efb6acabd3ada5
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100656385"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003650"
 ---
 # <a name="overview-of-azure-iot-device-types"></a>Azure IoT デバイスの種類の概要
 IoT デバイスは、さまざまなハードウェア プラットフォームにわたって存在します。 小型の 8 ビット MCU から、デスクトップ コンピューターに搭載されている最新の x86 CPU まで、さまざまなものがあります。 IoT デバイスにどのハードウェアを選択するかは、多くの可変要素が関係しますが、この記事では主な違いについていくつか説明します。
@@ -43,9 +43,14 @@ IoT デバイスは、マイクロコントローラー (MCU) とマイクロプ
 |**CPU**| 未満 | 詳細 |
 |**RAM**| 未満 | 詳細 |
 |**点滅**| 未満 | 詳細 |
-|**OS**| なし、または RTOS | General Purpose |
-|**開発の難しさ**| より難しい |  より簡単 |
+|**OS**| ベアメタル/RTOS | 汎用 (Windows/Linux) |
+|**開発の難しさ**| より難しい | より簡単 |
 |**電力消費**| 低 | 高 |
 |**コスト**| 低 | 高 |
-|**決定的**| はい | いいえ - 例外あり|
+|**決定的**| はい | いいえ - 例外あり |
 |**デバイス サイズ**| 小 | Larger |
+
+## <a name="next-steps"></a>次のステップ
+選択した IoT デバイスは、デバイスと Azure IoT の接続方法に直接的な影響を与えます。
+
+さまざまな [Azure IoT SDK](about-iot-sdks.md) を閲覧し、デバイスのニーズに最適なものを見つけてください。

@@ -2,17 +2,18 @@
 title: プライベート DNS ゾーンとレコードを保護する - Azure DNS
 description: このラーニング パスでは、Microsoft Azure DNS でプライベート DNS ゾーンとレコード セットの保護を始めます。
 services: dns
-author: asudbring
 ms.service: dns
+author: duongau
+ms.author: duau
 ms.topic: how-to
-ms.date: 02/18/2020
-ms.author: allensu
-ms.openlocfilehash: a68b40852750e124749ac838c50acae2212c4732
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/07/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b64d20e07ca78d18662f3e7aa7fe6ef1f822a159
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785883"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659799"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>プライベート DNS ゾーンとレコードを保護する方法
 
@@ -36,7 +37,7 @@ Azure RBAC のアクセス許可は、[Azure portal から](../role-based-access
 
 リソース グループの **[アクセス制御 (IAM)]** を開き、 **[追加]** を選択して、 **[プライベート DNS ゾーンの共同作成者]** ロールを選択します。 アクセス許可を付与する必要があるユーザーまたはグループを選択します。
 
-![Azure Portal を使用したリソース グループ レベルの Azure RBAC](./media/dns-protect-private-zones-recordsets/rbac1.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/resource-group-rbac.png" alt-text="プライベート DNS リソース グループの RBAC のスクリーンショット。":::
 
 アクセス許可は、[Azure PowerShell を使用して付与する](../role-based-access-control/role-assignments-powershell.md)こともできます。
 
@@ -69,7 +70,7 @@ Azure RBAC のルールは、サブスクリプション、リソース グル�
 
 ゾーン レベルの Azure RBAC アクセス許可は、Azure Portal から付与できます。  ゾーンの **[アクセス制御 (IAM)]** を開き、 **[追加]** を選択して、 **[プライベート DNS ゾーンの共同作成者]** ロールを選択します。 アクセス許可を付与する必要があるユーザーまたはグループを選択します。
 
-![Azure Portal を使用した DNS ゾーン レベルの Azure RBAC](./media/dns-protect-private-zones-recordsets/rbac2.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/zone-rbac.png" alt-text="プライベート DNS ゾーンの RBAC のスクリーンショット。":::
 
 アクセス許可は、[Azure PowerShell を使用して付与する](../role-based-access-control/role-assignments-powershell.md)こともできます。
 
@@ -102,9 +103,9 @@ az role assignment create \
 
 レコード セット レベルの Azure RBAC アクセス許可は、Azure portal の [レコード セット] ページにある **[アクセス制御 (IAM)]** ボタンを使用して構成できます。
 
-![[アクセス制御 (IAM)] ボタンを示すスクリーンショット。](./media/dns-protect-private-zones-recordsets/rbac3.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/record-set-rbac-1.png" alt-text="プライベート DNS レコード セットの RBAC のスクリーンショット。":::
 
-![[ロールの割り当ての追加] が選択されている [アクセス制御] を示すスクリーンショット。](./media/dns-protect-private-zones-recordsets/rbac4.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/record-set-rbac-2.png" alt-text="プライベート DNS レコード セットのロールの割り当てのスクリーンショット。":::
 
 レコード セット レベルの Azure RBAC アクセス許可は、[Azure PowerShell を使用して付与する](../role-based-access-control/role-assignments-powershell.md)こともできます。
 
@@ -202,7 +203,7 @@ Azure Resource Manager は、別のタイプのセキュリティ制御をサポ
 
 ゾーン レベルのリソース ロックは、Azure Portal を使用して作成できます。  DNS ゾーン ページから **[ロック]** 、 **[+ 追加]** の順に選択します。
 
-![Azure Portal を使用したゾーン レベルのリソース ロック](./media/dns-protect-private-zones-recordsets/locks1.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/zone-locks.png" alt-text="プライベート DNS ゾーンの [ロック] のスクリーンショット。":::
 
 ゾーン レベルのリソース ロックは、[Azure PowerShell](/powershell/module/az.resources/new-azresourcelock) を使用して作成することもできます。
 

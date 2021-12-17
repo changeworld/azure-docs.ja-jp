@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d5a8fe4192c3778e259ed18239a4198398d8807b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74410025e148eb60438a020164837dac486d2ad3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94836837"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954991"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般的な運用ガイド リファレンス
 
@@ -70,7 +70,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 #### <a name="hybrid-management-recommended-reading"></a>ハイブリッド管理に関する推奨資料
 
 - [Azure AD Connect:自動アップグレード](../hybrid/how-to-connect-install-automatic-upgrade.md)
-- [Azure AD アプリケーション プロキシ コネクタを理解する | 自動アップデート](../manage-apps/application-proxy-connectors.md#automatic-updates)
+- [Azure AD アプリケーション プロキシ コネクタを理解する | 自動アップデート](../app-proxy/application-proxy-connectors.md#automatic-updates)
 
 ### <a name="azure-ad-connect-health-alert-baseline"></a>Azure AD Connect Health のアラートのベースライン
 
@@ -90,9 +90,9 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>オンプレミスのエージェント ログに関する推奨資料
 
-- [アプリケーション プロキシのトラブルシューティング](../manage-apps/application-proxy-troubleshoot.md)
+- [アプリケーション プロキシのトラブルシューティング](../app-proxy/application-proxy-troubleshoot.md)
 - [セルフサービス パスワード リセット のトラブルシューティング - Azure Active Directory](../authentication/troubleshoot-sspr.md)
-- [Azure AD アプリケーション プロキシ コネクタについて](../manage-apps/application-proxy-connectors.md)
+- [Azure AD アプリケーション プロキシ コネクタについて](../app-proxy/application-proxy-connectors.md)
 - [Azure AD Connect:パススルー認証のトラブルシューティング](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
 - [Azure AD MFA NPS 拡張機能のエラー コードのトラブルシューティング](../authentication/howto-mfa-nps-extension-errors.md)
 
@@ -106,7 +106,7 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>オンプレミスのエージェント管理に関する推奨資料
 
-- [Azure AD アプリケーション プロキシ コネクタについて](../manage-apps/application-proxy-connectors.md)
+- [Azure AD アプリケーション プロキシ コネクタについて](../app-proxy/application-proxy-connectors.md)
 - [Azure AD パススルー認証 - クイックスタート](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>大規模な管理

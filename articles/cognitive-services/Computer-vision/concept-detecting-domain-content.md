@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 530ca81cedad06c949323889cc02d2a233dd0c02
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ff00d61c5f53d0c702e16d8223a330cb09ee619e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778825"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465402"
 ---
 # <a name="detect-domain-specific-content"></a>ドメイン固有のコンテンツの検出
 
@@ -26,7 +26,7 @@ ms.locfileid: "107778825"
 
 ### <a name="scoped-analysis"></a>スコープされた分析
 
-選択したドメイン固有のモデルのみを使用してイメージを分析するには、[Models/\<model\>/Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API を使用します。
+選択したドメイン固有のモデルのみを使用してイメージを分析するには、[Models/\<model\>/Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API を使用します。
 
 特定のイメージについて、**models/celebrities/analyze** API で返される JSON 応答の例を次に示します。
 
@@ -57,7 +57,7 @@ ms.locfileid: "107778825"
 
 ### <a name="enhanced-categorization-analysis"></a>拡張カテゴリ化解析
 
-ドメイン固有のモデルを使用して、一般的なイメージ解析を補足することもできます。 これは、[Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API 呼び出しの *details* パラメーターにドメイン固有のモデルを指定して、[大まかなカテゴリ化](concept-categorizing-images.md)の一部として行います。
+ドメイン固有のモデルを使用して、一般的なイメージ解析を補足することもできます。 これは、[Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API 呼び出しの *details* パラメーターにドメイン固有のモデルを指定して、[大まかなカテゴリ化](concept-categorizing-images.md)の一部として行います。
 
 この場合、最初に 86 のカテゴリ分類の分類子が呼び出されます。 検出されたカテゴリのいずれかに、一致するドメイン固有のモデルがあった場合、イメージはそのモデルもパススルーし、結果が追加されます。
 
@@ -105,7 +105,7 @@ ms.locfileid: "107778825"
 | celebrities | 著名人の認識、`people_` カテゴリに分類された画像についてサポート |
 | landmarks | ランドマークの認識、`outdoor_` または `building_` カテゴリに分類された画像についてサポート |
 
-[Models](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f20e) API を呼び出すと、各モデルを適用できるカテゴリと共に、この情報が返されます。
+[Models](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f20e) API を呼び出すと、各モデルを適用できるカテゴリと共に、この情報が返されます。
 
 ```json
 {
@@ -137,6 +137,8 @@ ms.locfileid: "107778825"
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="use-the-api"></a>API の使用
 
-[画像の分類](concept-categorizing-images.md)に関する概念を学習する。
+この機能は、[Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API を介して利用できます。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 **details** クエリ パラメーターに `Celebrities` または `Landmarks` を含めます。 その後、完全な JSON 応答が得られたら、`"details"` セクションのコンテンツを対象に文字列を解析します。
+
+* [クイック スタート: Computer Vision REST API またはクライアント ライブラリ](./quickstarts-sdk/image-analysis-client-library.md?pivots=programming-language-csharp)

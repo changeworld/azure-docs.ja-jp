@@ -8,12 +8,12 @@ ms.date: 02/04/2021
 ms.author: rogarana
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0c029abd87e1b819cc4d96e906be8824c019f433
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 435bc37a79ea7397bcfd8d1d044c44cd5fde382e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99584976"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630728"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Azure Storage から大量のランダム データをダウンロードする
 
@@ -22,9 +22,9 @@ ms.locfileid: "99584976"
 シリーズの第 3 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * アプリケーションの更新
-> * アプリケーションの実行
-> * 接続数の検証
+> - アプリケーションの更新
+> - アプリケーションの実行
+> - 接続数の検証
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -103,13 +103,13 @@ dotnet run
 
 次の例に、`DownloadFilesAsync` タスクを示します。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 アプリケーションは、**storageconnectionstring** で指定されたストレージ アカウント内にあるコンテナーを読み取ります。 [GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) メソッドを使用して BLOB を反復処理し、[DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) メソッドを使用してローカル コンピューターにダウンロードします。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Scalable.cs" id="Snippet_DownloadFilesAsync":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 アプリケーションは、**storageconnectionstring** で指定されたストレージ アカウント内にあるコンテナーを読み取ります。 コンテナー内の [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync) メソッドを使用して一度に 10 個の BLOB を反復処理し、[DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) メソッドを使用してローカル コンピューターにダウンロードします。
 
@@ -223,8 +223,8 @@ C:\>
 シリーズの第 3 部では、次の方法を含め、ストレージ アカウントから大量のデータをダウンロードする方法について学びました。
 
 > [!div class="checklist"]
-> * アプリケーションの実行
-> * 接続数の検証
+> - アプリケーションの実行
+> - 接続数の検証
 
 シリーズの第 4 部に進んで、スループットと待ち時間のメトリックをポータルで確認します。
 

@@ -10,106 +10,143 @@ metadata:
   ms.collection: collection
   author: tfitzmac
   ms.author: tomfitz
-  ms.date: 03/04/2020
-  ms.openlocfilehash: e844a428910a220d77c143baa74124a112135387
-  ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/01/2020
-  ms.locfileid: "96435214"
+  ms.date: 06/01/2021
 highlightedContent:
   items:
-  - title: Azure Resource Manager とは
-    itemType: overview
-    url: management/overview.md
-  - title: ARM テンプレートとは
-    itemType: overview
-    url: templates/overview.md
-  - title: 最初のテンプレートを作成する
-    itemType: tutorial
-    url: templates/template-tutorial-create-first-template.md
+    - title: Azure Resource Manager とは
+      itemType: overview
+      url: management/overview.md
+    - title: ARM テンプレートとは
+      itemType: overview
+      url: templates/overview.md
+    - title: Bicep とは
+      itemType: overview
+      url: bicep/overview.md
 conceptualContent:
   items:
-  - title: ARM テンプレートのデプロイ
-    links:
-    - url: templates/overview.md
-      itemType: overview
-      text: 概要
-    - url: templates/template-tutorial-create-first-template.md
-      itemType: tutorial
-      text: 初心者向けチュートリアル シリーズ
-    - url: templates/template-syntax.md
-      itemType: reference
-      text: テンプレート構文
-    - url: templates/template-functions.md
-      itemType: reference
-      text: テンプレート関数
-    - url: /azure/templates/
-      itemType: reference
-      text: テンプレート リファレンス
-    - url: templates/deploy-powershell.md
-      itemType: how-to-guide
-      text: 配置
-    - url: templates/template-best-practices.md
-      itemType: concept
-      text: ベスト プラクティス
-    footerLink:
-      url: templates/index.yml
-      text: さらに詳しく
-  - title: リソースの管理
-    links:
-    - url: management/overview.md
-      itemType: overview
-      text: 概要
-    - url: management/tag-resources.md
-      itemType: how-to-guide
-      text: リソースへのタグ付け
-    - url: management/move-resource-group-and-subscription.md
-      itemType: concept
-      text: リソースの移動
-    - url: management/lock-resources.md
-      itemType: how-to-guide
-      text: リソースのロック
-    - url: management/resource-providers-and-types.md
-      itemType: concept
-      text: リソース プロバイダーと種類
-    - url: management/azure-subscription-service-limits.md
-      itemType: concept
-      text: サブスクリプションとサービスの制限
-    footerLink:
-      url: management/index.yml
-      text: さらに詳しく
-  - title: Managed Applications
-    links:
-    - url: managed-applications/overview.md
-      itemType: overview
-      text: 概要
-    - url: managed-applications/publish-service-catalog-app.md
-      itemType: tutorial
-      text: アプリをサービス カタログに発行する
-    - url: managed-applications/create-uidefinition-overview.md
-      itemType: how-to-guide
-      text: アプリを作成するためのポータル ウィンドウを定義する
-    - url: ../marketplace/create-new-azure-apps-offer.md
-      itemType: tutorial
-      text: アプリを Marketplace に追加する
-    footerLink:
-      url: managed-applications/index.yml
-      text: さらに詳しく
-  - title: Azure カスタム プロバイダー
-    links:
-    - url: custom-providers/overview.md
-      itemType: overview
-      text: 概要
-    - url: custom-providers/create-custom-provider.md
-      itemType: quickstart
-      text: カスタム プロバイダーを作成する
-    - url: custom-providers/tutorial-get-started-with-custom-providers.md
-      itemType: tutorial
-      text: カスタム アクションとリソースを作成する
-    - url: custom-providers/custom-providers-action-endpoint-how-to.md
-      itemType: how-to-guide
-      text: カスタム アクションを Azure REST API に追加する
-    footerLink:
-      url: custom-providers/index.yml
-      text: 詳細情報
+    - title: ARM テンプレートのデプロイ
+      links:
+        - url: templates/overview.md
+          itemType: overview
+          text: 概要
+        - url: templates/template-tutorial-create-first-template.md
+          itemType: tutorial
+          text: 初心者向けチュートリアル シリーズ
+        - url: ./templates/syntax.md
+          itemType: reference
+          text: テンプレート構文
+        - url: templates/template-functions.md
+          itemType: reference
+          text: テンプレート関数
+        - url: /azure/templates/
+          itemType: reference
+          text: テンプレート リファレンス
+        - url: templates/deploy-powershell.md
+          itemType: how-to-guide
+          text: 配置
+        - url: ./templates/best-practices.md
+          itemType: concept
+          text: ベスト プラクティス
+      footerLink:
+        url: templates/index.yml
+        text: さらに詳しく
+    - title: Bicep ファイルをデプロイする
+      links:
+        - url: bicep/overview.md
+          itemType: overview
+          text: 概要
+        - url: /learn/paths/bicep-deploy
+          itemType: learn
+          text: Learn パス
+        - url: bicep/file.md
+          itemType: reference
+          text: Bicep ファイルの構造
+        - url: bicep/bicep-functions.md
+          itemType: reference
+          text: Bicep 関数
+        - url: /azure/templates/
+          itemType: reference
+          text: リソースの参照
+        - url: bicep/deploy-powershell.md
+          itemType: how-to-guide
+          text: 配置
+        - url: ./bicep/best-practices.md
+          itemType: concept
+          text: ベスト プラクティス
+      footerLink:
+        url: bicep/index.yml
+        text: さらに詳しく
+    - title: リソースの管理
+      links:
+        - url: management/overview.md
+          itemType: overview
+          text: 概要
+        - url: management/tag-resources.md
+          itemType: how-to-guide
+          text: リソースへのタグ付け
+        - url: management/move-resource-group-and-subscription.md
+          itemType: concept
+          text: リソースの移動
+        - url: management/lock-resources.md
+          itemType: how-to-guide
+          text: リソースのロック
+        - url: management/resource-providers-and-types.md
+          itemType: concept
+          text: リソース プロバイダーと種類
+        - url: management/azure-subscription-service-limits.md
+          itemType: concept
+          text: サブスクリプションとサービスの制限
+      footerLink:
+        url: management/index.yml
+        text: さらに詳しく
+    - title: デプロイのトラブルシューティング
+      links:
+        - url: troubleshooting/overview.md
+          itemType: overview
+          text: 概要
+        - url: troubleshooting/common-deployment-errors.md
+          itemType: how-to-guide
+          text: 一般的なデプロイのエラー
+        - url: troubleshooting/quickstart-troubleshoot-arm-deployment.md
+          itemType: quickstart
+          text: ARM テンプレートをトラブルシューティングする
+        - url: troubleshooting/quickstart-troubleshoot-bicep-deployment.md
+          itemType: quickstart
+          text: Bicep ファイルをトラブルシューティングする
+      footerLink:
+        url: troubleshooting/index.yml
+        text: さらに詳しく
+    - title: Managed Applications
+      links:
+        - url: managed-applications/overview.md
+          itemType: overview
+          text: 概要
+        - url: managed-applications/publish-service-catalog-app.md
+          itemType: tutorial
+          text: アプリをサービス カタログに発行する
+        - url: managed-applications/create-uidefinition-overview.md
+          itemType: how-to-guide
+          text: アプリを作成するためのポータル ウィンドウを定義する
+        - url: ../marketplace/azure-app-offer-setup.md
+          itemType: tutorial
+          text: アプリを Marketplace に追加する
+      footerLink:
+        url: managed-applications/index.yml
+        text: さらに詳しく
+    - title: Azure カスタム プロバイダー
+      links:
+        - url: custom-providers/overview.md
+          itemType: overview
+          text: 概要
+        - url: custom-providers/create-custom-provider.md
+          itemType: quickstart
+          text: カスタム プロバイダーを作成する
+        - url: custom-providers/tutorial-get-started-with-custom-providers.md
+          itemType: tutorial
+          text: カスタム アクションとリソースを作成する
+        - url: custom-providers/custom-providers-action-endpoint-how-to.md
+          itemType: how-to-guide
+          text: カスタム アクションを Azure REST API に追加する
+      footerLink:
+        url: custom-providers/index.yml
+        text: 詳細情報

@@ -1,0 +1,148 @@
+- name: ネットワークの基礎に関するドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure ネットワークについて
+      href: networking-overview.md
+- name: クイックスタート
+  items:
+    - name: 仮想ネットワークの作成
+      href: ../../virtual-network/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+- name: チュートリアル
+  items:
+    - name: ネットワーク アクセスを制限する
+      href: ../../virtual-network/tutorial-restrict-network-access-to-resources.md?toc=/azure/networking/fundamentals/toc.json
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
+- name: 概念
+  expanded: true
+  items:
+    - name: Architecture
+      href: architecture-guides.md
+    - name: 計画と設計
+      items:
+        - name: ネットワーク エンジニア向けの Azure
+          href: ../azure-for-network-engineers.md?toc=/azure/networking/fundamentals/toc.json
+        - name: リモートでの作業
+          href: ../working-remotely-support.md?toc=/azure/networking/fundamentals/toc.json
+        - name: 仮想ネットワーク
+          href: ../../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=/azure/networking/fundamentals/toc.json
+        - name: クロスプレミス接続 - VPN
+          href: ../../vpn-gateway/design.md?toc=/azure/networking/fundamentals/toc.json
+        - name: クロスプレミス接続 - 専用プライベート
+          href: ../../expressroute/expressroute-workflows.md?toc=/azure/networking/fundamentals/toc.json
+    - name: マイクロソフトのグローバル ネットワーク
+      items:
+        - name: 概要
+          href: ../microsoft-global-network.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Azure のネットワーク待ち時間
+          href: ../azure-network-latency.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Azure でのインターネット ルーティング設定
+          href: ../../virtual-network/ip-services/routing-preference-overview.md?toc=%2fazure%2fnetworking%2ffundamentals%2ftoc.json
+    - name: クラウド ネットワーク接続
+      items:
+        - name: 仮想ネットワーク
+          href: ../../virtual-network/virtual-networks-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: パブリック IP アドレス
+          href: ../../virtual-network/ip-services/public-ip-addresses.md?toc=%2fazure%2fnetworking%2ffundamentals%2ftoc.json
+        - name: DNS
+          href: ../../dns/dns-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: ネットワーク トラフィックのルーティング
+          href: ../../virtual-network/virtual-networks-udr-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: 仮想ネットワークの接続
+          href: ../../virtual-network/virtual-network-peering-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: リソースへのプライベート アクセス
+          href: ../../private-link/private-endpoint-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: オンプレミスを Azure に接続する - VPN 暗号化
+          href: ../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=/azure/networking/fundamentals/toc.json
+        - name: オンプレミスを Azure に拡張する - プライベート接続
+          href: ../../expressroute/expressroute-connect-azure-to-public-cloud.md?toc=/azure/networking/fundamentals/toc.json
+        - name: 送信専用のインターネット接続
+          href: ../../virtual-network/nat-gateway/nat-overview.md?toc=%2fazure%2fnetworking%2ffundamentals%2ftoc.json
+    - name: ネットワークのセキュリティ
+      items:
+        - name: ネットワーク セキュリティ グループ
+          href: ../../virtual-network/network-security-groups-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: プライベート エンドポイント
+          href: ../../private-link/private-endpoint-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: ネットワーク ファイアウォール
+          href: ../../firewall/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DDoS 保護
+          href: ../../ddos-protection/ddos-protection-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Web アプリケーション ファイアウォール
+          href: ../../web-application-firewall/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+    - name: スケーラブルなアプリケーション配信
+      items:
+        - name: Azure の負荷分散オプション
+          href: /azure/architecture/guide/technology-choices/load-balancing-overview?toc=/azure/networking/fundamentals/toc.json
+        - name: ネットワーク ロード バランサー
+          href: ../../load-balancer/load-balancer-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: セキュリティで保護されたクラウド CDN とグローバル ロード バランサー
+          href: ../../frontdoor/front-door-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Web アプリケーション ロード バランサー
+          href: ../../application-gateway/overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DNS ベースのロード バランサー
+          href: ../../traffic-manager/traffic-manager-overview.md?toc=/azure/networking/fundamentals/toc.json
+    - name: ネットワーク監視
+      items:
+        - name: Azure Monitor を使用してネットワークを監視する
+          href: ../../azure-monitor/insights/network-insights-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: ネットワーク正常性の監視と修復
+          href: ../../network-watcher/network-watcher-monitoring-overview.md?toc=/azure/networking/fundamentals/toc.json
+- name: 操作方法ガイド
+  items:
+    - name: クラウド ネットワークを作成して接続する
+      items:
+        - name: 仮想ネットワークの作成
+          href: ../../virtual-network/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: パブリック IP アドレスの作成
+          href: ../../virtual-network/ip-services/create-public-ip-portal.md?toc=%2fazure%2fnetworking%2ffundamentals%2ftoc.json
+        - name: ルーティング コストを最適化する
+          href: ../../virtual-network/ip-services/routing-preference-portal.md?toc=%2fazure%2fnetworking%2ffundamentals%2ftoc.json
+        - name: アウトバウンド接続用の NAT ゲートウェイを作成する
+          href: ../../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md?toc=%2fazure%2fnetworking%2ffundamentals%2ftoc.json
+        - name: Azure DNS ゾーンとレコードの作成
+          href: ../../dns/dns-getstarted-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: ルーティング テーブルを使用してトラフィックをルーティングする
+          href: ../../virtual-network/tutorial-create-route-table-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: 仮想ネットワークの接続
+          href: ../../virtual-network/tutorial-connect-virtual-networks-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: リソースへのプライベート アクセス
+          href: ../../private-link/create-private-endpoint-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: オンプレミス ネットワークを仮想ネットワークに接続する - VPN の暗号化
+          href: ../../vpn-gateway/tutorial-site-to-site-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: クロスプレミス接続 - 専用
+          href: ../../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=/azure/networking/fundamentals/toc.json
+    - name: ネットワークをセキュリティで保護する
+      items:
+        - name: ネットワーク アクセスを制限する
+          href: ../../virtual-network/tutorial-restrict-network-access-to-resources.md?toc=/azure/networking/fundamentals/toc.json
+        - name: ネットワーク トラフィックのフィルター処理
+          href: ../../virtual-network/tutorial-filter-network-traffic.md?toc=/azure/networking/fundamentals/toc.json
+        - name: ネットワーク ファイアウォールを配置する
+          href: ../../firewall/tutorial-firewall-deploy-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DDoS 攻撃からネットワークを保護する
+          href: ../../ddos-protection/manage-ddos-protection.md?toc=/azure/networking/fundamentals/toc.json
+    - name: アプリケーション配信をスケーリングする
+      items:
+        - name: ネットワーク ロード バランサーの作成
+          href: ../../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: セキュリティで保護されたクラウド CDN とグローバル ロード バランサーのデプロイ
+          href: ../../frontdoor/quickstart-create-front-door.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Web アプリケーション ロード バランサーの作成
+          href: ../../application-gateway/quick-create-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: DNS ベースのロード バランサーの作成
+          href: ../../traffic-manager/quickstart-create-traffic-manager-profile.md?toc=/azure/networking/fundamentals/toc.json
+    - name: ネットワークの監視
+      items:
+        - name: ネットワーク正常性の監視
+          href: ../../network-watcher/network-watcher-monitoring-overview.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Azure リソース間の通信を監視する
+          href: ../../network-watcher/connection-monitor-create-using-portal.md?toc=/azure/networking/fundamentals/toc.json
+        - name: Azure Monitor Network Insights
+          href: ../../azure-monitor/insights/network-insights-overview.md?toc=/azure/networking/fundamentals/toc.json

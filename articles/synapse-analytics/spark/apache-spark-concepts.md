@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 51b2e8cd968c4c14777d196d90686b13158aef42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ca0fd208ed739118708630a80b4829ce7519704
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98120310"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715741"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure Synapse Analytics の Apache Spark の主要な概念
 
@@ -80,7 +80,7 @@ Try reducing the numbers of vcores requested or increasing your vcore quota. Cli
 - サービスの種類として "Azure Synapse Analytics" を選択します。
 - [クォータの詳細] ウィンドウで、[Apache Spark (vCore) per workspace]\(ワークスペースごとの Apache Spark (仮想コア)\) を選択します。
 
-[Azure portal でキャパシティの引き上げを要求する](../../azure-portal/supportability/per-vm-quota-requests.md#request-a-standard-quota-increase-from-help--support)
+[Azure portal でキャパシティの引き上げを要求する](../../azure-portal/supportability/per-vm-quota-requests.md)
 
 ### <a name="spark-pool-level"></a>Spark プール レベル
 

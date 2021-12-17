@@ -2,22 +2,28 @@
 title: エンティティ認識のコグニティブ スキル
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search のエンリッチメント パイプラインのテキストからさまざまな種類のエンティティを抽出します。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 3300d68c6356cb7cdd56a9ad79eb0ac011942eb2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/24/2021
+ms.openlocfilehash: 0ff55bf38e88bf62b483cf70df89a17b9c5afb8d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547902"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210385"
 ---
+<<<<<<< HEAD
 #    <a name="entity-recognition-cognitive-skill"></a>エンティティ認識のコグニティブ スキル
+=======
+# <a name="entity-recognition-cognitive-skill"></a>エンティティ認識の認知スキル
+>>>>>>> repo_sync_working_branch
 
 **エンティティ認識** スキルによってテキストからさまざまな種類のエンティティが抽出されます。 このスキルでは、Cognitive Services の [Text Analytics](../cognitive-services/text-analytics/overview.md) によって提供される機械学習モデルが使用されます。
+
+> [!IMPORTANT]
+> エンティティの認識スキルは廃止となり、[Microsoft.Skills.Text.V3.EntityRecognitionSkill](cognitive-search-skill-entity-recognition-v3.md) に置き換えられました。 「[非推奨の Cognitive Search スキル](cognitive-search-skill-deprecated.md)」に記載されている推奨事項に従い、サポートされているスキルに移行してください。
 
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
@@ -196,3 +202,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
+<<<<<<< HEAD
+=======
++ [エンティティ認識スキル (V3)](cognitive-search-skill-entity-recognition-v3.md)
+>>>>>>> repo_sync_working_branch

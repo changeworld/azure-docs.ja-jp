@@ -6,21 +6,19 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 7966750d7c3e0f12bb9404a4d78bbc27e4075c52
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7f4066f466b6dd9e8cb41bf68592aa88c192c44d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786585"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743240"
 ---
 # <a name="analyze-server-dependencies-agentless"></a>サーバーの依存関係を分析する (エージェントレス)
 
 この記事では、Azure Migrate: 検出および評価ツールを使用してエージェントレスの依存関係の分析を設定する方法について説明します。 [依存関係の分析](concepts-dependency-visualization.md)は、評価や Azure への移行に関してサーバー間の依存関係を特定し、把握するのに役立ちます。
 
 > [!IMPORTANT]
-> エージェントレスの依存関係の分析は現在、Azure Migrate: 検出および評価ツールで検出された VMware 環境で実行されているサーバーではプレビュー段階です。
-> このプレビューはカスタマー サポートの対象であり、運用ワークロードで使用できます。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>エージェントレスの依存関係の分析は現在、Azure Migrate: Discovery and Assessment ツールで検出された VMware 環境で実行されているサーバーでのみ実行できます。
 
 ## <a name="current-limitations"></a>現在の制限
 

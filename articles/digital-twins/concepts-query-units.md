@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins のクエリ ユニットの請求概念について
 author: baanders
 ms.author: baanders
-ms.date: 8/14/2020
+ms.date: 9/16/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0e1c5f08c4292e4f3dfec448d8bf54d5d5601840
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb5e7970c2ce44b5ee96f671464a3029cb9429b1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99050500"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631003"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure Digital Twins のクエリ ユニット 
 
@@ -31,7 +31,7 @@ Azure Digital Twins でサポートされているクエリ操作を実行する
 
 Azure Digital Twins の[クエリ API](/rest/api/digital-twins/dataplane/query) を使用してクエリを実行するとき、応答ヘッダーを検証して、クエリで消費した QU の数を追跡できます。 Azure Digital Twins から返された応答内の "query-charge" を探します。
 
-Azure Digital Twins の [SDK](how-to-use-apis-sdks.md) を使用すると、ページング可能な応答から query-charge ヘッダーを抽出できます。 このセクションでは、デジタル ツインをクエリする方法と、ページング可能な応答を反復処理して query-charge ヘッダーを抽出する方法を示します。 
+[Azure Digital Twins の SDK](concepts-apis-sdks.md) を使用すると、ページング可能な応答から query-charge ヘッダーを抽出できます。 このセクションでは、デジタル ツインをクエリする方法と、ページング可能な応答を反復処理して query-charge ヘッダーを抽出する方法を示します。 
 
 次のコード スニペットは、クエリ API を呼び出すと発生するクエリ料金を抽出する方法を示しています。 まず応答ページを反復処理して query-charge ヘッダーにアクセスした後、各ページ内のデジタル ツイン結果を反復処理します。 
 
@@ -41,8 +41,8 @@ Azure Digital Twins の [SDK](how-to-use-apis-sdks.md) を使用すると、ペ�
 
 Azure Digital Twins のクエリの詳細については、次を参照してください。
 
-* "[*概念: クエリ言語*](concepts-query-language.md)
-* [*方法: ツイン グラフにクエリを実行する*](how-to-query-graph.md)
+* [クエリ言語](concepts-query-language.md)
+* [ツイン グラフにクエリを実行する](how-to-query-graph.md)
 * [クエリ API リファレンス ドキュメント](/rest/api/digital-twins/dataplane/query/querytwins)
 
-Azure Digital Twins のクエリ関連の制限については、[*Azure Digital Twins サービスの制限*](reference-service-limits.md)に関する記事をご覧ください。
+Azure Digital Twins のクエリ関連の制限については、[Azure Digital Twins サービスの制限](reference-service-limits.md)に関する記事をご覧ください。

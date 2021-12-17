@@ -1,0 +1,30 @@
+- name: Datadog Azure 統合のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Datadog とは
+      href: overview.md
+      displayName: 'Datadog, Monitoring'
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: 新しい Datadog 組織を作成する
+      href: create.md
+    - name: 既存の Datadog 組織にリンクする
+      href: link-to-existing-organization.md
+- name: 方法
+  items:
+    - name: デプロイ前の構成
+      href: prerequisites.md
+    - name: 管理する
+      href: manage.md
+    - name: トラブルシューティング
+      items:
+        - name: サポートを受ける
+          href: get-support.md
+        - name: 一般的なエラーを修正する
+          href: troubleshoot.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/datadog

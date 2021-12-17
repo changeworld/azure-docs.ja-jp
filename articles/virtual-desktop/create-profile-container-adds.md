@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/09/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 59e2fc1f528040515398e51d359840f6ef1bbefc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 33e73a70db1a0fd16fae98ee5bc4bbdaa3759fe8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107255802"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756061"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure Files および Azure AD DS を使用してプロファイル コンテナーを作成する
 
@@ -113,7 +113,7 @@ ms.locfileid: "107255802"
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile
      ```
 
-8. Windows Virtual Desktop ユーザーが自分のプロファイル コンテナーを作成できるようにしつつ、作成者以外はそのプロファイル コンテナーにアクセスできないようにするために、次のコマンドを実行します。
+8. Azure Virtual Desktop ユーザーが自分のプロファイル コンテナーを作成できるようにしつつ、作成者以外はそのプロファイル コンテナーにアクセスできないようにするために、次のコマンドを実行します。
 
      ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
@@ -175,7 +175,7 @@ FSLogix プロファイル コンテナーを構成するには以下の手順�
 
 ユーザーを割り当てるには以下の手順に従ってください。
 
-1. 管理者として Windows PowerShell を実行した後、以下のコマンドレットを実行して PowerShell を使い、Windows Virtual Desktop にサインインします。
+1. 管理者として Windows PowerShell を実行した後、以下のコマンドレットを実行して PowerShell を使い、Azure Virtual Desktop にサインインします。
 
    ```powershell
    Import-Module Microsoft.RdInfra.RdPowershell
@@ -188,7 +188,7 @@ FSLogix プロファイル コンテナーを構成するには以下の手順�
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-   資格情報を求められたら、Windows Virtual Desktop テナントのテナント作成者、RDS 所有者、または RDS 共同作成者のロールが与えられているユーザーを入力します。
+   資格情報を求められたら、Azure Virtual Desktop テナントのテナント作成者、RDS 所有者、または RDS 共同作成者のロールが与えられているユーザーを入力します。
 
 2. 次のコマンドレットを実行して、リモート デスクトップ グループにユーザーを割り当てます。
 
@@ -226,7 +226,7 @@ FSLogix プロファイル コンテナーを構成するには以下の手順�
 
 プロファイルを確認するには以下の手順に従ってください。
 
-1. ブラウザーを開き、[Windows Virtual Desktop の Web クライアント](https://rdweb.wvd.microsoft.com/arm/webclient)に移動します。
+1. ブラウザーを開き、[Azure Virtual Desktop の Web クライアント](https://rdweb.wvd.microsoft.com/arm/webclient)に移動します。
 
 2. リモート デスクトップ グループに割り当てられたユーザー アカウントを使用してサインインします。
 

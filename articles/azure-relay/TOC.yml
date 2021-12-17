@@ -32,12 +32,18 @@
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 認証と権限承認
-          href: relay-authentication-and-authorization.md
-        - name: 組み込みのセキュリティ制御
-          href: service-bus-relay-security-controls.md
+          items:
+            - name: 概要 (認証と承認)
+              href: relay-authentication-and-authorization.md
+            - name: Azure Active Directory を使用する
+              items:
+                - name: マネージド ID による認証 (プレビュー)
+                  href: authenticate-managed-identity.md
+                - name: アプリケーションからの認証 (プレビュー)
+                  href: authenticate-application.md
         - name: ネットワークのセキュリティ
           href: network-security.md
     - name: ハイブリッド接続のプロトコル
@@ -83,6 +89,8 @@
           href: /dotnet/api/microsoft.azure.relay
         - name: Microsoft.ServiceBus
           href: /dotnet/api/Microsoft.ServiceBus
+    - name: Azure CLI
+      href: /cli/azure/relay
     - name: 例外
       href: relay-exceptions.md
     - name: ポートの設定
@@ -92,7 +100,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
     - name: よく寄せられる質問
-      href: relay-faq.md
+      href: relay-faq.yml
     - name: ブログ
       href: /archive/blogs/servicebus/
     - name: 価格

@@ -1,48 +1,43 @@
 ---
-title: 'VPN Gateway: P2S OpenVPN プロトコル接続用の VPN クライアントAzure AD 認証'
-description: ポイント対サイト VPN と Azure Active Directory 認証を使用して仮想ネットワークに接続するように VPN クライアントを構成する方法について説明します。
+title: 'P2S OpenVPN プロトコル接続用に VPN クライアントを構成する: Azure AD 認証'
+description: VPN Gateway のポイント対サイト VPN と Azure Active Directory 認証を使用して仮想ネットワークに接続するように VPN クライアントを構成する方法について説明します。
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.author: alzam
-ms.openlocfilehash: 02ce8e1809c5dd404e7afa25178acf37e7346cab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/20/2021
+ms.author: cherylmc
+ms.openlocfilehash: a004e8d7fd87cc7abdf881b355b40b59ac874ba1
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548412"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779738"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory 認証: P2S OpenVPN プロトコル接続用に VPN クライアントを構成する
 
-この記事では、VPN クライアントからポイント対サイト VPN と Azure Active Directory 認証を使用して仮想ネットワークに接続する際の構成について説明します。 Azure AD を使用して接続と認証を行うには、まず Azure AD テナントを構成する必要があります。 詳細については、「[Azure AD テナントの構成](openvpn-azure-ad-tenant.md)」を参照してください。
+この記事では、VPN クライアントからポイント対サイト VPN と Azure Active Directory 認証を使用して仮想ネットワークに接続する際の構成について説明します。 Azure AD を使用して接続と認証を行うには、まず Azure AD テナントを構成する必要があります。 詳細については、「[Azure AD テナントの構成](openvpn-azure-ad-tenant.md)」を参照してください。 ポイント対サイトの詳細については、[ポイント対サイト](point-to-site-about.md)に関する記事をご覧ください。
 
-[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
+[!INCLUDE [OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>クライアント プロファイルの操作
 
-接続するには、VNet への接続を必要とするすべてのコンピューターで Azure VPN クライアントをダウンロードしたうえで、それぞれに VPN クライアント プロファイルを構成する必要があります。 1 つのコンピューターでクライアント プロファイルを作成した後、それをエクスポートして、別のコンピューターにインポートすることもできます。
+VPN クライアント経由で VNet に接続するすべてのコンピューターについて、コンピューター用の Azure VPN クライアントをダウンロードし、VPN クライアント プロファイルを構成する必要があります。 複数のコンピューターを構成する場合は、1 台のコンピューターでクライアント プロファイルを作成し、これをエクスポートして、他のコンピューターにインポートすることができます。
 
 ### <a name="to-download-the-azure-vpn-client"></a>Azure VPN Client をダウンロードするには
 
-この[リンク](https://go.microsoft.com/fwlink/?linkid=2117554)を使用して、Azure VPN Client をダウンロードします。 Azure VPN クライアントにバックグラウンドで実行するためのアクセス許可があることを確認してください。 アクセス許可を確認または有効にするには、次の手順に従います。
-
-1. [スタート] にアクセスし、[設定]-> [プライバシー]-> [バックグラウンド アプリ] を選択します。
-2. [バックグラウンド アプリ] で、 **[アプリのバックグラウンド実行を許可する]** がオンになっていることを確認します。
-3. [バックグラウンドでの実行を許可するアプリを選んでください] で、Azure VPN クライアントの設定を **[オン]** にします。
-
-  ![権限 (permission)](./media/openvpn-azure-ad-client/backgroundpermission.png)
+[!INCLUDE [Download Azure VPN client](../../includes/vpn-gateway-download-vpn-client.md)]
 
 ### <a name="to-create-a-certificate-based-client-profile"></a><a name="cert"></a>証明書ベースのクライアント プロファイルを作成するには
 
 証明書ベースのプロファイルを使用する場合は、クライアント コンピューターに適切な証明書がインストールされていることを確認してください。 証明書の詳細については、「[クライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)」を参照してください。
 
-  ![cert](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
+![証明書認証のスクリーンショット。](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
 
 ### <a name="to-create-a-radius-client-profile"></a><a name="radius"></a>RADIUS クライアント プロファイルを作成するには
 
-  ![radius](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+![RADIUS 認証のスクリーンショット。](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
   
 > [!NOTE]
 > サーバー シークレットは、P2S VPN クライアント プロファイルでエクスポートできます。  クライアント プロファイルをエクスポートする手順については、[こちら](about-vpn-profile-download.md)を参照してください。
@@ -160,7 +155,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>VPN クライアントに DNS サフィックスを追加する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnssuffixes>\<dnssufix> \</dnssufix>\</dnssuffixes>** タグを追加することができます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnssuffixes>\<dnssufix> \</dnssufix>\</dnssuffixes>** タグを追加することができます。
 
 ```
 <azvpnprofile>
@@ -178,7 +173,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>VPN クライアントにカスタム DNS サーバーを追加する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** タグを追加することができます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** タグを追加することができます。
 
 ```
 <azvpnprofile>
@@ -197,9 +192,44 @@ Always-on を使用して自動的に接続するように構成するには、�
 > OpenVPN Azure AD クライアントは、DNS 名前解決ポリシー テーブル (NRPT) エントリを利用します。したがって、DNS サーバーは `ipconfig /all` の出力には一覧表示されません。 使用中の DNS 設定を確認するには、PowerShell で [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy) を参照してください。
 >
 
+### <a name="can-i-configure-split-tunneling-for-the-vpn-client"></a><a name="split"></a>VPN クライアントの分割トンネリングを構成できますか。
+
+既定では、分割トンネリングは VPN クライアント用に構成されています。
+
+### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-forced-tunneling"></a><a name="forced-tunnel"></a>すべてのトラフィックを VPN トンネルに転送する方法 (強制トンネリング)
+
+強制トンネリングを構成するには、カスタム ルートをアドバタイズするか、プロファイル XML ファイルを変更するという 2 つの異なる方法を使用できます。    
+
+> [!NOTE]
+> VPN ゲートウェイ経由でインターネット接続は提供されません。 その結果、インターネット向けのすべてのトラフィックが削除されます。
+>
+
+* **カスタム ルートのアドバタイズ:** カスタム ルート 0.0.0.0/1 と 128.0.0.0/1 をアドバタイズできます。 詳細については、「[P2S VPN クライアント用のカスタム ルートをアドバタイズする](vpn-gateway-p2s-advertise-custom-routes.md)」を参照してください。
+
+* **プロファイル XML:** ダウンロードしたプロファイル XML ファイルを変更して、 **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** タグを追加することができます。
+
+
+    ```
+    <azvpnprofile>
+    <clientconfig>
+          
+        <includeroutes>
+            <route>
+                <destination>0.0.0.0</destination><mask>1</mask>
+            </route>
+            <route>
+                <destination>128.0.0.0</destination><mask>1</mask>
+            </route>
+        </includeroutes>
+           
+    </clientconfig>
+    </azvpnprofile>
+    ```
+
+
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>VPN クライアントにカスタム ルートを追加する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** タグを追加することができます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** タグを追加することができます。
 
 ```
 <azvpnprofile>
@@ -217,7 +247,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>VPN クライアントからルートをブロック (除外) する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<excluderoutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</excluderoutes>** タグを追加することができます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<excluderoutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</excluderoutes>** タグを追加することができます。
 
 ```
 <azvpnprofile>
@@ -240,7 +270,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 ```
 azurevpn -i azurevpnconfig.xml 
 ```
-強制的にインポートするには、 **-f** スイッチも使用します
+強制的にインポートするには、 **-f** スイッチを使用します。
 
 
 ## <a name="next-steps"></a>次のステップ

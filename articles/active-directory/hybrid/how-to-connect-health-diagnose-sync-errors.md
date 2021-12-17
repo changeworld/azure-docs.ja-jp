@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fe6af43c9ca44095c328356e8171da10717875e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2637b0172038a4eb930e6a9f629d879a991a2e86
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98728239"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707887"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>重複属性同期エラーを診断して修正する
 
@@ -109,8 +109,8 @@ Azure portal から次の手順を実行して、修正可能な固有のシナ�
 質問では、競合している受信ユーザーと Azure AD の既存のユーザー オブジェクトをチェックして、同じユーザーに属しているかどうかをチェックしています。  
 1. 競合しているオブジェクトは、Azure Active Directory に新しく同期されます。 オブジェクトの属性を比較します。  
    - 表示名
-   - ユーザー プリンシパル名
-   - Object ID
+   - UserPrincipalName または SignInName
+   - ObjectID
 2. Azure AD が比較できなかった場合は、指定された **UserPrincipalNames** を持つオブジェクトが Active Directory に存在するかどうかを確認します。 両方見つかった場合は、 **[いいえ]** と回答します。
 
 次の例では、2 つのオブジェクトが同じユーザーである **Joe Johnson** に属しています。

@@ -1,28 +1,29 @@
 ---
-title: Windows Virtual Desktop の負荷分散を構成する - Azure
-description: Windows Virtual Desktop 環境での負荷分散方法を構成する方法。
+title: Azure Virtual Desktop の負荷分散を構成する - Azure
+description: Azure Virtual Desktop 環境での負荷分散方法を構成する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 0e742a046d43fef6e8263f73fc2ca8460848ad40
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: a39aad7889ee395c723d76a74cfb006b6d09caa3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448119"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751057"
 ---
-# <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows Virtual Desktop の負荷分散方法を構成する
+# <a name="configure-the-azure-virtual-desktop-load-balancing-method"></a>Azure Virtual Desktop の負荷分散方法を構成する
 
-ホスト プールの負荷分散方法を構成することで、Windows Virtual Desktop 環境をニーズに合うように調整できます。
+ホスト プールの負荷分散方法を構成することで、Azure Virtual Desktop 環境をニーズに合うように調整できます。
 
 >[!NOTE]
 > これは、ユーザーにホスト プール内のセッション ホストに対して常に 1 対 1 のマッピングがあるため、永続的なデスクトップ ホスト プールには適用されません。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[Windows Virtual Desktop PowerShell モジュールの設定](powershell-module.md)に関するページの手順に従って PowerShell モジュールをダウンロードしてインストールし、Azure アカウントにサインインしていることを前提としています。
+この記事では、[Azure Virtual Desktop PowerShell モジュールの設定](powershell-module.md)に関するページの手順に従って PowerShell モジュールをダウンロードしてインストールし、Azure アカウントにサインインしていることを前提としています。
 
 ## <a name="configure-breadth-first-load-balancing"></a>幅優先の負荷分散を構成する
 
@@ -82,8 +83,8 @@ MaxSessionLimit  : 6
 負荷分散を構成するには:
 
 1. Azure portal (https://portal.azure.com) にサインインします。
-2. [サービス] 下で **[Windows Virtual Desktop]** を探して選択します。
-3. Windows Virtual Desktop のページで、 **[ホスト プール]** を選択します。
+2. [サービス] 下で **[Azure Virtual Desktop]** を探して選択します。
+3. Azure Virtual Desktop のページで、 **[ホスト プール]** を選択します。
 4. 編集するホスト プールの名前を選択します。
 5. **[プロパティ]** を選択します。
 6. **セッション上限** をフィールドに入力して、ドロップダウン メニューでこのホスト プールに使用する **負荷分散アルゴリズム** を選択します。

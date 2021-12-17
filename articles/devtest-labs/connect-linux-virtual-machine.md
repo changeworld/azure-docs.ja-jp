@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs で Linux 仮想マシンに接続する
+title: Linux 仮想マシンに接続する
 description: ラボ (Azure DevTest Labs) で Linux 仮想マシンに接続する方法について説明します。
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.openlocfilehash: 52fe245f85034a4c6300615ad8fb6040c1168298
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 956c27235dcdf9d57c908ce2e840e3c77518875b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86528268"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676050"
 ---
 # <a name="connect-to-a-linux-vm-in-your-lab-azure-devtest-labs"></a>ラボ (Azure DevTest Labs) で Linux VM に接続する
 この記事では、ラボで Linux VM に接続する方法について説明します。 

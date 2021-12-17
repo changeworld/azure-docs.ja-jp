@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Queue Storage のドキュメント
+title: Azure Queue storage のドキュメント
 summary: Azure Queue storage は、多数のメッセージを格納するためのサービスです。 世界中のどこからでも HTTP または HTTPS 経由でメッセージにアクセスできます。
 metadata:
   title: Azure Queue storage のドキュメント
@@ -9,15 +9,15 @@ metadata:
   ms.subservice: queues
   ms.topic: landing-page
   ms.collection: collection
-  author: mhopkins-msft
-  ms.author: mhopkins
+  author: normesta
+  ms.author: normesta
   ms.date: 08/27/2019
-  ms.openlocfilehash: 871447957b905157625ab487269b9ce1ca105935
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 3fc9fc2b5b24eeea74355e706c43747cb31dbbac
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "75457289"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128549435"
 landingContent:
 - title: Azure Queue について
   linkLists:

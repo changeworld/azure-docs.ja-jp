@@ -1,27 +1,29 @@
 ---
 title: Spark アクティビティを使用してデータを変換する
-description: Spark アクティビティを使用して、Azure Data Factory パイプラインから Spark プログラムを実行することによってデータを変換する方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Spark アクティビティを使用して、Azure Data Factory または Synapse Analytics パイプラインから Spark プログラムを実行することによってデータを変換する方法について説明します。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-ms.custom: seo-lt-2019
-ms.date: 05/08/2020
-ms.openlocfilehash: e5c50d2cbd16ad2808dab485ad2b2870d6f3d350
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: d802b911a462ef077fa69d62d524e763ab13efc2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392359"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016590"
 ---
-# <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory での Spark アクティビティを使用したデータの変換
+# <a name="transform-data-using-spark-activity-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory と Synapse Analytics で Spark アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-spark.md)
 > * [現在のバージョン](transform-data-using-spark.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Data Factory [パイプライン](concepts-pipelines-activities.md)の Spark アクティビティでは、[独自の](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンドの](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight クラスターで Spark プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 オンデマンドの Spark のリンクされたサービスを使用すると、Data Factory は自動的に Spark クラスターを作成し、ジャストインタイムでデータを処理し、処理が完了するとクラスターを削除します。 
+データ ファクトリと Synapse [パイプライン](concepts-pipelines-activities.md)の Spark アクティビティでは、[独自の](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンドの](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight クラスターで Spark プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 オンデマンドの Spark のリンクされたサービスを使用すると、サービスは自動的に Spark クラスターを作成し、Just-In-Time でデータを処理し、処理が完了するとクラスターを削除します。 
 
 
 ## <a name="spark-activity-properties"></a>Spark アクティビティのプロパティ
@@ -74,9 +76,9 @@ Spark アクティビティのサンプルの JSON 定義を次に示します�
 ## <a name="folder-structure"></a>フォルダー構造
 Spark ジョブは、Pig/Hive ジョブよりも拡張性に優れています。 Spark ジョブの場合、jar パッケージ (java CLASSPATH に配置)、python ファイル (PYTHONPATH に配置) など、複数の依存関係を利用できます。
 
-HDInsight のリンクされたサービスによって参照される Azure Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Azure Blob Storage のフォルダー構造を次に示します。     
+HDInsight のリンクされたサービスによって参照される Azure Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時にサービスに必要な Azure Blob Storage のフォルダー構造を次に示します。     
 
-| Path                  | 説明                              | 必須 | Type   |
+| パス                  | 説明                              | 必須 | Type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (ルート)            | ストレージのリンクされたサービスにおける Spark ジョブのルート パス | はい      | Folder |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス | はい      | ファイル   |
@@ -98,6 +100,10 @@ SparkJob1
         package1.jar
         package2.jar
     logs
+    
+    archives
+    
+    pyFiles
 
 SparkJob2
     main.py
@@ -105,6 +111,13 @@ SparkJob2
         scrip1.py
         script2.py
     logs
+    
+    archives
+    
+    jars
+    
+    files
+    
 ```
 ## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 
@@ -116,5 +129,4 @@ SparkJob2
 * [Hadoop Streaming アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
-* [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

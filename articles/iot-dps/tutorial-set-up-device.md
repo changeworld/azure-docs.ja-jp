@@ -7,14 +7,13 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: dd82b8ac3a510d1b16b0d2f42d3e50803162a119
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9020c757e1a8bdfb5f244881f69f4790af2e3bf
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94959800"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277187"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>チュートリアル:Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定
 
@@ -146,7 +145,7 @@ TPM を使用するシミュレートされたデバイスのために構成証�
 > [!NOTE]
 > この手順では、シミュレートされたデバイスの使用を想定して、ワークステーションから SDK サンプル登録アプリケーションを実行します。 ただし、物理デバイスにデプロイするための登録アプリケーションを構築する場合も、同じ概念が適用されます。 
 
-1. Azure Portal で、Device Provisioning サービスの **[概要]** ブレードを選択し、**[_ID スコープ_]** の値をコピーします。 サービスによって "*ID スコープ*" が生成され、一意性が保証されます。 ID スコープは不変であり、登録 ID を一意に識別するために使用されます。
+1. Azure portal で、Device Provisioning サービスの **[概要]** ブレードを選択し、 **[_ID スコープ_]** の値をコピーします。 サービスによって "*ID スコープ*" が生成され、一意性が保証されます。 ID スコープは不変であり、登録 ID を一意に識別するために使用されます。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 
@@ -202,7 +201,7 @@ PROV_DEVICE_RESULT Prov_Device_LL_SetOption(PROV_DEVICE_LL_HANDLE handle, const 
 
 この時点で、Device Provisioning Service と IoT Hub サービスがポータルで実行されているでしょう。 デバイス プロビジョニングのセットアップを破棄したり、このチュートリアル シリーズの完了を遅らせる場合は、不要なコストが発生しないようにサービスをシャットダウンすることをお勧めします。
 
-1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、Device Provisioning サービスを選択します。 **[すべてのリソース]** ブレードの上部にある **[削除]** をクリックします。  
+1. Azure portal の左側のメニューにある **[すべてのリソース]** をクリックし、Device Provisioning サービスを選択します。 **[すべてのリソース]** ブレードの上部にある **[削除]** をクリックします。  
 1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、IoT ハブを選択します。 **[すべてのリソース]** ブレードの上部にある **[削除]** をクリックします。  
 
 ## <a name="next-steps"></a>次のステップ

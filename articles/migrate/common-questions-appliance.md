@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate アプライアンスの FAQ
 description: Azure Migrate アプライアンスに関する一般的な質問の回答を示します。
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: 059a1888b529487f2b0d17509370897222a20d83
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 11/01/2021
+ms.openlocfilehash: 446a59d6234219425bb24e62ecfc4796cd7fec6d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563023"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429586"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -51,14 +51,13 @@ Azure Migrate アプライアンスに関する詳細を示します。
 - ExpressRoute と Microsoft ピアリングを使用できます。 パブリック ピアリングは非推奨となり、新しい ExpressRoute 回線には使用できません。
 - プライベート ピアリングのみはサポートされていません。
 
-
 ## <a name="does-appliance-analysis-affect-performance"></a>アプライアンス分析はパフォーマンスに影響しますか。
 
 Azure Migrate アプライアンスでは、パフォーマンス データを測定するために、オンプレミスのサーバーが継続的にプロファイルされます。 このプロファイル作成は、プロファイル対象のサーバーのパフォーマンスにほとんど影響を与えません。
 
 ## <a name="can-i-harden-the-appliance"></a>アプライアンスを強化することはできますか。
 
-ダウンロードしたテンプレートを使用してアプライアンスを作成する場合、Azure Migrate アプライアンスに必要な通信規則およびファイアウォール規則を設定したままにしておくと、コンポーネント (ウイルス対策など) をテンプレートに追加できます。
+ダウンロードしたテンプレートを使用してアプライアンスを作成するとき、コンポーネント (ウイルス対策など) をテンプレートに追加できます。 Azure Firewall から正しい [URL](migrate-appliance.md#public-cloud-urls) へのアクセスが許可されていることと、 *%ProgramData%\MicrosoftAzure* フォルダーがウイルス対策スキャンから除外されていることを確認します。
 
 ## <a name="what-network-connectivity-is-required"></a>どのようなネットワーク接続が必要ですか。
 
@@ -68,8 +67,8 @@ Azure Migrate アプライアンスでは、パフォーマンス データを�
 
 Azure Migrate アプライアンスがサーバー上で収集するデータの詳細については、次の記事を参照してください。
 
-- **VMware 環境のサーバー**: 収集データを[レビュー](migrate-appliance.md#collected-data---vmware)します。
-- **Hyper-V 環境のサーバー**: 収集データを[レビュー](migrate-appliance.md#collected-data---hyper-v)します。
+- **VMware 環境のサーバー**: 収集データを [レビュー](migrate-appliance.md#collected-data---vmware)します。
+- **Hyper-V 環境のサーバー**: 収集データを [レビュー](migrate-appliance.md#collected-data---hyper-v)します。
 - **物理サーバーまたは仮想サーバー**: 収集データを [レビュー](migrate-appliance.md#collected-data---physical)します。
 
 ## <a name="how-is-data-stored"></a>データをどのように格納するか
@@ -110,6 +109,12 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 
 1 つのプロジェクトに複数のアプライアンスを登録することができます。 ただし、1 つのアプライアンスに登録できるのは、1 つのプロジェクトだけです。
 
+## <a name="how-do-i-find-the-azure-migrate-appliances-registered-to-the-project"></a>プロジェクトに登録されている Azure Migrate アプライアンスを見つけるにはどうすればよいですか。
+1. Azure portal から [Azure Migrate ホームページ](https://portal.azure.com/?feature.customportal=false&feature.showassettypes=Microsoft_Azure_Migrate_AzureMigrationHub&feature.smsMigrationTool=true&feature.cloudamizeAssessmentTool=true&feature.sasAssessmentTool=true&feature.firstPartyDiscoveredMachines=true#blade/Microsoft_Azure_Migrate/AmhResourceMenuBlade/getStarted)に移動し、左側のメニューから **[Servers, databases and web apps]\(サーバー、データベース、Web アプリ\)** を選びます。
+1. 右上隅の **[変更]** を選び、プロジェクトを選びます。
+1. Azure Migrate プロジェクトで、[Azure Migrate: Discovery & assessment]\(Azure Migrate: 検出と評価\) から **[概要]** を選びます。
+1. **[概要]** で、左側のメニューの **[アプライアンス]** を選ぶと、プロジェクトに登録されているアプライアンスと、アプライアンス上のエージェントの接続状態が表示されます。
+
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure Migrate アプライアンス/レプリケーション アプライアンスは同じ vCenter に接続できますか。
 
 はい。 Azure Migrate アプライアンス (評価とエージェントレスの VMware 移行に使用) とレプリケーション アプライアンス (VMware 上で実行されているサーバーのエージェントベースの移行に使用) の両方を、同じ vCenter サーバーに追加できます。 ただし、同じサーバー上に両方のアプライアンスを設定していないことと、現在サポートされていないことを確認してください。
@@ -142,7 +147,7 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 
 ## <a name="how-do-i-update-the-appliance"></a>アプライアンスを更新するにはどうすればよいですか。
 
-既定では、アプライアンスとそのインストール済みエージェントは自動的に更新されます。 アプライアンスでは、24 時間ごとに更新プログラムがチェックされます。 失敗した更新は再試行されます。 
+既定では、アプライアンスとそのインストール済みエージェントは自動的に更新されます。 アプライアンスでは、24 時間ごとに更新プログラムがチェックされます。 失敗した更新は再試行されます。
 
 これらの自動更新によって更新されるのは、アプライアンスとアプライアンス エージェントだけです。 オペレーティング システムは、Azure Migrate の自動更新では更新されません。 オペレーティング システムを最新の状態に保つには、Windows Update を使用してください。
 
@@ -155,13 +160,14 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 はい。ソフトウェア インベントリ (インストールされているアプリケーションの検出)、エージェントレスの依存関係の分析、SQL Server インスタンスとデータベースの検出を実行するために、複数のサーバー資格情報がサポートされるようになりました。 アプライアンス構成マネージャーで資格情報を指定する方法については、[こちら](tutorial-discover-vmware.md#provide-server-credentials)を参照してください。
 
 ## <a name="what-type-of-server-credentials-can-i-add-on-the-vmware-appliance"></a>VMware アプライアンスにはどのような種類のサーバー資格情報を追加できますか。
+
 アプライアンス構成マネージャーでは、ドメイン、Windows (ドメイン以外)、Linux (ドメイン以外)、SQL Server の認証資格情報を指定できます。 資格情報の指定方法とそれらの処理方法の詳細については、[こちら](add-server-credentials.md)を参照してください。
 
 ## <a name="what-type-of-sql-server-connection-properties-are-supported-by-azure-migrate-for-sql-discovery"></a>SQL 検出用に Azure Migrate でサポートされている SQL Server 接続プロパティの種類は何ですか。
+
 Azure Migrate により、Azure Migrate アプライアンスとソース SQL Server インスタンスの間の通信が暗号化されます (Encrypt 接続プロパティが TRUE に設定されている場合)。 これらの接続は、[TrustServerCertificate](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) で暗号化されます (TRUE に設定時)。トランスポート層は、SSL を使用してチャネルを暗号化し、証明書チェーンをバイパスして信頼を検証します。 アプライアンス サーバーは、[証明書のルート証明機関を信頼](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)するように設定する必要があります。
 
 サーバーの起動時に証明書がサーバーでプロビジョニングされない場合、SQL Server ではログオン パケットの暗号化に使用する自己署名入りの証明書が生成されます。 [詳細については、こちらを参照してください](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
-
 
 ## <a name="next-steps"></a>次のステップ
 

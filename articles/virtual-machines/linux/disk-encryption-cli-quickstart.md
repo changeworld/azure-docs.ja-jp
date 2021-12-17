@@ -9,14 +9,16 @@ ms.subservice: disks
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5b98fde5e15a3c57b56ecc8aea60023ffb8c22a8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9b2e96f288bc2c83f1957aa66a770c09be21282b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774307"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588506"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Linux VM を作成、暗号化する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して、Linux 仮想マシン (VM) を作成、暗号化する方法を示します。
 
@@ -65,7 +67,7 @@ VM とサポートするリソースを作成するには数分かかります�
 Azure Disk Encryption では、その暗号化キーは Azure キー コンテナーに格納されます。 [az keyvault create](/cli/azure/keyvault#az_keyvault_create) を使用して、キー コンテナーを作成します。 キー コンテナーで暗号化キーを格納できるようにするには、--enabled-for-disk-encryption パラメーターを使用します。
 
 > [!Important]
-> すべてのキー コンテナーに、Azure 全体で一意の名前を付ける必要があります。 次の例の <your-unique-keyvault-name> を任意の名前に置き換えてください。
+> すべてのキー コンテナーに、Azure 全体で一意の名前を付ける必要があります。 次の例の \<your-unique-keyvault-name\> を任意の名前に置き換えてください。
 
 ```azurecli-interactive
 az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myResourceGroup" --location "eastus" --enabled-for-disk-encryption

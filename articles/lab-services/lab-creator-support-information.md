@@ -1,14 +1,14 @@
 ---
-title: Azure Lab Services - サポート情報の表示 (ラボ作成者)
+title: サポート情報の表示 (ラボ作成者)
 description: この記事では、ラボ作成者が支援を受けるために使用できるサポート情報を表示する方法について説明します。
 ms.date: 06/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3e04245c3f2d9b0a4f4e98ae21287983cf679ec6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: add69ad733a639b6277fd0c9bfcacf30d9ba281d
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85445051"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179604"
 ---
 # <a name="view-support-information-lab-creator-in-azure-lab-services"></a>サポート情報の表示 (Azure Lab Services のラボ作成者)
 この記事では、ラボ作成者が次のサポート情報を表示する方法について説明します。

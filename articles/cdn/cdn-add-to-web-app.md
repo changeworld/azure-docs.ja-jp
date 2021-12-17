@@ -3,7 +3,7 @@ title: チュートリアル - Azure App Service Web アプリへの Azure CDN �
 description: このチュートリアルでは、静的なファイルをキャッシュし、世界各地の顧客に対して地理的に近いサーバーから配信するため、Azure App Service Web アプリに Azure Content Delivery Network (CDN) を追加します。
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/14/2018
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae9c98f75e722f42adcd7cdec4f8a7df6c334c9a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97562244"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423719"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル:Azure App Service Web アプリへの Azure CDN の追加
 

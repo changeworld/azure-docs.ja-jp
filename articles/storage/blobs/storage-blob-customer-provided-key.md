@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3096da8b3c83dbfe8cfdd6a5fa4d177241334de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6f7001b9eabd34774930378d0656b4ad7ef3c25
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97693508"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857799"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>.NET での BLOB ストレージの要求時にカスタマー指定のキーを指定する
 
@@ -29,7 +29,7 @@ Azure ID クライアント ライブラリによる認証方法の詳細につ�
 
 ## <a name="use-a-customer-provided-key-to-write-to-a-blob"></a>カスタマー指定のキーを使用して BLOB に書き込む
 
-次の例では、BLOB ストレージの v12 クライアント ライブラリを使用して BLOB をアップロードするときに、AES-256 キーを指定します。 この例では、[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) オブジェクトを使用して Azure AD で書き込み要求を認可しますが、共有キー資格情報で要求を認可することもできます。
+次の例では、BLOB ストレージの v12 クライアント ライブラリを使用して BLOB をアップロードするときに、AES-256 キーを指定します。 この例では、[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) オブジェクトを使用して Azure AD で書き込み要求を認可しますが、共有キー資格情報で要求を認可することもできます。 DefaultAzureCredential クラスを使用し、マネージド ID を認可して Azure Storage にアクセスする方法の詳細については、[.NET 用の Azure ID クライアント ライブラリ](/dotnet/api/overview/azure/identity-readme)に関する記事を参照してください。
 
 ```csharp
 async static Task UploadBlobWithClientKey(Uri blobUri,

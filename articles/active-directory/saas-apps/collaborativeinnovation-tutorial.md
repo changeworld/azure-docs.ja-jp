@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 6744c3c6f6f56c6defdd4b6c2501a946aeeae1e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c194db1ff0fc03928192c0a9c660980046e016ca
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92455548"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124809752"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-collaborative-innovation"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Collaborative Innovation の統合
 
@@ -151,7 +151,7 @@ Collaborative Innovation で Azure AD SSO を構成してテストするには�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Collaborative Innovation] タイルをクリックすると、SSO を設定した Collaborative Innovation に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Collaborative Innovation] タイルをクリックすると、SSO を設定した Collaborative Innovation に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

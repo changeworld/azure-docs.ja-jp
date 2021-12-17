@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b26c24149d422021dcb86f75c915ade89cbccdec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19e594065b640e5ac2bc2957ac80b4ecc2fd946f
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97589877"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540277"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
@@ -204,7 +204,7 @@ SAML 2.0 ID プロバイダーを使用してフェデレーションする各 A
 
   ```powershell
   $dom = "contoso.com" 
-  $BrandName - "Sample SAML 2.0 IDP" 
+  $BrandName = "Sample SAML 2.0 IDP" 
   $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" 
   $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" 
   $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" 

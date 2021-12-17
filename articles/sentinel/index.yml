@@ -1,85 +1,153 @@
 ### YamlMime:Landing
-title: Azure Sentinel のドキュメント
-summary: この記事では、Azure Sentinel の使用を開始するためのユース ケースを紹介します。 損害を受ける前に、現代に合わせて再開発された SIEM を使用して脅威を確認して停止します。 Azure Sentinel を使用すると、企業全体を鳥瞰できます。
+title: Microsoft Sentinel のドキュメント
+summary: この記事では、Microsoft Sentinel の使用を開始するためのユース ケースを紹介します。 損害を受ける前に、現代に合わせて再開発された SIEM を使用して脅威を確認して停止します。 Microsoft Sentinel を使用すると、企業全体を鳥瞰できます。
 metadata:
-  title: Azure Sentinel のドキュメント
-  description: 'この記事では、Azure Sentinel の使用を開始するためのユース ケースとシナリオを紹介します。 損害を受ける前に、現代に合わせて再開発された SIEM を使用して脅威を確認して停止します。 Azure Sentinel を使用すると、企業全体を鳥瞰できます。# 必須: 検索結果に表示される記事の説明。 160 文字未満。'
-  services: sentinel
-  ms.service: sentinel
-  ms.subservice: azure-sentinel
+  title: Microsoft Sentinel のドキュメント
+  description: 'この記事では、Microsoft Sentinel の使用を開始するためのユース ケースとシナリオを紹介します。 損害を受ける前に、現代に合わせて再開発された SIEM を使用して脅威を確認して停止します。 Microsoft Sentinel を使用すると、企業全体を鳥瞰できます。# 必須: 検索結果に表示される記事の説明。 160 文字未満。'
   ms.topic: landing-page
-  ms.collection: collection
   author: yelevin
   ms.author: yelevin
-  ms.date: 06/25/2020
-  ms.openlocfilehash: 8d2271fefa6d7044a216a3566290f34be964ddb2
-  ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+  ms.date: 11/09/2021
+  ms.openlocfilehash: 6c3159812641d431ab047fd3084d4f07d18b3a84
+  ms.sourcegitcommit: 1244a72dbec39ac8cf16bb1799d8c46bde749d47
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/08/2021
-  ms.locfileid: "102449647"
+  ms.lasthandoff: 11/18/2021
+  ms.locfileid: "132760202"
 landingContent:
-- title: Azure Sentinel について
+- title: Microsoft Sentinel について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Sentinel とは
+    - text: Microsoft Sentinel とは
       url: overview.md
-    - text: Azure Sentinel の新着情報
+    - text: 有用なリソース
+      url: resources.md
+  - linkListType: whats-new
+    links:
+    - text: Microsoft Sentinel の新機能
       url: whats-new.md
+  - linkListType: concept
+    links:
+    - text: ベスト プラクティス
+      url: best-practices.md
 - title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Azure Sentinel のオンボード
+    - text: Microsoft Sentinel のオンボード
       url: quickstart-onboard.md
-    - text: アラートの視覚化
-      url: quickstart-get-visibility.md
+  - linkListType: concept
+    links:
+    - text: 必須コンポーネント
+      url: prerequisites.md
   - linkListType: how-to-guide
     links:
-    - text: Azure Sentinel へのデータ接続
+    - text: Microsoft Sentinel にデータを接続する
       url: connect-data-sources.md
-- title: 追加のデータ ソースの接続
+    - text: 収集されたデータを視覚化する
+      url: get-visibility.md
+    - text: インシデントを調査する
+      url: investigate-cases.md
+    - text: Microsoft 365 Defender と Microsoft Sentinel の統合
+      url: microsoft-365-defender-sentinel-integration.md
+  - linkListType: learn
+    links:
+    - text: Microsoft Sentinel に対する KQL クエリを作成する
+      url: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
+- title: データを収集する
   linkLists:
+  - linkListType: concept
+    links:
+    - text: データ収集のベスト プラクティス
+      url: best-practices-data.md
+    - text: データの正規化と解析
+      url: normalization.md
   - linkListType: how-to-guide
     links:
-    - text: Azure Active Directory の接続
-      url: connect-azure-active-directory.md
-    - text: Azure Information Protection の接続
-      url: connect-azure-information-protection.md
-    - text: AWS の接続
-      url: connect-aws.md
-    - text: Palo Alto Networks の接続
-      url: connect-paloalto.md
-    - text: 脅威インテリジェンスの接続
-      url: connect-threat-intelligence.md
-- title: 複数のテナントの操作
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Azure Sentinel でマルチテナントのサポートを有効にする方法
-      url: multiple-tenants-service-providers.md
-- title: 環境内の状況の把握
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: データを監視する
-      url: tutorial-monitor-your-data.md
-    - text: インシデントの調査
-      url: tutorial-investigate-cases.md
+    - text: Microsoft 365 Defender を接続する
+      url: connect-microsoft-365-defender.md
+    - text: カスタム コネクタを作成する
+      url: create-custom-connector.md
+    - text: コネクタの正常性を監視する
+      url: monitor-data-connector-health.md
+    - text: Azure Data Explorer を統合する
+      url: store-logs-in-azure-data-explorer.md
   - linkListType: reference
     links:
-    - text: 一般的に使用される Azure Sentinel ブック
-      url: top-workbooks.md
-- title: 脅威を検出する
+    - text: データ ソース スキーマ リファレンス
+      url: data-source-schema-reference.md
+    - text: CEF ログ フィールドのマッピング
+      url: cef-name-mapping.md
+    - text: ネットワーク正規化スキーマ
+      url: ./network-normalization-schema.md
+- title: 脅威インテリジェンス
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Microsoft Sentinel の脅威インテリジェンスについて
+      url: understand-threat-intelligence.md
+    - text: 脅威インテリジェンスの統合
+      url: threat-intelligence-integration.md
+  - linkListType: how-to-guide
+    links:
+    - text: Microsoft Sentinel に脅威インテリジェンス プラットフォームを接続する
+      url: connect-threat-intelligence-tip.md
+    - text: Microsoft Sentinel を STIX/TAXII フィードに接続する
+      url: connect-threat-intelligence-taxii.md
+    - text: 脅威インジケーターの操作
+      url: work-with-threat-indicators.md
+- title: 脅威の検出
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ユーザーとエンティティの行動分析 (UEBA)
+      url: identify-threats-with-entity-behavior-analytics.md
+    - text: SOC-ML 異常検知
+      url: soc-ml-anomalies.md
+  - linkListType: how-to-guide
+    links:
+    - text: 組み込みの分析を使用した脅威の検出
+      url: detect-threats-built-in.md
+    - text: カスタム検出ルールの作成
+      url: detect-threats-custom.md
+  - linkListType: reference
+    links:
+    - text: エンティティのリファレンス
+      url: entities-reference.md
+    - text: UEBA エンリッチメント
+      url: ueba-enrichments.md
+- title: 脅威の捜索
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 脅威の探索
+      url: hunting.md
+  - linkListType: how-to-guide
+    links:
+    - text: Jupyter Notebook を使用して追求する
+      url: notebooks.md
+    - text: ブックマークを使用して追求する
+      url: bookmarks.md
+    - text: ライブストリームを使用して追求する
+      url: livestream.md
+- title: 調査
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 組み込みの分析を使用した脅威の検出
-      url: tutorial-detect-threats-built-in.md
-    - text: カスタム検出ルールの作成
-      url: tutorial-detect-threats-custom.md
-- title: 脅威の防止の自動化
+    - text: UEBA を使用して調査する
+      url: investigate-with-ueba.md
+  - linkListType: how-to-guide
+    links:
+    - text: インシデントを調査する
+      url: investigate-cases.md
+    - text: データを監視する
+      url: monitor-your-data.md
+  - linkListType: reference
+    links:
+    - text: 一般的に使用される Microsoft Sentinel ブック
+      url: top-workbooks.md
+- title: 対応
   linkLists:
   - linkListType: tutorial
     links:
@@ -87,11 +155,25 @@ landingContent:
       url: tutorial-respond-threats-playbook.md
     - text: Jupyter Notebook を使用してセキュリティの脅威を検出する
       url: notebooks.md
-- title: プロアクティブな脅威検出
+  - linkListType: concept
+    links:
+    - text: オートメーション ルール
+      url: automate-incident-handling-with-automation-rules.md
+    - text: プレイブック
+      url: automate-responses-with-playbooks.md
+- title: Microsoft Sentinel を管理する
   linkLists:
+  - linkListType: concept
+    links:
+    - text: ワークスペース アーキテクチャのベスト プラクティス
+      url: best-practices-workspace-architecture.md
   - linkListType: how-to-guide
     links:
-    - text: 脅威インテリジェンスの接続
-      url: connect-threat-intelligence.md
-    - text: 脅威の探索
-      url: hunting.md
+    - text: ワークスペース アーキテクチャを設計する
+      url: design-your-workspace-architecture.md
+    - text: 複数のテナントの管理
+      url: multiple-tenants-service-providers.md
+    - text: 複数のワークスペースでインシデントを操作する
+      url: multiple-workspace-view.md
+    - text: 知的財産を管理する
+      url: mssp-protect-intellectual-property.md

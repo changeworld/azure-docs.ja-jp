@@ -1,141 +1,148 @@
-- name: Spatial Anchors のドキュメント
-  href: index.yml
-- name: 概要
-  items:
-    - name: Spatial Anchors について
-      href: overview.md
-- name: クイックスタート
-  expanded: true
-  items:
-    - name: Unity アプリの作成
-      expanded: true
-      items:
-        - name: Unity の概要
-          href: unity-overview.md
-        - name: HoloLens
-          href: quickstarts/get-started-unity-hololens.md
-          displayName: 'Azure CLI, az spatial-anchors-account'
-        - name: Android
-          href: quickstarts/get-started-unity-android.md
-          displayName: 'Azure CLI, az spatial-anchors-account'
-        - name: iOS
-          href: quickstarts/get-started-unity-ios.md
-          displayName: 'Azure CLI, az spatial-anchors-account'
-    - name: HoloLens アプリの作成
-      href: quickstarts/get-started-hololens.md
-      displayName: 'Azure CLI, az spatial-anchors-account'
-    - name: Android アプリの作成
-      href: quickstarts/get-started-android.md
-      displayName: 'Azure CLI, az spatial-anchors-account'
-    - name: iOS アプリの作成
-      href: quickstarts/get-started-ios.md
-      displayName: 'Azure CLI, az spatial-anchors-account'
-    - name: Xamarin アプリの作成
-      items:
-        - name: Android
-          href: quickstarts/get-started-xamarin-android.md
-          displayName: 'Azure CLI, az spatial-anchors-account'
-        - name: iOS
-          href: quickstarts/get-started-xamarin-ios.md
-          displayName: 'Azure CLI, az spatial-anchors-account'
-- name: チュートリアル
-  items:
-    - name: セッションやデバイス間での共有
-      href: tutorials/tutorial-share-anchors-across-devices.md
-      displayName: 'Azure CLI, az spatial-anchors-account'
-      items:
-        - name: Azure Cosmos DB を使用した永続的な共有
-          href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
-    - name: 新しい Unity HoloLens アプリの開始
-      href: tutorials/tutorial-new-unity-hololens-app.md
-      displayName: 'Azure CLI, az spatial-anchors-account'
-    - name: 新しい Android アプリの開始
-      href: tutorials/tutorial-new-android-app.md
-      displayName: 'Azure CLI, az spatial-anchors-account'
-- name: 操作方法
-  items:
-    - name: アンカーの作成と配置
-      href: create-locate-anchors-overview.md
-      items:
-        - name: Unity の場合
-          href: how-tos/create-locate-anchors-unity.md
-        - name: Objective-C の場合
-          href: how-tos/create-locate-anchors-objc.md
-        - name: Swift の場合
-          href: how-tos/create-locate-anchors-swift.md
-        - name: Java の場合
-          href: how-tos/create-locate-anchors-java.md
-        - name: C++/NDK の場合
-          href: how-tos/create-locate-anchors-cpp-ndk.md
-        - name: C++/WinRT の場合
-          href: how-tos/create-locate-anchors-cpp-winrt.md
-    - name: 粗い再局在化を使用して近くのアンカーを検出する
-      items:
-        - name: C#/Unity の場合
-          href: how-tos/set-up-coarse-reloc-unity.md
-        - name: Objective-C の場合
-          href: how-tos/set-up-coarse-reloc-objc.md
-        - name: Swift の場合
-          href: how-tos/set-up-coarse-reloc-swift.md
-        - name: Java の場合
-          href: how-tos/set-up-coarse-reloc-java.md
-        - name: C++/NDK の場合
-          href: how-tos/set-up-coarse-reloc-cpp-ndk.md
-        - name: C++/WinRT の場合
-          href: how-tos/set-up-coarse-reloc-cpp-winrt.md
-    - name: アンカー セッションなしで粗い再局在化を使用する
-      href: how-tos/use-coarse-relocalization-without-anchor-session.md
-    - name: プロジェクトの設定
-      items:
-        - name: C++/WinRT
-          href: how-tos/setup-cpp-winrt-project.md
-        - name: Unity
-          href: how-tos/setup-unity-project.md
-- name: サンプル
-  items:
-    - name: Azure Spatial Anchors のサンプル (GitHub)
-      href: 'https://github.com/Azure/azure-spatial-anchors-samples'
-- name: 概念
-  items:
-    - name: 認証
-      href: concepts/authentication.md
-    - name: アンカーのリレーションシップ
-      href: concepts/anchor-relationships-way-finding.md
-    - name: エクスペリエンスのガイドライン
-      href: concepts/guidelines-effective-anchor-experiences.md
-    - name: ログ記録と診断
-      href: concepts/logging-diagnostics.md
-    - name: 粗い再局在化
-      href: concepts/coarse-reloc.md
-    - name: アンカーの検索方法
-      href: concepts/anchor-locate-strategy.md
-- name: References
-  items:
-    - name: Unity 用 SDK
-      href: /dotnet/api/Microsoft.Azure.SpatialAnchors/
-    - name: iOS Objective-C 用 SDK
-      href: /objectivec/api/spatial-anchors/
-    - name: Android Java 用 SDK
-      href: /java/api/com.microsoft.azure.spatialanchors/
-    - name: Android NDK 用 SDK
-      href: /cpp/api/spatial-anchors/ndk/
-    - name: HoloLens C++/WinRT 用 SDK
-      href: /cpp/api/spatial-anchors/winrt/
-    - name: Azure CLI
-      href: /cli/azure/spatial-anchors-account
-    - name: Azure PowerShell
-      href: /powershell/module/az.mixedreality
-- name: リソース
-  items:
-    - name: リリース ノート
-      href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'
-    - name: Azure Mixed Reality Resource Management REST API
-      href: /rest/api/mixedreality/
-    - name: よく寄せられる質問
-      href: spatial-anchor-faq.md
-    - name: 製品フィードバックの提供
-      href: 'https://feedback.azure.com/forums/919252-azure-spatial-anchors'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-spatial-anchors'
-    - name: サポート
-      href: spatial-anchor-support.md
+items:
+  - name: Spatial Anchors のドキュメント
+    href: index.yml
+  - name: 概要
+    items:
+      - name: Spatial Anchors について
+        href: overview.md
+  - name: クイックスタート
+    expanded: true
+    items:
+      - name: Unity アプリの作成
+        expanded: true
+        items:
+          - name: Unity の概要
+            href: unity-overview.md
+          - name: HoloLens
+            href: quickstarts/get-started-unity-hololens.md
+            displayName: 'Azure CLI, az spatial-anchors-account'
+          - name: Android
+            href: quickstarts/get-started-unity-android.md
+            displayName: 'Azure CLI, az spatial-anchors-account'
+          - name: iOS
+            href: quickstarts/get-started-unity-ios.md
+            displayName: 'Azure CLI, az spatial-anchors-account'
+      - name: HoloLens アプリの作成
+        href: quickstarts/get-started-hololens.md
+        displayName: 'Azure CLI, az spatial-anchors-account'
+      - name: Android アプリの作成
+        href: quickstarts/get-started-android.md
+        displayName: 'Azure CLI, az spatial-anchors-account'
+      - name: iOS アプリの作成
+        href: quickstarts/get-started-ios.md
+        displayName: 'Azure CLI, az spatial-anchors-account'
+      - name: Xamarin アプリの作成
+        items:
+          - name: Android
+            href: quickstarts/get-started-xamarin-android.md
+            displayName: 'Azure CLI, az spatial-anchors-account'
+          - name: iOS
+            href: quickstarts/get-started-xamarin-ios.md
+            displayName: 'Azure CLI, az spatial-anchors-account'
+  - name: チュートリアル
+    items:
+      - name: セッションやデバイス間での共有
+        href: tutorials/tutorial-share-anchors-across-devices.md
+        displayName: 'Azure CLI, az spatial-anchors-account'
+        items:
+          - name: Azure Cosmos DB を使用した永続的な共有
+            href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+      - name: 新しい Unity HoloLens アプリの開始
+        href: tutorials/tutorial-new-unity-hololens-app.md
+        displayName: 'Azure CLI, az spatial-anchors-account'
+      - name: 新しい Android アプリの開始
+        href: tutorials/tutorial-new-android-app.md
+        displayName: 'Azure CLI, az spatial-anchors-account'
+  - name: 操作方法
+    items:
+      - name: Azure Spatial Anchors アカウントを作成する
+        href: how-tos/create-asa-account.md
+      - name: アンカーの作成と配置
+        href: create-locate-anchors-overview.md
+        items:
+          - name: Unity の場合
+            href: how-tos/create-locate-anchors-unity.md
+          - name: Objective-C の場合
+            href: how-tos/create-locate-anchors-objc.md
+          - name: Swift の場合
+            href: how-tos/create-locate-anchors-swift.md
+          - name: Java の場合
+            href: how-tos/create-locate-anchors-java.md
+          - name: C++/NDK の場合
+            href: how-tos/create-locate-anchors-cpp-ndk.md
+          - name: C++/WinRT の場合
+            href: how-tos/create-locate-anchors-cpp-winrt.md
+      - name: 粗い再局在化を使用して近くのアンカーを検出する
+        items:
+          - name: C#/Unity の場合
+            href: how-tos/set-up-coarse-reloc-unity.md
+          - name: Objective-C の場合
+            href: how-tos/set-up-coarse-reloc-objc.md
+          - name: Swift の場合
+            href: how-tos/set-up-coarse-reloc-swift.md
+          - name: Java の場合
+            href: how-tos/set-up-coarse-reloc-java.md
+          - name: C++/NDK の場合
+            href: how-tos/set-up-coarse-reloc-cpp-ndk.md
+          - name: C++/WinRT の場合
+            href: how-tos/set-up-coarse-reloc-cpp-winrt.md
+      - name: アンカー セッションなしで粗い再局在化を使用する
+        href: how-tos/use-coarse-relocalization-without-anchor-session.md
+      - name: プロジェクトの設定
+        items:
+          - name: C++/WinRT
+            href: how-tos/setup-cpp-winrt-project.md
+          - name: Unity
+            href: how-tos/setup-unity-project.md
+  - name: サンプル
+    items:
+      - name: Azure Spatial Anchors のサンプル (GitHub)
+        href: 'https://github.com/Azure/azure-spatial-anchors-samples'
+      - name: MROpenXR Azure Spatial Anchors のサンプル (GitHub)
+        href: 'https://github.com/microsoft/OpenXR-Unity-MixedReality-Samples'
+      - name: MRTK Azure Spatial Anchors 学習モジュール
+        href: /learn/modules/azure-spatial-anchors-tutorials/
+  - name: 概念
+    items:
+      - name: 認証
+        href: concepts/authentication.md
+      - name: アンカーのリレーションシップ
+        href: concepts/anchor-relationships-way-finding.md
+      - name: エクスペリエンスのガイドライン
+        href: concepts/guidelines-effective-anchor-experiences.md
+      - name: ログ記録と診断
+        href: concepts/logging-diagnostics.md
+      - name: 粗い再局在化
+        href: concepts/coarse-reloc.md
+      - name: アンカーの検索方法
+        href: concepts/anchor-locate-strategy.md
+  - name: References
+    items:
+      - name: Unity 用 SDK
+        href: /dotnet/api/Microsoft.Azure.SpatialAnchors/
+      - name: iOS Objective-C 用 SDK
+        href: /objectivec/api/spatial-anchors/
+      - name: Android Java 用 SDK
+        href: /java/api/com.microsoft.azure.spatialanchors/
+      - name: Android NDK 用 SDK
+        href: /cpp/api/spatial-anchors/ndk/
+      - name: HoloLens C++/WinRT 用 SDK
+        href: /cpp/api/spatial-anchors/winrt/
+      - name: Azure CLI
+        href: /cli/azure/spatial-anchors-account
+      - name: Azure PowerShell
+        href: /powershell/module/az.mixedreality
+  - name: リソース
+    items:
+      - name: リリース ノート
+        href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'
+      - name: Azure Mixed Reality Resource Management REST API
+        href: /rest/api/mixedreality/
+      - name: よく寄せられる質問
+        href: spatial-anchor-faq.yml
+      - name: 製品フィードバックの提供
+        href: 'https://feedback.azure.com/d365community/forum/f47d9b25-0725-ec11-b6e6-000d3a4f07b8'
+      - name: Stack Overflow
+        href: 'https://stackoverflow.com/questions/tagged/azure-spatial-anchors'
+      - name: サポート
+        href: spatial-anchor-support.md

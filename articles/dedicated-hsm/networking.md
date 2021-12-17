@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 3370389027805cfb5a68b5b0551d14dc31154804
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cc38ad6ee6dfc958be405db2969bd5c083e1c5c0
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611839"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195331"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure の専用 HSM のネットワーク
 
@@ -39,12 +39,11 @@ Azure の専用 HSM は、きわめて安全なネットワーク環境を必要
 
 ### <a name="subnets"></a>サブネット
 
-サブネットは、仮想ネットワークを個別のアドレス空間に分割し、サブネット内に配置された Azure リソースから使用できるようにするものです。 専用 HSM は、仮想ネットワークのサブネットにデプロイされます。 お客様のサブネットにデプロイされた専用 HSM デバイスにはそれぞれ、このサブネットからプライベート IP アドレスが割り当てられます。 HSM デバイスのデプロイ先となるサブネットは、次のサービスに対して明示的に委任されている必要があります。Microsoft.HardwareSecurityModules/dedicatedHSMs。 これにより、サブネットへのデプロイに使用される特定のアクセス許可が HSM サービスに与えられます。 専用 HSM への委任に伴い、サブネットに対していくらかポリシーの制限が生じます。 現在、委任されたサブネットでは、ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) がサポートされません。 したがって、サブネットを専用 HSM に委任すると、そのサブネットは HSM リソースのデプロイにしか使用できなくなります。 お客様の他のリソースをサブネットにデプロイしようとしても失敗します。
-
+サブネットは、仮想ネットワークを個別のアドレス空間に分割し、サブネット内に配置された Azure リソースから使用できるようにするものです。 専用 HSM は、仮想ネットワークのサブネットにデプロイされます。 お客様のサブネットにデプロイされた専用 HSM デバイスにはそれぞれ、このサブネットからプライベート IP アドレスが割り当てられます。 HSM デバイスのデプロイ先となるサブネットは、次のサービスに対して明示的に委任されている必要があります。Microsoft.HardwareSecurityModules/dedicatedHSMs。 これにより、サブネットへのデプロイに使用される特定のアクセス許可が HSM サービスに与えられます。 専用 HSM への委任に伴い、サブネットに対していくらかポリシーの制限が生じます。 現在、委任されたサブネットでは、ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) がサポートされません。 したがって、サブネットを専用 HSM に委任すると、そのサブネットは HSM リソースのデプロイにしか使用できなくなります。 お客様の他のリソースをサブネットにデプロイしようとしても失敗します。  専用 HSM のサブネットのサイズについての要件はありませんが、各 HSM デバイスでは 1 つのプライベート IP が使用されるため、サブネットはデプロイに必要な数の HSM デバイスに対応できる大きさでなければなりません。
 
 ### <a name="expressroute-gateway"></a>ExpressRoute ゲートウェイ
 
-現在のアーキテクチャにはある要件があり、HSM デバイスを Azure に統合できるようにするには、HSM デバイスの配置先となるお客様のサブネットに ER ゲートウェイを構成する必要があります。 Azure にあるお客様の HSM デバイスにオンプレミスの場所を接続する目的でこの ER ゲートウェイを利用することはできません。
+HSM デバイスを設置して Azure との連携を有効にする必要がある顧客サブネットで、[ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)を構成することが、現在のアーキテクチャの要件の 1 つです。 この [ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)では、オンプレミスの場所を、Azure 上の顧客の HSM デバイスに接続することはできません。
 
 ## <a name="connecting-your-on-premises-it-to-azure"></a>オンプレミスの IT を Azure に接続する
 
@@ -105,7 +104,7 @@ Dedicated HSM VNet に存在する HSM NIC では、ネットワーク セキュ
 
 NVA プロキシ ソリューションを追加すると、トランジットまたは DMZ ハブ内の NVA ファイアウォールを HSM NIC の前に論理的に配置できるようになるため、必要な既定の拒否ポリシーが提供されます。 この例では、この目的のために Azure Firewall を使用し、次の要素を設定する必要があります。
 1. DMZ ハブ VNet のサブネット "AzureFirewallSubnet" にデプロイされた Azure Firewall
-2. Azure ILB プライベート エンドポイントに向かうトラフィックを Azure Firewall に送信する UDR を含むルーティング テーブル。 このルーティング テーブルは、ユーザーの ExpressRoute 仮想ゲートウェイが存在する GatewaySubnet に適用されます
+2. Azure ILB プライベート エンドポイントに向かうトラフィックを Azure Firewall に送信する UDR を含むルーティング テーブル。 このルーティング テーブルは、顧客の [ExpressRoute Virtual Gateway](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) が存在する GatewaySubnet に適用されます
 3. 信頼できる発信元範囲と、TCP ポート 1792 でリッスンしている Azure IBL プライベート エンドポイント間の転送を許可する、AzureFirewall 内のネットワーク セキュリティ規則。 このセキュリティ ロジックにより、Dedicated HSM サービスに対して必要な "既定の拒否" ポリシーが追加されます。 つまり、信頼できる発信元 IP 範囲のみが Dedicated HSM サービスへのアクセスを許可されます。 その他のすべての範囲はドロップされます。  
 4. オンプレミスに向かうトラフィックを Azure Firewall に送信する UDR を含むルーティング テーブル。 このルーティング テーブルは、NVA プロキシ サブネットに適用されます。 
 5. プロキシ NVA サブネットに適用される NSG では、発信元として Azure Firewall のサブネット範囲のみが信頼され、TCP ポート 1792 を介した HSM NIC IP アドレスへの転送のみが許可されます。 
@@ -133,7 +132,7 @@ Command Result : 0 (Success)
 
 ### <a name="alternative-to-using-global-vnet-peering"></a>グローバル VNET ピアリングの使用の代替手段
 グローバル VNet ピアリングの代わりとして使用できるいくつかのアーキテクチャがあります。
-1.  [VNet 間 VPN Gateway 接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)を使用します 
+1.  [VNet 間 VPN Gateway 接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を使用します 
 2.  ER 回線で HSM VNET と別の VNET を接続します。 これは、直接のオンプレミスのパスが必要な場合、または VPN VNET に最適です。 
 
 #### <a name="hsm-with-direct-express-route-connectivity"></a>Express Route 直接接続がある HSM
@@ -141,7 +140,7 @@ Command Result : 0 (Success)
 
 ## <a name="next-steps"></a>次のステップ
 
-- [よく寄せられる質問](faq.md)
+- [よく寄せられる質問](faq.yml)
 - [サポート可能性](supportability.md)
 - [高可用性](high-availability.md)
 - [物理的なセキュリティ](physical-security.md)

@@ -1,23 +1,23 @@
 ---
 title: 'Oracle から Azure Database for PostgreSQL へ: 移行ガイド'
 titleSuffix: Azure Database for PostgreSQL
-description: このガイドでは、Oracle スキーマを Azure Database for PostgreSQL に移行する方法について説明します。
+description: このガイドは、Oracle スキーマを Azure Database for PostgreSQL に移行するときに役立ちます。
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: 931528ec415cabde8e862db17b9f8f26502f6788
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 758199dca165c301322631e0d29b1af2711dc56b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968936"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356943"
 ---
 # <a name="migrate-oracle-to-azure-database-for-postgresql"></a>Oracle を Azure Database for PostgreSQL に移行する
 
-このガイドでは、Oracle スキーマを Azure Database for PostgreSQL に移行する方法について説明します。 
+このガイドは、Oracle スキーマを Azure Database for PostgreSQL に移行するときに役立ちます。 
 
 移行についての詳細かつ包括的なガイダンスについては、[移行ガイド リソース](https://github.com/microsoft/OrcasNinjaTeam/blob/master/Oracle%20to%20PostgreSQL%20Migration%20Guide/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Guide.pdf)を参照してください。 
 
@@ -71,13 +71,13 @@ VM と Azure Database for PostgreSQL をプロビジョニングした後は、�
 - 可能であれば、具体化されたビューで一意なインデックスを使用します。 これらのインデックスを使用すると、`REFRESH MATERIALIZED VIEW CONCURRENTLY` 構文を使用するときの更新の速度が向上します。
 
 
-## <a name="premigration"></a>移行前 
+## <a name="pre-migration"></a>移行前 
 
 ソース環境がサポートされていて、前提条件が満たされていることを確認したら、移行前ステージを始めることができます。 開始するには 
 
-1. 移行する必要があるデータベースのインベントリを作成します。 
-1. それらのデータベースで、移行の問題や阻害要因の可能性を評価します。
-1. 検出されたすべての項目を解決します。 
+1. **検出**: 移行する必要があるデータベースのインベントリを作成します。 
+2. **評価**: それらのデータベースで、移行の問題や阻害要因の可能性を評価します。
+3. **変換**: 検出されたすべての項目を解決します。 
  
 Oracle から Azure Database for PostgreSQL へのような異種間移行の場合は、このステージで、ソース データベースのスキーマをターゲット環境と互換性のあるものにする必要もあります。
 
@@ -92,7 +92,7 @@ Microsoft の Oracle 用事前評価スクリプトは、Oracle データベー�
 - 各スキーマ内のテーブルのサイズ。
 - パッケージ、関数、プロシージャなどのコード行の数。
 
-[ora2pg Web サイト](https://ora2pg.darold.net/)から関連するスクリプトをダウンロードします。
+[github](https://github.com/microsoft/DataMigrationTeam/tree/master/Whitepapers) から関連するスクリプトをダウンロードします。
 
 ### <a name="assess"></a>アクセス
 
@@ -120,8 +120,6 @@ ora2pg -t SHOW_REPORT --estimate_cost
 
 レポートの最後の行には、推定される移行コードの総量が人日数で示されています。 この推定は、各オブジェクトに対して推定された移行単位の数に従っています。
 
-この移行単位は、PostgreSQL エキスパートの約 5 分を表します。 これが初めての移行の場合は、構成ディレクティブ `COST_UNIT_VALUE` または `--cost_unit_value` コマンドライン オプションを使用して、既定値を大きくすることができます。 
-
 次のコード例では、評価のいくつかのバリエーションが示されています。 
 * テーブルの評価
 * 列の評価
@@ -129,9 +127,9 @@ ora2pg -t SHOW_REPORT --estimate_cost
 * 10 分のコスト単位を用いたスキーマ評価
 
 ```
-ora2pg -t SHOW_TABLE -c c:\ora2pg\ora2pg_hr.conf > c:\ts303\hr_migration\reports\tables.txt ora2pg -t SHOW_COLUMN -c c:\ora2pg\ora2pg_hr.conf > c:\ts303\hr_migration\reports\columns.txt
-ora2pg -t SHOW_REPORT -c c:\ora2pg\ora2pg_hr.conf --dump_as_html --estimate_cost > c:\ts303\hr
-_migration\reports\report.html
+ora2pg -t SHOW_TABLE -c c:\ora2pg\ora2pg_hr.conf > c:\ts303\hr_migration\reports\tables.txt 
+ora2pg -t SHOW_COLUMN -c c:\ora2pg\ora2pg_hr.conf > c:\ts303\hr_migration\reports\columns.txt
+ora2pg -t SHOW_REPORT -c c:\ora2pg\ora2pg_hr.conf --dump_as_html --estimate_cost > c:\ts303\hr_migration\reports\report.html
 ora2pg -t SHOW_REPORT -c c:\ora2pg\ora2pg_hr.conf –-cost_unit_value 10 --dump_as_html --estimate_cost > c:\ts303\hr_migration\reports\report2.html
 ```
 
@@ -183,20 +181,46 @@ ora2pg によって提供される移行テンプレートを使用すること�
 
 ```
 ora2pg --project_base /app/migration/ --init_project test_project
-
-ora2pg --project_base /app/migration/ --init_project test_project
 ```
 
 出力の例を次に示します。 
    
 ```
-Creating project test_project. /app/migration/test_project/ schema/ dblinks/ directories/ functions/ grants/ mviews/ packages/ partitions/ procedures/ sequences/ synonyms/    tables/ tablespaces/ triggers/ types/ views/ sources/ functions/ mviews/ packages/ partitions/ procedures/ triggers/ types/ views/ data/ config/ reports/
+ora2pg --project_base /app/migration/ --init_project test_project
+        Creating project test_project.
+        /app/migration/test_project/
+                schema/
+                        dblinks/
+                        directories/
+                        functions/
+                        grants/
+                        mviews/
+                        packages/
+                        partitions/
+                        procedures/
+                        sequences/
+                        synonyms/
+                        tables/
+                        tablespaces/
+                        triggers/
+                        types/
+                        views/
+                sources/
+                        functions/
+                        mviews/
+                        packages/
+                        partitions/
+                        procedures/
+                        triggers/
+                        types/
+                        views/
+                data/
+                config/
+                reports/
 
-Generating generic configuration file
-
-Creating script export_schema.sh to automate all exports.
-
-Creating script import_all.sh to automate all imports.
+        Generating generic configuration file
+        Creating script export_schema.sh to automate all exports.
+        Creating script import_all.sh to automate all imports.
 ```
 
 `sources/` ディレクトリには、Oracle のコードが含まれています。 `schema/` ディレクトリには、PostgreSQL に移植されたコードが含まれています。 `reports/` ディレクトリには、HTML レポートと移行コストの評価が含まれています。
@@ -219,25 +243,21 @@ cd /app/migration/mig_project
 ```
 SET namespace="/app/migration/mig_project"
 
-ora2pg -t DBLINK -p -o dblink.sql -b %namespace%/schema/dblinks -c
-%namespace%/config/ora2pg.conf
-ora2pg -t DIRECTORY -p -o directory.sql -b %namespace%/schema/directories -c
-%namespace%/config/ora2pg.conf
-ora2pg -p -t FUNCTION -o functions2.sql -b %namespace%/schema/functions -c
-%namespace%/config/ora2pg.conf ora2pg -t GRANT -o grants.sql -b %namespace%/schema/grants -c %namespace%/config/ora2pg.conf ora2pg -t MVIEW -o mview.sql -b %namespace%/schema/   mviews -c %namespace%/config/ora2pg.conf
-ora2pg -p -t PACKAGE -o packages.sql
-%namespace%/config/ora2pg.conf -b %namespace%/schema/packages -c
-ora2pg -p -t PARTITION -o partitions.sql %namespace%/config/ora2pg.conf -b %namespace%/schema/partitions -c
-ora2pg -p -t PROCEDURE -o procs.sql
-%namespace%/config/ora2pg.conf -b %namespace%/schema/procedures -c
-ora2pg -t SEQUENCE -o sequences.sql
-%namespace%/config/ora2pg.conf -b %namespace%/schema/sequences -c
-ora2pg -p -t SYNONYM -o synonym.sql -b %namespace%/schema/synonyms -c
-%namespace%/config/ora2pg.conf
-ora2pg -t TABLE -o table.sql -b %namespace%/schema/tables -c %namespace%/config/ora2pg.conf ora2pg -t TABLESPACE -o tablespaces.sql -b %namespace%/schema/tablespaces -c
-%namespace%/config/ora2pg.conf
-ora2pg -p -t TRIGGER -o triggers.sql -b %namespace%/schema/triggers -c
-%namespace%/config/ora2pg.conf ora2pg -p -t TYPE -o types.sql -b %namespace%/schema/types -c %namespace%/config/ora2pg.conf ora2pg -p -t VIEW -o views.sql -b %namespace%/   schema/views -c %namespace%/config/ora2pg.conf
+ora2pg -p -t DBLINK -o dblink.sql -b %namespace%/schema/dblinks -c %namespace%/config/ora2pg.conf
+ora2pg -p -t DIRECTORY -o directory.sql -b %namespace%/schema/directories -c %namespace%/config/ora2pg.conf
+ora2pg -p -t FUNCTION -o functions2.sql -b %namespace%/schema/functions -c %namespace%/config/ora2pg.conf 
+ora2pg -p -t GRANT -o grants.sql -b %namespace%/schema/grants -c %namespace%/config/ora2pg.conf 
+ora2pg -p -t MVIEW -o mview.sql -b %namespace%/schema/mviews -c %namespace%/config/ora2pg.conf
+ora2pg -p -t PACKAGE -o packages.sql -b %namespace%/schema/packages -c %namespace%/config/ora2pg.conf
+ora2pg -p -t PARTITION -o partitions.sql -b %namespace%/schema/partitions -c %namespace%/config/ora2pg.conf
+ora2pg -p -t PROCEDURE -o procs.sql -b %namespace%/schema/procedures -c %namespace%/config/ora2pg.conf
+ora2pg -p -t SEQUENCE -o sequences.sql -b %namespace%/schema/sequences -c %namespace%/config/ora2pg.conf
+ora2pg -p -t SYNONYM -o synonym.sql -b %namespace%/schema/synonyms -c %namespace%/config/ora2pg.conf
+ora2pg -p -t TABLE -o table.sql -b %namespace%/schema/tables -c %namespace%/config/ora2pg.conf 
+ora2pg -p -t TABLESPACE -o tablespaces.sql -b %namespace%/schema/tablespaces -c %namespace%/config/ora2pg.conf
+ora2pg -p -t TRIGGER -o triggers.sql -b %namespace%/schema/triggers -c %namespace%/config/ora2pg.conf 
+ora2pg -p -t TYPE -o types.sql -b %namespace%/schema/types -c %namespace%/config/ora2pg.conf 
+ora2pg -p -t VIEW -o views.sql -b %namespace%/schema/views -c %namespace%/config/ora2pg.conf
 ```
 
 データを抽出するには、次のコマンドを使用します。
@@ -251,13 +271,9 @@ ora2pg -t COPY -o data.sql -b %namespace/data -c %namespace/config/ora2pg.conf
 最後に、Azure Database for PostgreSQL サーバー用にすべてのファイルをコンパイルします。 手動で生成された DDL ファイルを読み込むか、2 つ目のスクリプト *import_all.sh* を使用してそれらのファイルを対話的にインポートすることができます。
 
 ```
-psql -f %namespace%\schema\sequences\sequence.sql -h server1-
+psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database -l %namespace%\ schema\sequences\create_sequences.log
 
-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database -l
-
-%namespace%\ schema\sequences\create_sequences.log
-
-psql -f %namespace%\schema\tables\table.sql -h server1-server.postgres.database.azure.com p 5432 -U username@server1-server -d database -l    %namespace%\schema\tables\create_table.log
+psql -f %namespace%\schema\tables\table.sql -h server1-server.postgres.database.azure.com p 5432 -U username@server1-server -d database -l %namespace%\schema\tables\create_table.log
 ```
 
 データ インポート コマンドを次に示します。
@@ -306,7 +322,7 @@ select * from table1 where filter_data >= 01/01/2019
 
 この場合、ソースとターゲットの両方でデータ パリティをチェックすることで、検証を強化することをお勧めします。
 
-## <a name="postmigration"></a>移行後 
+## <a name="post-migration"></a>移行後 
 
 "*移行*" ステージの後は、移行後のタスクを完了して、すべてが可能な限り円滑かつ効率的に機能していることを確認する必要があります。
 
@@ -348,10 +364,10 @@ ora2pg ツール以外の移行に関するヘルプについては、[@AskAzure
 
 ## <a name="next-steps"></a>次の手順
 
-データベースとデータの移行および特殊なタスクに関するサービスとツールの一覧については、[データ移行のためのサービスとツール](https://docs.microsoft.com/azure/dms/dms-tools-matrix)に関する記事を参照してください。
+データベースとデータの移行および特殊なタスクに関するサービスとツールの一覧については、[データ移行のためのサービスとツール](../dms/dms-tools-matrix.md)に関する記事を参照してください。
 
 ドキュメント 
-- [Azure Database for PostgreSQL のドキュメント](https://docs.microsoft.com/azure/postgresql/)
+- [Azure Database for PostgreSQL のドキュメント](./index.yml)
 - [ora2pg のドキュメント](https://ora2pg.darold.net/documentation.html)
 - [PostgreSQL の Web サイト](https://www.postgresql.org/)
 - [PostgreSQL での自律トランザクションのサポート](http://blog.dalibo.com/2016/08/19/Autonoumous_transactions_support_in_PostgreSQL.html) 

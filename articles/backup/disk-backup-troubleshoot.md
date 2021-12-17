@@ -2,13 +2,13 @@
 title: Azure ディスク バックアップでのバックアップ エラーのトラブルシューティング
 description: Azure ディスク バックアップでのバックアップ エラーをトラブルシューティングする方法について説明します。
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: f6e9bcbbd618cf820ce91f8a3092d5be4aa045cb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/08/2021
+ms.openlocfilehash: a749c87949d53781dc810148d01cc5d179d70f77
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107246"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754117"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup"></a>Azure ディスク バックアップでのバックアップ エラーのトラブルシューティング
 
@@ -172,6 +172,12 @@ ms.locfileid: "105107246"
 
 推奨される操作:先に実行中のバックアップが完了するまで待ちます。
 
+### <a name="error-code-usererrormissingsubscriptionregistration"></a>エラーコード: UserErrorMissingSubscriptionRegistration
+
+エラー メッセージ:サブスクリプションが名前空間 'Microsoft.Compute' を使用するように登録されていません。
+
+推奨アクション: サブスクリプションに対して必要なリソース プロバイダーが登録されていません。 [ソリューション 3](../azure-resource-manager/templates/error-register-resource-provider.md#solution-3---azure-portal) の手順を使用して、リソースプロバイダーの名前空間 (_Microsoft.Compute_ と _microsoft.Storage_) の両方を登録します。
+
 ## <a name="next-steps"></a>次の手順
 
-- [Azure ディスク バックアップのサポート マトリックス](disk-backup-support-matrix.md)
+[Azure ディスク バックアップのサポート マトリックス](disk-backup-support-matrix.md)

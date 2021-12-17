@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning の自動機械学習 (自動 ML) インターフェイスを使用して、コードを記述することなく需要予測モデルをトレーニングしてデプロイします。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 12/21/2020
+ms.date: 10/21/2021
 ms.custom: automl
-ms.openlocfilehash: a5f7c0cf95d62df2d06c91abd99a1827524d5d6b
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: cc8ac6d5abe5843c76698e0bf36cdeb8932246e3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210552"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559582"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>チュートリアル:自動機械学習を使用して需要を予測する
 
@@ -111,9 +111,11 @@ Azure Machine Learning スタジオで自動機械学習を使用し、1 行の�
 
     1. 予測するターゲット列として、 **[cnt]** を選択します。 この列は、自転車シェアリング レンタルの合計数を示します。
 
-    1. **[Create a new compute]\(新しいコンピューティングの作成\)** を選択し、コンピューティング先を構成します。 自動 ML では、Azure Machine Learning コンピューティングのみがサポートされます。 
+    1. コンピューティングの種類として **[コンピューティング クラスター]** を選択します。 
 
-        1. **[仮想マシン]** フォームに必要事項を入力してコンピューティングを設定します。
+    1. **[+新規]** を選択して、ストレージおよびコンピューティング ターゲットを構成します。 自動 ML では、Azure Machine Learning コンピューティングのみがサポートされます。 
+
+        1. **[仮想マシンの選択]** フォームに必要事項を入力してコンピューティングを設定します。
 
             フィールド | 説明 | チュートリアルの値
             ----|---|---
@@ -127,7 +129,7 @@ Azure Machine Learning スタジオで自動機械学習を使用し、1 行の�
             ----|---|---
             コンピューティング名 |  コンピューティング コンテキストを識別する一意名。 | bike-compute
             最小/最大ノード| データをプロファイリングするには、1 つ以上のノードを指定する必要があります。|最小ノード: 1<br>最大ノード: 6
-            スケール ダウンする前のアイドル時間 (秒) | クラスターが最小ノード数に自動的にスケールダウンされるまでのアイドル時間。|120 (既定値)
+            スケール ダウンする前のアイドル時間 (秒) | クラスターが最小ノード数に自動的にスケールダウンされるまでのアイドル時間。|1800 (既定値)
             詳細設定 | 実験用の仮想ネットワークを構成および承認するための設定。| なし 
   
         1. **[作成]** を選択して、コンピューティング先を取得します。 

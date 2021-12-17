@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub の監視
 description: Azure IoT Hub を監視する方法については、こちらでご確認ください
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.topic: conceptual
 ms.service: iot-hub
 ms.custom: subject-monitoring
-ms.date: 11/06/2020
-ms.openlocfilehash: c9e6107e981d2bae96c5d9f368c8122d3ce245f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/26/2021
+ms.openlocfilehash: 5a4c5902a42a2efd0b75bdbcbf5d5d90ddab335b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570948"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550385"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Azure IoT Hub の監視
 
@@ -82,7 +82,7 @@ IoT Hub のプラットフォーム メトリックを他の場所にルーテ�
 
 Azure portal で、IoT ハブの左ウィンドウの **[監視]** の下にある **[メトリック]** を選択すると、IoT ハブによって出力されるプラットフォーム メトリック (既定) を対象範囲とするメトリックス エクスプローラーが開きます。
 
-:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="IoT ハブのメトリックス エクスプローラー ページ。":::
+:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="IoT ハブのメトリックス エクスプローラーのページを示すスクリーンショット。" border="true":::
 
 Azure IoT Hub に関して収集されるプラットフォーム メトリックの一覧については、[「Monitoring Azure IoT Hub data reference (Azure IoT Hub 監視データのリファレンス)」の「メトリック」](monitor-iot-hub-reference.md#metrics)を参照してください。 すべての Azure サービスに関して収集されるプラットフォーム メトリックの一覧については、「[Azure Monitor のサポートされるメトリック](../azure-monitor/essentials/metrics-supported.md)」を参照してください。
 

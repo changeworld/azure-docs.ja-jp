@@ -7,14 +7,17 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 02/13/2021
 ms.author: albecker
-ms.openlocfilehash: 658dfbb654920c0dd90c4b4caaac7a5ca5962c81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bbc05a6a0485a11bf73640f8239882eb6363eadc
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607298"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779630"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>マネージド ディスクのストレージの種類を更新する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows 
 
 Azure マネージド ディスクには、ディスクの種類が 4 つあります。Azure Ultra Disk、Premium SSD、Standard SSD、Standard HDD です。 パフォーマンスのニーズに合わせて、Premium SSD、Standard SSD、および Standard HDD を切り替えることができます。 まだ Ultra Disk との切り替えはできません。新しいディスクをデプロイする必要があります。
 
@@ -116,7 +119,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 3. VM が停止していない場合、VM の **[概要]** ウィンドウの一番上で **[停止]** を選択し、VM が停止するまで待ちます。
 4. VM のウィンドウで、メニューから **[ディスク]** を選択します。
 5. 変換するディスクを選択します。
-6. メニューから **[構成]** を選択します。
+6. メニューで **[Size + performance]\(サイズおよびパフォーマンス\)** を選択します。
 7. **[アカウントの種類]** を、元のディスクの種類から目的のディスクの種類に変更します。
 8. **[保存]** を選択し、ディスク ウィンドウを閉じます。
 

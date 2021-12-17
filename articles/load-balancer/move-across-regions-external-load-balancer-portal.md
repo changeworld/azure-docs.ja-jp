@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: f83ff3d1d03354daef3466c1f48eaa505e378634
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9eabb4f49a533c97177dc0598e425ab63b20ec5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94693751"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258717"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して外部ロード バランサーを別のリージョンに移動する
 
@@ -110,7 +110,7 @@ ms.locfileid: "94693751"
             },
         ```
 
-        Basic と Standard SKU のパブリック IP の違いについては、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/virtual-network-public-ip-address.md)」を参照してください。
+        Basic と Standard SKU のパブリック IP の違いについては、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/ip-services/virtual-network-public-ip-address.md)」を参照してください。
 
     * **パブリック IP の割り当て方法** と **アイドル タイムアウト**。 パブリック IP の割り当て方法を変更するには、**publicIPAllocationMethod** プロパティを **Dynamic** から **Static**、または **Static** から **Dynamic** に変更します。 アイドル タイムアウトを変更するには、**idleTimeoutInMinutes** プロパティを目的の値に変更します。 既定値は **4** です。
 
@@ -136,7 +136,7 @@ ms.locfileid: "94693751"
 
         ```
 
-        割り当て方法とアイドル タイムアウト値については、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/virtual-network-public-ip-address.md)」を参照してください。
+        割り当て方法とアイドル タイムアウト値については、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/ip-services/virtual-network-public-ip-address.md)」を参照してください。
 
  
 13. オンライン エディターで **[保存]** を選択します。
@@ -289,7 +289,7 @@ ms.locfileid: "94693751"
                     }
                 ]
         ```
-       負荷分散規則については、「[Azure Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
+       負荷分散規則については、「[Azure Load Balancer の概要](load-balancer-overview.md)」を参照してください。
 
     * **プローブ**。 構成のロード バランサーのプローブを追加または削除できます。そのためには、template.json ファイルの **probes** セクションでエントリを追加または削除します。
 
@@ -309,7 +309,7 @@ ms.locfileid: "94693751"
                     }
                 ],
         ```
-       詳細については、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
+       詳細については、「[Load Balancer の正常性プローブ](load-balancer-custom-probe-overview.md)」を参照してください。
 
     * **インバウンド NAT 規則**。 ロード バランサーのインバウンド NAT 規則を追加または削除できます。そのためには、template.json ファイルの **inboundNatRules** セクションでエントリを追加または削除します。
 
@@ -357,7 +357,7 @@ ms.locfileid: "94693751"
             }
         }
         ```
-        インバウンド NAT 規則については、「[Azure Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
+        インバウンド NAT 規則については、「[Azure Load Balancer の概要](load-balancer-overview.md)」を参照してください。
 
     * **アウトバウンド規則**。 構成のアウトバウンド規則を追加または削除できます。そのためには、template.json ファイルの **outboundRules** プロパティを編集します。
 

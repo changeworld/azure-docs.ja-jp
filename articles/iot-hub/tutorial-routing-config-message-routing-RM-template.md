@@ -1,20 +1,19 @@
 ---
 title: チュートリアル - Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
 description: チュートリアル - Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
-author: robinsh
-manager: philmeagit st
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 03/25/2019
-ms.author: robinsh
-ms.custom: mvc
-ms.openlocfilehash: 53217340b0d91f3de77e5e0d8c0a82e30599d6ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/24/2021
+ms.author: lizross
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 988f1e48bfc5fdbd4f6830fe52446859cf2bfa64
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98621430"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552472"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure Resource Manager テンプレートを使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -30,7 +29,7 @@ ms.locfileid: "98621430"
 
 このチュートリアルのパート 2 では、IoT ハブにメッセージを送信する Visual Studio アプリケーションをダウンロードして実行します。 このダウンロード内のフォルダーには、Azure Resource Manager テンプレートとパラメーター ファイルのほか、Azure CLI と PowerShell のスクリプトが含まれています。
 
-早速、[Azure IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)をダウンロードしましょう。 master.zip ファイルを解凍します。 Resource Manager テンプレートとパラメーター ファイルは、**template_iothub.json** および **template_iothub_parameters.json** という名前で、/iot-hub/Tutorials/Routing/SimulatedDevice/resources/ にあります。
+早速、<bpt id="p1">[</bpt>Azure IoT C# サンプル<ept id="p1">](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)</ept>をダウンロードしましょう。 main.zip ファイルを解凍します。 Resource Manager テンプレートとパラメーター ファイルは、<bpt id="p1">**</bpt>template_iothub.json<ept id="p1">**</ept> および <bpt id="p2">**</bpt>template_iothub_parameters.json<ept id="p2">**</ept> という名前で、/iot-hub/Tutorials/Routing/SimulatedDevice/resources/ にあります。
 
 ## <a name="create-your-resources"></a>リソースの作成
 
@@ -38,61 +37,61 @@ ms.locfileid: "98621430"
 
 IoT ハブ名やストレージ アカウント名など、いくつかのリソース名はグローバルに一意であることが必要です。 リソースの命名を容易にするために、それらのリソース名には、現在の日付および時刻から生成される英数字のランダム値が追加されるよう設定されています。 
 
-テンプレートを見ると、それらのリソースに対し変数が設定されている場所がわかります。リソースは渡されたパラメーターを受け取り、そのパラメーターに *randomValue* を連結します。 
+テンプレートを見ると、それらのリソースに対し変数が設定されている場所がわかります。リソースは渡されたパラメーターを受け取り、そのパラメーターに <bpt id="p1">*</bpt>randomValue<ept id="p1">*</ept> を連結します。 
 
 次のセクションでは、使用されるパラメーターについて説明します。
 
 ### <a name="parameters"></a>パラメーター
 
-これらのパラメーターのほとんどには既定値があります。 末尾が **_in** のものは、*randomValue* と連結されてグローバルに一意になります。 
+これらのパラメーターのほとんどには既定値があります。 末尾が <bpt id="p1">**</bpt>_in<ept id="p1">**</ept> のものは、<bpt id="p2">*</bpt>randomValue<ept id="p2">*</ept> と連結されてグローバルに一意になります。 
 
-**randomValue**: この値は、テンプレートをデプロイした時点の最新の日付および時刻から生成されます。 このフィールドは、テンプレート自体で生成されるため、パラメーター ファイルには存在しません。
+<bpt id="p1">**</bpt>randomValue<ept id="p1">**</ept>: この値は、テンプレートをデプロイした時点の最新の日付および時刻から生成されます。 このフィールドは、テンプレート自体で生成されるため、パラメーター ファイルには存在しません。
 
-**subscriptionId**: このフィールドは、テンプレートのデプロイ先となるサブスクリプションに自動的に設定されます。 このフィールドは自動的に設定されるため、パラメーター ファイルには存在しません。
+<bpt id="p1">**</bpt>subscriptionId<ept id="p1">**</ept>: このフィールドは、テンプレートのデプロイ先となるサブスクリプションに自動的に設定されます。 このフィールドは自動的に設定されるため、パラメーター ファイルには存在しません。
 
-**IoTHubName_in**: このフィールドは、IoT ハブのベース名です。これが randomValue と連結されてグローバルに一意になります。
+<bpt id="p1">**</bpt>IoTHubName_in<ept id="p1">**</ept>: このフィールドは、IoT ハブのベース名です。これは、グローバルに一意になるように randomValue と連結されます。
 
-**location**:このフィールドは、デプロイ先となる Azure リージョンです ("westus" など)。
+<bpt id="p1">**</bpt>location<ept id="p1">**</ept>:このフィールドは、デプロイ先となる Azure リージョンです ("westus" など)。
 
-**consumer_group**: このフィールドは、ルーティング エンドポイントを通じて受信されるメッセージに対して設定されるコンシューマー グループです。 Azure Stream Analytics で結果をフィルター処理するために使用されます。 たとえば、ストリーム全体からすべてのデータを受け取る場合や、**Contoso** に設定された consumer_group を通じてデータを受信する場合、Azure Stream Analytics ストリーム (と Power BI レポート) を設定して、それらのエントリだけを表示できます。 このフィールドは、このチュートリアルのパート 2 で使用されます。
+<bpt id="p1">**</bpt>consumer_group<ept id="p1">**</ept>: このフィールドは、ルーティング エンドポイントを通じて受信されるメッセージに対して設定されるコンシューマー グループです。 Azure Stream Analytics で結果をフィルター処理するために使用されます。 たとえば、ストリーム全体からすべてのデータを受け取る場合や、<bpt id="p1">**</bpt>Contoso<ept id="p1">**</ept> に設定された consumer_group を通じてデータを受信する場合、Azure Stream Analytics ストリーム (と Power BI レポート) を設定して、それらのエントリだけを表示できます。 このフィールドは、このチュートリアルのパート 2 で使用されます。
 
-**sku_name**: このフィールドは、IoT ハブのスケーリングです。 この値は S1 以上にする必要があります。Free レベルは、複数のエンドポイントが許容されていないため、このチュートリアルには使用できません。
+<bpt id="p1">**</bpt>sku_name<ept id="p1">**</ept>: このフィールドは、IoT ハブのスケーリングです。 この値は S1 以上にする必要があります。Free レベルは、複数のエンドポイントが許容されていないため、このチュートリアルには使用できません。
 
-**sku_units**: このフィールドは、使用できる IoT Hub ユニットの数であり、**sku_name** と対で使用します。
+<bpt id="p1">**</bpt>sku_units<ept id="p1">**</ept>: このフィールドは、使用できる IoT Hub ユニットの数であり、<bpt id="p2">**</bpt>sku_name<ept id="p2">**</ept> と対で使用します。
 
-**d2c_partitions**: このフィールドは、イベント ストリームに使用されるパーティションの数です。
+<bpt id="p1">**</bpt>d2c_partitions<ept id="p1">**</ept>: このフィールドは、イベント ストリームに使用されるパーティションの数です。
 
-**storageAccountName_in**: このフィールドは、作成されるストレージ アカウントの名前です。 メッセージは、ストレージ アカウント内のコンテナーにルーティングされます。 このフィールドが randomValue と連結されて、グローバルに一意になります。
+<bpt id="p1">**</bpt>storageAccountName_in<ept id="p1">**</ept>: このフィールドは、作成されるストレージ アカウントの名前です。 メッセージは、ストレージ アカウント内のコンテナーにルーティングされます。 このフィールドが randomValue と連結されて、グローバルに一意になります。
 
-**storageContainerName**: このフィールドは、ストレージ アカウントにルーティングされたメッセージの格納先となるコンテナーの名前です。
+<bpt id="p1">**</bpt>storageContainerName<ept id="p1">**</ept>: このフィールドは、ストレージ アカウントにルーティングされたメッセージの格納先となるコンテナーの名前です。
 
-**storage_endpoint**: このフィールドは、メッセージ ルーティングによって使用されるストレージ アカウント エンドポイントの名前です。
+<bpt id="p1">**</bpt>storage_endpoint<ept id="p1">**</ept>: このフィールドは、メッセージ ルーティングによって使用されるストレージ アカウント エンドポイントの名前です。
 
-**service_bus_namespace_in**: このフィールドは、作成される Service Bus 名前空間の名前です。 この値が randomValue と連結されて、グローバルに一意になります。
+<bpt id="p1">**</bpt>service_bus_namespace_in<ept id="p1">**</ept>: このフィールドは、作成される Service Bus 名前空間の名前です。 この値が randomValue と連結されて、グローバルに一意になります。
 
-**service_bus_queue_in**: このフィールドは、メッセージのルーティングに使用される Service Bus キューの名前です。 この値が randomValue と連結されて、グローバルに一意になります。
+<bpt id="p1">**</bpt>service_bus_queue_in<ept id="p1">**</ept>: このフィールドは、メッセージのルーティングに使用される Service Bus キューの名前です。 この値が randomValue と連結されて、グローバルに一意になります。
 
-**AuthRules_sb_queue**: このフィールドは、Service Bus キューの承認規則です。キューの接続文字列を取得するために使用されます。
+<bpt id="p1">**</bpt>AuthRules_sb_queue<ept id="p1">**</ept>: このフィールドは、Service Bus キューの承認規則です。キューの接続文字列を取得するために使用されます。
 
 ### <a name="variables"></a>変数
 
 これらの値はテンプレート内で使用され、大半はパラメーターから得られます。
 
-**queueAuthorizationRuleResourceId**: このフィールドは、Service Bus キュー用の承認規則の ResourceId です。 そして ResourceId は、キューの接続文字列を取得するために使用されます。
+<bpt id="p1">**</bpt>queueAuthorizationRuleResourceId<ept id="p1">**</ept>: このフィールドは、Service Bus キュー用の承認規則の ResourceId です。 そして ResourceId は、キューの接続文字列を取得するために使用されます。
 
-**iotHubName**: このフィールドは、randomValue が連結された後の IoT ハブの名前です。 
+<bpt id="p1">**</bpt>iotHubName<ept id="p1">**</ept>: このフィールドは、randomValue が連結された後の IoT ハブの名前です。 
 
-**storageAccountName**:このフィールドは、randomValue が連結された後のストレージ アカウントの名前です。 
+<bpt id="p1">**</bpt>storageAccountName<ept id="p1">**</ept>:このフィールドは、randomValue が連結された後のストレージ アカウントの名前です。 
 
-**service_bus_namespace**: このフィールドは、randomValue が連結された後の名前空間です。
+<bpt id="p1">**</bpt>service_bus_namespace<ept id="p1">**</ept>: このフィールドは、randomValue が連結された後の名前空間です。
 
-**service_bus_queue**: このフィールドは、randomValue が連結された後の Service Bus キュー名です。
+<bpt id="p1">**</bpt>service_bus_queue<ept id="p1">**</ept>: このフィールドは、randomValue が連結された後の Service Bus キュー名です。
 
-**sbVersion**: 使用する Service Bus API のバージョンです。 このケースでは "2017-04-01" です。
+<bpt id="p1">**</bpt>sbVersion<ept id="p1">**</ept>: 使用する Service Bus API のバージョンです。 このケースでは "2017-04-01" です。
 
 ### <a name="resources-storage-account-and-container"></a>リソース: ストレージ アカウントとコンテナー
 
-最初に作成されるリソースは、ストレージ アカウントと、メッセージのルーティング先となるコンテナーです。 コンテナーは、ストレージ アカウントに属するリソースです。 ストレージ アカウントに対する `dependsOn` 句が存在するため、コンテナーの前にストレージ アカウントを作成しておく必要があります。
+最初に作成されるリソースは、ストレージ アカウントと、メッセージのルーティング先となるコンテナーです。 コンテナーは、ストレージ アカウントに属するリソースです。 ストレージ アカウントに対する <ph id="ph1">`dependsOn`</ph> 句が存在するため、コンテナーの前にストレージ アカウントを作成しておく必要があります。
 
 このセクションは、次のような内容になっています。
 
@@ -149,7 +148,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 }
 ```
 
-このセクションでは、Service Bus キューが作成されます。 スクリプトのこの部分には、キューの前に名前空間が作成されるようにする `dependsOn` 句があります。
+このセクションでは、Service Bus キューが作成されます。 スクリプトのこの部分には、キューの前に名前空間が作成されるようにする <ph id="ph1">`dependsOn`</ph> 句があります。
 
 ```json
 {
@@ -167,7 +166,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 
 ### <a name="resources-iot-hub-and-message-routing"></a>リソース: IoT Hub とメッセージ ルーティング
 
-ストレージ アカウントと Service Bus キューが作成されたところで、それらにメッセージをルーティングする IoT ハブを作成します。 RM テンプレートで `dependsOn` 句が使用されているため、Service Bus リソースとストレージ アカウントが作成される前にハブの作成が試みられることはありません。 
+ストレージ アカウントと Service Bus キューが作成されたところで、それらにメッセージをルーティングする IoT ハブを作成します。 RM テンプレートで <ph id="ph1">`dependsOn`</ph> 句が使用されているため、Service Bus リソースとストレージ アカウントが作成される前にハブの作成が試みられることはありません。 
 
 以下に示すのは、IoT ハブ セクションの最初の部分です。 テンプレートのこの部分に依存関係の設定があり、プロパティから始まります。
 
@@ -195,7 +194,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 
 キューの接続文字列を作成するためには、queueAuthorizationRulesResourcedId が必要です。これはインラインで取得されます。 ストレージ アカウントの接続文字列を作成するには、プライマリ ストレージ キーを取得し、それを接続文字列の書式で使用します。
 
-また、BLOB の形式も、エンドポイントの構成で `AVRO` または `JSON` に設定します。
+また、BLOB の形式も、エンドポイントの構成で <ph id="ph1">`AVRO`</ph> または <ph id="ph2">`JSON`</ph> に設定します。
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
@@ -231,7 +230,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 
 次のセクションは、エンドポイントへのメッセージ ルートに関するものです。 設定はエンドポイントごとに 1 つあるので、Service Bus キュー用に 1 つ、ストレージ アカウント コンテナー用に 1 つ存在します。
 
-ストレージにルーティングされるメッセージのクエリ条件は `level="storage"` で、Service Bus キューにルーティングされるメッセージのクエリ条件は `level="critical"` であることを思い出してください。
+ストレージにルーティングされるメッセージのクエリ条件は <ph id="ph1">`level="storage"`</ph> で、Service Bus キューにルーティングされるメッセージのクエリ条件は <ph id="ph2">`level="critical"`</ph> であることを思い出してください。
 
 ```json
 "routes": [
@@ -303,7 +302,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 
 ### <a name="resources-service-bus-queue-authorization-rules"></a>リソース: Service Bus キューの承認規則
 
-Service Bus キューの承認規則は、Service Bus キューの接続文字列を取得するために使用されます。 Service Bus 名前空間と Service Bus キューよりも前に作成されることがないよう、`dependsOn` 句が使用されています。
+Service Bus キューの承認規則は、Service Bus キューの接続文字列を取得するために使用されます。 Service Bus 名前空間と Service Bus キューよりも前に作成されることがないよう、<ph id="ph1">`dependsOn`</ph> 句が使用されています。
 
 ```json
 {
@@ -356,11 +355,11 @@ Service Bus キューの承認規則は、Service Bus キューの接続文字�
 
 テンプレートを Azure にデプロイするには、テンプレートとパラメーター ファイルを Azure Cloud Shell にアップロードしたうえで、テンプレートをデプロイするためのスクリプトを実行します。 Azure Cloud Shell を開いてサインインします。 この例では、PowerShell を使用します。
 
-ファイルをアップロードするには、メニュー バーの **[ファイルのアップロード/ダウンロード]** アイコンを選択して、[アップロード] を選択します。
+ファイルをアップロードするには、メニュー バーの <bpt id="p1">**</bpt>[ファイルのアップロード/ダウンロード]<ept id="p1">**</ept> アイコンを選択して、[アップロード] を選択します。
 
 ![[ファイルのアップロード/ダウンロード] アイコンが強調表示されているスクリーンショット。](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
 
-表示されたエクスプローラーを使用して、自分のローカル ディスク上のファイルを探して選択し、 **[開く]** を選択します。
+表示されたエクスプローラーを使用して、自分のローカル ディスク上のファイルを探して選択し、 <bpt id="p1">**</bpt>[開く]<ept id="p1">**</ept> を選択します。
 
 ファイルのアップロード後、次の画像のような結果のダイアログが表示されます。
 
@@ -372,11 +371,11 @@ Cloud Shell インスタンスによって使用される共有にファイル�
 
 このスクリプトは、次の変数を設定して使用します。
 
-**$RGName** は、テンプレートのデプロイ先となるリソース グループの名前です。 このフィールドは、テンプレートをデプロイする前に作成されます。
+<bpt id="p1">**</bpt>$RGName<ept id="p1">**</ept> は、テンプレートのデプロイ先となるリソース グループの名前です。 このフィールドは、テンプレートをデプロイする前に作成されます。
 
-**$location** は、テンプレートに使用される Azure の場所です ("westus" など)。
+<bpt id="p1">**</bpt>$location<ept id="p1">**</ept> は、テンプレートに使用される Azure の場所です ("westus" など)。
 
-**deploymentname** は、デプロイに割り当てる名前です。返される変数の値を取得する際に使用します。
+<bpt id="p1">**</bpt>deploymentname<ept id="p1">**</ept> は、デプロイに割り当てる名前です。返される変数の値を取得する際に使用します。
 
 PowerShell スクリプトを次に示します。 この PowerShell スクリプトをコピーして Cloud Shell ウィンドウに貼り付け、Enter キーを押して実行してください。
 

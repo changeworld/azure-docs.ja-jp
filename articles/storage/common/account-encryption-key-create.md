@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 06/09/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4c86811ee72d2713fced6320a17d1ccde1866d99
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9ab311c8e348c6e0cbb703a73562770a2f4f963f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769951"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251746"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>テーブルとキューのカスタマーマネージド キーがサポートされるアカウントを作成する
 
@@ -28,10 +28,23 @@ Azure Storage は、保存されているストレージ アカウント内の�
 
 新しいストレージ アカウントの作成時に、キューとテーブルにアカウント暗号化キーを使用するようそのストレージ アカウントを構成する必要があります。 アカウントの作成後は、暗号化キーのスコープを変更することはできません。
 
-ストレージ アカウントの種類は汎用 v2 にする必要があります。 Azure CLI または Azure Resource Manager テンプレートのいずれかを使用して、ストレージ アカウントを作成し、アカウント暗号化キーを使用するよう構成できます。
+ストレージ アカウントの種類は汎用 v2 にする必要があります。 Azure portal、PowerShell、Azure CLI、または Azure Resource Manager テンプレートを使用してストレージ アカウントを作成し、アカウント暗号化キーを使用するように構成できます。
+
+ストレージ アカウントの作成の詳細については、「[ストレージ アカウントを作成する](storage-account-create.md)」を参照してください。
 
 > [!NOTE]
 > アカウント暗号化キーを使用してデータを暗号化するための構成を、ストレージ アカウントの作成時に任意で行えるのは、Queue storage と Table Storage だけです。 Blob Storage と Azure Files では、常にアカウント暗号化キーを使用してデータを暗号化します。
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+アカウント暗号化キーを使用するストレージ アカウントを Azure portal で作成するには、次の手順を行います。
+
+1. 左側のポータル メニューで **[ストレージ アカウント]** を選択して、ストレージ アカウントの一覧を表示します。
+1. **[ストレージ アカウント]** ページで、 **[新規]** を選択します。
+1. **[基本]** タブのフィールドに入力します。
+1. [詳細] タブで、 **[Tables and Queues]\(テーブルとキュー\)** セクションを見つけ、 **[Enable support for customer-managed keys]\(カスタマー マネージド キーのサポートを有効にする\)** を選択します。
+
+    :::image type="content" source="media/account-encryption-key-create/enable-cmk-tables-queues.png" alt-text="新しいアカウントの作成時にキューとテーブルに対してカスタマー マネージド キーを有効にする方法を示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -115,15 +128,25 @@ az storage account create \
 
 ---
 
-アカウントの暗号化キーに依存するアカウントを作成した後、Azure Key Vault または Key Vault Managed Hardware Security Model (HSM) (プレビュー) に格納されているカスタマーマネージド キーを構成できます。 カスタマーマネージド キーをキー コンテナーに格納する方法については、「[Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault.md)」を参照してください。 マネージド HSM にカスタマーマネージド キーを格納する方法については、「[Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault-hsm.md)」を参照してください。
+アカウント暗号化キーを使用するアカウントを作成した後、Azure Key Vault または Key Vault Managed Hardware Security Model (HSM) に格納されているカスタマー マネージド キーを構成できます。 カスタマーマネージド キーをキー コンテナーに格納する方法については、「[Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault.md)」を参照してください。 マネージド HSM にカスタマー マネージド キーを格納する方法については、「[Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault-hsm.md)」を参照してください。
 
 ## <a name="verify-the-account-encryption-key"></a>アカウント暗号化キーを確認する
 
-ストレージ アカウント内のサービスでアカウント暗号化キーが使用されていることを確認するには、Azure CLI の [az storage account](/cli/azure/storage/account#az_storage_account_show) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 暗号化プロパティ内で各サービスの `keyType` フィールドを探し、`Account` に設定されていることを確認します。
+アカウントを作成した後、Azure portal、PowerShell、または Azure CLI を使用して、アカウントにスコープが設定された暗号化キーをストレージ アカウントで使用していることを確認できます。
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+アカウントにスコープが設定された暗号化キーをストレージ アカウント内のサービスで使用していることを Azure portal を使用して確認するには、次の手順を行います。
+
+1. Azure Portal で新しいストレージ アカウントに移動します。
+1. **[セキュリティとネットワーク]** セクションで、 **[暗号化]** を選択します。
+1. アカウント暗号化キーを使用するようにストレージ アカウントが作成された場合は、 **[暗号化]** タブに、BLOB、ファイル、テーブル、キューという 4 つの Azure Storage サービスすべてに対して、カスタマー マネージド キーを有効にできることが示されます。
+
+    :::image type="content" source="media/account-encryption-key-create/verify-cmk-tables-queues.png" alt-text="ストレージ アカウントでアカウント暗号化キーが使用されていることを確認する方法を示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-ストレージ アカウント内のサービスでアカウント暗号化キーが使用されていることを確認するには、[Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `Encryption` プロパティ内で各サービスの `KeyType` フィールドを探し、`Account` に設定されていることを確認します。
+ストレージ アカウント内のサービスでアカウント暗号化キーを使用していることを PowerShell を使用して確認するには、[Get AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `Encryption` プロパティ内で各サービスの `KeyType` フィールドを探し、`Account` に設定されていることを確認します。
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -134,11 +157,11 @@ $account.Encryption.Services.Table
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-ストレージ アカウント内のサービスでアカウント暗号化キーが使用されていることを確認するには、[az storage account show](/cli/azure/storage/account#az_storage_account_show) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 暗号化プロパティ内で各サービスの `keyType` フィールドを探し、`Account` に設定されていることを確認します。
+ストレージ アカウント内のサービスでアカウント暗号化キーを使用していることを Azure CLI を使用して確認するには、[az storage account show](/cli/azure/storage/account#az_storage_account_show) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 暗号化プロパティ内で各サービスの `keyType` フィールドを探し、`Account` に設定されていることを確認します。
 
 ```azurecli
-az storage account show /
-    --name <storage-account> /
+az storage account show \
+    --name <storage-account> \
     --resource-group <resource-group>
 ```
 
@@ -148,6 +171,8 @@ az storage account show /
 
 ---
 
+アカウントにスコープが設定された暗号化キーをストレージ アカウントで使用していることを確認したら、そのアカウントに対してカスタマー マネージド キーを有効にすることができます。 4 つの Azure Storage サービスのすべて (BLOB、ファイル、テーブル、キュー) で、暗号化のためにカスタマー マネージド キーが使用されます。
+
 ## <a name="pricing-and-billing"></a>価格と課金
 
 アカウントにスコープが設定されている暗号化キーを使用するように作成されたストレージ アカウントは、テーブル ストレージの容量とトランザクションンについて、既定のサービス スコープ キーを使用するアカウントとは異なるレートで課金されます。 詳細については、「[Azure Table Storage の料金](https://azure.microsoft.com/pricing/details/storage/tables/)」をご覧ください。
@@ -156,4 +181,5 @@ az storage account show /
 
 - [保存データに対する Azure Storage 暗号化](storage-service-encryption.md)
 - [Azure Storage の暗号化のためのカスタマー マネージド キー](customer-managed-keys-overview.md)
-- [Azure Key Vault とは](../../key-vault/general/overview.md)
+- [Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault.md)
+- [Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault-hsm.md)

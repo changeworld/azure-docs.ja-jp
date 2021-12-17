@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 6f089af71e4d32023e9cebd6613872f7db0eed7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec8431c7f84431702a60ef85e32d47c604289b3a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94694961"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678215"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
@@ -46,7 +46,7 @@ NVA HA のシナリオでは、HA ポートは次の利点を提供します。
 
 次の図は、ハブとスポークによる仮想ネットワークのデプロイを示したものです。 トラフィックは、スポークによってハブの仮想ネットワークに強制的にトンネリングされ、NVA を通過した後、信頼される空間を離れます。 NVA は、HA ポート構成の内部 Standard Load Balancer の背後にあります。 すべてのトラフィックを、適切に処理して転送できます。 次の図に示すように構成すると、HA ポートの負荷分散規則ではさらに、イングレスおよびエグレス トラフィックのフロー対称を提供できます。
 
-<a node="diagram"></a>
+<a name="diagram"></a>
 ![HA モードで NVA がデプロイされているハブとスポークの仮想ネットワークの図](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]

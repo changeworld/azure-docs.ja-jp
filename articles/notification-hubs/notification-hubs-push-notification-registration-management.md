@@ -5,24 +5,22 @@ services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 08/23/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7807d28da459656938acb399eb8c621e4c292372
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9eb83289beaf3cafb80bda1b5c25bf6b4cb9528
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89001571"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467741"
 ---
 # <a name="registration-management"></a>登録管理
 
@@ -41,7 +39,7 @@ Notification Hub にデバイスを登録するには、**登録** または **�
 
 ### <a name="installations"></a>インストール
 
-インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。 また、デバイス登録の最新の優れた方法です。 ただし、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ではまだサポートされていません。  つまり、クライアント デバイス自体から登録する場合は、インストールをサポートする [Notification Hubs REST API](/rest/api/notificationhubs/create-overwrite-installation) を使用する必要があります。 バックエンド サービスを使用する場合は、 [バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用できます。
+インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。 これは、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) を使用してデバイスを登録するための最新の最適なアプローチです。  クライアント デバイス自体にインストールを登録するには、[Notification Hubs REST API](/rest/api/notificationhubs/create-overwrite-installation) の方法を使用することもできます。 バックエンド サービスを使用する場合は、 [バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用できます。
 
 次に、インストールを使用する方法の主な利点について説明します。
 
@@ -96,6 +94,9 @@ Notification Hub にデバイスを登録するには、**登録** または **�
 > インストール API では Baidu サービスはサポートされていません (Registrations API ではサポートされています)。 
 
 ### <a name="templates"></a>テンプレート
+
+> [!NOTE]
+> Microsoft プッシュ通知サービス (MPNS) は非推奨とされ、サポートされなくなりました。
 
 [テンプレート](notification-hubs-templates-cross-platform-push-messages.md)を使用する場合、デバイスのインストールでは、そのデバイスに関連付けられたすべてのテンプレートも JSON 形式で保持されます (上のサンプルを参照)。 テンプレート名は、1 つのデバイスに複数のテンプレートを対象にすることができます。
 

@@ -9,30 +9,30 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: 0939216e1d96e898d7c45b9e7a3ec72453b263d6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: da96179707be6d41c8191b5debff3154fe1e1151
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958017"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442397"
 ---
 Python 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
 Python 用 Face クライアント ライブラリを使用すると、次のことができます。
 
-* [画像内の顔を検出する](#detect-faces-in-an-image)
-* [似た顔を探す](#find-similar-faces)
-* [PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)
+* [顔を検出して分析する](#detect-and-analyze-faces)
 * [顔を識別する](#identify-a-face)
 * [顔を確認する](#verify-faces)
+* [似た顔を探す](#find-similar-faces)
 
-[リファレンス ドキュメント](/python/api/azure-cognitiveservices-vision-face/) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [パッケージ (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [サンプル](/samples/browse/?products=azure&term=face)
+[リファレンス ドキュメント](/python/api/overview/azure/cognitiveservices/face-readme) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [パッケージ (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [サンプル](/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
   * Python のインストールには、[pip](https://pip.pypa.io/en/stable/) が含まれている必要があります。 pip がインストールされているかどうかを確認するには、コマンド ラインで `pip --version` を実行します。 最新バージョンの Python をインストールして pip を入手してください。
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Face リソースを作成"  target="_blank">Face リソースを作成</a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 対象のアプリケーションを Face API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
@@ -84,11 +84,11 @@ pip install --upgrade azure-cognitiveservices-vision-face
 これらのコード スニペットでは、Python 用 Face クライアント ライブラリを使用して以下のタスクを実行する方法が示されています。
 
 * [クライアントを認証する](#authenticate-the-client)
-* [画像内の顔を検出する](#detect-faces-in-an-image)
-* [似た顔を探す](#find-similar-faces)
-* [PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)
+* [顔を検出して分析する](#detect-and-analyze-faces)
 * [顔を識別する](#identify-a-face)
 * [顔を確認する](#verify-faces)
+* [似た顔を探す](#find-similar-faces)
+
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -96,7 +96,10 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_auth)]
 
-## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
+## <a name="detect-and-analyze-faces"></a>顔を検出して分析する
+
+顔検出は、顔分析と ID 検証で必要です。 このセクションでは、追加の顔属性データを返す方法について説明します。 顔の識別または検証のためにだけ顔検出を行う場合は、先のセクションまでスキップしてください。
+
 
 次のコードは、リモート画像内の顔を検出します。 検出された顔の ID をコンソールに出力し、プログラムのメモリにも格納します。 次に、複数の人物が含まれている画像内の顔を検出し、それらの ID もコンソールに出力します。 [detect_with_url](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations#detect-with-url-url--return-face-id-true--return-face-landmarks-false--return-face-attributes-none--recognition-model--recognition-01---return-recognition-model-false--detection-model--detection-01---custom-headers-none--raw-false----operation-config-) メソッドのパラメーターを変更することで、[DetectedFace](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface) オブジェクトごとに異なる情報を返すことができます。
 
@@ -113,31 +116,16 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 ![顔の周囲に赤い四角形が描画されている若い女性](../../images/face-rectangle-result.png)
 
-## <a name="find-similar-faces"></a>似た顔の検索
 
-以下のコードでは、検出された顔 (ソース) を 1 つ受け取って、他の顔のセット (ターゲット) から一致するものを見つけます (画像による顔検索)。 一致するものが見つかると、一致した顔の ID がコンソールに出力されます。
 
-### <a name="find-matches"></a>一致するものを探す
 
-最初に、上のセクション (「[画像内の顔を検出する](#detect-faces-in-an-image)」) のコードを実行して、1 つの顔への参照を保存します。 次に、以下のコードを実行して、グループ画像内の複数の顔への参照を取得します。
+## <a name="identify-a-face"></a>顔を識別する
 
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detectgroup)]
+識別操作では、人物 (1人または複数人) の画像を受け取り、その画像に含まれるそれぞれの顔の同一性を見つけます (顔認識検索)。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな **Person** オブジェクトのデータベース、つまり **PersonGroup** と比較されます。
 
-次に、以下のコード ブロックを追加して、グループ内で最初の顔のインスタンスを探します。 この動作を変更する方法を学習するには、[find_similar](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations#find-similar-face-id--face-list-id-none--large-face-list-id-none--face-ids-none--max-num-of-candidates-returned-20--mode--matchperson---custom-headers-none--raw-false----operation-config-) メソッドを参照してください。
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar)]
-
-### <a name="print-matches"></a>一致するものを出力する
-
-次のコードを使用して、一致の詳細をコンソールに出力します。
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar_print)]
-
-## <a name="create-and-train-a-persongroup"></a>PersonGroup を作成してトレーニングする
+### <a name="create-a-persongroup"></a>PersonGroup を作成する
 
 次のコードでは、3 つの異なる **Person** オブジェクトを持つ **PersonGroup** を作成します。 各 **Person** が例の画像のセットに関連付けられ、各人物を認識できるようにトレーニングが行われます。 
-
-### <a name="create-persongroup"></a>PersonGroup を作成する
 
 このシナリオの手順を実行するには、プロジェクトのルート ディレクトリに画像 (https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images ) を保存する必要があります。
 
@@ -160,7 +148,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 > [!TIP]
 > URL によって参照されたリモート画像から **PersonGroup** を作成することもできます。 [PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations) のメソッドを参照してください (**add_face_from_url** など)。
 
-### <a name="train-persongroup"></a>PersonGroup をトレーニングする
+### <a name="train-the-persongroup"></a>PersonGroup をトレーニングする
 
 顔を割り当てたら、**PersonGroup** をトレーニングして、その各 **Person** オブジェクトに関連付けられている視覚的特徴を識別できるようにする必要があります。 次のコードは、非同期の **train** メソッドを呼び出し、結果をポーリングして、状態をコンソールに出力します。
 
@@ -169,20 +157,13 @@ pip install --upgrade azure-cognitiveservices-vision-face
 > [!TIP]
 > Face API は、本質的に静的な一連の事前構築済みモデルで実行されます (サービスの実行中にモデルのパフォーマンスが低下したり改善されたりすることはありません)。 Microsoft により、まったく新しいモデル バージョンに移行することなくモデルのバックエンドが更新されると、モデルによって生成される結果が変わる可能性があります。 より新しいバージョンのモデルを利用するには、同じ登録画像でより新しいモデルをパラメーターとして指定し、**PersonGroup** を再トレーニングすることができます。
 
-## <a name="identify-a-face"></a>顔を識別する
-
-識別操作では、人物 (1人または複数人) の画像を受け取り、その画像に含まれるそれぞれの顔の同一性を見つけます (顔認識検索)。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな **Person** オブジェクトのデータベース、つまり **PersonGroup** と比較されます。
-
-> [!IMPORTANT]
-> この例を実行するには、まず、「[PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)」のコードを実行する必要があります。
-
 ### <a name="get-a-test-image"></a>テスト画像を取得する
 
 次のコードは、プロジェクトのルートで画像 _test-image-person-group.jpg_ を探し、画像内の顔を検出します。 この画像は、**PersonGroup** の管理に使用される画像と同じ場所 (https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images ) にあります。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify_testimage)]
 
-### <a name="identify-faces"></a>顔を識別する
+### <a name="output-identified-face-ids"></a>識別された顔 ID の出力
 
 **identify** メソッドは、検出された顔の配列を受け取り、それらを **PersonGroup** と比較します。 検出された顔を **Person** と照合できる場合は、結果を保存します。 このコードは、詳細な一致結果をコンソールに出力します。
 
@@ -190,7 +171,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 ## <a name="verify-faces"></a>顔を確認する
 
-確認操作では、顔 ID と、別の顔 ID または **Person** オブジェクトのいずれかを取得し、同じ人に属しているかどうかを判断します。
+確認操作では、顔 ID と、別の顔 ID または **Person** オブジェクトのいずれかを取得し、同じ人に属しているかどうかを判断します。 確認を使用すると、識別操作によって返される顔の一致を二重チェックできます。
 
 次のコードでは、2 つのソース画像から顔を検出し、ターゲット画像から検出された顔と照らしてそれらを確認します。
 
@@ -214,6 +195,26 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
 
+## <a name="find-similar-faces"></a>似た顔の検索
+
+以下のコードでは、検出された顔 (ソース) を 1 つ受け取って、他の顔のセット (ターゲット) から一致するものを見つけます (画像による顔検索)。 一致するものが見つかると、一致した顔の ID がコンソールに出力されます。
+
+### <a name="find-matches"></a>一致するものを探す
+
+最初に、上のセクション (「[顔を検出して分析する](#detect-and-analyze-faces)」) のコードを実行して、1 つの顔への参照を保存します。 次に、以下のコードを実行して、グループ画像内の複数の顔への参照を取得します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detectgroup)]
+
+次に、以下のコード ブロックを追加して、グループ内で最初の顔のインスタンスを探します。 この動作を変更する方法を学習するには、[find_similar](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations#find-similar-face-id--face-list-id-none--large-face-list-id-none--face-ids-none--max-num-of-candidates-returned-20--mode--matchperson---custom-headers-none--raw-false----operation-config-) メソッドを参照してください。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar)]
+
+### <a name="print-matches"></a>一致するものを出力する
+
+次のコードを使用して、一致の詳細をコンソールに出力します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar_print)]
+
 ## <a name="run-the-application"></a>アプリケーションの実行
 
 `python` コマンドを使用して、アプリケーション ディレクトリから顔認識アプリを実行します。
@@ -235,10 +236,10 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Python 用の Face クライアント ライブラリを使用して基本的な顔認識タスクを行う方法について学習しました。 次は、リファレンス ドキュメントを参照して、ライブラリの詳細について学習してください。
+このクイックスタートでは、Python 用の Face クライアント ライブラリを使用して基本的な顔認識タスクを行う方法について学習しました。 次に、さまざまな顔検出モデルと、ユース ケースに適したモデルを指定する方法について学習します。
 
 > [!div class="nextstepaction"]
-> [Face API リファレンス (Python)](/python/api/azure-cognitiveservices-vision-face/)
+> [顔検出モデル バージョンを指定する](../../Face-API-How-to-Topics/specify-detection-model.md)
 
 * [Face サービスとは](../../overview.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) にあります。

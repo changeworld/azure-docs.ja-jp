@@ -1,6 +1,6 @@
 ---
-title: Application Gateway サービス エンドポイントとの統合 - Azure App Service | Microsoft Docs
-description: Application Gateway がサービス エンドポイントで保護された Azure App Service と統合する方法について説明します。
+title: Application Gateway の統合 - Azure App Service | Microsoft Docs
+description: Application Gateway を Azure App Service と統合する方法について説明します。
 services: app-service
 documentationcenter: ''
 author: madsd
@@ -11,18 +11,18 @@ ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 08/04/2021
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: f1d517ba37bbef95d1863485c8c3b6313f196c11
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: dda9b5a55255ca98ea6890caa5581a4096246645
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374915"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714962"
 ---
-# <a name="application-gateway-integration-with-service-endpoints"></a>サービス エンドポイントと Application Gateway の統合
-App Service には、Azure Application Gateway との統合において少し異なる構成を必要とする 3 つのバリエーションがあります。 バリエーションには、通常の App Service (マルチテナント、内部ロード バランサー (ILB) App Service Environment (ASE)、外部 ASE とも呼ばれます) が含まれます。 この記事では、App Service (マルチテナント) を使用して構成し、ILB と外部 ASE に関する考慮事項について説明します。
+# <a name="application-gateway-integration"></a>Application Gateway の統合
+App Service には、Azure Application Gateway との統合において少し異なる構成を必要とする 3 つのバリエーションがあります。 バリエーションには、通常の App Service (マルチテナント、内部ロード バランサー (ILB) App Service Environment (ASE)、外部 ASE とも呼ばれます) が含まれます。 この記事では、トラフィックをセキュリティで保護するためにサービス エンドポイントを使用して App Service (マルチテナント) で構成する方法について説明します。 また、この記事では、プライベート エンドポイントの使用、ILB との統合、外部 ASE に関する考慮事項についても説明します。 最後に、この記事には SCM/Kudu サイトに関する考慮事項があります。
 
 ## <a name="integration-with-app-service-multi-tenant"></a>App Service (マルチテナント) との統合
 App Service (マルチテナント) には、インターネットに接続するパブリック エンドポイントがあります。 [サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)を使用すると、Azure Virtual Network 内の特定のサブネットからのトラフィックのみを許可し、他のすべてのトラフィックをブロックすることができます。 次のシナリオでは、この機能を使用して、App Service インスタンスが特定の Application Gateway インスタンスからのトラフィックのみを受信できるようにします。
@@ -40,10 +40,10 @@ Azure portal では、4 つの手順に従ってセットアップのプロビ�
 
 Application Gateway を通じて App Service にアクセスできるようになりましたが、App Service に直接アクセスしようとすると、Web サイトが停止していることを示す 403 HTTP エラーが表示されます。
 
-![[エラー 403 - 許可されていません] のテキストを示すスクリーンショット。](./media/app-gateway-with-service-endpoints/website-403-forbidden.png)
+:::image type="content" source="./media/app-gateway-with-service-endpoints/website-403-forbidden.png" alt-text="[エラー 403 - 許可されていません] のテキストを示すスクリーンショット。":::
 
 ## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
-[Resource Manager デプロイ テンプレート][template-app-gateway-app-service-complete]では、完全なシナリオがプロビジョニングされます。 このシナリオでは Application Gateway からのトラフィックのみを受信するため、サービス エンドポイントおよびアクセス制限を使用してロックダウンされた App Service インスタンスが含まれます。 このテンプレートには、簡単にするために、リソース名に追加された多数のスマート既定値と固有の接尾辞が含まれています。 これらをオーバーライドするには、リポジトリを複製するか、テンプレートをダウンロードして編集する必要があります。 
+[Resource Manager デプロイ テンプレート][template-app-gateway-app-service-complete]では、完全なシナリオがプロビジョニングされます。 このシナリオでは Application Gateway からのトラフィックのみを受信するため、サービス エンドポイントおよびアクセス制限を使用してロックダウンされた App Service インスタンスが含まれます。 このテンプレートには、簡単にするために、リソース名に追加された多数のスマート既定値と固有の接尾辞が含まれています。 これらをオーバーライドするには、リポジトリを複製するか、テンプレートをダウンロードして編集する必要があります。
 
 テンプレートを適用するには、テンプレートの説明にある [Azure に配置する] ボタンを使用するか、適切な PowerShell/CLI を使用します。
 
@@ -56,8 +56,14 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 
 既定の構成では、コマンドによって、サブネットのサービス エンドポイント構成と App Service のアクセス制限の両方が設定されます。
 
+## <a name="considerations-when-using-private-endpoint"></a>プライベート エンドポイントを使用する場合の考慮事項
+
+サービス エンドポイントの代わりにプライベート エンドポイントを使用して、Application Gateway と App Service (マルチテナント) 間のトラフィックをセキュリティで保護することができます。 Application Gateway が App Service アプリのプライベート IP を DNS で解決できるようにする、またはバックエンド プールでプライベート IP を使用し、HTTP 設定でホスト名をオーバーライドできるようにする必要があります。
+
+:::image type="content" source="./media/app-gateway-with-service-endpoints/private-endpoint-appgw.png" alt-text="図には、トラフィックが Azure Virtual Network 内の Application Gateway に流れ、そこからプライベート エンドポイントを経由して App Service 内のアプリのインスタンスに送信されることが示されています。":::
+
 ## <a name="considerations-for-ilb-ase"></a>ILB ASE に関する考慮事項
-ILB ASE はインターネットに公開されず、インスタンスと Application Gateway 間のトラフィックは既に Virtual Network に分離されています。 次の[ハウツーガイド](../environment/integrate-with-application-gateway.md)では、ILB ASE を構成し、Azure portal を使用して Application Gateway と統合します。 
+ILB ASE はインターネットに公開されず、インスタンスと Application Gateway 間のトラフィックは既に Virtual Network に分離されています。 次の[ハウツーガイド](../environment/integrate-with-application-gateway.md)では、ILB ASE を構成し、Azure portal を使用して Application Gateway と統合します。
 
 Application Gateway サブネットからのトラフィックのみが ASE に到達するようにする場合は、ASE 内のすべての Web アプリに影響するネットワーク セキュリティ グループ (NSG) を構成できます。 NSG では、サブネットの IP 範囲と、必要に応じてポート (80/443) を指定できます。 ASE が正常に機能するために[必要な NSG ルール](../environment/network-info.md#network-security-groups)をオーバーライドしないようにしてください。
 
@@ -66,7 +72,7 @@ Application Gateway サブネットからのトラフィックのみが ASE に�
 ## <a name="considerations-for-external-ase"></a>外部 ASE に関する考慮事項
 外部 ASE には、マルチテナント App Service のようなパブリックに接続するロード バランサーがあります。 サービス エンドポイントは ASE では機能しないため、Application Gateway インスタンスのパブリック IP を使用して、IP ベースのアクセス制限を使用する必要があります。 Azure portal を使用して外部 ASE を作成するには、[クイック スタート](../environment/create-external-ase.md)に従ってください。
 
-[template-app-gateway-app-service-complete]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-app-gateway-v2/ "完全なシナリオのための Azure Resource Manager テンプレート"
+[template-app-gateway-app-service-complete]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-with-app-gateway-v2/ "完全なシナリオのための Azure Resource Manager テンプレート"
 
 ## <a name="considerations-for-kuduscm-site"></a>Kudu/SCM サイトに関する考慮事項
 SCM サイト (kudu とも呼ばれます) は、すべての Web アプリに存在する管理者サイトです。 SCM サイトをリバース プロキシすることはできません。また、ほとんどの場合は、個々の IP アドレスまたは特定のサブネットにもロックダウンすることをお勧めします。
@@ -84,6 +90,6 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 ```
 
 ## <a name="next-steps"></a>次のステップ
-App Service Environment の詳細については、[App Service Environment に関するドキュメント](/azure/app-service/environment)を参照してください。
+App Service Environment の詳細については、[App Service Environment に関するドキュメント](../environment/index.yml)を参照してください。
 
 Web アプリをさらにセキュリティで保護するために、Application Gateway の Web アプリケーション ファイアウォールに関する情報は、[Azure Web アプリケーション ファイアウォールのドキュメント](../../web-application-firewall/ag/ag-overview.md)に記載されています。

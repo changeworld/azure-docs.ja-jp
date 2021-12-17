@@ -1,15 +1,15 @@
 ---
-title: Azure DevTest Labs の実装を調整する
+title: 実装の調整
 description: この記事では、組織での Azure DevTest Labs の実装の調整に関するガイダンスを提供します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10ca9af9f68f6d95181418721ec90dac5dfd4ad4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92330616"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601484"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Azure DevTest Labs の実装を調整する
 この記事では、Azure DevTest Labs を短時間でデプロイして実装するための推奨される方法を示します。 次の図は、規範的なガイダンスとして全体的なプロセスに注目したものです。業界のさまざまな要件とシナリオが柔軟にサポートされていることがわかります。

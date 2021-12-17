@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で API サーバーへのアクセ�
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 8fca3fe61e26a031e6ea09692c9ba0781bfca21f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 96c9e21c210a9aab4bc0b69d8e50b4a015c78993
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769645"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227418"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -27,7 +27,7 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 
 API サーバーの許可された IP 範囲の機能には、次の制限があります。
 - API サーバーで許可される IP アドレス範囲が、2019 年 10 月のプレビューの範囲外に移動され後に作成されたクラスターでは、API サーバーで許可される IP アドレス範囲は *Standard* SKU のロード バランサーでのみサポートされます。 *Basic* SKU ロード バランサーと API サーバーで許可された IP アドレス範囲が構成された既存のクラスターは、引き続き機能しますが、*Standard* SKU ロード バランサーに移行することはできません。 これらの既存のクラスターは、Kubernetes のバージョンまたはコントロール プレーンがアップグレードされた場合も引き続き機能します。 API サーバーで許可される IP アドレス範囲は、プライベート クラスターではサポートされません。
-- この機能は、[ノードごとのパブリック IP](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools) を使用するクラスターとは互換性がありません。
+- この機能を、[ノードごとのパブリック IP](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools) を使用するクラスターと共に使用する場合は、これらのノードごとのパブリック IP 付きノード プールでパブリック IP プレフィックスを使用する必要があり、これらのプレフィックスは承認済みの範囲として追加される必要があります。
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>API サーバーの許可された IP 範囲の概要
 
@@ -61,7 +61,6 @@ az aks create \
 > 次の範囲を許可リストに追加してください。
 > - ファイアウォール パブリック IP アドレス
 > - クラスターを管理するネットワークを表すあらゆる範囲
-> - AKS クラスターで Azure Dev Spaces を使用している場合は、[リージョンに基づく追加の範囲][dev-spaces-ranges]を許可する必要があります。
 >
 > 指定できる IP 範囲の数の上限は 200 です。
 >
@@ -138,7 +137,7 @@ az aks update \
 az aks show \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --query apiServerAccessProfile.authorizedIpRanges'
+    --query apiServerAccessProfile.authorizedIpRanges
 ```
 
 ## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>Azure portal を使用して、許可された IP 範囲の更新、無効化、検索を行う
@@ -157,12 +156,12 @@ az aks show \
 
 ```bash
 # Retrieve your IP address
-CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+CURRENT_IP=$(dig +short "myip.opendns.com" "@resolver1.opendns.com")
 # Add to AKS approved list
 az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 ```
 
->> [!NOTE]
+> [!NOTE]
 > 上の例では、クラスター上の API サーバーの許可された IP 範囲が追加されます。 許可された IP 範囲を無効にするには、az aks update を使用し、空の範囲 "" を指定します。 
 
 もう 1 つのオプションは、Windows システムで次のコマンドを使用して、パブリック IPv4 アドレスを取得することです。または、「[IP アドレスを確認する](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)」の手順を使用することもできます。
@@ -181,11 +180,11 @@ Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 
 <!-- LINKS - external -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
-[dev-spaces-ranges]: ../dev-spaces/configure-networking.md#aks-cluster-network-requirements
+[dev-spaces-ranges]: /previous-versions/azure/dev-spaces/#aks-cluster-network-requirements
 [kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 
 <!-- LINKS - internal -->
-[az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
+[az-aks-update]: /cli/azure/aks#az_aks_update
 [az-aks-create]: /cli/azure/aks#az_aks_create
 [az-aks-show]: /cli/azure/aks#az_aks_show
 [az-network-public-ip-list]: /cli/azure/network/public-ip#az_network_public_ip_list

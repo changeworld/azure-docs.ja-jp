@@ -1,22 +1,22 @@
 ---
 title: 単一データベースのクイックスタートに関するコンテンツ リファレンス
-description: Azure SQL Database の単一データベースをすばやく開始するのに役立つすべてのクイックスタートのコンテンツ リファレンスを確認できます。
+description: Azure SQL Database をすばやく開始するのに役立つすべてのクイックスタートのコンテンツ リファレンスを確認できます。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: guide
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: 392f361f6fe487a15bdd63c2f3281ccc78b2f86d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3bbba9245ea7aa998a1adecb60e05e9ff7d70c0
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96184418"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690000"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Azure SQL Database の単一データベースの概要
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

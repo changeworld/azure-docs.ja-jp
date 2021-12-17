@@ -1,24 +1,26 @@
 ---
 title: Salesforce Service Cloud との間でデータをコピーする
-description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Salesforce Service Cloud からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Salesforce Service Cloud にデータをコピーする方法について説明します。
-ms.author: jingwang
-author: linda33wj
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Synapse Analytics パイプラインで Copy アクティビティを使用して、Salesforce Service Cloud からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Salesforce Service Cloud にデータをコピーする方法について説明します。
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: 6a712ad1924fd73926ff0e62a7d1b9684eb5b1d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: 9f59c7f810646734552d7eaefe59d1c99be1518c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104583115"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782762"
 ---
-# <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce Service Cloud をコピー元またはコピー先としてデータをコピーする
+# <a name="copy-data-from-and-to-salesforce-service-cloud-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Salesforce Service Cloud との間でデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Salesforce Service Cloud から、または Salesforce Service Cloud にデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory と Synapse Analytics パイプラインの Copy アクティビティを使用して、Salesforce Service Cloud 間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -51,7 +53,31 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-salesforce-service-cloud-using-ui"></a>UI を使用して Salesforce Service Cloud のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Salesforce Service Cloud のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用して新しいリンク サービスを作成します。":::
+
+2. Salesforce を検索し、Salesforce Service Cloud コネクタを選択します。
+
+    :::image type="content" source="media/connector-salesforce-service-cloud/salesforce-service-cloud-connector.png" alt-text="Salesforce Service Cloud コネクタを選択します。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-salesforce-service-cloud/configure-salesforce-service-cloud-linked-service.png" alt-text="Salesforce Service Cloud のリンク サービスを構成します。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 次のセクションでは、Salesforce Service Cloud コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -64,12 +90,12 @@ Salesforce のリンクされたサービスでは、次のプロパティがサ
 | type |type プロパティは **SalesforceServiceCloud** に設定する必要があります。 |はい |
 | environmentUrl | Salesforce Service Cloud インスタンスの URL を指定します。 <br> 既定値は `"https://login.salesforce.com"` です。 <br> - サンドボックスからデータをコピーするには、`"https://test.salesforce.com"` を指定します。 <br> - カスタム ドメインからデータをコピーするには、`"https://[domain].my.salesforce.com"`のように指定します。 |いいえ |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい |
-| password |ユーザー アカウントのパスワードを指定します。<br/><br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
+| password |ユーザー アカウントのパスワードを指定します。<br/><br/>このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 <br/><br/>セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 セキュリティ トークンをスキップできるのは、Salesforce で[信頼済み IP アドレスの一覧](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm)に Integration Runtime の IP を追加した場合のみです。 Azure IR を使用する場合は、「[Azure Integration Runtime の IP アドレス](azure-integration-runtime-ip-addresses.md)」を参照してください。<br/><br/>セキュリティ トークンの取得およびリセット方法については、[セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)に関する記事を参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ |
 | apiVersion | `48.0` など、使用する Salesforce の REST または Bulk API バージョンを指定します。 既定では、コネクタによって、Salesforce からデータをコピーするには [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) が、Salesforce にデータをコピーするには [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) が使用されます。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ |
 
-**例:Data Factory に資格情報を格納する**
+**例: 資格情報を格納する**
 
 ```json
 {
@@ -143,7 +169,7 @@ Salesforce Service Cloud との間でのデータ コピーについては、次
 > [!IMPORTANT]
 > カスタム オブジェクトには、**API 名** の "__c" の部分が必要となります。
 
-![Data Factory の Salesforce 接続 API 名](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
+:::image type="content" source="media/copy-data-from-salesforce/data-factory-salesforce-api-name.png" alt-text="Salesforce 接続 API 名":::
 
 **例:**
 
@@ -186,7 +212,7 @@ Salesforce Service Cloud からデータをコピーするために、コピー 
 > [!IMPORTANT]
 > カスタム オブジェクトには、**API 名** の "__c" の部分が必要となります。
 
-![Data Factory の Salesforce 接続 API 名一覧](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
+:::image type="content" source="media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png" alt-text="Salesforce 接続 API 名一覧":::
 
 **例:**
 
@@ -304,9 +330,9 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
 
 ## <a name="data-type-mapping-for-salesforce-service-cloud"></a>Salesforce Service Cloud のデータ型マッピング
 
-Salesforce Service Cloud からデータをコピーするとき、次の Salesforce Service Cloud のデータ型から Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+Salesforce Service Cloud からデータをコピーするとき、Salesforce Service Cloud のデータ型からサービス内部で使用されている中間データ型へのマッピングは、以下を使用して行われます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| Salesforce Service Cloud のデータ型 | Data Factory の中間データ型 |
+| Salesforce Service Cloud のデータ型 | 中間サービス データ型 |
 |:--- |:--- |
 | Auto Number |String |
 | Checkbox |Boolean |
@@ -334,4 +360,4 @@ Salesforce Service Cloud からデータをコピーするとき、次の Salesf
 
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+コピー アクティビティによってソース、シンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

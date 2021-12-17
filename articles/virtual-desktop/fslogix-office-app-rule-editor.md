@@ -1,17 +1,17 @@
 ---
-title: Windows Virtual Desktop に Microsoft Office FSLogix アプリケーション コンテナーをインストールする - Azure
-description: Windows Virtual Desktop の Office でアプリ ルール エディターを使用して FSLogix アプリケーション コンテナーを作成する方法。
+title: Azure Virtual Desktop に Microsoft Office FSLogix アプリケーション コンテナーをインストールする - Azure
+description: Azure Virtual Desktop の Office でアプリ ルール エディターを使用して FSLogix アプリケーション コンテナーを作成する方法。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a144adcfbf6c7cefc6b946f95bdb734868de801f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 4e145e8ff578d7e8663e45aa550906a1594f5228
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446810"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757663"
 ---
 # <a name="install-microsoft-office-using-fslogix-application-containers"></a>FSLogix アプリケーション コンテナーを使用して Microsoft Office をインストールする
 
@@ -22,7 +22,7 @@ FSLogix アプリコンテナーを使用するとインストールが速くな
 - Office アプリをアプリ コンテナーにオフロードすると、C ドライブに必要なサイズが減ります。
 - VM のスナップショットまたはバックアップのリソースが少なくなります。
 - 1 つのイメージの更新による自動化されたパイプラインを使用すると、VM の更新が容易になります。
-- Windows Virtual Desktop のデプロイに含まれるすべての VM にインストールする必要のある Office (および他のアプリ) のイメージが 1 つだけで済みます。
+- Azure Virtual Desktop のデプロイに含まれるすべての VM にインストールする必要のある Office (および他のアプリ) のイメージが 1 つだけで済みます。
 
 この記事では、Office で FSLogix アプリケーション コンテナーを設定する方法について説明します。
 
@@ -40,7 +40,7 @@ FSLogix アプリコンテナーを使用するとインストールが速くな
 VHD または VHDX に Office をインストールするには、VM でリモート デスクトップ プロトコルを有効にした後、[VHD マスター イメージへの Office のインストール](install-office-on-wvd-master-image.md)に関する記事の手順に従います。 インストールするときに、[正しいライセンス](overview.md#requirements)を使用していることを確認します。
 
 >[!NOTE]
->Windows Virtual Desktop には、共有コンピューターのライセンス認証 (SCA) が必要です。
+>Azure Virtual Desktop には、共有コンピューターのライセンス認証 (SCA) が必要です。
 
 ## <a name="install-fslogix"></a>FSLogix をインストールする
 

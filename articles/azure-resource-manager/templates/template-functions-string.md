@@ -2,13 +2,13 @@
 title: テンプレート関数 - 文字列
 description: Azure Resource Manager テンプレート (ARM テンプレート) で文字列の操作に使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: cff1424562b45bc722f87fa3ec896c1c641ee758
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/29/2021
+ms.openlocfilehash: 44661751e3bd1f32a9b06ed6b7b6993716162cb1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108844"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455038"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM テンプレート用の文字列関数
 
@@ -48,8 +48,6 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
 
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
-
 ## <a name="base64"></a>base64
 
 `base64(inputString)`
@@ -68,62 +66,9 @@ base64 形式を含む文字列。
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json)では、base64 関数を使用する方法を示します。
+次の例は、`base64` 関数の使用法を示しています。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringData": {
-      "type": "string",
-      "defaultValue": "one, two, three"
-    },
-    "jsonFormattedData": {
-      "type": "string",
-      "defaultValue": "{'one': 'a', 'two': 'b'}"
-    }
-  },
-  "variables": {
-    "base64String": "[base64(parameters('stringData'))]",
-    "base64Object": "[base64(parameters('jsonFormattedData'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "base64Output": {
-      "type": "string",
-      "value": "[variables('base64String')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[base64ToString(variables('base64String'))]"
-    },
-    "toJsonOutput": {
-      "type": "object",
-      "value": "[base64ToJson(variables('base64Object'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param stringData string = 'one, two, three'
-param jsonFormattedData string = '{\'one\': \'a\', \'two\': \'b\'}'
-
-var base64String = base64(stringData)
-var base64Object = base64(jsonFormattedData)
-
-output base64Output string = base64String
-output toStringOutput string = base64ToString(base64String)
-output toJsonOutput object = base64ToJson(base64Object)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/base64.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -151,63 +96,9 @@ JSON オブジェクト。
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json)では、base64ToJson 関数を使用して base64 値を変換します。
+次の例では、`base64ToJson` 関数を使用して base64 値を変換します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringData": {
-      "type": "string",
-      "defaultValue": "one, two, three"
-    },
-    "jsonFormattedData": {
-      "type": "string",
-      "defaultValue": "{'one': 'a', 'two': 'b'}"
-    }
-  },
-  "variables": {
-    "base64String": "[base64(parameters('stringData'))]",
-    "base64Object": "[base64(parameters('jsonFormattedData'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "base64Output": {
-      "type": "string",
-      "value": "[variables('base64String')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[base64ToString(variables('base64String'))]"
-    },
-    "toJsonOutput": {
-      "type": "object",
-      "value": "[base64ToJson(variables('base64Object'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param stringData string = 'one, two, three'
-param jsonFormattedData string = '{\'one\': \'a\', \'two\': \'b\'}'
-
-var base64String = base64(stringData)
-var base64Object = base64(jsonFormattedData)
-
-output base64Output string = base64String
-output toStringOutput string = base64ToString(base64String)
-output toJsonOutput object = base64ToJson(base64Object)
-
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/base64.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -235,62 +126,9 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json)では、base64ToString 関数を使用して base64 値を変換します。
+次の例では、`base64ToString` 関数を使用して base64 値を変換します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringData": {
-      "type": "string",
-      "defaultValue": "one, two, three"
-    },
-    "jsonFormattedData": {
-      "type": "string",
-      "defaultValue": "{'one': 'a', 'two': 'b'}"
-    }
-  },
-  "variables": {
-    "base64String": "[base64(parameters('stringData'))]",
-    "base64Object": "[base64(parameters('jsonFormattedData'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "base64Output": {
-      "type": "string",
-      "value": "[variables('base64String')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[base64ToString(variables('base64String'))]"
-    },
-    "toJsonOutput": {
-      "type": "object",
-      "value": "[base64ToJson(variables('base64Object'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param stringData string = 'one, two, three'
-param jsonFormattedData string = '{\'one\': \'a\', \'two\': \'b\'}'
-
-var base64String = base64(stringData)
-var base64Object = base64(jsonFormattedData)
-
-output base64Output string = base64String
-output toStringOutput string = base64ToString(base64String)
-output toJsonOutput object = base64ToJson(base64Object)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/base64.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -306,14 +144,12 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 複数の文字列値を結合して連結された文字列を返します。または複数の配列を結合して連結された配列を返します。
 
-文字列の連結を簡略化するために、Bicep では [文字列補間](https://en.wikipedia.org/wiki/String_interpolation#)の構文がサポートされています。
-
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または配列 |連結の最初の文字列または配列。 |
-| 残りの引数 |いいえ |文字列または配列 |連結する順番での残りの文字列または配列。 |
+| その他の引数 |いいえ |文字列または配列 |連結する順番でのその他の文字列または配列。 |
 
 この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。 ただし、パラメーターに配列と文字列の両方を指定することはできません。 文字列は、他の文字列とのみ連結されます。
 
@@ -323,47 +159,9 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json)は、2 つの文字列値を結合して 1 つの連結文字列を返す方法を示しています。
+次の例は、2 つの文字列値を結合して 1 つの連結文字列を返す方法を示しています。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "prefix": {
-      "type": "string",
-      "defaultValue": "prefix"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "concatOutput": {
-      "type": "string",
-      "value": "[concat(parameters('prefix'), '-', uniqueString(resourceGroup().id))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param prefix string = 'prefix'
-
-output concatOutput string = concat(prefix, '-', uniqueString(resourceGroup().id))
-```
-
-or
-
-```bicep
-param prefix string = 'prefix'
-
-output concatOutput string = '${prefix}-${uniqueString(resourceGroup().id)}'
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/concat-string.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -371,61 +169,9 @@ output concatOutput string = '${prefix}-${uniqueString(resourceGroup().id)}'
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json)では、2 つの配列を結合する方法を示します。
+次の例では、2 つの配列を結合する方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [
-        "1-1",
-        "1-2",
-        "1-3"
-      ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [
-        "2-1",
-        "2-2",
-        "2-3"
-      ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "return": {
-      "type": "array",
-      "value": "[concat(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstArray array = [
-  '1-1'
-  '1-2'
-  '1-3'
-]
-param secondArray array = [
-  '2-1'
-  '2-2'
-  '2-3'
-]
-
-output return array = concat(firstArray, secondArray)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/concat-array.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -452,87 +198,9 @@ output return array = concat(firstArray, secondArray)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json)では、contains をさまざまな型で使用する方法を示します。
+次の例では、contains をさまざまな型で使用する方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "OneTwoThree"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "stringTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'e')]"
-    },
-    "stringFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'z')]"
-    },
-    "objectTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'one')]"
-    },
-    "objectFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'a')]"
-    },
-    "arrayTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'three')]"
-    },
-    "arrayFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'four')]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param stringToTest string = 'OneTwoThree'
-param objectToTest object = {
-  'one': 'a'
-  'two': 'b'
-  'three': 'c'
-}
-param arrayToTest array = [
-  'one'
-  'two'
-  'three'
-]
-
-output stringTrue bool = contains(stringToTest, 'e')
-output stringFalse bool = contains(stringToTest, 'z')
-output objectTrue bool = contains(objectToTest, 'one')
-output objectFalse bool = contains(objectToTest, 'a')
-output arrayTrue bool = contains(arrayToTest, 'three')
-output arrayFalse bool = contains(arrayToTest, 'four')
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/contains.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -563,49 +231,9 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json)では、値をデータ URI に変換し、データ URI を文字列に変換します。
+次の例では、値をデータ URI に変換し、データ URI を文字列に変換します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "Hello"
-    },
-    "dataFormattedString": {
-      "type": "string",
-      "defaultValue": "data:;base64,SGVsbG8sIFdvcmxkIQ=="
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "dataUriOutput": {
-      "value": "[dataUri(parameters('stringToTest'))]",
-      "type": "string"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[dataUriToString(parameters('dataFormattedString'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param stringToTest string = 'Hello'
-param dataFormattedString string = 'data:;base64,SGVsbG8sIFdvcmxkIQ=='
-
-output dataUriOutput string = dataUri(stringToTest)
-output toStringOutput string = dataUriToString(dataFormattedString)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/datauri.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -632,49 +260,9 @@ output toStringOutput string = dataUriToString(dataFormattedString)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json)では、値をデータ URI に変換し、データ URI を文字列に変換します。
+次のテンプレート例では、値をデータ URI に変換し、データ URI を文字列に変換します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "Hello"
-    },
-    "dataFormattedString": {
-      "type": "string",
-      "defaultValue": "data:;base64,SGVsbG8sIFdvcmxkIQ=="
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "dataUriOutput": {
-      "value": "[dataUri(parameters('stringToTest'))]",
-      "type": "string"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[dataUriToString(parameters('dataFormattedString'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param stringToTest string = 'Hello'
-param dataFormattedString string = 'data:;base64,SGVsbG8sIFdvcmxkIQ=='
-
-output dataUriOutput string = dataUri(stringToTest)
-output toStringOutput string = dataUriToString(dataFormattedString)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/datauri.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -701,60 +289,9 @@ output toStringOutput string = dataUriToString(dataFormattedString)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json)では、配列、オブジェクト、および文字列が空かどうかを確認します。
+次の例では、配列、オブジェクト、および文字列が空かどうかを確認します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": []
-    },
-    "testObject": {
-      "type": "object",
-      "defaultValue": {}
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": ""
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testArray'))]"
-    },
-    "objectEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testObject'))]"
-    },
-    "stringEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testString'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param testArray array = []
-param testObject object = {}
-param testString string = ''
-
-output arrayEmpty bool = empty(testArray)
-output objectEmpty bool = empty(testObject)
-output stringEmpty bool = empty(testString)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/empty.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -783,56 +320,9 @@ output stringEmpty bool = empty(testString)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json)は、startsWith 関数と endsWith 関数の使用方法を示しています。
+次の例では、`startsWith` 関数および `endsWith` 関数の使用方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "startsTrue": {
-      "value": "[startsWith('abcdef', 'ab')]",
-      "type": "bool"
-    },
-    "startsCapTrue": {
-      "value": "[startsWith('abcdef', 'A')]",
-      "type": "bool"
-    },
-    "startsFalse": {
-      "value": "[startsWith('abcdef', 'e')]",
-      "type": "bool"
-    },
-    "endsTrue": {
-      "value": "[endsWith('abcdef', 'ef')]",
-      "type": "bool"
-    },
-    "endsCapTrue": {
-      "value": "[endsWith('abcdef', 'F')]",
-      "type": "bool"
-    },
-    "endsFalse": {
-      "value": "[endsWith('abcdef', 'e')]",
-      "type": "bool"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output startsTrue bool = startsWith('abcdef', 'ab')
-output startsCapTrue bool = startsWith('abcdef', 'A')
-output startsFalse bool = startsWith('abcdef', 'e')
-output endsTrue bool = endsWith('abcdef', 'ef')
-output endsCapTrue bool = endsWith('abcdef', 'F')
-output endsFalse bool = endsWith('abcdef', 'e')
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/startsendswith.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -863,49 +353,9 @@ output endsFalse bool = endsWith('abcdef', 'e')
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json)では、first 関数を配列および文字列と共に使用する方法を示します。
+次の例では、first 関数を配列および文字列と共に使用する方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayOutput": {
-      "type": "string",
-      "value": "[first(parameters('arrayToTest'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[first('One Two Three')]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param arrayToTest array = [
-  'one'
-  'two'
-  'three'
-]
-
-output arrayOutput string = first(arrayToTest)
-output stringOutput string = first('One Two Three')
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/first.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -926,7 +376,7 @@ output stringOutput string = first('One Two Three')
 |:--- |:--- |:--- |:--- |
 | formatString | はい | string | 複合の書式設定文字列。 |
 | arg1 | はい | 文字列、整数、またはブール値 | 書式設定された文字列に含める値。 |
-| 残りの引数 | いいえ | 文字列、整数、またはブール値 | 書式設定された文字列に含める追加の値。 |
+| その他の引数 | いいえ | 文字列、整数、またはブール値 | 書式設定された文字列に含めるその他の値。 |
 
 ### <a name="remarks"></a>解説
 
@@ -934,50 +384,9 @@ output stringOutput string = first('One Two Three')
 
 ### <a name="examples"></a>例
 
-次のテンプレート例に、書式設定の関数を使用する方法を示します。
+次の例に、書式設定の関数を使用する方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "greeting": {
-      "type": "string",
-      "defaultValue": "Hello"
-    },
-    "name": {
-      "type": "string",
-      "defaultValue": "User"
-    },
-    "numberToFormat": {
-      "type": "int",
-      "defaultValue": 8175133
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "formatTest": {
-      "type": "string",
-      "value": "[format('{0}, {1}. Formatted number: {2:N0}', parameters('greeting'), parameters('name'), parameters('numberToFormat'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param greeting string = 'Hello'
-param name string = 'User'
-param numberToFormat int = 8175133
-
-output formatTest string = format('{0}, {1}. Formatted number: {2:N0}', greeting, name, numberToFormat)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/format.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -996,7 +405,7 @@ output formatTest string = format('{0}, {1}. Formatted number: {2:N0}', greeting
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | baseString |はい |string |GUID を作成するためにハッシュ関数で使用される値。 |
-| 必要に応じて追加のパラメーター |いいえ |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
+| 必要に応じてその他のパラメーター |いいえ |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
 
 ### <a name="remarks"></a>解説
 
@@ -1008,51 +417,21 @@ output formatTest string = format('{0}, {1}. Formatted number: {2:N0}', greeting
 
 サブスクリプションのスコープで一意
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 "[guid(subscription().subscriptionId)]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-guid(subscription().subscriptionId)
-```
-
----
-
 リソース グループのスコープで一意
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[guid(resourceGroup().id)]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-guid(resourceGroup().id)
-```
-
----
-
 リソース グループのデプロイのスコープで一意
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[guid(resourceGroup().id, deployment().name)]"
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-guid(resourceGroup().id, deployment().name)
-```
-
----
 
 ### <a name="return-value"></a>戻り値
 
@@ -1060,43 +439,9 @@ guid(resourceGroup().id, deployment().name)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/guid.json)は、guid から結果を返します。
+次の例では、`guid` から結果を返します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "guidPerSubscription": {
-      "value": "[guid(subscription().subscriptionId)]",
-      "type": "string"
-    },
-    "guidPerResourceGroup": {
-      "value": "[guid(resourceGroup().id)]",
-      "type": "string"
-    },
-    "guidPerDeployment": {
-      "value": "[guid(resourceGroup().id, deployment().name)]",
-      "type": "string"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output guidPerSubscription string = guid(subscription().subscriptionId)
-output guidPerResourceGroup string = guid(resourceGroup().id)
-output guidPerDeployment string = guid(resourceGroup().id, deployment().name)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/guid.json":::
 
 ## <a name="indexof"></a>indexOf
 
@@ -1117,51 +462,9 @@ output guidPerDeployment string = guid(resourceGroup().id, deployment().name)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json)は、indexOf 関数と lastIndexOf 関数の使用方法を示しています。
+次の例では、`indexOf` 関数および `lastIndexOf` 関数の使用方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "firstT": {
-      "value": "[indexOf('test', 't')]",
-      "type": "int"
-    },
-    "lastT": {
-      "value": "[lastIndexOf('test', 't')]",
-      "type": "int"
-    },
-    "firstString": {
-      "value": "[indexOf('abcdef', 'CD')]",
-      "type": "int"
-    },
-    "lastString": {
-      "value": "[lastIndexOf('abcdef', 'AB')]",
-      "type": "int"
-    },
-    "notFound": {
-      "value": "[indexOf('abcdef', 'z')]",
-      "type": "int"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output firstT int = indexOf('test', 't')
-output lastT int = lastIndexOf('test', 't')
-output firstString int = indexOf('abcdef', 'CD')
-output lastString int = lastIndexOf('abcdef', 'AB')
-output notFound int = indexOf('abcdef', 'z')
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/indexof.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -1199,49 +502,9 @@ output notFound int = indexOf('abcdef', 'z')
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json)では、last 関数を配列および文字列と共に使用する方法を示します。
+次の例では、`last` 関数を配列および文字列と共に使用する方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayOutput": {
-      "type": "string",
-      "value": "[last(parameters('arrayToTest'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[last('One Two Three')]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param arrayToTest array = [
-  'one'
-  'two'
-  'three'
-]
-
-output arrayOutput string = last(arrayToTest)
-output stringOutput string = last('One Two Three')
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/last.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -1269,51 +532,9 @@ output stringOutput string = last('One Two Three')
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json)は、indexOf 関数と lastIndexOf 関数の使用方法を示しています。
+次の例では、`indexOf` 関数および `lastIndexOf` 関数の使用方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "firstT": {
-      "value": "[indexOf('test', 't')]",
-      "type": "int"
-    },
-    "lastT": {
-      "value": "[lastIndexOf('test', 't')]",
-      "type": "int"
-    },
-    "firstString": {
-      "value": "[indexOf('abcdef', 'CD')]",
-      "type": "int"
-    },
-    "lastString": {
-      "value": "[lastIndexOf('abcdef', 'AB')]",
-      "type": "int"
-    },
-    "notFound": {
-      "value": "[indexOf('abcdef', 'z')]",
-      "type": "int"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output firstT int = indexOf('test', 't')
-output lastT int = lastIndexOf('test', 't')
-output firstString int = indexOf('abcdef', 'CD')
-output lastString int = lastIndexOf('abcdef', 'AB')
-output notFound int = indexOf('abcdef', 'z')
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/indexof.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -1343,83 +564,9 @@ output notFound int = indexOf('abcdef', 'z')
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json)では、length を配列および文字列と共に使用する方法を示します。
+次の例では、`length` 関数を配列および文字列と共に使用する方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "propA": "one",
-        "propB": "two",
-        "propC": "three",
-        "propD": {
-          "propD-1": "sub",
-          "propD-2": "sub"
-        }
-      }
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayLength": {
-      "type": "int",
-      "value": "[length(parameters('arrayToTest'))]"
-    },
-    "stringLength": {
-      "type": "int",
-      "value": "[length(parameters('stringToTest'))]"
-    },
-    "objectLength": {
-      "type": "int",
-      "value": "[length(parameters('objectToTest'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param arrayToTest array = [
-  'one'
-  'two'
-  'three'
-]
-param stringToTest string = 'One Two Three'
-param objectToTest object = {
-  'propA': 'one'
-  'propB': 'two'
-  'propC': 'three'
-  'propD': {
-    'propD-1': 'sub'
-    'propD-2': 'sub'
-  }
-}
-
-output arrayLength int = length(arrayToTest)
-output stringLength int = length(stringToTest)
-output objectLength int = length(objectToTest)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/length.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -1455,40 +602,9 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="examples"></a>例
 
-次の例のテンプレートでは、新しい識別子を使用するパラメーターを示します。
+次の例に、新しい識別子を使用するパラメーターを示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "guidValue": {
-      "type": "string",
-      "defaultValue": "[newGuid()]"
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "guidOutput": {
-      "type": "string",
-      "value": "[parameters('guidValue')]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param guidValue string = newGuid()
-
-output guidOutput string = guidValue
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/newguid.json":::
 
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
@@ -1496,66 +612,9 @@ output guidOutput string = guidValue
 | ---- | ---- | ----- |
 | guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
-次の例では、newGuid 関数を使用して、ストレージ アカウントの一意の名前を作成します。 このテンプレートは、ストレージ アカウントが短時間だけ存在し、再デプロイされないテスト環境に適しています。
+次の例では、`newGuid` 関数を使用して、ストレージ アカウントの一意の名前を作成します。 このテンプレートは、ストレージ アカウントが短時間だけ存在し、再デプロイされないテスト環境に適しています。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "guidValue": {
-      "type": "string",
-      "defaultValue": "[newGuid()]"
-    }
-  },
-  "variables": {
-    "storageName": "[concat('storage', uniqueString(parameters('guidValue')))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageName')]",
-      "location": "West US",
-      "apiVersion": "2018-07-01",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "StorageV2",
-      "properties": {}
-    }
-  ],
-  "outputs": {
-    "nameOutput": {
-      "type": "string",
-      "value": "[variables('storageName')]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param guidValue string = newGuid()
-
-var storageName = 'storage${uniqueString(guidValue)}'
-
-resource myStorage 'Microsoft.Storage/storageAccounts@2018-07-01' = {
-  name: storageName
-  location: 'West US'
-  sku: {
-    name: 'Standard_LRS'
-  }
-  kind: 'StorageV2'
-  properties: {}
-}
-
-output nameOutput string = storageName
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/newguid-storageaccount.json":::
 
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
@@ -1585,39 +644,9 @@ output nameOutput string = storageName
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json)では、文字の合計数に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値を埋め込む方法を示します。
+次の例では、文字の合計数に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値を埋め込む方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "123"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "stringOutput": {
-      "type": "string",
-      "value": "[padLeft(parameters('testString'),10,'0')]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param testString string = '123'
-
-output stringOutput string = padLeft(testString, 10, '0')
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/padleft.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -1645,44 +674,9 @@ output stringOutput string = padLeft(testString, 10, '0')
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/replace.json)では、ユーザーが指定した文字列からすべてのダッシュを削除し、その文字列の部分を別の文字列に置き換える方法を示します。
+次の例では、ユーザーが指定した文字列からすべてのダッシュを削除し、その文字列の部分を別の文字列に置き換える方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "123-123-1234"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "firstOutput": {
-      "type": "string",
-      "value": "[replace(parameters('testString'),'-', '')]"
-    },
-    "secondOutput": {
-      "type": "string",
-      "value": "[replace(parameters('testString'),'1234', 'xxxx')]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param testString string = '123-123-1234'
-
-output firstOutput string = replace(testString, '-', '')
-output secondOutput string = replace(testString, '1234', 'xxxx')
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/replace.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -1710,67 +704,9 @@ output secondOutput string = replace(testString, '1234', 'xxxx')
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json)では、配列内の指定した数の要素と、文字列内の指定した数の文字をスキップします。
+次の例では、配列内の指定した数の要素と、文字列内の指定した数の文字をスキップします。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "elementsToSkip": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    },
-    "charactersToSkip": {
-      "type": "int",
-      "defaultValue": 4
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "array",
-      "value": "[skip(parameters('testArray'),parameters('elementsToSkip'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[skip(parameters('testString'),parameters('charactersToSkip'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param testArray array = [
-  'one'
-  'two'
-  'three'
-]
-param elementsToSkip int = 2
-param testString string = 'one two three'
-param charactersToSkip int = 4
-
-output arrayOutput array = skip(testArray, elementsToSkip)
-output stringOutput string = skip(testString, charactersToSkip)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/skip.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -1798,57 +734,9 @@ output stringOutput string = skip(testString, charactersToSkip)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/split.json)では、入力文字列をコンマで分割したり、コンマまたはセミコロンで分割したりします。
+次の例では、入力文字列をコンマで分割したり、コンマまたはセミコロンで分割したりします。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstString": {
-      "type": "string",
-      "defaultValue": "one,two,three"
-    },
-    "secondString": {
-      "type": "string",
-      "defaultValue": "one;two,three"
-    }
-  },
-  "variables": {
-    "delimiters": [ ",", ";" ]
-  },
-  "resources": [],
-  "outputs": {
-    "firstOutput": {
-      "type": "array",
-      "value": "[split(parameters('firstString'),',')]"
-    },
-    "secondOutput": {
-      "type": "array",
-      "value": "[split(parameters('secondString'),variables('delimiters'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstString string = 'one,two,three'
-param secondString string = 'one;two,three'
-
-var delimiters = [
-  ','
-  ';'
-]
-
-output firstOutput array = split(firstString, ',')
-output secondOutput array = split(secondString, delimiters)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/split.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -1876,56 +764,9 @@ output secondOutput array = split(secondString, delimiters)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json)は、startsWith 関数と endsWith 関数の使用方法を示しています。
+次の例では、`startsWith` 関数および `endsWith` 関数の使用方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "startsTrue": {
-      "value": "[startsWith('abcdef', 'ab')]",
-      "type": "bool"
-    },
-    "startsCapTrue": {
-      "value": "[startsWith('abcdef', 'A')]",
-      "type": "bool"
-    },
-    "startsFalse": {
-      "value": "[startsWith('abcdef', 'e')]",
-      "type": "bool"
-    },
-    "endsTrue": {
-      "value": "[endsWith('abcdef', 'ef')]",
-      "type": "bool"
-    },
-    "endsCapTrue": {
-      "value": "[endsWith('abcdef', 'F')]",
-      "type": "bool"
-    },
-    "endsFalse": {
-      "value": "[endsWith('abcdef', 'e')]",
-      "type": "bool"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output startsTrue bool = startsWith('abcdef', 'ab')
-output startsCapTrue bool = startsWith('abcdef', 'A')
-output startsFalse bool = startsWith('abcdef', 'e')
-output endsTrue bool = endsWith('abcdef', 'ef')
-output endsCapTrue bool = endsWith('abcdef', 'F')
-output endsFalse bool = endsWith('abcdef', 'e')
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/startsendswith.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -1956,73 +797,9 @@ output endsFalse bool = endsWith('abcdef', 'e')
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/string.json)では、さまざまな型の値を文字列に変換する方法を示します。
+次の例では、さまざまな型の値を文字列に変換する方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testObject": {
-      "type": "object",
-      "defaultValue": {
-        "valueA": 10,
-        "valueB": "Example Text"
-      }
-    },
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "a",
-        "b",
-        "c"
-      ]
-    },
-    "testInt": {
-      "type": "int",
-      "defaultValue": 5
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "objectOutput": {
-      "type": "string",
-      "value": "[string(parameters('testObject'))]"
-    },
-    "arrayOutput": {
-      "type": "string",
-      "value": "[string(parameters('testArray'))]"
-    },
-    "intOutput": {
-      "type": "string",
-      "value": "[string(parameters('testInt'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param testObject object = {
-  'valueA': 10
-  'valueB': 'Example Text'
-}
-param testArray array = [
-  'a'
-  'b'
-  'c'
-]
-param testInt int = 5
-
-output objectOutput string = string(testObject)
-output arrayOutput string = string(testArray)
-output intOutput string = string(testInt)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/string.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -2044,7 +821,7 @@ output intOutput string = string(testInt)
 |:--- |:--- |:--- |:--- |
 | stringToParse |はい |string |部分文字列の抽出元となる文字列。 |
 | startIndex |いいえ |INT |部分文字列の 0 から始まる開始文字位置。 |
-| length |いいえ |INT |部分文字列の文字数。 文字列内の場所を参照する必要があります。 0 以上である必要があります。 |
+| length |いいえ |INT |部分文字列の文字数。 文字列内の場所を参照する必要があります。 0 以上である必要があります。 省略した場合、開始位置からの文字列の残りの部分が返されます。|
 
 ### <a name="return-value"></a>戻り値
 
@@ -2053,8 +830,6 @@ output intOutput string = string(testInt)
 ### <a name="remarks"></a>解説
 
 この関数は、部分文字列が文字列の最後を超えるか、または長さが 0 未満のときは失敗します。 次の例は、"インデックス パラメーターと長さパラメーターは文字列内の場所を参照している必要があります。 インデックス パラメーター:'0'、長さパラメーター:'11'、文字列パラメーターの長さ:'10'。" というエラーで失敗します。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "parameters": {
@@ -2067,50 +842,11 @@ output intOutput string = string(testInt)
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param inputString string = '1234567890'
-
-var prefix = substring(inputString, 0, 11)
-```
-
----
-
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/substring.json)では、パラメーターから部分文字列を抽出します。
+次の例では、パラメーターから部分文字列を抽出します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "substringOutput": {
-      "value": "[substring(parameters('testString'), 4, 3)]",
-      "type": "string"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param testString string = 'one two three'
-output substringOutput string = substring(testString, 4, 3)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/substring.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -2122,7 +858,7 @@ output substringOutput string = substring(testString, 4, 3)
 
 `take(originalValue, numberToTake)`
 
-文字列の先頭から指定した数の文字を含む文字列を、または配列の先頭から指定した数の要素を含む配列を返します。
+配列または文字列を返します。 配列には配列の先頭から指定された数の要素が含まれます。 文字列には文字列の先頭から指定された数の文字が含まれます。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -2137,67 +873,9 @@ output substringOutput string = substring(testString, 4, 3)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json)では、指定した数の要素を配列から取得し、指定した数の文字を文字列から取得します。
+次の例では、指定した数の要素を配列から取得し、指定した数の文字を文字列から取得します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "elementsToTake": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    },
-    "charactersToTake": {
-      "type": "int",
-      "defaultValue": 2
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "array",
-      "value": "[take(parameters('testArray'),parameters('elementsToTake'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[take(parameters('testString'),parameters('charactersToTake'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param testArray array = [
-  'one'
-  'two'
-  'three'
-]
-param elementsToTake int = 2
-param testString string = 'one two three'
-param charactersToTake int = 2
-
-output arrayOutput array = take(testArray, elementsToTake)
-output stringOutput string = take(testString, charactersToTake)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/take.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -2224,44 +902,9 @@ output stringOutput string = take(testString, charactersToTake)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json)では、パラメーター値を小文字と大文字に変換します。
+次の例では、パラメーター値を小文字と大文字に変換します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "toLowerOutput": {
-      "value": "[toLower(parameters('testString'))]",
-      "type": "string"
-    },
-    "toUpperOutput": {
-      "type": "string",
-      "value": "[toUpper(parameters('testString'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param testString string = 'One Two Three'
-
-output toLowerOutput string = toLower(testString)
-output toUpperOutput string = toUpper(testString)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/tolower.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -2288,44 +931,9 @@ output toUpperOutput string = toUpper(testString)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json)では、パラメーター値を小文字と大文字に変換します。
+次の例では、パラメーター値を小文字と大文字に変換します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "toLowerOutput": {
-      "value": "[toLower(parameters('testString'))]",
-      "type": "string"
-    },
-    "toUpperOutput": {
-      "type": "string",
-      "value": "[toUpper(parameters('testString'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param testString string = 'One Two Three'
-
-output toLowerOutput string = toLower(testString)
-output toUpperOutput string = toUpper(testString)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/tolower.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -2352,39 +960,9 @@ output toUpperOutput string = toUpper(testString)
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/trim.json)では、パラメーターから空白文字を削除します。
+次の例では、パラメーターから空白文字を削除します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "    one two three   "
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "return": {
-      "type": "string",
-      "value": "[trim(parameters('testString'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param testString string = '    one two three   '
-
-output return string = trim(testString)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/trim.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -2403,7 +981,7 @@ output return string = trim(testString)
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | baseString |はい |string |一意の文字列を作成するためにハッシュ関数で使用される値。 |
-| 必要に応じて追加のパラメーター |いいえ |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
+| 必要に応じてその他のパラメーター |いいえ |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
 
 ### <a name="remarks"></a>解説
 
@@ -2413,59 +991,27 @@ output return string = trim(testString)
 
 `tcvhiyu5h2o5o`
 
-次の例は、uniqueString を使用して、よく使用されるレベルで一意の値を作成する方法を示しています。
+次の例では、`uniqueString` を使用して、よく使用されるレベルで一意の値を作成する方法を示します。
 
 サブスクリプションのスコープで一意
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[uniqueString(subscription().subscriptionId)]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-uniqueString(subscription().subscriptionId)
-```
-
----
-
 リソース グループのスコープで一意
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[uniqueString(resourceGroup().id)]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-uniqueString(resourceGroup().id)
-```
-
----
-
 リソース グループのデプロイのスコープで一意
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[uniqueString(resourceGroup().id, deployment().name)]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-uniqueString(resourceGroup().id, deployment().name)
-```
-
----
-
 次の例は、リソース グループに基づいてストレージ アカウントの一意の名前を作成する方法を示しています。 リソース グループ内では、名前は、同じ方法で作成されると一意ではなくなります。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "resources": [{
@@ -2474,18 +1020,7 @@ uniqueString(resourceGroup().id, deployment().name)
   ...
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
-  name: 'storage${uniqueString(resourceGroup().id)}'
-  ...
-}
-```
-
----
-
-テンプレートをデプロイするたびに一意の新しい名前を作成する必要があり、リソースを更新しない場合は、[utcNow](template-functions-date.md#utcnow) 関数と共に uniqueString を使用できます。 この方法は、テスト環境で使用できます。 例については、「[utcNow](template-functions-date.md#utcnow)」をご覧ください。
+テンプレートをデプロイするたびに一意の新しい名前を作成する必要があり、リソースを更新しない場合は、[utcNow](template-functions-date.md#utcnow) 関数と `uniqueString` を使用できます。 この方法は、テスト環境で使用できます。 例については、「[utcNow](template-functions-date.md#utcnow)」をご覧ください。
 
 ### <a name="return-value"></a>戻り値
 
@@ -2493,36 +1028,9 @@ resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uniquestring.json)は、uniquestring から結果を返します。
+次の例では、`uniquestring` から結果を返します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "uniqueRG": {
-      "value": "[uniqueString(resourceGroup().id)]",
-      "type": "string"
-    },
-    "uniqueDeploy": {
-      "value": "[uniqueString(resourceGroup().id, deployment().name)]",
-      "type": "string"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output uniqueRG string = uniqueString(resourceGroup().id)
-output uniqueDeploy string = uniqueString(resourceGroup().id, deployment().name)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/uniquestring.json":::
 
 ## <a name="uri"></a>uri
 
@@ -2534,14 +1042,14 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| baseUri |はい |string |ベース URI 文字列。 この表の後に記述されている、末尾のスラッシュ ("/") の処理に関する動作を注意して確認してください。  |
+| baseUri |はい |string |ベース URI 文字列。 この表の後に記述されている、末尾のスラッシュ (`/`) の処理に関する動作を注意して確認してください。  |
 | relativeUri |はい |string |ベース URI 文字列に追加する相対 URI 文字列。 |
 
-* **baseUri** の末尾がスラッシュで終わる場合、結果は単純に **baseUri** の後に **relativeUri** が続きます。
+* **baseUri** の末尾がスラッシュで終わる場合、結果は **baseUri** の後に **relativeUri** が続きます。
 
 * **baseUri** の末尾がスラッシュで終わっていない場合は、次の 2 つのいずれかが発生します。
 
-   * **baseUri** にスラッシュが (先頭付近の "//" を除いて) まったく含まれていない場合、結果は単純に **baseUri** の後に **relativeUri** が続きます。
+   * **baseUri** にスラッシュが (先頭付近の `//` を除いて) まったく含まれていない場合、結果は **baseUri** の後に **relativeUri** が続きます。
 
    * **baseUri** にスラッシュが含まれているが、末尾がスラッシュでない場合は、最後のスラッシュの後ろがすべて **baseUri** から削除され、結果は **baseUri** の後に **relativeUri** が続きます。
 
@@ -2553,6 +1061,7 @@ uri('http://contoso.org/firstpath/', 'myscript.sh') -> http://contoso.org/firstp
 uri('http://contoso.org/firstpath/azuredeploy.json', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
 uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://contoso.org/firstpath/azuredeploy.json/myscript.sh
 ```
+
 詳細については、[RFC 3986 のセクション 5](https://tools.ietf.org/html/rfc3986#section-5) に記載されているように、**baseUri** パラメーターと **relativeUri** パラメーターが解決されます。
 
 ### <a name="return-value"></a>戻り値
@@ -2563,63 +1072,13 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 次の例は、親テンプレートの値に基づいて、入れ子になったテンプレートへのリンクを作成する方法を示しています。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
+次のテンプレート例では、`uri`、`uriComponent`、および `uriComponentToString` を使用する方法を示します。
 
-```bicep
-templateLink: uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')
-```
-
----
-
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json)では、uri、uriComponent、および uriComponentToString を使用する方法を示します。
-
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "variables": {
-    "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-    "uriEncoded": "[uriComponent(variables('uriFormat'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "uriOutput": {
-      "type": "string",
-      "value": "[variables('uriFormat')]"
-    },
-    "componentOutput": {
-      "type": "string",
-      "value": "[variables('uriEncoded')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[uriComponentToString(variables('uriEncoded'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-var uriFormat = uri('http://contoso.com/resources/', 'nested/azuredeploy.json')
-var uriEncoded = uriComponent(uriFormat)
-
-output uriOutput string = uriFormat
-output componentOutput string = uriEncoded
-output toStringOutput string = uriComponentToString(uriEncoded)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/uri.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -2647,49 +1106,9 @@ URI エンコードされた値の文字列。
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json)では、uri、uriComponent、および uriComponentToString を使用する方法を示します。
+次のテンプレート例では、`uri`、`uriComponent`、および `uriComponentToString` を使用する方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "variables": {
-    "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-    "uriEncoded": "[uriComponent(variables('uriFormat'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "uriOutput": {
-      "type": "string",
-      "value": "[variables('uriFormat')]"
-    },
-    "componentOutput": {
-      "type": "string",
-      "value": "[variables('uriEncoded')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[uriComponentToString(variables('uriEncoded'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-var uriFormat = uri('http://contoso.com/resources/', 'nested/azuredeploy.json')
-var uriEncoded = uriComponent(uriFormat)
-
-output uriOutput string = uriFormat
-output componentOutput string = uriEncoded
-output toStringOutput string = uriComponentToString(uriEncoded)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/uri.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -2717,49 +1136,9 @@ URI エンコードされた値のデコード済み文字列。
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json)では、uri、uriComponent、および uriComponentToString を使用する方法を示します。
+次の例では、`uri`、`uriComponent`、および `uriComponentToString` を使用する方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "variables": {
-    "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-    "uriEncoded": "[uriComponent(variables('uriFormat'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "uriOutput": {
-      "type": "string",
-      "value": "[variables('uriFormat')]"
-    },
-    "componentOutput": {
-      "type": "string",
-      "value": "[variables('uriEncoded')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[uriComponentToString(variables('uriEncoded'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-var uriFormat = uri('http://contoso.com/resources/', 'nested/azuredeploy.json')
-var uriEncoded = uriComponent(uriFormat)
-
-output uriOutput string = uriFormat
-output componentOutput string = uriEncoded
-output toStringOutput string = uriComponentToString(uriEncoded)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/uri.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -2771,7 +1150,7 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 ## <a name="next-steps"></a>次のステップ
 
-* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](./syntax.md)」を参照してください。
 * 複数のテンプレートをマージする方法については、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](linked-templates.md)」を参照してください。
 * ある種類のリソースを作成するときに、指定した回数だけ反復する方法については、「[ARM テンプレートでのリソースの反復処理](copy-resources.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。

@@ -8,20 +8,29 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 3bb7311a16b71b9bb76f14b4ba7a29dd2dae4a96
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 959a6d5c5ed4b606c5a5850264422b6e460eb8f5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103009999"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020447"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
+[!INCLUDE [Custom question answering](./includes/new-version.md)]
+
 ## <a name="release-notes"></a>リリース ノート
 
 QnA Maker の新機能について説明します。
+
+### <a name="may-2021"></a>2021 年 5 月
+
+* QnA Maker マネージドが、[Text Analytics リソース](https://ms.portal.azure.com/?quickstart=true#create/Microsoft.CognitiveServicesTextAnalytics)のカスタム質問と回答機能として再導入されました。
+* カスタム質問と回答では、非構造化ドキュメントがサポートされます。
+* API を介して渡されるドキュメント テキストからユーザー クエリの回答を生成するために、[事前構築済み API](how-to/using-prebuilt-api.md) が導入されました。
 
 ### <a name="november-2020"></a>2020 年 11 月
 

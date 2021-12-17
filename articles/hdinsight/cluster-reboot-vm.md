@@ -1,16 +1,16 @@
 ---
 title: Azure HDInsight クラスターの VM を再起動する
 description: Azure HDInsight クラスターの応答していない VM を再起動する方法について説明します。
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurepowershell
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: a61735dba60860459d007eb54d4655f41d5ae51a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e49d85ed4646f337a492ac92be4e31edfa3b9c4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946868"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487063"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>HDInsight クラスターの VM を再起動する
 
@@ -51,13 +51,13 @@ Azure HDInsight クラスターには、クラスター ノードとして仮想
 
 API ドキュメントの **使ってみる** 機能を使用して、HDInsight に要求を送信できます。 ノードの再起動操作を使用するには、ノードの一覧表示とノードの再起動という 2 つの手順が必要です。
 
-1. ノードを一覧表示します。 クラスター ノードの一覧は、REST API または Ambari から取得できます。 詳細については、[HDInsight list hosts REST API の操作](/rest/api/hdinsight/virtualmachines/listhosts)に関するページを参照してください。
+1. ノードを一覧表示します。 クラスター ノードの一覧は、REST API または Ambari から取得できます。 詳細については、[HDInsight list hosts REST API の操作](/rest/api/hdinsight/2021-06-01/virtual-machines/list-hosts)に関するページを参照してください。
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-1. ホストを再起動します。 再起動するノードの名前を取得したら、ノードを再起動する REST API を使用して、ノードを再起動します。 ノード名は、*NodeType(wn/hn/zk/gw)*  + *x* + *クラスター名の最初の 6 文字* のパターンに従います。 詳細については、[HDInsight restart hosts REST API の操作](/rest/api/hdinsight/virtualmachines/restarthosts)に関するページを参照してください。
+1. ホストを再起動します。 再起動するノードの名前を取得したら、ノードを再起動する REST API を使用して、ノードを再起動します。 ノード名は、*NodeType(wn/hn/zk)*  + *x* + <*クラスター名の最初の 6 文字*> のパターンに従います。 詳細については、[HDInsight restart hosts REST API の操作](/rest/api/hdinsight/2021-06-01/virtual-machines/restart-hosts)に関するページを参照してください。
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview
@@ -75,5 +75,5 @@ API ドキュメントの **使ってみる** 機能を使用して、HDInsight 
 ## <a name="next-steps"></a>次のステップ
 
 * [Restart-AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost)
-* [HDInsight virtual machines REST API](/rest/api/hdinsight/virtualmachines)
+* [HDInsight virtual machines REST API](/rest/api/hdinsight/2021-06-01/virtual-machines)
 * [HDInsight REST API](/rest/api/hdinsight/)

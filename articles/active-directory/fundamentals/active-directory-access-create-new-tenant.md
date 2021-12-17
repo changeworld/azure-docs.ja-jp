@@ -12,14 +12,15 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0c5f342fccf2f313777961e803643daee5b91a1
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96437242"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517246"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>クイック スタート:Azure Active Directory で新しいテナントを作成する
+
 Azure Active Directory (Azure AD) ポータルを使用して、組織の新しいテナントの作成など、すべての管理タスクを実行できます。 
 
 このクイック スタートでは、Azure portal と Azure Active Directory にアクセスする方法と、組織の基本的なテナントを作成する方法について説明します。
@@ -27,6 +28,7 @@ Azure Active Directory (Azure AD) ポータルを使用して、組織の新し�
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>組織の新しいテナントを作成する
+
 Azure portal にサインインすると、組織の新しいテナントを作成できます。 新しいテナントは組織を表し、社内外のユーザー向けに特定インスタンスの Microsoft クラウド サービスを管理するために役立ちます。
 
 ### <a name="to-create-a-new-tenant"></a>新しいテナントを作成するには
@@ -59,10 +61,20 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 
 新しいテナントは、ドメイン contoso.onmicrosoft.com で作成されます。
 
+## <a name="your-user-account-in-the-new-tenant"></a>新しいテナントのユーザー アカウント
+
+新しい Azure AD テナントを作成したユーザーが、そのテナントの最初のユーザーになります。 最初のユーザーには、[グローバル管理者](../roles/permissions-reference.md#global-administrator)ロールが自動的に割り当てられます。 [ **[ユーザー]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers) ページに移動して、ユーザー アカウントを確認します。
+
+既定では、テナントの[技術部連絡先](/microsoft-365/admin/manage/change-address-contact-and-more#what-do-these-fields-mean)としても表示されます。 技術部連絡先の情報は、[ **[プロパティ]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) で変更できます。
+
+> [!WARNING]
+> ディレクトリに、グローバル管理者特権が割り当てられているアカウントが少なくとも 2 つあることを確認します。 これは、グローバル管理者のどちらかがロックアウトされた場合に役立ちます。詳細については、「[Azure AD で緊急アクセス用管理者アカウントを管理する](../roles/security-emergency-access.md)」を参照してください。
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
 このアプリケーションを引き続き使用しない場合は、次の手順を使用してテナントを削除することができます。
 
-- Azure portal で **[ディレクトリ + サブスクリプション]** フィルターを使用して、削除するディレクトリにサインインしていることを確認し、必要に応じてターゲット ディレクトリに切り替えます。
+- Azure portal で **[ディレクトリ + サブスクリプション]** フィルターを使用して、削除するディレクトリにサインインしていることを確認します。 必要に応じてターゲット ディレクトリに切り替えます。
 - **[Azure Active Directory]** を選択し、**[Contoso - 概要]** ページで **[ディレクトリの削除]** を選択します。
 
     テナントとその関連情報は削除されます。
@@ -70,6 +82,7 @@ Azure portal にサインインすると、組織の新しいテナントを作�
     <kbd>![概要ページ。[ディレクトリの削除] ボタンが強調表示されている](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)</kbd>
 
 ## <a name="next-steps"></a>次のステップ
+
 - 追加のドメイン名を変更または追加する方法については、[Azure Active Directory にカスタム ドメイン名を追加する方法](add-custom-domain.md)に関するページを参照してください。
 
 - ユーザーの追加については、[新しいユーザーの追加または削除](add-users-azure-active-directory.md)に関するページを参照してください。

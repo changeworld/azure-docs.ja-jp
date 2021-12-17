@@ -3,18 +3,21 @@ title: Azure Virtual Networks 用の一般的な PowerShell コマンド
 description: 仮想ネットワークと VM に関連するリソースの作成を開始する際に使用される一般的な PowerShell コマンド
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: networking
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: b4d6b20e63c42616aad0f8776fae159a0f2aa455
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f055a4df57bff95a0db800cec293bde72922920b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87088378"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222971"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure Virtual Networks 用の一般的な PowerShell コマンド
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM 
 
 仮想マシンを作成するには、 [仮想ネットワーク](../../virtual-network/virtual-networks-overview.md) を作成するか、VM を追加できる既存の仮想ネットワークについて知る必要があります。 通常、VM を作成するときに、この記事で説明されているリソースの作成を検討する必要があります。
 
@@ -31,14 +34,14 @@ ms.locfileid: "87088378"
 | ---- | ------- |
 | サブネットの構成の作成 |$subnet1 = [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1" -AddressPrefix XX.X.X.X/XX<BR>$subnet2 = New-AzVirtualNetworkSubnetConfig -Name "mySubnet2" -AddressPrefix XX.X.X.X/XX<BR><BR>標準的なネットワークには、[インターネットに接続するロード バランサー](../../load-balancer/load-balancer-overview.md)のサブネットと[内部ロード バランサー](../../load-balancer/load-balancer-overview.md)の別のサブネットがあります。 |
 | 仮想ネットワークの作成 |$vnet = [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup -Location $location -AddressPrefix XX.X.X.X/XX -Subnet $subnet1, $subnet2 |
-| 一意のドメイン名のテスト |[Test-AzDnsAvailability](/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" -Location $location<BR><BR>パブリック IP リソースに DNS ドメイン名を指定して、Azure で管理される DNS サーバーの[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)に対する domainname.location.cloudapp.azure.com のマッピングを作成できます。 この名前には、文字、数字、ハイフンのみを含めることができます。 最初と最後の文字が英字または数字であり、ドメイン名が Azure の場所内で一意である必要があります。 **True** が返された場合、提案した名前はグローバルに一意です。 |
+| 一意のドメイン名のテスト |[Test-AzDnsAvailability](/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" -Location $location<BR><BR>パブリック IP リソースに DNS ドメイン名を指定して、Azure で管理される DNS サーバーの[パブリック IP アドレス](../../virtual-network/ip-services/public-ip-addresses.md)に対する domainname.location.cloudapp.azure.com のマッピングを作成できます。 この名前には、文字、数字、ハイフンのみを含めることができます。 最初と最後の文字が英字または数字であり、ドメイン名が Azure の場所内で一意である必要があります。 **True** が返された場合、提案した名前はグローバルに一意です。 |
 | パブリック IP アドレスの作成 |$pip = [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) -Name "myPublicIp" -ResourceGroupName $myResourceGroup -DomainNameLabel "myDNS" -Location $location -AllocationMethod Dynamic<BR><BR>パブリック IP アドレスは、事前にテストしたドメイン名を使用し、ロード バランサーのフロントエンド構成で使用されます。 |
 | フロントエンド IP 構成の作成 |$frontendIP = [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) -Name "myFrontendIP" -PublicIpAddress $pip<BR><BR>フロントエンド構成には、受信ネットワーク トラフィック用にあらかじめ作成したパブリック IP アドレスが含まれます。 |
 | バックエンド アドレス プールの作成 |$beAddressPool = [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) -Name "myBackendAddressPool"<BR><BR>ネットワーク インターフェイス経由でアクセスされるロード バランサーのバックエンドの内部アドレスを指定します。 |
 | プローブを作成する |$healthProbe = [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) -Name "myProbe" -RequestPath 'HealthProbe.aspx' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2<BR><BR>バックエンド アドレス プール内の仮想マシン インスタンスの可用性の確認に使用される正常性プローブが含まれます。 |
 | 負荷分散規則の作成 |$lbRule = [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80<BR><BR>ロード バランサーのパブリック ポートをバックエンド アドレス プール内のポートに割り当てる規則が含まれます。 |
 | 受信 NAT 規則の作成 |$inboundNATRule = [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) -Name "myInboundRule1" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389<BR><BR>ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングする規則が含まれます。 |
-| ロード バランサーの作成 |$loadBalancer = [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) -ResourceGroupName $myResourceGroup -Name "myLoadBalancer" -Location $location -FrontendIpConfiguration $frontendIP -InboundNatRule $inboundNATRule -LoadBalancingRule $lbRule -BackendAddressPool $beAddressPool -Probe $healthProbe |
+| ロード バランサーを作成する |$loadBalancer = [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) -ResourceGroupName $myResourceGroup -Name "myLoadBalancer" -Location $location -FrontendIpConfiguration $frontendIP -InboundNatRule $inboundNATRule -LoadBalancingRule $lbRule -BackendAddressPool $beAddressPool -Probe $healthProbe |
 | ネットワーク インターフェイスの作成 |$nic1= [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) -ResourceGroupName $myResourceGroup -Name "myNIC" -Location $location -PrivateIpAddress XX.X.X.X -Subnet $subnet2 -LoadBalancerBackendAddressPool $loadBalancer.BackendAddressPools[0] -LoadBalancerInboundNatRule $loadBalancer.InboundNatRules[0]<BR><BR>パブリック IP アドレスと事前に作成した仮想ネットワークのサブネットを使用して、ネットワーク インターフェイスを作成します。 |
 
 ## <a name="get-information-about-network-resources"></a>ネットワーク リソースに関する情報の取得

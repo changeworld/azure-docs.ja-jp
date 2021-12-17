@@ -1,24 +1,24 @@
 ---
 title: 方法 - ソース コードから Spring Cloud アプリケーションを起動する
-description: このクイックスタートでは、ソース コードから Azure Spring Cloud アプリケーションを直接起動する方法について説明します
-author: MikeDodaro
+description: このクイックスタートでは、ソース コードから Azure Spring Cloud でアプリケーションを直接起動する方法について説明します
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/03/2020
-ms.author: brendm
+ms.date: 11/12/2021
+ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: a6710a15bd0637eead0051ebb70a7cdd8bb8aa58
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0815f48fd9b194a84566138b25b4bedc97de1a83
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877419"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490328"
 ---
-# <a name="how-to-launch-your-spring-cloud-application-from-source-code"></a>ソース コードから Spring Cloud アプリケーションを起動する方法
+# <a name="how-to-deploy-spring-boot-applications-from-azure-cli"></a>Azure CLI から Spring Boot アプリケーションをデプロイする方法
 
 **この記事の適用対象:** ✔️ Java
 
-Azure Spring Cloud では、Azure 上の Spring Cloud ベースのマイクロサービス アプリケーションを有効にできます。
+Azure Spring Cloud を使用して Azure で Spring Boot アプリケーションを有効にすることができます。
 
 Java ソース コードまたはビルド済み JAR からアプリケーションを直接起動できます。 この記事では、デプロイ手順について説明します。
 
@@ -27,11 +27,12 @@ Java ソース コードまたはビルド済み JAR からアプリケーショ
 > [!div class="checklist"]
 > * サービス インスタンスをプロビジョニングする
 > * インスタンスに構成サーバーを設定する
-> * マイクロサービス アプリケーションをローカルにビルドする
-> * 各マイクロサービスをデプロイする
+> * ローカルでアプリケーションをビルドする
+> * 各アプリケーションをデプロイする
 > * アプリケーションのパブリック エンドポイントを割り当てる
 
 ## <a name="prerequisites"></a>前提条件
+
 開始する前に、ご利用の Azure サブスクリプションで、以下の必要な依存関係があることを確認します。
 
 1. [Git をインストールする](https://git-scm.com/)
@@ -53,7 +54,7 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-using-the-azure-cli"></a>Azure CLI を使用してサービス インスタンスをプロビジョニングする
 
-Azure CLI にログインし、アクティブなサブスクリプションを選択します。 
+Azure CLI にサインインし、アクティブなサブスクリプションを選択します。
 
 ```azurecli
 az login
@@ -61,16 +62,16 @@ az account list -o table
 az account set --subscription
 ```
 
-Azure Spring Cloud サービスが含まれるリソース グループを作成します。 Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。
+Azure Spring Cloud でサービスを格納するリソース グループを作成します。 Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。
 
 ```azurecli
-az group create --location eastus --name <resource group name>
+az group create --location eastus --name <resource-group-name>
 ```
 
-次のコマンドを実行して、Azure Spring Cloud のインスタンスをプロビジョニングします。 Azure Spring Cloud サービスの名前を準備します。 名前は 4 から 32 文字で、小文字、数字、およびハイフンのみを使用できます。 サービス名の最初の文字は英字でなければならず、最後の文字は英字または数字でなければなりません。
+次のコマンドを実行して、Azure Spring Cloud のインスタンスをプロビジョニングします。 Azure Spring Cloud のサービスの名前を準備します。 名前は 4 から 32 文字で、小文字、数字、およびハイフンのみを使用できます。 サービス名の最初の文字は英字でなければならず、最後の文字は英字または数字でなければなりません。
 
 ```azurecli
-az spring-cloud create -n <resource name> -g <resource group name>
+az spring-cloud create --resource-group <resource-group-name> --name <resource-name>
 ```
 
 サービス インスタンスのデプロイには約 5 分かかります。
@@ -78,36 +79,38 @@ az spring-cloud create -n <resource name> -g <resource group name>
 次のコマンドを使用して、既定のリソース グループ名と Azure Spring Cloud インスタンス名を設定します。
 
 ```azurecli
-az configure --defaults group=<service group name>
-az configure --defaults spring-cloud=<service instance name>
+az config set defaults.group=<service-group-name>
+az config set defaults.spring-cloud=<service-instance-name>
 ```
 
-## <a name="create-the-azure-spring-cloud-application"></a>Azure Spring Cloud アプリケーションを作成する
+## <a name="create-the-application-in-azure-spring-cloud"></a>Azure Spring Cloud でアプリケーションを作成する
 
-次のコマンドで、自分のサブスクリプションに Azure Spring Cloud アプリケーションを作成します。  それにより、アプリケーションをアップロードできる空のサービスが作成されます。
+次のコマンドで、自分のサブスクリプションに Azure Spring Cloud でアプリケーションを作成します。  それにより、アプリケーションをアップロードできる空のサービスが作成されます。
 
 ```azurecli
-az spring-cloud app create -n <app-name>
+az spring-cloud app create --name <app-name>
 ```
 
-## <a name="deploy-your-spring-cloud-application"></a>Spring Cloud アプリケーションをデプロイする
+## <a name="deploy-your-spring-boot-application"></a>Spring Boot アプリケーションをデプロイする
 
 ビルド済みの JAR から、あるいは Gradle または Maven リポジトリからアプリケーションをデプロイできます。  ケースごとに次の手順を行います。
 
-### <a name="deploy-a-built-jar"></a>ビルドされた JAR をデプロイする
+### <a name="deploy-a-pre-built-jar"></a>ビルド済みの JAR をデプロイする
 
 ローカル コンピューター上にビルドされた JAR からデプロイするには、ビルドによって [fat-JAR](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-build.html#howto-create-an-executable-jar-with-maven) が生成されることを確認します。
 
 アクティブなデプロイに fat-JAR をデプロイするには
 
 ```azurecli
-az spring-cloud app deploy -n <app-name> --jar-path <path-to-fat-JAR e.g. "target\hellospring-0.0.1-SNAPSHOT.jar">
+az spring-cloud app deploy --name <app-name> --jar-path <path-to-fat-JAR>
 ```
 
 特定のデプロイに fat-JAR をデプロイするには
 
 ```azurecli
-az spring-cloud app deployment create --app <app-name> -n <deployment-name> --jar-path <path-to-fat-JAR e.g. "target\hellospring-0.0.1-SNAPSHOT.jar">
+az spring-cloud app deployment create --app <app-name> \
+    --name <deployment-name> \
+    --jar-path <path-to-fat-JAR>
 ```
 
 ### <a name="deploy-from-source-code"></a>ソース コードからのデプロイ
@@ -121,14 +124,15 @@ Azure Spring Cloud では、[kpack](https://github.com/pivotal/kpack) を使用�
 
 ```azurecli
 cd <path-to-maven-or-gradle-source-root>
-az spring-cloud app deploy -n <app-name>
+az spring-cloud app deploy --name <app-name>
 ```
 
 複数のモジュールを含む Maven/Gradle プロジェクトの場合は、モジュールごとに以下を繰り返します。
 
 ```azurecli
 cd <path-to-maven-or-gradle-source-root>
-az spring-cloud app deploy -n <app-name> --target-module <relative-path-to-module>
+az spring-cloud app deploy --name <app-name> \
+    --target-module <relative-path-to-module>
 ```
 
 ### <a name="show-deployment-logs"></a>デプロイ ログの表示
@@ -136,7 +140,7 @@ az spring-cloud app deploy -n <app-name> --target-module <relative-path-to-modul
 次のコマンドを使用して、kpack ビルド ログを確認します。
 
 ```azurecli
-az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
+az spring-cloud app show-deploy-log --name <app-name>
 ```
 
 > [!NOTE]
@@ -146,7 +150,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 
 1. **[アプリケーション ダッシュボード]** ページを開きます。
 2. `gateway` アプリケーションを選択して、**[アプリケーションの詳細]** ページを表示します。
-3. **[Assign Endpoint]\(エンドポイントの割り当て\)** を選択して、ゲートウェイにパブリック エンドポイントを割り当てます。 これには数分かかることがあります。 
+3. **[Assign Endpoint]\(エンドポイントの割り当て\)** を選択して、ゲートウェイにパブリック エンドポイントを割り当てます。 これには数分かかることがあります。
 4. 実行中のアプリケーションを表示するには、割り当てられたパブリック IP をブラウザーに入力します。
 
 > [!div class="nextstepaction"]
@@ -159,12 +163,12 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > [!div class="checklist"]
 > * サービス インスタンスをプロビジョニングする
 > * インスタンスに構成サーバーを設定する
-> * マイクロサービス アプリケーションをローカルにビルドする
-> * 各マイクロサービスをデプロイする
+> * ローカルでアプリケーションをビルドする
+> * 各アプリケーションをデプロイする
 > * アプリケーションの環境変数を編集する
 > * アプリケーション ゲートウェイにパブリック IP を割り当てる
 
 > [!div class="nextstepaction"]
-> [Spring Cloud のログ、メトリック、トレース](spring-cloud-quickstart-logs-metrics-tracing.md)
+> [Spring Cloud のログ、メトリック、トレース](./quickstart-logs-metrics-tracing.md)
 
 その他のサンプルを GitHub で入手できます ([Azure Spring Cloud のサンプル](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql))。

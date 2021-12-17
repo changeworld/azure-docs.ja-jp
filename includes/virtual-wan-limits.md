@@ -8,24 +8,22 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 85c66aa6a8f0cb0efa231acee44f8fa02169d27b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0af087c68056b1719355956c30b5e2c7f971531
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88602578"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113094655"
 ---
 | リソース |  制限 |
 | --- | --- |
-| リージョンあたりの Virtual WAN ハブ | 1  |
-| 仮想 WAN あたりの Virtual WAN ハブ |Azure Azure リージョン |
 | ハブあたりの VPN (ブランチ) 接続 | 1,000 |
 | Virtual WAN のサイト間 VPN ゲートウェイあたりのスループットの合計 | 20 Gbps |
 | Virtual WAN の VPN 接続あたりのスループット (2 トンネル) | 2 Gbps (1 Gbps/IPsec トンネル) |
-| ハブあたりのポイント対サイトのユーザー数| 10,000 |
-| Azure Virtual WAN ユーザー VPN (ポイント対サイト) ゲートウェイあたりのスループットの合計 | 20 Gbps |
+| ハブあたりのポイント対サイトのユーザー数| 100,000 |
+| Azure Virtual WAN ユーザー VPN (ポイント対サイト) ゲートウェイあたりのスループットの合計 | 200 Gbps |
 | Virtual WAN の ExpressRoute ゲートウェイあたりのスループットの合計 | 20 Gbps |
-| ハブあたりの ExpressRoute 回線接続 | 4 |
+| ハブあたりの ExpressRoute 回線接続 | 8 |
 | ハブあたりの VNet 接続  | 500 から Virtual WAN 内のハブの総数を差し引いた値 |
 | Virtual WAN のハブ ルーターあたりのスループットの合計 | VNet 間の転送に対して 50 Gbps |
-| 単一の Virtual WAN ハブに接続されたすべての VNet にわたる VM ワークロード | 2000 
+| 単一の Virtual WAN ハブに接続されたすべての VNet にわたる VM ワークロード | 2000 (制限の引き上げまたは既定の制限を超えるクォータが必要な場合は、オンライン カスタマー サポート リクエストを開いてください。)

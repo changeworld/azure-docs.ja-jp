@@ -7,12 +7,13 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9d3e34bee3d0f1420b379638389e6fad0a2fed60
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97704318"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831566"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure Attestation のトラブルシューティング ガイド
 
@@ -30,7 +31,6 @@ Azure Attestation によって返されるエラーの例を次に示します�
 **エラー コード** 権限がありません
 
 **シナリオの例**
-  - ユーザーに Attestation の Reader ロールが割り当てられていない場合に Attestation でエラーが発生する
   - ユーザーに適切なロールが割り当てられていないため、構成証明ポリシーを管理できない
   - ユーザーに適切なロールが割り当てられていないため、構成証明ポリシーの署名者を管理できない
 
@@ -47,55 +47,25 @@ At line:1 char:1
 
 **トラブルシューティングの手順**
 
-構成証明ポリシーまたはポリシーの署名者を表示するには、Azure AD ユーザーに "Actions" のアクセス許可が必要です。
+ポリシーを管理するには、Azure AD ユーザーに "Actions" の次のアクセス許可が必要になります。
 - Microsoft.Attestation/attestationProviders/attestation/read
-
-  このアクセス許可は、"Owner" (ワイルドカードのアクセス許可)、"Reader" (ワイルドカードのアクセス許可)、"Attestation Reader" (Azure Attestation 専用のアクセス許可) などのロールを経由して AD ユーザーに割り当てることができます。
-
-ポリシーの署名者を追加または削除する、またはポリシーを構成するには、Azure AD ユーザーに、"Actions" に対して次のアクセス許可が必要です。
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
-  これらのアクセス許可は、"Owner" (ワイルドカードのアクセス許可)、"Contributor" (ワイルドカードのアクセス許可)、"Attestation Contributor" (Azure Attestation 専用のアクセス許可) などのロールを経由して AD ユーザーに割り当てることができます。
+  これらの操作を実行するには、Azure AD ユーザーが構成証明プロバイダーに対して "構成証明の共同作成者" ロールを持っている必要があります。 これらのアクセス許可は、サブスクリプションまたはリソース グループに対する "所有者" (ワイルドカード アクセス許可)、"共同作成者" (ワイルドカード アクセス許可) などのロールで継承させることもできます。  
 
-構成証明に既定のプロバイダーを使用するか、カスタム ポリシーを使用した独自のプロバイダーを作成するかは、お客様が選択できます。 カスタム構成証明プロバイダーに構成証明要求を送信するには、ユーザーに "Owner" (ワイルドカードアクセス許可) または "Reader" (ワイルドカードアクセス許可) または "Attestation Reader" ロールが必要です。 既定のプロバイダーには、任意の Azure AD ユーザーがアクセスできます。
+ポリシーを読み込むには、Azure AD ユーザーに "Actions" の次のアクセス許可が必要になります。
+- Microsoft.Attestation/attestationProviders/attestation/read
 
-PowerShell でロールを確認するには、次のように実行します。
+  この操作を実行するには、Azure AD ユーザーが構成証明プロバイダーに対して "構成証明の閲覧者" ロールを持っている必要があります。 読み取りアクセス許可は、サブスクリプションまたはリソース グループに対する "閲覧者" (ワイルドカード アクセス許可) などのロールで継承させることもできます。  
+
+PowerShell でロールを確認するには、以下の手順を実行します。
 
 a. PowerShell を起動し、"Connect-AzAccount" コマンドレットを使用して Azure にログインします。
 
-b. Azure ロールの割り当て設定を確認します。
+b. 構成証明プロバイダーに対する Azure ロールの割り当てを確認するには、[こちら](../role-based-access-control/role-assignments-list-powershell.md)のガイダンスを参照してください
 
-
-  ```powershell
-  $c = Get-AzContext
-  Get-AzRoleAssignment -ResourceGroupName $attestationResourceGroup -ResourceName $attestationProvider -ResourceType Microsoft.Attestation/attestationProviders -SignInName $c.Account.Id
-  ```
-
-  次のような結果が表示されます。
-
-  ```
-  RoleAssignmentId   :/subscriptions/subscriptionId/providers/Microsoft.Authorization/roleAssignments/roleAssignmentId
-  
-  Scope              : /subscriptions/subscriptionId
-  
-  DisplayName        : displayName
-  
-  SignInName         : signInName
-  
-  RoleDefinitionName : Reader
-  
-  RoleDefinitionId   : roleDefinitionId
-  
-  ObjectId           : objectid
-  
-  ObjectType         : User
-  
-  CanDelegate        : False
- 
-  ```
-
-c. 一覧に適切なロールの割り当てが見つからない場合は、[ここ](../role-based-access-control/role-assignments-powershell.md)の手順に従ってください。
+c. 適切なロールの割り当てが見つからない場合は、[こちら](../role-based-access-control/role-assignments-powershell.md)の手順に従います
 
 ## <a name="2-http--400-errors"></a>2.HTTP - 400 エラー
 
@@ -280,7 +250,7 @@ PowerShell ギャラリーの操作を続行するには、Install-Module コマ
 ユーザーに適切なロールが割り当てられています。 しかし、PowerShell を使用して構成証明ポリシーを管理するときに、承認の問題に直面します。
 
 ### <a name="error"></a>エラー
-オブジェクト ID が &lt;object Id&gt; のクライアントに、スコープ ‘subcriptions/&lt;subscriptionId&gt;resourcegroups/secure_enclave_poc/providers/Microsoft.Authorization/roleassignments/&lt;role assignmentId&gt;’ に対して Microsoft.Authorization/roleassignments/write アクションを実行するための許可がないか、スコープが無効です。 アクセス許可が最近付与された場合は、資格情報を更新してください。
+オブジェクト ID が &lt;object Id&gt; のクライアントが、スコープ 'subcriptions/&lt;subscriptionId&gt;resourcegroups/secure_enclave_poc/providers/Microsoft.Authorization/roleassignments/&lt;role assignmentId&gt;' に対して Microsoft.Authorization/roleassignments/write アクションを実行する認可を得ていないか、スコープが無効です。 アクセス許可が最近付与された場合は、資格情報を更新してください。
 
 ### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 

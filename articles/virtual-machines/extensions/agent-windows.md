@@ -8,12 +8,13 @@ ms.author: amjads
 author: amjads1
 ms.collection: windows
 ms.date: 07/20/2019
-ms.openlocfilehash: bd845c5ef5a06e3a0bca1cebe54ded2e49355617
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8e5118b25238a9483eba3e74a65fe97186d32168
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309817"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236848"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 Microsoft Azure 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントは、Azure 仮想マシン拡張機能の有効化と実行において主要な役割を果たします。 VM 拡張機能は、VM のデプロイ後の構成 (ソフトウェアのインストールと構成など) を有効にします。 VM 拡張機能は、VM の管理者パスワードのリセットなどの回復機能も有効にします。 Azure VM エージェントがないと、VM 拡張機能を実行できません。
@@ -69,7 +70,7 @@ $vm | Update-AzVM
 
 - VM が IP アドレス168.63.129.16 にアクセスできることを確認します。 詳しくは、「[IP アドレス 168.63.129.16 とは](../../virtual-network/what-is-ip-address-168-63-129-16.md)」を参照してください。
 
-- ゲスト VM 内で DHCP が有効になっていることを確認します。 これは、IaaS VM エージェントと拡張機能が機能するためのホストまたはファブリック アドレスを DHCP から取得するために必要です。 静的プライベート IP が必要な場合は、Azure portal または PowerShell を使用してそれを構成し、VM 内の DHCP オプションが有効になっていることを確認する必要があります。 PowerShell を使用した静的 IP アドレスの設定については、[こちら](../../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)をご覧ください。
+- ゲスト VM 内で DHCP が有効になっていることを確認します。 これは、IaaS VM エージェントと拡張機能が機能するためのホストまたはファブリック アドレスを DHCP から取得するために必要です。 静的プライベート IP が必要な場合は、Azure portal または PowerShell を使用してそれを構成し、VM 内の DHCP オプションが有効になっていることを確認する必要があります。 PowerShell を使用した静的 IP アドレスの設定については、[こちら](../../virtual-network/ip-services/virtual-networks-static-private-ip-arm-ps.md)をご覧ください。
 
 
 ## <a name="detect-the-vm-agent"></a>VM エージェントの検出

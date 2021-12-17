@@ -12,18 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 09/29/2021
 ms.author: b-juche
-ms.openlocfilehash: a17e6cc0479cf8ff2306736994a369d9e44dfdda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc034689e2c3cd6846986680225ca7ca21ac41c8
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745946"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407534"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files のメトリック
 
 Azure NetApp Files では、割り当て済みストレージ、実際のストレージ使用量、ボリュームの IOPS、および待機時間に関するメトリックが提供されます。 これらのメトリックを分析することで、NetApp アカウントの使用パターンとボリュームのパフォーマンスの理解を深めることができます。  
+
+容量プールまたはボリュームのメトリックを見つけるには、 **[容量プール]** または **[ボリューム]** を選択します。  次に、 **[メトリック]** をクリックして、使用可能なメトリックを表示します。 
+
+[ ![[メトリック] のプルダウンに移動する方法を示すスナップショット。](../media/azure-netapp-files/metrics-navigate-volume.png) ](../media/azure-netapp-files/metrics-navigate-volume.png#lightbox)
 
 ## <a name="usage-metrics-for-capacity-pools"></a><a name="capacity_pools"></a>容量プールの使用状況メトリック
 
@@ -56,6 +60,9 @@ Azure NetApp Files では、割り当て済みストレージ、実際のスト�
 
 ## <a name="performance-metrics-for-volumes"></a>ボリュームのパフォーマンス メトリック
 
+> [!NOTE] 
+> *読み取りの平均待機時間* および *書き込みの平均待機時間* のボリューム待機時間は、ストレージ サービスの内部で測定され、ネットワーク待機時間を含みません。
+
 - "*読み取りの平均待機時間*"   
     ボリュームからの読み取りの平均時間 (ミリ秒) です。
 - "*書き込みの平均待機時間*"   
@@ -64,24 +71,6 @@ Azure NetApp Files では、割り当て済みストレージ、実際のスト�
     ボリュームへの 1 秒あたりの読み取り数です。
 - "*書き込み IOPS*"   
     ボリュームへの 1 秒あたりの書き込み数です。
-<!-- These two metrics are not yet available, until ~ 2020.09
-- *Read MiB/s*   
-    Read throughput in bytes per second.
-- *Write MiB/s*   
-    Write throughput in bytes per second.
---> 
-<!-- ANF-4128; 2020.07
-- *Pool Provisioned Throughput*   
-    The total throughput a capacity pool can provide to its volumes based on "Pool Provisioned Size" and "Service Level".
-- *Pool Allocated to Volume Throughput*   
-    The total throughput allocated to volumes in a given capacity pool (that is, the total of the volumes' allocated throughput in the capacity pool).
--->
-
-<!-- ANF-6443; 2020.11
-- *Pool Consumed Throughput*    
-    The total throughput being consumed by volumes in a given capacity pool.
--->
-
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>ボリューム レプリケーション メトリック
 
@@ -94,9 +83,6 @@ Azure NetApp Files では、割り当て済みストレージ、実際のスト�
 
 - "*Is volume replication transferring*" (ボリューム レプリケーションは転送中です)    
     ボリューム レプリケーションの状態が "転送中" かどうか。 
- 
-- "*Volume replication lag time*" (ボリューム レプリケーションのラグ タイム)   
-    ミラーのデータがソースより遅れている時間 (秒単位)。 
 
 - "*Volume replication last transfer duration*" (ボリューム レプリケーションの最後の転送期間)   
     最後の転送が完了するまでにかかった時間 (秒単位)。 
@@ -110,8 +96,48 @@ Azure NetApp Files では、割り当て済みストレージ、実際のスト�
 - "*Volume replication total transfer*" (ボリューム レプリケーションの転送の合計)   
     リレーションシップに対して転送された累積バイト数。 
 
+## <a name="throughput-metrics-for-capacity-pools"></a>容量プールのスループット メトリック   
+
+* *プールの割り当てスループット*    
+    プールに属するすべてのボリュームのスループットの合計。
+    
+* *プールに対してプロビジョニングされたスループット*   
+    このプールのプロビジョニングされたスループット。
+
+
+## <a name="throughput-metrics-for-volumes"></a>ボリュームのスループット メトリック   
+
+* *読み取りスループット*   
+    1 秒あたりの読み取りスループット (バイト単位)。
+    
+* *スループットの合計*   
+    1 秒あたりのすべてのスループットの合計 (バイト単位)。
+
+* *書き込みスループット*    
+    1 秒あたりの書き込みスループット (バイト単位)。
+
+* *その他のスループット*   
+    1 秒あたりのバイト単位のその他のスループット (つまり、読み取りや書き込みではない)。
+
+## <a name="volume-backup-metrics"></a>ボリュームのバックアップ メトリック  
+
+* *ボリューム バックアップは有効か*   
+    ボリュームのバックアップが有効になっているかどうかを示します。 `1` が有効です。 `0` は無効です。
+
+* *ボリューム バックアップ操作が完了しているか*   
+    前回のボリューム バックアップまたは復元操作が正常に完了したかどうかを示します。  `1` は成功しました。 `0` は失敗しました。
+
+* *ボリューム バックアップが中断されているか*   
+    ボリュームのバックアップ ポリシーが中断されているかどうかを示します。  `1` は中断されていません。 `0` は中断されました。
+
+* *ボリューム バックアップのバイト数*   
+    このボリュームに対してバックアップされた合計バイト数。
+
+* *ボリューム バックアップの最後に転送されたバイト数*   
+    最後のバックアップまたは復元操作のために転送された合計バイト数。  
+
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure NetApp Files のストレージ階層を理解する](azure-netapp-files-understand-storage-hierarchy.md)
-* [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+* [容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)
 * [Azure NetApp Files のボリュームを作成する](azure-netapp-files-create-volumes.md)

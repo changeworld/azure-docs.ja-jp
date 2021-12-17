@@ -10,12 +10,12 @@ metadata:
   author: tfitzmac
   ms.author: tomfitz
   ms.date: 01/02/2020
-  ms.openlocfilehash: ba787d1ec1cd3283ab76d631c6ca79281b9cf599
-  ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+  ms.openlocfilehash: 33bf7b4bb9924219adea2702032fdc324a0636f7
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/01/2020
-  ms.locfileid: "96433911"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111960332"
 landingContent:
 - title: Managed Applications について
   linkLists:
@@ -44,7 +44,7 @@ landingContent:
     - text: 定義ファイルの作成
       url: publish-service-catalog-app.md
     - text: マーケットプレース アプリケーションの発行
-      url: ../../marketplace/create-new-azure-apps-offer.md
+      url: ../../marketplace/azure-app-offer-setup.md
     - text: カスタム プロバイダーを使用してマネージド アプリケーションを作成する
       url: tutorial-create-managed-app-with-custom-provider.md
   - linkListType: how-to-guide

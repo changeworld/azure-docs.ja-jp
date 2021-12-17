@@ -10,12 +10,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: justinha
-ms.openlocfilehash: f877a631fd3c89d74b9e3b47cf205bbcf173ebc0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 29df4e71d0df5a2770474294789721dfd3b28bc8
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453412"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285720"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>Azure AD PowerShell を使用して、Azure AD から Azure Active Directory Domain Services への範囲指定された同期を構成する
 

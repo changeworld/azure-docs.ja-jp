@@ -8,16 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 72aa8e5e3284e0ee7fbe63e0fb617b9eba03292e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ceb6950cb5ed581d2efea9a375fee0bf4008952
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100416848"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597855"
 ---
 # <a name="iot-central-solution-builder-guide"></a>IoT Central ソリューション ビルダーのガイド
-
-*この記事は、ソリューション ビルダーを対象としています。*
 
 IoT Central アプリケーションを使用すると、数百万台ものデバイスを、そのライフ サイクル全体にわたって監視および管理することができます。 このガイドは、IoT Central を使用して統合ソリューションを構築するソリューション ビルダーを対象としています。 IoT Central アプリケーションを使用すると、デバイスの管理、デバイス テレメトリの分析、および他のバックエンド サービスとの統合を行うことができます。
 
@@ -32,17 +30,16 @@ IoT Central アプリケーションを使用すると、数百万台ものデ�
 IoT Central アプリケーションでは、オペレーターがアプリケーションを表示および操作するために使用する 1 つ以上のダッシュボードを利用できます。 ソリューション ビルダーは、既定のダッシュボードをカスタマイズしたり、特殊なダッシュボードを作成したりできます。
 
 - カスタマイズされたダッシュボードの例については、「[特定業界に焦点を合わせたテンプレート](concepts-app-templates.md#industry-focused-templates)」を参照してください。
-- ダッシュボードの詳細については、「[複数のダッシュボードの作成と管理](howto-create-personal-dashboards.md)」と「[アプリケーション ダッシュボードの構成](howto-add-tiles-to-your-dashboard.md)」を参照してください。
+- ダッシュボードの詳細については、「[複数のダッシュボードの作成と管理](howto-manage-dashboards.md)」と「[アプリケーション ダッシュボードの構成](howto-manage-dashboards.md)」を参照してください。
 
-デバイスが IoT Central に接続されると、デバイスは、そのデバイスの種類用のデバイス テンプレートに関連付けられます。 デバイス テンプレートには、オペレーターが個々のデバイスを管理するために使用するカスタマイズ可能なビューがあります。 ソリューション開発者は、デバイスの種類で使用可能なビューを作成およびカスタマイズできます。 詳細については、「[ビューの追加](howto-set-up-template.md#add-views)」を参照してください。
+デバイスが IoT Central に接続されると、デバイスは、そのデバイスの種類用のデバイス テンプレートに関連付けられます。 デバイス テンプレートには、オペレーターが個々のデバイスを管理するために使用するカスタマイズ可能なビューがあります。 ソリューション開発者は、デバイスの種類で使用可能なビューを作成およびカスタマイズできます。 詳細については、「[ビューの追加](howto-set-up-template.md#views)」を参照してください。
 
 ## <a name="use-built-in-rules-and-analytics"></a>組み込みのルールと分析を使用する
 
 ソリューション開発者は、IoT Central アプリケーションに、カスタマイズ可能なアクションを実行するルールを追加できます。 ルールにより、デバイスからのデータに基づいて条件が評価され、アクションを実行するタイミングが決定されます。 詳細については、次を参照してください。
 
 - [チュートリアル:Azure IoT Central アプリケーションで規則を作成して通知を設定する](tutorial-create-telemetry-rules.md)
-- [Azure IoT Central でルールに対する Webhook アクションを作成する](howto-create-webhooks.md)
-- [1 つまたは複数のルールから実行する複数のアクションをグループ化する](howto-use-action-groups.md)
+- [ルールを構成する](howto-configure-rules.md)
 
 IoT Central には、オペレーターが、接続されているデバイスからのデータを分析するために使用できる組み込みの分析機能があります。 詳細については、「[分析を使用してデバイス データを分析する方法](howto-create-analytics.md)」を参照してください。
 
@@ -51,10 +48,18 @@ IoT Central には、オペレーターが、接続されているデバイス�
 ソリューション ビルダーは、IoT Central のデータのエクスポートとルールの機能を使用して他のサービスと統合できます。 詳細については、以下をご覧ください。
 
 - [データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする](howto-export-data.md)
+- [IoT Central に対するデータの変換](howto-transform-data.md)
 - [ワークフローを使用して Azure IoT Central アプリケーションを他のクラウド サービスと統合する](howto-configure-rules-advanced.md)
 - [Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する](howto-create-custom-rules.md)
 - [Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する](howto-create-custom-analytics.md)
-- [Azure IoT Central データを Power BI ダッシュボードに視覚化する](howto-connect-powerbi.md)
+
+## <a name="apis"></a>API
+
+IoT Central API を使用すると、IoT ソリューション内の他のサービスとの深い統合を構築できます。 使用可能な API は、*データ プレーン API*  または *コントロール プレーン API* として分類されます。
+
+データ プレーン API を使用して、IoT Central アプリケーションのエンティティと機能にアクセスします。 たとえば、デバイス、デバイス テンプレート、ユーザー、ロールの管理などです。 IoT Central REST API の操作は *データ プレーン* 操作です。 詳細については、[「ユーザーとロールを 管理するためにIoT Central REST APIを使用する方法」](howto-manage-users-roles-with-rest-api.md)を参照してください。
+
+*コントロール プレーン* は、Azure サブスクリプション内の IoT Central 関連リソースを管理するために使用します。 コントロール プレーン操作には、Azure CLI テンプレートと Resource Manager テンプレートを使用できます。 たとえば Azure CLI を使ってIoT Central アプリケーションを作成することができます。 詳細については、[「Azure CLI から IoT Central を管理する」](howto-manage-iot-central-from-cli.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

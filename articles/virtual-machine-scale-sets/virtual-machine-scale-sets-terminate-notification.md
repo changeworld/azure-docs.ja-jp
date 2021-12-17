@@ -8,15 +8,18 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: terminate-notification
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: ed042afbcbb67a88e304c92302b14af56b26c8e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 807ae8405ac8a4726a37329e5ef9ddda58714c3a
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933408"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373299"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 仮想マシン スケール セット インスタンスの通知を終了する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: フレキシブル スケール セット
+
 スケール セット インスタンスでは、インスタンスの終了通知を受信し、定義済みの遅延タイムアウトを終了操作に設定することをオプトインできます。 終了通知は、Azure Metadata Service の [Scheduled Events](../virtual-machines/windows/scheduled-events.md) を介して送信されます。これにより、再起動や再デプロイなどの影響がある操作の通知と遅延が行われます。 このソリューションでは、別のイベント (Terminate) が Scheduled Events の一覧に追加されます。terminate イベントの関連する遅延は、スケール セット モデルの構成のユーザーによって指定された遅延の制限によって変わります。
 
 この機能に登録されると、スケール セット インスタンスは、インスタンスの削除前に指定されたタイムアウトが期限切れになるまで待つ必要がなくなります。 終了通知を受け取った後、インスタンスでは、終了のタイムアウトが期限切れになる前にいつでも削除することを選択できます。
@@ -181,7 +184,7 @@ POST 要求の本文には、次のような json が含まれます。 要求�
 [Python](../virtual-machines/linux/scheduled-events.md#python-sample) を使用してイベントに対してクエリを実行し応答するサンプル スクリプトを参照することもできます。
 
 ## <a name="tips-and-best-practices"></a>ヒントとベスト プラクティス
--   "削除" 操作に対して通知を終了する - スケール セットで *scheduledEventsProfile* が有効な場合は、すべての削除操作 (手動の削除または自動スケーリングによって開始されたスケールイン) で Terminate イベントが生成されます。 再起動、再イメージ化、再デプロイ、終了/割り当て解除などの他の操作では、Terminate イベントは生成されません。 優先順位の低い VM に対して終了通知を有効にすることはできません。
+-   "削除" 操作に対して通知を終了する - スケール セットで *scheduledEventsProfile* が有効な場合は、すべての削除操作 (手動の削除または自動スケーリングによって開始されたスケールイン) で Terminate イベントが生成されます。 再起動、再イメージ化、再デプロイ、終了/割り当て解除などの他の操作では、Terminate イベントは生成されません。 
 -   タイムアウトを待機する必要なし - イベントが受信された後、イベントの *NotBefore* 時間が期限切れになる前であればいつでも終了操作を開始できます。
 -   タイムアウト時の削除は必須 - イベントの生成後にタイムアウト値を延長する機能は提供されません。 タイムアウトが期限切れになると、保留中の terminate イベントが処理され、VM が削除されます。
 -   変更可能なタイムアウト値 - スケール セット モデルの *notBeforeTimeout* プロパティを変更し、VM インスタンスを最新のモデルに更新することで、インスタンスが削除される前にいつでもタイムアウト値を変更できます。

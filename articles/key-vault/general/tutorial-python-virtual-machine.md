@@ -1,7 +1,6 @@
 ---
 title: チュートリアル - Python で仮想マシンを使用して Azure Key Vault を使用する | Microsoft Docs
 description: このチュートリアルでは、キー コンテナーからシークレットを読み取るように仮想マシン Python アプリケーションを構成します。
-services: key-vault
 author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 25182105db831724565c6bf3dbbbb79832b677f7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 463474d13f0df50aebd775e119918e0db7ad65c2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772062"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597317"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>チュートリアル:Python で仮想マシンを使用して Azure Key Vault を使用する
 
@@ -109,7 +108,7 @@ az keyvault set-policy --name "<your-unique-keyvault-name>" --object-id "<system
 仮想マシンにサインインするには、[Linux が実行されている Azure 仮想マシンへの接続とサインイン](../../virtual-machines/linux/login-using-aad.md)に関するページまたは [Windows が実行されている Azure 仮想マシンへの接続とサインイン](../../virtual-machines/windows/connect-logon.md)に関するページの手順のようにします。
 
 
-Linux VM にログインするには、「[仮想マシンの作成](#create-a-virtual-machine)」ステップで得られた "<publicIpAddress>" を指定して ssh コマンドを使用します。
+Linux VM にログインするには、「[仮想マシンの作成](#create-a-virtual-machine)」ステップで指定した \<publicIpAddress\> で ssh コマンドを使用します。
 
 ```terminal
 ssh azureuser@<PublicIpAddress>
@@ -129,7 +128,7 @@ pip3 install azure.identity
 
 ## <a name="create-and-edit-the-sample-python-script"></a>サンプルの Python スクリプトを作成して編集する
 
-仮想マシンで、**sample.py** という Python ファイルを作成します。 ファイルを編集して次のコードを追加します。"<your-unique-keyvault-name>" はお使いのキー コンテナーの名前に置き換えます。
+仮想マシンで、**sample.py** という Python ファイルを作成します。 ファイルを編集して次のコードを追加します。\<your-unique-keyvault-name\> はお使いのキー コンテナーの名前に置き換えます。
 
 ```python
 from azure.keyvault.secrets import SecretClient

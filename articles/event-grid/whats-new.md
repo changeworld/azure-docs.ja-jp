@@ -1,26 +1,38 @@
 ---
-title: 新機能 リリース ノート - Azure Event Grid
+title: 新機能 Azure Event Grid
 description: 最新のリリース ノート、既知の問題、バグの修正、非推奨の機能、予定されている変更点など、Azure Event Grid の新着情報について説明します。
 ms.topic: overview
-ms.date: 07/23/2020
-ms.openlocfilehash: da0b26e4f163f428e6955a37636ceb19bb34abc5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/27/2021
+ms.openlocfilehash: f516a9896f98c96e6f9cd2c651d9edac86474d14
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107535"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122068204"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure Event Grid の新機能
 
 >URL `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Event+Grid%22&locale=en-us` をコピーして、お使いの ![RSS フィード リーダー アイコン](./media/whats-new/feed-icon-16x16.png) フィード リーダーに貼り付け、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取るようにしてください。
 
-Azure Event Grid は随時改善されています。 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
+Azure Event Grid は随時改善されています。 最近の開発について常に最新の情報を提供するため、この記事では、リリースで追加または更新された機能に関する情報を提供します。 
 
-- 最新のリリース
-- 既知の問題
-- バグの修正
-- 非推奨の機能
-- 変更の計画
+## <a name="610-preview-2020-10"></a>6.1.0-preview (2020-10)
+- [システム トピックのマネージド ID](enable-identity-system-topics.md)
+- [カスタム配信プロパティ](delivery-properties.md)
+- [ストレージ キュー - メッセージの Time to Live (TTL)](delivery-properties.md#configure-time-to-live-on-outgoing-events-to-azure-storage-queues)
+- [高度なフィルター処理の機能強化](event-filtering.md#advanced-filtering)
+    - 受信イベントの配列データに対するフィルター処理のサポート
+    - CloudEvents 拡張機能のコンテキスト属性に対するフィルター処理の許可
+    - 新しい演算子
+        - StringNotContains
+        - StringNotBeginsWith
+        - StringNotEndsWith
+        - NumberInRange
+        - NumberNotInRange
+        - IsNullOrUndefined
+        - IsNotNull
+- [ Event Grid スキーマから CloudEvents 1.0 スキーマへの変換の許可](cloudevents-schema.md#configure-event-grid-for-cloudevents)
+        
 
 ## <a name="600-2020-06"></a>6.0.0 (2020-06)
 - 一般提供 (GA) の新しいサービス API バージョン 2020-06-01 に対するサポートが追加されました。
@@ -73,14 +85,14 @@ Azure Event Grid は随時改善されています。 常に最新の開発情�
 - このリリースは、`2019-06-01` API バージョンに対応します。
 - 次の新機能に対するサポートが追加されました。
     * [ドメイン](event-domains.md)
-    * リソース リスト操作に対する改ページ位置の自動修正と検索フィルター。 例については、「[トピック - サブスクリプション別の一覧表示](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription)」を参照してください。
+    * リソース リスト操作に対する改ページ位置の自動修正と検索フィルター。 例については、「[トピック - サブスクリプション別の一覧表示](/rest/api/eventgrid/version2021-06-01-preview/partner-namespaces/list-by-subscription)」を参照してください。
     * [宛先としての Service Bus キュー](handler-service-bus.md)
     * [高度なフィルター処理](event-filtering.md#advanced-filtering)
 
 ## <a name="410-preview-2019-03"></a>4.1.0-preview (2019-03)
 - このリリースは 2019-02-01-preview API バージョンに対応します。
 - 次の新機能に対するサポートが追加されました。
-    * リソース リスト操作に対する改ページ位置の自動修正と検索フィルター。 例については、「[トピック - サブスクリプション別の一覧表示](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription)」を参照してください。
+    * リソース リスト操作に対する改ページ位置の自動修正と検索フィルター。 例については、「[トピック - サブスクリプション別の一覧表示](/rest/api/eventgrid/version2021-06-01-preview/partner-namespaces/list-by-subscription)」を参照してください。
     * [ドメイン トピックの手動での作成/削除](how-to-event-domains.md)
     * [宛先としての Service Bus キュー](handler-service-bus.md)
 

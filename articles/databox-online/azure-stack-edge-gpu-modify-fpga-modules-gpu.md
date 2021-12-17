@@ -8,12 +8,13 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 1276a242efb1917a0c4a24aa73c3e0d11f81e158
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ab3cb4360b9bd0c65ac8567109890fc364411367
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559164"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073056"
 ---
 # <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro FPGA デバイスの既存の IoT Edge モジュールを Azure Stack Edge Pro GPU デバイスで実行する
 
@@ -207,7 +208,7 @@ GPU の場合は、次の最小構成で示すように、デバイスのバイ�
 ```
 メモリと CPU の指定は必須ではありませんが、一般的には推奨されます。 `requests` を指定しないと、limits で設定されている値が最低限必要な値として使用されます。 
 
-モジュールでの共有メモリの使用にも、別の方法が必要です。 たとえば、「[Live Video Analytics を Azure Stack Edge にデプロイする](../media-services/live-video-analytics-edge/deploy-azure-stack-edge-how-to.md#deploy-live-video-analytics-edge-module-using-azure-portal)」で説明されているように、Live Video Analytics と推論ソリューションの間の共有メモリ アクセスには、ホスト IPC モードを使用できます。
+モジュールでの共有メモリの使用にも、別の方法が必要です。 たとえば、「[Live Video Analytics を Azure Stack Edge にデプロイする](../azure-video-analyzer/video-analyzer-docs/overview.md)」で説明されているように、Live Video Analytics と推論ソリューションの間の共有メモリ アクセスには、ホスト IPC モードを使用できます。
 
 
 ## <a name="web-proxy"></a>Web プロキシ 

@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 02ced43f8c3fc7c83359b78362e8ad0feeab3070
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c1ee4676942462e6e92ddc6c33b1044ea24483f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "72168414"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130050546"
 ---
 >[!NOTE]
->既定のポリシーを使用する場合、Azure は IPsec トンネルの設定中に、イニシエーターとレスポンダーの両方として動作できます。 レスポンダーのみとしての Azure はサポートされていません。
+>既定のポリシーを使用する場合、Azure は IPsec トンネルの設定中に、イニシエーターとレスポンダーの両方として動作できます。
 >
 
 ### <a name="initiator"></a>Initiator

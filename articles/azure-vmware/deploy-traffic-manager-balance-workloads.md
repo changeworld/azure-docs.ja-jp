@@ -3,12 +3,12 @@ title: Azure VMware Solution ワークロードを分散するために Traffic 
 description: Traffic Manager を Azure VMware Solution と統合して、異なるリージョンにある複数のエンドポイント間でアプリケーションのワークロードを分散する方法について説明します。
 ms.topic: how-to
 ms.date: 02/08/2021
-ms.openlocfilehash: 46570c5a61fc0a641d83126fd0f8ef35b3dc42cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac8f402eadcced4e8592a68f13abd6d2693b8b0c
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988599"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602023"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>Azure VMware Solution ワークロードを分散するために Traffic Manager をデプロイする
 
@@ -18,7 +18,7 @@ ms.locfileid: "99988599"
 
 図は、Azure Traffic Manager で、リージョン エンドポイント間の DNS レベルでアプリケーションの負荷分散を提供する方法を示しています。 ゲートウェイには、バックエンド プール メンバーが IIS サーバーとして構成されており、Azure VMware Solution 外部エンドポイントとして参照されています。 2 つのプライベート クラウド リージョン間の仮想ネットワーク経由の接続では、ExpressRoute ゲートウェイが使用されます。   
 
-:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="Traffic Manager と Azure VMware Solution との統合のアーキテクチャの図" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
+:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="Traffic Manager と Azure VMware Solution の統合の図。" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
 
 開始する前に、最初に[前提条件](#prerequisites)を確認してください。その後、以下を行うための手順について説明します。
 
@@ -56,7 +56,7 @@ ms.locfileid: "99988599"
 
    アプリケーション ゲートウェイのさまざまな情報を示すウィンドウが開きます。 
 
-   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="選択されたアプリケーション ゲートウェイの詳細を示す [アプリケーション ゲートウェイ] ページのスクリーンショット。" lightbox="media/traffic-manager/backend-pool-config.png":::
+   :::image type="content" source="media/traffic-manager/backend-pool-configuration.png" alt-text="選択されたアプリケーション ゲートウェイの詳細を示す [アプリケーション ゲートウェイ] ページのスクリーンショット。" lightbox="media/traffic-manager/backend-pool-configuration.png":::
 
 1. いずれかのバックエンド プールの構成を確認するには、 **[バックエンド プール]** を選択します。 IP アドレスが 172.29.1.10 の Web サーバーとして構成されている 1 つの VM バックエンド プール メンバーが表示されます。
  
@@ -70,7 +70,7 @@ ms.locfileid: "99988599"
 
 1. 構成されているセグメントを表示するには、 **[セグメント]** を選択します。  Contoso-T01 ゲートウェイ (第 1 層のフレキシブル ルーター) に接続されている Contoso-segment1 が表示されます。
 
-   :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="NSX-T Manager のセグメント プロファイルを示すスクリーンショット。" lightbox="media/traffic-manager/nsx-t-segment-avs.png":::    
+   :::image type="content" source="media/traffic-manager/nsx-t-segment-azure-vmware-solution.png" alt-text="NSX-T Manager のセグメント プロファイルを示すスクリーンショット。" lightbox="media/traffic-manager/nsx-t-segment-azure-vmware-solution.png":::    
 
 1. **[第 1 層ゲートウェイ]** を選択して、リンクされたセグメントの数を含む第 1 層ゲートウェイの一覧を表示します。 
 
@@ -96,7 +96,7 @@ ms.locfileid: "99988599"
 3. 以下の情報を入力した後、 **[作成]** を選びます。
 
    - [プロファイル名]
-   - ルーティング方法 ([重み付け](../traffic-manager/traffic-manager-routing-methods.md)を使用
+   - ルーティング方法 ([重み付け](../traffic-manager/traffic-manager-routing-methods.md) を使用)
    - サブスクリプション
    - Resource group
 
@@ -132,7 +132,7 @@ ms.locfileid: "99988599"
 
 Azure Traffic Manager と Azure VMware ソリューションの統合について理解したので、次のことについて確認する必要がある可能性があります。
 
-- [Azure VMware Solution で Azure Application Gateway を使用する](protect-azure-vmware-solution-with-application-gateway.md)。
-- [Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)。
-- [Azure の負荷分散サービスを組み合わせる](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-- [Traffic Manager のパフォーマンスを測定する](../traffic-manager/traffic-manager-performance-considerations.md)。
+- [Azure VMware Solution で Azure Application Gateway を使用する](protect-azure-vmware-solution-with-application-gateway.md)
+- [Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)
+- [Azure の負荷分散サービスを組み合わせる](../traffic-manager/traffic-manager-load-balancing-azure.md)
+- [Traffic Manager のパフォーマンスを測定する](../traffic-manager/traffic-manager-performance-considerations.md)

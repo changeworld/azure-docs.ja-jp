@@ -12,9 +12,9 @@
       href: ./samples/index.md
 - name: 概念
   items:
-    - name: Azure の委任されたリソース管理
-      displayName: 'delegation, projection'
-      href: ./concepts/azure-delegated-resource-management.md
+    - name: アーキテクチャ
+      displayName: 'delegation, projection, resource, registration'
+      href: ./concepts/architecture.md
     - name: テナント間の管理エクスペリエンス
       displayName: 'scenarios, supported, enhanced, services, limitations, current'
       href: ./concepts/cross-tenant-management-experience.md
@@ -42,7 +42,7 @@
           displayName: 'mfa, authentication, secure, group'
           href: ./concepts/recommended-security-practices.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/lighthouse-security-baseline?toc=/azure/lighthouse/toc.json
 - name: 操作方法ガイド
   items:
     - name: 顧客のアクション
@@ -50,51 +50,59 @@
         - name: サービス プロバイダーを表示し、管理する
           displayName: 'customer, update, visibility, control'
           href: ./how-to/view-manage-service-providers.md
-        - name: サービス プロバイダーのアクティビティを表示する
+        - name: サービス プロバイダーのアクティビティを監視する
           displayName: 'monitor, log, customer, visibility, transparency, control'
           href: ./how-to/view-service-provider-activity.md
-    - name: Azure Lighthouse への顧客のオンボード
-      displayName: resource management
-      href: ./how-to/onboard-customer.md
-    - name: Azure Marketplace へのマネージド サービス オファーの公開
-      displayName: 'managed services offer, azure marketplace, publish, marketplace'
-      href: ./how-to/publish-managed-services-offers.md
+    - name: オンボードと委任の管理
+      items:
+        - name: 顧客をオンボードする
+          displayName: 'ARM, template, delegation, authorization, resource management'
+          href: ./how-to/onboard-customer.md
+        - name: Azure Marketplace へのマネージド サービス オファーの公開
+          displayName: 'managed services, azure marketplace, publish, marketplace'
+          href: ./how-to/publish-managed-services-offers.md
+        - name: 適格な認可を作成する
+          displayName: 'jit, pim, elevate, elevation, just-in-time'
+          href: ./how-to/create-eligible-authorizations.md
+        - name: 委任を更新する
+          displayName: upgrade
+          href: ./how-to/update-delegation.md
+        - name: 委任へのアクセスを削除する
+          displayName: 'delete, undelegate'
+          href: ./how-to/remove-delegation.md
+        - name: 委任変更の監視
+          displayName: activity log
+          href: ./how-to/monitor-delegation-changes.md
+        - name: 管理グループのサブスクリプションをオンボードする
+          displayName: 'mg, policy, logic app'
+          href: ./how-to/onboard-management-group.md
     - name: 顧客を表示し、管理する
       displayName: my customers
       href: ./how-to/view-manage-customers.md
     - name: パートナー ID をリンクする
       displayName: 'partner earned credit, pec, mpn'
       href: ./how-to/partner-earned-credit.md
-    - name: 委任を更新する
-      displayName: upgrade
-      href: ./how-to/update-delegation.md
-    - name: 委任へのアクセスを削除する
-      displayName: 'delete, undelegate'
-      href: ./how-to/remove-delegation.md
-    - name: Azure Arc の統合
-      displayName: 'server, kubernetes, hybrid, infrastructure'
-      href: ./how-to/manage-hybrid-infrastructure-arc.md
-    - name: Azure Migrate の統合
-      displayName: 'migration, project, on-prem'
-      href: ./how-to/migration-at-scale.md
-    - name: Azure Monitor の統合
+    - name: Azure サービスの統合
       items:
-        - name: Azure Monitor ログの大規模な使用
+        - name: Azure Arc の統合
+          displayName: 'server, kubernetes, hybrid, infrastructure'
+          href: ./how-to/manage-hybrid-infrastructure-arc.md
+        - name: Azure Migrate の統合
+          displayName: 'migration, project, on-prem'
+          href: ./how-to/migration-at-scale.md
+        - name: Azure Monitor の統合
           displayName: 'log, analytics, analyze, activity'
           href: ./how-to/monitor-at-scale.md
-        - name: 委任変更の監視
-          displayName: activity log
-          href: ./how-to/monitor-delegation-changes.md
-    - name: Azure Policy の統合
-      items:
-        - name: 大規模なポリシーのデプロイ
-          displayName: storage
-          href: ./how-to/policy-at-scale.md
-        - name: 修復できるポリシーをデプロイする
-          displayName: 'deployIfNotExists, modify, managed identities, managed identity'
-          href: ./how-to/deploy-policy-remediation.md
-    - name: Azure Sentinel の統合
-      href: ./how-to/manage-sentinel-workspaces.md
+        - name: Azure Policy の統合
+          items:
+            - name: 大規模なポリシーのデプロイ
+              displayName: storage
+              href: ./how-to/policy-at-scale.md
+            - name: 修復できるポリシーをデプロイする
+              displayName: 'deployIfNotExists, modify, managed identities, managed identity'
+              href: ./how-to/deploy-policy-remediation.md
+        - name: Microsoft Sentinel の統合
+          href: ./how-to/manage-sentinel-workspaces.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -110,7 +118,7 @@
     - name: REST
       href: /rest/api/managedservices/
     - name: OpenAPI
-      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2018-06-01-preview'
+      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-09-01'
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./samples/policy-reference.md
@@ -122,11 +130,11 @@
   items:
     - name: Azure Lighthouse 用の Microsoft Q&A
       href: /answers/topics/azure-lighthouse.html
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure の更新情報
+      href: 'https://azure.microsoft.com/updates/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all'
     - name: 製品フィードバック
-      href: 'https://feedback.azure.com/forums/922753'
+      href: 'https://feedback.azure.com/d365community/forum/cd8dfdcb-f824-ec11-b6e6-000d3a4f0da0'

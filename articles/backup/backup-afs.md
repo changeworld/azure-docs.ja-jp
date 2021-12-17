@@ -2,13 +2,16 @@
 title: Azure portal 内での Azure ファイル共有のバックアップ
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure portal を使用してバックアップする方法について説明します
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: e7f44a71388468be432bdfcb0eb2bf67c0fcc8ef
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 11/03/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 46068722385e9cf89c5c85d37a72a0528479ab8a
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519937"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849732"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 
@@ -25,51 +28,42 @@ ms.locfileid: "107519937"
 
 * Azure ファイル共有スナップショットベースのバックアップ ソリューションについて[学習](azure-file-share-backup-overview.md)する。
 * [サポートされているストレージ アカウントの種類](azure-file-share-support-matrix.md)のいずれかにファイル共有が存在することを確認しておいてください。
-* ファイル共有をホストするストレージ アカウントと同じリージョンの [Recovery Services コンテナー](#create-a-recovery-services-vault)を特定または作成する。
+* ファイル共有をホストするストレージ アカウントと同じリージョンおよびサブスクリプションの [Recovery Services コンテナー](#create-a-recovery-services-vault)を特定または作成する。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="configure-backup-from-the-recovery-services-vault"></a>Recovery Services コンテナーからバックアップを構成する
 
-次の手順では、Recovery Services コンテナー ペインから複数のファイル共有のバックアップを構成する方法について説明します。
+[Recovery Services コンテナー] ペインから複数のファイル共有のバックアップを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) で、ファイル共有のバックアップを構成するために使用する Recovery Services コンテナーを開きます。
+1. [Azure portal](https://portal.azure.com/) で、 **[バックアップ センター]** に移動し、 **[バックアップ]** をクリックします。
 
-1. **[Recovery Services コンテナー]** ウィンドウで、上部のメニューから **[+ バックアップ]** を選択します。
+   :::image type="content" source="./media/backup-afs/backup-center-configure-inline.png" alt-text="Azure ファイルのバックアップを構成するためのスクリーンショット。" lightbox="./media/backup-afs/backup-center-configure-expanded.png":::
 
-   ![Recovery Services コンテナー](./media/backup-afs/recovery-services-vault.png)
+1. データソースの種類として **[Azure Files (Azure Storage)]** を選択し、ファイル共有の保護に使用するコンテナーを選択して、 **[続ける]** をクリックします。
 
-    1. **[バックアップの目標]** ウィンドウで、 **[Azure]** オプションをドロップダウン リストから選択して、 **[ワークロードはどこで実行されていますか?]** を **Azure** に設定します。
+   :::image type="content" source="./media/backup-afs/azure-file-share-select-vault.png" alt-text="Azure Files の選択を示すスクリーンショット。":::
 
-          ![ワークロードとして Azure を選択する](./media/backup-afs/backup-goal.png)
+1. **[選択]** をクリックして、バックアップするファイル共有を保存するストレージ アカウントを選択します。
 
-    2. **[何をバックアップしますか]** を選択し、ドロップダウン リストから **[Azure ファイル共有]** を選択します。
+   **[ストレージ アカウントの選択] ウィンドウ** が右側に開き、検出されたサポート対象のストレージ アカウントが一覧表示されます。 これらは、このコンテナーに関連付けられている、またはコンテナーと同じリージョンに存在しているがまだ Recovery Services コンテナーに関連付けられていないストレージ アカウントです。
 
-          ![Azure ファイル共有を選択する](./media/backup-afs/select-azure-file-share.png)
-
-    3. **[バックアップ]** を選択して、Azure ファイル共有拡張機能をコンテナーに登録します。
-
-          ![[バックアップ] を選択して Azure ファイル共有をコンテナーに関連付ける](./media/backup-afs/register-extension.png)
-
-1. **[バックアップ]** を選択すると、 **[バックアップ]** ウィンドウが開きます。 保護するファイル共有をホストしているストレージ アカウントを選択するには、 **[ストレージ アカウント]** テキストボックスの下にある **[選択]** リンク テキストを選択します。
-
-   ![[選択] リンクを選択する](./media/backup-afs/choose-select-link.png)
-
-1. **[ストレージ アカウントの選択] ウィンドウ** が右側に開き、検出されたサポート対象のストレージ アカウントが一覧表示されます。 これらは、このコンテナーに関連付けられている、またはコンテナーと同じリージョンに存在しているがまだ Recovery Services コンテナーに関連付けられていないストレージ アカウントです。
+   :::image type="content" source="./media/backup-afs/azure-file-share-select-storage-account-inline.png" alt-text="ストレージ アカウントの選択を示すスクリーンショット。" lightbox="./media/backup-afs/azure-file-share-select-storage-account-expanded.png":::
 
 1. 検出されたストレージ アカウントの一覧からアカウントを選択し、 **[OK]** を選択します。
 
-   ![検出されたストレージ アカウントから選択する](./media/backup-afs/select-discovered-storage-account.png)
+   :::image type="content" source="./media/backup-afs/azure-file-share-confirm-storage-account-inline.png" alt-text="検出されたストレージ アカウントのうち 1 つの選択を示すスクリーンショット。" lightbox="./media/backup-afs/azure-file-share-confirm-storage-account-expanded.png":::
+   
+   >[!NOTE]
+   >ストレージ アカウントがコンテナーとは異なるリージョンに存在する場合は、検出されたストレージ アカウントの一覧に表示されません。
 
 1. 次の手順で、バックアップするファイル共有を選択します。 **[FileShares to Backup]\(バックアップするファイル共有)** セクションにある **[追加]** ボタンを選択します。
 
-   ![バックアップするファイル共有を選択する](./media/backup-afs/select-file-shares-to-back-up.png)
+   :::image type="content" source="./media/backup-afs/azure-select-file-share-inline.png" alt-text="バックアップするファイル共有の選択を示すスクリーンショット。" lightbox="./media/backup-afs/azure-select-file-share-expanded.png":::
 
 1. 右側に **[ファイル共有の選択]** コンテキスト ペインが開きます。 Azure で、バックアップ可能なファイル共有のストレージ アカウントが検索されます。 最近ファイル共有を追加したが、一覧に表示されない場合は、ファイル共有が表示されるまで少し時間を置いてください。
 
 1. **[ファイル共有の選択]** の一覧から、バックアップするファイル共有を選択します。 **[OK]** を選択します。
-
-   ![ファイル共有を選択する](./media/backup-afs/select-file-shares.png)
 
 1. ファイル共有のバックアップ ポリシーを選択するには、次の 3 つのオプションがあります。
 
@@ -80,13 +74,13 @@ ms.locfileid: "107519937"
 
       1. ファイル共有の新しいバックアップ ポリシーを作成するには、 **[バックアップ ポリシー]** セクションのドロップダウン リストの下にあるリンク テキストを選択します。<br>
 
-         ![新しいポリシーを作成します](./media/backup-afs/create-new-policy.png)
+         :::image type="content" source="./media/backup-afs/azure-file-share-edit-policy-inline.png" alt-text="新しいポリシーの作成を示すスクリーンショット。" lightbox="./media/backup-afs/azure-file-share-edit-policy-expanded.png":::
 
-      1. 右側に **[バックアップ ポリシー]** コンテキスト ペインが開きます。 テキスト ボックスにポリシー名を指定し、必要に応じて保有期間を選択します。 既定では日単位のオプションのみが有効です。 週単位、月単位、または年単位の保有期間を設定する場合は、該当するチェックボックスを選択して、保有期間の値を指定します。
+      1. 「[新しいポリシーの作成](manage-afs-backup.md#create-a-new-policy)」セクションの手順 3 から 7 を実行します。
 
-      1. 保有期間の値と有効なポリシー名を指定したら、 **[OK]** を選択します。<br>
+      1. ポリシーのすべての属性を定義したら、 **[OK]** をクリックします。
 
-         ![ポリシー名とリテンション期間の値を指定する](./media/backup-afs/policy-name.png)
+         :::image type="content" source="./media/backup-afs/azure-file-share-policy-parameters-inline.png" alt-text="ポリシー名と保有期間の値の指定を示すスクリーンショット。" lightbox="./media/backup-afs/azure-file-share-policy-parameters-expanded.png":::
 
    * 既存のバックアップ ポリシーを選択する <br>
 
@@ -100,8 +94,6 @@ ms.locfileid: "107519937"
 
 バックアップ ポリシーを設定すると、スケジュールされた時刻にファイル共有のスナップショットが作成されます。 復旧ポイントも、選択した期間にわたって保持されます。
 
->[!NOTE]
->Azure Backup では、Azure ファイル共有のバックアップに対して日単位、週単位、月単位、年単位でのリテンション期間のポリシーがサポートされるようになりました。
 
 ## <a name="configure-backup-from-the-file-share-pane"></a>ファイル共有ペインからバックアップを構成する
 
@@ -146,9 +138,9 @@ ms.locfileid: "107519937"
 
          1. **[新しいポリシーの作成]** リンク テキストを選択します。
 
-         2. 右側に **[バックアップ ポリシー]** コンテキスト ペインが開きます。 テキスト ボックスにポリシー名を指定し、必要に応じて保有期間を選択します。 既定では日単位のオプションのみが有効です。 週単位、月単位、または年単位の保有期間を設定する場合は、該当するチェックボックスを選択して、保有期間の値を指定します。
+         2. 「[新しいポリシーの作成](manage-afs-backup.md#create-a-new-policy)」セクションの手順 3 から 7 を実行します。
 
-         3. 保有期間の値と有効なポリシー名を指定したら、 **[OK]** を選択します。
+         3. ポリシーのすべての属性を定義したら、 **[OK]** をクリックします。
 
             ![新しいバックアップ ポリシーの作成](./media/backup-afs/create-new-backup-policy.png)
 
@@ -168,31 +160,29 @@ ms.locfileid: "107519937"
 
 場合によっては、バックアップ ポリシーでスケジュールされた以外の時間に、バックアップ スナップショットまたは復旧ポイントを生成することができます。 一般的に、オンデマンド バックアップを生成するのは、バックアップ ポリシーを構成した直後です。 バックアップ ポリシーのスケジュールに基づいて、スナップショットが作成されるまで数時間または数日かかることがあります。 バックアップ ポリシーが適用されるまでデータを保護するために、オンデマンド バックアップを開始します。 多くの場合は、ファイル共有への計画的な変更を行う前にオンデマンド バックアップの作成が必要です。
 
-### <a name="from-the-recovery-services-vault"></a>Recovery Services コンテナーから
+### <a name="from-backup-center"></a>バックアップ センターから
 
-1. ファイル共有をバックアップするために使用した Recovery Services コンテナーを開きます。 **[概要]** ペインで、 **[保護された項目]** セクションから **[バックアップ項目]** を選択します。
+1. **バックアップ センター** に移動し、メニューから **[バックアップ インスタンス]** をクリックします。
 
-   ![バックアップ項目を選択する](./media/backup-afs/backup-items.png)
+   データソースの種類として **[Azure Files (Azure Storage)]** でフィルター処理します。
 
-1. **[バックアップ項目]** を選択すると、すべての **バックアップ管理の種類** を一覧表示する新しいペインが **[概要]** ペインの隣に開きます。
+   :::image type="content" source="./media/backup-afs/azure-file-share-backup-instances-inline.png" alt-text="バックアップ インスタンスの選択を示すスクリーンショット。" lightbox="./media/backup-afs/azure-file-share-backup-instances-expanded.png":::
 
-   ![バックアップ管理の種類一覧](./media/backup-afs/backup-management-types.png)
+1. オンデマンド バックアップ ジョブを実行する項目を選択します。
 
-1. **[バックアップの管理の種類]** の一覧から、 **[Azure Storage (Azure Files)]** を選択します。 このコンテナーを使用してバックアップされたすべてのファイル共有とそれに対応するストレージ アカウントの一覧が表示されます。
+1. **[バックアップ項目]** メニューの **[今すぐバックアップ]** を選択します。 このバックアップ ジョブはオンデマンドであるため、復旧ポイントに関連付けられた保持ポリシーはありません。
 
-   ![Azure Storage (Azure Files) のバックアップ項目](./media/backup-afs/azure-files-backup-items.png)
-
-1. Azure ファイル共有の一覧から、目的のファイル共有を選択します。 **バックアップ項目** の詳細が表示されます。 **[バックアップ項目]** メニューの **[今すぐバックアップ]** を選択します。 このバックアップ ジョブはオンデマンドであるため、復旧ポイントに関連付けられた保持ポリシーはありません。
-
-   ![[今すぐバックアップ] を選択する](./media/backup-afs/backup-now.png)
+   :::image type="content" source="./media/backup-afs/azure-file-share-backup-now-inline.png" alt-text="[今すぐバックアップ] の選択を示すスクリーンショット。" lightbox="./media/backup-afs/azure-file-share-backup-now-expanded.png":::
 
 1. **[今すぐバックアップ]** ペインが開きます。 復旧ポイントの保持期限を指定します。 オンデマンド バックアップでは、最大保有期間を 10 年に指定できます。
 
-   ![保持期間を選択します](./media/backup-afs/retention-date.png)
+   :::image type="content" source="./media/backup-afs/azure-file-share-on-demand-backup-retention.png" alt-text="保有期間の日付の選択を示すスクリーンショット。":::
 
 1. **[OK]** を選択して、実行するオンデマンド バックアップ ジョブを確定します。
 
-1. ポータルの通知を監視して、バックアップ ジョブの実行完了を把握します。 コンテナー ダッシュボードでジョブの進行状況を監視できます。 **[バックアップ ジョブ]**  >  **[進行中]** を選択します。
+1. ポータルの通知を監視して、バックアップ ジョブの実行完了を把握します。
+
+   **[バックアップ センター]** ダッシュボードでジョブの進行状況を監視するには、 **[バックアップ センター]**  ->  **[バックアップ ジョブ]**  ->  **[実行中]** の順に選択します。
 
 ### <a name="from-the-file-share-pane"></a>ファイル共有ペインから
 

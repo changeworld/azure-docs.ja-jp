@@ -1,17 +1,19 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 1d54429d901ca6caeadabfa7580e7270ceabcf45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfd5568e14dff765148096d55e5d10b1e5fe12f6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104612155"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131519918"
 ---
 このチュートリアルでは、複数のコンポーネントを使用する IoT プラグ アンド プレイのサンプル デバイス アプリケーションをビルドし、それを IoT ハブに接続して、ハブに送信される情報を Azure IoT エクスプローラー ツールを使用して表示する方法について説明します。 このサンプル アプリケーションは Node.js 用に記述されており、Node.js 用 Azure IoT Hub デバイス SDK に含まれています。 ソリューション ビルダーは Azure IoT エクスプローラー ツールを使用して、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
+
+[![コードを参照](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)
 
 このチュートリアルでは、次の作業を行いました。
 
@@ -34,7 +36,7 @@ node --version
 
 ## <a name="download-the-code"></a>コードのダウンロード
 
-「[クイックスタート: Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (Node)](../articles/iot-pnp/quickstart-connect-device.md)」を完了している場合は、リポジトリを既にクローンしています。
+[[チュートリアル: Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (Node)]](../articles/iot-develop/tutorial-connect-device.md) を完了している場合、リポジトリは既にクローンされています。
 
 任意のディレクトリでコマンド プロンプトを開きます。 次のコマンドを実行して、[Node.js 用 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-node) GitHub リポジトリをこの場所にクローンします。
 
@@ -56,11 +58,11 @@ npm install
 
 ## <a name="review-the-code"></a>コードの確認
 
-*azure-iot-sdk-node\device\samples\pnp* フォルダーに移動します。
+*azure-iot-sdk-node\device\samples\javascript* フォルダーに移動します。
 
-*azure-iot-sdk-node\device\samples\pnp* フォルダーには、IoT プラグ アンド プレイの温度コントローラー デバイス用のサンプル コードが含まれています。
+*azure-iot-sdk-node\device\samples\javascript* フォルダーには、IoT Plug and Play の温度コントローラー デバイス用のサンプル コードが含まれています。
 
-*pnpTemperatureController* ファイル内のコードにより、IoT プラグ アンド プレイの温度コントローラー デバイスが実装されます。 このサンプルによって実装されるモデルにより、[複数のコンポーネント](../articles/iot-pnp/concepts-modeling-guide.md)が使用されます。 [温度デバイスの Digital Twins Definition Language (DTDL) モデル ファイル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)により、デバイスによって実装されるテレメトリ、プロパティ、およびコマンドが定義されます。
+*pnp_temperature_controller.js* ファイル内のコードにより、IoT Plug and Play の温度コントローラー デバイスが実装されます。 このサンプルによって実装されるモデルにより、[複数のコンポーネント](../articles/iot-develop/concepts-modeling-guide.md)が使用されます。 [温度デバイスの Digital Twins Definition Language (DTDL) モデル ファイル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)により、デバイスによって実装されるテレメトリ、プロパティ、およびコマンドが定義されます。
 
 任意のコード エディターで *pnpTemperatureController.js* ファイルを開きます。 このサンプル コードは、次の方法を示しています。
 
@@ -108,12 +110,12 @@ npm install
 
 [!INCLUDE [iot-pnp-environment](iot-pnp-environment.md)]
 
-サンプル構成の詳細については、[サンプルの readme](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md) を参照してください。
+サンプル構成の詳細については、[サンプルの readme](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/readme.md#iot-plug-and-play-device-samples) を参照してください。
 
 コードを確認したので、次のコマンドを使用してサンプルを実行します。
 
 ```cmd\sh
-node pnpTemperatureController.js
+node pnp_temperature_controller.js
 ```
 
 次の出力が表示されます。これは、デバイスがハブへの利用統計情報の送信を開始し、コマンドとプロパティの更新情報を受信する準備ができたことを示します。

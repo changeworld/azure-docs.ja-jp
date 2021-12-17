@@ -5,24 +5,23 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2021
-ms.openlocfilehash: 1a9ea544419ef5c688e78a25eeb0eb444b196ec9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74d3544fd7e858a685b669ad826bc17e0eb6e64f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732025"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312922"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor-retired"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション (提供終了)
 
 ![ワイヤ データのシンボル](media/wire-data/wire-data2-symbol.png)
 
->[!NOTE]
->Wire Data ソリューションは、[VM insights](../vm/vminsights-overview.md) と [Service Map ソリューション](../vm/service-map.md)に置き換えられました。  どちらも、Log Analytics エージェントと Dependency Agent を使用して、Azure Monitor にネットワーク接続データを収集します。
+> [!NOTE]
+> Wire Data ソリューションは、[VM insights](../vm/vminsights-overview.md) と [Service Map ソリューション](../vm/service-map.md)に置き換えられました。  どちらも、Log Analytics エージェントと Dependency Agent を使用して、Azure Monitor にネットワーク接続データを収集します。
 >
->Wire Data ソリューションのサポートは、**2022 年 3 月 31 日** に終了します。  提供終了日まで、Wire Data 2.0 (プレビュー) ソリューションを使用している既存のお客様は、引き続きこれを使用できます。
+> Wire Data ソリューションのサポートは、**2022 年 3 月 31 日** に終了します。  提供終了日まで、Wire Data 2.0 (プレビュー) ソリューションを使用している既存のお客様は、引き続きこれを使用できます。
 >
->新規および既存のお客様は、[VM insights](../vm/vminsights-enable-overview.md) または [Service Map ソリューション](../vm/service-map.md)をインストールする必要があります。  これらが収集するマップ データセットは、Wire Data 2.0 (プレビュー) データセットに相当します。  VM insights には、Service Map データセットと、分析用の追加のパフォーマンス データおよび機能が含まれます。 どちらのオファリングにも、[Azure Sentinel との接続](https://docs.microsoft.com/azure/sentinel/connect-data-sources#map-data-types-with-azure-sentinel-connection-options)があります。
- 
+> 新規および既存のお客様は、[VM insights](../vm/vminsights-enable-overview.md) または [Service Map ソリューション](../vm/service-map.md)をインストールする必要があります。  これらが収集するマップ データセットは、Wire Data 2.0 (プレビュー) データセットに相当します。  VM insights には、Service Map データセットと、分析用の追加のパフォーマンス データおよび機能が含まれます。 どちらのオファリングにも、[Microsoft Sentinel との接続](../../sentinel/connect-data-sources.md#map-data-types-with-microsoft-sentinel-connection-options)があります。
 
 ワイヤ データとは、Log Analytics エージェントがインストールされた Windows に接続されたコンピューターおよび Linux に接続されたコンピューター (環境内の Operations Manager によって監視されているコンピューターを含む) から収集したネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データを他のログ データと結び付けると、データを相関させるのに役立ちます。
 
@@ -30,9 +29,9 @@ Log Analytics エージェントに加えて、ワイヤ データ ソリュー�
 
 ## <a name="migrate-to-azure-monitor-vm-insights-or-service-map"></a>Azure Monitor VM insights または Service Map への移行
 
-多くの場合、お客様は、同じ VM で Wire Data 2.0 (プレビュー) と [VM insights](../vm/vminsights-overview.md) または [Service Map ソリューション](../vm/service-map.md)を既に有効にしています。  これは、VM で代替オファリングが有効になっていることを意味します。  簡単に、[Log Analytics ワークスペースから Wire Data 2.0 (プレビュー) ソリューションを削除](https://docs.microsoft.com/azure/azure-monitor/insights/solutions?tabs=portal#remove-a-monitoring-solution)できます。
+多くの場合、お客様は、同じ VM で Wire Data 2.0 (プレビュー) と [VM insights](../vm/vminsights-overview.md) または [Service Map ソリューション](../vm/service-map.md)を既に有効にしています。  これは、VM で代替オファリングが有効になっていることを意味します。  簡単に、[Log Analytics ワークスペースから Wire Data 2.0 (プレビュー) ソリューションを削除](./solutions.md?tabs=portal#remove-a-monitoring-solution)できます。
 
-Wire Data 2.0 (プレビュー) のみ有効になっている VM がある場合、その VM を [VM insights](../vm/vminsights-enable-overview.md) または [Service Map ソリューション](../vm/service-map.md)にオンボードし、その後 [Wire Data 2.0 (プレビュー) ソリューションを Log Analytics ワークスペースから削除](https://docs.microsoft.com/azure/azure-monitor/insights/solutions?tabs=portal#remove-a-monitoring-solution)できます。
+Wire Data 2.0 (プレビュー) のみ有効になっている VM がある場合、その VM を [VM insights](../vm/vminsights-enable-overview.md) または [Service Map ソリューション](../vm/service-map.md)にオンボードし、その後 [Wire Data 2.0 (プレビュー) ソリューションを Log Analytics ワークスペースから削除](./solutions.md?tabs=portal#remove-a-monitoring-solution)できます。
 
 ## <a name="migrate-your-queries-to-the-vmconnection-table-from-azure-monitor-vm-insights"></a>Azure Monitor VM insights から VMConnection テーブルにクエリを移行する
 
@@ -124,16 +123,16 @@ VMConnection
 
 ### <a name="more-examples-queries"></a>その他のクエリの例
 
-その他のクエリの例については、[VM insights のログ検索に関するドキュメント](https://docs.microsoft.com/azure/azure-monitor/vm/vminsights-log-search)と [VM insights のアラートに関するドキュメント](https://docs.microsoft.com/azure/azure-monitor/vm/vminsights-alerts#sample-alert-queries)を参照してください。
+その他のクエリの例については、[VM insights のログ検索に関するドキュメント](../vm/vminsights-log-search.md)と [VM insights のアラートに関するドキュメント](../vm/monitor-virtual-machine-alerts.md)を参照してください。
 
 ## <a name="uninstall-wire-data-20-solution"></a>Wire Data 2.0 ソリューションのアンインストール
 
 Wire Data 2.0 をアンインストールする場合、必要なのは Log Analytics ワークスペースからソリューションを削除することのみです。  この結果は、次のようになります。
 
-* ワークスペースに接続されている VM から Wire Data 管理パックが削除されます 
-* Wire Data データ型がワークスペースに表示されなくなります
+- ワークスペースに接続されている VM から Wire Data 管理パックが削除されます。
+- Wire Data データ型がワークスペースに表示されなくなります
 
-Wire Data ソリューションを削除するには、[こちらの手順](https://docs.microsoft.com/azure/azure-monitor/insights/solutions?tabs=portal#remove-a-monitoring-solution)に従ってください。
+Wire Data ソリューションを削除するには、[こちらの手順](./solutions.md?tabs=portal#remove-a-monitoring-solution)に従ってください。
 
 >[!NOTE]
 >ワークスペースに Service Map または VM insights ソリューションがある場合、これらのソリューションでもこの管理パックが使用されるため、管理パックは削除されません。
@@ -161,7 +160,7 @@ Dependency Agent を削除するには、次のセクションを使用します
 
 Linux から Dependency Agent を完全にアンインストールするには、エージェント自体と、エージェントと共に自動的にインストールされたコネクタを削除する必要があります。 次の 1 つのコマンドを使用して、両方ともアンインストールできます。
 
-```
+```bash
 rpm -e dependency-agent dependency-agent-connector
 ```
 
@@ -231,5 +230,5 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 仮想マシンの監視を有効にするための要件と方法については、[VM insights のデプロイ](./vminsights-enable-overview.md)に関するページを参照してください。
+- 仮想マシンの監視を有効にするための要件と方法については、[VM insights のデプロイ](../vm/vminsights-enable-overview.md)に関するページを参照してください。
 - [ログを検索](../logs/log-query-overview.md) して、詳細なワイヤ データ検索レコードを確認します。

@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: 5f6fbcb73b4139c0a80ea8352071d8683c401d6e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/22/2021
+ms.openlocfilehash: e95aae97c197777a9eae1feb9a4622619f992678
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782947"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218676"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure Data Factory バージョン 1 でサポートされるコンピューティング環境
 > [!NOTE]
@@ -26,7 +27,7 @@ ms.locfileid: "104782947"
 | ---------------------------------------- | ---------------------------------------- |
 | [オンデマンド Azure HDInsight クラスター](#azure-hdinsight-on-demand-linked-service)または[独自の HDInsight クラスター](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning Studio (クラシック)](#azure-machine-learning-studio-classic-linked-service) | [スタジオ (クラシック) アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |
+| [ML Studio (クラシック)](#ml-studio-classic-linked-service) | [スタジオ (クラシック) アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](#azure-sql-linked-service)、[Azure Synapse Analytics](#azure-synapse-analytics-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) |
 
@@ -45,7 +46,7 @@ Microsoft では、HDInsight のサポートされるバージョンの一覧を
 2017 年 12 月 15 日以降:
 
 - Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスを使用して、Linux ベースの HDInsight バージョン 3.3 以前のクラスターを作成できなくなります。 
-- 既存の Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスの JSON 定義で、[**osType** や **Version** のプロパティ](#azure-hdinsight-on-demand-linked-service)が明示的に指定されていない場合、既定値は **Version=3.1, osType=Windows** から **Version=\<latest HDI default version\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , osType=Linux** に変更されます。
+- 既存の Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスの JSON 定義で、[**osType** や **Version** のプロパティ](#azure-hdinsight-on-demand-linked-service)が明示的に指定されていない場合、既定値は **Version=3.1, osType=Windows** から **Version=\<latest HDI default version\>, osType=Linux** に変更されます。
 
 2018 年 7月 31 日以降:
 
@@ -226,7 +227,7 @@ D4 サイズのヘッド ノードと worker ノードを作成する場合は�
 
 * Azure HDInsight
 * Azure Batch
-* Azure Machine Learning Studio (クラシック)
+* ML Studio (クラシック)
 * Azure Data Lake Analytics
 * Azure SQL Database、Azure Synapse Analytics、SQL Server
 
@@ -307,8 +308,8 @@ Batch サービスを初めて利用する場合:
 | poolName          | VM のプールの名前。    | はい      |
 | linkedServiceName | この Batch のリンクされたサービスに関連付けられている、ストレージのリンクされたサービスの名前。 このリンクされたサービスは、アクティビティの実行およびアクティビティの実行ログの保存に必要なステージング ファイルに使用されます。 | はい      |
 
-## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (classic) のリンクされたサービス
-Azure Machine Learning スタジオ (クラシック) のリンクされたサービスを作成し、スタジオ (クラシック) のバッチ スコアリング エンドポイントをデータ ファクトリに登録できます。
+## <a name="ml-studio-classic-linked-service"></a>ML Studio (classic) のリンクされたサービス
+ML スタジオ (クラシック) のリンクされたサービスを作成し、スタジオ (クラシック) のバッチ スコアリング エンドポイントをデータ ファクトリに登録できます。
 
 ### <a name="example"></a>例
 
@@ -362,7 +363,7 @@ Data Lake Analytics のリンクされたサービスについては、サービ
 | servicePrincipalKey | アプリケーションのキーです。           | はい      |
 | tenant              | アプリケーションが配置されているテナントの情報 (ドメイン名またはテナント ID)。 この情報を取得するには、Azure Portal の右上隅にマウス ポインターを移動します。 | はい      |
 
-**例: サービス プリンシパル認証**
+**例:サービス プリンシパルの認証**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",

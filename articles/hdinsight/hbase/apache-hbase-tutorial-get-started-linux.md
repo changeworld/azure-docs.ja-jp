@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 50216b83475e92cbabb5ed78c3836264ceff4600
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8d5b2ca155917c5b08f11167da6309da9df7e6b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866609"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047173"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache HBase を使用する
 
@@ -37,7 +37,7 @@ ms.locfileid: "104866609"
 
 1. 次の画像を選択して Azure Portal でテンプレートを開きます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/)にあります。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.hdinsight%2Fhdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 2. **[カスタム デプロイ]** ダイアログで以下の値を入力します。
 
@@ -209,7 +209,7 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 HBase データにアクセスする Hive クエリは、HBase クラスターから実行する必要はありません。 次の手順が完了していれば、Hive に付属する任意のクラスター (Spark、Hadoop、HBase、Interactive Query など) を使用して、HBase データに対するクエリを実行できます。
 
 1. 両方のクラスターが同じ仮想ネットワークとサブネットに接続されている必要があります
-2. HBase クラスター ヘッドノードから Hive クラスター ヘッドノードに `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` をコピーします
+2. HBase クラスター ヘッドノードから Hive クラスター ヘッドノードおよびワーカーノードに `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` をコピーします。
 
 ### <a name="secure-clusters"></a>クラスターをセキュリティで保護する
 
@@ -217,13 +217,13 @@ HBase データには、ESP 対応の HBase を使用している Hive からク
 
 1. マルチクラスター パターンに従う場合、両方のクラスターで ESP が有効になっている必要があります。 
 2. Hive で HBase データに対するクエリを実行できるようにするには、Hbase Apache Ranger プラグインを介して HBase データにアクセスするためのアクセス許可が `hive` ユーザーに付与されていることを確認します
-3. 個別の ESP 対応クラスターを使用する場合は、HBase クラスター ヘッドノードの `/etc/hosts` の内容を、Hive クラスター ヘッドノードの `/etc/hosts` に追加する必要があります。 
+3. 個別の ESP 対応クラスターを使用する場合は、HBase クラスター ヘッドノードの `/etc/hosts` の内容を、Hive クラスター ヘッドノードおよびワーカーノードの `/etc/hosts` に追加する必要があります。 
 > [!NOTE]
 > いずれかのクラスターをスケーリングした後、`/etc/hosts` を再度追加する必要があります
 
-## <a name="use-hbase-rest-apis-using-curl"></a>Curl を使用して HBase REST API を使用する
+## <a name="use-the-hbase-rest-api-via-curl"></a>Curl を使用して HBase REST API を使用する
 
-REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
+HBase REST API のセキュリティは、[基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
 1. HDInsight クラスターで HBase REST API を有効にするには、次のカスタム スタートアップ スクリプトを **Script Action** セクションに追加します。 クラスターを作成するとき、またはクラスターを作成した後に、スタートアップ スクリプトを追加できます。 **[ノードの種類]** では、 **[Region Servers]\(リージョン サーバー\)** を選択して、HBase リージョン サーバーだけでスクリプトが実行されるようにします。
 

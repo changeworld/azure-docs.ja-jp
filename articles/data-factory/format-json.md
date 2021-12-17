@@ -1,25 +1,42 @@
 ---
-title: Azure Data Factory での JSON 形式
-description: このトピックでは、Azure Data Factory で JSON 形式を処理する方法について説明します。
-author: linda33wj
+title: JSON 形式
+titleSuffix: Azure Data Factory & Azure Synapse
+description: このトピックでは、Azure Data Factory および Azure Synapse Analytics パイプラインで JSON 形式を処理する方法について説明します。
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.author: jingwang
-ms.openlocfilehash: ebac108388071ed3dc0eb2b7bfc0494f2f7bb481
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 10/18/2021
+ms.author: jianleishen
+ms.openlocfilehash: 970778c36b426fd30af632ca56443c9fb240c389
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181365"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223747"
 ---
-# <a name="json-format-in-azure-data-factory"></a>Azure Data Factory での JSON 形式
+# <a name="json-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での JSON 形式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 **JSON ファイルを解析する場合や、JSON 形式にデータを書き込む場合** は、この記事に従ってください。 
 
-JSON 形式は、以下のコネクタでサポートされています。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。
+JSON 形式は、以下のコネクタでサポートされています。 
+
+- [Amazon S3](connector-amazon-simple-storage-service.md)
+- [Amazon S3 互換ストレージ](connector-amazon-s3-compatible-storage.md)、
+- [Azure BLOB](connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
+- [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+- [Azure Files](connector-azure-file-storage.md)
+- [ファイル システム](connector-file-system.md)
+- [FTP](connector-ftp.md)
+- [Google Cloud Storage](connector-google-cloud-storage.md)
+- [HDFS](connector-hdfs.md)
+- [HTTP](connector-http.md)
+- [Oracle Cloud Storage](connector-oracle-cloud-storage.md)
+- [SFTP](connector-sftp.md)
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -82,8 +99,8 @@ JSON ファイルからデータを抽出してシンク データ ストアお�
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings の type は、**JsonReadSettings** に設定する必要があります。 | はい      |
 | compressionProperties | 特定の圧縮コーデックのデータを圧縮解除する方法のプロパティ グループ。 | いいえ       |
-| preserveZipFileNameAsFolder<br>(" *`compressionProperties`->`type` の下に `ZipDeflateReadSettings` として*")  | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。<br>- **false** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
-| preserveCompressionFileNameAsFolder<br>(" *`compressionProperties`->`type` で `TarGZipReadSettings` または `TarReadSettings` として*") | **TarGzip**/**Tar** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は圧縮解除されたファイルを `<path specified in dataset>/<folder named as source compressed file>/` に書き込みます。 <br>- **false** に設定した場合、Data Factory は圧縮解除されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
+| preserveZipFileNameAsFolder<br>(" *`compressionProperties`->`type` の下に `ZipDeflateReadSettings` として*")  | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、サービスにより解凍されたファイルが `<path specified in dataset>/<folder named as source zip file>/` に書き込まれます。<br>- **false** に設定した場合、サービスにより解凍されたファイルが `<path specified in dataset>` に直接書き込まれます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
+| preserveCompressionFileNameAsFolder<br>(" *`compressionProperties`->`type` で `TarGZipReadSettings` または `TarReadSettings` として*") | **TarGzip**/**Tar** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、サービスにより圧縮解除されたファイルが `<path specified in dataset>/<folder named as source compressed file>/` に書き込みます。 <br>- **false** に設定した場合、サービスにより圧縮解除されたファイルが `<path specified in dataset>` に直接書き込まれます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
 
 ### <a name="json-as-sink"></a>シンクとしての JSON
 
@@ -195,7 +212,7 @@ JSON ファイルからデータをコピーする場合、コピー アクテ�
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-マッピング データ フローでは、次のデータ ストアで JSON 形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+[マッピング データ フロー](concepts-data-flow-overview.md)では、次のデータ ストアで JSON 形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。また、[Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties) で JSON 形式を読み取ることができます。
 
 ### <a name="source-properties"></a>ソース プロパティ
 
@@ -220,7 +237,7 @@ JSON ファイルからデータをコピーする場合、コピー アクテ�
 
 データ フローでソースとして JSON データセットを使用すると、5 つの追加設定を行うことができます。 これらの設定は、 **[Source Options]\(ソース オプション\)** タブの **[JSON settings]\(JSON 設定\)** アコーディオンにあります。**ドキュメント フォーム** の設定では、 **[1 つのドキュメント]** 、 **[Document per line]\(行ごとのドキュメント\)** 、および **[Array of documents]\(ドキュメントの配列\)** のいずれかの種類を選択できます。
 
-![JSON 設定](media/data-flow/json-settings.png "JSON 設定")
+:::image type="content" source="media/data-flow/json-settings.png" alt-text="JSON 設定":::
 
 #### <a name="default"></a>Default
 
@@ -254,7 +271,7 @@ File3.json
 
 ``` json
 File1.json
-{"json": "record 1 }
+{"json": "record 1"}
 
 File2.json
  {"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}
@@ -356,11 +373,11 @@ JSON データ内の文字をエスケープするためにバックスラッシ
 
 出力スキーマのサイド ウィンドウで、列の上にマウス ポインターを移動し、プラス記号のアイコンをクリックします。 列を複合型にするために、 **[Add subcolumn]\(サブ列の追加\)** を選択します。
 
-![サブ列の追加](media/data-flow/derive-add-subcolumn.png "サブ列の追加")
+:::image type="content" source="media/data-flow/derive-add-subcolumn.png" alt-text="サブ列の追加":::
 
 同じ方法で、さらに列とサブ列を追加できます。 複合でない各フィールドについては、式エディターで右側に式を追加できます。
 
-![複合列の追加](media/data-flow/derive-complex-column.png "列の追加")
+:::image type="content" source="media/data-flow/derive-complex-column.png" alt-text="複合列の追加":::
 
 #### <a name="entering-the-json-structure-manually"></a>手動による JSON 構造の入力
 
@@ -413,6 +430,15 @@ JSON 構造を手動で追加するには、新しい列を追加し、エディ
     ]
 )
 ```
+
+## <a name="related-connectors-and-formats"></a>関連するコネクタと形式
+
+JSON 形式に関連する一般的なコネクタと形式を次に示します。
+
+- Azure Blob Storage (connector-azure-blob-storage.md)
+- 区切りテキスト形式 (format-delimited-text.md)
+- OData コネクタ (connector-odata.md)
+- Parquet 形式 (format-parquet.md)
 
 ## <a name="next-steps"></a>次のステップ
 

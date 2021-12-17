@@ -3,23 +3,23 @@ title: ドメインを分散識別子 (DID) (プレビュー) にリンクする
 description: DNS バインドの方法について学習しますか?
 documentationCenter: ''
 author: barclayn
-manager: daveba
-ms.service: identity
+manager: karenh444
+ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: ad5bb6e45479b4cccfa0b002427066439135e468
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 50954d4fef64ffabddf3ec8898ef81a030a77f95
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588447"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577348"
 ---
-# <a name="link-your-domain-to-your-decentralized-identifier-did"></a>ドメインを分散識別子 (DID) にリンクする
+# <a name="link-your-domain-to-your-decentralized-identifier-did-preview"></a>ドメインを分散識別子 (DID) (プレビュー) にリンクする
 
 > [!IMPORTANT]
-> Azure Active Directory Verifiable Credentials は、現在パブリック プレビュー段階です。
+> Azure Active Directory Verifiable Credentials は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この記事の内容:
@@ -48,19 +48,20 @@ DID をドメインにリンクすることで、最初の信頼問題が解決�
 1. Azure AD により、組織のセットアップ時に指定されたドメイン情報を使用して、DID ドキュメント内にサービス エンドポイントを書き込まれます。 DID を操作するすべてのパーティは、DID により宣言されるドメインが関連付けられることを確認できます。  
 
     ```json
-        "service": [
-          {
-            "id": "#linkeddomains",
-            "type": "LinkedDomains",
-            "serviceEndpoint": {
-              "origins": [
-                "https://www.contoso.com/"
-              ]
-            }
-          }
+    "service": [
+      {
+        "id": "#linkeddomains",
+        "type": "LinkedDomains",
+        "serviceEndpoint": {
+          "origins": [
+            "https://www.contoso.com/"
+          ]
+        }
+      }
+    ]
     ```
 
-2. Azure AD の Verifiable Credentials サービスによって、ドメインでホストできる準拠している既知の構成リソースが生成されます。 構成ファイルには、ドメインの原点がある DID で署名された credentialType ''DomainLinkageCredential'' の自己発行された検証可能な資格情報が含まれています。 ルート ドメインの URL に格納されている構成ドキュメントの例を以下に示します。
+2. Azure AD の Verifiable Credentials サービスによって、ドメインでホストできる準拠している既知の構成リソースが生成されます。 構成ファイルには、ドメインの原点がある DID で署名された credentialType ''DomainLinkageCredential'' の自己発行された検証可能な資格情報が含まれています。 ルートドメインの URL に格納されている構成ドキュメントの例を次に示します。
 
 
     ```json
@@ -118,7 +119,7 @@ Microsoft Authenticator で **[検証済み]** アイコンが表示される前
 
    ![既知の構成をダウンロードする](media/how-to-dnsbind/verify-download.png) 
 
-3. JWT をコピーし、[jwt.ms](https://www.jwt.ms) を開いて、ドメインが正しいことを検証します。
+3. Linked_did 値 (JWT) をコピーし、 [https://jwt.ms/](https://www.jwt.ms) jwt を開いて貼り付け、ドメインが正しいことを検証します。
 
 4. DID をコピーし、[ION Network Explorer](https://identity.foundation/ion/explorer) を開いて、同じドメインが DID ドキュメントに含まれていることを検証します。 
 
@@ -133,4 +134,4 @@ Microsoft Authenticator で **[検証済み]** アイコンが表示される前
 
 ## <a name="next-steps"></a>次の手順
 
-オンボード中に、変更することにした間違ったドメイン情報を入力した場合は、[オプトアウト](how-to-opt-out.md)が必要になります。現時点では、DID ドキュメントの更新はサポートされていません。 オプトアウトしてから再びオプトインすると、新しい DID が作成されます。
+オンボード中に間違ったドメイン情報を入力した場合、またはそれを変更することにした場合は、[オプト アウト](how-to-opt-out.md)が必要になります。現時点では、ご利用の DID ドキュメントの更新はサポートされていません。 オプトアウトしてから再びオプトインすると、新しい DID が作成されます。

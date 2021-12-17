@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: c21ed461280dfa617c852fe6c18c30e5d697b704
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e0f20b558e94010c948201b886fe376050cf3694
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031278"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178461"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
@@ -44,7 +45,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
 | [Windows エージェント](./../agents/agent-windows.md) | いいえ | ソリューションでは、Windows エージェントの情報は収集しません。 |
-| [Linux エージェント](../vm/quick-collect-linux-computer.md) | いいえ | ソリューションでは、Linux エージェントの情報は収集しません。 |
+| [Linux エージェント](../vm/monitor-virtual-machine.md) | いいえ | ソリューションでは、Linux エージェントの情報は収集しません。 |
 | [SCOM 管理グループ](../agents/om-agents.md) | いいえ | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
 | [Azure Storage アカウント](../essentials/resource-logs.md#send-to-log-analytics-workspace) | いいえ | ソリューションでは、Azure Storage の情報は収集しません。 |
 

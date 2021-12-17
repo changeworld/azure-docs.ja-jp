@@ -2,13 +2,13 @@
 title: Azure Service Bus での AMQP エラーのトラブルシューティング | Microsoft Docs
 description: Azure Service Bus を使用しているときに受け取る可能性がある AMQP エラーの一覧と、それらのエラーの原因を示します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 88b10940e0b910f50e6ccf7f8c53134fa7f0ba2f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: 0a481f0dccc7a409ada51fb809065fd58db31aed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88064351"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570951"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>Azure Service Bus での AMQP エラー
 この記事では、Azure Service Bus で AMQP を使用しているときに受け取るエラーの一部を示します。 それらはすべてサービスの標準的な動作です。 接続/リンクで送信/受信の呼び出しを行うことで、それらを回避できます。接続/リンクが自動的に再作成されます。

@@ -8,15 +8,15 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: cf0e423648db174433f0717f2e5971ac49697b42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c06de5c1d466db26e756029d2046286bd55d4e7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704625"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674530"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>中速から高速のネットワーク帯域幅での大規模なデータセットのデータ転送
- 
+
 この記事では、ご利用の環境に中速から高速のネットワーク帯域幅があり、大規模なデータセットを転送する予定の場合の、データ転送ソリューションの概要を示します。 また、この記事では、推奨されるデータ転送と、このシナリオのそれぞれの主要な機能のマトリックスについても説明します。
 
 利用可能なすべてのデータ転送オプションの概要を理解するには、[Azure データ転送ソリューションの選択](storage-choose-data-transfer-solution.md)に関するページに移動します。
@@ -33,17 +33,16 @@ ms.locfileid: "98704625"
 
 中速ネットワーク帯域幅では、ネットワーク経由のデータ転送時間をプロジェクションする必要があります。
 
-以下の表を使用して時間を予測し、それに基づいて、オフライン転送かネットワーク経由の転送を選びます。 表には、さまざまなネットワーク帯域幅に対する、ネットワーク データ転送の予想時間が示されています (90% の使用率と仮定)。  
+以下の表を使用して時間を予測し、それに基づいて、オフライン転送かネットワーク経由の転送を選びます。 表には、さまざまなネットワーク帯域幅に対する、ネットワーク データ転送の予想時間が示されています (90% の使用率と仮定)。
 
 ![ネットワーク転送またはオフライン転送](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
 
 - ネットワーク転送に時間がかかりすぎると予想される場合は、物理デバイスを使用する必要があります。 この場合に推奨されるオプションは、Azure Data Box ファミリのデバイスを使用するオフライン転送、または独自のディスクを使用する Azure Import/Export です。
 
-    - **オフライン転送用の Azure Data Box ファミリ** – 時間、ネットワークの可用性、またはコストが限られている場合は、Microsoft が供給する Data Box デバイスのデバイスを使用して、大量のデータを Azure に移動します。 Robocopy などのツールを使って、オンプレミスのデータをコピーします。 転送対象のデータのサイズに応じて、Data Box Disk、Data Box、Data Box Heavy から選択できます。
-    - **Azure Import/Export** – 大量のデータを安全に Azure Blob Storage と Azure Files にインポートするために、独自のディスク ドライブを送付して Azure Import/Export サービスを使用します。 また、このサービスでは、Azure Blob Storage からディスク ドライブにデータを転送し、オンプレミスのサイトに送付できます。
+  - **オフライン転送用の Azure Data Box ファミリ**: 時間、ネットワークの可用性、またはコストが限られている場合は、Microsoft が供給する Data Box デバイスのデバイスを使用して、大量のデータを Azure に移動します。 Robocopy などのツールを使って、オンプレミスのデータをコピーします。 転送対象のデータのサイズに応じて、Data Box Disk、Data Box、Data Box Heavy から選択できます。
+  - **Azure Import/Export** – 大量のデータを安全に Azure Blob Storage と Azure Files にインポートするために、独自のディスク ドライブを送付して Azure Import/Export サービスを使用します。 また、このサービスでは、Azure Blob Storage からディスク ドライブにデータを転送し、オンプレミスのサイトに送付できます。
 
 - ネットワーク転送が妥当であると予想される場合は、「[ネットワーク帯域幅 - 高](#high-network-bandwidth)」で詳しく説明されている以下のツールのいずれかを使用できます。
-
 
 ### <a name="high-network-bandwidth-1-gbps---100-gbps"></a>ネットワーク帯域幅 - 高 (1 Gbps から 100 Gbps)
 
@@ -78,7 +77,6 @@ ms.locfileid: "98704625"
 | **データの移動時に使用する**     |コマース境界内|コマース境界内|コマース境界内|地理的境界を越える (US から EU など)|
 |    **料金**                          |    [料金](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [料金](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [料金](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [料金](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
-
 オンラインのデータ転送を使用する場合は、高速ネットワーク帯域幅に対して、次のセクションの表を使用します。
 
 ### <a name="high-network-bandwidth"></a>ネットワーク帯域幅 - 高
@@ -96,16 +94,16 @@ ms.locfileid: "98704625"
 ## <a name="next-steps"></a>次のステップ
 
 - [Import/Export でデータを転送する方法を学習します](../../import-export/storage-import-export-data-to-blobs.md)。
-- 以下の方法を理解します
 
-    - [Data Box Edge を使用してデータを転送する](../../databox/data-box-disk-quickstart-portal.md)。
-    - [Data Box を使用してデータを転送する](../../databox/data-box-quickstart-portal.md)。
-- [AzCopy を使用してデータを転送する](./storage-use-azcopy-v10.md)。
 - 以下の方法を理解します。
-    - [Data Box Gateway を使用してデータを転送する](../../databox-gateway/data-box-gateway-deploy-add-shares.md)します。
-    - [Azure に送信する前に Data Box Edge を使用してデータを変換する](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
-- [Azure Data Factory を使用してデータを転送する方法を学習します](../../data-factory/quickstart-create-data-factory-portal.md)。
-- REST API を使用してデータ転送する
+  - [Data Box Edge を使用してデータを転送する](../../databox/data-box-disk-quickstart-portal.md)。
+  - [Data Box を使用してデータを転送する](../../databox/data-box-quickstart-portal.md)。
+  - [AzCopy を使用してデータを転送する](./storage-use-azcopy-v10.md)。
+  - [Data Box Gateway を使用してデータを転送する](../../databox-gateway/data-box-gateway-deploy-add-shares.md)します。
+  - [Azure に送信する前に Data Box Edge を使用してデータを変換する](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
 
-    - [.NET の場合](/dotnet/api/overview/azure/storage)
-    - [Java の場合](/java/api/overview/azure/storage)
+- [Azure Data Factory を使用してデータを転送する方法を学習します](../../data-factory/quickstart-create-data-factory-portal.md)。
+
+- REST API を使用してデータ転送します。
+  - [.NET の場合](/dotnet/api/overview/azure/storage)
+  - [Java の場合](/java/api/overview/azure/storage)

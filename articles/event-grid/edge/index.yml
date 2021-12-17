@@ -6,18 +6,18 @@ metadata:
   description: IoT Edge で Event Grid を使用して、エッジ デバイスで生成された関連イベントにほぼリアルタイムで対応する方法について説明します。
   services: event-grid
   ms.service: event-grid
-  ms.subservice: 
+  ms.subservice: iot-edge
   ms.topic: landing-page
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 10/12/2019
-  ms.openlocfilehash: 4b79d64240b96ed41b535f8dbcd1155d67e76282
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 05/10/2021
+  ms.openlocfilehash: 4aa37974174fc39a817478f5c23be3ce76abd66d
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "72991615"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110367834"
 landingContent:
 - title: IoT Edge の Event Grid について
   linkLists:

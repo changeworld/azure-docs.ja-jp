@@ -3,19 +3,20 @@ title: 空間分析コンテナーをインストールして実行する方法 
 titleSuffix: Azure Cognitive Services
 description: 空間分析コンテナーを使用すると、人物と距離を検出できます。
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: d257a77940b460bf8be64e3f8376353a859365f7
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 10/14/2021
+ms.author: pafarley
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: beda19bd951cf2750d071286ba066bb3a79c0e94
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284721"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319285"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -24,9 +25,9 @@ ms.locfileid: "106284721"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
+* [!INCLUDE [contributor-requirement](../includes/quickstarts/contributor-requirement.md)]
 * Azure サブスクリプションを入手したら、Azure portal で Standard S1 レベルの <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成</a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 空間分析コンテナーを実行するには、作成したリソースのキーとエンドポイントが必要です。 後でキーとエンドポイントを使用します。
-
 
 ### <a name="spatial-analysis-container-requirements"></a>空間分析コンテナーの要件
 
@@ -59,7 +60,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 * [NVIDIA グラフィックス ドライバー](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html)と [NVIDIA CUDA Toolkit](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 * [NVIDIA MPS](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf) (マルチプロセス サービス) の構成。
 * [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) と [NVIDIA-Docker2](https://github.com/NVIDIA/nvidia-docker) 
-* [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) ランタイム。
+* [Azure IoT Edge](../../iot-edge/how-to-provision-single-device-linux-symmetric.md) ランタイム。
 
 #### <a name="azure-vm-with-gpu"></a>[GPU 搭載 Azure VM](#tab/virtual-machine)
 この例では、1 つの K80 GPU が搭載された [NC シリーズ VM](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用します。
@@ -70,21 +71,6 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 |--|--|
 | カメラ | 空間分析コンテナーは、特定のカメラ ブランドに関係していません。 カメラ デバイスは、リアルタイム ストリーミング プロトコル (RTSP) と H.264 エンコードをサポートし、ホスト コンピューターからアクセスでき、15FPS の解像度 1080p でストリーミングできる必要があります。 |
 | Linux OS | [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) をホスト コンピューターにインストールする必要があります。  |
-
-
-## <a name="request-approval-to-run-the-container"></a>コンテナーを実行するための承認を要求する
-
-コンテナーを実行するための承認を要求するには、[要求フォーム](https://aka.ms/csgate)に記入して送信します。
-
-このフォームでは、ユーザー、会社、コンテナーを使用するユーザー シナリオに関する情報が要求されます。 フォームを送信すると、そのフォームは Azure Cognitive Services チームによって確認されます。その後、チームから決定事項がメールで届きます。
-
-> [!IMPORTANT]
-> * このフォームでは、Azure サブスクリプション ID に関連付けられているメール アドレスを使用する必要があります。
-> * コンテナーの実行に使用する Computer Vision リソースは、承認された Azure サブスクリプション ID で作成されている必要があります。
-
-承認されると、Microsoft Container Registry (MCR) からコンテナーをダウンロードした後、そのコンテナーを実行できるようになります。これについては、記事の後半で説明します。
-
-お使いの Azure サブスクリプションが承認されていない場合、コンテナーを実行することはできません。
 
 ## <a name="set-up-the-host-computer"></a>ホスト コンピューターを設定する
 
@@ -124,39 +110,54 @@ Edge デバイスで Edge コンピューティング ロールが設定され�
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>Azure Stack Edge での MPS を有効にする 
 
-1. Windows PowerShell セッションを管理者として実行します。 
+Windows クライアントからリモートで接続するには、次の手順に従います。
 
-2. Windows リモート管理サービスがクライアントで実行されていることを確認します。 PowerShell ターミナルで、次のコマンドを使用します。 
-    
+1. Windows PowerShell セッションを管理者として実行します。
+2. Windows リモート管理サービスがクライアントで実行されていることを確認します。 コマンド プロンプトに、次のコマンドを入力します。
+
     ```powershell
     winrm quickconfig
     ```
-    
-    ファイアウォールの例外に関する警告が表示された場合は、ネットワーク接続の種類を確認し、[Windows リモート管理](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management)のドキュメントを参照してください。
 
-3. デバイスの IP アドレスに変数を割り当てます。 
-    
-    ```powershell
-    $ip = "<device-IP-address>" 
-    ```
-    
-4. デバイスの IP アドレスをクライアントの信頼できるホスト一覧に追加するには、次のコマンドを使用します。 
-    
-    ```powershell
-    Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force 
-    ```
+    詳細については、「[Windows リモート管理のためのインストールと構成](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration)」をご覧ください。
 
-5. デバイスの Windows PowerShell セッションを開始します。 
+3. `hosts` ファイルで使用される接続文字列に変数を割り当てます。
 
     ```powershell
-    Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell 
+    $Name = "<Node serial number>.<DNS domain of the device>"
+    ``` 
+
+    `<Node serial number>` と `<DNS domain of the device>` は、デバイスのノードのシリアル番号と DNS ドメインに置き換えます。 ノードのシリアル番号の値は、デバイスのローカル Web UI の **[証明書]** ページから、そして DNS ドメインは **[デバイス]** ページから取得できます。
+
+4. デバイスの接続文字列をクライアントの信頼されたホスト一覧に追加するために、次のコマンドを入力します。
+
+    ```powershell
+    Set-Item WSMan:\localhost\Client\TrustedHosts $Name -Concatenate -Force
     ```
 
-6. パスワードの入力を求められたら、入力します。 ローカル Web UI へのサインインに使用するパスワードと同じものを使用してください。 既定のローカル Web UI パスワードは `Password1` です。
+5. デバイスの Windows PowerShell セッションを開始します。
 
-「`Start-HcsGpuMPS`」と入力して、デバイス上で MPS サービスを開始します。 
+    ```powershell
+    Enter-PSSession -ComputerName $Name -Credential ~\EdgeUser -ConfigurationName Minishell -UseSSL
+    ```
 
-Azure Stack Edge デバイスのトラブルシューティングについては、[Azure Stack Edge デバイスのトラブルシューティング](spatial-analysis-logging.md#troubleshooting-the-azure-stack-edge-device)に関するページを参照してください。 
+    信頼関係に関連するエラーが表示された場合は、デバイスにアップロードされたノード証明書の署名チェーンが、デバイスにアクセスしているクライアントにもインストールされているかどうかを確認します。
+
+6. パスワードの入力を求められたら、入力します。 ローカル Web UI へのサインインに使用するパスワードと同じものを使用してください。 既定のローカル Web UI パスワードは *Password1* です。 リモート PowerShell を使用してデバイスに正常に接続すると、次のサンプル出力が表示されます。  
+
+    ```
+    Windows PowerShell
+    Copyright (C) Microsoft Corporation. All rights reserved.
+    
+    PS C:\WINDOWS\system32> winrm quickconfig
+    WinRM service is already running on this machine.
+    PS C:\WINDOWS\system32> $Name = "1HXQG13.wdshcsso.com"
+    PS C:\WINDOWS\system32> Set-Item WSMan:\localhost\Client\TrustedHosts $Name -Concatenate -Force
+    PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $Name -Credential ~\EdgeUser -ConfigurationName Minishell -UseSSL
+
+    WARNING: The Windows PowerShell interface of your device is intended to be used only for the initial network configuration. Please engage Microsoft Support if you need to access this interface to troubleshoot any potential issues you may be experiencing. Changes made through this interface without involving Microsoft Support could result in an unsupported configuration.
+    [1HXQG13.wdshcsso.com]: PS>
+    ```
 
 #### <a name="desktop-machine"></a>[デスクトップ コンピューター](#tab/desktop-machine)
 
@@ -273,7 +274,7 @@ sudo az iot hub create --name "<iothub-group-name>" --sku S1 --resource-group "<
 sudo az iot hub device-identity create --hub-name "<iothub-name>" --device-id "<device-name>" --edge-enabled
 ```
 
-[Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) バージョン 1.0.9 のインストールが必要になります。 次の手順に従って、正しいバージョンをダウンロードします。
+[Azure IoT Edge](../../iot-edge/how-to-provision-single-device-linux-symmetric.md) バージョン 1.0.9 のインストールが必要になります。 次の手順に従って、正しいバージョンをダウンロードします。
 
 Ubuntu Server 18.04:
 ```bash
@@ -306,7 +307,7 @@ sudo apt-get update
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-次に、[接続文字列](../../iot-edge/how-to-register-device.md)を使用して、ホスト コンピューターを IoT Edge デバイスとして IoT Hub インスタンスに登録します。
+次に、[接続文字列](../../iot-edge/how-to-provision-single-device-linux-symmetric.md#register-your-device)を使用して、ホスト コンピューターを IoT Edge デバイスとして IoT Hub インスタンスに登録します。
 
 IoT Edge デバイスを Azure IoT ハブに接続する必要があります。 先ほど作成した IoT Edge デバイスから接続文字列をコピーする必要があります。 または、Azure CLI で以下のコマンドを実行することもできます。
 
@@ -332,7 +333,10 @@ GPU 搭載の Azure 仮想マシンを使用して、空間分析を実行する
 
 Azure portal で、[[仮想マシンの作成]](https://ms.portal.azure.com/#create/Microsoft.VirtualMachine) ウィザードを開きます。
 
-VM に名前を付け、リージョンに [(米国) 米国西部 2] を選択します。 必ず `Availability Options` を [インフラストラクチャ冗長は必要ありません] に設定します。 次の図を参照して全体の構成を確認し、次の手順に従って適切な VM サイズを特定します。 
+VM に名前を付け、リージョンに [(米国) 米国西部 2] を選択します。 
+
+> [!IMPORTANT]
+> 必ず `Availability Options` を [インフラストラクチャ冗長は必要ありません] に設定します。 次の図を参照して全体の構成を確認し、次の手順に従って適切な VM サイズを特定します。 
 
 :::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.jpg" alt-text="仮想マシンの構成の詳細。" lightbox="media/spatial-analysis/virtual-machine-instance-details.jpg":::
 
@@ -344,7 +348,7 @@ VM のサイズを特定するには、[See all sizes]\(すべてのサイズを
 
 :::image type="content" source="media/spatial-analysis/promotional-selection.png" alt-text="プロモーションの選択" lightbox="media/spatial-analysis/promotional-selection.png":::
 
-次に、VM を作成します。 作成したら、Azure portal で VM リソースに移動し、左側のペインから `Extensions` を選択します。 拡張機能ウィンドウが表示され、使用可能なすべての拡張機能が表示されます。 `NVIDIA GPU Driver Extension` を選択し、[作成] をクリックして、ウィザードを完了します。
+次に、VM を作成します。 作成したら、Azure portal で VM リソースに移動し、左側のペインから `Extensions` を選択します。 [追加] をクリックして、使用可能なすべての拡張機能を含む、拡張機能ウィンドウを表示します。 `NVIDIA GPU Driver Extension` を検索して選択し、[作成] をクリックして、ウィザードを完了します。
 
 拡張機能が正常に適用されたら、Azure portal の VM メイン ページに移動し、`Connect` をクリックします。 VM には、SSH または RDP のいずれかを介してアクセスできます。 ビジュアライザー ウィンドウ (後で説明します) の表示が有効になるので、RDP は役に立ちます。 [こちらの手順](../../virtual-machines/linux/use-remote-desktop.md)に従い、VM へのリモート デスクトップ接続を開いて、RDP アクセスを構成します。
 
@@ -429,13 +433,13 @@ sudo az group create --name "<resource-group-name>" --location "<your-region>"
 ```
 利用可能なリージョンについては、[リージョン サポート](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)に関する記事を参照してください。
 ```bash
-sudo az iot hub create --name "<iothub-group-name>" --sku S1 --resource-group "<resource-group-name>"
+sudo az iot hub create --name "<iothub-name>" --sku S1 --resource-group "<resource-group-name>"
 ```
 ```bash
 sudo az iot hub device-identity create --hub-name "<iothub-name>" --device-id "<device-name>" --edge-enabled
 ```
 
-[Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) バージョン 1.0.9 のインストールが必要になります。 次の手順に従って、正しいバージョンをダウンロードします。
+[Azure IoT Edge](../../iot-edge/how-to-provision-single-device-linux-symmetric.md) バージョン 1.0.9 のインストールが必要になります。 次の手順に従って、正しいバージョンをダウンロードします。
 
 Ubuntu Server 18.04:
 ```bash
@@ -468,7 +472,7 @@ sudo apt-get update
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-次に、[接続文字列](../../iot-edge/how-to-register-device.md)を使用して、VM を IoT Edge デバイスとして IoT Hub インスタンスに登録します。
+次に、[接続文字列](../../iot-edge/how-to-provision-single-device-linux-symmetric.md#register-your-device)を使用して、VM を IoT Edge デバイスとして IoT Hub インスタンスに登録します。
 
 IoT Edge デバイスを Azure IoT ハブに接続する必要があります。 先ほど作成した IoT Edge デバイスから接続文字列をコピーする必要があります。 または、Azure CLI で以下のコマンドを実行することもできます。
 
@@ -552,7 +556,7 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>録画したビデオ ファイルを使用して空間分析を実行する
 
-空間分析は、録画したビデオとライブ ビデオの両方で使用できます。 録画したビデオに対して空間分析を使用するには、ビデオ ファイルを録画して mp4 ファイルとして保存してみてください。 Azure に BLOB ストレージ アカウントを作成するか、既存のストレージ アカウントを使用します。 次に、Azure portal で次の BLOB ストレージ設定を更新します。
+空間分析は、録画したビデオとライブ ビデオの両方で使用できます。 録画したビデオに対して空間分析を使用するには、ビデオ ファイルを録画して mp4 ファイルとして保存します。 Azure に BLOB ストレージ アカウントを作成するか、既存のストレージ アカウントを使用します。 次に、Azure portal で次の BLOB ストレージ設定を更新します。
     1. **[安全な転送が必須]** を **[無効]** に変更
     2. **[Allow Blob public access]\(BLOB パブリック アクセスを許可する\)** を **[有効]** に変更
 
@@ -585,6 +589,8 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 コンテナーの開始時または実行時に問題が発生した場合は、[テレメトリとトラブルシューティング](spatial-analysis-logging.md)に関するページを参照して、一般的な問題に対処する手順を確認してください。 この記事には、ログの生成と収集とシステムおよびシステム正常性の収集に関する情報も含まれています。
+
+[!INCLUDE [Diagnostic container](../containers/includes/diagnostics-container.md)]
 
 ## <a name="billing"></a>課金
 

@@ -1,21 +1,22 @@
 ---
 title: Azure Active Directory と Workday の統合のリファレンス
-description: Workday による人事主導のプロビジョニングに関する技術的な詳細
+description: Azure Active Directory での Workday による人事主導のプロビジョニングに関する技術的な詳細
 services: active-directory
-author: cmmdesai
-manager: daveba
+author: kenwith
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 02/09/2021
-ms.author: chmutali
-ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.author: kenwith
+ms.reviewer: arvinh, chmutali
+ms.openlocfilehash: 0f0e3532960196b3c52279343de3bb04d5cb8535
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104333"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068248"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory のプロビジョニングと Workday の統合方法
 
@@ -60,7 +61,7 @@ Workday 管理者と協力して制約付きの統合システム セキュリ�
 
 Workday への接続をテストするため、次の *Get_Workers* Workday Web サービス要求が Azure AD によって送信されます。 
 
-```XML
+```xml
 <!-- Test connection query tries to retrieve one record from the first page -->
 <!-- Replace version with Workday Web Services version present in your connection URL -->
 <!-- Replace timestamps below with the UTC time corresponding to the test connection event -->
@@ -95,7 +96,7 @@ Workday 主導のプロビジョニングのコンテキストにおける **完
 
 ワーカー データを取得するために、次の *Get_Workers* Workday Web サービス要求が Azure AD によって送信されます。 このクエリでは、Workday トランザクション ログから、完全同期の実行に対応する時点の有効日が指定されたすべてのワーカー エントリが検索されます。 
 
-```XML
+```xml
 <!-- Workday full sync query -->
 <!-- Replace version with Workday Web Services version present in your connection URL -->
 <!-- Replace timestamps below with the UTC time corresponding to full sync run -->
@@ -155,7 +156,7 @@ Workday 主導のプロビジョニングのコンテキストにおける **完
 
 上記のクエリに対する Workday からの *Get_Workers* 応答には、ワーカー レコードの数とページ数が含まれています。
 
-```XML
+```xml
   <wd:Response_Results>
     <wd:Total_Results>509</wd:Total_Results>
     <wd:Total_Pages>17</wd:Total_Pages>
@@ -165,7 +166,7 @@ Workday 主導のプロビジョニングのコンテキストにおける **完
 ```
 結果セットの次のページを取得するには、次の *Get_Workers* クエリで、*Response_Filter* のパラメーターとしてページ番号を指定します。
 
-```XML
+```xml
   <p1:Response_Filter>
     <p1:As_Of_Effective_Date>2021-01-19T02:29:16.0094202Z</p1:As_Of_Effective_Date>
     <p1:As_Of_Entry_DateTime>2021-01-19T02:29:16.0094202Z</p1:As_Of_Entry_DateTime>
@@ -408,7 +409,7 @@ Workday 主導のプロビジョニングのコンテキストにおける **完
 
 次に、Workday 統合を拡張して特定の要件を満たす方法の例をいくつか示します。 
 
-**例 1**
+### <a name="example-1-retrieving-cost-center-and-pay-group-information"></a>例 1: コストセンターと支払いグループの情報を取得する
 
 Workday から次のデータ セットを取得し、それらをプロビジョニング ルールで使用するとします。
 
@@ -437,19 +438,31 @@ Workday から次のデータ セットを取得し、それらをプロビジ�
      >| CostCenterCode | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data/wd:Organization_Data[wd:Organization_Type_Reference/@wd:Descriptor='Cost Center']/wd:Organization_Code/text() |
      >| PayGroup | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data/wd:Organization_Data[wd:Organization_Type_Reference/@wd:Descriptor='Pay Group']/wd:Organization_Name/text() |
 
-**例 2**
+### <a name="example-2-retrieving-qualification-and-skills-data"></a>例 2: 資格データとスキル データを取得する
 
 あるユーザーに関連付けられている認定資格を取得するとします。 この情報は、*資格データ* セットの一部として入手できます。 このデータ セットを *Get_Workers* 応答の一部として取得するには、次の XPATH を使用します。 
 
 `wd:Worker/wd:Worker_Data/wd:Qualification_Data/wd:Certification/wd:Certification_Data/wd:Issuer/text()`
 
-**例 3**
+### <a name="example-3-retrieving-provisioning-group-assignments"></a>例 3: プロビジョニング グループの割り当てを取得する
 
-あるワーカーに割り当てられている *プロビジョニング グループ* を取得するとします。 この情報は、*アカウント プロビジョニング データ* セットの一部として入手できます。 このデータ セットを *Get_Workers* 応答の一部として取得するには、次の XPATH を使用します。 
+あるワーカーに割り当てられている *プロビジョニング グループ* を取得するとします。 この情報は、*アカウント プロビジョニング データ* セットの一部として入手できます。 このデータを *Get_Workers* 応答の一部として取得するには、次の XPATH を使用します。 
 
 `wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text()`
 
 ## <a name="handling-different-hr-scenarios"></a>さまざまな HR シナリオの処理
+
+### <a name="support-for-worker-conversions"></a>ワーカーの転換のサポート
+
+ワーカーが正社員から臨時ワーカー、または臨時ワーカーから正社員に転換すると、Workday コネクタによってこの変更が自動的に検出され、AD アカウントがアクティブなワーカー プロファイルにリンクされることにより、すべての AD 属性がアクティブなワーカー プロファイルと同期されます。 この機能を有効にするために構成を変更する必要ありません。 転換が発生した場合のプロビジョニング動作の説明を次に示します。 
+
+* たとえば、John Smith が 1 月に臨時ワーカーとして入社したとします。 John の *WorkerID* (一致する属性) に関連付けられている AD アカウントが存在しない場合、プロビジョニング サービスによりユーザーの新しい AD アカウントが作成され、John の臨時ワーカー *WID (WorkdayID)* を彼の AD アカウントにリンクします。
+* 3 か月後、John は正社員に転換しました。 Workday では、John の新しいワーカー プロファイルが作成されます。 Workday の John の *WorkerID* は変わりませんが、John は Workday に 2 つの *WID* を持ちます。1 つは臨時ワーカー プロファイルに関連付けられ、もう 1 つは正社員のワーカー プロファイルに関連付けされました。 
+* 増分同期中に、プロビジョニング サービスにより同じ WorkerID に対して 2 つのワーカー プロファイルが検出されると、AD アカウントの所有権がアクティブなワーカー プロファイルに自動的に転送されます。 この場合、AD アカウントから臨時ワーカー プロファイルのリンクが削除され、John のアクティブな正社員ワーカー プロファイルと彼の AD アカウントの間に新しいリンクが確立されます。 
+
+>[!NOTE]
+>最初の完全同期中に、以前の非アクティブなワーカー プロファイルに関連付けられている属性値が、転換があったワーカーの AD アカウントにフローする動作が発生することがあります。 これは一時的なもので、完全同期が進行すると、最終的にはアクティブなワーカー プロファイルの属性値によって上書きされます。 完全同期が完了し、プロビジョニング ジョブが安定した状態になると、増分同期中にアクティブなワーカー プロファイルが常に選択されます。 
+
 
 ### <a name="retrieving-international-job-assignments-and-secondary-job-details"></a>国際的なジョブの割り当てとセカンダリ ジョブの詳細の取得
 

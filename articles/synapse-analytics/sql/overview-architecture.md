@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f342f39b62956cd85f269918e8e1ef1a2478a3d8
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: e279aea4bdf0ae3bc18c2ece1556d7ad8483a2de
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566360"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217109"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL アーキテクチャ 
 
@@ -115,4 +115,4 @@ Data Movement Service (DMS) は、専用 SQL プールのデータ転送テク�
 
 ## <a name="next-steps"></a>次のステップ
 
-Synapse SQL について多少理解できたので、すばやく[専用 SQL プールを作成する](../quickstart-create-sql-pool-portal.md)方法と[サンプル データ (./sql-data-warehouse-load-sample-databases.md) を読み込む](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)方法について学習します。 または、[サーバーレス SQL プールを使い始めます](../quickstart-sql-on-demand.md)。 Azure に慣れていない場合に新しい用語を調べるには、 [Azure 用語集](../../azure-glossary-cloud-terminology.md) が役立ちます。 
+Synapse SQL の概要については学習したので、次は、すばやく [専用 SQL プールを作成](../quickstart-create-sql-pool-portal.md)し、[サンプル データを読み込む](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)方法について学習してください。 または、[サーバーレス SQL プールを使い始めます](../quickstart-sql-on-demand.md)。 Azure に慣れていない場合に新しい用語を調べるには、 [Azure 用語集](../../azure-glossary-cloud-terminology.md) が役立ちます。 

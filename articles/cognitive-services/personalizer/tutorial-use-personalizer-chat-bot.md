@@ -1,17 +1,20 @@
 ---
 title: チャット ボットで Personalizer を使用する - Personalizer
 description: Personalizer ループを使用して C# .NET チャット ボットをカスタマイズし、アクション (特徴を伴う) およびコンテキストの特徴に基づいてユーザーに適切なコンテンツを提供します。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 05/17/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7c4920eaa7a5619be37d38afd763e7be416d3124
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 94c46b0c911d8f9e6ba0bee34d207bd7c1d4b8e5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565723"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044745"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>チュートリアル:.NET チャット ボットで Personalizer を使用する
 
@@ -33,7 +36,11 @@ C# .NET チャット ボットを Personalizer ループとともに使用して
 
 チャット ボットは会話のターンを管理する必要があります。 チャット ボットは [Bot Framework](https://github.com/microsoft/botframework-sdk) を使用してボットのアーキテクチャと会話を管理し、Cognitive Service の [Language Understanding](../LUIS/index.yml) (LUIS) を使用して、ユーザーからの自然言語の意図を理解します。
 
+<<<<<<< HEAD
 チャット ボットは、要求に応答するために使用できる特定のルートを持つ Web サイト `http://localhost:3978/api/messages` です。 Bot Emulator を使用すると、ボットをローカルで開発するときに、実行中のチャット ボットと視覚的に対話できます。
+=======
+チャット ボットは、要求に応答するために使用できる特定のルートを持つ Web サイト `http://localhost:3978/api/messages` です。 Bot Framework Emulator を使用すると、ボットをローカルで開発するときに、実行中のチャット ボットと視覚的に対話できます。
+>>>>>>> repo_sync_working_branch
 
 ### <a name="user-interactions-with-the-bot"></a>ボットとユーザーのやり取り
 
@@ -130,7 +137,7 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 このチャット ボットを使用するには、Personalizer および Language Understanding (LUIS) 用の Azure リソースを作成する必要があります。
 
-* [LUIS リソースを作成します](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal)。 作成と予測の両方のリソースが必要であるため、作成手順で **[両方]** を選択します。
+* [LUIS リソースを作成します](../luis/luis-how-to-azure-subscription.md)。 作成リソースと予測リソースの両方を作成します。
 * [Personalizer リソースを作成](how-to-create-resource.md)し、Azure portal からキーとエンドポイントをコピーします。 これらの値は、.NET プロジェクトの `appsettings.json` ファイルで設定する必要があります。
 
 ### <a name="create-luis-app"></a>LUIS アプリを作成する
@@ -174,17 +181,26 @@ LUIS を初めて使用する場合は、[サインイン](https://www.luis.ai)�
 このチュートリアルにはボットの動作内容が説明されているため、この Web サイトを実行したままにし、ボットと対話できるようにしてください。
 
 
+<<<<<<< HEAD
 ## <a name="set-up-the-bot-emulator"></a>Bot Emulator をセットアップする
 
 1. Bot Framework Emulator を開き、 **[Open Bot]\(ボットを開く\)** を選択します。
 
     :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Bot Emulator の起動画面のスクリーンショット。":::
+=======
+## <a name="set-up-the-bot-framework-emulator"></a>Bot Framework Emulator を設定する
+
+1. Bot Framework Emulator を開き、 **[Open Bot]\(ボットを開く\)** を選択します。
+
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Bot Framework Emulator の起動画面のスクリーンショット。":::
+>>>>>>> repo_sync_working_branch
 
 
 1. 次の **[Bot URL]\(ボット URL\)** を使用してボットを構成し、 **[Connect]\(接続\)** を選択します。
 
     `http://localhost:3978/api/messages`
 
+<<<<<<< HEAD
     :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Bot Emulator のボットを開く設定のスクリーンショット。":::
 
     エミュレーターはチャット ボットに接続し、ローカル開発に役立つログやデバッグ情報とともに、説明テキストを表示します。
@@ -192,6 +208,15 @@ LUIS を初めて使用する場合は、[サインイン](https://www.luis.ai)�
     :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="会話の最初のターンにおける Bot Emulator のスクリーンショット。":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>Bot Emulator でボットを使用する
+=======
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Bot Framework Emulator のボットを開く設定のスクリーンショット。":::
+
+    エミュレーターはチャット ボットに接続し、ローカル開発に役立つログやデバッグ情報とともに、説明テキストを表示します。
+
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="会話の最初のターンにおける Bot Framework Emulator のスクリーンショット。":::
+
+## <a name="use-the-bot-in-the-bot-framework-emulator"></a>Bot Framework Emulator でボットを使用する
+>>>>>>> repo_sync_working_branch
 
 1. `I would like to see the menu` と入力して、メニューを表示するように要求します。 チャット ボットによって項目が表示されます。
 1. `Please suggest a drink for me.` と入力することによって、ボットが項目を提案するようにします。エミュレーターではチャット ウィンドウに順位の要求と応答が表示されるため、完全な JSON を確認できます。 ボットは `How about Latte?` のような提案を行います。
@@ -328,7 +353,7 @@ public class PersonalizerChatbot : ActivityHandler
 
 #### <a name="calling-rank-api-and-display-results"></a>Rank API の呼び出しと結果の表示
 
-メソッド `ChooseRankAsync` は、特徴を含むアクションとコンテキストの特徴を収集することによって、Personalizer の Rank API に送信する JSON データを構築します。
+メソッド `ChooseRankAsync` は、特徴を含むアクションとコンテキストの特徴を収集することによって、Personalizer Rank API に送信する JSON データを構築します。
 
 ```csharp
 private async Task<RankResponse> ChooseRankAsync(ITurnContext turnContext, string eventId, CancellationToken cancellationToken)
@@ -397,7 +422,7 @@ private async Task<RankResponse> ChooseRankAsync(ITurnContext turnContext, strin
 
 #### <a name="calling-reward-api-and-display-results"></a>Reward API の呼び出しと結果の表示
 
-メソッド `RewardAsync` は、スコアを決定することによって、Personalizer の Reward API に送信する JSON データを構築します。 スコアは、ユーザーテキストで識別され、`OnTurnAsync` メソッドから送信される LUIS インテントから決定されます。
+メソッド `RewardAsync` は、スコアを決定することによって、Personalizer Reward API に送信する JSON データを構築します。 スコアは、ユーザーテキストで識別され、`OnTurnAsync` メソッドから送信される LUIS インテントから決定されます。
 
 ```csharp
 private async Task RewardAsync(ITurnContext turnContext, string eventId, double reward, CancellationToken cancellationToken)

@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Azure Active Directory アプリケーション プロキシのドキュメント
+summary: Azure Active Directory アプリケーション プロキシを使用すると、プライベート アプリケーションに対し、セキュリティで保護されたリモート アクセスとクラウド規模のセキュリティが提供されます。
+metadata:
+  title: アプリケーション プロキシのドキュメント
+  description: Azure Active Directory アプリケーション プロキシを使用すると、プライベート アプリケーションに対し、セキュリティで保護されたリモート アクセスとクラウド規模のセキュリティが提供されます。
+  ms.service: active-directory
+  ms.subservice: app-proxy
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 04/27/2021
+  author: kenwith
+  ms.author: kenwith
+  manager: karenh444
+  ms.openlocfilehash: 146b6fa46ecf743d3240868d682b575fa29157e5
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129988432"
+landingContent:
+- title: アプリケーション プロキシについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: アプリケーション プロキシとは
+      url: what-is-application-proxy.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: アプリを表示する
+      url: ../manage-apps/view-applications-portal.md
+    - text: アプリを追加する
+      url: ../manage-apps/add-application-portal.md
+- title: シングル サインオンについて
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: シングルサインオンの概念
+      url: ../manage-apps/what-is-single-sign-on.md
+    - text: シングル サインオンのオプション
+      url: ../manage-apps/sso-options.md
+- title: 新しいアプリの開発
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 開発者向けのガイダンス
+      url: ../develop/v2-howto-app-gallery-listing.md
+    - text: プラットフォームとは
+      url: ../develop/v2-overview.md
+- title: ドキュメントの最新情報
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: ドキュメントの最新情報
+      url: whats-new-docs.md

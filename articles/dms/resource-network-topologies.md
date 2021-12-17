@@ -2,22 +2,20 @@
 title: SQL Managed Instance の移行のためのネットワーク トポロジ
 titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用した Azure SQL Managed Instance の移行のための、ソースおよびターゲット構成について学習します。
-services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: reference
 ms.date: 01/08/2020
-ms.openlocfilehash: 0799e8c76bc5d3969943d766aa83de40659a236a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a4cdce5ae20147bbf25a82401c9993a620320e5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093337"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363045"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Azure Database Migration Service を使用して Azure SQL Managed Instance を移行するためのネットワーク トポロジ
 
@@ -46,7 +44,7 @@ Azure SQL Managed Instance がオンプレミス ネットワークに接続さ�
 
 **必要条件**
 
-- このシナリオで Azure Database Migration Service に使用される仮想ネットワークは、 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して、オンプレミス ネットワークにも接続される必要があります。
+- このシナリオで Azure Database Migration Service に使用される仮想ネットワークは、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して、オンプレミス ネットワークにも接続される必要があります。
 - SQL Managed Instance 用と、Azure Database Migration Service 用に使用される仮想ネットワーク間に、[VNet ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)を設定します。
 
 ## <a name="cloud-to-cloud-migrations-shared-virtual-network"></a>クラウド間の移行:共有仮想ネットワーク

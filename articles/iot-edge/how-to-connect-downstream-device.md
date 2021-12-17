@@ -2,7 +2,6 @@
 title: ダウンストリーム デバイスを構成する - Azure IoT Edge | Microsoft Docs
 description: ダウンストリーム デバイスまたはリーフ デバイスを Azure IoT Edge ゲートウェイ デバイスに接続するように構成する方法。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 10/15/2020
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: dc2d2d3e92435c7a028b43a095f456c2c383ecb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8385d046a57fe5bb4faab1f31daaa05c9f207e9f
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199629"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456539"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -114,7 +113,7 @@ sudo update-ca-certificates
 
 次の手順は、Windows ホストに CA 証明書をインストールする方法の例です。 この例は、前提条件の記事の **azure-iot-test-only.root.ca.cert.pem** 証明書を使用していること、およびダウンストリーム デバイス上の場所に証明書をコピー済みであることを前提にしています。
 
-証明書は、PowerShell の [Import-Certificate](/powershell/module/pkiclient/import-certificate) を使用して管理者としてインストールできます。
+証明書は、PowerShell の [Import-Certificate](/powershell/module/pki/import-certificate) を使用して管理者としてインストールできます。
 
 ```powershell
 import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
@@ -198,7 +197,7 @@ Windows ホストで OpenSSL または別の TLS ライブラリを使用して�
 
 このセクションでは、Azure IoT Java デバイス クライアントを IoT Edge ゲートウェイに接続するサンプル アプリケーションを示します。
 
-1. **Send-event** のサンプルを [Java 用 Azure IoT device SDK サンプル](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples)のページから入手します。
+1. **Send-event** のサンプルを [Java 用 Azure IoT device SDK サンプル](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples)のページから入手します。
 2. **readme.md** ファイルを読み、サンプルを実行するための前提として必要なものがすべて揃っていることを確認します。
 3. お使いのデバイス上でサンプルを実行する方法を示す手順については、SDK ドキュメントを参照してください。
 

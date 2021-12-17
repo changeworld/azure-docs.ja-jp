@@ -1,29 +1,29 @@
 ---
-title: Windows Virtual Desktop 環境のホスト プールの作成 - Azure
-description: Windows Virtual Desktop 環境のセットアップ中にテナントとホスト プールの問題をトラブルシューティングおよび解決する方法。
+title: Azure Virtual Desktop 環境のホスト プールの作成 - Azure
+description: Azure Virtual Desktop 環境のセットアップ中にテナントとホスト プールの問題をトラブルシューティングおよび解決する方法。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 4d515e75aba9b3912507da07267c3dcb31f1ee34
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 7e2c4c6a68bb8db4434a233e7b7c658074ed015a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445501"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804123"
 ---
 # <a name="host-pool-creation"></a>ホスト プールの作成
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)を参照してください。
 
-この記事では、Windows Virtual Desktop テナントと、関連するセッション ホスト プール インフラストラクチャの初期セットアップ中の問題について説明します。
+この記事では、Azure Virtual Desktop テナントと、関連するセッション ホスト プール インフラストラクチャの初期セットアップ中の問題について説明します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 
-Windows Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Windows Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)にアクセスしてください。
+Azure Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Azure Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/bd-p/AzureVirtualDesktopForum)にアクセスしてください。
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise マルチセッションのイメージの入手
 
@@ -56,7 +56,7 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 ### <a name="i-only-see-us-when-setting-the-location-for-my-service-objects"></a>サービス オブジェクトの場所を設定する際、米国以外が表示されない
 
-**原因**: 現時点では、Azure は Windows Virtual Desktop サービスのリージョンをサポートしていません。 サポートされている地域の詳細については、[データの場所](data-locations.md)に関するページを参照してください。 特定の場所が Windows Virtual Desktop でサポートされているにもかかわらず、場所の選択時に表示されない場合は、リソース プロバイダーがまだ更新されていないことを意味します。
+**原因**: 現時点では、Azure は Azure Virtual Desktop サービスのリージョンをサポートしていません。 サポートされている地域の詳細については、[データの場所](data-locations.md)に関するページを参照してください。 特定の場所が Azure Virtual Desktop でサポートされているにもかかわらず、場所の選択時に表示されない場合は、リソース プロバイダーがまだ更新されていないことを意味します。
 
 **解決策**: リージョンの最新の一覧を取得するには、リソース プロバイダーを再登録します。
 
@@ -71,7 +71,7 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失敗をトラブルシューティングするには、次の手順に従います。
 
 1. 「[Azure Resource Manager でのデプロイ操作の表示](../azure-resource-manager/templates/deployment-history.md)」を使用して、デプロイのエラーを確認します。
-2. デプロイにエラーがない場合、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を使用して、アクティビティ ログのエラーを確認します。
+2. デプロイにエラーがない場合、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-monitor/essentials/activity-log.md)」を使用して、アクティビティ ログのエラーを確認します。
 3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)」のリソースを使用して問題に対処します。
 4. 以前のデプロイ中に作成されたすべてのリソースを削除し、テンプレートのデプロイを再試行します。
 
@@ -122,11 +122,11 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 > [!div class="mx-imgBorder"]
 > ![ターミナルのプロビジョニングの状態 (失敗) を示しているデプロイ失敗のスクリーンショット。](media/failure-vmextensionprovisioning.png)
 
-**原因 1:** Windows Virtual Desktop 環境の一時的なエラーです。
+**原因 1:** Azure Virtual Desktop 環境の一時的なエラーです。
 
 **原因 2:** 一時的な接続エラーです。
 
-**解決策:** PowerShell を使用してサインインすることによって、Windows Virtual Desktop 環境が正常であることを確認します。 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」で、VM の登録を手動で終了します。
+**解決:** PowerShell を使用してサインインすることによって、Azure Virtual Desktop 環境が正常であることを確認します。 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」で、VM の登録を手動で終了します。
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>エラー:指定した管理者のユーザー名は許可されません
 
@@ -280,13 +280,13 @@ the VM.\\\"
 
 ## <a name="next-steps"></a>次のステップ
 
-- Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
-- Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
-- Windows Virtual Desktop エージェントまたはセッション接続に関連した問題をトラブルシューティングするには、「[Windows Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする](troubleshoot-agent.md)」を参照してください。
-- Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
+- Azure Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
+- Azure Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md) に関する記事を参照してください。
+- Azure Virtual Desktop エージェントまたはセッション接続に関連する問題のトラブルシューティングについては、「[Azure Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする](troubleshoot-agent.md)」を参照してください。
+- Azure Virtual Desktop クライアント接続の問題をトラブルシューティングするには、「[Azure Virtual Desktop サービスの接続](troubleshoot-service-connection.md)」を参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
-- Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
-- サービスの詳細については、[Windows Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
+- Azure Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Azure Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
+- サービスの詳細については、[Azure Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
 - トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)」を参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」をご覧ください。
+- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-monitor/essentials/activity-log.md)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../azure-resource-manager/templates/deployment-history.md)に関するページを参照してください。

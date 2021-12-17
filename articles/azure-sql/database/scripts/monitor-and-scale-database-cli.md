@@ -9,14 +9,14 @@ ms.devlang: azurecli
 ms.topic: sample
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 06/25/2019
-ms.openlocfilehash: bd982ab6dc66674e705f080511282bcfeb909872
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6fa95640ff047882c8c54ab86a37edb602745550
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787181"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752244"
 ---
 # <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Azure CLI を使用して Azure SQL Database の単一データベースを監視してスケーリングする
 

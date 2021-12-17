@@ -6,15 +6,16 @@ author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 05/07/2020
+ms.date: 11/02/2021
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c87f8d7b2beaa0ad77e5fa9740910bcdd1a019e5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307947"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018870"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法
 
@@ -52,7 +53,7 @@ Synapse SQL の OPENROWSET 関数は、データ ソースからファイルの�
     > `DATA_SOURCE` を指定しない `OPENROWSET` では、ストレージ ファイルにすばやく簡単にアクセスできますが、認証オプションが限られます。 例として、Azure AD プリンシパルは、[Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity) を使用した場合にのみファイルにアクセスできるほか、公開されているファイルにアクセスすることができます。 より強力な認証オプションが必要な場合は、`DATA_SOURCE` オプションを使用して、ストレージへのアクセスに使用する資格情報を定義します。
 
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 データベース ユーザーが `OPENROWSET` 関数を使用するには `ADMINISTER BULK OPERATIONS` 権限が必要です。
 
@@ -70,10 +71,10 @@ Synapse SQL の OPENROWSET 関数は、データ ソースからファイルの�
 ## <a name="syntax"></a>構文
 
 ```syntaxsql
---OPENROWSET syntax for reading Parquet files
+--OPENROWSET syntax for reading Parquet or Delta Lake (preview) files
 OPENROWSET  
 ( { BULK 'unstructured_data_path' , [DATA_SOURCE = <data source name>, ]
-    FORMAT='PARQUET' }  
+    FORMAT= ['PARQUET' | 'DELTA'] }  
 )  
 [WITH ( {'column_name' 'column_type' }) ]
 [AS] table_alias(column_alias,...n)
@@ -82,7 +83,8 @@ OPENROWSET
 OPENROWSET  
 ( { BULK 'unstructured_data_path' , [DATA_SOURCE = <data source name>, ] 
     FORMAT = 'CSV'
-    [ <bulk_options> ] }  
+    [ <bulk_options> ]
+    [ , <reject_options> ] }  
 )  
 WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })  
 [AS] table_alias(column_alias,...n)
@@ -90,7 +92,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 <bulk_options> ::=  
 [ , FIELDTERMINATOR = 'char' ]    
 [ , ROWTERMINATOR = 'char' ] 
-[ , ESCAPE_CHAR = 'char' ] 
+[ , ESCAPECHAR = 'char' ] 
 [ , FIRSTROW = 'first_row' ]     
 [ , FIELDQUOTE = 'quote_characters' ]
 [ , DATA_COMPRESSION = 'data_compression_method' ]
@@ -98,6 +100,14 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 [ , HEADER_ROW = { TRUE | FALSE } ]
 [ , DATAFILETYPE = { 'char' | 'widechar' } ]
 [ , CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' } ]
+[ , ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}' ]
+
+<reject_options> ::=  
+{  
+    | MAXERRORS = reject_value,  
+    | ERRORFILE_DATA_SOURCE = <data source name>,
+    | ERRORFILE_LOCATION = '/REJECT_Directory'
+}  
 ```
 
 ## <a name="arguments"></a>引数
@@ -108,13 +118,15 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 
 - 'PARQUET' - Parquet 形式のバイナリ ファイル 
 
+- 'DELTA' - Delta Lake (プレビュー) 形式で編成された Parquet ファイルのセット 
+
 **'unstructured_data_path'**
 
 データへのパスを確立する unstructured_data_path には、絶対パスまたは相対パスを指定できます。
-- '\<prefix>://\<storage_account_path>/\<storage_path>' という形式の絶対パスを使用すると、ユーザーがファイルを直接読み取ることができるようになります。
-- '<storage_path>' という形式の相対パスは、`DATA_SOURCE` パラメーターと一緒に使用する必要があり、`EXTERNAL DATA SOURCE` に定義された<storage_account_path> の場所にあるファイル パターンを指定します。 
+- `\<prefix>://\<storage_account_path>/\<storage_path>` 形式の絶対パスを使用すると、ユーザーがファイルを直接読み取ることができるようになります。
+- `<storage_path>` 形式の相対パスは、`DATA_SOURCE` パラメーターと一緒に使用する必要があり、`EXTERNAL DATA SOURCE` に定義された <storage_account_path> の場所にあるファイル パターンを指定します。 
 
-以下に、特定の外部データ ソースにリンクする、関連する <storage account path> 値を示します。 
+以下に、特定の外部データ ソースにリンクする、関連する \<storage account path> 値を示します。 
 
 | 外部データ ソース       | Prefix | ストレージ アカウント パス                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
@@ -138,7 +150,7 @@ unstructured_data_path をフォルダーとして指定すると、サーバー
 例のように、パスの末尾に /* を指定することで、フォルダーをスキャンするようサーバーレス SQL プールに指示できます: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> Hadoop や PolyBase とは異なり、サーバーレス SQL プールの場合、パスの末尾に /** を指定しない限りサブフォルダーは返されません。
+> Hadoop や PolyBase とは異なり、サーバーレス SQL プールの場合、パスの末尾に /** を指定しない限りサブフォルダーは返されません。 Hadoop や PolyBase と同様、名前が下線 (_) やピリオド (.) で始まるファイルは返されません。
 
 次の例で unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/` の場合、サーバーレス SQL プール クエリによって、mydata.txt から行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
 
@@ -152,9 +164,9 @@ WITH 句を使用すると、ファイルから読み取る列を指定できま
     > [!TIP]
     > CSV ファイルの場合は WITH 句を省略することもできます。 データ型は、ファイルの内容から自動的に推論されます。 HEADER_ROW 引数を使用してヘッダー行の存在を指定することができます。この場合、列名はヘッダー行から読み取られます。 詳細については、「[スキーマの自動検出](#automatic-schema-discovery)」を参照してください。
     
-- Parquet データ ファイルの場合は、元のデータ ファイル内の列名と一致する列名を指定します。 列は名前によってバインドされます (大文字と小文字が区別されます)。 WITH 句を省略すると、Parquet ファイルのすべての列が返されます。
+- Parquet または Delta Lake ファイルの場合は、元のデータ ファイル内の列名と一致する列名を指定します。 列は名前によってバインドされます (大文字と小文字が区別されます)。 WITH 句を省略すると、Parquet ファイルのすべての列が返されます。
     > [!IMPORTANT]
-    > Parquet ファイル内の列名では大文字と小文字が区別されます。 大文字と小文字の区別が Parquet ファイル内の列名と異なる列名を指定すると、その列に対して NULL 値が返されます。
+    > Parquet および Delta Lake ファイル内の列名では大文字と小文字が区別されます。 大文字と小文字の区別がファイル内の列名と異なる列名を指定すると、その列に対して `NULL` 値が返されます。
 
 
 column_name = 出力列の名前。 指定した場合、ソース ファイル内の列名および JSON パスに指定された列名 (存在する場合) は、この名前によってオーバーライドされます。 json_path を指定しなかった場合、"$.column_name" として自動的に追加されます。 動作については、json_path 引数をチェックしてください。
@@ -187,11 +199,14 @@ ROWTERMINATOR ='row_terminator'`
 
 使用する行ターミネータを指定します。 行ターミネータが指定されていない場合は、既定のターミネータの 1 つが使用されます。 PARSER_VERSION = '1.0' の既定のターミネータは、\r\n、\n、および \r です。 PARSER_VERSION = '2.0' の既定のターミネータは、\r\n および \n です。
 
+> [!NOTE]
+> PARSER_VERSION='1.0' を使用し、\n (改行) を行ターミネータとして指定すると、自動的に \r (キャリッジ リターン) 文字が前に付加され、結果的には行ターミネータが \r\n になります。
+
 ESCAPE_CHAR = 'char'
 
 ファイル内でそれ自体とすべての区切り記号の値をエスケープするために使用するファイル内の文字を指定します。 エスケープ文字の後にそれ自体以外の値、またはいずれかの区切り記号の値が続く場合は、その値を読み取るときにエスケープ文字が削除されます。 
 
-ESCAPE_CHAR パラメーターは、FIELDQUOTE が有効かどうかに関係なく適用されます。 引用文字をエスケープするために使用されることはありません。 引用文字は、別の引用文字でエスケープする必要があります。 引用文字は、値が引用文字で囲まれている場合にのみ、列の値の中で使用できます。
+ESCAPECHAR パラメーターは、FIELDQUOTE が有効かどうかに関係なく適用されます。 引用文字をエスケープするために使用されることはありません。 引用文字は、別の引用文字でエスケープする必要があります。 引用文字は、値が引用文字で囲まれている場合にのみ、列の値の中で使用できます。
 
 FIRSTROW = 'first_row' 
 
@@ -219,6 +234,8 @@ CSV パーサー バージョン 1.0 が既定であり、機能が豊富です�
 CSV パーサー バージョン 1.0 の詳細:
 
 - 次のオプションはサポートされていません。HEADER_ROW。
+- 既定のターミネータは \r\n、\n、\r です。 
+- \n (改行) を行ターミネータとして指定すると、自動的に \r (キャリッジ リターン) 文字が前に付加され、結果的には行ターミネータが \r\n になります。
 
 CSV パーサー バージョン 2.0 の詳細:
 
@@ -227,21 +244,61 @@ CSV パーサー バージョン 2.0 の詳細:
 - 行の最大サイズの上限は 8 MB です。
 - 次のオプションはサポートされていません。DATA_COMPRESSION
 - 引用符で囲まれた空の文字列 ("") は、空の文字列として解釈されます。
+- DATEFORMAT SET オプションは受け付けられません。
 - DATE データ型でサポートされている形式: YYYY-MM-DD
 - TIME データ型でサポートされている形式: HH:MM:SS[.秒の小数部]
 - DATETIME2 データ型でサポートされている形式: YYYY-MM-DD HH:MM:SS[.秒の小数部]
+- 既定のターミネータは \r\n と \n です。
 
 HEADER_ROW = { TRUE | FALSE }
 
-CSV ファイルにヘッダー行を含めるかどうかを指定します。 既定値は FALSE です。 PARSER_VERSION='2.0' でサポートされています。 TRUE の場合、列名は、FIRSTROW 引数に従って最初の行から読み取られます。 TRUE であり、WITH を使用してスキーマを指定すると、列名のバインドは序数位置ではなく列名によって行われます。
+CSV ファイルにヘッダー行を含めるかどうかを指定します。 既定値は `FALSE.` です。PARSER_VERSION='2.0' でサポートされています。 TRUE の場合、列名は、FIRSTROW 引数に従って最初の行から読み取られます。 TRUE であり、WITH を使用してスキーマを指定すると、列名のバインドは序数位置ではなく列名によって行われます。
 
 DATAFILETYPE = { 'char' | 'widechar' }
 
-エンコードを指定します。UTF8 にはchar が使用され、UTF16 ファイルには widechar が使用されます。
+エンコードを指定します。UTF8 には `char` が使用され、UTF16 ファイルには `widechar` が使用されます。
 
 CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' }
 
 データ ファイル内のデータのコード ページを指定します。 既定値は 65001 (UTF-8 エンコード) です。 このオプションの詳細については、[こちら](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15&preserve-view=true#codepage)を参照してください。
+
+ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}'
+
+このオプションを選択すると、クエリの実行中にファイル変更チェックが無効にされ、クエリの実行中に更新されたファイルが読み取られます。 これは、クエリの実行中に追加される追加専用ファイルを読み取る必要がある場合に便利なオプションです。 追加可能なファイルでは、既存のコンテンツは更新されず、新しい行の追加のみが行われます。 そのため、更新可能なファイルと比較して、結果が不正確になる可能性が最小限に抑えられます。 このオプションを使用すると、エラーを処理する必要なく、頻繁に追加されるファイルを読み取ることができるようになります。 詳細については、[追加可能な CSV ファイルのクエリ](query-single-csv-file.md#querying-appendable-files)に関する記事を参照してください。
+
+拒否オプション 
+
+> [!NOTE]
+> 拒否された行機能はパブリック プレビュー段階にあります。
+> 拒否された行機能は、区切られたテキスト ファイルと PARSER_VERSION 1.0 で動作することに注意してください。
+
+
+外部データ ソースから取得したダーティ レコードがどのように処理されるかを決める reject パラメーターを指定できます。 データ レコードが "ダーティ" と見なされるのは、実際のデータ型が外部テーブルの列の定義と一致しない場合です。
+
+拒否オプションを指定も変更もしないと、既定値が使用されます。 サービスによって拒否オプションが使用され、実際のクエリが失敗する前に拒否できる行数が決定されます。 拒否のしきい値を超えるまで、クエリの (部分的な) 結果が返されます。 その後、適切なエラー メッセージと共に失敗します。
+
+
+MAXERRORS = *reject_value* 
+
+クエリが失敗するまでに拒否できる行数を指定します。 MAXERRORS は 0 から 2,147,483,647 までの整数にする必要があります。
+
+ERRORFILE_DATA_SOURCE = *data source*
+
+拒否された行と対応するエラー ファイルが書き込まれるデータ ソースを指定します。
+
+ERRORFILE_LOCATION = *Directory Location*
+
+拒否された行と対応するエラー ファイルが書き込まれる DATA_SOURCE、または指定されている場合は ERROR_FILE_DATASOURCE を指定します。拒否された行と該当エラー ファイルをそこに書き込みます。 指定したパスが存在しない場合、そのパスが自動的に作成されます。 "_rejectedrows" という名前で子ディレクトリが作成されます。"_ " 文字があることで、場所パラメーターで明示的に指定されない限り、他のデータ処理ではこのディレクトリがエスケープされます。 このディレクトリ内には、読み込み送信時刻に基づいて作成されたフォルダーが存在し、これは次の形式になっています。YearMonthDay_HourMinuteSecond_StatementID (例: 20180330-173205-559EE7D2-196D-400A-806D-3BF5D007F891)。 ステートメント id を使用して、フォルダーをその生成元のクエリと関連付けることができます。 このフォルダーには、2 つのファイルが書き込まれます。具体的には、error.json ファイルとデータ ファイルです。 
+
+error.json ファイルには、拒否された行に関連する、発生したエラーの json 配列が含まれています。 エラーを表す各要素には、次の属性が含まれています。
+
+| 属性 | 説明                                                  |
+| --------- | ------------------------------------------------------------ |
+| エラー     | 行が拒否された理由。                                  |
+| 行       | ファイル内の拒否された行の序数。                         |
+| 列    | 拒否された列の序数。                              |
+| 値     | 拒否された列の値。 値が 100 文字を超える場合は、最初の 100 文字のみが表示されます。 |
+| File      | 行が属しているファイルのパス。                            |
 
 ## <a name="fast-delimited-text-parsing"></a>高速の区切りテキスト解析
 
@@ -256,11 +313,11 @@ Parquet ファイルには、読み取られる列のメタデータが含まれ
 CSV ファイルの場合、列名はヘッダー行から読み取ることができます。 HEADER_ROW 引数を使用して、ヘッダー行が存在するかどうかを指定できます。 HEADER_ROW = FALSE の場合、汎用の列名が使用されます: C1、C2、...Cn の n はファイル内の列番号です。 データ型は、最初の 100 データ行から推論されます。 サンプルについては、「[スキーマを指定せずに CSV ファイルを読み取る](#read-csv-files-without-specifying-schema)」を参照してください。
 
 > [!IMPORTANT]
-> 情報不足のために適切なデータ型を推論できず、代わりにより大きいデータ型が使用される場合もあります。 この場合、パフォーマンスのオーバーヘッドが発生します。特に、varchar (8000) として推論される文字型の列で大きな影響があります。 最適なパフォーマンスを得るには、[推論されたデータ型を確認](best-practices-sql-on-demand.md#check-inferred-data-types)し、[適切なデータ型を使用](best-practices-sql-on-demand.md#use-appropriate-data-types)してください。
+> 情報不足のために適切なデータ型を推論できず、代わりにより大きいデータ型が使用される場合もあります。 この場合、パフォーマンスのオーバーヘッドが発生します。特に、varchar (8000) として推論される文字型の列で大きな影響があります。 最適なパフォーマンスを得るには、[推論されたデータ型を確認](./best-practices-serverless-sql-pool.md#check-inferred-data-types)し、[適切なデータ型を使用](./best-practices-serverless-sql-pool.md#use-appropriate-data-types)してください。
 
 ### <a name="type-mapping-for-parquet"></a>Parquet の型マッピング
 
-Parquet ファイルには、すべての列の型の説明が含まれています。 次の表では、Parquet 型を SQL ネイティブ型にマップする方法について説明します。
+Parquet および Delta Lake ファイルには、すべての列の型の説明が含まれています。 次の表では、Parquet 型を SQL ネイティブ型にマップする方法について説明します。
 
 | Parquet 型 | Parquet 論理型 (注釈) | SQL データ型 |
 | --- | --- | --- |
@@ -339,6 +396,20 @@ FROM
     ) AS [r]
 ```
 
+### <a name="read-delta-lake-files-without-specifying-schema"></a>スキーマを指定せずに Delta Lake ファイルを読み取る
+
+次の例では、列名とデータ型を指定せずに、census データ セットの最初の行のすべての列が Delta Lake 形式で返されます。 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='DELTA'
+    ) AS [r]
+```
+
 ### <a name="read-specific-columns-from-csv-file"></a>CSV ファイルから特定の列を読み取る
 
 次の例では、population*.csv ファイルから序数 1 と 4 の 2 列だけが返されます。 ファイルにはヘッダー行がないため、最初の行から読み取りを開始します。
@@ -401,6 +472,24 @@ WITH (
 AS [r]
 ```
 
+### <a name="specify-multiple-filesfolders-in-bulk-path"></a>複数のファイルまたはフォルダーを BULK パスで指定する
+
+次の例は、BULK パラメーターで複数のファイルまたはフォルダーのパスを使用する方法を示しています。
+
+```sql
+SELECT 
+    TOP 10 *
+FROM  
+    OPENROWSET(
+        BULK (
+            'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=2000/*.parquet',
+            'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=2010/*.parquet',
+        ),
+        FORMAT='PARQUET'
+    )
+AS [r]
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-その他のサンプルについては、[データ ストレージに対するクエリに関するクイックスタート](query-data-storage.md)を参照して、`OPENROWSET` を使用して [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、および [JSON](query-json-files.md) ファイル形式を読み取る方法について学習してください。 最適なパフォーマンスが得られるように、[ベスト プラクティス](best-practices-sql-on-demand.md)をご確認ください。 また、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage に保存する方法も確認できます。
+その他のサンプルについては、[データ ストレージに対するクエリに関するクイックスタート](query-data-storage.md)を参照して、`OPENROWSET` を使用して [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、[DELTA LAKE](query-delta-lake-format.md)、および [JSON](query-json-files.md) ファイル形式を読み取る方法について学習してください。 最適なパフォーマンスが得られるように、[ベスト プラクティス](./best-practices-serverless-sql-pool.md)をご確認ください。 また、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage に保存する方法も確認できます。

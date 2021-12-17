@@ -1,39 +1,61 @@
 ---
-title: コンテンツに対応したエンコードのプリセット
+title: コンテンツに対応したエンコード プリセット
 description: この記事では、Microsoft Azure Media Services v3 でのコンテンツに対応したエンコードについて説明します。
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali-ms
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/16/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8b48c6b0ef84458fa54692994d8e295d25114dd8
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: a34e2d16edb4a8ec9ba40a4426fcbbd9b2127b16
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111240"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590406"
 ---
-# <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>コンテンツに対応したエンコードのプリセットを使用して、特定の解像度に最適なビットレートの値を検索する
+# <a name="content-aware-encoding"></a>コンテンツに対応したエンコード
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-[アダプティブ ビットレート ストリーミング](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)によるコンテンツ配信の準備をするためには、ビデオを複数のビット レート (高から低まで) でエンコードする必要があります。 これによりビットレートが低くなるにつれてビデオの解像度も低下するため、品質のグレースフル デグラデーションが保証されます。 このような複数のビットレート エンコードにより、いわゆるエンコード ラダー (解像度とビットレートの表) が生成されます。Media Services の[組み込みエンコード プリセット](/rest/api/media/transforms/createorupdate#encodernamedpreset)をご覧ください。
+## <a name="overview-of-the-content-aware-encoding-preset"></a>コンテンツ対応エンコード プリセットの概要
 
-処理中のコンテンツに注意し、エンコード ラダーを個々のビデオの複雑さに合わせてカスタマイズまたはチューニングする必要があります。 各解像度では、それを超えると品質が向上しても知覚できないビットレートが存在します。エンコーダーはこの最適なビットレート値で動作します。 最適化の次のレベルでは、コンテンツに基づいて解像度を選択します。たとえば、PowerPoint プレゼンテーションのビデオは、720p を下回ってもメリットはありません。 さらに進むと、ビデオ内の各ショットの設定を最適化するようにエンコーダーに任せることができます。 
+[アダプティブ ビットレート ストリーミング](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)を使用して配信するコンテンツを準備するには、複数のビットレート (高から低) および複数の解像度でビデオをエンコードする必要があります。 この手法により、Apple iOS、Android、Windows、Mac 上の最新のビデオ プレーヤーで、バッファーリングなしでコンテンツをスムーズにストリーム配信するストリーミング プロトコルを使用できるようになります。 さまざまな表示サイズ (解像度) と品質 (ビットレート) を用意しておくことにより、プレーヤーでは現在のネットワークの状態でサポートできるビデオの最適なバージョンを選択できます。 ネットワークは、LTE、4G、5G、パブリック Wi-Fi、ホーム ネットワークなどさまざまです。
 
-Microsoft の[アダプティブ ストリーミング](encode-autogen-bitrate-ladder.md) プリセットは、ソース ビデオの品質と解像度のばらつきの問題に部分的に対処しています。 お客様のところには、一部が 1080 p でそれ以外が 720 p、またいくつかは SD やそれ以下の解像度というように、さまざまなコンテンツが混在しています。 さらに、すべてのソース コンテンツが映画やテレビ スタジオの高品質メザニンであるとは限りません。 アダプティブ ストリーミング プリセットは、ビットレート ラダーが入力メザニンの解像度または平均ビットレートを絶対に超えないようにすることで、これらの問題を解決します。 ただし、このプリセットでは、解像度とビットレート以外のソース プロパティは確認されません。
+コンテンツを複数の表示にエンコードするプロセスでは、"エンコード ラダー" (生成する内容をエンコーダーに伝える、解像度とビットレートの表) を生成する必要があります。 このようなラダーの例については、Media Services の[組み込みのエンコード プリセット](/rest/api/media/transforms/createorupdate#encodernamedpreset)に関するセクションを参照してください。
 
-## <a name="the-content-aware-encoding"></a>コンテンツに対応したエンコード
+理想的な条件の下では、エンコードするコンテンツの種類に注意する必要があります。 この情報を使って、ソース ビデオの複雑さと動きに合わせてエンコード ラダーを調整できます。 ラダーの各表示サイズ (解像度) では、それを超えると品質が向上しても知覚できないビットレートが存在します。エンコーダーは、この最適なビットレート値で動作します。
 
-コンテンツに対応したエンコード プリセットは、広範な計算解析を必要とせずに、エンコーダーに与えられた解像度に対して最適なビットレート値を探させるカスタム ロジックを組み込むことによって、"アダプティブ ビットレート ストリーミング" のメカニズムを拡張します。 このプリセットでは、一連の GOP 配列 MP4 が作成されます。 入力コンテンツを指定すると、サービスによって入力コンテンツに対する最初の簡単な分析が実行され、その結果を使用して、アダプティブ ストリーミングによる配信に最適なレイヤーの数、適切なビット レートと解像度の設定が決定されます。 このプリセットは、複雑さが低から中程度のビデオに特に有効です。つまり、ビットレートはアダプティブ ストリーミング プリセットよりも低いものの、視聴者には快適なエクスペリエンスを提供できる品質を備えた出力ファイルということになります。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります
+実行できる最適化の次のレベルでは、コンテンツに基づいて解像度を選択します。たとえば、小さいテキストを含む PowerPoint プレゼンテーションのビデオは、高さが 720 ピクセル線未満でエンコードするとぼやけて見えます。 また、撮影および編集された方法に基づいて、動きと複雑さが全体的に変わるビデオがある場合もあります。  この場合、各シーンまたはショットの境界でエンコード設定を調整する必要があります。 スマート エンコーダーを使用すると、ビデオ内のショットごとにエンコード設定を最適化できます。
 
-次のサンプル グラフは、[PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) や [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion) などの品質メトリックを使用した比較を示しています。 ソースはエンコーダーを強調するため、映画やテレビ番組からの複雑度の高いショットの短いクリップを連結して作成されています。 定義上、このプリセットはコンテンツごとに異なる結果を生成します。つまり、コンテンツによっては、ビットレートの大幅な低下や品質の向上が見られない場合もあります。
+Azure Media Services には、ソース ビデオのビットレートと解像度のばらつきの問題に部分的に対処できる[アダプティブ ストリーミング](encode-autogen-bitrate-ladder.md) プリセットが用意されています。 ただし、このプリセットでは、ソース コンテンツを分析して、その複雑さや含まれている動きの量を確認することはできません。 
+
+コンテンツ対応エンコード プリセットでは、広範な計算解析を必要とせずに、エンコーダーが特定の解像度に最適なビットレート値を探すことができるロジックを追加することで、より静的な "アダプティブ ビットレート ストリーミング" エンコード プリセットが改善されています。 このプリセットでは、ソース ファイルに基づいて、GOP で整列された MP4 の独自の "ラダー" を出力します。 ソース ビデオを指定すると、入力コンテンツの初期高速分析が実行され、その結果を使用して、最高品質のアダプティブ ビットレート ストリーミング エクスペリエンスを実現するために必要となる最適なレイヤー数、ビットレート、解像度が決定されます。 このプリセットは、複雑さが低から中程度のビデオで有効です。出力ファイルは、より静的なアダプティブ ストリーミング プリセットよりもビットレートが低くなりますが、視聴者に快適なエクスペリエンスを提供できる品質を備えています。 出力フォルダーには、ストリーミングに対応したビデオとオーディオを含む複数の MP4 ファイルが含まれます。
+
+## <a name="configure-output-settings"></a>出力設定の構成
+
+さらに、開発者は、コンテンツ対応エンコード プリセットで、アダプティブ ビットレート ストリーミング ラダーのエンコードに最適な設定を決定する際に使用される出力の範囲を制御することもできます。
+
+開発者は、**PresetConfigurations** クラスを使用することで、一連の制約とオプションをコンテンツ対応エンコード プリセットに渡して、エンコーダーによって生成される結果ファイルを制御できます。 プロパティは、エンコード ジョブのエクスペリエンスまたはコストを制御するために、すべてのエンコードを特定の最大解像度に制限する場合に特に役立ちます。  また、モバイル ネットワークや帯域幅の制約があるグローバル リージョンで視聴者がサポートできる最大および最小ビットレートを制御できる点も便利です。
+
+## <a name="supported-codecs"></a>サポートされるコーデック
+
+コンテンツ対応エンコード プリセットは、次のコーデックで使用できます。
+-  H.264
+-  HEVC (H.265)
+
+## <a name="how-to-use"></a>How-to use (使用方法)
+
+コードでのプリセットの使用方法の詳細と完全なサンプルへのリンクについては、[コンテンツ対応エンコードの使用方法](./encode-content-aware-How-to.md)に関する記事を参照してください。
+
+## <a name="technical-details-on-content-aware-preset"></a>コンテンツ対応プリセットの技術的な詳細
+
+コンテンツ対応エンコード プリセットの機能について、もう少し詳しく見ていきましょう。  次のサンプル グラフは、[PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) や [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion) などの品質メトリックを使用した比較を示しています。 ソースはエンコーダーを強調するため、映画やテレビ番組からの複雑度の高いショットの短いクリップを連結して作成されています。 定義上、このプリセットはコンテンツごとに異なる結果を生成します。つまり、コンテンツによっては、ビットレートの大幅な低下や品質の向上が見られない場合もあります。
 
 ![PSNR を使用したレート歪み (RD) 曲線](media/encode-content-aware-concept/msrv1.png)
 
@@ -43,7 +65,7 @@ Microsoft の[アダプティブ ストリーミング](encode-autogen-bitrate-l
 
 "**図 2:複雑性が高いソースの VMAF メトリックを使用したレート歪み (RD) 曲線**
 
-以下は、入力が低品質であること (低ビットレートのために圧縮アーティファクトが多い) をエンコーダーが判断できた、別のカテゴリのソース コンテンツの結果です。 コンテンツに対応したプリセットでは、ほとんどのクライアントが失速することなくストリームを再生できるように、十分に低いビットレートで 1 つの出力レイヤーだけを生成することがエンコーダーによって決定されます。
+以下は、入力が低品質であること (低ビットレートのために圧縮アーティファクトが多い) をエンコーダーが判断できた、別のカテゴリのソース コンテンツの結果です。 コンテンツ対応プリセットでは、ほとんどのクライアントが失速することなくストリームを再生できるように、十分に低いビットレートで 1 つの出力レイヤーだけを生成することがエンコーダーによって決定されます。
 
 ![PSNR を使用した RD 曲線](media/encode-content-aware-concept/msrv3.png)
 
@@ -53,38 +75,7 @@ Microsoft の[アダプティブ ストリーミング](encode-autogen-bitrate-l
 
 "**図 4:低品質の入力 (1080 p) に対して VMAF を使用した RD 曲線**
 
-## <a name="how-to-use-the-content-aware-encoding-preset"></a>コンテンツに対応したエンコード プリセットの使用方法 
-
-次のようにこのプリセットを使用する変換を作成することができます。 
-
-変換の出力を使用するチュートリアルについては、「[次のステップ](#next-steps)」セクションを参照してください。 (チュートリアルに示されているように) 出力アセットは、MPEG-DASH や HLS などのプロトコルで Media Services ストリーミング エンドポイントから配信することができます。
-
-> [!NOTE]
-> ContentAwareEncodingExperimental ではなく、必ず **ContentAwareEncoding** プリセットを使用してください。
-
-```csharp
-TransformOutput[] output = new TransformOutput[]
-{
-   new TransformOutput
-   {
-      // The preset for the Transform is set to one of Media Services built-in sample presets.
-      // You can customize the encoding settings by changing this to use "StandardEncoderPreset" class.
-      Preset = new BuiltInStandardEncoderPreset()
-      {
-         // This sample uses the new preset for content-aware encoding
-         PresetName = EncoderNamedPreset.ContentAwareEncoding
-      }
-   }
-};
-```
-
-> [!NOTE]
-> `ContentAwareEncoding` プリセットを使用したエンコード ジョブは、出力時間 (分) に基づいて課金されます。 
   
 ## <a name="next-steps"></a>次のステップ
-
+* [コンテンツに対応したエンコード プリセットの使用方法](encode-content-aware-how-to.md)
 * [チュートリアル:Media Services v3 を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)
-* [チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST](stream-files-tutorial-with-rest.md)
-* [チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - CLI](stream-files-cli-quickstart.md)
-* [チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - .NET](stream-files-dotnet-quickstart.md)
-* [チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - Node.js](stream-files-nodejs-quickstart.md)

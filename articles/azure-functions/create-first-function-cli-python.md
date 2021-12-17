@@ -6,16 +6,17 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
+- devx-track-azurepowershell
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-python-uiex
-ms.openlocfilehash: f5c51630d111bd68e311a93100abb8266e2a8e27
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d72c220eb75372ee4faad94f4c7d08010eb725c4
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787433"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026551"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Python 関数を作成する
 
@@ -33,13 +34,13 @@ ms.locfileid: "107787433"
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
-  
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 4.x。
+
 + 次のいずれかのツール。Azure リソースの作成に使用します。
 
     + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps) バージョン 5.0 以降。
+    + Azure [Az PowerShell モジュール](/powershell/azure/install-az-ps) バージョン 5.9.0 以降。
 
 + [Azure Functions でサポートされているバージョンの Python](supported-languages.md#languages-by-runtime-version)
 
@@ -49,23 +50,23 @@ ms.locfileid: "107787433"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-+ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 3.x であることを確認します。
++ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 4.x であることを確認します。
 
 + `az --version` を実行して、Azure CLI バージョンが 2.4 以降であることを確認します。
 
 + `az login` を実行して Azure にサインインし、アクティブなサブスクリプションを確認します。
 
-+ `python --version` (Linux と macOS の場合) または `py --version` (Windows の場合) を実行して、使用している Python のバージョンが 3.8.x、3.7.x、または 3.6.x であることを確認します。
++ `python --version` (Linux と macOS の場合) または `py --version` (Windows の場合) を実行して、使用している Python のバージョンが 3.9.x、3.8.x、または 3.7.x であることを確認します。
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 3.x であることを確認します。
++ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 4.x であることを確認します。
 
-+ `(Get-Module -ListAvailable Az).Version` を実行し、バージョン 5.0 以降であることを確認します。 
++ `(Get-Module -ListAvailable Az).Version` を実行し、バージョン 5.0 以降であることを確認します。
 
 + `Connect-AzAccount` を実行して Azure にサインインし、アクティブなサブスクリプションを確認します。
 
-+ `python --version` (Linux と macOS の場合) または `py --version` (Windows の場合) を実行して、使用している Python のバージョンが 3.8.x、3.7.x、または 3.6.x であることを確認します。
++ `python --version` (Linux と macOS の場合) または `py --version` (Windows の場合) を実行して、使用している Python のバージョンが 3.9.x、3.8.x、または 3.7.x であることを確認します。
 
 ---
 
@@ -111,13 +112,13 @@ py -m venv .venv
 
 ---
 
-以降のコマンドはすべて、このアクティブ化された仮想環境で実行します 
+以降のコマンドはすべて、このアクティブ化された仮想環境で実行します
 
 ## <a name="create-a-local-function-project"></a>ローカル関数プロジェクトを作成する
 
 Azure Functions における関数プロジェクトとは、それぞれが特定のトリガーに応答する個別の関数を 1 つまたは複数含んだコンテナーです。 プロジェクト内のすべての関数は、同じローカル構成とホスティング構成を共有します。 このセクションでは、関数を 1 つだけ含んだ関数プロジェクトを作成します。
 
-1. 次のように `func init` コマンドを実行して、特定のランタイムを含んだ *LocalFunctionProj* という名前のフォルダーに関数プロジェクトを作成します。  
+1. 次のように `func init` コマンドを実行して、特定のランタイムを含んだ *LocalFunctionProj* という名前のフォルダーに関数プロジェクトを作成します。
 
     ```console
     func init LocalFunctionProj --python
@@ -128,15 +129,15 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     ```console
     cd LocalFunctionProj
     ```
-    
-    このフォルダーにはプロジェクト用の各種ファイルが格納されています。たとえば、[local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
+
+    このフォルダーにはプロジェクト用の各種ファイルが格納されています。たとえば、[local.settings.json](functions-develop-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
 
 1. 次のコマンドを使用して、関数をプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前 (HttpExample) で、`--template` 引数は関数のトリガー (HTTP) を指定します。
 
     ```console
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
-    ```   
-    
+    ```
+
     `func new` によって、関数と同じ名前のサブフォルダーが作成されます。ここには、プロジェクト用に選択した言語に適したコード ファイルと、*function.json* という名前の構成ファイルが含まれます。
 
 ### <a name="optional-examine-the-file-contents"></a>(省略可) ファイルの内容を確認する
@@ -182,7 +183,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
 
     [az login](/cli/azure/reference-index#az_login) コマンドで Azure アカウントにサインインします。
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     ```azurepowershell
     Connect-AzAccount
     ```
@@ -191,20 +192,32 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
 
     ---
 
-1. `westeurope` リージョンに `AzureFunctionsQuickstart-rg` という名前のリソース グループを作成します。 
+1. このオプションを Azure CLI、作成したリソースの名前を自動的に追跡する `param-persist` オプションを有効にできます。 詳細については、「[Azure CLI の永続化されたパラメーター](/cli/azure/param-persist-howto)」を参照してください。
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
     ```azurecli
-    az group create --name AzureFunctionsQuickstart-rg --location westeurope
+    az config param-persist on
     ```
- 
-    [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 リソース グループとリソースは通常、近くのリージョンに作成します。`az account list-locations` コマンドから返される利用可能なリージョンを使用してください。
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+    この機能は、Azure PowerShell では使用できません。
+
+    ---
+
+1. 選択したリージョンに `AzureFunctionsQuickstart-rg` という名前のリソース グループを作成します。
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+    ```azurecli
+    az group create --name AzureFunctionsQuickstart-rg --location <REGION>
+    ```
+
+    [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 上記のコマンドで、[az account list-locations](/cli/azure/account#az_account_list_locations) コマンドから返された使用可能なリージョン コードを使用して、`<REGION>` を自分の近くのリージョンに置き換えます。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
     ```azurepowershell
-    New-AzResourceGroup -Name AzureFunctionsQuickstart-rg -Location westeurope
+    New-AzResourceGroup -Name AzureFunctionsQuickstart-rg -Location '<REGION>'
     ```
 
     [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 リソース グループとリソースは通常、近くのリージョンに作成します。[Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドレットから返される利用可能なリージョンを使用してください。
@@ -219,15 +232,15 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
     ```azurecli
-    az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
+    az storage account create --name <STORAGE_NAME> --sku Standard_LRS
     ```
 
-    [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドでストレージ アカウントを作成します。 
+    [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドでストレージ アカウントを作成します。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
     ```azurepowershell
-    New-AzStorageAccount -ResourceGroupName AzureFunctionsQuickstart-rg -Name <STORAGE_NAME> -SkuName Standard_LRS -Location westeurope
+    New-AzStorageAccount -ResourceGroupName AzureFunctionsQuickstart-rg -Name <STORAGE_NAME> -SkuName Standard_LRS -Location <REGION>
     ```
 
     [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドレットでストレージ アカウントを作成します。
@@ -235,31 +248,31 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     ---
 
     前の例の `<STORAGE_NAME>` は、適宜、Azure Storage 内で一意の名前に置き換えてください。 名前は 3 文字から 24 文字とし、小文字のみを使用する必要があります。 `Standard_LRS` は汎用アカウントを指定します。これは [Functions でサポート](storage-considerations.md#storage-account-requirements)されています。
-    
+
     このクイックスタートでは、ストレージ アカウントに関して数セント (米国ドル) の料金が発生します。
 
 1. Azure に関数アプリを作成します。
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-        
+
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME> --os-type linux
+    az functionapp create --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --os-type linux
     ```
-    
-    [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドで Azure に関数アプリを作成します。 Python 3.7 または 3.6 を使用している場合は、`--runtime-version` をそれぞれ `3.7` または `3.6` に変更します。
-    
+
+    [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドで Azure に関数アプリを作成します。 Python 3.7 または 3.6 を使用している場合は、`--runtime-version` をそれぞれ `3.7` または `3.6` に変更します。 Python 関数を Windows で実行することはできないため、`--os-type linux` を指定する必要があります。これが既定値です。
+
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-    
+
     ```azurepowershell
-    New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -FunctionsVersion 3 -RuntimeVersion 3.8 -Runtime python -Location 'West Europe'
+    New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -FunctionsVersion 3 -RuntimeVersion 3.8 -Runtime python -Location '<REGION>'
     ```
-    
+
     [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) コマンドレットによって、Azure に関数アプリが作成されます。 Python 3.7 または 3.6 を使用している場合は、`-RuntimeVersion` をそれぞれ `3.7` または `3.6` に変更します。
 
     ---
-    
-    前の例では、`<STORAGE_NAME>` を前の手順で使用したアカウントの名前に、`<APP_NAME>` を適宜グローバルに一意の名前に置き換えてください。  `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 
-    
+
+    前の例の `<APP_NAME>` は適宜、グローバルに一意の名前に置き換えてください。  `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。
+
     このコマンドでは、[Azure Functions 従量課金プラン](consumption-plan.md) (ここで発生する使用量に関しては無料) で、指定された言語ランタイムで実行される関数アプリを作成します。 また、このコマンドを実行すると、関連する Azure Application Insights インスタンスが同じリソース グループにプロビジョニングされます。このインスタンスを使用することで、関数アプリを監視したりログを確認したりすることができます。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。 このインスタンスは、アクティブにするまでコストが発生しません。
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
@@ -272,7 +285,7 @@ Azure portal の Application Insights に凖リアルタイムの[ストリー�
 func azure functionapp logstream <APP_NAME> --browser
 ```
 
-別のターミナル ウィンドウまたはブラウザーで、もう一度リモート関数を呼び出します。 Azure で実行された関数の詳細ログがターミナルに表示されます。 
+別のターミナル ウィンドウまたはブラウザーで、もう一度リモート関数を呼び出します。 Azure で実行された関数の詳細ログがターミナルに表示されます。
 
 [!INCLUDE [functions-cleanup-resources-cli](../../includes/functions-cleanup-resources-cli.md)]
 

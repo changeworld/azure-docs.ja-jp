@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で発生した�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 023f9dfcc421935c3f7515e847108925d5e5521e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ffa633479189ad8391d4c03c59113dc957d77e6
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673649"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667137"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions のエラー処理 (Azure Functions)
 
@@ -124,6 +124,21 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
 main = df.Orchestrator.create(orchestrator_function)
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+$transferDetails = $Context.Input
+
+Invoke-DurableActivity -FunctionName 'DebitAccount' -Input @{ account = transferDetails.sourceAccount; amount = transferDetails.amount }
+
+try {
+    Invoke-DurableActivity -FunctionName 'CreditAccount' -Input @{ account = transferDetails.destinationAccount; amount = transferDetails.amount }
+} catch {
+    Invoke-DurableActivity -FunctionName 'CreditAccount' -Input @{ account = transferDetails.sourceAccount; amount = transferDetails.amount }
+}
+```
+
 
 ---
 
@@ -187,11 +202,23 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+$retryOptions = New-DurableRetryOptions `
+                    -FirstRetryInterval (New-Timespan -Seconds 5) `
+                    -MaxNumberOfAttempts 3
+
+Invoke-DurableActivity -FunctionName 'FlakyFunction' -RetryOptions $retryOptions
+```
+
 ---
 
 前の例のアクティビティ関数呼び出しでは、自動再試行ポリシーを構成するためのパラメーターを使用します。 自動再試行ポリシーをカスタマイズするために、次のようないくつかのオプションがあります。
 
-* **最大試行回数**: 再試行の最大数。
+* **最大試行回数**: 試行が行われる最大回数。 1 を設定した場合、再試行は行われません。
 * **1 回目の再試行の間隔**: 1 回目の再試行の前に待つ時間。
 * **バックオフ係数**: バックオフの増加率を決定するために使用される係数。 既定値は 1 です。
 * **最大再試行間隔**: 再試行の間に待つ最長時間。
@@ -283,6 +310,27 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
         return False
 
 main = df.Orchestrator.create(orchestrator_function)
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+$expiryTime =  New-TimeSpan -Seconds 30
+
+$activityTask = Invoke-DurableActivity -FunctionName 'FlakyFunction'-NoWait
+$timerTask = Start-DurableTimer -Duration $expiryTime -NoWait
+
+$winner = Wait-DurableTask -Task @($activityTask, $timerTask) -NoWait
+
+if ($winner -eq $activityTask) {
+    Stop-DurableTimerTask -Task $timerTask
+    return $True
+}
+else {
+    return $False
+}
 ```
 
 ---

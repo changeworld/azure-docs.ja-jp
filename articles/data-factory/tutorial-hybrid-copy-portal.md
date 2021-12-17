@@ -4,15 +4,15 @@ description: Azure Data Factory 内のセルフホステッド統合ランタイ
 ms.author: abnarain
 author: nabhishek
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 4bfbd83f3f3910e1231bcce4043d9b59ccc512db
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 07/05/2021
+ms.openlocfilehash: ae3b89391a4932ac4e77287185c761b4c4e31cea
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606652"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798296"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>SQL Server データベースから Azure Blob Storage にデータをコピーする
 
@@ -79,7 +79,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. 左側のウィンドウで、 **[すべてのサービス]** を選択します。 「**ストレージ**」というキーワードでフィルタリングして、 **[ストレージ アカウント]** を選択します。
 
-    ![Storage account search](media/doc-common-process/search-storage-account.png)
+    :::image type="content" source="media/doc-common-process/search-storage-account.png" alt-text="Storage account search":::
 
 1. ストレージ アカウントの一覧で、必要に応じてご利用のストレージ アカウントをフィルターで抽出します。 次に、ストレージ アカウントを選択します。
 
@@ -92,7 +92,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **[ストレージ アカウント]** ウィンドウで **[概要]** に移動し、 **[コンテナー]** を選択します。
 
-    ![BLOB オプションを選択する](media/tutorial-hybrid-copy-powershell/select-blobs.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/select-blobs.png" alt-text="BLOB オプションを選択する":::
 
 1. **[コンテナー]** ウィンドウで **[+ コンテナー]** を選択して新しいコンテナーを作成します。
 
@@ -108,7 +108,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を開きます。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
 
-   ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="&quot;[新規]&quot; ペインでの Data Factory の選択":::
 
 1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
 
@@ -130,15 +130,16 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
 
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[作成と監視] タイルが含まれた Azure Data Factory のホーム ページ。":::
-1. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Data Factory (UI) を起動します。
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\) タイルを含む、Azure Data Factory のホーム ページ。":::
+
+1. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブで Data Factory UI を起動します。
 
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 
-1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。 パイプラインが自動的に作成されます。 ツリー ビューのパイプラインとそのエディターが開かれるのがわかります。
+1. Azure Data Factory のホーム ページで、 **[Orchestrate]\(調整\)** を選択します。 パイプラインが自動的に作成されます。 ツリー ビューのパイプラインとそのエディターが開かれるのがわかります。
 
-   ![[Let's get started]\(始めましょう\) ページ](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Azure Data Factory ホーム ページのスクリーンショット。":::
 
 1. [全般] パネルの **[プロパティ]** で、 **[名前]** に「**SQLServerToBlobPipeline**」を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 
@@ -147,7 +148,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. **[プロパティ]** ウィンドウの **[ソース]** タブに移動し、 **[+ 新規]** を選択します。
 
 1. **[新しいデータセット]** ダイアログ ボックスで、**SQL Server** を検索します。 **[SQL Server]** を選択し、 **[続行]** を選択します。
-    ![新しい SqlServer データセット](./media/tutorial-hybrid-copy-portal/create-sqlserver-dataset.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/create-sqlserver-dataset.png" alt-text="新しい SqlServer データセット":::
 
 1. **[プロパティの設定]** ダイアログ ボックスの **[名前]** に、「**SqlServerDataset**」と入力します。 **[リンクされたサービス]** で **[+ 新規]** を選択します。 この手順でソース データ ストア (SQL Server データベース) への接続を作成します。
 
@@ -158,11 +159,11 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. [名前] に「**TutorialIntegrationRuntime**」と入力します。 **[作成]** を選択します。
 
 1. [設定] の **[Click here to launch the express setup for this computer]\(このコンピューターで高速セットアップを起動するにはここをクリック\)** を選択します。 この操作により、統合ランタイムがマシンにインストールされ、Data Factory に登録されます。 別の方法として、手動セットアップのオプションを使用できます。インストール ファイルをダウンロードして実行し、キーを使用して統合ランタイムを登録します。
-    ![統合ランタイムのセットアップ](./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png" alt-text="統合ランタイムのセットアップ":::
 
 1. **[Integration Runtime (セルフホステッド) 高速セットアップ]** ウィンドウで、処理が完了したら **[閉じる]** を選択します。
 
-    ![Integration Runtime (セルフホステッド) 高速セットアップ](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png" alt-text="Integration Runtime (セルフホステッド) 高速セットアップ":::
 
 1. **[New linked service (SQL Server)]\(新しいリンクされたサービス (SQL Server)\)** ダイアログ ボックスで、 **[Connect via integration runtime]\(統合ランタイム経由で接続\)** の **TutorialIntegrationRuntime** が選択されていることを確認します。 その後、次の手順を行います。
 
@@ -180,7 +181,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
     g. リンクされたサービスを保存するには、 **[作成]** を選択します。
  
-    ![新しいリンクされたサービス (SQL Server)](./media/tutorial-hybrid-copy-portal/new-sqlserver-linked-service.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/new-sqlserver-linked-service.png" alt-text="新しいリンクされたサービス (SQL Server)":::
 
 1. リンクされたサービスが作成されると、SqlServerDataset の **[プロパティの設定]** ページに戻ります。 次の手順を実行します。
 
@@ -198,7 +199,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **[形式の選択]** ダイアログ ボックスで、データ形式の種類を選択します。 その後 **[続行]** を選択します。
 
-    ![データ形式の選択](./media/doc-common-process/select-data-format.png)
+    :::image type="content" source="./media/doc-common-process/select-data-format.png" alt-text="データ形式の選択":::
 
 1. **[プロパティの設定]** ダイアログ ボックスで、[名前] に「**AzureBlobDataset**」と入力します。 **[リンクされたサービス]** ボックスの横にある **[+ 新規]** をクリックします。
 
@@ -213,14 +214,14 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     b. **[ファイルのパス]** で、**コンテナーまたはディレクトリ** の部分に「**adftutorial/fromonprem**」と入力します。 adftutorial コンテナーに出力フォルダーが存在しない場合、Data Factory によって自動的に出力フォルダーが作成されます。
 
     c. **ファイル** 部分については、 **[動的なコンテンツの追加]** を選択します。
-    ![ファイル名を解決するための動的な式](./media/tutorial-hybrid-copy-portal/file-name.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/file-name.png" alt-text="ファイル名を解決するための動的な式":::
 
     d. `@CONCAT(pipeline().RunId, '.txt')` を追加し、 **[完了]** を選択します。 この操作で、ファイルの名前が PipelineRunID.txt に変更されます。
 
 1. パイプラインが開かれているタブに移動するか、ツリー ビューでパイプラインを選択します。 **[Sink Dataset]\(シンク データセット\)** で **AzureBlobDataset** が選択されていることを確認します。
 
 1. パイプライン設定を検証するには、パイプラインのツール バーにある **[検証]** を選択します。 **[Pipe validation output]\(パイプ検証出力\)** を閉じるには、 **>>** アイコンを選択します。
-    ![パイプラインの検証](./media/tutorial-hybrid-copy-portal/validate-pipeline.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/validate-pipeline.png" alt-text="パイプラインの検証":::
     
 
 1. 作成したエンティティを Data Factory に発行するには、 **[すべて発行]** を選択します。
@@ -236,7 +237,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. **[監視]** タブに移動します。前の手順で手動でトリガーしたパイプラインを確認します。
 
 1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 *[パイプライン名]* の **[SQLServerToBlobPipeline]** リンクを選択します。 
-    ![パイプラインの実行を監視する](./media/tutorial-hybrid-copy-portal/pipeline-runs.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/pipeline-runs.png" alt-text="パイプラインの実行を監視する":::
 
 1. **[アクティビティの実行]** ページで [詳細] (眼鏡アイコン) リンクを選択し、コピー操作の詳細を確認します。 再度パイプラインの実行ビューに移動するには、一番上にある **[すべてのパイプラインの実行]** を選択します。
 

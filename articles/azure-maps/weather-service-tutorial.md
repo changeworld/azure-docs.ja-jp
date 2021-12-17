@@ -1,20 +1,19 @@
 ---
 title: チュートリアル:Microsoft Azure Maps で Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する
 description: Azure Notebooks (Python) を使用し、Microsoft Azure Maps Weather Service の天気予報データにセンサー データを結合する方法に関するチュートリアル。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 12/07/2020
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 8ab3458003366416e10588d3f2edb29b51619ecf
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 83cc80267e9e3b917e60bb2da5421f67fdfb4c7a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257638"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455304"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する
 
@@ -23,6 +22,7 @@ ms.locfileid: "107257638"
 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
+>
 > * クラウド内の [Azure Notebooks](https://notebooks.azure.com) でデータ ファイルを操作する。
 > * ファイルからデモ データを読み込む。
 > * Python で Azure Maps REST API シリーズを呼び出す。
@@ -30,14 +30,12 @@ ms.locfileid: "107257638"
 > * Azure Maps の気象データ ([毎日の予報](/rest/api/maps/weather/getdailyforecast)) でデモ データをエンリッチする。
 > * 予測データをグラフにプロットする。
 
-
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、まず以下を実行する必要があります。
 
 1. [アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)に関するページの手順に従い、S0 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。
 2. [主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従い、アカウントの主サブスクリプション キーを取得します。
-
 
 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
@@ -89,7 +87,7 @@ for i in range(0, len(coords), 2):
     wind_direction.append([])
     
     query = str(coords[i])+', '+str(coords[i+1])
-    forecast_response = await(await session.get("https://atlas.microsoft.com/weather/forecast/daily/json?query={}&api-version=1.0&subscription-key={}&duration=15".format(query, subscription_key))).json()
+    forecast_response = await(await session.get("https://atlas.microsoft.com/weather/forecast/daily/json?query={}&api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&duration=15".format(query, subscription_key))).json()
     j+=1
     for day in range(len(forecast_response['forecasts'])):
             date = forecast_response['forecasts'][day]['date'][:10]
@@ -114,7 +112,7 @@ session = aiohttp.ClientSession()
 
 pins="default|la-25+60|ls12|lc003C62|co9B2F15||'Location A'{} {}|'Location B'{} {}|'Location C'{} {}|'Location D'{} {}".format(coords[1],coords[0],coords[3],coords[2],coords[5],coords[4], coords[7],coords[6])
 
-image_response = "https://atlas.microsoft.com/map/static/png?subscription-key={}&api-version=1.0&layer=basic&style=main&zoom=6&center={},{}&pins={}".format(subscription_key,coords[7],coords[6],pins)
+image_response = "https://atlas.microsoft.com/map/static/png?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&layer=basic&style=main&zoom=6&center={},{}&pins={}".format(subscription_key,coords[7],coords[6],pins)
 
 static_map_response = await session.get(image_response)
 
@@ -126,7 +124,6 @@ display(Image(poi_range_map))
 ```
 
 ![タービンの場所](./media/weather-service-tutorial/location-map.png)
-
 
 ここでは、ステーション ID に基づいて、予測データとデモ データをグループ化します。 ステーション ID は、気象データ センターのものです。 グループ化によって、デモ データを予測データで強化します。
 
@@ -150,9 +147,7 @@ grouped_weather_data = combined_weather_data.groupby(['StationID'])
 grouped_weather_data.get_group(station_ids[0]).reset_index()
 ```
 
-<center>
-
-![グループ化されたデータ](./media/weather-service-tutorial/grouped-data.png)</center>
+<center>![グループ化されたデータ](./media/weather-service-tutorial/grouped-data.png)</center>
 
 ## <a name="plot-forecast-data"></a>予測データをプロットする
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 11/15/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 542eed34f2be05cce3829baab2f07a5c58413ba0
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: f9e296ec4c1b99f6f2a8d23103c8b04fcd16a814
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526298"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552662"
 ---
 ::: zone target="docs"
 
@@ -48,9 +48,13 @@ ms.locfileid: "99526298"
     - ディスクはエアー クッションでしっかりと包んで梱包することをお勧めします。
     - 箱内の物があまり動かないように、すき間が少なくなるようにしてください。
 
-次の手順は、デバイスを返送する場所によって決まります。 手順は、米国およびカナダ、欧州連合 (EU)、オーストラリア、またはアジア内の国/地域で異なります。
+次の手順は、デバイスを返送する場所によって決まります。 多くの国、地域では、[Microsoft が提供している配送方法](#microsoft-managed-shipping)を利用するか、または、[自分で行うそれ以外の方法](#self-managed-shipping)で配送できます。
 
-### <a name="us-or-canada"></a>[米国またはカナダ](#tab/in-us-or-canada)
+### <a name="microsoft-managed-shipping"></a>Microsoft 管理の出荷
+
+Microsoft 管理による出荷を使用している場合は、出荷元のリージョンのガイドラインに従います。
+
+### <a name="us--canada"></a>[米国およびカナダ](#tab/in-us-canada)
 
 米国またはカナダでデバイスを返送するには、次の手順を実行します。
 
@@ -66,8 +70,7 @@ ms.locfileid: "99526298"
     - 追跡番号を伝えないと、集荷時に UPS から追加料金が請求されます。
     - 集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box Disk を持ち込むこともできます。
 
-
-### <a name="europe-or-uk"></a>[ヨーロッパまたは英国](#tab/in-europe-or-uk)
+### <a name="eu--uk"></a>[ヨーロッパおよび英国](#tab/in-europe-uk)
 
 ヨーロッパまたは英国でデバイスを返送する場合は、次の手順を実行します。
 
@@ -137,7 +140,7 @@ ms.locfileid: "99526298"
 2. 集荷を要求するには、次のテンプレートに追跡番号を記入して SingPost のカスタマー サービスにメールを送信してください (追跡番号は、納品パッケージに同梱されている返送用ラベルに記載されています)。
 
     ```
-    To: kadcustcare@singpost.com
+    To: g-corpsgcs@singpost.com
     Subject: Microsoft Azure Pickup - XZ00001234567
     Body:
      a.    Requestor name
@@ -156,9 +159,50 @@ ms.locfileid: "99526298"
 
 3. 配送業者に渡します。
 
-### <a name="south-africa"></a>[南アフリカ](#tab/in-sa)
+### <a name="china"></a>[中国](#tab/in-china)
 
-南アフリカでデバイスを返送するには、次の手順を行います。
+中国でデバイスを返送するには、次の手順を行います。
+
+1. 同梱の出荷ラベルをボックスに貼り付けます。 このラベルには、追跡番号が含まれています。 出荷ラベルがない場合、 **[概要] の [出荷ラベルをダウンロード]** から新しい出荷ラベルをダウンロードできます。
+
+2. FedEx Premier Customer Care に次の電子メール テンプレートを使用して電子メールを送り、追跡番号 (出荷参照番号) を提供して集荷を整理します。  
+
+   ```output
+   To: ying.bao@fedex.com;739951@fedex.com
+   Subject: Pickup request for Microsoft Azure : Order Name
+   Body: Need pick up for the below shipment
+   * FedEx tracking number (reference number)
+   * Requested pickup date：yyyy/mm/dd; time: HH MM
+   ```
+
+3. 予約集配の完了後、FedEx から電子メールで確認が届きます。  
+
+4. 問題が発生した場合は、問題の詳細を記載したメールを [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) に送ります。件名には注文名を含めます。
+
+#### <a name="premier-customer-care-contact-information"></a>Premier Customer Care 連絡先情報
+
+<ins>プライマリ</ins>
+
+| 連絡先情報 | 詳細 |
+|---|---|
+|名前:       | `Bao Ying`|
+|役職 | OneCall 上級代表者 |
+|Phone:      | 400.889.6066 内線3693 |
+|電子メール:     | [ying.bao@fedex.com](mailto:ying.bao@fedex.com) |
+
+<ins>Backup</ins>
+
+| 連絡先情報 | 詳細 |
+|---|---|
+|名前:       | `He Xun`|
+|役職 | OneCall 代表者 |
+|Phone:      | 400.889.6066 内線3603 |
+|電子メール:     | [739951@fedex.com](mailto:739951@fedex.com) |
+
+
+### <a name="s-africa"></a>[南アフリカ](#tab/in-sa)
+
+南アフリカでデバイスを返送するには、次の手順を行います。 
 
 1. 提供された配送先住所ラベルをボックスに貼り付けます。 このラベルには、追跡番号が含まれています。 出荷ラベルがない場合、 **[概要] の [出荷ラベルをダウンロード]** から新しい出荷ラベルをダウンロードできます。
 
@@ -187,61 +231,29 @@ ms.locfileid: "99526298"
 
 5. 問題が発生した場合は、問題の詳細を記載した電子メールを [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に送ります。件名には貨物運送状番号を含めます。 +27(0)119213902 に電話することもできます。
 
-### <a name="china"></a>[中国](#tab/in-china)
+---
 
-中国でデバイスを返送するには、次の手順を行います。
+### <a name="self-managed-shipping"></a>自己管理の出荷
 
-1. 同梱の出荷ラベルをボックスに貼り付けます。 このラベルには、追跡番号が含まれています。 出荷ラベルがない場合、 **[概要] の [出荷ラベルをダウンロード]** から新しい出荷ラベルをダウンロードできます。
-
-2. FedEx Premier Customer Care に次の電子メール テンプレートを使用して電子メールを送り、追跡番号 (出荷参照番号) を提供して集荷を整理します。  
-
-   ```output
-   To: ying.bao@fedex.com;739951@fedex.com
-   Subject: Pickup request for Microsoft Azure : Order Name
-   Body: Need pick up for the below shipment
-   * FedEx tracking number (reference number)
-   * Requested pickup date：yyyy/mm/dd; time: HH MM
-   ```
-
-3. 予約集配の完了後、FedEx から電子メールで確認が届きます。  
-
-4. 問題が発生した場合は、問題の詳細を記載したメールを [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) に送ります。件名には注文名を含めます。
-
-#### <a name="premier-customer-care-contact-information"></a>Premier Customer Care 連絡先情報
-
-<ins>プライマリ</ins>
-
-| 連絡先情報 | 詳細 |
-|---|---|
-|名前:       | Bao Ying|
-|役職 | OneCall 上級代表者 |
-|Phone:      | 400.889.6066 内線3693 |
-|電子メール:     | [ying.bao@fedex.com](mailto:ying.bao@fedex.com) |
-
-<ins>Backup</ins>
-
-| 連絡先情報 | 詳細 |
-|---|---|
-|名前:       | He Xun|
-|役職 | OneCall 代表者 |
-|Phone:      | 400.889.6066 内線3603 |
-|電子メール:     | [739951@fedex.com](mailto:739951@fedex.com) |
-
-### <a name="self-managed"></a>[自己管理型](#tab/in-selfmanaged)
-
-米国政府、日本、シンガポール、韓国、イギリス、西ヨーロッパ、オーストラリア、南アフリカ、またはインドで Data Box Disk を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。
+米国政府、日本、シンガポール、韓国、イギリス、西ヨーロッパ、オーストラリア、南アフリカ、インド、またはブラジルで Data Box Disk をお使いの方で、ご自分の注文の作成時に自己管理による配送オプションを選択した場合は、次の手順に従います。 詳細な手順については、[自己管理の出荷の使用](data-box-disk-portal-customer-managed-shipping.md)に関するページを参照してください。
 
 1. Azure portal 上で対象の注文の **[概要]** ブレードにアクセスします。 **[集配のスケジュール]** を選択したときに表示される手順に目を通します。 注文の配送時に使用される認証コードが表示されていると思います。
 
 2. デバイスを返送する準備が整ったら、次のテンプレートを使用して Azure Data Box オペレーション チームにメールを送信します。
 
-    ```
-    To: adbops@microsoft.com
-    Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
-    Body:
-     a. Order name
-     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop-off.
-    ```
+   ```
+   To: adbops@microsoft.com
+   Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
+   Body:
+   1. Order name
+   2. Contact name of the person dropping off. You will need to display a government-approved ID during the drop-off.
+   ```
+
+   > [!NOTE]
+   > - 返送に必要な情報は地域によって異なります。 
+   > - ブラジルで Data Box Disk を返す場合、[Azure Data Box Disk の自己管理型の発送の使用](data-box-disk-portal-customer-managed-shipping.md)に関するページで詳細な手順をご確認ください。
+  
+
 3. Azure Data Box オペレーション チームがお客様と連絡を取り、Azure データセンターへの配送を手配します。
 
 ---

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: f69fe97c33a17ade39f67078d5b035dac4d0bfaf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b2d8dcbee2b8308a78982122aea79c9775580642
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034168"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347049"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -68,7 +68,7 @@ ms.locfileid: "102034168"
 
 ## <a name="centralize-identity-management"></a>ID 管理を一元化する
 
-[ハイブリッド ID](https://resources.office.com/ww-landing-M365E-EMS-IDAM-Hybrid-Identity-WhitePaper.html?) のシナリオでは、オンプレミスとクラウドのディレクトリを統合することをお勧めします。 この統合により、アカウントの作成場所に関係なく、IT チームが 1 つの場所からアカウントを管理できるようになります。 また、クラウドとオンプレミスの両方のリソースにアクセスするための共通の ID が提供されるので、ユーザーの生産性が向上します。
+ハイブリッド ID のシナリオでは、オンプレミスとクラウドのディレクトリを統合することをお勧めします。 この統合により、アカウントの作成場所に関係なく、IT チームが 1 つの場所からアカウントを管理できるようになります。 また、クラウドとオンプレミスの両方のリソースにアクセスするための共通の ID が提供されるので、ユーザーの生産性が向上します。
 
 **ベスト プラクティス**: 単一の Azure AD インスタンスを確立します。 一貫性と単一の権威ソースにより、明確さが増し、ヒューマン エラーや構成の複雑さによるセキュリティ リスクが軽減されます。
 **詳細**: 1 つの Azure AD ディレクトリを、企業や組織のアカウントに対する権威ソースとして指定します。
@@ -113,7 +113,7 @@ Active Directory フェデレーション サービス (AD FS) または他の I
 すべてのアプリとリソースで同じ ID ソリューションを使用することにより、SSO が実現されます。 また、ユーザーは、必要なリソースがオンプレミスまたはクラウドのどちらにあっても、同じ資格情報セットを使用してリソースにサインインしてアクセスできます。
 
 **ベスト プラクティス**: SSO を有効にします。  
-**詳細**: Azure AD はクラウドに [オンプレミス Active Directory を拡張](../../active-directory/hybrid/whatis-hybrid-identity.md)します。 ユーザーは、主要な職場または学校アカウントを、ドメイン参加済みデバイス、会社のリソース、および作業を完了させるために必要なすべての Web アプリケーションと SaaS アプリケーションに使用することができます。 ユーザーは複数のユーザー名とパスワードのセットを覚える必要がなくなり、組織のグループ メンバーシップや従業員としての地位に基づいて、ユーザーのアプリケーション アクセスが自動的にプロビジョニング (またはプロビジョニング解除) されるようにすることができます。 また、ギャラリー アプリ、または [Azure AD アプリケーション プロキシ](../../active-directory/manage-apps/application-proxy.md)で開発および公開した独自のオンプレミス アプリについてそのアクセスを制御できます。
+**詳細**: Azure AD はクラウドに [オンプレミス Active Directory を拡張](../../active-directory/hybrid/whatis-hybrid-identity.md)します。 ユーザーは、主要な職場または学校アカウントを、ドメイン参加済みデバイス、会社のリソース、および作業を完了させるために必要なすべての Web アプリケーションと SaaS アプリケーションに使用することができます。 ユーザーは複数のユーザー名とパスワードのセットを覚える必要がなくなり、組織のグループ メンバーシップや従業員としての地位に基づいて、ユーザーのアプリケーション アクセスが自動的にプロビジョニング (またはプロビジョニング解除) されるようにすることができます。 また、ギャラリー アプリ、または [Azure AD アプリケーション プロキシ](../../active-directory/app-proxy/application-proxy.md)で開発および公開した独自のオンプレミス アプリについてそのアクセスを制御できます。
 
 SSO を使用すると、ユーザーは Azure AD 内の職場または学校アカウントに基づいて [SaaS アプリケーション](../../active-directory/manage-apps/what-is-single-sign-on.md)にアクセスできます。 これは、Microsoft SaaS アプリだけでなく、[Google Apps](../../active-directory/saas-apps/google-apps-tutorial.md) や [Salesforce](../../active-directory/saas-apps/salesforce-tutorial.md) などの他のアプリにも当てはまります。 [SAML ベースの ID](../../active-directory/fundamentals/active-directory-whatis.md) プロバイダーとして Azure AD を使用するように、アプリケーションを構成できます。 セキュリティ コントロールの目的で、Azure AD では、ユーザーに Azure AD を使用するアクセス権が付与されない限り、アプリケーションへのサインインを許可するトークンは発行されません。 ユーザーに対してアクセスを直接許可することも、ユーザーがメンバーであるグループを介して許可することもできます。
 
@@ -142,10 +142,10 @@ ID セキュリティ スコアは、セキュリティ対策を客観的に測�
 
 ## <a name="enable-password-management"></a>パスワード管理を有効にする
 
-複数のテナントがある場合、またはユーザーが[自分のパスワードをリセット](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md)できるようにする場合は、適切なセキュリティ ポリシーを使用して不適切な使用を防止することが重要です。
+複数のテナントがある場合、またはユーザーが[自分のパスワードをリセット](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)できるようにする場合は、適切なセキュリティ ポリシーを使用して不適切な使用を防止することが重要です。
 
 **ベスト プラクティス**: ユーザーに対してセルフサービス パスワード リセット (SSPR) を設定します。  
-**詳細**: Azure AD の [セルフサービス パスワード リセット](../../active-directory-b2c/user-flow-self-service-password-reset.md)機能を使用します。
+**詳細**: Azure AD の [セルフサービス パスワード リセット](../../active-directory/authentication/tutorial-enable-sspr.md)機能を使用します。  
 
 **ベスト プラクティス**: SSPR が実際に使用されているかどうか、またはその使用方法を監視します。  
 **詳細**: Azure AD の [パスワード リセット登録アクティビティ レポート](../../active-directory/authentication/howto-sspr-reporting.md)を使用して、登録しているユーザーを監視します。 Azure AD で提供されるレポート機能によって、質問に対する答えをあらかじめ用意されたレポートから得ることができます。 適切にライセンスを付与されている場合は、カスタム クエリを作成することもできます。
@@ -218,7 +218,7 @@ Azure での特定の機能に対して責任を負うグループまたは個�
 **ベスト プラクティス**: 直接的な運用責任を持つセキュリティ チームには、適切なアクセス許可を付与します。
 **詳細**: Azure の組み込みロールで、適切なロールの割り当てを確認します。 組み込みロールが組織の特定のニーズを満たさない場合は、[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)を作成することができます。 組み込みロールと同様、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。
 
-**ベスト プラクティス**:Azure Security Center へのアクセス権を、それを必要とするセキュリティ ロールに付与します。 Security Center では、セキュリティ チームはすばやくリスクを特定して修復できます。
+**ベスト プラクティス**: Microsoft Defender for Cloud に、それを必要とするセキュリティ ロールへのアクセス権を付与します。 Defender for Cloud では、セキュリティ チームはすばやくリスクを特定して解決できます。
 **詳細**: これらのニーズを持つセキュリティ チームを Azure RBAC [セキュリティ管理者](../../role-based-access-control/built-in-roles.md#security-admin)に追加し、セキュリティ ポリシーを表示したり、セキュリティ状態を表示したり、セキュリティ ポリシーを編集したり、アラートと推奨事項を表示したり、アラートと推奨事項を無視したりできるようにします。 責任の範囲に応じて、ルート管理グループまたはセグメント管理グループを使用して、これを行うことができます。
 
 Azure RBAC などの機能を使用したデータ アクセス制御を適用しない組織では、ユーザーに必要以上の権限が付与される可能性があります。 これにより、ユーザーがアクセスする必要のない種類のデータ (ビジネスへの影響が高いものなど) にアクセスできるようになり、データのセキュリティ侵害につながる恐れがあります。
@@ -339,7 +339,7 @@ Azure RBAC などの機能を使用したデータ アクセス制御を適用�
 ID システムを能動的に監視しないと、ユーザーの資格情報が侵害されるリスクがあります。 侵害された資格情報を用いた疑わしい活動が行われていることを把握しないと、この種の脅威を緩和することはできません。
 
 ## <a name="use-azure-ad-for-storage-authentication"></a>ストレージの認証に Azure AD を使用する
-[Azure Storage](../../storage/common/storage-auth-aad.md) は、Blob Storage や Queue storage に対する Azure AD での認証と承認をサポートします。 Azure AD 認証では、Azure のロールベースのアクセス制御を使用して、個々の BLOB コンテナーやキューに対する特定のアクセス許可を、ユーザー、グループ、アプリケーションに付与できます。
+[Azure Storage](../../storage/blobs/authorize-access-azure-active-directory.md) は、Blob Storage や Queue storage に対する Azure AD での認証と承認をサポートします。 Azure AD 認証では、Azure のロールベースのアクセス制御を使用して、個々の BLOB コンテナーやキューに対する特定のアクセス許可を、ユーザー、グループ、アプリケーションに付与できます。
 
 [ストレージへのアクセスを認証するには Azure AD](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/) を使用することをお勧めします。
 

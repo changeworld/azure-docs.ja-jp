@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Static Web Apps のドキュメント
-summary: Azure Static Web Apps を使用すると、GitHub で加えられた変更から自動的に発行される最新の Web アプリケーションを構築できます。
+summary: Azure Static Web Apps を使用すると、コードが変更されたときに自動的に Web に発行される、最新の Web アプリケーションを構築できます。
 metadata:
   title: Azure Static Web Apps のドキュメント
-  description: Azure Static Web Apps を使用すると、GitHub で加えられた変更から自動的に発行される最新の Web アプリケーションを構築できます。
+  description: Azure Static Web Apps を使用すると、コードが変更されたときに自動的に Web に発行される、最新の Web アプリケーションを構築できます。
   ms.topic: landing-page
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
-  ms.date: 12/08/2020
-  ms.openlocfilehash: 880d675915a17e24269361c0ceed320a257d0ba9
-  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+  ms.date: 11/19/2021
+  ms.openlocfilehash: 8f522788d818d3e66ff4de03198fe2c4b842373c
+  ms.sourcegitcommit: e9e332a512ed615a3c8ad5a11baa21649f14116d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96906133"
+  ms.lasthandoff: 11/24/2021
+  ms.locfileid: "133097888"
 landingContent:
 - title: Static Web Apps について
   linkLists:
@@ -26,57 +26,65 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 最初の Angular アプリを作成する
-      url: ./getting-started.md?tabs=angular
-    - text: 最初の React アプリを作成する
-      url: ./getting-started.md?tabs=react
-    - text: 最初の Vue アプリを作成する
-      url: ./getting-started.md?tabs=vue
-    - text: 最初のアプリを作成する (フレームワークなし)
+    - text: フロントエンド フレームワークを使用せずにアプリをデプロイする
       url: ./getting-started.md?tabs=vanilla-javascript
+    - text: Angular アプリをデプロイする
+      url: ./getting-started.md?tabs=angular
+    - text: React アプリをデプロイする
+      url: ./getting-started.md?tabs=react
+    - text: Vue アプリをデプロイする
+      url: ./getting-started.md?tabs=vue
   - linkListType: learn
     links:
     - text: Angular、React、Svelte、Vue JavaScript アプリを発行する
       url: /learn/modules/publish-app-service-static-web-app-api
     - text: API を発行する
       url: /learn/modules/publish-static-web-app-api-preview-url
+    - text: Gatsby アプリを作成してデプロイする
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - text: Blazor WebAssembly アプリと .NET API を発行する
+      url: /learn/modules/publish-app-service-static-web-app-api-dotnet
   - linkListType: video
     links:
     - text: 静的 Web アプリを構築およびデプロイする
       url: https://channel9.msdn.com/Shows/Docs-Azure/Building-and-Deploying-a-Static-Web-App/
-- title: 発行シナリオ
+- title: ビルドとデプロイ
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Gatsby から発行する
+    - text: Gatsby
       url: publish-gatsby.md
-    - text: Hugo から発行する
+    - text: Hugo
       url: publish-hugo.md
-    - text: VuePress から発行する
+    - text: VuePress
       url: publish-vuepress.md
-    - text: Jekyll から発行する
+    - text: Jekyll
       url: publish-jekyll.md
-    - text: Blazor からデプロイする
+    - text: Blazor
       url: deploy-blazor.md
-    - text: Next.js からデプロイする
+    - text: Next.js
       url: deploy-nextjs.md
-    - text: Nuxt.js からデプロイする
+    - text: Nuxt.js
       url: deploy-nuxtjs.md
-  - linkListType: learn
-    links:
-    - text: Gatsby を使用して静的な Web アプリを発行する
-      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
-    - text: Blazor を使用して静的な Web アプリを発行する
-      url: /learn/modules/publish-app-service-static-web-app-api-dotnet
 - title: 主要な概念
   linkLists:
   - linkListType: concept
     links:
-    - text: ルート
-      url: routes.md
-    - text: パブリック API
+    - text: 構成
+      url: configuration-overview.md
+    - text: サーバーレス API エンドポイント
       url: apis.md
-    - text: ステージング
+    - text: ステージング環境
       url: review-publish-pull-requests.md
-    - text: アクセスを制限する
+    - text: 認証と権限承認
       url: authentication-authorization.md
+    - text: GitHub Actions を使用したビルド構成
+      url: publish-devops.md?tabs=github-actions
+    - text: Azure DevOps を使用したビルド構成
+      url: publish-devops.md?tabs=azure-devops
+- title: コードとしてのインフラストラクチャ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ARM テンプレートを使用して Azure Static Web App を作成する
+      url: publish-azure-resource-manager.md

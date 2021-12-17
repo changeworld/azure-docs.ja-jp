@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 01/19/2020
+ms.date: 04/20/2021
 ms.author: banders
-ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: edc1a80687f768723a3a218ecaa1f6459cd484ed
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683719"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763561"
 ---
 # <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>マイクロソフト エンタープライズ契約と Microsoft 顧客契約の予約コストと使用状況を把握する
 
@@ -95,7 +95,6 @@ Azure portal で [[コストの管理と請求]](https://portal.azure.com/#blade
 ![Azure portal で使用状況データの CSV ファイルをダウンロードする場所を示す例](./media/understand-reserved-instance-usage-ea/portal-download-csv.png)
 4. **[Usage Details Version 2]** の下の **[使用量と請求金額をダウンロードする]** で、 **[All Charges (usage and purchases)]\(すべての料金 (使用状況と購入)\)** を選択し、[ダウンロード] をクリックします。 **請求済み料金 (使用状況と購入)** を繰り返します。
 
-ダウンロードする CSV ファイルには、実際のコストと分散コストが含まれます。
 
 ## <a name="common-cost-and-usage-tasks"></a>共通コストと使用状況タスク
 
@@ -158,8 +157,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 
 - [Azure の予約とは](save-compute-costs-reservations.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/prepay-reserved-vm-instances.md)
-- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../azure-sql/database/reserved-capacity-overview.md)
-- [Azure の予約の管理](manage-reserved-vm-instance.md)
 - [予約割引の適用方法について](../manage/understand-vm-reservation-charges.md)
-- [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)
 - [予約に含まれない Windows ソフトウェアのコスト](reserved-instance-windows-software-costs.md)
+- [サービス プリンシパルを使用してコスト データを取得する](../manage/assign-roles-azure-service-principals.md)
+- [コスト管理のエクスポートを使用する](../costs/tutorial-export-acm-data.md)

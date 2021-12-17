@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 54be25317717bcf98b9e296d5c9ed59643cd334e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b0768b4bc50d1c4dade9ff08acb4fd9129a8b6f1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044755"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335539"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure のセキュリティ サービスの概要を提供します。
@@ -147,7 +147,7 @@ Azure AD Privileged Identity Management では、次のことが可能です。
 
 ## <a name="secure-resource-access"></a>セキュリティで保護されたリソース アクセス
 
-Azure のアクセス制御では、最初に課金に注目します。 [Azure アカウント センター](https://account.windowsazure.com/subscriptions)からアクセスされる、Azure アカウントの所有者は、アカウント管理者 (AA) です。 サブスクリプションは課金用のコンテナーですが、セキュリティの境界としても機能します。各サブスクリプションはサービス管理者 (SA) を有し、SA は Azure Portal を使ってそのサブスクリプションの Azure リソースを追加、削除、変更することができます。 新しいサブスクリプションの既定の SA は AA ですが、AA は Azure アカウント センターで SA を変更できます。
+Azure のアクセス制御では、最初に課金に注目します。 [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) からアクセスされる、Azure アカウントの所有者は、アカウント管理者 (AA) です。 サブスクリプションは課金用のコンテナーですが、セキュリティの境界としても機能します。各サブスクリプションはサービス管理者 (SA) を有し、SA は Azure Portal を使ってそのサブスクリプションの Azure リソースを追加、削除、変更することができます。 新しいサブスクリプションの既定の SA は AA ですが、AA は Azure portal で SA を変更できます。
 
 ![Azure でのセキュリティが保護されたリソース アクセス](./media/technical-capabilities/azure-security-technical-capabilities-fig3.png)
 
@@ -182,7 +182,7 @@ Azure RBAC を使用して、チーム内で職務を分離し、職務に必要
 
 オンプレミスにある 1 個のワークステーションから Azure へのアクセスをセキュリティ保護する必要がある場合には、[ポイント対サイト VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md) を使用します。
 
-大規模なデータ セットは、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) などの専用高速 WAN リンクを利用して移動できます。 ExpressRoute を使用する場合、[SSL/TLS](https://web.archive.org/web/20150221085231/http://support.microsoft.com:80/kb/257591) などのプロトコルを使用してアプリケーション レベルでデータを暗号化することで、さらにセキュリティを強化できます。
+大規模なデータ セットは、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) などの専用高速 WAN リンクを利用して移動できます。 ExpressRoute を使用する場合、SSL/TLS などのプロトコルを使用してアプリケーション レベルでデータを暗号化することで、さらにセキュリティを強化できます。
 
 Azure portal で Azure Storage を操作する場合、すべてのトランザクションは HTTPS 経由で行われます。 HTTPS 経由の [Storage REST API](/rest/api/storageservices/) も、[Azure Storage](https://azure.microsoft.com/services/storage/) と [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) の操作に使用できます。
 
@@ -257,7 +257,7 @@ Web アプリケーション ファイアウォールで保護される一般的
 
 - [標準的なサーバー ヘッダーを削除することによって、ツールがアプリにフィンガープリントを残すことを回避する](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)
 
-- [ポイント対サイト VPN を使用して、プライベート ネットワーク内のリソースとアプリケーションを安全に接続します。](../../app-service/web-sites-integrate-with-vnet.md)
+- [ポイント対サイト VPN を使用して、プライベート ネットワーク内のリソースとアプリケーションを安全に接続します。](../../app-service/overview-vnet-integration.md)
 
 - [ハイブリッド接続を使用して、アプリをプライベート ネットワーク内のリソースに安全に接続する](../../app-service/app-service-hybrid-connections.md)
 
@@ -336,11 +336,11 @@ Azure Monitor を使用すれば、オンプレミス型、Azure、AWS、Windows
 
 この方法を使用すると、さまざまなソースからのデータを統合できるため、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、データの収集とそのデータに対して実行される操作は明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-[Azure Security Center](../../security-center/security-center-introduction.md) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応できるようにします。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) は、Azure リソースのセキュリティを可視化して制御することで、脅威の防止、検出、対応を行うのに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-Security Center は Azure リソースのセキュリティの状態を分析して、潜在的なセキュリティ脆弱性を特定します。 推奨事項の一覧では、必要な制御を構成する手順を説明します。
+Defender for Cloud により Azure リソースのセキュリティの状態が分析され、潜在的なセキュリティ脆弱性が特定されます。 推奨事項の一覧では、必要な制御を構成する手順を説明します。
 
 たとえば、次のようになります。
 
@@ -354,7 +354,7 @@ Security Center は Azure リソースのセキュリティの状態を分析し
 
 - 推奨基準と一致しない OS 構成に対処する
 
-Security Center は、Azure リソース、ネットワーク、パートナー ソリューション (マルウェア対策プログラム、ファイアウォールなど) からログ データを自動的に収集、分析、統合します。 脅威が検出されると、セキュリティの警告が作成されます。 例には次の検出が含まれます。
+Defender for Cloud は、Azure リソース、ネットワーク、パートナー ソリューション (マルウェア対策プログラム、ファイアウォールなど) からログ データを自動的に収集、分析、統合します。 脅威が検出されると、セキュリティの警告が作成されます。 例には次の検出が含まれます。
 
 - 既知の悪意のある IP アドレスと通信する、セキュリティ侵害された VM
 

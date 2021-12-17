@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 3820d1d42449fe962c151655768c4aa063eb9529
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfd4b8c18c17ec28a30be5232ddf335bd5399957
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "80876089"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "131011673"
 ---
 ## <a name="next-steps"></a>次のステップ 
 

@@ -1,15 +1,15 @@
 ---
-title: PowerShell - Azure DevTest Labs のラボに外部ユーザーを追加する
+title: PowerShell - 外部ユーザーをラボに追加する
 description: この記事では、Azure DevTest Labs のラボに外部ユーザーを追加する Azure PowerShell スクリプトについて説明します。
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: 76fbb5e4d7f5db39a0aadba9098ebf1064b3cda5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3268e124e72e7532709bf9278d644fade0c205a9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96022396"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651106"
 ---
 # <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>PowerShell を使用して Azure DevTest Labs のラボに外部ユーザーを追加する
 
@@ -30,7 +30,7 @@ ms.locfileid: "96022396"
 
 このスクリプトでは以下のコマンドを使用します。 
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [Get-AzADUser](/powershell/module/az.resources/get-azaduser) | Azure Active Directory からユーザー オブジェクトを再試行します。 |
 | [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) | 指定したプリンシパルに、指定のスコープで、指定したロールを割り当てます。 |

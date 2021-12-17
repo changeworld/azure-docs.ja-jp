@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 70a9e3a69ec9e9a12e2d9ecb765bc995c82c00b6
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9366b268ca394228a63ecfd18ac6c2f4576ba21a
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010835"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315689"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 

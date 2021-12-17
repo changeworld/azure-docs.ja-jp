@@ -5,23 +5,18 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/02/2021
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: e42f85bb79dcb1bfe14cacbbfda3576888b841c9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 03b5cc8b56e7d6825ec7bee5ec61d156e960123b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481330"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704214"
 ---
-# <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>クイックスタート: Azure portal から Azure Managed Instance for Apache Cassandra クラスターを作成する (プレビュー)
- 
-Azure Managed Instance for Apache Cassandra では、マネージド オープンソースの Apache Cassandra データセンターのデプロイとスケーリングの自動操作が提供されます。これにより、ハイブリッド シナリオが推進され、継続的なメンテナンスが削減されます。
+# <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal"></a>クイックスタート: Azure portal から Azure Managed Instance for Apache Cassandra クラスターを作成する
 
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+Azure Managed Instance for Apache Cassandra では、マネージド オープンソースの Apache Cassandra データセンターのデプロイとスケーリングの自動操作が提供されます。これにより、ハイブリッド シナリオが推進され、継続的なメンテナンスが削減されます。
 
 このクイックスタートでは、Azure portal を使用して、Azure Managed Instance for Apache Cassandra クラスターを作成する方法について説明します。
 
@@ -47,60 +42,97 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    * **[リソース グループ]** - 新しいリソース グループを作成するか、既存のものを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳細については、[Azure リソース グループの概要](../azure-resource-manager/management/overview.md)に関する記事を参照してください。
    * **[クラスター名]** - ご自分のクラスターの名前を入力します。
    * **[場所]** - ご自分のクラスターがデプロイされる場所。
-   * **[SKU]** - ご自分のクラスターの SKU の種類。
-   * **[ノード数]** - クラスター内のノードの数。 これらのノードは、データのレプリカとして機能します。
    * **[Initial Cassandra admin password]\(最初の Cassandra 管理者パスワード\)** - クラスターの作成に使用されるパスワード。
    * **[Confirm Cassandra admin password]\(Cassandra 管理者パスワードの確認\)** - パスワードを再入力します。
-
-    > [!NOTE]
-    > パブリック プレビュー期間中は、"*米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、北ヨーロッパ、西ヨーロッパ、東南アジア、およびオーストラリア東部*" リージョンでマネージド インスタンス クラスターを作成できます。
+   * **仮想ネットワーク** - 既存の仮想ネットワークとサブネットを選択するか、新しく新規作成します。 
+   * **ロールの割り当て** - 仮想ネットワークでは、管理対象の Cassandra クラスターをデプロイできるようにするために特別なアクセス許可が必要です。 新しい仮想ネットワークを作成する場合、またはアクセス許可を適用せずに既存の仮想ネットワークを使用する場合、このチェックボックスをオンのままにします。 Managed Instance Cassandra クラスターが既に存在する仮想ネットワークを使用している場合、このオプションをオフにします。
 
    :::image type="content" source="./media/create-cluster-portal/create-cluster-page.png" alt-text="クラスターの作成フォームに入力する。" lightbox="./media/create-cluster-portal/create-cluster-page.png" border="true":::
 
-1. 次に、 **[ネットワーク]** タブを選択します。
+   > [!NOTE]
+   > Azure Managed Instance for Apache Cassandra をデプロイするには、インターネットへのアクセスが必要です。 インターネットへのアクセスが制限されている環境では、デプロイは失敗します。 Managed Cassandra が適切に機能するために必要な、次の重要な Azure サービスへのアクセスが VNet 内でブロックされていないことを確認します。 詳細については、「[必要なアウトバウンド ネットワーク規則](network-rules.md)」を参照してください。
+   > - Azure Storage
+   > - Azure KeyVault
+   > - Azure 仮想マシン スケール セット
+   > - Azure 監視
+   > - Azure Active Directory
+   > - Azure Security
 
-1. **[ネットワーク]** ウィンドウで、 **[仮想ネットワーク]** 名と **[サブネット]** を選択します。 既存の仮想ネットワークを選択するか、新しく作成することができます。
+1. 次に、 **[データ センター]** タブを選択します。
 
-   :::image type="content" source="./media/create-cluster-portal/networking.png" alt-text="ネットワークの詳細を構成する。" lightbox="./media/create-cluster-portal/networking.png" border="true":::
+1. 次の詳細を入力します。
 
-    > [!NOTE]
-    > Azure Managed Instance for Apache Cassandra をデプロイするには、インターネットへのアクセスが必要です。 インターネットへのアクセスが制限されている環境では、デプロイは失敗します。 Managed Cassandra が適切に機能するために必要な、次の重要な Azure サービスへのアクセスが VNet 内でブロックされていないことを確認します。
-    > - Azure Storage
-    > - Azure KeyVault
-    > - Azure 仮想マシン スケール セット
-    > - Azure 監視
-    > - Azure Active Directory
-    > - Azure Security
+   * **[データセンター名]** - ドロップダウン リストから Azure サブスクリプションを選択します。
+   * **[可用性ゾーン]** - 可用性ゾーンを有効にする場合、このチェックボックスをオンにします。
+   * **[SKU サイズ]** - 使用可能な仮想マシン SKU サイズから選択します。
+   * **[ディスク数]** - 各 Cassandra ノードに接続する p30 ディスクの数を選択します。
+   * **[ノード数]** - このデータセンターにデプロイされる Cassandra ノードの数を選択します。
 
-1. 最後の手順で新しい VNet を作成した場合は、手順 8. に進みます。 既存の VNet を選択した場合は、クラスターを作成する前に、仮想ネットワークとサブネットに特別なアクセス許可を適用する必要があります。 そのためには、`az role assignment create` コマンドを使用します。`<subscription ID>`、`<resource group name>`、`<VNet name>` は、適切な値に置き換えてください。
+   :::image type="content" source="./media/create-cluster-portal/create-datacenter-page.png" alt-text="概要を確認し、データセンターを作成します。" lightbox="./media/create-cluster-portal/create-datacenter-page.png" border="true":::
 
-   ```azurecli-interactive
-   az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>
-   ```
+   > [!WARNING]
+   > 可用性ゾーンは一部のリージョンでサポートされていません。 可用性ゾーンがサポートされていないリージョンを選択すると、デプロイは失敗します。 サポートされているリージョンについては、[こちら](../availability-zones/az-overview.md#azure-regions-with-availability-zones)を参照してください。 可用性ゾーンの正常なデプロイは、特定のリージョン内のすべてのゾーンでコンピューティング リソースが使用可能であることにも左右されます。 選択した SKU、または容量が一部のゾーンで使用できない場合、デプロイは失敗する可能性があります。 
+
+1. 次に、 **[確認と作成]** 、 **[作成]** の順にクリックします。
 
    > [!NOTE]
-   > 前のコマンドの `assignee` と `role` の値は固定値です。これらの値は、コマンドに記載されているとおりに入力してください。 そうしないと、クラスターの作成時にエラーが発生します。 このコマンドの実行中にエラーが発生した場合は、実行するためのアクセス許可がない可能性があります。管理者に連絡してアクセス許可を依頼してください。
-
-1. これでネットワークが完成しました。 **[確認および作成]**  >  **[作成]** をクリックします。
-
-    > [!NOTE]
-    > クラスターの作成には、最大 15 分かかることがあります。
+   > クラスターの作成には、最大 15 分かかることがあります。
 
    :::image type="content" source="./media/create-cluster-portal/review-create.png" alt-text="概要を確認して、クラスターを作成する。" lightbox="./media/create-cluster-portal/review-create.png" border="true":::
-
 
 1. デプロイが完了したら、リソース グループを調べて、新しく作成されたマネージド インスタンス クラスターを確認します。
 
    :::image type="content" source="./media/create-cluster-portal/managed-instance.png" alt-text="クラスターが作成された後の [概要] ページ。" lightbox="./media/create-cluster-portal/managed-instance.png" border="true":::
 
-1. クラスター ノードを参照するには、クラスターの作成に使用した [仮想ネットワーク] ウィンドウに移動し、 **[概要]** ウィンドウを開いてこれらを表示します。
+1. クラスター ノードを閲覧するには、クラスター リソースに移動し、 **[データ センター]** ウィンドウを開いて確認します。
 
-   :::image type="content" source="./media/create-cluster-portal/resources.png" alt-text="クラスター リソースを表示する。" lightbox="./media/create-cluster-portal/resources.png" border="true":::
+   :::image type="content" source="./media/create-cluster-portal/datacenter-1.png" alt-text="データセンター ノードを表示します。" lightbox="./media/create-cluster-portal/datacenter-1.png" border="true":::
 
+<!-- ## <a id="create-account"></a>Add a datacenter
+
+1. To add another datacenter, click the add button in the **Data Center** pane:
+
+   :::image type="content" source="./media/create-cluster-portal/add-datacenter.png" alt-text="Click on add datacenter." lightbox="./media/create-cluster-portal/add-datacenter.png" border="true":::
+
+   > [!WARNING]
+   > If you are adding a datacenter in a different region, you will need to select a different virtual network. You will also need to ensure that this virtual network has connectivity to the primary region's virtual network created above (and any other virtual networks that are hosting datacenters within the managed instance cluster). Take a look at [this article](../virtual-network/tutorial-connect-virtual-networks-portal.md#peer-virtual-networks) to learn how to peer virtual networks using Azure portal. You also need to make sure you have applied the appropriate role to your virtual network before attempting to deploy a managed instance cluster, using the below CLI command.
+   >
+   > ```azurecli-interactive  
+   >     az role assignment create \
+   >     --assignee a232010e-820c-4083-83bb-3ace5fc29d0b \
+   >     --role 4d97b98b-1d4f-4787-a291-c67834d212e7 \
+   >     --scope /subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/virtualNetworks/<vnetName>
+   > ```
+
+1. Fill in the appropriate fields:
+
+   * **Datacenter name** - From the drop-down, select your Azure subscription.
+   * **Availability zone** - Check this box if you want availability zones to be enabled in this datacenter.
+   * **Location** - Location where your datacenter will be deployed to.
+   * **SKU Size** - Choose from the available Virtual Machine SKU sizes.
+   * **No. of disks** - Choose the number of p30 disks to be attached to each Cassandra node.
+   * **SKU Size** - Choose the number of Cassandra nodes that will be deployed to this datacenter.
+   * **Virtual Network** - Select an Exiting Virtual Network and Subnet.  
+
+   :::image type="content" source="./media/create-cluster-portal/add-datacenter-2.png" alt-text="Add Datacenter." lightbox="./media/create-cluster-portal/add-datacenter-2.png" border="true":::
+
+   > [!WARNING]
+   > Notice that we do not allow creation of a new virtual network when adding a datacenter. You need to choose an existing virtual network, and as mentioned above, you need to ensure there is connectivity between the target subnets where datacenters will be deployed. You also need to apply the appropriate role to the VNet to allow deployment (see above).
+
+1. When the datacenter is deployed, you should be able to view all datacenter information in the **Data Center** pane:
+
+   :::image type="content" source="./media/create-cluster-portal/multi-datacenter.png" alt-text="View the cluster resources." lightbox="./media/create-cluster-portal/multi-datacenter.png" border="true":::
+
+## Troubleshooting
+
+If you encounter an error when applying permissions to your Virtual Network using Azure CLI, such as *Cannot find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501'*, you can apply the same permission manually from the Azure portal. Learn how to do this [here](add-service-principal.md).
+
+> [!NOTE] 
+> The Azure Cosmos DB role assignment is used for deployment purposes only. Azure Managed Instanced for Apache Cassandra has no backend dependencies on Azure Cosmos DB.   -->
 
 ## <a name="connecting-to-your-cluster"></a>クラスターに接続する
 
-Azure Managed Instance for Apache Cassandra では、パブリック IP アドレスを持つノードが作成されないため、新しく作成された Cassandra クラスターに接続するには、VNet 内に別のリソースを作成する必要があります。 これは、アプリケーション、または Apache のオープンソース クエリ ツール [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) がインストールされている仮想マシンにすることができます。 [テンプレート](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)を使用して、Ubuntu 仮想マシンをデプロイできます。 デプロイされたら、SSH を使用してマシンに接続し、次のコマンドを使用して CQLSH をインストールします。
+Azure Managed Instance for Apache Cassandra では、パブリック IP アドレスを持つノードが作成されないため、新しく作成された Cassandra クラスターに接続するには、VNet 内に別のリソースを作成する必要があります。 これは、アプリケーション、または Apache のオープンソース クエリ ツール [CQLSH](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html) がインストールされている仮想マシンにすることができます。 [テンプレート](https://azure.microsoft.com/resources/templates/vm-simple-linux/)を使用して、Ubuntu 仮想マシンをデプロイできます。 デプロイされたら、SSH を使用してマシンに接続し、次のコマンドを使用して CQLSH をインストールします。
 
 ```bash
 # Install default-jre and default-jdk
@@ -119,17 +151,10 @@ export SSL_VALIDATE=false
 
 # Connect to CQLSH (replace <IP> with the private IP addresses of the nodes in your Datacenter):
 host=("<IP>" "<IP>" "<IP>")
-cqlsh $host 9042 -u cassandra -p cassandra --ssl
+initial_admin_password="Password provided when creating the cluster"
+cqlsh $host 9042 -u cassandra -p $initial_admin_password --ssl
 ```
 
-## <a name="troubleshooting"></a>トラブルシューティング
-
-Virtual Network にアクセス許可を適用するときにエラー (例えば、"*Cannot find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501' ('e5007d2c-4b13-4a74-9b6a-605d99f03501' に対するユーザーまたはサービス プリンシパルがグラフ データベース内で見つかりません)* " など) が発生した場合は、Azure portal から同じアクセス許可を手動で適用できます。 ポータルからアクセス許可を適用するには、既存の仮想ネットワークの **[アクセス制御 (IAM)]** ペインにアクセスし、"Azure Cosmos DB" のロール割り当てを "ネットワーク管理者" ロールに追加します。 "Azure Cosmos DB" を検索したときに 2 つのエントリが表示される場合は、次の図に示すように両方のエントリを追加します。 
-
-   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="アクセス許可を適用する" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
-
-> [!NOTE] 
-> Azure Cosmos DB のロールの割り当ては、デプロイの目的にのみ使用されます。 Azure Managed Instance for Apache Cassandra には、Azure Cosmos DB に対するバックエンドの依存関係はありません。   
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

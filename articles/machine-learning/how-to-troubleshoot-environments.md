@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 環境イメージのビルドとパッケージのインストールに関する問題のトラブルシューティングを行う方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: saachigopal
 ms.author: sagopal
-ms.date: 12/3/2020
+ms.date: 10/21/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: ec0c7d64f2145cdaf594cb903c072984f4d376a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 75f79ca277a017cce8b506e423faaf2e49485686
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519131"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137561"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>環境イメージのビルドのトラブルシューティング
 
@@ -23,7 +23,7 @@ Docker 環境イメージのビルドとパッケージのインストールに�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* Azure サブスクリプション。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install)。
 * [Azure CLI](/cli/azure/install-azure-cli)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
@@ -145,6 +145,33 @@ pip のサブプロセスのエラー:
 
 解決できない競合が依存関係に存在する場合は、pip のインストールが無限ループに陥る可能性があります。 ローカルで作業している場合は、pip のバージョンを 20.3 未満にダウングレードします。 YAML ファイルから作成された conda 環境では、この問題が発生するのは、conda-forge が最高優先度のチャネルである場合のみです。 この問題を軽減するには、conda 依存関係として、conda 仕様ファイル内に pip < 20.3 (!=20.3 または =20.2.4 で他のバージョンに固定) を明示的に指定します。
 
+### <a name="modulenotfounderror-no-module-named-distutilsdir_util"></a>ModuleNotFoundError: 'distutils.dir_util' という名前のモジュールがありません
+
+環境設定時、**ModuleNotFoundError: 'distutils.dir_util' という名前のモジュールがありません** という問題に遭遇することがあります。 これを修正するには、次のコマンドを実行します。
+
+```bash
+apt-get install -y --no-install-recommends python3 python3-distutils && \
+ln -sf /usr/bin/python3 /usr/bin/python
+```
+
+Dockerfile を使用する場合、RUN コマンドの一部として実行します。
+
+```dockerfile
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends python3 python3-distutils && \
+  ln -sf /usr/bin/python3 /usr/bin/python
+```
+
+このコマンドを実行すると、環境を構成するための適切なモジュール依存関係がインストールされます。 
+
+### <a name="build-failure-when-using-spark-packages"></a>Spark パッケージを使用する場合のビルド エラー
+
+パッケージを事前にキャッシュしないように環境を構成します。 
+
+```python
+env.spark.precache_packages = False
+```
+
 ## <a name="service-side-failures"></a>サービス側のエラー
 
 サービス側で発生する可能性のあるエラーをトラブルシューティングするには、次のシナリオを参照してください。
@@ -188,9 +215,6 @@ pip のサブプロセスのエラー:
 
  詳細については、[仮想ネットワークの有効化](./how-to-network-security-overview.md)に関する記事を参照してください。
 
-### <a name="you-need-to-create-an-icm"></a>ICM を作成する必要がある
-
-メタストアに対して ICM を作成または割り当てる場合は、Microsoft 側で問題を適切に把握できるように、CSS サポート チケットを含めてください。
 
 ## <a name="next-steps"></a>次のステップ
 

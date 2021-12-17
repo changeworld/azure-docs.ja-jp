@@ -7,13 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5035515c843db2ce7feb06090029c7e5995769cc
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147263"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287962"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 
@@ -29,7 +28,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
 * データベース内のコレクション。 「[コレクションの追加](../cosmos-db/create-sql-api-java.md#add-a-container)」の手順を参照してください。 コレクションを作成するときに、パーティション キーに `/id` を使用します。
 
-* Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](./quickstart-send-telemetry-dotnet.md)」のチュートリアルをご覧ください。
+* Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)」のチュートリアルをご覧ください。
 
 ## <a name="create-a-stored-procedure"></a>ストアド プロシージャの作成
 
@@ -335,7 +334,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
-[Azure portal](https://portal.azure.com) を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)に関する Azure CLI のページを参照してください。
+[Azure portal](https://portal.azure.com) を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create)に関する Azure CLI のページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

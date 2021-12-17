@@ -1,26 +1,28 @@
 ---
 title: Azure Site Recovery を使用する VMware ディザスター リカバリーの容量を計画する
 description: この記事は、Azure Site Recovery を用いた Azure への VMware VM のディザスター リカバリーを設定するときに、容量とスケーリングを計画するのに役立ちます。
-author: nsoneji
-manager: garavd
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
-ms.date: 4/9/2019
 ms.topic: conceptual
-ms.author: ramamill
-ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.author: sharrai
+ms.date: 08/19/2021
+ms.openlocfilehash: b8161a10e958fe15ef8797e54585acb3612c6c41
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92368028"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446369"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーの容量とスケーリングを計画する
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用してオンプレミスの VMware VM と物理サーバーを Azure にレプリケートするときの、容量とスケーリングの計画について説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) - クラシックを使用してオンプレミスの VMware VM と物理サーバーを Azure にレプリケートするときの、容量とスケーリングの計画について説明します。
+
+プレビューで、容量を計画するために、[1 つまたは複数の Azure Site Recovery レプリケーション アプライアンスを作成して使用する](deploy-vmware-azure-replication-appliance-preview.md)必要があります。
 
 ## <a name="how-do-i-start-capacity-planning"></a>容量計画はどのように開始すればよいか
 
-Azure Site Recovery インフラストラクチャの要件を理解するには、VMware のレプリケーションに対して [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を実行することで、レプリケーション環境に関する情報を収集します。 詳しくは、「[VMware から Azure 用の Azure Site Recovery Deployment Planner について](site-recovery-deployment-planner.md)」をご覧ください。 
+Azure Site Recovery インフラストラクチャの要件を理解するには、VMware のレプリケーションに対して [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を実行することで、レプリケーション環境に関する情報を収集します。 詳しくは、「[VMware から Azure 用の Azure Site Recovery Deployment Planner について](site-recovery-deployment-planner.md)」をご覧ください。
 
 Site Recovery Deployment Planner では、互換および非互換の VM、VM あたりのディスク数、およびディスクあたりのデータ チャーンに関するレポートが提供されます。 また、このツールでは、ターゲットの RPO を満たすためにネットワーク帯域幅の要件を要約し、レプリケーションとテスト フェールオーバーを正常に実行するために必要な Azure インフラストラクチャについても要約されます。
 
@@ -160,7 +162,7 @@ Windows ベースの仮想マシン用にマスター ターゲット サーバ�
 6. 構成サーバーにマスター ターゲットを登録するには、**[Proceed to Configuration]\(構成に進む\)** を選択します。
 
     ![構成を続けるボタンを示すスクリーンショット](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
-7. 構成サーバーの IP アドレスとパスフレーズを入力します。 パスフレーズの生成方法については、「[構成サーバーのパスフレーズを生成する](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)」をご覧ください。 
+7. 構成サーバーの IP アドレスとパスフレーズを入力します。 パスフレーズの生成方法については、「[構成サーバーのパスフレーズを生成する](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)」をご覧ください。
 
     ![構成サーバーの IP アドレスとパスフレーズを入力する場所を示すスクリーンショット](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. **[登録]** を選択します。 登録が終わったら、**[完了]** を選択します。

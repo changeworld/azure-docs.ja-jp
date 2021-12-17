@@ -4,18 +4,17 @@ titleSuffix: Azure Maps
 description: Azure Maps で要求を認証する 2 つの方法、共有キー認証と Azure Active Directory (Azure AD) 認証について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 05/25/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9c973859c8b7a3d04693946f50377837c3538b85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75098cdba1281e9ebd4162001652be4650bf83ba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101094106"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725647"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Maps による認証
 
@@ -30,8 +29,8 @@ Azure Maps には、要求の認証方法が 2 つあります。共有キー認
 
 Azure portal でキーを表示する方法について詳しくは、[認証の管理](./how-to-manage-authentication.md#view-authentication-details)に関する記事をご覧ください。
 
-> [!TIP]
-> セキュリティ上の理由から、主キーとセカンダリ キーをローテーションすることをお勧めします。 キーをローテーションするには、セカンダリ キーを使用するようにアプリを更新してデプロイします。次に、主キーの横にある [cycle/refresh]\(サイクル/更新\) ボタンを押して、新しい主キーを生成します。 古い主キーは無効になります。 キー ローテーションの詳細については、「[キー ローテーションと監査で Azure Key Vault を設定する](../key-vault/secrets/tutorial-rotation-dual.md)」を参照してください。
+> [!NOTE]
+> プライマリ キーとセカンダリ キーは、機微なデータとして扱う必要があります。 共有キーは、すべての Azure Maps REST Api を認証するために使用されます。  共有キーを使用するユーザーは、環境変数またはセキュリティで保護されたシークレット ストレージを使用して API キーを抽象化し、一元的に管理できます。
 
 ## <a name="azure-ad-authentication"></a>Azure AD 認証
 
@@ -80,9 +79,9 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="authorization-with-role-based-access-control"></a>ロールベースのアクセス制御による認証
 
-Azure Maps では、Azure AD ユーザー、グループ、アプリケーション、Azure リソース、Azure マネージド ID など、Azure [ロールベースのアクセス制御](../role-based-access-control/overview.md) (Azure RBAC) のすべてのプリンシパルの種類へのアクセスがサポートされます。 プリンシパルの種類には、ロールの定義とも呼ばれるアクセス許可のセットが付与されます。 ロールの定義は、REST API アクションに対するアクセス許可を提供します。 1 つ以上の Azure Maps アカウントにアクセスを適用することをスコープと呼びます。 プリンシパル、ロールの定義、スコープを適用すると、ロールの割り当てが作成されます。 
+Azure Maps では、Azure AD ユーザー、グループ、アプリケーション、Azure リソース、Azure マネージド ID など、Azure [ロールベースのアクセス制御](../role-based-access-control/overview.md) (Azure RBAC) のすべてのプリンシパルの種類へのアクセスがサポートされます。 プリンシパルの種類には、ロールの定義とも呼ばれるアクセス許可のセットが付与されます。 ロールの定義は、REST API アクションに対するアクセス許可を提供します。 1 つ以上の Azure Maps アカウントにアクセスを適用することをスコープと呼びます。 プリンシパル、ロールの定義、スコープを適用すると、ロールの割り当てが作成されます。
 
-次のセクションでは、Azure Maps と Azure RBAC との統合の概念とコンポーネントについて説明します。 Azure Maps アカウントを設定するプロセスの一環として、Azure AD ディレクトリが、Azure Maps アカウントがある Azure サブスクリプションに関連付けられます。 
+次のセクションでは、Azure Maps と Azure RBAC との統合の概念とコンポーネントについて説明します。 Azure Maps アカウントを設定するプロセスの一環として、Azure AD ディレクトリが、Azure Maps アカウントがある Azure サブスクリプションに関連付けられます。
 
 Azure RBAC を構成する場合、セキュリティ プリンシパルを選択して、それをロールの割り当てに適用します。 Azure portal でロールの割り当てを追加する方法については、「[Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」に関するページを参照してください。
 

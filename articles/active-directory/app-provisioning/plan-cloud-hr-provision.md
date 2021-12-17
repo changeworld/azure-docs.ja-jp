@@ -3,20 +3,20 @@ title: Azure Active Directory ユーザー プロビジョニングのための�
 description: この記事では、Workday や SuccessFactors などのクラウド人事システムを Azure Active Directory と統合するデプロイ プロセスについて説明します。 Azure AD とクラウド人事システムを統合することで、完全な ID ライフサイクル管理システムが実現します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/22/2019
+ms.date: 07/13/2021
 ms.author: kenwith
-ms.reviewer: arvindha, celested
-ms.openlocfilehash: 9c896d4cccf898b8818b4c363c5bc891a8734ca5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: 77a80ced74bfd841001952dbf962babedece0978
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256713"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991168"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 
@@ -75,7 +75,7 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 ### <a name="licensing"></a>ライセンス
 
-クラウド人事アプリと Azure AD ユーザー プロビジョニングの統合を構成するには、有効な [Azure AD Premium ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)と、Workday や SuccessFactors などのクラウド人事アプリのライセンスが必要です。
+クラウド人事アプリと Azure AD ユーザー プロビジョニングの統合を構成するには、有効な [Azure AD Premium ライセンス](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)と、Workday や SuccessFactors などのクラウド人事アプリのライセンスが必要です。
 
 また、クラウド人事アプリをソースとして Active Directory または Azure AD にプロビジョニングされるすべてのユーザーに対して、Azure AD Premium P1 以上の有効なサブスクリプション ライセンスが必要です。 クラウド人事アプリで所有されているライセンスの数が適切でない場合、ユーザーのプロビジョニング時にエラーが発生する可能性があります。
 
@@ -85,7 +85,7 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 - Azure portal でプロビジョニング アプリを構成する[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)ロール
 - クラウド人事アプリのテストおよび運用インスタンス。
 - クラウド人事アプリの管理者権限。システム統合ユーザーを作成したり、テスト目的でテスト用社員データを変更したりするために必要です。
-- Active Directory へのユーザー プロビジョニングの場合、Azure AD Connect プロビジョニング エージェントをホストするために、.NET 4.7.1 以降のランタイムがインストールされた Windows Server 2012 以降を実行しているサーバーが必要です
+- Active Directory へのユーザー プロビジョニングの場合、Azure AD Connect プロビジョニング エージェントをホストするために、Windows Server 2016 以降を実行しているサーバーが必要です。 このサーバーは、Active Directory 管理層モデルに基づいた階層 0 のサーバーである必要があります。
 - Active Directory と Azure AD 間でユーザーを同期する [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md)。
 
 ### <a name="training-resources"></a>トレーニング リソース
@@ -182,7 +182,7 @@ Azure AD Connect プロビジョニング エージェントのデプロイ ト�
 |:-|:-|
 |デプロイする Azure AD Connect プロビジョニング エージェントの数|2 つ (高可用性とフェールオーバー)
 |構成するプロビジョニング コネクタ アプリの数|1 つの子ドメインあたり 1 つのアプリ|
-|Azure AD Connect プロビジョニング エージェントのサーバー ホスト|geo 配置された Active Directory ドメイン コントローラーへの見通し線を備えた Windows 2012 R2 以上</br>Azure AD Connect サービスと共存可能|
+|Azure AD Connect プロビジョニング エージェントのサーバー ホスト|geo 配置された Active Directory ドメイン コントローラーへの見通し線を備えた Windows Server 2016</br>Azure AD Connect サービスと共存可能|
 
 ![オンプレミス エージェントへのフロー](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img4.png)
 
@@ -196,24 +196,133 @@ Azure AD Connect プロビジョニング エージェントのデプロイ ト�
 |:-|:-|
 |オンプレミスにデプロイする Azure AD Connect プロビジョニング エージェントの数|分離された Active Directory フォレストあたり 2 つ|
 |構成するプロビジョニング コネクタ アプリの数|1 つの子ドメインあたり 1 つのアプリ|
-|Azure AD Connect プロビジョニング エージェントのサーバー ホスト|geo 配置された Active Directory ドメイン コントローラーへの見通し線を備えた Windows 2012 R2 以上</br>Azure AD Connect サービスと共存可能|
+|Azure AD Connect プロビジョニング エージェントのサーバー ホスト|geo 配置された Active Directory ドメイン コントローラーへの見通し線を備えた Windows Server 2016</br>Azure AD Connect サービスと共存可能|
 
 ![1 つのクラウド人事アプリのテナントと分離された Active Directory フォレスト](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img5.png)
 
 ### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Azure AD Connect プロビジョニング エージェントの要件
 
-クラウド人事アプリから Active Directory へのユーザー プロビジョニング ソリューションを使用するには、Windows 2012 R2 以降を実行し、1 つ以上の Azure AD Connect プロビジョニング エージェントをデプロイする必要があります。 サーバーは、4 GB 以上の RAM と .NET 4.7.1 以降のランタイムを備えている必要があります。 ホスト サーバーが、ターゲット Active Directory ドメインへのネットワーク アクセスを持っていることを確認します。
+クラウド人事アプリから Active Directory へのユーザー プロビジョニング ソリューションを使用するには、Windows Server 2016 以降を実行し、1 つ以上の Azure AD Connect プロビジョニング エージェントをデプロイする必要があります。 サーバーは、4 GB 以上の RAM と .NET 4.7.1 以降のランタイムを備えている必要があります。 ホスト サーバーが、ターゲット Active Directory ドメインへのネットワーク アクセスを持っていることを確認します。
 
-オンプレミス環境を準備するために、Azure AD Connect プロビジョニング エージェントの構成ウィザードは、エージェントを Azure AD テナントに登録し、[ポートを開き](../manage-apps/application-proxy-add-on-premises-application.md#open-ports)、[URL へのアクセスを許可し](../manage-apps/application-proxy-add-on-premises-application.md#allow-access-to-urls)、[アウトバウンド HTTPS プロキシ構成](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)をサポートします。
+オンプレミス環境を準備するために、Azure AD Connect プロビジョニング エージェントの構成ウィザードは、エージェントを Azure AD テナントに登録し、[ポートを開き](../app-proxy/application-proxy-add-on-premises-application.md#open-ports)、[URL へのアクセスを許可し](../app-proxy/application-proxy-add-on-premises-application.md#allow-access-to-urls)、[アウトバウンド HTTPS プロキシ構成](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)をサポートします。
 
-プロビジョニング エージェントは、サービス アカウントを使用して Active Directory ドメインと通信します。 エージェントをインストールする前に、次の要件を満たす Active Directory ユーザーとコンピューターにサービス アカウントを作成します。
-
-- パスワードの有効期限がない
-- ユーザー アカウントを読み取り、作成、削除、管理するための管理アクセス許可が委任されている
+Active Directory ドメインと通信するために、プロビジョニング エージェントによって[グローバル管理サービス アカウント (GMSA)](../cloud-sync/how-to-prerequisites.md#group-managed-service-accounts) が構成されます。 プロビジョニングに非 GMSA サービス アカウントを使用する場合は、構成時に [GMSA の構成をスキップ](../cloud-sync/how-to-manage-registry-options.md#skip-gmsa-configuration)し、サービス アカウントを指定できます。 
 
 プロビジョニング要求を処理する必要のあるドメイン コント ローラーを選択できます。 地理的に分散されたドメイン コント ローラーが複数ある場合は、優先ドメイン コント ローラーと同じサイトにプロビジョニング エージェントをインストールします。 この配置により、エンド ツー エンドのソリューションの信頼性とパフォーマンスが向上します。
 
 高可用性については、複数の Azure AD Connect プロビジョニング エージェントをデプロイできます。 エージェントを登録して、同じオンプレミスの Active Directory ドメインのセットを処理します。
+
+## <a name="design-hr-provisioning-app-deployment-topology"></a>HR プロビジョニング アプリのデプロイ トポロジを設計する
+
+受信ユーザー プロビジョニング構成にかかわる Active Directory ドメイン数に応じて、次のいずれかのデプロイ トポロジを検討できます。 各トポロジ図では、デプロイ シナリオの例を使用して、構成の側面を強調しています。 実際のデプロイの要件によく似た例を使用して、ニーズを満たす構成を判断します。 
+
+### <a name="deployment-topology-1-single-app-to-provision-all-users-from-cloud-hr-to-single-on-premises-active-directory-domain"></a>デプロイ トポロジ 1: すべてのユーザーをクラウド HR から 1 つのオンプレミスの Active Directory ドメインにプロビジョニングする単一アプリ
+
+これは、最も一般的なデプロイ トポロジです。 クラウド HR からすべてのユーザーを 1 つの AD ドメインにプロビジョニングする必要があり、すべてのユーザーに同じプロビジョニング ルールが適用される場合は、このトポロジを使用します。 
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-1-single-app-with-single-ad-domain.png" alt-text="クラウド HR からユーザーを 1 つの AD ドメインにプロビジョニングする単一アプリのスクリーンショット" lightbox="media/plan-cloud-hr-provision/topology-1-single-app-with-single-ad-domain.png":::
+
+**注目すべき構成の側面**
+* 高可用性とフェールオーバーのために、2 つのプロビジョニング エージェント ノードを設定します。 
+* [プロビジョニング エージェント構成ウィザード](../cloud-sync/how-to-install.md#install-the-agent)を使用して、AD ドメインを Azure AD テナントに登録します。 
+* プロビジョニング アプリを構成するときに、登録されているドメインのドロップダウンから AD ドメインを選択します。 
+* スコープ フィルターを使用している場合は、アカウントが誤ってアクティブ化されないように、[スコープ外の削除をスキップするフラグ](skip-out-of-scope-deletions.md)を構成します。 
+
+### <a name="deployment-topology-2-separate-apps-to-provision-distinct-user-sets-from-cloud-hr-to-single-on-premises-active-directory-domain"></a>デプロイ トポロジ 2: 個別のアプリで、クラウド HR から個別のユーザー セットを 1 つのオンプレミスの Active Directory ドメインにプロビジョニングする
+
+このトポロジでは、ユーザーの種類 (従業員または請負業者)、ユーザーの所在地、またはユーザーの事業単位に基づいて、属性マッピングとプロビジョニング ロジックの異なるビジネス要件がサポートされます。 また、このトポロジを使用して、部門または国に基づいて受信ユーザー プロビジョニングの管理と保守を委任することもできます。
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-2-separate-apps-with-single-ad-domain.png" alt-text="クラウド HR からユーザーを 1 つの AD ドメインにプロビジョニングする個別のアプリのスクリーンショット" lightbox="media/plan-cloud-hr-provision/topology-2-separate-apps-with-single-ad-domain.png":::
+
+**注目すべき構成の側面**
+* 高可用性とフェールオーバーのために、2 つのプロビジョニング エージェント ノードを設定します。 
+* プロビジョニングする個別のユーザー セットごとに HR2AD プロビジョニング アプリを作成します。 
+* プロビジョニング アプリで[スコープ フィルター](define-conditional-rules-for-provisioning-user-accounts.md)を使用して、各アプリによって処理されるユーザーを定義します。 
+* 個別のユーザーセットでマネージャーの参照を解決する必要があるシナリオ (たとえば、請負業者から従業員であるマネージャーに報告) を処理するには、"*マネージャー*" 属性のみを更新するための個別の HR2AD プロビジョニング アプリを作成できます。 このアプリのスコープをすべてのユーザーに設定します。 
+* アカウントが誤ってアクティブ化されないように、[スコープ外の削除をスキップするフラグ](skip-out-of-scope-deletions.md)を構成します。 
+
+> [!NOTE] 
+> テスト用の AD ドメインがなく、AD で TEST OU コンテナーを使用している場合は、このトポロジを使用して、2 つの個別のアプリ "*HR2AD (運用)* " と "*HR2AD (テスト)* " を作成することができます。 "*HR2AD (テスト)* " アプリを使用して、属性マッピングの変更をテストしてから、"*HR2AD (運用)* " アプリに昇格させます。  
+
+### <a name="deployment-topology-3-separate-apps-to-provision-distinct-user-sets-from-cloud-hr-to-multiple-on-premises-active-directory-domains-no-cross-domain-visibility"></a>デプロイ トポロジ 3: 個別のアプリで、クラウド HR から個別のユーザー セットを複数のオンプレミスの Active Directory ドメインにプロビジョニングする (ドメイン間の可視性なし)
+
+マネージャーが常にユーザーと同じドメインに存在し、*userPrincipalName*、*samAccountName*、*mail* のような属性に対する一意の ID 生成ルールが、フォレスト全体の検索を必要としない場合、このトポロジを使用して同じフォレストに属する複数の独立した子 AD ドメインを管理します。 また、各プロビジョニング ジョブの管理をドメイン境界ごとに委任することができる柔軟性も備えています。 
+
+たとえば、次の図では、プロビジョニング アプリは、北米 (NA)、ヨーロッパ、中東およびアフリカ (EMEA)、アジア太平洋 (APAC) の各地域に設定されています。 場所に応じて、ユーザーはそれぞれの AD ドメインにプロビジョニングされます。 プロビジョニング アプリの委任管理が可能なため、"*EMEA の管理者*" が EMEA リージョンに属するユーザーのプロビジョニング構成を個別に管理できます。  
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-3-separate-apps-with-multiple-ad-domains-no-cross-domain.png" alt-text="クラウド HR からユーザーを複数の AD ドメインにプロビジョニングする個別のアプリのスクリーンショット" lightbox="media/plan-cloud-hr-provision/topology-3-separate-apps-with-multiple-ad-domains-no-cross-domain.png":::
+
+**注目すべき構成の側面**
+* 高可用性とフェールオーバーのために、2 つのプロビジョニング エージェント ノードを設定します。 
+* [プロビジョニング エージェント構成ウィザード](../cloud-sync/how-to-install.md#install-the-agent)を使用して、すべての子 AD ドメインを Azure AD テナントに登録します。 
+* ターゲット ドメインごとに個別の HR2AD プロビジョニング アプリを作成します。 
+* プロビジョニング アプリを構成するときに、使用可能な AD ドメインのドロップダウンからそれぞれの子 AD ドメインを選択します。 
+* プロビジョニング アプリで[スコープ フィルター](define-conditional-rules-for-provisioning-user-accounts.md)を使用して、各アプリによって処理されるユーザーを定義します。 
+* アカウントが誤ってアクティブ化されないように、[スコープ外の削除をスキップするフラグ](skip-out-of-scope-deletions.md)を構成します。 
+
+
+### <a name="deployment-topology-4-separate-apps-to-provision-distinct-user-sets-from-cloud-hr-to-multiple-on-premises-active-directory-domains-with-cross-domain-visibility"></a>デプロイ トポロジ 4: 個別のアプリで、クラウド HR から個別のユーザー セットを複数のオンプレミスの Active Directory ドメインにプロビジョニングする (ドメイン間の可視性あり)
+
+ユーザーのマネージャーが異なるドメインに存在する可能性があり、*userPrincipalName*、*samAccountName*、*mail* のような属性に対する一意の ID 生成ルールが、フォレスト全体の検索を必要とする場合、このトポロジを使用して同じフォレストに属する複数の独立した子 AD ドメインを管理します。 
+
+たとえば、次の図では、プロビジョニング アプリは、北米 (NA)、ヨーロッパ、中東およびアフリカ (EMEA)、アジア太平洋 (APAC) の各地域に設定されています。 場所に応じて、ユーザーはそれぞれの AD ドメインにプロビジョニングされます。 ドメイン間マネージャーの参照とフォレスト全体の検索は、プロビジョニング エージェントで参照の追跡を有効にすることで処理されます。 
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-4-separate-apps-with-multiple-ad-domains-cross-domain.png" alt-text="ドメイン間サポートを使用してクラウド HR からユーザーを複数の AD ドメインにプロビジョニングする個別のアプリのスクリーンショット" lightbox="media/plan-cloud-hr-provision/topology-4-separate-apps-with-multiple-ad-domains-cross-domain.png":::
+
+**注目すべき構成の側面**
+* 高可用性とフェールオーバーのために、2 つのプロビジョニング エージェント ノードを設定します。 
+* プロビジョニング エージェントで[参照の追跡](../cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing)を構成します。 
+* [プロビジョニング エージェント構成ウィザード](../cloud-sync/how-to-install.md#install-the-agent)を使用して、親 AD ドメインとすべての子 AD ドメインを Azure AD テナントに登録します。 
+* ターゲット ドメインごとに個別の HR2AD プロビジョニング アプリを作成します。 
+* それぞれのプロビジョニング アプリを構成するときに、使用可能な AD ドメインのドロップダウンから親 AD ドメインを選択します。 これにより、フォレスト全体の参照が保証され、*userPrincipalName*、*samAccountName*、*mail* のような属性に対する一意の値が生成されます。
+* *parentDistinguishedName* と式マッピングを使用して、正しい子ドメインと [OU コンテナー](#configure-active-directory-ou-container-assignment)にユーザーを動的に作成します。 
+* プロビジョニング アプリで[スコープ フィルター](define-conditional-rules-for-provisioning-user-accounts.md)を使用して、各アプリによって処理されるユーザーを定義します。 
+* ドメイン間マネージャーの参照を解決するには、*manager* 属性のみを更新するための個別の HR2AD プロビジョニング アプリを作成します。 このアプリのスコープをすべてのユーザーに設定します。 
+* アカウントが誤ってアクティブ化されないように、[スコープ外の削除をスキップするフラグ](skip-out-of-scope-deletions.md)を構成します。 
+
+### <a name="deployment-topology-5-single-app-to-provision-all-users-from-cloud-hr-to-multiple-on-premises-active-directory-domains-with-cross-domain-visibility"></a>デプロイ トポロジ 5: 1 つのアプリで、クラウド HR からすべてのユーザーを複数のオンプレミスの Active Directory ドメインにプロビジョニングする (ドメイン間の可視性あり)
+
+1 つのプロビジョニング アプリを使用して、すべての親と子 AD ドメインに属するユーザーを管理する場合は、このトポロジを使用します。 プロビジョニング ルールがすべてのドメインで一貫性があり、プロビジョニング ジョブの委任管理の要件がない場合は、このトポロジをお勧めします。 このトポロジは、ドメイン間マネージャーの参照の解決をサポートしており、フォレスト全体の一意性の確認を実行できます。 
+
+たとえば、次の図では、1 つのプロビジョニング アプリで、リージョン別にグループ化された 3 つの異なる子ドメイン、北米 (NA)、ヨーロッパ、中東およびアフリカ (EMEA)、アジア太平洋 (APAC) に存在するユーザーを管理しています。 *parentDistinguishedName* の属性マッピングは、適切な子ドメインにユーザーを動的に作成するために使用されます。 ドメイン間マネージャーの参照とフォレスト全体の検索は、プロビジョニング エージェントで参照の追跡を有効にすることで処理されます。 
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-5-single-app-with-multiple-ad-domains-cross-domain.png" alt-text="ドメイン間サポートを使用してクラウド HR からユーザーを複数の AD ドメインにプロビジョニングする 1 つのアプリのスクリーンショット" lightbox="media/plan-cloud-hr-provision/topology-5-single-app-with-multiple-ad-domains-cross-domain.png":::
+
+**注目すべき構成の側面**
+* 高可用性とフェールオーバーのために、2 つのプロビジョニング エージェント ノードを設定します。 
+* プロビジョニング エージェントで[参照の追跡](../cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing)を構成します。 
+* [プロビジョニング エージェント構成ウィザード](../cloud-sync/how-to-install.md#install-the-agent)を使用して、親 AD ドメインとすべての子 AD ドメインを Azure AD テナントに登録します。 
+* フォレスト全体に対して 1 つの HR2AD プロビジョニング アプリを作成します。 
+* プロビジョニング アプリを構成するときに、使用可能な AD ドメインのドロップダウンから親 AD ドメインを選択します。 これにより、フォレスト全体の参照が保証され、*userPrincipalName*、*samAccountName*、*mail* のような属性に対する一意の値が生成されます。
+* *parentDistinguishedName* と式マッピングを使用して、正しい子ドメインと [OU コンテナー](#configure-active-directory-ou-container-assignment)にユーザーを動的に作成します。 
+* スコープ フィルターを使用している場合は、アカウントが誤ってアクティブ化されないように、[スコープ外の削除をスキップするフラグ](skip-out-of-scope-deletions.md)を構成します。 
+
+### <a name="deployment-topology-6-separate-apps-to-provision-distinct-users-from-cloud-hr-to-disconnected-on-premises-active-directory-forests"></a>デプロイ トポロジ 6: 個別のアプリで、クラウド HR から個別のユーザーを接続解除されたオンプレミスの Active Directory フォレストにプロビジョニングする
+
+IT インフラストラクチャが AD フォレストを接続解除または分離し、事業所属に基づいてユーザーを別のフォレストにプロビジョニングする必要がある場合は、このトポロジを使用します。 たとえば、子会社 *Contoso* に勤務しているユーザーを *contoso.com* ドメインにプロビジョニングする必要があり、子会社 *Fabrikam* に勤務しているユーザーを、*fabrikam.com* ドメインにプロビジョニングする必要がある場合です。 
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-6-separate-apps-with-disconnected-ad-forests.png" alt-text="クラウド HR からユーザーを接続解除された AD フォレストにプロビジョニングする個別のアプリのスクリーンショット" lightbox="media/plan-cloud-hr-provision/topology-6-separate-apps-with-disconnected-ad-forests.png":::
+
+**注目すべき構成の側面**
+* 高可用性とフェールオーバーのために、フォレストごとに 1 つずつ、2 つの異なるプロビジョニング エージェント セットを設定します。 
+* フォレストごとに 1 つずつ、2 つの異なるプロビジョニング アプリを作成します。 
+* フォレスト内のドメイン間参照を解決する必要がある場合は、プロビジョニング エージェントで[参照の追跡](../cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing)を有効にします。 
+* 接続解除されたフォレストごとに個別の HR2AD プロビジョニング アプリを作成します。 
+* それぞれのプロビジョニング アプリを構成するときに、使用可能な AD ドメイン名のドロップダウンから適切な親 AD ドメインを選択します。 
+* アカウントが誤ってアクティブ化されないように、[スコープ外の削除をスキップするフラグ](skip-out-of-scope-deletions.md)を構成します。 
+
+### <a name="deployment-topology-7-separate-apps-to-provision-distinct-users-from-multiple-cloud-hr-to-disconnected-on-premises-active-directory-forests"></a>デプロイ トポロジ 7: 個別のアプリで、複数のクラウド HR から個別のユーザーを接続解除されたオンプレミスの Active Directory フォレストにプロビジョニングする
+
+大規模な組織では、複数の人事システムを使用することも珍しくありません。 企業の M&A (合併と買収) のシナリオでは、オンプレミスの Active Directory を複数の人事ソースに接続する必要がある場合があります。 複数の人事ソースを持ち、これらの人事ソースから同じまたは異なるオンプレミスの Active Directory ドメインに ID データを送りたい場合は、以下のトポロジをお勧めします。  
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-7-separate-apps-from-multiple-hr-to-disconnected-ad-forests.png" alt-text="複数のクラウド HR からユーザーを接続解除された AD フォレストにプロビジョニングする個別のアプリのスクリーンショット" lightbox="media/plan-cloud-hr-provision/topology-7-separate-apps-from-multiple-hr-to-disconnected-ad-forests.png":::
+
+**注目すべき構成の側面**
+* 高可用性とフェールオーバーのために、フォレストごとに 1 つずつ、2 つの異なるプロビジョニング エージェント セットを設定します。 
+* フォレスト内のドメイン間参照を解決する必要がある場合は、プロビジョニング エージェントで[参照の追跡](../cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing)を有効にします。 
+* 各人事システムとオンプレミスの Active Directory の組み合わせごとに個別の HR2AD プロビジョニング アプリを作成します。
+* それぞれのプロビジョニング アプリを構成するときに、使用可能な AD ドメイン名のドロップダウンから適切な親 AD ドメインを選択します。 
+* アカウントが誤ってアクティブ化されないように、[スコープ外の削除をスキップするフラグ](skip-out-of-scope-deletions.md)を構成します。 
 
 ## <a name="plan-scoping-filters-and-attribute-mapping"></a>スコープ フィルターと属性マッピングの計画
 
@@ -295,7 +404,7 @@ Azure AD Connect プロビジョニング エージェントのデプロイ ト�
 Azure AD の [SelectUniqueValues](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) 関数は、各ルールを評価した後、生成された値のターゲット システムでの一意性を確認します。 例については、「[userPrincipalName (UPN) 属性用に一意の値を生成する](../app-provisioning/functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute)」を参照してください。
 
 > [!NOTE]
-> 現在、この関数は Workday to Active Directory User Provisioning でのみサポートされています。 他のプロビジョニング アプリでは使用できません。
+> 現在、この関数は、Workday から Active Directory と、SAP SuccessFactors から Active Directory へのユーザー プロビジョニングでのみサポートされています。 他のプロビジョニング アプリでは使用できません。
 
 ### <a name="configure-active-directory-ou-container-assignment"></a>Active Directory OU コンテナーの割り当てを構成する
 
@@ -315,7 +424,7 @@ Switch([Municipality], "OU=Default,OU=Users,DC=contoso,DC=com", "Dallas", "OU=Da
 
 入社プロセスの開始時に、新しいユーザー アカウントの一時パスワードを設定して交付する必要があります。 クラウド人事アプリから Azure AD へのユーザー プロビジョニングでは、Azure AD の[セルフサービス パスワード リセット ](../authentication/tutorial-enable-sspr.md) (SSPR) 機能を初日からユーザーに提供できます。
 
-SSPR は、パスワードのリセットやアカウントのロック解除を IT 管理者がユーザーに許可するための簡単な手段です。 **Mobile Number** (携帯電話番号) 属性をクラウド人事アプリから Active Directory にプロビジョニングし、Azure AD と同期することができます。 **Mobile Number** (携帯電話番号) 属性が Azure AD に追加された後、ユーザーのアカウントに対して SSPR を有効にすることができます。 その後、新しいユーザーは初日に認証に登録および検証された携帯電話番号を使用できます。
+SSPR は、パスワードのリセットやアカウントのロック解除を IT 管理者がユーザーに許可するための簡単な手段です。 **Mobile Number** (携帯電話番号) 属性をクラウド人事アプリから Active Directory にプロビジョニングし、Azure AD と同期することができます。 **Mobile Number** (携帯電話番号) 属性が Azure AD に追加された後、ユーザーのアカウントに対して SSPR を有効にすることができます。 その後、新しいユーザーは初日に認証に登録および検証された携帯電話番号を使用できます。 認証の連絡先情報を事前設定する方法の詳細については、[SSPR のドキュメント](../authentication/howto-sspr-authenticationdata.md)を参照してください。 
 
 ## <a name="plan-for-initial-cycle"></a>初期サイクルの計画
 

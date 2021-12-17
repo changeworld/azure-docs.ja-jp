@@ -3,25 +3,27 @@ title: チュートリアル - Azure PowerShell を使用してスケール セ�
 description: Azure PowerShell を使用して仮想マシン スケール セットをデプロイするためのカスタム VM イメージを作成する方法について説明します
 author: cynthn
 ms.service: virtual-machine-scale-sets
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: cynthn
-ms.reviewer: akjosh
-ms.custom: akjosh
-ms.openlocfilehash: 803bbf485d783fc160d1f2644a56e1339f73690e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mimckitt
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1c0ba3a58906275d136a437f3b18d32e3fe70a24
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678307"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456786"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Shared Image Gallery を作成する
+> * Azure Compute Gallery を作成する
 > * イメージ定義を作成する
 > * イメージ バージョンを作成する
 > * イメージからスケールセットを作成する 
@@ -74,7 +76,7 @@ $gallery = New-AzGallery `
    -GalleryName 'myGallery' `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
-   -Description 'Shared Image Gallery for my organization'  
+   -Description 'Azure Compute Gallery for my organization' 
 ```
 
 
@@ -262,7 +264,7 @@ Azure では、Packer 上に構築された [Azure VM Image Builder](../virtual-
 このチュートリアルでは、Azure PowerShell を使用してスケール セットにカスタム VM イメージを作成して使用する方法について学習しました。
 
 > [!div class="checklist"]
-> * Shared Image Gallery を作成する
+> * Azure Compute Gallery を作成する
 > * イメージ定義を作成する
 > * イメージ バージョンを作成する
 > * イメージからスケールセットを作成する 

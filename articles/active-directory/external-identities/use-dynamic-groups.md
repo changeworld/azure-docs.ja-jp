@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/28/2020
+ms.date: 07/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b820b8b9606795709d03414fa14ec29a1b5c519
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6638e06a8bd7020db993db024d76a566b878ca23
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92441557"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730408"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動的グループと Azure Active Directory B2B コラボレーション
 
 ## <a name="what-are-dynamic-groups"></a>動的グループとは
 Azure Active Directory (Azure AD) のセキュリティ グループ メンバーシップの動的な構成は、[Azure Portal](https://portal.azure.com) で利用できます。 管理者は、ユーザー属性 (userType、部門、国/地域など) に基づいて、Azure AD で作成されたグループのメンバーを設定するためのルールを指定できます。 メンバーを属性に基づいて自動的にセキュリティ グループに追加したり、セキュリティ グループから削除したりすることができます。 これらのグループを使用すると、アプリケーションやクラウド リソース (SharePoint サイト、ドキュメント) へのアクセスを付与したり、メンバーにライセンスを割り当てたりすることができます。 動的なグループの詳細については、「[Azure Active Directory の専用グループ](../fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
-動的グループを作成および使用するには、適切な [Azure AD Premium P1 または P2 ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)が必要です。 詳細については「[Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する](../enterprise-users/groups-dynamic-membership.md)」の記事を参照してください。
+動的グループを作成および使用するには、適切な [Azure AD Premium P1 または P2 ライセンス](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)が必要です。 詳細については「[Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する](../enterprise-users/groups-dynamic-membership.md)」の記事を参照してください。
 
 ## <a name="creating-an-all-users-dynamic-group"></a>"すべてのユーザー" の動的グループの作成
 メンバーシップ ルールを使用し、テナント内のすべてのユーザーを含むグループを作成できます。 将来、ユーザーがテナントに追加されたり、テナントから削除されたりしたとき、メンバーシップは自動的に調整されます。
@@ -74,5 +74,5 @@ Azure Active Directory (Azure AD) のセキュリティ グループ メンバ�
 ## <a name="next-steps"></a>次のステップ
 
 - [B2B コラボレーション ユーザーのプロパティ](user-properties.md)
-- [B2B コラボレーション ユーザーのロールへの追加](add-guest-to-role.md)
+- [B2B コラボレーション ユーザーのロールへの追加](./add-users-administrator.md)
 - [B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)

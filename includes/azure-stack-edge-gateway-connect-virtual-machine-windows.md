@@ -4,18 +4,18 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 6e42fef2aa4415373ed0bac39284f36ba330a4d9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2b01b4f11ac7777075848287626e021b89254acb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101730649"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758297"
 ---
 VM の作成時に渡した IP 経由でリモート デスクトップ プロトコル (RDP) を使用して、Windows VM に接続します。
 
 1. お使いのクライアントで、RDP を開きます。 
 1. **[スタート]** に移動し、「**mstsc**」と入力します。
-1. **[リモート デスクトップ接続]** ウィンドウで、VM テンプレート パラメーター ファイルで使用した VM の IP アドレスとアクセス資格情報を入力し、 **[接続]** を選択します。
+1. **[リモート デスクトップ接続]** ウィンドウで、VM テンプレート パラメーター ファイルで使用した VM の IP アドレスとアクセス資格情報を入力します。 次に、 **[接続]\(Connect\)** を選択します。
 
    ![RDP 経由で Windows VM に接続するための [リモート デスクトップ接続] ウィンドウのスクリーンショット。](media/azure-stack-edge-gateway-connect-vm-windows/connect-vm-rdp-1.png)
 

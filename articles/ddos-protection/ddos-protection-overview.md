@@ -1,22 +1,22 @@
 ---
 title: Azure DDoS Protection Standard の概要
 description: Azure DDoS Protection Standard をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御を提供する方法について説明します。
-services: virtual-network
+services: ddos-protection
 documentationcenter: na
 author: aletheatoh
-ms.service: virtual-network
+ms.service: ddos-protection
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: c8b3b0227e293c42ac9db8f888bc863e073ff6f5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3d473dd2c2e587d3c9563ca7171f7105311fa59a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103336"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306398"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要
 
@@ -38,7 +38,7 @@ Azure DDoS Protection では、顧客データは保存されません。
 - **アダプティブ チューニング:** インテリジェント トラフィック プロファイリングにより、一定期間にわたってアプリケーションのトラフィックが学習され、そのサービスに最も適したプロファイルが選択および更新されます。 このプロファイルは、時間の経過とともにトラフィックが変化すると調整されます。
 - **多層保護:** Web アプリケーション ファイアウォールと共にデプロイする場合、DDoS Protection Standard によって、ネットワーク層 (Azure DDoS Protection Standard によって提供されるレイヤー 3 と 4) とアプリケーション層 (WAF によって提供されるレイヤー 7) の両方で保護されます。 WAF オファリングには、Azure [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に加えて、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) で利用できるサードパーティの Web アプリケーション ファイアウォール オファリングが含まれています。
 - **広範囲にわたる軽減スケール:** 60 種類を超える攻撃を軽減することができ、地球規模の容量を利用して、過去最大の DDoS 攻撃からも保護されます。
-- **攻撃の分析:** 攻撃中の 5 分ごとの詳細なレポートと、攻撃終了後の完全な概要を取得します。 攻撃中のほぼリアルタイムの監視のために、軽減フローのログが [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md) に、またはオフラインのセキュリティ情報イベント管理 (SIEM) システムにストリーム配信されます。
+- **攻撃の分析:** 攻撃中の 5 分ごとの詳細なレポートと、攻撃終了後の完全な概要を取得します。 攻撃中のほぼリアルタイムの監視のために、軽減フローのログが [Microsoft Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection) に、またはオフラインのセキュリティ情報イベント管理 (SIEM) システムにストリーム配信されます。
 - **攻撃メトリック:** 各攻撃から要約されたメトリックに Azure Monitor 経由でアクセスできます。
 - **攻撃アラート:** 組み込みの攻撃メトリックを使用して、攻撃の開始時と停止時、およびその攻撃の期間にわたってアラートを構成できます。 アラートは、Microsoft Azure Monitor ログ、Splunk、Azure Storage、電子メール、Azure portal などの運用ソフトウェアに統合されます。
 - **DDoS Rapid Response**:攻撃の調査と分析の支援を受けるため、DDoS Protection Rapid Response (DRR) チームを関与させます。 詳細については、[DDoS Rapid Response](ddos-rapid-response.md) に関するページを参照してください。
@@ -58,5 +58,5 @@ DDoS Protection Standard は、[仮想ネットワークにデプロイされる
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [DDoS Protection プランを作成する](manage-ddos-protection.md)
+* [クイックスタート: DDoS 保護プランを作成する](manage-ddos-protection.md)
+* [Learn モジュール: Azure DDoS Protection の概要](/learn/modules/introduction-azure-ddos-protection/)

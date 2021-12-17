@@ -1,19 +1,20 @@
 ---
 title: マッピング データ フローを使用してデータを変換する
 description: このチュートリアルでは、Azure Data Factory で マッピング データ フローを使用してデータを変換するための詳細な手順を説明します
-author: dcstwh
-ms.author: weetok
+author: kromerm
+ms.author: makromer
 ms.reviewer: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2021
-ms.openlocfilehash: 2363afc4c84ee7606410ceecd6819c12d0333dbb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/04/2021
+ms.openlocfilehash: 5ff1ea92056b4fe5f090442df72e7c39d53368b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563295"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626240"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>マッピング データ フローを使用してデータを変換する
 
@@ -48,7 +49,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 1. **Microsoft Edge** または **Google Chrome** を開きます。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 2. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
 
-   ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="&quot;[新規]&quot; ペインでの Data Factory の選択":::
 
 3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
 
@@ -73,20 +74,20 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
 この手順では、Data Flow アクティビティを含むパイプラインを作成します。
 
-1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
+1. Azure Data Factory のホーム ページで、 **[Orchestrate]\(調整\)** を選択します。
 
-   ![パイプラインの作成](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="ADF のホーム ページを示すスクリーンショット。":::
 
 1. パイプラインの **[全般]** タブで、パイプラインの **名前** として「**TransformMovies**」と入力します。
-1. ファクトリの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
-
-    ![Data Flow アクティビティ](media/tutorial-data-flow/dataflow1.png)
 1. **[アクティビティ]** ウィンドウで、 **[移動と変換]** アコーディオンを展開します。 ウィンドウから **Data Flow** アクティビティをパイプライン キャンバスにドラッグ アンド ドロップします。
 
-    ![Data Flow アクティビティをドロップできるパイプライン キャンバスを示すスクリーンショット。](media/tutorial-data-flow/activity1.png)
+    :::image type="content" source="media/tutorial-data-flow/activity1.png" alt-text="Data Flow アクティビティをドロップできるパイプライン キャンバスを示すスクリーンショット。":::
 1. **[Adding Data Flow]\(Data Flow の追加\)** ポップアップで、 **[Create new Data Flow]\(新しい Data Flow の作成\)** を選択し、データ フローに **TransformMovies** という名前を付けます。 終了したら、[完了] をクリックします。
 
-    ![新しいデータ フローを作成するときにデータ フローの名前を指定する場所を示すスクリーンショット。](media/tutorial-data-flow/activity2.png)
+    :::image type="content" source="media/tutorial-data-flow/activity2.png" alt-text="新しいデータ フローを作成するときにデータ フローの名前を指定する場所を示すスクリーンショット。":::
+1. パイプライン キャンバスの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
+
+    :::image type="content" source="media/tutorial-data-flow/dataflow1.png" alt-text="Data Flow アクティビティ":::
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>データ フロー キャンバスでの変換ロジックの作成
 
@@ -94,87 +95,87 @@ Data Flow を作成すると、データ フロー キャンバスが自動的�
 
 1. データ フロー キャンバスで **[Add Source]\(ソースの追加\)** ボックスをクリックして、ソースを追加します。
 
-    ![[変換元の追加] ボックスを示すスクリーンショット。](media/tutorial-data-flow/dataflow2.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow2.png" alt-text="[変換元の追加] ボックスを示すスクリーンショット。":::
 1. ソースに **MoviesDB** という名前を付けます。 **[新規]** をクリックして、新しいソース データセットを作成します。
 
-    ![変換元の名前を指定した後で [新規] を選択する場所を示すスクリーンショット。](media/tutorial-data-flow/dataflow3.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow3.png" alt-text="変換元の名前を指定した後で [新規] を選択する場所を示すスクリーンショット。":::
 1. **[Azure Data Lake Storage Gen2]** を選択します。 [続行] をクリックして続行します。
 
-    ![Azure Data Lake Storage Gen2 のタイルを示すスクリーンショット。](media/tutorial-data-flow/dataset1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataset1.png" alt-text="Azure Data Lake Storage Gen2 のタイルの場所を示すスクリーンショット。":::
 1. **[DelimitedText]** を選択します。 [続行] をクリックして続行します。
 
-    ![DelimitedText のタイルを示すスクリーンショット。](media/tutorial-data-flow/dataset2.png)
+    :::image type="content" source="media/tutorial-data-flow/dataset2.png" alt-text="DelimitedText のタイルを示すスクリーンショット。":::
 1. データセットに **MoviesDB** という名前を付けます。 リンクされたサービスのドロップダウンで、 **[新規]** を選択します。
 
-    ![[リンクされたサービス] ドロップダウン リストを示すスクリーンショット。](media/tutorial-data-flow/dataset3.png)
+    :::image type="content" source="media/tutorial-data-flow/dataset3.png" alt-text="[リンクされたサービス] ドロップダウン リストを示すスクリーンショット。":::
 1. リンクされたサービスの作成画面で、ADLS gen2 のリンクされたサービスに **ADLSGen2** という名前を付けて、使用する認証方法を指定します。 次に、接続の資格情報を入力します。 このチュートリアルでは、アカウント キーを使用してストレージ アカウントに接続しています。 **[テスト接続]** をクリックすると、資格情報が正しく入力されたことを確認できます。 完了したら [作成] をクリックします。
 
-    ![リンクされたサービス](media/tutorial-data-flow/ls1.png)
+    :::image type="content" source="media/tutorial-data-flow/ls1.png" alt-text="リンクされたサービス":::
 1. データセットの作成画面に戻ったら、 **[ファイル パス]** フィールドの下でファイルが配置されている場所を入力します。 このチュートリアルでは、moviesDB.csv ファイルはコンテナー sample-data に配置されています。 ファイルにはヘッダーが含まれているため、 **[First row as header]\(最初の行をヘッダーにする\)** をオンにします。 ストレージ内のファイルからヘッダー スキーマを直接インポートするには、 **[From connection/store]\(接続/ストアから\)** を選択します。 完了したら、[OK] をクリックします。
 
-    ![データセット](media/tutorial-data-flow/dataset4.png)
+    :::image type="content" source="media/tutorial-data-flow/dataset4.png" alt-text="データセット":::
 1. デバッグ クラスターが起動している場合は、ソース変換の **[Data Preview]\(データのプレビュー\)** タブに移動し、 **[更新]** をクリックして、データのスナップショットを取得します。 データ プレビューを使用すると、変換が正しく構成されていることを確認できます。
 
-    ![データをプレビューして変換が正しく構成されていることを確認できる場所を示すスクリーンショット。](media/tutorial-data-flow/dataflow4.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow4.png" alt-text="データをプレビューして変換が正しく構成されていることを確認できる場所を示すスクリーンショット。":::
 1. データ フロー キャンバスでソース ノードの横にあるプラス アイコンをクリックして、新しい変換を追加します。 最初に追加する変換は、**フィルター** です。
 
-    ![データ フロー キャンバス](media/tutorial-data-flow/dataflow5.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow5.png" alt-text="データ フロー キャンバス":::
 1. フィルター変換に **FilterYears** という名前を付けます。 **[フィルター適用]** の横にある式ボックスをクリックして、式ビルダーを開きます。 ここでフィルター条件を指定します。
 
-    ![[フィルター適用] 式ボックスを示すスクリーンショット。](media/tutorial-data-flow/filter1.png)
+    :::image type="content" source="media/tutorial-data-flow/filter1.png" alt-text="[フィルター適用] 式ボックスを示すスクリーンショット。":::
 1. データ フローの式ビルダーでは、さまざまな変換で使用する式を対話形式で作成できます。 式には、組み込み関数、入力スキーマの列、ユーザー定義のパラメーターを含めることができます。 式の作成方法の詳細については、[Data Flow の式ビルダー](concepts-data-flow-expression-builder.md)に関するページを参照してください。
 
-    このチュートリアルでは、1910 年から 2000 年の間に公開された、ジャンルがコメディの映画をフィルター処理します。 現在、年は文字列になっているため、```toInteger()``` 関数を使用して整数に変換する必要があります。 以上演算子 (>=) と以下演算子 (<=) を使用して、年のリテラル値 1910 と 2000 に対する比較を行います。 これらの式を and (&&) 演算子を使用して結合します。 式は次のようになります。
+    このチュートリアルでは、1910 年から 2000 年の間に公開された、ジャンルがコメディの映画をフィルター処理します。 現在、年は文字列になっているため、`toInteger()` 関数を使用して整数に変換する必要があります。 以上演算子 (>=) と以下演算子 (<=) を使用して、年のリテラル値 1910 と 2000 に対する比較を行います。 これらの式を and (&&) 演算子を使用して結合します。 式は次のようになります。
 
-    ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
+    `toInteger(year) >= 1910 && toInteger(year) <= 2000`
 
-    コメディ映画を見つけるには、```rlike()``` 関数を使用して、ジャンル列でパターン 'Comedy' を検索します。 rlike 式と年の比較を結合して、次を取得します。
+    コメディ映画を見つけるには、`rlike()` 関数を使用して、ジャンル列でパターン 'Comedy' を検索します。 `rlike` 式を年の比較と結合すると、次の式が得られます。
 
-    ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
+    `toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')`
 
     デバッグ クラスターがアクティブになっている場合は、 **[更新]** をクリックして使用された入力と比較した式の出力を表示して、ロジックを確認できます。 データ フローの式言語を使用してこのロジックを実現する方法に対する正解は複数あります。
 
-    ![Assert](media/tutorial-data-flow/filter2.png)
+    :::image type="content" source="media/tutorial-data-flow/filter2.png" alt-text="Assert":::
 
     式の操作が完了したら、 **[Save and Finish]\(保存して終了する\)** をクリックします。
 
 1. フィルターが正しく機能していることを確認するには、**データ プレビュー** をフェッチします。
 
-    ![フェッチした [データのプレビュー] を示すスクリーンショット。](media/tutorial-data-flow/filter3.png)
+    :::image type="content" source="media/tutorial-data-flow/filter3.png" alt-text="フェッチした [データのプレビュー] を示すスクリーンショット。":::
 1. 次に追加する変換は、 **[Schema modifier]\(スキーマ修飾子\)** の下にある **[集計]** 変換です。
 
-    ![集計スキーマ修飾子を示すスクリーンショット。](media/tutorial-data-flow/agg1.png)
+    :::image type="content" source="media/tutorial-data-flow/agg1.png" alt-text="集計スキーマ修飾子を示すスクリーンショット。":::
 1. 集計変換に **AggregateComedyRatings** という名前を付けます。 **[グループ化]** タブで、ドロップダウンから **[year]** を選択し、映画の公開年ごとに集計をグループ化します。
 
-    ![[Aggregate Settings]\(集計の設定\) の下にある [グループ化] タブの年オプションを示すスクリーンショット。](media/tutorial-data-flow/agg2.png)
+    :::image type="content" source="media/tutorial-data-flow/agg2.png" alt-text="[Aggregate Settings]\(集計の設定\) の下にある [グループ化] タブの年オプションを示すスクリーンショット。":::
 1. **[集計]** タブに移動します。左側のテキスト ボックスで、集計列に **AverageComedyRating** という名前を付けます。 式ビルダーを使用して集計式を入力するには、右側の式ボックスをクリックします。
 
-    ![[Aggregate Settings]\(集計の設定\) の下にある [集計] タブの年オプションを示すスクリーンショット。](media/tutorial-data-flow/agg3.png)
+    :::image type="content" source="media/tutorial-data-flow/agg3.png" alt-text="[Aggregate Settings]\(集計の設定\) の下にある [集計] タブの年オプションを示すスクリーンショット。":::
 1. 列 **[Rating]** の平均値を取得するには、```avg()``` 集計関数を使用します。 **Rating** は文字列で、```avg()``` で受け入れられるのは数値入力なので、```toInteger()``` 関数を使用して値を数値に変換する必要があります。 式は次のようになります。
 
-    ```avg(toInteger(Rating))```
+    `avg(toInteger(Rating))`
 
     完了したら、 **[Save and Finish]\(保存して終了する\)** をクリックします。
 
-    ![保存された式を示すスクリーンショット。](media/tutorial-data-flow/agg4.png)
+    :::image type="content" source="media/tutorial-data-flow/agg4.png" alt-text="保存された式を示すスクリーンショット。":::
 1. 変換出力を表示するには、 **[Data Preview]\(データのプレビュー\)** タブに移動します。 **year** と **AverageComedyRating** の 2 つの列だけがあることに注目してください。
 
-    ![Aggregate](media/tutorial-data-flow/agg3.png)
+    :::image type="content" source="media/tutorial-data-flow/agg3.png" alt-text="集計":::
 1. 次に、 **[Destination]\(変換先\)** の下で **[シンク]** 変換を追加します。
 
-    ![[Destination]\(変換先\) でシンク変換を追加する場所を示すスクリーンショット。](media/tutorial-data-flow/sink1.png)
+    :::image type="content" source="media/tutorial-data-flow/sink1.png" alt-text="[Destination]\(変換先\) でシンク変換を追加する場所を示すスクリーンショット。":::
 1. シンクに **Sink** という名前を付けます。 **[新規]** をクリックして、シンク データセットを作成します。
 
-    ![シンクの名前を指定して新しいシンク データセットを作成できる場所を示すスクリーンショット。](media/tutorial-data-flow/sink2.png)
+    :::image type="content" source="media/tutorial-data-flow/sink2.png" alt-text="シンクの名前を指定して新しいシンク データセットを作成できる場所を示すスクリーンショット。":::
 1. **[Azure Data Lake Storage Gen2]** を選択します。 [続行] をクリックして続行します。
 
-    ![選択できる Azure Data Lake Storage Gen2 のタイルを示すスクリーンショット。](media/tutorial-data-flow/dataset1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataset1.png" alt-text="選択できる Azure Data Lake Storage Gen2 のタイルを示すスクリーンショット。":::
 1. **[DelimitedText]** を選択します。 [続行] をクリックして続行します。
 
-    ![データセット](media/tutorial-data-flow/dataset2.png)
+    :::image type="content" source="media/tutorial-data-flow/dataset2.png" alt-text="データセット":::
 1. シンク データセットに **MoviesSink** という名前を付けます。 リンクされたサービスの場合、手順 6 で作成した ADLS gen2 のリンクされたサービスを選択します。 データの書き込み先となる出力フォルダーを入力します。 このチュートリアルでは、コンテナー 'sample-data' 内のフォルダー ' output ' に書き込んでいます。 フォルダーは、事前に存在している必要はなく、動的に作成することができます。 **[First row as header]\(最初の行をヘッダーにする\)** をオンに設定し、 **[スキーマのインポート]** で **[なし]** を選択します。 [完了] をクリックします。
 
-    ![シンク](media/tutorial-data-flow/sink3.png)
+    :::image type="content" source="media/tutorial-data-flow/sink3.png" alt-text="Sink":::
 
 これで、データ フローの構築が完了しました。 これをパイプラインで実行する準備ができました。
 
@@ -184,16 +185,16 @@ Data Flow を作成すると、データ フロー キャンバスが自動的�
 
 1. パイプライン キャンバスに移動します。 **[デバッグ]** をクリックして、デバッグ実行をトリガーします。
 
-    ![[デバッグ] が強調して示されているパイプライン キャンバスを示すスクリーンショット。](media/tutorial-data-flow/pipeline1.png)
+    :::image type="content" source="media/tutorial-data-flow/pipeline1.png" alt-text="[デバッグ] が強調して示されているパイプライン キャンバスを示すスクリーンショット。":::
 1. Data Flow アクティビティのパイプライン デバッグでは、アクティブなデバッグ クラスターが使用されますが、それでも初期化には少なくとも 1 分かかります。 進行状況は **[出力]** タブで追跡することができます。実行が正常に完了したら、眼鏡のアイコンをクリックして [監視] ウィンドウを開きます。
 
-    ![パイプライン](media/tutorial-data-flow/pipeline2.png)
+    :::image type="content" source="media/tutorial-data-flow/pipeline2.png" alt-text="パイプライン":::
 1. [監視] ウィンドウには、各変換手順で使用した行数と所要時間が表示されます。
 
-    ![各変換ステップで費やされた行数と時間を確認できる監視ペインを示すスクリーンショット。](media/tutorial-data-flow/pipeline3.png)
+    :::image type="content" source="media/tutorial-data-flow/pipeline3.png" alt-text="各変換ステップで費やされた行数と時間を確認できる監視ペインを示すスクリーンショット。":::
 1. 変換をクリックすると、データの列とパーティション分割に関する詳細情報が表示されます。
 
-    ![監視](media/tutorial-data-flow/pipeline4.png)
+    :::image type="content" source="media/tutorial-data-flow/pipeline4.png" alt-text="Monitoring":::
 
 このチュートリアルに正しく従った場合は、シンク フォルダーに 83 行と 2 列が書き込まれているはずです。 BLOB ストレージをチェックすることで、データが正しいことを確認できます。
 

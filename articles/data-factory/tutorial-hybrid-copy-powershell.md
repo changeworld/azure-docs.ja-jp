@@ -4,15 +4,16 @@ description: Azure Data Factory 内のセルフホステッド統合ランタイ
 author: nabhishek
 ms.author: abnarain
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell
 ms.date: 02/18/2021
-ms.openlocfilehash: 33c3138013c43062465cce16189e6c19d22ae4d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 484b05483119914003f4d8ff28967cad262e8542
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724933"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086445"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>チュートリアル:SQL Server データベースから Azure Blob Storage にデータをコピーする
 
@@ -81,7 +82,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. 左側のウィンドウの **[その他のサービス]** を選択し、「**ストレージ**」というキーワードでフィルタリングして、 **[ストレージ アカウント]** を選択します。
 
-    ![ストレージ アカウントを検索](media/doc-common-process/search-storage-account.png)
+    :::image type="content" source="media/doc-common-process/search-storage-account.png" alt-text="ストレージ アカウントを検索":::
 
 1. ストレージ アカウントの一覧で、ご利用のストレージ アカウントを (必要に応じて) フィルターで抽出し、該当するストレージ アカウントを選択します。
 
@@ -94,13 +95,13 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **[ストレージ アカウント]** ウィンドウで **[概要]** に切り替え、 **[BLOB]** を選択します。
 
-    ![BLOB オプションを選択する](media/tutorial-hybrid-copy-powershell/select-blobs.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/select-blobs.png" alt-text="BLOB オプションを選択する":::
 
 1. **[Blob service]** ウィンドウで **[コンテナー]** を選択します。
 
 1. **[新しいコンテナー]** ウィンドウの **[名前]** ボックスに「**adftutorial**」と入力し、 **[OK]** を選択します。
 
-    ![コンテナー名を入力する](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/new-container-dialog.png" alt-text="コンテナー名を入力する":::
 
 1. コンテナーの一覧で、 **[adftutorial]** を選択します。  
 
@@ -186,7 +187,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. 統合ランタイムの名前に使用する変数を作成します。 一意の名前を使用し、その名前を書き留めます。 このチュートリアルの後の方で、それを使用します。
 
     ```powershell
-   $integrationRuntimeName = "ADFTutorialIR"
+    $integrationRuntimeName = "ADFTutorialIR"
     ```
 
 1. セルフホステッド統合ランタイムを作成します。
@@ -209,7 +210,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. 作成された統合ランタイムの状態を取得するために、次のコマンドを実行します。
 
     ```powershell
-   Get-AzDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
+    Get-AzDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
     ```
 
     出力例を次に示します。
@@ -265,21 +266,21 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **[Integration Runtime (セルフホステッド) の登録]** ウィンドウで、前のセクションで保存したキーを貼り付け、 **[登録]** を選択します。
 
-    ![統合ランタイムの登録](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/register-integration-runtime.png" alt-text="統合ランタイムの登録":::
 
 1. **[新しい Integration Runtime (セルフホステッド) ノード]** ウィンドウで **[完了]** を選択します。
 
-    ![[新しい Integration Runtime ノード] ウィンドウ](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png" alt-text="[新しい Integration Runtime ノード] ウィンドウ":::
 
  1. セルフホステッド統合ランタイムが正常に登録されると、次のメッセージが表示されます。
 
-    ![正常に登録](media/tutorial-hybrid-copy-powershell/registered-successfully.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/registered-successfully.png" alt-text="正常に登録":::
 
 1. **[Integration Runtime (セルフホステッド) の登録]** ウィンドウで **[構成マネージャーの起動]** を選択します。
 
 1. ノードがクラウド サービスに接続されると、次のメッセージが表示されます。
 
-    ![ノード接続済み](media/tutorial-hybrid-copy-powershell/node-is-connected.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/node-is-connected.png" alt-text="ノード接続済み":::
 
 1. 次の手順に従って SQL Server データベースとの接続をテストします。
 
@@ -298,7 +299,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     g. ユーザー名に関連付けられているパスワードを入力します。
 
     h. 統合ランタイムから SQL Server に接続できることを確認するために、 **[テスト]** を選択します。  
-    ![接続成功](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png" alt-text="接続成功":::
 
     接続に成功すると、緑色のチェック マーク アイコンが表示されます。 それ以外の場合は、失敗を表すエラー メッセージが表示されます。 問題を修正し、統合ランタイムから SQL Server インスタンスに接続できるようにします。
 
@@ -709,7 +710,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
 1. フォルダーの一覧で、`fromonprem` を選択します。
 1. `dbo.emp.txt` という名前のファイルが表示されていることを確認します。
 
-    ![出力ファイル](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/fromonprem-file.png" alt-text="[出力ファイル]":::
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: d8dee086f55c5596af50245b5271d98536eb7e57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe58822755959b35fce2a7e714b6e81c2ca58c2c
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95026201"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109518128"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>チュートリアル: Azure Database for PostgreSQL - Hyperscale (Citus) を使用して、マルチテナント データベースを設計する
 
@@ -62,6 +62,9 @@ CREATE TABLE campaigns (
   PRIMARY KEY (company_id, id)
 );
 ```
+
+>[!NOTE]
+> この記事には、Microsoft では使用されなくなった "*ブラックリストに登録*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 各キャンペーンでは、広告の掲載は有料になります。 上記のコードの後に psql で次のコードを実行して、広告用のテーブルも追加します。
 

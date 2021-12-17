@@ -1,23 +1,23 @@
 ---
-title: Azure Sentinel データ ソース スキーマのリファレンス
-description: この記事では、Azure Sentinel でサポートされている Azure とサードパーティのデータ ソース スキーマの一覧と、リファレンス ドキュメントへのリンクを示します。
+title: Microsoft Sentinel データ ソース スキーマのリファレンス
+description: この記事では、Microsoft Sentinel でサポートされている Azure とサードパーティのデータ ソース スキーマの一覧と、リファレンス ドキュメントへのリンクを示します。
 author: batamig
 ms.author: bagol
 manager: rkarlin
 ms.assetid: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.topic: reference
-ms.custom: ''
-ms.date: 01/14/2021
-ms.openlocfilehash: 4601f2d6eddbbe8809dfd46a7e0cc5aa3c40c722
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.custom: ignite-fall-2021
+ms.date: 11/09/2021
+ms.openlocfilehash: 0ea3809ec96d956e50d698c85cabbcf99420335d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209572"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724427"
 ---
 # <a name="data-source-schema-reference"></a>データ ソース スキーマ リファレンス
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、サポートされている Azure とサードパーティのデータ ソース スキーマの一覧と、リファレンス ドキュメントへのリンクを示します。
 
@@ -67,8 +67,8 @@ ms.locfileid: "107209572"
 > 
 ## <a name="next-steps"></a>次のステップ
 
-CEF、Syslog、ダイレクト、エージェント、カスタム コネクタなど、サポートされている Azure Sentinel コネクタについて説明します。
+CEF、Syslog、ダイレクト、エージェント、カスタム コネクタなど、サポートされている Microsoft Sentinel コネクタについて学習します。
 
 - [データ ソースの接続](connect-data-sources.md)
 
-- [Azure Sentinel の Syslog、CEF、その他のサードパーティ製のコネクタ](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-syslog-cef-and-other-3rd-party-connectors-grand/ba-p/803891)
+- [Microsoft Sentinel の Syslog、CEF、およびその他のサードパーティ製のコネクタ](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-syslog-cef-and-other-3rd-party-connectors-grand/ba-p/803891)

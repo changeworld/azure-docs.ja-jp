@@ -3,14 +3,14 @@ title: Azure Automation Update Management 用に Windows Update の設定を構�
 description: この記事では、Azure Automation Update Management と連携するように Windows Update の設定を構成する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 05/04/2020
+ms.date: 10/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: a1f95ca856223628974a9519b7c4811bde43965e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d9d95c826af2d9448b296a69a815af26ab4fda4
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92221666"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546662"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Azure Automation Update Management 用に Windows Update の設定を構成する
 
@@ -27,13 +27,18 @@ Azure サブスクリプションで WSUS を設定し、Windows 仮想マシン
 
 ## <a name="pre-download-updates"></a>更新プログラムの事前ダウンロード
 
-更新プログラムを自動的にインストールすることなく自動的にダウンロードするように構成する場合、グループ ポリシーを使用して [[自動更新を構成する] 設定](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates)を 3 に設定できます。 この設定により、必要な更新プログラムがバックグラウンドでダウンロードされ、更新プログラムをインストールする準備ができたことが通知されるようになります。 この方法により、Update Management がスケジュール管理下にある状態で、Update Management のメンテナンス期間外に更新プログラムをダウンロードできます。 この動作により、Update Management の `Maintenance window exceeded` エラーを防ぎます。
+更新プログラムを自動的にインストールすることなく自動的にダウンロードするように構成する場合、グループ ポリシーを使用して [[自動更新を構成する] 設定を構成](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates)できます。 オペレーティング システムのバージョンに応じて 2 つの推奨値があります。
+
+* Windows Server 2016 以降の場合、値を **7** に設定します。
+* Windows Server 2012 R2 以前の場合、値を **3** に設定します。
+
+この設定により、必要な更新プログラムがバックグラウンドでダウンロードされ、更新プログラムをインストールする準備ができたことが通知されるようになります。 この方法により、Update Management がスケジュール管理下にある状態で、Update Management のメンテナンス期間外に更新プログラムをダウンロードできます。 この動作により、Update Management の `Maintenance window exceeded` エラーを防ぎます。
 
 この設定は PowerShell で有効にできます。
 
 ```powershell
 $WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
-$WUSettings.NotificationLevel = 3
+$WUSettings.NotificationLevel = <3 or 7>
 $WUSettings.Save()
 ```
 

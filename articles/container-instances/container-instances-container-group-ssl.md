@@ -3,22 +3,22 @@ title: サイドカー コンテナーで TLS を有効にする
 description: サイドカー コンテナーで Nginx を実行することで、Azure Container Instances 内で実行されるコンテナー グループに対して SSL または TLS エンドポイントを作成します
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 906a1f239d7050ea17fd7d1425138049ebf045c1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bc9300176a63f96a53fc26108f5acf344d79d2d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790979"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080234"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>サイドカー コンテナーで TLS を有効にする
 
 この記事では、TLS/SSL プロバイダーを実行しているアプリケーション コンテナーとサイドカー コンテナーを使用して[コンテナー グループ](container-instances-container-groups.md)を作成する方法について説明します。 コンテナー グループを別の TLS エンドポイントで設定することにより、アプリケーション コードを変更せずにアプリケーションの TLS 接続を有効にすることができます。
 
 次の 2 つのコンテナーで構成されるコンテナー グループ例を設定します。
-* パブリック Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) イメージを使用してシンプルな Web アプリを実行する、アプリケーション コンテナー。 
-* TLS を使用するように構成されたパブリック [Nginx](https://hub.docker.com/_/nginx) イメージを実行するサイドカー コンテナー。 
+* パブリック Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) イメージを使用してシンプルな Web アプリを実行する、アプリケーション コンテナー。
+* TLS を使用するように構成されたパブリック [Nginx](https://hub.docker.com/_/nginx) イメージを実行するサイドカー コンテナー。
 
-この例ではコンテナー グループにより、Nginx 用のポート 443 のみがそのパブリック IP アドレスで公開されます。 Nginx により HTTPS 要求がコンパニオン Web アプリにルーティングされます。コンパニオン Web アプリはポート 80 で内部的にリッスンします。 他のポートをリッスンするコンテナー アプリの例を適応させることもできます。 
+この例ではコンテナー グループにより、Nginx 用のポート 443 のみがそのパブリック IP アドレスで公開されます。 Nginx により HTTPS 要求がコンパニオン Web アプリにルーティングされます。コンパニオン Web アプリはポート 80 で内部的にリッスンします。 他のポートをリッスンするコンテナー アプリの例を適応させることもできます。
 
 コンテナー グループで TLS を有効にするその他の方法については、「[次のステップ](#next-steps)」を参照してください。
 
@@ -112,7 +112,7 @@ http {
 
         location / {
             proxy_pass http://localhost:80; # TODO: replace port if app listens on port other than 80
-            
+
             proxy_set_header Connection "";
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
@@ -146,7 +146,7 @@ code deploy-aci.yaml
 
 Base64 でエンコードされたファイルのコンテンツを、`secret` の下に示された場所に入力します。 たとえば、Base64 でエンコードされた各ファイルを `cat` して、そのコンテンツを表示します。 デプロイ中に、これらのファイルはコンテナー グループ内の[シークレット ボリューム](container-instances-volume-secret.md)に追加されます。 この例では、シークレット ボリュームは Nginx コンテナーにマウントされます。
 
-```YAML
+```yaml
 api-version: 2019-12-01
 location: westus
 name: app-with-ssl
@@ -154,7 +154,7 @@ properties:
   containers:
   - name: nginx-with-ssl
     properties:
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       ports:
       - port: 443
         protocol: TCP
@@ -242,4 +242,4 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 * [Azure Functions プロキシ](../azure-functions/functions-proxies.md)
 * [Azure API Management](../api-management/api-management-key-concepts.md)
-* [Azure Application Gateway](../application-gateway/overview.md) - サンプルの[デプロイ テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)をご覧ください。
+* [Azure Application Gateway](../application-gateway/overview.md) - サンプルの[デプロイ テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/wordpress/aci-wordpress-vnet)をご覧ください。

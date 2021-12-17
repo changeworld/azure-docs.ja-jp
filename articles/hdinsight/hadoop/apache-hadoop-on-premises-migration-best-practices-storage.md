@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 89a2a659e195afcae336c930a101ed0c0b470cb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6efc962a915bc549fa14008b8a6487085e0a49e6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715413"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797650"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行
 
@@ -100,7 +100,11 @@ Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高い
 
 - **POSIX アクセス許可のスーパーセット**:Data Lake Gen2 のセキュリティ モデルは、ACL および POSIX のアクセス許可に加え、Data Lake Storage Gen2 固有の追加設定を完全サポートしています。 設定は、管理ツールを通じて構成することもできますし、Hive や Spark などのフレームワークを通じて構成することもできます。
 
+<<<<<<< HEAD
 - **コスト効率**:Data Lake Storage Gen2 は、低コストのストレージ容量とトランザクションを備えています。 ライフサイクル全体を通してデータが移行されるにつれて、[Azure Blob Storage ライフサイクル](../../storage/blobs/storage-lifecycle-management-concepts.md)などの組み込み機能を使用してコストを最小限に抑えるために課金レートが変化します。
+=======
+- **コスト効率**:Data Lake Storage Gen2 は、低コストのストレージ容量とトランザクションを備えています。 ライフサイクル全体を通してデータが移行されるにつれて、[Azure Blob ストレージ ライフサイクル](../../storage/blobs/lifecycle-management-overview.md)などの組み込み機能を使用してコストを最小限に抑えるために課金レートが変化します。
+>>>>>>> repo_sync_working_branch
 
 - **BLOB ストレージ ツール、フレームワーク、およびアプリの操作**:Data Lake Storage Gen2 では、BLOB ストレージ用に今日存在するさまざまなツール、フレームワーク、およびアプリケーションを継続的に利用できます。
 

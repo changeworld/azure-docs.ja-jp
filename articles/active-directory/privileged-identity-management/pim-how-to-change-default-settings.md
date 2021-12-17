@@ -4,39 +4,27 @@ description: Azure AD Privileged Identity Management (PIM) で Azure AD ロー�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/28/2020
+ms.date: 11/12/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 676fdf264cb930069425a330c3da9cd753bf8e0a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5dc783125641ef71d1df974bc7d8cb01c488329a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567035"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484734"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの設定を構成する
 
-特権ロール管理者は、ロール候補の割り当てをアクティブ化しているユーザーの操作性を変更するなど、Azure Active Directory (Azure AD) 組織の Privileged Identity Management (PIM) をカスタマイズできます。
-
-## <a name="determine-your-version-of-pim"></a>PIM のバージョンを判断する
-
-2019 年 11 月以降、Privileged Identity Management の Azure AD ロール部分は、Azure リソース ロールのエクスペリエンスと一致する新しいバージョンに更新されます。 これによって機能が追加され、[既存の API の変更](azure-ad-roles-features.md#api-changes)が行われます。 新しいバージョンのロールアウト中、この記事で実行する手順は、現在お使いになっている Privileged Identity Management のバージョンによって異なります。 このセクションの手順に従って、お使いになっている Privileged Identity Management のバージョンを確認してください。 Privileged Identity Management のバージョンを確認したら、この記事に記載されている手順のうち、そのバージョンに一致するものを選択することができます。
-
-1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
-1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
-
-  [![[Azure AD] > [Privileged Identity Management] を選択します。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
-
-Azure AD ロールに対する要求を承認または拒否するには、この記事の手順に従ってください。
-
-# <a name="new-version"></a>[新しいバージョン](#tab/new)
+特権ロール管理者は、ロール候補の割り当てをアクティブ化しているユーザーの操作性を変更するなど、Azure Active Directory (Azure AD) 組織の Privileged Identity Management (PIM) をカスタマイズできます。 通知をトリガーする PIM イベントと、それらを受け取る管理者の詳細については、[Privileged Identity Management の電子メール通知](pim-email-notifications.md#notifications-for-azure-ad-roles)に関するページを参照してください
 
 ## <a name="open-role-settings"></a>ロールの設定を開く
 
@@ -64,42 +52,42 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
 このような **資格のある** 割り当て期間のオプションからいずれかを選択することができます。
 
-| | 説明 |
+| 設定 | 説明 |
 | --- | --- |
-| **永続的に資格のある割り当てを許可する** | 全体管理者と特権ロール管理者は、永続的に資格のある割り当てを割り当てることができます。 |
-| **次の後に、資格のある割り当ての有効期限が切れる** | 全体管理者と特権ロール管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
+| 永続的な有資格割り当てを許可する | 全体管理者と特権ロール管理者は、永続的に資格のある割り当てを割り当てることができます。 |
+| 資格のある割り当てが次の期間後に期限切れになる | 全体管理者と特権ロール管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
 また、このような **アクティブな** 割り当て期間のオプションからいずれかを選択することができます。
 
-| | 説明 |
+| 設定 | 説明 |
 | --- | --- |
-| **永続するアクティブな割り当てを許可する** | 全体管理者と特権ロール管理者は、永続的にアクティブな割り当てを割り当てることができます。 |
-| **アクティブ割り当ては次の期間後に期限切れになる** | 全体管理者と特権ロール管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |
+| 永続的なアクティブ割り当てを許可する | 全体管理者と特権ロール管理者は、永続的にアクティブな割り当てを割り当てることができます。 |
+| アクティブな割り当てが次の期間後に期限切れになる | 全体管理者と特権ロール管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
 > [!NOTE]
 > 全体管理者と特権ロール管理者は､終了日時が指定されているすべての割り当てを更新することができます｡ これに対し､ユーザーは[ロールの割り当てを延長または更新する](pim-resource-roles-renew-extend.md)セルフサービス要求を開始することができます｡
 
-## <a name="require-multi-factor-authentication"></a>多要素認証が必要です
+## <a name="require-multifactor-authentication"></a>多要素認証を要求する
 
-Privileged Identity Management では、2 つの異なるシナリオで、Azure AD Multi-factor Authentication の強制を選択できます。
+Privileged Identity Management により、アクティブ化時およびアクティブな割り当て時に、Azure AD Multi-Factor Authentication が適用されます。
 
-### <a name="require-multi-factor-authentication-on-active-assignment"></a>アクティブな割り当てに多要素認証が必要
+### <a name="on-activation"></a>アクティブ化時
 
-場合によっては、ユーザーをロールに短期間 (たとえば 1 日) 割り当てる必要があります。 この場合、割り当てられたユーザーがアクティブ化を要求する必要はありません。 このシナリオでは、ユーザーは割り当てられた時点からそのロールでアクティブになるため、各自がそのロールの割り当てを使用するときに、Privileged Identity Management で Multi-Factor Authentication を強制することができません。
+ロールの資格を持つユーザーに対して、アクティブ化する前に Azure AD Multi-Factor Authentication を使用していることを証明するように要求することができます。 多要素認証により、ユーザーが本人であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
 
-割り当てを実行する管理者が本人であることを確認するために、 **[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに Multi-Factor Authentication を強制できます。
+ロールの割り当てをアクティブ化するために多要素認証を要求するには、 **[Edit role setting]\(ロールの設定の編集\)** の [アクティブ化] タブで **[On activation, require Azure MFA]\(アクティブ化時に Azure MFA を要求する\)** を選択します。
 
-### <a name="require-multi-factor-authentication-on-activation"></a>アクティブ化に Multi-Factor Authentication を要求する
+### <a name="on-active-assignment"></a>アクティブな割り当て時
 
-ロールの資格を持つユーザーに対して、アクティブ化する前に Azure AD Multi-Factor Authentication を使用していることを証明するように要求することができます。 Multi-Factor Authentication により、ユーザーが、確かに本人が言うような人物であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
+このオプションを選択した場合、管理者は、資格のあるロールの割り当てでなく、アクティブなロールの割り当てを作成する前に、多要素認証を完了する必要があります。 ユーザーは割り当てられた時点からそのロールでアクティブになるため、各自がそのロールの割り当てを使用するときに、Privileged Identity Management で多要素認証を強制することができません。
 
-アクティブ化の前に多要素認証を要求するには、 **[ロールの編集] 設定** の [割り当て] タブで **[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
+アクティブなロール割り当てを作成するときに多要素認証を要求するには、 **[Edit role setting]\(ロールの設定の編集\)** の [割り当て] タブで **[アクティブな割り当てに Azure Multi-Factor Authentication を必要とする]** オプションを選択します。
 
-詳細については、[Multi-Factor Authentication と Privileged Identity Management](pim-how-to-require-mfa.md) に関するページを参照してください。
+詳細については、「[多要素認証と Privileged Identity Management](pim-how-to-require-mfa.md)」を参照してください。
 
 ## <a name="activation-maximum-duration"></a>アクティブ化の最大期間
 
-**[アクティブ化の最大期間]** スライダーを使用して、ロールの有効期限が切れるまでの最大時間 (時間単位) を設定します。 1 から 24 時間の範囲の値を指定できます。
+**[アクティブ化の最大期間]** スライダーを使用して、ロールの割り当てのアクティブ化要求が、有効期限が切れるまでアクティブなままである最大時間 (時間単位) を設定します。 1 から 24 時間の範囲の値を指定できます。
 
 ## <a name="require-justification"></a>理由を必須にする
 
@@ -107,7 +95,7 @@ Privileged Identity Management では、2 つの異なるシナリオで、Azure
 
 ## <a name="require-approval-to-activate"></a>アクティブ化の承認を必須にする
 
-複数の承認者を設定した場合、承認は、承認者が 1 人でも承認または拒否すると直ちに完了します。 少なくとも 2 人のユーザーから承認を要求することはできません。 ロールをアクティブ化するために承認を必須にする場合は、次の手順を実行します。
+複数の承認者を設定した場合、承認は、承認者が 1 人でも承認または拒否すると直ちに完了します。 2 番目以降の承認者からの承認は強制できません。 ロールをアクティブ化するために承認を必須にする場合は、次の手順を実行します。
 
 1. **[アクティブにするには承認が必要です]** チェックボックスをオンにします。
 
@@ -115,100 +103,9 @@ Privileged Identity Management では、2 つの異なるシナリオで、Azure
 
     ![承認者を選択するための [ユーザーまたはグループの選択] ペイン](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. 少なくとも 1 人のユーザーを選択し、 **[選択]** をクリックします。 少なくとも 1 人の承認者を選択する必要があります。 既定の承認者はいません。
+1. 少なくとも 1 人のユーザーを選択し、 **[選択]** をクリックします。 少なくとも 1 人の承認者を選択してください。 特定の承認者が選択されていない場合は、特権ロール管理者と全体管理者が既定の承認者になります。
 
-    選択した承認者の一覧に選択内容が表示されます。
-
-1. すべてのロール設定を指定したら、 **[更新]** を選択して変更を保存します。
-
-# <a name="previous-version"></a>[以前のバージョン](#tab/previous)
-
-## <a name="open-role-settings-previous-version"></a>ロール設定を開く (以前のバージョン)
-
-次の手順を実行して、Azure AD ロールの設定を開きます。
-
-1. **[Azure AD Privileged Identity Management]** を開きます。
-
-1. **[Azure AD ロール]** を選択します。
-
-1. **[設定]** を選択します。
-
-    ![Azure AD ロール - 設定](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
-
-1. **[役割]** を選びます。
-
-1. 設定を構成するロールを選択します。
-
-    ![Azure AD ロール - ロールの設定](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
-
-    各ロールの設定ページでは、複数の設定を構成できます。 これらの設定の影響を受けるのは、**永続的** な割り当てのユーザーではなく、**有資格** の割り当てのユーザーのみです。
-
-## <a name="activations"></a>アクティブ化
-
-**[アクティブ化]** スライダーを使用して、ロールの有効期限が切れるまでの最大時間 (時間単位) を設定します。 1 ～ 72 時間の範囲の値を指定できます。
-
-## <a name="notifications"></a>通知
-
-**[通知]** スイッチを使用して、ロールがアクティブになったときに管理者がメール通知を受け取るかどうかを指定します。 この通知は、不正なアクティブ化の検出に役立ちます。
-
-**[有効]** に設定すると、通知が送信されます。
-
-- 特権ロール管理者
-- セキュリティ管理者
-- 全体管理者
-
-詳細については、[Privileged Identity Management でのメール通知](pim-email-notifications.md)に関するページを参照してください。
-
-## <a name="incidentrequest-ticket"></a>インシデント/要求チケット
-
-**[インシデント/要求チケット]** スイッチを使用して、管理者候補に対して、ロールのアクティブ化時にチケット番号の入力を要求します。 このプラクティスでは、ロール アクセスの監査をより効果的に行うことができます。
-
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
-
-**[多要素認証]** スイッチを使用して、ユーザーに対して、ロールのアクティブ化で MFA を使用した ID 確認を必須とするかどうかを指定します。 ユーザーが自分の ID を確認する必要があるのは、ロールのアクティブ化のたびではなく、セッションごとに 1 回だけです。 MFA を有効化する場合は次の 2 点に留意してください。
-
-- メール アドレス (一般には @outlook.com ですが、例外もあります) の Microsoft アカウントを持つユーザーは、Azure AD Multi-Factor Authentication に登録できません。 Microsoft アカウントを持つユーザーにロールを割り当てるには、ユーザーを永続的な管理者にするか、そのロールの Multi-Factor Authentication を無効化する必要があります。
-- Azure AD および Microsoft 365 の高い特権ロールに対して、Azure AD Multi-Factor Authentication を無効化することはできません。 この安全機能は、次のロールの保護に役立ちます。  
-  
-  - Azure Information Protection 管理者
-  - 課金管理者
-  - クラウド アプリケーション管理者
-  - コンプライアンス管理者
-  - 条件付きアクセス管理者
-  - Dynamics 365 管理者
-  - カスタマー ロックボックスのアクセス承認者
-  - ディレクトリ ライター
-  - Exchange 管理者
-  - 全体管理者
-  - Intune 管理者
-  - Power BI 管理者
-  - 特権ロール管理者
-  - セキュリティ管理者
-  - SharePoint 管理者
-  - Skype for Business 管理者
-  - ユーザー管理者
-
-詳細については、[Multi-Factor Authentication と Privileged Identity Management](pim-how-to-require-mfa.md) に関するページを参照してください。
-
-## <a name="require-approval"></a>承認を要求する
-
-ロールのアクティブ化に必要な承認を委任する場合は、次の手順に従います。
-
-1. **[承認を要求する]** スイッチを **[有効]** に設定します。 ウィンドウが展開され、承認者を選択できるオプションが表示されます。
-
-    ![[承認を要求する] スイッチを示すスクリーンショット。[有効化] が選択されています。](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
-
-    承認者を指定しない場合、特権ロール管理者は既定の承認者になり、このロールに対するすべてのアクティブ化要求を承認する必要があります。
-
-1. 承認者を追加するには、 **[承認者の選択]** をクリックします。
-
-    ![Azure AD ロール - 設定 - 承認を要求する](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
-
-1. 特権ロール管理者に加えて、1 つまたは複数の承認者を選択し、 **[選択]** をクリックします。 少なくとも 2 人の承認者を追加することをお勧めします。 自分自身を承認者として追加した場合でも、ロールのアクティブ化を自己承認することはできません。 選択した承認者の一覧に選択内容が表示されます。
-
-1. すべてのロール設定を指定したら、 **[保存]** を選択して変更を保存します。
-
----
+1. **[更新]** を選択して変更を保存します。
 
 ## <a name="next-steps"></a>次のステップ
 

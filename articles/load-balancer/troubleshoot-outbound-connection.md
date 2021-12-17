@@ -2,21 +2,27 @@
 title: Azure Load Balancer でのアウトバウンド接続のトラブルシューティング
 description: Azure Load Balancer を介したアウトバウンド接続に関する一般的な問題の解決策。
 services: load-balancer
-author: erichrt
+author: anavinahar
 ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
-ms.author: errobin
-ms.openlocfilehash: 516576f4e005cc9fe2303945ecb1a13489908a5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: anavin
+ms.openlocfilehash: ba421e8996e37e79bf7044709d53be8d6f2a01f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94696355"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549960"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a>アウトバウンド接続エラーのトラブルシューティング
 
-この記事は、Azure Load Balancer からのアウトバウンド接続で発生する可能性のある一般的な問題の解決策を提供することを目的としています。 顧客が体験するアウトバウンド接続に関する問題のほとんどは、SNAT ポートの枯渇と、接続タイムアウトを原因とするパケットのドロップです。 この記事では、これらの各問題を軽減する手順について説明します。
+この記事は、Azure Load Balancer からのアウトバウンド接続で発生する可能性のある一般的な問題の解決策を提供することを目的としています。 顧客が体験するアウトバウンド接続に関する問題のほとんどは、SNAT (Source Network Address Translation) ポートの枯渇と、接続タイムアウトを原因とするパケットのドロップです。 この記事では、これらの各問題を軽減する手順について説明します。
+
+## <a name="avoid-snat"></a>SNAT を避ける
+
+SNAT ポートの枯渇を回避する最善の方法は、可能であれば SNAT のそもそもの必要性を排除することです。 ときには、それが不可能な場合もあります。 たとえば、パブリック エンドポイントに接続する場合などです。 ただし、中にはそれが可能であるケースもあり、リソースに対してプライベートに接続することで実現できます。 Azure サービス、たとえば Storage や SQL、Cosmos DB など、[こちらに記載されている Azure サービス](../private-link/availability.md)に接続する場合、Azure Private Link を活用することで SNAT が不要になります。 このため、SNAT ポートの枯渇に起因する接続の問題が生じるおそれはありません。
+
+Private Link サービスは、Snowflake、MongoDB、Confluent、Elastic などのサービスでもサポートされます。
 
 ## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a> SNAT (PAT) ポート不足の管理
 [PAT](load-balancer-outbound-connections.md) に使用される[エフェメラル ポート](load-balancer-outbound-connections.md)は、「[パブリック IP アドレスなしのスタンドアロン VM](load-balancer-outbound-connections.md)」および「[パブリック IP アドレスなしの負荷分散 VM](load-balancer-outbound-connections.md)」で説明されている有限のリソースです。 [この](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation)ガイドを使用して、エフェメラル ポートの使用状況を監視し、現在の割り当てと比較して、SNAT の枯渇のリスクを判断したり確認したりできます。

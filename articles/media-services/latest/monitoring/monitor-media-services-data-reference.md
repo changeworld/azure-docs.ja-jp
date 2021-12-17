@@ -7,84 +7,56 @@ manager: femila
 ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
-ms.date: 03/17/2021
-ms.openlocfilehash: 8908fd1acc64fb180121ac0b6a4dc38ce5a02572
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.date: 04/21/2021
+ms.openlocfilehash: a9bc17528e1314a033cf2e45fee4b112eb088cc3
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121168"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715576"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Media Services データ参照の監視
 
 この記事では、Media Services の監視に役立つデータについて説明します。 Azure Monitor でサポートされているすべてのプラットフォーム メトリックの詳細については、「[Azure Monitor のサポートされるメトリック](../../../azure-monitor/essentials/metrics-supported.md)」を参照してください。
 
-## <a name="media-services-metrics"></a>Media Services メトリック
+## <a name="metrics"></a>メトリック
 
 メトリックは、値の変化とは無関係に、一定の間隔で収集されます。 これらは頻繁にサンプリングでき、比較的単純なロジックですばやく起動できるため、アラートを発行するときに役に立ちます。
 
+
 Media Services では、次のリソースの監視メトリックがサポートされています。
 
-* Account
-* ストリーミング エンドポイント
+|メトリックの種類 | リソース プロバイダー/種類の名前空間<br/> および個々のメトリックへのリンク |
+|-------|-----|
+| Media Services 全般 | [全般](../../../azure-monitor/essentials/metrics-supported.md#microsoftmediamediaservices) |
+| ライブ イベント | [Microsoft.Media/mediaservices/liveEvents](../../../azure-monitor/essentials/metrics-supported.md#microsoftmediamediaservicesliveevents) 
+| ストリーミング エンドポイント | [REST API ストリーミングエンド](/rest/api/media/streamingendpoints)ポイントに関連する [Windowsazure.mediaservices/streamingendpoints](../../../azure-monitor/essentials/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints)。 
 
-### <a name="account"></a>Account
-
-次のアカウント メトリックを監視できます。
-
-|メトリックの名前|Display name|説明|
-|---|---|---|
-|AssetCount|アセット数|アカウント内のアセットです。|
-|AssetQuota|アセットのクォータ|アカウント内のアセットのクォータです。|
-|AssetQuotaUsedPercentage|アセットのクォータの使用率|アセットのクォータのうち、既に使用されている割合です。|
-|ContentKeyPolicyCount|コンテンツ キー ポリシー数|アカウント内のコンテンツ キー ポリシーの数です。|
-|ContentKeyPolicyQuota|コンテンツ キー ポリシーのクォータ|アカウント内のコンテンツ キー ポリシーのクォータです。|
-|ContentKeyPolicyQuotaUsedPercentage|コンテンツ キー ポリシーのクォータの使用率|コンテンツ キー ポリシーのクォータのうち、既に使用されている割合です。|
-|StreamingPolicyCount|ストリーミング ポリシー数|アカウント内のストリーミング ポリシーの数です。|
-|StreamingPolicyQuota|ストリーミング ポリシーのクォータ|アカウント内のストリーミング ポリシーのクォータです。|
-|StreamingPolicyQuotaUsedPercentage|ストリーミング ポリシーのクォータの使用率|ストリーミング ポリシーのクォータのうち、既に使用されている割合です。|
 
 [アカウントのクォータと制限事項](../limits-quotas-constraints-reference.md)もご確認ください。
 
-### <a name="streaming-endpoint"></a>ストリーミング エンドポイント
-
-次の Media Services [ストリーミング エンドポイント](/rest/api/media/streamingendpoints) メトリックがサポートされています。
-
-|メトリックの名前|Display name|説明|
-|---|---|---|
-|Requests|Requests|ストリーミング エンドポイントで処理された HTTP 要求の合計数を提供します。|
-|エグレス|エグレス|ストリーミング エンドポイントあたりの合計エグレス バイト/分。|
-|SuccessE2ELatency|成功したエンド ツー エンドの待機時間|ストリーミング エンドポイントが要求を受信してから応答の最後のバイトが送信されるまでの期間。|
-|CPU 使用率| | premium ストリーミング エンドポイントの CPU 使用率。 このデータは、standard ストリーミング エンドポイントでは使用できません。 |
-|エグレス帯域幅 | | エグレス帯域幅 (ビット/秒)。|
 
 ## <a name="metric-dimensions"></a>メトリック ディメンション
 
 メトリック ディメンションの詳細については、「[多次元メトリック](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics)」を参照してください。
 
-<!--**PLACEHOLDER** for dimensions table.-->
+メディア サービスには、次のメトリック ディメンションがあります。  これらは、サポートするメトリックに基づいており自明です。  詳細については、上記の[メトリックリンク](#metrics)を参照してください。   
+- OutputFormat
+- HttpStatusCode 
+- ErrorCode 
+- TrackName 
 
 ## <a name="resource-logs"></a>リソース ログ
 
-## <a name="media-services-diagnostic-logs"></a>Media Services の診断ログ
+リソース ログからは、Azure リソースの操作に関するデータが豊富かつ頻繁に提供されます。 詳細については、[Azure リソースからのログ データを収集して使用する方法](../../../azure-monitor/essentials/platform-logs-overview.md)に関するページをご覧ください。
 
-診断ログからは、Azure リソースの操作に関するデータが豊富かつ頻繁に提供されます。 詳細については、[Azure リソースからのログ データを収集して使用する方法](../../../azure-monitor/essentials/platform-logs-overview.md)に関するページをご覧ください。
-
-Media Services では、次の診断ログがサポートされています。
-
-* キー配信
-
-### <a name="key-delivery"></a>キー配信
-
-|名前|説明|
-|---|---|
-|キー配信サービス要求|キー配信サービス要求の情報を表示するログ。 詳細については、[スキーマ](monitor-media-services-data-reference.md)に関するページを参照してください。|
+Media Services では、次のリソース ログがサポートされています。 [Microsoft.Media/mediaservices](../../../azure-monitor/essentials/resource-logs-categories.md#microsoftmediamediaservices)
 
 ## <a name="schemas"></a>スキーマ
 
 診断ログの上位スキーマについて詳しくは、「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../../../azure-monitor/essentials/resource-logs-schema.md)」をご覧ください。
 
-## <a name="key-delivery-log-schema-properties"></a>キー配信ログのスキーマのプロパティ
+### <a name="key-delivery"></a>キー配信 
 
 これらのプロパティは、キー配信ログのスキーマに固有です。
 

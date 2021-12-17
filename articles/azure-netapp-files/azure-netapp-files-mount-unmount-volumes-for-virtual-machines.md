@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 11/17/2020
-ms.openlocfilehash: 83d6e051f520737e750e6c46c192eb698e7bf0e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/17/2021
+ms.openlocfilehash: 78932885ee7c1ec3650de08efe340e998a54acf7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94842259"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240036"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する 
 
@@ -39,7 +39,7 @@ ms.locfileid: "94842259"
     * NFS ボリュームをマウントしている場合は、必ず `mount` コマンドで `vers`オプションを使用して、マウントするボリュームに対応する NFS プロトコル バージョンを指定します。 
     * NFSv4.1 を使用している場合は、`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT` のコマンドを使用してご自分のファイル システムをマウントします。  
         > [!NOTE]
-        > NFSv4.1 を使用する場合、エクスポートをマウントするすべての VM で確実に一意のホスト名を使用します。
+        > NFSv4.1 を使用し、ユース ケースで同じホスト名の VM を利用する場合は (DR テストなど)、「[同じホスト名の 2 つの VM を NFSv4.1 ボリュームにアクセスするように構成する](configure-nfs-clients.md#configure-two-vms-with-the-same-hostname-to-access-nfsv41-volumes)」を参照してください。
 
 3. Azure VM の起動時または再起動時に NFS ボリュームを自動的にマウントしたい場合は、ホストの `/etc/fstab` にエントリを追加します。 
 
@@ -60,6 +60,7 @@ ms.locfileid: "94842259"
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する](azure-netapp-files-configure-nfsv41-domain.md)
-* [NFS に関する FAQ](./azure-netapp-files-faqs.md#nfs-faqs)
+* [NFS に関する FAQ](faq-nfs.md)
 * [ネットワーク ファイル システムの概要](/windows-server/storage/nfs/nfs-overview)
 * [NFS Kerberos ボリュームをマウントする](configure-kerberos-encryption.md#kerberos_mount)
+* [ホスト名が同じ 2 つの VM が NFSv4.1 ボリュームにアクセスするように構成する](configure-nfs-clients.md#configure-two-vms-with-the-same-hostname-to-access-nfsv41-volumes) 

@@ -6,15 +6,15 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/07/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 6d5198f47b6089730ff345eb12ab522fc5ce58a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: de7787ab9b36bee5bce2f29f79260682289419c7
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575389"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705784"
 ---
 # <a name="analyze-unexpected-charges"></a>想定外の料金を分析する
 
@@ -35,7 +35,7 @@ Azure の請求書では、月の料金が "_メーター_" ごとに集計さ�
 
 分析対象の請求書に記載されている _MeterName_ に基づいて、使用状況の CSV ファイルをフィルター処理すると、そのメーターに該当するすべての明細項目が表示されます。 その明細項目の _InstanceID_ は、料金の発生元となった実際の Azure リソースに対応します。
 
-該当するリソースが見つかったら、Azure Cost Management のコスト分析を使用して、リソースに関連するコストを詳しく分析できます。 コスト分析の使用について詳しくは、[コスト分析の開始](../costs/quick-acm-cost-analysis.md)に関するページを参照してください。
+該当するリソースが見つかったら、Cost Management のコスト分析を使用して、リソースに関連するコストを詳しく分析できます。 コスト分析の使用について詳しくは、[コスト分析の開始](../costs/quick-acm-cost-analysis.md)に関するページを参照してください。
 
 ## <a name="review-invoiced-charges-in-cost-analysis"></a>[コスト分析] で請求された料金を確認する
 
@@ -63,7 +63,7 @@ Azure portal で請求書の詳細を表示するには、分析する請求書�
 - データ転送 (送信)
 - Standard マネージド ディスク
 - Standard マネージド ディスク操作
-- Standard IO ディスク
+- Standard IO - ディスク
 - Standard IO - ブロック BLOB (読み取り)
 - Standard IO - ブロック BLOB (書き込み)
 - Standard IO - ブロック BLOB (削除)
@@ -88,4 +88,4 @@ VM が作成されると、各メーターが使用状況レコードの出力�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳細については、「[Azure Cost Management を使用してクラウドへの投資を最適化する方法](../costs/cost-mgt-best-practices.md)」を参照してください。
+- [Cost Management を使用してクラウドへの投資を最適化する](../costs/cost-mgt-best-practices.md)方法を確認します。

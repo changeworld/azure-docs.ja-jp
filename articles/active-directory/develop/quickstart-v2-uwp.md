@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 88fd6260df0039e960ac87b4b83d43ea497a58b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72f19c7f722900f46df07265407b28583412196d
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104658511"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235100"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>クイック スタート:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
@@ -48,7 +48,7 @@ ms.locfileid: "104658511"
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリケーションを登録し、その登録情報をソリューションに追加するには、次の手順を実行します。
 > 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 > 1. アプリケーションの **名前** を入力します (例: `UWP-App-calling-MsGraph`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
@@ -103,9 +103,8 @@ ms.locfileid: "104658511"
 > 1. パッケージに使用する新しい自己署名テスト証明書を作成して選択します。
 >     1. **ソリューション エクスプローラー** で、*Package.appxmanifest* ファイルをダブルクリックします。
 >     1. **[パッケージ]**  >  **[証明書の選択]**  >  **[作成]** を選択します。
->     1. パスワードを入力し、 **[OK]** を選択します。
->     1. **[ファイルから選択]** を選択し、先ほど作成した *Native_UWP_V2_TemporaryKey.pfx* ファイルを選択して、 **[OK]** を選択します。
->     1. *Package.appxmanifest* ファイルを閉じます (ファイルの保存を求めるメッセージが表示されたら **[OK]** を選択します)。
+>     1. パスワードを入力し、 **[OK]** を選択します。 *Native_UWP_V2_TemporaryKey.pfx* という名前の証明書が作成されます。 
+>     1. **[OK]** を選択して **[証明書の選択]** ダイアログを閉じ、ソリューション エクスプローラーに *Native_UWP_V2_TemporaryKey.pfx* が表示されることを確認します。
 >     1. **[ソリューション エクスプローラー]** で、 **[Native_UWP_V2]** プロジェクトを右クリックし、 **[プロパティ]** を選択します。
 >     1. **[署名]** を選択し、 **[厳密な名前のキー ファイルを選択してください]** ボックスの一覧から、作成した .pfx を選択します。
 

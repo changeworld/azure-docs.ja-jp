@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: c3c8495b7355ee5d9ee8c28b4e0097a0080964d4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f9f49cf1fa651f1e52c4abbb84e7f8f7840fbb9d
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046640"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373234"
 ---
 # <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>ハイブリッド仮想マシンで VM 分析情報を有効にする
 この記事では、Azure の外部 (オンプレミスやその他のクラウド環境を含む) の仮想マシンで VM 分析情報を有効にする方法について説明します。
@@ -42,8 +42,8 @@ Dependency Agent は、以下の場所からダウンロードできます。
 
 | ファイル | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.7.12710 | CA29CC328F991D7301FD0360F4F56DF78275545BB8CDA853679899CA885E96F0  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.7.12710 | 98380DBEB2E2A5848F2202BC22422C68B20B62090C1BFC1DECAB37ED5451ED8C |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.12.18430 | 9CE3B53D3A67A2C3239E1162364BF94B772764B4ADD78C48559E56F46B98C484  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.12.18430 | 04BD3D2F449220B19DD1DA47A6995087123140B13E45747C743BAD79A312ACE6 |
 
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Windows に Dependency Agent をインストールする

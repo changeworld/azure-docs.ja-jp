@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: 766266edd663b75b893a5883e30bb48eed7bbfdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: e8da9ae3d8f8c13bf52c5c0a2ea61b38f316a8b2
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94696117"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895636"
 ---
 # <a name="hypervisor-security-on-the-azure-fleet"></a>Azure フリートでのハイパーバイザーのセキュリティ
 
@@ -69,6 +69,7 @@ Azure ハイパーバイザーでは、以下のものの間に複数のセキ�
 プラットフォームの整合性とセキュリティを強化する方法の詳細については、次を参照してください。
 
 - [ファームウェアのセキュリティ](firmware.md)
+- [プラットフォーム コードの整合性](code-integrity.md)
 - [セキュア ブート](secure-boot.md)
 - [メジャー ブートとホストの構成証明](measured-boot-host-attestation.md)
 - [プロジェクト Cerberus](project-cerberus.md)

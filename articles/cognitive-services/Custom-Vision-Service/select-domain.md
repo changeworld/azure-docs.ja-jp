@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 8aba6f13957d37f843114572f001029baf41ded6
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 5838185328920587b11bb66d21c9402ce93e9b6b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889350"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458249"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Custom Vision プロジェクトのドメインを選択する
 
@@ -50,6 +50,8 @@ Custom Vision プロジェクトの [設定] タブで、プロジェクトの�
 ## <a name="compact-domains"></a>コンパクト ドメイン
 
 コンパクト ドメインで生成されたモデルは、ローカルで実行するためにエクスポートできます。 Custom Vision 3.4 パブリック プレビュー API では、GetDomains API を呼び出すことにより、コンパクト ドメインのエクスポート可能なプラットフォームの一覧を取得できます。
+
+以下のドメインはいずれも、ONNX、TensorFlow,TensorFlowLite、TensorFlow.js、CoreML、VAIDK 形式でのエクスポートをサポートします。ただし例外として、**物体検出の汎用 (コンパクト)** ドメインでは、VAIDK がサポートされません。
 
 モデルのパフォーマンスは、選択したドメインによって異なります。 次の表では、Intel Desktop CPU および NVidia GPU \[1\] でモデルのサイズと推論時間をレポートします。 これらの数値には、前処理時間と後処理時間は含まれません。
 

@@ -10,15 +10,13 @@ ms.date: 05/04/2020
 ms.topic: quickstart
 ms.service: synapse-analytics
 ms.subservice: sql-dw
-ms.custom:
-- azure-synapse
-- mode-portal
-ms.openlocfilehash: c15f21064012c195315a7f91908b3160591dc6f8
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: azure-synapse, mode-portal
+ms.openlocfilehash: a038595321abffd044c0b9ecf776e52e448274c0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534258"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013367"
 ---
 # <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>クイックスタート: Azure portal でワークロード グループを使用して専用 SQL プールのワークロードの分離を構成する
 

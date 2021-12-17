@@ -3,17 +3,18 @@ title: Azure Data Lake Storage Gen1 との間でデータをコピーする
 description: Azure Data Factory を使って Data Lake Store に、または Data Lake Store からデータをコピーする方法を説明します
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: 8bdfceff562ae2501a9d95774f7134669e929b7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60d99160e1ecfc5c15b472c3f0976df3c1582df6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379405"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226510"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -28,11 +29,11 @@ ms.locfileid: "100379405"
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 **Azure Data Lake Store から** 以下のデータ ストアにデータをコピーできます。
 
-[!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sinks](includes/data-factory-supported-sinks.md)]
 
 以下のデータ ストアから **Azure Data Lake Store に** データをコピーできます。
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 > [!NOTE]
 > コピー アクティビティを含むパイプラインを作成する前に、Data Lake Store アカウントを作成します。 詳細については、[Azure Data Lake Store の使用](../../data-lake-store/data-lake-store-get-started-portal.md)に関するページをご覧ください。
@@ -92,7 +93,7 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 | **servicePrincipalKey** | アプリケーションのキーを取得します。 | はい |
 | **tenant** | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい |
 
-**例: サービス プリンシパル認証**
+**例:サービス プリンシパルの認証**
 ```json
 {
     "name": "AzureDataLakeStoreLinkedService",

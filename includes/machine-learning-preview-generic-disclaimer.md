@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/17/2021
 ms.author: laobri
 ms.custom: include file
-ms.openlocfilehash: 4e34ac6f288eeda9ae1be006339cfd6822fcfe1a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0dd6f7da89da33d6496f0bdd9ed3c5f8c759314d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584289"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441868"
 ---
 > [!IMPORTANT]
 > 現在、この機能はパブリック プレビュー段階にあります。

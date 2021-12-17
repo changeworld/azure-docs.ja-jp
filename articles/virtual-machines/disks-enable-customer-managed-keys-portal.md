@@ -2,24 +2,23 @@
 title: Azure portal - SSE でカスタマー マネージド キーを有効にする - マネージド ディスク
 description: Azure portal を使用して、マネージド ディスクでカスタマー マネージド キーを有効にします。
 author: roygara
-ms.date: 08/24/2020
+ms.date: 09/27/2021
 ms.topic: how-to
 ms.author: rogarana
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 7fbcf37620f9d6edfb0f312c2eb09ef2d7994232
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c5941c8307e5aacc99f6fce627dafc154b6bc786
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731651"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091180"
 ---
 # <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>Azure portal を使用して、マネージド ディスクでカスタマー マネージド キーを使用し、サーバー側の暗号化を有効にする
 
-Azure Disk Storage を使用すると、選択した場合は、マネージド ディスクにサーバー側の暗号化 (SSE) を使用しているときに独自のキーを管理できます。 カスタマー マネージド キーを使用する SSE とその他のマネージド ディスクの暗号化の概念については、ディスクの暗号化の記事の「**カスタマー マネージド キー**」セクションを参照してください。
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 
 
-- Linux の場合:[カスタマー マネージド キー](./disk-encryption.md#customer-managed-keys)。
-- Windows の場合:[カスタマー マネージド キー](./disk-encryption.md#customer-managed-keys)。
+Azure Disk Storage を使用すると、選択した場合は、マネージド ディスクにサーバー側の暗号化 (SSE) を使用しているときに独自のキーを管理できます。 カスタマー マネージド キーを使用する SSE とその他のマネージド ディスクの暗号化の概念については、ディスクの暗号化の記事の「**カスタマー マネージド キー**」セクションを参照してください ([カスタマー マネージド キー](disk-encryption.md#customer-managed-keys))
 
 ## <a name="restrictions"></a>制限
 
@@ -79,6 +78,12 @@ VM のデプロイ プロセスは標準的なデプロイ プロセスと似て
 
 > [!IMPORTANT]
 > カスタマー マネージド キーは、Azure Active Directory (Azure AD) の 1 つの機能である Azure リソース用マネージド ID に依存します。 カスタマー マネージド キーを構成すると、内部でマネージド ID がリソースに自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはマネージド ディスクを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのマネージド ディスクに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「[Azure AD ディレクトリ間のサブスクリプションの転送](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」を参照してください。
+
+### <a name="enable-automatic-key-rotation-on-an-existing-disk-encryption-set"></a>既存のディスク暗号化セットでキーの自動キー交換を有効にする
+
+1. [自動キー交換](disk-encryption.md#automatic-key-rotation-of-customer-managed-keys)を有効にしたいディスク暗号化セットに移動します。
+1. **[設定]** で **[キー]** を選択します。
+1. **[自動キー交換]** を選択し、 **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

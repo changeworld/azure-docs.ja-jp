@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 08/20/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 484dd8313710332660bb20d55f3dac2aa21bbc61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10489579d95628399e94bad5dcab256a3df4bf74
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98232524"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309881"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication と既存のネットワーク ポリシー サーバー (NPS) インフラストラクチャの統合
 
@@ -32,7 +32,9 @@ Azure AD Multi-Factor Authentication の NPS 拡張機能を使用する場合�
 1. **NAS/VPN サーバー**: VPN クライアントから受信した要求を RADIUS 要求に変換して NPS サーバーに送信します。
 2. **NPS サーバー**: Active Directory Domain Service (AD DS) に接続して RADIUS 要求のプライマリ認証を行います。成功したら、インストール済みの任意の拡張機能に要求を渡します。  
 3. **NPS 拡張機能**: セカンダリ認証のために Azure AD Multi-Factor Authentication への要求をトリガーします。 応答を受信したら、MFA チャレンジが成功していた場合は、Azure STS が発行した MFA クレームを含むセキュリティ トークンを NPS サーバーに提供して認証要求を完了します。
-4. **Azure AD MFA**: Azure Active Directory (Azure AD) と通信してユーザーの詳細を取得し、ユーザーに構成されている検証メソッドを使用してセカンダリ認証を行います。
+   >[!NOTE]
+   >MFA 要件を満たすには、ユーザーが既定の認証方法にアクセスできる必要があります。 別の方法を選択することはできません。 既定の認証方法は、テナント認証方法と MFA ポリシーで無効になっている場合でも使用されます。
+1. **Azure AD MFA**: Azure Active Directory (Azure AD) と通信してユーザーの詳細を取得し、ユーザーに構成されている検証メソッドを使用してセカンダリ認証を行います。
 
 次の図に、この認証要求フローの概要を示します。
 
@@ -72,7 +74,7 @@ NPS 拡張機能は、既存のインフラストラクチャで使用します�
 
 ### <a name="licenses"></a>ライセンス
 
-Azure AD Multi-Factor Authentication の NPS 拡張機能は、[Azure AD Multi-Factor Authentication のライセンス](./concept-mfa-howitworks.md)をお持ちのお客様にご利用いただけます。 使用量ベースの Azure AD Multi-Factor Authentication のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。
+Azure AD 多要素認証 の NPS 拡張機能は 、[Azure AD 多要素認証 (Azure AD Premium P1 および Premium P2 または Enterprise Mobility + Security に含まれる) のライセンスをお持ちの](./concept-mfa-howitworks.md)お客様が利用できます。 使用量ベースの Azure AD Multi-Factor Authentication のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。
 
 ### <a name="software"></a>ソフトウェア
 
@@ -117,6 +119,7 @@ NPS サーバーは、ポート 80 および 443 を使って次の URL と通�
 * *https:\//provisioningapi.microsoftonline.com*
 * *https:\//aadcdn.msauth.net*
 * *https:\//www.powershellgallery.com*
+* *https:\//go.microsoft.com*
 * *https:\//aadcdn.msftauthimages.net*
 
 ## <a name="prepare-your-environment"></a>環境を準備する
@@ -173,7 +176,7 @@ NPS 拡張機能を展開して使用する前に、Azure AD Multi-Factor Authen
 
 1. テスト アカウントで [https://aka.ms/mfasetup](https://aka.ms/mfasetup) にサインインします。
 2. 表示されたメッセージに従って、確認方法を設定します。
-3. Azure portal で管理者ユーザーとしてテスト アカウントに対して多要素認証を要求するには、[条件付きアクセス ポリシーを作成](howto-mfa-getstarted.md#create-conditional-access-policy)します。
+3. Azure portal で管理者ユーザーとしてテスト アカウントに対して多要素認証を要求するには、[条件付きアクセス ポリシーを作成](howto-mfa-getstarted.md#plan-conditional-access-policies)します。
 
 > [!IMPORTANT]
 >

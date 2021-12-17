@@ -11,14 +11,14 @@ ms.date: 01/06/2021
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 395d5f0697138155b0bb0c629461aada9e9c18c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cebee3ad9b515c6f40529fe5d25da687fd53687
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98739067"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786287"
 ---
-# <a name="disable-geo-backups-for-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 内の専用 SQL プール (以前の SQL DW) の geo バックアップを無効にする
+# <a name="disable-geo-backups-for-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 内の[専用 SQL プール (以前の SQL DW)](sql-data-warehouse-overview-what-is.md) の geo バックアップを無効にする
 
 この記事では、Azure portal で専用 SQL プール (以前の SQL DW) の geo バックアップを無効にする方法について説明します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "98739067"
 
 > [!NOTE]
 > geo バックアップを無効にすると、専用 SQL プール (以前の SQL DW) を別の Azure リージョンに復旧できなくなります。 
->
+> 
 
 1. [Azure portal](https://portal.azure.com/) アカウントにサインインします。
 1. geo バックアップを無効にする専用 SQL プール (以前の SQL DW) リソースを選択します。 

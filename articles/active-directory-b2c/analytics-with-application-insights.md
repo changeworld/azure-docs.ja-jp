@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/29/2021
+ms.date: 08/24/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2cde44ddb49ede8002b8a25ab47ae92ccd602a9d
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: f58b114431ba1e402afa26a2c63409bd69ab1599
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226372"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570219"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>Application Insights を使用して Azure AD B2C でのユーザーの動作を追跡する
 
@@ -58,7 +58,8 @@ Application Insights を使用する場合は、次の点を考慮してくだ�
 Application Insights を Azure AD B2C と共に使用している場合は、リソースを作成してインストルメンテーション キーを取得するだけです。 詳細については、「[Application Insights リソースの作成](../azure-monitor/app/create-new-resource.md)」を参照してください。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. Azure サブスクリプションがあるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure サブスクリプションが含まれているディレクトリを選択します。 このテナントは Azure AD B2C テナントではありません。
+1. 自分の Azure AD サブスクリプションを持つディレクトリを使用し、Azure AD B2C ディレクトリを使用しているのでないことを確認してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで、サブスクリプションを含む Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[リソースの作成]** を選択し、 **[Application Insights]** を検索して選択します。
 1. **［作成］** を選択します
 1. **[名前]** には、リソースの名前を入力します。

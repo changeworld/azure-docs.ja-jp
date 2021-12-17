@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
-ms.openlocfilehash: 7cfd378ae621192cd98b482b66c85c3dcd3ca454
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 79d49a7a9acd30a9af03921c774e6b2430dc848b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101721941"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228945"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>チュートリアル:PowerShell を使用した ExpressRoute 回線のピアリングの作成と変更
 
@@ -162,11 +163,6 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ## <a name="azure-private-peering"></a><a name="private"></a>Azure プライベート ピアリング
 
 このセクションでは、ExpressRoute 回線用の Azure プライベート ピアリング構成を作成、取得、更新、および削除します。
-
-> [!IMPORTANT]
-> 現在、プライベート ピアリングの IPv6 サポートは **パブリック プレビュー** の段階です。 
-> 
-> 
 
 ### <a name="to-create-azure-private-peering"></a>Azure プライベート ピアリングを作成するには
 

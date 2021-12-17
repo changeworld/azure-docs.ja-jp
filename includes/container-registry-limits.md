@@ -5,21 +5,22 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 06/18/2020
+ms.date: 10/22/2021
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: b4701260a7d8da030f9f3019060aaa83e7a3a483
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 777af1f15441ab4849292e40b3a27863276f3fce
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803305"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473351"
 ---
 | リソース | Basic | Standard | Premium |
 |---|---|---|---|
 | 含まれている記憶域<sup>1</sup> (GiB) | 10 | 100 | 500 |
 | ストレージの制限 (TiB) | 20| 20 | 20 |
 | イメージ レイヤーの最大サイズ (GiB) | 200 | 200 | 200 |
+| 最大マニフェスト サイズ (MiB) | 4 | 4 | 4 |
 | 1 分あたりの ReadOps<sup>2、3</sup> | 1,000 | 3,000 | 10,000 |
 | 1 分あたりの WriteOps<sup>2、4</sup> | 100 | 500 | 2,000 |
 | ダウンロード帯域幅<sup>2</sup> (Mbps) | 30 | 60 | 100 |
@@ -29,9 +30,10 @@ ms.locfileid: "104803305"
 | 可用性ゾーン | 該当なし | 該当なし | [プレビュー][zones] |
 | コンテンツの信頼 | 該当なし | 該当なし | [サポートされています][content-trust] |
 | プライベート エンドポイントがあるプライベート リンク | 該当なし | 該当なし | [サポートされています][plink] |
-| &bull; プライベート エンドポイント | 該当なし | 該当なし | 10 |
+| &bull; プライベート エンドポイント | 該当なし | 該当なし | 200 |
 | パブリック IP ネットワーク ルール | 該当なし | 該当なし | 100 |
 | サービス エンドポイントの VNet アクセス | 該当なし | 該当なし | [プレビュー][vnet] |
+| &bull; 仮想ネットワーク規則 | 該当なし | 該当なし | 100 |
 | カスタマー マネージド キー | 該当なし | 該当なし | [サポートされています][cmk] |
 | リポジトリがスコープ指定されたアクセス許可 | 該当なし | 該当なし | [プレビュー][token]|
 | &bull; トークン | 該当なし | 該当なし | 20,000 |

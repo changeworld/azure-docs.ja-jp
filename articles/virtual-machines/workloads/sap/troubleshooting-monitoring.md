@@ -1,53 +1,82 @@
 ---
-title: SAP HANA on Azure (L インスタンス) の監視 | Microsoft Docs
-description: SAP HANA on Azure (L インスタンス) を監視します。
+title: SAP HANA on Azure (Large Instances) を監視する | Microsoft Docs
+description: SAP HANA on Azure (Large Instances) の監視について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
 manager: bburns
-editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
-ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 246b9398824597ec337ee9e9ea3dc24267311f60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.author: madhukan
+ms.custom: H1Hack27Feb2017, contperf-fy21q4
+ms.openlocfilehash: d8325a9b5a3b8adaf3f39cde791e9a00f3f897e3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669592"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036601"
 ---
-# <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) の監視方法
+# <a name="monitor-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (Large Instances) を監視する
 
-SAP HANA on Azure (L インスタンス) に、その他の IaaS デプロイとの違いはありません。OS とアプリケーションが何を行っているかと、アプリケーションがどのように以下のリソースを使用しているかを監視する必要があります。
+この記事では、Azure 上の SAP HANA Large Instances (BareMetal インフラストラクチャ) の監視について見ていきます。
+
+SAP HANA on Azure (Large Instances) も、他の IaaS デプロイと変わりません。 オペレーティング システムとアプリケーションを監視することが大切です。 次のリソースがアプリケーションによってどのように使用されているかを把握する必要があります。
 
 - CPU
 - メモリ
 - ネットワークの帯域幅
 - ディスク領域
 
-Azure Virtual Machines で、上に挙げたリソース クラスが十分であるか、不足しているかを把握する必要があります。 各クラスの詳細は次のとおりです。
+以上のリソースが足りているか、または消耗しているかは、SAP HANA Large Instances を監視することで確認します。 以降の各セクションでは、これらの各リソースについて詳しく説明します。
 
-**CPU リソースの使用量:** メモリに保存されているデータの操作に使用できる十分な CPU リソースを確保するために、HANA に対する特定のワークロード用に SAP が定義した比率が強制されます。 しかし、HANA がクエリを実行し、インデックスが見つからないなどの問題のために大量の CPU を使用する場合もあります。 つまり、HANA L インスタンス ユニットによる CPU リソースの使用量と、特定の HANA サービスによって使用されている CPU リソースを監視する必要があります。
+## <a name="cpu-resource-consumption"></a>CPU リソース使用量
 
-**メモリの使用量:** HANA 内部からだけでなく、ユニット上の HANA の外部からも監視することが重要です。 HANA 内部では、HANA に割り当てられているメモリをデータがどのように使用しているかを監視して、SAP の必要サイズのガイドライン内に収まるようにします。 追加でインストールした非 HANA ソフトウェアがメモリを過剰に使用して HANA とメモリを奪い合っていないことを確認するために、L インスタンス レベルのメモリ使用量を監視する場合もあります。
+SAP HANA ワークロードには、CPU 使用の最大しきい値が SAP によって定義されています。 このしきい値の範囲内にとどめることで、メモリに格納されているデータを処理するのに十分な CPU リソースが確保されます。 インデックスの欠落やそれに類似する問題が原因で SAP HANA サービスによってクエリが実行されると、CPU 使用量が上昇する可能性があります。 そのため、HANA Large Instances の CPU 使用量と特定の HANA サービスの CPU 使用量を監視することがきわめて重要となります。
 
-**ネットワーク帯域幅:** Azure VNet ゲートウェイは Azure VNet に移動するデータの帯域幅による制限を受けるので、VNet 内のすべての Azure VM が受信するデータを監視することは、選択した Azure ゲートウェイ SKU の上限にどのくらい近づいているかを判断するうえで役に立ちます。 HANA L インスタンス ユニットでは、着信および発信ネットワーク トラフィックを監視することと、処理量の推移を追跡することにも意味があります。
+## <a name="memory-consumption"></a>メモリ消費量 
 
-**ディスク領域:** ディスク領域の使用量は、通常、時間の経過と共に増加します。 最も一般的な原因は、データ量の増加、トランザクション ログ バックアップの実行、トレース ファイルの保存、およびストレージ スナップショットの実行です。 そのため、ディスク領域の使用量を監視し、HANA L インスタンス ユニットに関連付けられているディスク領域を管理することが重要です。
+SAP HANA L インスタンス上の HANA の内部と外部の両方のメモリ消費量を監視することが大切です。 HANA に割り当てられたメモリをデータがどう消費しているかを監視して、SAP のサイジング ガイドラインの範囲を超えないようにするのです。 HANA 以外のソフトウェアがメモリを消費しすぎないように L インスタンスのメモリ消費量を監視します。 HANA 以外のソフトウェアが HANA とメモリを奪い合う状況は好ましくありません。
 
-HANA L インスタンスの **Type II SKU** の場合、サーバーには事前に読み込まれたシステム診断ツールが付属しています。 システムの正常性チェックを実行するために、これらの診断ツールを利用できます。 正常性チェックのログ ファイルを /var/log/health_check に生成するには、次のコマンドを実行します。
+## <a name="network-bandwidth"></a>ネットワーク帯域幅 
+
+Azure Virtual Network (VNet) ゲートウェイの帯域幅は有限です。 Azure VNet に入ることができるデータは限られています。 VNet 内のすべての Azure VM の受信データを監視してください。 そうすれば、選択した Azure ゲートウェイ SKU の上限に近づいてきたタイミングがわかるようになります。 HANA L インスタンスの送受信ネットワーク トラフィックを監視して、一定期間にわたって処理されたボリュームを追跡してもよいでしょう。
+
+## <a name="disk-space"></a>ディスク領域
+
+ディスク領域の使用量は、通常、時間の経過と共に増加します。 一般的な原因には、次のようなものがあります。
+- 時間の経過に伴うデータ ボリュームの増加
+- トランザクション ログ バックアップの実行
+- トレース ファイルの格納
+- ストレージ スナップショットの取得 
+
+ディスク領域の使用量を監視し、HANA L インスタンスに関連付けられているディスク領域を管理することが重要です。
+
+## <a name="preloaded-system-diagnostic-tools"></a>事前に読み込まれるシステム診断ツール
+
+HANA L インスタンスの **Type II SKU** の場合、サーバーには事前に読み込まれたシステム診断ツールが付属しています。 これらの診断ツールを使用して、システム正常性チェックを実行できます。
+ 
+正常性チェックのログ ファイルを /var/log/health_check に生成するには、次のコマンドを実行します。
+
 ```
 /opt/sgi/health_check/microsoft_tdi.sh
 ```
-Microsoft サポート チームと協力して問題のトラブルシューティングを行う場合は、これらの診断ツールを使用してログ ファイルを提供するように求められることもあります。 次のコマンドを使用して、ファイルを圧縮することができます。
+Microsoft サポート チームと協力して問題のトラブルシューティングを行う場合は、これらの診断ツールを使用してログ ファイルを提供するように求められることがあります。 このコマンドを使用して、ファイルを圧縮することができます。
+
 ```
 tar  -czvf health_check_logs.tar.gz /var/log/health_check
 ```
 
-**次の手順**
+## <a name="azure-monitor-for-sap-solutions"></a>SAP ソリューション向け Azure Monitor
 
-- 「[SAP HANA on Azure (L インスタンス) の監視方法](./hana-monitor-troubleshoot.md)」を参照してください。
+Azure Monitor for SAP Solutions を使用すると、前述したすべてのリソースを含め、さまざまなリソースを監視できます。 Azure Monitor for SAP Solutions は Azure ネイティブのツールです。 Azure のインフラストラクチャやデータベースから 1 か所にデータを収集して、それらを視覚的に関連付けることで、トラブルシューティングを迅速化することができます。 詳細については、[Azure での SAP の監視](../../../virtual-machines/workloads/sap/monitor-sap-on-azure.md)に関するページをご覧ください。
+
+## <a name="next-steps"></a>次のステップ
+
+SAP HANA 内から監視とトラブルシューティングを行う方法について学習します。
+
+> [!div class="nextstepaction"]
+> [HANA 側からの監視とトラブルシューティング](hana-monitor-troubleshoot.md)

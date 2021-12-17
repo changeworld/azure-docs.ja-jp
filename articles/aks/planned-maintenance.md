@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.author: qpetraroia
 author: qpetraroia
-ms.openlocfilehash: f1e0822e77d8466b1b9796041fbdba53c3f9c91f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 24c81290bce53e1399379103ac3d17ea735222a4
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782911"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235290"
 ---
 # <a name="use-planned-maintenance-to-schedule-maintenance-windows-for-your-azure-kubernetes-service-aks-cluster-preview"></a>計画メンテナンスを使用して Azure Kubernetes Service (AKS) クラスターのメンテナンス期間をスケジュールする (プレビュー)
 
@@ -49,6 +49,8 @@ az extension update --name aks-preview
 メンテナンス期間を追加するには、`az aks maintenanceconfiguration add` コマンドを使用します。
 
 > [!IMPORTANT]
+> このとき、`--name` の値として `default` を設定する必要があります。 他の名前を使用すると、メンテナンス ウィンドウが実行されなくなります。
+>
 > 計画メンテナンスの期間は、協定世界時 (UTC) で指定します。
 
 ```azurecli-interactive
@@ -129,7 +131,7 @@ az aks maintenanceconfiguration update -g MyResourceGroup --cluster-name myAKSCl
 
 ## <a name="list-all-maintenance-windows-in-an-existing-cluster"></a>既存のクラスター内のすべてのメンテナンス期間を一覧表示する
 
-AKS クラスター内の現在のメンテナンス構成期間をすべて表示するには、`az aks maintenanceconfiguration list` コマンドを使用します。
+AKS クラスター内の現在のすべてのメンテナンス構成期間を表示するには、`az aks maintenanceconfiguration list` コマンドを使用します。
 
 ```azurecli-interactive
 az aks maintenanceconfiguration list -g MyResourceGroup --cluster-name myAKSCluster
@@ -210,6 +212,10 @@ AKS クラスター内の特定のメンテナンス構成期間を削除する�
 ```azurecli-interactive
 az aks maintenanceconfiguration delete -g MyResourceGroup --cluster-name myAKSCluster --name default
 ```
+
+## <a name="using-planned-maintenance-with-cluster-auto-upgrade"></a>計画メンテナンスでのクラスター自動アップグレードの使用
+
+計画メンテナンスでは、クラスターの自動アップグレードを使用しているかどうかが検出され、メンテナンス期間中にアップグレードが自動的にスケジュールされます。 クラスターの自動アップグレードの詳細については、「[Azure Kubernetes Service (AKS) クラスターのアップグレード][aks-upgrade]」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

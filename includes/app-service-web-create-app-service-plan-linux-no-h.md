@@ -1,28 +1,32 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
-services: app-service
-author: cephalin
-ms.service: app-service
-ms.topic: include
-ms.date: 02/02/2018
-ms.author: cephalin
-ms.custom: include file
-ms.openlocfilehash: cc44780bd9b42e00ecfb3d140486fec87c767a76
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765758"
+title: "インクルード ファイル" description: "インクルード ファイル" services: app-service author: cephalin ms.service: app-service ms.topic: "インクルード" ms.date: 05/02/2021 ms.author: cephalin ms.custom: "インクルード ファイル", devx-track-azurecli
 ---
-[!INCLUDE [resource group intro text](resource-group.md)]
 
-Cloud Shell で [`az group create`](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを "*西ヨーロッパ*" の場所に作成します。 **Basic** レベルの Linux 上の App Service がサポートされているすべての場所を表示するには、[`az appservice list-locations --sku B1 --linux-workers-enabled`](/cli/azure/appservice#az_appservice_list_locations) コマンドを実行します。
+Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan) コマンドを使用して、App Service プランを作成します。
+
+<!-- [!INCLUDE [app-service-plan](app-service-plan.md)] -->
+
+次の例では、**Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location "West Europe"
+az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE --is-linux
 ```
 
-通常は、現在地付近の地域にリソース グループおよびリソースを作成します。 
+App Service プランが作成されると、Azure CLI によって、次の例のような情報が表示されます。
 
-コマンドが完了すると、リソース グループのプロパティが JSON 出力に表示されます。
+<pre>
+{ 
+  "freeOfferExpirationTime": null,
+  "geoRegion": "West Europe",
+  "hostingEnvironmentProfile": null,
+  "id": "/subscriptions/0000-0000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myAppServicePlan",
+  "kind": "linux",
+  "location": "West Europe",
+  "maximumNumberOfWorkers": 1,
+  "name": "myAppServicePlan",
+  &lt; JSON data removed for brevity. &gt;
+  "targetWorkerSizeId": 0,
+  "type": "Microsoft.Web/serverfarms",
+  "workerTierName": null
+} 
+</pre>

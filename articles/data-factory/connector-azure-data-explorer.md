@@ -1,27 +1,29 @@
 ---
-title: Azure Data Explorer との間でデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Data Explorer との間で双方向にデータをコピーする方法について説明します。
+title: Azure Data Explorer のデータのコピーと変換を行う
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Data Factory または Azure Synapse Analytics を使用して、Azure Data Explorer のデータのコピーと変換を行う方法について説明します。
 ms.author: orspodek
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: f343cf820632c8b53f74a938a039820ea4f56eac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: synapse
+ms.date: 10/14/2021
+ms.openlocfilehash: 8aafbbd0cc7063fdccf3ae44e9442fa86cfe5f94
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027399"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005767"
 ---
-# <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
+# <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、[Azure Data Explorer](/azure/data-explorer/data-explorer-overview) との間で双方向にデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、[Azure Data Explorer](/azure/data-explorer/data-explorer-overview) をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 >[!TIP]
->Azure Data Factory と Azure Data Explorer の統合全般の詳細については、「[Azure Data Explorer と Azure Data Factory の統合](/azure/data-explorer/data-factory-integration)」を参照してください。
+>Azure Data Explorer のサービスとの統合の詳細については、「[Azure Data Explorer の統合](/azure/data-explorer/data-factory-integration)」を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -44,18 +46,43 @@ Azure Data Explorer コネクタを使用すると、次のことができます
 ## <a name="getting-started"></a>作業の開始
 
 >[!TIP]
->Azure Data Explorer コネクタのチュートリアルについては、「[Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする](/azure/data-explorer/data-factory-load-data)」と、[データベースから Azure Data Explorer への一括コピー](/azure/data-explorer/data-factory-template)に関するページを参照してください。
+>Azure Data Explorer コネクタのチュートリアルについては、「[Azure Data Explorer との間でデータをコピーする](/azure/data-explorer/data-factory-load-data)」と、[データベースから Azure Data Explorer への一括コピー](/azure/data-explorer/data-factory-template)に関するページを参照してください。
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-以下のセクションでは、Azure Data Explorer コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティの詳細を説明します。
+## <a name="create-a-linked-service-to-azure-data-explorer-using-ui"></a>UI を使用して Azure Data Explorer のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Azure Data Explorer のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. Explorer を検索し、Azure Data Explorer (Kusto) コネクタを選択します。
+
+    :::image type="content" source="media/connector-azure-data-explorer/azure-data-explorer-connector.png" alt-text="Azure Data Explorer (Kusto) コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-azure-data-explorer/configure-azure-data-explorer-linked-service.png" alt-text="Azure Data Explorer のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、Azure Data Explorer コネクタに固有のエンティティを定義するために使用されるプロパティの詳細を説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
 Azure Data Explorer コネクタでは、次の認証の種類がサポートされています。 詳細については、対応するセクションをご覧ください。
 
 - [サービス プリンシパルの認証](#service-principal-authentication)
-- [Azure リソースのマネージド ID 認証](#managed-identity)
+- [システム割り当てマネージド ID 認証](#managed-identity)
+- [ユーザー割り当てマネージド ID 認証](#user-assigned-managed-identity-authentication)
 
 ### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
 
@@ -73,7 +100,7 @@ Azure Data Explorer コネクタでは、次の認証の種類がサポートさ
     - **シンクとして**、少なくとも **データベースのデータ取り込み** ロールをデータベースに付与します。
 
 >[!NOTE]
->Data Factory UI を使用して作成する場合、既定では、Azure Data Explorer クラスター、データベース、およびテーブルを一覧表示するために、ログイン ユーザー アカウントが使用されます。 サービス プリンシパルを使用してオブジェクトを一覧表示するには、更新ボタンの横にあるドロップダウンをクリックします。これらの操作に対するアクセス許可がない場合は、名前を手動で入力します。
+>UI を使用して作成する場合、既定では、Azure Data Explorer クラスター、データベース、およびテーブルを一覧表示するために、ログイン ユーザー アカウントが使用されます。 サービス プリンシパルを使用してオブジェクトを一覧表示するには、更新ボタンの横にあるドロップダウンをクリックします。これらの操作に対するアクセス許可がない場合は、名前を手動で入力します。
 
 Azure Data Explorer のリンクされたサービスでは、次のプロパティがサポートされます。
 
@@ -84,7 +111,7 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
 | database | データベースの名前。 | はい |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、[Kusto 接続文字列](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "機関 ID" として知られています。 これは、Azure portal の右上隅にマウス ポインターを合わせることで取得できます。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 これは、[Kusto 接続文字列](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "AAD アプリケーション クライアント ID" として知られています。 | はい |
-| servicePrincipalKey | アプリケーションのキーを取得します。 これは、[Kusto 接続文字列](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "AAD アプリケーション キー" として知られています。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault 内のセキュリティで保護された格納データを参照](store-credentials-in-key-vault.md)します。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 これは、[Kusto 接続文字列](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "AAD アプリケーション キー" として知られています。 このフィールドを **SecureString** とマークして安全に保存するか、[Azure Key Vault に格納されている安全なデータを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 **例: サービス プリンシパル キー認証の使用**
@@ -108,11 +135,13 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
 }
 ```
 
-### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure リソースのマネージド ID 認証
+### <a name="system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> システム割り当てマネージド ID 認証
 
-Azure リソースの認証にマネージド ID を使用するには、次の手順に従ってアクセス許可を付与します。
+Azure リソース用マネージド ID の詳細については、[Azure リソース用マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
 
-1. ファクトリと共に生成された **マネージド ID オブジェクト ID** の値をコピーして、[Data Factory のマネージド ID 情報を取得します](data-factory-service-identity.md#retrieve-managed-identity)。
+システム割り当てマネージド ID 認証を使用するには、次の手順に従ってアクセス許可を付与します。
+
+1. ファクトリまたは Synapse ワークスペースと共に生成された **マネージド ID オブジェクト ID** の値をコピーして、[マネージド ID 情報を取得します](data-factory-service-identity.md#retrieve-managed-identity)。
 
 2. Azure Data Explorer でマネージド ID に適切なアクセス許可を付与します。 ロールおよびアクセス許可の詳細について、またアクセス許可の管理方法の詳細については、「[Azure Data Explorer のデータベース アクセス許可を管理する](/azure/data-explorer/manage-database-permissions)」を参照してください。 一般的に、次のことを行う必要があります。
 
@@ -120,7 +149,7 @@ Azure リソースの認証にマネージド ID を使用するには、次の�
     - **シンクとして**、少なくとも **データベースのデータ取り込み** ロールをデータベースに付与します。
 
 >[!NOTE]
->Data Factory UI を使用して作成する場合、Azure Data Explorer クラスター、データベース、およびテーブルを一覧表示するために、ログイン ユーザー アカウントが使用されます。 これらの操作のためのアクセス許可がない場合は、名前を手動で入力します。
+>UI を使用して作成する場合、Azure Data Explorer クラスター、データベース、およびテーブルを一覧表示するために、ログイン ユーザー アカウントが使用されます。 これらの操作のためのアクセス許可がない場合は、名前を手動で入力します。
 
 Azure Data Explorer のリンクされたサービスでは、次のプロパティがサポートされます。
 
@@ -131,7 +160,7 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
 | database | データベースの名前。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
-**例: マネージ ID 認証を使用する**
+**例: システム割り当てマネージド ID 認証を使用する**
 
 ```json
 {
@@ -146,9 +175,49 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
 }
 ```
 
+### <a name="user-assigned-managed-identity-authentication"></a>ユーザー割り当てマネージド ID 認証
+Azure リソース用マネージド ID の詳細については、[Azure リソース用マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください
+
+ユーザー割り当てマネージド ID 認証を使用するには、次の手順に従います。
+
+1. [1 つ以上のユーザー割り当てマネージド ID を作成](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)して、Azure Data Explorer でアクセス許可を付与します。 ロールおよびアクセス許可の詳細について、またアクセス許可の管理方法の詳細については、「[Azure Data Explorer のデータベース アクセス許可を管理する](/azure/data-explorer/manage-database-permissions)」を参照してください。 一般的に、次のことを行う必要があります。
+
+    - **ソースとして**、少なくとも **データベース ビューアー** ロールをデータベースに付与します。
+    - **シンクとして**、少なくとも **データベースのデータ取り込み** ロールをデータベースに付与します。
+     
+2. 1 つ以上のユーザー割り当てマネージド ID をデータ ファクトリまたは Synapse ワークスペースに割り当て、ユーザー割り当てマネージド ID ごとに[資格情報を作成](credentials.md)します。
+
+Azure Data Explorer のリンクされたサービスでは、次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | **type** プロパティは、**AzureDataExplorer** に設定する必要があります。 | はい |
+| endpoint | Azure Data Explorer クラスターのエンドポイント URL。形式は `https://<clusterName>.<regionName>.kusto.windows.net` です。 | はい |
+| database | データベースの名前。 | はい |
+| 資格情報 | ユーザー割り当てマネージド ID を資格情報オブジェクトとして指定します。 | はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
+
+**例: ユーザー割り当てマネージド ID 認証を使用する**
+```json
+{
+    "name": "AzureDataExplorerLinkedService",
+    "properties": {
+        "type": "AzureDataExplorer",
+        "typeProperties": {
+            "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
+            "database": "<database name>",
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+            }
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、「[Azure Data Factory のデータセット](concepts-datasets-linked-services.md)」を参照してください。 このセクションでは、Azure Data Explorer データセットでサポートされるプロパティの一覧を示します。
+データセットの定義に使用できるセクションとプロパティの一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Azure Data Explorer データセットでサポートされるプロパティの一覧を示します。
 
 Azure Data Explorer にデータをコピーするには、データセットの type プロパティを **AzureDataExplorerTable** に設定します。
 
@@ -180,7 +249,7 @@ Azure Data Explorer にデータをコピーするには、データセットの
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[Azure Data Factory のパイプラインとアクティビティ](concepts-pipelines-activities.md)」を参照してください。 このセクションでは、Azure Data Explorer のソースとシンクでサポートされるプロパティの一覧を示します。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインとアクティビティ](concepts-pipelines-activities.md)に関するページを参照してください。 このセクションでは、Azure Data Explorer のソースとシンクでサポートされるプロパティの一覧を示します。
 
 ### <a name="azure-data-explorer-as-source"></a>ソースとしての Azure Data Explorer
 
@@ -272,12 +341,87 @@ Azure Data Explorer にデータをコピーするには、コピー アクテ�
 ]
 ```
 
+## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
+
+マッピング データ フローでデータを変換するときに、Azure Data Explorer のテーブルに対する読み取りと書き込みを実行できます。 詳細については、マッピング データ フローの[ソース変換](data-flow-source.md)と[シンク変換](data-flow-sink.md)に関する記事をご覧ください。 ソースとシンクの種類として、Azure Data Explorer データセットまたは[インライン データセット](data-flow-source.md#inline-datasets)を使用できます。
+
+### <a name="source-transformation"></a>ソース変換
+
+次の表に、Azure Data Explorer ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。
+
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| テーブル | 入力として [テーブル] を選択した場合、データ フローでは、Azure Data Explorer データセットで指定された、またはインライン データセットを使用するときにソース オプションで指定されたテーブルからすべてのデータがフェッチされます。 | いいえ | String | *(インライン データセットのみ)*<br>tableName |
+| クエリ | [KQL 形式](/azure/data-explorer/kusto/query/)で指定された読み取り専用要求。 参照としてカスタム KQL クエリを使用します。  | いいえ | String | query |
+| タイムアウト | クエリ要求がタイムアウトするまでの待機時間。既定値は '172000' (2 日間) です。  | いいえ | Integer | timeout |
+
+#### <a name="azure-data-explorer-source-script-examples"></a>Azure Data Explorer ソース スクリプトの例
+
+ソースの種類として Azure Data Explorer データセットを使用する場合、関連付けられるデータ フロー スクリプトは次のようになります。
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    query: 'table | take 10',
+    format: 'query') ~> AzureDataExplorerSource
+
+```
+
+インライン データセットを使用する場合、関連付けられているデータ フロー スクリプトは次のようになります。
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'query',
+    query: 'table | take 10',
+    store: 'azuredataexplorer') ~> AzureDataExplorerSource
+
+```
+
+### <a name="sink-transformation"></a>シンク変換
+
+次の表に、Azure Data Explorer シンクでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[設定]** タブで編集できます。インライン データセットを使用する場合、「[データセットのプロパティ](#dataset-properties)」セクションで説明されているプロパティと同じ追加の設定が表示されます。 
+
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| テーブル アクション | 書き込み前に変換先テーブルのすべての行を再作成するか削除するかを指定します。<br>- **なし**: テーブルに対してアクションは実行されません。<br>- **Recreate**:テーブルが削除され、再作成されます。 新しいテーブルを動的に作成する場合に必要です。<br>- **Truncate**:ターゲット テーブルのすべての行が削除されます。 | いいえ | `true` または `false` | recreate<br/>truncate |
+| 事前および事後の SQL スクリプト | データがシンク データベースに書き込まれる前 (前処理) と書き込まれた後 (後処理) に実行される複数の [Kusto 管理コマンド](/azure/data-explorer/kusto/query/#control-commands)を指定します。 | いいえ | String | preSQL; postSQL |
+| タイムアウト | クエリ要求がタイムアウトするまでの待機時間。既定値は '172000' (2 日間) です。 | いいえ | Integer | timeout |
+
+
+#### <a name="azure-data-explorer-sink-script-examples"></a>Azure Data Explorer シンク スクリプトの例
+
+シンクの種類として Azure Data Explorer データセットを使用する場合、関連付けられているデータ フロー スクリプトは次のようになります。
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'table',
+    preSQLs:['pre SQL scripts'],
+    postSQLs:['post SQL script'],
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> AzureDataExplorerSink
+
+```
+
+インライン データセットを使用する場合、関連付けられているデータ フロー スクリプトは次のようになります。
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'table',
+    store: 'azuredataexplorer',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> AzureDataExplorerSink
+
+```
+
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
 プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)をご覧ください。
+* コピー アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページを参照してください。
 
-* Azure Data Factory から Azure Data Explorer にデータをコピーする方法の詳細については、[こちら](/azure/data-explorer/data-factory-load-data)を参照してください。
+* [Azure Data Factory と Synapse Analytics から Azure Data Explorer にデータをコピーする](/azure/data-explorer/data-factory-load-data)方法を参照してください。

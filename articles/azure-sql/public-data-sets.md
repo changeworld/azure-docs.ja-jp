@@ -7,16 +7,16 @@ ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: reference
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: mathoma
 ms.date: 10/01/2018
-ms.openlocfilehash: 2e836a175b45c6fca46f9c76760e1cbaef305a47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f033349a43a6006362b9b5efbe94025e16d25b82
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792584"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707034"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>テストとプロトタイプ作成用の公開されているデータ セット
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]

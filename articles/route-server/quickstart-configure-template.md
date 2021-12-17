@@ -5,25 +5,25 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 04/05/2021
 ms.author: duau
-ms.openlocfilehash: 3476e5fa2c274f0fc2c180711480375b0ebefaf2
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 79ff9d8464aa15cac8928a9f5ed4d8863f27400d
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388042"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113567418"
 ---
 # <a name="quickstart-create-an-azure-route-server-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure ルート サーバーを作成する
 
-このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、新規または既存の仮想ネットワークに Azure ルート サーバーをデプロイする方法について説明します。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、新規または既存の仮想ネットワークに Azure Route Server をデプロイする方法について説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-route-server%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Froute-server%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,11 +31,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-route-server)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/route-server)からのものです。
 
 このクイックスタートでは、Azure ルート サーバーを新規または既存の仮想ネットワークにデプロイします。 ルート サーバーをホストするために、`RouteServerSubnet` という名前の専用サブネットが作成されます。 また、ルート サーバーは、BGP ピアリングを確立するために、ピア ASN とピア IP を使用して構成されます。
 
-:::code language="json" source="~/quickstart-templates/101-route-server/azuredeploy.json" range="001-145" highlight="105-142":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/route-server/azuredeploy.json" range="001-145" highlight="105-142":::
 
 テンプレートでは、複数の Azure リソースが定義されています。
 
@@ -55,7 +55,7 @@ ExpressRoute に関連するテンプレートをさらに探すには、「[Azu
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-route-server/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/route-server/azuredeploy.json"
 
     $resourceGroupName = "${projectName}rg"
 

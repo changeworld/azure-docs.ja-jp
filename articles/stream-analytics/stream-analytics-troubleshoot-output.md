@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 02a3a7ad73bf0434a215c5ab7a6e89c299e9518b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 393d710ba411a6573a4cce155abd7c1aeae06aa8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019858"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754874"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics の出力のトラブルシューティング
 
@@ -25,7 +25,7 @@ ms.locfileid: "98019858"
 
    * **[入力イベント]** の値が 0 より大きい場合、ジョブでは入力データを読み取ることができます。 **[入力イベント]** の値が 0 より大きくない場合は、ジョブの入力に問題があります。 詳しくは、「[入力接続のトラブルシューティング](stream-analytics-troubleshoot-input.md)」をご覧ください。 ジョブに参照データ入力が含まれている場合は、**入力イベント** メトリックを参照するときに、論理名で分割を適用します。 参照データのみからの入力イベントがない場合は、この入力ソースが適切な参照データセットをフェッチするように適切に構成されていない可能性があります。
    * **[データ変換エラー]** の値が 0 より大きく、上昇している場合は、「[Azure Stream Analytics データ エラー](data-errors.md)」でデータ変換エラーの詳細について確認してください。
-   * **[ランタイム エラー]** の値が 0 より大きい場合は、ジョブはデータを受け取っていますが、クエリの処理中にエラーが発生しています。 エラーを確認するには、[監査ログ](../azure-resource-manager/management/view-activity-logs.md)に移動し、 **[失敗]** ステータスでフィルター処理します。
+   * **[ランタイム エラー]** の値が 0 より大きい場合は、ジョブはデータを受け取っていますが、クエリの処理中にエラーが発生しています。 エラーを確認するには、[監査ログ](../azure-monitor/essentials/activity-log.md)に移動し、 **[失敗]** ステータスでフィルター処理します。
    * **[入力イベント]** の値が 0 より大きく、 **[出力イベント]** の値が 0 の場合は、次のいずれかの状態になっています。
       * クエリの処理結果で、出力イベントが 0 個だった。
       * イベントまたはフィールドの形式が不適切なため、クエリ処理の実行後に出力が 0 個になった。
@@ -74,7 +74,7 @@ Azure SQL データベースを Stream Analytics ジョブへの出力として�
 
 SQL テーブルに一意のキー制約を設定すると、Azure Stream Analytics によって重複するレコードが削除されます。 データはバッチに分割され、単一の重複レコードが見つかるまで、バッチの再帰的な挿入が行われます。 分割および挿入プロセスでは、一度に 1 つの重複が無視されます。 重複する行が多数あるストリーミング ジョブの場合、プロセスは効率が悪く、時間がかかります。 過去 1 時間のアクティビティ ログにキー違反の警告メッセージが複数ある場合は、SQL 出力によってジョブ全体の速度が低下している可能性があります。
 
-この問題を解決するには、IGNORE_DUP_KEY オプションを有効にして、キー違反の原因となっている[インデックスを構成]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)します。 このオプションを使用すると、SQL では一括挿入の間に重複する値を無視できます。 Azure SQL Database では、エラーではなく警告メッセージが生成されるだけです。 その結果、Azure Stream Analytics で主キー違反エラーが生成されなくなります。
+この問題を解決するには、IGNORE_DUP_KEY オプションを有効にして、キー違反の原因となっている[インデックスを構成](/sql/t-sql/statements/create-index-transact-sql)します。 このオプションを使用すると、SQL では一括挿入の間に重複する値を無視できます。 Azure SQL Database では、エラーではなく警告メッセージが生成されるだけです。 その結果、Azure Stream Analytics で主キー違反エラーが生成されなくなります。
 
 IGNORE_DUP_KEY を構成する際には、一部のインデックスに関する次の考慮事項に注意してください。
 

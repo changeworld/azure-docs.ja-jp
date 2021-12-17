@@ -5,17 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 10/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: b0eeb73ffb5436284f4f23cef943db0a3307a2b2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 63394c71642917c37bd0383682b64b70f3b870ee
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564570"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709269"
 ---
 # <a name="repairing-an-import-job"></a>Import ジョブの修復
+
+> [!IMPORTANT]
+> ジョブの修復は、Azure Import/Export ツールでサポートされなくなりました。 バージョン1.5.0.300 以降では、BLOB のインポートで問題を修正してから、[新しいインポート ジョブを作成する](storage-import-export-data-to-blobs.md?tabs=azure-portal#step-2-create-an-import-job)必要があります。
+
 Microsoft Azure Import/Export サービスでは、ファイルの全部または一部の Windows Azure Blob service へのコピーに失敗する場合があります。 失敗の原因には次のものが挙げられます。  
   
 -   ファイルが破損している  
@@ -24,7 +28,7 @@ Microsoft Azure Import/Export サービスでは、ファイルの全部また�
   
 -   ファイル転送中にストレージ アカウント キーが変更された  
   
-Microsoft Azure Import/Export ツールは、インポート ジョブのコピー ログ ファイルを使用して実行できます。 このツールにより、インポート ジョブを完了するために、不足しているファイルまたはファイルの一部が Windows Azure ストレージ アカウントにアップロードされます。  
+Microsoft Azure Import/Export ツールは、インポート ジョブのコピー ログ ファイルを使用して実行できます。 このツールにより、インポート ジョブを完了するために、不足しているファイルまたはファイルの一部が Windows Azure ストレージ アカウントにアップロードされます。
   
 ## <a name="repairimport-parameters"></a>RepairImport パラメーター
 
@@ -99,7 +103,7 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
   
 ## <a name="next-steps"></a>次のステップ
  
-* [Azure Import/Export ツールの設定](storage-import-export-tool-setup-v1.md)   
+<!--* [Setting Up the Azure Import/Export Tool](storage-import-export-tool-setup-v1.md)- ARCHIVED-->   
 * [インポート ジョブ用のハード ドライブを準備する](storage-import-export-data-to-blobs.md#step-1-prepare-the-drives)   
 * [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [エクスポート ジョブの修復](./storage-import-export-tool-repairing-an-export-job-v1.md)

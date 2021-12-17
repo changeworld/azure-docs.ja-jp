@@ -2,20 +2,20 @@
 title: キーについて - Azure Key Vault
 description: キーに関する Azure Key Vault の REST インターフェイスと開発者の詳細の概要です。
 services: key-vault
-author: amitbapat
+author: mbaldwin
 manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
 ms.date: 02/17/2021
-ms.author: ambapat
-ms.openlocfilehash: 3c4bb61217c7b972220a55a4837c2b3db980f2ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mbaldwin
+ms.openlocfilehash: d89cd4faa67f769f01c0d0a1c1288b6dc8776aed
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095997"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722622"
 ---
 # <a name="about-keys"></a>キーについて
 
@@ -23,8 +23,13 @@ Azure Key Vault には、暗号化キーを格納および管理するための 
 
 |リソースの種類|キーの保護方法|データプレーン エンドポイント ベース URL|
 |--|--|--|
+<<<<<<< HEAD
 | **コンテナー** | ソフトウェアによる保護<br/><br/>および<br/><br/>HSM で保護された (Premium SKU の場合)</li></ul> | https://{vault-name}.vault.azure.net |
 | **マネージド HSM ** | HSM で保護された | https://{hsm-name}.managedhsm.azure.net |
+=======
+| **資格情報コンテナー** | ソフトウェアによる保護<br/><br/>および<br/><br/>HSM で保護された (Premium SKU の場合)</li></ul> | https://{vault-name}.vault.azure.net |
+| **マネージド HSM** | HSM で保護された | https://{hsm-name}.managedhsm.azure.net |
+>>>>>>> repo_sync_working_branch
 ||||
 
 - **コンテナー** - コンテナーは、最も一般的なクラウド アプリケーションのシナリオに適した、低コスト、容易なデプロイ、マルチテナント、ゾーン回復性 (使用可能な場合)、高可用性の、キー管理ソリューションを提供します。
@@ -36,8 +41,8 @@ Azure Key Vault には、暗号化キーを格納および管理するための 
 Key Vault の暗号化キーは、JSON Web Key (JWK) オブジェクトとして表されます。 JavaScript Object Notation (JSON) および JavaScript Object Signing and Encryption (JOSE) の仕様は、次のとおりです。
 
 -   [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
--   [JSON Web Encryption (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
--   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
+-   [JSON Web Encryption (JWE)](https://datatracker.ietf.org/doc/html/draft-jones-json-web-encryption)  
+-   [JSON Web Algorithms (JWA)](https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON Web Signature (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
 基本の JWK および JWA の仕様は、Azure Key Vault および Managed HSM の実装に固有のキーの種類も有効にするように拡張されます。 
@@ -59,17 +64,17 @@ Key Vault は、RSA および EC キーをサポートしています。 マネ�
 
 |キーの種類|コンテナー (Premium SKU のみ)|マネージド HSM|
 |--|--|--|
-|**EC-HSM**:楕円曲線キー | サポートされています | サポートされています|
-|**RSA-HSM**:RSA キー|サポートされています|サポートされています|
-|**oct-HSM**: 対称キー|サポートされていません|サポートされています|
+|**EC-HSM**:楕円曲線キー | サポートされています (P-256、P-384、P-521、P-256K)| サポートされています (P-256、P-256K、P-384、P-521)|
+|**RSA-HSM**:RSA キー|サポートされています (2048 ビット、3072 ビット、4096 ビット)|サポートされています (2048 ビット、3072 ビット、4096 ビット)|
+|**oct-HSM**: 対称キー|サポートされていません|サポートされています (128 ビット、192 ビット、256 ビット)|
 |||
 
 ### <a name="software-protected-keys"></a>ソフトウェアで保護されるキー
 
 |キーの種類|コンテナー|マネージド HSM|
 |--|--|--|
-**RSA**:"ソフトウェアで保護される" RSA キー|サポートされています|サポートされていません
-**EC**:"ソフトウェアで保護される" 楕円曲線キー|サポートされています|サポートされていません
+**RSA**:"ソフトウェアで保護される" RSA キー|サポートされています (2048 ビット、3072 ビット、4096 ビット)|サポートされていません
+**EC**:"ソフトウェアで保護される" 楕円曲線キー |サポートされています (P-256、P-384、P-521、P-256K)|サポートされていません
 |||
 
 ### <a name="compliance"></a>コンプライアンス
@@ -81,9 +86,15 @@ Key Vault は、RSA および EC キーをサポートしています。 マネ�
 |マネージド HSM 内の HSM で保護されたキー|FIPS 140-2 レベル 3|
 |||
 
-
-
 キーの種類、アルゴリズム、操作、属性、タグの詳細については、「[キーの種類、アルゴリズム、および操作](about-keys-details.md)」を参照してください。
+
+## <a name="usage-scenarios"></a>使用シナリオ
+
+| 使用する場合 | 例 |
+|--------------|-------------|
+| カスタマー マネージド キーを使用した統合リソース プロバイダー向けの Azure サーバー側のデータ暗号化 | - [Azure Key Vault でのカスタマー マネージド キーを使用したサーバー側暗号化](../../security/fundamentals/encryption-models.md#server-side-encryption-using-customer-managed-keys-in-azure-key-vault) |
+| クライアント側のデータ暗号化 | - [クライアント側の暗号化と Azure Key Vault](../../storage/common/storage-client-side-encryption.md?tabs=dotnet)|
+| キーのない TLS | - キーの[クライアント ライブラリ](../general/client-libraries.md#client-libraries-per-language-and-object)を使用する |
 
 ## <a name="next-steps"></a>次のステップ
 - [Key Vault について](../general/overview.md)

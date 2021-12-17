@@ -4,7 +4,7 @@ description: Azure AD Privileged Identity Management (PIM) でアクセス レ�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e95eaa5b0e86a7470fc48edc23b2dbfb47e4b10c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d87ff7dc27dea5b25995dcfbd7f969a6d01fec56
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84743730"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669266"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review-in-privileged-identity-management"></a>Privileged Identity Management でリソース ダッシュボードを使用してアクセス レビューを実行する
 
@@ -43,4 +44,4 @@ Privileged Identity Management (PIM) でアクセス レビューを実行する
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Privileged Identity Management で Azure リソース ロールのアクセス レビューを開始する](pim-resource-roles-start-access-review.md)
+- [Privileged Identity Management で Azure リソース ロールのアクセス レビューを開始する](./pim-create-azure-ad-roles-and-resource-roles-review.md)

@@ -1,25 +1,26 @@
 ---
-title: 'Azure VPN Gateway: ゲートウェイを削除する: PowerShell'
-description: Resource Manager デプロイ モデルで、PowerShell を使用して仮想ネットワーク ゲートウェイを削除します。
+title: '仮想ネットワーク ゲートウェイを削除する: PowerShell'
+titleSuffix: Azure VPN Gateway
+description: PowerShell を使用して仮想ネットワーク ゲートウェイを削除する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 09/03/2020
+ms.date: 04/29/2021
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 48e0998719ea19c0b360b50d8c9171d2b448ad19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fcce91b5914318157ca4263504d46c992294d153
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89440764"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729541"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
->
 >
 
 VPN ゲートウェイ構成の仮想ネットワーク ゲートウェイを削除する際に利用できる方法はいくつかあります。
@@ -64,7 +65,7 @@ VNet 名: VNet1<br>
 リソース グループ名: RG1<br>
 仮想ネットワーク ゲートウェイ名: GW1<br>
 
-次の手順は、Resource Manager デプロイ モデルに該当します。
+次の手順は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に該当します。
 
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. 削除する仮想ネットワーク ゲートウェイを取得します。
 
@@ -147,7 +148,7 @@ VNet 名: VNet1<br>
 リソース グループ名: RG1<br>
 仮想ネットワーク ゲートウェイ名: GW1<br>
 
-次の手順は、Resource Manager デプロイ モデルに該当します。
+次の手順は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に該当します。
 
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. 削除する仮想ネットワーク ゲートウェイを取得します。
 
@@ -235,7 +236,7 @@ VNet 名: VNet1<br>
 リソース グループ名: RG1<br>
 仮想ネットワーク ゲートウェイ名: GW1<br>
 
-次の手順は、Resource Manager デプロイ モデルに該当します。
+次の手順は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に該当します。
 
 
 >[!NOTE]
@@ -288,7 +289,7 @@ Set-AzVirtualNetwork -VirtualNetwork $GWSub
 
 ## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="delete"></a>リソース グループを削除して VPN ゲートウェイを削除する
 
-リソース グループにどのリソースも保持する必要がなく、単に最初からやり直したい場合は、リソース グループ全体を削除できます。 すべてを削除するには、これが簡単な方法です。 次の手順は、Resource Manager デプロイ モデルに該当します。
+リソース グループにどのリソースも保持する必要がなく、単に最初からやり直したい場合は、リソース グループ全体を削除できます。 すべてを削除するには、これが簡単な方法です。 次の手順は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)にのみ該当します。
 
 ### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1. サブスクリプションのすべてのリソース グループの一覧を取得します。
 

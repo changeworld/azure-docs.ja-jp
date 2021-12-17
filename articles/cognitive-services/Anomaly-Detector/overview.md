@@ -12,22 +12,20 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d63399d0f492f85a4a2d57a595a6d8ef5b606d92
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 75a040b8c2b480d0c82ef2cab6a953d230f6ffb7
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599521"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371108"
 ---
-# <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+# <a name="what-is-the-anomaly-detector-univariate-api"></a>Anomaly Detector 一変量 API とは
 
 Anomaly Detector API では、時系列データを監視し、その中の異常を検出できます。機械学習の知識は必要ありません。 Anomaly Detector API のアルゴリズムでは、産業、シナリオ、データ量に関係なく、データに最適なモデルが自動的に特定され、適用されます。 この API では、時系列データを使用し、異常検出の境界、予想される値、異常となるデータ ポイントが判断されます。
 
 ![サービス要求のパターンの変化を検出する](./media/anomaly_detection2.png)
 
-Anomaly Detector の使用にあたり、機械学習の経験は必要ありません。RESTful API によってサービスをアプリケーションやプロセスに簡単に統合できます。
+Anomaly Detector の使用にあたり、機械学習の経験は必要ありません。REST API によってサービスをアプリケーションやプロセスに簡単に統合できます。
 
 このドキュメントには、次のような記事が記載されています。
 * [クイックスタート](./Quickstarts/client-libraries.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
@@ -56,16 +54,7 @@ Anomaly Detector を利用すると、時系列データ全体で異常を自動
 
 Anomaly Detector API を呼び出す方法については、こちらの [ Notebook](https://aka.ms/adNotebook) をお試しください。 この Jupyter Notebook では、API 要求を送信して結果を視覚化する方法について説明しています。
 
-Notebook を実行するには、次の手順を完了します。
-
-1. 有効な Anomaly Detector API サブスクリプション キーと API エンドポイントを取得します。 下のセクションに新規登録方法があります。
-1. 右上隅でサインインし、[複製] を選択します。
-1. 複製操作を完了する前に、ダイアログ ボックスの [パブリック] オプションをオフにします。そうしないと、すべてのサブスクリプション キーを含め、ノートブックはパブリックになります。
-1. **[Run on free compute]\(無料のコンピューティングで実行\)** を選択します
-1. いずれかのノートブックを選択します。
-1. 有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加します。
-1. `endpoint` 変数を自分のエンドポイントに変更します。 例: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. 上部のメニュー バーで **[セル]** 、 **[すべてを実行]** の順に選択します。
+Notebook を実行するには、有効な Anomaly Detector API **サブスクリプション キー** と **API エンドポイント** を取得する必要があります。 ノートブックで、有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加し、`endpoint` 変数をエンドポイントに変更します。
 
 ## <a name="workflow"></a>ワークフロー
 
@@ -108,7 +97,6 @@ Microsoft によって開発された SR-CNN アルゴリズムの詳細につ�
 ## <a name="join-the-anomaly-detector-community"></a>Anomaly Detector コミュニティに参加する
 
 * [Microsoft Teams 上の Anomaly Detector Advisors グループ](https://aka.ms/AdAdvisorsJoin)に参加する
-* [ユーザーが生成した厳選されたコンテンツ](user-generated-content.md)を見る
 
 ## <a name="next-steps"></a>次のステップ
 

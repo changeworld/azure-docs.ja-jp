@@ -2,17 +2,17 @@
 title: CLI を使用して Internet Analyzer テストを作成する | Microsoft Docs
 description: この記事では、Azure CLI を使用して最初の Internet Analyzer テストを作成する方法について説明します。
 services: internet-analyzer
-author: diego-perez-botero
+author: KumudD
 ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
-ms.author: mebeatty
-ms.openlocfilehash: 46caae53ed81de335c2b9d5ddbd3fd7f89424fdd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.author: kumud
+ms.openlocfilehash: 245a791ffb99c5ba3e4ff7829bd507e8cc2bcdf8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780417"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455125"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>CLI を使用した Internet Analyzer テストの作成 (プレビュー)
 
@@ -132,6 +132,6 @@ Internet Analyzer CLI では、次の種類のリソースが公開されます�
 
 ## <a name="next-steps"></a>次のステップ
 
-* サポートされているコマンドと使用例の完全な一覧については、[Internet Analyzer の CLI リファレンス](/cli/azure/ext/internet-analyzer/internet-analyzer)を参照してください。
+* サポートされているコマンドと使用例の完全な一覧については、[Internet Analyzer の CLI リファレンス](/cli/azure/internet-analyzer)を参照してください。
 * [Internet Analyzer の FAQ](internet-analyzer-faq.md) を読む。
 * [Internet Analyzer クライアント](internet-analyzer-embed-client.md)の埋め込みと[カスタム エンドポイント](internet-analyzer-custom-endpoint.md)の作成の詳細を確認する。

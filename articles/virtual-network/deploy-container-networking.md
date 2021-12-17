@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b95b3cfdf8fea6e31015d945566803569b4ba064
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64aa913f6c9c5041356f193dcf0c9945deb852fb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222923"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257786"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Azure Virtual Network コンテナー ネットワーク インターフェイス プラグインのデプロイ
 
@@ -95,9 +95,9 @@ Kubernetes クラスター内のすべての Azure 仮想マシンにプラグ�
 1. [プラグインをダウンロードしてインストールします](#download-and-install-the-plug-in)。
 2. ポッドへの IP アドレスの割り当て元となるすべての仮想マシンで、仮想ネットワークの IP アドレス プールを事前に割り当てます。 すべての Azure 仮想マシンには、ネットワーク インターフェイスごとにプライマリ仮想ネットワークのプライベート IP アドレスが付属しています。 ポッド用の IP アドレスのプールは、次のいずれかのオプションを使用して、仮想マシンのネットワーク インターフェイス上にセカンダリ アドレス (*ipconfigs*) として追加されます。
 
-   - **CLI**: [Azure CLI を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**: [PowerShell を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-powershell.md)
-   - **ポータル**: [Azure portal を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-portal.md)
+   - **CLI**: [Azure CLI を使用して複数の IP アドレスを割り当てる](./ip-services/virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**: [PowerShell を使用して複数の IP アドレスを割り当てる](./ip-services/virtual-network-multiple-ip-addresses-powershell.md)
+   - **ポータル**: [Azure portal を使用して複数の IP アドレスを割り当てる](./ip-services/virtual-network-multiple-ip-addresses-portal.md)
    - **Azure Resource Manager テンプレート**: [テンプレートを使用して複数の IP アドレスを割り当てる](./template-samples.md)
 
    仮想マシンでの起動が想定されるすべてのポッドに十分な IP アドレスを確実に追加します。

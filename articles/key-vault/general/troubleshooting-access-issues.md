@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: c5fab8b856ff9c82a0de887dc9c322dbf541348b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4d82e0193d891f423245ce2743ad34ac7bcf5d1
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791409"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856489"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Key Vault のアクセス ポリシーの問題のトラブルシューティング
 
@@ -39,7 +39,12 @@ ms.locfileid: "98791409"
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>キー コンテナー オブジェクトごとにアクセス制御を割り当てるにはどうすればよいですか? 
 
-シークレット、キー、または証明書ごとのアクセス制御機能の提供状況が通知されます。詳細については、[こちら](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/32213176-per-secret-key-certificate-access-control)をご覧ください。
+Key Vault RBAC アクセス許可モデルでは、オブジェクトごとにアクセス許可を付与できます。 個々のキー、シークレット、および証明書のアクセス許可は、次のように特定のシナリオにのみ使用するようにします。
+
+-   レイヤー間でアクセス制御を分離する必要があるマルチレイヤー アプリケーション
+
+-   複数のアプリケーション間での個々のシークレットの共有
+
 
 ### <a name="how-can-i-provide-key-vault-authenticate-using-access-control-policy"></a>アクセス制御ポリシーを使用して Key Vault の認証を提供するにはどうすればよいですか?
 

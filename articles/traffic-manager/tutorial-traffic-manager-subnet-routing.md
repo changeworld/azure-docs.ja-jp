@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2021
 ms.author: duau
-ms.openlocfilehash: 9b916f9942b0459b41d98b952fad072ae48318b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d97ebebe19235a54084ec551f3bbcb9e55e3022
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505437"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425628"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
 
@@ -67,9 +67,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
    - **[インスタンスの詳細]**  >  **[仮想マシン名]** : 「*myIISVMEastUS*」と入力します。
    - **[インスタンスの詳細]**  >  **[リージョン]** : **[米国東部]** を選択します。
    - **[管理者アカウント]**  >  **[ユーザー名]** : 任意のユーザー名を入力します。
-   - **[管理者アカウント]**  >  **[パスワード]** : 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
+   - **[管理者アカウント]**  >  **[パスワード]** : 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。
    - **[受信ポートの規則]**  >  **[パブリック受信ポート]** : **[選択したポートを許可する]** を選択します。
-   - **[受信ポートの規則]**  >  **[受信ポートの選択]** : プルダウン ボックスから **[RDP]** と **[HTTP]** を選択します。
+   - **[受信ポートの規則]**  >  **[受信ポートの選択]** virtual-machines/windows/faq.yml: プルダウン ボックスから **[RDP]** と **[HTTP]** を選択します。
 
 3. **[管理]** タブを選択します。または、 **[次へ: ディスク]** を選択してから **[次へ: ネットワーク]** を選択し、 **[次へ: 管理]** を選択します。 **[監視]** で **[ブート診断]** を **[オフ]** に設定します。
 4. **[Review + create]\(レビュー + 作成\)** を選択します。
@@ -135,7 +135,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
    - **[インスタンスの詳細]**  >  **[仮想マシン名]** : 「*myVMEastUS*」と入力します。
    - **[インスタンスの詳細]**  >  **[リージョン]** : **[米国東部]** を選択します。
    - **[管理者アカウント]**  >  **[ユーザー名]** : 任意のユーザー名を入力します。
-   - **[管理者アカウント]**  >  **[パスワード]** : 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
+   - **[管理者アカウント]**  >  **[パスワード]** : 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。
    - **[受信ポートの規則]**  >  **[パブリック受信ポート]** : **[選択したポートを許可する]** を選択します。
    - **[受信ポートの規則]**  >  **[受信ポートの選択]** : プルダウン ボックスから **[RDP]** を選択します。
 
@@ -175,9 +175,9 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     | 名前           | myInternalWebSiteEndpoint                                        |
     | ターゲット リソースの種類           | パブリック IP アドレス                          |
     | ターゲット リソース          | **パブリック IP アドレスを選択** して、同じサブスクリプションでパブリック IP アドレスを持つリソースの一覧を表示します。 **[リソース]** で、*myIISVMEastUS-ip* という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
-    |  サブネット ルーティングの設定    |   *myVMEastUS* テスト VM の IP アドレスを追加します。 この VM から送信されたすべてのユーザー クエリは、*myInternalWebSiteEndpoint* に転送されます。    |
+    |  サブネット ルーティングの設定    |   *myVMEastUS* テスト VM で使用される再帰 DNS リゾルバーの IP アドレスを追加します。 この VM から送信されたすべてのユーザー クエリは、*myInternalWebSiteEndpoint* に転送されます。    |
 
-4. 手順 2. と 3. を繰り返して、*myIISVMWestEurope* という名前の IIS サーバー VM に関連付けられたパブリック IP アドレス *myIISVMWestEurope-ip* 用の *myProdWebsiteEndpoint* という名前の別のエンドポイントを追加します。 **[Subnet routing settings]\(サブネット ルーティングの設定\)** で、テスト VM *myVMWestEurope* の IP アドレスを追加します。 このテスト VM からのすべてのユーザー クエリは、エンドポイント *myProdWebsiteEndpoint* にルーティングされます。
+4. 手順 2. と 3. を繰り返して、*myIISVMWestEurope* という名前の IIS サーバー VM に関連付けられたパブリック IP アドレス *myIISVMWestEurope-ip* 用の *myProdWebsiteEndpoint* という名前の別のエンドポイントを追加します。 **[Subnet routing settings]\(サブネット ルーティングの設定\)** で、テスト VM *myVMWestEurope* が使用する再帰 DNS リゾルバーの IP アドレスを追加します。 このテスト VM からの DNS リゾルバーを経由するすべてのユーザー クエリは、エンドポイント *myProdWebsiteEndpoint* にルーティングされます。
 5. 両方のエンドポイントが追加されると、 **[Traffic Manager プロファイル]** に表示され、監視ステータスが **[オンライン]** になります。
 
 ## <a name="test-traffic-manager-profile"></a>Traffic Manager プロファイルのテスト

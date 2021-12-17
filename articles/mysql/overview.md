@@ -7,24 +7,27 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: 20b54afdfbb5641def921ffc17b3c38f6650acab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e93432347de7df3b2743143c68078b3dfc853848
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101736221"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894357"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Azure Database for MySQL とは -
 
-Azure Database for MySQL は、Microsoft クラウドにおける、(GPLv2 ライセンスで利用可能な) [MySQL Community Edition](https://www.mysql.com/products/community/) のデータベース エンジン バージョン 5.6、5.7、および 8.0 をベースとしたリレーショナル データベース サービスです。 Azure Database for MySQL には、次の特長があります。
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
-- 組み込みの高可用性。
+Azure Database for MySQL は、Microsoft クラウドにおける、(GPLv2 ライセンスで利用可能な) [MySQL Community Edition](https://www.mysql.com/products/community/) のデータベース エンジン バージョン 5.6 (廃止)、5.7、および 8.0 をベースとしたリレーショナル データベース サービスです。 Azure Database for MySQL には、次の特長があります。
+
+- ゾーン冗長と同一ゾーンの高可用性。
+- スケジュールされたメンテナンス時間を選択できる最大制御。
 - 自動バックアップとポイントインタイム リストアを使用したデータ保護 (最大 35 日間)。
-- 基盤となるハードウェア、オペレーティング システム、データベース エンジンのサービスをセキュリティで保護し、最新の状態に保つための自動メンテナンス。
+- 基盤となるハードウェア、オペレーティング システム、データベース エンジンのサービスをセキュリティで保護し、最新の状態に保つための自動修正とメンテナンス。
 - 包括的な従量課金制の料金を使用した、予測可能なパフォーマンス。
 - 秒単位のエラスティック スケーリング。
-- サーバーを停止/起動する機能が備わったコスト最適化制御。 
-- 保存および移動中の機密データを保護するエンタープライズ レベルのセキュリティと業界をリードするコンプライアンス。
+- 低コストのバースト可能な SKU と、サーバーを停止/起動する機能が備わったコスト最適化制御。
+- 保存中および移動中の機密データを保護するエンタープライズ レベルのセキュリティ、業界をリードするコンプライアンス、およびプライバシー。
 - 大規模なデプロイの管理と監視を容易にする監視と自動化。
 - 業界をリードするサポート エクスペリエンス。
 
@@ -35,29 +38,31 @@ Azure Database for MySQL は、Microsoft クラウドにおける、(GPLv2 ラ�
 ## <a name="deployment-models"></a>デプロイ モデル
 
 MySQL コミュニティ エディションを搭載した Azure Database for MySQL は、次の 2 つのデプロイ モードで利用できます。
+- フレキシブル サーバー
 - シングル サーバー 
-- フレキシブル サーバー (プレビュー)
-  
-### <a name="azure-database-for-mysql---single-server"></a>Azure Database for MySQL - 単一サーバー
 
-Azure Database for MySQL 単一サーバーは、最小限の要件でデータベースをカスタマイズできる、完全に管理されたデータベースサービスです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、最小限のユーザー構成と制御によるセキュリティなど、データベース管理機能のほとんどを処理するよう設計されています。 このアーキテクチャは、単一の可用性ゾーンで 99.99% の可用性を備えた組み込みの高可用性を実現するよう最適化されています。 MySQL 5.6、5.7、および 8.0 のコミュニティ バージョンをサポートしています。 このサービスは現時点で一般提供されており、さまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
+### <a name="azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバー
 
-Single Server デプロイ オプションでは、次の 3 つの価格レベルが提供されます。Basic、汎用、メモリ最適化。 使用しているデータベースのワークロードをサポートするために、各レベルでは異なるリソース機能が提供されています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳細については、[価格レベル](concepts-pricing-tiers.md)に関するページを参照してください。
+Azure Database for MySQL フレキシブル サーバーは、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性のために設計された、運用環境対応のフル マネージド データベース サービスです。 フレキシブル サーバー アーキテクチャにより、ユーザーは単一の可用性ゾーン内および複数の可用性ゾーンにまたがる高可用性を選択できます。 また、フレキシブル サーバーでは、より優れたコスト最適化制御によって、サーバーを停止/起動する機能や、完全なコンピューティング能力を継続的には必要としないワークロードに最適な、バースト可能なコンピューティング層を実現できます。 フレキシブル サーバーでは、予約インスタンスもサポートされ、最大 63% のコストを削減でき、コンピューティング容量要件が予測できる運用環境ワークロードに最適です。 サービスでは、MySQL 5.7 と 8.0 のコミュニティ バージョンがサポートされています。 このサービスは現時点で一般提供されており、さまざまな [Azure リージョン](flexible-server/overview.md#azure-regions)で利用できます。
 
-単一サーバーは、修正プログラムの適用スケジュールや MySQL のカスタム構成の設定を細かく制御する必要がない、自動化された修正プログラムの適用を処理するように設計された、クラウド ネイティブ アプリケーションに最適です。 
+フレキシブル サーバー デプロイ オプションには、Burstable、General Purpose、Memory Optimized という 3 つのコンピューティング レベルが用意されています。 各レベルには、データベース ワークロードをサポートする異なるコンピューティングおよびメモリ容量が用意されています。 月数ドルでバースト可能レベルで最初のアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳細については、[コンピューティングとストレージ](flexible-server/concepts-compute-storage.md)に関するページを参照してください。
 
-単一サーバー デプロイ モードの詳細については、[単一サーバーの概要](single-server-overview.md)を参照してください。
+フレキシブル サーバーは、以下に適しています
+- バックアップ、高可用性、セキュリティ、監視などの機能の簡単なデプロイ、簡素化されたスケーリング、データベース管理の低いオーバーヘッド
+- 制御とカスタマイズに優れた、MySQL のコミュニティ バージョンを必要とするアプリケーション開発
+- 同じゾーン、ゾーン冗長による高可用性、管理されたメンテナンス期間のある運用環境ワークロード
+- 簡略化された開発エクスペリエンス 
+- エンタープライズ グレードのセキュリティ
 
-### <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
+フレキシブル サーバー デプロイ モードの詳細については、[フレキシブル サーバーの概要](flexible-server/overview.md)を参照してください。 フレキシブル サーバーの最新情報については、[Azure Database for MySQL - フレキシブル サーバーの新機能](flexible-server/whats-new.md)に関するページを参照してください。
 
-Azure Database for MySQL フレキシブル サーバーは、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。 一般に、サービスでは、ユーザーの要件に基づいて、より高い柔軟性とカスタマイズが提供されます。 フレキシブル サーバー アーキテクチャにより、ユーザーは単一の可用性ゾーン内および複数の可用性ゾーンにまたがる高可用性を選択できます。 また、フレキシブル サーバーでは、より優れたコスト最適化制御によって、サーバーを停止/起動する機能や、完全なコンピューティング能力を継続的には必要としないワークロードに最適な、バースト可能なコンピューティング層を実現できます。 サービスでは、MySQL 5.7 と 8.0 のコミュニティ バージョンがサポートされています。 このサービスは現在パブリック プレビュー段階にあり、現時点ではさまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
+### <a name="azure-database-for-mysql---single-server"></a>Azure Database for MySQL - 単一サーバー 
 
-フレキシブル サーバーは、以下の場合に最適です。 
-- より優れた制御とカスタマイズが必要なアプリケーション開発。
-- ゾーン冗長の高可用性
-- マネージド メンテナンス期間
+Azure Database for MySQL 単一サーバーは、最小限のカスタマイズ用に設計されたフル マネージド データベース サービスです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、最小限のユーザー構成と制御によるセキュリティなど、データベース管理機能のほとんどを処理するよう設計されています。 このアーキテクチャは、単一の可用性ゾーンで 99.99% の可用性を備えた組み込みの高可用性を実現するよう最適化されています。 MySQL 5.6 (廃止)、5.7、8.0 のコミュニティ バージョンをサポートしています。 このサービスは現時点で一般提供されており、さまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
 
-フレキシブル サーバー デプロイ モードの詳細については、[フレキシブル サーバーの概要](flexible-server/overview.md)を参照してください。
+単一サーバーは、**既に単一サーバーを活用している既存のアプリケーションにのみ** 最適です。 新たに開発または移行する場合は、デプロイ オプションとしてフレキシブル サーバーが推奨されます。 フレキシブル サーバーと単一サーバーのデプロイ オプションの違いについては、[最適なデプロイ オプションの選択](select-right-deployment-type.md)に関するドキュメントを参照してください。
+
+単一サーバー デプロイ モードの詳細については、[単一サーバーの概要](single-server-overview.md)を参照してください。 フレキシブル サーバーの最新情報については、[Azure Database for MySQL - 単一サーバーの新機能](single-server-whats-new.md)に関するページを参照してください。
 
 ## <a name="contacts"></a>連絡先
 Azure Database for MySQL についての質問や提案は、Azure Database for MySQL チームにメール ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)) でお送りください。 このメール アドレスはテクニカル サポートのエイリアスではありません。
@@ -66,7 +71,7 @@ Azure Database for MySQL についての質問や提案は、Azure Database for 
 
 - Azure サポートに問い合わせる場合は、[Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 - アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
-- フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) でエントリを作成します。
+- フィードバックを提供したり、新しい機能を要求したりするには、<bpt id="p1">[</bpt>UserVoice<ept id="p1">](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)</ept> でエントリを作成します。
 
 ## <a name="next-steps"></a>次のステップ
 

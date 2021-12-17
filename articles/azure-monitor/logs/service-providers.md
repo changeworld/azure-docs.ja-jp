@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 5f1421da10c4748dd78e4c6790568285fa646979
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 076574173f0bfd4daff4845ab354e730ec0844d9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047113"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233265"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>サービス プロバイダー向けの Azure Monitor ログ
 
@@ -35,11 +35,11 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 サービス プロバイダーの管理者は、次の 2 つの方法で、顧客のテナントにある Log Analytics ワークスペースにアクセスできます。
 
 - 顧客は、サービス プロバイダーから個々のユーザーを [Azure Active Directory のゲスト ユーザー (B2B)](../../active-directory/external-identities/what-is-b2b.md) として追加できます。 サービス プロバイダーの管理者は、これらのワークスペースにアクセスするために、Azure portal 内の各顧客のディレクトリにサインインする必要があります。 そのためには、顧客がサービス プロバイダーの管理者ごとに個別のアクセスを管理する必要もあります。
-- スケーラビリティと柔軟性を高めるために、サービス プロバイダーは [Azure Lighthouse](../../lighthouse/overview.md) の [Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)機能を使用して、顧客のテナントにアクセスできます。 この方法では、サービス プロバイダーの管理者はサービス プロバイダーのテナント内の Azure AD ユーザー グループに含まれます。このグループには、各顧客のオンボード プロセス中にアクセス権が付与されます。 これらの管理者はその後、各顧客のテナントに個別にログインするのではなく、独自のサービス プロバイダーのテナント内から各顧客のワークスペースにアクセスできます。 この方法で顧客の Log Analytics ワークスペースのリソースにアクセスすると、顧客側で必要な作業が減り、同じサービス プロバイダーで管理されている複数の顧客を対象にしたデータの収集および分析が [Azure Monitor ブック](../visualize/workbooks-overview.md)などのツールで簡単に行えるようになります。 詳細については、[顧客のリソースの大規模な監視](../../lighthouse/how-to/monitor-at-scale.md)に関する記事をご覧ください。
+- スケーラビリティと柔軟性を高めるために、サービス プロバイダーは [Azure Lighthouse](../../lighthouse/overview.md) を使用して、顧客のテナントにアクセスできます。 この方法では、サービス プロバイダーの管理者はサービス プロバイダーのテナント内の Azure AD ユーザー グループに含まれます。このグループには、各顧客のオンボード プロセス中にアクセス権が付与されます。 これらの管理者はその後、各顧客のテナントに個別にログインするのではなく、独自のサービス プロバイダーのテナント内から各顧客のワークスペースにアクセスできます。 この方法で顧客の Log Analytics ワークスペースのリソースにアクセスすると、顧客側で必要な作業が減り、同じサービス プロバイダーで管理されている複数の顧客を対象にしたデータの収集および分析が [Azure Monitor ブック](../visualize/workbooks-overview.md)などのツールで簡単に行えるようになります。 詳細については、[顧客のリソースの大規模な監視](../../lighthouse/how-to/monitor-at-scale.md)に関する記事をご覧ください。
 
 分散アーキテクチャの利点は次のとおりです。
 
-* 顧客は [Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)を通じて特定のレベルのアクセス許可を承認することも、独自の [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使用してログへのアクセスを管理することもできます。
+* 顧客は [Azure の委任されたリソース管理](../../lighthouse/concepts/architecture.md)を通じて特定のレベルのアクセス許可を承認することも、独自の [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使用してログへのアクセスを管理することもできます。
 * エージェントベースの VM データだけでなく、あらゆる種類のリソースからログを収集できます。 たとえば、Azure 監査ログ です。
 * 保有期間やデータ キャッピングなど、顧客ごとに異なるワークスペース設定が可能です。
 * 規制やコンプライアンスについて顧客間で分離します。
@@ -76,7 +76,7 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 1. 中央ワークスペース:サービス プロバイダーでは、そのテナント内にワークスペースを作成し、[クエリ API](https://dev.loganalytics.io/) を[データ収集 API](../logs/data-collector-api.md) と共に利用して、さまざまなワークスペースからこの中央の場所にデータを移動させるスクリプトを使用できます。 スクリプト以外のもう 1 つのオプションは [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) を使用するというものです。
 
-2. 中央の場所としての Power BI:Power BI は、さまざまなワークスペースで Log Analytics ワークスペースと [Power BI](../visualize/powerbi.md) との統合を利用してデータをエクスポートするときに、中央の場所として機能します。
+2. 中央の場所としての Power BI:Power BI は、さまざまなワークスペースで Log Analytics ワークスペースと [Power BI](./log-powerbi.md) との統合を利用してデータをエクスポートするときに、中央の場所として機能します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -86,6 +86,6 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 * [アラート](../alerts/alerts-overview.md) を使用して既存のシステムと統合する
 
-* [Power BI](../visualize/powerbi.md) を使用して概要レポートを作成する
+* [Power BI](./log-powerbi.md) を使用して概要レポートを作成する
 
-* [Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)に顧客をオンボードする
+* [Azure の委任されたリソース管理](../../lighthouse/concepts/architecture.md)に顧客をオンボードする

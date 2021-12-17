@@ -1,24 +1,26 @@
 ---
 title: Azure Databricks Delta Lake との間でデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Databricks Delta Lake との間で双方向にデータをコピーする方法について説明します。
-ms.author: jingwang
-author: linda33wj
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics パイプラインでコピー アクティビティを使用して、Azure Databricks Delta Lake との間で双方向にデータをコピーする方法について説明します。
+ms.author: susabat
+author: ssabat
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/29/2021
-ms.openlocfilehash: fcf533ad95e2567e62d44d6997752df6f3145ecb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: 970dc9c2b69056fbb85f120ad141fbba73d18471
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726789"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811913"
 ---
-# <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Databricks Delta Lake をコピー先またはコピー元としてデータをコピーする
+# <a name="copy-data-to-and-from-azure-databricks-delta-lake-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して Azure Databricks Delta Lake との間でデータをコピーします
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Databricks Delta Lake をコピー先またはコピー元としてデータをコピーする方法について説明します。 コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」という記事を基に作成されています。
+この記事では、Azure Data Factory および Azure Synapse のコピー アクティビティを使用して、Azure Databricks Delta Lake をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティ](copy-activity-overview.md)の記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -27,7 +29,7 @@ ms.locfileid: "105726789"
 - [サポートされるソース/シンク マトリックス](copy-activity-overview.md)で表の[コピー アクティビティ](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 
-一般に、Azure Data Factory は、さまざまなニーズを満たすために、次の機能を備えた Delta Lake をサポートしています。
+一般に、このサービスは、さまざまなニーズを満たすために、次の機能を備えた Delta Lake をサポートしています。
 
 - コピー アクティビティでは、サポートされている任意のソース データ ストアから Azure Databricks Delta Lake テーブル、および Delta Lake テーブルからサポートされている任意のシンク データ ストアにデータをコピーするために、Azure Databricks Delta Lake コネクタがサポートされています。 Databricks クラスターを活用してデータ移動を実行します。詳細については、「[前提条件](#prerequisites)」セクションを参照してください。
 - [マッピング データ フロー](concepts-data-flow-overview.md)では、ソースおよびシンクとして Azure Storage の汎用[差分形式](format-delta.md)がサポートされています。これにより、コーディング不要の ETL の差分ファイルの読み取りと書き込みが可能になり、マネージド Azure Integration Runtime で実行されます。
@@ -37,8 +39,8 @@ ms.locfileid: "105726789"
 
 この Azure Databricks Delta Lake コネクタを使用するには、Azure Databricks でクラスターを設定する必要があります。
 
-- Delta Lake にデータをコピーする場合、コピー アクティビティは Azure Databricks クラスターを呼び出して、Azure Storage からデータを読み取ります。これは元のソースまたはステージング領域で、Data Factory が組み込みのステージング コピーを介してソース データを最初に書き込みます。 詳細については、「[シンクとしての Delta Lake](#delta-lake-as-sink)」を参照してください。
-- 同様に、Delta Lake からデータをコピーする場合、コピー アクティビティは Azure Databricks クラスターを呼び出して、Azure Storage にデータを書き込みます。これは元のシンクまたはステージング領域で、Data Factory が引き続き組み込みのステージング コピーを介して最終的なシンクにデータを書き込みます。 詳細については、「[ソースとしての Delta Lake](#delta-lake-as-source)」を参照してください。
+- Delta Lake にデータをコピーする場合、コピー アクティビティは Azure Databricks クラスターを呼び出して、Azure Storage からデータを読み取ります。これは元のソースまたはステージング領域で、サービスが組み込みのステージング コピーを介してソース データを最初に書き込みます。 詳細については、「[シンクとしての Delta Lake](#delta-lake-as-sink)」を参照してください。
+- 同様に、Delta Lake からデータをコピーする場合、コピー アクティビティは Azure Databricks クラスターを呼び出して、Azure Storage にデータを書き込みます。これは元のシンクまたはステージング領域で、サービスが引き続き組み込みのステージング コピーを介して最終的なシンクにデータを書き込みます。 詳細については、「[ソースとしての Delta Lake](#delta-lake-as-source)」を参照してください。
 
 Databricks クラスターは、Azure Blob または Azure Data Lake Storage Gen2 アカウントにアクセスできる必要があります。これは、ソース/シンク/ステージングに使用されるストレージ コンテナー/ファイル システムと、Data Lake テーブルを書き込むコンテナー/ファイル システムの両方です。
 
@@ -46,7 +48,7 @@ Databricks クラスターは、Azure Blob または Azure Data Lake Storage Gen
 
 - **Azure Blob Storage** を使用するには、Apache Spark 構成の一部として、Databricks クラスターで **ストレージ アカウント アクセス キー** または **SAS トークン** を構成します。 「[RDD API を使用した Azure Blob Storage へのアクセス](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)」の手順に従います。
 
-コピー アクティビティの実行中、構成したクラスターが終了した場合は、Data Factory によって自動的に開始されます。 Data Factory オーサリング UI を使用してパイプラインを作成する場合、データのプレビューなどの操作にはライブ クラスターが必要ですが、Data Factory によってクラスターが起動されることはありません。
+コピー アクティビティの実行中、構成したクラスターが終了した場合は、自動的に開始されます。 オーサリング UI を使用してパイプラインを作成する場合、データのプレビューなどの操作にはライブ クラスターが必要ですが、クラスターが起動されることはありません。
 
 #### <a name="specify-the-cluster-configuration"></a>クラスター構成の指定
 
@@ -67,9 +69,33 @@ Databricks クラスターは、Azure Blob または Azure Data Lake Storage Gen
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-次のセクションでは、Azure Databricks Delta Lake コネクタに固有の Data Factory エンティティを定義するプロパティについて詳しく説明します。
+## <a name="create-a-linked-service-to-azure-databricks-delta-lake-using-ui"></a>UI を使って Azure Databricks Delta Lake へのリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Azure Databricks Delta Lake へのリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. デルタを検索し、Azure Databricks Delta Lake コネクタを選択します。
+
+    :::image type="content" source="media/connector-azure-databricks-delta-lake/azure-databricks-delta-lake-connector.png" alt-text="Azure Databricks Delta Lake connector のスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-azure-databricks-delta-lake/configure-azure-databricks-delta-lake-linked-service.png" alt-text="Azure Databricks デルタ Lake のリンクされたサービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+次のセクションでは、Azure Databricks Delta Lake コネクタに固有のエンティティを定義するプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -80,7 +106,7 @@ Azure Databricks Delta Lake のリンクされたサービスに対して、次�
 | type        | type プロパティは、**AzureDatabricksDeltaLake** に設定する必要があります。 | はい      |
 | domain      | Azure Databricks ワークスペースの URL を指定します (例: `https://adb-xxxxxxxxx.xx.azuredatabricks.net`)。 |          |
 | clusterId   | 既存のクラスターのクラスター ID を指定します。 これは作成済みの対話型クラスターでなければなりません。 <br>対話型クラスターのクラスター ID は Databricks ワークスペース -> クラスター -> 対話型クラスター名 -> 構成 -> タグで見つけることができます。 [詳細については、こちらを参照してください](/azure/databricks/clusters/configure#cluster-tags)。 |          |
-| accessToken | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](/azure/databricks/dev-tools/api/latest/authentication#generate-token)を参照してください。 |          |
+| accessToken | サービスの Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](/azure/databricks/dev-tools/api/latest/authentication#generate-token)を参照してください。 |          |
 | connectVia  | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ       |
 
 **例:**
@@ -154,7 +180,7 @@ Azure Databricks Delta Lake からデータをコピーするために、コピ�
 
 #### <a name="direct-copy-from-delta-lake"></a>Delta Lake から直接コピーする
 
-シンクのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、Azure Databricks Delta テーブルからシンクに直接コピーできます。 Data Factory によって設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
+シンクのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、Azure Databricks Delta テーブルからシンクに直接コピーできます。 設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
 - **シンクのリンクされたサービス** は、[Azure Blob Storage](connector-azure-blob-storage.md) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) です。 アカウントの資格情報は Azure Databricks クラスター構成で事前に構成されている必要があります。詳細については、「[前提条件](#prerequisites)」を参照してください。
 
@@ -205,7 +231,7 @@ Azure Databricks Delta Lake からデータをコピーするために、コピ�
 
 #### <a name="staged-copy-from-delta-lake"></a>Delta Lake からステージング コピーする
 
-シンクのデータ ストアまたは形式が、前のセクションで説明した直接コピーの基準に適合しない場合は、中間の Azure Storage インスタンスを使用して組み込みのステージング コピーを有効にします。 ステージング コピー機能はスループットも優れています。 Data Factory が、Azure Databricks Delta Lake のデータをステージング ストレージにエクスポートしてから、データをシンクにコピーし、最後にステージング ストレージの一時データをクリーンアップします。 ステージングを使用したデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
+シンクのデータ ストアまたは形式が、前のセクションで説明した直接コピーの基準に適合しない場合は、中間の Azure Storage インスタンスを使用して組み込みのステージング コピーを有効にします。 ステージング コピー機能はスループットも優れています。 サービスが、Azure Databricks Delta Lake のデータをステージング ストレージにエクスポートしてから、データをシンクにコピーし、最後にステージング ストレージの一時データをクリーンアップします。 ステージングを使用したデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
 
 この機能を使うには、中間ステージングとしてストレージ アカウントを参照する [Azure Blob Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)または [Azure Data Lake Storage Gen2 のリンクされたサービス](connector-azure-data-lake-storage.md#linked-service-properties)を作成します。 次に、コピー アクティビティに `enableStaging` プロパティと `stagingSettings` プロパティを指定します。
 
@@ -259,7 +285,7 @@ Azure Databricks Delta Lake にデータをコピーするために、コピー 
 | プロパティ      | 説明                                                  | 必須 |
 | :------------ | :----------------------------------------------------------- | :------- |
 | type          | コピー アクティビティのシンクの type プロパティ。**AzureDatabricksDeltaLakeSink** に設定します。 | はい      |
-| preCopyScript | コピー アクティビティの毎回の実行で、データを Databricks Delta テーブルに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップしたり、TRUNCATE TABLE ステートメントまたは VACUUM ステートメントを追加したりできます。 | いいえ       |
+| preCopyScript | コピー アクティビティの毎回の実行で、データを Databricks Delta テーブルに書き込む前に実行する SQL クエリを指定します。 例: `VACUUM eventsTable DRY RUN` このプロパティを使用して、事前に読み込まれたデータをクリーンアップしたり、TRUNCATE TABLE ステートメントまたは VACUUM ステートメントを追加したりできます。 | いいえ       |
 | importSettings | デルタ テーブルにデータを書き込むために使用される詳細設定。 | いいえ |
 | ***`importSettings` の下:*** |                                                              |  |
 | type | インポート コマンドの種類。**AzureDatabricksDeltaLakeImportCommand** に設定します。 | Yes |
@@ -268,7 +294,7 @@ Azure Databricks Delta Lake にデータをコピーするために、コピー 
 
 #### <a name="direct-copy-to-delta-lake"></a>Delta Lake に直接コピーする
 
-ソースのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、ソースから Azure Databricks Delta Lake に直接コピーできます。 Azure Data Factory によって設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
+ソースのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、ソースから Azure Databricks Delta Lake に直接コピーできます。 設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
 - **ソースのリンクされたサービス** は、[Azure Blob Storage](connector-azure-blob-storage.md) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) です。 アカウントの資格情報は Azure Databricks クラスター構成で事前に構成されている必要があります。詳細については、「[前提条件](#prerequisites)」を参照してください。
 
@@ -313,7 +339,8 @@ Azure Databricks Delta Lake にデータをコピーするために、コピー 
                 "type": "<source type>"
             },
             "sink": {
-                "type": "AzureDatabricksDeltaLakeSink"
+                "type": "AzureDatabricksDeltaLakeSink",
+                "sqlReadrQuery": "VACUUM eventsTable DRY RUN"
             }
         }
     }
@@ -322,7 +349,7 @@ Azure Databricks Delta Lake にデータをコピーするために、コピー 
 
 #### <a name="staged-copy-to-delta-lake"></a>Delta Lake にステージング コピーする
 
-ソースのデータ ストアまたは形式が、前のセクションで説明した直接コピーの基準に適合しない場合は、中間の Azure Storage インスタンスを使用して組み込みのステージング コピーを有効にします。 ステージング コピー機能はスループットも優れています。 Data Factory は、データ形式の要件を満たすようにデータをステージング ストレージに自動的に変換し、そこから Delta Lake にデータを読み込みます。 最後に、ストレージから一時データがクリーンアップされます。 ステージングを使用したデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
+ソースのデータ ストアまたは形式が、前のセクションで説明した直接コピーの基準に適合しない場合は、中間の Azure Storage インスタンスを使用して組み込みのステージング コピーを有効にします。 ステージング コピー機能はスループットも優れています。 サービスは、データ形式の要件を満たすようにデータをステージング ストレージに自動的に変換し、そこから Delta Lake にデータを読み込みます。 最後に、ストレージから一時データがクリーンアップされます。 ステージングを使用したデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
 
 この機能を使うには、中間ステージングとしてストレージ アカウントを参照する [Azure Blob Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)または [Azure Data Lake Storage Gen2 のリンクされたサービス](connector-azure-data-lake-storage.md#linked-service-properties)を作成します。 次に、コピー アクティビティに `enableStaging` プロパティと `stagingSettings` プロパティを指定します。
 
@@ -370,7 +397,7 @@ Azure Databricks Delta Lake にデータをコピーするために、コピー 
 
 ## <a name="monitoring"></a>監視
 
-Azure Data Factory は、他のコネクタと同じ[コピー アクティビティ監視エクスペリエンス](copy-activity-monitoring.md)を提供します。 さらに、Delta Lake との間のデータの読み込みが Azure Databricks クラスターで実行されているため、[詳細なクラスター ログを表示](/azure/databricks/clusters/clusters-manage#--view-cluster-logs)したり、[パフォーマンスを監視](/azure/databricks/clusters/clusters-manage#--monitor-performance)したりすることができます。
+他のコネクタと同様に [コピー アクティビティのモニタリング体験](copy-activity-monitoring.md)が提供されます。 さらに、Delta Lake との間のデータの読み込みが Azure Databricks クラスターで実行されているため、[詳細なクラスター ログを表示](/azure/databricks/clusters/clusters-manage#--view-cluster-logs)したり、[パフォーマンスを監視](/azure/databricks/clusters/clusters-manage#--monitor-performance)したりすることができます。
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
@@ -378,4 +405,4 @@ Azure Data Factory は、他のコネクタと同じ[コピー アクティビ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+コピー アクティビティによってソース、シンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)の表を参照してください。

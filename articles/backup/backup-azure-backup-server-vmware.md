@@ -2,17 +2,20 @@
 title: Azure Backup Server を使用して VMware VM をバックアップする
 description: この記事では、Azure Backup Server を使用し、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップする方法について説明します。
 ms.topic: conceptual
-ms.date: 05/24/2020
-ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/27/2021
+ms.openlocfilehash: f8ab0de1a1fb126d8aabd536a596c4e73f66d4af
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96002955"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026072"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
 この記事では、Azure Backup Server (MABS) を使用して、VMware ESXi ホスト/vCenter Server 上で実行されている VMware VM を Azure にバックアップする方法について説明します。
+
+>[!Note]
+>MABS v3 更新プログラム 2 のリリースにより、VMware 7.0 VM もバックアップできるようになりました。
 
 この記事では、以下の方法について説明します。
 
@@ -33,6 +36,13 @@ MABS は、VMware 仮想マシンのバックアップ時に次の機能を提�
 - MABS は、ローカル ディスク、ネットワーク ファイル システム (NFS)、またはクラスター ストレージに格納されている VM を保護します。
 - MABS は、負荷分散のために移行された VM を保護します。VM が負荷分散のために移行されると、MABS は VM の保護を自動的に検出し、継続します。
 - MABS では、VM 全体を復旧することなく Windows VM からファイルやフォルダーを回復でき、これにより、必要なファイルを迅速に回復できます。
+
+## <a name="support-matrix"></a>サポート マトリックス
+
+| MABS のバージョン | バックアップ用にサポートされている VMware VM バージョン |
+| --- | --- |
+| MABS v3 UR2 | VMware サーバー 7.0、6.7、6.5、または 6.0 (ライセンス版) |
+| MABS v3 UR1 | VMware サーバー 6.7、6.5、6.0、または 5.5 (ライセンス版) |
 
 ## <a name="prerequisites-and-limitations"></a>前提条件と制限事項
 
@@ -160,7 +170,7 @@ Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許
 
 次の表は、作成するユーザー アカウントに割り当てる必要がある権限を示しています。
 
-| vCenter 6.5 ユーザー アカウントの権限                          | vCenter 6.7 ユーザー アカウントの権限                            |
+| vCenter 6.5 ユーザー アカウントの権限                          | vCenter 6.7 (以降) のユーザー アカウントの権限                            |
 |----------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | [データストア クラスタ].[データストア クラスタの設定]                           | [データストア クラスタ].[データストア クラスタの設定]                           |
 | Datastore.AllocateSpace                                                    | Datastore.AllocateSpace                                                    |
@@ -308,7 +318,7 @@ Azure Backup Server に vCenter Server を追加します。
 
 6. **[追加]** を選択して、VMware サーバーをサーバーのリストに追加します。 **[次へ]** を選択します。
 
-    ![VMWare サーバーと資格情報を追加する](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
+    ![VMware サーバーと資格情報を追加する](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
 7. **[概要]** ページで、 **[追加]** を選択して VMware サーバーを Azure Backup Server に追加します。 新しいサーバーはすぐに追加され、VMware サーバー上にエージェントは必要ありません。
 
@@ -401,26 +411,26 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 ## <a name="vmware-parallel-backups"></a>VMware の並列バックアップ
 
 >[!NOTE]
-> この機能は、MABS V3 UR1 に適用されます。
+> この機能は、MABS V3 UR1 (以降) に適用される機能。
 
-以前のバージョンの MABS では、並列バックアップは保護グループ間でのみ実行されていました。 MABS V3 UR1 では、1 つの保護グループ内のすべての VMware VM バックアップが並列化され、VM のバックアップが高速になります。 すべての VMWare デルタ レプリケーション ジョブが並列で実行されます。 既定では、並列で実行されるジョブの数は 8 に設定されます。
+以前のバージョンの MABS では、並列バックアップは保護グループ間でのみ実行されていました。 MABS V3 UR1 (以降) では、1 つの保護グループ内のすべての VMware VM バックアップが並列化され、VM のバックアップをよりすばやく行えます。 すべての VMware デルタ レプリケーション ジョブが並列で実行されます。 既定では、並列で実行されるジョブの数は 8 に設定されます。
 
 次に示すように、レジストリ キーを使用してジョブの数を変更できます (既定では存在しません。自分で追加する必要があります)。
 
-**キー パス**: `Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
+**キー パス**: `Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMware`<BR>
 **キーの種類**:DWORD (32 ビット) 値。
 
 > [!NOTE]
 > ジョブの数をより大きい値に変更できます。 ジョブの数を 1 に設定すると、レプリケーション ジョブは順次実行されます。 数値を大きくするには、VMware のパフォーマンスを考慮する必要があります。 使用されるリソースの数と VMWare vSphere Server で必要となる追加の使用量を検討し、並列で実行するデルタ レプリケーション ジョブの数を決定します。 また、この変更は、新しく作成された保護グループにのみ影響します。 既存の保護グループについては、別の VM を一時的に保護グループに追加する必要があります。 これにより、保護グループの構成が更新されます。 手順が完了したら、この VM を保護グループから削除できます。
 
-## <a name="vmware-vsphere-67"></a>VMware vSphere 6.7
+## <a name="vmware-vsphere-67-and-70"></a>VMware vSphere 6.7 および 7.0
 
-vSphere 6.7 をバックアップするには、次の操作を行います。
+vSphere 6.7 および 7.0, をバックアップするには、以下を行います。
 
 - MABS サーバーで TLS 1.2 を有効にする
 
 >[!NOTE]
->VMWare 6.7 以降では、TLS が通信プロトコルとして有効になっています。
+>VMware 6.7 以降では、TLS が通信プロトコルとして有効になっています。
 
 - 次のようにレジストリ キーを設定します。
 
@@ -447,9 +457,9 @@ Windows Registry Editor Version 5.00
 ## <a name="exclude-disk-from-vmware-vm-backup"></a>VMware VM バックアップからディスクを除外する
 
 > [!NOTE]
-> この機能は、MABS V3 UR1 に適用されます。
+> この機能は、MABS V3 UR1 (以降) に適用される機能。
 
-MABS V3 UR1 では、VMware VM のバックアップから特定のディスクを除外できます。 `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` に構成スクリプト **ExcludeDisk.ps1** があります。
+MABS V3 UR1 (以降) では、VMware VM のバックアップから特定のディスクを除外できます。 `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` に構成スクリプト **ExcludeDisk.ps1** があります。
 
 ディスクの除外を構成するには、次の手順に従います。
 
@@ -458,9 +468,9 @@ MABS V3 UR1 では、VMware VM のバックアップから特定のディスク�
   1. VMware コンソールで、ディスクを除外する VM 設定に移動します。
   2. 除外するディスクを選択し、そのディスクのパスをメモします。
 
-        たとえば、TestVM4 からハード ディスク 2 を除外するためのハード ディスク 2 のパスは **[datastore1] TestVM4/TestVM4\_1.vmdk** です。
+     たとえば、TestVM4 からハード ディスク 2 を除外するためのハード ディスク 2 のパスは **[datastore1] TestVM4/TestVM4\_1.vmdk** です。
 
-        ![除外するハード ディスク](./media/backup-azure-backup-server-vmware/test-vm.png)
+     ![除外するハード ディスク](./media/backup-azure-backup-server-vmware/test-vm.png)
 
 ### <a name="configure-mabs-server"></a>MABS サーバーを構成する
 
@@ -468,93 +478,93 @@ VMware VM が保護対象として構成されている MABS サーバーに移�
 
   1. MABS サーバーで保護されている VMware ホストの詳細を取得します。
 
-        ```powershell
-        $psInfo = get-DPMProductionServer
-        $psInfo
-        ```
+     ```powershell
+     $psInfo = get-DPMProductionServer
+     $psInfo
+     ```
 
-        ```output
-        ServerName   ClusterName     Domain            ServerProtectionState
-        ----------   -----------     ------            ---------------------
-        Vcentervm1                   Contoso.COM       NoDatasourcesProtected
-        ```
+     ```output
+     ServerName   ClusterName     Domain            ServerProtectionState
+     ----------   -----------     ------            ---------------------
+     Vcentervm1                   Contoso.COM       NoDatasourcesProtected
+     ```
 
   2. VMware ホストを選択し、VMware ホストに対する VM の保護を一覧表示します。
 
-        ```powershell
-        $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
-        $vmDsInfo
-        ```
+     ```powershell
+     $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
+     $vmDsInfo
+     ```
 
-        ```output
-        Computer     Name     ObjectType
-        --------     ----     ----------
-        Vcentervm1  TestVM2      VMware
-        Vcentervm1  TestVM1      VMware
-        Vcentervm1  TestVM4      VMware
-        ```
+     ```output
+     Computer     Name     ObjectType
+     --------     ----     ----------
+     Vcentervm1  TestVM2      VMware
+     Vcentervm1  TestVM1      VMware
+     Vcentervm1  TestVM4      VMware
+     ```
 
   3. ディスクを除外する VM を選択します。
 
-        ```powershell
-        $vmDsInfo[2]
-        ```
+     ```powershell
+     $vmDsInfo[2]
+     ```
 
-        ```output
-        Computer     Name      ObjectType
-        --------     ----      ----------
-        Vcentervm1   TestVM4   VMware
-        ```
+     ```output
+     Computer     Name      ObjectType
+     --------     ----      ----------
+     Vcentervm1   TestVM4   VMware
+     ```
 
   4. ディスクを除外するには、`Bin` フォルダーに移動し、次のパラメーターを使用して *ExcludeDisk.ps1* スクリプトを実行します。
 
-        > [!NOTE]
-        > このコマンドを実行する前に、MABS サーバー上の DPMRA サービスを停止します。 そうしないと、スクリプトで成功が返されますが、除外リストは更新されません。 サービスを停止する前に、進行中のジョブがないことを確認してください。
+     > [!NOTE]
+     > このコマンドを実行する前に、MABS サーバー上の DPMRA サービスを停止します。 そうしないと、スクリプトで成功が返されますが、除外リストは更新されません。 サービスを停止する前に、進行中のジョブがないことを確認してください。
 
      **除外対象にディスクを追加するか削除するには、次のコマンドを実行します。**
 
-      ```powershell
-      ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
-      ```
+     ```powershell
+     ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
+     ```
 
      **例**:
 
      TestVM4 に対するディスクの除外を追加するには、次のコマンドを実行します。
 
-       ```powershell
-      C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Add "[datastore1] TestVM4/TestVM4\_1.vmdk"
-       ```
+     ```powershell
+     C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Add "[datastore1] TestVM4/TestVM4\_1.vmdk"
+     ```
 
-      ```output
-       Creating C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\excludedisk.xml
-       Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
-      ```
+     ```output
+     Creating C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\excludedisk.xml
+     Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
+     ```
 
   5. ディスクが除外対象として追加されていることを確認します。
 
      **特定の VM に対する既存の除外を表示するには、次のコマンドを実行します。**
 
-        ```powershell
-        ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
-        ```
+     ```powershell
+     ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
+     ```
 
      **例**
 
-        ```powershell
-        C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view
-        ```
+     ```powershell
+     C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view
+     ```
 
-        ```output
-        <VirtualMachine>
-        <UUID>52b2b1b6-5a74-1359-a0a5-1c3627c7b96a</UUID>
-        <ExcludeDisk>[datastore1] TestVM4/TestVM4\_1.vmdk</ExcludeDisk>
-        </VirtualMachine>
-        ```
+     ```output
+     <VirtualMachine>
+       <UUID>52b2b1b6-5a74-1359-a0a5-1c3627c7b96a</UUID>
+       <ExcludeDisk>[datastore1] TestVM4/TestVM4\_1.vmdk</ExcludeDisk>
+     </VirtualMachine>
+     ```
 
      この VM の保護を構成すると、保護中は除外されたディスクは表示されません。
 
-        > [!NOTE]
-        > 既に保護されている VM に対してこれらの手順を実行する場合は、除外するディスクを追加した後、手動で整合性チェックを実行する必要があります。
+     > [!NOTE]
+     > 既に保護されている VM に対してこれらの手順を実行する場合は、除外するディスクを追加した後、手動で整合性チェックを実行する必要があります。
 
 ### <a name="remove-the-disk-from-exclusion"></a>除外対象からディスクを削除する
 

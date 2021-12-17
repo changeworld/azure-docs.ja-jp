@@ -1,0 +1,22 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: Cognitive Services
+      tocHref: /azure/cognitive-services/
+      topicHref: /azure/cognitive-services/index
+      items:
+        - name: Azure Cognitive Service for Language
+          tocHref: /azure/cognitive-services/
+          topicHref: /azure/cognitive-services/language-service/index
+- name: Azure
+  tocHref: /legal/
+  topicHref: /azure/index
+  items:
+    - name: Cognitive Services
+      tocHref: /legal/cognitive-services/language-service
+      topicHref: /azure/cognitive-services/index
+      items:
+        - name: Azure Cognitive Service for Language
+          tocHref: /legal/cognitive-services/language
+          topicHref: /azure/cognitive-services/language-service/index

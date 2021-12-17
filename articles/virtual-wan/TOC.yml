@@ -33,6 +33,8 @@
           href: ../networking/working-remotely-support.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
         - name: Virtual WAN の利用
           href: work-remotely-support.md
+    - name: Virtual WAN の FAQ
+      href: virtual-wan-faq.md
     - name: 場所とパートナー
       items:
         - name: ハブの場所とパートナー
@@ -69,12 +71,12 @@
           href: scenario-route-through-nva.md
         - name: NVA 経由のルーティング - カスタム
           href: scenario-route-through-nvas-custom.md
+        - name: 仮想ハブとの BGP ピアリング
+          href: scenario-bgp-peering-hub.md
         - name: Azure Firewall - カスタム
           href: scenario-route-between-vnets-firewall.md
-    - name: 監視
-      items:
-        - name: Virtual WAN に関する Azure Monitor の分析情報について
-          href: azure-monitor-insights.md
+        - name: Application Gateway とバックエンド プール
+          href: scenario-secured-hub-app-gateway.md
     - name: サイト間
       items:
         - name: S2S IPsec ポリシーの概要
@@ -85,20 +87,26 @@
       items:
         - name: P2S IPsec ポリシーの概要
           href: point-to-site-ipsec.md
-    - name: Security
+        - name: P2S クライアント アドレス プールの概要
+          href: about-client-address-pools.md
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
-    - name: 価格の概念
+          href: /security/benchmark/azure/baselines/virtual-wan-security-baseline?toc=/azure/virtual-wan/TOC.json
+    - name: 価格の説明
       href: pricing-concepts.md
     - name: 仮想ハブの NVA について
       href: about-nva-hub.md
+    - name: セキュリティ保護付き仮想ハブについて
+      href: ../firewall-manager/secured-virtual-hub.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: 操作方法ガイド
   items:
     - name: Virtual WAN SKU をアップグレードする
       href: upgrade-virtual-wan.md
     - name: 仮想ハブに NVA を作成する
       href: How-to-nva-hub.md
+    - name: VNet を仮想ハブに接続する
+      href: howto-connect-vnet-hub.md
     - name: クロステナント VNet 接続を作成する
       href: cross-tenant-vnet.md
     - name: ExpressRoute
@@ -119,8 +127,10 @@
           href: nat-rules-vpn-gateway.md
     - name: ユーザー VPN (ポイント対サイト)
       items:
-        - name: ユーザー VPN 接続を作成する
+        - name: ユーザー VPN を作成する
           href: virtual-wan-point-to-site-portal.md
+        - name: ユーザー VPN を作成する - Azure AD 認証
+          href: virtual-wan-point-to-site-azure-ad.md
         - name: 証明書の生成
           href: certificates-point-to-site.md
         - name: Azure AD テナントを構成する
@@ -135,10 +145,14 @@
               href: vpn-profile-intune.md
         - name: VPN クライアント
           items:
-            - name: Windows 10
-              href: openvpn-azure-ad-client.md
             - name: OpenVPN
               href: howto-openvpn-clients.md?
+            - name: Azure AD 認証
+              items:
+                - name: Windows 10
+                  href: openvpn-azure-ad-client.md
+                - name: macOS
+                  href: openvpn-azure-ad-client-mac.md
         - name: Always-On トンネルを構成する
           items:
             - name: ユーザー トンネル
@@ -155,28 +169,42 @@
               href: openvpn-azure-ad-tenant-multi-app.md
     - name: ルーティング
       items:
-        - name: 仮想ハブのルーティングを構成する方法
+        - name: 仮想ハブのルーティングを構成する
           href: how-to-virtual-hub-routing.md
-        - name: 仮想ハブの有効なルートを表示する方法
+        - name: 仮想ハブの有効なルートを表示する
           href: effective-routes-virtual-hub.md
+        - name: ルーティング インテントとポリシーを構成する方法
+          href: how-to-routing-policies.md
         - name: 仮想ハブから NVA にトラフィックをルーティングする (レガシ)
           items:
             - name: Azure portal
               href: virtual-wan-route-table-nva-portal.md
             - name: Azure PowerShell
               href: virtual-wan-route-table-nva.md
+        - name: 仮想ハブとの BGP ピアリングを構成する
+          href: create-bgp-peering-hub-portal.md
     - name: セキュリティ
       items:
         - name: Azure Firewall をハブにデプロイする
           href: howto-firewall.md
+        - name: Azure Firewall を経由したハブ間およびブランチ間接続
+          href: how-to-routing-policies.md
         - name: Private Link の接続の構成
           href: howto-private-link.md
         - name: リソースへのアクセス管理 - スポーク VNet P2S
           href: manage-secure-access-resources-spoke-p2s.md
     - name: 監視
       items:
-        - name: ログとメトリック
-          href: logs-metrics.md
+        - name: Virtual WAN の監視
+          href: monitor-virtual-wan.md
+        - name: Azure Monitor Insights
+          href: azure-monitor-insights.md
+        - name: サイト間 VPN パケット キャプチャを構成する
+          items:
+            - name: Azure portal
+              href: packet-capture-site-to-site-portal.md
+            - name: PowerShell
+              href: packet-capture-site-to-site-powershell.md
 - name: リファレンス
   items:
     - name: Azure PowerShell
@@ -184,13 +212,11 @@
     - name: REST
       href: /rest/api/azure
     - name: Azure CLI
-      href: /cli/azure/ext/virtual-wan
+      href: ./index.yml
     - name: Python SDK
       href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-network/10.0.0/azure.mgmt.network.v2019_02_01.operations.html#azure.mgmt.network.v2019_02_01.operations.VirtualWansOperations'
 - name: リソース
   items:
-    - name: よく寄せられる質問
-      href: virtual-wan-faq.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: サブスクリプションとサービスの制限

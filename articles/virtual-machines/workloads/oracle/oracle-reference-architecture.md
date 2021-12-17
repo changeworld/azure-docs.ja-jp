@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.openlocfilehash: 6bce6f011086d9855c4da2739addbb34e661e2d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8171d29dfe88ea34d02d7f48567aeb2df46a8a7
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507485"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694137"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上の Oracle Database Enterprise Edition 用リファレンス アーキテクチャ
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 このガイドでは、可用性の高い Oracle データベースを Azure にデプロイする方法について詳しく説明します。 また、ディザスター リカバリーの考慮事項についても説明します。 これらのアーキテクチャは、お客様のデプロイに基づいて作成されたものです。 このガイドは Oracle Database Enterprise Edition にのみ適用されます。
 
@@ -207,12 +209,12 @@ Oracle Data Guard は、システム管理、ユーザー定義、コンポジ�
 
 Oracle ワークロードを Azure にデプロイする場合、ホスト OS レベルのすべての修正プログラムを Microsoft が適用します。 計画された OS レベルのメンテナンスは、その計画メンテナンスに備えてお客様が準備できるよう、事前にお客様に通知されます。 異なる 2 つの Availability Zones の 2 つのサーバーに同時に修正プログラムが適用されることはありません。 VM のメンテナンスと修正プログラムの適用の詳細については、[仮想マシンの可用性管理](../../availability.md)に関するページをご覧ください。 
 
-仮想マシンのオペレーティング システムへの修正プログラムの適用は、[Azure Automation Update Management](../../../automation/update-management/overview.md) を使用して自動化できます。 Oracle データベースへの修正プログラムの適用とメンテナンスは、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) または [Azure Automation Update Management](../../../automation/update-management/overview.md) を使用して自動化およびスケジュールし、ダウンタイムを最小限に抑えることができます。 Oracle データベースのコンテキストでのその使用方法については、[継続的デリバリーおよびブルー/グリーン デプロイ](/azure/devops/learn/what-is-continuous-delivery)に関するページをご覧ください。
+仮想マシンのオペレーティング システムへの修正プログラムの適用は、[Azure Automation Update Management](../../../automation/update-management/overview.md) を使用して自動化できます。 Oracle データベースへの修正プログラムの適用とメンテナンスは、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) または [Azure Automation Update Management](../../../automation/update-management/overview.md) を使用して自動化およびスケジュールし、ダウンタイムを最小限に抑えることができます。 Oracle データベースのコンテキストでのその使用方法については、[継続的デリバリーおよびブルー/グリーン デプロイ](/devops/deliver/what-is-continuous-delivery)に関するページをご覧ください。
 
 ## <a name="architecture-and-design-considerations"></a>アーキテクチャと設計に関する考慮事項
 
 - ライセンス コストを節約してパフォーマンスを最大化するには、Oracle Database VM に[制約付きコア vCPU](../../../virtual-machines/constrained-vcpu.md) のハイパースレッド化された[メモリ最適化済み仮想マシン](../../sizes-memory.md)を使用することをご検討ください。 パフォーマンスと可用性を向上させるには、複数の Premium ディスクまたは Ultra ディスク (マネージド ディスク) を使用します。
-- マネージド ディスクを使用する場合、再起動時にディスク/デバイス名が変更される可能性があります。 再起動後もマウントが確実に持続するようにするため、名前ではなく、デバイス UUID を使用することをお勧めします。 詳細については、 [こちら](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab)で確認できます。
+- マネージド ディスクを使用する場合、再起動時にディスク/デバイス名が変更される可能性があります。 再起動後もマウントが確実に持続するようにするため、名前ではなく、デバイス UUID を使用することをお勧めします。 詳細については、[Linux VM におけるソフトウェア RAID の構成](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab)に関するページをご覧ください。
 - リージョン内で高可用性を実現するには、可用性ゾーンを使用します。
 - Oracle データベースには、Ultra ディスク (使用可能な場合) か Premium ディスクの使用をご検討ください。
 - スタンバイ Oracle データベースは、Oracle Data Guard を使用して別の Azure リージョンに設定することをご検討ください。

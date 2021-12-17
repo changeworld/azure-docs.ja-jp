@@ -3,25 +3,22 @@ title: Azure IoT Central のデバイス接続機能 | Microsoft Docs
 description: この記事では、Azure IoT Central のデバイス接続機能に関連する主な概念を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 1/15/2020
+ms.date: 09/07/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
 ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: c365f367a090f1697b71c51f24679b9ea09561d0
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: e35f61d53ead7772743f31acfad686ec62a707af
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490014"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492910"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
-
-"*この記事は、オペレーターとデバイス開発者を対象としています。* "
 
 この記事では、Azure IoT Central アプリケーションにデバイスを接続する方法について説明します。 デバイスが IoT Central とデータを交換できるようにするには、デバイスで次を行う必要があります。
 
@@ -32,7 +29,7 @@ ms.locfileid: "106490014"
 IoT Central では、次の 2 つのデバイス登録シナリオがサポートされています。
 
 - *自動登録*。 デバイスは、初めて接続するときに自動的に登録されます。 このシナリオでは、事前登録なしで接続する手段も用意されており、そのようなデバイスを OEM は大量に製造することができます。 OEM が適切なデバイス資格情報を生成し、デバイスを工場で構成することになります。 必要に応じて、データの送信を開始する前にオペレーターによるデバイスの承認を必須とすることもできます。 このシナリオでは、アプリケーションで X.509 または SAS _グループ登録_ を構成する必要があります。
-- *手動登録*。 オペレーターは、 **[デバイス]** ページで個々のデバイスを登録するか、[CSV ファイルをインポート](howto-manage-devices.md#import-devices)してデバイスを一括登録します。 このシナリオでは、X.509 か SAS _グループ登録_、または X.509 か SAS _個別登録_ を使用できます。
+- *手動登録*。 オペレーターは、 **[デバイス]** ページで個々のデバイスを登録するか、[CSV ファイルをインポート](howto-manage-devices-in-bulk.md#import-devices)してデバイスを一括登録します。 このシナリオでは、X.509 か SAS _グループ登録_、または X.509 か SAS _個別登録_ を使用できます。
 
 IoT Central に接続するデバイスは、*IoT プラグ アンド プレイの規則* に従う必要があります。 この規則の 1 つは、デバイスが実装するデバイス モデルの _モデル ID_ を接続時に送信する必要があることです。 モデル ID により、IoT Central アプリケーションはデバイスを適切なデバイス テンプレートに関連付けることができます。
 
@@ -68,7 +65,6 @@ X.509 証明書を使用してデバイスをアプリケーションに接続�
 テストの場合にのみ、次のユーティリティを使用して、ルート証明書、中間証明書、およびデバイス証明書を生成できます。
 
 - [Azure IoT Device Provisioning Device SDK 用ツール](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md): X.509 の証明書とキーの生成および検証に使用できる一連の Node.js ツールです。
-- DevKit デバイスを使用している場合、この[コマンドライン ツール](https://aka.ms/iotcentral-docs-dicetool)では、証明書を検証するために IoT Central アプリケーションに追加できる CA 証明書が生成されます。
 - [サンプルとチュートリアルに使用するテスト CA 証明書の管理](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md): 次の作業を目的とした、一連の PowerShell スクリプトと Bash スクリプトです。
   - 証明書チェーンを作成します。
   - IoT Central アプリケーションにアップロードする .cer ファイルとして証明書を保存します。
@@ -79,7 +75,7 @@ X.509 証明書を使用してデバイスをアプリケーションに接続�
 
 SAS キーを使用してデバイスをアプリケーションに接続するには、次のようにします。
 
-1. **Shared Access Signature (SAS)** 構成証明の種類を使用する *登録グループ* を作成します。
+1. **Shared Access Signature (SAS)** 構成証明の種類を使用する *登録グループ* を作成します。 
 1. 登録グループからグループのプライマリ キーまたはセカンダリ キーをコピーします。
 1. Azure CLI を使用してグループ キーからデバイス キーを生成します。
 
@@ -88,6 +84,9 @@ SAS キーを使用してデバイスをアプリケーションに接続する�
     ```
 
 1. デバイスが IoT Central アプリケーションに接続するときに、生成されたデバイス キーを使用します。
+
+> [!NOTE]
+> 登録グループ内の既存の SAS キーを使用するには、 **[キーの自動生成]** のトグルを無効にし、SAS キーを入力します。
 
 ## <a name="individual-enrollment"></a>個別加入
 
@@ -159,9 +158,9 @@ IoT Central アプリケーションは、デバイスから送られたモデ�
 
 ### <a name="bulk-register-devices-in-advance"></a>事前にデバイスを一括登録する
 
-IoT Central アプリケーションに大量のデバイスを登録するには、CSV ファイルを使用して[デバイス ID とデバイス名をインポート](howto-manage-devices.md#import-devices)します。
+IoT Central アプリケーションに大量のデバイスを登録するには、CSV ファイルを使用して[デバイス ID とデバイス名をインポート](howto-manage-devices-in-bulk.md#import-devices)します。
 
-デバイスで認証に SAS トークンを使用している場合は、[IoT Central アプリケーションから CSV ファイルをエクスポート](howto-manage-devices.md#export-devices)します。 エクスポートされた CSV ファイルに、デバイス ID と SAS キーが含まれています。
+デバイスで認証に SAS トークンを使用している場合は、[IoT Central アプリケーションから CSV ファイルをエクスポート](howto-manage-devices-in-bulk.md#export-devices)します。 エクスポートされた CSV ファイルに、デバイス ID と SAS キーが含まれています。
 
 使用するデバイスが X.509 を使って認証を行う場合は、X.509 登録グループにアップロードしたルート証明書または中間証明書を使用して、デバイスの X.509 リーフ証明書を生成します。 インポートしたデバイス ID をリーフ証明書の `CNAME` 値として使用します。
 
@@ -182,9 +181,9 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
 1. IoT Central アプリケーションでデバイス テンプレートが既に発行されている場合、デバイスはデバイス テンプレートに関連付けられます。
 1. デバイス テンプレートが IoT Central アプリケーション内でまだ公開されていない場合は、IoT Centralにおいて[パブリック モデル リポジトリ](https://github.com/Azure/iot-plugandplay-models)でデバイス モデルが検索されます。 モデルが見つかると、それを使用して基本のデバイス テンプレートが生成されます。
-1. パブリック モデル リポジトリでモデルが見つからない場合、デバイスは **関連付けなし** としてマークされます。 オペレーターは、デバイスのデバイス テンプレートを作成し、関連付けられていないデバイスを新しいデバイス テンプレートに移行できます。
+1. パブリック モデル リポジトリでモデルが見つからない場合、デバイスは **関連付けなし** としてマークされます。 オペレーターは、デバイスのデバイス テンプレートを作成してから、関連付けられていないデバイスを新しいデバイス テンプレートに移行するか、デバイスが送信するデータに基づいて[デバイス テンプレートを自動生成する](howto-set-up-template.md#autogenerate-a-device-template)ことができます。
 
-次のスクリーンショットは、IoT Central でデバイス テンプレートのモデル ID を表示する方法を示しています。 デバイス テンプレートでコンポーネントを選択し、 **[ID の表示]** を選択します。
+次のスクリーンショットは、IoT Central でデバイス テンプレートのモデル ID を表示する方法を示しています。 デバイス テンプレート内でコンポーネントを選択し、 **[ID の編集]** を選択します。
 
 :::image type="content" source="media/concepts-get-connected/model-id.png" alt-text="サーモスタット デバイス テンプレート内のモデル ID を表示するスクリーンショット。":::
 
@@ -193,6 +192,16 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 ```json
 "@id": "dtmi:com:example:Thermostat;1"
 ```
+
+次の DPS パイロードを使用して、デバイスをデバイス テンプレートに関連付けます。
+
+```json
+{
+  "modelId":"dtmi:com:example:TemperatureController;2"
+}
+```
+
+DPS ペイロードの詳細については、「[チュートリアル: クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」で使用されているサンプル コードを参照してください。
 
 ## <a name="device-status-values"></a>デバイスの状態の値
 
@@ -214,6 +223,20 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
     - デバイス テンプレートを指定せずに **[デバイス]** ページから手動でデバイスが登録された。 その後、有効な資格情報を使用してデバイスが接続された。  
 
     オペレーターは、 **[デバイス]** ページから **[移行]** ボタンを使用して、デバイス テンプレートにデバイスを関連付けることができます。
+
+## <a name="device-connection-status"></a>デバイス接続の状態
+
+MQTT プロトコルを使用してデバイスやエッジ デバイスを接続すると、デバイスの "_接続済み_" および "_切断済み_" のイベントが生成されます。 これらのイベントは、デバイスによって送信されるわけではなく、IoT Central で内部的に生成されます。
+
+次の図は、デバイスを接続したときに、接続がどのように時間枠の最後に登録されるかを示しています。 複数の接続および切断のイベントが発生した場合は、IoT Central によって時間枠の終わりに最も近いイベントが登録されます。 たとえば、デバイスが時間枠内で切断および再接続されると、IoT Central によって接続イベントが登録されます。 現在、この時間枠は約 1 分です。
+
+:::image type="content" source="media/concepts-get-connected/device-connectivity-diagram.png" alt-text="接続および切断されたイベントのイベント ウィンドウを示す図。" border="false":::
+
+デバイス接続の状態を監視する方法の詳細については、次の動画をご覧ください。
+
+> [!VIDEO https://www.youtube.com/embed/EUZH_6Ihtto]
+
+接続および切断のイベントは、[IoT Central からのエクスポート](howto-export-data.md#set-up-data-export)に含めることができます。 詳細については、[IoT Hub のイベントへの対応に関する記事の、「デバイス接続イベントおよびデバイス切断イベントの制限事項」](../../iot-hub/iot-hub-event-grid.md#limitations-for-device-connected-and-device-disconnected-events)を参照してください。
 
 ## <a name="sdk-support"></a>SDK のサポート
 
@@ -261,7 +284,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者にお勧めする次のステップは次のとおりです。
+推奨される次のステップは以下のとおりです。
 
 - デバイス開発の[ベスト プラクティス](concepts-best-practices.md)を確認します。
 - 「[チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」で、SAS トークンの使い方を示すサンプル コードを確認する

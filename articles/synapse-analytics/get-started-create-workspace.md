@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: b22954edf4f3a5a935c470326aa43bd24ee2d708
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: c99d981c6abf6d7a43a5180360712b665c57f6fe
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366064"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324355"
 ---
 # <a name="creating-a-synapse-workspace"></a>Synapse ワークスペースの作成
 
@@ -43,7 +43,10 @@ ms.locfileid: "107366064"
 以下のフィールドを設定します。
 
 1. **[ワークスペース名]** - グローバルに一意の任意の名前を選択します。 このチュートリアルでは、**myworkspace** を使用します。
-1. **[リージョン]** - 任意のリージョンを選択します。
+1. **[リージョン]** - クライアント アプリケーションまたはサービス (Azure VM、Power BI、Azure Analysis Service など) と、データを含むストレージ (Azure Data Lake Storage、Azure Cosmos DB 分析ストレージ) が配置されているリージョンを選択します。
+
+> [!NOTE]
+> クライアント アプリケーションやストレージが併置されていないワークスペースは、さまざまなパフォーマンス上の問題の根本原因になる可能性があります。 データやクライアントが複数のリージョンに配置されている場合は、データやクライアントが併置されるリージョンごとに個別のワークスペースを作成することができます。
 
 **[Data Lake Storage Gen 2 の選択]** で、次の操作を行います。
 
@@ -62,18 +65,32 @@ ms.locfileid: "107366064"
 
 Azure Synapse ワークスペースが作成された後、Synapse Studio を開く方法は 2 つあります。
 
-* [Azure portal](https://portal.azure.com) で Synapse ワークスペースを開き、Synapse ワークスペースの **[概要]** セクションで、[Synapse Studio の起動] ボックスの **[開く]** を選択します。
-* `https://web.azuresynapse.net` にアクセスし、ワークスペースにサインインします。
+1. [Azure portal](https://portal.azure.com) で Synapse ワークスペースを開き、Synapse ワークスペースの **[概要]** セクションで、[Synapse Studio の起動] ボックスの **[開く]** を選択します。
+1. `https://web.azuresynapse.net` にアクセスし、ワークスペースにサインインします。
+
+    ![ワークスペースへのログイン](./security/media/common/login-workspace.png)
+
+> [!NOTE]
+> ワークスペースにサインインするには、2 つの **アカウント選択方法** があります。 1 つは **Azure サブスクリプション** からの方法、もう 1 つは **手動による入力** です。 Synapse Azure ロール以上のレベルの Azure ロールがある場合は、両方の方法を使用してワークスペースにログインできます。 関連する Azure ロールがなく、Synapse RBAC ロールとして許可されている場合、ワークスペースにログインする唯一の方法は **手動の入力** しかありません。 Synapse RBAC の詳細については、「[Synapse ロールベースのアクセス制御 (RBAC) とは](./security/synapse-workspace-synapse-rbac.md)」を参照してください。
+
 
 ## <a name="place-sample-data-into-the-primary-storage-account"></a>プライマリ ストレージ アカウントにサンプル データを配置する
-このファースト ステップ ガイドの多くの例では、ニューヨーク市のタクシー データの 100,000 行の小さなサンプル データセットを使用します。 まず、ワークスペース用に作成したプライマリ ストレージ アカウントにこれを配置します。
+このファースト ステップ ガイドの多くの例では、ニューヨーク市のタクシー データから成る 100,000 行の小さなサンプル データセットを使用します。 まず、ワークスペース用に作成したプライマリ ストレージ アカウントにこれを配置します。
 
 * このファイルをお使いのコンピューターにダウンロードします (https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet ) 
 * Synapse Studio で、[データ] ハブに移動します。 
 * **[リンク済み]** を選択します。
-* **[Azure Data Lake Storae Gen2]** カテゴリの下に、**myworkspace ( プライマリ - contosolake )** のような名前の項目が表示されます。
+* **[Azure Data Lake Storage Gen2]** カテゴリの下に、**myworkspace ( プライマリ - contosolake )** のような名前の項目が表示されます。
 * **[users (Primary)]\(ユーザー (プライマリ)\)** という名前のコンテナーを選択します。
 * **[アップロード]** を選択し、ダウンロードした `NYCTripSmall.parquet` ファイルを選択します。
+
+Parquet ファイルをアップロードしたら、等価な 2 つの URI で使用できるようになります。
+* `https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet` 
+* `abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet`
+
+このチュートリアルの後の例では、UI の **contosolake** を、ワークスペースで選択したプライマリ ストレージ アカウントの名前で置き換えてください。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

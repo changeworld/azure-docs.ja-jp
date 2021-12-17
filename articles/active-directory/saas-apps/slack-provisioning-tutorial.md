@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 92c2ae13b840d7a73d86365ce88584bcafc878e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a14f9367a1b46a641f371b8c17a62b9f58c5756
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181460"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001316"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>チュートリアル:Slack を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,8 +37,11 @@ ms.locfileid: "96181460"
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。
 * プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
-* [Plus プラン](https://aadsyncfabric.slack.com/pricing)以上の Slack テナントが有効になっていること。
+* [Plus プラン](https://slack.com/pricing)以上の Slack テナントが有効になっていること。
 * Team Admin アクセス許可がある Slack のユーザー アカウント。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
 1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
@@ -125,6 +128,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
    |profileUrl|String|
    |timezone|String|
    |userType|String|
+   |preferredLanguage|String|
    |urn:scim:schemas:extension:enterprise:1.0.department|String|
    |urn:scim:schemas:extension:enterprise:1.0.manager|リファレンス|
    |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|String|

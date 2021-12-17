@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: ffc5bafca305086b0c524c76eb91b8aec2e2655d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 160af623d29391e22ab9ffaf4014d3b1996e97ee
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98602444"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551094"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -75,7 +75,7 @@ Azure AD の[パスワードの動的禁止](../../active-directory/authenticati
 2. 有効期限のルールを無効にする。このルールは、簡単に推測されるパスワード (**Spring2019!** など) をユーザーが使用する原因になります
 3. 文字構成の要件を無効にして、よく攻撃されるパスワードをユーザーが選択するのを防ぐ。これは、文字構成の要件が、パスワードで予測可能な文字置換をユーザーが選択する原因となるためです。
 
-Azure AD で直接 ID を作成した場合、[PowerShell を使用してユーザーのパスワードの期限切れを防ぐ](../../active-directory/authentication/concept-sspr-policy.md)ことができます。 ハイブリッド組織では、[ドメイン グループ ポリシー設定](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10))または [Windows PowerShell](/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) を使用してこれらのポリシーを実装する必要があります。
+Azure AD で直接 ID を作成した場合、[PowerShell を使用してユーザーのパスワードの期限切れを防ぐ](../../active-directory/authentication/concept-sspr-policy.md)ことができます。 ハイブリッド組織では、[ドメイン グループ ポリシー設定](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10))または [Windows PowerShell](/powershell/module/activedirectory/set-addefaultdomainpasswordpolicy) を使用してこれらのポリシーを実装する必要があります。
 
 ### <a name="protect-against-leaked-credentials-and-add-resilience-against-outages"></a>資格情報の漏洩から保護し、障害に対する回復力を高める
 
@@ -117,7 +117,7 @@ Azure AD による認証と会社データへのアクセスに、独自の古�
 
 さまざまな [Azure AD アプリケーションの同意](../../active-directory/develop/application-consent-experience.md)、[アクセス許可と同意の種類](../../active-directory/develop/v2-permissions-and-consent.md)、それらが組織のセキュリティ方針に与える意味を理解することが重要です。 既定では、Azure AD のすべてのユーザーは、Microsoft ID プラットフォームを活用するアプリケーションに組織のデータにアクセスすることを許可できます。 ユーザーが自分で同意することを許可すると、Microsoft 365、Azure、その他のサービスと統合する便利なアプリケーションを簡単に入手できますが、慎重に使用し、監視しないとリスクが発生する可能性があります。
 
-Microsoft では、攻撃の対象となる領域を減らし、このリスクを軽減するために、ユーザーの同意を制限することをお勧めしています。 また、[アプリの同意ポリシー (プレビュー)](../../active-directory/manage-apps/configure-user-consent.md) を使用して、エンドユーザーの同意を、検証された発行元のみと、選択したアクセス許可のみに制限することもできます。 エンド ユーザーの同意を無効にした場合でも、以前の同意の許可は有効ですが、それより後のすべての同意操作は管理者が実行する必要があります。 制限された場合、ユーザーは、統合された[管理者の同意要求ワークフロー](../../active-directory/manage-apps/configure-admin-consent-workflow.md)または独自のサポート プロセスを通して管理者の同意を要求できます。 エンドユーザーの同意を制限する前に、[推奨事項](../../active-directory/manage-apps/manage-consent-requests.md)を使用して、組織におけるこの変更を計画してください。 すべてのユーザーにアクセスを許可するアプリケーションについては、[すべてのユーザーの代わりに同意を与え](../../active-directory/develop/v2-admin-consent.md)、個人としてまだ同意していないユーザーがアプリにアクセスできるようにすることを検討してください。 シナリオによってはアプリケーションを利用できるユーザーを限定する場合、[アプリケーション割り当て](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)と条件付きアクセスを利用し、[特定のアプリ](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)へのユーザー アクセスを制限してください。
+Microsoft では、[エンドユーザーの同意を制限](../../active-directory/manage-apps/configure-user-consent.md)して、検証された発行元からのアプリに対してのみユーザーに同意を許可すること、および選択したアクセス許可のみを許可することをお勧めします。 エンド ユーザーの同意を無効にした場合でも、以前の同意の許可は有効ですが、それより後のすべての同意操作は管理者が実行する必要があります。 制限された場合、ユーザーは、統合された[管理者の同意要求ワークフロー](../../active-directory/manage-apps/configure-admin-consent-workflow.md)または独自のサポート プロセスを通して管理者の同意を要求できます。 エンドユーザーの同意を制限する前に、[推奨事項](../../active-directory/manage-apps/manage-consent-requests.md)を使用して、組織におけるこの変更を計画してください。 すべてのユーザーにアクセスを許可するアプリケーションについては、[すべてのユーザーの代わりに同意を与え](../../active-directory/develop/v2-admin-consent.md)、個人としてまだ同意していないユーザーがアプリにアクセスできるようにすることを検討してください。 シナリオによってはアプリケーションを利用できるユーザーを限定する場合、[アプリケーション割り当て](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)と条件付きアクセスを利用し、[特定のアプリ](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)へのユーザー アクセスを制限してください。
 
 ユーザーの摩擦を減らすために、サポート量を最小限に抑えるために、また、ユーザーが Azure AD 以外の資格情報でアプリケーションに新規登録することを防ぐために、ユーザーが新しいアプリケーションに関する管理者承認を要求できるようにしてください。 同意操作を規制したら、管理者はアプリと同意済みのアクセス許可を定期的に監査します。
 

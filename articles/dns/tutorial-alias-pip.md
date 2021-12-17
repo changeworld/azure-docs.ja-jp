@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 04/19/2021
 ms.author: rohink
-ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28e37ad0b404b5275a224c8debab5c11c07948b4
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80985441"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738812"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>チュートリアル:Azure パブリック IP アドレスを参照するエイリアス レコードを構成する 
 
@@ -36,8 +36,8 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 
 ## <a name="create-the-network-infrastructure"></a>ネットワーク インフラストラクチャを作成する
 まず、Web サーバーを配置する仮想ネットワークとサブネットを作成します。
-1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
-2. ポータルの左上にある **[リソースの作成]** を選択します。 検索ボックスに「*resource group*」と入力し、**RG-DNS-Alias-pip** という名前のリソース グループを作成します。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+2. Azure portal の左側のペインで、 **[リソースの作成]** を選択します。 検索ボックスに「*resource group*」と入力し、**RG-DNS-Alias-pip** という名前のリソース グループを作成します。
 3. **[+ リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。
 4. **VNet-Server** という名前の仮想ネットワークを作成します。 それを **RG-DNS-Alias-pip** リソース グループに配置し、サブネットに **SN-Web** という名前を付けます。
 
@@ -45,10 +45,10 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 1. **[リソースの作成]**  >  **[Windows Server 2016 VM]** を選択します。
 2. 名前として「**Web-01**」と入力し、この VM を **RG-DNS-Alias-TM** リソース グループに配置します。 ユーザー名とパスワードを入力し、 **[OK]** を選択します。
 3. **[サイズ]** では、8 GB RAM の SKU を選択します。
-4. **[設定]** で、**VNet-Server** 仮想ネットワークと **SN-Web** サブネットを選択します。 パブリック受信ポートでは、 **[HTTP]**  >  **[HTTPS]**  >  **[RDP (3389)]** を選択し、 **[OK]** を選択します。
+4. **[設定]** で、**VNet-Server** 仮想ネットワークと **SN-Web** サブネットを選択します。 パブリック受信ポートでは、 **[HTTP (80)]**  >  **[HTTPS (443)]**  >  **[RDP (3389)]** を選択し、 **[OK]** を選択します。
 5. **[概要]** ページで、 **[作成]** を選択します。
 
-この手順は、完了するまでに数分かかります。 仮想マシンには、Web-01-ip という基本的な動的パブリック IP を持つ NIC が接続されます。 このパブリック IP は、仮想マシンが再起動されるたびに変わります。
+このデプロイが完了するまでに数分かかります。 仮想マシンには、Web-01-ip という基本的な動的パブリック IP を備えた NIC が接続されます。 このパブリック IP は、仮想マシンが再起動されるたびに変わります。
 
 ### <a name="install-iis"></a>IIS のインストール
 

@@ -1,14 +1,14 @@
 ---
-title: AzCopy を使用して Azure DevTest Labs に VHD ファイルをアップロードする | Microsoft Docs
+title: AzCopy を使用して Azure DevTest Labs に VHD ファイルをアップロードする
 description: この記事では、AzCopy コマンド ライン ユーティリティを使用して、Azure DevTest Labs のラボのストレージ アカウントに VHD ファイルをアップロードするチュートリアルを示します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 1d8ede0f78726b04ac862a00b559b8d42c3ed1cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39dcac5dffdd4aa041437ccb541b528ee8612881
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88650776"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658319"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>AzCopy を使用してラボのストレージ アカウントに VHD ファイルをアップロードする
 

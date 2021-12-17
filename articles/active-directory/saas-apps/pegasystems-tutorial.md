@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Pega Systems の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と Pega Systems の統合'
 description: このチュートリアルでは、Azure Active Directory と Pega Systems の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/25/2021
+ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 802bd61d499f64a128a4d1c0585363cb1962f8a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 464e05a715f5fa221659d37e35901e945ecc87d6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650041"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300152"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>チュートリアル: Azure Active Directory と Pega Systems の統合
+# <a name="tutorial-azure-ad-sso-integration-with-pega-systems"></a>チュートリアル: Azure AD SSO と Pega Systems の統合
 
 このチュートリアルでは、Pega Systems と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Pega Systems を統合すると、次のことができます。
 
@@ -63,7 +63,7 @@ Pega Systems に対して Azure AD SSO を構成してテストするには、�
     1. **[Pega Systems テスト ユーザーの作成](#create-pega-systems-test-user)** - Pega Systems で Britta Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
@@ -73,21 +73,17 @@ Pega Systems に対して Azure AD SSO を構成してテストするには、�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** ダイアログ ボックスで、アプリケーションを IDP 開始モードで構成する場合は、次の手順に従います。
+4. **[基本的な SAML 構成]** ダイアログ ボックスで、アプリケーションを IDP 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[基本的な SAML 構成] ダイアログ ボックス](common/idp-intiated.png)
-
-    1. **[識別子]** ボックスに、次のパターンで URL を入力します。
+    1. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。
 
        `https://<customername>.pegacloud.io:443/prweb/sp/<instanceID>`
 
-    1. **[応答 URL]** ボックスに、次のパターンで URL を入力します。
+    1. **[応答 URL]** ボックスに、 の形式で URL を入力します。
 
        `https://<customername>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
 
 5. アプリケーションを SP 開始モードで構成する場合は、 **[追加の URL を設定します]** を選択して次の手順に従います。
-
-    ![[Pega Systems のドメインと URL] のシングル サインオン情報](common/both-advanced-urls.png)
 
     1. **[サインオン URL]** ボックスに、サインオン URL の値を入力します。
 
@@ -101,7 +97,6 @@ Pega Systems に対して Azure AD SSO を構成してテストするには、�
     ![[User Attributes (ユーザー属性)]](common/edit-attribute.png)
 
 7. 前のスクリーンショットに示されている属性に加えて、Pega Systems アプリケーションでは、いくつかの追加の属性が SAML 応答で返される必要があります。 **[ユーザー属性]** ダイアログ ボックスの **[ユーザー要求]** セクションで、次の手順に従って、以下の SAML トークン属性を追加します。
-
     
    - `uid`
    - `cn`
@@ -166,17 +161,17 @@ Pega Systems に対して Azure AD SSO を構成してテストするには、�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="configure-pega-systems-sso"></a>Pega Systems の SSO の構成
+## <a name="configure-pega-systems-sso"></a>Pega Systems の SSO の構成
 
 1. **Pega Systems** 側でシングル サインオンを構成するには、別のブラウザー ウィンドウで管理者アカウントを使って Pega ポータルにサインインします。
 
-2. **[Create]\(作成\)**  >  **[SysAdmin]**  >  **[Authentication Service]\(認証サービス\)** の順に選択します。
+1. **[Create]\(作成\)**  >  **[SysAdmin]**  >  **[Authentication Service]\(認証サービス\)** の順に選択します。
 
     ![[Authentication Service]\(認証サービス\) を選択する](./media/pegasystems-tutorial/admin.png)
     
-3. **[Create Authentication Service]\(認証サービスの作成\)** 画面で次の操作を実行します。
+1. **[Create Authentication Service]\(認証サービスの作成\)** 画面で、次の手順を実行します。
 
-    ![[Create Authentication Service]\(認証サービスの作成\) 画面](./media/pegasystems-tutorial/admin1.png)
+    ![[Create Authentication Service]\(認証サービスの作成\) 画面](./media/pegasystems-tutorial/service.png)
 
     1. **[Type]\(種類\)** ドロップダウン リストで、 **[SAML 2.0]** を選択します。
 
@@ -186,17 +181,17 @@ Pega Systems に対して Azure AD SSO を構成してテストするには、�
 
     1. **[Create and open]\(作成して開く\)** を選択します。
     
-4. **[Identity Provider (IdP) information]\(ID プロバイダー (IdP) 情報\)** セクションで **[Import IdP metadata]\(IdP メタデータのインポート\)** を選択し、Azure portal からダウンロードしたメタデータ ファイルを参照します。 **[Submit]\(送信\)** をクリックして、メタデータを読み込みます。
+1. **[Identity Provider (IdP) information]\(ID プロバイダー (IdP) 情報\)** セクションで **[Import IdP metadata]\(IdP メタデータのインポート\)** を選択し、Azure portal からダウンロードしたメタデータ ファイルを参照します。 **[Submit]\(送信\)** をクリックして、メタデータを読み込みます。
 
-    ![ID プロバイダー (IdP) 情報セクション](./media/pegasystems-tutorial/admin2.png)
+    ![ID プロバイダー (IdP) 情報セクション](./media/pegasystems-tutorial/metadata.png)
     
     インポートによって、次に示すように、IdP データが設定されます。
 
-    ![インポートされた IdP データ](./media/pegasystems-tutorial/idp.png)
+    ![インポートされた IdP データ](./media/pegasystems-tutorial/data.png)
     
-6. **[Service Provider (SP) settings]\(サービス プロバイダー (SP) 設定\)** セクションで、以下の手順を行います。
+1. **[Service Provider (SP) settings]\(サービス プロバイダー (SP) 設定\)** セクションで、以下の手順を行います。
 
-    ![サービス プロバイダー設定](./media/pegasystems-tutorial/sp.png)
+    ![サービス プロバイダー設定](./media/pegasystems-tutorial/settings.png)
 
     1. **[Entity Identification]\(エンティティ ID\)** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションにある **[識別子]** ボックスに貼り付けます。
 
@@ -204,13 +199,13 @@ Pega Systems に対して Azure AD SSO を構成してテストするには、�
 
     1. **[Disable request signing]\(要求署名を無効にする\)** をオンにします。
 
-7. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
 ### <a name="create-pega-systems-test-user"></a>Pega Systems テスト ユーザーの作成
 
 次に、Pega Systems で Britta Simon というユーザーを作成する必要があります。 [Pega Systems サポート チーム](https://www.pega.com/contact-us)と協力して、ユーザーを作成します。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
@@ -224,8 +219,8 @@ Pega Systems に対して Azure AD SSO を構成してテストするには、�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Pega Systems に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Pega Systems] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Pega Systems に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Pega Systems] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Pega Systems に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Pega Systems を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Pega Systems を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

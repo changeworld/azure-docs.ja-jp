@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 01/26/2021
-  ms.openlocfilehash: 08c6275a9202f8d52e4e3f72f18822633cd113bc
-  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+  ms.date: 09/28/2021
+  ms.openlocfilehash: b37cbe833159340c3e5b655edbe7eafa30f694a7
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/27/2021
-  ms.locfileid: "98881773"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132286319"
 landingContent:
 - title: Azure Lighthouse について
   linkLists:
@@ -25,8 +25,8 @@ landingContent:
       url: ./overview.md
   - linkListType: concept
     links:
-    - text: Azure の委任されたリソース管理
-      url: ./concepts/azure-delegated-resource-management.md
+    - text: アーキテクチャ
+      url: ./concepts/architecture.md
     - text: テナント間の管理エクスペリエンス
       url: ./concepts/cross-tenant-management-experience.md
 - title: はじめに
@@ -35,6 +35,8 @@ landingContent:
     links:
     - text: Azure Lighthouse への顧客のオンボード
       url: ./how-to/onboard-customer.md
+    - text: Just-In-Time ロール (プレビュー)
+      url: ./how-to/create-eligible-authorizations.md
     - text: 顧客を表示し、管理する
       url: ./how-to/view-manage-customers.md
     - text: パートナー ID をリンクする
@@ -67,7 +69,7 @@ landingContent:
     links:
     - text: サービス プロバイダーを表示し、管理する
       url: ./how-to/view-manage-service-providers.md
-    - text: サービス プロバイダーのアクティビティを表示する
+    - text: 管理テナントのアクティビティを監視する
       url: ./how-to/view-service-provider-activity.md
 - title: サンプルとテンプレート
   linkLists:
@@ -81,19 +83,15 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Sentinel ワークスペースの管理
+    - text: Microsoft Sentinel ワークスペースの管理
       url: ./how-to/manage-sentinel-workspaces.md
     - text: Azure Monitor ログを使用する
       url: ./how-to/monitor-at-scale.md
-    - text: 委任変更の監視
-      url: ./how-to/monitor-delegation-changes.md
     - text: Azure Policy をデプロイする
       url: ./how-to/policy-at-scale.md
-    - text: 修復できるポリシーをデプロイする
-      url: ./how-to/deploy-policy-remediation.md
     - text: Azure Arc を使用してハイブリッド マシンを管理する
       url: ./how-to/manage-hybrid-infrastructure-arc.md
-    - text: 移行プロジェクトの管理
+    - text: Azure Migrate プロジェクトを管理する
       url: ./how-to/migration-at-scale.md
 - title: リファレンス - SDK
   linkLists:
@@ -117,8 +115,8 @@ landingContent:
   linkLists:
   - linkListType: download
     links:
-    - text: OpenAPI - 2019-06-01
-      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
+    - text: OpenAPI - 2019-09-01
+      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-09-01
     - text: SDK for .NET - NuGet
       url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
     - text: Python 用 SDK - PyPi
@@ -130,4 +128,4 @@ landingContent:
     - text: Azure Lighthouse 用の Microsoft Q&A
       url: /answers/topics/azure-lighthouse.html
     - text: 製品機能のリクエスト
-      url: https://feedback.azure.com/forums/922753
+      url: https://feedback.azure.com/d365community/forum/cd8dfdcb-f824-ec11-b6e6-000d3a4f0da0

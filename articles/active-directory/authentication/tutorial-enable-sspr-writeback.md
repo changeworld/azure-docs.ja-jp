@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 11/11/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 444ca19732921b336cae32a9b1eb5755a08e4bd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87537ad4223aad23d9649fb7806d9158b02cb42d
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97028055"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370198"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>チュートリアル:オンプレミス環境への Azure Active Directory のセルフサービス パスワード リセットのライトバックを有効にする
 
-Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) を使用すると、ユーザーは Web ブラウザーを使用して自分のパスワードを更新したり、自分のアカウントのロックを解除したりできます。 Azure AD がオンプレミスの Active Directory Domain Services (AD DS) 環境に接続されているハイブリッド環境では、このシナリオにより、パスワードが 2 つのディレクトリ間で異なる場合があります。
+Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) を使用すると、ユーザーは Web ブラウザーを使用して自分のパスワードを更新したり、自分のアカウントのロックを解除したりできます。 「[Azure AD の SSPR を有効にして構成する方法](https://www.youtube.com/watch?v=rA8TvhNcCvQ)」の動画をぜひご覧ください。 Azure AD がオンプレミスの Active Directory Domain Services (AD DS) 環境に接続されているハイブリッド環境では、このシナリオにより、パスワードが 2 つのディレクトリ間で異なる場合があります。
 
 パスワード ライトバックを使用すると、Azure AD でのパスワード変更をオンプレミスの AD DS 環境に同期することができます。 Azure AD Connect には、これらのパスワード変更を Azure AD から既存のオンプレミス ディレクトリに送信するための安全なメカニズムが用意されています。
 
@@ -48,11 +48,11 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
     * 必要に応じて、[前のチュートリアルを完了して Azure AD SSPR を有効にしてください](tutorial-enable-sspr.md)。
 * Azure AD Connect の現在のバージョンを使用して構成された既存のオンプレミスの AD DS 環境。
     * 必要に応じて、[簡易](../hybrid/how-to-connect-install-express.md)または[カスタム](../hybrid/how-to-connect-install-custom.md)設定を使用して Azure AD Connect を構成してください。
-    * パスワード ライトバックを使用するには、ドメイン コントローラーが Windows Server 2012 以降である必要があります。
+    * パスワード ライトバックを使用するために、ドメイン コントローラーはサポートされている任意のバージョンの Windows Server を実行できます。
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Azure AD Connect に対するアカウントのアクセス許可を構成する
 
-Azure AD Connect を使用すると、オンプレミスの AD DS 環境と Azure AD の間でユーザー、グループ、資格情報を同期できます。 通常は、オンプレミスの AD DS ドメインに参加している Windows Server 2012 以降のコンピューターに Azure AD Connect をインストールします。
+Azure AD Connect を使用すると、オンプレミスの AD DS 環境と Azure AD の間でユーザー、グループ、資格情報を同期できます。 通常は、オンプレミスの AD DS ドメインに参加している Windows Server 2016 以降のコンピューターに Azure AD Connect をインストールします。
 
 SSPR のライトバックを正しく操作するには、Azure AD Connect で指定されたアカウントに適切なアクセス許可とオプションが設定されている必要があります。 現在どのアカウントが使用されているかわからない場合は、Azure AD Connect を開き、 **[現在の構成を表示]** オプションを選択します。 アクセス許可を追加する必要があるアカウントが、 **[同期されたディレクトリ]** の下に表示されます。 このアカウントには、次のアクセス許可とオプションを設定する必要があります。
 
@@ -87,12 +87,12 @@ SSPR のライトバックを正しく操作するには、Azure AD Connect で�
 
 アクセス許可を更新すると、ディレクトリ内のすべてのオブジェクトにこれらのアクセス許可がレプリケートされるまで最大で 1 時間以上かかる場合があります。
 
-オンプレミスの AD DS 環境のパスワード ポリシーによって、パスワードのリセットが正しく処理されない場合があります。 パスワード ライトバックが最も効率よく機能させるには、"*パスワードの変更禁止期間*" のグループ ポリシーを 0 に設定する必要があります。 この設定は、 **[コンピューターの構成] > [ポリシー] > [Windows の設定] > [セキュリティの設定] > [アカウント ポリシー]** の下の `gpedit.msc` にあります。
+オンプレミスの AD DS 環境のパスワード ポリシーによって、パスワードのリセットが正しく処理されない場合があります。 パスワード ライトバックが最も効率よく機能させるには、"*パスワードの変更禁止期間*" のグループ ポリシーを 0 に設定する必要があります。 この設定は、 **[コンピューターの構成] > [ポリシー] > [Windows の設定] > [セキュリティの設定] > [アカウント ポリシー]** の下の `gpmc.msc` にあります。
 
 グループ ポリシーを更新する場合は、更新されたポリシーがレプリケートされるまで待つか、`gpupdate /force` コマンドを使用します。
 
 > [!Note]
-> パスワードがすぐに変更されるようにするには、パスワード ライトバックを 0 に設定する必要があります。 ただし、ユーザーがオンプレミスのポリシーに準拠していて、 *[パスワードの変更禁止期間]* が 0 より大きい値に設定されている場合でも、パスワード ライトバックはオンプレミスのポリシーが評価された後で機能します。
+> パスワードがすぐに変更されるようにするには、 *[パスワードの変更禁止期間]* を 0 に設定する必要があります。 ただし、ユーザーがオンプレミスのポリシーに準拠していて、 *[パスワードの変更禁止期間]* が 0 より大きい値に設定されている場合でも、パスワード ライトバックはオンプレミスのポリシーが評価された後で機能します。
 
 ## <a name="enable-password-writeback-in-azure-ad-connect"></a>Azure AD Connect でパスワード ライトバックを有効にする
 
@@ -109,6 +109,7 @@ SSPR のライトバックを有効にするには、まず、Azure AD Connect �
 
     ![パスワード ライトバック用に Azure AD Connect を構成する](media/tutorial-enable-sspr-writeback/enable-password-writeback.png)
 
+1. **[ディレクトリ拡張機能]** ページで、 **[次へ]** を選択します。
 1. **[構成の準備完了]** ページで **[構成]** を選び、処理が完了するまで待ちます。
 1. 構成の完了が表示されたら、 **[終了]** を選びます。
 

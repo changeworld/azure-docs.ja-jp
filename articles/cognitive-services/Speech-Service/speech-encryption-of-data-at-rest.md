@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 07/14/2021
 ms.author: egeaney
-ms.openlocfilehash: aa0fe33dff0161767b74546aad49003d8fc70c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdf8276904fda5098b3192779e0372b4a1bcc9d2
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95015258"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766625"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>Speech サービスによる保存データの暗号化
 
@@ -35,9 +35,16 @@ Custom Speech とカスタム音声を使用すると、Speech サービスに�
 
 詳しくは、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関する記事をご覧ください。
 
+一方、カスタム コマンドを使用すると、独自の暗号化キーを使用してサブスクリプションを管理できます。 カスタマー マネージド キー (CMK、Bring Your Own Key (BYOK) とも呼ばれます) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。 カスタム コマンドと CMK の詳細については、「[カスタム コマンドによる保存データの暗号化](custom-commands-encryption-of-data-at-rest.md)」を参照してください。
+
 ## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>カスタマイズとログ記録のための独自ストレージの持ち込み (BYOS)
 
-独自ストレージの持ち込みへのアクセスを要求するには、 [Speech サービス - 独自ストレージの持ち込み (BYOS) 要求フォーム](https://aka.ms/cogsvc-cmk)に記入して送信します。 承認されたら、カスタマイズとログ記録に必要なデータを格納するために、独自のストレージ アカウントを作成する必要があります。 ストレージ アカウントを追加すると、Speech サービス リソースによって、システム割り当てのマネージド ID が有効になります。 システム割り当てのマネージド ID が有効になると、このリソースは Azure Active Directory (AAD) に登録されます。 登録された後、そのストレージ アカウントへのアクセス権がマネージド ID に付与されます。 マネージド ID について詳しくは、こちらをご覧ください。 詳しくは、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関する記事をご覧ください。
+独自ストレージの持ち込みへのアクセスを要求するには、 [Speech サービス - 独自ストレージの持ち込み (BYOS) 要求フォーム](https://aka.ms/cogsvc-cmk)に記入して送信します。 承認されたら、カスタマイズとログ記録に必要なデータを格納するために、独自のストレージ アカウントを作成する必要があります。 ストレージ アカウントを追加すると、Speech サービス リソースによって、システム割り当てのマネージド ID が有効になります。
+
+> [!IMPORTANT]
+> BYOS 機能を有効にした Speech リソースの作成に使用するユーザー アカウントには、[Azure サブスクリプション スコープで所有者ロール](../../cost-management-billing/manage/add-change-subscription-administrator.md#to-assign-a-user-as-an-administrator)を割り当てる必要があります。 そうしなければ、リソースのプロビジョニング中に承認エラーが発生します。
+
+システム割り当てのマネージド ID が有効になると、このリソースは Azure Active Directory (AAD) に登録されます。 登録された後、そのストレージ アカウントへのアクセス権がマネージド ID に付与されます。 詳しくは、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関する記事をご覧ください。
 
 > [!IMPORTANT]
 > システム割り当てのマネージド ID を無効にすると、ストレージ アカウントへのアクセス権が削除されます。 これにより、ストレージ アカウントへのアクセスを必要とする Speech サービスの部分は動作を停止します。  

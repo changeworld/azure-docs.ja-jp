@@ -1,24 +1,24 @@
 ---
-title: Windows Virtual Desktop (クラシック) の診断ツールをデプロイする - Azure
-description: Windows Virtual Desktop (クラシック) の診断 UX ツールをデプロイする方法。
+title: Azure Virtual Desktop (クラシック) の診断ツールをデプロイする - Azure
+description: Azure Virtual Desktop (クラシック) の診断 UX ツールをデプロイする方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ed010b3eed875c8b14892a588be13a32fbbd95ac
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 92876524f036126f39a2e4e5db8eb5dbd660cee9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445093"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754783"
 ---
-# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows Virtual Desktop (クラシック) の診断ツールをデプロイする
+# <a name="deploy-the-azure-virtual-desktop-classic-diagnostics-tool"></a>Azure Virtual Desktop (クラシック) の診断ツールをデプロイする
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (クラシック) に適用されます。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。
 
-Windows Virtual Desktop の診断ツールでは、次のことを行うことができます。
+Azure Virtual Desktop の診断ツールでは、次のことを行うことができます。
 
 - 1 週間にわたり 1 人のユーザーの診断アクティビティ (管理、接続、またはフィード) を参照します。
 - Log Analytics ワークスペースから接続アクティビティについてのセッション ホスト情報を収集します。
@@ -50,7 +50,7 @@ Windows Virtual Desktop の診断ツールでは、次のことを行うこと�
 このセクションでは、PowerShell を使用して、サービス プリンシパルで Azure Active Directory アプリを作成し、それに対する API アクセス許可を取得する方法について説明します。
 
 >[!NOTE]
->API アクセス許可は、Windows Virtual Desktop、Log Analytics、および Microsoft Graph API アクセス許可で、Azure Active Directory アプリケーションに追加されます。
+>API アクセス許可は、Azure Virtual Desktop、Log Analytics、および Microsoft Graph API アクセス許可で、Azure Active Directory アプリケーションに追加されます。
 
 1. PowerShell を管理者として開きます。
 2. 診断ツールに使用する Azure サブスクリプションで、所有者または共同作成者のアクセス許可を持つアカウントを使用して Azure にサインインします。
@@ -200,7 +200,7 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 ユーザーが診断ツールを使用できるようにする前に、ユーザーが次のアクセス許可を持っていることを確認してください。
 
 - ユーザーは、Log Analytics の読み取りアクセス権が必要です。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../../azure-monitor/roles-permissions-security.md)を参照してください。
--  ユーザーは、Windows Virtual Desktop テナントに対する読み取りアクセス権 (RDS 閲覧者ロール) も必要です。 詳細については、「[Windows Virtual Desktop における委任されたアクセス](delegated-access-virtual-desktop-2019.md)」を参照してください。
+-  ユーザーは、Azure Virtual Desktop テナントに対する読み取りアクセス権 (RDS 閲覧者ロール) も必要です。 詳細については、「[Azure Virtual Desktop における委任されたアクセス](delegated-access-virtual-desktop-2019.md)」を参照してください。
 
 また、ユーザーに次の情報を提供する必要もあります。
 

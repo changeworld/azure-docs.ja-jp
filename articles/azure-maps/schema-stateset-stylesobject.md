@@ -7,21 +7,16 @@ ms.date: 12/07/2020
 ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 08379e66c97d34eea53410190475e90e156a58e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a4095cd5f15bae3089b597ef6773c3a96e48f45
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96903345"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747756"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>動的マップの StylesObject スキーマ リファレンス ガイド
 
-> [!IMPORTANT]
-> Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
- `StylesObject` は、stateset スタイルを表す `StyleObject` 配列です。 Azure Maps Creator (プレビュー) [Feature State サービス](/rest/api/maps/featurestate)を使用して、stateset スタイルを屋内マップ データ地物に適用します。 stateset スタイルを作成して屋内マップ機能に関連付けると、それらを使用して動的な屋内マップを作成できます。 動的な屋内マップの作成の詳細については、「[Creator の屋内マップに動的スタイル設定を実装する](indoor-map-dynamic-styling.md)」を参照してください。
+ `StylesObject` は、stateset スタイルを表す `StyleObject` 配列です。 Azure Maps Creator [Feature State サービス](/rest/api/maps/v2/feature-state)を使用して、stateset スタイルを屋内マップ データ地物に適用します。 stateset スタイルを作成して屋内マップ機能に関連付けると、それらを使用して動的な屋内マップを作成できます。 動的な屋内マップの作成の詳細については、「[Creator の屋内マップに動的スタイル設定を実装する](indoor-map-dynamic-styling.md)」を参照してください。
 
 ## <a name="styleobject"></a>StyleObject
 

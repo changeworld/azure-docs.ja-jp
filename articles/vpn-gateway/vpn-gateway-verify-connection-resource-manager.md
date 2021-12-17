@@ -1,23 +1,23 @@
 ---
-title: 'Azure VPN Gateway: ゲートウェイ接続を確認する'
-description: この記事では、仮想ネットワーク VPN Gateway の接続を確認する方法を説明します。
+title: ゲートウェイ接続を確認する
+titleSuffix: Azure VPN Gateway
+description: 仮想ネットワーク VPN Gateway の接続を確認する方法を説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: b59294d07ef64875cb6fbd3e3a49dec61d8b8135
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eaeb77e1dafe7b2791537190d0b4d220363280a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94659405"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729472"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>VPN Gateway 接続の確認
 
-この記事では、クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方での VPN ゲートウェイ接続を確認する方法について説明します。
+この記事では、クラシック デプロイ モデルと [Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)の両方での VPN ゲートウェイ接続を確認する方法について説明します。
 
 ## <a name="azure-portal"></a>Azure portal
 

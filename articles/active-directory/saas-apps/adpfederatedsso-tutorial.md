@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と ADP の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と ADP の統合'
 description: Azure Active Directory と ADP の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,23 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/24/2020
+ms.date: 09/30/2021
 ms.author: jeedes
-ms.openlocfilehash: cff4a75468181354a2ff61c0f9ac36bf6c78b9dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c008122f0354b77505df61bdade90adb3960782f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736127"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132280812"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ADP の統合
+# <a name="tutorial-azure-ad-sso-integration-with-adp"></a>チュートリアル: Azure AD SSO と ADP の統合
 
 このチュートリアルでは、ADP と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と ADP を統合すると、次のことができます。
 
 * ADP にアクセスするユーザーを Azure AD 内で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して ADP に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,16 +33,19 @@ ms.locfileid: "98736127"
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * ADP でのシングル サインオン (SSO) が有効なサブスクリプション。
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* ADP では、**IDP** によって開始される SSO がサポートされます
+* ADP では、**IDP** Initiated SSO がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
-## <a name="adding-adp-from-the-gallery"></a>ギャラリーからの ADP の追加
+## <a name="add-adp-from-the-gallery"></a>ギャラリーから ADP を追加する
 
 Azure AD への ADP の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に ADP を追加する必要があります。
 
@@ -73,7 +75,7 @@ ADP に対する Azure AD SSO を構成してテストするには、次の手�
 
 1. Azure Portal の **ADP** アプリケーション統合ページで、**[プロパティ]** タブをクリックし、次の手順を実行します。 
 
-    ![シングル サインオンのプロパティ](./media/adpfederatedsso-tutorial/tutorial_adp_prop.png)
+    ![シングル サインオンのプロパティ](./media/adpfederatedsso-tutorial/properties.png)
 
     a. **[ユーザーのサインインが有効になっていますか?]** フィールドの値を **[はい]** に設定します。
 
@@ -91,13 +93,13 @@ ADP に対する Azure AD SSO を構成してテストするには、次の手�
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    **[識別子 (エンティティ ID)]** ボックスに、`https://fed.adp.com` という URL を入力します。
+    **[識別子 (エンティティ ID)]** テキスト ボックスに、`https://fed.adp.com` という URL を入力します。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-6. **[ADP のセットアップ]** セクションで、ご自分の要件に基づいて適切な URL をコピーします。
+1. **[ADP のセットアップ]** セクションで、ご自分の要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -146,7 +148,7 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 1. 結果のパネルから **[ADP]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 1. Azure Portal の **ADP** アプリケーション統合ページで、**[プロパティ]** タブをクリックし、次の手順を実行します。  
 
-    ![リンクされたシングル サインオンのプロパティ](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
+    ![シングル サインオンのリンクされたプロパティのタブ](./media/adpfederatedsso-tutorial/application.png)
 
     1. **[ユーザーのサインインが有効になっていますか?]** フィールドの値を **[はい]** に設定します。
 
@@ -158,11 +160,11 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
 1. **[シングル サインオン方式の選択]** ダイアログで、**[モード]** として **[リンク]** を選択します。 アプリケーションを **ADP** にリンクさせます。
 
-    ![リンクされたシングル サインオン](./media/adpfederatedsso-tutorial/tutorial_adp_linked.png)
+    ![リンクされたシングル サインオン](./media/adpfederatedsso-tutorial/linked.png)
 
 1. **[サインオン URL の構成]** セクションに移動し、次の手順を実行します。
 
-    ![シングル サインオンのプロパティ](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
+    ![シングル サインオンを構成する](./media/adpfederatedsso-tutorial/users.png)
 
     1. 上記の **[プロパティ]** タブ (メインの ADP アプリケーション) からコピーした、**ユーザーのアクセス URL** を貼り付けます。
 
@@ -206,11 +208,10 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した ADP に自動的にサインインされます
+* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した ADP に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [ADP] タイルをクリックすると、SSO を設定した ADP に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [ADP] タイルをクリックすると、SSO を設定した ADP に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-ADP を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+ADP を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

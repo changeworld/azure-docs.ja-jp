@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/09/2019
-ms.openlocfilehash: 724b94a44ae289063bbb1c6ebf53b38c0a617b88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/22/2021
+ms.openlocfilehash: 8f5965b81e403e58e6c58e0ca3d567375e211d37
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799329"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426177"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -22,13 +22,13 @@ LUIS はサービス内にさまざまな機能を備えています。 すべ�
 
 ## <a name="multi-language-luis-apps"></a>複数言語の LUIS アプリ
 
-チャットボットなどの多言語 LUIS クライアント アプリケーションが必要な場合は、オプションがいくつかあります。 LUIS によってすべての言語がサポートされている場合は、言語ごとに LUIS アプリを開発します。 各 LUIS アプリに一意のアプリ ID と、エンドポイント ログがあります。 LUIS でサポートされていない言語に対して、言語の解釈を提供する必要がある場合は、[Translator サービス](../Translator/translator-info-overview.md)を使用して、サポートされている言語に発話を翻訳し、LUIS エンドポイントに送信して、結果スコアを受け取ることができます。
+チャットボットなどの多言語 LUIS クライアント アプリケーションが必要な場合は、オプションがいくつかあります。 LUIS によってすべての言語がサポートされている場合は、言語ごとに LUIS アプリを開発します。 各 LUIS アプリに一意のアプリ ID と、エンドポイント ログがあります。 LUIS でサポートされていない言語に対して、言語の解釈を提供する必要がある場合は、[Translator サービス](../translator/translator-overview.md)を使用して、サポートされている言語に発話を翻訳し、LUIS エンドポイントに送信して、結果スコアを受け取ることができます。
 
 ## <a name="languages-supported"></a>サポートされている言語
 
 LUIS が理解する発話の言語を次に示します。
 
-| Language |Locale  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](../text-analytics/language-support.md)<br>(センチメントと<br>キーワード)|
+| Language |Locale  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | **[感情分析](../language-service/sentiment-opinion-mining/overview.md)と[キー フレーズ抽出](../language-service/key-phrase-extraction/overview.md)|
 |--|--|:--:|:--:|:--:|:--:|
 | アラビア語 (プレビュー - 現代標準アラビア語) |`ar-AR`|-|-|-|-|
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
@@ -37,17 +37,17 @@ LUIS が理解する発話の言語を次に示します。
 | フランス語 (カナダ) |`fr-CA` |-|-|-|✔|
 | フランス語 (フランス) |`fr-FR` |✔| ✔ |✔ |✔|
 | ドイツ語 |`de-DE` |✔| ✔ |✔ |✔|
-| グジャラート語 | `gu-IN`|-|-|-|-|
-| ヒンディー語 | `hi-IN`|-|✔|-|-|
+| グジャラート語 (プレビュー) | `gu-IN`|-|-|-|-|
+| ヒンディー語 (プレビュー) | `hi-IN`|-|✔|-|-|
 | イタリア語 |`it-IT` |✔| ✔ |✔|✔|
 | *[日本語](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|キー フレーズのみ|
 | 韓国語 |`ko-KR` |✔|-|-|キー フレーズのみ|
-| マラーティー語 | `mr-IN`|-|-|-|-|
+| マラーティー語 (プレビュー) | `mr-IN`|-|-|-|-|
 | ポルトガル語 (ブラジル) |`pt-BR` |✔| ✔ |✔ |一部のサブカルチャのみ|
 | スペイン語 (メキシコ)|`es-MX` |-|✔|✔|✔|
 | スペイン語 (スペイン) |`es-ES` |✔| ✔ |✔|✔|
-| タミル語 | `ta-IN`|-|-|-|-|
-| テルグ語 | `te-IN`|-|-|-|-|
+| タミール語 (プレビュー) | `ta-IN`|-|-|-|-|
+| テルグ語 (プレビュー) | `te-IN`|-|-|-|-|
 | トルコ語 | `tr-TR` |✔|✔|-|センチメントのみ|
 
 
@@ -63,7 +63,7 @@ LUIS が理解する発話の言語を次に示します。
      - "でございます" は、"です" と同じではありません。
      - "です" は、"だ" と同じではありません。
 
-[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
+[!INCLUDE [Language service support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>Speech API のサポートされている言語
 Speech ディクテーション モードの言語については、Speech の「[Supported language (サポートされている言語)](../speech-service/speech-to-text.md)」を参照してください。

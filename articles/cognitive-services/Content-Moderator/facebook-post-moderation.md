@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: pafarley
-ms.openlocfilehash: f3b43ed6a86276b308599f9091d581423b0f363c
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: f88c5d4746fbafaf8255f2a767cef1cc2f145954
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220992"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074515"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 このチュートリアルでは、Azure Content Moderator を使用して Facebook ページの投稿とコメントをモデレートする方法について説明します。 訪問者が投稿したコンテンツは Facebook から Content Moderator サービスに送信されるようになります。 その後、コンテンツのスコアとしきい値に応じて、Content Moderator のワークフローは、コンテンツを公開するか、レビュー ツール内にレビューを作成します。 このシナリオの例が動作しているところは、[Build 2017 のデモ ビデオ](https://channel9.msdn.com/Events/Build/2017/T6033)でご覧いただけます。
 
@@ -119,7 +121,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     > [!IMPORTANT]
     > 2018 年に、Facebook は Facebook アプリのより厳密な審査を実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、セクション 2、3、4 を実行できません。
 
-    1. [Facebook](https://www.facebook.com/bookmarks/pages) に移動し、**新しい Facebook ページ** を作成します。
+    1. [Facebook](https://www.facebook.com/pages) に移動し、**新しい Facebook ページ** を作成します。
     1. Facebook アプリがこのページにアクセスできるようにするには、次の手順を実行します。
         1. [Graph API Explorer](https://developers.facebook.com/tools/explorer/) に移動します。
         1. **[Application]\(アプリケーション\)** を選択します。

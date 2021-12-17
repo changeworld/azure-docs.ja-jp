@@ -3,12 +3,12 @@ title: Batch でのコンピューティング集中型 Azure VM の使用
 description: Azure Batch プールで HPC および GPU の仮想マシン サイズを利用する方法。 OS の依存関係について学習し、シナリオ例をいくつか確認してください。
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10abcfeb8a754ccaeac6de9986612c81fe4decbe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86147343"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426660"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
@@ -53,13 +53,15 @@ Batch のコンピューティング集中型サイズの RDMA または GPU の
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows プール - クラウド サービス構成
 
-> [!NOTE]
-> N シリーズのサイズは、クラウド サービス構成の Batch プールではサポートされていません。
->
+> [!WARNING]
+> Cloud Services 構成プールは[非推奨](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)とされます。 代わりに、仮想マシン構成プールを使用してください。
 
 | サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md) | RDMA | Windows Server 2016、2012 R2、2012、または<br/>2008 R2 (ゲスト OS ファミリ) | Microsoft MPI 2012 R2 以降または<br/>Intel MPI 5<br/><br/>Windows RDMA ドライバー | ノード間通信を有効にし、<br/> 同時実行タスクの実行を無効にする |
+
+> [!NOTE]
+> N シリーズのサイズは、クラウド サービス構成 プールではサポートされていません。
 
 ## <a name="pool-configuration-options"></a>プール構成オプション
 
@@ -114,7 +116,7 @@ Linux NC ノードのプールで CUDA アプリケーションを実行する�
 1. Ubuntu 16.04 LTS を実行する Azure NC シリーズ VM をデプロイします。 たとえば、米国中南部リージョンに VM を作成します。 
 2. Azure portal、Azure サブスクリプションに接続するクライアント コンピューター、または Azure Cloud Shell を使用して、[NVIDIA GPU ドライバー拡張機能](../virtual-machines/extensions/hpccompute-gpu-linux.md
 )を VM に追加します。 または、手順に従って VM に接続し、手動で [CUDA ドライバーをインストール](../virtual-machines/linux/n-series-driver-setup.md)します。
-3. 次の手順に従って、Batch 用の [Shared Image Gallery イメージ](batch-sig-images.md)を作成します。
+3. 次の手順に従って、Batch 用の [Azure Compute Gallery イメージ](batch-sig-images.md)を作成します。
 4. NC VM をサポートするリージョンに Batch アカウントを作成します。
 5. Batch API または Azure Portal で、[カスタム イメージを使い](batch-sig-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
 
@@ -133,8 +135,8 @@ Azure H16r VM ノードのプールで Windows MPI アプリケーションを�
 2. Azure サブスクリプションに接続するクライアント コンピューターから [Azure PowerShell コマンドを実行して](../virtual-machines/sizes-hpc.md)、または Azure Cloud Shell を使用して、HpcVmDrivers 拡張機能を VM に追加します。 
 1. VM へのリモート デスクトップ接続を作成します。
 1. 最新バージョンの Microsoft MPI の[セットアップ パッケージ](https://www.microsoft.com/download/details.aspx?id=57467) (MSMpiSetup.exe) をダウンロードし、Microsoft MPI をインストールします。
-1. 次の手順に従って、Batch 用の [Shared Image Gallery イメージ](batch-sig-images.md)を作成します。
-1. Batch API または Azure portal で、[Shared Image Gallery を使い](batch-sig-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
+1. 次の手順に従って、Batch 用の [Azure Compute Gallery イメージ](batch-sig-images.md)を作成します。
+1. Batch API または Azure portal で、[Azure Compute Gallery を使い](batch-sig-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
 
 | 設定 | 値 |
 | ---- | ---- |

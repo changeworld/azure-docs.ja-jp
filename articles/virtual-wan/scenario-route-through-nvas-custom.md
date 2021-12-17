@@ -1,24 +1,27 @@
 ---
 title: カスタム設定を使用して NVA 経由でトラフィックをルーティングする
 titleSuffix: Azure Virtual WAN
-description: このシナリオでは、インターネットへのトラフィックに別の NVA を使用することで、NVA 経由でトラフィックをルーティングできます。
+description: ネットワーク仮想アプライアンス (NVA) 経由でトラフィックをルーティングするための Virtual WAN ルーティングのシナリオについて説明します。 このシナリオでは、インターネットへのトラフィックに別の NVA を使用して、またカスタム設定を使用して、NVA 経由でトラフィックをルーティングします。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6291964aff7c215df7f738ab103947dcb9b1b1d4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1602207c83f8ff4a632428c0308b514c6d552058
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036875"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428256"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>シナリオ:カスタム設定を使用して NVA 経由でトラフィックをルーティングする
 
-Azure Virtual WAN 仮想ハブのルーティングを使用している場合は、いくつかのオプションを使用できます。 この記事では、仮想ネットワークとブランチの間の通信に対してネットワーク仮想アプライアンス (NVA) 経由でトラフィックをルーティングし、インターネットへのトラフィックに対して別の NVA を使用することに焦点を当てます。 詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+Azure Virtual WAN 仮想ハブのルーティングを使用している場合は、複数のオプションを使用できます。 この記事では、仮想ネットワークとブランチの間の通信に対してネットワーク仮想アプライアンス (NVA) 経由でトラフィックをルーティングし、インターネットへのトラフィックに対して別の NVA を使用することに焦点を当てます。 詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+
+>[!Note]
+> 以下のルーティング シナリオでは、NVA を含む仮想 WAN ハブとスポーク仮想ネットワークが同じ Azure リージョン内に存在する必要があることに注意してください。
 
 ## <a name="design"></a>デザイン
 
@@ -177,6 +180,7 @@ NVA 経由のルーティングを設定するには、次の手順を検討し�
    > * ポータル ユーザーは、0.0.0.0/0 のルートが有効になるよう、接続 (VPN/ER/P2S/VNet) で [Propagate to default route] (既定のルートに伝達する) を有効にする必要があります。
    > * PS/CLI/REST ユーザーは、0.0.0.0/0 のルートが有効になるよう、フラグ 'enableinternetsecurity' を true に設定する必要があります。
    > * 仮想ネットワーク接続では、ネクスト ホップ IP が含まれる経路にパブリック IP アドレスまたは 0.0.0.0/0 (インターネット) が指定されている場合、"複数または 1 つの" ネクスト ホップ IP の経路を SPOKE VNet 内の "同じ" ネットワーク仮想アプライアンスに指定することはできません。
+   > * 0\.0.0.0/0 が仮想ネットワーク接続で静的ルートとして構成されている場合、そのルートは、スポーク自体の中のリソースを含むすべてのトラフィックに適用されます。 つまり、すべてのトラフィックは、静的ルートのネクスト ホップ IP アドレス (NVA プライベート IP) に転送されます。 したがって、スポーク仮想ネットワーク接続でネクスト ホップ NVA IP アドレスが構成された 0.0.0.0/0 ルートを使用するデプロイでは、NVA と同じ仮想ネットワーク内のワークロードに直接アクセスする (つまり、トラフィックが NVA を経由しないようにする) ために、スポーク仮想ネットワーク接続で /32 ルートを指定してください。 たとえば、10.1.3.1 に直接アクセスする場合は、スポーク仮想ネットワーク接続で 10.1.3.1/32 のネクスト ホップ 10.1.3.1 を指定してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: d9db86e400d862dd67582ede0bf44b9e9fd1c893
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3654f06c40f3d16783c8e5dca94b51a510295ad4
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954804"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>チュートリアル: Azure Active Directory と LaunchDarkly の統合
 
@@ -87,7 +87,7 @@ LaunchDarkly に対する Azure AD SSO を構成してテストするには、�
     b. **[応答 URL]** ボックスに、`https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > 応答 URL 値は、実際の値ではありません。 実際の応答 URL に値を置き換えます。実際の値については後で説明します。 アプリケーションを **IDP** モードで使用する場合は、 **[サインオン URL]** フィールドを空白のままにする必要があります。そうしないと、**IDP** からログインを開始できません。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > 応答 URL 値は、実際の値ではありません。 実際の応答 URL に値を置き換えます。実際の値については後で説明します。 LaunchDarkly では現在、**IDP** Initiated SSO がサポートされます。 このアプリケーションを **IDP** モードで使用する場合は、 **[サインオン URL]** フィールドを空白のままにする必要があります。そうしないと、**IDP** からログインを開始できません。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -159,7 +159,7 @@ LaunchDarkly に対する Azure AD SSO を構成してテストするには、�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した LaunchDarkly に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [LaunchDarkly] タイルをクリックすると、SSO を設定した LaunchDarkly に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [LaunchDarkly] タイルをクリックすると、SSO を設定した LaunchDarkly に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

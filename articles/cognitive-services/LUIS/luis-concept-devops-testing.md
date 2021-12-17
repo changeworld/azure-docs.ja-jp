@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a6f146fac4e2989e03382ef4879b305410fab6d8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98788453"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969389"
 ---
 # <a name="testing-for-luis-devops"></a>LUIS DevOps のテスト
 
@@ -25,7 +25,7 @@ Language Understanding (LUIS) アプリを開発するソフトウェア エン�
 LUIS アプリには、継続的インテグレーション ワークフローで実施すべきテストが 2 種類あります。
 
 - **単体テスト** - LUIS アプリの主要な機能を検証する比較的単純なテスト。 特定のテスト発話に関して期待される意図とエンティティが返されたときに、単体テストは成功となります。 テストの実行が正常に完了するためには、すべての単体テストが成功する必要があります。  
-この種のテストは、[LUIS ポータル](https://www.luis.ai/)から実行できる[対話型テスト](./luis-concept-test.md)に似ています。
+この種のテストは、[LUIS ポータル](https://www.luis.ai/)から実行できる[対話型テスト](./luis-interactive-test.md)に似ています。
 
 - **バッチ テスト** - バッチ テストは、現在のトレーニング済みモデルのパフォーマンスを測定するために、そのモデルに関して実行する包括的なテストです。 単体テストとは異なり、バッチ テストは、成功か失敗かを判定するものではありません。 バッチ テストで期待されるのは、期待される意図とエンティティがすべてのテストで返されることではありません。 バッチ テストは、それぞれの意図とエンティティの正確性をアプリで確認したり、時間の経過に沿って改善を比較したりするための助けとなります。  
 この種のテストは、LUIS ポータルから対話形式で実行できる[バッチ テスト](./luis-how-to-batch-test.md)と同じです。
@@ -91,7 +91,7 @@ JSON 形式のファイルでテストのグループを定義するには、LUI
 
 LUIS ポータルには、対話型テストを支援する機能が用意されています。
 
-* [**対話型テスト**](./luis-concept-test.md)では、サンプル発話を送信して、LUIS によって認識された意図とエンティティの応答を受け取ることができます。 テストの成功は、目視で確認します。
+* [**対話型テスト**](./luis-interactive-test.md)では、サンプル発話を送信して、LUIS によって認識された意図とエンティティの応答を受け取ることができます。 テストの成功は、目視で確認します。
 
 * [**バッチ テスト**](./luis-how-to-batch-test.md)では、バッチ テスト ファイルを入力に使用して、アクティブなトレーニング済みバージョンを検証し、その予測の正確性を測定できます。 バッチ テストは、アクティブなバージョンに含まれる各意図やエンティティの精度を表示するのに役立ち、結果がグラフで表示されます。
 
@@ -136,4 +136,4 @@ LUIS は、モデル (意図など) をトレーニングするとき、陽性�
 ## <a name="next-steps"></a>次のステップ
 
 * [CI/CD ワークフローの導入](luis-concept-devops-automation.md)について学習します。
-* [GitHub で DevOps for LUIS を実装する](luis-how-to-devops-with-github.md)方法を学習します。
+* [GitHub で DevOps for LUIS を実装する](./luis-concept-devops-automation.md)方法を学習します。

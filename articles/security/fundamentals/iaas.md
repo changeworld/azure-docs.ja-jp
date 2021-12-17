@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 6f073777930b4d026d826d2c3586e0886f906206
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55e8caee298d8aab2b724b8c4fb5804e2b58f563
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102503081"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305847"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 この記事では、VM とオペレーティング システムのセキュリティに関するベスト プラクティスについて説明します。
@@ -43,14 +43,14 @@ VM 保護の第一歩は、承認されたユーザーのみが新しい VM を�
 組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 [Azure 管理グループ](../../governance/management-groups/overview.md)の範囲は、サブスクリプションを上回ります。 サブスクリプションを管理グループ (コンテナー) にまとめ、それらのグループに管理条件を適用できます。 管理グループ内のすべてのサブスクリプションは、グループに適用された条件を自動的に継承します。 管理グループを使うと、サブスクリプションの種類に関係なく、大きな規模でエンタープライズ レベルの管理を行うことができます。
 
 **ベスト プラクティス**: VM の設定とデプロイ方法のばらつきを減らす。   
-**詳細**: [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) テンプレートを使用して、デプロイの選択の自由を強化し、環境内の VM を理解してインベントリを実行しやすくします。
+**詳細**: [Azure Resource Manager](../../azure-resource-manager/templates/syntax.md) テンプレートを使用して、デプロイの選択の自由を強化し、環境内の VM を理解してインベントリを実行しやすくします。
 
 **ベスト プラクティス**: 特権アクセスをセキュリティで保護する。   
 **詳細**: [最低限の特権](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)と Azure に組み込まれているロールを使用して、ユーザーが VM へのアクセスと設定を実行できるようにします。
 
 - [仮想マシンの共同作業者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): VM を管理することはできますが、それが接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
 - [従来の仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor):クラシック デプロイ モデルを使って作成された VM を管理することはできますが、その VM が接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
-- [セキュリティ管理者](../../role-based-access-control/built-in-roles.md#security-admin):Security Center のみ: セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます。
+- [セキュリティ管理者](../../role-based-access-control/built-in-roles.md#security-admin): Defender for Cloud でのみ: セキュリティ ポリシーを表示したり、セキュリティ状態を表示したり、セキュリティ ポリシーを編集したり、アラートと推奨事項を表示したり、アラートと推奨事項を無視したりできます。
 - [DevTest Labs ユーザー](../../role-based-access-control/built-in-roles.md#devtest-labs-user):すべてを表示し、VM を接続、開始、再起動、シャットダウンできます。
 
 サブスクリプション管理者と共同管理者は、この設定を変更して、彼らをサブスクリプション内のすべての VM の管理者にすることができます。 マシンにログインするすべてのサブスクリプション管理者と共同管理者を信頼できることを確認してください。
@@ -72,13 +72,13 @@ VM 保護の第一歩は、承認されたユーザーのみが新しい VM を�
 
 Microsoft Antimalware には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 運用環境とは別にホストされている環境では、マルウェア対策拡張機能を使用して、VM とクラウド サービスを保護できます。
 
-デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](../../security-center/index.yml) と統合できます。
+デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Microsoft Defender for Cloud](../../security-center/index.yml) と統合できます。
 
 **ベスト プラクティス**: マルウェアから保護するためにマルウェア対策ソリューションをインストールする。   
 **詳細**: [Microsoft パートナーのソリューションまたは Microsoft Antimalware をインストール](../../security-center/security-center-services.md#supported-endpoint-protection-solutions-)します。
 
-**ベスト プラクティス**: マルウェア対策ソリューションを Security Center と統合して、保護の状態を監視する。   
-**詳細**: [Security Center でエンドポイントの保護に関する問題を管理](../../security-center/security-center-partner-integration.md)します。
+**ベスト プラクティス**: マルウェア対策ソリューションを Defender for Cloud と統合して、保護の状態を監視する。   
+**詳細**: [Defender for Cloud でエンドポイントの保護に関する問題を管理](../../security-center/security-center-partner-integration.md)します。
 
 ## <a name="manage-your-vm-updates"></a>VM の更新の管理
 Azure VM は、他の VM と同じように、ユーザーによって管理されることを意図しています。 Azure では、それらに対して Windows 更新プログラムをプッシュしません。 VM の更新は、お客様が管理する必要があります。
@@ -99,10 +99,10 @@ Windows Update を使用している場合は、自動 Windows Update の設定�
 **詳細**: Windows の更新プログラムを確認してすべてインストールすることは、あらゆるデプロイの第一歩です。 独自にイメージをデプロイするときや、独自のライブラリからイメージをデプロイするときは、このことが特に重要となります。 ただし、Azure Marketplace のイメージは既定で自動的に更新されますが、公開リリース後は遅れが発生する可能性があります (最大数週間)。
 
 **ベスト プラクティス**: VM を定期的に再デプロイして、OS の最新バージョンを使用する。   
-**詳細**: VM を [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して VM を定義して、簡単に再デプロイできるようにします。 テンプレートを使用すると、必要なときに、修正プログラムが適用されセキュリティで保護された VM を設定できます。
+**詳細**: VM を [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)を使用して VM を定義して、簡単に再デプロイできるようにします。 テンプレートを使用すると、必要なときに、修正プログラムが適用されセキュリティで保護された VM を設定できます。
 
 **ベスト プラクティス**: VM にセキュリティ更新プログラムを迅速に適用する。   
-**詳細**: Azure Security Center (Free レベルまたは Standard レベル) を有効にし、[不足しているセキュリティ更新プログラムを特定して適用](../../security-center/asset-inventory.md)します。
+**詳細**: Microsoft Defender for Cloud (Free レベルまたは Standard レベル) を有効にし、[不足しているセキュリティ更新プログラムを特定して適用](../../security-center/asset-inventory.md)します。
 
 **ベスト プラクティス**: 最新のセキュリティ更新プログラムをインストールする。   
 **詳細**: お客様が最初に Azure に移動するワークロードに、ラボと外部向けのシステムがあります。 インターネットへのアクセスが必要なアプリケーションまたはサービスを Azure VM でホストしている場合は、修正プログラムの適用を忘れずに実行してください。 これは、オペレーティング システムへの修正プログラムの適用だけではありません。 サード パーティ アプリケーションでも、修正プログラムの未適用による脆弱性が原因で問題が発生する可能性があります。このような問題は、適切な修正プログラム管理が行われていれば回避できます。
@@ -119,7 +119,7 @@ Windows Update を使用している場合は、自動 Windows Update の設定�
 ## <a name="manage-your-vm-security-posture"></a>VM のセキュリティ体制の維持
 サイバー攻撃の脅威は進化しています。 VM を保護するには、脅威をすばやく検出し、リソースへの不正アクセスを防止し、アラートをトリガーし、偽陽性を減らすことができる、より高性能の監視機能が必要です。
 
-[Windows VM](../../security-center/security-center-introduction.md) と [Linux VM](../../security-center/security-center-introduction.md) のセキュリティ体制を監視するには、[Azure Security Center](../../security-center/security-center-introduction.md) を使用します。 Security Center では、次の機能を利用して VM を保護します。
+[Windows VM](../../security-center/security-center-introduction.md) と [Linux VM](../../security-center/security-center-introduction.md) のセキュリティ体制を監視するには、[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) を使用します。 Defender for Cloud では、次の機能を利用して VM を保護します。
 
 - 推奨される構成規則を使用して OS のセキュリティ設定を適用する。
 - 不足している可能性のあるシステムのセキュリティ更新プログラムと重要な更新プログラムを特定してダウンロードする。
@@ -128,9 +128,9 @@ Windows Update を使用している場合は、自動 Windows Update の設定�
 - 脆弱性を評価して修復する。
 - 脅威を検出する。
 
-Security Center は脅威を積極的に監視でき、脅威のリスクはセキュリティ通知で公開されます。 関連性のある脅威は、セキュリティ インシデントと呼ばれる 1 つのビューに集約されます。
+Defender for Cloud は脅威を積極的に監視でき、脅威のリスクはセキュリティ通知で公開されます。 関連性のある脅威は、セキュリティ インシデントと呼ばれる 1 つのビューに集約されます。
 
-Security Center では、データを [Azure Monitor ログ](../../azure-monitor/logs/log-query-overview.md)に格納します。 Azure Monitor ログには、アプリケーションとリソースの操作に関する分析情報を提供するクエリ言語と分析エンジンがあります。 データは、[Azure Monitor](../../batch/monitoring-overview.md)、管理ソリューション、およびクラウドやオンプレミスの仮想マシンにインストールされたエージェントからも収集されます。 この共有機能は、環境の全体像を把握するうえで役に立ちます。
+Defender for Cloud では、データを [Azure Monitor ログ](../../azure-monitor/logs/log-query-overview.md)に格納します。 Azure Monitor ログには、アプリケーションとリソースの操作に関する分析情報を提供するクエリ言語と分析エンジンがあります。 データは、[Azure Monitor](../../batch/monitoring-overview.md)、管理ソリューション、およびクラウドやオンプレミスの仮想マシンにインストールされたエージェントからも収集されます。 この共有機能は、環境の全体像を把握するうえで役に立ちます。
 
 許可のないユーザーがセキュリティ制御を回避しようとする試みは、VM を強固なセキュリティで保護していなければ認識できません。
 
@@ -175,10 +175,10 @@ VM からインターネットへの直接接続を監視して制限します�
 **詳細**: Azure RBAC を使用して、中央のネットワーク グループのみがネットワーク リソースへのアクセス許可を持つようにします。
 
 **ベスト プラクティス**: "あらゆる" 発信元 IP アドレスからアクセス可能な露出した VM を特定して修復する。   
-**詳細**: Azure Security Center を使用します。 Security Center では、ネットワーク セキュリティ グループのいずれかに、"あらゆる" 発信元 IP アドレスからのアクセスを許可する 1 つ以上の受信規則が含まれている場合に、インターネットに接続するエンドポイント経由のアクセスを制限するよう推奨します。 Security Center では、これらの受信規則を編集して、実際にアクセスを必要とする発信元 IP アドレスに[アクセスを制限](../../security-center/security-center-network-recommendations.md)するよう推奨します。
+**詳細**: Microsoft Defender for Cloud を使用します。 Defender for Cloud では、ネットワーク セキュリティ グループのいずれかに、"あらゆる" 発信元 IP アドレスからのアクセスを許可する 1 つ以上の受信規則が含まれている場合に、インターネットに接続するエンドポイント経由のアクセスを制限するよう推奨します。 Defender for Cloud では、これらの受信規則を編集して、実際にアクセスを必要とする発信元 IP アドレスに[アクセスを制限](../../security-center/security-center-network-recommendations.md)するよう推奨します。
 
 **ベスト プラクティス**: 管理ポートを制限する (RDP、SSH)。   
-**詳細**: [Just-In-Time (JIT) VM アクセス](../../security-center/security-center-just-in-time.md)を使用すると、Azure VM への受信トラフィックをロックダウンすることができるので、攻撃に対する露出が減り、VM への接続が必要な場合は簡単にアクセスできます。 JIT が有効になっている場合、Security Center ではネットワーク セキュリティ グループの規則の作成により、Azure VM への受信トラフィックがロックダウンされます。 ユーザーは VM 上の受信トラフィックがロックダウンされるポートを選択します。 これらのポートは、JIT ソリューションによって制御されます。
+**詳細**: [Just-In-Time (JIT) VM アクセス](../../security-center/security-center-just-in-time.md)を使用すると、Azure VM への受信トラフィックをロックダウンすることができるので、攻撃に対する露出が減り、VM への接続が必要な場合は簡単にアクセスできます。 JIT が有効になっている場合、Defender for Cloud ではネットワーク セキュリティ グループの規則の作成により、Azure VM への受信トラフィックがロックダウンされます。 ユーザーは VM 上の受信トラフィックがロックダウンされるポートを選択します。 これらのポートは、JIT ソリューションによって制御されます。
 
 ## <a name="next-steps"></a>次のステップ
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](best-practices-and-patterns.md)」を参照してください。

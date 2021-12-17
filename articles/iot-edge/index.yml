@@ -9,14 +9,14 @@ metadata:
   ms.topic: landing-page
   author: kgremban
   ms.author: kgremban
-  manager: philmea
   ms.date: 08/05/2019
-  ms.openlocfilehash: d1b23b67413f7e270cb894fcf201204afa255b20
-  ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+  ms.custom: e2e-hybrid
+  ms.openlocfilehash: f879a1d5e018ee41e3dfd1c3f2336cf50d14e71b
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/21/2021
-  ms.locfileid: "98633092"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130234700"
 landingContent:
 - title: Linux デバイス向けの開発
   linkLists:
@@ -50,14 +50,12 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 1 つのデバイスを登録する
-      url: how-to-register-device.md
     - text: 大規模なデバイスの登録とプロビジョニング
-      url: how-to-auto-provision-symmetric-keys.md
+      url: how-to-provision-devices-at-scale-linux-symmetric.md
     - text: Linux デバイスに IoT Edge ランタイムをインストールする
-      url: how-to-install-iot-edge.md
+      url: how-to-provision-single-device-linux-symmetric.md
     - text: Windows デバイスに IoT Edge ランタイムをインストールする
-      url: how-to-install-iot-edge-on-windows.md
+      url: how-to-provision-single-device-linux-on-windows-symmetric.md
 - title: オープンソース コミュニティと交流する
   linkLists:
   - linkListType: get-started

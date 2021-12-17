@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory でグループに割り当てられているロールを表示する | Microsoft Docs
-description: Azure AD 管理センターを使用して、グループに割り当てられているロールを表示する方法について説明します。 グループと割り当てられたロールの表示は、既定のユーザー アクセス許可で行うことができます。
+description: Azure portal を使用して、グループに割り当てられているロールを表示する方法について説明します。 グループと割り当てられたロールの表示は、既定のユーザー アクセス許可で行うことができます。
 services: active-directory
 author: rolyon
 manager: daveba
@@ -8,31 +8,42 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dac23897f8a17c9adb4ae78736a6a8afa85a18b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87e59c7ab9bfc5fa9211d84d2d9a855dea97ec1a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103012005"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732326"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>Azure Active Directory でグループに割り当てられているロールを表示する
 
-この項では、Azure AD 管理センターを使用して、グループに割り当てられているロールを表示する方法について説明します。 グループと割り当てられたロールの表示は、既定のユーザー アクセス許可で行うことができます。
+このセクションでは、Azure portal を使用してグループに割り当てられているロールを表示する方法について説明します。 グループと割り当てられたロールの表示は、既定のユーザー アクセス許可で行うことができます。
 
-1. 管理者以外の資格情報または管理者の資格情報を使用して、[Azure AD 管理センター](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
+## <a name="prerequisites"></a>前提条件
 
-1. 目的のグループを選択します。
+- PowerShell を使用する場合は、AzureAD モジュール
+- Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
+
+詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
+
+## <a name="azure-portal"></a>Azure portal
+
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[グループ]** を選択します。
+
+1. 目的のロール割り当て可能なグループを選択します。
 
 1. **[割り当てられたロール]** を選択します。 このグループに割り当てられているすべての Azure AD ロールが表示されます。
 
    ![選択したグループに割り当てられているすべてのロールの表示](./media/groups-view-assignments/view-assignments.png)
 
-## <a name="using-powershell"></a>PowerShell の使用
+## <a name="powershell"></a>PowerShell
 
 ### <a name="get-object-id-of-the-group"></a>グループのオブジェクト ID を取得する
 
@@ -46,7 +57,7 @@ Get-AzureADMSGroup -SearchString "Contoso_Helpdesk_Administrators"
 Get-AzureADMSRoleAssignment -Filter "principalId eq '<object id of group>" 
 ```
 
-## <a name="using-microsoft-graph-api"></a>Microsoft Graph API の使用
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 ### <a name="get-object-id-of-the-group"></a>グループのオブジェクト ID を取得する
 
@@ -62,5 +73,5 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$f
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クラウド グループを使用してロールの割り当てを管理する](groups-concept.md)
-- [クラウド グループに割り当てられているロールのトラブルシューティング](groups-faq-troubleshooting.md)
+- [Azure AD グループを使用してロールの割り当てを管理する](groups-concept.md)
+- [グループに割り当てられている Azure AD ロールをトラブルシューティングする](groups-faq-troubleshooting.yml)

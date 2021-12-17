@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 547d96a9591b99318a74977106e99511c9c80507
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a32935bbba2c9d8d3a3c8183b81b14f4ac40f1fd
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687109"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989130"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SAP Fiori の統合
 
@@ -83,7 +83,7 @@ SAP Fiori に対する Azure AD SSO を構成してテストするには、次�
         login/create_sso2_ticket = 2
         login/accept_sso2_ticket = 1
         login/ticketcache_entries_max = 1000
-        login/ticketcache_off = 0  login/ticket_only_by_https = 0 
+        login/ticketcache_off = 0  login/ticket_only_by_https = 0
         icf/set_HTTPonly_flag_on_cookies = 3
         icf/user_recheck = 0  http/security_session_timeout = 1800
         http/security_context_cache_size = 2500
@@ -138,24 +138,24 @@ SAP Fiori に対する Azure AD SSO を構成してテストするには、次�
 
 1. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
 
-    a. **[メタデータ ファイルをアップロードします]** をクリックします。
+    1. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-    ![メタデータ ファイルをアップロードする](common/upload-metadata.png)
+        ![メタデータ ファイルをアップロードする](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    1. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
-    ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
+        ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、 **[基本的な SAML 構成]** ウィンドウの **[識別子]** と **[応答 URL]** の値が自動的に入力されます。 **[サインオン URL]** ボックスに、`https://<your company instance of SAP Fiori>` 形式で URL を入力します。
+    1. メタデータ ファイルが正常にアップロードされると、 **[基本的な SAML 構成]** ウィンドウの **[識別子]** と **[応答 URL]** の値が自動的に入力されます。 **[サインオン URL]** ボックスに、`https://<your company instance of SAP Fiori>` 形式で URL を入力します。
 
-    > [!NOTE]
-    > 一部のお客様から、誤って構成された **応答 URL** の値に関連するエラーがレポートされています。 このようなエラーが表示されたら、以下の PowerShell スクリプトを使用して、インスタンスの正しい応答 URL を設定できます。
-    >
-    > ```
-    > Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
-    > ``` 
-    > 
-    > スクリプトを実行する前に `ServicePrincipal` オブジェクト ID を自分で設定することも、ここで渡すこともできます。
+        > [!NOTE]
+        > 一部のお客様から、誤って構成された **応答 URL** の値に関連するエラーがレポートされています。 このようなエラーが表示されたら、以下の PowerShell スクリプトを使用して、インスタンスの正しい応答 URL を設定できます。
+        >
+        > ```powershell
+        > Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
+        > ```
+        >
+        > スクリプトを実行する前に `ServicePrincipal` オブジェクト ID を自分で設定することも、ここで渡すこともできます。
 
 1. SAP Fiori アプリケーションは、特定の形式の SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性値を管理するには、 **[SAML でシングル サインオンをセットアップします]** ウィンドウで **[編集]** を選択します。
 
@@ -171,10 +171,10 @@ SAP Fiori に対する Azure AD SSO を構成してテストするには、次�
 
     1. **[保存]** を選択します。
 
-       ![[ユーザー要求の管理] ウィンドウ](./media/sapfiori-tutorial/nameidattribute.png)
+        ![[ユーザー要求の管理] ウィンドウ](./media/sapfiori-tutorial/nameidattribute.png)
 
-       ![[ユーザー要求の管理] ウィンドウの [変換] セクション](./media/sapfiori-tutorial/nameidattribute1.png)
-    
+        ![[ユーザー要求の管理] ウィンドウの [変換] セクション](./media/sapfiori-tutorial/nameidattribute1.png)
+
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
@@ -273,13 +273,13 @@ SAP Fiori に対する Azure AD SSO を構成してテストするには、次�
 
     **シナリオ 2**: SU01 で構成したメール アドレスに基づいて、SAP ユーザー ID を選択します。 このケースでは、SSO を必要とする各ユーザーに対して、SU01 でメール ID を構成する必要があります。
 
-    1.  SAP で、 **[Details of NameID Format "Unspecified"]\(NameID 形式 "未指定" の詳細\)** の詳細を書き留めます。
+    1. SAP で、 **[Details of NameID Format "Unspecified"]\(NameID 形式 "未指定" の詳細\)** の詳細を書き留めます。
 
         ![SAP の [Details of NameID Format "Unspecified"]\(NameID 形式 "未指定" の詳細\) ダイアログ ボックス](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameiddetails1.png)
 
     1. Azure portal の **[ユーザー属性と要求]** で、Azure AD からの必要な要求を書き留めます。
 
-       ![Azure portal の [ユーザー属性と要求] ダイアログ ボックス](./media/sapfiori-tutorial/claimsaad2.png)
+        ![Azure portal の [ユーザー属性と要求] ダイアログ ボックス](./media/sapfiori-tutorial/claimsaad2.png)
 
 1. **[Save]\(保存\)** を選択し、 **[Enable]\(有効\)** を選択して、ID プロバイダーを有効にします。
 
@@ -297,18 +297,20 @@ SAP Fiori に対する Azure AD SSO を構成してテストするには、次�
 
 1. SAP Fiori で ID プロバイダー Azure AD がアクティブ化されたら、次のいずれかの URL にアクセスしてみて、シングル サインオンをテストします (ユーザー名とパスワードの入力は求められないはずです)。
 
-    * https:\//\<sapurl\>/sap/bc/bsp/sap/it00/default.htm
-    * https:\//\<sapurl\>/sap/bc/bsp/sap/it00/default.htm
+    * `https://<sap-url>/sap/bc/bsp/sap/it00/default.htm`
+    * `https://<sap-url>/sap/bc/bsp/sap/it00/default.htm`
 
     > [!NOTE]
-    > *sapurl* は実際の SAP のホスト名に置き換えます。
+    > `<sap-url>` は実際の SAP のホスト名に置き換えます。
 
 1. テスト URL によって、SAP の以下のテスト アプリケーション ページに移動するはずです。 ページが開いたら、Azure AD シングル サインオンが正常に設定されています。
 
     ![SAP の標準テスト アプリケーション ページ](./media/sapfiori-tutorial/testingsso.png)
 
-1. ユーザー名とパスワードの入力が求められる場合は、トレースを有効にして、問題の診断に役立てます。 トレースには、https:\//\<sapurl\>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN# という URL を使用します。
+1. ユーザー名とパスワードの入力が求められる場合は、トレースを有効にして、問題の診断に役立てます。 トレースには次の URL を使用します。
+
+    `https://<sap-url>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN#`.
 
 ## <a name="next-steps"></a>次のステップ
 
-SAP Fiori を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SAP Fiori を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

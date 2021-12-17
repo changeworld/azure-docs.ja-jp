@@ -3,18 +3,21 @@ title: Azure サービスの中断
 description: Azure サービスの中断が Azure 仮想マシンに影響を与える場合の対処方法について説明します。
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 05/31/2017
+ms.date: 05/28/2021
 ms.author: cynthn
 ms.reviewer: ''
-ms.openlocfilehash: 5c6036a65fa449986f5c085202fefa752e3a414a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a716e8baaeae1527dc04005a36c59d772abca83
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98701035"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697251"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Azure サービスの中断が Azure VM に影響を与える場合の対処方法
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Microsoft では、必要なときにサービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス中断が発生することがあります。
 

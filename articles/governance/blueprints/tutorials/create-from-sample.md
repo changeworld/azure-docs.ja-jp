@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:新しい環境に対するブループリント サンプル
 description: このチュートリアルでは、ブループリント サンプルを使用して、2 つのリソース グループを設定し、それぞれにロールの割り当てを構成するブループリント定義を作成します。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
-ms.openlocfilehash: aea3760128221d42e092e4ca45200874d54da54a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9da94dc699f71d54f8fb738c527d02018d44a9ac
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98915559"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322122"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>チュートリアル:ブループリント サンプルから環境を作成する
 
@@ -122,7 +122,7 @@ ms.locfileid: "98915559"
 
 1. 左側の **[割り当てられたブループリント]** ページを選択します。 フィルターを使用してブループリントの割り当て _Assignment-two-rgs-with-role-assignments_ を検索し、選択します。
 
-   このページから、割り当てが成功したこと、および作成されたリソースの一覧とそのブループリントのロック状態がわかります。 割り当てが更新された場合は、各定義のバージョンのデプロイに関する詳細が **[割り当ての操作]** ドロップダウンに表示されます。 表示された作成済みの各リソースを選択すると、そのリソースのプロパティ ページが開きます。
+   このページから、割り当てが成功したこと、および作成されたリソースの一覧とそのブループリントのロック状態がわかります。 割り当てが更新された場合は、各定義のバージョンのデプロイに関する詳細が **[割り当ての操作]** ドロップダウン リストに表示されます。 表示された作成済みの各リソースを選択すると、そのリソースのプロパティ ページが開きます。
 
 1. **[ProductionRG]** リソース グループを選択します。
 

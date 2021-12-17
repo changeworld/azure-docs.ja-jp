@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 8da1130809c1802f4db963f4b4b000a848e9abaa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a507f0845fad1e43ce775e5d46f9fa8a548e369f
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98011103"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607476"
 ---
 # <a name="quickstart-deploy-and-manage-nsg-flow-logs-using-azure-policy"></a>クイック スタート: Azure Policy を使用した NSG フロー ログのデプロイと管理 
 
 ## <a name="overview"></a>概要
 Azure Policy は、組織の標準を適用し、コンプライアンスを大規模に評価するのに役立ちます。 Azure Policy の一般的なユースケースには、リソースの整合性、規制コンプライアンス、セキュリティ、コスト、管理のガバナンスの実装が含まれています。 この記事では、NSG フロー ログ用に用意されている 2 つの組み込みポリシーを使用して、フロー ログの設定を管理します。 最初のポリシーでは、フロー ログが有効になっていない NSG にフラグを設定します。 2 番目のポリシーは、フロー ログが有効になっていない NSG のフロー ログを自動的にデプロイします。 
 
-Azure ポリシーを初めて作成する場合は、次を参照してください。 
+Azure Policy 定義を初めて作成する場合は、次を参照してください。 
 - [Azure Policy の概要](../governance/policy/overview.md) 
-- [ポリシーを作成するためのチュートリアル](../governance/policy/assign-policy-portal.md#create-a-policy-assignment)
+- [Azure Policy の割り当てを作成するためのチュートリアル](../governance/policy/assign-policy-portal.md#create-a-policy-assignment)。
 
 
 ## <a name="locate-the-policies"></a>ポリシーを見つける
@@ -134,5 +134,6 @@ Azure Network Watcher は地域サービスです。 これらのパラメータ
 
 ## <a name="next-steps"></a>次の手順 
 
+-   [Traffic Analytics の組み込みポリシー](./traffic-analytics-policy-portal.md)について学習します
 -   この [チュートリアル](./quickstart-configure-network-security-group-flow-logs-from-arm-template.md)では、ARM テンプレートを使用してフローログとトラフィック解析を展開することでさらに詳しく します。
 -   [Network Watcher ](./index.yml)の詳細

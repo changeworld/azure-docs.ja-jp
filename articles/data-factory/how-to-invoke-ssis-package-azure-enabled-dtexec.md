@@ -2,16 +2,17 @@
 title: Azure 対応の dtexec ユーティリティを使用して SQL Server Integration Services (SSIS) パッケージを実行する
 description: Azure 対応の dtexec ユーティリティを使用して SQL Server Integration Services (SSIS) パッケージを実行する方法を説明します。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 04/12/2020
+ms.date: 10/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 980e8e3c2f2c1ca1dc716df1e77caaa3fe3181aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 633c7f52bb015769ab2e15c5fbde23d5d4128ee9
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386171"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843558"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Azure 対応の dtexec ユーティリティを使用して SQL Server Integration Services パッケージを実行する
 
@@ -33,11 +34,11 @@ AzureDTExec を使用するには、最新バージョンの SSMS (バージョ�
 ## <a name="configure-the-azuredtexec-utility"></a>AzureDTExec ユーティリティを構成する
 ローカル コンピューターに SSMS をインストールすると、AzureDTExec もインストールされます。 設定を構成するには、 **[管理者として実行]** オプションを使用して SSMS を起動します。 次に、 **[ツール]**  >  **[Azure への移行]**  >  **[Azure 対応の DTExec を構成する]** の順に選択します。
 
-![[Configure Azure-enabled DTExec]\(Azure 対応の DTExec の構成\) メニュー](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png" alt-text="[Configure Azure-enabled DTExec]\(Azure 対応の DTExec の構成\) メニュー":::
 
 この操作により、 **[AzureDTExecConfig]** ウィンドウが開きますす。このウィンドウは、*AzureDTExec.settings* ファイルに書き込むために、管理者特権で開く必要があります。 SSMS を管理者として実行していない場合は、[ユーザーアカウント制御 (UAC)] ウィンドウが開きます。 管理者パスワードを入力して、特権を昇格させてください。
 
-![[Configure Azure-enabled DTExec]\(Azure 対応の DTExec の構成\) の設定](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-settings.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-settings.png" alt-text="[Configure Azure-enabled DTExec]\(Azure 対応の DTExec の構成\) の設定":::
 
 **[AzureDTExecConfig]** ウィンドウでは、次のように構成設定を入力します。
 

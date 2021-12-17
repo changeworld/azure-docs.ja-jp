@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/03/2021
+ms.date: 07/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 9e233e30521e5c1fa05509fa6dc42a567f6ac4e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1bfc01da0dd4ef466bd0c54dbb8bd9942447e04a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653101"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292281"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>チュートリアル:Bynder と Azure Active Directory の統合
 
@@ -79,23 +79,23 @@ Bynder に対する Azure AD SSO を構成してテストするには、次の�
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
     
-    既定のドメインの場合:  `https://<company name>.getbynder.com`
+    既定のドメインの場合:  `https://<COMPANY_NAME>.bynder.com`
     
-    カスタム ドメインの場合:  `https://<subdomain>.<domain>.com`
+    カスタム ドメインの場合:  `https://<SUBDOMAIN>.<DOMAIN>.com`
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
     
-     既定のドメインの場合:  `https://<company name>.getbynder.com/sso/SAML/authenticate/`
+     既定のドメインの場合:  `https://<COMPANY_NAME>.bynder.com/sso/SAML/authenticate/`
     
-    カスタム ドメインの場合:  `https://<subdomain>.<domain>.com/sso/SAML/authenticate/`
+    カスタム ドメインの場合:  `https://<SUBDOMAIN>.<DOMAIN>.com/sso/SAML/authenticate/`
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
     
-     既定のドメインの場合:  `https://<company name>.getbynder.com/login/`
+     既定のドメインの場合:  `https://<COMPANY_NAME>.bynder.com/login/`
     
-     カスタム ドメインの場合:  ` https://<subdomain>.<domain>.com/login/`
+     カスタム ドメインの場合:  ` https://<SUBDOMAIN>.<DOMAIN>.com/login/`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[Bynder クライアント サポート チーム](https://www.bynder.com/en/support/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -158,9 +158,9 @@ Bynder に対する Azure AD SSO を構成してテストするには、次の�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Bynder に自動的にサインインされます 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Bynder] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Bynder に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Bynder] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Bynder に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Bynder を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Bynder を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

@@ -1,18 +1,17 @@
 ---
 title: モジュール ツイン - Azure Event Grid IoT Edge | Microsoft Docs
 description: モジュール ツインを使用した構成。
-author: HiteshMadan
 manager: rajarv
-ms.author: himad
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: f39d22fe58d4375b3b68bacd237c1b200328c4b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20f74b989b6f07354d9e94394da87045ba7e60fb
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171331"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750283"
 ---
 # <a name="module-twin-json-schema-azure-event-grid"></a>モジュール ツイン JSON スキーマ (Azure Event Grid)
 

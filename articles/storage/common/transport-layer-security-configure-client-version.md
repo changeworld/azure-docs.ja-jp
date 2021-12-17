@@ -10,13 +10,13 @@ ms.date: 07/08/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 37b8c79df5b208feea185292fa09c323b64fa27d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: b1d0737d0320b2d2c3998650e1c1454617fdc92c
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89001809"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677200"
 ---
 # <a name="configure-transport-layer-security-tls-for-a-client-application"></a>クライアント アプリケーションのトランスポート層セキュリティ (TLS) を構成する
 
@@ -44,13 +44,13 @@ $ctx = $storageAccount.Context
 New-AzStorageContainer -Name "sample-container" -Context $ctx
 ```
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 次のサンプルは、Azure Storage クライアント ライブラリのバージョン 12 を使用して .NET クライアントで TLS 1.2 を有効にする方法を示しています。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Networking.cs" id="Snippet_ConfigureTls12":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 次のサンプルは、Azure Storage クライアント ライブラリのバージョン 11 を使用して .NET クライアントで TLS 1.2 を有効にする方法を示しています。
 

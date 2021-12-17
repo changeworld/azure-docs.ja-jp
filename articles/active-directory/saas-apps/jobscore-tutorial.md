@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 275f87163e75c3ded7260229d40a61185877a7d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8433e5dac5741940c275ee92a5f69818023b251
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459417"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813365"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscore"></a>チュートリアル: Azure Active Directory と JobScore の統合
 
@@ -101,7 +101,7 @@ JobScore で Azure AD シングル サインオンを構成するには、次の
 
     ![[JobScore のドメインと URL] のシングル サインオン情報](common/sp-signonurl.png)
 
-    **[サインオン URL]** ボックスに、`https://hire.jobscore.com/auth/adfs/<company name>` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`https://hire.jobscore.com/auth/adfs/<company id>` という形式で URL を入力します。
 
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[JobScore クライアント サポート チーム](mailto:support@jobscore.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -183,7 +183,7 @@ JobScore で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [JobScore] タイルをクリックすると、SSO を設定した JobScore に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [JobScore] タイルをクリックすると、SSO を設定した JobScore に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

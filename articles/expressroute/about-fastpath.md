@@ -5,14 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: c953668d6b2e364e6e703b1769317f1c520317ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions
+ms.openlocfilehash: 1fcdeaaee2ebafbfd8e97577ed87a5ef0e545cd5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104654375"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226397"
 ---
 # <a name="about-expressroute-fastpath"></a>ExpressRoute FastPath について
 
@@ -33,22 +34,25 @@ FastPath を構成するには、仮想ネットワーク ゲートウェイを�
 * Ultra Performance
 * ErGw3AZ
 
-> [!IMPORTANT]
-> ExpressRoute 経由で IPv6 ベースのプライベート ピアリングと共に FastPath を使用する予定の場合は、**SKU** に対して ErGw3AZ を選択してください。 これは、ExpressRoute Direct を利用する回線でのみ利用できます。
-> 
->
-
 ## <a name="limitations"></a>制限事項
 
 FastPath ではほとんどの構成がサポートされていますが、次の機能はサポートされていません。
 
 * ゲートウェイ サブネット上の UDR: この UDR は、FastPath がオンプレミス ネットワークから Azure 仮想ネットワーク内の仮想マシンに直接送信するネットワーク トラフィックには影響しません。 
 
-* VNet ピアリング: 他の仮想ネットワークが、ExpressRoute に接続されているものとピアリングされている場合、ご自身のオンプレミス ネットワークから他の仮想ネットワーク (いわゆる "スポーク" VNet) へのネットワーク トラフィックは、引き続き仮想ネットワーク ゲートウェイに送信されます。 回避策として、すべての仮想ネットワークを ExpressRoute 回線に直接接続します。
-
 * Basic Load Balancer: 仮想ネットワークに Basic の内部ロード バランサーをデプロイする場合、または仮想ネットワークにデプロイする Azure PaaS サービスで Basic の内部ロード バランサーを使用する場合、オンプレミスのネットワークから Basic Load Balancer でホストされている仮想 IP へのネットワーク トラフィックが仮想ネットワーク ゲートウェイに送信されます。 この問題を解決するには、Basic Load Balancer から [Standard Load Balancer](../load-balancer/load-balancer-overview.md) にアップグレードします。
 
 * Private Link: オンプレミス ネットワークから仮想ネットワークの[プライベート エンドポイント](../private-link/private-link-overview.md)に接続する場合、接続は仮想ネットワーク ゲートウェイを通過します。
+
+## <a name="public-preview"></a>パブリック プレビュー
+
+以下の FastPath 機能はパブリック プレビュー段階です。
+
+**VNet ピアリング** - ExpressRoute に接続されているものとピアリングされた仮想ネットワークにデプロイされている VM に、FastPath によってトラフィックが直接送信され、ExpressRoute の仮想ネットワーク ゲートウェイはバイパスされます。
+
+[ExpressRoute の FastPath 機能に登録する方法](expressroute-howto-linkvnet-arm.md#enroll-in-expressroute-fastpath-features-preview)に関する記事を参照してください。
+
+すべてのリージョンで利用できます。
  
 ## <a name="next-steps"></a>次のステップ
 

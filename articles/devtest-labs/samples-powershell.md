@@ -1,14 +1,14 @@
 ---
-title: Azure Lab Services の Azure PowerShell サンプル | Microsoft Docs
+title: Azure PowerShell のサンプル
 description: Azure PowerShell サンプル - Azure Lab Services でのラボの管理に役立つスクリプト
-ms.topic: article
+ms.topic: landing-page
 ms.date: 06/26/2020
-ms.openlocfilehash: ce7a4f77aa0ea309afb81a54fd2f8f0a8f373e58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e9ac94a89e62653448ed53d0bfd26ac12c108ca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86187729"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670787"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>Azure Lab Services 用 Azure PowerShell サンプル
 
@@ -21,4 +21,3 @@ ms.locfileid: "86187729"
 |[VHD からカスタム イメージを作成する](scripts/create-custom-image-from-vhd.md)| この PowerShell スクリプトは、Azure DevTest Labs のラボでカスタム イメージを作成します。 |
 |[ラボ内にカスタム ロールを作成する](scripts/create-custom-role-in-lab.md)| この PowerShell スクリプトは、Azure Lab Services のラボ内にカスタム ロールを作成します。 |
 |[許可される VM のサイズをラボ内に設定する](scripts/set-allowed-vm-sizes-in-lab.md)| この PowerShell スクリプトは、許可される仮想マシン (VM) のサイズをラボ内に設定します。 |
-

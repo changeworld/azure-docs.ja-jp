@@ -2,17 +2,17 @@
 title: AKS 仮想マシン ホストでのセキュリティ強化
 description: AKS VM ホスト OS でのセキュリティの強化について説明します。
 services: container-service
-author: mlearned
+author: georgewallace
 ms.topic: article
 ms.date: 03/29/2021
-ms.author: mlearned
+ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: b0866905d0228d2304ebf5c8ef930a629979d2da
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 9c39d67fbf52295fd6b31d417c7780cf7e240304
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012084"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055438"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>AKS エージェント ノード ホスト OS のセキュリティ強化
 
@@ -21,7 +21,7 @@ Azure Kubernetes Service (AKS) は安全なサービスとして、SOC、ISO、P
 > [!Note]
 > このドキュメントの対象範囲は、AKS の Linux エージェントだけです。
 
-AKS クラスターは、AKS で実行されているコンテナーに使用される、セキュリティが最適化された OS を実行するホスト仮想マシンにデプロイされます。 このホスト OS は、より多くの [セキュリティ強化](#security-hardening-features)と最適化が適用された **Ubuntu 16.04.LTS** イメージに基づいています。
+AKS クラスターは、AKS で実行されているコンテナーに使用される、セキュリティが最適化された OS を実行するホスト仮想マシンにデプロイされます。 このホスト OS は、より多くの [セキュリティ強化](#security-hardening-features)と最適化が適用された **Ubuntu 18.04.5 LTS** イメージに基づいています。
 
 セキュリティが強化されたホスト OS の目標は、攻撃の対象となる領域を減らし、安全な方法でコンテナーをデプロイするために最適化することです。
 

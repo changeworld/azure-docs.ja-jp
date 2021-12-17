@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/23/2020
+ms.date: 06/23/2021
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
-ms.custom: aaddev
-ms.openlocfilehash: 9b3840ffb39a204cfa24dcb0430f20ac16587582
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q4, aaddev
+ms.openlocfilehash: 7cf9918216c70bcbabf9c64c9b0ebf91c02b45fd
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104180"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029244"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain"></a>方法:アプリケーションの発行元ドメインを構成する
+# <a name="configure-an-applications-publisher-domain"></a>アプリケーションの発行元ドメインを構成する
 
 アプリケーションの発行元ドメインは、ユーザーに情報の送信先を知らせるために[アプリケーションの同意プロンプト](application-consent-experience.md)でユーザーに表示されます。 2019 年 5 月 21 日の後に登録されたマルチテナント アプリケーションのうち、発行元ドメインのないアプリケーションは **未検証** として表示されます。 マルチテナント アプリケーションは、1 つの組織ディレクトリの外部にあるアカウントをサポートするアプリケーションです。たとえば、すべての Azure AD アカウントをサポートするか、またはすべての Azure AD アカウントと個人の Microsoft アカウントをサポートします。
 
@@ -61,7 +61,7 @@ ms.locfileid: "100104180"
 
 アプリがテナントで登録されている場合は、選択するタブとして **[確認済みドメインの選択]** と **[新しいドメインの確認]** の 2 つが表示されます。
 
-アプリがテナントで登録されていない場合は、アプリケーションの新しいドメインを検証するためのオプションのみが表示されます。
+ドメインがテナントで登録されていない場合は、アプリケーションの新しいドメインを検証するためのオプションのみが表示されます。
 
 ### <a name="to-verify-a-new-domain-for-your-app"></a>アプリの新しいドメインを検証するには
 
@@ -81,19 +81,19 @@ ms.locfileid: "100104180"
    ```
 
 1. プレースホルダー *{YOUR-APP-ID-HERE}* をアプリに対応するアプリケーション (クライアント) ID に置き換えます。
-
 1. このファイルを `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json` でホストします。 プレースホルダー *{YOUR-DOMAIN-HERE}* を検証済みのドメインに一致するように置き換えます。
-
 1. **[ドメインを検証して保存]** ボタンをクリックします。
+
+ドメインの検証後、検証に使用されるリソースを保持する必要はありません。 検証が完了したら、ホストされているファイルは削除できます。
 
 ### <a name="to-select-a-verified-domain"></a>検証済みのドメインを選択するには
 
-- テナントに検証済みのドメインが存在する場合は、 **[確認済みドメインの選択]** ドロップダウンからいずれかのドメインを選択します。
+テナントに検証済みのドメインが存在する場合は、 **[確認済みドメインの選択]** ドロップダウンからいずれかのドメインを選択します。
 
->[!Note]
-> 返される必要がある 'Content-Type' ヘッダーは `application/json` です。 `application/json; charset=utf-8` のようにそれ以外のものを使用すると、以下に示すエラーが発生する場合があります。 
-> 
->``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
+> [!NOTE]
+> 返される必要がある `Content-Type` ヘッダーは `application/json` です。 `application/json; charset=utf-8` のようにそれ以外のものを使用するとエラーが発生する場合があります。
+>
+> `Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value.`
 >
 
 ## <a name="implications-on-the-app-consent-prompt"></a>アプリの同意プロンプトへの影響
@@ -110,7 +110,7 @@ ms.locfileid: "100104180"
 
 ## <a name="implications-on-redirect-uris"></a>リダイレクト URI への影響
 
-ユーザーが職場または学校アカウントあるいは個人の Microsoft アカウント ([マルチテナント](single-and-multi-tenant-apps.md)) でサインインするアプリケーションは、リダイレクト URI を指定するときにいくつかの制限に従います。
+ユーザーが職場または学校アカウントあるいは個人の Microsoft アカウント (マルチテナント) でサインインするアプリケーションは、リダイレクト URI を指定するときにいくつかの制限に従います。
 
 ### <a name="single-root-domain-restriction"></a>単一のルート ドメインの制限
 

@@ -8,15 +8,16 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: c7c0fc8aaa3779390060ae283f1427f4955ed421
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 1ed110618b81c5aa074b5003a2fbbac67073a4dc
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555977"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692306"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>チュートリアル - カスタム スクリプト拡張機能を使って Azure 内の Windows 仮想マシンにアプリケーションを展開する
+**適用対象:** :heavy_check_mark: Windows :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 迅速かつ一貫した方法で仮想マシン (VM) を構成するには、[Windows 用のカスタム スクリプト拡張機能](../extensions/custom-script-windows.md)を使用することができます。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -93,7 +94,7 @@ Get-AzPublicIPAddress `
 ![実行中の IIS Web サイト](./media/tutorial-automate-vm-deployment/running-iis-website.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、仮想マシンへの IIS のインストールを自動化しました。 以下の方法を学習しました。
 

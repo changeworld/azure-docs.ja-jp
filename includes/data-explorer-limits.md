@@ -4,12 +4,12 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 01/20/2020
 ms.author: ilayr
-ms.openlocfilehash: d9e23e74cd980ecf44cd04ad2b6f89dc6a4cf868
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86b2353109d4005594ee08e27283d6aa9c654120
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76548215"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "123078315"
 ---
 次の表では、Azure Data Explorer クラスターの上限について説明します。
 
@@ -18,7 +18,7 @@ ms.locfileid: "76548215"
 | サブスクリプションあたりのリージョンごとのクラスター数 | 20 |
 | クラスターごとのインスタンス数 | 1000 | 
 | クラスター内のデータベースの数 | 10,000 |
-| クラスター内のアタッチされたデータベース構成の数 | 70 |
+| リーダー クラスター (データ共有プロデューサー) あたりのフォロー クラスター (データ共有コンシューマー) の数 | 100 |
 
 次の表では、Azure Data Explorer クラスターで実行される管理操作の制限について説明します。
 

@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc20ca3f3cf6197f8a3ed3a7e0362046f129d369
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 28a6ca16de88df5bde2b003879814c032ed0c519
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305873"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049959"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -84,7 +84,7 @@ ID プロバイダーによってこれらのプロトコルがサポートさ�
 
 スマートカードまたは証明書ベースの認証を使用して、Azure AD にデバイスを参加させることはできません。 ただし、AD FS を構成してある場合は、スマートカードを使用して Azure AD 参加済みデバイスにサインインすることができます。
 
-**推奨事項:** Windows 10 デバイスに対する強力なパスワードなしの認証用に Windows Hello for Business を実装してください。
+**推奨事項:** Windows 10 以上のデバイスに対する強力なパスワードなしの認証用に Windows Hello for Business を実装してください。
 
 ### <a name="user-configuration"></a>ユーザー構成
 
@@ -103,8 +103,8 @@ UPN の変更は、Windows 10 2004 Update 以降でのみサポートされま�
 
 Azure AD 参加:
 
-- Windows 10 デバイスに対してのみ適用されます。 
-- 以前のバージョンの Windows や他のオペレーティング システムには適用されません。 Windows 7/8.1 デバイスを使用している場合は、Windows 10 にアップグレードして Azure AD 参加をデプロイする必要があります。
+- Windows 10 と Windows 11 のデバイスに適用されます。 
+- 以前のバージョンの Windows や他のオペレーティング システムには適用されません。 Windows 7 または 8.1 のデバイスを使用している場合は、Windows 10 以上にアップグレードして Azure AD 参加をデプロイする必要があります。
 - FIPS 準拠の TPM 2.0 でサポートされていますが、TPM 1.2 ではサポートされていません。 FIPS 準拠の TPM 1.2 がデバイスにある場合は、Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。
  
 **推奨事項:** 更新された機能を利用するために、常に最新の Windows 10 リリースを使用してください。
@@ -164,7 +164,10 @@ AD FS を使用する場合は、「[AD FS によるシングル サインオン
 
 デバイスがドメイン コントローラーへのアクセス権を持つ場合、ユーザーは Azure AD 参加済みデバイスから SSO を取得します。 
 
-**推奨事項:** [Azure AD アプリのプロキシ](../manage-apps/application-proxy.md)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
+> [!NOTE]
+> Azure AD 参加済みデバイスでは、オンプレミスとクラウドの両方のアプリケーションにシームレスにアクセスできます。 詳しくは、「[How SSO to on-premises resources works on Azure AD joined devices](azuread-join-sso.md)」(Azure AD 参加済みデバイス上でのオンプレミスのリソースへの SSO の動作) をご覧ください。
+
+**推奨事項:** [Azure AD アプリのプロキシ](../app-proxy/application-proxy.md)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
 
 ### <a name="on-premises-network-shares"></a>オンプレミスのネットワーク共有
 
@@ -186,12 +189,17 @@ Azure AD 参加済みデバイスにリモート デスクトップ接続を行�
 
 Windows 10 2004 更新プログラム以降、ユーザーは Azure AD 登録済み Windows 10 デバイスから Azure AD 参加済みデバイスへのリモート デスクトップも使用できるようになります。 
 
+### <a name="radius-and-wi-fi-authentication"></a>RADIUS と Wi-Fi 認証
+
+現在、Azure AD に参加しているデバイスでは Wi-Fi アクセス ポイントに接続するための RADIUS 認証がサポートされていません。これは、RADIUS がオンプレミスのコンピューター オブジェクトの存在に依存するためです。 代わりに、Intune 経由でプッシュされる証明書またはユーザー資格情報を使用して Wi-Fi に対する認証を行います。 
+
+
 ## <a name="understand-your-provisioning-options"></a>プロビジョニングのオプションを把握する
 **注**:Azure AD 参加済みデバイスは、システム準備ツール (Sysprep) または同様のイメージング ツールを使用してデプロイすることはできません
 
 次のアプローチを使用して Azure AD 参加をプロビジョニングできます。
 
-- **OOBE/設定内でのセルフサービス** - セルフサービス モードでは、ユーザーは Windows Out of Box Experience (OOBE) の実行中に、または Windows 設定から、Azure AD 参加のプロセスを実行します。 詳しくは、「[職場のデバイスを組織のネットワークに参加させる](../user-help/user-help-join-device-on-network.md)」をご覧ください。 
+- **OOBE/設定内でのセルフサービス** - セルフサービス モードでは、ユーザーは Windows Out of Box Experience (OOBE) の実行中に、または Windows 設定から、Azure AD 参加のプロセスを実行します。 詳しくは、「[職場のデバイスを組織のネットワークに参加させる](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973)」をご覧ください。 
 - **Windows Autopilot** - Windows Autopilot により、Azure AD 参加を実行する OOBE のエクスペリエンスを円滑にするためにデバイスの事前構成を行うことができます。 詳しくは、「[Windows Autopilot の概要](/windows/deployment/windows-autopilot/windows-10-autopilot)」をご覧ください。 
 - **一括登録** - 一括登録により、一括プロビジョニング ツールを使用してデバイスを構成することで、管理者主導の Azure AD 参加が可能になります。 詳しくは、「[Windows デバイスの一括登録](/intune/windows-bulk-enroll)」をご覧ください。
  
@@ -235,11 +243,11 @@ Azure portal では、組織内の Azure AD 参加済みデバイスのデプロ
 
 ### <a name="require-multi-factor-authentication-mfa-to-join-devices"></a>デバイスを参加させるには多要素認証 (MFA) が必要
 
-デバイスを Azure AD に参加させるときにユーザーに MFA の実行を要求する場合は、 **[はい]** を選択します。 ユーザーが MFA を使用して Azure AD にデバイスを参加させる場合は、デバイス自体が第 2 要素になります。
+デバイスを Azure AD に参加させるときにユーザーに MFA の実行を要求する場合は、 **[はい]** を選択します。
 
 ![デバイスを参加させるには多要素認証が必要](./media/azureadjoin-plan/03.png)
 
-**推奨事項:** デバイスを参加させるために MFA を適用するには、条件付きアクセスでユーザー操作「[デバイスの登録または参加](/azure/active-directory/conditional-access/concept-conditional-access-cloud-apps#user-actions)」を使用します。
+**推奨事項:** デバイスを参加させるために MFA を適用するには、条件付きアクセスでユーザー操作「[デバイスの登録または参加](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions)」を使用します。
 
 ## <a name="configure-your-mobility-settings"></a>モビリティ設定の構成
 
@@ -300,7 +308,7 @@ Azure AD 参加済みデバイスに対して MDM プロバイダーが構成さ
 
 > [!div class="nextstepaction"]
 > [最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる](azuread-joined-devices-frx.md)
-> [職場のデバイスを組織のネットワークに参加させる](../user-help/user-help-join-device-on-network.md)
+> [職場のデバイスを組織のネットワークに参加させる](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

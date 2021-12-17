@@ -2,13 +2,13 @@
 title: Azure Event Grid イベントに対するイベント ハンドラーとしてのストレージ キュー
 description: Azure Event Grid イベントのイベント ハンドラーとして Azure ストレージ キューを使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 502b44f276253be69362424c9de0fd516d20ad9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: 12314aaad4204892523ab88166bf86a80c35c939
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91270187"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217790"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしてのストレージ キュー
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Queue storage** はその 1 つです。 
@@ -71,7 +71,7 @@ ms.locfileid: "91270187"
 }
 ```
 
-### <a name="storage-queue-as-a-deadletter-destination"></a>配信不能の宛先としてのストレージ キュー
+### <a name="storage-queue-as-the-event-handler-with-a-deadletter-destination"></a>イベント ハンドラーとしてのストレージ キューと配信不能の宛先
 
 ```json
 {
@@ -101,7 +101,7 @@ ms.locfileid: "91270187"
 }
 ```
 
-### <a name="storage-queue-as-a-deadletter-destination---managed-identity"></a>配信不能の宛先としてのストレージ キュー - マネージド ID
+### <a name="storage-queue-as-the-event-handler-with-a-deadletter-destination---managed-identity"></a>イベント ハンドラーとしてのストレージ キューと配信不能の宛先 - マネージド ID
 
 ```json
 {

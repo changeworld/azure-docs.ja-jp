@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: a5db000ad76f23be60d279923a590204c2fcf5e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87dc84b7f73fe95f7ba62dcdef63816753cc233e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377382"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735032"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: 一般的な質問
 
@@ -26,14 +26,14 @@ Azure Migrate は、オンプレミスのアプリとワークロード、およ
 
 ## <a name="what-can-i-do-with-azure-migrate"></a>Azure Migrate でできること
 
-Azure Migrate を使用して、オンプレミスのインフラストラクチャ、アプリケーション、データの検出および評価を行い、Azure に移行します。 Azure Migrate は、オンプレミスの VMware VM、Hyper-V VM、物理サーバー、その他の仮想化された VM、データベース、Web アプリ、仮想デスクトップの評価と移行をサポートしています。 
+Azure Migrate を使用して、オンプレミスのインフラストラクチャ、アプリケーション、データの検出および評価を行い、Azure に移行します。 Azure Migrate は、オンプレミスの VMware VM、Hyper-V VM、物理サーバー、その他の仮想化された VM、データベース、Web アプリ、仮想デスクトップの評価と移行をサポートしています。
 
 ## <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Azure Migrate と Azure Site Recovery の違い
 
-[Azure Migrate](migrate-services-overview.md) は、評価と Azure への移行を行うための中央ハブとなります。 
+[Azure Migrate](migrate-services-overview.md) は、評価と Azure への移行を行うための中央ハブとなります。
 
 - Azure Migrate を使用すると、Azure Migrate ツール、その他の Azure サービス、サードパーティ製のツールによって相互運用性と将来の拡張性が確保されます。
-- Azure Migrate: Server Migration ツールは、サーバーを Azure に移行するための専用ツールです。 これは移行のために最適化されています。 移行とは直接関係ない概念やシナリオを理解する必要はありません。 
+- Azure Migrate: Server Migration ツールは、サーバーを Azure に移行するための専用ツールです。 これは移行のために最適化されています。 移行とは直接関係ない概念やシナリオを理解する必要はありません。
 - VM のレプリケーションが開始された時点から 180 日間の移行に関して、ツールの使用料金は発生しません。 これにより、移行を完了する時間を確保できます。 料金は、レプリケーションで使用されるストレージとネットワークのリソース、およびテスト移行時に使用されるコンピューティング料金に対してのみ発生します。
 - Azure Migrate では、Site Recovery でサポートされているすべての移行シナリオがサポートされます。 さらに、VMware VM の場合、Azure Migrate にはエージェントレスの移行オプションも用意されています。
 - 新しい移行機能は、Azure Migrate: Server Migration ツールでのみ優先的に使用できます。 これらの機能は、Site Recovery を対象としたものではありません。
@@ -46,7 +46,7 @@ Azure Migrate: Server Migration ツールは、一部のオンプレミス マ�
 
 従来の Azure Migrate は 2024 年 2 月に廃止されます。 2024 年 2 月以降、クラシック バージョンの Azure Migrate はサポートされなくなり、クラシック プロジェクトのインベントリ メタデータは削除されます。 旧バージョンのプロジェクトやコンポーネントを新バージョンにアップグレードすることはできません。 [新しい Azure Migrate プロジェクトを作成](create-manage-projects.md)して、それに[評価と移行ツールを追加する](./create-manage-projects.md)必要があります。 チュートリアルを利用して、使用可能な評価と移行ツールの使用方法を理解してください。 Log Analytics ワークスペースがクラシック プロジェクトにアタッチされている場合は、クラシック プロジェクトを削除した後で、そのワークスペースを現在のバージョンのプロジェクトにアタッチできます。
 
-## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Migrate:Server Assessment と Map Toolkit の違いは何ですか。
+## <a name="whats-the-difference-between-azure-migrate-discovery-and-assessment-and-the-map-toolkit"></a>Azure Migrate の Discovery and Assessment と MAP Toolkit の違いは何ですか。
 
 Server Assessment は、移行準備を支援する評価と、Azure への移行のためのワークロードの評価を提供します。 [Microsoft Assessment and Planning (MAP) Toolkit](https://www.microsoft.com/download/details.aspx?id=7826) は、新しいバージョンの Windows クライアントおよびサーバー オペレーティング システムでの移行計画や、ソフトウェア使用状況の追跡など、他のタスクに役立ちます。 そのような目的には、引き続き MAP Toolkit を使用します。
 
@@ -70,7 +70,7 @@ Server Assessment は移行計画ツールです。 Site Recovery Deployment Pla
 
 ## <a name="how-do-i-get-started"></a>開始するには?
 
-必要なツールを特定し、次にそのツールを Azure Migrate プロジェクトに追加します。 
+必要なツールを特定し、次にそのツールを Azure Migrate プロジェクトに追加します。
 
 ISV ツールまたは Movere を追加する場合は、次のようにします。
 
@@ -81,7 +81,7 @@ Azure とその他のツール全体にわたって、Azure Migrate プロジェ
 
 ## <a name="how-do-i-delete-a-project"></a>プロジェクトを削除する方法を教えてください。
 
-[プロジェクトを削除する](how-to-delete-project.md)方法を確認してください。 
+[プロジェクトを削除する](how-to-delete-project.md)方法を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

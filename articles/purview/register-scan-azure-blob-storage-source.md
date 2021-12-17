@@ -1,134 +1,294 @@
 ---
-title: Azure Storage の BLOB をスキャンする方法
-description: Azure Purview データ カタログで Azure Blob Storage をスキャンする方法について説明します。
-author: shsandeep123
-ms.author: sandeepshah
+title: Azure Blob Storage の登録とスキャン
+description: この記事では、Azure Blob Storage データ ソースを Azure Purview に登録するプロセスについて説明します。これには、Azure Blob Storage Gen2 ソースを認証および操作する手順が含まれます
+author: athenads
+ms.author: athenadsouza
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/25/2020
-ms.openlocfilehash: b27b46c68d018d2ddf79d284b20cc05b51640891
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: d740ba049353a250468321741d90d1f8b7b88d2b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880643"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848991"
 ---
-# <a name="register-and-scan-azure-blob-storage"></a>Azure Blob Storage の登録とスキャン
+# <a name="connect-to-azure-blob-storage-in-azure-purview"></a>Connect Purview で Azure Blob Storage にアクセスする
 
-この記事では、Purview に Azure Blob Storage アカウントを登録し、スキャンを設定する方法について説明します。
+この記事では、Azure Blob Storage アカウントを Azure Purview に登録するプロセスについて説明します。これには、Azure Blob Storage ソースを認証および操作する手順が含まれます
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Azure Blob Storage では、フル スキャンと増分スキャンがサポートされ、メタデータとスキーマがキャプチャされます。 また、システムおよびカスタムの分類規則に基づいてデータが自動的に分類されます。
+|**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
+|---|---|---|---|---|---|---|
+| [あり](#register) | [あり](#scan)|[あり](#scan) | [あり](#scan)|[あり](#scan)| はい | 制限あり** |
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
+
+csv、tsv、psv、ssv などのファイルの種類では、次のロジックが適用されている場合にスキーマが抽出されます。
+
+* 最初の行の値が空ではない
+* 最初の行の値が一意である
+* 最初の行の値が日付でも数値でもありません
 
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関する記事を参照してください。
-- Azure Purview データ ソース管理者である必要があります
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="setting-up-authentication-for-a-scan"></a>スキャンの認証の設定
+* アクティブな [Purview リソース](create-catalog-portal.md)。
 
-Azure Blob Storage の認証を設定するには、次の 3 つの方法があります。
+* Purview Studio でソースを登録して管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細については、[Azure Purview のアクセス許可](catalog-permissions.md)に関するページを参照してください。
 
-- マネージド ID
-- アカウント キー
-- サービス プリンシパル
+## <a name="register"></a>登録
 
-### <a name="managed-identity-recommended"></a>マネージド ID (推奨)
+このセクションでは、Azure Blob Storage アカウントを登録し、データ ソースのスキャンが成功するように適切な認証メカニズムを設定できます。
 
-**マネージド ID** を選択する場合、接続を設定するには、まず、データ ソースをスキャンするためのアクセス許可を Purview アカウントに付与する必要があります。
+### <a name="steps-to-register"></a>登録する手順
 
-1. ストレージ アカウントに移動します。
-1. 左側のナビゲーション メニューから **[アクセス制御 (IAM)]** を選択します。 
-1. **[+ 追加]** を選択します。
-1. **[ロール]** に **[ストレージ BLOB データ リーダー]** を設定し、 **[選択]** 入力ボックスに Azure Purview アカウント名を入力します。 次に、 **[保存]** を選択して、このロールの割り当てを Purview アカウントに付与します。
+データ ソースのスキャンを設定する前に、Azure Purview にデータ ソースを登録することが重要です。
+
+1. [Azure portal](https://portal.azure.com) にアクセスし、 **[Purview アカウント]** ページに移動して、自分の _Purview アカウント_ をクリックします
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-purview-acct.png" alt-text="データ ソースの登録に使用する Purview アカウントを示すスクリーンショット":::
+
+1. **Purview Studio を開き**、 **[Data Map] > [ソース]** の順に移動します
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-open-purview-studio.png" alt-text="Purview Studio を開くリンクを示すスクリーンショット":::
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-sources.png" alt-text="Data Map の [ソース] リンクへの移動を示すスクリーンショット":::
+
+1. **コレクション** メニューを使用して [コレクション階層](./quickstart-create-collection.md)を作成し、必要に応じて個々のサブコレクションへのアクセス許可を割り当てます
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-collections.png" alt-text="コレクション階層を作成するコレクション メニューを示すスクリーンショット":::
+
+1. **[ソース]** メニューの適切なコレクションに移動し、 **[登録]** アイコンを選択して新しい Azure BLOB データ ソースを登録します
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-register-source.png" alt-text="データ ソースの登録に使用するコレクションを示すスクリーンショット":::
+
+1. Azure **Blob** Storage データ ソースを選択し、[続行] を **選択します**
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-select-data-source.png" alt-text="データ ソースの選択を示すスクリーンショット":::
+
+1. データ ソースに適切 **な名前** を指定し、関連する **Azure** サブスクリプション、既存の **Azure Blob** Storage アカウント名、コレクションを選択して、[**適用]** を選択 **します**
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-data-source-details.png" alt-text="データ ソースを登録するために入力する詳細を示すスクリーンショット":::
+
+1. 選択したコレクションの下に Azure Blob Storage アカウントが表示されます
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-data-source-collection.png" alt-text="スキャンを開始するためにコレクションにマップされたデータ ソースを示すスクリーンショット":::
+
+## <a name="scan"></a>スキャン
+
+### <a name="authentication-for-a-scan"></a>スキャンの認証
+
+データ ソースをスキャンするアクセス権を持つには、Azure Blob Storageアカウントの認証方法を構成する必要があります。
+
+次のオプションがサポートされています。
 
 > [!Note]
-> 詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../storage/common/storage-auth-aad.md)」の手順を参照してください
+> ストレージ アカウントに対してファイアウォールが有効になっている場合は、スキャンを設定するときに、 [マネージド ID] の認証方法を使用する必要があります。
 
-### <a name="account-key"></a>アカウント キー
+- **マネージド ID (推奨)** - Azure Purview アカウントが作成されるとすぐに、システムの **マネージド ID** が Azure AD テナント内に自動的に作成されます。 Azure Purview MSI でスキャンを実行するには、リソースの種類に応じて、特定の RBAC ロールを割り当てる必要があります。
 
-選択した認証方法が **アカウント キー** の場合は、アクセス キーを取得して、キー コンテナーに格納する必要があります。
+- **アカウント キー** - Azure Purview へのアクセスを有効にし、シークレットを使用してデータソースを安全にスキャンするために、Azure Key Vault 内にシークレットを作成して資格情報を格納できます。 シークレットには、ストレージ アカウント キー、SQL ログイン パスワード、またはパスワードを指定できます。
 
-1. ストレージ アカウントに移動します
-1. **[設定] > [アクセス キー]** を選択します
-1. "*キー*" をコピーし、次の手順のためにどこかに保存します
-1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** の順に選択します。
-1. **[+ 生成/インポート]** を選択し、 **[名前]** と *[値]* にストレージ アカウントの **キー** を入力します
-1. **[作成]** を選択して完了します。
-1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
-1. 最後に、キーを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
+   > [!Note]
+   > このオプションを使用した場合、サブスクリプションに _Azure キー コンテナー_ リソースをデプロイし、_Azure キー コンテナー_ 内のシークレットへの必要なアクセス許可を持つ _Azure Purview アカウントの_ MSI を割り当てる必要があります。
 
-### <a name="service-principal"></a>サービス プリンシパル
+- **サービス プリンシパル** - この方法では、Azure Active Directory テナントで新しく作成することも、既存のサービス プリンシパルを使用することもできます。
 
-サービス プリンシパルを使用するには、既存のものを使用するか、新しく作成することができます。 
+#### <a name="using-managed-identity-for-scanning"></a>スキャンでのマネージド ID の使用
 
-> [!Note]
-> 新しいサービス プリンシパルを作成する必要がある場合は、次の手順に従います。
-> 1. [Azure Portal](https://portal.azure.com) に移動します。
-> 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
-> 1. **[アプリの登録]** を選択します。
-> 1. **[+ 新しいアプリケーションの登録]** を選択します。
-> 1. **アプリケーション** の名前 (サービス プリンシパル名) を入力します。
-> 1. **[この組織のディレクトリ内のアカウントのみ]** を選択します。
-> 1. [リダイレクト URI] には **[Web]** を選択し、必要な URL を入力します。これは、実際の URL でなくてもよく、機能しなくてもかまいません。
-> 1. 次に、 **[登録]** を選択します。
-
-サービス プリンシパルのアプリケーション ID とシークレットを取得する必要があります。
-
-1. [Azure portal](https://portal.azure.com) でサービス プリンシパルに移動します
-1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
-1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** の順に選択します。
-1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
-1. **[作成]** を選択して完了します。
-1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
-1. 最後に、サービス プリンシパルを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
-
-#### <a name="granting-the-service-principal-access-to-your-blob-storage"></a>Blob Storage へのアクセス権をサービス プリンシパルに付与する
-
-1. ストレージ アカウントに移動します。
-1. 左側のナビゲーション メニューから **[アクセス制御 (IAM)]** を選択します。 
-1. **[+ 追加]** を選択します。
-1. **[ロール]** に **[ストレージ BLOB データ リーダー]** を設定し、 **[選択]** 入力ボックスにサービス プリンシパル名またはオブジェクト ID を入力します。 次に、 **[保存]** を選択して、このロールの割り当てをサービス プリンシパルに付与します。
-
-## <a name="firewall-settings"></a>ファイアウォールの設定
+Purview アカウントに Azure BLOB データ ソースをスキャンするアクセス許可を付与することが重要です。 スキャンのアクセス許可を付与する対象に応じて、サブスクリプション、リソースグループ、またはリソースのレベルに Catalog の MSI を追加できます。
 
 > [!NOTE]
 > ストレージ アカウントに対してファイアウォールが有効になっている場合は、スキャンを設定するときに、 **[マネージド ID]** の認証方法を使用する必要があります。
 
-1. [Azure portal](https://portal.azure.com) でストレージ アカウントに移動します
-1. **[設定] > [ネットワーク]** に移動します
+> [!Note]
+> Azure リソースにマネージド ID を追加できるようにするには、サブスクリプションの所有者である必要があります。
+
+1. Azure portal [から](https://portal.azure.com)、カタログのスキャンを許可するサブスクリプション、リソース グループ、またはリソース (Azure Blob Storage アカウントなど) を検索します。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-storage-acct.png" alt-text="ストレージ アカウントを示すスクリーンショット":::
+
+1. 左側のナビゲーションで **[アクセス制御 (IAM)]** を選択し、 **[追加]**  -->  **[ロール割り当ての追加]** を選択します。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-access-control.png" alt-text="ストレージ アカウントのアクセス制御を示すスクリーンショット":::
+
+1. [ロール]**を [BLOB** **Storage閲覧者]** に設定し、[入力ボックスの選択] に _Azure Purview_ アカウント **名を** 入力します。 次に、 **[保存]** を選択して、このロールの割り当てを Purview アカウントに付与します。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-assign-permissions.png" alt-text="Purview アカウントにアクセス許可を割り当てる方法の詳細を示すスクリーンショット":::
+
+1. Azure Blob Storage アカウントに移動します [Azure portal](https://portal.azure.com)
+1. **[セキュリティとネットワーク] に移動>ネットワーク**
+
 1. **[許可するアクセス元]** の **[選択されたネットワーク]** を選択します
-1. **[ファイアウォール]** セクションで、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** を選択し、 **[保存]** を選択します
 
-:::image type="content" source="./media/register-scan-azure-blob-storage-source/firewall-setting.png" alt-text="ファイアウォールの設定を示すスクリーンショット":::
+1. **[例外]** セクションで、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** を選択し、 **[保存]** を選択します
 
-## <a name="register-an-azure-blob-storage-account"></a>Azure Blob Storage アカウントを登録する
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-permission.png" alt-text="信頼されたユーザーがストレージ アカウントにアクセスMicrosoft サービス例外を示すスクリーンショット":::
 
-新しい BLOB アカウントをデータ カタログに登録するには、次の手順を実行します。
+> [!Note]
+> 詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../storage/blobs/authorize-access-azure-active-directory.md)」の手順を参照してください
 
-1. Purview アカウントに移動します。
-1. 左側のナビゲーションで **[ソース]** を選択します。
-1. **[登録]** を選択します
-1. **[ソースの登録]** で、 **[Azure Blob Storage]** を選択します
-1. **[続行]** を選択します。
+#### <a name="using-account-key-for-scanning"></a>スキャンにアカウント キーを使用する
 
-**[ソースの登録 (Azure Blob Storage)]** 画面で、次の手順を実行します。
+選択した認証方法が **アカウント キー** の場合は、アクセス キーを取得して、キー コンテナーに格納する必要があります。
 
-1. データ ソースがカタログに表示される際の **[名前]** を入力します。 
-1. サブスクリプションを選択して、ストレージ アカウントをフィルター処理します
-1. Select a storage account (ストレージ アカウントを選択する)
-1. コレクションを選択するか、新しいものを作成します (省略可能)
-1. **[完了]** を選択して、データ ソースを登録します。
+1. Azure Blob Storage アカウントに移動します
+1. **[セキュリティとネットワーク] > [アクセス キー]** を選択します
 
-:::image type="content" source="media/register-scan-azure-blob-storage-source/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-access-keys.png" alt-text="ストレージ アカウント内のアクセス キーを示すスクリーンショット":::
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+1. *キー* をコピーし、次の手順のために個別に保存します
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-key.png" alt-text="コピーするアクセス キーを示すスクリーンショット":::
+
+1. お使いのキー コンテナーに移動する
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-key-vault.png" alt-text="キー コンテナーを示すスクリーンショット":::
+
+1. **[設定 > シークレット]** を選択し、 **[+ 生成/インポート]** を選択します
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-generate-secret.png" alt-text="シークレットを生成するキー コンテナー オプションを示すスクリーンショット":::
+
+1. ストレージ アカウント **の** キー **として[** 名前] *と [値* ] を入力します
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-secret-values.png" alt-text="シークレット値を入力するキー コンテナー オプションを示すスクリーンショット":::
+
+1. **[作成]** を選択して完了します
+
+1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
+1. 最後に、キーを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
+
+#### <a name="using-service-principal-for-scanning"></a>スキャンでのサービス プリンシパルの使用
+
+##### <a name="creating-a-new-service-principal"></a>新しいサービス プリンシパルの作成
+
+[新しいサービス プリンシパルを作成する](./create-service-principal-azure.md)必要がある場合は、Azure AD テナントにアプリケーションを登録し、データ ソースでサービス プリンシパルへのアクセスを付与する必要があります。 Azure AD 全体管理者やアプリケーション管理者などの他のロールで、この操作を実行できます。
+
+##### <a name="getting-the-service-principals-application-id"></a>サービス プリンシパルのアプリケーション ID の取得
+
+1. 既に作成されている [_サービス プリンシパル_](./create-service-principal-azure.md)の **[概要]** にある **アプリケーション (クライアント) ID** をコピーします
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-sp-appln-id.png" alt-text="サービス プリンシパルのアプリケーション (クライアント) ID を示すスクリーンショット":::
+
+##### <a name="granting-the-service-principal-access-to-your-azure-blob-account"></a>Azure BLOB アカウントへのサービス プリンシパル アクセスを許可する
+
+Azure BLOB データ ソースをスキャンするアクセス許可をサービス プリンシパルに付与することが重要です。 スキャンのアクセス許可を付与する対象に応じて、サブスクリプション、リソースグループ、またはリソースのレベルに Catalog の MSI を追加できます。
+
+> [!Note]
+> Azure リソースにサービス プリンシパルを追加できるようにするには、サブスクリプションの所有者である必要があります。
+
+1. [Azure portal](https://portal.azure.com)から、カタログのスキャンを許可するサブスクリプション、リソース グループ、またはリソース (Azure Blob Storage ストレージ アカウントなど) を検索します。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-storage-acct.png" alt-text="ストレージ アカウントを示すスクリーンショット":::
+
+1. 左側のナビゲーションで **[アクセス制御 (IAM)]** を選択し、 **[追加]**  -->  **[ロール割り当ての追加]** を選択します。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-access-control.png" alt-text="ストレージ アカウントのアクセス制御を示すスクリーンショット":::
+
+1. [ロール]**を [BLOB** **Storage閲覧者] に設定** し、[入力の選択] ボックス _にサービス_ プリンシパル **を** 入力します。 次に、 **[保存]** を選択して、このロールの割り当てを Purview アカウントに付与します。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-sp-permission.png" alt-text="サービス プリンシパルにストレージ アカウントのアクセス許可を提供するための詳細を示すスクリーンショット":::
+
+### <a name="creating-the-scan"></a>スキャンの作成
+
+1. **Purview アカウント** を開き、 **[Purview Studio を開く]** を選択します
+1. **[データ マップ]**  -->  **[ソース]** に移動してコレクション階層を表示します
+1. 前に **登録した Azure BLOB** データ ソースの下にある **[新しいスキャン]** アイコンを選択します
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-new-scan.png" alt-text="新しいスキャンを作成する画面を示すスクリーンショット":::
+
+#### <a name="if-using-managed-identity"></a>マネージド ID を使用した場合
+
+スキャンの **名前** を指定し、 **[資格情報]** で **Purview MSI** を選択し、スキャンに適したコレクションを選択して、 **[テスト接続]** を選択します。 接続に成功したら **[続行]** をクリックします
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-managed-identity.png" alt-text="スキャンを実行するマネージド ID オプションのスクリーンショット":::
+
+#### <a name="if-using-account-key"></a>アカウント キーを使用している場合
+
+スキャンの **名前を** 指定し、スキャンに適したコレクションを選択し、[アカウント キー] として **[認証** 方法] を _選択し_、[作成] を **選択します**
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-acct-key.png" alt-text="スキャン用の [アカウント キー] オプションを示すスクリーンショット":::
+
+#### <a name="if-using-service-principal"></a>サービス プリンシパルを使用する場合
+
+1. スキャンの **[名前**] を指定し、スキャンに適したコレクションを選択し、[資格情報] で **[+ 新規] を選択** **します**
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-sp-option.png" alt-text="スキャンを有効にするサービス プリンシパル オプションのスクリーンショット":::
+
+1. _サービス プリンシパル_ の作成時に使用した適切な **キー コンテナー接続** と **シークレット名** を選択します。 サービス **プリンシパル ID は**、前 **にコピーしたアプリケーション (クライアント) ID** です
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-service-principal-option.png" alt-text="サービス プリンシパル オプションを示すスクリーンショット":::
+
+1. **[接続テスト]** を選択します。 接続に成功したら **[続行]** をクリックします
+
+### <a name="scoping-and-running-the-scan"></a>スキャンのスコープと実行
+
+1. 特定のフォルダーおよびサブフォルダーをリストから選んで、スキャンのスコープに指定できます。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-scope-scan.png" alt-text="スキャンの範囲を指定する":::
+
+1. 次に、スキャン ルール セットを選択します。 システムの既定のものを選択するか、既存のカスタム ルール セットを使用するか、新しいルール セットをインラインで作成することができます。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-scan-rule-set.png" alt-text="スキャン ルール セット":::
+
+1. 新しい _スキャン ルール セット_ を作成する場合は、スキャン ルールに含める **ファイルの種類** を選択します。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-file-types.png" alt-text="スキャン ルール セットのファイルの種類":::
+
+1. スキャン ルールに含める **分類ルール** を選択できます
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-classification rules.png" alt-text="スキャン ルール セットの分類ルール":::
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-select-scan-rule-set.png" alt-text="スキャン ルール セットの選択":::
+
+1. スキャン トリガーを選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-scan-trigger.png" alt-text="スキャン トリガー":::
+
+1. スキャンを確認し、 **[保存および実行]** を選択します。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-review-scan.png" alt-text="スキャンの確認":::
+
+### <a name="viewing-scan"></a>スキャンの表示
+
+1. _[コレクション]_ 内の _[データ ソース]_ に移動し、 **[詳細の表示]** をクリックしてスキャンの状態を確認します
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-view-scan.png" alt-text="スキャンの表示":::
+
+1. スキャンの詳細には、**最終実行状態** でのスキャンの進行状況と、_スキャン_ および _分類_ されたアセットの数が示されます
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-scan-details.png" alt-text="スキャンの詳細の表示":::
+
+1. スキャン全体が正常に実行されると、**最後の実行状態** が **[進行中]** に更新され、その後 **[完了]** に更新されます
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-scan-in-progress.png" alt-text="進行中のスキャンの表示":::
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-scan-completed.png" alt-text="完了したスキャンの表示":::
+
+### <a name="managing-scan"></a>スキャンの管理
+
+スキャンは、完了時に管理したり、再度実行できます
+
+1. **スキャン名** をクリックしてスキャンを管理します
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-manage-scan.png" alt-text="スキャンの管理":::
+
+1. _スキャンを再実行_ したり、_スキャンを編集_ したり、_スキャンを削除_ したりできます  
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-manage-scan-options.png" alt-text="スキャン オプションの管理":::
+
+1. _増分スキャンを実行_ することも、_完全スキャン_ を再度実行することもできます 
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-full-inc-scan.png" alt-text="完全スキャンまたは増分スキャン":::
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
-- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)
+ソースの登録が完了したので、以下のガイドに従って Azure Purview とご利用のデータの詳細について学習します。
+
+- [Azure Purview のデータ分析情報](concept-insights.md)
+- [Azure Purview のデータ系列](catalog-lineage-user-guide.md)
+- [Data Catalog の検索](how-to-search-catalog.md)

@@ -1,18 +1,17 @@
 ---
-title: Azure Purview (プレビュー) のデータ系列
+title: Azure Purview のデータ系列
 description: データ系列の概念について説明します。
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/30/2020
-ms.openlocfilehash: 476355f41de5e0e6aaffdedea8947cab5221767a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: 37cffe89fc0e0cb10aaadbb8d63f9aa12d0589eb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200725"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207452"
 ---
 # <a name="data-lineage-in-azure-purview-data-catalog-client"></a>Azure Purview Data Catalog クライアントのデータ系列
 
@@ -43,7 +42,7 @@ Purview Data Catalog は、他のデータ処理システム、ストレージ �
 
 ## <a name="lineage-granularity"></a>系列の粒度
 
-ここでは、データ カタログによって系列情報が収集される粒度の詳細について説明します。 この粒度は、使用されるデータ システムによって異なる場合があります。
+次のセクションで、Purview によって系列情報が収集される粒度の詳細について説明します。 この粒度は、Purview でサポートされているデータ システムによって異なる可能性があります。
 
 ### <a name="entity-level-lineage-sources--process--targets"></a>エンティティ レベルの系列:ソース > プロセス > ターゲット 
 
@@ -67,4 +66,4 @@ Purview Data Catalog は、他のデータ処理システム、ストレージ �
 
 * [クイック スタート: Azure portal で Azure Purview アカウントを作成する](create-catalog-portal.md)
 * [クイック スタート: Azure PowerShell または Azure CLI を使用して Azure Purview アカウントを作成する](create-catalog-powershell.md)
-* [クイック スタート: Purview Studio の使用](use-purview-studio.md)
+* [Purview Studio を使用する](use-purview-studio.md)

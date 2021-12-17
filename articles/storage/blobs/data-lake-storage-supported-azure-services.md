@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 10/06/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 36e1a8a288e1f9b2a8d65ab966b607b594d66f4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 284971b1b9a54d21f29cf3c3c81c194be1f5071c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653603"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022495"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 がサポートされている Azure のサービス
 
@@ -46,9 +46,13 @@ Azure のサービスを使用して、データを取り込み、分析を実�
 |Azure Content Delivery Network|まだサポートされていません|適用なし|適用なし|[Azure Data Lake Storage Gen2 ドキュメントのインデックスと検索 (プレビュー)](../../cdn/cdn-overview.md)|
 |Azure SQL Database|まだサポートされていません|適用なし|適用できません|[Azure SQL Database とは何ですか?](../../azure-sql/database/sql-database-paas-overview.md)|
 
+> [!TIP]
+> 取り込み、ダウンロード、処理、視覚化などのカテゴリにサービスを整理するしくみについては、[取り込み、処理、分析](./data-lake-storage-best-practices.md#ingest-process-and-analyze)に関するページを参照してください。
+
 ## <a name="see-also"></a>関連項目
 
 - [Azure Data Lake Storage Gen2 に関する既知の問題](data-lake-storage-known-issues.md)
-- [Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](data-lake-storage-supported-blob-storage-features.md)
-- [Data Lake Storage Gen2 がサポートされているオープン ソース プラットフォーム](data-lake-storage-supported-open-source-platforms.md)
+- [Azure ストレージ アカウントにおける Blob Storage 機能のサポート](storage-feature-support-in-storage-accounts.md)
+- [Azure Data Lake Storage Gen2 がサポートされているオープン ソース プラットフォーム](data-lake-storage-supported-open-source-platforms.md)
 - [Azure Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)
+- [Azure Data Lake Storage Gen2 の使用に関するベスト プラクティス](data-lake-storage-best-practices.md)

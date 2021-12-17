@@ -1,6 +1,6 @@
 ---
-title: 場所に基づく Microsoft Azure Stack Edge Pro の電源コードの技術仕様 | Microsoft Docs
-description: Azure Stack Edge Pro の電源コードの技術仕様について学習します。
+title: 場所に基づく Azure Stack Edge Pro FPGA の電源コードの技術仕様
+description: Azure Stack Edge Pro FPGA の電源コードの技術仕様について学習します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 18de1f445990f167041c755aa5e7d909819319b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06809cacd3a8176338b2df0882f8f3d31d665c4a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96446461"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460363"
 ---
-# <a name="azure-stack-edge-pro-power-cord-specifications"></a>Azure Stack Edge Pro 電源コードの仕様
+# <a name="azure-stack-edge-pro-fpga-power-cord-specifications"></a>Azure Stack Edge Pro FPGA 電源コードの仕様
 
-Azure Stack Edge Pro デバイスには、Azure リージョンに応じて異なる、電源コードが必要です。
+Azure Stack Edge Pro FPGA デバイスには、Azure リージョンに応じて異なる、電源コードが必要です。
 
 ## <a name="supported-power-cords"></a>サポートされている電源コード
 
@@ -158,4 +158,8 @@ Azure Stack Edge Pro デバイスには、Azure リージョンに応じて異�
 
 ## <a name="next-steps"></a>次のステップ
 
+<<<<<<< HEAD
 [Azure Stack Edge Pro の技術仕様](./azure-stack-edge-technical-specifications-compliance.md)
+=======
+[Azure Stack Edge Pro FPGA の技術仕様](./azure-stack-edge-technical-specifications-compliance.md)
+>>>>>>> repo_sync_working_branch

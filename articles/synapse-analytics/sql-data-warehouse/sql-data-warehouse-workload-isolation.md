@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 11/16/2021
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 506aed16f1b8a6c631a759bb1367aef8242859ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b78fc9a0bb292cbc124e1629351ddd9cc2191e7
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98734782"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547585"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Azure Synapse Analytics ワークロード グループ分離
 
@@ -28,16 +28,25 @@ ms.locfileid: "98734782"
 
 次のセクションでは、ワークロード グループが分離、包含、要求リソース定義を定義し、実行ルールに準拠する機能を提供する方法について説明します。
 
+## <a name="resource-governance"></a>リソース管理
+
+ワークロード グループでは、メモリ リソースと CPU リソースを管理します。  ディスクとネットワークの IO および tempdb は管理されません。  メモリと CPU のリソース管理は次のようになります。
+
+メモリは要求レベルで管理され、要求が存続する間は保持されます。  要求ごとのメモリ量を構成する方法の詳細については、「[要求の定義ごとのリソース](#resources-per-request-definition)」を参照してください。  ワークロード グループに対する MIN_PERCENTAGE_RESOURCE パラメーターを指定すると、メモリはそのワークロード グループ専用になります。  ワークロード グループに対する CAP_PERCENTAGE_RESOURCE パラメーターは、ワークロード グループが使用できるメモリのハード制限です。
+
+CPU リソースはワークロード グループ レベルで管理され、ワークロード グループ内のすべての要求によって共有されます。  実行期間中は要求に専用となるメモリと比べ、CPU リソースは流動的です。  CPU が流動的リソースであるため、未使用の CPU リソースはすべてのワークロード グループが使用できます。  これは、CPU 使用率がワークロード グループに対する CAP_PERCENTAGE_RESOURCE パラメーターを超える可能性があることを意味します。  また、ワークロード グループに対する MIN_PERCENTAGE_RESOURCE パラメーターが、メモリの場合のようなハード予約でないことも意味します。  CPU リソースが競合している場合、使用率はワークロード グループの CAP_PERCENTAGE_RESOURCE の定義に合わせて調整されます。
+
+
 ## <a name="workload-isolation"></a>ワークロードの分離
 
 ワークロードの分離とは、リソースがワークロード グループ専用で予約されることを意味します。  ワークロードを分離するには、[CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 構文で MIN_PERCENTAGE_RESOURCE パラメーターを 0 より大きい値に設定します。  厳格な SLA に従う必要がある継続的な実行ワークロードの場合、分離することでワークロード グループで常にリソースが使用できるようになります。
 
-ワークロードの分離を構成することで、保証されるコンカレンシーのレベルを暗黙的に定義します。 たとえば、`MIN_PERCENTAGE_RESOURCE` が 30% に設定され、`REQUEST_MIN_RESOURCE_GRANT_PERCENT` が 2% に設定されているワークロード グループは、15 個の同時実行が保証されます。  同時実行のレベルが保証されるのは、リソースの 15～2% のスロットがワークロード グループ内で常に予約されるためです (`REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` がどのように構成されているかは関係ありません)。  `REQUEST_MAX_RESOURCE_GRANT_PERCENT` が `REQUEST_MIN_RESOURCE_GRANT_PERCENT` より大きく、`CAP_PERCENTAGE_RESOURCE` がより大きい場合、`MIN_PERCENTAGE_RESOURCE` 追加のリソースが要求ごとに追加されます。  `REQUEST_MAX_RESOURCE_GRANT_PERCENT` と `REQUEST_MIN_RESOURCE_GRANT_PERCENT` が等しく、`CAP_PERCENTAGE_RESOURCE` が `MIN_PERCENTAGE_RESOURCE`よりも大きい場合は、追加の同時実行が可能です。  保証されるコンカレンシーを決定するには、次の方法を検討してください。
+ワークロードの分離を構成することで、保証されるコンカレンシーのレベルを暗黙的に定義します。 たとえば、MIN_PERCENTAGE_RESOURCE を 30% が設定され、REQUEST_MIN_RESOURCE_GRANT_PERCENT が 2% に設定されたワークロード グループでは、15 のコンカレンシーが保証されます。  コンカレンシーのレベルが保証されるのは、リソースの 15 から 2% のスロットがワークロード グループ内で常に予約されるためです (REQUEST_ *MAX* _RESOURCE_GRANT_PERCENT がどのように構成されているかは関係ありません)。  REQUEST_MAX_RESOURCE_GRANT_PERCENT が REQUEST_MIN_RESOURCE_GRANT_PERCENT より大きく、CAP_PERCENTAGE_RESOURCE が MIN_PERCENTAGE_RESOURCE より大きい場合、要求ごとにさらにリソースを (リソースの可用性に基づいて) 追加できます。  REQUEST_MAX_RESOURCE_GRANT_PERCENT と REQUEST_MIN_RESOURCE_GRANT_PERCENT が同じであり、CAP_PERCENTAGE_RESOURCE が MIN_PERCENTAGE_RESOURCE より大きい場合、追加のコンカレンシーが可能です。  保証されるコンカレンシーを決定するには、次の方法を検討してください。
 
 [保証されるコンカレンシー] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE]
-> min_percentage_resource には、特定のサービス レベルの実行可能な最小値があります。  詳細については、[有効な値](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json?view=azure-sqldw-latest&preserve-view=true#effective-values)に関する記事を参照してください。
+> min_percentage_resource には、特定のサービス レベルの最小値があります。  詳細については、[有効な値](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json?view=azure-sqldw-latest&preserve-view=true#effective-values)に関する記事を参照してください。
 
 ワークロードの分離がされない場合、要求はリソースの[共有プール](#shared-pool-resources)で動作します。  共有プール内のリソースへのアクセスは保証されず、[重要度](sql-data-warehouse-workload-importance.md)基準で割り当てられます。
 
@@ -61,7 +70,7 @@ ms.locfileid: "98734782"
 
 ## <a name="resources-per-request-definition"></a>要求の定義ごとのリソース
 
-ワークロード グループは、REQUEST_MIN_RESOURCE_GRANT_PERCENT パラメーターと REQUEST_MAX_RESOURCE_GRANT_PERCENT パラメーターで要求ごとに割り当てられるリソースの最小容量と最大量を [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 構文で定義するメカニズムを提供します。  この場合のリソースは、CPU とメモリです。  これらの値を構成すると、システムで実現できるリソースの量とコンカレンシーのレベルが決まります。
+ワークロード グループは、REQUEST_MIN_RESOURCE_GRANT_PERCENT パラメーターと REQUEST_MAX_RESOURCE_GRANT_PERCENT パラメーターで要求ごとに割り当てられるリソースの最小容量と最大量を [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 構文で定義するメカニズムを提供します。  この場合のリソースはメモリです。 CPU リソースの管理については、「[リソース管理](#resource-governance)」セクションを参照してください。
 
 > [!NOTE]
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT は省略可能なパラメーターで、既定値は REQUEST_MIN_RESOURCE_GRANT_PERCENT に対して指定されている値と同じです。
@@ -75,7 +84,7 @@ REQUEST_MIN_RESOURCE_GRANT_PERCENT を超える値に REQUEST_MAX_RESOURCE_GRANT
 
 ## <a name="execution-rules"></a>実行規則
 
-アドホック レポート システムでは、他のユーザーの生産性に深刻な影響を与えるランナウェイ クエリを誤って実行する可能性があります。  システム管理者は、システム リソースを解放するために、ランナウェイ クエリの強制終了に時間を費やすことになります。  ワークロード グループには、指定された値を超えたクエリを取り消すクエリ実行タイムアウトルールを構成する機能があります。  ルールを構成するには [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 構文で `QUERY_EXECUTION_TIMEOUT_SEC` パラメーターを設定します。
+アドホック レポート システムでは、他のユーザーの生産性に深刻な影響を与えるランナウェイ クエリを誤って実行する可能性があります。  システム管理者は、システム リソースを解放するために、ランナウェイ クエリの強制終了に時間を費やすことになります。  ワークロード グループには、指定された値を超えたクエリを取り消すクエリ実行タイムアウトルールを構成する機能があります。  ルールを構成するには [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 構文で QUERY_EXECUTION_TIMEOUT_SEC パラメーターを設定します。
 
 ## <a name="shared-pool-resources"></a>共有プールのリソース
 

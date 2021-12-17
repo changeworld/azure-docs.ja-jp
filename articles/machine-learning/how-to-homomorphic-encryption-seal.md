@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Microsoft SEAL を使用して、イメージ分類のための暗号化された予測サービスをデプロイする方法について説明します。
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/09/2020
+ms.date: 10/21/2021
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy, responsible-ml
-ms.openlocfilehash: 625ca217374fdb7558bf50faafb62c773cbc68b9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.subservice: enterprise-readiness
+ms.topic: how-to
+ms.custom: devx-track-python, deploy, responsible-ml
+ms.openlocfilehash: 56718c33aee4d285e5dfcddef259e669ba59ae0d
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059481"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553363"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>暗号化された推論 Web サービスをデプロイする方法 (プレビュー)
 

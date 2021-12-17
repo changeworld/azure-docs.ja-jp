@@ -2,19 +2,19 @@
 title: クイック スタート:ブラウザーでの JavaScript v10 用 Azure Blob Storage
 description: HTML ページで JavaScript v10 SDK を使用して BLOB をアップロード、一覧表示、および削除する方法について説明します。
 services: storage
-author: twooley
+author: normesta
 ms.custom: mvc, devx-track-js
 ms.service: storage
-ms.author: twooley
+ms.author: normesta
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: b3cca61fe272b61f2227e7546b37e4ea37cfd693
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 925a29de633b5cc39b5bacc3c59cca48f4c9c612
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280141"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673352"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -39,7 +39,7 @@ Web アプリケーションでクライアントから BLOB ストレージに�
 
 Azure Portal に戻り、ストレージ アカウントを選択します。 新しい CORS ルールを定義するために、 **[設定]** セクションに移動し、 **[CORS]** リンクをクリックします。 次に、 **[追加]** ボタンをクリックして、 **[CORS ルールの追加]** ウィンドウを開きます。 このクイック スタートでは、オープン CORS ルールを作成します。
 
-![Azure BLOB ストレージ アカウントの CORS 設定](media/storage-quickstart-blobs-javascript-client-libraries-v10/azure-blob-storage-cors-settings.png)
+![Azure Blob Storage アカウントの CORS 設定](media/storage-quickstart-blobs-javascript-client-libraries-v10/azure-blob-storage-cors-settings.png)
 
 次の表は、各 CORS 設定の説明と、ルールを定義するために使用する値を示しています。
 
@@ -183,7 +183,7 @@ BLOB ストレージ API の呼び出しを有効にするには、まず [Azure
 </script>
 ```
 
-このコードはスクリプト ファイルへの参照を追加するものであり、独自の JavaScript コードの入力場所にもなります。 このクイック スタートでは、スクリプト ファイルを VS Code で開き、内容を確認してブレークポイントを設定できるように、*azure-storage-blob.js* スクリプト ファイルを使用します。 運用環境では、ZIP ファイルに同梱されている、よりコンパクトな *azure-storage.blob.min.js* ファイルを使ってください。
+このコードはスクリプト ファイルへの参照を追加するものであり、独自の JavaScript コードの入力場所にもなります。 このクイック スタートでは、スクリプト ファイルを VS Code で開き、内容を確認してブレークポイントを設定できるように、`azure-storage-blob.js` スクリプト ファイルを使用します。 運用環境では、ZIP ファイルに同梱されている、よりコンパクトな *azure-storage.blob.min.js* ファイルを使ってください。
 
 各 BLOB ストレージ関数の詳細については、[リファレンス ドキュメント](/javascript/api/%40azure/storage-blob/index)を参照してください。 SDK の関数の中には、Node.js とブラウザーのいずれか一方でしか使用できないものがあることに注意してください。
 

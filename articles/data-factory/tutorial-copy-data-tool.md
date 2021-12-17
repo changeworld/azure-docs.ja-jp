@@ -1,18 +1,19 @@
 ---
 title: データのコピー ツールを使用して Azure Blob Storage から SQL にデータをコピーする
 description: Azure データ ファクトリを作成し、データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーします。
-author: linda33wj
-ms.author: jingwang
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 20db863f1e2ae66acada928687b0bcd572f729f9
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 07/08/2021
+ms.openlocfilehash: c47443068aadef73a75e68d97de24981125fd973
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103540"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736989"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーする
 
@@ -79,7 +80,7 @@ ms.locfileid: "107103540"
 
 1. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
 
-   ![新しいデータ ファクトリの作成](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="新しいデータ ファクトリの作成":::
 
 1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
 
@@ -107,41 +108,39 @@ ms.locfileid: "107103540"
 
 1. 作成が完了すると、 **[Data Factory]** ホーム ページが表示されます。
 
-   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[作成と監視] タイルが含まれた Azure Data Factory のホーム ページ。":::
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\) タイルを含む、Azure Data Factory のホーム ページ。":::
 
-1. 別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動するには、 **[Author & Monitor]\(作成と監視\)** タイルを選択します。
+1. 別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動するには、 **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)**  タイルで **[開く]** を選択します。
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>データのコピー ツールを使用してパイプラインを作成する
 
-1. **[Let's get started]\(始めましょう\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。
+1. Azure Data Factory のホーム ページで、 **[取り込み]** タイルを選択し、データのコピー ツールを起動します。
 
-   ![データのコピー ツールのタイル](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Azure Data Factory ホーム ページのスクリーンショット。":::
 
-1. **[プロパティ]** ページの **[タスク名]** に「**CopyFromBlobToSqlPipeline**」と入力します。 **[次へ]** を選択します。 指定したタスク名のパイプラインが Data Factory UI によって作成されます。
+1. データのコピー ツールの **[プロパティ]** ページで、 **[タスクの種類]** に **[組み込みコピー タスク]** を選択して、 **[次へ]** を選択します。
 
-   ![パイプラインを作成する](./media/tutorial-copy-data-tool/create-pipeline.png)
-
+     :::image type="content" source="./media/tutorial-copy-data-tool/copy-data-tool-properties-page.png" alt-text="[プロパティ] ページを示すスクリーンショット":::
+    
 1. **[ソース データ ストア]** ページで、次の手順を実行します。
 
    a. **[+ 新しい接続の作成]** を選択して、接続を追加します。
 
    b. ギャラリーから **[Azure Blob Storage]** を選択し、 **[続行]** を選択します。
 
-   c. **[New Linked Service]\(新しいリンクされたサービス\)** ページでご使用の Azure サブスクリプションを選択し、 **[ストレージ アカウント名]** ボックスの一覧からストレージ アカウントを選択します。 接続をテストし、 **[作成]** を選択します。
+   c. **[新しい接続 (Azure Blob Storage)]** ページで、 **[Azure サブスクリプション]** の一覧から Azure サブスクリプションを選択し、 **[ストレージ アカウント名]** の一覧からストレージ アカウントを選択します。 接続をテストし、 **[作成]** を選択します。
 
-   d. 新しく作成したリンクされたサービスをソースとして選択し、 **[次へ]** を選択します。
+   d. **[接続]** ブロックで、新しく作成したリンク サービスをソースとして選択します。
 
-   ![ソースのリンクされたサービスの選択](./media/tutorial-copy-data-tool/select-source-linked-service.png)
+   e. **[ファイルまたはフォルダー]** セクションで **[参照]** を選択して、**adfv2tutorial** フォルダーに移動します。**inputEmp.txt** ファイルを選択し、 **[OK]** を選択します。
 
-1. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、次の手順を実行します。
+   f. **[次へ]** を選択して、次の手順に進みます。
 
-   a. **[参照]** を選択して、**adfv2tutorial/input** フォルダーに移動します。**inputEmp.txt** ファイルを選択し、 **[選択]** を選択します。
+   :::image type="content" source="./media/tutorial-copy-data-tool/source-data-store.png" alt-text="ソースを構成します。":::
 
-   b. **[次へ]** を選択して、次の手順に進みます。
+1. **[File format settings]\(ファイル形式設定\)** ページで、 *[First row as header]\(先頭の行をヘッダーにする\)* のチェック ボックスをオンにします。 列と行の区切り記号が自動的に検出されることに注目してください。このページの **[データのプレビュー]** ボタンを選択すると、データをプレビューし、入力データのスキーマを表示できます。 **[次へ]** を選択します。 
 
-1. **[File format settings]\(ファイル形式設定\)** ページで、 *[First row as header]\(先頭の行をヘッダーにする\)* のチェック ボックスをオンにします。 ツールによって、列区切り記号と行区切り記号が自動的に検出されることを確認します。 **[次へ]** を選択します。 このページでは、データのプレビューと入力データのスキーマを表示することもできます。
-
-   ![ファイル形式設定](./media/tutorial-copy-data-tool/file-format-settings-page.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/file-format-settings-page.png" alt-text="ファイル形式設定":::
 
 1. **[ターゲット データ ストア]** ページで、次の手順を実行します。
 
@@ -149,39 +148,41 @@ ms.locfileid: "107103540"
 
    b. ギャラリーで **[Azure SQL Database]** を選択し、 **[続行]** を選択します。
 
-   c. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、ドロップダウン リストからご自身のサーバー名と DB を選択し、ユーザー名とパスワードを指定して、 **[作成]** をクリックします。
+   c. **[New connection (Azure SQL Database)]\(新しい接続 (Azure SQL Database)\)** ページで、ドロップダウン リストから Azure サブスクリプション、サーバー名、データベース名を選択します。 次に、 **[認証タイプ]** で **[SQL 認証]** を選択し、ユーザー名とパスワードを指定します。 接続をテストし、 **[作成]** を選択します。
 
-      ![Azure SQL DB の構成](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/config-azure-sql-db.png" alt-text="Azure SQL DB の構成":::
 
    d. 新しく作成したリンクされたサービスをシンクとして選択し、 **[次へ]** を選択します。
 
-1. **[テーブル マッピング]** ページで **[dbo].[emp]** テーブルを選択し、 **[次へ]** を選択します。
+1. **[配布先データ ストア]** ページで、 **[Use existing table]\(既存のテーブルを使用する\)** を選択し、**dbo.emp** テーブルを選択します。 **[次へ]** を選択します。
 
 1. **[列マッピング]** ページで、入力ファイルの 2 番目と 3 番目の列が **emp** テーブルの **FirstName** 列と **LastName** 列にマップされていることがわかります。 マッピングを調整して、エラーがないことを確認し、 **[次へ]** を選択します。
 
-   ![[列マッピング] ページ](./media/tutorial-copy-data-tool/column-mapping.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/column-mapping.png" alt-text="[列マッピング] ページ":::
 
-1. **[設定]** ページで **[次へ]** を選択します。
+1. **[設定]** ページの **[タスク名]** に「**CopyFromBlobToSqlPipeline**」と入力し、 **[次へ]** を選択します。
+
+   :::image type="content" source="./media/tutorial-copy-data-tool/settings.png" alt-text="設定を構成します。":::
 
 1. **[サマリー]** ページで設定を確認し、 **[次へ]** を選択します。
 
 1. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。
 
-   ![パイプラインを監視する](./media/tutorial-copy-data-tool/monitor-pipeline.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/monitor-pipeline.png" alt-text="パイプラインを監視する":::
 
 1. [パイプラインの実行] ページで、 **[最新の情報に更新]** を選択して一覧を更新します。 **[パイプライン名]** の下にあるリンクを選択して、アクティビティの実行の詳細を表示するか、パイプラインを再実行します。 
 
-   ![パイプラインの実行](./media/tutorial-copy-data-tool/pipeline-run.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/pipeline-run.png" alt-text="パイプラインの実行":::
 
 1. コピー操作の詳細については、[アクティビティの実行] ページで、 **[アクティビティ名]** 列の下にある **[詳細]** リンク (眼鏡アイコン) を選択します。 [パイプラインの実行] ビューに戻るには、階層リンク メニューの **[すべてのパイプラインの実行]** リンクを選択します。 表示を更新するには、 **[最新の情報に更新]** を選択します。
 
-   ![アクティビティの実行を監視する](./media/tutorial-copy-data-tool/activity-monitoring.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/activity-monitoring.png" alt-text="アクティビティの実行を監視する":::
 
 1. SQL データベースの **dbo.emp** テーブルにデータが挿入されたことを確認します。
 
 1. 左側の **[作成者]** タブを選択して、編集モードに切り替えます。 ツールによって作成されたリンクされたサービス、データセット、パイプラインをエディターで更新できます。 Data Factory UI におけるこれらのエンティティの編集について詳しくは、[このチュートリアルの Azure Portal バージョン](tutorial-copy-data-portal.md)を参照してください。
 
-   ![[作成者] タブを選択する](./media/tutorial-copy-data-tool/author-tab.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/author-tab.png" alt-text="[作成者] タブを選択する":::
 
 ## <a name="next-steps"></a>次のステップ
 このサンプルのパイプラインでは、Blob Storage から SQL データベースにデータがコピーされます。 以下の方法を学習しました。

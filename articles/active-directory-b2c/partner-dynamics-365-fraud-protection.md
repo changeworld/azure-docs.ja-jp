@@ -8,23 +8,23 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 5/12/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8c9d760ed888eb194ad8f282f180a634e3c09538
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 83715b34578176ba08fb364cfae11df8b1cf1209
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587818"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044724"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用した Microsoft Dynamics 365 Fraud Protection の構成
 
-このサンプル チュートリアルでは、[Microsoft Dynamics 365 Fraud Protection](https://docs.microsoft.com/dynamics365/fraud-protection/overview) (DFP) を Azure Active Directory (AD) B2C と統合する方法についてのガイダンスを提供します。
+このサンプル チュートリアルでは、[Microsoft Dynamics 365 Fraud Protection](/dynamics365/fraud-protection/overview) (DFP) を Azure Active Directory (AD) B2C と統合する方法について説明します。
 
-Microsoft DFP は、新規アカウントの作成やクライアントのエコシステムへのログインが不正なものであるかどうかを評価する機能をクライアントに提供します。 Microsoft DFP での評価は、新しい偽のアカウントを作成したり、既存のアカウントを侵害したりする疑いのある試みを、ブロックまたはチャレンジするために使用できます。 アカウント保護には、人工知能によるデバイス フィンガープリント、リアルタイム リスク評価用の API、クライアントのビジネス ニーズに応じてリスク戦略を最適化するためのルールとリストのエクスペリエンス、クライアントのエコシステムで不正行為の防止の有効性と傾向を監視するためのスコアカードが含まれます。
+Microsoft DFP は、不正なアカウントとログインの作成を試行されるリスクを評価する機能を組織に提供します。Microsoft DFP の評価をお客様が使用して、新しい偽のアカウントを作成したり既存のアカウントを侵害したりしようとする疑わしい試みを調べたり防いだりすることができます。
 
-このサンプルでは、Microsoft DFP のアカウント保護機能と Azure AD B2C ユーザー フローを統合します。 このサービスは、サインインまたはサインアップが行われるたびに、外部でフィンガープリントを確認して、過去または現在の疑わしい動作を監視します。 Azure AD B2C は、Microsoft DFP からデシジョン エンドポイントを呼び出します。このエンドポイントは、識別されたユーザーによる過去および現在のすべての動作に基づいて結果を返します。また、Microsoft DFP サービス内で指定されたカスタム ルールも返します。 Azure AD B2C は、この結果に基づいて承認決定を行い、Microsoft DFP に同じ決定を渡します。
+このサンプルでは、Microsoft DFP デバイスのフィンガープリントとアカウントの作成およびサインイン評価 API エンドポイントを Azure AD B2C のカスタム ポリシーに組み込む方法を紹介します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,17 +40,13 @@ Microsoft DFP は、新規アカウントの作成やクライアントのエコ
 
 Microsoft DFP 統合には次のコンポーネントが含まれます。
 
-- **Azure AD B2C テナント**: ユーザーを認証し、Microsoft DFP のクライアントとして機能します。 ターゲット ポリシーを実行するすべてのユーザーの識別データと診断データを収集する、フィンガープリント スクリプトをホストします。 Microsoft DFP が疑わしいと判断した場合、後でサインインまたはサインアップの試行をブロックまたはチャレンジします。
+- **Azure AD B2C テナント**: ユーザーを認証し、Microsoft DFP のクライアントとして機能します。 ターゲット ポリシーを実行するすべてのユーザーの識別データと診断データを収集する、フィンガープリント スクリプトをホストします。 後で、Microsoft DFP によって返されるルール評価結果に基づいて、サインインまたはサインアップの試行をブロックまたはチャレンジします。
 
-- **カスタム アプリケーション サービス**: 2 つの目的を果たす Web アプリケーションです。
-
-  - Identity Experience Framework の UI として使用される HTML ページを提供します。 Microsoft Dynamics 365 フィンガープリント スクリプトを埋め込みます。
-
-  - Microsoft DFP を Azure AD B2C に接続する RESTful エンドポイントがある API コントローラーです。 データ処理、構造化を行い、両方のセキュリティ要件に準拠します。
+- **カスタム UI テンプレート**: Azure AD B2C によってレンダリングされるページの HTML コンテンツをカスタマイズするために使用します。 これらのページには、Microsoft DFP フィンガープリントに必要な JavaScript スニペットが含まれています
 
 - **Microsoft DFP フィンガープリント サービス**: 動的に埋め込まれたスクリプトです。デバイスのテレメトリとセルフアサート ユーザーの詳細をログに記録して、ユーザーが意思決定プロセスで後で使用するために一意に識別できるフィンガープリントを作成します。
 
-- **Microsoft DFP API エンドポイント**: 決定結果を提供し、クライアント アプリケーションによって実行される操作を反映した、最終的な状態を受け入れます。 セキュリティと API ペイロードの要件が異なるため、Azure AD B2C はエンドポイントと直接通信しません。代わりに、App Service を中間物として使用します。
+- **Microsoft DFP API エンドポイント**: 決定結果を提供し、クライアント アプリケーションによって実行される操作を反映した、最終的な状態を受け入れます。 Azure AD B2C は、REST API コネクタを使用して Microsoft DFP エンドポイントと直接通信します。 Microsoft DFP がライセンス付与されインストールされている Azure AD テナントへの client_credentials 許可を介して API 認証が発生し、ベアラー トークンが取得されます。
 
 次のアーキテクチャの図に、この実装を示します。
 
@@ -59,11 +55,9 @@ Microsoft DFP 統合には次のコンポーネントが含まれます。
 |手順 | 説明 |
 |:-----| :-----------|
 | 1. | ユーザーがログイン ページにアクセスします。 ユーザーがサインアップを選択して新しいアカウントを作成し、そのページに情報を入力します。 Azure AD B2C でユーザー属性が収集されます。
-| 2. | Azure AD B2C で中間層 API が呼び出され、ユーザー属性が渡されます。
-| 3. | 中間層 API により、ユーザー属性が収集され、Microsoft DFP API が使用できる形式に変換されます。 その後、それが Microsoft DFP API に送信されます。
-| 4. | Microsoft DFP API でその情報が使用され、処理された後に、中間層 API に結果が返されます。
-| 5. | 中間層 API によりその情報が処理され、関連情報が Azure AD B2C に送り返されます。
-| 6. | Azure AD B2C が、中間層 API から情報を受信します。 それが失敗応答である場合、ユーザーにエラー メッセージが表示されます。 成功応答が表示された場合、ユーザーは認証され、ディレクトリに書き込まれます。
+| 2. | Azure AD B2C で Microsoft DFP API が呼び出され、ユーザー属性が渡されます。
+| 3. | Microsoft DFP API でその情報が使用され、処理された後に、Azure AD B2C に結果が返されます。
+| 4. | Azure AD B2C が、Microsoft DFP API から情報を受信します。 それが失敗応答である場合、ユーザーにエラー メッセージが表示されます。 成功応答が表示された場合、ユーザーは認証され、ディレクトリに書き込まれます。
 
 ## <a name="set-up-the-solution"></a>ソリューションのセットアップ
 
@@ -74,79 +68,77 @@ Microsoft DFP 統合には次のコンポーネントが含まれます。
 
 Microsoft DFP を使用するように [Azure AD テナントを設定](/dynamics365/fraud-protection/integrate-real-time-api)します。
 
-## <a name="deploy-to-the-web-application"></a>Web アプリケーションへのデプロイ
+## <a name="set-up-your-custom-domain"></a>自分のカスタム ドメインを設定する
 
-### <a name="implement-microsoft-dfp-service-fingerprinting"></a>Microsoft DFP サービス フィンガープリントの実装
+運用環境では、[カスタム ドメインを Azure AD B2C](./custom-domain.md?pivots=b2c-custom-policy) と [Microsoft DFP フィンガープリント サービス](/dynamics365/fraud-protection/device-fingerprinting#set-up-dns)に使用する必要があります。 ブラウザーのプライバシー設定がドメイン間の Cookie をブロックしないようにするために、両方のサービスのドメインは同じルート DNS ゾーンに存在しなければなりません。これは、非運用環境では必要ありません。
 
-[Microsoft DFP デバイス フィンガープリント](/dynamics365/fraud-protection/device-fingerprinting)は、Microsoft DFP アカウント保護に必要です。
+例を次に示します。
 
->[!NOTE]
->デバイスのより包括的なプロファイリングのために、Azure AD B2C UI ページに加えて、アプリケーション コード内にフィンガープリント サービスを実装することもできます。 アプリケーション コード内のフィンガープリント サービスは、このサンプルには含まれていません。
+| 環境 | サービス | Domain |
+|:------------|:---------------|:---------------|
+| 開発 | Azure AD B2C | `contoso-dev.b2clogin.com` |
+| 開発 | Microsoft DFP フィンガープリント | `fpt.dfp.microsoft-int.com` |
+| UAT | Azure AD B2C | `contoso-uat.b2clogin.com` |
+| UAT | Microsoft DFP フィンガープリント | `fpt.dfp.microsoft.com` |
+| Production | Azure AD B2C | `login.contoso.com` |
+| Production | Microsoft DFP フィンガープリント | `fpt.login.contoso.com` |
 
-### <a name="deploy-the-azure-ad-b2c-api-code"></a>Azure AD B2C API コードのデプロイ
+## <a name="deploy-the-ui-templates"></a>UI テンプレートをデプロイする
 
-[提供されている API コード](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API)を Azure サービスにデプロイします。 このコードは、[Visual Studio から発行](/visualstudio/deployment/quickstart-deploy-to-azure)できます。
+1. 提供された [Azure AD B2C UI テンプレート](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/ui-templates)を、Azure Blob Storage のように公開されたインターネット ホスティング サービスにデプロイします。
 
-CORS の設定、**許可された配信元** `https://{your_tenant_name}.b2clogin.com` の追加
+2. `https://<YOUR-UI-BASE-URL>/` の値をデプロイ場所のルート URL に置き換えます。
 
->[!NOTE]
->必要な設定で Azure AD を構成するために、デプロイされたサービスの URL が後で必要になります。
+  >[!NOTE]
+  >後で Azure AD B2C ポリシーを構成するためにベース URL が必要になります。
 
-詳細については、[App Service のドキュメント](../app-service/app-service-web-tutorial-rest-api.md)を参照してください。
+3. `ui-templates/js/dfp.js` ファイルで、`<YOUR-DFP-INSTANCE-ID>` を Microsoft DFP インスタンス ID に置き換えます。
 
-### <a name="add-context-dependent-configuration-settings"></a>コンテキストに依存する構成設定の追加
+4. CORS が Azure AD B2C ドメイン名 `https://{your_tenant_name}.b2clogin.com` または `your custom domain` で有効になっていることを確認します。
 
-アプリケーション設定を [Azure の App Service](../app-service/configure-common.md#configure-app-settings) で構成します。 これにより、設定をリポジトリにチェックインすることなく、安全に構成できます。 Rest API には次に示す設定が必要です。
-
-| アプリケーションの設定 | source | Notes |
-| :-------- | :------------| :-----------|
-|FraudProtectionSettings:InstanceId | Microsoft DFP 構成 |     |
-|FraudProtectionSettings:DeviceFingerprintingCustomerId | Microsoft デバイス フィンガープリント カスタマー ID |     |
-| FraudProtectionSettings:ApiBaseUrl |  Microsoft DFP Portal からのベース URL   | 実稼働 API を呼び出すには、"-int" を削除します。|
-|  TokenProviderConfig:リソース  | ベース URL - https://api.dfp.dynamics-int.com     | 実稼働 API を呼び出すには、"-int" を削除します。|
-|   TokenProviderConfig:ClientId       |Fraud Protection マーチャント Azure AD クライアント アプリケーション ID      |       |
-| TokenProviderConfig:Authority | https://login.microsoftonline.com/<directory_ID> | Fraud Protection マーチャント Azure AD テナント オーソリティ |
-| TokenProviderConfig:CertificateThumbprint* | マーチャント Azure AD クライアント アプリケーションに対する認証に使用する、証明書のサムプリント |
-| TokenProviderConfig:ClientSecret* | マーチャント Azure AD クライアント アプリケーションのシークレット | シークレット マネージャーの使用をお勧めします。 |
-
-\* 証明書で認証するかパスワードなどのシークレットを使用して認証するかに応じて、2 つのマークされたパラメーターのうち 1 つだけを設定します。
+詳細については、[UI のカスタマイズに関するドキュメント](./customize-ui-with-html.md?pivots=b2c-custom-policy)を参照してください。
 
 ## <a name="azure-ad-b2c-configuration"></a>Azure AD B2C の構成
 
+### <a name="add-policy-keys-for-your-microsoft-dfp-client-app-id-and-secret"></a>Microsoft DFP クライアント アプリ ID とシークレットのポリシー キーを追加する
+
+1. Microsoft DFP がセットアップされている Azure AD テナントで、[Azure AD アプリケーションを作成して管理者の同意を付与します](/dynamics365/fraud-protection/integrate-real-time-api#create-azure-active-directory-applications)。
+2. このアプリケーション登録のシークレット値を作成し、アプリケーションのクライアント ID とクライアント シークレットの値をメモします。
+3. クライアント ID とクライアント シークレットの値を [Azure AD B2C テナント 内のポリシー キーとして](./policy-keys-overview.md)保存 します。
+
+ >[!NOTE]
+ >ポリシー キーは後で Azure AD B2C ポリシーを構成するために必要となります。
+
 ### <a name="replace-the-configuration-values"></a>構成値を置き換える
 
-提供された[カスタム ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies)内にある次のプレースホルダーを見つけて、ご自分のインスタンスの対応する値に置き換えます。
+提供された[カスタム ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/policies)内にある次のプレースホルダーを見つけて、ご自分のインスタンスの対応する値に置き換えます。
 
 | プレースホルダー | 置換後の文字列 | ノート |
 | :-------- | :------------| :-----------|
-|{your_tenant_name} | テナントの短い名前 |  yourtenant.onmicrosoft.com の "yourtenant"   |
-|{your_tenantId} | Azure AD B2C テナントのテナント ID |  01234567-89ab-cdef-0123-456789abcdef   |
-|  {your_tenant_IdentityExperienceFramework_appid}    |   Azure AD B2C テナントに構成されている IdentityExperienceFramework アプリのアプリ ID    |  01234567-89ab-cdef-0123-456789abcdef   |
-|  {your_tenant_ ProxyIdentityExperienceFramework _appid}     |  Azure AD B2C テナントに構成されている ProxyIdentityExperienceFramework アプリのアプリ ID      |   01234567-89ab-cdef-0123-456789abcdef     |
-|  {your_tenant_extensions_appid}   |  テナントのストレージ アプリケーションのアプリ ID   |  01234567-89ab-cdef-0123-456789abcdef  |
-|   {your_tenant_extensions_app_objectid}  | テナントのストレージ アプリケーションのオブジェクト ID    | 01234567-89ab-cdef-0123-456789abcdef   |
-|   {your_app_insights_instrumentation_key}  |   App Insights インスタンスのインストルメンテーション キー *  |   01234567-89ab-cdef-0123-456789abcdef |
-|  {your_ui_base_url}   | UI ファイルが提供される App Service のエンドポイント    | `https://yourapp.azurewebsites.net/B2CUI/GetUIPage`   |
-|   {your_app_service_url}  | App Service の URL    |  `https://yourapp.azurewebsites.net`  |
-|   {your-facebook-app-id}  |  Azure AD B2C とのフェデレーション用に構成した Facebook アプリのアプリ ID   | 000000000000000   |
-|  {your-facebook-app-secret}   |  Facebook のアプリ シークレットを保存した際のポリシー キーの名前   | B2C_1A_FacebookAppSecret   |
+|{Settings:Production} | ポリシーを実稼働モードでデプロイするかどうか | `true` または `false`  |
+|{Settings:Tenant} | テナントの短い名前 |  `your-tenant` - your-tenant.onmicrosoft.com より  |
+| {Settings:DeploymentMode}    |  使用する Application Insights デプロイ モード   |  `Production` または `Development`  |
+|  {Settings:DeveloperMode}    | ポリシーを Application Insights 開発者モードでデプロイするかどうか      |   `true` または `false`    |
+|  {Settings:AppInsightsInstrumentationKey}  |  Application Insights インスタンスのインストルメンテーション キー*   |  `01234567-89ab-cdef-0123-456789abcdef` |
+|  {Settings:IdentityExperienceFrameworkAppId}  | Azure AD B2C テナントに構成されている IdentityExperienceFramework アプリのアプリ ID  | `01234567-89ab-cdef-0123-456789abcdef`|
+|  {Settings:ProxyIdentityExperienceFrameworkAppId}  |   Azure AD B2C テナントに構成されている ProxyIdentityExperienceFramework アプリのアプリ ID |   `01234567-89ab-cdef-0123-456789abcdef`|
+| {Settings:FacebookClientId}  | B2C とのフェデレーション用に構成した Facebook アプリのアプリ ID    | `000000000000000`   |
+|   {Settings:FacebookClientSecretKeyContainer}  | Facebook のアプリ シークレットを保存したポリシー キーの名前    |  `B2C_1A_FacebookAppSecret` |
+|   {Settings:ContentDefinitionBaseUri} |  UI ファイルをデプロイしたエンドポイント   | `https://<my-storage-account>.blob.core.windows.net/<my-storage-container>`   |
+|  {Settings:DfpApiBaseUrl}   |  DFP API インスタンスのベース パス - DFP ポータルにあります   | `https://tenantname-01234567-89ab-cdef-0123-456789abcdef.api.dfp.dynamics.com/v1.0/`   |
+| {Settings:DfpApiAuthScope} | DFP API サービスの client_credentials スコープ | `https://api.dfp.dynamics-int.com/.default or https://api.dfp.dynamics.com/.default` |
+| {Settings:DfpTenantId} | DFP のライセンス付与とインストールがされている Azure AD テナント (B2C でない) の ID | `01234567-89ab-cdef-0123-456789abcdef` または `consoto.onmicrosoft.com` |
+| {Settings:DfpAppClientIdKeyContainer} | DFP クライアント ID を保存するポリシー キーの名前 | `B2C_1A_DFPClientId` |
+| {Settings:DfpAppClientSecretKeyContainer} | DFP クライアント シークレットを保存するポリシー キーの名前 | `B2C_1A_DFPClientSecret` |
 
-\* App Insights は別のテナントに配置できます。 この手順は省略可能です。 必要でない場合は、対応する TechnicalProfiles および OrchestrationSteps を削除します。
-
-### <a name="call-microsoft-dfp-label-api"></a>Microsoft DFP ラベル API の呼び出し
-
-ユーザーは[ラベル API を実装](/dynamics365/fraud-protection/integrate-ap-api)する必要があります。 詳細については、[Microsoft DFP API](https://apidocs.microsoft.com/services/dynamics365fraudprotection#/AccountProtection/v1.0) を参照してください。
-
-`URI: < API Endpoint >/v1.0/label/account/create/<userId>`
-
-userID の値は、対応する Azure AD B2C 構成値 (ObjectID) のものと同じである必要があります。
+*Application Insights は任意の Azure AD テナントまたはサブスクリプションでセットアップできます。 この値は省略可能ですが、[デバッグに役立つためお勧めします](./troubleshoot-with-application-insights.md)。
 
 >[!NOTE]
 >属性コレクション ページに同意通知を追加します。 ユーザーのテレメトリ情報とユーザー ID 情報がアカウント保護のために記録されることを通知します。
 
 ## <a name="configure-the-azure-ad-b2c-policy"></a>Azure AD B2C ポリシーを構成する
 
-1. ポリシー フォルダーの [Azure AD B2C ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies)に移動します。
+1. ポリシー フォルダーの [Azure AD B2C ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/policies)に移動します。
 
 2. この[ドキュメント](./tutorial-create-user-flows.md?pivots=b2c-custom-policy?tabs=applications#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードします。
 

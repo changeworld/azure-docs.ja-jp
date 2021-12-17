@@ -3,12 +3,12 @@ title: Container insights の Prometheus 統合を構成する | Microsoft Docs
 description: この記事では、Kubernetes クラスターで Prometheus からメトリックをスクレイピングするために、Container insights エージェントを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 149cdc8613d5034989c7660608a29309353cdabe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 441b468f71f0d134a503418b3fde64b758a033a3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109643"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738496"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>Container insights で Prometheus メトリックのスクレイピングを構成する
 
@@ -326,7 +326,7 @@ Azure Red Hat OpenShift v3.x の場合は、次のコマンドを実行して、
 
 ## <a name="query-prometheus-metrics-data"></a>Prometheus メトリック データのクエリを実行する
 
-Azure Monitor によってスクレーピングされた Prometheus メトリックと、エージェントによって報告された構成エラーまたはスクレーピング エラーを表示するには、「[Prometheus メトリック データのクエリを実行する](container-insights-log-search.md#query-prometheus-metrics-data)」と「[構成エラーまたはスクレーピング エラーのクエリを実行する](container-insights-log-search.md#query-config-or-scraping-errors)」を確認してください。
+Azure Monitor によってスクレーピングされた Prometheus メトリックと、エージェントによって報告された構成エラーまたはスクレーピング エラーを表示するには、「[Prometheus メトリック データのクエリを実行する](container-insights-log-query.md#query-prometheus-metrics-data)」と「[構成エラーまたはスクレーピング エラーのクエリを実行する](container-insights-log-query.md#query-config-or-scraping-errors)」を確認してください。
 
 ## <a name="view-prometheus-metrics-in-grafana"></a>Grafana で Prometheus メトリックを表示する
 

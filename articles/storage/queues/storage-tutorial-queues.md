@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:.NET で Azure Queue Storage キューを操作する
 description: Azure Queue Storage を使用してキューを作成し、.NET コードを使用してメッセージの挿入、取得、および削除を行う方法のチュートリアル。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 06/09/2020
 ms.topic: tutorial
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dda6fb816fcba4ab9350edd956d895a3b9b204d4
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: b563c3c0f481e8a133070f4758a31dc833995127
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276129"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662497"
 ---
 # <a name="tutorial-work-with-azure-queue-storage-queues-in-net"></a>チュートリアル:.NET で Azure Queue Storage キューを操作する
 
@@ -101,7 +101,7 @@ Azure Queue Storage では、クラウドベースのキューが実装され、
 
 1. `dotnet add package` コマンドを使用して、Azure Storage クライアント ライブラリをプロジェクトに追加します。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    コンソール ウィンドウでプロジェクト フォルダーから次のコマンドを実行します。
 
@@ -109,7 +109,7 @@ Azure Queue Storage では、クラウドベースのキューが実装され、
    dotnet add package Azure.Storage.Queues
    ```
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    コンソール ウィンドウでプロジェクト フォルダーから次のコマンドを実行します。
 
@@ -120,6 +120,7 @@ Azure Queue Storage では、クラウドベースのキューが実装され、
    ```console
    dotnet add package Microsoft.Azure.Storage.Queue
    ```
+
    ---
 
 ### <a name="add-using-statements"></a>using ステートメントを追加する
@@ -128,11 +129,11 @@ Azure Queue Storage では、クラウドベースのキューが実装され、
 
 1. `Program.cs` ソース ファイルを開いて、`using System;` ステートメントの直後に次の名前空間を追加します。 このアプリでは、Azure Storage に接続し、キューを使用するとき、これらの名前空間からの型が使用されます。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_UsingStatements":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_UsingStatements":::
 
@@ -164,21 +165,21 @@ Azure API を呼び出す前に、Azure portal から資格情報を取得する
 
 1. `Main` メソッドで、`Console.WriteLine("Hello, World");` コードを、環境変数から接続文字列を取得する次の行に置き換えます。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_DeclareConnectionString":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_DeclareConnectionString":::
 
 1. キュー オブジェクトを作成する次のコードを `Main` に追加します。このキュー オブジェクトを後で送信メソッドと受信メソッドに渡します。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
 
@@ -190,13 +191,13 @@ Azure API を呼び出す前に、Azure portal から資格情報を取得する
 
 1. 次の `InsertMessageAsync` メソッドを `Program` クラスに追加します。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    このメソッドには、キューの参照が渡されます。 まだキューがない場合は、[`CreateIfNotExistsAsync`](/dotnet/api/azure.storage.queues.queueclient.createifnotexistsasync) を呼び出すことによって新しいキューが作成されます。 次に、[`SendMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) を呼び出すことによって、キューに `newMessage` が追加されます。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_InsertMessage":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    このメソッドには、キューの参照が渡されます。 まだキューがない場合は、[`CreateIfNotExistsAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync) を呼び出すことによって新しいキューが作成されます。 次に、[`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) を呼び出すことによって、キューに `newMessage` が追加されます。
 
@@ -204,13 +205,13 @@ Azure API を呼び出す前に、Azure portal から資格情報を取得する
 
 1. **省略可能:** 既定では、メッセージの最大 Time to Live は 7 日に設定されます。 メッセージの有効期限には、任意の正の数値を指定できます。 次のコード スニペットは、有効期限の "**ない**" メッセージを追加します。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
     有効期限のないメッセージを追加するには、`SendMessageAsync` への呼び出しで `Timespan.FromSeconds(-1)` を使用します。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
     有効期限のないメッセージを追加するには、`AddMessageAsync` への呼び出しで `Timespan.FromSeconds(-1)` を使用します。
 
@@ -226,7 +227,7 @@ Azure API を呼び出す前に、Azure portal から資格情報を取得する
 
 1. `RetrieveNextMessageAsync` という新しいメソッドを `Program` クラスに追加します。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    このメソッドは、[`ReceiveMessagesAsync`](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) を呼び出してキューからメッセージを受け取ります。第 1 パラメーターに `1` を渡すと、キューにおける次のメッセージだけが取得されます。 メッセージを受け取ったら、[`DeleteMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync) を呼び出して、キューからそれを削除します。
 
@@ -234,7 +235,7 @@ Azure API を呼び出す前に、Azure portal から資格情報を取得する
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    このメソッドは、[`GetMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync) を呼び出して、キューからメッセージを受け取ります。 メッセージを受け取ったら、[`DeleteMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync) を呼び出して、キューからそれを削除します。
 
@@ -248,11 +249,11 @@ Azure API を呼び出す前に、Azure portal から資格情報を取得する
 
 1. `RetrieveNextMessageAsync` メソッドを拡張し、空のキューを削除するプロンプトを追加します。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
@@ -268,11 +269,11 @@ Azure API を呼び出す前に、Azure portal から資格情報を取得する
 
 1. コマンドラインの引数を確認し、ユーザーの入力を待つよう、`Main` メソッドを拡張します。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_Main":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_Main":::
 
@@ -282,11 +283,11 @@ Azure API を呼び出す前に、Azure portal から資格情報を取得する
 
 このプロジェクトの完成したコードは次のようになります。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_AllCode":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_AllCode":::
    ---

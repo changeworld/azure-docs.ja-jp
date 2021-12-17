@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance の管理操作を監視するさまざまな方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: ''
+ms.subservice: deployment-configuration
+ms.custom: devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
 author: urosmil
 ms.author: urmilano
-ms.reviewer: sstein, bonova, MashaMSFT
+ms.reviewer: mathoma, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 6cdd3137798e221974dadda78dd55b6ae944bc78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32b27eefb3cf8fe46b932f6e0e39274e67cadb7f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589340"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751229"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed Instance の管理操作の監視
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

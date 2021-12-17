@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 51d16ae53e34dacfc41e3d31b01115f9c55ca9f7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e3d696580acd995a2396d56c404e2f904611ccac
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039548"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129430138"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>ServiceNow を IT Service Management Connector に接続する
 
@@ -28,24 +28,18 @@ ITSMC のインストールの詳細については、[IT Service Management Con
 
 ### <a name="oauth-setup"></a>OAuth のセットアップ
 
-ServiceNow でサポートされているバージョンとしては、Paris、Orlando、New York、Madrid、London、Kingston、Jakarta、Istanbul、Helsinki、および Geneva があります。
+ServiceNow でサポートされているバージョンとしては、Quebec、Paris、Orlando、New York、Madrid、London、Kingston、Jakarta、Istanbul、Helsinki、および Geneva があります。
 
 ServiceNow 管理者は、ServiceNow インスタンスのクライアント ID とクライアント シークレットを生成する必要があります。 必要に応じて、次の情報を参照してください。
 
+- [Quebec の OAuth の設定](https://docs.servicenow.com/bundle/quebec-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [Paris の OAuth の設定](https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [Orlando の OAuth の設定](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [New York の OAuth の設定](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [Madrid の OAuth の設定](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [London の OAuth の設定](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [Kingston の OAuth の設定](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [Jakarta の OAuth の設定](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [Istanbul の OAuth の設定](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [Helsinki の OAuth の設定](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [Geneva の OAuth の設定](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
 
 OAuth の設定の一環として、次のことをお勧めします。
 
-1. [クライアントがインスタンスにアクセスするためのエンドポイントを作成します](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_CreateEndpointforExternalClients.html)。
+1. [クライアントがインスタンスにアクセスするためのエンドポイントを作成します](https://docs.servicenow.com/bundle/rome-platform-administration/page/administer/security/task/t_CreateEndpointforExternalClients.html)。
 
 1. 更新トークンの有効期間を更新します。
 

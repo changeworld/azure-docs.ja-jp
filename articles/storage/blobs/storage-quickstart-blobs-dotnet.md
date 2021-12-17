@@ -1,46 +1,45 @@
 ---
 title: 'クイックスタート: Azure Blob Storage ライブラリ v12 - .NET'
 description: このクイックスタートでは、.NET 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
-author: twooley
-ms.author: twooley
-ms.date: 03/03/2021
+author: normesta
+ms.author: normesta
+ms.date: 10/06/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7ab7c52f6fe392cfebd056a86f0566705fb2b8e6
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: f695d344401598256d89dee83a69b886768e2774
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280668"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659585"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>クイックスタート: .NET 用 Azure Blob Storage クライアント ライブラリ v12
 
 .NET 用 Azure Blob Storage クライアント ライブラリ v12 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
 
-.NET 用 Azure Blob Storage クライアント ライブラリ v12 を使用すると、以下のことができます。
+このクイックスタートの例では、.NET 用の Azure Blob Storage クライアント ライブラリ v12 を使用して以下を実行する方法を示します。
 
-* コンテナーを作成する
-* Azure Storage へ BLOB をアップロードする
-* コンテナー内のすべての BLOB を一覧表示する
-* ローカル コンピューターに BLOB をダウンロードする
-* コンテナーを削除する
+- [接続文字列を取得する](#get-the-connection-string)
+- [コンテナーの作成](#create-a-container)
+- [コンテナーに BLOB をアップロードする](#upload-a-blob-to-a-container)
+- [コンテナー内の BLOB を一覧表示する](#list-blobs-in-a-container)
+- [BLOB をダウンロードする](#download-a-blob)
+- [コンテナーの削除](#delete-a-container)
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](/dotnet/api/azure.storage.blobs)
-* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
-* [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
-* [サンプル](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+- [API リファレンス ドキュメント](/dotnet/api/azure.storage.blobs)
+- [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+- [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+- [サンプル](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
-* 使用するオペレーティング システム用の最新の [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。 ランタイムではなく、必ず SDK を入手してください。
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
+- 使用するオペレーティング システム用の最新の [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。 ランタイムではなく、必ず SDK を入手してください。
 
 ## <a name="setting-up"></a>設定
 
@@ -95,9 +94,9 @@ dotnet add package Azure.Storage.Blobs
 
 Azure Blob Storage は、大量の非構造化データを格納するために最適化されています。 非構造化データとは、特定のデータ モデルや定義に従っていないデータであり、テキスト データやバイナリ データなどがあります。 Blob Storage には、3 種類のリソースがあります。
 
-* ストレージ アカウント
-* ストレージ アカウント内のコンテナー
-* コンテナー内の BLOB
+- ストレージ アカウント
+- ストレージ アカウント内のコンテナー
+- コンテナー内の BLOB
 
 次の図に、これらのリソースの関係を示します。
 
@@ -105,21 +104,13 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 これらのリソースとやり取りするには、以下の .NET クラスを使用します。
 
-* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。
-* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient):`BlobContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
-* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient):`BlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
-* [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo):`BlobDownloadInfo` クラスは、BLOB のダウンロードによって返されるプロパティとコンテンツを表します。
+- [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。
+- [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient):`BlobContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
+- [BlobClient](/dotnet/api/azure.storage.blobs.blobclient):`BlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
 
 ## <a name="code-examples"></a>コード例
 
-以下のサンプル コード スニペットは、.NET 用 Azure Blob Storage クライアント ライブラリを使用して以下を実行する方法を示します。
-
-* [接続文字列を取得する](#get-the-connection-string)
-* [コンテナーの作成](#create-a-container)
-* [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
-* [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
-* [BLOB をダウンロードする](#download-blobs)
-* [コンテナーの削除](#delete-a-container)
+次のセクションのサンプル コード スニペットでは、.NET 用 Azure Blob Storage クライアント ライブラリを使用して基本的なデータ操作を実行する方法を示します。
 
 ### <a name="get-the-connection-string"></a>接続文字列を取得する
 
@@ -142,19 +133,19 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_CreateContainer":::
 
-### <a name="upload-blobs-to-a-container"></a>コンテナーに BLOB をアップロードする
+### <a name="upload-a-blob-to-a-container"></a>コンテナーに BLOB をアップロードする
 
 次のコード スニペット:
 
 1. ローカルの *data* ディレクトリにテキスト ファイルを作成します。
 1. 「[コンテナーを作成する](#create-a-container)」セクションからのコンテナー上で [GetBlobClient](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobclient) メソッドを呼び出すことで、[BlobClient](/dotnet/api/azure.storage.blobs.blobclient) オブジェクトへの参照を取得します。
-1. [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync#Azure_Storage_Blobs_BlobClient_UploadAsync_System_IO_Stream_System_Boolean_System_Threading_CancellationToken_) メソッドを呼び出して、ローカル テキスト ファイルを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。
+1. [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync#Azure_Storage_Blobs_BlobClient_UploadAsync_System_String_System_Boolean_System_Threading_CancellationToken_) メソッドを呼び出して、ローカル テキスト ファイルを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。
 
 `Main` メソッドの末尾に次のコードを追加します。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_UploadBlobs":::
 
-### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
+### <a name="list-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
 [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) メソッドを呼び出して、コンテナー内の BLOB を一覧表示します。 この場合、コンテナーに BLOB が 1 つだけ追加されているので、一覧表示操作ではその 1 つの BLOB だけが返されます。
 
@@ -162,9 +153,9 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_ListBlobs":::
 
-### <a name="download-blobs"></a>BLOB をダウンロードする
+### <a name="download-a-blob"></a>BLOB をダウンロードする
 
-[DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) メソッドを呼び出して、以前に作成した BLOB をダウンロードします。 サンプル コードは、ローカル ファイル システム内で両方のファイルを見ることができるように、ファイル名に "DOWNLOADED" というサフィックスを追加します。
+[DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) メソッドを呼び出して、以前に作成した BLOB をダウンロードします。 サンプル コードは、ローカル ファイル システム内で両方のファイルを見ることができるように、ファイル名に "DOWNLOADED" というサフィックスを追加します。
 
 `Main` メソッドの末尾に次のコードを追加します。
 
@@ -227,5 +218,5 @@ BLOB ストレージのサンプル アプリを確認するには、以下に�
 > [!div class="nextstepaction"]
 > [Azure Blob Storage SDK v12 の .NET サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
 
-* チュートリアル、サンプル、クイックスタートなどのドキュメントについては、「[.NET および .NET Core 開発者向けの Azure](/dotnet/azure/)」を参照してください。
-* .NET Core の詳細については、「[Get started with .NET in 10 minutes (10 分で .NET を使い始める)](https://www.microsoft.com/net/learn/get-started/)」を参照してください。
+- チュートリアル、サンプル、クイックスタートなどのドキュメントについては、「[.NET および .NET Core 開発者向けの Azure](/dotnet/azure/)」を参照してください。
+- .NET Core の詳細については、「[Get started with .NET in 10 minutes (10 分で .NET を使い始める)](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro)」を参照してください。

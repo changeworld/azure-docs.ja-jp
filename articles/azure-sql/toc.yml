@@ -64,10 +64,10 @@
               displayName: 'regulatory, compliance, standards, domains'
               href: ./database/security-controls-policy.md
             - name: セキュリティ ベースライン
-              href: database/security-baseline.md
+              href: /security/benchmark/azure/baselines/sql-database-security-baseline?toc=/azure/azure-sql/toc.json
             - name: Always Encrypted
               href: database/always-encrypted-landing.yml
-            - name: Azure Defender for SQL
+            - name: Microsoft Defender for SQL
               href: database/azure-defender-for-sql.md
             - name: 高度な脅威保護
               href: database/threat-detection-overview.md
@@ -102,6 +102,10 @@
                   href: database/authentication-aad-service-principal.md
                 - name: ディレクトリ閲覧者ロール
                   href: database/authentication-aad-directory-readers-role.md
+                - name: Azure AD のみの認証
+                  href: database/authentication-azure-ad-only-authentication.md
+                - name: Azure AD のみの認証の Azure Policy
+                  href: database/authentication-azure-ad-only-authentication-policy.md
             - name: Transparent Data Encryption (TDE)
               items:
                 - name: 概要
@@ -151,12 +155,26 @@
                   href: database/xevent-code-ring-buffer.md
     - name: 共有の利用方法
       items:
-        - name: クォータの増加を要求
-          href: database/quota-increase-request.md
         - name: エラスティック ジョブを使用したジョブの自動化
           href: database/job-automation-overview.md
         - name: SQL Agent を使用したジョブの自動化
-          href: database/job-automation-managed-instances.md
+          href: managed-instance/job-automation-managed-instance.md
+        - name: アプリからの接続とクエリ実行
+          items:
+            - name: Visual Studio での .NET
+              href: database/connect-query-dotnet-visual-studio.md
+            - name: .NET Core
+              href: database/connect-query-dotnet-core.md
+            - name: Go
+              href: database/connect-query-go.md
+            - name: Node.js
+              href: database/connect-query-nodejs.md
+            - name: PHP
+              href: database/connect-query-php.md
+            - name: Python
+              href: database/connect-query-python.md
+            - name: Ruby
+              href: database/connect-query-ruby.md
         - name: ビジネス継続性
           items:
             - name: フェールオーバー グループの構成
@@ -173,6 +191,12 @@
                   href: database/authentication-aad-guest-users.md
                 - name: ディレクトリ閲覧者ロールをグループに割り当てる
                   href: database/authentication-aad-directory-readers-role-tutorial.md
+                - name: Azure AD のみの認証を有効化する
+                  href: database/authentication-azure-ad-only-authentication-tutorial.md
+                - name: Azure Policy を使用して Azure AD のみの認証を強制する
+                  href: database/authentication-azure-ad-only-authentication-policy-how-to.md
+                - name: Azure AD のみの認証を有効にしてサーバーを作成する
+                  href: database/authentication-azure-ad-only-authentication-create-server.md
             - name: BYOK を使用した TDE の構成
               href: database/transparent-data-encryption-byok-configure.md
             - name: Always Encrypted
@@ -185,6 +209,8 @@
           items:
             - name: クエリ パフォーマンスの問題の特定
               href: identify-query-performance-issues.md
+            - name: パフォーマンスに関する問題のトラブルシューティング
+              href: database/intelligent-insights-troubleshoot-performance.md
             - name: パフォーマンスを高めるためのバッチ処理
               href: performance-improve-use-batching.md
             - name: BCP を使用したデータの読み込み
@@ -195,6 +221,8 @@
               href: database/monitoring-with-dmvs.md
             - name: ブロッキングの説明と解決策
               href: database/understand-resolve-blocking.md
+            - name: 並列処理の最大限度 (MAXDOP) の構成
+              href: database/configure-max-degree-of-parallelism.md
             - name: 診断テレメトリをログに記録する
               href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
             - name: インメモリ OLTP
@@ -232,7 +260,7 @@
             - name: Azure Cognitive Search を使用してインデックスを付ける
               href: ../search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md?toc=%2fazure%2fazure-sql%2ftoc.json
             - name: サーバー側の CLR/.NET 統合
-              href: /sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=%2fazure%2fazure-sql%2ftoc.json
+              href: /sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/azure-sql/toc.json
             - name: Java
               items:
                 - name: Java と JDBC の使用
@@ -252,7 +280,7 @@
         - name: SQL Database とは
           href: database/sql-database-paas-overview.md
         - name: 新機能
-          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
+          href: database/doc-changes-updates-release-notes-whats-new.md
         - name: Single Database
           href: database/single-database-overview.md
         - name: エラスティック プール
@@ -268,7 +296,13 @@
             - name: ハイパースケール
               href: database/service-tier-hyperscale.md
             - name: ハイパースケールに関する FAQ
-              href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+              href: database/service-tier-hyperscale-frequently-asked-questions-faq.yml
+            - name: ハイパースケール レプリカ
+              href: database/service-tier-hyperscale-replicas.md
+            - name: ハイパースケール レプリカに関する FAQ
+              href: database/service-tier-hyperscale-named-replicas-faq.yml
+            - name: 仮想コア
+              href: database/service-tiers-sql-database-vcore.md
         - name: コストの計画と管理
           href: database/cost-management.md
     - name: クイックスタート
@@ -276,11 +310,14 @@
       items:
         - name: データベースの作成
           items:
-            - name: Azure portal
+            - name: Azure portal、PowerShell、Az CLI
               href: database/single-database-create-quickstart.md
             - name: ARM テンプレート
               displayName: Resource Manager
               href: database/single-database-create-arm-template-quickstart.md
+            - name: 台帳およびダイジェスト ストレージを使用
+              displayName: Create Azure SQL Database with ledger
+              href: database/ledger-create-a-single-database-with-ledger-enabled.md
         - name: 構成
           items:
             - name: サーバーレベルの IP ファイアウォール規則
@@ -327,10 +364,22 @@
               href: database/sql-data-sync-sql-server-configure.md
             - name: SQLite をサーバーレスに移行する
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
+        - name: スケール アウト
+          items:
+            - name: 名前付きレプリカのセキュリティを構成する
+              href: database/hyperscale-named-replica-security-configure.md
     - name: 移行ガイド
       items:
-        - name: DB2 から
+        - name: Access から
+          href: migration-guides/database/access-to-sql-database-guide.md
+        - name: Db2 から
           href: migration-guides/database/db2-to-sql-database-guide.md
+        - name: Oracle から
+          href: migration-guides/database/oracle-to-sql-database-guide.md
+        - name: MySQL から
+          href: migration-guides/database/mysql-to-sql-database-guide.md
+        - name: SAP ASE から
+          href: migration-guides/database/sap-ase-to-sql-database.md
         - name: SQL Server から
           items:
             - name: 概要
@@ -408,14 +457,36 @@
               href: database/auditing-overview.md
             - name: 監査ログの形式
               href: database/audit-log-format.md
-            - name: ネットワーク アクセス制御
-              href: database/network-access-controls-overview.md
             - name: DNS エイリアス
               href: database/dns-alias-overview.md
-            - name: VNet エンドポイント
-              href: database/vnet-service-endpoint-rule-overview.md
+            - name: 台帳
+              items:
+                - name: 台帳
+                  href: database/ledger-landing.yml
+                - name: 元帳の概要
+                  href: database/ledger-overview.md
+                - name: データベース台帳
+                  href: database/ledger-database-ledger.md
+                - name: 更新可能な台帳テーブル
+                  href: database/ledger-updatable-ledger-tables.md
+                - name: 追加専用の台帳テーブル
+                  href: database/ledger-append-only-ledger-tables.md
+                - name: ダイジェストの管理とデータベースの検証
+                  href: database/ledger-digest-management-and-database-verification.md
+                - name: 台帳の監査
+                  href: database/ledger-audit.md
+                - name: 台帳の制限事項
+                  href: database/ledger-limits.md
+            - name: ネットワーク アクセス制御
+              href: database/network-access-controls-overview.md
+            - name: 送信ファイアウォール規則
+              href: database/outbound-firewall-rule-overview.md
             - name: Private Link
               href: database/private-endpoint-overview.md
+            - name: VNet エンドポイント
+              href: database/vnet-service-endpoint-rule-overview.md
+            - name: サーバーの役割
+              href: database/security-server-roles.md
         - name: データベース シャーディング
           items:
             - name: データベース シャーディング
@@ -433,7 +504,7 @@
             - name: シャード データの移動
               href: database/elastic-scale-overview-split-and-merge.md
             - name: エラスティック ツールに関する FAQ
-              href: database/elastic-scale-faq.md
+              href: database/elastic-scale-faq.yml
     - name: 方法
       href: database/how-to-content-reference-guide.md
       items:
@@ -443,7 +514,7 @@
             - name: アドホック クエリの作成と実行
               items:
                 - name: Azure Data Studio
-                  href: /sql/azure-data-studio/quickstart-sql-database?toc=%2Fazure%2Fazure-sql%2Ftoc.json
+                  href: /sql/azure-data-studio/quickstart-sql-database?toc=/azure/azure-sql/toc.json
                 - name: SSMS
                   href: database/connect-query-ssms.md
                 - name: Azure portal
@@ -452,14 +523,8 @@
                   href: database/connect-query-vscode.md
             - name: アプリからの接続とクエリ実行
               items:
-                - name: Visual Studio での .NET
-                  href: database/connect-query-dotnet-visual-studio.md
-                - name: .NET Core
-                  href: database/connect-query-dotnet-core.md
                 - name: Active Directory MFA での .NET
                   href: database/active-directory-interactive-connect-azure-sql-db.md
-                - name: Go
-                  href: database/connect-query-go.md
                 - name: Java
                   href: database/connect-query-java.md
                 - name: Java と Spring Data JDBC
@@ -468,16 +533,6 @@
                   href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Java と Spring Data R2DBC
                   href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
-                - name: Node.js
-                  href: database/connect-query-nodejs.md
-                - name: PHP
-                  href: database/connect-query-php.md
-                - name: Python
-                  href: database/connect-query-python.md
-                - name: Ruby
-                  href: database/connect-query-ruby.md
-                - name: R
-                  href: database/connect-query-r.md
         - name: 管理する
           items:
             - name: Management API リファレンス
@@ -500,6 +555,8 @@
               href: database/elastic-pool-resource-management.md
             - name: Hyperscale パフォーマンス診断
               href: database/hyperscale-performance-diagnostics.md
+            - name: ブロック T-SQL CRUD
+              href: database/block-crud-tsql.md
         - name: セキュリティで保護
           items:
             - name: VNet またはファイアウォールの背後にあるストレージ アカウントに対する監査
@@ -510,6 +567,17 @@
               href: database/dynamic-data-masking-configure-portal.md
             - name: IP ベースのファイアウォール
               href: database/firewall-configure.md
+            - name: 台帳
+              items:
+                - name: 追加専用の台帳テーブルを作成する
+                  href: database/ledger-how-to-append-only-ledger-tables.md
+                - name: 更新可能な台帳テーブルを作成する
+                  href: database/ledger-how-to-updatable-ledger-tables.md
+                - name: Azure Confidential Ledger ダイジェストにアクセスする
+                  displayName: Access Azure Confidential Ledger digest
+                  href: database/ledger-how-to-access-acl-digest.md
+                - name: 台帳のデータベースが改ざんされていないか確認する
+                  href: database/ledger-verify-database.md
             - name: vNet エンドポイント - PowerShell
               href: database/scripts/vnet-service-endpoint-rule-powershell-create.md
         - name: ビジネス継続性
@@ -684,6 +752,8 @@
           href: database/arm-templates-content-guide.md?tabs=single-database
         - name: コード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
+        - name: Azure Resource Graph クエリ
+          href: database/resource-graph-samples.md
 - name: SQL Managed Instance (SQL MI)
   items:
     - name: ドキュメント
@@ -693,12 +763,12 @@
         - name: SQL Managed Instance とは
           href: managed-instance/sql-managed-instance-paas-overview.md
         - name: 新機能
-          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
+          href: managed-instance/doc-changes-updates-release-notes-whats-new.md
         - name: インスタンス プール
           href: managed-instance/instance-pools-overview.md
         - name: よく寄せられる質問
           displayName: faq
-          href: managed-instance/frequently-asked-questions-faq.md
+          href: managed-instance/frequently-asked-questions-faq.yml
     - name: クイックスタート
       href: managed-instance/quickstart-content-reference-guide.md
       items:
@@ -707,7 +777,7 @@
             - name: Azure portal
               href: managed-instance/instance-create-quickstart.md
             - name: PowerShell
-              href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+              href: managed-instance/create-configure-managed-instance-powershell-quickstart.md
             - name: ARM テンプレート
               displayName: Resource Manager
               href: managed-instance/create-template-quickstart.md
@@ -749,8 +819,10 @@
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
     - name: 移行ガイド
       items:
-        - name: DB2 から
+        - name: Db2 から
           href: migration-guides/managed-instance/db2-to-managed-instance-guide.md
+        - name: Oracle から
+          href: migration-guides/managed-instance/oracle-to-managed-instance-guide.md
         - name: SQL Server から
           items:
             - name: 概要
@@ -765,12 +837,16 @@
       items:
         - name: リソース制限
           href: managed-instance/resource-limits.md
+        - name: コンピューティング ハードウェア
+          href: managed-instance/service-tiers-managed-instance-vcore.md
         - name: 接続のアーキテクチャ
           href: managed-instance/connectivity-architecture-overview.md
         - name: T-SQL の相違点
           href: managed-instance/transact-sql-tsql-differences-sql-server.md
         - name: トランザクション レプリケーション
           href: managed-instance/replication-transactional-overview.md
+        - name: SQL MI のリンク機能
+          href: managed-instance/link-feature.md
         - name: 管理操作
           items:
             - name: 概要
@@ -902,11 +978,11 @@
                 - name: 配置
                   items:
                     - name: ストアド プロシージャを使用して運用化する
-                      href: /sql/machine-learning/r/operationalizing-your-r-code?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
+                      href: /sql/machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model?view=azuresqldb-mi-current&preserve-view=true
                     - name: SQL Server 用の R コードを変換する
-                      href: /sql/machine-learning/r/converting-r-code-for-use-in-sql-server?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
+                      href: /sql/machine-learning/deploy/modify-r-python-code-to-run-in-sql-server?view=azuresqldb-mi-current&preserve-view=true
                     - name: sqlrutils を使用してストアド プロシージャを作成する
-                      href: /sql/machine-learning/r/how-to-create-a-stored-procedure-using-sqlrutils?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
+                      href: /sql/machine-learning/r/reference/sqlrutils/how-to-create-stored-procedure-from-r
                 - name: 予測
                   items:
                     - name: PREDICT T-SQL でのネイティブ スコアリング
@@ -950,11 +1026,11 @@
         - name: 機能
           items:
             - name: リンク サーバー
-              href: /sql/relational-databases/linked-servers/linked-servers-database-engine?toc=%2fazure%2fazure-sql%2ftoc.json
+              href: /sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/azure-sql/toc.json
             - name: Service Broker
-              href: /sql/database-engine/configure-windows/sql-server-service-broker?toc=%2fazure%2fazure-sql%2ftoc.json
+              href: /sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json
             - name: データベース メール
-              href: /sql/relational-databases/database-mail/database-mail?toc=%2fazure%2fazure-sql%2ftoc.json
+              href: /sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json
         - name: Security
           items:
             - name: Always Encrypted
@@ -967,46 +1043,60 @@
               href: managed-instance/server-trust-group-overview.md
     - name: 方法
       items:
-        - name: 概要
+        - name: 使用方法に関するドキュメント
           href: managed-instance/how-to-content-reference-guide.md
-        - name: SQL Managed Instance への移行
-          href: managed-instance/migrate-to-instance-from-sql-server.md
-        - name: タイム ゾーンのカスタマイズ
-          href: managed-instance/timezones-overview.md
-        - name: 接続の種類の構成
-          href: managed-instance/connection-types-overview.md
-        - name: TDE 証明書の移行
-          href: managed-instance/tde-certificate-migrate.md
-        - name: 特定の時点への復元
-          href: managed-instance/point-in-time-restore.md
-        - name: マネージド インスタンス サブネットのサイズの決定
-          href: managed-instance/vnet-subnet-determine-size.md
-        - name: マネージド インスタンス用の新しい VNet とサブネットの作成
-          href: managed-instance/virtual-network-subnet-create-arm-template.md
-        - name: マネージド インスタンス用の既存の VNet とサブネットの構成
-          href: managed-instance/vnet-existing-add-subnet.md
-        - name: マネージド インスタンスの削除後のサブネットの削除
-          href: managed-instance/virtual-cluster-delete.md
-        - name: カスタム DNS の構成
-          href: managed-instance/custom-dns-configure.md
-        - name: DNS 構成の同期
-          href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
-        - name: ネットワーク構成の同期
-          href: managed-instance/azure-app-sync-network-configuration.md
-        - name: 管理エンドポイント IP アドレスの検索
-          href: managed-instance/management-endpoint-find-ip-address.md
-        - name: 組み込みのファイアウォール保護の確認
-          href: managed-instance/management-endpoint-verify-built-in-firewall.md
-        - name: 脅威検出の構成
-          href: managed-instance/threat-detection-configure.md
         - name: アプリケーションの接続
           href: managed-instance/connect-application-instance.md
-        - name: マネージド インスタンスでのアラートの作成
-          href: managed-instance/alerts-create.md
-        - name: マネージド インスタンスでのフェールオーバーの手動開始
-          href: managed-instance/user-initiated-failover.md
-        - name: ログ再生サービスを使用してデータベースを移行する
-          href: managed-instance/log-replay-service-migrate.md
+        - name: 設定の構成
+          items:
+            - name: タイム ゾーンのカスタマイズ
+              href: managed-instance/timezones-overview.md
+            - name: 接続の種類の構成
+              href: managed-instance/connection-types-overview.md
+            - name: SQL MI に関するアラートを作成する
+              href: managed-instance/alerts-create.md
+            - name: 脅威検出の構成
+              href: managed-instance/threat-detection-configure.md
+        - name: ネットワークを構成する
+          items:
+            - name: SQL MI サブネットのサイズを決定する
+              href: managed-instance/vnet-subnet-determine-size.md
+            - name: SQL MI 用に新しい VNet とサブネットを作成する
+              href: managed-instance/virtual-network-subnet-create-arm-template.md
+            - name: SQL MI 用に既存の VNet とサブネットを構成する
+              href: managed-instance/vnet-existing-add-subnet.md
+            - name: SQL MI 用にサービス エンドポイント ポリシーを構成する
+              href: managed-instance/service-endpoint-policies-configure.md
+            - name: MI SQL を別のサブネットに移動する
+              href: managed-instance/vnet-subnet-move-instance.md
+            - name: SQL MI の削除後にサブネットを削除する
+              href: managed-instance/virtual-cluster-delete.md
+            - name: カスタム DNS の構成
+              href: managed-instance/custom-dns-configure.md
+            - name: DNS 構成の同期
+              href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
+            - name: ネットワーク構成の同期
+              href: managed-instance/azure-app-sync-network-configuration.md
+            - name: 管理エンドポイント IP アドレスの検索
+              href: managed-instance/management-endpoint-find-ip-address.md
+            - name: 組み込みのファイアウォール保護の確認
+              href: managed-instance/management-endpoint-verify-built-in-firewall.md
+        - name: 移行
+          items:
+            - name: SQL Server から SQL MI への移行ガイド
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
+            - name: ログ再生サービスを使用してデータベースを移行する
+              href: managed-instance/log-replay-service-migrate.md
+            - name: TDE 証明書の移行
+              href: managed-instance/tde-certificate-migrate.md
+        - name: ビジネス継続性の構成
+          items:
+            - name: 特定の時点への復元
+              href: managed-instance/point-in-time-restore.md
+            - name: バックアップの監視
+              href: managed-instance/backup-activity-monitor.md
+            - name: マネージド インスタンスでのフェールオーバーの手動開始
+              href: managed-instance/user-initiated-failover.md
     - name: サンプル
       items:
         - name: Azure CLI
@@ -1021,14 +1111,14 @@
   items:
     - name: ドキュメント
       href: virtual-machines/index.yml
+    - name: 新機能
+      href: virtual-machines/windows/doc-changes-updates-release-notes-whats-new.md
     - name: Windows
       items:
         - name: 概要
           items:
             - name: SQL Server VM とは
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-            - name: 新機能
-              href: virtual-machines/windows/doc-changes-updates-release-notes.md
         - name: クイックスタート
           items:
             - name: ポータル
@@ -1044,24 +1134,35 @@
               items:
                 - name: 概要
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+                  displayName: 'failover cluster instance, fci, availability group, ag, always on'
                 - name: バックアップと復元
                   href: virtual-machines/windows/backup-restore.md
                 - name: バックアップ用の Azure Storage
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
                 - name: 可用性グループ (AG)
                   href: virtual-machines/windows/availability-group-overview.md
-                - name: フェールオーバー クラスター インスタンス
+                - name: フェールオーバー クラスター インスタンス (FCI)
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
+                - name: Windows Server フェールオーバー クラスター
+                  href: virtual-machines/windows/hadr-windows-server-failover-cluster-overview.md
+                  displayName: 'failover cluster instance, fci, availability group, ag, always on'
             - name: ベスト プラクティス
               items:
-                - name: パフォーマンス
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
+                - name: クイック チェックリスト
+                  href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
+                - name: VM サイズ
+                  href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
+                - name: ストレージ
+                  href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
                 - name: セキュリティ
                   href: virtual-machines/windows/security-considerations-best-practices.md
-                - name: クラスター構成
+                - name: HADR の構成
                   href: virtual-machines/windows/hadr-cluster-best-practices.md
+                  displayName: 'failover cluster instance, fci, availability group, ag, always on'
                 - name: アプリケーション パターン
                   href: virtual-machines/windows/application-patterns-development-strategies.md
+                - name: ベースラインの収集
+                  href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
             - name: 管理
               items:
                 - name: SQL IaaS Agent 拡張機能
@@ -1096,18 +1197,18 @@
                   href: virtual-machines/windows/storage-configuration.md
                 - name: 自動修正
                   href: virtual-machines/windows/automated-patching.md
+                - name: SQL の評価
+                  href: virtual-machines/windows/sql-assessment-for-sql-vm.md
                 - name: Azure Key Vault の統合
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: 記憶域を UltraSSD に移行する
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: SQL 脆弱性評価を有効にする
-                  href: virtual-machines/windows/sql-vulnerability-assessment-enable.md
-                - name: SQL IaaS Agent 拡張機能をインストールする
+                - name: SQL IaaS Agent 拡張機能
                   displayName: 'resource provider, registration, sql vm rp'
                   items:
                     - name: 自動登録
                       href: virtual-machines/windows/sql-agent-extension-automatic-registration-all-vms.md
-                    - name: 単一の VM
+                    - name: 単一の VM の登録
                       href: virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md
                     - name: 複数の VM の一括登録
                       href: virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md
@@ -1119,6 +1220,8 @@
                   href: virtual-machines/windows/move-sql-vm-different-region.md
             - name: ビジネス継続性
               items:
+                - name: クラスター クォーラムを構成する
+                  href: virtual-machines/windows/hadr-cluster-quorum-configure-how-to.md
                 - name: バックアップと復元
                   items:
                     - name: 自動バックアップ (SQL 2016 以降)
@@ -1126,39 +1229,56 @@
                     - name: 自動バックアップ (SQL 2014)
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: 可用性グループ (AG)
+                  displayName: 'Always On, alwayson, availability group'
                   items:
-                    - name: AG を作成する
+                    - name: AG の構成 (マルチサブネット)
+                      displayName: 'Always On, alwayson, availability group'
+                      items:
+                        - name: '[前提条件]'
+                          href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md
+                          displayName: 'Always On, alwayson, availability group'
+                        - name: 可用性グループを作成する
+                          href: virtual-machines/windows/availability-group-manually-configure-tutorial-multi-subnet.md
+                          displayName: 'Always On, alwayson, availability group'
+                    - name: AG の構成 (単一サブネット)
+                      displayName: 'Always On, alwayson, availability group'
                       items:
                         - name: Azure portal
                           href: virtual-machines/windows/availability-group-azure-portal-configure.md
+                          displayName: 'Always On, alwayson, availability group'
                         - name: PowerShell または Az CLI
                           href: virtual-machines/windows/availability-group-az-commandline-configure.md
+                          displayName: 'Always On, alwayson, availability group'
                         - name: Azure クイック スタート テンプレート
                           href: virtual-machines/windows/availability-group-quickstart-template-configure.md
+                          displayName: 'Always On, alwayson, availability group'
                         - name: 複数のリージョン
                           href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
+                          displayName: 'Always On, alwayson, availability group'
                         - name: ドメイン非依存 (ワークグループ)
                           href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
-                        - name: 手動で構成
+                          displayName: 'Always On, alwayson, availability group'
+                        - name: 手動
                           items:
-                            - name: 前提条件
-                              href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
-                            - name: チュートリアル
-                              href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
+                            - name: '[前提条件]'
+                              href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial-single-subnet.md
+                              displayName: 'Always On, alwayson, availability group'
+                            - name: 可用性グループを作成する
+                              href: virtual-machines/windows/availability-group-manually-configure-tutorial-single-subnet.md
                             - name: ロード バランサー - Azure portal
                               href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
                             - name: ロード バランサー - Azure PowerShell
                               href: virtual-machines/windows/availability-group-listener-powershell-configure.md
-                    - name: 接続の構成
-                      items:
-                        - name: VNN リスナー
-                          displayName: virtual network name
-                          href: virtual-machines/windows/availability-group-vnn-azure-load-balancer-configure.md
-                        - name: DNN リスナー
-                          displayName: distributed network name
-                          href: virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md
-                        - name: DNN の相互運用性
-                          href: virtual-machines/windows/availability-group-dnn-interoperability.md
+                        - name: 接続の構成
+                          items:
+                            - name: VNN リスナー
+                              displayName: virtual network name
+                              href: virtual-machines/windows/availability-group-vnn-azure-load-balancer-configure.md
+                            - name: DNN リスナー
+                              displayName: distributed network name
+                              href: virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md
+                            - name: DNN の相互運用性
+                              href: virtual-machines/windows/availability-group-dnn-interoperability.md
                 - name: フェールオーバー クラスター インスタンス (FCI)
                   items:
                     - name: FCI 用に VM を準備する
@@ -1171,7 +1291,7 @@
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
                         - name: Premium ファイル共有 (Win2012 以降)
                           href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
-                    - name: 接続の構成
+                    - name: 接続の構成 (単一サブネット)
                       items:
                         - name: 仮想ネットワーク名 (VNN)
                           href: virtual-machines/windows/failover-cluster-instance-vnn-azure-load-balancer-configure.md
@@ -1184,7 +1304,7 @@
             - name: Azure PowerShell
               href: /powershell/azure/
             - name: Azure CLI
-              href: /cli/azure/
+              href: /cli/azure/azure-cli-reference-for-sql
             - name: T-SQL
               href: /sql/t-sql/language-reference
             - name: SQL Server ドライバー
@@ -1197,7 +1317,7 @@
         - name: リソース
           items:
             - name: よく寄せられる質問
-              href: virtual-machines/windows/frequently-asked-questions-faq.md
+              href: virtual-machines/windows/frequently-asked-questions-faq.yml
             - name: 価格
               href: virtual-machines/windows/pricing-guidance.md
             - name: アーカイブ済みの従来の RM ドキュメント
@@ -1224,6 +1344,14 @@
           items:
             - name: SQL VM の作成 - ポータル
               href: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+        - name: 概念
+          items:
+            - name: SQL IaaS Agent 拡張機能
+              href: virtual-machines/linux/sql-server-iaas-agent-extension-linux.md
+        - name: 使い方ガイド
+          items:
+            - name: SQL IaaS 拡張機能に登録する
+              href: virtual-machines/linux/sql-iaas-agent-extension-register-vm-linux.md
         - name: チュートリアル
           items:
             - name: STONITH を使用した Azure RHEL VM 可用性グループの設定
@@ -1235,7 +1363,7 @@
         - name: リソース
           items:
             - name: よく寄せられる質問
-              href: virtual-machines/linux/frequently-asked-questions-faq.md
+              href: virtual-machines/linux/frequently-asked-questions-faq.yml
             - name: SQL Server on Linux のドキュメント
               href: /sql/linux/sql-server-linux-overview
             - name: SQL Server Data Tools (SSDT)
@@ -1248,20 +1376,28 @@
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
     - name: 移行ガイド
       items:
-        - name: 概要
-          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
-        - name: SQL Server から
-          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
-        - name: DB2 から
+        - name: Db2 から
           href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
+        - name: Oracle から
+          href: migration-guides/virtual-machines/oracle-to-sql-on-azure-vm-guide.md
+        - name: SQL Server から
+          items:
+            - name: 概要
+              href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+            - name: 移行ガイド
+              href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+            - name: 可用性グループ (AG)
+              href: migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md
+            - name: フェールオーバー クラスター インスタンス (FCI)
+              href: migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md
 - name: リファレンス
   items:
     - name: T-SQL 言語のリファレンス
       href: /sql/t-sql/language-reference
     - name: Azure CLI
-      href: /cli/azure/sql
+      href: /cli/azure/azure-cli-reference-for-sql
     - name: Azure PowerShell
-      href: /powershell/module/az.sql
+      href: /powershell/module/az.sql/
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.sql.models
     - name: Java
@@ -1282,13 +1418,13 @@
     - name: sqlcmd
       href: /sql/tools/sqlcmd-utility
     - name: SqlPackage
-      href: /sql/tools/sqlpackage?toc=%2fazure%2fazure-sql%2ftoc.json
+      href: /sql/tools/sqlpackage/sqlpackage?toc=/azure/azure-sql/toc.json
     - name: SQL Database の管理ライブラリ パッケージ
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Sql'
     - name: SQL 接続ドライバー
       href: /sql/connect/sql-connection-libraries
     - name: SQL Server ドライバー
-      href: /sql/connect/sql-server-drivers
+      href: /sql/connect/sql-connection-libraries
       items:
         - name: ADO.NET
           href: /sql/connect/ado-net/microsoft-ado-net-sql-server?view=sql-server-ver15&preserve-view=true
@@ -1320,19 +1456,29 @@
     - name: パブリック データ セット
       href: public-data-sets.md
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
+      href: 'https://azure.microsoft.com/pricing/details/azure-sql-database/single/'
     - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home'
     - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/sql-azure'
+      href: 'https://stackoverflow.com/questions/tagged/azure-sql-database'
     - name: トラブルシューティング
       items:
+        - name: SQL Managed Instance に関する既知の問題
+          href: managed-instance/doc-changes-updates-known-issues.md
+        - name: デプロイ中の容量エラー
+          href: capacity-errors-troubleshoot.md
         - name: 接続エラー
           href: database/troubleshoot-common-errors-issues.md
         - name: 一般的な接続に関する問題
           href: database/troubleshoot-common-connectivity-issues.md
+        - name: メモリ不足のエラーのトラブルシューティング
+          href: database/troubleshoot-memory-errors-issues.md
         - name: Import/Export サービスがハングする
           href: database/database-import-export-hang.md
+        - name: トランザクション ログ エラー
+          href: database/troubleshoot-transaction-log-errors-issues.md
+        - name: クォータの増加を要求
+          href: database/quota-increase-request.md
     - name: サービスの更新情報
       items:
         - name: SSL ルート証明書の期限切れ
@@ -1344,7 +1490,7 @@
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'
     - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?service=sql-database'
+      href: 'https://azure.microsoft.com/updates/?product=sql-database'
     - name: アーキテクチャ センター
       href: /azure/architecture/
     - name: 顧客事例

@@ -14,22 +14,32 @@
       href: tutorial-connect-cluster.md
     - name: 3 - ARO クラスターを削除する
       href: tutorial-delete-cluster.md
+- name: クイックスタート
+  items:
+    - name: Azure portal を使用して ARO クラスターをデプロイする
+      href: quickstart-portal.md
 - name: 操作方法ガイド
   items:
     - name: クラスターの操作
       items:
         - name: ARO クラスターをアップグレードする
           href: howto-upgrade.md
+        - name: スポット ノードを使用する
+          href: howto-spot-nodes.md
     - name: ネットワーク
       items:
         - name: プライベート ARO クラスターを作成する
           href: howto-create-private-cluster-4x.md
+        - name: カスタム DNS の構成
+          href: howto-custom-dns.md
         - name: DNS 転送を構成する
           href: dns-forwarding.md
+        - name: エグレス トラフィックを制限する
+          href: howto-restrict-egress.md
     - name: Storage
       items:
-        - name: カスタマー マネージド キーを使用して PVC を暗号化する (プレビュー)
-          href: howto-encrypt-data-disks.md
+        - name: クラスター データをカスタマー マネージド キーで暗号化する (プレビュー)
+          href: howto-byok.md
         - name: Azure Files Storageclass を作成する
           href: howto-create-a-storageclass.md
         - name: 組み込みのコンテナー レジストリを使用する
@@ -44,6 +54,8 @@
           href: configure-azure-ad-ui.md
         - name: ARO クラスターのプル シークレットを更新する
           href: howto-add-update-pull-secret.md
+        - name: Azure Red Hat OpenShift (ARO) クラスターのサービス プリンシパルの資格情報をローテーションする
+          href: howto-service-principal-credential-rotation.md
     - name: バックアップと復元
       items:
         - name: Velero を使用してクラスター アプリケーションのバックアップを作成する
@@ -60,6 +72,10 @@
               href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: アプリケーションの開発と実行
       items:
+        - name: ソース コードからアプリケーションをデプロイする
+          href: howto-deploy-with-s2i.md
+        - name: OpenShift Serverless を使用してアプリケーションをデプロイする
+          href: howto-deploy-with-serverless.md
         - name: Open Liberty/WebSphere Liberty アプリをデプロイする
           href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11
@@ -107,16 +123,20 @@
       href: /cli/azure/aro
     - name: Azure Red Hat OpenShift REST API
       href: /rest/api/openshift
+    - name: Azure CLI
+      href: /cli/azure/openshift
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: openshift-faq.md
+      href: openshift-faq.yml
     - name: トラブルシューティング
       href: troubleshoot.md
     - name: ARO 4 のサポート ポリシー
       href: support-policies-v4.md
     - name: ARO 4 のサポート ライフサイクル
       href: support-lifecycle.md
+    - name: 責任マトリックス
+      href: responsibility-matrix.md
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Red Hat OpenShift 4 のドキュメント

@@ -6,14 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.author: lagayhar
-author: lgayhardt
-ms.openlocfilehash: 16dbd7f7cd178a76b34b58f4bc6f9a0bc00fac73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af32a91344d2201899757d806019f70eccd736ad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100603943"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072277"
 ---
 # <a name="bring-your-own-storage-to-save-workbooks"></a>独自のストレージを使用してブックを保存する
 
@@ -29,11 +27,11 @@ ms.locfileid: "100603943"
 3. **[保存]** ボタンを選択してブックを保存します。
 4. `Save content to an Azure Storage Account` を実行するオプションがあります。Azure Storage アカウントに保存するチェックボックスをオンにします。
 
-    ![保存ダイアログを示すスクリーンショット](./media/workbooks-bring-your-own-storage/saved-dialog-default.png)
+    ![\* * [保存] * * ダイアログボックスが表示されたスクリーンショット。](./media/workbooks-bring-your-own-storage/saved-dialog-default.png)
 
 5. 目的のストレージ アカウントとコンテナーを選択します。 ストレージ アカウントの一覧は、上記で選択したサブスクリプションからのものです。
 
-    ![ストレージ オプションの [保存] ダイアログを示すスクリーンショット](./media/workbooks-bring-your-own-storage/save-dialog-with-storage.png)
+    ![\* * [保存] * * [ストレージ] オプションを示すスクリーンショット。](./media/workbooks-bring-your-own-storage/save-dialog-with-storage.png)
 
 6. 次に、 **[変更]** を選択して、前に作成したマネージド ID を選択します。
 

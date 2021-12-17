@@ -2,17 +2,18 @@
 title: テンプレート スペックの作成とデプロイ
 description: テンプレート スペックを作成し、組織内の他のユーザーと共有する方法について説明します。
 ms.topic: conceptual
-ms.date: 03/26/2021
+ms.date: 10/05/2021
 ms.author: tomfitz
+ms.custom: devx-track-azurepowershell
 author: tfitzmac
-ms.openlocfilehash: 2f4aec6d9fa07edf36dea68a23ba12eb5f72d308
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8d8b582cdae8b387774402869eccf903a1b394b2
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626086"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613436"
 ---
-# <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager テンプレート スペック (プレビュー)
+# <a name="azure-resource-manager-template-specs"></a>Azure Resource Manager テンプレート スペック
 
 テンプレート スペックは、後でデプロイするために Azure に Azure Resource Manager テンプレート (ARM テンプレート) を格納するためのリソースの種類です。 このリソースの種類を使用すると、ARM テンプレートを組織内の他のユーザーと共有できます。 他の Azure リソースと同じように、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してテンプレート スペックを共有できます。
 
@@ -21,7 +22,13 @@ ms.locfileid: "105626086"
 テンプレート スペックをデプロイするには、PowerShell、Azure CLI、Azure portal、REST およびその他のサポートされている SDK およびクライアントなど、標準の Azure ツールを使用します。 テンプレートの場合と同じコマンドを使用します。
 
 > [!NOTE]
-> Template Specs は現在プレビューの段階です。 Azure PowerShell でこれを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
+> Azure PowerShell でテンプレート スペックを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
+
+デプロイを計画するときは常に、リソースのライフサイクルを考慮し、ライフサイクルが同じようなリソースを 1 つのテンプレート仕様にグループ化します。たとえば、デプロイに複数の Cosmos DB インスタンスが含まれ、各インスタンスにそれ自体のデータベースとコンテナーが含まれています。 データベースとコンテナーにほとんど変化がないときは、Cosmo DB とその基礎となるデータベースとコンテナーを含めるテンプレート仕様を 1 つ作成します。 次に、それらのリソースのインスタンスを複数作成するコピー ループと共に、条件付きステートメントをテンプレートの中で使用できます。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+テンプレート スペックの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の [テンプレート スペックを使用した再利用可能なインフラストラクチャ コードのライブラリの発行](/learn/modules/arm-template-specs)に関するページを参照してください。
 
 ## <a name="why-use-template-specs"></a>テンプレート スペックを使用する理由は何ですか。
 

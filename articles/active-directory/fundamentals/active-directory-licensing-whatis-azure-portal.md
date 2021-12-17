@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0490334c759da6ef7ba7ff2535f5f561cdb7a9bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8c8e3be984d50475724525e34a2aee682408be4
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92369813"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132369666"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスとは
 
@@ -30,11 +30,11 @@ ms.locfileid: "92369813"
 これらの課題を受けて、Azure AD はグループベース ライセンス機能が搭載されました。 この機能により、1 つのグループに 1 つ以上の製品ライセンスを割り当てることができます。 グループに含まれるメンバー全員に、Azure AD からライセンスが割り当てられるようになります。 新しいメンバーがグループに参加すると、適切なライセンスが割り当てられます。 グループから抜けると、割り当てられていたライセンスが削除されます。 このライセンス管理により、組織や部門の構造におけるユーザー単位の変化を反映するように、PowerShell でライセンス管理を自動化する必要はなくなります。
 
 ## <a name="licensing-requirements"></a>ライセンスの要件
-グループベースのライセンスを使用するには、次のいずれかのライセンスが必要です。
+グループ ベースのライセンスの **恩恵を受けるすべてのユーザーそれぞれに** 対して、次のいずれかのライセンスが必要です。
 
 - Azure AD Premium P1 以上の有料または試用版のサブスクリプション
 
-- Office 365 Enterprise E3、Office 365 A3、Office 365 GCC G3、Office 365 E3 for GCCH、Office 365 E3 for DOD 以上の有料または試用版のエディション
+- Microsoft 365 Business Premium、Office 365 Enterprise E3、Office 365 A3、Office 365 GCC G3、Office 365 E3 for GCCH、Office 365 E3 for DOD 以上の有料または試用版のエディション
 
 ### <a name="required-number-of-licenses"></a>必要なライセンスの数
 ライセンスが割り当てられるすべてのグループについて、個々のメンバーに対するライセンスも必要です。 グループの各メンバーにライセンスを割り当てる必要はありませんが、すべてのメンバーが含まれる十分な数のライセンスが少なくとも必要です。 たとえば、テナントのライセンス グループの一部として 1,000 人の個別メンバーがいる場合、ライセンス契約を満たすには、少なくとも 1,000 ライセンスが必要です。
@@ -59,7 +59,7 @@ ms.locfileid: "92369813"
 
 ## <a name="your-feedback-is-welcome"></a>ご意見をお待ちしております。
 
-ご意見や機能に関するご要望がありましたら、[Azure AD 管理フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510)をご利用ください。
+ご意見や機能に関するご要望がありましたら、[Azure AD 管理フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)をご利用ください。
 
 ## <a name="next-steps"></a>次のステップ
 

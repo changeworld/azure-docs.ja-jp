@@ -1,0 +1,61 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Video Analyzer に関する FAQ - Azure
+  description: この記事では、Azure Video Analyzer についてよく寄せられる質問に回答します。
+  ms.service: azure-video-analyzer
+  ms.topic: conceptual
+  ms.date: 11/04/2021
+  ms.openlocfilehash: 4824e1dbf569ee21d897f7ce3ef7cd2649cf33e4
+  ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/05/2021
+  ms.locfileid: "131845436"
+title: Azure Video Analyzer に関する FAQ
+summary: この記事では、Azure Video Analyzer についてよく寄せられる質問に回答します。
+sections:
+- name: 無視
+  questions:
+  - question: 全般
+    answer: "**パイプライン トポロジ定義で使用できるシステム変数は何ですか。**\n\n| 変数   |  説明  | \n| --- | --- | \n| System.Runtime.DateTime | UTC 時間でインスタンスを表します。通常は、次の形式の日付と時刻として表現されます:<br>*yyyyMMddTHHmmssZ* | \n| System.Runtime.PreciseDateTime | ミリ秒を含む ISO8601 ファイル準拠の形式で協定世界時 (UTC) の日時インスタンスを表します。形式は次のとおりです:<br>*yyyyMMddTHHmmss.fffZ* | \n| System.TopologyName    | パイプライン トポロジの名前を表します。 | \n| System.PipelineName | ライブ パイプラインの名前を表します。 | \n\n> [!Note] \n> System.Runtime.DateTime と System.Runtime.PreciseDateTime は、ビデオ シンク ノードで、Azure Video Analyzer ビデオ リソースの名前の一部として使用できません。 これらの変数は、ファイルの名前を指定するためにファイル シンク ノードで使用できます。\n\n**Video Analyzer のプライバシー ポリシーとは何ですか。**\n\nVideo Analyzer には、[Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement)が適用されます。 プライバシーに関する声明では、Microsoft が処理する個人データ、Microsoft がそれをどのように処理し、何の目的でそれを処理するかについて説明しています。 プライバシーについて詳しくは、[Microsoft Trust Center](https://www.microsoft.com/trustcenter) を参照してください。\n"
+  - question: 構成とデプロイ
+    answer: >
+      **Edge モジュールを Windows 10 デバイスにデプロイできますか。**
+
+
+      はい。 詳細については、「[Windows 10 上の Linux コンテナー](/virtualization/windowscontainers/deploy-containers/linux-containers)」を参照してください。
+
+
+      **シミュレートされたエッジ デバイスとして仮想マシンを使用しています。デプロイ後に VM 構成のサイズを変更できますか?**
+
+
+      はい。Video Analyzer などのエッジ モジュールを VM にデプロイした後、[異なるサイズに VM をスケールアップまたはスケールダウン](../../../virtual-machines/resize-vm.md)することができます。 場合によっては、仮想マシンで IoT Edge ランタイムを再起動する必要があります。 Linux VM では、`sudo systemctl restart iotedge` コマンドを使用します。 ライブ パイプラインが実行されている場合は、再起動が完了した後に再開する必要があります。 再起動中に、パイプラインからの出力 (例: 推論イベント、ビデオ記録) が中断されます。
+
+
+      **IoT Edge デバイスの RTSP カメラ シミュレーター モジュールにサンプル ビデオ ファイルを追加する方法はありますか**
+
+
+      カメラ シミュレーターのインストールにクイックスタートまたはチュートリアルを使用している場合は、次のように新しいビデオ ファイルを追加します。
+
+
+      - ファイルが[サポートされている形式](http://www.live555.com/mediaServer/)であり、H.264 ビデオ コーデックを使用していることを確認します。
+
+      - [このセクション](analyze-ai-composition.md#review-the-video-sample)に示すように、IoT Edge デバイス上の `/home/localedgeuser/samples/input/<videofile.mkv>` にファイルをダウンロードします。
+
+
+      テストに使用できるサンプル メディア ファイルについては、[メディア データセット](https://github.com/Azure/video-analyzer/tree/main/media)に関する記事を参照してください。
+  - question: IP カメラと RTSP 設定からのキャプチャ
+    answer: "**ビデオ ストリームで送信するには、デバイスで特別な SDK を使用する必要がありますか。**\n\nいいえ。Video Analyzer では、ビデオ ストリーミング用の RTSP (リアルタイム ストリーミング プロトコル) を使用したメディアのキャプチャがサポートされています。これは、ほとんどの IP カメラでサポートされています。\n\n**RTSP 以外のプロトコルを使用して、Video Analyzer にメディアをプッシュできますか。**\n\nいいえ。Video Analyzer では、IP カメラからビデオをキャプチャするために RTSP のみがサポートされています。 TCP/HTTP 経由の RTSP ストリーミングをサポートするすべてのカメラが動作します。 \n\n**ライブ パイプラインで RTSP ソース URL をリセットまたは更新できますか。**\n\nはい (ライブ パイプラインが \"*非アクティブ*\" 状態の場合)。  \n\n**テストおよび開発中に使用できる RTSP シミュレーターはありますか。**\n\nはい。学習プロセスをサポートするためのクイック スタートとチュートリアルで使用できる [RTSP シミュレーター](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555) Edge モジュールがあります。 このモジュールは、ベストエフォートとして提供されており、常に使用できるとは限りません。 シミュレーターを数時間以上使用 \"*しない*\" ことを強くお勧めします。 運用環境のデプロイを計画する前に、実際の RTSP ソースを使用したテストに投資する必要があります。\n"
+  - question: AI モデルを設計する
+    answer: "**Docker コンテナーに複数の AI モデルがラップされています。これらを Video Analyzer で使用するにはどうすればよいですか。** \n\nソリューションは、推論サーバーが Video Analyzer との通信に使用する通信プロトコルによって異なります。 以下のセクションで各プロトコルのしくみについて説明します。\n\n*HTTP プロトコルを使用する*:\n\n* 単一コンテナー (*avaextension* という名前のモジュール):  \n\n   推論サーバーでは、1 つのポートを使用できますが、さまざまな AI モデルに対して異なるエンドポイントを使用できます。 たとえば、Python サンプルの場合、次のようにモデルごとに異なる `routes` を使用できます。 \n\n   ```\n   @app.route('/score/face_detection', methods=['POST']) \n   … \n   Your code specific to face detection model\n\n   @app.route('/score/vehicle_detection', methods=['POST']) \n   … \n   Your code specific to vehicle detection model \n   … \n   ```\n\n   次に、Video Analyzer のデプロイで、ライブ パイプラインをアクティブにするときに、次のように各ライブ パイプラインの推論サーバー URL を設定します。 \n\n   1 番目のライブ パイプライン: 推論サーバー URL = `http://avaextension:44000/score/face_detection`<br/>\n   2 番目のライブ パイプライン: 推論サーバー URL = `http://avaextension:44000/score/vehicle_detection`  \n   \n    > [!NOTE]\n    > また、さまざまなポートで AI モデルを公開し、ライブ パイプラインをアクティブにするときにそれらを呼び出すことができます。  \n\n* 複数のコンテナー: \n\n   各コンテナーは、異なる名前でデプロイされます。 クイックスタートとチュートリアルでは、*avaextension* という名前の拡張機能をデプロイする方法について説明しました。 現在は、同じ HTTP インターフェイス (つまり、同じ `/score` エンドポイント) を持つ 2 つの異なるコンテナーを開発できるようになりました。 これらの 2 つのコンテナーを別々の名前でデプロイし、確実に両方が \"*異なるポート*\" でリッスンするようにします。 \n\n   たとえば、`avaextension1` という名前の 1 つのコンテナーでポート `44000` をリッスンし、`avaextension2` という名前の 2 つ目のコンテナーでポート `44001` をリッスンしているとします。 \n\n   Video Analyzer トポロジで、次のような異なる推論 URL を持つ 2 つのライブ パイプラインをインスタンス化します。 \n\n   1 番目のライブ パイプライン: 推論サーバー URL = `http://avaextension1:44000/score`    \n   2 番目のライブ パイプライン: 推論サーバー URL = `http://avaextension2:44001/score`\n   \n*gRPC プロトコルを使用する*: \n\n* gRPC 拡張ノードには、プロパティ `extensionConfiguration` があります。これは、gRPC コントラクトの一部として使用できる省略可能な文字列です。 1 つの推論サーバーに複数の AI モデルがパッケージ化されている場合、AI モデルごとにノードを公開する必要はありません。 代わりに、ライブ パイプラインでは、拡張機能プロバイダーとして、`extensionConfiguration` プロパティを使用して、さまざまな AI モデルを選択する方法を定義できます。 実行中、この文字列が Video Analyzer から推論サーバーに渡されます。これにより、その文字列が使用され、目的の AI モデルを呼び出すことができます。 \n\n**AI モデルに関連する gRPC サーバーを構築しています。複数のカメラまたはライブ パイプラインでの使用をサポートできるようにしたいと考えています。このサーバーはどのように構築すればよいですか。** \n\n まず、サーバーが一度に複数の要求を処理できるように、または並列スレッドで動作できるようにします。 \n\nたとえば、次の [Azure Video Analyzer gRPC のサンプル](analyze-live-video-use-your-model-grpc.md)では、既定の数の並列チャネルが設定されています。 \n\n```\nserver = grpc.server(futures.ThreadPoolExecutor(max_workers=3)) \n```\n\n上記の gRPC サーバーのインスタンス化では、カメラあたり (つまり、ライブ パイプラインあたり) 3 つのチャネルのみをサーバーで一度に開くことができます。 4 つ以上のインスタンスをサーバーに接続しないようにしてください。 4 つ以上のチャネルを開こうとすると、既存のチャネルがドロップされるまで、要求は保留されます。  \n\n上記の gRPC サーバー実装は、Python サンプルで使用されています。 開発者は、独自のサーバーを実装することも、前の既定の実装を使用してワーカーの数を増やすこともできます。これは、ビデオ フィードに使用するカメラの数に設定します。 \n\n複数のカメラを設定して使用するために、それぞれが同じまたは異なる推論サーバー (前の段落に記載されているサーバーなど) を指している複数のライブ パイプラインをインスタンス化できます。 \n\n**推論意思決定を行う前に、複数のフレームを受信できるようにしたいと考えています。これはどのような方法で実現できますか。** \n\n現在の [既定のサンプル](https://github.com/Azure/video-analyzer/tree/main/edge-modules)は \"*ステートレス*\" モードで動作します。 前の呼び出しの状態や、呼び出し元の ID は保持されません。 したがって、複数のライブ パイプラインが同じ推論サーバーを呼び出す可能性がある一方で、そのサーバーは、呼び出し元や各呼び出しの状態を識別できません。 \n\n*HTTP プロトコルを使用する*:\n\n状態を保持するために、各呼び出し元 (またはライブ パイプライン) により、呼び出し元に固有の HTTP クエリ パラメーターを使用して推論サーバーが呼び出されます。 たとえば、各ライブ パイプラインの推論サーバー URL アドレスは、次のようになります。  \n\n1 番目のライブ パイプライン: `http://avaextension:44000/score?id=1`<br/>\n2 番目のライブ パイプライン: `http://avaextension:44000/score?id=2`\n\n… \n\nサーバー側では、`id` が呼び出し元を識別するのに役立ちます。 `id`=1 の場合、サーバーはそのライブ パイプラインの状態を個別に保持できます。 そのうえで、受信したビデオ フレームをバッファーで保持できます。 たとえば、配列、または DateTime キーを含むディクショナリを使用します。値はフレームです。 次に、*x* 個のフレームを受信した後に処理 (推論) するようにサーバーを定義できます。 \n\n*gRPC プロトコルを使用する*: \n\ngRPC 拡張機能の場合、各セッションは単一のカメラ フィード用であるため、ID を指定する必要はありません。 extensionConfiguration プロパティを使用して、ビデオ フレームをバッファーに格納でき、*x* 個のフレームを受信した後に処理 (推論) するようにサーバーを定義できます。 \n\n**特定のコンテナーのすべての ProcessMediaStreams で同じ AI モデルが実行されますか。** \n\nいいえ。 ライブ パイプラインでのエンド ユーザーからの開始または停止呼び出しによって、セッションが構成されるか、カメラの切断または再接続が行われる可能性があります。 カメラでビデオがストリーミングされている場合は、1 つのセッションを保持することを目標としています。 \n\n* (2 つの異なるライブ パイプラインに) 処理のためにビデオを送信する 2 つのカメラによって、2 つのセッションが作成されます。 \n* 2 つの gRPC 拡張ノードがあるライブ パイプラインに 1 つのカメラを移動させると、2 つのセッションが作成されます。 \n\n各セッションは、Video Analyzer と gRPC サーバー間の全二重接続であり、異なるモデルを使用できます。 \n\n> [!NOTE]\n> カメラが許容範囲の上限を超えて一定期間オフラインになり、切断または再接続されると、Video Analyzer によって gRPC サーバーとの新しいセッションが開かれます。 サーバーでこれらのセッションにまたがって状態を追跡する必要はありません。 \n\nまた、Video Analyzer により、ライブ パイプライン内の単一のカメラに対する複数の gRPC 拡張機能のサポートも追加されます。 これらの gRPC 拡張機能を使用して、AI 処理を順次または並列で実行したり、両方の組み合わせで実行したりすることができます。 \n\n> [!NOTE]\n> 複数の拡張機能を並行して実行すると、ハードウェア リソースに影響します。 コンピューティングのニーズに合ったハードウェアを選択する際には、この点に留意してください。 \n\n**同時 ProcessMediaStreams の最大数はいくつですか。** \n\nVideo Analyzer では、この数に制限はありません。  \n\n**推論サーバーで CPU または GPU あるいはその他のハードウェア アクセラレータを使用する必要があるかどうかを判断するには、どうすればよいですか。** \n\nこの決定は、開発した AI モデルの複雑さ、および CPU とハードウェア アクセラレータをどのように使用したいかによって異なります。 AI モデルを開発する際、モデルでどのリソースを使用し、どのようなアクションを実行する必要があるかを指定できます。 \n\n**推論サーバーによって生成された境界ボックスを表示するには、どのようにしますか。** \n\n推論結果は、ビデオ リソースのメディアに記録できます。 [ウィジェット](../player-widget.md)を使用して、推論データのオーバーレイを含むビデオを再生できます。\n"
+  - question: gRPC の互換性
+    answer: "**メディア ストリーム記述子の必須フィールドを確認するにはどうすればよいですか。** \n\n値を指定しないフィールドには、[gRPC によって指定された既定値](https://developers.google.com/protocol-buffers/docs/proto3#default)が与えられます。  \n\nVideo Analyzer では、プロトコル バッファー言語の *proto3* バージョンが使用されます。 Video Analyzer コントラクトによって使用されるすべてのプロトコル バッファー データは、[プロトコル バッファー ファイル]()で使用できます。<!--add-valid-link.md)--><!--https://github.com/Azure/azree-video-analyzer/tree/master/contracts/grpc-->. \n\n**最新のプロトコル バッファー ファイルを使用していることを確認するには、どうすればよいですか。** \n\n最新のプロトコル バッファーファイルは、[コントラクト ファイルのサイト](https://github.com/Azure/video-analyzer/tree/main/contracts/grpc)で入手できます。 コントラクト ファイルは更新されるたびに、この場所に置かれます。 プロトコル ファイルを更新する直近の予定はないため、バージョンを知るには、ファイル先頭のパッケージ名を確認してください。 これを次の手順に置き換えます。 \n\n```\nmicrosoft.azure.media.live_video_analytics.extensibility.grpc.v1\n```\n\nこれらのファイルが更新されると、名前の末尾にある \"v-value\" が増分されます。 \n\n> [!NOTE]\n> Video Analyzer では proto3 バージョンの言語が使用されるため、フィールドは省略可能であり、バージョンには下位および上位互換性があります。 \n\n**Video Analyzer では、どの gRPC 機能を使用できますか。また、どの機能が必須で、どの機能が省略可能ですか。** \n\nプロトコル バッファー (Protobuf) コントラクトが満たされている場合は、任意のサーバー側の gRPC 機能を使用できます。\n"
+  - question: 監視とメトリック
+    answer: "**Azure Event Grid を使用して Edge のパイプラインを監視できますか。**\n\nはい。 [Prometheus メトリック](monitor-log-edge.md#azure-monitor-collection-via-telegraf)を使用して、それらをイベント グリッドに公開できます。 \n\n**Azure Monitor を使用して、クラウドまたは Edge のパイプラインの正常性、メトリック、パフォーマンスを表示できますか。**\n\nはい、この方法はサポートされています。 詳細については、「[Azure Monitor メトリックの概要](../../../azure-monitor/essentials/data-platform-metrics.md)」を参照してください。\n\n**Video Analyzer エッジ モジュールを簡単に監視できるツールはありますか。**\n\nVideo Analyzer Edge モジュール エンドポイントを簡単に監視できる Azure IoT Tools 拡張機能が、Visual Studio Code でサポートされています。 このツールを使用すると、\"イベント\" の IoT Hub 組み込みエンドポイントの監視をすばやく開始し、Edge デバイスからクラウドにルート指定される推論メッセージを確認できます。 \n\nまた、この拡張機能を使用して、Video Analyzer Edge モジュールのモジュール ツインを編集し、パイプラインの設定を変更することもできます。\n\n詳細については、[監視とログ記録](monitor-log-edge.md)に関する記事をご覧ください。\n"
+  - question: 課金と可用性
+    answer: >
+      **Video Analyzer はどのように課金されますか。**
+
+
+      課金の詳細については、[Video Analyzer の価格](https://azure.microsoft.com/pricing/details/video-analyzer/)に関するページを参照してください。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n[クイックスタート: Azure Video Analyzer で作業を開始する](get-started-detect-motion-emit-events.md)"

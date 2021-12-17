@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 04/09/2021
 ms.custom: template-overview
 ms.service: certification
-ms.openlocfilehash: b9d599542a53e3d809748b72028512c66409b4ec
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 73b7922e8295f33191f29f6bf7e7bb947764724b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307709"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751137"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>Azure Certified Device プログラムとは
 
-Azure Certified Device プログラムに関心をお寄せいただきありがとうございます。 このプログラムは、Azure 上で実行するように構築された IoT デバイスの差別化、昇格、検索を容易にするワンストップ ショップです。 この強化された IoT デバイス認定プログラムを通じて、デバイス ビルダーは、インテリジェント カメラからコネクテッド センサー、エッジ インフラストラクチャまで、その製品の認知度を高め、ソリューションの構築にかかる顧客の時間を節約することができます。
+Azure Certified Device プログラムに関心をお寄せいただきありがとうございます。 Azure Certified Device は、Azure 上で実行するように構築された IoT デバイスの差別化、認定、および販売促進を可能にする無料のプログラムです。 この強化された IoT デバイス認定プログラムを通じて、デバイス ビルダーは、インテリジェント カメラからコネクテッド センサー、エッジ インフラストラクチャまで、その製品の認知度を高め、ソリューションの構築にかかる顧客の時間を節約することができます。
 
 ## <a name="our-certification-promise"></a>Microsoft 認定保証
 
@@ -58,7 +58,10 @@ Azure Certified Device プログラムは、2 種類のオーディエンスを�
 1. デバイスの機能を検証します
 1. レビュー プロセスを送信して完了します
 
-デバイスの認定後、必要に応じて次の 2 つのアクティビティを実行してください。
+> [!Note]
+> レビュー プロセスは完了するまでに最大 1 週間かかりますが、それより長くかかることもあります。
+
+デバイスの認定後、必要に応じて次の 2 つのアクティビティを実行してください。 
 
 1. Azure Certified Device カタログに発行する (省略可)
 1. 承認済みまたは発行済みのプロジェクトを更新する (省略可)

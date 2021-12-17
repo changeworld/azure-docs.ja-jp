@@ -1,16 +1,17 @@
 ---
 title: Azure Automation で Python 3 Runbook (プレビュー) を作成する
-description: この記事では、シンプルな Python 3 Runbook (プレビュー) を作成、テスト、発行する方法を説明します。
+description: この記事では、簡単な Python 3 Runbook (プレビュー) を Azure Automation アカウントで作成、テスト、発行する方法を説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/16/2021
+ms.date: 04/28/2021
 ms.topic: tutorial
-ms.openlocfilehash: c19f7e177d51a3de75e7d7ae2b83442e23efd243
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: has-adal-ref, devx-track-python
+ms.openlocfilehash: 4badf99bcae4fa6d32492960f3e5322ee3508f25
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100546144"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205055"
 ---
 # <a name="tutorial-create-a-python-3-runbook-preview"></a>チュートリアル:Python 3 Runbook (プレビュー) を作成する
 
@@ -28,19 +29,9 @@ ms.locfileid: "100546144"
 
 - Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
 
-- [Automation アカウント](../automation-security-overview.md)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
+- [Automation アカウント](../automation-security-overview.md)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。 このチュートリアルには[実行アカウント](../automation-security-overview.md#run-as-accounts)が必要です。 
 
 - Azure 仮想マシン。 このチュートリアルでは、このマシンを停止して起動するため、運用 VM を使用しないでください。
-
-- Linux または Windows Hybrid Runbook Worker を使用して Python 3 Runbook を実行できます。  [Linux](../automation-linux-hrw-install.md) または  [Windows](../automation-windows-hrw-install.md) Hybrid Runbook Worker のインストール手順に従います。 Linux Hybrid Worker には、特定の前提条件はありません。 ただし、Python 3 Runbook 用に Windows Hybrid Worker を使用する場合は、Python 3 のみをサポートするのか、Python 2 と 3 を共存させる必要があるのかに基づいて、Runbook worker をホストするマシンを構成します。
-
-   * Python 2 または Python 3 "*のみ*" がインストールされている場合は、python.exe があるフォルダーのパスを **PATH** 環境変数に追加する必要があります。 たとえば、python.exe がインストール パス `C:\Python` にある場合、そのパスを **PATH** 環境変数に追加する必要があります。
-
-   * Python 2 と Python 3 の両方がインストールされていて、両方の種類の Runbook を実行する場合は、次の環境変数を構成する必要があります。
-
-     * Python 2 - `PYTHON_2_PATH` という新しい環境変数を作成し、インストール フォルダーを指定します。 たとえば、インストール フォルダーが `C:\Python27` の場合、このパスを変数に追加する必要があります。
-
-     * Python 3 - `PYTHON_3_PATH` という新しい環境変数を作成し、インストール フォルダーを指定します。 たとえば、インストール フォルダーが `C:\Python3` の場合、このパスを変数に追加する必要があります。
 
 ## <a name="create-a-new-runbook"></a>新しい Runbook の作成
 
@@ -48,7 +39,7 @@ ms.locfileid: "100546144"
 
 1. Azure ポータルで、Automation アカウントを開きます。
 
-    Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。 既に資産がいくつかあります。 これらの資産のほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。 [前提条件](#prerequisites)で説明されている資格情報資産も必要です。
+    Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。 既に資産がいくつかあります。 これらの資産のほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。 [前提条件](#prerequisites)に記載されている実行アカウントの資格情報資産も必要です。
 
 2. **[プロセス オートメーション]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
 
@@ -118,43 +109,53 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 ## <a name="add-authentication-to-manage-azure-resources"></a>Azure リソースを管理するための認証を追加する
 
 Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。 Azure リソースを管理させることにします。
-これを行うには、スクリプトで、ご利用の Automation アカウントの資格情報を使用して認証する必要があります。
+そのためにはスクリプトが、ご利用の Automation アカウントの実行アカウントの資格情報を使用して認証を行う必要があります。
 
 > [!NOTE]
-> Automation アカウントは、実行証明書を作成するために、サービス プリンシパルの機能を使用して作成されている必要があります。
-> ご利用の Automation アカウントがサービス プリンシパルを使用せずに作成されたものである場合は、[Python 用 Azure 管理ライブラリを使用した認証](/azure/python/python-sdk-azure-authenticate)に関するページで説明されているようにして認証することができます。
+> Automation アカウントは、実行証明書を作成するために、実行アカウントを使用して作成されている必要があります。
+> ご利用の Automation アカウントが実行アカウントを使用せずに作成されたものである場合は、[Python 用 Azure 管理ライブラリを使用した認証](/azure/python/python-sdk-azure-authenticate)に関するページや[実行アカウントを作成する方法](../create-run-as-account.md)に関するページで説明されているようにして認証することができます。
 
 1. **MyFirstRunbook-Python3** のペインで **[編集]** を選択して、テキスト エディターを開きます。
 
 2. Azure への認証に、次のコードを追加します。
 
     ```python
-    from OpenSSL import crypto 
-    import binascii 
-    from msrestazure import azure_active_directory 
-    import adal 
-
-    # Get the Azure Automation RunAs service principal certificate 
-    cert = automationassets.get_automation_certificate("AzureRunAsCertificate") 
-    pks12_cert = crypto.load_pkcs12(cert) 
-    pem_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM,pks12_cert.get_privatekey()) 
+    import os
+    from azure.mgmt.compute import ComputeManagementClient
+    import azure.mgmt.resource
+    import automationassets
     
-    # Get run as connection information for the Azure Automation service principal 
-    application_id = runas_connection["ApplicationId"] 
-    thumbprint = runas_connection["CertificateThumbprint"] 
-    tenant_id = runas_connection["TenantId"] 
+    def get_automation_runas_credential(runas_connection):
+        from OpenSSL import crypto
+        import binascii
+        from msrestazure import azure_active_directory
+        import adal
     
-    # Authenticate with service principal certificate 
-    resource ="https://management.core.windows.net/" 
-    authority_url = ("https://login.microsoftonline.com/"+tenant_id) 
-    context = adal.AuthenticationContext(authority_url) 
-    return azure_active_directory.AdalAuthentication( 
-      lambda: context.acquire_token_with_client_certificate( 
-          resource, 
-          application_id, 
-          pem_pkey, 
-          thumbprint) 
-    ) 
+        # Get the Azure Automation RunAs service principal certificate
+        cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+        pks12_cert = crypto.load_pkcs12(cert)
+        pem_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM,pks12_cert.get_privatekey())
+    
+        # Get run as connection information for the Azure Automation service principal
+        application_id = runas_connection["ApplicationId"]
+        thumbprint = runas_connection["CertificateThumbprint"]
+        tenant_id = runas_connection["TenantId"]
+    
+        # Authenticate with service principal certificate
+        resource ="https://management.core.windows.net/"
+        authority_url = ("https://login.microsoftonline.com/"+tenant_id)
+        context = adal.AuthenticationContext(authority_url)
+        return azure_active_directory.AdalAuthentication(
+        lambda: context.acquire_token_with_client_certificate(
+                resource,
+                application_id,
+                pem_pkey,
+                thumbprint)
+        )
+    
+    # Authenticate to Azure using the Azure Automation RunAs service principal
+    runas_connection = automationassets.get_automation_connection("AzureRunAsConnection")
+    azure_credential = get_automation_runas_credential(runas_connection)
     ```
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>コードを追加して、Python Compute クライアントを作成し、VM を起動する
@@ -164,7 +165,7 @@ Azure VM で作業するには、[Azure Compute client for Python](/python/api/a
 Compute クライアントを使用して、VM を起動します。 Runbook に次のコードを追加します。
 
 ```python
-# Initialize the compute management client with the RunAs credential and specify the subscription to work against.
+# Initialize the compute management client with the Run As credential and specify the subscription to work against.
 compute_client = ComputeManagementClient(
     azure_credential,
     str(runas_connection["SubscriptionId"])
@@ -243,4 +244,4 @@ except Exception as detail:
 
 - Python を使用した Azure の開発については、「[Python 開発者向けの Azure](/azure/python/)」をご覧ください。
 
-- サンプル Python 3 Runbook を表示するには、[Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python) を参照してください。
+- サンプル Python 3 Runbook を表示するには、[Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python) リポジトリを参照してください。

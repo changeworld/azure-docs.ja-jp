@@ -5,20 +5,18 @@ description: コードなしのデプロイでは、エントリ スクリプト
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: gopalv
-author: gvashishtha
 ms.date: 07/31/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: deploy
 ms.reviewer: larryfr
-ms.openlocfilehash: a17126695aa5138d1df7fd17cfaa2f5f75ad1004
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80dd7b06b725e4e30aa51eaabede4e6a91c69554
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93324914"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649324"
 ---
-# <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
+# <a name="no-code-model-deployment-preview"></a>コードなしのモデル デプロイ (プレビュー)
 
 コードなしのモデル デプロイは現在プレビュー段階で、次の機械学習フレームワークをサポートしています。
 
@@ -134,7 +132,7 @@ print(output)
 * [Azure Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md)
 * [Web サービスを使用するクライアント アプリケーションを作成する](how-to-consume-web-service.md)
 * [Web サービスを更新する](how-to-deploy-update-web-service.md)
-* [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
+* [カスタム Docker イメージを使用してモデルをデプロイする方法](./how-to-deploy-custom-container.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)

@@ -3,12 +3,12 @@ title: GPU 対応コンテナー インスタンスをデプロイする
 description: GPU リソースを使用してコンピューティング集中型コンテナー アプリを実行するために、Azure コンテナー インスタンスをデプロイする方法について説明します。
 ms.topic: article
 ms.date: 07/22/2020
-ms.openlocfilehash: 6ffe4840d024c1e1f551966d05673c4ba83e1259
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8950858ff822a28272c17d18de8869d3e03d673d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764065"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057877"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -63,15 +63,21 @@ GPU リソースをデプロイするときに、ワークロードに適した 
 
 * **CUDA ドライバー** - GPU リソースがあるコンテナー インスタンスは、NVIDIA CUDA ドライバーとコンテナーのランタイムを使用して事前にプロビジョニングされているため、CUDA ワークロード用に開発されたコンテナー イメージを使用できます。
 
-  現時点では、CUDA 9.0 のみがサポートされています。 たとえば、次の基本イメージを Docker ファイルで使用できます。
+  現時点では、CUDA 9.0 のみがサポートされています。 たとえば、次の基本イメージを Dockerfile で使用できます。
   * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+
+  > [!NOTE]
+  > Docker Hub からのパブリック コンテナー イメージを使用するときの信頼性を向上させるには、プライベート Azure コンテナー レジストリにイメージをインポートして管理し、プライベートに管理された基本イメージを使用するように Dockerfile を更新します。 [パブリック イメージの操作に関する詳細を参照してください](../container-registry/buffer-gate-public-content.md)。
     
 ## <a name="yaml-example"></a>YAML の例
 
 GPU リソースを追加するには、[YAML ファイル](container-instances-multi-container-yaml.md)を使用してコンテナー グループをデプロイする方法があります。 次の YAML を *gpu-deploy-aci.yaml* という名前の新しいファイルにコピーしてから、ファイルを保存します。 この YAML により、K80 GPU を持つコンテナー インスタンスを指定する *gpucontainergroup* という名前のコンテナー グループが作成されます。 このインスタンスでは、CUDA ベクトル加法アプリケーションのサンプルが実行されます。 ワークロードを実行するには、リソース要求だけで十分です。
 
-```YAML
+ > [!NOTE]
+  > 次の例では、パブリック コンテナー イメージを使用します。 信頼性を向上させるために、プライベート Azure Container Registry 内のイメージをインポートして管理し、プライベートのマネージド基本イメージを使用するように YAML を更新します。 [パブリック イメージの操作に関する詳細を参照してください](../container-registry/buffer-gate-public-content.md)。
+
+```yaml
 additional_properties: {}
 apiVersion: '2019-12-01'
 name: gpucontainergroup

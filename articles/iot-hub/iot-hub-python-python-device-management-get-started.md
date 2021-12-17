@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Hub デバイス管理の開始 (Python) | Microsoft Docs
 description: IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 Azure IoT SDK for Python を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリと、ダイレクト メソッドを呼び出すサービス アプリを実装します。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.author: robinsh
+ms.author: lizross
 ms.custom: mqtt, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: c07d26715aff2c8dd5e00a7d7adbb548adf00a28
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 47aac8108bf1c5cb6bf5c0d36bafc781695ec9af
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482502"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551636"
 ---
 # <a name="get-started-with-device-management-python"></a>デバイス管理の開始 (Python)
 
@@ -71,7 +71,6 @@ ms.locfileid: "107482502"
 3. **dmpatterns_getstarted_device.py** ファイルの先頭に、次の `import` ステートメントを追加します。
 
     ```python
-    import threading
     import time
     import datetime
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
@@ -83,59 +82,72 @@ ms.locfileid: "107482502"
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-5. デバイスにダイレクト メソッドを実装する次の関数コールバックを追加します。
+5. 次の関数を追加して、デバイスでダイレクト メソッド用に構成されたクライアントのインスタンスを作成します。
 
     ```python
-    def reboot_listener(client):
-        while True:
-            # Receive the direct method request
-            method_request = client.receive_method_request("rebootDevice")  # blocking call
+    def create_client():
+        # Instantiate the client
+        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
 
-            # Act on the method by rebooting the device...
-            print( "Rebooting device" )
-            time.sleep(20)
-            print( "Device rebooted")
+        # Define the handler for method requests
+        def method_request_handler(method_request):
+            if method_request.name == "rebootDevice":
+                # Act on the method by rebooting the device
+                print("Rebooting device")
+                time.sleep(20)
+                print("Device rebooted")
 
-            # ...and patching the reported properties
-            current_time = str(datetime.datetime.now())
-            reported_props = {"rebootTime": current_time}
-            client.patch_twin_reported_properties(reported_props)
-            print( "Device twins updated with latest rebootTime")
+                # ...and patching the reported properties
+                current_time = str(datetime.datetime.now())
+                reported_props = {"rebootTime": current_time}
+                client.patch_twin_reported_properties(reported_props)
+                print( "Device twins updated with latest rebootTime")
 
-            # Send a method response indicating the method request was resolved
-            resp_status = 200
-            resp_payload = {"Response": "This is the response from the device"}
-            method_response = MethodResponse(method_request.request_id, resp_status, resp_payload)
+                # Create a method response indicating the method request was resolved
+                resp_status = 200
+                resp_payload = {"Response": "This is the response from the device"}
+                method_response = MethodResponse(method_request.request_id, resp_status, resp_payload)
+            
+            else:
+                # Create a method response indicating the method request was for an unknown method
+                resp_status = 404
+                resp_payload = {"Response": "Unknown method"}
+                method_response = MethodResponse(method_request.request_id, resp_status, resp_payload)
+
+            # Send the method response
             client.send_method_response(method_response)
+
+        try:
+            # Attach the handler to the client
+            client.on_method_request_received = method_request_handler
+        except:
+            # In the event of failure, clean up
+            client.shutdown()
+
+        return client
     ```
 
-6. ダイレクト メソッド リスナーを起動し、待機します。
+6. ダイレクト メソッドのサンプルを開始し、待機します。
 
     ```python
-    def iothub_client_init():
-        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
-        return client
+    def main():
+        print ("Starting the IoT Hub Python sample...")
+        client = create_client()
 
-    def iothub_client_sample_run():
+        print ("Waiting for commands, press Ctrl-C to exit")
         try:
-            client = iothub_client_init()
-
-            # Start a thread listening for "rebootDevice" direct method invocations
-            reboot_listener_thread = threading.Thread(target=reboot_listener, args=(client,))
-            reboot_listener_thread.daemon = True
-            reboot_listener_thread.start()
-
+            # Wait for program exit
             while True:
                 time.sleep(1000)
-
         except KeyboardInterrupt:
-            print ( "IoTHubDeviceClient sample stopped" )
+            print("IoTHubDeviceClient sample stopped")
+        finally:
+            # Graceful exit
+            print("Shutting down IoT Hub Client")
+            client.shutdown()
 
     if __name__ == '__main__':
-        print ( "Starting the IoT Hub Python sample..." )
-        print ( "IoTHubDeviceClient waiting for commands, press Ctrl-C to exit" )
-
-        iothub_client_sample_run()
+        main()
     ```
 
 7. **dmpatterns_getstarted_device.py** ファイルを保存して閉じます。

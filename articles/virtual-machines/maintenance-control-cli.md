@@ -3,19 +3,21 @@ title: CLI を使用した Azure 仮想マシンのメンテナンス コント�
 description: メンテナンス コントロールと CLI を使用して、ご利用の Azure VM にメンテナンスを適用するタイミングを制御する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: maintenance-control
+ms.subservice: maintenance
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: c57f66eca5d15024c6b10e8fad12ddb575b9f894
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3ee2fa74e8d030f12bd177999e5a2f146fa9b5c0
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765901"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215569"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>メンテナンス コントロールと Azure CLI を使用して更新を制御する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 メンテナンス コントロールを使用すると、分離された VM や Azure 専用ホストのホスト インフラストラクチャにプラットフォームの更新プログラムを適用するタイミングを決定できます。 このトピックでは、メンテナンス コントロール用の Azure CLI オプションについて説明します。 メンテナンス コントロールを使用する利点、その制限、およびその他の管理オプションの詳細については、[メンテナンス コントロールを使用したプラットフォーム更新プログラムの管理](maintenance-control.md)に関する記事を参照してください。
 
@@ -191,7 +193,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>更新プログラムの適用
 
-`az maintenance apply update` を使用して、保留中の更新プログラムを適用します。 成功すると、このコマンドは更新プログラムの詳細を含む JSON を返します。
+`az maintenance apply update` を使用して、保留中の更新プログラムを適用します。 成功すると、このコマンドは更新プログラムの詳細を含む JSON を返します。 更新呼び出しが適用されるまで、最大 2 時間かかる場合があります。
 
 ### <a name="isolated-vm"></a>分離された VM
 

@@ -1,19 +1,20 @@
 ---
-author: trevorbye
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: trbye
-ms.openlocfilehash: ad1f153c03575c0a6a72ca52a1aa63e9a2ae5f13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: eur
+ms.openlocfilehash: 31d428455929b9cdfb14fb78f65dc8def889d563
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102434542"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252207"
 ---
 :::row:::
     :::column span="3":::
-        C++ 音声SDKはWindows, Linux, macOSで使用できます。 詳細については、 <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft.CognitiveServices.Speech <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank"> </a></a>を参照してください。
+        C++ 音声 SDK は NuGet パッケージとして Windows, Linux, macOS で使用できます。 詳細については、「<a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft.CognitiveServices.Speech</a>」を参照してください。
+        C++ 音声 SDK は、 https://aka.ms/csspeech/linuxbinary の tar パッケージとしても使用できます。
     :::column-end:::
     :::column:::
         <br>

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: e6ed52f89c38a9c4c5476bd1db0f5a67326954e4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5045f79e99f3aade7da213fd11bbe9969ec16252
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866269"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072885"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight 上で VPN を介して Apache Spark アプリケーションをリモートでデバッグする
 
@@ -28,7 +28,7 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
 * **Azure サブスクリプション**。 詳しくは、[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * **HDInsight での Apache Spark クラスター**。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
-* **Oracle Java Development Kit**。 [Oracle Web サイト](/azure/developer/java/fundamentals/java-jdk-long-term-support)からインストールできます。
+* **Oracle Java Development Kit**。 [Oracle Web サイト](/azure/developer/java/fundamentals/java-support-on-azure)からインストールできます。
 * **IntelliJ IDEA**。 この記事では、バージョン 2017.1 を使用します。 [JetBrains Web サイト](https://www.jetbrains.com/idea/download/)からインストールできます。
 * **Azure Toolkit for IntelliJ のHDInsight ツール**。 IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。 Azure Toolkit をインストールする手順については、[Azure Toolkit for IntelliJ のインストール](/java/azure/intellij/azure-toolkit-for-intellij-installation)に関するページをご覧ください。
 * **IntelliJ IDEA から Azure サブスクリプションにサインインします**。 「[Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)」の手順に従います。
@@ -299,11 +299,6 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 ## <a name="next-steps"></a><a name="seealso"></a>次のステップ
 
 * [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
-
-### <a name="demo"></a>デモ
-
-* Scala プロジェクトを作成する (ビデオ):[Apache Spark Scala アプリケーションを作成する](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* リモート デバッグ (ビデオ):[Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で Apache Spark アプリケーションをリモートでデバッグする](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>シナリオ
 

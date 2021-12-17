@@ -1,14 +1,14 @@
 ---
 title: パラメーターを使用して動的ブループリントを作成する
 description: 静的パラメーターと動的パラメーターについて、およびこれらを使用して、セキュリティで保護された動的ブループリントを作成する方法について説明します。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5dbf7ec02e89eac791ec3e17202a5ab13a04b81d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2dfaa9f02b75e6aff46ae2967311c5b846ef6df8
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98918536"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323562"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>パラメーターを使用して動的ブループリントを作成する
 

@@ -1,26 +1,26 @@
 ---
-title: macOS から Windows Virtual Desktop (classic) に接続する - Azure
-description: macOS クライアントを使用して Windows Virtual Desktop (classic) に接続する方法。
+title: macOS から Azure Virtual Desktop (クラシック) に接続する - Azure
+description: macOS クライアントを使用して Azure Virtual Desktop (クラシック) に接続する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 4014de262490259ed2e61eb17c80b40679e62773
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 914d52c91920aa5f76bdb9d1e738919f8f4aedef
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445212"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031195"
 ---
-# <a name="connect-to-windows-virtual-desktop-classic-with-the-macos-client"></a>macOS クライアントを使用して Windows Virtual Desktop (classic) に接続する
+# <a name="connect-to-azure-virtual-desktop-classic-with-the-macos-client"></a>macOS クライアントを使用して Azure Virtual Desktop (クラシック) に接続する
 
 > 適用対象: macOS 10.12 以降
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (classic) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-macos.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../user-documentation/connect-macos.md)を参照してください。
 
-ダウンロード可能なクライアントを使用して、ご使用の macOS デバイスから Windows Virtual Desktop リソースにアクセスできます。 このガイドでは、クライアントを設定する方法について説明します。
+ダウンロード可能なクライアントを使用して、ご使用の macOS デバイスから Azure Virtual Desktop リソースにアクセスできます。 このガイドでは、クライアントを設定する方法について説明します。
 
 ## <a name="install-the-client"></a>クライアントをインストールします。
 
@@ -34,7 +34,7 @@ ms.locfileid: "106445212"
 
 1. サービスに接続して自分のリソースを取得するには、メイン ページで **[ワークスペースの追加]** を選択します。
 2. フィード URL を入力します。 URL またはメール アドレスを指定できます。
-   - URL を使用する場合は、管理者によって付与されたものを使用します。 通常、URL は <https://rdweb.wvd.microsoft.com> です。
+   - URL を使用する場合は、管理者から提供されたものを使用します。 通常、URL は <https://rdweb.wvd.microsoft.com> です。
    - 電子メールを使用するには、電子メール アドレスを入力します。 これにより、メール アドレスに関連付けられている URL を検索するようにクライアントに指示されます (管理者がそのようにサーバーを構成した場合)。
 3. **[追加]** を選択します。
 4. メッセージが表示されたら、自分のユーザー アカウントでサインインします。

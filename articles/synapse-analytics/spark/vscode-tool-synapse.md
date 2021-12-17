@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: e5d335ee14709ec330405419f5be8ac5fbd6ce75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07168ec69046973d4e02c2dc40b3b5e256ea26b4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943776"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492115"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>チュートリアル:VSCode で Synapse ワークスペースを使用して Apache Spark アプリケーションを作成する
 
@@ -84,7 +84,9 @@ Azure に接続するには、これらの手順に従います。
 
 4. Azure アカウントに[接続](#connect-to-your-spark-pools)します (まだ接続していない場合)。
 
-5. 現在のスクリプト ファイルの既定の Spark プールにする Spark プールを選択します。 ツールによって、構成ファイルである **.VSCode\settings.json** が自動的に更新されます。
+5. 現在のスクリプト ファイルの既定の Spark プールにする Spark プールを選択します。 
+
+6. **Synapse: PySpark Interactive** を使用してこのファイルを送信します。 ツールによって、構成ファイルである **.VSCode\settings.json** が自動的に更新されます。
 
      ![既定のクラスター構成を設定する](./media/vscode-tool-synapse/set-default-cluster-configuration.png)
 
@@ -190,6 +192,29 @@ for (word, count) in sortedCollection:
 >2. Synapse Pyspark カーネルに切り替えて、Azure Portal で自動設定を無効にすることをお勧めします。 そうしないと、クラスターをウェイクアップし、初めて使用するために Synapse カーネルを設定するのに時間がかかることがあります。 
 >
 >    ![自動設定](./media/vscode-tool-synapse/auto-settings.png)
+
+## <a name="spark-session-config"></a>Spark セッションの構成
+
+**[Configure session]\(セッションの構成\)** では、現在の Spark セッションに設定するタイムアウト期間、Executor の数とサイズを指定できます。 Spark セッションを再起動すると、構成の変更が有効になります。 キャッシュされたノートブック変数はすべて消去されます。
+
+```python
+%%configure -f
+{
+    // refer to https://github.com/cloudera/livy#request-body for a list of valid parameters to config the session.
+    "driverMemory":"2g",
+    "driverCores":3,
+    "executorMemory":"2g",
+    "executorCores":2,
+    "jars":[],
+    "conf":{
+        "spark.driver.maxResultSize":"10g"
+    }
+}
+```
+
+> [!NOTE]
+>
+> 表示関数や Spark SQL が出力セルに正しく表示されないことがあります。 
 
 ## <a name="submit-pyspark-batch-job-to-spark-pool"></a>PySpark バッチ ジョブを Spark プールに送信する
 

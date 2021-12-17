@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 42e0788a25efa5124f24a77b48469d6ed8265dfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed4df5d747dfcd9d5e50e439be63b7682d6b886a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694684"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696764"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux イメージの概要
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace で入手できる Red Hat Enterprise Linux (RHEL) イメージについて説明します。
 
@@ -101,7 +103,7 @@ RHEL 7.x イメージの場合、いくつかの異なる種類のイメージ�
 ## <a name="rhel-8-image-types"></a>RHEL 8 イメージの種類
 
 >[!NOTE]
-> Red Hat では、Grubby を使用し、RHEL 8+ のカーネル コマンド ライン パラメーターを構成することを推奨しています。 詳細は[こちら](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)をご覧ください。
+> Red Hat では、Grubby を使用し、RHEL 8+ のカーネル コマンド ライン パラメーターを構成することを推奨しています。 詳細については、Red Hat Enterprise Linux 8 の「[Chapter 5. Configuring kernel command-line parameters (第 5 章 カーネルのコマンドライン パラメーターの構成)](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)」を参照してください。
 
 次に、RHEL 8 イメージの種類の詳細を示します。
 

@@ -1,57 +1,64 @@
 ---
 title: .NET SDK バージョン 11 にアップグレードする
 titleSuffix: Azure Cognitive Search
-description: 以前のバージョンから Azure Cognitive Search .NET SDK バージョン 11 にコードを移行します。 新機能と必要なコード変更について説明します。
+description: 以前のバージョンから Azure Cognitive Search .NET SDK バージョン 11 にコードを移行します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 09/16/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df8841cb2dcac6335b09a5e7715f42c508c69e76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37c03a5be2f81fff0f4a1cac01153601a39ddd10
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99536817"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557155"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Cognitive Search .NET SDK バージョン 11 へのアップグレード
 
-バージョン 10.0 以前の [.NET SDK](/dotnet/api/overview/azure/search) を使用している場合、この記事を参考にして、バージョン 11 と **Azure.Search.Documents** クライアント ライブラリにアップグレードできます。
+検索ソリューションが [**AZURE SDK for .net**](/dotnet/azure/) 上に構築されている場合、この記事では、[**Microsoft.Azure.Search**](/dotnet/api/overview/azure/search/client10) の以前のバージョンからバージョン 11 の [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme)クライアントライブラリへコードを移行する方法について説明します。 バージョン 11 は、Azure SDK 開発チームによって完全に再設計され、リリースされたクライアント ライブラリです (以前のバージョンは、Azure Cognitive Search 開発チームによって作成されました)。 
 
-バージョン 11 は、Azure SDK 開発チームによって完全に再設計され、リリースされたクライアント ライブラリです (以前のバージョンは、Azure Cognitive Search 開発チームによって作成されました)。 このライブラリは、他の Azure クライアント ライブラリとの整合性を高めるために再設計されました。[Azure.Core](/dotnet/api/azure.core) および [System.Text.Json](/dotnet/api/system.text.json) に依存しており、一般的なタスクにはなじみのあるアプローチを実装しています。
+[1 つの例外](#WhatsNew)を除き、バージョン 11 にはバージョン 10 のすべての機能が実装されています。 主な違いは次のとおりです。
 
-新しいバージョンには、次のような重要な違いがあります。
-
-+ 複数ではなく、1 つのパッケージとライブラリ
-+ 新しいパッケージ名: `Microsoft.Azure.Search` ではなく `Azure.Search.Documents` です。
-+ 2 つではなく 3 つのクライアント: `SearchClient`、`SearchIndexClient`、`SearchIndexerClient`
++ パッケージは 4つでなく 1 つ (**Azure.Search.Documents**)
++ クライアントは 2 つでなく 3 つ: SearchClient、SearchIndexClient、SearchIndexerClient
 + さまざまな API 全体の名前付けの違いと、一部のタスクを簡略化する細かい構造の違い
 
-この記事に加えて、.NET SDK バージョン 11 の変更内容の項目別一覧について[変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)を確認できます。
+クライアント ライブラリの[変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)に、更新内容が箇条書きで列挙されています。
 
-## <a name="package-and-library-consolidation"></a>パッケージとライブラリの統合
+Cognitive Search 製品ドキュメントの C# コード サンプルとスニペットはすべて、新しい **Azure.Search.Documents** クライアント ライブラリを使用するように改訂されています。
 
-バージョン 11 では、複数のパッケージとライブラリが 1 つに統合されています。 移行後は、管理するライブラリが少なくなります。
+## <a name="why-upgrade"></a>アップグレードする理由
 
-+ [Azure.Search.Documents パッケージ](https://www.nuget.org/packages/Azure.Search.Documents/)
+アップグレードの利点は、次のようにまとめられています。
 
-+ [クライアント ライブラリの API リファレンス](/dotnet/api/overview/azure/search.documents-readme)
++ 新機能は **Azure.Search.Documents** にのみ追加されます。 以前のバージョンである Microsoft Azure Search は、レガシ クライアントという位置付けになりました。 レガシ ライブラリの更新は、優先度の高いバグ修正に限定されます。
 
-## <a name="client-differences"></a>クライアントの違い
++ 他の Azure ライブラリとの一貫性。 **Azure.Search.Documents** は [Azure.Core](/dotnet/api/azure.core) と [System.Text.Json](/dotnet/api/system.text.json) に依存しており、クライアントの接続や承認といった一般的なタスクについては従来のアプローチを踏襲します。
+
+## <a name="package-comparison"></a>パッケージの比較
+
+バージョン11では、管理する対象が減るように、パッケージ管理を統合して簡略化します。
+
+| バージョン 10 以前 | バージョン 11 |
+|------------------------|------------|
+| [Microsoft.Azure.Search](https://www.nuget.org/packages/Microsoft.Azure.Search/) </br>[Microsoft.Azure.Search.Service](https://www.nuget.org/packages/Microsoft.Azure.Search.Service/) </br>[Microsoft.Azure.Search.Data](https://www.nuget.org/packages/Microsoft.Azure.Search.Data/) </br>[Microsoft.Azure.Search.Common](https://www.nuget.org/packages/Microsoft.Azure.Search.Common/)  | [Azure.Search.Documents パッケージ](https://www.nuget.org/packages/Azure.Search.Documents/) |
+
+## <a name="client-comparison"></a>クライアントの比較
 
 2 つのバージョン間で対応するクライアント ライブラリがある場合、その対応付けを次の表に示します。
 
-| 操作のスコープ | Microsoft.Azure.Search&nbsp;(v10) | Azure.Search.Documents&nbsp;(v11) |
+|  クライアントによる処理 | Microsoft.Azure.Search&nbsp;(v10) | Azure.Search.Documents&nbsp;(v11) |
 |---------------------|------------------------------|------------------------------|
-| クエリおよびインデックスの作成に使用されるクライアント。 | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
-| インデックス、アナライザー、シノニム マップに使用されるクライアント | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
-| インデクサー、データ ソース、スキルセットに使用されるクライアント | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**新規**)](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
+| インデックスのドキュメント コレクション (クエリとデータ インポート) を対象とします。 | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
+| インデックス関連のオブジェクト (インデックス、アナライザー、シノニム マップ) をターゲットにします。 | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
+| インデクサー関連のオブジェクト (インデクサー、データ ソース、スキルセット) を対象とします。 | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**新規**)](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
-> [!Important]
-> `SearchIndexClient` は両方のバージョンに存在しますが、サポートする内容は異なります。 バージョン 10 では、`SearchIndexClient` によってインデックスやその他のオブジェクトが作成されます。 バージョン 11 では、`SearchIndexClient` に既存のインデックスを利用できます。 コードを更新するときの混乱を避けるために、クライアント参照が更新される順序にご注意ください。 「[アップグレードの手順](#UpgradeSteps)」のシーケンスに従うと、文字列の置換の問題を軽減できます。
+> [!Caution]
+> SearchIndexClient は両方のバージョンに存在しますが、異なる操作を対象としていることに注意してください。 バージョン 10 では、SearchIndexClient によりインデックスおよびそのほかのオブジェクトが作成されます。 バージョン 11 では、SearchIndexClient は既存のインデックスと連携し、クエリおよびデータ インジェスト API を使用して ドキュメント コレクションを対象とします。 コードを更新するときの混乱を避けるために、クライアント参照が更新される順序にご注意ください。 「[アップグレードの手順](#UpgradeSteps)」のシーケンスに従うと、文字列の置換の問題を軽減できます。
 
 <a name="naming-differences"></a>
 
@@ -64,7 +71,7 @@ ms.locfileid: "99536817"
 | バージョン 10 | バージョン 11 の相当するもの |
 |------------|-----------------------|
 | [SearchCredentials](/dotnet/api/microsoft.azure.search.searchcredentials) | [AzureKeyCredential](/dotnet/api/azure.azurekeycredential) |
-| `EncryptionKey` ([プレビュー SDK](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) に一般提供機能として存在します) | [SearchResourceEncryptionKey](/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
+| EncryptionKey (API リファレンスには記載されていません。 この API のサポートは、v10 で一般提供に移行しましたが、利用できるのは[プレビュー SDK](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) のみです) | [SearchResourceEncryptionKey](/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
 
 ### <a name="indexes-analyzers-synonym-maps"></a>インデックス、アナライザー、シノニム マップ
 
@@ -101,13 +108,16 @@ ms.locfileid: "99536817"
 | [IndexAction](/dotnet/api/microsoft.azure.search.models.indexaction) | [IndexDocumentsAction](/dotnet/api/azure.search.documents.models.indexdocumentsaction) |
 | [IndexBatch](/dotnet/api/microsoft.azure.search.models.indexbatch) | [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch) |
 
-### <a name="query-definitions-and-results"></a>クエリの定義と結果
+### <a name="query-requests-and-responses"></a>クエリの要求と応答
 
 | バージョン 10 | バージョン 11 の相当するもの |
 |------------|-----------------------|
+| [DocumentsOperationsExtensions.SearchAsync](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.searchasync) | [SearchClient.SearchAsync](/dotnet/api/azure.search.documents.searchclient.searchasync) |
 | [DocumentSearchResult](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) | 結果のドキュメントが 1 つか複数かに応じて、[SearchResult](/dotnet/api/azure.search.documents.models.searchresult-1) または [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1)。 |
 | [DocumentSuggestResult](/dotnet/api/microsoft.azure.search.models.documentsuggestresult-1) | [SuggestResults](/dotnet/api/azure.search.documents.models.suggestresults-1) |
 | [SearchParameters](/dotnet/api/microsoft.azure.search.models.searchparameters) |  [SearchOptions](/dotnet/api/azure.search.documents.searchoptions)  |
+| [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters) |  [SuggestOptions](/dotnet/api/azure.search.documents.suggestoptions) |
+| [SearchParameters.Filter](/dotnet/api/microsoft.azure.search.models.searchparameters.filter) |  [SearchFilter](/dotnet/api/azure.search.documents.searchfilter) (OData フィルター式を構築するための新しいクラス) |
 
 ### <a name="json-serialization"></a>JSON シリアル化
 
@@ -143,33 +153,43 @@ Response<SearchResults<Mountain>> results = client.Search<Mountain>("Rainier");
 
 JSON シリアル化に Newtonsoft.Json を使用している場合は、同様の属性を使用するか、[JsonSerializerSettings](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonSerializerSettings.htm) のプロパティを使用して、グローバル名前付けポリシーを渡すことができます。 上記と同等の例については、Newtonsoft.Json の README の [ドキュメントの逆シリアル化の例](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)を参照してください。
 
-
 <a name="WhatsNew"></a>
 
-## <a name="whats-in-version-11"></a>バージョン 11 の機能
+## <a name="inside-v11"></a>Inside v11
 
-Azure Cognitive Search クライアント ライブラリの各バージョンは、REST API の対応するバージョンを対象としています。 この REST API はサービスの基盤と見なされ、個々の SDK によって REST API のバージョンがラップされます。 .NET 開発者であり、特定のオブジェクトや操作の背景を詳しく知りたい場合は、[REST API のドキュメント](/rest/api/searchservice/)を参照してください。
-
-バージョン 11 は、[2020-06-30 の Search サービス](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/search/data-plane/Azure.Search/preview/2020-06-30/searchservice.json)を対象としています。 バージョン 11 は一から構築された新しいクライアント ライブラリでもあるため、ほとんどの開発作業はバージョン 10 との同等性に重点を置いており、REST API 機能のサポートはまだ保留中です。
+Azure Cognitive Search クライアント ライブラリの各バージョンは、REST API の対応するバージョンを対象としています。 この REST API はサービスの基盤と見なされ、個々の SDK によって REST API のバージョンがラップされます。 .NET 開発者として、特定のオブジェクトや操作についてもっと詳しく知りたい場合は、[REST API ドキュメント](/rest/api/searchservice/)の方が情報量が多く参考になるでしょう。 バージョン 11 は、[2020-06-30 の Search サービス](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/search/data-plane/Azure.Search/preview/2020-06-30/searchservice.json)を対象としています。 
 
 バージョン 11.0 では、次のオブジェクトと操作が完全にサポートされています。
 
 + インデックスの作成と管理
 + シノニム マップの作成と管理
-+ すべてのクエリの種類と構文 (地理空間フィルターを除く)
-+ データ ソースやスキルセットを含む、Azure データ ソースのインデックス作成のためのインデクサー オブジェクトと操作
++ インデクサーの作成と管理
++ インデクサーのデータ ソースの作成と管理
++ スキルセットの作成と管理
++ すべてのクエリ タイプと構文
 
-バージョン 11.1 では、次のものが追加されています。
+バージョン 11.1 の追加 ([変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md#1110-2020-08-11)の詳細):
 
 + [FieldBuilder](/dotnet/api/azure.search.documents.indexes.fieldbuilder) (11.1 で追加)
 + カスタムのシリアル化をサポートするための[シリアライザー プロパティ](/dotnet/api/azure.search.documents.searchclientoptions.serializer) (11.1 で追加)
 
-### <a name="pending-features"></a>保留中の機能
+バージョン 11.2 の追加 ([変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md#1120-2021-02-10)の詳細):
 
-バージョン 11 では、まだ次のバージョン 10 機能を使用できません。 これらの機能を必要とする場合は、サポートされるまで移行をお待ちください。
++ [EncryptionKey](/dotnet/api/azure.search.documents.indexes.models.searchindexer.encryptionkey) プロパティにインデクサー、データ ソース、スキルセットが追加されました
++ [IndexingParameters.IndexingParametersConfiguration ](/dotnet/api/azure.search.documents.indexes.models.indexingparametersconfiguration) プロパティのサポート
++ [地理空間型](/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype.geographypoint)は、[FieldBuilder でネイティブにサポートされています](/dotnet/api/azure.search.documents.indexes.fieldbuilder.build)。 [SearchFilter](/dotnet/api/azure.search.documents.searchfilter) では、明示的なアセンブリの依存関係を使用せずに、Microsoft.Spatial からジオメトリック型をエンコードできます。
+
+  [Microsoft.Spatial](https://www.nuget.org/packages/Microsoft.Spatial/) への依存関係を引き続き明示的に宣言することもできます。 この技術の例は、[System.Text.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) および [Newtonsoft.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md) で使用できます。
+
+現在、Azure.Search.Documents の任意のバージョンでサポートされていません。
 
 + [ナレッジ ストア](knowledge-store-concept-intro.md)
-+ 地理空間型 - 地理空間型のファースト クラスのサポートは、まだ準備中です。 現時点では、[Microsoft.Spatial](https://www.nuget.org/packages/Microsoft.Spatial/) パッケージを使用して、地理的な操作をサポートすることができます。 [System.Text.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) および [Newtonsoft.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md) についての例があります。
+
+## <a name="before-upgrading"></a>アップグレードする前に
+
++ [クイックスタート](search-get-started-dotnet.md)、チュートリアル、[C# サンプル](samples-dotnet.md)は、Azure.Search.Documents パッケージを使用するように更新されています。 既存のサンプルとチュートリアルを確認し、新しい API についての知識を深めたうえで、移行の演習に取り組むことをお勧めします。
+
++ [Azure.Search.Documents を使用する方法](search-howto-dotnet-sdk.md)に関する記事では、最もよく使用される API を紹介しています。 Cognitive Search に詳しい方も、新しいライブラリについて紹介した記事を移行の前段階としてぜひご利用ください。
 
 <a name="UpgradeSteps"></a>
 
@@ -246,8 +266,10 @@ Azure Cognitive Search クライアント ライブラリの各バージョン�
 
 + このバージョンでは、[順序付けされた null 値の結果](search-query-odata-orderby.md)が変更されていて、null 値は、並べ替えが `asc` の場合は最初に、並べ替えが `desc` の場合は最後に表示されます。 null 値の並べ替え方法を処理するコードを記述した場合、そのコードを確認し、不要になった場合は削除する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
++ [C# .NET アプリケーションで Azure.Search.Documents を使用する方法](search-howto-dotnet-sdk.md)
++ [チュートリアル: Web アプリに検索を追加する](tutorial-csharp-overview.md)
 + [Azure.Search.Documents パッケージ](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [GitHub のサンプル](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)
 + [Azure.Search.Document API リファレンス](/dotnet/api/overview/azure/search.documents-readme)

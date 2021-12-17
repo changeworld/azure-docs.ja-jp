@@ -1,19 +1,18 @@
 ---
 title: Azure Stack Edge Pro 2103 リリース ノート
 description: 2103 リリースを実行している Azure Stack Edge Pro の重大な未解決の問題と解決策について説明します。
-services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 03/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d2a345ed49fae2e1d77b3c5da44b305d069874e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 816ebcf8a14235c2193a6f0e63cefde252fe8b1e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729458"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129716130"
 ---
 # <a name="azure-stack-edge-2103-release-notes"></a>Azure Stack Edge 2103 リリース ノート
 
@@ -65,7 +64,7 @@ Azure Stack Edge 2103 リリースの新機能は以下のとおりです。
 
 | いいえ。 | 特徴量 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
-|**1.**|プレビュー機能 |このリリースでは、ローカル Azure Resource Manager、VM、VM のクラウド管理、Kubernetes クラウド管理、Azure Arc 対応 Kubernetes、Azure Stack Edge Pro R および Azure Stack Edge Mini R 用の VPN、Azure Stack Edge Pro GPU 用のマルチプロセス サービス (MPS) の全機能をプレビューとしてご利用になれます。  |これらの機能は、今後のリリースで一般公開される予定です。 |
+|**1.**|プレビュー機能 |このリリースでは、ローカル Azure Resource Manager、VM、VM のクラウド管理、Kubernetes クラウド管理、Azure Arc 対応 Kubernetes、Azure Stack Edge Pro R および Azure Stack Edge Mini R 用の VPN、Azure Stack Edge Pro GPU 用のマルチプロセス サービス (MPS) の全機能をプレビューとして使用できます。  |これらの機能は、今後のリリースで一般公開される予定です。 |
 |**2.**|GPU VM |このリリースより前は、GPU VM のライフサイクルは更新フロー内で管理されていませんでした。 そのため、2103 リリースに更新すると、GPU VM は更新中に自動的に停止されません。 デバイスを更新する前に、`stop-stayProvisioned` フラグを使用して GPU VM を手動で停止する必要があります。 詳細については、「[VM を中断またはシャットダウンする](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#suspend-or-shut-down-the-vm)」を参照してください。<br> 更新前に実行が続けられていたすべての GPU VM は、更新後に起動されます。 このような場合、VM 上で実行されているワークロードは正常に終了されません。 また、更新後に VM が望ましくない状態になる可能性があります。 <br>更新前に `stop-stayProvisioned` によって停止された GPU VM はすべて、更新後に自動的に起動されます。 <br>Azure portal から GPU VM を停止した場合は、デバイスの更新後に手動で VM を起動する必要があります。| Kubernetes を使用して GPU VM を実行している場合は、更新の直前に GPU VM を停止します。 <br>GPU VM が停止されると、もともと VM によって使用されていた GPU は Kubernetes によって引き継がれます。 <br>GPU VM が停止状態になっている時間が長いほど、GPU が Kubernetes によって引き継がれる可能性が高くなります。 |
 |**3.**|カスタム スクリプト VM 拡張機能 |以前のリリースで作成された Windows VM には既知の問題があり、デバイスは 2103 に更新されました。 <br> これらの VM でカスタム スクリプト拡張機能を追加すると、Windows VM ゲスト エージェント (バージョン 2.7.41491.901 のみ) が更新でスタックし、拡張機能のデプロイがタイムアウトになります。 | この問題の回避方法: <ul><li> リモート デスクトップ プロトコル (RDP) を使用して Windows VM に接続します。 </li><li> コンピューターで `waappagent.exe` が実行中であることを確認し ます: `Get-Process WaAppAgent`。 </li><li> `waappagent.exe` が実行されていない場合は、`rdagent` サービスを再起動します: `Get-Service RdAgent` \| `Restart-Service`。 5 分間待機します。</li><li> `waappagent.exe` が実行されている間に `WindowsAzureGuest.exe` プロセスを中止します。 </li><li>プロセスを中止した後に、新しいバージョンを使用して再度プロセスの実行が開始されます。</li><li>次のコマンドを使用して、Windows VM ゲスト エージェントのバージョンが 2.7.41491.971 であることを確認します: `Get-Process WindowsAzureGuestAgent` \| `fl ProductVersion`。</li><li>[Windows VM にカスタム スクリプト拡張機能を設定します。](azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md) </li><ul> | 
 |**4.**|マルチプロセス サービス (MPS) |デバイス ソフトウェアと Kubernetes クラスターが更新されても、ワークロードの MPS 設定は保持されません。   |[MPS を再度有効にして](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface)、MPS を使用していたワークロードを再デプロイします。 |
@@ -77,8 +76,8 @@ Azure Stack Edge 2103 リリースの新機能は以下のとおりです。
 
 | いいえ。 | 特徴量 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
-| **1.** |Azure Stack Edge Pro + Azure SQL | SQL Database を作成するには、管理者アクセス権が必要です。   |[https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) の手順 1 から 2 の代わりに、次の手順を実行します。 <ul><li>デバイスのローカル UI で、コンピューティング インターフェイスを有効にします。 **[コンピューティング] > [ポート番号] > [Enable for compute]\(コンピューティングを有効にする\) > [適用]** を選択します。</li><li>https://docs.microsoft.com/sql/tools/sqlcmd-utility からクライアント マシンに `sqlcmd` をダウンロードします </li><li>コンピューティング インターフェイスの IP アドレス (有効なポート) に接続し、アドレスの末尾に ",1401" を追加します。</li><li>最終的なコマンドは次のようになります。sqlcmd -S {Interface IP},1401 -U SA -P "Strong!Passw0rd"</li>この後、現在のドキュメントの手順 3 から 4 は同じにする必要があります。 </li></ul> |
-| **2.** |更新| **[更新]** によって復元された BLOB の増分変更はサポートされていません |BLOB エンドポイントの場合、[更新] 後に BLOB を部分的に更新すると、更新がクラウドにアップロードされない可能性があります。 たとえば、次のような一連のアクションがあります。<ul><li>クラウドに BLOB を作成します。 または、以前にアップロードした BLOB をデバイスから削除します。</li><li>更新機能を使用して、クラウドからアプライアンスに BLOB を更新します。</li><li>Azure SDK REST API を使用して、BLOB の一部のみを更新します。</li></ul>これらのアクションの結果、BLOB の更新されたセクションがクラウドで更新されない可能性があります。 <br>**回避策**:robocopy などのツール、またはエクスプローラーやコマンド ラインを介した通常のファイル コピーを使用して、BLOB 全体を置き換えます。|
+|**1.**|Azure Stack Edge Pro + Azure SQL | SQL Database を作成するには、管理者アクセス権が必要です。 |「[チュートリアル: SQL Server データベースを使用したエッジでのデータの格納](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database)」の手順 1 から 2 ではなく以下の手順を実行します。 <ul><li>デバイスのローカル UI で、コンピューティング インターフェイスを有効にします。 **[コンピューティング] > [ポート番号] > [Enable for compute]\(コンピューティングを有効にする\) > [適用]** を選択します。</li><li>[sqlcmd ユーティリティ](/sql/tools/sqlcmd-utility)からクライアント マシンに `sqlcmd` をダウンロードします。 </li><li>コンピューティング インターフェイスの IP アドレス (有効なポート) に接続し、アドレスの末尾に「`,1401`」を追加します。</li><li>最終的なコマンドは `sqlcmd -S {Interface IP},1401 -U SA -P "Strong!Passw0rd"` のようになります。</li>この後、現在のドキュメントの手順 3 から 4 は同じにする必要があります。 </li></ul> |
+|**2.**|更新| **[更新]** によって復元された BLOB の増分変更はサポートされていません |BLOB エンドポイントの場合、[更新] 後に BLOB を部分的に更新すると、更新がクラウドにアップロードされない可能性があります。 たとえば、次のような一連のアクションがあります。<ul><li>クラウドに BLOB を作成します。 または、以前にアップロードした BLOB をデバイスから削除します。</li><li>更新機能を使用して、クラウドからアプライアンスに BLOB を更新します。</li><li>Azure SDK REST API を使用して、BLOB の一部のみを更新します。</li></ul>これらのアクションの結果、BLOB の更新されたセクションがクラウドで更新されない可能性があります。 <br>**回避策**:robocopy などのツール、またはエクスプローラーやコマンド ラインを介した通常のファイル コピーを使用して、BLOB 全体を置き換えます。|
 |**3.**|Throttling|調整中に、デバイスへの新しい書き込みが許可されていない場合、NFS クライアントによる書き込みは "アクセス許可が拒否されました" エラーで失敗します。| 次のようなエラーが表示されます。<br>`hcsuser@ubuntu-vm:~/nfstest$ mkdir test`<br>mkdir: cannot create directory 'test': (mkdir: ディレクトリ 'test' を作成できません:)アクセス許可は拒否されました|
 |**4.**|Blob Storage のインジェスト|Blob storage のインジェストに AzCopy バージョン 10 を使用する場合は、次の引数を指定して AzCopy を実行します。`Azcopy <other arguments> --cap-mbps 2000`| AzCopy にこれらの制限を指定しない場合、デバイスに大量の要求が送信され、サービスに問題が発生する可能性があります。|
 |**5.**|階層型ストレージ アカウント|階層型ストレージ アカウントを使用する場合は、以下が適用されます。<ul><li> ブロック BLOB のみがサポートされています。 ページ BLOB はサポートされていません。</li><li>スナップショットまたはコピー API はサポートされていません。</li><li> `distcp` を使用した Hadoop ワークロードの取り込みは、コピー操作が頻繁に使用されるため、サポートされていません。</li></ul>||
@@ -99,7 +98,7 @@ Azure Stack Edge 2103 リリースの新機能は以下のとおりです。
 |**20**|Internet Explorer|強化されたセキュリティ機能が有効になっている場合は、ローカル Web UI ページにアクセスできない可能性があります。 | 強化されたセキュリティを無効にし、ブラウザーを再起動してください。|
 |**21.**|Kubernetes ダッシュボード | Kubernetes ダッシュボードで SSL 証明書を使用する *Https* エンドポイントはサポートされていません。 | |
 |**22.**|Kubernetes |Kubernetes は、.NET アプリケーションで使用される環境変数名の ":" をサポートしていません。 これは、イベント グリッド IoT Edge モジュールが Azure Stack Edge デバイスやその他のアプリケーションで機能するためにも必要です。 詳細については、[ASP.NET Core のドキュメント](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration#environment-variables)をご覧ください。|":" は二重のアンダースコアに置き換えてください。 詳細については、[Kubernetes の問題](https://github.com/kubernetes/kubernetes/issues/53201)に関する記事をご覧ください。|
-|**23.** |Azure Arc と Kubernetes クラスター |Git リポジトリからリソース `yamls` を削除した場合、既定で Kubernetes クラスターから対応するリソースは削除されません。  |Git リポジトリからリソースを削除したときに、それらが削除されるようにするには、Arc OperatorParams に `--sync-garbage-collection` を設定します。 詳細については、「[構成を削除する](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)」をご覧ください。 |
+|**23.** |Azure Arc と Kubernetes クラスター |Git リポジトリからリソース `yamls` を削除した場合、既定で Kubernetes クラスターから対応するリソースは削除されません。  |Git リポジトリからリソースを削除したときに、それらが削除されるようにするには、Arc OperatorParams に `--sync-garbage-collection` を設定します。 詳細については、「[構成を削除する](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters)」をご覧ください。 |
 |**24.**|NFS |お使いのデバイスの NFS 共有マウントを使用してデータを書き込むアプリケーションでは、排他的な書き込みを使用する必要があります。 これにより、書き込みがディスクに書き込まれるようになります。| |
 |**25.**|コンピューティングの構成 |ネットワーク上に存在しないシステムに対するアドレス解決プロトコル (ARP) 要求にゲートウェイまたはスイッチまたはルーターが応答するネットワーク構成では、コンピューティング構成が失敗します。| |
 |**26.**|コンピューティングおよび Kubernetes |お使いのデバイスで Kubernetes を最初に設定した場合、使用可能なすべての GPU が要求されます。 そのため、Kubernetes を設定した後で、GPU を使用して Azure Resource Manager の仮想マシンは作成できません。 |お使いのデバイスに GPU が 2 つある場合は、GPU を使用する仮想マシンを 1 つ作成してから Kubernetes を構成します。 この場合、Kubernetes が残りの使用可能な 1 つの GPU を使用します。 |

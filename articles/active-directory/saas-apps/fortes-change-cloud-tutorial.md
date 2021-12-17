@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/18/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: c80d61e367288edfc207fb0160b5d03152ad6ce4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a58b4f7b15d5b4e0857b12cd2c444229e7037507
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583787"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348504"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortes-change-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Fortes Change Cloud の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "104583787"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Fortes Change Cloud では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* Fortes Change Cloud では、[自動化された](fortes-change-cloud-provisioning-tutorial.md)ユーザー プロビジョニングがサポートされます。
 
 ## <a name="adding-fortes-change-cloud-from-the-gallery"></a>ギャラリーからの Fortes Change Cloud の追加
 
@@ -126,6 +127,8 @@ Fortes Change Cloud に対して Azure AD SSO を構成してテストするに�
 
 このセクションでは、Fortes Change Cloud で Britta Simon というユーザーを作成します。 [Fortes Change Cloud サポート チーム](mailto:support@fortes.nl)と協力して、Fortes Change Cloud プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
+Fortes Change Cloud では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./fortes-change-cloud-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -140,8 +143,8 @@ Fortes Change Cloud に対して Azure AD SSO を構成してテストするに�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Fortes Change Cloud に自動的にサインインされます 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Fortes Change Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Fortes Change Cloud に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Fortes Change Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Fortes Change Cloud に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Fortes Change Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Fortes Change Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

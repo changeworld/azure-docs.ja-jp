@@ -1,27 +1,27 @@
 ---
 title: Azure Functions を設定する
-description: このチュートリアルでは、Azure 関数アプリを作成して、Azure カスタム プロバイダーと連携するように設定する方法を説明します
+description: このチュートリアルでは、Azure Functions の関数アプリを作成して、Azure カスタム プロバイダーと連携するように設定する方法を説明します。
 author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b63dc2e47a494b50ea756728afc39e74200f8d39
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737322"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745831"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure カスタム プロバイダー用の Azure Functions を設定する
 
-カスタム プロバイダーは、Azure とエンドポイントの間のコントラクトです。 カスタム プロバイダーを使うと、Azure 内のワークフローに変更を加えることができます。 このチュートリアルでは、カスタム プロバイダーのエンドポイントとして機能するように Azure 関数アプリを設定する方法について説明します。
+カスタム プロバイダーは、Azure とエンドポイントの間のコントラクトです。 カスタム プロバイダーを使うと、Azure 内のワークフローに変更を加えることができます。 このチュートリアルでは、カスタム プロバイダーのエンドポイントとして機能するように Azure Functions の関数アプリを設定する方法について説明します。
 
-## <a name="create-the-azure-function-app"></a>Azure 関数アプリを作成する
+## <a name="create-the-function-app"></a>Function App の作成
 
 > [!NOTE]
-> このチュートリアルでは、Azure 関数アプリを使用するシンプルなサービス エンドポイントを作成します。 ただしカスタム プロバイダーは、パブリックにアクセスできる任意のエンドポイントを使用できます。 その代替候補としては、Azure Logic Apps や Azure API Management、Azure App Service の Web Apps 機能などが挙げられます。
+> このチュートリアルでは、Azure Functions の関数アプリを使用するシンプルなサービス エンドポイントを作成します。 ただしカスタム プロバイダーは、パブリックにアクセスできる任意のエンドポイントを使用できます。 その代替候補としては、Azure Logic Apps や Azure API Management、Azure App Service の Web Apps 機能などが挙げられます。
 
-このチュートリアルを始めるには、まず、[Azure portal で初めての Azure 関数アプリを作成する](../../azure-functions/functions-get-started.md)チュートリアルを先に行う必要があります。 そのチュートリアルでは、Azure portal で変更可能な .NET Core の Webhook 関数を作成します。 このチュートリアルの土台にもなっているチュートリアルです。
+このチュートリアルを始めるには、まず、[Azure portal で初めての関数アプリを作成する](../../azure-functions/functions-get-started.md)チュートリアルを先に行う必要があります。 そのチュートリアルでは、Azure portal で変更可能な .NET Core の Webhook 関数を作成します。 このチュートリアルの土台にもなっているチュートリアルです。
 
 ## <a name="install-azure-table-storage-bindings"></a>Azure Table Storage のバインディングをインストールする
 
@@ -77,6 +77,6 @@ Azure Table Storage のバインディングをインストールするには、
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure カスタム プロバイダーのエンドポイントとして機能するように Azure 関数アプリを設定しました。
+このチュートリアルでは、Azure カスタム プロバイダーのエンドポイントとして機能するように Azure Functions の関数アプリを設定しました。
 
 RESTful カスタム プロバイダー エンドポイントを作成する方法については、[RESTful カスタム プロバイダー エンドポイントの作成のチュートリアル](./tutorial-custom-providers-function-authoring.md)に関する記事をご覧ください。

@@ -2,13 +2,13 @@
 title: Event Grid ソースとしての Azure Event Hub
 description: Azure Event Grid の Event Hubs イベントに対して用意されているプロパティについて説明します
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: e9bb4b5a27173181c7295e96a1eb0654a1a929e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: b29f7f104ca0616a27abb5009e5ec27262169f00
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363511"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358827"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Event Hub
 
@@ -126,6 +126,7 @@ Event Hubs は、キャプチャ ファイルが作成されたときに、種�
 | `lastSequenceNumber` | 整数 (integer) | キューの最後のシーケンス番号。 |
 | `firstEnqueueTime` | string | キューの最初の時間。 |
 | `lastEnqueueTime` | string | キューの最後の時間。 |
+
 
 ## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
 

@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: 835be5b867826d75732c9482743ad6a4ca2900e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2086351f1e66cbd2ef41ac98b2ab86fe7275823b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98231844"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621359"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Azure ネットワーク サービスを使用したリモートでの作業
 
@@ -52,7 +52,7 @@ Azure にデプロイされたリソースにアクセスするために、リ�
 
 大規模な VPN 接続を集約する場合は、さまざまなオンプレミスのグローバルな場所内、さまざまなリージョン ハブ内、スポークの仮想ネットワーク内にあるリソース間で Any-to-Any 接続をサポートするため、そして複数のホーム ブロードバンド ネットワークの使用率を最適化するため、Azure Virtual WAN を使用できます。 詳細については、[自宅からの作業のニーズに応えることに苦慮している場合にAzure Virtual WAN を役立てる方法](../virtual-wan/work-remotely-support.md)に関するページを参照してください。
 
-リモート ワーカーをサポートするもう 1 つの方法は、Azure 仮想ネットワークにホストされている仮想デスクトップ インフラストラクチャ (VDI) をデプロイして、Azure Firewall で保護することです。 たとえば、Windows Virtual Desktop (WVD) は、Azure 上で実行されるデスクトップとアプリの仮想化サービスです。 Windows Virtual Desktop を使用すると、追加のゲートウェイ サーバーを実行しなくても、Azure サブスクリプションでスケーラブルで柔軟な環境を設定できます。 お客様は、仮想ネットワーク内の WVD 仮想マシンに対してのみ責任を持ちます。 詳細については、「[Azure Firewall のリモート作業のサポート](../firewall/remote-work-support.md)」を参照してください。 
+リモート ワーカーをサポートするもう 1 つの方法は、Azure 仮想ネットワークにホストされている仮想デスクトップ インフラストラクチャ (VDI) をデプロイして、Azure Firewall で保護することです。 たとえば、Azure Virtual Desktop (AVD) は、Azure で実行されるデスクトップとアプリの仮想化サービスです。 Azure Virtual Desktop を使用すると、追加のゲートウェイ サーバーを実行しなくても、Azure サブスクリプションでスケーラブルで、かつ柔軟な環境を設定できます。 ユーザーは、仮想ネットワーク内の AVD 仮想マシンにのみ責任を負います。 詳細については、「[Azure Firewall のリモート作業のサポート](../firewall/remote-work-support.md)」を参照してください。 
 
 Azure には、豊富なエコ システム パートナーもあります。 パートナーである Azure 上のネットワーク仮想アプライアンスは、VPN 接続の拡張にも役立ちます。 詳細については、「[リモート作業でのネットワーク仮想アプライアンス (NVA) に関する考慮事項](../vpn-gateway/nva-work-remotely-support.md)」を参照してください。
 

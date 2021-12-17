@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: この記事では、Azure SQL Managed Instance プール (プレビュー) を作成および管理する方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: ''
+ms.subservice: deployment-configuration
+ms.custom: devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: bonova
-ms.author: bonova
-ms.reviewer: sstein
+author: urosmil
+ms.author: urmilano
+ms.reviewer: mathoma
 ms.date: 09/05/2019
-ms.openlocfilehash: 96c24c05f5e0dbb671a294b10ee51be411ca25ff
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: a003370180471e02f4801bffd2477f0c50faa99d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285289"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676563"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL Managed Instance をインスタンス プールにデプロイする
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,20 +26,24 @@ ms.locfileid: "107285289"
 
 ## <a name="instance-pool-operations"></a>インスタンス プールの操作
 
-次の表は、インスタンス プールに関連する使用可能な操作と、Azure portal と PowerShell でそれらを使用できるかどうかを示しています。
+次の表は、インスタンス プールに関連する使用可能な操作と、Azure portal、PowerShell、Azure CLI でそれらを使用できるかどうかを示しています。
 
-|コマンド|Azure portal|PowerShell|
-|:---|:---|:---|
-|インスタンス プールを作成する|いいえ|はい|
-|インスタンス プールを更新する (プロパティ数に制限あり)|いいえ |はい |
-|インスタンス プールの使用状況とプロパティを確認する|いいえ|はい |
-|インスタンス プールを削除する|いいえ|はい|
-|インスタンス プール内にマネージド インスタンスを作成する|いいえ|はい|
-|マネージド インスタンスのリソースの使用状況を更新する|はい |はい|
-|マネージド インスタンスの使用状況とプロパティを確認する|はい|はい|
-|プールからマネージド インスタンスを削除する|はい|はい|
-|プール内のインスタンスにデータベースを作成する|はい|はい|
-|SQL Managed Instance からデータベースを削除する|はい|はい|
+|コマンド|Azure portal|PowerShell|Azure CLI|
+|:---|:---|:---|:---|
+|インスタンス プールを作成する|いいえ|はい|はい|
+|インスタンス プールを更新する (プロパティ数に制限あり)|いいえ |はい | はい|
+|インスタンス プールの使用状況とプロパティを確認する|いいえ|はい | はい |
+|インスタンス プールを削除する|いいえ|はい|はい|
+|インスタンス プール内にマネージド インスタンスを作成する|いいえ|はい|いいえ|
+|マネージド インスタンスのリソースの使用状況を更新する|はい |はい|いいえ|
+|マネージド インスタンスの使用状況とプロパティを確認する|はい|はい|いいえ|
+|プールからマネージド インスタンスを削除する|はい|はい|いいえ|
+|プール内のインスタンスにデータベースを作成する|はい|はい|いいえ|
+|SQL Managed Instance からデータベースを削除する|はい|はい|いいえ|
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Powershell を使用するには、[最新バージョンの PowerShell Core をインストール](/powershell/scripting/install/installing-powershell#powershell)し、指示に従って [Azure PowerShell モジュールをインストール](/powershell/azure/install-az-ps)します。
 
 使用可能な [PowerShell コマンド](/powershell/module/az.sql/)
 
@@ -51,10 +55,24 @@ ms.locfileid: "107285289"
 |[Remove-AzSqlInstancePool](/powershell/module/az.sql/remove-azsqlinstancepool/) | SQL Managed Instance 内のインスタンス プールを削除します。 |
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | SQL Managed Instance プールの使用状況に関する情報を返します |
 
-
-Powershell を使用するには、[最新バージョンの PowerShell Core をインストール](/powershell/scripting/install/installing-powershell#powershell)し、指示に従って [Azure PowerShell モジュールをインストール](/powershell/azure/install-az-ps)します。
-
 プール内のインスタンスと単一インスタンスの両方に関連する操作では、標準の [マネージド インスタンス コマンド](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)を使用しますが、プール内のインスタンスでこれらのコマンドを使用する場合は、"*インスタンス プール名*" プロパティを設定する必要があります。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI の環境を準備します。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+使用可能な [Azure CLI](/cli/azure/sql) コマンド:
+
+|コマンドレット |説明 |
+|:---|:---|
+|[az sql instance-pool create](/cli/azure/sql/instance-pool#az_sql_instance_pool_create) | SQL Managed Instance プールを作成します。 |
+|[az sql instance-pool show](/cli/azure/sql/instance-pool#az_sql_instance_pool_show) | インスタンス プールに関する情報を返します。 |
+|[az sql instance-pool update](/cli/azure/sql/instance-pool#az_sql_instance_pool_update) | SQL Managed Instance 内のインスタンス プールのプロパティを設定または更新します。 |
+|[az sql instance-pool delete](/cli/azure/sql/instance-pool#az_sql_instance_pool_delete) | SQL Managed Instance 内のインスタンス プールを削除します。 |
+
+---
 
 ## <a name="deployment-process"></a>デプロイ プロセス
 
@@ -85,6 +103,8 @@ Powershell を使用するには、[最新バージョンの PowerShell Core を
 > [!IMPORTANT]
 > インスタンス プールのデプロイは実行時間の長い操作であり、約 4.5 時間かかります。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ネットワーク パラメーターを取得するには:
 
 ```powershell
@@ -105,6 +125,37 @@ $instancePool = New-AzSqlInstancePool `
   -ComputeGeneration "Gen5" `
   -Location "westeurope"
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+仮想ネットワーク パラメーターを取得するには:
+
+```azurecli
+az network vnet show --resource-group MyResourceGroup --name miPoolVirtualNetwork
+```
+
+仮想サブネット パラメーターを取得するには:
+
+```azurecli
+az network vnet subnet show --resource group MyResourceGroup --name miPoolSubnet --vnet-name miPoolVirtualNetwork
+```
+
+インスタンス プールを作成するには:
+
+```azurecli
+az sql instance-pool create
+    --license-type LicenseIncluded 
+    --location westeurope
+    --name mi-pool-name
+    --capacity 8
+    --tier GeneralPurpose
+    --family Gen5 
+    --resrouce-group myResourceGroup
+    --subnet miPoolSubnet
+    --vnet-name miPoolVirtualNetwork
+```
+
+---
 
 > [!IMPORTANT]
 > インスタンス プールのデプロイは実行時間の長い操作であるため、この記事の次の手順はすべて、完了するまで待ってから行ってください。

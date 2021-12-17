@@ -4,15 +4,16 @@ description: コマンド ラインから Python 関数を作成し、Azure Func
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom:
-- devx-track-python
+- devx-track-powershell
 - devx-track-azurecli
+- devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 626cff867a336880689373c289087e2332a816ee
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 951a0cec92d531aa980b519df2a046355997c175
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787451"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039337"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Python 関数を作成する
 
@@ -36,13 +37,13 @@ ms.locfileid: "107787451"
 
 + Azure <abbr title="Azure の使用に関する課金情報を保持するプロファイル。">account</abbr> アクティブ <abbr title="Azure 内のリソース管理に使用される基本的な組織構造。通常、組織内の部門または個人に関連付けられます。">subscription</abbr>. [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。 
-  
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
+
 + 次のいずれか <abbr title="Azure portal を使用する代わりに、ローカルの開発用コンピューターから Azure リソースを操作するための一連のクロスプラットフォーム コマンド ライン ツール。">Azure CLI</abbr> or <abbr title="Azure portal を使用する代わりに、ローカルの開発用コンピューターから Azure リソースを操作するためのコマンドを提供する PowerShell モジュール。">Azure PowerShell</abbr> Azure リソースを作成するための
 
     + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps) バージョン 5.0 以降。
+    + Azure [Az PowerShell モジュール](/powershell/azure/install-az-ps) バージョン 5.9.0 以降。
 
 + [Python 3.8 (64 ビット)](https://www.python.org/downloads/release/python-382/)、[Python 3.7 (64 ビット)](https://www.python.org/downloads/release/python-375/)、[Python 3.6 (64 ビット)](https://www.python.org/downloads/release/python-368/)。これらはいずれも、バージョン 3.x の Azure Functions でサポートされています。
 
@@ -64,7 +65,7 @@ ms.locfileid: "107787451"
 
 + ターミナルまたはコマンド ウィンドウで `func --version` を実行して、 <abbr title="ローカル コンピューターで Azure Functions を操作するための一連のコマンド ライン ツール。">Azure Functions Core Tools</abbr> のバージョンが 3.x であることを確認します。
 
-+ `(Get-Module -ListAvailable Az).Version` を実行し、バージョン 5.0 以降であることを確認します。 
++ `(Get-Module -ListAvailable Az).Version` を実行し、バージョン 5.0 以降であることを確認します。
 
 + `Connect-AzAccount` を実行して Azure にサインインし、アクティブなサブスクリプションを確認します。
 
@@ -118,7 +119,7 @@ py -m venv .venv
 
 ---
 
-以降のコマンドはすべて、このアクティブ化された仮想環境で実行します 
+以降のコマンドはすべて、このアクティブ化された仮想環境で実行します
 
 <br/>
 
@@ -128,7 +129,7 @@ py -m venv .venv
 
 このセクションでは、ローカル <abbr title="個別に存在する 1 つまたは複数の関数に使用される論理上のコンテナー。これらをまとめてデプロイして管理することができます。">Azure Functions プロジェクト</abbr> を Python で作成します。 プロジェクト内の各関数は、特定のトリガーに応答します。 <abbr title="HTTP 要求、キュー メッセージ、特定の時刻など、関数のコードを呼び出すイベントの種類。">トリガー (trigger)</abbr>.
 
-1. `func init` コマンドを実行して、特定のランタイムを含んだ *LocalFunctionProj* という名前のフォルダーに関数プロジェクトを作成します。  
+1. `func init` コマンドを実行して、特定のランタイムを含んだ *LocalFunctionProj* という名前のフォルダーに関数プロジェクトを作成します。
 
     ```console
     func init LocalFunctionProj --python
@@ -139,33 +140,33 @@ py -m venv .venv
     ```console
     cd LocalFunctionProj
     ```
-    
+
     <br/>
     <details>
     <summary><strong>LocalFunctionProj フォルダーには何が作成されますか?</strong></summary>
-    
-    このフォルダーにはプロジェクト用の各種ファイルが格納されています。たとえば、[local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
+
+    このフォルダーにはプロジェクト用の各種ファイルが格納されています。たとえば、[local.settings.json](functions-develop-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
     </details>
 
 1. 次のコマンドを使用して、プロジェクトに関数を追加します。
 
     ```console
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
-    ```   
+    ```
     `--name` 引数は、関数の一意の名前です (HttpExample)。
 
     `--template` 引数で、関数のトリガー (HTTP) を指定します。
-    
+
     `func new` によって、関数と同じ名前のサブフォルダーが作成されます。そのサブフォルダーに、関数のコードが記述された *\_\_init\_\_.py* ファイルと、*function.json* という名前の構成ファイルが格納されます。
 
-    <br/>    
+    <br/>
     <details>
     <summary><strong>__init__.py のコード</strong></summary>
-    
+
     *\_\_init\_\_.py* には、*function.json* 内の構成に従ってトリガーされる Python 関数 `main()` が含まれます。
-    
+
     :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
-    
+
     HTTP トリガーの場合、この関数は、*function.json* に定義された変数 `req` で要求データを受け取ります。 `req` は、[azure.functions.HttpRequest クラス](/python/api/azure-functions/azure.functions.httprequest)のインスタンスです。 *function.json* に `$return` として定義されているリターン オブジェクトは、[azure.functions.HttpResponse クラス](/python/api/azure-functions/azure.functions.httpresponse)のインスタンスです。 詳細については、「[Azure Functions の HTTP トリガーとバインド](./functions-bindings-http-webhook.md?tabs=python)」を参照してください。
     </details>
 
@@ -174,12 +175,12 @@ py -m venv .venv
     <summary><strong>function.json のコード</strong></summary>
 
     *function.json* は、関数の <abbr title="関数と他のリソースとの間の宣言型の接続。 入力バインドは関数にデータを提供し、出力バインドは関数から他のリソースにデータを提供します。">入力バインディングと出力バインディング</abbr> (トリガーの種類を含む) を定義する構成ファイルです。
-    
+
     `scriptFile` を変更することで、必要に応じて異なる Python ファイルを呼び出せます。
-    
+
     :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
-    
-    各バインディングは、方向、型、一意の名前を必要とします。 HTTP トリガーには、[`httpTrigger`](functions-bindings-http-webhook-trigger.md) 型の入力バインディングと、[`http`](functions-bindings-http-webhook-output.md) 型の出力バインディングが与えられます。    
+
+    各バインディングは、方向、型、一意の名前を必要とします。 HTTP トリガーには、[`httpTrigger`](functions-bindings-http-webhook-trigger.md) 型の入力バインディングと、[`http`](functions-bindings-http-webhook-output.md) 型の出力バインディングが与えられます。
     </details>
 
 <br/>
@@ -194,21 +195,21 @@ py -m venv .venv
     func start
     ```
 
-    出力の最後の方に、次の行があります。 
-    
+    出力の最後の方に、次の行があります。
+
     <pre class="is-monospace is-size-small has-padding-medium has-background-tertiary has-text-tertiary-invert">
     ...
-    
+
     Now listening on: http://0.0.0.0:7071
     Application started. Press Ctrl+C to shut down.
-    
+
     Http Functions:
-    
+
             HttpExample: [GET,POST] http://localhost:7071/api/HttpExample
     ...
-    
+
     </pre>
-    
+
     <br/>
     <details>
     <summary><strong>HttpExample が出力に見当たりません</strong></summary>
@@ -241,7 +242,7 @@ py -m venv .venv
 
     [az login](/cli/azure/reference-index#az_login) コマンドで Azure アカウントにサインインします。
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     ```azurepowershell
     Connect-AzAccount
     ```
@@ -250,14 +251,14 @@ py -m venv .venv
 
     ---
 
-1. `westeurope` リージョンに `AzureFunctionsQuickstart-rg` という名前のリソース グループを作成します。 
+1. `westeurope` リージョンに `AzureFunctionsQuickstart-rg` という名前のリソース グループを作成します。
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
+
     ```azurecli
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
- 
+
     [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 一般に、リソース グループとリソースは、 <abbr title="リソースが割り当てられている特定の Azure データ センターの地理的な呼称。">region</abbr> `az account list-locations` コマンドから返される利用可能なリージョンを使用してお近くのリージョンに作成します。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
@@ -280,7 +281,7 @@ py -m venv .venv
     az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
     ```
 
-    [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドでストレージ アカウントを作成します。 
+    [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドでストレージ アカウントを作成します。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -293,33 +294,33 @@ py -m venv .venv
     ---
 
     `<STORAGE_NAME>` は、適宜、Azure Storage 内で一意の名前に置き換えてください。 <abbr title="名前は、全 Azure ユーザーが使用するすべてのストレージ アカウント全体でグローバルに一意である必要があります。 たとえば、contosobizappstorage20 のように、個人名または会社名、アプリケーション名、数値 ID の組み合わせを使用できます。">Azure Storage 内で一意であること</abbr>. 名前は 3 文字から 24 文字とし、小文字のみを使用する必要があります。 `Standard_LRS` は汎用アカウントを指定します。これは [Functions でサポート](storage-considerations.md#storage-account-requirements)されています。
-    
+
     このクイックスタートでは、ストレージ アカウントに関して数セント (米国ドル) の料金が発生します。
 
 1. Azure に関数アプリを作成します。
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-        
+
     ```azurecli
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME> --os-type linux
     ```
-    
+
     [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドで Azure に関数アプリを作成します。 Python 3.7 または 3.6 を使用している場合は、`--runtime-version` をそれぞれ `3.7` または `3.6` に変更します。
-    
+
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-    
+
     ```azurepowershell
     New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -FunctionsVersion 3 -RuntimeVersion 3.8 -Runtime python -Location 'West Europe'
     ```
-    
+
     [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) コマンドレットによって、Azure に関数アプリが作成されます。 Python 3.7 または 3.6 を使用している場合は、`-RuntimeVersion` をそれぞれ `3.7` または `3.6` に変更します。
 
     ---
-    
+
     `<STORAGE_NAME>` は、前の手順で使用したアカウントの名前に置き換えてください。
 
-    `<APP_NAME>` は <abbr title="Azure ユーザー全体でグローバルに一意であるべき名前。 たとえば、contoso-bizapp-func-20 のように、個人名または組織名、アプリケーション名、数値 ID の組み合わせを使用できます。">適宜、グローバルに一意の名前に置き換えてください。</abbr>. `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 
-    
+    `<APP_NAME>` は <abbr title="Azure ユーザー全体でグローバルに一意であるべき名前。 たとえば、contoso-bizapp-func-20 のように、個人名または組織名、アプリケーション名、数値 ID の組み合わせを使用できます。">適宜、グローバルに一意の名前に置き換えてください。</abbr>. `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。
+
     <br/>
     <details>
     <summary><strong>Azure にプロビジョニングされるリソースのコストを教えてください</strong></summary>
@@ -333,7 +334,7 @@ py -m venv .venv
 
 ## <a name="6-deploy-the-function-project-to-azure"></a>6.Azure に関数プロジェクトをデプロイする
 
-Azure への関数アプリの作成に成功したら、[func azure functionapp publish](functions-run-local.md#project-file-deployment) コマンドを使用して、**ローカル関数プロジェクトをデプロイ** することができます。  
+Azure への関数アプリの作成に成功したら、[func azure functionapp publish](functions-run-local.md#project-file-deployment) コマンドを使用して、**ローカル関数プロジェクトをデプロイ** することができます。
 
 次の例の `<APP_NAME>` は、実際のアプリ名に置き換えてください。
 
@@ -366,7 +367,7 @@ Functions in msdocs-azurefunctions-qs:
 
 ## <a name="7-invoke-the-function-on-azure"></a>7.Azure 上の関数を呼び出す
 
-この関数は HTTP トリガーを使用しているため、呼び出しは、その URL にブラウザーから HTTP 要求を送信するか、または curl などのツールを使用して行います。 <abbr title="URL に対する HTTP 要求を生成するためのコマンド ライン ツール。 https://curl.se/">curl</abbr>. 
+この関数は HTTP トリガーを使用しているため、呼び出しは、その URL にブラウザーから HTTP 要求を送信するか、または curl などのツールを使用して行います。 <abbr title="URL に対する HTTP 要求を生成するためのコマンド ライン ツール。 https://curl.se/">curl</abbr>.
 
 # <a name="browser"></a>[ブラウザー](#tab/browser)
 
@@ -392,7 +393,7 @@ func azure functionapp logstream <APP_NAME> --browser
 
 `<APP_NAME>` をお使いの関数アプリの名前に置き換えます。
 
-別のターミナル ウィンドウまたはブラウザーで、もう一度リモート関数を呼び出します。 Azure で実行された関数の詳細ログがターミナルに表示されます。 
+別のターミナル ウィンドウまたはブラウザーで、もう一度リモート関数を呼び出します。 Azure で実行された関数の詳細ログがターミナルに表示されます。
 
 <br/>
 

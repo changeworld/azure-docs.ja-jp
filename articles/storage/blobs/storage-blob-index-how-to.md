@@ -1,44 +1,39 @@
 ---
 title: BLOB インデックス タグを使用して Azure Blob Storage でデータを管理および検索する
 description: BLOB インデックス タグを使用して、BLOB オブジェクトの分類、管理、およびクエリを実行する方法の例をご紹介します。
-author: twooley
-ms.author: twooley
-ms.date: 03/05/2021
+author: normesta
+ms.author: normesta
+ms.date: 06/14/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f7ae7af0f2764bd3f157ad5ca3166c9989cd9bf
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: d4743a529649c7223449b35092b1505ee534eeaf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276792"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615671"
 ---
-# <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB インデックス タグ (プレビュー) を使用して Azure Blob Storage でデータを管理および検索する
+# <a name="use-blob-index-tags-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB インデックス タグを使用して Azure Blob Storage でデータを管理および検索する
 
 キーと値のタグ属性を使用して、BLOB インデックス タグによってストレージ アカウント内のデータが分類されます。 これらのタグには自動的にインデックスが付けられ、検索可能な多次元インデックスとして公開されるため、データを簡単に見つけることができます。 この記事では、BLOB インデックス タグを使用してデータを設定、取得、および検索する方法について説明します。
 
-> [!IMPORTANT]
-> BLOB インデックス タグは、現在 **プレビュー** 段階であり、すべてのパブリック リージョンで利用できます。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
-この機能と既知の問題および制限の詳細については、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
+この機能と既知の問題および制限の詳細については、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する](storage-manage-find-blobs.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-- BLOB インデックス プレビューへのアクセスが登録および承認された Azure サブスクリプション
+- アクセスが登録および承認された Azure サブスクリプション
 - [Azure portal](https://portal.azure.com/)にアクセスする
 
-# <a name="net"></a>[.NET](#tab/net)
-
-BLOB インデックスがプレビューであるため、.NET ストレージ パッケージはプレビュー NuGet フィードでリリースされます。 このライブラリは、プレビュー期間中に変更されることがあります。
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 1. Visual Studio プロジェクトをセットアップして、.NET 用 Azure Blob Storage クライアント ライブラリ v12 の使用を開始します。 詳細については、[.NET クイックスタート](storage-quickstart-blobs-dotnet.md)を参照してください
 
-2. NuGet パッケージ マネージャーで、**Azure.Storage.Blobs** パッケージを見つけて、バージョン **12.7.0-preview.1** 以降をプロジェクトにインストールします。 また、PowerShell コマンド `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1`も実行できます。
+2. NuGet パッケージ マネージャーで、**Azure.Storage.Blobs** パッケージを見つけて、バージョン **12.7.0** 以降をプロジェクトにインストールします。 また、PowerShell コマンド `Install-Package Azure.Storage.Blobs -Version 12.7.0`も実行できます。
 
    詳細については、「[パッケージを検索してインストールする](/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)」を参照してください。
 
@@ -62,21 +57,21 @@ BLOB インデックスがプレビューであるため、.NET ストレージ 
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-1. [Azure portal](https://portal.azure.com/) で、自分のストレージ アカウントを選択します 
+1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。
 
-2. **[Blob service]** の下にある **[コンテナー]** オプションに移動し、コンテナーを選択します
+2. **[データ ストレージ]** の **[コンテナー]** オプションに移動し、コンテナーを選択します
 
 3. **[アップロード]** ボタンを選択してローカル ファイル システムを参照し、ブロック BLOB としてアップロードするファイルを探します。
 
 4. **[詳細]** ドロップダウンを展開し、 **[Blob Index Tags]\(BLOB インデックス タグ\)** セクションに移動します
 
-5. データに適用する、キーと値の BLOB インデックス タグを入力します
+5. データに適用する、キーと値の BLOB インデックス タグを入力します。
 
-6. **[アップロード]** ボタンを選択して、BLOB をアップロードします
+6. **[アップロード]** ボタンを選択して、BLOB をアップロードします。
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png" alt-text="インデックス タグを使用した BLOB のアップロード方法を示した Azure portal のスクリーンショット。":::
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 次の例は、作成時にタグが設定される追加 BLOB を作成する方法を示しています。
 
@@ -122,21 +117,21 @@ BLOB インデックス タグを設定し、更新できるのは、[ストレ�
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-1. [Azure portal](https://portal.azure.com/) で、自分のストレージ アカウントを選択します 
+1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。
 
-2. **[Blob service]** の下にある **[コンテナー]** オプションに移動し、コンテナーを選択します
+2. **[データ ストレージ]** の **[コンテナー]** オプションに移動し、コンテナーを選択します
 
-3. 選択したコンテナー内の BLOB の一覧から BLOB を選択します
+3. 選択したコンテナー内の BLOB の一覧から BLOB を選択します。
 
-4. BLOB の概要タブに、すべての **BLOB インデックス タグ** を含む、BLOB のプロパティが表示されます
+4. BLOB の概要タブに、すべての **BLOB インデックス タグ** を含む、BLOB のプロパティが表示されます。
 
-5. BLOB の任意のキーと値のインデックス タグを取得、設定、変更、または削除できます
+5. BLOB の任意のキーと値のインデックス タグを取得、設定、変更、または削除できます。
 
-6. **[保存]** を選択して、BLOB の更新を確定します
+6. **[保存]** を選択して、BLOB の更新を確定します。
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="BLOB のインデックス タグを取得、設定、更新、および削除する方法を示す Azure portal のスクリーンショット。":::
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 ```csharp
 static async Task BlobIndexTagsExample()
@@ -197,23 +192,26 @@ static async Task BlobIndexTagsExample()
 
 このタスクは、[ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)か、カスタム Azure ロール経由で `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [Azure リソース プロバイダー操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)にアクセスする権利が与えられているセキュリティ プリンシパルが実行できます。
 
+> [!NOTE]
+> インデックス タグを使用して以前のバージョンを取得することはできません。 以前のバージョンのタグは BLOB インデックス エンジンに渡されません。 詳細については、[条件と既知の問題](storage-manage-find-blobs.md#conditions-and-known-issues)に関するページを参照してください。
+
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal 内では、BLOB インデックス タグ フィルターによって `@container` パラメーターが自動的に適用され、選択したコンテナーがスコープになります。 ストレージ アカウント全体で、タグ付けされたデータをフィルター処理して検索する場合は、REST API、SDK、またはツールを使用してください。
 
-1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。 
+1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。
 
-2. **[Blob service]** の下にある **[コンテナー]** オプションに移動し、コンテナーを選択します
+2. **[データ ストレージ]** の **[コンテナー]** オプションに移動し、コンテナーを選択します
 
-3. **[Blob Index tags filter]\(BLOB インデックス タグのフィルター\)** を選択し、選択したコンテナー内でフィルター処理を行います
+3. **[Blob Index tags filter]\(BLOB インデックス タグのフィルター\)** を選択し、選択したコンテナー内でフィルター処理を行います。
 
-4. BLOB のインデックス タグ キーとタグ値を入力します
+4. BLOB のインデックス タグ キーとタグ値を入力します。
 
-5. 追加のタグ フィルター (最大 10 個) を追加するには、 **[Blob Index tags filter]\(BLOB インデックス タグのフィルター\)** を選択します
+5. 追加のタグ フィルター (最大 10 個) を追加するには、 **[Blob Index tags filter]\(BLOB インデックス タグのフィルター\)** を選択します。
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="インデックス タグを使用してタグ付きの BLOB をフィルター処理および検索する方法を示す Azure portal のスクリーンショット":::
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 ```csharp
 static async Task FindBlobsByTagsExample()
@@ -243,7 +241,7 @@ static async Task FindBlobsByTagsExample()
           AppendBlobClient appendBlobWithTags3 = container2.GetAppendBlobClient("myAppendBlob03.logs");
           AppendBlobClient appendBlobWithTags4 = container2.GetAppendBlobClient("myAppendBlob04.logs");
           AppendBlobClient appendBlobWithTags5 = container2.GetAppendBlobClient("myAppendBlob05.logs");
-           
+
           // Blob index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>
@@ -252,7 +250,7 @@ static async Task FindBlobsByTagsExample()
               { "Priority", "01" },
               { "Date", "2020-04-20" }
           };
-          
+
           CreateAppendBlobOptions appendOptions2 = new CreateAppendBlobOptions();
           appendOptions2.Tags = new Dictionary<string, string>
           {
@@ -297,7 +295,7 @@ static async Task FindBlobsByTagsExample()
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。 
+1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。
 
 2. **[Blob service]** の下の **[ライフサイクル管理]** オプションに移動します
 
@@ -313,13 +311,13 @@ static async Task FindBlobsByTagsExample()
 
 6. ライフサイクル管理ポリシーに新しいルールを適用するには、 **[追加]** を選択します
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
-[ライフサイクル管理](storage-lifecycle-management-concepts.md)ポリシーは、各ストレージ アカウントにコントロール プレーン レベルで適用されます。 .NET の場合は、[Microsoft Azure の管理ストレージ ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) バージョン 16.0.0 以降をインストールします。
+[ライフサイクル管理](./lifecycle-management-overview.md)ポリシーは、各ストレージ アカウントにコントロール プレーン レベルで適用されます。 .NET の場合は、[Microsoft Azure の管理ストレージ ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) バージョン 16.0.0 以降をインストールします。
 
 ---
 
 ## <a name="next-steps"></a>次のステップ
 
- - BLOB インデックス タグの詳細については、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](storage-manage-find-blobs.md )」を参照してください
- - ライフサイクル管理の詳細については、「[Azure Blob Storage のライフサイクルを管理する](storage-lifecycle-management-concepts.md)」を参照してください
+- BLOB インデックス タグの詳細については、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する](storage-manage-find-blobs.md )」を参照してください
+- ライフサイクル管理の詳細については、「[Azure Blob Storage のライフサイクルを管理する](./lifecycle-management-overview.md)」を参照してください

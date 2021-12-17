@@ -1,88 +1,95 @@
 ---
-title: カスタム音声を使用して合成を改善する - 音声サービス
+title: カスタム ニューラル音声の概要 - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Custom Voice は、ブランド用に認識性の高い固有の音声を作成できる、一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のオーディオ ファイルと関連する文字起こしだけです。 以下のリンクに従って、カスタム音声テキスト変換エクスペリエンスの作成を開始しましょう。
+description: カスタム ニューラル音声は、ブランド用に認識性の高い固有の音声を作成できる、一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のオーディオ ファイルと関連する文字起こしだけです。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.author: trbye
-ms.openlocfilehash: 99af0ee46e2827ac8a5749d58bb19cf85f96aa46
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 05/18/2021
+ms.author: eur
+ms.openlocfilehash: f521f1d08124575553c32c8b6fb4c3931ddcaa6f
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577463"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510249"
 ---
-# <a name="get-started-with-custom-voice"></a>Custom Voice の概要
+# <a name="get-started-with-custom-neural-voice"></a>カスタム ニューラル音声の概要
 
-[Custom Voice](https://aka.ms/customvoice) は、ブランド用に認識性の高い固有の音声を作成できる、一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のオーディオ ファイルと関連する文字起こしだけです。 以下のリンクに従って、カスタム テキスト読み上げエクスペリエンスの作成を開始しましょう。
-
-## <a name="whats-in-custom-voice"></a>Custom Voice の内容
-
-Custom Voice を開始する前に、Azure アカウントと音声サービスのサブスクリプションが必要になります。 アカウントを作成したら、データの準備、モデルのトレーニングおよびテスト、音声品質の評価、そしてカスタム音声モデルのデプロイを行えます。
-
-下の図では、[Custom Voice ポータル](https://aka.ms/customvoice)を使用してカスタム音声モデルを作成する手順を示しています。 リンクを使用して、詳細を確認してください。
-
-![Custom Voice のアーキテクチャ図](media/custom-voice/custom-voice-diagram.png)
-
-1. [サブスクライブしてプロジェクトを作成する](#set-up-your-azure-account) - Azure アカウントを作成し、音声サービスのサブスクリプションを作成します。 この一元化されたサブスクリプションを通じて、音声テキスト変換、テキスト読み上げ、音声翻訳、Custom Voice ポータルにアクセスすることができます。 次に、音声サービス サブスクリプションを使用して、最初の Custom Voice プロジェクトを作成します。
-
-2. [データをアップロードする](how-to-custom-voice-create-voice.md#upload-your-datasets) - Custom Voice ポータルまたは Custom Voice API を使用して、データ (オーディオとテキスト) をアップロードします。 ポータルで、発音スコアと信号対雑音比を調査および評価できます。 詳細については、[Custom Voice 用にデータを準備する方法](how-to-custom-voice-prepare-data.md)に関する記事を参照してください。
-
-3. [モデルをトレーニングする](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) - 自分のデータを使用して、カスタム テキスト読み上げ音声モデルを作成します。 モデルはさまざまな言語でトレーニングできます。 トレーニング後にモデルをテストし、結果に満足したら、モデルをデプロイできます。
-
-4. [モデルをデプロイする](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) - 自分のテキスト読み上げ音声モデルのカスタム エンドポイントを作成して、自分の製品、ツール、アプリケーションの音声合成にそれを使用します。
-
-## <a name="custom-neural-voices"></a>カスタム ニューラル音声
-
-現在、Custom Voice では、Standard およびニューラル レベルがサポートされています。 カスタム ニューラル音声によって、ユーザーはより少ないデータでより高品質の音声モデルを構築できるようになります。また、AI を責任を持ってデプロイするための手段として利用できます。 カスタム ニューラル音声を使用して、より自然な会話インターフェイスのためのよりリアルな音声を開発し、顧客とエンド ユーザーが責任ある方法で最新のテキスト読み上げテクノロジを使用できるようにすることをお勧めします。 [カスタム ニューラル音声の詳細については、こちらを参照してください](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。 
+[カスタム ニューラル音声](https://aka.ms/customvoice)は、ブランド用に認識性の高い固有の音声を作成できる、一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のオーディオ ファイルと関連する文字起こしだけです。 以下のリンクに従って、カスタム テキスト読み上げエクスペリエンスの作成を開始しましょう。 カスタム ニューラル音声でサポートされる[言語](language-support.md#customization)および[リージョン](regions.md#custom-voices)を参照してください。
 
 > [!NOTE]
-> 責任ある AI を設計するという Microsoft の取り組みの一環として、Microsoft ではカスタム ニューラル音声の使用を制限しています。 このテクノロジにアクセスできるのは、アプリケーションの審査を受け、弊社の責任ある AI の原則に沿ってアプリケーションを使用することを確約した場合のみです。 詳細については、[アクセスの制限に対するポリシー](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)と[適用](https://aka.ms/customneural)に関する記事を参照してください。 Custom Voice の Standard バージョンとニューラル バージョンでサポートされている[言語](language-support.md#customization)と[リージョン](regions.md#custom-voices)は異なります。 開始する前に詳細を確認してください。  
-
+> 責任ある AI を設計するという Microsoft の取り組みの一環として、Microsoft ではカスタム ニューラル音声の使用を制限しています。 このテクノロジにアクセスできるのは、アプリケーションの審査を受け、弊社の責任ある AI の原則に沿ってアプリケーションを使用することを確約した場合のみです。 詳細については、[アクセスの制限に対するポリシー](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)と[適用](https://aka.ms/customneural)に関する記事を参照してください。 
+ 
 ## <a name="set-up-your-azure-account"></a>Azure アカウントの設定
 
-Custom Speech ポータルを使用してカスタム モデルを作成する前に、音声サービス サブスクリプションが必要です。 Azure で音声サービス サブスクリプションを作成するには、以下の手順に従います。 Azure アカウントがない場合、新しいものにサインアップできます。  
+カスタム ニューラル音声を使用するには、Speech サービス サブスクリプションが必要です。 Azure で音声サービス サブスクリプションを作成するには、以下の手順に従います。 Azure アカウントがない場合、新しいものにサインアップできます。  
 
-Azure アカウントと音声サービス サブスクリプションを作成したら、Custom Voice ポータルにサインインして、自分のサブスクリプションを接続する必要があります。
+Azure アカウントと Speech サービス サブスクリプションを作成したら、Speech Studio にサインインして、ご利用のサブスクリプションを接続する必要があります。
 
 1. Azure portal から音声サービス サブスクリプション キーを取得します。
-2. [Custom Voice ポータル](https://aka.ms/custom-voice)にサインインします。
+2. [Speech Studio](https://speech.microsoft.com) にサインインし、 **[Custom Voice]** をクリックします。
 3. 自分のサブスクリプションを選択し、音声プロジェクトを作成します。
 4. 別の Speech サブスクリプションに切り替えたい場合は、上部のナビゲーションにある歯車アイコンを使用します。
 
 > [!NOTE]
 > サービスを使用する前に、Azure で F0 または S0 の Speech Service キーを作成しておく必要があります。 カスタム ニューラル音声では S0 レベルのみがサポートされています。 
 
-## <a name="how-to-create-a-project"></a>プロジェクトを作成する方法
+## <a name="create-a-project"></a>プロジェクトの作成
 
-データ、モデル、テスト、エンドポイントなどのコンテンツは、Custom Voice ポータルの **[プロジェクト]** にまとめられます。 各プロジェクトは、国と言語、および作成したい音声の性別に固有です。 たとえば、米国の英語 ('en-US') を使用するコール センターのチャット ボット用に、女性の音声のプロジェクトを作成できます。
+データ、モデル、テスト、エンドポイントなどのコンテンツは、Speech Studio の "**プロジェクト**" にまとめられます。 各プロジェクトは、国と言語、および作成したい音声の性別に固有です。 たとえば、米国の英語 ('en-US') を使用するコール センターのチャット ボット用に、女性の音声のプロジェクトを作成できます。
 
-初めてのプロジェクトを作成するには、**[Text-to-Speech/Custom Voice]\(テキスト読み上げ/Custom Voice\)** タブを選択して、**[新しいプロジェクト]** をクリックします。 ウィザードの手順に従ってプロジェクトを作成します。 プロジェクトの作成後、4 つのタブが表示されます: **[データ]** 、 **[トレーニング]** 、 **[テスト中]** 、 **[デプロイ]** 。 それぞれのタブの使い方については、「[次の手順](#next-steps)」に記載のリンクを使用してください。
+初めてのプロジェクトを作成するには、 **[テキスト読み上げ/Custom Voice]** タブを選択して、 **[プロジェクトの作成]** をクリックします。 ウィザードの手順に従ってプロジェクトを作成します。 プロジェクトを作成すると、 **[ボイス タレントの設定]** 、 **[トレーニング データの準備]** 、 **[モデルのトレーニング]** 、 **[モデルのデプロイ]** という 4 つのタブが表示されます。 それぞれのタブの使い方については、「[次の手順](#next-steps)」に記載されているリンクを使用してください。
 
-> [!IMPORTANT]
-> [カスタム音声ポータル](https://aka.ms/custom-voice)は最近更新されました。 CRIS.ai ポータルで、または API を使用して以前のデータ、モデル、テスト、および公開されたエンドポイントを作成した場合は、新しいポータルで新しいプロジェクトを作成して、これらの古いエンティティに接続する必要があります。
+## <a name="tips-for-creating-a-custom-neural-voice"></a>カスタム ニューラル音声を作成するためのヒント
 
-## <a name="how-to-migrate-to-custom-neural-voice"></a>カスタム ニューラル音声に移行する方法
+優れたカスタム音声を作成するには、音声設計からデータ準備、音声モデルのシステムへのデプロイまで、各手順において慎重に品質を管理する必要があります。 組織用のカスタム ニューラル音声を作成する際に踏む重要な手順を以下に示します。 
 
-Custom Voice の Standard レベルまたは非ニューラル トレーニング レベル (アダプティブ、統計的パラメトリック、連鎖性) は非推奨になります。 この発表は、2021 年 2 月 28 日より前のすべての既存の音声サブスクリプションに送信されています。 非推奨期間 (2021 年 3 月 1 日から 2024 年 2 月 29 日) は、既存の Standard レベルのユーザーは、作成済みのレベルニューラル モデルを引き続き使用できます。 すべての新規ユーザーまたは新規音声リソースは、ニューラル レベルまたはカスタム ニューラル音声に移行する必要があります。 2024 年 2 月 29 日以降、すべての Standard または非ニューラル カスタム音声はサポートされなくなります。 
+### <a name="persona-design"></a>ペルソナの設計
+
+まず、音声の特徴や音声の背後にある特性などの要素を定義する簡単なペルソナ ドキュメントを使用して、ブランドを表す音声のペルソナを設計します。 このペルソナに基づいて、スクリプトの定義、ボイス タレントの選択、トレーニング、音声のチューニングなど、カスタム音声モデルを作成するプロセスを導くことができます。
+
+### <a name="script-selection"></a>スクリプトの選択
+ 
+音声のユーザー シナリオを表す、レコーディング スクリプトを慎重に選択します。 たとえば、カスタマー サービス ボットを作成する場合、ボットの会話フレーズをレコーディング スクリプトとして使用できます。 発言、質問、説明など、さまざまな種類の文をスクリプトに含めます。
+
+### <a name="preparing-training-data"></a>トレーニング データの準備
+
+オーディオの録音は、高い信号対雑音比率を実現できる、プロフェッショナルな品質を提供する録音スタジオで行うことをお勧めします。 ボイス モデルの品質は、トレーニング データに大きく依存します。 一定の音量、話す速さ、ピッチ、さらには話の表現方法における一貫性までもが求められます。
+
+録音の準備ができたら、「[トレーニング データの準備](how-to-custom-voice-prepare-data.md)」に従って、トレーニング データを適切な形式で準備します。
+
+### <a name="training"></a>トレーニング
+
+トレーニング データを準備したら、[Speech Studio](https://aka.ms/custom-voice) にアクセスしてカスタム ニューラル音声を作成します。 カスタム ニューラル音声を作成するには、少なくとも 300 個の発話を選択する必要があります。 アップロードすると、一連のデータ品質チェックが自動的に実行されます。 高品質な音声モデルを作成するには、エラーを修正してからもう一度送信する必要があります。
+
+### <a name="testing"></a>テスト
+
+アプリのさまざまなユース ケースをカバーする音声モデルのテスト スクリプトを準備します。 トレーニング データセットの内部および外部のスクリプトを使用することをお勧めします。そうすることで、さまざまなコンテンツに対して幅広く品質をテストできます。
+
+### <a name="tuning-and-adjustment"></a>チューニングと調整
+
+トレーニング済みの音声モデルのスタイルと特性は、トレーニングに採用したボイス タレントのスタイルと録音品質によって異なってきます。 とはいえ、音声モデルに対して API を呼び出して合成音声を生成するときに、[SSML (音声合成マークアップ言語)](./speech-synthesis-markup.md?tabs=csharp) を使用していくつかの調整を行うことができます。 SSML は、テキストを音声に変換するために TTS サービスと通信するために使用されるマークアップ言語です。 調整には、ピッチ、速さ、イントネーションの変更や発音の修正が含まれます。  複数のスタイルで音声モデルが構築されている場合は、SSML を使用してスタイルを切り替えることもできます。
+
+## <a name="migrate-to-custom-neural-voice"></a>カスタム ニューラル音声への移行
+
+Custom Voice の Standard/非ニューラル トレーニング レベル (統計的パラメトリック、連鎖性) は非推奨になります。 この発表は、2021 年 2 月 28 日より前のすべての既存の音声サブスクリプションに送信されています。 非推奨期間 (2021 年 3 月 1 日から 2024 年 2 月 29 日) は、既存の Standard レベルのユーザーは、作成済みのレベルニューラル モデルを引き続き使用できます。 すべての新規ユーザーまたは新規音声リソースは、ニューラル レベルまたはカスタム ニューラル音声に移行する必要があります。 2024 年 2 月 29 日以降、すべての Standard または非ニューラル カスタム音声はサポートされなくなります。 
 
 非ニューラルまたは Standard の Custom Voice を使用している場合は、次の手順に従って、カスタム ニューラル音声に即時に移行してください。 カスタム ニューラル音声の使用に移行することで、より自然な会話インターフェイスのためのよりリアルな音声を開発し、顧客とエンド ユーザーが責任ある方法で最新のテキスト読み上げテクノロジを使用できるようになります。 
 
 1. 詳細については、[アクセスの制限に対するポリシー](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)と[適用](https://aka.ms/customneural)に関する記事を参照してください。 カスタム ニューラル音声サービスへのアクセスは、Microsoft の資格基準に基づいて、Microsoft の独自の裁量の対象であることに注意してください。 お客様は、お客様のアプリケーションがレビューされ、「[責任ある AI の原則](https://microsoft.com/ai/responsible-ai)」と[倫理規定](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)に従ってこのテクノロジを使用することに合意した後にのみ、このテクノロジにアクセスできます。 
-2. アプリケーションが承認されると、"ニューラル" トレーニング機能にアクセスできるようになります。 アプリケーションで指定したのと同じ Azure サブスクリプションを使用して [Custom Voice ポータル](https://speech.microsoft.com/customvoice)にログインしていることを確認します。 
+2. アプリケーションが承認されると、"ニューラル" トレーニング機能にアクセスできるようになります。 アプリケーションで指定したのと同じ Azure サブスクリプションを使用して [Speech Studio](https://speech.microsoft.com) にログインしていることを確認します。 
     > [!IMPORTANT]
-    > ボイス タレントを保護し、無許可の録音やボイス タレントからの承諾なしの音声モデルのトレーニングを防止するために、ボイス タレントが自分の同意を与える録音された声明をお客様がアップロードすることが求められます。 録音スクリプトを準備するときは、この文を必ず含めてください。 "I [state your first and last name] am aware that recordings of my voice will be used by [state the name of the company] to create and use a synthetic version of my voice." (私 [自分の姓名] は、私の音声の合成バージョンを作成して使用するために、私の音声が [会社名] によって使用されることを承知しています。)
-    > この文は、音声による同意ファイルとして **[ボイス タレント]** タブにアップロードする必要があります。 この文は、トレーニング データセット内の録音が、同意したのと同じ人物によって行われたかどうかを確認するために使用されます。
-3. カスタム ニューラル音声モデルが作成されたら、新しいエンドポイントに音声モデルをデプロイします。 ニューラル音声モデルを使用して新しいカスタム音声エンドポイントを作成するには、 **[テキスト読み上げ]、[Custom Voice]、[展開]** の順に移動します。 **[モデルのデプロイ]** を選択し、ご自分のカスタム エンドポイントの **名前** と **説明** を入力します。 次に、このエンドポイントに関連付けるカスタム ニューラル音声モデルを選択し、デプロイを確認します。  
+    > ボイス タレントを保護するため、また無許可の録音やボイス タレントからの承諾なしの音声モデルのトレーニングを防止するために、ボイス タレントが自分の同意を与える録音した声明をお客様がアップロードすることが求められます。 録音スクリプトを準備するときは、この文を必ず含めてください。 "I [state your first and last name] am aware that recordings of my voice will be used by [state the name of the company] to create and use a synthetic version of my voice." (私 [自分の姓名] は、私の音声の合成バージョンを作成して使用するために、私の音声が [会社名] によって使用されることを承知しています。)
+    > この文は、音声による同意ファイルとして **[ボイス タレントの設定]** タブにアップロードする必要があります。 この文は、トレーニング データセット内の録音が、同意したのと同じ人物によって行われたかどうかを確認するために使用されます。
+3. カスタム ニューラル音声モデルが作成されたら、新しいエンドポイントに音声モデルをデプロイします。 ニューラル音声モデルを使用して新しいカスタム音声エンドポイントを作成するには、 **[テキスト読み上げ] > [Custom Voice] > [モデルのデプロイ]** の順に移動します。 **[モデルのデプロイ]** を選択し、ご自分のカスタム エンドポイントの **名前** と **説明** を入力します。 次に、このエンドポイントに関連付けるカスタム ニューラル音声モデルを選択し、デプロイを確認します。  
 4. 新しいモデルを使用して新しいエンドポイントを作成した場合は、アプリ内のコードを更新します。 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Custom Voice のデータを用意する](how-to-custom-voice-prepare-data.md)
-- [Custom Voice を作成する](how-to-custom-voice-create-voice.md)
-- [ガイド:音声サンプルを録音する](record-custom-voice-samples.md)
+- [カスタム ニューラル音声用にデータを準備する](how-to-custom-voice-prepare-data.md)
+- [カスタム ニューラル音声をトレーニングしてデプロイする](how-to-custom-voice-create-voice.md)
+- [音声サンプルを録音する方法](record-custom-voice-samples.md)

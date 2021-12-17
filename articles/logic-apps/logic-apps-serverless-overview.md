@@ -1,48 +1,65 @@
 ---
-title: 概要 - クラウド ベースのアプリおよびソリューションのための Azure サーバーレス
-description: Azure Logic Apps と Azure Functions を使用して、インフラストラクチャを気にすることなくクラウド ベースのアプリおよびソリューションを作成する方法について説明します。
+title: アプリ開発を増やし、インフラ管理を減らす
+description: Azure サーバーレスは、Azure Logic Apps と Azure Functions を使用する際に、インフラストラクチャの管理にかかる費用を抑えながら、クラウドベースのアプリケーション作成に集中する
 services: logic-apps
 ms.suite: integration
-author: jeffhollan
-ms.author: jehollan
-ms.reviewer: klam, estfan, logicappspm
-ms.topic: article
-ms.date: 03/30/2017
-ms.openlocfilehash: 470857883144f4bf8c21a1921afacb7ba3f5ca00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: estfan, azla
+ms.topic: conceptual
+ms.date: 07/15/2021
+ms.openlocfilehash: 335a553897f2487eef317852f23cd475a92b2f81
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98788097"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362682"
 ---
-# <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure Serverless: Azure Logic Apps と Azure Functions を使用してクラウド ベースのアプリおよびソリューションを構築するための概要
+# <a name="azure-serverless-overview-create-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure サーバーレスの概要: Azure Logic Apps と Azure Functions でクラウドベースのアプリやソリューションを作成する
 
-[サーバーレス](https://azure.microsoft.com/solutions/serverless/) アプリには、開発速度の向上、コードの削減、簡単さ、スケーリングなどの利点があります。 この記事では、サーバーレス ソリューションのさまざまな属性と Azure サーバーレスのオファリングについて説明します。
+サーバーレスは「サーバーなし」を意味しませんが、Azure サーバーレスはインフラストラクチャの管理に費やす時間を減らします。 従来のアプリ開発では、アプリの要件や要求を満たすために、ホスティング、スケーリング、モニタリングのソリューションについて議論し、対処することに多くの時間とエネルギーを費やすことができます。 サーバーレス アプリとソリューションを使用すると、アプリまたはソリューションの一部としてこれらの懸念事項を簡単に処理できます。 サーバーレスには、開発の高速化、最小限のコード、簡素化、柔軟なスケーリングなど、その他の利点があります。 これらすべての機能により、ビジネス ロジックに集中できます。 また、サーバーレスは通常、使用量に基づいて課金または課金されます。 そのため、使用しない場合、料金は発生しません。 詳細については、[Azure サーバーレス](https://azure.microsoft.com/solutions/serverless/)を参照してください。
 
-## <a name="what-is-serverless"></a>サーバーレスとは
+このアーティクルでは、Azure で提供されているサーバーレスの中核となる「Azure Logic Apps」と「Azure Functions」について簡単にまとめています。 どちらのサービスも、前述の原則と一致し、最小限のコードで堅牢なクラウド アプリとソリューションを構築するのに役立ちます。
 
-サーバーレスは、サーバーがないことを示すわけではなく、開発者がサーバーについて心配する必要がないことを意味しています。 従来のアプリケーション開発の大きな部分は、アプリケーションの要求を満たすためのソリューションのスケーリング、ホスティング、監視に関する質問に答えるところにありました。 サーバーレスでは、これらの質問はソリューションの一部として対応されます。 また、サーバーレス アプリは消費ベースのプランに基づいて課金されます。 アプリが使用されないかぎり、料金は発生しません。 これらの機能により、開発者はソリューションのビジネス ロジックにのみ集中することができます。
+入門情報については、Azure のページ [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)と、[Azure Functions](https://azure.microsoft.com/services/functions/)を参照してください。 詳細については、[Azure Logic Apps とは](logic-apps-overview.md)と、[Azure Functions とは](../azure-functions/functions-overview.md)のドキュメント ページを参照してください。
 
-サーバーレスに関する Azure のコア サービスは、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) と [Azure Functions](https://azure.microsoft.com/services/functions/) です。 どちらのソリューションも先に説明した原則に従っており、開発者が最小のコードで強力なクラウド アプリを構築できるようにします。
+## <a name="azure-logic-apps"></a>Azure Logic Apps
 
-## <a name="what-is-azure-logic-apps"></a>Azure Logic Apps とは
+このサービスは、クラウドで実行されスケーリングする自動化されたイベント駆動型統合ワークフローを設計、開発、調整する簡単な方法を提供します。 この Azure Logic Apps ビジュアル デザイナーを使用して、ビジネス プロセスをワークフローとして迅速にモデル化できます。 ワークフローは常に最初の手順としてトリガーで始まります。 トリガーに従って、1 つ以上のアクションによってワークフロー内の後続の操作が実行されます。 これらの操作には、条件付きロジックやデータ変換など、さまざまなアクションを組み合わせられます。
 
-[Azure Logic Apps](logic-apps-overview.md) は、クラウド内のスケーラブルな統合やワークフローを簡略化して実装するための方法を提供します。 このサービスでは、ワークフローと呼ばれる一連のステップとしてプロセスをモデル化して自動化するためのビジュアル デザイナーが用意されています。 サーバーレス アプリを他の API にすばやく接続するための、クラウド サービスとオンプレミス システムにわたる[コネクタ](../connectors/apis-list.md)が多数存在します。 どのロジック アプリも、"Dynamics CRM にアカウントが追加されたとき" のようなトリガーで開始されます。 トリガーが起動すると、ワークフローによりアクション、変換、条件付きロジックの組み合わせが実行されます。 Logic Apps は、特にプロセスが外部のシステムまたは API との対話を必要とする場合、プロセス内のさまざまな Azure Functions を調整するときの最適な選択肢です。
+コードを記述せずにワークフローを他の Azure サービス、Microsoft サービス、クラウドベースの環境、オンプレミス環境に接続するには、[数百種類のコネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors/) (すべて Microsoft が管理) から選択して、あらかじめ組み込まれたトリガーやアクションをワークフローに追加できます。 各コネクタは、実際には API のプロキシまたはラッパーで、基礎となるサービスと Azure Logic Apps との通信を可能にします。 たとえば、**新しい電子メールが届いたとき** という名前の Office 365 Outlook トリガーを使用したいとします。 サーバーレス アプリとソリューションの場合は、Azure Logic Apps を使って、Azure Functions で作成した複数の関数を調整できます。 これにより、特に外部の API やシステムとの連携が必要な処理では、様々な機能を 1 つのプロセスとして簡単に呼び出すことができます。
 
-Logic Apps の操作を開始するには、[最初のロジック アプリの作成](quickstart-create-first-logic-app-workflow.md)から始めます。 Logic Apps の技術情報の詳細については、「[Azure Logic Apps のワークフロー定義言語のスキーマ参照](logic-apps-workflow-definition-language.md)」を参照してください。
+ニーズを満たすために使用できるコネクタがない場合は、組み込みの HTTP 操作または要求トリガーを使用して、任意のサービス エンドポイントと通信できます。 または、既存の API を使用して独自のコネクタを作成することもできます。
 
-## <a name="what-is-azure-functions"></a>Azure Functions とは
+選択したロジック アプリのリソースの種類に応じて、関連するワークフローは、マルチテナント型の Azure Logic Apps、シングルテナント型の Azure Logic Apps、または専用の統合サービス環境 (ISE) のいずれかで実行されます。 それぞれに独自の機能、利点、課金モデルがあります。 Azure portal は、ロジック アプリ ワークフローの作成を開始するための最速の方法を提供します。 ただし、他のツール (Visual Studio Code、Visual Studio、Azure PowerShell など) も使用できます。 詳細については、[Azure Logic Apps とは](logic-apps-overview.md)を参照してください。
 
-Azure Functions は、コード ("関数") をクラウドで手軽に実行できるサービスです。 アプリ全体や必要なインフラストラクチャを気にせずに、現在の問題に必要なコードのみを記述できます。 Functions は開発の生産性をさらに向上させることができ、またユーザーは C#、F#、Node.js、Python、PHP などの任意の開発言語を使用できます。 支払いはコードの実行時間に対してだけであり、Azure が必要に応じてスケールします。
+Azure Logic Apps の概要については、[Microsoft Azure portal で初めてロジック アプリ ワークフローを作成するクイックスタート](quickstart-create-first-logic-app-workflow.md)を参照してください。 または、[Visual Studio で Azure Logic Apps と Azure Functions を使ったサーバーレスアプリの例を作成する](create-serverless-apps-visual-studio.md)を試してみてください。
 
-Azure Functions の使用を開始するには、最初に「[Azure Portal で初めての関数を作成する](../azure-functions/functions-get-started.md)」を参照してください。 Functions の技術情報の詳細については、「[Azure Functions の開発者向けガイド](../azure-functions/functions-reference.md)」を参照してください。
+詳細については、次のドキュメントを参照してください。
 
-## <a name="how-can-i-build-and-deploy-serverless-apps-in-azure"></a>Azure でサーバーレス アプリを構築してデプロイするにはどうすればよいですか。
+* [Azure Logic Apps とは](logic-apps-overview.md)
+* [Azure Logic Apps のカスタム コネクタについて](../connectors/apis-list.md)
+* [コネクタ - Azure Logic Apps、Microsoft Power Automate、Microsoft Power Apps](/connectors/connectors)
+* [Azure Logic Apps でのシングルテナント、マルチテナント、統合サービス環境の比較](single-tenant-overview-compare.md)
+* [Azure Logic Apps の使用量計測、課金、価格設定モデル](logic-apps-pricing.md)
 
-Azure には、サーバーレス アプリの開発、デプロイ、管理を行うための豊富なツールが用意されています。 [Visual Studio のツール](logic-apps-serverless-get-started-vs.md)、または [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md) を使用して、Azure portal でアプリを直接ビルドすることができます。 アプリをビルドしたら、[Azure Resource Manager テンプレートを使用してそのアプリをすばやくデプロイ](logic-apps-deploy-azure-resource-manager-templates.md)できます。 Azure では、Azure portal からのアクセス、API または SDK 経由のアクセス、または Azure Monitor ログおよび Application Insights に対する統合ツールでのアクセスが可能な監視が提供されています。
+## <a name="azure-functions"></a>Azure Functions
+
+このサービスは、コードや *機能* の一部をクラウド上で書いて実行するためのシンプルな方法を提供します。 完全なアプリや必要なインフラストラクチャを設定せずに、現在の問題に必要なコードのみを記述できます。これにより、開発の速度と生産性が向上します。 C#、Java、JavaScript、PowerShell、Python、TypeScript などの開発言語を選択できます。 支払いはコードの実行時間に対してだけであり、Azure が必要に応じてスケールします。
+
+Azure Functions を使い始めるには、[Microsoft Azure portal で最初の Azure 関数を作成する](../azure-functions/functions-create-function-app-portal.md)を参照してください。
+
+詳細については、次のドキュメントを参照してください。
+
+* [Azure Functions とは](../azure-functions/functions-overview.md)
+* [Azure Functions の概要](../azure-functions/functions-get-started.md)
+* [Azure Functions でサポートされている言語](../azure-functions/supported-languages.md)
+* [Azure Functions のホスティング オプション](../azure-functions/functions-scale.md)
+* [Azure Functions の価格](../azure-functions/pricing.md)
+
+## <a name="get-started-with-serverless-apps-in-azure"></a>Azure でサーバーレス アプリケーションを始める
+
+Azure には、サーバーレス アプリの開発、デプロイ、管理を行うための豊富なツールが用意されています。 サーバーレス アプリは、Azure portal、Visual Studio、または [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md) で作成できます。 アプリをビルドしたら、[Azure Resource Manager テンプレートを使用してそのアプリをすばやくデプロイ](logic-apps-deploy-azure-resource-manager-templates.md)できます。 Azure では、Azure portal からのアクセス、API または SDK 経由のアクセス、または Azure Monitor ログおよび Application Insights に対する統合ツールでのアクセスが可能な監視が提供されています。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Visual Studio でサーバーレス アプリをビルドする](logic-apps-serverless-get-started-vs.md)
+* [Visual Studio で Azure Logic Apps と Azure Functions を使ったサーバーレスアプリの例を作成する](create-serverless-apps-visual-studio.md)
 * [サーバーレスを使用して Customer Insights ダッシュボードを作成する](logic-apps-scenario-social-serverless.md)
-* [ロジック アプリ デプロイを自動化する](logic-apps-azure-resource-manager-templates-overview.md)

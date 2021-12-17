@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 110fc658ffc3b72de91bbf1c9562f3efeecaf55b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 330fa1368c078f1e44dd436cd3bea6407c6f4cc6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92342418"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794654"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT クラスターのデプロイ
 
@@ -85,7 +85,7 @@ Azure portal にある作成テンプレートにアクセスします。「Aver
 
 ![デプロイ テンプレートの 2 ページ目](media/avere-vfxt-deploy-2.png)
 
-* **[Avere vFXT cluster node count]\(Avere vFXT クラスターのノード数\)** - クラスターのノード数を選択します。 最小で 3 ノード、最大で 12 ノードです。
+* **[Avere vFXT cluster node count]\(Avere vFXT クラスターのノード数\)** - クラスターのノード数を選択します。 最小で 3 ノード、最大で 20 ノードです。
 
 * **[Cluster administration password]\(クラスター管理パスワード\)** - クラスターを管理するためのパスワードを作成します。 このパスワードは、クラスターのコントロール パネルにサインインする際に、ユーザー名 ```admin``` と共に使用されます。コントロール パネルでは、クラスターを監視したり、クラスターの設定を構成したりできます。
 

@@ -9,74 +9,80 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/07/2020
+ms.date: 07/22/2021
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 6517cdd7aafa7ae2fe351b349e62a66104469dcd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06fd2f7fcbe5c43fa22daad7dbdd09105b2d9eca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653781"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741738"
 ---
 # <a name="migrate-applications-to-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) へのアプリケーションの移行
 
-多くの開発者は、Azure Active Directory Authentication Library (ADAL) を使用してアプリケーションをビルドおよびデプロイしてきました。 今後は、Azure AD エンティティの認証と承認には、Microsoft Authentication Library (MSAL) を使用することをお勧めします。
+お使いのアプリケーションで認証と承認の機能に Azure Active Directory 認証ライブラリ (ADAL) を使用している場合は、[Microsoft Authentication Library (MSAL)](msal-overview.md#languages-and-frameworks) に移行する時期です。
 
-ADAL ではなく MSAL を使用することで、以下が可能になります。
+- セキュリティ修正プログラムを含め、ADAL についてのすべての Microsoft のサポートと開発は、2022 年 6 月 30 日に終了します。
+- 2020 年 6 月 30 日以降、ADAL に新しい機能は追加されていません。
 
-- より広範な、次のような一連の ID を認証できます。
-  - Azure AD ID
-  - Microsoft アカウント
-  - ソーシャルおよびローカル アカウント (Azure AD B2C を使用)
-- ユーザーは、最高のシングル サインオン エクスペリエンスを得られます。
-- アプリケーションで、増分同意を有効にすることができます。
-- 条件付きアクセスのサポートが簡単になります。
-- イノベーションを活用できます。 現在、Microsoft のすべての開発の取り組みは MSAL に重点を置いているため、ADAL に新しい機能は実装されません。
+> [!WARNING]
+> ADAL のサポートが終了する 2022 年 6 月 30 日までに MSAL に移行しないと、アプリのセキュリティが危険にさらされます。 ADAL を使用している既存のアプリはサポート終了日後も引き続き機能しますが、Microsoft は ADAL のセキュリティ修正プログラムをリリースしなくなります。
 
-**MSAL は、Microsoft ID プラットフォームと併せて使用する際にお勧めの認証ライブラリです**。
+## <a name="why-switch-to-msal"></a>MSAL に切り替える理由
 
-## <a name="migration-guidance"></a>移行ガイダンス
+MSAL には、次の機能を含め、ADAL と比較して複数の利点があります。 
 
-次の記事は、MSAL への移行に役立ちます。
+|機能|MSAL|ADAL|
+|---------|---------|---------|
+|**Security**|||
+|2022 年 6 月 30 日以降のセキュリティ修正プログラム|![2022 年 6 月 30 日以降のセキュリティ修正プログラム: MSAL ではこの機能が提供されます][y]|![2022 年 6 月 30 日以降のセキュリティ修正プログラム: ADAL ではこの機能が提供されません][n]|
+| [継続的アクセス評価 (CAE)](app-resilience-continuous-access-evaluation.md) をサポートする Microsoft Graph およびその他の API のポリシーまたは重要なイベントに基づいてトークンを事前に更新および取り消す。|![継続的アクセス評価 (CAE) をサポートする Microsoft Graph およびその他の API のポリシーまたは重要なイベントに基づいてトークンを事前に更新および取り消す: MSAL ではこの機能が提供されます][y]|![継続的アクセス評価 (CAE) をサポートする Microsoft Graph およびその他の API のポリシーまたは重要なイベントに基づいてトークンを事前に更新および取り消す: ADAL ではこの機能が提供されません][n]|
+| OAuth v2.0 および OpenID Connect (OIDC) の標準への準拠 |![OAuth v2.0 および OpenID Connect (OIDC) の標準への準拠: MSAL ではこの機能が提供されます][y]|![OAuth v2.0 および OpenID Connect (OIDC) の標準への準拠: ADAL ではこの機能が提供されません][n]|
+|**ユーザー アカウントとエクスペリエンス**|||
+|Azure Active Directory (Azure AD) アカウント|![Azure Active Directory (Azure AD) アカウント: MSAL ではこの機能が提供されます][y]|![Azure Active Directory (Azure AD) アカウント: ADAL ではこの機能が提供されます][y]|
+| Microsoft アカウント (MSA) |![Microsoft アカウント (MSA): MSAL ではこの機能が提供されます][y]|![Microsoft アカウント (MSA): ADAL ではこの機能が提供されません][n]|
+| Azure AD B2C アカウント |![Azure AD B2Cアカウント: MSAL ではこの機能が提供されます][y]|![Azure AD B2Cアカウント: ADAL ではこの機能が提供されません][n]|
+| 最適なシングル サインオン エクスペリエンス |![最適なシングル サインオン エクスペリエンス: MSAL ではこの機能が提供されます][y]|![最適なシングル サインオン エクスペリエンス: ADAL ではこの機能が提供されません][n]|
+|**回復力**|||
+| トークンの事前更新 |![トークンの事前更新: MSAL ではこの機能が提供されます][y]|![トークンの事前更新: ADAL ではこの機能が提供されません][n]|
+| Throttling |![調整: MSAL ではこの機能が提供されます][y]|![調整: ADAL ではこの機能が提供されません][n]|
 
-- [MSAL.Android への移行](migrate-android-adal-msal.md)
-- [MSAL.iOS / macOS への移行](migrate-objc-adal-msal.md)
-- [MSAL Java への移行](migrate-adal-msal-java.md)
-- [MSAL.js への移行](msal-compare-msal-js-and-adal-js.md)
-- [MSAL.NET への移行](msal-net-migration.md)
-- [MSAL Python への移行](migrate-python-adal-msal.md)
-- [ブローカーを使用する Xamarin アプリの MSAL.NET への移行](msal-net-migration-ios-broker.md)
+## <a name="ad-fs-support-in-msalnet"></a>MSAL.NET での AD FS のサポート
 
-## <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
+MSAL.NET、MSAL Java、MSAL Python を使用して、Active Directory フェデレーション サービス (AD FS) (AD FS) 2019 以降からトークンを取得できます。 AD FS 2016 を含め、以前のバージョンの AD FS は MSAL ではサポートされていません。
 
-__Q:ADAL は非推奨となる予定ですか?__  
-A:はい。 2020 年 6 月 30 日以降、ADAL に新機能は追加されなくなります。 2022 年 6 月 30 日までは、引き続き ADAL の重要なセキュリティ修正プログラムを追加します。 この日付以降も ADAL を使用しているアプリは引き続き機能しますが、最新の機能を利用し、セキュリティを維持するために、MSAL にアップグレードすることをお勧めします。
+AD FS を引き続き使用する必要がある場合は、ADAL から MSAL にアプリケーションを更新する前に、AD FS 2019 以降にアップグレードする必要があります。
 
-__Q:既存の ADAL アプリの動作は停止しますか?__  
-A:いいえ。 既存のアプリは、変更しなくても引き続き動作します。 2022 年 6 月 30 日以降も維持する予定がある場合は、その安全性を確保するためにアプリを MSAL に更新することを検討してください。しかし、既存の機能を維持する上で、MSAL への移行は必須ではありません。
+## <a name="how-to-migrate-to-msal"></a>MSAL への移行方法
 
-__Q:どのアプリで ADAL を使用しているかを知る方法はありますか?__  
-A:アプリケーションのソース コードがある場合は、上記の移行ガイドを参照して、アプリで使用しているライブラリを判別し、それを MSAL に移行する方法を確認できます。 ISV と提携している場合は、直接連絡して、MSAL への移行の過程を理解することをお勧めします。
+移行を開始する前に、認証に ADAL を使用しているアプリを特定する必要があります。 こちらの記事の手順に従って、Azure portal を使用して一覧を取得してください。
+- [方法: テナントで ADAL を使用しているアプリの一覧を取得する](howto-get-list-of-all-active-directory-auth-library-apps.md)
 
-__Q:MSAL への移行に投資すべき理由を教えてください。__  
-A:MSAL には、増分同意、シングル サインオン、トークン キャッシュ管理など、ADAL には含まれない新機能が含まれています。 また、ADAL とは異なり、MSAL は 2022 年 6 月 30 日以降のセキュリティ更新プログラムを引き続き受けることができます。 [詳細については、こちらを参照してください](msal-overview.md)。
+ADAL を使用しているアプリを特定した後、下に示すアプリケーションの種類に応じて MSAL に移行します。
 
-__Q:Microsoft は独自のアプリを MSAL に更新しますか?__  
-はい。 Microsoft は、MSAL の継続的なセキュリティと機能の向上によるメリットが得られるよう、サポート終了期限までにアプリケーションを MSAL に移行する作業を行っています。
+[!INCLUDE [application type](includes/adal-msal-migration.md)]
 
-__Q:ADAL から MSAL にアプリを移行するのに役立つツールはリリースされますか?__  
-A:いいえ。 ライブラリ間の違いにより、そのようなツールの開発やメンテナンスには、MSAL の改良に当てられるリソースをつぎ込む必要があります。 ただし、アプリケーションで必要な変更を行うための、前述の一連の移行ガイドを提供致します。
+## <a name="migration-help"></a>移行のヘルプ
 
-__Q:MSAL と AD FS の連携方法について教えてください。__  
-A:MSAL.NET では、AD FS 2019 に対して認証する特定のシナリオがサポートされています。 アプリで以前のバージョンの AD FS から直接トークンを取得する必要がある場合は、ADAL 上に残す必要があります。 [詳細については、こちらを参照してください](msal-net-adfs-support.md)。
+ADAL から MSAL へのアプリの移行について質問がある場合、こちらにいくつかのオプションを示しています。
 
-__Q:アプリケーションの移行に関するヘルプを受けるにはどうすればよいですか?__  
-A:この記事の「[移行ガイダンス](#migration-guidance)」を参照してください。 アプリのプラットフォームに関するこのガイドを読んだ後も、さらに質問がある場合は、タグ `[azure-ad-adal-deprecation]` を使用して [Microsoft Q&A](/answers/topics/azure-ad-adal-deprecation.html) に投稿するか、ライブラリの GitHub リポジトリで問題を開いてください。 各ライブラリのリポジトリへのリンクについては、MSAL の概要に関する記事の「[言語とフレームワーク](msal-overview.md#languages-and-frameworks)」セクションを参照してください。
+- [Microsoft Q&A](/answers/topics/azure-ad-adal-deprecation.html) で、タグ `[azure-ad-adal-deprecation]` を使用して質問を投稿する。
+- ライブラリの GitHub リポジトリでイシューを開く。 各ライブラリのリポジトリへのリンクについては、MSAL の概要に関する記事の「[言語とフレームワーク](msal-overview.md#languages-and-frameworks)」セクションを参照してください。
+
+アプリケーションの開発で独立系ソフトウェア ベンダー (ISV) と提携している場合は、MSAL への移行手順を把握するために、先方に直接連絡することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Microsoft 認証ライブラリと Microsoft Graph API を使用するようにアプリケーションを更新する](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
-- [Microsoft ID プラットフォームの概要](v2-overview.md)
-- [MSAL コード サンプルを確認する](sample-v2-code.md)
+MSAL の詳細、たとえば使用情報や、さまざまなプログラミング言語とアプリケーションの種類で使用できるライブラリについては、こちらを参照してください。
+
+- [MSAL でトークンを取得し、キャッシュする](msal-acquire-cache-tokens.md)
+- [アプリケーション構成オプション](msal-client-application-configuration.md)
+- [MSAL 認証ライブラリ](reference-v2-libraries.md)
+
+<!--
+ ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+-->
+[y]: media/common/yes.png
+[n]: media/common/no.png

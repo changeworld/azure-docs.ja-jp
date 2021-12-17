@@ -3,12 +3,12 @@ title: Azure VMware Solution 上に Horizon をデプロイする
 description: Azure VMware Solution 上に VMware Horizon をデプロイする方法について説明します。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: c34d0ac7806f8284e893cf3ad4f3c82dd404ff41
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: d99c8dc76dcab1866d0c536be7fc505c2eec0cb6
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181399"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323644"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware Solution 上に Horizon をデプロイする 
 
@@ -27,20 +27,20 @@ ms.locfileid: "102181399"
 
 Azure VMware Solution に Horizon を導入する場合、Azure プラットフォームには 2 つの仮想デスクトップ インフラストラクチャ (VDI) ソリューションが用意されています。 次の図は、主な相違点の概要を示しています。
 
-:::image type="content" source="media/horizon/difference-horizon-azure-vmware-solution-horizon-cloud-azure.png" alt-text="Azure VMware Solution 上の Horizon と Horizon Cloud on Azure" border="false":::
+:::image type="content" source="media/vmware-horizon/difference-horizon-azure-vmware-solution-horizon-cloud-azure.png" alt-text="Azure VMware Solution 上の Horizon と Horizon Cloud on Azure の違いを示す図。" border="false":::
 
-Horizon 8 リリース ラインの Horizon 2006 以降のバージョンでは、オンプレミス デプロイと Azure VMware Solution デプロイの両方がサポートされています。 オンプレミスでサポートされているものの、Azure VMware Solution ではサポートされていない Horizon の機能がいくつかあります。 また、Horizon エコシステムのその他の製品もサポートされています。 詳細については、[機能パリティと相互運用性](https://kb.vmware.com/s/article/80850)に関するページを参照してください。
+Horizon 8 リリース ラインの Horizon 2006 以降のバージョンでは、オンプレミスと Azure VMware Solution デプロイの両方がサポートされています。 オンプレミスでサポートされているものの、Azure VMware Solution ではサポートされていない Horizon の機能がいくつかあります。 また、Horizon エコシステムのその他の製品もサポートされています。 詳細については、[機能パリティと相互運用性](https://kb.vmware.com/s/article/80850)に関するページを参照してください。
 
 ## <a name="deploy-horizon-in-a-hybrid-cloud"></a>ハイブリッド クラウドでの Horizon のデプロイ
 
-Horizon Cloud Pod アーキテクチャ (CPA) を使用してオンプレミスおよび Azure のデータ センターを相互接続する場合は、ハイブリッド クラウド環境に Horizon をデプロイできます。 CPA を使用すると、デプロイをスケールアップし、ハイブリッド クラウドを構築し、事業継続とディザスター リカバリーのための冗長性を確保することができます。  詳細については、「[既存の Horizon 7 環境の拡大](https://techzone.vmware.com/resource/business-continuity-vmware-horizon#_Toc41650874)」を参照してください。
+Horizon Cloud Pod アーキテクチャ (CPA) を使用してオンプレミスおよび Azure のデータ センターを相互接続すると、ハイブリッド クラウド環境に Horizon をデプロイできます。 CPA を使用すると、デプロイをスケールアップし、ハイブリッド クラウドを構築し、事業継続とディザスター リカバリーのための冗長性を確保することができます。  詳細については、「[既存の Horizon 7 環境の拡大](https://techzone.vmware.com/resource/business-continuity-vmware-horizon#_Toc41650874)」を参照してください。
 
 >[!IMPORTANT]
 >CPA は拡張されたデプロイではなく、各 Horizon ポッドは独立しています。個々のポッドに属する接続サーバーは、すべて 1 つの場所に配置し、ネットワークの観点から同じブロードキャスト ドメインで実行する必要があります。
 
-オンプレミスまたはプライベート データ センターと同様に、Azure VMware Solution のプライベート クラウドに Horizon をデプロイできます。 次のセクションでは、Horizon をオンプレミスと Azure VMware Solution にデプロイする場合の主な違いについて説明します。
+オンプレミスやプライベート データ センターと同様に、Horizon は Azure VMware Solution のプライベート クラウドにデプロイできます。 次のセクションでは、Horizon をオンプレミスと Azure VMware Solution にデプロイする場合の主な違いについて説明します。
 
-Azure プライベート クラウドは、概念的には、Horizon ドキュメントで使用される用語である VMware SDDC と同じです。 このドキュメントでは、これ以降、Azure プライベート クラウドと VMware SDDC を置き換え可能な用語として使用します。
+_Azure プライベート クラウド_ は、概念的には、Horizon ドキュメントで使用される用語である _VMware SDDC_ と同じです。 このドキュメントの残りの部分では、両方の用語を同じ意味で使用します。
 
 Azure VMware Solution 上の Horizon でサブスクリプション ライセンスを管理するには、Horizon クラウド コネクタが必要です。 クラウド コネクタは、Horizon 接続サーバーと共に Azure Virtual Network にデプロイできます。
 
@@ -86,7 +86,7 @@ Azure プライベート クラウドおよび SDDC の上限を考慮して、A
 
 Azure Virtual Network から Azure プライベート クラウド/SDDC への接続は、ExpressRoute FastPath で構成する必要があります。 次の図は、基本的な Horizon ポッドのデプロイを示しています。
 
-:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="ExpressPath Fast Path を使用した通常の Horizon ポッドのデプロイ" border="false":::
+:::image type="content" source="media/vmware-horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="ExpressPath Fast Path を使用した一般的な Horizon ポッドのデプロイを示す図。" border="false":::
 
 ## <a name="network-connectivity-to-scale-horizon-on-azure-vmware-solution"></a>Azure VMware Solution 上の Horizon をスケーリングするためのネットワーク接続
 
@@ -94,7 +94,7 @@ Azure Virtual Network から Azure プライベート クラウド/SDDC への�
 
 ### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Azure VMware Solution 上の単一の Horizon ポッド
 
-:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Azure VMware Solution 上の単一の Horizon ポッド" border="false":::
+:::image type="content" source="media/vmware-horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Azure VMware Solution 上の単一の Horizon ポッドを示す図。" border="false":::
 
 単一の Horizon ポッドは最も簡単なデプロイ シナリオです。米国東部リージョンに Horizon ポッドをちょうど 1 つデプロイするだけだからです。  各プライベート クラウドおよび SDDC によって処理されるデスクトップ セッション数は 4,000 と予想されるため、最大の Horizon ポッド サイズをデプロイします。  プライベート クラウドまたは SDDC のデプロイを最大で 3 つ計画することができます。
 
@@ -104,7 +104,7 @@ Azure Virtual Network に Horizon インフラストラクチャの仮想マシ�
 
 * Cloud Pod アーキテクチャ (CPA) を使用してこの新しいポッドに接続するオンプレミスの Horizon ポッドはありません。
 
-* エンド ユーザーは、インターネット経由で自分の仮想デスクトップに接続します (オンプレミスのデータ センター経由で接続することはできません)。
+* エンド ユーザーは、インターネット経由で自分の仮想デスクトップに接続します (オンプレミスのデータセンター経由で接続することはできません)。
 
 Azure Virtual Network の AD ドメイン コントローラーを、VPN または ExpressRoute 回線経由でオンプレミスの Active Directory に接続します。
 
@@ -112,7 +112,7 @@ Azure Virtual Network の AD ドメイン コントローラーを、VPN また�
 
 図に、オンプレミスのリソースへの接続をサポートする方法を示しています。 企業ネットワークから Azure Virtual Network に接続するには、ExpressRoute 回線が必要です。  また、ExpressRoute の Global Reach を使用して、プライベート クラウドおよび SDDC のそれぞれに企業ネットワークを接続する必要もあります。  これにより、SDDC から ExpressRoute 回線およびオンプレミスのリソースへの接続が可能になります。 
 
-:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="企業ネットワークを Azure Virtual Network に接続する" border="false":::
+:::image type="content" source="media/vmware-horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Azure Virtual Network へ接続する企業ネットワークの接続を示す図。" border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>複数のリージョンにわたる Azure VMware Solution 上の複数の Horizon ポッド
 
@@ -122,7 +122,7 @@ Azure Virtual Network の AD ドメイン コントローラーを、VPN また�
 
 同じリージョンに 2 つの Horizon ポッドをデプロイすると、同じ原則が適用されます。  2 つ目のホライズン ポッドは必ず "*別の Azure Virtual Network*" にデプロイしてください。 単一ポッドの例と同じように、ExpressRoute と Global Reach を使用して、企業ネットワークとオンプレミスのポッドをこのマルチポッドおよびリージョンの例に接続できます。 
 
-:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="複数のリージョンにわたる Azure VMware Solution 上の複数の Horizon ポッド" border="false":::
+:::image type="content" source="media/vmware-horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="複数のリージョンにわたる Azure VMware Solution 上の複数の Horizon ポッドを示す図。" border="false":::
 
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Horizon のデプロイのために Azure VMware Solution ホストのサイズを変更する 
 
@@ -205,13 +205,13 @@ Azure VMware Solution では、次の 2 つのライセンスを使用できま�
 
 近い将来、Azure VMware Solution にのみ Horizon をデプロイする場合は、Horizon サブスクリプション ライセンスを使用してください。その方が低コストです。
 
-Azure VMware Solution とオンプレミスにデプロイする場合は、ディザスター リカバリーのユース ケースと同様に、Horizon ユニバーサル サブスクリプション ライセンスを選択してください。 これにはオンプレミス デプロイ用の vSphere ライセンスが含まれているため、コストが高くなります。
+Azure VMware Solution とオンプレミスにデプロイする場合は、ディザスター リカバリーのユース ケースと同様に、Horizon ユニバーサル サブスクリプション ライセンスを選択してください。 ただし、これにはオンプレミス デプロイ用の vSphere ライセンスが含まれているため、コストが高くなります。
 
 VMware EUC 営業チームと協力して、ニーズに応じた Horizon ライセンス コストを判断します。
 
 ### <a name="azure-instance-types"></a>Azure インスタンスの種類
 
-Horizon インフラストラクチャに必要な Azure 仮想マシンのサイズを把握するには、[こちら](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution)にある VMware のガイドラインを参照してください。
+Horizon インフラストラクチャに必要な Azure 仮想マシンのサイズについては、[Azure VMware Solution でのホライズンのインストール](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution)に関するページを参照してください。
 
 ## <a name="references"></a>References
 [Horizon Agent for Linux のシステム要件](https://docs.vmware.com/en/VMware-Horizon/2012/linux-desktops-setup/GUID-E268BDBF-1D89-492B-8563-88936FD6607A.html)

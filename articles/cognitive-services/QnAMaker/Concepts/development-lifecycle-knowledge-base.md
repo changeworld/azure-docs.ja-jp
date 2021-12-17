@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: e52e7151bc30a19bd6f6041d52effdd799a87c99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a41a2a522d082fa04c60cd58d095ab9b20401f9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91776971"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229920"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker におけるナレッジ ベースのライフサイクル
 QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。
@@ -88,4 +88,8 @@ QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコン
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
+<<<<<<< HEAD
 > [アクティブ ラーニングの提案](./active-learning-suggestions.md)
+=======
+> [アクティブ ラーニングの提案](../index.yml)
+>>>>>>> repo_sync_working_branch

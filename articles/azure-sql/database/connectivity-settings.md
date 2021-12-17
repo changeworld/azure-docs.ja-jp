@@ -3,30 +3,32 @@ title: Azure SQL Database と Azure Synapse Analytics の接続設定
 description: この記事では、トランスポート層セキュリティ (TLS) のバージョンの選択と、Azure SQL Database および Azure Synapse Analytics のプロキシとリダイレクトの設定について説明します。
 services: sql-database
 ms.service: sql-database
+ms.subservice: connect
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
-ms.reviewer: sstein, vanto
-ms.date: 07/06/2020
-ms.openlocfilehash: 0c45a48e6cafa722945400554f2f81916da13775
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.reviewer: mathoma, vanto
+ms.date: 08/03/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f31c53d57b64254c1be654f58b387d7524974e92
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627610"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987444"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL の接続設定
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa-formerly-sqldw.md)]
 
 この記事では、Azure SQL Database のサーバーと、Azure Synapse Analytics の[専用 SQL プール (以前の SQL DW)](../../synapse-analytics\sql-data-warehouse\sql-data-warehouse-overview-what-is.md) への接続を制御する設定について説明します。 これらの設定は、このサーバーに関連するすべての SQL Database と専用 SQL プール (以前の SQL DW) データベースに適用されます。
 
 > [!IMPORTANT]
-> この記事は、Azure SQL Managed Instance には適用されません。
+> この記事は、Azure SQL Managed Instance には適用されません。 この記事は、Azure Synapse Analytics ワークスペースの専用 SQL プールにも適用されません。 ワークスペースを使用する Azure Synapse Analytics のために IP ファイアウォール規則を構成する方法のガイダンスについては、「[Azure Synapse Analytics の IP ファイアウォール規則](../../synapse-analytics/security/synapse-workspace-ip-firewall.md)」を参照してください。
 
 接続設定は、次のスクリーンショットに示すように、 **[ファイアウォールと仮想ネットワーク]** ブレードからアクセスできます。
 
- ![接続設定ウィンドウのスクリーンショット。][1]
+:::image type="content" source="media/single-database-create-quickstart/manage-connectivity-settings.png" alt-text="SQL サーバーの Azure portal のファイアウォールと仮想ネットワークの設定のスクリーンショット":::
 
 > [!NOTE]
 > これらの設定は、適用後すぐに有効になります。 各設定の要件を満たしていない場合、顧客の接続が失われるおそれがあります。
@@ -119,6 +121,10 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 Error 47072
 Login failed with invalid TLS version
 ```
+
+## <a name="set-the-minimal-tls-version-in-azure-portal"></a>Azure portal で最小 TLS バージョンを設定する
+
+[Azure portal](https://portal.azure.com) で **SQL Server** リソースにアクセスします。 **[セキュリティ]** 設定で、 **[ファイアウォールと仮想ネットワーク]** を選択します。 サーバーに関連付けられているすべての SQL データベースに必要な **[TLS の最小バージョン]** を選択し、 **[保存]** を選択します。
 
 ## <a name="set-the-minimal-tls-version-via-powershell"></a>PowerShell を使用して最小 TLS バージョンを設定する
 
@@ -223,5 +229,4 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 - サーバーの接続ポリシーの変更方法については、「[conn-policy](/cli/azure/sql/server/conn-policy)」を参照してください。
 
 <!--Image references-->
-[1]: media/single-database-create-quickstart/manage-connectivity-settings.png
 [2]: media/single-database-create-quickstart/manage-connectivity-flowchart.png

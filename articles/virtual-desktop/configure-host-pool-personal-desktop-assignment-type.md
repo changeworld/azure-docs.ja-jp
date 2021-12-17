@@ -1,35 +1,36 @@
 ---
-title: Windows Virtual Desktop の個人用デスクトップの割り当ての種類 - Azure
-description: Windows Virtual Desktop の個人用デスクトップ ホスト プールの自動割り当てまたは直接割り当てを構成する方法。
+title: Azure Virtual Desktop の個人用デスクトップの割り当ての種類 - Azure
+description: Azure Virtual Desktop の個人用デスクトップ ホスト プールの自動割り当てまたは直接割り当てを構成する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 11fbbe4d816c9f50afc879d74991976a467a9013
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: e53bcbca2e40ef9a9587e0b571f2798132c2a829
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448136"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033589"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>個人用デスクトップ ホスト プールの割り当ての種類を構成する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[この記事](./virtual-desktop-fall-2019/configure-host-pool-personal-desktop-assignment-type-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/configure-host-pool-personal-desktop-assignment-type-2019.md)を参照してください。
 
-ニーズに合わせて、個人用デスクトップ ホスト プールの割り当ての種類を構成して Windows Virtual Desktop 環境を調整することができます。 このトピックでは、ユーザーの自動割り当てまたは直接割り当てを構成する方法について説明します。
+ニーズに合わせて、個人用デスクトップ ホスト プールの割り当ての種類を構成して Azure Virtual Desktop 環境を調整することができます。 このトピックでは、ユーザーの自動割り当てまたは直接割り当てを構成する方法について説明します。
 
 >[!NOTE]
 > この記事の手順は、プールされたホスト プールではなく個人用デスクトップ ホスト プールにのみ適用されます。これは、プールされたホスト プール内のユーザーは特定のセッション ホストに割り当てられないためです。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、Windows Virtual Desktop PowerShell モジュールを既にダウンロードしてインストールしていることを前提としています。 まだ行っていない場合は、[PowerShell モジュールのセットアップ](powershell-module.md)に関する記事の手順に従ってください。
+この記事では、Azure Virtual Desktop PowerShell モジュールを既にダウンロードしてインストールしていることを前提としています。 まだ行っていない場合は、[PowerShell モジュールのセットアップ](powershell-module.md)に関する記事の手順に従ってください。
 
 ## <a name="configure-automatic-assignment"></a>自動割り当てを構成する
 
-自動割り当ては、Windows Virtual Desktop 環境で作成された新しい個人用デスクトップ ホスト プールの既定の割り当ての種類です。 ユーザーを自動的に割り当てる場合、特定のセッション ホストは必要ありません。
+自動割り当ては、Azure Virtual Desktop 環境で作成された新しい個人用デスクトップ ホスト プールの既定の割り当ての種類です。 ユーザーを自動的に割り当てる場合、特定のセッション ホストは必要ありません。
 
 ユーザーを自動的に割り当てるには、まずユーザーを個人用デスクトップ ホスト プールに割り当てて、ユーザーが自分のフィードでデスクトップを表示できるようにします。 割り当てられたユーザーが自分のフィードでデスクトップを起動すると、ホスト プールにまだ接続していない場合は、使用可能なセッション ホストが要求されます。これにより、割り当てプロセスが完了します。
 
@@ -70,9 +71,9 @@ Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -Re
 ユーザーを Azure portal のセッション ホストに直接割り当てるには、次の手順を実行します。
 
 1. Azure Portal ( <https://portal.azure.com> ) にサインインします。
-2. 検索バーに「**Windows Virtual Desktop**」と入力します。
-3. **[サービス]** の下で **[Windows Virtual Desktop]** を選択します。
-4. [Windows Virtual Desktop] ページで、ウィンドウの左側にあるメニューの **[ホスト プール]** を選択します。
+2. 検索バーに「**Azure Virtual Desktop**」と入力します。
+3. **[サービス]** の下で **[Azure Virtual Desktop]** を選択します。
+4. [Azure Virtual Desktop] ページで、ウィンドウの左側にあるメニューの **[ホスト プール]** を選択します。
 5. 更新するホスト プールの名前を選択します。
 6. 次に、ウィンドウの左側にあるメニューに移動し、 **[アプリケーション グループ]** を選択します。
 7. 編集するデスクトップ アプリ グループの名前を選択し、ウィンドウの左側にあるメニューの **[割り当て]** を選択します。
@@ -84,10 +85,10 @@ Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -Re
 
 ## <a name="next-steps"></a>次のステップ
 
-個人用デスクトップ割り当ての種類を構成したので、次は Windows Virtual Desktop クライアントにサインインしてユーザー セッションの一部としてテストすることができます。 次の 2 つの手順では、任意のクライアントを使用してセッションに接続する方法を説明します。
+個人用デスクトップ割り当ての種類を構成したので、次は Azure Virtual Desktop クライアントにサインインしてユーザー セッションの一部としてテストすることができます。 次の 2 つの手順では、任意のクライアントを使用してセッションに接続する方法を説明します。
 
-- [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-10.md)
-- [Web クライアントに接続する](connect-web.md)
-- [Android クライアントに接続する](connect-android.md)
-- [iOS クライアントに接続する](connect-ios.md)
-- [macOS クライアントに接続する](connect-macos.md)
+- [Windows デスクトップ クライアントを使用して接続する](./user-documentation/connect-windows-7-10.md)
+- [Web クライアントに接続する](./user-documentation/connect-web.md)
+- [Android クライアントに接続する](./user-documentation/connect-android.md)
+- [iOS クライアントに接続する](./user-documentation/connect-ios.md)
+- [macOS クライアントに接続する](./user-documentation/connect-macos.md)

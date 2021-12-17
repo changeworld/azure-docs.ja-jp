@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 07/15/2019
-ms.openlocfilehash: 9bda4750f6b4340399bbbe070954dd23930b1ae1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e2fc240e04ec375f95bef74e3fd44381ff8cceb6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785208"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135745"
 ---
 # <a name="customize-an-assessment"></a>評価のカスタマイズ
 
@@ -95,7 +95,7 @@ Azure SQL 評価のプロパティに含まれるものは次のとおりです�
 **百分位数の使用率** | 百分位の使用率では、サイズ設定に使用されるパフォーマンス サンプルのパーセンタイル値を指定します。
 **快適性係数** | 評価中に使用されるバッファー。 季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア インスタンスの結果は、通常 2 コア インスタンスになります。 快適性係数を 2.0 とした場合、結果は 4 コア インスタンスになります。
 **オファーまたはライセンス プログラム** | 自分が登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 現時点では、従量課金制または開発テスト用の従量課金制プランのみを選択できます。 従量課金制プランに加えて、予約容量と Azure ハイブリッド特典を適用することで、追加の割引を利用できることに注意してください。
-**サービス レベル** | Azure SQL Database や Azure SQL Managed Instance に移行するためのビジネス ニーズを満たすための最も適切なサービス レベル オプション:<br/><br/>Azure Migrate によってサーバーに最適なサービス レベルが推奨されるようにする場合は **[推奨]** 。 これを汎用目的またはビジネス クリティカルに設定することもできます。 <br/><br/> 予算重視のワークロード向けに設計された Azure SQL 構成が必要な場合は **[汎用]** 。 [詳細情報](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) <br/><br/> 障害に対する高い回復性と高速フェールオーバーを備え、低遅延のワークロード向けに設計された Azure SQL 構成が必要な場合は **[ビジネス プラクティカル]** 。 [詳細情報](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
+**サービス レベル** | Azure SQL Database や Azure SQL Managed Instance に移行するためのビジネス ニーズを満たすための最も適切なサービス レベル オプション:<br/><br/>Azure Migrate によってサーバーに最適なサービス レベルが推奨されるようにする場合は **[推奨]** 。 これを汎用目的またはビジネス クリティカルに設定することもできます。 <br/><br/> 予算重視のワークロード向けに設計された Azure SQL 構成が必要な場合は **[汎用]** 。 [詳細情報](../azure-sql/database/service-tier-general-purpose.md) <br/><br/> 障害に対する高い回復性と高速フェールオーバーを備え、低遅延のワークロード向けに設計された Azure SQL 構成が必要な場合は **[ビジネス プラクティカル]** 。 [詳細情報](../azure-sql/database/service-tier-business-critical.md)
 **通貨** | アカウントの請求通貨。
 **割引率 (%)** | Azure プランに適用される任意のサブスクリプション固有の割引。 既定の設定は 0% です。
 **Azure ハイブリッド特典** | SQL Server ライセンスを既に所有しているかどうかを指定します。 <br/><br/> ライセンスを所有しており、SQL Server サブスクリプションのアクティブなソフトウェア アシュアランスの対象となっている場合は、ライセンスを Azure に持ち込む際に Azure ハイブリッド特典を申請できます。
@@ -119,4 +119,3 @@ Azure SQL 評価のプロパティに含まれるものは次のとおりです�
 - Azure VM 評価の計算方法の[詳細を確認](concepts-assessment-calculation.md)します。
 - Azure SQL の評価の計算方法の[詳細を確認](concepts-azure-sql-assessment-calculation.md)します。
 - AVS 評価の計算方法の[詳細を確認](concepts-azure-vmware-solution-assessment-calculation.md)します。
-

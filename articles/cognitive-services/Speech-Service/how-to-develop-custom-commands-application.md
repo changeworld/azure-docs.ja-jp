@@ -3,19 +3,19 @@ title: '方法: Custom Commands アプリケーションの開発 - Speech Servi
 titleSuffix: Azure Cognitive Services
 description: Custom Commands アプリケーションを開発およびカスタマイズする方法について説明します。 これらの音声コマンド アプリは、タスクの完了やコマンドとコントロールのシナリオに最適です。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
-ms.author: trbye
-ms.openlocfilehash: ddf36530e52703ab1033b8e2e787b42b6dc60332
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.author: eur
+ms.openlocfilehash: 33d5d790dca4f52e601cf49cedc038e98edbfe1b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553279"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503849"
 ---
 # <a name="develop-custom-commands-applications"></a>Custom Commands アプリケーションを開発する
 
@@ -42,7 +42,7 @@ ms.locfileid: "106553279"
 
 ### <a name="update-luis-resources-optional"></a>LUIS リソースを更新する (省略可能)
 
-**[新しいプロジェクト]** ウィンドウで選択した作成リソースを更新できます。 予測リソースを設定することもできます。 
+**[新しいプロジェクト]** ウィンドウで選択した作成リソースを更新できます。 予測リソースを設定することもできます。
 
 予測リソースは、Custom Commands アプリケーションが発行されると、認識のために使用されます。 開発およびテスト フェーズでは、予測リソースは必要ありません。
 
@@ -54,7 +54,7 @@ ms.locfileid: "106553279"
 1. **[名前]** フィールドで、値 `TurnOn` を指定します。
 1. **［作成］** を選択します
 
-中央のペインには、このコマンドのプロパティが表示されます。 
+中央のペインには、このコマンドのプロパティが表示されます。
 
 コマンドの構成プロパティを次の表に示します。 詳細については、「[カスタム コマンドの概念と定義](./custom-commands-references.md)」を参照してください。
 
@@ -86,24 +86,24 @@ ms.locfileid: "106553279"
 
 #### <a name="add-a-completion-rule"></a>完了ルールを追加する
 
-次に、コマンドに完了ルールを追加する必要があります。 このルールは、ユーザに対して、フルフィルメント アクションが実行されていることを示します。 
+次に、コマンドに完了ルールを追加する必要があります。 このルールは、ユーザに対して、フルフィルメント アクションが実行されていることを示します。
 
 ルールと完了ルールの詳細については、「[カスタム コマンドの概念と定義](./custom-commands-references.md)」を参照してください。
 
 1. 既定の完了ルール **[Done]** を選択します。 その後、次のように編集します。
 
-    
+
     | 設定    | 推奨値                          | 説明                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **名前**       | `ConfirmationResponse`                  | ルールの目的を説明する名前          |
     | **条件** | なし                                     | ルールを実行できるタイミングを決定する条件    |
-    | **アクション**    | **[Send speech response]\(音声応答の送信\)**  >  **[Simple editor]\(シンプルなエディター\)**  >  **[First variation]\(最初のバリエーション\)**  > `Ok, turning the tv on` | ルール条件が真のときに実行するアクション |
+    | **アクション**    | **[Send speech response]\(音声応答の送信\)**  >  **[Simple editor]\(シンプルなエディター\)**  > `Ok, turning the tv on` | ルール条件が真のときに実行するアクション |
 
    > [!div class="mx-imgBorder"]
    > ![音声応答を作成する場所を示すスクリーンショット。](media/custom-commands/create-speech-response-action.png)
 
 1. **[保存]** を選択してアクションを保存します。
-1. **[完了ルール]** セクションに戻り、 **[保存]** を選択してすべての変更を保存します。 
+1. **[完了ルール]** セクションに戻り、 **[保存]** を選択してすべての変更を保存します。
 
     > [!NOTE]
     > コマンドに付属する既定の完了ルールを使用する必要はありません。 既定の完了ルールを削除して、独自のルールを追加することができます。
@@ -138,10 +138,10 @@ ms.locfileid: "106553279"
 
 ### <a name="try-it-out"></a>試してみる
 
-テスト ペインを使用して、次のようにアプリケーションの動作をテストします。 
+テスト ペインを使用して、次のようにアプリケーションの動作をテストします。
 
-1. ペインの右上隅にある **[トレーニング]** アイコンを選択します。 
-1. トレーニングが完了したら、 **[テスト]** を選択します。 
+1. ペインの右上隅にある **[トレーニング]** アイコンを選択します。
+1. トレーニングが完了したら、 **[テスト]** を選択します。
 
 音声またはテキストを使用して、次の発話の例を試してみます。
 
@@ -153,7 +153,7 @@ ms.locfileid: "106553279"
 - 予期される応答:Ok, setting an alarm for 9 am tomorrow (はい、明日の午前 9 時にアラームを設定します)
 
 > [!div class="mx-imgBorder"]
-> ![Web チャットのインターフェイスに表示されているテストのスクリーンショット。](media/custom-commands/create-basic-test-chat.png)
+> ![Web チャットのインターフェイスに表示されているテストのスクリーンショット。](media/custom-commands/create-basic-test-chat-no-mic.png)
 
 > [!TIP]
 > テスト ペインの **[Turn details]\(ターンの詳細\)** を選択すると、この音声入力またはテキスト入力がどのように処理されたかについての情報を得ることができます。
@@ -167,9 +167,9 @@ ms.locfileid: "106553279"
 まず、複数のデバイスのオンとオフを切り替えるように既存の `TurnOn` コマンドを編集しましょう。
 
 1. このコマンドによってオンとオフの両方のシナリオが処理されるようになったため、コマンドの名前を *TurnOnOff* に変更します。
-   1. 左側のペインで、 **[TurnOn]** コマンドを選択します。 次に、ペインの上部にある **[新しいコマンド]** の横にある省略記号 ( **...** ) ボタンを選択します。
-   
-   1. **[Rename]\(名前の変更\)** を選択します。 **[Rename command]\(コマンドの名前変更\)** ウィンドウで、名前を「*TurnOnOff*」に変更します。
+   1. 左側のペインで、 **[TurnOn]** コマンドを選択します。 次に、ペインの上部にある **[新しいコマンド]** の横にある編集ボタンを選択します。
+
+   1. **[Rename command]\(コマンドの名前変更\)** ウィンドウで、名前を「*TurnOnOff*」に変更します。
 
 1. コマンドに新しいパラメーターを追加します。 このパラメーターは、ユーザーがデバイスをオンにするかオフにするかを表します。
    1. 中央のペインの上部にある **[追加]** を選択します。 ドロップダウン メニューから **[パラメーター]** を選択します。
@@ -179,28 +179,27 @@ ms.locfileid: "106553279"
 
        > [!div class="mx-imgBorder"]
        > ![[Simple editor]\(シンプルなエディター\) タブが選択されている [Add response for a required parameter]\(必須パラメーターの応答追加\) セクションを示すスクリーンショット。](media/custom-commands/add-required-on-off-parameter-response.png)
-   
+
    1. 次の表を使用して、パラメーターのプロパティを構成します。 コマンドのすべての構成プロパティの詳細については、「[カスタム コマンドの概念と定義](./custom-commands-references.md)」を参照してください。
-      
+
 
        | 構成      | 推奨値     | 説明                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
        | **名前**               | `OnOff`           | パラメーターのわかりやすい名前                                                                           |
-       | **Is Global (グローバル)**          | 未選択       | このパラメーターの値がアプリケーションのすべてのコマンドにグローバルで適用されるかどうかを示すチェックボックス。|
        | **必須**           | Selected         | コマンドの完了にこのパラメーターの値が必須かどうかを示すチェック ボックス。 |
        | **Response for required parameter (必須パラメーターの応答)**      |**[Simple editor]\(シンプルなエディター\)**  > `On or Off?`      | 認識されていない場合にパラメーターの値を求めるプロンプト。 |
        | **Type**               | **String**          | Number、String、Date Time、Geography などのパラメーターの型。   |
        | **構成**      | **[Accept predefined input values from an internal catalog]\(内部カタログから定義済み入力値を受け取る\)** | 文字列の場合、この設定により、入力が一連の指定可能な値に制限されます。 |
        | **Predefined input values (定義済み入力値)**     | `on`, `off`           | 指定できる一連の値とその別名。         |
-       
-        
+
+
    1. 定義済みの入力値を追加するには、 **[Add a predefined input]\(定義済みの入力を追加\)** を選択します。 **[新しい項目]** ウィンドウで、前の表に示されているように *[名前]* を入力します。 今回は別名を使用していないため、このフィールドは空にしておくことができます。
-   
+
       > [!div class="mx-imgBorder"]
       > ![パラメーターの作成方法を示すスクリーンショット。](media/custom-commands/create-on-off-parameter.png)
 
    1. パラメーターのすべての構成を保存するには、 **[保存]** を選択します。
- 
+
 #### <a name="add-a-subjectdevice-parameter"></a>SubjectDevice パラメーターを追加する
 
 1. このコマンドを使用して制御できるデバイスの名前を表す 2 番目のパラメーターを追加するには、 **[追加]** を選択します。 次の構成を使用します。
@@ -209,7 +208,6 @@ ms.locfileid: "106553279"
     | 設定            | 推奨値       |
     | ------------------ | --------------------- |
     | **名前**               | `SubjectDevice`         |
-    | **Is Global (グローバル)**          | 未選択             |
     | **必須**           | Selected               |
     | **Response for required parameter (必須パラメーターの応答)**     | **[Simple editor]\(シンプルなエディター\)**  > `Which device do you want to control?`    | 
     | **Type**               | **String**                |     
@@ -251,7 +249,6 @@ turn something
 
 1. **[条件]** セクションで、 **[条件の追加]** を選択します。
 1. **[新しい条件]** ウィンドウの **[種類]** リストで、 **[必要なパラメーター]** を選択します。 次の一覧で **OnOff** と **SubjectDevice** の両方を選択します。
-1. **IsGlobal** はオフのままにします。
 1. **［作成］** を選択します
 1. **[アクション]** セクションで、 **[Send speech response]\(音声応答の送信\)** アクションにカーソルを移動して編集ボタンを選択し、それを編集します。 今回は、新しく作成した `OnOff` と `SubjectDevice` パラメーターを使用します。
 
@@ -260,7 +257,7 @@ turn something
     ```
 1. **[保存]** を選択します。
 
-変更内容を試すには、右側のペインの上部にある **[トレーニング]** アイコンを選択します。 
+変更内容を試すには、右側のペインの上部にある **[トレーニング]** アイコンを選択します。
 
 トレーニングが完了したら、 **[テスト]** を選択します。 **[Test your application]\(アプリケーションのテスト\)** ウィンドウが表示されます。 次の対話を試してみます。
 
@@ -277,11 +274,11 @@ turn something
 
 `SetTemperature` コマンドを変更して、ユーザーの指示に従って温度を設定できるようにします。
 
-`Temperature` パラメーターを追加します。 次の構成を使用します。
+`TemperatureValue` パラメーターを追加します。 次の構成を使用します。
 
 | 構成      | 推奨値     |
 | ------------------ | ----------------|
-| **名前**               | `Temperature`           |
+| **名前**               | `TemperatureValue`           |
 | **必須**           | Selected         |
 | **Response for required parameter (必須パラメーターの応答)**      | **[Simple editor]\(シンプルなエディター\)**  > `What temperature would you like?`
 | **Type**               | `Number`          |
@@ -290,8 +287,8 @@ turn something
 次の値を使用するよう発話の例を編集します。
 
 ```
-set the temperature to {Temperature} degrees
-change the temperature to {Temperature}
+set the temperature to {TemperatureValue} degrees
+change the temperature to {TemperatureValue}
 set the temperature
 change the temperature
 ```
@@ -300,18 +297,18 @@ change the temperature
 
 | 構成      | 推奨値     |
 | ------------------ | ----------------|
-| **条件**         | **[Required parameter]\(必須パラメーター\)**  >  **[Temperature]\(温度\)**           |
-| **アクション**           | **[Send speech response]\(音声応答の送信\)**  > `Ok, setting temperature to {Temperature} degrees` |
+| **条件**         | **必須パラメーター** > **TemperatureValue**           |
+| **アクション**           | **[Send speech response]\(音声応答の送信\)**  > `Ok, setting temperature to {TemperatureValue} degrees` |
 
 ### <a name="configure-parameters-for-a-setalarm-command"></a>SetAlarm コマンドのパラメーターを構成する
 
 `DateTime` という名前のパラメーターを追加します。 次の構成を使用します。
 
-   | 設定                           | 推奨値                     | 
+   | 設定                           | 推奨値                     |
    | --------------------------------- | ----------------------------------------|
    | **名前**                              | `DateTime`                               |
    | **必須**                          | Selected                                 |
-   | **Response for required parameter (必須パラメーターの応答)**   | **[Simple editor]\(シンプルなエディター\)**  > `For what time?`            | 
+   | **Response for required parameter (必須パラメーターの応答)**   | **[Simple editor]\(シンプルなエディター\)**  > `For what time?`            |
    | **Type**                              | **DateTime**                                |
    | **日付の既定値**                     | 日付が指定されていない場合、今日に設定します。            |
    | **時間の既定値**                     | 時間が指定されていない場合、一日の始まりに設定します。     |
@@ -369,7 +366,7 @@ Custom Commands 機能を使用すると、Web エンドポイントでホスト
 
 
 指定されている URL の値が自分の環境で機能しない場合は、制御可能なデバイスのリストで構成される JSON ファイルを返す Web エンドポイントを構成してホストする必要があります。 Web エンドポイントから、次のように書式設定された JSON ファイルが返されます。
-    
+
 ```json
 {
     "fan" : [],
@@ -463,32 +460,32 @@ Custom Commands 機能を使用すると、Web エンドポイントでホスト
 
     1. 次の構成を使用して、 **[Confirm command]\(確認コマンド\)** 相互作用ルールを変更します。
         1. 名前を「**Confirm temperature**」(温度の確認) に変更します。
-        1. 新しい条件を追加します: **[Required parameters]\(必須パラメーター\)**  >  **[Temperature]\(温度\)** 。
-        1. 新しいアクションを追加します: **[Type]\(種類\)**  >  **[Send speech response]\(音声応答を送信する\)**  > 「**Are you sure you want to set the temperature as {Temperature} degrees?** 」(温度を {Temperature} 度に設定しますか?)
+        1. **[All required parameters]\(すべての必須パラメーター\)** 条件は既に追加されています。
+        1. 新しいアクションを追加します: **[Type]\(種類\)**  >  **[Send speech response]\(音声応答を送信する\)**  > 「**Are you sure you want to set the temperature as {TemperatureValue} degrees?** 」(温度を {TemperatureValue} 度に設定しますか?)
         1. **[Expectations]\(期待される回答\)** セクションは既定値 **[Expecting confirmation from user]\(ユーザーからの確認が必要\)** のままにします。
-      
+
          > [!div class="mx-imgBorder"]
-         > ![必須パラメーターの応答の作成方法を示すスクリーンショット。](media/custom-speech-commands/add-validation-set-temperature.png)
-    
+         > ![必須パラメーターの応答の作成方法を示すスクリーンショット。](media/custom-speech-commands/add-confirmation-set-temperature.png)
+
 
     1. 成功した確認 (ユーザーが "yes" と言った) を処理するように、 **[Confirmation succeeded]\(確認成功\)** 相互作用ルールを変更します。
-      
+
           1. 名前を「**Confirmation temperature succeeded**」(温度確認成功) に変更します。
           1. 既存の **[Confirmation was successful]\(確認が成功した\)** 条件はそのままにします。
-          1. 新しい条件を追加します: **[Type]\(種類\)**  >  **[Required parameters]\(必須パラメーター\)**  >  **[Temperature]\(温度\)** 。
+          1. **[Type]\(種類\)**  >  **[Required parameters]\(必須パラメーター\)**  > **TemperatureValue** という新しい条件を追加します。
           1. **[Post-execution state]\(実行後の状態\)** は既定値の **[Execute completion rules]\(完了ルールの実行\)** のままにします。
 
     1. 確認が拒否された (ユーザーが "no" と言った) 場合のシナリオを処理するように、 **[Confirmation denied]\(確認拒否\)** 相互作用ルールを変更します。
 
           1. 名前を「**Confirmation temperature denied**」 (温度確認拒否) に変更します。
           1. 既存の **[Confirmation was denied]\(確認が拒否された\)** 条件はそのままにします。
-          1. 新しい条件を追加します: **[Type]\(種類\)**  >  **[Required parameters]\(必須パラメーター\)**  >  **[Temperature]\(温度\)** 。
+          1. **[Type]\(種類\)**  >  **[Required parameters]\(必須パラメーター\)**  > **TemperatureValue** という新しい条件を追加します。
           1. 新しいアクションを追加します: **[Type]\(種類\)**  >  **[Send speech response]\(音声応答を送信する\)**  > 「**No problem. What temperature then?」(わかりました。それでは何度にしますか?)** 。
           1. 規定値の **[Post-execution state]\(実行後の状態\)** を **[Wait for user's input]\(ユーザーの入力を待つ\)** に変更します。
 
 > [!IMPORTANT]
 > この記事では、組み込みの確認機能を使用します。 相互作用ルールを 1 つずつ手動で追加することもできます。
-   
+
 **[トレーニング]** を選択して、変更を試してみます。 トレーニングが完了したら、 **[テスト]** を選択します。
 
 - **入力**:*Set temperature to 80 degrees* (温度を 80 度に設定して)
@@ -505,7 +502,7 @@ Custom Commands 機能を使用すると、Web エンドポイントでホスト
 このセクションでは、ワンステップ修正を構成します。 この修正は、フルフィルメント アクションの実行後に使用されます。 コマンドがまだ処理されていない場合に、既定で修正が有効になる例も示します。 コマンドが完了していないときに修正を追加するには、新しいパラメーター `AlarmTone` を追加します。
 
 左側のペインで、 **[SetAlarm]** コマンドを選択します。 次に、新しいパラメーター **AlarmTone** を追加します。
-        
+
 - **名前** > `AlarmTone`
 - **[Type]\(型\)**  > **String**
 - **[Default Value]\(既定値\)**  >  **[Chimes]\(チャイム\)**
@@ -524,7 +521,7 @@ Custom Commands 機能を使用すると、Web エンドポイントでホスト
 
 #### <a name="implement-a-correction-when-a-command-is-finished"></a>コマンドの完了時に修正を実装する
 
-Custom Commands プラットフォームでは、コマンドが終了した場合でも、ワンステップ修正が可能です。 この機能は、既定で有効になっています。 明示的に構成する必要があります。 
+Custom Commands プラットフォームでは、コマンドが終了した場合でも、ワンステップ修正が可能です。 この機能は、既定で有効になっています。 明示的に構成する必要があります。
 
 以下の手順に従ってワンステップ修正を構成します。
 
@@ -553,7 +550,7 @@ Custom Commands プラットフォームでは、コマンドが終了した場�
 * 言語生成テンプレート
 * アダプティブ式
 
-Custom Commands テンプレートは、Bot Framework の [LG テンプレート](/azure/bot-service/file-format/bot-builder-lg-file-format#templates)に基づいています。 Custom Commands 機能を使用すると必要に応じて新しい LG テンプレートが作成されるため (パラメーターまたはアクションでの音声応答の場合)、LG テンプレートの名前を指定する必要はありません。 
+Custom Commands テンプレートは、Bot Framework の [LG テンプレート](/azure/bot-service/file-format/bot-builder-lg-file-format#templates)に基づいています。 Custom Commands 機能を使用すると必要に応じて新しい LG テンプレートが作成されるため (パラメーターまたはアクションでの音声応答の場合)、LG テンプレートの名前を指定する必要はありません。
 
 そのため、次のようにテンプレートを定義する必要はありません。
 
@@ -572,7 +569,7 @@ Custom Commands テンプレートは、Bot Framework の [LG テンプレート
 
 この変更により、クライアントに送信される音声応答にバリエーションが生まれます。 発話の場合、対応する音声応答は、この準備したオプションからランダムに選択されます。
 
-LG テンプレートを利用すると、アダプティブ式を使用してコマンドに複雑な音声応答を定義することもできます。 詳細については、[LG テンプレート形式](/azure/bot-service/file-format/bot-builder-lg-file-format#templates)に関するセクションを参照してください。 
+LG テンプレートを利用すると、アダプティブ式を使用してコマンドに複雑な音声応答を定義することもできます。 詳細については、[LG テンプレート形式](/azure/bot-service/file-format/bot-builder-lg-file-format#templates)に関するセクションを参照してください。
 
 既定の Custom Commands 機能では、次のようなわずかな違いはありますが、すべての機能がサポートされています。
 
@@ -585,14 +582,13 @@ LG テンプレートを利用すると、アダプティブ式を使用して�
 
 `TurnOnOff` コマンドを変更して、新しいパラメーターを追加します。 次の構成を使用します。
 
-| 設定            | 推奨値       | 
-| ------------------ | --------------------- | 
-| **名前**               | `SubjectContext`         | 
-| **Is Global (グローバル)**          | 未選択             | 
-| **必須**           | 未選択               | 
+| 設定            | 推奨値       |
+| ------------------ | --------------------- |
+| **名前**               | `SubjectContext`         |
+| **必須**           | 未選択               |
 | **Type**               | **String**                |
 | **既定値**      | `all` |
-| **Configuration**      | **Accept predefined input values from internal catalog (内部カタログから定義済み入力値を受け取る)** | 
+| **Configuration**      | **Accept predefined input values from internal catalog (内部カタログから定義済み入力値を受け取る)** |
 | **Predefined input values (定義済み入力値)** | `room`, `bathroom`, `all`|
 
 #### <a name="modify-a-completion-rule"></a>完了ルールを変更する
@@ -642,5 +638,4 @@ Custom Commands の応答をカスタマイズするもう 1 つの方法は、�
 ## <a name="next-steps"></a>次のステップ
 
 * Speech SDK を使用して、クライアント アプリに [Custom Commands アプリケーションを統合する](how-to-custom-commands-setup-speech-sdk.md)方法について説明します。
-* Azure DevOps を使用して Custom Commands アプリケーションの[継続的配置を設定する](how-to-custom-commands-deploy-cicd.md)。 
-                      
+* Azure DevOps を使用して Custom Commands アプリケーションの[継続的配置を設定する](how-to-custom-commands-deploy-cicd.md)。

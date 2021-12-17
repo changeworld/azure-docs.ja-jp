@@ -3,7 +3,7 @@ title: Azure API Management のクロス ドメイン ポリシー | Microsoft D
 description: Azure API Management で使用できるクロス ドメイン ポリシーについて説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 7689d277-8abe-472a-a78c-e6d4bd43455d
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2021
-ms.author: apimpm
-ms.openlocfilehash: 6f074ff389971fa56da7838a9a46ec5c4d42dc5a
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.author: danlep
+ms.openlocfilehash: 74ef0589a32520a411b0ba8aa0677496b44f9549
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739100"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999931"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
@@ -37,7 +37,7 @@ ms.locfileid: "107739100"
 ```xml
 <cross-domain>
     <!-Policy configuration is in the Adobe cross-domain policy file format,
-        see https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html-->
+        see https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/CrossDomain_PolicyFile_Specification.pdf-->
 </cross-domain>
 ```
 
@@ -53,7 +53,7 @@ ms.locfileid: "107739100"
 
 |名前|説明|必須|
 |----------|-----------------|--------------|
-|cross-domain|ルート要素。 子要素は、[Adobe cross-domain ポリシー ファイルの仕様](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)に従う必要があります。|はい|
+|cross-domain|ルート要素。 子要素は、[Adobe cross-domain ポリシー ファイルの仕様](https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/CrossDomain_PolicyFile_Specification.pdf)に従う必要があります。|はい|
 
 ### <a name="usage"></a>使用法
 このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
@@ -91,7 +91,7 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 ```
 
 ### <a name="example"></a>例
-この例では、カスタム ヘッダーまたは GET や POST 以外のメソッドを含む事前要求に対応する方法を示します。 カスタム ヘッダーやその他の HTTP 動詞をサポートするには、次の例に示すように `allowed-methods` および `allowed-headers` セクションを使用します。
+この例では、[事前要求](https://developer.mozilla.org/docs/Web/HTTP/CORS#preflighted_requests) (カスタム ヘッダーまたは GET や POST 以外のメソッドを含む事前要求など) に対応する方法を示します。 カスタム ヘッダーやその他の HTTP 動詞をサポートするには、次の例に示すように `allowed-methods` および `allowed-headers` セクションを使用します。
 
 ```xml
 <cors allow-credentials="true">
@@ -179,7 +179,7 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 
 |名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
-|callback-parameter-name|関数が含まれる完全修飾ドメイン名をプレフィックスとするクロスドメイン JavaScript 関数呼び出し。|はい|該当なし|
+|callback-parameter-name|関数が含まれる完全修飾ドメイン名をプレフィックスとするクロスドメイン JavaScript 関数呼び出し。|はい|なし|
 
 ### <a name="usage"></a>使用法
 このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。

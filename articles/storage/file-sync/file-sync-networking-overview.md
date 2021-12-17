@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6c761edec571f404a538025c868750bc5712eced
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 356c4b1049f6c9558954de457c7e79abbd87d7b8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796456"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475381"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure File Sync のネットワークに関する考慮事項
 Azure ファイル共有には、次の 2 つの方法で接続できます。
@@ -23,6 +23,9 @@ Azure ファイル共有には、次の 2 つの方法で接続できます。
 この記事では、SMB 経由で Azure ファイル共有を直接マウントするのではなく、Azure File Sync を使用してファイルをオンプレミスにキャッシュするために実際のユース ケースに必要となるネットワークの構成方法に重点を置いています。 Azure Files のデプロイのネットワークに関する考慮事項の詳細については、「[Azure Files のネットワークに関する考慮事項](../files/storage-files-networking-overview.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json)」を参照してください。
 
 Azure File Sync のネットワーク構成は、2 つの異なる Azure オブジェクト (ストレージ同期サービスと Azure ストレージ アカウント) にまたがります。 ストレージ アカウントは、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 ストレージ同期サービスは、Azure File Sync との信頼関係が確立された Windows ファイル サーバーである登録済みサーバーと、同期関係のトポロジを定義する同期グループを表す管理構造です。 
+
+> [!Important]  
+> Azure File Sync は、インターネット ルーティングをサポートしていません。 既定のネットワーク ルーティング オプションである Microsoft ルーティングは、Azure File Sync でサポートされています。
 
 ## <a name="connecting-windows-file-server-to-azure-with-azure-file-sync"></a>Azure File Sync を使用して Windows ファイル サーバーを Azure に接続する 
 Azure Files と Azure File Sync を設定して、オンプレミスの Windows ファイル サーバーと共に使用する場合、基本的なインターネット接続以外に Azure への特別なネットワークは必要ありません。 Azure File Sync をデプロイするには、Azure と同期する Windows ファイル サーバー上に Azure File Sync エージェントをインストールします。 Azure File Sync エージェントは、次の 2 つのチャネルを介して Azure ファイル共有との同期を実現します。

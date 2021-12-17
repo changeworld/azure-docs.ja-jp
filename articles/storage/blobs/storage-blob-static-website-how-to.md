@@ -7,17 +7,17 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 2ba0e836f1be97681d677158f5cb81c5b033e915
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-js, devx-track-azurepowershell
+ms.openlocfilehash: 46c22fe3033a9fc9cda90bf9901f10f20355838e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008503"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645894"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
-[汎用 V2](../common/storage-account-create.md) または [BlockBlobStorage](storage-blob-create-account-block-blob.md) アカウントのコンテナーから静的コンテンツ (HTML、CSS、JavaScript、および画像ファイル) を直接提供できます。 詳細については、「[Static website hosting in Azure Storage (Azure Storage での静的 Web サイト ホスティング)](storage-blob-static-website.md)」を参照してください。
+[汎用 V2](../common/storage-account-create.md) または [BlockBlobStorage](../common/storage-account-create.md) アカウントのコンテナーから静的コンテンツ (HTML、CSS、JavaScript、および画像ファイル) を直接提供できます。 詳細については、「[Static website hosting in Azure Storage (Azure Storage での静的 Web サイト ホスティング)](storage-blob-static-website.md)」を参照してください。
 
 この記事では、Azure portal、Azure CLI、または PowerShell を使用して、静的 Web サイトのホスティングを有効にする方法を示します。
 
@@ -35,15 +35,15 @@ ms.locfileid: "103008503"
 
 4. **[有効]** を選択して、ストレージ アカウントに対して静的な Web サイト ホスティングを有効にします。
 
-5. **[インデックス ドキュメント名]** フィールドで、既定のインデックス ページを指定します。（*index.html* など）。 
+5. **[インデックス ドキュメント名]** フィールドで、既定のインデックス ページを指定します。（*index.html* など）。
 
-   既定のインデックス ページは、ユーザーが静的な Web サイトのルートに移動したときに表示されます。  
+   既定のインデックス ページは、ユーザーが静的な Web サイトのルートに移動したときに表示されます。
 
-6. **[エラー ドキュメントのパス]** フィールドで、既定のエラー ページを指定します。（*404 .html* など)。 
+6. **[エラー ドキュメントのパス]** フィールドで、既定のエラー ページを指定します。（*404 .html* など)。
 
    既定のエラー ページは、ユーザーが静的な Web サイトに存在しないページに移動しようとしたときに表示されます。
 
-7. **[保存]** をクリックします。 これで、Azure ポータルで静的な Web サイトのエンドポイントが表示されるようになります。 
+7. **[保存]** をクリックします。 これで、Azure ポータルで静的な Web サイトのエンドポイントが表示されるようになります。
 
     ![ストレージ アカウントに対して静的な Web サイト ホスティングを有効にする](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -69,11 +69,11 @@ ms.locfileid: "103008503"
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
    ```
 
-   * `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+   - `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
-   * `<error-document-name>` プレースホルダーを、サイト上に存在しないページをブラウザーが要求したときにユーザーに表示されるエラー ドキュメントの名前に置き換えます。
+   - `<error-document-name>` プレースホルダーを、サイト上に存在しないページをブラウザーが要求したときにユーザーに表示されるエラー ドキュメントの名前に置き換えます。
 
-   * `<index-document-name>` プレースホルダーをインデックス ドキュメントの名前に置き換えます。 このドキュメントは、通常、"index.html" です。
+   - `<index-document-name>` プレースホルダーをインデックス ドキュメントの名前に置き換えます。 このドキュメントは、通常、"index.html" です。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -113,9 +113,9 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
    $ctx = $storageAccount.Context
    ```
 
-   * `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
+   - `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
 
-   * `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+   - `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
 6. 静的な Web サイトのホスティングを有効にします。
 
@@ -123,13 +123,13 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
    Enable-AzStorageStaticWebsite -Context $ctx -IndexDocument <index-document-name> -ErrorDocument404Path <error-document-name>
    ```
 
-   * `<error-document-name>` プレースホルダーを、サイト上に存在しないページをブラウザーが要求したときにユーザーに表示されるエラー ドキュメントの名前に置き換えます。
+   - `<error-document-name>` プレースホルダーを、サイト上に存在しないページをブラウザーが要求したときにユーザーに表示されるエラー ドキュメントの名前に置き換えます。
 
-   * `<index-document-name>` プレースホルダーをインデックス ドキュメントの名前に置き換えます。 このドキュメントは、通常、"index.html" です。
+   - `<index-document-name>` プレースホルダーをインデックス ドキュメントの名前に置き換えます。 このドキュメントは、通常、"index.html" です。
 
 ---
 
-## <a name="upload-files"></a>ファイルをアップロードする 
+## <a name="upload-files"></a>ファイルをアップロードする
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -143,11 +143,11 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
 
    ![ファイルをアップロードする](media/storage-blob-static-website/storage-blob-static-website-upload.png)
 
-4. ブラウザーでファイルの内容を表示する場合は、そのファイルのコンテンツの種類が `text/html` に設定されていることを確認します。 
+4. ブラウザーでファイルの内容を表示する場合は、そのファイルのコンテンツの種類が `text/html` に設定されていることを確認します。
 
    ![その他のコンテンツ タイプ](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
 
-   >[!NOTE]
+   > [!NOTE]
    > Storage Explorer は、`.html` などの一般的に認識される拡張機能に対して、このプロパティを自動的に `text/html` に設定します。 ただし、場合によっては、これを自分で設定する必要があります。 このプロパティを `text/html` に設定しなかった場合、ブラウザーは、内容を表示する代わりに、ファイルのダウンロードをユーザーに要求します。 このプロパティを設定するには、ファイルを右クリックして、 **[プロパティ]** をクリックします。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -160,12 +160,12 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
 az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-account-name>
 ```
 
-> [!NOTE] 
-> ブラウザーが内容を表示せずに、ファイルのダウンロードをユーザーに要求する場合は、コマンドに `--content-type 'text/html; charset=utf-8'` を追加します。 
+> [!NOTE]
+> ブラウザーが内容を表示せずに、ファイルのダウンロードをユーザーに要求する場合は、コマンドに `--content-type 'text/html; charset=utf-8'` を追加します。
 
-* `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+- `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
-* `<source-path>` プレースホルダーを、アップロードするファイルの場所へのパスに置き換えます。
+- `<source-path>` プレースホルダーを、アップロードするファイルの場所へのパスに置き換えます。
 
 > [!NOTE]
 > Azure CLI のローカル インストールを使用している場合は、ローカル コンピューターの任意の場所へのパスを使用できます (例: `C:\myFolder`)。
@@ -184,12 +184,12 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 -Context $ctx
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > ブラウザーが内容を表示せずに、ファイルのダウンロードをユーザーに要求する場合は、コマンドに `-Properties @{ ContentType = "text/html; charset=utf-8";}` を追加します。
 
-* `<path-to-file>` プレースホルダーの値を、アップロードするファイルへの完全修飾パス (例: `C:\temp\index.html`) に置き換えます。
+- `<path-to-file>` プレースホルダーの値を、アップロードするファイルへの完全修飾パス (例: `C:\temp\index.html`) に置き換えます。
 
-* `<blob-name>` プレースホルダーの値を、結果の BLOB に付ける名前 (例: `index.html`) に置き換えます。
+- `<blob-name>` プレースホルダーの値を、結果の BLOB に付ける名前 (例: `index.html`) に置き換えます。
 
 ---
 
@@ -213,9 +213,9 @@ Web サイトのパブリック URL を使用して、ブラウザーからお�
 az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
 ```
 
-* `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+- `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
-* `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
+- `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -226,9 +226,9 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 Write-Output $storageAccount.PrimaryEndpoints.Web
 ```
 
-* `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
+- `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
 
-* `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+- `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
 ---
 
@@ -270,9 +270,9 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
    ![Azure Storage 静的 Web サイトのメトリック: GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
-   >[!NOTE]
+   > [!NOTE]
    > **[GetWebContent]** チェック ボックスが表示されるのは、その API メンバーが特定の期間内に使用された場合のみです。 データを返す API メンバーだけに注目するために、ポータルには一定期間内に使用されたメンバーのみが表示されます。 このリストに特定の API メンバーが見つからない場合は、期間を拡大してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* 静的な Web サイトでカスタム ドメインを構成する方法を学習します。 「[カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)」を確認します。
+- 静的な Web サイトでカスタム ドメインを構成する方法を学習します。 「[カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)」を確認します。

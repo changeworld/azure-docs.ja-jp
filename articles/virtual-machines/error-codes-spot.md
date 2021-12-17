@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 6d43935365580233063deb0e523d222351c22d54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b38730604072fdf61c551ade8e147e18a487a160
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670620"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082753"
 ---
 # <a name="error-messages-for-azure-spot-virtual-machines-and-scale-sets"></a>Azure Spot Virtual Machines とスケール セットのエラー メッセージ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 ここでは、Azure Spot Virtual Machines とスケール セットを使用する場合に受け取る可能性のあるエラー コードを示します。
 
@@ -37,6 +39,8 @@ ms.locfileid: "101670620"
 | MoveResourcesWithAzureSpotVMNotSupported  |  リソースの移動要求に、Azure Spot Virtual Machine が含まれています。 サポートされていません。 仮想マシン ID のエラーの詳細を確認してください。 | Azure Spot Virtual Machines を移動することはできません。 |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  リソースの移動要求に、Azure スポット仮想マシン スケール セットが含まれています。 サポートされていません。 仮想マシン スケール セット ID のエラーの詳細を確認してください。 | Azure スポット仮想マシン スケール セット インスタンスを移動することはできません。 |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | VM オーケストレーション モードの仮想マシン スケール セットでは、Azure Spot Virtual Machine はサポートされていません。 | Azure Spot Virtual Machine インスタンスを使用するには、オーケストレーション モードを仮想マシン スケール セットに設定します。 |
+| SpotRestorationIsNotSupportedForThisAPIVersion | この API バージョンでは、スポット復元機能はサポートされません。 |  既存のスケールセットの場合は、API バージョン 2021-07-01 以降を使用して修正プログラムを実行します。 <br><br> 新しいスケールセットの展開の場合は、API バージョン 2021-07-01 以降を使用して、次のプロパティを Azure Resource Manager テンプレートに追加します。 <br><br> :::image type="content" source="media/spot/spot-try-restore-error-codes-1.png" alt-text="正しい API バージョンを使用するためのエラー コード サンプル。":::| 
+| SpotRestorationIsSupportedOnlyForAzureSpotScaleSets | スポット復元機能は、Azure スポット仮想マシン スケールセットでのみサポートされています。 | スポット復元機能は、Azure スポット仮想マシン スケールセットでのみサポートされています。 この機能を使用するには、仮想マシン スケールセットを使用して Azure スポットをデプロイします。 | 
 
 
 **次の手順** の詳細については、「[Spot Virtual Machines](./spot-vms.md)」を参照してください。

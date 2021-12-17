@@ -2,22 +2,22 @@
 title: Batch サービス API を使用して出力のデータを Azure Storage に保持する
 description: Batch サービス API を使用して Batch タスクおよびジョブの出力データを Azure Storage に保持する方法について説明します。
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 08/18/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 720c064c6b382bc62565c0828422181c761df8e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a089637c68e218799e36cda0bcfa2dc7b1600a1
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88936930"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658521"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch サービス API を使用してタスクのデータを Azure Storage に保持する
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-Batch サービス API は、仮想マシン構成のプールで実行されるタスクおよびジョブ マネージャー タスクについて、Azure Storage への出力データの保持をサポートします。 タスクを追加する時点で、タスクの出力の保存先として Azure Storage 内のコンテナーを指定できます。 そうすると、タスクが完了した時点で、Batch サービスによってすべての出力データがそのコンテナーに書き込まれます。
+Batch サービス API は、[仮想マシン構成](nodes-and-pools.md#virtual-machine-configuration)のプールで実行されるタスクおよびジョブ マネージャー タスクについて、Azure Storage への出力データの保持をサポートします。 タスクを追加する時点で、タスクの出力の保存先として Azure Storage 内のコンテナーを指定できます。 そうすると、タスクが完了した時点で、Batch サービスによってすべての出力データがそのコンテナーに書き込まれます。
 
-タスクの出力を保持するために Batch サービス API を使用することの利点は、タスクが実行されるアプリケーションに変更を加える必要がないところにあります。 代わりに、クライアント アプリケーションにいくつか変更を加えれば、タスクを作成する同じコード内からタスクの出力を保持できます。
+タスクの出力を保持するために Batch サービス API を使用するとき、タスクが実行されているアプリケーションに変更を加える必要がありません。 代わりに、クライアント アプリケーションにいくつか変更を加えれば、タスクを作成する同じコード内からタスクの出力を保持できます。
 
 > [!IMPORTANT]
 > Batch サービス API を使用した Azure Storage へのタスク データの保持は、[2018 年 2 月 1 日](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md#1204)以前に作成されたプールでは機能しません。
@@ -31,11 +31,11 @@ Azure Batch は、タスクの出力を保持するために複数の方法を�
 - 任意の名前の Azure Storage コンテナーに出力を保持する。
 - [Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)に準拠した名前の Azure Storage コンテナーに出力を保持する。
 
-検討しているシナリオが上記のシナリオと異なる場合は、別のアプローチを考慮する必要があります。 たとえば、Batch サービス API は現時点で、タスクの実行中に Azure Storage に出力をストリーミングする機能をサポートしていません。 出力をストリーミングするには、.NET の場合に利用可能な Batch ファイル規則ライブラリの使用をご検討ください。 その他の言語の場合には、開発者が自分で独自のソリューションを実装する必要があります。 タスクの出力を保持するために利用できるその他のオプションの詳細については、「[ジョブやタスクからの出力を Azure Storage に保存する](batch-task-output.md)」を参照してください。
+検討しているシナリオが上記のシナリオと異なる場合は、別のアプローチを考慮する必要があります。 たとえば、Batch サービス API は現時点で、タスクの実行中に Azure Storage に出力をストリーミングする機能をサポートしていません。 出力をストリーミングするには、.NET の場合に利用可能な Batch ファイル規則ライブラリの使用をご検討ください。 その他の言語の場合には、開発者が自分で独自のソリューションを実装する必要があります。 その他のオプションの詳細については、[ジョブやタスクからの出力を Azure Storage に保存する](batch-task-output.md)方法に関するページを参照してください。
 
 ## <a name="create-a-container-in-azure-storage"></a>Azure Storage 内にコンテナーを作成する
 
-タスクの出力を Azure Storage に保持するためには、出力ファイルの保存先となるコンテナーを作成する必要があります。 コンテナーの作成は、タスクを実行する前、可能であれば、ジョブを送信する前に行います。 コンテナーを作成するには、適切な Azure Storage クライアント ライブラリまたは SDK を使用します。 Azure Storage API の詳細については、[Azure Storage のドキュメント](../storage/index.yml)を参照してください。
+タスクの出力を Azure Storage に保持するためには、出力ファイルの保存先となるコンテナーを作成する必要があります。 適切な Azure Storage クライアント ライブラリまたは SDK を使用し、タスクを実行する前に (ジョブの送信前を推奨) コンテナーを作成します。 Azure Storage API の詳細については、[Azure Storage のドキュメント](../storage/index.yml)を参照してください。
 
 たとえば、C# でアプリケーションを作成している場合は、[.NET 用の Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)を使用します。 次の例は、コンテナーを作成する方法を示しています。
 
@@ -64,7 +64,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 ## <a name="specify-output-files-for-task-output"></a>タスク出力用に出力ファイルを指定する
 
-タスクに対して出力ファイルを指定するには、[OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) オブジェクトのコレクションを作成し、タスクの作成時にそのコレクションを [CloudTask.OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) プロパティに割り当てます。
+タスクに対して出力ファイルを指定するには、[OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) オブジェクトのコレクションを作成し、タスクの作成時にそのコレクションを [CloudTask.OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) プロパティに割り当てます。
 
 次に示す C# コードの例では、`output.txt` という名前のファイルに乱数を書き込むタスクを作成しています。 この例では、`output.txt` をコンテナーに書き込むために出力ファイルを作成します。 また、出力ファイル、ファイル パターン `std*.txt` に一致するすべてのログ ファイル (_例_: `stdout.txt` や `stderr.txt` など) についても出力ファイルを作成します。 コンテナーの URL には、事前にコンテナーに対して作成した SAS が必要になります。 Batch サービスでは、その SAS を使用して、コンテナーへのアクセスを認証します。
 
@@ -95,9 +95,34 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 > [!NOTE]
 > Linux でこの例を使用する場合は、円記号をスラッシュに変更してください。
 
+## <a name="specify-output-files-using-managed-identity"></a>マネージド ID を使用して出力ファイルを指定する
+
+コンテナーへの書き込みアクセス権を持つ SAS を生成して Batch に渡す代わりに、Azure Storage での認証にマネージド ID を使用できます。 ID を [Batch プールに割り当てる](managed-identity-pools.md)必要があります。また、書き込むコンテナーの `Storage Blob Data Contributor` ロールの割り当ても必要です。 それにより、コンテナーへのアクセスの認証に SAS ではなくマネージド ID を使用するように Batch サービスに指示できます。
+
+```csharp
+CloudBlobContainer container = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
+await container.CreateIfNotExists();
+
+new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
+{
+    OutputFiles = new List<OutputFile>
+    {
+        new OutputFile(
+            filePattern: @"..\std*.txt",
+            destination: new OutputFileDestination(
+         new OutputFileBlobContainerDestination(
+                    containerUrl: container.Uri,
+                    path: taskId,
+                    identityReference: new ComputeNodeIdentityReference() { ResourceId = "/subscriptions/SUB/resourceGroups/RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-name"} })),
+            uploadOptions: new OutputFileUploadOptions(
+            uploadCondition: OutputFileUploadCondition.TaskCompletion))
+    }
+}
+```
+
 ### <a name="specify-a-file-pattern-for-matching"></a>ファイル パターンの一致を指定する
 
-出力ファイルを指定するとき、[OutputFile.FilePattern](/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) プロパティを使って、ファイル パターンの一致を指定できます。 このファイル パターンは、タスクによって作成される 0 個のファイル、1 個のファイル、一連のファイルと一致する可能性があります。
+出力ファイルを指定するとき、[OutputFile.FilePattern](/dotnet/api/microsoft.azure.batch.outputfile.filepattern) プロパティを使って、ファイル パターンの一致を指定できます。 このファイル パターンは、タスクによって作成される 0 個のファイル、1 個のファイル、一連のファイルと一致する可能性があります。
 
 **FilePattern** プロパティでは、`*` (非再帰的に一致) や `**` (再帰的に一致) など、標準のファイル システム ワイルドカードがサポートされます。 たとえば、上記のコード サンプルでは、`std*.txt` と非再帰的に一致するファイル パターンを次のように指定しています。
 
@@ -109,7 +134,7 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 ### <a name="specify-an-upload-condition"></a>アップロード条件を指定する
 
-[OutputFileUploadOptions.UploadCondition](/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) プロパティにより、出力ファイルを条件付きでアップロードすることができます。 一般的なシナリオとして、タスクが成功した場合に特定の一連のファイルをアップロードし、タスクが失敗した場合にそれとは異なる一連のファイルをアップロードするというものがあります。 たとえば、タスクが失敗し、ゼロ以外の終了コードで終了した場合にのみ、詳細なログ ファイルをアップロードすることができます。 同様に、タスクが成功した場合にのみ、結果ファイルをアップロードすることができます。タスクが失敗した場合は、全部または一部の結果ファイルが存在しない可能性があるからです。
+[OutputFileUploadOptions.UploadCondition](/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition) プロパティにより、出力ファイルを条件付きでアップロードすることができます。 一般的なシナリオとして、タスクが成功した場合に特定の一連のファイルをアップロードし、タスクが失敗した場合にそれとは異なる一連のファイルをアップロードするというものがあります。 たとえば、タスクが失敗し、ゼロ以外の終了コードで終了した場合にのみ、詳細なログ ファイルをアップロードすることができます。 同様に、タスクが成功した場合にのみ、結果ファイルをアップロードすることができます。タスクが失敗した場合は、全部または一部の結果ファイルが存在しない可能性があるからです。
 
 上記のコード サンプルでは、**UploadCondition** プロパティを **TaskCompletion** に設定しています。 この設定では、タスクの完了後に、終了コードの値にかかわらず、ファイルをアップロードすることが指定されます。
 
@@ -121,7 +146,7 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 1 つのジョブ内の複数のタスクから、同じ名前のファイルが生成されることがあります。 たとえば、`stdout.txt` と `stderr.txt` は、1 つのジョブ内で実行されるすべてのタスクで作成されます。 各タスクは独自のコンテキストで実行されるため、これらのファイルがノードのファイル システム上で競合することはありません。 ただし、複数のタスクから共有コンテナーにファイルをアップロードする場合は、同じ名前のファイルのあいまいさを解消する必要があります。
 
-[OutputFileBlobContainerDestination.Path](/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) プロパティでは、出力ファイル用の保存先 BLOB または仮想ディレクトリを指定します。 **Path** プロパティを使用して、BLOB または仮想ディレクトリの名前について、同じ名前の出力ファイルが Azure Storage 内で一意の名前になるように設定できます。 パスにタスク ID を使用する方法は、確実に一意の名前を作成でき、ファイルを容易に識別できるので、優れた方法です。
+[OutputFileBlobContainerDestination.Path](/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path) プロパティでは、出力ファイル用の保存先 BLOB または仮想ディレクトリを指定します。 **Path** プロパティを使用して、BLOB または仮想ディレクトリの名前について、同じ名前の出力ファイルが Azure Storage 内で一意の名前になるように設定できます。 パスにタスク ID を使用する方法は、確実に一意の名前を作成でき、ファイルを容易に識別できるので、優れた方法です。
 
 **FilePattern** プロパティをワイルドカード式に設定した場合は、そのパターンに一致するすべてのファイルが、**Path** プロパティで指定した仮想ディレクトリにアップロードされます。 たとえば、コンテナーが `mycontainer`、タスク ID が `mytask`、ファイル パターンが `..\std*.txt` の場合であれば、Azure Storage 内の出力ファイルへの絶対 URI は次のようになります。
 
@@ -141,11 +166,11 @@ https://myaccount.blob.core.windows.net/mycontainer/task1/output.txt
 https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 ```
 
-Azure Storage 内の仮想ディレクトリの詳細については、「[コンテナー内の BLOB を一覧表示する](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container)」を参照してください。
+Azure Storage 内の仮想ディレクトリの詳細については、「[コンテナー内の BLOB を一覧表示する](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-blobs-in-a-container)」を参照してください。
 
 ## <a name="diagnose-file-upload-errors"></a>ファイルのアップロード エラーを診断する
 
-Azure Storage への出力ファイルのアップロードが失敗した場合、そのタスクは **Completed** 状態に移行し、[TaskExecutionInformation.FailureInformation](/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) プロパティが設定されます。 **FailureInformation** プロパティを確認すれば、どのようなエラーが発生したかを判別できます。 たとえば、次に示すのは、コンテナーが見つからない場合にファイルをアップロードしたときに発生するエラーです。
+Azure Storage への出力ファイルのアップロードが失敗した場合、そのタスクは **Completed** 状態に移行し、[TaskExecutionInformation.FailureInformation](/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation) プロパティが設定されます。 **FailureInformation** プロパティを確認すれば、どのようなエラーが発生したかを判別できます。 たとえば、次に示すのは、コンテナーが見つからない場合にファイルをアップロードしたときに発生するエラーです。
 
 ```
 Category: UserError

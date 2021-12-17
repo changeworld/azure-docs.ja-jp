@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 04/09/2021
-ms.openlocfilehash: 0da1fd7b98b86ebd75926cc8a2d2bb5294d048ca
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 05/21/2021
+ms.openlocfilehash: 5b0073f0f6ab3ecfc06d581ab7cf70c6bf27896e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308137"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285168"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>HTTPS エンドポイントを使用してコマーシャル マーケットプレースのリードを管理する
 
@@ -25,23 +25,23 @@ Microsoft AppSource と Azure Marketplace のリードを受け取るために�
 
 ## <a name="create-a-flow-by-using-power-automate"></a>Power Automate を使用してフローを作成する
 
-1. [Power Automate](https://flow.microsoft.com/) Web ページを開きます。 **[サインイン]** をクリックします。 アカウントがまだない場合は **[無料でサインアップ]** を選択して、無料の Power Automate アカウントを作成します。
+1. [Power Automate](https://flow.microsoft.com/) Web ページを開きます。 **[サインイン]** をクリックします。 アカウントがまだない場合は **[無料でサインアップ]** を選択して作成します。
 
-1. サインインし、メニューの **[マイ フロー]** を選択します。
+1. サインインし、 **[マイ フロー]** を選択して、環境を **[Microsoft (default)]\(Microsoft (既定)\)** からご自身の Dataverse (CRM) 環境に切り替えます。
 
-    ![マイ フローにサインイン](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png" alt-text="'マイ フロー' へのサインイン方法を示します。":::
 
 1. **[+ 新規]** で、 **[+ Instant cloud flow]\(+ インスタント クラウド フロー\)** を選択します。
 
-    ![[マイ フロー] [+ Automated--from blank]\(+自動 – 白紙から作成\)](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-create-from-blank.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/https-my-flows-create-from-blank.png" alt-text="[マイ フロー] を選択した後に [Instant cloud flow]\(インスタント クラウド フロー\) を選択する方法を示します。":::
 
 1. フローに名前を付け、次に、 **[このフローをトリガーする方法を選択します]** の下で **[HTTP 要求の受信時]** を選択します。
 
-    ![[自動化されたフローを作成します] ウィンドウの [スキップ] ボタン](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-pick-request-trigger.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/https-my-flows-pick-request-trigger.png" alt-text="自動化されたフローのウィンドウの [スキップ] ボタンを構築する方法を示します。":::
 
 1. フロー ステップをクリックして展開します。
 
-    ![フロー ステップを展開](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png" alt-text="フロー ステップを展開する方法を示します。":::
 
 1. 次のいずれかの方法を使用して、 **[要求本文の JSON スキーマ]** を構成します。
 
@@ -137,25 +137,25 @@ Microsoft AppSource と Azure Marketplace のリードを受け取るために�
 ### <a name="connect-to-a-crm-system"></a>CRM システムに接続する
 
 1. **[+ New step (+ 新しいステップ)]** を選択します。
-1. **[コネクタとアクションを検索する]** と表示されている場所を検索して、任意の CRM システムを選択します。 次の画面では、例として新しいレコードを作成する (Common Data Service) が示されています。
+1. **[コネクタとアクションを検索する]** ボックスで、CRM システムを検索して選択します。 次の画面では、例として **新しいレコードを作成する (Microsoft Dataverse)** が示されています。
 
-    ![新しいレコードを作成する](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/create-new-record.png" alt-text="新しいレコードを作成する方法を示しています。":::
 
-1. それを、**新しいレコードを作成** するためのアクションが表示された **[アクション] タブ** を選択します。
+1. **新しい行を追加する** ためのアクションが表示された **[アクション] タブ** を選択します。
 
-    ![[新しいレコードを作成する] を選択する](./media/commercial-marketplace-lead-management-instructions-https/select-create-new-record.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/select-create-new-record.png" alt-text="[新しいレコードを作成する] を選択する方法を示します。":::
 
-1. CRM システムに関連付けられている **組織名** を指定します。 **[エンティティ名]** ドロップダウン リストから **[潜在顧客]** を選択します。
+1. **[テーブル名]** ドロップダウン リストから **[潜在顧客]** を選択します。
 
-    ![潜在顧客を選択する](./media/commercial-marketplace-lead-management-instructions-https/select-leads.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/select-leads.png" alt-text="潜在顧客を選択する方法を示します。":::
 
 1. 潜在顧客の情報を提供するためのフォームが Power Automate に表示されます。 動的なコンテンツの追加を選択して、入力要求からの項目をマップできます。 次の画面では、例として **OfferTitle** が示されています。
 
-    ![動的なコンテンツの追加](./media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png" alt-text="動的なコンテンツを追加する方法について示します。":::
 
 1. 必要なフィールドをマップし、 **[保存]** を選択してフローを保存します。 HTTP POST URL が作成され、" **[HTTP 要求の受信時]** " ウィンドウ内でアクセスできます。 この URL を、HTTP POST URL の右側にあるコピー コントロールを使用してコピーします。 URL のすべての部分が欠落することがないよう、コピー コントロールを使用することが重要です。 この URL は、発行ポータル内でリード管理を構成するときに必要になるため、保存しておきます。
 
-    ![HTTP 要求を受信したとき](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png" alt-text="HTTP 要求がいつ受信されたかを示します。":::
 
 ### <a name="set-up-email-notification"></a>電子メール通知を設定する
 
@@ -222,7 +222,7 @@ Microsoft AppSource と Azure Marketplace のリードを受け取るために�
 
    ![結果をチェックする](./media/commercial-marketplace-lead-management-instructions-https/my-flow-check-results.png)
 
-1. 電子メールも受信しているはずです。 メールの受信トレイを確認してください。 
+1. 電子メールも受信しているはずです。 メールの受信トレイを確認してください。
 
     >[!NOTE] 
     >テストからの電子メールが見つからない場合は、スパム フォルダーと迷惑メール フォルダーを確認してください。 以下の画面では、電子メール通知を構成するときに追加したフィールド ラベルだけが表示されていることがわかります。 これがオファーから生成された実際のリードである場合は、本文と件名行にあるリードの担当者からの実際の情報も表示されます。
@@ -233,7 +233,7 @@ Microsoft AppSource と Azure Marketplace のリードを受け取るために�
 
 発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、次の手順に従います。
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)にサインインします。
 
 1. オファーを選択し、 **[Offer setup]\(オファーのセットアップ\)** タブにアクセスします。
 

@@ -1,18 +1,18 @@
 ---
 title: Azure IoT ハブを複製する方法
 description: Azure IoT ハブを複製する方法
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: robinsh
-ms.openlocfilehash: 7f5553cc51927d878487b0875e72873451a3de3c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.author: lizross
+ms.openlocfilehash: 2905e1ad5a5efe4b56b6cd7990fb5d0eaaae34aa
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059583"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553389"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT ハブを別のリージョンに複製する方法
 
@@ -113,25 +113,31 @@ IoT ハブを複製する前に、いくつかの点を考慮する必要があ�
 
 1. ハブのプロパティと設定の一覧から **[テンプレートのエクスポート]** を選択します。 
 
-   ![IoT Hub のテンプレートをエクスポートするためのコマンドを示すスクリーンショット。](./media/iot-hub-how-to-clone/iot-hub-export-template.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-export-template.png" alt-text="IoT Hub のテンプレートをエクスポートするためのコマンドを示すスクリーンショット。" border="true":::
 
 1. **[ダウンロード]** を選択してテンプレートをダウンロードします。 ファイルを、後で見つけられる場所に保存します。 
 
-   ![IoT Hub のテンプレートをダウンロードするためのコマンドを示すスクリーンショット。](./media/iot-hub-how-to-clone/iot-hub-download-template.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-download-template.png" alt-text="IoT Hub のテンプレートをダウンロードするためのコマンドを示すスクリーンショット。" border="true":::
 
 ### <a name="view-the-template"></a>テンプレートを見る 
 
-1. 「ダウンロード」フォルダー (または、テンプレートをエクスポートしたときに使用したフォルダー) にアクセスし、zip ファイルを見つけます。 Zip ファイルを開き、`template.json` という名前のファイルを見つけます。 ファイルを選択し、Ctrl + C キーを押してテンプレートをコピーします。 Zip ファイルにない別のフォルダーにアクセスし、ファイルを貼り付けます (Ctrl + V)。 これで編集できるようになりました。
+1. 「ダウンロード」フォルダー (または、テンプレートをエクスポートしたときに使用したフォルダー) にアクセスし、zip ファイルを見つけます。 Zip ファイルを開き、`template.json` という名前のファイルを見つけます。 それを選択してコピーします。 別のフォルダーに移動し、テンプレート ファイルを貼り付けます (Ctrl+V)。 これで編集できるようになりました。
  
-    次の例は、ルーティング構成のない汎用ハブを対象としています。 これは、**westus** リージョンの **ContosoTestHub29358** と呼ばれる S1 レベルのハブ (1 ユニット) です。 エクスポートされたテンプレートがこちらです。
+    次の例は、ルーティング構成のない汎用ハブを対象としています。 これは、**westus** リージョンの **ContosoHub** と呼ばれる S1 レベルのハブ (1 ユニット) です。 エクスポートされたテンプレートがこちらです。
 
     ``` json
     {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
-            "IotHubs_ContosoTestHub29358_name": {
-                "defaultValue": "ContosoTestHub29358",
+            "IotHubs_ContosoHub_connectionString": {
+                "type": "SecureString"
+            },
+            "IotHubs_ContosoHub_containerName": {
+                "type": "SecureString"
+            },
+            "IotHubs_ContosoHub_name": {
+                "defaultValue": "ContosoHub",
                 "type": "String"
             }
         },
@@ -139,47 +145,23 @@ IoT ハブを複製する前に、いくつかの点を考慮する必要があ�
         "resources": [
             {
                 "type": "Microsoft.Devices/IotHubs",
-                "apiVersion": "2018-04-01",
-                "name": "[parameters('IotHubs_ContosoTestHub29358_name')]",
+                "apiVersion": "2021-07-01",
+                "name": "[parameters('IotHubs_ContosoHub_name')]",
                 "location": "westus",
                 "sku": {
                     "name": "S1",
                     "tier": "Standard",
                     "capacity": 1
                 },
+                "identity": {
+                    "type": "None"
+                },
                 "properties": {
-                    "operationsMonitoringProperties": {
-                        "events": {
-                            "None": "None",
-                            "Connections": "None",
-                            "DeviceTelemetry": "None",
-                            "C2DCommands": "None",
-                            "DeviceIdentityOperations": "None",
-                            "FileUploadOperations": "None",
-                            "Routes": "None"
-                        }
-                    },
                     "ipFilterRules": [],
                     "eventHubEndpoints": {
                         "events": {
                             "retentionTimeInDays": 1,
-                            "partitionCount": 2,
-                            "partitionIds": [
-                                "0",
-                                "1"
-                            ],
-                            "path": "contosotesthub29358",
-                            "endpoint": "sb://iothub-ns-contosotes-2227755-92aefc8b73.servicebus.windows.net/"
-                        },
-                        "operationsMonitoringEvents": {
-                            "retentionTimeInDays": 1,
-                            "partitionCount": 2,
-                            "partitionIds": [
-                                "0",
-                                "1"
-                            ],
-                            "path": "contosotesthub29358-operationmonitoring",
-                            "endpoint": "sb://iothub-ns-contosotes-2227755-92aefc8b73.servicebus.windows.net/"
+                            "partitionCount": 4
                         }
                     },
                     "routing": {
@@ -203,8 +185,8 @@ IoT ハブを複製する前に、いくつかの点を考慮する必要があ�
                     "storageEndpoints": {
                         "$default": {
                             "sasTtlAsIso8601": "PT1H",
-                            "connectionString": "",
-                            "containerName": ""
+                            "connectionString": "[parameters('IotHubs_ContosoHub_connectionString')]",
+                            "containerName": "[parameters('IotHubs_ContosoHub_containerName')]"
                         }
                     },
                     "messagingEndpoints": {
@@ -224,7 +206,9 @@ IoT ハブを複製する前に、いくつかの点を考慮する必要があ�
                             "maxDeliveryCount": 10
                         }
                     },
-                    "features": "None"
+                    "features": "None",
+                    "disableLocalAuth": false,
+                    "allowedFqdnList": []
                 }
             }
         ]
@@ -237,63 +221,47 @@ IoT ハブを複製する前に、いくつかの点を考慮する必要があ�
 
 #### <a name="edit-the-hub-name-and-location"></a>ハブの名前と保存先を編集する
 
-1. 上部の [パラメーター] セクションを削除します。ここでは複数のパラメーターを指定しないので、ハブ名を使用する方がはるかに簡単です。 
+1. 上部にあるコンテナー名パラメーター セクションを削除します。 **ContosoHub** には、関連付けられたコンテナーがありません。
 
     ``` json
-        "parameters": {
-            "IotHubs_ContosoTestHub29358_name": {
-                "defaultValue": "ContosoTestHub29358",
-                "type": "String"
-            }
+    "parameters": {
+      ...
+        "IotHubs_ContosoHub_containerName": {
+            "type": "SecureString"
         },
+      ...
+    },
     ```
 
-1. 前の手順で削除したパラメーターから取得するのではなく、実際の (新しい) 名前を使用するように名前を変更します。 
+1. **storageEndpoints** プロパティを削除します。
 
-    新しいハブの場合は、元のハブの名前に "*clone*" という文字列を追加して新しい名前を作成します。 ハブの名前と場所をクリーンアップすることから始めます。
+    ```json
+    "properties": {
+      ...
+        "storageEndpoints": {
+        "$default": {
+            "sasTtlAsIso8601": "PT1H",
+            "connectionString": "[parameters('IotHubs_ContosoHub_connectionString')]",
+            "containerName": "[parameters('IotHubs_ContosoHub_containerName')]"
+        }
+      },
+      ...
     
+    ```
+
+1. **resources** の下で、場所を westus から eastus に変更します。
+
     前のバージョン:
 
     ``` json 
-    "name": "[parameters('IotHubs_ContosoTestHub29358_name')]",
     "location": "westus",
     ```
     
     新しいバージョン: 
 
     ``` json 
-    "name": "ContosoTestHub29358clone",
     "location": "eastus",
     ```
-
-    次に、**パス** の値に古いハブ名が含まれていることがわかります。 新しいものを使用するように変更します。 これらのパス値は **eventHubEndpoints** の下にあり、**events** および **OperationsMonitoringEvents** と呼ばれます。
-
-    完了すると、イベント ハブのエンドポイントのセクションは次のようになります。
-
-    ``` json
-    "eventHubEndpoints": {
-        "events": {
-            "retentionTimeInDays": 1,
-            "partitionCount": 2,
-            "partitionIds": [
-                "0",
-                "1"
-            ],
-            "path": "contosotesthub29358clone",
-            "endpoint": "sb://iothub-ns-contosotes-2227755-92aefc8b73.servicebus.windows.net/"
-        },
-        "operationsMonitoringEvents": {
-            "retentionTimeInDays": 1,
-            "partitionCount": 2,
-            "partitionIds": [
-                "0",
-                "1"
-            ],
-            "path": "contosotesthub29358clone-operationmonitoring",
-            "endpoint": "sb://iothub-ns-contosotes-2227755-92aefc8b73.servicebus.windows.net/"
-        }
-    ```
-
 #### <a name="update-the-keys-for-the-routing-resources-that-are-not-being-moved"></a>移動されないルーティング リソースのキーを更新する
 
 ルーティングが構成されているハブの Resource Manager テンプレートをエクスポートすると、リソースの配置はアスタリスクで示され、リソースのキーがエクスポートされたテンプレートで提供されていないことがわかります。 新しいハブのテンプレートをインポートしてハブを作成する **前** に、ポータルでこれらのリソースに移動してキー を取得し、記入する必要があります。 
@@ -355,31 +323,37 @@ IoT ハブを複製する前に、いくつかの点を考慮する必要があ�
 
 1. **[Template deployment (deploy using custom templates)]\(テンプレートのデプロイ (カスタム テンプレートを使用してデプロイ)\)** を選択します。 これにより、[Template deployment] \(テンプレートのデプロイ\)の画面が表示されます。 **［作成］** を選択します 次の画面が表示されます。
 
-   ![独自のテンプレートを作成するためのコマンドを示すスクリーンショット](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png" alt-text="独自のテンプレートを作成するためのコマンドを示すスクリーンショット":::
 
 1. **[Build your own template in the editor] \(エディターで独自のテンプレートをビルド\)** を選択します。これにより、ファイルからテンプレートをアップロードできます。 
 
-1. **[ファイルの読み込み]** を選択します。 
+1. **[ファイルの読み込み]** を選択します。
 
-   ![テンプレート ファイルをアップロードするためのコマンドを示すスクリーンショット](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-upload-file.png" alt-text="テンプレート ファイルをアップロードするためのコマンドを示すスクリーンショット":::
 
 1. 編集した新しいテンプレートを参照して選択し、**[開く]** を選択します。 編集ウィンドウにテンプレートが読み込まれます。 **[保存]** を選択します。 
 
-   ![テンプレートの読み込みを示すスクリーンショット](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-uploaded-file.png" alt-text="テンプレートの読み込みを示すスクリーンショット":::
 
-1. 次のフィールドに入力します。
+1. カスタム デプロイ ページで次のフィールドに入力します。
 
    **[サブスクリプション]** : 使用するサブスクリプションを選択します。
 
-   **[リソース グループ]**: 新しい場所で新しいリソース グループを作成します。 新しく設定したものが既にある場合は、新しい設定を作成する代わりに選択できます。
+   **[リソース グループ]** : 新しい場所で新しいリソース グループを作成します。 新しく設定したものがすでにある場合は、新しい設定を作成する代わりにそれを選択できます。
 
-   **[場所]** : 既存のリソース グループを選択した場合は、リソース グループの場所と一致するように入力されます。 新しいリソース グループを作成した場合は、その場所になります。
+   **[リージョン]** : 既存のリソース グループを選択した場合は、リソース グループの場所と一致するようにデータが入力されます。 新しいリソース グループを作成した場合は、その場所になります。
 
-   **[同意チェック ボックス]**: これは、作成中のリソースの支払いに同意することを意味します。
+   **[接続文字列]** : ハブの接続文字列が入力されます。
 
-1. **[購入]** をクリックします。
+   **[ハブ名]** : 新しいリージョン内のハブに名前を付けます。
 
-これで、ポータルでテンプレートが検証され、複製されたハブがデプロイされます。 ルーティング構成データがある場合は新しいハブに追加されますが、以前の場所のリソースを参照します。
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-custom-deployment-create.png" alt-text="[カスタム デプロイ] ページのスクリーンショット":::
+
+1. **[確認および作成]** ボタンを選択します。
+
+1. **[作成]** ボタンを選択します。 ポータルでテンプレートが検証され、複製されたハブがデプロイされます。 ルーティング構成データがある場合は新しいハブに追加されますが、以前の場所のリソースを参照します。
+
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-custom-deployment-final.png" alt-text="最後の [カスタム デプロイ] ページのスクリーンショット":::
 
 ## <a name="managing-the-devices-registered-to-the-iot-hub"></a>IoT ハブに登録されたデバイスを管理する
 

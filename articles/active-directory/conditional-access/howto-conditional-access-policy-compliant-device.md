@@ -1,24 +1,24 @@
 ---
-title: 条件付きアクセス - 準拠しているデバイスが必須 - Azure Active Directory
-description: 準拠しているデバイスを必須とするためにカスタムの条件付きアクセス ポリシーを作成します
+title: 条件付きアクセス - 準拠しているデバイスまたはハイブリッド参加済みデバイスが必須 - Azure Active Directory
+description: 準拠しているデバイスまたはハイブリッド参加済みデバイスを必須とするためにカスタムの条件付きアクセス ポリシーを作成します
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 11/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
-ms.reviewer: calebb, rogoya
+manager: karenhoran
+ms.reviewer: calebb, davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c98269f9851272e8caa9b26ae0c57ed13e9a99f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf4638c452714eaae69188450892c131c2033310
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89049130"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710807"
 ---
-# <a name="conditional-access-require-compliant-devices"></a>条件付きアクセス:Require compliant devices (準拠しているデバイスが必須)
+# <a name="conditional-access-require-compliant-or-hybrid-azure-ad-joined-device"></a>条件付きアクセス: 準拠しているデバイスまたは Hybrid Azure AD Join を使用したデバイスが必要
 
 Microsoft Intune をデプロイした組織では、デバイスから返された情報を使用して、以下のようなコンプライアンス要件を満たすデバイスを識別することができます。
 
@@ -28,6 +28,10 @@ Microsoft Intune をデプロイした組織では、デバイスから返され
 * デバイスが脱獄または root 化されていないことが必要
 
 このポリシー準拠情報は Azure AD に転送され、条件付きアクセスはそこで、リソースへのアクセスを許可するかブロックするかを決定できます。 デバイスの準拠ポリシーの詳細については、「[Intune を使用して組織内のリソースへのアクセスを許可するように、デバイス上でルールを設定する](/intune/protect/device-compliance-get-started)」という記事を参照してください。
+
+## <a name="template-deployment"></a>テンプレートのデプロイ
+
+組織は、このポリシーをデプロイするのに以下に示す手順を使用するか、[条件付きアクセス テンプレート (プレビュー) ](concept-conditional-access-policy-common.md#conditional-access-templates-preview)を使用するかを選ぶことができます。 
 
 ## <a name="create-a-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
@@ -44,11 +48,14 @@ Microsoft Intune をデプロイした組織では、デバイスから返され
 1. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)**  >  **[Include]\(含める\)** で、 **[すべてのクラウド アプリ]** を選択します。
    1. 特定のアプリケーションをポリシーから除外する必要がある場合は、 **[除外されたクラウド アプリの選択]** で **[除外]** タブから選択して **[選択]** を選びます。
    1. **[Done]** を選択します。
-1. **[条件]**  >  **[クライアント アプリ (プレビュー)]**  >  **[このポリシーを適用するクライアント アプリを選択します]** で、すべてを既定値が選択された状態のままにして、 **[完了]** を選択します。
-1. **[アクセス制御]**  >  **[許可]** で、 **[デバイスは準拠としてマーク済みである必要があります]** を選択します。
+1. **[アクセス制御]**  >  **[付与]** で
+   1. **[デバイスは準拠としてマーク済みである必要があります]** または **[Hybrid Azure AD Join を使用したデバイスである必要があります]** を選択します
+   1. **複数のコントロールの場合**、 **[選択したコントロールのいずれかが必要]** を選択します。
    1. **[選択]** を選択します。
-1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
+1. 設定を確認し、 **[ポリシーの有効化]** を **[レポート専用]** に設定します。
 1. **[作成]** を選択して、ポリシーを作成および有効化します。
+
+管理者は、[[レポート専用モード]](howto-conditional-access-insights-reporting.md) を使用して設定を確認した後、 **[ポリシーの有効化]** トグルを **[レポートのみ]** から **[オン]** に移動できます。
 
 > [!NOTE]
 > 上記の手順を使用して、 **[すべてのユーザー]** と **[すべてのクラウド アプリ]** に対して **[デバイスは準拠としてマーク済みである必要があります]** を選択した場合でも、新しいデバイスを Intune に登録できます。 **[デバイスは準拠としてマーク済みである必要があります]** コントロールを使用しても、Intune の登録はブロックされません。 

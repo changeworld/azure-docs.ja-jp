@@ -3,14 +3,14 @@ title: ジョブとタスクのエラーを確認する
 description: 確認するエラー、およびジョブとタスクのトラブルシューティング方法について説明します。
 author: mscurrell
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 09/08/2021
 ms.author: markscu
-ms.openlocfilehash: d8cf3b5e28d4455e00e0bdcbae2063771d3e8acd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31ca874ebb4e3d11d46ff47e775605ffdd015f63
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95736801"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815364"
 ---
 # <a name="job-and-task-error-checking"></a>ジョブとタスクのエラーの確認
 
@@ -25,7 +25,7 @@ ms.locfileid: "95736801"
 ジョブを追加する際は、次のパラメーターを指定できます。これらは、ジョブで発生するエラーに影響する場合があります。
 
 - [ジョブの制約](/rest/api/batchservice/job/add#jobconstraints)
-  - ジョブの最大アクティブ時間または最大実行時間を設定するための `maxWallClockTime` プロパティを必要に応じて指定できます。 超過した場合は、ジョブの [executionInfo](/rest/api/batchservice/job/get#cloudjob) で設定された `terminateReason` プロパティによって、ジョブが強制的に終了されます。
+  - ジョブの最大アクティブ時間または最大実行時間を設定するための `maxWallClockTime` プロパティを必要に応じて指定できます。 超過した場合は、ジョブの [executionInfo](/rest/api/batchservice/job/get#jobexecutioninformation) で設定された `terminateReason` プロパティによって、ジョブが強制的に終了されます。
 - [ジョブの準備タスク](/rest/api/batchservice/job/add#jobpreparationtask)
   - 指定した場合、ジョブのタスクがノード上で初めて実行されたときにジョブ準備タスクが実行されます。 ジョブ準備タスクが失敗した場合、タスクが実行されず、ジョブは完了しません。
 - [ジョブのリリース タスク](/rest/api/batchservice/job/add#jobreleasetask)
@@ -41,7 +41,7 @@ ms.locfileid: "95736801"
 
 ### <a name="job-preparation-tasks"></a>ジョブの準備タスク
 
-ジョブの準備タスクがジョブに指定されている場合、そのタスクのインスタンスは、ジョブのタスクが初めてノード上で実行されるときに実行されます。 ジョブに対して構成されるジョブの準備タスクは、実行されるジョブの準備タスク インスタンスを (プール内のノード数を上限として) 複数含んだタスク テンプレートと考えることができます。
+[ジョブの準備タスク](batch-job-prep-release.md#job-preparation-task)がジョブに指定されている場合、そのタスクのインスタンスは、ジョブのタスクが初めてノード上で実行されるときに実行されます。 ジョブに対して構成されるジョブの準備タスクは、実行されるジョブの準備タスク インスタンスを (プール内のノード数を上限として) 複数含んだタスク テンプレートと考えることができます。
 
 ジョブの準備タスクのインスタンスを確認して、エラーの有無を判断する必要があります。
 
@@ -51,7 +51,7 @@ ms.locfileid: "95736801"
 
 ### <a name="job-release-tasks"></a>ジョブのリリース タスク
 
-ジョブのリリース タスクがジョブに指定されている場合、ジョブが強制終了されると、ジョブの準備タスクが実行された各プール ノードでジョブのリリース タスクのインスタンスが実行されます。 ジョブのリリース タスクのインスタンスを確認して、エラーの有無を判断する必要があります。
+[ジョブのリリース タスク](batch-job-prep-release.md#job-release-task)がジョブに指定されている場合、ジョブが強制終了されると、ジョブの準備タスクが実行された各プール ノードでジョブのリリース タスクのインスタンスが実行されます。 ジョブのリリース タスクのインスタンスを確認して、エラーの有無を判断する必要があります。
 
 - 実行されているジョブのリリース タスクのすべてのインスタンスは、[List Preparation and Release Task Status](/rest/api/batchservice/job/listpreparationandreleasetaskstatus) API を使用してジョブから取得できます。 あらゆるタスクと同様、`failureInfo`、`exitCode`、`result` などのプロパティを備えた[実行情報](/rest/api/batchservice/job/listpreparationandreleasetaskstatus#jobpreparationandreleasetaskexecutioninformation)が提供されます。
 - ジョブのリリース タスクが 1 つ以上失敗すると、ジョブは強制終了され、`completed` 状態に移行します。
@@ -92,4 +92,4 @@ ms.locfileid: "95736801"
 ## <a name="next-steps"></a>次のステップ
 
 - アプリケーションに包括的なエラー チェックが実装されていることを確認してください。これは、問題を迅速に検出して診断するためにきわめて重要となる場合があります。
-- [ジョブとタスク](jobs-and-tasks.md)について学習します。
+- 詳細については、「[ジョブとタスク](jobs-and-tasks.md)」と「[ジョブの準備とタスクの解放](batch-job-prep-release.md)」を参照してください。

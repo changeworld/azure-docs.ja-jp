@@ -6,19 +6,17 @@ author: ddematheu2
 manager: chpalm
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: 287520f2964fba7c3c3804853e9356a8c77b2d06
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 2cf3875eef9dcad7ba85bcf12c52f03aa7103aca
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498798"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287772"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
-
 Azure Communication Services の **iOS 用のグループ通話のヒーロー サンプル** は、Communication Services Calling iOS SDK を使用して、音声とビデオを含むグループ通話エクスペリエンスを構築する方法を示しています。 このサンプル クイックスタートでは、サンプルを設定して実行する方法について説明します。 背景情報については、サンプルの概要を参照してください。
 
 ## <a name="download-code"></a>コードをダウンロードする
@@ -54,7 +52,7 @@ Azure Communication Services の **iOS 用のグループ通話のヒーロー �
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。
 - [Xcode](https://go.microsoft.com/fwLink/p/?LinkID=266532) を実行しており、有効な開発者証明書がキーチェーンにインストールされている Mac。
-- Azure Communication Services リソース。 詳細については、[Azure Communication リソースの作成](../../quickstarts/create-communication-resource.md)に関するページを参照してください。
+- Azure Communication Services リソース。 詳細については、[Azure Communication Services リソースの作成](../../quickstarts/create-communication-resource.md)に関するページを参照してください。
 - [認証エンドポイント](../../tutorials/trusted-service-tutorial.md)を実行してアクセス トークンをフェッチする Azure 関数。
 
 ## <a name="running-sample-locally"></a>サンプルをローカルで実行する
@@ -103,11 +101,11 @@ Communication Services サブスクリプションをクリーンアップして
 
 詳細については、次の記事を参照してください。
 
-- [Calling SDK の使用法](../../quickstarts/voice-video-calling/calling-client-samples.md)について理解する
+- [Calling SDK の使用法](../../quickstarts/voice-video-calling/getting-started-with-calling.md)について理解する
 - [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する
 
 ### <a name="additional-reading"></a>その他の情報
 
 - [Azure Communication GitHub](https://github.com/Azure/communication) - 他の例や情報は公式 GitHub ページで見つかります。
 - [サンプル](./../overview.md) - その他のサンプルと例については、「サンプルの概要」ページを参照してください。
-- [Azure Communication の通話機能](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features) - Calling iOS SDK の詳細 - [Azure Communication iOS Calling SDK](https://github.com/Azure/Communication/releases/)
+- [Azure Communication の通話機能](../../concepts/voice-video-calling/calling-sdk-features.md) - Calling iOS SDK の詳細 - [Azure Communication iOS Calling SDK](https://github.com/Azure/Communication/releases/)

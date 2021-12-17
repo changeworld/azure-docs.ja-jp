@@ -1,19 +1,19 @@
 ---
 title: Azure Application Gateway と VMware 仮想マシンを使用する
 description: Azure Application Gateway を使用して、CloudSimple プライベート クラウド環境内の VMware 仮想マシンで実行されている Web サーバーの受信 Web トラフィックを管理する方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d14fdc4e2b2b1dfca8194077acc0453808611946
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 15e10ed71702350aaadbac76ea02f445dd846cc1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97897945"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322799"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>CloudSimple プライベート クラウド環境内の VMware 仮想マシンで Azure Application Gateway を使用する
 

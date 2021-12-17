@@ -1,37 +1,25 @@
 ---
 title: Azure Percept の既知の問題
 description: Azure Percept の既知の問題とその回避策について説明します
-author: mimcco
-ms.author: mimcco
+author: juniem
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 03/25/2021
-ms.openlocfilehash: 49ac497505930d82a3ab8e90fb3f386cc1741dc7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4d6bbc2396819b1eea7ac17f5c0da87055450927
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605061"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223968"
 ---
-# <a name="known-issues"></a>既知の問題
+# <a name="azure-percept-known-issues"></a>Azure Percept の既知の問題
 
-以下の問題が発生した場合は、バグを開く必要はありません。 回避策のいずれかに問題が生じた場合は、イシューを開いてください。
+製品チームが認識している Azure Percept DK、Azure Percept Audio、または Azure Percept Studio に関する問題を次に示します。 可能な場合は、回避策とトラブルシューティングの手順について説明します。 これらの問題が操作の妨げになっている場合は、[Microsoft Q&A](/answers/topics/azure-percept.html) にそれを質問として投稿するか、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) でカスタマー サポート要求を送信してください。 
 
-|領域|問題の説明|回避策|
-|-------|---------|---------|
-| オンボード エクスペリエンス | デバイスの Wi-Fi を構成しないと、オンボード エクスペリエンスを完了できない (Azure ログインに失敗する)。 | 1. [Azure Percept DK に SSH 接続する](./how-to-ssh-into-percept-dk.md)。 <br> 2. デバイスのイーサネット IP アドレスを識別してコピーする。 <br> 3. イーサネット IP ベースの URL を使用して、オンボード エクスペリエンスに接続する。 |
-| オンボード エクスペリエンス | EULA (ライセンス契約) 内のリンクをクリックしても、新しい Web ページが開かないことがある。 | リンクをコピーし、別のブラウザー ウィンドウで開きます。 |
-| オンボード エクスペリエンス | モバイル Wi-Fi ホットスポットに接続していると、オンボード エクスペリエンスを使用できない。 | デバイスを SoftAP、Wi-Fi ネットワーク、またはイーサネット経由でネットワークに直接接続します。 |
-| Wi-Fi | SoftAP が切断または非表示になることがある。 | 調査中です。  多くの場合、デバイスを再起動すると復帰します。 |
-| Wi-Fi | Wi-Fi SoftAP のオンとオフを切り替えるハードウェア ボタンが機能しないことがある。 | ボタンを繰り返し押すか、デバイスを再起動します。 |
-| Wi-Fi | ユーザーが Wi-Fi に接続すると、次のメッセージが表示されることがある。 <br> "This Wi-Fi network uses an older security standard." (この Wi-Fi ネットワークでは古いセキュリティ標準が使用されています) | devKit の SoftAP では、WEP 暗号化アルゴリズムを使用します。 |
-| Wi-Fi | Windows 10 PC から SoftAP に接続できず、次のエラー メッセージが表示される。 <br> "Can't connect to this network" (このネットワークに接続できません) | DevKit とコンピューターの両方を再起動します。 |
-| デバイスの更新 | OTA 更新後にコンテナーが実行されない。 | デバイスに SSH 接続し、このコマンド `systemctl restart iotedge` を使用して IoT Edge コンテナーを再起動します。 これにより、すべてのコンテナーが再起動されます。 |
-| デバイスの更新 | 正常に更新されたにもかかわらず、更新が失敗したことを示すメッセージがユーザーに送信されることがある。 | IoT Hub で devkit のデバイス ツインに移動し、`swVersion` の値を確認して、更新を確認します。 これは、初回の更新で修正されています。 |
-| デバイスの更新 | 初回の更新を行うと、ユーザーの Wi-Fi 接続設定が消去されている場合がある。 | 更新後にオンボード エクスペリエンスを行い、Wi-Fi 接続を設定します。 これは、初回の更新で修正されています。 |
-| デバイスの更新 | OTA 更新を実行した後、ユーザーが以前に作成したユーザー アカウントを使用して SSH 経由でログオンすることができなくなります。さらに新しい SSH ユーザーをオンボード エクスペリエンスで作成することができません。 この問題は、プレインストールされている 2020.110.114.105 および 2020.109.101.105 のイメージ バージョンから OTA 更新を実行しているシステムに影響します。 | ユーザー プロファイルを回復するには、OTA 更新の後に次の手順を実行します。 <br> ユーザー名に "root" を使用して [DevKit に SSH 接続](./how-to-ssh-into-percept-dk.md)します。 オンボード エクスペリエンスで SSH の "root" ユーザーによるログインを無効にした場合は、再度有効にする必要があります。 正常に接続できたら、次のコマンドを実行します。 <br> ```mkdir -p /var/custom-configs/home; chmod 755 /var/custom-configs/home``` <br> 以前のユーザーのホーム データを回復するには、次のコマンドを実行します。 <br> ```mkdir -p /tmp/prev-rootfs && mount /dev/mmcblk0p3 /tmp/prev-rootfs && [ ! -L /tmp/prev-rootfs/home ] && cp -a /tmp/prev-rootfs/home/* /var/custom-configs/home/. && echo "User home migrated!"; umount /tmp/prev-rootfs``` |
-| デバイスの更新 | OTA 更新を行うと、更新グループが失われる。 | [これらの手順](./how-to-update-over-the-air.md#create-a-device-update-group)に従って、デバイスのタグを更新します。 |
-| Dev Tools Pack Installer | Docker がシステム上で正常に動作していない場合、オプションの Caffe のインストールは失敗する可能性があります。 | Docker がインストール済みで実行されていることを確認してから、Caffe のインストールを再試行します。 |
-| Dev Tools Pack Installer | 互換性のないシステムでは、オプションの CUDA のインストールは失敗します。 | インストーラを実行する前に、CUDA とのシステム互換性を確認します。 |
-| Docker、ネットワーク、IoT Edge | 内部ネットワークで 172.x.x.x が使用されている場合、Docker コンテナーは IoT Edge に接続できません。 | 次のように、/etc/docker/daemon.json ファイルに特殊な bip セクションを追加します: `{    "bip": "192.168.168.1/24"}` |
-|Azure Percept Studio | Azure Percept Studio 内の "ストリームの表示" リンクから、デバイスの Web ストリームを示す新しいウィンドウが開けない。 | 1.[Azure portal](https://portal.azure.com) を開き、 **[IoT Hub]** を選択します。 <br> 2.デバイスが接続されている IoT Hub をクリックします。 <br> 3.IoT Hub ページで **[自動デバイス管理]** の **[IoT Edge]** を選択します。 <br> 4.一覧からお使いのデバイスを選択します。 <br> 5.デバイスのページの上部にある **[モジュールの設定]** を選択します。 <br> 6.**HostIpModule** の横にあるごみ箱アイコンをクリックしてモジュールを削除します。 <br> 7.操作を確認するには、 **[確認と作成]** をクリックしてから **[作成]** をクリックします。 <br> 8.[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) を開き、左側のメニューパネルから **[デバイス]** をクリックします。 <br> 9.一覧からお使いのデバイスを選択します。 <br> 10。 **[ビジョン]** タブの **[デバイス ストリームの表示]** をクリックします。 デバイスによって新しいバージョンの HostIpModule がダウンロードされ、デバイスの Web ストリームがブラウザー タブで開かれます。 |
+|領域|現象|問題の説明|回避策|
+|-------|---------|---------|---------|
+| Azure Percept DK | Azure Percept Studio でサンプルおよびデモ モデルをデプロイできない | azureeyemodule または azureearspeechmodule モジュールの実行が停止する場合があります。 edgeAgent のログに「シンボリック リンクのレベルが多すぎます」というエラーが表示されます。 | デバイスを [USB 経由で更新](./how-to-update-via-usb.md)してリセットします |
+| ローカリゼーション | Azure Percept DK のセットアップ エクスペリエンスの一部で、英語を話さないユーザーに対して英語のテキストが表示される場合があります。 | Azure Percept DK のセットアップ エクスペリエンスは完全にはローカライズされていません。 | 修正は 2021 年 7 月に行われる予定です  |
+| Azure Percept DK | Mac でセットアップ エクスペリエンスを実行すると、Wi-Fi への接続後にセットアップ エクスペリエンスが突然閉じる場合があります。 | Mac でセットアップ エクスペリエンスを実行すると、最初に Web ブラウザーではなくウィンドウに表示されます。 接続がデバイスのアクセスポイントから Wi-Fi に切り替わると、ウィンドウは持続しません。 | Web ブラウザーを開き、 https://10.1.1.1 にアクセスします。これにより、セットアップ エクスペリエンスを完了できます。 |
+| Azure Percept DK | 開発キットでカスタム モデルを実行し、開発キットを再起動すると、既定のサンプル モデルが実行されます。 | カスタム モデルのモジュール ツイン コンテナーは、デバイスの再起動にまたがって保持されません。 再起動後、カスタム モジュールのモジュール ツインを再構築する必要があります。これには 5 分以上かかる場合があります。 そのプロセスが完了するまで、開発キットでは既定のモデルが実行されます。 | 再起動後、カスタム モジュール ツインが再作成されるまで待つ必要があります。 |

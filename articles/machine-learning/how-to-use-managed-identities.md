@@ -1,23 +1,23 @@
 ---
-title: アクセスの制御にマネージド ID を使用する (プレビュー)
+title: アクセスの制御にマネージド ID を使用する
 titleSuffix: Azure Machine Learning
 description: マネージド ID を使用して、Azure Machine Learning ワークスペースから Azure リソースへのアクセスを制御する方法について説明します。
 services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
-ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 3246f6668a653c05599001a2f8d8fc8d376936ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.date: 10/21/2021
+ms.openlocfilehash: 493ca7789d47f642025c34779c8895084bf28acd
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642417"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558271"
 ---
-# <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning でマネージド ID を使用する (プレビュー)
+# <a name="use-managed-identities-with-azure-machine-learning"></a>Azure Machine Learning でマネージド ID を使用する
 
 [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用すると、"*リソースへのアクセスに必要な最低限のアクセス許可*" でワークスペースを構成できます。 
 
@@ -30,9 +30,6 @@ Azure Machine Learning ワークスペースを信頼できる方法で構成す
  * ACR への管理者ユーザーのアクセスを有効にせずに、Azure Machine Learning ワークスペース用に ACR を構成して使用します。
  * ワークスペースの外部のプライベート ACR にアクセスして、トレーニングまたは推論用のベース イメージをプルします。
  * 関連付けられているリソースにアクセスするために、ユーザー割り当てのマネージド ID を使用してワークスペースを作成します。
-
-> [!IMPORTANT]
-> マネージド ID を使用した Azure Machine Learning でのリソースへのアクセス制御は、現在プレビュー段階です。 プレビュー機能では、サポートやサービス レベル アグリーメントは保証されず、"現状有姿" で提供されます。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
  
 ## <a name="prerequisites"></a>前提条件
 
@@ -218,7 +215,7 @@ from azureml.core.container_registry import RegistryIdentity
 
 identity = RegistryIdentity()
 identity.resource_id= "<UAI resource ID>"
-identity.client_id="<UAI client ID>”
+identity.client_id="<UAI client ID>"
 env.docker.base_image_registry.registry_identity=identity
 env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 ```
@@ -234,7 +231,7 @@ env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 
 ワークスペースを作成する際は、関連付けられているリソースにアクセスするために使用される、ユーザー割り当てのマネージド ID を指定できます。ACR、KeyVault、Storage、および App Insights。
 
-最初に[ユーザー割り当てのマネージド ID を作成](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli)し、マネージド ID の ARM リソース ID を書き留めます。
+最初に[ユーザー割り当てのマネージド ID を作成](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)し、マネージド ID の ARM リソース ID を書き留めます。
 
 その後、Azure CLI または Python SDK を使用してワークスペースを作成します。 CLI を使用する場合は、`--primary-user-assigned-identity` パラメーターを使用して ID を指定します。 SDK を使用する場合は、`primary_user_assigned_identity` を使用します。 次に、これらのパラメーターを使用して新しいワークスペースを作成するための Azure CLI と Python の使用例を示します。
 
@@ -255,16 +252,18 @@ ws = Workspace.create(name="workspace name",
     primary_user_assigned_identity="managed identity ARM ID")
 ```
 
-また、[ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced)を使用して、ユーザー割り当てのマネージド ID を持つワークスペースを作成することもできます。
+また、[ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/)を使用して、ユーザー割り当てのマネージド ID を持つワークスペースを作成することもできます。
 
 > [!IMPORTANT]
-> Azure Machine Learning service で作成するのではなく、関連付けられている独自のリソースを使用する場合は、それらのリソースにマネージド ID ロールを付与する必要があります。 割り当てを行うには、[ロール割り当て ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment)を使用します。
+> Azure Machine Learning service で作成するのではなく、関連付けられている独自のリソースを使用する場合は、それらのリソースにマネージド ID ロールを付与する必要があります。 割り当てを行うには、[ロール割り当て ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-dependencies-role-assignment)を使用します。
 
-(暗号化用のカスタマー マネージド キー) [https://docs.microsoft.com/azure/machine-learning/concept-data-encryption ] があるワークスペースでは、ユーザー割り当てマネージド ID を渡して、ストレージから Key Vault に認証できます。 引数 __user-assigned-identity-for-cmk-encryption__ (CLI) または __user_assigned_identity_for_cmk_encryption__ (SDK) を使用して、マネージド ID を渡します。 このマネージド ID は、ワークスペースのプライマリ ユーザー割り当てのマネージド ID と同じであることも異なることもあります。
+[暗号化のためのカスタマー マネージド キー](concept-data-encryption.md)を持つワークスペースの場合、ストレージから Key Vault への認証のために、ユーザーに割り当てられたマネージド ID を渡すことができます。 引数 __user-assigned-identity-for-cmk-encryption__ (CLI) または __user_assigned_identity_for_cmk_encryption__ (SDK) を使用して、マネージド ID を渡します。 このマネージド ID は、ワークスペースのプライマリ ユーザー割り当てのマネージド ID と同じであることも異なることもあります。
 
 既存のワークスペースがある場合は、```az ml workspace update``` CLI コマンドまたは ```Workspace.update``` Python SDK メソッドを使用して、システム割り当てからユーザー割り当てマネージド ID に更新できます。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Machine Learning のエンタープライズ セキュリティ](concept-enterprise-security.md)の詳細を確認します。
+* [Azure Machine Learning のエンタープライズ セキュリティ](concept-enterprise-security.md)の詳細情報
+* [ID ベースのデータ アクセス](how-to-identity-based-data-access.md)について確認する
+* [コンピューティング クラスターでのマネージド ID](how-to-create-attach-compute-cluster.md) について確認する。

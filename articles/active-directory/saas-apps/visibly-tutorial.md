@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: de41e1ef021ea3da2b3a5bef4268469aab448a21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1db2bdab4915dab3c5ae1ec1e18614a38a40fe9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92637940"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332689"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visibly"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Visibly の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "92637940"
 * Visibly にアクセスできるユーザーを Azure AD で制御します。
 * ユーザーが Azure AD アカウントを使用して Visibly に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,27 +37,25 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Visibly では、**SP** によって開始される SSO がサポートされています。
+* Visibly では、**SP** Initiated SSO がサポートされています。
+* Visibly では、[自動化されたユーザー プロビジョニング](visibly-provisioning-tutorial.md)がサポートされています。
 
-* Visibly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-## <a name="adding-visibly-from-the-gallery"></a>ギャラリーからの Visibly の追加
+## <a name="add-visibly-from-the-gallery"></a>ギャラリーからの Visibly の追加
 
 Azure AD への Visibly の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Visibly を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Visibly**」と入力します。
 1. 結果パネルから **[Visibly]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-visibly"></a>Visibly の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Visibly で Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Visibly の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Visibly で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Visibly で Azure AD SSO を構成してテストするには、次の手順に従います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -72,9 +68,9 @@ Visibly で Azure AD SSO を構成してテストするには、次の構成要�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Visibly** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Visibly** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -83,7 +79,6 @@ Visibly で Azure AD SSO を構成してテストするには、次の構成要�
     a. **[サインオン URL]** テキスト ボックスに、URL として「`https://app.visibly.io/`」と入力します。
 
     b. **[応答 URL]** ボックスに、URL として「`https://api.visibly.io/api/v1/verifyResponse`」と入力します。
-
 
 1. Visibly アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -106,6 +101,7 @@ Visibly で Azure AD SSO を構成してテストするには、次の構成要�
 1. **[Visibly のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -125,26 +121,20 @@ Visibly で Azure AD SSO を構成してテストするには、次の構成要�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Visibly]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-visibly-sso"></a>Visibly SSO の構成
 
-1. 資格情報を使用して Visibly にログインします。
+1. ご自分の資格情報を使用して Visibly にサインインします。
 
 1. ナビゲーション メニューから、**設定** オプションに移動します。
 
     ![設定オプションが選択されていることを示すスクリーンショット。](./media/visibly-tutorial/settings.png)
 
-1. [Settings]\(設定\) 内の **[Integrations]\(統合\)** をクリックします。
+1. 設定で **[Integrations]\(統合\)** をクリックします。
 
     ![[Settings]\(設定\) メニューから [Integrations]\(統合\) が選択されていることを示すスクリーンショット。](./media/visibly-tutorial/integrations.png)
 
@@ -158,32 +148,30 @@ Visibly で Azure AD SSO を構成してテストするには、次の構成要�
 
     a. **[Entity ID]\(エンティティ ID\)** ボックスに、Azure portal からコピーした **エンティティ ID** の値を貼り付けます。
 
-    b. **[SSO URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
+    b. **[SSO url]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     c. **[SSO name]\(SSO 名\)** ボックスに、有効な名前を指定します。
 
     d. Azure portal からダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容を **[Certificate]\(証明書\)** ボックスに貼り付けます。または、 **[Upload Certificate]\(証明書のアップロード)** を選択して、**証明書** をアップロードすることもできます。
 
-    e. [設定] メニューの **[保存]**
+    e. **[保存]** をクリックします。
 
 ### <a name="create-visibly-test-user"></a>Visibly テスト ユーザーの作成
 
 このセクションでは、B.Simon というユーザーを Visibly に作成します。 Visibly では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Visibly にユーザーがまだ存在していない場合は、認証後に新しいユーザーが作成されます。
 
+Visibly では、自動ユーザー プロビジョニングもサポートされています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./visibly-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [Visibly] タイルをクリックすると、SSO を設定した Visibly に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Visibly のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+* Visibly のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Visibly] タイルをクリックすると、Visibly のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
-
-- [Azure AD で Visibly を試す](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+Visibly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

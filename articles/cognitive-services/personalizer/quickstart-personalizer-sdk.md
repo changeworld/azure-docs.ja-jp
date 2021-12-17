@@ -1,6 +1,9 @@
 ---
 title: クイック スタート:SDK を使用して学習ループを作成および使用する - Personalizer
 description: このクイックスタートでは、Personalizer クライアント ライブラリを使用してナレッジ ベースを作成および管理する方法について説明します。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
@@ -8,12 +11,12 @@ ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: Personalizer, Azure Personalizer, 機械学習
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 3acfd8134a2a65e6ea9f019baff24b8b8149f7f3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: f35b20c47c12130423badcac3373be27c01e13c0
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777323"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829863"
 ---
 # <a name="quickstart-personalizer-client-library"></a>クイック スタート:Personalizer クライアント ライブラリ
 

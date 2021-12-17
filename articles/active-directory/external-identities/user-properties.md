@@ -1,34 +1,34 @@
 ---
 title: B2B ゲスト ユーザーのプロパティ - Azure Active Directory | Microsoft Docs
-description: 招待に応じる前と後の Azure Active Directory B2B ゲスト ユーザーのプロパティと状態
+description: Azure Active Directory B2B の招待されたゲスト ユーザーの、招待に応じる前と後のプロパティと状態
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/18/2021
+ms.date: 10/21/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08ed02c65db201e18ce710633b421edb5ecb2db0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bed6a0eb5c97905fa82b15b15f6997568c1d3c03
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104655701"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262605"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B コラボレーション ユーザーのプロパティ
 
-この記事では、招待に応じる前と後の Azure Active Directory (Azure AD) 内の B2B ゲスト ユーザー オブジェクトのプロパティと状態について説明します。 Azure AD 企業間 (B2B) コラボレーション ユーザーは、UserType = Guest のユーザーです。 このゲスト ユーザーは通常、パートナー組織に属しており、既定では招待側のディレクトリ内で制限された権限を付与されています。
+この記事では、招待された Azure Active Directory B2B (Azure AD B2B) コラボレーション ユーザー オブジェクトの、招待に応じる前と後のプロパティと状態について説明します。 Azure AD B2B コラボレーション ユーザーは、一般にはパートナー組織からの外部ユーザーであり、Azure AD 組織に自分たちの資格情報を使用してサインインするように招待します。 この B2B コラボレーション ユーザー (一般に、"*ゲスト ユーザー*" とも呼ばれます) は、共有するアプリとリソースにアクセスできます。 B2B コラボレーション ユーザーのユーザー オブジェクトは、従業員と同じディレクトリに作成されます。 B2B コラボレーション ユーザー オブジェクトはディレクトリ内の特権が既定で制限されており、これらを従業員のように管理したり、グループに追加したりすることが可能です。
 
 招待側の組織のニーズに応じて、Azure AD B2B コラボレーション ユーザーは、以下のいずれかのアカウント状態になります。
 
-- 状態 1:Azure AD の外部インスタンスに所属し、招待側組織のゲスト ユーザーとして表されます。 この場合、B2B ユーザーは招待されたテナントに属している Azure AD アカウントを使用してサインインします。 パートナー組織が Azure AD を使用しない場合でも、Azure AD にゲスト ユーザーが作成されます。 要件は、ゲスト ユーザーが招待に応じること、および Azure AD が彼らの電子メール アドレスを検証することです。 この状態は、Just-In-Time (JIT) テナント、または "バイラル テナント" とも呼ばれます。
+- 状態 1:Azure AD の外部インスタンスに所属し、招待側組織のゲスト ユーザーとして表されます。 この場合、B2B ユーザーは招待されたテナントに属している Azure AD アカウントを使用してサインインします。 パートナー組織が Azure AD を使用しない場合でも、Azure AD にゲスト ユーザーが作成されます。 要件は、ゲスト ユーザーが招待に応じること、および Azure AD が彼らの電子メール アドレスを検証することです。 この状態は、Just-In-Time (JIT) テナント、"バイラル テナント"、またはアンマネージド Azure AD とも呼ばれます。
 
    > [!IMPORTANT]
-   > **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
+   > **2021 年 11 月 1 日以降**、既存のすべてのテナントに対して電子メールのワンタイム パスコード機能をオンにし、新しいテナントに対して既定で有効にするように、変更の展開を開始します。 この変更の一環として、アカウントとテナントの作成を停止します。B2B コラボレーションの招待の引き換え中に、Microsoft は、管理されていない (「バイラル」) Azure AD アカウントとテナントの作成を停止します。 休暇中の中断およびデプロイ ロックダウンを最小限に抑えるために、大多数のテナントは 2022 年 1 月に変更が表示されます。 電子メール ワンタイム パスコード機能を有効にするのは、これによりゲスト ユーザーにシームレスなフォールバック認証方法が提供されるからです。 ただし、この機能が自動的に有効にならないようにする場合は、[無効にする](one-time-passcode.md#disable-email-one-time-passcode)ことができます。
 
 - 状態 2:Microsoft アカウントまたは他のアカウントに所属し、ホスト組織のゲスト ユーザーとして表されます。 この場合、ゲスト ユーザーは Microsoft アカウントまたはソーシャル アカウント (google.com など) でサインインします。 招待されたユーザーの ID は、招待に応じる際に招待側組織のディレクトリ内に Microsoft アカウントとして作成されます。
 
@@ -59,7 +59,7 @@ ms.locfileid: "104655701"
 
 ![オファーに応じた後の状態 2 のゲスト ユーザー](media/user-properties/after-redemption-state2.png)
 
-状態 3 と状態 4 のゲスト ユーザーの場合、次のセクションで説明するように、 **[ソース]** プロパティは **[Azure Active Directory]** または **[Windows Server Active Directory]** に設定されます。
+状態 3 と状態 4 のゲスト ユーザーの場合、次のセクションで説明するように、 **[ソース]** プロパティは **[Azure Active Directory]** または **[Windows Server AD]** に設定されます。
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Azure AD B2B コラボレーション ユーザーの主要なプロパティ
 ### <a name="usertype"></a>UserType
@@ -82,7 +82,7 @@ ms.locfileid: "104655701"
 
 - Microsoft アカウント:このユーザーは Microsoft アカウントに所属し、Microsoft アカウントを使用して認証を行います。 この種類のサインインは、状態 2 に対応しています。
 
-- Windows Server Active Directory:このユーザーは、この組織に属しているオンプレミス Active Directory からサインインします。 この種類のサインインは、状態 3 に対応しています。
+- Windows Server AD: このユーザーは、この組織に属しているオンプレミス Active Directory からサインインされました。 この種類のサインインは、状態 3 に対応しています。
 
 - Azure Active Directory:このユーザーは、この組織に属している Azure AD アカウントを使用して認証されます。 この種類のサインインは、状態 4 に対応しています。
   > [!NOTE]
@@ -96,7 +96,7 @@ ms.locfileid: "104655701"
 ![ゲスト ユーザーのフィルターを示すスクリーンショット](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>UserType の変換
-PowerShell を使用して、UserType をメンバーからゲストに、またはその逆に変換できます。 ただし、UserType プロパティはユーザーと組織の関係を表しています。 そのため、このプロパティは、ユーザーと組織の関係が変化した場合にのみ変更するようにします。 ユーザーの関係が変化した場合に、ユーザー プリンシパル名 (UPN) を変更する必要はありますか。 また、同じリソースへのアクセス権を引き続きユーザーに持たせる必要がありますか。 メールボックスを割り当てる必要があるか、などの疑問です。 PowerShell を使用してアトミック アクティビティとして UserType を変更することはお勧めしません。 また、PowerShell を使用してこのプロパティを変更できなくなる場合に備えて、この値には依存しないことをお勧めします。
+PowerShell を使用して、UserType をメンバーからゲストに、またはその逆に変換できます。 ただし、UserType プロパティはユーザーと組織の関係を表しています。 そのため、このプロパティは、ユーザーと組織の関係が変化した場合にのみ変更するようにします。 ユーザーの関係が変化した場合に、ユーザー プリンシパル名 (UPN) を変更する必要はありますか。 また、同じリソースへのアクセス権を引き続きユーザーに持たせる必要がありますか。 メールボックスを割り当てる必要があるか、などの疑問です。 
 
 ## <a name="remove-guest-user-limitations"></a>ゲスト ユーザー制限の削除
 ゲスト ユーザーに、より高い権限を付与したい場合があります。 ゲスト ユーザーを任意のロールに追加することができます。また、メンバーと同じ権限を付与するために、ディレクトリでの既定のゲスト ユーザー制限を削除することもできます。

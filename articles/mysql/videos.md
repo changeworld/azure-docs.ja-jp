@@ -6,20 +6,22 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 4e264ddba0feb6597d71006f6544f0dd3745705b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8913f9b83021742aa91836f0d09d0fb3f0648fd0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94532411"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438058"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL のビデオ
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 このページでは、Azure Database for MySQL について学習するためのビデオ コンテンツを紹介します。
 
 ## <a name="overview-azure-database-for-postgresql-and-mysql"></a>概要:Azure Database for PostgreSQL と MySQL
 
->[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player] 
+>[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 [Channel 9 で開く](https://channel9.msdn.com/Events/Connect/2017/T147)
 
 Azure Database for PostgreSQL および Azure Database for MySQL は、お客様が、データベースの管理ではなく、アプリケーションに集中できるよう、フル マネージドのサービスを実現するコミュニティ エディション データベース エンジンです。 サービスを使用する利点の概要や、機能の実行例をご覧ください。

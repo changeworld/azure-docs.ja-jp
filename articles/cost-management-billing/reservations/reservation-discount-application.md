@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 1dec8253d785973aa900434c10f85ec0a63e0599
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c2f8ab7f2f5dc392696cc9e887f401502e906c3b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574874"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559789"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>予約割引の適用方法
 
@@ -25,7 +25,7 @@ ms.locfileid: "99574874"
 
 たとえば、後でリソースを作成して、使用率が低い一致する予約がある場合があります。 予約割引は、新しい一致するリソースに自動的に適用されます。
 
-その仮想マシンが、加入契約/アカウント内の複数の異なるサブスクリプションで実行される場合は、共有スコープを選択します。 共有スコープによって、サブスクリプションをまたぐ予約割引の適用が可能となります。 スコープは、予約の購入後に変更することができます。 詳しくは、[Azure の予約の管理](manage-reserved-vm-instance.md)に関する記事をご覧ください。
+その仮想マシンが、加入契約/アカウント内の複数の異なるサブスクリプションで実行される場合は、共有スコープを選択します。 共有スコープによって、サブスクリプションをまたぐ予約割引の適用が可能となります。 スコープは、予約の購入後に変更することができます。 詳しくは、[Azure の予約の管理](manage-reserved-vm-instance.md)に関する記事をご覧ください。 管理グループのスコープを使用することもできます。 これの場合、管理グループと課金スコープの両方に属するサブスクリプションのリストの中で、一致するリソースに予約割引が適用されます。
 
 予約割引が適用されるのは、エンタープライズ、Microsoft 顧客契約、CSP、または従量課金制のサブスクリプションに関連付けられたリソースのみです。 他のプランの種類のサブスクリプションで実行されるリソースは、予約割引の対象外です。
 

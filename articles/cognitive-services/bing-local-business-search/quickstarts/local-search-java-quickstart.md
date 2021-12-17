@@ -10,15 +10,13 @@ ms.date: 05/12/2020
 ms.topic: quickstart
 ms.service: cognitive-services
 ms.subservice: bing-local-business
-ms.custom:
-- devx-track-java
-- mode-api
-ms.openlocfilehash: 001fc80b30eaa736db27ba76384aaf273bdec903
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-java, mode-api
+ms.openlocfilehash: 5c575f2a8789620ae2acd73e4fc879a550d28307
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536655"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051232"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>クイック スタート:Java を使用して Bing Local Business Search API にクエリを送信する
 

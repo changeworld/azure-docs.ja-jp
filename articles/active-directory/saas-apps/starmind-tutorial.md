@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Starmind の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Starmind の統合'
 description: Azure Active Directory と Starmind の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/25/2020
+ms.date: 09/20/2021
 ms.author: jeedes
-ms.openlocfilehash: ecccc0bf05dfc4e27835a676748ca144c6bcc6c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: edcaea4c42b77b22b74a532f9a729a1f75cd8609
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92521987"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132299007"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-starmind"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Starmind の統合
+# <a name="tutorial-azure-ad-sso-integration-with-starmind"></a>チュートリアル: Azure AD SSO と Starmind の統合
 
 このチュートリアルでは、Starmind と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Starmind を統合すると、次のことができるようになります。
 
@@ -37,10 +37,10 @@ ms.locfileid: "92521987"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Starmind では、**SP** Initiated SSO がサポートされます
-* Starmind では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Starmind では、**SP** Initiated SSO がサポートされます。
+* Starmind では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
-## <a name="adding-starmind-from-the-gallery"></a>ギャラリーから Starmind を追加する
+## <a name="add-starmind-from-the-gallery"></a>ギャラリーから Starmind を追加する
 
 Azure AD への Starmind の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Starmind を追加する必要があります。
 
@@ -50,7 +50,6 @@ Azure AD への Starmind の統合を構成するには、ギャラリーから�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Starmind**」と入力します。
 1. 結果のパネルから **[Starmind]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-starmind"></a>Starmind の Azure AD SSO を構成してテストする
 
@@ -71,23 +70,22 @@ Starmind に対して Azure AD SSO を構成してテストするには、次の
 
 1. Azure portal の **Starmind** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.starmind.com` という形式で URL を入力します。
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>`
+    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>/broker/saml/endpoint` のパターンを使用して URL を入力します
 
-    c. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>/broker/saml/endpoint` のパターンを使用して URL を入力します
+    c. **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.starmind.com` という形式で URL を入力します。
 
     d. **[ログアウト URL]** テキスト ボックスに、`https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>/broker/saml/endpoint` のパターンを使用して URL を入力します。
 
-
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値は、実際のサインオン URL、識別子、応答 URL、およびログアウト URL で更新してください。 これらの値を取得するには、[Starmind クライアント サポート チーム](mailto:support@starmind.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL、およびログアウト URL で更新してください。 これらの値を取得するには、[Starmind クライアント サポート チーム](mailto:support@starmind.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -133,12 +131,12 @@ Starmind に対して Azure AD SSO を構成してテストするには、次の
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Starmind のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Starmind のサインオン URL にリダイレクトされます。 
 
-2. Starmind のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Starmind のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Starmind] タイルをクリックすると、Starmind サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Starmind] タイルをクリックすると、Starmind サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Starmind を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Starmind を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

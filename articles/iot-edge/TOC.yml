@@ -15,6 +15,8 @@
       href: quickstart.md
 - name: チュートリアル
   items:
+    - name: デバイスとモジュールを監視する
+      href: tutorial-monitor-with-workbooks.md
     - name: 開発環境をセットアップする
       items:
         - name: Linux コンテナーを使用した開発
@@ -24,31 +26,27 @@
     - name: カスタム コード モジュールの開発
       items:
         - name: C
-          items:
-            - name: Linux デバイス向けの C モジュール
-              href: tutorial-c-module.md
-            - name: Windows デバイス向けの C モジュール
-              href: tutorial-c-module-windows.md
+          href: tutorial-c-module.md
         - name: C#
-          items:
-            - name: Linux デバイス向けの C# モジュール
-              href: tutorial-csharp-module.md
-            - name: Windows デバイス向けの C# モジュール
-              href: tutorial-csharp-module-windows.md
+          href: tutorial-csharp-module.md
         - name: Java
           href: tutorial-java-module.md
         - name: Node.js
           href: tutorial-node-module.md
         - name: Python
           href: tutorial-python-module.md
+        - name: Windows コンテナーを使用する
+          items:
+            - name: C
+              href: tutorial-c-module-windows.md
+            - name: C#
+              href: tutorial-csharp-module-windows.md
     - name: Azure サービスをモジュールとしてデプロイする
       items:
         - name: Azure Functions を使用したデータのフィルター処理
           href: tutorial-deploy-function.md
         - name: Azure Stream Analytics を使用して平均値を見つける
           href: tutorial-deploy-stream-analytics.md
-        - name: Azure Machine Learning を使用してデータをスコア付けする
-          href: tutorial-deploy-machine-learning.md
         - name: Custom Vision を使用したイメージの分類
           href: tutorial-deploy-custom-vision.md
         - name: SQL を使用したローカルへのデータの格納
@@ -115,44 +113,74 @@
       href: support.md
     - name: 運用環境デプロイのチェックリスト
       href: production-checklist.md
-    - name: IoT Edge の用語集
-      href: iot-edge-glossary.md
 - name: 操作方法ガイド
   items:
-    - name: IoT Edge デバイスを作成する
+    - name: IoT Edge のインストールとプロビジョニング
       items:
-        - name: IoT Hub にデバイスを登録する
-          href: how-to-register-device.md
-        - name: IoT Edge のインストールとプロビジョニング
+        - name: IoT Edge デバイスを作成する
+          href: how-to-create-iot-edge-device.md
+        - name: Linux ホスト上の Linux コンテナー
           items:
-            - name: IoT Edge for Linux をインストールする
-              href: how-to-install-iot-edge.md
-            - name: IoT Edge for Linux on Windows を実行する
-              href: how-to-install-iot-edge-on-windows.md
-        - name: ランタイムの更新
+            - name: シングル デバイスのプロビジョニング
+              items:
+                - name: X.509 証明書の構成証明
+                  href: how-to-provision-single-device-linux-x509.md
+                - name: 対称キーの構成証明
+                  href: how-to-provision-single-device-linux-symmetric.md
+            - name: デバイスを大規模にプロビジョニングする
+              items:
+                - name: X.509 証明書の構成証明
+                  href: how-to-provision-devices-at-scale-linux-x509.md
+                - name: TPM の構成証明
+                  href: how-to-provision-devices-at-scale-linux-tpm.md
+                - name: 対称キーの構成証明
+                  href: how-to-provision-devices-at-scale-linux-symmetric.md
+        - name: Windows ホスト上の Linux コンテナー
+          items:
+            - name: シングル デバイスのプロビジョニング
+              items:
+                - name: X.509 証明書の構成証明
+                  href: how-to-provision-single-device-linux-on-windows-x509.md
+                - name: 対称キーの構成証明
+                  href: how-to-provision-single-device-linux-on-windows-symmetric.md
+            - name: デバイスを大規模にプロビジョニングする
+              items:
+                - name: X.509 証明書の構成証明
+                  href: how-to-provision-devices-at-scale-linux-on-windows-x509.md
+                - name: TPM の構成証明
+                  href: how-to-provision-devices-at-scale-linux-on-windows-tpm.md
+                - name: 対称キーの構成証明
+                  href: how-to-provision-devices-at-scale-linux-on-windows-symmetric.md
+            - name: Windows VM の入れ子になった仮想化を構成する
+              href: nested-virtualization.md
+            - name: 仮想スイッチを作成する
+              href: how-to-create-virtual-switch.md
+            - name: GPU アクセラレーションを構成する
+              href: gpu-acceleration.md
+        - name: Windows ホスト上の Windows コンテナー
+          items:
+            - name: シングル デバイスのプロビジョニング
+              items:
+                - name: 対称キーの構成証明
+                  href: how-to-provision-single-device-windows-symmetric.md
+                - name: X.509 証明書の構成証明
+                  href: how-to-provision-single-device-windows-x509.md
+            - name: デバイスを大規模にプロビジョニングする
+              items:
+                - name: 対称キーの構成証明
+                  href: how-to-provision-devices-at-scale-windows-symmetric.md
+                - name: X.509 証明書の構成証明
+                  href: how-to-provision-devices-at-scale-windows-x509.md
+                - name: TPM の構成証明
+                  href: how-to-provision-devices-at-scale-windows-tpm.md
+        - name: IoT Edge を更新する
           href: how-to-update-iot-edge.md
         - name: デバイス証明書の管理
           href: how-to-manage-device-certificates.md
-    - name: 代替デバイスのシナリオ
-      items:
-        - name: Windows コンテナーを使用して IoT Edge を実行する
-          href: how-to-install-iot-edge-windows-on-windows.md
         - name: Kubernetes で IoT Edge を実行する
           href: how-to-install-iot-edge-kubernetes.md
         - name: ARM テンプレートを使用して IoT Edge VM をデプロイする
           href: how-to-install-iot-edge-ubuntuvm.md
-    - name: DPS による自動プロビジョニング
-      items:
-        - name: TPM の構成証明
-          items:
-            - name: Linux
-              href: how-to-auto-provision-simulated-device-linux.md
-            - name: Windows
-              href: how-to-auto-provision-simulated-device-windows.md
-        - name: X.509 証明書の構成証明
-          href: how-to-auto-provision-x509-certs.md
-        - name: 対称キーの構成証明
-          href: how-to-auto-provision-symmetric-keys.md
     - name: カスタム モジュールの開発
       items:
         - name: Visual Studio 2019 を使用した開発
@@ -183,18 +211,30 @@
               href: how-to-deploy-cli-at-scale.md
             - name: Visual Studio Code
               href: how-to-deploy-vscode-at-scale.md
-    - name: デプロイの監視と診断
+    - name: 監視と診断
       items:
         - name: IoT Edge デプロイの監視
           href: how-to-monitor-iot-edge-deployments.md
         - name: モジュール ツインの監視
           href: how-to-monitor-module-twins.md
-        - name: EdgeAgent ダイレクト メソッド
+        - name: edgeAgent ダイレクト メソッドを使用する
           href: how-to-edgeagent-direct-method.md
-        - name: IoT Edge のログを取得する
+        - name: ダイレクト メソッドを使用してログを取得する
           href: how-to-retrieve-iot-edge-logs.md
         - name: 組み込みのメトリックにアクセスする
           href: how-to-access-built-in-metrics.md
+        - name: Azure Monitor の統合
+          items:
+            - name: メトリックの収集と転送
+              href: how-to-collect-and-transport-metrics.md
+            - name: キュレーションされた視覚化を探索する
+              href: how-to-explore-curated-visualizations.md
+            - name: アラート ルールの作成
+              href: how-to-create-alerts.md
+            - name: カスタム メトリックを追加する
+              href: how-to-add-custom-metrics.md
+            - name: FAQ とトラブルシューティング
+              href: how-to-troubleshoot-monitoring-and-faq.md
     - name: ゲートウェイとしての IoT Edge デバイスの使用
       items:
         - name: IoT デバイスのゲートウェイ
@@ -241,24 +281,32 @@
               href: how-to-continuous-integration-continuous-deployment-classic.md
     - name: トラブルシューティング
       items:
-        - name: 標準的な診断手順
+        - name: IoT Edge デバイスの診断
           href: troubleshoot.md
-        - name: よくあるエラーの解決方法
+        - name: Azure portal でのトラブルシューティング
+          href: troubleshoot-in-portal.md
+        - name: 一般的なエラーを解決する
           href: troubleshoot-common-errors.md
-- name: リファレンス
+- name: 関連項目
   items:
+    - name: ランタイム モジュール環境変数
+      href: 'https://github.com/Azure/iotedge/blob/master/doc/EnvironmentVariables.md'
+    - name: PowerShell 関数
+      items:
+        - name: IoT Edge for Linux on Windows
+          href: reference-iot-edge-for-linux-on-windows-functions.md
+        - name: IoT Edge for Windows
+          href: reference-windows-scripts.md
     - name: テスト証明書を作成する
       href: how-to-create-test-certificates.md
-    - name: Windows デバイス管理スクリプト
-      href: reference-windows-scripts.md
-    - name: IoT Edge for Linux on Windows スクリプト
-      href: reference-iot-edge-for-linux-on-windows-scripts.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+    - name: IoT 用語集
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: Azure IoT のサービス
       items:
         - name: IoT Hub
@@ -269,10 +317,8 @@
           href: /microsoft-iot-central/
         - name: IoT Edge
           href: ./index.yml
-        - name: IoT ソリューション アクセラレータ
-          href: ../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights
@@ -296,7 +342,7 @@
         - name: iOS プラットフォーム
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: IoT デバイス カタログ向けの Azure 認定
-      href: 'https://catalog.azureiotsolutions.com/'
+      href: 'https://devicecatalog.azure.com/'
     - name: Azure IoT デベロッパー センター
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure のロードマップ

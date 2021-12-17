@@ -3,18 +3,18 @@ title: チュートリアル - HTTPS 経由で Azure CDN のカスタム ドメ�
 description: Azure CDN のカスタム ドメインを追加し、ご利用のカスタム Blob Storage のエンドポイントに対してそのドメインで HTTPS を有効にする方法について説明します。
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: tutorial
 ms.date: 06/15/2018
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 296a51edf024551a03330f4843690e97c6abd47d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 367db92a3bb3d1bbd91c5aad068d8cff82261abc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564885"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434866"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>チュートリアル - HTTPS 経由で Azure CDN のカスタム ドメインを使用してストレージ BLOB にアクセスする
 

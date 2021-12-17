@@ -4,24 +4,21 @@ description: Azure portal を使用して Cloud Services (延長サポート) �
 ms.topic: how-to
 ms.service: cloud-services-extended-support
 ms.subservice: classic-to-arm-migration
-author: tanmaygore
-ms.author: tagore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: 79889b08baa80dc67b30ae445004e37d9f9fe295
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: b900b691ee02f438b4e222cdd69ac64e46f15d38
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286706"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431539"
 ---
 # <a name="migrate-to-cloud-services-extended-support-using-the-azure-portal"></a>Azure portal を使用して Cloud Services (延長サポート) に移行する
 
 この記事では、Azure portal を使用して [Cloud Services (クラシック)](../cloud-services/cloud-services-choose-me.md) から [Cloud Services (延長サポート)](overview.md) に移行する方法について説明します。
-
-> [!IMPORTANT]
-> 移行ツールを使用した Cloud Services (クラシック) から Cloud Services への移行 (延長サポート) は、現在、パブリック プレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="before-you-begin"></a>始める前に
 
@@ -37,7 +34,7 @@ ms.locfileid: "106286706"
 
 **移行リソース プロバイダーにサインアップする**
 
-1. [Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1) を使用して、Microsoft.Compute 名前空間で移行リソース プロバイダー `Microsoft.ClassicInfrastructureMigrate` とプレビュー機能 `Cloud Services` に登録します。  
+1. [Azure portal](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider-1) を使用して、Microsoft.Compute 名前空間で移行リソース プロバイダー `Microsoft.ClassicInfrastructureMigrate` とプレビュー機能 `Cloud Services` に登録します。  
 1. 登録が完了するまで 5 分待ってから、承認の状態を確認します。 
 
 ## <a name="migrate-your-cloud-service-resources"></a>クラウド サービスのリソースを移行する
@@ -66,7 +63,7 @@ ms.locfileid: "106286706"
 
     準備が正常に完了したら、移行をコミットできる状態になります。
     
-    :::image type="content" source="media/in-place-migration-portal-4.png" alt-text="Azure portal での検証合格を示す画像。":::
+    :::image type="content" source="media/in-place-migration-portal-4.png" alt-text="Azure portal での検証合格を示す画像。"::: 
 
     準備が失敗した場合は、エラーを確認し、問題を解決してから、もう一度準備を試してみて下さい。 
 
@@ -94,4 +91,5 @@ ms.locfileid: "106286706"
     「yes」と入力して確認し、移行をコミットします。 移行が完了します。 移行された Cloud Services (延長サポート) のデプロイで、すべての操作がロック解除されます。 
 
 ## <a name="next-steps"></a>次の手順
-[移行後の変更](in-place-migration-overview.md#post-migration-changes)に関するセクションを参照し、新しい Cloud Services (延長サポート) のデプロイのデプロイ ファイル、自動化、その他の属性での変更を確認します。 
+
+[移行後の変更](post-migration-changes.md)に関するセクションを参照し、新しい Cloud Services (延長サポート) のデプロイのデプロイ ファイル、自動化、その他の属性での変更を確認します。

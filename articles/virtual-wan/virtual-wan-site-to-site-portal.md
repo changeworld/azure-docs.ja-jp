@@ -1,18 +1,18 @@
 ---
 title: チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
-description: このチュートリアルでは、Azure Virtual WAN を使用して Azure へのサイト間 VPN 接続を作成する方法を学習します。
+description: Azure Virtual WAN を使用して Azure へのサイト間 VPN 接続を作成する方法を学習します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 03/05/2021
+ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 365952beca96b91d312eab209c5332fca2d4842b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ece8300ee9d44699dfcce8fd89b1e07b94d99df9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061878"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823268"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
@@ -22,19 +22,20 @@ ms.locfileid: "106061878"
 
 > [!div class="checklist"]
 > * 仮想 WAN を作成する
-> * ハブを作成する
+> * ハブの基本設定を構成する
+> * サイト間 VPN ゲートウェイの設定を構成する
 > * サイトを作成する
 > * サイトをハブに接続する
 > * VPN サイトをハブに接続する
 > * VNet をハブに接続する
 > * 構成ファイルをダウンロードする
-> * VPN ゲートウェイを構成する
+> * VPN ゲートウェイを表示または編集する
 
 > [!NOTE]
 > 通常、多くのサイトがある場合は、[Virtual WAN パートナー](https://aka.ms/virtualwan)を利用してこの構成を作成します。 ただし、ネットワークに慣れていて、独自の VPN デバイスの構成に熟練している場合は、この構成を自分で作成することができます。
 >
 
-![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan.png)
+:::image type="content" source="./media/virtual-wan-about/virtualwan.png" alt-text="Virtual WAN のネットワーク図を示すスクリーンショット。":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,11 +47,17 @@ ms.locfileid: "106061878"
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-create-vwan-include.md)]
 
-## <a name="create-a-hub"></a><a name="hub"></a>ハブを作成する
+## <a name="configure-hub-settings"></a><a name="hub"></a>ハブ設定を構成する
 
-ハブは、サイト間、ExpressRoute、またはポイント対サイト機能のためのゲートウェイを含めることができる仮想ネットワークです。 ハブが作成されると、サイトをアタッチしていない場合でも、ハブに対して課金されます。 仮想ハブ内にサイト間 VPN ゲートウェイを作成するには 30 分かかります。
+ハブは、サイト間、ExpressRoute、またはポイント対サイト機能のためのゲートウェイを含めることができる仮想ネットワークです。 このチュートリアルでは、まず仮想ハブの **[基本]** タブに入力し、次のセクションで [サイト間] タブに入力します。 空のハブ (ゲートウェイを含まないハブ) を作成し、後でゲートウェイ (S2S、P2S、ExpressRoute など) を追加できることに注意してください。 ハブが作成されると、ハブ内にサイトをアタッチしたりゲートウェイを作成したりしていない場合でも、ハブに対して課金されます。
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
+
+## <a name="configure-a-site-to-site-gateway"></a><a name="gateway"></a>サイト間ゲートウェイを構成する
+
+このセクションでは、サイト間接続の設定を構成してから、ハブとサイト間 VPN ゲートウェイの作成に進みます。 ハブとゲートウェイの作成には約 30 分かかります。
+
+[!INCLUDE [Create a gateway](../../includes/virtual-wan-tutorial-s2s-gateway-include.md)]
 
 ## <a name="create-a-site"></a><a name="site"></a>サイトを作成する
 
@@ -58,26 +65,33 @@ ms.locfileid: "106061878"
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-## <a name="connect-the-vpn-site-to-the-hub"></a><a name="connectsites"></a>VPN サイトをハブに接続する
+## <a name="connect-the-vpn-site-to-a-hub"></a><a name="connectsites"></a>VPN サイトをハブに接続する
 
-この手順では、VPN サイトをハブに接続します。
+このセクションでは、VPN サイトをハブに接続します。
 
 [!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>VNet をハブに接続する
+## <a name="connect-a-vnet-to-the-hub"></a><a name="vnet"></a>VNet をハブに接続する
+
+このセクションでは、ハブと VNet の間の接続を作成します。
 
 [!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 
 ## <a name="download-vpn-configuration"></a><a name="device"></a>VPN 構成をダウンロードする
 
-オンプレミス VPN デバイスを構成するには、VPN デバイス構成を使用します。
+オンプレミス VPN デバイスを構成するには、VPN デバイス構成ファイルを使用します。 基本的な手順は下のとおりです。 構成ファイルに含まれる内容と VPN デバイスの構成方法に関する情報は、次のとおりです。 
 
-1. 仮想 WAN のページで、 **[概要]** をクリックします。
-2. **[Hub ->VPNSite] (ハブから VPNSite)** ページの上部にある **[Download VPN config] (VPN 構成のダウンロード)** をクリックします。Azure により、リソース グループ "microsoft-network-[location]" にストレージ アカウントが作成されます。ここで、location は WAN の場所です。 VPN デバイスに構成を適用した後は、このストレージ アカウントを削除できます。
-3. ファイルの作成が完了したら、リンクをクリックしてファイルをダウンロードできます。
-4. オンプレミスの VPN デバイスに構成を適用します。
+1. **[仮想ハブ] -> [VPN (サイト間)]** ページに移動します。
 
-### <a name="about-the-vpn-device-configuration-file"></a>VPN デバイス構成ファイルについて
+1. **[VPN (サイト間)]** ページの上部にある **[VPN 構成のダウンロード]** をクリックします。Azure により、リソース グループ 'microsoft-network-[location]' にストレージ アカウントが作成されるときに一連のメッセージが表示されます。この location は WAN の場所です。
+
+1. ファイルの作成が完了したら、リンクをクリックしてファイルをダウンロードします。 ファイルの内容の詳細については、このセクションの「[VPN デバイス構成ファイルについて](#config-file)」を参照してください。
+
+1. オンプレミスの VPN デバイスに構成を適用します。 詳細については、このセクションの [VPN デバイスの構成](#vpn-device)に関する説明を参照してください。
+
+1. VPN デバイスに構成を適用した後は、Azure によって作成されたストレージ アカウントを保持する必要はありません。 これは削除することができます。
+
+### <a name="about-the-vpn-device-configuration-file"></a><a name="config-file"></a>VPN デバイス構成ファイルについて
 
 デバイス構成ファイルには、オンプレミスの VPN デバイスを構成するときに使用する構成が含まれています。 このファイルを表示すると、次の情報を確認できます。
 
@@ -207,7 +221,7 @@ ms.locfileid: "106061878"
    }
   ```
 
-### <a name="configuring-your-vpn-device"></a>VPN デバイスの構成
+### <a name="configuring-your-vpn-device"></a><a name="vpn-device"></a>VPN デバイスの構成
 
 >[!NOTE]
 > Virtual WAN パートナー ソリューションを使用して作業している場合、VPN デバイスの構成が自動的に行われます。 デバイス コントローラーは Azure から構成ファイルを取得し、デバイスに適用して Azure への接続を設定します。 これは、VPN デバイスを手動で構成する方法を知る必要がないことを意味します。
@@ -215,25 +229,28 @@ ms.locfileid: "106061878"
 
 デバイスを構成する手順が必要な場合は、[VPN デバイス構成スクリプトのページ](~/articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#configscripts)の手順を使用できます。このとき、次の点に注意してください。
 
-* VPN デバイスのページに書かれている手順は Virtual WAN 用ではありませんが、構成ファイルの Virtual WAN の値を使用して VPN デバイスを手動で構成することができます。 
+* VPN デバイスのページに書かれている手順は Virtual WAN 用ではありませんが、構成ファイルの Virtual WAN の値を使用して VPN デバイスを手動で構成することができます。
+ 
 * VPN Gateway 用のダウンロード可能なデバイス構成スクリプトは、構成が異なるため、Virtual WAN では機能しません。
+
 * 新しい仮想 WAN は、IKEv1 と IKEv2 の両方をサポートできます。
+
 * Virtual WAN では、ポリシー ベースとルート ベースの両方の VPN デバイスとデバイスの手順を使用できます。
 
-## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>VPN ゲートウェイを構成する
+## <a name="view-or-edit-gateway-settings"></a><a name="gateway-config"></a>ゲートウェイの設定を表示または編集する
 
-VPN ゲートウェイの設定は、 **[表示/構成]** を選択することでいつでも確認、構成することができます。
+VPN ゲートウェイの設定は、 **[仮想ハブ] -> [VPN (サイト間)]** に移動し、 **[表示/構成]**  を選択して、いつでも表示および編集できます。
 
 :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="[VPN (サイト間)] ページのスクリーンショット。[表示/構成] アクションを指す矢印が表示されている。" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
 
 **[VPN Gateway の編集]** ページでは、次の設定を確認できます。
 
-* VPN Gateway のパブリック IP アドレス (Azure によって割り当てられます)
-* VPN Gateway のプライベート IP アドレス (Azure によって割り当てられます)
-* VPN Gateway の既定の BGP IP アドレス (Azure によって割り当てられます)
-* カスタム BGP IP アドレスの構成オプション: このフィールドは APIPA (Automatic Private IP Addressing) 用に予約されています。 Azure では、169.254.21.* から 169.254.22.* の範囲の BGP IP がサポートされます。 Azure では、これらの範囲の BGP 接続が受け入れられますが、既定の BGP IP を使用して接続がダイヤルされます。
+* **パブリック IP アドレス**: Azure によって割り当てられます。
+* **プライベート IP アドレス**: Azure によって割り当てられます。
+* **Default BGP IP Address (既定の BGP IP アドレス)** : Azure によって割り当てられます。
+* **Custom BGP IP Address (カスタム BGP IP アドレス)** : このフィールドは APIPA (自動プライベート IP アドレス指定) 用に予約されています。 Azure では、169.254.21.* から 169.254.22.* の範囲の BGP IP がサポートされます。 Azure では、これらの範囲の BGP 接続が受け入れられますが、既定の BGP IP を使用して接続がダイヤルされます。
 
-   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="構成を表示する" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="[編集] ボタンが強調表示されている [VPN Gateway の編集] ページを示すスクリーンショット。" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>リソースをクリーンアップする
 

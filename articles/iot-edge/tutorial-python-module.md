@@ -3,19 +3,18 @@ title: チュートリアル - Azure IoT Edge を使用したカスタム Python
 description: このチュートリアルでは、Python コードで IoT Edge モジュールを作成し、Edge デバイスに展開する方法について説明します。
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.reviewer: kgremban
 ms.author: kgremban
 ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d6a95dae91ef3e6aa7d39cf8af51c355a87ea73a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f315e3987d46bc4a27b5ad5566b0424f410cd16a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462730"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485208"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-using-linux-containers"></a>チュートリアル: Linux コンテナーを使用して Python IoT Edge モジュールを開発してデプロイする
 
@@ -86,7 +85,7 @@ Python で IoT Edge モジュールを開発するには、開発マシンに次
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **[Python モジュール]** を選択します。 |
    | Provide a module name (モジュール名の指定) | ご自身のモジュール **PythonModule** に名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの **ログイン サーバー** の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/pythonmodule のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure Container Registry の **ログイン サーバー** の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/pythonmodule のようになります。 |
 
    ![Docker イメージ リポジトリを指定する](./media/tutorial-python-module/repository.png)
 
@@ -99,6 +98,9 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 1. VS Code エクスプローラーで、 **.env** ファイルを開きます。
 2. ご自身の Azure コンテナー レジストリからコピーした **ユーザー名** と **パスワード** の値を使用して、フィールドを更新します。
 3. .env ファイルを保存します。
+
+>[!NOTE]
+>このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、「[コンテナー レジストリへのアクセスを管理する](production-checklist.md#manage-access-to-your-container-registry)」を参照してください。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 
@@ -120,7 +122,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
     import json
     ```
 
-3. グローバル カウンターで **TEMPERATURE_THRESHOLD** 変数と **TWIN_CALLBACKS** 変数を追加します。 温度のしきい値により、データが IoT Hub に送信される基準値が設定されます。データは、マシンの測定温度がこの値を超えると送信されます。
+3. **TEMPERATURE_THRESHOLD**、**RECEIVED_MESSAGES** および **TWIN_CALLBACKS** 変数のグローバル定義を追加します。 温度のしきい値により、データが IoT Hub に送信される基準値が設定されます。データは、マシンの測定温度がこの値を超えると送信されます。
 
     ```python
     # global counters
@@ -129,63 +131,60 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
     RECEIVED_MESSAGES = 0
     ```
 
-4. **input1_listener** 関数を次のコードに置き換えます。
+4. **create_client** 関数のコードを次のコードに置き換えます。
 
     ```python
-        # Define behavior for receiving an input message on input1
-        # Because this is a filter module, we forward this message to the "output1" queue.
-        async def input1_listener(module_client):
+    def create_client():
+        client = IoTHubModuleClient.create_from_edge_environment()
+
+        # Define function for handling received messages
+        async def receive_message_handler(message):
             global RECEIVED_MESSAGES
-            global TEMPERATURE_THRESHOLD
-            while True:
-                try:
-                    input_message = await module_client.receive_message_on_input("input1")  # blocking call
-                    message = input_message.data
-                    size = len(message)
-                    message_text = message.decode('utf-8')
-                    print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
-                    custom_properties = input_message.custom_properties
-                    print ( "    Properties: %s" % custom_properties )
-                    RECEIVED_MESSAGES += 1
-                    print ( "    Total messages received: %d" % RECEIVED_MESSAGES )
-                    data = json.loads(message_text)
-                    if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
-                        custom_properties["MessageType"] = "Alert"
-                        print ( "Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
-                        await module_client.send_message_to_output(input_message, "output1")
-                except Exception as ex:
-                    print ( "Unexpected error in input1_listener: %s" % ex )
+            print("Message received")
+            size = len(message.data)
+            message_text = message.data.decode('utf-8')
+            print("    Data: <<<{data}>>> & Size={size}".format(data=message.data, size=size))
+            print("    Properties: {}".format(message.custom_properties))
+            RECEIVED_MESSAGES += 1
+            print("Total messages received: {}".format(RECEIVED_MESSAGES))
 
-        # twin_patch_listener is invoked when the module twin's desired properties are updated.
-        async def twin_patch_listener(module_client):
+            if message.input_name == "input1":
+                message_json = json.loads(message_text)
+                if "machine" in message_json and "temperature" in message_json["machine"] and message_json["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
+                    message.custom_properties["MessageType"] = "Alert"
+                    print("ALERT: Machine temperature {temp} exceeds threshold {threshold}".format(
+                        temp=message_json["machine"]["temperature"], threshold=TEMPERATURE_THRESHOLD
+                    ))
+                    await client.send_message_to_output(message, "output1")
+
+        # Define function for handling received twin patches
+        async def receive_twin_patch_handler(twin_patch):
+            global TEMPERATURE_THRESHOLD
             global TWIN_CALLBACKS
-            global TEMPERATURE_THRESHOLD
-            while True:
-                try:
-                    data = await module_client.receive_twin_desired_properties_patch()  # blocking call
-                    print( "The data in the desired properties patch was: %s" % data)
-                    if "TemperatureThreshold" in data:
-                        TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
-                    TWIN_CALLBACKS += 1
-                    print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
-                except Exception as ex:
-                    print ( "Unexpected error in twin_patch_listener: %s" % ex )
+            print("Twin Patch received")
+            print("     {}".format(twin_patch))
+            if "TemperatureThreshold" in twin_patch:
+                TEMPERATURE_THRESHOLD = twin_patch["TemperatureThreshold"]
+            TWIN_CALLBACKS += 1
+            print("Total calls confirmed: {}".format(TWIN_CALLBACKS))
+
+        try:
+            # Set handler on the client
+            client.on_message_received = receive_message_handler
+            client.on_twin_desired_properties_patch_received = receive_twin_patch_handler
+        except:
+            # Cleanup if failure occurs
+            client.shutdown()
+            raise
+
+        return client
     ```
 
-5. ツインの更新もリッスンするように **listeners** を更新します。
+7. main.py ファイルを保存します。
 
-    ```python
-        # Schedule task for C2D Listener
-        listeners = asyncio.gather(input1_listener(module_client), twin_patch_listener(module_client))
+8. VS Code のエクスプローラーで、ご自身の IoT Edge ソリューション ワークスペースの **deployment.template.json** ファイルを開きます。
 
-        print ( "The sample is now waiting for messages. ")
-    ```
-
-6. main.py ファイルを保存します。
-
-7. VS Code のエクスプローラーで、ご自身の IoT Edge ソリューション ワークスペースの **deployment.template.json** ファイルを開きます。
-
-8. **PythonModule** モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを **moduleContent** セクションの下部、 **$edgeHub** モジュール ツインの後に挿入します。
+9. **PythonModule** モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを **moduleContent** セクションの下部、 **$edgeHub** モジュール ツインの後に挿入します。
 
    ```json
        "PythonModule": {
@@ -197,7 +196,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
    ![モジュール ツインをデプロイ テンプレートに追加する](./media/tutorial-python-module/module-twin.png)
 
-9. deployment.template.json ファイルを保存します。
+10. deployment.template.json ファイルを保存します。
 
 ## <a name="build-and-push-your-module"></a>モジュールをビルドしてプッシュする
 

@@ -10,12 +10,12 @@ metadata:
   author: mimckitt
   ms.author: mimckitt
   ms.date: 03/06/2020
-  ms.openlocfilehash: efbdf689b895278445f022d15473591e09a691f9
-  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+  ms.openlocfilehash: 99549a57055f3791a7dba53d5c8d893ec07788ab
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/27/2021
-  ms.locfileid: "98878733"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114441901"
 landingContent:
 - title: Cloud Services (延長サポート) について
   linkLists:
@@ -46,7 +46,7 @@ landingContent:
     - text: 利用できるサイズ
       url: available-sizes.md
     - text: よく寄せられる質問
-      url: faq.md
+      url: faq.yml
     - text: ゲスト OS のリリース ニュース
       url: ../cloud-services/cloud-services-guestos-update-matrix.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
 - title: ハウツー ガイド

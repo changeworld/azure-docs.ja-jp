@@ -7,28 +7,28 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
-ms.date: 10/20/2020
+ms.date: 08/11/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ea282cb0fcf25f7ac5f17bb9e2f693d189320078
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 12da538cfbf258aa8e447d5b5832cbc1865600ab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889163"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745226"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>カスタム Docker イメージを使用してモデルをトレーニングする
 
 この記事では、Azure Machine Learning でモデルをトレーニングするときに、カスタム Docker イメージを使用する方法について説明します。 この記事のサンプル スクリプトは、畳み込みニューラル ネットワークを作成してペットの画像を分類するために使用します。 
 
-Azure Machine Learning では既定の Docker 基本イメージを提供します。 Azure Machine Learning 環境を使用して、保守されている [Azure Machine Learning 基本イメージ](https://github.com/Azure/AzureML-Containers)の 1 つや独自の[カスタム イメージ](how-to-deploy-custom-docker-image.md#create-a-custom-base-image)など、さまざまなの基本イメージを指定することもできます。 カスタム基本イメージを使用すると、依存関係を詳細に管理し、トレーニング ジョブの実行時にコンポーネントのバージョンを厳密に制御できます。
+Azure Machine Learning では既定の Docker 基本イメージを提供します。 Azure Machine Learning 環境を使用して、保守されている [Azure Machine Learning 基本イメージ](https://github.com/Azure/AzureML-Containers)の 1 つや独自の[カスタム イメージ](./how-to-deploy-custom-container.md)など、さまざまなの基本イメージを指定することもできます。 カスタム基本イメージを使用すると、依存関係を詳細に管理し、トレーニング ジョブの実行時にコンポーネントのバージョンを厳密に制御できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 コードは、次の環境のいずれかで実行してください。
 
 * Azure Machine Learning コンピューティング インスタンス (ダウンロードやインストールは必要なし):
-  * [環境とワークスペースの設定](tutorial-1st-experiment-sdk-setup.md)に関するチュートリアルを完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
+  * [クイック スタート: Azure Machine Learning の利用を開始](quickstart-create-resources.md)に関するチュートリアルを完了して、SDK およびサンプル リポジトリが事前に組み込まれている専用のノートブック サーバーを作成します。
   * Azure Machine Learning の [例のリポジトリ](https://github.com/Azure/azureml-examples)で、 **[notebooks]**  >  **[fastai]**  >  **[train-pets-resnet34.ipynb]** ディレクトリに移動して完了したノートブックを検索します。 
 * 独自の Jupyter Notebook サーバー:
   * [ワークスペース構成ファイル](how-to-configure-environment.md#workspace)を作成します。
@@ -53,13 +53,12 @@ ws = Workspace.from_config()
 
 ### <a name="define-your-environment"></a>環境を定義する
 
-`Environment` オブジェクトを作成し、Docker を有効にします。
+`Environment` オブジェクトを作成します。
 
 ```python
 from azureml.core import Environment
 
 fastai_env = Environment("fastai2")
-fastai_env.docker.enabled = True
 ```
 
 次のコードで指定された基本イメージは、分散型ディープ ラーニング機能を可能にする fast.ai ライブラリをサポートしています。 詳細については、[fast.ai の Docker Hub リポジトリ](https://hub.docker.com/u/fastdotai)を参照してください。 
@@ -89,7 +88,7 @@ fastai_env.docker.base_image_registry.password = "password"
 ```python 
 # Specify Docker steps as a string. 
 dockerfile = r"""
-FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210615.v1
 RUN echo "Hello from custom container!"
 """
 
@@ -104,9 +103,10 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 
 >[!IMPORTANT]
 > Azure Machine Learning では、次のソフトウェアを提供する Docker イメージのみがサポートされています。
-> * Ubuntu 16.04 以上
-> * Conda 4.5.# 以上
+> * Ubuntu 18.04 以上。
+> * Conda 4.7.# 以上。
 > * Python 3.6 以上
+> * /bin/sh で入手可能な POSIX 準拠シェルは、トレーニングに使用されるすべてのコンテナー イメージで必要です。 
 
 Azure Machine Learning 環境の作成と管理の詳細について詳しくは、[ソフトウェア環境を作成して使用する](how-to-use-environments.md)方法に関するページを参照してください。 
 
@@ -142,9 +142,14 @@ except ComputeTargetException:
 print(compute_target.get_status().serialize())
 ```
 
+
+>[!IMPORTANT]
+>コンピューティング上の任意のイメージ ビルドに CPU SKU を使用します。 
+
+
 ## <a name="configure-your-training-job"></a>トレーニング ジョブを構成する
 
-このチュートリアルでは、[GitHub](https://github.com/Azure/azureml-examples/blob/main/workflows/train/fastai/pets/src/train.py) 上のトレーニング スクリプト *train.py* を使用します。 実際には、任意のカスタム トレーニング スクリプトを使用し、そのまま Azure Machine Learning で実行できます。
+このチュートリアルでは、[GitHub](https://github.com/Azure/azureml-examples/blob/main/python-sdk/workflows/train/fastai/pets/src/train.py) 上のトレーニング スクリプト *train.py* を使用します。 実際には、任意のカスタム トレーニング スクリプトを使用し、そのまま Azure Machine Learning で実行できます。
 
 `ScriptRunConfig` リソースを作成し、目的の[コンピューティング先](how-to-set-up-training-targets.md)で実行されるようにジョブを構成します。
 
@@ -173,5 +178,5 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="next-steps"></a>次の手順
 この記事では、カスタム Docker イメージを使用してモデルをトレーニングしました。 Azure Machine Learning の詳細については、以下の他の記事をご覧ください。
-* トレーニング中に[実行メトリックを追跡する](how-to-track-experiments.md)。
-* カスタム Docker イメージを使用して[モデルをデプロイする](how-to-deploy-custom-docker-image.md)。
+* トレーニング中に[実行メトリックを追跡する](how-to-log-view-metrics.md)。
+* カスタム Docker イメージを使用して[モデルをデプロイする](./how-to-deploy-custom-container.md)。

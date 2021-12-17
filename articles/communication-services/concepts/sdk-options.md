@@ -2,77 +2,98 @@
 title: Azure Communication Services の SDK と REST API
 titleSuffix: An Azure Communication Services concept document
 description: Azure Communication Services の SDK と REST API について詳しく説明します。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
-ms.date: 03/25/2021
+ms.author: rifox
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: d71720b446baa8e2e5e15c407a69d9ff884004b2
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: baba53d797d3d530b7f71b7f87e01dd673e6a6cc
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307692"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966405"
 ---
 # <a name="sdks-and-rest-apis"></a>SDK と REST API
 
-Azure Communication Services の機能は、概念的に 6 つの領域に分けられています。 ほとんどの領域には、インターネット経由で直接使用できる、公開された REST API に対してプログラミングされた、完全にオープンソースである SDK があります。 Calling SDK は独自のネットワーク インターフェイスを使用しており、現在はクローズ ドソースです。 SDK のサンプルとその他の技術的な詳細は、[Azure Communication Services の GitHub リポジトリ](https://github.com/Azure/communication)で公開されています。
+Azure Communication Services の機能は、概念的に 8 つの領域に分けられています。 ほとんどの領域には、インターネット経由で直接使用できる、公開された REST API に対してプログラミングされた、完全にオープンソースである SDK があります。 Calling SDK は独自のネットワーク インターフェイスを使用しており、クローズ ドソースです。
+
+下の表では、これらの領域と、REST API と SDK ライブラリの可用性についてまとめています。 また、API と SDK がエンドユーザー クライアント向けか、信頼できるサービス環境向けかについても記載しています。 SMS などの API と SDK には、信頼度の低い環境にあるエンドユーザーのデバイスから直接アクセスしないようにしてください。
+
+Web ベースの通話およびチャット アプリケーションの開発は、[Azure Communication Services UI ライブラリ](https://azure.github.io/communication-ui-library)によって迅速化できます。 この UI ライブラリには、アプリケーションにドロップできる、運用環境に対応した UI コンポーネントが用意されています。
 
 ## <a name="rest-apis"></a>REST API
-Communication Services API は、他の Azure REST API と共に [docs.microsoft.com](/rest/api/azure/) に記載されています。 このドキュメントでは、HTTP メッセージを構成する方法と、Postman を使用するためのガイダンスが提供されます。 このドキュメントは [GitHub](https://github.com/Azure/azure-rest-api-specs) の Swagger 形式でも提供されています。
+Communication Services API は、他の Azure REST API と共に [docs.microsoft.com](/rest/api/azure/) に記載されています。 このドキュメントでは、HTTP メッセージを構成する方法と、Postman を使用するためのガイダンスが提供されます。 REST インターフェイス ドキュメントは [GitHub](https://github.com/Azure/azure-rest-api-specs) で Swagger 形式でも提供されています。
 
 
 ## <a name="sdks"></a>SDK
-
-| アセンブリ | 名前空間| プロトコル | 機能 |
-|------------------------|-------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------|
-| Azure Resource Manager | Azure.ResourceManager.Communication | [REST](https://docs.microsoft.com/rest/api/communication/communicationservice)| Communication Services のリソースをプロビジョニングおよび管理します|
-| 共通 | Azure.Communication.Common| REST | 他の SDK の基本型を指定します |
-| ID | Azure.Communication.Identity| [REST](https://docs.microsoft.com/rest/api/communication/communicationidentity)| ユーザーを管理し、トークンにアクセスします|
-| 電話番号 _(ベータ)_| Azure.Communication.PhoneNumbers| [REST](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)| 電話番号を取得して管理します |
-| チャット | Azure.Communication.Chat| 独自の通知を含む [REST](https://docs.microsoft.com/rest/api/communication/) | アプリケーションにリアルタイムのテキスト ベースのチャットを追加します |
-| SMS| Azure.Communication.SMS | [REST](https://docs.microsoft.com/rest/api/communication/sms)| SMS メッセージを送信および受信します|
-| 呼び出し| Azure.Communication.Calling | 独自の転送 | 音声、ビデオ、画面共有、およびその他のリアルタイム データ通信機能を使用します |
-
-Azure Resource Manager、ID、および SMS SDK はサービス統合に重点を置いており、多くの場合、これらの機能をエンド ユーザー アプリケーションに統合すると、セキュリティ上の問題が発生します。 Common および Chat SDK は、サービスおよびクライアント アプリケーションに適しています。 Calling SDK は、クライアント アプリケーション向けに設計されています。 サービス シナリオに重点を置いた SDK は開発中です。
-
+| アセンブリ | プロトコル| Environment | 機能|
+|--------|----------|---------|----------------------------------|
+| Azure Resource Manager | [REST](/rest/api/communication/communicationservice)| サービス| Communication Services のリソースをプロビジョニングおよび管理します|
+| 共通 | 該当なし | クライアントとサービス | 他の SDK の基本型を指定します |
+| ID | [REST](/rest/api/communication/communicationidentity) | サービス| ユーザーを管理し、トークンにアクセスします|
+| 電話番号| [REST](/rest/api/communication/phonenumbers)| サービス| 電話番号を取得して管理します |
+| SMS| [REST](/rest/api/communication/sms) | サービス| SMS メッセージを送信および受信します|
+| チャット | 独自の通知を含む [REST](/rest/api/communication/) | クライアントとサービス | リアルタイムのテキスト チャットをアプリケーションに追加します |
+| 呼び出し| 独自の転送 | クライアント | 音声、ビデオ、画面共有、および他のリアルタイム通信 |
+| 呼び出し元のサーバー | REST| サービス| 呼び出しの作成と管理、音声の再生、および記録の構成 |
+| ネットワーク トラバーサル| REST| サービス| TURN サーバーへのアクセスによる低レベルのデータ転送 |
+| UI ライブラリ | 該当なし | クライアント | チャットおよび通話アプリ用の運用環境対応 UI コンポーネント |
 
 ### <a name="languages-and-publishing-locations"></a>言語と公開場所
 
 以下では、個々の SDK パッケージの公開場所について説明します。
 
-| 領域           | JavaScript | .NET | Python | Java SE | iOS | Android | その他                          |
+| 領域 | JavaScript | .NET | Python | Java SE | iOS | Android | その他|
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
-| Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [GitHub 経由の Go](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
-| 共通         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | 該当なし      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
-| ID | [npm](https://www.npmjs.com/package/@azure/communication-identity)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Identity)    | [PyPi](https://pypi.org/project/azure-communication-identity/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-identity)   | -              | -              | -                            |
-| 電話番号 | [npm](https://www.npmjs.com/package/@azure/communication-phone-numbers)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.PhoneNumbers)    | [PyPi](https://pypi.org/project/azure-communication-phonenumbers/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-phonenumbers)   | -              | -              | -                            |
-| チャット           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
-| SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Sms)    | [PyPi](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
-| 呼び出し        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
-| リファレンス ドキュメント     | [docs](https://azure.github.io/azure-sdk-for-js/communication.html)         | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [docs](http://azure.github.io/azure-sdk-for-java/communication.html)     | [docs](/objectivec/communication-services/calling/)      | [docs](/java/api/com.azure.android.communication.calling)            | -                              |
+| Azure Resource Manager | [npm](https://www.npmjs.com/package/@azure/arm-communication) | [NuGet](https://www.NuGet.org/packages/Azure.ResourceManager.Communication)| [PyPi](https://pypi.org/project/azure-mgmt-communication/)| [Maven](https://search.maven.org/search?q=azure-resourcemanager-communication)| -| -| [GitHub 経由の Go](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
+| 共通 | [npm](https://www.npmjs.com/package/@azure/communication-common) | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Common/)| 該当なし| [Maven](https://search.maven.org/search?q=a:azure-communication-common) | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)| [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common) | -|
+| ID | [npm](https://www.npmjs.com/package/@azure/communication-identity) | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Identity)| [PyPi](https://pypi.org/project/azure-communication-identity/)| [Maven](https://search.maven.org/search?q=a:azure-communication-identity) | -| -| -|
+| 電話番号 | [npm](https://www.npmjs.com/package/@azure/communication-phone-numbers) | [NuGet](https://www.NuGet.org/packages/Azure.Communication.PhoneNumbers)| [PyPi](https://pypi.org/project/azure-communication-phonenumbers/)| [Maven](https://search.maven.org/search?q=a:azure-communication-phonenumbers) | -| -| -|
+| チャット | [npm](https://www.npmjs.com/package/@azure/communication-chat)| [NuGet](https://www.NuGet.org/packages/Azure.Communication.Chat) | [PyPi](https://pypi.org/project/azure-communication-chat/) | [Maven](https://search.maven.org/search?q=a:azure-communication-chat) | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)| [Maven](https://search.maven.org/search?q=a:azure-communication-chat) | -|
+| SMS| [npm](https://www.npmjs.com/package/@azure/communication-sms) | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Sms)| [PyPi](https://pypi.org/project/azure-communication-sms/) | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms) | -| -| -|
+| 呼び出し| [npm](https://www.npmjs.com/package/@azure/communication-calling) | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Calling) | -| - | [GitHub](https://github.com/Azure/Communication/releases) | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)| -|
+|呼び出し自動化||[NuGet](https://www.NuGet.org/packages/Azure.Communication.CallingServer/)||[Maven](https://search.maven.org/artifact/com.azure/azure-communication-callingserver)
+|ネットワーク トラバーサル| [npm](https://www.npmjs.com/package/@azure/communication-network-traversal)|[NuGet](https://www.NuGet.org/packages/Azure.Communication.NetworkTraversal/)
+| UI ライブラリ| [npm](https://www.npmjs.com/package/@azure/communication-react) | - | - | - | - | - | [GitHub](https://github.com/Azure/communication-ui-library)、[Storybook](https://azure.github.io/communication-ui-library/?path=/story/overview--page) |
+| リファレンス ドキュメント | [docs](https://azure.github.io/azure-sdk-for-js/communication.html) | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)| -| [docs](http://azure.github.io/azure-sdk-for-java/communication.html) | [docs](/objectivec/communication-services/calling/)| [docs](/java/api/com.azure.android.communication.calling)| -|
+
+フレンドリ アセンブリ名と名前空間の間のマッピングを以下に示します。
+
+| アセンブリ | 名前空間 |
+|------------------------|--------------------------------------|
+| Azure Resource Manager | Azure.ResourceManager.Communication|
+| 共通 | Azure.Communication.Common |
+| ID | Azure.Communication.Identity |
+| 電話番号| Azure.Communication.PhoneNumbers |
+| SMS| Azure.Communication.SMS|
+| チャット | Azure.Communication.Chat |
+| 呼び出し| Azure.Communication.Calling|
+| 呼び出し元のサーバー | Azure.Communication.CallingServer|
+| ネットワーク トラバーサル| Azure.Communication.NetworkTraversal |
+| UI ライブラリ | Azure.Communication.Calling|
 
 
 ## <a name="rest-api-throttles"></a>REST API スロットル
-一部の REST API とそれに対応する SDK メソッドには、注意が必要なスロットル制限があります。 これらのスロットル制限を超えると、`429 - Too Many Requests` エラー応答がトリガーされます。 これらの制限は、[Azure サポートへのリクエスト](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)によって引き上げることができます。
+一部の REST API とそれに対応する SDK メソッドには、注意が必要なスロットル制限があります。 これらのスロットル制限を超えると、`429 - Too Many Requests` エラー応答がトリガーされます。 これらの制限は、[Azure サポートへのリクエスト](../../azure-portal/supportability/how-to-create-azure-support-request.md)によって引き上げることができます。
 
-| API                                                                                                                          | スロットル            |
+| API| スロットル|
 |------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| [すべての電話番号検索プラン API](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)         | 4 要求/日      |
-| [電話番号プラン (購入)](https://docs.microsoft.com/rest/api/communication/phonenumberadministration/purchasesearch) | 1 月に 1 回の購入  |
-| [SMS を送信する](https://docs.microsoft.com/rest/api/communication/sms/send)                                                       | 200 要求/分 |
+| [すべての電話番号検索プラン API](/rest/api/communication/phonenumbers) | 4 要求/日|
+| [電話番号プラン (購入)](/rest/api/communication/phonenumbers/purchasephonenumbers) | 1 月に 1 回の購入|
+| [SMS を送信する](/rest/api/communication/sms/send) | 200 要求/分 |
 
 
 ## <a name="sdk-platform-support-details"></a>SDK プラットフォーム サポートの詳細
 
-### <a name="ios-and-android"></a>iOS と Android 
+### <a name="ios-and-android"></a>iOS と Android
 
 - Communication Services iOS SDK は、iOS バージョン 13 以降と Xcode 11 以降を対象としています。
 - Android Java SDK は、Android API レベル 21 以降と Android Studio 4.0 以降を対象としています
 
-### <a name="net"></a>.NET 
+### <a name="net"></a>.NET
 
 Calling を除き、Communication Services パッケージは、下に示すプラットフォームがサポートされる .NET Standard 2.0 を対象としています。
 
@@ -91,6 +112,10 @@ Calling を除き、Communication Services パッケージは、下に示すプ�
 - Xamarin iOS 10.14
 - Xamarin Mac 3.8
 
+通話パッケージでは、以下で .NET Native または C++/WinRT を使用してビルドされた UWP アプリがサポートされています。
+- Windows 10 10.0.17763
+- Windows Server 2019 10.0.17763
+
 ## <a name="api-stability-expectations"></a>API の安定性に関する想定
 
 > [!IMPORTANT]
@@ -99,7 +124,7 @@ Calling を除き、Communication Services パッケージは、下に示すプ�
 将来的に、Communication Services SDK のバージョンが廃止される可能性があります。また、REST API とリリースされた SDK に対して破壊的変更が加えられる可能性があります。 Azure Communication Services は、サービス バージョンの廃止に関して、"*通常は*" 次の 2 つのサポート ポリシーに従います。
 
 - Communication Services インターフェイスの変更に起因するコードの変更を求められる場合、お客様は少なくとも 3 年前に通知されます。 通常、ドキュメントに記載されているすべての REST API と SDK API では、インターフェイスが使用停止になる前に少なくとも 3 年間警告が発生します。
-- お客様は、SDK アセンブリを最新のマイナー バージョンに更新する必要が生じる少なくとも 1 年前に通知されます。 これらの必須の更新は、同じメジャー バージョンに含まれているため、コードを変更する必要はありません。 これは、セキュリティとパフォーマンスに関する更新を頻繁に必要とするリアルタイム コンポーネントを持つ Calling および Chat ライブラリに対しては特に当てはまります。 Communication Services SDK を最新の状態に保つことを強くお勧めします。
+- お客様は、SDK アセンブリを最新のマイナー バージョンに更新する必要が生じる少なくとも 1 年前に通知されます。 これらの必須の更新は、同じメジャー バージョンに含まれているため、コードを変更する必要はありません。 最新の SDK を使用することは、セキュリティとパフォーマンスに関する更新を頻繁に必要とするリアルタイム コンポーネントである Calling および Chat ライブラリにとって特に重要です。 すべての Communication Services SDK を最新の状態に保つことを強くお勧めします。
 
 ### <a name="api-and-sdk-decommissioning-examples"></a>API と SDK の廃止の例
 
@@ -121,5 +146,5 @@ v2.05 バージョンの Calling SDK への更新を、v2.05 のリリースか�
 
 Azure Communication Services の使用を開始するには:
 
-- [Azure Communication のリソースを作成する](../quickstarts/create-communication-resource.md)
+- [Azure Communication Services リソースを作成する](../quickstarts/create-communication-resource.md)
 - [ユーザー アクセス トークン](../quickstarts/access-tokens.md)を生成する

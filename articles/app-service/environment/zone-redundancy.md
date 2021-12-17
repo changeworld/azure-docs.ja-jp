@@ -1,22 +1,24 @@
 ---
-title: App Service Environment での可用性ゾーンのサポート
+title: App Service Environment v2 での可用性ゾーンのサポート
 description: アプリがゾーン冗長になるように App Service Environment をデプロイする方法について説明します。
-author: ccompy
-ms.assetid: 24e3e7eb-c160-49ff-8d46-e947818ef186
+author: madsd
 ms.topic: article
-ms.date: 07/15/2020
-ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 383b5bb5c7295fe54efda883e47b9b2338286de5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/15/2021
+ms.author: madsd
+ms.openlocfilehash: 5c60b2496acb03f52da066e56feab1423ac6ae91
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624727"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520942"
 ---
-# <a name="availability-zone-support-for-app-service-environments"></a>App Service Environment での可用性ゾーンのサポート
+# <a name="availability-zone-support-for-app-service-environment-v2"></a>App Service Environment v2 での可用性ゾーンのサポート
 
-App Service Environment (ASE) は、Availability Zones (AZ) にデプロイできます。  ユーザーは、Azure リージョン内の特定の AZ に内部ロード バランサー (ILB) ASE をデプロイできます。 ILB ASE を特定の AZ に固定すると、ILB ASE によって使用されるリソースは、指定した AZ に固定されるか、ゾーン冗長の形式でデプロイされます。  
+> [!NOTE]
+> これは、Isolated App Service プランで使用される App Service Environment v2 に関する記事です。
+> 
+
+App Service Environment v2 (ASE) は、Availability Zones (AZ) にデプロイできます。  ユーザーは、Azure リージョン内の特定の AZ に内部ロード バランサー (ILB) ASE をデプロイできます。 ILB ASE を特定の AZ に固定すると、ILB ASE によって使用されるリソースは、指定した AZ に固定されるか、ゾーン冗長の形式でデプロイされます。  
 
 ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプロイされた ILB ASE は、ゾーンのリソースと見なされます。 次の ILB ASE の依存関係は、指定されたゾーンに固定されます。
 
@@ -45,7 +47,7 @@ ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプ
 
 ゾーン ILB ASE にデプロイされたアプリケーションは、同じリージョン内の他のゾーンで障害が発生した場合でも、引き続き実行され、その ASE でトラフィックが処理されます。  非実行時の動作 (アプリケーション サービス プランのスケーリング、アプリケーションの作成、アプリケーションの構成、およびアプリケーションの発行を含む) では、他の可用性ゾーンの障害から影響を受ける可能性があります。 ゾーンに固定されたゾーン ILB ASE のデプロイでは、既にデプロイされているアプリケーションの継続的なアップタイムのみが保証されます。
 
-## <a name="how-to-deploy-an-app-service-environment-in-an-availability-zone"></a>可用性ゾーンに App Service Environment をデプロイする方法 ##
+## <a name="how-to-deploy-an-app-service-environment-in-an-availability-zone"></a>可用性ゾーンに App Service Environment をデプロイする方法
 
 ゾーン ILB ASE は、Resource Manager テンプレートを使用して作成する必要があります。 Resource Manager テンプレートを使用してゾーン ILB ASE が作成されたら、Azure portal と CLI を使用して表示および操作することができます。  Resource Manager テンプレートは、ゾーン ILB ASE を最初に作成するときにのみ必要となります。
 
@@ -53,35 +55,35 @@ ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプ
 
 次の Resource Manager テンプレートのスニペットの例は、新しい ***zones*** プロパティを示しており、ILB ASE をゾーン 2 に固定する必要があることを指定しています。
 
-```
-   "resources": [
-      {
-         "type": "Microsoft.Web/hostingEnvironments",
-         "kind": "ASEV2",
-         "name": "yourASENameHere",
-         "apiVersion": "2015-08-01",
-         "location": "your location here",
-         "zones": [
+```json
+"resources": [
+    {
+        "type": "Microsoft.Web/hostingEnvironments",
+        "kind": "ASEV2",
+        "name": "yourASENameHere",
+        "apiVersion": "2015-08-01",
+        "location": "your location here",
+        "zones": [
             "2"
-         ],
-         "properties": {
-         "name": "yourASENameHere",
-         "location": "your location here",
-         "ipSslAddressCount": 0,
-         "internalLoadBalancingMode": "3",
-         "dnsSuffix": "contoso-internal.com",
-         "virtualNetwork": {
-             "Id": "/subscriptions/your-subscription-id-here/resourceGroups/your-resource-group-here/providers/Microsoft.Network/virtualNetworks/your-vnet-name-here",
-             "Subnet": "yourSubnetNameHere"
-          }
-         }
-      }
-    ]
+        ],
+        "properties": {
+            "name": "yourASENameHere",
+            "location": "your location here",
+            "ipSslAddressCount": 0,
+            "internalLoadBalancingMode": "3",
+            "dnsSuffix": "contoso-internal.com",
+            "virtualNetwork": {
+                "Id": "/subscriptions/your-subscription-id-here/resourceGroups/your-resource-group-here/providers/Microsoft.Network/virtualNetworks/your-vnet-name-here",
+                "Subnet": "yourSubnetNameHere"
+            }
+        }
+    }
+]
 ```
 
 アプリがゾーン冗長になるようにするには、2 つのゾーン ILB ASE をデプロイする必要があります。 2 つのゾーン ILB ASE は、別々の可用性ゾーンに存在する必要があります。 次に、それぞれの ILB ASE にアプリをデプロイする必要があります。 アプリが作成されたら、負荷分散ソリューションを構成する必要があります。 推奨されるソリューションは、ゾーン ILB ASE の[ゾーン冗長 Application Gateway](../../application-gateway/application-gateway-autoscaling-zone-redundant.md) アップストリームをデプロイすることです。 
 
-## <a name="in-region-data-residency"></a>リージョンのデータの保存場所 ##
+## <a name="in-region-data-residency"></a>リージョンのデータ所在地
 
 可用性ゾーンにデプロイされた ILB ASE には、ゾーン ILB ASE がデプロイされているリージョン内のユーザー データのみが格納されます。 Web サイトのファイル コンテンツ、ユーザーが指定した設定、および App Service に格納されているシークレットは、いずれもゾーン ILB ASE がデプロイされているリージョン内に残ります。
 

@@ -5,22 +5,18 @@ description: コンピューティング インスタンスを使用して、Web
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, deploy
-ms.author: mnark
-author: MrudulaN
+ms.topic: how-to
+ms.custom: deploy
 ms.reviewer: larryfr
-ms.date: 03/05/2020
-ms.openlocfilehash: d8b1c2a5384e479e39d169d368554f16c300a33e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/22/2021
+ms.openlocfilehash: cd848a6d07a21c965aa0de9be0206be86d1688a5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98954548"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549818"
 ---
-# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Azure Machine Learning コンピューティング インスタンスへのモデルのデプロイ
-
-
+# <a name="deploy-a-model-locally"></a>ローカルでモデルをデプロイする
 
 Azure Machine Learning を使用して Azure Machine Learning コンピューティング インスタンス にモデルを Web サービスとしてデプロイする方法を説明します。 次のいずれかの条件に当てはまる場合はコンピューティング インスタンスを使用します。
 
@@ -30,9 +26,11 @@ Azure Machine Learning を使用して Azure Machine Learning コンピューテ
 > [!TIP]
 > コンピューティング インスタンスの Jupyter Notebook から、同じ VM 上の Web サービスへのモデルのデプロイは、"_ローカル デプロイ_" です。 この場合、"ローカル" コンピューターはコンピューティング インスタンスです。 デプロイの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
-- コンピューティング インスタンスが実行されている Azure Machine Learning のワークスペース。 詳細については、[環境とワークスペースの設定](tutorial-1st-experiment-sdk-setup.md)に関する記事を参照してください。
+- コンピューティング インスタンスが実行されている Azure Machine Learning のワークスペース。 詳細については、「[クイック スタート: Azure Machine Learning の利用を開始](quickstart-create-resources.md)」をご覧ください。
 
 ## <a name="deploy-to-the-compute-instances"></a>コンピューティング インスタンスへデプロイする
 
@@ -96,7 +94,7 @@ print("prediction:", resp.text)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
+* [カスタム Docker イメージを使用してモデルをデプロイする方法](./how-to-deploy-custom-container.md)
 * [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)

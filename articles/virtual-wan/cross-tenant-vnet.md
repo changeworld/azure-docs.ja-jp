@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 82a5e90221a77b891df78984c7fddfd63b6532aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc065e68d513850f9e006371861d087cccc6e155
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585419"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669855"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>クロステナント Vnet を Virtual WAN に接続する
 
@@ -28,6 +28,9 @@ ms.locfileid: "104585419"
 
 この構成の手順は、Azure portal と PowerShell を組み合わせて使用して実行します。 ただし、機能自体は PowerShell と CLI でのみ提供されています。
 
+>[!NOTE]
+> テナント間の Virtual Network 接続は、PowerShell または CLI を使用してのみ管理できることに注意してください。 Azure portal では、テナント間の Virtual Network 接続を管理することは **できません**。
+> 
 ## <a name="before-you-begin"></a>はじめに
 
 ### <a name="prerequisites"></a>前提条件
@@ -44,9 +47,9 @@ ms.locfileid: "104585419"
 
 ## <a name="assign-permissions"></a><a name="rights"></a>アクセス許可の割り当て
 
-仮想ハブを持つ親サブスクリプションが、リモート テナント内の仮想ネットワークを変更したりアクセスしたりするには、リモート テナント サブスクリプションから親サブスクリプションに、**共同作成者** のアクセス許可を割り当てる必要があります。
+仮想ハブを持つ親サブスクリプションを管理するユーザーが、リモート テナント内の仮想ネットワークを変更してアクセスできるようにするには、このユーザーに、**共同作成者** のアクセス許可を割り当てる必要があります。 このユーザーに **共同作成者** のアクセス許可を割り当てるには、リモート テナントの VNET のサブスクリプションで行います。
 
-1. 親アカウント (仮想 WAN ハブを持つアカウント) に、**共同作成者** ロールの割り当てを追加します。 PowerShell または Azure portal のいずれかを使用して、このロールを割り当てることができます。 手順については以下の、**ロールの割り当てを追加または削除する** 方法に関する記事を参照してください。
+1. その管理者 (仮想 WAN ハブの管理に使用する管理者) に、**共同作成者** ロールの割り当てを追加します。 PowerShell または Azure portal のいずれかを使用して、このロールを割り当てることができます。 手順については以下の、**ロールの割り当てを追加または削除する** 方法に関する記事を参照してください。
 
    * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
    * [ポータル](../role-based-access-control/role-assignments-portal.md)
@@ -54,7 +57,7 @@ ms.locfileid: "104585419"
 1. 次に、リモート テナント サブスクリプションと親テナント サブスクリプションを PowerShell の現在のセッションに追加します。 次のコマンドを実行します。 親にサインインしている場合は、リモート テナントに対してのみコマンドを実行する必要があります。
 
    ```azurepowershell-interactive
-   Add-AzAccount -SubscriptionId "xxxxx-b34a-4df9-9451-4402dcaecc5b"
+   Connect-AzAccount -SubscriptionId "[subscription ID]" -TenantId "[tenant ID]"
    ```
 
 1. 親の資格情報を使用して Azure PowerShell にログインし、次のコマンドを実行することで、ロールの割り当てが成功したことを確認します。
@@ -63,7 +66,7 @@ ms.locfileid: "104585419"
    Get-AzSubscription
    ```
 
-1. アクセス許可が親に正しく伝達され、セッションに追加されている場合は、コマンドの出力に、リモート テナントが所有するサブスクリプションが表示されます。
+1. アクセス許可が親に正しく伝達され、セッションに追加されている場合は、親の **と** リモート テナントが所有するサブスクリプションは、両方ともコマンドの出力に表示されます。
 
 ## <a name="connect-vnet-to-hub"></a><a name="connect"></a>VNet をハブに接続する
 

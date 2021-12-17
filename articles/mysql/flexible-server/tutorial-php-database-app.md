@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: bb38b72af6e7c649c0904c41d3052b15a4c36955
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 154aa9ad4374456247d119902ccfb37803215cdb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770059"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442257"
 ---
-# <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>チュートリアル:Azure App Service で PHP (Laravel) と MySQL フレキシブル サーバー (プレビュー) のアプリを構築する
+# <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-app-in-azure-app-service"></a>チュートリアル: Azure App Service で PHP (Laravel) と MySQL フレキシブル サーバーのアプリを構築する
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 
 :::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="フレキシブル サーバーを使用した Azure での PHP Web アプリ":::
@@ -25,13 +27,14 @@ ms.locfileid: "107770059"
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * ローカル MySQL を使用して PHP (Laravel) アプリをセットアップする
-> * MySQL フレキシブル サーバー (プレビュー) を作成する
-> * PHP アプリを MySQL フレキシブル サーバー (プレビュー) に接続する
+> * MySQL フレキシブル サーバーの作成
+> * PHP アプリを MySQL フレキシブル サーバーに接続する
 > * Azure App Service にアプリを配置する
 > * データ モデルを更新し、アプリを再デプロイする
 > * Azure Portal でアプリを管理する
 
-[Azure サブスクリプション](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -138,15 +141,15 @@ php artisan serve
 
 PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 
-## <a name="create-a-mysql-flexible-server-preview"></a>MySQL フレキシブル サーバー (プレビュー) を作成する
-このステップでは、[Azure Database for MySQL フレキシブル サーバー](../index.yml) (パブリック プレビュー) に MySQL データベースを作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。 [Azure Cloud Shell](../../cloud-shell/overview.md) で、[`az flexible-server create`](/cli/azure/mysql/server#az_mysql_flexible_server_create) コマンドを使用してサーバーを作成します。
+## <a name="create-a-mysql-flexible-server"></a>MySQL フレキシブル サーバーの作成
+この手順では、MySQL データベースを [Azure Database for MySQL フレキシブル サーバー](../index.yml)に作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。 [Azure Cloud Shell](../../cloud-shell/overview.md) で、[`az flexible-server create`](/cli/azure/mysql/server#az_mysql_flexible_server_create) コマンドを使用してサーバーを作成します。
 
 ```azurecli-interactive
 az mysql flexible-server create  --resource-group myResourceGroup --public-access <IP-Address>
 ```
 
 > [!IMPORTANT]
-> - 次のステップで接続して Laravel データの移行を実行するときに使用するので、**サーバー名** と **接続文字列** を記録しておきます。
+>- 次のステップで接続して Laravel データの移行を実行するときに使用するので、**サーバー名** と **接続文字列** を記録しておきます。
 > - **IP-Address** 引数では、クライアント コンピューターの IP アドレスを指定します。 サーバーは作成時にロックされているので、ローカル環境でサーバーを管理するには、クライアント コンピューターへのアクセスを許可する必要があります。
 
 ### <a name="configure-server-firewall-to-allow-web-app-to-connect-to-the-server"></a>Web アプリがサーバーに接続できるようにサーバー ファイアウォールを構成する
@@ -282,7 +285,7 @@ FTP およびローカルの Git では、"デプロイ ユーザー" を使用�
 
 デプロイ ユーザーを構成するには、Azure Cloud Shell で [az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) コマンドを実行します。 _&lt;username>_ と _&lt;password>_ を、デプロイ ユーザーのユーザー名とパスワードに置き換えます。
 
-ユーザー名は、Azure 内で一意である必要があり、ローカル Git プッシュの場合は "\@" シンボルを含めることはできません。
+ユーザー名は、Azure 内で一意である必要があります。ローカル Git プッシュの場合、"@" 記号を含めることはできません。
 パスワードは長さが 8 文字以上で、文字、数字、記号のうち 2 つを含む必要があります。
 
 ```bash
@@ -330,7 +333,7 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.azurewebs
 Git デプロイが有効な、空の新しい Web アプリが作成されました。
 
 > [!NOTE]
-> Git リモートの URL は、deploymentLocalGitUrl プロパティに、 https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git という形式で表示されます。 この URL は後で必要になるので保存しておいてください。
+> Git リモートの URL は deploymentLocalGitUrl プロパティに `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git` 形式で出力されます。 この URL は後で必要になるので保存しておいてください。
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 

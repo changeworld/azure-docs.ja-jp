@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 49def79c467aa8f2b3fda9688dc77fcb003a34a5
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: f2322a6a445c908528163673662cc59227c01711
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256567"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044424"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>オンプレミスのアプリケーションを保護するために、Strata を使用して Azure AD B2C を拡張するためのチュートリアル
 
@@ -49,7 +49,7 @@ Strata の Maverics との統合には、次のコンポーネントが含まれ
 
 - **Azure AD B2C**:ユーザーの資格情報の検証を担当する承認サーバー。 認証済みユーザーは、Azure AD B2C ディレクトリに格納されているローカル アカウントを使用して、オンプレミスのアプリにアクセスできます。
 
-- **外部のソーシャルまたはエンタープライズ IdP**:任意の OpenID Connect プロバイダー、Facebook、Google、または GitHub を使用できます。 Azure AD B2C での [外部 IdP](./technical-overview.md#external-identity-providers) の使用に関する情報を参照してください。  
+- **外部のソーシャルまたはエンタープライズ IdP**:任意の OpenID Connect プロバイダー、Facebook、Google、または GitHub を使用できます。 詳細については、[ID プロバイダーの追加](./add-identity-provider.md)に関するページをご覧ください。  
 
 - **Strata の Maverics Identity Orchestrator**:ユーザーのサインオンを調整し、HTTP ヘッダーを介してアプリに ID を透過的に渡すサービス。
 
@@ -324,7 +324,7 @@ appgateways:
 
 ## <a name="test-the-flow"></a>フローをテストする
 
-1. オンプレミスのアプリケーションの URL (`https://example.com/sonar/dashboard`) にアクセスします。
+1. オンプレミスのアプリケーション URL () に移動し `https://example.com/sonar/dashboard` ます。
 
 2. Orchestrator によって、ユーザー フローで構成したページにリダイレクトされます。
 

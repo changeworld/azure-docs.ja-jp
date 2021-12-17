@@ -9,12 +9,13 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 1d64233fc477ec25f91bb73c744b10210571df41
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.custom: has-adal-ref
+ms.openlocfilehash: c696105fee677e8e8dca71d5515e0dd2374960b0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588345"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228451"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用の Python ライブラリを管理する
 
@@ -42,7 +43,7 @@ Spark アプリケーションで使用したい Python ライブラリを見つ
 > [!IMPORTANT]
 > - インストールするパッケージが大きいか、インストールに時間がかかる場合、これは Spark インスタンスのアップタイムに影響します。
 > - PySpark、Python、Scala/Java、.NET、または Spark のバージョンの変更はサポートされていません。
-> - PyPI、Conda-Forge、または既定の Conda チャネルなどの外部リポジトリからパッケージをインストールすることは、DEP 対応のワークスペースではサポートされていません。
+> - PyPI、Conda-Forge、または既定の Conda チャネルなどの外部リポジトリからパッケージをインストールすることは、データ流出防止対応のワークスペースではサポートされていません。
 
 ### <a name="install-python-packages"></a>Python パッケージのインストール
 環境仕様ファイルを指定して、PyPI や Conda-Forge などのリポジトリから Python パッケージをインストールできます。 
@@ -52,7 +53,7 @@ Spark アプリケーションで使用したい Python ライブラリを見つ
 ##### <a name="pip-requirementstxt"></a>PIP requirements.txt
 *requirements.txt* ファイル (`pip freeze` コマンドからの出力) を使用して、環境をアップグレードできます。 プールが更新されると、このファイルに記載されているパッケージが PyPI からダウンロードされます。 その後、完全な依存関係がキャッシュされ、後でプールを再利用するために保存されます。 
 
-次のスニペットは、要件ファイルの形式を示しています。 PyPI パッケージ名が正確なバージョンと共にリストされます。 このファイルは、[pip freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) のリファレンス ドキュメントで説明されている形式に従います。 
+次のスニペットは、要件ファイルの形式を示しています。 PyPI パッケージ名が正確なバージョンと共にリストされます。 このファイルは、[pip freeze](https://pip.pypa.io/en/stable/cli/pip_freeze/) のリファレンス ドキュメントで説明されている形式に従います。 
 
 この例では、特定のバージョンを固定しています。 
 ```
@@ -60,7 +61,7 @@ absl-py==0.7.0
 adal==1.2.1
 alabaster==0.7.10
 ```
-##### <a name="yml-format-preview"></a>YML 形式 (プレビュー)
+##### <a name="yml-format"></a>YML 形式
 さらに、*environment.yml* ファイルを指定してプール環境を更新することもできます。 このファイルに記載されているパッケージが、既定の Conda チャネル、Conda-Forge、PyPI からダウンロードされます。 構成オプションを使用して、他のチャネルを指定したり、既定のチャネルを削除したりできます。
 
 この例では、チャネルと Conda/PyPI の依存関係を指定します。 
@@ -80,12 +81,12 @@ dependencies:
 )に関するページを参照してください。
 
 #### <a name="update-python-packages"></a>Python パッケージを更新する
-Spark プールにインストールする環境仕様ファイルまたはライブラリのセットを特定したら、Azure Synapse Studio または Azure portal に移動して Spark プール ライブラリを更新できます。 ここでは、環境仕様を指定し、インストールするワークスペース ライブラリを選択することができます。 
+Spark プールにインストールする環境仕様ファイルまたはライブラリのセットを特定したら、Synapse Studio または Azure portal に移動して Spark プール ライブラリを更新できます。 ここでは、環境仕様を指定し、インストールするワークスペース ライブラリを選択することができます。 
 
 変更が保存されると、Spark ジョブによってインストールが実行され、結果として得られた環境は後で再利用するためにキャッシュされます。 ジョブが完了すると、新しい Spark ジョブまたはノートブック セッションで、更新されたプール ライブラリが使用されます。 
 
-##### <a name="manage-packages-from-azure-synapse-studio-or-azure-portal"></a>Azure Synapse Studio または Azure portal からパッケージを管理する
-Spark プール ライブラリは、Azure Synapse Studio または Azure portal から管理できます。 
+##### <a name="manage-packages-from-synapse-studio-or-azure-portal"></a>Synapse Studio または Azure portal からパッケージを管理する
+Spark プール ライブラリは、Synapse Studio または Azure portal から管理できます。 
 
 Spark プールのライブラリを更新または追加するには:
 1. Azure portal から Azure Synapse Analytics ワークスペースに移動します。
@@ -115,7 +116,7 @@ Spark プールのライブラリを更新または追加するには:
 > この設定をオフにした場合は、現在の Spark セッションが終了するまで待つか、手動で停止する必要があります。 セッションが終了したら、プールが再起動されるようにする必要があります。
 
 
-##### <a name="track-installation-progress-preview"></a>インストールの進行状況の追跡 (プレビュー)
+##### <a name="track-installation-progress"></a>インストールの進行状況の追跡  
 システム予約 Spark ジョブは、新しい一連のライブラリを使用してプールが更新されるたびに開始されます。 この Spark ジョブは、ライブラリのインストールの状態を監視するために役立ちます。 ライブラリの競合またはその他の問題のためインストールが失敗した場合、Spark プールは以前の、または既定の状態に戻ります。 
 
 さらに、ユーザーはインストール ログを調査することで、依存関係の競合を特定したり、プールの更新中にインストールされたライブラリを確認したりすることもできます。
@@ -131,7 +132,7 @@ Spark プールのライブラリを更新または追加するには:
 ## <a name="install-wheel-files"></a>wheel ファイルをインストールする
 Python の wheel ファイルは、Python ライブラリをパッケージ化するための一般的な方法です。 Azure Synapse Analytics 内で、ユーザーは自分の wheel ファイルを Azure Data Lake Storage アカウントの既知の場所にアップロードしたり、Azure Synapse のワークスペース パッケージ インターフェイスを使用してアップロードしたりできます。
 
-### <a name="workspace-packages-preview"></a>ワークスペース パッケージ (プレビュー)
+### <a name="workspace-packages"></a>ワークスペース パッケージ 
 ワークスペース パッケージは、カスタムまたはプライベートの wheel ファイルにすることができます。 これらのパッケージをワークスペースにアップロードし、後で特定の Spark プールに割り当てることができます。
 
 ワークスペース パッケージを追加するには:
@@ -144,7 +145,7 @@ Python の wheel ファイルは、Python ライブラリをパッケージ化�
 >[!WARNING]
 >- Azure Synapse 内では、Apache Spark プールは、ワークスペース パッケージとしてアップロードされたカスタム ライブラリ、または既知の Azure Data Lake Storage パス内にアップロードされたカスタム ライブラリのいずれかを利用できます。 ただし、これらのオプションの両方を、同じ Apache Spark プール内で同時に使用することはできません。 両方の方法を使用してパッケージが提供されている場合は、ワークスペース パッケージの一覧で指定した wheel ファイルのみがインストールされます。 
 >
->- ワークスペース パッケージ (プレビュー) を使用して特定の Apache Spark プールにパッケージをインストールした後は、同じプールにストレージ アカウント パスを使用してパッケージを指定できなくなるという制限があります。  
+>- ワークスペース パッケージを使用して特定の Apache Spark プールにパッケージをインストールした後は、同じプールにストレージ アカウント パスを使用してパッケージを指定できなくなるという制限があります。  
 
 ### <a name="storage-account"></a>ストレージ アカウント
 Synapse ワークスペースにリンクされている Azure Data Lake Storage (Gen2) アカウントにすべての wheel ファイルをアップロードすることで、カスタム ビルドの wheel パッケージを Apache Spark プールにインストールできます。 
@@ -156,13 +157,14 @@ abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<wo
 ```
 
 >[!WARNING]
-> ファイル パスがない場合、上記の構造に基づいてこれを作成する必要が生じることがあります。 たとえば、```libraries``` フォルダー内に ```python``` フォルダーがまだ存在しない場合は、これを追加する必要があります。
+> - ファイル パスがない場合、上記の構造に基づいてこれを作成する必要が生じることがあります。 たとえば、```libraries``` フォルダー内に ```python``` フォルダーがまだ存在しない場合は、これを追加する必要があります。
+> - カスタム wheel ファイルを管理するこの方法は、Azure Synapse Runtime for Apache Spark 3.0 ではサポートされません。 カスタム wheel ファイルを管理するには、ワークスペース パッケージ機能を参照してください。
 
 > [!IMPORTANT]
 > Azure DataLake Storage メソッドを使用してカスタム ライブラリをインストールするには、Azure Synapse Analytics ワークスペースにリンクされているプライマリ Gen2 ストレージ アカウントに対して、**ストレージ BLOB データ共同作成者** または **ストレージ BLOB データ所有者** のアクセス許可を持っている必要があります。
 
 
-## <a name="session-scoped-packages-preview"></a>セッション スコープのパッケージ (プレビュー)
+## <a name="session-scoped-packages"></a>セッション スコープのパッケージ
 プール レベルのパッケージに加えて、セッション スコープのライブラリをノートブック セッションの開始時に指定することもできます。  セッション スコープのライブラリを使用すると、ノートブック セッション内でカスタム Python 環境を指定して使用できます。 
 
 セッション スコープのライブラリを使用する場合は、以下の点に留意することが重要です。

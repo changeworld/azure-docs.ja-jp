@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell を使用して Marketplace 購入プラン情報を指定する
-description: Shared Image Gallery でイメージを作成するとき、Azure Marketplace 購入プラン詳細を指定する方法について説明します。
+description: Azure Compute Gallery (旧称 Shared Image Gallery) でイメージを作成するときに Azure Marketplace 購入プランの詳細を指定する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -8,15 +8,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
-ms.reviewer: akjosh
-ms.openlocfilehash: 9df1f6b02e6572c8f2153016c0142912e24fcfe8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d50aa76f80205df1d34215a020691c51ca58d4b0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562539"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474612"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>イメージ作成時、Azure Marketplace 購入プラン情報を提供する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 もともと Azure Marketplace イメージから作成されたソースを利用し、共有ギャラリーでイメージを作成するとき、場合によっては、購入プラン情報を追跡する必要があります。 この記事では、VM の購入プラン情報を見つけ、イメージ定義の作成時にその情報を使用する方法について説明します。 あるイメージの VM を作成するとき、イメージ定義からの情報を利用して購入プラン情報入力を簡単にする方法についても触れます。
 
@@ -35,7 +37,7 @@ $vm.Plan
 
 ## <a name="create-the-image-definition"></a>イメージ定義を作成する
 
-イメージの格納に使用するイメージ ギャラリーを取得します。 すべてのギャラリーを最初に一覧表示できます。
+イメージの格納に使用するギャラリーを取得します。 すべてのギャラリーを最初に一覧表示できます。
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
@@ -67,7 +69,7 @@ $gallery = Get-AzGallery `
    -PurchasePlanName  $vm.Plan.Name
 ```
 
-次に、[New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) を使用してイメージ バージョンを作成します。 [VM](image-version-vm-powershell.md#create-an-image-version)、[マネージド イメージ](image-version-managed-image-powershell.md#create-an-image-version)、[VHD またはスナップショット](image-version-snapshot-powershell.md#create-an-image-version)、あるいは[別のイメージ バージョン](image-version-another-gallery-powershell.md#create-the-image-version)からイメージ バージョンを作成できます。 
+次に、[New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) を使用して[イメージ バージョン](image-version.md)を作成します。  
 
 
 ## <a name="create-the-vm"></a>VM の作成

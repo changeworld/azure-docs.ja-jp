@@ -10,25 +10,26 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: 622ebfed8294dbcb441aa509fc4f6ba75114f28d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afdd3928207dbe82afe1e55e16d9c2677741022d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499358"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345116"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Azure の仮想マシンについてのセキュリティに関する推奨事項
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
 
 この記事には、Azure Virtual Machines のセキュリティに関する推奨事項が含まれています。 次の推奨事項に従うことで、このモデルで説明されている共有責任のセキュリティ義務を果たすことができます。 これらの推奨事項は、Web アプリ ソリューションの全体的なセキュリティの向上にも役立ちます。 サービス プロバイダーとしての責任を果たすための Microsoft の取り組みの詳細については、「[クラウド コンピューティングについての共有責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)」を参照してください。
 
-この記事のいくつかの推奨事項は、Azure Security Center で自動的に対応できます。 Azure Security Center は、Azure にあるリソースの防御の最前線です。 これにより Azure リソースのセキュリティの状態が定期的に分析され、潜在的なセキュリティ脆弱性が特定されます。 その後、それらの脆弱性に対応する方法が推奨されます。 詳細については、「[Azure Security Center でのセキュリティの推奨事項](../security-center/security-center-recommendations.md)」を参照してください。
+この記事の一部の推奨事項には、Microsoft Defender for Cloud で自動的に対応できます。 Microsoft Defender for Cloud は、Azure リソースの防衛において最前線に立つツールです。 これにより Azure リソースのセキュリティの状態が定期的に分析され、潜在的なセキュリティ脆弱性が特定されます。 その後、それらの脆弱性に対応する方法が推奨されます。 詳細については、[Microsoft Defender for Cloud のセキュリティ推奨事項](../security-center/security-center-recommendations.md)に関するページを参照してください。
 
-Azure Security Center の一般的な情報については、「[Azure Security Center とは](../security-center/security-center-introduction.md)」を参照してください。
+Microsoft Defender for Cloud の全般的な情報については、「[Microsoft Defender for Cloud とは](../security-center/security-center-introduction.md)」を参照してください。
 
 ## <a name="general"></a>全般
 
-| 推奨 | 説明 | Security Center |
+| 推奨 | 説明 | Defender for Cloud |
 |-|----|--|
 | カスタム VM イメージを作成する場合、最新の更新プログラムを適用する。 | イメージを作成する前に、オペレーティング システムと、イメージの一部となるすべてのアプリケーションの最新の更新プログラムをインストールしてください。  | - |
 | VM を最新の状態に保つ。 | Azure Automation の [Update Management](../automation/update-management/overview.md) ソリューションを使用すると、Azure 内の Windows コンピューターと Linux コンピューターに対するオペレーティング システムの更新プログラムを管理できます。 | [はい](../security-center/asset-inventory.md) |
@@ -38,7 +39,7 @@ Azure Security Center の一般的な情報については、「[Azure Security 
 
 ## <a name="data-security"></a>データのセキュリティ
 
-| 推奨 | 説明 | Security Center |
+| 推奨 | 説明 | Defender for Cloud |
 |-|----|--|
 | オペレーティング システム ディスクを暗号化する。 | [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) を使用すると、Windows および Linux の IaaS VM ディスクを暗号化できます。 必要なキーがないと、暗号化されたディスクの内容は読み取れません。 ディスクの暗号化は、ディスクがコピーされた場合に発生する可能性のある不正アクセスから、格納されているデータを保護します。| [はい](../security-center/asset-inventory.md) |
 | データ ディスクを暗号化する。 | [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) を使用すると、Windows および Linux の IaaS VM ディスクを暗号化できます。 必要なキーがないと、暗号化されたディスクの内容は読み取れません。 ディスクの暗号化は、ディスクがコピーされた場合に発生する可能性のある不正アクセスから、格納されているデータを保護します。| -  |
@@ -48,19 +49,19 @@ Azure Security Center の一般的な情報については、「[Azure Security 
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理 
 
-| 推奨 | 説明 | Security Center |
+| 推奨 | 説明 | Defender for Cloud |
 |-|----|--|
 | VM 認証を一元化する。 | [Azure Active Directory 認証](../active-directory/develop/authentication-vs-authorization.md)を使用することにより、Windows と Linux の VM の認証を一元化できます。 | - |
 
 ## <a name="monitoring"></a>監視
 
-| 推奨 | 説明 | Security Center |
+| 推奨 | 説明 | Defender for Cloud |
 |-|----|--|
 | VM を監視する。 | [Azure Monitor for VMs](../azure-monitor/vm/vminsights-overview.md) を使用して、ご利用の Azure VM および仮想マシン スケール セットを監視できます。 VM のパフォーマンスの問題はサービス中断に発展する場合があり、そうなれば可用性というセキュリティの原則を損ないます。 | - |
 
 ## <a name="networking"></a>ネットワーク
 
-| 推奨 | 説明 | Security Center |
+| 推奨 | 説明 | Defender for Cloud |
 |-|----|--|
 | 管理ポートへのアクセスを制限する。 | 攻撃者は、パブリック クラウドの IP 範囲をスキャンして、開いている管理ポートを探し、よく使用されるパスワードや、修正プログラムが適用されていない既知の脆弱性などの "簡単な" 攻撃を試みます。 [Just-In-Time (JIT) VM アクセス](../security-center/security-center-just-in-time.md)を使用すると、Azure VM への受信トラフィックをロックダウンできます。これにより、必要なときに VM への容易な接続を提供しながら、攻撃に対する露出を減らすことができます。 | - |
 | ネットワーク アクセスを制限する。 | ネットワーク セキュリティ グループを使用すると、ネットワーク アクセスを制限し、公開するエンドポイントの数を制御できます。 詳細については、「[ネットワーク セキュリティ グループを作成、変更、削除](../virtual-network/manage-network-security-group.md)」をご覧ください。 | - |

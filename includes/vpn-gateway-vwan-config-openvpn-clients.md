@@ -5,22 +5,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/17/2020
+ms.date: 07/27/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ee9dc61169b182356e8ed272bc64785e9c3f6384
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e142cbbb3980ddd491b4d3ac8d35bd9f0e0d6633
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073483"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729510"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows クライアント
 
 1. 公式の [OpenVPN Web サイト](https://openvpn.net/index.php/open-source/downloads.html)から OpenVPN クライアント (バージョン 2.4 以降) をダウンロードしてインストールします。
-2. ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブまたは PowerShell の "New-AzVpnClientConfiguration" で実行できます。
+2. VPN クライアント プロファイル パッケージを Azure portal からダウンロードするか、PowerShell で "New-AzVpnClientConfiguration" コマンドレットを使用します。
 3. プロファイルを展開します。 次に、メモ帳を使って OpenVPN フォルダーの *vpnconfig.ovpn* 構成ファイルを開きます。
-4. 作成してゲートウェイ上の P2S 構成にアップロードしたポイント対サイト クライアント証明書をエクスポートします。 次の記事のリンクを使用してください。
+4. 作成してアップロードしたポイント対サイト クライアント証明書をエクスポートします。 次の記事のリンクを使用してください。
 
    * [VPN Gateway](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport) の手順
    
@@ -57,7 +57,7 @@ ms.locfileid: "106073483"
 ## <a name="mac-clients"></a><a name="mac"></a>Mac クライアント
 
 1. [TunnelBlick](https://tunnelblick.net/downloads.html) などの OpenVPN クライアントをダウンロードしてインストールします。 
-2. ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブから、または PowerShell の "New-AzVpnClientConfiguration" を使用して、実行できます。
+2. VPN クライアント プロファイル パッケージを Azure portal からダウンロードするか、PowerShell で "New-AzVpnClientConfiguration" コマンドレットを使用します。
 3. プロファイルを展開します。 テキスト エディターで OpenVPN フォルダーから vpnconfig.ovpn 構成ファイルを開きます。
 4. P2S クライアント証明書セクションに、base64 の P2S クライアント証明書の公開キーを指定します。 PEM 形式の証明書の場合、.cer ファイルを開き、証明書ヘッダー間にある base64 キーを上書きしてコピーします。 証明書をエクスポートしてエンコードされた公開キーを取得する方法については、次の記事のリンクを使用してください。
 
@@ -76,7 +76,7 @@ ms.locfileid: "106073483"
 ## <a name="ios-clients"></a><a name="iOS"></a>iOS クライアント
 
 1. App store から OpenVPN クライアント (バージョン 2.4 以降) をインストールします。
-2. ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブから、または PowerShell の "New-AzVpnClientConfiguration" を使用して、実行できます。
+2. VPN クライアント プロファイル パッケージを Azure portal からダウンロードするか、PowerShell で "New-AzVpnClientConfiguration" コマンドレットを使用します。
 3. プロファイルを展開します。 テキスト エディターで OpenVPN フォルダーから vpnconfig.ovpn 構成ファイルを開きます。
 4. P2S クライアント証明書セクションに、base64 の P2S クライアント証明書の公開キーを指定します。 PEM 形式の証明書の場合、.cer ファイルを開き、証明書ヘッダー間にある base64 キーを上書きしてコピーします。 証明書をエクスポートしてエンコードされた公開キーを取得する方法については、次の記事のリンクを使用してください。
 

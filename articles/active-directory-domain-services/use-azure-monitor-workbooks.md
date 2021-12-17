@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 9a126fe4676f340fb45677382a3aeeed79291f0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5aab12a0d3c24ef7bef9eee6c02b244e33c11e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100574214"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727755"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Monitor ブックを使用して Azure Active Directory Domain Services のセキュリティ監査イベントを確認する
 
@@ -54,7 +54,7 @@ Azure AD DS には、次の 2 つのブック テンプレートが含まれて�
 
 セキュリティの概要レポートのブック テンプレートにアクセスするには、次の手順のようにします。
 
-1. Azure portal で、**Azure Active Directory Domain Services** を探して選択します。
+1. Azure portal で、**Azure AD Domain Services** を検索して選択します。
 1. 目的のマネージド ドメインを選択します (例: *aaddscontoso.com*)。
 1. 左側のメニューで、 **[監視] > [ブック]** を選択します。
 
@@ -83,7 +83,7 @@ Azure AD DS には、次の 2 つのブック テンプレートが含まれて�
 
 アカウント アクティビティ レポートのブック テンプレートにアクセスするには、次の手順のようにします。
 
-1. Azure portal で、**Azure Active Directory Domain Services** を探して選択します。
+1. Azure portal で、**Azure AD Domain Services** を検索して選択します。
 1. 目的のマネージド ドメインを選択します (例: *aaddscontoso.com*)。
 1. 左側のメニューで、 **[監視] > [ブック]** を選択します。
 1. **[Account Activity Report]\(アカウント アクティビティ レポート\)** を選択します。

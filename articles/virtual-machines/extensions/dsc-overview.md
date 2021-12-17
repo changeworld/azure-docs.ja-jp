@@ -17,17 +17,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: dcdc325633aff5ab828cb1c82f4bb2d8becee967
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 463b806994364083c22dcfc40fd8b78dae87d8da
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560040"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488774"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
 Azure VM エージェントとそれに関連付けられた拡張機能は、Microsoft Azure インフラストラクチャ サービスの一部です。 VM 拡張機能は、VM の機能を拡張し、さまざまな VM の管理操作を簡略化するソフトウェア コンポーネントです。
+
+> [!NOTE]
+> DSC 拡張機能を有効にする前に、[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)という名前の Azure Policy の機能によって管理された、新しいバージョンの DSC が現在プレビューで利用可能になっていることに注意してください。 ゲスト構成機能では、Desired State Configuration (DSC) 拡張機能ハンドラーや Azure Automation State Configuration の機能のほか、顧客のフィードバックで最も一般的に要求されている機能が組み合わされています。 ゲスト構成にはまた、[Arc 対応サーバー](../../azure-arc/servers/overview.md)によるハイブリッド マシンのサポートも含まれています。
 
 Azure Desired State Configuration (DSC) 拡張機能の主な用途は、[Azure Automation State Configuration (DSC) サービス](../../automation/automation-dsc-overview.md)への VM のブートストラップです。
 このサービスには、VM 構成の継続的な管理や、Azure Monitoring などの他の操作ツールとの統合を含む[メリット](/powershell/scripting/dsc/managing-nodes/metaConfig#pull-service)があります。
@@ -66,7 +69,7 @@ WMF をインストールするには、再起動が必要です。 再起動後
 
 ### <a name="default-configuration-script"></a>既定の構成スクリプト
 
-Azure DSC 拡張機能には、VM を Azure Automation DSC サービスにオンボードするときに使用することを目的とした既定の構成スクリプトが含まれています。 スクリプト パラメーターは、[ローカル構成マネージャー](/powershell/scripting/dsc/managing-nodes/metaConfig)の構成可能なプロパティと合致しています。 スクリプト パラメーターについては、[Azure Resource Manager テンプレートでの Desired State Configuration 拡張機能](dsc-template.md)に関するページの[既定の構成スクリプト](dsc-template.md#default-configuration-script)に関する記事を参照してください。 完全なスクリプトについては、[GitHub の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)に関するページを参照してください。
+Azure DSC 拡張機能には、VM を Azure Automation DSC サービスにオンボードするときに使用することを目的とした既定の構成スクリプトが含まれています。 スクリプト パラメーターは、[ローカル構成マネージャー](/powershell/scripting/dsc/managing-nodes/metaConfig)の構成可能なプロパティと合致しています。 スクリプト パラメーターについては、[Azure Resource Manager テンプレートでの Desired State Configuration 拡張機能](dsc-template.md)に関するページの[既定の構成スクリプト](dsc-template.md#default-configuration-script)に関する記事を参照してください。 完全なスクリプトについては、[GitHub の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/demos/azmgmt-demo/nestedtemplates/scripts/UpdateLCMforAAPull.zip)に関するページを参照してください。
 
 ## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>Azure Automation State Configuration (DSC) サービスに登録するための情報
 
@@ -156,7 +159,7 @@ Windows を実行する仮想マシンの場合:
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
-  --name Microsoft.Powershell.DSC \
+  --name DSC \
   --publisher Microsoft.Powershell \
   --version 2.77 --protected-settings '{}' \
   --settings '{}'

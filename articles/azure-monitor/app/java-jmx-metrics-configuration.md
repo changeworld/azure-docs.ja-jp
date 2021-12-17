@@ -3,19 +3,19 @@ title: JMX メトリックを構成する方法 - Java 向けの Azure Monitor A
 description: Azure Monitor Application Insights Java エージェント用の追加の JMX メトリック コレクションを構成する
 ms.topic: conceptual
 ms.date: 03/16/2021
-author: MS-jgol
 ms.custom: devx-track-java
-ms.author: jgol
-ms.openlocfilehash: 020278bf6e5a823f6b3caa22d03f4b5dd003c0d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: 932ce7191aa64850dcf276f5906a038a0352ee80
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608733"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133882"
 ---
 # <a name="configuring-jmx-metrics"></a>JMX メトリックの構成
 
-Application Insights Java 3.0 エージェントによって既定で JMX メトリックの一部が収集されますが、多くの場合、これでは不十分です。 このドキュメントでは、JMX 構成オプションについて詳しく 説明します。
+Application Insights Java 3.x によって既定で JMX メトリックの一部が収集されますが、多くの場合、これでは不十分です。 このドキュメントでは、JMX 構成オプションについて詳しく 説明します。
 
 ## <a name="how-do-i-collect-additional-jmx-metrics"></a>追加の JMX メトリックを収集する方法
 

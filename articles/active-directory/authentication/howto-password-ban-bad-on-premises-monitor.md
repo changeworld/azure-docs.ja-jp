@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81dcb85302158adfe8be4df0715fee8cb5633fa6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96741764"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459579"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>オンプレミスの Azure AD パスワード保護環境を監視してログを確認する
 
@@ -101,6 +101,9 @@ PasswordSetErrors               : 1
 
 コマンドレット レポートのスコープは、-Forest、-Domain、-DomainController のいずれかのパラメーターの使用の影響を受けることがあります。 パラメーターを指定しないと暗黙的に –Forest が指定されます。
 
+> [!NOTE]
+> DC エージェントが 1 つの DC にのみインストールされる場合、Get-AzureADPasswordProtectionSummaryReport ではその DC からのみイベントが読み取られます。 複数の DC からイベントを取得するには、各 DC に DC エージェントをインストールする必要があります。
+
 `Get-AzureADPasswordProtectionSummaryReport` コマンドレットでは、DC エージェント管理イベント ログのクエリが実行され、表示されている各結果カテゴリに対応するイベントの合計数がカウントされます。 次の表では、各結果とそれに対応するイベント ID のマッピングを示します。
 
 |Get-AzureADPasswordProtectionSummaryReport のプロパティ |対応するイベント ID|
@@ -124,36 +127,55 @@ PasswordSetErrors               : 1
 > [!NOTE]
 > このコマンドレットは、各 DC エージェント サービスの管理イベント ログに対するクエリをリモートで実行することで動作します。 イベント ログに多数のイベントが含まれている場合、コマンドレットの完了に時間がかかることがあります。 また、大規模なデータ セットの一括ネットワーク クエリがドメイン コントローラーのパフォーマンスに影響を与える可能性があります。 そのため、このコマンドレットは、運用環境では慎重に使用する必要があります。
 
-### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>イベント ID 10014 (パスワード変更成功) のサンプル イベント ログ メッセージ
+### <a name="sample-event-log-messages"></a>イベント ログ メッセージのサンプル
+
+#### <a name="event-id-10014-successful-password-change"></a>イベント ID 10014 (パスワードの変更に成功しました)
 
 ```text
 The changed password for the specified user was validated as compliant with the current Azure password policy.
 
- UserName: BPL_02885102771
- FullName:
+UserName: SomeUser
+FullName: Some User
 ```
 
-### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>イベント ID 10017 および 30003 (パスワード設定失敗) のサンプル イベント ログ メッセージ
-
-10017:
+#### <a name="event-id-10017-failed-password-change"></a>イベント ID 10017 (パスワードの変更に失敗しました):
 
 ```text
 The reset password for the specified user was rejected because it did not comply with the current Azure password policy. Please see the correlated event log message for more details.
 
- UserName: BPL_03283841185
- FullName:
+UserName: SomeUser
+FullName: Some User
 ```
 
-30003:
+#### <a name="event-id-30003-failed-password-change"></a>イベント ID 30003 (パスワードの変更に失敗しました):
 
 ```text
 The reset password for the specified user was rejected because it matched at least one of the tokens present in the per-tenant banned password list of the current Azure password policy.
 
- UserName: BPL_03283841185
- FullName:
+UserName: SomeUser
+FullName: Some User
 ```
 
-### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>イベント ID 30001 (使用可能なポリシーがないためパスワード受け入れ) のサンプル イベント ログ メッセージ
+#### <a name="event-id-10024-password-accepted-due-to-policy-in-audit-only-mode"></a>イベント ID 10024 (ポリシーが監査専用モードであるためパスワードが受け入れられました)
+
+``` text
+The changed password for the specified user would normally have been rejected because it did not comply with the current Azure password policy. The current Azure password policy is con-figured for audit-only mode so the password was accepted. Please see the correlated event log message for more details. 
+ 
+UserName: SomeUser
+FullName: Some User
+```
+
+#### <a name="event-id-30008-password-accepted-due-to-policy-in-audit-only-mode"></a>イベント ID 30008 (ポリシーが監査専用モードであるためパスワードが受け入れられました)
+
+``` text
+The changed password for the specified user would normally have been rejected because it matches at least one of the tokens present in the per-tenant banned password list of the current Azure password policy. The current Azure password policy is configured for audit-only mode so the password was accepted. 
+
+UserName: SomeUser
+FullName: Some User
+
+```
+
+#### <a name="event-id-30001-password-accepted-due-to-no-policy-available"></a>イベント ID 30001 (使用可能なポリシーがないためパスワードが受け入れられました)
 
 ```text
 The password for the specified user was accepted because an Azure password policy is not available yet
@@ -180,7 +202,7 @@ This condition may be caused by one or more of the following reasons:%n
    Resolution steps: ensure network connectivity exists to the domain.
 ```
 
-### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>イベント ID 30006 (新規ポリシー適用中) のサンプル イベント ログ メッセージ
+#### <a name="event-id-30006-new-policy-being-enforced"></a>イベント ID 30006 (新しいポリシーが適用されます)
 
 ```text
 The service is now enforcing the following Azure password policy.
@@ -192,13 +214,12 @@ The service is now enforcing the following Azure password policy.
  Enforce tenant policy: 1
 ```
 
-### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>イベント ID 30019 (Azure AD パスワード保護が無効) のサンプル イベント ログ メッセージ
+#### <a name="event-id-30019-azure-ad-password-protection-is-disabled"></a>イベント ID 30019 (Azure AD パスワード保護が無効です)
 
 ```text
 The most recently obtained Azure password policy was configured to be disabled. All passwords submitted for validation from this point on will automatically be considered compliant with no processing performed.
 
 No further events will be logged until the policy is changed.%n
-
 ```
 
 ## <a name="dc-agent-operational-log"></a>DC エージェント操作ログ

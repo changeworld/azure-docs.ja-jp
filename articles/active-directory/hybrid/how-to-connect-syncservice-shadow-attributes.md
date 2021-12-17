@@ -2,26 +2,20 @@
 title: Azure AD Connect 同期サービスのシャドウ属性 | Microsoft Docs
 description: Azure AD Connect 同期サービスのシャドウ属性の機能について説明します。
 services: active-directory
-documentationcenter: ''
 author: billmath
-manager: daveba
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 07/13/2017
+ms.date: 09/29/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 128303cb51b39db8442fdda71f949db17923bfa2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b2274099803961fb477f0929c801e2fc341dd4b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90088972"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355265"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同期サービスのシャドウ属性
 Azure AD のほとんどの属性は、オンプレミスの Active Directory の場合と同じように表現されます。 ただし、一部の属性には特別な処理が必要であるため、Azure AD の属性値が Azure AD Connect で同期された値と異なる場合があります。
@@ -49,7 +43,7 @@ userPrincipalName 属性は、PowerShell を使用しているときに表示さ
 実際のオンプレミスの属性値は Azure AD に格納されるため、ユーザーが fabrikam.com ドメインを確認するときに、Azure AD は shadowUserPrincipalName の値で userPrincipalName 属性を更新します。 これらの値を更新するために Azure AD Connect の変更を同期する必要はありません。
 
 ### <a name="proxyaddresses"></a>proxyAddresses
-確認済みドメインのみを含む場合は proxyAddresses でも同じプロセスが発生しますが、いくつかのロジックが追加されます。 確認済みドメインのチェックは、メールボックスのユーザーに対してのみ発生します。 メールが有効なユーザーまたは連絡先は別の Exchange 組織内のユーザーであることを意味するため、proxyAddresses のあらゆる値をこれらのオブジェクトに追加することができます。
+確認済みドメインのみを含めるための同じプロセスは proxyAddresses でも発生しますが、いくつかの追加のロジックが使用されます。 確認済みドメインのチェックは、メールボックスのユーザーに対してのみ発生します。 メールが有効なユーザーまたは連絡先は別の Exchange 組織内のユーザーであることを意味するため、proxyAddresses のあらゆる値をこれらのオブジェクトに追加することができます。
 
 オンプレミスまたは Exchange Online のメールボックスのユーザーの場合、確認済みドメインの値のみが表示されます。 次のようになります。
 
@@ -62,9 +56,62 @@ userPrincipalName 属性は、PowerShell を使用しているときに表示さ
 
 proxyAddresses のこのロジックは、**ProxyCalc** と呼ばれます。 ProxyCalc は、ユーザーに対する以下の変更のたびに呼び出されます。
 
-- ユーザーが、Exchange のライセンスを与えられていなかったとしても、Exchange Online を含むサービス プランを割り当てられたとき。 たとえば、SharePoint Online しか割り当てられていなかったユーザーに Office E3 SKU が割り当てられた場合です。 メールボックスがまだオンプレミスの場合も、これに当てはまります。
+- ユーザーが、Exchange のライセンスを与えられていなかったとしても、Exchange Online を含むサービス プランを割り当てられたとき。 たとえば、SharePoint Online しか割り当てられていなかったユーザーに Office E3 SKU が割り当てられた場合です。 この条件は、メールボックスがまだオンプレミスの場合でも当てはまります。
 - 属性 msExchRecipientTypeDetails が値を持つとき。
 - proxyAddresses または userPrincipalName に変更を加えるとき。
+
+ShadowProxyAddresses に未確認ドメインが含まれ、クラウド ユーザーに次のプロパティのいずれかが構成されている場合、ProxyCalc ではアドレスをサニタイズします。 
+- ユーザーが EXO サービスの種類のプランが有効な状態でライセンスされている (MyAnalytics を除く)  
+- ユーザーに MSExchRemoteRecipientType が設定されている (null 以外)  
+- ユーザーが共有リソースと見なされている
+
+共有リソースと見なされるために、クラウド ユーザーでは CloudMSExchRecipientDisplayType に次の値のいずれかが設定されます。 
+
+ |オブジェクトの表示の種類|値 (10 進数)|
+ |-----|-----|
+ |MailboxUser|  0|
+ |DistributionGroup|    1|
+ |PublicFolder| 2|
+ |DynamicDistributionGroup| 3|
+ |Organization| 4|
+ |PrivateDistributionList|  5|
+ |RemoteMailUser|   6|
+ |ConferenceRoomMailbox|    7|
+ |EquipmentMailbox| 8|
+ |ArbitrationMailbox|   10|
+ |MailboxPlan|  11|
+ |LinkedUser|   12|
+ |RoomList| 15|
+ |SyncedMailboxUser|    -2147483642|
+ |SyncedUDGasUDG|   -2147483391|
+ |SyncedUDGasContact|   -2147483386|
+ |SyncedPublicFolder|   -2147483130|
+ |SyncedDynamicDistributionGroup|   -2147482874|
+ |SyncedRemoteMailUser| -2147482106|
+ |SyncedConferenceRoomMailbox|  -2147481850|
+ |SyncedEquipmentMailbox|   -2147481594|
+ |SyncedUSGasUDG|   -2147481343|
+ |SyncedUSGasContact|   -2147481338|
+ |ACLableSyncedMailboxUser| -1073741818|
+ |ACLableSyncedRemoteMailUser|  -1073740282|
+ |ACLableSyncedUSGasContact|    -1073739514|
+ |SyncedUSGasUSG|   -1073739511|
+ |SecurityDistributionGroup|    1043741833|
+ |SyncedUSGasUSG|   1073739511|
+ |ACLableSyncedUSGasContact|    1073739514|
+ |RBAC ロール グループ|  1073741824|
+ |ACLableMailboxUser|   1073741824|
+ |ACLableRemoteMailUser|    1073741830|
+
+
+>[!NOTE]
+> CloudMSExchRecipientDisplayType は Azure AD 側には表示されず、Exchange Online コマンドレット [Get-Recipient](/powershell/module/exchange/get-recipient) などを使用してしか表示できません。  
+>
+>例:
+> ```PowerShell
+>   Get-Recipient admin | fl *type*
+> ```
+>
 
 ProxyCalc は、ユーザーの変更処理に時間がかかる場合があるため、Azure AD Connect のエクスポート プロセスと同期されません。
 

@@ -2,20 +2,22 @@
 title: Azure マネージド ディスクのパフォーマンス レベル
 description: マネージド ディスクのパフォーマンス レベルについて説明します。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: af1509073248b46575881beef7b9800107e7fed7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2f617d2f5d05a6310d5442fa8d4a9e49369912e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677310"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696420"
 ---
 # <a name="performance-tiers-for-managed-disks"></a>マネージド ディスクのパフォーマンス レベル
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure マネージド ディスクのパフォーマンスは、ディスクの作成時にパフォーマンス レベルの形式で設定されます。 パフォーマンス レベルによって、マネージド ディスクの IOPS とスループットが決まります。 ディスクのプロビジョニング済みのサイズを設定すると、パフォーマンス レベルが自動的に選択されます。 パフォーマンス レベルは、デプロイ時またはその後に、ディスクのサイズを変更せずに変更することができます。
 

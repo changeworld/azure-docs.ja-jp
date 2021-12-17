@@ -2,336 +2,162 @@
 title: Azure Database for PostgreSQL のバックアップ
 description: 長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー) について説明します。
 ms.topic: conceptual
-ms.date: 04/12/2021
-ms.custom: references_regions
-ms.openlocfilehash: 4730cad32203642f0d1b84529a5822d7595d6bf8
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 4121326bf36c71c3f98894bd8413dc1ae5f57a06
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375089"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458927"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー)
 
-Azure Backup と Azure Database Services を連携させることで、バックアップを最大 10 年間保持する、Azure Database for PostgreSQL サーバー向けのエンタープライズ クラスのバックアップ ソリューションが構築されます。
-
-長期保有以外にも、このソリューションには次のような多くの機能があります。
-
-- Azure Active Directory とマネージド サービス ID (MSI) 認証を使用した、データベースへの Azure ロールベースのアクセス制御 (Azure RBAC)。
-- お客様の管理による個々のデータベース レベルでのスケジュール バックアップとオンデマンド バックアップ。
-- Postgres サーバーへのデータベース レベルでの復元、または BLOB ストレージへのデータベース レベルでの直接復元。
-- 長期保有。
-- すべての操作とジョブの一元的な監視。
-- バックアップは、個別のセキュリティ ドメインと障害ドメインに保存されます。 そのため、ソース サーバーがセキュリティ侵害を受けたり、強制終了されたりしても、[バックアップ コンテナー](backup-vault-overview.md)内のバックアップは安全なままです。
-- **pg_dump** を使用すると、復元の柔軟性を高めることができ、データベースのバージョン間で復元することや、バックアップの一部のみを復元することができます。
-
-このソリューションは個別に使用できます。また、データ保有期間が最大 35 日の Azure PostgreSQL 提供のネイティブ バックアップ ソリューションに加えて使用することもできます。 ネイティブ ソリューションは、最新のバックアップから復旧する場合など、運用復旧に適しています。 Azure Backup ソリューションを使用すると、コンプライアンスのニーズを満たし、より細かく柔軟なバックアップと復元を行うことができます。
-
-## <a name="support-matrix"></a>サポート マトリックス
-
-|サポート  |詳細  |
-|---------|---------|
-|サポートされているデプロイ   |  [Azure Database for PostgreSQL - 単一サーバー](../postgresql/overview.md#azure-database-for-postgresql---single-server)     |
-|サポート対象の Azure リージョン |  米国東部、米国東部 2、米国中部、米国中南部、米国西部、米国西部 2、米国中西部、ブラジル南部、カナダ中部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、ドイツ中西部、スイス北部、スイス西部、東アジア、東南アジア、東日本、西日本、韓国中部、韓国南部、インド中部、オーストラリア東部、オーストラリア中部、オーストラリア中部 2、アラブ首長国連邦北部  |
-|サポートされる Azure PostgreSQL のバージョン    |   9.5、9.6、10、11      |
-
-## <a name="feature-considerations-and-limitations"></a>機能の考慮事項と制限事項
-
-- すべての操作は、Azure portal からのみサポートされます。
-- データベースの最大サイズの上限として 400 GB が推奨されています。
-- リージョン間のバックアップはサポートされていません。 したがって、Azure PostgreSQL サーバーは別のリージョンのコンテナーにバックアップできません。 同様に、バックアップは、コンテナーと同じリージョン内のサーバーにのみ復元できます。
-- 復元時に復旧されるのはデータのみです。 "ロール" は復元されません。
-- プレビューでは、テスト環境でのみソリューションを実行することをお勧めします。
-
-## <a name="backup-process"></a>バックアップ プロセス
-
-1. このソリューションでは、**pg_dump** を使用して、Azure PostgreSQL データベースのバックアップが作成されます。
-
-2. バックアップする Azure PostgreSQL データベースを指定すると、サーバーとデータベースでバックアップ操作を実行するための適切な一連のアクセス許可とアクセス権があるかの検証が行われます。
-
-3. Azure Backup により、バックアップ拡張機能がインストールされている worker ロールがスピンアップされます。 この拡張機能は、Postgres サーバーと通信します。
-
-4. この拡張機能は、コーディネーターと Azure Postgres プラグインで構成されています。 コーディネーターは、バックアップの構成、バックアップ、復元など、さまざまな操作のワークフローをトリガーすることを担当し、プラグインは実際のデータ フローを担当します。
-  
-5. 選択したデータベースに対して保護の構成をトリガーすると、バックアップ サービスにより、コーディネーターに対してバックアップ スケジュールとその他のポリシーの詳細が設定されます。
-
-6. スケジュールされた時刻になると、コーディネーターはプラグインと通信し、**pg_dump** を使用して Postgres サーバーからバックアップ データのストリーミングを開始します。
-
-7. プラグインはバックアップ コンテナーにデータを直接送信するため、ステージングの場所は必要ありません。 データは Microsoft マネージド キーを使用して暗号化され、Azure Backup サービスによってストレージ アカウントに保存されます。
-
-8. データ転送が完了すると、コーディネーターはバックアップ サービスを使用してコミットを確認します。
-
-    ![バックアップ プロセス](./media/backup-azure-database-postgresql/backup-process.png)
+この記事では、Azure Database for PostgreSQL サーバーをバックアップする方法について説明します。
 
 ## <a name="configure-backup-on-azure-postgresql-databases"></a>Azure PostgreSQL データベースでバックアップを構成する
 
-複数の Azure PostgreSQL サーバーにある複数のデータベースのバックアップを構成できます。 サービスで Postgres サーバーをバックアップするために必要な[前提条件のアクセス許可](#prerequisite-permissions-for-configure-backup-and-restore)が既に構成されていることを確認します。
+複数の Azure PostgreSQL サーバーにある複数のデータベースのバックアップを構成できます。 Azure Backup を使用して Azure PostgreSQL データベースでバックアップを構成するには、次の手順を行います。
 
-次の手順は、Azure Backup を使用して Azure PostgreSQL データベースのバックアップを構成するためのステップ バイ ステップのガイドです。
+1. **[バックアップ コンテナー]**  ->  **[+ バックアップ]** に移動します。
 
-1. プロセスを開始するには、次の 2 つの方法があります。
+   :::image type="content" source="./media/backup-azure-database-postgresql/adding-backup-inline.png" alt-text="バックアップを追加するオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/adding-backup-expanded.png":::
 
-    1. [バックアップ センター](backup-center-overview.md) ->  **[概要]**  ->  **[バックアップ]** に移動します。
+   :::image type="content" source="./media/backup-azure-database-postgresql/adding-backup-details-inline.png" alt-text="バックアップ情報を追加するオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/adding-backup-details-expanded.png":::
 
-        ![バックアップ センターに移動する](./media/backup-azure-database-postgresql/backup-center.png)
+   また、[バックアップ センター](./backup-center-overview.md)からこのページに移動することもできます。 
 
-        **[開始: バックアップの構成]** で、 **[データソースの種類]** として **[Azure Database for PostgreSQL]** を選択します。
+1. バックアップ スケジュールと保持期間を定義するバックアップ ポリシーを選択または[作成](#create-backup-policy)します。
 
-        ![[開始: バックアップの構成] で、データソースの種類を選択する](./media/backup-azure-database-postgresql/initiate-configure-backup.png)
+   :::image type="content" source="./media/backup-azure-database-postgresql/create-or-add-backup-policy-inline.png" alt-text="バックアップ ポリシーを追加するオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/create-or-add-backup-policy-expanded.png":::
 
-    1. または、[[バックアップ コンテナー]](backup-vault-overview.md) ->  **[バックアップ]** に直接移動することもできます。
+1. **バックアップする Azure Postgres データベースを選択する**: コンテナーと同じリージョンにある場合は、サブスクリプション全体で Azure PostgreSQL サーバーの 1 つを選択します。 矢印を展開して、サーバー内のデータベースの一覧を表示します。
 
-        ![[バックアップ コンテナー] に移動する](./media/backup-azure-database-postgresql/backup-vaults.png)
+   >[!Note]
+   >データベース *azure_maintenance* と *azure_sys* はバックアップできず、またバックアップする必要もありません。 また、既にバックアップ コンテナーにバックアップされているデータベースをバックアップすることはできません。
 
-        ![[バックアップ コンテナー] で [バックアップ] を選択する](./media/backup-azure-database-postgresql/backup-backup-vault.png)
+   :::image type="content" source="./media/backup-azure-database-postgresql/select-azure-postgresql-databases-to-back-up-inline.png" alt-text="Azure PostgreSQL データベースを選択するオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/select-azure-postgresql-databases-to-back-up-expanded.png":::
 
-1. **[バックアップの構成]** で、Postgres データベースをバックアップする先の **バックアップ コンテナー** を選択します。 既にコンテナーのコンテキスト内である場合、この情報は事前に入力されます。
+   :::image type="content" source="./media/backup-azure-database-postgresql/choose-an-azure-postgresql-server-inline.png" alt-text="Azure PostgreSQL サーバーを選択する方法が表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/choose-an-azure-postgresql-server-expanded.png":::
 
-    ![[バックアップの構成] でバックアップ コンテナーを選択する](./media/backup-azure-database-postgresql/configure-backup.png)
 
-1. **バックアップ ポリシー** を選択または作成します。
+1. 選択したデータベースに接続するための資格情報を格納する **Azure キー コンテナーを割り当てます**。 個々の行レベルでキー コンテナーを割り当てるには、 **[Select a key vault and secret]\(キー コンテナーとシークレットを選択\)** をクリックします。 また、行を複数選択してキー コンテナーを割り当て、グリッドの上部メニューの [Assign key vault]\(キー コンテナーの割り当て\) をクリックすることもできます。 
 
-    ![バックアップ ポリシーを選択する](./media/backup-azure-database-postgresql/backup-policy.png)
+   :::image type="content" source="./media/backup-azure-database-postgresql/assign-azure-key-vault-inline.png" alt-text="Azure キー コンテナーの割り当て方法が表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/assign-azure-key-vault-expanded.png"::: 
 
-1. バックアップするリソースまたは Postgres データベースを選択します。
+1. シークレット情報を指定するには、次のいずれかのオプションを使用します。 
 
-    ![バックアップするリソースを選択する](./media/backup-azure-database-postgresql/select-resources.png)
+   1. **シークレット URI を入力する**: このオプションは、シークレット URI が共有されている、または既知の場合に使用します。 **シークレット URI をキー コンテナーから** コピー ->  **[シークレット] (シークレットを選択する)**  ->  **[シークレット識別子]** することができます。
 
-1. Azure PostgreSQL サーバーがコンテナーと同じリージョン内に存在する場合、すべてのサブスクリプションの Azure PostgreSQL サーバーの一覧から選択できます。 矢印を展開して、サーバー内のデータベースの一覧を表示します。
+      :::image type="content" source="./media/backup-azure-database-postgresql/enter-secret-uri-inline.png" alt-text="シークレット URI の入力方法が表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/enter-secret-uri-expanded.png":::  
 
-    ![サーバーを選択する](./media/backup-azure-database-postgresql/choose-servers.png)
+      ただし、このオプションを使用すると、参照しているキー コンテナーについて、Azure Backup に表示されません。 そのため、キー コンテナーに対するアクセス許可をインラインで付与することができません。 バックアップ管理者は、Postgres またはキー コンテナーの管理者、あるいはその両方と共に、バックアップ操作を成功させるために、バックアップの構成フローの外で、バックアップ コンテナーの[キー コンテナーに対するアクセス権が手動で付与されている](backup-azure-database-postgresql-overview.md#access-permissions-on-the-azure-key-vault-associated-with-the-postgresql-server)ようにする必要があります。
 
-1. サービスによって、選択したデータベースに対してこれらのチェックが実行され、選択した Postgres サーバーとデータベースをバックアップするためのアクセス許可がコンテナーにあるかどうかが検証されます。
-    1. 続行するには、すべてのデータベースの **[バックアップの準備]** が **[成功]** にならなければなりません。
-    1. エラーがある場合、そのエラーを **修正** して **再検証** するか、選択からデータベースを削除します。
+   1. **キー コンテナーを選択する**: このオプションは、キー コンテナーとシークレット名がわかっている場合に使用します。 このオプションを使用すると、ユーザー (キー コンテナーに対する書き込みアクセス権を持つバックアップ管理者) は、キー コンテナーに対するアクセス許可をインラインで付与することができます。 キー コンテナーとシークレットは、事前に存在しているものを利用するか、途中で作成することもできます。 シークレットが、サーバーで "バックアップ" 権限が付与されているデータベース ユーザーの資格情報を使って更新される、ADO.net 形式の PG サーバー接続文字列であるようにします。 詳細については、[キー コンテナーにシークレット](#create-secrets-in-the-key-vault)を作成する方法に関する記事をご覧ください。
 
-    ![修正する検証のエラー](./media/backup-azure-database-postgresql/validation-errors.png)
+      :::image type="content" source="./media/backup-azure-database-postgresql/assign-secret-store-inline.png" alt-text="シークレット ストアを割り当てる方法が表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/assign-secret-store-expanded.png":::
 
-1. **[レビューと構成]** ですべての詳細を確認し、 **[バックアップの構成]** を選択して操作を送信します。
+      :::image type="content" source="./media/backup-azure-database-postgresql/select-secret-from-azure-key-vault-inline.png" alt-text="Azure Key Vault のシークレットの選択が表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/select-secret-from-azure-key-vault-expanded.png":::   
 
-    ![[レビューと構成] で詳細を確認する](./media/backup-azure-database-postgresql/review-and-configure.png)
+1. シークレット情報の更新が完了すると、キー コンテナー情報が更新された後で検証が開始されます。 ここで、バックアップ サービスによって、キー コンテナーからシークレットの詳細を読み取り、データベースに接続するために必要なすべての[アクセス許可](backup-azure-database-postgresql-overview.md#key-vault-based-authentication-model)() があるかどうかが検証されます。 1 つまたは複数のアクセス許可が見つからない場合は、"_ロールの割り当てが完了していません、または、ユーザーがロールを割り当てることができません_" というエラー メッセージのいずれかが表示されます。
 
-1. **[バックアップの構成]** 操作がトリガーされると、バックアップ インスタンスが作成されます。 バックアップ センターまたはコンテナー ビューの [[バックアップ インスタンス]](backup-center-monitor-operate.md#backup-instances) ペインで操作の状態を追跡できます。
+   :::image type="content" source="./media/backup-azure-database-postgresql/validation-of-secret-inline.png" alt-text=" シークレットの検証が表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/validation-of-secret-expanded.png":::   
 
-    ![バックアップ インスタンス](./media/backup-azure-database-postgresql/backup-instances.png)
+   1. **ユーザーはロールを割り当てることができません**: このメッセージは、 **[詳細の表示]** に一覧表示されているように、不足している権限を割り当てるため、PostgreSQL サーバーまたはキー コンテナー、あるいはその両方への書き込みアクセス権をユーザー (バックアップ管理者) が持っていない場合に表示されます。 アクション ボタンから割り当てテンプレートをダウンロードし、PostgreSQL またはキー コンテナー管理者、あるいはその両方が実行するようにします。これは、必要なリソースに対して必須のアクセス許可を割り当てるのに役立つ ARM テンプレートです。 テンプレートが正常に実行されたら、[バックアップの構成] ページで **[再検証]** をクリックします。
 
-1. バックアップは、ポリシーで定義されているバックアップ スケジュールに従ってトリガーされます。 ジョブは [[バックアップ ジョブ]](backup-center-monitor-operate.md#backup-jobs) で追跡できます。 現時点では、過去 7 日間のジョブを表示できます。
+      :::image type="content" source="./media/backup-azure-database-postgresql/download-role-assignment-template-inline.png" alt-text="ロールの割り当てテンプレートをダウンロードするオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/download-role-assignment-template-expanded.png":::    
 
-    ![バックアップ ジョブ](./media/backup-azure-database-postgresql/backup-jobs.png)
+   1. **ロールの割り当てが行われていません**: このメッセージは、 **[詳細の表示]** に一覧表示されているように、不足している権限を割り当てるため、PostgreSQL サーバーまたはキー コンテナー、あるいはその両方への書き込みアクセス権をユーザー (バックアップ管理者) が持っている場合に表示されます。 上部のアクション メニューの **[Assign missing roles]\(不足しているロールの割り当て\)** アクション ボタンを使用して、PostgreSQL サーバーまたはキー コンテナー、あるいはその両方に対するアクセス許可をインラインで付与します。
 
-## <a name="create-backup-policy"></a>バックアップ ポリシーを作成する
+      :::image type="content" source="./media/backup-azure-database-postgresql/role-assignment-not-done-inline.png" alt-text="ロールの割り当てが完了していないというエラー メッセージが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/role-assignment-not-done-expanded.png":::     
 
-1. **[バックアップ センター]**  ->  **[バックアップ ポリシー]**  ->  **[追加]** に移動します。 または、 **[バックアップ コンテナー]**  ->  **[バックアップ ポリシー]**  ->  **[追加]** に移動します。
+1. 上部のメニューで **[Assign missing roles]\(不足しているロールの割り当て\)** を選択し、ロールを割り当てます。 プロセスが開始されると、KV または PG サーバー、あるいはその両方に対する[不足しているアクセス許可](backup-azure-database-postgresql-overview.md#azure-backup-authentication-with-the-postgresql-server)がバックアップ コンテナーに付与されます。 アクセス許可を付与するスコープを定義できます。 アクションが完了すると、再検証が開始されます。
 
-    ![バックアップ ポリシーを追加する](./media/backup-azure-database-postgresql/add-backup-policy.png)
+   :::image type="content" source="./media/backup-azure-database-postgresql/assign-missing-roles-inline.png" alt-text="不足しているロールを割り当てるオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/assign-missing-roles-expanded.png":::
 
-1. 新しいポリシーの **名前** を入力します。
+   :::image type="content" source="./media/backup-azure-database-postgresql/define-scope-of-access-permission-inline.png" alt-text="アクセス許可のスコープの定義が表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/define-scope-of-access-permission-expanded.png":::     
 
-    ![ポリシー名を入力する](./media/backup-azure-database-postgresql/enter-policy-name.png)
+   - バックアップ コンテナーから、キー コンテナーのシークレットにアクセスし、データベースへのテスト接続を実行して、資格情報が正しく入力されているかどうかを検証します。 データベース ユーザーの権限は、[データベース ユーザーがデータベースに対するバックアップ関連の権限を持っているかどうか](backup-azure-database-postgresql-overview.md#database-users-backup-privileges-on-the-database)も確認されます。
 
-1. バックアップ スケジュールを定義します。 現時点では、**週単位** のバックアップがサポートされています。 単一または複数の曜日にバックアップをスケジュールできます。
+   - PostgreSQL 管理者は、既定では、データベースに対するバックアップと復元のすべての権限を持ちます。 その結果、検証は成功します。
+   - 権限の低いユーザーは、データベースに対するバックアップ/復元権限を持っていない可能性があります。 その結果、検証は失敗します。 PowerShell スクリプトが動的に生成されます (レコード、または選択されたデータベースごとに 1 つ)。 [PowerShell スクリプトを実行して、データベースのデータベース ユーザーにこれらの特権を付与します](#create-secrets-in-the-key-vault)。 または、PG 管理または PSQL ツールを使用してこれらの権限を割り当てることもできます。
 
-    ![バックアップ スケジュールを定義する](./media/backup-azure-database-postgresql/define-backup-schedule.png)
+   :::image type="content" source="./media/backup-azure-database-postgresql/backup-vault-accesses-secrets-inline.png" alt-text="バックアップ コンテナーからキー コンテナーのシークレットへのアクセスが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/backup-vault-accesses-secrets-expanded.png":::      
+
+   :::image type="content" source="./media/backup-azure-database-postgresql/run-test-connection.png" alt-text="テスト接続を開始するプロセスが表示されているスクリーンショット。":::      
+
+   :::image type="content" source="./media/backup-azure-database-postgresql/user-credentials-to-run-test-connection-inline.png" alt-text="テストを実行するためのユーザー認証情報を提供する方法が表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/user-credentials-to-run-test-connection-expanded.png":::      
+
+1. バックアップの準備ができているレコードを成功として保持して、操作を送信する最後の手順に進みます。
+
+   :::image type="content" source="./media/backup-azure-database-postgresql/backup-readiness-as-success-inline.png" alt-text="バックアップの準備が正常に完了したことが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/backup-readiness-as-success-expanded.png":::      
+
+   :::image type="content" source="./media/backup-azure-database-postgresql/review-backup-configuration-details-inline.png" alt-text="バックアップの構成の確認ページが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/review-backup-configuration-details-expanded.png":::      
+
+1. バックアップの構成操作を送信し、**バックアップ インスタンス** の進行状況を追跡します。
+
+   :::image type="content" source="./media/backup-azure-database-postgresql/submit-configure-backup-operation-inline.png" alt-text="バックアップ構成の送信と進行状況の追跡が表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/submit-configure-backup-operation-expanded.png":::      
+
+## <a name="create-backup-policy"></a>バックアップ ポリシーの作成
+
+バックアップ ポリシーは、バックアップの構成フローの途中で作成できます。 または、 **[バックアップ センター]**  ->  **[バックアップ ポリシー]**  ->  **[追加]** に移動します。
+
+1. 新しいポリシーの名前を入力します。
+
+   :::image type="content" source="./media/backup-azure-database-postgresql/enter-name-for-new-policy-inline.png" alt-text="新しいポリシーの名前を入力するプロセスが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/enter-name-for-new-policy-expanded.png":::
+
+1. バックアップ スケジュールを定義します。 現時点では、毎週のバックアップ オプションのみを使用できます。 ただし、バックアップを複数の曜日にスケジュールすることができます。
 
 1. **保持** の設定を定義します。 保持規則を 1 つ以上追加できます。 各保持規則は、特定のバックアップの入力と、それらのバックアップのデータ ストアと保持期間を前提とします。
 
-1. バックアップの格納先として、次の 2 つのデータ ストア (または階層) のいずれかを選択できます。**バックアップ データ ストア** (Standard レベル) または **アーカイブ データ ストア** (プレビュー)。
+1. バックアップを 2 つのデータ ストア (または層) のいずれかに保存するには、**バックアップ データ ストア** (標準層) または **アーカイブ データ ストア** (プレビュー段階) を選択します。
 
-   **[On-expiry]\(期限切れ時\)** を選択すると、バックアップ データ ストアで期限切れになったときにバックアップをアーカイブ データ ストアに移動できます。
+1. **[On-expiry]\(期限切れ時\)** を選択して、バックアップ データ ストアで期限切れになったときにバックアップをアーカイブ データ ストアに移動します。
 
-1. 他の保持規則が存在しない場合、**既定の保持規則** が適用されます。既定値は 3 か月です。
+   他の保持規則が存在しない場合、**既定の保持規則** が適用されます。既定値は 3 か月です。
 
-    - **バックアップ データ ストア** では、保持期間の範囲は 7 日から 10 年です。
-    - **アーカイブ データ ストア** では、保持期間の範囲は 6 か月から 10 年です。
+   - **バックアップ データ ストア** では、保持期間の範囲は 7 日から 10 年です。
+   - **アーカイブ データ ストア** では、保持期間の範囲は 6 か月から 10 年です。
 
-    ![保持期間を編集する](./media/backup-azure-database-postgresql/edit-retention.png)
+   :::image type="content" source="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-inline.png" alt-text="[On-expiry]\(期限切れ時\) を選択して、期限切れになったときにバックアップをアーカイブ データ ストアに移動することが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-expanded.png":::
 
->[!NOTE]
->保持規則は、事前に決められた優先順位で評価されます。 この優先順位は、高い方から順に **年単位** の規則、**月単位** の規則、**週単位** の規則となります。 他の規則が適用されない場合、既定の保持設定が適用されます。 たとえば、最初に成功した週単位のバックアップと、最初に成功した月単位のバックアップで、復旧ポイントが同じになる場合があります。 ただし、月単位の規則の優先順位は週単位の規則よりも高いため、最初に成功した月単位のバックアップに対応する保持が適用されます。
+>[!Note]
+>保持規則は、事前に決められた優先順位で評価されます。 優先順位は、高い方から順に、年単位の規則、月単位の規則、週単位の規則となります。 他の規則が適用されない場合、既定の保持設定が適用されます。 たとえば、最初に成功した週単位のバックアップと、最初に成功した月単位のバックアップで、復旧ポイントが同じになる場合があります。 しかし、月単位の規則の方が週単位の規則よりも優先順位が高いため、毎月最初に成功したバックアップに対応する保持が適用されます。
+## <a name="create-secrets-in-the-key-vault"></a>キー コンテナーにシークレットを作成する
 
-## <a name="restore"></a>復元
+シークレットは、サーバーで **バックアップ** 権限が付与されているデータベース ユーザーの資格情報を使って更新される _ADO.net_ 形式の PG サーバー接続文字列です。 PG サーバーから接続文字列をコピーし、テキスト エディターで編集して、"_ユーザー ID とパスワード_" を更新します。 
 
-ターゲット サーバーに対する適切な一連のアクセス許可がサービスにある場合は、同じサブスクリプション内の任意の Azure PostgreSQL サーバーにデータベースを復元できます。 Postgres サーバーをバックアップするためにサービスに必要な[前提条件のアクセス許可](#prerequisite-permissions-for-configure-backup-and-restore)が既に構成されていることを確認します。
+:::image type="content" source="./media/backup-azure-database-postgresql/pg-server-connection-string-inline.png" alt-text="PG サーバーの接続文字列がシークレットとして表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/pg-server-connection-string-expanded.png":::
 
-次のステップ バイ ステップのガイドに従って復元をトリガーします。
+:::image type="content" source="./media/backup-azure-database-postgresql/create-secret-inline.png" alt-text="シークレット PG サーバーの接続文字列を作成するオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/create-secret-expanded.png":::
 
-1. 復元プロセスを開始するには、次の 2 つの方法があります。
-    1. [バックアップ センター](backup-center-overview.md) ->  **[概要]**  ->  **[復元]** に移動します。
+## <a name="run-powershell-script-to-grant-privileges-to-database-users"></a>PowerShell スクリプトを実行してデータベース ユーザーに権限を付与する
 
-    ![バックアップ センターで [復元] を選択する](./media/backup-azure-database-postgresql/backup-center-restore.png)
+バックアップの構成中に PowerShell スクリプトが動的に生成され、データベース ユーザーが PG 管理者の資格情報と共に入力として受け入れられ、データベースでデータベース ユーザーにバックアップ関連の特権が付与されます。
 
-    **[開始: 復元]** で、 **[データ ソースの種類]** として **[Azure Database for PostgreSQL]** を選択します。 **[バックアップ インスタンス]** を選択します。
+[PSQL ツール](https://www.enterprisedb.com/download-postgresql-binaries)はコンピューター上に存在する必要があり、PATH 環境変数が PSQL ツールのパスに適切に設定されている必要があります。
 
-    ![[開始: 復元] で [データ ソースの種類] を選択する](./media/backup-azure-database-postgresql/initiate-restore.png)
+:::image type="content" source="./media/backup-azure-database-postgresql/psql-set-environment-inline.png" alt-text="環境設定アプリケーションを検索するオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/psql-set-environment-expanded.png":::
 
-    1. または、 **[バックアップ コンテナー]**  ->  **[バックアップ インスタンス]** に直接移動することもできます。 復元するデータベースに対応する **バックアップ インスタンス** を選択します。
+:::image type="content" source="./media/backup-azure-database-postgresql/system-properties-to-set-environment-inline.png" alt-text="[システムのプロパティ] で環境を設定するオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/system-properties-to-set-environment-expanded.png":::
 
-    ![復元用のバックアップ インスタンス](./media/backup-azure-database-postgresql/backup-instances-restore.png)
+:::image type="content" source="./media/backup-azure-database-postgresql/adding-environment-variables-inline.png" alt-text="既定の環境変数が表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/adding-environment-variables-expanded.png":::
 
-    ![バックアップ インスタンスの一覧](./media/backup-azure-database-postgresql/list-backup-instances.png)
+:::image type="content" source="./media/backup-azure-database-postgresql/editing-environment-variables-inline.png" alt-text="設定が必要な環境変数が表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/editing-environment-variables-expanded.png":::
 
-    ![[復元] を選択](./media/backup-azure-database-postgresql/select-restore.png)
+ネットワーク接続を許可するコンピューターの IP アドレスが、Azure PostgreSQL インスタンスの **接続セキュリティ設定** の許可リストに載っていることを保証します。
 
-1. 選択したバックアップ インスタンスで使用できるすべての完全バックアップの一覧から **復旧ポイントを選択** します。 既定では、最新の復旧ポイントが選択されます。
-
-    ![復旧ポイントを選択する](./media/backup-azure-database-postgresql/select-recovery-point.png)
-
-    ![復旧ポイントの一覧](./media/backup-azure-database-postgresql/list-recovery-points.png)
-
-1. **復元のパラメーター** を入力します。 この時点で、次の 2 種類の復元から選択できます。 **[Restore as Database]\(データベースとして復元\)** と **[ファイルとして復元]** 。
-
-1. **データベースとして復元**: バックアップ データを復元して、ターゲット PostgreSQL サーバーに新しいデータベースを作成します。
-
-    - ターゲット サーバーは、ソース サーバーと同じにすることができます。 ただし、元のデータベースの上書きはサポートされていません。
-    - すべてのサブスクリプションのサーバーから、コンテナーと同じリージョン内のサーバーを選択できます。
-    - **[レビューと復元]** を選択します。 これにより検証がトリガーされ、ターゲット サーバーに対する適切な復元のアクセス許可がサービスにあるかどうかが確認されます。
-
-    ![データベースとして復元](./media/backup-azure-database-postgresql/restore-as-database.png)
-
-1. **ファイルとして復元**: バックアップ ファイルをターゲット ストレージ アカウント (BLOB) にダンプします。
-
-    - すべてのサブスクリプションのストレージ アカウントから、コンテナーと同じリージョン内のストレージ アカウントを選択できます。
-    - 選択したストレージ アカウントに対してフィルター処理されたコンテナーの一覧からターゲット コンテナーを選択します。
-    - **[レビューと復元]** を選択します。 これにより検証がトリガーされ、ターゲット サーバーに対する適切な復元のアクセス許可がサービスにあるかどうかが確認されます。
-
-    ![ファイルとして復元](./media/backup-azure-database-postgresql/restore-as-files.png)
-
-1. 回復ポイントがアーカイブ層にある場合は、復元する前に回復ポイントをリハイドレートする必要があります。
-   
-   ![リハイドレートの設定](./media/backup-azure-database-postgresql/rehydration-settings.png)
-   
-   リハイドレートに必要な次の追加パラメーターを指定します。
-   - **Rehydration priority \(リハイドレートの優先順位\):** 既定値は **Standard** です。
-   - **Rehydration duration \(リハイドレート期間\):** 最大リハイドレート期間は 30 日間、最小リハイドレート期間は 10 日間です。 既定値は **15** です。
-   
-   回復ポイントは、指定されたリハイドレート期間、**バックアップ データ ストア** に格納されます。
-
-
-1. 情報を確認し、 **[復元]** を選択します。 これにより、対応する復元ジョブがトリガーされます。このジョブは **[バックアップ ジョブ]** で追跡できます。
-
->[!NOTE]
->Azure Database for PostgreSQL のアーカイブ サポートは、限定パブリック プレビュー段階です。
-
-## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>バックアップと復元を構成するための前提条件のアクセス許可
-
-Azure Backup は、厳密なセキュリティ ガイドラインに準拠しています。 ネイティブの Azure サービスでありながら、リソースに対するアクセス許可は想定されておらず、ユーザーが明示的に指定する必要があります。  同様に、データベースに接続するための資格情報は保存されません。 これは、データを保護するために重要です。 代わりに、Azure Active Directory 認証が使用されます。
-
-自動スクリプトと関連する指示を入手するために、[こちらのドキュメントをダウンロード](https://download.microsoft.com/download/7/4/d/74d689aa-909d-4d3e-9b18-f8e465a7ebf5/OSSbkpprep_automated.docx)してください。 これにより、バックアップと復元のために、Azure PostgreSQL サーバーへの適切な一連のアクセス許可が付与されます。
-
-## <a name="manage-the-backed-up-azure-postgresql-databases"></a>バックアップされた Azure PostgreSQL データベースを管理する
-
-**バックアップ インスタンス** で実行できる管理操作を次に示します。
-
-### <a name="on-demand-backup"></a>オンデマンド バックアップ
+## <a name="generate-an-on-demand-backup"></a>オンデマンド バックアップの生成
 
 ポリシーで指定されたスケジュールにないバックアップをトリガーするには、 **[バックアップ インスタンス]**  ->  **[今すぐバックアップ]** に移動します。
 関連するバックアップ ポリシーで定義された保持規則の一覧から選択します。
 
-![今すぐバックアップをトリガーする](./media/backup-azure-database-postgresql/backup-now.png)
+:::image type="content" source="./media/backup-azure-database-postgresql/navigate-to-retention-rules-inline.png" alt-text="関連するバックアップ ポリシーに定義された保持規則の一覧に移動するオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/navigate-to-retention-rules-expanded.png":::
 
-![保持規則の一覧から選択する](./media/backup-azure-database-postgresql/retention-rules.png)
-
-### <a name="stop-protection"></a>保護の停止
-
-バックアップ項目の保護を停止できます。 これにより、そのバックアップ項目に関連付けられている復旧ポイントも削除されます。 少なくとも 6 か月間、回復ポイントがアーカイブ層に含まれていない場合は、これらの回復ポイントを削除すると早期削除コストが発生します。 既存の復旧ポイントを保持しながら、保護を停止するオプションはまだ提供されていません。
-
-![保護の停止](./media/backup-azure-database-postgresql/stop-protection.png)
-
-### <a name="change-policy"></a>ポリシーを変更する
-
-バックアップ インスタンスに関連付けられているポリシーを変更できます。
-
-1. **[バックアップ インスタンス]**  ->  **[ポリシーの変更]** を選択します。
-
-    ![ポリシーを変更する](./media/backup-azure-database-postgresql/change-policy.png)
-
-1. データベースに適用する新しいポリシーを選択します。
-
-    ![ポリシーを再割り当てする](./media/backup-azure-database-postgresql/reassign-policy.png)
-
-## <a name="troubleshooting"></a>トラブルシューティング
-
-このセクションには、Azure Backup を使用した Azure PostgreSQL データベースのバックアップに関するトラブルシューティング情報を記載します。
-
-### <a name="usererrormsimissingpermissions"></a>UserErrorMSIMissingPermissions
-
-バックアップ コンテナー MSI に対して、バックアップまたは復元する PG サーバーの **読み取り** アクセス権を付与します。
-
-PostgreSQL データベースへのセキュリティで保護された接続を確立するために、Azure Backup では、[マネージド サービス ID (MSI)](../active-directory/managed-identities-azure-resources/overview.md) 認証モデルが使用されます。 したがって、バックアップ コンテナーは、ユーザーによって明示的にアクセス許可が付与されているリソースにのみアクセスできます。
-
-システム MSI は、作成時に自動的にコンテナーに割り当てられます。 このコンテナー MSI に、データベースのバックアップ元となる PostgreSQL サーバーへのアクセス権を付与する必要があります。
-
-手順:
-
-1. Postgres サーバーで、 **[アクセス制御 (IAM)]** ペインに移動します。
-
-    ![[アクセス制御] ペイン](./media/backup-azure-database-postgresql/access-control-pane.png)
-
-1. **[ロールの割り当ての追加]** を選択します。
-
-    ![ロールの割り当ての追加](./media/backup-azure-database-postgresql/add-role-assignment.png)
-
-1. 開いた右側のコンテキスト ペインで、次の情報を入力します。<br>
-
-   - **ロール:** ドロップダウン リストから **[閲覧者]** ロールを選択します。<br>
-   - **アクセスの割り当て先:** ドロップダウン リストから **[ユーザー、グループ、またはサービス プリンシパル]** オプションを選択します。<br>
-   - **選択:** このサーバーとそのデータベースをバックアップする先のバックアップ コンテナーの名前を入力します。<br>
-
-    ![ロールの選択](./media/backup-azure-database-postgresql/select-role-and-enter-backup-vault-name.png)
-
-### <a name="usererrorbackupuserauthfailed"></a>UserErrorBackupUserAuthFailed
-
-Azure Active Directory で認証できるデータベース バックアップ ユーザーを作成します。
-
-このエラーは、PostgreSQL サーバーの Azure Active Directory 管理者が存在しない場合、または Azure Active Directory を使用して認証できるバックアップ ユーザーが存在しない場合に発生する可能性があります。
-
-手順:
-
-OSS サーバーに Active Directory 管理者を追加します。
-
-パスワードの代わりに Azure Active Directory で認証できるユーザーを使用してデータベースに接続する場合、この手順が必要です。 Azure Database for PostgreSQL の Azure AD 管理者ユーザーは **azure_ad_admin** ロールを所有します。 Azure AD で認証できる新しいデータベース ユーザーを作成できるのは、**azure_ad_admin** ロールのみです。
-
-1. サーバー ビューの左側のナビゲーション ウィンドウにある [Active Directory 管理者] タブに移動し、Active Directory 管理者として自分 (または他のユーザー) を追加します。
-
-    ![Active Directory 管理者を設定する](./media/backup-azure-database-postgresql/set-admin.png)
-
-1. 必ず、AD 管理者ユーザー設定を **保存** してください。
-
-    ![Active Directory 管理者ユーザー設定を保存する](./media/backup-azure-database-postgresql/save-admin-setting.png)
-
-アクセス許可の付与手順を完了するために実行する必要がある手順の一覧については、[こちらのドキュメント](https://download.microsoft.com/download/7/4/d/74d689aa-909d-4d3e-9b18-f8e465a7ebf5/OSSbkpprep_automated.docx)をご覧ください。
-
-### <a name="usererrormissingnetworksecuritypermissions"></a>UserErrorMissingNetworkSecurityPermissions
-
-サーバー ビューで **[Azure サービスへのアクセス許可]** フラグを有効にすることで、ネットワーク接続を確立ます。 サーバー ビューの **[接続のセキュリティ]** ペインで、 **[Azure サービスへのアクセス許可]** フラグを **[はい]** に設定します。
-
-![Azure サービスへのアクセス許可](./media/backup-azure-database-postgresql/allow-access-to-azure-services.png)
-
-### <a name="usererrorcontainernotaccessible"></a>UserErrorContainerNotAccessible
-
-#### <a name="permission-to-restore-to-a-storage-account-container-when-restoring-as-files"></a>ファイルとして復元するときにストレージ アカウント コンテナーに復元するアクセス許可
-
-1. Azure portal を使用して、ストレージ アカウント コンテナーにアクセスするためのアクセス許可をバックアップ コンテナー MSI に付与します。
-    1. **[ストレージ アカウント]**  ->  **[アクセス制御]**  ->  **[ロールの割り当ての追加]** に移動します。
-    1. **[ストレージ BLOB データ共同作成者]** ロールをバックアップ コンテナー MSI に割り当てます。
-
-    ![[ストレージ BLOB データ共同作成者] ロールを割り当てる](./media/backup-azure-database-postgresql/assign-storage-blog-data-contributor-role.png)
-
-1. または、Azure CLI で [az role assignment create](/cli/azure/role/assignment) コマンドを使用して、復元先の特定のコンテナーに詳細なアクセス許可を付与します。
-
-    ```azurecli
-    az role assignment create --assignee $VaultMSI_AppId  --role "Storage Blob Data Contributor"   --scope $id
-    ```
-
-    1. assignee パラメーターをコンテナーの MSI の **アプリケーション ID** に置き換え、scope パラメーターで特定のコンテナーを参照します。
-    1. コンテナー MSI の **アプリケーション ID** を取得するには、 **[アプリケーションの種類]** で **[すべてのアプリケーション]** を選択します。
-
-        ![[すべてのアプリケーション] を選択する](./media/backup-azure-database-postgresql/select-all-applications.png)
-
-    1. コンテナー名を検索し、アプリケーション ID をコピーします。
-
-        ![コンテナー名を検索する](./media/backup-azure-database-postgresql/search-for-vault-name.png)
+:::image type="content" source="./media/backup-azure-database-postgresql/choose-retention-rules-inline.png" alt-text="関連するバックアップ ポリシーに定義された保持規則を選択するオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/choose-retention-rules-expanded.png":::
 
 ## <a name="next-steps"></a>次のステップ
 
-- [バックアップ コンテナーの概要](backup-vault-overview.md)
+[Azure Backup を使用した PostgreSQL データベースのバックアップのトラブルシューティング](backup-azure-database-postgresql-troubleshoot.md)

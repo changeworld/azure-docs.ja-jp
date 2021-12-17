@@ -2,13 +2,13 @@
 title: Batch プールで拡張機能を使用する
 description: 拡張機能は、プロビジョニング後の構成とバッチ計算ノードでのセットアップを容易にする小規模なアプリケーションです。
 ms.topic: how-to
-ms.date: 02/10/2021
-ms.openlocfilehash: 1bf9847af57347c143ee3d790d89988ba7cd48e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/03/2021
+ms.openlocfilehash: bac3c6c53552ac99aef6210cbe184da754580ca0
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100416615"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508686"
 ---
 # <a name="use-extensions-with-batch-pools"></a>Batch プールで拡張機能を使用する
 
@@ -20,14 +20,21 @@ ms.locfileid: "100416615"
 
 - 拡張機能が使用されているプールでは[仮想マシン構成](nodes-and-pools.md#virtual-machine-configuration)を使用する必要があります。
 - CustomScript 拡張機能の種類は Azure Batch サービス用に予約されているため、オーバーライドできません。
+- 一部の拡張機能では、適切に機能するために、コンピューティング ノードのコンテキストでアクセス可能なプールレベルのマネージド ID が必要な場合があります。 拡張機能に該当する場合は、「[Batch プールでマネージド ID を構成する](managed-identity-pools.md)」を参照してください。
 
-### <a name="supported-extensions"></a>サポートされる拡張機能
+## <a name="supported-extensions"></a>サポートされる拡張機能
 
-次の拡張機能は、現在 Batch プールを作成するときにインストールできます。 
+次の拡張機能は、現在 Batch プールを作成するときにインストールできます。
 
-- [Linux](../virtual-machines/extensions/key-vault-linux.md) と [Windows ](../virtual-machines/extensions/key-vault-windows.md) の両方に対応した Azure Key Vault 拡張機能
-- [Linux](../virtual-machines/extensions/oms-linux.md) と [Windows](../virtual-machines/extensions/oms-windows.md) の両方に対応したログ分析および監視拡張機能
-- Azure セキュリティ パック
+- [Linux 用の Azure Key Vault 拡張機能](../virtual-machines/extensions/key-vault-linux.md)
+- [Windows 用の Azure Key Vault 拡張機能](../virtual-machines/extensions/key-vault-windows.md)
+- [Linux 用の Azure Monitor のログ分析と監視拡張機能](../virtual-machines/extensions/oms-linux.md)
+- [Windows 用の Azure Monitor のログ分析と監視拡張機能](../virtual-machines/extensions/oms-windows.md)
+- [Azure Desired State Configuration (DSC) 拡張機能](../virtual-machines/extensions/dsc-overview.md)
+- [Windows VM 用の Azure Diagnostics 拡張機能](../virtual-machines/windows/extensions-diagnostics.md)
+- [AMD 上の Windows 用の HPC GPU ドライバー拡張機能](../virtual-machines/extensions/hpccompute-amd-gpu-windows.md)
+- [NVIDIA 上の Windows 用の HPC GPU ドライバー拡張機能](../virtual-machines/extensions/hpccompute-gpu-windows.md)
+- [Windows 用の Microsoft Antimalware 拡張機能](../virtual-machines/extensions/iaas-antimalware-windows.md)
 
 サポート リクエストを開いて、追加のパブリッシャーや拡張機能の種類に対するサポートを要請できます。
 

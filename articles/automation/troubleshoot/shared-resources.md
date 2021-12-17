@@ -5,12 +5,13 @@ services: automation
 ms.subservice: ''
 ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 1a822166ae4c2bf793e0fa50e93018f499fcc27a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 36f8b9d8fc890eb486ec59b972cc2fdf52ae0c80
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99053621"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166057"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>共有リソースの問題のトラブルシューティング
 
@@ -96,20 +97,20 @@ Automation アカウントで AzureRM モジュールを更新するには、英
 
 更新プロセスが中断する場合は、`SimultaneousModuleImportJobCount` パラメーターを **Update-AzureModules.ps1** スクリプトに追加し、既定値の 10 より小さい値を指定してください。 このロジックを実装する場合、3 または 5 の値から始めてください。 `SimultaneousModuleImportJobCount` は、Azure モジュールの更新に使用される **Update-AutomationAzureModulesForAccount** システム Runbook のパラメーターです。 この調整を行うと、更新プロセスの実行時間は長くなりますが、完了する可能性が高くなります。 次の例に、パラメーターと Runbook のそれを配置する場所を示します。
 
- ```powershell
-         $Body = @"
-            {
-               "properties":{
-               "runbook":{
-                   "name":"Update-AutomationAzureModulesForAccount"
-               },
-               "parameters":{
-                    ...
-                    "SimultaneousModuleImportJobCount":"3",
-                    ... 
-               }
-              }
-           }
+```powershell
+$Body = @"
+   {
+      "properties":{
+      "runbook":{
+            "name":"Update-AutomationAzureModulesForAccount"
+      },
+      "parameters":{
+            ...
+            "SimultaneousModuleImportJobCount":"3",
+            ... 
+      }
+      }
+   }
 "@
 ```
 

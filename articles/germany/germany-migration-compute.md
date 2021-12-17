@@ -1,22 +1,22 @@
 ---
 title: Azure 計算リソースを Azure Germany からグローバル Azure に移行する
 description: この記事では、Azure 計算リソースの Azure Germany からグローバル Azure への移行に関する情報を提供します。
+ms.topic: article
+ms.date: 10/16/2020
 author: gitralf
-services: germany
-cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 8/15/2018
-ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: c48c757a0c1a4ff0bf0bffbd49c50efbc2c9b93b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3662039dad5d85c87c2598fb59b7719ab9251090
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707764"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "117029112"
 ---
 # <a name="migrate-compute-resources-to-global-azure"></a>計算リソースをグローバル Azure に移行する
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 この記事には、Azure 計算リソースの Azure Germany からグローバル Azure への移行に役立つ可能性のある情報が含まれています。
 
@@ -26,7 +26,7 @@ Azure Germany からグローバル Azure に Azure 計算サービスとして�
 
 ### <a name="duplicate-by-using-site-recovery"></a>Site Recovery を使用した複製
 
-Azure Site Recovery は、Azure Germany からグローバル Azure に VM を移行するのに役立ちます。 Azure Germany からグローバル Azure への移行では異なるテナント内にソースとターゲットがあるため、VM に使用される通常の Azure Disaster Recovery オプションは使用できません。 秘訣は、ターゲット環境 (グローバル Azure) 内に Site Recovery コンテナーを設定して、物理サーバーを Azure に物理サーバーを移行するように続行することです。 Azure portal で、 **[Not virtualized]\(非仮想化\)** と示されたレプリケーション パスを選択します。 レプリケーションが完了したら、フェールオーバーを実行します。
+Azure Site Recovery は、Azure Germany からグローバル Azure に VM を移行するのに役立ちます。 Azure Germany からグローバル Azure への移行では異なるテナント内にソースとターゲットがあるため、VM に使用される通常の Azure Disaster Recovery オプションは使用できません。 秘訣は、ターゲット環境 (グローバル Azure) 内に Site Recovery コンテナーを設定して、物理サーバーを Azure に物理サーバーを移行するように続行することです。 Azure portal で、**[Not virtualized]\(非仮想化\)** と示されたレプリケーション パスを選択します。 レプリケーションが完了したら、フェールオーバーを実行します。
 
 > [!NOTE]
 > 次の手順は、オンプレミスで実行している物理サーバーを Azure に移行する場合と同じ手順です。
@@ -47,7 +47,7 @@ Azure Site Recovery は、Azure Germany からグローバル Azure に VM を�
 1. レプリケートされた VM を実行する仮想ネットワークを設定します。
 1. Azure ストレージ アカウントを作成します。
 1. Recovery Services のコンテナーを設定します。
-1. **[保護の目標]** を定義します ( **[To Azure]\(Azure へ\)**  >  **[非仮想化/その他]** )。
+1. **[保護の目標]** を定義します (**[To Azure]\(Azure へ\)** > **[非仮想化/その他]**)。
 1. Recovery 統合セットアップ インストール ファイルをダウンロードします ( **[Prepare Infrastructure]\(インフラストラクチャの準備\)**  >  **[Source]\(ソース\)** )。 ConfigurationServer 内からポータル URL を開くと、ファイルは正しいサーバーにダウンロードされます。 ConfigurationServer の外部から、インストール ファイルを ConfigurationServer にアップロードします。
 1. コンテナー登録キー (必要に応じて、前の手順と同じように ConfigurationServer にアップロード) をダウンロードします。
 1. ConfigurationServer 上で Recovery 統合セットアップのインストールを実行します。
@@ -65,25 +65,25 @@ Azure Site Recovery は、Azure Germany からグローバル Azure に VM を�
 ローカル マシンにデプロイするために使用する Azure Resource Manager テンプレートをエクスポートできます。 場所とその他のパラメーターまたは変数を変更するには、テンプレートを編集します。 次に、グローバル Azure に再デプロイします。 
 
 > [!IMPORTANT]
-> 場所、Azure Key Vault シークレット、証明書、および他の GUID を、新しいリージョンと一貫性があるように変更します。
+> 新しいリージョンと一貫性を維持できるように、場所、Azure Key Vault シークレット、証明書、およびその他の GUID を変更します。
 
 リソース グループを選択して、ポータルで Resource Manager テンプレートをエクスポートします。 **[デプロイ]** を選択し、最新のデプロイを選択します。 左側のメニューで **[テンプレート]** を選択して、テンプレートをダウンロードします。
 
 いくつかのファイルを含む .zip ファイルをダウンロードします。 PowerShell、Azure CLI、Ruby、または .NET スクリプトでは、テンプレートをデプロイできます。 ファイル *parameters.json* には、最後のデプロイからのすべての入力があります。 このファイルでいくつかの設定を変更することが必要になる可能性があります。 リソースのサブセットのみを再デプロイする場合には、*template.json* ファイルを編集します。
 
-詳細:
+詳細情報:
 
-- [Site Recovery のチュートリアル](https://docs.microsoft.com/azure/site-recovery/#step-by-step-tutorials)を完了することによって知識を更新してください。
-- [Resource Manager テンプレートのエクスポート](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)方法を理解するか、または [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) の概要を参照してください。
+- [Site Recovery のチュートリアル](../site-recovery/index.yml)を完了することによって知識を更新してください。
+- [Resource Manager テンプレートのエクスポート](../azure-resource-manager/templates/export-template-portal.md)方法を理解するか、または [Azure Resource Manager](../azure-resource-manager/management/overview.md) の概要を参照してください。
 - 詳細については、「[physical-to-Azure disaster recovery by using Site Recovery](../site-recovery/physical-azure-disaster-recovery.md)」(Site Recovery を使用した物理から Azure へのディザスター リカバリー) を参照してください。
 - [Azure の場所の概要](https://azure.microsoft.com/global-infrastructure/locations/)を参照してください。
-- [テンプレートを再デプロイする](../azure-resource-manager/resource-group-template-deploy.md)方法を詳しく説明します。
+- [テンプレートを再デプロイする](../azure-resource-manager/templates/deploy-powershell.md)方法を詳しく説明します。
 
-## <a name="cloud-services"></a>Cloud Services
+## <a name="cloud-services"></a>クラウド サービス
 
 `.cspkg` と `.cscfg` の定義を再度提供することで、Microsoft Azure Cloud Services を再デプロイできます。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Azure portal で Cloud Services を再デプロイするには、次のようにします。
 
@@ -95,20 +95,20 @@ Azure portal で Cloud Services を再デプロイするには、次のように
 
 PowerShell を使用してクラウド サービスを再デプロイするには、次のようにします。
 
-1. `.cspkg` と `.cscfg` の定義を使用して、[新しいクラウド サービスを作成します](/powershell/module/servicemanagement/azure/new-azureservice)。
+1. `.cspkg` と `.cscfg` の定義を使用して、[新しいクラウド サービスを作成します](/powershell/module/servicemanagement/azure.service/new-azureservice)。
 
     ```powershell
     New-AzureService -ServiceName <yourServiceName> -Label <MyTestService> -Location <westeurope>
     ```
 
-1. `.cspkg` と `.cscfg` の定義を使用して、[新しいデプロイを作成します](/powershell/module/servicemanagement/azure/new-azuredeployment)。
+1. `.cspkg` と `.cscfg` の定義を使用して、[新しいデプロイを作成します](/powershell/module/servicemanagement/azure.service/new-azuredeployment)。
 
     ```powershell
     New-AzureDeployment -ServiceName <yourServiceName> -Slot <Production> -Package <YourCspkgFile.cspkg> -Configuration <YourConfigFile.cscfg>
     ```
 
 1. 新しいクラウド サービスへのトラフィックを指すように [CNAME または A レコード](../cloud-services/cloud-services-custom-domain-name-portal.md)を更新します。
-1. トラフィックが新しいクラウド サービスをポイントしている場合、Azure Germany の[以前のクラウド サービスを削除します](/powershell/module/servicemanagement/azure/remove-azureservice)。
+1. トラフィックが新しいクラウド サービスをポイントしている場合、Azure Germany の[以前のクラウド サービスを削除します](/powershell/module/servicemanagement/azure.service/remove-azureservice)。
 
     ```powershell
     Remove-AzureService -ServiceName <yourOldServiceName>
@@ -130,13 +130,13 @@ REST API を使用してクラウド サービスを再デプロイするには�
     https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deploymentslots/production
     ```
 
-1. トラフィックが新しいクラウド サービスをポイントしている場合、Azure Germany の[以前のクラウド サービスを削除します](https://docs.microsoft.com/rest/api/compute/cloudservices/rest-delete-cloud-service)。
+1. トラフィックが新しいクラウド サービスをポイントしている場合、Azure Germany の[以前のクラウド サービスを削除します](/rest/api/compute/cloudservices/rest-delete-cloud-service)。
 
     ```http
     https://management.core.cloudapi.de/<subscription-id>/services/hostedservices/<old-cloudservice-name>
     ```
 
-詳細:
+詳細情報:
 
 - 「[Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)」を確認してください。
 
@@ -146,9 +146,9 @@ Azure Service Fabric リソースを Azure Germany からグローバル Azure �
 
 現在の Service Fabric 環境に関する情報は、PowerShell コマンドレットを使用して取得できます。 PowerShell で `Get-Help *ServiceFabric*` を入力して、Service Fabric に関連したすべてのコマンドレットにアクセスします。
 
-詳細:
+詳細情報:
 
-- [Service Fabric のチュートリアル](https://docs.microsoft.com/azure/service-fabric/#step-by-step-tutorials)を完了することによって知識を更新してください。
+- [Service Fabric のチュートリアル](../service-fabric/service-fabric-tutorial-create-dotnet-app.md)を完了することによって知識を更新してください。
 - [新しいクラスターを作成する](../service-fabric/service-fabric-cluster-creation-via-portal.md)方法を説明します。
 - 「[Service Fabric の概要](../service-fabric/service-fabric-overview.md)」を確認してください。
 
@@ -164,25 +164,25 @@ Azure Service Fabric リソースを Azure Germany からグローバル Azure �
 1. 入出力データの保持に使用される新しいストレージ アカウント、データベース、およびその他のサービスを作成します。
 1. 新しい Batch アカウントをポイントし、新しい資格情報を使用するように構成とコードを更新します。
 
-詳細:
+詳細情報:
 
-- [Batch のチュートリアル](https://docs.microsoft.com/azure/batch/#step-by-step-tutorials)を完了することによってご自分の知識を更新してください。
+- [Batch のチュートリアル](../batch/tutorial-parallel-dotnet.md)を完了することによってご自分の知識を更新してください。
 - 「[Azure Batch の概要](../batch/batch-technical-overview.md)」を確認してください。
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>関数
 
 現時点で、Azure Germany からグローバル Azure に Azure Functions リソースを移行することはサポートされていません。 Resource Manager テンプレートをエクスポートし、場所を変更してから、ターゲット リージョンに再デプロイすることをお勧めします。
 
 > [!IMPORTANT]
 > 場所、キー コンテナー シークレット、証明書、アプリ設定および、その他の GUID を新しいリージョンと一致するように、変更します。
 
-詳細:
+詳細情報:
 
-- [Functions のチュートリアル](https://docs.microsoft.com/azure/azure-functions/#step-by-step-tutorials)を完了することによってご自分の知識を更新してください。
-- [Resource Manager テンプレートをエクスポート](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)する方法を学習するか、または [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) の概要を参照してください。
+- [Functions のチュートリアル](../azure-functions/index.yml)を完了して、新しい知識を得ましょう。
+- [Resource Manager テンプレートをエクスポート](../azure-resource-manager/templates/export-template-portal.md)する方法を学習するか、または [Azure Resource Manager](../azure-resource-manager/management/overview.md) の概要を参照してください。
 - 「[Azure Functions の概要](../azure-functions/functions-overview.md)」を確認してください。
 - [Azure の場所の概要](https://azure.microsoft.com/global-infrastructure/locations/)を確認してください。
-- [テンプレートを再デプロイする](../azure-resource-manager/resource-group-template-deploy.md)方法を説明します。
+- [テンプレートを再デプロイする](../azure-resource-manager/templates/deploy-powershell.md)方法を説明します。
 
 ## <a name="virtual-machine-scale-sets"></a>仮想マシン スケール セット
 
@@ -191,14 +191,14 @@ Azure Service Fabric リソースを Azure Germany からグローバル Azure �
 > [!IMPORTANT]
 > 場所、Key Vault シークレット、証明書、および、その他の GUID を新しいリージョンと一致するように、変更します。
 
-詳細:
+詳細情報:
 
-- [仮想マシン スケール セットのチュートリアル](https://docs.microsoft.com/azure/virtual-machine-scale-sets/#step-by-step-tutorials)を完了することによって知識を更新してください。
-- [Azure Resource Manager テンプレートをエクスポートする](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)方法を説明します。
-- 「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を確認してください。
+- [仮想マシン スケール セットのチュートリアル](../virtual-machine-scale-sets/tutorial-create-and-manage-cli.md)を完了することによって知識を更新してください。
+- [Azure Resource Manager テンプレートをエクスポートする](../azure-resource-manager/templates/export-template-portal.md)方法を説明します。
+- 「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」を確認してください。
 - 「[Virtual Machine Scale Sets の概要](../virtual-machine-scale-sets/overview.md)」を参照してください。
 - [Azure の場所の概要](https://azure.microsoft.com/global-infrastructure/locations/)を参照してください。
-- [テンプレートを再デプロイする](../azure-resource-manager/resource-group-template-deploy.md)方法を説明します。
+- [テンプレートを再デプロイする](../azure-resource-manager/templates/deploy-powershell.md)方法を説明します。
 
 ## <a name="web-apps"></a>Web Apps
 
@@ -207,17 +207,17 @@ Azure Service Fabric リソースを Azure Germany からグローバル Azure �
 > [!IMPORTANT]
 > 場所、Key Vault シークレット、証明書、および、その他の GUID を新しいリージョンと一致するように、変更します。
 
-詳細:
+詳細情報:
 
-- [App Service のチュートリアル](https://docs.microsoft.com/azure/app-service/#step-by-step-tutorials)を完了することによって知識を更新してください。
-- [Resource Manager テンプレートをエクスポート](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)する方法を学習するか、または [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) の概要を参照してください。
+- [App Service のチュートリアル](../app-service/tutorial-dotnetcore-sqldb-app.md)を完了することによって知識を更新してください。
+- [Resource Manager テンプレートをエクスポート](../azure-resource-manager/templates/export-template-portal.md)する方法を学習するか、または [Azure Resource Manager](../azure-resource-manager/management/overview.md) の概要を参照してください。
 - 「[App Service の概要](../app-service/overview.md)」を確認してください。
 - [Azure の場所の概要](https://azure.microsoft.com/global-infrastructure/locations/)を参照してください。
-- [テンプレートを再デプロイする](../azure-resource-manager/resource-group-template-deploy.md)方法を説明します。
+- [テンプレートを再デプロイする](../azure-resource-manager/templates/deploy-powershell.md)方法を説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-次のサービス カテゴリのリソースを移行するためのツール、手法、および推奨事項について説明します。
+次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
 - [ネットワーク](./germany-migration-networking.md)
 - [Storage](./germany-migration-storage.md)
@@ -227,6 +227,6 @@ Azure Service Fabric リソースを Azure Germany からグローバル Azure �
 - [IoT](./germany-migration-iot.md)
 - [統合](./germany-migration-integration.md)
 - [ID](./germany-migration-identity.md)
-- [セキュリティ](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [管理ツール](./germany-migration-management-tools.md)
 - [メディア](./germany-migration-media.md)

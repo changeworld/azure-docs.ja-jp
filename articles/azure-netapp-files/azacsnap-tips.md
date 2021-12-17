@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 08/04/2021
 ms.author: phjensen
-ms.openlocfilehash: 6465acc0d4ce760e0bf89c73dace7c8c66d37c49
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6650554c92f42a8b5c25a26be5f4ea41947105e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869941"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733401"
 ---
-# <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールを使用するためのヒントとテクニック (プレビュー)
+# <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールを使用するためのヒントとテクニック
 
 この記事では、AzAcSnap を使用する際に役立つヒントとテクニックについて説明します。
 
@@ -31,7 +31,7 @@ AzAcSnap サービス プリンシパルのスコープを制限する必要が�
 
 次に、AzAcSnap を機能させるために必要な最小限のアクションでのロール定義の例を示します。
 
-```bash
+```azurecli
 az role definition create --role-definition '{ \
   "Name": "Azure Application Consistent Snapshot tool", \
   "IsCustom": "true", \
@@ -50,7 +50,7 @@ az role definition create --role-definition '{ \
 
 復元オプションが正常に機能するためには、AzAcSnap サービス プリンシパルでもボリュームを作成できる必要があります。  この場合、ロールの定義には追加のアクションが必要になります。そのため、完全なサービス プリンシパルは次の例のようになります。
 
-```bash
+```azurecli
 az role definition create --role-definition '{ \
   "Name": "Azure Application Consistent Snapshot tool", \
   "IsCustom": "true", \
@@ -139,7 +139,7 @@ cron の詳しい説明と crontab ファイルの形式については、こち
 
 ## <a name="delete-a-snapshot"></a>スナップショットを削除する
 
-スナップショットを削除するには、`azacsnap -c delete` コマンドを実行します。 OS レベルからスナップショットを削除することはできません。 ストレージ スナップショットを削除するには、正しいコマンド (`azacsnap -c delete`) を使用する必要があります。
+スナップショットを削除する場合、`azacsnap -c delete` のコマンドを使用します。 OS レベルからスナップショットを削除することはできません。 ストレージ スナップショットを削除するには、正しいコマンド (`azacsnap -c delete`) を使用する必要があります。
 
 > [!IMPORTANT]
 > スナップショットを削除するときは注意が必要です。 一旦削除されると、削除されたスナップショットは復旧 **できません**。
@@ -162,30 +162,56 @@ Azure Large Instance の場合、サービス要求を開いて Microsoft の運
 > [!IMPORTANT]
 > この操作は、Azure Large Instance にのみ適用されます。
 
-場合によっては、SAP HANA を保護するためのツールが既にあり、"ブート" ボリューム スナップショットの構成のみが必要であることがあります。  この場合、タスクは簡略化され、次の手順を実行する必要があります。
+場合によっては、SAP HANA を保護するためのツールが既にあり、"ブート" ボリューム スナップショットの構成のみが必要であることがあります。  この場合は、次の手順のみを完了します。
 
 1. インストールの前提条件の手順 1から 4 を完了します。
 1. ストレージとの通信を有効にします。
-1. スナップショット ツールをインストールするためのインストーラーをダウンロードして実行します。
+1. スナップショット ツールをインストールする、インストーラーをダウンロードして実行します。
 1. スナップショット ツールの設定を完了します。
-1. 次のようにして、新しい構成ファイルを作成します。 ブート ボリュームの詳細は、OtherVolume スタンザ (<span style="color:red">赤</span>のユーザー エントリ) に含まれている必要があります。
+1. azacsnap 構成ファイルに追加するボリュームの一覧を取得します。この例では、Storage User Name は `cl25h50backup` で、Storage IP Address は `10.1.1.10` です。 
+    ```bash
+    ssh cl25h50backup@10.1.1.10 "volume show -volume *boot*"
+    ```
     ```output
-    > <span style="color:red">azacsnap -c configure --configuration new --configfile BootVolume.json</span>
+    Last login time: 7/20/2021 23:54:03
+    Vserver   Volume       Aggregate    State      Type       Size  Available Used%
+    --------- ------------ ------------ ---------- ---- ---------- ---------- -----
+    ams07-a700s-saphan-1-01v250-client25-nprod t250_sles_boot_sollabams07v51_vol aggr_n01_ssd online RW 150GB 57.24GB  61%
+    ams07-a700s-saphan-1-01v250-client25-nprod t250_sles_boot_sollabams07v52_vol aggr_n01_ssd online RW 150GB 81.06GB  45%
+    ams07-a700s-saphan-1-01v250-client25-nprod t250_sles_boot_sollabams07v53_vol aggr_n01_ssd online RW 150GB 79.56GB  46%
+    3 entries were displayed.
+    ```
+    > [!NOTE] 
+    > この例では、このホストは 3 ノードのスケールアウト システムの一部であり、このホストから 3 つのすべてのブート ボリュームを確認できます。  つまり、3 つのすべてのブート ボリュームのスナップショットをこのホストから作成でき、3 つすべてを次の手順で構成ファイルに追加する必要があります。
+
+1. 次のようにして、新しい構成ファイルを作成します。 ブート ボリュームの詳細は、OtherVolume スタンザに含まれている必要があります。
+    ```bash
+    azacsnap -c configure --configuration new --configfile BootVolume.json
+    ```
+    ```output
     Building new config file
-    Add comment to config file (blank entry to exit adding comments):<span style="color:red">Boot only config file.</span>
+    Add comment to config file (blank entry to exit adding comments): Boot only config file.
     Add comment to config file (blank entry to exit adding comments):
-    Add database to config? (y/n) [n]: <span style="color:red">y</span>
-    HANA SID (for example, H80): <span style="color:red">X</span>
-    HANA Instance Number (for example, 00): <span style="color:red">X</span>
-    HANA HDB User Store Key (for example, `hdbuserstore List`): <span style="color:red">X</span>
-    HANA Server's Address (hostname or IP address): <span style="color:red">X</span>
+    Add database to config? (y/n) [n]: y
+    HANA SID (for example, H80): X
+    HANA Instance Number (for example, 00): X
+    HANA HDB User Store Key (for example, `hdbuserstore List`): X
+    HANA Server's Address (hostname or IP address): X
     Add ANF Storage to database section? (y/n) [n]:
-    Add HLI Storage to database section? (y/n) [n]: <span style="color:red">y</span>
+    Add HLI Storage to database section? (y/n) [n]: y
     Add DATA Volume to HLI Storage section of Database section? (y/n) [n]:
-    Add OTHER Volume to HLI Storage section of Database section? (y/n) [n]: <span style="color:red">y</span>
-    Storage User Name (for example, clbackup25): <span style="color:red">shoasnap</span>
-    Storage IP Address (for example, 192.168.1.30): <span style="color:red">10.1.1.10</span>
-    Storage Volume Name (for example, hana_data_soldub41_t250_vol): <span style="color:red">t210_sles_boot_azsollabbl20a31_vol</span>
+    Add OTHER Volume to HLI Storage section of Database section? (y/n) [n]: y
+    Storage User Name (for example, clbackup25): cl25h50backup
+    Storage IP Address (for example, 192.168.1.30): 10.1.1.10
+    Storage Volume Name (for example, hana_data_soldub41_t250_vol): t250_sles_boot_sollabams07v51_vol
+    Add OTHER Volume to HLI Storage section of Database section? (y/n) [n]: y
+    Storage User Name (for example, clbackup25): cl25h50backup
+    Storage IP Address (for example, 192.168.1.30): 10.1.1.10
+    Storage Volume Name (for example, hana_data_soldub41_t250_vol): t250_sles_boot_sollabams07v52_vol
+    Add OTHER Volume to HLI Storage section of Database section? (y/n) [n]: y
+    Storage User Name (for example, clbackup25): cl25h50backup
+    Storage IP Address (for example, 192.168.1.30): 10.1.1.10
+    Storage Volume Name (for example, hana_data_soldub41_t250_vol): t250_sles_boot_sollabams07v53_vol
     Add OTHER Volume to HLI Storage section of Database section? (y/n) [n]:
     Add HLI Storage to database section? (y/n) [n]:
     Add database to config? (y/n) [n]:
@@ -202,7 +228,7 @@ Azure Large Instance の場合、サービス要求を開いて Microsoft の運
 
     ```output
     {
-      "version": "5.0 Preview",
+      "version": "5.0",
       "logPath": "./logs",
       "securityPath": "./security",
       "comments": [
@@ -221,9 +247,19 @@ Azure Large Instance の場合、サービス要求を開いて Microsoft の運
                 "dataVolume": [],
                 "otherVolume": [
                   {
-                    "backupName": "shoasnap",
+                    "backupName": "cl25h50backup",
                     "ipAddress": "10.1.1.10",
-                    "volume&quot;: &quot;t210_sles_boot_azsollabbl20a31_vol"
+                    "volume&quot;: &quot;t250_sles_boot_sollabams07v51_vol"
+                  },
+                  {
+                    "backupName": "cl25h50backup",
+                    "ipAddress": "10.1.1.10",
+                    "volume&quot;: &quot;t250_sles_boot_sollabams07v52_vol"
+                  },
+                  {
+                    "backupName": "cl25h50backup",
+                    "ipAddress": "10.1.1.10",
+                    "volume&quot;: &quot;t250_sles_boot_sollabams07v53_vol"
                   }
                 ]
               }
@@ -251,11 +287,15 @@ Azure Large Instance の場合、サービス要求を開いて Microsoft の運
     ```output
     List snapshot details called with snapshotFilter 'TestBootVolume'
     #, Volume, Snapshot, Create Time, HANA Backup ID, Snapshot Size
-    #1, t210_sles_boot_azsollabbl20a31_vol, TestBootVolume.2020-07-03T034651.7059085Z, "Fri Jul 03 03:48:24 2020", "otherVolume Backup|azacsnap version: 5.0 Preview (20200617.75879)", 200KB
-    , t210_sles_boot_azsollabbl20a31_vol, , , Size used by Snapshots, 1.31GB
+    #1, t250_sles_boot_sollabams07v51_vol, TestBootVolume.2020-07-03T034651.7059085Z, "Fri Jul 03 03:48:24 2020", "otherVolume Backup|azacsnap version: 5.0 (Build: 20210421.6349)", 200KB
+    , t250_sles_boot_sollabams07v51_vol, , , Size used by Snapshots, 1.31GB
+    #1, t250_sles_boot_sollabams07v52_vol, TestBootVolume.2020-07-03T034651.7059085Z, "Fri Jul 03 03:48:24 2020", "otherVolume Backup|azacsnap version: 5.0 (Build: 20210421.6349)", 200KB
+    , t250_sles_boot_sollabams07v52_vol, , , Size used by Snapshots, 1.31GB
+    #1, t250_sles_boot_sollabams07v53_vol, TestBootVolume.2020-07-03T034651.7059085Z, "Fri Jul 03 03:48:24 2020", "otherVolume Backup|azacsnap version: 5.0 (Build: 20210421.6349)", 200KB
+    , t250_sles_boot_sollabams07v53_vol, , , Size used by Snapshots, 1.31GB
     ```
 
-1. スナップショットの自動バックアップを設定します。
+1. *省略可能* `crontab` を使用するか、`azacsnap` バックアップ コマンドを実行する機能がある適切なスケジューラーで、自動スナップショット バックアップを設定します。
 
 > [!NOTE]
 > SAP HANA との通信の設定は必要ありません。

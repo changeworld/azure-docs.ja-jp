@@ -5,15 +5,14 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/11/2020
+ms.date: 08/28/2021
 ms.topic: how-to
-manager: philmea
-ms.openlocfilehash: f3293ada549351cc7273847cde48c0531f06f028
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0e0e947a91da29048144a94b9651e4584f26b41
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104675809"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094117"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central アプリケーションを CSP ポータルから作成して管理する
 
@@ -77,7 +76,7 @@ Azure サブスクリプションがない場合は、Microsoft パートナー 
 
 ## <a name="location"></a>場所
 
-"**場所**" は、アプリケーションを作成する [地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 現時点では、IoT Central アプリケーションは、**オーストラリア**、**アジア太平洋**、**ヨーロッパ**、または **米国**、**イギリス**、**日本** の地域で作成できます。 いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
+**場所** は、アプリケーションを作成する場所です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 現在、IoT Central アプリケーションは **オーストラリア東部**、**米国中部**、**米国東部**、**米国東部 2**、**東日本**、**北ヨーロッパ**、**東南アジア**、**英国南部**、**西ヨーロッパ**、**米国西部** の各リージョンで作成できます。 いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
 
 ## <a name="application-template"></a>アプリケーション テンプレート
 

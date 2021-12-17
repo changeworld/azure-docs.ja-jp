@@ -1,16 +1,16 @@
 ---
 title: サービス メッシュについて
-description: サービス メッシュの概要、アーキテクチャと機能、デプロイするサービス メッシュを選択するときに考慮する必要がある基準について説明します。
-author: paulbouwer
+description: サービス メッシュ、サポートされるシナリオ、選択条件、および確認のための次のステップの概要を説明します。
+author: pgibson
 ms.topic: article
-ms.date: 10/09/2019
-ms.author: pabouwer
-ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/29/2021
+ms.author: pgibson
+ms.openlocfilehash: f1821bd9af9c09da1c5fb3ae80145dba3cc38b09
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77594313"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434306"
 ---
 # <a name="about-service-meshes"></a>サービス メッシュについて
 
@@ -28,48 +28,9 @@ ms.locfileid: "77594313"
 
 - **可観測性** - サービス間のトラフィックがどのように接続されているかについての分析情報を得ることができます。 クラスター内のすべてのトラフィックのメトリック、ログ、およびトレースと、イングレス/エグレスを取得します。 アプリケーションに分散トレース機能を追加します。
 
-## <a name="architecture"></a>Architecture
-
-サービス メッシュは、通常、コントロール プレーンとデータ プレーンで構成されます。
-
-**コントロール プレーン** には、サービス メッシュの管理をサポートするさまざまなコンポーネントがあります。 これには通常、UI や API などの管理インターフェイスが含まれます。 また、通常は、ルールを管理するコンポーネントと、サービス メッシュが特定の機能を実装する方法を定義するポリシー定義もあります。 さらに、mTLS の強力な ID や証明書などのセキュリティの側面を管理するコンポーネントもあります。 サービス メッシュには、ワークロードからメトリックとテレメトリを収集して集計する、メトリックまたは可観測性コンポーネントも含まれます。
-
-**データ プレーン** は、通常、ワークロードにサイドカーとして透過的に挿入されるプロキシで構成されます。 このプロキシは、ワークロードを含むポッドとの間のすべてのネットワーク トラフィックを制御するように構成されています。 これにより、プロキシは、mTLS 経由でトラフィックをセキュリティで保護し、トラフィックを動的にルーティングし、トラフィックにポリシーを適用し、メトリックとトレース情報を収集するように構成することができます。 
-
-![一般的なサービス メッシュのアーキテクチャ](media/servicemesh/typical-architecture.png)
-
-## <a name="capabilities"></a>機能
-
-各サービス メッシュは自然に適合し、特定のシナリオをサポートすることに重点を置いていますが、通常は、ほとんどの場合、すべてではないにしても多くの次の機能を実装します。
-
-### <a name="traffic-management"></a>トラフィック管理 
-
-- **プロトコル** – レイヤー 7 (http、grpc)
-- **動的ルーティング** – 条件、重み付け、ミラーリング
-- **回復性** – タイムアウト、再試行、サーキット ブレーカー
-- **ポリシー** – アクセス制御、レート制限、クォータ
-- **テスト** – フォールト挿入
-
-### <a name="security"></a>Security
-
-- **暗号化** – mTLS、証明書管理、外部 CA
-- **強力な ID** – SPIFFE または類似
-- **認証** – 認証、承認
-
-### <a name="observability"></a>可観測性
-
-- **メトリック** – ゴールデン メトリック、prometheus、grafana
-- **トレース** – ワークロード間のトレース
-- **トラフィック** – クラスター、イングレス/エグレス
-
-### <a name="mesh"></a>メッシュ
-
-- **サポートされているコンピューティング** – Kubernetes、仮想マシン
-- **マルチクラスター** – ゲートウェイ、フェデレーション
-
 ## <a name="selection-criteria"></a>選択条件
 
-サービス メッシュを選択する前に、要件とサービス メッシュをインストールする理由を理解していることを確認してください。 次の質問をしてみてください。
+サービス メッシュを選択する前に、要件とサービス メッシュをインストールする理由を理解していることを確認してください。 以下の点を確認してください。
 
 - **イングレス コントローラーはニーズに十分対応しているか。** - 必要なシナリオに対応するには、a/b テストやイングレスでのトラフィックの分割などの機能が必要な場合があります。 環境に利点のない複雑さを加えないでください。
 
@@ -79,41 +40,38 @@ ms.locfileid: "77594313"
 
 - **これは漸進的アプローチで採用できるか。** - 多くの機能を提供するサービス メッシュの中には、より漸進的なアプローチを採用するものがあります。 確実に成功するためには、必要なコンポーネントだけをインストールしてください。 自信を持って追加の機能が必要になったら、それらを調査してください。 最初から *すべてのもの* をインストールするという衝動は抑えてください。
 
-慎重に検討したうえで、必要な機能を提供するためにサービス メッシュが必要であると判断した場合、次に決定することは *どのサービス メッシュか* ということです。
-
-次の点を考慮して、要件に最も合うものを検討してください。 これにより、ご使用の環境とワークロードに最適な方法を見つけることができます。 「[次のステップ](#next-steps)」のセクションでは、特定のサービス メッシュに関する詳細情報と、これらの機能をこれらの領域にマップする方法について説明します。
-
-- **技術** - トラフィック管理、ポリシー、セキュリティ、可観測性
-
-- **ビジネス** - 法人向けサポート、基盤 (CNCF)、OSS ライセンス、ガバナンス
-
-- **運用** - インストール/アップグレード、リソース要件、パフォーマンス要件、統合 (メトリック、テレメトリ、ダッシュボード、ツール、SMI)、混合ワークロード (Linux と Windows のノード プール)、コンピューティング (Kubernetes、仮想マシン)、マルチクラスター
-
-- **セキュリティ** - 認証、ID、証明書の管理とローテーション、プラグ可能な外部 CA
-
-
 ## <a name="next-steps"></a>次のステップ
 
-次のドキュメントでは、Azure Kubernetes Service (AKS) で試すことができるサービス メッシュの詳細について説明しています。
+次のステップでは、Azure Kubernetes Service (AKS) で Open Service Mesh (OSM) を確認します。
 
 > [!div class="nextstepaction"]
-> [Istio に関する詳細情報 ...][istio-about]
+> [OSM の詳細][osm-about]
 
-> [!div class="nextstepaction"]
-> [Linkerd に関する詳細情報 ...][linkerd-about]
+また、それぞれの包括的なプロジェクト ドキュメントで、Azure Kubernetes Service (AKS) の次のサービス メッシュについて確認することもできます。
 
-> [!div class="nextstepaction"]
-> [Consul に関する詳細情報 ...][consul-about]
+- [Istio][istio]
+- [Linkerd][linkerd]
+- [Consul Connect][consul]
 
-Kubernetes のサービス メッシュの標準インターフェイスである Service Mesh Interface (SMI) について確認することもできます。
+サービス メッシュ、利用可能な幅広いサービス メッシュ、ツール、コンプライアンスなどについて理解を深めたい場合は、次を確認してください。
+
+- [レイヤー 5 のサービス メッシュに関するページ][service-mesh-landscape]
+
+また、次のページでは、サービス メッシュの標準化に関するさまざまな取り組みについて確認することもできます。
 
 - [Service Mesh Interface (SMI)][smi]
+- [サービス メッシュのフェデレーション][smf]に関するページ
+- [サービス メッシュのパフォーマンス (SMP)][smp]に関するページ
 
 
 <!-- LINKS - external -->
+[istio]: https://istio.io/latest/docs/setup/install/
+[linkerd]: https://linkerd.io/getting-started/
+[consul]: https://learn.hashicorp.com/tutorials/consul/service-mesh-deploy
+[service-mesh-landscape]: https://layer5.io/service-mesh-landscape
 [smi]: https://smi-spec.io/
+[smf]: https://github.com/vmware/hamlet
+[smp]: https://github.com/service-mesh-performance/service-mesh-performance
 
 <!-- LINKS - internal -->
-[istio-about]: ./servicemesh-istio-about.md
-[linkerd-about]: ./servicemesh-linkerd-about.md
-[consul-about]: ./servicemesh-consul-about.md
+[osm-about]: ./open-service-mesh-about.md

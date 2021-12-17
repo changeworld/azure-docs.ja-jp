@@ -1,25 +1,26 @@
 ---
 title: セッション ホスト仮想マシンに Windows ライセンスを適用する - Azure
-description: Windows Virtual Desktop VM への Windows ライセンスの適用方法について説明します。
-author: ChristianMontoya
+description: Azure Virtual Desktop VM への Windows ライセンスの適用方法について説明します。
+author: Heidilohr
 ms.topic: how-to
 ms.date: 08/14/2019
-ms.author: chrimo
-ms.openlocfilehash: 5f3749be36f5f035e49fcb862f92180e4902101f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: helohr
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 856cefa33948f530ee859ee1eeadfaf2cdf73de6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88010142"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471784"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>セッション ホスト仮想マシンに Windows ライセンスを適用する
 
-Windows Virtual Desktop のワークロードを実行するライセンスが適切に付与されているお客様は、Windows ライセンスをセッション ホスト仮想マシンに適用し、別のライセンスの料金を支払うことなくそれらを実行できます。 詳細については、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」を参照してください。
+Azure Virtual Desktop のワークロードを実行するライセンスが適切に付与されているお客様は、Windows ライセンスをセッション ホスト仮想マシンに適用し、別のライセンスの料金を支払うことなくそれらを実行できます。 詳細については、「[Azure Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」を参照してください。
 
-## <a name="ways-to-use-your-windows-virtual-desktop-license"></a>Windows Virtual Desktop ライセンスの使用方法
-Windows Virtual Desktop ライセンスを使用すると、ホスト プールにセッション ホストとして登録され、ユーザー接続を受け取る任意の Windows または Windows Server 仮想マシンにライセンスを適用できます。 このライセンスは、ファイル共有サーバー、ドメイン コントローラーなどとして実行されている仮想マシンには適用されません。
+## <a name="ways-to-use-your-azure-virtual-desktop-license"></a>Azure Virtual Desktop ライセンスの使用方法
+Azure Virtual Desktop ライセンスを使用すると、ホスト プールにセッション ホストとして登録され、ユーザー接続を受け取る任意の Windows または Windows Server 仮想マシンにライセンスを適用できます。 このライセンスは、ファイル共有サーバー、ドメイン コントローラーなどとして実行されている仮想マシンには適用されません。
 
-Windows Virtual Desktop ライセンスを使用する方法は、いくつかあります。
+Azure Virtual Desktop ライセンスを使用する方法は、いくつかあります。
 - [Azure Marketplace オファリング](./create-host-pools-azure-marketplace.md)を使用して、ホスト プールとそのセッション ホスト仮想マシンを作成できます。 この方法で作成された仮想マシンには、ライセンスが自動的に適用されます。
 - [GitHub の Azure Resource Manager テンプレート](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)を使用して、ホスト プールとそのセッション ホスト仮想マシンを作成できます。 この方法で作成された仮想マシンには、ライセンスが自動的に適用されます。
 - 既存のセッション ホスト仮想マシンにライセンスを適用できます。 これを行うには、まず「[PowerShell を使用してホスト プールを作成する](./create-host-pools-powershell.md)」の手順に従ってホスト プールと関連 VM を作成してから、この記事に戻ってライセンスを適用する方法を確認します。
@@ -61,3 +62,7 @@ Azure サブスクリプションで Windows ライセンスが適用されて�
 $vms = Get-AzVM
 $vms | Where-Object {$_.LicenseType -like "Windows_Client"} | Select-Object ResourceGroupName, Name, LicenseType
 ```
+
+## <a name="requirements-for-deploying-windows-server-remote-desktop-services"></a>Windows Server リモート デスクトップ サービスをデプロイするための要件
+
+Windows Server を Azure Virtual Desktop ホストとしてデプロイ内で展開する場合は、それらの仮想マシンからリモート デスクトップ サービス ライセンス サーバーにアクセスできる必要があります。 リモート デスクトップ サービス ライセンス サーバーは、オンプレミスまたは Azure に配置できます。 詳細については、「[リモート デスクトップ サービス ライセンス サーバーをアクティブ化する](/windows-server/remote/remote-desktop-services/rds-activate-license-server)」を参照してください。

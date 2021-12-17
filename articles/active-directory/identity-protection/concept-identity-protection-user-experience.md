@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4897b9187caab50be4db75bbc0af03e3d35aa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 484136b1c01cf93515971a42030eacfdda51715e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94835987"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784168"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用したユーザー エクスペリエンス
 
@@ -29,7 +29,7 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 ## <a name="multi-factor-authentication-registration"></a>多要素認証の登録
 
-多要素認証の登録を必要とする Identity Protection 保護ポリシーを有効にし、すべてのユーザーを対象にすると、ユーザーは、Azure AD MFA を使用して今後自己修復を行うことができるようになります。 このポリシーを構成すると、登録することを選択できる 14 日の期間がユーザーに与えられ、この期間の最後に強制的に登録されます。 ユーザーのエクスペリエンスについては、以下でその概要を説明します。 詳細については、エンドユーザー ドキュメントの記事「[2 要素認証と職場または学校アカウントの概要](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください。
+多要素認証の登録を必要とする Identity Protection 保護ポリシーを有効にし、すべてのユーザーを対象にすると、ユーザーは、Azure AD MFA を使用して今後自己修復を行うことができるようになります。 このポリシーを構成すると、登録することを選択できる 14 日の期間がユーザーに与えられ、この期間の最後に強制的に登録されます。 ユーザーのエクスペリエンスについては、以下でその概要を説明します。 詳細については、エンドユーザー ドキュメントの記事「[2 要素認証と職場または学校アカウントの概要](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)」を参照してください。
 
 ### <a name="registration-interrupt"></a>登録の割り込み
 

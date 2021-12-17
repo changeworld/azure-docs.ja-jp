@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 10/06/2020
+ms.date: 07/16/2021
 ms.author: alkohli
-ms.openlocfilehash: e8df77356b6b5b1b40e2abd772e13c2e811413ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96d3957a7626e393728d4a309bc56ecaa19d4e83
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91950314"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400923"
 ---
 # <a name="preserving-file-acls-attributes-and-timestamps-with-azure-data-box"></a>Azure Data Box を使用したファイルの ACL、属性、およびタイムスタンプの保持
 
@@ -102,6 +102,45 @@ where
 |`/log+:<LogFile>`  |既存のログ ファイルに出力を追加します。|
 
 これらの `robocopy` パラメーターの詳細については、「[チュートリアル: Azure Data Box に SMB 経由でデータをコピーする](./data-box-deploy-copy-data.md)」をご覧ください
+
+> [!NOTE]
+> `/copyall` を使用してデータをコピーした場合、ディレクトリとファイルのソース ACL が Azure Files に転送されます。 ソース データに対して読み取りアクセス権のみを持ち、ソース データを変更できなかった場合、Data Box 内のデータには読み取りアクセスしかできなくなります。 `/copyall` は、データと一緒にディレクトリとファイルの ACL をすべてコピーする場合にのみ使用してください。
+
+#### <a name="use-robocopy-to-list-copy-modify-files-on-data-box"></a>robocopy を使用すると、Data Box 上のファイルの一覧表示、コピー、変更を行うことができます。
+
+ここでは、`robocopy` を使用してデータをコピーするときに使用する一般的なシナリオについて説明します。
+
+- **データのみを Data Box にコピーし、ディレクトリとファイルの ACL をコピーしない**
+
+    `/dcopy:DAT` オプションを使用して、データ、属性、タイムスタンプのみをコピーします。 ディレクトリとファイルの ACL はコピーされません。
+
+- **ディレクトリとファイルのデータと ACL を Data Box にコピーする**
+
+    `/copyall` を使用して、ディレクトリとファイルの ACL を含むすべてのソース データをコピーします。
+
+- **robocopy を使用して Data Box 上のファイルシステムを一覧表示する**
+
+    ディレクトリの内容を一覧表示するには、次のコマンドを使用します。
+
+    `robocopy <source-dir> NULL /l /s /xx /njh /njs /fp /B`
+
+    エクスプローラーではこれらのファイルを一覧表示できないことにご注意ください。
+    
+- **Data Box 上のフォルダーとファイルをコピーまたは削除する**
+
+    1 つのファイルをコピーするには、次のコマンドを使用します。
+
+    `robocopy <source-dir> <destination-dir> <file-name> /B`
+
+    1 つのファイルを削除するには、次のコマンドを使用します。
+
+    `robocopy <source-dir> <destination-dir> <file-name> /purge /B`
+
+    上記のコマンドでは、`<source-dir>` にファイル `<file-name>` を指定することはできません。 その結果、上記のコマンドにより、宛先がソースと同期され、宛先からファイルが削除されます。
+
+    エクスプローラーでは、上記の操作を実行できない場合があることにご注意ください。
+
+詳細については、[robocopy コマンドの使用](/windows-server/administration/windows-commands/robocopy)に関するページを参照してください。
 
 ### <a name="linux-data-copy-tool"></a>Linux データ コピー ツール
 

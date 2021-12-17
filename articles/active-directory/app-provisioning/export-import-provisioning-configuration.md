@@ -1,21 +1,22 @@
 ---
-title: ディザスター リカバリーのためにプロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする
-description: ディザスター リカバリーのためにプロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする方法について説明します。
+title: ディザスター リカバリーのために Azure Active Directory でアプリケーション プロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする
+description: ディザスター リカバリーのために Azure Active Directory でアプリケーション プロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする方法について説明します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.openlocfilehash: c6af42c78bda66c4b397cbb99b26af7d6a5c7f07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: f84219d6ac47773603b91bd2d3556fdc3347f455
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256375"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991510"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>方法: プロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする
 

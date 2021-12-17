@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3723896da2cd14762fd3fe81fa50caaa4b74b0b8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937353"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250713"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights のテレメトリ チャネル
 
@@ -94,7 +94,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!IMPORTANT]
-> ASP.NET Core アプリケーションでは、`TelemetryConfiguration.Active` を使用してチャネルを構成することはお勧めしません。
+> ASP.NET Core アプリケーションでは、`TelemetryConfiguration.Active` を使用してチャネルを構成することはサポートされていません。
 
 ### <a name="configuration-in-code-for-netnet-core-console-applications"></a>コードによる .NET および .NET Core コンソール アプリケーションの構成
 
@@ -111,7 +111,7 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 `ServerTelemetryChannel` では、到着した項目がメモリ内バッファーに保存されます。 項目は、シリアル化と圧縮処理の後、30 秒ごとまたは 500 項目がバッファー処理されるごとに `Transmission` インスタンスに格納されます。 1 つの `Transmission` インスタンスは最大 500 個の項目を保持することができ、Application Insights サービスに対する 1 回の HTTPS 呼び出しにより送信されるテレメトリのバッチを表しています。
 
-既定では、最大 10 件の `Transmission` インスタンスを並列で送信できます。 これよりも早いペースでテレメトリが到着する場合や、ネットワークまたは Application Insights のバックエンドが低速な場合は、`Transmission` インスタンスがメモリ内に保存されます。 このメモリ内 `Transmission` バッファーの既定の容量は 5 MB です。 メモリ内の容量を超過した場合には、50 MB を上限としてローカル ディスクに `Transmission` インスタンスが保存されます。 このほか、ネットワークの問題がある場合にも、`Transmission` インスタンスがローカル ディスクに保存されます。 アプリケーションがクラッシュした場合に消えずに残るのは、ローカル ディスクに保存されている項目のみです。 これらは、アプリケーションを再起動した時点で送信されます。
+既定では、最大 10 件の `Transmission` インスタンスを並列で送信できます。 これよりも早いペースでテレメトリが到着する場合や、ネットワークまたは Application Insights のバックエンドが低速な場合は、`Transmission` インスタンスがメモリ内に保存されます。 このメモリ内 `Transmission` バッファーの既定の容量は 5 MB です。 メモリ内の容量を超過した場合には、50 MB を上限としてローカル ディスクに `Transmission` インスタンスが保存されます。 このほか、ネットワークの問題がある場合にも、`Transmission` インスタンスがローカル ディスクに保存されます。 アプリケーションがクラッシュした場合に消えずに残るのは、ローカル ディスクに保存されている項目のみです。 これらは、アプリケーションを再起動した時点で送信されます。 ネットワークの問題が解決しない場合、`ServerTelemetryChannel` では、テレメトリの送信を再試行する前に、10 秒から 1 時間の範囲でエクスポネンシャル バックオフ ロジックが使用されます。 
 
 ## <a name="configurable-settings-in-channels"></a>チャネルの構成可能な設定
 
@@ -147,7 +147,9 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 1. Windows でテレメトリが保存される既定のディスクの場所は、%LOCALAPPDATA% または %TEMP% です。 これらは通常、マシンのローカルの場所です。 アプリケーションがある場所から別の場所に物理的に移行した場合、元の場所に保存されているテレメトリが失われます。
 
-1. Windows 上の Web Apps では、既定のディスク ストレージの場所は D:\local\LocalAppData です。 この場所は、永続的なものではありません。 アプリの再起動やスケールアウトなどの操作によりワイプされるので、そこに保存されているテレメトリが失われます。 既定値をオーバーライドして、ストレージに D:\home のような永続的な場所を指定することもできます。 ただし、このような永続的な場所はリモート ストレージによって提供されるので、速度が遅いことがあります。
+1. Windows 上の Azure Web Apps では、既定のディスク ストレージの場所は D:\local\LocalAppData です。 この場所は、永続的なものではありません。 アプリの再起動やスケールアウトなどの操作によりワイプされるので、そこに保存されているテレメトリが失われます。 既定値をオーバーライドして、ストレージに D:\home のような永続的な場所を指定することもできます。 ただし、このような永続的な場所はリモート ストレージによって提供されるので、速度が遅いことがあります。
+
+あまりないことですが、チャネルによってテレメトリ項目が重複する可能性があります。 これは、ネットワーク障害やタイムアウトのために `ServerTelemetryChannel` で再試行が行われ、実際にはテレメトリがバックエンドに配信されたのに、ネットワークの問題やタイムアウトの発生によって応答が失われたときに発生します。
 
 ### <a name="does-servertelemetrychannel-work-on-systems-other-than-windows"></a>ServerTelemetryChannel は Windows 以外のシステムでも動作しますか?
 

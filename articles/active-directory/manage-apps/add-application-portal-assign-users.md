@@ -1,73 +1,73 @@
 ---
-title: クイック スタート:Azure Active Directory を ID プロバイダーとして使用するアプリにユーザーを割り当てる
-description: このクイックスタートでは、ID プロバイダーとして Azure AD を使用するように設定したアプリをユーザーが使用できるようにする手順を説明します。
+title: 'クイックスタート: ユーザー アカウントを作成して割り当てる'
+titleSuffix: Azure AD
+description: Azure Active Directory テナントにユーザー アカウントを作成して、アプリケーションに割り当てます。
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 09/01/2020
-ms.author: iangithinji
-ms.openlocfilehash: eb6797fdfb57a503b6dece9f2dfdc3cb0c67feef
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.date: 09/22/2021
+ms.author: davidmu
+ms.reviewer: alamaral
+ms.openlocfilehash: 38be83db1c585a3660882ebdcca70a239a620f03
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375340"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549149"
 ---
-# <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>クイック スタート:Azure AD を ID プロバイダーとして使用しているアプリにユーザーを割り当てる
+# <a name="quickstart-create-and-assign-a-user-account"></a>クイックスタート: ユーザー アカウントを作成して割り当てる
 
-前のクイックスタートでは、アプリのプロパティを構成しました。 プロパティを設定するときに、割り当てられるユーザーと割り当てられないユーザーの両方に対するエクスペリエンスを構成しました。 このクイックスタートでは、ユーザーをアプリに割り当てる手順について説明します。
+このクイックスタートでは、Azure Active Directory 管理センターを使用して、Azure Active Directory (Azure AD) テナントにユーザー アカウントを作成します。 作成したアカウントは、テナントに追加したエンタープライズ アプリケーションに割り当てることができます。
+
+このクイックスタートの手順をテストするには、非運用環境を使用することをお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD テナントに追加したアプリにユーザーを割り当てるには、以下が必要です。
+ユーザー アカウントを作成してエンタープライズ アプリケーションに割り当てるには、次のものが必要です。
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 次のいずれかのロール: グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者。
-- 省略可能:[アプリの表示](view-applications-portal.md)の完了。
-- 省略可能:[アプリの追加](add-application-portal.md)の完了。
-- 省略可能:[アプリの構成](add-application-portal-configure.md)の完了。
+- [エンタープライズ アプリケーションを追加するクイックスタート](add-application-portal.md)の手順を完了していること。
 
->[!IMPORTANT]
->このクイックスタートの手順をテストする場合は、非運用環境を使用してください。
+## <a name="create-a-user-account"></a>ユーザー アカウントの作成
 
-## <a name="assign-users-to-an-app"></a>アプリにユーザーを割り当てる
-1. Azure AD portal で、 **[エンタープライズ アプリケーション]** を選択します。 次に、構成するアプリケーションを探して選択します。
-2. 左側のナビゲーション メニューで **[ユーザーとグループ]** を選択します。
-   > [!NOTE]
-   > 一部の Microsoft 365 アプリでは、PowerShell を使用する必要があります。 
-3. **[ユーザーの追加]** ボタンを選択します。
-4. **[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
-5. アプリケーションに割り当てるユーザーまたはグループを選択します。 検索ボックスで、ユーザーまたはグループの名前の入力を開始することもできます。 複数のユーザーとグループを選択でき、選択した項目が **[選択されたアイテム]** に表示されます。
-    > [!IMPORTANT]
-    > グループをアプリケーションに割り当てると、そのグループ内のユーザーのみがアクセスできるようになります。 割り当ては、入れ子になったグループにはカスケードされません。
+Azure AD テナントにユーザー アカウントを作成するには:
 
-    > [!NOTE]
-    > グループベースの割り当てには、Azure Active Directory Premium P1 または P2 エディションが必要です。 グループ ベースの割り当てがサポートされるのはセキュリティ グループのみです。 入れ子になったグループ メンバーシップと Microsoft 365 グループは、現在サポートされていません。 この記事で説明されている機能に必要なライセンスの詳細については、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory)を参照してください。 
-6. 完了したら、 **[選択]** を選択します。
-   ![アプリケーションにユーザーまたはグループを割り当てる](./media/assign-user-or-group-access-portal/assign-users.png)
-7. **[ユーザーとグループ]** ウィンドウで、リストから 1 つまたは複数のユーザーまたはグループを選択し、ウィンドウの下部にある **[選択]** ボタンを選びます。
-8. アプリケーションでサポートされている場合は、ユーザーまたはグループにロールを割り当てることができます。 **[割り当ての追加]** ウィンドウで、 **[ロールの選択]** を選択します。 次に、 **[ロールの選択]** ウィンドウで、選択したユーザーまたはグループに適用するロールを選択して、ウィンドウの下部にある **[OK]** を選びます。 
-    > [!NOTE]
-    > アプリケーションでロールの選択がサポートされていない場合は、既定のアクセス ロールが割り当てられます。 この場合、アプリケーションでユーザーのアクセス レベルを管理します。
-9. **[割り当ての追加]** ウィンドウで、ウィンドウの下部にある **[割り当て]** ボタンを選択します。
+1. [Azure Active Directory 管理センター](https://aad.portal.azure.com)に移動し、前提条件の一覧で示されているロールのいずれかを使用してサインインします。
+1. 左側のメニューで、 **[ユーザー]** を選択します。
+1. ペインの上部にある **[新しいユーザー]** を選択します。
 
-同じ手順を使用して、ユーザーまたはグループの割り当てを解除できます。 割り当てを解除するユーザーまたはグループを選択してから、 **[削除]** を選択します。 一部の Microsoft 365 アプリと Office 365 アプリでは、PowerShell を使用する必要があります。 
+    :::image type="content" source="media/add-application-portal-assign-users/new-user.png" alt-text="Azure AD テナントに新しいユーザー アカウントを追加する。":::
+    
+1. **[ユーザー名]** フィールドに、ユーザー アカウントのユーザー名を入力します。 たとえば、「 `contosouser1@contoso.com` 」のように入力します。 必ず `contoso.com` を自分のテナントのドメインの名前に変更してください。
+1. **[名前]** フィールドに、アカウントのユーザーの名前を入力します。 たとえば、「 `contosouser1` 」のように入力します。
+1. **[パスワードの自動生成]** はオンのままにして、 **[パスワードの表示]** を選択します。 [パスワード] ボックスに表示された値を書き留めます。
+1. **[作成]** を選択します。
+
+## <a name="assign-a-user-account-to-an-enterprise-application"></a>エンタープライズ アプリケーションにユーザー アカウントを割り当てる
+
+エンタープライズ アプリケーションにユーザー アカウントを割り当てるには:
+
+1. [Azure Active Directory 管理センター](https://aad.portal.azure.com)で **[エンタープライズ アプリケーション]** を選択し、ユーザー アカウントを割り当てるアプリケーションを見つけて選択します。 たとえば、前のクイックスタートで作成したアプリケーションの名前は **Azure AD SAML Toolkit 1** でした。
+1. 左側のペインで、 **[ユーザーとグループ]** を選択し、 **[ユーザーまたはグループの追加]** を選択します。
+
+    :::image type="content" source="media/add-application-portal-assign-users/assign-user.png" alt-text="Azure AD テナントのアプリケーションにユーザー アカウントを割り当てる。":::
+
+1. **[割り当ての追加]** ペインで **[ユーザーとグループ]** の **[選択されていません]** を選択します。
+1. アプリケーションに割り当てるユーザーを見つけて選択します。 たとえば、「 `contosouser1@contoso.com` 」のように入力します。
+1. **[選択]** を選択します。
+1. **[割り当ての追加]** ペインで、ペインの下部にある **[割り当て]** を選択します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-クイックスタートを完了したら、アプリの削除を検討してください。 そうすることで、テスト テナントをクリーンな状態に保つことができます。 アプリの削除については、このシリーズの最後のクイックスタートである[アプリの削除](delete-application-portal.md)に関する記事で説明されています。
+次のクイックスタートを行う予定の場合は、作成したアプリケーションをそのままにします。 そうでない場合は、削除してテナントをクリーンアップしてもかまいません。 詳細については、[アプリケーションの削除](delete-application-portal.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-次の記事に進み、アプリのシングル サインオンをセットアップする方法を学習してください。
+エンタープライズ アプリケーションのシングル サインオンをセットアップする方法について学習します。
 > [!div class="nextstepaction"]
-> [SAML ベースのシングル サインオンの設定](add-application-portal-setup-sso.md)
-
-OR
-
-> [!div class="nextstepaction"]
-> [OIDC ベースのシングル サインオンの設定](add-application-portal-setup-oidc-sso.md)
+> [シングル サインオンの有効化](add-application-portal-setup-sso.md)

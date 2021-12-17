@@ -1,14 +1,15 @@
 ---
 title: Azure Lab Services でラボ作成者としてユーザーを追加する
 description: この記事では、Azure Lab Services でラボ アカウントのラボ作成者ロールにユーザーを追加する方法を紹介します。 ラボ作成者はこのラボ アカウントでラボを作成できます。
-ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: a6c89483744f943926f126701d28988358627a27
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.date: 07/26/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 08377ce7884b9f9a7f974402a799e83ce6fb57bf
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96435962"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177329"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Azure Lab Services でラボ アカウントにラボ作成者を追加する
 この記事では、Azure Lab Services でラボ アカウントにラボ作成者としてユーザーを追加する方法を紹介します。 追加されたユーザーは、そのラボ アカウントでラボを作成できます。 
@@ -16,14 +17,25 @@ ms.locfileid: "96435962"
 ## <a name="add-microsoft-user-account-to-lab-creator-role"></a>Microsoft ユーザー アカウントをラボ作成者ロールに追加する
 ラボ アカウントでクラスルーム ラボを設定するには、ユーザーがラボ アカウントにおける **ラボの作成者** ロールのメンバーであることが必要です。 ラボ アカウントを作成するために使用したアカウントは、このロールに自動的に追加されます。 クラスルーム ラボの作成に、同じユーザー アカウントを使用する場合は、この手順をスキップすることができます。 クラスルーム ラボの作成に、別のユーザー アカウントを使用する場合は、次の手順に従います。 
 
-クラスのラボを作成するアクセス許可を教師に与えるには、教師を **ラボの作成者** ロールに追加します。
+クラスのラボを作成するアクセス許可を教師に与えるには、教師を **ラボの作成者** ロールに追加します。詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-1. **[ラボ アカウント]** ページで、 **[アクセス制御 (IAM)]** を選択し、ツールバーの **[+ ロール割り当ての追加]** をクリックします。 
 
-    ![[アクセス制御] -> [ロールの割り当ての追加] ボタン](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. **[ロールの割り当ての追加]** ページで、 **[ロール]** から **[ラボの作成者]** を選択し、ラボの作成者ロールに追加するユーザーを選択した後、 **[保存]** を選択します。 
+1. **[ラボ アカウント]** ページで、 **[アクセス制御 (IAM)]** を選択します。
 
-    ![ラボ作成者の追加](./media/tutorial-setup-lab-account/add-lab-creator.png)
+1. **[追加]**  >  **[ロールの割り当ての追加 (プレビュー)]** を選択します。
+
+    ![[ロールの割り当ての追加] メニューが開いている [アクセス制御 (IAM)] ページ。](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. **[ロール]** タブで、 **[ラボ作成者]** ロールを選択します。
+
+    ![[ロール] タブが選択された [ロールの割り当ての追加] ページ。](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. **[メンバー]** タブで、ラボ作成者ロールに追加したいユーザーを選択します。
+
+1. **[確認と 割り当て]** タブで、 **[確認と割り当て]** を選択して ロールを割り当てます。
+
+
+
 
     > [!NOTE]
     > Microsoft 以外のアカウント ユーザーをラボ作成者として追加する場合は、「[Microsoft 以外のアカウント ユーザーをラボ作成者として追加する](#add-a-non-microsoft-account-user-as-a-lab-creator)」セクションを参照してください。 

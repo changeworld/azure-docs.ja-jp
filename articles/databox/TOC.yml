@@ -72,10 +72,10 @@
                   href: data-box-system-requirements-rest.md
             - name: 制限を理解する
               href: data-box-limits.md
-            - name: Security
+            - name: セキュリティ
               items:
                 - name: セキュリティ ベースライン
-                  href: security-baseline.md
+                  href: /security/benchmark/azure/baselines/databox-security-baseline?context=/azure/databox/context/context
                 - name: Azure Policy によるセキュリティ制御
                   href: ./security-controls-policy.md
                 - name: セキュリティを確認する
@@ -83,7 +83,7 @@
             - name: ACL とメタデータの転送
               href: data-box-file-acls-preservation.md
             - name: よく寄せられる質問
-              href: data-box-faq.md
+              href: data-box-faq.yml
         - name: 方法
           items:
             - name: Azure Portal で管理する
@@ -109,17 +109,23 @@
                 - name: SharePoint Online へ
                   href: /sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=%2fazure%2fdatabox%2fcontext%2fcontext
                 - name: Azure File Sync へ
-                  href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                  href: ../storage/files/storage-files-migration-server-hybrid-databox.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: HDFS ストアから
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: Azure Backup へ
                   href: ../backup/offline-backup-azure-data-box.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
             - name: トラブルシューティング
               items:
-                - name: Data Box の問題
+                - name: Data Box の共有アクセス
+                  href: data-box-troubleshoot-share-access.md
+                - name: Data Box のコピーの問題
                   href: data-box-troubleshoot.md
+                - name: Data Box のアップロードの問題
+                  href: data-box-troubleshoot-data-upload.md
                 - name: Data Box BLOB ストレージの問題
                   href: data-box-troubleshoot-rest.md
+                - name: Data Box の時刻同期の問題
+                  href: data-box-troubleshoot-time-sync.md
     - name: Data Box Disk
       items:
         - name: 概要
@@ -153,7 +159,7 @@
             - name: セキュリティを確認する
               href: data-box-disk-security.md
             - name: よく寄せられる質問
-              href: data-box-disk-faq.md
+              href: data-box-disk-faq.yml
         - name: 方法
           items:
             - name: Azure Portal で管理する
@@ -168,7 +174,7 @@
                   href: data-box-disk-troubleshoot-data-copy.md
                 - name: 検証の問題
                   href: data-box-disk-troubleshoot.md
-                - name: アップロードの問題
+                - name: アップロード エラーを確認する
                   href: data-box-disk-troubleshoot-upload.md
             - name: サポートに問い合わせる
               href: data-box-disk-contact-microsoft-support.md
@@ -232,13 +238,13 @@
                 - name: SharePoint Online へ
                   href: data-box-heavy-migrate-spo.md
                 - name: Azure File Sync へ
-                  href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                  href: ../storage/files/storage-files-migration-server-hybrid-databox.md
                 - name: HDFS ストアから
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: リファレンス
       items:
         - name: Azure CLI
-          href: /cli/azure/ext/databox/databox
+          href: /cli/azure/databox
         - name: Azure PowerShell
           href: /powershell/module/az.databox
         - name: .NET API
@@ -256,3 +262,5 @@
           href: 'https://azure.microsoft.com/pricing/details/databox/'
         - name: Data Box Disk の価格
           href: 'https://azure.microsoft.com/pricing/details/databox/disk/'
+        - name: Data Box パートナー
+          href: 'https://cloudchampions.blob.core.windows.net/db-partners/PartnersTable.pdf'

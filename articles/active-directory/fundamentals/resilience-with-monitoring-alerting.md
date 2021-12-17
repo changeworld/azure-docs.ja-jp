@@ -13,16 +13,20 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a834d4d30c40b618b1601a7f8901c68143ef4912
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccb3876799c0a1473f06c1838536df17eab03398
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648519"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754382"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>監視と分析による回復性
 
 監視することにより、アプリケーションとサービスの可用性とパフォーマンスは最大限に高められます。 インフラストラクチャとアプリケーションのテレメトリを収集、分析し、対応する包括的なソリューションが提供されます。 サービスやアプリケーションで問題が見つかると、アラートで事前に通知されます。 これにより、サービスのエンド ユーザーが問題に気付く前に問題を識別して対処できます。 [Azure AD Log Analytics](https://azure.microsoft.com/services/monitor/?OCID=AID2100131_SEM_6d16332c03501fc9c1f46c94726d2264:G:s&ef_id=6d16332c03501fc9c1f46c94726d2264:G:s&msclkid=6d16332c03501fc9c1f46c94726d2264#features) では、監査ログとサインイン ログの分析と検索を行い、カスタム ビューを作成することができます。
+
+Azure Monitor を使用して Azure AD B2C で監視とレポートを設定する方法については、このビデオをご覧ください。
+
+>[!Video https://www.youtube.com/embed/Mu9GQy-CbXI]
 
 ## <a name="monitor-and-get-notified-through-alerts"></a>監視を行いアラートを通じて通知を受ける
 

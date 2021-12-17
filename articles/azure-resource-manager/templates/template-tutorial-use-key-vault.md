@@ -5,13 +5,13 @@ author: mumian
 ms.date: 03/01/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: seodec18
-ms.openlocfilehash: 388996dc0054192f6d9f3c87e11ca1d15e8a85e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: a352015437437ef47b076b487710018e7ef8e2d9
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101703887"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402132"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する
 
@@ -40,13 +40,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この記事を完了するには、以下が必要です。
 
 * Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
-* セキュリティを向上させるために、生成されたパスワードを VM 管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
+* セキュリティを向上させるために、生成されたパスワードを VM 管理者アカウントに対して使用します。 [Azure Cloud Shell](../../cloud-shell/overview.md) を使用して、PowerShell または Bash で次のコマンドを実行できます。
 
-    ```console
+    ```shell
     openssl rand -base64 32
     ```
 
-    生成されたパスワードが、VM のパスワード要件を満たしていることを確認します。 各 Azure サービスには、特定のパスワード要件があります。 VM のパスワード要件については、[VM を作成するときのパスワードの要件とは何か](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)に関するページを参照してください。
+    詳細については、`man openssl rand` を実行して man ページを開きます。
+
+    生成されたパスワードが、VM のパスワード要件を満たしていることを確認します。 各 Azure サービスには、特定のパスワード要件があります。 VM のパスワード要件については、[VM を作成するときのパスワードの要件とは何か](../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)に関するページを参照してください。
 
 ## <a name="prepare-a-key-vault"></a>キー コンテナーを準備する
 
@@ -58,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!NOTE]
 > 仮想マシンのテンプレートをデプロイするユーザーが、キー コンテナーの所有者または共同作成者でない場合、所有者または共同作成者は、キー コンテナーの `Microsoft.KeyVault/vaults/deploy/action` アクセス許可へのアクセス権をユーザーに付与する必要があります。 詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./key-vault-parameter.md)」を参照してください。
 
-次の Azure PowerShell スクリプトを実行するには、 **[使ってみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェル ウィンドウを右クリックし、 **[貼り付け]** を選択します。
+次の Azure PowerShell スクリプトを実行するには、 **[使ってみる]** を選択して、Cloud Shell を開きます。 スクリプトを貼り付けるには、シェル ウィンドウを右クリックし、 **[貼り付け]** を選択します。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -107,14 +109,14 @@ Write-Output $secretValueText
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM (単純な Windows VM をデプロイする)](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」と呼ばれます。
+Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM (単純な Windows VM をデプロイする)](https://azure.microsoft.com/resources/templates/vm-simple-windows/)」と呼ばれます。
 
 1. Visual Studio Code の **[ファイル]**  >  **[ファイルを開く]** を選択します。
 
 1. **[ファイル名]** ボックスに次の URL を貼り付けます。
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json
     ```
 
 1. **[開く]** を選択して、ファイルを開きます。 シナリオは、「[チュートリアル: 依存リソースを含む ARM テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」の「テンプレートのデプロイ」セクションを参照してください。
@@ -134,7 +136,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 1. 手順 1. から 3. を繰り返して、次の URL を開き、ファイルを *azuredeploy.parameters.json* として保存します。
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.parameters.json
     ```
 
 ## <a name="edit-the-parameters-file"></a>パラメーター ファイルを編集する
@@ -171,7 +173,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. [Azure Cloud Shell](https://shell.azure.com) にサインインします。
+1. [Cloud Shell](https://shell.azure.com) にサインインします。
 
 1. 左上の **[PowerShell]** または **[Bash]** (CLI の場合) を選択して、希望の環境を選択します。  切り替えた場合は、シェルを再起動する必要があります。
 

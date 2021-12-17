@@ -4,15 +4,16 @@ description: Azure Purview で資格情報を作成して管理する手順に�
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 02/11/2021
-ms.openlocfilehash: 3802d25ebd8f21ab5b8991a66ceb6650f2f276a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: fdce380d09cc2992f4e77f9385b1d176a6ae68eb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461710"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076663"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure Purview でのソース認証用の資格情報
 
@@ -26,22 +27,33 @@ ms.locfileid: "103461710"
 
 資格情報は、Azure Purview で、登録済みのデータ ソースに対する認証に使用できる認証情報です。 資格情報オブジェクトは、さまざまな種類の認証シナリオ (ユーザー名とパスワードを必要とする基本認証など) のために作成できます。 資格情報では、選択した認証方法の種類に基づいて、認証に必要な特定の情報がキャプチャされます。 資格情報の作成プロセス中は、機密性の高い認証情報を取得するために Azure Key Vault の既存のシークレットが使用されます。
 
+Azure Purview では、次のオプションのようなデータ ソースをスキャンするための認証方法として使用するオプションはほとんどありません。
+
+- Azure Purview マネージド ID
+- アカウントキー (キー コンテナーを使用)
+- SQL 認証 (キー コンテナーを使用)
+- サービス プリンシパル (キー コンテナーを使用)
+
+資格情報を作成する前に、データソースの種類とネットワークの要件を考慮して、シナリオに必要な認証方法を決定してください。 次のデシジョン ツリーを確認して、最も適切な資格情報を見つけます。
+
+   :::image type="content" source="media/manage-credentials/manage-credentials-decision-tree-small.png" alt-text="資格情報デシジョンツリーの管理" lightbox="media/manage-credentials/manage-credentials-decision-tree.png":::
+
 ## <a name="use-purview-managed-identity-to-set-up-scans"></a>Purview マネージド ID を使用したスキャンの設定
 
 Purview マネージド ID を使用してスキャンを設定する場合は、資格情報を明示的に作成し、キー コンテナーを Purview にリンクしてそれらを格納する必要はありません。 Purview マネージド ID を追加してデータ ソースのスキャンを利用できるようにする詳細な手順については、以下のデータ ソース固有の認証に関するセクションをご覧ください。
 
-- [Azure Blob Storage](register-scan-azure-blob-storage-source.md#setting-up-authentication-for-a-scan)
-- [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#setting-up-authentication-for-a-scan)
-- [Azure Data Lake Storage Gen2](register-scan-adls-gen2.md#setting-up-authentication-for-a-scan)
+- [Azure Blob Storage](register-scan-azure-blob-storage-source.md#authentication-for-a-scan)
+- [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#authentication-for-a-scan)
+- [Azure Data Lake Storage Gen2](register-scan-adls-gen2.md#authentication-for-a-scan)
 - [Azure SQL Database](register-scan-azure-sql-database.md)
-- [Azure SQL Database マネージド インスタンス](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
-- [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
+- [Azure SQL Database マネージド インスタンス](register-scan-azure-sql-database-managed-instance.md#authentication-for-registration)
+- [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#authentication-for-registration)
 
 ## <a name="create-azure-key-vaults-connections-in-your-azure-purview-account"></a>Azure Purview アカウントに Azure Key Vault の接続を作成する
 
 資格情報を作成する前に、まず既存の Azure Key Vault インスタンスの 1 つまたは複数を Azure Purview アカウントに関連付けます。
 
-1. [Azure portal](https://portal.azure.com) で、Azure Purview アカウントを選択して Azure Purview Studio を開きます。 Azure Purview Studio の **[管理センター]** に移動してから、**資格情報** に移動します。
+1. [Azure portal](https://portal.azure.com) から、Azure Purview アカウントを選択して [Purview Studio](https://web.purview.azure.com/resource/) を開きます。 Studio で **[管理センター]** に移動してから、**資格情報** に移動します。
 
 2. **[資格情報]** ページで、 **[Key Vault 接続の管理]** を選択します。
 
@@ -57,13 +69,26 @@ Purview マネージド ID を使用してスキャンを設定する場合は�
 
 ## <a name="grant-the-purview-managed-identity-access-to-your-azure-key-vault"></a>Purview マネージド ID に Azure Key Vault へのアクセス権を付与する
 
+現在 Azure Key Vault では、次の 2 つのアクセス許可モデルがサポートされています。
+
+- オプション 1 - アクセス ポリシー 
+- オプション 2 - ロールベースのアクセス制御 
+
+Purview マネージド ID へのアクセス権の割り当てを行う前に、まず、メニューにある、Key Vault リソースの **[アクセス ポリシー]** から自分の Azure Key Vault のアクセス許可モデルを識別してください。 関連するアクセス許可モデルに基づいて、次の手順を行います。  
+
+:::image type="content" source="media/manage-credentials/akv-permission-model.png" alt-text="Azure Key Vault アクセス許可モデル"::: 
+
+### <a name="option-1---assign-access-using-key-vault-access-policy"></a>オプション 1 - Key Vault アクセス ポリシーを使用してアクセス権を割り当てる  
+
+ご利用の Azure Key Vault リソース内のアクセス許可モデルが **コンテナー アクセス ポリシー** に設定されている場合にのみ、次の手順に従います。
+
 1. お使いの Azure Key Vault に移動します。
 
 2. **[アクセス ポリシー]** ページを選択します。
 
 3. **[アクセス ポリシーの追加]** を選択します。
 
-   :::image type="content" source="media/manage-credentials/add-msi-to-akv.png" alt-text="AKV への Purview MSI の追加":::
+   :::image type="content" source="media/manage-credentials/add-msi-to-akv-2.png" alt-text="AKV への Purview MSI の追加":::
 
 4. **[シークレットのアクセス許可]** ドロップダウンで、 **[取得]** および **[一覧]** のアクセス許可を選択します。
 
@@ -76,6 +101,21 @@ Purview マネージド ID を使用してスキャンを設定する場合は�
 7. **[保存]** を選択してアクセス ポリシーを保存します。
 
    :::image type="content" source="media/manage-credentials/save-access-policy.png" alt-text="アクセス ポリシーの保存":::
+
+### <a name="option-2---assign-access-using-key-vault-azure-role-based-access-control"></a>オプション 2 - Key Vault の Azure ロールベースのアクセス制御を使用してアクセス権を割り当てる 
+
+ご利用の Azure Key Vault リソース内のアクセス許可モデルが **Azure ロールベースのアクセス制御** に設定されている場合にのみ、次の手順に従います。
+
+1. お使いの Azure Key Vault に移動します。
+
+2. 左側のナビゲーション メニューから **[アクセス制御 (IAM)]** を選択します。
+
+3. **[+ 追加]** を選択します。
+
+4. **[ロール]** を **[Key Vault Secrets User]** に設定し、 **[選択]** 入力ボックスに、ご利用の Azure Purview アカウント名を入力してください。 次に、[保存] を選択して、このロールの割り当てを、自分の Purview アカウントに付与します。
+
+   :::image type="content" source="media/manage-credentials/akv-add-rbac.png" alt-text="Azure Key Vault RBAC":::
+
 
 ## <a name="create-a-new-credential"></a>新しい資格情報を作成する
 

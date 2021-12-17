@@ -1,25 +1,25 @@
 ---
-title: Azure Stack Edge Pro、Azure Data Box Gateway のログ サポート チケット | Microsoft Docs
-description: Azure Stack Edge Pro または Azure Stack Gateway の注文に関連する問題のサポート要求をログに記録する方法について説明します。
+title: Azure Stack Edge、Azure Data Box Gateway のログ サポート チケット | Microsoft Docs
+description: Azure Stack Edge または Azure Stack Gateway の注文に関連する問題のサポート リクエストをログに記録する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 06/09/2021
 ms.author: alkohli
-ms.openlocfilehash: f76652600f42d7e82914836537935ac9a74decb4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1ad5475078c515d36a57b7608ab9d363c6f678aa
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102436798"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983954"
 ---
-# <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Azure Stack Edge Pro と Azure Data Box Gateway のサポート チケットを開く
+# <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Azure Stack Edge と Azure Data Box Gateway のサポート チケットを開く
 
-[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-databox-gateway-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-databox-gateway-sku.md)]
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-fpga-databox-gateway-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-fpga-databox-gateway-sku.md)]
 
-この記事は、どちらも Azure Stack Edge Pro または Azure Data Box Gateway サービスによって管理されている Azure Stack Edge Pro と Azure Data Box Gateway に適用されます。 お使いのサービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
+この記事は、どちらも Azure Stack Edge または Azure Data Box Gateway サービスによって管理されている Azure Stack Edge と Azure Data Box Gateway に適用されます。 お使いのサービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
 
 * サポート リクエストを作成する方法
 * ポータル内からサポート要求ライフ サイクルを管理する方法
@@ -28,13 +28,13 @@ ms.locfileid: "102436798"
 
 サポート リクエストを作成するには、次の手順を行います。
 
-1. Azure Stack Edge Pro または Data Box Gateway の注文に移動します。 **[サポート + トラブルシューティング]** セクションに移動し、 **[新しいサポート リクエスト]** を選択します。
+1. Azure Stack Edge または Data Box Gateway の注文に移動します。 **[サポート + トラブルシューティング]** セクションに移動し、 **[新しいサポート リクエスト]** を選択します。
 
 2. **[新しいサポート リクエスト]** の **[基本]** タブで、次の手順を実行します。
 
     1. **[問題の種類]** ドロップダウン リストで **[技術]** を選択します。
     2. **サブスクリプション** を選択します。
-    3. **[サービス]** の **[使用中のサービス]** をオンにします。 ドロップダウン リストから **Azure Stack Edge Pro と Azure Stack Gateway** を選択します。
+    3. **[サービス]** の **[使用中のサービス]** をオンにします。 ドロップダウン リストから **Azure Stack Edge と Azure Stack Gateway** を選択します。
     4. **[リソース]** を選択します。 これは注文の名前に対応します。
     5. 発生している問題の簡単な **[概要]** を入力します。 
     6. **[問題の種類]** を選択します。
@@ -100,5 +100,6 @@ ms.locfileid: "102436798"
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge Pro に関連する問題のトラブルシューティング](azure-stack-edge-troubleshoot.md)方法について説明します。
-[Data Box Gateway に関する問題のトラブルシューティング](../databox-gateway/data-box-gateway-troubleshoot.md)方法を確認します。
+- [Azure Stack Edge FPGA に関連する問題のトラブルシューティング](azure-stack-edge-troubleshoot.md)。
+- [Azure Stack Edge Pro GPU のデバイスに関するの問題のトラブルシューティング](azure-stack-edge-gpu-troubleshoot.md)。
+- [Data Box Gateway に関連する問題のトラブルシューティング](../databox-gateway/data-box-gateway-troubleshoot.md)。

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/07/2021
 ms.author: kumud
-ms.openlocfilehash: 34e31bacbb276feb5b11d1b955096877376e989b
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 30346fa6c837484613acc4cb48a82e8854d13a3f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107705"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076644"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ネットワーク サービスの概要
 
@@ -35,7 +35,7 @@ Azure のネットワーク サービスにはさまざまなネットワーク�
 Azure Virtual Network (VNet) は、Azure 内のプライベート ネットワークの基本的な構成要素です。 VNet の用途は次のとおりです。
 - **Azure リソース間の通信**:仮想ネットワークに、VM や他のいくつかの種類の Azure リソース (Azure App Service Environment、Azure Kubernetes Service (AKS)、Azure Virtual Machine Scale Sets など) をデプロイできます。 仮想ネットワークにデプロイできる Azure リソースの詳細な一覧については、[仮想ネットワーク サービスの統合](../../virtual-network/virtual-network-for-azure-services.md)に関するページを参照してください。
 - **相互通信**:仮想ネットワークを相互に接続することで、任意の仮想ネットワークのリソースが仮想ネットワーク ピアリングを使用して相互に通信できるようになります。 接続する仮想ネットワークが属している Azure リージョンは、同じであっても異なっていてもかまいません。 詳細については、「[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)」をご覧ください。
-- **インターネットとの通信**:VNet 内のすべてのリソースにおいて、既定でインターネットへの送信方向の通信が可能です。 リソースへの受信通信は、リソースにパブリック IP アドレスまたはパブリック ロード バランサーを割り当てることによって可能になります。 [パブリック IP アドレス](../../virtual-network/virtual-network-public-ip-address.md)やパブリック [ロード バランサー](../../load-balancer/load-balancer-overview.md)を使用して送信接続を管理することもできます。
+- **インターネットとの通信**:VNet 内のすべてのリソースにおいて、既定でインターネットへの送信方向の通信が可能です。 リソースへの受信通信は、リソースにパブリック IP アドレスまたはパブリック ロード バランサーを割り当てることによって可能になります。 [パブリック IP アドレス](../../virtual-network/ip-services/virtual-network-public-ip-address.md)やパブリック [ロード バランサー](../../load-balancer/load-balancer-overview.md)を使用して送信接続を管理することもできます。
 - **オンプレミス ネットワークとの通信**:オンプレミスのコンピューターとネットワークを仮想ネットワークに接続するには、[VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](../../expressroute/expressroute-introduction.md) を使用します。
 
 詳細については、[Azure Virtual Network](../../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
@@ -67,7 +67,7 @@ Azure Bastion サービスは、お使いの仮想ネットワーク内でプロ
 :::image type="content" source="./media/networking-overview/architecture.png" alt-text="Azure Bastion のアーキテクチャ":::
 
 ### <a name="virtual-network-nat-gateway"></a><a name="nat"></a>Virtual Network NAT Gateway
-Virtual Network NAT (ネットワーク アドレス変換) は、仮想ネットワーク用のアウトバウンドのみのインターネット接続を簡単に行えるようにするものです。 これをサブネットに対して構成した場合、指定した静的パブリック IP アドレスがすべてのアウトバウンド接続で使用されます。 ロード バランサーや、仮想マシンに直接アタッチされたパブリック IP アドレスがなくても、アウトバウンド接続が可能となります。 詳細については、[仮想ネットワーク NAT ゲートウェイの概要](../../virtual-network/nat-overview.md)に関するページを参照してください。
+Virtual Network NAT (ネットワーク アドレス変換) は、仮想ネットワーク用のアウトバウンドのみのインターネット接続を簡単に行えるようにするものです。 これをサブネットに対して構成した場合、指定した静的パブリック IP アドレスがすべてのアウトバウンド接続で使用されます。 ロード バランサーや、仮想マシンに直接アタッチされたパブリック IP アドレスがなくても、アウトバウンド接続が可能となります。 詳細については、[仮想ネットワーク NAT ゲートウェイの概要](../../virtual-network/nat-gateway/nat-overview.md)に関するページを参照してください。
 
 :::image type="content" source="./media/networking-overview/flow-map.png" alt-text="Virtual Network NAT Gateway":::
 

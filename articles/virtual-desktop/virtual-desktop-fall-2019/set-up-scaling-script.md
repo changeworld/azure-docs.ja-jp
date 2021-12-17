@@ -1,26 +1,27 @@
 ---
-title: Azure Automation を使用した Windows Virtual Desktop (クラシック) セッション ホストのスケーリング - Azure
-description: Azure Automation を使用して Windows Virtual Desktop (クラシック) セッション ホストを自動的にスケーリングする方法。
+title: Azure Automation を使用した Azure Virtual Desktop (クラシック) セッション ホストのスケーリング - Azure
+description: Azure Automation を使用して Azure Virtual Desktop (クラシック) セッション ホストを自動的にスケーリングする方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 907871a85680202a4a8b5f73b4454a9b2f2fe103
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 781ac1e84fb742908ca020806b04135f35b3a65d
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444311"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751831"
 ---
-# <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Azure Automation を使用した Windows Virtual Desktop (クラシック) セッション ホストのスケーリング
+# <a name="scale-azure-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Azure Automation を使用した Azure Virtual Desktop (クラシック) セッション ホストのスケーリング
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。
 
-仮想マシン (VM) をスケーリングすると、Windows Virtual Desktop の総デプロイ コストを削減できます。 これは、ピーク時以外の使用時間帯にセッション ホスト VM をシャットダウンして割り当て解除し、ピーク時間帯に再びオンにして再割り当てすることを意味します。
+仮想マシン (VM) をスケーリングすると、Azure Virtual Desktop の総デプロイ コストを削減できます。 これは、ピーク時以外の使用時間帯にセッション ホスト VM をシャットダウンして割り当て解除し、ピーク時間帯に再びオンにして再割り当てすることを意味します。
 
-この記事では、Azure Automation アカウントで構築されたスケーリング ツールと、Windows Virtual Desktop 環境でセッション ホスト VM を自動的にスケーリングする Azure Logic Appsについて説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
+この記事では、Azure Automation アカウントで構築されたスケーリング ツールと、Azure Virtual Desktop 環境でセッション ホスト VM を自動的にスケーリングする Azure ロジック アプリについて説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
 
 ## <a name="how-the-scaling-tool-works"></a>スケーリング ツールのしくみ
 
@@ -48,7 +49,7 @@ ms.locfileid: "106444311"
 
 常に、ジョブではホスト プールの *MaxSessionLimit* を考慮に入れて、現在のセッション数が最大容量の 90% を超えているかの判断も行われます。 超えている場合、ジョブによって追加のセッション ホスト VM が起動されます。
 
-ジョブは、設定された繰り返し間隔に基づいて定期的に実行されます。 Windows Virtual Desktop 環境のサイズに基づいてこの間隔を変更できますが、VM の起動とシャットダウンには時間がかかることがあるため、延期期間を考慮してください。 繰り返し間隔を 15 分に設定することをお勧めします。
+ジョブは、設定された繰り返し間隔に基づいて定期的に実行されます。 Azure Virtual Desktop 環境のサイズに基づいてこの間隔を変更できますが、VM の起動とシャットダウンには時間がかかることがあるため、延期期間を考慮してください。 繰り返し間隔を 15 分に設定することをお勧めします。
 
 ただし、このツールには次の制限事項もあります。
 
@@ -63,8 +64,8 @@ ms.locfileid: "106444311"
 
 スケーリング ツールの設定を開始する前に、次の準備ができていることを確認してください。
 
-- [Windows Virtual Desktop のテナントとホスト プール](create-host-pools-arm-template.md)
-- 構成されて Windows Virtual Desktop サービスに登録されたセッション ホスト プール VM
+- [Azure Virtual Desktop のテナントとホスト プール](create-host-pools-arm-template.md)
+- 構成されて Azure Virtual Desktop サービスに登録されたセッション ホスト プール VM
 - Azure サブスクリプション対する[共同作成者のアクセス権](../../role-based-access-control/role-assignments-portal.md)を持っているユーザー
 
 ツールのデプロイに使用するマシンには、次のものが必要です。
@@ -150,11 +151,11 @@ Azure Automation アカウントで実行アカウントを作成するには、
 
 6. 作成プロセスが完了すると、指定の Azure Automation アカウントに **AzureRunAsConnection** という名前の資産が作成されます。 **[Azure 実行アカウント]** を選択します。 この接続資産には、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。 アプリケーション ID は後で使用するため、覚えておいてください。 **[接続]** ページでも同じ情報を確認できます。 このページに移動するには、ウィンドウの左側のペインで、 **[共有リソース]** セクションの **[接続]** を選択し、**AzureRunAsConnection** という接続資産をクリックします。
 
-### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Windows Virtual Desktop にロールの割り当てを作成する
+### <a name="create-a-role-assignment-in-azure-virtual-desktop"></a>Azure Virtual Desktop にロールの割り当てを作成する
 
-次に、**AzureRunAsConnection** が Windows Virtual Desktop と対話できるように、ロールの割り当てを作成する必要があります。 必ず PowerShell を使用して、ロールの割り当てを作成するアクセス許可を持つアカウントでサインインしてください。
+次に、**AzureRunAsConnection** が Azure Virtual Desktop と対話できるように、ロールの割り当てを作成する必要があります。 必ず PowerShell を使用して、ロールの割り当てを作成するアクセス許可を持つアカウントでサインインしてください。
 
-まず、PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュール](/powershell/windows-virtual-desktop/overview/)をダウンロードしてインポートします (まだ行っていない場合)。 次の PowerShell コマンドレットを実行して、Windows Virtual Desktop に接続し、テナントを表示します。
+まず、PowerShell セッション内で使用する [Azure Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します (まだ行っていない場合)。 次の PowerShell コマンドレットを実行して、Azure Virtual Desktop に接続し、テナントを表示します。
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -165,13 +166,13 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Get-RdsTenant
 ```
 
-スケーリングするホスト プールを含むテナントを見つけたら、「[Azure Automation の実行アカウントを作成する](#create-an-azure-automation-run-as-account)」の手順に従って **AzureRunAsConnection** アプリケーション ID を取得し、前のコマンドレットで取得した Windows Virtual Desktop テナント名を次のコマンドレットに使用して、ロールの割り当てを作成します。
+スケーリングするホスト プールを含むテナントを見つけたら、「[Azure Automation の実行アカウントを作成する](#create-an-azure-automation-run-as-account)」の手順に従って **AzureRunAsConnection** アプリケーション ID を取得し、前のコマンドレットで取得した Azure Virtual Desktop テナント名を次のコマンドレットに使用して、ロールの割り当てを作成します。
 
 ```powershell
 New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId "<applicationid>" -TenantName "<tenantname>"
 ```
 
-## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Azure Logic Appsと実行スケジュールを作成する
+## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Azure Logic Apps と実行スケジュールを作成する
 
 最後に、Azure Logic Appsを作成し、新しいスケーリング ツールの実行スケジュールを設定する必要があります。
 
@@ -183,7 +184,7 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId "<app
     Login-AzAccount
     ```
 
-3. 次のコマンドレットを実行して、Azure Logic Appsを作成するためのスクリプトをダウンロードします。
+3. 次のコマンドレットを実行して、Azure Logic Apps を作成するためのスクリプトをダウンロードします。
 
     ```powershell
     New-Item -ItemType Directory -Path "C:\Temp" -Force
@@ -193,7 +194,7 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId "<app
     Invoke-WebRequest -Uri $Uri -OutFile ".\CreateOrUpdateAzLogicApp.ps1"
     ```
 
-4. 次のコマンドレットを実行して、RDS 所有者または RDS 共同作成者のアクセス許可を持つアカウントを使用して Windows Virtual Desktop にサインインします。
+4. 次のコマンドレットを実行して、RDS 所有者または RDS 共同作成者のアクセス許可を持つアカウントを使用して Azure Virtual Desktop にサインインします。
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -202,7 +203,7 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId "<app
     # Set-RdsContext -TenantGroupName "<Tenant_Group_Name>"
     ```
 
-5. 次の PowerShell スクリプトを実行して、ホスト プール用の Azure Logic Appsと実行スケジュールを作成します。
+5. 次の PowerShell スクリプトを実行して、ホスト プール用の Azure Logic Apps と実行スケジュールを作成します。
 
     >[!NOTE]
     >このスクリプトは、自動スケーリングするホスト プールごとに実行する必要がありますが、必要な Azure Automation アカウントは 1 つだけです。

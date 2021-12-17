@@ -1,25 +1,30 @@
 ---
 title: Common Event Format (CEF) キーおよび CommonSecurityLog フィールドのマッピング
-description: この記事では、CEF キーを、Azure Sentinel 内の CommonSecurityLog の対応するフィールド名にマップします。
+description: この記事では、CEF キーを、Microsoft Sentinel 内の CommonSecurityLog の対応するフィールド名にマップします。
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.topic: reference
-ms.date: 04/12/2021
-ms.openlocfilehash: 1670d1bb291e30295018146f2a24c5282feac6e7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 11/09/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2da00d947a76872ee940a7fb9e700647b456acf6
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311653"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716090"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF および CommonSecurityLog フィールドのマッピング
 
-下記の表では、Common Event Format (CEF) のフィールド名を、Azure Sentinel の CommonSecurityLog で使用する名前にマップしています。これらの表は、Azure Sentinel で CEF データ ソースを操作するときに役立つ場合があります。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+下記の表では、Common Event Format (CEF) のフィールド名を、Microsoft Sentinel の CommonSecurityLog で使用する名前にマップしています。これらの表は、Microsoft Sentinel で CEF データ ソースを操作するときに役立つ場合があります。
 
 詳細については、「[Common Event Format を使用して外部ソリューションを接続する](connect-common-event-format.md)」を参照してください。
+
+> [!NOTE]
+> Log Analytics に [CEF データを取り込む](connect-common-event-format.md#prerequisites)ためには、Microsoft Sentinel ワークスペースが必要です。
+>
 
 ## <a name="a---c"></a>A から C
 
@@ -60,7 +65,7 @@ ms.locfileid: "107311653"
 | dproc | DestinationProcessName | イベントの送信先プロセスの名前 (`telnetd` や `sshd.` など)。 |
 | dpt | DestinationPort | 送信先ポート。 <br>有効な値: `*0` - `65535` |
 | dst | DestinationIP | IP ネットワーク内でイベントによって参照されている送信先の IpV4 アドレス。 |
-| dtz | DeviceTimeZon | イベントを生成しているデバイスのタイムゾーン |
+| dtz | DeviceTimeZone | イベントを生成しているデバイスのタイムゾーン |
 | duid |DestinationUserId | ID で宛先ユーザーを識別します。 |
 | duser | DestinationUserName |名前で宛先ユーザーを識別します。|
 | dvc | DeviceAddress | イベントを生成しているデバイスの IPv4 アドレス。 |
@@ -72,7 +77,6 @@ ms.locfileid: "107311653"
 
 |CEF キー名  |CommonSecurityLog での名前  |説明  |
 |---------|---------|---------|
-|end     |  EndTime       | イベントに関連するアクティビティが終了した時刻。        |
 |externalId    |   ExternalID      | 発信元デバイスによって使用されている ID。 一般に、これらの値は、イベントにそれぞれが関連付けられている、増加してゆく値です。        |
 |fileCreateTime     |  FileCreateTime      | ファイルが作成された日時。        |
 |fileHash     |   FileHash      |   ファイルのハッシュ。      |
@@ -111,7 +115,6 @@ ms.locfileid: "107311653"
 
 |CEF キー名  |CommonSecurityLog での名前  |説明  |
 |---------|---------|---------|
-|原因     |  理由      |監査イベントが生成された理由。 <br><br>たとえば、`Bad password` または `Unknown user` です。         |
 |要求     |   RequestURL      | HTTP 要求のためにアクセスされる URL (プロトコルを含む)。 たとえば、`http://www/secure.com` のように指定します。        |
 |requestClientApplication     |   RequestClientApplication      |   要求に関連付けられているユーザー エージェント。      |
 | requestContext | RequestContext | HTTP 参照元など、要求送信元のコンテンツについて説明します。 |
@@ -131,7 +134,6 @@ ms.locfileid: "107311653"
 | sproc | SourceProcessName | イベントの発信元プロセスの名前。|
 | spt | SourcePort | 発信元ポート番号。 <br>有効なポート番号は `0` - `65535` です。 |
 | src | SourceIP |IP ネットワーク内でイベントによって参照されている、IPv4 アドレスとしての発信元。 |
-| start | StartTime | イベントによって参照されているアクティビティが開始された時刻。 |
 | suid | SourceUserID | ID で発信元ユーザーを識別します。 |
 | suser | SourceUserName | 名前で発信元ユーザーを識別します。 |
 | type | EventType | イベントの種類。 値は次のとおりです。 <br>- `0`: 基本イベント <br>- `1`: 集計済み <br>- `2`: 相関イベント <br>- `3`: アクション イベント <br><br>**注**: 基本イベントについてはこのイベントを省略できます。 |
@@ -235,7 +237,7 @@ ms.locfileid: "107311653"
 
 ## <a name="enrichment-fields"></a>エンリッチメント フィールド
 
-次の **CommonSecurityLog** フィールドは、ソース デバイスから受信した元のイベントをエンリッチするために Azure Sentinel によって追加されています。CEF キーのマッピングはありません。
+次の **CommonSecurityLog** フィールドは、ソース デバイスから受信した元のイベントをエンリッチするために Microsoft Sentinel によって追加されています。CEF キーのマッピングはありません。
 
 ### <a name="threat-intelligence-fields"></a>脅威インテリジェンス フィールド
 

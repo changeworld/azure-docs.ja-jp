@@ -1,16 +1,22 @@
-- name: Windows Virtual Desktop
+- name: Azure Virtual Desktop
   href: index.yml
 - name: 概要
   items:
-    - name: Windows Virtual Desktop とは
+    - name: Azure Virtual Desktop とは
       href: overview.md
     - name: 新機能
       href: whats-new.md
-    - name: Windows Virtual Desktop (クラシック) のドキュメント
+    - name: Azure Monitor の新機能
+      href: whats-new-azure-monitor.md
+    - name: Azure Virtual Desktop (クラシック) のドキュメント
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
+- name: クイックスタート
+  items:
+    - name: Azure Virtual Desktop の概要
+      href: getting-started-feature.md
 - name: チュートリアル
   items:
-    - name: 1. Azure portal を使用してホスト プールを作成する
+    - name: 1. ホスト プールを作成する
       href: create-host-pools-azure-marketplace.md
     - name: 2. アプリ グループを管理する
       href: manage-app-groups.md
@@ -20,39 +26,45 @@
       href: set-up-service-alerts.md
 - name: 操作方法
   items:
-    - name: 手動で移行する
-      href: manual-migration.md
-    - name: Windows Virtual Desktop リソースに接続する
+    - name: デプロイを移行する
+      items:
+        - name: 自動的に移行する
+          href: automatic-migration.md
+        - name: 手動で移行する
+          href: manual-migration.md
+    - name: Azure Virtual Desktop リソースに接続する
       items:
         - name: Windows デスクトップ クライアントを使用して接続する
-          href: connect-windows-7-10.md
+          href: ./user-documentation/connect-windows-7-10.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Web クライアントに接続する
-          href: connect-web.md
+          href: ./user-documentation/connect-web.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Android クライアントに接続する
-          href: connect-android.md
+          href: ./user-documentation/connect-android.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: macOS クライアントに接続する
-          href: connect-macos.md
+          href: ./user-documentation/connect-macos.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: iOS クライアントに接続する
-          href: connect-ios.md
+          href: ./user-documentation/connect-ios.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Microsoft Store クライアントを使用した接続
-          href: connect-microsoft-store.md
-        - name: Linux デバイスを使用した接続
-          href: linux-overview.md
+          href: ./user-documentation/connect-microsoft-store.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: シン クライアントを使用して接続する
+          href: ./user-documentation/linux-overview.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: デバイスのリダイレクトを構成する
       href: configure-device-redirections.md
     - name: PowerShell モジュールを設定する
       href: powershell-module.md
     - name: ホスト プールとセッション ホストを作成する
       items:
-        - name: PowerShell
+        - name: PowerShell または Azure CLI を使用してホスト プールを作成する
           href: create-host-pools-powershell.md
+        - name: Azure AD 参加済みセッション ホストをデプロイする
+          href: deploy-azure-ad-joined-vm.md
         - name: Windows 7 仮想マシンをデプロイする
           href: deploy-windows-7-virtual-machine.md
         - name: GPU ベースのセッション ホストをデプロイする
           href: configure-vm-gpu.md
         - name: 既存のホスト プールを展開する
           href: expand-existing-host-pool.md
-        - name: PowerShell を使用してアプリ グループを管理する
+        - name: PowerShell または Azure CLI を使用してアプリ グループを管理する
           href: manage-app-groups-powershell.md
     - name: ホスト プールを削除する
       href: delete-host-pool.md
@@ -62,12 +74,16 @@
           href: create-host-pools-user-profile.md
         - name: Azure NetApp Files を使用する
           href: create-fslogix-profile-container.md
+        - name: Azure NetApp Files と MSIX アプリのアタッチを使用する
+          href: create-netapp-files.md
         - name: Azure Files と Azure AD DS を使用する
           href: create-profile-container-adds.md
         - name: Azure Files と AD DS を使用する
           href: create-file-share.md
         - name: FSLogix アプリ コンテナーを使用して Office をインストールする
           href: fslogix-office-app-rule-editor.md
+        - name: アカウントの Azure Files の使用を承認する
+          href: azure-files-authorization.md
     - name: ホスト プール設定を構成する
       items:
         - name: RDP のプロパティ
@@ -76,7 +92,7 @@
           href: configure-host-pool-load-balancing.md
         - name: 個人用デスクトップの割り当ての種類
           href: configure-host-pool-personal-desktop-assignment-type.md
-    - name: Windows Virtual Desktop ライセンスを使用する
+    - name: Azure Virtual Desktop ライセンスを使用する
       href: apply-windows-license.md
     - name: セッション ホスト イメージをカスタマイズする
       items:
@@ -84,8 +100,20 @@
           href: set-up-customize-master-image.md
         - name: マスター VHD イメージに Office をインストールする
           href: install-office-on-wvd-master-image.md
-    - name: セッション ホストを自動的にスケーリングする
-      href: set-up-scaling-script.md
+    - name: Azure Automation を使用してセッション ホストをスケーリングする
+      items:
+        - name: スケーリング スクリプトを設定する
+          href: set-up-scaling-script.md
+    - name: 自動スケーリング (プレビュー)
+      items:
+        - name: 自動スケーリング機能を使用する (プレビュー)
+          href: autoscale-scaling-plan.md
+        - name: セッション ホストを自動スケーリングする (プレビュー)
+          href: autoscale-new-existing-host-pool.md
+        - name: 自動スケーリングの診断 (プレビュー)
+          href: autoscale-diagnostics.md
+        - name: 自動スケーリング機能に関する FAQ (プレビュー)
+          href: autoscale-faq.yml
     - name: フィードをカスタマイズする
       href: customize-feed-for-virtual-desktop-users.md
     - name: サービスの診断を使用する
@@ -109,34 +137,52 @@
         - name: MSIXMGR ツールを設定する
           href: app-attach-msixmgr.md
     - name: Microsoft Teams の使用
-      href: teams-on-wvd.md
-    - name: Azure AD の Multi-Factor Authentication を設定する
+      href: teams-on-avd.md
+    - name: Azure AD 多要素認証を設定する
       href: set-up-mfa.md
+    - name: AD FS シングル サインオンを構成する
+      href: configure-adfs-sso.md
     - name: 自動更新を構成する
       href: configure-automatic-updates.md
-    - name: 言語パックをインストールする
-      href: language-packs.md
+    - name: マルチメディア リダイレクトを設定する (プレビュー)
+      href: multimedia-redirection.md
+    - name: 言語パッケージをインストールする
+      items:
+        - name: Windows 10 マルチセッション イメージ
+          href: language-packs.md
+        - name: Windows 11 Enterprise イメージ
+          href: windows-11-language-packs.md
     - name: Azure Advisor を使用する
       href: azure-advisor.md
     - name: 推奨事項を解決する
       href: azure-advisor-recommendations.md
-    - name: Windows Virtual Desktop 向けの Azure Monitor を使用する
+    - name: Azure Virtual Desktop 向けの Azure Monitor を使用する
       href: azure-monitor.md
     - name: ディザスター リカバリー プランを設定する
       href: disaster-recovery.md
     - name: KDC プロキシを設定する
       href: key-distribution-center-proxy.md
-    - name: RD ゲートウェイのロールを設定する
-      href: rd-gateway-role.md
+    - name: Start VM on Connect
+      items:
+        - name: Start VM on Connect を設定する
+          href: start-virtual-machine-connect.md
+        - name: Start VM on Connect のよくあるご質問
+          href: start-virtual-machine-connect-faq.md
+    - name: ドレイン モードを設定する
+      href: drain-mode.md
+    - name: Azure Stack HCI 用 Azure Virtual Desktop (プレビュー)
+      href: azure-stack-hci.md
 - name: 概念
   items:
+    - name: 管理に関する推奨事項
+      href: management.md
     - name: 組み込みのロール
       href: rbac.md
     - name: 認証
       href: authentication.md
-    - name: Windows Virtual Desktop の環境
+    - name: Azure Virtual Desktop 環境
       href: environment-setup.md
-    - name: Windows Virtual Desktop エージェント
+    - name: Azure Virtual Desktop エージェント
       href: agent-overview.md
     - name: ネットワーク接続
       items:
@@ -150,9 +196,11 @@
           href: safe-url-list.md
         - name: 帯域幅に関する考慮事項
           href: rdp-bandwidth.md
+        - name: プロキシのサポートに関するガイドライン
+          href: proxy-server-support.md
         - name: ユーザー接続の待ち時間の特定
           href: connection-latency.md
-    - name: Windows Virtual Desktop における委任されたアクセス
+    - name: Azure Virtual Desktop における委任されたアクセス
       href: delegated-access-virtual-desktop.md
     - name: ホスト プールの負荷分散方法
       href: host-pool-load-balancing.md
@@ -160,12 +208,10 @@
       href: fslogix-containers-azure-files.md
     - name: FSLogix プロファイル コンテナー用のストレージ オプション
       href: store-fslogix-profile.md
-    - name: パートナー統合
-      href: partners.md
-    - name: Windows Virtual Desktop に関する FAQ
-      href: faq.md
+    - name: Azure Virtual Desktop に関する FAQ
+      href: faq.yml
     - name: Windows 10 Enterprise マルチセッションに関する FAQ
-      href: windows-10-multisession-faq.md
+      href: windows-10-multisession-faq.yml
     - name: MSIX アプリのアタッチ
       items:
         - name: MSIX アプリのアタッチとは
@@ -173,7 +219,7 @@
         - name: 用語集
           href: app-attach-glossary.md
         - name: よく寄せられる質問
-          href: app-attach-faq.md
+          href: app-attach-faq.yml
     - name: Azure Monitor 用語集
       href: azure-monitor-glossary.md
     - name: データの場所
@@ -181,41 +227,59 @@
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-desktop-security-baseline?context=/azure/virtual-desktop/context/context
+        - name: 画面キャプチャ保護
+          href: screen-capture-protection.md
+    - name: Azure Stack HCI 用 Azure Virtual Desktop (プレビュー)
+      items:
+        - name: 概要 (プレビュー)
+          href: azure-stack-hci-overview.md
+        - name: Azure Stack HCI の FAQ (プレビュー)
+          href: azure-stack-hci-faq.yml
+    - name: Azure Virtual Desktop リソースにタグを付ける
+      href: tag-virtual-desktop-resources.md
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート
       href: troubleshoot-set-up-overview.md
-    - name: 問題の特定と診断
-      href: diagnostics-role-service.md
+    - name: 作業の開始機能
+      href: troubleshoot-getting-started.md
     - name: ホスト プールの作成
       href: troubleshoot-set-up-issues.md
     - name: セッション ホスト仮想マシンの構成
       href: troubleshoot-vm-configuration.md
+    - name: 管理に関する問題
+      href: troubleshoot-management-issues.md
+    - name: Azure Virtual Desktop PowerShell
+      href: troubleshoot-powershell.md
+    - name: Azure Virtual Desktop エージェント
+      href: troubleshoot-agent.md
     - name: リモート デスクトップ サービスの接続
       href: troubleshoot-service-connection.md
-    - name: Windows Virtual Desktop エージェント
-      href: troubleshoot-agent.md
     - name: リモート デスクトップ クライアントの問題
       href: troubleshoot-client.md
-    - name: Windows Virtual Desktop PowerShell
-      href: troubleshoot-powershell.md
     - name: グラフィックスのパフォーマンスの問題の診断
       href: remotefx-graphics-performance-counters.md
+    - name: Azure AD 参加済み VM への接続
+      href: troubleshoot-azure-ad-connections.md
     - name: Azure Monitor
       href: troubleshoot-azure-monitor.md
+    - name: Azure Files の認証
+      href: troubleshoot-authorization.md
 - name: リファレンス
   items:
     - name: セキュリティの運用方法
       href: security-guide.md
-    - name: Linux Support
-      href: linux-overview.md
+    - name: Azure CLI
+      href: /cli/azure/desktopvirtualization
+    - name: Azure Monitor コストを見積もる
+      href: azure-monitor-costs.md
     - name: サポートされる RDP ファイルの設定
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
     - name: 仮想マシンのサイズ指定ガイダンス
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure コマンド ライン インターフェイス (CLI)
-      href: /cli/azure/ext/desktopvirtualization/
+      href: /cli/azure/
     - name: Azure シナリオ例
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
     - name: メール検出
@@ -236,9 +300,11 @@
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: 技術コミュニティ サポート グループ
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
-    - name: UserVoice フォーラム
-      href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'
-    - name: Microsoft 365 のロードマップ
-      href: 'https://aka.ms/wvdroadmap'
+    - name: Azure 更新ロードマップ
+      href: 'https://aka.ms/avdroadmap'
     - name: Azure Resource Manager のテンプレート
       href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'
+    - name: Azure コンプライアンス認証
+      href: 'https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/'
+    - name: Azure Advisor
+      href: ../advisor/advisor-overview.md

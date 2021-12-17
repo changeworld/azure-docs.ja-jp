@@ -2,24 +2,31 @@
 title: Azure Arc 対応 Kubernetes クラスター拡張機能
 services: azure-arc
 ms.service: azure-arc
-ms.date: 04/05/2021
+ms.date: 06/18/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc 対応 Kubernetes に拡張機能をデプロイし、そのライフサイクルを管理する
-ms.openlocfilehash: 63fb14818d148dcc579300fdb4c89d636b47fd05
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 811bced5b0855ffdc44d851459b69a7b6aad6b19
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450861"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312823"
 ---
-# <a name="kubernetes-cluster-extensions"></a>Kubernetes クラスター拡張機能
+# <a name="deploy-and-manage-azure-arc-enabled-kubernetes-cluster-extensions"></a>Azure Arc 対応 Kubernetes クラスター拡張機能をデプロイして管理する
 
 Kubernetes 拡張機能を使用すると、Azure Arc 対応 Kubernetes クラスターで次のことを実行できます。
 
 * クラスター拡張機能の Azure Resource Manager ベースのデプロイ。
 * 拡張機能 Helm チャートのライフサイクル管理。
+
+この記事では、次のことについて説明します。
+> [!div class="checklist"]
+> * 現在利用可能な Azure Arc 対応 Kubernetes クラスター拡張機能。
+> * 拡張機能インスタンスを作成する方法。
+> * 必須の、および省略可能なパラメーター。
+> * 拡張機能インスタンスを表示、一覧表示、更新、削除する方法。 
 
 この機能の概要については、「[クラスター拡張機能 - Azure Arc 対応 Kubernetes](conceptual-extensions.md)」の記事を参照してください。
 
@@ -27,7 +34,7 @@ Kubernetes 拡張機能を使用すると、Azure Arc 対応 Kubernetes クラ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+- バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](/cli/azure/install-azure-cli)。
 - `connectedk8s` (バージョン 1.1.0 以降) および `k8s-extension` (バージョン 0.2.0 以降) の Azure CLI 拡張機能。 次のコマンドを実行して、これらの Azure CLI 拡張機能をインストールします。
   
     ```azurecli
@@ -43,7 +50,7 @@ Kubernetes 拡張機能を使用すると、Azure Arc 対応 Kubernetes クラ�
     ```
 
 - Azure Arc 対応 Kubernetes に接続された既存のクラスター。
-    - クラスターをまだ接続していない場合は、[クイックスタート](quickstart-connect-cluster.md)を使用します。
+    - クラスターをまだ接続していない場合は[クイックスタート](quickstart-connect-cluster.md)を使用します。
     - バージョン 1.1.0 以降に[エージェントをアップグレードします](agent-upgrade.md#manually-upgrade-agents)。
 
 ## <a name="currently-available-extensions"></a>現在使用可能な拡張機能
@@ -51,7 +58,13 @@ Kubernetes 拡張機能を使用すると、Azure Arc 対応 Kubernetes クラ�
 | 拡張機能 | 説明 |
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes クラスターにデプロイされているワークロードのパフォーマンスを可視化します。 コントローラー、ノード、コンテナーからメモリと CPU の使用率メトリックを収集します。 |
-| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes クラスターのコントロール プレーン ノードから監査ログ データを収集します。 収集したデータに基づいて、推奨事項と脅威のアラートを提供します。 |
+| [Microsoft Defender for Cloud](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes クラスターから監査ログ データなどのセキュリティに関連する情報を収集します。 収集したデータに基づいて、推奨事項と脅威のアラートを提供します。 |
+| [Azure Arc 対応 Open Service Mesh](tutorial-arc-enabled-open-service-mesh.md) | クラスターに Open Service Mesh をデプロイし、mTLS セキュリティ、きめ細かなアクセス制御、トラフィック移行、Azure Monitor または Prometheus および Grafana のオープンソース アドオンによる監視、Jaeger によるトレース、外部認定管理ソリューションとの統合などの機能を有効にします。 |
+| [Azure Arc 対応 Data Services](../../azure-arc/kubernetes/custom-locations.md#create-custom-location) | Kubernetes と任意のインフラストラクチャを使用して、Azure データ サービスをオンプレミス、エッジ、パブリック クラウドで実行できるようになります。 |
+| [Azure Arc 上の Azure App Service](../../app-service/overview-arc-integration.md) | Azure Arc 対応 Kubernetes クラスター上に App Service Kubernetes 環境をプロビジョニングできるようになります。 |
+| [Kubernetes 上の Event Grid](../../event-grid/kubernetes/overview.md) | Azure Arc 対応 Kubernetes クラスター上で、トピックやイベント サブスクリプションなどのイベント グリッド リソースを作成および管理します。 |
+| [Azure Arc 上の Azure API Management](../../api-management/how-to-deploy-self-hosted-gateway-azure-arc.md) | Azure Arc 対応 Kubernetes クラスターに API Management ゲートウェイをデプロイして管理します。 |
+| [Azure Arc 対応機械学習](../../machine-learning/how-to-attach-arc-kubernetes.md) | Azure Arc 対応 Kubernetes クラスターで Azure Machine Learning をデプロイして実行します。 |
 
 ## <a name="usage-of-cluster-extensions"></a>クラスター拡張機能の使用
 
@@ -101,7 +114,7 @@ az k8s-extension create --name azuremonitor-containers  --extension-type Microso
 
 > [!NOTE]
 > * サービスでは、48 時間よりも長く機密情報を保持できません。 Azure Arc 対応 Kubernetes エージェントに 48 時間よりも長くネットワーク接続がなく、クラスターに拡張機能を作成するかどうかを判断できない場合、拡張機能は `Failed` 状態に遷移します。 `Failed` 状態になったら、新しい拡張機能 Azure リソースを作成するために、`k8s-extension create` を再び実行する必要があります。
-> * * Azure Monitor for containers は、シングルトン拡張機能です (クラスターごとに 1 つのみ必要)。 Azure Monitor for containers (拡張機能なし) の以前の Helm チャート インストールをクリーンアップしてから、拡張機能を介して同じものをインストールする必要があります。 指示に従い、[`az k8s-extension create` を実行する前に Helm チャートを削除](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-hybrid)してください。
+> * Azure Monitor for containers は、シングルトン拡張機能です (クラスターごとに 1 つのみ必要)。 Azure Monitor for containers (拡張機能なし) の以前の Helm チャート インストールをクリーンアップしてから、拡張機能を介して同じものをインストールする必要があります。 指示に従い、[`az k8s-extension create` を実行する前に Helm チャートを削除](../../azure-monitor/containers/container-insights-optout-hybrid.md)してください。
 
 **必須のパラメーター**
 
@@ -112,7 +125,7 @@ az k8s-extension create --name azuremonitor-containers  --extension-type Microso
 | `--scope` | 拡張機能のインストールのスコープ - `cluster` または `namespace` |
 | `--cluster-name` | 拡張機能インスタンスを作成する必要がある Azure Arc 対応 Kubernetes リソースの名前 |
 | `--resource-group` | Azure Arc 対応 Kubernetes リソースを含むリソース グループ |
-| `--cluster-type` | 拡張機能インスタンスを作成する必要があるクラスターの種類。 現時点で指定できる値は、Azure Arc 対応 Kubernetes に対応する、`connectedClusters` のみです。 |
+| `--cluster-type` | 拡張機能インスタンスを作成する必要があるクラスターの種類。 現時点で指定できる値は、Azure Arc 対応 Kubernetes に対応する、`connectedClusters` のみです |
 
 **省略可能なパラメーター**
 
@@ -236,31 +249,6 @@ az k8s-extension list --cluster-name <clusterName> --resource-group <resourceGro
 ]
 ```
 
-### <a name="update-an-existing-extension-instance"></a>既存の拡張機能インスタンスを更新する
-
-`k8s-extension update` を使用し、更新する値を渡すことで、クラスター上の拡張機能インスタンスを更新します。  このコマンドは、`auto-upgrade-minor-version`、`release-train`、および `version` の各プロパティのみを更新します。 例:
-
-- **リリース トレインを更新する:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --release-train Preview
-    ```
-
-- **自動アップグレードをオフにして、拡張機能インスタンスを特定バージョンに固定する:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version false --version 2.2.2
-    ```
-
-- **拡張機能インスタンスの自動アップグレードをオンにする:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version true
-    ```
-
-> [!NOTE]
-> `--auto-upgrade-minor-version` が `false` に設定されている場合にのみ `version` パラメーターを設定できます。
-
 ### <a name="delete-extension-instance"></a>拡張機能インスタンスを削除する
 
 `k8s-extension delete` を使用し、必須パラメーターの値を渡すことで、クラスター上の拡張機能インスタンスを削除します。
@@ -272,10 +260,23 @@ az k8s-extension delete --name azuremonitor-containers --cluster-name <clusterNa
 >[!NOTE]
 > この拡張機能を表す Azure リソースはただちに削除されます。 Kubernetes クラスターで実行されているエージェントがネットワークに接続していて、目的の状態を取得するために Azure サービスに再びアクセスできる場合にのみ、この拡張機能に関連するクラスターの Helm リリースが削除されます。
 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Arc 対応 Kubernetes で現在使用できるクラスター拡張機能について詳しく学習してださい。
+
 > [!div class="nextstepaction"]
 > [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json)
-> [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> [Microsoft Defender for Cloud](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> [Azure Arc 対応 Open Service Mesh](tutorial-arc-enabled-open-service-mesh.md)
+> 
+> [!div class="nextstepaction"]
+> [Microsoft Defender for Cloud](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> 
+> [!div class="nextstepaction"]
+> [Azure Arc 上の Azure App Service](../../app-service/overview-arc-integration.md)
+> 
+> [!div class="nextstepaction"]
+> [Kubernetes 上の Event Grid](../../event-grid/kubernetes/overview.md)
+> 
+> [!div class="nextstepaction"]
+> [Azure Arc 上の Azure API Management](../../api-management/how-to-deploy-self-hosted-gateway-azure-arc.md)

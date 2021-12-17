@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop のディザスター リカバリー プランを設定する - Azure
-description: Windows Virtual Desktop のデプロイのために事業継続とディザスター リカバリー プランを設定する方法。
+title: Azure Virtual Desktop のディザスター リカバリー計画
+description: データを保護するために、Azure Virtual Desktop デプロイのディザスター リカバリー計画を立てます。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 18089bc00e9d02087acb149511fbc2c55077c153
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 54202b49e2881d1d128136b876cbf88c2bc87400
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446929"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359764"
 ---
-# <a name="set-up-a-business-continuity-and-disaster-recovery-plan"></a>事業継続とディザスター リカバリー プランを設定する
+# <a name="azure-virtual-desktop-disaster-recovery"></a>Azure Virtual Desktop のディザスター リカバリー
 
 組織のデータを安全な状態に保つために、事業継続とディザスター リカバリー (BCDR) 戦略を採用する必要がある場合があります。 確実な BCDR 戦略により、計画的および計画外のサービスまたは Azure の停止中にアプリとワークロードの稼働状態が保たれます。
 
-停止中に顧客のメタデータを保持するために、Windows Virtual Desktop サービス用の BCDR が Windows Virtual Desktop によって提供されます。 リージョンが停止すると、サービス インフラストラクチャ コンポーネントはセカンダリ ロケーションにフェールオーバーされ、通常どおりに機能し続けます。 引き続きサービス関連のメタデータにアクセスでき、ユーザーは引き続き利用可能なホストに接続できます。 エンドユーザー接続は、テナント環境またはホストにアクセスできる限り、オンラインのままになります。
+停止中に顧客のメタデータを保持するために、Azure Virtual Desktop サービス用の BCDR が Azure Virtual Desktop によって提供されます。 リージョンが停止すると、サービス インフラストラクチャ コンポーネントはセカンダリ ロケーションにフェールオーバーされ、通常どおりに機能し続けます。 引き続きサービス関連のメタデータにアクセスでき、ユーザーは引き続き利用可能なホストに接続できます。 エンドユーザー接続は、テナント環境またはホストにアクセスできる限り、オンラインのままになります。
 
 リージョンの停止中に確実にユーザーが引き続き接続できるようにするには、仮想マシン (VM) を別の場所にレプリケートする必要があります。 停止中に、プライマリ サイトはセカンダリ ロケーションのレプリケートされた VM にフェールオーバーされます。 ユーザーは中断されることなく、引き続きセカンダリ ロケーションからアプリにアクセスできます。 VM のレプリケーションに加え、セカンダリ ロケーションでユーザー ID にアクセスできる状態を保つ必要があります。 プロファイル コンテナーを使用している場合は、それらをレプリケートする必要もあります。 最後に、プライマリ ロケーションのデータに依存するすべてのビジネス アプリを、確実にデータの残りの部分と共にフェールオーバーできるようにします。
 
@@ -40,17 +40,17 @@ ms.locfileid: "106446929"
 
 「[Azure から Azure へのディザスター リカバリー](../site-recovery/azure-to-azure-architecture.md)」で説明されているように、他の Azure の場所での VM のレプリケーションを管理するには、[Azure Site Recovery](../site-recovery/site-recovery-overview.md) を使用することをお勧めします。 Azure Site Recovery によって[サーバーベースとクライアントベースの両方の SKU](../site-recovery/azure-to-azure-support-matrix.md#replicated-machine-operating-systems) がサポートされるため、個人用ホスト プールには特に Azure Site Recovery を使用することをお勧めします。
 
-Azure Site Recovery を使用する場合は、これらの VM を手動で登録する必要はありません。 セカンダリ VM の Windows Virtual Desktop エージェントによって、最も近いサービス インスタンスに接続するために最新のセキュリティ トークンが自動的に使用されます。 セカンダリ ロケーションの VM (セッション ホスト) は、自動的にホスト プールの一部になります。 エンドユーザーはプロセス中に再接続する必要がありますが、その他の手動操作はありません。
+Azure Site Recovery を使用する場合は、これらの VM を手動で登録する必要はありません。 セカンダリ VM の Azure Virtual Desktop エージェントによって、最も近いサービス インスタンスに接続するために最新のセキュリティ トークンが自動的に使用されます。 セカンダリ ロケーションの VM (セッション ホスト) は、自動的にホスト プールの一部になります。 エンドユーザーはプロセス中に再接続する必要がありますが、その他の手動操作はありません。
 
 停止中に既存のユーザー接続が存在する場合は、管理者がセカンダリ リージョンへのフェールオーバーを開始する前に、現在のリージョンのユーザー接続を終了する必要があります。
 
-Windows Virtual Desktop (クラシック) でユーザーを切断するには、このコマンドレットを実行します。
+Azure Virtual Desktop (クラシック) でユーザーを切断するには、このコマンドレットを実行します。
 
 ```powershell
 Invoke-RdsUserSessionLogoff
 ```
 
-Azure 統合バージョンの Windows Virtual Desktop でユーザーを切断するには、このコマンドレットを実行します。
+Azure 統合バージョンの Azure Virtual Desktop でユーザーを切断するには、このコマンドレットを実行します。
 
 ```powershell
 Remove-AzWvdUserSession
@@ -84,7 +84,7 @@ Remove-AzWvdUserSession
    - Azure NetApp Files
    - レプリケーション用のクラウド キャッシュ
 
-詳細については、「[Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション](store-fslogix-profile.md)」を参照してください。
+詳細については、[「Azure Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション」](store-fslogix-profile.md)を参照してください。
 
 プロファイルのディザスター リカバリーを設定する場合は、次のオプションがあります。
 

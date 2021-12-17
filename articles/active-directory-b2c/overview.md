@@ -1,21 +1,21 @@
 ---
 title: Azure Active Directory B2C とは
-description: Azure Active Directory B2C を使用して、Facebook、Google、その他の ID プロバイダーでのソーシャル ログインなど、外部 ID をアプリケーションでサポートする方法について説明します。
+description: Azure Active Directory B2C を使用して、Facebook、Google、その他の ID プロバイダーでのソーシャル サインアップなど、外部 ID をアプリケーションでサポートする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 09/19/2019
-ms.author: mimart
+ms.date: 10/01/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 29b34041042f00d72b8a9fe86e31bd80f8c77dc2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f17e7e0d5a42b3926f85c39cd424c8ffc8e00c03
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94953952"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451922"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 
@@ -23,7 +23,12 @@ Azure Active Directory B2C は、サービスとしての企業-消費者間 (B2
 
 ![Azure AD B2C ID プロバイダーとダウンストリーム アプリケーションのインフォグラフィック](./media/overview/azureadb2c-overview.png)
 
-Azure Active Directory B2C (Azure AD B2C) は、1日あたり何百万ものユーザーと何十億もの認証をサポートできる、顧客 ID アクセス管理 (CIAM) ソリューションです。 認証プラットフォームのスケーリングと安全性が処理され、サービス拒否、パスワード スプレー、ブルート フォース攻撃などの脅威の監視と自動処理が行われます。
+Azure AD B2C は、1 日あたり何百万ものユーザーと何十億もの認証をサポートできる顧客 ID アクセス管理 (CIAM) ソリューションです。 認証プラットフォームのスケーリングと安全性が処理され、サービス拒否、パスワード スプレー、ブルート フォース攻撃などの脅威の監視と自動処理が行われます。
+
+Azure AD B2C は、[Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) とは別のサービスです。 Azure AD と同じテクノロジをベースにして構築されていますが、目的が異なります。 企業が顧客向けのアプリケーションを構築し、ユーザー アカウントに制限をかけずに、だれでもそのアプリケーションにサインアップできるようにします。
+   
+## <a name="who-uses-azure-ad-b2c"></a>Azure AD B2C の利用者
+ホワイト ラベルの認証ソリューションを使用して、Web/モバイル アプリケーションのエンド ユーザーを認証したい企業または個人。 Azure AD B2C サービスは、認証とは別に、認証されたユーザーによる API リソースへのアクセスなどの承認に使用されます。 Azure AD B2C は、**IT 管理者** と **開発者** によって使用されることを想定しています。
 
 ## <a name="custom-branded-identity-solution"></a>カスタム ブランドの ID ソリューション
 
@@ -35,9 +40,9 @@ Azure AD B2C は、ホワイトラベルの認証ソリューションです。 
 
 ## <a name="single-sign-on-access-with-a-user-provided-identity"></a>ユーザー指定の ID によるシングル サインオン アクセス
 
-Azure AD B2C では、OpenID Connect、OAuth 2.0、SAML などの標準ベースの認証プロトコルが使用されます。 最新のアプリケーションや市販の既製ソフトウェアと統合します。
+Azure AD B2C では、OpenID Connect、OAuth 2.0、Security Assertion Markup Language (SAML) などの標準ベースの認証プロトコルが使用されます。 最新のアプリケーションや市販の既製ソフトウェアと統合します。
 
-![サードパーティ ID の Azure AD B2C へのフェデレーションの図](./media/overview/scenario-singlesignon.png)
+:::image type="content" source="./media/overview/scenario-singlesignon.png" alt-text="サードパーティ ID の Azure AD B2C へのフェデレーションの図。":::
 
 Web アプリケーション、モバイル アプリ、API に対する中央認証機関として機能する Azure AD B2C を使用することにより、それらすべてに対するシングル サインオン (SSO) ソリューションを構築できます。 ユーザー プロファイルとユーザー設定情報の収集が一元化され、サインイン動作とサインアップ変換に関する詳細な分析情報が取得されます。
 
@@ -45,25 +50,26 @@ Web アプリケーション、モバイル アプリ、API に対する中央�
 
 Azure AD B2C で提供されているディレクトリには、ユーザーごとに 100 個のカスタム属性を保持できます。 ただし、外部システムと統合することもできます。 たとえば、認証には Azure AD B2C を使用しても、顧客データの信頼できる単一の情報源としての機能は、外部の顧客関係管理 (CRM) や顧客ロイヤルティ データベースに委任します。
 
-もう 1 つの外部ユーザー ストアのシナリオは、アプリケーションの認証は Azure AD B2C で処理しますが、ユーザー プロファイルまたは個人データを格納する外部システムと統合する場合です。 たとえば、地域やオンプレミスのデータ ストレージ ポリシーのようなデータ保存場所要件を満たす場合です。
+もう 1 つの外部ユーザー ストアのシナリオは、アプリケーションの認証は Azure AD B2C で処理しますが、ユーザー プロファイルまたは個人データを格納する外部システムと統合する場合です。 たとえば、地域やオンプレミスのデータ ストレージ ポリシーのようなデータ保存場所要件を満たす場合です。 ただし、Azure AD B2C サービス自体は、Azure パブリック クラウドを介して全世界で提供されています。 
 
-![外部ユーザー ストアと通信する Azure AD B2C の論理図](./media/overview/scenario-remoteprofile.png)
+:::image type="content" source="./media/overview/scenario-remoteprofile.png" alt-text="外部ユーザー ストアと通信する Azure AD B2C の論理図。":::
 
-Azure AD B2C を使用すると、登録またはプロファイル編集の間のユーザーからの情報収集を容易にし、そのデータを外部システムに渡すことができます。 その後、将来の認証時には、Azure AD B2C で外部システムからデータを取得し、必要に応じて、アプリケーションに送信する認証トークンの応答の一部としてそのデータを含めることができます。
+Azure AD B2C により、ユーザーが登録またはプロファイルを編集している間に容易に情報を収集でき、そのデータを API を介して外部システムに渡すことができます。 その後、将来の認証時には、Azure AD B2C で外部システムからデータを取得し、必要に応じて、アプリケーションに送信する認証トークンの応答の一部としてそのデータを含めることができます。
 
 ## <a name="progressive-profiling"></a>プログレッシブ プロファイリング
 
 もう 1 つのユーザー体験オプションには、プログレッシブ プロファイリングが含まれます。 プログレッシブ プロファイリングを使用すると、顧客は最小限の情報を収集するだけで、最初のトランザクションをすばやく完了できます。 その後、将来のサインイン時に、より多くのプロファイル データを顧客から徐々に収集します。
 
-![プログレッシブ プロファイリングの視覚的な説明](./media/overview/scenario-progressive.png)
+:::image type="content" source="./media/overview/scenario-progressive.png" alt-text="プログレッシブ プロファイリングの視覚的な説明。":::
 
 ## <a name="third-party-identity-verification-and-proofing"></a>サードパーティの ID の検証と証明
 
-Azure AD B2C を使用して、ユーザー データを収集し、それをサードパーティのシステムに渡して、ユーザー アカウント作成に関する検証、信頼スコアリング、承認を実行することで、ID の検証と証明を容易にします。
+Azure AD B2C を使用して、ユーザー データを収集してサードパーティのシステムに渡し、ユーザー アカウント作成に対して検証、信頼スコアリング、承認を実行することで、ID の検証と証明を容易にします。
 
-![サードパーティの ID 証明のユーザー フローを示す図](./media/overview/scenario-idproofing.png)
 
-これらは、企業-消費者間 ID プラットフォームとしての Azure AD B2C で実行できることのほんの一部です。 この概要の以下のセクションでは、Azure AD B2C を使用するデモ アプリケーションについて説明します。 さらに詳しい [Azure AD B2C の技術的詳細](technical-overview.md)に直接進んでもかまいません。
+:::image type="content" source="./media/overview/scenario-idproofing.png" alt-text="サードパーティの ID 証明のユーザー フローを示す図。":::
+
+企業-消費者間 ID プラットフォームとして Azure AD B2C を使用して実行できることをいくつか説明しました。 この概要の以下のセクションでは、Azure AD B2C を使用するデモ アプリケーションについて説明します。 さらに詳しい [Azure AD B2C の技術的詳細](technical-overview.md)に直接進んでもかまいません。
 
 ## <a name="example-woodgrove-groceries"></a>例:WoodGrove Groceries
 
@@ -103,7 +109,7 @@ WoodGrove では、顧客が自分の Google、Facebook、または Microsoft �
 
 ### <a name="authenticate-business-customers"></a>企業顧客を認証する
 
-顧客が **[Business customers]** の下にあるいずれかのオプションを選択すると、WoodGrove Groceries の Web サイトでは、個人顧客の場合とは異なる Azure AD B2C ポリシーが呼び出されます。
+顧客が **[Business customers]** の下にあるいずれかのオプションを選択すると、WoodGrove Groceries の Web サイトから、個人顧客の場合とは異なる Azure AD "*B2C ポリシー*" が呼び出されます。 *B2C ポリシー* については、[Azure AD B2C の技術的概要](technical-overview.md)に関する記事をご覧ください
 
 このポリシーでは、サインアップとサインインに会社の資格情報を使用するオプションが、ユーザーに提示されます。 WoodGrove の例では、ユーザーの職場または学校アカウントを使用してサインインするように求められます。 このポリシーでは、[マルチテナント Azure AD アプリケーション](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md)と `/common` Azure AD エンドポイントを使用して、Azure AD B2C と世界中の Microsoft 365 顧客がフェデレーションされます。
 

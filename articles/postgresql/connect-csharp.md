@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: a06d07a7d54b6399ab5f83c41284fb2fab7217fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6984d8e07f88eee035e252f0515fe131a4b1b61c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97360273"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422636"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:.NET (C#) を使用して Azure Database for PostgreSQL - Single Server に接続してデータを照会する
 
@@ -32,7 +32,7 @@ ms.locfileid: "97360273"
   | **サービス エンドポイントを構成する** | パブリック | [ポータル](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
   | **プライベート リンクを構成する** | プライベート | [ポータル](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-- 使用しているプラットフォーム (Windows、Ubuntu Linux、または macOS) 用の [.NET Framework](https://www.microsoft.com/net/download) をインストールします。
+- 使用しているプラットフォーム (Windows、Ubuntu Linux、または macOS) 用の [.NET SDK](https://dotnet.microsoft.com/download) をインストールします。
 - プロジェクトをビルドするには、[Visual Studio](https://www.visualstudio.com/downloads/) をインストールします。
 - Visual Studio に [Npgsql](https://www.nuget.org/packages/Npgsql/) NuGet パッケージをインストールします。
 

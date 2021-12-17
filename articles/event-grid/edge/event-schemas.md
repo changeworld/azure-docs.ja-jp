@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: accf7e5a30b07cbfe6a95bc33eb00a5e3aa23998
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171569"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716393"
 ---
 # <a name="event-schemas"></a>イベント スキーマ
 
@@ -54,14 +55,14 @@ EventGrid スキーマは、発行エンティティが準拠する必要のあ�
 
 | プロパティ | Type | 必須 | 説明 |
 | -------- | ---- | ----------- |-----------
-| topic | string | いいえ | 発行されるトピックと一致している必要があります。 指定しない場合、Event Grid によって、発行されるトピックの名前が設定されます。 |
+| topic | string | No | 発行されるトピックと一致している必要があります。 指定しない場合、Event Grid によって、発行されるトピックの名前が設定されます。 |
 | subject | string | はい | 発行元が定義したイベントの対象のパス。 |
 | eventType | string | はい | このイベント ソースのイベントの種類 (たとえば、BlobCreated)。 |
 | eventTime | string | はい | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | string | いいえ | イベントの一意識別子。 |
+| id | string | No | イベントの一意識別子。 |
 | data | object | いいえ | 発行エンティティに固有のイベント データをキャプチャするために使用されます。 |
 | dataVersion | string | はい | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | string | いいえ | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| metadataVersion | string | No | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 ### <a name="example--eventgrid-schema-event"></a>例 - EventGrid スキーマ イベント
 
@@ -104,11 +105,11 @@ EventGrid スキーマは、発行エンティティが準拠する必要のあ�
 
 ## <a name="cloudevent-schema"></a>CloudEvent スキーマ
 
-Azure Event Grid では、上記のスキーマに加えて、[CloudEvents JSON スキーマ](https://github.com/cloudevents/spec/blob/master/json-format.md)内のイベントをネイティブ サポートしています。 CloudEvents は、イベント データを記述するためのオープンな仕様です。 これを使用すると、イベントを発行したり使用したりするための共通のイベント スキーマを提供して、相互運用性を簡略化することができます。 これは [CNCF](https://www.cncf.io/) の一部であり、現在使用可能なバージョンは 1.0-rc1 です。
+Azure Event Grid では、上記のスキーマに加えて、[CloudEvents JSON スキーマ](https://github.com/cloudevents/spec/blob/main/cloudevents/formats/json-format.md)内のイベントをネイティブ サポートしています。 CloudEvents は、イベント データを記述するためのオープンな仕様です。 これを使用すると、イベントを発行したり使用したりするための共通のイベント スキーマを提供して、相互運用性を簡略化することができます。 これは [CNCF](https://www.cncf.io/) の一部であり、現在使用可能なバージョンは 1.0-rc1 です。
 
 ### <a name="cloudevent-schema-properties"></a>CloudEvents スキーマのプロパティ
 
-必須のエンベロープ プロパティについては、[CloudEvents の仕様](https://github.com/cloudevents/spec/blob/master/json-format.md#3-envelope)を参照してください。
+必須のエンベロープ プロパティについては、[CloudEvents の仕様](https://github.com/cloudevents/spec/blob/main/cloudevents/formats/json-format.md#3-envelope)を参照してください。
 
 ### <a name="example--cloud-event"></a>例 - クラウド イベント
 ```json

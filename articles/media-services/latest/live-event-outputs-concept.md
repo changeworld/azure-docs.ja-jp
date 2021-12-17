@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 44ab9e4ff83fec2ddfbd1cb44f503298d12789d1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f4d035355be5381109c1bc5f620bade22ba6f579
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766301"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987216"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Media Services のライブ イベントとライブ出力
 
@@ -31,13 +31,14 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 ## <a name="live-events"></a>ライブ イベント
 
-[ライブ イベント](/rest/api/media/liveevents)は、ライブ ビデオ フィードの取り込みと処理を担当します。 ライブ イベントを作成すると、リモート エンコーダーからライブ シグナルを送信するために使用できるプライマリおよびセカンダリ入力エンドポイントが作成されます。 リモート ライブ エンコーダーは、[RTMP](https://www.adobe.com/devnet/rtmp.html) または [Smooth Streaming](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) (Fragmented MP4) 入力プロトコルを使用して、その入力エンドポイントに投稿フィードを送信します。 RTMP 取り込みプロトコルの場合は、コンテンツを平文で (`rtmp://`)、またはワイヤ上で安全に暗号化して (`rtmps://`) 送信できます。 Smooth Streaming 取り込みプロトコルでサポートされる URL スキームは `http://` と `https://` です。  
+[ライブ イベント](/rest/api/media/liveevents)は、ライブ ビデオ フィードの取り込みと処理を担当します。 ライブ イベントを作成すると、リモート エンコーダーからライブ シグナルを送信するために使用できるプライマリおよびセカンダリ入力エンドポイントが作成されます。 リモート ライブ エンコーダーは、[RTMP](https://helpx.adobe.com/adobe-media-server/dev/stream-live-media-rtmp.html) または [Smooth Streaming](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) (Fragmented MP4) 入力プロトコルを使用して、その入力エンドポイントに投稿フィードを送信します。 RTMP 取り込みプロトコルの場合は、コンテンツを平文で (`rtmp://`)、またはワイヤ上で安全に暗号化して (`rtmps://`) 送信できます。 Smooth Streaming 取り込みプロトコルでサポートされる URL スキームは `http://` と `https://` です。  
 
 ## <a name="live-event-types"></a>ライブ イベントの種類
 
-[ライブ イベント](/rest/api/media/liveevents)は、*パススルー* (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または *ライブ エンコード* (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 これらの種類は、[LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) を使って作成中に設定されます。
+[ライブ イベント](/rest/api/media/liveevents)は、基本的な、または標準の *パススルー* (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または *ライブ エンコード* (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 これらの種類は、[LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) を使って作成中に設定されます。
 
-* **LiveEventEncodingType.None**:オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 取り込まれたストリームは、追加の処理なしでライブ イベントを通過します。 パススルー モードとも呼ばれます。
+* **LiveEventEncodingType.PassthroughBasic** - オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 基本的なパススルーは、5 Mbps のピーク イングレス、8 時間の DVR ウィンドウに制限され、ライブ文字起こしはサポートされていません。
+* **LiveEventEncodingType.PassthroughStandard** - オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 標準のパススルーでは、取り込み制限が高く、25 時間の DVR ウィンドウがあり、ライブ文字起こしがサポートされます。
 * **LiveEventEncodingType.Standard**:オンプレミス ライブ エンコーダーは、ライブ イベントにシングル ビットレート ストリームを送信し、Media Services がマルチ ビットレート ストリームを作成します。 投稿フィードの解像度が 720p 以上である場合、**Default720p** プリセットは 6 つの解像度とビットレートのペアのセットをエンコードします。
 * **LiveEventEncodingType.Premium1080p**:オンプレミス ライブ エンコーダーは、ライブ イベントにシングル ビットレート ストリームを送信し、Media Services がマルチ ビットレート ストリームを作成します。 Default1080p プリセットは、解像度とビットレートのペアの出力セットを指定します。
 
@@ -45,9 +46,9 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 ![パススルー ライブ イベントと Media Services サンプル図](./media/live-streaming/pass-through.svg)
 
-パススルー **ライブ イベント** を使用する場合は、オンプレミス ライブ エンコーダーを活用して、マルチ ビットレート ビデオ ストリームを生成し、(RTMP または Fragmented MP4 プロトコルを使用して) ライブ イベントへの投稿フィードとして送信します。 その後、ライブ イベントは追加の処理なしで受信ビデオ ストリームを通過します。 このようなパススルー ライブ イベントは、長時間実行されるライブ ストリームや 24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 この種類のライブ イベントを作成するときは、None (LiveEventEncodingType.None) を指定してください。
+基本的、または標準のパススルー **ライブ イベント** を使用する場合は、オンプレミス ライブ エンコーダーを活用して、マルチ ビットレート ビデオ ストリームを生成し、(RTMP または Fragmented MP4 プロトコルを使用して) ライブ イベントへの投稿フィードとして送信します。 その後、ライブ イベントは追加の処理なしで受信ビデオ ストリームを通過します。 このようなパススルー ライブ イベントは、長時間実行されるライブ ストリームや 24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 この種類のライブ イベントを作成する場合は、"基本的" または "標準" のパススルーを指定します。 (LiveEventEncodingType.PassThroughStandard)。
 
-投稿フィードは最大 4K の解像度と 60 フレーム/秒のフレーム レートで、H.264/AVC または H.265/HEVC のいずれかのビデオ コーデックと AAC (AAC-LC、HE-AACv1、または HE-AACv2) オーディオ コーデックを使用して送信することができます。 詳細については、[ライブ イベントの種類の比較](live-event-types-comparison-reference.md)に関するページを参照してください。
+ビデオ コーデックは H.264/AVC または H.265/HEVC (Smooth ingestのみ)、オーディオ コーデックは AAC (AAC-LC、HE-AACv1、HE-AACv2) で、解像度は最大 4K、フレームレートは 60 フレーム/秒で投稿フィードを送信できます。 詳細については、[ライブ イベントの種類の比較](live-event-types-comparison-reference.md)に関するページを参照してください。
 
 > [!NOTE]
 > 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。 [価格](https://azure.microsoft.com/pricing/details/media-services/)の詳細を参照してください。
@@ -221,10 +222,11 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 ## <a name="live-outputs"></a>ライブ出力
 
-ストリームがライブ イベントに流れ始めると、[アセット](/rest/api/media/assets)、[ライブ出力](/rest/api/media/liveoutputs)、[ストリーミング ロケーター](/rest/api/media/streaminglocators)を作成することにより、ストリーミング イベントを開始できます。 ライブ出力により、ストリームがアーカイブされ、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)を介して視聴者がストリームを使用できるようになります。  
+ストリームがライブ イベントに流れ始めると、[アセット](/rest/api/media/assets)、[ライブ出力](/rest/api/media/liveoutputs)、[ストリーミング ロケーター](/rest/api/media/streaminglocators)を作成することにより、ストリーミング イベントを開始できます。 ライブ出力により、ストリームがアーカイブされ、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)を介して視聴者がストリームを使用できるようになります。 
+
+AMS の既定の割り当ては、Media Services アカウントあたり 5 つのライブ イベントです。 この上限を引き上げる場合は、Azure portal にサポート チケットを提出してください。 AMS では、ストリーミングの状況や地域のデータセンターの可用性に応じて、ライブ イベントの上限を引き上げることができます。
 
 ライブ出力の詳細については、「[クラウド DVR の使用](live-event-cloud-dvr-time-how-to.md)」を参照してください。
-
 ## <a name="live-event-output-questions"></a>ライブ イベント出力の質問
 
-[ライブ イベント出力の質問](questions-collection.md#live-streaming)に関する記事をご覧ください。
+[FAQ のライブ イベントの質問](frequently-asked-questions.yml)に関する記事を参照してください。 ライブ イベント クォータの詳細については、[クォータと制限](limits-quotas-constraints-reference.md)に関する記事を参照してください

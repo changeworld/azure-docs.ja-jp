@@ -1,19 +1,17 @@
 ---
 title: Azure Maps でアクセス可能なマップ アプリケーションを作成する | Microsoft Azure Maps
 description: Azure Maps のアクセシビリティに関する考慮事項について説明します。 マップ アプリケーションにアクセスする機能とアクセシビリティに関するヒントを表示する機能を紹介します。
-services: azure-maps
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
-manager: cpendleton
-ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f0aa739df4b58435f0caebacdab3865dce284e2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88006215"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432794"
 ---
 # <a name="building-an-accessible-application"></a>アクセス可能なアプリケーションをビルド
 
@@ -127,7 +125,7 @@ map.getMapContainer().classList.contains("high-contrast-light")
 
 <br/>
 
-<iframe height='500' scrolling='no' title='アクセス可能なアプリケーションを作成' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) によって <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>アクセス可能なアプリケーションを作成する</a> ペンを参照してください。 </iframe>
+<iframe height='500' scrolling='no' title='アクセス可能なアプリケーションを作成' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) によって <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>アクセス可能なアプリケーションを作成する</a> ペンを参照してください。 </iframe>
 
 <br/>
 
@@ -179,4 +177,4 @@ Microsoft Learn を使用したアクセス可能なアプリの開発につい�
 > [WebAim の色のコントラスト チェッカー](https://webaim.org/resources/contrastchecker/)
 
 > [!div class="nextstepaction"]
-> [No Coffee Vision Simulator](https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl?hl=en-US)
+> [No Coffee Vision Simulator](https://uxpro.cc/toolbox/nocoffee/)

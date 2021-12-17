@@ -5,33 +5,38 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 49bfca118e53bbe3e4287b2ce25e5baffa717175
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 973a1d100fb8182565628aab8cef66364e57a378
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102217331"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131038805"
 ---
 # <a name="manage-qna-maker-app"></a>QnA Maker アプリの管理
 
 QnA Maker では共同作成者の役割に基づいて共同作成者のアクセスを制限できるため、さまざまな作成者やコンテンツ エディターと共同作業できます。
 [QnA Maker コラボレーター認証の概念](../Concepts/role-based-access-control.md)に関する詳細を参照してください。
 
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
+
 ## <a name="add-azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御を追加する (Azure RBAC)
 
 QnA Maker を使用すると、複数の担当者が同じ QnA Maker リソース内のすべてのナレッジベースで共同作業を行うことができます。 この機能は、[Azure ロール ベースのアクセス制御 (Azure RBAC)](../../../role-based-access-control/role-assignments-portal.md) で提供されています。
 
-## <a name="access-at-the-qna-maker-resource-level"></a>QnA Maker リソース レベルでのアクセス
+## <a name="access-at-the-cognitive-resource-level"></a>コグニティブ リソース レベルでのアクセス
 
 1 つの QnA Maker サービスにある特定のナレッジ ベースの共有はできません。 より詳細なアクセス制御が必要な場合は、さまざまな QnA Maker リソースにわたってナレッジ ベースを配布することを検討した上で、各リソースにロールを追加してください。
 
 ## <a name="add-a-role-to-a-resource"></a>リソースにロールを追加する
 
-### <a name="add-a-user-account-to-the-qna-maker-resource"></a>QnA Maker リソースにユーザー アカウントを追加する
+### <a name="add-a-user-account-to-the-cognitive-resource"></a>コグニティブ リソースにユーザー アカウントを追加する
+
+QnA Maker リソースに RBAC 制御を適用する必要があります。
 
 次の手順では、コラボレーター ロールを使用しますが、これらの手順を使用して、いずれかのロールを追加することができます。
 
-1. [Azure](https://portal.azure.com/) portal にサインインして、使用する QnA Maker リソースに移動します。
+1. [Azure](https://portal.azure.com/) portal にサインインして、使用するコグニティブ リソースに移動します。
 
     ![QnA Maker のリソース リスト](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.png)
 

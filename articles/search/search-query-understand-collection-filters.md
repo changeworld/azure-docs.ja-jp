@@ -2,29 +2,17 @@
 title: OData コレクション フィルターの概要
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search のクエリで OData コレクション フィルターが動作するしくみについて説明します。これには、コレクションに固有の制限や動作が含まれます。
-manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: bevloh
+ms.author: beloh
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/06/2021
+ms.openlocfilehash: 9a73f5073d5388499a678b25db983046a50de717
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88932918"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612087"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Azure Cognitive Search での OData コレクション フィルターの概要
 
@@ -108,9 +96,6 @@ Azure Cognitive Search でコレクションのフィールドの [フィルタ�
 | view | 1 |
 
 したがって、基本的に "部屋の `Type` が 'Deluxe Room' と等しく、**その同じ部屋** の `BaseRate` が 100 未満であるドキュメントと一致する" ことを示す上記のフィルターとは異なり、検索クエリでは "`Rooms/Type` に語句 'deluxe' が含まれ、`Rooms/Description` に語句 'city view' が含まれるドキュメントと一致する" ことが示されます。 後者の場合、フィールドを相関できる個別の部屋の概念はありません。
-
-> [!NOTE]
-> 相関検索に対するサポートが Azure Cognitive Search に追加されることを希望する場合は、[このユーザーの声の項目](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections)に投票してください。
 
 ## <a name="inverted-indexes-and-collections"></a>逆インデックスとコレクション
 

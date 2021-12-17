@@ -5,16 +5,17 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3fe6ee8336872c04e85b732713494adf0fefa28a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-js, devx-track-csharp, ignite-fall-2021
+ms.openlocfilehash: 775163041208de79a6c943630afe6b718f1849b0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103011444"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039166"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>ナレッジ ベースでアクティブ ラーニングにより提案された質問を受け入れる
 
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>
 
@@ -22,7 +23,7 @@ ms.locfileid: "103011444"
 
 ## <a name="turn-on-active-learning"></a>アクティブ ラーニングを有効にする
 
-提案された質問を表示するには、QnA Maker リソースに対して[アクティブ ラーニングを有効にする](../concepts/active-learning-suggestions.md)必要があります。
+提案された質問を表示するには、QnA Maker リソースに対して[アクティブ ラーニングを有効にする](../index.yml)必要があります。
 
 ## <a name="view-suggested-questions"></a>提案された質問を表示する
 
@@ -143,7 +144,7 @@ ms.locfileid: "103011444"
 
 クライアント アプリケーションでは、意図を最も適切に表している _1 つの質問_ をユーザーが選択するためのオプションを示して、質問が表示されます。
 
-ユーザーが既存の質問の 1 つを選択すると、QnA Maker の Train API を使用して、ユーザーの選択がフィードバックとしてクライアント アプリケーションから送信されます。 このフィードバックにより、アクティブ ラーニングのフィードバック ループが完了します。
+ユーザーが既存の質問の 1 つを選択すると、QnA Maker Train API を使用して、ユーザーの選択がフィードバックとしてクライアント アプリケーションから送信されます。 このフィードバックにより、アクティブ ラーニングのフィードバック ループが完了します。
 
 ## <a name="train-api"></a>Train API
 
@@ -226,7 +227,7 @@ JSON 本文の例は、次のようになります。
 ボット フレームワークのコードでは、ユーザーのクエリをアクティブ ラーニングに使用する必要がある場合は Train API を呼び出す必要があります。 記述するコードは 2 種類あります。
 
 * クエリをアクティブ ラーニングに使用するかどうかを指定する
-* アクティブ ラーニングのためにクエリを QnA Maker の Train API に送り返す
+* アクティブ ラーニングのためにクエリを QnA Maker Train API に送り返す
 
 [Azure Bot のサンプル](https://github.com/microsoft/BotBuilder-Samples)では、これらのアクティビティの両方がプログラムされています。
 

@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 7f175d82b650871437a506ea4513f0ae28360f68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1b9fe56663f49e7fc6a7068e57df6d20003d2330
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833033"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662021"
 ---
 # <a name="create-a-connection-monitor-by-using-powershell"></a>PowerShell を使用して接続モニターを作成する
 

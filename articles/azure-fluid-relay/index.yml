@@ -1,0 +1,60 @@
+### YamlMime:Landing
+title: Azure Fluid Relay のドキュメント
+summary: Azure Fluid Relay は Fluid Framework クライアントをサポートするマネージド クラウド サービスです
+metadata:
+  title: Azure Fluid Relay
+  description: Azure Fluid Relay は Fluid Framework クライアントをサポートするマネージド クラウド サービスです
+  ms.service: azure-fluid
+  ms.topic: landing-page
+  author: hickeys
+  ms.author: hickeys
+  ms.date: 08/19/2021
+  ms.openlocfilehash: d503930da03d2a86e141513ce1ff16ee06ffd950
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129984328"
+landingContent:
+- title: Azure Fluid Relay について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Fluid Relay の概要
+      url: overview/overview.md
+    - text: Azure Fluid Relay のアーキテクチャ
+      url: concepts/architecture.md
+    - text: Fluid Framework リリースとのバージョンの互換性
+      url: concepts/version-compatibility.md
+  - linkListType: get-started
+    links:
+    - text: Azure Fluid Relay サービスをプロビジョニングする
+      url: how-tos/provision-fluid-azure-portal.md
+    - text: 'クイック スタート: ダイス ローラー'
+      url: quickstarts/quickstart-dice-roll.md
+- title: 詳細
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: アプリの認証と承認
+      url: concepts/authentication-authorization.md
+    - text: Azure Fluid Relay でのデータの暗号化
+      url: concepts/data-encryption.md
+    - text: 分散データ構造 (DDS)
+      url: concepts/data-structures.md
+    - text: Azure Fluid Relay トークン コントラクト
+      url: how-tos/fluid-json-web-token.md
+- title: Azure Fluid の使用方法
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: '方法: Azure Fluid Relay サービスに接続する'
+      url: how-tos/connect-fluid-azure-service.md
+    - text: '方法: Azure 関数を使用して TokenProvider を記述する'
+      url: how-tos/azure-function-token-provider.md
+    - text: '方法: ローカル テストに AzureClient を使用する'
+      url: how-tos/local-mode-with-azure-client.md
+    - text: Microsoft Azure Fluid Relay サーバーの Fluid コンテナーを削除する
+      url: how-tos/container-deletion.md
+    - text: '方法: Azure Fluid Relay でテスト自動化を使用する'
+      url: how-tos/test-automation.md

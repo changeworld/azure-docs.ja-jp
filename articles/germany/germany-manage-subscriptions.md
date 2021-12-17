@@ -1,45 +1,41 @@
 ---
 title: Azure Germany サブスクリプション | Microsoft Docs
-description: Azure Germany でサブスクリプションを管理する方法
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
+description: この記事では、Azure Germany でサブスクリプションを管理する方法について説明します。
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/13/2017
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 5b39a9b69afea2efa1ab37c2cce059da3211b70a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: 052bbec655c8f888da6d58bf8048fdcd51e85922
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780911"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "117028977"
 ---
 # <a name="manage-and-connect-to-your-subscription-in-azure-germany"></a>Azure Germany におけるサブスクリプションの管理とアクセス
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
+
 Azure Germany には、環境を管理するための独自の URL とエンドポイントが用意されています。 Azure Portal または PowerShell を介して環境を管理するには、適切な接続を使用する必要があります。 コンポーネントが正しく展開されていれば、Azure Germany 環境へ接続後は、通常の操作でサービスを管理できます。
 
-## <a name="connect-by-using-the-portal"></a>ポータルを使用したアクセス
-大半のユーザーは [Azure Portal](https://portal.microsoftazure.de) を主に使用して Azure Germany に接続します。 
-
-> [!NOTE]
-> Azure Germany を使用できるのは、新しいポータル (Azure Resource Manager 展開モデルを使用するもの) だけです。
+> [!IMPORTANT]
+>
+>これは、従量課金制料金で Microsoft から直接 Azure サービスを購入する Microsoft Cloud Germany の Azure のお客様に適用されます。 
+>
+>2019 年 9 月 14 日より、新しい欧州連合の指令が発効になり、顧客のクレジット カードの支払いに、強力な顧客認証 (SCA) のチャレンジを通過することが求められるようになりました。 その結果、従量課金制の価格をご利用のお客様は、新しい [Azure リージョンに移行する](./germany-migration-main.md)まで、新しいサブスクリプションを作成したり、支払い情報を追加または更新したりすることはできません。 
+>
 >
 
-## <a name="create-subscriptions"></a>サブスクリプションを作成する
-[アカウントのホーム ページ](https://account.windowsazure.de)で自分のアカウントのサブスクリプションを作成できます。
+## <a name="manage-subscription"></a>サブスクリプションの管理
+Azure リソースの管理や、サブスクリプションの課金情報の表示は、[Azure portaｌ](https://portal.microsoftazure.de) で行えます。 
 
-## <a name="create-a-free-account"></a>無料アカウントの作成
-Azure Germany では[無料アカウント](https://azure.microsoft.com/free/germany/)を使用できます。
+## <a name="manage-account"></a>アカウントを管理する
+連絡先情報などのアカウント情報を管理するには、[アカウント センター](https://account.windowsazure.de)にアクセスしてください。
 
-
-## <a name="next-steps"></a>次の手順
-補足情報と更新情報については、[Azure Germany のブログ](https://blogs.msdn.microsoft.com/azuregermany/)を参照してください。
+## <a name="next-steps"></a>次のステップ
+[新しい Azure リージョンに移行する](./germany-migration-main.md)方法について説明します。
 
 
 

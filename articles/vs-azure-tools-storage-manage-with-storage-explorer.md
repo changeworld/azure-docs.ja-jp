@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 3a8fe3ded6608059cc6ad50901ffe6df5dcf1b08
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f08d1c38965121564c21dee7053ae0c152b82814
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102441590"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021982"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -23,7 +23,7 @@ Microsoft Azure Storage Explorer は、Windows、macOS、Linux での Azure Stor
 
 この記事では、Azure Storage アカウントへの接続と管理に関するさまざまな方法を紹介します。
 
-:::image type="content" alt-text="Microsoft Azure ストレージ エクスプローラー" source="./vs-storage-explorer-overview.png":::
+:::image type="content" alt-text="Microsoft Azure ストレージ エクスプローラー" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-overview.png":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -86,17 +86,17 @@ Storage Explorer には、Azure リソースへの接続方法がいくつか用
 
 1. Storage Explorer で、 **[表示]**  >  **[アカウント管理]** を選択するか、 **[アカウントの管理]** ボタンを選択します。
 
-    :::image type="content" alt-text="アカウントの管理" source ="./vs-storage-explorer-manage-accounts.png":::
+    :::image type="content" alt-text="アカウントの管理" source ="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-manage-accounts.png":::
 
 1. **[アカウント管理]** に、ユーザーがサインインしているすべての Azure アカウントが表示されます。 別のアカウントに接続するには、 **[アカウントの追加]** を選択します。
 
 1. **[Azure Storage へ接続]** ダイアログ ボックスが開きます。 **[リソースの選択]** パネルで、 **[サブスクリプション]** を選択します。
 
-    :::image type="content" alt-text="接続ダイアログ" source="./vs-storage-explorer-connect-dialog.png":::
+    :::image type="content" alt-text="接続ダイアログ" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-connect-dialog.png":::
 
 1. **[Azure 環境の選択]** パネルで、サインインする Azure 環境を選択します。 グローバル Azure、各国のクラウド、または Azure Stack インスタンスにサインインできます。 **[次へ]** を選択します。
 
-    :::image type="content" alt-text="サインインのオプション" source="./vs-storage-explorer-connect-environment.png":::
+    :::image type="content" alt-text="サインインのオプション" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-connect-environment.png":::
 
     > [!TIP]
     > Azure Stack の詳細については、[Storage Explorer を Azure Stack サブスクリプションまたはストレージ アカウントに接続する](/azure-stack/user/azure-stack-storage-connect-se)方法に関するページを参照してください。
@@ -105,11 +105,11 @@ Storage Explorer には、Azure リソースへの接続方法がいくつか用
 
 1. Azure アカウントでのサインインに成功すると、そのアカウントとそのアカウントに関連付けられている Azure サブスクリプションが、 **[アカウント管理]** の下に表示されます。 操作する Azure サブスクリプションを選択してから、 **[適用]** を選択します
 
-    :::image type="content" alt-text="Azure サブスクリプションの選択" source="./vs-storage-explorer-account-panel.png":::
+    :::image type="content" alt-text="Azure サブスクリプションの選択" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-account-panel.png":::
 
 1. **[エクスプローラー]** に、選択した Azure サブスクリプションに関連付けられているストレージ アカウントが表示されます。
 
-    :::image type="content" alt-text="選択された Azure サブスクリプション" source="./vs-storage-explorer-subscription-node.png":::
+    :::image type="content" alt-text="選択された Azure サブスクリプション" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-subscription-node.png":::
 
 ### <a name="attach-to-an-individual-resource"></a>個々のリソースにアタッチする
 
@@ -124,12 +124,12 @@ Storage Explorer を使用すると、さまざまな認証方法を使用して
 | ファイル共有      | いいえ       | いいえ                   | はい (URL)                      | いいえ                 |
 | キュー           | はい      | いいえ                   | はい (URL)                      | いいえ                 |
 | テーブル           | いいえ       | いいえ                   | はい (URL)                      | いいえ                 |
- 
+
 Storage Explorer では、エミュレーターで構成されたポートを使用して、[ローカル ストレージ エミュレーター](#local-storage-emulator)に接続することもできます。
 
 個々のリソースに接続するには、左側のツールバーにある **[接続]** ボタンを選択します。 次に、接続先のリソースの種類に応じた手順に従います。
 
-:::image type="content" alt-text="Connect to Azure storage option" source="./vs-storage-explorer-connect-button.png":::
+:::image type="content" alt-text="Connect to Azure storage option" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-connect-button.png":::
 
 ストレージ アカウントへの接続が正常に追加されると、 **[ローカルで接続済み]**  >  **[ストレージ アカウント]** に新しいツリー ノードが表示されます。
 
@@ -146,7 +146,7 @@ Storage Explorer では、Azure アカウントを使用して、次のリソー
 * Azure Data Lake Storage Gen2 コンテナー
 * Azure Data Lake Storage Gen2 ディレクトリ
 * キュー
- 
+
 リソースへのデータ層アクセス権がある一方で、管理層アクセス権がない場合は、Azure AD を使用することをお勧めします。
 
 1. [前述の手順](#sign-in-to-azure)に従って、少なくとも 1 つの Azure アカウントにサインインします。

@@ -1,20 +1,20 @@
 ---
 title: シナリオ:ネットワーク仮想アプライアンス (NVA) 経由のトラフィックのルーティング
 titleSuffix: Azure Virtual WAN
-description: NVA を経由するトラフィックのルーティング
+description: ネットワーク仮想アプライアンス (NVA) 経由でトラフィックをルーティングするための Virtual WAN ルーティングのシナリオについて説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 24671a34214864e253d96c356dc8b2853bf6d560
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8c4e516b297bb5d4466910bff83859288e0ec89
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100519798"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575393"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>シナリオ:NVA を経由するトラフィックのルーティング
 

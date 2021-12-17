@@ -3,12 +3,12 @@ title: Azure Backup 用語集
 description: この記事では、Azure Backup を使用する際に役立つ用語を定義します。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: fb46415c8bdb463556d57004e37d741c1b9a9b57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 774fc63002677aa9fbb986d40a5d8fe2b3e99f7d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502027"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465195"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup 用語集
 
@@ -186,7 +186,7 @@ GFS (Grandfather-father-son) バックアップ ポリシーは、毎日のバ�
 
 ## <a name="job"></a>ジョブ
 
-ユーザーまたは Azure Backup サービスによって作成されるバックアップ関連タスク。 ジョブは、スケジュールする、またはオンデマンド (アドホック) にすることができます。 ジョブには、バックアップ、復元、保護の構成など、さまざまな種類があります。 [ジョブに関する詳細情報を参照してください](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault)。
+ユーザーまたは Azure Backup サービスによって作成されるバックアップ関連タスク。 ジョブは、スケジュールする、またはオンデマンド (アドホック) にすることができます。 ジョブには、バックアップ、復元、保護の構成など、さまざまな種類があります。 [ジョブに関する詳細情報を参照してください](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-backup-center)。
 
 ## <a name="mabs--azure-backup-server"></a>MABS/Azure Backup Server
 

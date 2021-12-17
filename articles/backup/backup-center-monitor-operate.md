@@ -2,13 +2,13 @@
 title: バックアップ センターを使用してバックアップを監視および操作する
 description: この記事では、バックアップ センターを使用して、バックアップを大規模に監視および操作する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: 86b81110d6abeb1425e18ee45dfe65a96f69687d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/20/2021
+ms.openlocfilehash: 45e190fdd495cd5ea074386f601eb6296a90a14a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506127"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131035929"
 ---
 # <a name="monitor-and-operate-backups-using-backup-center"></a>Backup Center を使用してバックアップを監視および操作する
 
@@ -68,6 +68,46 @@ ms.locfileid: "102506127"
 
 **[バックアップ ジョブ]** タブを使用すると、過去 7 日間までのジョブを表示できます。 それより前のジョブを表示するには、[[バックアップ レポート]](backup-center-obtain-insights.md) を使用します。
 
+## <a name="metrics"></a>メトリック
+
+Azure Backup では、Azure Monitor を介して組み込みメトリックのセットが提供されます。これにより、バックアップの正常性を監視することができます。 メトリックを表示するには、 **[バックアップ センター]** に移動し、メニューの **[メトリック]** をクリックします。
+
+:::image type="content" source="./media/metrics-overview/metrics-chart-inline.png" alt-text="バックアップの正常性を監視するための組み込みメトリックを示すスクリーンショット。" lightbox="./media/metrics-overview/metrics-chart-expanded.png":::
+
+Azure Backup では、次の主な機能が提供されています。
+
+* バックアップ項目のバックアップと復元の正常性に関するすぐに使用できるメトリックと、それに関連する傾向を表示する機能。
+* バックアップ項目の正常性を効率的に監視するために、これらのメトリックに対するカスタム アラート ルールを記述する機能。
+* メール、ITSM、Webhook、ロジック アプリなど、Azure Monitor によってサポートされるさまざまな通知チャネルに、発生したメトリック アラートをルーティングする機能。
+
+Azure Backup のメトリックについて詳しくは、[こちら](metrics-overview.md)を参照してください。
+
+## <a name="alerts"></a>警告
+
+アラートを表示するには、 **[バックアップ センター]** に移動し、メニューの **[アラート]** をクリックします。
+
+**[概要]** ダッシュボードで、過去 24 時間の開いているアラートの概要を確認することもできます。
+
+:::image type="content" source="./media/backup-azure-monitoring-laworkspace/backup-center-azure-monitor-alert-inline.png" alt-text="バックアップ センターのアラートを示すスクリーンショット。" lightbox="./media/backup-azure-monitoring-laworkspace/backup-center-azure-monitor-alert-expanded.png":::
+
+現在、バックアップ センターには次の種類のアラートが表示されます。
+
+* **Azure Backup の既定の Azure Monitor アラート (プレビュー)** : これには、組み込みのセキュリティ アラートと、Azure Backup によって Azure Monitor 経由で提供される構成済みのアラートが含まれます。 このソリューションでサポートされているアラート シナリオの詳細については、[こちら](backup-azure-monitoring-built-in-monitor.md#azure-monitor-alerts-for-azure-backup-preview)を参照してください。
+* **Azure Backup のメトリック アラート (プレビュー)** : これには、作成したメトリック アラート ルールに基づいて発生するアラートが含まれます。 Azure Backup のメトリック アラートについて詳しくは、[こちら](metrics-overview.md)を参照してください
+
+>[!NOTE]
+>- 現在、バックアップ センターでは、Azure ベースのワークロードのアラートのみが表示されます。 オンプレミス リソースのアラートを表示するには、Recovery Services コンテナーに移動し、メニューの **[アラート]** をクリックします。
+>- バックアップ センターには Azure Monitor のアラートのみが表示されます。 以前のアラート ソリューションによって発生したアラート (Recovery Services コンテナー内の [[バックアップ アラート]](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) タブからアクセス) は、バックアップ センターに表示されません。
+
+Azure Monitor アラートについて詳しくは、[Azure のアラートの概要](../azure-monitor/alerts/alerts-overview.md)に関するページを参照してください。
+
+### <a name="datasource-and-global-alerts"></a>データソースおよびグローバル アラート
+
+次のクラスのアラートが表示されます。
+
+* **データソース アラート**: **[データソース アラート]** セクションには、バックアップ中の特定のデータソースに関連付けられているアラート (VM の場合はバックアップまたは復元の失敗、データベースの場合はバックアップ データの削除など) が表示されます。 メトリック アラートの場合、発生したアラートにデータソース ID ディメンションが関連付けられていると、 **[データソース アラート]** の下に発生したアラートが表示されます。
+* **グローバル アラート**: **[グローバル アラート]** セクションには、特定のデータソースに関連付けられていないアラート (コンテナーの論理的な削除機能の無効化など) が表示されます。 メトリック アラートの場合、発生したアラートにデータソース ID が関連付けられていないと、 **[グローバル アラート]** の下に発生したアラートが表示されます。
+
 ## <a name="vaults"></a>コンテナー
 
 バックアップ センターで **[コンテナー]** メニュー項目を選択すると、アクセスできるすべての [Recovery Services コンテナー](backup-azure-recovery-services-vault-overview.md)と [バックアップ コンテナー](backup-vault-overview.md)の一覧を表示できます。 この一覧は、次のパラメーターでフィルター処理できます。
@@ -88,6 +128,14 @@ ms.locfileid: "102506127"
 **[バックアップ ポリシー]** メニュー項目を選択すると、バックアップ資産全体にわたって作成したすべてのポリシーを表示できます。 この一覧は、コンテナーのサブスクリプション、リソース グループ、データ ソースの種類、コンテナーでフィルター処理できます。 グリッド内の項目を右クリックすると、そのポリシーに関連付けられている項目を表示したり、ポリシーを編集したり、場合によっては削除したりすることもできます。
 
 ![バックアップ センター - ポリシー](./media/backup-center-monitor-operate/backup-center-policies.png)
+
+
+## <a name="resource-centric-views"></a>リソース中心のビュー
+
+組織で複数のリソースを共通のコンテナーにバックアップしており、各リソース所有者が自分の所有するリソースのバックアップ情報のみを表示する必要がある場合は、バックアップ センターでリソース中心のビューを使用できます。 リソース中心のビューを使用するには、[アクセス権のあるデータソースに関する情報のみを表示する] チェックボックスをオンにします。 このオプションは、現在、 **[概要]** 、 **[バックアップ インスタンス]** 、 **[ジョブ]** 、 **[アラート]** の各タブでサポートされています。 サポートされているワークロードは、Azure VM、Azure VM での SQL、Azure VM での SAP HANA、Azure Blob、Azure Disk です。
+
+> [!NOTE]
+> ユーザーは、リソース中心のビューを使用している場合でも、コンテナーに対して必要な RBAC アクセス許可を持つ必要があります。 このビューの目的は、個々のユーザーが、所有していないリソース (VM など) の情報の表示を防止できるようにすることです。
 
 ## <a name="next-steps"></a>次のステップ
 

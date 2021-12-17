@@ -4,13 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
-ms.custom: references_regions
-ms.openlocfilehash: ad7f6f600082a407a94833fe1575136fc360c9ae
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: 44867e190c203bdb03b7e92ae1499a57d2dcdd57
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104791"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069150"
 ---
 このクイックスタートでは、Speech SDK を使用した Speaker Recognition の基本的な設計パターンについて学習します。これには次のものが含まれます。
 
@@ -18,14 +18,14 @@ ms.locfileid: "105104791"
 * 音声のグループから音声サンプルを識別する話者識別
 * 音声プロファイルの削除
 
-Speech Recognition の概念の概要については、[概要](../../../speaker-recognition-overview.md)に関する記事を参照してください。
+Speaker Recognition の概念の概要については、[概要](../../../speaker-recognition-overview.md)に関する記事を参照してください。 サポートされているプラットフォームの一覧については、左側のナビゲーションの参照ノードを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事は、Azure アカウントと Speech Service サブスクリプションをお持ちであることを前提としています。 アカウントとサブスクリプションをお持ちでない場合は、[Speech Service を無料でお試しください](../../../overview.md#try-the-speech-service-for-free)。
 
 > [!IMPORTANT]
-> 現在、Speaker Recognition は、`westus` リージョンで作成された Azure Speech リソース "*のみ*" でサポートされています。
+> Microsoft では、Speaker Recognition へのアクセスを制限しています。 [Azure Cognitive Services Speaker Recognition 制限付きアクセス レビュー](https://aka.ms/azure-speaker-recognition)を通じて使用する場合に該当します。 承認後、Speaker Recognition API にアクセスできます。 
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
@@ -53,8 +53,6 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) を作成する必要があります。 この例では、サブスクリプション キーとリージョンを使用して [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) を作成します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
 
-リージョンが `westus` に設定されていることに注意してください。これは、それがサービスでサポートされている唯一のリージョンであるためです。
-
 ```csharp
 public class Program 
 {
@@ -62,7 +60,8 @@ public class Program
     {
         // replace with your own subscription key 
         string subscriptionKey = "YourSubscriptionKey";
-        string region = "westus";
+        // replace with your own subscription region 
+        string region = "YourSubscriptionRegion";
         var config = SpeechConfig.FromSubscription(subscriptionKey, region);
     }
 }
@@ -79,6 +78,7 @@ public static async Task VerificationEnroll(SpeechConfig config, Dictionary<stri
 {
     using (var client = new VoiceProfileClient(config))
     using (var profile = await client.CreateProfileAsync(VoiceProfileType.TextDependentVerification, "en-us"))
+    using (var phraseResult = await client.GetActivationPhrasesAsync(VoiceProfileType.TextDependentVerification, "en-us"))
     {
         using (var audioInput = AudioConfig.FromDefaultMicrophoneInput())
         {
@@ -89,7 +89,7 @@ public static async Task VerificationEnroll(SpeechConfig config, Dictionary<stri
             VoiceProfileEnrollmentResult result = null;
             while (result is null || result.RemainingEnrollmentsCount > 0)
             {
-                Console.WriteLine("Speak the passphrase, \"My voice is my passport, verify me.\"");
+                Console.WriteLine($"Speak the passphrase, \"${phraseResult.Phrases[0]}\"");
                 result = await client.EnrollProfileAsync(profile, audioInput);
                 Console.WriteLine($"Remaining enrollments needed: {result.RemainingEnrollmentsCount}");
                 Console.WriteLine("");
@@ -165,7 +165,6 @@ Verified voice profile for speaker Your Name, score is 0.915581
 
 **テキストに依存する** 認証とは対照的に、**テキストに依存しない** 認証は次のようになります。
 
-* 特定のパスフレーズを読み上げる必要はなく、何と話しかけてもかまいません
 * 3 つのオーディオ サンプルは必要ありませんが、合計 20 秒のオーディオが "*必要*" になります
 
 `VerificationEnroll` 関数にいくつかの単純な変更を加え、**テキストに依存しない** 認証に切り替えます。 まず、認証の種類を `VoiceProfileType.TextIndependentVerification` に変更します。 次に、`result.RemainingEnrollmentsSpeechLength` を追跡するために `while` ループを変更します。その場合、20 秒のオーディオがキャプチャされるまで引き続き話しかけるように求められます。
@@ -175,6 +174,7 @@ public static async Task VerificationEnroll(SpeechConfig config, Dictionary<stri
 {
     using (var client = new VoiceProfileClient(config))
     using (var profile = await client.CreateProfileAsync(VoiceProfileType.TextIndependentVerification, "en-us"))
+    using (var phraseResult = await client.GetActivationPhrasesAsync(VoiceProfileType.TextIndependentVerification, "en-us"))
     {
         using (var audioInput = AudioConfig.FromDefaultMicrophoneInput())
         {
@@ -185,7 +185,7 @@ public static async Task VerificationEnroll(SpeechConfig config, Dictionary<stri
             VoiceProfileEnrollmentResult result = null;
             while (result is null || result.RemainingEnrollmentsSpeechLength > TimeSpan.Zero)
             {
-                Console.WriteLine("Continue speaking to add to the profile enrollment sample.");
+                Console.WriteLine($"Speak the activation phrase, \"${phraseResult.Phrases[0]}\"");
                 result = await client.EnrollProfileAsync(profile, audioInput);
                 Console.WriteLine($"Remaining enrollment audio time needed: {result.RemainingEnrollmentsSpeechLength}");
                 Console.WriteLine("");
@@ -205,23 +205,23 @@ public static async Task VerificationEnroll(SpeechConfig config, Dictionary<stri
 }
 ```
 
-プログラムをもう一度実行します。パスフレーズは不要であるため、認証フェーズでは何か話しかけます。 ここでも、類似スコアが返されます。
+再びプログラムを実行します。 ここでも、類似スコアが返されます。
 
 ```shell
 Enrolling profile id 4tt87d4-f2d3-44ae-b5b4-f1a8d4036ee9.
-Continue speaking to add to the profile enrollment sample.
+Speak the activation phrase, "<FIRST ACTIVATION PHRASE>"
 Remaining enrollment audio time needed: 00:00:15.3200000
 
-Continue speaking to add to the profile enrollment sample.
+Speak the activation phrase, "<FIRST ACTIVATION PHRASE>"
 Remaining enrollment audio time needed: 00:00:09.8100008
 
-Continue speaking to add to the profile enrollment sample.
+Speak the activation phrase, "<FIRST ACTIVATION PHRASE>"
 Remaining enrollment audio time needed: 00:00:05.1900000
 
-Continue speaking to add to the profile enrollment sample.
+Speak the activation phrase, "<FIRST ACTIVATION PHRASE>"
 Remaining enrollment audio time needed: 00:00:00.8700000
 
-Continue speaking to add to the profile enrollment sample.
+Speak the activation phrase, "<FIRST ACTIVATION PHRASE>"
 Remaining enrollment audio time needed: 00:00:00
 
 Speak the passphrase to verify: "My voice is my passport, please verify me."
@@ -239,6 +239,7 @@ public static async Task<List<VoiceProfile>> IdentificationEnroll(SpeechConfig c
 {
     List<VoiceProfile> voiceProfiles = new List<VoiceProfile>();
     using (var client = new VoiceProfileClient(config))
+    using (var phraseResult = await client.GetActivationPhrasesAsync(VoiceProfileType.TextIndependentVerification, "en-us"))
     {
         foreach (string name in profileNames)
         {
@@ -251,7 +252,7 @@ public static async Task<List<VoiceProfile>> IdentificationEnroll(SpeechConfig c
                 VoiceProfileEnrollmentResult result = null;
                 while (result is null || result.RemainingEnrollmentsSpeechLength > TimeSpan.Zero)
                 {
-                    Console.WriteLine($"Continue speaking to add to the profile enrollment sample for {name}.");
+                    Console.WriteLine($"Speak the activation phrase, \"${phraseResult.Phrases[0]}\" to add to the profile enrollment sample for {name}.");
                     result = await client.EnrollProfileAsync(profile, audioInput);
                     Console.WriteLine($"Remaining enrollment audio time needed: {result.RemainingEnrollmentsSpeechLength}");
                     Console.WriteLine("");
@@ -285,7 +286,8 @@ static async Task Main(string[] args)
 {
     // replace with your own subscription key 
     string subscriptionKey = "YourSubscriptionKey";
-    string region = "westus";
+    // replace with your own subscription region 
+    string region = "YourSubscriptionRegion";
     var config = SpeechConfig.FromSubscription(subscriptionKey, region);
 
     // persist profileMapping if you want to store a record of who the profile is

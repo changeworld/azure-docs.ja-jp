@@ -11,28 +11,32 @@ ms.topic: conceptual
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 02/01/2021
-ms.openlocfilehash: 098d874d7de85aa7c66f92703eea9b4d12cee8df
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/23/2021
+ms.openlocfilehash: 81d87e48b7c57eed172dbbc4b5bf7d427dae764c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305295"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717001"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 カスタマー マネージド キーを使用した Azure SQL [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) を使用すると、保存データの保護に Bring Your Own Key (BYOK) シナリオが可能になり、組織がキーとデータの管理における職務の分離を実施できるようになります。 カスタマー マネージド Transparent Data Encryption を使用すると、キー ライフサイクル管理 (キーの作成、アップロード、ローテーション、削除)、キーの使用権限、およびキーに対する操作の監査は、顧客の責任となり、顧客がこれらを完全に制御できます。
 
-このシナリオでは、TDE 保護機能と呼ばれるデータベース暗号化キー (DEK) の暗号化に使用されるキーは、顧客が所有し、顧客が管理する [Azure Key Vault (AKV)](../../key-vault/general/secure-your-key-vault.md) (クラウドベースの外部キー管理システム) に格納されている、カスタマー マネージド非対称キーです。 Key Vault は、FIPS 140-2 Level 2 認定のハードウェア セキュリティ モジュール (HSM) をオプションで使用できる、RSA 暗号化キー向けの、可用性が高くスケーラブルでセキュリティで保護されたストレージです。 格納されているキーに直接アクセスすることはできませんが、キーを使用して暗号化/復号化のサービスを認証されたエンティティに提供します。 キーは、キー コンテナーによって生成、インポート、または[オンプレミスの HSM デバイスからキー コンテナーに転送](../../key-vault/keys/hsm-protected-keys.md)することができます。
+このシナリオでは、TDE 保護機能と呼ばれるデータベース暗号化キー (DEK) の暗号化に使用されるキーは、顧客が所有し、顧客が管理する [Azure Key Vault (AKV)](../../key-vault/general/security-features.md) (クラウドベースの外部キー管理システム) に格納されている、カスタマー マネージド非対称キーです。 Key Vault は、FIPS 140-2 Level 2 認定のハードウェア セキュリティ モジュール (HSM) をオプションで使用できる、RSA 暗号化キー向けの、可用性が高くスケーラブルでセキュリティで保護されたストレージです。 格納されているキーに直接アクセスすることはできませんが、キーを使用して暗号化/復号化のサービスを認証されたエンティティに提供します。 キーは、キー コンテナーによって生成、インポート、または[オンプレミスの HSM デバイスからキー コンテナーに転送](../../key-vault/keys/hsm-protected-keys.md)することができます。
 
 Azure SQL Database と Azure Synapse Analytics の場合、TDE 保護機能はサーバー レベルで設定され、そのサーバーに関連付けられているすべての暗号化されたデータベースによって継承されます。 Azure SQL Managed Instance の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての暗号化されたデータベースによって継承されます。 "*サーバー*" という用語は、別途明記されていない限り、このドキュメントでは、SQL Database や Azure Synapse のサーバーと、SQL Managed Instance のマネージド インスタンスの両方を指します。
+
+> [!NOTE]
+> この記事は、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics (専用 SQL プール (以前の SQL DW)) に適用されます。 Synapse ワークスペース内の専用 SQL プールの Transparent Data Encryption に関するドキュメントについては、「[Azure Synapse Analytics の暗号化](../../synapse-analytics/security/workspaces-encryption.md)」を参照してください。
 
 > [!IMPORTANT]
 > サービス マネージド TDE を使用していて、カスタマー マネージド TDE の使用を開始する場合は、切り替え処理中はデータが暗号化されたままとなり、データベース ファイルのダウンタイムが生じたり再暗号化が行われたりすることはありません。 サービス マネージド キーからカスタマー マネージド キーへの切り替えに必要なのは、高速のオンライン操作である DEK の再暗号化だけです。
 
 > [!NOTE]
 > <a id="doubleencryption"></a> Azure SQL のお客様に、2 つのレイヤーで保存データの暗号化を提供するため、プラットフォーム マネージド キーによる (AES-256 暗号化アルゴリズムを使用した) インフラストラクチャ暗号化がロールアウトされています。これにより、既に利用可能なカスタマー マネージド キーによる TDE と共に、保存時の暗号化の追加レイヤーが提供されます。 Azure SQL Database と Managed Instance の場合、インフラストラクチャの暗号化が有効になっていると、master データベースやその他のシステムデータベースを含むすべてのデータベースが暗号化されます。 現時点では、お客様はこの機能に対するアクセスを要求する必要があります。 この機能に関心がある場合は、AzureSQLDoubleEncryptionAtRest@service.microsoft.com にお問い合わせください。
+
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>カスタマー マネージド TDE の利点
 
@@ -78,15 +82,21 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 
 - キー コンテナーと SQL Database/マネージド インスタンスは、同じ Azure Active Directory テナントに属している必要があります。 キー コンテナーとサーバーのテナント間の対話はサポートされていません。 後でリソースを移動するには、AKV を使用して TDE を再構成する必要があります。 リソースの移動の詳細については、[こちら](../../azure-resource-manager/management/move-resource-group-and-subscription.md)をご覧ください。
 
-- キー (またはキー コンテナー) を誤って削除するデータ損失から保護するには、キー コンテナーで[論理的な削除](../../key-vault/general/soft-delete-overview.md)機能が有効になっている必要があります。 論理的に削除されたリソースは、顧客が復旧または削除しない限り、90 日間保持されます。 *復旧* と *消去* アクションには、キー コンテナーのアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は、既定ではオフになっており、[PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) または [CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli) を使用して有効にすることができます。 Azure portal で有効にすることはできません。  
+- [キー (または](../../key-vault/general/soft-delete-overview.md)[キー](../../key-vault/general/soft-delete-overview.md#purge-protection)コンテナー) の誤削除によるデータ損失から保護するには、キー コンテナーでソフト削除と消去保護機能を有効にする必要があります。 
+    - お客様が復旧または消去しない限り、ソフト削除されたリソースは 90 日間保持されます。 *復旧* と *消去* アクションには、キー コンテナーのアクセス ポリシーに関連付けられた独自のアクセス許可があります。 [ソフト削除] 機能は、Azure portal、[PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell)、または を使用して[Azure CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli)。
+    - 消去保護は、 または[PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell)を使用[Azure CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli)有効にできます。 消去保護を有効にすると、保持期間が経過するまで、削除された状態のコンテナーまたはオブジェクトを消去できません。 既定の保有期間は 90 日ですが、7 日から 90 日の間に構成Azure portal。   
 
-- Azure Active Directory ID を使用して、サーバーまたはマネージド インスタンスにキー コンテナーへのアクセス権 (get、wrapKey、unwrapKey) を付与します。 Azure portal を使用すると、Azure AD ID が自動的に作成されます。 PowerShell または CLI を使用する場合は、Azure AD ID を明示的に作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-configure.md)および [SQL Managed Instance 用 BYOK 対応 TDE の構成](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md)に関する記事を参照してください。
+> [!IMPORTANT]
+> カスタマー マネージド TDE で構成されているサーバーのキー コンテナーと、カスタマー マネージド TDE を使用する既存のサーバーでは、ソフト削除と消去保護の両方を有効にする必要があります。
+
+- サーバーまたはマネージド インスタンスに、そのキー コンテナー ID を使用してキー コンテナー (*get*、*wrapKey*、*unwrapKey*) へのアクセス権を付与Azure Active Directoryします。 サーバーを使用Azure portal、Azure ADが自動的に作成されます。 PowerShell または CLI を使用する場合は、Azure AD ID を明示的に作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-configure.md)および [SQL Managed Instance 用 BYOK 対応 TDE の構成](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md)に関する記事を参照してください。
+    - Key vault のアクセス許可モデル (アクセスポリシーまたは Azure RBAC) に応じて、key vault にアクセスポリシーを作成するか、ロール {1}Key Vault Crypto Service 暗号化ユーザー{2}を使用して新しい Azure RBAC ロールの割り当てを作成することによって、[key vault のアクセス権を付与できます](../../key-vault/general/rbac-guide.md#azure-built-in-roles-for-key-vault-data-plane-operations)。
 
 - AKV を使用してファイアウォールを使用する場合は、 *[Allow trusted Microsoft services to bypass the firewall]\(信頼された Microsoft サービスがファイアウォールをバイパスすることを許可する\)* オプションを有効にする必要があります。
 
 ### <a name="requirements-for-configuring-tde-protector"></a>TDE 保護機能を構成するための要件
 
-- TDE 保護機能には、非対称、RSA、または RSA HSM の各キーのみを指定できます。 サポートされているキーの長さは 2048 バイトと 3072 バイトです。
+- TDE 保護機能には、非対称、RSA、または RSA HSM の各キーのみを指定できます。 サポートされているキーの長さは、2048 ビットと 3072 ビットです。
 
 - キーがアクティブ化された日時 (設定する場合) は、過去の日付と時刻にする必要があります。 有効期限の日時 (設定する場合) は、将来の日付と時刻にする必要があります。
 
@@ -109,6 +119,9 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 - すべての暗号化キーの監査およびレポートを有効にします。キー コンテナーで提供されるログは、他のセキュリティ情報およびイベント管理ツールに簡単に挿入できます。 Operations Management Suite [Log Analytics](../../azure-monitor/insights/key-vault-insights-overview.md) は、既に統合されているサービスの一例です。
 
 - 暗号化されたデータベースの高可用性を確保するため、各サーバーを異なるリージョンに存在する 2 つのキー コンテナーとリンクします。 TDE 保護機能と同じリージョン内のキー コンテナーのキーのみをマークします。 同じリージョン内のキーコンテナーに影響を与える障害が発生した場合には、リモート リージョンのキー コンテナーに自動的に切り替えられます。
+
+> [!NOTE]
+> カスタマー マネージド TDE の構成の柔軟性を高め、1 つのリージョンの Azure SQL Database サーバーと Managed Instance を他のリージョンのキー コンテナーにリンクできます。 サーバーとキーコンテナーが同じリージョンに併置されている必要はありません。 
 
 ### <a name="recommendations-when-configuring-tde-protector"></a>TDE 保護機能を構成する際の推奨事項
 
@@ -133,9 +146,9 @@ Transparent Data Encryption がカスタマー マネージド キーを使用�
 
 キーへのアクセスが復元された後、データベースをオンラインに戻すには、追加の時間と手順が必要です。これは、キーにアクセスできなくなってからの経過時間とデータベース内のデータのサイズによって異なる場合があります。
 
-- キーのアクセスが 8 時間以内に復元された場合、データベースは次の 1 時間以内に自動回復します。
+- キーのアクセスが 30 分以内に復元された場合、データベースは次の 1 時間以内に自動回復します。
 
-- 8 時間を超えてからキーのアクセスが復元された場合、自動回復は不可能です。データベースの復旧にはポータルで追加の手順を踏む必要があり、データベースのサイズによってはかなりの時間がかかることがあります。 データベースがオンラインに戻ると、以前に構成されたサーバーレベルの設定 ([フェールオーバー グループ](auto-failover-group-overview.md)構成、ポイントインタイム リストア履歴、タグなど) が **失われます**。 そのため、8 時間以内にキー アクセスの潜在的な問題を特定して対処できるようにする通知システムを実装することをお勧めします。
+- 30 分を超えてからキーのアクセスが復元された場合、自動回復は不可能です。データベースの復旧にはポータルで追加の手順を踏む必要があり、データベースのサイズによってはかなりの時間がかかることがあります。 データベースがオンラインに戻ると、以前に構成されたサーバーレベルの設定 ([フェールオーバー グループ](auto-failover-group-overview.md)構成、ポイントインタイム リストア履歴、タグなど) が **失われます**。 そのため、30 分以内にキー アクセスの潜在的な問題を特定して対処できるようにする通知システムを実装することをお勧めします。
 
 以下は、アクセスできないデータベースをオンラインに戻すためにポータルで必要な追加手順です。
 
@@ -206,6 +219,8 @@ SQL Database のバックアップ回復の詳細については、[SQL Database
 ![フェールオーバー グループと Geo-DR](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-bcdr.png)
 
 フェールオーバーをテストするには、[アクティブ geo レプリケーションの概要](active-geo-replication-overview.md)の手順に従います。 フェールオーバーのテストを定期的に行い、SQL Database で両方のキー コンテナーへのアクセス許可が保持されていることを検証する必要があります。
+
+**1つのリージョンの Azure SQL Database サーバーと Managed Instance を、他のリージョンの key vault にリンクできるようになりました。** サーバーとキーコンテナーが同じリージョンに併置されている必要はありません。 これにより、わかりやすくするために、プライマリサーバーとセカンダリサーバーを同じ key vault (任意のリージョン) に接続できます。 これは、両方のサーバーで個別のキーコンテナーが使用されている場合にキーマテリアルが同期されないシナリオを回避するのに役立ちます。 Azure Key Vault には、サービスまたはリージョンで障害が発生した場合でもキーとキーコンテナーを確実に使用できるようにするために、複数の層の冗長性があります。 [Azure Key Vault の可用性と冗長性](../../key-vault/general/disaster-recovery-guidance.md)
 
 ## <a name="next-steps"></a>次のステップ
 

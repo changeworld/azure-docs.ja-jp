@@ -1,14 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-ms.date: 02/17/2021
+ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bbcdce83fad513c85ab45f4c38c936b345828ef3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741822"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449680"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -64,7 +64,8 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 
 ### <a name="append-examples"></a>Append の例
 
-例 1:非 **\[\*\]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 非 **\[\*\]** 別名が配列の場合、この効果により、**value** が配列全体として追加されます。 配列が既に存在する場合は、競合から拒否イベントが発生します。
+例 1: 非 **\[\*\]** 
+[別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 非 **\[\*\]** 別名が配列の場合、この効果により、**value** が配列全体として追加されます。 配列が既に存在する場合は、競合から拒否イベントが発生します。
 
 ```json
 "then": {
@@ -100,20 +101,45 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 
 ### <a name="audit-evaluation"></a>Audit の評価
 
-Audit は、リソースの作成中または更新中に Azure Policy によって確認される最後の効果です。 リソース マネージャー モードの場合、その後でリソースが Azure Policy によってリソース プロバイダーに送信されます。 Audit は、リソース要求でも評価サイクルでも同じように動作します。 新規および更新されたリソースの場合、Azure Policy によってアクティビティ ログに `Microsoft.Authorization/policies/audit/action` 操作が追加され、リソースは非準拠とマークされます。
+Audit は、リソースの作成中または更新中に Azure Policy によって確認される最後の効果です。 リソース マネージャー モードの場合、その後でリソースが Azure Policy によってリソース プロバイダーに送信されます。 リソースの作成または更新の要求を評価するときに、Azure Policy では `Microsoft.Authorization/policies/audit/action` 操作がアクティビティ ログに追加され、リソースが非対応としてマークされます。 標準のコンプライアンス評価サイクルでは、リソースのコンプライアンス状態のみが更新されます。
 
 ### <a name="audit-properties"></a>Audit のプロパティ
 
 リソース マネージャー モードの場合、Audit 効果には、ポリシー定義の **then** 条件で使用するためのその他のプロパティはありません。
 
-`Microsoft.Kubernetes.Data` のリソース プロバイダー モードの場合、Audit 効果の **details** には次のサブプロパティが追加されます。
+`Microsoft.Kubernetes.Data` のリソース プロバイダー モードの場合、Audit 効果の **details** には次のサブプロパティが追加されます。 新しいポリシー定義や更新されたポリシー定義では、`templateInfo` を使用する必要があります。`constraintTemplate` は非推奨となっています。
 
-- **constraintTemplate** (必須)
-  - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
-- **constraint** (必須)
+- **templateInfo** (必須)
+  - `constraintTemplate` とは使用できません。
+  - **sourceType** (必須)
+    - 制約テンプレートのソースの種類を定義します。 指定できる値は _PublicURL_ または _Base64Encoded_ です。
+    - _PublicURL_ を指定する場合は、`url` プロパティと組み合わせて制約テンプレートの場所を指定します。 この場所はパブリックにアクセスできる必要があります。
+
+      > [!WARNING]
+      > `url` には、SAS URI やトークンなど、シークレットが公開されてしまう可能性がある情報は一切使用しないでください。
+
+    - _Base64Encoded_ を指定する場合は、`content` プロパティと組み合わせて Base 64 でエンコードされた制約テンプレートを指定します。 既存の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3 [制約テンプレート](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)からカスタム定義を作成するには、「[制約テンプレートからポリシー定義を作成する](../how-to/extension-for-vscode.md)」を参照してください。
+- **constraint** (省略可能)
+  - `templateInfo` とは使用できません。
   - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 次の例 2 では、これらの値は `{{ .Values.excludedNamespaces }}` および `{{ .Values.allowedContainerImagesRegex }}` です。
+- **namespaces** (省略可能)
+  - ポリシーの評価対象とする [Kubernetes 名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)の _配列_。
+  - 空にした場合、つまり値を指定しなかった場合、_excludedNamespaces_ に定義された名前空間を除くすべての名前空間がポリシーの評価対象になります。
+- **excludedNamespaces** (必須)
+  - ポリシーの評価から除外する [Kubernetes 名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)の _配列_。
+- **labelSelector** (必須)
+  - _matchLabels_ (オブジェクト) プロパティと _matchExpression_ (配列) プロパティを含んだ "_オブジェクト_"。ポリシーの評価対象とする Kubernetes リソースを指定できます。[ラベルおよびセレクター](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)の指定と一致した Kubernetes リソースが評価対象となります。
+  - 空にした場合、つまり値を指定しなかった場合、_excludedNamespaces_ に定義された名前空間を除くすべてのラベルおよびセレクターがポリシーの評価対象になります。
+- **apiGroups** (_templateInfo_ を使用する場合は必須)
+  - マッチさせる [API グループ](https://kubernetes.io/docs/reference/using-api/#api-groups)を含んだ _配列_。 空の配列 (`[""]`) はコア API グループに、`["*"]` はすべての API グループに一致します。
+- **kinds** (_templateInfo_ を使用する場合は必須)
+  - 評価対象とする Kubernetes オブジェクトの [kind](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields) を含んだ _配列_。
 - **values** (省略可能)
   - 制約に渡すすべてのパラメーターと値を定義します。 それぞれの値は、制約テンプレート CRD に含まれている必要があります。
+- **constraintTemplate** (非推奨)
+  - `templateInfo` とは使用できません。
+  - ポリシーの定義を作成または更新するときは、`templateInfo` に置き換えてください。
+  - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
 
 ### <a name="audit-example"></a>Audit の例
 
@@ -125,18 +151,21 @@ Audit は、リソースの作成中または更新中に Azure Policy によっ
 }
 ```
 
-例 2:`Microsoft.Kubernetes.Data` のリソース プロバイダー モードで Audit 効果を使用する。 **details** の追加情報では、許可されるコンテナー イメージを制限するために Kubernetes で使用する制約テンプレートと CRD を定義します。
+例 2:`Microsoft.Kubernetes.Data` のリソース プロバイダー モードで Audit 効果を使用する。 **details.templateInfo** の追加情報では、許可されるコンテナー イメージを制限するために、_PublicURL_ の使用を宣言し、Kubernetes で使用する制約テンプレートの場所を `url` に設定します。
 
 ```json
 "then": {
     "effect": "audit",
     "details": {
-        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
-        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "templateInfo": {
+            "sourceType": "PublicURL",
+            "url": "https://store.policy.core.windows.net/kubernetes/container-allowed-images/v1/template.yaml",
+        },
         "values": {
-            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
-            "excludedNamespaces": "[parameters('excludedNamespaces')]"
-        }
+            "imageRegex": "[parameters('allowedContainerImagesRegex')]"
+        },
+        "apiGroups": [""],
+        "kinds": ["Pod"]
     }
 }
 ```
@@ -169,8 +198,14 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
   - 照合する関連リソースを取得する範囲を設定します。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。
   - _ResourceGroup_ の場合は、**if** 条件リソースのリソース グループまたは **ResourceGroupName** で指定されたリソース グループに制限されます。
-  - _Subscription_ の場合は、関連リソースのサブスクリプション全体を検索します。
+  - _Subscription_ の場合は、関連リソースのサブスクリプション全体を検索します。 適切に評価するためには、割り当てスコープがサブスクリプション以上で設定されている必要があります。 
   - 既定値は _ResourceGroup_ です。
+- **EvaluationDelay** (省略可能)
+  - 関連リソースの存在を評価する必要があるタイミングを指定します。 遅延は、リソースの作成または更新要求の結果である評価のみに使用されます。
+  - 使用できる値は `AfterProvisioning`、`AfterProvisioningSuccess`、`AfterProvisioningFailure`、または ISO 8601 期間の 0 から 360 分の間です。
+  - _AfterProvisioning_ 値では、ポリシー規則の IF 条件で評価されたリソースのプロビジョニング結果が検査されます。 結果に関係なく、プロビジョニングが完了した後に `AfterProvisioning` が実行されます。 プロビジョニングに 6 時間より長くかかると、_Afterprovisioning_ の評価の遅延を判断するときにエラーとして扱われます。
+  - 既定値は `PT10M` (10 分間) です。
+  - 評価の遅延を長く指定すると、リソースの記録されたコンプライアンス状態が次の[評価のトリガー](../how-to/get-compliance-data.md#evaluation-triggers)まで更新されない場合があります。
 - **ExistenceCondition** (省略可能)
   - 指定されない場合、**type** の関連リソースは効果を満たしているため、監査はトリガーされません。
   - **if** 条件のポリシー規則と同じ言語が使用されますが、それぞれの関連リソースに対して個別に評価されます。
@@ -180,7 +215,7 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
 
 ### <a name="auditifnotexists-example"></a>AuditIfNotExists の例
 
-例:仮想マシンを評価してマルウェア対策の拡張機能が存在するかどうかを判定し、ない場合に監査します。
+例: 仮想マシンを評価してマルウェア対策の拡張機能が存在するかどうかを判定し、ない場合に監査します。
 
 ```json
 {
@@ -222,14 +257,39 @@ Deny は、ポリシーを通して定義された基準に一致していない
 
 リソース マネージャー モードの場合、Deny 効果には、ポリシー定義の **then** 条件で使用するためのその他のプロパティはありません。
 
-`Microsoft.Kubernetes.Data` のリソース プロバイダー モードの場合、Deny 効果の **details** には次のサブプロパティが追加されます。
+`Microsoft.Kubernetes.Data` のリソース プロバイダー モードの場合、Deny 効果の **details** には次のサブプロパティが追加されます。 新しいポリシー定義や更新されたポリシー定義では、`templateInfo` を使用する必要があります。`constraintTemplate` は非推奨となっています。
 
-- **constraintTemplate** (必須)
-  - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
-- **constraint** (必須)
+- **templateInfo** (必須)
+  - `constraintTemplate` とは使用できません。
+  - **sourceType** (必須)
+    - 制約テンプレートのソースの種類を定義します。 指定できる値は _PublicURL_ または _Base64Encoded_ です。
+    - _PublicURL_ を指定する場合は、`url` プロパティと組み合わせて制約テンプレートの場所を指定します。 この場所はパブリックにアクセスできる必要があります。
+
+      > [!WARNING]
+      > `url` には、SAS URI やトークンなど、シークレットが公開されてしまう可能性がある情報は一切使用しないでください。
+
+    - _Base64Encoded_ を指定する場合は、`content` プロパティと組み合わせて Base 64 でエンコードされた制約テンプレートを指定します。 既存の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3 [制約テンプレート](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)からカスタム定義を作成するには、「[制約テンプレートからポリシー定義を作成する](../how-to/extension-for-vscode.md)」を参照してください。
+- **constraint** (省略可能)
+  - `templateInfo` とは使用できません。
   - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 次の例 2 では、これらの値は `{{ .Values.excludedNamespaces }}` および `{{ .Values.allowedContainerImagesRegex }}` です。
+- **namespaces** (省略可能)
+  - ポリシーの評価対象とする [Kubernetes 名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)の _配列_。
+  - 空にした場合、つまり値を指定しなかった場合、_excludedNamespaces_ に定義された名前空間を除くすべての名前空間がポリシーの評価対象になります。
+- **excludedNamespaces** (必須)
+  - ポリシーの評価から除外する [Kubernetes 名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)の _配列_。
+- **labelSelector** (必須)
+  - _matchLabels_ (オブジェクト) プロパティと _matchExpression_ (配列) プロパティを含んだ "_オブジェクト_"。ポリシーの評価対象とする Kubernetes リソースを指定できます。[ラベルおよびセレクター](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)の指定と一致した Kubernetes リソースが評価対象となります。
+  - 空にした場合、つまり値を指定しなかった場合、_excludedNamespaces_ に定義された名前空間を除くすべてのラベルおよびセレクターがポリシーの評価対象になります。
+- **apiGroups** (_templateInfo_ を使用する場合は必須)
+  - マッチさせる [API グループ](https://kubernetes.io/docs/reference/using-api/#api-groups)を含んだ _配列_。 空の配列 (`[""]`) はコア API グループに、`["*"]` はすべての API グループに一致します。
+- **kinds** (_templateInfo_ を使用する場合は必須)
+  - 評価対象とする Kubernetes オブジェクトの [kind](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields) を含んだ _配列_。
 - **values** (省略可能)
   - 制約に渡すすべてのパラメーターと値を定義します。 それぞれの値は、制約テンプレート CRD に含まれている必要があります。
+- **constraintTemplate** (非推奨)
+  - `templateInfo` とは使用できません。
+  - ポリシーの定義を作成または更新するときは、`templateInfo` に置き換えてください。
+  - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。 `constraintTemplate` は、より新しい `templateInfo` に置き換えることをお勧めします。
 
 ### <a name="deny-example"></a>Deny の例
 
@@ -241,18 +301,21 @@ Deny は、ポリシーを通して定義された基準に一致していない
 }
 ```
 
-例 2:`Microsoft.Kubernetes.Data` のリソース プロバイダー モードで Deny 効果を使用する。 **details** の追加情報では、許可されるコンテナー イメージを制限するために Kubernetes で使用する制約テンプレートと CRD を定義します。
+例 2:`Microsoft.Kubernetes.Data` のリソース プロバイダー モードで Deny 効果を使用する。 **details.templateInfo** の追加情報では、許可されるコンテナー イメージを制限するために、_PublicURL_ の使用を宣言し、Kubernetes で使用する制約テンプレートの場所を `url` に設定します。
 
 ```json
 "then": {
     "effect": "deny",
     "details": {
-        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
-        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "templateInfo": {
+            "sourceType": "PublicURL",
+            "url": "https://store.policy.core.windows.net/kubernetes/container-allowed-images/v1/template.yaml",
+        },
         "values": {
-            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
-            "excludedNamespaces": "[parameters('excludedNamespaces')]"
-        }
+            "imageRegex": "[parameters('allowedContainerImagesRegex')]"
+        },
+        "apiGroups": [""],
+        "kinds": ["Pod"]
     }
 }
 ```
@@ -266,7 +329,7 @@ AuditIfNotExists と同様に、DeployIfNotExists ポリシー定義は条件が
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists の評価
 
-DeployIfNotExists は、リソースプロバイダーによって、サブスクリプションまたはリソースの作成または更新要求が処理され、成功を示す状態コードが返されてから約 15 分後に実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、テンプレートのデプロイが発生します。 デプロイの時間は、テンプレートに含まれるリソースの複雑さによって異なります。
+DeployIfNotExists は、リソース プロバイダーによって、サブスクリプションまたはリソースの作成または更新要求が処理され、成功を示す状態コードが返されてから、構成可能な遅延後に実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、テンプレートのデプロイが発生します。 デプロイの時間は、テンプレートに含まれるリソースの複雑さによって異なります。
 
 評価サイクル中は、リソースを照合する DeployIfNotExists 効果があるポリシー定義は非準拠としてマークされ、リソースに対するアクションは実行されません。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。
 
@@ -290,8 +353,14 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - 照合する関連リソースを取得する範囲を設定します。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。
   - _ResourceGroup_ の場合は、**if** 条件リソースのリソース グループまたは **ResourceGroupName** で指定されたリソース グループに制限されます。
-  - _Subscription_ の場合は、関連リソースのサブスクリプション全体を検索します。
+  - _Subscription_ の場合は、関連リソースのサブスクリプション全体を検索します。 適切に評価するためには、割り当てスコープがサブスクリプション以上で設定されている必要があります。 
   - 既定値は _ResourceGroup_ です。
+- **EvaluationDelay** (省略可能)
+  - 関連リソースの存在を評価する必要があるタイミングを指定します。 遅延は、リソースの作成または更新要求の結果である評価のみに使用されます。
+  - 使用できる値は `AfterProvisioning`、`AfterProvisioningSuccess`、`AfterProvisioningFailure`、または ISO 8601 期間の 0 から 360 分の間です。
+  - _AfterProvisioning_ 値では、ポリシー規則の IF 条件で評価されたリソースのプロビジョニング結果が検査されます。 結果に関係なく、プロビジョニングが完了した後に `AfterProvisioning` が実行されます。 プロビジョニングに 6 時間より長くかかると、_Afterprovisioning_ の評価の遅延を判断するときにエラーとして扱われます。
+  - 既定値は `PT10M` (10 分間) です。
+  - 評価の遅延を長く指定すると、リソースの記録されたコンプライアンス状態が次の[評価のトリガー](../how-to/get-compliance-data.md#evaluation-triggers)まで更新されない場合があります。
 - **ExistenceCondition** (省略可能)
   - 指定されない場合、**type** の関連リソースは効果を満たすため、デプロイはトリガーされません。
   - **if** 条件のポリシー規則と同じ言語が使用されますが、それぞれの関連リソースに対して個別に評価されます。
@@ -307,13 +376,15 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - 既定値は _ResourceGroup_ です。
 - **Deployment** (必須)
   - このプロパティは `Microsoft.Resources/deployments` PUT API に渡されるため、完全なテンプレートのデプロイを含める必要があります。 詳細については、[Deployments REST API](/rest/api/resources/deployments) をご覧ください。
+  - テンプレート内で入れ子になっている `Microsoft.Resources/deployments` では、複数のポリシー評価間の競合を避けるために、固有の名前を使用する必要があります。 `[concat('NestedDeploymentName-', uniqueString(deployment().name))]` を使用すると、入れ子になったデプロイの一部として親デプロイの名前を使用できます。
 
   > [!NOTE]
   > **Deployment** プロパティ内のすべての関数が、ポリシーではなくテンプレートのコンポーネントとして評価されます。 例外は、ポリシーからテンプレートに値を渡す **parameters** プロパティです。 このセクションのテンプレート パラメーター名の **value** は、この値渡しを実行するために使用されます (DeployIfNotExists の例の _fullDbName_ を参照)。
 
 ### <a name="deployifnotexists-example"></a>DeployIfNotExists の例
 
-例:SQL Server データベースを評価して、transparentDataEncryption が有効になっているかどうかを判断します。 有効になっていない場合は、有効にするためのデプロイが実行されます。
+例: SQL Server データベースを評価して、transparentDataEncryption が有効になっているかどうかを判定します。
+有効になっていない場合は、有効にするためのデプロイが実行されます。
 
 ```json
 "if": {
@@ -325,6 +396,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
     "details": {
         "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
         "name": "current",
+        "evaluationDelay": "AfterProvisioning",
         "roleDefinitionIds": [
             "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
             "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
@@ -390,7 +462,7 @@ EnforceOPAConstraint 効果の **details** プロパティには、Gatekeeper v3
 - **constraintTemplate** (必須)
   - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
 - **constraint** (必須)
-  - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 次の例では、これらの値は `{{ .Values.cpuLimit }}` および `{{ .Values.memoryLimit }}` です。
+  - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 以下の例では、これらの値は `{{ .Values.cpuLimit }}` と `{{ .Values.memoryLimit }}` です。
 - **values** (省略可能)
   - 制約に渡すすべてのパラメーターと値を定義します。 それぞれの値は、制約テンプレート CRD に含まれている必要があります。
 
@@ -487,7 +559,7 @@ Modify では次の操作がサポートされています。
 
 - リソース タグの追加、置換、または削除。 タグに関して、ターゲット リソースがリソース グループでない限り、Modify ポリシーでは常に `mode` が _[インデックス設定済み]_ に設定されている必要があります。
 - 仮想マシンと仮想マシン スケール セットのマネージド ID の種類 (`identity.type`) の値の追加または置換。
-- 特定のエイリアスの値の追加または置換 (プレビュー)。
+- 特定のエイリアスの値の追加または置換。
   - `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }` を使用します
     Modify で使用できるエイリアスの一覧を取得するには、Azure PowerShell **4.6.0** 以降で上記を使用します。
 
@@ -506,7 +578,7 @@ Modify では次の操作がサポートされています。
 これらのチェックのいずれかが失敗した場合、ポリシー評価は指定された **conflictEffect** にフォールバックします。
 
 > [!IMPORTANT]
-> マップされたプロパティが 'Modifiable' でない API バージョンを使用した要求の失敗を回避するために、エイリアスを含む Modify の定義には _audit_ **conflict effect** を使用することを推奨します。 API バージョン間で同じエイリアスの動作が異なる場合は、条件付き変更操作を使用して、各 API バージョンで使用される変更操作を決定できます。
+> エイリアスを含む Modify の定義では、_audit_ **conflict 効果** を使用して、マッピングされたプロパティが Modifiable でないバージョンの API を使用して要求を送信した場合に、その要求が失敗する事態を避けることをお勧めします。 API バージョン間で同じエイリアスの動作が異なる場合は、条件付き変更操作を使用し
 
 Modify 効果を使用するポリシー定義が評価サイクルの一部として実行される場合、既存のリソースに対する変更は行われません。 代わりに、**if** 条件を満たすリソースが非準拠とマークされます。
 
@@ -539,7 +611,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 
 ### <a name="modify-operations"></a>Modify の操作
 
-**operations** プロパティ配列を使用すると、1 つのポリシー定義から複数のタグを異なる方法で変更できます。 各操作は **operation**、**field**、および **value** の各プロパティで構成されます。 operation では、修復タスクがタグに対して行う処理を決定し、field では、どのタグを変更するかを決定し、value では、そのタグの新しい設定を定義します。 下記の例では、以下のタグ変更が実行されます。
+**operations** プロパティ配列を使用すると、1 つのポリシー定義から複数のタグを異なる方法で変更できます。 各操作は **operation**、**field**、および **value** の各プロパティで構成されます。 operation では、修復タスクがタグに対して行う処理を決定し、field では、どのタグを変更するかを決定し、value では、そのタグの新しい設定を定義します。 次の例では、次のようにタグを変更します。
 
 - `environment` タグを "Test" に設定する (異なる値で既に存在している場合でも)。
 - タグ `TempResource` を削除する。
@@ -656,7 +728,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
   - リソースの場所を 'eastus' に制限する
   - サブスクリプション A のリソース グループ B に割り当てる
   - Audit 効果
-  
+
 この設定の結果は次のようになります。
 
 - リソース グループ B の既存のリソースで、場所が 'eastus' のリソースは、ポリシー 2 に準拠しているが、ポリシー 1 には準拠していない

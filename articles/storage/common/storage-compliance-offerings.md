@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 7ec938a13d04cf3400e4d3df0eeda051c61d35ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fb00842b3fb2b4b9794cbc636ceddad52cfb14b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724270"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666024"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage のコンプライアンス認証
 
@@ -23,74 +23,74 @@ ms.locfileid: "101724270"
 
 ## <a name="global"></a>グローバル
 
-* [CSA-STAR-Attestation](https://www.microsoft.com/trustcenter/compliance/csa-star-attestation)
-* [CSA-Star-Certification](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)
-* [CSA-STAR-Self-Assessment](https://www.microsoft.com/trustcenter/compliance/csa-self-assessment)
-* [ISO 20000-1:2011](https://www.microsoft.com/TrustCenter/Compliance/ISO-20000-1)
-* [ISO 22301](/compliance/regulatory/offering-iso-22301)
-* [ISO 27001](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)
-* [ISO 27017](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)
-* [ISO 27018](https://www.microsoft.com/trustcenter/compliance/iso-iec-27018)
-* [ISO 9001](https://www.microsoft.com/trustcenter/compliance/iso-9001)
-* [WCAG 2.0](https://www.microsoft.com/trustcenter/compliance/accessibility#WCAG-2-0)
+- [CSA-STAR-Attestation](https://www.microsoft.com/trustcenter/compliance/csa-star-attestation)
+- [CSA-Star-Certification](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)
+- [CSA-STAR-Self-Assessment](https://www.microsoft.com/trustcenter/compliance/csa-self-assessment)
+- [ISO 20000-1:2011](https://www.microsoft.com/TrustCenter/Compliance/ISO-20000-1)
+- [ISO 22301](/compliance/regulatory/offering-iso-22301)
+- [ISO 27001](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)
+- [ISO 27017](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)
+- [ISO 27018](https://www.microsoft.com/trustcenter/compliance/iso-iec-27018)
+- [ISO 9001](https://www.microsoft.com/trustcenter/compliance/iso-9001)
+- [WCAG 2.0](https://www.microsoft.com/trustcenter/compliance/accessibility#WCAG-2-0)
 
 ## <a name="us-government"></a>米国政府
 
-* [DoD DISA L2、L4、L5](https://www.microsoft.com/trustcenter/compliance/disa)
-* [DoE 10 CFR Part 810](https://aka.ms/AzureCompliance)
-* [EAR (米国の輸出管理規則)](https://aka.ms/AzureCompliance)
-* [FDA CFR Title 21 Part 11](https://aka.ms/AzureCompliance)
-* [FedRAMP](https://www.microsoft.com/trustcenter/compliance/fedramp)
-* [FERPA](https://www.microsoft.com/trustcenter/compliance/ferpa)
-* [FIPS 140-2](https://www.microsoft.com/trustcenter/compliance/fips)
-* [NIST 800-171](https://www.microsoft.com/TrustCenter/Compliance/DISA#NISTRequirements)
-* [米国リハビリテーション法第 508 条 VPAT](https://www.microsoft.com/trustcenter/compliance/accessibility)
+- [DoD DISA L2、L4、L5](https://www.microsoft.com/trustcenter/compliance/disa)
+- [DoE 10 CFR Part 810](https://aka.ms/AzureCompliance)
+- [EAR (米国の輸出管理規則)](https://aka.ms/AzureCompliance)
+- [FDA CFR Title 21 Part 11](https://aka.ms/AzureCompliance)
+- [FedRAMP](https://www.microsoft.com/trustcenter/compliance/fedramp)
+- [FERPA](https://www.microsoft.com/trustcenter/compliance/ferpa)
+- [FIPS 140-2](https://www.microsoft.com/trustcenter/compliance/fips)
+- [NIST 800-171](https://www.microsoft.com/TrustCenter/Compliance/DISA#NISTRequirements)
+- [米国リハビリテーション法第 508 条 VPAT](https://www.microsoft.com/trustcenter/compliance/accessibility)
 
 ## <a name="industry"></a>業界
 
-* [23 NYCRR Part 500](https://www.microsoft.com/trustcenter/compliance/NYCRR)
-* [APRA (オーストラリア)](https://aka.ms/AzureCompliance)
-* [CDSA](https://www.microsoft.com/trustcenter/compliance/cdsa)
-* [DPP (英国)](https://aka.ms/AzureCompliance)
-* [FACT (英国)](https://www.microsoft.com/trustcenter/compliance/fact)
-* [FCA (英国)](https://aka.ms/AzureCompliance)
-* [FFIEC](https://www.microsoft.com/trustcenter/compliance/FFIEC)
-* [FISC (日本)](https://www.microsoft.com/trustcenter/compliance/fisc)
-* [GLBA](https://aka.ms/AzureCompliance)
-* [GxP](https://www.microsoft.com/TrustCenter/Compliance/FDA)
-* [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)
-* [HITRUST](https://www.microsoft.com/trustcenter/Compliance/HITRUST)
-* [MARS-E](https://www.microsoft.com/trustcenter/compliance/mars-e)
-* [MAS + ABS (シンガポール)](https://aka.ms/AzureCompliance)
-* [MPAA](https://www.microsoft.com/trustcenter/compliance/mpaa)
-* [NEN-7510 (オランダ)](https://www.microsoft.com/trustcenter/compliance/nen-7510)
-* [PCI DSS](https://www.microsoft.com/trustcenter/compliance/pci)
-* [共有された評価](https://aka.ms/AzureCompliance)
-* [SOX](https://www.microsoft.com/trustcenter/compliance/SOX)
+- [23 NYCRR Part 500](https://www.microsoft.com/trustcenter/compliance/NYCRR)
+- [APRA (オーストラリア)](https://www.microsoft.com/trustcenter/compliance/apra)
+- [CDSA](https://www.microsoft.com/trustcenter/compliance/cdsa)
+- [DPP (英国)](https://aka.ms/AzureCompliance)
+- [FACT (英国)](https://www.microsoft.com/trustcenter/compliance/fact)
+- [FCA (英国)](https://aka.ms/AzureCompliance)
+- [FFIEC](https://www.microsoft.com/trustcenter/compliance/FFIEC)
+- [FISC (日本)](https://www.microsoft.com/trustcenter/compliance/fisc)
+- [GLBA](https://aka.ms/AzureCompliance)
+- [GxP](https://www.microsoft.com/TrustCenter/Compliance/FDA)
+- [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)
+- [HITRUST](https://www.microsoft.com/trustcenter/Compliance/HITRUST)
+- [MARS-E](https://www.microsoft.com/trustcenter/compliance/mars-e)
+- [MAS + ABS (シンガポール)](https://aka.ms/AzureCompliance)
+- [MPAA](https://www.microsoft.com/trustcenter/compliance/mpaa)
+- [NEN-7510 (オランダ)](https://www.microsoft.com/trustcenter/compliance/nen-7510)
+- [PCI DSS](https://www.microsoft.com/trustcenter/compliance/pci)
+- [共有された評価](https://aka.ms/AzureCompliance)
+- [SOX](https://www.microsoft.com/trustcenter/compliance/SOX)
 
 ## <a name="regional"></a>地域
 
-* [BIR 2012 (オランダ)](https://www.microsoft.com/TrustCenter/Compliance/bir-2012)
-* [C5 (ドイツ)](https://www.microsoft.com/TrustCenter/Compliance/C5)
-* [CCSL/IRAP (オーストラリア)](https://www.microsoft.com/trustcenter/compliance/ccsl)
-* [CS ゴールド マーク (日本)](https://www.microsoft.com/trustcenter/compliance/cloud-security-mark)
-* [DJCP (中国)](https://www.trustcenter.cn/compliance/default.html#DJCP)
-* [ENISA IAF (EU)](https://aka.ms/AzureCompliance)
-* [ENS (スペイン)](https://www.microsoft.com/trustcenter/compliance/spainens)
-* [EU モデル契約条項](https://www.microsoft.com/trustcenter/compliance/eu-model-clauses)
-* [EU- 米国プライバシー シールド](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
-* [GB 18030 (中国)](https://www.trustcenter.cn/compliance/default.html#GB18030)
-* [GDPR (EU)](https://www.microsoft.com/trustcenter/privacy/gdpr)
-* [IT Grundschutz ワークブック (ドイツ)](https://www.microsoft.com/TrustCenter/Compliance/IT-Grundschutz)
-* [LOPD (スペイン)](https://aka.ms/AzureCompliance)
-* [MTCS (シンガポール)](https://www.microsoft.com/trustcenter/compliance/mtcs)
-* [マイ ナンバー (日本)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#my_number)
-* [NZ CC フレームワーク (ニュージーランド)](https://www.microsoft.com/trustcenter/compliance/nzcc)
-* [PASF (英国)](https://aka.ms/AzureCompliance)
-* [PDPA (アルゼンチン)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#argentina)
-* [PIPEDA (カナダ)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#canadian_privacy_laws)
-* [TRUCS (中国)](https://www.trustcenter.cn/compliance/default.html#TCS)
-* [英国 G-Cloud](https://www.microsoft.com/trustcenter/compliance/uk-g-cloud)
+- [BIR 2012 (オランダ)](https://www.microsoft.com/TrustCenter/Compliance/bir-2012)
+- [C5 (ドイツ)](https://www.microsoft.com/TrustCenter/Compliance/C5)
+- [CCSL/IRAP (オーストラリア)](https://www.microsoft.com/trustcenter/compliance/ccsl)
+- [CS ゴールド マーク (日本)](https://www.microsoft.com/trustcenter/compliance/cloud-security-mark)
+- [DJCP (中国)](https://www.trustcenter.cn/compliance/default.html#DJCP)
+- [ENISA IAF (EU)](https://aka.ms/AzureCompliance)
+- [ENS (スペイン)](https://www.microsoft.com/trustcenter/compliance/spainens)
+- [EU モデル契約条項](https://www.microsoft.com/trustcenter/compliance/eu-model-clauses)
+- [EU- 米国プライバシー シールド](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
+- [GB 18030 (中国)](https://www.trustcenter.cn/compliance/default.html#GB18030)
+- [GDPR (EU)](https://www.microsoft.com/trustcenter/privacy/gdpr)
+- [IT Grundschutz ワークブック (ドイツ)](https://www.microsoft.com/TrustCenter/Compliance/IT-Grundschutz)
+- [LOPD (スペイン)](https://aka.ms/AzureCompliance)
+- [MTCS (シンガポール)](https://www.microsoft.com/trustcenter/compliance/mtcs)
+- [マイ ナンバー (日本)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#my_number)
+- [NZ CC フレームワーク (ニュージーランド)](https://www.microsoft.com/trustcenter/compliance/nzcc)
+- [PASF (英国)](https://aka.ms/AzureCompliance)
+- [PDPA (アルゼンチン)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#argentina)
+- [PIPEDA (カナダ)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#canadian_privacy_laws)
+- [TRUCS (中国)](https://www.trustcenter.cn/compliance/default.html#TCS)
+- [英国 G-Cloud](https://www.microsoft.com/trustcenter/compliance/uk-g-cloud)
 
 ## <a name="next-steps"></a>次のステップ
 

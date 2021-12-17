@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3f565f456dde1d802a82faffb4a23f7a6e54d950
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 0c5ae9dd292aeef8aa1e052cf276568e84bdd95d
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105031547"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586872"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>クイック スタート:Unity によるモデルのレンダリング
 
@@ -49,7 +49,7 @@ Azure Remote Rendering サービスにアクセスするには、まず[アカ�
 mkdir ARR
 cd ARR
 git clone https://github.com/Azure/azure-remote-rendering
-powershell azure-remote-rendering\Scripts\DownloadUnityPackages.ps1
+powershell -ExecutionPolicy RemoteSigned -File azure-remote-rendering\Scripts\DownloadUnityPackages.ps1
 ```
 
 最後のコマンドでは、Azure Remote Rendering 用のさまざまなサンプル プロジェクトを含む ARR ディレクトリにサブディレクトリを作成します。

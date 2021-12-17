@@ -4,16 +4,17 @@ description: Azure Monitor で Log Analytics ワークスペースをデプロ�
 ms.topic: sample
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2020
-ms.openlocfilehash: 5c1ef7d8de32564e2b1d3b1578fcd72cefde0327
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 08/19/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7d9a5d3f1510526661c088ede115e3ecdd611b03
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047147"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515435"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペース用の Resource Manager テンプレートのサンプル
-この記事には、Azure Monitor で Log Analytics ワークスペースを作成および構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+この記事には、Azure Monitor で Log Analytics ワークスペースを作成および構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -681,7 +682,7 @@ ms.locfileid: "102047147"
                         ]
                     }
                     },
-                    "extractionType": "DateTime"
+                    "extractionType&quot;: &quot;DateTime"
                 }
                 ]
             }

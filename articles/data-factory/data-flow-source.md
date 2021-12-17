@@ -1,22 +1,26 @@
 ---
 title: マッピング データ フローのソース変換
-description: マッピング データ フローのソース変換を設定する方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics パイプラインのマッピング データ フローでソース変換を設定する方法について説明します。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/10/2021
-ms.openlocfilehash: 310a062a8600539750935c93c7d10a1cf17a885d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/18/2021
+ms.openlocfilehash: 3fb054954fd846ac3a116b7c48eb39722b611997
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016391"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223918"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>マッピング データ フローのソース変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 ソース変換は、データ フローのデータ ソースを構成します。 データ フローを設計する際、最初の手順では、常にソース変換を構成します。 ソースを追加するには、データ フローのキャンバスにある **[Add Source]\(ソースの追加\)** ボックスを選択します。
 
@@ -34,7 +38,16 @@ ms.locfileid: "103016391"
 
 インライン データセットを使用するには、 **[Source Type]\(ソースの種類\)** セレクターで目的の形式を選択します。 ソース データセットを選択せず、接続先にするリンクされたサービスを選択します。
 
-![インラインが選択されていることを示すスクリーンショット。](media/data-flow/inline-selector.png "インラインが選択されていることを示すスクリーンショット。")
+:::image type="content" source="media/data-flow/inline-selector.png" alt-text="インラインが選択されていることを示すスクリーンショット。":::
+
+## <a name="workspace-db-synapse-workspaces-only"></a>ワークスペース DB (Synapse ワークスペースのみ)
+
+Azure Synapse ワークスペースで、データ フロー ソース変換に ```Workspace DB``` という名称の追加のオプションがあります。 このオプションでは、利用できるあらゆる種類のワークスペース データベースをソース データとして直接選択できます。追加のリンク サービスやデータセットは必要ありません。
+
+> [!NOTE]
+> Azure Synapse ワークスペース DB コネクタは現在パブリック プレビュー段階にあり、現時点では Spark Lake データベースでのみ機能します
+
+:::image type="content" source="media/data-flow/syms-source.png" alt-text="選択されたワークスペース DB を示すスクリーンショット。":::
 
 ##  <a name="supported-source-types"></a><a name="supported-sources"></a> サポートされるソースの種類
 
@@ -42,21 +55,25 @@ ms.locfileid: "103016391"
 
 | コネクタ | Format | データセット/インライン |
 | --------- | ------ | -------------- |
-| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[区切りテキスト](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties) <br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br>✓/✓<br/>✓/-<br>✓/✓<br/>✓/-<br>✓/✓ |
+|[Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[区切りテキスト](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties) <br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓ |
+[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[区切りテキスト](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties) <br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓ |
 | [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[区切りテキスト](format-delimited-text.md#mapping-data-flow-properties)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br/>✓/-<br>✓/✓<br/>✓/-<br>✓/✓ |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Common Data Model](format-common-data-model.md#source-properties)<br>[区切りテキスト](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br/>-/✓<br>✓/✓<br>✓/✓<br>✓/✓<br>✓/-<br/>✓/✓<br/>✓/-<br>✓/✓ |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[区切りテキスト](format-delimited-text.md#mapping-data-flow-properties)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓ |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Common Data Model](format-common-data-model.md#source-properties)<br>[区切りテキスト](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br/>-/✓<br>✓/✓<br>✓/✓<br>✓/✓<br>✓/✓<br/>✓/✓<br/>✓/✓<br>✓/✓ |
 | [Azure Database for MySQL](connector-azure-database-for-mysql.md) |  | ✓/✓ |
 | [Azure Database for PostgreSQL](connector-azure-database-for-postgresql.md) |  | ✓/✓ |
-| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure Data Explorer](connector-azure-data-explorer.md) |  | ✓/✓ |
+| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/✓ |
+| [Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/✓ |
 | [Hive](connector-hive.md#mapping-data-flow-properties) | | -/✓ |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
+| [SQL Server](connector-sql-server.md) | | ✓/✓ |
+| [REST](connector-rest.md#mapping-data-flow-properties) | | ✓/✓ |
 
 これらのコネクタに固有の設定は、 **[Source options]\(ソース オプション\)** タブにあります。これらの設定に関する情報とデータ フロー スクリプトの例は、コネクタのドキュメントに記載されています。
 
-Azure Data Factory から、[90 を超えるネイティブ コネクタ](connector-overview.md)にアクセスできます。 それらの他のソースからのデータをデータ フローに含めるには、コピー アクティビティを使用して、サポートされているステージング領域のいずれかにそのデータを読み込みます。
+Azure Data Factory および Synapse パイプラインには、[90 個以上のネイティブ コネクタ](connector-overview.md)へのアクセス権が与えられます。 それらの他のソースからのデータをデータ フローに含めるには、コピー アクティビティを使用して、サポートされているステージング領域のいずれかにそのデータを読み込みます。
 
 ## <a name="source-settings"></a>ソースの設定
 
@@ -64,7 +81,7 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 
 データセット パラメーターの開発値は、[デバッグの設定](concepts-data-flow-debug-mode.md)で構成できます (デバッグ モードをオンにする必要があります)。
 
-![[ソースの設定] タブを示すスクリーンショット。](media/data-flow/source1.png "[ソースの設定] タブを示すスクリーンショット。")
+:::image type="content" source="media/data-flow/source1.png" alt-text="[ソースの設定] タブを示すスクリーンショット。":::
 
 **[出力ストリーム名]** : ソース変換の名前です。
 
@@ -72,11 +89,11 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 
 **[テスト接続]** : ソース データセットで使用されているリンクされたサービスにデータ フローの Spark サービスが正常に接続できるかどうかをテストします。 この機能を有効にするにはデバッグ モードをオンにする必要があります。
 
-**[スキーマの誤差]** : [[スキーマの誤差]](concepts-data-flow-schema-drift.md) は、データ フロー内の柔軟なスキーマをネイティブに処理する Data Factory の機能であり、列の変更を明示的に定義する必要はありません。
+**[スキーマの誤差]** : [[スキーマの誤差]](concepts-data-flow-schema-drift.md) は、データ フロー内の柔軟なスキーマをネイティブに処理するこのサービスの機能であり、列の変更を明示的に定義する必要はありません。
 
 * ソース列が頻繁に変更される場合は、 **[Allow schema drift]\(スキーマの誤差を許可\)** チェック ボックスをオンにします。 この設定により、すべての受信ソース フィールドが変換を通してシンクに流れることができます。
 
-* **[Infer drifted column types]\(誤差のある列の型を推論\)** を選択すると、Data Factory は、検出された新しい列ごとにデータ型を検出して定義するよう指示されます。 この機能が無効になっている場合、誤差の列はすべて文字列型になります。
+* **[Infer drifted column types]\(誤差のある列の型を推論\)** を選択すると、サービスは、検出された新しい列ごとにデータ型を検出して定義するよう指示されます。 この機能が無効になっている場合、誤差の列はすべて文字列型になります。
 
 **[Validate schema]:** **[スキーマの検証]** を選択した場合、受信したソース データがデータセットの定義済みスキーマと一致しなければ、データ フローの実行は失敗します。
 
@@ -97,9 +114,9 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 
 データセット内のスキーマと同様に、ソース内のプロジェクションでは、ソース データのデータの列、型、および形式が定義されます。 SQL や Parquet など、ほとんどのデータセットの種類では、ソース内のプロジェクトは、データセットで定義されたスキーマを反映するように固定されています。 ソース ファイルが厳密に型指定されていない場合 (たとえば、Parquet ファイルでなくフラットな .csv ファイル)、このソース変換では各フィールドのデータ型を定義できます。
 
-![[プロジェクション] タブの設定を示すスクリーンショット。](media/data-flow/source3.png "[プロジェクション] タブの設定を示すスクリーンショット。")
+:::image type="content" source="media/data-flow/source3.png" alt-text="[プロジェクション] タブの設定を示すスクリーンショット。":::
 
-テキスト ファイルが定義済みのスキーマを含まない場合は、Data Factory がデータ型をサンプリングして推論するように、 **[Detect data type]** を選択します。 **[Define default format]\(既定の形式の定義\)** を選択して、既定のデータ形式を自動検出します。
+テキスト ファイルが定義済みのスキーマを含まない場合は、サービスがデータ型をサンプリングして推論するように、 **[データ型の検出]** を選択します。 **[Define default format]\(既定の形式の定義\)** を選択して、既定のデータ形式を自動検出します。
 
 **スキーマをリセットする** と、参照されているデータベースにある定義にプロジェクションがリセットされます。
 
@@ -115,9 +132,9 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 
 **[Optimize]\(最適化\)** タブでは、各変換手順でパーティション情報を編集できます。 ほとんどの場合 **[Use current partitioning]\(現在のパーティション分割を使用\)** を選択すると、ソースの理想的なパーティション構造に最適化されます。
 
-Azure SQL Database ソースから読み取る場合、カスタムの **[ソース]** パーティション分割にすると、データが最速で読み取られる可能性があります。 Data Factory は、データベースへの接続を並列で行うことによって、大規模なクエリを読み取ります。 このソース パーティション分割は、列に対して、またはクエリを使用して行うことができます。
+Azure SQL Database ソースから読み取る場合、カスタムの **[ソース]** パーティション分割にすると、データが最速で読み取られる可能性があります。 サービスは、データベースへの接続を並列で行うことによって、大規模なクエリを読み取ります。 このソース パーティション分割は、列に対して、またはクエリを使用して行うことができます。
 
-![ソース パーティション設定を示すスクリーンショット。](media/data-flow/sourcepart3.png "ソース パーティション設定を示すスクリーンショット。")
+:::image type="content" source="media/data-flow/sourcepart3.png" alt-text="ソース パーティション設定を示すスクリーンショット。":::
 
 マッピング データ フロー内での最適化の詳細については、[[Optimize] タブ](concepts-data-flow-overview.md#optimize)に関する説明を参照してください。
 

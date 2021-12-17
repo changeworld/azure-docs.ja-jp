@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: f4906d4e0590df047bac4ee15cb0e996a59c3d5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: af2927e4aa9dc9044546537adbde3af97cba4be1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498865"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249383"
 ---
 # <a name="measured-boot-and-host-attestation"></a>メジャー ブートとホストの構成証明
 この記事では、メジャー ブートとホストの構成証明を通じて、Microsoft がホストの整合性とセキュリティを確保する方法について説明します。
@@ -55,6 +55,7 @@ UEFI [セキュア ブート](secure-boot.md)により、ブート シーケン�
 プラットフォームの整合性とセキュリティを強化する方法の詳細については、次を参照してください。
 
 - [ファームウェアのセキュリティ](firmware.md)
+- [プラットフォーム コードの整合性](code-integrity.md)
 - [セキュア ブート](secure-boot.md)
 - [プロジェクト Cerberus](project-cerberus.md)
 - [保存時の暗号化](encryption-atrest.md)

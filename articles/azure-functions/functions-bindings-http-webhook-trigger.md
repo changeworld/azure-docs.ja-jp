@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4550be7ae8c543eea1bdfa085db6f23fe668a121
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b423e763492a0c244982422122705039cd9de80
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025698"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302322"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions の HTTP トリガー
 
@@ -375,7 +375,7 @@ module.exports = function(context, req) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-次の例は、*function.json* ファイルのトリガー バインドと、[PowerShell 関数](functions-reference-node.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
+次の例は、*function.json* ファイルのトリガー バインドと、[PowerShell 関数](functions-reference-powershell.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
 
 ```json
 {
@@ -755,7 +755,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ## <a name="working-with-client-identities"></a>クライアント ID の操作
 
-関数アプリが [App Service の認証と承認](../app-service/overview-authentication-authorization.md)を使用している場合は、コードから認証されたクライアントに関する情報を確認することができます。 この情報は、[プラットフォームによって挿入された要求ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)として使用できます。
+関数アプリが [App Service の認証と承認](../app-service/overview-authentication-authorization.md)を使用している場合は、コードから認証されたクライアントに関する情報を確認することができます。 この情報は、[プラットフォームによって挿入された要求ヘッダー](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code)として使用できます。
 
 また、この情報はバインディング データから参照することもできます。 この機能は、Functions 2.x 以降の Functions ランタイムのみで使用可能です。 また、現在のところ .NET 言語でのみ使用可能です。
 
@@ -827,19 +827,19 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 # <a name="java"></a>[Java](#tab/java)
 
-認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
+認証されたユーザーは、[HTTP ヘッダー](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code)経由で使用できます。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
+認証されたユーザーは、[HTTP ヘッダー](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code)経由で使用できます。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
+認証されたユーザーは、[HTTP ヘッダー](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code)経由で使用できます。
 
 # <a name="python"></a>[Python](#tab/python)
 
-認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
+認証されたユーザーは、[HTTP ヘッダー](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code)経由で使用できます。
 
 
 ---
@@ -924,7 +924,7 @@ C# 以外の関数では、Content-Type `image/jpeg` を使用して要求を送
 
 HTTP 要求の長さは 100 MB (104,857,600 バイト) に、URL の長さは 4 KB (4,096 バイト) バイトに制限されています。 これらの制限は、ランタイムの [Web.config ファイル](https://github.com/Azure/azure-functions-host/blob/v3.x/src/WebJobs.Script.WebHost/web.config)の `httpRuntime` 要素で指定されています。
 
-HTTP トリガーを使用する関数が 230 秒以内に完了しない場合、[Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) でタイムアウトが発生し、HTTP 502 エラーが返されます。 この関数は実行を継続しますが、HTTP 応答を返すことはできません。 実行時間が長い関数の場合は、非同期パターンに従い、要求の状態について ping で確認できる場所を返すことをお勧めします。 関数を実行できる時間については、[スケールとホスティングに関するページの「従量課金プラン」](functions-scale.md#timeout)を参照してください。
+HTTP トリガーを使用する関数が 230 秒以内に完了しない場合、[Azure Load Balancer](../app-service/faq-availability-performance-application-issues.yml#why-does-my-request-time-out-after-230-seconds-) でタイムアウトが発生し、HTTP 502 エラーが返されます。 この関数は実行を継続しますが、HTTP 応答を返すことはできません。 実行時間が長い関数の場合は、非同期パターンに従い、要求の状態について ping で確認できる場所を返すことをお勧めします。 関数を実行できる時間については、[スケールとホスティングに関するページの「従量課金プラン」](functions-scale.md#timeout)を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

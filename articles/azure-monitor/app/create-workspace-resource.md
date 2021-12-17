@@ -1,14 +1,15 @@
 ---
-title: 新しい Azure Monitor Application Insights のワークスペース ベースのリソースを作成する | Microsoft Docs
+title: Azure Monitor Application Insights の新しいワークスペース ベースのリソースを作成する
 description: 新しい Azure Monitor Application Insights のワークスペース ベースのリソースを有効にするために必要な手順について説明します。
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 42025ec3e2c509e2fcf7aa4874d9d5363f134a97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578332"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604495"
 ---
 # <a name="workspace-based-application-insights-resources"></a>ワークスペース ベースの Application Insights リソース
 
@@ -23,10 +24,10 @@ ms.locfileid: "100578332"
 
 ワークスペースベースの Application Insights を使用すると、次のような、Azure Monitor および Log Analytics の最新の機能を活用できます。
 
-* [カスタマー マネージド キー (CMK)](../logs/customer-managed-keys.md) は、あなたのみがアクセスできる暗号化キーで、保存されているお使いのデータを暗号化します。
+* [カスタマー マネージド キー (CMK)](../logs/customer-managed-keys.md) を使用すると、自分だけがアクセスできる暗号化キーを使用して、保存データを暗号化できます。
 * [Azure Private Link](../logs/private-link-security.md) を使用すると、プライベート エンドポイントを使用して Azure PaaS サービスを仮想ネットワークに安全に接続できます。
 * [Profiler およびスナップショット デバッガー向けの Bring Your Own Storage (BYOS)](./profiler-bring-your-own-storage.md) では、保存時の暗号化ポリシー、有効期間管理ポリシー、および Application Insights Profiler およびスナップショット デバッガーに関連付けられているすべてのデータのネットワーク アクセスを完全に制御できます。 
-* [容量予約レベル](../logs/manage-cost-storage.md#pricing-model)を利用すると、従量課金制の料金と比較して 25% も節約できます。 
+* [コミットメント レベル](../logs/manage-cost-storage.md#pricing-model)を使用すると、従量課金制の料金と比較して 30% も節約できます。 
 * Log Analytics ストリーミング インジェストにより、データ インジェストがより高速になります。
 
 ## <a name="create-workspace-based-resource"></a>ワークスペースベースのリソースを作成する
@@ -64,10 +65,10 @@ ms.locfileid: "100578332"
 コードベースの監視用の Application Insights SDK の設定に関する詳細なドキュメントについては、言語またはフレームワーク固有のドキュメントを参照してください。
 
 - [ASP.NET](./asp-net.md)
-- [ASP.NET Core ](./asp-net-core.md)
+- [ASP.NET Core](./asp-net-core.md)
 - [バックグラウンド タスクおよび最新のコンソール アプリケーション (.NET/.NET Core)](./worker-service.md)
 - [クラシック コンソール アプリケーション (.NET)](./console.md) 
-- [Java ](./java-get-started.md?tabs=maven)
+- [Java](./java-in-process-agent.md)
 - [JavaScript](./javascript.md)
 - [Node.js](./nodejs.md)
 - [Python](./opencensus-python.md)
@@ -113,7 +114,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-このコマンドについての完全な Azure CLI ドキュメントについては、[Azure CLI のドキュメント](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)を参照してください。
+このコマンドについての完全な Azure CLI ドキュメントについては、[Azure CLI のドキュメント](/cli/azure/monitor/app-insights/component#az_monitor_app_insights_component_create)を参照してください。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -207,8 +208,7 @@ Application Insights リソース ウィンドウで **[プロパティ]**  >  *
 従来の連続エクスポート機能は、ワークスペース ベースのリソースではサポートされていません。 代わりに、Application Insights リソースから **[診断設定]**  >  **[診断設定を追加する]** を選択します。 すべてのテーブルまたはテーブルのサブセットを選択して、ストレージ アカウントにアーカイブしたり、Azure Event Hub にストリーミングしたりすることができます。
 
 > [!NOTE]
-> 現在、テレメトリのエクスポートに追加料金は発生しません。 この機能の価格情報については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。  課金が開始される前に、通知が送信されます。 通知期間後も <feature name> を引き続き使用することを選択した場合は、該当する料金が適用されます。 
- 
+> 現在、テレメトリのエクスポートに追加料金は発生しません。 この機能の価格情報については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。  課金が開始される前に、通知が送信されます。 通知期間後もテレメトリ エクスポートを引き続き使用する場合は、該当する料金が適用されます。 
 
 ## <a name="next-steps"></a>次のステップ
 

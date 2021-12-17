@@ -2,14 +2,14 @@
 title: Shared Access Signature を使用して Azure Event Hubs へのアクセスを認証する
 description: この記事では、Shared Access Signature を使用して Event Hubs リソースへのアクセスを認証する方法を示します。
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/26/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ff141fc1bb681e2356a4471dfdc808d622fd76b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 151f91741394d5b723eed88ac94b9177a7d50a95
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98986497"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028294"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Shared Access Signature (SAS) を使用して Event Hubs リソースへのアクセスを認証する
 Shared Access Signature (SAS) を使用すると、共有アクセス署名を持つクライアントに付与するアクセス許可の種類をきめ細かく制御することができます。 SAS で設定できる制御をいくつかを以下に示します。 
@@ -59,13 +59,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 受信側が同じパラメーターでハッシュを再計算して、発行者が有効な署名キーを所有していることを確認できるように、トークンにはハッシュされていない値が含まれています。
 
-リソース URI とは、アクセスが要求される Service Bus リソースの完全な URI です。 たとえば、 http://<namespace>.servicebus.windows.net/<entityPath> または `sb://<namespace>.servicebus.windows.net/<entityPath>;` つまり、`http://contoso.servicebus.windows.net/eventhubs/eh1` となります。
+リソース URI とは、アクセスが要求される Service Bus リソースの完全な URI です。 たとえば、`http://<namespace>.servicebus.windows.net/<entityPath>` または `sb://<namespace>.servicebus.windows.net/<entityPath>` (つまり `http://contoso.servicebus.windows.net/eh1`) です。
 
 URI はパーセント エンコードする必要があります。
 
-署名に使用される共有アクセス承認規則は、この URI、またはその階層の親のいずれかで指定したエンティティに構成する必要があります。 たとえば、前の例では、`http://contoso.servicebus.windows.net/eventhubs/eh1` または `http://contoso.servicebus.windows.net` となります。
+署名に使用される共有アクセス承認規則は、この URI、またはその階層の親のいずれかで指定したエンティティに構成する必要があります。 たとえば、前の例では、`http://contoso.servicebus.windows.net/eh1` または `http://contoso.servicebus.windows.net` となります。
 
-SAS トークンは、署名文字列で使われている <resourceURI> がプレフィックスになっているすべてのリソースで有効です。
+SAS トークンは、署名文字列で使われている `<resourceURI>` がプレフィックスになっているすべてのリソースで有効です。
 
 > [!NOTE]
 > 共有アクセス ポリシーを使用して、Event Hubs のアクセス トークンを生成します。 詳細については、「[Shared access authorization policy](authorize-access-shared-access-signature.md#shared-access-authorization-policies)」 (共有アクセス承認ポリシー) を参照してください。
@@ -218,11 +218,71 @@ private static string createToken(string resourceUri, string keyName, string key
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>SAS を使用する Event Hubs コンシューマーの認証 
 Event Hubs プロデューサーによって生成されたデータから消費するバックエンド アプリケーションを認証する場合、Event Hubs トークン認証では、クライアントに **管理** 権限、または Event Hubs 名前空間あるいはイベント ハブ インスタンスまたはトピックに割り当てられる **リッスン** 特権が求められます。 データは、コンシューマー グループを使用して Event Hubs から消費されます。 SAS ポリシーで詳細なスコープが提供されますが、このスコープは、コンシューマー レベルではなく、エンティティ レベルでのみ定義されます。 これは、名前空間レベルあるいはイベント ハブ インスタンス レベルまたはトピック レベルで定義された特権が、そのエンティティのコンシューマー グループに適用されることを意味します。
 
+## <a name="disabling-localsas-key-authentication"></a>ローカル/SAS キー認証の無効化  
+組織のセキュリティ要件によっては、ローカル/SAS キー認証を完全に無効にし、Azure Active Directory (Azure AD) ベースの認証に依存する必要があります。これは、Azure Event Hubs に接続するための推奨される方法です。 ローカルまたは SAS キーの認証は、Event Hubsテンプレートを使用して、Azure portalまたはAzure Resource Managerできます。 
+
+### <a name="disabling-localsas-key-authentication-via-the-portal"></a>ポータルを使用したローカル/SAS キー認証の無効化 
+特定の名前空間のローカル/SAS キー認証は、Event Hubsを使用して無効Azure portal。 
+
+次の図に示すように、名前空間の概要セクションで、[ローカル認証] を *クリックします*。 
+
+![ローカル認証を無効に関する名前空間の概要](./media/authenticate-shared-access-signature/disable-local-auth-overview.png)
+
+次に、[無効] *オプションを* 選択し、次 *に示すように [OK]* をクリックします。 
+![ローカル認証の無効化](./media/authenticate-shared-access-signature/disabling-local-auth.png)
+
+### <a name="disabling-localsas-key-authentication-using-a-template"></a>テンプレートを使用したローカル/SAS キー認証の無効化 
+次のテンプレート (ARM テンプレート) に示Event Hubs Azure Resource Managerプロパティを に設定することで、特定の名前空間のローカル認証を `disableLocalAuth``true` 無効にできます。
+
+```json
+"resources":[
+      {
+         "apiVersion":"[variables('ehVersion')]",
+         "name":"[parameters('eventHubNamespaceName')]",
+         "type":"Microsoft.EventHub/Namespaces",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Standard",
+            "tier":"Standard"
+         },
+         "resources": [
+    {
+      "apiVersion": "2017-04-01",
+      "name": "[parameters('eventHubNamespaceName')]",
+      "type": "Microsoft.EventHub/Namespaces",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {
+        "isAutoInflateEnabled": "true",
+        "maximumThroughputUnits": "7", 
+        "disableLocalAuth": false
+      },
+      "resources": [
+        {
+          "apiVersion": "2017-04-01",
+          "name": "[parameters('eventHubName')]",
+          "type": "EventHubs",
+          "dependsOn": [
+            "[concat('Microsoft.EventHub/namespaces/', parameters('eventHubNamespaceName'))]"
+          ],
+          "properties": {
+            "messageRetentionInDays": "[parameters('messageRetentionInDays')]",
+            "partitionCount": "[parameters('partitionCount')]"
+          }
+
+        }
+      ]
+    }
+  ]
+``` 
+
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。
 
 - [SAS を使用して承認する](authenticate-shared-access-signature.md)
-- [Azure ロールベースのアクセス制御 (Azure RBAC) を使用して認可する](authenticate-shared-access-signature.md)
+- [Azure ロールベースのアクセス制御 (Azure RBAC) を使用して認可する](authorize-access-azure-active-directory.md)
 - [Event Hubs についてさらに学習する](event-hubs-about.md)
 
 次の関連記事を参照してください。

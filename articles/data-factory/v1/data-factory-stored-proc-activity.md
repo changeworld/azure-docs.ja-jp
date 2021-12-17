@@ -2,17 +2,18 @@
 title: SQL Server ストアド プロシージャ アクティビティ
 description: SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Database または Azure Synapse Analytics でストアド プロシージャを呼び出す方法について説明します。
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 author: nabhishek
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 05717352936bed888e108277d0163e43bc5a37af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a062bd4717cf13c7428da15e928a1e97cfde755d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368763"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250029"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -21,8 +22,8 @@ ms.locfileid: "100368763"
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
 > * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 > * [Spark アクティビティ](data-factory-spark.md)
-> * [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [ML Studio (クラシック) の Batch Execution アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [ML Studio (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
@@ -48,6 +49,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 
 ## <a name="walkthrough"></a>チュートリアル
 ### <a name="sample-table-and-stored-procedure"></a>サンプル テーブルとストアド プロシージャ
+
 1. SQL Server Management Studio などのツールを使って Azure SQL Database に以下の **テーブル** を作成します。 datetimestamp 列は、対応する ID が生成された日付と時刻です。
 
     ```SQL
@@ -61,11 +63,12 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
     CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
     GO
     ```
-    Id は一意の識別子で、datetimestamp 列は、対応する ID が生成された日時です。
+    `Id` は一意の識別子で、`datetimestamp` 列は、対応する ID が生成された日時です。
     
-    ![サンプル データ](./media/data-factory-stored-proc-activity/sample-data.png)
+    :::image type="content" source="./media/data-factory-stored-proc-activity/sample-data.png" alt-text="サンプル データ":::
 
     このサンプルでは、ストアド プロシージャは、Azure SQL Database にあります。 ストアド プロシージャが Azure Synapse Analytics と SQL Server Database にある場合の方法は似ています。 SQL Server データベースの場合は、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)をインストールする必要があります。
+    
 2. **sampletable** にデータを挿入する、次の **ストアド プロシージャ** を作成します。
 
     ```SQL
@@ -85,10 +88,10 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューの **[新規]** をクリックし、 **[インテリジェンス + 分析]** 、 **[Data Factory]** の順にクリックします。
 
-    ![新しいデータ ファクトリ 1](media/data-factory-stored-proc-activity/new-data-factory.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/new-data-factory.png" alt-text="新しいデータ ファクトリ 1":::
 3. **[新しいデータ ファクトリ]** ブレードで、[名前] フィールドに「**SProcDF**」と入力します。 Azure Data Factory の名前は **グローバルで一意** となります。 ファクトリを正常に作成できるようにするには、データ ファクトリの名前の先頭に自分の名前を付ける必要があります。
 
-   ![新しいデータ ファクトリ 2](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
+   :::image type="content" source="media/data-factory-stored-proc-activity/new-data-factory-blade.png" alt-text="新しいデータ ファクトリ 2":::
 4. **Azure サブスクリプション** を選択します。
 5. **リソース グループ** について、次の手順のいずれかを行います。
    1. **[新規作成]** をクリックし、リソース グループの名前を入力します。
@@ -98,7 +101,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 8. **[新しい Data Factory]** ブレードで **[作成]** をクリックします。
 9. 作成したデータ ファクトリは、Azure Portal の **ダッシュボード** に表示されます。 データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。
 
-   ![Data Factory ホーム ページ](media/data-factory-stored-proc-activity/data-factory-home-page.png)
+   :::image type="content" source="media/data-factory-stored-proc-activity/data-factory-home-page.png" alt-text="Data Factory ホーム ページ":::
 
 ### <a name="create-an-azure-sql-linked-service"></a>Azure SQL のリンク サービスを作成する
 データ ファクトリの作成後、sampletable テーブルと usp_sample ストアド プロシージャが格納された Azure SQL Database 内のデータベースをデータ ファクトリにリンクする、Azure SQL のリンクされたサービスを作成します。
@@ -106,7 +109,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 1. **SProcDF** の **[Data Factory]** ブレードで、 **[作成およびデプロイ]** をクリックして Data Factory エディターを起動します。
 2. コマンド バーの **[新しいデータ ストア]** をクリックし、 **[Azure SQL Database]** を選択します。 Azure SQL のリンク サービスを作成するための JSON スクリプトがエディターに表示されます。
 
-   ![新しいデータ ストア 1](media/data-factory-stored-proc-activity/new-data-store.png)
+   :::image type="content" source="media/data-factory-stored-proc-activity/new-data-store.png" alt-text="新しいデータ ストア 1":::
 3. JSON スクリプトを次のように変更します。
 
    1. `<servername>` をご自分のサーバーの名前に置き換えます。
@@ -114,17 +117,17 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
    3. `<username@servername>` を、データベースへのアクセス権を持つユーザー アカウントに置き換えます。
    4. `<password>` を、ユーザー アカウントのパスワードに置き換えます。
 
-      ![新しいデータ ストア 2](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
+      :::image type="content" source="media/data-factory-stored-proc-activity/azure-sql-linked-service.png" alt-text="新しいデータ ストア 2":::
 4. リンク サービスをデプロイするには、コマンド バーの **[デプロイ]** をクリックします。 AzureSqlLinkedService が左側のツリー ビューに表示されることを確認します。
 
-    ![リンクされたサービス 1 を表示しているツリー ビュー](media/data-factory-stored-proc-activity/tree-view.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/tree-view.png" alt-text="リンクされたサービス 1 を表示しているツリー ビュー":::
 
 ### <a name="create-an-output-dataset"></a>出力データセットを作成する
 ストアド プロシージャがデータを生成しない場合でも、ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 これは、出力データセットによってアクティビティのスケジュール (時間単位、日単位など、アクティビティの実行頻度) が開始されるためです。 出力データセットでは、ストアド プロシージャを実行する Azure SQL Database、Azure Synapse Analytics、または SQL Server Database を表す **リンクされたサービス** を使用する必要があります。 出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 出力データセットに **ダミー データセット** (ストアド プロシージャの出力を実際には保持しないテーブルを参照するデータセット) を指定できる場合もあります。 このダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。
 
 1. **[...More (その他)]** (ツール バー上) をクリックし、 **[新しいデータセット]** 、 **[Azure SQL]** の順にクリックします。 コマンド バーの **[新しいデータセット]** をクリックし、 **[Azure SQL]** を選択します。
 
-    ![リンクされたサービス 2 を表示しているツリー ビュー](media/data-factory-stored-proc-activity/new-dataset.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/new-dataset.png" alt-text="リンクされたサービス 2 を表示しているツリー ビュー":::
 2. 次の JSON スクリプトをコピーして、JSON エディターに貼り付けます。
 
     ```JSON
@@ -145,7 +148,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
     ```
 3. データセットをデプロイするには、コマンド バーの **[デプロイ]** をクリックします。 ツリー ビューにデータセットが表示されることを確認します。
 
-    ![リンクされたサービスを表示しているツリー ビュー](media/data-factory-stored-proc-activity/tree-view-2.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/tree-view-2.png" alt-text="リンクされたサービスを表示しているツリー ビュー":::
 
 ### <a name="create-a-pipeline-with-sqlserverstoredprocedure-activity"></a>SqlServerStoredProcedure アクティビティでパイプラインを作成する
 次に、ストアド プロシージャ アクティビティを含むパイプラインを作成しましょう。
@@ -195,16 +198,16 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 ### <a name="monitor-the-pipeline"></a>パイプラインの監視
 1. **[X]** をクリックして Data Factory エディターのブレードを閉じ、[Data Factory] ブレードに戻って **[ダイアグラム]** をクリックします。
 
-    ![ダイアグラム タイル 1](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/data-factory-diagram-tile.png" alt-text="ダイアグラム タイル 1":::
 2. **ダイアグラム ビュー** に、パイプラインの概要と、このチュートリアルで使用するデータセットが表示されます。
 
-    ![ダイアグラム タイル 2](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/data-factory-diagram-view.png" alt-text="ダイアグラム タイル 2":::
 3. ダイアグラム ビューで、`sprocsampleout` データセットをダブルクリックします。 スライスが準備完了状態で表示されます。 スライスは、JSON の開始時刻から終了時刻までの間に 1 時間ごとに生成されるため、5 つのスライスがあります。
 
-    ![ダイアグラム タイル 3](media/data-factory-stored-proc-activity/data-factory-slices.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/data-factory-slices.png" alt-text="ダイアグラム タイル 3":::
 4. スライスが **準備完了** 状態のときに、データベースに対して `select * from sampletable` クエリを実行し、ストアド プロシージャによってデータがテーブルに挿入されたことを確認します。
 
-   ![出力データ](./media/data-factory-stored-proc-activity/output.png)
+   :::image type="content" source="./media/data-factory-stored-proc-activity/output.png" alt-text="出力データ":::
 
    Azure Data Factory パイプラインの監視の詳細については、 [パイプラインの監視](data-factory-monitor-manage-pipelines.md) に関するページを参照してください。
 
@@ -311,7 +314,7 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 ## <a name="passing-a-static-value"></a>静的な値を渡す
 次に、‘Document sample’ という静的値を含む ‘Scenario’ という別の列をテーブルに追加する例を考えてましょう。
 
-![サンプル データ 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
+:::image type="content" source="./media/data-factory-stored-proc-activity/sample-data-2.png" alt-text="サンプル データ 2":::
 
 **テーブル:**
 

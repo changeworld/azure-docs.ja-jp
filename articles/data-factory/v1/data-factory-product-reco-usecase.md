@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: 44c66f5fa89e7293667c930bfd1720d72dc26bf4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/22/2021
+ms.openlocfilehash: fecdf187a5cb1591cd585cf40397b48d8f0874b1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785072"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218488"
 ---
 # <a name="use-case---product-recommendations"></a>使用事例 - 製品に関する推奨事項
 Azure Data Factory は、ソリューション アクセラレータの Cortana Intelligence Suite の実装に使用されている数多くあるサービスの 1 つです。  このスイートの詳細については、 [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) のページを参照してください。 このドキュメントでは、Azure ユーザーが Azure Data Factory と他の Cortana Intelligence コンポーネント サービスを使用して、既に解決および実装している一般的な使用事例について説明します。
@@ -40,7 +41,7 @@ Azure Data Factory は、ソリューション アクセラレータの Cortana 
 
 すべてのデータは結合され、製品推奨システムに取り込まれます。ユーザーが Web サイトで製品を閲覧すると、顧客の関心と操作に基づいて個人用に設定された推奨が提供されます。 また、特定の顧客に関連付けられていない Web サイト全体の使用パターンに基づいて、顧客が閲覧している製品に関連する製品も表示されます。
 
-![使用事例の図](./media/data-factory-product-reco-usecase/diagram-1.png)
+:::image type="content" source="./media/data-factory-product-reco-usecase/diagram-1.png" alt-text="使用事例の図":::
 
 オンライン小売業者の Web では、毎日 GB 単位の未加工の Web ログ ファイルが半構造ファイルとして生成されます。 未加工の Web ログ ファイルと、顧客および製品のカタログ情報は、Data Factory のグローバルにデプロイされたサービスとしてのデータ移動機能を使用して、Azure BLOB ストレージに定期的に取り込まれます。 長期保存のために、1 日の未加工のログ ファイルは (年月別に) 分割され、BLOB ストレージに保存されます。  [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) は、未加工のログ ファイルを分割し、BLOB ストレージに保存し、取り込んだログを Hive および Pig スクリプトを使用して処理するために使用されます。 その後、分割された Web ログ データは、機械学習推奨システムに必要な入力を抽出するために処理され、個人用に設定された製品推奨が生成されます。
 

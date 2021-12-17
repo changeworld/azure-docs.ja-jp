@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 04/22/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c10a39b050fa66192f762ba642b4c8ac2e080250
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: c6e31a9026e4598d12367d623cfb166663c6fe0a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258144"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044819"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Arkose Labs を構成する
 
@@ -87,7 +87,7 @@ Arkose Labs 統合には、次のコンポーネントが含まれています�
 
 ユーザー フローは、**サインアップ** と **サインイン**、または **サインアップ** のみに使用できます。 Arkose Labs のユーザー フローは、サインアップ中にのみ表示されます。
 
-1. ユーザー フローを作成するには、[手順](./tutorial-create-user-flows.md)を参照してください。 既存のユーザー フローを使用する場合は、それが **推奨 (次世代のプレビュー)** バージョンの種類である必要があります。
+1. ユーザー フローを作成するには、[手順](./tutorial-create-user-flows.md)を参照してください。 既存のユーザー フローを使用する場合は、それが **推奨** バージョンの種類である必要があります。
 
 2. ユーザー フローの設定で、 **[ユーザー属性]** に移動し、 **[ArkoseSessionToken]** 要求を選択します。
 
@@ -149,7 +149,7 @@ Visual Studio Code 用 [Azure Functions 拡張機能](https://marketplace.visual
 
 3. Azure Functions 拡張機能によって、ローカル開発用にいくつかのファイルが自動的に生成され、依存関係がインストールされます。また、まだ存在しない場合は、Functions Core ツールがインストールされます。 これらのツールは、デバッグ エクスペリエンスに役立ちます。
 
-4. Functions Core ツールからの出力が Visual Studio Code の **[ターミナル]** パネルに表示されます。 ホストが起動したら、出力に表示されるローカル URL を **Alt を押しながらクリック** してブラウザーを開き、関数を実行します。 Azure Functions エクスプローラーで、関数を右クリックして、ローカルにホストされている関数の URL を表示します。
+4. Functions Core ツールからの出力が Visual Studio Code の **[ターミナル]** パネルに表示されます。 ホストが起動したら、出力に表示されるローカル URL を **Alt を押しながらクリック** してブラウザーを開き、関数を実行します。 Azure Functions エクスプローラーで、関数を右クリックして、ローカルでホストされている関数の URL を表示します。
 
 テスト中にローカル インスタンスを再デプロイするには、手順 1 から 4 を繰り返します。
 
@@ -157,7 +157,7 @@ Visual Studio Code 用 [Azure Functions 拡張機能](https://marketplace.visual
 
 このサンプルでは、[HTTP 基本認証](https://tools.ietf.org/html/rfc7617)を使用して Web API エンドポイントを保護します。
 
-ユーザー名とパスワードは、リポジトリの一部としてではなく、環境変数として格納されます。 詳細については、[local.settings.js](../azure-functions/functions-run-local.md?tabs=macos%2ccsharp%2cbash#local-settings-file) ファイルを参照してください。
+ユーザー名とパスワードは、リポジトリの一部としてではなく、環境変数として格納されます。 詳細については、[local.settings.js](../azure-functions/functions-develop-local.md#local-settings-file) ファイルを参照してください。
 
 1. ルート フォルダー内に local.settings.js ファイルを作成します
 

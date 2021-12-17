@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d24e67eac54b3ce4eadfc6a4bde47410d59fae8b
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 7f044133c3692ef440e69ad4f0a82e5240334129
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581103"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360893"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー向け Azure Monitor Application Insights Agent の概要
 
@@ -27,7 +27,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="install-prerequisites"></a>必須コンポーネントのインストール
 
-- 監視を有効にするには、接続文字列が必要です。 接続文字列は、Application Insights リソースの [概要] ブレードに表示されます。 詳細については、[接続文字列](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#finding-my-connection-string)に関するページを参照してください。
+- 監視を有効にするには、接続文字列が必要です。 接続文字列は、Application Insights リソースの [概要] ブレードに表示されます。 詳細については、[接続文字列](./sdk-connection-string.md?tabs=net#finding-my-connection-string)に関するページを参照してください。
 
 > [!NOTE]
 > 2020 年 4 月の時点で、PowerShell ギャラリーでは TLS 1.1 および 1.0 が非推奨とされています。
@@ -41,21 +41,27 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 Install-Module -Name PowerShellGet -Force
-``` 
+```    
 PowerShell を閉じます。
 
 ### <a name="install-application-insights-agent"></a>Application Insights Agent をインストールする
 PowerShell を管理者として実行します。
-```powershell   
+```powershell    
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Install-Module -Name Az.ApplicationMonitor -AllowPrerelease -AcceptLicense
-``` 
+```    
+
+> [!NOTE]
+> `AllowPrerelease`switch in `Install-Module` コマンドレットを使用すると、ベータ リリースをインストールできます。 
+>
+> 詳細については、[Install-Module](/powershell/module/powershellget/install-module#parameters) に関するページを参照してください。
+>
 
 ### <a name="enable-monitoring"></a>監視を有効にする
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-Enable-ApplicationInsightsMonitoring -ConnectionString 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+Enable-ApplicationInsightsMonitoring -ConnectionString 'InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ```
     
         
@@ -74,7 +80,7 @@ Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
 ### <a name="enable-monitoring"></a>監視を有効にする
 
 ```powershell
-Enable-ApplicationInsightsMonitoring -ConnectionString 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+Enable-ApplicationInsightsMonitoring -ConnectionString 'InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ```
 
 
@@ -99,4 +105,3 @@ Application Insights エージェントをさらに活用する:
 
 - ここに記載されているコマンドの説明については、[詳細な手順](status-monitor-v2-detailed-instructions.md)に関する記事を参照してください。
 - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。
-

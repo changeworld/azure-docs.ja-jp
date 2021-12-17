@@ -2,21 +2,21 @@
 title: チュートリアル:myPolicies を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを myPolicies に自動的にプロビジョニングまたはプロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 221f63ab9a7eb3f71a4c730a11565dda64c9edc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: d8d0bc83ec763d9c32ff9d90419a7b163b261144
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96353587"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762154"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>チュートリアル:myPolicies を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -32,7 +32,7 @@ ms.locfileid: "96353587"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * Azure AD テナント。
-* [myPolicies テナント](https://mypolicies.com/index.html#section10)。
+* [myPolicies テナント](https://mypolicies.com/)。
 * Admin アクセス許可がある myPolicies のユーザー アカウント。
 
 ## <a name="assigning-users-to-mypolicies"></a>myPolicies へのユーザーの割り当て

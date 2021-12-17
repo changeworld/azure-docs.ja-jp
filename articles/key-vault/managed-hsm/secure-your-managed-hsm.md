@@ -2,19 +2,19 @@
 title: マネージド HSM へのアクセスをセキュリティで保護する - Azure Key Vault Managed HSM
 description: Azure RBAC と Managed HSM ローカル RBAC を使用してマネージド HSM へのアクセスをセキュリティで保護する方法について説明します
 services: key-vault
-author: amitbapat
+author: mbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.author: ambapat
-ms.openlocfilehash: 5a3fcc10f318f2a8065550a48eb2bfb4bbdd4915
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: mbaldwin
+ms.openlocfilehash: d374df5e0e072fbcc64ddc5e376fb558b3b4fb86
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218402"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440279"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>マネージド HSM へのアクセスをセキュリティで保護する
 
@@ -27,7 +27,7 @@ Azure Key Vault Managed HSM は、暗号化キーを保護するクラウド サ
 この記事の手順を完了するには、次のものが必要です。
 
 * Microsoft Azure サブスクリプション。 サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
-* Azure CLI バージョン 2.12.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+* Azure CLI バージョン 2.25.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 * お使いのサブスクリプション内のマネージド HSM。 「[クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする](quick-create-cli.md)」を参照して、マネージド HSM をプロビジョニングしてアクティブにします。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -120,12 +120,12 @@ az keyvault role assignment create  --hsm-name ContosoMHSM --assignee $(az ad gr
 # However it cannot permanently delete (purge) keys
 az keyvault role assignment create  --hsm-name ContosoMHSM --assignee $(az vm identity show --name "vmname" --resource-group "ContosoAppRG" --query objectId -o tsv) --scope / --role "Managed HSM Crypto Auditor"
 
-# Assign "Managed HSM Crypto Service Encryption" role to the Storage account ID
+# Assign "Managed HSM Crypto Service Encryption User" role to the Storage account ID
 storage_account_principal=$(az storage account show --id $storageresource --query identity.principalId -o tsv)
 # (if no identity exists), then assign a new one
 [ "$storage_account_principal" ] || storage_account_principal=$(az storage account update --assign-identity --id $storageresource)
 
-az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Service Encryption" --assignee $storage_account_principal
+az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Service Encryption User" --assignee $storage_account_principal
 ```
 
 このチュートリアルでは、ほとんどの部分で、アクセス制御に関連するアクションについてのみ説明しています。 VM へのアプリケーションのデプロイ、ストレージ アカウントのカスタマー マネージド キーによる暗号化の有効化、マネージド HSM の作成に関連するその他のアクションや操作については説明していません。ここでの例では、アクセス制御とロール管理に焦点を絞っています。

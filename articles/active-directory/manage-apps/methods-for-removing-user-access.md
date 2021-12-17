@@ -1,21 +1,23 @@
 ---
-title: Azure Active Directory でアプリケーションへのユーザーのアクセスを削除する方法
+title: アプリケーションへのユーザー アクセスの削除方法
 description: Azure Active Directory でアプリケーションへのユーザーのアクセスを削除する方法について説明します
+titleSuffix: Azure AD
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 11/02/2020
-ms.author: iangithinji
-ms.openlocfilehash: 958abc5f9be443d66037a6d9fe8d8779e6e37e0e
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.author: davidmu
+ms.reviewer: phsignor
+ms.openlocfilehash: b0b3e1074df0a1067736900dbce7d7521414c1bc
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379589"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549757"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>アプリケーションへのユーザー アクセスの削除方法
 
@@ -39,16 +41,15 @@ ms.locfileid: "107379589"
 
 **ディレクトリ全体で今後のユーザーの同意動作をすべて無効にする** には、次の手順に従います。
 
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者** としてサインインします。
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者** としてサインインします。
 
-2.  **[Azure Active Directory 拡張機能]** を開きます 
+2. **[Azure Active Directory 拡張機能]** を開きます
 
-3.  ナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
+3. ナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
 
-5.  **[ユーザー設定]** をクリックします。
+4. **[ユーザー設定]** をクリックします。
 
-6.  **[Users can allow apps to access company data on their behalf]**(ユーザーはアプリが代わりに企業データにアクセスすることを許可できる) トグルを **[いいえ]** に設定して、[保存] ボタンをクリックします。
-
+5. **[Users can allow apps to access company data on their behalf]**(ユーザーはアプリが代わりに企業データにアクセスすることを許可できる) トグルを **[いいえ]** に設定して、[保存] ボタンをクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

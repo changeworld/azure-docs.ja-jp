@@ -13,12 +13,12 @@ metadata:
   ms.author: justinha
   manager: daveba
   ms.date: 08/01/2019
-  ms.openlocfilehash: be9c98f680d01999d1b27983eb17124d5d522804
-  ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+  ms.openlocfilehash: cf5536d47970a018316162a0785c0489d1b01b06
+  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/05/2020
-  ms.locfileid: "96619697"
+  ms.lasthandoff: 04/30/2021
+  ms.locfileid: "108285486"
 landingContent:
 - title: Azure AD Domain Services について
   linkLists:
@@ -33,7 +33,7 @@ landingContent:
     - text: 同期のしくみ
       url: synchronization.md
     - text: FAQ
-      url: faqs.md
+      url: faqs.yml
 - title: はじめに
   linkLists:
   - linkListType: deploy

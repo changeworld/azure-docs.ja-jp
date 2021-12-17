@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 30c33f6ec497fd5766dc541b50f341cb30946051
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a79f70036f63e5159ce1da003535f417358d4a0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95912571"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599223"
 ---
 # <a name="open-source-platforms-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 がサポートされているオープンソース プラットフォーム
 
-この記事では、Data Lake Storage Gen2 がサポートされているオープン ソース プラットフォームの一覧を示します。  
+この記事では、Data Lake Storage Gen2 がサポートされているオープン ソース プラットフォームの一覧を示します。
 
 ## <a name="supported-open-source-platforms"></a>サポートされるオープン ソース プラットフォーム
 
@@ -37,6 +37,6 @@ ms.locfileid: "95912571"
 ## <a name="see-also"></a>参照
 
 - [Azure Data Lake Storage Gen2 に関する既知の問題](data-lake-storage-known-issues.md)
-- [Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](data-lake-storage-supported-blob-storage-features.md)
+- [Azure Storage アカウントでの Blob Storage 機能のサポート](storage-feature-support-in-storage-accounts.md)
 - [Azure Data Lake Storage Gen2 がサポートされている Azure のサービス](data-lake-storage-supported-azure-services.md)
 - [Azure Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)

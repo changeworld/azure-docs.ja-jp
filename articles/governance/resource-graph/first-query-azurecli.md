@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:初めての Azure CLI クエリ
 description: このクイックスタートでは、手順に従って、Azure CLI の Resource Graph 拡張機能を有効にし、最初のクエリを実行します。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5111f59eb760afda4e206837ca5bdf8bcc201338
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34867ac6cb4f8211609144be3e41a84366399bcd
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98917843"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322224"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して最初の Resource Graph クエリを実行します
 
@@ -48,7 +48,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-選択した環境に Azure CLI 拡張機能が追加されたので、簡単な Resource Graph クエリを試してみましょう。 クエリは、各リソースの **名前** および **リソースの種類** を使用して、最初の 5 つの Azure リソースを返します。
+選択した環境に Azure CLI 拡張機能が追加されたので、簡単なテナントベースの Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。 [管理グループ](../management-groups/overview.md)またはサブスクリプションでクエリを実行するには、`--managementgroups` または `--subscriptions` 引数を使用します。
 
 1. `graph`拡張機能と`query`コマンドを使用して、最初の Azure Resource Graph クエリを実行します。
 

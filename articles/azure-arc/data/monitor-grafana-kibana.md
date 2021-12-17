@@ -7,29 +7,27 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 12/08/2020
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: cb53aba300b933c78d9ac2f5fc5cf8054f3413e3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 27f338d093d2084df5ca00b61a8c258d04067b69
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670003"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563361"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Kibana と Grafana を使用してログとメトリックを表示する
 
 Web ダッシュボードである Kibana と Grafana は、Azure Arc 対応データ サービスによって使用されている Kubernetes 名前空間に関する分析情報を提供して明らかにするために用意されています。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 
 ## <a name="monitor-azure-sql-managed-instances-on-azure-arc"></a>Azure Arc 上の Azure SQL Managed Instance を監視する
 
 Azure Arc 対応 SQL Managed Instance のログと監視ダッシュボードにアクセスするには、次の `azdata` CLI コマンドを実行します。
 
-```bash
-
-azdata arc sql endpoint list -n <name of SQL instance>
+```azurecl
+az sql mi-arc endpoint list -n <name of SQL instance> --use-k8s
 
 ```
 関連する Grafana ダッシュボードは次のとおりです。
@@ -43,7 +41,7 @@ azdata arc sql endpoint list -n <name of SQL instance>
 >  ユーザー名とパスワードの入力を求められたら、Azure Arc データ コントローラーの作成時に指定したユーザー名とパスワードを入力します。
 
 > [!NOTE]
->  プレビューで使用される証明書は自己署名証明書であるため、証明書の警告が表示されます。
+>  証明書は自己署名証明書であるため、証明書の警告が表示されます。
 
 
 ## <a name="monitor-azure-database-for-postgresql-hyperscale-on-azure-arc"></a>Azure Arc で Azure Database for PostgreSQL Hyperscale を監視する
@@ -52,7 +50,7 @@ PostgreSQL Hyperscale のログと監視ダッシュボードにアクセスす�
 
 ```bash
 
-azdata arc postgres endpoint list -n <name of postgreSQL instance>
+az postgres arc-server endpoint list -n <name of postgreSQL instance> --k8s-namespace <namespace> --use-k8s
 
 ```
 
@@ -98,4 +96,3 @@ az network nsg rule create -n ports_30777 --nsg-name azurearcvmNSG --priority 60
    - [Kibana ガイド](https://www.elastic.co/guide/en/kibana/current/index.html)
    - [Kibana でのデータ視覚化を使用したダッシュボードのドリルダウンの概要](https://www.elastic.co/webinars/dashboard-drilldowns-with-data-visualizations-in-kibana/)
    - [Kibana ダッシュボードを作成する方法](https://www.elastic.co/webinars/how-to-build-kibana-dashboards/)
-

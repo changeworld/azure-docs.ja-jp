@@ -1,20 +1,20 @@
 ---
 title: Azure CLI を使用した Azure HDInsight クラスターの管理
-description: Azure CLI を使用して、Azure HDInsight クラスターを管理する方法について説明します。 クラスターの種類には、Apache Hadoop、Spark、HBase、Storm、Kafka、Interactive Query、および ML サービスがあります。
+description: Azure CLI を使用して、Azure HDInsight クラスターを管理する方法について説明します。 クラスターの種類には、Apache Hadoop、Spark、HBase、Storm、Kafka、Interactive Query があります。
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-azurecli
 ms.date: 02/26/2020
-ms.openlocfilehash: 14b88700f3968e3bfdc788abb2fc9ce90634068e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 74f228c8c1d9ca29e3f9e60062891a90a3a4abf6
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770347"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122651818"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure CLI を使用した Azure HDInsight クラスターの管理
 
-[!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
+[!INCLUDE [selector](includes/hdinsight-portal-management-selector.md)]
 
 [Azure CLI](/cli/azure/) を使用して、Azure HDInsight クラスターを管理する方法について説明します。 Azure コマンド ライン インターフェイス (CLI) は、Azure リソースを管理するための、Microsoft のクロスプラットフォーム コマンド ライン エクスペリエンスです。
 

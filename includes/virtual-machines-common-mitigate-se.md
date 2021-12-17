@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: a9146099951aba223a7b201c1613e1ec0ba617d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95e4474924d32eca848d4dcb0e7028f328cb59c1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96509141"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157570"
 ---
 **ドキュメントの最終更新日**: 2019 年 11 月 12 日午前 10:00 (PST)。
 
@@ -108,7 +108,7 @@ Windows OS support for TAA mitigation is enabled: True
 **手順 3**: カーネル仮想アドレス シャドウ処理 (KVAS) とブランチ ターゲット インジェクション (BTI) の OS サポートを有効にするには、[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`Session Manager` のレジストリ キーを使用して保護を有効にします。 再起動が必要となります。
 
 
-**手順 4**: [入れ子になった仮想化](../articles/virtual-machines/windows/nested-virtualization.md)を使ったデプロイの場合 (D3 と E3 のみ): これらの手順は、Hyper-V ホストとして使用している VM 内でのみ当てはまります。
+**手順 4**: [入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)を使ったデプロイの場合 (D3 と E3 のみ): これらの手順は、Hyper-V ホストとして使用している VM 内でのみ当てはまります。
 
 1.  [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`MinVmVersionForCpuBasedMitigations` のレジストリ キーを使用して保護を有効にします。
 2.  [こちら](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)の手順に従って、ハイパーバイザーのスケジューラの種類を `Core` に設定します。

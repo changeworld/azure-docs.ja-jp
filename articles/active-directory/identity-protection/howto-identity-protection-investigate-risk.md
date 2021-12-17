@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be72c2152bdb8e1155d2dd29547f93ba3605d462
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 776e98d414a62e63b6d472df45f52a66b52b0e62
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95251095"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349264"
 ---
 # <a name="how-to-investigate-risk"></a>方法:リスクの調査
 
@@ -76,7 +76,7 @@ Identity Protection を使用すると、お使いの環境のリスクを調査
 - サインインを安全と確認
 
 > [!NOTE] 
-> Identity Protection では、対話型または非対話型にかかわらず、すべての認証フローについてリスクを評価します。 ただし、サインイン レポートには、対話型のサインインだけが表示されます。非対話型サインインで発生した危険なサインインが表示されることがありますが、Azure AD サインイン レポートにはそのサインインは表示されません。
+> Identity Protection では、対話型または非対話型にかかわらず、すべての認証フローについてリスクを評価します。 危険なサインイン レポートには、対話型および非対話型サインインの両方が表示されます。このビューを変更するには、"サインインの種類" フィルターを使用します。
 
 ## <a name="risk-detections"></a>リスク検出
 
@@ -87,13 +87,12 @@ Identity Protection を使用すると、お使いの環境のリスクを調査
 - 各リスク検出についての種類を含む情報
 - 同時にトリガーされたその他のリスク
 - サインインが試行された場所
-- Microsoft Cloud App Security (MCAS) のリンクから詳細な情報にアクセスする
+- Microsoft Defender for Cloud Apps から得られた情報をさらに詳しく確認するためのリンク
 
 管理者は、ユーザーのリスク レポートまたはサインイン レポートに戻り、収集された情報に基づいてアクションを実行できます。
 
 > [!NOTE] 
 > 当社のシステムでは、リスクのあるユーザーのリスク スコアに影響を与えたリスク イベントが誤検知であること、または MFA プロンプトの実行やセキュリティで保護されたパスワードの変更など、ポリシーを適用することによってユーザーのリスクが修復されたことが検出される場合があります。 その場合、リスクの状態は無視され、「AI によってサインインが安全であることが確認されました」というリスクの詳細が表示されます。また、ユーザーのリスクには影響しなくなります。 
-
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,17 +2,17 @@
 title: Azure CDN の Standard ルール エンジンの一致条件 | Microsoft Docs
 description: Azure Content Delivery Network (Azure CDN) の Standard ルール エンジンの一致条件に関するリファレンス ドキュメント。
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: allensu
-ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: bd0c6b0578fc301c38e96b654a281eb025c54dc5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81259930"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469922"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN の Standard ルール エンジンの一致条件
 
@@ -113,6 +113,7 @@ IP の一致ではない | IP アドレス (スペース区切り)
 - IP アドレス ブロックの構文では、ベース IP アドレスの末尾にスラッシュおよびプレフィックス サイズを付与します。 次に例を示します。
   - **IPv4 の例**:*5.5.5.64/26* と指定した場合、アドレス 5.5.5.64 ～ 5.5.5.127 から配信される要求と一致します。
   - **IPv6 の例**:*1:2:3:/48* と指定した場合、アドレス 1:2:3:0:0:0:0:0 ～ 1:2:3:ffff:ffff:ffff:ffff:ffff から配信される要求と一致します。
+- リモート アドレスは、元のクライアント IP を表します。これは、ネットワーク接続からのものであるか、ユーザーがプロキシの背後である場合は、通常は X-Forwarded-For 要求ヘッダーからのものです。
 
 ### <a name="request-body"></a>要求本文
 

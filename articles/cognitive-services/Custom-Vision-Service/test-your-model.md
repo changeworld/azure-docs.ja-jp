@@ -1,25 +1,25 @@
 ---
 title: モデルをテストおよび再トレーニングする - Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: この記事では、イメージをテストし、それを使用して Custom Vision Service 内でモデルを再トレーニングする方法について説明します。
+description: イメージをテストし、それを使用して Custom Vision Service 内でモデルを再トレーニングする方法について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: 736d135323e2a2df38a13dc46189e2a243fbe381
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b326a610d3ac946d8fd610b072e882df3a4b5281
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100097536"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450459"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Custom Vision Service を使用したモデルのテストと再トレーニング
 
-モデルをトレーニングした後、ローカルに保存されたイメージまたはオンライン イメージを使用してすばやくテストできます。 テストでは、最後にトレーニングしたイテレーションが使用されます。
+モデルをトレーニングした後、ローカルに保存されたイメージまたはオンライン イメージを使用してすばやくテストできます。 テストでは、最後にトレーニングしたモデルのイテレーションが使用されます。
 
 ## <a name="test-your-model"></a>モデルのテスト
 
@@ -57,6 +57,6 @@ ms.locfileid: "100097536"
 
 3. __[Train]__(トレーニング) ボタンを使用して、分類子を再トレーニングします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [モデルを改良する](getting-started-improving-your-classifier.md)

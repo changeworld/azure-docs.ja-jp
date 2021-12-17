@@ -2,18 +2,18 @@
 title: Azure Cognitive Services のサポート オプションとヘルプ オプション
 description: Azure Cognitive Services と統合するアプリケーションを作成するときの疑問や問題に対するヘルプやサポートを入手する方法について説明します。
 services: cognitive-services
-author: erhopf
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/11/2020
-ms.author: erhopf
-ms.openlocfilehash: dd0ceb00b80a045d60de562fbf9ac01b91e41e68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/8/2021
+ms.author: pafarley
+ms.openlocfilehash: fa9a1391b6f222156c94a829586309220838ea89
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720187"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058352"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure Cognitive Services のサポート オプションとヘルプ オプション
 
@@ -106,49 +106,45 @@ Stack Overflow に新しい質問を送信する場合は、次のいずれか�
 * [Metrics Advisor (プレビュー)](https://stackoverflow.com/search?q=azure+metrics+advisor)
 * [Personalizer](https://stackoverflow.com/search?q=azure+personalizer)
 
-## <a name="submit-feedback-on-user-voice"></a>ユーザーの声へのフィードバックの送信
+## <a name="submit-feedback"></a>フィードバックを送信
 
-<div class='icon is-large'>
-    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
-</div>
+新機能を要求するには、 https://feedback.azure.com に投稿します。 Cognitive Services とその API を、あなたが開発するアプリケーションによりいっそう役立てるためのアイデアを共有します。 
 
-新機能を要求するには、UserVoice に投稿します。 Cognitive Services とその API を、あなたが開発するアプリケーションによりいっそう役立てるためのアイデアを共有します。 
-
-* [Cognitive Services](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395737)
+* [Cognitive Services](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858)
 
 **Vision**
 
-* [Computer Vision](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
-* [Custom Vision](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
-* [Face](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
-* [Form Recognizer](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
-* [Video Indexer](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Computer Vision](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=7a8853b4-0b25-ec11-b6e6-000d3a4f0858)
+* [Custom Vision](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=7a8853b4-0b25-ec11-b6e6-000d3a4f0858)
+* [Face](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=7a8853b4-0b25-ec11-b6e6-000d3a4f0858)
+* [Form Recognizer](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=7a8853b4-0b25-ec11-b6e6-000d3a4f0858)
+* [Video Indexer](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=6483a3c0-0b25-ec11-b6e6-000d3a4f0858)
+
 
 **Language**
 
-* [Immersive Reader](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
-* [Language Understanding (LUIS)](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
-* [QnA Maker](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
-* [Text Analytics](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
-* [Translator](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Immersive Reader](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
+* [Language Understanding (LUIS)](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
+* [QnA Maker](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
+* [Text Analytics](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
+* [Translator](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
 
 **Speech**
 
-* [Speech サービス](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395740)
+* [Speech サービス](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=21041fae-0b25-ec11-b6e6-000d3a4f0858)
 
 **Decision**
 
-* [Anomaly Detector](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746) 
-* [Content Moderator](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
-* [Metrics Advisor (プレビュー)](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
-* [Personalizer](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
+* [Anomaly Detector](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=6c8853b4-0b25-ec11-b6e6-000d3a4f0858) 
+* [Content Moderator](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=6c8853b4-0b25-ec11-b6e6-000d3a4f0858)
+* [Metrics Advisor (プレビュー)](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=6c8853b4-0b25-ec11-b6e6-000d3a4f0858)
+* [Personalizer](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=6c8853b4-0b25-ec11-b6e6-000d3a4f0858)
 
 ## <a name="stay-informed"></a>最新情報を入手
 
 機能に関する新たなリリースやAzure ブログのニュースを常に把握しておくことで、プログラミング エラー、サービスバグ、あるいは Cognitive Services ではまだ利用できない機能についての役立つ情報を得ることができます。
 
 * 製品の更新プログラム、ロードマップ、および発表の詳細については、「[Azure の更新情報](https://azure.microsoft.com/updates/?category=ai-machine-learning&query=Azure%20Cognitive%20Services)」で確認できます。
-* 最近追加または更新された Cognitive Services の記事は、[ドキュメントの最新情報](whats-new-docs.md)に関するページでご覧ください。
 * Cognitive Services に関するニュースは、[Azure ブログ](https://azure.microsoft.com/blog/topics/cognitive-services/)で共有されています。
 * Cognitive Services に関して、[Reddit で会話に参加します](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1)。
 

@@ -2,21 +2,21 @@
 title: ユーザー定義の復元ポイント
 description: 専用 SQL プール (以前の SQL DW) の復元ポイントを作成する方法。
 services: synapse-analytics
-author: anumjs
+author: rothja
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 07/03/2019
-ms.author: anjangsh
+ms.author: jroth
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 097a3132208eee98b3f95291e414263e637bc265
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.openlocfilehash: 39f8c336fdddf58d6cfa9cd8162e974d3dbc7c2d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96545589"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450949"
 ---
 # <a name="user-defined-restore-points-for-a-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (以前の SQL DW) のユーザー定義の復元ポイント
 
@@ -32,7 +32,7 @@ ms.locfileid: "96545589"
 4. 復元するデータベースを含むサブスクリプションを選択します。
 5. データ ウェアハウスの即時コピーに対する復元ポイントを作成します。
 
-```Powershell
+```powershell
 
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
@@ -42,16 +42,15 @@ $Label = "<YourRestorePointLabel>"
 
 Connect-AzAccount
 Get-AzSubscription
-Select-AzSubscription -SubscriptionName $SubscriptionName
+Set-AzContext -SubscriptionName $SubscriptionName
 
 # Create a restore point of the original database
 New-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -RestorePointLabel $Label
-
 ```
 
 6. すべての既存の復元ポイントを一覧表示します。
 
-```Powershell
+```powershell
 # List all restore points
 Get-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 ```

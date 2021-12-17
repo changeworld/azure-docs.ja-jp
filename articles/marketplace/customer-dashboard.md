@@ -4,33 +4,32 @@ description: コマーシャル マーケットプレース分析の [顧客] �
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: 3a26f7c63b639f9aeb6a8f526e77dacb37fb4d87
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 9/27/2021
+ms.openlocfilehash: 7d665b34a112328a742e2ba4ed9816406a58fa30
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068066"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082967"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [顧客] ダッシュボード
 
 この記事では、パートナー センターの [顧客] ダッシュボードについて説明します。 このダッシュボードには、成長傾向などの顧客に関する情報が、グラフィカルかつダウンロード可能な形式で表示されます。
 
-パートナー センターの [顧客] ダッシュボードにアクセスするには、**コマーシャル マーケットプレース** で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[顧客]** を選択します。
-
 >[!NOTE]
-> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。
 
 ## <a name="customers-dashboard"></a>[顧客] ダッシュボード
 
-[顧客] ダッシュボードには、プランを購入した顧客のデータが表示されます。 次の項目のグラフィカル表示を見ることができます。
+[[顧客] ダッシュボード](https://go.microsoft.com/fwlink/?linkid=2166011)には、プランを購入した顧客のデータが表示されます。 次の項目のグラフィカル表示を見ることができます。
 
 - アクティブな顧客およびチャーン顧客の傾向
 - 既存の顧客、新規の顧客、およびチャーン顧客を含む顧客成長傾向
 - 注文別および使用量別の顧客
-- 顧客のパーセンタイル 
+- 顧客のパーセンタイル
 - 注文数と使用量ごとの顧客の種類
 - 地域別顧客数
 - 顧客詳細テーブル
@@ -39,15 +38,45 @@ ms.locfileid: "106068066"
 > [!NOTE]
 > 顧客の獲得からパートナー センターでの報告までの最大待ち時間は、48 時間です。
 
+## <a name="access-the-customers-dashboard"></a>顧客ダッシュボードにアクセスする
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. ホーム ページで、 **[分析情報]** タイルを選択します。
+
+    [ ![パートナー センター ホーム ページの [分析情報] タイルを示しています。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 左側のメニューで **[顧客]** を選択します。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]** 、 **[分析]** 、 **[顧客]** の順に選択します。
+
+---
+
 ## <a name="elements-of-the-customers-dashboard"></a>[顧客] ダッシュボードの要素
 
 次のセクションでは、[顧客] ダッシュボードの使用方法とデータの読み方について説明します。
 
 ### <a name="month-range"></a>月範囲
 
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+各ページの右上隅には、月範囲の選択が表示されます。 過去 6 か月または 12 か月の月範囲を選択することで、あるいは 12 か月を最大期間とするカスタムの月範囲を選択することで、 **[顧客]** ページのグラフの出力をカスタマイズします。 既定の月範囲 (計算期間) は 6 か月です。
+
+[ ![[顧客] ページの月フィルターを示しています。](./media/customer-dashboard/customers-workspace-filters.png) ](./media/customer-dashboard/customers-workspace-filters.png#lightbox)
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
 各ページの右上隅には、月範囲の選択が表示されます。 過去 6 か月または 12 か月の月範囲を選択することで、あるいは 12 か月を最大期間とするカスタムの月範囲を選択することで、 **[顧客]** ページのグラフの出力をカスタマイズします。 既定の月範囲 (計算期間) は 6 か月です。
 
 :::image type="content" source="./media/customer-dashboard/month-range-filters.png" alt-text="[顧客] ページの月フィルターの画像。":::
+
+---
 
 > [!NOTE]
 > 視覚化ウィジェットおよびエクスポート レポートのすべてのメトリックでは、ユーザーが選択した計算期間が優先されます。
@@ -80,7 +109,7 @@ _顧客の種類_ には、新規、既存、チャーンの 3 つがありま�
 
 **注文/使用量別顧客数** グラフには、[注文]、[正規化した使用]、および [生の使用] の 3 つのタブがあります。 **[注文]** タブを選択して、注文の詳細を表示します。
 
-:::image type="content" source="./media/customer-dashboard/customers-by-orders-usage.png" alt-text="[顧客] ページの [注文別および使用量別の顧客] ウィジェットの [注文] タブの画像。":::
+[ ![[顧客] ページの [注文別および使用量別の顧客] ウィジェットの [注文] タブを示しています。](./media/customer-dashboard/customers-by-orders-usage.png) ](./media/customer-dashboard/customers-by-orders-usage.png#lightbox)
 
 次のことを考慮してください。
 
@@ -175,10 +204,10 @@ _**表 1: データ用語の辞書**_
 
 ## <a name="next-steps"></a>次のステップ
 
-- コマーシャル マーケットプレースで利用可能な分析レポートの概要については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](./partner-center-portal/analytics.md)」を参照してください。
+- コマーシャル マーケットプレースで利用可能な分析レポートの概要については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](analytics.md)」を参照してください。
 - オファーのマーケットプレース アクティビティを要約した集計データのグラフ、傾向、値については、「[コマーシャル マーケットプレース分析の概要ダッシュボード](./summary-dashboard.md)」を参照してください。
 - グラフィカルでダウンロード可能な形式での注文の詳細については、「[コマーシャル マーケットプレース分析の注文ダッシュボード](./orders-dashboard.md)」を参照してください。
 - 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](./usage-dashboard.md)」を参照してください。
-- 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](./partner-center-portal/downloads-dashboard.md)」を参照してください。
-- Azure Marketplace と Microsoft AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[パートナー センターの評価とレビューの分析ダッシュボード](./partner-center-portal/ratings-reviews.md)」を参照してください。
-- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+- 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](downloads-dashboard.md)」を参照してください。
+- Azure Marketplace と Microsoft AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[パートナー センターの評価とレビューの分析ダッシュボード](ratings-reviews.md)」を参照してください。
+- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。

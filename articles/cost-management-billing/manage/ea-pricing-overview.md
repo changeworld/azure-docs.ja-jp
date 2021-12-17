@@ -2,18 +2,18 @@
 title: Azure EA の価格
 description: Azure EA の価格概要について説明します
 author: bandersmsft
-ms.reviewer: baolcsva
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 10/11/2021
 ms.author: banders
-ms.openlocfilehash: 4195ab701bb0829cf2d006e9646290bdf25ea10e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b613a917793f522a081a3460d28edf84a9c03d09
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442413"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255526"
 ---
 # <a name="azure-ea-pricing"></a>Azure EA の価格
 
@@ -33,7 +33,9 @@ Microsoft では、加入契約中に個々の Azure サービスに対する現
 
 ### <a name="current-effective-pricing"></a>現在の有効な価格
 
-お客様およびチャネル パートナーは、[Azure エンタープライズ ポータル](https://ea.azure.com/)にログインし、加入契約の価格シート ページを表示して、その加入契約の現在の価格を確認できます。 いずれかのチャネル パートナーを通じて Azure を間接的に購入した場合に、加入契約の割増価格が表示できるようになっていない限り、チャネル パートナーから価格の更新情報を取得する必要があります。
+お客様およびチャネル パートナーは、[Azure エンタープライズ ポータル](https://ea.azure.com/)にログインし、加入契約の価格シート ページを表示して、その加入契約の現在の価格を確認できます。 ダイレクト EA のお客様は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts) で **価格シート** を表示およびダウンロードできるようになりました。 [価格シートの表示](ea-pricing.md#download-pricing-for-an-enterprise-agreement)に関する記事をご覧ください。
+
+いずれかのチャネル パートナーを通じて Azure を間接的に購入した場合に、加入契約の割増価格が表示できるようになっていない限り、チャネル パートナーから価格の更新情報を取得する必要があります。
 
 ### <a name="introduction-of-new-azure-services"></a>新しい Azure サービスの導入
 

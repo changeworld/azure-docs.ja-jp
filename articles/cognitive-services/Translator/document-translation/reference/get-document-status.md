@@ -1,23 +1,21 @@
 ---
-title: ドキュメント翻訳のドキュメント状態の取得メソッド
+title: ドキュメント状態の取得メソッド
 titleSuffix: Azure Cognitive Services
 description: ドキュメント状態の取得メソッドでは、特定ドキュメントの状態が返されます。
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
-ms.author: v-jansk
-ms.openlocfilehash: 79bc3d076c1a7e164cab9c3231b29be84370e04a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/21/2021
+ms.openlocfilehash: 4ec9132a237ace9f43b33580f1956e38e6be634c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105613817"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058998"
 ---
-# <a name="document-translation-get-document-status"></a>ドキュメント翻訳: ドキュメント状態の取得
+# <a name="get-document-status"></a>ドキュメント状態の取得
 
 ドキュメント状態の取得メソッドでは、特定のドキュメントの状態が返されます。 このメソッドでは、特定のドキュメントの翻訳状態が、要求 ID とドキュメント ID に基づいて返されます。
 
@@ -25,7 +23,7 @@ ms.locfileid: "105613817"
 
 `GET` 要求の送信先は次のとおりです。
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}/documents/{documentId}
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches/{id}/documents/{documentId}
 ```
 
 [カスタム ドメイン名](../get-started-with-document-translation.md#find-your-custom-domain-name)を見つける方法について説明します。
@@ -70,10 +68,11 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 |名前|Type|説明|
 |--- |--- |--- |
 |path|string|ドキュメントまたはフォルダーの場所。|
+|sourcePath|string|ソース ドキュメントの場所。|
 |createdDateTimeUtc|string|操作が作成された日時。|
 |lastActionDateTimeUtc|string|操作の状態が更新された日時。|
 |status|String|ジョブまたはドキュメントの可能な状態の一覧: <ul><li>Canceled</li><li>Cancelling</li><li>失敗</li><li>NotStarted</li><li>実行中</li><li>成功</li><li>ValidationFailed</li></ul>|
-|to|string|ターゲット言語の 2 文字の言語コード。 言語リストを参照。|
+|to|string|ターゲット言語の 2 文字の言語コード。 [言語リストを参照。](../../language-support.md)|
 |progress|number|翻訳の進行状況 (利用可能な場合)|
 |id|string|ドキュメント ID。|
 |characterCharged|整数 (integer)|API によって課金される文字数。|
@@ -84,9 +83,10 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|
-|innerError|InnerErrorV2|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
+|innerError|InnerTranslationError|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
 |innerError.code|string|コード エラー文字列を取得します。|
 |innerError.message|string|高レベルのエラー メッセージを取得します。|
+|innerError.target|string|エラーのソースを取得します。 たとえば、無効なドキュメントの場合は "documents" または "document id" になります。|
 
 ## <a name="examples"></a>例
 
@@ -96,6 +96,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 ```JSON
 {
   "path": "https://myblob.blob.core.windows.net/destinationContainer/fr/mydoc.txt",
+  "sourcePath": "https://myblob.blob.core.windows.net/sourceContainer/fr/mydoc.txt",
   "createdDateTimeUtc": "2020-03-26T00:00:00Z",
   "lastActionDateTimeUtc": "2020-03-26T01:00:00Z",
   "status": "Running",

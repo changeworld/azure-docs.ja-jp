@@ -1,18 +1,18 @@
 ---
-title: Azure Purview の検索機能についての理解 (プレビュー)
+title: Azure Purview の検索機能についての理解
 description: この記事では、Azure Purview が検索機能を使用してデータ検出を有効にする方法について説明します。
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: af8ec9e0aac38240c7da92edd614892ff65712e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: 6bc9029a4b75206b5de99622729415b1aa36d4a2
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96550727"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207528"
 ---
 # <a name="understand-search-features-in-azure-purview"></a>Azure Purview の検索機能についての理解
 
@@ -60,4 +60,4 @@ Azure Purview での検索の目的は、重要なデータを素早く見つけ
 
 * [クイック スタート: Azure portal で Azure Purview アカウントを作成する](create-catalog-portal.md)
 * [クイック スタート: Azure PowerShell または Azure CLI を使用して Azure Purview アカウントを作成する](create-catalog-powershell.md)
-* [クイック スタート: Purview Studio の使用](use-purview-studio.md)
+* [Purview Studio を使用する](use-purview-studio.md)

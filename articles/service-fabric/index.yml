@@ -4,40 +4,14 @@ summary: Azure Service Fabric は、スケーラブルで信頼性に優れた�
 metadata:
   ms.service: service-fabric
   ms.topic: landing-page
-  author: erikadoyle
-  ms.author: edoyle
-  ms.date: 07/31/2020
-  ms.openlocfilehash: e850855a4f794e5e90abe9c86d6ddedd0af26a6b
-  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+  ms.date: 05/10/2021
+  ms.openlocfilehash: a61eb06e81b32426cc90b58fe4a7234746aeb172
+  ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100634840"
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113032635"
 landingContent:
-- title: Service Fabric の管理対象クラスターを試す (プレビュー)
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Service Fabric の管理対象クラスターとは (プレビュー)
-      url: overview-managed-cluster.md
-    - text: 管理対象クラスターをデプロイする (プレビュー)
-      url: quickstart-managed-cluster-template.md
-  - linkListType: tutorial
-    links:
-    - text: 管理対象クラスター ノードの種類をスケールアウトする (プレビュー)
-      url: tutorial-managed-cluster-scale.md
-    - text: 管理対象クラスター ノードの種類を追加および削除する (プレビュー)
-      url: tutorial-managed-cluster-add-remove-node-type.md
-    - text: 管理対象クラスターにアプリをデプロイする (プレビュー)
-      url: tutorial-managed-cluster-deploy-app.md
-    - text: 管理対象クラスター ノードの種類に VM スケールセット拡張機能を追加する (プレビュー)
-      url: how-to-managed-cluster-vmss-extension.md
-    - text: 管理対象クラスター ノードでのディスク暗号化の有効化
-      url: how-to-enable-managed-cluster-disk-encryption.md
-  - linkListType: whats-new
-    links:
-    - text: Service Fabric の管理対象クラスターの FAQ
-      url: faq-managed-cluster.md
 - title: Service Fabric について
   linkLists:
   - linkListType: overview
@@ -68,11 +42,37 @@ landingContent:
       url: service-fabric-guest-executables-introduction.md
     - text: Reliable Service
       url: service-fabric-reliable-services-introduction.md
+    - text: Linux と Windows の Service Fabric の違い
+      url: service-fabric-linux-windows-differences.md
   - linkListType: whats-new
     links:
     - text: リリース ノート
       url: release-notes.md
-- title: .NET アプリケーションと Windows の概要
+- title: Service Fabric マネージド クラスターをデプロイする
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Service Fabric の管理対象クラスターについて
+      url: overview-managed-cluster.md
+    - text: Service Fabric の管理対象クラスターの FAQ
+      url: faq-managed-cluster.yml
+  - linkListType: quickstart
+    links:
+    - text: 管理対象クラスターを作成する
+      url: quickstart-managed-cluster-template.md
+  - linkListType: learn
+    links:
+    - text: 管理対象クラスター ノードの種類をスケールアウトする
+      url: tutorial-managed-cluster-scale.md
+    - text: 管理対象クラスター ノードの種類を追加および削除する
+      url: tutorial-managed-cluster-add-remove-node-type.md
+    - text: 管理対象クラスターにアプリをデプロイする
+      url: tutorial-managed-cluster-deploy-app.md
+    - text: 管理対象クラスターの構成
+      url: how-to-managed-cluster-configuration.md
+    - text: 管理対象クラスターのアプリケーション シークレットをデプロイする
+      url: how-to-managed-cluster-application-secrets.md
+- title: Service Fabric アプリケーションの概要
   linkLists:
   - linkListType: quickstart
     links:
@@ -82,12 +82,16 @@ landingContent:
       url: service-fabric-quickstart-containers.md
     - text: Windows 上でゲスト実行可能アプリを作成する
       url: quickstart-guest-app.md
+    - text: Linux コンテナーを Service Fabric にデプロイする
+      url: service-fabric-quickstart-containers-linux.md
   - linkListType: tutorial
     links:
     - text: Service Fabric .NET アプリの作成、デプロイ、管理
       url: service-fabric-tutorial-create-dotnet-app.md
     - text: 既存の .NET アプリを Service Fabric 用にコンテナー化する
       url: service-fabric-host-app-in-a-container.md
+    - text: Service Fabric Java アプリの作成、デプロイ、管理
+      url: service-fabric-tutorial-create-java-app.md
   - linkListType: how-to-guide
     links:
     - text: Visual Studio を使用してアプリを開発する
@@ -98,30 +102,6 @@ landingContent:
       url: service-fabric-tutorial-create-vnet-and-windows-cluster.md
     - text: Windows クラスターの診断
       url: service-fabric-diagnostics-event-aggregation-wad.md
-- title: Java アプリケーションと Linux の概要
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Linux と Windows の Service Fabric の違い
-      url: service-fabric-linux-windows-differences.md
-  - linkListType: quickstart
-    links:
-    - text: Linux コンテナーを Service Fabric にデプロイする
-      url: service-fabric-quickstart-containers-linux.md
-  - linkListType: tutorial
-    links:
-    - text: Service Fabric Java アプリの作成、デプロイ、管理
-      url: service-fabric-tutorial-create-java-app.md
-  - linkListType: how-to-guide
-    links:
-    - text: Eclipse を使用してアプリを開発する
-      url: service-fabric-get-started-eclipse.md
-    - text: Reliable Services の概要 (Linux 上の Java)
-      url: service-fabric-reliable-services-quick-start-java.md
-    - text: Azure 仮想ネットワークに Linux クラスターを作成する
-      url: service-fabric-tutorial-create-vnet-and-linux-cluster.md
-    - text: Linux クラスターの診断
-      url: service-fabric-diagnostics-oms-syslog.md
 - title: クラスターのセキュリティ保護
   linkLists:
   - linkListType: concept
@@ -164,27 +144,3 @@ landingContent:
     links:
     - text: Service Fabric の FAQ
       url: service-fabric-common-questions.md
-- title: オンプレミスで Service Fabric を使用する
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: スタンドアロンのクラスターの概要
-      url: service-fabric-standalone-clusters-overview.md
-    - text: スタンドアロン パッケージの内容
-      url: service-fabric-cluster-standalone-package-contents.md
-  - linkListType: concept
-    links:
-    - text: スタンドアロン クラスターのアップグレード
-      url: service-fabric-cluster-upgrade-standalone.md
-    - text: スタンドアロン クラスターのスケーリング
-      url: service-fabric-cluster-scaling-standalone.md
-  - linkListType: how-to-guide
-    links:
-    - text: スタンドアロン クラスターのデプロイの計画
-      url: service-fabric-cluster-standalone-deployment-preparation.md
-    - text: Windows Server で実行されるスタンドアロン クラスターの作成
-      url: service-fabric-cluster-creation-for-windows-server.md
-    - text: 定期的なバックアップを構成する
-      url: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
-    - text: Service Fabric ランタイムをアップグレードする
-      url: service-fabric-cluster-upgrade-windows-server.md

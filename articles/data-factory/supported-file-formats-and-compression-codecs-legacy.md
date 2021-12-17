@@ -1,26 +1,29 @@
 ---
-title: Azure Data Factory でサポートされるファイル形式 (レガシ)
-description: このトピックでは、Azure Data Factory 内のファイルベースのコネクタでサポートされている圧縮コードやファイル形式について説明します。
-author: linda33wj
-ms.author: jingwang
+title: サポートされているファイル形式 (レガシ)
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Synapse Analytics のファイルベースのコネクタでサポートされているファイル形式と圧縮コーデックについて説明します。
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: d95927a9ea7d3084387a9aedb0dcdd86f84b8e7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.openlocfilehash: c998e64656ed26a3fa42761169c70b81270628dc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384828"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792754"
 ---
-# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック (レガシ)
+# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-and-synapse-analytics-legacy"></a>Azure Data Factory と Synapse Analytics でサポートされるファイル形式と圧縮コーデック (レガシ)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-*この記事は、次のコネクターに適用されます。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。*
+*この記事は、次のコネクタに適用されます。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure Files](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[SFTP](connector-sftp.md)。*
 
 >[!IMPORTANT]
->Data Factory では新しいフォーマットベースのデータセット モデルが導入されました。詳細については、対応する書式の記事を参照してください。 <br>- [Avro 形式](format-avro.md)<br>- [バイナリ形式](format-binary.md)<br>- [区切りテキスト形式](format-delimited-text.md)<br>- [JSON 形式](format-json.md)<br>- [ORC 形式](format-orc.md)<br>- [Parquet 形式](format-parquet.md)<br>この記事で以下に説明する構成は、下位互換性のために今後も現状のままサポートされます。 今後は新しいモデルを使用することをお勧めします。 
+>サービスでは新しい形式ベースのデータセット モデルが導入されました。詳細については、対応する形式の記事を参照してください。 <br>- [Avro 形式](format-avro.md)<br>- [バイナリ形式](format-binary.md)<br>- [区切りテキスト形式](format-delimited-text.md)<br>- [JSON 形式](format-json.md)<br>- [ORC 形式](format-orc.md)<br>- [Parquet 形式](format-parquet.md)<br>この記事で以下に説明する構成は、下位互換性のために今後も現状のままサポートされます。 今後は新しいモデルを使用することをお勧めします。 
 
 ## <a name="text-format-legacy"></a><a name="text-format"></a> テキスト形式 (レガシ)
 
@@ -37,7 +40,7 @@ ms.locfileid: "100384828"
 | quoteChar |文字列値を引用符で囲むための文字。 引用符文字内の列区切り記号と行区切り記号は文字列値の一部として扱われます。 このプロパティは、入力と出力の両方のデータセットに適用できます。<br/><br/>escapeChar と quoteChar の両方をテーブルに指定することはできません。 |許可される文字は 1 つだけです。 既定値はありません。 <br/><br/>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: Hello, world)、引用符文字として " (二重引用符) を定義し、ソースで文字列 "Hello, world" を使用できます。 |いいえ |
 | nullValue |null 値を表すための 1 つまたは複数の文字。 |1 つ以上の文字。 **既定** 値は、読み取り時は **"\N" および "NULL"** 、書き込み時は **"\N"** です。 |いいえ |
 | encodingName |エンコーディング名を指定します。 |有効なエンコード名。 詳細については、[Encoding.EncodingName プロパティ](/dotnet/api/system.text.encoding)に関するページを参照してください。 例: windows-1250 または shift_jis。 **既定** 値は **UTF-8** です。 |いいえ |
-| firstRowAsHeader |先頭行をヘッダーと見なすかどうかを指定します。 入力データセットでは、Data Factory は先頭行をヘッダーとして読み取ります。 出力データセットでは、Data Factory は先頭行をヘッダーとして書き込みます。 <br/><br/>サンプル シナリオについては、「[`firstRowAsHeader` と `skipLineCount` を使用するシナリオ](#scenarios-for-using-firstrowasheader-and-skiplinecount)」を参照してください。 |True<br/><b>False (既定値)</b> |いいえ |
+| firstRowAsHeader |先頭行をヘッダーと見なすかどうかを指定します。 入力データセットでは、サービスは先頭行をヘッダーとして読み取ります。 出力データセットでは、サービスは先頭行をヘッダーとして書き込みます。 <br/><br/>サンプル シナリオについては、「[`firstRowAsHeader` と `skipLineCount` を使用するシナリオ](#scenarios-for-using-firstrowasheader-and-skiplinecount)」を参照してください。 |True<br/><b>False (既定値)</b> |いいえ |
 | skipLineCount |入力ファイルからのデータ読み取り時にスキップする **空でない** 行数を示します。 skipLineCount と firstRowAsHeader の両方が指定されている場合、行が最初にスキップされ、次に、入力ファイルからヘッダー情報が読まれます。 <br/><br/>サンプル シナリオについては、「[`firstRowAsHeader` と `skipLineCount` を使用するシナリオ](#scenarios-for-using-firstrowasheader-and-skiplinecount)」を参照してください。 |Integer |いいえ |
 | treatEmptyAsNull |入力ファイルからデータを読むとき、null 値として null または空の文字列を扱うことを指定します。 |**True (既定値)**<br/>False |いいえ |
 
@@ -344,7 +347,7 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 
 **以下の点に注意してください。**
 
-* `structure` と `jsonPathDefinition` が Data Factory データセット内で定義されていない場合、コピー アクティビティでは最初のオブジェクトからスキーマを検出し、オブジェクト全体をフラット化します。
+* `structure` と `jsonPathDefinition` がデータセット内で定義されていない場合、コピー アクティビティでは最初のオブジェクトからスキーマを検出し、オブジェクト全体をフラット化します。
 * JSON 入力に配列がある場合、コピー アクティビティは既定で配列値全体を文字列に変換します。 `jsonNodeReference` と `jsonPathDefinition` の両方またはどちらかからデータを抽出するか、`jsonPathDefinition` でこれを指定せずにスキップすることが可能です。
 * 同じレベルに重複する名前がある場合、コピー アクティビティでは最後の 1 つが選択されます。
 * プロパティ名では大文字と小文字が区別されます。 名前は同じでも大文字小文字が異なる 2 つのプロパティは、2 つの個別のプロパティとして扱われます。
@@ -421,12 +424,12 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 
 * 複雑なデータ型はサポートされていません (MAP、LIST)。
 * 列名では、空白はサポートされません。
-* Parquet ファイルには、圧縮関連のオプションとして、NONE、SNAPPY、GZIP、LZO があります。 Data Factory では、LZO を除く、これらすべての圧縮形式の Parquet ファイルからデータを読み取ることができます。データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で Parquet ファイルに書き込むときは、Parquet 形式の既定の動作である SNAPPY が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
+* Parquet ファイルには、圧縮関連のオプションとして、NONE、SNAPPY、GZIP、LZO があります。 サービスでは、LZO を除く、これらすべての圧縮形式の Parquet ファイルからデータを読み取ることができます。データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、サービスで Parquet ファイルに書き込むときは、Parquet 形式の既定の動作である SNAPPY が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
 
 > [!IMPORTANT]
 > セルフホステッド統合ランタイム を利用するコピー (たとえば、オンプレミスとクラウド データ ストア間) では、Parquet ファイルを **そのまま** コピーしない場合、IR マシン上に **64 ビット JRE 8 (Java Runtime Environment) または OpenJDK** をインストールする必要があります。 詳細については、次の段落を参照してください。
 
-Parquet ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
+Parquet ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、サービスは最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
 
 - **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
 - **OpenJDK を使用する場合**: IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
@@ -434,13 +437,13 @@ Parquet ファイルのシリアル化/逆シリアル化を使用してセル�
 >[!TIP]
 >セルフホステッド統合ランタイムを使用して、 Parquet 形式をコピー元またはコピー先にしてデータをコピーしたときに、[An error occurred when invoking java, message: **java.lang.OutOfMemoryError:Java heap space** (java の呼び出し中にエラーが発生しました。メッセージ: java.lang.OutOfMemoryError:Java heap space)] というエラーが発生する場合は、まず、セルフホステッド IR のホストであるマシン内に環境変数 `_JAVA_OPTIONS` を追加してください。次に、JVM の最小/最大ヒープ サイズを調整し、コピーを行えるようにしてから、パイプラインを再実行してください。
 
-![セルフホステッド IR 上での JVM ヒープ サイズの設定](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+:::image type="content" source="./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png" alt-text="セルフホステッド IR 上での JVM ヒープ サイズの設定":::
 
-例: 変数 `_JAVA_OPTIONS` を設定して、値 `-Xms256m -Xmx16g` を指定します。 フラグ `Xms` では、Java 仮想マシン (JVM) の初期メモリ割り当てプールを指定します。`Xmx` では、最大メモリ割り当てプールを指定します。 これは、JVM 起動時のメモリ量が `Xms`、使用可能なメモリ量が最大で `Xmx` であることを意味します。 既定では、ADF では、最小で 64MB、最大で 1G が使用されます。
+例: 変数 `_JAVA_OPTIONS` を設定して、値 `-Xms256m -Xmx16g` を指定します。 フラグ `Xms` では、Java 仮想マシン (JVM) の初期メモリ割り当てプールを指定します。`Xmx` では、最大メモリ割り当てプールを指定します。 これは、JVM 起動時のメモリ量が `Xms`、使用可能なメモリ量が最大で `Xmx` であることを意味します。 既定では、サービスにより最小で 64MB、最大で 1G が使用されます。
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Parquet ファイルのデータ型マッピング
 
-| Data Factory の中間データ型 | Parquet のプリミティブ型 | Parquet の元の型 (逆シリアル化) | Parquet の元の型 (シリアル化) |
+| 中間サービス データ型 | Parquet のプリミティブ型 | Parquet の元の型 (逆シリアル化) | Parquet の元の型 (シリアル化) |
 |:--- |:--- |:--- |:--- |
 | Boolean | Boolean | 該当なし | 該当なし |
 | SByte | Int32 | Int8 | Int8 |
@@ -481,19 +484,19 @@ ORC ファイルを解析するか、ORC 形式でデータを書き込む場合
 
 * 複雑なデータ型はサポートされていません (STRUCT、MAP、LIST、UNION)。
 * 列名では、空白はサポートされません。
-* ORC ファイルには、[圧縮関連のオプション](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)として、NONE、ZLIB、SNAPPY の 3 つがあります。 Data Factory では、これらすべての圧縮形式の ORC ファイルからデータを読み取ることができます。 データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で ORC ファイルに書き込むときは、ORC の既定の動作である ZLIB が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
+* ORC ファイルには、[圧縮関連のオプション](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)として、NONE、ZLIB、SNAPPY の 3 つがあります。 サービスでは、これらすべての圧縮形式の ORC ファイルからデータを読み取ることができます。 データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、サービスで ORC ファイルに書き込むときは、ORC の既定の動作である ZLIB が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
 
 > [!IMPORTANT]
 > セルフホステッド統合ランタイム を利用するコピー (たとえば、オンプレミスとクラウド データ ストア間) では、Parquet ファイルを **そのまま** コピーしない場合、IR マシン上に **64 ビット JRE 8 (Java Runtime Environment) または OpenJDK** をインストールする必要があります。 詳細については、次の段落を参照してください。
 
-ORC ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
+ORC ファイルのシリアル化または逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、サービスは最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
 
 - **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
 - **OpenJDK を使用する場合**: IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
 
 ### <a name="data-type-mapping-for-orc-files"></a>ORC ファイルデータ型マッピング
 
-| Data Factory の中間データ型 | ORC 型 |
+| 中間サービス データ型 | ORC 型 |
 |:--- |:--- |
 | Boolean | Boolean |
 | SByte | Byte |
@@ -537,7 +540,7 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 ## <a name="compression-support-legacy"></a><a name="compression-support"></a> 圧縮のサポート (レガシ)
 
-Azure Data Factory は、コピー中のデータの圧縮/圧縮解除をサポートします。 `compression` プロパティを入力データセットで指定すると、コピー アクティビティでソースから圧縮データを読み取り、圧縮を解除することができます。このプロパティを出力データセットで指定すると、コピー アクティビティによりシンクへの書き込みデータを圧縮することができます。 いくつかのサンプル シナリオを次に示します。
+このサービスでは、コピー中のデータの圧縮/圧縮解除がサポートされます。 `compression` プロパティを入力データセットで指定すると、コピー アクティビティでソースから圧縮データを読み取り、圧縮を解除することができます。このプロパティを出力データセットで指定すると、コピー アクティビティによりシンクへの書き込みデータを圧縮することができます。 いくつかのサンプル シナリオを次に示します。
 
 * Azure BLOB から GZIP 圧縮データを読み取って展開し、生成されたデータを Azure SQL Database に書き込みます。 `compression` `type` プロパティを使用して、Azure BLOB 入力データセットを GZIP として定義します。
 * オンプレミスのファイル システムのプレーンテキスト ファイルからデータを読み取り、GZip 形式で圧縮して、圧縮データを Azure BLOB に書き込みます。 `compression` `type` プロパティを使用して、Azure BLOB 出力データセットを GZip として定義します。
@@ -581,11 +584,11 @@ Azure Data Factory は、コピー中のデータの圧縮/圧縮解除をサポ
     詳細については、 [圧縮レベル](/dotnet/api/system.io.compression.compressionlevel) に関するトピックをご覧ください。
 
 > [!NOTE]
-> **AvroFormat**、**OrcFormat**、および **ParquetFormat** のデータの圧縮設定はサポートされていません。 こうした形式でファイルを読み取るとき、Data Factory は、メタデータ内の圧縮コーデックを検出して使用します。 ファイルに書き込むときは、その形式の既定の圧縮コーデックを選択します。 たとえば、OrcFormat には ZLIB、ParquetFormat には SNAPPY が選択されます。
+> **AvroFormat**、**OrcFormat**、および **ParquetFormat** のデータの圧縮設定はサポートされていません。 こうした形式でファイルを読み取るとき、サービスはメタデータ内の圧縮コーデックを検出して使用します。 こうした形式でファイルに書き込むときは、サービスはその形式の既定の圧縮コーデックを選択します。 たとえば、OrcFormat には ZLIB、ParquetFormat には SNAPPY が選択されます。
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>サポートされていないファイル形式と圧縮形式
 
-Azure Data Factory の拡張機能を使用して、サポートされていないファイルに変換することができます。
+拡張機能を使用して、サポートされていないファイルを変換することができます。
 Azure Function、および Azure Batch を使用することによるカスタム タスクという 2つのオプションがあります。
 
 Azure Function を使用して [tar ファイルの内容を抽出する](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)サンプルをご覧いただけます。 詳細については、「[Azure Functions アクティビティ](./control-flow-azure-function-activity.md)」をご覧ください。

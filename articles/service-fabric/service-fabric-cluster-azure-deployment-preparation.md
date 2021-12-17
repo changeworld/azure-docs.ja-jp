@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターのデプロイを計画する
 description: Azure への運用環境 Service Fabric クラスターのデプロイの計画と準備について説明します。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 82521487b9a3e9438784e010a32cf6df8e7be2ef
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e6b7c0a14f6e5f63e84c8efa484347cd4ff322f4
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046319"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789545"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>クラスターのデプロイを計画および準備する
 
@@ -33,7 +33,7 @@ Service Fabric を使用すると、Windows Server または Linux を実行す�
 ### <a name="select-node-properties-for-each-node-type"></a>各ノード タイプのノード プロパティを選択する
 ノード タイプは、関連付けられたスケール セット内の VM の VM SKU、数、プロパティを定義します。
 
-各ノード タイプの最小 VM サイズは、そのノード タイプに選択した[耐久性レベル][durability]によって決まります。
+各ノード タイプの最小 VM サイズは、そのノード タイプに選択した[耐久性レベル][durability]によって決まります。 VM SKU を選択する前に、将来別の VM SKU が必要になると判断される場合は、必ず、[垂直スケーリング](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)に必要な手順を理解してください。
 
 プライマリ ノード タイプの最低 VM 数は、選択した[信頼性レベル][reliability]によって決まります。
 

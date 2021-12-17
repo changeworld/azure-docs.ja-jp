@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: f59eb3296c27e64eb6a4644b2f455e3704381f49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d140f5f71413524dc60d0d07bdc6b646ac552a1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86260831"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351149"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 chaos テスト サービスの開始、停止、レポートを実行します。
@@ -77,7 +77,7 @@ Chaos が実行中かどうかを示す Chaos の状態、Chaos の実行に使�
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
 クラスターで Chaos を開始します。
 
-クラスターで Chaos がまだ実行されていない場合、渡された Chaos パラメーターで Chaos を開始します。 Chaos が既に実行しているときにこの呼び出しを行った場合は、呼び出しはエラー コード FABRIC_E_CHAOS_ALREADY_RUNNING で失敗します。 詳細については、「[Service Fabric クラスターでの制御された混乱の誘発](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)」の記事を参照してください。
+クラスターで Chaos がまだ実行されていない場合、渡された Chaos パラメーターで Chaos を開始します。 Chaos が既に実行しているときにこの呼び出しを行った場合は、呼び出しはエラー コード FABRIC_E_CHAOS_ALREADY_RUNNING で失敗します。 詳細については、「[Service Fabric クラスターでの制御された混乱の誘発](service-fabric-controlled-chaos.md)」の記事を参照してください。
 
 ### <a name="arguments"></a>引数
 

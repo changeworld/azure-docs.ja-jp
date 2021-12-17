@@ -10,13 +10,13 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: zhchia
-ms.openlocfilehash: cdd4fb96a42d154ccd8b508950283978ddf58ef4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: thwimmer
+ms.openlocfilehash: 6250bfb7b8c657e532c0bb1405ea25a23fef96d3
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94354905"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113761015"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングのための Velpic の構成
 

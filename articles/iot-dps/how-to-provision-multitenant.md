@@ -1,24 +1,24 @@
 ---
 title: Azure IoT Hub Device Provisioning Service でマルチテナント用にデバイスをプロビジョニングする方法
 description: デバイス プロビジョニング サービス (DPS) インスタンスでマルチテナント用にデバイスをプロビジョニングする方法
-author: wesmc7777
-ms.author: wesmc
-ms.date: 04/10/2019
-ms.topic: conceptual
+author: anastasia-ms
+ms.author: v-stharr
+ms.topic: how-to
+ms.date: 10/02/2021
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 04ab4ae4d3de6f33f800011b9b0802665d5fb16e
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 595bd473bb70f4c23554998b7240e4ef0ed1183d
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228319"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670313"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>マルチテナント用にプロビジョニングする方法 
 
-この記事では、[割り当てポリシー](concepts-service.md#allocation-policy)を利用し、IoT Hub のグループに複数の対称キーを安全にプロビジョニングする方法を実演します。 プロビジョニング サービスによって定義されている割り当てポリシーでは、さまざまな割り当てシナリオがサポートされています。 よく使用されるシナリオは次の 2 つです。
+このハウツー記事では、[割り当てポリシー](concepts-service.md#allocation-policy)を利用し、IoT Hub のグループに複数のシミュレートされた対称キーのデバイスを安全にプロビジョニングする方法を示します。 プロビジョニング サービスによって定義されている割り当てポリシーでは、さまざまな割り当てシナリオがサポートされています。 よく使用されるシナリオは次の 2 つです。
 
-* **位置情報/geo 待機時間**: デバイスが異なる場所の間を移動するときは、各場所に最も近い IoT ハブに対してデバイスをプロビジョニングすることにより、ネットワーク待機時間が改善されます。 このシナリオでは、異なるリージョンに広がる IoT ハブのグループを、登録対象に選択します。 これらの登録に対して、**最短待機時間** 割り当てポリシーを選択します。 このポリシーを指定すると、Device Provisioning Service はデバイスの待機時間を評価して、IoT ハブのグループから最も近い IoT ハブを決定します。 
+* **位置情報/geo 待機時間**: デバイスが異なる場所の間を移動するときは、各場所に最も近い IoT ハブに対してデバイスをプロビジョニングすることにより、ネットワーク待機時間が改善されます。 このシナリオでは、異なるリージョンに広がる IoT ハブのグループを、登録対象に選択します。 これらの登録に対して、**最短待機時間** 割り当てポリシーを選択します。 このポリシーを指定すると、Device Provisioning Service はデバイスの待機時間を評価して、IoT ハブのグループから最も近い IoT ハブを決定します。
 
 * **マルチテナント**: IoT ソリューション内で使用されるデバイスは、特定の IoT ハブまたは IoT ハブのグループに割り当てることが必要な場合があります。 ソリューションでは、特定のテナントのすべてのデバイスが、IoT ハブの特定のグループと通信することが必要な場合があります。 場合によっては、テナントが IoT ハブを所有しており、デバイスを IoT ハブに割り当てることが必要なことがあります。
 
@@ -27,55 +27,51 @@ ms.locfileid: "107228319"
 この記事では、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のシミュレートされたデバイスのサンプルを使用して、複数リージョンのマルチテナント シナリオでデバイスをプロビジョニングする方法を示します。 この記事では、以下の手順を実施します。
 
 > [!div class="checklist"]
-> * Azure CLI を使用して、2 つのリージョン (**米国西部** と **米国東部**) に IoT ハブを作成します
+> * Azure CLI を使用して、2 つのリージョン (**米国西部 2** と **米国東部**) に IoT ハブを作成します
 > * マルチテナントの登録を作成します
-> * Azure CLI を使用して、同じ 2 つのリージョン (**米国西部** と **米国東部**) にデバイスとして機能する Linux VM を作成します
+> * Azure CLI を使用して、同じ 2 つのリージョン (**米国西部 2** と **米国東部**) にデバイスとして機能する Linux VM を作成します
 > * 両方の Linux VM 上に Azure IoT C SDK 用の開発環境をセットアップします
 > * デバイスをシミュレートして、最も近いリージョンの同じテナントに対してプロビジョニングされることを確認します
 
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+>[!IMPORTANT]
+> 一部のリージョンでは、Virtual Machines の作成に制限が適用されている場合があります。 このガイドの執筆時点では、*westus2* および *eastus* リージョンで VM の作成が許可されています。 これらのリージョンのいずれかで作成できない場合は、別のリージョンを試してみてください。 VM を作成するときの Azure の地理的なリージョンの選択については、「[Azure の仮想マシンのリージョン](../virtual-machines/regions.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するクイック スタートが完了していること。
+* Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
+
+* [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順を完了します。
+
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-two-regional-iot-hubs"></a>2 つのリージョンに IoT ハブを作成する
 
-このセクションでは、Azure Cloud Shell を使用して、**米国西部** と **米国東部** の 2 つのリージョンにテナント用の IoT ハブを作成します。
+このセクションでは、1 つの Azure リソース グループと、1 つのテナント用に 2 つの新しいリージョン IoT ハブ リソースを作成します。 1 つの IoT ハブは **米国西部 2** リージョン用、もう 1 つは **米国東部** リージョン用です。
 
+>[!IMPORTANT]
+>この記事で作成するすべてのリソースには、この同じリソース グループを使用することをお勧めします。 そうすれば、終わった後のクリーンアップが簡単になります。
 
-1. Azure Cloud Shell を使用して、[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+1. Azure Cloud Shell で、次の [az group create](/cli/azure/group#az_group_create) コマンドを使用してリソース グループを作成します。
 
-    次の例では、*contoso-us-resource-group* という名前のリソース グループを *eastus* リージョンに作成します。 この記事で作成するすべてのリソースには、このグループを使用することをお勧めします。 そうすれば、終わった後のクリーンアップが簡単になります。
-
-    ```azurecli-interactive 
+    ```azurecli-interactive
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Azure Cloud Shell で [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを使用して、**eastus** リージョンに IoT ハブを作成します。 その IoT ハブは、*contoso-us-resource-group* に追加されます。
+2. *eastus* の場所に IoT ハブを作成し、次の [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) コマンドを使用して作成したリソース グループに追加します (`{unique-hub-name}` は独自の一意の名前に置き換えます)。
 
-    次の例では、*contoso-east-hub* という名前の IoT ハブを場所 *eastus* に作成します。 **contoso-east-hub** の代わりに、独自の一意のハブ名を使用する必要があります。
-
-    ```azurecli-interactive 
-    az iot hub create --name contoso-east-hub --resource-group contoso-us-resource-group --location eastus --sku S1
-    ```
-    
-    このコマンドが完了するまでに数分かかる場合があります。
-
-3. Azure Cloud Shell で [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを使用して、**westus** リージョンに IoT ハブを作成します。 この IoT ハブも、*contoso-us-resource-group* に追加されます。
-
-    次の例では、*contoso-west-hub* という名前の IoT ハブを場所 *westus* に作成します。 **contoso-west-hub** の代わりに、独自の一意のハブ名を使用する必要があります。
-
-    ```azurecli-interactive 
-    az iot hub create --name contoso-west-hub --resource-group contoso-us-resource-group --location westus --sku S1
+    ```azurecli-interactive
+    az iot hub create --name {unique-hub-name} --resource-group contoso-us-resource-group --location eastus --sku S1
     ```
 
     このコマンドが完了するまでに数分かかる場合があります。
 
+3. 次は、*westus2* の場所に IoT ハブを作成し、次の [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) コマンドを使用して作成したリソース グループに追加します (`{unique-hub-name}` は独自の一意の名前に置き換えます)。
 
+    ```azurecli-interactive
+    az iot hub create --name {unique-hub-name} --resource-group contoso-us-resource-group --location westus2 --sku S1
+    ```
+
+    このコマンドが完了するまでに数分かかる場合があります。
 
 ## <a name="create-the-multitenant-enrollment"></a>マルチテナントの登録を作成する
 
@@ -83,51 +79,61 @@ ms.locfileid: "107228319"
 
 わかりやすくするため、この記事では[対称キーの構成証明](concepts-symmetric-key-attestation.md)を登録で使用します。 ソリューションをさらに安全にするには、信頼チェーンで [X.509 証明書構成証明](concepts-x509-attestation.md)を使用することを検討してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
+1. Azure portal で Device Provisioning Service を選択します。
 
-2. **[登録を管理します]** タブを選択し、ページの上部にある **[登録グループの追加]** ボタンをクリックします。 
+2. **[設定]** メニューで **[登録の管理]** を選択します。
 
-3. **[登録グループの追加]** で、次の情報を入力して、**[保存]** ボタンをクリックします。
+3. **[+ 登録グループの追加]** を選択します。
 
-    **[グループ名]**: 「**contoso-us-devices**」と入力します。
+4. **[登録グループの追加]** ページで、次の情報を入力します。
 
-    **[Attestation Type]\(構成証明の種類\)**: **[対称キー]** を選択します。
+    **[グループ名]**: 「*contoso-us-devices*」と入力します。
+
+    **[Attestation Type]\(構成証明の種類\)**: *[対称キー]* を選択します。
 
     **[キーの自動生成]**: このチェック ボックスは既にオンになっているはずです。
 
-    **[デバイスをハブに割り当てる方法を選択してください]**: **[最短待機時間]** を選択します。
+    **[デバイスをハブに割り当てる方法を選択してください]**: *[最短待機時間]* を選択します。
 
-    ![対称キー構成証明にマルチテナントの登録グループを追加する](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
+5. **[新しい IoT ハブのリンク]** を選択します
 
+    :::image type="content" source="./media/how-to-provision-multitenant/create-multitenant-enrollment.png" alt-text="対称キー構成証明にマルチテナントの登録グループを追加します。":::
 
-4. **[登録グループの追加]** で、**[Link a new IoT hub]\(新しい IoT ハブにリンクする\)** をクリックして両方のリージョンのハブをリンクします。
+6. **[IoT Hub へのリンクを追加します]** ページで、次の情報を入力します。
 
     **[サブスクリプション]**: 複数のサブスクリプションがある場合は、リージョンの IoT ハブを作成したサブスクリプションを選択します。
 
-    **[IoT ハブ]**: 作成したリージョン ハブのいずれかを選択します。
+    **IoT ハブ**: *eastus* の場所用に作成した IoT ハブを選択します。
 
-    **[アクセス ポリシー]**: **[iothubowner]** を選択します。
+    **アクセス ポリシー**: *[iothubowner]* を選択します。
 
-    ![リージョンの IoT ハブをプロビジョニング サービスとリンクする](./media/how-to-provision-multitenant/link-regional-hubs.png)
+    :::image type="content" source="./media/how-to-provision-multitenant/link-regional-hubs.png" alt-text="リージョンの IoT ハブをプロビジョニング サービスとリンクします。":::
 
+7. **[保存]** を選択します。
 
-5. 両方のリージョンの IoT ハブをリンクした後、それらを登録グループに対して選択し、**[保存]** をクリックして、登録用のリージョン IoT ハブ グループを作成する必要があります。
+8. *westgus* の場所に作成した 2 つ目の IoT ハブについて、手順 5 から 7 を繰り返します。
 
-    ![登録用のリージョン ハブ グループを作成する](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
+9. **[このグループを割り当てることができる IoT ハブを選択する]** ドロップダウンで、作成した 2 つの IoT ハブを選択します。
 
+    :::image type="content" source="./media/how-to-provision-multitenant/enrollment-regional-hub-group.png" alt-text="リンクされた IoT ハブを選択します。":::
 
-6. 登録を保存した後、もう一度開き、**[主キー]** を書き留めておきます。 キーを生成するには、まず登録を保存する必要があります。 このキーは、後で両方のシミュレートされたデバイスに対する一意のデバイス キーを生成するために使用されます。
+10. **[保存]** を選びます。
 
+11. 登録グループの一覧で *[contoso-us-devices]* を選択します。
+
+12. *[主キー]* をコピーします。 このキーは、後で両方のシミュレートされたデバイスに対する一意のデバイス キーを生成するために使用されます。
+
+    :::image type="content" source="./media/how-to-provision-multitenant/copy-primary-key.png" alt-text="主キーをコピーします。":::
 
 ## <a name="create-regional-linux-vms"></a>リージョンの Linux VM を作成する
 
 このセクションでは、2 つのリージョン Linux 仮想マシン (VM) を作成します。 これらの VM は、各リージョンからデバイス シミュレーション サンプルを実行して、両方のリージョンからのテナント デバイスのデバイス プロビジョニングをデモンストレーションします。
 
-クリーンアップを容易にするため、これらの VM は、作成された IoT ハブを格納しているのと同じリソース グループ *contoso-us-resource-group* に追加されます。 ただし、VM は別のリージョン (**米国西部** と **米国東部**) で実行されます。
+クリーンアップを容易にするため、これらの VM は、作成された IoT ハブを格納しているのと同じリソース グループ *contoso-us-resource-group* に追加されます。 ただし、VM は別のリージョン (**米国西部 2** と **米国東部**) で実行されます。
 
 1. Azure Cloud Shell で次のコマンドを実行して、**米国東部** リージョンの VM を作成します。実行前に、コマンドの次のパラメーターを変更します。
 
-    **--name**: 自分の **米国東部** リージョンのデバイスの VM に対する一意名を入力します。 
+    **--name**: 自分の **米国東部** リージョンのデバイスの VM に対する一意名を入力します。
 
     **--admin-username**: 自分の管理者ユーザー名を使用します。
 
@@ -142,13 +148,16 @@ ms.locfileid: "107228319"
     --admin-username contosoadmin \
     --admin-password myContosoPassword2018 \
     --authentication-type password
+    --public-ip-sku Standard
     ```
 
-    このコマンドが完了するまでに数分かかります。 コマンドが完了したら、米国東部リージョンの VM の **publicIpAddress** の値を書き留めておきます。
+    このコマンドが完了するまでに数分かかります。 
 
-1. Azure Cloud Shell で次のコマンドを実行して、**米国西部** リージョンの VM を作成します。実行前に、コマンドの次のパラメーターを変更します。
+2. コマンドが完了したら、米国東部リージョンの VM の **publicIpAddress** の値をコピーします。
 
-    **--name**: 自分の **米国西部** リージョンのデバイスの VM に対する一意名を入力します。 
+3. Azure Cloud Shell で次のコマンドを実行して、**米国西部 2** リージョンの VM を作成します。実行前に、コマンドの次のパラメーターを変更します。
+
+    **--name**: 自分の **米国西部 2** リージョンのデバイスの VM に対する一意名を入力します。 
 
     **--admin-username**: 自分の管理者ユーザー名を使用します。
 
@@ -157,19 +166,24 @@ ms.locfileid: "107228319"
     ```azurecli-interactive
     az vm create \
     --resource-group contoso-us-resource-group \
-    --name ContosoSimDeviceWest \
-    --location westus \
+    --name ContosoSimDeviceWest2 \
+    --location westus2 \
     --image Canonical:UbuntuServer:18.04-LTS:18.04.201809110 \
     --admin-username contosoadmin \
     --admin-password myContosoPassword2018 \
     --authentication-type password
+    --public-ip-sku Standard
     ```
 
-    このコマンドが完了するまでに数分かかります。 コマンドが完了したら、米国西部リージョンの VM の **publicIpAddress** の値を書き留めておきます。
+    このコマンドが完了するまでに数分かかります。
 
-1. コマンド ライン シェルを 2 つ開きます。 SSH を使用して各シェルでリージョン VM の 1 つに接続します。 
+4. コマンドが完了したら、米国西部 2 リージョンの VM の **publicIpAddress** の値をコピーします。
 
-    管理者のユーザー名と、VM について書き留めたパブリック IP アドレスを、SSH へのパラメーターとして渡します。 メッセージが表示されたら、管理者のパスワードを入力します。
+5. コマンド ライン シェルを 2 つ開きます。
+
+6. SSH を使用して各シェルでリージョン VM の 1 つに接続します。
+
+    管理者のユーザー名と、コピーしたパブリック IP アドレスを、SSH へのパラメーターとして渡します。 メッセージが表示されたら、管理者のパスワードを入力します。
 
     ```bash
     ssh contosoadmin@1.2.3.4
@@ -183,22 +197,22 @@ ms.locfileid: "107228319"
     contosoadmin@ContosoSimDeviceWest:~$
     ```
 
-
-
 ## <a name="prepare-the-azure-iot-c-sdk-development-environment"></a>Azure IoT C SDK の開発環境を準備する
 
 このセクションでは、各 VM で Azure IoT C SDK を複製します。 SDK には、各リージョンからのテナントのデバイスのプロビジョニングをシミュレートするサンプルが含まれています。
 
-1. VM ごとに、次のコマンドを使用して **CMake**、**g++**、**gcc**、[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) をインストールします。
+VM ごとに、次の手順を実行します。
+
+1. 次のコマンドを使用して **CMake**、**g++** 、**gcc**、[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) をインストールします。
 
     ```bash
     sudo apt-get update
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
-1. SDK の[最新リリース](https://github.com/Azure/azure-iot-sdk-c/releases/latest)のタグ名を見つけます。
+2. SDK の[最新リリース](https://github.com/Azure/azure-iot-sdk-c/releases/latest)のタグ名を見つけてコピーします。
 
-1. 両方の VM で、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) を複製します。  `-b` パラメーターの値として、前の手順で見つけたタグを使用します。
+3. 両方の VM で、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) を複製します。  `-b` パラメーターの値として、前の手順で見つけたタグを使用します。
 
     ```bash
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -208,113 +222,93 @@ ms.locfileid: "107228319"
 
     この操作は、完了するまでに数分かかります。
 
-1. 両方の VM で、リポジトリの内部に新しい **cmake** フォルダーを作成して、そのフォルダーに移動します。
+4. リポジトリの内部に新しい **cmake** フォルダーを作成し、そのフォルダーに移動します。
 
     ```bash
     mkdir ~/azure-iot-sdk-c/cmake
     cd ~/azure-iot-sdk-c/cmake
     ```
 
-1. 両方の VM で、次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。 
+5. 次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。
 
     ```bash
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    ビルドが成功すると、最後のいくつかの出力行は次のようになります。
+6. ビルドが成功すると、最後のいくつかの出力行は次のようになります。
 
     ```bash
-    -- IoT Client SDK Version = 1.2.9
-    -- Provisioning client ON
-    -- Provisioning SDK Version = 1.2.9
+    -- IoT Client SDK Version = 1.7.0
+    -- Provisioning SDK Version = 1.7.0
+    -- Looking for include file stdint.h
+    -- Looking for include file stdint.h - found
+    -- Looking for include file stdbool.h
+    -- Looking for include file stdbool.h - found
     -- target architecture: x86_64
-    -- Checking for module 'libcurl'
-    --   Found libcurl, version 7.58.0
-    -- Found CURL: curl
-    -- target architecture: x86_64
-    -- target architecture: x86_64
-    -- target architecture: x86_64
+    -- Performing Test CXX_FLAG_CXX11
+    -- Performing Test CXX_FLAG_CXX11 - Success
+    -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1")
+    -- Found CURL: /usr/lib/x86_64-linux-gnu/libcurl.so (found version "7.58.0")
+    -- Found CURL: /usr/lib/x86_64-linux-gnu/libcurl.so
     -- target architecture: x86_64
     -- iothub architecture: x86_64
-    -- target architecture: x86_64
     -- Configuring done
     -- Generating done
-    -- Build files have been written to: /home/contosoadmin/azure-iot-sdk-c/cmake
-    ```    
-
+    -- Build files have been written to: /home/contosoadmin/azure-iot-sdk-c/azure-iot-sdk-c
+    ```
 
 ## <a name="derive-unique-device-keys"></a>一意のデバイス キーを派生させる
 
-グループ登録で対称キーの構成証明を使用する場合、登録グループのキーを直接は使用しません。 代わりに、[Group Enrollments with symmetric keys](concepts-symmetric-key-attestation.md#group-enrollments) (対称キーでのグループ登録) に関するページで説明されているように、デバイスごとに一意の派生キーを作成します。
+グループ登録で対称キーの構成証明を使用する場合、登録グループのキーを直接は使用しません。 その代わりに、各デバイスの登録グループ キーから固有のキーを派生させます。 詳細については、[対称キーを使用したグループの登録](concepts-symmetric-key-attestation.md#group-enrollments)に関するセクションを参照してください。
 
-デバイス キーを生成するには、グループのマスター キーを使用してデバイスに対する一意の登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算し、結果を Base64 形式に変換します。
+チュートリアルのこの部分では、グループ マスター キーからデバイス キーを生成し、デバイス用の一意の登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算します。 結果は Base64 形式に変換されます。
 
-デバイス コードにはグループのマスター キーを含めないでください。
+>[!IMPORTANT]
+>デバイス コードにはグループのマスター キーを含めないでください。
 
-Bash シェルの例を使用し、**openssl** を使用して、各デバイスのデバイス派生キーを作成します。
+*eastus* と *westus 2* の **両方** のデバイスの場合:
 
-- **KEY** の値を、前に書き留めた登録の **プライマリ キー** に置き換えます。
+1. **openssl** を使用して、一意のキーを生成します。 次の Bash シェル スクリプトを使用します (`{primary-key}` を先ほどコピーした登録グループの **主キー** に置き換え、`{contoso-simdevice-east}` を各デバイスに独自の一意の登録 ID に置き換えます。 両方の ID を定義するには、小文字の英字、数字、ダッシュ ('-') 文字を使用します)。
 
-- **REG_ID** の値を、各デバイスの独自の一意登録 ID に置き換えます。 両方の ID を定義するには、小文字の英字、数字、ダッシュ ('-') 文字を使用します。
+    ```bash
+    KEY={primary-key}
+    REG_ID={contoso-simdevice}
+    
+    keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+    echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
+    ```
 
-*contoso-simdevice-east* のデバイス キー生成の例:
+2. このスクリプトにより、次のようなキーが出力されます。
 
-```bash
-KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
-REG_ID=contoso-simdevice-east
+    ```bash
+    p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=
+    ```
 
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
-```
-
-```bash
-p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=
-```
-
-*contoso-simdevice-west* のデバイス キー生成の例:
-
-```bash
-KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
-REG_ID=contoso-simdevice-west
-
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
-```
-
-```bash
-J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
-```
-
-
-各テナント デバイスは、テナントの IoT ハブに対するプロビジョニングの間に、派生デバイス キーと一意の登録 ID を使用して、登録グループで対称キー構成証明を実行します。
-
-
-
+3. これで、各テナント デバイスには、プロビジョニング プロセス中に登録グループで対称キーの構成証明を実行するための独自の派生デバイス キーと一意の登録 ID が割り当てられました。
 
 ## <a name="simulate-the-devices-from-each-region"></a>各リージョンからデバイスをシミュレートする
-
 
 このセクションでは、両方のリージョン VM について、Azure IoT C SDK のプロビジョニング サンプルを更新します。 
 
 サンプル コードでは、Device Provisioning Services のインスタンスにプロビジョニング要求を送信するデバイスのブート シーケンスがシミュレートされます。 ブート シーケンスにより、デバイスが認識され、待機時間に基づいて最も近い IoT ハブに割り当てられます。
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブを選択し、 **[_ID スコープ_]** の値を書き留めます。
 
-    ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
+    :::image type="content" source="./media/how-to-provision-multitenant/copy-id-scope.png" alt-text="ポータル ブレードから Device Provisioning Service のエンドポイント情報を抽出します。":::
 
-1. 両方の VM で **~/azure-iot-sdk-c/provisioning\_client/samples/prov\_dev\_client\_sample/prov\_dev\_client\_sample.c** を開いて編集します。
+2. 両方の VM で **~/azure-iot-sdk-c/provisioning\_client/samples/prov\_dev\_client\_sample/prov\_dev\_client\_sample.c** を開いて編集します。
 
     ```bash
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
     ```
 
-1. 定数 `id_scope` を探し、以前にコピーした **ID スコープ** の値で置き換えます。 
+3. 両方の VM で定数 `id_scope` を探し、先ほどコピーした **ID スコープ** の値で置き換えます。 
 
     ```c
     static const char* id_scope = "0ne00002193";
     ```
 
-1. 同じファイル内で `main()` 関数の定義を探します。 次に示すように、登録グループの構成証明の方法に合わせて `hsm_type` 変数が `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` に設定されていることを確認します。 
+4. 両方の VM で、同じファイル内の `main()` 関数の定義を探します。 次に示すように、登録グループの構成証明の方法に合わせて `hsm_type` 変数が `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` に設定されていることを確認します。 
 
     両方の VM でファイルに変更を保存します。
 
@@ -325,14 +319,14 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. **prov\_dev\_client\_sample.c** で、コメントになっている `prov_dev_set_symmetric_key_info()` の呼び出しを両方の VM で探します。
+5. **prov\_dev\_client\_sample.c** で、コメントになっている `prov_dev_set_symmetric_key_info()` の呼び出しを両方の VM で探します。
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    関数呼び出しのコメントを解除し、各デバイスについて、プレースホルダーの値 (山かっこを含む) を一意の登録 ID とデバイス派生キーに置き換えます。 以下に示したキーはあくまでも例です。 先ほど生成したキーを使用してください。
+    関数呼び出しのコメントを解除し、各デバイスについて、プレースホルダーの値 (山かっこを含む) を、前のセクションで派生させた一意の登録 ID とデバイス派生キーに置き換えます。 以下に示したキーはあくまでも例です。 先ほど生成したキーを使用してください。
 
     米国東部: 
     ```c
@@ -346,16 +340,16 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     prov_dev_set_symmetric_key_info("contoso-simdevice-west", "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=");
     ```
 
-    ファイルを保存します。
+6. 両方の VM 上のファイルを保存します。
 
-1. 両方の VM で、次に示すサンプル フォルダーに移動し、サンプルをビルドします。
+7. 両方の VM で、次に示すサンプル フォルダーに移動し、サンプルをビルドします。
 
     ```bash
     cd ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. ビルドが成功したら、両方の VM で **prov\_dev\_client\_sample.exe** を実行して、各リージョンからテナント デバイスをシミュレートします。 シミュレートされたデバイスのリージョンに最も近いテナント IoT ハブに、各デバイスが割り当てられることに注意してください。
+8. ビルドが成功したら、両方の VM で **prov\_dev\_client\_sample.exe** を実行して、各リージョンからテナント デバイスをシミュレートします。 シミュレートされたデバイスのリージョンに最も近いテナント IoT ハブに、各デバイスが割り当てられることに注意してください。
 
     シミュレーションを実行する: 
     ```bash
@@ -394,11 +388,9 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     Press enter key to exit:
     ```
 
-
-
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-この記事で作成したリソースを引き続き使用する場合は、そのままにしてかまいません。 これ以上リソースを使用しない場合は、不要な課金を避けるために、次の手順に従って、この記事で作成したすべてのリソースを削除してください。
+この記事で作成したリソースを引き続き使用する場合は、そのままにしてかまいません。 それ以外の場合は、次の手順で、この記事で作成したすべてのリソースを削除し、不要な課金を回避します。
 
 以下の手順では、この記事の説明に従って **contoso-us-resource-group** という名前の同じリソース グループにすべてのリソースが作成されていることを前提にしています。
 
@@ -408,13 +400,15 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 名前でリソース グループを削除するには
 
-1. [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[名前でフィルター]** テキスト ボックスに、リソースが含まれているリソース グループの名前 **contoso-us-resource-group** を入力します。 
+2. **[リソース グループ]** を選択します。
 
-3. 結果一覧のでリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+3. **[名前でフィルター]** テキスト ボックスに、リソースが含まれているリソース グループの名前 **contoso-us-resource-group** を入力します。
 
-4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を再度入力し、**[削除]** をクリックします。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
+4. 結果一覧のでリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+
+5. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにもう一度リソース グループの名前を入力し、 **[削除]** を選択します。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

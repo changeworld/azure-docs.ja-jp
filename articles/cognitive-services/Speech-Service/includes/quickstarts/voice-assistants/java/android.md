@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: fdc38e2572f7e5dcf1f116af1f67407ef1c80376
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f4a92de87eaa1bb0ddbc63bfc0be1b71382ce0d6
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106271599"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131521347"
 ---
 ## <a name="prerequisites"></a>前提条件
 

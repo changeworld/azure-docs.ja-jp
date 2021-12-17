@@ -1,5 +1,5 @@
 ---
-title: Azure Private Link サービスと統合する
+title: Key Vault を Azure Private Link と統合する
 description: Azure Key Vault を Azure Private Link サービスと統合する方法を確認します
 author: msmbaldwin
 ms.author: mbaldwin
@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e5ddffb17c8f5acf16cf89dd58c634b6e404bf7b
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: bb9383d34403f14496d7a04ef04d70294ced1ecb
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749547"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130160887"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault を Azure Private Link と統合する
 
@@ -80,9 +80,6 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
     ![[プライベート エンドポイントの作成 (プレビュー)] ページの [基本] タブを示すスクリーンショット。](../media/private-link-service-4.png)
 
 このブレードを使用することで、任意の Azure リソース用のプライベート エンドポイントを作成できます。 ドロップダウン メニューを使用してリソースの種類を選択し、自分のディレクトリ内のリソースを選択することも、リソース ID を使用して任意の Azure リソースに接続することもできます。 [プライベート DNS ゾーンと統合する] オプションはそのままにします。  
-
-![現在のブレードを使用したプライベート エンドポイントの追加を示すスクリーンショット。](../media/private-link-service-3.png)
-![[プライベート エンドポイントの作成 (プレビュー)] ページの例を示すスクリーンショット。](../media/private-link-service-4.png)
 
 プライベート エンドポイントを作成する際は、接続を承認する必要があります。 作成しているプライベート エンドポイントの接続先となるリソースが自分のディレクトリ内にある場合は、十分なアクセス許可を持っていれば、自分で接続要求を承認することができます。別のディレクトリ内にある Azure リソースに接続する場合は、そのリソースの所有者が接続要求を承認するまで待つ必要があります。
 
@@ -167,7 +164,7 @@ az keyvault private-endpoint-connection delete --resource-group {RG} --vault-nam
 az network private-endpoint show -g {RG} -n {PE NAME}      # look for the property networkInterfaces then id; the value must be placed on {PE NIC} below.
 az network nic show --ids {PE NIC}                         # look for the property ipConfigurations then privateIpAddress; the value must be placed on {NIC IP} below.
 
-# https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
+# https://docs.microsoft.com/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
 az network private-dns zone list -g {RG}
 az network private-dns record-set a add-record -g {RG} -z "privatelink.vaultcore.azure.net" -n {KEY VAULT NAME} -a {NIC IP}
 az network private-dns record-set list -g {RG} -z "privatelink.vaultcore.azure.net"
@@ -233,7 +230,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
     1. プライベート DNS ゾーン リソースの名前は、正確に privatelink.vaultcore.azure.net である必要があります。 
     2. これを設定する方法については、次のリンクを参照してください。 [プライベート DNS ゾーン](../../dns/private-dns-privatednszone.md)
     
-* プライベート DNS ゾーンが仮想ネットワークにリンクされていないことを確認します。 パブリック IP アドレスがまだ返される場合は、これが問題である可能性があります。 
+* プライベート DNS ゾーンが仮想ネットワークにリンクされていることを確認します。 パブリック IP アドレスがまだ返される場合は、これが問題である可能性があります。 
     1. プライベート DNS ゾーンが仮想ネットワークにリンクされていない場合、仮想ネットワークから送信された DNS クエリでは、キー コンテナーのパブリック IP アドレスが返されます。 
     2. Azure portal でプライベート DNS ゾーン リソースに移動し、仮想ネットワーク リンクのオプションをクリックします。 
     4. キー コンテナーへの呼び出しを実行する仮想ネットワークが、一覧に表示されている必要があります。 
@@ -243,7 +240,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 * キー コンテナーの A レコードがプライベート DNS ゾーンから欠落していないことを確認します。 
     1. [プライベート DNS ゾーン] ページに移動します。 
     2. [概要] をクリックし、キー コンテナーの簡易名 (fabrikam など) の A レコードがあることを確認します。 サフィックスは指定しないでください。
-    3. スペルを確認し、A レコードを作成または修正します。 TTL には 3600 (1 時間) を使用できます。 
+    3. スペルを確認し、A レコードを作成または修正します。 TTL には 600 (10 分) を使用できます。
     4. 指定したプライベート IP アドレスが正しいことを確認します。 
     
 * A レコードの IP アドレスが正しいことを確認します。 

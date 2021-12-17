@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 06/22/2021
 ms.author: alkohli
-ms.openlocfilehash: f512b4415f4a83e779a8f9bf790ba2806e3b05c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 66ff9018371de309b61824895492335e0d3bb763
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99526332"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112517656"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Azure portal で Azure Data Box Disk の自己管理型の発送を使用する
 
@@ -32,6 +32,7 @@ ms.locfileid: "99526332"
 * 韓国
 * 南アフリカ
 * インド (プレビュー)
+* ブラジル
 
 ## <a name="use-self-managed-shipping"></a>自己管理の出荷の使用
 
@@ -55,34 +56,68 @@ Data Box Disk を注文するときに、自己管理型の発送オプション
 
    ![集荷のスケジュール](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-user-pickup-02c.png)
 
+   **ブラジルの手順:** ブラジルでデバイスの受け取りをスケジュールする場合、メールに次の情報を含めます。 データセンターは、インバウンド `Nota Fiscal` を受信した後に受け取りをスケジュールします。これには、最大で 4 営業日かかります。
+
+   ```
+   Subject: Request Azure Data Box Disk pickup for order: <ordername>
+
+   - Order name
+   - Company name
+   - Company legal name (if different) 
+   - CNPJ (Business Tax ID, format: 00.000.000/0000-00) or CPF (Individual Tax ID, format: 000.000.000-00)
+   - Address 
+   - Country 
+   - Phone number 
+   - Contact name of the person who will pick up the Data Box Disk (A government-issued photo ID will be required to validate the contact’s identity upon arrival.)   
+   ```
+
 6. デバイスの受け取りをスケジュールすると、 **[Schedule pickup for Azure]\(Azure の受け取りのスケジュール\)** に認証コードが表示されます。
 
    ![[Schedule pickup for Azure]\(Azure の受け取りのスケジュール\) ダイアログボックスのスクリーンショット。[引き取りの認証コード] テキスト ボックスが強調表示されています。](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
 
-   この認証コードをメモしておきます。
+   この認証コードをメモしておきます。 デバイスを受け取るユーザーは、それを所持する必要があります。
 
-   セキュリティ要件に従って、受け取りをスケジュールするときに、受け取りを行う人物の名前を指定する必要があります。
+   受け取りをスケジュールするとき、セキュリティ要件に従い、受け取りのために来訪するユーザーの名前と詳細を提供する必要があります。 お客様または連絡担当者は政府発行の写真付きの ID を携帯する必要があり、これはデータセンターで検証されます。
 
-   また、データセンターに受け取りに行くユーザーの詳細を指定する必要もあります。 お客様または連絡担当者は政府発行の写真付きの ID を携帯する必要があり、これはデータセンターで検証されます。
+7. 予定時刻にデータセンターで Data Box Disk を受け取ります。
 
-   デバイスを受け取りに行くユーザーにも認証コードが必要です。 認証コードは、受け取りまたは返却に固有であり、データセンターで検証されます。
+   デバイスを受け取るユーザーは、以下を用意する必要があります。
 
-7. デバイスをデータセンターから受け取った後、注文は自動的に **[Picked up]\(受け取り済み\)** 状態になります。
+   * データセンターに来訪するための、Microsoft Operations からの確認メールのコピー。
+
+   * 承認コード。 参照番号は、受け取りまたは返却ごとに固有であり、データセンターでの確認に使用されます。
+
+   * 政府発行の写真付きの ID。 ID はデータセンターでの確認に使用されます。受け取りのスケジュールを設定する際に、デバイスを受け取るユーザーの名前と詳細を指定する必要があります。
+
+   > [!NOTE]
+   > スケジュールした予約を忘れた場合、新しい予約をスケジュールする必要があります。
+
+8. デバイスをデータセンターから受け取った後、注文は自動的に **[Picked up]\(受け取り済み\)** 状態になります。
 
    ![集荷されました](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-ready-disk-01b.png)
 
-8. デバイスを受け取ったら、サイトのデータを Data Box Disk にコピーできます。 データのコピーが完了したら、Data Box Disk の発送の準備をします。
+9. デバイスを受け取ったら、サイトのデータを Data Box Disk にコピーできます。 データのコピーが完了したら、Data Box Disk の発送の準備をします。
 
    データのコピーが終了したら、操作部門に連絡して返却の予定をスケジュールします。 データセンターにディスクを返却しに来る人物の詳細を共有する必要があります。 データセンターは、返却時に認証コードを確認する必要もあります。 返却の承認コードは、Azure portal の **[Schedule drop off]\(返却のスケジュールを設定\)** にあります。
 
    > [!NOTE]
    > この認証コードは、メールで共有しないでください。 これは、データセンターでの返却時にのみ検証されます。
 
-9. 返却の予定を受け取ると、Azure portal に表示されるその注文の状態が **[Ready to receive at Azure datacenter]\(Azure データセンターで受け取る準備が完了しました\)** になります。
+   **ブラジルの手順:** ブラジルでデバイス返却をスケジュールするには、次の情報を含むメールを [adbops@microsoft.com](mailto:adbops@microsoft.com) に送信します。
 
-   ![[配送先住所の追加] ダイアログ ボックスのスクリーンショット。[出荷方法] オプションと [配送先住所の追加] オプションが強調表示されています。](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
+   ```
+   Subject: Request Azure Data Box Disk drop-off for order: <ordername>
 
-10. ID と認証コードが検証され、データセンターにデバイスを返却すると、注文ステータスが **[Received]\(返却済み\)** になります。
+   - Order name
+   - Contact name of the person who will drop off the Data Box Disk (A government-issued photo ID will be required to validate the contact’s identity upon arrival.) 
+   - Inbound Nota Fiscal (A copy of the inbound Nota Fiscal will be required at drop-off.)   
+   ```
+
+10. 返却の予定を受け取ると、Azure portal に表示されるその注文の状態が **[Ready to receive at Azure datacenter]\(Azure データセンターで受け取る準備が完了しました\)** になります。
+
+    ![[配送先住所の追加] ダイアログ ボックスのスクリーンショット。[出荷方法] オプションと [配送先住所の追加] オプションが強調表示されています。](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
+
+11. ID と認証コードが検証され、データセンターにデバイスを返却すると、注文ステータスが **[Received]\(返却済み\)** になります。
 
     ![返却完了](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-received-01a.png)
 

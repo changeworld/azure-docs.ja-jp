@@ -1,23 +1,20 @@
 ---
-title: Azure Application Insights の使用の影響 | Microsoft Docs
+title: Application Insights の使用状況と影響 - Azure Monitor
 description: さまざまなプロパティがアプリの各部のコンバージョン率に潜在的に及ぼす影響について分析します。
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 01/08/2019
-ms.reviewer: mbullwin
-ms.openlocfilehash: 8ce49488124f07f05b8df2d9f4eae41e041aa0aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: mattmccleary
+ms.author: mmcc
+ms.date: 07/30/2021
+ms.openlocfilehash: 0d09f93c5a0a541929169130feb921a8e65144be
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026191"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133236"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights による影響分析
 
 影響では、読み込み時間とその他のプロパティがアプリのさまざまな部分のコンバージョン率に及ぼす影響について分析します。 より正確に言えば、**ページ ビュー**、**カスタム イベント**、または **要求** の **ディメンション** が、異なる **ページ ビュー** または **カスタム イベント** の使用にどの程度影響するのかについて、明らかにします。 
-
-![影響ツール](./media/usage-impact/0001-impact.png)
 
 ## <a name="still-not-sure-what-impact-does"></a>影響で行われることがまだわからない場合
 
@@ -25,26 +22,36 @@ ms.locfileid: "105026191"
 
 しかし、パフォーマンスの分析は影響の機能の一部にすぎません。 影響ではカスタム イベントとディメンションがサポートされているため、ユーザーのブラウザーの選択と異なるコンバージョン率がどのように相関しているかなどの質問に、わずか数クリックで答えることができます。
 
-![ブラウザーごとのコンバージョンのスクリーンショット](./media/usage-impact/0004-browsers.png)
-
 > [!NOTE]
-> 影響ツールを使うには、Application Insights のリソースにページ ビューまたはカスタム イベントが含まれる必要があります。 [アプリをセットアップし、Application Insights JavaScript SDK を使用してページ ビューを自動的に収集する方法について説明します](./javascript.md)。 また、相関関係を分析しているので、サンプルのサイズが問題になることにも注意してください。
->
->
+> 影響分析ブックを使うには、Application Insights のリソースにページ ビューまたはカスタム イベントが含まれる必要があります。 [アプリをセットアップし、Application Insights JavaScript SDK を使用してページ ビューを自動的に収集する方法について説明します](./javascript.md)。 また、相関関係を分析しているので、サンプルのサイズが問題になることにも注意してください。
+
+## <a name="impact-analytics-workbook"></a>影響分析ブック 
+
+影響分析ブックを使用するには、Application Insights リソースで **[使用状況]**  >  **[影響]** に移動して、 **[Impact Analysis Workbook]\(影響分析ブック\)** を選択します。 または、 **[ブック]** タブで **[パブリック テンプレート]** を選択し、 *[使用状況]* の **[ユーザー影響分析]** を選択します。
+
+:::image type="content" source="./media/usage-impact/workbooks-gallery.png" alt-text="パブリック テンプレートのブック ギャラリーのスクリーンショット。" lightbox="./media/usage-impact/workbooks-gallery.png":::
+
+
+### <a name="using-the-workbook"></a>ブックを使用する
+
+:::image type="content" source="./media/usage-impact/selected-event.png" alt-text="最初のページ ビュー、カスタム イベント、または要求を選択する場所を示すスクリーンショット。" lightbox="./media/usage-impact/selected-event.png":::
+
+1. **[選択されたイベント]** ドロップダウンからイベントを選択します
+2. **[次を分析:]** ドロップダウンでメトリックを選択します
+3. **[影響するイベント]** ドロップダウンでイベントを選択します 
+1. フィルターを追加したい場合は、 **[選択したイベントフィルターの追加]** または **[影響するイベントフィルターの追加]** で行います。
+
 
 ## <a name="is-page-load-time-impacting-how-many-people-convert-on-my-page"></a>ページの読み込み時間がページでのコンバージョン数に影響しているか
 
-影響ツールを使って質問への回答を始めるには、初期ページ ビュー、カスタム イベント、または要求を選択します。
+影響ブックを使って質問への回答を始めるには、初期ページ ビュー、カスタム イベント、または要求を選択します。
 
-![最初のページ ビュー、カスタム イベント、または要求を選択する場所を示すスクリーンショット。](./media/usage-impact/0002-dropdown.png)
-
-1. **[For the page view]\(ページ ビューについて\)** ドロップダウンからページ ビューを選択します。
+1. **[選択されたイベント]** ドロップダウンからイベントを選択します。
 2. **[次を分析]** ドロップダウンを既定の選択である **[期間]** のままにします (このコンテキストでは、 **[期間]** は **ページの読み込み時間** のエイリアスです)。
-3. **[次の使用への影響]** ドロップダウンで、カスタム イベントを選択します。 このイベントは、手順 1. で選択したページ ビューの UI 要素に対応する必要があります。
+3. **[影響するイベント]** ドロップダウンで、カスタム イベントを選択します。 このイベントは、手順 1. で選択したページ ビューの UI 要素に対応する必要があります。
 
-![結果のスクリーンショット](./media/usage-impact/0003-results.png)
 
-この例では、**製品ページ** の読み込み時間の増加に伴って、**クリックされた購入製品** へのコンバージョン率が低下しています。 上記の分布に基づくと、潜在的な 55 % のコンバージョン率を実現するために、3.5 秒の最適なページ読み込み時間をターゲットにできます。 現在、さらにパフォーマンスを向上させて読み込み時間を 3.5 秒未満に減らしたとしても、それに伴ってコンバージョンのメリットが向上することはありません。
+:::image type="content" source="./media/usage-impact/impact.png" alt-text="スクリーンショットは、選択したイベントを期間で分析されたホームページとした例を示しています。" lightbox="./media/usage-impact/impact.png":::
 
 ## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>カスタムの方法でページ ビューまたは読み込み時間を追跡する場合
 
@@ -52,20 +59,19 @@ ms.locfileid: "105026191"
 
 ## <a name="do-users-from-different-countries-or-regions-convert-at-different-rates"></a>ユーザーの国またはリージョンの違いがコンバージョン率の違いに影響するか
 
-1. **[For the page view]\(ページ ビューについて\)** ドロップダウンからページ ビューを選択します。
+1. **[選択されたイベント]** ドロップダウンからイベントを選択します。
 2. **[次を分析]** ドロップダウンで [国またはリージョン] を選択します
-3. **[次の使用への影響]** ドロップダウンでは、手順 1. で選択したページ ビューの UI 要素に対応するカスタム イベントを選択します。
+3. **[影響するイベント]** ドロップダウンでは、手順 1 で選択したページ ビューの UI 要素に対応するカスタム イベントを選択します。
 
-この場合の結果は、最初の例のような連続する x 軸のモデルに適合しません。 その代わり、セグメント化されたファネルに似た視覚化が表示されます。 **[Usage]\(使用\)** で並べ替えて、国や地域に基づいたカスタム イベントへのコンバージョンのバリエーションを表示します。
+:::image type="content" source="./media/usage-impact/regions.png" alt-text="スクリーンショットは、選択したイベントが国とリージョンによって分析された例を示しています。" lightbox="./media/usage-impact/regions.png":::
 
+## <a name="how-does-the-impact-analysis-workbook-calculate-these-conversion-rates"></a>影響分析ブックによってこれらのコンバージョン率が計算される方法
 
-## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>影響ツールによってこれらのコンバージョン率が計算される方法
-
-内部的には、影響ツールは[ピアソン相関関係の係数](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)に依存しています。 結果は -1 と 1 の間で計算されます。ここでは、-1 が負の線形相関を表し、1 が正の線形相関を表します。
+内部的には、影響分析ブックは[ピアソン相関関係の係数](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)に依存しています。 結果は -1 と 1 の間で計算されます。ここでは、-1 が負の線形相関を表し、1 が正の線形相関を表します。
 
 影響分析のしくみを単純に分解すると、次のようになります。
 
-_A_ = 最初のドロップダウンで選択するメインのページ ビュー/カスタム イベント/要求とします。 (**ページ ビューについて**)。
+_A_ = 最初のドロップダウンで選択するメインのページ ビュー/カスタム イベント/要求とします。 (**選択されたイベント**)。
 
 _B_ = 選択する 2 つ目のページ ビュー/カスタム イベント (**次の使用への影響**) とします。
 
@@ -80,6 +86,7 @@ _B_ = 選択する 2 つ目のページ ビュー/カスタム イベント (**�
 
 ## <a name="next-steps"></a>次のステップ
 
+- ブックの詳細については、[ブックの概要](../visualize/workbooks-overview.md)に関するページを参照してください。
 - 使用状況を把握できるようにするには、[カスタム イベント](./api-custom-events-metrics.md#trackevent)または[ページ ビュー](./api-custom-events-metrics.md#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
     - [ファネル](usage-funnels.md)

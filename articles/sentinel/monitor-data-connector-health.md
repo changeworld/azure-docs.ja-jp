@@ -1,34 +1,34 @@
 ---
-title: この Azure Sentinel ブックを使用してデータ コネクタの正常性を監視する | Microsoft Docs
+title: この Microsoft Sentinel ブックを使用してデータ コネクタの正常性を監視する | Microsoft Docs
 description: 正常性監視ブックを使用して、データ コネクタの接続性とパフォーマンスを追跡します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: how-to
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/09/2020
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 7d52b76601a617f62ae5b10fa38841ef2608bf49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d06268fd73008cafb67f3a53e56c3abf7333af9
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94656992"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132713138"
 ---
-# <a name="monitor-the-health-of-your-data-connectors-with-this-azure-sentinel-workbook"></a>この Azure Sentinel ブックを使用してデータ コネクタの正常性を監視する
+# <a name="monitor-the-health-of-your-data-connectors-with-this-microsoft-sentinel-workbook"></a>この Microsoft Sentinel ブックを使用してデータ コネクタの正常性を監視する
 
-**データ コネクタの正常性監視ブック** を使用すると、Azure Sentinel 内からデータ コネクタの正常性、接続性、およびパフォーマンスを追跡できます。 このブックには追加のモニターが用意されており、異常を検出して、ワークスペースのデータ インジェストの状態に関する分析情報を得ることができます。 ブックのロジックを使用して、取り込まれたデータの全般的な正常性を監視したり、カスタム ビューやルールベースのアラートを作成したりすることができます。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+**データ コネクタの正常性監視ブック** を使用すると、Microsoft Sentinel 内からデータ コネクタの正常性、接続、パフォーマンスを追跡できます。 このブックには追加のモニターが用意されており、異常を検出して、ワークスペースのデータ インジェストの状態に関する分析情報を得ることができます。 ブックのロジックを使用して、取り込まれたデータの全般的な正常性を監視したり、カスタム ビューやルールベースのアラートを作成したりすることができます。
 
 ## <a name="use-the-health-monitoring-workbook"></a>正常性監視ブックを使用する
 
-1. Azure Sentinel ポータルの **[脅威管理]** メニューで、 **[ブック]** を選択します。
+1. Microsoft Sentinel ポータルの **[脅威管理]** メニューから **[ブック]** を選択します。
 
 1. **[ブック]** ギャラリーで、検索バーに「*正常性*」と入力し、結果から **[データ収集の正常性の監視]** を選択します。
 
@@ -40,7 +40,7 @@ ms.locfileid: "94656992"
 
 このブックには、次の 3 つのタブ付きセクションがあります。
 
-1. **[概要**] タブには、選択したワークスペースでのデータ インジェストの全般的な状態 (ボリュームのメジャー、EPS 率、および最後のログ受信時刻) が表示されます。
+1. **[概要]** タブには、選択されたワークスペース内のデータ インジェストの全般的な状態 (ボリュームのメジャー、EPS 率、最後のログ受信時刻) が表示されます。
 
 1. **[データ収集の異常]** タブでは、テーブルとデータ ソースによってデータ収集プロセスの異常を検出できます。 各タブには、特定のテーブルの異常が表示されます ( **[全般]** タブには、テーブルのコレクションが含まれています)。 異常は、**異常スコア** を返す **series_decompose_anomalies()** 関数を使用して計算されます。 この関数については、[こちら](/azure/data-explorer/kusto/query/series-decompose-anomaliesfunction?WT.mc_id=Portal-fx)を参照してください。 評価する関数に次のパラメーターを設定します。
 
@@ -66,4 +66,4 @@ ms.locfileid: "94656992"
     :::image type="content" source="media/monitor-data-connector-health/data-health-workbook-3.png" alt-text="データ コネクタの正常性監視ブックのエージェントの情報ページ" lightbox="media/monitor-data-connector-health/data-health-workbook-3.png":::
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Sentinel へのデータのオンボード](quickstart-onboard.md)、[データ ソースの接続](connect-data-sources.md)、および[データや潜在的な脅威の視覚化](quickstart-get-visibility.md)の方法を確認します。
+[データを Microsoft Sentinel にオンボードする](quickstart-onboard.md)方法、[データ ソースを接続する](connect-data-sources.md)方法、[データや潜在的な脅威を視覚化する](get-visibility.md)方法を学習します。

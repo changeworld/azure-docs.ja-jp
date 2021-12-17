@@ -2,13 +2,13 @@
 title: レジストリのベスト プラクティス
 description: ベスト プラクティスに従って Azure Container Registry を効果的に使う方法を説明します。
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: 0811cc4a5bffc21ffba19e64a3887eab6bc36fbb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 08/13/2021
+ms.openlocfilehash: 1b713ac047b575c68cd8ed539187e3caac13a322
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784139"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626971"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry のベスト プラクティス
 
@@ -74,28 +74,37 @@ Azure Container Registry は、組織内のセキュリティのプラクティ�
 
 各 [コンテナー レジストリ サービス レベル][container-registry-skus]のストレージ制約は、一般的なシナリオに一致するように意図されています。開始用の **Basic**、大半の運用アプリケーションに対応する **Standard**、ハイパースケール パフォーマンスと [geo レプリケーション][container-registry-geo-replication]に対応する **Premium** があります。 レジストリの有効期間を通して、使用されていないコンテンツを定期的に削除することによって、そのサイズを管理する必要があります。
 
-Azure CLI コマンド [az acr show-usage][az-acr-show-usage] を使用して、レジストリの現在のサイズを表示します。
+Azure CLI コマンド [az acr show-usage][az-acr-show-usage] を使用して、レジストリ内のストレージとその他のリソースの現在の消費量を表示します。
 
 ```azurecli
 az acr show-usage --resource-group myResourceGroup --name myregistry --output table
 ```
 
-```output
-NAME      LIMIT         CURRENT VALUE    UNIT
---------  ------------  ---------------  ------
-Size      536870912000  185444288        Bytes
-Webhooks  100                            Count
+サンプル出力:
+
+```
+NAME                        LIMIT         CURRENT VALUE    UNIT
+--------------------------  ------------  ---------------  ------
+Size                        536870912000  215629144        Bytes
+Webhooks                    500           1                Count
+Geo-replications            -1            3                Count
+IPRules                     100           1                Count
+VNetRules                   100           0                Count
+PrivateEndpointConnections  10            0                Count
 ```
 
-Azure portal のレジストリの **概要** で、使用されている現在のストレージを見つけることもできます。
+Azure portal では、レジストリの **[概要]** でも現在のストレージの使用状況が分かります。
 
 ![Azure Portal でのレジストリ使用状況情報][registry-overview-quotas]
+
+> [!NOTE]
+> [geo レプリケーション](container-registry-geo-replication.md)の対象となっているレジストリでは、ホーム リージョンのストレージ使用量が表示されます。 使用済みのレジストリ ストレージの合計については、レプリケーションの数を乗算します。
 
 ### <a name="delete-image-data"></a>イメージ データを削除する
 
 Azure Container Registry は、コンテナー レジストリからイメージ データを削除するためのいくつかの方法をサポートしています。 タグまたはマニフェスト ダイジェストによってイメージを削除するか、またはリポジトリ全体を削除することができます。
 
-タグなし ("未解決" や "孤立" とも呼ばれる) イメージを含むイメージ データのレジストリからの削除の詳細については、「[Azure Container Registry のコンテナー イメージを削除する](container-registry-delete.md)」を参照してください。
+タグなし ("未解決" や "孤立" とも呼ばれる) イメージを含むイメージ データのレジストリからの削除の詳細については、「[Azure Container Registry のコンテナー イメージを削除する](container-registry-delete.md)」を参照してください。 [保有ポリシー](container-registry-retention-policy.md)は、タグなしマニフェストにも設定できます。
 
 ## <a name="next-steps"></a>次のステップ
 

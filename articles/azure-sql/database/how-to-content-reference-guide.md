@@ -3,20 +3,19 @@ title: 構成および管理に関するコンテンツ参照
 description: Azure SQL Database の構成および管理について説明するコンテンツの参照を見つけます。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: guide
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.date: 01/14/2020
-ms.openlocfilehash: 19cec1deeef344ea5897061db0fec88066b90b05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d870597665b2e59a660d01453ee0f5de05b0545
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92791768"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110704377"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>構成と管理に関するコンテンツ参照 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

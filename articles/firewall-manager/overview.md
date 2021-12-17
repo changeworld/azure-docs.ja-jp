@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 03/29/2021
+ms.date: 08/03/2021
 ms.author: victorh
-ms.openlocfilehash: 6725bea562d3e7841b5ab82acc0a54f91f0488b4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9a6e6a0713179295379e758f454617484c75b9a2
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732926"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779158"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Firewall Manager とは
 
@@ -82,15 +82,16 @@ Azure Firewall Manager には、次の既知の問題があります。
 |セキュリティ保護付き仮想ハブがリージョンごとに 1 つである|1 つのリージョンで複数のセキュリティ保護付き仮想ハブを使用することはできません。|1 つのリージョンに複数の仮想 WAN を作成します。|
 |基本ポリシーがローカル ポリシーと同じリージョンにある必要がある|基本ポリシーと同じリージョンにすべてのローカル ポリシーを作成します。 セキュリティ保護付きハブ上の 1 つのリージョンで作成されたポリシーを、別のリージョンから適用することもできます。|調査中|
 |セキュリティで保護された仮想ハブ デプロイでのハブ間トラフィックのフィルター処理|セキュリティ保護付き仮想ハブからセキュリティ保護付き仮想ハブへの通信のフィルター処理は、まだサポートされていません。 ただし、Azure Firewall によるプライベート トラフィックのフィルター処理が有効になっていない場合は、ハブからハブへの通信は引き続き機能します。|調査中|
-|仮想ハブとは異なるリージョンにあるスポーク|仮想ハブとは異なるリージョンにあるスポークはサポートされていません。|調査中<br><br>リージョンごとにハブを作成し、ハブと同じリージョンの VNet をピアリングします。|
 |プライベート トラフィック フィルターが有効になっている場合のブランチ間のトラフィック|プライベート トラフィック フィルターが有効になっている場合、ブランチ間のトラフィックはサポートされていません。 |調査中。<br><br>ブランチ間の接続が重要である場合は、プライベート トラフィックをセキュリティで保護しないでください。|
 |同じ Virtual WAN を共有するすべてのセキュリティ保護付き仮想ハブは同じリソース グループに存在する必要がある|この動作は、今日の Virtual WAN ハブに合わせたものです。|複数の異なるリソース グループにセキュリティ保護付き仮想ハブを作成できるようにするには、複数の Virtual WAN を作成します。|
 |一括 IP アドレス追加が失敗する|複数のパブリック IP アドレスを追加すると、セキュリティで保護されたハブ ファイアウォールがエラー状態になります。|より少ない増分のパブリック IP アドレスを追加します。 たとえば、一度に 10 個を追加します。|
 |セキュリティ保護付き仮想ハブで DDoS Protection Standard がサポートされていない|DDoS Protection Standard は vWAN と統合されていません。|調査中|
 |アクティビティ ログが完全にはサポートされていない|現在、ファイアウォール ポリシーでは、アクティビティ ログはサポートされていません。|調査中|
-|Firewall ポリシーを使用するようにファイアウォールが移行されても、いくつかのファイアウォール設定が移行されません|Azure Firewall ポリシーに移行しても、可用性ゾーンと SNAT プライベート アドレスは移行されません。|調査中| 
+|ルールの説明が完全にサポートされていない|ファイアウォール ポリシーで、ARM エクスポート内のルールの説明が表示されません。|調査中|
+|Azure Firewall Manager で、静的およびカスタムのルートが上書され、仮想 WAN ハブのダウンタイムの原因となっている。|Azure Firewall Manager を使用して、カスタムまたは静的ルートを使用して構成されたデプロイの設定を管理しないでください。 Firewall Manager からの更新によって、静的またはカスタムのルート設定が上書きされる可能性があります。|静的またはカスタムのルートを使用する場合は、[Virtual WAN] ページを使用してセキュリティ設定を管理し、Azure Firewall Manager を使用した構成は避けてください。<br><br>詳細については、「[シナリオ: Azure Firewall - カスタム](../virtual-wan/scenario-route-between-vnets-firewall.md)」をご覧ください。|
 
 ## <a name="next-steps"></a>次のステップ
 
+- [Learn モジュール: Azure Firewall Manager の概要](/learn/modules/intro-to-azure-firewall-manager/)。
 - [Azure Firewall Manager のデプロイ概要](deployment-overview.md)を確認する
 - [セキュリティで保護された仮想ハブ](secured-virtual-hub.md)について学習します。

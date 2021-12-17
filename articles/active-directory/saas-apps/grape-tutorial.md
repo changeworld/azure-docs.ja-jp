@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 751ebd676e19d80930443b47fbe55c0bb400295c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3338fb4d04dbcf4cec52d090f3906907d327f95c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92447965"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124833737"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>チュートリアル: Azure Active Directory と Gra-Pe の統合
 
@@ -180,7 +180,7 @@ Gra-Pe で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Gra-Pe] タイルをクリックすると、SSO を設定した Gra-Pe に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Gra-Pe] タイルをクリックすると、SSO を設定した Gra-Pe に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -1,24 +1,27 @@
 ---
 title: Azure Data Factory の Switch アクティビティ
 description: 条件に基づく処理フローは、Switch アクティビティを使用して制御できます。
-author: dcstwh
-ms.author: weetok
+author: chez-charlie
+ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.openlocfilehash: 08d93bd3d49dc345b35a942d4d5db4eef937d3de
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/23/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 19dd17afc7114d739e1faa043a40962ce601d253
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786143"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638161"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure Data Factory の Switch アクティビティ
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Switch アクティビティは、プログラミング言語における switch ステートメントと同じ働きを持ちます。 条件評価に一致するケースに対応する一連のアクティビティが評価されます。
+
 
 ## <a name="syntax"></a>構文
 

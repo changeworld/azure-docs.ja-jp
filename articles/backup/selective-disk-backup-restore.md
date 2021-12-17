@@ -2,14 +2,17 @@
 title: Azure 仮想マシンの選択的なディスク バックアップと復元
 description: この記事では、Azure 仮想マシン バックアップ ソリューションを使用した選択的なディスク バックアップと復元について説明します。
 ms.topic: conceptual
-ms.date: 07/17/2020
-ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: e82c959dc63222e8565243cc9ac805283cab6617
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/10/2021
+ms.custom: references_regions , devx-track-azurecli, devx-track-azurepowershell3
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: f2b4eda015bca45e586d77302eeedef18b217fbc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501833"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312421"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure 仮想マシンの選択的なディスク バックアップと復元
 
@@ -22,7 +25,7 @@ Azure Backup では、仮想マシン バックアップ ソリューション�
 1. 1 つのディスクのみ、またはディスクのサブセットの重要なデータのバックアップを行い、バックアップ ストレージのコストを最小限に抑えるために、VM に接続されている残りのディスクをバックアップしない場合。
 2. VM またはデータの一部について、他のバックアップ ソリューションがある場合。 たとえば、データベースまたはデータを別のワークロード バックアップ ソリューションを使用してバックアップし、残りのデータまたはディスクに対して Azure VM レベルのバックアップを使用して、使用可能な最適な機能を活用した効率的で堅牢なシステムを構築できます。
 
-PowerShell または Azure CLI を使用すると、Azure VM の選択的なディスク バックアップを構成できます。  スクリプトを使用すると、LUN 番号を使用してデータ ディスクを含めたり除外したりすることができます。  現時点では、Azure portal を介して選択的なディスク バックアップを構成する機能は、**OS ディスクのみバックアップ** オプションに制限されています。 そのため、OS ディスクとともに Azure VM のバックアップを構成し、それに接続されているすべてのデータ ディスクを除外することができます。
+PowerShell または Azure CLI を使用すると、Azure VM の選択的なディスク バックアップを構成できます。 スクリプトを使用すると、LUN 番号を使用してデータ ディスクを含めたり除外したりすることができます。 現時点では、Azure portal を介して選択的なディスク バックアップを構成する機能は、**OS ディスクのみバックアップ** オプションに制限されています。 そのため、OS ディスクとともに Azure VM のバックアップを構成し、それに接続されているすべてのデータ ディスクを除外することができます。
 
 >[!NOTE]
 > OS ディスクは既定で VM バックアップに追加されるため、除外することはできません。
@@ -47,6 +50,9 @@ az account set -s {subscriptionID}
 ### <a name="configure-backup-with-azure-cli"></a>Azure CLI を使用してバックアップを構成する
 
 保護の構成操作中に、**inclusion** / **exclusion** パラメーターを使用して、ディスク リスト設定を指定する必要があり、バックアップに含めるまたは除外するディスクの LUN 番号を指定します。
+
+>[!NOTE]
+>保護の構成操作は以前の設定を上書きし、累積されることはありません。
 
 ```azurecli
 az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
@@ -124,6 +130,11 @@ az backup job show --vault-name {vaultname} --resource-group {resourcegroup} -n 
    "Excluded disk(s)": "diskextest_DataDisk_2",
 ```
 
+_BackupJobID_ は、バックアップ ジョブの名前です。 ジョブ名を取得するには、次のコマンドを実行します。
+
+```azurecli
+az backup job list --resource-group {resourcegroup} --vault-name {vaultname}
+```
 ### <a name="list-recovery-points-with-azure-cli"></a>Azure CLI を使用して復旧ポイントを一覧表示する
 
 ```azurecli
@@ -178,9 +189,9 @@ az backup recoverypoint show --vault-name {vaultname} --resource-group {resource
 ### <a name="remove-disk-exclusion-settings-and-get-protected-item-with-azure-cli"></a>Azure CLI を使用して、ディスクの除外設定を削除し、保護された項目を取得する
 
 ```azurecli
-az backup protection update-for-vm --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --disk-list-setting resetexclusionsettings
+az backup protection update-for-vm --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --disk-list-setting resetexclusionsettings
 
-az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-group {resourcegroup} --backup-management-type AzureIaasVM
+az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-group {resourcegroup}
 ```
 
 これらのコマンドを実行すると、`"diskExclusionProperties": null` が表示されます。
@@ -191,6 +202,9 @@ Azure PowerShell バージョン 3.7.0 以上を使用していることを確�
 
 保護の構成操作中に、バックアップに含めるか、または除外するディスクの LUN 番号を示す inclusion または exclusion パラメーターを含むディスク リスト設定を指定する必要があります。
 
+>[!NOTE]
+>保護の構成操作は以前の設定を上書きし、累積されることはありません。
+
 ### <a name="enable-backup-with-powershell"></a>PowerShell を使用してバックアップを有効にする
 
 次に例を示します。
@@ -198,6 +212,7 @@ Azure PowerShell バージョン 3.7.0 以上を使用していることを確�
 ```azurepowershell
 $disks = ("0","1")
 $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "rg-p-recovery_vaults" -Name "rsv-p-servers"
+Set-AzRecoveryServicesVaultContext -Vault $targetVault
 Get-AzRecoveryServicesBackupProtectionPolicy
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "P-Servers"
 ```
@@ -245,6 +260,9 @@ Enable-AzRecoveryServicesBackupProtection -Item $item  -ExcludeAllDataDisks -Vau
 ```azurepowershell
 Enable-AzRecoveryServicesBackupProtection -Item $item -ResetExclusionSettings -VaultId $targetVault.ID
 ```
+
+> [!NOTE]
+> ポリシー パラメーターが必要であるというエラーでコマンドが失敗した場合は、バックアップ項目の保護の状態を確認します。 保護が停止している可能性があるため、保護を再開し、以前のすべてのディスクの除外設定をリセットするためにポリシーが必要になります。
 
 ### <a name="restore-selective-disks-with-powershell"></a>PowerShell を使用して、ディスクを選択的に復元する
 
@@ -311,6 +329,8 @@ Azure portal を使用してバックアップを有効にした場合は、**OS
 **新しい VM の作成** および **既存のものを置き換える** 復元オプションは、選択的なディスクのバックアップ機能が有効になっている VM ではサポートされません。
 
 現在、Azure VM バックアップでは、Ultra Disk または共有ディスクが接続されている VM はサポートされていません。 ディスクを除外して VM をバックアップするこのような場合は、選択的ディスク バックアップを使用することはできません。
+
+Azure VM のバックアップ中にディスクの除外または選択的ディスクを使用する場合は、" _[保護を停止し、バックアップ データを保持します](backup-azure-manage-vms.md#stop-protection-and-retain-backup-data)_ "。 このリソースのバックアップを再開する場合は、ディスク除外の設定をもう一度設定する必要があります。
 
 ## <a name="billing"></a>課金
 

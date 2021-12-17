@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: baf4e843eea859fc16ed6e3bcd509785cc4db8bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 128cf9e69b5e65d5feff4bbd4d05df5eb4c282dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86245587"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281554"
 ---
 # <a name="sfctl-settings"></a>sfctl settings
 sfctl のこのインスタンスに対してローカルな設定を構成します。
@@ -21,6 +21,6 @@ sfctl のこのインスタンスに対してローカルな設定を構成し�
 | [telemetry](service-fabric-sfctl-settings-telemetry.md) | sfctl のこのインスタンスに対してローカルなテレメトリ設定を構成します。 |
 
 
-## <a name="next-steps"></a>次のステップ   
-- Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。   
+## <a name="next-steps"></a>次のステップ
+- Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](./scripts/sfctl-upgrade-application.md)を使用して、Service Fabric CLI の使用方法を学習します。

@@ -1,25 +1,20 @@
 ---
-title: Basic レベル プレビュー - Hyperscale (Citus) - Azure Database for PostgreSQL
+title: Basic レベル - Hyperscale (Citus) - Azure Database for PostgreSQL
 description: Azure Database for PostgreSQL - Hyperscale (Citus) の単一ノードの Basic レベル
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: c8cad5eb0983715a7cc7c18249243e93a2c498d7
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 08/03/2021
+ms.openlocfilehash: b39ddb8841b5b9a1e0665c94776363162575ad53
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023899"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734980"
 ---
-# <a name="basic-tier-preview"></a>Basic レベル (プレビュー)
-
-> [!IMPORTANT]
-> Hyperscale (Citus) Basic レベルは現在プレビュー段階です。  このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
->
-> その他の新機能については、[Hyperscale (Citus) のプレビュー機能](hyperscale-preview-features.md)に関するページで全一覧をご覧いただけます。
+# <a name="basic-tier"></a>Basic レベル
 
 Azure Database for PostgreSQL - Hyperscale (Citus) の Basic レベルを使用すると、後でスケーリングできる小規模なサーバー グループを簡単に作成できます。 Standard レベルのサーバー グループには、コーディネーター ノードと少なくとも 2 つのワーカー ノードがありますが、Basic レベルの場合は、1 つのデータベース ノードですべてが実行されます。
 
@@ -29,7 +24,7 @@ Azure Database for PostgreSQL - Hyperscale (Citus) の Basic レベルを使用�
 
 Basic レベルは、初期の開発、テスト、継続的インテグレーションに適した経済的で便利なデプロイ オプションとなります。 1 つのデータベース ノードが使用され、Standard レベルと同じ SQL API が用意されています。 Basic レベルでアプリケーションをテストし、後で [Standard レベルに移行](howto-hyperscale-scale-grow.md#add-worker-nodes)して、インターフェイスが同じままであることを確認できます。
 
-Basic レベルは、(プレビューから一般提供に移行した後の) 運用環境の小規模なワークロードにも適しています。 サーバーの仮想コア数を増やすことで、Basic レベル "*内で*" 垂直方向にスケーリングすることができます。
+Basic レベルは、運用環境の小規模なワークロードにも適しています。 サーバーの仮想コア数を増やすことで、Basic レベル "*内で*" 垂直方向にスケーリングすることができます。
 
 より大きなスケールがすぐに必要な場合は、Standard レベルを使用してください。 許容される最小限のサーバー グループには、1 つのコーディネーター ノードと 2 つのワーカーが含まれます。 [初期サイズ設定](howto-hyperscale-scale-initial.md)方法に関するページで説明されているように、ユースケースに基づいてより多くのノードの使用を選択できます。
 

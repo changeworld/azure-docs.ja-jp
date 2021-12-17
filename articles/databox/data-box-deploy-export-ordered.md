@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 12/18/2020
+ms.date: 10/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: 298d935b9b673e0b77bdd3e66cc3d348e2d52a07
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98789197"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361530"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>チュートリアル:Azure Data Box のエクスポート注文を作成する
 
@@ -101,17 +102,16 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
     |ストレージ アカウント     | エクスポートするデータがある Azure Storage アカウント。 |
     |Export type (エクスポートの種類)     | エクスポートするデータの種類を **[All objects]\(すべてのオブジェクト\)** および **[Use XML file]\(XML ファイルを使用\)** から指定します。<ul><li> **[All objects]\(すべてのオブジェクト\)** - **[Transfer options]\(転送オプション\)** の選択に応じて、ジョブですべてのデータをエクスポートするように指定します。</li><li> **[Use XML file]\(XML ファイルを使用\)** - ストレージ アカウントからエクスポートする BLOB またはファイルのパスとプレフィックスのセットを含む XML ファイルを指定します。 選択したストレージ アカウントのコンテナーには XML ファイルが含まれている必要があります。ファイル共有から選択することは現在サポートされていません。 ファイルは、空でない .xml ファイルである必要があります。</li></ul>        |
     |Transfer options (転送オプション)     |  **[Select all]\(すべて選択\)** 、 **[All BLOB]\(すべての BLOB\)** 、および **[All files]\(すべてのファイル\)** からデータ転送オプションを指定します。 <ul><li> **[Select All]\(すべて選択\)** - すべての BLOB と Azure Files をエクスポートすることを指定します。 BLOB のみがサポートされているストレージ アカウント (Blob ストレージ アカウント) を使用している場合は、 **[All Files]\(すべてのファイル\)** オプションは選択できません。</li><li> **[All BLOB]\(すべての BLOB\)** - ブロック BLOB とページ BLOB のみエクスポートすることを指定します。</li><li> **[All Files]\(すべてのファイル\)** - BLOB を除くすべてのファイルをエクスポートすることを指定します。 使用しているストレージ アカウントの種類 (GPv1 と GPv2、Premium Storage、または BLOB ストレージ) によって、エクスポートできるデータの種類が決まります。 詳細については、[エクスポートでサポートされるストレージ アカウント](../import-export/storage-import-export-requirements.md#supported-storage-types)に関する記事を参照してください。</li></ul>         |
-    |Include verbose log (詳細ログを含める)     | 正常にエクスポートされたすべてのファイルの一覧を含む詳細ログ ファイルが必要かどうかを示します。        |
+    |Include verbose log (詳細ログを含める)     | 正常にエクスポートされたすべてのファイルの一覧を含む詳細ログ ファイルが必要かどうかを示します。 エクスポート注文のコピー ログと詳細ログの詳細については、[ログの参照](data-box-export-logs.md#view-logs-during-data-copy)に関するセクションを参照してください。 |
 
     > [!NOTE]
-    >
-    > **[Export type]\(エクスポートの種類\)** 設定で **[Use XML file]\(XML ファイルを使用\)** を選択した場合は、XML に有効なパスまたはプレフィックスが含まれていることを確認する必要があります。 XML ファイルを構築して指定する必要があります。  ファイルが無効な場合、または指定されたパスと一致するデータがない場合は、一部のデータまたはすべてのデータがエクスポートされずに終了します。
+    > **[Export type]\(エクスポートの種類\)** 設定で **[Use XML file]\(XML ファイルを使用\)** を選択した場合は、XML ファイルに有効なパスまたはプレフィックスが含まれていることを確認する必要があります。 XML ファイルを構築して指定する必要があります。 ファイルが無効な場合、または指定されたパスと一致するデータがない場合は、一部のデータまたはすべてのデータがエクスポートされずに終了します。 ガイダンスについては、「[XML ファイルを作成する](#create-xml-file)」を参照してください。
 
     XML ファイルをコンテナーに追加する方法については、「[XML ファイルを使用した注文のエクスポート](data-box-deploy-export-ordered.md#export-order-using-xml-file)」を参照してください。
 
    ![Select export option (エクスポート オプションの選択)](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-   XML 入力の例については、[XML 入力のサンプル](data-box-deploy-export-ordered.md#sample-xml-file)を参照してください
+   XML 入力の例については、「[XML ファイルを作成する](#create-xml-file)」を参照してください。
 
 9. **[Data Selection]\(データの選択\)** で、設定を確認し、 **[Next:Security>]\(次へ: セキュリティ>\)** を選択して続行します。
 
@@ -228,7 +228,9 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
 ## <a name="export-order-using-xml-file"></a>XML ファイルを使用した注文のエクスポート
 
-**[Use XML file]\(XML ファイルを使用\)** を選択した場合は、エクスポートする特定のコンテナーと BLOB (ページおよびブロック) を指定できます。 XML の書式設定については、[サンプル XML ファイル テーブル](#sample-xml-file)を参照してください。 次の手順は、データのエクスポートに XML ファイルを使用する方法を示しています。
+**[Use XML file]\(XML ファイルを使用\)** を選択した場合は、エクスポートする特定のコンテナーと BLOB (ページおよびブロック) を指定できます。 次の手順は、データのエクスポートに XML ファイルを使用する方法を示しています。 XML ファイルを構築するには、「[XML ファイルを作成する](#create-xml-file)」のガイダンスに従います。
+
+XML ファイルを使用してデータをエクスポートするには:
 
 1. **[Export type]\(エクスポートの種類\)** には、 **[Use XML file]\(XML ファイルを使用\)** を選択します。 これは、エクスポートする特定の BLOB と Azure ファイルを指定する XML ファイルです。 XML ファイルを追加するには、 **[Click here to select an XML file]\(ここをクリックして XML ファイルを選択\)** を選択します。
 
@@ -262,6 +264,109 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
    ![コンテナーに追加された XML ファイル](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-added-to-container.png)
 
+## <a name="create-xml-file"></a>XML ファイルを作成する
+
+エクスポートする BLOB とファイルを XML ファイルを使用して選択する場合は、次のガイドラインに従って XML ファイルを作成します。
+- **「サンプル XML ファイル」タブ:** 各タグの例を含むサンプル XML ファイルをコピーします。
+- **「XML ファイルの概要」タブ:** XML ファイルのタグ要件を確認します。
+- **「プレフィックスの例」タブ:** エクスポートする複数の BLOB とファイルを選択する有効なプレフィックスの例を参照します。
+
+### <a name="sample-xml-file"></a>[サンプル XML ファイル](#tab/sample-xml-file)
+
+このサンプル XML ファイルには、Data Box のエクスポート注文でエクスポートする BLOB とファイルの選択に使用される各 XML タグの例が含まれています。 
+
+- XML ファイルの要件については、「**XML ファイルの概要**」タブを参照してください。
+- 有効な BLOB プレフィックスとファイル プレフィックスのその他の例については、「**プレフィックスの例**」タブを参照してください。
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+   <!--BlobList selects individual blobs (BlobPath) and multiple blobs (BlobPathPrefix) in Blob storage for export.-->
+   <BlobList>
+      <BlobPath>/container1/blob.txt</BlobPath> <!-- Exports /container1/blob.txt -->
+      <BlobPathPrefix>/container2/</BlobPathPrefix> <!--Exports all blobs in container2 -->
+      <BlobPathPrefix>/container</BlobPathPrefix>  <!-- Exports all containers beginning with prefix: "container" -->
+      <BlobPathPrefix>/container1/2021Q2</BlobPathPrefix> <!-- Exports all blobs in container1 with prefix: "2021Q2" -->
+   </BlobList>
+   
+   <!--AzureFileList selects individual files (FilePath) and multiple files (FilePathPrefix) in Azure File storage for export.-->
+   <AzureFileList>
+      <FilePath>/fileshare1/file.txt</FilePath> <!-- Exports /fileshare1/file.txt -->
+      <FilePathPrefix>/fileshare1/</FilePath> <!-- Exports all directories and files in fileshare1 -->
+      <FilePathPrefix>/fileshare</FilePathPrefix> <!-- Exports all directories and files in any fileshare with prefix: "fileshare" -->
+      <FilePathPrefix>/fileshare2/contosowest</FilePathPrefix> <!-- Exports all directories and files in fileshare2 with prefix: "contosowest" -->
+   </AzureFileList>
+```
+
+### <a name="xml-file-overview"></a>[XML ファイルの概要](#tab/xml-file-overview)
+
+エクスポート注文のための XML ファイルを構築する場合は、次のガイドラインに従います。 タグ形式が正しくないと、エクスポート エラーが発生するおそれがあります。
+
+エクスポート注文を行う際に XML ファイルをアップロードする手順については、「[XML ファイルを使用した注文のエクスポート](#export-order-using-xml-file)」を参照してください。
+
+#### <a name="path-vs-prefix"></a>パスとプレフィックス
+
+XML ファイルで XML タグを正しく作成するには、パスとプレフィックスの違いを理解する必要があります。
+
+* "*パス*" は、1 つの BLOB またはファイルを選択して、フィルター処理します。
+* "*プレフィックス*" は、複数の BLOB または複数のファイルを選択して、フィルター処理します。
+
+正しい形式のプレフィックスの例については、「**プレフィックスの例**」タブを参照してください。
+
+#### <a name="tag-usage"></a>タグの使用法
+
+次の XML タグは、Data Box のエクスポート注文用 XML ファイルで使用されます。
+
+| XML タグ           |説明 |
+|-------------------|------------|
+|`<BlobList>`       |&lt;BlobPath&gt; および &lt;BlobPathPrefix&gt; タグの親タグ。|
+|`<BlobPath>`       |1 つの BLOB を選択します。 |
+|`<BlobPathPrefix>` |共通のプレフィックスを持つ複数の BLOB を選択します。 例については、「**プレフィックスの例**」タブを参照してください。|
+|`<AzureFileList>`  |&lt;FilePath&gt; および &lt;FilePathPrefix&gt; タグの親タグ。|
+|`<FilePath>`       |1 つのファイルを選択します。 |
+|`<FilePathPrefix>` |共通のプレフィックスを持つ複数のファイルを選択します。 例については、「**プレフィックスの例**」タブを参照してください。|
+
+コンテキストの中のタグを確認するには、「**サンプル XML ファイル**」タブを参照してください。
+
+#### <a name="xml-tag-requirements"></a>XML タグの要件
+
+* XML タグでは常に大文字と小文字が区別されるため、上の表のタグと正確に一致する必要があります。
+* 開始タグと終了タグは一致している必要があります。
+* XML タグまたは書式指定が正しくないと、データのエクスポートに失敗するおそれがあります。
+* BLOB のプレフィックスやファイルのプレフィックスが正しくないと、データはエクスポートされません。 有効なプレフィックスの例については、「**プレフィックスの例**」タブを参照してください。
+
+### <a name="prefix-examples"></a>[プレフィックスの例](#tab/prefix-examples)
+
+次のサンプル パスは、エクスポートする複数の BLOB またはファイルを選択するプレフィックスを構築するさまざまな方法を示しています。
+
+#### <a name="valid-blob-path-prefixes"></a>有効な BLOB パス プレフィックス
+
+以下のサンプル パスは、Azure BLOB ストレージ内の複数の BLOB をエクスポート対象として選択するために、&lt;BlobPathPrefix&gt; タグと共に使用します。
+
+|BLOB パス プレフィックス        |説明                                                                     |タグの例                         |
+|------------------------|--------------------------------------------------------------------------------|------------------------------------|
+|/                       |ストレージ アカウント内のすべての BLOB をエクスポートします。                                       |`<BlobPathPrefix>/</BlobPathPrefix>`|
+|/$root/                 |ルート コンテナー内のすべての BLOB をエクスポートします。                                        |`<BlobPathPrefix>/$root/</BlobPathPrefix>`|
+|/container2/            |コンテナー **container2** 内のすべての BLOB をエクスポートします。                              |`<BlobPathPrefix>/container2/</BlobPathPrefix>`|
+|/container          |プレフィックス **container** で始まる任意のコンテナー内にあるすべての BLOB をエクスポートします。      |`<BlobPathPrefix>/container</BlobPathPrefix>`|
+|/container1/2021Q2      |コンテナー **container1** 内にあり、プレフィックス **2021Q2** で始まるすべての BLOB をエクスポートします。|`<BlobPathPrefix>/container1/2021Q2</BlobPathPrefix>`|
+
+エクスポートする "*1 つの*" BLOB を選択するには、&lt;BlobPath&gt; タグを使用して、コンテナー パスと BLOB 名を指定します。 たとえば、**container1** コンテナー内の **blob.txt** を選択するには、次のタグを使用します: `<BlobPath>/container1/blob.txt</BlobPath>`。
+
+#### <a name="valid-file-path-prefixes"></a>有効なファイル パス プレフィックス
+
+以下のサンプル パスは、エクスポートする複数の Azure ファイルを選択するために、&lt;FilePathPrefix&gt; タグと共に使用します。
+
+|ファイル パス プレフィックス        |説明                                                                                          |タグの例|
+|------------------------|-----------------------------------------------------------------------------------------------------|-----------|
+|/                       |ストレージ アカウント内のすべてのファイルとディレクトリをエクスポートします。 |`<FilePathPrefix>/</FilePath>Prefix>`|
+|/fileshare1/            |**fileshare1** という名前の共有内にあるすべてのファイルとディレクトリをエクスポートします。                                                 |`<FilePathPrefix>/fileshare1/</FilePath>Prefix>`|
+|/fileshare              |プレフィックス **fileshare** で始まる任意のファイル共有内にあるすべてのファイルとディレクトリをエクスポートします。 |`<FilePathPrefix>/fileshare</FilePath>Prefix>`|
+|/fileshare2/contosowest |ファイル共有 **fileshare2** 内にあり、プレフィックス **contosowest** で始まるすべてのファイルとディレクトリをエクスポートします。|`<FilePathPrefix>/fileshare2/contosowest</FilePath>Prefix>`|
+
+エクスポートする "*1 つの*" ファイルを選択するには、&lt;FilePath&gt; タグを使用して、共有パスとファイル名を指定します。 たとえば、**fileshare1** 内の **file.txt** を選択するには、次のタグを使用します: `<FilePath>/fileshare1/file.txt</FilePath>`
+
+---
+
 ## <a name="track-the-order"></a>注文を追跡する
 
 注文後、Azure portal から注文の状態を追跡できます。 Data Box の注文に移動し、 **[概要]** に移動して状態を表示します。 ポータルでは、注文は、 **[注文済み]** 状態で表示されます。
@@ -273,6 +378,11 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 Data Box によってソース ストレージ アカウントからデータがコピーされます。 データのコピーが完了すると Data Box がロックされ、ポータルに **[Copy Completed]\(コピー完了\)** 状態の注文が表示されます。
 
 ![Data Box エクスポート注文、データ コピー完了](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-complete.png)
+
+Azure Storage から Data Box へのデータのエクスポートが失敗する場合があります。 アーカイブされた BLOB のエクスポートはサポートされていないため、BLOB がアーカイブ BLOB でないことを確認します。 
+
+> [!NOTE]
+> アーカイブ BLOB の場合には、それらの BLOB を Azure Storage アカウントから Data Box にエクスポートする前にリハイドレートする必要があります。 詳細については、[アーカイブ BLOB のリハイドレート]( ../storage/blobs/storage-blob-rehydration.md)に関するページを参照してください。
 
 デバイスが使用できない場合は、通知されます。 デバイスが使用可能な場合は、Microsoft が配送用のデバイスを特定し、配送の準備をします。 デバイスの準備中に、次のアクションが実行されます。
 
@@ -295,129 +405,6 @@ Data Box によってソース ストレージ アカウントからデータが
 注文は、注文した後、注文処理が開始されるまでの任意の時点でキャンセルできます。
 
 キャンセルされた注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** を選択します。
-
-## <a name="sample-xml-file"></a>サンプル XML ファイル
-
-次の XML は、 **[Use XML file]\(XML ファイルを使用\)** オプションを選択したときにエクスポート注文で使用される BLOB 名、BLOB プレフィックス、XML 形式の Azure Files の例を示しています。
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-   <!-- BlobList/prefix/Container list for Blob storage for export  -->
-   <BlobList>
-      <BlobPath>/8tbpageblob/8tbpageblob/8tbpageblob</BlobPath>
-      <BlobPathPrefix>/blockblob4dot75tbdata/</BlobPathPrefix>
-      <BlobPathPrefix>/1tbfilepageblob</BlobPathPrefix>
-      <BlobPathPrefix>/1tbfile/</BlobPathPrefix>
-      <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
-      <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
-   </BlobList>
-   <!-- FileList/prefix/Share list for Azure File storage for export  -->
-   <AzureFileList>
-      <FilePathPrefix>/64mbfiles/</FilePathPrefix>
-      <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>
-      <FilePathPrefix>/1tbfile/prefix</FilePathPrefix>
-   </AzureFileList>
-```
-
-XML ファイルに関して重要な点は次のとおりです。
-
-* XML タグでは大文字と小文字が区別され、上記の例で指定したとおりに正確に一致する必要があります。
-* 開始タグと終了タグは一致している必要があります。
-* XML タグまたは書式指定が正しくないと、データのエクスポートに失敗する可能性があります。
-* BLOB またはファイルのプレフィックスが無効である場合、データはエクスポートされません。
-
-### <a name="examples-of-valid-blob-paths"></a>有効な BLOB パスの例
-
-次の表は、有効な BLOB のパスの例を示しています。
-
-   | セレクター | BLOB パス | 説明 |
-   | --- | --- | --- |
-   | 次で始まる |/ |ストレージ アカウントのすべての BLOB をエクスポートする |
-   | 次で始まる |/$root/ |ルート コンテナー内のすべての BLOB をエクスポートする |
-   | 次で始まる |/containers |任意のコンテナー内の、プレフィックス **containers** で始まるすべての BLOB をエクスポートする |
-   | 次で始まる |/container-name/ |コンテナー **container-name** 内のすべての BLOB をエクスポートする |
-   | 次で始まる |/container-name/prefix |プレフィックス **prefix** で始まるコンテナー **container-name** 内のすべての BLOB をエクスポートする |
-   | 等しい |$root/logo.bmp |ルート コンテナー内の BLOB " **logo.bmp** " をエクスポートする |
-   | 等しい |8tbpageblob/mydata.txt |コンテナー **8tbpageblob** 内の BLOB **mydata.txt** をエクスポートする |
-
-## <a name="sample-log-files"></a>サンプル ログ ファイル
-
-このセクションでは、エクスポート時に生成されるサンプル ログ ファイルについて説明します。 エラー ログは自動的に生成されます。 詳細ログ ファイルを生成するには、エクスポート注文を構成するときに、Azure portal で **[Include verbose log]\(詳細ログを含める\)** を選択する必要があります。
-コピー ログと詳細ログの詳細については、[コピー ログ](data-box-deploy-export-copy-data.md#copy-data-from-data-box)に関する記事を参照してください。
-
-<!-- ### Verbose log
-
-The following log files show examples of verbose logging when you select **Include verbose log**:
-
-```xml
-<File CloudFormat="BlockBlob" Path="validblobdata/test1.2.3.4" Size="1024" crc64="7573843669953104266"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/helloEndWithDot..txt" Size="11" crc64="7320094093915972193"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/test..txt" Size="12" crc64="17906086011702236012"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/test1" Size="1024" crc64="7573843669953104266"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/test1.2.3" Size="1024" crc64="7573843669953104266"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/.......txt" Size="11" crc64="7320094093915972193"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/copylogb08fa3095564421bb550d775fff143ed====..txt" Size="53638" crc64="1147139997367113454"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/testmaxChars-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-12345679" Size="1024" crc64="7573843669953104266"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file0" Size="0" crc64="0"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file1" Size="0" crc64="0"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file4096_000001" Size="4096" crc64="16969371397892565512"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file4096_000000" Size="4096" crc64="16969371397892565512"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/64KB-Seed10.dat" Size="65536" crc64="10746682179555216785"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/LiveSiteReport_Oct.xlsx" Size="7028" crc64="6103506546789189963"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/NE_Oct_GeoReport.xlsx" Size="103197" crc64="13305485882546035852"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/64KB-Seed1.dat" Size="65536" crc64="3140622834011462581"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/1mbfiles-0-0" Size="1048576" crc64="16086591317856295272"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file524288_000001" Size="524288" crc64="8908547729214703832"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/4mbfiles-0-0" Size="4194304" crc64="1339017920798612765"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file524288_000000" Size="524288" crc64="8908547729214703832"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/8mbfiles-0-1" Size="8388608" crc64="3963298606737216548"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/1mbfiles-0-1" Size="1048576" crc64="11061759121415905887"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/XLS-10MB.xls" Size="1199104" crc64="2218419493992437463"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/8mbfiles-0-0" Size="8388608" crc64="1072783424245035917"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/4mbfiles-0-1" Size="4194304" crc64="9991307204216370812"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/VL_Piracy_Negtive10_TPNameAndGCS.xlsx" Size="12398699" crc64="13526033021067702820"></File>
-```
-
-### Copy logs
-
-For more information regarding copy logs, see [Copy logs](data-box-deploy-export-copy-data.md#copy-data-from-data-box). -->
-
-<!-- The following xml shows an example of the copy log when the export is successful:
-
-```xml
-<CopyLog Summary="Summary">
-  <Status>Succeeded</Status>
-    <TotalFiles_Blobs>27</TotalFiles_Blobs>
-    <FilesErrored>0</FilesErrored>
-</CopyLog>
-```
-
-For more information regarding copy logs, see [Copy logs](data-box-deploy-export-copy-data.md#copy-data-from-data-box).
-
-The following xml shows an example of the copy log when the export has errors:
-
-```xml
-<ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/wastorage.v140.3.0.2.nupkg">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>400</ErrorCode>
-  <ErrorMessage>UnsupportBlobType</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/xunit.console.Primary_2020-05-07_03-54-42-PM_27444.hcsml">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>400</ErrorCode>
-  <ErrorMessage>UnsupportBlobType</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/xunit.console.Primary_2020-05-07_03-54-42-PM_27444 (1).hcsml">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>400</ErrorCode>
-  <ErrorMessage>UnsupportBlobType</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><CopyLog Summary="Summary">
-  <Status>Failed</Status>
-  <TotalFiles_Blobs>4</TotalFiles_Blobs>
-  <FilesErrored>3</FilesErrored>
-</CopyLog>
-``` -->
 
 ## <a name="next-steps"></a>次のステップ
 

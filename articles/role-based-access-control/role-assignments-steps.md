@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/15/2021
+ms.date: 11/12/2021
 ms.author: rolyon
-ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19f7459debe48bfd689e0ccff93b7957bacd7d52
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556037"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398366"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Azure ロールを割り当てる手順
 
@@ -50,7 +50,7 @@ ms.locfileid: "100556037"
 
 1. この記事で、アクセス許可を付与する対象リソースのサービス カテゴリ (コンピューティング、ストレージ、データベースなど) に移動します。 通常、探しているものを見つけるのに最も簡単な方法は、"BLOB"、"仮想マシン" などの関連キーワードをページ内で検索することです。
 
-1. サービス カテゴリに一覧表示されているロールを確認し、必要な特定の操作を特定します。 繰り返しになりますが、常に、最も制限の厳しいロールから始めるようにしてください。
+1. サービス カテゴリに一覧表示されているロールを確認し、必要な特定のアクションを特定します。 繰り返しになりますが、常に、最も制限の厳しいロールから始めるようにしてください。
 
     たとえば、セキュリティ プリンシパルが Azure Storage アカウントの BLOB を読み取る必要がある一方で、書き込みアクセスを必要としない場合は、[ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)ではなく[ストレージ BLOB データ閲覧者](built-in-roles.md#storage-blob-data-reader)を選択します (決して管理者レベルの[ストレージ BLOB データ所有者](built-in-roles.md#storage-blob-data-owner)ロールを選択しないようにしてください)。 ロールの割り当ては、必要に応じて後でいつでも更新できます。
 
@@ -68,7 +68,7 @@ ms.locfileid: "100556037"
 - [課金データ閲覧者](built-in-roles.md#billing-reader)ロールをサブスクリプション スコープでグループに割り当てた場合、そのグループのメンバーは、サブスクリプション内のすべてのリソース グループとリソースの課金データを読み取ることができます。
 - [共同作成者](built-in-roles.md#contributor)ロールをリソース グループ スコープでアプリケーションに割り当てた場合、そのアプリケーションは、そのリソース グループ内のすべての種類のリソースを管理できますが、サブスクリプション内の他のリソース グループは管理できません。
 
- 詳細については、[スコープの概要](scope-overview.md)に関する記事を参照してください。
+[!INCLUDE [Scope for Azure RBAC least privilege](../../includes/role-based-access-control/scope-least.md)] 詳細については、[スコープの概要](scope-overview.md)に関する記事を参照してください。
 
 ## <a name="step-4-check-your-prerequisites"></a>手順 4. 前提条件を確認する
 
@@ -79,9 +79,13 @@ ms.locfileid: "100556037"
 
 ご自分のサブスクリプション内でロールを割り当てるためのアクセス許可がご自分のユーザー アカウントにない場合は、ご自分のアカウントが "does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' ('Microsoft.Authorization/roleAssignments/write' に対するアクションの実行を承認されていません)" というエラー メッセージが表示されます。この場合は、自分の代わりにアクセス許可を割り当てることができるサブスクリプションの管理者に連絡してください。
 
+サービス プリンシパルを使用してロールを割り当てると、"この操作を完了するのに十分な特権がありません" というエラーが表示されることがあります。 このエラーが表示される場合は、Azure で Azure Active Directory (AD) 内の担当者 ID を参照しようとしているが、サービス プリンシパルの既定では Azure AD を読み取ることができないためである可能性があります。 この場合は、ディレクトリ内のデータを読み取るためのアクセス許可をサービス プリンシパルに付与する必要があります。 または、Azure CLI を使用している場合は、担当者オブジェクト ID を使用して Azure AD 参照をスキップすると、ロールの割り当てを作成できます。 詳細については、「[Azure RBAC のトラブルシューティング](troubleshooting.md)」を参照してください。
+
 ## <a name="step-5-assign-role"></a>手順 5. ロールを割り当てる
 
-セキュリティ プリンシパル、ロール、およびスコープについて理解できたら、ロールを割り当てることができます。 ロールは Azure portal、Azure PowerShell、Azure CLI、Azure SDK、または REST API を使用して割り当てることができます。 各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 この制限には、サブスクリプション、リソース グループ、およびリソースのスコープでのロールの割り当てが含まれます。 各管理グループには、最大 **500** 個のロールの割り当てを保持できます。
+セキュリティ プリンシパル、ロール、およびスコープについて理解できたら、ロールを割り当てることができます。 ロールは Azure portal、Azure PowerShell、Azure CLI、Azure SDK、または REST API を使用して割り当てることができます。
+
+各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 この制限には、サブスクリプション、リソース グループ、およびリソースのスコープでのロールの割り当てが含まれます。 各管理グループには、最大 **500** 個のロールの割り当てを保持できます。 1 つのサブスクリプションへのロール割り当ての上限数は現在増やされつつあります。 詳細については、「[Azure RBAC のトラブルシューティング](troubleshooting.md#azure-role-assignments-limit)」を参照してください。
 
 ロールを割り当てる方法の詳細な手順については、次の記事をご覧ください。
 

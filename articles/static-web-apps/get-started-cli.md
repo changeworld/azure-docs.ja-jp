@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: a95e1658c3633f4ae8d09b71e9d3b0c82446754a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 035a13eeb09f60ca8e16a4f41281341b2ea9dae0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727588"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003517"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>クイックスタート: Azure CLI を使用して最初の静的サイトを構築する
 
@@ -61,6 +61,7 @@ cd my-first-static-web-app
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
         -b main \
+        --app-location "src" \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
 
@@ -73,7 +74,7 @@ cd my-first-static-web-app
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
         -b main \
-        --app-artifact-location "dist/angular-basic" \
+        --app-location "dist/angular-basic" \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
 
@@ -86,7 +87,7 @@ cd my-first-static-web-app
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
         -b main \
-        --app-artifact-location "build" \
+        --app-location "build" \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
 
@@ -99,7 +100,7 @@ cd my-first-static-web-app
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
         -b main \
-        --app-artifact-location "dist" \
+        --app-location "dist" \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
 
@@ -116,7 +117,7 @@ cd my-first-static-web-app
 
     - `<LOCATION>`:この値を最も近い場所に置き換えます。 次のオプションがあります。_CentralUS_、_EastAsia_、_EastUS2_、_WestEurope_、および _WestUS2_。
 
-    - `<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>`:この値を、以前に生成した [GitHub 個人用アクセス トークン](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)に置き換えます。
+    - `<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>`:この値を、以前に生成した [GitHub 個人用アクセス トークン](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)に置き換えます。 最小限のアクセス許可は、パブリック リポジトリの場合は `workflow` スコープで、プライベート リポジトリの場合は `repo` スコープです。
 
     これで、作成したアプリを Azure で表示できるようになりました。
 

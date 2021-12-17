@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: be7f15b5221be8b3acb7f64c4435e40f40f21f8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9e726e53d40ac90aec6bbbaaf41399698b11209
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720921"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748205"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL サーバーは、次の 3 つの価格レベルのいずれかで作成できます: Basic、汎用、メモリ最適化。 価格レベルは、プロビジョニングできる仮想コアでのコンピューティング量、仮想コアあたりのメモリ、およびデータの格納に使用されるストレージ テクノロジによって区別されています。 リソースはすべて、MySQL サーバー レベルでプロビジョニングされます。 1 つのサーバーには 1 つ以上のデータベースを含めることができます。
 
@@ -43,27 +45,94 @@ Azure Database for MySQL サーバーは、次の 3 つの価格レベルのい�
 
 プロビジョニングするストレージは、使用している Azure Database for MySQL サーバーで使用可能なストレージ容量です。 ストレージは、データベース ファイル、一時ファイル、トランザクション ログ、および MySQL サーバー ログに使用されます。 プロビジョニングするストレージの合計容量によって、ご利用のサーバーで使用できる I/O 容量も決まります。
 
-| ストレージ属性   | Basic | 汎用 | メモリ最適化 |
+Azure Database for MySQL – 単一サーバーでは、サーバーに次のバックエンド ストレージがサポートされます。 
+
+| ストレージの種類   | 基本 | General Purpose v1 | General Purpose v2 |
 |:---|:----------|:--------------------|:---------------------|
-| ストレージの種類 | 基本的なストレージ | 汎用のストレージ | 汎用のストレージ |
-| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB から 16 TB | 5 GB から 16 TB |
+| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB から 16 TB |
 | ストレージの増分サイズ | 1 GB | 1 GB | 1 GB |
-| IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS |
-
-> [!NOTE]
-> 次のリージョンでは、最大で 16 TB および 20,000 IOPS のストレージがサポートされています。米国東部、米国東部 2、米国中部、ブラジル南部、米国西部、米国中北部、米国中南部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部、米国西部 2、米国中西部、カナダ東部、カナダ中部。
->
-> その他のすべてのリージョンでは、最大 4 TB および最大 6000 IOPS のストレージがサポートされています。
->
-
-サーバーの作成中および作成後にさらにストレージ容量を追加でき、システムではワークロードのストレージ使用量に基づいて自動的にストレージを拡張することができます。 
+| IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS |
 
 >[!NOTE]
+> Basic ストレージでは、IOPS 保証は提供されません。 General Purpose ストレージでは、プロビジョニングされたストレージ サイズにより 3:1 の比率で IOPS がスケーリングされます。
+
+### <a name="basic-storage"></a>Basic ストレージ 
+Basic ストレージは、基本の価格レベルのサーバーをサポートするバックエンド ストレージです。 Basic ストレージは、プロビジョニングされた IOPS が保証されず、待機時間が変動するバックエンドで Azure 標準ストレージを活用します。 Basic レベルは、開発用または小規模で使用頻度の低いアプリケーションで、軽量のコンピューティング、低コスト、I/O パフォーマンスが求められるワークロードに最適です。
+
+### <a name="general-purpose-storage"></a>General Purpose ストレージ 
+General Purpose ストレージは、General Purpose および Memory Optimized レベルのサーバーをサポートするバックエンド ストレージです。 General Purpose ストレージでは、プロビジョニングされたストレージ サイズにより 3:1 の比率で IOPS がスケーリングされます。 次に示すように、General Purpose ストレージには 2 つの世代があります。
+
+#### <a name="general-purpose-storage-v1-supports-up-to-4-tb"></a>General Purpose ストレージ v1 (最大 4 TB をサポート)
+General Purpose ストレージ v1 は、サーバーあたり最大 4 TB のストレージと 6000 IOPS をサポートできるレガシ ストレージ テクノロジに基づいています。 General Purpose ストレージ v1 は、ローカル キャッシュおよびバックアップ用に MySQL エンジンを実行している計算ノードのメモリを活用するように最適化されています。 General Purpose ストレージ v1 のバックアップ プロセスは、計算ノードのメモリ内にあるデータとログのファイルを読み取り、最大 35 日間のリテンション期間のターゲット バックアップ ストレージにコピーします。 その結果、バックアップ中のストレージのメモリと IO の使用量は比較的高くなります。 
+
+すべての Azure リージョンで General Purpose ストレージ v1 がサポートされます
+
+General Purpose ストレージ v1 で General Purpose または Memory Optimized サーバーを使用する場合は、次の点を考慮することをお勧めします
+
+*   ストレージ キャッシュとバックアップ バッファー用に 10-30% の超過メモリを考慮したコンピューティング SKU 階層を計画する 
+*   バックアップ IO のために、データベースのワークロードで必要とされるよりも 10% 高い IOPS をプロビジョニングする 
+*   または、下記で説明する任意の Azure リージョンで基となるストレージ インフラストラクチャが利用可能な場合は、最大 16 TB のストレージがサポートされる General Purpose ストレージ v2 (後述) に移行してください。 
+
+#### <a name="general-purpose-storage-v2-supports-up-to-16-tb-storage"></a>General Purpose ストレージ v2 (最大 16 TB のストレージをサポート)
+General Purpose ストレージ v2 は、最大 16 TB および 2 万 IOPS をサポートする最新のストレージ インフラストラクチャに基づいています。 インフラストラクチャを使用できる Azure リージョンのサブセットでは、新しくプロビジョニングされたすべてのサーバーが General Purpose ストレージ v2 に既定で配置されます。 General Purpose ストレージ v2 は、MySQL の計算ノードのメモリを消費しないため、General Purpose v1 ストレージと比較して、IO 待機時間が予測しやすくなります。 General Purpose v2 ストレージ サーバー上のバックアップはスナップショットベースで、追加の IO オーバーヘッドがありません。 General Purpose v2 ストレージでは、同じストレージおよび IOPS がプロビジョニングされている場合、MySQL のサーバー パフォーマンスは General Purpose ストレージ v1 に比べて高くなります。最大 16 TB のストレージをサポートする General Purpose ストレージでは、追加コストは発生しません。 16 TB のストレージへの移行については、Azure portal からサポート チケットを開いてください。
+
+General Purpose ストレージ v2 は、次の Azure リージョンでサポートされています。 
+
+| リージョン | General Purpose ストレージ v2 の可用性 | 
+| --- | --- | 
+| オーストラリア東部 | :heavy_check_mark: | 
+| オーストラリア東南部 | :heavy_check_mark: | 
+| Brazil South | :heavy_check_mark: | 
+| カナダ中部 | :heavy_check_mark: |
+| カナダ東部 | :heavy_check_mark: |
+| 米国中部 | :heavy_check_mark: | 
+| 米国東部 | :heavy_check_mark: | 
+| 米国東部 2 | :heavy_check_mark: |
+| 東アジア | :heavy_check_mark: | 
+| Japan East | :heavy_check_mark: | 
+| 西日本 | :heavy_check_mark: | 
+| 韓国中部 | :heavy_check_mark: |
+| 韓国南部 | :heavy_check_mark: |
+| 北ヨーロッパ | :heavy_check_mark: | 
+| 米国中北部 | :heavy_check_mark: | 
+| 米国中南部 | :heavy_check_mark: | 
+| Southeast Asia | :heavy_check_mark: | 
+| 英国南部 | :heavy_check_mark: | 
+| 英国西部 | :heavy_check_mark: | 
+| 米国中西部 | :heavy_check_mark: | 
+| 米国西部 | :heavy_check_mark: | 
+| 米国西部 2 | :heavy_check_mark: | 
+| 西ヨーロッパ | :heavy_check_mark: | 
+| インド中部* | :heavy_check_mark: | 
+| フランス中部* | :heavy_check_mark: | 
+| アラブ首長国連邦北部* | :heavy_check_mark: | 
+| 南アフリカ北部* | :heavy_check_mark: |
+
+> [!Note] 
+> *パブリック プレビューで Azure Database for MySQL に General Purpose ストレージ v2 があるリージョン <br /> *これらの Azure リージョンでは、General Purpose ストレージ v1 と v2 の両方でサーバーを作成できます。 パブリック プレビュー中の General Purpose ストレージ v2 で作成されたサーバーについては、次の制限事項があります。 <br /> 
+> * geo 冗長バックアップはサポートされません<br /> 
+> * レプリカ サーバーは、General Purpose ストレージ v2 をサポートするリージョンに存在する必要があります。 <br /> 
+    
+
+### <a name="how-can-i-determine-which-storage-type-my-server-is-running-on"></a>自分のサーバーがどの種類のストレージで実行されているかを特定する方法はありますか?
+
+サーバーのストレージの種類は、ポータルの [価格レベル] ブレードで確認できます。 
+* サーバーが Basic SKU を使用してプロビジョニングされている場合、ストレージの種類は Basic ストレージです。
+* サーバーが General Purpose または Memory Optimized SKU を使用してプロビジョニングされている場合、ストレージの種類は General Purpose ストレージです
+   *  サーバーでプロビジョニングできる最大ストレージ容量が 4 TB までの場合、ストレージの種類は General Purpose ストレージ v1 です。
+   *  サーバーでプロビジョニングできる最大ストレージ容量が 16 TB までの場合、ストレージの種類は General Purpose ストレージ v2 です。
+
+### <a name="can-i-move-from-general-purpose-storage-v1-to-general-purpose-storage-v2-if-yes-how-and-is-there-any-additional-cost"></a>General Purpose ストレージ v1 から General Purpose ストレージ v2 に移行できますか? できる場合、追加コストはどのようになりますか?
+はい。基になるストレージ インフラストラクチャがソース サーバーの Azure リージョンで利用可能な場合は、General Purpose ストレージ v1 から v2 への移行がサポートされています。 移行と v2 のストレージは、追加コストなしで利用できます。
+
+### <a name="can-i-grow-storage-size-after-server-is-provisioned"></a>サーバーのプロビジョニング後にストレージ サイズを増やすことはできますか?
+サーバーの作成中および作成後にさらにストレージ容量を追加でき、システムではワークロードのストレージ使用量に基づいて自動的にストレージを拡張することができます。 
+
+>[!IMPORTANT]
 > ストレージはスケールアップのみ可能で、スケールダウンすることはできません。
 
-Basic レベルでは、IOPS 保証は提供されません。 汎用およびメモリ最適化の価格レベルでは、IOPS は、プロビジョニング済みのストレージ サイズに合わせて 3 対 1 の比率でスケーリングされます。
-
-ご自身の I/O 使用量を監視するには、Azure Portal または Azure CLI コマンドを使用します。 監視すべき関連メトリックは、[容量の上限、ストレージの割合、ストレージの使用量、および IO の割合](concepts-monitoring.md)です。
+### <a name="monitoring-io-consumption"></a>IO 使用量の監視
+ご自身の I/O 使用量を監視するには、Azure Portal または Azure CLI コマンドを使用します。 監視する関連メトリックは、[ストレージの上限、ストレージの割合、ストレージの使用量、および IO の割合](concepts-monitoring.md)です。General Purpose ストレージ v1 を使用する MySQL サーバーの監視メトリックは、MySQL エンジンによって使用されるメモリと IO を報告しますが、ストレージ層のメモリと IO の使用量をキャプチャすることは、制限によりできません。
 
 ### <a name="reaching-the-storage-limit"></a>容量の上限に到達
 

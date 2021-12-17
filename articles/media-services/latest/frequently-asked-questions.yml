@@ -1,0 +1,256 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Media Services FAQ
+  description: Azure Media Services についてよく寄せられる質問について回答します。
+  ms.service: media-services
+  ms.custom: contperf-fy21q4
+  ms.openlocfilehash: 41b7adb4a56b5ba325b7ed86b974ea58d5a4c57c
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128619030"
+title: Azure Media Services についてよく寄せられる質問
+summary: この記事では、Azure Media Services についてよく寄せられる質問に回答します。
+sections:
+- name: SDK を使用した開発
+  questions:
+  - question: Media Services の API と SDK はどこで入手できますか?
+    answer: >
+      一覧を次に示します。
+
+      - [OpenAPI の仕様 (Swagger)](https://aka.ms/ams-v3-rest-sdk)
+
+      - [Azure CLI](/cli/azure/install-azure-cli)
+
+      - [.NET](https://aka.ms/ams-v3-dotnet-sdk)
+
+      - [Java](https://aka.ms/ams-v3-java-sdk)
+
+      - [Python](https://aka.ms/ams-v3-python-sdk)
+
+      - [Node.js](https://aka.ms/ams-v3-nodejs-sdk)
+
+      - [Go](https://aka.ms/ams-v3-go-sdk)
+
+      - [Ruby](https://aka.ms/ams-v3-ruby-sdk)
+  - question: クライアント SDK を使用する必要がありますか? あるいは、REST API に直接書き込むべきですか?
+    answer: >
+      Media Services の REST API を独自のライブラリ コードに直接ラップしようとすることは推奨されません。 これを運用目的で適切に行う場合は、完全な Azure Resource Manager 再試行ロジックを実装し、Resource Manager API で実行時間の長い操作を管理する方法を理解する必要があります。 .NET、Java、TypeScript、Python、Ruby など、さまざまな言語のクライアント SDK がこれを自動的に処理して、再試行ロジックまたは API 呼び出しの失敗による問題が発生しにくくなっています。 Postman コレクションは教育ツールとして提供され、またクライアント SDK を使用した開発中に、それらがネットワーク上でどのように動作しているかを示しています。
+  - question: Media Services のサンプルはどこにありますか?
+    answer: >
+      サンプルの一覧については、「[Media Services v3 のサンプル](samples-overview.md)」を参照してください。
+  - question: 大きな結果セット (アセットの一覧など) に対するページングは API でどのように機能しますか?
+    answer: >
+      改ページを使用している場合は、常に次のリンクを使用してコレクションを列挙し、特定のページ サイズに依存しないようにする必要があります。 詳細および例については、「[エンティティのフィルター処理、順序付け、ページング](filter-order-page-entities-how-to.md)」を参照してください。
+- name: アカウント
+  questions:
+  - question: マネージド ID を使用して Media Services へのデータを暗号化するにはどうすればよいですか?
+    answer: "Media Services と Azure Key Vault をペアにしてデータを暗号化するために Azure CLI を使用する方法については、「[チュートリアル: Key Vault キーを使用して Media Services アカウントにデータを暗号化する](security-encrypt-data-managed-identity-cli-tutorial.md)」を参照してください。  \n"
+  - question: マネージド ID を使用して、制限されたストレージ アカウントへのアクセス権を Media Services に付与するにはどうすればよいですか?
+    answer: >
+      不明な IP アドレスからの要求をブロックするように構成されているストレージ アカウントに Media Services でアクセスする必要がある場合は、「[チュートリアル: Media Services マネージド ID を使用してストレージにアクセスする](security-access-storage-managed-identity-cli-tutorial.md)」の手順のようにしてください。
+  - question: サブスクリプション間での Media Services アカウントの移動のプロセスはどのようなものですか?
+    answer: >
+      詳細については、「[サブスクリプション間での Media Services アカウントの移動](account-move-account-how-to.md)」を参照してください。
+- name: Security
+  questions:
+  - question: Media Services リソースに対してアクションを実行できる Azure のロールは何ですか?
+    answer: >
+      詳細については、「[Media Services アカウント用の Azure ロールベースのアクセス制御 (Azure RBAC)](security-rbac-concept.md)」を参照してください。
+- name: アセット、アップロード、ストレージ
+  questions:
+  - question: Media Services のアセットとは何ですか?
+    answer: >
+      Media Services のアセットは、アップロードする各ビデオ ファイルに使用される Azure Storage アカウント コンテナーです。 それには、変換や他の操作に使用される一意識別子があります。 詳細については、「[Azure Media Services v3 のアセット](assets-concept.md)」を参照してください。
+  - question: Media Services のアセットを作成するにはどうすればよいですか?
+    answer: >
+      メディア ファイルをアップロードし、エンコードやストリーミングなどの操作を行うたびに、メディア ファイルや関連付けられているファイルを格納するためのアセットを作成します。 Azure portal を使用している場合、アセットは自動的に作成されます。 ポータルを使用しないでファイルをアップロードする場合は、最初にアセットを作成する必要があります。 詳細については、「[アセットを作成する](asset-create-asset-how-to.md)」を参照してください。
+- name: Encoding
+  questions:
+  - question: Media Services で使用できるエンコード形式は何ですか?
+    answer: >
+      Media Services Standard Encoder では、一般的なエンコード形式を使用できます。 すべての形式の一覧については、「[Standard Encoder の形式およびコーデック](encode-media-encoder-standard-formats-reference.md)」を参照してください。
+  - question: Media Services のジョブを作成するにはどうすればよいですか?
+    answer: >
+      [Azure CLI](job-create-cli-how-to.md)、REST、またはいずれかの SDK を使用して Azure portal でジョブを作成できます。 好みの言語での [Media Services のサンプル](https://github.com/Azure-Samples?q=media-services&type=&language=&sort=)を参照してください。
+  - question: Media Services を使用して、自動生成されるビットレート ラダーを作成できますか?
+    answer: >
+      はい。  詳細については、「[自動生成されたビットレート ラダーでエンコードする](./encode-autogen-bitrate-ladder.md)」を参照してください。
+  - question: Media Services では、コンテンツに対応したエンコードはサポートされていますか?
+    answer: >
+      はい。 Media Services で、ビデオの 2 パス分析を実行できます。 その後で、ビデオの内容に基づいて、最適なアダプティブ ビットレート セット、解像度、エンコード設定が推奨されます。 詳細については、「[コンテンツに対応したエンコード プリセットの使用方法](./encode-content-aware-how-to.md)」を参照してください。
+  - question: Media Services では、外部でエンコードされた MP4 ファイルや既存の MP4 ファイルを使用できますか?
+    answer: >
+      はい。 事前にエンコードされた単一ビットレートの MP4 ファイルをアップロードし、サーバー マニフェスト (.ism) とクライアント マニフェスト (.ismc) を生成する方法を示すサンプル アプリケーションの詳細とリンクについては、パッケージ化と配信に関するセクションにある「事前にエンコードされたか、別のソリューションでエンコードされた既存の MP4 ファイルをストリーミングできますか?」 の質問への回答を参照してください。 その回答では、配信元に対するパフォーマンスへの影響も説明されています。
+  - question: Media Services は、非常に短い形式のファイル コンテンツ エンコードに使用できますか?
+    answer: "それは推奨されません。 時間が 1 ～ 2 分に満たない非常に短いコンテンツは、アダプティブ ビットレート ストリーミングには適していません。 非常に短い形式のファイルをストリーミングする予定の場合、1 つのビットレートを使用して、ストリーミングが容易な形式にコンテンツを事前にエンコードすることをお勧めします。 \n\nほとんどのアダプティブ ビットレート プレーヤーでは、ビデオの複数のセグメントをバッファー処理する時間と、アダプティブ ビットレート ラダーを上下に \"シフト\" する前にネットワーク帯域幅を分析する時間が必要なため、多くの場合、長さが 30 秒未満のコンテンツに多くのビットレートを提供することは無益です。 プレーヤーが、ネットワークの状態に基づいて再生するのに適切なビットレートでヒューリスティック アルゴリズムをロックするときまでに、ファイルのストリーミングは終わっています。  \n\nさらに、一部のプレーヤーは既定で、ビデオのセグメントを最大 3 つバッファーリングします。 各セグメントの長さは 2 から 6 秒です。 非常に短い形式のビデオの場合、プレーヤーはおそらく、アダプティブ ビットレート セットの最初に選択されたビットレートの再生を、バッファー処理して開始します。 このため、HLS または DASH マニフェストの生成が必要な場合は、単一ビットレートの MP4 ファイルを使用し、それをアセットにアップロードすることをお勧めします。 これを実現する方法の詳細については、パッケージ化と配信に関するセクションにある「事前にエンコードされたか、別のソリューションでエンコードされた既存の MP4 ファイルをストリーミングできますか?」 の質問への回答を参照してください。 \n\nこれらのプロトコルの機能の恩恵を得たい場合にのみ、HLS または DASH 形式でファイルを配信する必要があります。 シングル ビットレート ストリームの場合でも、シークがより高速、デジタル著作権管理 (DRM) がサポートされる、BLOB ストレージ内 MP4 のプログレッシブ ダウンロードよりも URL からのダウンロードが困難 (しかしそれでも可能) であるなど、多くのことを提供できます。 VTT と IMSC1 での字幕のサポートも、利点の一つです。 さらに、追加のオーディオ再生を遅延バインドする機能、つまり代替言語での吹き替えができるため、状況により、これは貴重な選択肢となります。 \n"
+- name: ライブ ストリーミング
+  questions:
+  - question: Media Services のライブ イベントとは何ですか?
+    answer: >
+      Media Services のライブ イベントとは、ライブ ビデオ フィードを取り込み、RTMPS プロトコルまたはスムーズ ストリーミング経由でそれをブロードキャストするプロセスです。 詳細については、「[Media Services のライブ イベントとライブ出力](live-event-outputs-concept.md)」を参照してください。
+  - question: Media Services のライブ イベントを作成するにはどうすればよいですか?
+    answer: >
+      最初に、オンプレミスのエンコーダーを選択します。 [Wirecast](live-event-wirecast-quickstart.md) と [OBS](live-event-obs-quickstart.md) でライブ イベントを作成する例が用意されています。 Media Services のライブ イベントの概要をまず知りたい場合は、「[ライブ イベントの種類](stream-live-streaming-concept.md#live-event-types)」を参照してください。
+  - question: Media Services のライブ イベントでライブ文字起こしを行うにはどうすればよいですか?
+    answer: >
+      Azure Media Services は、さまざまなプロトコルでビデオやオーディオを配信し、テキストも配信します。 MPEG-DASH や HLS/CMAF を使用してライブ ストリームを公開すると、ビデオやオーディオに加えて、文字起こしされたテキストが IMSC 1.1 互換の TTML でサービスにより配信されます。 詳細については、「[ライブ文字起こし](live-event-live-transcription-how-to.md)」を参照してください。
+  - question: ライブ イベントの正常性は、どのように監視するのですか?
+    answer: >
+      Azure Event Grid イベントをサブスクライブすることで、ライブ イベントを監視できます。 詳細については、[Event Grid イベント スキーマ](monitoring/media-services-event-schemas.md#live-event-types)に関するページを参照してください。
+
+      次のいずれかを実行できます。
+
+      * ストリーム レベルの [Microsoft.Media.LiveEventEncoderDisconnected](monitoring/media-services-event-schemas.md#liveeventencoderdisconnected) を[サブスクライブ](monitoring/reacting-to-media-services-events.md)して、しばらく再接続を受信していないことを監視し、ライブ イベントを停止して削除します。
+
+      * トラック レベルの[ハートビート](monitoring/media-services-event-schemas.md#liveeventingestheartbeat) イベントを[サブスクライブ](monitoring/reacting-to-media-services-events.md)します。 すべてのトラックで受信ビットレートが 0 に低下した場合、または最後のタイム スタンプが増加しなくなった場合は、ライブ イベントを安全にシャットダウンできます。 ハートビート イベントは各トラックで 20 秒ごとに発生するため、若干冗長になる可能性があります。
+  - question: ライブ イベントの再起動時に同じストリーミング URL を再利用できますか?
+    answer: >
+      いいえ。ライブ イベントを停止して開始すると、簡単には同じストリーミング URL を使用することはできません。 新しいライブ出力 (とアセット) を作成して公開するたび、新しいロケーターに新しいストリーミング URL (GUID) が使用されます。 そうすることで、ストリーミング エンドポイントとコンテンツ配信ネットワーク (CDN) でキャッシュの競合が発生しないことが確実になります。 ストリーミング ロケーターに対して特定の GUID を強制し、ライブ出力に使用するマニフェスト名を決定できるので、ストリーミング URL を事前に準備する (そして知る) ことができます。
+
+
+      たとえば、明日作成するライブ出力に GUID 1a7ed69e-a361-433d-8a56-29c61872744f を使用するとします。 その日が来たら、ライブ イベントを開始し、ライブ出力を作成します。 マニフェストに "conference1" を使用し、ロケーターの GUID を強制することができます。
+
+
+      ストリーミング URL は予測可能で、`http://<youraccountname>-<azureregion>.streaming.media.azure.net/1a7ed69e-a361-433d-8a56-29c61872744f/conference1.ism/manifest` になります。
+
+
+      同じライブ出力またはアセットを複数回再利用することはできません。 ライブ出力とアセットの組み合わせは、テープ レコーディングと考えてください。 ライブ出力がアセットに記録された後は、別の記録に再利用することはできません。 これを再度実行すると、BLOB の競合または上書きが発生します。 ストレージ アカウント内の BLOB を完全に消去し、CDN を完全に消去する予定がない限り、問題が発生します。 フラグメントが既に、CDN またはクライアントのデバイス キャッシュ (ブラウザー キャッシュなど) があるダウンストリームにキャッシュされているため、まだ問題がある可能性があります。
+- name: パッケージと配信
+  questions:
+  - question: ビデオをアップロード、エンコード、および公開しました。 ストリーミングしようとしたときにビデオが再生されないのはなぜですか?
+    answer: >
+      最も一般的な原因の 1 つは、再生しようとしているストリーミング エンドポイントが実行中の状態になっていないことです。
+  - question: Media Services のストリーミング エンドポイントとは何ですか?
+    answer: >
+      Media Services のストリーミング エンドポイントは、ダイナミック (Just-In-Time の) パッケージおよび配信元サービスを表し、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアントのプレーヤー アプリに直接配信できます。 さらに、ストリーミング エンドポイントは、業界有数の DRM システムに動的な (Just-In-Time の) 暗号化を提供します。 ストリーミング エンドポイントの詳細については、「[Azure Media Services のストリーミング エンドポイント (配信元)](stream-streaming-endpoint-concept.md)」を参照してください。
+  - question: Media Services のストリーミング ロケーターとは何ですか?
+    answer: >
+      クライアントでビデオを再生できるようにするには、ストリーミング ロケーターを作成した後、ストリーミング URL を構築します。 ストリーミング ロケーターは、メディア ファイルの使用方法に関するルールが含まれるストリーミング ポリシーを適用するためにも使用されます。
+  - question: Media Services のストリーミング ロケーターを作成するにはどうすればよいですか?
+    answer: >
+      ストリーミング URL を構築するには、最初にストリーミング ロケーターを作成する必要があります。 その後、ストリーミング エンドポイントのホスト名とストリーミング ロケーターのパスを連結します。 「[ストリーミング ロケーターの作成と URL の構築](create-streaming-locator-build-url.md)」を参照してください。
+  - question: ストリーミング ポリシーとは何ですか?
+    answer: >
+      ストリーミング ポリシーを使用すると、ストリーミング ロケーターのためのストリーミング プロトコルと暗号化オプションを定義できます。 Media Services v3 には、いくつかの定義済みのストリーミング ポリシーが用意されています。 詳細については、「[ストリーミング ポリシー」](./stream-streaming-policy-concept.md)を参照してください。
+  - question: Media Services のストリーミング ポリシーを作成するにはどうすればよいですか?
+    answer: >
+      作業の開始に使用できる定義済みのポリシーの一覧については、「[ストリーミング ポリシー](./stream-streaming-policy-concept.md)」を参照してください。
+  - question: Apple デバイスには、どのようにして HLS 形式のコンテンツをストリーミングしますか?
+    answer: >
+      パスの終わり (URL の **/manifest** の部分の後) に **(format=m3u8-cmaf)** が指定されていることを確認します。これにより、Apple iOS ネイティブ デバイスで使用するために、HLS コンテンツを返すようにストリーミング配信元サーバーに指示します。 詳細については、「[コンテンツの配信](encode-dynamic-packaging-concept.md)」を参照してください。
+  - question: 事前にエンコードされたか、別のソリューションでエンコードされた既存の MP4 ファイルをストリーミングできますか?
+    answer: "はい。Media Services 配信元サーバー (ストリーミング エンドポイント) では、MP4 ファイルの、HLS または DASH ストリーミング形式へのダイナミック パッケージがサポートされています。 ただしコンテンツは、時間範囲が 2 から 6 秒の短い GOP を使用してクローズド GOP 形式でエンコードする必要があります。 2 秒の GOP、キー フレームの最大距離と最小距離は 2 秒、固定ビットレート エンコード (CBR モード) という設定にすることをお勧めします。 この形式では、H.264 または HEVC ビデオ コーデックと、AAC オーディオ形式を使用してエンコードされたほとんどのコンテンツが対応可能になります。 Dolby DD+ など、事前にエンコードされるその他のオーディオ形式も対応となる場合があります。 \n\n機能させるために重要なのは、アセットを作成し、事前にエンコードしたアセットを Azure Blob Storage クライアント SDK を使用してアセットのコンテナーにアップロードしてから、必要なサーバー マニフェスト (.ism) とクライアント マニフェストのファイルを生成することです。 詳細については、[既存の MP4 ファイルをストリーミングする](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamExistingMp4)、に関する .NET のサンプル プロジェクトを参照してください。\n\nMedia Services の組み込みエンコーダーでは、MP4 ファイルへのアクセス時間を短縮するバイナリ インデックス (.mpi ファイル) も生成されるため、この方法を使用するとパフォーマンスへの影響があることに留意してください。 これらのファイルがない場合、サーバーでは高負荷時にやや多く CPU が消費される可能性があります。 詳細については、「[HLS または Dash を使用して既存の単一ビットレートの MP4 ファイルをストリーミングする](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamExistingMp4)」を参照してください。\n\nこの方法でスケールアップする場合は、ストリーミング エンドポイントの CPU 負荷を監視する必要があります。 Media Services の外部で事前にエンコードされる MP4 ファイルの大規模なライブラリを使用する運用環境に移行する予定の場合は、サポート チケットを送信してアーキテクチャの確認を依頼し、事前にエンコードされる MP4 コンテンツの配信元サーバーのパフォーマンスを向上させる方法について問い合わせてください。 \n"
+- name: コンテンツの保護
+  questions:
+  - question: 動的暗号化を使用してメディア コンテンツを配信するにはどうすればよいですか?
+    answer: >
+      動的暗号化を使用すると、メディアがコンピューターから離れてから、格納、処理、配信されるまでの全過程を、セキュリティ保護できます。 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つの DRM システム (Microsoft PlayReady、Google Widevine、Apple FairPlay) によって動的に暗号化されたライブまたはオンデマンドのコンテンツを配信できます。 詳細については、「[Media Services 動的暗号化を使用してコンテンツを保護する](./drm-content-protection-concept.md)」を参照してください。
+  - question: AES-128 クリア キー暗号化と DRM システムのどちらを使用すべきですか?
+    answer: >
+      AES 暗号化と DRM システムのどちらを使えばよいか迷うことがあります。 2 つのシステムの主な違いは、AES 暗号化ではコンテンツ キーが TLS 経由でクライアントに送信されることです。 キーは、追加の暗号化なし ("平文") で転送中に暗号化されます。 このため、コンテンツの復号化に使用されるキーは、クライアント プレーヤーがアクセスでき、クライアントのネットワーク トレースでプレーン テキストとして表示できます。 AES-128 クリア キー暗号化は、閲覧者が信頼できる相手である場合 (従業員が見るために社内で配信される企業ビデオの暗号化など) に適しています。
+
+
+      PlayReady、Widevine、FairPlay などの DRM システムでは、AES-128 クリア キーと比較してコンテンツの復号化に使用されるキーの暗号化レベルが高くなります。 TLS によって提供されるトランスポート レベルの暗号化に加え、コンテンツ キーが暗号化され、DRM ランタイムによって保護されるキーになります。 解読はオペレーティング システム レベルのセキュリティで保護された環境で行われるため、悪意のあるユーザーによる攻撃はより難しくなります。 閲覧者を信頼できない可能性があり、最高レベルのセキュリティが必要なユース ケースでは、DRM をお勧めします。
+  - question: Azure AD を使用せずに特定のアクセス許可を持つユーザーにのみビデオを表示するにはどうすればいいですか?
+    answer: >
+      Azure Active Directory (Azure AD) のような特定のトークン プロバイダーを使用する必要はありません。 非対称キー暗号化を使用して、独自の [JWT](../../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) プロバイダー (いわゆる Secure Token Service (STS)) を作成できます。 カスタム STS では、ビジネス ロジックに基づいて要求を追加できます。
+
+
+      発行者、対象ユーザー、要求がすべて、JWT の内容と、`ContentKeyPolicy` で使用されている `ContentKeyPolicyRestriction` 値の間で完全に一致していることを確認します。
+
+
+      詳細については、「[Media Services 動的暗号化を使用してコンテンツを保護する](drm-content-protection-concept.md)」を参照してください。
+  - question: JWT トークンを使用してライセンスまたはキーを要求する前に、JWT トークンを入手する方法と入手できる場所を教えてください。
+    answer: >
+      運用環境では、HTTPS 要求時に JWT トークンを発行する Secure Token Services (つまり、Web サービス) が必要です。 テスト環境では、[Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs) で定義されている `GetTokenAsync` メソッドに示されているコードを使用できます。
+
+
+      ユーザーが認証された後、プレーヤーでそのようなトークンが STS に対して要求され、トークンの値として割り当てられます。 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) を使用できます。
+
+
+      対称キーと非対称キーのどちらかを使用して STS を実行する例については、「[JWT ツール](https://aka.ms/jwt)」を参照してください。 このような JWT トークンを使用する Azure Media Player に基づくプレーヤーの例については、「[Azure メディア テスト ツール](https://aka.ms/amtest)」を参照してください。 (**player_settings** リンクを展開するとトークンの入力が表示されます。)
+  - question: AES 暗号化を使用してビデオをストリームする要求を承認する方法を教えてください。
+    answer: >
+      正しいアプローチは、セキュリティ トークン サービスを使用することです。 STS では、ユーザー プロファイルに応じて、異なる要求を追加します ("Premium ユーザー"、"Basic ユーザー"、"無料試用ユーザー" など)。 JWT の要求に応じて、ユーザーには異なるコンテンツが表示されます。 コンテンツまたはアセットが異なる場合、`ContentKeyPolicyRestriction` には対応する `RequiredClaims` 値が設定されます。
+
+
+      Azure Media Services API シリーズを使用して、ライセンス/キー配信の構成とご自分の資産の暗号化を行います ([このサンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithAES/Program.cs)を参照してください)。
+
+
+      詳細については、次を参照してください。
+
+
+      - [コンテンツ保護の概要](drm-content-protection-concept.md)
+
+      - [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](architecture-design-multi-drm-system.md)
+  - question: FairPlay オフライン モードの使用時に、オーディオのみが再生されて、ビデオは再生されないのはなぜですか?
+    answer: "この動作は、サンプル アプリの本来の設計のようです。 代替オーディオ トラックがある場合 (HLS の場合)、オフライン モードでは、iOS 10 と iOS 11 の両方が、既定で代替オーディオ トラックになります。FPS オフライン モードでこの動作を補正するには、ストリームから代替オーディオ トラックを削除します。 Media Services でこれを行うには、動的マニフェスト フィルター **audio-only=false** を追加します。 つまり、HLS URL の最後が **.ism/manifest(format=m3u8-aapl,audio-only=false)** になります。 \n"
+  - question: audio-only=false を追加すると、オフラインの FairPlay で、ビデオ モードなしでオーディオのみが再生されるのはなぜですか?
+    answer: >
+      コンテンツ配信ネットワークのキャッシュ キーの設計によっては、コンテンツがキャッシュされることがあります。 キャッシュを消去します。
+  - question: iOS デバイスでのダウンロード済み/オフライン ファイルの構造はどのようなものですか。
+    answer: "iOS デバイスにダウンロードされたファイルは、次のスクリーンショットのような構造になっています。 *_keys* フォルダーには、ダウンロードされた FPS ライセンスが格納されます (ライセンス サービス ホストごとに 1 つのストア ファイル)。 *.movpkg* フォルダーには、オーディオとビデオのコンテンツが格納されます。 \n\n名前の末尾にダッシュと数字が付いている最初のフォルダーには、ビデオ コンテンツが含まれています。 数値はビデオ再生の最大帯域幅です。 名前の末尾にダッシュと 0 が付いている 2 つ目のフォルダーには、オーディオ コンテンツが格納されます。 *Data* という名前の 3 番目のフォルダーには、FPS コンテンツのマスター再生リストが含まれます。 最後に、*boot.xml* には、*.movpkg* フォルダーの内容が完全に説明されています。 \n\n![FairPlay iOS サンプル アプリのオフライン ファイルの構造を示すスクリーンショット。](media/drm-offline-fairplay-for-ios-concept/offline-fairplay-file-structure.png)\n\n以下は boot.xml ファイルのサンプルです。\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<HLSMoviePackage xmlns:xsi=\"https://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://apple.com/IMG/Schemas/HLSMoviePackage\" xsi:schemaLocation=\"http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd\">\n  <Version>1.0</Version>\n  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>\n  <Streams>\n    <Stream ID=\"1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0\" Path=\"1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0\" NetworkURL=\"https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)\">\n      <Complete>YES</Complete>\n    </Stream>\n    <Stream ID=\"0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656\" Path=\"0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656\" NetworkURL=\"https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)\">\n      <Complete>YES</Complete>\n    </Stream>\n  </Streams>\n  <MasterPlaylist>\n    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>\n  </MasterPlaylist>\n  <DataItems Directory=\"Data\">\n    <DataItem>\n      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>\n      <Category>Playlist</Category>\n      <Name>master.m3u8</Name>\n      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>\n      <Role>Master</Role>\n    </DataItem>\n  </DataItems>\n</HLSMoviePackage>\n```\n"
+  - question: 一部のクライアント/ユーザーには永続ライセンス (オフライン有効) を提供し、他のクライアント/ユーザーには非永続ライセンス (オフライン無効) を提供するにはどうすればよいですか? コンテンツを複製し、別のコンテンツ キーを使う必要がありますか?
+    answer: >
+      Media Services v3 では、1 つのアセットに複数の `StreamingLocator` インスタンスを含められるため、以下を持つことができます。
+
+
+      * `license_type = "persistent"` を持つ 1 つの `ContentKeyPolicy` インスタンス、`"persistent"` の要求を伴う `ContentKeyPolicyRestriction`、とその `StreamingLocator` インスタンス。
+
+      * `license_type="nonpersistent"` を持つ別の `ContentKeyPolicy` インスタンス、`"nonpersistent`" の要求を伴う `ContentKeyPolicyRestriction`、とその `StreamingLocator` インスタンス。
+
+      * 2 つの `StreamingLocator` インスタンスには異なる `ContentKey` 値が含まれています。
+
+
+      カスタム STS のビジネス ロジックに応じて、さまざまな要求が JWT トークンで発行されます。 トークンを使用して、対応するライセンスのみ取得でき、対応する URL のみを再生できます。
+  - question: Widevine と Media Services DRM のセキュリティ レベルはどのように対応しますか。
+    answer: "Google の「[Widevine DRM Architecture Overview (Widevine DRM アーキテクチャの概要)](http://www.whymatematica.com/wp-content/uploads/2018/08/Widevine_DRM_Architecture_Overview.pdf)」 では、3 つのセキュリティ レベルが定義されています。 ただし、「[Widevine ライセンス テンプレートに関するAzure Media Services ドキュメント](drm-widevine-license-template-concept.md)」では、5 つのセキュリティ レベル (再生に必要なクライアント信頼性要件) について概説しています。\n\nGoogle Widevine では、両方のセキュリティ レベルのセットが定義されます。 違いは、その使用レベル (アーキテクチャまたは API) にあります。 Widevine API では、5 つのセキュリティ レベルが使われています。 `security_level` を含む `content_key_specs` オブジェクトは、Azure Media Services Widevine ライセンス サービスにより逆シリアル化され、Widevine グローバル配信サービスに渡されます。 次の表は、2 つのセキュリティ レベル セットの間のマッピングを示しています。\n\n| **Widevine アーキテクチャで定義されたセキュリティ レベル** |**Widevine API で使用されるセキュリティ レベル**|\n|---|---| \n| **セキュリティ レベル 1**:すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。|**security_level=5**: 暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした TEE で実行する必要があります。<br/><br/>**security_level=4**: コンテンツの暗号化とデコードを、ハードウェアを基盤にした TEE で実行する必要があります。|\n**セキュリティ レベル 2**:暗号化は TEE 内で実行されます (ビデオ処理は実行されません)。 解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。| **security_level=3**: キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。 |\n| **セキュリティ レベル 3**:デバイスに TEE はありません。 ホスト オペレーティング システム上の暗号化情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 では、ハードウェア暗号化エンジンも実装に含まれる場合がありますが、セキュリティのためではなく、パフォーマンス向上のみを目的としています。 | **security_level=2**: ソフトウェア暗号化と難読化デコーダーが必須です。<br/><br/>**security_level=1**: ソフトウェアベースのホワイトボックス暗号化が必須です。|\n"
+- name: 監視
+  questions:
+  - question: Media Services のリソースを監視するにはどうすればよいですか?
+    answer: >
+      Media Services のリソースで起きていることを追跡するには、Azure Monitor を使用します。 詳細については、「[Media Services の監視](./monitoring/monitor-media-services.md)」を参照してください。 攻略ガイドには、「[Media Services のメトリックを監視する](./monitoring/media-services-metrics-howto.md)」と「[Media Services 診断ログの監視](./monitoring/media-services-diagnostic-logs-howto.md)」が含まれます。
+  - question: Media Services のライブ イベントを監視するにはどうすればよいですか?
+    answer: >
+      サービスをポーリングしないでライブ イベントを監視するには、[Azure Event Grid](./monitoring/reacting-to-media-services-events.md) を使用します。 攻略ガイドには、「[Azure portal を使用した Event Grid による Media Services イベントの作成と監視](./monitoring/monitor-events-portal-how-to.md)」と「[Azure CLI を使用した Event Grid による Media Services イベントの作成と監視](./monitoring/job-state-events-cli-how-to.md)」が含まれます。
+- name: プレーヤー
+  questions:
+  - question: Media Services ではどのビデオ プレーヤーを使用できますか?
+    answer: >
+      Media Services は、Azure Media Player、Shaka、Video.js で動作します。 [Azure Media Player のドキュメント](../azure-media-player/azure-media-player-overview.md)、「[Azure Media Services で Shaka プレーヤーを使用する方法](./player-shaka-player-how-to.md)」、または [Azure Media Services で Video.js プレーヤーを使用する方法](./player-media-players-concept.md)に関する記事を参照してください。
+- name: 高可用性
+  questions:
+  - question: 高可用性は Media Services でサポートされますか?
+    answer: >
+      Media Services と高可用性の詳細については、「[Media Services とビデオ オン デマンド (VOD) を使用した高可用性](./architecture-high-availability-encoding-concept.md)」を参照してください。
+- name: v2 からの移行
+  questions:
+  - question: Media Services v2 から Media Services v3 に移行するにはどうすればよいですか?
+    answer: >
+      [v2 から v3 への移行に関する包括的なガイド](./migrate-v-2-v-3-migration-introduction.md)が作成されています。 移行のエクスペリエンスとニーズについて関心があるので、GitHub のイシューまたはサポート チケットを使用してフィードバックをお送りください。
+- name: トラブルシューティング
+  questions:
+  - question: エラー コードの意味を調べるにはどうすればよいですか?
+    answer: >
+      次のリファレンスにエラー コードが記載されています: [ストリーミング エンドポイントに関するエラー コード](./stream-streaming-endpoint-error-codes-reference.md)、[ライブ イベントに関するエラー コード](./live-event-error-codes-reference.md)、[ジョブに関するエラー コード](./job-error-codes-reference.md)。 そこで回答が見つからない場合は、サポート チケットを作成してください。
+  - question: アカウントの資格情報をリセットするにはどうすればよいですか?
+    answer: >
+      [Azure CLI を使用して、アカウントの資格情報をリセットする](./account-reset-account-credentials.md)ことができます。
+- name: 課金とコスト見積もり
+  questions:
+  - question: Media Services の価格はいくらですか?
+    answer: >
+      [Media Services 価格ガイド](https://azure.microsoft.com/pricing/details/media-services/)に関する記事を参照してください。
+- name: クォータと制限
+  questions:
+  - question: Media Services にはどのようなクォータと制限がありますか?
+    answer: >
+      「[Media Services のクォータと制限](limits-quotas-constraints-reference.md)」を参照してください。
+- name: コンプライアンスと顧客データ
+  questions:
+  - question: Media Services では、サービス リージョン外に顧客データは格納されますか?
+    answer: "顧客は、自身のストレージ アカウントを Azure Media Services アカウントに接続します。 すべてのアセット データは関連付けられているストレージ アカウントに格納され、顧客はこのストレージの場所とレプリケーションの種類を制御します。\n\nMedia Services アカウントに関連付けられている追加データ (コンテンツ暗号化キー、トークン検証キー、JobInputHttp URL、その他のエンティティ メタデータを含む) は、Media Services アカウント用に選択されたリージョン内の Microsoft 所有ストレージに格納されます。 \n\nブラジル南部と東南アジアでは、[データ所在地の要件](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information)により、追加アカウント データは 1 つのゾーン冗長化方式で、1 つのリージョンに保存されます。 東南アジアの場合、追加アカウント データはすべてシンガポールに保存されます。 ブラジル南部では、データはブラジルに格納されます。 ブラジル南部と東南アジア以外のリージョンでは、追加アカウント データが、[ペアのリージョン](../../best-practices-availability-paired-regions.md)にある Microsoft 所有ストレージに格納される場合もあります。\n          \n"
+  - question: Media Services によって、高可用性またはデータ レプリケーションは提供されますか?
+    answer: Azure Media Services はリージョン サービスであり、[高可用性](architecture-high-availability-encoding-concept.md)またはデータ レプリケーションは提供されません。 これらの機能を必要とするお客様には、複数のリージョンで Media Services アカウントを使用してソリューションを構築することをお勧めします。 [Media Services ビデオ オン デマンドを使用した高可用性を実現する](./architecture-high-availability-encoding-concept.md)ためのソリューションの構築方法を示すサンプルが、ガイドとして提供されています。

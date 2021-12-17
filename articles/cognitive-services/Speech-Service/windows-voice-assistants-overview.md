@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 9e8b009ecc2181edfaad5da3d8d05ad0c1909051
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d8013bd8eccf990ad98f24ab720fb5ecb40af9c
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95024757"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508667"
 ---
 # <a name="voice-assistants-on-windows"></a>Windows の音声アシスタント
 
@@ -57,4 +57,4 @@ AAR から要求を受信すると、バックグラウンド サービスによ
 
 - **設計ガイドラインを確認する:** [設計ガイドライン](windows-voice-assistants-best-practices.md)には、Windows 10 の音声によるアクティブ化に最適なエクスペリエンスを提供するために必要な主要な作業が記載されています。
 - **「はじめに」ページにアクセスする:** 開発環境の設定から実装ガイドの紹介まで、Windows での音声アシスタントの実装を開始する手順については、[こちら](how-to-windows-voice-assistants-get-started.md)を参照してください。
-- **サンプル アプリを試す**:これらの機能を直接体験するには、[UWP 音声アシスタント サンプル](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample) ページにアクセスし、手順に従ってサンプル クライアントを実行します。
+- **サンプル アプリを試す**:これらの機能を直接体験するには、[UWP 音声アシスタント サンプル](windows-voice-assistants-faq.yml#the-uwp-voice-assistant-sample) ページにアクセスし、手順に従ってサンプル クライアントを実行します。

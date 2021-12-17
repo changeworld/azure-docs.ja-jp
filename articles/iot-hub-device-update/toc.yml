@@ -1,98 +1,117 @@
-- name: Device Update for IoT Hub ドキュメント
-  href: index.yml
-- name: 概要
-  items:
-    - name: Device Update for IoT Hub とは?
-      href: understand-device-update.md
-- name: チュートリアル
-  items:
-    - name: Raspberry Pi でのイメージ更新
-      href: device-update-raspberry-pi.md
-    - name: シミュレーターでデバイスの更新プログラムを使用する
-      href: device-update-simulator.md
-    - name: Ubuntu Server 18.04 x64 でのパッケージ更新
-      href: device-update-ubuntu-agent.md
-- name: 概念
-  items:
-    - name: デバイス更新アカウントとインスタンス
-      href: device-update-resources.md
-    - name: デバイス更新プログラムのユーザー ロールとアクセス
-      href: device-update-control-access.md
-    - name: デバイス更新プログラムの apt マニフェスト
-      href: device-update-apt-manifest.md
-    - name: デバイス更新プログラムのコンプライアンス
-      href: device-update-compliance.md
-    - name: デバイス更新プログラムのグループ
-      href: device-update-groups.md
-    - name: デバイス更新プログラムでのプラグ アンド プレイの使用方法
-      href: device-update-plug-and-play.md
-    - name: デバイス更新プログラムのネットワーク要件
-      href: device-update-networking.md
-    - name: デバイス更新プログラム エージェント
-      href: device-update-agent-overview.md
-    - name: デバイス更新プログラムの構成ファイル
-      href: device-update-configuration-file.md
-    - name: マニフェストを更新する
-      href: update-manifest.md
-    - name: デバイス更新プログラムをセキュリティで保護する方法
-      href: device-update-security.md
-    - name: 切断されたデバイスのサポート
-      href: connected-cache-disconnected-device-update.md
-    - name: Device Update for IoT Hub 用に Microsoft 接続キャッシュを構成する
-      href: connected-cache-configure.md
-    - name: デバイス更新プログラムのインポート
-      href: import-concepts.md
-    - name: インポートに関連するスキーマ
-      href: import-schema.md
-- name: 操作方法ガイド
-  items:
-    - name: Device Update アカウントの作成
-      href: create-device-update-account.md
-    - name: デバイス更新エージェントのプロビジョニング
-      href: device-update-agent-provisioning.md
-    - name: 更新プログラムをインポートする
-      href: import-update.md
-    - name: デバイス更新プログラム グループを作成する
-      href: create-update-group.md
-    - name: デバイス更新プログラムをデプロイする
-      href: deploy-update.md
-    - name: デバイス更新プログラムをデプロイする
-      href: deploy-update.md
-    - name: 単一レベルの Microsoft 接続キャッシュ
-      href: connected-cache-single-level.md
-    - name: 入れ子になったレベルの Microsoft 接続キャッシュ
-      href: connected-cache-nested-level.md
-    - name: Industrial IoT (IIOT) 向けの Microsoft 接続キャッシュ
-      href: connected-cache-industrial-iot-nested.md
-    - name: トラブルシューティング
-      items:
-        - name: デバイス更新プログラムをトラブルシューティングする
-          href: troubleshoot-device-update.md
-- name: リファレンス
-  items:
-    - name: デバイス更新プログラムのクライアント エラー コード
-      href: device-update-error-codes.md
-- name: リソース
-  items:
-    - name: サポート オプションとヘルプ オプション
-      href: ../iot-fundamentals/iot-support-help.md
-    - name: Azure IoT のサービス
-      items:
-        - name: IoT Hub
-          href: ./index.yml
-        - name: IoT Hub Device Provisioning Service
-          href: ../iot-dps/index.yml
-        - name: IoT Central
-          href: /microsoft-iot-central/
-        - name: IoT Edge
-          href: ../iot-edge/index.yml
-        - name: IoT ソリューション アクセラレータ
-          href: ../iot-accelerators/index.yml
-        - name: IoT プラグ アンド プレイ
-          href: ../iot-pnp/index.yml
-        - name: Azure Maps
-          href: ../azure-maps/index.yml
-        - name: Time Series Insights
-          href: ../time-series-insights/index.yml
-    - name: 配信の最適化
-      href: 'https://github.com/microsoft/do-client'
+items:
+  - name: Device Update for IoT Hub ドキュメント
+    href: index.yml
+  - name: 概要
+    items:
+      - name: Device Update for IoT Hub とは?
+        href: understand-device-update.md
+  - name: チュートリアル
+    items:
+      - name: Raspberry Pi でのイメージ更新
+        href: device-update-raspberry-pi.md
+      - name: シミュレーターでデバイスの更新プログラムを使用する
+        href: device-update-simulator.md
+      - name: Ubuntu Server 18.04 x64 でのパッケージ更新
+        href: device-update-ubuntu-agent.md
+      - name: Azure Real-Time Operating System の Device Update
+        href: device-update-azure-real-time-operating-system.md
+  - name: 概念
+    items:
+      - name: デバイス更新アカウントとインスタンス
+        href: device-update-resources.md
+      - name: デバイス更新プログラムのユーザー ロールとアクセス
+        href: device-update-control-access.md
+      - name: デバイス更新プログラムの apt マニフェスト
+        href: device-update-apt-manifest.md
+      - name: デバイス更新プログラムのコンプライアンス
+        href: device-update-compliance.md
+      - name: デバイス更新プログラムのグループ
+        href: device-update-groups.md
+      - name: デバイス更新プログラムでのプラグ アンド プレイの使用方法
+        href: device-update-plug-and-play.md
+      - name: デバイス更新プログラムのネットワーク要件
+        href: device-update-networking.md
+      - name: デバイス更新プログラム エージェント
+        href: device-update-agent-overview.md
+      - name: デバイス更新プログラムの構成ファイル
+        href: device-update-configuration-file.md
+      - name: マニフェストを更新する
+        href: update-manifest.md
+      - name: デバイス更新プログラムをセキュリティで保護する方法
+        href: device-update-security.md
+      - name: 切断されたデバイスのサポート
+        href: connected-cache-disconnected-device-update.md
+      - name: Device Update for IoT Hub 用に Microsoft 接続キャッシュを構成する
+        href: connected-cache-configure.md
+      - name: デバイス更新プログラムのインポート
+        href: import-concepts.md
+      - name: インポート関連のスキーマと API の詳細
+        href: import-schema.md
+      - name: Device Update の制限
+        href: device-update-limits.md
+  - name: 操作方法ガイド
+    items:
+      - name: Device Update アカウントの作成
+        href: create-device-update-account.md
+      - name: デバイス更新エージェントのプロビジョニング
+        href: device-update-agent-provisioning.md
+      - name: 更新プログラムをインポートする
+        href: import-update.md
+      - name: デバイス更新プログラム グループを作成する
+        href: create-update-group.md
+      - name: デバイス更新プログラムをデプロイする
+        href: deploy-update.md
+      - name: 単一レベルの Microsoft 接続キャッシュ
+        href: connected-cache-single-level.md
+      - name: 入れ子になったレベルの Microsoft 接続キャッシュ
+        href: connected-cache-nested-level.md
+      - name: Industrial IoT (IIOT) 向けの Microsoft 接続キャッシュ
+        href: connected-cache-industrial-iot-nested.md
+      - name: トラブルシューティング
+        items:
+          - name: デバイス更新プログラムをトラブルシューティングする
+            href: troubleshoot-device-update.md
+          - name: デバイス更新プログラムのクライアント エラー コード
+            href: device-update-error-codes.md
+  - name: リファレンス
+    items:
+      - name: REST API
+        href: /rest/api/deviceupdate/
+      - name: コントロール プレーン SDK
+        items:
+          - name: .NET
+            href: /dotnet/api/overview/azure/iot/management
+          - name: Python
+            href: /python/api/azure-mgmt-deviceupdate/
+      - name: データ プレーン SDK
+        items:
+          - name: .NET
+            href: /dotnet/api/azure.iot.deviceupdate?view=azure-dotnet-preview&preserve-view=true
+          - name: JavaScript
+            href: /javascript/api/@azure/iot-device-update/?view=azure-node-preview&preserve-view=true
+          - name: Java
+            href: /java/api/com.azure.iot.deviceupdate?view=azure-java-preview&preserve-view=true
+          - name: Python
+            href: /python/api/azure-mgmt-deviceupdate/azure.mgmt.deviceupdate?view=azure-python-preview&preserve-view=true
+  - name: リソース
+    items:
+      - name: サポート オプションとヘルプ オプション
+        href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-hub-device-update/toc.json&bc=/azure/iot-hub-device-update/breadcrumb/toc.json
+      - name: Azure IoT のサービス
+        items:
+          - name: IoT Hub
+            href: ./index.yml
+          - name: IoT Hub Device Provisioning Service
+            href: ../iot-dps/index.yml
+          - name: IoT Central
+            href: /microsoft-iot-central/
+          - name: IoT Edge
+            href: ../iot-edge/index.yml
+          - name: IoT プラグ アンド プレイ
+            href: ../iot-develop/index.yml
+          - name: Azure Maps
+            href: ../azure-maps/index.yml
+          - name: Time Series Insights
+            href: ../time-series-insights/index.yml
+      - name: 配信の最適化
+        href: 'https://github.com/microsoft/do-client'

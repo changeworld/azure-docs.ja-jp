@@ -1,17 +1,23 @@
 ---
-title: Azure DevTest Labs での環境のセキュリティの警告
+title: 環境のセキュリティ アラート
 description: この記事では、DevTest Labs で環境のセキュリティの警告を表示し、適切なアクションを実行する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: c9f7cf9fe7ab0e3f573470228ee1962aa92ccaef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57f1a0b240035d75746b9d23482446be71d1b1f9
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91308692"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398043"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Azure DevTest Labs での環境のセキュリティの警告
-ラボ ユーザーは、ラボ環境の Azure Security Center の警告を表示できるようになりました。 Security Center は、真の脅威を検出し、偽陽性を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。 [Azure Security Center のセキュリティの警告の詳細についてご覧ください](../security-center//security-center-alerts-overview.md)。  
+ラボ ユーザーは、ラボに対する Microsoft Defender for Cloud のアラートを確認できます。 ログ データの収集、分析、統合は、Defender for Cloud によって自動的に行われます。 データは、Azure リソースやネットワークから収集されるほか、ファイアウォール、Endpoint Protection など、接続されたソリューションからも収集されます。 Defender for Cloud は実際の脅威を検出し、擬陽性を減らすようになっています。 Defender for Cloud には、次のような働きがあります。
+
+- 優先度付けされたセキュリティ アラートをリストする。
+- 問題を迅速に調査するための情報を提供する。
+- 攻撃の修復方法について推奨事項を提示する。
+
+詳細については、[Microsoft Defender for Cloud のセキュリティ アラート](../security-center//security-center-alerts-overview.md)に関するページを参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -26,7 +32,7 @@ ms.locfileid: "91308692"
 
     ![[セキュリティの警告] ページのスクリーンショット。[セキュリティの警告の表示] が選択されています。](./media/environment-security-alerts/view-security-alerts-menu.png)
     
-3. 警告と Advisor の推奨事項の詳細が表示されます。 [Azure Security Center でのセキュリティの警告の管理と対応](../security-center/security-center-managing-and-responding-alerts.md)について詳細を確認してください。
+3. 警告と Advisor の推奨事項の詳細が表示されます。 詳細については、「[Microsoft Defender for Cloudでセキュリティ アラートの管理と対応を行う](../security-center/security-center-managing-and-responding-alerts.md)」を参照してください。
 
     ![セキュリティの警告の表示](./media/environment-security-alerts/advisor-recommendations.png)
 

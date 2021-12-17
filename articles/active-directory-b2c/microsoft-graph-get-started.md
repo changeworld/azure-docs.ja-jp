@@ -3,20 +3,20 @@ title: Microsoft Graph アプリケーションを登録する
 titleSuffix: Azure AD B2C
 description: 必要な Graph API アクセス許可が付与されたアプリケーションを登録することにより、Microsoft Graph を使用した Azure AD B2C リソースの管理について準備します。
 services: B2C
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/05/2021
-ms.author: mimart
+ms.date: 09/20/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 0dcb959184e12ffa22ae25443087684123598e47
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 48f60c6769812e28a0981329885c60995d1d0e1b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382465"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036437"
 ---
 # <a name="register-a-microsoft-graph-application"></a>Microsoft Graph アプリケーションを登録する
 
@@ -47,7 +47,8 @@ OAuth 2.0 クライアント資格情報付与フローは現在 Azure AD B2C �
 スクリプトとアプリケーションが [Microsoft Graph API][ms-graph-api] と対話して Azure AD B2C リソースを管理できるようにするには、必要な API アクセス許可を付与するアプリケーション登録を Azure AD B2C テナントに作成する必要があります。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. アプリケーションの **名前** を入力します。 たとえば、*managementapp1* と入力します。
@@ -58,7 +59,7 @@ OAuth 2.0 クライアント資格情報付与フローは現在 Azure AD B2C �
 
 ## <a name="grant-api-access"></a>API アクセスの許可
 
-アプリケーションから Microsoft Graph のデータにアクセスするには、登録されているアプリケーションに関連する[アプリケーションのアクセス許可](https://docs.microsoft.com/graph/permissions-reference)を付与します。 アプリケーションの有効なアクセス許可は、そのアクセス許可が暗示する完全なレベルの権限になります。 たとえば、Azure AD B2C テナント内のすべてのユーザーを *作成*、*読み取り*、*更新*、*削除* するには、**User.ReadWrite.All** アクセス許可を追加します。 
+アプリケーションから Microsoft Graph のデータにアクセスするには、登録されているアプリケーションに関連する[アプリケーションのアクセス許可](/graph/permissions-reference)を付与します。 アプリケーションの有効なアクセス許可は、そのアクセス許可が暗示する完全なレベルの権限になります。 たとえば、Azure AD B2C テナント内のすべてのユーザーを *作成*、*読み取り*、*更新*、*削除* するには、**User.ReadWrite.All** アクセス許可を追加します。 
 
 > [!NOTE]
 > **User.ReadWrite.All** アクセス許可には、ユーザー アカウントのパスワードを更新する機能は含まれていません。 アプリケーションでユーザー アカウントのパスワードを更新する必要がある場合は、[ユーザー管理者ロールを付与](#optional-grant-user-administrator-role)します。 [ユーザー管理者](../active-directory/roles/permissions-reference.md#user-administrator)ロールを付与する場合、**User.ReadWrite.All** は必要ありません。 ユーザー管理者ロールには、ユーザーの管理に必要なすべてが含まれています。
@@ -74,7 +75,9 @@ OAuth 2.0 クライアント資格情報付与フローは現在 Azure AD B2C �
 
 *ユーザー管理者* ロールを追加するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、 **[ディレクトリ + サブスクリプション]** フィルターを使用して Azure AD B2C テナントに切り替えます。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **Azure AD B2C** を検索して選択します。
 1. **[管理]** で **[ロールと管理者]** を選択します。
 1. **[ユーザー管理者]** ロールを選択します。 

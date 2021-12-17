@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 3/02/2021
-ms.openlocfilehash: e176c0399b191c7a511ea1d26388219b2cef1df8
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: faf2d60162a7cd39b901414aedb8cda1406173f2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107148"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226935"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL Database のブロックの問題の概要と解決策
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -95,17 +95,17 @@ ms.locfileid: "106107148"
 
 ターゲットの Azure SQL Database でこれらの各スクリプトを実行してください。
 
-* sp_who コマンドと sp_who2 コマンドは、現在のすべてのセッションを表示する古いコマンドです。 DMV sys.dm_exec_sessions では、クエリの実行やフィルター処理が容易な結果セットに、より多くのデータが返されます。 sys.dm_exec_sessions は、他のクエリの中心にあることがわかります。 
+* sp_who コマンドと sp_who2 コマンドは、現在のすべてのセッションを表示する古いコマンドです。 DMV `sys.dm_exec_sessions` からは、クエリの実行やフィルター処理が容易な結果セットで、より多くのデータが返されます。 `sys.dm_exec_sessions` は、他のクエリの中心になっていることがわかります。 
 
-* 特定のセッションを既に識別している場合、`DBCC INPUTBUFFER(<session_id>)` を使用して、セッションによって最後に送信されたステートメントを見つけることができます。 sys.dm_exec_input_buffer 動的管理関数 (DMF) でも、session_id と request_id を指定して、クエリやフィルター処理が簡単な結果セットで同様の結果が返されます。 たとえば、session_id 66 と request_id 0 によって送信された最新のクエリを返すには:
+* 特定のセッションを既に識別している場合、`DBCC INPUTBUFFER(<session_id>)` を使用して、セッションによって最後に送信されたステートメントを見つけることができます。 `sys.dm_exec_input_buffer` 動的管理関数 (DMF) でも、session_id と request_id を指定して、クエリやフィルター処理が簡単な結果セットで同様の結果が返されます。 たとえば、session_id 66 と request_id 0 によって送信された最新のクエリを返すには:
 
 ```sql
 SELECT * FROM sys.dm_exec_input_buffer (66,0);
 ```
 
-* sys.dm_exec_requests を参照し、blocking_session_id 列を参照します。 blocking_session_id = 0 の場合、セッションはブロックされていません。 sys.dm_exec_requests では、現在実行中の要求のみが一覧表示されますが、sys.dm_exec_sessions ではすべての接続 (アクティブまたは非アクティブ) が一覧表示されます。 次のクエリでは、sys.dm_exec_requests と sys.dm_exec_sessions の間のこの共通結合に基づきます。
+* `sys.dm_exec_requests` の `blocking_session_id` 列を参照します。 `blocking_session_id` = 0 の場合、セッションはブロックされていません。 `sys.dm_exec_requests` には現在実行中の要求のみの一覧が表示されますが、`sys.dm_exec_sessions` にはすべての接続 (アクティブまたは非アクティブ) の一覧が表示されます。 次のクエリでは、`sys.dm_exec_requests` と `sys.dm_exec_sessions` の間のこの共通結合に基づきます。
 
-* このサンプル クエリを実行し、[sys.dm_exec_sql_text](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql) または [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) DMV を使用して、アクティブに実行されているクエリとそれらの現在の SQL バッチ テキストまたは入力バッファー テキストを見つけます。 sys.dm_exec_sql_text の `text` フィールドによって返されたデータが NULL の場合、クエリは現在実行されていません。 その場合、sys.dm_exec_input_buffer の `event_info` フィールドには、SQL エンジンに渡された最後のコマンド文字列が含まれます。 このクエリは、session_id ごとのブロックされている session_ids の一覧など、他のセッションをブロックしているセッションを識別するためにも使用できます。 
+* このサンプル クエリを実行し、[sys.dm_exec_sql_text](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql) または [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) DMV を使用して、アクティブに実行されているクエリとそれらの現在の SQL バッチ テキストまたは入力バッファー テキストを見つけます。 `sys.dm_exec_sql_text` の `text` フィールドによって返されたデータが NULL の場合、クエリは現在実行されていません。 その場合、`sys.dm_exec_input_buffer` の `event_info` フィールドには、SQL エンジンに渡された最後のコマンド文字列が含まれます。 このクエリは、session_id ごとのブロックされている session_ids の一覧など、他のセッションをブロックしているセッションを識別するためにも使用できます。 
 
 ```sql
 WITH cteBL (session_id, blocking_these) AS 
@@ -183,14 +183,14 @@ INNER JOIN sys.dm_exec_connections [s_ec] ON [s_ec].[session_id] = [s_tst].[sess
 CROSS APPLY sys.dm_exec_sql_text ([s_ec].[most_recent_sql_handle]) AS [s_est];
 ```
 
-* SQL のスレッドまたはタスク層にある[sys.dm_os_waiting_tasks](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) を参照してください。 これにより、要求で現在発生している SQL の待機の種類に関する情報が返されます。 sys.dm_exec_requests と同様に、sys.dm_os_waiting_tasks によってアクティブな要求のみが返されます。 
+* SQL のスレッドまたはタスク層にある[sys.dm_os_waiting_tasks](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) を参照してください。 これにより、要求で現在発生している SQL の待機の種類に関する情報が返されます。 `sys.dm_exec_requests` と同様に、`sys.dm_os_waiting_tasks` からはアクティブな要求のみが返されます。 
 
 > [!Note]
 > 経時的に集計される待機の統計情報などの待機の種類の詳細については、DMV「[sys.dm_db_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database)」を参照してください。 この DMV によって、現在のデータベースのみの集計待機統計情報が返されます。
 
 * クエリによってどのロックが設定されているかに関するより詳細な情報については、[sys.dm_tran_locks](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql) DMV を使用します。 この DMV によって、実稼働 SQL Server に関する大量のデータが返される可能性があり、現在どんなロックが保持しているかを診断するのに役立ちます。 
 
-sys.dm_os_waiting_tasks の INNER JOIN のため、次のクエリでは、sys.dm_tran_locks からの出力が、現在ブロックされている要求、それらの待機状態、およびそれらのロックに限定されます。
+`sys.dm_os_waiting_tasks` での INNER JOIN のため、次のクエリでは、`sys.dm_tran_locks` からの出力が、現在ブロックされている要求、それらの待機状態、およびそれらのロックに限定されます。
 
 ```sql
 SELECT table_name = schema_name(o.schema_id) + '.' + o.name
@@ -242,9 +242,9 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 
 ## <a name="analyze-blocking-data"></a>ブロック データの分析 
 
-* DMV sys.dm_exec_requests と sys.dm_exec_sessions の出力を調べ、blocking_these と session_id を使用して、ブロック チェーンのヘッドを特定します。 これにより、ブロックされている要求とブロックしている要求が最も明確に特定されます。 ブロックされているセッションとブロックしているセッションについて、さらに詳しく調査します。 ブロック チェーンに共通のものまたはルートがありますか。 それらは共通のテーブルを共有し、ブロック チェーンに含まれる 1 つ以上のセッションで、書き込み操作が実行されている可能性があります。 
+* DMV `sys.dm_exec_requests` と `sys.dm_exec_sessions` の出力を調べ、`blocking_these` と `session_id` を使用して、ブロック チェーンのヘッドを特定します。 これにより、ブロックされている要求とブロックしている要求が最も明確に特定されます。 ブロックされているセッションとブロックしているセッションについて、さらに詳しく調査します。 ブロック チェーンに共通のものまたはルートがありますか。 それらは共通のテーブルを共有し、ブロック チェーンに含まれる 1 つ以上のセッションで、書き込み操作が実行されている可能性があります。 
 
-* DMV sys.dm_exec_requests と sys.dm_exec_sessions の出力で、ブロック チェーンのヘッドにある SPID に関する情報を調べます。 次のフィールドを探します。 
+* DMV `sys.dm_exec_requests` と `sys.dm_exec_sessions` の出力で、ブロック チェーンのヘッドにある SPID に関する情報を調べます。 次のフィールドを探します。 
 
     -    `sys.dm_exec_requests.status`  
     この列には、特定の要求の状態が表示されます。 通常、休止中状態とは、SPID が実行を完了し、アプリケーションから別のクエリやバッチが送信されるのを待機していることを示します。 実行可能または実行中状態は、SPID が現在クエリを処理していることを示します。 次の表に、さまざまな状態値の簡単な説明を示します。
@@ -264,7 +264,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
     同様に、このフィールドは、この要求で開いているトランザクションの数を示しています。 この値が 0 より大きい場合、SPID は開いているトランザクション内にあり、トランザクション内のいずれかのステートメントによって取得されたロックを保持している可能性があります。
 
     -   `sys.dm_exec_requests.wait_type`、`wait_time`、`last_wait_type`  
-     `sys.dm_exec_requests.wait_type`  が NULL の場合、要求では現在何も待機しておらず、 `last_wait_type`  値は、要求で発生した最後の  `wait_type`  を示します。  `sys.dm_os_wait_stats` の詳細と、最も一般的な待機の種類の説明については、「[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)」を参照してください。  `wait_time`  値を使用して、要求が進行中かどうかを判断できます。 sys.dm_exec_requests テーブルに対するクエリで、 `wait_time`  列に、sys.dm_exec_requests の前のクエリからの  `wait_time`  値より少ない値が返された場合、これは前のロックが取得され、解放されており、現在新しいロックを待機中であることを示しています (`wait_time` がゼロ以外であると想定して)。 これは sys.dm_exec_requests の出力間で `wait_resource`  を比較して確認できます。これにより、要求で待機中のリソースが表示されます。
+     `sys.dm_exec_requests.wait_type`  が NULL の場合、要求では現在何も待機しておらず、 `last_wait_type`  値は、要求で発生した最後の  `wait_type`  を示します。  `sys.dm_os_wait_stats` の詳細と、最も一般的な待機の種類の説明については、「[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)」を参照してください。  `wait_time`  値を使用して、要求が進行中かどうかを判断できます。  `sys.dm_exec_requests` テーブルに対するクエリで、 `wait_time` 列に、 `sys.dm_exec_requests` の前のクエリからの  `wait_time` 値より少ない値が返された場合、これは前のロックが取得され、解放されており、現在新しいロックを待機中であることを示しています (`wait_time` がゼロ以外であると想定します)。 これは  `sys.dm_exec_requests` の出力間で `wait_resource` を比較して確認できます。これにより、要求で待機中のリソースが表示されます。
 
     -   `sys.dm_exec_requests.wait_resource` このフィールドは、ブロックされた要求で待機中のリソースを示しています。 次の表に、一般的な  `wait_resource`  の形式とそれらの意味を示します。
 
@@ -272,7 +272,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
     |:-|:-|:-|:-|
     | テーブル | DatabaseID:ObjectID:IndexID | TAB:5:261575970:1 | この場合、データベース ID 5 は pubs サンプル データベース、オブジェクト ID 261575970 は titles テーブル、1 はクラスター化インデックスです。 |
     | ページ | DatabaseID:FileID:PageID | PAGE:5:1:104 | この場合、データベース ID 5 は pubs、ファイル ID 1 はプライマリ データ ファイル、ページ 104 は titles テーブルに属するページです。 ページが属している object_id を特定するには、動的管理関数 [sys.dm_db_page_info](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-page-info-transact-sql) を使用して、`wait_resource` からの DatabaseID、FileId、PageId を渡します。 | 
-    | キー | DatabaseID:Hobt_id (インデックス キーのハッシュ値) | KEY:5:72057594044284928 (3300a4f361aa) | この場合、データベース ID 5 は Pubs、Hobt_ID 72057594044284928 は object_id 261575970 の index_id 2 に対応します (titles テーブル)。 sys.partitions カタログ ビューを使用して、特定の index_id と object_id に hobt_id を関連付けます。 インデックス キーのハッシュを特定のキー値に非ハッシュ化する方法はありません。 |
+    | キー | DatabaseID:Hobt_id (インデックス キーのハッシュ値) | KEY:5:72057594044284928 (3300a4f361aa) | この場合、データベース ID 5 は Pubs、Hobt_ID 72057594044284928 は object_id 261575970 の index_id 2 に対応します (titles テーブル)。 `sys.partitions` カタログ ビューを使用して、特定の `index_id` と `object_id` に hobt_id を関連付けます。 インデックス キーのハッシュを特定のキー値に非ハッシュ化する方法はありません。 |
     | 行 | DatabaseID:FileID:PageID:Slot(row) | RID:5:1:104:3 | この場合、データベース ID 5 は pubs、ファイル ID 1 はプライマリ データ ファイル、ページ 104 は titles テーブルに属するページ、スロット 3 はページ上の行の位置を示します。 |
     | Compile  | DatabaseID:FileID:PageID:Slot(row) | RID:5:1:104:3 | この場合、データベース ID 5 は pubs、ファイル ID 1 はプライマリ データ ファイル、ページ 104 は titles テーブルに属するページ、スロット 3 はページ上の行の位置を示します。 |
 
@@ -309,30 +309,30 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
     , s.host_name, s.program_name, s.client_interface_name, s.login_name, s.is_user_process
     FROM sys.dm_tran_active_transactions tat 
     INNER JOIN sys.dm_tran_session_transactions tst  on tat.transaction_id = tst.transaction_id
-    INNER JOIN Sys.dm_exec_sessions s on s.session_id = tst.session_id 
+    INNER JOIN sys.dm_exec_sessions s on s.session_id = tst.session_id 
     LEFT OUTER JOIN sys.dm_exec_requests r on r.session_id = s.session_id
     CROSS APPLY sys.dm_exec_input_buffer(s.session_id, null) AS ib;
     ```
 
     -   他の列
 
-        [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) と [sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) の残りの列でも、問題の原因に関する分析情報を得ることができます。 これらの有用性は、問題の状況によって異なります。 たとえば、問題が特定のクライアント (ホスト名) から、特定のネットワーク ライブラリ (net_library) でのみ発生しているかどうか、SPID によって送信された最後のバッチが sys.dm_exec_sessions で `last_request_start_time` であった場合、sys.dm_exec_requests で `start_time` を使用して要求が実行されていた時間などを特定できます。
+        [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) と [sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) の残りの列でも、問題の原因に関する分析情報を得ることができます。 これらの有用性は、問題の状況によって異なります。 たとえば、問題が特定のクライアント (ホスト名) から、特定のネットワーク ライブラリ (net_library) でのみ発生しているかどうか、SPID によって送信された最後のバッチが `sys.dm_exec_sessions` で `last_request_start_time` であった場合、`sys.dm_exec_requests` で `start_time` を使用して要求が実行されていた時間などを特定できます。
 
 
 ## <a name="common-blocking-scenarios"></a>一般的なブロック シナリオ
 
 下の表に、一般的な現象をそれらの考えられる原因にマップしています。  
 
-`wait_type`、`open_transaction_count`、および `status` 列は [sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) によって返される情報を示しており、その他の列は [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) によって返される可能性があります。 "解決するか" 列は、ブロックが自然に解決されるかどうか、または `KILL` コマンドによってセッションを中止する必要があるかどうかを示しています。 詳細については、「[KILL (Transact-SQL)](/sql/t-sql/language-elements/kill-transact-sql)」を参照してください。
+Waittype、Open_Tran、Status 列は [sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) によって返される情報を示しており、他の列は [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) によって返される可能性があります。 "解決するか" 列は、ブロックが自然に解決されるかどうか、または `KILL` コマンドによってセッションを中止する必要があるかどうかを示しています。 詳細については、「[KILL (Transact-SQL)](/sql/t-sql/language-elements/kill-transact-sql)」を参照してください。
 
 | シナリオ | Waittype | Open_Tran | Status | 解決するか | その他の現象 |  
 |:-|:-|:-|:-|:-|:-|--|
-| 1 | NOT NULL | >= 0 | 実行可能 | はい。クエリが終了したとき。 | sys.dm_exec_sessions では、**reads**、**cpu_time**、**memory_usage** 列は時間の経過と共に増加します。 完了したときのクエリの実行時間は長くなります。 |
+| 1 | NOT NULL | >= 0 | 実行可能 | はい。クエリが終了したとき。 | `sys.dm_exec_sessions` では、`reads`、`cpu_time`、`memory_usage` 列は時間の経過と共に増加します。 完了したときのクエリの実行時間は長くなります。 |
 | 2 | NULL | \>0 | 休止中 | いいえ。ただし、SPID は中止できます。 | この SPID の拡張イベントセッションに、クエリ タイムアウトまたはキャンセルが発生したことを示す注意シグナルが表示される可能性があります。 |
 | 3 | NULL | \>= 0 | 実行可能 | いいえ。 クライアントによってすべての行がフェッチされるか、接続が閉じられるまで、解決されません。 SPID は中止できますが、最大で 30 秒かかることがあります。 | open_transaction_count = 0 で、トランザクション分離レベルが既定 (READ COMMMITTED) である間、SPID がロックを保持している場合、これが原因である可能性があります。 |  
-| 4 | 場合により異なる | \>= 0 | 実行可能 | いいえ。 クライアントによってクエリが取り消されるか、接続を閉じられるまで、解決されません。 SPID は中止できますが、最大で 30 秒かかることがあります。 | ブロック チェーンのヘッドにある SPID の sys.dm_exec_sessions の **hostname** 列は、それによってブロックされている SPID の 1 つと同じになります。 |  
+| 4 | 場合により異なる | \>= 0 | 実行可能 | いいえ。 クライアントによってクエリが取り消されるか、接続を閉じられるまで、解決されません。 SPID は中止できますが、最大で 30 秒かかることがあります。 | ブロック チェーンのヘッドにある SPID の `sys.dm_exec_sessions` の `hostname` 列は、それによってブロックされている SPID の 1 つと同じになります。 |  
 | 5 | NULL | \>0 | ロールバック | はい。 | この SPID の拡張イベント セッションで、クエリ タイムアウトまたはキャンセルが発生したか、または単にロールバック ステートメントが発行されたことを示す注意シグナルが表示される可能性があります。 |  
-| 6 | NULL | \>0 | 休止中 | 最終的に。 Windows NT によって、セッションがアクティブでなくなったと判断されると、Azure SQL Database 接続が切断されます。 | sys.dm_exec_sessions の `last_request_start_time` 値は、現在の時刻よりもはるかに前です。 |
+| 6 | NULL | \>0 | 休止中 | 最終的に。 Windows NT によって、セッションがアクティブでなくなったと判断されると、Azure SQL Database 接続が切断されます。 | `sys.dm_exec_sessions` の `last_request_start_time` 値は、現在の時刻よりもはるかに前です。 |
 
 ## <a name="detailed-blocking-scenarios"></a>ブロックのシナリオ (詳述)
 
@@ -346,7 +346,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 
 1.  コミットされていないトランザクションがある休止中の SPID に原因があるブロック
 
-    この種類のブロックは、多くの場合に、休止中またはコマンドを待機している SPID によって識別でき、さらにそれらのトランザクション入れ子レベル (`@@TRANCOUNT`、sys.dm_exec_requests からの `open_transaction_count`) が 0 よりも大きくなります。 これは、アプリケーションでクエリのタイムアウトが発生した場合、または必要な数の ROLLBACK ステートメントや COMMIT ステートメントを発行せずに、キャンセルが発行された場合に発生する可能性があります。 SPID によって、クエリのタイムアウトやキャンセルが受信されると、現在のクエリとバッチが終了しますが、トランザクションが自動的にロールバックされたり、コミットされたりしません。 Azure SQL Database では、1 つのクエリが取り消されたためにトランザクション全体をロールバックする必要があることを想定できないため、この責任はアプリケーションにあります。 クエリのタイムアウトやキャンセルは、拡張イベント セッションで SPID の ATTENTION シグナル イベントとして表示されます。
+    この種類のブロックは、多くの場合に、休止中またはコマンドを待機している SPID によって識別でき、さらにそれらのトランザクション入れ子レベル (`@@TRANCOUNT`、`sys.dm_exec_requests` からの `open_transaction_count`) が 0 よりも大きくなります。 これは、アプリケーションでクエリのタイムアウトが発生した場合、または必要な数の ROLLBACK ステートメントや COMMIT ステートメントを発行せずに、キャンセルが発行された場合に発生する可能性があります。 SPID によって、クエリのタイムアウトやキャンセルが受信されると、現在のクエリとバッチが終了しますが、トランザクションが自動的にロールバックされたり、コミットされたりしません。 Azure SQL Database では、1 つのクエリが取り消されたためにトランザクション全体をロールバックする必要があることを想定できないため、この責任はアプリケーションにあります。 クエリのタイムアウトやキャンセルは、拡張イベント セッションで SPID の ATTENTION シグナル イベントとして表示されます。
 
     コミットされていない明示的なトランザクションを明らかにするには、次のクエリを実行します。
 
@@ -366,7 +366,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 
     2 つ目のクエリの出力は、トランザクションの入れ子レベルが 1 であることを示しています。 トランザクションで取得されたすべてのロックは、トランザクションがコミットまたはロールバックされるまでまだ保持されます。 アプリケーションによって、明示的にトランザクションが開かれ、コミットされる場合、通信またはその他のエラーによって、セッションとそのトランザクションが開いた状態のままになる可能性があります。 
 
-    この記事で先に紹介したスクリプトを sys.dm_tran_active_transactions に基づいて使用し、インスタンス全体で現在コミットされていないトランザクションを特定します。
+    この記事で先に紹介したスクリプトを `sys.dm_tran_active_transactions` に基づいて使用し、インスタンス全体で現在コミットされていないトランザクションを特定します。
 
     **解決方法**:
 
@@ -395,7 +395,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 
 1.  ロールバック状態のセッションに原因があるブロック
 
-    中止 (KILL) された、またはユーザー定義トランザクションの外部で取り消されたデータ変更クエリはロールバックされます。 これは、クライアント ネットワーク セッションの切断の副作用として、または要求がデッドロックの犠牲者として選択された場合にも発生することがあります。 これは多くの場合、sys.dm_exec_requests の出力を観察することによって識別できます。これは ROLLBACK **コマンド** を示している場合があり、**percent_complete 列** に進行状況が示されている可能性があります。 
+    中止 (KILL) された、またはユーザー定義トランザクションの外部で取り消されたデータ変更クエリはロールバックされます。 これは、クライアント ネットワーク セッションの切断の副作用として、または要求がデッドロックの犠牲者として選択された場合にも発生することがあります。 これは多くの場合、`sys.dm_exec_requests` の出力を観察することによって識別できます。これは ROLLBACK コマンドを示している場合があり、`percent_complete` 列に進行状況が示されている可能性があります。 
 
     2019 年に導入された[高速データベース復旧機能](../accelerated-database-recovery.md)のため、時間のかかるロールバックはめったに発生しないはずです。
     
@@ -425,7 +425,6 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 ## <a name="learn-more"></a>詳細情報
 
 * [Azure SQL Database: 自動チューニングによるパフォーマンス チューニングの向上](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Improving-Performance-Tuning-with-Automatic-Tuning)
-* [自動チューニングによる Azure SQL Database パフォーマンスの向上](https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning)
 * [Azure SQL で一貫したパフォーマンスを提供する](/learn/modules/azure-sql-performance/)
 * [Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング](troubleshoot-common-errors-issues.md)
 * [Transient Fault Handling (一時的な障害の処理)](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling)

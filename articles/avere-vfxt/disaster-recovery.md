@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 5cc4678b082aa5a4a3f90518ff8fac448f414f1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ae2ac35cc01ed8dfbc34ab2ff90117c46298980
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92342248"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325564"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Avere vFXT for Azure のディザスター リカバリーに関するガイダンス
 
@@ -61,7 +61,7 @@ Azure Blob Storage 内のデータを保護するためのベスト プラクテ
 
 * 重要なデータを別のリージョンにある別のストレージ アカウントに頻繁に (ディザスター リカバリー プランで決定された頻度で) コピーします。
 * 偶発的な削除または破損を防ぐために、すべてのターゲット システム上のデータへのアクセスを制御します。 データ ストレージでの[リソース ロック](../azure-resource-manager/management/lock-resources.md)の使用を検討してください。
-* BLOB コア ファイラーに対して Avere vFXT for Azure の[クラウド スナップショット](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>)機能を有効にします。
+* BLOB コア ファイラーに対して Avere vFXT for Azure の[クラウド スナップショット](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html)機能を有効にします。
 
 ### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>Avere vFXT コア ファイラーのデータをバックアップ アカウントにコピーする
 
@@ -73,7 +73,7 @@ Azure Blob Storage 内のデータを保護するためのベスト プラクテ
 
    このキーは、コンテナーをクラスターに追加するときに (元のクラスターに再追加する場合でも) 指定する必要があります。
 
-   [クラウドの暗号化の設定](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_encryption_settings.html>)に関する記事で<!-- link to legacy doc site --> 詳細を確認してください。
+   [クラウドの暗号化の設定](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_encryption_settings.html)に関する記事で<!-- link to legacy doc site --> 詳細を確認してください。
 
    お使いのコンテナーで Azure の組み込みの暗号化のみを使用している場合は、この手順をスキップできます。
 
@@ -117,7 +117,7 @@ Avere vFXT for Azure クラスターからバックアップ コンテナーに�
 * Avere vFXT for Azure の設定のカスタマイズの詳細については、「[クラスター チューニング](avere-vfxt-tuning.md)」を参照してください。
 * Azure でのディザスター リカバリーと回復性があるアプリケーションの構築の詳細を参照してください。
 
-  * [Azure の回復性技術ガイダンス](/azure/architecture/framework/resiliency/overview)
+  * [Azure の回復性技術ガイダンス](/azure/architecture/reliability/architect)
   * [リージョン全体でのサービスの中断から回復する](/azure/architecture/resiliency/recovery-loss-azure-region)
   * [Azure アプリケーションのディザスター リカバリーと高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)
   <!-- can't find these in the source tree to use relative links -->

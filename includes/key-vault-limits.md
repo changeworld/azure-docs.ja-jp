@@ -2,14 +2,14 @@
 author: amitbapat
 ms.service: key-vault
 ms.topic: include
-ms.date: 03/09/2021
+ms.date: 05/28/2021
 ms.author: ambapat
-ms.openlocfilehash: c2548b1669366564809ed2fde725cb3399922a29
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2918ae1a7fcca250de91e61ecc9b2c64a2d9a0aa
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803239"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130019028"
 ---
 Azure Key Vault サービスでは、コンテナーとマネージド HSM という 2 つのリソースの種類がサポートされています。 次の 2 つのセクションでは、それぞれのサービスの制限について説明します。
 
@@ -62,17 +62,23 @@ Azure Key Vault サービスでは、コンテナーとマネージド HSM と�
 > [!NOTE]
 > バージョン数が上記の制限を超えるキー、シークレット、または証明書オブジェクトをバックアップしようとすると、エラーが発生します。 キー、シークレット、または証明書の以前のバージョンを削除することはできません。 
 
+### <a name="limits-on-count-of-keys-secrets-and-certificates"></a>キー、シークレット、および証明書の数に関する制限:
+
+Key Vault では、コンテナーに格納できるキー、シークレット、または証明書の数は制限されません。 コンテナーに関するトランザクション制限を考慮して、操作が調整されないようにする必要があります。
+
+Key Vault では、シークレット、キー、または証明書に対するバージョン数は制限されませんが、多数のバージョン (500 個以上) を格納すると、バックアップ操作のパフォーマンスに影響を与える可能性があります。 「[Azure Key Vault のバックアップ](../articles/key-vault/general/backup.md)」を参照してください。
+
 #### <a name="azure-private-link-integration"></a>Azure Private Link の統合
 
 > [!NOTE]
-> プライベート エンドポイントが有効なキー コンテナーのサブスクリプションあたりの上限は、調整可能です。 以下に記載した上限は、あくまで既定値です。 サービスに適用される上限の引き上げをご希望の場合には、akv-privatelink@microsoft.com まで電子メールをお送りください。 いただいたご依頼は、ケースごとの事情を考慮して承認します。
+> プライベート エンドポイントが有効なキー コンテナーのサブスクリプションあたりの上限は、調整可能です。 以下に記載した上限は、あくまで既定値です。 サービスに適用される上限の引き上げをご希望の場合には、サポート リクエストを作成してください。これは個別に評価されます。
 
 | リソース | 制限 |
 | -------- | -----:|
 | キー コンテナーあたりのプライベート エンドポイント | 64 |
 | サブスクリプションあたりのプライベート エンドポイントのあるキー コンテナー | 400 |
 
-### <a name="resource-type-managed-hsm-preview"></a>リソースの種類: マネージド HSM (プレビュー)
+### <a name="resource-type-managed-hsm"></a>リソースの種類: マネージド HSM
 
 このセクションでは、リソースの種類 `managed HSM` のサービスの制限について説明します。
 
@@ -80,7 +86,7 @@ Azure Key Vault サービスでは、コンテナーとマネージド HSM と�
 
 |アイテム|制限|
 |----|------:|
-リージョンごとのサブスクリプションあたりの HSM インスタンスの数|1 (プレビュー期間中)
+リージョンごとのサブスクリプションあたりの HSM インスタンスの数|5 
 HSM プールあたりのキー数|5000
 キーあたりのバージョン数|100
 HSM あたりのカスタム ロール定義の数|50

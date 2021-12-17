@@ -1,26 +1,23 @@
 ---
-title: Azure Firewall Premium プレビューをデプロイして構成する
+title: Azure Firewall Premium をデプロイして構成する
 description: Azure Firewall Premium のデプロイと構成の方法について説明します。
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 07/15/2021
 ms.author: victorh
-ms.openlocfilehash: fa106fac683619706f4be330ad1c4bff7b56f2dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9358852dd8b16f495d5123b59ea3ae0f4c29b00f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101721788"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441150"
 ---
-# <a name="deploy-and-configure-azure-firewall-premium-preview"></a>Azure Firewall Premium プレビューをデプロイして構成する
+# <a name="deploy-and-configure-azure-firewall-premium"></a>Azure Firewall Premium をデプロイして構成する
 
-> [!IMPORTANT]
-> 現在、Azure Firewall Premium はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
- Azure Firewall Premium プレビューは、機密度が高く、規制された環境に必要な機能を備えた次世代のファイアウォールです。 このパックには、次の機能があります。
+ Azure Firewall Premium は、機密度が高く、規制された環境に必要な機能を備えた次世代のファイアウォールです。 このパックには、次の機能があります。
 
 - **TLS 検査** - アウトバウンド トラフィックを復号化し、データを処理し、その後にデータを暗号化して宛先に送信します。
 - **IDPS** - ネットワーク侵入検出と防止システム (IDPS) を使用すると、ネットワーク アクティビティを監視して悪意のあるアクティビティがないか確認し、このアクティビティに関する情報をログに記録し、それを報告して、任意でそのブロックを試みることができます。
@@ -56,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-premium%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazurefirewall-premium%2Fazuredeploy.json)
 
 ## <a name="test-the-firewall"></a>ファイアウォールをテストする
 
@@ -75,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="idps-tests"></a>IDPS のテスト
 
-IDPS をテストするには、適切なサーバー証明書を持つ独自の内部 Web サーバーをデプロイする必要があります。 Azure Firewall Premium プレビューの証明書の要件に関する詳細については、「[Azure Firewall Premium プレビューの証明書](premium-certificates.md)」を参照してください。
+IDPS をテストするには、適切なサーバー証明書を持つ独自の内部 Web サーバーをデプロイする必要があります。 Azure Firewall Premium の証明書の要件に関する詳細については、「[Azure Firewall Premium の証明書](premium-certificates.md)」を参照してください。
 
 `curl` を使用して、さまざまな HTTP ヘッダーを制御し、悪意のあるトラフィックをシミュレートできます。
 
@@ -94,7 +91,7 @@ IDPS をテストするには、適切なサーバー証明書を持つ独自の
    > ログにデータが表示され始めるまでに、しばらく時間がかかる可能性があります。 ログにデータが表示されるようになるまで、少なくとも 20 分を見込んでください。
 5. 署名 2008983 の署名規則を追加します。
 
-   1. **DemoFirewallPolicy** を選択し、 **[設定]** で **[IDPS(プレビュー)]** を選択します。
+   1. **DemoFirewallPolicy** を選択し、 **[設定]** で **[IDPS]** を選択します。
    1. **[署名規則]** タブを選択します。
    1. **[Signature ID]\(署名 ID\)** で、空いているテキスト ボックスに「*2008983*」と入力します。
    1. **[モード]** で、 **[禁止]** を選択します。
@@ -131,7 +128,7 @@ HTTP のテストで得られたものと同じ結果が表示されるはずで
 
 URL フィルタリングによる TLS 検査をテストするには、次の手順を使用します。
 
-1. ファイアウォール ポリシーのアプリケーション規則を編集し、`AllowURL` という名前の新しい規則を `AllowWeb` 規則コレクションに追加します。 ターゲット URL として `www.nytimes.com/section/world`、ソース IP アドレスとして **\* *_、宛先の種類として _* URL (プレビュー)** を構成し、 **[TLS 検査 (プレビュー)]** とプロトコル **http, https** を選択します。
+1. ファイアウォール ポリシーのアプリケーション規則を編集し、`AllowURL` という名前の新しい規則を `AllowWeb` 規則コレクションに追加します。 ターゲット URL として `www.nytimes.com/section/world`、ソース IP アドレスとして **\* *_、宛先の種類として _* URL** を構成し、 **[TLS 検査]** とプロトコル **http、https** を選択します。
 
 3. デプロイが完了したら、WorkerVM でブラウザーを開き、`https://www.nytimes.com/section/world` に移動して、HTML 応答がブラウザーに想定どおりに表示されることを検証します。
 4. Azure portal で、アプリケーション規則の監視ログ内で URL 全体を表示できます。
@@ -153,7 +150,7 @@ HTML ページの中には、禁止されている他の URL を参照してい�
 1. ポータルから、リソース グループを開いて **DemoFirewallPolicy** を選択します。
 2. **[Application Rules]\(アプリケーション規則\)** を選択し、次に **[規則コレクションの追加]** を選択します。
 3. **[名前]** に「*GeneralWeb*」、 **[優先度]** に「*103*」と入力し、 **[規則コレクション グループ]** で **DefaultApplicationRuleCollectionGroup** を選択します。
-4. **[規則]** で、 **[名前]** に「*AllowSports*」、 **[接続元]** に「 *\** 」、 **[プロトコル]** に「*http, https*」を入力し、 **[TLS 検査]** を選択し、 **[宛先の種類]** で *[Web カテゴリ (プレビュー)]* を選択し、 **[宛先]** で *[Sports]\(スポーツ\)* を選択します。
+4. **[規則]** で、 **[名前]** に「*AllowSports*」、 **[接続元]** に「 *\** 」、 **[プロトコル]** に「*http, https*」を入力し、 **[TLS 検査]** を選択し、 **[宛先の種類]** で *[Web カテゴリ]* を選択し、 **[宛先]** で *[Sports]\(スポーツ\)* を選択します。
 5. **[追加]** を選択します。
 
       :::image type="content" source="media/premium-deploy/web-categories.png" alt-text="スポーツ Web カテゴリ":::
@@ -163,4 +160,4 @@ HTML ページの中には、禁止されている他の URL を参照してい�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure portal での Azure Firewall Premium プレビュー](premium-portal.md)
+- [Azure portal での Azure Firewall Premium](premium-portal.md)

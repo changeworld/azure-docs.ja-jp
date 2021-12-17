@@ -1,15 +1,15 @@
 ---
-author: trevorbye
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: trbye
-ms.openlocfilehash: bda36fc86b3dd0543af83cd8f51677f6d9dfa117
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.author: eur
+ms.openlocfilehash: 2922a0ab090549f1afce19d64413f6742f4f1d67
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444936"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507560"
 ---
 ## <a name="prerequisites"></a>前提条件
 

@@ -1,0 +1,77 @@
+- name: Virtual Network Manager のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Virtual Network Manager とは
+      href: overview.md
+- name: クイックスタート
+  items:
+    - name: Virtual Network Manager を作成する - ポータル
+      href: create-virtual-network-manager-portal.md
+    - name: Virtual Network Manager を作成する - PowerShell
+      href: create-virtual-network-manager-powershell.md
+  expanded: true
+- name: チュートリアル
+  items:
+    - name: セキュリティで保護されたハブ アンド スポークを作成する
+      href: tutorial-create-secured-hub-and-spoke.md
+- name: 概念
+  items:
+    - name: よく寄せられる質問
+      href: faq.md
+    - name: スコープ
+      href: concept-network-manager-scope.md
+    - name: ネットワーク グループ
+      href: concept-network-groups.md
+    - name: 構成の種類
+      items:
+        - name: 接続性
+          href: concept-connectivity-configuration.md
+        - name: セキュリティ管理規則
+          href: concept-security-admins.md
+    - name: デプロイメント
+      href: concept-deployments.md
+    - name: コンポーネントを削除または更新する
+      href: concept-remove-components-checklist.md
+- name: 使い方ガイド
+  items:
+    - name: ネットワーク トラフィックをブロックする
+      items:
+        - name: ポータル
+          href: how-to-block-network-traffic-portal.md
+        - name: PowerShell
+          href: how-to-block-network-traffic-powershell.md
+    - name: ネットワーク トポロジを作成する
+      items:
+        - name: メッシュ型
+          items:
+            - name: Azure portal
+              href: how-to-create-mesh-network.md
+            - name: Azure PowerShell
+              href: how-to-create-mesh-network-powershell.md
+        - name: ハブ アンド スポーク
+          items:
+            - name: Azure portal
+              href: how-to-create-hub-and-spoke.md
+            - name: Azure PowerShell
+              href: how-to-create-hub-and-spoke-powershell.md
+    - name: 適用された構成を表示する
+      href: how-to-view-applied-configurations.md
+    - name: 動的メンバーシップから要素を除外する
+      href: how-to-exclude-elements.md
+    - name: 一般的な問題
+      href: common-issues.md
+- name: リファレンス
+  items:
+    - name: REST
+      href: /rest/api/networkmanager/
+    - name: .NET SDK
+      href: /dotnet/api/microsoft.azure.management.network?view=azure-dotnet
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: ネットワークのブログ
+      href: 'https://azure.microsoft.com/blog/topics/networking/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'

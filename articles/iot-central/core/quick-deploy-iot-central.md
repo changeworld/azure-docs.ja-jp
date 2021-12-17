@@ -1,78 +1,115 @@
 ---
-title: クイックスタート - Azure IoT Central アプリケーションを作成する | Microsoft Docs
-description: クイックスタート - 新しい Azure IoT Central アプリケーションを作成します。 無料プランまたはいずれかの標準料金プランを使用して、アプリケーションを作成します。
-author: viv-liu
-ms.author: viviali
-ms.date: 12/28/2020
+title: クイックスタート - Azure IoT Central アプリケーションを作成して使用する | Microsoft Docs
+description: クイックスタート - 新しい Azure IoT Central アプリケーションを作成し、最初のデバイスを接続します。 このクイックスタートでは、Google Play または Apple App Store のスマートフォン アプリを IoT デバイスとして使用します。
+author: dominicbetts
+ms.author: dobett
+ms.date: 05/27/2021
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
-manager: corywink
-ms.openlocfilehash: a1492593c24c2bc350205536006b648608cc5e46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e40c079c50ccb7f83a4e03d47cf3e9b419870ef
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712642"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288531"
 ---
-# <a name="quickstart---create-an-azure-iot-central-application"></a>クイックスタート - Azure IoT Central アプリケーションを作成する
+# <a name="quickstart---create-an-azure-iot-central-application-and-use-your-smartphone-to-send-telemetry"></a>クイックスタート - Azure IoT Central アプリケーションを作成し、スマートフォンを使用してテレメトリを送信する
 
-このクイックスタートでは、Azure IoT Central アプリケーションを作成する方法を説明します。
+このクイックスタートでは、Azure IoT Central アプリケーションを作成して最初のデバイスを接続する方法を説明します。 すぐに作業を開始するには、スマートフォンにアプリをインストールして、デバイスとして動作させることができます。 アプリでテレメトリの送信、プロパティのレポート、コマンドへの応答を行います。
 
-## <a name="prerequisite"></a>前提条件 
+:::image type="content" source="media/quick-deploy-iot-central/overview.png" alt-text="スマートフォン アプリを IoT Central に接続するクイックスタート シナリオの概要。" border="false":::
 
-"*共同作成者*" アクセス権を備えた Azure サブスクリプションが必要です。
+## <a name="prerequisites"></a>前提条件
+
+有効な Azure サブスクリプション Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+> [!TIP]
+> Azure サブスクリプションに、少なくとも **共同作成者** のアクセス権を持っている必要があります。 ご自身でサブスクリプションを作成した場合は、ご自分が自動的に十分なアクセス権を持つ管理者になります。 詳細については、「[Azure ロールベースのアクセス制御とは](../../role-based-access-control/overview.md)」を参照してください。
+
+公式アプリ ストアのどれかから無料のアプリをインストールできる Android または iOS 搭載のスマートフォン。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
-[Azure IoT Central ビルド](https://aka.ms/iotcentral) Web サイトに移動します。 次に、Microsoft 個人アカウントか、職場または学校アカウントを使用してサインインします。
+[Azure IoT Central ビルド](https://aka.ms/iotcentral) Web サイトに移動します。 次に、お使いの Azure サブスクリプションに関連付けられている Microsoft 個人、職場、または学校アカウントを使用してサインインします。
 
-新しいアプリケーションを作成するには、業界に関連する IoT Central テンプレートの一覧を参照して、すばやく作業を開始することも、**カスタム アプリケーション** テンプレートを使用してゼロから始めることもできます。 このクイックスタートでは、**カスタム アプリケーション** テンプレートを使用します。
+IoT Central には、さまざまな業界に特化したアプリケーション テンプレートが用意されていて、作業を開始する際に役立ちます。 このクイックスタートでは、**カスタム アプリケーション** テンプレートを使用して、アプリケーションを最初から作成します。
 
-**カスタム アプリケーション** テンプレートから新しい Azure IoT Central アプリケーションを作成するには、次のようにします。
-
-1. **[ビルド]** ページに移動します。
+1. **[ビルド]** ページに移動し、 **[カスタム アプリ]** タイルの **[アプリの作成]** を選択します。
 
     :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-new-application.png" alt-text="「IoT アプリケーションのビルド」ページ":::
 
-1. **[カスタム アプリ]** を選択し、**カスタム アプリケーション** テンプレートが選択されていることを確認します。
+1. **[新しいアプリケーション]** ページで、 **[アプリケーション テンプレート]** の下で **[カスタム アプリケーション]** が選択されていることを確認します。
 
-1. Azure IoT Central によって、選択したアプリケーション テンプレートに基づいて **アプリケーション名** が自動的に提案されます。 この名前をそのまま使用することも、独自のわかりやすいアプリケーション名を入力することもできます。
+1. Azure IoT Central によって、選択したアプリケーション テンプレートに基づいて **アプリケーション名** が自動的に提案されます。 *Contoso quickstart app* など、独自のアプリケーション名を入力します。
 
-1. また、Azure IoT Central は、アプリケーション名に基づいて、一意の **アプリケーション URL** プレフィックスも生成します。 この URL は、アプリケーションにアクセスするために使用します。 必要に応じて、この URL プレフィックスをもっと覚えやすいものに変更します。
+1. Azure IoT Central によって、アプリケーション名に基づいて、一意の **URL** プレフィックスも生成されます。 この URL は、アプリケーションにアクセスするために使用します。 必要に応じて、この URL プレフィックスをもっと覚えやすいものに変更します。 この URL は一意である必要があります。
 
     :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-custom.png" alt-text="Azure IoT Central の [アプリケーションの作成] ページ":::
 
-    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png" alt-text="Azure IoT Central の課金情報":::
+1. このクイックスタートでは、料金プランを **Standard 2** に設定されたままにしておきます。
 
-    > [!Tip]
-    > 前のページで **[カスタム アプリ]** を選択した場合は、 **[アプリケーション テンプレート]** ドロップダウンが表示されます。 ドロップダウンには、組織によってユーザーが使用できるようにされている他のテンプレートが表示される場合もあります。
+1. **[Azure サブスクリプション]** ドロップダウンでサブスクリプションを選択します。
 
-1. 7 日間の無料試用料金プラン、またはいずれかの標準料金プランを使用して、アプリケーションを作成することを選択します。
+1. **[場所]** ドロップダウンで最も近い場所を選択します。
 
-    - "*無料*" のプランを使用して作成したアプリケーションは 7 日間無料で、最大 5 台のデバイスがサポートされます。 期限切れになるまでは、いつでも標準の料金プランを使用するように変換できます。
-        > [!NOTE]
-        > "*無料*" プランを使用して作成されたアプリケーションは、Azure サブスクリプションを必要としないため、Azure portal の Azure サブスクリプション一覧にも表示されません。 無料のアプリは、IoT Central ポータルからのみ表示して管理することができます。          
-    - "*標準*" のプランを使用して作成したアプリケーションは、デバイス単位で課金されます。**Standard 0**、**Standard 1**、**Standard 2** のいずれかの価格プランから選択でき、どちらも最初の 2 つのデバイスが無料となります。 無料と標準の料金プランについては、[Azure IoT Central の価格に関するページ](https://azure.microsoft.com/pricing/details/iot-central/)で確認できます。 標準の料金プランを使用してアプリケーションを作成する場合は、"*ディレクトリ*"、"*Azure サブスクリプション*"、および "*場所*" を選択する必要があります。
-        - "*ディレクトリ*" は、アプリケーションを作成する Azure Active Directory です。 Azure Active Directory には、ユーザー ID、資格情報、およびその他の組織情報が含まれています。 Azure Active Directory を持っていない場合は、Azure サブスクリプションを作成するときに自動的に作成されます。
-        - "*Azure サブスクリプション*" を使用すると、Azure サービスのインスタンスを作成できます。 IoT Central では、リソースが自分のサブスクリプション内にプロビジョニングされます。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で無料で作成できます。 Azure サブスクリプションを作成したら、 **[新しいアプリケーション]** ページに戻ります。 新しいサブスクリプションが **[Azure サブスクリプション]** ドロップダウンに表示されるようになりました。
-        - "*場所*" は、アプリケーションを作成する [地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
-
-1. 使用条件を確認し、ページの下部にある **[作成]** を選択します。 数分後に、IoT Central アプリケーションを使用できるようになります。
+1. 使用条件を確認し、ページの下部にある **[作成]** を選択します。 数秒後に、IoT Central アプリケーションを使用できるようになります。
 
     :::image type="content" source="media/quick-deploy-iot-central/iotcentral-application.png" alt-text="Azure IoT Central アプリケーション":::
 
+## <a name="register-a-device"></a>デバイスの登録
+
+デバイスを IoT Central アプリケーションに接続するには、いくつかの接続情報が必要です。 この接続情報を取得する簡単な方法は、デバイスを登録することです。
+
+デバイスを登録するには:
+
+1. IoT Central で **[デバイス]** ページに移動し、 **[デバイスの作成]** を選択します。
+
+    :::image type="content" source="media/quick-deploy-iot-central/create-device.png" alt-text="IoT Central でのデバイスの作成を示すスクリーンショット。":::
+
+1. **[新しいデバイスを作成します]** ページで、既定値をそのまま使用して **[作成]** を選択します。
+
+1. デバイスの一覧にあるデバイス名をクリックします。
+
+    :::image type="content" source="media/quick-deploy-iot-central/device-name.png" alt-text="選択できる強調表示されたデバイス名を示すスクリーンショット。":::
+
+1. デバイスのページで、 **[接続]** を選択し、次に **[QR コード]** を選択します。
+
+    :::image type="content" source="media/quick-deploy-iot-central/device-registration.png" alt-text="スマートフォン アプリの接続に使用できる QR コードを示すスクリーンショット。":::
+
+このページは開いたままにしておきます。 次のセクションでは、スマートフォン アプリを使用してこの QR コードをスキャンし、IoT Central に接続します。
+
+## <a name="connect-your-device"></a>デバイスを接続する
+
+この記事では、すぐに始められるように、**IoT プラグ アンド プレイ** スマートフォン アプリを IoT デバイスとして使用します。 このアプリで、スマートフォンのセンサーから収集されたテレメトリを送信し、IoT Central から呼び出されたコマンドに応答して、プロパティ値を IoT Central に報告します。
+
+[!INCLUDE [iot-phoneapp-install](../../../includes/iot-phoneapp-install.md)]
+
+**IoT プラグ アンド プレイ** アプリを IoT Central アプリケーションに接続するには:
+
+1. スマートフォンで **IoT PnP** アプリを開きます。
+
+1. ようこそのページで、 **[Scan QR code]\(QR コードのスキャン\)** を選択します。 スマートフォンのカメラで QR コードをポイントします。 その後、接続が確立されるまで数秒間待ちます。
+
+1. アプリのテレメトリのページで、アプリから IoT Central に送信されているデータを確認できます。 ログのページで、デバイスが接続中であることと、いくつかの初期化メッセージを確認できます。
+
+IoT Central でスマートフォン アプリからのテレメトリを表示するには:
+
+1. IoT Central で、 **[デバイス]** ページに移動します。
+
+1. デバイスの一覧で、デバイス名をクリックし、 **[概要]** を選択します。
+
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentral-telemetry.png" alt-text="テレメトリのプロットが示されている概要ページのスクリーンショット。":::
+
+> [!TIP]
+> スマートフォン アプリからのデータは画面がオンのときにのみ送信されます。
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、IoT Central アプリケーションを作成しました。 IoT Central についての学習を続ける場合、推奨される次の手順は以下のとおりです。
+このクイックスタートでは、IoT Central アプリケーションを作成し、テレメトリを送信するデバイスを接続しました。 このクイックスタートでは、IoT Central に接続する IoT デバイスとしてスマートフォン アプリを使用しました。 IoT Central についての学習を続ける場合、推奨される次の手順は以下のとおりです。
 
 > [!div class="nextstepaction"]
-> [Azure IoT Central アプリケーションにシミュレートされたデバイスを追加する](./quick-create-simulated-device.md)
-
-デバイス開発者として、一部のコードについて詳しく調べる場合、推奨される次の手順は以下のとおりです。
-> [!div class="nextstepaction"]
-> [クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device.md)
+> [IoT Central アプリケーションにルールを追加する](./quick-configure-rules.md)

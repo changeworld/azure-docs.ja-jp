@@ -1,19 +1,19 @@
 ---
 title: マップでの描画ツールの対話式操作の種類とキーボード ショートカット | Microsoft Azure Maps
 description: Microsoft Azure Maps Web SDK でマウス、タッチ スクリーン、またはキーボードを使用して図形を描画および編集する方法
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: b609a21348222150faf5fb828f2cc38ca6658f5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07abbbdfa93bad5a5710e8167c6de67c35175b83
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92895819"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429750"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>描画ツール モジュールでの対話式操作の種類とキーボード ショートカット
 
@@ -140,6 +140,7 @@ ms.locfileid: "92895819"
 | `C` | 進行中の描画を完了し、描画モードをアイドル状態に設定します。 フォーカスは最上位のマップ要素に移動します。  |
 | `Escape` | 進行中の描画を取り消し、描画モードをアイドル状態に設定します。 フォーカスは最上位のマップ要素に移動します。  |
 | `F` | マウスがマップ上にある場合、ポイント、線、または多角形に座標を追加します。 クリック モードまたはハイブリッド モードのときにマップをクリックした場合と同等のアクションです。 このショートカットを使用すると、より正確で高速な描画を行うことができます。 一方の手でマウスの位置を決め、押すジェスチャでマウスを動かすことなく、もう一方の手でボタンを押すことができます。 |
+| `Delete` または `Backspace` | 編集モードで図形を選択した場合は、図形を削除します。  |
 
 ## <a name="next-steps"></a>次のステップ
 

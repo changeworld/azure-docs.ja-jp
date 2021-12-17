@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: c10963d28e0d2ecee73150e8b5af89cee96d28b2
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 0463ea748c4d82cc4c098ddd137a12c70f55afb2
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077008"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006073"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -20,13 +20,11 @@ ms.locfileid: "106077008"
 - Azure Migrate に関する[一般的な質問](resources-faq.md)
 - [Azure Migrate アプライアンス](common-questions-appliance.md)に関する質問
 - [サーバー移行](common-questions-server-migration.md) に関する質問
-- [Azure Migrate フォーラム](https://aka.ms/AzureMigrateForum)で質問の回答を示します。
-
+- Azure Migrate フォーラムで質問の回答を示します (https://social.msdn.microsoft.com/forums/azure/home?forum=AzureMigrate )。
 
 ## <a name="what-geographies-are-supported-for-discovery-and-assessment-with-azure-migrate"></a>Azure Migrate を使用した検出と評価は、どの地域でサポートされていますか?
 
 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
-
 
 ## <a name="how-many-servers-can-i-discover-with-an-appliance"></a>1 つのアプライアンスで検出できるサーバーの数を教えてください
 
@@ -35,17 +33,14 @@ ms.locfileid: "106077008"
 ## <a name="how-do-i-choose-the-assessment-type"></a>評価の種類を選択するにはどうすればよいですか?
 
 - Azure VM への移行のためにオンプレミスの [VMware](how-to-set-up-appliance-vmware.md) および [Hyper-V](how-to-set-up-appliance-hyper-v.md) 環境のサーバー、および [物理サーバー](how-to-set-up-appliance-physical.md)を評価する場合は、**Azure VM の評価** を使用します。 [詳細情報](concepts-assessment-calculation.md)
-
 - VMware 環境からオンプレミスの SQL サーバーを評価して、Azure SQL Database または Azure SQL Managed Instance に移行する場合は、評価の種類として **Azure SQL** を使用します。 [詳細情報](concepts-assessment-calculation.md)
-
+- VMware 環境から、IIS Web サーバーで実行されているオンプレミスの ASP.NET Web アプリを評価して、Azure App Service に移行する場合は、評価の種類として **Azure App Service** を使用します。 [詳細情報](concepts-assessment-calculation.md)
 - **Azure VMware Solution (AVS)** の評価を使用するのは、[Azure VMware Solution (AVS)](../azure-vmware/introduction.md) への移行のために、この評価の種類を使用してオンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価する場合です。 [詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
-
 - VMware マシンで共通グループを使用できるのは、両方の種類の評価を実行する場合のみです。 Azure Migrate で AVS の評価を初めて実行する場合は、VMware マシンの新しいグループを作成することをお勧めします。
- 
 
 ## <a name="why-is-performance-data-missing-for-someall-servers-in-my-azure-vm-andor-avs-assessment-report"></a>Azure VM や AVS の評価レポートに、一部またはすべてのサーバーに関するパフォーマンス データがないのはなぜですか?
 
-"パフォーマンス ベース" の評価では、Azure Migrate アプライアンスでオンプレミスサーバーのパフォーマンス データを収集できない場合、評価レポートのエクスポートに "PercentageOfCoresUtilizedMissing" または "PercentageOfMemoryUtilizedMissing" と表示されます。 次の点を確認してください。
+"パフォーマンス ベース" の評価では、Azure Migrate アプライアンスでオンプレミスサーバーのパフォーマンス データを収集できない場合、評価レポートのエクスポートに "PercentageOfCoresUtilizedMissing" または "PercentageOfMemoryUtilizedMissing" と表示されます。 次のことを確認してください。
 
 - 評価を作成している期間中にサーバーの電源がオンになっていたかどうか
 - メモリ カウンターのみ取得されず、Hyper-V 環境内のサーバーを評価しようとしていたかどうか。 このシナリオでは、サーバーの動的メモリを有効にし、評価を "再計算" して最新の変更内容を反映してください。 アプライアンスは、サーバーで動的メモリが有効になっている場合にのみ、Hyper-V 環境内のサーバーのメモリ使用率値を収集できます。
@@ -54,7 +49,6 @@ ms.locfileid: "106077008"
 
     > [!Note]
     > いずれかのパフォーマンス カウンターを取得できない場合、Azure Migrate: Server Assessment はオンプレミスの割り当てられたコアまたはメモリにフォールバックし、それに応じて VM サイズが推奨されます。
-
 
 ## <a name="why-is-performance-data-missing-for-someall-sql-instancesdatabases-in-my-azure-sql-assessment"></a>Azure SQL の評価に、一部またはすべての SQL インスタンスまたはデータベースに関するパフォーマンス データがないのはなぜですか?
 
@@ -67,47 +61,82 @@ ms.locfileid: "106077008"
 
 パフォーマンス カウンターのいずれかが欠落している場合、Azure SQL 評価により、そのインスタンスまたはデータベースに対して最小限の Azure SQL 構成が推奨されます。
 
+## <a name="why-confidence-rating-is-not-available-for-azure-app-service-assessments"></a>信頼度レーティングを Azure App Service 評価に使用できないのはなぜですか?
+
+Azure App Service 評価用のパフォーマンス データはキャプチャされないため、この評価の種類に信頼度レーティングは表示されません。 Azure App Service 評価では、評価計算の実行中に Web アプリの構成データが考慮されます。
+
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>評価の信頼度レーティングが低いのはなぜですか?
 
 信頼度評価は、評価を計算するために必要な[使用可能データ ポイント](./concepts-assessment-calculation.md#ratings)の割合に基づいて、"パフォーマンス ベース" の評価に対して計算されます。 評価の信頼度レーティングが低い理由は以下のとおりです。
 
 - 評価を作成するための期間用の環境をプロファイルしませんでした。 たとえば、パフォーマンス期間を 1 週間に設定した評価を作成する場合は、すべてのデータポイントが収集されるまで、検出を始めてから少なくとも 1 週間待つ必要があります。 その期間待つことができない場合は、パフォーマンス期間を短くし、評価を **再計算** してください。
- 
 - 評価期間内に一部または全部のサーバーのパフォーマンス データを評価で収集できません。 高い信頼度レーティングを得るために、次のことを確認してください。 
     - 評価期間中、サーバーの電源がオンになっている
     - ポート 443 でのアウトバウンド接続が許可されている
-    - Hyper-V サーバーで、動的メモリが有効になっている 
+    - Hyper-V サーバーで、動的メモリが有効になっている
     - Azure Migrate のエージェントの接続状態が "接続済み" である、また、最後のハートビートも確認します
     - Azure SQL 評価の検出された SQL インスタンスのブレードで、すべての SQL インスタンスの Azure Migrate の接続状態が "接続済み" である
 
     評価を **再計算** し、信頼性評価に最新の変更を反映してください。
 
 - Azure VM および AVS の評価では、検出の開始後に作成されたサーバーはほとんどありませんでした。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかのサーバーが環境内に作成されたとします。 この場合、新しいサーバーのパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。 [詳細情報](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
-
 - Azure SQL の評価の場合、検出が開始された後で、いくつかの SQL インスタンスまたはデータベースが作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの SQL インスタンスまたはデータベースが環境内に作成されたとします。 この場合、新しいサーバーのパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。 [詳細情報](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
 
-## <a name="-the-number-of-azure-vm-or-avs-assessments-on-the-discovery-and-assessment-tool-are-incorrect"></a>検出と評価ツールの Azure VM または AVS 評価の数が正しくない
+## <a name="why-is-my-ram-utilization-greater-than-100"></a>RAM 使用率が 100% を超えるのはなぜですか?
+
+設計上、プロビジョニングされた最大メモリが VM で必要な量よりも少ない場合、Hyper-V では、評価によってメモリ使用率に 100% を超える値が表示されます。
+
+## <a name="why-cant-i-see-all-azure-vm-families-in-the-azure-vm-assessment-properties"></a>Azure VM の評価のプロパティですべての Azure VM ファミリが表示されないのはなぜですか?
+
+これには、次の 2 つの理由が考えられます。
+- 特定のシリーズがサポートされていない Azure リージョンを選択した。 Azure VM の評価のプロパティで表示されるAzure VM ファミリは、選択した Azure の場所、ストレージの種類、予約インスタンスで VM シリーズを使用できるかどうかに基づきます。 
+- VM シリーズが評価でサポートされておらず、評価の考慮ロジックに含まれていない。 現在、B シリーズのバースト可能で高速化されたハイ パフォーマンスの SKU シリーズはサポートされていません。 VM シリーズを継続的に更新するよう努力しており、ここに記載されているシリーズが予定されています。 
+
+## <a name="the-number-of-azure-vm-or-avs-assessments-on-the-discovery-and-assessment-tool-are-incorrect"></a>検出と評価ツールの Azure VM または AVS 評価の数が正しくない
+
  これを修正するには、評価の合計数をクリックしてすべての評価に移動し、Azure VM または AVS の評価を計算し直します。 その後、検出と評価ツールには、その評価の種類の正しい数が表示されます。
 
-
 ## <a name="i-want-to-try-out-the-new-azure-sql-assessment"></a>新しい Azure SQL 評価を試してみたい
-VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 [このチュートリアル](tutorial-discover-vmware.md)で作業を開始します。 既存のプロジェクトでこの機能を試す場合は、こちらの記事の[前提条件](how-to-discover-sql-existing-project.md)を完了していることを確認してください。
+
+VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 [このチュートリアル](tutorial-discover-vmware.md)で作業を開始します。 既存のプロジェクトでこの機能を試す場合は、この記事の[前提条件](how-to-discover-sql-existing-project.md)を完了していることを確認してください。
+
+## <a name="i-want-to-try-out-the-new-azure-app-service-assessment"></a>新しい Azure App Service 評価を試してみたい
+
+VMware 環境で実行されている.NET Web アプリの検出と評価は、現在プレビュー段階にあります。 [このチュートリアル](tutorial-discover-vmware.md)で作業を開始します。 既存のプロジェクトでこの機能を試す場合は、こちらの記事の[前提条件](how-to-discover-sql-existing-project.md)を完了していることを確認してください。
 
 ## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Azure SQL の評価を作成するときに、一部のサーバーを見ることができません
 
-- Azure SQL の評価は、SQL インスタンスが検出された場所で実行されているサーバーに対してのみ実行できます。 評価したいサーバーと SQL インスタンスが表示されない場合は、検出が完了するまでしばらく待ってから、評価を作成してください。 
+- Azure SQL の評価は、SQL インスタンスが検出された場所で実行されているサーバーに対してのみ実行できます。 評価したいサーバーと SQL インスタンスが表示されない場合は、検出が完了するまでしばらく待ってから、評価を作成してください。
 - 評価の作成中に以前に作成したグループを表示できない場合は、VMware 以外のサーバーまたは SQL インスタンスが存在していないすべてのサーバーを、グループから削除してください。
 - Azure Migrate で Azure SQL の評価を初めて実行する場合は、サーバーの新しいグループを作成することをお勧めします。
 
+## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-app-service-assessment"></a>Azure App Service 評価を作成するときに、一部のサーバーを見ることができません
+
+- Azure App Service 評価は、Web サーバー ロールが検出された実行中のサーバーでのみ行うことができます。 評価したいサーバーが表示されない場合は、検出が完了するまでしばらく待ってから、評価を作成してください。
+- 評価の作成中に以前に作成したグループを表示できない場合は、VMware 以外のサーバーまたは Web アプリが存在していないすべてのサーバーを、グループから削除してください。
+- Azure Migrate で Azure App Service の評価を初めて実行する場合は、サーバーの新しいグループを作成することをお勧めします。
+
 ## <a name="i-want-to-understand-how-was-the-readiness-for-my-instance-computed"></a>インスタンスの対応状態がどのように計算されたかを理解したい
+
 SQL インスタンスの対応状態は、対象となる Azure SQL のデプロイの種類 (Azure SQL Database または Azure SQL Managed Instance) との機能の互換性チェックが実行された後で計算されます。 [詳細情報](./concepts-azure-sql-assessment-calculation.md#calculate-readiness)
 
+## <a name="i-want-to-understand-how-was-the-readiness-for-my-web-apps-is-computed"></a>Web アプリの対応状態がどのように計算されたかを理解したい
+
+Web アプリの対応状態は、Web アプリが Azure App Service で正常に実行されるかどうかを判断するための一連の技術チェックを実行して計算されます。 これらのチェックについては、[こちら](https://github.com/Azure/App-Service-Migration-Assistant/wiki/Readiness-Checks)に記載されています。
+
+## <a name="why-is-my-web-app-marked-as-ready-with-conditions-or-not-ready-in-my-azure-app-service-assessment"></a>Azure App Service 評価で、Web アプリが [条件付きで準備できています] または [準備ができていません] とマークされているのはなぜですか?
+
+これは、特定の Web アプリに対して 1 つ以上の技術チェックが失敗した場合に発生する可能性があります。 Web アプリの対応状態をクリックすると、失敗したチェックの詳細と修正方法を確認できます。
+
 ## <a name="why-is-the-readiness-for-all-my-sql-instances-marked-as-unknown"></a>すべての SQL インスタンスの対応状態が不明とマークされているのはなぜですか?
+
 検出が最近開始され、まだ進行中の場合は、一部またはすべての SQL インスタンスの対応状態が不明と表示されることがあります。 アプライアンスによって環境のプロファイリングが行われるまでしばらく待ってから、評価を再計算することをお勧めします。
-SQL の検出は 24 時間ごとに 1 回実行され、最新の構成変更が反映されるまで最大で 1 日待つ必要がある場合があります。 
+SQL の検出は 24 時間ごとに 1 回実行され、最新の構成変更が反映されるまで最大で 1 日待つ必要がある場合があります。
 
 ## <a name="why-is-the-readiness-for-some-of-my-sql-instances-marked-as-unknown"></a>一部の SQL インスタンスの対応状態が不明とマークされているのはなぜですか?
-これは、次の場合に発生する可能性があります。 
+
+これは、次の場合に発生する可能性があります。
+
 - 検出がまだ進行中です。 アプライアンスによって環境のプロファイリングが行われるまでしばらく待ってから、評価を再計算することをお勧めします。
 - 検出には、[Errors and notifications]\(エラーと通知\) ブレードで修正する必要がある問題がいくつかあります。
 
@@ -116,7 +145,9 @@ SQL の検出は 24 時間ごとに 1 回実行され、最新の構成変更が
 ## <a name="my-assessment-is-in-outdated-state"></a>評価が期限切れ状態になっています
 
 ### <a name="azure-vmavs-assessment"></a>Azure VM または AVS の評価
+
 評価されたグループ内のサーバーに対してオンプレミスでの変更があった場合、その評価は古い評価としてマークされます。 次のプロパティに 1 つ以上の変更があるため、評価は "古い" としてマークされている可能性があります。
+
 - プロセッサ コアの数
 - 割り当て済みメモリ
 - ブートの種類またはファームウェア
@@ -129,7 +160,9 @@ SQL の検出は 24 時間ごとに 1 回実行され、最新の構成変更が
 評価を **再計算** し、評価に最新の変更を反映してください。
 
 ### <a name="azure-sql-assessment"></a>Azure SQL の評価
+
 評価されたグループに含まれるオンプレミスの SQL インスタンスおよびデータベースに変更があった場合、その評価は **期限切れ** とマークされます。
+
 - SQL インスタンスがサーバーに追加された、またはサーバーから削除された
 - SQL データベースが SQL インスタンスに追加された、または削除された
 - SQL インスタンスのデータベースの合計サイズが、20% より大きく変化した
@@ -138,16 +171,20 @@ SQL の検出は 24 時間ごとに 1 回実行され、最新の構成変更が
 評価を **再計算** し、評価に最新の変更を反映してください。
 
 ## <a name="why-was-i-recommended-a-particular-target-deployment-type"></a>対象のデプロイで特定の種類が推奨されたのはなぜですか?
+
 Azure Migrate により、SQL インスタンスと互換性のある特定の Azure SQL のデプロイの種類が推奨されます。 Microsoft によって推奨されるターゲットに移行すると、移行の全体的な作業量が減ります。 この Azure SQL 構成 (SKU) は、SQL インスタンスと、それによって管理されるデータベースの、パフォーマンス特性を考慮した後で推奨されます。 該当する Azure SQL 構成が複数ある場合は、最もコスト効率の高いものを使用することをお勧めします。 [詳細情報](./concepts-azure-sql-assessment-calculation.md#calculate-sizing)
 
-## <a name="what-deployment-target-should-i-choose-if-my-sql-instance-is-ready-for-azure-sql-db-and-azure-sql-mi"></a>SQL インスタンスが Azure SQL DB と Azure SQL MI に対応している場合、どのデプロイ ターゲットを選択する必要がありますか? 
+## <a name="what-deployment-target-should-i-choose-if-my-sql-instance-is-ready-for-azure-sql-db-and-azure-sql-mi"></a>SQL インスタンスが Azure SQL DB と Azure SQL MI に対応している場合、どのデプロイ ターゲットを選択する必要がありますか?
+
 インスタンスが Azure SQL DB と Azure SQL MI の両方に対応している場合は、Azure SQL 構成の推定コストが低い方のターゲットのデプロイの種類を使用することをお勧めします。
 
 ## <a name="why-is-my-instance-marked-as-potentially-ready-for-azure-vm-in-my-azure-sql-assessment"></a>Azure SQL の評価でインスタンスが "Azure VM に対応している可能性あり" とマークされるのはなぜですか?
+
 このようになる可能性があるのは、評価のプロパティで選択されたターゲットのデプロイの種類が **推奨** であり、SQL インスタンスが Azure SQL Database と Azure SQL Managed Instance のどちらにも対応していない場合です。 ユーザーには、評価の種類を **Azure VM** にして Azure Migrate で評価を作成し、インスタンスが実行されているサーバーが Azure VM への移行に対応しているかどうかを判断することをお勧めします。
 ユーザーには、評価の種類を **Azure VM** にして Azure Migrate で評価を作成し、インスタンスが実行されているサーバーが Azure VM への移行に対応しているかどうかを代わりに判断することをお勧めします。
-- 現在、Azure Migrate での Azure VM の評価ではリフト アンド シフトが重視されており、SQL のインスタンスとデータベースを Azure 仮想マシンで実行した場合の特定のパフォーマンス メトリックは考慮されません。 
-- サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)。
+
+- 現在、Azure Migrate での Azure VM の評価ではリフト アンド シフトが重視されており、SQL のインスタンスとデータベースを Azure 仮想マシンで実行した場合の特定のパフォーマンス メトリックは考慮されません。
+- サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)。
 
 ## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>インスタンスが評価の一部であるにもかかわらず、評価に一部のデータベースが表示されません
 
@@ -155,15 +192,38 @@ Azure SQL の評価には、オンライン状態のデータベースのみが�
 
 ## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>SQL インスタンスを Azure VM で実行した場合と Azure SQL Database または Azure SQL Managed Instance で実行した場合のコストを比較するにはどうすればよいですか?
 
-**Azure SQL** の評価に使用したものと同じグループで、種類を **Azure VM** にして評価を作成できます。 その後、2 つのレポートを並べて比較することができます。 ただし、現在、Azure Migrate での Azure VM の評価ではリフトアンドシフトが重視されており、SQL のインスタンスとデータベースを Azure 仮想マシンで実行した場合の特定のパフォーマンス メトリックは考慮されません。 サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)。
+**Azure SQL** の評価に使用したものと同じグループで、種類を **Azure VM** にして評価を作成できます。 その後、2 つのレポートを並べて比較することができます。 ただし、現在、Azure Migrate での Azure VM の評価ではリフトアンドシフトが重視されており、SQL のインスタンスとデータベースを Azure 仮想マシンで実行した場合の特定のパフォーマンス メトリックは考慮されません。 サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)。
 
 ## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Azure SQL の評価でストレージ コストが 0 です
+
 Azure SQL Managed Instance の場合、最初の 32 GB/インスタンス/月のストレージに対するストレージ コストは追加されず、追加のストレージ コストが 32 GB 単位でストレージに追加されます。 [詳細情報](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Solution (AVS) の評価を作成しているときに一部のグループが表示されません
 
 - AVS の評価は、VMware マシンのみが含まれるグループに対して実行できます。 AVS の評価を実行する場合は、VMware 以外のマシンをグループから削除してください。
 - Azure Migrate で AVS の評価を初めて実行する場合は、VMware マシンの新しいグループを作成することをお勧めします。
+
+## <a name="queries-regarding-ultra-disks"></a>Ultra Disk に関するクエリ
+
+### <a name="can-i-migrate-my-disks-to-ultra-disk-using-azure-migrate"></a>Azure Migrate を使用してディスクを Ultra Disk に移行できますか?
+
+いいえ。 現時点では、Azure Migrate と Azure Site Recovery の両方で、Ultra Disk への移行はサポートされていません。 Ultra Disk をデプロイする手順については、[こちら](../virtual-machines/disks-enable-ultra-ssd.md?tabs=azure-portal#deploy-an-ultra-disk)を参照してください
+
+### <a name="why-are-the-provisioned-iops-and-throughput-in-my-ultra-disk-more-than-my-on-premises-iops-and-throughput"></a>Ultra Disk でプロビジョニングされた IOPS とスループットがオンプレミスの IOPS とスループットを超えるのはなぜですか?
+
+Ultra Disk は、[公式価格のページ](https://azure.microsoft.com/pricing/details/managed-disks/)に従い、プロビジョニングされたサイズ、プロビジョニングされた IOPS、プロビジョニングされたスループットに基づいて課金されます。 次に例を示します。
+
+200 GiB、20,000 IOPS、1,000 MB/秒の Ultra Disk をプロビジョニングし、20 時間後に削除した場合、256 GiB のディスク サイズ プランにマップされ、20 時間分の 256 GiB、20,000 IOPS、1,000 MB/秒に対して課金されます。
+
+プロビジョニングする IOPS = (検出されたスループット) *1024/256
+
+### <a name="does-the-ultra-disk-recommendation-consider-latency"></a>Ultra Disk の推奨事項では待機時間が考慮されますか?
+
+いいえ。現時点では、サイズ設定とコスト計算には、ディスク サイズ、合計スループット、合計 IOPS が使用されます。
+
+### <a name="i-can-see-m-series-supports-ultra-disk-but-in-my-assessment-where-ultra-disk-was-recommended-it-says-no-vm-found-for-this-location"></a>M シリーズで Ultra Disk がサポートされているのを確認できますが、Ultra Disk が推奨された評価では、"この場所に VM が見つかりません" と表示されますか?
+
+Ultra Disk をサポートするすべての VM のサイズが、Ultra Disk でサポートされているすべてのリージョンに存在とは限らないため、これは可能です。 ターゲット評価リージョンを変更して、このサーバーの VM サイズを取得します。
 
 ## <a name="i-cant-see-some-vm-types-and-sizes-in-azure-government"></a>Azure Government に一部の VM の種類およびサイズが表示されない
 
@@ -187,12 +247,14 @@ Azure Migrate アプライアンスは、オンプレミス環境の情報を継
 オンプレミスに合わせたサイズ設定では、Azure Migrate がサーバーのパフォーマンス データを考慮せずに評価を行います。 Azure Migrate は、オンプレミスの構成に基づいて VM のサイズを評価します。 パフォーマンスベースのサイズ設定では、使用率データに基づいてサイズが設定されます。
 
 たとえば、50% の CPU 使用率と 50% のメモリ使用率で 4 コアと 8 GB のメモリを備えたオンプレミスのサーバーの場合は、次のようになります。
+
 - オンプレミスのサイズ設定では、4 コアと 8 GB のメモリを備えた Azure VM SKU が推奨されます。
 - パフォーマンスベースのサイズ設定では、使用率が考慮されるため、2 コアと 4 GB のメモリを備えた VM SKU を使用することをお勧めします。
 
 同様に、ディスクのサイズ設定は、サイズ設定基準とストレージの種類に依存します。
-- サイズ設定基準がパフォーマンスベースで、ストレージの種類が自動の場合、Azure Migrate では、ターゲット ディスクの種類 (Standard または Premium) を識別するときに、ディスクの IOPS とスループットの値が考慮されます。
-- サイズ設定基準がパフォーマンスベースでストレージの種類が Premium の場合、Azure Migrate ではオンプレミスのディスクのサイズに基づき、Premium ディスク SKU が推奨されます。 オンプレミスに合わせたサイズ設定で、ストレージの種類が Standard または Premium である場合は、ディスクのサイズ設定に同じロジックが適用されます。
+
+- サイズ設定基準が "パフォーマンスベース" で、ストレージの種類が自動の場合、Azure Migrate では、ターゲット ディスクの種類 (Standard、Premium または Ultra Disk) を識別するときに、ディスクの IOPS とスループットの値が考慮されます。
+- サイズ設定基準が "オンプレミス" でストレージの種類が Premium の場合、Azure Migrate ではオンプレミスのディスクのサイズに基づき、Premium ディスク SKU が推奨されます。 オンプレミスに合わせたサイズ設定で、ストレージの種類が Standard、Premium または Ultra Disk である場合は、ディスクのサイズ設定に同じロジックが適用されます。
 
 ## <a name="does-performance-history-and-utilization-affect-sizing-in-an-azure-vm-assessment"></a>パフォーマンス履歴と使用率は、Azure VM の評価のサイズ設定に影響しますか?
 
@@ -215,17 +277,16 @@ Azure で評価を作成する場合は、設定されているパフォーマ�
 
 第 95 百分位値を使用すると、外れ値が無視されます。 Azure Migrate で第 99 百分位を使用している場合は、外れ値が含まれる可能性があります。 期間中のピーク使用率を選択し、外れ値を見逃さないようにするには、第 99 百分位を使用するように Azure Migrate を設定する必要があります。
 
-
 ## <a name="how-are-import-based-assessments-different-from-assessments-with-discovery-source-as-appliance"></a>インポートベースの評価は、探索ソースをアプライアンスとした評価とどのように異なりますか?
 
-インポートベースの Azure VM の評価は、CSV ファイルを使用して Azure Migrate にインポートされたマシンで作成された評価です。 インポートには、次の 4 つのフィールドのみが必須です。サーバー名、コア、メモリ、およびオペレーティングシステム。 以下のことに注目してみてください。 
- - ブートの種類のパラメーターについてのインポートベースの評価では、準備基準はあまり厳格ではありません。 ブートの種類が指定されていない場合は、マシンのブートの種類は BIOS であると見なされ、マシンは **条件付き対応** としてマークされません。 検出ソースをアプライアンスとした評価では、ブートの種類が見つからない場合、準備は **条件付き対応** としてマークされます。 準備の計算に差異が生じる理由は、インポートベースの評価が行われるときに、移行計画の初期段階でユーザーがマシンに関する情報を完備していないことがあるためです。 
+インポートベースの Azure VM の評価は、CSV ファイルを使用して Azure Migrate にインポートされたマシンで作成された評価です。 インポートには、次の 4 つのフィールドのみが必須です。サーバー名、コア、メモリ、およびオペレーティングシステム。 以下のことに注目してみてください。
+
+ - ブートの種類のパラメーターについてのインポートベースの評価では、準備基準はあまり厳格ではありません。 ブートの種類が指定されていない場合は、マシンのブートの種類は BIOS であると見なされ、マシンは **条件付き対応** としてマークされません。 検出ソースをアプライアンスとした評価では、ブートの種類が見つからない場合、準備は **条件付き対応** としてマークされます。 準備の計算に差異が生じる理由は、インポートベースの評価が行われるときに、移行計画の初期段階でユーザーがマシンに関する情報を完備していないことがあるためです。
  - パフォーマンスベースのインポート評価では、ユーザーから与えられた使用率の値を使用して、適切なサイズ計算を行います。 使用率の値はユーザーが指定するので、**パフォーマンス履歴** と **百分位の使用率** のオプションは、評価プロパティで無効になっています。 検出ソースをアプライアンスとした評価では、選択した百分位値はアプライアンスによって収集されたパフォーマンス データから取得されます。
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>インポートベースの AVS の評価で、推奨される移行ツールが不明とマークされるのはなぜですか?
 
-CSV ファイルを介してインポートされたマシンの場合、AVS の評価の既定の移行ツールは不明です。 ただし VMware マシンの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。 [詳細については、こちらを参照してください](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
-
+CSV ファイルを介してインポートされたマシンの場合、AVS の評価の既定の移行ツールは不明です。 ただし VMware マシンの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。 [詳細については、こちらを参照してください](../azure-vmware/install-vmware-hcx.md)。
 
 ## <a name="what-is-dependency-visualization"></a>依存関係の視覚化とは何ですか。
 
@@ -249,7 +310,6 @@ Data | ソース マシンのサーバー名、プロセス、アプリケーシ
 グラフ | 1 つのサーバーの依存関係マップを、1 時間から 30 日までの範囲で表示できます。 | 1 つのサーバーの依存関係マップ。<br/><br/> マップは 1 時間についてのみ表示できます。<br/><br/> サーバーのグループの依存関係マップ。<br/><br/> マップ ビューからグループのサーバーを追加および削除します。
 データのエクスポート | 過去 30 日間のデータを CSV 形式でダウンロードできます。 | データは Log Analytics で照会できます。
 
-
 ## <a name="do-i-need-to-deploy-the-appliance-for-agentless-dependency-analysis"></a>エージェントレスの依存関係分析用にアプライアンスをデプロイする必要はありますか。
 
 はい。[Azure Migrate アプライアンス](migrate-appliance.md)をデプロイする必要があります。
@@ -270,7 +330,7 @@ Data | ソース マシンのサーバー名、プロセス、アプリケーシ
 
 ## <a name="can-i-use-an-existing-workspace"></a>既存のワークスペースを使用できますか?
 
-はい。エージェントベースの依存関係の視覚化の場合、既存のワークスペースを移行プロジェクトにアタッチして依存関係の視覚化に利用できます。 
+はい。エージェントベースの依存関係の視覚化の場合、既存のワークスペースを移行プロジェクトにアタッチして依存関係の視覚化に利用できます。
 
 ## <a name="can-i-export-the-dependency-visualization-report"></a>依存関係の視覚化のレポートはエクスポートできますか。
 
@@ -282,7 +342,7 @@ Data | ソース マシンのサーバー名、プロセス、アプリケーシ
 
 - [依存関係エージェントをインストールするスクリプト](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent)を使用してください。
 - MMA の場合は、[コマンドラインまたはオートメーションを使用](../azure-monitor/agents/log-analytics-agent.md#installation-options)するか、[スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)を使用します。
-- スクリプトのほか、デプロイ ツール (Microsoft Endpoint Configuration Manager と [Intigua](https://www.intigua.com/intigua-for-azure-migration)) を利用して、エージェントをデプロイすることもできます。
+- スクリプトのほか、デプロイ ツール (Microsoft Endpoint Configuration Manager と Intigua) を利用して、エージェントをデプロイすることもできます。
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA ではどのようなオペレーティング システムがサポートされていますか?
 

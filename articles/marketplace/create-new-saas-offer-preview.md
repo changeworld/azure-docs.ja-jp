@@ -1,6 +1,6 @@
 ---
-title: Microsoft コマーシャル マーケットプレースで SaaS オファーの対象ユーザーを追加する方法
-description: Microsoft パートナーセンターでサービスとしてのソフトウェア (SaaS) オファーの対象ユーザーを追加する方法について説明します。
+title: Azure Marketplace 内で SaaS オファーのプレビュー対象ユーザーを追加する
+description: Azure Marketplace 内でサービスとしてのソフトウェア (SaaS) オファーのプレビュー対象ユーザーを追加します。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 041df9b77e85f09d2cf680773edc995c6288acaa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe42b5c7d9953a3e8bc15c4dbd351d3d2beb4d33
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746422"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614407"
 ---
-# <a name="how-to-add-a-preview-audience-for-your-saas-offer"></a>SaaS オファーのプレビュー対象ユーザーを追加する方法
+# <a name="add-a-preview-audience-for-a-saas-offer"></a>SaaS オファーのプレビュー対象ユーザーを追加する
 
 パートナー センターでサービスとしてのソフトウェア (SaaS) オファーを作成する際は、オファー リストを公開する前にレビューできる対象ユーザーを定義する必要があります。 この記事では、プレビュー対象ユーザーを構成する方法について説明します。
 
@@ -51,4 +51,4 @@ ms.locfileid: "96746422"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SaaS オファーの技術的な詳細を追加する方法](create-new-saas-offer-technical.md)
+- [SaaS オファーの技術的な詳細を追加する](create-new-saas-offer-technical.md)

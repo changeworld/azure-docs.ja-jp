@@ -3,21 +3,21 @@ title: チュートリアル:シングルページ アプリケーションを�
 titleSuffix: Azure AD B2C
 description: このチュートリアルでは、Azure portal を使用して Azure Active Directory B2C にシングルページ アプリケーション (SPA) を登録する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/19/2020
+ms.date: 09/20/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: d2eaf1dce432821dcfc693dc69dcf975a3d8be8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0297550d040d30f34db7768853cd43ffdc86155f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92503863"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043968"
 ---
 # <a name="tutorial-register-a-single-page-application-spa-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C にシングルページ アプリケーション (SPA) を登録する
 
@@ -34,12 +34,12 @@ Azure AD B2C により、シングルページ アプリケーションでユー
 
 これが **推奨される** 方法です。 有効期間が制限された更新トークンを使用すると、Safari ITP のような[最新のブラウザーの Cookie プライバシー制限](../active-directory/develop/reference-third-party-cookies-spas.md)にアプリケーションを適合させることができます。
 
-このフローを活用するために、アプリケーションで、これをサポートする認証ライブラリ ([MSAL.js 2.x](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) など) を使用できます。 
+このフローを活用するために、アプリケーションで、これをサポートする認証ライブラリ ([MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) など) を使用できます。 
 
 ![シングルページ アプリケーション認証](./media/tutorial-single-page-app/spa-app-auth.svg)
 
 ### <a name="implicit-grant-flow"></a>暗黙的な許可のフロー
-- [OAuth 2.0 暗黙的フロー](implicit-flow-single-page-application.md)。 [MSAL.js 1.x](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) のような一部のフレームワークでは、暗黙的な許可フローのみがサポートされます。 暗黙的な許可フローでは、**ID** と **アクセス** トークンを取得することがアプリケーションに許可されます。 認証コード フロートは異なり、暗黙的な許可フローでは **更新トークン** が返されません。 
+- [OAuth 2.0 暗黙的フロー](implicit-flow-single-page-application.md)。 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) などの一部のライブラリでは、暗黙的な許可フローのみがサポートされます。 暗黙的な許可フローでは、**ID** と **アクセス** トークンを取得することがアプリケーションに許可されます。 認証コード フロートは異なり、暗黙的な許可フローでは **更新トークン** が返されません。 
 
 ![シングルページ アプリケーション暗黙的](./media/tutorial-single-page-app/spa-app.svg)
 
@@ -54,7 +54,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="register-the-spa-application"></a>SPA アプリケーションの登録
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. アプリケーションの **名前** を入力します。 たとえば、*spaapp1* のように入力します。

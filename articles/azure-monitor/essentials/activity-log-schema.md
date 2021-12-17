@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
-ms.openlocfilehash: 721563fa140dfddbfb5984db8465187fb90018e5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 86c601cf70265ca6aec4ba620414fed709d756a0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049170"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297756"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 [Azure アクティビティ ログ](./platform-logs-overview.md)により、Azure で発生したサブスクリプションレベルのイベントの分析が得られます。 この記事では、アクティビティ ログのカテゴリとそれぞれのスキーマについて説明します。 
@@ -45,7 +45,7 @@ ms.locfileid: "102049170"
 | [Alert](#alert-category) | Azure アラートのアクティブ化のレコードが含まれます。 アラート イベントの例としては、"_CPU % on myVM has been over 80 for the past 5 minutes_" (myVM の CPU % が過去 5 分間で 80 を超えています) があります。|
 | [Autoscale](#autoscale-category) | サブスクリプションで定義したすべての自動スケーリング設定に基づいて、自動スケーリング エンジンの操作に関連するすべてのイベントのレコードが含まれます。 自動スケーリングの例としては、"_Autoscale scale up action failed_" (自動スケーリングのスケールアップ アクションが失敗しました) があります。 |
 | [推奨](#recommendation-category) | Azure Advisor からの推奨イベントが含まれます。 |
-| [Security](#security-category) | Azure Security Center によって生成されたアラートのレコードが含まれます。 セキュリティ イベントの例としては、"_Suspicious double extension file executed_" (疑わしい二重拡張子ファイルが実行されました) があります。 |
+| [Security](#security-category) | Microsoft Defender for Cloud によって生成されたアラートのレコードが含まれます。 セキュリティ イベントの例としては、"_Suspicious double extension file executed_" (疑わしい二重拡張子ファイルが実行されました) があります。 |
 | [ポリシー](#policy-category) | Azure Policy によって実行されるすべての効果アクション操作のレコードが含まれます。 ポリシー イベントの例としては、"_監査_" と "_拒否_" があります。 Policy によって実行されるすべてのアクションは、リソースに対する操作としてモデル化されます。 |
 
 ## <a name="administrative-category"></a>管理カテゴリ
@@ -517,7 +517,7 @@ ms.locfileid: "102049170"
 | subscriptionId |Azure サブスクリプション ID。 |
 
 ## <a name="security-category"></a>セキュリティ カテゴリ
-このカテゴリには、Azure Security Center によって生成されたアラートのレコードが含まれます。 このカテゴリで表示されるイベントの種類の例としては、"Suspicious double extension file executed" (拡張子が 2 つある不審なファイルが実行されました) などがあります。
+このカテゴリには、Microsoft Defender for Cloud によって生成されたアラートのレコードが含まれます。 このカテゴリで表示されるイベントの種類の例としては、"Suspicious double extension file executed" (拡張子が 2 つある不審なファイルが実行されました) などがあります。
 
 ### <a name="sample-event"></a>サンプル イベント
 ```json
@@ -591,12 +591,12 @@ ms.locfileid: "102049170"
 | id |セキュリティ イベントの一意リソース識別子。 |
 | level |イベントのレベル。 次のいずれかの値:"Critical"、"Error"、"Warning"、または "Informational" |
 | resourceGroupName |リソースのリソース グループの名前。 |
-| resourceProviderName |Azure Security Center のリソース プロバイダーの名前。 常に "Microsoft.Security"。 |
+| resourceProviderName |Microsoft Defender for Cloud のリソース プロバイダーの名前。 常に "Microsoft.Security"。 |
 | resourceType |セキュリティ イベントを生成したリソースの種類 (例: "Microsoft.Security/locations/alerts") |
 | resourceId |セキュリティ アラートのリソース ID。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
-| properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 これらのプロパティは、セキュリティ アラートの種類によって異なります。 Security Center から送られてくるアラートの種類について詳しくは、[こちらのページ](../../security-center/security-center-alerts-overview.md)をご覧ください。 |
+| properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 これらのプロパティは、セキュリティ アラートの種類によって異なります。 Defender for Cloud から送られてくるアラートの種類について詳しくは、[こちらのページ](../../security-center/security-center-alerts-overview.md)をご覧ください。 |
 | properties.Severity |重大度のレベル。 可能性のある値は、"High"、"Medium"、"Low" です。 |
 | status |操作の状態を説明する文字列。 いくつかの一般的な値は次のとおりです: Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus | 通常、セキュリティ イベントの場合は null です。 |
@@ -832,7 +832,7 @@ Azure アクティビティ ログをストレージ アカウントまたはイ
 
 次に、このスキーマを使用したイベントの例を示します。
 
-``` JSON
+```json
 {
     "records": [
         {

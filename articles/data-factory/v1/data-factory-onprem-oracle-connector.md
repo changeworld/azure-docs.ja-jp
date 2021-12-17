@@ -3,16 +3,17 @@ title: Data Factory を使用して Oracle との間でデータをコピーす�
 description: Azure Data Factory を使用してオンプレミスの Oracle データベースとの間でデータをコピーする方法について説明します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 02fc142a08176aa577250417c0e394218e832f34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 125b4549763d772d981416114025a86d9a730524
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387344"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259745"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 
@@ -30,11 +31,11 @@ ms.locfileid: "100387344"
 
 *Oracle データベースから* 以下のデータ ストアにデータをコピーできます。
 
-[!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sink](includes/data-factory-supported-sinks.md)]
 
 以下のデータ ストアから *Oracle データベースに* データをコピーできます。
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -122,7 +123,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 **例: ODP ドライバーを使用する**
 
-使用できる形式の詳細については、[.NET ODP 用の Oracle データ プロバイダー](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/)に関するページを参照してください。
+使用できる形式の詳細については、[.NET ODP 用の Oracle データ プロバイダー](https://www.oracle.com/in/database/technologies/appdev/dotnet/odp.html)に関するページを参照してください。
 
 ```json
 {

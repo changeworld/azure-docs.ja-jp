@@ -1,27 +1,20 @@
 ---
 title: Azure AD Connect:Azure AD が既にある場合 | Microsoft Docs
 description: このトピックでは、既存の Azure AD テナントがある場合の Connect の使い方を説明します。
-services: active-directory
-documentationcenter: ''
 author: billmath
-manager: daveba
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61785fbdf4fe3e79b2c36a5ffa6a9ccb43259666
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93420531"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272816"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect:既存のテナントがある場合
 Azure AD Connect の使い方に関するトピックではほとんどの場合、新しい Azure AD テナントで作業を開始すること、そしてユーザーまたはその他のオブジェクトがないことを想定しています。 しかし、ユーザーとその他のオブジェクトが存在する Azure AD テナントを既に使用していて Connect が必要になった場合は、このトピックを参照してください。
@@ -56,16 +49,18 @@ Connect で生成されたオブジェクトと属性値が同じであるオブ
 ### <a name="hard-match-vs-soft-match"></a>完全一致とあいまい一致
 Connect を新しくインストールする場合、完全一致とあいまい一致にはほとんど違いはありません。 違いが生じるのは、ディザスター リカバリーの際です。 Azure AD Connect でサーバーを失った場合、データを失うことなく新しいインスタンスをもう一度インストールできます。 初期インストール中に、sourceAnchor があるオブジェクトは Connect に送信されます。 その後、一致はクライアント (Azure AD Connect) によって評価されます。これは Azure AD で実行される場合よりもはるかに高速です。 完全一致は Connect と Azure AD の両方によって評価されます。 あいまい一致は Azure AD によってのみ評価されます。
 
+ Azure AD Connect でソフト マッチング機能を無効にする構成オプションを追加しました。 Microsoft では、クラウド専用アカウントを引き継ぐ目的で必要としない限り、ソフト マッチングは無効にすることをお客様に提案しています。 この[記事](/powershell/module/msonline/set-msoldirsyncfeature)では、ソフト マッチングを無効にする方法を紹介します。
+
 ### <a name="other-objects-than-users"></a>ユーザー以外のオブジェクト
 メールが有効なグループと連絡先については、proxyAddresses に基づいてあいまい一致を利用できます。 ユーザーについてのみ、(PowerShell を使用して) sourceAnchor/immutableID の更新のみを実行できます。このため、完全一致は適用されません。 メールが有効になっていないグループについては、あいまい一致も完全一致もサポートされていません。
 
 ### <a name="admin-role-considerations"></a>管理者ロールに関する考慮事項
 信頼されていないオンプレミス ユーザーが任意の管理者ロールを持つクラウド ユーザーと一致しないようにするために Azure AD Connect では、オンプレミス ユーザー オブジェクトは管理者ロールを持つオブジェクトには一致しません。 これは既定です。 この振る舞いを回避するには、次の操作を行います。
 
-1.  クラウドのみのユーザー オブジェクトからディレクトリ ロールを削除します。
-2.  失敗したユーザー同期の試行がある場合は、クラウド内の検疫されたオブジェクトの物理的な削除を行います。
-3.  同期をトリガーします。
-4.  一致が発生した後は、クラウド内のユーザー オブジェクトにオプションでディレクトリ ロールを追加します。
+1.    クラウドのみのユーザー オブジェクトからディレクトリ ロールを削除します。
+2.    失敗したユーザー同期の試行がある場合は、クラウド内の検疫されたオブジェクトの物理的な削除を行います。
+3.    同期をトリガーします。
+4.    一致が発生した後は、クラウド内のユーザー オブジェクトにオプションでディレクトリ ロールを追加します。
 
 
 

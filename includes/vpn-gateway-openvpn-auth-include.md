@@ -1,21 +1,16 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
-services: vpn-gateway
 author: cherylmc
+ms.author: cherylmc
+ms.date: 08/19/2021
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/07/2020
-ms.author: cherylmc
-ms.custom: include file
-ms.openlocfilehash: 21278eab6da23282465c807be103ab47271bbe60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ab8c7a050dea72162f3d4608649ce20c9933aea
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019780"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635757"
 ---
 > [!NOTE]
->* Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされています。
->* Azure AD 認証では、Windows 10 でのみ利用できる Azure VPN クライアントが必要になります。
+>Azure AD 認証は、OpenVPN® プロトコル接続でサポートされ、Azure VPN クライアントを必要とします。
 >

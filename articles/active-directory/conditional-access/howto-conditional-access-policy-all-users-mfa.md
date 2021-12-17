@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 11/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
-ms.reviewer: calebb, rogoya
+manager: karenhoran
+ms.reviewer: calebb, davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e6185c4bde71285fc163cae2af46f64ba052195
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 659201e61ac4b479e2ed412cd99a5a848befe3f7
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95994759"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715646"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>条件付きアクセス:すべてのユーザーに対して MFA を必須にする
 
@@ -24,7 +24,7 @@ Microsoft の ID セキュリティ責任者、Alex Weinert は彼のブログ�
 
 > 「重要なのはパスワードではなく、MFA です!」 私たちの研究によると、MFA を使用すると、アカウントは 99.9% 以上侵害されにくくなります。
 
-この記事のガイダンスは、組織が環境に適したバランスの MFA ポリシーを作成する際に役立ちます。
+この記事のガイダンスは、組織が環境に適した MFA ポリシーを作成する際に役立ちます。
 
 ## <a name="user-exclusions"></a>ユーザーの除外
 
@@ -39,9 +39,13 @@ Microsoft の ID セキュリティ責任者、Alex Weinert は彼のブログ�
 
 組織には、使用中のクラウド アプリケーションが多数あります。 これらのアプリケーションすべてで、同等のセキュリティが必要なわけではありません。 たとえば、給与と勤怠のアプリケーションには MFA が必要でも、カフェのアプリケーションでは必要ない可能性があります。 管理者は、ポリシーから特定のアプリケーションを除外することを選択できます。
 
+## <a name="template-deployment"></a>テンプレートのデプロイ
+
+組織は、このポリシーをデプロイするのに以下に示す手順を使用するか、[条件付きアクセス テンプレート (プレビュー) ](concept-conditional-access-policy-common.md#conditional-access-templates-preview)を使用するかを選ぶことができます。 
+
 ## <a name="create-a-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
-次の手順では、すべてのユーザーに対して多要素認証の実行を必須にする条件付きアクセス ポリシーを作成します。
+次の手順は、すべてのユーザーに対して多要素認証の実行を必須にする条件付きアクセス ポリシーを作成するのに役立ちます。
 
 1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
@@ -53,11 +57,11 @@ Microsoft の ID セキュリティ責任者、Alex Weinert は彼のブログ�
    1. **[Done]** を選択します。
 1. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)**  >  **[Include]\(含める\)** で、 **[すべてのクラウド アプリ]** を選択します。
    1. **[除外]** で、多要素認証を必要としないアプリケーションを選択します。
-1. **[条件]**  >  **[クライアント アプリ (プレビュー)]** の **[このポリシーを適用するクライアント アプリを選択します]** で、すべてを既定値が選択された状態のままにして、 **[完了]** を選択します。
 1. **[アクセス制御]**  >  **[許可]** で、 **[アクセス権の付与]** 、 **[Require multi-factor authentication]\(多要素認証を要求する\)** の順に選択し、 **[Select]\(選択する\)** を選択します。
-1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
+1. 設定を確認し、 **[ポリシーの有効化]** を **[レポート専用]** に設定します。
 1. **[作成]** を選択して、ポリシーを作成および有効化します。
 
+管理者は、[[レポート専用モード]](howto-conditional-access-insights-reporting.md) を使用して設定を確認した後、 **[ポリシーの有効化]** トグルを **[レポートのみ]** から **[オン]** に移動できます。
 ### <a name="named-locations"></a>ネームド ロケーション
 
 組織では、条件付きアクセス ポリシーに「**ネームド ロケーション**」と呼ばれる既知のネットワークの場所を組み込むことができます。 こうしたネームド ロケーションには、メイン オフィスの場所のような信頼できる IPv4 ネットワークを含めることができます。 ネームド ロケーションの構成の詳細については、「[Azure Active Directory 条件付きアクセスの場所の条件の概要](location-condition.md)」の記事を参照してください。
@@ -75,7 +79,5 @@ Microsoft の ID セキュリティ責任者、Alex Weinert は彼のブログ�
 ## <a name="next-steps"></a>次のステップ
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
-
-[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-insights-reporting.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)

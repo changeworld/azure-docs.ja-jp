@@ -2,26 +2,26 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/21/2021
+ms.date: 09/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 5fc36e327a9530105182f0a23b3ef22ab324e01c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 578ef03a4f43e54a91af3b24ce77f6e0ac0674cf
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803616"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123646297"
 ---
+- [必要に応じて有効にする] Cosmos DB アカウントでは、カスタマー マネージド キーを使用して保存データを暗号化する必要がある
+- [必要に応じて有効にする] Azure Machine Learning ワークスペースは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある
+- [必要に応じて有効にする] Cognitive Services アカウントでカスタマー マネージド キー (CMK) によるデータ暗号化を有効にする必要がある
+- [必要に応じて有効にする] コンテナー レジストリは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある
 - ファイアウォールと仮想ネットワークの構成があるストレージ アカウントへのアクセスを制限する必要がある
 - Automation アカウント変数は、暗号化する必要がある
 - Azure Cache for Redis は仮想ネットワーク内に存在しなければならない
-- Azure Cosmos DB アカウントでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある
-- Azure Machine Learning ワークスペースは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある
 - Azure Spring Cloud でネットワークの挿入を使用する必要がある
-- Cognitive Services アカウントでカスタマー マネージド キー (CMK) によるデータ暗号化を有効にする必要がある
 - コンテナーの CPU とメモリの制限を強制する必要がある
 - コンテナー イメージは信頼されたレジストリからのみデプロイする必要がある
-- コンテナー レジストリは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある
 - 特権エスカレーションを含むコンテナーは避ける必要がある
 - 機密性の高いホストの名前空間を共有するコンテナーは避ける必要がある
 - コンテナーは許可されたポートでのみリッスンする必要がある

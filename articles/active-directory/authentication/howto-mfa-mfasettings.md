@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 08/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9d2c42a664c8d8a591d95a312cdf1c0034c4d031
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 22dd9bdfc8f26a46c7cd5989851fb748955732fe
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305465"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773818"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication の設定を構成する
 
@@ -61,7 +61,7 @@ Azure portal では、次の Azure AD Multi-Factor Authentication 設定を使�
 
 ### <a name="block-a-user"></a>ユーザーのブロック
 
-ユーザーをブロックするには、次の手順を実行します。
+ユーザーをブロックするには、次の手順を実行するか、[この短いビデオ](https://www.youtube.com/watch?v=WdeE1On4S1o&feature=youtu.be)をご覧ください
 
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[ユーザーのブロック/ブロック解除]** の順に移動します。
 1. **[追加]** を選択してユーザーをブロックします。
@@ -98,7 +98,11 @@ Azure portal では、次の Azure AD Multi-Factor Authentication 設定を使�
 
 ### <a name="view-fraud-reports"></a>不正アクセスの通報を表示する
 
-**[Azure Active Directory]**  >  **[サインイン]**  >  **[認証の詳細]** の順に選択します。 これで、不正アクセス レポートは、標準 Azure AD サインイン レポートに含まれます。ここには、MFA が拒否され、不正アクセスのコードが入力されたことを示す **"結果の詳細"** が記載されます。
+ユーザーが不正行為を通報すると、そのイベントはサインイン レポート (ユーザーによって拒否されたサインインとして) および監査ログに表示されます。
+
+- サインイン レポートで不正アクセス レポートを確認するには、 **[Azure Active Directory]**  >  **[サインイン]**  >  **[認証の詳細]** の順にクリックします。 不正アクセス レポートは標準 Azure AD サインイン レポートに含まれており、 **[結果の詳細]** に **[MFA denied, Fraud Code Entered]\(MFA が拒否されました。不正なコードが入力されました\)** として表示されます。
+
+- 監査ログで不正アクセス レポートを確認するには、 **[Azure Active Directory]**  >  **[監査ログ]** の順にクリックします。 不正アクセス レポートは、不正アクセス レポートのテナント レベルの設定に基づいて、 **[Fraud reported - user is blocked for MFA]\(不正アクセスが通報されました - ユーザーは MFA に対してブロックされました\)** または **[Fraud reported - no action taken]\(不正アクセスが通報されました - アクションは実行されませんでした\)** のアクティビティの種類の下に表示されます。
  
 ## <a name="notifications"></a>通知
 
@@ -147,14 +151,12 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 
 ユーザーが MFA プロンプトの電話を受ける場合は、発信者番号や音声案内など、ユーザーのエクスペリエンスを構成できます。
 
-米国では、MFA 発信者番号を構成していない場合、Microsoft からの音声通話は次の番号から発信されます。 スパム フィルターを使用する場合は、必ずこれらの番号を除外してください。
+北米では、MFA 発信者番号を構成していない場合、Microsoft からの音声通話は次の番号から発信されます。 スパム フィルターを使用する場合は、必ずこれらの番号を除外してください。
 
-* *+1 (866) 539 4191*
 * *+1 (855) 330 8653*
-* *+1 (877) 668 6536*
 
 > [!NOTE]
-> 公衆電話網経由で Azure AD Multi-Factor Authentication の電話がかけられた場合、発信者番号をサポートしていない通信事業者を通じてルーティングされることがあります。 このため、発信者番号は、Azure AD Multi-Factor Authentication が常にそれを送信しているにもかかわらず保証されません。 このことは、Azure AD Multi-Factor Authentication から提供される電話とテキスト メッセージの両方に当てはまります。 テキスト メッセージが Azure AD Multi-Factor Authentication からのものかどうかを確認する必要がある場合、[SMS メッセージを送る際に使用される SMS ショート コード](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)に関するページを参照してください。
+> 公衆電話網経由で Azure AD Multi-Factor Authentication の電話がかけられた場合、発信者番号をサポートしていない通信事業者を通じてルーティングされることがあります。 このため、発信者番号は、Azure AD Multi-Factor Authentication が常にそれを送信しているにもかかわらず保証されません。 このことは、Azure AD Multi-Factor Authentication から提供される電話とテキスト メッセージの両方に当てはまります。 テキスト メッセージが Azure AD Multi-Factor Authentication からのものかどうかを確認する必要がある場合、[SMS メッセージを送る際に使用される SMS ショート コード](multi-factor-authentication-faq.yml#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users-)に関するページを参照してください。
 
 独自の発信者番号を構成するには、次の手順を実行します。
 
@@ -309,7 +311,7 @@ Azure AD Multi-Factor Authentication の "_信頼できる IP_" 機能を使用�
 
 ## <a name="verification-methods"></a>検証方法
 
-サービス設定ポータルでユーザーが使用できる検証方法を選択できます。 ユーザーは、自分のアカウントを Azure AD Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、[アカウントへの多要素認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)を参照してください。
+サービス設定ポータルでユーザーが使用できる検証方法を選択できます。 ユーザーは、自分のアカウントを Azure AD Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、[アカウントへの多要素認証の設定](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)を参照してください。
 
 次の検証方法を使用できます。
 
@@ -339,7 +341,7 @@ _[Multi-Factor Authentication を記憶する]_ 機能を使用すると、ユ�
 > [!IMPORTANT]
 > アカウントまたはデバイスが侵害された場合、信頼済みデバイスに対する Multi-Factor Authentication の記憶はセキュリティに影響する可能性があります。 企業アカウントが侵害された場合や、信頼済みデバイスを紛失したり盗難に遭ったりした場合は、[MFA セッションを取り消す](howto-mfa-userdevicesettings.md)必要があります。
 >
-> 復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは多要素認証を再度実行する必要があります。 [多要素認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)に関する記事に記載されているように、各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
+> 復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは多要素認証を再度実行する必要があります。 [多要素認証設定の管理](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7#turn-on-two-factor-verification-prompts-on-a-trusted-device)に関する記事に記載されているように、各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
 
 ### <a name="how-the-feature-works"></a>機能のしくみ
 
@@ -347,7 +349,7 @@ Multi-Factor Authentication の記憶機能では、ブラウザーでユーザ�
 
 ブラウザーではないアプリケーションでは、アプリで先進認証がサポートされているかどうかに関係なく、 **[今後 X 日間はこのメッセージを表示しない]** オプションは表示されません。 これらのアプリでは、新しいアクセス トークンが 1 時間おきに支給される _更新トークン_ が使用されます。 更新トークンの検証時に、前回の多要素認証が設定されている日数内に実行されたことが Azure AD によって確認されます。
 
-この機能を使用すると、Web アプリでの認証回数 (通常は毎回プロンプトが表示される) が減ります。 より短い期間が構成されている場合、この機能では、先進認証クライアントの認証の回数 (通常は 90 日ごとにプロンプトが表示される) が増える場合があります。 条件付きアクセス ポリシーと組み合わされた場合の認証数を増やすこともできます。
+この機能を使用すると、Web アプリでの認証回数 (通常は毎回プロンプトが表示される) が減ります。 より短い期間が構成されている場合、この機能では、先進認証クライアントの認証の回数 (通常は 180 日ごとにプロンプトが表示される) が増える場合があります。 条件付きアクセス ポリシーと組み合わされた場合の認証数を増やすこともできます。
 
 > [!IMPORTANT]
 > ユーザーが Azure Multi-Factor Authentication Server またはサードパーティの多要素認証ソリューションを介して AD FS の多要素認証を行う場合、 **[Multi-Factor Authentication を記憶する]** 機能は、AD FS の **[サインインしたままにする]** 機能とは互換性がありません。

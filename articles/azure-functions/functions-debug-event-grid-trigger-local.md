@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: be05d237d2799404c3fd8b5733464e23eeb49aa3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 240b721d71ef53ad6f43f076f1d5db0e29b556a4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94833063"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970911"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Functions の Event Grid トリガーのローカル デバッグ
 
@@ -19,7 +19,7 @@ ms.locfileid: "94833063"
 ## <a name="prerequisites"></a>前提条件
 
 - 既存の関数アプリを作成または使用する
-- 既存のストレージ アカウントを作成または使用する
+- 既存のストレージ アカウントを作成または使用します。 Event Grid 通知サブスクリプションは、`BlobStorage`、`StorageV2`、または [Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) に対して Azure Storage アカウントで設定できます。
 - [ngrok](https://ngrok.com/) をダウンロードして、Azure でローカル関数を呼び出せるようにする
 
 ## <a name="create-a-new-function"></a>新しい関数を作成する
@@ -41,59 +41,7 @@ Visual Studio で関数アプリを開き、ソリューション エクスプ�
 
 次に、**F5 キーを押して** デバッグ セッションを開始します。
 
-## <a name="allow-azure-to-call-your-local-function"></a>Azure でローカル関数を呼び出せるようにする
-
-マシン上でデバッグ中の関数を中断するには、Azure でクラウドからローカル関数と通信する方法を有効にする必要があります。
-
-[ngrok](https://ngrok.com/) ユーティリティでは、マシンで実行されている関数を Azure で呼び出すことができます。 次のコマンドを使用して *ngrok* を起動します。
-
-```bash
-ngrok http -host-header=localhost 7071
-```
-ユーティリティがセットアップされると、次のスクリーンショットのようなコマンド ウィンドウが表示されます。
-
-!["ngrok" ユーティリティを起動した後のコマンド プロンプトを示すスクリーンショット。](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
-
-*ngrok* が実行されたときに生成される **HTTPS** URL をコピーします。 この値は、Event Grid イベント エンドポイントを構成するときに使用されます。
-
-## <a name="add-a-storage-event"></a>ストレージ イベントを追加する
-
-Azure portal を開き、ストレージ アカウントに移動し、 **[イベント]** オプションをクリックします。
-
-![ストレージ アカウント イベントを追加する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
-
-*[イベント]* ウィンドウで、 **[イベント サブスクリプション]** ボタンをクリックします。 *[イベント サブスクリプション]* ウィンドウで、 *[エンドポイントの種類]* ドロップダウンを選択し、 **[Web Hook]** を選択します。
-
-![サブスクリプションの種類を選択する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
-
-エンドポイントの種類が構成されたら、 **[エンドポイントを選択する]** をクリックしてエンドポイント値を構成します。
-
-![エンドポイントの種類を選択する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
-
-*[サブスクライバー エンドポイント]* の値は 3 つの異なる値から構成されます。 プレフィックスは、*ngrok* によって生成される HTTPS URL です。 URL の残りの部分は、関数コード ファイルにある関数名から取得され、末尾に関数名が付加されます。 関数コード ファイルの URL 以降では、*ngrok* URL が `http://localhost:7071` に置き換えられ、関数名が `{functionname}` に置き換えられます。
-
-次のスクリーンショットは、最後の URL がどのように表示されるかを示しています。
-
-![エンドポイントの選択](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint-selection.png)
-
-適切な値を入力したら、 **[選択内容の確認]** をクリックします。
-
-> [!IMPORTANT]
-> *ngrok* を起動するたびに、HTTPS URL が再生成され、値が変更されます。 そのため、*ngrok* を使用して Azure に関数を公開するたびに、新しいイベント サブスクリプションを作成する必要があります。
-
-## <a name="upload-a-file"></a>ファイルをアップロードする
-
-これで、ストレージ アカウントにファイルをアップロードして、ローカル関数で処理する Event Grid イベントをトリガーすることができます。 
-
-[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を開いて、ストレージ アカウントに接続します。 
-
-- **BLOB コンテナー** を展開します 
-- 右クリックし、 **[BLOB コンテナーの作成]** を選択します。
-- コンテナーに **test** という名前を付けます
-- *test* コンテナーを選択します
-- **[アップロード]** ボタンをクリックします
-- **[ファイルのアップロード]** をクリックします
-- ファイルを選択して、BLOB コンテナーにアップロードしま
+[!INCLUDE [functions-event-grid-local-dev](../../includes/functions-event-grid-local-dev.md)]
 
 ## <a name="debug-the-function"></a>関数をデバッグする
 

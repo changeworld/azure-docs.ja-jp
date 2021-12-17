@@ -8,16 +8,16 @@ ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: troubleshooting
-author: dalechen
-ms.author: ninarn
-ms.reviewer: sstein, vanto
+author: ramakoni1
+ms.author: ramakoni
+ms.reviewer: mathoma, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 9f2e755047910aefa89c2f187cda956aca608b98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 054e115779736220243dd2325b89f52b4a616685
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99093759"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413647"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>SQL Database と SQL Managed Instance での一時的な接続エラーのトラブルシューティング
 
@@ -454,3 +454,8 @@ public bool IsTransient(Exception ex)
 [step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 
 [step-4-connect-resiliently-to-sql-with-php-p42h]: /sql/connect/php/step-4-connect-resiliently-to-sql-with-php
+
+## <a name="see-also"></a>関連項目
+
+- [Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング](troubleshoot-common-errors-issues.md)
+- [Azure SQL Database および Azure SQL Managed Instance のトランザクション エラーのトラブルシューティング](troubleshoot-transaction-log-errors-issues.md)

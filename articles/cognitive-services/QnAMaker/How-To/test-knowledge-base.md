@@ -4,21 +4,20 @@ description: QnA Maker のナレッジ ベースをテストすることは、�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: afdb286cf03fdc0f49a9428e0e2a0588df46cc14
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96353155"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017024"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>QnA Maker のナレッジ ベースをテストする
 
 QnA Maker のナレッジ ベースをテストすることは、回答の正確性を高めるという反復的なプロセスの重要な要素です。 ナレッジ ベースのテストは、編集機能も備えた強化された会話インターフェイスを通じて行うことができます。
 
 ## <a name="interactively-test-in-qna-maker-portal"></a>QnA Maker ポータルで対話形式でテストする
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 1. **[My knowledge bases]\(マイ ナレッジ ベース\)** ページで目的のナレッジ ベースの名前を選択して、ナレッジ ベースにアクセスします。
 1. スライド式の [Test]\(テスト\) パネルにアクセスするには、アプリケーションの上部パネルにある **[Test]\(テスト\)** を選択します。
@@ -65,57 +64,6 @@ QnA Maker のナレッジ ベースをテストすることは、回答の正確
 
 > [!NOTE]
 > ナレッジ ベースに対するすべての編集は、**[Save and Train]\(保存してトレーニング\)** ボタンを押したときにのみ保存されます。
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
-
-1. **[My knowledge bases]\(マイ ナレッジ ベース\)** ページで目的のナレッジ ベースの名前を選択して、ナレッジ ベースにアクセスします。
-1. スライド式の [Test]\(テスト\) パネルにアクセスするには、アプリケーションの上部パネルにある **[Test]\(テスト\)** を選択します。 
-1. 上部に **[Display short answer]\(簡単な回答を表示する\)** チェックボックスが表示されます。これは、既定で選択されています。 このオプションは、テスト パネルで MRC ベースの回答スパンの検出を有効にするために使用されます。 
-1. テキスト ボックスにクエリを入力して Enter キーを押します。 
-1. すべてのクエリに対し、ナレッジ ベース内で、正確な回答または簡単な回答が回答文の中に存在しており、最も一致する回答文に沿っている場合、ご自分のクエリに対する簡単な回答も得ることができます。
-    ![マネージドが有効な [テスト] ウィンドウ](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
-1. **[Display short answer]\(簡単な回答を表示する\)** の選択を解除する場合、最も一致した回答文のみが、ナレッジ ベースから応答として返されます。
-
-### <a name="clear-test-panel"></a>テスト パネルのクリア
-
-入力したすべてのテスト クエリとその結果を テスト コンソールからクリアするには、[テスト] パネルの左上隅の **[やり直す]** を選択します。
-
-### <a name="close-test-panel"></a>テスト パネルを閉じる
-
-[テスト] パネルを閉じるには、**[テスト]** ボタンをもう一度選択します。 [テスト] パネルが開いている間は、ナレッジ ベースのコンテンツを編集できません。
-
-### <a name="inspect-score"></a>スコアの検査
-
-テスト結果の詳細は、[検査] パネルで調べることができます。
-
-1.  回答の詳細を表示するには、スライド式の [テスト] パネルを開いた状態で **[検査]** を選択します。
-
-    ![回答の検査 (プレビュー)](../media/qnamaker-how-to-test-knowledge-bases/inspect-with-managed.png)
-
-2.  [検査] パネルが表示されます。 このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。
-3. パネルには、回答文の信頼度スコアと、検出された回答スパンのスコアが示されます。
-
-### <a name="correct-the-top-scoring-answer"></a>上位スコアの回答を修正する
-
-最もスコアの高い回答に誤りがある場合は、正しい回答を一覧から選び、**[Save and Train]\(保存してトレーニング\)** を選択します。
-
-![上位スコアの回答を修正する (プレビュー)](../media/qnamaker-how-to-test-knowledge-bases/choose-answer-managed.png)
-
-### <a name="add-alternate-questions"></a>代わりの質問を追加する
-
-ある特定の回答に対して、代わりの質問形式を追加することができます。 テキスト ボックスに代わりの回答を入力し、Enter キーを押してそれらを追加します。 **[Save and Train]\(保存してトレーニング\)** を選択して更新内容を保存します。
-
-![代わりの質問を追加する (プレビュー)](../media/qnamaker-how-to-test-knowledge-bases/add-alternate-question-with-managed.png)
-
-### <a name="add-a-new-answer"></a>新しい回答の追加
-
-一致した既存の回答に誤りがあった場合や、ナレッジ ベースに回答が存在しない (適切な一致が KB に見つからない) 場合は、新しい回答を追加することができます。
-
-回答一覧の一番下で、テキスト ボックスに新しい回答を入力し、Enter を押すと追加できます。
-
-その回答を保持するには、**[Save and Train]\(保存してトレーニング\)** を選択してください。 これでナレッジ ベースには、質問とその回答のペアが新たに追加されたことになります。
-
----
 
 ### <a name="test-the-published-knowledge-base"></a>公開ナレッジ ベースをテストする
 

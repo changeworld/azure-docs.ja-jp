@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 機械学習パイプラインの実行時にエラーが発生した場合のトラブルシューティング方法。 陥りやすい落とし穴と、リモートからの実行前および実行中にスクリプトをデバッグするためのヒント。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: lobrien
 ms.author: laobri
-ms.date: 10/22/2020
+ms.date: 10/21/2021
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 195942d1787cdef51ee480fa5c5595db99bc7c78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d25bcabc1c3108ed1899110a61da22551262bf8
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102522089"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559126"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>機械学習パイプラインのトラブルシューティング
 
@@ -192,8 +192,8 @@ parallelrun_step = ParallelRunStep(
 
 | ライブラリ                    | Type   | 例                                                          | 宛先                                  | リソース                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Machine Learning SDK | メトリック | `run.log(name, val)`                                             | Azure Machine Learning ポータル UI             | [実験を追跡する方法](how-to-track-experiments.md)<br>[azureml.core.Run クラス](/python/api/azureml-core/azureml.core.run%28class%29)                                                                                                                                                 |
-| Python の印刷とログ    | ログ    | `print(val)`<br>`logging.info(message)`                          | ドライバー ログ、Azure Machine Learning デザイナー | [実験を追跡する方法](how-to-track-experiments.md)<br><br>[Python のログ](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| Azure Machine Learning SDK | メトリック | `run.log(name, val)`                                             | Azure Machine Learning ポータル UI             | [実験を追跡する方法](how-to-log-view-metrics.md)<br>[azureml.core.Run クラス](/python/api/azureml-core/azureml.core.run%28class%29)                                                                                                                                                 |
+| Python の印刷とログ    | ログ    | `print(val)`<br>`logging.info(message)`                          | ドライバー ログ、Azure Machine Learning デザイナー | [実験を追跡する方法](how-to-log-view-metrics.md)<br><br>[Python のログ](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | ログ    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights - トレース                | [Application Insights でパイプラインをデバッグする](./how-to-log-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor エクスポーター](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python ログのクックブック](https://docs.python.org/3/howto/logging-cookbook.html) |
 
 #### <a name="logging-options-example"></a>ログ オプションの例
@@ -238,10 +238,10 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ### <a name="get-logs-from-the-authoring-page"></a>作成ページからログを取得する
 
-パイプラインの実行を送信し、作成ページを表示したままにしておくと、各モジュールの実行が終了した時点で、モジュールごとに生成されたログ ファイルを確認できます。
+パイプライン実行を送信し、作成ページを表示したままにしておくと、各コンポーネントの実行が終了した時点で、ログ ファイルがコンポーネントごとに生成されるのを確認できます。
 
-1. 作成キャンバスでの実行が終了したモジュールを選択します。
-1. モジュールの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブにアクセスします。
+1. 作成キャンバスでの実行が終了したコンポーネントを選択します。
+1. コンポーネントの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブに移動します。
 1. 右ペインを展開して **70_driver_log.txt** を選択し、ブラウザーにファイルを表示します。 また、ログをローカルにダウンロードすることもできます。
 
     ![デザイナー上に展開された出力ペイン](./media/how-to-debug-pipelines/designer-logs.png)
@@ -254,8 +254,8 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
     ![パイプラインの実行ページ](./media/how-to-debug-pipelines/designer-pipelines.png)
 
-1. プレビュー ペインでモジュールを選択します。
-1. モジュールの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブにアクセスします。
+1. プレビュー ペインでコンポーネントを選択します。
+1. コンポーネントの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブに移動します。
 1. 右側のペインを展開して、ブラウザーで **70_driver_log.txt** ファイルを表示するか、またはログをローカルにダウンロードするファイルを選択します。
 
 > [!IMPORTANT]

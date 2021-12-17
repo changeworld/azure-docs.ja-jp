@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: bc085163b4f738d022ab9771794ec85293de5ed8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f90c0969960bcc5b1c77b9151598365075b690ba
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100521681"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554543"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -59,14 +59,14 @@ ms.locfileid: "100521681"
 **主要な概念**
 
 - ソフトウェア定義ネットワークは、仮想ネットワーク (VNet) とサブネットを中心に編成されています。 これらの VNet とサブネットのセキュリティは、NSG を使用して管理できます。
-- ネットワーク セキュリティ グループ (NSG) には、それが接続されているリソース内でネットワーク トラフィックを許可または拒否する一連の _セキュリティ規則_ が含まれています。 NSG はサブネットや個々の VM に関連付けることができるほか、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
+- ネットワーク セキュリティ グループ (NSG) には、それが接続されているリソース内でネットワーク トラフィックを許可または拒否する一連の _セキュリティ規則_ が含まれています。 NSG は、仮想マシンの各仮想ネットワークのサブネットおよびネットワーク インターフェイスに関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
 - ネットワーク内のすべてのトラフィック フローは、該当する NSG のルールを使用して評価されます。
 - これらの評価の結果が NSG フロー ログです。 フロー ログは Azure プラットフォームを通じて収集され、顧客のリソースに変更を加える必要はありません。
 - 注:ルールには、終了するものと、終了しないものの 2 つの種類があり、それぞれログ記録の動作が異なります。
 - - NSG の拒否ルールは終了するルールです。 トラフィックを拒否する NSG は、これをフロー ログに記録し、この場合の処理は、NSG がトラフィックを拒否した後に停止されます。 
 - - NSG の許可ルールは終了しないルールです。つまり、1 つの NSG で許可された場合でも、処理は次の NSG に進みます。 トラフィックを許可する最後の NSG によって、トラフィックがフロー ログに記録されます。
 - NSG フロー ログは、アクセスできる場所からストレージ アカウントに書き込まれます。
-- TA、Splunk、Grafana、Stealthwatch などのツールを使用して、フロー ログをエクスポート、処理、分析、視覚化することができます。
+- Traffic Analytics、Splunk、Grafana、Stealthwatch などのツールを使用して、フロー ログをエクスポート、処理、分析、視覚化することができます。
 
 ## <a name="log-format"></a>ログの形式
 
@@ -93,10 +93,10 @@ ms.locfileid: "100521681"
                     * **Traffic Flow** - トラフィック フローの方向。 有効な値は受信の **I** と送信の **O** です。
                     * **Traffic Decision** - トラフィックが許可された、または拒否された。 有効な値は許可の **A** と拒否の **D** です。
                     * **Flow State - バージョン 2 のみ** - フローの状態をキャプチャします。 次の状態があります。**B**:開始。フローが作成された時点です。 統計は提供されません。 **C**: 継続中。フローが進行中です。 5 分間隔で統計が提供されます。 **E**:終了。フローが終了した時点です。 統計が提供されます。
-                    * **Packets - Source to destination - バージョン 2 のみ** - 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットの総数。
-                    * **Bytes sent - Source to destination - バージョン 2 のみ** - 最後の更新以降に送信元から宛先に送信された TCP または UDP パケット バイトの総数。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。
-                    * **Packets - Destination to source - バージョン 2 のみ** - 最後の更新以降に宛先から送信元に送信された TCP または UDP パケットの総数。
-                    * **Bytes sent - Destination to source - バージョン 2 のみ** - 最後の更新以降に宛先から送信元に送信された TCP および UDP パケット バイトの総数。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。
+                    * **Packets - Source to destination - バージョン 2 のみ** - 最後の更新以降に送信元から宛先に送信された TCP パケットの総数。
+                    * **Bytes sent - Source to destination - バージョン 2 のみ** - 最後の更新以降に送信元から宛先に送信された TCP パケット バイトの総数。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。
+                    * **Packets - Destination to source - バージョン 2 のみ** - 最後の更新以降に宛先から送信元に送信された TCP パケットの総数。
+                    * **Bytes sent - Destination to source - バージョン 2 のみ** - 最後の更新以降に宛先から送信元に送信された TCP パケット バイトの総数。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。
 
 
 **NSG フロー ログ バージョン 2 (バージョン 1 との比較)** 
@@ -347,6 +347,18 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 - [[チュートリアル] Grafana を使用して NSG フロー ログを管理および分析する](./network-watcher-nsg-grafana.md)
 - [[チュートリアル] Graylog を使用して NSG フロー ログを管理および分析する](./network-watcher-analyze-nsg-flow-logs-graylog.md)
 
+*フローのログを無効にする*
+
+フロー ログを無効にすると、関連付けられている NSG のフロー ログが停止します。 ただし、リソースとしてのフロー ログは、そのすべての設定と関連付けと共に存在し続けます。 これは、構成済みの NSG でいつでも有効にしてフロー ログを開始できます。 フロー ログを無効/有効にする手順については、こちらの[ハウツー ガイド](./network-watcher-nsg-flow-logging-powershell.md)を参照してください。  
+
+*フロー ログの削除*
+
+フロー ログを削除すると、関連付けられている NSG のフロー ログが停止するだけでなく、フロー ログ リソースもその設定と関連付けとともに削除されます。 フロー ログを再び開始するには、その NSG に対して新しいフロー ログ リソースを作成する必要があります。 フロー ログは、[PowerShell](/powershell/module/az.network/remove-aznetworkwatcherflowlog)、[CLI](/cli/azure/network/watcher/flow-log#az_network_watcher_flow_log_delete)、または [REST API](/rest/api/network-watcher/flowlogs/delete) を使用して削除できます。 Azure portal からフロー ログを削除するためのサポートはパイプラインに含まれています。    
+
+また、NSG が削除されると、既定では、関連付けられているフロー ログ リソースが削除されます。
+
+> [!NOTE]
+> NSG を別のリソース グループまたはサブスクリプションに移動するには、関連付けられているフロー ログを削除する必要があります。フロー ログを無効にするだけでは機能しません。 NSG を移行したら、フロー ログを再作成してフロー ログを有効にする必要があります。  
 
 ## <a name="nsg-flow-logging-considerations"></a>NSG フロー ログ記録の考慮事項
 
@@ -358,14 +370,18 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **フロー ログ記録のコスト**:NSG フロー ログ記録は、生成されたログの量に対して課金されます。 トラフィック量が多いと、フロー ログの量が大きくなり、それに関連してコストがかかる可能性があります。 NSG フロー ログの価格には、基礎となるストレージのコストは含まれていません。 保持ポリシー機能と NSG フロー ログ記録を併用すると、長期間にわたって個別のストレージ コストが発生します。 アイテム保持ポリシーを適用せず、データを永続的に保持する場合は、リテンション期間 (日) を 0 に設定してください。 詳細については、「[Network Watcher の価格](https://azure.microsoft.com/pricing/details/network-watcher/)」 と 「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」 を参照してください。
 
-**ユーザー定義の受信 TCP ルールの問題**:[ネットワークセキュリティグループ (NSGs)](../virtual-network/network-security-groups-overview.md) は [ ステートフルファイアウォール](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) として実装されます。 ただし、現行のプラットフォームの制限により、受信 TCP フローを制御するユーザー定義ルールはステートレスな方法で実装されます。 これに起因し、ユーザー定義受信ルールに制御されるフローは終了しなくなります。 また、これらのフローのバイト数やパケット数は記録されません。 結果として、NSG フローログ (および Traffic Analytics) で報告されるバイト数とパケット数は、実際の数とは異なる可能性があります。 これらの問題を修正するオプトイン フラグは遅くとも 2021 年 3 月までに利用できるようになります。 その間、お客様がこの動作に起因する深刻な問題に直面した場合は、サポート経由でオプトインをリクエストできます。[Network Watcher] の [NSG フロー ログ] でサポート リクエストを提出してください。  
+**ユーザー定義の受信 TCP ルールの問題**:[ネットワークセキュリティグループ (NSGs)](../virtual-network/network-security-groups-overview.md) は [ ステートフルファイアウォール](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) として実装されます。 ただし、現行のプラットフォームの制限により、受信 TCP フローを制御するユーザー定義ルールはステートレスな方法で実装されます。 これに起因し、ユーザー定義受信ルールに制御されるフローは終了しなくなります。 また、これらのフローのバイト数やパケット数は記録されません。 結果として、NSG フローログ (および Traffic Analytics) で報告されるバイト数とパケット数は、実際の数とは異なる可能性があります。 これは、関連する仮想ネットワークの [FlowTimeoutInMinutes](/powershell/module/az.network/set-azvirtualnetwork?view=azps-6.5.0) プロパティを null 以外の値に設定することで解決できます。 
 
 **インターネット IP からパブリック IP のない VM へのインバウンド フローのログ記録**:インスタンスレベル パブリック IP として NIC に関連付けられているパブリック IP アドレス経由で割り当てられたパブリック IP アドレスがない VM、または基本的なロード バランサー バックエンド プールの一部である VM では、[既定の SNAT](../load-balancer/load-balancer-outbound-connections.md) が使用され、アウトバウンド接続を容易にするために Azure によって割り当てられた IP アドレスがあります。 その結果、フローが SNAT に割り当てられたポート範囲内のポートに向かう場合、インターネット IP アドレスからのフローのフロー ログ エントリが表示されることがあります。 Azure では VM へのこれらのフローは許可されませんが、試行はログに記録され、設計上、Network Watcher の NSG フロー ログに表示されます。 不要なインバウンド インターネット トラフィックは、NSG で明示的にブロックすることをお勧めします。
+
+**ExpressRoute ゲートウェイ サブネット上の NSG** - トラフィックが ExpressRoute ゲートウェイ (例: [FastPath](../expressroute/about-fastpath.md)) をバイパスする可能性があるため、ExpressRoute ゲートウェイ サブネット上のフローをログに記録することはお勧めしません。 したがって、NSG が ExpressRoute ゲートウェイ サブネットにリンクされ、NSG フロー ログが有効になっている場合、仮想マシンへの送信フローがキャプチャされない可能性があります。 このようなフローは、VM のサブネットまたは NIC でキャプチャする必要があります。 
+
+**プライベート リンクを介したトラフィック** - プライベート リンク経由で PaaS リソースにアクセスするときにトラフィックをログに記録するには、プライベート リンクを含むサブネット NSG で NSG フロー ログを有効にします。 プラットフォームの制限により、すべてのソース VM でのトラフィックはキャプチャできますが、送信先の PaaS リソースではキャプチャできません。
 
 **Application Gateway V2 サブネット NSG の問題**: Application Gateway V2 サブネット NSG のフロー ログは、現時点では [サポートされていません](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet)。 この問題は Application Gateway V1 には影響しません。
 
 **互換性のないサービス**:プラットフォームの現行の制約に起因し、一部の Azure サービスは NSG フロー ログでサポートされていません。 互換性のないサービスには現在、次が含まれます。
-- [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
+- [Azure Container Instances (ACI)](https://azure.microsoft.com/services/container-instances/)
 - [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
 
 ## <a name="best-practices"></a>ベスト プラクティス
@@ -377,6 +393,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 一般的なシナリオは次のとおりです。
 1. **VM での複数の NIC**:複数の NIC が仮想マシンに接続されている場合は、そのすべてでフロー ログを有効にする必要があります
 1. **NIC とサブネット レベルの両方で NSG**: NIC およびサブネット レベルで NSG が構成されている場合は、両方の NSG でフロー ログを有効にする必要があります。 
+1. **AKS クラスター サブネット**: AKS は、クラスター サブネットに既定の NSG を追加します。 上のポイントで説明したように、この既定の NSG でフローのログ記録を有効にする必要があります。
 
 **ストレージのプロビジョニング**:ストレージは、想定されるフロー ログ ボリュームでチューニングする必要があります。
 
@@ -402,7 +419,7 @@ NSG フロー ログがストレージ アカウントに表示されるまで�
 
 **NSG フロー ログを自動化したい**
 
-現在、ARM テンプレートを使用した 自動化のサポートは、NSG フロー ログでは使用できません。 詳細については、[機能のお知らせ](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/)を参照してください。
+NSG フロー ログに対する ARM テンプレートを使用した自動化のサポートを利用できるようになりました。 詳細については、[機能の発表](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/)と [ARM テンプレートに関するクイック スタート ドキュメント](quickstart-configure-network-security-group-flow-logs-from-arm-template.md)を参照してください。
 
 ## <a name="faq"></a>よく寄せられる質問
 

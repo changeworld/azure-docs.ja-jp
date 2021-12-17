@@ -5,22 +5,20 @@ services: azure-monitor
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/12/2021
-ms.openlocfilehash: 4d1dd358c03d051be4be5733d9e729d1d7ef5b0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/22/2021
+ms.openlocfilehash: 92468fc96148dd22aab33e5cf7c4ff7a42c5ef65
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026174"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308638"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
 仮想マシンおよびその他のコンピューティング リソースでは、ゲスト オペレーティング システムとワークロードのパフォーマンスと可用性を測定するために必要な監視データを収集するエージェントが必要です。 この記事では、Azure Monitor で使用されるエージェントについて説明します。特定の環境の要件を満たす上で必要なエージェントを判断するのに役に立ちます。
 
 > [!NOTE]
-> Azure Monitor と Log Analytics が最近統合されたため、現在 Azure Monitor には複数のエージェントがあります。 機能に重複がある場合もありますが、それぞれに固有の機能があります。 要件によっては、マシンに 1 つ以上のエージェントが必要になる場合があります。 
-
-特定のマシンに対して、1 つのエージェントでは完全に満たすことができない特定の要件セットがある場合があります。 たとえば、Azure Diagnostics 拡張機能を必要とするメトリック アラート以外に、Log Analytics エージェントと依存関係エージェントを必要とする VM insights の機能も利用したほうがよい場合があります。 このような場合、複数のエージェントを使用できます。これは、それぞれの機能を必要とする顧客を対象にした一般的なシナリオです。
+> Azure Monitor では最近、ゲスト オペレーティング システムの監視データを収集するために必要なすべての機能を提供する、新しいエージェントである Azure Monitor エージェントがリリースされました。 Azure Monitor と Log Analytics の統合によって複数のレガシ エージェントが存在するようになり、それぞれに独自の機能が備わっていますが、一部は重複しています。既存のすべてのエージェントの機能を統合し、追加の利点を得るために、新しいエージェントの使用をお勧めします。 [詳細情報](./azure-monitor-agent-overview.md)
 
 ## <a name="summary-of-agents"></a>エージェントの概要
 
@@ -33,8 +31,8 @@ ms.locfileid: "105026174"
 | **サポートされている環境** | Azure<br>その他のクラウド (Azure Arc)<br>オンプレミス (Azure Arc)  | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | 
 | **エージェントの要件**  | なし | なし | なし | Log Analytics エージェントが必要 |
 | **収集されるデータ** | イベント ログ<br>パフォーマンス | イベント ログ<br>ETW イベント<br>パフォーマンス<br>ファイル ベース ログ<br>IIS ログ<br>.NET アプリ ログ<br>クラッシュ ダンプ<br>エージェント診断ログ | イベント ログ<br>パフォーマンス<br>ファイル ベース ログ<br>IIS ログ<br>分析情報とソリューション<br>その他のサービス | プロセスの依存関係<br>ネットワーク接続のメトリック |
-| **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック | Azure Storage<br>Azure Monitor メトリック<br>イベント ハブ | Azure Monitor ログ | Azure Monitor ログ<br>(Log Analytics エージェント経由) |
-| **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | メトリックス エクスプローラー | VM insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM insights<br>サービス マップ |
+| **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック<sup>1</sup> | Azure Storage<br>Azure Monitor メトリック<br>イベント ハブ | Azure Monitor ログ | Azure Monitor ログ<br>(Log Analytics エージェント経由) |
+| **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | メトリックス エクスプローラー | VM insights<br>Log Analytics<br>Azure Automation<br>Microsoft Defender for Cloud<br>Microsoft Sentinel | VM insights<br>サービス マップ |
 
 ### <a name="linux-agents"></a>Linux エージェント
 
@@ -44,6 +42,7 @@ ms.locfileid: "105026174"
 | **エージェントの要件**  | なし | なし | なし | なし | Log Analytics エージェントが必要 |
 | **収集されるデータ** | syslog<br>パフォーマンス | syslog<br>パフォーマンス | パフォーマンス | syslog<br>パフォーマンス| プロセスの依存関係<br>ネットワーク接続のメトリック |
 | **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック<sup>1</sup> | Azure Storage<br>イベント ハブ | Azure Monitor メトリック | Azure Monitor ログ | Azure Monitor ログ<br>(Log Analytics エージェント経由) |
+<<<<<<< HEAD
 | **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | | メトリックス エクスプローラー | VM insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM insights<br>サービス マップ |
 
 <sup>1</sup>現在の Linux 用 Azure Monitor エージェントには、Azure Monitor メトリックのみを送信先として使用することがサポートされない、という制限があります。
@@ -53,10 +52,20 @@ Azure Monitor ログと一緒に使用することで動作します。この制
 ## <a name="azure-monitor-agent-preview"></a>Azure Monitor エージェント
 
 [Azure Monitor エージェント](azure-monitor-agent-overview.md)は、Windows と Linux の両方のマシンで、Log Analytics エージェントおよび Telegraf エージェントを置き換えます。 Azure Monitor ログと Azure Monitor のメトリックの両方にデータを送信し、[データ収集ルール (DCR)](data-collection-rule-overview.md) を使用します。これにより、各エージェントのデータ コレクションと変換先をよりスケーラブルに構成する方法が提供されます。
+=======
+| **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | | メトリックス エクスプローラー | VM insights<br>Log Analytics<br>Azure Automation<br>Microsoft Defender for Cloud<br>Microsoft Sentinel | VM insights<br>サービス マップ |
+
+<sup>1</sup> [ここをクリック](../essentials/metrics-custom-overview.md#quotas-and-limits)すると、Azure Monitor メトリックの使用に関するその他の制限を確認できます。 Linux では、Azure Monitor メトリックを唯一の宛先として使用する方法は、v.1.10.9.0 以降でサポートされています。 
+
+## <a name="azure-monitor-agent"></a>Azure Monitor エージェント
+
+[Azure Monitor エージェント](azure-monitor-agent-overview.md)は、Windows と Linux の両方のマシンで、Log Analytics エージェント、Azure 診断拡張機能、Telegraf エージェントの後継となります。 Azure Monitor ログと Azure Monitor のメトリックの両方にデータを送信し、[データ収集ルール (DCR)](data-collection-rule-overview.md) を使用します。これにより、各エージェントのデータ コレクションと変換先をよりスケーラブルに構成する方法が提供されます。
+>>>>>>> repo_sync_working_branch
 
 次のことを行う必要がある場合は、Azure Monitor エージェントを使用します。
 
 - Azure、その他のクラウド、またはオンプレミスの任意のマシンからゲスト ログとメトリックを収集する。 (Azure の外部のマシンには [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)が必要です。) 
+<<<<<<< HEAD
 - [データ収集ルール (DCR)](data-collection-rule-overview.md) を使用してデータ収集構成を一元管理し、Azure Resource Manger (ARM) のテンプレートやポリシーを使用して全体的な管理を行う
 - Azure Monitor での分析のために、Azure Monitor ログと Azure Monitor メトリックにデータを送信する。
 - Windows のイベント フィルタリングや、Windows と Linux のlogに対してマルチホーミングを活用する
@@ -67,6 +76,26 @@ Azure Monitor エージェントの制限事項は次のとおりです。
 - プライベート リンクを含むネットワークのシナリオはまだサポートされていません。
 - カスタムログ (ファイル) や IIS ログ ファイルの収集はまだサポートされていません。
 - Event Hubs やストレージ アカウントを送信先とすることはまだサポートされていません。
+=======
+- [データ収集ルール](./data-collection-rule-overview.md)を使用してデータ収集の構成を一元的に管理し、全体的な管理に Azure Resource Manager (ARM) テンプレートまたはポリシーを使用する。
+- Azure Monitor での分析のために、Azure Monitor ログと Azure Monitor メトリック (プレビュー) にデータを送信する。 
+- Windows と Linux でのログ用に Windows イベント フィルターまたはマルチホームを使用する。
+
+<!--- Send data to Azure Storage for archiving.
+- Send data to third-party tools using [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md).
+- Manage the security of your machines using [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md)  or [Microsoft Sentinel](../../sentinel/overview.md). (Available in private preview.)
+- Use [VM insights](../vm/vminsights-overview.md) which allows you to monitor your machines at scale and monitors their processes and dependencies on other resources and external processes..  
+- Manage the security of your machines using [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md)  or [Microsoft Sentinel](../../sentinel/overview.md).
+- Use different [solutions](../monitor-reference.md#insights-and-curated-visualizations) to monitor a particular service or application. */
+-->
+
+Azure Monitor エージェントの制限事項には、以下が含まれます。
+
+- 実稼働には Azure Monitor エージェントを使用できません (プレビューでのみ使用できます。[サポート対象に関する記事を参照してください](./azure-monitor-agent-overview.md#supported-services-and-features))。
+- プライベート リンクが関係するネットワークのシナリオは、まだサポートされていません。 
+- カスタム ログ (ファイル) や IIS ログ ファイルの収集は、まだサポートされていません。 
+- Event Hubs とストレージ アカウントは、送信先としてまだサポートされていません。
+>>>>>>> repo_sync_working_branch
 - Hybrid Runbook Worker はサポートされていません。
 
 ## <a name="log-analytics-agent"></a>Log Analytics エージェント
@@ -81,9 +110,9 @@ Log Analytics エージェントは、次のような場合に使用します。
 * Azure の外部でホストされている Azure 仮想マシンまたはハイブリッド マシンから、ログとパフォーマンス データを収集する。
 * データを Log Analytics ワークスペースに送信して、[ログ クエリ](../logs/log-query-overview.md)など、[Azure Monitor ログ](../logs/data-platform-logs.md)でサポートされている機能を活用する。
 * マシンを大規模に監視し、そのプロセスや他のリソースおよび外部プロセスに対する依存関係を監視できる、[VM insights](../vm/vminsights-overview.md) を使用する。  
-* [Azure Security Center](../../security-center/security-center-introduction.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用のマシンのセキュリティを管理する。
+* [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) または [Microsoft Sentinel](../../sentinel/overview.md) を利用してコンピューターのセキュリティを管理します。
 * [Azure Automation Update Management](../../automation/update-management/overview.md)、[Azure Automation State Configuration](../../automation/automation-dsc-overview.md)、または [Azure Automation Change Tracking と Inventory](../../automation/change-tracking/overview.md) を使用して、Azure および非 Azure マシンを包括的に管理する。
-* さまざまな[ソリューション](../monitor-reference.md#insights-and-core-solutions)を使用して、特定のサービスまたはアプリケーションを監視する。
+* さまざまな[ソリューション](../monitor-reference.md#insights-and-curated-visualizations)を使用して、特定のサービスまたはアプリケーションを監視する。
 
 Log Analytics エージェントの制限事項は次のとおりです。
 
@@ -127,12 +156,13 @@ Telegraf エージェントは、次のような場合に使用します。
 
 - 依存関係エージェントを使用するには、Log Analytics エージェントを同じマシンにインストールする必要があります。
 - Linux コンピューターの場合は、Azure 診断の拡張機能の前に Log Analytics エージェントをインストールする必要があります。
+- Dependency Agent の Windows バージョンと Linux バージョンの両方で、データ収集はユーザー空間サービスとカーネル ドライバーを使用して行われます。 
 
 ## <a name="virtual-machine-extensions"></a>仮想マシン拡張機能
 
-[Windows](../../virtual-machines/extensions/oms-windows.md) および [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics 拡張機能は、Azure 仮想マシンに Log Analytics エージェントをインストールします。 [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) および [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) 用の Azure Monitor 依存関係拡張機能は、Azure 仮想マシンに依存関係エージェントをインストールします。 これらは上記と同じエージェントですが、これらは[仮想マシン拡張機能](../../virtual-machines/extensions/overview.md)を使用して管理できます。 可能な場合は、拡張機能を使用してエージェントをインストールおよび管理する必要があります。
+[Azure Monitor エージェント](./azure-monitor-agent-install.md#virtual-machine-extension-details)は、仮想マシンの拡張機能としてのみ使用できます。 [Windows](../../virtual-machines/extensions/oms-windows.md) および [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics 拡張機能は、Azure 仮想マシンに Log Analytics エージェントをインストールします。 [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) および [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) 用の Azure Monitor 依存関係拡張機能は、Azure 仮想マシンに依存関係エージェントをインストールします。 これらは上記と同じエージェントですが、これらは[仮想マシン拡張機能](../../virtual-machines/extensions/overview.md)を使用して管理できます。 可能な場合は、拡張機能を使用してエージェントをインストールおよび管理する必要があります。
 
-ハイブリッド マシンでは、[Azure Arc 対応サーバー](../../azure-arc/servers/manage-vm-extensions.md)を使用して、Log Analytics および Azure Monitor Dependency VM 拡張機能をデプロイします。
+ハイブリッド マシンでは、[Azure Arc 対応サーバー](../../azure-arc/servers/manage-vm-extensions.md)を使用して、Azure Monitor エージェント、Log Analytics および Azure Monitor Dependency VM 拡張機能をデプロイします。
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -142,22 +172,29 @@ Telegraf エージェントは、次のような場合に使用します。
 
 | オペレーティング システム | Azure Monitor エージェント | Log Analytics エージェント | 依存関係エージェント | 診断拡張機能 | 
 |:---|:---:|:---:|:---:|:---:|
+| Windows Server 2022                                      | X |   |   |   |
 | Windows Server 2019                                      | X | X | X | X |
+| Windows Server 2019 Core                                 | X |   |   |   |
 | Windows Server 2016                                      | X | X | X | X |
-| Windows Server 2016 Core                                 |   |   |   | X |
+| Windows Server 2016 Core                                 | X |   |   | X |
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2 SP1                               | X | X | X | X |
-| Windows Server 2008 R2                                   |   | X | X | X |
-| Windows 10 Enterprise<br>(マルチセッションを含む) および Pro<br>(サーバー シナリオのみ)  | X | X | X | X |
-| Windows 8 Enterprise および Pro<br>(サーバー シナリオのみ)  |   | X | X |   |
-| Windows 7 SP1<br>(サーバー シナリオのみ)                 |   | X | X |   |
+| Windows Server 2008 R2                                   |   |   | X | X |
+| Windows Server 2008 SP2                                   |   | X |  |  |
+| Windows 10 Enterprise<br>(マルチセッションを含む) および Pro<br>(サーバー シナリオのみ<sup>1</sup>)  | X | X | X | X |
+| Windows 8 Enterprise および Pro<br>(サーバー シナリオのみ<sup>1</sup>)  |   | X | X |   |
+| Windows 7 SP1<br>(サーバー シナリオのみ<sup>1</sup>)                 |   | X | X |   |
+| Azure Stack HCI                                          |   | X |   |   |
+
+<sup>1</sup> サーバー ハードウェアで OS が動作。つまり、常に接続されて電源が入っており、その他のワークロード (PC、Office、ブラウザーなど) を実行していないマシン
 
 ### <a name="linux"></a>Linux
 
 | オペレーティング システム | Azure Monitor エージェント <sup>1</sup> | Log Analytics エージェント <sup>1</sup> | 依存関係エージェント | 診断拡張機能 <sup>2</sup>| 
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017.09                                        |   | X |   |   |
+| Amazon Linux 2                                              |   | X |   |   |
 | CentOS Linux 8                                              | X <sup>3</sup> | X | X |   |
 | CentOS Linux 7                                              | X | X | X | X |
 | CentOS Linux 6                                              |   | X |   |   |
@@ -171,31 +208,35 @@ Telegraf エージェントは、次のような場合に使用します。
 | Oracle Linux 7                                              | X | X |   | X |
 | Oracle Linux 6                                              |   | X |   |   |
 | Oracle Linux 6.4+                                           |   | X |   | X |
+| Red Hat Enterprise Linux Server 8.1, 8.2, 8.3, 8.4          | X <sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 8                           | X <sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 7                           | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                           |   | X | X |   |
 | Red Hat Enterprise Linux Server 6.7 以降                        |   | X | X | X |
 | SUSE Linux Enterprise Server 15.2                           | X <sup>3</sup> |   |   |   |
 | SUSE Linux Enterprise Server 15.1                           | X <sup>3</sup> | X |   |   |
+| SUSE Linux Enterprise Server 15 SP1                         | X | X | X |   |
 | SUSE Linux Enterprise Server 15                             | X | X | X |   |
+| SUSE Linux Enterprise Server 12 SP5                         | X | X | X | X |
 | SUSE Linux Enterprise Server 12                             | X | X | X | X |
-| Ubuntu 20.04 LTS                                            | X | X | X |   |
+| Ubuntu 20.04 LTS                                            | X | X | X | X |
 | Ubuntu 18.04 LTS                                            | X | X | X | X |
 | Ubuntu 16.04 LTS                                            | X | X | X | X |
 | Ubuntu 14.04 LTS                                            |   | X |   | X |
 
 <sup>1</sup> マシンに Python (2 または 3) がインストールされている必要があります。
 
-<sup>2</sup> マシンに Python 2 がインストールされている必要があります。
+<sup>3</sup> 1.9.0 より前のバージョンでの Syslog イベント収集に関する既知の問題。
 
-<sup>3</sup> Syslog イベントの収集に関する既知の問題。 現在、パフォーマンス データのみがサポートされています。
 #### <a name="dependency-agent-linux-kernel-support"></a>依存関係エージェントの Linux カーネル サポート
 
 依存関係エージェントはカーネル レベルで動作するため、サポートもカーネルのバージョンに依存します。 次の表は、Linux OS のメジャーおよびマイナー リリースと依存関係エージェントでサポートされているカーネル バージョンの一覧です。
 
 | Distribution | OS バージョン | カーネル バージョン |
 |:---|:---|:---|
-|  Red Hat Linux 8   | 8.2     | 4.18.0-193.\*el8_2.x86_64 |
+|  Red Hat Linux 8   | 8.4     | 4.18.0-305.\*el8.x86_64, 4.18.0-305.\*el8_4.x86_64 |
+|                    | 8.3     |  4.18.0-240.\*el8_3.x86_64 |
+|                    | 8.2     | 4.18.0-193.\*el8_2.x86_64 |
 |                    | 8.1     | 4.18.0-147.\*el8_1.x86_64 |
 |                    | 8.0     | 4.18.0-80.\*el8.x86_64<br>4.18.0-80.\*el8_0.x86_64 |
 |  Red Hat Linux 7   | 7.9     | 3.10.0-1160 |
@@ -206,7 +247,9 @@ Telegraf エージェントは、次のような場合に使用します。
 |                    | 7.4     | 3.10.0-693  |
 | Red Hat Linux 6    | 6.10    | 2.6.32-754 |
 |                    | 6.9     | 2.6.32-696  |
-| CentOS Linux 8     | 8.2     | 4.18.0-193.\*el8_2.x86_64 |
+| CentOS Linux 8     | 8.4     | 4.18.0-305.\*el8.x86_64, 4.18.0-305.\*el8_4.x86_64 |
+|                    | 8.3     | 4.18.0-240.\*el8_3.x86_64 |
+|                    | 8.2     | 4.18.0-193.\*el8_2.x86_64 |
 |                    | 8.1     | 4.18.0-147.\*el8_1.x86_64 |
 |                    | 8.0     | 4.18.0-80.\*el8.x86_64<br>4.18.0-80.\*el8_0.x86_64 |
 | CentOS Linux 7     | 7.9     | 3.10.0-1160 |
@@ -218,10 +261,12 @@ Telegraf エージェントは、次のような場合に使用します。
 |                    | 18.04   | 5.3.0-1020<br>5.0 (Azure で調整されたカーネルを含む)<br>4.18 *<br>4.15* |
 |                    | 16.04.3 | 4.15.\* |
 |                    | 16.04   | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
-| SUSE Linux 12 Enterprise Server | 15     | 4.12.14-150\*
-|                                 | 12 SP4 | 4.12。* (Azure で調整されたカーネルを含む) |
-|                                 | 12 SP3 | 4.4.* |
-|                                 | 12 SP2 | 4.4.* |
+| SUSE Linux 12 Enterprise Server | 12 SP5     | 4.12.14-122.\*-default, 4.12.14-16.\*-azure|
+|                                 | 12 SP4 | 4.12.\* (Azure で調整されたカーネルを含む) |
+|                                 | 12 SP3 | 4.4.\* |
+|                                 | 12 SP2 | 4.4.\* |
+| SUSE Linux 15 Enterprise Server | 15 SP1 | 4.12.14-197.\*-default, 4.12.14-8.\*-azure |
+|                                 | 15     | 4.12.14-150.\*-default |
 | Debian                          | 9      | 4.9  | 
 
 ## <a name="next-steps"></a>次のステップ

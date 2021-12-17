@@ -8,19 +8,20 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: 5f149dd6db82b66b45a4c995e2004936481af786
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/25/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d9b596ad4766848e460d534be42930f39c5b6043
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96352424"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069199"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>ナレッジ ベースに関する分析の取得
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 [QnA Maker サービスの作成](./set-up-qnamaker-service-azure.md)中に Application Insights を有効にした場合、QnA Maker はすべてのチャット ログとその他のテレメトリを格納します。 サンプル クエリを実行し、Application Insights からチャット ログを取得してみましょう。
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 1. Application Insights リソースに移動します。
 
@@ -48,21 +49,7 @@ ms.locfileid: "96352424"
 
     [![ユーザーからの質問、回答、スコアを確認するクエリを実行する](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
-
-QnA Maker マネージド (プレビュー) によって Azure 診断ログが使用され、テレメトリ データとチャット ログが格納されます。 下の手順でサンプル クエリを実行し、QnA Maker ナレッジ ベースの使用状況分析を取得します。
-
-1. QnA Maker マネージド (プレビュー) サービスの[診断ログを有効にします](../../diagnostic-logging.md)。
-
-2. 前の手順で、ログに **[Audit]、[RequestResponse]、[AllMetrics]** に加えて **[Trace]** を選択しました。
-
-    ![QnA Maker マネージド (プレビュー) でトレース ログを有効にする](../media/qnamaker-how-to-analytics-kb/qnamaker-v2-enable-trace-logging.png)
-
----
-
 ## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースに関する他の分析についてのクエリを実行します
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 ### <a name="total-90-day-traffic"></a>90 日間のトラフィックの合計
 
@@ -131,76 +118,6 @@ traces | extend id = operation_ParentId
 | project timestamp, KbId, question, answer, score
 | order  by timestamp  desc
 ```
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
-
-### <a name="all-qna-chat-log"></a>すべての QnA チャット ログ
-
-```kusto
-// All QnA Traffic
-AzureDiagnostics
-| where ResourceProvider == "MICROSOFT.COGNITIVESERVICES"
-| where OperationName=="QnAMaker GenerateAnswer"
-| extend answer_ = tostring(parse_json(properties_s).answer)
-| extend question_ = tostring(parse_json(properties_s).question)
-| extend score_ = tostring(parse_json(properties_s).score)
-| extend kbId_ = tostring(parse_json(properties_s).kbId)
-| project question_, answer_, score_, kbId_
-```
-
-### <a name="traffic-count-per-knowledge-base-and-user-in-a-time-period"></a>一定期間内のナレッジ ベースおよびユーザーあたりのトラフィック カウント
-
-```kusto
-// Traffic count per KB and user in a time period
-let startDate = todatetime('2019-01-01');
-let endDate = todatetime('2020-12-31');
-AzureDiagnostics
-| where ResourceProvider == "MICROSOFT.COGNITIVESERVICES"
-| where OperationName=="QnAMaker GenerateAnswer"
-| where TimeGenerated <= endDate and TimeGenerated >=startDate
-| extend kbId_ = tostring(parse_json(properties_s).kbId)
-| extend userId_ = tostring(parse_json(properties_s).userId)
-| summarize ChatCount=count() by bin(TimeGenerated, 1d), kbId_, userId_
-```
-
-### <a name="latency-of-generateanswer-api"></a>GenerateAnswer API の待機時間
-
-```kusto
-// Latency of GenerateAnswer
-AzureDiagnostics
-| where ResourceProvider == "MICROSOFT.COGNITIVESERVICES"
-| where OperationName=="Generate Answer"
-| project TimeGenerated, DurationMs
-| render timechart
-```
-
-### <a name="average-latency-of-all-operations"></a>すべての操作の平均待機時間
-
-```kusto
-// Average Latency of all operations
-AzureDiagnostics
-| where ResourceProvider == "MICROSOFT.COGNITIVESERVICES"
-| project DurationMs, OperationName
-| summarize count(), avg(DurationMs) by OperationName
-| render barchart
-```
-
-### <a name="unanswered-questions"></a>未回答の質問
-
-```kusto
-// All unanswered questions
-AzureDiagnostics
-| where ResourceProvider == "MICROSOFT.COGNITIVESERVICES"
-| where OperationName=="QnAMaker GenerateAnswer"
-| extend answer_ = tostring(parse_json(properties_s).answer)
-| extend question_ = tostring(parse_json(properties_s).question)
-| extend score_ = tostring(parse_json(properties_s).score)
-| extend kbId_ = tostring(parse_json(properties_s).kbId)
-| where score_ == 0
-| project question_, answer_, score_, kbId_
-```
-
----
 
 ## <a name="next-steps"></a>次の手順
 

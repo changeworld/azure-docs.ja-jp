@@ -4,8 +4,8 @@ description: Azure AD Privileged Identity Management (PIM) を使用するため
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: markwahl-msft
+manager: KarenH444
+editor: ''
 ms.assetid: 34367721-8b42-4fab-a443-a2e55cdbf33d
 ms.service: active-directory
 ms.workload: identity
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 04/05/2021
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0428f73c4df3d97002def03823ff8cced1d647
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: a68764822e2e4bb4a169680ea80e214e5b07e55b
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552633"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667917"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Privileged Identity Management を使用するためのライセンスの要件
 
@@ -30,7 +31,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 ## <a name="valid-licenses"></a>有効なライセンス
 
-PIM とそのすべての設定を使用するには、[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)] が必要です。 現時点では、アクセス レビューのスコープを、Azure AD へのアクセス権を持つサービス プリンシパルと、テナントで Azure Active Directory Premium P2 エディションがアクティブになっている Azure リソース ロール (プレビュー) に設定できます。 サービス プリンシパルのライセンス モデルは、この機能の一般提供のために終了する予定です。このため、追加のライセンスが必要になる場合があります。
+PIM とそのすべての設定を使用するには、Azure AD ライセンスが必要です。 現時点では、アクセス レビューのスコープを、Azure AD へのアクセス権を持つサービス プリンシパルと、テナントで Azure Active Directory Premium P2 エディションがアクティブになっている Azure リソース ロール (プレビュー) に設定できます。 サービス プリンシパルのライセンス モデルは、この機能の一般提供のために終了する予定です。このため、追加のライセンスが必要になる場合があります。 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 ## <a name="licenses-you-must-have"></a>必要なライセンス
 
@@ -73,5 +74,5 @@ Azure AD Premium P2、EMS E5、または試用版ライセンスの有効期限�
 - [Privileged Identity Management をデプロイする](pim-deployment-plan.md)
 - [Privileged Identity Management の使用を開始する](pim-getting-started.md)
 - [Privileged Identity Management で管理できないロール](pim-roles.md)
-- [PIM で Azure リソース ロールのアクセス レビューを作成する](pim-resource-roles-start-access-review.md)
-- [PIM で Azure AD ロールのアクセス レビューを作成する](pim-how-to-start-security-review.md)
+- [PIM で Azure リソース ロールのアクセス レビューを作成する](./pim-create-azure-ad-roles-and-resource-roles-review.md)
+- [PIM で Azure AD ロールのアクセス レビューを作成する](./pim-create-azure-ad-roles-and-resource-roles-review.md)

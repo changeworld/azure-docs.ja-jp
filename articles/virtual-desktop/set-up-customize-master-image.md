@@ -1,24 +1,24 @@
 ---
-title: マスター VHD イメージを準備してカスタマイズする - Azure
-description: Windows Virtual Desktop のマスター イメージを準備、カスタマイズし、Azure にアップロードする方法。
+title: Azure Virtual Desktop の VHD イメージの準備とカスタマイズ - Azure
+description: Azure Virtual Desktop イメージを準備、カスタマイズし、Azure にアップロードする方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 654b5b293397af9737813d759a7c784d90629942
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3153fed07575c0eeaf3e062e18e80f08e8269344
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445807"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835225"
 ---
-# <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
+# <a name="prepare-and-customize-a-vhd-image-for-azure-virtual-desktop"></a>Azure Virtual Desktop の VHD イメージの準備とカスタマイズ
 
-この記事では、仮想マシン (VM) を作成してそこにソフトウェアをインストールする方法など、マスター仮想ハード ディスク (VHD) イメージを準備して Azure にアップロードする方法を説明します。 これらの手順は、組織の既存のプロセスで使用できる Windows Virtual Desktop 固有の構成に対するものです。
+この記事では、仮想マシン (VM) を作成してそこにソフトウェアをインストールする方法など、マスター仮想ハード ディスク (VHD) イメージを準備して Azure にアップロードする方法を説明します。 これらの手順は、組織の既存のプロセスで使用できる Azure Virtual Desktop 固有の構成に対するものです。
 
 >[!IMPORTANT]
->Azure イメージ ギャラリーのイメージを使用することをお勧めします。 ただし、カスタマイズしたイメージを使用する必要がある場合は、Windows Virtual Desktop エージェントが VM にまだインストールされていないことを確認してください。 カスタマイズしたイメージを Windows Virtual Desktop エージェントで使用すると、登録がブロックされたり、ユーザー セッションの接続が妨げられたりするなど、イメージに関する問題が発生する可能性があります。  
+>Azure イメージ ギャラリーのイメージを使用することをお勧めします。 ただし、カスタマイズしたイメージを使用する必要がある場合は、Azure Virtual Desktop エージェントが VM にまだインストールされていないことを確認してください。 カスタマイズしたイメージを Azure Virtual Desktop エージェントで使用すると、登録がブロックされたり、ユーザー セッションの接続が妨げられたりするなど、イメージに関する問題が発生する可能性があります。  
 
 ## <a name="create-a-vm"></a>VM の作成
 
@@ -128,7 +128,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 ### <a name="disable-storage-sense"></a>ストレージ センサーを無効にする
 
-Windows 10 Enterprise または Windows 10 Enterprise マルチセッションを使用する Windows Virtual Desktop セッション ホストでは、ストレージ センサーを無効にすることをお勧めします。 次のスクリーンショットに示すように、[設定] メニューの **[ストレージ]** でストレージ センサーを無効にできます。
+Windows 10 Enterprise または Windows 10 Enterprise マルチセッションを使用する Azure Virtual Desktop セッション ホストでは、ストレージ センサーを無効にすることをお勧めします。 次のスクリーンショットに示すように、[設定] メニューの **[ストレージ]** でストレージ センサーを無効にできます。
 
 > [!div class="mx-imgBorder"]
 > ![[設定] の [ストレージ] メニューのスクリーン ショット。 [ストレージ センサー] オプションはオフになっている。](media/storagesense.png)
@@ -188,7 +188,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 このセクションは、マスター イメージがローカルで作成された場合にのみ適用されます。
 
-次の手順では、マスター イメージを Azure ストレージ アカウントにアップロードする方法を説明します。 Azure ストレージ アカウントがまだない場合は、[こちらの記事](/azure/developer/javascript/tutorial-vscode-static-website-node-03)の指示に従って作成します。
+次の手順では、マスター イメージを Azure ストレージ アカウントにアップロードする方法を説明します。 Azure ストレージ アカウントがまだない場合は、[こちらの記事](../storage/common/storage-account-create.md)の指示に従って作成します。
 
 1. まだ行っていない場合は、VM イメージ (VHD) を固定に変換します。 イメージを固定に変換しない場合は、イメージを正常に作成できません。
 
@@ -215,6 +215,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 - [チュートリアル:](create-host-pools-azure-marketplace.md)Azure Marketplace を使用してホスト プールを作成する
 - [PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)
 - [ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md)
-- [Windows Virtual Desktop の負荷分散方法を構成する](configure-host-pool-load-balancing.md)
+- [Azure Virtual Desktop の負荷分散方法を構成する](configure-host-pool-load-balancing.md)
 
 VHD イメージを準備またはカスタマイズした後に接続の問題が発生した場合は、[トラブルシューティング ガイド](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved)を参照して役立ててください。

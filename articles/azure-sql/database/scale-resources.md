@@ -7,21 +7,21 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: wiassaf, sstein
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma, urmilano, wiassaf
 ms.date: 06/25/2019
-ms.openlocfilehash: ca1a2edec70b13f111ffd89278aa39d1ddea7f67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d6dd794a9eb0a7af1ed2e91a04c27d5321e14ca3
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105035644"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179357"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>最小限のダウンタイムでデータベースのリソースを動的にスケーリングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL Database と SQL Managed Instance では、最小限の[ダウンタイム](https://azure.microsoft.com/support/legal/sla/sql-database)でデータベースにリソースを動的に追加できます。ただし、データベースへの接続が短時間失われる切り替え期間があります。これは、再試行ロジックを使用することで軽減できます。
+Azure SQL Database と SQL Managed Instance では、最小限の[ダウンタイム](https://azure.microsoft.com/support/legal/sla/azure-sql-database)でデータベースにリソースを動的に追加できます。ただし、データベースへの接続が短時間失われる切り替え期間があります。これは、再試行ロジックを使用することで軽減できます。
 
 ## <a name="overview"></a>概要
 
@@ -38,17 +38,17 @@ Azure SQL Database には、[DTU ベースの購入モデル](service-tiers-dtu.
 - [DTU ベースの購入モデル](service-tiers-dtu.md)には、データベースの軽量ワークロードから重量ワークロードまでをサポートする、計算リソース、メモリ リソース、および I/O リソースの組み合わせがそれぞれ異なる、Basic、Standard、Premium の 3 つのサービス レベルがあります。 各レベルにおけるパフォーマンス レベルでは、これらのリソースのさまざまな組み合わせが提供され、ストレージ リソースを追加することができます。
 - [仮想コアベースの購入モデル](service-tiers-vcore.md)では、仮想コアの数、メモリの量、およびストレージの容量と速度を選択できます。 この購入モデルは 3 つのサービス レベルを提供します:General Purpose、Business Critical、および Hyperscale。
 
-最初に Basic、Standard、または General Purpose サービス レベルで月額の安い小さな単一データベースにアプリをビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを Premium または Business Critical サービス レベルに変更できます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+データベース、エラスティック プール、またはマネージド インスタンスのサービス レベル、コンピューティング レベル、およびリソースの制限は、いつでも変更できます。 たとえば、サーバーレス コンピューティング レベルを使用して 1 つのデータベースで最初のアプリを作成し、後でソリューションのニーズに合わせて、いつでもそのサービス レベルをプロビジョニングされたコンピューティング レベルに手動またはプログラムで変更できます。
 
 > [!NOTE]
-> 動的スケーラビリティは自動スケールとは異なります。 自動スケールは、基準に基づいてサービスが自動的にスケールされるのに対し、動的スケーラビリティでは、最小限のダウンタイムで手動スケールすることができます。
+> データベースのサービス レベルを変更できない主な例外は次のとおりです。
+> - 現在、ハイパースケール サービス レベルのデータベースは別のサービス レベルに変更できません。
+> - Business Critical と Premium のサービス レベルで[のみ使用できる](features-comparison.md#features-of-sql-database-and-sql-managed-instance)機能が使用されているデータベースは、General Purpose または Standard のサービス レベルを使用するように変更できません。
 
-Azure SQL Database の単一データベースは、手動の動的スケーラビリティをサポートしていますが、自動スケーリングはサポートしていません。 *自動* 操作を増やすには、エラスティック プールの使用を検討してください。エラスティック プールを使用すると、データベースが個々のデータベースのニーズに基づいてプール内のリソースを共有できます。
-ただし、Azure SQL Database の単一データベースのスケーラビリティを自動化できるスクリプトがあります。 例については、「[PowerShell を使用して単一の SQL データベースを監視およびスケーリングする](scripts/monitor-and-scale-database-powershell.md)」を参照してください。
+ワークロードの需要に合わせてサービス目標 (スケーリング) を変更することによって、データベースに割り当てられたリソースを調整できます。 また、これにより、必要なときに必要な分のリソースに対してのみ料金を支払うことができます。 スケーリング操作がアプリケーションに与える可能性のある影響についての[注意事項](#impact-of-scale-up-or-scale-down-operations)をご覧ください。
 
-[DTU サービス層](service-tiers-dtu.md)または[仮想コアの特性](resource-limits-vcore-single-databases.md)はいつでも変更することが可能で、アプリケーションのダウンタイムも最小限に留められます (通常、平均で 4 秒未満)。 特に使用パターンが比較的予測可能である場合、多くのビジネスとアプリについては、データベースを作成し、要求に応じてパフォーマンスを調整する能力は十分です。 しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。 このシナリオでは、プール内の複数のデータベース間で共有される特定の数の DTU でエラスティック プールを使用します。
-
-![SQL Database の概要:階層とレベル別の 1 つのデータベースの DTU](./media/scale-resources/single_db_dtus.png)
+> [!NOTE]
+> 動的スケーラビリティは自動スケールとは異なります。 自動スケールは、基準に基づいてサービスが自動的にスケールされるのに対し、動的スケーラビリティでは、最小限のダウンタイムで手動スケールすることができます。 Azure SQL Database 内の単一データベースは手動でスケーリングできます。[サーバーレス レベル](serverless-tier-overview.md)の場合は、コンピューティング リソースを自動的にスケーリングするように設定します。 データベースがプール内のリソースを共有できる[エラスティック プール](elastic-pool-overview.md)は、現在、手動でのみスケーリングできます。
 
 Azure SQL Database には、データベースを動的にスケーリングする機能が用意されています。
 
@@ -59,7 +59,9 @@ Azure SQL Managed Instance を使用すると、次のようにスケーリン�
 
 - [SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) では[仮想コア](../managed-instance/sql-managed-instance-paas-overview.md#vcore-based-purchasing-model) モードが使用され、インスタンスに割り当てられる最大 CPU コア数と最大ストレージ量を定義できます。 マネージド インスタンス内のすべてのデータベースによって、インスタンスに割り当てられたリソースが共有されます。
 
-いずれかの種類でスケールアップまたはスケールダウンのアクションを開始すると、データベース エンジン プロセスが再起動され、必要に応じて別の仮想マシンに移動されます。 新しい仮想マシンへのデータベース エンジン プロセスの移動は、プロセスの実行中に既存の Azure SQL Database サービスの使用を継続できる **オンライン プロセス** です。 ターゲット データベース エンジンが完全に初期化され、クエリを処理する準備が整うと、接続は[ソースからターゲット データベース エンジンに切り替えられます](single-database-scale.md#impact)。
+## <a name="impact-of-scale-up-or-scale-down-operations"></a>スケールアップまたはスケールダウンの操作の影響
+
+前述のいずれかの種類でスケールアップまたはスケールダウンのアクションを開始すると、データベース エンジン プロセスが再起動され、必要に応じて別の仮想マシンに移動されます。 新しい仮想マシンへのデータベース エンジン プロセスの移動は **オンライン プロセス** です。その間は、既存の Azure SQL Database サービスの使用を継続できます。 ターゲット データベース エンジンでクエリを処理する準備が整うと、現在のデータベース エンジンへのオープン接続が[終了](single-database-scale.md#impact)され、コミットされていないトランザクションがロールバックされます。 ターゲット データベース エンジンへの新しい接続が行われます。
 
 > [!NOTE]
 > データのインポート、データ処理ジョブ、インデックスの再構築など、実行時間の長いトランザクションが実行されている場合、またはインスタンスにアクティブな接続がある場合は、マネージ インスタンスをスケーリングしないことをお勧めします。 スケーリングの完了にかかる時間が通常よりも長くならないようにするには、実行時間の長いすべての操作の完了時にインスタンスをスケーリングする必要があります。
@@ -80,3 +82,4 @@ Azure SQL Managed Instance を使用すると、次のようにスケーリン�
 - 組み込みのデータベース インテリジェンスを使ってデータベースを最適化する方法については、「[自動チューニング](automatic-tuning-overview.md)」をご覧ください。
 - Azure SQL Database での読み取りスケールアウトについては、[読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する](read-scale-out.md)方法を参照してください。
 - データベース シャーディングの詳細については、「[Azure SQL Database によるスケール アウト](elastic-scale-introduction.md)」をご覧ください。
+- スクリプトを使用した単一データベースの監視とスケーリングの例については、「[PowerShell を使用して単一の SQL Database を監視およびスケーリングする](scripts/monitor-and-scale-database-powershell.md)」を参照してください。

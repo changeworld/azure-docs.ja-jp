@@ -5,15 +5,15 @@ services: automation
 author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 02/08/2021
+ms.date: 07/22/2021
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 3ee44509997a16fc7f06fd5a24e473d7011bde40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 938a5858efe79affe904d8d07a05270f3071ab72
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99974640"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114659646"
 ---
 #### <a name="process-automation"></a>プロセスの自動化
 
@@ -32,13 +32,15 @@ ms.locfileid: "99974640"
 | サンドボックスごとに許可されるネットワーク ソケットの最大数<sup>1</sup> |1,000 |Azure サンドボックスにのみ適用されます。|
 | Runbook ごとに許可される最長実行時間<sup>1</sup> |3 時間 |Azure サンドボックスにのみ適用されます。|
 | サブスクリプションでの Automation アカウントの最大数 |制限なし ||
-| Automation アカウントあたりのハイブリッド worker グループの最大数|4,000||
+| Automation アカウントあたりのシステム ハイブリッド runbook worker の最大数|4,000||
+| Automation アカウントあたりのユーザー ハイブリッド runbook worker の最大数|4,000||
 |1 つの Hybrid Runbook Worker で実行できる同時実行ジョブの最大数|50 ||
 | Runbook ジョブの最大パラメーター サイズ   | 512 キロバイト||
 | Runbook の最大パラメーター   | 50|パラメーターの 50 の上限に達したら、パラメーターに JSON または XML 文字列を渡し、Runbook を使用して解析することができます。|
 | Webhook のペイロードの最大サイズ |  512 キロバイト|
 | ジョブ データが保持される最大日数|30 日|
 | PowerShell ワークフローの最大状態サイズ |5 MB| ワークフローのチェックポイント処理を行うときに PowerShell ワークフロー Runbook に適用されます。|
+| Automation アカウントでサポートされるタグの最大数|15||
 
 <sup>1</sup>サンドボックスは、複数のジョブで使用できる共有環境です。 同じサンドボックスを使用するジョブは、サンドボックスのリソース制限に縛られます。
 
@@ -49,6 +51,7 @@ ms.locfileid: "99974640"
 | **リソース** | **制限**| **メモ** |
 |---|---|---|
 |ファイル|500||
+|ファイル サイズ|5 MB||
 |レジストリ|250||
 |Windows ソフトウェア|250|ソフトウェア更新プログラムは含まれません。|
 |Linux パッケージ|1,250||
@@ -62,3 +65,4 @@ ms.locfileid: "99974640"
 | **リソース** | **制限**| **メモ** |
 |---|---|---|
 |更新プログラムの展開ごとのマシンの数|1000||
+|更新プログラムのデプロイごとの動的グループの数 |500 ||

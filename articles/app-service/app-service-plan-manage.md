@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 58ddf60a842a9583eae25a875f55227cee772a8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80bac3de850cb4260ed2e91e6b98063adac6d6fe
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100582534"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236734"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
@@ -20,7 +20,7 @@ ms.locfileid: "100582534"
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
 > [!TIP]
-> App Service Environment がある場合は、 「[App Service Environment で App Service プランを作成する](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan)」をご覧ください。
+> App Service Environment にプランを作成する場合は、 **[Region]\(リージョン\)** でそれを選択し、下に説明する残りのステップを実行します。
 
 空の App Service プランを作成したり、またはアプリ作成の一部としてプランを作成したりすることができます。
 
@@ -63,7 +63,7 @@ ms.locfileid: "100582534"
    > [!IMPORTANT]
    > 上位レベルのプランから下位レベルのプランにアプリを移動する (たとえば **D1** から **F1** に移動する) 場合、アプリで、ターゲット プランの特定の機能が失われる可能性があります。 たとえば、アプリで TLS/SSL 証明書を使っている場合は、次のようなエラー メッセージが表示されることがあります。
    >
-   > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
+   > `Cannot update the site with hostname '<app_name>' because its current TLS/SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed TLS/SSL configuration is 'Disabled'.`
 
 5. 終わったら、 **[OK]** を選択します。
    

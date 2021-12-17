@@ -3,18 +3,18 @@ title: 認証
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services リソースへの要求を認証する方法には、サブスクリプション キー、ベアラー トークン、またはマルチサービス サブスクリプションの 3 つがあります。 この記事では、それぞれの方法と、要求を実行する方法について学習します。
 services: cognitive-services
-author: erhopf
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.author: erhopf
-ms.openlocfilehash: c7aeb9e9f4de7b4de62f9b5a8da6d997e32a2399
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/22/2021
+ms.author: pafarley
+ms.openlocfilehash: cce37298303e97c986475368a713352069baffa6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94363325"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011866"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure Cognitive Services に対する要求の認証
 
@@ -64,8 +64,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>マルチサービスのサブスクリプション キーによる認証
 
->[!WARNING]
-> 現在のところ、以下のサービスではマルチサービス キーがサポートされて **いません**。QnA Maker、Speech Services、Custom Vision、および Anomaly Detector。
+> [!WARNING]
+> 現時点では、マルチサービス キーは QnA Maker、Immersive Reader、Personalizer、および Anomaly Detector をサポートしていません。
 
 この方法も、サブスクリプション キーを使用して要求を認証します。 主な違いは、サブスクリプション キーが特定のサービスに関連付けられておらず、単一のキーを使用して複数の Cognitive Services に対する要求を認証できることです。 リージョン別の提供状況、サポートされている機能、および価格については、「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)」を参照してください。
 
@@ -96,6 +96,13 @@ Translator サービスと共にマルチサービスのサブスクリプショ
 - `westeurope`
 - `westus`
 - `westus2`
+- `francecentral`
+- `koreacentral`
+- `northcentralus`
+- `southafricanorth`
+- `uaenorth`
+- `switzerlandnorth`
+
 
 ### <a name="sample-requests"></a>サンプルの要求
 

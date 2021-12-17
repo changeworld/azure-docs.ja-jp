@@ -1,38 +1,40 @@
 ---
-title: B2B 用 AD FS との直接フェデレーションの設定 - Azure AD
-description: ご自身の Azure AD アプリにゲストがサインインできるようにするために、AD FS を直接フェデレーションの ID プロバイダーとして設定する方法について説明します
+title: B2B 用 AD FS を使用して SAML/WS-Fed IdP フェデレーションを設定する - Azure AD
+description: ご自身の Azure AD アプリにゲストがサインインできるようにするために、AD FS を SAML/WS-Fed IdP フェデレーションの ID プロバイダー (IdP) として設定する方法について説明します
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/01/2019
+ms.date: 04/27/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 984ddc25f11f76ba8dbe0874ac5aa64c15ebf323
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87907735"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758467"
 ---
-# <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>例: Active Directory フェデレーション サービス (AD FS) との直接フェデレーション (プレビュー)
+# <a name="example-configure-samlws-fed-based-identity-provider-federation-with-ad-fs-preview"></a>例: AD FS を使用して SAML/WS-Fed ベースの ID プロバイダー フェデレーションを構成する (プレビュー)
+
+>[!NOTE]
+>- Azure Active Directory の "*直接フェデレーション*" は、"*SAML/WS-Fed ID プロバイダー (IdP) フェデレーション*" と呼ばれるようになりました。
+>- SAML/WS-Fed IdP フェデレーションは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+この記事では、Active Directory フェデレーション サービス (AD FS) を SAML 2.0 または WS-Fed IdP として使用して [SAML/WS-Fed IdP フェデレーション](direct-federation.md)を設定する方法について説明します。 フェデレーションをサポートするには、IdP に特定の属性とクレームを構成する必要があります。 フェデレーション用の IdP を構成する方法を示すために、例として Active Directory フェデレーション サービス (AD FS) を使用します。 AD FS を SAML IdP として設定する方法と、WS-Fed IdP として設定する方法の両方を紹介します。
 
 > [!NOTE]
-> 直接フェデレーションは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> この記事では、わかりやすいように、AD FS を SAML 用に設定する方法と、WS-Fed 用に設定する方法の両方について説明します。 IdP が AD FS であるフェデレーションの統合には、WS-Fed をプロトコルとして使用することをお勧めします。
 
-この記事では、Active Directory フェデレーション サービス (AD FS) を SAML 2.0 または WS-Fed ID プロバイダーとして使用して[直接フェデレーション](direct-federation.md)を設定する方法について説明します。 直接フェデレーションをサポートするには、ID プロバイダーに特定の属性と要求を構成する必要があります。 直接フェデレーション用の ID プロバイダーを構成する方法を示すために、例として Active Directory フェデレーション サービス (AD FS) を使用します。 AD FS を SAML ID プロバイダーとして設定する方法と、WS-Fed ID プロバイダーとして設定する方法の両方を紹介します。
+## <a name="configure-ad-fs-for-saml-20-federation"></a>AD FS を SAML 2.0 のフェデレーション用に構成する
 
-> [!NOTE]
-> この記事では、わかりやすいように、AD FS を SAML 用に設定する方法と、WS-Fed 用に設定する方法の両方について説明します。 ID プロバイダーが AD FS である直接フェデレーションの統合には、WS-Fed をプロトコルとして使用することをお勧めします。 
+Azure AD B2B は、以下に示す特定の要件に従って、SAML プロトコルを使用する IdP と連携するように構成できます。 SAML の構成手順を説明するために、このセクションでは SAML 2.0 用に AD FS を設定する方法を示します。
 
-## <a name="configure-ad-fs-for-saml-20-direct-federation"></a>AD FS を SAML 2.0 の直接フェデレーション用に構成する
-Azure AD B2B は、以下に示す特定の要件に従って、SAML プロトコルを使用する ID プロバイダーと連携するように構成できます。 SAML の構成手順を説明するために、このセクションでは SAML 2.0 用に AD FS を設定する方法を示します。 
-
-直接フェデレーションを設定するには、ID プロバイダーからの SAML 2.0 応答において以下の属性が受け取られる必要があります。 これらの属性は、オンライン セキュリティ トークン サービスの XML ファイルにリンクするか手動で入力することによって、構成できます。 「[Create a test AD FS instance](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)」(AD FS テスト インスタンスの作成) のステップ 12 では、AD FS エンドポイントを検索する方法や、メタデータ URL (たとえば `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`) を生成する方法について説明しています。 
+フェデレーションを設定するには、IdP からの SAML 2.0 応答において以下の属性が受け取られる必要があります。 これらの属性は、オンライン セキュリティ トークン サービスの XML ファイルにリンクするか手動で入力することによって、構成できます。 「[Create a test AD FS instance](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)」(AD FS テスト インスタンスの作成) のステップ 12 では、AD FS エンドポイントを検索する方法や、メタデータ URL (たとえば `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`) を生成する方法について説明しています。 
 
 |属性  |値  |
 |---------|---------|
@@ -40,7 +42,7 @@ Azure AD B2B は、以下に示す特定の要件に従って、SAML プロト�
 |対象ユーザー     |`urn:federation:MicrosoftOnline`         |
 |発行者     |パートナー IdP の発行者 URI (たとえば `http://www.example.com/exk10l6w90DHM0yi...`)         |
 
-ID プロバイダーによって発行される SAML 2.0 トークン内に以下の要求が構成されている必要があります。
+IdP によって発行される SAML 2.0 トークン内に以下のクレームが構成されている必要があります。
 
 
 |属性  |値  |
@@ -49,7 +51,7 @@ ID プロバイダーによって発行される SAML 2.0 トークン内に以�
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
 
-次のセクションでは、SAML 2.0 ID プロバイダーの例として、AD FS を使用して必須の属性と要求を構成する方法について説明します。
+次のセクションでは、SAML 2.0 IdP の例として、AD FS を使用して必須の属性とクレームを構成する方法について説明します。
 
 ### <a name="before-you-begin"></a>開始する前に
 
@@ -100,12 +102,12 @@ ID プロバイダーによって発行される SAML 2.0 トークン内に以�
 
 3. **[完了]** をクリックします。 
 4. **[要求規則の編集]** ウィンドウに新しい規則が表示されます。 **[適用]** をクリックします。 
-5. **[OK]** をクリックします。 これで、SAML 2.0 プロトコルを使用した直接フェデレーション用に AD FS サーバーが構成されました。
+5. **[OK]** をクリックします。 これで、SAML 2.0 プロトコルを使用したフェデレーション用に AD FS サーバーが構成されました。
 
-## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>AD FS を WS-Fed の直接フェデレーション用に構成する 
-Azure AD B2B は、以下に示す特定の要件に従って、WS-Fed プロトコルを使用する ID プロバイダーと連携するように構成できます。 現時点で 2 つの WS-Fed プロバイダー (AD FS と Shibboleth) が、Azure AD との互換性テスト済みです。 ここでは、WS-Fed ID プロバイダーの例として、Active Directory フェデレーション サービス (AD FS) を使用します。 WS-Fed 準拠のプロバイダーと Azure AD の間に証明書利用者信頼を確立する方法の詳細については、Azure AD ID プロバイダーの互換性に関するドキュメントをダウンロードしてください。
+## <a name="configure-ad-fs-for-ws-fed-federation"></a>AD FS を WS-Fed フェデレーション用に構成する 
+Azure AD B2B は、以下に示す特定の要件に従って、WS-Fed プロトコルを使用する IdP と連携するように構成できます。 現時点で 2 つの WS-Fed プロバイダー (AD FS と Shibboleth) が、Azure AD との互換性テスト済みです。 ここでは、WS-Fed IdP の例として、Active Directory フェデレーション サービス (AD FS) を使用します。 WS-Fed 準拠のプロバイダーと Azure AD の間に証明書利用者信頼を確立する方法の詳細については、Azure AD ID プロバイダーの互換性に関するドキュメントをダウンロードしてください。
 
-直接フェデレーションを設定するには、ID プロバイダーからの WS-Fed メッセージにおいて以下の属性が受け取られる必要があります。 これらの属性は、オンライン セキュリティ トークン サービスの XML ファイルにリンクするか手動で入力することによって、構成できます。 「[Create a test AD FS instance](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)」(AD FS テスト インスタンスの作成) のステップ 12 では、AD FS エンドポイントを検索する方法や、メタデータ URL (たとえば `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`) を生成する方法について説明しています。
+フェデレーションを設定するには、IdP からの WS-Fed メッセージにおいて以下の属性が受け取られる必要があります。 これらの属性は、オンライン セキュリティ トークン サービスの XML ファイルにリンクするか手動で入力することによって、構成できます。 「[Create a test AD FS instance](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)」(AD FS テスト インスタンスの作成) のステップ 12 では、AD FS エンドポイントを検索する方法や、メタデータ URL (たとえば `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`) を生成する方法について説明しています。
  
 |属性  |値  |
 |---------|---------|
@@ -120,7 +122,7 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-次のセクションでは、WS-Fed ID プロバイダーの例として、AD FS を使用して必須の属性と要求を構成する方法について説明します。
+次のセクションでは、WS-Fed IdP の例として、AD FS を使用して必須の属性とクレームを構成する方法について説明します。
 
 ### <a name="before-you-begin"></a>開始する前に
 この手順を開始する前に、AD FS サーバーが既に設定されていて稼働している必要があります。 AD FS サーバーの設定に関するヘルプについては、「[Create a test AD FS 3.0 instance on an Azure virtual machine](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)」(Azure 仮想マシンでの AD FS 3.0 テスト インスタンスの作成) を参照してください。
@@ -150,7 +152,7 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 
 1.  **[完了]** を選択します。 
 1.  **[要求規則の編集]** ウィンドウに新しい規則が表示されます。 **[適用]** をクリックします。  
-1.  **[OK]** をクリックします。 これで、WS-Fed を使用した直接フェデレーション用に AD FS サーバーが構成されました。
+1.  **[OK]** をクリックします。 これで、WS-Fed を使用したフェデレーション用に AD FS サーバーが構成されました。
 
 ## <a name="next-steps"></a>次のステップ
-次に、Azure AD ポータルで、または PowerShell を使用して、[Azure AD 上で直接フェデレーションを構成](direct-federation.md#step-2-configure-direct-federation-in-azure-ad)します。 
+次に、Azure AD ポータルで、または PowerShell を使用して、[Azure AD 上で SAML/WS-Fed IdP フェデレーションを構成](direct-federation.md#step-3-configure-samlws-fed-idp-federation-in-azure-ad)します。

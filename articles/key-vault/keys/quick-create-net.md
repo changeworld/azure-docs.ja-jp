@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: 52e33660b4076f8119ddb5d77e2dbbf7ee201913
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: dd2dfb5af2fffd4c9821e29502102ae08573da67
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968460"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950493"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>クイックスタート: .NET 用 Azure Key Vault キー クライアント ライブラリ (SDK v4)
 
@@ -34,26 +34,21 @@ Key Vault とキーの詳細については、以下を参照してください�
 * [Azure CLI](/cli/azure/install-azure-cli)
 * キー コンテナー - [Azure portal](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md)、または [Azure PowerShell](../general/quick-create-powershell.md) を使用して作成できます。
 
+このクイックスタートでは、`dotnet` および Azure CLI を使用します
+
 ## <a name="setup"></a>セットアップ
 
-このクイックスタートでは、Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true)方法に関するページを参照してください。
+このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true)方法に関するページを参照してください。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 1. `login` コマンドを実行します。
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli-interactive
     az login
     ```
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
-    
-    ```azurepowershell-interactive
-    Connect-AzAccount
-    ```
-    ---
 
-    Azure CLI または Azure PowerShell で既定のブラウザーを開くことができる場合、開いたブラウザに Azure サインイン ページが読み込まれます。
+    CLI で既定のブラウザーを開くことができる場合、開いたブラウザに Azure サインイン ページが読み込まれます。
 
     それ以外の場合は、[https://aka.ms/devicelogin](https://aka.ms/devicelogin) でブラウザー ページを開き、ターミナルに表示されている認証コードを入力します。
 
@@ -63,16 +58,9 @@ Key Vault とキーの詳細については、以下を参照してください�
 
 自分のユーザー アカウントにキーのアクセス許可を付与するアクセス ポリシーをキー コンテナーに対して作成します
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-```azurecli-interactive
+```console
 az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
 ```
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
-
-```azurepowershell-interactive
-Set-AzKeyVaultAccessPolicy -VaultName <your-key-vault-name> -UserPrincipalName user@domain.com -PermissionsToSecrets delete,get,list,set,purge
-```
----
 
 ### <a name="create-new-net-console-app"></a>新しい .NET コンソール アプリを作成する
 
@@ -119,7 +107,7 @@ Windows
 set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
-```azurepowershell
+```powershell
 $Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
@@ -146,9 +134,9 @@ using Azure.Security.KeyVault.Keys;
 
 ### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
 
-このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
 
-以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、[Azure ID ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)の ["DefaultAzureCredential()"](/dotnet/api/azure.identity.defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 キー コンテナーに対する認証について詳しくは、[開発者ガイド](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)を参照してください。
+以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、[Azure ID ライブラリ](/dotnet/api/overview/azure/identity-readme)の ["DefaultAzureCredential()"](/dotnet/api/azure.identity.defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 キー コンテナーに対する認証について詳しくは、[開発者ガイド](/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)を参照してください。
 
 ```csharp
 var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -159,7 +147,7 @@ var client = new KeyClient(new Uri(kvUri), new DefaultAzureCredential());
 
 ### <a name="save-a-key"></a>キーの保存
 
-このタスクには、[CreateKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.createkeyasync) メソッドを使用します。 このメソッドは、パラメーターで、キー名と[キーの種類](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.keys.keytype)を受け取ります。
+このタスクには、[CreateKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.createkeyasync) メソッドを使用します。 このメソッドは、パラメーターで、キー名と[キーの種類](/dotnet/api/azure.security.keyvault.keys.keytype)を受け取ります。
 
 ```csharp
 var key = await client.CreateKeyAsync("myKey", KeyType.Rsa);
@@ -272,4 +260,4 @@ Key Vault の詳細およびアプリとの統合方法の詳細については�
 - [App Service アプリケーションから Key Vault にアクセスする方法についてのチュートリアル](../general/tutorial-net-create-vault-azure-web-app.md)を参照する
 - [仮想マシンから Key Vault にアクセスする方法についてのチュートリアル](../general/tutorial-net-virtual-machine.md)を参照する
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
-- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-features.md)を確認する

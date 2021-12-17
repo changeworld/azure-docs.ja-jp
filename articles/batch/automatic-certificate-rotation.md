@@ -2,23 +2,17 @@
 title: Batch プールで証明書の自動ローテーションを有効にする
 description: マネージド ID と自動的に更新される証明書を使用して、Batch プールを作成できます。
 ms.topic: conceptual
-ms.date: 03/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: e8bea49b2980deb8f20258ab7ea5619ece8cd2bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/16/2021
+ms.openlocfilehash: 9a8f4d785c9a411df6c867724f057b1dc9b29722
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104962304"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362420"
 ---
 # <a name="enable-automatic-certificate-rotation-in-a-batch-pool"></a>Batch プールで証明書の自動ローテーションを有効にする
 
  自動的に更新される証明書を使用して Batch プールを作成できます。 これを行うには、[Azure Key Vault](../key-vault/general/overview.md) で証明書にアクセスできる[ユーザー割り当てマネージド ID](managed-identity-pools.md)を使用してプールを作成する必要があります。
-
-> [!IMPORTANT]
-> ユーザー割り当てマネージド ID を使用する Azure Batch プールに対するサポートは、現在、次のリージョンを対象にパブリック プレビュー段階にあります。米国西部 2、米国中南部、米国東部、US Gov アリゾナ、US Gov バージニア。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="create-a-user-assigned-identity"></a>ユーザー割り当て ID を作成する
 

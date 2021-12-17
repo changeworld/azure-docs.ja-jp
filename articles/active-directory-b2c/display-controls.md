@@ -3,20 +3,20 @@ title: 表示コントロール リファレンス
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 表示コントロールのリファレンスです。 カスタム ポリシーで定義されているユーザー体験をカスタマイズするには、表示コントロールを使用します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/11/2020
-ms.author: mimart
+ms.date: 07/20/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 498946016a057d39bbd2bd62af9829a56f77fa01
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97387056"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007355"
 ---
 # <a name="display-controls"></a>表示コントロール
 
@@ -124,17 +124,15 @@ ms.locfileid: "97387056"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| ValidationTechnicalProfile | 1:n | 参照元の技術プロファイルの要求表示の一部またはすべてを検証するために使用する技術プロファイル。 |
+| ValidationClaimsExchangeTechnicalProfile | 1:n | 参照元の技術プロファイルの要求表示の一部またはすべてを検証するために使用する技術プロファイル。 |
 
-**ValidationTechnicalProfile** 要素には、次の属性が含まれています。
+**ValidationClaimsExchangeTechnicalProfile** 要素には、次の属性が含まれています。
 
-| 属性 | 必須 | Description |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | はい | ポリシーまたは親ポリシーで既に定義されている技術プロファイルの識別子。 |
-|ContinueOnError|いいえ| この検証技術プロファイルでエラーが発生した場合に、後続の検証技術プロファイルの検証を続行するかどうかを示します。 有効な値: `true` または `false` (既定値。以降の検証プロファイルの処理が停止され、エラーが返されます)。 |
-|ContinueOnSuccess | いいえ | この検証技術プロファイルが成功した場合に、後続の検証プロファイルの検証を続行するかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` で、以降の検証プロファイルの処理が続行されることを意味します。 |
+| TechnicalProfileReferenceId | はい | ポリシーまたは親ポリシーで既に定義されている技術プロファイルの識別子。 |
 
-**ValidationTechnicalProfile** 要素には、次の要素が含まれています。
+**ValidationClaimsExchangeTechnicalProfile** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |

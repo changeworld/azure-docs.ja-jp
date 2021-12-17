@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8acf01c242f7ecc50116976d73766356d74fdd23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6031ce660d570b98787c82e460b2efa4c2e73b94
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98679292"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679694"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB - Table API のテーブルを作成する
 [!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]

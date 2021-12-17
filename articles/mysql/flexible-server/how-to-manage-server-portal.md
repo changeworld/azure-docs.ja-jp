@@ -6,22 +6,21 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 7a01863b3a0c29e94550be67ca957655cff32660
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 677301275beb561a583ffeea92861132a54b3e34
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90930881"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445469"
 ---
-# <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバー (プレビュー) を管理する
+# <a name="manage-an-azure-database-for-mysql---flexible-server-using-azure-portal"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバーを管理する
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
-
-この記事では、Azure Database for MySQL フレキシブル サーバー (プレビュー) を管理する方法について示します。 管理タスクには、コンピューティングとストレージのスケーリング、管理者パスワードのリセット、サーバーの削除が含まれます。
+この記事では、Azure Database for MySQL フレキシブル サーバーを管理する方法について示します。 管理タスクには、コンピューティングとストレージのスケーリング、管理者パスワードのリセット、サーバーの削除が含まれます。
 
 ## <a name="sign-in"></a>サインイン
+
 [Azure portal](https://portal.azure.com) にサインインします。 Azure portal でフレキシブル サーバーのリソースに移動します。
 
 ## <a name="scale-compute-and-storage"></a>コンピューティングとストレージのスケーリング
@@ -35,7 +34,8 @@ ms.locfileid: "90930881"
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/howto-manage-server-portal/scale-server.png" alt-text="ストレージのフレキシブル サーバーのスケーリング":::
 
-   > [!Important]
+
+> [!IMPORTANT]
    > - ストレージはスケールダウンできません。
    > - 仮想コアをスケーリングすると、サーバーが再起動されます。
 

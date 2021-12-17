@@ -1,28 +1,25 @@
 ---
-title: Microsoft Azure Maps Creator (プレビュー) の Drawing パッケージの要件
+title: Microsoft Azure Maps Creator の Drawing パッケージの要件
 description: 施設の設計ファイルをマップ データに変換するための Drawing パッケージの要件について説明します
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 1/08/2021
+ms.date: 07/02/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philMea
-ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e6b380b040697a56179f5fec7f7d10796f035fd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98895273"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746650"
 ---
 # <a name="drawing-package-requirements"></a>Drawing パッケージの要件
 
+[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)を使用することにより、アップロードした Drawing パッケージをマップ データに変換できます。 この記事では、Conversion API の Drawing パッケージの要件について説明します。 サンプル パッケージを表示するには、サンプルの [Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)をダウンロードします。
 
-> [!IMPORTANT]
-> Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+描画パッケージを準備する方法のガイドについては、「[Conversion Drawing Package Guide ](drawing-package-guide.md) (変換描画パッケージ ガイド)」を参照してください。
 
-[Azure Maps Conversion サービス](/rest/api/maps/conversion)を使用することにより、アップロードした Drawing パッケージをマップ データに変換できます。 この記事では、Conversion API の Drawing パッケージの要件について説明します。 サンプル パッケージを表示するには、サンプルの [Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)をダウンロードします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +27,8 @@ ms.locfileid: "98895273"
 
 任意の CAD ソフトウェアを選択して、Drawing パッケージで図面を作成することができます。  
 
-[Azure Maps Conversion サービス](/rest/api/maps/conversion)を使用すると、Drawing パッケージをマップ データに変換できます。 Conversion サービスは、AutoCAD DWG ファイル形式で機能します。 `AC1032` は、DWG ファイルの内部形式のバージョンです。内部 DWG ファイル形式のバージョンには `AC1032` を選択することをお勧めします。  
+[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)を使用すると、Drawing パッケージをマップ データに変換できます。 Conversion サービスは、AutoCAD DWG ファイル形式 `AC1032` で機能します。
+
 
 ## <a name="glossary-of-terms"></a>用語集
 
@@ -38,64 +36,75 @@ ms.locfileid: "98895273"
 
 | 期間  | 定義 |
 |:-------|:------------|
-| レイヤー | AutoCAD DWG レイヤー。|
+| レイヤー | 描画ファイルからの AutoCAD DWG レイヤー。|
+| Entity | 描画ファイルからの AutoCAD DWG レイヤー。 |
+| Xref  | 外部参照としてプライマリ図面にアタッチされた AutoCAD DWG ファイル形式のファイル。  |
 | Level | 設定した高度にある建物の領域。 たとえば、ビルのフロアなどです。 |
-| Xref  |外部参照としてプライマリ図面にアタッチされた AutoCAD DWG ファイル形式 (.dwg) のファイル。  |
-| 特徴量 | ジオメトリをより多くのメタデータ情報と組み合わせたオブジェクト。 |
+| 機能 | 変換サービスから生成される、ジオメトリとメタデータの情報を組み合わせたオブジェクトのインスタンス。 |
 | 地物クラス | 地物の一般的なブループリント。 たとえば、*ユニット* は地物クラスであり、*オフィス* は地物です。 |
 
 ## <a name="drawing-package-structure"></a>Drawing パッケージの構造
 
 Drawing パッケージは、次のファイルを含む .zip アーカイブです。
 
-* AutoCAD DWG ファイル形式の DWG ファイル。
-* Drawing パッケージ内の DWG ファイルを記述する _manifest.json_ ファイル。
+- AutoCAD DWG ファイル形式の DWG ファイル。
+- Drawing パッケージ内の DWG ファイルを記述する _manifest.json_ ファイル。
 
-Drawing パッケージは、.zip 拡張子の付いた 1 つのアーカイブ ファイルに圧縮する必要があります。 DWG ファイルはパッケージ内で任意の方法で編成できますが、マニフェスト ファイルは zip 圧縮されたパッケージのルート ディレクトリに配置する必要があります。 次のセクションでは、DWG ファイル、マニフェスト ファイル、およびこれらのファイルのコンテンツの要件について詳しく説明します。
+Drawing パッケージは、.zip 拡張子の付いた 1 つのアーカイブ ファイルに圧縮する必要があります。 DWG ファイルはパッケージ内で任意の方法で編成できますが、マニフェスト ファイルは zip 圧縮されたパッケージのルート ディレクトリに配置する必要があります。 次のセクションでは、DWG ファイル、マニフェスト ファイル、およびこれらのファイルのコンテンツの要件について詳しく説明します。 サンプル パッケージを表示するには、[サンプルの Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)をダウンロードします。
 
-## <a name="dwg-files-requirements"></a>DWG ファイルの要件
+## <a name="dwg-file-conversion-process"></a>DWG ファイル変換プロセス
 
-施設のレベルごとに 1 つの DWG ファイルが必要です。 そのレベルのデータは、1 つの DWG ファイルに含まれている必要があります。 外部参照 (_xrefs_) は、親図面にバインドする必要があります。 さらに、各 DWG ファイルには次の要件があります。
+[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)は、各 DWG ファイルに対して次の処理を実行します。
 
-* _Exterior_ レイヤーと _Unit_ レイヤーを定義する必要があります。 必要に応じて、次の省略可能なレイヤーを定義することもできます。_Wall_、_Door_、_UnitLabel_、_Zone_、および _ZoneLabel_。
-* 複数のレベルの地物を含めることはできません。
-* 複数の施設の地物を含めることはできません。
-* Drawing パッケージ内の他の DWG ファイルと同じ測定系と測定単位を参照する必要があります。
+- 地物クラスの抽出
+    - Levels
+    - Units
+    - ゾーン
+    - 開口部
+    - 壁
+    - 垂直貫入
+- "*施設*" 地物の生成  
+- 他の地物から参照される既定のカテゴリとなる地物の最小のセットを生成します。
+    - room
+    - structure
+    - wall
+    - opening.door
+    - ゾーン
+    - facility
+    
+## <a name="dwg-file-requirements"></a>DWG ファイルの要件
 
-[Azure Maps Conversion サービス](/rest/api/maps/conversion)を使用すると、DWG ファイルから次の地物クラスを抽出できます。
+施設のレベルごとに 1 つの DWG ファイルが必要です。 1 つのレベルのすべてのデータは、1 つの DWG ファイルに含まれている必要があります。  外部参照 (_xrefs_) は、親図面にバインドする必要があります。 例えば、3 つのレベルを持つ施設の場合、Drawing パッケージ内に 3 つの DWG ファイルがあります。
 
-* Levels
-* Units
-* ゾーン
-* 開口部
-* 壁
-* 垂直貫入
+各 DWG ファイルは、次の要件に従う必要があります。
 
-すべての変換ジョブの結果として、部屋、構造、壁、開口部、ドア、ゾーン、施設などの既定のカテゴリの最小セットが生成されます。 オブジェクトから参照されるカテゴリ名ごとに、追加のカテゴリがあります。  
+- DWG ファイルは、_Exterior_ および _Unit_ レイヤーを定義する必要があります。 必要に応じて、_Wall_、_Door_、_UnitLabel_、_Zone_、および _ZoneLabel_ のレイヤーを定義することもできます。
+- DWG ファイルには、複数のレベルの地物を含めることはできません。
+- DWG ファイルには、複数の施設の地物を含めることはできません。
+- DWG は、Drawing パッケージ内の他の DWG ファイルと同じ測定系と測定単位を参照する必要があります。
 
-DWG レイヤーには、1 クラスの地物が含まれている必要があります。 複数のクラスで 1 つのレイヤーを共有しないでください。 たとえば、ユニットと壁でレイヤーを共有することはできません。
+## <a name="dwg-layer-requirements"></a>DWG レイヤーの要件
 
-DWG レイヤーは、次の条件にも従う必要があります。
+各 DWG レイヤーは、次の規則に従う必要があります。
 
-* すべての DWG ファイルの図面の原点は、同じ緯度と経度に合わせる必要があります。
-* 各レベルは、他のレベルと同じ向きにする必要があります。
-* 自己交差する多角形は自動的に修復され、[Azure Maps Conversion サービス](/rest/api/maps/conversion)から警告が生成されます。 修復された結果は期待された結果と一致しない可能性があるため、手動で検査することをお勧めします。
+- レイヤーに含めることができるのは、1 クラスの地物のみです。 たとえば、ユニットと壁を同じレイヤーに含めることはできません。
+- 1 つのクラスの地物を複数のレイヤーで表すことができます。
+- 自己交差するポリゴンは許可されていますが、自動的に修復されます。 これらが修復されると、[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)から警告が生成されます。 修復された結果は期待された結果と一致しない可能性があるため、手動で検査することをお勧めします。
+- 各レイヤーには、サポートされるエンティティ型のリストがあります。 その他のエンティティ型がレイヤー内にあった場合は無視されます。 たとえば、壁のレイヤーでは、テキスト エンティティはサポートされていません。
 
-すべてのレイヤー エンティティは、次のいずれかの種類である必要があります。線、ポリライン、多角形、円弧、円、楕円 (閉)、またはテキスト (単一行)。 その他のエンティティの種類は無視されます。
-
-レイヤーごとにサポートされているエンティティの種類と変換されたマップ地物の概要を次の表に示します。 レイヤーにサポートされていないエンティティの種類が含まれている場合、[Azure Maps Conversion サービス](/rest/api/maps/conversion)ではそのエンティティは無視されます。  
+レイヤーごとにサポートされているエンティティの種類と変換されたマップ地物の概要を次の表に示します。 レイヤーにサポートされていないエンティティ型が含まれている場合、[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)ではそのエンティティは無視されます。  
 
 | レイヤー | エンティティの種類 | 変換された地物 |
 | :----- | :-------------------| :-------
 | [Exterior](#exterior-layer) | 多角形、ポリライン (閉)、円、楕円 (閉) | Levels
-| [単位](#unit-layer) |  多角形、ポリライン (閉)、円、楕円 (閉) | 垂直貫入、ユニット
-| [Wall](#wall-layer)  | 多角形、ポリライン (閉)、円、楕円 (閉) | 適用不可。 詳細については、「[Wall レイヤー](#wall-layer)」を参照してください。
+| [単位](#unit-layer) |  多角形、ポリライン (閉)、円、楕円 (閉) |  ユニットと垂直貫入
+| [Wall](#wall-layer)  | 多角形、ポリライン (閉)、円、楕円 (閉)、構造体 |
 | [Door](#door-layer) | 多角形、ポリライン、線、円弧、円 | 開口部
 | [ゾーン](#zone-layer) | 多角形、ポリライン (閉)、円、楕円 (閉) | ゾーン
 | [UnitLabel](#unitlabel-layer) | テキスト (単一行) | 適用不可。 このレイヤーでは、Unit レイヤーのユニット地物にのみプロパティを追加できます。 詳細については、「[UnitLabel レイヤー](#unitlabel-layer)」を参照してください。
 | [ZoneLabel](#zonelabel-layer) | テキスト (単一行) | 適用不可。 このレイヤーでは、ZonesLayer のゾーン地物にのみプロパティを追加できます。 詳細については、「[ZoneLabel レイヤー](#zonelabel-layer)」を参照してください。
 
-以下のセクションでは、各レイヤーの要件について詳しく説明します。
+以下のセクションでは、各レイヤーの要件について説明します。
 
 ### <a name="exterior-layer"></a>Exterior レイヤー
 
@@ -103,12 +112,12 @@ DWG レイヤーは、次の条件にも従う必要があります。
 
 Exterior レイヤーにあるエンティティ図面の数に関係なく、[最終的な施設データセット](tutorial-creator-indoor-maps.md#create-a-feature-stateset)には、各 DWG ファイルの 1 レベルの地物のみが含まれます。 追加として:
 
-* 外装は、多角形、ポリライン (閉)、円、または 楕円 (閉) として描画する必要があります。
-* 外装は重ねることができますが、1 つのジオメトリに分解されます。
-* 結果として得られるレベル地物は、4 平方メートル以上である必要があります。
-* 結果として得られるレベル地物は、400,000 平方メートル以下である必要があります。
+- 外装は、多角形、ポリライン (閉)、円、または 楕円 (閉) として描画する必要があります。
+- 外装は重ねることができますが、1 つのジオメトリに分解されます。
+- 結果として得られるレベル地物は、4 平方メートル以上である必要があります。
+- 結果として得られるレベル地物は、400,000 平方メートル以下である必要があります。
 
-レイヤーに複数の重なり合うポリラインが含まれている場合、ポリラインは 1 つのレベル地物に分解されます。 または、レイヤーに複数の重ならないポリラインが含まれている場合、結果のレベル地物は複数の多角形で表現されます。
+レイヤーに複数の重なり合うポリラインが含まれている場合、ポリラインは 1 つのレベル地物に分解されます。 代わりに、レイヤーに複数の重ならないポリラインが含まれている場合、結果のレベル地物は複数の多角形で表現されます。
 
 Exterior レイヤーの例は、[サンプル Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)の Outline レイヤーとして確認することができます。
 
@@ -118,10 +127,10 @@ Exterior レイヤーの例は、[サンプル Drawing パッケージ](https://
 
 Unit レイヤーは次の要件に従う必要があります。
 
-* ユニットは、多角形、ポリライン (閉)、円、または 楕円 (閉) として描画する必要があります。
-* ユニットは、施設の外装の境界内に収まっている必要があります。
-* ユニットの一部を重ねることはできません。
-* ユニットに自己交差するジオメトリを含めることはできません。
+- ユニットは、多角形、ポリライン (閉)、円、または 楕円 (閉) として描画する必要があります。
+- ユニットは、施設の外装の境界内に収まっている必要があります。
+- ユニットの一部を重ねることはできません。
+- ユニットに自己交差するジオメトリを含めることはできません。
 
 UnitLabel レイヤーにテキスト オブジェクトを作成してユニットに名前を付け、ユニットの境界内にオブジェクトを配置します。 詳細については、「[UnitLabel レイヤー](#unitlabel-layer)」を参照してください。
 
@@ -131,8 +140,8 @@ Unit レイヤーの例は、[サンプル Drawing パッケージ](https://gith
 
 各レベルの DWG ファイルには、壁、柱、その他の建築構造の物理的な範囲を定義するレイヤーを含めることができます。
 
-* 壁は、多角形、ポリライン (閉)、円、または 楕円 (閉) として描画する必要があります。
-* 1 つまたは複数の Wall レイヤーには、建築構造として解釈されるジオメトリのみを含める必要があります。
+- 壁は、多角形、ポリライン (閉)、円、または 楕円 (閉) として描画する必要があります。
+- 1 つまたは複数の Wall レイヤーには、建築構造として解釈されるジオメトリのみを含める必要があります。
 
 Wall レイヤーの例は、[サンプル Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)で確認できます。
 
@@ -148,9 +157,9 @@ Azure Maps データセットのドアの開口部は、複数のユニットの
 
 各レベルの DWG ファイルには、ゾーンの物理的な範囲を定義する Zone レイヤーを含めることができます。 ゾーンは、名前を付けてレンダリングできる、移動不可能な領域です。 ゾーンは複数のレベルにまたがることができ、zoneSetId プロパティを使用してグループ化されます。
 
-* ゾーンは、多角形、ポリライン (閉)、または 楕円 (閉) として描画する必要があります。
-* ゾーンは重複していてもかまいません。
-* ゾーンは、施設の外装の内側または外側に配置することができます。
+- ゾーンは、多角形、ポリライン (閉)、または 楕円 (閉) として描画する必要があります。
+- ゾーンは重複していてもかまいません。
+- ゾーンは、施設の外装の内側または外側に配置することができます。
 
 ZoneLabel レイヤーにテキスト オブジェクトを作成し、ゾーンの境界内にテキスト オブジェクトを配置して、ゾーンに名前を付けます。 詳細については、「[ZoneLabel レイヤー](#zonelabel-layer)」を参照してください。
 
@@ -160,9 +169,9 @@ Zone レイヤーの例は、[サンプル Drawing パッケージ](https://gith
 
 各レベルの DWG ファイルには、UnitLabel レイヤーを含めることができます。 UnitLabel レイヤーでは、Unit レイヤーから抽出されたユニットに name プロパティを追加します。 name プロパティを持つユニットには、マニフェスト ファイルで詳細をさらに指定できます。
 
-* ユニット ラベルは単一行のテキスト エンティティである必要があります。
-* ユニット ラベルは、ユニットの境界内に収まる必要があります。
-* UnitLabel レイヤーのユニットに複数のテキスト エンティティを含めることはできません。
+- ユニット ラベルは単一行のテキスト エンティティである必要があります。
+- ユニット ラベルは、ユニットの境界内に完全に収まる必要があります。
+- UnitLabel レイヤーのユニットに複数のテキスト エンティティを含めることはできません。
 
 UnitLabel レイヤーの例は、[サンプル Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)で確認できます。
 
@@ -170,19 +179,23 @@ UnitLabel レイヤーの例は、[サンプル Drawing パッケージ](https:/
 
 各レベルの DWG ファイルには、ZoneLabel レイヤーを含めることができます。 このレイヤーでは、Zone レイヤーから抽出されたゾーンに name プロパティを追加します。 name プロパティを持つゾーンには、マニフェスト ファイルで詳細をさらに指定できます。
 
-* ゾーン ラベルは単一行のテキスト エンティティである必要があります。
-* ゾーン ラベルは、ユニットの境界内に収まる必要があります。
-* ZoneLabel レイヤーのゾーンに複数のテキスト エンティティを含めることはできません。
+- ゾーン ラベルは単一行のテキスト エンティティである必要があります。
+- ゾーン ラベルは、ユニットの境界内に収まる必要があります。
+- ZoneLabel レイヤーのゾーンに複数のテキスト エンティティを含めることはできません。
 
 ZoneLabel レイヤーの例は、[サンプル Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)で確認できます。
 
 ## <a name="manifest-file-requirements"></a>マニフェスト ファイルの要件
 
-zip フォルダーには、ディレクトリのルート レベルにマニフェスト ファイルが格納されている必要があります。また、ファイル名は **manifest.json** にする必要があります。 これには、[Azure Maps Conversion サービス](/rest/api/maps/conversion)でコンテンツを解析できる DWG ファイルについて記述されています。 マニフェストに指定されたファイルのみが取り込まれます。 zip フォルダー内にあっても、マニフェストに適切に登録されていないファイルは無視されます。
+zip フォルダーには、ディレクトリのルート レベルにマニフェスト ファイルが格納されている必要があります。また、ファイル名は **manifest.json** にする必要があります。 これには、[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)でコンテンツを解析できる DWG ファイルについて記述されています。 マニフェストに指定されたファイルのみが取り込まれます。 zip フォルダー内にあっても、マニフェストに適切に登録されていないファイルは無視されます。
 
 マニフェスト ファイルの `buildingLevels` オブジェクト内のファイル パスは、zip フォルダーのルートからの相対パスにする必要があります。 DWG ファイル名は、施設レベルの名前と正確に一致している必要があります。 たとえば、"Basement" レベルの DWG ファイルは "Basement.dwg" です。 level 2 の DWG ファイルは "level_2.dwg" です。 レベル名にスペースが含まれている場合は、アンダースコアを使用します。
 
-マニフェスト オブジェクトの使用には要件がありますが、すべてのオブジェクトが必要なわけではありません。 [Azure Maps Conversion サービス](/rest/api/maps/conversion) バージョン 1.1 の必須オブジェクトと省略可能なオブジェクトを次の表に示します。
+マニフェスト オブジェクトの使用には要件がありますが、すべてのオブジェクトが必要なわけではありません。 [Azure Maps Conversion サービス](/rest/api/maps/v2/conversion) バージョン 1.1 の必須オブジェクトと省略可能なオブジェクトを次の表に示します。
+
+>[!NOTE]
+> 特に指定されていない限り、プロパティの型が string のすべてのプロパティでは最大 1,000 文字を使用できます。
+
 
 | Object | 必須 | 説明 |
 | :----- | :------- | :------- |
@@ -203,12 +216,12 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 | `name`      | string | true   |  建物の名前。 |
 | `streetAddress`|    string |    false    | 建物の住所。 |
 |`unit`     | string    |  false    |  建物内のユニット。 |
-| `locality` |    string |    false |    エリア、近隣、または地域の名前。 たとえば、"オーバーレイク" や "中心地区" などです。 locality は郵送先住所の一部ではありません。 |
-| `adminDivisions` |    文字列の JSON 配列 |    false     | 住所表記 (国、州、市区町村) または (国、都道府県、市区町村、町) を含む配列。 ISO 3166 の国番号と ISO 3166-2 の州または領域番号を使用します。 |
+| `locality` |    string |    false |    都市、町、エリア、近隣、または地域の名前。|
+| `adminDivisions` |    文字列の JSON 配列 |    false     | 住所の表記を含む配列。 例: (国、州) ISO 3166 の国番号と ISO 3166-2 の州または領域番号を使用します。 |
 | `postalCode` |    string    | false    | 郵便物の仕分用番号。 |
 | `hoursOfOperation` |    string |     false | [OSM の Opening Hours](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification) 形式に準拠しています。 |
-| `phone`    | string |    false |    建物に関連付けられている電話番号。 国番号を含める必要があります。 |
-| `website`    | string |    false    | 建物に関連付けられている Web サイト。 先頭に http または https を付ける必要があります。 |
+| `phone`    | string |    false |    建物に関連付けられている電話番号。 |
+| `website`    | string |    false    | 建物に関連付けられている Web サイト。 |
 | `nonPublic` |    [bool]    | false | 建物が一般公開されているかどうかを指定するフラグ。 |
 | `anchorLatitude` | numeric |    false | 施設アンカー (画鋲) の緯度。 |
 | `anchorLongitude` | numeric |    false | 施設アンカー (画鋲) の経度。 |
@@ -254,15 +267,13 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 | プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`unitName`    |string    |true    |この `unitProperty` レコードに関連付けるユニットの名前。 このレコードは、`unitName` と一致するラベルが `unitLabel` レイヤーで見つかった場合にのみ有効です。 |
-|`categoryName`|    string|    false    |カテゴリ名。 カテゴリの完全な一覧については、[categories](https://aka.ms/pa-indoor-spacecategories) を参照してください。 |
-|`navigableBy`| 文字列の配列 |    false    |ユニットを横断することができる移動エージェントの種類を示します。 このプロパティを使用して、経路探索機能に通知します。 使用できる値は、`pedestrian`、`wheelchair`、`machine`、`bicycle`、`automobile`、`hiredAuto`、`bus`、`railcar`、`emergency`、`ferry`、`boat`、`disallowed` です。|
-|`routeThroughBehavior`|    string|    false    |ユニットのルート経由動作。 使用できる値は、`disallowed`、`allowed`、および `preferred` です。 既定値は `allowed` です。|
+|`categoryName`|    string|    false    |ユニットの目的。 指定されたレンダリング スタイルで使用できる値の一覧については、[こちら](https://atlas.microsoft.com/sdk/javascript/indoor/0.1/categories.json)を参照してください。 |
 |`occupants`    |directoryInfo オブジェクトの配列 |false    |ユニットの occupants の一覧。 |
 |`nameAlt`|    string|    false|    ユニットの代替名。 |
 |`nameSubtitle`|    string    |false|    ユニットのサブタイトル。 |
 |`addressRoomNumber`|    string|    false|    ユニットの部屋、ユニット、アパートメント、またはスイートの番号。|
-|`verticalPenetrationCategory`|    string|    false| このプロパティが定義されている場合、結果の地物はユニットではなく垂直貫入 (VRT) になります。 VRT を使用すると、その上のレベルまたは下のレベルにある他の VRT 地物に移動できます。 垂直貫入は[カテゴリ](https://aka.ms/pa-indoor-spacecategories)名です。 このプロパティが定義されている場合、`categoryName` プロパティは `verticalPenetrationCategory` でオーバーライドされます。 |
-|`verticalPenetrationDirection`|    string|    false    |`verticalPenetrationCategory` が定義されている場合は、必要に応じて有効な移動方向を定義します。 使用できる値は、`lowToHigh`、`highToLow`、`both`、`closed` です。 既定値は `both` です。|
+|`verticalPenetrationCategory`|    string|    false| このプロパティが定義されている場合、結果の地物はユニットではなく垂直貫入 (VRT) になります。 垂直貫入を使用すると、その上のレベルまたは下のレベルにある他の垂直貫入地物に移動できます。 垂直貫入は[カテゴリ](https://aka.ms/pa-indoor-spacecategories)名です。 このプロパティが定義されている場合、`categoryName` プロパティは `verticalPenetrationCategory` でオーバーライドされます。 |
+|`verticalPenetrationDirection`|    string|    false    |`verticalPenetrationCategory` が定義されている場合は、必要に応じて有効な移動方向を定義します。 使用できる値は、`lowToHigh`、`highToLow`、`both`、`closed` です。 既定値は `both` です。 値は、大文字小文字が区別されます。|
 | `nonPublic` | [bool] | false | ユニットが一般公開されているかどうかを示します。 |
 | `isRoutable` | [bool] | false | このプロパティが `false` に設定されている場合、ユニットへの移動も通過もできません。 既定値は `true` です。 |
 | `isOpenArea` | [bool] | false | ユニットに開口部をアタッチすることなく、移動エージェントはユニットに入ることができます。 既定では、この値は開口部がないユニットでは `true` に設定され、開口部があるユニットでは `false` に設定されています。 開口部がないユニットに対して `isOpenArea` を手動で `false` に設定すると、結果として得られるユニットに移動エージェントが到達できないため、警告が表示されます。|
@@ -274,7 +285,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 | プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |zoneName        |string    |true    |`zoneProperty` レコードに関連付けるゾーンの名前。 このレコードは、`zoneName` と一致するラベルがゾーンの `zoneLabel` レイヤーで見つかった場合にのみ有効です。  |
-|categoryName|    string|    false    |カテゴリ名。 カテゴリの完全な一覧については、[categories](https://aka.ms/pa-indoor-spacecategories) を参照してください。 |
+|categoryName|    string|    false    |ゾーンの目的。 指定されたレンダリング スタイルで使用できる値の一覧については、[こちら](https://atlas.microsoft.com/sdk/javascript/indoor/0.1/categories.json)を参照してください。|
 |zoneNameAlt|    string|    false    |ゾーンの代替名。  |
 |zoneNameSubtitle|    string |    false    |ゾーンのサブタイトル。 |
 |zoneSetId|    string |    false    | 複数のゾーン間の関係を確立して、それらがグループとしてクエリまたは選択できるようにするためのセット ID。 たとえば、複数のレベルにまたがるゾーンです。 |
@@ -359,9 +370,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
         { 
             "unitName": "B01", 
             "categoryName": "room.office", 
-            "navigableBy": ["pedestrian", "wheelchair", "machine"], 
-            "routeThroughBehavior": "disallowed", 
-            "occupants": [ 
+            "occupants": [ 
                 { 
                     "name": "Joe's Office", 
                     "phone": "1 (425) 555-1234" 
@@ -414,13 +423,22 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 ## <a name="next-steps"></a>次の手順
 
-Drawing パッケージが要件を満たしたら、[Azure Maps Conversion サービス](/rest/api/maps/conversion)を使用してパッケージをマップ データセットに変換することができます。 次に、そのデータセットを使用し、屋内マップ モジュールを使って屋内マップを生成できます。
+Drawing パッケージが要件を満たしたら、[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)を使用してパッケージをマップ データセットに変換することができます。 次に、そのデータセットを使用し、屋内マップ モジュールを使って屋内マップを生成できます。
 
 > [!div class="nextstepaction"]
->[屋内マップ用の Creator (プレビュー)](creator-indoor-maps.md)
+> [Creator Facility Ontology](creator-facility-ontology.md)
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Creator (プレビュー) の屋内マップを作成する](tutorial-creator-indoor-maps.md)
+> [屋内マップ用の Creator](creator-indoor-maps.md)
+
+> [!div class="nextstepaction"]
+> [描画パッケージ ガイド](drawing-package-guide.md)
+
+> [!div class="nextstepaction"]
+>[フロア ガイド用の Creator](creator-indoor-maps.md)
+
+> [!div class="nextstepaction"]
+> [チュートリアル:Creator 屋内マップを作成する](tutorial-creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [屋内マップの動的スタイル設定](indoor-map-dynamic-styling.md)

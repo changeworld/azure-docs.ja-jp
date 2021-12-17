@@ -1,16 +1,15 @@
 ---
 title: クイック スタート:初めてのポータル クエリ
 description: このクイックスタートでは、手順に従って、Azure Resource Graph エクスプローラーを使用して Azure portal から初めてのクエリを実行します。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 07e336121c6338b27c018acb5b2332653663e1b4
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mode-portal
+ms.openlocfilehash: 1d5f482f2ef081ab741d45c543ad391d4a9147f5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533076"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051118"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
 
@@ -38,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. このクエリを更新して `order by` に **Name** プロパティを指定します (`Resources | project name, type | limit 5 | order by name asc`)。 その後、 **[クエリの実行]** を選択します。
 
    > [!NOTE]
-   > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを生成する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 このコマンドの順序によって、まずクエリ結果が制限され、次にその結果が並べ替えられます。
+   > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 このコマンドの順序によって、まずクエリ結果が制限され、次にその結果が並べ替えられます。
 
 1. このクエリを更新して、最初に `order by` に **Name** プロパティを指定してから `limit` に上位 5 件の結果を指定します (`Resources | project name, type | order by name asc | limit 5`)。 その後、 **[クエリの実行]** を選択します。
 
@@ -103,7 +102,7 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 1. 評価したいサンプル ダッシュボードを選択してダウンロードします。
 
-1. Azure portal で、左側のウィンドウから **[ダッシュボード]** を選択します。
+1. Azure portal で、左側のペインから **[ダッシュボード]** を選択します。
 
 1. **[アップロード]** を選択し、ダウンロードしたサンプル ダッシュボード ファイルを探して選択します。 その後、 **[開く]** を選択します。
 
@@ -115,7 +114,7 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 1. 左側のウィンドウから **[ダッシュボード]** を選択します。
 
-1. ダッシュボードのドロップダウンから、削除するサンプルの Resource Graph ダッシュボードを選択します。
+1. ダッシュボードのドロップダウン リストから、削除するサンプルの Resource Graph ダッシュボードを選択します。
 
 1. ダッシュボードの上部にあるダッシュボード メニューから **[削除]** を選択し、 **[OK]** を選択して確定します。
 

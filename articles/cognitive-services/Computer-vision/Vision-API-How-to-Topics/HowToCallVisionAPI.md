@@ -3,20 +3,18 @@ title: 画像分析 API の呼び出し
 titleSuffix: Azure Cognitive Services
 description: Image Analysis API を呼び出してその動作を構成する方法について説明します。
 services: cognitive-services
-author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 09/09/2019
-ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3f9a6afe3202df40e26332c3a8c91b8c3eca8a32
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 46334015d932f667e5bbb7a10153e9b70aaa0764
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012270"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058601"
 ---
 # <a name="call-the-image-analysis-api"></a>画像分析 API の呼び出し
 
@@ -32,7 +30,7 @@ ms.locfileid: "107012270"
 
 ###  <a name="select-visual-features"></a>視覚的特徴を選択する
 
-[Analyze API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b) を使用すると、サービスの画像分析の特徴すべてにアクセスできます。 使用する特徴を指定するには、URL クエリ パラメーターを設定する必要があります。 パラメーターには、複数の値をコンマで区切って指定できます。 特徴を指定するごとに追加の処理時間が必要になるため、必要なものだけを指定してください。
+[Analyze API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) を使用すると、サービスの画像分析の特徴すべてにアクセスできます。 使用する特徴を指定するには、URL クエリ パラメーターを設定する必要があります。 パラメーターには、複数の値をコンマで区切って指定できます。 特徴を指定するごとに追加の処理時間が必要になるため、必要なものだけを指定してください。
 
 |URL パラメーター | 値 | 説明|
 |---|---|--|
@@ -71,7 +69,7 @@ ms.locfileid: "107012270"
 > [!NOTE]
 > **スコープが指定された API 呼び出し**
 >
-> 画像分析における特徴の一部は、Analyze API 呼び出しを使用した方法だけでなく、直接呼び出すこともできます。 たとえば、`https://{endpoint}/vision/v3.2-preview.3/tag` に対して要求を行うことで、画像タグのみをスコープに指定した分析を実行できます。 個別に呼び出すことができる他の特徴については、[リファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b)を参照してください。
+> 画像分析における特徴の一部は、Analyze API 呼び出しを使用した方法だけでなく、直接呼び出すこともできます。 たとえば、`https://{endpoint}/vision/v3.2/tag` に対して要求を行うことで、画像タグのみをスコープに指定した分析を実行できます。 個別に呼び出すことができる他の特徴については、[リファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b)を参照してください。
 
 ## <a name="get-results-from-the-service"></a>サービスから結果を取得する
 
@@ -137,6 +135,10 @@ description.captions[].confidence    | `number`    | 語句の信頼度スコア
     * Timeout - 画像処理がタイムアウトしました。
     * InternalServerError
 
+> [!TIP]
+> Computer Vision の操作中に、このサービスによって適用された[レート制限](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/)によって一時的な障害が発生したり、ネットワークの停止など、他の一時的な問題が発生したりする可能性があります。 これらの種類の障害の処理については、クラウド設計パターン ガイドの「[再試行パターン](/azure/architecture/patterns/retry)」および「[サーキット ブレーカー パターン](/azure/architecture/patterns/circuit-breaker)」を参照してください。
+
+
 ## <a name="next-steps"></a>次のステップ
 
-REST API を試すには、[Image Analysis API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b)を参照してください。
+REST API を試すには、[Image Analysis API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b)を参照してください。

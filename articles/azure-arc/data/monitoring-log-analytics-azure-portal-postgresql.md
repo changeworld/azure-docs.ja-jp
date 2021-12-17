@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1d8cdf68d8f1f692637dc26f7ffcf50041ff6801
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 355bc276a8a330d50bdc711cf79fdd0739e436f6
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90931491"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113731308"
 ---
 # <a name="monitoring-log-analytics-billing-information-azure-portal-postgresql-hyperscale"></a>監視、ログ分析、課金情報、Azure portal (PostgreSQL Hyperscale)
 

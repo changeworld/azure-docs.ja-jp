@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2021
+ms.date: 04/14/2021
 ms.author: aldomel
-ms.openlocfilehash: 0dd053fa268e88c281c1fe6c00339fe6a6edf27a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fd73fe3246d9d1c485154be9a4e8f9b051d5c95f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732603"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228151"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -80,16 +80,18 @@ Azure でカスタムまたはユーザー定義（静的）のルートを作�
 
 * **仮想アプライアンス**:仮想アプライアンスとは、一般にネットワーク アプリケーション (ファイアウォールなど) が実行されている仮想マシンです。 仮想ネットワークにデプロイできる事前構成された各種ネットワーク仮想アプライアンスについては、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) のページをご覧ください。 ホップの種類が **仮想アプライアンス** のルートを作成するときは、次ホップの IP アドレスも指定します。 IP アドレスには、次のアドレスを指定できます。
 
-    * 仮想マシンに接続されたネットワーク インターフェイスの[プライベート IP アドレス](./private-ip-addresses.md)。 自身のアドレス以外のアドレスにネットワーク トラフィックを転送する、仮想マシンに接続されたネットワーク インターフェイスでは、Azure の *[Enable IP forwarding]\(IP 転送を有効にする\)* オプションが有効になっている必要があります。 この設定により、Azure によるネットワーク インターフェイスの送信元と送信先のチェックが無効になります。 ネットワーク インターフェイスの IP 転送を有効にする方法の詳細については、[こちら](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)をご覧ください。 *[Enable IP forwarding]\(IP 転送を有効にする\)* は Azure の設定ですが、Azure のネットワーク インターフェイスに割り当てられたプライベート IP アドレス間でアプライアンスがトラフィックを転送するために、仮想マシンのオペレーティング システム内でも IP 転送を有効にすることが必要な場合があります。 アプライアンスからパブリック IP アドレス宛てにトラフィックをルーティングする必要がある場合、トラフィックをプロキシするか、または送信元のプライベート IP アドレスを独自のプライベート IP アドレスに NAT 変換し、Azure でパブリック IP アドレスに NAT 変換してから、そのトラフィックをインターネットに送信する必要があります。 仮想マシン内で必要な設定を確認するには、オペレーティング システムまたはネットワーク アプリケーションのドキュメントをご覧ください。 Azure での送信接続については、[送信用接続の詳細](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。<br>
+    * 仮想マシンに接続されたネットワーク インターフェイスの[プライベート IP アドレス](./ip-services/private-ip-addresses.md)。 自身のアドレス以外のアドレスにネットワーク トラフィックを転送する、仮想マシンに接続されたネットワーク インターフェイスでは、Azure の *[Enable IP forwarding]\(IP 転送を有効にする\)* オプションが有効になっている必要があります。 この設定により、Azure によるネットワーク インターフェイスの送信元と送信先のチェックが無効になります。 ネットワーク インターフェイスの IP 転送を有効にする方法の詳細については、[こちら](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)をご覧ください。 *[Enable IP forwarding]\(IP 転送を有効にする\)* は Azure の設定ですが、Azure のネットワーク インターフェイスに割り当てられたプライベート IP アドレス間でアプライアンスがトラフィックを転送するために、仮想マシンのオペレーティング システム内でも IP 転送を有効にすることが必要な場合があります。 アプライアンスからパブリック IP アドレス宛てにトラフィックをルーティングする必要がある場合、トラフィックをプロキシするか、または送信元のプライベート IP アドレスを独自のプライベート IP アドレスに NAT 変換し、Azure でパブリック IP アドレスに NAT 変換してから、そのトラフィックをインターネットに送信する必要があります。 仮想マシン内で必要な設定を確認するには、オペレーティング システムまたはネットワーク アプリケーションのドキュメントをご覧ください。 Azure での送信接続については、[送信用接続の詳細](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。<br>
 
-        > [!NOTE]
-        > 仮想アプライアンスは、その仮想アプライアンスを介してルーティングするリソースがデプロイされているサブネットとは異なるサブネットにデプロイします。 仮想アプライアンスを同じサブネットにデプロイし、その仮想アプライアンスを介してトラフィックをルーティングするサブネットにルート テーブルを適用すると、トラフィックがサブネットから出ていくことのないルーティング ループが発生する可能性があります。
+      > [!NOTE]
+      > 仮想アプライアンスは、その仮想アプライアンスを介してルーティングするリソースがデプロイされているサブネットとは異なるサブネットにデプロイします。 仮想アプライアンスを同じサブネットにデプロイし、その仮想アプライアンスを介してトラフィックをルーティングするサブネットにルート テーブルを適用すると、トラフィックがサブネットから出ていくことのないルーティング ループが発生する可能性があります。
+      > 
+      > ネクスト ホップのプライベート IP アドレスは、ExpressRoute ゲートウェイまたは Virtual WAN 経由でルーティングせず、直接接続する必要があります。 直接接続せずにネクスト ホップを IP アドレスに設定すると、ユーザー定義のルーティング構成が無効になります。 
 
     * Azure [内部ロード バランサー](../load-balancer/quickstart-load-balancer-standard-internal-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)のプライベート IP アドレス。 多くの場合、ロード バランサーは、[ネットワーク仮想アプライアンスの高可用性戦略](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json)の一環として使用されます。
 
     アドレス プレフィックスが 0.0.0.0/0 で、ネクストホップの種類が仮想アプライアンスのルートを定義することによって、アプライアンスがトラフィックを検査し、トラフィックを転送するか破棄するかを判断できるようになります。 アドレス プレフィックス 0.0.0.0/0 を含むユーザー定義ルートを作成する場合は、まず「[アドレス プレフィックス 0.0.0.0/0](#default-route)」をお読みください。
 
-* **[仮想ネットワーク ゲートウェイ]** :特定のアドレス プレフィックス宛てのトラフィックを仮想ネットワーク ゲートウェイにルーティングする場合に指定します。 種類が **VPN** の仮想ネットワーク ゲートウェイを作成する必要があります。 ExpressRoute では、カスタム ルートに BGP を使用する必要があるため、種類が **ExpressRoute** として作成された仮想ネットワーク ゲートウェイをユーザー定義ルートで指定することはできません。 アドレス プレフィックス 0.0.0.0/0 宛てのトラフィックを[ルートベース](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#vpntype)の仮想ネットワーク ゲートウェイに送信するルートを定義できます。 オンプレミスで、トラフィックを検査し、トラフィックを転送するか破棄するかを判断するデバイスを使用している場合もあります。 アドレス プレフィックスが 0.0.0.0/0 のユーザー定義ルートを作成する場合は、まず「[アドレス プレフィックス 0.0.0.0/0](#default-route)」をお読みください。 [VPN 仮想ネットワーク ゲートウェイで BGP を有効にしている](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)場合は、アドレス プレフィックスが 0.0.0.0/0 のユーザー定義ルートを構成する代わりに、プレフィックス 0.0.0.0/0 を含むルートを BGP 経由でアドバタイズできます。<br>
+* **[仮想ネットワーク ゲートウェイ]** :特定のアドレス プレフィックス宛てのトラフィックを仮想ネットワーク ゲートウェイにルーティングする場合に指定します。 種類が **VPN** の仮想ネットワーク ゲートウェイを作成する必要があります。 ExpressRoute では、カスタム ルートに BGP を使用する必要があるため、種類が **ExpressRoute** として作成された仮想ネットワーク ゲートウェイをユーザー定義ルートで指定することはできません。 VPN 接続と ExpressRoute 接続が共存している場合、仮想ネットワーク ゲートウェイは指定できません。 アドレス プレフィックス 0.0.0.0/0 宛てのトラフィックを[ルートベース](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#vpntype)の仮想ネットワーク ゲートウェイに送信するルートを定義できます。 オンプレミスで、トラフィックを検査し、トラフィックを転送するか破棄するかを判断するデバイスを使用している場合もあります。 アドレス プレフィックスが 0.0.0.0/0 のユーザー定義ルートを作成する場合は、まず「[アドレス プレフィックス 0.0.0.0/0](#default-route)」をお読みください。 [VPN 仮想ネットワーク ゲートウェイで BGP を有効にしている](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)場合は、アドレス プレフィックスが 0.0.0.0/0 のユーザー定義ルートを構成する代わりに、プレフィックス 0.0.0.0/0 を含むルートを BGP 経由でアドバタイズできます。<br>
 * **なし**: アドレス プレフィックスへのトラフィックを宛先に転送するのではなく破棄する場合に指定します。 機能を完全には構成していない場合、一部のオプションのシステム ルートに "*なし*" と表示されることがあります。 たとえば、**ネクストホップの種類** が  "*仮想ネットワーク ゲートウェイ*" または "*仮想アプライアンス*" であり、**ネクストホップの IP アドレス** に "*なし*" と表示されている場合、デバイスが実行されていないか、完全には構成されていないことが原因である可能性があります。 Azure では、予約済みアドレス プレフィクスの [既定のシステム ルート](#default) は、ネクストホップの種類が **なし** で作成されます。<br>
 * **仮想ネットワーク**:仮想ネットワーク内の既定のルーティングをオーバーライドする場合に指定します。 ホップの種類が "**仮想ネットワーク**" のルートを作成する理由の例については、「[ルーティングの例](#routing-example)」をご覧ください。<br>
 * **インターネット**:アドレス プレフィックス宛てのトラフィックをインターネットに明示的にルーティングする場合、またはパブリック IP アドレスを使用する Azure サービスを宛先とするトラフィックを Azure バックボーン ネットワーク内に保持する場合に指定します。
@@ -111,7 +113,7 @@ Azure でカスタムまたはユーザー定義（静的）のルートを作�
    3. AzureCloud リージョン タグ (例: AzureCloud.canadacentral、AzureCloud.eastasia)
    4. AzureCloud タグ </br></br>
 
-この機能を使用するには、route table コマンドの address prefix パラメーターにサービス タグ名を指定します。 たとえば、Powershell で、以下を使用することで、Azure Storage IP プレフィックスに送信されたトラフィックを仮想アプライアンスに移動させる新しいルートを作成できます。 </br>
+この機能を使用するには、route table コマンドの address prefix パラメーターにサービス タグ名を指定します。 たとえば、Powershell で、以下を使用することで、Azure Storage IP プレフィックスに送信されたトラフィックを仮想アプライアンスに移動させる新しいルートを作成できます。 </br></br>
 
 ```azurepowershell-interactive
 New-AzRouteConfig -Name "StorageRoute" -AddressPrefix "Storage" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
@@ -123,6 +125,10 @@ CLI の同じコマンドは次のようになります。 </br>
 az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
 ```
 </br>
+
+#### <a name="known-issues-april-2021"></a>既知の問題 (2021 年 4 月)
+
+BGP ルートが存在する場合、またはサブネットにサービス エンドポイントが構成されている場合、ルートが正しい優先順位で評価されない可能性があります。 この機能は、現在、デュアル スタック (IPv4 + IPv6) 仮想ネットワークでは機能しません。 これらのシナリオに対する修正プログラムは現在作成中です </br>
 
 
 > [!NOTE] 
@@ -153,7 +159,7 @@ az network route-table route create -g MyResourceGroup --route-table-name MyRout
 
 BGP を使用して Azure とルートを交換すると、仮想ネットワークのすべてのサブネットのルート テーブルに、アドバタイズされた各プレフィックスの個別のルートが追加されます。 追加されるルートは、ソースとネクストホップの種類が "*仮想ネットワーク ゲートウェイ*" になります。 
 
-ER と VPN Gateway ルートの伝達は、ルート テーブルのプロパティを使用してサブネット上で無効にすることができます。 BGP を使用して Azure とルートを交換するときに、仮想ネットワーク ゲートウェイ ルートの伝達が無効になっているすべてのサブネットのルート テーブルにはルートが追加されません。 VPN 接続の接続は、ネクストホップの種類が *仮想ネットワーク ゲートウェイ* である [カスタム ルート](#custom-routes) を使用して実現されます。 **GatewaySubnet では、ルートの伝達を無効にしないでください。ゲートウェイは、この設定を無効にすると機能しません。** 詳細については、[仮想ネットワーク ゲートウェイ ルートの伝達を無効にする方法](manage-route-table.md#create-a-route-table) に関するページを参照してください。
+ER と VPN Gateway ルートの伝達は、ルート テーブルのプロパティを使用してサブネット上で無効にすることができます。 指定すると、仮想ネットワーク ゲートウェイ ルートの伝達が無効になっている (静的ルートも BGP ルートも) すべてのサブネットのルート テーブルにはルートが追加されなくなります。 VPN 接続の接続は、ネクストホップの種類が *仮想ネットワーク ゲートウェイ* である [カスタム ルート](#custom-routes) を使用して実現されます。 **GatewaySubnet では、ルートの伝達を無効にしないでください。ゲートウェイは、この設定を無効にすると機能しません。** 詳細については、[仮想ネットワーク ゲートウェイ ルートの伝達を無効にする方法](manage-route-table.md#create-a-route-table) に関するページを参照してください。
 
 ## <a name="how-azure-selects-a-route"></a>Azure がルートを選択するしくみ
 

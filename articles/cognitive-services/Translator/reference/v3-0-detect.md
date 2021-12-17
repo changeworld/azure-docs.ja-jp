@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: lajanuar
-ms.openlocfilehash: cb6660585b5f2b9ab56eaf863f1ec431e5e85109
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36691229ebe59a6b3b5dd59776b6af41e326a3c2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98895528"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750000"
 ---
 # <a name="translator-30-detect"></a>Translator 3.0:Detect
 
@@ -33,37 +33,18 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 クエリ文字列に渡される要求パラメーターを次に示します。
 
-<table width="100%">
-  <th width="20%">Query parameter (クエリ パラメーター)</th>
-  <th>説明</th>
-  <tr>
-    <td>api-version</td>
-    <td>"*必須のパラメーター*"。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
-  </tr>
-</table> 
+| Query parameter (クエリ パラメーター) | 説明 |
+| --- | --- |
+| api-version | "*必須のパラメーター*"。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。 |
 
 要求ヘッダーには次のものがあります。
 
-<table width="100%">
-  <th width="20%">ヘッダー</th>
-  <th>説明</th>
-  <tr>
-    <td>認証ヘッダー</td>
-    <td>"<em>必須の要求ヘッダー</em>" です。<br/><a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>"*必須の要求ヘッダー*" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
-  </tr>
-  <tr>
-    <td>Content-Length</td>
-    <td>"*必須の要求ヘッダー*" です。<br/>要求本文の長さです。</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>*オプション*。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。</td>
-  </tr>
-</table> 
+| ヘッダー | 説明 |
+| --- | --- |
+| 認証ヘッダー | "<em>必須の要求ヘッダー</em>" です。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)</a>に関するページをご覧ください。 |
+| Content-Type | "*必須の要求ヘッダー*" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json` |
+| Content-Length | "*必須の要求ヘッダー*" です。<br/>要求本文の長さです。 |
+| X-ClientTraceId | *オプション*。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。 |
 
 ## <a name="request-body"></a>要求本文
 
@@ -71,7 +52,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 ```json
 [
-    { "Text": "Ich würde wirklich gern Ihr Auto um den Block fahren ein paar Mal." }
+    { "Text": "Ich würde wirklich gerne Ihr Auto ein paar Mal um den Block fahren." }
 ]
 ```
 
@@ -98,76 +79,41 @@ JSON 応答の例を次に示します。
 
 ```json
 [
-  {
-    "language": "de",
-    "score": 0.92,
-    "isTranslationSupported": true,
-    "isTransliterationSupported": false,
-    "alternatives": [
-      {
-        "language": "pt",
-        "score": 0.23,
+
+    {
+
+        "language": "de",
+
+        "score": 1.0,
+
         "isTranslationSupported": true,
+
         "isTransliterationSupported": false
-      },
-      {
-        "language": "sk",
-        "score": 0.23,
-        "isTranslationSupported": true,
-        "isTransliterationSupported": false
-      }
-    ]
-  }
+
+    }
+
 ]
 ```
 
 ## <a name="response-headers"></a>応答ヘッダー
 
-<table width="100%">
-  <th width="20%">ヘッダー</th>
-  <th>説明</th>
-  <tr>
-    <td>X-RequestId</td>
-    <td>要求を識別するためにサービスによって生成される値。 トラブルシューティングの目的で使用されます。</td>
-  </tr>
-</table> 
+| ヘッダー | 説明 |
+| --- | --- |
+| X-RequestId | 要求を識別するためにサービスによって生成される値。 トラブルシューティングの目的で使用されます。 |
 
 ## <a name="response-status-codes"></a>応答状態コード
 
 要求によって返される可能性のある HTTP 状態コードを次に示します。 
 
-<table width="100%">
-  <th width="20%">状態コード</th>
-  <th>説明</th>
-  <tr>
-    <td>200</td>
-    <td>正常終了しました。</td>
-  </tr>
-  <tr>
-    <td>400</td>
-    <td>クエリ パラメーターの 1 つが欠落しているか無効です。 再試行する前に要求パラメーターを修正してください。</td>
-  </tr>
-  <tr>
-    <td>401</td>
-    <td>要求を認証できませんでした。 資格情報が指定され、有効であることを確認してください。</td>
-  </tr>
-  <tr>
-    <td>403</td>
-    <td>要求が承認されていません。 詳細なエラー メッセージを確認してください。 これは、多くの場合、試用版サブスクリプションで提供されるすべての無料翻訳が使い果たされたことを示します。</td>
-  </tr>
-  <tr>
-    <td>429</td>
-    <td>クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。</td>
-  </tr>
-  <tr>
-    <td>500</td>
-    <td>予期しないエラーが発生しました。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
-  </tr>
-  <tr>
-    <td>503</td>
-    <td>サーバーが一時的に使用できません。 要求をやり直してください。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
-  </tr>
-</table> 
+| 状態コード | 説明 |
+| --- | --- |
+| 200 | 正常終了しました。 |
+| 400 | クエリ パラメーターの 1 つが欠落しているか無効です。 再試行する前に要求パラメーターを修正してください。 |
+| 401 | 要求を認証できませんでした。 資格情報が指定され、有効であることを確認してください。 |
+| 403 | 要求が承認されていません。 詳細なエラー メッセージを確認してください。 これは、多くの場合、試用版サブスクリプションで提供されるすべての無料翻訳が使い果たされたことを示します。 |
+| 429 | クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。 |
+| 500 | 予期しないエラーが発生しました。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。 |
+| 503 | サーバーが一時的に使用できません。 要求をやり直してください。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。 |
 
 エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator のリファレンス ページ](./v3-0-reference.md#errors)で確認できます。 
 

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 10/11/2021
 ms.author: banders
-ms.openlocfilehash: 07e3cfdce238d5fc4e2737a49dde6fd624de8506
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ae265fd760a20c1e79032f2a7d0d97a459dd5c69
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882502"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999456"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure の利用状況と請求金額ファイル内の用語について
 
@@ -24,7 +24,7 @@ ms.locfileid: "97882502"
 
 アカウントの種類 | Azure の利用状況 | Marketplace の利用状況 | 購入 | 返金
 --- | --- | --- | --- | ---
-Enterprise Agreement (EA) | はい | はい | [はい] | いいえ
+Enterprise Agreement (EA) | はい | はい | はい | いいえ
 Microsoft 顧客契約 (MCA) | はい | はい | はい | [はい]
 従量課金制 (PAYG) | はい | はい | いいえ | いいえ
 
@@ -86,7 +86,7 @@ ProductId<sup>1</sup> | MCA | 製品の一意識別子。
 ProductOrderId | All | 製品注文の一意識別子。
 ProductOrderName | All | 製品注文の一意の名前。
 発行元 | All | Marketplace サービスの発行元。
-PublisherType | All | パブリッシャーの種類 (値: **Azure**、**AWS**、**Marketplace**)。
+PublisherType | All | パブリッシャーの種類。 Microsoft/Azure、Marketplace、AWS のコストに分割します。  値は、MCA アカウントの場合は `Microsoft`、EA と従量課金制アカウントの場合は `Azure` です。|
 Quantity | All | 購入または消費されるユニットの数。
 ReservationId | EA、MCA | 購入した予約インスタンスの一意識別子。
 ReservationName | EA、MCA | 購入した予約インスタンスの名前。
@@ -111,6 +111,8 @@ _<sup>**1**</sup> 1 つのコスト レコードの一意の ID を作成する�
 
 一部のフィールドでは、アカウントの種類間で大文字小文字とスペースに違いが生じる場合があることに注意してください。
 以前のバージョンの従量課金制の利用状況ファイルには、明細と毎日の利用状況のための個別のセクションがあります。
+
+MCA 契約のお客様の場合は、`PublisherType` フィールドの値が変更されていることに注意してください。 詳細については、[パブリッシャー タイプの値の変更](../costs/group-filter.md#publisher-type-value-changes)に関するページを参照してください。
 
 ### <a name="list-of-terms-from-older-apis"></a>以前の API の用語一覧
 以下に示したのは、以前の API で用いられていた用語と新しい用語の対応表です。 それらの説明については、前出の表を参照してください。

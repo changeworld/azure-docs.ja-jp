@@ -9,3 +9,14 @@
         - name: QnA Maker
           tocHref: /azure/cognitive-services/
           topicHref: /azure/cognitive-services/qnamaker/index
+- name: Azure
+  tocHref: /legal/
+  topicHref: /azure/index
+  items:
+    - name: Cognitive Services
+      tocHref: /legal/cognitive-services/qnamaker
+      topicHref: /azure/cognitive-services/index
+      items:
+        - name: QnA Maker
+          tocHref: /legal/cognitive-services/qnamaker
+          topicHref: /azure/cognitive-services/qnamaker/index

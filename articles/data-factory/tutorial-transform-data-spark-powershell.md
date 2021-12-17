@@ -2,16 +2,17 @@
 title: 'Azure Data Factory で Spark を使用してデータを変換する '
 description: このチュートリアルでは、Azure Data Factory で Spark アクティビティを使用してデータを変換するための詳細な手順を説明します。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-ms.openlocfilehash: cf425ecb1a8aebf594828bfba50e9aba8ca9dd7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec69d0d4afe96a79e421a5a89d38b2f59cd3a796
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377620"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740928"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
 
@@ -328,7 +329,7 @@ JSON ファイルで、リンクされたサービスとパイプライン定義
 
 
 ## <a name="next-steps"></a>次のステップ
-このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 以下の方法を学習しました。 
+このサンプルのパイプラインは、Azure Blob Storage 内のある場所から別の場所にデータをコピーするものです。 以下の方法を学習しました。 
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。 

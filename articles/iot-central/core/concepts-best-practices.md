@@ -9,16 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom:
 - device-developer
-ms.openlocfilehash: e8ae8b0173e53c0a46ded1a2690175e367997c9f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a3cbfa17d3b063ddcef90820dc31a080a768cbcd
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054145"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110493765"
 ---
 # <a name="best-practices-for-device-development"></a>デバイス開発のベスト プラクティス
-
-"*この記事は、デバイス開発者を対象としています。* "
 
 これらの推奨事項は、IoT Central の組み込みのディザスター リカバリーと自動スケーリングを活用するようにデバイスを実装する方法を示しています。
 
@@ -59,9 +57,41 @@ DPS を使用してデバイスをプロビジョニングするには、IoT Cen
 
 デバイス エラー コードの詳細については、[デバイス接続のトラブルシューティング](troubleshoot-connection.md)に関するページを参照してください。
 
+## <a name="test-failover-capabilities"></a>フェールオーバー機能のテスト
+
+Azure CLI を使用すると、デバイスのクライアント コードのフェールオーバー機能をテストできます。 CLI コマンドは、デバイスの登録を別の内部 IoT ハブに一時的に切り替えることによって機能します。 デバイスのフェールオーバーが正常に機能していることを確認するには、デバイスが引き続きテレメトリを送信し、IoT Central アプリケーションのコマンドに応答していることを確認します。
+
+デバイスのフェールオーバー テストを実行するには、次のコマンドを実行します。
+
+```azurecli
+az iot central device manual-failover \
+    --app-id {Application ID of your IoT Central application} \
+    --device-id {Device ID of the device you're testing} \
+    --ttl-minutes {How to wait before moving the device back to it's original IoT hub}
+```
+
+> [!TIP]
+> **アプリケーション ID** を見つけるには、IoT Central アプリケーションで、 **[管理] > [自分のアプリケーション]** に移動します。
+
+コマンドが成功すると、次のような出力が表示されます。
+
+```output
+Command group 'iot central device' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+{
+  "hubIdentifier": "6bd4...bafa",
+  "message": "Success! This device is now being failed over. You can check your device'’'s status using 'iot central device registration-info' command. The device will revert to its original hub at Tue, 18 May 2021 11:03:45 GMT. You can choose to failback earlier using device-manual-failback command. Learn more: https://aka.ms/iotc-device-test"
+}
+```
+
+CLI コマンドの詳細については、「[az iot central device manual-failover](/cli/azure/iot/central/device#az_iot_central_device_manual_failover)」を参照してください。
+
+デバイスからのテレメトリが IoT Central アプリケーションに到達している最中かどうかを確認できるようになりました。
+
+さまざまなプログラミング言語でのフェールオーバーを処理するサンプルのデバイスコードについては、「[IoT 高可用性クライアント](https://github.com/iot-for-all/iot-central-high-availability-clients)」を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者にお勧めする次のステップは次のとおりです。
+推奨される次のステップは以下のとおりです。
 
 - 「[チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」で、SAS トークンの使い方を示すサンプル コードを確認する
 - [IoT Central アプリケーション用の Node.js デバイス SDK を使用して、x.509 証明書を使用するデバイスを接続する](how-to-connect-devices-x509.md)方法を確認する

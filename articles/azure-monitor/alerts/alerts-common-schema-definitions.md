@@ -3,13 +3,13 @@ title: Azure Monitor のアラート スキーマ定義
 description: Azure Monitor の共通アラート スキーマ定義について
 author: ofirmanor
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 709ec2dee1be6930ca7c09de334aede8a76e95f4
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.date: 07/20/2021
+ms.openlocfilehash: 784106dab7b95f63957abe1de44dfbf5734dd5f4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491714"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744490"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
@@ -33,6 +33,9 @@ ms.locfileid: "106491714"
       "monitoringService": "Platform",
       "alertTargetIDs": [
         "/subscriptions/<subscription ID>/resourcegroups/pipelinealertrg/providers/microsoft.compute/virtualmachines/wcus-r2-gen2"
+      ],
+      "configurationItems": [
+        "wcus-r2-gen2"
       ],
       "originAlertId": "3f2d4487-b0fc-4125-8bd5-7ad17384221e_PipeLineAlertRG_microsoft.insights_metricAlerts_WCUS-R2-Gen2_-117781227",
       "firedDateTime": "2019-03-22T13:58:24.3713213Z",
@@ -72,13 +75,14 @@ ms.locfileid: "106491714"
 
 | フィールド | 説明|
 |:---|:---|
-| alertId | アラート インスタンスを一意に識別する GUID。 |
+| alertId | アラート インスタンスを識別する一意のリソース ID。 |
 | alertRule | そのアラート インスタンスを生成したアラート ルールの名前。 |
 | 重大度 | アラートの重大度。 指定できる値Sev0、Sev1、Sev2、Sev3、または Sev4。 |
 | signalType | アラート ルールが定義されていたシグナルを示します。 指定できる値Metric、Log、または Activity Log。 |
 | monitorCondition | アラートが発生すると、アラートの監視条件は **Fired** に設定されます。 アラート発生の原因になった状態が解消されると、監視条件は **Resolved** に設定されます。   |
 | monitoringService | アラートを生成した監視サービスまたはソリューション。 アラート コンテキストのフィールドは、監視サービスによって決まります。 |
 | alertTargetIds | アラートの影響を受けるターゲットである Azure Resource Manager ID の一覧。 Log Analytics ワークスペースまたは Application Insights インスタンスで定義されているログ アラートの場合は、それぞれのワークスペースまたはアプリケーションになります。 |
+| configurationItems | アラートの影響を受けるリソースの一覧。 構成アイテムは、場合によってはアラート ターゲットとは異なる可能性があります。たとえば、Log Analytics ワークスペースで定義された metric-for-log またはログ アラートなど、構成アイテムがワークスペースではなく、テレメトリを送信する実際のリソースである場合です。 このフィールドは、ITSM システムによってアラートを CMDB 内のリソースに関連付けるために使用されます。 |
 | originAlertId | 生成元の監視サービスによって生成された、アラート インスタンスの ID。 |
 | firedDateTime | アラート インスタンスが発生した日時 (協定世界時 (UTC))。 |
 | resolvedDateTime | アラート インスタンスの監視状態が **Resolved** に設定された日時 (UTC)。 現在はメトリック アラートに対してのみ適用されます。|
@@ -110,7 +114,7 @@ ms.locfileid: "106491714"
 
 ## <a name="alert-context"></a>アラート コンテキスト
 
-### <a name="metric-alerts"></a>メトリック アラート
+### <a name="metric-alerts---static-threshold"></a>メトリック アラート - 静的しきい値
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
@@ -145,10 +149,77 @@ ms.locfileid: "106491714"
 }
 ```
 
+### <a name="metric-alerts---dynamic-threshold"></a>メトリック アラート - 動的しきい値
+
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
+
+**サンプル値**
+```json
+{
+  "alertContext": {
+      "properties": null,
+      "conditionType": "DynamicThresholdCriteria",
+      "condition": {
+        "windowSize": "PT5M",
+        "allOf": [
+          {
+            "alertSensitivity": "High",
+            "failingPeriods": {
+              "numberOfEvaluationPeriods": 1,
+              "minFailingPeriodsToAlert": 1
+            },
+            "ignoreDataBefore": null,
+            "metricName": "Egress",
+            "metricNamespace": "microsoft.storage/storageaccounts",
+            "operator": "GreaterThan",
+            "threshold": "47658",
+            "timeAggregation": "Total",
+            "dimensions": [],
+            "metricValue": 50101
+          }
+        ],
+        "windowStartTime": "2021-07-20T05:07:26.363Z",
+        "windowEndTime": "2021-07-20T05:12:26.363Z"
+      }
+    }
+}
+```
+
+### <a name="metric-alerts---availability-tests"></a>メトリック アラート - 可用性テスト
+
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
+
+**サンプル値**
+```json
+{
+  "alertContext": {
+      "properties": null,
+      "conditionType": "WebtestLocationAvailabilityCriteria",
+      "condition": {
+        "windowSize": "PT5M",
+        "allOf": [
+          {
+            "metricName": "Failed Location",
+            "metricNamespace": null,
+            "operator": "GreaterThan",
+            "threshold": "2",
+            "timeAggregation": "Sum",
+            "dimensions": [],
+            "metricValue": 5,
+            "webTestName": "myAvailabilityTest-myApplication"
+          }
+        ],
+        "windowStartTime": "2019-03-22T13:40:03.064Z",
+        "windowEndTime": "2019-03-22T13:45:03.064Z"
+      }
+    }
+}
+```
+
 ### <a name="log-alerts"></a>ログ アラート
 
 > [!NOTE]
-> カスタムしたメールの件名、またはカスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、メールの件名またはペイロード スキーマが後述のものに戻ります。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 アラートのサイズがこのしきい値を超える場合、検索結果はログ アラートのペイロードに埋め込まれません。 `IncludeSearchResults` フラグを調べることによって、これを判断できます。 検索結果が含まれていない場合は、`LinkToFilteredSearchResultsAPI` または `LinkToSearchResultsAPI` を使用して、[Log Analytics API](/rest/api/loganalytics/dataaccess/query/get) を使用してクエリ結果にアクセスする必要があります。
+> カスタムしたメールの件名、またはカスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、メールの件名またはペイロード スキーマが後述のものに戻ります。 つまり、カスタム JSON ペイロードを使用する場合は、Webhook で共通アラート スキーマを使用できません。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 アラートのサイズがこのしきい値を超える場合、検索結果はログ アラートのペイロードに埋め込まれません。 `IncludedSearchResults` フラグを調べることによって、これを判断できます。 検索結果が含まれていない場合は、`LinkToFilteredSearchResultsAPI` または `LinkToSearchResultsAPI` を使用して、[Log Analytics API](/rest/api/loganalytics/dataaccess/query/get) を使用してクエリ結果にアクセスする必要があります。
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -220,7 +291,7 @@ ms.locfileid: "106491714"
         ]
       }
     ],
-  "IncludeSearchResults": "True",
+  "IncludedSearchResults": "True",
   "AlertType": "Metric measurement"
   }
 }
@@ -242,7 +313,7 @@ ms.locfileid: "106491714"
     "LinkToFilteredSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/0MyAppId0/metrics/requests/count",
     "SearchIntervalDurationMin": "15",
     "SearchIntervalInMinutes": "15",
-    "Threshold": 10000,
+    "Threshold": 10000.0,
     "Operator": "Less Than",
     "ApplicationId": "8e20151d-75b2-4d66-b965-153fb69d65a6",
     "Dimensions": [
@@ -292,13 +363,16 @@ ms.locfileid: "106491714"
         }
       ]
     },
-    "IncludeSearchResults": "True",
+    "IncludedSearchResults": "True",
     "AlertType": "Metric measurement"
   }
 }
 ```
 
 #### <a name="monitoringservice--log-alerts-v2"></a>`monitoringService` = `Log Alerts V2`
+
+> [!NOTE]
+> API バージョン 2020-05-01 のログ アラート ルールでは、共通スキーマのみをサポートするこのペイロードの種類が使用されます。 このバージョンを使用している場合、検索結果はログ アラート ペイロードに埋め込まれません。 [ディメンション](./alerts-unified-log.md#split-by-alert-dimensions)を使用して、発生したアラートにコンテキストを提供する必要があります。 `LinkToFilteredSearchResultsAPI` または `LinkToSearchResultsAPI` を使用して、[Log Analytics API](/rest/api/loganalytics/dataaccess/query/get) でのクエリ結果にアクセスすることもできます。 結果を埋め込む必要がある場合は、指定されたリンクでロジック アプリを使用して、カスタム ペイロードを生成します。
 
 **サンプル値**
 ```json

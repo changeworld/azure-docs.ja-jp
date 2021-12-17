@@ -2,14 +2,14 @@
 title: イベント プロセッサ ホストを使用してイベントを受信する - Azure Event Hubs | Microsoft Docs
 description: この記事では、チェックポイント処理、リース、および並列でのイベントの読み込みの管理を簡素化する、Azure Event Hubs のイベント プロセッサ ホストについて説明します。
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 08/04/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d97b446993d3f0a280c1f4fadb237726ac09228a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ea8beeafd7be3f1e586fc0eaf542d4ee946262fe
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313421"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101271"
 ---
 # <a name="event-processor-host"></a>イベント プロセッサ ホスト
 > [!NOTE]
@@ -84,6 +84,10 @@ public class SimpleEventProcessor : IEventProcessor
 - **consumerGroupName:** Event Hubs は、既定のコンシューマー グループの名前として " **$既定**" を使用しますが、処理の特定の側面についてコンシューマー グループを作成することをお勧めします。
 - **eventHubConnectionString:** イベント ハブへの接続文字列。この値は、Azure portal から取得できます。 この接続文字列には、イベント ハブに対する **リッスン** アクセス許可が付与されている必要があります。
 - **storageConnectionString:** 内部リソースの管理に使用されるストレージ アカウント。
+
+> [!IMPORTANT]
+> - チェックポイント ストアとして使用されているストレージ アカウントでは、論理的な削除機能を有効にしないでください。 
+> - チェックポイント ストアとして階層型ストレージ (Azure Data Lake Storage Gen 2) を使用しないでください。
 
 最後に、コンシューマーは [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) インスタンスを Event Hubs サービスに登録します。 EventProcessorHost のインスタンスでイベント プロセッサ クラスを登録すると、イベント処理が開始されます。 この登録によって、Event Hubs サービスは、コンシューマー アプリがいくつかのパーティションからイベントを使用することを期待し、使用するイベントをプッシュするたびに [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 実装コードを呼び出すようになります。 
 

@@ -1,18 +1,18 @@
 ---
 title: ASE v1 におけるアプリをスケールする
-description: App Service Environment 内でのアプリのスケーリング。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
-author: ccompy
+description: App Service Environmen 内でのアプリのスケーリング。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
+author: madsd
 ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
 ms.topic: article
 ms.date: 10/17/2016
-ms.author: ccompy
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acc27352e44b6141196f8f5b0bbccd8d31f255bc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86220560"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248661"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>App Service Environment v1 内でのアプリのスケーリング
 Azure App Service では、通常、次の 3 つの項目をスケーリングできます。
@@ -58,7 +58,7 @@ ASE の ASP 用の自動スケール ルールは、通常と同じように機�
 > 
 
 ## <a name="getting-started"></a>作業の開始
-App Service Environment の使用を開始するには、「[App Service Environment を作成する方法][HowtoCreateASE]」を参照してください。
+App Service 環境の使用を開始するには、[テンプレートから ASEv1 を作成する方法](app-service-app-service-environment-create-ilb-ase-resourcemanager.md)に関するページを参照してください。
 
 <!--Image references-->
 [1]: ./media/app-service-web-scale-a-web-app-in-an-app-service-environment/aseappscale-aspblade.png
@@ -68,9 +68,8 @@ App Service Environment の使用を開始するには、「[App Service Environ
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
 [ScaleWebapp]: ../manage-scale-up.md
-[HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
-[CreateWebappinASE]: app-service-web-how-to-create-a-web-app-in-an-ase.md
+[CreateWebappinASE]: ./using.md
 [Appserviceplans]: ../overview-hosting-plans.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 [ASEAutoscale]: app-service-environment-auto-scale.md

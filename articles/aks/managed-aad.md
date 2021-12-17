@@ -3,18 +3,18 @@ title: Azure Kubernetes Service で Azure AD を使用する
 description: Azure Kubernetes Service (AKS) における Azure AD の使用方法
 services: container-service
 ms.topic: article
-ms.date: 02/1/2021
+ms.date: 10/20/2021
 ms.author: miwithro
-ms.openlocfilehash: 3db9f8d895b4c13b5f969859f422e7b566722ffc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 03d6b2e101103607ec1c699ebdf814d6f41cdb76
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783073"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427401"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
-AKS マネージド Azure AD 統合は、Azure AD の統合エクスペリエンスを簡素化するように設計されています。これまでユーザーは、クライアント アプリとサーバー アプリを作成し、Azure AD テナントでディレクトリの読み取りアクセス許可を付与する必要がありました。 新しいバージョンでは、クライアント アプリとサーバー アプリは AKS リソース プロバイダーで管理されます。
+AKS マネージド Azure AD 統合は、Azure AD の統合プロセスを簡素化します。 これまではユーザーがクライアント アプリとサーバー アプリを作成し、Azure AD テナントでディレクトリの読み取りアクセス許可を付与する必要がありました。 新しいバージョンでは、クライアント アプリとサーバー アプリは AKS リソース プロバイダーで管理されます。
 
 ## <a name="azure-ad-authentication-overview"></a>Azure AD 認証の概要
 
@@ -27,11 +27,10 @@ AKS マネージド Azure AD 統合は、Azure AD の統合エクスペリエン
 * AKS マネージド Azure AD 統合は無効にできません
 * AKS マネージド Azure AD 統合クラスターをレガシ AAD に変更することはできません
 * AKS マネージド Azure AD 統合では、Kubernetes RBAC に対応していないクラスターはサポートされません
-* AKS マネージド Azue AD 統合に関連付けられている Azure AD テナントの変更はサポートされません
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure CLI バージョン 2.11.0 以降
+* バージョン 2.29.0 以降Azure CLIバージョン 2.29.0 以降
 * バージョン [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) 以降の kubectl、または [kubelogin](https://github.com/Azure/kubelogin)
 * [helm](https://github.com/helm/helm) を使用している場合は、helm 3.3 以降
 
@@ -50,7 +49,7 @@ kubelogin --version
 
 ## <a name="before-you-begin"></a>開始する前に
 
-クラスターには、Azure AD グループが必要です。 このグループは、クラスターの管理アクセス許可を付与する、クラスターの管理者グループとして必要です。 既存の Azure AD グループを使用することも、新しい Azure AD グループを作成することもできます。 Azure AD グループのオブジェクト ID を記録します。
+クラスターには、Azure AD グループが必要です。 このグループは、クラスターの管理アクセス許可を付与する、クラスターの管理者グループとして登録されます。 既存の Azure AD グループを使用することも、新しい Azure AD グループを作成することもできます。 Azure AD グループのオブジェクト ID を記録します。
 
 ```azurecli-interactive
 # List existing groups in the directory
@@ -100,7 +99,7 @@ az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Azure AD が有効なクラスターへのアクセス
 
-次の手順を実行するには、[Azure Kubernetes Service クラスター ユーザー](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)組み込みロールが必要です。
+Azure AD によって定義されたグループを使用してクラスターにアクセスするには、あらかじめ [Azure Kubernetes Service クラスター ユーザー](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)組み込みロールが必要です。
 
 クラスターにアクセスするためのユーザー資格情報を取得します。
  
@@ -182,11 +181,99 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
   }
 ```
 
-クラスターにアクセスする場合は、[こちら][access-cluster]の手順に従ってください。
+クラスターにアクセスできるように kubeconfig を更新し、[こちら][access-cluster]のステップに従ってください。
 
 ## <a name="non-interactive-sign-in-with-kubelogin"></a>kubelogin を使用した非対話型サインイン
 
 継続的インテグレーション パイプラインなど、現在 kubectl で使用できない非対話型シナリオがいくつかあります。 [`kubelogin`](https://github.com/Azure/kubelogin) を使用して、非対話型サービス プリンシパル サインインでクラスターにアクセスできます。
+
+## <a name="disable-local-accounts"></a>ローカル アカウントを無効にする
+
+AKS クラスターをデプロイすると、既定でローカル アカウントが有効になります。 RBAC または Azure Active Directory 統合を有効にしている場合でも、監査できないバックドア オプションとして、`--admin` アクセスが原則的に存在します。 これを踏まえて、AKS には、`disable-local-accounts` フラグを使用してローカル アカウントを無効にする機能が用意されています。 また、機能がクラスターで有効になっているかどうかを示すために、マネージド クラスター API に `properties.disableLocalAccounts` フィールドが追加されています。
+
+> [!NOTE]
+> Azure AD 統合が有効になっているクラスターであっても、`aad-admin-group-object-ids` によって指定されたグループに属するユーザーは、管理者以外の資格情報を使用して引き続きアクセスできます。 Azure AD 統合が有効になっておらず、かつ `properties.disableLocalAccounts` が true に設定されていないクラスターでは、ユーザーの資格情報も管理者の資格情報も取得することはできません。
+
+> [!NOTE]
+> ユーザーがローカル アカウントを使用している可能性がある既存の AKS クラスターでローカル アカウント ユーザーを無効にした後、管理者は[クラスター証明書 をローテーションして](certificate-rotation.md#rotate-your-cluster-certificates)、それらのユーザーがアクセスできる可能性がある証明書を取り消す必要があります。  これが新しいクラスターの場合、アクションは必要ありません。
+
+### <a name="create-a-new-cluster-without-local-accounts"></a>ローカル アカウントを使用せずに新しいクラスターを作成する
+
+ローカル アカウントを使用せずに新しい AKS クラスターを作成するには、`disable-local-accounts` フラグを指定して [az aks create][az-aks-create] コマンドを使用します。
+
+```azurecli-interactive
+az aks create -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local-accounts
+```
+
+出力で、`properties.disableLocalAccounts` フィールドが true に設定されていることをチェックして、ローカル アカウントが無効になっていることを確認します。
+
+```output
+"properties": {
+    ...
+    "disableLocalAccounts": true,
+    ...
+}
+```
+
+管理者資格情報を取得しようとすると、機能によってアクセスを妨げられていることを示すエラー メッセージが表示され、失敗します。
+
+```azurecli-interactive
+az aks get-credentials --resource-group <resource-group> --name <cluster-name> --admin
+
+Operation failed with status: 'Bad Request'. Details: Getting static credential is not allowed because this cluster is set to disable local accounts.
+```
+
+### <a name="disable-local-accounts-on-an-existing-cluster"></a>既存のクラスターでローカル アカウントを無効にする
+
+既存の AKS クラスターでローカル アカウントを無効にするには、`disable-local-accounts` フラグを指定して [az aks update][az-aks-update] コマンドを使用します。
+
+```azurecli-interactive
+az aks update -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local-accounts
+```
+
+出力で、`properties.disableLocalAccounts` フィールドが true に設定されていることをチェックして、ローカル アカウントが無効になっていることを確認します。
+
+```output
+"properties": {
+    ...
+    "disableLocalAccounts": true,
+    ...
+}
+```
+
+管理者資格情報を取得しようとすると、機能によってアクセスを妨げられていることを示すエラー メッセージが表示され、失敗します。
+
+```azurecli-interactive
+az aks get-credentials --resource-group <resource-group> --name <cluster-name> --admin
+
+Operation failed with status: 'Bad Request'. Details: Getting static credential is not allowed because this cluster is set to disable local accounts.
+```
+
+### <a name="re-enable-local-accounts-on-an-existing-cluster"></a>既存のクラスターでローカル アカウントを再度有効にする
+
+AKS では、`enable-local` フラグを使用して、既存のクラスターでローカル アカウントを再度有効にすることもできます。
+
+```azurecli-interactive
+az aks update -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --enable-local
+```
+
+出力で、`properties.disableLocalAccounts` フィールドが false に設定されていることをチェックして、ローカル アカウントが再度有効になっていることを確認します。
+
+```output
+"properties": {
+    ...
+    "disableLocalAccounts": false,
+    ...
+}
+```
+
+管理者資格情報の取得を試みると、成功します。
+
+```azurecli-interactive
+az aks get-credentials --resource-group <resource-group> --name <cluster-name> --admin
+
+Merged "<cluster-name>-admin" as current context in C:\Users\<username>\.kube\config
+```
 
 ## <a name="use-conditional-access-with-azure-ad-and-aks"></a>Azure AD と AKS で条件付きアクセスを使用する
 
@@ -285,6 +372,15 @@ aks-nodepool1-61156405-vmss000000   Ready    agent   6m36s   v1.18.14
 aks-nodepool1-61156405-vmss000001   Ready    agent   6m42s   v1.18.14
 aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
 ```
+### <a name="apply-just-in-time-access-at-the-namespace-level"></a>名前空間レベルで Just-In-Time アクセスを適用する
+
+1. AKS クラスターを [Azure RBAC](manage-azure-rbac.md) と統合します。
+2. Just-In-Time アクセスと統合したいグループを、ロールの割り当てを使用してクラスター内の名前空間と関連付けます。
+
+```azurecli-interactive
+az role assignment create --role "Azure Kubernetes Service RBAC Reader" --assignee <AAD-ENTITY-ID> --scope $AKS_ID/namespaces/<namespace-name>
+```
+3. 名前空間レベルで構成したグループを PIM と関連付けて、構成を完了します。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
@@ -327,3 +423,7 @@ Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a
 [access-cluster]: #access-an-azure-ad-enabled-cluster
 [aad-migrate]: #upgrading-to-aks-managed-azure-ad-integration
 [aad-assignments]: ../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-aks-update]: /cli/azure/aks#az_aks_update

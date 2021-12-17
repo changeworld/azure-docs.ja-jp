@@ -4,16 +4,16 @@ description: Azure CLI を使用してプライベート Docker コンテナー 
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
-ms.openlocfilehash: 5c313ab43fd3dc18acf8261730686a4d6657291d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ba0bb7ec21a26603db261a949566186e3c4469e7
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783793"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112894250"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用したプライベート コンテナー レジストリの作成
 
-Azure Container Registry は、プライベート Docker コンテナー イメージを保管するための管理された Docker コンテナー レジストリ サービスです。 このガイドでは、Azure Container Registry インスタンスを Azure CLI で作成する方法について詳しく説明します。 次に、Docker コマンドを使用してコンテナー イメージをレジストリにプッシュし、最後にレジストリからイメージをプルして実行します。
+Azure Container Registry は、コンテナー イメージおよび関連アーティクルのビルド、保管、管理をするための、プライベート レジストリ サービスです。 このクイックスタートでは、Azure CLI を使用して Azure コンテナー レジストリ インスタンスを作成します。 次に、Docker コマンドを使用してコンテナー イメージをレジストリにプッシュし、最後にレジストリからイメージをプルして実行します。
 
 このクイック スタートでは、Azure CLI を実行している必要があります (バージョン 2.0.55 以降を推奨)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
@@ -67,9 +67,11 @@ az acr create --resource-group myResourceGroup \
 
 出力の `loginServer` をメモしておいてください。これは、完全修飾レジストリ名です (すべて小文字)。 以降このクイックスタートでは、コンテナー レジストリ名のプレースホルダーとして `<registry-name>` を、レジストリのログイン サーバー名のプレースホルダーとして `<login-server>` を使用します。
 
+[!INCLUDE [container-registry-quickstart-sku](../../includes/container-registry-quickstart-sku.md)]
+
 ## <a name="log-in-to-registry"></a>レジストリへのログイン
 
-コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリにログインしておく必要があります。 そのためには、[az acr login][az-acr-login] コマンドを使用します。 Azure CLI でログインする際は、レジストリ名のみを指定します。 ログイン サーバー名は使用しないでください。ドメインのサフィックスが含まれています (`azurecr.io` など)。 
+コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリにログインしておく必要があります。 そのためには、[az acr login][az-acr-login] コマンドを使用します。 Azure CLI でログインする際は、レジストリ リソース名のみを指定します。 完全修飾ログイン サーバー名は使用しません。 
 
 ```azurecli
 az acr login --name <registry-name>

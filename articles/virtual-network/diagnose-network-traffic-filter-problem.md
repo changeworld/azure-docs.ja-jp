@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: d6835d06015923a70301c95370c76efbd0c2163e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ca7503127342a5eceac43a8f5a2bfce578eb21e6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776737"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257805"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
@@ -176,7 +177,7 @@ az vm show \
 | 宛先ポート範囲 | 80                                                                                 |
 | Protocol                | TCP                                                                                |
 | アクション                  | Allow                                                                              |
-| Priority                | 100                                                                                |
+| 優先度                | 100                                                                                |
 | Name                    | Allow-HTTP-All                                                                     |
 
 この規則を作成した後は、ポート 80 でインターネットからの受信が許可されるようになります。これは、トラフィックを拒否している *DenyAllInBound* という名前の既定のセキュリティ規則より、この規則の優先順位の方が高いためです。 方法については、「[セキュリティ規則を作成する](manage-network-security-group.md#create-a-security-rule)」をご覧ください。 ネットワーク インターフェイスとサブネットに異なる NSG が関連付けられている場合は、両方の NSG に同じ規則を作成する必要があります。
@@ -192,7 +193,7 @@ Azure は、受信トラフィックを処理するとき、最初にサブネ�
 * 既定のセキュリティ規則は、インターネットからの受信アクセスをブロックし、仮想ネットワークからの受信トラフィックのみを許可します。 インターネットからの受信トラフィックを許可するには、既定の規則より優先順位の高いセキュリティ規則を追加します。 [既定のセキュリティ規則](./network-security-groups-overview.md#default-security-rules)または[セキュリティ規則を追加する](manage-network-security-group.md#create-a-security-rule)方法について学習します。
 * 既定では、仮想ネットワークをピアリングした場合、**VIRTUAL_NETWORK** サービス タグは、ピアリングされている仮想ネットワークのプレフィックスを含めるように自動的に拡張されます。 仮想ネットワークのピアリングに関する問題をトラブルシューティングするには、**ExpandedAddressPrefix** の一覧でプレフィックスを表示できます。 [仮想ネットワーク ピアリング](virtual-network-peering-overview.md)および[サービス タグ](./network-security-groups-overview.md#service-tags)の詳細を学習してください。
 * ネットワーク インターフェイスの有効なセキュリティ規則は、VM のネットワーク インターフェイスまたはサブネットに NSG が関連付けられていて、VM が実行中の状態である場合にのみ、表示されます。
-* ネットワーク インターフェイスやサブネットに関連付けられている NSG がなく、VM に[パブリック IP アドレス](virtual-network-public-ip-address.md)が割り当てられている場合は、すべてのポートがすべての場所との間の受信/送信アクセス用に開かれます。 VM にパブリック IP アドレスがある場合は、ネットワーク インターフェイスが含まれるサブネットに NSG を適用することをお勧めします。
+* ネットワーク インターフェイスやサブネットに関連付けられている NSG がなく、VM に[パブリック IP アドレス](./ip-services/virtual-network-public-ip-address.md)が割り当てられている場合は、すべてのポートがすべての場所との間の受信/送信アクセス用に開かれます。 VM にパブリック IP アドレスがある場合は、ネットワーク インターフェイスが含まれるサブネットに NSG を適用することをお勧めします。
 
 ## <a name="additional-diagnosis"></a>追加の診断
 

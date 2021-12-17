@@ -35,8 +35,10 @@
       href: ddos-response-strategy.md
     - name: 参照用アーキテクチャ
       href: ddos-protection-reference-architectures.md
+    - name: ビジネス継続性
+      href: ddos-disaster-recovery-guidance.md
     - name: セキュリティ ベースライン
-      href: ../security/fundamentals/ddos-protection-security-baseline.md?toc=%2fazure%2fddos-protection%2ftoc.json
+      href: /security/benchmark/azure/baselines/ddos-protection-security-baseline?toc=%2fazure%2fddos-protection%2ftoc.json?toc=/azure/ddos-protection/TOC.json
 - name: 操作方法ガイド
   items:
     - name: シミュレーションを通じたテスト
@@ -45,10 +47,14 @@
       href: manage-permissions.md
     - name: DDoS Rapid Response (DRR) に参加する
       href: ddos-rapid-response.md
+    - name: Gateway Load Balancer およびパートナー NVA を使用したインライン L7 DDoS 保護
+      href: inline-protection-glb.md
     - name: パートナーをオンボードする
       href: ddos-protection-partner-onboarding.md
 - name: リファレンス
   items:
+    - name: Azure Policy の組み込み
+      href: policy-reference.md
     - name: Azure CLI
       href: /cli/azure/network/ddos-protection
     - name: Azure PowerShell
@@ -68,7 +74,7 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: ddos-faq.md
+      href: ddos-faq.yml
     - name: 価格
       href: 'https://azure.microsoft.com/en-us/pricing/details/ddos-protection/'
     - name: リージョン別の提供状況

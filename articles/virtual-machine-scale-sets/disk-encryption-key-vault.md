@@ -9,14 +9,16 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 3d30d506ae3b49b2e247ee77ef17d101f94854c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 904a78d9c8fcdc83b7fa837d744cf955ceda8d2b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501016"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691389"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Encryption のキー コンテナーを作成して構成する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 Azure Disk Encryption では、Azure Key Vault を使用して、ディスク暗号化キーとシークレットを制御および管理します。  キー コンテナーの詳細については、「[Azure Key Vault の概要](../key-vault/general/overview.md)」と「[キー コンテナーのセキュリティ保護](../key-vault/general/secure-your-key-vault.md)」を参照してください。
 
@@ -53,3 +55,4 @@ Connect-AzAccount
 - [Azure Disk Encryption の概要](disk-encryption-overview.md)
 - [Azure CLI を使用して仮想マシン スケール セットを暗号化する](disk-encryption-cli.md)
 - [Azure PowerShell を使用して仮想マシン スケール セットを暗号化する](disk-encryption-powershell.md)
+

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 07/15/2021
 ms.author: b-juche
-ms.openlocfilehash: 6ff87d046c60f588e133010895ec3e7ce08cb71f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8fd2656af426464ccddfaed50124b4ba189254f9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740564"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256345"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files の NFSv4.1 の Kerberos 暗号化を構成する
 
@@ -29,12 +29,13 @@ Azure NetApp Files では、AES-256 暗号化を使用した Kerberos モード 
 
 NFSv4.1 クライアントの暗号化には、次の要件が適用されます。 
 
-* Kerberos チケット発行を容易にするための Active Directory Domain Services (AD DS) 接続 
+* Kerberos チケット発行を容易にする Active Directory Domain Services (AD DS) または Azure Active Directory Domain Services (AADDS) 接続 
 * クライアントと Azure NetApp Files NFS サーバーの両方の IP アドレスに対する DNS A/PTR レコードの作成
-* Linux クライアント  
-    この記事では、RHEL および Ubuntu クライアントに関するガイダンスを提供します。  他のクライアントも同様の構成手順で動作します。 
-* NTP サーバー アクセス  
-    一般的に使用される、Active Directory ドメイン コントローラー (AD DC) のいずれかのドメイン コントローラーを使用できます。
+* Linux クライアント: この記事では、RHEL および Ubuntu クライアントに関するガイダンスを提供します。  他のクライアントも同様の構成手順で動作します。 
+* NTP サーバー アクセス: Active Directory ドメイン コントローラー (AD DC) の一般的に使用されるいずれかのドメイン コントローラーを使用できます。
+* ユーザー アカウントのユーザー プリンシパル名が `$` 記号で終る (user$@REALM.COM など) ことが "*ない*" ようにしてください。 <!-- Not using 'contoso.com' in this example; per Mark, A customers REALM namespace may be different from their AD domain name space. -->   
+    [グループ マネージド サービス アカウント](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts) (gMSA) の場合、そのアカウントを Azure NetApp Files Kerberos 機能で使用するには、ユーザー プリンシパル名から末尾の `$` を削除しておく必要があります。
+
 
 ## <a name="create-an-nfs-kerberos-volume"></a>NFS Kerberos ボリュームを作成する
 
@@ -117,8 +118,9 @@ NFSv4.1 ボリュームに使用できるセキュリティ オプション、�
 ## <a name="next-steps"></a>次のステップ  
 
 * [NFSv4.1 ボリュームでの Kerberos のパフォーマンスに対する影響](performance-impact-kerberos.md)
-* [NFSv4.1 Kerberos ボリュームの問題のトラブルシューティング](troubleshoot-nfsv41-kerberos-volumes.md)
-* [Azure NetApp Files についての FAQ](azure-netapp-files-faqs.md)
+* [Azure NetApp Files のボリュームに関するエラーをトラブルシューティングする](troubleshoot-volumes.md)
+* [NFS に関する FAQ](faq-nfs.md)
+* [パフォーマンスに関する FAQ](faq-performance.md)
 * [Azure NetApp Files の NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)
 * [Active Directory 接続を作成する](create-active-directory-connections.md)
 * [Azure NetApp Files 用に NFS クライアントを構成する](configure-nfs-clients.md) 

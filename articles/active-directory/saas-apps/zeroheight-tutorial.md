@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 678f35ffd6d37d8d2dd16665902ebf85d91b633b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a11f970e26791ee4e25357f6408c0c1e7f712395
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92521562"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340497"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zeroheight"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と zeroheight の統合
 
@@ -37,9 +37,9 @@ ms.locfileid: "92521562"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* zeroheight では、**SP** Initiated SSO がサポートされます
+* zeroheight では、**SP** Initiated SSO がサポートされます。
 
-## <a name="adding-zeroheight-from-the-gallery"></a>ギャラリーからの zeroheight の追加
+## <a name="add-zeroheight-from-the-gallery"></a>ギャラリーからの zeroheight の追加
 
 Azure AD への zeroheight の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に zeroheight を追加する必要があります。
 
@@ -50,12 +50,11 @@ Azure AD への zeroheight の統合を構成するには、ギャラリーか�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**zeroheight**」と入力します。
 1. 結果のパネルから **[zeroheight]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-zeroheight"></a>zeroheight の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、zeroheight に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと zeroheight の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-zeroheight で Azure AD の SSO を構成してテストするには、次の構成要素を完了します。
+zeroheight に対する Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -70,30 +69,31 @@ zeroheight で Azure AD の SSO を構成してテストするには、次の構
 
 1. Azure portal の **zeroheight** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、URL として「`https://zeroheight.com/sso`」と入力します。
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して値を入力します。`zeroheight:<CUSTOM_ID>`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`zeroheight:<CUSTOM_ID>`
+    b. **[応答 URL]** ボックスに、`https://zeroheight.com/sso/acs/<CUSTOM_ID>` のパターンを使用して URL を入力します
 
-    c. **[応答 URL]** ボックスに、`https://zeroheight.com/sso/acs/<CUSTOM_ID>` のパターンを使用して URL を入力します
+    c. **[サインオン URL]** ボックスに、URL として「`https://zeroheight.com/sso`」と入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[zeroheight クライアント サポート チーム](mailto:support@zeroheight.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. zeroheight アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+1. zeroheight アプリケーションでは、SAML アサーションを特定の形式にする必要があり、ご自分の SAML トークンの属性の構成にカスタム属性のマッピングを追加する必要があります。 次のセクションで既定の属性をご確認ください。
 
     ![image](common/default-attributes.png)
 
-1. その他に、zeroheight アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+1. zeroheight では、いずれの既定の属性も使用されません。 代わりに、SAML 応答で返されるように次の属性を追加してください。 これらの属性も事前設定する必要がありますが、要件に従って確認することができます。
     
     | 名前 |  ソース属性|
     | ---------- | --------- |
     | email | User.mail |
+    | FirstName | User.givenname |
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
@@ -135,12 +135,12 @@ zeroheight で Azure AD の SSO を構成してテストするには、次の構
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる zeroheight のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる zeroheight のサインオン URL にリダイレクトされます。 
 
-2. zeroheight のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* zeroheight のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [zeroheight] タイルをクリックすると、zeroheight サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [zeroheight] タイルをクリックすると、zeroheight サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-zeroheight を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+zeroheight を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

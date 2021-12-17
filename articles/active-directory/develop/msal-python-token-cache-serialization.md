@@ -13,12 +13,12 @@ ms.date: 11/13/2019
 ms.author: rayluo
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 7aaf59377949101ba8dd5c9454b89229e925e859
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbe91d7a25e516766939ba56a9d9cfafff4bf0b5
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87846192"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229907"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>MSAL for Python でのカスタム トークン キャッシュのシリアル化
 
@@ -38,4 +38,4 @@ Web アプリまたは Web API の場合は、セッション、Redis Cache、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Windows または Linux の Web アプリまたは Web API に対してトークン キャッシュを使用する方法の例については、[ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py#L64-L72) を参照してください。 この例は、Microsoft Graph API を呼び出す Web アプリに関するものです。
+Windows または Linux の Web アプリまたは Web API に対してトークン キャッシュを使用する方法の例については、[ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.3.0/app.py#L66-L74) を参照してください。 この例は、Microsoft Graph API を呼び出す Web アプリに関するものです。

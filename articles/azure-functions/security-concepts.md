@@ -3,12 +3,12 @@ title: Azure Functions のセキュリティ保護
 description: 一般的な攻撃に対して、Azure で実行される関数コードのセキュリティを強化する方法について説明します。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1901c9f471901c086c99d1c1fff66ab1258bd54
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368491"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484466"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions のセキュリティ保護
 
@@ -22,9 +22,9 @@ ms.locfileid: "100368491"
 
 このセクションでは、関数アプリの構成および実行を可能な限り安全に行う方法について説明します。 
 
-### <a name="security-center"></a>Security Center
+### <a name="defender-for-cloud"></a>Defender for Cloud
 
-ポータルでは、Security Center が関数アプリと統合されています。 これにより、構成に関連する潜在的なセキュリティ脆弱性を、無料ですばやく評価することができます。 専用プランで実行される関数アプリでは、追加コストを払えば Security Center のリアルタイム セキュリティ機能も利用できます。 詳細については、「[Azure App Service Web アプリと API を保護する](../security-center/defender-for-app-service-introduction.md)」を参照してください。 
+ポータルでは、Defender for Cloud が関数アプリと統合されます。 これにより、構成に関連する潜在的なセキュリティ脆弱性を、無料ですばやく評価することができます。 専用プランで実行されている関数アプリでは、Defender for Cloud の高度なセキュリティ機能も使用されます (別途料金がかかります)。 詳細については、「[Azure App Service Web アプリと API を保護する](../defender-for-cloud/defender-for-app-service-introduction.md)」を参照してください。 
 
 ### <a name="log-and-monitor"></a>ログ記録と監視を行う
 
@@ -32,7 +32,7 @@ ms.locfileid: "100368491"
 
 Functions は Azure Monitor のログとも統合されており、関数アプリのログをシステム イベントと統合して分析を容易に進めることができます。 診断設定を使用すると、選択した送信先 (Logs Analytics ワークスペースなど) に対する関数のプラットフォーム ログおよびメトリックのストリーミング エクスポートを構成できます。 詳細については、「[Azure Monitor ログを使用した Azure Functions の監視](functions-monitor-log-analytics.md)」を参照してください。 
 
-エンタープライズレベルで脅威検出と対応を自動化するには、Logs Analytics ワークスペースにログとイベントをストリーム配信します。 その後、このワークスペースに Azure Sentinel を接続します。 詳細については、「[Azure Sentinel とは](../sentinel/overview.md)」を参照してください。  
+エンタープライズレベルで脅威検出と対応を自動化するには、Logs Analytics ワークスペースにログとイベントをストリーム配信します。 その後、このワークスペースに Azure Sentinel を接続できます。 詳細については、[Microsoft Sentinel の概要](../sentinel/overview.md)ページを参照してください。  
 
 監視に関するその他のセキュリティ推奨事項については、「[Azure Functions 用の Azure セキュリティ ベースライン](security-baseline.md#logging-and-monitoring)」を参照してください。 
 
@@ -78,9 +78,9 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 
 |場所  |設定 | 値 | 説明  |
 |---------|---------|---------|---------|
-|別のストレージ アカウント     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 指定された SAS URL に基づいて、2 番目のストレージ アカウントの Blob Storage にキーを格納します。 キーは、関数アプリに固有のシークレットを使用して、格納される前に暗号化されます。 |
+|別のストレージ アカウント     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL>` | 指定された SAS URL に基づいて、2 番目のストレージ アカウントの Blob Storage にキーを格納します。 キーは、関数アプリに固有のシークレットを使用して、格納される前に暗号化されます。 |
 |ファイル システム   | `AzureWebJobsSecretStorageType`   |  `files`       | キーはファイル システムに保存されており、関数アプリに固有のシークレットを使用して、格納の前に暗号化されます。 |
-|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | コンテナーには、ホスティング リソースのシステム割り当てマネージド ID に対応するアクセス ポリシーが必要です。 アクセス ポリシーでは、`Get`、`Set`、`List`、`Delete` というシークレットのアクセス許可を、その ID に付与することを必要としています。 <br/>ローカルで実行している場合は、開発者 ID が使用され、設定は [local.settings.json file](functions-run-local.md#local-settings-file) に含まれている必要があります。 | 
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | コンテナーには、ホスティング リソースのシステム割り当てマネージド ID に対応するアクセス ポリシーが必要です。 アクセス ポリシーでは、`Get`、`Set`、`List`、`Delete` というシークレットのアクセス許可を、その ID に付与することを必要としています。 <br/>ローカルで実行している場合は、開発者 ID が使用され、設定は [local.settings.json file](functions-develop-local.md#local-settings-file) に含まれている必要があります。 | 
 |Kubernetes シークレット  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (省略可) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Kubernetes で Functions ランタイムを実行する場合にのみサポートされます。 `AzureWebJobsKubernetesSecretName` が設定されていない場合、リポジトリは読み取り専用と見なされます。 この場合は、デプロイの前に値を生成する必要があります。 Kubernetes にデプロイすると、Azure Functions Core Tools によって値が自動的に生成されます。|
 
 ### <a name="authenticationauthorization"></a>認証/承認
@@ -131,7 +131,7 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 
 アプリ設定と接続文字列は、Azure で暗号化されて格納されます。 これらの暗号化は、アプリの起動時にアプリのプロセス メモリに挿入される前にのみ解除されます。 暗号化キーは定期的に回転されます。 セキュリティで保護されたシークレットのストレージを自分で管理したい場合は、アプリ設定で Azure Key Vault を参照する必要があります。 
 
-ローカル コンピューターで関数を開発するとき、local.settings.json ファイルで既定で設定を暗号化することもできます。 詳細については、[ローカル設定ファイル](functions-run-local.md#local-settings-file)の `IsEncrypted` プロパティを参照してください。  
+ローカル コンピューターで関数を開発するとき、local.settings.json ファイルで既定で設定を暗号化することもできます。 詳細については、[ローカル設定ファイル](functions-develop-local.md#local-settings-file)の `IsEncrypted` プロパティを参照してください。  
 
 #### <a name="key-vault-references"></a>Key Vault の参照
 

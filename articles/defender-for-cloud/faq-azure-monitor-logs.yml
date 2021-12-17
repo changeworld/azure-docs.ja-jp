@@ -1,0 +1,47 @@
+### YamlMime:FAQ
+metadata:
+  title: Microsoft Defender for Cloud に関する FAQ - 既存の Log Analytics エージェントに関する質問
+  description: この FAQ では、Log Analytics エージェントを既に使用し、脅威の防止、検出、対応に役立つ製品である Microsoft Defender for Cloud を検討しているお客様の質問に回答します。
+  services: security-center
+  author: memildin
+  manager: rkarlin
+  ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
+  ms.service: defender-for-cloud
+  ms.topic: conceptual
+  ms.date: 11/14/2021
+  ms.author: memildin
+  ms.openlocfilehash: 804493ada16d46f9d14b7e2dd0106db66fb56b80
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132487211"
+title: Azure Monitor ログを既に使用しているお客様向けの FAQ
+summary: ''
+sections:
+- name: 無視
+  questions:
+  - question: >
+      Defender for Cloud は、VM とワークスペース間の既存の接続をオーバーライドしますか?
+    answer: "VM に Log Analytics エージェントが Azure 拡張機能として既にインストールされている場合、Defender for Cloud では既存のワークスペース接続はオーバーライドされません。 代わりに、Defender for Cloud では既存のワークスペースが使用されます。 VM のレポート先のワークスペースに \"Security\" または \"SecurityCenterFree\" ソリューションがインストールされている場合、VM は保護されます。 \n\n[データ収集] 画面で選択したワークスペースに Defender for Cloud ソリューションがインストールされ (まだ存在しない場合)、ソリューションは関連する VM にのみ適用されます。 ソリューションを追加すると、既定では、そのソリューションは、Log Analytics ワークスペースに接続されているすべての Windows エージェントおよび Linux エージェントに自動的にデプロイされます。 [ソリューションのターゲット設定](../azure-monitor/insights/solution-targeting.md)を使用すると、ソリューションにスコープを適用することができます。\n\n> [!TIP]\n> Log Analytics エージェントが (Azure 拡張機能としてではなく) VM に直接インストールされている場合、Defender for Cloud は Log Analytics エージェントをインストールし、セキュリティ監視は制限されます。\n"
+  - question: >
+      Defender for Cloud では、既存の Log Analytics ワークスペースにソリューションがインストールされますか? 課金にどのような影響がありますか?
+    answer: >
+      作成したワークスペースに VM が既に接続されていることを Defender for Cloud が識別すると、Defender for Cloud によって、価格の構成に従ってこのワークスペースのソリューションが有効になります。 ソリューションは、[ソリューションのターゲット設定](../azure-monitor/insights/solution-targeting.md)に従って、関連するリソースにのみ適用されるため、課金額は変わりません。
+
+
+      - **強化されたセキュリティ オフ** - Defender for Cloud によって、"SecurityCenterFree" ソリューションがワークスペースにインストールされます。 課金されることはありません。
+
+      - **すべての Microsoft Defender プランを有効にする** – Defender for Cloud によって、"Security" ソリューションがワークスペースにインストールされます。
+
+         ![既定のワークスペースのソリューション](./media/platform-migration-faq/solutions.png)
+  - question: >
+      環境内に既にワークスペースがありますが、それらを使用してセキュリティ データを収集できますか?
+    answer: >
+      VM に Azure 拡張機能として Log Analytics エージェントが既にインストールされている場合、Defender for Cloud では既存の接続済みワークスペースが使用されます。 Defender for Cloud ソリューションは、まだ存在しない場合はワークスペースにインストールされ、ソリューションは をターゲットとするソリューションを介して関連する VM [にのみ適用されます](../azure-monitor/insights/solution-targeting.md)。
+
+
+      Defender for Cloud によって VM に Log Analytics エージェントがインストールされるとき、既存のワークスペースが指示されなければ、Defender for Cloud によって作成された既定のワークスペースが使用されます。
+  - question: >
+      ワークスペースにはセキュリティ ソリューションが既にあります。 課金にどのような影響がありますか?
+    answer: Security & Audit ソリューションは **、Microsoft Defender for servers を有効にするために使用されます**。 Security & Audit ソリューションがワークスペースに既にインストールされている場合、Defender for Cloud では既存のソリューションが使用されます。 課金額の変更はありません。

@@ -1,21 +1,21 @@
 ---
-title: Windows Virtual Desktop エージェントに関する問題をトラブルシューティングする - Azure
+title: Azure Virtual Desktop エージェントに関する問題をトラブルシューティングする - Azure
 description: エージェントと接続に関する一般的な問題を解決する方法。
 author: Sefriend
 ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 2f321413a275676d0abb1a075ba958885ffcd821
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 3bb81f3fd29e68e04607e4f0252ccd8f0308dc67
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505027"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471803"
 ---
-# <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Windows Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする
+# <a name="troubleshoot-common-azure-virtual-desktop-agent-issues"></a>Azure Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする
 
-Windows Virtual Desktop エージェントでは、次の複数の要因のために接続に関する問題が発生することがあります。
+Azure Virtual Desktop エージェントでは、次の複数の要因のために接続に関する問題が発生することがあります。
    - エージェントのサービスを停止させるブローカーでのエラー。
    - 更新に関する問題。
    - セッション ホストへの接続を中断させる、エージェントのインストール中のインストールに関する問題。
@@ -23,7 +23,7 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 この記事では、これらの一般的なシナリオの解決策と、接続に関する問題に対処する方法について説明します。
 
 >[!NOTE]
->セッションの接続性と Windows Virtual Desktop エージェントに関連する問題のトラブルシューティングについては、 **[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** でイベント ログを確認することをお勧めします。 問題を特定するために、次のいずれかのソースがあるイベントを探してください。
+>セッションの接続性と Azure Virtual Desktop エージェントに関連する問題のトラブルシューティングについては、 **[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** でイベント ログを確認することをお勧めします。 問題を特定するために、次のいずれかのソースがあるイベントを探してください。
 >
 >- WVD-Agent
 >- WVD-Agent-Updater
@@ -106,19 +106,19 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
    > ![失敗した読み込まれたブローカー グローバルへのアクセスのスクリーンショット](media/unsuccessful-broker-global.png)
 
 8. ネットワークによってこれらの URL がブロックされている場合は、必要な URL のブロックを解除する必要があります。 詳細については、「[必要な URL リスト](safe-url-list.md)」を参照してください。
-9. これで問題が解決されない場合は、エージェントからブローカーへの接続をブロックする、暗号化されたグループ ポリシーが存在しないことを確認します。 Windows Virtual Desktop では、[Azure Front Door](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-) と同じ TLS 1.2 暗号化を使用します。 詳細については、「[接続のセキュリティ](network-connectivity.md#connection-security)」を参照してください。
+9. これで問題が解決されない場合は、エージェントからブローカーへの接続をブロックする、暗号化されたグループ ポリシーが存在しないことを確認します。 Azure Virtual Desktop では、[Azure Front Door](../frontdoor/concept-end-to-end-tls.md#supported-cipher-suites) と同じ TLS 1.2 暗号化を使用します。 詳細については、「[接続のセキュリティ](network-connectivity.md#connection-security)」を参照してください。
 
 ## <a name="error-3703"></a>エラー: 3703
 
-**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3703 のイベント (説明では "RD Gateway Url: is not accessible" (RD ゲートウェイ URL にアクセスできません) と示されます) が表示されている場合は、エージェントのゲートウェイ URL へのアクセスを有効にできません。 セッション ホストに正常に接続し、これらのエンドポイントへのネットワーク トラフィックを許可して制限をバイパスするには、「[必要な URL リスト](safe-url-list.md)」にある URL のブロックを解除する必要があります。 また、ファイアウォールまたはプロキシの設定によってこれらの URL がブロックされていないことも確認してください。 これらの URL のブロックの解除は、Windows Virtual Desktop を使用するために必要です。
+**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3703 のイベント (説明では "RD Gateway Url: is not accessible" (RD ゲートウェイ URL にアクセスできません) と示されます) が表示されている場合は、エージェントのゲートウェイ URL へのアクセスを有効にできません。 セッション ホストに正常に接続し、これらのエンドポイントへのネットワーク トラフィックを許可して制限をバイパスするには、「[必要な URL リスト](safe-url-list.md)」にある URL のブロックを解除する必要があります。 また、ファイアウォールまたはプロキシの設定によってこれらの URL がブロックされていないことも確認してください。 これらの URL のブロックの解除は、Azure Virtual Desktop を使用するために必要です。
 
 この問題を解決するには、ファイアウォールまたは DNS の設定によってこれらの URL がブロックされていないことを確認します。
-1. [Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護](../firewall/protect-windows-virtual-desktop.md)します。
+1. [Azure Firewall を使用して Azure Virtual Desktop のデプロイを保護します。](../firewall/protect-azure-virtual-desktop.md)
 2. [Azure Firewall の DNS 設定](../firewall/dns-settings.md)を構成します。
 
 ## <a name="error-3019"></a>エラー: 3019
 
-**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3019 のイベントが表示されている場合は、エージェントの Web ソケット トランスポートの URL へのアクセスを有効にできないことを意味します。 セッション ホストに正常に接続し、ネットワーク トラフィックを許可してこれらの制限をバイパスするには、「[必要な URL リスト](safe-url-list.md)」にリストされている URL のブロックを解除する必要があります。 Azure ネットワーク チームと協力して、ファイアウォール、プロキシ、DNS 設定でそれらの URL がブロックされていないことを確認してください。 また、ネットワーク トレース ログを確認して、Windows Virtual Desktop サービスがブロックされている場所を特定することもできます。 この特定の問題に対するサポート リクエストを開く場合は、必ずネットワーク トレース ログをリクエストに添付してください。
+**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3019 のイベントが表示されている場合は、エージェントの Web ソケット トランスポートの URL へのアクセスを有効にできないことを意味します。 セッション ホストに正常に接続し、ネットワーク トラフィックを許可してこれらの制限をバイパスするには、「[必要な URL リスト](safe-url-list.md)」にリストされている URL のブロックを解除する必要があります。 Azure ネットワーク チームと協力して、ファイアウォール、プロキシ、DNS 設定でそれらの URL がブロックされていないことを確認してください。 また、ネットワーク トレース ログを確認して、Azure Virtual Desktop サービスがブロックされている場所を特定することもできます。 この特定の問題に対するサポート リクエストを開く場合は、必ずネットワーク トレース ログをリクエストに添付してください。
 
 ## <a name="error-installationhealthcheckfailedexception"></a>エラー: InstallationHealthCheckFailedException
 
@@ -144,7 +144,7 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 3. [エージェント サービスが実行](#error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running)されていて、かつ[スタック リスナーが動作](#error-stack-listener-isnt-working-on-windows-10-2004-vm)していることを確認します。
 4. [エージェントをブローカーに接続できる](#error-agent-cannot-connect-to-broker-with-invalid_form)ことを確認します。
 5. [VM に有効な登録トークンが](#error-invalid_registration_token)あることを確認します。
-6. [VM 登録トークンの有効期限が切れていない](faq.md#how-often-should-i-turn-my-vms-on-to-prevent-registration-issues)ことを確認します。 
+6. [VM 登録トークンの有効期限が切れていない](./faq.yml)ことを確認します。 
 
 ## <a name="error-installmsiexception"></a>エラー:InstallMsiException
 
@@ -189,7 +189,7 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 
 ## <a name="error-stack-listener-isnt-working-on-windows-10-2004-vm"></a>エラー:スタック リスナーが Windows 10 2004 VM で動作していない
 
-コマンド プロンプトで **qwinsta** を実行し、**rdp-sxs** の横に表示されるバージョン番号をメモします。 **qwinsta** を実行した後に **rdp-tcp** および **rdp-sxs** コンポーネントの横に **[リッスン]** が表示されていないか、またはそれらのコンポーネントがまったく表示されない場合は、スタックの問題が発生していることを示します。 スタックの更新プログラムはエージェントの更新プログラムと共にインストールされ、このインストールが失敗すると、Windows Virtual Desktop リスナーは機能しません。
+コマンド プロンプトで **qwinsta** を実行し、**rdp-sxs** の横に表示されるバージョン番号をメモします。 **qwinsta** を実行した後に **rdp-tcp** および **rdp-sxs** コンポーネントの横に **[リッスン]** が表示されていないか、またはそれらのコンポーネントがまったく表示されない場合は、スタックの問題が発生していることを示します。 スタックの更新プログラムはエージェントの更新プログラムと共にインストールされ、このインストールが失敗すると、Azure Virtual Desktop リスナーは機能しません。
 
 この問題を解決するには、次の手順を実行します。
 1. レジストリ エディターを開きます。
@@ -214,33 +214,6 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 8. **[ClusterSettings]** で、**SessionDirectoryListener** を見つけ、そのデータ値が **rdp-sxs...** であることを確認します。
 9. **SessionDirectoryListener** が **rdp-sxs...** に設定されていない場合は、[エージェントとブート ローダーのアンインストール](#step-1-uninstall-all-agent-boot-loader-and-stack-component-programs)のセクションの手順に従って、最初にエージェント、ブート ローダー、スタック コンポーネントをアンインストールし、次に [エージェントとブート ローダーを再インストールする](#step-4-reinstall-the-agent-and-boot-loader)必要があります。 これにより、サイドバイサイド スタックが再インストールされます。
 
-## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>エラー: ユーザーがセッション ホストから切断されたままになるハートビートの問題
-
-サーバーで Windows Virtual Desktop サービスからのハートビートが収集されていない場合は、ハートビートのしきい値を変更する必要があります。 これにより、問題の症状が一時的に緩和されますが、根本的なネットワークの問題は解決されません。 次のシナリオが 1 つ以上当てはまる場合は、このセクションの手順に従ってください。
-
-- **CheckSessionHostDomainIsReachableAsync** エラーを受け取っている
-- **ConnectionBrokenMissedHeartbeatThresholdExceeded** エラーを受け取っている
-- **ConnectionEstablished:UnexpectedNetworkDisconnect** エラーを受け取っている
-- ユーザー クライアントが切断された状態のままである
-- ユーザーがそれらのセッション ホストから切断されたままである
-
-ハートビートのしきい値を変更するには、次のようにします。
-1. 管理者としてコマンド プロンプトを開きます。
-2. **qwinsta** コマンドを入力して実行します。
-3. **rdp-tcp** と **rdp-sxs** の 2 つのスタック コンポーネントが表示されます。 
-   - 使用している OS のバージョンによっては、**rdp-sxs** の後にビルド番号が表示されることがあります。 その場合は、後のために、この番号を書き留めておくようにしてください。
-4. レジストリ エディターを開きます。
-5. **[HKEY_LOCAL_MACHINE]**  >  **[SYSTEM]**  >  **[CurrentControlSet]**  >  **[Control]**  >  **[Terminal Server]**  >  **[WinStations]** の順に移動します。
-6. **[WinStations]** には、さまざまなスタック バージョン用のいくつかのフォルダーが表示されることがあります。 手順 3. のバージョン番号に一致するフォルダーを選択します。
-7. レジストリ エディターを右クリックし、 **[新規]**  >  **[DWORD (32 ビット) 値]** の順に選択して、新しいレジストリ DWORD を作成します。 この DWORD を作成するとき、次の値を入力します。
-   - HeartbeatInterval: 10000
-   - HeartbeatWarnCount: 30 
-   - HeartbeatDropCount: 60 
-8. VM を再起動する。
-
->[!NOTE]
->ハートビートのしきい値を変更しても問題が解決しない場合は、Azure ネットワーク チームに問い合わせる必要がある潜在的なネットワークの問題が発生している可能性があります。
-
 ## <a name="error-downloadmsiexception"></a>エラー:DownloadMsiException
 
 **[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3277 のイベント (説明では **DownloadMsiException** と示されます) が表示されている場合は、ディスク上に RDAgent 用の十分な領域がありません。
@@ -251,7 +224,7 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 
 ## <a name="error-agent-fails-to-update-with-missingmethodexception"></a>エラー: MissingMethodException によりエージェントを更新できない
 
-**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3389 のイベント (説明では "MissingMethodException: Method not found" (MissingMethodException: メソッドが見つからない) と示されます) が表示されている場合は、Windows Virtual Desktop エージェントが正常に更新されず、以前のバージョンに戻されていることを意味します。 これは、VM に現在インストールされている .NET Framework のバージョン番号が 4.7.2 よりも低いことが原因である可能性があります。 この問題を解決するには、[.NET Framework のドキュメント](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)に記載されているインストール手順に従って、.NET をバージョン 4.7.2 以降にアップグレードする必要があります。
+**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3389 のイベント (説明では "MissingMethodException: Method not found" (MissingMethodException: メソッドが見つからない) と示されます) が表示されている場合は、Azure Virtual Desktop エージェントが正常に更新されず、以前のバージョンに戻されていることを意味します。 これは、VM に現在インストールされている .NET Framework のバージョン番号が 4.7.2 よりも低いことが原因である可能性があります。 この問題を解決するには、[.NET Framework のドキュメント](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)に記載されているインストール手順に従って、.NET をバージョン 4.7.2 以降にアップグレードする必要があります。
 
 
 ## <a name="error-vms-are-stuck-in-unavailable-or-upgrading-state"></a>エラー:VM が [使用不可] または [アップグレード中] 状態でスタックしている
@@ -270,7 +243,7 @@ Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostp
 3. **[コントロール パネル]**  >  **[プログラム]**  >  **[プログラムと機能]** に移動します。
 4. **リモート デスクトップ サービス SxS ネットワーク スタック** の最新バージョン、または **[HKEY_LOCAL_MACHINE]**  >  **[SYSTEM]**  >  **[CurrentControlSet]**  >  **[Control]**  >  **[Terminal Server]**  >  **[WinStations]** の **[ReverseConnectListener]** に示されているバージョンをアンインストールします。
 5. 管理者としてコンソール ウィンドウを開き、 **[プログラム ファイル]**  >  **[Microsoft RDInfra]** の順に移動します。
-6. **SxSStack** コンポーネントを選択するか、または **msiexec /i SxsStack-<version>.msi** コマンドを実行して MSI をインストールします。
+6. **SxSStack** コンポーネントを選択するか、または **`msiexec /i SxsStack-<version>.msi`** コマンドを実行して MSI をインストールします。
 8. VM を再起動する。
 9. コマンド プロンプトに戻り、**qwinsta** コマンドを実行します。
 10. 手順 6. でインストールされたスタック コンポーネントの横に **[リッスン]** が表示されていることを確認します。
@@ -314,7 +287,7 @@ VM の名前が既に登録されており、重複している可能性があ�
 
 ## <a name="your-issue-isnt-listed-here-or-wasnt-resolved"></a>問題がここに示されていないか、または解決されなかった
 
-問題がこの記事に見つからないか、またはその手順が役に立たなかった場合は、Windows Virtual Desktop エージェントをアンインストールし、再インストールして、再登録することをお勧めします。 このセクションの手順では、すべてのエージェント、ブート ローダー、スタック コンポーネントをアンインストールし、ホスト プールからセッション ホストを削除し、VM の新しい登録キーを生成し、エージェントとブート ローダーを再インストールすることによって VM を Windows Virtual Desktop サービスに再登録する方法を示します。 次のシナリオの 1 つまたは複数に当てはまる場合は、これらの手順に従ってください。
+問題がこの記事に見つからないか、またはその手順が役に立たなかった場合は、Azure Virtual Desktop エージェントをアンインストールし、再インストールして、再登録することをお勧めします。 このセクションの手順では、すべてのエージェント、ブート ローダー、スタック コンポーネントをアンインストールし、ホスト プールからセッション ホストを削除し、VM の新しい登録キーを生成し、エージェントとブート ローダーを再インストールすることによって VM を Azure Virtual Desktop サービスに再登録する方法を示します。 次のシナリオの 1 つまたは複数に当てはまる場合は、これらの手順に従ってください。
 - VM が **[アップグレード中]** または **[使用不可]** でスタックしている
 - スタック リスナーが動作しておらず、Windows 10 1809、1903、または 1909 上で実行している
 - **EXPIRED_REGISTRATION_TOKEN** エラーが表示されている
@@ -372,7 +345,7 @@ VM をホスト プールとサービスに再登録するために使用され�
 ### <a name="step-4-reinstall-the-agent-and-boot-loader"></a>手順 4:エージェントとブート ローダーを再インストールする
 
 エージェントとブート ローダーの最新バージョンを再インストールすると、サイドバイサイド スタックと Geneva 監視エージェントも自動的にインストールされます。 エージェントとブート ローダーを再インストールするには、次の手順を実行します。
-1. 管理者として VM にサインインし、VM が実行されている Windows のバージョンに応じて、適切なバージョンのエージェント インストーラーをデプロイに使用します。 Windows 10 の VM がある場合は、[仮想マシンの登録](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)に関するページの手順に従って、**Windows Virtual Desktop エージェント** と **Windows Virtual Desktop エージェント ブートローダー** をダウンロードします。 Windows 7 の VM がある場合は、[仮想マシンの登録](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine)に関するページの手順 13 と 14 に従って、**Windows Virtual Desktop エージェント** と **Windows Virtual Desktop エージェント マネージャー** をダウンロードします。
+1. 管理者として VM にサインインし、VM が実行されている Windows のバージョンに応じて、適切なバージョンのエージェント インストーラーをデプロイに使用します。 Windows 10 の VM がある場合は、[仮想マシンの登録](create-host-pools-powershell.md#register-the-virtual-machines-to-the-azure-virtual-desktop-host-pool)に関するページの手順に従って、**Azure Virtual Desktop エージェント** と **Azure Virtual Desktop エージェント ブートローダー** をダウンロードします。 Windows 7 の VM がある場合は、[仮想マシンの登録](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine)の手順 13 -14 に従って、**Azure Virtual Desktop エージェント** と **Azure Virtual Desktop エージェント マネージャー** をダウンロードします。
 
    > [!div class="mx-imgBorder"]
    > ![エージェントとブートローダーのダウンロード ページのスクリーンショット](media/download-agent.png)
@@ -398,15 +371,15 @@ VM をホスト プールとサービスに再登録するために使用され�
 
 ## <a name="next-steps"></a>次の手順
 
-引き続き問題が発生する場合は、サポート ケースを作成し、発生している問題とそれを解決しようとして実行したすべてのアクションに関する詳細情報を含めます。 次の一覧には、Windows Virtual Desktop のデプロイでの問題をトラブルシューティングするために使用できるその他のリソースが含まれています。
+引き続き問題が発生する場合は、サポート ケースを作成し、発生している問題とそれを解決しようとして実行したすべてのアクションに関する詳細情報を含めます。 次の一覧には、Azure Virtual Desktop のデプロイでの問題をトラブルシューティングするために使用できるその他のリソースが含まれています。
 
-- Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
-- Windows Virtual Desktop 環境でホスト プールを作成しているときに発生した問題のトラブルシューティングを行うには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
-- Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
-- Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
+- Azure Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
+- Azure Virtual Desktop 環境でホスト プールを作成しているときに発生した問題のトラブルシューティングを行うには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
+- Azure Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md) に関する記事を参照してください。
+- Azure Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Azure Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
 - リモート デスクトップ クライアントに関する問題をトラブルシューティングするには、「[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md)」を参照してください。
-- Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
-- サービスの詳細については、[Windows Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
+- Azure Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Azure Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
+- サービスの詳細については、[Azure Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
 - トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)」を参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」をご覧ください。
+- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-monitor/essentials/activity-log.md)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../azure-resource-manager/templates/deployment-history.md)に関するページを参照してください。

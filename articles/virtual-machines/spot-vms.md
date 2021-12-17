@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: fb53fc37227e040ed7bd7fc8e47de9aed538bc2e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ce20b7815c89a45a2677029a28fd205499751e30
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721394"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695401"
 ---
 # <a name="use-azure-spot-virtual-machines"></a>Azure Spot Virtual Machines を使用する 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure Spot Virtual Machines を使用すると、大幅にコストを削減して未使用の容量を利用できます。 Azure で容量の回復が必要になると、Azure インフラストラクチャによって Azure Spot Virtual Machines が削除されます。 そのため、Azure Spot Virtual Machines は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断に対応できるワークロードに最適です。
 
@@ -38,8 +40,8 @@ VM が排除されるときに、VM を削除したい場合は、排除ポリ�
 |--------|---------|
 | 最大価格は >= 現在の価格に設定されています。 | 容量とクォータが使用可能な場合は、VM がデプロイされます。 |
 | 最大価格は < 現在の価格に設定されています。 | VM がデプロイされていません。 最大価格が >= 現在の価格である必要があることを示すエラー メッセージが表示されます。 |
-| 最大価格が >= 現在の価格の場合は VM の停止/割り当て解除を再起動する | 容量とクォータがある場合は、VM がデプロイされます。 |
-| 最大価格が < 現在の価格の場合は VM の停止/割り当て解除を再起動する | 最大価格が >= 現在の価格である必要があることを示すエラー メッセージが表示されます。 | 
+| 最大価格 >= 現在の価格の場合に、停止/割り当て解除された VM を再開する | 容量とクォータがある場合は、VM がデプロイされます。 |
+| 最大価格 < 現在の価格の場合に、停止/割り当て解除された VM を再開する | 最大価格が >= 現在の価格である必要があることを示すエラー メッセージが表示されます。 | 
 | VM の価格が上がり、現在価格が > 最大価格になりました。 | VM が削除されます。 実際に削除する前に、30 秒前通知を受け取ります。 | 
 | 削除した後、VM の料金が < 最大価格に戻ります。 | VM は自動的に再起動されません。 自分で VM を再起動することができ、現在の価格で課金されます。 |
 | 最大価格が `-1` に設定されている場合 | VM は価格の理由で削除されません。 最大価格は、Standard VM の価格を上限にした現在の価格になります。 標準価格を超えて課金されることはありません。| 

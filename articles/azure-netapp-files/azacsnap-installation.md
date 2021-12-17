@@ -12,18 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 09/08/2021
 ms.author: phjensen
-ms.openlocfilehash: 458f4d3f29cb08a94095167ed45133f5cd70f5f4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6a5fb518622a36ffe5562e76ffb09a472c12fe01
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869193"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737315"
 ---
-# <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールをインストールする (プレビュー)
+# <a name="install-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールをインストールする
 
-この記事では、Azure NetApp Files で使用できる Azure アプリケーション整合スナップショット ツールをインストールするためのガイドを提供します。
+この記事では、Azure NetApp Files または Azure Large Instance で使用できる Azure アプリケーション整合スナップショット ツールをインストールするためのガイドを提供します。
+
+> [!IMPORTANT]
+> 分散インストールはプライベート ネットワークにデプロイされるため、**Azure Large Instance** システムの唯一のオプションです。  そのため、AzAcSnap のインストールは、接続を確保するためにシステムごとに行う必要があります。
 
 ## <a name="introduction"></a>はじめに
 
@@ -37,16 +40,36 @@ ms.locfileid: "104869193"
 1. **OS に修正プログラムを適用する**: 修正プログラムの適用と SMT の設定については、「[SAP HANA on Azure (L インスタンス) のインストールと構成の方法](../virtual-machines/workloads/sap/hana-installation.md#operating-system)」を参照してください。
 1. **時間同期を設定する**。 お客様は NTP と互換性のあるタイム サーバーを指定し、それに応じて OS を構成する必要があります。
 1. **HANA をインストールする**: HANA のインストール手順については、「[HANA データベースへの SAP NetWeaver のインストール](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database)」を参照してください。
-1. **[ストレージとの通信を有効にする](#enable-communication-with-storage)** (詳細については、別のセクションを参照): お客様は秘密および公開キーのペアを使用して SSH を設定し、ストレージ バックエンドでの設定のために Microsoft Operations に対してスナップショット ツールが実行される予定の各ノードの公開キーを提供する必要があります。
+1. **[ストレージとの通信を有効にする](#enable-communication-with-storage)** (詳細については、別のセクションを参照): デプロイに使用しているストレージ バックエンドを選択します。
+
+   # <a name="azure-netapp-files"></a>[Azure NetApp Files](#tab/azure-netapp-files)
+    
    1. **Azure NetApp Files の場合 (詳細については別のセクションを参照)** : お客様はサービス プリンシパル認証ファイルを生成する必要があります。
+      
+      > [!IMPORTANT]
+      > Azure NetApp Files との通信を検証するときに、通信が失敗するか、タイムアウトになることがあります。AzAcSnap を実行しているシステムから次のアドレスと TCP/IP ポートへのアウトバウンド トラフィックがファイアウォール ルールによってブロックされていないことを確認してください。
+      > - (https://)management.azure.com:443
+      > - (https://)login.microsoftonline.com:443
+      
+   # <a name="azure-large-instance-bare-metal"></a>[Azure Large Instance (ベアメタル)](#tab/azure-large-instance)
+      
    1. **Azure L インスタンスの場合 (詳細については別のセクションを参照)** : お客様は秘密および公開キーのペアを使用して SSH を設定し、ストレージ バックエンドでの設定のために Microsoft Operations に対してスナップショット ツールが実行される予定の各ノードの公開キーを提供する必要があります。
 
       SSH を使用してノードのいずれかに接続し、これをテストします (例: `ssh -l <Storage UserName> <Storage IP Address>`)。
       ストレージ プロンプトからログアウトするには、「`exit`」と入力します。
 
       Microsoft Operations により、プロビジョニング時にストレージ ユーザーおよびストレージ IP が提供されます。
-  
-1. **[SAP HANA との通信を有効にする](#enable-communication-with-sap-hana)** (詳細については、別のセクションを参照): お客様は、スナップショットを実行するために必要な権限を持つ適切な SAP HANA ユーザーを設定する必要があります。
+      
+      ---
+
+1. **[ストレージとの通信を有効にする](#enable-communication-with-storage)** (詳細については、別のセクションを参照): デプロイに使用しているストレージ バックエンドを選択します。
+
+1. **[データベースとの通信を有効にする](#enable-communication-with-database)** (詳細については、別のセクションを参照): 
+   
+   # <a name="sap-hana"></a>[SAP HANA](#tab/sap-hana)
+   
+   お客様は、スナップショットを実行するために必要な権限を持つ適切な SAP HANA ユーザーを設定する必要があります。
+
    1. この設定は、コマンド ラインから次のように灰色のテキストを使用してテストできます`grey`
       1. HANAv1
 
@@ -57,12 +80,15 @@ ms.locfileid: "104869193"
             `hdbsql -n <HANA IP address> -i <HANA instance> -d SYSTEMDB -U <HANA user> "\s"`
 
       - 上記の例は、SAP HANA との非 SSL 通信用です。
+      
+   ---
+
 
 ## <a name="enable-communication-with-storage"></a>ストレージとの通信を有効にする
 
-このセクションでは、ストレージとの通信を有効にする方法について説明します。
+このセクションでは、ストレージとの通信を有効にする方法について説明します。 使用しているストレージ バックエンドが正しく選択されていることを確認します。
 
-### <a name="azure-netapp-files"></a>Azure NetApp Files
+# <a name="azure-netapp-files-with-virtual-machine"></a>[Azure NetApp Files (仮想マシンを使用)](#tab/azure-netapp-files)
 
 RBAC サービス プリンシパルを作成します
 
@@ -105,7 +131,7 @@ RBAC サービス プリンシパルを作成します
 
 1. 出力内容を切り取り、`azacsnap` コマンドと同じシステム上に格納されている `azureauth.json` というファイルに貼り付け、適切なシステム アクセス許可でファイルを保護します。
 
-### <a name="azure-large-instance"></a>Azure Large Instances
+# <a name="azure-large-instance-bare-metal"></a>[Azure Large Instance (ベアメタル)](#tab/azure-large-instance)
 
 ストレージ バックエンドとの通信は、暗号化された SSH チャネルを介して実行されます。 次の手順の例では、この通信用の SSH の設定に関するガイダンスを提供します。
 
@@ -170,7 +196,13 @@ RBAC サービス プリンシパルを作成します
     wKGAIilSg7s6Bq/2lAPDN1TqwIF8wQhAg2C7yeZHyE/ckaw/eQYuJtN+RNBD
     ```
 
-## <a name="enable-communication-with-sap-hana"></a>SAP HANA との通信を有効にする
+---
+
+## <a name="enable-communication-with-database"></a>データベースとの通信を有効にする
+
+このセクションでは、ストレージとの通信を有効にする方法について説明します。 使用しているストレージ バックエンドが正しく選択されていることを確認します。
+
+# <a name="sap-hana"></a>[SAP HANA](#tab/sap-hana)
 
 スナップショット ツールでは SAP HANA と通信を行います。データベースのセーブポイントを開始および解放するための適切な権限を持つユーザーが必要になります。 次の例は、SAP HANA v2 ユーザーの設定と、SAP HANA データベースとの通信のための `hdbuserstore` を示しています。
 
@@ -300,6 +332,8 @@ hdbsql \
 
 > [!NOTE]
 > `\` 文字は、コマンド ラインで渡される複数のパラメーターをよりわかりやすくするためのコマンド ラインの行の折り返しを表します。
+
+---
 
 ## <a name="installing-the-snapshot-tools"></a>スナップショット ツールのインストール
 
@@ -463,39 +497,47 @@ userdel -f -r azacsnap
     ```bash
     echo "export LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH:$NEW_LIB_PATH\"" >> /home/azacsnap/.profile
     ```
+    
+1. ストレージ バックエンドに応じて実行するアクション:
 
-1. Azure L インスタンスの場合
-    1. "ルート" ユーザー (インストールを実行するユーザー) から azacsnap 用のバックエンド ストレージの SSH キーをコピーします。 この場合、"ルート" ユーザーが既にストレージへの接続を構成していることが前提となります
-       > 「[ストレージとの通信を有効にする](#enable-communication-with-storage)」セクションを参照してください。
+    # <a name="azure-netapp-files-with-vm"></a>[Azure NetApp Files (VM 使用)](#tab/azure-netapp-files)
 
-        ```bash
-        cp -pr ~/.ssh /home/azacsnap/.
-        ```
+    1. Azure NetApp Files の場合
+        1. .NET Core の単一ファイル抽出ガイダンスに従って、ユーザーの `DOTNET_BUNDLE_EXTRACT_BASE_DIR` パスを構成します。
+            1. SUSE Linux
 
-    1. SSH ファイルに対してユーザー アクセス許可を正しく設定します
+                ```bash
+                echo "export DOTNET_BUNDLE_EXTRACT_BASE_DIR=\$HOME/.net" >> /home/azacsnap/.profile
+                echo "[ -d $DOTNET_BUNDLE_EXTRACT_BASE_DIR] && chmod 700 $DOTNET_BUNDLE_EXTRACT_BASE_DIR" >> /home/azacsnap/.profile
+                ```
 
-        ```bash
-        chown -R azacsnap.sapsys /home/azacsnap/.ssh
-        ```
+            1. RHEL
 
-1. Azure NetApp Files の場合
-    1. .NET Core の単一ファイル抽出ガイダンスに従って、ユーザーの `DOTNET_BUNDLE_EXTRACT_BASE_DIR` パスを構成します。
-        1. SUSE Linux
+                ```bash
+                echo "export DOTNET_BUNDLE_EXTRACT_BASE_DIR=\$HOME/.net" >> /home/azacsnap/.bash_profile
+                echo "[ -d $DOTNET_BUNDLE_EXTRACT_BASE_DIR] && chmod 700 $DOTNET_BUNDLE_EXTRACT_BASE_DIR" >> /home/azacsnap/.bash_profile
+                ```
+
+    # <a name="azure-large-instance-bare-metal"></a>[Azure Large Instance (ベアメタル)](#tab/azure-large-instance)
+
+    1. Azure L インスタンスの場合
+        1. "ルート" ユーザー (インストールを実行するユーザー) から azacsnap 用のバックエンド ストレージの SSH キーをコピーします。 この場合、"ルート" ユーザーが既にストレージへの接続を構成していることが前提となります
+           > 「[ストレージとの通信を有効にする](#enable-communication-with-storage)」セクションを参照してください。
 
             ```bash
-            echo "export DOTNET_BUNDLE_EXTRACT_BASE_DIR=\$HOME/.net" >> /home/azacsnap/.profile
-            echo "[ -d $DOTNET_BUNDLE_EXTRACT_BASE_DIR] && chmod 700 $DOTNET_BUNDLE_EXTRACT_BASE_DIR" >> /home/azacsnap/.profile
+            cp -pr ~/.ssh /home/azacsnap/.
             ```
 
-        1. RHEL
+        1. SSH ファイルに対してユーザー アクセス許可を正しく設定します
 
             ```bash
-            echo "export DOTNET_BUNDLE_EXTRACT_BASE_DIR=\$HOME/.net" >> /home/azacsnap/.bash_profile
-            echo "[ -d $DOTNET_BUNDLE_EXTRACT_BASE_DIR] && chmod 700 $DOTNET_BUNDLE_EXTRACT_BASE_DIR" >> /home/azacsnap/.bash_profile
+            chown -R azacsnap.sapsys /home/azacsnap/.ssh
             ```
+
+    ---
 
 1. ターゲット ユーザー azacsnap 用の SAP HANA Connection Secure User Store をコピーします。 この場合、"ルート" ユーザーが既に Secure User Store を構成していることが前提となります。
-    > 「[SAP HANA との通信を有効にする](#enable-communication-with-sap-hana)」セクションを参照してください。
+    > 「[データベースとの通信を有効にする](#enable-communication-with-database)」セクションを参照してください。
 
     ```bash
     cp -pr ~/.hdb /home/azacsnap/.
@@ -550,7 +592,7 @@ userdel -f -r azacsnap
 1. 最初のスナップショット バックアップを実行する
     1. `azacsnap -c backup –-volume data--prefix=hana_test --retention=1`
 
-手順 2 は、インストール前に [SAP HANA との通信を有効にする](#enable-communication-with-sap-hana)作業が行われなかった場合に必要になります。
+手順 2 は、インストール前に「[データベースとの通信を有効にする](#enable-communication-with-database)」作業が行われなかった場合に必要になります。
 
 > [!NOTE]
 > テスト コマンドが正しく実行される必要があります。 それ以外の場合、コマンドが失敗するおそれがあります。
@@ -558,6 +600,8 @@ userdel -f -r azacsnap
 ## <a name="configuring-the-database"></a>データベースの構成
 
 このセクションでは、データベースの構成方法について説明します。
+
+# <a name="sap-hana"></a>[SAP HANA](#tab/sap-hana)
 
 ### <a name="sap-hana-configuration"></a>SAP HANA の構成
 
@@ -648,6 +692,8 @@ hdbsql -jaxC -n <HANA_ip_address> - i 00 -U AZACSNAP "select * from sys.m_inifil
 global.ini,DEFAULT,,,persistence,log_backup_timeout_s,900
 global.ini,SYSTEM,,,persistence,log_backup_timeout_s,300
 ```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

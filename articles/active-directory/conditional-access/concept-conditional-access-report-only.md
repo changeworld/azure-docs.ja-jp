@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6f4e4851d406b14ed38665274401b96446ac6a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c558c61f2ea35045cc3e3e66408340664e00ecf9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579078"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637971"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>条件付きアクセスのレポート専用モードとは
 
@@ -24,7 +24,7 @@ ms.locfileid: "104579078"
 
 レポート専用モードは、条件付きアクセス ポリシーの新しい状態です。このモードを使うと、管理者が環境で条件付きアクセス ポリシーを有効にする前に、その影響を評価することができます。  レポート専用モードのリリースによる変更点は次のとおりです。
 
-- 条件付きアクセス ポリシーをレポート専用モードで有効にできます。
+- 条件付きアクセス ポリシーは、レポート専用モードで有効にできます。これは、"ユーザー アクション" スコープには適用されません。
 - サインイン中に、レポート専用モードになっているポリシーが評価されますが、強制はされません。
 - 結果は、サインイン ログの詳細にある **[条件付きアクセス]** および **[レポート専用]** タブに記録されます。
 - Azure Monitor サブスクリプションをお持ちのお客様は、条件付きアクセスに関する分析情報のブックを使用して、条件付きアクセス ポリシーの影響を監視できます。

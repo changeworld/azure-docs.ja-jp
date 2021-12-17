@@ -1,10 +1,10 @@
 ---
 title: Azure AD エンタイトルメント管理でのアクセス パッケージのアクセスのレビュー
-description: Azure Active Directory アクセス レビュー (プレビュー) で、エンタイトルメント管理アクセス パッケージのアクセス レビューを行う方法について説明します。
+description: Azure Active Directory アクセス レビューで、エンタイトルメント管理アクセス パッケージのアクセス レビューを行う方法について説明します。
 services: active-directory
 documentationCenter: ''
-author: ajburnle
-manager: daveba
+author: amsliu
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
-ms.author: ajburnle
+ms.date: 09/15/2021
+ms.author: amsliu
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1115c08214db19227b4b8d7be671ce4da1cf2b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b86ddd01b155b54eaa954df2a67df907901b288
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798599"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639681"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でのアクセス パッケージのアクセスのレビュー
 
@@ -29,12 +29,14 @@ ms.locfileid: "87798599"
 
 ## <a name="prerequisites"></a>前提条件
 
-ユーザーのアクティブなアクセス パッケージの割り当てを確認するには、アクセス レビューを行うための前提条件を満たしている必要があります。
+ユーザーのアクティブなアクセス パッケージの割り当てをレビューするには、レビューの作成者がこれらの前提条件を満たしている必要があります。
 - Azure AD Premium P2
-- 全体管理者
-- 指定されたユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+- グローバル管理者、ID ガバナンス管理者、またはユーザー管理者
 
 詳細については、「[License requirements ライセンスの要件](entitlement-management-overview.md#license-requirements)」を参照してください。
+
+>[!NOTE]
+>レビュー担当者は、レビューの作成者が選択することができます (グループの所有者、ユーザーの上司、ユーザー自身、または選択したユーザーまたはグループ)。
 
 
 ## <a name="open-the-access-review"></a>アクセス レビューを開く
@@ -87,7 +89,7 @@ ms.locfileid: "87798599"
 レビュー担当者が複数いる場合、最後に送信された応答内容が記録されます。 管理者が Alice と Bob という 2 人のレビュー担当者を指名した場合を考えてみましょう。 最初に Alice がレビューを開いて、アクセスを承認します。 レビューが終了する前に、Bob がレビューを開き、アクセスを拒否します。 この場合、最後のアクセス拒否の決定が記録されます。
 
 >[!NOTE]
->ユーザーは、アクセスを拒否されても、すぐにアクセス パッケージから削除されるわけではありません。 レビューが終了するか、管理者がレビューを終了すると、ユーザーがアクセス パッケージから削除されます。
+>ユーザーは、レビューでアクセスを拒否されても、すぐにアクセス パッケージから削除されるわけではありません。 レビューが閉じられた後にレビュー結果が適用されると、ユーザーはアクセス パッケージから削除されます。 レビューは、管理者が手動でレビューを停止した場合、レビュー期間の最後またはそれ以前に自動的に閉じられます。 
 
 ### <a name="approve-or-deny-access-using-the-system-generated-recommendations"></a>システムによって生成された推奨事項を使用してアクセスを承認または拒否する
 

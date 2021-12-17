@@ -9,16 +9,18 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 2fb710bab03d595d6e54bc8dd8fbda38c57123e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93b66a1cd8aa6f39cd12284d0a7bd3234d9b8ef5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668200"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225067"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>2023 年 3 月 1 日までに IaaS リソースを Azure Resource Manager に移行する 
 
-2014 年に、[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) でサービスとしてのインフラストラクチャ (IaaS) を開始しました。 それ以降、機能を強化し続けてきました。 Azure Resource Manager には現在、完全な IaaS 機能とその他の強化機能が含まれるため、2020 年 2 月 28 日に [Azure Service Manager](./migration-classic-resource-manager-faq.md#what-is-azure-service-manager-and-what-does-it-mean-by-classic) (ASM) を介した IaaS 仮想マシン (VM) の管理を非推奨にしました。 この機能は、2023 年 3 月 1 日に完全に廃止される予定です。 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM
+
+2014 年に、[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) でサービスとしてのインフラストラクチャ (IaaS) を開始しました。 それ以降、機能を強化し続けてきました。 Azure Resource Manager には現在、完全な IaaS 機能とその他の強化機能が含まれるため、2020 年 2 月 28 日に [Azure Service Manager](./migration-classic-resource-manager-faq.yml) (ASM) を介した IaaS 仮想マシン (VM) の管理を非推奨にしました。 この機能は、2023 年 3 月 1 日に完全に廃止される予定です。 
 
 現在、IaaS VM の約 90% で Azure Resource Manager が使用されています。 ASM を介して IaaS リソースを使用している場合は、今すぐ移行の計画を開始してください。 [Azure Resource Manager](../azure-resource-manager/management/index.yml) を利用するには、2023 年 3 月 1 日までに完了してください。
 
@@ -31,10 +33,11 @@ ms.locfileid: "101668200"
 - 2023 年 3 月 1 日に、Azure Resource Manager に移行していないサブスクリプションには、残っている VM (クラシック) の削除に関するタイムラインをお知らせします。  
 
 次の Azure サービスと機能は、この廃止による影響は "*ありません*"。 
-- [Azure Cloud Services (クラシック)](../cloud-services/cloud-services-choose-me.md)
 - VM (クラシック) で使用されて "*いない*" ストレージ アカウント 
 - VM (クラシック) で使用されて"*いない*" 仮想ネットワーク 
 - その他のクラシック リソース
+
+Azure Cloud Services (クラシック) の廃止は、2021 年 8 月に[こちら](https://azure.microsoft.com/updates/cloud-services-retirement-announcement/)で発表されました
 
 ## <a name="what-resources-are-available-for-this-migration"></a>この移行に使用できるリソース
 
@@ -56,7 +59,7 @@ Azure Resource Manager への移行の計画をすぐに開始します。
    - また、[ポータル](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22)または [PowerShell](../governance/resource-graph/concepts/work-with-data.md) を使用して Azure Resource Graph にクエリを実行し、選択したサブスクリプションのすべてのフラグ付き VM (クラシック) と関連情報の一覧を表示することもできます。 
    - 2020 年 2 月 8 日および 9 月 2 日に、「Azure Resource Manager への IaaS VM の移行の計画を開始します」という件名の電子メールをサブスクリプションの所有者に送信しました。 電子メールには、すべてのサブスクリプションと VM (クラシック) VM の一覧が記載されています。 この一覧を作成する際に使用してください。 
 
-1. [Linux](./migration-classic-resource-manager-plan.md) および [Windows](./migration-classic-resource-manager-plan.md) の VM (クラシック) の Azure Resource Manager への移行については、[こちら](./migration-classic-resource-manager-overview.md)を参照してください。 詳細については、「[クラシックから Azure Resource Manager への移行に関してよく寄せられる質問](./migration-classic-resource-manager-faq.md)」を参照してください
+1. [Linux](./migration-classic-resource-manager-plan.md) および [Windows](./migration-classic-resource-manager-plan.md) の VM (クラシック) の Azure Resource Manager への移行については、[こちら](./migration-classic-resource-manager-overview.md)を参照してください。 詳細については、「[クラシックから Azure Resource Manager への移行に関してよく寄せられる質問](./migration-classic-resource-manager-faq.yml)」を参照してください
 
 1. 検証、準備、コミットという 3 つの簡単な手順を使用して既存の VM を移行するには、[プラットフォーム サポート移行ツール](./migration-classic-resource-manager-overview.md)を使用して計画を開始することをお勧めします。 このツールは、最小限のダウンタイムで VM を移行するように設計されています。 
 
@@ -66,6 +69,6 @@ Azure Resource Manager への移行の計画をすぐに開始します。
 
    この以降ツールが移行に適していない場合は、この移行に適した[他のコンピューティング オファリング](/azure/architecture/guide/technology-choices/compute-decision-tree)を調べることができます。 Azure のコンピューティング オファリングには数多くあり、それらは互いに異なっているため、プラットフォームでサポートされている移行パスを提供することができません。  
 
-1. 技術的な質問、問題、および許可リストへのサブスクリプションに関するヘルプについては、[サポートにお問い合わせ](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"})ください。
+1. 技術的な質問、問題、および許可リストへのサブスクリプションの追加に関するヘルプについては、[サポートにお問い合わせ](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"})ください。
 
-1. ビジネスへの影響を防ぐためにできるだけ早く移行を完了し、Azure Resource Manager の改善されたパフォーマンス、セキュリティ、および新しい機能を活用してください。 
+1. ビジネスへの影響を防ぐためにできるだけ早く移行を完了し、Azure Resource Manager の改善されたパフォーマンス、セキュリティ、および新しい機能を活用してください。

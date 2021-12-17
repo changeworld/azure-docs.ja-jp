@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c3142fd41830487453a3cc980a87cdca72cf7213
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 1417d727565b349f9f18b0add73d443c22a4dbb3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094136"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992327"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
-この記事では、Azure サブスクリプションの課金所有権を別のアカウントに譲渡するために必要な手順について説明します。 サブスクリプションの課金所有権を譲渡する前に、「[Azure サブスクリプションの課金所有権の譲渡の概要](../understand/subscription-transfer.md)」をお読みください。
+この記事では、Azure サブスクリプションの課金所有権を別のアカウントに譲渡するために必要な手順について説明します。 サブスクリプションの課金所有権を譲渡する前に、「[Azure サブスクリプションの課金所有権の譲渡の概要](subscription-transfer.md)」をお読みください。
 
 課金所有権を維持したまま、サブスクリプションの種類を変更する場合は、[別のオファーへの Azure サブスクリプションの切り替え](switch-azure-offer.md)に関するページを参照してください。 サブスクリプション内のリソースにアクセスできるユーザーを制御する場合は、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
@@ -30,7 +30,7 @@ ms.locfileid: "101094136"
 
 ## <a name="transfer-billing-ownership-of-an-azure-subscription"></a>Azure サブスクリプションの課金所有権を譲渡する
 
-1. 譲渡するサブスクリプションがある課金アカウントの管理者として、[Azure portal](https://portal.azure.com) にサインインします。 自分が管理者かどうかわからない場合、または誰であるかを判断する必要がある場合は、「[アカウントの課金管理者を判断する](../understand/subscription-transfer.md#whoisaa)」を参照してください。
+1. 譲渡するサブスクリプションがある課金アカウントの管理者として、[Azure portal](https://portal.azure.com) にサインインします。 自分が管理者かどうかわからない場合、または誰であるかを判断する必要がある場合は、「[アカウントの課金管理者を判断する](add-change-subscription-administrator.md#whoisaa)」を参照してください。
 1. "**コスト管理 + 請求**" を検索します。  
    ![Azure portal の検索を表示しているスクリーンショット](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
 1. 左側のウィンドウで、 **[サブスクリプション]** を選択します。 アクセス権によっては、課金スコープを選択してから、 **[サブスクリプション]** または **[Azure サブスクリプション]** を選択しなければならない場合があります。
@@ -114,7 +114,7 @@ Azure アカウントと Azure サブスクリプションを作成した元の�
 
 ###  <a name="not-all-subscription-types-can-transfer"></a>すべてのサブスクリプションの種類で譲渡できない
 
-一部のサブスクリプションでは課金所有権の譲渡はサポートされていません。 譲渡がサポートされているサブスクリプションの種類一覧については、「[サポートされているサブスクリプションの種類](../understand/subscription-transfer.md#supported-subscription-types)」を参照してください
+一部のサブスクリプションでは課金所有権の譲渡はサポートされていません。 譲渡がサポートされているサブスクリプションの種類一覧については、[Azure サブスクリプションの譲渡ハブ](subscription-transfer.md)に関する説明を参照してください。
 
 ###  <a name="access-denied-error-shown-when-trying-to-transfer-subscription-billing-ownership"></a>サブスクリプションの課金所有権を譲渡しようとしたときにアクセス拒否エラーが表示される
 

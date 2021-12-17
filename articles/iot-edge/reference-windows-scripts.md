@@ -2,19 +2,18 @@
 title: Windows コンテナーを使用した Azure IoT Edge 用のスクリプト | Microsoft Docs
 description: Windows デバイスで IoT Edge PowerShell スクリプトのインストール、アンインストール、更新を行うためのリファレンス情報
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a919238e4a62ae8954e101cb21a2fd4943191f6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd450569298dfe8782f1a37b6c565daff0ae6175
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489526"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259169"
 ---
 # <a name="powershell-scripts-for-iot-edge-with-windows-containers"></a>Windows コンテナーを使用した IoT Edge 用の PowerShell スクリプト
 
@@ -106,4 +105,4 @@ Initialize-IoTEdge コマンドは、デバイスの接続文字列と運用の�
 
 以下の記事で、これらのコマンドの使用方法を学習します。
 
-* [Azure IoT Edge for Windows をインストールまたはアンインストールする](how-to-install-iot-edge-windows-on-windows.md)
+* [対称キーを使用するか](how-to-provision-single-device-windows-symmetric.md)、[X.509 証明書を使用して、Azure IoT Edge for Windows をインストールまたはアンインストールする](how-to-provision-single-device-windows-x509.md)

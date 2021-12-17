@@ -7,20 +7,18 @@ ms.prod: kinect-dk
 ms.topic: quickstart
 ms.date: 02/12/2020
 keywords: azure, kinect, dev kit, azure dk, 設定, ハードウェア, クイック, usb, 電源, ビューアー, センサー, ストリーミング, セットアップ, SDK, ファームウェア
-ms.custom:
-- CI 114092
-- CSSTroubleshooting
+ms.custom: CI 114092, CSSTroubleshooting
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: b33565f319de77385c966f742fa52391f4869eed
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1f7bd9a7f21a97fd0a9176fcd8a8f8ec40f1777e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211280"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085888"
 ---
-# <a name="quickstart-set-up-your-azure-kinect-dk"></a>クイック スタート:Azure Kinect DK を設定する
+# <a name="quickstart-set-up-your-azure-kinect-dk"></a>クイック スタート: Azure Kinect DK を設定する
 
 このクイックスタートでは、Azure Kinect DK を設定する方法についてガイダンスを提供します。 センサー ストリームの視覚化をテストし、[Azure Kinect ビューアー](azure-kinect-viewer.md)を使用する方法について説明します。
 
@@ -82,7 +80,7 @@ Azure Kinect DK のセットアップが完了しました。 これで、アプ
 ## <a name="see-also"></a>関連項目
 
 - [Azure Kinect DK のハードウェア情報](hardware-specification.md)
-- [デバイスのファームウェアを更新する](update-device-firmware.md)
+- [デバイスのファームウェアの更新](update-device-firmware.md)
 - [Azure Kinect ビューアー](azure-kinect-viewer.md)の詳細
 
 ## <a name="next-steps"></a>次のステップ

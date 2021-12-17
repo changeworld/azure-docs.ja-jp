@@ -1,16 +1,16 @@
 ---
-author: v-demjoh
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/14/2020
-ms.author: v-demjoh
+ms.author: eric-urban
 ms.custom: devx-track-js
-ms.openlocfilehash: b43c0da3303b4cdfd4941f9d76b663f8089a1417
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7e129d8d7a38b2ba143f89ab4407453f62c75b93
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105104472"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132530155"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して他の言語に翻訳する機能です。 このクイックスタートでは、アプリと製品で Speech SDK を使用して、高品質の音声翻訳を実行する方法について説明します。 このクイックスタートでは、次のトピックについて説明します。
 
@@ -29,9 +29,8 @@ Speech Service の中核となる機能の 1 つは、人間の音声を認識�
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
 何らかの操作を行うには、事前に <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">Speech SDK for JavaScript </a> をインストールしておく必要があります。 ご利用のプラットフォームに応じて、次の手順を行います。
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
-class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web ブラウザー </a>
+- [Node.js](../../../speech-sdk.md?tabs=nodejs#get-the-speech-sdk)
+- [Web ブラウザー](../../../speech-sdk.md?tabs=browser#get-the-speech-sdk)
 
 また、ターゲット環境によっては、次のいずれかを使用します。
 
@@ -115,7 +114,7 @@ const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfi
 
 Speech SDK for JavaScript の [TranslationRecognizer クラス](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer)では、音声翻訳に使用できるいくつかの手法が公開されています。
 
-* 単発の翻訳 (非同期) - 非ブロッキング (非同期) モードで翻訳を実行します。 これにより、1 つの発話が翻訳されます。 1 つの発話の終わりは、終了時の無音状態をリッスンするか、最大 15 秒のオーディオが処理されるまで待機することによって決定されます。
+* 開始時の翻訳 (非同期) - 非ブロッキング (非同期) モードで翻訳を実行します。 これにより、1 つの発話が翻訳されます。 1 つの発話の終わりは、終了時の無音状態をリッスンするか、最大 15 秒のオーディオが処理されるまで待機することによって決定されます。
 * 継続的翻訳 (非同期) - 継続的な翻訳操作を非同期に開始します。 ユーザーはイベントに登録し、さまざまなアプリケーションの状態を処理します。 非同期の継続的翻訳を停止するには、[`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync) を呼び出します。
 
 > [!NOTE]
@@ -130,9 +129,9 @@ speechTranslationConfig.speechRecognitionLanguage = "en-US";
 speechTranslationConfig.addTargetLanguage("de");
 ```
 
-### <a name="single-shot-recognition"></a>単発の認識
+### <a name="at-start-recognition"></a>開始時の認識
 
-[`recognizeOnceAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#recognizeonceasync) を使用した非同期の単発翻訳の例を次に示します。
+[`recognizeOnceAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#recognizeonceasync) を使用した非同期の開始時の翻訳の例を次に示します。
 
 ```javascript
 recognizer.recognizeOnceAsync(result => {
@@ -179,7 +178,7 @@ recognizer.recognized = function (s, e) {
 
 ### <a name="continuous-translation"></a>継続的翻訳
 
-継続的翻訳は、単発の認識よりも少し複雑です。 この場合は、認識結果を取得するために、`recognizing`、`recognized`、`canceled` の各イベントをサブスクライブする必要があります。 翻訳を停止するには、[`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync) を呼び出す必要があります。 オーディオ入力ファイルに対して継続的翻訳を実行する方法の例を次に示します。
+継続的翻訳は、開始時の認識より少し複雑です。 この場合は、認識結果を取得するために、`recognizing`、`recognized`、`canceled` の各イベントをサブスクライブする必要があります。 翻訳を停止するには、[`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync) を呼び出す必要があります。 オーディオ入力ファイルに対して継続的翻訳を実行する方法の例を次に示します。
 
 入力を定義し、[`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer) を初期化することから始めましょう。
 

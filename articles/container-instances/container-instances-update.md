@@ -3,12 +3,12 @@ title: コンテナー グループの更新
 description: Azure Container Instances のコンテナー グループに含まれる実行中のコンテナーを更新する方法について説明します。
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: cbb2e830490d2591645b8156ee830856da0f9049
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f2ec8ed3641fd9e692c89c6fdb29a7bea268b023
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786965"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853341"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances のコンテナーを更新する
 
@@ -73,6 +73,7 @@ Windows Server Core などの大規模なコンテナー イメージに基づ�
 * CPU、メモリ、または GPU リソース
 * 再起動ポリシー
 * ネットワーク プロファイル
+* 可用性ゾーン
 
 コンテナー グループを削除して再作成する場合、"再デプロイ" ではなく新規作成になります。 すべてのイメージ レイヤーは、以前のデプロイでキャッシュされたレイヤーではなくレジストリからプルされます。 別の基になるホストにコンテナー グループがデプロイされるため、コンテナーの IP アドレスも変わる可能性があります。
 

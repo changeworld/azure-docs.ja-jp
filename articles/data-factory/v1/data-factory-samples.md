@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: 0d78cc9d99bd7ace2d214c2a2a1d7f75a74df098
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/22/2021
+ms.openlocfilehash: 12ea58dbfcf389441758eaa3371c8a3ce9f144c6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785055"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223578"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
 > [!NOTE]
@@ -30,23 +31,23 @@ ms.locfileid: "104785055"
 | [Cross AppDomain Dot Net Activity サンプル](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |このサンプルでは、ADF ランチャーで使用されているアセンブリ バージョン (WindowsAzure.Storage v4.3.0、Newtonsoft.Json v6.0.x など) に限定されないカスタム .NET アクティビティを作成することができます。 |
 | [R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |RScript.exe の呼び出しに使用できる Data Factory カスタム アクティビティが含まれています。 このサンプルは、既に R がインストールされている独自の (オンデマンドではない) HDInsight クラスターでのみ正しく動作します。 |
 | [HDInsight Hadoop クラスターでの Spark ジョブの呼び出し](../tutorial-transform-data-spark-portal.md) |MapReduce アクティビティを使用して Spark プログラムを起動する方法を紹介するサンプルです。 Spark プログラムは、単に、1 つの Azure BLOB コンテナーから別のコンテナーにデータをコピーします。 |
-| [Azure Machine Learning スタジオ (クラシック) バッチ スコアリング アクティビティを使用した Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Twitter のセンチメント分析、スコア付け、予測などを実行する Azure Machine Learning モデルを AzureMLBatchScoringActivity で呼び出す方法について紹介したサンプルです。 |
-| [カスタム アクティビティを使用した Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Twitter のセンチメント分析、スコア付け、予測などを実行する Azure Machine Learning モデルをカスタム .NET アクティビティで呼び出す方法について紹介したサンプルです。 |
-| [Azure Machine Learning のパラメーター化パイプライン](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |それぞれ異なるリージョン パラメーターを使ってスコア付けと再トレーニングを行う N 個のパイプラインをデプロイするエンドツーエンドの C# コードを紹介したサンプルです。一連のリージョンは、このサンプルに含まれている parameters.txt ファイルから取得します。 |
+| [ML Studio (クラシック) のバッチ スコアリング アクティビティを使用した Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |このサンプルでは、Twitter のセンチメント分析、スコア付け、予測などを実行する ML モデルを AzureMLBatchScoringActivity を使用して呼び出す方法を示します。 |
+| [カスタム アクティビティを使用した Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |このサンプルでは、Twitter のセンチメント分析、スコア付け、予測などを実行する ML Studio (クラシック) モデルを、カスタムの .NET アクティビティを使用して呼び出す方法を示します。 |
+| [ML Studio (クラシック) のパラメーター化パイプライン](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |それぞれ異なるリージョン パラメーターを使ってスコア付けと再トレーニングを行う N 個のパイプラインをデプロイするエンドツーエンドの C# コードを紹介したサンプルです。一連のリージョンは、このサンプルに含まれている parameters.txt ファイルから取得します。 |
 | [Azure Stream Analytics ジョブのリファレンス データの更新](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Azure Data Factory と Azure Stream Analytics を連携させ、リファレンス データを使ってクエリを実行したり、リファレンス データの定期的更新をセットアップしたりする方法を紹介するサンプルです。 |
 | [オンプレミスの Hortonworks Hadoop を使用したハイブリッド パイプライン](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |Data Factory でジョブを実行するためのコンピューティング ターゲットとしてオンプレミスの Hadoop クラスターを使用するサンプルです。HDInsight ベースの Hadoop クラスターなど、他のコンピューティング ターゲットをクラウドに追加する感覚でオンプレミスの Hadoop クラスターを使用します。 |
 | [JSON 変換ツール](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |2015-07-01-preview 未満のバージョンの JSON を最新または 2015-07-01-preview (既定) に変換するツールです。 |
 | [U-SQL サンプル入力ファイル](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/U-SQL%20Sample%20Input%20File) |このファイルは、U-SQL アクティビティで使用するサンプル ファイルです。 |
-| [BLOB ファイルの削除](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity) | このサンプルは、ファイルがコピーされたらソースの Azure BLOB の場所からファイルを削除するために ADF カスタム .net アクティビティの一部として使用できる #C ファイルを示します。|
+| [BLOB ファイルの削除](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity) | このサンプルでは、ファイルがコピーされたらソースの Azure BLOB の場所からファイルを削除するために ADF カスタム .NET アクティビティの一部として使用できる C# ファイルを示します。|
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレートがあります。
 
 | Template | 説明 |
 | --- | --- |
-| [Azure Blob Storage から Azure SQL Database にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |このテンプレートをデプロイすると、指定した Azure の BLOB ストレージから Azure SQL Database にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます |
-| [Salesforce から Azure Blob Storage にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |このテンプレートをデプロイすると、指定した Salesforce アカウントから Azure Blob Storage にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます。 |
-| [Azure HDInsight クラスターで Hive スクリプトを実行してデータを変換する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |このテンプレートをデプロイすると、Azure HDInsight Hadoop クラスター上でサンプル Hive スクリプトを実行することによりデータ変換を行うパイプラインを持つ Azure データ ファクトリが作成されます。 |
+| [Azure Blob Storage から Azure SQL Database にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-blob-to-sql-copy) |このテンプレートをデプロイすると、指定した Azure の BLOB ストレージから Azure SQL Database にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます |
+| [Salesforce から Azure Blob Storage にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-salesforce-to-blob-copy) |このテンプレートをデプロイすると、指定した Salesforce アカウントから Azure Blob Storage にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます。 |
+| [Azure HDInsight クラスターで Hive スクリプトを実行してデータを変換する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-hive-transformation) |このテンプレートをデプロイすると、Azure HDInsight Hadoop クラスター上でサンプル Hive スクリプトを実行することによりデータ変換を行うパイプラインを持つ Azure データ ファクトリが作成されます。 |
 
 ## <a name="samples-in-azure-portal"></a>Azure Portal のサンプル
 データ ファクトリのホーム ページにある **[サンプル パイプライン]** タイルを使用して、パイプラインのサンプルおよび関連付けられているエンティティ (データセットおよびリンクされたサービス) をデータ ファクトリにデプロイできます。
@@ -54,21 +55,21 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 1. データ ファクトリを作成するか、既存のデータ ファクトリを開きます。 データ ファクトリを作成する手順については、「[Data Factory を使用した Blob Storage から SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 2. データ ファクトリの **[Data Factory]** ブレードで、 **[サンプル パイプライン]** タイルをクリックします。
 
-    ![サンプル パイプライン タイル](./media/data-factory-samples/SamplePipelinesTile.png)
+    :::image type="content" source="./media/data-factory-samples/SamplePipelinesTile.png" alt-text="サンプル パイプライン タイル":::
 3. **[サンプル パイプライン]** ブレードで、デプロイする **サンプル** をクリックします。
 
-    ![サンプル パイプライン ブレード](./media/data-factory-samples/SampleTile.png)
+    :::image type="content" source="./media/data-factory-samples/SampleTile.png" alt-text="サンプル パイプライン ブレード":::
 4. このサンプルの構成設定を指定します。 たとえば、Azure ストレージ アカウント名とアカウント キー、論理 SQL サーバーの名前、データベース、ユーザー ID、パスワードなどです。
 
-    ![サンプル ブレード](./media/data-factory-samples/SampleBlade.png)
+    :::image type="content" source="./media/data-factory-samples/SampleBlade.png" alt-text="サンプル ブレード":::
 5. 構成設定の指定が完了したら **[作成]** をクリックして、サンプルのパイプラインと、そのパイプラインで使用するリンクされたサービスとテーブルを作成またはデプロイします。
 6. 先程 **[サンプル パイプライン]** ブレードでクリックしたサンプルのタイルに、デプロイの状態が表示されます。
 
-    ![[デプロイ ステータス]](./media/data-factory-samples/DeploymentStatus.png)
+    :::image type="content" source="./media/data-factory-samples/DeploymentStatus.png" alt-text="デプロイの状態":::
 7. サンプルのタイルに "**デプロイに成功しました**" メッセージが表示されたら、 **[サンプル パイプライン]** ブレードを閉じます。  
 8. **[Data Factory]** ブレードで、リンクされたサービス、データ セット、パイプラインがデータ ファクトリに追加されたことを確認します。  
 
-    ![[Data Factory] ブレード](./media/data-factory-samples/DataFactoryBladeAfter.png)
+    :::image type="content" source="./media/data-factory-samples/DataFactoryBladeAfter.png" alt-text="[Data Factory] ブレード":::
 
 ## <a name="samples-in-visual-studio"></a>Visual Studio のサンプル
 ### <a name="prerequisites"></a>前提条件
@@ -88,10 +89,10 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
    4. プロジェクトの **場所** を選択します。
    5. **[OK]** をクリックします。
 
-      ![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-samples/vs-new-project-adf-templates.png)
+      :::image type="content" source="./media/data-factory-samples/vs-new-project-adf-templates.png" alt-text="[新しいプロジェクト] ダイアログ ボックス":::
 3. **[Data Factory Templates]** (Data Factory テンプレート) ダイアログ ボックスで、 **[Use-Case Templates]** (ユースケース テンプレート) セクションからサンプル テンプレートを選択し、 **[次へ]** をクリックします。 この後の手順では、 **顧客プロファイリング** テンプレートの使用方法について説明します。 他のサンプルでも手順は同じです。
 
-    ![Data Factory Templates dialog box](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
+    :::image type="content" source="./media/data-factory-samples/vs-data-factory-templates-dialog.png" alt-text="Data Factory Templates dialog box":::
 4. **[Data Factory Configuration]** (Data Factory の構成) ダイアログの **[Data Factory Basics]** (Data Factory の基本) ページで **[次へ]** をクリックします。
 5. **[Configure data factory]** (データ ファクトリの構成) ページで、次の手順を行います。
    1. **[Create New Data Factory]** (Data Factory の新規作成) を選択します。 **[既存のデータ ファクトリを使用する]** を選択することもできます。
@@ -108,7 +109,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 11. **[Microsoft アカウントへのサインイン]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、 **[サインイン]** をクリックします。
 12. 次のダイアログ ボックスが表示されます。
 
-    ![[発行] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-vs/publish.png" alt-text="[発行] ダイアログ ボックス":::
 13. **[Configure data factory]** (データ ファクトリの構成) ページで、次の手順を行います。
 
     1. **[既存のデータ ファクトリを使用する]** オプションが選択されていることを確認します。

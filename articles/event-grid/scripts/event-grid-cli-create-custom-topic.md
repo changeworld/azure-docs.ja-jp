@@ -3,14 +3,14 @@ title: Azure CLI のサンプル スクリプト - カスタム トピックの�
 description: この記事では、Azure Event Grid のカスタム トピックの作成方法を示したサンプル Azure CLI スクリプトを紹介しています。
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 07/08/2020
+ms.date: 09/15/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4e381310db5a21e532b262063ee33de3a23edeb2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 18e33e7ac9c270bfc8736caa0215fdcdd4cf41ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766747"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612056"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>Azure CLI を使用した Event Grid のカスタム トピックの作成
 

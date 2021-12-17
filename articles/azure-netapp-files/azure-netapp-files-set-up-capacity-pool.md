@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Files の容量プールを設定する | Microsoft Docs
-description: ボリュームの作成先となる容量プールを設定する方法について説明します。
+title: Azure NetApp Files 用の容量プールを作成する | Microsoft Docs
+description: ボリュームを作成できるように容量プールを作成する方法について説明します。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/4/2021
 ms.author: b-juche
-ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90867546e0866d0d899bc990a9eb5225fbaf4c1e
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91325414"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027719"
 ---
-# <a name="set-up-a-capacity-pool"></a>容量プールを設定する
+# <a name="create-a-capacity-pool-for-azure-netapp-files"></a>Azure NetApp Files 用の容量プールを作成する
 
-容量プールを設定すると、そこにボリュームを作成できるようになります。  
+容量プールを作成すると、その中にボリュームを作成できるようになります。  
 
 ## <a name="before-you-begin"></a>開始する前に 
 
@@ -51,7 +51,7 @@ ms.locfileid: "91325414"
 
     * **サイズ**     
      購入する容量プールのサイズを指定します。        
-     容量プールの最小サイズは 4 TiB です。 プールは、4 TiB の倍数のサイズで作成することができます。   
+     容量プールの最小サイズは 4 TiB です。 容量プールのサイズは 1 TiB 単位で変更できます。
 
    * **QoS**   
      容量プールで **[手動]** と **[自動]** のどちらの種類の QoS を使用するかを指定します。  
@@ -60,7 +60,6 @@ ms.locfileid: "91325414"
 
      > [!IMPORTANT] 
      > **QoS の種類** は、永続的に **[手動]** に設定されています。 自動 QoS を使用するように手動 QoS 容量プールを変換することはできません。 ただし、手動 QoS を使用するように自動 QoS 容量プールを変換することはできます。 [手動 QoS の使用を目的とした容量プールの変更](manage-manual-qos-capacity-pool.md#change-to-qos)に関する記事を参照してください。   
-     > 容量プールに手動の種類の QoS を使用するには、登録が必要です。 「[手動 QoS 容量プールを管理する](manage-manual-qos-capacity-pool.md#register-the-feature)」を参照してください。 
 
     ![新しい容量プール](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 

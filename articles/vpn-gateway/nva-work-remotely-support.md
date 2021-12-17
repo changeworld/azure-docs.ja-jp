@@ -1,18 +1,19 @@
 ---
-title: リモートでの作業：リモート作業でのネットワーク仮想アプライアンス (NVA) に関する考慮事項 | Azure VPN Gateway
-description: この記事は、COVID-19 の世界流行中に Azure でネットワーク仮想アプライアンス (NVA) を使用する際に考慮すべき事項を理解するのに役立ちます。
+title: リモートでの作業：リモート作業でのネットワーク仮想アプライアンス (NVA) に関する考慮事項
+titleSuffix: Azure VPN Gateway
+description: COVID-19 の世界流行中に Azure でネットワーク仮想アプライアンス (NVA) を使用する際に考慮すべき事項について説明します。
 services: vpn-gateway
 author: scottnap
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: 70b5732e1293e35127a19fbe736d8562056a870b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd0c1f836abc60a53168098cc1bcce72ded2a120
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96499681"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229200"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>リモートでの作業：リモート作業でのネットワーク仮想アプライアンス (NVA) に関する考慮事項
 

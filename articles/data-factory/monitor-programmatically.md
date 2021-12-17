@@ -2,17 +2,18 @@
 title: Azure Data Factory をプログラムで監視する
 description: さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法を説明します。
 ms.service: data-factory
+ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 01/16/2018
-author: dcstwh
-ms.author: weetok
+author: joshuha-msft
+ms.author: joowen
 ms.custom: devx-track-python
-ms.openlocfilehash: 6c913c7c623c77baea0c575d06d2c44709af43fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 06d4a50c0480d82fe348576f366d5f2ff1375afa
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740443"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845306"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure Data Factory をプログラムで監視する
 
@@ -37,7 +38,7 @@ Data Factory では、パイプラインの実行データを 45 日間だけ格
 * 成功
 * 失敗
 * Canceling
-* Canceled
+* キャンセル
 
 ## <a name="net"></a>.NET
 .NET SDK を使用して、パイプラインを作成し監視する完全なチュートリアルについては、[.NET を使用したデータ ファクトリとパイプラインの作成](quickstart-create-data-factory-dot-net.md)に関する記事をご覧ください。
@@ -64,13 +65,15 @@ Data Factory では、パイプラインの実行データを 45 日間だけ格
     ```csharp
     // Check the copy activity run details
     Console.WriteLine("Checking copy activity run details...");
-   
-    List<ActivityRun> activityRuns = client.ActivityRuns.ListByPipelineRun(
-    resourceGroup, dataFactoryName, runResponse.RunId, DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)).ToList(); 
+
+    RunFilterParameters filterParams = new RunFilterParameters(
+        DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10));
+    ActivityRunsQueryResponse queryResponse = client.ActivityRuns.QueryByPipelineRun(
+        resourceGroup, dataFactoryName, runResponse.RunId, filterParams);
     if (pipelineRun.Status == "Succeeded")
-        Console.WriteLine(activityRuns.First().Output);
+        Console.WriteLine(queryResponse.Value.First().Output);
     else
-        Console.WriteLine(activityRuns.First().Error);
+        Console.WriteLine(queryResponse.Value.First().Error);
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
@@ -88,9 +91,11 @@ time.sleep(30)
 pipeline_run = adf_client.pipeline_runs.get(
     rg_name, df_name, run_response.run_id)
 print("\n\tPipeline run status: {}".format(pipeline_run.status))
-activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
-    rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
-print_activity_run_details(activity_runs_paged[0])
+filter_params = RunFilterParameters(
+    last_updated_after=datetime.now() - timedelta(1), last_updated_before=datetime.now() + timedelta(1))
+query_response = adf_client.activity_runs.query_by_pipeline_run(
+    rg_name, df_name, pipeline_run.run_id, filter_params)
+print_activity_run_details(query_response.value[0])
 ```
 
 Python SDK の詳細については、[データ ファクトリの Python SDK リファレンス](/python/api/overview/azure/datafactory)に関するページをご覧ください。
@@ -118,8 +123,8 @@ REST API を使用して、パイプラインを作成し監視する完全な�
 2. 次のスクリプトを実行し、コピー アクティビティの実行の詳細 (たとえば、読み書きされたデータのサイズ) を取得します。
 
     ```powershell
-    $request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelineruns/${runId}/activityruns?api-version=${apiVersion}&startTime="+(Get-Date).ToString('yyyy-MM-dd')+"&endTime="+(Get-Date).AddDays(1).ToString('yyyy-MM-dd')+"&pipelineName=Adfv2QuickStartPipeline"
-    $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
+    $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelineruns/${runId}/queryActivityruns?api-version=${apiVersion}&startTime="+(Get-Date).ToString('yyyy-MM-dd')+"&endTime="+(Get-Date).AddDays(1).ToString('yyyy-MM-dd')+"&pipelineName=Adfv2QuickStartPipeline"
+    $response = Invoke-RestMethod -Method POST -Uri $request -Header $authHeader
     $response | ConvertTo-Json
     ```
 

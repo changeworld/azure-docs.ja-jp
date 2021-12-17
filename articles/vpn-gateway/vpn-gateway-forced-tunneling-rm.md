@@ -1,6 +1,6 @@
 ---
 title: サイト間接続用の強制トンネリングを構成する
-description: すべてのインターネットへのトラフィックをオンプレミスの場所に (強制的に) リダイレクトする方法。
+description: すべてのインターネットへのトラフィックをオンプレミスの場所に (強制的に) リダイレクトする方法について説明します。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: afd1c1d5312a9fbf39b401b0cbb4b9997f27407a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 383636d07aa453266be43b33d6f62b93255ac24a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869040"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729538"
 ---
 # <a name="configure-forced-tunneling"></a>強制トンネリングについて
 
 強制トンネリングを使用すると、検査および監査のために、サイト間の VPN トンネルを介して、インターネットへのすべてのトラフィックをオンプレミスの場所に戻すようにリダイレクトする (つまり、"強制する") ことができます。 これは、ほとんどの企業 IT ポリシーの重要なセキュリティ要件です。 強制トンネリングを構成しない場合、Azure の VM からインターネットへのトラフィックは、トラフィックを検査または監査できるオプションを使用せずに、常に Azure ネットワーク インフラストラクチャからインターネットへ直接トラバースします。 認証されていないインターネット アクセスは、情報の漏えいまたは他の種類のセキュリティ侵害を招く可能性があります。
 
-強制トンネリングは、Azure PowerShell を使用して構成できます。 Azure portal を使用して構成することはできません。 この記事は、Resource Manager デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する際に役立ちます。 クラシック デプロイ モデル向けに強制トンネリングを構成する場合は、[強制トンネリング - クラシック](vpn-gateway-about-forced-tunneling.md)に関する記事を参照してください。
+強制トンネリングは、Azure PowerShell を使用して構成できます。 Azure portal を使用して構成することはできません。 この記事は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)を使用して作成された仮想ネットワークの強制トンネリングを構成する際に役立ちます。 クラシック デプロイ モデル向けに強制トンネリングを構成する場合は、[強制トンネリング - クラシック](vpn-gateway-about-forced-tunneling.md)に関する記事を参照してください。
 
 ## <a name="about-forced-tunneling"></a>強制トンネリングについて
 
@@ -110,7 +110,7 @@ Azure Resource Manager PowerShell コマンドレットの最新版をインス�
    Set-AzVirtualNetworkSubnetConfig -Name "Backend" -VirtualNetwork $vnet -AddressPrefix "10.1.2.0/24" -RouteTable $rt
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-6. 仮想ネットワーク ゲートウェイを作成します。 ゲートウェイを作成して構成するため、この手順の完了には 45 分以上かかる場合があります。 GatewaySKU の値に関する ValidateSet エラーが発生した場合は、[PowerShell コマンドレットの最新バージョン](#before)がインストールされていることを確認してください。 PowerShell コマンドレットの最新バージョンには、最新の Gateway SKU の新しい有効値が含まれています。
+6. 仮想ネットワーク ゲートウェイを作成します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。 GatewaySKU の値に関する ValidateSet エラーが発生した場合は、[PowerShell コマンドレットの最新バージョン](#before)がインストールされていることを確認してください。 PowerShell コマンドレットの最新バージョンには、最新の Gateway SKU の新しい有効値が含まれています。
 
    ```powershell
    $pip = New-AzPublicIpAddress -Name "GatewayIP" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -AllocationMethod Dynamic

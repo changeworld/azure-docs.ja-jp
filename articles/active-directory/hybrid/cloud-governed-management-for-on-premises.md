@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b4d1041b9d330227fadf31f6afc1804174ea2ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3510851f311e57173d5fd023db948c7f71597f26
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96340851"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047382"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD がオンプレミスのワークロードに対してクラウド ガバナンス管理を提供する方法
 
@@ -59,7 +59,7 @@ Azure AD では、これらのアプリケーションへのセキュリティ�
 
 * **オンプレミスのアプリケーションへのセキュリティで保護されたリモート アクセスと条件付きアクセス**
 
-多くの組織にとって、オンプレミスの AD 統合 Web およびリモート デスクトップベースのアプリケーションでクラウドからのアクセスを管理する最初の手順は、それらのアプリケーションの前に[アプリケーション プロキシ](../manage-apps/application-proxy.md)を配置し、セキュリティで保護されたリモート アクセスを提供することです。
+多くの組織にとって、オンプレミスの AD 統合 Web およびリモート デスクトップベースのアプリケーションでクラウドからのアクセスを管理する最初の手順は、それらのアプリケーションの前に[アプリケーション プロキシ](../app-proxy/application-proxy.md)を配置し、セキュリティで保護されたリモート アクセスを提供することです。
 
 Azure AD にシングル サインオンした後、ユーザーは、外部の URL または内部のアプリケーション ポータルから、クラウド アプリケーションとオンプレミス アプリケーションの両方にアクセスできます。 たとえば、アプリケーション プロキシは、リモート デスクトップ、SharePoint だけでなく、Tableau、Qlik、基幹業務 (LOB) アプリケーションなどのアプリへのリモート アクセスとシングル サインオンを提供します。 さらに、条件付きアクセス ポリシーには、[使用条件](../conditional-access/terms-of-use.md)の表示と、アプリケーションにアクセスできるようになる前に[ユーザーがこれらの条件に同意していることの確認](../conditional-access/require-tou.md)を含めることができます。
 

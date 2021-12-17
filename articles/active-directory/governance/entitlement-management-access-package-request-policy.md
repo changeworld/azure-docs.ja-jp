@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/16/2020
+ms.date: 07/01/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87792b8469c78e20a8716bd925d71933f9d97c5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4ea285c078061ed6009aff8dfd1c17b1f0528b9a
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560490"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967251"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの要求設定を変更する
 
@@ -54,7 +54,7 @@ ms.locfileid: "105560490"
 
 異なる要求と承認の設定を持つことが望ましいユーザーのセットがある場合、おそらく新しいポリシーを作成する必要があります。 既存のアクセス パッケージに新しいポリシーを追加するには、次の手順に従います。
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**必要なロール:** グローバル管理者、ID ガバナンス管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
@@ -141,7 +141,7 @@ ms.locfileid: "105560490"
 1. すべての接続済み組織を選択したら、 **[選択]** をクリックします。
 
     > [!NOTE]
-    > 選択した接続済み組織のすべてのユーザーは、このアクセス パッケージを要求できます。 これには、組織に関連付けられている Azure AD 内のすべてのサブドメインのユーザーが含まれます。ただし、それらのドメインが Azure B2B の許可リストまたは拒否リストによってブロックされている場合を除きます。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](../external-identities/allow-deny-list.md)」を参照してください。
+    > 選択した接続済み組織のすべてのユーザーは、このアクセス パッケージを要求できます。 これには、組織に関連付けられている Azure AD 内のすべてのサブドメインのユーザーが含まれます。ただし、それらのドメインが Azure B2B の許可リストまたはブロック リストによってブロックされている場合を除きます。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](../external-identities/allow-deny-list.md)」を参照してください。
 
 1. 承認を要求する場合は、「[Azure AD エンタイトルメント管理でアクセス パッケージの承認設定を変更する](entitlement-management-access-package-approval-policy.md)」の手順を使用して、承認設定を構成します。
  
@@ -158,6 +158,9 @@ ms.locfileid: "105560490"
     アクセス パッケージを作成した後は、そのアクセス パッケージに特定の内部および外部ユーザーを直接割り当てることができます。 外部ユーザーを指定する場合、ゲスト ユーザー アカウントがディレクトリ内に作成されます。 ユーザーの直接割り当てについては、[アクセス パッケージに対する割り当ての表示、追加、削除](entitlement-management-access-package-assignments.md)に関する記事を参照してください。
 
 1. [[要求の有効化]](#enable-requests) セクションまでスキップします。
+
+> [!NOTE]
+> ユーザーをアクセス パッケージに割り当てる際、管理者は、そのユーザーが既存のポリシー要件に基づいてそのアクセス パッケージの対象となっていることを確認する必要があります。 そうしない場合、ユーザーはアクセス パッケージに正常に割り当てられません。 ユーザー リクエストの承認を必要とするポリシーがアクセス パッケージに含まれている場合、指定された承認者による必要な承認を得ずに、ユーザーを直接アクセス パッケージに割り当てることはできません。
 
 
 ## <a name="open-and-edit-an-existing-policy-of-request-settings"></a>要求設定の既存ポリシーを開いて編集する
@@ -198,11 +201,17 @@ ms.locfileid: "105560490"
 
 1. **[次へ]** をクリックします。
 
-1. アクセス パッケージへのアクセスを要求するときに、追加情報を提供するように要求元に要求する場合、「[Azure AD エンタイトルメント管理でアクセス パッケージの承認および要求元情報 (プレビュー) 設定を変更する](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview)」の手順を使用して、要求元情報を構成します (プレビュー)。
+1. アクセス パッケージへのアクセスを要求するときに、追加情報を提供するように要求元に要求する場合、「[Azure AD エンタイトルメント管理でアクセス パッケージの承認および要求元情報設定を変更する](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval)」の手順を使用して、要求元情報を構成します。
 
 1. ライフサイクルの設定を構成します。
 
 1. ポリシーを編集する場合は、**[更新]** をクリックします。 新しいポリシーを追加する場合は、**[作成]** をクリックします。
+
+## <a name="prevent-requests-from-users-with-incompatible-access-preview"></a>互換性のないアクセス権を持つユーザーからの要求を防ぐ (プレビュー)
+
+要求可能なユーザーのポリシー チェックに加えて、グループや別のアクセス パッケージによって既に何らかのアクセス権を持っているユーザーが過度なアクセス権を取得しないように、さらにアクセスを制限する場合があります。
+
+既に別のアクセス パッケージを割り当てられているか、グループのメンバーであるユーザーがアクセス パッケージを要求できないように構成するには、[アクセス パッケージに対する職務の分離の確認を構成する](entitlement-management-access-package-incompatible.md)方法の手順を使用してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,19 +8,22 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7addfc3a0d91b85c4d63afa4ee6a55b5202c3855
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b737e4095fedec7260a8c666649c77443c7d4523
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770239"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433538"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーを作成する
 
-このクイック スタートでは、[Azure Cloud Shell](https://shell.azure.com) で [Azure CLI](/cli/azure/get-started-with-azure-cli) コマンドを使用して、Azure Database for MySQL フレキシブル サーバーを 5 分で作成する方法について説明します。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT] 
-> Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
+
+このクイック スタートでは、[Azure Cloud Shell](https://shell.azure.com) で [Azure CLI](/cli/azure/get-started-with-azure-cli) コマンドを使用して、Azure Database for MySQL フレキシブル サーバーを 5 分で作成する方法について説明します。 
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
@@ -52,26 +55,25 @@ az account set --subscription <subscription id>
 az group create --name myresourcegroup --location eastus2
 ```
 
-`az mysql flexible-server create` コマンドを使用して、フレキシブル サーバーを作成します。 1 つのサーバーに複数のデータベースを含めることができます。 次のコマンドでは、サービスの既定値と Azure CLI の[ローカル コンテキスト](/cli/azure/local-context)からの値を使用してサーバーを作成します。 
+`az mysql flexible-server create` コマンドを使用して、フレキシブル サーバーを作成します。 1 つのサーバーに複数のデータベースを含めることができます。 次のコマンドでは、サービスの既定値と Azure CLI の[ローカル コンテキスト](/cli/azure/local-context)からの値を使用してサーバーを作成します。
 
 ```azurecli-interactive
 az mysql flexible-server create
 ```
 
-作成されたサーバーには、次の属性があります。 
-- 自動生成されたサーバー名、管理者のユーザー名、管理者のパスワード、リソース グループ名 (ローカル コンテキストでまだ指定されていない場合)、およびリソース グループと同じ場所 
+作成されたサーバーには、次の属性があります。
+- 自動生成されたサーバー名、管理者のユーザー名、管理者のパスワード、リソース グループ名 (ローカル コンテキストでまだ指定されていない場合)、およびリソース グループと同じ場所
 - 残りのサーバー構成のサービスの既定値: コンピューティング レベル (バースト可能)、コンピューティング サイズ/SKU (B1MS)、バックアップの保持期間 (7 日間)、および MySQL のバージョン (5.7)
 - 既定の接続方法は、自動生成された仮想ネットワークとサブネットを使用するプライベート アクセス (VNet 統合) です。
 
-> [!NOTE] 
+> [!NOTE]
 > サーバーの作成後に接続方法を変更することはできません。 たとえば、作成時に "*プライベート アクセス (VNet 統合)* " を選択した場合、作成後に *パブリック アクセス (使用できる IP アドレス)* に変更することはできません。 VNet 統合を使用してサーバーに安全にアクセスするには、プライベート アクセスを指定してサーバーを作成することを強くお勧めします。 プライベート アクセスの詳細については、[概念に関する記事](./concepts-networking.md)を参照してください。
 
-既定値を変更したい場合は、Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-server)で、構成可能な CLI パラメーターの完全な一覧を参照してください。 
+既定値を変更したい場合は、Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-server)で、構成可能な CLI パラメーターの完全な一覧を参照してください。
 
-出力例を次に示します。 
+出力例を次に示します。
 
 ```json
-Command group 'mysql flexible-server' is in preview. It may be changed/removed in a future release.
 Creating Resource Group 'groupXXXXXXXXXX'...
 Creating new vnet "serverXXXXXXXXXVNET" in resource group "groupXXXXXXXXXX"...
 Creating new subnet "serverXXXXXXXXXSubnet" in resource group "groupXXXXXXXXXX" and delegating it to "Microsoft.DBforMySQL/flexibleServers"...
@@ -94,7 +96,7 @@ Make a note of your password. If you forget, you would have to reset your passwo
 }
 ```
 
-既定値を変更したい場合は、Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-server)で、構成可能な CLI パラメーターの完全な一覧を参照してください。 
+既定値を変更したい場合は、Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-server)で、構成可能な CLI パラメーターの完全な一覧を参照してください。
 
 ## <a name="create-a-database"></a>データベースを作成する
 次のコマンドを実行して、**newdatabase** というデータベースを作成します (まだ作成していない場合)。
@@ -114,7 +116,7 @@ az mysql flexible-server db create -d newdatabase
 az mysql flexible-server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-結果は JSON 形式です。 **fullyQualifiedDomainName** と **administratorLogin** の値を書き留めておきます。 JSON 出力の例を次に示します。 
+結果は JSON 形式です。 **fullyQualifiedDomainName** と **administratorLogin** の値を書き留めておきます。 JSON 出力の例を次に示します。
 
 ```json
 {
@@ -163,7 +165,6 @@ az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -
 接続に成功すると、次の出力が表示されます。
 
 ```output
-Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 Connecting to newdatabase database.
 Successfully connected to mysqldemoserver1.
 ```
@@ -206,24 +207,24 @@ mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUI
 Azure Cloud Shell を使用してフレキシブル サーバーに接続するためには、Azure Cloud Shell からフレキシブル サーバーへのネットワーク アクセスを許可する必要があります。 そのためには、Azure portal で MySQL フレキシブル サーバーの **[ネットワーク]** ブレードに移動し、次のスクリーンショットに示すように、 **[ファイアウォール]** セクションの [Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\) というチェック ボックスをオンにし、[保存] をクリックして設定を保存します。
 
  > :::image type="content" source="./media/quickstart-create-server-portal/allow-access-to-any-azure-service.png" alt-text="パブリック アクセス ネットワーク構成で Azure Cloud Shell から MySQL フレキシブル サーバーへのアクセスを許可する方法を示すスクリーンショット。":::
- 
- 
+
+
 > [!NOTE]
 > **[Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\)** チェック ボックスは、開発やテストの用途でのみオンにしてください。 すべての Azure サービス (または資産) に割り当てられた IP アドレスからの接続を許可するようにファイアウォールが構成されます。たとえば、他のユーザーのサブスクリプションからの接続も許可されます。
 
-**[Try it]\(試してみる\)** をクリックして Azure Cloud Shell を起動し、次のコマンドを使用してフレキシブル サーバーに接続します。 実際のサーバー名、ユーザー名、パスワードをコマンドで使用します。 
+**[Try it]\(試してみる\)** をクリックして Azure Cloud Shell を起動し、次のコマンドを使用してフレキシブル サーバーに接続します。 実際のサーバー名、ユーザー名、パスワードをコマンドで使用します。
 
 ```azurecli-interactive
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 > [!IMPORTANT]
-> Azure Cloud Shell を使用してフレキシブル サーバーに接続している間は、--ssl-mode=REQUIRED ではなく --ssl = true パラメーターを使用する必要があります。
+>Azure Cloud Shell を使用してフレキシブル サーバーに接続している間は、--ssl-mode=REQUIRED ではなく --ssl = true パラメーターを使用する必要があります。
 > その主な理由は、Azure Cloud Shell に付属する MariaDB ディストリビューションに含まれるインストール済み mysql.exe クライアントには --ssl パラメーターが必要ですが、Oracle のディストリビューションに含まれる mysql クライアントには --ssl-mode パラメーターが必要であるためです。
 
 上のコマンドの実行後、フレキシブル サーバーに接続しているときに次のエラー メッセージが表示された場合、ファイアウォール規則の設定に不備があります。前述の [Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\) の設定が済んでいないか、オプションが保存されていません。 ファイアウォールの設定を再試行して、もう一度やり直してください。
 
-ERROR 2002 (HY000):Can't connect to MySQL server on <servername> (115) (エラー 2002 (HY000): &lt;servername&gt; 上の MySQL サーバーに接続できません (115))
+ERROR 2002 (HY000):Can't connect to MySQL server on \<servername\> (115) (エラー 2002 (HY000): &lt;servername&gt; 上の MySQL サーバーに接続できません (115))
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

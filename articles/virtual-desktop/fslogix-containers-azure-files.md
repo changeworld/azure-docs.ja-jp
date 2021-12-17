@@ -1,24 +1,24 @@
 ---
-title: Windows Virtual Desktop FSLogix プロファイル コンテナー ファイル - Azure
-description: この記事では、Windows Virtual Desktop での FSLogix プロファイル コンテナーと Azure Files について説明します。
+title: Azure Virtual Desktop FSLogix プロファイル コンテナー ファイル - Azure
+description: この記事では、Azure Virtual Desktop での FSLogix プロファイル コンテナーと Azure のファイルについて説明します。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 945bf806a813943d02fb4db1245dfb74eb7fb1f9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 93ef2ea1bcb10c08cfe6dc47027d12eeae3002b7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446895"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547487"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
-Windows Virtual Desktop サービスでは、ユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが推奨されています。 FSLogix は、Windows Virtual Desktop などのリモート コンピューティング環境でプロファイルをローミングするように設計されています。 1 つのコンテナーに完全なユーザー プロファイルが格納されます。 サインイン時、このコンテナーは、ネイティブにサポートされた仮想ハード ディスク (VHD) と Hyper-V 仮想ハード ディスク (VHDX) を使用して、コンピューティング環境に動的に接続されます。 ユーザー プロファイルはすぐに利用できるようになり、ネイティブのユーザー プロファイルとまったく同じようにシステムに表示されます。 この記事では、Windows Virtual Desktop の Azure Files 機能で FSLogix プロファイル コンテナーが使用される方法について説明します。
+Azure Virtual Desktop サービスでは、ユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが推奨されています。 FSLogix は、Azure Virtual Desktop などのリモート コンピューティング環境でプロファイルをローミングするように設計されています。 1 つのコンテナーに完全なユーザー プロファイルが格納されます。 サインイン時、このコンテナーは、ネイティブにサポートされた仮想ハード ディスク (VHD) と Hyper-V 仮想ハード ディスク (VHDX) を使用して、コンピューティング環境に動的に接続されます。 ユーザー プロファイルはすぐに利用できるようになり、ネイティブのユーザー プロファイルとまったく同じようにシステムに表示されます。 この記事では、Azure Virtual Desktop の Azure Files 機能で FSLogix プロファイル コンテナーが使用される方法について説明します。
 
->[!NOTE]
->Azure 上の FSLogix プロファイル コンテナーのさまざまなストレージ オプションに関する比較資料をお探しの場合は、「[FSLogix プロファイル コンテナー用のストレージ オプション](store-fslogix-profile.md)」を参照してください。
+> [!NOTE]
+> Azure 上の FSLogix プロファイル コンテナーのさまざまなストレージ オプションに関する比較資料をお探しの場合は、「[FSLogix プロファイル コンテナー用のストレージ オプション](store-fslogix-profile.md)」を参照してください。
 
 ## <a name="user-profiles"></a>ユーザー プロファイル
 
@@ -77,13 +77,13 @@ S2D クラスターでは、オペレーティング システムが、修正プ
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files と Azure Active Directory ドメイン サービスの統合
 
-FSLogix プロファイル コンテナーのパフォーマンスおよび機能にはクラウドが活用されます。 2019 年 8 月 7 日、Microsoft Azure Files は [Azure Active Directory ドメイン サービス (AD DS) による Azure Files 認証](../storage/files/storage-files-active-directory-overview.md)の一般提供を発表しました。 コストと管理オーバーヘッドの両方に対処することで、Azure AD DS 認証を使用する Azure Files は、Windows Virtual Desktop サービスでのユーザー プロファイルに対する優れたソリューションになります。
+FSLogix プロファイル コンテナーのパフォーマンスおよび機能にはクラウドが活用されます。 2019 年 8 月 7 日、Microsoft Azure Files は [Azure Active Directory ドメイン サービス (Azure AD DS) による Azure Files 認証](../storage/files/storage-files-active-directory-overview.md)の一般提供を発表しました。 コストと管理オーバーヘッドの 両方に対処することで、Azure AD DS 認証を使用する Azure Files は、Azure Virtual Desktop サービスでのユーザー プロファイルに対する優れたソリューションになります。
 
-## <a name="best-practices-for-windows-virtual-desktop"></a>Windows Virtual Desktop のベスト プラクティス
+## <a name="best-practices-for-azure-virtual-desktop"></a>Azure Virtual Desktop のベスト プラクティス
 
-Windows Virtual Desktop では、顧客が使用している VM のサイズ、種類、および数を完全に制御できます。 詳細については、「[Windows Virtual Desktop とは](overview.md)」を参照してください。
+Azure Virtual Desktop では、顧客が使用している VM のサイズ、種類、および数を完全に制御できます。 詳細については、[Azure Virtual Desktop](overview.md)に関するページを参照してください。
 
-ご利用の Windows Virtual Desktop がベスト プラクティスに確実に従うようにするには:
+ご利用の Azure Virtual Desktop がベスト プラクティスに確実に従うようにするには:
 
 - Azure Files ストレージ アカウントをセッション ホスト VM と同じリージョンにする必要があります。
 - Azure Files のアクセス許可を、「[Requirements - Profile Containers](/fslogix/fslogix-storage-config-ht)」 (要件 - プロファイル コンテナー) に記載されているアクセス許可と一致させる必要があります。
@@ -94,11 +94,11 @@ Windows Virtual Desktop では、顧客が使用している VM のサイズ、�
 
 ## <a name="next-steps"></a>次のステップ
 
-次のガイドを使用して、Windows Virtual Desktop 環境を設定します。
+次のガイドを使用して、Azure Virtual Desktop 環境を設定します。
 
-- デスクトップ仮想化ソリューションの構築を開始するには、[Windows Virtual Desktop でのテナントの作成](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)に関するページを参照してください。
-- ご利用の Windows Virtual Desktop テナント内にホスト プールを作成するには、「[Azure Marketplace を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」を参照してください。
+- デスクトップ仮想化ソリューションの構築を開始するには、[Azure Virtual Desktop でのテナントの作成](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)に関するページを参照してください。
+- ご利用の Azure Virtual Desktop テナント内にホスト プールを作成するには、[「Azure Marketplace を使用してホスト プールを作成する」](create-host-pools-azure-marketplace.md)を参照してください。
 - クラウド内でフル マネージドファイル共有を設定するには、[Azure Files 共有の設定](/azure/storage/files/storage-files-active-directory-enable/)に関するページを参照してください。
 - FSLogix プロファイル コンテナーを構成するには、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md)」を参照してください。
-- ユーザーをホスト プールに割り当てるには、[Windows Virtual Desktop のアプリ グループの管理](manage-app-groups.md)に関するページを参照してください。
-- Web ブラウザーからご利用の Windows Virtual Desktop にアクセスするには、[Windows Virtual Desktop への接続](connect-web.md)に関するページを参照してください。
+- ユーザーをホスト プールに割り当てるには、[Azure Virtual Desktop のアプリ グループの管理](manage-app-groups.md)に関するページを参照してください。
+- Web ブラウザーからご利用の Azure Virtual Desktop にアクセスするには、[Azure Virtual Desktop への接続](./user-documentation/connect-web.md)に関するページを参照してください。

@@ -2,13 +2,13 @@
 title: Event Grid ソースとしての Azure Blob Storage
 description: Blob Storage イベントに関して Azure Event Grid に用意されているプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 893e86ecf220ceb327eed9c6f95be4c7ed1afb1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/08/2021
+ms.openlocfilehash: fcd8ff40e8a31c3329f6526a488a6a6a5261383e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363646"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797631"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Blob Storage
 
@@ -29,11 +29,10 @@ ms.locfileid: "100363646"
 
  |イベント名 |説明|
  |----------|-----------|
- |**Microsoft.Storage.BlobCreated** |BLOB が作成または置換されたときにトリガーされます。 <br>具体的には、クライアントが BLOB REST API で使用可能な `PutBlob`、`PutBlockList`、または `CopyBlob` 操作を使用した場合に、このイベントがトリガーされます。   |
+ |**Microsoft.Storage.BlobCreated** |BLOB が作成または置換されたときにトリガーされます。 <br>具体的には、このイベントは、BLOB REST API で使用可能な `PutBlob`、`PutBlockList`、または `CopyBlob` 操作をクライアントが使用し、**なおかつ** ブロック BLOB が完全にコミットされたときにトリガーされます。 <br>クライアントが、**階層型名前空間** 機能が有効になっているアカウントで `CopyBlob` 操作を使用した場合は、`CopyBlob` 操作の動作が少し異なります。 その場合、 **Microsoft.Storage.BlobCreated** イベントは、ブロック BLOB が完全にコミットされたときではなく、`CopyBlob` 操作が **開始された** ときにトリガーされます。   |
  |**Microsoft.Storage.BlobDeleted** |BLOB が削除されたときにトリガーされます。 <br>具体的には、クライアントが BLOB REST API で使用可能な `DeleteBlob` 操作を呼び出した場合に、このイベントがトリガーされます。 |
-
-> [!NOTE]
-> **Azure Blob Storage** の場合、ブロック BLOB が完全にコミットされた場合に限り **Microsoft.Storage.BlobCreated** イベントがトリガーされるようにするには、`CopyBlob`、`PutBlob`、`PutBlockList` REST API 呼び出しのイベントをフィルター処理します。 データがブロック BLOB に完全にコミットされた後でのみ、これらの API 呼び出しによって **Microsoft.Storage.BlobCreated** イベントがトリガーされます。 フィルターの作成方法の詳細については、「[Event Grid のイベントのフィルター処理](./how-to-filter-events.md)」をご覧ください。
+ |**Microsoft.Storage.BlobTierChanged** |BLOB のアクセス層が変更されたときにトリガーされます。 具体的には、BLOB REST API で使用可能な `Set Blob Tier` 操作をクライアントが呼び出したときに、層の変更が完了すると、このイベントがトリガーされます。 |
+|**Microsoft.Storage.AsyncOperationInitiated** |アーカイブ層からホット層またはクール層へのデータの移動またはコピーを伴う操作が開始されたときにトリガーされます。 具体的には、クライアントが `Set Blob Tier` API を呼び出して、アーカイブ層からホット層またはクール層に BLOB を移動するとき、またはクライアントが `Copy Blob` API を呼び出して、アーカイブ層の BLOB からホット層またはクール層の BLOB にデータをコピーするときに、このイベントがトリガーされます。|
 
 ### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage Gen 2 REST API のイベント一覧
 
@@ -185,6 +184,61 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
   "metadataVersion": "1"
 }]
 ```
+
+### <a name="microsoftstorageblobtierchanged-event"></a>Microsoft.Storage.BlobTierChanged イベント
+
+```json
+{
+    "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+    "subject": "/blobServices/default/containers/testcontainer/blobs/Auto.jpg",
+    "eventType": "Microsoft.Storage.BlobTierChanged",
+    "id": "0fdefc06-b01e-0034-39f6-4016610696f6",
+    "data": {
+        "api": "SetBlobTier",
+        "clientRequestId": "68be434c-1a0d-432f-9cd7-1db90bff83d7",
+        "requestId": "0fdefc06-b01e-0034-39f6-401661000000",
+        "contentType": "image/jpeg",
+        "contentLength": 105891,
+        "blobType": "BlockBlob",
+        "url": "https://my-storage-account.blob.core.windows.net/testcontainer/Auto.jpg",
+        "sequencer": "000000000000000000000000000089A4000000000018d6ea",
+        "storageDiagnostics": {
+            "batchId": "3418f7a9-7006-0014-00f6-406dc6000000"
+        }
+    },
+    "dataVersion": "",
+    "metadataVersion": "1",
+    "eventTime": "2021-05-04T15:00:00.8350154Z"
+}
+```
+
+### <a name="microsoftstorageasyncoperationinitiated-event"></a>Microsoft.Storage.AsyncOperationInitiated イベント
+
+```json
+{
+    "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+    "subject": "/blobServices/default/containers/testcontainer/blobs/00000.avro",
+    "eventType": "Microsoft.Storage.AsyncOperationInitiated",
+    "id": "8ea4e3f2-101e-003d-5ff4-4053b2061016",
+    "data": {
+        "api": "SetBlobTier",
+        "clientRequestId": "777fb4cd-f890-4c5b-b024-fb47300bae62",
+        "requestId": "8ea4e3f2-101e-003d-5ff4-4053b2000000",
+        "contentType": "application/octet-stream",
+        "contentLength": 3660,
+        "blobType": "BlockBlob",
+        "url": "https://my-storage-account.blob.core.windows.net/testcontainer/00000.avro",
+        "sequencer": "000000000000000000000000000089A4000000000018c6d7",
+        "storageDiagnostics": {
+            "batchId": "34128c8a-7006-0014-00f4-406dc6000000"
+        }
+    },
+    "dataVersion": "",
+    "metadataVersion": "1",
+    "eventTime": "2021-05-04T14:44:59.3204652Z"
+}
+```
+
 
 ### <a name="microsoftstorageblobrenamed-event"></a>Microsoft.Storage.BlobRenamed イベント
 
@@ -512,7 +566,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -527,7 +581,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -541,7 +595,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `api` | string | イベントのトリガーとなった操作。 |
 | `clientRequestId` | string | ストレージ API 操作に対するクライアントで提供された要求 ID です。 この ID は、ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |
@@ -566,7 +620,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 | [クイック スタート: Azure portal を使用した Blob Storage イベントの作成とルーティング](blob-event-quickstart-portal.md) | ポータルを使って Blob Storage イベントを Webhook に送信する方法を示します。 |
 | [Azure CLI: Blob Storage アカウントのイベントのサブスクライブ](./scripts/event-grid-cli-blob.md) | BLOB ストレージ アカウントのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
 | [PowerShell: Blob Storage アカウントのイベントのサブスクライブ](./scripts/event-grid-powershell-blob.md) | BLOB ストレージ アカウントのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
-| [Resource Manager テンプレート:BLOB ストレージとサブスクリプションの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Azure Blob Storage アカウントをデプロイし、そのストレージ アカウントのイベントをサブスクライブします。 Webhook にイベントを送信します。 |
+| [Resource Manager テンプレート:BLOB ストレージとサブスクリプションの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid-subscription-and-storage) | Azure Blob Storage アカウントをデプロイし、そのストレージ アカウントのイベントをサブスクライブします。 Webhook にイベントを送信します。 |
 | [概要: Blob Storage イベントへの対応](../storage/blobs/storage-blob-event-overview.md) | Blob Storage と Event Grid の統合の概要です。 |
 
 ## <a name="next-steps"></a>次のステップ

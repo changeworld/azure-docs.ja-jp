@@ -1,18 +1,18 @@
 ---
 title: 複数のラボとサブスクリプションにわたる Azure DevTest Labs の使用状況
 description: 複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 1e4d1f0abb5596c7fd9d22740bf052827c2ca666
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2bf6954b629c3a9fc28569a86df4aa61f5dc94f
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102452647"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401043"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する
 
-ほとんどの大規模な組織では、使用状況の傾向や外れ値を視覚化することで、リソースの使用状況をより効果的に追跡したいと考えています。 ラボの所有者またはマネージャーは、リソースの使用状況に基づいて、ラボをカスタマイズして[リソースの使用状況とコストを向上させる](../cost-management-billing/cost-management-billing-overview.md)ことができます。 Azure DevTest Labs では、ラボごとのリソース使用状況をダウンロードし、使用パターンをより詳しく調べることができます。 これらの使用パターンは、変化を特定し、効率を向上させるために役立ちます。 ほとんどの企業では、個々のラボの使用状況と、[複数のラボとサブスクリプション](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)にわたる全体的な使用状況の両方を求めています。 
+ほとんどの大規模な組織では、リソースの使用状況を追跡して、より効果的に傾向や外れ値を視覚化したいと考えています。 ラボの所有者またはマネージャーは、リソースの使用状況に基づいて、ラボをカスタマイズして[リソースの使用状況とコストを向上させる](../cost-management-billing/cost-management-billing-overview.md)ことができます。 Azure DevTest Labs では、ラボごとのリソース使用状況をダウンロードし、使用パターンをより詳しく調べることができます。 これらの使用パターンは、変化を特定し、効率を向上させるために役立ちます。 ほとんどの企業では、個々のラボの使用状況と、[複数のラボとサブスクリプション](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)にわたる全体的な使用状況の両方を求めています。 
 
 この記事では、複数のラボとサブスクリプションにわたるリソース使用状況の情報を処理する方法について説明します。
 
@@ -22,7 +22,7 @@ ms.locfileid: "102452647"
 
 このセクションでは、1 つのラボのリソース使用状況をエクスポートする方法について説明します。
 
-DevTest Labs のリソース使用率をエクスポートする前に、Azure Storage アカウントを設定し、使用状況データを含むさまざまなファイルを格納できるようにしておく必要があります。 データのエクスポートを実行するには、次の 2 つの一般的な方法があります。
+DevTest Labs のリソース使用率をエクスポートするには、あらかじめ Azure ストレージ アカウントを設定し、使用状況データを含むファイルの保存先を確保しておく必要があります。 データのエクスポートを実行するには、次の 2 つの方法が一般的です。
 
 * [DevTest Labs REST API](/rest/api/dtl/labs/exportresourceusage) 
 * アクション `exportResourceUsage`、ラボ リソース ID、および必要なパラメーターを指定した PowerShell Az.Resource モジュール [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction)。 
@@ -39,7 +39,7 @@ DevTest Labs のリソース使用率をエクスポートする前に、Azure S
 * *virtualmachines.csv* - ラボ内の仮想マシンに関する情報が含まれています。
 * *disks.csv* - ラボ内のさまざまなディスクに関する情報が含まれています 
 
-これらのファイルは、ラボ名、ラボの一意の ID、実行日に従い、すべて、またはエクスポート要求に基づく開始日のいずれかで、*labresourceusage* BLOB コンテナーに格納されます。 BLOB 構造の例を次に示します。
+これらのファイルは *labresourceusage* BLOB コンテナーに格納されます。 ファイルの保存先は、ラボ名、ラボの一意の ID、実行日、そして、エクスポート要求の開始日または `full` を組み合わせた形式になります。 BLOB 構造の例を次に示します。
 
 * `labresourceusage/labname/1111aaaa-bbbb-cccc-dddd-2222eeee/<End>DD26-MM6-2019YYYY/full/virtualmachines.csv`
 * `labresourceusage/labname/1111aaaa-bbbb-cccc-dddd-2222eeee/<End>DD-MM-YYYY/26-6-2019/20-6-2019<Start>DD-MM-YYYY/virtualmachines.csv`
@@ -53,7 +53,7 @@ DevTest Labs のリソース使用率をエクスポートする前に、Azure S
 
 これらのテクノロジを使用して、特定の日時にすべてのラボで個別のラボ エクスポートを実行できます。 
 
-Azure 関数では、長期的なストレージにデータをプッシュする必要があります。 複数のラボのデータをエクスポートする場合、エクスポートには時間がかかることがあります。 パフォーマンスを向上させ、情報の重複の可能性を減らすために、各ラボを並列して実行することをお勧めします。 並列処理を実行するには、Azure Functions を非同期に実行します。 また、Azure Functions に用意されているタイマー トリガーを利用します。
+Azure 関数では、長期的なストレージにデータをプッシュする必要があります。 複数のラボのデータをエクスポートする場合、エクスポートに時間がかかることがあります。 パフォーマンスを向上させ、情報の重複の可能性を減らすために、各ラボを並列して実行することをお勧めします。 並列処理を実行するには、Azure Functions を非同期に実行します。 また、Azure Functions に用意されているタイマー トリガーを利用します。
 
 ## <a name="using-a-long-term-storage"></a>長期的なストレージの使用
 
@@ -63,9 +63,9 @@ Azure 関数では、長期的なストレージにデータをプッシュす�
 
 * フレンドリ名の追加
 * 複合グループの作成
-* データの集計。
+* データの集計
 
-いくつかの一般的なストレージ ソリューションとして、[SQL Server](https://azure.microsoft.com/services/sql-database/)、[Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/)、および [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) があります。 どの長期的なストレージ ソリューションを選択するかは、優先事項によって変わります。 データを視覚化するときに、相互作用の可用性に関して提供される機能に応じて、ツールを選択することを検討してください。
+いくつかの一般的なストレージ ソリューションとして、[SQL Server](https://azure.microsoft.com/services/sql-database/)、[Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/)、および [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) があります。 選択する長期的なストレージ ソリューションは、優先事項によって変わります。 データを視覚化するときに、相互作用の可用性に関して提供される機能に応じて、ツールを選択することを検討してください。
 
 ## <a name="visualizing-data-and-gathering-insights"></a>データの視覚化と分析情報の収集
 

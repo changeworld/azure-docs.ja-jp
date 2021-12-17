@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: ff2a6618b60ff2cfa5faa74c905e140466a14359
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2fcb89ccbebf557a1a4068f6fe08b0d27226b1fa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563321"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591769"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry と Azure を統合する
 
@@ -87,7 +87,7 @@ Pivotal Cloud Foundry の運用環境では、F および D VM シリーズが�
 #### <a name="use-azure-first-party-services"></a>Azure ファースト パーティ サービスの使用: 
 Azure のファースト パーティ サービスの利点を活用すると、前のセクションで説明した HA と信頼性の他に、長期的な管理コストも削減することができます。 
 
-Pivotal は、PCF ユーザー向けに [Small Footprint ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html) の提供を開始しました。コンポーネントは、4 つの VM だけに配置され、最大で 2,500 のアプリケーション インスタンスを実行します。 評価版は、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry) を通じて利用できるようになりました。
+Pivotal は、PCF ユーザー向けに [Small Footprint ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html) の提供を開始しました。コンポーネントは、4 つの VM だけに配置され、最大で 2,500 のアプリケーション インスタンスを実行します。 評価版は、Azure Marketplace を通じて利用できるようになりました。
 
 ## <a name="next-steps"></a>次の手順
 Azure の統合機能は、Pivotal Cloud Foundry で利用できるようになる前に、まずは [Open Source Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/) で利用することができます。 \* のマークが付いている機能は、PCF ではまだ利用できません。 Azure Stack との Cloud Foundry 統合も、このドキュメントでは説明されていません。

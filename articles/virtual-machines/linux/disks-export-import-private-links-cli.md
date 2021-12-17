@@ -2,20 +2,22 @@
 title: Azure CLI - プライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
 description: Azure CLI を使用して、マネージド ディスクのプライベート リンクを有効にします。 対象の仮想ネットワーク内でのみディスクを安全にエクスポートおよびインポートできます。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: overview
-ms.date: 08/11/2020
+ms.date: 07/15/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 68b96401fc4fc6ea8916664978dbd4c094d9e5b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa4bdcd3e9eccb3c8911dda758de431e7c459ce2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98684527"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236753"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI - プライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 [プライベート エンドポイント](../../private-link/private-endpoint-overview.md)を使用すると、マネージド ディスクのエクスポートとインポートを制限し、Azure 仮想ネットワーク上のクライアントから[プライベート リンク](../../private-link/private-link-overview.md)を介してデータに安全にアクセスできます。 プライベート エンドポイントでは、対象のマネージド ディスク サービスのために仮想ネットワークのアドレス空間の IP アドレスを使用します。 仮想ネットワーク上のクライアントとマネージド ディスク間のネットワーク トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベート リンク経由でのみ送信され、パブリック インターネットから公開されることはなくなります。
 
@@ -154,5 +156,7 @@ az snapshot create -n $snapshotNameSecuredWithPL \
 
 ## <a name="next-steps"></a>次のステップ
 
-- [プライベート リンクに関する FAQ](../faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
+- VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - [Azure CLI](disks-upload-vhd-to-managed-disk-cli.md) または [Azure PowerShell モジュール](../windows/disks-upload-vhd-to-managed-disk-powershell.md)
+- VHD をダウンロードする - [Windows](../windows/download-vhd.md) または [Linux](download-vhd.md)
+- [プライベート リンクに関する FAQ](../faq-for-disks.yml)
 - [CLI を使用して別のリージョンのストレージ アカウントに管理スナップショットを VHD としてエクスポート/コピーする](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd)

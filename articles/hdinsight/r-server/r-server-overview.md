@@ -3,16 +3,18 @@ title: Azure HDInsight での ML Services の概要
 description: HDInsight 上の ML Services を使用してビッグ データ分析用のアプリケーションを作成する方法について説明します。
 ms.service: hdinsight
 ms.topic: overview
-ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 87f4181e820b1c6ecdeb0fda85a88e80db248dd2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0baf100d7d3a3e6a0667ed00176fa533eafe6d57
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943919"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295959"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight での ML Services とは
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft Machine Learning Server を選択できるようになりました。 このオプションを提供するクラスターの種類は、**ML Services** と呼ばれます。 この機能により、HDInsight での柔軟で分散型の分析方法にオンデマンドでアクセスできます。
 

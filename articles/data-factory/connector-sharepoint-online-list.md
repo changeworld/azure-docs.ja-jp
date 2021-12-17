@@ -1,22 +1,25 @@
 ---
-title: Azure Data Factory を使用して SharePoint Online リストからデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SharePoint Online List からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-author: linda33wj
+title: SharePoint Online リストからデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics パイプラインでコピー アクティビティを使用して、SharePoint Online リストから、サポートされているシンク データ ストアへデータをコピーする方法について説明します。
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.author: jingwang
-ms.openlocfilehash: f8074b69b97a6ef96837e73a1082d2deb67084d9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 09/09/2021
+ms.author: jianleishen
+ms.openlocfilehash: ad9adb2c9f6b8308aba79f9e9bd1eadbf755760a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177863"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763939"
 ---
-# <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory を使用して SharePoint Online リストからデータをコピーする
+# <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して SharePoint Online リストからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して SharePoint Online リストからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
+この記事では、Azure Data Factory と Azure Synapse パイプラインのコピー アクティビティを使用して、SharePoint Online リストから、または SharePoint Online リストにデータをコピーする方法について説明します。 この記事は、Copy アクティビティの概要を説明する [Copy アクティビティ](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -60,15 +63,39 @@ SharePoint List Online コネクタでは、サービス プリンシパル認�
         </AppPermissionRequests>
         ```
 
-        ![sharepoint のアクセス許可​​の付与](media/connector-sharepoint-online-list/sharepoint-online-grant-permission.png)
+        :::image type="content" source="media/connector-sharepoint-online-list/sharepoint-online-grant-permission.png" alt-text="sharepoint のアクセス許可​​の付与":::
 
     3. このアプリに対して [信頼する] をクリックします。
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-次のセクションでは、SharePoint Online リスト コネクタに固有の Data Factory エンティティの定義に使用できるプロパティについて詳しく説明します。
+## <a name="create-a-linked-service-to-a-sharepoint-online-list-using-ui"></a>UI を使用して SharePoint Online リストへのリンク サービスを作成する
+
+次の手順を使用して、Azure portal の UI で SharePoint Online リストへのリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. SharePoint を検索し、SharePoint Online リスト コネクタを選択します。
+
+    :::image type="content" source="media/connector-sharepoint-online-list/sharepoint-online-list-connector.png" alt-text="SharePoint Online リスト コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-sharepoint-online-list/configure-sharepoint-online-list-linked-service.png" alt-text="SharePoint Online リストのリンク サービス構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+次のセクションでは、SharePoint Online リスト コネクタに固有のエンティティの定義に使用できるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -79,7 +106,7 @@ SharePoint Online リストのリンクされたサービスでは、次のプ�
 | type                | type プロパティを  **SharePointOnlineList** に設定する必要があります。  | はい          |
 | siteUrl             | SharePoint Online サイトの url (例: `https://contoso.sharepoint.com/sites/siteName`)。 | はい          |
 | servicePrincipalId  | Azure Active Directory に登録されているアプリケーションのアプリケーション (クライアント) ID。 | はい          |
-| servicePrincipalKey | アプリケーションのキーです。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい          |
+| servicePrincipalKey | アプリケーションのキーです。 このフィールドを **SecureString** とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい          |
 | tenantId            | アプリケーションが存在するテナント ID。          | はい          |
 | connectVia          | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 詳細については、この記事の「[前提条件](#prerequisites)」を参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 | いいえ           |
 
@@ -179,13 +206,13 @@ SharePoint Online リストからデータをコピーするために、以下�
 ```
 
 > [!NOTE]
-> Azure Data Factory では、SharePoint Online リストのソースに対して複数の *選択* データ型を選択することはできません。
+> SharePoint Online リストのソースに対して複数の "*選択*" データ型を選択することはできません。
 
 ## <a name="data-type-mapping-for-sharepoint-online-list"></a>SharePoint Online リストのデータ型マッピング
 
-SharePoint Online リストからデータをコピーすると、SharePoint Online リストのデータ型と Azure Data Factory の中間データ型の間で次のマッピングが使用されます。 
+SharePoint Online リストからデータをコピーする際、SharePoint Online リストのデータ型とサービスの内部で使用される中間データ型との間では、次のマッピングが使用されます。
 
-| **SharePoint Online のデータ型**                 | **OData のデータ型**                                  | **Azure Data Factory の中間データ型** |
+| **SharePoint Online のデータ型**                 | **OData のデータ型**                                  | **中間データ型** |
 | ----------------------------------------------- | ---------------------------------------------------- | ---------------------------------------- |
 | 1 行のテキスト                             | Edm.String                                           | String                                   |
 | 複数行のテキスト                          | Edm.String                                           | String                                   |
@@ -207,7 +234,7 @@ SharePoint Online リストからデータをコピーすると、SharePoint Onl
 
 SharePoint Online からファイルをコピーするには、**Web アクティビティ** を使用して認証し、SPO からアクセス トークンを取得し、後続の **コピー アクティビティ** に渡し、**HTTP コネクタをソースとして** 使用してデータをコピーします。
 
-![sharepoint のファイルのコピー フロー](media/connector-sharepoint-online-list/sharepoint-online-copy-file-flow.png)
+:::image type="content" source="media/connector-sharepoint-online-list/sharepoint-online-copy-file-flow.png" alt-text="sharepoint のファイルのコピー フロー":::
 
 1. 「[前提条件](#prerequisites)」セクションに従って AAD アプリケーションを作成し、SharePoint Online にアクセス許可を付与します。 
 
@@ -217,7 +244,7 @@ SharePoint Online からファイルをコピーするには、**Web アクテ�
     - **メソッド**: POST
     - **Headers**:
         - Content-Type: application/x-www-form-urlencoded
-    - **本文**: `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]`。 クライアント ID、クライアント シークレット、テナント ID、テナント名は置き換えてください。
+    - **本文**: `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]`。 クライアント ID (アプリケーション ID)、クライアント シークレット (アプリケーション キー)、テナント ID、テナント名 (SharePoint テナント) を置き換えます。
 
     > [!CAUTION]
     > トークン値がプレーン テキストでログに記録されないようにするには、Web アクティビティで [セキュリティで保護された出力] オプションを true に設定します。 この値を使用するその他のアクティビティでは、[セキュリティで保護された入力] オプションが true に設定されている必要があります。
@@ -242,4 +269,4 @@ SharePoint Online からファイルをコピーするには、**Web アクテ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
+コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。

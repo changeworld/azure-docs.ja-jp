@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Prometheus と Grafana を使用して Apache Spark アプリケーション レベルのメトリックを監視する
+title: チュートリアル - Prometheus と Grafana を使用して Apache Spark アプリケーションのメトリックを監視する
 description: チュートリアル - Apache Spark アプリケーション メトリック ソリューションを Azure Kubernetes Service (AKS) クラスターにデプロイする方法と、Grafana ダッシュボードを統合する方法について説明します。
 services: synapse-analytics
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: 6a0b63dc7fda25e3911ae713a0bea7ae7a0969f9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1c26ed72a804335a675a2456b2908f582848f5a7
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602300"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399088"
 ---
-# <a name="tutorial-monitor-apache-spark-application-level-metrics-with-prometheus-and-grafana"></a>チュートリアル: Prometheus と Grafana を使用して Apache Spark アプリケーション レベルのメトリックを監視する
+# <a name="monitor-apache-spark-applications-metrics-with-prometheus-and-grafana"></a>Prometheus と Grafana を使用して Apache Spark アプリケーションのメトリックを監視する
 
 ## <a name="overview"></a>概要
 
@@ -29,7 +29,7 @@ ms.locfileid: "104602300"
 1.  [Azure CLI](/cli/azure/install-azure-cli)
 2.  [Helm クライアント 3.30 以上](https://github.com/helm/helm/releases)
 3.  [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-4.  [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/services/kubernetes-service/)
+4.  [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
 
 または、Azure CLI、Helm クライアント、kubectl があらかじめ含まれている [Azure Cloud Shell](https://shell.azure.com/) を使用します。
 
@@ -87,6 +87,9 @@ az ad sp create-for-rbac --name <service_principal_name>
 
 7. **[適用]** をクリックします (アクセス許可が有効になるまで 3 分間待機します。)
 
+> [!NOTE]
+> サービスプ リンシパルが、Synapse ワークスペースで少なくとも "閲覧者" ロールであることを確認してください。 Azure portal の [アクセス制御 (IAM)] タブに移動し、アクセス許可の設定を確認します。
+
 ## <a name="install-connector-prometheus-server-grafana-dashboard"></a>コネクタ、Prometheus サーバー、Grafana ダッシュボードをインストールする
 
 1. synapse-charts リポジトリを Helm クライアントに追加します。
@@ -129,7 +132,7 @@ kubectl -n spo get svc spo-grafana
 
 Grafana ページの左上隅にある Synapse ダッシュボードを探し (ホーム -> Synapse Workspace / Synapse Application)、Synapse Studio でサンプル コードを実行して、メトリックが取得されるまで数秒待ってみます。
 
-また、"Synapse Workspace / Workspace" および "Synapse Workspace / Spark pools" ダッシュボードを使用して、ワークスペースと Apache Spark プールの概要を取得することもできます。
+また、"Synapse Workspace / Workspace" および "Synapse Workspace / Apache Spark pools" ダッシュボードを使用して、ワークスペースと Apache Spark プールの概要を取得することもできます。
 
 ## <a name="uninstall"></a>アンインストール
 
@@ -157,7 +160,7 @@ Synapse Prometheus コネクタは、Azure Synapse Apache Spark プールと Pro
 2.  Apache Spark アプリケーション検出: ターゲット ワークスペースにアプリケーションを送信すると、Synapse Prometheus コネクタがこれらのアプリケーションを自動的に検出できます。
 3.  Apache Spark アプリケーション メタデータ: 基本的なアプリケーション情報を収集し、データを Prometheus にエクスポートします。
 
-Synapse Prometheus コネクタは、[Microsoft Container Registry](https://github.com/microsoft/containerregistry) でホストされる Docker イメージとしてリリースされます。 オープンソースであり、[Azure Synapse Spark アプリケーション メトリック](https://github.com/microsoft/azure-synapse-spark-metrics)にあります。
+Synapse Prometheus コネクタは、[Microsoft Container Registry](https://github.com/microsoft/containerregistry) でホストされる Docker イメージとしてリリースされます。 オープンソースであり、[Azure Synapse Apache Spark アプリケーション メトリック](https://github.com/microsoft/azure-synapse-spark-metrics)にあります。
 
 ### <a name="prometheus-server"></a>Prometheus サーバー
 
@@ -171,12 +174,12 @@ Grafana はオープンソースの視覚化および分析ソフトウェアで
 
 [![ワークスペース ダッシュボードのスクリーンショット](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-workspace.png)](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-workspace.png#lightbox)
 
-"Synapse Workspace / Spark pools" ダッシュボードには、選択した Apache Spark プールで期間中に実行される Apache Spark アプリケーションのメトリックが含まれます。
+"Synapse Workspace / Apache Spark pools" ダッシュボードには、選択した Apache Spark プールで期間中に実行される Apache Spark アプリケーションのメトリックが含まれます。
 
 [![Spark プール ダッシュボードのスクリーンショット](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-sparkpool.png)](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-sparkpool.png#lightbox)
 
-"Synapse Workspace / Spark Application" ダッシュボードには、選択した Apache Spark アプリケーションが含まれます。
+"Synapse Workspace / Apache Spark Application" ダッシュボードには、選択した Apache Spark アプリケーションが含まれます。
 
 [![アプリケーション ダッシュボードのスクリーンショット](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-application.png)](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-application.png#lightbox)
 
-上記のダッシュボード テンプレートは、[Azure Synapse Spark アプリケーション メトリック](https://github.com/microsoft/azure-synapse-spark-metrics/tree/main/helm/synapse-prometheus-operator/grafana_dashboards)でオープンソース化されています。
+上記のダッシュボード テンプレートは、[Azure Synapse Apache Spark アプリケーション メトリック](https://github.com/microsoft/azure-synapse-spark-metrics/tree/main/helm/synapse-prometheus-operator/grafana_dashboards)でオープンソース化されています。

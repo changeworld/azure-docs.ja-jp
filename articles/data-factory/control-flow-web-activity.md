@@ -1,23 +1,26 @@
 ---
-title: Azure Data Factory の Web アクティビティ
-description: Data Factory によってサポートされている制御フロー アクティビティの 1 つである Web アクティビティを使用して、パイプラインから REST エンドポイントを呼び出す方法について説明します。
-author: dcstwh
-ms.author: weetok
+title: Web アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Azure Synapse Analytics によってサポートされている制御フロー アクティビティの 1 つである Web アクティビティを使用して、パイプラインから REST エンドポイントを呼び出す方法について説明します。
+author: nabhishek
+ms.author: abnarain
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 12/19/2018
-ms.openlocfilehash: e4578b41e5cbb62c8a1bfa0c48d4fd60d042a506
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.openlocfilehash: c5656ffb4d8e129e334efc11e9a8e00be7227493
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361521"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798847"
 ---
-# <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
+# <a name="web-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory と Azure Synapse Analytics の Web アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。
+Web アクティビティを使用すると、Azure Data Factory または Synapse パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。
 
 > [!NOTE]
 > Web アクティビティは、自己ホスト型統合ランタイムを利用することで、プライベート仮想ネットワークでホストされる URL の呼び出しでもサポートされています。 統合ランタイムでは、URL エンドポイントへの通信経路が必要です。 
@@ -128,7 +131,7 @@ PFX ファイルの Base64 でエンコードされたコンテンツとパス�
 
 ### <a name="managed-identity"></a>マネージド ID
 
-データ ファクトリのマネージド ID を使用してアクセス トークンの要求対象となるリソース URI を指定します。 Azure Resource Management API を呼び出すには、`https://management.azure.com/` を使用します。 マネージド ID が機能する方法について詳しくは、[Azure リソースのマネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
+データ ファクトリまたは Synapse ワークスペース インスタンスのマネージド ID を使用してアクセス トークンの要求対象となるリソース URI を指定します。 Azure Resource Management API を呼び出すには、`https://management.azure.com/` を使用します。 マネージド ID が機能する方法について詳しくは、[Azure リソースのマネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
 
 ```json
 "authentication": {
@@ -138,7 +141,7 @@ PFX ファイルの Base64 でエンコードされたコンテンツとパス�
 ```
 
 > [!NOTE]
-> ご利用のデータ ファクトリが git リポジトリを使用して構成されている場合、基本認証またはクライアント証明書認証を使用するには、ご自分の資格情報を Azure Key Vault に格納する必要があります。 Azure Data Factory では、git にパスワードは保存されません。
+> ご利用のデータ ファクトリまたは Synapse ワークスペースが Git リポジトリを使用して構成されている場合、基本認証またはクライアント証明書認証を使用するには、ご自分の資格情報を Azure Key Vault に格納する必要があります。 このサービスでは、パスワードは git に格納されません。
 
 ## <a name="request-payload-schema"></a>要求ペイロードのスキーマ
 POST/PUT メソッドを使用する場合、body プロパティは、エンドポイントに送信されるペイロードを表します。 そのペイロードの一部としてリンクされたサービスやデータセットを渡すことができます。 ペイロードのスキーマを次に示します。
@@ -258,7 +261,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory でサポートされている他の制御フロー アクティビティを参照してください。
+サポートされている他の制御フロー アクティビティを参照してください。
 
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)

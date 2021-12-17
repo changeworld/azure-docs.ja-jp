@@ -16,6 +16,104 @@
   items:
     - name: Azure Machine Learning のデータセット
       href: how-to-create-azure-machine-learning-dataset-from-open-dataset.md
+- name: データセット カタログ
+  items:
+    - name: データセット カタログ
+      href: dataset-catalog.md
+    - name: 輸送
+      items:
+        - name: Tartanair AirSim
+          href: dataset-tartanair-simulation.md
+        - name: NYC タクシー - 黄色
+          href: dataset-taxi-yellow.md
+        - name: NYC タクシー - 緑
+          href: dataset-taxi-green.md
+        - name: NYC タクシー - レンタル車両
+          href: dataset-taxi-for-hire-vehicle.md
+    - name: 健康とゲノム
+      items:
+        - name: COVID-19 データ レイク
+          items:
+            - name: COVID-19 データ レイク
+              href: dataset-covid-19-data-lake.md
+            - name: Bing COVID-19 データ
+              href: dataset-bing-covid-19.md
+            - name: COVID 追跡プロジェクト
+              href: dataset-covid-tracking.md
+            - name: ECDC COVID-19 ケース
+              href: dataset-ecdc-covid-cases.md
+            - name: Oxford COVID-19 Government Response Tracker
+              href: dataset-oxford-covid-government-response-tracker.md
+        - name: COVID-19 Open Research
+          href: dataset-covid-19-open-research.md
+        - name: Genomics データ レイク
+          items:
+            - name: Genomics データ レイク
+              href: dataset-genomics-data-lake.md
+            - name: Illumina Platinum Genomes
+              href: dataset-illumina-platinum-genomes.md
+            - name: Human Reference Genomes
+              href: dataset-human-reference-genomes.md
+            - name: ClinVar Annotations
+              href: dataset-clinvar-annotations.md
+            - name: SnpEff
+              href: dataset-snpeff.md
+            - name: gnomAD
+              href: dataset-gnomad.md
+            - name: 1000 ゲノム
+              href: dataset-1000-genomes.md
+            - name: OpenCravat
+              href: dataset-open-cravat.md
+            - name: エンコード
+              href: dataset-encode.md
+            - name: GATK リソース バンドル
+              href: dataset-gatk-resource-bundle.md
+    - name: 雇用と経済
+      items:
+        - name: US Labor Force Statistics (米国労働力統計)
+          href: dataset-us-labor-force.md
+        - name: US National Employment Hours and Earnings (全米労働時間および賃金)
+          href: dataset-us-national-employment-earnings.md
+        - name: US State Employment Hours and Earnings (米国州労働時間および賃金)
+          href: dataset-us-state-employment-earnings.md
+        - name: US Local Area Unemployment Statistics (米国地域別失業統計)
+          href: dataset-us-local-unemployment.md
+        - name: 米国消費者物価指数
+          href: dataset-us-consumer-price-index.md
+        - name: 米国生産者物価指数 - 業種
+          href: dataset-us-producer-price-index-industry.md
+        - name: 米国生産者物価指数 - 商品
+          href: dataset-us-producer-price-index-commodities.md
+    - name: 人口と安全性
+      items:
+        - name: US Population by County (米国の郡別人口)
+          href: dataset-us-population-county.md
+        - name: US Population by ZIP Code (米国の郵便番号別人口)
+          href: dataset-us-population-zip.md
+        - name: Boston Safety Data
+          href: dataset-boston-safety.md
+        - name: Chicago Safety Data
+          href: dataset-chicago-safety.md
+        - name: New York City Safety Data
+          href: dataset-new-york-city-safety.md
+        - name: San Francisco Safety Data
+          href: dataset-san-francisco-safety.md
+        - name: Seattle Safety Data
+          href: dataset-seattle-safety.md
+    - name: 一般的なデータセット
+      items:
+        - name: 糖尿病
+          href: dataset-diabetes.md
+        - name: OJ Sales Simulated Data
+          href: dataset-oj-sales-simulated.md
+        - name: MNIST
+          href: dataset-mnist.md
+        - name: Microsoft ニュース推奨データセット
+          href: dataset-microsoft-news.md
+        - name: 祝日
+          href: dataset-public-holidays.md
+        - name: ロシア語の公開音声テキスト変換
+          href: dataset-open-speech-text.md
 - name: サンプル
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md

@@ -3,14 +3,15 @@ title: Azure Automation の PowerShell ワークフローについて
 description: この記事では、PowerShell ワークフローと PowerShell の違い、および Automation Runbook に適用される概念について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 12/14/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 483d4c16f1b77bf7328857eb25e1571a741d144e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ee42e5aefd457c79fdf82ff388724dd9983c57b9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896920"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432531"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Azure Automation の PowerShell ワークフローについて
 
@@ -19,7 +20,8 @@ Azure Automation の Runbook は、Windows PowerShell ワークフロー、つ�
 ワークフローは Windows PowerShell の構文で記述され、Windows PowerShell によって起動されますが、Windows Workflow Foundation によって処理されます。 ワークフローが通常のスクリプトよりも優れている点としては、複数のデバイスに対する操作の同時実行や、障害からの自動復元などが挙げられます。 
 
 > [!NOTE]
-> PowerShell ワークフロー スクリプトは Windows PowerShell スクリプトと非常に似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。 そのため、[チェックポイント](#use-checkpoints-in-a-workflow)を使用する必要がある場合にのみ、PowerShell ワークフローを使用して Runbook を作成することをお勧めします。 
+>  この記事は PowerShell 5.1 に適用されます。PowerShell 7.1 (プレビュー) ではワークフローはサポートされていません。 PowerShell ワークフロー スクリプトは Windows PowerShell スクリプトと非常に似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。 そのため、[チェックポイント](#use-checkpoints-in-a-workflow)を使用する必要がある場合にのみ、PowerShell ワークフローを使用して Runbook を作成することをお勧めします。 
+ 
 
 この記事のトピックに関する詳細については、「[Windows PowerShell ワークフローについて](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134242(v=ws.11))」をご覧ください。
 

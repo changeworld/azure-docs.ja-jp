@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro でコンピューティング ネットワークを管理してモジュールにアクセスする | Microsoft Docs
-description: Azure Stack Edge Pro でコンピューティング ネットワークを拡張して外部 IP 経由でモジュールにアクセスする方法を説明します。
+title: モジュールにアクセスするための Azure Stack Edge Pro FPGA コンピューティング ネットワーク管理
+description: Azure Stack Edge Pro FPGA でコンピューティング ネットワークを拡張して外部 IP 経由でモジュールにアクセスする方法を説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 335b1429cceb60f99fada1b7eaf207fb4a64ce2d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90894120"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088219"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro でコンピューティング ネットワークを有効にする
 
@@ -62,7 +62,7 @@ Azure Stack Edge Pro デバイスに Web サーバー アプリ モジュール�
 3. **[IoT Edge のカスタム モジュール]** ブレードで、以下の手順を実行します。
 
     1. デプロイする Web サーバー アプリ モジュールの **名前** を指定します。
-    2. お使いのモジュール イメージの **イメージ URI** を指定します。 指定した名前とタグに一致するモジュールが取得されます。 この場合は、`nginx:stable` によって、パブリック [Docker リポジトリ](https://hub.docker.com/_/nginx/)から、(stable としてタグ付けされた) 安定した nginx イメージがプルされます。
+    2. お使いのモジュール イメージの **イメージ URI** を指定します。 指定した名前とタグに一致するモジュールが取得されます。 この場合 `mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine` は、公開されている `mcr.microsoft.com` レジストリから nginx イメージ (`1.15.5-alpine` とタグ付けされている) をプルします。
     3. **[コンテナーの作成オプション]** ボックスで、次のサンプル コードを貼り付けます。  
 
         ```

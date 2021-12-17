@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 91873a2d6a498712773bfe721653e64c3364666f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89730779485b4dd74297e2e1137b8e1217f4ef5a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92674808"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671490"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
 
@@ -34,14 +34,14 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 * サポートされている Oracle のバージョン: 
     * Oracle 9 以降
-    * Oracle クライアント ソフトウェア 8.1.7 以降
+    * Oracle Data Access Client (ODAC) 11.2 以降
 
 * オンプレミスのデータ ゲートウェイをインストールする。 手順については、「[ロジック アプリからオンプレミスのデータに接続する](../logic-apps/logic-apps-gateway-connection.md)」を参照してください。 ゲートウェイは、オンプレミスの Oracle Database、または Oracle DB がインストールされている Azure VM に接続するために必要です。 
 
     > [!NOTE]
     > オンプレミスのデータ ゲートウェイはブリッジとして機能し、オンプレミスのデータ (クラウドにないデータ) とロジック アプリの間に、セキュリティで保護されたデータ転送を提供します。 そのゲートウェイは、複数のサービス、および複数のデータ ソースで使用できます。  したがって、ゲートウェイをインストールするのは 1 回だけで済みます。
 
-* オンプレミスのデータ ゲートウェイをインストールしたコンピューターで Oracle クライアントをインストールする。  必ず Oracle から 64 ビット Oracle Data Provider for .NET をインストールします。  
+* オンプレミスのデータ ゲートウェイをインストールしたコンピューターで Oracle クライアントをインストールする。 Oracle からの 64 ビット Oracle Data Provider for .NET がインストールされていることを確認し、`xcopy` バージョンはオンプレミス データ ゲートウェイで動作しないため、Windows のインストーラーのバージョンを選択します。  
 
   [64 ビット ODAC 12c Release 4 (12.1.0.2.4) for Windows x64](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 

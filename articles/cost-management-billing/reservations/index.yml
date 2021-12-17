@@ -1,22 +1,22 @@
 ### YamlMime:Landing
 title: Azure の予約による節約
-summary: 仮想マシン、Azure Blob Storage または Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。
+summary: 仮想マシン、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。
 metadata:
   title: Azure の予約による節約
-  description: 仮想マシン、Azure Blob Storage または Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。
+  description: 仮想マシン、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。
   ms.service: cost-management-billing
   ms.subservice: reservations
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 03/01/2021
-  ms.openlocfilehash: b25d522d5db9f513628e43724cb1abde9f55e99c
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.date: 04/15/2021
+  ms.openlocfilehash: c7c9a72e3954598e0cb3265e0533ccbd14b68e4b
+  ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102040823"
+  ms.lasthandoff: 04/16/2021
+  ms.locfileid: "107532653"
 landingContent:
 - title: 予約の購入
   linkLists:
@@ -24,6 +24,12 @@ landingContent:
     links:
     - text: Azure の予約とは
       url: save-compute-costs-reservations.md
+    - text: 予約購入の推奨量
+      url: reserved-instance-purchase-recommendations.md
+    - text: インスタンス サイズの柔軟性
+      url: ../../virtual-machines/reserved-vm-instance-size-flexibility.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - text: 別個に課金される Windows と SQL のソフトウェアのコスト
+      url: reserved-instance-windows-software-costs.md
   - linkListType: how-to-guide
     links:
     - text: 予約の購入
@@ -36,16 +42,24 @@ landingContent:
     links:
     - text: 予約割引の適用方法
       url: reservation-discount-application.md
-- title: 予約の管理
+- title: 購入後の予約の管理
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 予約の管理
-      url: manage-reserved-vm-instance.md
-    - text: 予約の表示とアクセス許可の管理
+    - text: 予約を表示、管理するためのアクセス許可
       url: view-reservations.md
+    - text: 予約スコープの変更、分割、マージ
+      url: manage-reserved-vm-instance.md
     - text: 予約の交換と返金
       url: exchange-and-refund-azure-reservations.md
+- title: 購入後にコストを報告する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Reservation コストのチャージ バック
+      url: charge-back-usage.md
+    - text: 予約購入と払戻のトランザクションの表示
+      url: view-purchase-refunds.md
   - linkListType: reference
     links:
     - text: 予約 API

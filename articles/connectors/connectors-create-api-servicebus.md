@@ -3,16 +3,16 @@ title: Azure Service Bus を使用したメッセージ交換
 description: Azure Logic Apps で Azure Service Bus を使用してメッセージを送受信する自動化されたタスクとワークフローを作成する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 08/18/2021
 tags: connectors
-ms.openlocfilehash: 98d2ee8a85d25065c0021841a9b99a6d616a35d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43ea4bd0eea40e5e74b92f67241adbe7bee1dcc3
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100367420"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515726"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
@@ -25,25 +25,54 @@ ms.locfileid: "100367420"
 * キューおよびトピック サブスクリプション内のメッセージとセッションに対するロックを更新します。
 * キューとトピック内のセッションを閉じる。
 
-Service Bus から応答を取得し、その出力をロジック アプリ内の他のアクションが使用できるようにするトリガーを使用できます。 他のアクションに Service Bus アクションからの出力を使用させることもできます。 Service Bus と Logic Apps を初めて使用する場合は、「[Azure Service Bus とは](../service-bus-messaging/service-bus-messaging-overview.md)」および「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
-
-[!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
+トリガーを使うことができます。トリガーは Service Bus からの応答を得て、その出力をロジック アプリ ワークフロー内の他の処理でも使うことができるようにします。 他のアクションに Service Bus アクションからの出力を使用させることもできます。 Service Bus と Azure Logic Apps を初めて使用する場合は、「[Azure Service Bus とは](../service-bus-messaging/service-bus-messaging-overview.md)」および「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
-* Service Bus 名前空間と、キューなどのメッセージング エンティティ。 項目とロジック アプリでは、同じ Azure サブスクリプションを使用する必要があります。 これらの項目がない場合は、[Service Bus 名前空間とキューの作成](../service-bus-messaging/service-bus-create-namespace-portal.md)方法を学習してください。
+* Service Bus 名前空間と、キューなどのメッセージング エンティティ。 これらの項目がない場合は、[Service Bus 名前空間とキューの作成](../service-bus-messaging/service-bus-create-namespace-portal.md)方法を学習してください。
 
-* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
+* [ロジック アプリ ワークフロー の作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基礎知識。
 
-* ロジック アプリでは、Service Bus 名前空間とメッセージング エンティティを使用します。 ロジック アプリと Service Bus では、同じ Azure サブスクリプションを使用する必要があります。 ワークフローを Service Bus トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 ワークフローで Service Bus アクションを使用するには、[Recurrence](../connectors/connectors-native-recurrence.md) トリガーなど、別のトリガーでロジック アプリを開始します。
+* Service Bus 名前空間およびメッセージング エンティティを使用するロジック アプリ ワークフロー。 ワークフローを Service Bus トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 ワークフローで Service Bus アクションを使う場合は、[繰り返しトリガー](../connectors/connectors-native-recurrence.md)などの別のトリガーを使ってロジック アプリ ワークフローを開始してください。
+
+## <a name="considerations-for-azure-service-bus-operations"></a>Azure Service Bus の運用における留意事項
+
+### <a name="infinite-loops"></a>無限ループ
+
+[!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
+
+### <a name="large-messages"></a>大きいメッセージ
+
+大規模なメッセージのサポートは、[シングル テナントの Azure Logic Apps (Standard)](../logic-apps/single-tenant-overview-compare.md) ワークフローを用いるビルトイン型の Service Bus オペレーションを使う場合のみ利用できます。 ビルトイン型のバージョンにおけるトリガーや処理を使って大規模なメッセージを送受信できます。
+
+  メッセージを受信するために、[Azure Functions の拡張で次の設定を変更する](../azure-functions/functions-bindings-service-bus.md#hostjson-settings)に関するページを参照して、タイムアウト時間を長くすることができます。
+
+  ```json
+  {
+     "version": "2.0",
+     "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle.Workflows",
+        "version": "[1.*, 2.0.0)"
+     },
+     "extensions": {
+        "serviceBus": {
+           "batchOptions": {
+              "operationTimeout": "00:15:00"
+           }
+        }  
+     }
+  }
+  ```
+
+  メッセージを送信するために、[ `ServiceProviders.ServiceBus.MessageSenderOperationTimeout` アプリの設定を追加する](../logic-apps/edit-app-settings-host-settings.md)に関するページを参照してタイムアウト時間を長くすることができます。
 
 <a name="permissions-connection-string"></a>
 
-## <a name="check-permissions"></a>アクセス許可を確認する
+## <a name="check-permissions"></a>アクセス許可を確認してください
 
-ロジック アプリが Service Bus 名前空間にアクセスするためのアクセス許可を持っていることを確認します。
+ロジック アプリのリソースが、ご自身の Service Bus 名前空間へのアクセスが許可されていることをご確認ください。
 
 1. [Azure portal](https://portal.azure.com) で、Azure アカウントを使ってサインインします。
 
@@ -60,17 +89,17 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
       ![Service Bus 名前空間の接続文字列をコピーする](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > 接続文字列が Service Bus 名前空間に関連付けられているのか、キューのようなメッセージング エンティティに関連付けられているのかを確認するには、接続文字列で `EntityPath` パラメーターを探します。 このパラメーターがある場合、接続文字列は特定のエンティティを対象としています。これは、ロジック アプリで使用するのに適切な文字列ではありません。
+   > 接続文字列が Service Bus 名前空間に関連付けられているのか、キューのようなメッセージング エンティティに関連付けられているのかを確認するには、接続文字列で `EntityPath` パラメーターを探します。 このパラメーターを検出した場合、接続文字列は特定のエンティティのためのものであり、ロジック アプリ ワークフローでの使用においては正しい文字列ではありません。
 
 ## <a name="add-service-bus-trigger"></a>Service Bus トリガーの追加
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーで空のロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com)にサインインし、ワークフロー デザイナーで空になっているロジック アプリをオープンします。
 
 1. ポータルの検索ボックスに、「`azure service bus`」と入力します。 表示されたトリガー一覧から、使用するトリガーを選択します。
 
-   たとえば、新しい項目が Service Bus キューに送信されたときにロジック アプリをトリガーするには、 **[メッセージがキューに着信したとき (オート コンプリート)]** トリガーを選択します。
+   たとえば、新たなメッセージが Service Bus キューに送信されたときにロジック アプリをトリガーするには、 **[メッセージがキューに着信したとき (オート コンプリート)]** トリガーを選びます。
 
    ![Service Bus トリガーを選択する](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
@@ -81,11 +110,11 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
    * **[1 つ以上のメッセージがキューに届いたとき (オート コンプリート)]** トリガーのように、1 つ以上のメッセージを返すトリガーもあります。 これらのトリガーが起動すると、1 からトリガーの **[最大メッセージ数]** プロパティで指定された数までのメッセージが返されます。
 
      > [!NOTE]
-     > オートコンプリートのトリガーでメッセージが自動的に完成しますが、これは次回の Service Bus 呼び出し時にのみ発生します。 このビヘイビアーはロジック アプリの設計に影響を与える可能性があります。 たとえば、オートコンプリート トリガーの同時実行を変更しないようにします。変更すると、ロジック アプリが調整状態になったときに、メッセージが重複する可能性があります。 同時実行制御を変更すると、次のような状況になります。調整されたトリガーは `WorkflowRunInProgress` コードでスキップされ、完了操作は行われず、ポーリング間隔の後で次のトリガー実行が発生します。 ポーリング間隔より長い値にサービス バス ロック期間を設定する必要があります。 ただし、このように設定しても、次のポーリング間隔でもロジック アプリが調整状態のままである場合、メッセージはまだ完了していない可能性があります。
+     > オートコンプリートのトリガーでメッセージが自動的に完成しますが、これは次回の Service Bus 呼び出し時にのみ発生します。 このビヘイビアーはロジック アプリの設計に影響を与える可能性があります。 たとえば、オート コンプリート トリガーにおける同時並行性の変更は避けてください。なぜならこの変更によって、ロジック アプリ ワークフローがスロットルされた状態になった場合にメッセージの重複を発生させる可能性があるためです。 同時実行制御を変更すると、次のような状況になります。調整されたトリガーは `WorkflowRunInProgress` コードでスキップされ、完了操作は行われず、ポーリング間隔の後で次のトリガー実行が発生します。 ポーリング間隔より長い値にサービス バス ロック期間を設定する必要があります。 ただし、このように設定しても、ロジック アプリ ワークフローが次のポーリング間隔でもスロットルされた状態であり続けた場合は、メッセージが完了しない可能性があります。
 
-   * Service Bus トリガーに対して[同時実行の設定を有効](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)にした場合、`maximumWaitingRuns` プロパティの既定値は 10 です。 Service Bus エンティティのロック期間の設定とロジック アプリ インスタンスの実行時間によっては、この既定値は大きすぎて、"ロックが失われました" という例外が発生する可能性があります。 ご自分のシナリオに最適な値を確認するには、`maximumWaitingRuns` プロパティに値 1 または 2 を指定してテストを開始します。 待機中の実行の最大値を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。
+   * Service Bus トリガーに対して[同時実行の設定を有効](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)にした場合、`maximumWaitingRuns` プロパティの既定値は 10 です。 Service Bus エンティティのロック継続時間の設定とロジック アプリ ワークフローの実行継続時間によっては、このデフォルト値は大き過ぎて「ロック損失」という例外を発生させる可能性があります。 ご自分のシナリオに最適な値を確認するには、`maximumWaitingRuns` プロパティに値 1 または 2 を指定してテストを開始します。 待機中の実行の最大値を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。
 
-1. トリガーを Service Bus 名前空間に初めて接続する場合、接続情報の入力を求めるメッセージがロジック アプリ デザイナーによって表示された際は次の手順に従います。
+1. トリガーが Service Bus の名前空間に初めて接続する場合、ワークフロー デザイナーから接続に関する情報を求められたら次の手順に従います。
 
    1. 接続の名前を指定し、Service Bus 名前空間を選択します。
 
@@ -98,7 +127,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
       ![Service Bus ポリシーの選択を示すスクリーンショット](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
    1. キューやトピックなどのメッセージング エンティティを選択します。 ここでは、Service Bus キューを選択します。
-   
+
       ![Service Bus キューの選択を示すスクリーンショット](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
 1. 選択したトリガーで必要な情報を指定します。 その他の使用可能なプロパティをアクションに追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なプロパティを選択します。
@@ -109,15 +138,15 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
    使用可能なトリガーとプロパティの詳細については、コネクタの[リファレンス ページ](/connectors/servicebus/)を参照してください。
 
-1. 必要なアクションを追加して、ロジック アプリの構築を続けます。
+1. 必要な処理を追加してロジック アプリ ワークフローの設計を進めます。
 
-   たとえば、新しいメッセージが届いたときにメールを送信するアクションを追加することができます。 トリガーがキューをチェックし、新しいメッセージを見つけると、見つかったメッセージに対して選択したアクションをロジック アプリが実行します。
+   たとえば、新しいメッセージが届いたときにメールを送信するアクションを追加することができます。 トリガーがキューを確認して新しいメッセージを見つけた場合、ロジック アプリ ワークフローはそのメッセージに対して設定された処理を実行します。
 
 ## <a name="add-service-bus-action"></a>Service Bus アクションの追加
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com)で、ワークフロー デザイナーでロジック アプリをオープンします。
 
 1. アクションを追加するステップで、 **[新しいステップ]** を選択します。
 
@@ -129,7 +158,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
    ![Service Bus アクションの選択を示すスクリーンショット](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
-1. アクションを Service Bus 名前空間に初めて接続する場合、接続情報の入力を求めるメッセージがロジック アプリ デザイナーによって表示された際は次のステップに従います。
+1. 実行する処理が Service Bus の名前空間に初めて接続する場合、ワークフロー デザイナーから接続に関する情報を求められたら次の手順に従います。
 
    1. 接続の名前を指定し、Service Bus 名前空間を選択します。
 
@@ -153,7 +182,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
    使用可能なアクションとプロパティの詳細については、コネクタの[リファレンス ページ](/connectors/servicebus/)を参照してください。
 
-1. 他の必要なアクションを追加して、ロジック アプリの構築を続けます。
+1. 他に必要な処理を追加してロジック アプリ ワークフローの設計を進めます。
 
    たとえば、メッセージが送信されたことを確認するメールを送信するアクションを追加することができます。
 
@@ -169,7 +198,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 ## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>ロジック アプリの更新の有効化が遅延する
 
-Service Bus トリガーのポーリング間隔が短い場合 (10 秒など)、ロジック アプリの更新が最大 10 分間有効にならないことがあります。 この問題を回避するために、ロジック アプリを無効にし、変更を加えてから、ロジック アプリを再度有効することができます。
+Service Bus トリガーのポーリング間隔が 10 秒のように短い場合は、ロジック アプリ ワークフローに対して行った更新が有効になるまでに最大で 10 分かかる場合があります。 この問題に対処するために、ロジック アプリを無効にして、変更を行い、そして再度ロジック アプリ ワークフローを有効にすることができます。
 
 <a name="connector-reference"></a>
 
@@ -181,4 +210,4 @@ Service Bus トリガーのポーリング間隔が短い場合 (10 秒など)�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
+* 他の [Azure Logic Apps のコネクタ](../connectors/apis-list.md)について説明します。

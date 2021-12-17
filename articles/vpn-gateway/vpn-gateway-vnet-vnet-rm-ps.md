@@ -1,24 +1,25 @@
 ---
-title: 'Azure VPN Gateway の VNet 対 VNet 接続を使用して VNet を別の VNet に接続する: PowerShell'
-description: VNet 間接続と PowerShell を使用して仮想ネットワークどうしを接続します。
+title: 'VPN Gateway の VNet 対 VNet 接続を使用して VNet を別の VNet に接続する: PowerShell'
+titleSuffix: Azure VPN Gateway
+description: VNet 間接続と PowerShell を使用して仮想ネットワークどうしを接続する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7de83302dd91d7d679b9c35718d184a9767ba436
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87a2a658b37f199c8e5b6c92543cc9c70a8ae42c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655359"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729463"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
 
 この記事は、VNet 間という接続の種類を使用して仮想ネットワークを接続する際に役立ちます。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。
 
-この記事の手順は、Resource Manager デプロイ モデルに適用されます。ここでは、PowerShell を使用します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
+この記事の手順は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に適用されます。ここでは、PowerShell を使用します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -79,7 +80,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* ゲートウェイの作成には最大で 45 分かかるため、この演習の間に Azure Cloud Shell が定期的にタイムアウトします。 ターミナルの左上をクリックして、Cloud Shell を再起動できます。 ターミナルを再起動したら、忘れずにすべての変数を再宣言してください。
+* ゲートウェイの作成には 45 分以上かかるため、この演習の間に Azure Cloud Shell が定期的にタイムアウトします。 ターミナルの左上をクリックして、Cloud Shell を再起動できます。 ターミナルを再起動したら、忘れずにすべての変数を再宣言してください。
 
 * 代わりに最新バージョンの Azure PowerShell モジュールをローカル環境にインストールしたい場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」をご覧ください。
 
@@ -203,7 +204,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-コマンドが完了した後、このゲートウェイが作成されるまでに最大で 45 分かかります。 Azure Cloud Shell を使用している場合は、Cloud Shell ターミナルの左上をクリックして、Cloud Shell セッションを再起動できます。その後、TestVNet4 を構成します。 TestVNet1 ゲートウェイが完了するまで待つ必要はありません。
+コマンドが完了した後、このゲートウェイが作成されるまでに 45 分以上かかります。 Azure Cloud Shell を使用している場合は、Cloud Shell ターミナルの左上をクリックして、Cloud Shell セッションを再起動できます。その後、TestVNet4 を構成します。 TestVNet1 ゲートウェイが完了するまで待つ必要はありません。
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>手順 3 - TestVNet4 を作成し、構成する
 

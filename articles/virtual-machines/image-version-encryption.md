@@ -1,23 +1,25 @@
 ---
-title: プレビュー - 独自のキーで暗号化されたイメージ バージョンを作成する
-description: カスタマー マネージド暗号化キーを使用して、共有イメージ ギャラリーにイメージ バージョンを作成します。
+title: 独自のキーで暗号化されたイメージ バージョンを作成する
+description: カスタマー マネージド暗号化キーを使用して、Azure Compute Gallery にイメージ バージョンを作成します。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 11/3/2020
-ms.author: cynthn
-ms.openlocfilehash: 601b8236ca413dd510585bdfffddc3e892caa73b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 7/1/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bcd214413eb4880219e18c4bb03e4430f31690fd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107759671"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452055"
 ---
-# <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>プレビュー:イメージの暗号化にカスタマー マネージド キーを使用する
+# <a name="use-customer-managed-keys-for-encrypting-images"></a>イメージの暗号化にカスタマー マネージド キーを使用する
 
-共有イメージ ギャラリー内のイメージはスナップショットとして格納されるので、サーバー側暗号化によって自動的に暗号化されます。 サーバー側暗号化には、利用可能な最強のブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)が使用されます。 サーバー側暗号化は、FIPS 140-2 にも準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:Next Generation (暗号化 API: 次世代)](/windows/desktop/seccng/cng-portal)」を参照してください。
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+
+Azure Compute Gallery (旧称 Shared Image Gallery) 内のイメージはスナップショットとして格納されるので、サーバー側暗号化によって自動的に暗号化されます。 サーバー側暗号化には、利用可能な最強のブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)が使用されます。 サーバー側暗号化は、FIPS 140-2 にも準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:Next Generation (暗号化 API: 次世代)](/windows/desktop/seccng/cng-portal)」を参照してください。
 
 イメージの暗号化にはプラットフォーム マネージド キーを利用することも、独自のキーを使用することもできます。 二重暗号化のために両方を併用することもできます。 独自のキーを使用して暗号化を管理する場合は、イメージ内のすべてのディスクの暗号化と暗号化解除に使用する *カスタマー マネージド キー* を指定できます。 
 
@@ -27,7 +29,7 @@ ms.locfileid: "107759671"
 
 この記事においては、イメージをレプリケートする各リージョンにディスク暗号化セットが既に用意されている必要があります。
 
-- カスタマー マネージド キーのみを使用する場合は、[Azure portal](./disks-enable-customer-managed-keys-portal.md) または [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-without-automatic-key-rotation) を使用してサーバー側の暗号化でカスタマー マネージド キーを有効にする方法に関する記事を参照してください。
+- カスタマー マネージド キーのみを使用する場合は、[Azure portal](./disks-enable-customer-managed-keys-portal.md) または [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-optionally-with-automatic-key-rotation) を使用してサーバー側の暗号化でカスタマー マネージド キーを有効にする方法に関する記事を参照してください。
 
 - (二重暗号化のために) プラットフォーム マネージドおよびユーザー マネージドの両方のキーを使用する場合は、[Azure portal](./disks-enable-double-encryption-at-rest-portal.md) または [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md) を使用して保存時の二重暗号化を有効にする方法に関する記事を参照してください。
 
@@ -36,7 +38,7 @@ ms.locfileid: "107759671"
 
 ## <a name="limitations"></a>制限事項
 
-共有イメージ ギャラリー内のイメージの暗号化にカスタマー マネージド キーを使用する場合、こちらの制限が適用されます。   
+Azure Compute Gallery 内のイメージの暗号化にカスタマー マネージド キーを使用する場合、こちらの制限が適用されます。 
 
 - 暗号化キー セットは、お使いのイメージと同じサブスクリプション内にある必要があります。
 
@@ -47,40 +49,9 @@ ms.locfileid: "107759671"
 - 独自のキーを使用してディスクやイメージを暗号化した後は、それらのディスクやイメージを暗号化するためにプラットフォーム マネージド キーを使用する方法に戻すことはできません。
 
 
-> [!IMPORTANT]
-> カスタマー マネージド キーを使用した暗号化は、現在はパブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-
 ## <a name="powershell"></a>PowerShell
 
-パブリック プレビューでは、まずこの機能を登録する必要があります。
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName SIGEncryption -ProviderNamespace Microsoft.Compute
-```
-
-登録が完了するまでに数分かかります。 `Get-AzProviderFeature` を使用して、機能の登録の状態を確認します。
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName SIGEncryption -ProviderNamespace Microsoft.Compute
-```
-
-`RegistrationState` から `Registered` が返されたら、次の手順に進むことができます。
-
-プロバイダーの登録を確認します。 `Registered` が返されることを確認します。
-
-```azurepowershell-interactive
-Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Property ResourceTypes,RegistrationState
-```
-
-`Registered` が返されない場合は、次のコードを使用してプロバイダーを登録します。
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-イメージ バージョンのディスク暗号化セットを指定するには、`-TargetRegion` パラメーターを指定して [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) を使用します。 
+イメージ バージョンのディスク暗号化セットを指定するには、`-TargetRegion` パラメーターを指定して [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) を使用します。 
 
 ```azurepowershell-interactive
 
@@ -128,39 +99,12 @@ New-AzGalleryImageVersion `
 
 ### <a name="create-a-vm"></a>VM の作成
 
-共有イメージ ギャラリーから仮想マシン (VM) を作成し、カスタマー マネージド キーを使用してそのディスクを暗号化することができます。 構文は、イメージから[一般化](vm-generalized-image-version-powershell.md)または[特殊化](vm-specialized-image-version-powershell.md)された VM を作成する場合と同じです。 拡張パラメーター セットを使用し、`Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` を VM 構成に追加します。
+Azure Compute Gallery から仮想マシン (VM) を作成し、カスタマー マネージド キーを使用してそのディスクを暗号化することができます。 構文は、イメージから[一般化](vm-generalized-image-version.md)または[特殊化](vm-specialized-image-version.md)された VM を作成する場合と同じです。 拡張パラメーター セットを使用し、`Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` を VM 構成に追加します。
 
 データ ディスクの場合は、[Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) を使用するときに `-DiskEncryptionSetId $setID` パラメーターを追加します。
 
 
 ## <a name="cli"></a>CLI 
-
-パブリック プレビューでは、まずこの機能を登録する必要があります。 登録には 30 分程度かかります。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name SIGEncryption
-```
-
-機能の登録の状態を確認します。
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name SIGEncryption | grep state
-```
-
-このコードから `"state": "Registered"` が返されたら、次の手順に進むことができます。
-
-登録を確認します。
-
-```azurecli-interactive
-az provider show -n Microsoft.Compute | grep registrationState
-```
-
-登録済みにならない場合は、次のコマンドを実行します。
-
-```azurecli-interactive
-az provider register -n Microsoft.Compute
-```
-
 
 イメージ バージョンのディスク暗号化セットを指定するには、`--target-region-encryption` パラメーターを指定して [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) を使用します。 `--target-region-encryption` の形式は、OS とデータ ディスクを暗号化するためのキーのコンマ区切りリストです。 `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>` のようになります。 
 
@@ -199,16 +143,12 @@ az sig image-version create \
 
 ### <a name="create-the-vm"></a>VM の作成
 
-共有イメージ ギャラリーから VM を作成し、カスタマー マネージド キーを使用してディスクを暗号化することができます。 構文は、イメージから[一般化](vm-generalized-image-version-cli.md)または[特殊化](vm-specialized-image-version-cli.md)された VM を作成する場合と同じです。 `--os-disk-encryption-set` パラメーターに暗号化セットの ID を指定して追加するだけです。 データ ディスクの場合は、そのデータ ディスクのディスク暗号化セットのスペース区切りリストを指定して `--data-disk-encryption-sets` を追加します。
+Azure Compute Gallery から VM を作成し、カスタマー マネージド キーを使用してディスクを暗号化することができます。 構文は、イメージから[一般化](vm-generalized-image-version.md)または[特殊化](vm-specialized-image-version.md)された VM を作成する場合と同じです。 `--os-disk-encryption-set` パラメーターに暗号化セットの ID を指定して追加するだけです。 データ ディスクの場合は、そのデータ ディスクのディスク暗号化セットのスペース区切りリストを指定して `--data-disk-encryption-sets` を追加します。
 
 
 ## <a name="portal"></a>ポータル
 
 ポータルで自分のイメージ バージョンを作成する場合は、 **[暗号化]** タブを使用して、ストレージ暗号化セットを適用できます。
-
-> [!IMPORTANT]
-> 二重暗号化を使用するには、リンク [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) を使用して Azure portal にアクセスする必要があります。 現時点では、このリンクを使用しないと、保存時の二重暗号化がパブリックの Azure portal に表示されません。
-
 
 1. **[イメージ バージョンを作成する]** ページで、 **[暗号化]** タブを選択します。
 2. **[暗号化の種類]** で、 **[カスタマー マネージド キーを使用した保存時の暗号化]** または **[Double encryption with platform-managed and customer-managed keys]** \(プラットフォーム マネージド キーとカスタマー マネージド キーを使用した二重暗号化\) を選択します。 

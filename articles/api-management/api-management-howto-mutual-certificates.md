@@ -4,23 +4,24 @@ titleSuffix: Azure API Management
 description: Azure API Management でクライアント証明書認証を使用して証明書の管理とバックエンド サービスの保護を行う方法を説明します。
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 01/26/2021
-ms.author: apimpm
-ms.openlocfilehash: d5d261368260a1c9658ae0bef8bdf63a7ca6bafe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.author: danlep
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 00d00c8dc5419b524eb71172adfb5271905d668f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750628"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057786"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する
 
 API Management には、クライアント証明書を使用して API のバックエンド サービスへのアクセスを保護する機能があります。 このガイドでは、Azure portal を使用して Azure API Management サービス インスタンスで証明書を管理する方法について説明します。 また、証明書を使用してバックエンド サービスにアクセスするように API を構成する方法についても説明します。
 
-[API Management REST API](/rest/api/apimanagement/2020-06-01-preview/certificate)を使用して API Management 証明書を管理することもできます。
+[API Management REST API](/rest/api/apimanagement/2021-01-01-preview/certificate)を使用して API Management 証明書を管理することもできます。
 
 ## <a name="certificate-options"></a>証明書のオプション
 
@@ -32,7 +33,7 @@ API Management には、バックエンド サービスへのアクセスをセ�
 API Management のセキュリティ向上に役立つため、キー コンテナー証明書を使用することをお勧めします。
 
 * キー コンテナーに格納されている証明書は、サービス間で再利用できます
-* キー コンテナーに格納されている証明書には、きめ細かい[アクセス ポリシー](../key-vault/general/security-overview.md#privileged-access)を適用できます
+* キー コンテナーに格納されている証明書には、きめ細かい[アクセス ポリシー](../key-vault/general/security-features.md#privileged-access)を適用できます
 * キー コンテナーで更新された証明書は、API Management で自動的にローテーションされます。 キー コンテナー内で更新が行われると、4 時間以内に API Management 内の証明書が更新されます。 また、Azure portal または管理 REST API を使用して、証明書を手動で更新することもできます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -78,7 +79,11 @@ API Management にキー コンテナー証明書を追加するには、次の�
     > ID には、キー コンテナーから証明書を取得および一覧表示するためのアクセス許可が必要です。 キー コンテナーへのアクセスをまだ構成していない場合は、必要なアクセス許可を使用して ID を自動的に構成できるように、API Management によってプロンプトが表示されます。
 1. **[追加]** を選択します。
 
+
+
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-kv.png" alt-text="キー コンテナー証明書の追加":::
+    
+1. **[保存]** を選択します。
 
 ## <a name="upload-a-certificate"></a>証明書のアップロード
 
@@ -94,6 +99,9 @@ API Management にクライアント証明書をアップロードするには�
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-add.png" alt-text="クライアント証明書のアップロード":::
 
+
+1. **[保存]** を選択します。
+
 証明書がアップロードされると、 **[証明書]** ウィンドウに表示されます。 証明書が多数ある場合は、[ゲートウェイ認証](#configure-an-api-to-use-client-certificate-for-gateway-authentication)にクライアント証明書を使用するように API を構成するために、必要な証明書の拇印をメモします。
 
 > [!NOTE]
@@ -104,8 +112,8 @@ API Management にクライアント証明書をアップロードするには�
 1. [Azure portal](https://portal.azure.com) で、API Management インスタンスに移動します。
 1. **[API]** で **[API]** を選択します。
 1. 一覧から API を選びます。 
-2. **[デザイン]** タブで、 **[バックエンド]** セクションのエディター アイコンを選択します。
-3. **[ゲートウェイ資格情報]** で **[クライアント証明書]** を選択し、ドロップダウンから証明書を選択します。
+1. **[デザイン]** タブで、 **[バックエンド]** セクションのエディター アイコンを選択します。
+1. **[ゲートウェイ資格情報]** で **[クライアント証明書]** を選択し、ドロップダウンから証明書を選択します。
 1. **[保存]** を選択します。
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png" alt-text="ゲートウェイ認証にクライアント証明書を使用する":::
@@ -153,4 +161,3 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 [Azure API Management REST API Certificate entity]: ./api-management-caching-policies.md
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 [to configure certificate authentication in Azure WebSites refer to this article]: ../app-service/app-service-web-configure-tls-mutual-auth.md
-

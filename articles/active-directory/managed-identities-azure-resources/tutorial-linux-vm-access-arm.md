@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 07/26/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 653159c2e40d3375a422f0da14274f57130de1fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13d427ea5cc73f9cbd4176332c351453891b2e7a
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93359682"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707569"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>Linux VM のシステム割り当てマネージド ID を使用して Azure Resource Manager にアクセスする
 
@@ -36,7 +36,7 @@ ms.locfileid: "93359682"
 
 - マネージド ID の知識。 Azure リソースのマネージド ID 機能に慣れていない場合は、こちらの[概要](overview.md)を参照してください。 
 - Azure アカウント。[無料アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
-- システム割り当てマネージド ID が有効になっている Linux 仮想マシンも必要です。
+- システム割り当てマネージド ID が有効になっている Linux 仮想マシンも必要です。 VM があるが、[システム割り当てマネージド ID](qs-configure-portal-windows-vm.md) を有効にする必要がある場合は、仮想マシンのプロパティの ID セクションで行います。 
   - このチュートリアル用に仮想マシンを作成する必要がある場合は、[Azure portal での Linux 仮想マシンの作成](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)に関する記事に従ってください。
 
 ## <a name="grant-access"></a>アクセス権の付与

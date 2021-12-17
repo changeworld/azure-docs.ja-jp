@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6116ab543d6dfc886e44206c2a60e4456b39fbc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7762d9c234252e1328946e00c99a736dd5ec6259
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558187"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630150"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -135,6 +135,10 @@ What-If ツールを使用して、ポリシーをどのように構成するか
 ## <a name="policy-deployment"></a>ポリシーのデプロイ
 
 ポリシーが期待どおりに機能することを確実にするために推奨されるベスト プラクティスは、運用環境にロールアウトする前にポリシーをテストすることです。 テスト テナントを使用して、新しいポリシーが意図したとおりに機能するかどうかを確認するのが理想的です。 詳細については、「[条件付きアクセスのデプロイを計画する](plan-conditional-access.md)」を参照してください。
+
+## <a name="known-issues"></a>既知の問題
+- モバイル デバイスについてサインインの頻度を構成すると、内部でのサインインごとの認証が低速になります (平均で 30 秒かかることがあります)。 また、さまざまなアプリで同時に発生する可能性もあります。 
+- iOS デバイスでは、アプリが最初の認証要素として証明書を構成しており、アプリにサインインの頻度と [Intune モバイル アプリケーション管理](/mem/intune/apps/app-lifecycle) ポリシーの両方が適用されている場合、ポリシーがトリガーされたときエンド ユーザーがアプリにサインインできなくなります。
 
 ## <a name="next-steps"></a>次のステップ
 

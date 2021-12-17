@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 85e953951d5368dc97312e7810f3c356bda7c6b6
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 7c78580358f549913087b5d55fe7998631bfc874
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218721"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348580"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>チュートリアル: Azure Active Directory と Five9 Plus Adapter (CTI、Contact Center Agents) の統合
 
@@ -146,8 +146,8 @@ Five9 Plus Adapter (CTI、Contact Center Agents) に対して Azure AD SSO を�
 
 * Azure portal で [このアプリケーションをテストします] をクリックします。すると、SSO を設定した Five9 Plus Adapter (CTI、Contact Center Agents) に自動的にサインインします。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで Five9 Plus Adapter (CTI、Contact Center Agents) のタイルをクリックすると、SSO を設定した Five9 Plus Adapter (CTI、Contact Center Agents) に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで Five9 Plus Adapter (CTI、Contact Center Agents) のタイルをクリックすると、SSO を設定した Five9 Plus Adapter (CTI、Contact Center Agents) に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Five9 Plus Adapter (CTI、Contact Center Agents) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Five9 Plus Adapter (CTI、Contact Center Agents) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

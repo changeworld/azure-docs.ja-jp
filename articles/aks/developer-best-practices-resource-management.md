@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: 2cd2bab05346f66b933512e677f1d38f4514796c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: f45c3a0bb425b9b4d780a78bb32afa3186232b11
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105274"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467100"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でリソースを管理するアプリケーション開発者のベスト プラクティス
 
@@ -23,7 +23,6 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発して実行�
 > [!div class="checklist"]
 > * ポッド リソースの要求と制限
 > * Bridge to Kubernetes と Visual Studio Code を使用したアプリケーションの開発およびデプロイ方法。
-> * `kube-advisor` ツールを使用してデプロイに関する問題を確認する方法。
 
 ## <a name="define-pod-resource-requests-and-limits"></a>ポッドのリソースの要求と制限を定義する
 
@@ -113,18 +112,6 @@ Bridge to Kubernetes を使用するこの統合された開発とテストの�
 
     ![メモリ制限の欠落について警告する Kubernetes 用の VS Code 拡張機能](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
 
-## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>kube-advisor を使用してアプリケーション問題を定期的に確認する
-
-> **ベスト プラクティスのガイダンス** 
-> 
-> 最新バージョンの `kube-advisor` オープンソース ツールを定期的に実行して、クラスター内の問題を検出します。 既存の AKS クラスターでリソース クォータを適用する前に `kube-advisor` を実行し、リソースの要求と制限が定義されていないポッドを見つけます。
-
-[kube-advisor][kube-advisor] ツールは、Kubernetes クラスターをスキャンし、特定された問題について報告する、関連する AKS オープンソース プロジェクトです。 確認の際に、リソースの要求と制限が存在しないポッドの特定もできるため便利です。
-
-`kube-advisor` ツールを使用すると、Windows および Linux アプリケーション用の PodSpecs にないリソースの要求と制限をレポートすることができますが、`kube-advisor` 自体は Linux ポッド上でスケジュールする必要があります。 ポッドの構成で[ノード セレクター][k8s-node-selector]を使用して、特定の OS のノード プールで実行するようにポッドをスケジュールすることができます。
-
-多くの開発チームとアプリケーションをホストする AKS クラスターでは、リソースの要求と制限を使用してポッドを追跡する方が簡単です。 ベスト プラクティスとして、AKS クラスターで `kube-advisor` を定期的に実行します。
-
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、クラスター オペレーターの観点からクラスターとワークロードを実行する方法に重点を置きました。 管理のベスト プラクティスについては、[Azure Kubernetes Service (AKS) での分離とリソース管理に関するクラスター オペレーターのベスト プラクティス][operator-best-practices-isolation]に関するページを参照してください。
@@ -132,16 +119,13 @@ Bridge to Kubernetes を使用するこの統合された開発とテストの�
 これらのベスト プラクティスのいくつかを実装する場合は、次の記事を参照してください。
 
 * [Bridge to Kubernetes を使用した開発][btk]
-* [kube-advisor を使用した問題の確認][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
 [k8s-resource-limits]: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 [vscode-kubernetes]: https://github.com/Azure/vscode-kubernetes-tools
-[kube-advisor]: https://github.com/Azure/kube-advisor
 [minikube]: https://kubernetes.io/docs/setup/minikube/
 
 <!-- INTERNAL LINKS -->
-[aks-kubeadvisor]: kube-advisor-tool.md
 [btk]: /visualstudio/containers/overview-bridge-to-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas

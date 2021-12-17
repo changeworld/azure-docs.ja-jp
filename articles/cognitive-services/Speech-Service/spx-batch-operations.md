@@ -3,19 +3,19 @@ title: Speech CLI のバッチ操作 - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: Speech CLI を使用して、バッチ音声テキスト変換 (音声認識)、バッチ テキスト読み上げ (音声合成) を行う方法について説明します。
 services: cognitive-services
-author: erhopf
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 01/13/2021
-ms.author: erhopf
-ms.openlocfilehash: 60cacafc89f2335b87885e4ea11dcf8992d68c3f
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.author: eur
+ms.openlocfilehash: 1049720604ba4ba3a0be1874e0364e2e92c321e9
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540231"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505215"
 ---
 # <a name="speech-cli-batch-operations"></a>Speech CLI のバッチ操作
 

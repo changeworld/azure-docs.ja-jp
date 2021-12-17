@@ -2,18 +2,18 @@
 title: ポータルで HTTP の要求および応答ヘッダーを書き換える - Azure Application Gateway
 description: Azure portal を使用して、ゲートウェイを通過する要求と応答の HTTP ヘッダーを書き換えるように Azure Application Gateway を構成する方法について説明します
 services: application-gateway
-author: abshamsft
+author: KumudD
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.author: absha
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: a77476086d6100cbaf49d54791972940cca0644f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e077ac7c1cdae781b2a07cdcba0b89e001da87bb
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708936"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712205"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Azure Application Gateway で HTTP の要求および応答ヘッダーを書き換える - Azure portal
 
@@ -99,7 +99,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
    - **[演算子]** ボックスの一覧で、 **[等しい (=)]** を選択します。
 
-   - 正規表現パターンを入力します。 この例では、パターン `(https?)://.*azurewebsites.net(.*)$` を使用します。
+   - 正規表現パターンを入力します。 この例では、パターン `(https?):\/\/.*azurewebsites.net(.*)$` を使用します。
 
    - **[OK]** を選択します。
 
@@ -131,4 +131,4 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 ## <a name="next-steps"></a>次のステップ
 
-一般的なユース ケースの設定方法の詳細については、[共通ヘッダーの書き換えシナリオ](./rewrite-http-headers.md)に関する記事をご覧ください。
+一般的なユース ケースの設定方法の詳細については、[共通ヘッダーの書き換えシナリオ](./rewrite-http-headers-url.md)に関する記事をご覧ください。

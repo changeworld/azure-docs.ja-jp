@@ -1,22 +1,20 @@
 ---
-title: トピックとサブスクリプションにプレビューの JavaScript azure/service-bus を使用する
-description: 最新のプレビュー バージョンの @azure/service-bus パッケージを使用して Service Bus トピックにメッセージを送信したり、トピックのサブスクリプションからメッセージを受信したりする JavaScript プログラムの作成方法について説明します。
+title: Azure Service Bus トピックへのメッセージ送信とトピックのサブスクリプションからのメッセージ受信 (JavaScript)
+description: 最新のバージョンの @azure/service-bus パッケージを使用して Service Bus トピックにメッセージを送信したり、トピックのサブスクリプションからメッセージを受信したりする JavaScript プログラムの作成方法について説明します。
 author: spelluru
 ms.author: spelluru
 ms.date: 11/09/2020
 ms.topic: quickstart
 ms.devlang: nodejs
-ms.custom:
-- devx-track-js
-- mode-api
-ms.openlocfilehash: 59f1bb29099f2b921e687ca9de46365bc34f1b91
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-js, mode-api
+ms.openlocfilehash: 80401e1d5051ed324be329f17fca02cc802ce4a7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537244"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004057"
 ---
-# <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>クイックスタート: Service Bus のトピックとサブスクリプションを Node.js およびプレビューの azure/service-bus パッケージで使用する
+# <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-javascript"></a>Azure Service Bus トピックへのメッセージ送信とトピックのサブスクリプションからのメッセージ受信 (JavaScript)
 このチュートリアルでは、JavaScript プログラムの [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用して、Service Bus トピックにメッセージを送信したり、そのトピックの Service Bus サブスクリプションからメッセージを受信したりする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -208,6 +206,7 @@ Azure portal で Service Bus 名前空間に移動し、下のペインでトピ
 ## <a name="next-steps"></a>次のステップ
 次のドキュメントおよびサンプルを参照してください。 
 
-- [Python 用の Azure Service Bus クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
-- [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples)。 JavaScript のサンプルは **javascript** フォルダーに、TypeScript のサンプルは **typescript** フォルダーに格納されています。 
-- [azure-servicebus のリファレンス ドキュメント](/javascript/api/overview/azure/service-bus)
+- [JavaScript 用の Azure Service Bus クライアント ライブラリ](https://www.npmjs.com/package/@azure/service-bus)
+- [JavaScript のサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [TypeScript のサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [API リファレンス ドキュメント](/javascript/api/overview/azure/service-bus)

@@ -4,27 +4,28 @@ description: この記事では、Azure Automation テキスト エディター�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8d6b786ffaf309e147de27e8cd8be314a3d8a5fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: dfab1cb98a15bb919ac017607a56366134149764
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896988"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435436"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Azure Automation でのテキスト形式の Runbook の編集
 
-Azure Automation のテキスト エディターを使用して、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) および [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) を編集できます。 このエディターは、Intellisense などの他のコード エディターの一般的な機能を備えています。 また、Runbook に共通するリソースへのアクセスを補助するための特別な追加機能を備えた色の設定を使用します。 
+Azure Automation のテキスト エディターを使用して、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) および [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) を編集できます。 このエディターは、Intellisense などの他のコード エディターの一般的な機能を備えています。 また、Runbook に共通するリソースへのアクセスを補助するための特別な追加機能を備えた色の設定を使用します。
 
 このテキスト エディターには、コマンドレット、資産、および子 Runbook のコードを Runbook に挿入するための機能が含まれます。 コードを自分で入力する代わりに、使用可能なリソースの一覧から選択すると、エディターによって適切なコードが Runbook に挿入されます。
 
 Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバージョンがあります。 Runbook のドラフト バージョンを編集し、実行できるように発行します。 発行されたバージョンを編集することはできません。 詳細については、「[Runbook の発行](manage-runbooks.md#publish-a-runbook)」を参照してください。
 
 この記事では、このエディターのさまざまな機能を実行する詳細な手順を説明します。 これらは、[グラフィカル runbook](automation-runbook-types.md#graphical-runbooks)には適用されません。 これらの Runbook を使用する場合は、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
+
+> [!IMPORTANT] 
+> Az モジュールを使用して実行するように設計されたスクリプトには、キーワード "AzureRm" を含めないでください。 たとえコメントであっても、このキーワードを含めると、AzureRm が読み込まれ、Az モジュールと競合する可能性があります。
 
 ## <a name="edit-a-runbook-with-the-azure-portal"></a>Azure portal で Runbook を編集する
 
@@ -93,12 +94,11 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Automation で Runbook を管理する](manage-runbooks.md)。
-* [PowerShell ワークフローについての説明](automation-powershell-workflow.md)。
-* [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)。
+* 「[Azure Automation で Runbook を管理する](manage-runbooks.md)」方法を確認します。
+* PowerShell Workflow Runbook を初めて使う場合は、[PowerShell ワークフローの概要](automation-powershell-workflow.md)に関する記事を参照してください。
 * [証明書](./shared-resources/certificates.md)。
 * [接続](automation-connections.md)。
 * [資格情報](./shared-resources/credentials.md)。
 * [スケジュール](./shared-resources/schedules.md)。
 * [変数](./shared-resources/variables.md)。
-* [PowerShell コマンドレット リファレンス](/powershell/module/az.automation)。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。

@@ -1,0 +1,173 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure AD Connect
+  description: Azure Active Directory パススルー認証に関してよく寄せられる質問への回答です。
+  services: active-directory
+  keywords: Azure AD Connect Pass-through Authentication, install Active Directory, required components for Azure AD, SSO, Single Sign-on
+  documentationcenter: ''
+  author: billmath
+  manager: daveba
+  ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
+  ms.service: active-directory
+  ms.workload: identity
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: how-to
+  ms.date: 06/09/2020
+  ms.subservice: hybrid
+  ms.author: billmath
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: d37ab49865ca2556146d8e975235d50d0f432c9c
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131063293"
+title: Azure Active Directory パススルー認証:よく寄せられる質問
+summary: この記事では、Azure Active Directory (Azure AD) パススルー認証に関してよく寄せられる質問に回答します。 最新のコンテンツを常にチェックしてください。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      Azure AD へのサインイン方法として、パススルー認証、パスワード ハッシュ同期、Active Directory フェデレーション サービス (AD FS) のうちどれを選択すればよいですか。
+    answer: >
+      Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](./choose-ad-authn.md)をご覧ください。
+  - question: >
+      パススルー認証は無料の機能ですか。
+    answer: >
+      パススルー認証は、無料の機能です。 この機能を使用するために Azure AD の有料エディションは不要です。
+  - question: >
+      条件付きアクセスは、パススルー認証と連携しますか。
+    answer: >
+      はい。 Azure AD Multi-Factor Authentication を含め、すべての[条件付きアクセス](../conditional-access/overview.md)機能がパススルー認証と連携します。
+  - question: >
+      パススルー認証では、"userPrincipalName" の代わりに "Alternate ID" がユーザー名としてサポートされますか。
+    answer: >
+      はい。連絡用電子メールなどの UPN 以外の値を使用したサインインは、パススルー認証 (PTA) とパスワード ハッシュ同期 (PHS) の両方でサポートされています。 詳しくは、[代替ログイン ID](../authentication/howto-authentication-use-email-signin.md)に関するページをご覧ください。
+  - question: >
+      パスワード ハッシュ同期は、パススルー認証のフォールバックとして機能しますか。
+    answer: >
+      いいえ。 パススルー認証は、パスワード ハッシュ同期に自動的にフェールオーバー _されません_。 ユーザーのサインイン エラーを回避するには、[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)向けにパススルー認証を構成する必要があります。
+  - question: >
+      パスワード ハッシュ同期からパススルー認証に切り替えるとどうなりますか。
+    answer: >
+      Azure AD Connect を使用して、サインイン方法をパスワード ハッシュ同期からパススルー認証に切り替えると、パススルー認証がマネージド ドメイン内でのユーザーのプライマリ サインイン方法になります。 パスワード ハッシュ同期によって以前同期されていたすべてのユーザーのパスワード ハッシュは、Azure AD に格納されたままになることに注意してください。
+  - question: >
+      Azure AD アプリケーション プロキシ コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
+    answer: >
+      はい。 この構成は、パススルー認証エージェント (バージョン 1.5.193.0 以降) のブランド名変更バージョンでサポートされます。
+  - question: >
+      どのバージョンの Azure AD Connect とパススルー認証エージェントが必要ですか。
+    answer: >
+      この機能を動作させるには、Azure AD Connect については 1.1.750.0 以降、パススルー認証エージェントについては 1.5.193.0 以降が必要です。 すべてのソフトウェアを、Windows Server 2012 R2 以降が搭載されたサーバーにインストールする必要があります。
+  - question: >
+      ユーザーのパスワードの有効期限が切れている場合に、パススルー認証を使用してサインインしようとすると、どうなりますか。
+    answer: >
+      特定のユーザーに対して[パスワード ライトバック](../authentication/concept-sspr-writeback.md)を構成済みの場合、パススルー認証を使用してサインインしたユーザーは、パスワードを変更またはリセットできます。 パスワードはオンプレミス Active Directory に想定どおりに書き戻されます。
+
+
+      特定のユーザーにパスワード ライトバックが構成されていない場合、またはユーザーに有効な Azure AD ライセンスが割り当てられていない場合、ユーザーはクラウドでパスワードを更新できません。 自身のパスワードの有効期限が切れた場合でも、そのパスワードを更新することはできません。 代わりにユーザーには、"このサイトでパスワードを変更することをお客様の組織が許可していません。 組織によって推奨されている方法でパスワードを更新するか、サポートが必要な場合は管理者にお問い合わせください。" というメッセージが表示されます。 ユーザーまたは管理者は、オンプレミスの Active Directory でパスワードをリセットする必要があります。
+  - question: >
+      パススルー認証を使用することで、どのようにブルート フォース パスワード攻撃から保護できますか。
+    answer: >
+      [スマート ロックアウトに関する情報をお読みください](../authentication/howto-password-smart-lockout.md)。
+  - question: >
+      パススルー認証エージェントはポート 80 およびポート 443 で何をやり取りしますか。
+    answer: >
+      - 認証エージェントは、すべての機能操作について、ポート 443 で HTTPS 要求を行います。
+
+      - 認証エージェントは、TLS/SSL 証明書失効リスト (CRL) をダウンロードするために、ポート 80 で HTTP 要求を行います。
+
+           >[!NOTE]
+           >この機能に必要なポートの数は、最近の更新で減らされています。 以前のバージョンの Azure AD Connect または認証エージェントを使用している場合は、5671、8080、9090、9091、9350、9352、および 10100 - 10120 の各ポートも開いておいてください。
+  - question: >
+      パススルー認証エージェントは、送信 Web プロキシ サーバーで通信できますか。
+    answer: >
+      はい。 Web プロキシ自動発見 (WPAD) がオンプレミス環境で有効になっている場合、認証エージェントは、ネットワーク上の Web プロキシ サーバーを自動的に検索し、使用しようとします。
+
+
+      環境内に WPAD がない場合は、(次に示す) プロキシ情報を追加して、パススルー認証エージェントに Azure AD との通信を許可できます。
+
+      - サーバー上でパススルー認証エージェントをインストールする前に、Internet Explorer 上でプロキシ情報を構成します。 これにより、認証エージェントのインストールを完了できますが、管理者ポータルには引き続き "**非アクティブ**" として表示されます。
+
+      - サーバー上で、"C:\Program Files\Microsoft Azure AD Connect Authentication Agent" に移動します。
+
+      - "AzureADConnectAuthenticationAgentService" 構成ファイルを編集し、次の行を追加します ("http\://contosoproxy.com:8080" は実際のプロキシ アドレスに置き換えます)。
+
+
+      ```
+         <system.net>
+            <defaultProxy enabled="true" useDefaultCredentials="true">
+               <proxy
+                  usesystemdefault="true"
+                  proxyaddress="http://contosoproxy.com:8080"
+                  bypassonlocal="true"
+               />
+           </defaultProxy>
+         </system.net>
+      ```
+  - question: >
+      同じサーバーに複数のパススルー認証エージェントをインストールできますか。
+    answer: >
+      いいえ。1 つのサーバーにインストールできるパススルー認証エージェントは 1 つだけです。 高可用性向けにパススルー認証を構成する必要がある場合は、[こちらの手順に従ってください](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
+  - question: >
+      パススルー認証エージェントで使用される証明書は手動で更新する必要がありますか。
+    answer: >
+      各パススルー認証エージェントと Azure AD の間の通信は、証明書ベースの認証を使用して保護されます。 これらの[証明書は、Azure AD によって数か月ごとに自動的に更新されます](how-to-connect-pta-security-deep-dive.md#operational-security-of-the-authentication-agents)。 これらの証明書を手動で更新する必要はありません。 必要に応じて、有効期限が切れた古い証明書をクリーンアップできます。
+  - question: >
+      パススルー認証エージェントを削除するにはどうすればよいですか。
+    answer: >
+      パススルー認証エージェントが実行されている間はアクティブなままであり、ユーザーのサインイン要求を継続的に処理します。 認証エージェントをアンインストールするには、 **[コントロール パネル]、[プログラム]、[プログラムと機能]** の順に選択し、**Microsoft Azure AD Connect 認証エージェント** と **Microsoft Azure AD Connect Agent Updater** プログラムの両方をアンインストールします。
+
+
+      上記の手順を完了した後、[Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを確認すると、認証エージェントは **非アクティブ** と表示されます。 これは "_予期されること_" です。 認証エージェントは 10 日後に自動的に一覧から削除されます。
+  - question: >
+      既に AD FS を使用して、Azure AD にサインインしています。 これをパススルー認証に切り替えるには、どうすればよいですか。
+    answer: >
+      AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行する場合は、[こちら](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true)に公開されている詳細なデプロイ ガイドに従うよう強くお勧めします。
+  - question: >
+      複数フォレスト Active Directory 環境でパススルー認証を使用できますか。
+    answer: >
+      はい。 ご使用の Active Directory フォレスト間にフォレストの信頼 (双方向) があり、名前サフィックス ルーティングが正しく構成されていれば、複数フォレスト環境がサポートされます。
+  - question: >
+      パススルー認証では、複数の認証エージェント間の負荷分散を提供しますか。
+    answer: >
+      いいえ。複数のパススルー認証エージェントをインストールすることで[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)のみが確保されます。 認証エージェント間の確定的な負荷分散は提供されません。 任意の認証エージェント (ランダム) が特定のユーザーのサインイン要求を処理できます。
+  - question: >
+      いくつのパススルー認証エージェントをインストールする必要がありますか。
+    answer: >
+      複数のパススルー認証エージェントをインストールすることで[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)が確保されます。 ただし認証エージェント間の確定的な負荷分散は提供されません。
+
+
+      テナント上で想定されるサインイン要求のピーク時の負荷および平均的な負荷を検討してください。 ベンチマークとして、1 つの認証エージェントでは、標準的な 4 コア CPU、16 GB RAM サーバー上で 1 秒あたり 300 - 400 の認証を処理できます。
+
+
+      ネットワーク トラフィックを見積もるには、サイズ設定に関する次のガイダンスに従ってください。
+
+      - 各要求のペイロード サイズは、(0.5K + 1K * num_of_agents) バイトで、これは Azure AD から認証エージェントへのデータ量に相当します。 ここで "num_of_agents" は、テナントに登録されている認証エージェントの数を示します。
+
+      - 各応答のペイロード サイズは 1K バイトで、これは認証エージェントから Azure AD へのデータ量に相当します。
+
+
+      ほとんどのお客様の場合、高可用性と大容量を確保するには、合計 2 つまたは 3 つの認証エージェントがあれば十分です。 サインインの待機時間を向上させるために、認証エージェントは、ドメイン コントローラーの近くにインストールする必要があります。
+
+
+      >[!NOTE]
+
+      >認証エージェントの数は、テナントあたり 40 個に制限されています。
+  - question: >
+      パススルー認証を有効にするためにクラウド専用のグローバル管理者アカウントが必要なのはなぜですか。
+    answer: >
+      クラウド専用のグローバル管理者アカウントを使用してパススルー認証を有効または無効にすることが推奨されます。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../fundamentals/add-users-azure-active-directory.md)をご覧ください。 このようにすることで、テナントからロックアウトされないようになります。
+  - question: >
+      パススルー認証を無効にするには、どうすればよいですか。
+    answer: >
+      Azure AD Connect ウィザードを再実行し、ユーザーのサインイン方法を、パススルー認証から別の方法に変更します。 この変更により、テナントのパススルー認証が無効になり、認証エージェントがサーバーからアンインストールされます。 他のサーバーからは、手動で認証エージェントをアンインストールする必要があります。
+  - question: >
+      パススルー認証エージェントをアンインストールすると、どうなりますか。
+    answer: >
+      サーバーからパススルー認証エージェントをアンインストールすると、そのサーバーでサインイン要求の受け入れが停止します。 テナントでユーザーのサインインが中断しないようにするには、パススルー認証エージェントをアンインストールする前に、別の認証エージェントが実行されていることを確認します。
+  - question: >
+      AD FS を使用してセットアップした古いテナントがあります。  最近 PTA に移行しましたが、UPN の変更点が Azure AD に同期されていません。  UPN の変更点はなぜ同期されていないのでしょうか。
+    answer: "A:次の状況においては、オンプレミスの UPN の変更点が同期されない場合があります。\n\n- Azure AD テナントが 2015 年 6 月 15 日よりも前に作成された\n- 最初に認証に AD FS を使用して、Azure AD テナントとフェデレーションした\n- 管理対象ユーザーに認証として PTA を使用させるように切り替えた\n\nこれは、2015 年 6 月 15 日よりも前に作成されたテナントの既定の動作が UPN の変更点のブロックであるためです。  UPN の変更点のブロックを解除する必要がある場合は、次の PowerShell コマンドレットを実行する必要があります。  \n\n`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $True`\n\n2015 年 6 月 15 日以降に作成されたテナントでは、UPN の変更点を同期するのが既定の動作です。   \n"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n- [現時点での制限事項](how-to-connect-pta-current-limitations.md):サポートされているシナリオと、サポートされていないシナリオを確認します。\n- [クイック スタート](how-to-connect-pta-quick-start.md): Azure AD パススルー認証を起動および実行します。\n- [AD FS からパススルー認証への移行](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。\n- [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにご利用のテナント上でスマート ロックアウト機能を構成する方法について説明します。\n- [技術的な詳細](how-to-connect-pta-how-it-works.md): パススルー認証機能のしくみについて説明します。\n- [トラブルシューティング](tshoot-connect-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法について説明します。\n- [セキュリティの詳細](how-to-connect-pta-security-deep-dive.md): パススルー認証機能に関する詳細な技術情報を取得します。\n- [Azure AD シームレス SSO](how-to-connect-sso.md): この補完的な機能の詳細について説明します。\n- [UserVoice](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789): Azure Active Directory フォーラムを使用して、新しい機能の要求を行います。"

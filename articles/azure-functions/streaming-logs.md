@@ -1,15 +1,15 @@
 ---
 title: Azure Functions で実行ログをストリーミングする
-description: スペースを含めて 115 - 145 文字。 この要約は、検索結果に表示されます。
+description: ほぼリアルタイムで関数のログをストリーミングする方法について説明します。
 ms.date: 9/1/2020
 ms.topic: how-to
-ms.custom: contperf-fy21q2, devx-track-azurecli
-ms.openlocfilehash: 085849386fce929ceaec4536844cf31b94fe7539
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q2, devx-track-azurepowershell
+ms.openlocfilehash: 6073654abbcd8a157f7552e21d1e74ee4f535684
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97033053"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245078"
 ---
 # <a name="enable-streaming-execution-logs-in-azure-functions"></a>Azure Functions で実行ログのストリーミングを有効にする
 
@@ -39,7 +39,7 @@ ms.locfileid: "97033053"
 
 ### <a name="live-metrics-stream"></a>ライブ メトリック ストリーム
 
-アプリの Live Metrics Stream を表示するには、関数アプリの **[概要]** タブを選択します。 Application Insights 有効にすると、 **[構成済みの機能]** の下に **[Application Insights]** リンクが表示されます。 このリンクをクリックすると、アプリの Application Insights ページに移動します。
+アプリの Live Metrics Stream を表示するには、関数アプリの **[概要]** タブを選択します。 Application Insights を有効にすると、 **[Configured features]\(設定済みの機能\)** に **[Application Insights]** リンクが表示されます。 このリンクをクリックすると、アプリの Application Insights ページに移動します。
 
 Application Insights で、 **[Live Metrics Stream]** を選択します。 [サンプリングされたログ エントリ](configure-monitoring.md#configure-sampling)が、 **[Sample Telemetry]\(サンプル テレメトリ\)** の下に表示されます。
 

@@ -10,16 +10,16 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: ca4fe1410c18357a1fab10cc9c971cf3a81542fd
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: b2a5a0f6f97d402c55cd47293ea668284e77363e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963259"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593137"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>クエリ アクセラレーション SQL 言語リファレンス
 
-クエリ アクセラレーションでは、BLOB コンテンツに対するクエリを表現するための ANSI SQL に似た言語をサポートしています。  クエリ アクセラレーション SQL 言語は ANSI SQL のサブセットであり、サポートされるデータ型、演算子などのセットは限定されていますが、JSON などの階層型の半構造化データ形式に対するクエリをサポートするために、ANSI SQL を拡張している部分もあります。 
+クエリ アクセラレーションでは、BLOB コンテンツに対するクエリを表現するための ANSI SQL に似た言語をサポートしています。 クエリ アクセラレーション SQL 言語は ANSI SQL のサブセットであり、サポートされるデータ型、演算子などのセットは限定されていますが、JSON などの階層型の半構造化データ形式に対するクエリをサポートするために、ANSI SQL を拡張している部分もあります。
 
 ## <a name="select-syntax"></a>SELECT 構文
 
@@ -29,23 +29,26 @@ ms.locfileid: "105963259"
 SELECT * FROM table [WHERE expression] [LIMIT limit]
 ```
 
-CSV 形式のデータの場合、*table* が `BlobStorage` である必要があります。  つまり、REST 呼び出しで指定されたどの BLOB に対してもクエリが実行されます。
-JSON 形式のデータの場合、*table* は "テーブル記述子" です。   この記事の「[テーブル記述子](#table-descriptors)」セクションを参照してください。
+CSV 形式のデータの場合、*table* が `BlobStorage` である必要があります。 つまり、REST 呼び出しで指定されたどの BLOB に対してもクエリが実行されます。 JSON 形式のデータの場合、*table* は "テーブル記述子" です。   この記事の「[テーブル記述子](#table-descriptors)」セクションを参照してください。
 
 次の例では、WHERE *expression* によって true が返される行ごとに、このステートメントが各プロジェクション式の評価によって作成される新しい行を返します。
 
-
 ```sql
-SELECT expression [, expression …] FROM table [WHERE expression] [LIMIT limit]
+SELECT expression [, expression ...] FROM table [WHERE expression] [LIMIT limit]
 ```
 
-次の例では、*expression* によって true が返される行それぞれでの集計計算 (例: 特定の列の平均値) が返されます。 
+SELECT 式の一部として、1 つまたは複数の特定の列を指定することができます (例: `SELECT Title, Author, ISBN`)。
+
+> [!NOTE]
+> SELECT 式で使用できる特定の列の最大数は 49 です。 SELECT 式で 49 を超える列を返す必要がある場合は、SELECT 式にワイルドカード文字 (`*`) を使用します (例: `SELECT *`)。
+
+次の例では、*expression* によって true が返される行それぞれでの集計計算 (例: 特定の列の平均値) が返されます。
 
 ```sql
 SELECT aggregate_expression FROM table [WHERE expression] [LIMIT limit]
 ```
 
-次の例では、CSV 形式の BLOB の分割に適切なオフセットが返されます。  この記事の「[Sys.Split](#sys-split)」セクションを参照してください。
+次の例では、CSV 形式の BLOB の分割に適切なオフセットが返されます。 この記事の「[Sys.Split](#sys-split)」セクションを参照してください。
 
 ```sql
 SELECT sys.split(split_size)FROM BlobStorage
@@ -63,15 +66,15 @@ SELECT sys.split(split_size)FROM BlobStorage
 |timestamp|特定の時点。                           |
 |BOOLEAN  |true または false                             |
 
-CSV 形式のデータから値を読み取ると、すべての値が文字列として読み取られます。  文字列値は、キャスト式を使用して他の型に変換される場合があります。  値は、コンテキストに応じて、暗黙的に他の型にキャストされる場合があります。 詳細については、「[データ型の優先順位 (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql)」を参照してください。
+CSV 形式のデータから値を読み取ると、すべての値が文字列として読み取られます。 文字列値は、キャスト式を使用して他の型に変換される場合があります。 値は、コンテキストに応じて、暗黙的に他の型にキャストされる場合があります。 詳細については、「[データ型の優先順位 (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql)」を参照してください。
 
 ## <a name="expressions"></a>式
 
 ### <a name="referencing-fields"></a>フィールドの参照
 
-JSON 形式のデータ、またはヘッダー行を含む CSV 形式のデータの場合は、フィールドは名前で参照できます。  フィールド名は、引用符で囲んでも囲まなくてもかまいません。 フィールド名を引用符で囲む場合は、二重引用符 (") で囲み、スペースを含めることができます。また、大文字と小文字が区別されます。  フィールド名を引用符で囲まない場合は、大文字と小文字が区別されず、特殊文字を含めることもできません。
+JSON 形式のデータ、またはヘッダー行を含む CSV 形式のデータの場合は、フィールドは名前で参照できます。 フィールド名は、引用符で囲んでも囲まなくてもかまいません。 フィールド名を引用符で囲む場合は、二重引用符 (`"`) で囲み、スペースを含めることができます。また、大文字と小文字が区別されます。 フィールド名を引用符で囲まない場合は、大文字と小文字が区別されず、特殊文字を含めることもできません。
 
-また、CSV 形式のデータでは、アンダースコア (_) 文字を先頭に付けた序数によってフィールドを参照することもできます。  たとえば、最初のフィールドは _1 として参照し、11 番目のフィールドは _11 として参照することができます。  序数によるフィールドの参照は、ヘッダー行を含まない CSV 形式のデータに役立ちます。この場合、特定のフィールドを参照する唯一の方法は、序数によるものです。
+また、CSV 形式のデータでは、アンダースコア (`_`) 文字を先頭に付けた序数によってフィールドを参照することもできます。 たとえば、最初のフィールドは `_1` として参照し、11 番目のフィールドは `_11` として参照することができます。 序数によるフィールドの参照は、ヘッダー行を含まない CSV 形式のデータに役立ちます。この場合、特定のフィールドを参照する唯一の方法は、序数によるものです。
 
 ### <a name="operators"></a>オペレーター
 
@@ -79,36 +82,36 @@ JSON 形式のデータ、またはヘッダー行を含む CSV 形式のデー�
 
 |演算子|説明|
 |--|--|
-|[=](/sql/t-sql/language-elements/equals-transact-sql)    |2 つの式の等価性を比較します (比較演算子)。|
-|[!=](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |一方の式がもう一方の式と等しくないかどうかをテストします (比較演算子)。|
-|[<>](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |2 つの式を比較して "等しくない" かどうかを判定します (比較演算子)。|
-|[<](/sql/t-sql/language-elements/less-than-transact-sql)    |2 つの式を比較して "より小さい" かどうかを判定します (比較演算子)。|
-|[<=](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |2 つの式を比較して "以下" であるかどうかを判定します (比較演算子)。|
-|[>](/sql/t-sql/language-elements/greater-than-transact-sql)    |2 つの式を比較して "より大きい" かどうかを判定します (比較演算子)。 |
-|[>=](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |2 つの式を比較して "以上" であるかどうかを判定します (比較演算子)。|
-|[+](/sql/t-sql/language-elements/add-transact-sql)    |2 つの値を加算します。 この加算算術演算子を使用して、日付に日数を加算することもできます。|
-|[-](/sql/t-sql/language-elements/subtract-transact-sql)    |2 つの値で減算を行います (算術減算演算子)。 |
-|[/](/sql/t-sql/language-elements/divide-transact-sql)    |1 つの値を別の値で除算します (算術除算演算子)。|
-|[*](/sql/t-sql/language-elements/multiply-transact-sql)    |2 つの式を乗算します (算術乗算演算子)。|
-|[%](/sql/t-sql/language-elements/modulo-transact-sql)    |ある値を別の値で除算した結果の余りを返します。|
-|[AND](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |2 つの整数値の間でビットごとの論理積演算を実行します。|
-|[OR](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Transact-SQL ステートメントの中で、バイナリ式に変換された 2 つの指定される整数値に対して、ビットごとの論理和演算を実行します。|
-|[NOT](/sql/t-sql/language-elements/not-transact-sql)    |ブール値を否定します。|
-|[CAST](/sql/t-sql/functions/cast-and-convert-transact-sql)    |あるデータ型の式を別のデータ型に変換します。|
-|[BETWEEN](/sql/t-sql/language-elements/between-transact-sql)    |テスト範囲を指定します。|
-|[IN](/sql/t-sql/language-elements/in-transact-sql)    |指定された値が、サブクエリまたは一覧内の値と一致するかどうかを判断します。|
-|[NULLIF](/sql/t-sql/language-elements/nullif-transact-sql)    |指定された 2 つの式が等しい場合に NULL 値を返します。|
-|[COALESCE](/sql/t-sql/language-elements/coalesce-transact-sql)    |引数を順番に評価し、NULL と評価されない最初の式の現在の値を返します。|
+|[`=`](/sql/t-sql/language-elements/equals-transact-sql)    |2 つの式の等価性を比較します (比較演算子)。|
+|[`!=`](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |一方の式がもう一方の式と等しくないかどうかをテストします (比較演算子)。|
+|[`<>`](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |2 つの式を比較して "等しくない" かどうかを判定します (比較演算子)。|
+|[`<`](/sql/t-sql/language-elements/less-than-transact-sql)    |2 つの式を比較して "より小さい" かどうかを判定します (比較演算子)。|
+|[`<=`](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |2 つの式を比較して "以下" であるかどうかを判定します (比較演算子)。|
+|[`>`](/sql/t-sql/language-elements/greater-than-transact-sql)    |2 つの式を比較して "より大きい" かどうかを判定します (比較演算子)。 |
+|[`>=`](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |2 つの式を比較して "以上" であるかどうかを判定します (比較演算子)。|
+|[`+`](/sql/t-sql/language-elements/add-transact-sql)    |2 つの値を加算します。 この加算算術演算子を使用して、日付に日数を加算することもできます。|
+|[`-`](/sql/t-sql/language-elements/subtract-transact-sql)    |2 つの値で減算を行います (算術減算演算子)。 |
+|[`/`](/sql/t-sql/language-elements/divide-transact-sql)    |1 つの値を別の値で除算します (算術除算演算子)。|
+|[`*`](/sql/t-sql/language-elements/multiply-transact-sql)    |2 つの式を乗算します (算術乗算演算子)。|
+|[`%`](/sql/t-sql/language-elements/modulo-transact-sql)    |ある値を別の値で除算した結果の余りを返します。|
+|[`AND`](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |2 つの整数値の間でビットごとの論理積演算を実行します。|
+|[`OR`](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Transact-SQL ステートメントの中で、バイナリ式に変換された 2 つの指定される整数値に対して、ビットごとの論理和演算を実行します。|
+|[`NOT`](/sql/t-sql/language-elements/not-transact-sql)    |ブール値を否定します。|
+|[`CAST`](/sql/t-sql/functions/cast-and-convert-transact-sql)    |あるデータ型の式を別のデータ型に変換します。|
+|[`BETWEEN`](/sql/t-sql/language-elements/between-transact-sql)    |テスト範囲を指定します。|
+|[`IN`](/sql/t-sql/language-elements/in-transact-sql)    |指定された値が、サブクエリまたは一覧内の値と一致するかどうかを判断します。|
+|[`NULLIF`](/sql/t-sql/language-elements/nullif-transact-sql)    |指定された 2 つの式が等しい場合に NULL 値を返します。|
+|[`COALESCE`](/sql/t-sql/language-elements/coalesce-transact-sql)    |引数を順番に評価し、NULL と評価されない最初の式の現在の値を返します。|
 
 演算子の左右のデータ型が異なる場合は、こちらで指定されている規則に従って自動変換が実行されます: 「[データ型の優先順位 (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql)」。
 
-クエリ アクセラレーション SQL 言語では、その記事で説明されているデータ型のごく一部のみがサポートされています。  この記事の「[データ型](#data-types)」セクションを参照してください。
+クエリ アクセラレーション SQL 言語では、その記事で説明されているデータ型のごく一部のみがサポートされています。 この記事の「[データ型](#data-types)」セクションを参照してください。
 
 ### <a name="casts"></a>キャスト
 
-クエリ アクセラレーション SQL 言語では、こちらの規則に従って CAST 演算子がサポートされています: 「[データ型の変換 (データベース エンジン)](/sql/t-sql/data-types/data-type-conversion-database-engine)」。  
+クエリ アクセラレーション SQL 言語では、こちらの規則に従って CAST 演算子がサポートされています: 「[データ型の変換 (データベース エンジン)](/sql/t-sql/data-types/data-type-conversion-database-engine)」。
 
-クエリ アクセラレーション SQL 言語では、その記事で説明されているデータ型の一部のみがサポートされています。  この記事の「[データ型](#data-types)」セクションを参照してください。
+クエリ アクセラレーション SQL 言語では、その記事で説明されているデータ型の一部のみがサポートされています。 この記事の「[データ型](#data-types)」セクションを参照してください。
 
 ### <a name="string-functions"></a>文字列関数
 
@@ -140,22 +143,28 @@ JSON 形式のデータ、またはヘッダー行を含む CSV 形式のデー�
 
 次の標準の SQL 日付関数がサポートされています。
 
-``DATE_ADD``, ``DATE_DIFF``, ``EXTRACT``, ``TO_STRING``, ``TO_TIMESTAMP``.
+- `DATE_ADD`
+- `DATE_DIFF`
+- `EXTRACT`
+- `TO_STRING`
+- `TO_TIMESTAMP`
 
-現在、[標準 IS08601 の日付形式](https://www.w3.org/TR/NOTE-datetime)はすべて変換されます。 
+現在、[標準 IS08601 の日付形式](https://www.w3.org/TR/NOTE-datetime)はすべて変換されます。
 
 #### <a name="date_add-function"></a>DATE_ADD 関数
 
-クエリ アクセラレーション SQL 言語では、``DATE_ADD`` 関数で年、月、日、時間、分、秒をサポートしています。
+クエリ アクセラレーション SQL 言語では、`DATE_ADD` 関数で年、月、日、時間、分、秒をサポートしています。
 
 例 :
 
-``sql DATE_ADD(datepart, quantity, timestamp) DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
+```sql
+DATE_ADD(datepart, quantity, timestamp)
+DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
 ```
 
-#### DATE_DIFF function
+#### <a name="date_diff-function"></a>DATE_DIFF 関数
 
-The query acceleration SQL language supports year, month, day, hour, minute, second for the ``DATE_DIFF`` function.
+クエリ アクセラレーション SQL 言語では、`DATE_DIFF` 関数で年、月、日、時間、分、秒をサポートしています。
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -164,7 +173,7 @@ DATE_DIFF('hour','2018-11-09T00:00+05:30','2018-11-09T01:00:23-08:00')
 
 #### <a name="extract-function"></a>EXTRACT 関数
 
-``DATE_ADD`` 関数でサポートされている日付部分以外の EXTRACT の場合、クエリ アクセラレーション SQL 言語では、日付部分として timezone_hour と timezone_minute をサポートしています。
+`DATE_ADD` 関数でサポートされている日付部分以外の EXTRACT の場合、クエリ アクセラレーション SQL 言語では、日付部分として timezone_hour と timezone_minute をサポートしています。
 
 例 :
 
@@ -182,16 +191,16 @@ TO_STRING(TimeStamp , format)
 TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 ```
 
-次の表では、``TO_STRING`` 関数の出力形式を指定するために使用できる文字列について説明します。
+次の表では、`TO_STRING` 関数の出力形式を指定するために使用できる文字列について説明します。
 
 |[書式設定文字列]    |出力                               |
 |-----------------|-------------------------------------|
 |yy               |2 桁形式の年 - 1999 であれば "99"|
 |y                |4 桁形式の年               |
 |yyyy             |4 桁形式の年               |
-|M                |年の月 - 1                    |
-|mm               |0 を埋め込んだ月 – 01               |
-|MMM              |省略形。 年の月 - JAN            |
+|M                |月 - 1                    |
+|mm               |0 を付け加えた月 – 01               |
+|MMM              |省略形。 月 - JAN            |
 |MMMM             |正式な月名 - May                      |
 |d                |月の日 (1 から 31)                  |
 |dd               |0 を埋め込んだ月の日 (01 から 31)     |
@@ -226,31 +235,30 @@ TO_TIMESTAMP('2007T')
 ```
 
 > [!NOTE]
-> ``UTCNOW`` 関数を使用して、システム時刻を取得することもできます。
-
+> `UTCNOW` 関数を使用して、システム時刻を取得することもできます。
 
 ## <a name="aggregate-expressions"></a>集計式
 
-SELECT ステートメントには、1 つ以上のプロジェクション式または 1 つの集計式を含めることができます。  次の集計式がサポートされています。
+SELECT ステートメントには、1 つ以上のプロジェクション式または 1 つの集計式を含めることができます。 次の集計式がサポートされています。
 
 |式|説明|
 |--|--|
-|[COUNT(\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |述語式と一致したレコードの数を返します。|
-|[COUNT(expression)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |式が null 以外のレコードの数を返します。|
-|[AVERAGE(expression)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql)    |式の null 以外の値の平均を返します。|
-|[MIN(expression)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql)    |式の null 以外の最小値を返します。|
-|[MAX(expression)](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql)    |式の null 以外の最大値を返します。|
-|[SUM(expression)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql)    |式の null 以外のすべての値の合計を返します。|
+|[COUNT(\*)](/sql/t-sql/functions/count-transact-sql)    |述語式と一致したレコードの数を返します。|
+|[COUNT(expression)](/sql/t-sql/functions/count-transact-sql)    |式が null 以外のレコードの数を返します。|
+|[AVERAGE(expression)](/sql/t-sql/functions/avg-transact-sql)    |式の null 以外の値の平均を返します。|
+|[MIN(expression)](/sql/t-sql/functions/min-transact-sql)    |式の null 以外の最小値を返します。|
+|[MAX(expression)](/sql/t-sql/functions/max-transact-sql)    |式の null 以外の最大値を返します。|
+|[SUM(expression)](/sql/t-sql/functions/sum-transact-sql)    |式の null 以外のすべての値の合計を返します。|
 
 ### <a name="missing"></a>MISSING
 
-``IS MISSING`` 演算子は、クエリ アクセラレーション SQL 言語でサポートされる唯一の非標準の演算子です。  JSON データでは、特定の入力レコードにフィールドがない場合、``IS MISSING`` 式フィールドはブール値 true に評価されます。
+`IS MISSING` 演算子は、クエリ アクセラレーション SQL 言語でサポートされる唯一の非標準の演算子です。 JSON データでは、特定の入力レコードにフィールドがない場合、`IS MISSING` 式フィールドはブール値 true に評価されます。
 
 <a id="table-descriptors"></a>
 
 ## <a name="table-descriptors"></a>テーブル記述子
 
-CSV データの場合、テーブル名は常に `BlobStorage` です。  次に例を示します。
+CSV データの場合、テーブル名は常に `BlobStorage` です。 次に例を示します。
 
 ```sql
 SELECT * FROM BlobStorage
@@ -324,16 +332,16 @@ SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 これは特殊な形式の SELECT ステートメントであり、CSV 形式のデータに対してのみ使用できます。
 
 ```sql
-SELECT sys.split(split_size)FROM BlobStorage
+SELECT sys.split(split_size) FROM BlobStorage
 ```
 
-このステートメントを使用するのは、CSV データ レコードを数回に分けてダウンロードして処理する場合です。 そうすることで、一度にすべてのレコードをダウンロードするのではなく、レコードを並列処理できます。 このステートメントでは、CSV ファイルのレコードが返されません。 代わりに、バッチ サイズのコレクションが返されます。 その後、各バッチ サイズを使用して、データ レコードのバッチを取得できます。 
+このステートメントを使用するのは、CSV データ レコードを数回に分けてダウンロードして処理する場合です。 そうすることで、一度にすべてのレコードをダウンロードするのではなく、レコードを並列処理できます。 このステートメントでは、CSV ファイルのレコードが返されません。 代わりに、バッチ サイズのコレクションが返されます。 その後、各バッチ サイズを使用して、データ レコードのバッチを取得できます。
 
-各バッチに含めるバイト数を指定するには、*split_size* パラメーターを使用します。 たとえば、一度に 10 MB のデータのみを処理する場合、ステートメントは `SELECT sys.split(10485760)FROM BlobStorage` のようになります。これは、10 MB が 10,485,760 バイトであるためです。 各バッチには、10 MB に収まる数だけのレコードが含まれます。 
+各バッチに含めるバイト数を指定するには、*split_size* パラメーターを使用します。 たとえば、一度に 10 MB のデータのみを処理する場合、ステートメントは `SELECT sys.split(10485760)FROM BlobStorage` のようになります。これは、10 MB が 10,485,760 バイトであるためです。 各バッチには、10 MB に収まる数だけのレコードが含まれます。
 
 ほとんどの場合、各バッチのサイズは、指定した数よりも若干大きくなります。 これは、バッチに部分的なレコードを含めることができないためです。 しきい値の終わりになる前にバッチ内の最後のレコードが開始されると、レコード全体を含めることができるようにバッチが大きくなります。 最後のバッチのサイズは、通常、指定したサイズよりも小さくなる可能性があります。
 
->[!NOTE]
+> [!NOTE]
 > split_size は、少なくとも 10 MB (10,485,760) である必要があります。
 
 ## <a name="see-also"></a>関連項目

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 01/19/2020
-ms.openlocfilehash: cfe365af868f01b868e737a409724e92f1d57f81
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 09/27/2021
+ms.openlocfilehash: 8866a00c6905ee046ce52177ca6f01874de62548
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106991"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081949"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>パートナー センターでのコマーシャル マーケットプレース プログラムのサポート
 
@@ -23,6 +23,42 @@ ms.locfileid: "107106991"
 - あなたが発行元であり、ご自分のアプリやサービスに関する質問がある場合は、次のサポート オプションを確認してください。
 
 ## <a name="get-help-or-open-a-support-ticket"></a>ヘルプを使用する、またはサポート チケットを開く
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. 職場アカウントを使用して[パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。 (まだ[パートナー センター アカウントを作成](create-account.md)していない場合は、作成する必要があります)。
+
+1. ホーム ページで、 **[ヘルプとサポート]** タイルを選択します。
+
+     [ ![パートナー センターのホーム ページを示しています。[ヘルプとサポート] タイルが強調表示されています。](./media/workspaces/partner-center-help-support-tile.png) ](./media/workspaces/partner-center-help-support-tile.png#lightbox)
+
+1. **[My support requests]\(サポート リクエスト\)** の下で、 **[+ 新しいサポート リクエスト]** を選択します。
+
+1. **[Problem summary]\(問題の概要\)** ボックスに、問題の簡単な説明を入力します。
+
+1. **[問題の種類]** ボックスで、次のいずれかの操作を行います。
+
+    - **オプション 1**:次のようなキーワードを入力します。Marketplace、Azure アプリ、SaaS オファー、アカウント管理、見込み客管理、デプロイの問題、支払い、共同販売オファーの移行など。 次に、表示される推奨リストから問題の種類を選択します。
+
+    - **オプション 2**: **[カテゴリ]** の一覧から **[トピックの参照]** を選択し、 **[Commercial Marketplace]\(コマーシャル マーケットプレース\)** を選択します。 次に、適切な **トピック** と **サブトピック** を選択します。
+
+1. 目的のトピックを見つけた後、 **[ソリューションの確認]** を選択します。
+
+    ![次のステップ](./media/support/next-step.png)
+
+次のオプションが表示されます。
+
+- 別のトピックを選択するには、 **[Select a different issue]\(別の問題を選択する\)** をクリックします。
+- 問題の解決に役立てるために、推奨される手順とドキュメントがあれば確認します。
+
+    [ ![推奨されるソリューションのページを示しています。](./media/support/recommended-solutions.png) ](./media/support/recommended-solutions.png#lightbox)
+
+セルフ ヘルプで回答が見つからない場合は、 **[問題の詳細を指定]** を選択します。 解決プロセスを高速化するためにすべての必須フィールドに入力して、 **[送信]** を選択します。
+
+>[!Note]
+>パートナー センターにサインインしていない場合は、チケットを作成する前にサインインが必要になることがあります。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
 
 1. 職場アカウントでサインインします。 (まだ[パートナー センター アカウントを作成](create-account.md)していない場合は、作成する必要があります)。
 
@@ -56,9 +92,23 @@ ms.locfileid: "107106991"
 >[!Note]
 >パートナー センターにサインインしていない場合は、チケットを作成する前にサインインが必要になることがあります。
 
+---
+
 ## <a name="track-your-existing-support-requests"></a>既存のサポート リクエストを追跡する
 
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. 未処理と処理済みのチケットを確認するには、職場アカウントで [[パートナー センター]](https://partner.microsoft.com/dashboard/home) にサインインします。
+
+1. ホーム ページで、 **[ヘルプとサポート]** タイルを選択します。
+
+    [ ![パートナー センターのホーム ページを示しています。[ヘルプとサポート] タイルが強調表示されています。](./media/workspaces/partner-center-help-support-tile.png) ](./media/workspaces/partner-center-help-support-tile.png#lightbox)
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
 オープン状態とクローズ状態のチケットを確認するには、左側のナビゲーション メニューで、 **[Commercial Marketplace]\(コマーシャル マーケットプレース\)**  >  **[サポート]** を選択します。
+
+---
 
 ## <a name="record-issue-details-with-a-har-file"></a>HAR ファイルに問題の詳細を記録する
 
@@ -72,19 +122,19 @@ ms.locfileid: "107106991"
 **Microsoft Edge** または **Google Chrome** を使用して HAR ファイルを生成するには:
 
 1. 問題が発生している Web ページに移動します。
-2. ウィンドウの右上隅にある省略記号アイコンを選択し、 **[その他のツール]**  >  **[開発者ツール]** を選択します。 ショートカットとして F12 キーを押す方法もあります。
-3. [開発者ツール] ペインで、 **[ネットワーク]** タブを選択します。
-4. **[Stop recording network log]\(ネットワーク ログの記録を停止する\)** と **[クリア]** を選択して既存のログを削除します。 [記録] アイコンは灰色に変わります。
+1. ウィンドウの右上隅にある省略記号アイコンを選択し、 **[その他のツール]**  >  **[開発者ツール]** を選択します。 ショートカットとして F12 キーを押す方法もあります。
+1. [開発者ツール] ペインで、 **[ネットワーク]** タブを選択します。
+1. **[Stop recording network log]\(ネットワーク ログの記録を停止する\)** と **[クリア]** を選択して既存のログを削除します。 [記録] アイコンは灰色に変わります。
 
     ![Microsoft Edge または Google Chrome で既存のログを削除する方法](media/support/chromium-stop-clear-session.png)
 
-5. **[Record network log]\(ネットワーク ログの記録\)** を選択して記録を開始します。 記録を開始すると、[記録] アイコンが赤に変わります。
+1. **[Record network log]\(ネットワーク ログの記録\)** を選択して記録を開始します。 記録を開始すると、[記録] アイコンが赤に変わります。
 
     ![Microsoft Edge または Google Chrome で記録を開始する方法](media/support/chromium-start-session.png)
 
-6. トラブルシューティングする問題を再現します。
-7. 問題を再現したら、 **[Stop recording network log]\(ネットワーク ログの記録を停止する\)** を選択します。
-8. 下向き矢印アイコンが付いた **[Export HAR]\(HAR のエクスポート\)** を選択し、ファイルを保存します。
+1. トラブルシューティングする問題を再現します。
+1. 問題を再現したら、 **[Stop recording network log]\(ネットワーク ログの記録を停止する\)** を選択します。
+1. 下向き矢印アイコンが付いた **[Export HAR]\(HAR のエクスポート\)** を選択し、ファイルを保存します。
 
     ![Microsoft Edge または Google Chrome で HAR ファイルをエクスポートする方法](media/support/chromium-network-export-har.png)
 
@@ -121,4 +171,4 @@ ms.locfileid: "107106991"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [商業マーケットプレースで既存のオファーを更新する](partner-center-portal/update-existing-offer.md)
+- [商業マーケットプレースで既存のオファーを更新する](update-existing-offer.md)

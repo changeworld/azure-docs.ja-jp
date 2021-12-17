@@ -5,29 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 04/12/2021
+ms.date: 10/21/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
-ms.reviewer: mal
-ms.custom:
-- it-pro
-- seo-update-azuread-jan"
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c38bab420618b04f8153a123ce9b988215c40e8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e6220a68583ecaaba061dde0ccd2de639d055631
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304496"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067149"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B コラボレーションのトラブルシューティング
 
 以下に、Azure Active Directory (Azure AD) B2B コラボレーションの一般的な問題のいくつかの対処方法を示します。
 
    > [!IMPORTANT]
-   > - **2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
-   > - **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
+   >
+   > - **2021 年 7 月 12 日以降**、Azure AD B2B のお客様が、カスタムまたは基幹業務アプリケーションのセルフサービス サインアップで使用するために新しい Google の統合をセットアップした場合、認証がシステム Web ビューに移動されるまで、Google ID を使用した認証が機能しなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   > - **2021 年の 9 月 30 日より**、Google は [埋め込みの Web ビューのサインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 アプリで埋め込み Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B [(外部ユーザーの招待用)](google-federation.md)、または[セルフサービス サインアップ](identity-providers.md)で使用している場合、Google Gmail ユーザーが認証されなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   > - **2021 年 11 月 1 日以降**、既存のすべてのテナントに対して電子メールのワンタイム パスコード機能をオンにし、新しいテナントに対して既定で有効にするように、変更の展開を開始します。 この変更の一環として、B2B コラボレーションの招待の利用時に、Microsoft は、管理されていない (「ウイルス」」) Azure AD の新しいアカウントとテナントの作成を停止します。 休日およびデプロイ lockdowns の中断を最小限に抑えるために、テナントの大部分には2022年1月にリリースされた変更が表示されます。 電子メール ワンタイム パスコード機能を有効にするのは、これによりゲスト ユーザーにシームレスなフォールバック認証方法が提供されるからです。 ただし、この機能が自動的に有効にならないようにする場合は、 [無効](one-time-passcode.md#disable-email-one-time-passcode)にすることができます。
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>外部ユーザーを追加しましたが、グローバル アドレス帳またはユーザー選択ウィンドウに表示されません
 
@@ -39,6 +38,9 @@ SharePoint Online (SPO) のユーザー選択ウィンドウで既存のゲス�
 
 この機能は、テナントとサイト コレクション レベルで 'ShowPeoplePickerSuggestionsForGuestUsers' 設定を使用することで有効にできます。 この機能は、Set-SPOTenant コマンドレットと Set-SPOSite コマンドレットを使用して設定できます。これにより、メンバーは、ディレクトリ内のすべての既存のゲスト ユーザーを検索することができます。 テナントのスコープの変更は、既にプロビジョニングされている SPO サイトには影響しません。
 
+## <a name="my-guest-invite-settings-and-domain-restrictions-arent-being-respected-by-sharepoint-onlineonedrive"></a>ゲスト招待の設定とドメインの制限が SharePoint Online/OneDrive に反映されていない
+
+既定では、SharePoint Online と OneDrive には独自の外部ユーザー オプションのセットがあり、Azure AD の設定は使用されません。  これらのアプリケーション間で [Azure AD B2B との SharePoint および OneDrive の統合](/sharepoint/sharepoint-azureb2b-integration-preview)を有効にして、オプションが一貫していることを確認する必要があります。
 ## <a name="invitations-have-been-disabled-for-directory"></a>ディレクトリに対して招待が無効になっています
 
 ユーザーを招待するアクセス許可がないことを通知された場合は、[Azure Active Directory] > [ユーザー設定] > [外部ユーザー] > [Manage external collaboration settings]\(外部コラボレーションの設定の管理\) の順に選択して、自分のユーザー アカウントが外部ユーザーの招待を承認されていることを確認します。
@@ -63,6 +65,18 @@ Azure Active Directory を使用している組織のユーザーを招待して
 
 この問題を解決するには、外部ユーザーの管理者がユーザーのアカウントを Azure Active Directory に同期する必要があります。
 
+### <a name="external-user-has-a-proxyaddress-that-conflicts-with-a-proxyaddress-of-an-existing-local-user"></a>外部ユーザーに、既存のローカル ユーザーの proxyAddress と競合する proxyAddress がある
+
+ユーザーがテナントに招待できるかどうかを確認する際に確認する必要があるのは、proxyAddress での競合です。 これには、ホーム テナント内のユーザーの proxyAddresses と、テナント内のローカル ユーザー用の proxyAddress が含まれます。 外部ユーザーの場合、既存の B2B ユーザーの proxyAddress に電子メールを追加します。 ローカル ユーザーの場合、既に持っているアカウントを使用してサインインを求めることができます。
+
+## <a name="i-cant-invite-an-email-address-because-of-a-conflict-in-proxyaddresses"></a>proxyAddresses の競合のため、電子メール アドレスを招待できない
+
+これは、ディレクトリ内の別のオブジェクトが proxyAddresses の 1 つと同じ招待された電子メール アドレスを持つ場合に発生します。 この競合を解決するには、[ユーザー](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true) オブジェクトから電子メールを削除し、関連する[連絡先](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)オブジェクトも削除してから、この電子メールを再度招待します。
+
+## <a name="the-guest-user-object-doesnt-have-a-proxyaddress"></a>ゲスト ユーザー オブジェクトに proxyAddress が存在しない
+
+外部ゲスト ユーザーを招待すると、既存の[連絡先オブジェクト](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)と競合する場合があります。 この場合、ゲスト ユーザーは proxyAddress なしで作成されます。 つまり、ユーザーは [Just-In-Time 引き換え](redemption-experience.md#redemption-through-a-direct-link)または[電子メール ワンタイム パスコード認証](one-time-passcode.md#user-experience-for-one-time-passcode-guest-users)を使用して、このアカウントを引き換えに使用することはできません。
+
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>通常は無効な文字である "\#" は、どのように Azure AD と同期しますか。
 
 "\#" は、Azure AD B2B コラボレーションまたは外部ユーザー向けの UPN 内の予約文字です。理由は、招待されたアカウント user@contoso.com が user_contoso.com#EXT#@fabrikam.onmicrosoft.com になるためです。 したがって、オンプレミスから送信されるUPN 内の \# は、Azure ポータルにサインインするために使用することはできません。 
@@ -76,7 +90,9 @@ Azure Active Directory を使用している組織のユーザーを招待して
 招待されるユーザーは、Invites@microsoft.com というアドレスが許可されていることを ISP またはスパム フィルターで確認する必要があります。
 
 > [!NOTE]
-> 中国の 21Vianet が運営する Azure サービスでは、送信者のアドレスは Invites@oe.21vianet.com になります。
+>
+> - 中国の 21Vianet が運営する Azure サービスでは、送信者のアドレスは Invites@oe.21vianet.com になります。
+> - Azure AD Government クラウドの場合、送信者のアドレスは invites@azuread.us です。
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>カスタム メッセージが招待メッセージに含まれないことがあります
 
@@ -124,6 +140,15 @@ Azure US Government クラウド内では、現在、B2B コラボレーショ�
 1. PowerShell コマンド `Restore-AzureADDeletedApplication -ObjectId {id}` を実行します。 コマンドの `{id}` の部分は、前の手順の `ObjectId` に置き換えます。
 
 これで、復元されたアプリが Azure Portal に表示されるはずです。
+
+## <a name="a-guest-user-was-invited-successfully-but-the-email-attribute-is-not-populating"></a>ゲスト ユーザーが正常に招待されたが、電子メール属性に値が設定されていない
+
+ディレクトリに既に存在するユーザー オブジェクトと一致するメール アドレスを持つゲスト ユーザーを誤って招待したとします。 ゲスト ユーザー オブジェクトが作成されますが、メールアドレスは、`mail` プロパティまたは `proxyAddresses` プロパティに追加されるのではなく、`otherMail` プロパティに追加されます。 この問題を回避するために、次の PowerShell の手順を使用して、Azure AD ディレクトリ内の競合するユーザー オブジェクトを検索できます。
+
+1. Azure AD PowerShell モジュールを開き、`Connect-AzureAD` を実行します。
+1. 重複している連絡先オブジェクトがあるかどうかを確認する Azure AD テナントのグローバル管理者としてサインインします。
+1. PowerShell コマンド `Get-AzureADContact -All $true | ? {$_.ProxyAddresses -match 'user@domain.com'}` を実行します。
+1. PowerShell コマンド `Get-AzureADContact -All $true | ? {$_.Mail -match 'user@domain.com'}` を実行します。
 
 ## <a name="next-steps"></a>次のステップ
 

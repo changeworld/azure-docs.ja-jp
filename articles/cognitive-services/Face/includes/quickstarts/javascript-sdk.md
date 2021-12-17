@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 8f968572a357bb3c98d9c3133a7ec0a0a94dbf93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 56f116b8c7b90f74da86a792242866d5a88ebff4
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958253"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442282"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>クイック スタート: JavaScript 用 Face クライアント ライブラリ
 
@@ -22,17 +22,17 @@ JavaScript 用 Face クライアント ライブラリを使用して顔認識�
 
 JavaScript 用 Face クライアント ライブラリは、次の目的で使用します。
 
-* [画像内の顔を検出する](#detect-faces-in-an-image)
-* [似た顔を探す](#find-similar-faces)
-* [PersonGroup を作成する](#create-a-persongroup)
+* [顔を検出して分析する](#detect-and-analyze-faces)
 * [顔を識別する](#identify-a-face)
+* [似た顔を探す](#find-similar-faces)
 
-[リファレンスのドキュメント](/javascript/api/@azure/cognitiveservices-face/) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-face) | [サンプル](/samples/browse/?products=azure&term=face&languages=javascript)
+[リファレンスのドキュメント](/javascript/api/overview/azure/cognitive-services/face-readme) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-face) | [サンプル](/samples/browse/?products=azure&term=face&languages=javascript)
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * 最新バージョンの [Node.js](https://nodejs.org/en/)
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * Azure サブスクリプションを入手したら、Azure portal で [Face リソースを作成](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace)して、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 対象のアプリケーションを Face API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
@@ -104,10 +104,9 @@ endpoint = "<paste-your-face-endpoint-here>"
 以下のコード スニペットでは、.NET 用 Face クライアント ライブラリを使用して次のタスクを実行する方法を示しています。
 
 * [クライアントを認証する](#authenticate-the-client)
-* [画像内の顔を検出する](#detect-faces-in-an-image)
-* [似た顔を探す](#find-similar-faces)
-* [PersonGroup を作成する](#create-a-persongroup)
+* [顔を検出して分析する](#detect-and-analyze-faces)
 * [顔を識別する](#identify-a-face)
+* [似た顔を探す](#find-similar-faces)
 
 > [!TIP]
 > クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/Face/sdk_quickstart.js) にあり、このクイックスタートのコード例が含まれています。
@@ -130,7 +129,10 @@ URL は、サンプル画像のフォルダーを指しています。 UUID は�
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="helpers":::
 
-## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
+## <a name="detect-and-analyze-faces"></a>顔を検出して分析する
+
+顔検出は、顔分析と ID 検証の最初の手順として必要です。 このセクションでは、追加の顔属性データを返す方法について説明します。 顔の識別または検証のためにだけ顔検出を行う場合は、先のセクションまでスキップしてください。
+
 
 ### <a name="get-detected-face-objects"></a>検出された顔オブジェクトを取得する
 
@@ -143,25 +145,11 @@ URL は、サンプル画像のフォルダーを指しています。 UUID は�
 > [!TIP]
 > また、ローカルの画像から顔を検出することもできます。 [DetectWithStreamAsync](/javascript/api/@azure/cognitiveservices-face/face#detectWithStream_msRest_HttpRequestBody__FaceDetectWithStreamOptionalParams__ServiceCallback_DetectedFace____) などの [Face](/javascript/api/@azure/cognitiveservices-face/face) メソッドを参照してください。
 
-## <a name="find-similar-faces"></a>似た顔の検索
 
-以下のコードでは、検出された顔 (ソース) を 1 つ受け取って、他の顔のセット (ターゲット) から一致するものを見つけます (画像による顔検索)。 一致するものが見つかると、一致した顔の ID がコンソールに出力されます。
-
-### <a name="detect-faces-for-comparison"></a>比較の対象となる顔を検出する
-
-まず、2 つ目の顔検出メソッドを定義します。 顔を比較するためにはまず、画像で顔を検出する必要があります。また、この検出メソッドは比較操作向けに最適化されています。 前のセクションほど詳細には顔の属性を抽出せず、また、別の認識モデルを使用しています。
-
-:::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="recognize":::
-
-### <a name="find-matches"></a>一致するものを探す
-
-次のメソッドでは、一連のターゲット画像と単一のソース画像から顔を検出します。 その後、それらを比較し、ソース画像と似ているターゲット画像をすべて見つけます。 最後に、一致の詳細がコンソールに出力されます。
-
-:::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="find_similar":::
 
 ## <a name="identify-a-face"></a>顔を識別する
 
-[識別](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____)操作では、1 人の人物 (または複数人) の画像を受け取り、その画像内でそれぞれの顔の同一性を見つけます (顔認識検索)。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな [Person](/javascript/api/@azure/cognitiveservices-face/person) オブジェクトのデータベース、つまり [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup) と比較されます。 識別操作を行うには、最初に [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup) を作成してトレーニングする必要があります。
+[識別](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____)操作では、1 人の人物 (または複数人) の画像を受け取り、画像内のそれぞれの顔に関連する保存された人物オブジェクトを見つけ出します (顔認識検索)。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな [Person](/javascript/api/@azure/cognitiveservices-face/person) オブジェクトのデータベース、つまり [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup) と比較されます。 識別操作を行うには、最初に [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup) を作成してトレーニングする必要があります。
 
 ### <a name="add-faces-to-persongroup"></a>顔を PersonGroup に追加する
 
@@ -178,7 +166,7 @@ URL は、サンプル画像のフォルダーを指しています。 UUID は�
 ### <a name="create-a-persongroup"></a>PersonGroup を作成する
 
 コード例を次に示します。
-- [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup) を作成します
+- [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup) を作成します
 - 以前に定義した `AddFacesToPersonGroup` を呼び出して、**PersonGroup** に顔を追加します。
 - **PersonGroup** をトレーニングします。
 - **PersonGroup** 内の顔を識別します。
@@ -189,6 +177,22 @@ URL は、サンプル画像のフォルダーを指しています。 UUID は�
 
 > [!TIP]
 > ローカル画像から **PersonGroup** を作成することもできます。 [AddFaceFromStream](/javascript/api/@azure/cognitiveservices-face/persongroupperson#addFaceFromStream_string__string__msRest_HttpRequestBody__Models_PersonGroupPersonAddFaceFromStreamOptionalParams_) などの [PersonGroupPerson](/javascript/api/@azure/cognitiveservices-face/persongroupperson) メソッドを参照してください。
+
+## <a name="find-similar-faces"></a>似た顔の検索
+
+以下のコードでは、検出された顔 (ソース) を 1 つ受け取って、他の顔のセット (ターゲット) から一致するものを見つけます (画像による顔検索)。 一致するものが見つかると、一致した顔の ID がコンソールに出力されます。
+
+### <a name="detect-faces-for-comparison"></a>比較の対象となる顔を検出する
+
+まず、2 つ目の顔検出メソッドを定義します。 顔を比較するためにはまず、画像で顔を検出する必要があります。また、この検出メソッドは比較操作向けに最適化されています。 前のセクションほど詳細には顔の属性を抽出せず、また、別の認識モデルを使用しています。
+
+:::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="recognize":::
+
+### <a name="find-matches"></a>一致するものを探す
+
+次のメソッドでは、一連のターゲット画像と単一のソース画像から顔を検出します。 その後、それらを比較し、ソース画像と似ているターゲット画像をすべて見つけます。 最後に、一致の詳細がコンソールに出力されます。
+
+:::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="find_similar":::
 
 ## <a name="main"></a>メイン
 
@@ -213,10 +217,10 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、JavaScript 用の Face クライアント ライブラリを使用して基本的な顔認識タスクを行う方法について学習しました。 次は、リファレンス ドキュメントを参照して、ライブラリの詳細について学習してください。
+このクイックスタートでは、JavaScript 用の Face クライアント ライブラリを使用して基本的な顔認識タスクを行う方法について学習しました。 次に、さまざまな顔検出モデルと、ユース ケースに適したモデルを指定する方法について学習します。
 
 > [!div class="nextstepaction"]
-> [Face API リファレンス (JavaScript)](/javascript/api/@azure/cognitiveservices-face/)
+> [顔検出モデル バージョンを指定する](../../Face-API-How-to-Topics/specify-detection-model.md)
 
 * [Face サービスとは](../../overview.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/Face/sdk_quickstart.js) にあります。

@@ -5,14 +5,14 @@ services: firewall
 author: gopimsft
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/01/2021
 ms.author: victorh
-ms.openlocfilehash: e63336b0e84d303b51eda56f90ca6fb453d8ae0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 207097258a78d79d77e56052fc254065ca8a293c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831843"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457625"
 ---
 # <a name="monitor-logs-using-azure-firewall-workbook"></a>Azure Firewall ブックを使用してログを監視する
 
@@ -36,9 +36,13 @@ Azure Firewall のイベントの分析情報を得たり、アプリケーシ�
 
 ## <a name="application-rule-log-statistics"></a>アプリケーション規則のログの統計
 
-このページには、IP アドレスの一意のソース数の時間推移、アプリケーション規則の数、使用状況、拒否または許可された FQDN 数の時間推移、およびフィルター処理されたデータが表示されます。 IP アドレスに基づいてデータをフィルター処理できます。
+このページには、IP アドレスの一意のソース数の時間推移、アプリケーション規則の数、使用状況、拒否または許可された FQDN 数の時間推移、およびフィルター処理されたデータが表示されます。 IP アドレスに基づいてデータをフィルター処理できます。 
 
 :::image type="content" source="./media/firewall-workbook/firewall-workbook-application-rule.png" alt-text="Azure Firewall ブックのアプリケーション規則のログ":::
+
+Web カテゴリ ビューには、ファイアウォール管理者によって構成された重要度に基づいて、すべての許可と拒否のアクセス ログのアクションを要約したものが示されます。
+
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-webcategory.png" alt-text="Azure Firewall Web カテゴリの概要":::
 
 ## <a name="network-rule-log-statistics"></a>ネットワーク規則のログの統計
 
@@ -50,11 +54,18 @@ Azure Firewall のイベントの分析情報を得たり、アプリケーシ�
 
 :::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule-time.png" alt-text="Azure Firewall ブックのネットワーク規則のログの時間枠":::
 
+## <a name="idps-log-statistics"></a>IDPS ログの統計
+
+このページでは、IDPS 規則 (プロトコル、署名 ID、送信元 IP) に一致するすべてのトラフィックの IDPS アクション数の概要を示します。
+
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-idps.png" alt-text="Azure Firewall ブックの IDPS ログ":::
+
 ## <a name="investigations"></a>調査
 
 ログを確認し、ソース IP アドレスに基づいてリソースの詳細を把握できます。 仮想マシン名やネットワーク インターフェイス名などの情報を取得できます。 ログからのリソースにフィルターを適用するのは簡単です。
 
 :::image type="content" source="./media/firewall-workbook/firewall-workbook-investigation.png" alt-text="Azure Firewall ブックの調査":::
+
 
 ## <a name="next-steps"></a>次の手順
 

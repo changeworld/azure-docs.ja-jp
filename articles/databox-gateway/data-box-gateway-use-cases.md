@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 09/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 3bf137f968082e677f45c20947793232b9181220
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eec1c595119e225468bdbbe76f506b5b330a1beb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98786614"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212401"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway のユース ケース
 
@@ -50,12 +50,12 @@ Data Box Gateway の主な利点の 1 つは、データ サイズに関係な�
 - データがアップロードされた後、それをアーカイブ層に移動する必要があります。 BLOB 層の設定には 2 つの方法があり、Azure PowerShell スクリプトまたは Azure Storage ライフサイクル管理ポリシーを使用します。  
     - Azure PowerShell を使用する場合、次の[手順](../databox/data-box-how-to-set-data-tier.md#use-azure-powershell-to-set-the-blob-tier)に従って、データをアーカイブ層に移動します。
     - Azure ライフサイクル管理を使用する場合、次の手順に従って、データをアーカイブ層に移動します。
-        - アーカイブ層を使用するには、BLOB ライフサイクル管理サービスのプレビューに[登録](../storage/blobs/storage-lifecycle-management-concepts.md)します。
-        - 次のポリシーを使用して、[取り込み時にデータをアーカイブ](../storage/blobs/storage-lifecycle-management-concepts.md#archive-data-after-ingest)します。
+        - [BLOB ライフサイクル管理サービス](../storage/blobs/lifecycle-management-overview.md)経由でアーカイブ層を使用します。
+        - 次のポリシーを使用して、[取り込み時にデータをアーカイブ](../storage/blobs/lifecycle-management-overview.md#archive-data-after-ingest)します。
 - BLOB は、アーカイブとしてマークされると、ホット層またはコールド層に移動されない限り、ゲートウェイによる変更ができなくなります。 ファイルがローカル ストレージにある場合、ローカル コピーに対して行われる変更 (削除を含む) は、アーカイブ層にアップロードされません。
 - アーカイブ ストレージ内のデータを読み取るには、BLOB 層をホットかクールに変更して、データをリハイドレートする必要があります。 ゲートウェイ上の[共有を更新](data-box-gateway-manage-shares.md#refresh-shares)しても、BLOB はリハイドレートされません。
 
-詳細については、[Azure Blob Storage のライフサイクルを管理する方法](../storage/blobs/storage-lifecycle-management-concepts.md)をご確認ください。
+詳細については、[Azure Blob Storage のライフサイクルを管理する方法](../storage/blobs/lifecycle-management-overview.md)をご確認ください。
 
 ## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>増分転送に先立つ初期一括転送
 

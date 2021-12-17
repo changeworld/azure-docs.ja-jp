@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fe5a2114a99b7867ac5e51b6bf9ec542ad47ca13
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2685570bb14cf177f0a658196aa1750f9d8e02a1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257893"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558350"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Saviynt と Azure Active Directory B2C を構成するチュートリアル
 
@@ -76,37 +76,22 @@ Saviynt 統合には、次のコンポーネントが含まれています。
 ### <a name="create-an-azure-ad-application-for-saviynt"></a>Saviynt 用 Azure AD アプリケーションを作成する
 
 1. [Azure portal](https://portal.azure.com/#home) にサインインします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. **[アプリの登録]**  >  **[新しい登録]** の順に選びます。
+1. アプリケーションの名前を入力します。 たとえば、Saviynt です。 **[作成]** を選択します。
+1. **[API のアクセス許可]** に移動し、 **[+ アクセス許可の追加]** を選択します。
+1. [API アクセス許可の要求] ページが表示されます。 **[Microsoft API]** タブを選択し、一般的に使用される Microsoft API として **[Microsoft Graph]** を選択します。
+1. 次のページに進み、 **[アプリケーションのアクセス許可]** を選択します。
+1. **[ディレクトリ]** を選択し、 **[Directory.Read.All]** と **[Directory.ReadWrite.All]** の各チェックボックスをオンにします。
+1. **[アクセス許可の追加]** を選択します。 追加されたアクセス許可を確認します。
+1. **[既定のディレクトリに管理者の同意を与えます]**  >  **[保存]** を選択します。
+1. **[Certificates and Secrets]\(証明書とシークレット\)** に移動し、 **[+ Add Client Secret]\(クライアント シークレットの追加\)** を選択します。 クライアント シークレットの説明を入力し、有効期限オプションを選択して、 **[追加]** を選択します。
+1. 秘密鍵が生成され、[クライアント シークレット] セクションに表示されます。 これは後で使用する必要があります。
 
-2. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-
-3. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
-
-4. **[アプリの登録]**  >  **[新しい登録]** の順に選びます。
-
-5. アプリケーションの名前を入力します。 たとえば、Saviynt です。 **[作成]** を選択します。
-
-6. **[API のアクセス許可]** に移動し、 **[+ アクセス許可の追加]** を選択します。
-
-7. [API アクセス許可の要求] ページが表示されます。 **[Microsoft API]** タブを選択し、一般的に使用される Microsoft API として **[Microsoft Graph]** を選択します。
-
-8. 次のページに進み、 **[アプリケーションのアクセス許可]** を選択します。
-
-9. **[ディレクトリ]** を選択し、 **[Directory.Read.All]** と **[Directory.ReadWrite.All]** の各チェックボックスをオンにします。
-
-10. **[アクセス許可の追加]** を選択します。 追加されたアクセス許可を確認します。
-
-11. **[既定のディレクトリに管理者の同意を与えます]**  >  **[保存]** を選択します。
-
-12. **[Certificates and Secrets]\(証明書とシークレット\)** に移動し、 **[+ Add Client Secret]\(クライアント シークレットの追加\)** を選択します。 クライアント シークレットの説明を入力し、有効期限オプションを選択して、 **[追加]** を選択します。
-
-13. 秘密鍵が生成され、[クライアント シークレット] セクションに表示されます。
-
-    >[!NOTE]
-    > 後でこのクライアント シークレットが必要になります。
-
-14. **[概要]** に移動し、 **[クライアント ID]** と **[テナント ID]** を取得します。
-
-15. Saviynt での設定を完了するには、テナント ID、クライアント ID、およびクライアント シークレットが必要です。
+1. **[概要]** に移動し、 **[クライアント ID]** と **[テナント ID]** を取得します。
+1. Saviynt での設定を完了するには、テナント ID、クライアント ID、およびクライアント シークレットが必要です。
 
 ### <a name="enable-saviynt-to-delete-users"></a>Saviynt でユーザーを削除できるようにする
 

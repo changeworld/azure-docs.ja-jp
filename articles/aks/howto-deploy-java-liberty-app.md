@@ -1,18 +1,20 @@
 ---
 title: Azure Kubernetes Service (AKS) クラスターに、Open Liberty または WebSphere Liberty を使用する Java アプリケーションをデプロイする
+recommendations: false
 description: Azure Kubernetes Service (AKS) クラスターに、Open Liberty または WebSphere Liberty を使用する Java アプリケーションをデプロイします。
-author: jiangma
+author: majguo
 ms.author: jiangma
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aks, kubernetes
-ms.openlocfilehash: d0e6f2fea6894378da736ba83a90ee28402ec7f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-java, devx-track-javaee, devx-track-javaee-liberty, devx-track-javaee-liberty-aks
+ms.openlocfilehash: f43f0a6038c9bd362f948722534c27e0906261c7
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100007136"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551430"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターに、Open Liberty または WebSphere Liberty を使用する Java アプリケーションをデプロイする
 
@@ -52,7 +54,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 [az acr create](/cli/azure/acr#az_acr_create) コマンドを使用して ACR インスタンスを作成します。 次の例では、*youruniqueacrname* という名前の ACR インスタンスを作成します。 *youruniqueacrname* が Azure 内で一意であることを確認します。
 
 ```azurecli-interactive
-REGISTRY_NAME=youruniqueacrname
+export REGISTRY_NAME=youruniqueacrname
 az acr create --resource-group $RESOURCE_GROUP_NAME --name $REGISTRY_NAME --sku Basic --admin-enabled
 ```
 
@@ -69,9 +71,9 @@ az acr create --resource-group $RESOURCE_GROUP_NAME --name $REGISTRY_NAME --sku 
 イメージをプッシュする前に、ACR インスタンスにサインインする必要があります。 次のコマンドを実行して、接続を確認します。
 
 ```azurecli-interactive
-LOGIN_SERVER=$(az acr show -n $REGISTRY_NAME --query 'loginServer' -o tsv)
-USER_NAME=$(az acr credential show -n $REGISTRY_NAME --query 'username' -o tsv)
-PASSWORD=$(az acr credential show -n $REGISTRY_NAME --query 'passwords[0].value' -o tsv)
+export LOGIN_SERVER=$(az acr show -n $REGISTRY_NAME --query 'loginServer' -o tsv)
+export USER_NAME=$(az acr credential show -n $REGISTRY_NAME --query 'username' -o tsv)
+export PASSWORD=$(az acr credential show -n $REGISTRY_NAME --query 'passwords[0].value' -o tsv)
 
 docker login $LOGIN_SERVER -u $USER_NAME -p $PASSWORD
 ```
@@ -128,22 +130,22 @@ aks-nodepool1-xxxxxxxx-yyyyyyyyyy   Ready    agent   76s     v1.18.10
 
 ## <a name="install-open-liberty-operator"></a>Open Liberty オペレーターをインストールする
 
-クラスターを作成して接続したら、次のコマンドを実行して [Open Liberty オペレーター](https://github.com/OpenLiberty/open-liberty-operator/tree/master/deploy/releases/0.7.0)をインストールします。
+クラスターを作成して接続したら、次のコマンドを実行して [Open Liberty オペレーター](https://github.com/OpenLiberty/open-liberty-operator/tree/master/deploy/releases/0.7.1)をインストールします。
 
 ```azurecli-interactive
 OPERATOR_NAMESPACE=default
 WATCH_NAMESPACE='""'
 
 # Install Custom Resource Definitions (CRDs) for OpenLibertyApplication
-kubectl apply -f https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.0/openliberty-app-crd.yaml
+kubectl apply -f https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.1/openliberty-app-crd.yaml
 
 # Install cluster-level role-based access
-curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.0/openliberty-app-cluster-rbac.yaml \
+curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.1/openliberty-app-cluster-rbac.yaml \
       | sed -e "s/OPEN_LIBERTY_OPERATOR_NAMESPACE/${OPERATOR_NAMESPACE}/" \
       | kubectl apply -f -
 
 # Install the operator
-curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.0/openliberty-app-operator.yaml \
+curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.1/openliberty-app-operator.yaml \
       | sed -e "s/OPEN_LIBERTY_WATCH_NAMESPACE/${WATCH_NAMESPACE}/" \
       | kubectl apply -n ${OPERATOR_NAMESPACE} -f -
 ```
@@ -156,19 +158,26 @@ AKS クラスターに Liberty アプリケーションをデプロイして実�
 1. ディレクトリをローカル クローンの `javaee-app-simple-cluster` に変更します。
 1. `mvn clean package` を実行してアプリケーションをパッケージ化します。
 1. `mvn liberty:dev` を実行してアプリケーションをテストします。 成功すると、コマンドの出力に `The defaultServer server is ready to run a smarter planet.` が表示されます。 `CTRL-C` を使用してアプリケーションを停止します。
+1. `pom.xml` で定義されているプロパティ `artifactId` および `version` の値を取得します。
+
+   ```azurecli-interactive
+   artifactId=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.artifactId}' --non-recursive exec:exec)
+   version=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+   ```
+1. `cd target` を実行して、ディレクトリをサンプルのビルドに変更します。
 1. 以下のいずれかのコマンドを実行してアプリケーション イメージをビルドし、ACR インスタンスにプッシュします。
    * 軽量のオープン ソース Java™ ランタイムとして Open Liberty を使用する場合は、Open Liberty 基本イメージを使用してビルドします。
 
      ```azurecli-interactive
      # Build and tag application image. This will cause the ACR instance to pull the necessary Open Liberty base images.
-     az acr build -t javaee-cafe-simple:1.0.0 -r $REGISTRY_NAME .
+     az acr build -t ${artifactId}:${version} -r $REGISTRY_NAME .
      ```
 
    * Open Liberty の商用バージョンを使用する場合は、WebSphere Liberty 基本イメージを使用してビルドします。
 
      ```azurecli-interactive
      # Build and tag application image. This will cause the ACR instance to pull the necessary WebSphere Liberty base images.
-     az acr build -t javaee-cafe-simple:1.0.0 -r $REGISTRY_NAME --file=Dockerfile-wlp .
+     az acr build -t ${artifactId}:${version} -r $REGISTRY_NAME --file=Dockerfile-wlp .
      ```
 
 ## <a name="deploy-application-on-the-aks-cluster"></a>AKS クラスターにアプリケーションをデプロイする
@@ -184,26 +193,26 @@ AKS クラスターに Liberty アプリケーションをデプロイして実�
       --docker-password=${PASSWORD}
    ```
 
-1. 現在の作業ディレクトリがローカル クローンの `javaee-app-simple-cluster` であることを確認します。
+1. 現在の作業ディレクトリがローカル クローンの `javaee-app-simple-cluster/target` であることを確認します。
 1. 次のコマンドを実行して、3 つのレプリカを持つ Liberty アプリケーションを AKS クラスターにデプロイします。 コマンドの出力もインラインで表示されます。
 
    ```azurecli-interactive
-   # Create OpenLibertyApplication "javaee-app-simple-cluster"
-   cat openlibertyapplication.yaml | sed -e "s/\${Container_Registry_URL}/${LOGIN_SERVER}/g" | sed -e "s/\${REPLICAS}/3/g" | kubectl apply -f -
+   # Create OpenLibertyApplication "javaee-cafe-cluster"
+   kubectl apply -f openlibertyapplication.yaml
 
-   openlibertyapplication.openliberty.io/javaee-app-simple-cluster created
+   openlibertyapplication.openliberty.io/javaee-cafe-cluster created
 
    # Check if OpenLibertyApplication instance is created
-   kubectl get openlibertyapplication javaee-app-simple-cluster
+   kubectl get openlibertyapplication ${artifactId}-cluster
 
    NAME                        IMAGE                                                   EXPOSED   RECONCILED   AGE
-   javaee-app-simple-cluster   youruniqueacrname.azurecr.io/javaee-cafe-simple:1.0.0             True         59s
+   javaee-cafe-cluster         youruniqueacrname.azurecr.io/javaee-cafe:1.0.25         True         59s
 
    # Check if deployment created by Operator is ready
-   kubectl get deployment javaee-app-simple-cluster --watch
+   kubectl get deployment ${artifactId}-cluster --watch
 
    NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
-   javaee-app-simple-cluster   0/3     3            0           20s
+   javaee-cafe-cluster         0/3     3            0           20s
    ```
 
 1. [`READY`] 列の下に `3/3` が、[`AVAILABLE`] 列の下に `3` が表示されるまで待ってから、`CTRL-C` を使用して、`kubectl` ウォッチ プロセスを停止します。
@@ -215,10 +224,10 @@ AKS クラスターに Liberty アプリケーションをデプロイして実�
 進行状況を監視するには、[kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを `--watch` 引数と一緒に使用します。
 
 ```azurecli-interactive
-kubectl get service javaee-app-simple-cluster --watch
+kubectl get service ${artifactId}-cluster --watch
 
 NAME                        TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
-javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   80:31732/TCP     68s
+javaee-cafe-cluster         LoadBalancer   10.0.251.169   52.152.189.57   80:31732/TCP     68s
 ```
 
 *EXTERNAL-IP* アドレスが *保留中* から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。

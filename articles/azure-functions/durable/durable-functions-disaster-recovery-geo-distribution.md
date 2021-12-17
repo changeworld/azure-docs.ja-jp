@@ -3,20 +3,23 @@ title: Azure Durable Functions のディザスター リカバリーと地理的
 description: Durable Functions のディザスター リカバリーと地理的分散について説明します。
 author: MS-Santi
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 01c400f51cce85ef39e9d39bcad1221253c6942d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18919b56ffdc9368f2593f2384b3d7a8e836afd0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89071212"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375966"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Azure Durable Functions のディザスター リカバリーと地理的分散
 
 Microsoft は、Azure サービスを常に使用できるようにする作業に取り組んでいます。 そうはいっても、計画されていないサービスの停止が発生する可能性はあります。 アプリケーションで回復性が必要な場合は、geo 冗長性を確保するようにアプリを構成することをお勧めします。 さらに、お客様は、リージョン規模のサービス停止に対処するため、ディザスター リカバリー計画を用意する必要があります。 ディザスター リカバリー計画の重要な部分は、プライマリ レプリカが使用できなくなった場合に、アプリとストレージのセカンダリ レプリカにフェールオーバーするための準備をすることです。
 
 Durable Functions では、すべての状態が既定で Azure Storage に保持されます。 [タスク ハブ](durable-functions-task-hubs.md)は、[オーケストレーション](durable-functions-types-features-overview.md#orchestrator-functions)と[エンティティ](durable-functions-types-features-overview.md#entity-functions)に使用される Azure Storage リソースの論理コンテナーです。 オーケストレーター関数、アクティビティ関数、エンティティ関数は、同じタスク ハブに属しているときに限り、情報をやり取りすることができます。 このドキュメントでは、これらの Azure Storage リソースの高可用性を保つためのシナリオを説明するときに、タスク ハブを参照します。
+
+> [!NOTE]
+> この記事のガイダンスでは、Durable Functions のランタイム状態を格納するために既定の Azure Storage プロバイダーを使用していることを想定しています。 ただし、状態を他の場所に格納する代替の記憶域プロバイダー (SQL Server データベースなど) を構成することもできます。 代替の記憶域プロバイダーの場合は、異なるディザスター リカバリーと地理的分散の戦略が必要になる場合があります。 代替の記憶域プロバイダーの詳細については、[Durable Functions 記憶域プロバイダー](durable-functions-storage-providers.md)に関するドキュメントを参照してください。
 
 オーケストレーションとエンティティは、HTTP またはサポートされている他の Azure Functions トリガーの種類のいずれかを使用してトリガーされる[クライアント関数](durable-functions-types-features-overview.md#client-functions)を使用してトリガーできます。 これらは、[組み込みの HTTP API](durable-functions-http-features.md#built-in-http-apis) を使用してトリガーすることもできます。 わかりやすくするために、この記事では Azure Storage と HTTP ベースの関数トリガーが関係するシナリオと、ディザスター リカバリー アクティビティ中の可用性を向上させ、ダウンタイムを最小限に抑えるオプションに焦点を当てています。 Service Bus トリガーや Cosmos DB トリガーなどの他のトリガーの種類は、明確には取り上げません。
 

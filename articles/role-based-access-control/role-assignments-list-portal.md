@@ -7,21 +7,21 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/09/2020
+ms.date: 11/12/2021
 ms.author: rolyon
-ms.openlocfilehash: 7d53df4159c071c17657e8a8367da605b6a5dc9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 667709d8f924556c43a741151c55f5469fb92639
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556179"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399961"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure でのロールの割り当てを一覧表示する
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] この記事では、Azure portal を使用してロールの割り当てを一覧表示する方法を説明します。
 
 > [!NOTE]
-> 組織が、[Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。
+> 組織で、[Azure Lighthouse](../lighthouse/overview.md) を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>ユーザーまたはグループのロールの割り当てを一覧表示する
 
@@ -136,6 +136,8 @@ ms.locfileid: "100556179"
 ## <a name="list-number-of-role-assignments"></a>ロールの割り当ての数の一覧
 
 各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 この制限には、サブスクリプション、リソース グループ、およびリソースのスコープでのロールの割り当てが含まれます。 **[ロールの割り当て]** タブには、この制限の追跡に役立つ、現在のサブスクリプションに対するロールの割り当て数を示すグラフが表示されます。
+
+このサブスクリプションのロール割り当ての制限は、現在増やされています。 詳細については、「[Azure RBAC のトラブルシューティング](troubleshooting.md#azure-role-assignments-limit)」を参照してください。
 
 ![アクセス制御 - ロールの割り当ての数のグラフ](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 

@@ -2,13 +2,13 @@
 title: Azure Backup Server を使用してワークロードをバックアップする
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用してワークロードを保護およびバックアップするように環境を準備する方法について説明します。
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.openlocfilehash: d476c228a619f03f798c1a2cd6854a8d603c3637
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: adc87847900167299c9a2473079237e069782b48
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98987024"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769509"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 
@@ -41,8 +41,8 @@ Azure Backup Server には、Data Protection Manager (DPM) のワークロード
 
 Azure Backup Server を準備して実行するための最初の手順は、Windows Server のセットアップです。 サーバーの設置場所は Azure でもオンプレミスでもかまいません。
 
-* オンプレミスのワークロードを保護するには、MABS サーバーをオンプレミスに配置する必要があります。
-* Azure VM で実行されているワークロードを保護するには、MABS サーバーを Azure に配置し、Azure VM として実行する必要があります。
+* オンプレミスのワークロードを保護するには、MABS サーバーをオンプレミスに配置してドメインに接続する必要があります。
+* Azure VM で実行されているワークロードを保護するには、MABS サーバーを Azure に配置して Azure VM として実行し、ドメインに接続する必要があります。
 
 ### <a name="using-a-server-in-azure"></a>Azure に設置されたサーバーを使用する場合
 
@@ -72,7 +72,7 @@ Windows Server の重複除去を使用して DPM ストレージの重複を除
 >
 > Azure Backup Server のインストールは、Windows Server Core または Microsoft Hyper-V Server ではサポートされていません。
 
-Azure Backup Server は、常にドメインに参加させる必要があります。 サーバーを別のドメインに移動する予定がある場合は、まず Azure Backup Server をインストールし、次にそのサーバーを新しいドメインに参加させます。 デプロイ後の、新しいドメインへの既存の Azure Backup Server マシンの移動は *サポートされていません*。
+Azure Backup Server は、常にドメインに参加させる必要があります。 デプロイ後の、新しいドメインへの既存の Azure Backup Server マシンの移動は *サポートされていません*。
 
 バックアップ データを Azure に送信するか、またはローカルに保持するかどうかにかかわらず、Azure Backup Server を Recovery Services コンテナーに登録する必要があります。
 
@@ -201,7 +201,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
     スクラッチ場所は、Azure へのバックアップの要件です。 スクラッチ場所が、クラウドにバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「[データ ストレージの準備](/system-center/dpm/plan-long-and-short-term-data-storage)」を参照してください。
 
-    ディスク ストレージの容量の要件は、主に保護されるデータのサイズ、毎日の回復ポイントのサイズ、予想されるデータ成長率、および保持期間の目標によって異なります。 ディスク ストレージは、保護されるデータの 2 倍のサイズにすることをお勧めします。 毎日の回復ポイント サイズを保護データ サイズの 10% とし、保有期間を 10 日間と想定しています。 適切なサイズ見積もりを取得するには、[DPM Capacity Planner](https://www.microsoft.com/download/details.aspx?id=54301) を確認します。 
+    ディスク ストレージの容量の要件は、主に、保護されるデータのサイズ、毎日の回復ポイントのサイズ、予想されるボリューム データ増加率、および保持期間の目標によって異なります。 ディスク ストレージは、保護されるデータの 2 倍のサイズにすることをお勧めします。 毎日の回復ポイント サイズを保護データ サイズの 10% とし、保有期間を 10 日間と想定しています。 適切なサイズ見積もりを取得するには、[DPM Capacity Planner](https://www.microsoft.com/download/details.aspx?id=54301) を確認します。 
 
 5. 制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、 **[次へ]** を選択します。
 
@@ -276,11 +276,11 @@ MABS は、System Center Data Protection Manager 保護エージェントを使�
 7. 手順 1 で作成した DPMDB を復元します。
 8. 元のバックアップ サーバーの記憶域を新しいサーバーにアタッチします。
 9. SQL から DPMDB を復元します。
-10. 新しいサーバーで CMD を (管理者として) 実行します。 Microsoft Azure Backup のインストール場所とゴミ箱フォルダーに移動します
+10. 新しいサーバーで CMD を (管理者として) 実行します。 Microsoft Azure Backup のインストール場所の bin フォルダーに移動します。
 
     パスの例: `C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"`
 
-11. Azure Backup に接続するには、`DPMSYNC -SYNC` を実行します
+11. Azure Backup に接続するために、`DPMSYNC -SYNC` を実行します。
 
     DPM 記憶域プールに古いディスクを移動するのではなく、**新しい** ディスクを追加した場合は、`DPMSYNC -Reallocatereplica` を実行します。
 
@@ -366,7 +366,8 @@ MABS をアップグレードするには、次の手順を使用します。
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 Microsoft Azure Backup Server がセットアップ段階 (またはバックアップや復元) でエラーのため失敗した場合、詳細については、この[エラー コードのドキュメント](https://support.microsoft.com/kb/3041338)を参照してください。
-[Azure Backup 関連の FAQ](backup-azure-backup-faq.md)
+
+[Azure Backup 関連の FAQ](backup-azure-backup-faq.yml) を参照することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

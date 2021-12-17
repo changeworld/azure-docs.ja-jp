@@ -5,15 +5,16 @@ ms.author: yexu
 author: dearandyxu
 ms.reviewer: douglasl, jburchel
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 231f4033b90b152a5893cff93584d9c9bb794321
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.date: 07/05/2021
+ms.openlocfilehash: 6bbec2642287631731b7dc25335af86eb815e96c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783185"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051149"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell を使用して SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする
 
@@ -59,7 +60,7 @@ ms.locfileid: "104783185"
 
     ソリューションの概略図を次に示します。 
 
-    ![データの増分読み込み](media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png" alt-text="データの増分読み込み":::
 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
@@ -282,7 +283,7 @@ END
 
 * 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、SQL Database、SQL Managed Instance など) とコンピューティング (Azure HDInsight など) は他のリージョンに配置できます。
 
-[!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
+[!INCLUDE [data-factory-create-install-integration-runtime](includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
@@ -805,7 +806,7 @@ END
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"        
-    ``` 
+    ```
 
 ## <a name="monitor-the-pipeline"></a>パイプラインの監視
 
@@ -815,14 +816,15 @@ END
 
 3. データ ファクトリの一覧から **目的のデータ ファクトリ** を探して選択し、[データ ファクトリ] ページを開きます。 
 
-4. **[データ ファクトリ]** ページの **[Author & Monitor]\(作成と監視\)** を選択して、別のタブで Azure Data Factory を起動します。
+4. **[データ ファクトリ]** ページの **[Open Azure Data Factory Studio]** タイルで **[開く]** を選択して、別のタブで Azure Data Factory を起動します。
 
-5. **[始めましょう]** ページで、左側の **[監視]** を選択します。 
-![Azure Data Factory の [始めましょう] ページを示すスクリーンショット。](media/doc-common-process/get-started-page-monitor-button.png)    
+5. Azure Data Factory のホームページの左側で **[モニター]** を選択します。 
+
+    :::image type="content" source="media/doc-common-process/get-started-page-monitor-button.png" alt-text="Azure Data Factory のホーム ページのスクリーンショット。":::    
 
 6. すべてのパイプラインの実行とその状態を確認できます。 次の例では、パイプラインの実行が、**成功** 状態であることに注目してください。 パイプラインに渡されたパラメーターを確認するには、 **[パラメーター]** 列のリンクを選択します。 エラーが発生した場合は、 **[エラー]** 列にリンクが表示されます。
 
-    ![パイプラインを含むデータ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png" alt-text="パイプラインを含むデータ ファクトリのパイプライン実行を示すスクリーンショット。":::    
 7. **[アクション]** 列のリンクを選択すると、そのパイプラインに関するすべてのアクティビティの実行が表示されます。 
 
 8. 再度 **パイプラインの実行** ビューに移動するには、 **[すべてのパイプラインの実行]** を選択します。 

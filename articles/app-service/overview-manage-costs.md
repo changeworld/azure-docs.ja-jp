@@ -4,13 +4,13 @@ description: Azure portal でコスト分析を使用して、Azure App Service 
 ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
-ms.date: 01/01/2021
-ms.openlocfilehash: ada4c1991a57c8252247c9617e097dc82cb3b4a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: 3f2ae25c3f2e1076cf714aa56f7ecdf867d6dd8f
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593986"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112554191"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Azure App Service のコストを計画および管理する
 
@@ -27,25 +27,33 @@ ms.locfileid: "100593986"
 
 この記事では、Azure App Service のコストを計画および管理する方法について説明します。 コストを見積もるサービスのリソースを追加する前に、まず、App Service のコストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure リソースを追加するときに、推定コストを確認します。 App Service リソースの使用を開始した後、[Cost Management](../cost-management-billing/index.yml?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 機能を使用して、予算の設定とコストの監視を行います。 また、予想コストを確認し、支出の傾向を特定して、対処が必要な領域を特定することもできます。Azure App Service のコストは、Azure の請求に記載された月額料金の一部にすぎません。 この記事では、App Service のコストを計画し、管理する方法について説明しますが、サードパーティのサービスを含め、Azure サブスクリプションで使用されるすべての Azure サービスとリソースに対して課金されます。
 
-## <a name="relevant-costs-for-app-service"></a>App Service の関連コスト
+## <a name="understand-the-full-billing-model-for-azure-app-service"></a>Azure App Service の詳細な課金モデルを理解する
 
-App Service は Azure インフラストラクチャ上で実行され、コストが発生します。 追加のインフラストラクチャでコストが発生する可能性があることを理解しておくことが重要です。 デプロイされたリソースに変更を加える場合は、このコストを管理する必要があります。
+Azure App Service は、新しいリソースをデプロイする際にコストが発生する Azure インフラストラクチャ上で実行されます。 その他のインフラストラクチャ コストが追加で発生する可能性があることを理解しておくことが重要です。
 
-### <a name="costs-that-accrue-with-azure-app-service"></a>Azure App Service で発生するコスト
+### <a name="how-youre-charged-for-azure-app-service"></a>Azure App Service に対する課金方法
 
-App Service で使用する機能に応じて、コストが発生する次のリソースが作成される場合があります。
+App Service リソースを作成または使用すると、以下のように料金が発生します。
 
-- **App Service プラン**  App Service アプリをホストするために必要です。
-- **Isolated レベル**  App Service Environment には、[Virtual Network](../virtual-network/index.yml) が必要です。
-- **バックアップ**  バックアップを作成するには、[ストレージ アカウント](../storage/index.yml)が必要です。
-- **診断ログ**  ログ オプションとして [ストレージ アカウント](../storage/index.yml)を選択するか、[Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) と統合します。
-- **App Service 証明書**  Azure で購入する証明書は、[Azure Key Vault](../key-vault/index.yml) で保持する必要があります。
+- App Service プランの価格レベルに基づく 1 時間ごとの料金が、秒単位にまで時間割計算されて課金されます。
+- 料金は、VM インスタンスが割り当てられた時間に基づき、プラン内の各スケールアウト インスタンスに適用されます。 
 
 App Service のその他のコスト リソースは次のとおりです (詳細については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」を参照してください)。
 
 - [App Service ドメイン](manage-custom-dns-buy-domain.md)  自動更新を有効にした場合、サブスクリプションはドメイン登録に対して年単位で課金されます。
 - [App Service 証明書](configure-ssl-certificate.md#import-an-app-service-certificate)  購入時の 1 回限りの料金。 保護するサブドメインが複数ある場合は、複数の標準の証明書の代わりに 1 つのワイルドカードの証明書を購入することにより、コストを削減できます。
 - [IP ベースの証明書のバインド](configure-ssl-bindings.md#create-binding)  バインディングは、アプリ レベルで証明書に対して構成されます。 バインディングごとにコストが発生します。 **Standard** レベル以上では、最初の IP ベースのバインディングには課金されません。
+
+請求期間の終了時に、各 VM インスタンスの料金が合計されます。 請求書には、App Service に対して発生したすべてのコストに関するセクションが表示されています。 測定ごとに個別の行項目があります。
+
+### <a name="other-costs-that-might-accrue-with-azure-app-service"></a>Azure App Service で発生する可能性があるその他のコスト
+
+App Service で使用する機能に応じて、コストが発生する次のリソースが作成される場合があります。
+
+- **Isolated レベル**  App Service 環境には、[仮想ネットワーク](../virtual-network/index.yml)が必要です。仮想ネットワークは別途課金されます。
+- **バックアップ**  バックアップを作成するには、[ストレージ アカウント](../storage/index.yml)が必要です。ストレージ アカウントは別途課金されます。
+- **診断ログ**  ログ オプションとして [ストレージ アカウント](../storage/index.yml)を選択するか、[Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) と統合します。 これらのサービスは別途課金されます。
+- **App Service 証明書**  Azure で購入する証明書は、[Azure Key Vault](../key-vault/index.yml) で保持する必要があります。Azure Key Vault は別途課金されます。
 
 ### <a name="costs-that-might-accrue-after-resource-deletion"></a>リソースの削除後に発生する可能性があるコスト
 
@@ -59,9 +67,9 @@ Azure App Service リソースを削除した後、関連する Azure サービ�
 - 診断ログを送信するために作成した Log Analytic 名前空間
 - まだ有効期限が切れていない App Service の[インスタンスまたはスタンプ予約](#azure-reservations)
 
-### <a name="using-monetary-credit-with-azure-app-service"></a>Azure App Service で金額クレジットを使用する
+### <a name="using-azure-prepayment-with-azure-app-service"></a>Azure App Service での Azure 前払いの使用
 
-Azure App Service の料金は、Azure 前払い (旧称: 年額コミットメント) のクレジットを使用して支払うことができます。 ただし、Azure 前払いのクレジットを使用して、サードパーティの製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
+Azure App Service の料金は、Azure 前払いのクレジットで支払うことができます。 ただし、Azure 前払いのクレジットを使用して、サードパーティの製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
 
 ## <a name="estimate-costs"></a>コストの見積もり
 
@@ -92,7 +100,7 @@ Basic レベルでは、App Service アプリは、それらをホストする A
 
 - **価格レベル**  App Service プランの SKU とも呼ばれます。 レベルが高いほど、より多くの CPU コア、メモリ、ストレージ、機能、またはそれらの組み合わせが提供されます。
 - **インスタンス数**  Dedicated レベル (Basic 以上) はスケールアウトでき、スケールアウトされたインスタンスごとにコストが発生します。
-- **スタンプ料金**  Isolated レベルでは、ホストされているアプリまたは worker のインスタンスの数に関係なく、 App Service Environment に対して一律料金が発生します。
+- **スタンプ料金**  Isolated レベルでは、ホストされているアプリまたは worker のインスタンスの数に関係なく、App Service Environment に対して一律料金が発生します。
 
 App Service プランでは、複数のアプリをホストできます。 デプロイに応じて、1 つの App Service プランでホストするアプリの数を増やす (つまり、アプリをホストする App Service プランを減らす) ことにより、コストを節約できます。
 

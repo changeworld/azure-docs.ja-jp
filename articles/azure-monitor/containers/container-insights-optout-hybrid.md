@@ -3,12 +3,13 @@ title: お使いのハイブリッド Kubernetes クラスターの監視を停�
 description: この記事では、Container insights でお使いのハイブリッド Kubernetes クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: e8708d6b860683cc96a806160ccc7c8e33949ab2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b8f548b8e9440804ae6a7ff293c35e7107cfc4c8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713696"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708934"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>お使いのハイブリッド クラスターの監視を停止する方法
 
@@ -56,7 +57,7 @@ Kubernetes クラスターの監視を有効にした後に、その監視が必
 
 設定の変更が完了するまで数分かかります。 Helm では、お使いのリリースの削除後もそれを追跡するので、クラスターの履歴を監査し、`helm rollback` を使用して、リリースの削除を取り消すこともできます。
 
-## <a name="how-to-stop-monitoring-on-arc-enabled-kubernetes"></a>Arc 対応 Kubernetes 上で監視を停止する方法
+## <a name="how-to-stop-monitoring-on-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 上で監視を停止する方法
 
 ### <a name="using-powershell"></a>PowerShell の使用
 
@@ -88,7 +89,7 @@ Kubernetes クラスターの監視を有効にした後に、その監視が必
 スクリプト *disable-monitoring.ps1* では、対話型デバイス ログインが使用されます。 非対話型のログインを望む場合、既存のサービス プリンシパルを使用するか、「[前提条件](container-insights-enable-arc-enabled-clusters.md#prerequisites)」の説明にある必須のアクセス許可が与えられたサービス プリンシパルを新規作成できます。 サービス プリンシパルを使用するには、$servicePrincipalClientId、$servicePrincipalClientSecret、$tenantId パラメーターを、enable-monitoring.ps1 スクリプトに使用するサービス プリンシパルの値と共に渡す必要があります。
 
 ```powershell
-$subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
+$subscriptionId = "<subscription Id of the Azure Arc-connected cluster resource>"
 $servicePrincipal = New-AzADServicePrincipal -Role Contributor -Scope "/subscriptions/$subscriptionId"
 
 $servicePrincipalClientId =  $servicePrincipal.ApplicationId.ToString()
@@ -141,7 +142,7 @@ $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 Bash スクリプト *disable-monitoring.sh* では、対話型デバイス ログインが使用されます。 非対話型のログインを望む場合、既存のサービス プリンシパルを使用するか、「[前提条件](container-insights-enable-arc-enabled-clusters.md#prerequisites)」の説明にある必須のアクセス許可が与えられたサービス プリンシパルを新規作成できます。 サービス プリンシパルを使用するには、*enable-monitoring.sh* Bash スクリプトに使用するサービス プリンシパルの --client-id、--client-secret、--tenant-id 値を渡す必要があります。
 
 ```bash
-subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
+subscriptionId="<subscription Id of the Azure Arc-connected cluster resource>"
 servicePrincipal=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${subscriptionId}")
 servicePrincipalClientId=$(echo $servicePrincipal | jq -r '.appId')
 

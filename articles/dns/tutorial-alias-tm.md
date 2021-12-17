@@ -6,19 +6,18 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 04/19/2021
 ms.author: rohink
-ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e0101133c68142845a8ada50d9921d341cf10ad0
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "77149951"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738794"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>チュートリアル: Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する 
 
 Azure Traffic Manager プロファイルを参照するためのドメイン名の頂点に対するエイリアス レコードを作成することができます  一例として contoso.com があります。 サービスのリダイレクトを使用する代わりに、ゾーンから直接 Traffic Manager プロファイルを参照するように Azure DNS を構成できます。 
-
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -27,7 +26,6 @@ Azure Traffic Manager プロファイルを参照するためのドメイン名�
 > * Traffic Manager プロファイルを作成する。
 > * エイリアス レコードを作成する。
 > * エイリアス レコードをテストする。
-
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -39,24 +37,28 @@ Azure DNS にドメインをホストする手順については、「[チュー
 このチュートリアルで使用するドメインの例は contoso.com ですが、独自のドメイン名を使用してください。
 
 ## <a name="create-the-network-infrastructure"></a>ネットワーク インフラストラクチャを作成する
+
 まず、Web サーバーを配置する仮想ネットワークとサブネットを作成します。
+
 1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. ポータルの左上にある **[リソースの作成]** を選択します。 検索ボックスに「*resource group*」と入力し、**RG-DNS-Alias-TM** という名前のリソース グループを作成します。
 3. **[+ リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。
 4. **VNet-Servers** という名前の仮想ネットワークを作成します。 それを **RG-DNS-Alias-TM** リソース グループに配置し、サブネットに **SN-Web** という名前を付けます。
 
 ## <a name="create-two-web-server-virtual-machines"></a>Web サーバー仮想マシンを 2 つ作成する
+
 1. **[リソースの作成]**  >  **[Windows Server 2016 VM]** を選択します。
 2. 名前として「**Web-01**」と入力し、この VM を **RG-DNS-Alias-TM** リソース グループに配置します。 ユーザー名とパスワードを入力し、**[OK]** を選択します。
 3. **[サイズ]** では、8 GB RAM の SKU を選択します。
 4. **[設定]** で、**VNet-Server** 仮想ネットワークと **SN-Web** サブネットを選択します。
 5. **[パブリック IP アドレス]** を選択します。 **[割り当て]** で **[静的]** を選択し、**[OK]** を選択します。
-6. パブリック受信ポートでは、 **[HTTP]**  >  **[HTTPS]**  >  **[RDP (3389)]** を選択し、 **[OK]** を選択します。
+6. パブリック受信ポートでは、 **[HTTP (80)]**  >  **[HTTPS (443)]**  >  **[RDP (3389)]** を選択し、 **[OK]** を選択します。
 7. **[概要]** ページで、 **[作成]** を選択します。 この手順は、完了するまでに数分かかります。
 
 この手順を繰り返して、**Web-02** という名前の別の仮想マシンを作成します。
 
 ### <a name="add-a-dns-label"></a>DNS ラベルを追加する
+
 Traffic Manager でパブリック IP アドレスを使用するには、DNS ラベルが必要です。
 1. **RG-DNS-Alias-TM** リソース グループで、**Web-01-ip** パブリック IP アドレスを選択します。
 2. **[設定]** の下で **[構成]** を選択します。

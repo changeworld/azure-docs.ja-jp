@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: c2e1ddbfb87df40a0e3683e7bca7539c26191a7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e88a1b87dae62b928f2238c6c525b6345b891337
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101671314"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112680042"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL の GROUP BY オプション
 
@@ -26,7 +26,7 @@ Synapse SQL によって、さまざまな GROUP BY オプションを実装し�
 
 [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest&preserve-view=true) T-SQL 句は、行のサマリー セットにデータを集計します。
 
-サーバーレス SQL プールでは、あらゆる種類の GROUP BY オプションをサポートしています。 専用 SQL プールでは、限られた数の GROUP BY オプションをサポートしています。
+サーバーレス SQL プールは GROUP BY オプションをサポートしません。 専用 SQL プールでは、限られた数の GROUP BY オプションをサポートしています。
 
 ## <a name="group-by-options-supported-in-dedicated-sql-pool"></a>専用 SQL プールでサポートされている GROUP BY オプション
 

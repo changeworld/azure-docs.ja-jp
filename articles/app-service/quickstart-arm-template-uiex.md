@@ -6,15 +6,15 @@ ms.author: msangapu
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.custom: subject-armqs, devx-track-azurecli
+ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: bce6bfb61eb59d1fa66c550a133ac8b6f8d7f2c5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 2940e407e88239aa1afec84137e72073b7a5028a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769007"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533227"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して App Service アプリを作成する
 
@@ -23,11 +23,11 @@ ms.locfileid: "107769007"
  環境が前提条件を満たしていて、[ARM テンプレート](../azure-resource-manager/templates/overview.md)の使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
 ::: zone pivot="platform-windows"
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-windows%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.web%2Fapp-service-docs-windows%2Fazuredeploy.json)
 ::: zone-end
 
 ::: zone pivot="platform-linux"
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-linux%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.web%2Fapp-service-docs-linux%2Fazuredeploy.json)
 ::: zone-end
 
 <hr/>
@@ -41,9 +41,9 @@ ms.locfileid: "107769007"
 ## <a name="2-review-the-template"></a>2. テンプレートを確認する
 
 ::: zone pivot="platform-windows"
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows)からのものです。 これは App Service プランおよび App Service アプリを Windows にデプロイします。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/app-service-docs-windows)からのものです。 これは App Service プランおよび App Service アプリを Windows にデプロイします。
 
-:::code language="json" source="~/quickstart-templates/101-app-service-docs-windows/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/app-service-docs-windows/azuredeploy.json":::
 
 <details>
 <summary>テンプレートには何のリソースとパラメーターが定義されていますか?</summary>
@@ -69,9 +69,9 @@ ms.locfileid: "107769007"
 </details>
 ::: zone-end
 ::: zone pivot="platform-linux"
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-app-service-docs-linux)からのものです。 これは App Service プランおよび App Service アプリを Windows にデプロイします。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/app-service-docs-linux)からのものです。 これは App Service プランおよび App Service アプリを Windows にデプロイします。
 
-:::code language="json" source="~/quickstart-templates/101-app-service-docs-linux/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/app-service-docs-linux/azuredeploy.json":::
 
 このテンプレートには、便宜上定義されている Azure リソースとパラメーターが含まれています。
 
@@ -106,24 +106,24 @@ ms.locfileid: "107769007"
 ::: zone pivot="platform-windows"
 Windows に .NET Framework アプリをデプロイするには、Azure CLI を使用して次のコードを実行します。 
 
-Replace <abbr title="有効な文字は、`a-z`、`0-9`、`-` です。">`<app-name>`</abbr> グローバルに一意のアプリ名 その他の <abbr title="Azure portal、Azure PowerShell、REST API を使用することもできます。">展開方法</abbr>については、[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)に関するページを参照してください。 [その他の Azure App Service テンプレートのサンプルについてはこちら](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sites)を参照してください。
+Replace <abbr title="有効な文字は、`a-z`、`0-9`、`-` です。"> \<app-name> </abbr> グローバルに一意のアプリ名 その他の <abbr title="Azure portal、Azure PowerShell、REST API を使用することもできます。">展開方法</abbr>については、[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)に関するページを参照してください。 [その他の Azure App Service テンプレートのサンプルについてはこちら](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sites)を参照してください。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
 az deployment group create --resource-group myResourceGroup \
 --parameters language=".net" helloWorld="true" webAppName="<app-name>" \
---template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-app-service-docs-windows/azuredeploy.json"
+--template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.web/app-service-docs-windows/azuredeploy.json"
 ```
 ::: zone-end
 ::: zone pivot="platform-linux"
 Linux で Python アプリを作成するには、次のコードを実行します。 
 
-Replace <abbr title="有効な文字は、`a-z`、`0-9`、`-` です。">`<app-name>`</abbr> グローバルに一意のアプリ名
+\<app-name\> は、グローバルに一意のアプリ名に置き換えてください。 有効な文字は、`a-z`、`0-9`、`-` です。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
 az deployment group create --resource-group myResourceGroup --parameters webAppName="<app-name>" linuxFxVersion="PYTHON|3.7" \
---template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-app-service-docs-linux/azuredeploy.json"
+--template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.web/app-service-docs-linux/azuredeploy.json"
 ```
 ::: zone-end
 
@@ -153,6 +153,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 ::: zone pivot="platform-linux"
 <details>
 <summary>異なる言語スタックはどのようにしてデプロイすればよいですか?</summary>
+ 
 別の言語スタックをデプロイするには、`linuxFxVersion` を適切な値で更新します。 次に示すのは例です。 現在のバージョンを表示するには、Cloud Shell で次のコマンドを実行します: `az webapp config show --resource-group myResourceGroup --name <app-name> --query linuxFxVersion`
 
 | Language    | 例:                                               |
@@ -190,4 +191,3 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 - Python と Postgres
 - [PHP と MySQL](tutorial-php-mysql-app.md)
 - [Java を使用して Azure SQL データベースに接続する](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
-- [カスタム ドメインをマップする](app-service-web-tutorial-custom-domain-uiex.md)

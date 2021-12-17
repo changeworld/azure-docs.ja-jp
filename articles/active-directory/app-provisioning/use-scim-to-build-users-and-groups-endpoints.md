@@ -1,24 +1,24 @@
 ---
 title: Azure Active Directory からアプリにユーザーをプロビジョニングするための SCIM エンドポイントを構築する
-description: SCIM エンドポイントを開発し、SCIM API を Azure AD と統合し、Azure Active Directory を使用してクラウド アプリケーションへのユーザーとグループのプロビジョニングを自動的に行う方法を学習します。
+description: SCIM エンドポイントを開発し、SCIM API を Azure Active Directory と統合し、ユーザーとグループをクラウド アプリケーションへ自動でプロビジョニングする方法を学習します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 4e933000c8e700d8bfd193b542e3855b2fca26f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f1799b6a8fe0ff4feb69797deec11c29c69a81c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101689336"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990598"
 ---
-# <a name="tutorial-develop-a-sample-scim-endpoint"></a>チュートリアル:サンプルの SCIM エンドポイントを開発する
+# <a name="tutorial-develop-a-sample-scim-endpoint-in-azure-active-directory"></a>チュートリアル: Azure Active Directory でサンプルの SCIM エンドポイントを開発する
 
 新しいエンドポイントを最初から構築しなくても済むよう、[クロスドメイン ID 管理システム (SCIM)](https://aka.ms/scimoverview) を使い始めるための[リファレンス コード](https://aka.ms/scimreferencecode)を用意しています。 コードを必要とすることなく、わずか 5 分で、SCIM エンドポイントを立ち上げて稼働させることができます。
 

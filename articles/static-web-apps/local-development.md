@@ -5,19 +5,19 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: how-to
-ms.date: 04/02/2021
+ms.date: 10/21/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: e19d39a32d48ec55473bb957595d47ec5148e74b
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 7419eea1503d8d0692bd1b112226c8ce626d9776
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588787"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261578"
 ---
-# <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビュー用にローカル開発環境を設定する
+# <a name="set-up-local-development-for-azure-static-web-apps"></a>Azure Static Web Apps 用にローカル開発環境を設定する
 
-Azure Static Web Apps サイトには、クラウドに発行されると、同じアプリケーションであるかのように連携して動作する多くのサービスがあります。 次のようなサービスがあります。
+Azure Static Web Apps サイトでは、クラウドに発行されると、同じアプリケーションであるかのように連携して動作する多くのサービスがリンクされます。 次のようなサービスがあります。
 
 - 静的 Web アプリ
 - Azure Functions API
@@ -35,6 +35,9 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 - API エンドポイントへのプロキシ (Azure Functions Core Tools を通じて利用可能)
 - モックの認証と承認サーバー
 - ローカル ルートと構成設定の適用
+
+> [!NOTE]
+> 多くの場合、フロントエンド フレームワークを使用して構築されたサイトでは、`api` ルートで要求を正しく処理するためにプロキシ構成設定が必要です。 Azure Static Web Apps CLI を使用する場合、プロキシの場所の値は `/api` になり、CLI を使用しない場合、この値は `http://localhost:7071/api` になります。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -60,6 +63,7 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 - **既存の Azure Static Web Apps サイト**: お持ちでない場合は、[vanilla-api](https://github.com/staticwebdev/vanilla-api/generate?return_to=/staticwebdev/vanilla-api/generate) スターター アプリから開始してください。
 - **npm を含む [Node.js](https://nodejs.org)** : [npm](https://www.npmjs.com/) へのアクセスを含む [Node.js LTS](https://nodejs.org) バージョンを実行します。
 - **[Visual Studio Code](https://code.visualstudio.com/)** : API アプリケーションのデバッグに使用されますが、CLI には必要ありません。
+- **[Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing)** : API をローカルで実行するのに必要。
 
 ## <a name="get-started"></a>作業開始
 
@@ -67,7 +71,9 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 
 1. CLI をインストールします。
 
-    `npm install -g @azure/static-web-apps-cli`
+    ```console
+    npm install -g @azure/static-web-apps-cli
+    ```
 
 1. アプリケーションで必要な場合は、アプリをビルドします。
 
@@ -77,9 +83,11 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 
 1. CLI を起動します。
 
-    `swa start`
+    ```console
+    swa start
+    ```
 
-1. http://localhost:4280 に移動して、ブラウザーでアプリを表示します。
+1. `http://localhost:4280` に移動して、ブラウザーでアプリを表示します。
 
 ### <a name="other-ways-to-start-the-cli"></a>CLI を起動するその他の方法
 
@@ -87,8 +95,8 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 |--- | --- |
 | 特定のフォルダーを処理する | `swa start ./output-folder` |
 | 実行中のフレームワーク開発サーバーを使用する | `swa start http://localhost:3000` |
-| フォルダー内の Functions アプリを起動する | `swa start ./output-folder --api ./api` |
-| 実行中の Functions アプリを使用する | `swa start ./output-folder --api http://localhost:7071` |
+| フォルダー内の Functions アプリを起動する | `swa start ./output-folder --api-location ./api` |
+| 実行中の Functions アプリを使用する | `swa start ./output-folder --api-location http://localhost:7071` |
 
 ## <a name="authorization-and-authentication-emulation"></a>承認と認証のエミュレーション
 
@@ -113,7 +121,7 @@ Azure Static Web Apps CLI は、Azure で実装されている[セキュリテ�
 
 - `/.auth/me` エンドポイント、または関数エンドポイントを使用して、ユーザーの[クライアント プリンシパル](./user-information.md)を取得できます。
 
-- `./auth/logout` に移動すると、クライアント プリンシパルがクリアされ、モック ユーザーがログアウトします。
+- `/.auth/logout` に移動すると、クライアント プリンシパルがクリアされ、モック ユーザーがログアウトします。
 
 ## <a name="debugging"></a>デバッグ
 
@@ -125,9 +133,14 @@ Azure Static Web Apps CLI は、Azure で実装されている[セキュリテ�
 
 1. Visual Studio Code で API アプリケーション フォルダーを開き、デバッグ セッションを開始します。
 
-1. 静的サーバーと API サーバーのアドレスを順番にリストして、`swa start` コマンドに渡します。
+1. 次のコマンドで Static Web Apps CLI を起動します。
 
-    `swa start http://localhost:<DEV-SERVER-PORT-NUMBER> --api=http://localhost:7071`
+
+    ```console
+    swa start http://localhost:<DEV-SERVER-PORT-NUMBER> --api-location http://localhost:7071
+    ```
+
+    開発サーバーのポート番号で `<DEV-SERVER-PORT-NUMBER>` を置き換えてください。
 
 次のスクリーンショットは、一般的なデバッグ シナリオでのターミナルを示しています。
 

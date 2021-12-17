@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Graph の概要
 description: Azure Resource Graph サービスによってサブスクリプションとテナントにまたがるリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: overview
-ms.openlocfilehash: b5df124d07b8ecfb20f5dec08830d8156e8df2cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 740a629bd37309d71e153b38c13d8fe91b4e08d3
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919143"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324416"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 
@@ -88,7 +88,7 @@ Azure Resource Graph エクスプローラーは Azure portal に組み込まれ
 
 Resource Graph は、Azure CLI、Azure PowerShell、Azure SDK for Python などをサポートします。 どの言語も、クエリの構造は同じです。 以下、Resource Graph を有効にする方法を手段ごとに示します。
 
-- [Azure portal および Resource Graph エクスプローラー](./first-query-portal.md) 
+- [Azure portal および Resource Graph エクスプローラー](./first-query-portal.md)
 - [Azure CLI](./first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](./first-query-powershell.md#add-the-resource-graph-module)
 - [Python](./first-query-python.md#add-the-resource-graph-library)

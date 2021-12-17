@@ -1,23 +1,26 @@
 ---
-title: Azure Data Factory でのルックアップ アクティビティ
-description: ルックアップ アクティビティを使用して外部ソースから値を検索する方法を説明します。 この出力は、後続のアクティビティによってさらに参照できます。
-author: linda33wj
-ms.author: jingwang
+title: ルックアップ アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory および Azure Synapse Analytics でルックアップ アクティビティを使用して、外部ソースから値を検索する方法について説明します。 この出力は、後続のアクティビティによってさらに参照できます。
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 02/25/2021
-ms.openlocfilehash: 4b2fb49899b6a676520fe0912dd122dd72cce023
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.openlocfilehash: 5a605177c741f3da23c5cce2b3ecf3e757a8af32
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712914"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758087"
 ---
-# <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
+# <a name="lookup-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics でのルックアップ アクティビティ
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-ルックアップ アクティビティは、Azure Data Factory がサポートするすべてのデータ ソースからデータセットを取得できます。 それを使用して、オブジェクト名をハード コーディングする代わりに、後続のアクティビティで操作するオブジェクトを動的に決定できます。 オブジェクトの例として、ファイルとテーブルがあります。
+ルックアップ アクティビティは、Azure Data Factory および Azure Synapse Analytics パイプラインでサポートされている任意のデータ ソースからデータセットを取得できます。 それを使用して、オブジェクト名をハード コーディングする代わりに、後続のアクティビティで操作するオブジェクトを動的に決定できます。 オブジェクトの例として、ファイルとテーブルがあります。
 
 ルックアップ アクティビティは、構成ファイルやテーブルの内容を読み取って返します。 また、クエリまたはストアド プロシージャの実行結果を返します。 出力には、シングルトン値または属性の配列を指定できます。これは、ForEach アクティビティなどの後続のコピー、変換、または制御フロー アクティビティで使用できます。
 
@@ -32,7 +35,7 @@ ms.locfileid: "101712914"
 
 次のデータ ソースがルックアップ アクティビティでサポートされています。 
 
-[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
+[!INCLUDE [data-factory-v2-supported-data-stores](includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
 ## <a name="syntax"></a>構文
 
@@ -108,7 +111,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
 
 この例では、パイプラインに 2 つのアクティビティ、**ルックアップ** と **コピー** が含まれています。 コピー アクティビティは、お使いの Azure SQL Database インスタンスの SQL テーブルから Azure Blob Storage にデータをコピーします。 SQL テーブルの名前は、Blob Storage 内の JSON ファイルに格納されます。 ルックアップ アクティビティは、実行時にテーブル名を検索します。 JSON は、この方法を使用して動的に変更されます。 パイプラインやデータセットを再デプロイする必要はありません。 
 
-この例では、最初の行のみのルックアップを示します。 すべての行のルックアップについて、および ForEach アクティビティで結果をチェーンするには、「[Azure Data Factory を使って複数のテーブルを一括コピーする](tutorial-bulk-copy.md)」のサンプルを参照してください。
+この例では、最初の行のみのルックアップを示します。 すべての行のルックアップについて、および ForEach アクティビティで結果をチェーンするには、[複数のテーブルの一括コピー](tutorial-bulk-copy.md)に関する記事のサンプルを参照してください。
 
 
 ### <a name="pipeline"></a>パイプライン
@@ -389,7 +392,7 @@ Lookup アクティビティと提案される回避策のいくつかの制限�
 | | |
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
+Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプラインでサポートされているその他の制御フロー アクティビティを参照してください。 
 
 - [パイプラインの実行アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)

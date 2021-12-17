@@ -1,17 +1,17 @@
 ---
 title: Java と Eclipse を使用して Azure Functions アプリを作成する
 description: Java と Eclipse を使用して、単純な HTTP によってトリガーしたサーバーレス アプリを Azure Functions に公開するためのハウツー ガイド。
-author: jeffhollan
+author: ggailey777
 ms.topic: how-to
 ms.date: 07/01/2018
-ms.author: jehollan
+ms.author: glenga
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 7dd881d130b9df19335ac64be501553af99d58d8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3720ac243fd90be23c18f760977dc2a0d13e0412
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179546"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112989113"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java と Eclipse を使用して初めての関数を作成する 
 
@@ -51,7 +51,7 @@ Maven は、_artifactId_ という名前の新しいフォルダーに、プロ�
 > 関数をローカルで実行およびデバッグするには、[Azure Functions Core Tools、バージョン 2](functions-run-local.md#v2) をインストールする必要があります。
 
 1. 生成されたプロジェクトを右クリックし、 **[別のユーザーとして実行]** と **[Maven ビルド]** を選択します。
-1. **[構成の編集]** ダイアログで、 **[目標]** フィールドと **[名前]** フィールドに `package` を入力し、 **[実行]** を選択します。 関数コードがビルドされ、パッケージ化されます。
+1. **[構成の編集]** ダイアログで、 **[目標]** フィールドに「`package`」と入力し、 **[実行]** を選択します。 関数コードがビルドされ、パッケージ化されます。
 1. ビルドが完了したら、目標と名前に `azure-functions:run` を指定して前述のように別の実行構成を作成します。 **[実行]** を選択して IDE で関数を実行します。
 
 関数のテストが完了したら、コンソール ウィンドウのランタイムを終了します。 アクティブにして同時にローカルで実行できる関数ホストは 1 つだけです。

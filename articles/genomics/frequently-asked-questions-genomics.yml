@@ -1,0 +1,72 @@
+### YamlMime:FAQ
+metadata:
+  title: 一般的な質問 - FAQ
+  titleSuffix: Microsoft Genomics
+  description: 技術情報、SLA、料金など、Microsoft Genomics サービスの使用に関連する一般的な質問の回答を得ることができます。
+  services: genomics
+  author: vigunase
+  manager: cgronlun
+  ms.author: vigunase
+  ms.service: genomics
+  ms.topic: troubleshooting
+  ms.date: 12/07/2017
+  ms.openlocfilehash: 053835683a94f20a8d91cce969fe94f7e66e5556
+  ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/31/2021
+  ms.locfileid: "123258603"
+title: 'Microsoft Genomics: よく寄せられる質問'
+summary: "この記事には、Microsoft Genomics に関連するよく寄せられる質問が記載されています。 Microsoft Genomics サービスの詳細については、「[Microsoft Genomics とは](overview-what-is-genomics.md)」を参照してください。 トラブルシューティングの詳細については、「[Troubleshooting Guide](troubleshooting-guide-genomics.md)」(トラブルシューティング ガイド) を参照してください。 \n"
+sections:
+- name: 無視
+  questions:
+  - question: >
+      Microsoft Genomics で GATK4 ワークフローを実行する方法
+    answer: >
+      Microsoft Genomics サービスの config.txt ファイルで、process_name を `gatk4` に指定します。 通常の課金レートで課金されることに注意してください。
+  - question: >
+      出力の圧縮を有効にするには、どうすればよいですか。
+    answer: >
+      出力の圧縮にオプションの引数を使用して、出力 vcf または gvcf を圧縮することができます。 これは、`.gz` (bgzip output) および `.tbi` (tabix output) ファイルを生成するために、vcf または gvcf 出力に対して `-bgzip` の後に`-tabix` を実行することと同等です。 `bgzip` では vcf または gvcf ファイルを圧縮し、`tabix` では圧縮されたファイル用のインデックスを作成します。 引数はブール値であり、vcf 出力の場合は既定で `false` に設定され、gcvf 出力の場合は既定で `true` に設定されます。 コマンド ライン上で使用するには、`-bz` または `--bgzip-output` を `true` (bgzip および tabix を実行) または `false` として指定します。 この引数を config.txt ファイル内で使用するには、ファイルに `bgzip_output: true` または `bgzip_output: false` を追加します。
+  - question: >
+      Microsoft Genomics の SLA はどうなっていますか。
+    answer: >
+      マイクロソフトは、ワークフロー API 要求を受信するために 99.9% の時間において Microsoft Genomics サービスを利用できることを保証します。 詳細については、[SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/) のページを参照してください。
+  - question: >
+      Microsoft Genomics の使用量は請求書にどのように表示されますか。
+    answer: >
+      Microsoft Genomics は、ワークフローあたりの処理ギガベースに基づいて課金されます。 詳細については、[価格](https://azure.microsoft.com/pricing/details/genomics/)に関するページをご覧ください。
+  - question: >
+      `msgen` クライアントで利用できるすべてのコマンドと引数の一覧はどこで確認できますか。
+    answer: >
+      利用可能なコマンドと引数の完全な一覧は、`msgen help` を実行すると表示されます。 それ以上の引数が提供されていない場合は、`submit`、`list`、`cancel`、`status` のそれぞれについて、利用可能なヘルプ セクションの一覧が表示されます。 特定のコマンドのヘルプを表示するには、「`msgen help command`」と入力します。たとえば、「`msgen help submit`」と入力するとすべての送信オプションの一覧が表示されます。
+  - question: >
+      `msgen` クライアントで最もよく使用されるコマンドは何ですか。
+    answer: "最もよく使用されるコマンドは、次のような `msgen` クライアントの引数です。 \n\n |**コマンド**          |  **フィールドの説明** |\n |:--------------------|:-------------         |\n |`list`               |送信済みジョブの一覧を返します。 引数については、`msgen help list` を参照してください。  |\n |`submit`             |ワークフロー要求をサービスに送信します。 引数については、`msgen help submit` を参照してください。|\n |`status`             |`--workflow-id` で指定されたワークフローの状態を返します。 参照 `msgen help status`. |\n |`cancel`             |`--workflow-id` で指定されたワークフローの処理をキャンセルする要求を送信します。 参照 `msgen help cancel`. |\n"
+  - question: >
+      `--api-url-base` の値はどこで取得できますか。
+    answer: >
+      Azure Portal に移動して、Genomics アカウント ページを開きます。 **[管理]** 見出しの下の **[アクセス キー]** を選択します。 ここに、API URL とアクセス キーの両方が表示されます。
+  - question: >
+      `--access-key` の値はどこで取得できますか。
+    answer: >
+      Azure Portal に移動して、Genomics アカウント ページを開きます。 **[管理]** 見出しの下の **[アクセス キー]** を選択します。 ここに、API URL とアクセス キーの両方が表示されます。
+  - question: >
+      2 つのアクセス キーが必要なのはなぜですか。
+    answer: >
+      サービスの使用を中断せずにアクセス キーを更新 (再生成) したい場合は、2 つのアクセス キーが必要です。 たとえば、最初のキーを更新する場合は、すべての新しいワークフローで 2 番目のキーを使用する必要があります。 次に、最初のキーを使用しているワークフローがすべて完了するまで待ってから、最初のキーを更新します。
+  - question: >
+      ストレージ アカウント キーはマイクロソフトで保存されますか。
+    answer: >
+      ストレージ アカウント キーは、入力ファイルの読み取りと出力ファイルの書き込みを行うための Microsoft Genomics サービスの短期的なアクセス トークンの作成に使用されます。 トークンの既定の有効期間は 48 時間です。 トークンの有効期間は、送信コマンドの `-sas/--sas-duration` オプション (値は時間単位) を使用して変更できます。
+  - question: >
+      顧客データは Microsoft Genomics に格納されますか。
+    answer: >
+      いいえ。 Microsoft Genomics に顧客データは一切格納されません。
+  - question: >
+      どのようなゲノム リファレンスを使用できますか。
+    answer: "次のリファレンスがサポートされています。\n\n |リファレンス              | `-pa/--process-args` の値 |\n |:-------------         |:-------------                 |\n |b37                    | `R=b37m1`                     |\n |hg38                   | `R=hg38m1`                    |      \n |hg38 (alt 分析なし) | `R=hg38m1x`                   |  \n |hg19                   | `R=hg19m1`                    |    \n"
+  - question: "コマンドライン引数はどのような形式の構成ファイルにすればよいですか。 \n"
+    answer: "msgen は、次の形式の構成ファイルを認識します。\n* すべてのオプションが、値とキーをコロンで区切ったキー/値のペアで指定されている。\n  空白は無視されます。\n* `#` で始まる行は無視されます。\n* 長い形式のコマンド行引数は、先頭のダッシュを削除して単語間のダッシュをアンダースコアに置き換えることにより、キーに変換できます。 いくつかの変換の例を次に示します。\n\n  |コマンドライン引数            | 構成ファイルの行 |\n  |:-------------                   |:-------------                 |\n  |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |\n  |`-k/--access-key KEY`            | *access_key:KEY*              |      \n  |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  \n"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n次のリソースを使用して、Microsoft Genomics の使用を開始します。\n- Microsoft Genomics サービス経由で最初のワークフローを実行して使用を開始します。 [Microsoft Genomics サービス経由でワークフローを実行する](quickstart-run-genomics-workflow-portal.md)\n- Microsoft Genomics サービスで処理する独自のデータを送信する。[ペアリングされた FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [複数の FASTQ または BAM](quickstart-input-multiple.md)"

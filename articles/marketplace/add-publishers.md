@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/07/2021
-ms.openlocfilehash: d7e5890201afeae5b88e3edff8d0ed2af278f308
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: f28e9f2da86a810ca8737505938e3115540232c9
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107920"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007069"
 ---
 # <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>コマーシャル マーケットプレース プログラムに新しい発行元を追加する
 
@@ -29,7 +29,7 @@ ms.locfileid: "107107920"
 
 ## <a name="add-new-publishers"></a>新しい発行元の追加
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165507)にサインインします。
 1. 右上で、 **[設定]**  >  **[アカウント設定]** の順に選択します。
 1. **組織のプロファイル** で、**識別子** を選択します。
 1. **[発行元]** セクションで、 **[発行元の追加]** を選択します。

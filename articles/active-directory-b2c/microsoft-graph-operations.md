@@ -3,31 +3,41 @@ title: Microsoft Graph を使用してリソースを管理する
 titleSuffix: Azure AD B2C
 description: Microsoft Graph API を呼び出し、アプリケーション ID を使用してプロセスを自動化して、Azure AD B2C テナントのリソースを管理する方法。
 services: B2C
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
-ms.custom: project-no-code
-ms.author: mimart
+ms.date: 10/08/2021
+ms.custom: project-no-code, ignite-fall-2021, b2c-support
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 41336d59d51685d5daf78a1809ce6c0df2cd6124
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7d64e4991a71849f8a0269dcfa8eff32164ef75
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781315"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133714"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
 
 Microsoft Graph では、お使いの Azure AD B2C ディレクトリ内のリソースを管理できます。 次の Microsoft Graph API 操作は、ユーザー、ID プロバイダー、ユーザーフロー、カスタム ポリシー、およびポリシー キーなど、Azure AD B2C リソースの管理に対してサポートされています。 次のセクションの各リンクは、その操作の Microsoft Graph API リファレンス内の対応するページを対象としています。 
+
+> [!NOTE]
+> また、Azure サブスクリプションにリンクされている対応の Azure リソースと共に、Azure AD B2C ディレクトリ自体をプログラムによって作成することもできます。 この機能は Microsoft Graph API ではなく、Azure REST API を通じて公開されます。 詳細については、「[B2C テナント - 作成](/rest/api/activedirectory/b2c-tenants/create)」を参照してください。
+
+Microsoft Graph API を使用した Azure AD B2C ユーザーの移行については、こちらのビデオをご覧ください。
+
+>[!Video https://www.youtube.com/embed/9BRXBtkBzL4]
 
 ## <a name="prerequisites"></a>[前提条件]
 
 MS Graph API を使用し、Azure AD B2C テナント内のリソースを操作するには、そのためのアクセス許可を付与するアプリケーション登録が必要になります。 「[Microsoft Graph を使用して Azure AD B2C を管理する](microsoft-graph-get-started.md)」という記事の手順に従って、管理アプリケーションで使用できるアプリケーション登録を作成します。 
 
 ## <a name="user-management"></a>[ユーザー管理]
+> [!NOTE]
+> Azure AD B2C では、現在のところ、ディレクトリ オブジェクトに対する高度なクエリ機能はサポートされていません。 これは、クエリ パラメーター `$count` および `$search` と、`$filter` クエリ パラメーターの演算子 Not (`not`)、Not equals (`ne`)、Ends with (`endsWith`) がサポートされていないことを意味します。 詳細については、[Microsoft Graph のクエリ パラメーター](/graph/query-parameters)と [Microsoft Graph の高度なクエリ機能](/graph/aad-advanced-queries)に関するページを参照してください。
+
 
 - [ユーザーの一覧表示](/graph/api/user-list)
 - [コンシューマー ユーザーを作成する](/graph/api/user-post-users)
@@ -37,7 +47,7 @@ MS Graph API を使用し、Azure AD B2C テナント内のリソースを操作
 
 ## <a name="user-phone-number-management-beta"></a>ユーザーの電話番号の管理 (ベータ)
 
-[SMS または音声通話](identity-provider-local.md#phone-sign-in-preview)あるいは[多要素認証](multi-factor-authentication.md)を使用してサインインするためにユーザーが使用できる電話番号。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/phoneauthenticationmethod) に関する記事を参照してください。
+[SMS または音声通話](sign-in-options.md#phone-sign-in)あるいは[多要素認証](multi-factor-authentication.md)を使用してサインインするためにユーザーが使用できる電話番号。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/phoneauthenticationmethod) に関する記事を参照してください。
 
 - [追加](/graph/api/authentication-post-phonemethods)
 - [リスト](/graph/api/authentication-list-phonemethods)
@@ -49,9 +59,12 @@ MS Graph API を使用し、Azure AD B2C テナント内のリソースを操作
 
 ![電話によるサインインを有効にする](./media/microsoft-graph-operations/enable-phone-sign-in.png)
 
+> [!NOTE]
+> 現在のベータ版では、この API は、国番号と電話番号の間にスペースを入れて電話番号が格納されている場合にのみ機能します。 Azure AD B2C サービスでは、このスペースは現在既定では追加されていません。
+
 ## <a name="self-service-password-reset-email-address-beta"></a>セルフサービス パスワード リセットのメール アドレス (ベータ)
 
-パスワードをリセットするために[ユーザー名サインイン アカウント](identity-provider-local.md#username-sign-in)で使用できるメール アドレス。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/emailauthenticationmethod) に関する記事を参照してください。
+パスワードをリセットするために[ユーザー名サインイン アカウント](sign-in-options.md#username-sign-in)で使用できるメール アドレス。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/emailauthenticationmethod) に関する記事を参照してください。
 
 - [追加](/graph/api/emailauthenticationmethod-post)
 - [リスト](/graph/api/emailauthenticationmethod-list)
@@ -129,6 +142,7 @@ Microsoft Graph API のポリシー キーの最上位レベルのリソース�
 ## <a name="application-extension-properties"></a>アプリケーション拡張機能プロパティ
 
 - [拡張機能プロパティの一覧表示](/graph/api/application-list-extensionproperty)
+- [拡張機能プロパティの削除](/graph/api/application-delete-extensionproperty)
 
 Azure AD B2C で提供されているディレクトリには、ユーザーごとに 100 個のカスタム属性を保持できます。 ユーザーフローの場合、これらの拡張機能プロパティは、[Azure portal を使用して管理します](user-flow-custom-attributes.md)。 カスタム ポリシーの場合、ポリシーが拡張機能プロパティに値を初めて書き込むときに、Azure AD B2C によってプロパティが作成されます。
 
@@ -140,12 +154,18 @@ Azure AD B2C 監査ログにアクセスする方法の詳細については、�
 
 ## <a name="conditional-access"></a>条件付きアクセス
 
-- [すべての条件付きアクセス ポリシーの一覧](/graph/api/conditionalaccessroot-list-policies?view=graph-rest-beta&tabs=http)
+- [すべての条件付きアクセス ポリシーの一覧](/graph/api/conditionalaccessroot-list-policies?tabs=http)
 - [条件付きアクセス ポリシーのプロパティとリレーションシップを読む](/graph/api/conditionalaccesspolicy-get)
 - [新しい条件付きアクセス ポリシーを作成する](/graph/api/resources/application)
 - [条件付きアクセス ポリシーを更新する](/graph/api/conditionalaccesspolicy-update)
 - [条件付きアクセス ポリシーを削除する](/graph/api/conditionalaccesspolicy-delete)
 
+## <a name="how-to-programmatically-manage-microsoft-graph"></a>プログラムで Microsoft Graph を管理する方法
+
+Microsoft Graph を管理するには、アプリケーションのアクセス許可を使用してアプリケーションとして実行するか、委任されたアクセス許可を使用できます。 委任されたアクセス許可では、アプリが要求するアクセス許可にユーザーまたは管理者が同意します。 目的のリソースに対する呼び出しを行うときにサインインしたユーザーとして振る舞う権限を、アプリに委任します。 アプリケーションのアクセス許可は、サインインしているユーザーを必要とせず、アプリケーションのアクセス許可を必要とするアプリによって使用されます。 この理由から、管理者だけがアプリケーションのアクセス許可に同意できます。
+
+> [!NOTE]
+> ユーザー フローまたはカスタム ポリシーでサインインするユーザーの委任されたアクセス許可を、Microsoft Graph の委任されたアクセス許可に対して使用することはできません。
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>コード サンプル:プログラムによってユーザー アカウントを管理する方法
 
 このコード サンプルは、[Microsoft Graph SDK](/graph/sdks/sdks-overview) を使用して Microsoft Graph API と対話する .NET Core コンソール アプリケーションです。 このコードは、API を呼び出して、Azure AD B2C テナント内のユーザーをプログラムで管理する方法を示しています。
@@ -175,6 +195,9 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 
 アプリケーションで、実行可能なコマンドの一覧が表示されます。 たとえば、すべてのユーザーの取得、単一ユーザーの取得、ユーザーの削除、ユーザーのパスワードの更新、一括インポートなどです。
 
+> [!NOTE]
+> アプリケーションでユーザー アカウントのパスワードを更新するには、アプリケーションに[ユーザー管理者ロールを付与する](microsoft-graph-get-started.md#optional-grant-user-administrator-role)必要があります。
+ 
 ### <a name="code-discussion"></a>コードの説明
 
 このサンプル コードでは、Microsoft Graph にアクセスする高品質かつ効率的で回復性があるアプリケーションを簡単に構築できるように設計されている、[Microsoft Graph SDK](/graph/sdks/sdks-overview) を使用します。
@@ -233,4 +256,4 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 <!-- LINK -->
 
 [graph-objectIdentity]: /graph/api/resources/objectidentity
-[graph-user]: (https://docs.microsoft.com/graph/api/resources/user)
+[graph-user]: /graph/api/resources/user

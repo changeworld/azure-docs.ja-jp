@@ -4,15 +4,16 @@ description: Azure Data Factory を使用してオンプレミスの Hadoop ク�
 ms.author: yexu
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: 9959a37d9b68d756437a3b4f0d75a2d63385758e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e5a1569f0f1c2d8eea2c13f458c0f3a09a666f04
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100367794"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216671"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Azure Data Factory を使用してオンプレミスの Hadoop クラスターから Azure Storage にデータを移行する 
 
@@ -65,7 +66,7 @@ Data Factory では既定で、HTTPS プロトコル経由の暗号化された�
 
 この画像は、パブリック インターネット経由でのデータの移行を示しています。
 
-![パブリック ネットワーク経由でデータを移行するためのソリューション アーキテクチャを示す図](media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-public-network.png)
+:::image type="content" source="media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-public-network.png" alt-text="パブリック ネットワーク経由でデータを移行するためのソリューション アーキテクチャを示す図":::
 
 - このアーキテクチャでは、データはパブリック インターネット経由で HTTPS を使用して安全に転送されます。 
 - Data Factory DistCp モードはパブリック ネットワーク環境で使用することをお勧めします。 既存の強力なクラスターを活用して、最適なコピー スループットを実現できます。 また、Data Factory の柔軟なスケジュール設定と、統合された監視エクスペリエンスの利点も得られます。
@@ -74,7 +75,7 @@ Data Factory では既定で、HTTPS プロトコル経由の暗号化された�
 
 この画像は、プライベート リンク経由でのデータの移行を示しています。 
 
-![プライベート ネットワーク経由でデータを移行するためのソリューション アーキテクチャを示す図](media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-private-network.png)
+:::image type="content" source="media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-private-network.png" alt-text="プライベート ネットワーク経由でデータを移行するためのソリューション アーキテクチャを示す図":::
 
 - このアーキテクチャでは、データは Azure ExpressRoute 経由でプライベート ピアリングリンクを介して移行されます。 データがパブリック インターネット経由で転送されることはありません。
 - DistCp ツールでは、Azure Storage 仮想ネットワーク エンドポイントを使用した ExpressRoute プライベート ピアリングはサポートされていません。 データを移行するには、統合ランタイム経由で Data Factory のネイティブ機能を使用することをお勧めします。
@@ -92,7 +93,7 @@ Data Factory では既定で、HTTPS プロトコル経由の暗号化された�
 - HDFS に対して認証を行うには、[Windows (Kerberos) または匿名のいずれか](./connector-hdfs.md#linked-service-properties)を使用できます。 
 - Azure Blob Storage に接続するために複数の認証の種類がサポートされています。  [Azure リソースのマネージド ID](./connector-azure-blob-storage.md#managed-identity) を使用することを強くお勧めします。 マネージド ID は Azure Active Directory (Azure AD) で自動的に管理される Data Factory ID をベースに構築されており、リンクされたサービス定義で資格情報を指定せずにパイプラインを構成できます。 または、[サービス プリンシパル](./connector-azure-blob-storage.md#service-principal-authentication)、[共有アクセス署名](./connector-azure-blob-storage.md#shared-access-signature-authentication)、または[ストレージ アカウント キー](./connector-azure-blob-storage.md#account-key-authentication)を使用して BLOB ストレージに対する認証を行うこともできます。 
 - Data Lake Storage Gen2 に接続するために複数の認証の種類もサポートされています。  [Azure リソースのマネージド ID](./connector-azure-data-lake-storage.md#managed-identity) を使用することを強くお勧めしますが、[サービス プリンシパル](./connector-azure-data-lake-storage.md#service-principal-authentication)または[ストレージ アカウント キー](./connector-azure-data-lake-storage.md#account-key-authentication)を使用することもできます。 
-- Azure リソースのマネージド ID を使用しない場合は、簡単にするために、[Azure Key Vault に資格情報を格納](./store-credentials-in-key-vault.md)して、Data Factory のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。 これも [CI/CD のベスト プラクティス](./continuous-integration-deployment.md#best-practices-for-cicd)です。 
+- Azure リソースのマネージド ID を使用しない場合は、簡単にするために、[Azure Key Vault に資格情報を格納](./store-credentials-in-key-vault.md)して、Data Factory のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。 これも [CI/CD のベスト プラクティス](./continuous-integration-delivery.md#best-practices-for-cicd)です。 
 
 ### <a name="initial-snapshot-data-migration"></a>初回のスナップショット データ移行 
 
@@ -116,7 +117,7 @@ HDFS に多くのファイルがある場合、フィルター条件に一致す
 
 HDFS から Azure Blob Storage にデータを移行するために、次のパイプラインを考慮してください。 
 
-![価格パイプラインを示す図](media/data-migration-guidance-hdfs-to-azure-storage/pricing-pipeline.png)
+:::image type="content" source="media/data-migration-guidance-hdfs-to-azure-storage/pricing-pipeline.png" alt-text="価格パイプラインを示す図":::
 
 次の情報の場合を考えてみましょう。 
 
@@ -129,7 +130,7 @@ HDFS から Azure Blob Storage にデータを移行するために、次のパ�
 
 この前提条件に基づく推定料金は次のとおりです。 
 
-![料金計算を示す表](media/data-migration-guidance-hdfs-to-azure-storage/pricing-table.png)
+:::image type="content" source="media/data-migration-guidance-hdfs-to-azure-storage/pricing-table.png" alt-text="料金計算を示す表":::
 
 > [!NOTE]
 > これは仮定の料金例です。 実際の料金は、環境の実際のスループットによって変わります。

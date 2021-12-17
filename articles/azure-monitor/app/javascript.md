@@ -4,23 +4,23 @@ description: ページ ビューとセッション数、Web クライアント�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 04cda044b002e226c49f8647d4705d7c0f2a514e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6e3b7601605eecafa969eec78b82b863580ecc2e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565267"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235746"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
 Web ページまたはアプリのパフォーマンスと使用状況について調べます。 [Application Insights](app-insights-overview.md) をページ スクリプトに追加すると、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。 エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。 また、JavaScript コードにトレースの呼び出しを挿入することで、Web ページ アプリケーションのさまざまな機能がどのように使用されているかを追跡できます。
 
-短い JavaScript コードを追加するだけで、Application Insights をあらゆる Web ページで使用できます。 Web サービスが [Java](java-get-started.md) または [ASP.NET](asp-net.md) の場合は、サーバー側 SDK をクライアント側 JavaScript SDK と共に使用して、アプリのパフォーマンスを総合的に理解することができます。
+短い JavaScript コードを追加するだけで、Application Insights をあらゆる Web ページで使用できます。 Web サービスが [Java](java-in-process-agent.md) または [ASP.NET](asp-net.md) の場合は、サーバー側 SDK をクライアント側 JavaScript SDK と共に使用して、アプリのパフォーマンスを総合的に理解することができます。
 
 ## <a name="adding-the-javascript-sdk"></a>JavaScript SDK を追加する
 
 > [!IMPORTANT]
-> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=js)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+> インストルメンテーション キーよりも、[接続文字列](./sdk-connection-string.md?tabs=js)を使用することをお勧めします。 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 接続文字列により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 1. まず Application Insights リソースが必要です。 リソースとインストルメンテーション キーがまだない場合は、[新しいリソースの作成手順](create-new-resource.md)に従います。
 2. (手順 1. の) JavaScript テレメトリの送信先となるリソースの "_インストルメンテーション キー_" ("iKey" とも呼ばれます) または [接続文字列](#connection-string-setup)をコピーします。これを Application Insights JavaScript SDK の `instrumentationKey` または `connectionString` 設定に追加します。
@@ -186,7 +186,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | loggingLevelTelemetry | **内部** Application Insights エラーをテレメトリとして送信します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) | numeric<br/> 1 |
 | diagnosticLogInterval | 内部ログ キューの (内部) ポーリング間隔 (ミリ秒) | numeric<br/> 10000 |
 | samplingPercentage | 送信されるイベントの割合。 既定値は 100 で、すべてのイベントが送信されます。 大規模なアプリケーションでデータ上限を維持する場合は、これを設定します。 | numeric<br/>100 |
-| autoTrackPageVisitTime | true の場合、ページビューに関して、前にインストルメント化されたページのビュー時間が追跡されてテレメトリとして送信されます。また、現在のページビューについて新しいタイマーが開始されます。 | boolean<br/>false |
+| autoTrackPageVisitTime | true の場合、ページ ビューに関して、_前_ にインストルメント化されたページのビュー時間が追跡されてテレメトリとして送信されます。また、現在のページ ビューについて新しいタイマーが開始されます。 これは `PageVisitTime` という名前のカスタム メトリック (単位: `milliseconds`) として送信され、Date の [now()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now) 関数 (使用可能な場合) を使用して計算されます。now() が使用できない場合 (IE8 以下) は、(new Date()).[getTime()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime) にフォールバックされます。 既定値は false です。 | boolean<br/>false |
 | disableAjaxTracking | true の場合、Ajax 呼び出しは自動収集されません。 | boolean<br/> false |
 | disableFetchTracking | true の場合、フェッチ要求は自動収集されません。|boolean<br/>true |
 | overridePageViewDuration | true の場合、trackPageView の既定の動作が変わり、trackPageView の呼び出し時にページビュー期間の終了を記録します。 false の場合に、trackPageView にカスタム期間が指定されていないと、Navigation Timing API を使用してページ ビューのパフォーマンスが計算されます。 |boolean<br/>
@@ -218,7 +218,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enable&#8203;AjaxErrorStatusText | true の場合、失敗した AJAX 要求の依存関係イベントに応答エラー データ テキストを含めます。 | boolean<br/> false |
 | enable&#8203;AjaxPerfTracking |ブラウザーの window.performance の追加のタイミングを検索し、レポートされる `ajax` (XHR および fetch) のレポートされるメトリックに含めることを可能にするフラグを設定します。 | boolean<br/> false |
 | maxAjaxPerf&#8203;LookupAttempts | window.performance のタイミング (使用可能な場合) を検索する最大回数。すべてのブラウザーが、XHR 要求の終了をレポートする前に window.performance を設定するわけではないため、これは必須です。fetch 要求の場合、これは要求の完了後に追加されます。| numeric<br/> 3 |
-| ajaxPerfLookupDelay | `ajax` 要求で windows.performance のタイミングの検索を再試行するまでの待ち時間。時間はミリ秒単位であり、setTimeout() に直接渡されます。 | numeric<br/> 25 ms |
+| ajaxPerfLookupDelay | `ajax` 要求で window.performance のタイミングの検索を再試行するまでの待ち時間の量。時間はミリ秒単位であり、直接 setTimeout() に渡されます。 | numeric<br/> 25 ms |
 | enableUnhandled&#8203;PromiseRejection&#8203;Tracking | true の場合、未処理の Promise 拒否が自動収集され、JavaScript エラーとしてレポートされます。 disableExceptionTracking が true (例外を追跡しない) の場合、この構成値は無視され、未処理の Promise 拒否はレポートされません。 | boolean<br/> false |
 | disable&#8203;InstrumentationKey&#8203;Validation | true の場合、インストルメンテーション キーの検証チェックはバイパスされます。 | boolean<br/>false |
 | enablePerfMgr | 有効にすると (true)、perfEvents を (doPerf() ヘルパーを使用して) 生成するためにインストルメント化されたコードのローカル perfEvents が作成されます。 これは、使用量に基づいて SDK 内で、または必要に応じて独自のインストルメント化されたコード内で、パフォーマンスの問題を識別するために使用できます。 [詳細については、基本ドキュメントを参照してください](https://github.com/microsoft/ApplicationInsights-JS/blob/master/docs/PerformanceMonitoring.md)。 v2.5.7 以降 | boolean<br/>false |
@@ -279,7 +279,7 @@ cfg: { // Application Insights Configuration
 
 ``` 
 
-クライアントが通信するサードパーティのサーバーが `Request-Id` と `Request-Context` ヘッダーを受け入れられず、構成を更新できない場合は、`correlationHeaderExcludeDomains` 構成プロパティを使用してそれらを除外リストに入れる必要があります。 このプロパティでは、ワイルドカードがサポートされています。
+クライアントが通信するサードパーティのサーバーが `Request-Id` と `Request-Context` ヘッダーを受け入れられず、構成を更新できない場合は、`correlationHeaderExcludedDomains` 構成プロパティを使用してそれらを除外リストに入れる必要があります。 このプロパティでは、ワイルドカードがサポートされています。
 
 サーバー側は、これらのヘッダーが存在する接続を受け入れる必要があります。 サーバー側の `Access-Control-Allow-Headers` 構成によっては、`Request-Id` と `Request-Context` を手動で追加してサーバー側の一覧を拡張することが必要になることがよくあります。
 

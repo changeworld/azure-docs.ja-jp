@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 10/14/2020
+ms.date: 10/11/2021
 ms.author: chmutali
-ms.openlocfilehash: 3260787dec4ae26cd6ef7cc3bd562f39db8e3655
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39bd92afa4de12eafce7bff9f73f6f43d6e18f42
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99526977"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993513"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>チュートリアル:Azure AD から SAP SuccessFactors への属性の書き戻しを構成する
 このチュートリアルの目的は、Azure AD から SAP SuccessFactors Employee Central に属性を書き戻すための手順を説明することです。 
@@ -290,6 +290,7 @@ SAP SuccessFactors では、"*候補リスト*" は、ユーザーが選択で�
    | 11 | mobile | cellPhoneNumber | *telephoneNumber* を Azure AD から SuccessFactors の勤務先または職場の電話番号に転送するには、このマッピングを使用します。 |
    | 12 | 10606 | cellPhoneType | この定数値は、携帯電話に関連付けられている SuccessFactors ID の値です。 SuccessFactors の環境に合わせてこの値を更新します。 この値を設定する手順については、「[phoneType の定数値を取得する](#retrieve-constant-value-for-phonetype)」セクションを参照してください。 |
    | 13 | false | cellPhoneIsPrimary | 携帯電話番号に対してプライマリ フラグを設定するには、この属性を使用します。 有効な値は true または false です。 |
+   | 14 | [extensionAttribute1-15] | userId | このマッピングを使用して、同じユーザーに対して複数の雇用記録がある場合に、SuccessFactors のアクティブ レコードが必ず更新されるようにします。 詳細については、[UserID を使用した書き戻しの有効化](../app-provisioning/sap-successfactors-integration-reference.md#enabling-writeback-with-userid)に関するページを参照してください。 |
  
 1. 属性マッピングを検証して確認します。 
  

@@ -1,18 +1,18 @@
 ---
 title: エンドユーザー認証 - Python と Data Lake Storage Gen1 - Azure
 description: Python と Azure Active Directory を使用した Azure Data Lake Storage Gen1 によるエンドユーザー認証を行う方法について説明します
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
-ms.author: twooley
+ms.author: normesta
 ms.custom: has-adal-ref, devx-track-python
-ms.openlocfilehash: c7ee58dec4e8bc04eb07695378e0d4dc973b6705
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bb7afacaafa40319ceb39f9d9035e752cfb4ad0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92109087"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077726"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Azure Data Lake Storage Gen1 による Python を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -56,20 +56,20 @@ pip install azure-datalake-store
 
 ## <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
 
-1. 任意の IDE で、**mysample.py** などの新しい Python アプリケーションを作成します。
+1. 任意の IDE で、などの新しい Python アプリケーションを作成し `mysample.py` ます。
 
 2. 必要なモジュールをインポートするには、次のスニペットを追加します
 
-    ```
-    ## Use this for Azure AD authentication
-    from msrestazure.azure_active_directory import AADTokenCredentials
+   ```python
+   ## Use this for Azure AD authentication
+   from msrestazure.azure_active_directory import AADTokenCredentials
 
-    ## Required for Azure Data Lake Storage Gen1 account management
-    from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
-    from azure.mgmt.datalake.store.models import DataLakeStoreAccount
+   ## Required for Azure Data Lake Storage Gen1 account management
+   from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
+   from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
-    ## Required for Azure Data Lake Storage Gen1 filesystem management
-    from azure.datalake.store import core, lib, multithread
+   ## Required for Azure Data Lake Storage Gen1 filesystem management
+   from azure.datalake.store import core, lib, multithread
 
     # Common Azure imports
     import adal
@@ -80,7 +80,7 @@ pip install azure-datalake-store
     import logging, pprint, uuid, time
     ```
 
-3. mysample.py に対する変更を保存します。
+3. 変更をに保存 `mysample.py` します。
 
 ## <a name="end-user-authentication-with-multi-factor-authentication"></a>多要素認証によるエンドユーザー認証
 

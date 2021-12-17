@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache でアクセス ポリシーを使用する
 description: カスタムのアクセス ポリシーを作成して適用し、Azure HPC Cache 内のストレージ ターゲットへのクライアント アクセスを制限する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/11/2021
-ms.author: v-erkel
-ms.openlocfilehash: eb9e71cc8ec463077e3b12b8738203a4945a2eab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: femila
+ms.openlocfilehash: 9c4182ee334f85aabc7811484f4eaa20885d928a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471780"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015354"
 ---
 # <a name="control-client-access"></a>クライアント アクセスの制御
 

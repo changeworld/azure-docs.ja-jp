@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.openlocfilehash: e7114dae2a9cfef4a9b710831beb63a65c862643
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/22/2021
+ms.openlocfilehash: fe6b364d7616bef8901f6623615c473dee56f98a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785378"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260039"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>チュートリアル:Hadoop クラスターを使用してデータを変換する初めてのパイプラインを作成する
 > [!div class="op_single_selector"]
@@ -51,7 +52,7 @@ Azure Data Factory の詳細については、[Azure Data Factory の概要](dat
 
 次に示すのは、このチュートリアルで構築するサンプル データ ファクトリの **ダイアグラム ビュー** です。 **MyFirstPipeline** には Hive 型の 1 つのアクティビティがあり、**AzureBlobInput** データセットを入力として使用し、**AzureBlobOutput** データセットを出力として生成します。
 
-![Diagram view in Data Factory tutorial](media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
+:::image type="content" source="media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png" alt-text="Diagram view in Data Factory tutorial":::
 
 
 このチュートリアルでは、**adfgetstarted** Azure BLOB コンテナーの **inputdata** フォルダーに、input.log という名前のファイルが 1 つ含まれています。 このログ ファイルには、2016 年の 1 月、2 月、および 3 月の 3 か月間のエントリが含まれています。 入力ファイル内の各月のサンプル行を次に示します。

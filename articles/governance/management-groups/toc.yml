@@ -38,7 +38,11 @@
   items:
     - name: '次のことを学びます:サブスクリプション ガバナンス戦略を作成する'
       displayName: 'governance, module'
-      href: /learn/modules/build-cloud-governance-strategy-azure/3-create-subscription-governance-strategy
+      href: /learn/modules/build-cloud-governance-strategy-azure/10-create-subscription-governance-strategy
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
 - name: 操作方法ガイド
   expanded: true
   items:
@@ -46,6 +50,9 @@
       href: ./manage.md
     - name: リソース階層の保護
       href: ./how-to/protect-resource-hierarchy.md
+- name: トラブルシューティング
+  displayName: 'errors, violation'
+  href: ./troubleshoot/general.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -61,14 +68,14 @@
     - name: Azure SDK for Python
       href: /python/api/azure-mgmt-managementgroups/azure.mgmt.managementgroups
     - name: REST
-      href: /rest/api/resources/managementgroups
+      href: /rest/api/managementgroups
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.management/managementgroups
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure の更新情報
+      href: 'https://azure.microsoft.com/updates/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: UserVoice
-      href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345064'
+      href: 'https://feedback.azure.com/d365community/forum/675ae472-f324-ec11-b6e6-000d3a4f0da0?c=594fc5b1-f324-ec11-b6e6-000d3a4f0da0'

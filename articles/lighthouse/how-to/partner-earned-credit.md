@@ -1,14 +1,14 @@
 ---
 title: パートナー ID をリンクして、委任されたリソースに対する影響を追跡する
-description: パートナー ID を関連付けて、Azure Lighthouse を通じて管理している顧客のリソースでパートナー獲得クレジット (PEC) を受け取る方法について説明します。
-ms.date: 02/12/2021
+description: パートナー ID を関連付けて、Azure Lighthouse を通じて管理している顧客のリソースでパートナー獲得クレジット (PEC) を受け取ります。
+ms.date: 07/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 4c18aae38570ab3fd84df7d45fb18e35404158be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72a31da9cf9927de00f005ce374488c0de9eba47
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100372095"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288727"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>パートナー ID をリンクして、委任されたリソースに対する影響を追跡する 
 
@@ -24,7 +24,7 @@ Azure Lighthouse アクティビティの認識を得るには、管理テナン
 
 1. 管理しているテナント内に[サービス プリンシパルのユーザー アカウントを作成](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)します。 この例では、このサービス プリンシパルのアカウントに *"プロバイダー オートメーション アカウント"* という名前を使用します。
 1. そのサービス プリンシパル アカウントを使用して、管理しているテナント内の[関連付けられている MPN ID にリンク](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id)します。 これを行う必要があるのは 1 回だけです。
-1. [ARM テンプレート](onboard-customer.md)または[マネージド サービス オファー](publish-managed-services-offers.md)を使用して顧客をオンボードするときに、[PEC の資格がある Azure 組み込みロール](/partner-center/azure-roles-perms-pec)を持つユーザーとして、プロバイダー オートメーション アカウントを含む認可を必ず含めてください。
+1. [ARM テンプレート](onboard-customer.md)または[マネージド サービス プラン](publish-managed-services-offers.md)を使用して顧客をオンボードするときに、[PEC の資格がある Azure 組み込みロール](/partner-center/azure-roles-perms-pec)を持つユーザーとして、プロバイダー オートメーション アカウントを含む認可を必ず少なくとも 1 つは含めてください。 PEC を適用するためには、Just-In-Time の[適格な認可](create-eligible-authorizations.md)としてではなく永続的な割り当てとしてこのロールを付与する必要があります。
 
 この手順のようにすると、管理しているすべての顧客テナントがパートナー ID に関連付けられます。 プロバイダー オートメーション アカウントを使用して、顧客テナントでの認証や操作を行う必要はありません。
 
@@ -32,7 +32,7 @@ Azure Lighthouse アクティビティの認識を得るには、管理テナン
 
 ## <a name="add-your-partner-id-to-previously-onboarded-customers"></a>以前にオンボードされた顧客にパートナー ID を追加する
 
-既に顧客をオンボードしている場合、プロバイダー オートメーション アカウントのサービス プリンシパルを追加するために、別のデプロイを実行する必要はありません。 代わりに、その顧客のテナントで作業するためのアクセス権が既に与えられているユーザー アカウントに、**関連付けられている MPN ID** をリンクすることができます。 [PEC の資格がある Azure 組み込みロール](/partner-center/azure-roles-perms-pec)がアカウントに付与されていることを確認してください。
+既に顧客をオンボードしている場合、プロバイダー オートメーション アカウントのサービス プリンシパルを追加するために、別のデプロイを実行する必要はありません。 代わりに、その顧客のテナントで作業するためのアクセス権が既に与えられているユーザー アカウントに、**関連付けられている MPN ID** をリンクすることができます。 [PEC の資格がある Azure 組み込みロール](/partner-center/azure-roles-perms-pec)が、永続的なロールの割り当てとしてアカウントに付与されていることを確認してください。
 
 アカウントが、管理しているテナント内の[関連付けられている MPN ID にリンク](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id)されると、その顧客への影響に対する表彰を追跡できるようになります。
 

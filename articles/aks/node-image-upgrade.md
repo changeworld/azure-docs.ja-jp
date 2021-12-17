@@ -2,19 +2,19 @@
 title: Azure Kubernetes Service (AKS) ノード イメージのアップグレード
 description: AKS クラスター ノードとノード プールのイメージをアップグレードする方法について説明します。
 ms.service: container-service
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/25/2020
 ms.author: jpalma
-ms.openlocfilehash: 4f6ac01c1d4df288c823142abbc93e981048d8db
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dba73de70d9e650aba780cf4552ecac7714cb99e
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767531"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841811"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) ノード イメージのアップグレード
 
-AKS では、ノード上のイメージのアップグレードがサポートされているため、最新の OS とランタイムの更新プログラムを使用して最新の状態にすることができます。 AKS は、最新の更新プログラムを使用して 1 週間に 1 つの新しいイメージを提供するため、Linux または Windows の修正プログラムを含む最新の機能については、ノードのイメージを定期的にアップグレードすることをお勧めします。 この記事では、AKS クラスター ノード イメージをアップグレードする方法と、Kubernetes のバージョンをアップグレードせずにノード プール イメージを更新する方法について説明します。
+AKS では、ノード上のイメージのアップグレードがサポートされているため、最新の OS とランタイムの更新プログラムを使用して最新の状態にすることができます。 AKS は、最新の更新プログラムを使用して 1 週間に 1 つの新しいイメージを提供するため、Linux または Windows の修正プログラムを含む最新の機能については、ノードのイメージを定期的にアップグレードすることをお勧めします。 お客様には AKS のリリース ノートを通じてイメージのアップグレードが通知されますが、すべてのリージョンに更新プログラムが展開されるまで最大で 1 週間かかる場合があります。 この記事では、AKS クラスター ノード イメージをアップグレードする方法と、Kubernetes のバージョンをアップグレードせずにノード プール イメージを更新する方法について説明します。
 
 AKS によって提供される最新のイメージの詳細については、[AKS のリリース ノート](https://github.com/Azure/AKS/releases)をご覧ください。
 

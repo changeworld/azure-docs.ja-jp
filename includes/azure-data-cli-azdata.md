@@ -2,13 +2,13 @@
 author: MikeRayMSFT
 ms.service: sql
 ms.topic: include
-ms.date: 10/19/2020
+ms.date: 07/30/2021
 ms.author: mikeray
-ms.openlocfilehash: 9600ddd3bf0da8a7d72af237a10325910c7ed535
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 45f5e2920b090e37eb35cf2eea2b0bae5c9495d3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "92309500"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737170"
 ---
-Azure Data CLI (`azdata`)
+Azure (`az`) CLI 向け `arcdata` 拡張機能

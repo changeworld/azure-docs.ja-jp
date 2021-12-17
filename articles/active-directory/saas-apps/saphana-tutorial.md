@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 08/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 1a1e155974b66dce9a036a20cdebe19ded81fed5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a122101ee6e42e3314386319c0b1cd15024eb3e3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98727083"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309084"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>チュートリアル: Azure Active Directory と SAP HANA の統合
 
@@ -47,8 +47,8 @@ SAP HANA と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SAP HANA では、**IDP** によって開始される SSO がサポートされます
-* SAP HANA では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
+* SAP HANA では、**IDP** Initiated SSO がサポートされます。
+* SAP HANA では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -192,10 +192,10 @@ SAP HANA では、**Just-In-Time プロビジョニング** がサポートさ�
 
 3. **[Add]\(追加\)** を選択して SAML IDP を追加します。  適切な SAML IDP を選択してから **[OK]** を選択します。
 
-4. **[External Identity]\(外部 ID\)** を追加するか (この例では BrittaSimon)、 **[Any]\(任意\)** を選択します。 **[OK]** をクリックします。
+4. **[外部 ID]** (この例では BrittaSimon) を追加します。 **[OK]** をクリックします。
 
    > [!Note]
-   > **[Any]\(任意\)** チェック ボックスがオフの場合、HANA のユーザー名は UPN でドメイン サフィックスの前のユーザーの名前と正確に一致している必要があります (つまり、BrittaSimon@contoso.com は HANA では BrittaSimon になります)。
+   > ユーザーの **[外部 ID]** フィールドに値を入力する必要があります。これは、Azure AD の SAML トークンの **[NameID]** フィールドと一致している必要があります。 **いずれの** チェックボックスもオンにしないでください。このオプションでは、IDP が NameID フィールドに SPProvderID プロパティを送信する必要がありますが、これは現在 Azure AD ではサポートされていません。 詳細については、[こちら](https://help.sap.com/viewer/b3ee5778bc2e4a089d3299b82ec762a7/2.0.05/en-US/db6db355bb571014b56eb25057daec5f.html)のドキュメントを参照してください。
 
 5. テストの場合は、すべての **XS** ロールをユーザーに割り当てます。
 
@@ -212,9 +212,9 @@ SAP HANA では、**Just-In-Time プロビジョニング** がサポートさ�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した SAP HANA に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [SAP HANA] タイルをクリックすると、SSO を設定した SAP HANA に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [SAP HANA] タイルをクリックすると、SSO を設定した SAP HANA に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-SAP HANA を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SAP HANA を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

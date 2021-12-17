@@ -2,23 +2,23 @@
 title: 発行者サービスの通信の例 (プレビュー) - Azure Active Directory Verifiable Credentials
 description: ID プロバイダーと発行者サービスの間の通信の詳細
 author: barclayn
-manager: davba
-ms.service: identity
+manager: karenh444
+ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 8771c61f96b244e0cc0bca1c61ceb8042b4a5b4c
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 6420825d8ed758658db0e652dc2b88fea91ce908
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220200"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994786"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>発行者サービスの通信の例 (プレビュー)
 
-検証可能な資格情報の発行者サービスは、お客様の組織の OpenID に準拠している ID プロバイダーによって生成された ID トークンからクレームを取得することによって、検証可能な資格情報を発行できます。 この記事では、Authenticator が ID プロバイダーと通信し、発行サービスに渡す正しい ID トークンを取得できるように、ID プロバイダーを設定する方法について説明します。 
+Azure AD の検証可能な資格情報サービスは、お客様の組織の OpenID に準拠している ID プロバイダーによって生成された ID トークンからクレームを取得することによって、検証可能な資格情報を発行できます。 この記事では、Authenticator が ID プロバイダーと通信し、発行サービスに渡す正しい ID トークンを取得できるように、ID プロバイダーを設定する方法について説明します。 
 
 > [!IMPORTANT]
 > Azure Active Directory Verifiable Credentials は、現在パブリック プレビュー段階です。
@@ -31,9 +31,9 @@ ms.locfileid: "106220200"
 | ------- | ----------- |
 | [付与タイプ] | 認可コードの付与タイプがサポートされている必要があります。 |
 | トークンの形式 | 暗号化されていないコンパクト JWT を生成する必要があります。 |
-| 署名アルゴリズム | RSA 256 を使用して署名された JWT を生成する必要があります。 |
+| 署名アルゴリズム | RS 256 を使用して署名された JWT を生成する必要があります。 |
 | 構成ドキュメント | OpenID Connect 構成ドキュメントと `jwks_uri` がサポートされている必要があります。 | 
-| クライアントの登録 | `vclient://openid/` の `redirect_uri` 値を使用したパブリック クライアントの登録がサポートされている必要があります。 | 
+| クライアントの登録 | `vcclient://openid/` の `redirect_uri` 値を使用したパブリック クライアントの登録がサポートされている必要があります。 | 
 | PKCE | セキュリティ上の理由から推奨されますが、必須ではありません。 |
 
 ID プロバイダーに送信される HTTP 要求の例は、下にあります。 ID プロバイダーは、OpenID Connect 認証標準に従って、これらの要求を受け入れて応答する必要があります。

@@ -13,14 +13,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: kegorman
-ms.openlocfilehash: 971f7c919595f915451faf9266ee3bb18b35087e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f41a089dc6757c36ba8fc262553a92b03147263
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677174"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823761"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure での Oracle アプリケーションおよびソリューションの概要
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 この記事では、Azure インフラストラクチャを使用して Oracle ソリューションを実行するための機能を紹介します。 Azure Marketplace で入手可能な [WebLogic Server Azure アプリケーション](oracle-weblogic.md)、[Oracle VM イメージ](oracle-vm-solutions.md)や、[Azure と Oracle Cloud Infrastructure (OCI) を相互接続する](oracle-oci-overview.md)機能の詳しい紹介も参照してください。
 
@@ -28,9 +30,9 @@ ms.locfileid: "101677174"
 
 Azure Marketplace で入手可能な Oracle Linux イメージの Oracle Database を使用して、Azure インフラストラクチャで Oracle データベースを実行します。
 
-* Oracle Database 12.1、12.2、および 18.3 Enterprise Edition 
+* Oracle Database 12.2、および 18.3 Enterprise Edition 
 
-* Oracle Database 12.1、12.2、および 18.3 Standard Edition
+* Oracle Database 12.2、および 18.3 Standard Edition
 
 * Oracle データベース 19.3
 
@@ -55,8 +57,6 @@ Azure Marketplace で入手可能な Oracle Linux イメージの Oracle Databas
 * Azure インフラストラクチャ上で、[Availability Zones](../../../availability-zones/az-overview.md) と組み合わせて [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956)、[FSFO を持つ Active Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)、[シャーディング](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)、または [GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html) を構成し、リージョン内の高可用性を実現します。 また、可用性とディザスター リカバリーを強化するために、これらの構成を複数の Azure リージョンにわたって設定することもできます。
 
 * [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) を使用して、Azure 内の Oracle Linux VM と、物理サーバーのディザスター リカバリーを調整および管理します。 
-
-* [Azure VMware Solution](../../../vmware-cloudsimple/oracle-real-application-clusters.md) または [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/) を使用して、Oracle Real Application Clusters (RAC) を Azure で有効にします。
 
 ## <a name="backup-oracle-workloads"></a>Oracle ワークロードのバックアップ
 

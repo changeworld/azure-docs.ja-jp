@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: danimir
-ms.author: danil
-ms.reviewer: wiassaf, sstein
-ms.date: 06/12/2020
-ms.openlocfilehash: 61033e3eb8264c1e462faac3e4553a855a1d06c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: AlainDormehlMSFT
+ms.author: aldorme
+ms.reviewer: mathoma, wiassaf
+ms.date: 10/18/2021
+ms.openlocfilehash: 3277952383d7a328c08a15b5958289ce322e01dd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592088"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239454"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>AI を使用してデータベース パフォーマンスの監視とトラブルシューティングを行う Intelligent Insights (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -59,11 +59,6 @@ Intelligent Insights は、過去 1 時間のデータベース ワークロー�
 | 検出 | イベントの期間中に、データベースで識別された検出。 15 の検出パターンがあります。 詳細については、[Intelligent Insights を使用したデータベース パフォーマンスに関する問題のトラブルシューティング](intelligent-insights-troubleshoot-performance.md)に関する記事をご覧ください。 |
 | 根本原因分析 | 人間が判読可能な形式で特定された、問題の根本原因分析。 一部の洞察には、可能な場合にパフォーマンス向上に関する推奨事項が含まれます。 |
 |||
-
-Azure SQL Analytics を伴う Intelligent Insights の使用に関する実践的な概要と、一般的な使用シナリオについては、このビデオをご覧ください。
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
->
 
 Intelligent Insights は、データベースのパフォーマンス問題の検出とトラブルシューティングで威力を発揮します。 Intelligent Insights を使用してデータベース パフォーマンスの問題を解決する方法については、「[Intelligent Insights を使用したパフォーマンスに関する問題のトラブルシューティング](intelligent-insights-troubleshoot-performance.md)」をご覧ください。
 

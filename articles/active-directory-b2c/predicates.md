@@ -3,20 +3,20 @@ title: 述語および PredicateValidations
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C のカスタム ポリシーを使用して、不適切な形式のデータが Azure AD B2C テナントに追加されないようにします。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/30/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 46f04c55b40d4f1bdbbf5fd55eb648d1d3294056
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52b4f376e26ffaef5e1ab6ef7ec0e43a9a3f07b4
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97108418"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131044443"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
 
@@ -77,7 +77,6 @@ IsLengthRange メソッドによって、文字列要求値の長さが、指定
 | ------- | ----------- | ----------- |
 | 最大値 | はい | 入力できる最大文字数です。 |
 | 最小値 | はい | 入力する必要がある最小文字数です。 |
-
 
 次の例は、文字列の長さ範囲を指定する `Minimum` および `Maximum` パラメーターを持つ IsLengthRange メソッドを示しています。
 
@@ -224,7 +223,6 @@ IsDateRange メソッドによって、日付要求値が、指定された最�
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語の検証に使用される識別子です。  |
-
 
 ## <a name="configure-password-complexity"></a>パスワードの複雑さの構成
 
@@ -424,7 +422,7 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
   <UserInputType>DateTimeDropdown</UserInputType>
   <PredicateValidationReference Id="CustomDateRange" />
 </ClaimType>
- ```
+```
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: c0c939a6a8323dfdfafddb46ccdb7d7ef3dd2f2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2fb9d2f6221928f093895914b8fc0082573a8b2
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89652660"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866267"
 ---
 # <a name="application-gateway-http-settings-configuration"></a>Application Gateway の HTTP 設定の構成
 
@@ -20,9 +20,12 @@ ms.locfileid: "89652660"
 
 ## <a name="cookie-based-affinity"></a>Cookie ベースのアフィニティ
 
-Azure Application Gateway では、ユーザー セッションを維持するために、ゲートウェイで管理される Cookie を使用します。 ユーザーが最初の要求を Application Gateway に送信すると、セッションの詳細を含むハッシュ値を使用して、応答にアフィニティ Cookie が設定されます。これにより、このアフィニティ Cookie を伝送する後続の要求は、持続性を維持するために同じバックエンド サーバーにルーティングされるようになります。 
+Azure Application Gateway では、ユーザー セッションを維持するために、ゲートウェイで管理される Cookie を使用します。 ユーザーが最初の要求を Application Gateway に送信すると、セッションの詳細を含むハッシュ値を使用して、応答にアフィニティ Cookie が設定されます。これにより、このアフィニティ Cookie を伝送する後続の要求は、持続性を維持するために同じバックエンド サーバーにルーティングされるようになります。
 
 この機能は、ユーザー セッションを同じサーバー上に維持する必要があり、ユーザー セッションのセッション状態がサーバー上にローカル保存される場合に便利です。 アプリケーションが Cookie ベースのアフィニティを処理できない場合は、この機能を使用できません。 使用するには、クライアントが Cookie をサポートしている必要があります。
+> [!NOTE]
+> 一部の脆弱性スキャンでは、Application Gateway アフィニティ Cookie にフラグが設定されることがあります。Secure フラグまたは HttpOnly フラグが設定されないためです。 これらのスキャンでは、Cookie のデータが一方向のハッシュで生成されることが考慮されません。 Cookie にはユーザー情報が含まれず、経路指定目的でのみ使用されます。 
+
 
 [Chromium ブラウザー](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule)では、[SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になりました。 CORS (クロス オリジン リソース共有) 要求のケースで、Cookie をサードパーティのコンテキストで送信する必要がある場合は、*SameSite=None; Secure* 属性を使用する必要があり、HTTPS 経由でのみ送信する必要があります。 それ以外の場合、HTTP のみのシナリオでは、ブラウザーはサードパーティのコンテキストで Cookie を送信しません。 Chrome のこの更新の目的は、セキュリティを強化し、クロスサイト リクエスト フォージェリ (CSRF) 攻撃を回避することです。 
 
@@ -76,7 +79,7 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 
 ## <a name="use-for-app-service"></a>[App Service 用に使用します]
 
-これは、Azure App Service バックエンドに必要な 2 つの設定を選択する UI 専用ショートカットです。 これにより、**バックエンド アドレスからホスト名を選択** できます。また、新しいカスタム プローブがまだない場合は作成されます。 (詳細については、この記事の「[バックエンド アドレスからホスト名を選択する](#pick-host-name-from-back-end-address)」設定のセクションを参照してください。)新しいプローブが作成されます。プローブのヘッダーはバックエンド メンバーのアドレスから選択されます。
+これは、Azure App Service バックエンドに必要な 2 つの設定を選択する UI 専用ショートカットです。 これにより、**バックエンド アドレスからホスト名を選択** できます。また、新しいカスタム プローブがまだない場合は作成されます。 (詳細については、この記事の [[バックエンド アドレスからホスト名を選択します]](#pick-host-name-from-back-end-address) 設定のセクションを参照してください)。新しいプローブが作成されます。プローブのヘッダーはバックエンド メンバーのアドレスから選択されます。
 
 ## <a name="use-custom-probe"></a>[カスタム プローブの使用]
 

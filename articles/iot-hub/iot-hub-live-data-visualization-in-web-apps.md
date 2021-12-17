@@ -1,23 +1,22 @@
 ---
 title: Web アプリでの IoT Hub データのリアルタイム データの視覚化
 description: Web アプリを使用して、センサーから収集されて IoT Hub に送信された気温と湿度のデータを視覚化します。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 53b5add7526b0c20487e8fe3adb0b8ebe207a2ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fd702d1c5516d8cc8b1ba163509cf34b233dcab6
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200036"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556137"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Web アプリで Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -25,27 +24,17 @@ ms.locfileid: "102200036"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-## <a name="what-you-learn"></a>学習内容
+この記事では、お使いのローカル コンピューターで実行されている node.js Web アプリを使って、IoT ハブで受信されるリアルタイム センサー データを視覚化する方法について説明します。 Web アプリをローカルで実行した後は、必要に応じて、Azure App Service で Web アプリをホストする手順に従うことができます。 Power BI を使用して IoT ハブのデータを視覚化したい場合は、[Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する方法](iot-hub-live-data-visualization-in-power-bi.md)に関するページを参照してください。
 
-このチュートリアルでは、お使いのローカル コンピューターで実行されている node.js Web アプリを使って、IoT ハブで受信されるリアルタイム センサー データを視覚化する方法について説明します。 Web アプリをローカルで実行した後は、必要に応じて、Azure App Service で Web アプリをホストする手順に従うことができます。 Power BI を使用して IoT ハブのデータを視覚化したい場合は、[Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する方法](iot-hub-live-data-visualization-in-power-bi.md)に関するページを参照してください。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="what-you-do"></a>作業内容
-
-* Web アプリがセンサー データの読み取りに使用する IoT Hub にコンシューマー グループを追加する
-* GitHub から Web アプリのコードをダウンロードする
-* Web アプリのコードを調べる
-* Web アプリに必要な IoT Hub の成果物を保持するために環境変数を構成する
-* 開発マシンで Web アプリを実行する
-* Web ページを開いて、IoT Hub からのリアルタイムの温度と湿度のデータを確認する
-* (省略可能) Azure CLI を使用して Azure App Service で Web アプリをホストする
-
-## <a name="what-you-need"></a>必要なもの
-
-* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 次の要件について取り上げられています。
+* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)に関するページや、[テレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
 
   * 有効な Azure サブスクリプション
   * サブスクリプションの IoT Hub
   * IoT Hub にメッセージを送信するクライアント アプリケーション
+
+* [Node.js](https://nodejs.org) バージョン 10.6 以降。 ノードのバージョンを確認するには、`node --version` を実行します。
 
 * [Git のダウンロード](https://www.git-scm.com/downloads)
 
@@ -70,7 +59,7 @@ az iot hub consumer-group create --hub-name YourIoTHubName --name YourConsumerGr
 IoT Hub は、いくつかの既定のアクセス ポリシーを使用して作成されます。 そのようなポリシーの 1 つとして **サービス** ポリシーがあります。これは、サービスが IoT Hub のエンドポイントを読み書きするのに十分なアクセス許可を提供します。 サービス ポリシーに準拠する IoT Hub の接続文字列を取得するには、次のコマンドを実行します。
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIotHub --policy-name service
+az iot hub connection-string show --hub-name YourIotHub --policy-name service
 ```
 
 接続文字列は次のようになります。

@@ -4,15 +4,15 @@ description: この記事では、Azure Functions を使用して Event Grid 経
 documentationcenter: .net
 author: spelluru
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 09/29/2021
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: afc0a5bf9b83363d1f4baab955b55148fe3a8498
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46dc7a9ac1b985c116162f60c58afb0e8dff9c3a
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95818482"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273161"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions"></a>チュートリアル:Azure Functions を使用して、Azure Event Grid 経由で受信した Azure Service Bus のイベントに応答する
 このチュートリアルでは、Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する方法について説明します。 
@@ -27,7 +27,7 @@ ms.locfileid: "95818482"
 > * Event Grid による関数と名前空間の接続
 > * Azure Functions を使用してメッセージを受信する
 
-[!INCLUDE [service-bus-event-grid-prerequisites](../../includes/service-bus-event-grid-prerequisites.md)]
+[!INCLUDE [service-bus-event-grid-prerequisites](./includes/service-bus-event-grid-prerequisites.md)]
 
 ## <a name="additional-prerequisites"></a>追加の前提条件
 [Visual Studio 2019](https://www.visualstudio.com/vs) をインストールし、**Azure の開発** ワークロードを追加します。 このワークロードには、Visual Studio での Azure Functions プロジェクトの作成、ビルド、デプロイに必要な **Azure Function Tools** が含まれています。 
@@ -44,6 +44,8 @@ ms.locfileid: "95818482"
 1. **発行** ウィザードの **[Target]\(ターゲット\)** ページで、 **[Target]\(ターゲット\)** に **[Azure]** を選択します。 
 1. **[特定のターゲット]** ページで **[Azure Function App (Windows)]** を選択します。 
 1. **[Functions インスタンス]** ページで **[新しい Azure 関数の作成]** を選択します。 
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/add-function-button.png" alt-text="Visual Studio - [発行] ダイアログ ボックスの関数の追加ボタンの画像。":::
 1. **[Function App (Windows)]** ページで、以下の手順に従います。
     1. 関数アプリの **名前** を入力します。
     1. Azure **サブスクリプション** を選択します。

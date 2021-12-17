@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 33661eafee6b180819b18d9a9a980eff1e2aeceb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e75fb11379ccbdff90d1acd1a3bce36b62bd8a1d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371551"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250865"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure App Configuration のベスト プラクティス
 
@@ -31,7 +31,7 @@ App Configuration には、キーを整理するために、次の 2 つの方�
 
 どちらか一方または両方のオプションを使用して、キーをグループ化できます。
 
-"*キー プレフィックス*" は、キーの先頭部分です。 キー名に同じプレフィックスを使用することによって、一連のキーを論理的にグループ化することができます。 プレフィックスに、URL パスのように区切り記号 (`/` など) で接続した複数の構成要素を含めることで、名前空間を作成できます。 さまざまなアプリケーション、コンポーネント サービス、環境に使用するキーを 1 つの App Configuration ストアに保管する際に、このような階層構造が役立ちます。
+"*キー プレフィックス*" は、キーの先頭部分です。 キー名に同じプレフィックスを使用することによって、一連のキーを論理的にグループ化することができます。 プレフィックスに、URL パスのように区切り記号 (`/` など) で接続した複数の構成要素を含めることで、名前空間を作成できます。 さまざまなアプリケーションとマイクロサービスに使用するキーを 1 つの App Configuration ストアに保管する際に、このような階層構造が役立ちます。
 
 キーとは、対応する設定の値を取得するために、アプリケーション コードから参照するものであるということに注意してください。 キーは変更しないでください。変更した場合、その都度、コードを修正する必要があります。
 
@@ -57,6 +57,14 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 「[ラベルを使用してさまざまな環境でさまざまな構成を有効にする](./howto-labels-aspnet-core.md)」に、完全な例が挙げられています。
 
+## <a name="references-to-external-data"></a>外部データへの参照
+
+App Configuration は、通常は構成ファイルや環境変数に保存する任意の構成データを格納するように設計されています。 ただし、データの種類によっては、他のソースに保存するのが適している場合もあります。 たとえば、シークレット情報は Key Vault に、ファイルは Azure Storage に、メンバーシップ情報は Azure AD グループに、顧客一覧はデータベースに格納するなどです。
+
+それでも、外部データへの参照をキーと値に保存することで、App Configuration を利用することができます。 [コンテンツ タイプを使用](./concept-key-value.md#use-content-type)して、各データ ソースを区別できます。 アプリケーションから参照が読み取られると、参照されたソースからデータが読み込まれます。 外部データの場所を変更した場合は、アプリケーション全体を更新して再デプロイするのではなく、App Configuration の参照を更新するだけで済みます。
+
+App Configuration の [Key Vault の参照](use-key-vault-references-dotnet-core.md)機能はこのケースの一例です。 これにより、アプリケーションに必要なシークレットを必要に応じて更新しながら、基となるシークレット自体は Key Vault に残すことができます。
+
 ## <a name="app-configuration-bootstrap"></a>App Configuration の準備
 
 アプリ構成ストアには、対応する接続文字列を Azure portal から入手してアクセスできます。 接続文字列は資格情報を含んでいるため、シークレットと見なされます。 これらのシークレットは Azure Key Vault に格納する必要があり、コードはそれらを取得するために Key Vault に対して認証を行う必要があります。
@@ -65,7 +73,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 ## <a name="app-or-function-access-to-app-configuration"></a>アプリまたは関数から App Configuration へのアクセス
 
-次のいずれかの方法を使用して、Web アプリまたは関数に App Configuration へのアクセスを提供できます。
+次のいずれかの方法を使用して、Web Apps または Azure Functions に App Configuration へのアクセスを提供できます。
 
 * Azure portal を介して、App Service のアプリケーション設定に App Configuration ストアへの接続文字列を入力します。
 * 接続文字列を Key Vault の App Configuration ストアに保存し、[App Service からそれを参照](../app-service/app-service-key-vault-references.md)します。
@@ -80,11 +88,13 @@ App Configuration に過剰な要求があると、調整や超過分料金が�
 
 * 個々のキーを監視するのではなく、1 つの "*センチネル キー*" を監視します。 そのセンチネル キーが変更された場合にのみ、すべての構成を更新します。 例については、「[ASP.NET Core アプリで動的な構成を使用する](enable-dynamic-configuration-aspnet-core.md)」を参照してください。
 
-* 変更を常にポーリングするのではなく、Azure Event Grid を使用して、構成が変更されたときに通知を受信します。 詳細については、[Azure App Configuration イベントの Web エンドポイントへのルーティング](./howto-app-configuration-event.md)に関する記事を参照してください。
+* 変更を常にポーリングするのではなく、Azure Event Grid を使用して、構成が変更されたときに通知を受信します。 詳しくは、「[App Configuration のデータ変更通知に Event Grid を使用する](./howto-app-configuration-event.md)」をご覧ください。
+
+* 要求を複数の App Configuration ストアに分散させます。 たとえば、グローバルにデプロイされたアプリケーションに、各地理的リージョンの異なるストアを使用します。 各 App Configuration ストアには、独自の要求クォータがあります。 このセットアップにより、スケーラビリティのモデルが提供され、単一障害点を回避できます。
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>App Configuration への構成データのインポート
 
-App Configuration には、Azure portal または CLI のいずれかを使用して、現在の構成ファイルから構成設定を一括[インポート](./howto-import-export-data.md)するオプションが用意されています。 また、同じオプションを使用して、関連するストア間などで App Configuration から値をエクスポートすることもできます。 GitHub リポジトリとの継続的な同期を設定する場合は、Microsoft の [GitHub Actions](./concept-github-action.md) を使用できます。これにより、App Configuration のメリットを得ながら、既存のソース管理手法を引き続き使用できます。
+App Configuration には、Azure portal または CLI のいずれかを使用して、現在の構成ファイルから構成設定を一括[インポート](./howto-import-export-data.md)するオプションが用意されています。 また、同じオプションを使用して、関連するストア間などで App Configuration からキーと値をエクスポートすることもできます。 GitHub または Azure DevOps のリポジトリとの継続的な同期を設定する場合は、Microsoft の [GitHub Actions](./concept-github-action.md) または [Azure パイプラインのプッシュ タスク](./push-kv-devops-pipeline.md)を使用できます。これにより、App Configuration を活用しながら、既存のソース管理手法を引き続き使用できます。
 
 ## <a name="multi-region-deployment-in-app-configuration"></a>App Configuration での複数リージョンのデプロイ
 
@@ -92,8 +102,10 @@ App Configuration はリージョン単位のサービスです。 リージョ�
 
 ## <a name="client-applications-in-app-configuration"></a>App Configuration でのクライアント アプリケーション 
 
-App Configuration に過剰な要求があると、調整や超過分料金が発生する可能性があります。 アプリケーションでは、現在利用できるキャッシュとインテリジェントな更新を利用して、送信される要求の数が最適化されます。 このプロセスは、構成ストアへの直接接続を避けることにより、大量のクライアント アプリケーションでミラー化できます。 代わりにクライアント アプリケーションはカスタム サービスに接続し、このサービスによって構成ストアとの通信が行われます。 このプロキシ ソリューションを使用することで、クライアント アプリケーションが構成ストアの調整制限に近づかないようにすることができます。 詳細については、[FAQ](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration) に関するページを参照してください。  
+クライアント アプリケーションで App Configuration を使用するときは、2 つの重要な要素を考慮する必要があります。 まず、クライアント アプリケーションで接続文字列を使用する場合、App Configuration ストアのアクセス キーを一般に公開するというリスクを負うことになります。 次に、標準的なスケールのクライアント アプリケーションでも、App Configuration ストアに対する要求が過剰に行われる場合がないとはいえず、それが超過料金や帯域幅調整を招く可能性があります。 帯域幅調整の詳細については、[FAQ](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration) を参照してください。
+
+これらの問題に対処するために、クライアント アプリケーションと App Configuration ストアとの間にはプロキシサービスを使用することをお勧めします。 プロキシ サービスであれば、認証情報の漏えいというセキュリティの問題を伴うことなく、App Configuration ストアに対する認証を安全に行うことができます。 プロキシ サービスは、いずれかの App Configuration プロバイダー ライブラリを使用して作成できるので、組み込みのキャッシュ機能と更新機能を活用して App Configuration に送信される要求のボリュームを最適化することができます。 App Configuration プロバイダーの使用について詳しくは、クイックスタートとチュートリアルの記事を参照してください。 プロキシ サービスでは、そのキャッシュからクライアント アプリケーションに構成が提供されるので、このセクションで前述した 2 つの問題のリスクを回避することができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [キーと値](./concept-key-value.md)
+* [キーと値](./concept-key-value.md) 

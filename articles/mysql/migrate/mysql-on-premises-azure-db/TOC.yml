@@ -1,0 +1,60 @@
+- name: オンプレミスの MySQL から Azure Database for MySQL に移行する
+  items:
+    - name: 概要
+      items:
+        - name: はじめに
+          href: 01-mysql-migration-guide-intro.md
+        - name: 代表的なユース ケース
+          href: 02-representative-use-case.md
+    - name: 移行前
+      items:
+        - name: 評価
+          href: 03-assessment.md
+        - name: 計画
+          href: 04-planning.md
+        - name: 移行方法
+          href: 05-migration-methods.md
+        - name: Test Plans
+          href: 06-test-plans.md
+        - name: パフォーマンス ベースライン
+          href: 07-performance-baselines.md
+    - name: データ移行
+      items:
+        - name: データ移行
+          href: 08-data-migration.md
+        - name: MySQL Workbench を使用したデータ移行
+          href: 09-data-migration-with-mysql-workbench.md
+    - name: 移行後の管理
+      items:
+        - name: 移行後の管理
+          href: 10-post-migration-management.md
+        - name: Optimization
+          href: 11-optimization.md
+        - name: 事業継続とディザスター リカバリー (BCDR)
+          href: 12-business-continuity-and-disaster-recovery.md
+        - name: セキュリティ
+          href: 13-security.md
+        - name: まとめ
+          href: 14-summary.md
+    - name: サンプル アプリケーション
+      href: 15-appendix.md
+    - name: リソース
+      items:
+        - name: mysqldump または phpmyadmin でデータを移行する
+          href: ../../concepts-migrate-dump-restore.md
+          displayName: 'migrate, mysqldump'
+        - name: dbForge Studio for MySQL を使用したデータの移行
+          href: ../../concepts-migrate-dbforge-studio-for-mysql.md
+          displayName: 'migrate, dbforge'
+        - name: MySQL Workbench を使用してデータを移行する
+          href: ../../concepts-migrate-import-export.md
+          displayName: 'import , migrate, export'
+        - name: MySQL Workbench を使用して RDS MySQL データを移行する
+          href: ../../how-to-migrate-rds-mysql-workbench.md
+          displayName: 'import , migrate, export'
+        - name: DMS を使用した最小限のダウンタイムでの移行
+          href: ../../howto-migrate-online.md
+          displayName: 'migrate, dms, database migration service'
+        - name: 一般的なエラーのトラブルシューティング
+          href: ../../howto-troubleshoot-common-errors.md
+          displayName: 'SUPER privilege, DBA role, Access is denied'

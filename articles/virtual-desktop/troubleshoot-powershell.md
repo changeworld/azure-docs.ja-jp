@@ -1,32 +1,33 @@
 ---
-title: Windows Virtual Desktop PowerShell - Azure
-description: Windows Virtual Desktop 環境の設定時に PowerShell の問題を解決する方法。
+title: Azure Virtual Desktop PowerShell - Azure
+description: Azure Virtual Desktop 環境の設定時に PowerShell の問題をトラブルシューティングする方法。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 868aacc986e66d4f7513851855b69ed84c4a3e88
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3426ff64bbaf1d3d4801a8fcc069cb1767091181
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445467"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804110"
 ---
-# <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop PowerShell
+# <a name="azure-virtual-desktop-powershell"></a>Azure Virtual Desktop PowerShell
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)を参照してください。
 
-Windows Virtual Desktop で PowerShell を使用するときに発生するエラーと問題を解決する際、この記事を参考にしてください。 リモート デスクトップ サービスの PowerShell については、「[Windows Virtual Desktop PowerShell](/powershell/windows-virtual-desktop/overview)」を参照してください。
+Azure Virtual Desktop で PowerShell を使用するときに発生するエラーと問題を解決する際、この記事を参考にしてください。 リモート デスクトップ サービスの PowerShell については、[「Azure Virtual Desktop PowerShell」](/powershell/windows-virtual-desktop/overview)を参照してください。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 
-Windows Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Windows Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)にアクセスしてください。
+Azure Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Azure Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/bd-p/AzureVirtualDesktopForum)にアクセスしてください。
 
-## <a name="powershell-commands-used-during-windows-virtual-desktop-setup"></a>Windows Virtual Desktop 設定時に使用される PowerShell コマンド
+## <a name="powershell-commands-used-during-azure-virtual-desktop-setup"></a>Azure Virtual Desktop 設定時に使用される PowerShell コマンド
 
-このセクションでは、Windows Virtual Desktop の設定時に一般的に使用される PowerShell コマンドと、その使用時に発生することがある問題の解決方法を紹介しています。
+このセクションでは、Azure Virtual Desktop の設定時に一般的に使用される PowerShell コマンドと、その使用時に発生することがある問題の解決方法を紹介しています。
 
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>エラー:New-AzRoleAssignment:"The provided information does not map to an AD object ID" (指定された情報は、AD オブジェクト ID にマップされていません)
 
@@ -34,13 +35,13 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
-**原因:** *-SignInName* パラメーターによって指定されるユーザーが、Windows Virtual Desktop 環境に関連付けられている Azure Active Directory で見つかりません。
+**原因:** *-SignInName* パラメーターによって指定されるユーザーが、Azure Virtual Desktop 環境に関連付けられている Azure Active Directory で見つかりません。
 
 **解決策:** 次の点を確認してください。
 
 - ユーザーは Azure Active Directory に同期します。
 - ユーザーは B2C (企業-消費者間) 商取引にも B2B (企業-企業) 商取引にも関連付けません。
-- Windows Virtual Desktop 環境は適切な Azure Active Directory に関連付けます。
+- Azure Virtual Desktop 環境は適切な Azure Active Directory に関連付けます。
 
 ### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>エラー:New-AzRoleAssignment:"The client with object id does not have authorization to perform action over scope (code:AuthorizationFailed)" (オブジェクト ID のあるクライアントでスコープに対するアクションの実行が承認されていない (コード:AuthorizationFailed))
 
@@ -58,7 +59,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'.
 ```
 
-原因: Windows Virtual Desktop では、ホスト プール、アプリケーション グループ、ワークスペースの場所を選択し、特定の場所にサービス メタデータを格納できます。 選択肢はこの機能が利用できる場所に限定されます。 このエラーは、選択した場所で機能が利用できないことを意味します。
+原因: Azure Virtual Desktop では、ホスト プール、アプリケーション グループ、ワークスペースの場所を選択し、特定の場所にサービス メタデータを格納できます。 選択肢はこの機能が利用できる場所に限定されます。 このエラーは、選択した場所で機能が利用できないことを意味します。
 
 解決策:エラー メッセージには、サポートされているリージョンの一覧があります。 サポートされているリージョンを代わりに使用してください。
 
@@ -74,11 +75,11 @@ New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e4
 
 ## <a name="next-steps"></a>次のステップ
 
-- Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
-- Windows Virtual Desktop 環境とホスト プールの設定中に発生した問題を解決するには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
-- Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
-- Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
+- Azure Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
+- Azure Virtual Desktop 環境とホスト プールの設定中に発生した問題を解決するには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
+- Azure Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md) に関する記事を参照してください。
+- Azure Virtual Desktop クライアント接続の問題のトラブルシューティングを行う場合は、「[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)」を参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
-- サービスの詳細については、[Windows Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」をご覧ください。
+- サービスの詳細については、[Azure Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
+- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-monitor/essentials/activity-log.md)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../azure-resource-manager/templates/deployment-history.md)に関するページを参照してください。

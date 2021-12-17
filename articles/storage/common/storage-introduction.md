@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b49e780714bd5e0662c6cb7ef208c473a8b45ccc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ad60b5aac8af2601cb765b3681da8108ad49bfe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498151"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583822"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>コア Azure Storage サービスの概要
 
@@ -23,7 +23,7 @@ Azure Storage プラットフォームは、最新のデータ ストレージ �
 - **セキュリティ保護。** Azure Storage アカウントに書き込まれたすべてのデータがサービスによって暗号化されます。 Azure Storage では、データにアクセスできるユーザーをきめ細かく制御できます。
 - **スケーラブル。** Azure Storage には、今日のアプリケーションのデータ ストレージとパフォーマンスに関するニーズを満たすために、高度にスケーラブルな設計が採用されています。
 - **マネージド。** Azure では、お客様に代わって、ハードウェアのメンテナンス、更新プログラム、および重大な問題への対処が行われます。
-- **アクセス可能。** Azure Storage 内のデータには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 Microsoft では、.NET、Java、Node.js、Python、PHP、Ruby、Go などのさまざまな言語の Azure Storage 用のクライアント ライブラリと、成熟した REST API を提供しています。 Azure Storage では、Azure PowerShell または Azure CLI によるスクリプトの実行がサポートされます。 また、Azure Portal と Azure Storage Explorer により、データを操作するための使いやすい視覚的ソリューションが提供されます。  
+- **アクセス可能。** Azure Storage 内のデータには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 Microsoft では、.NET、Java、Node.js、Python、PHP、Ruby、Go などのさまざまな言語の Azure Storage 用のクライアント ライブラリと、成熟した REST API を提供しています。 Azure Storage では、Azure PowerShell または Azure CLI によるスクリプトの実行がサポートされます。 また、Azure Portal と Azure Storage Explorer により、データを操作するための使いやすい視覚的ソリューションが提供されます。
 
 ## <a name="core-storage-services"></a>コア ストレージ サービス
 
@@ -111,7 +111,7 @@ Azure Storage では、数種類のストレージ アカウントが提供さ�
 
 Azure Storage に対するすべての要求が承認される必要があります。 Azure Storage では、次の認証方法がサポートされています。
 
-- **BLOB とキュー データ用の Azure Active Directory (Azure AD) 統合。** Azure Storage では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用した BLOB サービスと Queue サービスに対する Azure AD の認証と承認をサポートされています。 優れたセキュリティと使いやすさのため、Azure AD による要求の承認をお勧めします。 詳細については、[Azure Active Directory を使用した Azure BLOB およびキューへのアクセスの承認](storage-auth-aad.md)に関するページを参照してください。
+- **BLOB、キュー、テーブル データ用の Azure Active Directory (Azure AD) 統合。** Azure Storage では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用した BLOB サービスと Queue サービスに対する Azure AD の認証と承認をサポートされています。 Azure AD を使用した承認は、プレビューの Table サービスでもサポートされています。 優れたセキュリティと使いやすさのため、Azure AD による要求の承認をお勧めします。 詳細については、「[Azure Storage でデータへのアクセスを承認する](authorize-data-access.md)」を参照してください。
 - **SMB を使用した Azure Files の Azure Active Directory 認証。** Azure Files では、Azure Active Directory Domain Services (Azure AD DS) またはオンプレミスの Active Directory Domain Services (プレビュー) のどちらかを使用した SMB (サーバー メッセージ ブロック) 経由の ID ベースの承認がサポートされます。 ドメインに参加している Windows VM は、Azure AD の資格情報を使用して Azure ファイル共有にアクセスできます。 詳細については、「[SMB アクセスに対する Azure Files ID ベース認証サポートの概要](../files/storage-files-active-directory-overview.md)」および「[Azure Files のデプロイの計画](../files/storage-files-planning.md#identity)」を参照してください。
 - **共有キーによる承認。** Azure Storage の BLOB、ファイル、キュー、テーブルの各サービスでは、共有キーによる承認がサポートされます。 共有キーによる承認を使用するクライアントは、ストレージ アカウントのアクセス キーを使用して署名されたすべての要求を含むヘッダーを渡します。 詳細については、[共有キーによる承認](/rest/api/storageservices/authorize-with-shared-key)に関するページを参照してください。
 - **Shared Access Signature (SAS) を使用した承認。** Shared Access Signature (SAS) は、ストレージ リソースの URI に追加できるセキュリティ トークンを含む文字列です。 セキュリティ トークンには、アクセスの許可や間隔などの制約をカプセル化します。 詳細については、[共有アクセス署名 (SAS) の使用](storage-sas-overview.md)に関するページを参照してください。

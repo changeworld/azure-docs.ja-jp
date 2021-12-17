@@ -1,7 +1,7 @@
 ---
 title: Windows VHD の Azure へのアップロードの準備
 description: Azure にアップロードする Windows VHD または VHDX の準備方法について説明します
-author: glimoli
+author: genlin
 manager: dcscontentpm
 ms.service: virtual-machines
 ms.subservice: disks
@@ -10,14 +10,16 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 573f97c7f592186173b13ea592d151ee291b8249
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 33da4539bafeb33f8644f354abdf20ee4f80c552
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967967"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648375"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 Windows 仮想マシン (VM) をオンプレミスから Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの第 1 世代および第 2 世代 VM の両方がサポートされています。 第 1 世代 VM で OS VHD に許容される最大サイズは 2 TB です。
 
@@ -223,19 +225,19 @@ Get-Service -Name Netlogon, Netman, TermService |
 
    ```powershell
    Enable-PSRemoting -Force
-   Set-NetFirewallRule -DisplayName 'Windows Remote Management (HTTP-In)' -Enabled True
+   Set-NetFirewallRule -Name WINRM-HTTP-In-TCP, WINRM-HTTP-In-TCP-PUBLIC -Enabled True
    ```
 
 1. RDP トラフィックを許可するために以下のファイアウォール規則を有効にします。
 
    ```powershell
-   Set-NetFirewallRule -DisplayGroup 'Remote Desktop' -Enabled True
+   Set-NetFirewallRule -Group '@FirewallAPI.dll,-28752' -Enabled True
    ```
 
 1. VM が仮想ネットワーク内部の ping 要求に応答できるように、"ファイルとプリンターの共有" 規則を有効にします。
 
    ```powershell
-   Set-NetFirewallRule -DisplayName 'File and Printer Sharing (Echo Request - ICMPv4-In)' -Enabled True
+   Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True
    ```
 
 1. Azure プラットフォーム ネットワークのルールを作成します。
@@ -314,10 +316,23 @@ VM が正常であり、セキュリティで保護されており、RDP アク�
 
    リポジトリが破損している場合は、「[WMI:リポジトリが破損しているかどうか](https://techcommunity.microsoft.com/t5/ask-the-performance-team/wmi-repository-corruption-or-not/ba-p/375484)」を参照してください。
 
-1. 他にポート 3389 を使用しているアプリケーションがないことを確認します。 このポートは、Azure の RDP サービスに使用します。 VM で使用されているポートを確認するには、`netstat.exe -anob` を実行します。
+1. TermService 以外のアプリケーションがポート 3389 を使用していないことを確認してください。 このポートは、Azure の RDP サービスに使用します。 VM で使用されているポートを確認するには、`netstat.exe -anob` を実行します。
 
    ```powershell
    netstat.exe -anob
+   ```
+   
+   以下に例を示します。
+
+   ```powershell
+   netstat.exe -anob | findstr 3389
+   TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING       4056
+   TCP    [::]:3389              [::]:0                 LISTENING       4056
+   UDP    0.0.0.0:3389           *:*                                    4056
+   UDP    [::]:3389              *:*                                    4056
+
+   tasklist /svc | findstr 4056
+   svchost.exe                   4056 TermService
    ```
 
 1. ドメイン コントローラーである Windows VHD をアップロードするには、次のようにします。
@@ -431,6 +446,9 @@ Windows ベースのコンピューターにインストールされているロ
 ### <a name="generalize-a-vhd"></a>VHD の一般化
 
 >[!NOTE]
+> 既存の Azure VM から汎用イメージを作成する場合は、sysprep を実行する前に VM 拡張機能を削除することをお勧めします。
+
+>[!NOTE]
 > 次の手順で `sysprep.exe` を実行した後、VM をオフにします。 Azure でそれからイメージを作成するまでは再びオンにしないでください。
 
 1. Windows VM にサインインします。
@@ -462,6 +480,14 @@ Windows ベースのコンピューターにインストールされているロ
 1. Azure の要件を満たすように仮想ディスクのサイズを変更します。
 
    1. Azure のディスクの仮想サイズは、1 MiB にアラインする必要があります。 VHD に 1 MiB の端数がある場合は、1 MiB の倍数になるようにディスクのサイズを変更する必要があります。 MiB の端数があるディスクでは、アップロードした VHD からイメージを作成する際にエラーが発生します。 サイズを確認するには、PowerShell の [Get-VHD](/powershell/module/hyper-v/get-vhd) コマンドレットを使用し、"Size" (Azure で 1 MiB の倍数である必要があります) と "FileSize" ("Size" に VHD フッターの 512 バイトを足した値に等しくなります) を表示します。
+   
+      ```powershell
+      $vhd = Get-VHD -Path C:\test\MyNewVM.vhd
+      $vhd.Size % 1MB
+      0
+      $vhd.FileSize - $vhd.Size
+      512
+      ```
    
    1. 第 1 世代 VM で OS VHD に許容される最大サイズは 2,048 GiB (2 TiB) です。 
    1. データ ディスクの最大サイズは 32,767 GiB (32 TiB) です。

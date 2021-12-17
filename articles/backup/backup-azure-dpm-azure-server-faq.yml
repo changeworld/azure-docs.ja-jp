@@ -1,0 +1,82 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Backup Server と DPM に関する FAQ
+  description: この記事では、Microsoft Azure Backup Server (MABS) と DPM (Data Protection Manager) に関してよく寄せられる質問への回答を示します。
+  ms.reviewer: srinathv
+  ms.topic: article
+  ms.service: backup
+  ms.date: 10/13/2021
+  ms.openlocfilehash: a46b7b990e8ea9deb929430d15a8c208434ff0e2
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129998563"
+title: Azure Backup Server と DPM - FAQ
+summary: ''
+sections:
+- name: 一般的な質問
+  questions:
+  - question: >
+      Azure Backup Server を使用して、物理サーバーのベア メタル回復 (BMR) バックアップを作成できますか。
+    answer: >
+      はい。
+  - question: >
+      サーバーを複数のコンテナーに登録することはできますか。
+    answer: >
+      いいえ。 DPM サーバーまたは Azure Backup Server は 1 つのコンテナーにしか登録できません。
+  - question: >
+      DPM を使用して Azure Stack でアプリをバックアップすることはできますか。
+    answer: >
+      いいえ。 Azure Backup を使用して Azure Stack を保護することはできますが、Azure Backup では DPM を使用した Azure Stack でのアプリのバックアップをサポートしていません。
+  - question: >
+      予定の週間、月間、年間バックアップが失敗した場合はどうなりますか?
+    answer: >
+      バックアップに失敗した場合、予定の週間、月間、年間バックアップの後、次に成功したバックアップが、バックアップ ポリシーに基づき、それぞれ週間、月間、年間の復旧ポイント (Long Term Retention (LTR) ポイント) の保持期間に従って保持されます。 この正常なバックアップは、MARS Agent の場合、アドホック バックアップまたはスケジュールされたバックアップになることがあります。
+  - question: >
+      ファイルとフォルダーを保護するために Azure Backup エージェントをインストールしてある場合、System Center DPM をインストールしてオンプレミスのワークロードを Azure にバックアップすることはできますか。
+    answer: >
+      はい。 ただし、最初に DPM をセットアップしてから、Azure Backup エージェントをインストールする必要があります。  この順序でコンポーネントをインストールすることで、Azure Backup エージェントが DPM と連携するようになります。 DPM をインストールする前にエージェントをインストールする方法は推奨されておらず、サポートもされていません。
+  - question: >
+      UR7 と最新の Azure Backup エージェントをインストールしましたが、外部 DPM サーバーを追加できません。なぜですか。
+    answer: >
+      ロールアップ 7 以前の更新プログラム ロールアップを利用して、データ ソースがクラウドに保護されている DPM サーバーの場合、UR7 と最新の Azure Backup エージェントをインストールした後、少なくとも 1 日待ってから **外部 DPM サーバーの追加** を開始する必要があります。 1 日の期間は、DPM 保護グループのメタデータを Azure にアップロードするために必要です。 保護グループ メタデータは、夜間ジョブを通じて、1 回目のアップロードが行われます。
+  - question: >
+      ウイルス対策ソフトウェアの除外を構成するための推奨事項はありますか。
+    answer: >
+      はい。ウイルス対策の除外を構成することをお勧めします。 DPM の除外については、「[DPM サーバーでのウイルス対策ソフトウェアの実行](/system-center/dpm/run-antivirus-server)」を参照してください。 MABS の除外については、「[MABS サーバー用ウイルス対策ソフトウェアの構成](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server)」を参照してください。
+- name: VMware および Hyper-V のバックアップ
+  questions:
+  - question: >
+      VMware vCenter サーバーを Azure にバックアップできますか。
+    answer: >
+      はい。 Azure Backup Server を使用して、VMware vCenter Server および ESXi ホストを Azure にバックアップできます。
+
+
+      - サポートされるバージョンについて詳しくは、[こちら](backup-mabs-protection-matrix.md)をご覧ください。
+
+      - VMware サーバーをバックアップするには、[この手順](backup-azure-backup-server-vmware.md)に従ってください。
+  - question: >
+      オンプレミス VMware/Hyper-V クラスター全体を復旧するには、個別のライセンスが必要ですか。
+    answer: >
+      VMware/Hyper-V を保護するために個別のライセンスは必要ありません。
+
+
+      - System Center のお客様は、System Center Data Protection Manager (DPM) を使用して VMware VM を保護できます。
+
+      - System Center のお客様でない場合、VMware VM を保護するには、Azure Backup Server (従量課金制) を使用できます。
+  - question: >
+      Azure に格納されている Hyper-V または VMware VM のバックアップを Azure VM として Azure に復元することはできますか?
+    answer: >
+      いいえ、これは現時点ではできません。 オンプレミスのホストにのみ復元できます。
+- name: SharePoint
+  questions:
+  - question: >
+      SharePoint が SQL AlwaysOn を使用して構成されている場合 (ディスクでの保護)、SharePoint アイテムを元の場所に回復できますか?
+    answer: >
+      はい、元の SharePoint サイトにアイテムを回復できます。
+  - question: >
+      SharePoint が SQL AlwaysOn を使用して構成されている場合、SharePoint データベースを元の場所に回復できますか?
+    answer: >
+      SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、DPM は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nその他のよく寄せられる質問をお読みください。\n\n- Azure Backup Server と DPM のサポート マトリックスの[詳細](backup-support-matrix-mabs-dpm.md)。\n- Azure Backup Server と DPM のトラブルシューティングのガイドラインの[詳細](backup-azure-mabs-troubleshoot.md)。"

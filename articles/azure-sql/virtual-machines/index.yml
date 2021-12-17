@@ -4,20 +4,19 @@ summary: Windows と Linux 両方の Azure 仮想マシンにインストール�
 metadata:
   title: Azure VM 上の SQL Server のドキュメント
   description: Windows と Linux 両方の Azure 仮想マシンにインストールされている SQL Server に関するドキュメントを紹介します。
-  services: sql-database
-  ms.service: sql-database
-  ms.subservice: single-database
+  services: virtual-machines-sql
+  ms.service: virtual-machines-sql
+  ms.subservice: service-overview
   ms.topic: landing-page
   author: MashaMSFT
   ms.author: mathoma
-  ms.reviewer: sstein
   ms.date: 05/27/2020
-  ms.openlocfilehash: f8be335fed98d404687002f8c826e881d93e3a10
-  ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+  ms.openlocfilehash: c7b24d1f0fb89baece1a00f71f2d0c61452a95cc
+  ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/12/2020
-  ms.locfileid: "94556490"
+  ms.lasthandoff: 11/10/2021
+  ms.locfileid: "132157810"
 landingContent:
 - title: Azure VM 上の SQL Server
   linkLists:
@@ -36,7 +35,7 @@ landingContent:
   - linkListType: overview
     links:
     - text: 新機能
-      url: windows/doc-changes-updates-release-notes.md?
+      url: windows/doc-changes-updates-release-notes-whats-new.md
     - text: SQL Server on Windows VM とは
       url: windows/sql-server-on-azure-vm-iaas-what-is-overview.md
     - text: SQL Server on Linux VM とは
@@ -46,7 +45,7 @@ landingContent:
     - text: セキュリティに関する考慮事項
       url: windows/security-considerations-best-practices.md
     - text: パフォーマンスに関するガイドライン
-      url: windows/performance-guidelines-best-practices.md
+      url: ./windows/performance-guidelines-best-practices-checklist.md
     - text: 価格のガイダンス
       url: windows/pricing-guidance.md
 - title: 管理する
@@ -92,7 +91,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: 可用性グループ (手動)
-      url: windows/availability-group-manually-configure-prerequisites-tutorial.md
+      url: windows/availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md
     - text: Stonith 可用性グループ (RHEL)
       url: linux/rhel-high-availability-stonith-tutorial.md
     - text: 可用性グループ リスナー (RHEL)
@@ -117,8 +116,8 @@ landingContent:
     links:
     - text: Azure portal
       url: windows/sql-vm-create-portal-quickstart.md
-    - text: Azure CLI のサンプル
-      url: /cli/azure/sql/vm
+    - text: Azure CLI
+      url: /cli/azure/azure-cli-reference-for-sql#sql-virtual-machines-references
     - text: PowerShell のサンプル
       url: windows/sql-vm-create-powershell-quickstart.md
     - text: Resource Manager テンプレートのサンプル
@@ -140,7 +139,7 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: /cli/azure/sql
+      url: /cli/azure/azure-cli-reference-for-sql#sql-virtual-machines-references
     - text: PowerShell
       url: /powershell/module/az.sql
     - text: REST API

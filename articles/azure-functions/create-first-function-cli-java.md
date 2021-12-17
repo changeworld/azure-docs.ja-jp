@@ -6,16 +6,17 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
+- devx-track-azurepowershell
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-java-uiex
-ms.openlocfilehash: 1a1571e83e33ee0aec40df4cf68b3d01b6ef5f04
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c28d2d2fbdbe48b2f07ed85f8cc08b93d70e1edb
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787505"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026965"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Java 関数を作成する
 
@@ -23,10 +24,12 @@ ms.locfileid: "107787505"
 
 この記事では、コマンドライン ツールを使用して、HTTP 要求に応答する Java 関数を作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。
 
-このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
+Maven が好みの開発ツールでない場合は、Java 開発者向けの同様のチュートリアルを確認してください。
++ [Gradle](./functions-create-first-java-gradle.md)
++ [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions)
++ [Visual Studio Code](create-first-function-vs-code-java.md)
 
-> [!NOTE]
-> Maven が好みの開発ツールでない場合は、[Gradle](./functions-create-first-java-gradle.md)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions)、および [Visual Studio Code](create-first-function-vs-code-java.md) を使用する Java 開発者向けの同様のチュートリアルを確認してください。
+このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
 
 ## <a name="configure-your-local-environment"></a>ローカル環境を構成する
 
@@ -34,17 +37,17 @@ ms.locfileid: "107787505"
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 4.x。
 
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
-+ [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8 または 11。 `JAVA_HOME` 環境変数を、適切なバージョンの JDK のインストール場所に設定する必要があります。     
++ [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン 8 または 11。 `JAVA_HOME` 環境変数を、適切なバージョンの JDK のインストール場所に設定する必要があります。     
 
 + [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
 
 ### <a name="prerequisite-check"></a>前提条件のチェック
 
-+ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 3.x であることを確認します。
++ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 4.x であることを確認します。
 
 + `az --version` を実行して、Azure CLI バージョンが 2.4 以降であることを確認します。
 
@@ -100,7 +103,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     cd fabrikam-functions
     ```
 
-    このフォルダーにはプロジェクト用の各種ファイルが格納されています。たとえば、[local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
+    このフォルダーにはプロジェクト用の各種ファイルが格納されています。たとえば、[local.settings.json](functions-develop-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
 
 ### <a name="optional-examine-the-file-contents"></a>(省略可) ファイルの内容を確認する
 

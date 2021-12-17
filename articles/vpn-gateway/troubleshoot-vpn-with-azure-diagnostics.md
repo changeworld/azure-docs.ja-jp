@@ -1,18 +1,18 @@
 ---
 title: 診断ログを使用した Azure VPN Gateway のトラブルシューティング
-description: 診断ログを使用した Azure VPN Gateway のトラブルシューティング
+description: 診断ログを使用して Azure VPN Gateway をトラブルシューティングする方法について説明します。
 services: vpn-gateway
 author: stegag
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: stegag
-ms.openlocfilehash: 232e084e44696c6aa88a9dd33092c48a96e35f85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc4165a2636169c34b14795a8c2298a0f9917916
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772003"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652137"
 ---
 # <a name="troubleshoot-azure-vpn-gateway-using-diagnostic-logs"></a>診断ログを使用した Azure VPN Gateway のトラブルシューティング
 
@@ -34,7 +34,7 @@ Azure では、次のログを使用できます。
 
 ## <a name="set-up-logging"></a><a name="setup"></a>ログを設定する
 
-Azure Log Analytics を使用して Azure VPN Gateway の診断ログ イベントを設定する方法については、[VPN Gateway から診断ログイベントのアラートを設定](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log)する方法に関するページを参照してください。
+Azure Log Analytics を使用して Azure VPN Gateway の診断ログ イベントを設定する方法については、[VPN Gateway から診断ログイベントのアラートを設定](./vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)する方法に関するページを参照してください。
 
 ## <a name="gatewaydiagnosticlog"></a><a name="GatewayDiagnosticLog"></a>GatewayDiagnosticLog
 
@@ -100,8 +100,8 @@ AzureDiagnostics
 
 
 トラブルシューティングに関するヒント:
-- 1 つのゲートウェイ インスタンスで切断イベントが発生した後、数秒後に **異なる** ゲートウェイ インスタンスで接続イベントが発生する場合、ゲートウェイのフェールオーバーを調べます。 これは通常、ゲートウェイ インスタンスのメンテナンスのために予期される動作です。 この動作の詳細については、「[AZURE VPN gateway の冗長性について](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable#about-azure-vpn-gateway-redundancy)」を参照してください。
-- Azure 側でゲートウェイのリセットを意図的に実行すると (アクティブなゲートウェイ インスタンスが再起動されます)、これと同じ動作が見られます。 この動作の詳細については、[VPN Gateway のリセット](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-resetgw-classic)に関するページを参照してください。
+- 1 つのゲートウェイ インスタンスで切断イベントが発生した後、数秒後に **異なる** ゲートウェイ インスタンスで接続イベントが発生する場合、ゲートウェイのフェールオーバーを調べます。 これは通常、ゲートウェイ インスタンスのメンテナンスのために予期される動作です。 この動作の詳細については、「[AZURE VPN gateway の冗長性について](./vpn-gateway-highlyavailable.md#activestandby)」を参照してください。
+- Azure 側でゲートウェイのリセットを意図的に実行すると (アクティブなゲートウェイ インスタンスが再起動されます)、これと同じ動作が見られます。 この動作の詳細については、[VPN Gateway のリセット](./reset-gateway.md)に関するページを参照してください。
 - 1 つのゲートウェイ インスタンスで切断イベントが発生した後、数秒後に **同じ** ゲートウェイ インスタンスで接続イベントが発生する場合、DPD タイムアウトを引き起こしているネットワーク障害、またはオンプレミス デバイスによる誤送信によって引きこされた切断がないか調べます。
 
 ## <a name="routediagnosticlog"></a><a name="RouteDiagnosticLog"></a>RouteDiagnosticLog
@@ -168,7 +168,7 @@ RemoteIP、LocalIP、および Event 列が AzureDiagnostics データベース�
 - IPsec トンネルの確立に失敗した場合、Azure は数秒ごとに再試行を続けます。 このため、問題を再現するために一定時間待つ必要がないため、IKEdiagnosticLog で "VPN ダウン" の問題のトラブルシューティングを行うのが便利です。 また、この失敗は理論上、試行するたびに常に同じ結果になるため、失敗する 1 つの "サンプル" ネゴシエーションに絞って調べることができます。
 
 - SA\_INIT には、ピアがこの IPSec ネゴシエーションに使用する IPSec パラメーターが含まれます。 公式ドキュメント   
-「[既定の IPSec/IKE パラメーター](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#ipsec)」には、既定の設定で Azure ゲートウェイでサポートされる IPSec パラメーターが示されています。
+「[既定の IPSec/IKE パラメーター](./vpn-gateway-about-vpn-devices.md#ipsec)」には、既定の設定で Azure ゲートウェイでサポートされる IPSec パラメーターが示されています。
 
 
 ## <a name="p2sdiagnosticlog"></a><a name="P2SDiagnosticLog"></a>P2SDiagnosticLog
@@ -202,4 +202,3 @@ AzureDiagnostics
 ## <a name="next-steps"></a>次の手順
 
 トンネル リソース ログにアラートを構成するには、[VPN Gateway リソース ログのアラートの設定](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)に関するページを参照してください。
-

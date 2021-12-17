@@ -1,26 +1,26 @@
 ---
 title: Azure portal での課金アカウントの表示に関するトラブルシューティング
 description: この記事は、Azure portal で課金アカウントを表示するときの問題のトラブルシューティングに役立ちます。
-author: amberbhargava
-ms.reviewer: banders
+author: bandersmsft
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 71561f6ecdde09f259e54260e7bab4dcc0e85c98
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 64d577f72765cfe87ada9d7c30c2a1b69b373c73
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132637"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433935"
 ---
 # <a name="troubleshoot-viewing-your-billing-account-in-the-azure-portal"></a>Azure portal での課金アカウントの表示に関するトラブルシューティング
 
 Azure を使用するためにサインアップすると、課金アカウントが作成されます。 課金アカウントを使用して請求書と支払いを管理し、コストを追跡します。 複数の課金アカウントにアクセスすることができます。 たとえば、個人で使用するために Azure にサイン アップする場合があります。 組織の Enterprise Agreement または Microsoft 顧客契約経由で Azure にアクセスすることもできます。 これらのシナリオごとに、個別の請求先アカウントが提供されます。 この記事は、Azure portal で課金アカウントを表示するときの問題のトラブルシューティングに役立ちます。
 
-[Azure の [コストの管理と請求]](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade) ページで課金アカウントを表示することができます。
+[[コストの管理と請求]](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade) ページで課金アカウントを表示することができます。
 
 課金アカウントの詳細を確認し、ご自分の課金アカウントの種類を特定するには、[Azure portal での課金アカウントの表示](view-all-accounts.md)に関するページを参照してください。
 

@@ -1,26 +1,28 @@
 ---
-title: SCP を使用して Azure Linux VM とファイルをやり取りする
+title: SCP を使用して VM との間でファイルを移動する
 description: SCP と SSH キー ペアを使用して Azure の Linux VM とファイルを安全にやり取りする方法について説明します。
 author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 07/12/2017
+ms.date: 04/20/2021
 ms.author: cynthn
-ms.subservice: disks
-ms.openlocfilehash: 83b57055ee7a3fedab014abeab96520c3877b843
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e7c342ae66594e502870030f8e8561ba861b05b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558442"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692104"
 ---
-# <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>SCP を使用して Linux VM とファイルをやり取りする
+# <a name="use-scp-to-move-files-to-and-from-a-linux-vm"></a>SCP を使用して Linux VM との間でファイルを移動する 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 この記事では、Secure Copy (SCP) を使用して、ワークステーションと Azure Linux VM 間でファイルをやり取りする方法を説明します。 Azure インフラストラクチャの管理においては、ワークステーションと Linux VM の間でファイルを安全かつ迅速にやり取りできることが重要です。 
 
-この記事では、[SSH の公開キー ファイルおよび秘密キー ファイル](mac-create-ssh-keys.md)を使用して Azure にデプロイされた Linux VM が必要です。 また、ローカル コンピューター用の SCP クライアントも必要です。 SSH 上に構築されており、ほとんどの Linux および Mac のコンピューターの既定の Bash シェルと、一部の Windows シェルに含まれています。
+この記事では、[SSH の公開キー ファイルおよび秘密キー ファイル](mac-create-ssh-keys.md)を使用して Azure にデプロイされた Linux VM が必要です。 また、ローカル コンピューター用の SCP クライアントも必要です。 SSH 上に構築されており、ほとんどの Linux および Mac のコンピューターの既定の Bash シェルと、PowerShell に含まれています。
+
 
 ## <a name="quick-commands"></a>クイック コマンド
 
@@ -50,7 +52,7 @@ SCP は、トランスポート層に SSH を使用します。 SSH は転送先
 
 最初の例では、Azure 構成ファイルを、自動化のデプロイに使用される Linux VM にコピーします。 このファイルには秘密情報が含まれる Azure API の資格情報が入っているため、セキュリティが重要です。 SSH が提供する暗号化されたトンネルがファイルのコンテンツを保護します。
 
-次のコマンドは *myserver.eastus.cloudapp.azure.com* を使用してローカルの *.azure/config* ファイルを Azure VM にコピーします。 Azure VM の管理者ユーザー名は *azureuser* です。 ファイルのターゲットは */home/azureuser/* ディレクトリです。 このコマンドの値を独自の値に置き換えます。
+次のコマンドは *myserver.eastus.cloudapp.azure.com* を使用してローカルの *.azure/config* ファイルを Azure VM にコピーします。 [FQDN セット](../create-fqdn.md)がない場合は、VM の IP アドレスを使用することもできます。 Azure VM の管理者ユーザー名は *azureuser* です。 ファイルのターゲットは */home/azureuser/* ディレクトリです。 このコマンドの値を独自の値に置き換えます。
 
 ```bash
 scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/config

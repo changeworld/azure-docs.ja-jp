@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d476be7a417cfc31cca76d3409074aaaa281a56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d9c22974ec3452df9597999eb62569a08eb85dc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724612"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754390"
 ---
 # <a name="build-resilience-with-device-states"></a>デバイスの状態を使用して回復性を強化する
 
@@ -42,7 +42,7 @@ ms.locfileid: "98724612"
 
 * [Microsoft Edge](/deployedge/microsoft-edge-security-identity) または Google Chrome のいずれかで PRT を使用した Web アプリケーションへのシームレスな SSO を可能にする[サポート対象の](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)[拡張機能](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb)を使用するようにユーザーのブラウザー アクセスを標準化します。
 
-* 個人または会社が所有する iOS デバイスと Android デバイスでは、[Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)をデプロイします。 Microsoft Authenticator アプリは、多要素認証機能とパスワードレス サインイン機能に加えて、エンドユーザーに対する認証プロンプトが少ない[ブローカー認証](../develop/msal-android-single-sign-on.md)を使用して、ネイティブ アプリケーション全体でシングル サインオンを有効にします。
+* 個人または会社が所有する iOS デバイスと Android デバイスでは、[Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)をデプロイします。 Microsoft Authenticator アプリは、多要素認証機能とパスワードレス サインイン機能に加えて、エンドユーザーに対する認証プロンプトが少ない[ブローカー認証](../develop/msal-android-single-sign-on.md)を使用して、ネイティブ アプリケーション全体でシングル サインオンを有効にします。
 
 * 個人または会社が所有する iOS デバイスと Android デバイスでは、[モバイル アプリケーション管理](/mem/intune/apps/app-management)を使用して、少ない認証要求で会社のリソースに安全にアクセスできるようにします。 
 

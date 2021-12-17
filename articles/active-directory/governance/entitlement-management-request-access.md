@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 08/31/2021
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 726507fa6ea0651b23d46424bda669a2d8ad41e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 945679db60f78e03d8f4385acdbc97d8155922bb
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95996646"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434486"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理でアクセス パッケージへのアクセスを要求する
 
@@ -86,6 +86,9 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 アクセス パッケージへのアクセスを要求できます。その場合、アクセス パッケージへのアクセスが許可されるためには、その前に、業務上の正当な理由および追加の要求元情報が必要になります。 アクセス パッケージにアクセスするために必要なすべての要求元情報を入力してください。
 
 ![マイ アクセス ポータル - [アクセスの要求] - 要求元情報を入力する](./media/entitlement-management-request-access/my-access-requestor-information.png)
+
+> [!NOTE]
+> 追加の要求元情報の一部に、値が事前に設定されている場合があります。 これは通常、前の要求または他のプロセスから、アカウントに属性情報が既に設定されている場合に発生します。 これらの値は、選択したポリシーの設定に応じて、編集可能である場合とそうでない場合があります。
 
 ## <a name="resubmit-a-request"></a>要求を再送信する
 

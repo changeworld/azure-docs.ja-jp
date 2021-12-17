@@ -1,21 +1,23 @@
 ---
-title: Windows Virtual Desktop の MSIX アプリのアタッチ イメージを準備する - Azure
-description: Windows Virtual Desktop ホスト プールの MSIX アプリのアタッチ イメージを作成する方法。
+title: Azure Virtual Desktop の MSIX アプリのアタッチ イメージを準備する - Azure
+description: Azure Virtual Desktop ホスト プールの MSIX アプリのアタッチ イメージを作成する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 443f117907381862639564dfbf9752562f4a3564
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: e804168d56092b6e5451aa26c7a2106b96672865
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363667"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587349"
 ---
-# <a name="prepare-an-msix-image-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用の MSIX イメージを準備する
+# <a name="prepare-an-msix-image-for-azure-virtual-desktop"></a>Azure Virtual Desktop 用の MSIX イメージを準備する
 
 MSIX アプリのアタッチはアプリケーション レイヤー ソリューションです。これを使用すると、MSIX パッケージからユーザー セッションにアプリを動的にアタッチできます。 MSIX パッケージ システムは、アプリをオペレーティング システムから分離することで、仮想マシンのイメージを簡単に作成できるようにします。 また、MSIX パッケージを使用すると、ユーザーが自分の仮想マシンでアクセスできるアプリをより細かく制御できます。 アプリをマスター イメージから分離し、後でユーザーに提供することもできます。
+
+デスクトップ インストーラー (MSI、EXE、ClickOnce、App-V、スクリプトなど) を MSIX に変換する手順については、「[任意のデスクトップ インストーラー (MSI、EXE、ClickOnce、または App-V) から MSIX パッケージを作成する](/windows/msix/packaging-tool/create-app-package)」を参照してください。
 
 ## <a name="create-a-vhd-or-vhdx-package-for-msix"></a>MSIX 用の VHD または VHDX パッケージを生成する
 
@@ -84,7 +86,7 @@ MSIX イメージを展開するには:
 
     アンパックが完了すると、次のメッセージが表示されます。
 
-    > パッケージの ACL が正常にアンパックされ、適用されました: <package name>.msix
+    > パッケージの ACL が正常にアンパックされ、適用されました: \<package name\>.msix
 
     >[!NOTE]
     > ネットワーク上、またはインターネットに接続されていないデバイス上のビジネス向けまたは教育機関向け Microsoft Store のパッケージを使用する場合、アプリを実行するには、Microsoft Store からパッケージ ライセンスをダウンロードしてインストールする必要があります。 ライセンスを取得するには、「[パッケージをオフラインで使用する](app-attach.md#use-packages-offline)」をご覧ください。
@@ -99,11 +101,11 @@ MSIX パッケージを作成した後、結果として得られた VHD、VHDX�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスして、コミュニティにこの機能に関する質問をします。
+[Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) で、コミュニティにこの機能に関する質問を行うことができます。
 
-また、Windows Virtual Desktop についてのフィードバックは、[Windows Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。
+また、Azure Virtual Desktop についてのフィードバックは、[Azure Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。
 
 役に立つその他の記事を次に示します。
 
 - [MSIX アプリのアタッチの用語集](app-attach-glossary.md)
-- [MSIX アプリ アタッチに関するごよくある質問](app-attach-faq.md)
+- [MSIX アプリ アタッチに関するごよくある質問](app-attach-faq.yml)

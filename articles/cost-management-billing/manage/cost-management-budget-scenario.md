@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 1706fd69f58e4dee4a7ed963fb22cb63aec026fa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c3ed338341ffb73f59a5b20fea55e8d83f4a375f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593388"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711296"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理
 
-コスト管理は、クラウドへの投資の価値を最大化するために不可欠な要素の 1 つです。 さまざまなシナリオにおいて、コストの可視性、レポート、およびコスト ベースのオーケストレーションが、継続的な事業運営に不可欠となります。 [Azure Cost Management API](/rest/api/consumption/) の一連の API は、このようなシナリオのそれぞれをサポートします。 これらの API から使用状況の詳細がわかるので、インスタンス レベルのコストを細分化して調べることができます。
+コスト管理は、クラウドへの投資の価値を最大化するために不可欠な要素の 1 つです。 さまざまなシナリオにおいて、コストの可視性、レポート、およびコスト ベースのオーケストレーションが、継続的な事業運営に不可欠となります。 [Cost Management API](/rest/api/consumption/) の一連の API では、このようなシナリオのそれぞれがサポートされます。 これらの API から使用状況の詳細がわかるので、インスタンス レベルのコストを細分化して調べることができます。
 
 予算はコスト管理の一部として一般的に使用されます。 Azure では、範囲を限定して予算を管理することができます。 たとえば、予算のビューをサブスクリプション、リソース グループ、またはリソースのコレクションに基づいて絞り込むことができます。 予算 API を使用して、予算のしきい値に達したときに電子メールで通知を受け取ることに加えて、[Azure Monitor のアクション グループ](../../azure-monitor/alerts/action-groups.md)を使用して、予算に関するイベントの発生時に一連のアクションをトリガーし、オーケストレーションの下で実行することもできます。
 
@@ -60,7 +60,7 @@ ms.locfileid: "100593388"
 1. Runbook のインポート処理が完了したら、 **[編集]** を選択します。グラフィカル Runbook エディターと発行オプションが表示されます。  
     ![Azure - グラフィカル Runbook の編集](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
 1. **[発行]** を選択して Runbook を発行し、確認を要求されたら **[はい]** を選択します。 Runbook を発行すると、既存の発行済みバージョンよりもドラフト バージョンがオーバーライドされるようになります。 この例では、Runbook を作成したばかりであるため、発行済みバージョンはまだありません。
-    Runbook の発行の詳細については、[グラフィカル Runbook の作成](../../automation/learn/automation-tutorial-runbook-graphical.md)に関するページを参照してください。
+    Runbook の発行の詳細については、[グラフィカル Runbook の作成](../../automation/learn/powershell-runbook-managed-identity.md)に関するページを参照してください。
 
 ## <a name="create-webhooks-for-the-runbook"></a>Runbook に対する Webhook を作成する
 

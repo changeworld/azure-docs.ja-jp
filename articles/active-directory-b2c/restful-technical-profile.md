@@ -3,26 +3,26 @@ title: カスタム ポリシーで RESTful 技術プロファイルを定義す
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 内のカスタム ポリシーで RESTful 技術プロファイルを定義します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/11/2020
-ms.author: mimart
+ms.date: 05/03/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: eb6d82019cccd1da327461cb0a0635aea4f3647f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 16360bd1c4abf435333b40d17d0386b9f7ce0aa8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174973"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131012759"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービスの統合に対するサポートを提供しています。 Azure AD B2C は、入力要求コレクションでデータを RESTful サービスに送信し、出力要求コレクションで返却データを受信します。 詳細については、「[REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合](custom-policy-rest-api-intro.md)」を参照してください。  
+Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービスの統合に対するサポートを提供しています。 Azure AD B2C は、入力要求コレクションでデータを RESTful サービスに送信し、出力要求コレクションで返却データを受信します。 詳細については、「[REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合](api-connectors-overview.md)」を参照してください。  
 
 ## <a name="protocol"></a>Protocol
 
@@ -91,7 +91,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 ## <a name="output-claims"></a>出力クレーム
 
-**OutputClaims** 要素には、REST API により返される要求の一覧が存在します。 お使いのポリシーで定義される要求の名前を、REST API で定義される名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、REST API の ID プロバイダーにより返されない要求を追加することもできます。
+**OutputClaims** 要素には、REST API により返される要求の一覧が存在します。 お使いのポリシーで定義される要求の名前を、REST API で定義される名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、REST API によって返されないクレームも含めることができます。
 
 **OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
@@ -117,7 +117,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 | ServiceUrl | はい | REST API エンドポイントの URL。 |
 | AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 指定できる値: `None`、`Basic`、`Bearer`、`ClientCertificate`、または `ApiKeyHeader`。 <br /><ul><li>`None` の値は、REST API が匿名であることを示します。 </li><li>`Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 </li><li>`ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書を持つサービスのみが、ご利用の API にアクセスできます。 </li><li>`Bearer` 値は、REST API ではクライアント OAuth2 ベアラー トークンを使用してアクセスが制限されることを示します。 </li><li>`ApiKeyHeader` 値は、REST API が API キーの HTTP ヘッダー (*x-functions-key* など) で保護されていることを示します。 </li></ul> |
 | AllowInsecureAuthInProduction| いいえ| 運用環境で `AuthenticationType` を `none` に設定できるかどうかを示します ([TrustFrameworkPolicy](trustframeworkpolicy.md) の `DeploymentMode` を `Production` に設定するか、指定しません)。 有効な値: true または false (既定値)。 |
-| SendClaimsIn | いいえ | RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。 指定できる値: `Body` (既定)、`Form`、`Header`、`Url`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される入力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される入力要求です。 `Header` の値は、要求本文で送信される入力要求です。 `Url` 値は、URL で送信される入力要求です。例: https://{claim1}.example.com/{claim2}/{claim3}?{claim4}={claim5}。 `QueryString` の値は、要求クエリ文字列で送信される入力要求です。 それぞれによって呼び出される HTTP 動詞は次のとおりです。<br /><ul><li>`Body`:POST</li><li>`Form`:POST</li><li>`Header`:GET</li><li>`Url`:GET</li><li>`QueryString`:GET</li></ul> |
+| SendClaimsIn | いいえ | RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。 指定できる値: `Body` (既定)、`Form`、`Header`、`Url`、または `QueryString`。 <br /> `Body` の値は、要求本文で、JSON 形式で送信される入力要求です。 <br />`Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される入力要求です。 <br />`Header` の値は、要求本文で送信される入力要求です。 <br />`Url` の値は、URL で送信される入力要求です。例: `https://api.example.com/{claim1}/{claim2}?{claim3}={claim4}` 。 URL のホスト名部分にクレームを含めることはできません。  <br />`QueryString` の値は、要求クエリ文字列で送信される入力要求です。 <br />それぞれによって呼び出される HTTP 動詞は次のとおりです。<br /><ul><li>`Body`:POST</li><li>`Form`:POST</li><li>`Header`:GET</li><li>`Url`:GET</li><li>`QueryString`:GET</li></ul> |
 | ClaimsFormat | いいえ | 現在使用されていません。無視してもかまいません。 |
 | ClaimUsedForRequestPayload| いいえ | REST API に送信されるペイロードを含む文字列要求の名前。 |
 | DebugMode | いいえ | 技術プロファイルをデバッグ モードで実行します。 指定できる値: `true` または `false` (既定値)。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 [返却エラー メッセージ](#returning-validation-error-message)のセクションを参照してください。 |
@@ -289,7 +289,7 @@ public class ResponseContent
 
 RESTful 技術プロファイルの使用例については、次の記事を参照してください。
 
-- [REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合](custom-policy-rest-api-intro.md)
-- [チュートリアル:ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-validation.md)
-- [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](custom-policy-rest-api-claims-validation.md)
+- [REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合](api-connectors-overview.md)
+- [チュートリアル: API コネクタをサインアップ ユーザー フローに追加する](add-api-connector.md)
+- [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](add-api-connector-token-enrichment.md)
 - [REST API サービスをセキュリティで保護する](secure-rest-api.md)

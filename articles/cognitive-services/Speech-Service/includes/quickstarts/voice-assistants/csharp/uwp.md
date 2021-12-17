@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea7ea08fc07a895bc038b27701d7038a5f76c26f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a59d0e2cad7415c9fad47e4dbd7887852d3486ff
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187605"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520336"
 ---
 ## <a name="prerequisites"></a>前提条件
 

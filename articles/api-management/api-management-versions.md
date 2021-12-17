@@ -6,15 +6,14 @@ documentationcenter: ''
 author: johndowns
 ms.service: api-management
 ms.topic: article
-ms.date: 02/10/2021
+ms.date: 10/31/2021
 ms.author: jodowns
-ms.custom: fasttrack-new
-ms.openlocfilehash: 55951f288314d92cf5057e7d5c1e988f65cb3e14
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a89860216563480de4803cc6e4a7e9f24853190f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040381"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471100"
 ---
 # <a name="versions-in-azure-api-management"></a>Azure API Management のバージョン
 
@@ -70,7 +69,9 @@ API の各バージョンは独自の API リソースとして保持された�
 
 Azure portal によって、バージョン セットが作成されます。 Azure portal でバージョン セットの名前と説明を変更できます。
 
-[Azure CLI](/cli/azure/apim/api/versionset)、[Azure PowerShell](/powershell/module/az.apimanagement/#api-management)、[Resource Manager テンプレート](/azure/templates/microsoft.apimanagement/service/apiversionsets)、または [Azure Resource Manager API](/rest/api/apimanagement/2020-06-01-preview/apiversionset) を使用して、バージョン セットを直接表示および管理できます。
+バージョン セットは、最終バージョンが削除されると自動的に削除されます。
+
+[Azure CLI](/cli/azure/apim/api/versionset)、[Azure PowerShell](/powershell/module/az.apimanagement/#api-management)、[Resource Manager テンプレート](/azure/templates/microsoft.apimanagement/service/apiversionsets)、または [Azure Resource Manager API](/rest/api/apimanagement/2020-12-01/api-version-set) を使用して、バージョン セットを直接表示および管理できます。
 
 ### <a name="migrating-a-non-versioned-api-to-a-versioned-api"></a>バージョン管理されていない API からバージョン管理された API への移行
 

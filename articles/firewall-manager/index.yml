@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
-  ms.date: 12/04/2020
-  ms.openlocfilehash: f25fff23bc371a172a8ddc992d3261705e647f25
-  ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+  ms.date: 06/30/2021
+  ms.openlocfilehash: b20ab24bf74d7e0562cc8a0b949cb9eca9074ed9
+  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/04/2020
-  ms.locfileid: "96608386"
+  ms.lasthandoff: 07/07/2021
+  ms.locfileid: "113438639"
 landingContent:
 - title: Azure Firewall Manager について
   linkLists:
@@ -25,6 +25,10 @@ landingContent:
       url: overview.md
     - text: デプロイの概要
       url: deployment-overview.md
+  - linkListType: learn
+    links:
+    - text: Azure Firewall Manager の概要
+      url: /learn/modules/intro-to-azure-firewall-manager/
 - title: セキュリティ保護付き仮想ハブについて
   linkLists:
   - linkListType: concept

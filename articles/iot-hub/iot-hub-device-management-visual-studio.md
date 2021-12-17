@@ -7,18 +7,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96f93325e0f17daaaf2bad91123fea81531ca152
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "73953180"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566964"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイス管理に Cloud Explorer for Visual Studio を使用する
 
 ![エンド ツー エンド ダイアグラム](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
 
-[Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) は、Azure リソースを表示し、そのプロパティを調べ、Visual Studio 内から開発者が重要な操作を実行できる、Visual Studio の便利な拡張機能です。 さまざまなタスクを実行するために使用できる管理オプションが付属しています。
+この記事では、開発コンピューター上で Cloud Explorer for Visual Studio をさまざまな管理オプションで使用する方法を説明します。 [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) は、Azure リソースを表示し、そのプロパティを調べ、Visual Studio 内から開発者が重要な操作を実行できる、Visual Studio の便利な拡張機能です。 さまざまなタスクを実行するために使用できる管理オプションが付属しています。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -33,17 +33,7 @@ ms.locfileid: "73953180"
 
 デバイス ツインは、デバイスに関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。 デバイス ツインの詳細については、「[デバイス ツインの使用](iot-hub-node-node-twin-getstarted.md)」を参照してください。
 
-## <a name="what-you-learn"></a>学習内容
-
-この記事では、開発コンピューター上で Cloud Explorer for Visual Studio をさまざまな管理オプションで使用する方法を説明します。
-
-## <a name="what-you-do"></a>作業内容
-
-この記事では、Cloud Explorer for Visual Studio をさまざまな管理オプションで実行します。
-
-## <a name="what-you-need"></a>必要なもの
-
-次の前提条件を満たす必要があります。
+## <a name="prerequisites"></a>前提条件
 
 - 有効な Azure サブスクリプション
 
@@ -51,7 +41,7 @@ ms.locfileid: "73953180"
 
 - Microsoft Visual Studio 2017 Update 9 以降。 この記事では、[Visual Studio 2017 または Visual Studio 2019](https://www.visualstudio.com/vs/) を使用します。
 
-- Visual Studio インストーラーの Cloud Explorer コンポーネント (Azure ワークロードで既定で選択済み)。
+- Visual Studio インストーラーの Cloud Explorer コンポーネント (Azure ワークロードによって既定で選択されます)。
 
 ## <a name="update-cloud-explorer-to-latest-version"></a>Cloud Explorer を最新バージョンに更新する
 

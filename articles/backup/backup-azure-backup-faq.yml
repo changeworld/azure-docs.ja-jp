@@ -1,0 +1,308 @@
+### YamlMime:FAQ
+metadata:
+  title: よく寄せられる質問に対する回答
+  description: 一般的な質問への回答
+  ms.topic: article
+  ms.service: backup
+  ms.date: 11/02/2021
+  author: v-amallick
+  ms.author: v-amallick
+  ms.openlocfilehash: afa49f9f586540611e41983407f9381de971614b
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131507153"
+title: Azure Backup - よく寄せられる質問
+summary: この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。
+sections:
+- name: Recovery Services コンテナー
+  questions:
+  - question: >
+      各 Azure サブスクリプションで作成できるコンテナーの数に制限はありますか。
+    answer: >
+      はい。 サブスクリプションあたり、Azure Backup のサポートされているリージョンごとに最大 500 の Recovery Services コンテナーを作成できます。 コンテナーがさらに必要な場合は、追加のサブスクリプションを作成してください。
+  - question: >
+      各コンテナーに登録できるサーバーやマシンの数に制限はありますか。
+    answer: >
+      コンテナーあたり最大 1000 の Azure 仮想マシンを登録できます。 Microsoft Azure Backup エージェントを使用している場合は、コンテナーあたり最大 50 の MARS エージェントを登録できます。 1 つのコンテナーには、50 の MABS サーバーまたは DPM サーバーを登録できます。
+  - question: >
+      コンテナーで保護できるデータソース/項目の数はいくつですか。
+    answer: >
+      すべてのワークロード (IaaS VM、SQL、AFS など) にわたる最大 2000 のデータソース/項目をコンテナーで保護することができます。
+
+      たとえば、既に 500 台の VM と 400 個の Azure Files 共有がコンテナーで保護されている場合、そこで保護できる SQL データベースの数は最大 1100 個だけです。
+  - question: >
+      コンテナーごとに作成できるポリシーはいくつですか。
+    answer: >
+      作成できるポリシーはコンテナーあたり最大 200 に限られます。 ただし、新しいバックアップ ポリシーを追加したり、Azure Resource Manager (ARM) テンプレートまたは PowerShell などの Azure Automation クライアントを使用して現在のポリシーを編集したりすると、CLI は 24 時間のスパンで 50 に制限されます。
+  - question: >
+      組織で所有しているコンテナーが 1 つの場合、データを復元する際にコンテナー内の他のサーバーのデータを分離するには、どうすればよいですか。
+    answer: >
+      まとめて復旧するサーバー データには、バックアップをセットアップするときに、同じパスフレーズを使用してください。 1 つ以上の特定のサーバーを分離して復旧する場合は、該当するサーバー専用のパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで 2 番目、ストレージ サーバーで 3 番目の暗号化パスフレーズを使用することができます。
+  - question: >
+      サブスクリプション間でコンテナーを移動することはできますか。
+    answer: >
+      はい。 Recovery Services コンテナーの移動については、こちらの[記事](backup-azure-move-recovery-services-vault.md)をご覧ください
+  - question: >
+      バックアップ データを別のコンテナーに移動することはできますか。
+    answer: >
+      いいえ。 コンテナーに保存されているバックアップ データを別のコンテナーに移行することはできません。
+  - question: >
+      バックアップ後、ストレージの冗長設定を変更できますか。
+    answer: >
+      既定では、ストレージ レプリケーションの種類は geo 冗長ストレージ (GRS) に設定されています。 バックアップを構成すると、変更オプションは無効になり、変更できなくなります。
+
+
+      ![ストレージ レプリケーションの種類](./media/backup-azure-backup-faq/storage-replication-type.png)
+
+
+      既にバックアップを構成していて、GRS から LRS に移行する必要がある場合は、[バックアップの構成後に GRS から LRS に変更する方法](backup-create-rs-vault.md#how-to-change-from-grs-to-lrs-after-configuring-backup)に関する記事を参照してください。
+  - question: >
+      Recovery Services コンテナーにバックアップした VM でアイテム レベルの復元 (ILR) を行うことはできますか。
+    answer: >
+      - ILR は、Azure VM バックアップによってバックアップされている Azure VM に対してサポートされています。 詳しくは、[こちらの記事](backup-azure-restore-files-from-vm.md)をご覧ください
+
+      - ILR は、Azure Backup Server (MABS) または System Center DPM によってバックアップされているオンプレミスの VM のオンライン復旧ポイントに対してはサポートされていません。
+  - question: >
+      Recovery Services コンテナーからオンプレミスにデータを移動するにはどうすればよいですか。
+    answer: >
+      Recovery Services コンテナーからバックアップ データを移動するには、必要なデータを復元する必要があります。 コンテナーにオンプレミス データのバックアップが含まれている場合は、対応するエージェント([MARS](backup-azure-about-mars.md)、[MABS](backup-azure-microsoft-azure-backup.md)、または [DPM](backup-azure-dpm-introduction.md#why-back-up-dpm-to-azure))を使用してオンプレミスに復元します。 <br><br> クラウド ワークロード([Azure](backup-azure-arm-restore-vms.md#restore-options) VM、[SQL](restore-sql-database-azure-vm.md#restore-as-files)、および Azure VM の [SAP HANA](sap-hana-db-restore.md#restore-as-files)) のバックアップのために、Recovery Services コンテナーからオンプレミス ストレージにデータを直接エクスポート することはできません。 ただし、これらのリソースを Azure Storage アカウント内の対応するクラウド リソースに復元し、データをオンプレミスに移動できます。 または [Data Box](../databox/data-box-overview.md) または [Import/Export](../import-export/storage-import-export-service.md)を使用して、このデータをオンプレミスにエクスポートできます。
+  - question: >
+      geo 冗長ストレージ (GRS) コンテナーで、リージョンをまたがる復元 (CRR) 機能が有効になっている場合とそうでない場合では、どのような違いがありますか。
+    answer: >
+      [CRR](azure-backup-glossary.md#cross-region-restore-crr) 機能が有効になっていない [GRS](azure-backup-glossary.md#grs) コンテナーの場合、Azure によってプライマリ リージョンでの障害が宣言されるまで、セカンダリ リージョンのデータにはアクセスできません。 このような場合、セカンダリ リージョンから復元が行われます。 CRR が有効になっている場合、プライマリ リージョンが稼働している場合でも、セカンダリ リージョンでの復元をトリガーできます。
+  - question: >
+      コンテナーが含まれるサブスクリプションを別の Azure Active Directory に移動できますか。
+    answer: >
+      はい。 (コンテナーが含まれる) サブスクリプションを別の Azure Active Directory (AD) に移動するには、[サブスクリプションを別のディレクトリに移動する](../role-based-access-control/transfer-subscription.md)方法に関するページを参照してください。
+
+
+      >[!IMPORTANT]
+
+      >サブスクリプションの移動後、必ず次のアクションを実行してください。<ul><li>ロールベースのアクセス制御とカスタム役割は移動できません。 新しい Azure AD で、アクセス許可とロールを再作成する必要があります。</li><li>コンテナーのマネージド ID (MI) は無効にし、再び有効にすることで再作成する必要があります。 また、MI アクセス許可を昇格させ、再作成する必要があります。</li><li>[プライベート エンドポイント](private-endpoints.md#before-you-start)や[カスタマー マネージド キー](encryption-at-rest-with-cmk.md#before-you-start)など、MI を活用する機能がコンテナーで使用されている場合、その機能を再構成する必要があります。</li></ul>
+  - question: >
+      Recovery Services コンテナーを含むサブスクリプションを別のテナントに移動することはできますか。
+    answer: "はい。 必ず次を実行してください。 \n\n>[!IMPORTANT]\n>サブスクリプションの移動後、必ず次のアクションを実行してください。<ul><li>コンテナーが CMK (カスタマー マネージド キー) を使用している場合は、コンテナーを更新する必要があります。 これにより、コンテナーで管理されている ID と CMK (新しいテナントに存在する) をコンテナーで再作成して再構成することができます。そうしないと、バックアップおよび復元操作は失敗します。</li><li>既存のアクセス許可を移動できないため、サブスクリプションの RBAC アクセス許可を再構成する必要があります。</li></ul>\n"
+- name: Azure Backup エージェント
+  questions:
+  - question: >
+      Azure VM のバックアップに使用される Azure Backup エージェントについてよく寄せられる質問は、どこで確認できますか。
+    answer: >
+      - Azure VM 上で実行されるエージェントについては、この [FAQ](backup-azure-vm-backup-faq.yml) をご覧ください。
+
+      - Azure ファイル フォルダーのバックアップに使用されるエージェントについては、こちらの [FAQ](backup-azure-file-folder-backup-faq.yml) をご覧ください。
+- name: 一般的なバックアップ
+  questions:
+  - question: >
+      バックアップのスケジュール設定に制限はありますか。
+    answer: >
+      はい。
+
+
+      - Windows Server または Windows マシンをバックアップできるのは、1 日 3 回までです。 スケジューリング ポリシーは、毎日または毎週のスケジュールに設定できます。
+
+      - DPM をバックアップできるのは、1 日 2 回までです。 スケジューリング ポリシーは、毎日、毎週、毎月、および毎年のスケジュールに設定できます。
+
+      - Azure VM のバックアップは 1 日 1 回に限られます。
+  - question: >
+      バックアップでサポートされているオペレーティング システムはどれですか。
+    answer: >
+      ファイルとフォルダーのほか、Azure Backup Server と DPM を使用して保護されたアプリのバックアップについて、Azure Backup では次のオペレーティング システムをサポートしています。
+
+
+      **OS** | **SKU** | **詳細**
+
+      --- | --- | ---
+
+      ワークステーション | |
+
+      Windows 10 64 ビット | Enterprise、Pro、Home | マシンで最新の Service Pack および更新プログラムが実行されている必要があります。
+
+      Windows 8.1 64 ビット | Enterprise、Pro | マシンで最新の Service Pack および更新プログラムが実行されている必要があります。
+
+      Windows 8 64 ビット | Enterprise、Pro | マシンで最新の Service Pack および更新プログラムが実行されている必要があります。
+
+      Windows 7 64 ビット | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter | マシンで最新の Service Pack および更新プログラムが実行されている必要があります。
+
+      サーバー | |
+
+      Windows Server 2019 64 ビット | Standard、Datacenter、Essentials | 最新の Service Pack/更新プログラムが適用されていること。
+
+      Windows Server 2016 64 ビット | Standard、Datacenter、Essentials | 最新の Service Pack/更新プログラムが適用されていること。
+
+      Windows Server 2012 R2 64 ビット | Standard、Datacenter、Foundation | 最新の Service Pack/更新プログラムが適用されていること。
+
+      Windows Server 2012 64 ビット | Datacenter、Foundation、Standard | 最新の Service Pack/更新プログラムが適用されていること。
+
+      Windows Storage Server 2016 64 ビット | Standard、Workgroup | 最新の Service Pack/更新プログラムが適用されていること。
+
+      Windows Storage Server 2012 R2 64 ビット | Standard、Workgroup、Essential | 最新の Service Pack/更新プログラムが適用されていること。
+
+      Windows Storage Server 2012 64 ビット | Standard、Workgroup | 最新の Service Pack/更新プログラムが適用されていること。
+
+      Windows Server 2008 R2 SP1 64 ビット | Standard、Enterprise、Datacenter、Foundation | 最新の更新プログラムが適用されていること。
+
+      Windows Server 2008 64 ビット | Standard、Enterprise、Datacenter | 最新の更新プログラムが適用されていること。
+
+
+      Azure Backup は 32 ビットのオペレーティング システムをサポートしていません。
+
+
+      Azure VM Linux のバックアップについては、Azure Backup は [Azure で承認されている一連のディストリビューション](../virtual-machines/linux/endorsed-distros.md)をサポートしています。ただし、Core OS Linux と 32 ビットオペレーティング システムは除きます。 他の個人所有の Linux ディストリビューションは、VM 上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。
+  - question: >
+      データのバックアップにサイズ制限はありますか。
+    answer: >
+      次のサイズ制限が適用されます。
+
+
+      OS/マシン | データ ソースのサイズ制限
+
+      --- | ---
+
+      Windows 8 以降 | 54,400 GB
+
+      Windows 7 |1,700 GB
+
+      Windows Server 2012 またはそれ以降 | 54,400 GB
+
+      Windows Server 2008、Windows Server 2008 R2 | 1,700 GB
+
+      Azure VM | [Azure VM バックアップのサポート マトリックス](./backup-support-matrix-iaas.md#vm-storage-support)を確認してください
+  - question: >
+      データ ソースのサイズはどのように決定されますか。
+    answer: >
+      次の表では、各データ ソースのサイズが決定される方法について説明しています。
+
+
+      **データ ソース** | **詳細**
+
+      --- | ---
+
+      ボリューム |バックアップ対象の VM の 1 つのボリュームからバックアップされるデータの量。
+
+      SQL Server データベース |バックアップされる単一データベースのサイズ。
+
+      SharePoint | バックアップ対象の SharePoint ファーム内のコンテンツと構成データベースの合計。
+
+      Exchange |バックアップ対象の Exchange サーバー内のすべての Exchange データベースの合計。
+
+      BMR/システム状態 |バックアップ対象のコンピューターの BMR またはシステム状態の個々のコピー。
+  - question: >
+      Recovery Services コンテナーを使用してバックアップできるデータ量に制限はありますか。
+    answer: >
+      Recovery Services コンテナーを使用してバックアップできる合計データ量に制限はありません。 個々のデータ ソース (Azure VM 以外) は、最大 54,400 GB のサイズにすることができます。 制限の詳細については、[サポート マトリックスのコンテナーの制限に関するセクション](./backup-support-matrix.md#vault-support)を参照してください。
+  - question: >
+      Recovery Services コンテナーに転送されたデータのサイズが、バックアップ対象として選択したデータよりも小さいのはなぜでしょうか。
+    answer: >
+      Azure Backup エージェント、DPM、または Azure Backup Server からバックアップしたデータは、圧縮および暗号化されてから転送されます。 圧縮と暗号化が適用されると、コンテナー内のデータのサイズは 30 から 40% 小さくなります。
+  - question: >
+      復旧ポイントの有効期限を表示できますか?
+    answer: >
+      いいえ。スケジュールされたバックアップの有効期限は表示できません。 ただし、バックアップ ジョブを使用して、オンデマンド バックアップの有効期限を表示できます。
+  - question: >
+      コンテナー内の復旧ポイントから個々のファイルを削除できますか。
+    answer: >
+      いいえ。Azure Backup では、保存されているバックアップからの個々の項目の削除または消去はサポートしていません。
+  - question: >
+      バックアップを開始した後でバックアップ ジョブを取り消すと、転送されたバックアップ データは削除されますか。
+    answer: >
+      いいえ。 バックアップ ジョブを取り消す前にコンテナーに転送されたすべてのデータは、コンテナー内に残ります。
+
+
+      - Azure Backup では、チェックポイント メカニズムを使用して、バックアップ中に随時バックアップ データにチェックポイントを追加します。
+
+      - バックアップ データにチェックポイントがあることで、次回のバックアップ処理でファイルの整合性を検証できます。
+
+      - 次のバックアップ ジョブは、これまでバックアップしたデータの増分になります。 増分バックアップでは、新しいデータまたは変更されたデータのみが転送され、帯域幅の使用状況が向上します。
+
+
+      Azure VM のバックアップ ジョブを取り消した場合、転送済みのデータは無視されます。 次のバックアップ ジョブでは、最後に成功したバックアップ ジョブから増分データが転送されます。
+- name: 保有期間と復元
+  questions:
+  - question: >
+      DPM での保有ポリシーと DPM を使用しない Windows マシンでの保有ポリシーは同じですか。
+    answer: >
+      はい。どちらとも、保有ポリシーとして毎日、毎週、毎月、毎年を指定できます。
+  - question: >
+      保有ポリシーをカスタマイズできますか。
+    answer: >
+      はい、ポリシーをカスタマイズして使用できます。 たとえば、保有期間の要件を毎週および毎日として構成し、毎年や毎月の保有期間の要件を構成しないこともできます。
+  - question: >
+      バックアップ スケジュールと保有ポリシーを別々の期間に使用できますか。
+    answer: >
+      いいえ。 保有ポリシーは、バックアップ ポイントにのみ適用できます。 一例として、この図には午前 12 時と午後 6 時に作成されたバックアップの保有ポリシーが示されています。
+
+
+      ![バックアップのスケジュールと保有期間](./media/backup-azure-backup-faq/Schedule.png)
+  - question: >
+      バックアップを長期にわたって保持した場合、データ ポイントが古いほど復元に時間がかかるのでしょうか。
+    answer: >
+      いいえ。 最古のデータ ポイントも最新のデータ ポイントも復元に要する時間は同じです。 それぞれの回復ポイントは、完全なポイントと同じように動作します。
+  - question: >
+      それぞれの回復ポイントが完全なポイントと同じように機能する場合、それは課金対象のバックアップ ストレージの合計に影響するのでしょうか。
+    answer: >
+      一般的に、回復ポイントのリテンション期間が長い製品では、バックアップ データが完全なポイントとして格納されます。
+
+
+      - 完全なポイントは、ストレージ効率は *悪く* なりますが、簡単かつ迅速に復元できます。
+
+      - 一方、増分コピーはストレージ効率が *向上* しますが、データのチェーンを復元する必要があり、復旧時間に影響します。
+
+
+      Azure Backup のストレージ アーキテクチャを使用すると、高速に復元するためにデータの格納を最適化し、ストレージ コストを低く抑えることで、両方の長所を生かすことができます。 これにより、送受信の帯域幅が効率的に使用されるようになります。 データ ストレージの量とデータ回復にかかる時間がどちらも最小限に抑えられます。 詳細については、[増分バックアップ](backup-architecture.md#backup-types)を参照してください。
+  - question: >
+      作成できる回復ポイント数に制限はありますか。
+    answer: >
+      保護されているインスタンスごとに作成できる復旧ポイントは最大 9,999 個です。 保護されたインスタンスとは、Azure へのバックアップを行うコンピューター、サーバー (物理または仮想)、またはワークロードです。
+
+
+      - 詳細については、[バックアップと保有期間](./backup-support-matrix.md)を参照してください。
+  - question: >
+      Azure にバックアップされたデータを回復できる回数に制限はありますか。
+    answer: >
+      Azure Backup からの回復の数に制限はありません。
+  - question: >
+      データを復元している間に発生する Azure からのエグレス トラフィックには料金が発生するのでしょうか。
+    answer: >
+      いいえ。 データ回復は無料ですので、送信トラフィックに対しては課金されません。
+  - question: >
+      バックアップ ポリシーを変更した場合どうなりますか。
+    answer: >
+      新しいポリシーが適用されると、新しいポリシーのスケジュールとリテンション期間が適用されます。
+
+
+      - リテンション期間が延長された場合、既にある復旧ポイントは、新しいポリシーに従って保存するようにマーキングされます。
+
+      - リテンション期間が短縮された場合、次回のクリーンアップ ジョブで排除対象としてマーキングされて、その後削除されます。
+  - question: >
+      バックアップを停止したもののバックアップ データを保持するオプションを選択した場合、データはどのくらいの期間にわたって保持されますか。
+    answer: >
+      バックアップが停止し、データが保持されている場合、データ排除用の既存のポリシー ルールが中断し、管理者が削除するまでデータは無期限に保持されます。
+- name: 暗号化
+  questions:
+  - question: >
+      Azure に送信されるデータは暗号化されますか。
+    answer: >
+      はい。 データはオンプレミスのマシン上で AES256 を使用して暗号化されます。 データは、セキュリティで保護された HTTPS リンク上で送信されます。 クラウド内で送信されたデータは、ストレージと復旧サービス間の HTTPS リンクのみで保護されています。 iSCSI プロトコルは、復旧サービスとユーザー マシン間で送信されるデータをセキュリティで保護します。 iSCSI チャネルの保護には、セキュリティで保護されたトンネリングが使用されます。
+  - question: >
+      Azure 上のバックアップ データも暗号化されますか。
+    answer: >
+      はい。 Azure 内ではデータが暗号化されて保存されます。
+
+
+      - オンプレミスのバックアップでは、Azure にバックアップする際に指定するパスフレーズを使用して保存時の暗号化が行われます。
+
+      - Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化された上で保存されます。
+
+
+      マイクロソフトは、どの時点でもバックアップ データの暗号化を解除しません。
+  - question: >
+      バックアップ データの暗号化に使用される暗号化キーの最小の長さはどれくらいですか。
+    answer: >
+      Microsoft Azure Recovery Services (MARS) エージェントによって使用される暗号化キーは、16 文字以上のパス フレーズから派生します。 Azure VM の場合、Azure Key Vault で使用されるキーの長さに制限はありません。
+  - question: >
+      暗号化キーを紛失した場合はどうなりますか? データを回復できますか。 マイクロソフトがデータを回復することはできますか。
+    answer: >
+      バックアップ データの暗号化に使用されるキーは、ユーザーのサイトにだけ存在します。 マイクロソフトは Azure にコピーを保持していませんし、キーにもアクセスできません。 ユーザーがキーを紛失した場合、マイクロソフトはバックアップ データを回復できません。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nその他のよく寄せられる質問をお読みください。\n\n- Azure VM バックアップについて[よく寄せられる質問](backup-azure-vm-backup-faq.yml)\n- Azure Backup エージェントについて[よく寄せられる質問](backup-azure-file-folder-backup-faq.yml)"

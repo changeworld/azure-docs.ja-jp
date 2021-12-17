@@ -3,14 +3,14 @@ title: Durable Functions の HTTP API - Azure Functions
 description: Azure Functions の Durable Functions 拡張機能で HTTP API を実装する方法を説明します。
 author: cgillum
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 0ab9f33616547c073e8e3a2128a441238bf3a17d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: eff6a44734600a6399f76fc7be331835ae395593
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220455"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377452"
 ---
 # <a name="http-api-reference"></a>HTTP API リファレンス
 
@@ -21,10 +21,10 @@ Durable Functions 拡張機能では、[オーケストレーション](durable-
 | パラメーター        | パラメーターの型  | 説明 |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | クエリ文字列    | [タスク ハブ](durable-functions-task-hubs.md)の名前。 指定しない場合は、現在の関数アプリのタスク ハブの名前が想定されます。 |
-| **`connection`** | クエリ文字列    | ストレージ アカウントの接続文字列の **名前**。 指定しない場合は、関数アプリの既定の接続文字列が想定されます。 |
+| **`connection`** | クエリ文字列    | バックエンド記憶域プロバイダー用の接続アプリ設定の **名前**。 指定しない場合は、関数アプリの既定の接続構成が想定されます。 |
 | **`systemKey`**  | クエリ文字列    | API の呼び出しに必要な承認キー。 |
 
-`systemKey` は、Azure Functions ホストによって自動生成される承認キーです。 このキーにより、Durable Task 拡張機能 API へのアクセスが特別に許可されます。また、このキーは[他の承認キー](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)と同じ方法で管理できます。 .NET の `CreateCheckStatusResponse` や `CreateHttpManagementPayload` API、または JavaScript の `createCheckStatusResponse` や `createHttpManagementPayload` API などの[オーケストレーション クライアント バインド](durable-functions-bindings.md#orchestration-client) API を使用して、正しい `taskHub`、`connection`、`systemKey` クエリ文字列値を含む URL を生成できます。
+`systemKey` は、Azure Functions ホストによって自動生成される承認キーです。 これにより、Durable Task 拡張機能 API へのアクセスが特別に許可されます。また、[他の Azure Functions アクセス キー](../security-concepts.md#function-access-keys)と同じ方法で管理できます。 .NET の `CreateCheckStatusResponse` や `CreateHttpManagementPayload` API、または JavaScript の `createCheckStatusResponse` や `createHttpManagementPayload` API などの[オーケストレーション クライアント バインディング](durable-functions-bindings.md#orchestration-client) API を使用して、正しい `taskHub`、`connection`、`systemKey` クエリ文字列値を含む URL を生成できます。
 
 以降のセクションで、この拡張機能でサポートされる特定の HTTP API とその使用方法の例について説明します。
 
@@ -240,9 +240,6 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 'インスタンスの状態を取得する' 要求から `instanceId` を削除して、すべてのインスタンスの状態のクエリを実行することもできます。 この場合、基本のパラメーターは 'インスタンスの状態を取得する' と同じです。 フィルター処理用のクエリ文字列パラメーターもサポートされています。
 
-覚えておくべきことの 1 つは、`connection` と `code` が省略可能であることです。 関数に対する匿名認証がある場合、`code` は必要ありません。
-AzureWebJobsStorage アプリ設定で定義されているのとは異なるストレージの接続文字列を使用しない場合は、接続クエリ文字列パラメーターを無視してかまいません。
-
 ### <a name="request"></a>要求
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
@@ -340,8 +337,7 @@ GET /runtime/webhooks/durableTask/instances?
 ```
 
 > [!NOTE]
-> この操作は、インスタンスのテーブルに多数の行がある場合、Azure Storage の I/O の観点から非常にコスト効率が悪くなることがあります。 インスタンス テーブルの詳細については、「[Durable Functions のパフォーマンスとスケーリング (Azure Functions)](durable-functions-perf-and-scale.md#instances-table)」のドキュメントを参照してください。
->
+> この操作は、[既定の Azure Storage プロバイダー](durable-functions-storage-providers.md#azure-storage)を使用している場合、およびインスタンス テーブルに多数の行がある場合、Azure Storage I/O の観点から非常にコスト効率が悪くなることがあります。 インスタンス テーブルの詳細については、「[Durable Functions のパフォーマンスとスケーリング (Azure Functions)](durable-functions-perf-and-scale.md#instances-table)」のドキュメントを参照してください。
 
 さらに結果が存在する場合、継続トークンが応答ヘッダーに返されます。  ヘッダーの名前は `x-ms-continuation-token` です。
 
@@ -437,7 +433,7 @@ DELETE /runtime/webhooks/durabletask/instances
 | **`runtimeStatus`**   | クエリ文字列    | 省略可能なパラメーター。 指定した場合、消去されるインスタンスの一覧がランタイム状態に基づいてフィルター処理されます。 考えられるランタイム状態の値の一覧を確認するには、[インスタンスのクエリの実行](durable-functions-instance-management.md)に関する記事をご覧ください。 |
 
 > [!NOTE]
-> この操作は、インスタンスや履歴のテーブルに多数の行がある場合、Azure Storage の I/O の観点から非常にコスト効率が悪くなることがあります。 これらのテーブルの詳細については、「[Durable Functions のパフォーマンスとスケーリング (Azure Functions)](durable-functions-perf-and-scale.md#instances-table)」のドキュメントを参照してください。
+> この操作は、[既定の Azure Storage プロバイダー](durable-functions-storage-providers.md#azure-storage)を使用している場合、およびインスタンスや履歴のテーブルに多数の行がある場合、Azure Storage I/O の観点から非常にコスト効率が悪くなることがあります。 これらのテーブルの詳細については、「[Durable Functions のパフォーマンスとスケーリング (Azure Functions)](durable-functions-perf-and-scale.md#instances-table)」のドキュメントを参照してください。
 
 ### <a name="response"></a>Response
 

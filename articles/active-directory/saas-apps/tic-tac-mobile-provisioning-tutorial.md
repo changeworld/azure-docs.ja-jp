@@ -3,8 +3,8 @@ title: チュートリアル:Azure Active Directory を使用した自動ユー�
 description: Azure AD から Tic-Tac Mobile に対してユーザー アカウントを自動的にプロビジョニング、またはプロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: d0f24e81-fecf-4e71-bd8a-ab911366fdf5
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/08/2020
-ms.author: Zhchia
-ms.openlocfilehash: 91ae51b9a2785dbc40c55fa58b26763916e8d16c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: a0784eebbabe302ecb610c702ae1b8900e05f858
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644580"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113758874"
 ---
 # <a name="tutorial-configure-tic-tac-mobile-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Tic-Tac Mobile を構成する
 

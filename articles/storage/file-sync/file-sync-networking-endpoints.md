@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b89e0f8209c0165b71eef3d143ea1a84ea8bf64e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f128aac2135b85c3e612ce1249766b7e5db29f05
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795993"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549621"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure File Sync ネットワーク エンドポイントの構成
 Azure Files および Azure File Sync では、Azure ファイル共有にアクセスするための次の主な 2 種類のエンドポイントが提供されます。 
@@ -30,7 +30,7 @@ Azure Files と Azure File Sync はどちらも、それぞれに Azure 管理�
 この記事では、以下のことを前提としています。
 - Azure サブスクリプションがある。 サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 - オンプレミスから接続する Azure ファイル共有をストレージ アカウント内に既に作成している。 Azure ファイル共有を作成する方法については、「[Azure ファイル共有を作成する](../files/storage-how-to-create-file-share.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json)」をご覧ください。
-- ストレージ同期サービスを既に作成し、それにご使用の Windows ファイル サーバーを登録している。 Azure File Sync をデプロイする方法については、[Azure File Sync のデプロイ](file-sync-deployment-guide.md)に関するページを参照してください。
+- 次のエンドポイントへのドメイン トラフィックを許可している。[Azure サービス エンドポイント](../file-sync/file-sync-firewall-and-proxy.md#firewall)に関するページを参照してください。
 
 追加として:
 - Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](/powershell/azure/install-az-ps)。
@@ -283,6 +283,10 @@ switch($azureEnvironment) {
 
     "AzureUSGovernment" {
         $storageSyncSuffix = "afs.azure.us"
+    }    
+
+   "AzureChinaCloud" {
+        $storageSyncSuffix = "afs.azure.cn"
     }
     
     default {

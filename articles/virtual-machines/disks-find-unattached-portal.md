@@ -2,19 +2,21 @@
 title: 接続されていない Azure ディスクを特定する - Azure portal
 description: Azure portal を使用して、接続されていない Azure マネージド ディスクとアンマネージド ディスク (VHD/ページ BLOB) を見つけて削除する方法。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 4d31ce4b6086c44de913afd1083bae25fa3d44cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0855516610c9712d5f8db597d1de6e53f01ac546
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98898157"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301307"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>接続されていない Azure マネージド ディスクとアンマネージド ディスクを見つけて削除する - Azure portal
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure で仮想マシン (VM) を削除するとき、既定では、その VM に接続されているディスクはいずれも削除されません。 これは、意図せず VM を削除したことによるデータ損失を防ぐのに役立ちます。 VM が削除された後、接続されていないディスクに対する料金の支払いが続きます。 この記事では、接続されていないディスクを Azure portal で見つけて削除し、不要なコストを削減する方法を示します。 削除は永続的です。ディスクを削除すると、データを回復できなくなります。
 
@@ -25,11 +27,9 @@ Azure で仮想マシン (VM) を削除するとき、既定では、その VM �
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[ディスク]** を探して選択します。
 
-    **[ディスク]** ブレードに、すべてのディスクの一覧が表示されます。 **[所有者]** 列が " **-** " になっているディスクは、接続されていないディスクです。
+    **[ディスク]** ブレードに、すべてのディスクの一覧が表示されます。
 
-    [![[所有者] 列が "-" である場合は非接続ディスクであるマネージド ディスク ブレードのスクリーンショット。](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
-
-1. 接続されていない削除するディスクを選択すると、ディスクのブレードが開きます。
+1. 削除するディスクを選択すると、ディスクのブレードが開きます。
 1. ディスクのブレードで、ディスクの状態が非接続になっていることを確認し、 **[削除]** を選択します。
 
     :::image type="content" source="media/disks-find-unattached-portal/delete-managed-disk-unattached.png" alt-text="個々のマネージド ディスク ブレードのスクリーンショット。ディスクが接続されていない場合、このブレードにディスクの状態が非接続と表示されます。データを保持する必要がなくなった場合は、このディスクを削除できます":::

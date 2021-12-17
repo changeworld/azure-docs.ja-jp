@@ -3,16 +3,17 @@ title: Blob Storage から SQL Database にデータをコピーする - Azure
 description: このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Blob Storage から SQL Database にデータをコピーする方法を示します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 24cedc6a1e0be66e9a924a50e25257f18b7f96a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8eb04f818719c0d4fef827bbfa245552bace9273
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376889"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235527"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル:Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
 > [!div class="op_single_selector"]
@@ -50,13 +51,13 @@ ms.locfileid: "100376889"
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューの **[すべてのサービス]** をクリックし、 **[ストレージ アカウント]** を選択します。
 
-    ![参照 - ストレージ アカウント](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
+    :::image type="content" source="media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png" alt-text="参照 - ストレージ アカウント":::
 3. **[ストレージ アカウント]** ブレードで、このチュートリアルで使用する **Azure ストレージ アカウント** を選択します。
 4. **[設定]** にある **[アクセス キー]** リンクを選択します。
 5. **[ストレージ アカウント名]** テキスト ボックスの隣にある (イメージの) **[コピー]** ボタンをクリックし、任意の場所 (たとえばテキスト ファイル) に貼り付けて保存します。
 6. **key1** についても、前のコピー手順を繰り返すか、メモしておきます。
 
-    ![スストレージ アクセス キー](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
+    :::image type="content" source="media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png" alt-text="スストレージ アクセス キー":::
 7. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL サーバー、データベース、ユーザーの名前を収集する

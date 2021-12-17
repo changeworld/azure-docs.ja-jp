@@ -1,24 +1,24 @@
 ---
-title: マルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする - Azure AD
-description: 自動プロビジョニングを有効にするための独立系ソフトウェア ベンダー向けのガイド
+title: Azure Active Directory のマルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする
+description: Azure Active Directory で自動プロビジョニングを有効にするための独立系ソフトウェア ベンダー向けのガイド
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/23/2019
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: zhchia
-ms.openlocfilehash: 7bd0fc634109beb6cc674d89f56666e7035d33ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: zhchia, arvinh
+ms.openlocfilehash: 9dc13785f0cd493127cee3937f3e14e1750b93d7
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255697"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991244"
 ---
-# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>マルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする
+# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application-in-azure-active-directory"></a>Azure Active Directory のご使用のマルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする
 
 自動ユーザープロビジョニングとは、SaaS アプリケーションなどのターゲット システムでユーザー ID の作成、保守、削除を自動化するプロセスのことです。
 

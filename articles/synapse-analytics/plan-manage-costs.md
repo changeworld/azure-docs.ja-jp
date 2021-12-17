@@ -7,23 +7,21 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.subservice: overview
 ms.topic: how-to
-ms.date: 12/09/2020
-ms.openlocfilehash: 15ac6ce6a1a49bbbd15849adec373dd0fcd42c10
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.date: 06/08/2021
+ms.openlocfilehash: bd1e55c216a314bfc6e132979d5a4999d4f363eb
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568524"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850624"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Azure Synapse Analytics のコストを計画して管理する
 
-この記事では、Azure Synapse Analytics のコストを計画して管理する方法について説明します。 コストを見積もるサービスに対してリソースを追加する前に、まず、Azure Synapse のコストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure Synapse リソースを追加したときの推定コストを確認します。
+この記事では、Azure Synapse Analytics のコストを計画して管理する方法について説明します。 コストを見積もるサービスに対してリソースを追加する前に、まず、Azure Synapse Analytics のコストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure リソースを追加するときに、推定コストを確認します。 Azure Synapse Analytics リソースの使用を開始した後、コスト管理機能を使用して、予算を設定し、コストを監視します。 また、予想コストを確認し、支出の傾向を特定して、対処が必要な領域を特定することもできます。Azure Synapse Analytics のコストは、Azure で課金される月額料金の一部でしかありません。 この記事では、Azure Synapse Analytics のコストを計画し、管理する方法について説明しますが、サードパーティのサービスを含め、Azure サブスクリプションで使用されるすべての Azure サービスとリソースに対して課金されます。
 
-Azure Synapse リソースの使用を開始した後、コスト管理機能を使用して、予算の設定とコストの監視を行います。 また、予想コストを確認し、支出の傾向を特定して、対処が必要な領域を特定することもできます。Azure Synapse のコストは、Azure で課金される月額料金の一部でしかありません。 この記事では、Azure Synapse のコストを計画して管理する方法について説明しますが、サードパーティのサービスを含め、課金は、Azure サブスクリプションで使用されるすべての Azure サービスとリソースに対して行われます。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="prerequisites"></a>[前提条件]
-
-Cost Management のコスト分析では、ほとんどの種類の Azure アカウントがサポートされますが、すべてではありません。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。 Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
+Cost Management のコスト分析では、ほとんどの種類の Azure アカウントがサポートされますが、すべてではありません。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。 Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../cost-management/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
 
 ## <a name="estimate-costs-before-using-azure-synapse-analytics"></a>Azure Synapse Analytics を使用する前にコストを見積もる
 
@@ -35,9 +33,25 @@ Azure Synapse には、次のコストの見積もりで確認できるように
 
 ## <a name="understand-the-full-billing-model-for-azure-synapse-analytics"></a>Azure Synapse Analytics の詳細な課金モデルを理解する
 
-Azure Synapse は、新しいリソースをデプロイすると Azure Synapse と併せてコストが発生する Azure インフラストラクチャ上で実行されます。 追加のインフラストラクチャでコストが発生する可能性があることを理解しておくことが重要です。 デプロイされたリソースに変更を加える場合は、このコストを管理する必要があります。 
+Azure Synapse は、新しいリソースをデプロイすると Azure Synapse と併せてコストが発生する Azure インフラストラクチャ上で実行されます。 追加のインフラストラクチャでコストが発生する可能性があることを理解しておくことが重要です。 
 
-### <a name="costs-that-typically-accrue-with-azure-synapse-analytics"></a>Azure Synapse Analytics で通常発生するコスト
+### <a name="how-youre-charged-for-azure-synapse-analytics"></a>Azure Synapse Analytics に対する課金方法
+
+Azure Synapse Analytics リソースを作成または使用すると、次の測定に基づいて課金される場合があります。
+
+- データ探索とデータ ウェアハウス 
+    - 専用 SQL プール - DWU ブロックの数と実行時間に基づいて課金されます。
+    - ストレージ - 格納されている TB の数に基づいて課金されます。
+    - サーバーレス SQL プール - 処理済みデータの TB によって課金されます。
+- Apache Spark プール - インスタンスの数と実行時間に対して課金されます。
+- データ統合 
+    - オーケストレーション アクティビティの実行 - アクティビティの実行回数に基づいて課金されます。
+    - データ移動 - Azure Integration Runtime で実行されるコピー アクティビティについて、DIU 使用数と実行時間に基づいて課金されます。
+    - Data Flow 仮想コア時間 - データ フローの実行とデバッグについて、コンピューティングの種類、仮想コアの数、実行時間に基づいて課金されます。
+
+請求期間終了時に、各測定の料金が合計されます。 請求書には、Azure Synapse Analytics に対して発生したすべてのコストに関するセクションが表示されています。 測定ごとに個別の行項目があります。
+
+### <a name="other-costs-that-might-accrue-with-azure-synapse-analytics"></a>Azure Synapse Analytics で発生する可能性がある他のコスト
 
 Azure Synapse のリソースを作成すると、他の Azure サービスのリソースも作成されます。 具体的な内容を次に示します。
 
@@ -51,13 +65,18 @@ Azure Synapse リソースを削除しても、次のリソースが引き続き
 
 ### <a name="using-azure-prepayment-credit-with-azure-synapse"></a>Azure Synapse で Azure 前払いクレジットを使用する 
 
-Azure Synapse の料金は、Azure 前払い (旧称: 年額コミットメント) のクレジットを使用して支払うことができます。 ただし、Azure 前払いのクレジットを使用して、サードパーティの製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
+Azure Synapse Analytics の料金は、Azure 前払いのクレジットで支払うことができます。 ただし、Azure 前払いのクレジットを使用して、サードパーティの製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
+
+### <a name="pre-purchase-plan-for-azure-synapse"></a>Azure Synapse の事前購入プラン
+
+Azure Synapse コミット ユニット (SCU) を 1 年間事前購入すると、Azure Synapse Analytics のコストを節約できます。 事前購入済みの SCU は、購入期間中はいつでも使用できます。 詳しくは、「[事前購入プランを使用して Azure Synapse Analytics のコストを最適化する](../cost-management-billing/reservations/synapse-analytics-pre-purchase-plan.md)」を参照してください
+
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>Azure portal で推定料金を検討する
 
 Azure Synapse Analytics のリソースを作成すると、推定コストが表示されます。 ワークスペースには、ワークスペースと共に作成されたサーバーレス SQL プールがあります。 サーバーレス SQL プールでは、クエリを実行するまで料金は発生しません。 ワークスペース内に、専用 SQL プールやサーバーレス Apache Spark プールなどのその他のリソースを作成する必要があります。
 
-<ResourceName> を作成し、推定価格を表示するには:
+Azure Synapse Analytics ワークスペースを作成し、推定価格を表示するには:
 
 1. Azure portal でサービスに移動します。
 2. リソースを作成します。
@@ -95,14 +114,13 @@ Azure Synapse のみのコストの表示例を次に示します。
 
 ## <a name="create-budgets"></a>予算を作成する
 
-[予算](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成して、コストを管理し、異常な支出や浪費のリスクについて、関係者に自動的に通知する[アラート](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成できます。 アラートは、予算とコストのしきい値と比較した支出に基づきます。 予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。 
+[予算](../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成して、コストを管理し、異常な支出や浪費のリスクについて、関係者に自動的に通知する[アラート](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成できます。 アラートは、予算とコストのしきい値と比較した支出に基づきます。 予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。 
 
-監視の粒度をさらに細かく示す必要がある場合は、Azure の特定のリソースまたはサービスに対するフィルターを使用して予算を作成できます。 フィルターを使用すると、追加のコストがかかる新しいリソースが誤って作成されないようにすることができます。 予算を作成するときのフィルター オプションの詳細については、[グループとフィルターのオプション](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関する記事を参照してください。
+監視の粒度をさらに細かく示す必要がある場合は、Azure の特定のリソースまたはサービスに対するフィルターを使用して予算を作成できます。 フィルターを使用すると、追加のコストがかかる新しいリソースが誤って作成されないようにすることができます。 予算を作成するときに使用可能なフィルター オプションの詳細については、[グループとフィルターのオプション](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関する記事を参照してください。
 
 ## <a name="export-cost-data"></a>コスト データのエクスポート
 
 また、ストレージ アカウントに[コスト データをエクスポート](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)することもできます。 これは、自分や他のユーザーがコストに関する追加のデータ分析を行う必要がある場合に便利です。 たとえば、財務チームは、Excel や Power BI を使用してデータを分析できます。 日単位、週単位、または月単位のスケジュールでコストをエクスポートし、カスタムの日付範囲を設定することができます。 コスト データのエクスポートは、推奨されるコスト データセット取得方法です。
-
 
 ## <a name="other-ways-to-manage-and-reduce-costs-for-azure-synapse"></a>Azure Synapse のコストを管理して削減するその他の方法 
 
@@ -112,7 +130,7 @@ Azure Synapse のみのコストの表示例を次に示します。
 
 ### <a name="dedicated-sql-pool"></a>専用 SQL プール
 
-リソースが使用されていないときに一時停止することで、専用 SQL プールのコストを制御できます。 たとえば、夜間と週末にデータベースを使用しない場合、その期間にデータベースを一時停止して、日中に再開することができます。 詳細については、「[Azure portal を使用して専用 SQL プールのコンピューティングを一時停止および再開する](./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+リソースが使用されていないときに一時停止することで、専用 SQL プールのコストを制御できます。 たとえば、夜間と週末にデータベースを使用しない場合、その期間にデータベースを一時停止して、日中に再開することができます。 詳細については、「[Azure portal を使用して専用 SQL プールのコンピューティングを一時停止および再開する](./sql-data-warehouse/pause-and-resume-compute-portal.md?context=/azure/synapse-analytics/context/context)」を参照してください
 
 ### <a name="serverless-apache-spark-pool"></a>サーバーレス Apache Spark プール
 
@@ -120,15 +138,14 @@ Azure Synapse のみのコストの表示例を次に示します。
  
 開発時には、さまざまなサイズの複数の Apache Spark プール定義を作成します。  Apache Spark プール定義の作成は無料であり、使用量に対してのみ課金されます。  Azure Synapse での Apache Spark 使用量は、仮想コア時間単位で課金され、分単位で比例配分されます。  たとえば、コードの開発と検証には小さいプール サイズを使用し、パフォーマンス テストにはより大きなプール サイズを使用します。
 
-
 ### <a name="data-integration---pipelines-and-data-flows"></a>データ統合 - パイプラインとデータ フロー 
 
-データ統合のコストの詳細については、「[Azure Data Factory のコストを計画および管理する](../data-factory/plan-manage-costs.md)」を参照してください。
+データ統合のコストの詳細については、[Azure Data Factory のコストの計画と管理](../data-factory/plan-manage-costs.md)に関するページをご覧ください
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Cost Management を使用してクラウドへの投資を最適化する](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)方法について説明します。
 - [コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を使用してコストを管理する方法について詳細に説明します。
-- [予期しないコストを回避](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)する方法について説明します。
+- [予期しないコストを回避](../cost-management-billing/understand/analyze-unexpected-charges.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)する方法について説明します。
 - [Cost Management](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) のガイド付き学習コースを受講します。
 - [Azure Machine Learning](../machine-learning/concept-plan-manage-cost.md) のコストの計画と管理について確認します。

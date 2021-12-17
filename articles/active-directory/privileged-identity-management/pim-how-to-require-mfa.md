@@ -4,31 +4,32 @@ description: Azure AD Privileged Identity Management (PIM) が多要素認証 (M
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4344e769cc8466287dab1e98e95cc3fbe705ffbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e263de51c234c0572584911b3bd8f7d4eb7c487c
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94835001"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667214"
 ---
-# <a name="multi-factor-authentication-and-privileged-identity-management"></a>多要素認証と Privileged Identity Management
+# <a name="multifactor-authentication-and-privileged-identity-management"></a>多要素認証と Privileged Identity Management
 
-すべての管理者に多要素認証 (MFA) を必須にすることをお勧めします。 これにより、パスワードの漏洩による攻撃のリスクが軽減されます。
+すべての管理者に多要素認証 (MFA または 2FA) を必須にすることをお勧めします。 多要素認証により、危険なパスワードを使用した攻撃のリスクが軽減されます。
 
-多要素認証チャレンジは、ユーザーがサインインしたときに完了するよう要求できます。 ユーザーが Azure Active Directory (Azure AD) Privileged Identity Management (PIM) でロールをアクティブ化するときに多要素認証チャレンジを完了することを必須にすることもできます。 この場合は、サインイン時に多要素認証チャレンジを完了していないユーザーには、完了するよう求めるメッセージが Privileged Identity Management に表示されます。
+多要素認証チャレンジは、ユーザーがサインインしたときに完了するよう要求できます。 ユーザーが Azure Active Directory (Azure AD) Privileged Identity Management (PIM) でロールをアクティブ化するときに多要素認証チャレンジを完了することを必須にすることもできます。 この場合は、ユーザーがサインイン時に多要素認証を完了していない場合でも、Privileged Identity Management によって完了するよう求められます。
 
 > [!IMPORTANT]
-> 現時点では、Azure AD Multi-Factor Authentication は職場または学校のアカウントでのみ機能します。Microsoft アカウント (通常は、Skype、Xbox、Outlook.com などの Microsoft サービスにサインインするために使用される個人アカウント) では機能しません。 このため、個人用アカウントを使用するユーザーは対象管理者にすることはできません。ロールをアクティブ化するために多要素認証を使用することができないからです。 Microsoft アカウントを使用してワークロードの管理を続行する必要がある場合は、ここで永続的な管理者に昇格させてください。
+> 現時点では、Azure AD Multi-Factor Authentication は職場または学校のアカウントでのみ機能します。Microsoft アカウント (通常は、Skype、Xbox、Outlook.com などの Microsoft サービスにサインインするために使用される個人アカウント) では機能しません。 このため、個人用アカウントを使用するユーザーは臨時管理者にすることはできません。ロールをアクティブ化するために多要素認証を使用することができないからです。 Microsoft アカウントを使用してワークロードの管理を続行する必要がある場合は、ここで永続的な管理者に昇格させてください。
 
 ## <a name="how-pim-validates-mfa"></a>PIM が MFA を検証する方法
 

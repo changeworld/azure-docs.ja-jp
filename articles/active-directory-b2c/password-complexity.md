@@ -3,22 +3,22 @@ title: パスワードの複雑さの要件を構成する
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C でコンシューマーによって指定されるパスワードの複雑さの要件を構成する方法。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 81c6e58e34f30d5736c40c77a308321dee28ae34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af5f2435734d876630abddeef7a8c52b16acc289
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224267"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130224689"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードの複雑さの要件を構成する
 
@@ -48,11 +48,12 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 ## <a name="configure-password-complexity"></a>パスワードの複雑さの構成
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-3. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
-4. **[ユーザー フロー]** を選択します。
-2. ユーザー フローを選択し、 **[プロパティ]** をクリックします。
-3. **[パスワードの複雑さ]** で、このユーザー フローのパスワードの複雑さを **[シンプル]** 、 **[強]** 、 **[カスタム]** のいずれかに変更します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. **[ユーザー フロー]** を選択します。
+1. ユーザー フローを選択し、 **[プロパティ]** をクリックします。
+1. **[パスワードの複雑さ]** で、このユーザー フローのパスワードの複雑さを **[シンプル]** 、 **[強]** 、 **[カスタム]** のいずれかに変更します。
 
 ### <a name="comparison-chart"></a>比較チャート
 
@@ -222,12 +223,13 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 ### <a name="upload-the-files"></a>ファイルのアップロード
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. **[Identity Experience Framework]** を選択します。
-5. [カスタム ポリシー] ページで、 **[ポリシーのアップロード]** をクリックします。
-6. **[ポリシーが存在する場合は上書きする]** を選択し、*TrustFrameworkExtensions.xml* ファイルを検索して選択します。
-7. **[アップロード]** をクリックします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. **[Identity Experience Framework]** を選択します。
+1. [カスタム ポリシー] ページで、 **[ポリシーのアップロード]** をクリックします。
+1. **[ポリシーが存在する場合は上書きする]** を選択し、*TrustFrameworkExtensions.xml* ファイルを検索して選択します。
+1. **[アップロード]** をクリックします。
 
 ### <a name="run-the-policy"></a>ポリシーを実行する
 

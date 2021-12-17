@@ -1,26 +1,24 @@
 ---
 title: Edge Secured-Core 認定の要件
-description: Edge Secured-Core 認定プログラムの要件
+description: Edge Secured-Core 認定の要件
 author: cbroad
 ms.author: cbroad
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Edge Secured-core Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 5bb02f939bb63fd1c6365fd4570996f09119e958
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 35091e1ccde554ce897dc629c3c372af05650458
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166906"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293860"
 ---
-# <a name="azure-certified-device---edge-secured-core-preview"></a>Azure Certified Device - Edge Secured-Core (プレビュー) #
-
-## <a name="edge-secured-core-certification-requirements"></a>Edge Secured-Core 認定の要件 ##
+# <a name="edge-secured-core-certification-requirements-preview"></a>Edge Secured-Core 認定の要件 (プレビュー) #
 
 このドキュメントでは、認定を完了するために、満たす必要があるデバイス固有の機能と要件について概説し、Edge Secured-Core ラベルを使用して Azure IoT デバイス カタログにデバイスを一覧表示します。
 
-### <a name="program-purpose"></a>プログラムの目的 ###
+## <a name="program-purpose"></a>プログラムの目的 ##
 Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレーティング システムを実行する IoT デバイス向けの Azure Certified Device プログラムの増分認定です。このプログラムにより、デバイス パートナーは、追加の一連のセキュリティ基準を満たすことで、デバイスを差別化できます。 この基準を満たすデバイスは、次のことが可能になります。
 1. ハードウェアベースのデバイス ID 
 2. システムの整合性を適用できる 
@@ -28,18 +26,18 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 4. 保存データを保護する
 5. 転送中のデータを保護する
 6. 組み込みのセキュリティ エージェントとセキュリティ強化
-### <a name="requirements"></a>必要条件 ###
+## <a name="requirements"></a>必要条件 ##
 
 ---
 |名前|SecuredCore.Built-in.Security|
 |:---|:---|
 |Status|必須|
-|説明|テストの目的は、Azure Defender for IoT にデータを送信して、セキュリティ情報とイベントをデバイスでレポートできることを確認することです。|
+|説明|テストの目的は、Microsoft Defender for IoT にデータを送信して、セキュリティ情報とイベントをデバイスでレポートできることを確認することです。|
 |ターゲットの可用性|2021|
 |適用対象|任意のデバイス|
 |OS|非依存|
 |検証の種類|手動/ツール|
-|検証 |デバイスでは、セキュリティ ログとアラートを生成する必要があります。 デバイスでは、Azure Security Center にメッセージを記録してアラートを送信します。<ol><li>GitHub からセキュリティ エージェントをダウンロードしてデプロイします。</li><li>Azure Defender for IoT からのアラート メッセージを検証します。</li></ol>|
+|検証 |デバイスでは、セキュリティ ログとアラートを生成する必要があります。 Microsoft Defender for Cloud へのデバイス ログとアラート メッセージ。<ol><li>GitHub からセキュリティ エージェントをダウンロードしてデプロイします。</li><li>Microsoft Defender for IoT からのアラート メッセージを検証します。</li></ol>|
 |リソース|[Azure Docs IoT Defender for IoT](../defender-for-iot/how-to-configure-agent-based-solution.md)|
 
 ---
@@ -51,7 +49,7 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 |適用対象|任意のデバイス|
 |OS|非依存|
 |検証の種類|手動/ツール|
-|検証|ストレージの暗号化が有効になっていることを確認するために、ツールセットでデバイスを検証します。既定のアルゴリズムは、キーの長さが 128 ビット以上の XTS-AES-AES です。|
+|検証|ストレージの暗号化が有効になっていることを確認するために、ツールセットでデバイスを検証します。既定のアルゴリズムは、キーの長さが 128 ビット以上の XTS-AES-AES です。 </br></br>注: 2021 年 6 月のプレビュー リリースでは、デバイスに DM-Crypt がインストールされており、暗号化されたパーティションがあることのみが検証されます。|
 |リソース||
 
 ---
@@ -87,7 +85,7 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 |適用対象|任意のデバイス|
 |OS|非依存|
 |検証の種類|手動/ツール|
-|検証|パートナーは、Microsoft Update、Azure Device Update、またはその他の承認されたサービスを通じて、デバイスに更新プログラムを送信できたことを確認します。|
+|検証|パートナーは、Microsoft Update、[Device Update for IoT Hub (ADU)](../iot-hub-device-update/understand-device-update.md) を通じて、デバイスに更新プログラムを送信できたことを確認します。 Device Update for IoT Hub を使用する Linux デバイスの場合、認定では、Secured Core テスト プロセス中の .swu 更新ファイル、および認定サービスで[更新マニフェスト](../iot-hub-device-update/update-manifest.md) ファイルを生成するためのデバイス固有の情報を提供する必要があります。|
 |リソース|[Device Update for IoT Hub](../iot-hub-device-update/index.yml)|
 
 ---
@@ -99,7 +97,7 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 |適用対象|任意のデバイス|
 |OS|非依存|
 |検証の種類|手動/ツール|
-|検証|リモート管理、特にセキュリティ構成の機能がデバイスでサポートされていることを確認するために、ツールセットでデバイスを検証します。 状態は、IoT Hub/Azure Defender for IoT にレポートされます。|
+|検証|リモート管理、特にセキュリティ構成の機能がデバイスでサポートされていることを確認するために、ツールセットでデバイスを検証します。 状態は、IoT Hub/Microsoft Defender for IoT にレポートされます。|
 |リソース||
 
 ---
@@ -161,7 +159,7 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 |OS|非依存|
 |検証の種類|手動/ツール|
 検証|TLS バージョン 1.2 以上と、それ以降に必要となる TLS 暗号スイートがデバイスでサポートされていることを確認するために、ツールセットでデバイスを検証します。<ul><li>TLS_RSA_WITH_AES_128_GCM_SHA256</li><li>TLS_RSA_WITH_AES_128_CBC_SHA256</li><li>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</li><li>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</li><li>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</li><li>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256</li><li>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</li></ul>|
-|リソース| [IoT Hub の TLS サポート](../iot-hub/iot-hub-tls-support.md) <br /> [Windows 10 の TLS 暗号スイート](https://docs.microsoft.com/windows/win32/secauthn/tls-cipher-suites-in-windows-10-v1903) |
+|リソース| [IoT Hub の TLS サポート](../iot-hub/iot-hub-tls-support.md) <br /> [Windows 10 の TLS 暗号スイート](/windows/win32/secauthn/tls-cipher-suites-in-windows-10-v1903) |
 
 ---
 |名前|SecuredCore.Protection.SignedUpdates|
@@ -184,7 +182,7 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 |適用対象|任意のデバイス|
 |OS|非依存|
 |検証の種類|手動/ツール|
-|検証|デバイスがブートされるたびに、ファームウェアとカーネルの署名が検証されることを確認するために、ツールセットでデバイスを検証します。 <ul><li>UEFI: セキュア ブートが有効</li><li>Uboot: 検証されたブートが有効</li></ul>|
+|検証|デバイスがブートされるたびに、ファームウェアとカーネルの署名が検証されることを確認するために、ツールセットでデバイスを検証します。 <ul><li>UEFI: セキュア ブートが有効</li><li>Uboot: 検証されたブートが有効</li></ul> </br> </br>注: 2021 年 6 月のプレビュー リリースでは、UEFI の存在のみが検証されます。|
 |リソース||
 
 ---
@@ -220,7 +218,7 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 |適用対象|任意のデバイス|
 |OS|非依存|
 |検証の種類|手動/ツール|
-|検証|Defender IOT システム構成のベンチマークが実行されていることを確認するために、ツールセットでデバイスを検証します。|
+|検証|Defender for Cloud IOT システム構成のベンチマークが実行されていることを確認するために、ツールセットでデバイスを検証します。|
 |リソース| https://techcommunity.microsoft.com/t5/microsoft-security-baselines/bg-p/Microsoft-Security-Baselines <br> https://www.cisecurity.org/cis-benchmarks/ |
 
 ---

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df35b537e3bcaa2fb7d876b55cea08e5dcf65586
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98939865"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113652449"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Windows の音声アシスタントの実装
 
@@ -124,7 +124,7 @@ await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);
 
 ロックされた状態でのアクティブ化は、ロックが解除された状態でのアクティブ化に類似しています。 アプリケーションのアクティブなインスタンスが存在しない場合は、新しいインスタンスがバックグラウンドで開始され、App.xaml.cs の `OnBackgroundActivated` が呼び出されます。 アプリケーションのインスタンスが存在する場合、そのインスタンスは `ConversationalAgentSession.SignalDetected` イベントを通じて通知を受け取ります。
 
-アプリケーションがまだロックされた状態で表示されていない場合は、`ConversationalAgentSession.RequestForegroundActivationAsync` を呼び出す必要があります。 これにより、App.xaml.cs の `OnLaunched` メソッドがトリガーされ、ロックされた状態で表示されるビューに移動します。
+アプリケーションがロックされた状態で表示されていない場合は、`ConversationalAgentSession.RequestForegroundActivationAsync` を呼び出す必要があります。 これにより、App.xaml.cs の `OnLaunched` メソッドがトリガーされ、ロックされた状態で表示されるビューに移動します。
 
 ### <a name="detecting-lock-screen-transitions"></a>ロック画面の切り替えの検出
 
@@ -154,4 +154,4 @@ conversationalAgentSession.SystemStateChanged += (s, e) =>
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [UWP 音声アシスタントのサンプル アプリにアクセスして、コード サンプルとコードのチュートリアルを確認する](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)
+> [UWP 音声アシスタントのサンプル アプリにアクセスして、コード サンプルとコードのチュートリアルを確認する](windows-voice-assistants-faq.yml#the-uwp-voice-assistant-sample)

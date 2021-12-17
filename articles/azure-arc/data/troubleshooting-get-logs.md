@@ -7,53 +7,46 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 0c4cff7583f08fe27649cee464fcef802cddd88f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b61faba9abd2f4c1af5db559dd28fa5a8e7c013
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93234047"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555250"
 ---
 # <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>ログを取得して Azure Arc 対応データ サービスのトラブルシューティングを行う
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 作業を進めるには、以下が必要です。
 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. 詳細については、[Azure Arc データ サービスをデプロイおよび管理するためのクライアント ツールをインストールする](./install-client-tools.md)方法に関するページを参照してください。
+* `arcdata` 拡張機能がある Azure CLI (`az`)。 詳細については、[Azure Arc データ サービスをデプロイおよび管理するためのクライアント ツールをインストールする](./install-client-tools.md)方法に関するページを参照してください。
 * Azure Arc 対応データ コントローラーにサインインするための管理者アカウント。
 
 ## <a name="get-log-files"></a>ログ ファイルの取得
 
-トラブルシューティングの目的で、すべてのポッドまたは特定のポッドでサービスのログを取得できます。 1 つは、`kubectl logs` コマンドなどの標準の Kubernetes ツールを使用する方法です。 この記事では、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] ツールを使用します。これにより、一度にすべてのログを簡単に取得できます。
+トラブルシューティングの目的で、すべてのポッドまたは特定のポッドでサービスのログを取得できます。 1 つは、`kubectl logs` コマンドなどの標準の Kubernetes ツールを使用する方法です。 この記事では、Azure (`az`) CLI `arcdata` 拡張機能を使用します。これにより、一度にすべてのログを簡単に取得できます。
 
-1. 管理者アカウントでデータ コントローラーにサインインします。
+次のコマンドを実行して、ログをダンプします。
 
-   ```console
-   azdata login
-   ```
-
-2. 次のコマンドを実行して、ログをダンプします。
-
-   ```console
-   azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+   ```azurecli
+   az arcdata dc debug copy-logs --exclude-dumps --skip-compress --use-k8s
    ```
 
    次に例を示します。
 
-   ```console
-   #azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
+   ```azurecli
+   #az arcdata dc debug copy-logs --exclude-dumps --skip-compress --use-k8s
    ```
 
 データ コントローラーによって、現在の作業ディレクトリの `logs` という名前のサブディレクトリにログ ファイルが作成されます。 
 
 ## <a name="options"></a>オプション
 
-`azdata arc dc debug copy-logs` コマンドには、出力を管理するための次のオプションが用意されています。
+`az arcdata dc debug copy-logs` コマンドには、出力を管理するための次のオプションが用意されています。
 
 * `--target-folder` パラメーターを使用して、ログ ファイルを別のディレクトリに出力します。
 * `--skip-compress` パラメーターを省略することで、ファイルを圧縮します。
@@ -63,14 +56,14 @@ ms.locfileid: "93234047"
 
 これらのパラメーターを使用して、次の例の `<parameters>` を置き換えることができます。 
 
-```console
-azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
+```azurecli
+az arcdata dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name>
 ```
 
 次に例を示します。
 
 ```console
-#azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
+#az arcdata dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 
 ```
 
 次に、フォルダー階層の例を示します。 これは、順番にポッド名、コンテナー、コンテナー内のディレクトリ階層ごとに整理されています。
@@ -193,7 +186,3 @@ azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps -
             ├───journal
             └───openvpn
 ```
-
-## <a name="next-steps"></a>次の手順
-
-[azdata arc dc debug copy-logs](/sql/azdata/reference/reference-azdata-arc-dc-debug#azdata-arc-dc-debug-copy-logs?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json)

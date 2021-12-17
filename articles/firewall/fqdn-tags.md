@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: c0bd2f6a021baae80dafcc3d544e1062d8e022e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56f2a02109acd4f76cf5eb3b13dd70c878694f72
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94653336"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604248"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN タグの概要
 
@@ -36,7 +36,7 @@ FQDN タグは、よく知られている Microsoft サービスに関連付け�
 |App Service Environment (ASE)|ASE プラットフォーム トラフィックへの発信アクセスを許可します。 このタグの対象には、ASE によって作成されたお客様固有のストレージ エンドポイントおよび SQL エンドポイントは含まれません。 これらは、[サービス エンドポイント](../virtual-network/tutorial-restrict-network-access-to-resources.md)を使用して有効にするか、手動で追加する必要があります。<br><br>Azure Firewall と ASE の統合の詳細については、「[App Service Environment をロックする](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)」を参照してください。|
 |Azure Backup|Azure Backup サービスへの発信アクセスを許可します。|
 |Azure HDInsight|HDInsight プラットフォーム トラフィックへの発信アクセスを許可します。 このタグでは、HDInsight からのお客様固有のストレージ トラフィックまたは SQL トラフィックは対象になりません。 [サービス エンドポイント](../virtual-network/tutorial-restrict-network-access-to-resources.md)を使用してこれらを有効にするか、手動で追加します。|
-|WindowsVirtualDesktop (WVD)|Windows Virtual Desktop プラットフォームの送信トラフィックを許可します。 このタグの対象には、WVD によって作成されたデプロイ固有のストレージと Service Bus エンドポイントは含まれません。 また、DNS および KMS ネットワーク ルールが必要です。 Azure Firewall と WVD の統合の詳細については、[Azure Firewall を使用して Window Virtual Desktop のデプロイを保護する](protect-windows-virtual-desktop.md)方法に関する記事を参照してください。|
+|WindowsVirtualDesktop (WVD)|Windows Virtual Desktop プラットフォームの送信トラフィックを許可します。 このタグの対象には、WVD によって作成されたデプロイ固有のストレージと Service Bus エンドポイントは含まれません。 また、DNS および KMS ネットワーク ルールが必要です。 Azure Firewall と WVD の統合の詳細については、[Azure Firewall を使用して Window Virtual Desktop のデプロイを保護する](protect-azure-virtual-desktop.md)方法に関する記事を参照してください。|
 |Azure Kubernetes Service (AKS)|AKS への発信アクセスを許可します。 詳細については、「[Azure Firewall を使用して Azure Kubernetes Service (AKS) のデプロイを保護する](protect-azure-kubernetes-service.md)」を参照してください。|
 
 > [!NOTE]

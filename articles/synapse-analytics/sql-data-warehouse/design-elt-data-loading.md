@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8a8f857dcfdc271a3aaad71f4b9c26d474033383
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 0fd10d851c60ebb36a2861c8aa4fbd46daac84d7
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566105"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278692"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのデータ読み込み戦略
 
@@ -142,8 +142,8 @@ PolyBase を使用する場合、定義する外部オブジェクトは、外�
 
 データを読み込むには、次のいずれかの読み込みオプションを使用できます。
 
-- [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)は、シームレスかつ柔軟にデータを読み込むことができるため、推奨されている読み込みユーティリティです。 このステートメントには、PolyBase では提供されない追加の読み込み機能が多数あります。 
-- [T-SQL を使用したPolyBase](./load-data-from-azure-blob-storage-using-copy.md) では、外部データ オブジェクトを定義する必要があります。
+- [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)は、シームレスかつ柔軟にデータを読み込むことができるため、推奨されている読み込みユーティリティです。 このステートメントには、PolyBase では提供されない追加の読み込み機能が多数あります。 サンプル チュートリアルを実行するには、[ニューヨークのタクシーの COPY](./load-data-from-azure-blob-storage-using-copy.md)に関するチュートリアルを参照してください。  
+- [T-SQL を使用したPolyBase](./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) では、外部データ オブジェクトを定義する必要があります。
 - [Azure Data Factory (ADF) を使用した PolyBase および COPY ステートメント](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - もう 1 つのオーケストレーション ツールです。  このツールはパイプラインを定義し、ジョブのスケジュールを設定します。
 - [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) は、ソースデータが SQL Server にある場合に適しています。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。
 - [Azure Databricks を使用した PolyBase](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json) - PolyBase を使用して、テーブルから Databricks データ フレームにデータを転送することや、Databricks データ フレームからテーブルにデータを書き込むことができます。
@@ -171,4 +171,8 @@ ETL プロセスを設計する際は、小規模のテスト サンプルでプ
 
 ## <a name="next-steps"></a>次のステップ
 
+<<<<<<< HEAD
 読み込みのガイダンスについては、[データの読み込みのガイダンス](guidance-for-loading-data.md)に関するページを参照してください。
+=======
+読み込みのガイダンスについては、[データを読み込むためのベスト プラクティス](../sql/data-loading-best-practices.md)に関するページを参照してください。
+>>>>>>> repo_sync_working_branch

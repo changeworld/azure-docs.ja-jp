@@ -5,29 +5,28 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Monitor を使用して Azure Arc 対応 Kubernetes クラスターのメトリックとログを収集する
-ms.openlocfilehash: 0a983f6d7032310d02d35e713482de942bfbfd70
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 90a648c5cb6ace4d1f055532d335a705220e2716
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443852"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465461"
 ---
 # <a name="azure-monitor-container-insights-for-azure-arc-enabled-kubernetes-clusters"></a>Azure Arc 対応 Kubernetes クラスター用の Azure Monitor Container Insights
 
 [Azure Monitor Container Insights](container-insights-overview.md) を使用すると、Azure Arc 対応 Kubernetes クラスターの監視エクスペリエンスを充実させることができます。
 
-[!INCLUDE [preview features note](../../azure-arc/kubernetes/includes/preview/preview-callout.md)]
 
 ## <a name="supported-configurations"></a>サポートされている構成
 
-- Azure Monitor Container Insights では、「[概要](container-insights-overview.md)」の記事で説明されているように Azure Arc 対応 Kubernetes の監視 (プレビュー) がサポートされます。ただし、ライブ データ (プレビュー) 機能は除きます。 また、ユーザーには、[メトリックを有効にする](container-insights-update-metrics.md)ための[所有者](../../role-based-access-control/built-in-roles.md#owner)権限は必要ありません。
+- Azure Monitor Container Insights では、「[概要](container-insights-overview.md)」の記事で説明されているように Azure Arc 対応 Kubernetes の監視がサポートされます。ただし、ライブ データ機能は除きます。 また、ユーザーには、[メトリックを有効にする](container-insights-update-metrics.md)ための[所有者](../../role-based-access-control/built-in-roles.md#owner)権限は必要ありません。
 - `Docker`、`Moby`、CRI 互換コンテナー ランタイム (`CRI-O`、`containerd`など)。
 - 認証なしの送信プロキシと基本認証を使用した送信プロキシがサポートされます。 現時点では、信頼できる証明書が必要な送信プロキシはサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 
 - [汎用クラスターの拡張機能のドキュメント](../../azure-arc/kubernetes/extensions.md#prerequisites)に記載されている前提条件を満たしていること。
-- Log Analytics ワークスペース: Azure Monitor Container Insights では、[リージョン別の Azure 製品のページ](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に記載されているリージョンで Log Analytics ワークスペースがサポートされます。 [Azure Resource Manager](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md)、または [Azure portal](../logs/quick-create-workspace.md) を使用して独自のワークスペースを作成できます。
+- Log Analytics ワークスペース: Azure Monitor Container Insights では、[リージョン別の Azure 製品のページ](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に記載されているリージョンで Log Analytics ワークスペースがサポートされます。 [Azure Resource Manager](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-workspace-configuration.md)、または [Azure portal](../logs/quick-create-workspace.md) を使用して独自のワークスペースを作成できます。
 - Azure Arc 対応 Kubernetes リソースを含む Azure サブスクリプションで、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロール割り当てが必要です。 Log Analytics ワークスペースが別のサブスクリプションに含まれる場合、その Log Analytics ワークスペースで、[Log Analytics 共同作成者](../logs/manage-access.md#manage-access-using-azure-permissions)ロール割り当てが必要です。
 - 監視データを表示するために、Log Analytics ワークスペースで、[Log Analytics 閲覧者](../logs/manage-access.md#manage-access-using-azure-permissions)ロール割り当てが必要です。
 - 送信アクセスのために、「[Kubernetes クラスターを Azure Arc に接続する](../../azure-arc/kubernetes/quickstart-connect-cluster.md#meet-network-requirements)」で示されているエンドポイントに加えて、下記に示すものも有効にする必要があります。
@@ -40,7 +39,7 @@ ms.locfileid: "106443852"
     | `*.monitoring.azure.com` | 443 |
     | `login.microsoftonline.com` | 443 |
 
-    Arc 対応 Kubernetes リソースが Azure US Government 環境にある場合、送信アクセスのために次のエンドポイントを有効にする必要があります。
+    Azure Arc 対応 Kubernetes リソースが Azure US Government 環境にある場合、送信アクセスのために次のエンドポイントを有効にする必要があります。
 
     | エンドポイント | Port |
     |----------|------|
@@ -51,8 +50,6 @@ ms.locfileid: "106443852"
 
 - 以前に、クラスター拡張機能のないスクリプトを使用してこのクラスターに Azure Monitor Container Insights をデプロイした場合、[こちら](container-insights-optout-hybrid.md)の指示に従って、この Helm チャートを削除してください。 その後、Azure Monitor Container Insights のクラスター拡張機能インスタンスの作成を続行できます。
 
-    >[!NOTE]
-    > Azure Monitor Container Insights のデプロイのスクリプトベース バージョン (プレビュー) は、[クラスター拡張機能](../../azure-arc/kubernetes/extensions.md)形式のデプロイに置き換えられます。 スクリプトを使用して以前デプロイされた Azure Monitor は 2021 年 6 月までしかサポートされないため、できるだけ早い段階でクラスター拡張機能形式のデプロイに移行することをお勧めします。
 
 ### <a name="identify-workspace-resource-id"></a>ワークスペースのリソース ID の特定
 
@@ -90,7 +87,7 @@ ms.locfileid: "106443852"
 - クラスターのリージョンに対応する既定の Log Analytics ワークスペースを作成または使用します
 - Azure Monitor クラスター拡張機能に対して自動アップグレードが有効化されます
 
-```console
+```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers
 ```
 
@@ -98,7 +95,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 "*共同作成者*" またはより制限が少ないロール割り当てがある任意のサブスクリプションで、既存の Azure Log Analytics ワークスペースを使用できます。
 
-```console
+```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers --configuration-settings logAnalyticsWorkspaceResourceID=<armResourceIdOfExistingWorkspace>
 ```
 
@@ -106,7 +103,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 既定のリソース要求と制限を調整する場合、詳細な構成設定を使用できます。
 
-```console
+```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers --configuration-settings  omsagent.resources.daemonset.limits.cpu=150m omsagent.resources.daemonset.limits.memory=600Mi omsagent.resources.deployment.limits.cpu=1 omsagent.resources.deployment.limits.memory=750Mi
 ```
 
@@ -116,7 +113,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 Azure Arc 対応 Kubernetes クラスターが Azure Stack Edge にある場合は、カスタム マウント パス `/home/data/docker` を使用する必要があります。
 
-```console
+```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers --configuration-settings omsagent.logsettings.custommountpath=/home/data/docker
 ```
 
@@ -130,9 +127,9 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 ### <a name="onboarding-from-the-azure-arc-enabled-kubernetes-resource-blade"></a>Azure Arc 対応 Kubernetes リソース ブレードからのオンボード
 
-1. Azure portal で、監視する Arc 対応 Kubernetes クラスターを選択します。
+1. Azure portal で、監視する Azure Arc 対応 Kubernetes クラスターを選択します。
 
-2. リソース ブレードの [監視] セクションの下にある [Insights (プレビュー)] 項目を選択します。
+2. リソース ブレードの [監視] セクションの下にある [Insights] 項目を選択します。
 
 3. オンボード ページで、[Azure Monitor の構成] ボタンを選択します。
 
@@ -159,15 +156,28 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
     curl -L https://aka.ms/arc-k8s-azmon-extension-arm-template-params -o  arc-k8s-azmon-extension-arm-template-params.json
     ```
 
-2. arc-k8s-azmon-extension-arm-template-params.json ファイルで、パラメーター値を更新します。Azure パブリック クラウドの場合、workspaceDomain の値として `opinsights.azure.com` を使用する必要があります。
+2. arc-k8s-azmon-extension-arm-template-params.json ファイル内のパラメーター値を更新します。 Azure パブリック クラウドの場合は、workspaceDomain の値として `opinsights.azure.com` を使用する必要があり、AzureUSGovernment では、workspaceDomain の値として `opinsights.azure.us` を使用する必要があります。
 
 3. テンプレートをデプロイして Azure Monitor Container Insights 拡張機能を作成します。 
 
-    ```console
+    ```azurecli
     az login
     az account set --subscription "Subscription Name"
     az deployment group create --resource-group <resource-group> --template-file ./arc-k8s-azmon-extension-arm-template.json --parameters @./arc-k8s-azmon-extension-arm-template-params.json
     ```
+
+## <a name="verify-extension-installation-status"></a>拡張機能のインストール状態を確認する
+Azure Arc 対応 Kubernetes クラスターの Azure Monitor 拡張機能を正常に作成したら、Azure portal または CLI を使用して、インストールの状態をさらに確認できます。 インストールが成功すると、状態が [インストール済み] と表示されます。 状態が [失敗] と表示されているか、長時間にわたって "保留中" 状態のままになっている場合は、以下のトラブルシューティングのセクションに進んでください。
+
+### <a name="azure-portal"></a>Azure portal
+1. Azure portal で、拡張機能がインストールされている Azure Arc 対応 Kubernetes クラスターを選択します。
+2. リソース ブレードの [設定] セクションの [拡張機能] 項目を選択します。
+3. 'azuremonitor-containers' という名前の拡張子が表示され、[インストールの状態] 列に状態が表示されます。
+### <a name="azure-cli"></a>Azure CLI
+次のコマンドを実行して、`Microsoft.AzureMonitor.Containers` 拡張機能の最新の状態を表示します。
+```azurecli
+az k8s-extension show --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters -n azuremonitor-containers
+```
 
 ## <a name="delete-extension-instance"></a>拡張機能インスタンスを削除する
 
@@ -180,9 +190,12 @@ az k8s-extension delete --name azuremonitor-containers --cluster-type connectedC
 ## <a name="disconnected-cluster"></a>切断されたクラスター
 クラスターが 48 時間よりも長く Azure から切断されると、Azure Resource Graph にはクラスターに関する情報がなくなります。 この結果、Insights ブレードに、クラスターの状態に関する誤った情報が表示される場合があります。
 
+## <a name="troubleshooting"></a>トラブルシューティング
+監視を有効にする際の問題については、問題の診断に役立つ[トラブルシューティング スクリプト](https://aka.ms/azmon-ci-troubleshooting)を用意しました。
+
 ## <a name="next-steps"></a>次のステップ
 
-- Arc 対応 Kubernetes クラスターとそこで実行されるワークロードの正常性とリソース使用率を収集するための監視を有効にしたので、Container insights の[使い方](container-insights-analyze.md)を確認します。
+- Azure Arc 対応 Kubernetes クラスターとそこで実行されるワークロードの正常性とリソース使用率を収集するための監視を有効にしたので、Container insights の[使い方](container-insights-analyze.md)を確認します。
 
 - 既定では、コンテナー化されたエージェントによって、kube-system を除くすべての名前空間で実行されているすべてのコンテナーの stdout および stderr コンテナー ログが収集されます。 特定の名前空間に固有のコンテナー ログ収集を構成するには、「[コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する](container-insights-agent-config.md)」を参照して、ConfigMap 構成ファイルに必要なデータ収集設定を構成します。
 

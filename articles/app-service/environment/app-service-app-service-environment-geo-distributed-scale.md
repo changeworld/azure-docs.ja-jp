@@ -1,23 +1,22 @@
 ---
 title: Geo 分散スケール
 description: Traffic Manager および App Service Environment による geo 分散を使用してアプリを水平方向にスケールする方法について説明します。
-author: stefsch
+author: madsd
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.topic: article
 ms.date: 09/07/2016
-ms.author: stefsch
-ms.custom: seodec18, references_regions
-ms.openlocfilehash: 004b32118521f72c5b59ad7bab2d4e41244b85c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: madsd
+ms.custom: seodec18, references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 85b72fa7c0a9f764583f63d6df60a5b209ff6415
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85833606"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998820"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>App Service Environment を使用した geo 分散スケール
 ## <a name="overview"></a>概要
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 きわめて大規模なスケーリングを必要とするアプリケーション シナリオでは、単一のアプリ デプロイメントで使用できるコンピューティング リソース容量では足りないことがあります。  投票アプリケーション、スポーツ イベント、テレビ放送される娯楽イベントは、いずれも非常に高いスケールを必要とするシナリオの例です。 高スケールの要件には、アプリを水平方向にスケールアウトすることで対応できます。 極端な負荷要件に対応できるように、1 つのリージョン内および複数のリージョン内で、多数のアプリのデプロイを行うことができます。
 
@@ -42,7 +41,7 @@ App Service Environment は、水平方向のスケールアウトに最適な�
 * **Traffic Manager ドメイン:** ドメイン名は、[Azure Traffic Manager プロファイル][AzureTrafficManagerProfile]の作成時に選択します。  この名前は、Traffic Manager が管理するドメイン エントリを登録する際に、 *trafficmanager.net* サフィックスと組み合わされます。  サンプル アプリでは、選択される名前は *scalable-ase-demo* です。  そのため、Traffic Manager で管理される完全なドメイン名は、 *scalable-ase-demo.trafficmanager.net* になります。
 * **アプリ フットプリントのスケーリングに関する戦略:** アプリケーションのフットプリントは単一リージョン内の複数の App Service Environment に分散されるのか、  複数のリージョンなのか、  両方のアプローチの最適な組み合わせなのか。  これは、顧客のトラフィックが発生する場所に加えて、アプリをサポートするバックエンド インフラストラクチャの他の部分がどの程度適切にスケーリングできるかという見込みに基づいて決定する必要があります。  たとえば、完全にステートレスなアプリケーションでは、各 Azure リージョンで多数の App Service Environment を組み合わせ、これに多くの Azure リージョンにデプロイされた App Service Environment を掛け合わせることで、大規模なスケーリングを実現できます。  選択できるグローバルな Azure リージョンは 15 以上あるため、顧客はスケーラビリティのきわめて高いアプリケーション フットプリントを世界規模で構築できます。  この記事に使用されるサンプル アプリでは、単一の Azure リージョン (米国中南部) に 3 つの App Service Environment が作成されています。
 * **App Service Environment の名前付け規則:** 各 App Service Environment には一意の名前が必要です。  App Service Environment が 1 つか 2 つ以上になるとき、各 App Service Environment を識別する目的で名前付け規則を用意すると便利です。  サンプル アプリでは、シンプルな名前付け規則が使用されています。  3 つの App Service Environment の名前は *fe1ase*、*fe2ase*、*fe3ase* です。
-* **アプリの名前付け規則**:アプリのインスタンスが複数デプロイされるため、デプロイされたアプリの各インスタンスに名前が必要です。  App Service Environment のあまり知られていない便利な機能の 1 つですが、同じアプリ名を複数の App Service Environment で使用できます。 App Service Environment ごとに一意のドメイン サフィックスがあるため、開発者は各環境でまったく同じアプリ名を再利用できます。  たとえば、開発者は、*myapp.foo1.p.azurewebsites.net*、*myapp.foo2.p.azurewebsites.net*、*myapp.foo3.p.azurewebsites.net* のようなアプリ名を設定できます。ただし、サンプル アプリでは、各アプリ インスタンスに一意の名前を設定しています。  使用されているアプリ インスタンス名は *webfrontend1*、*webfrontend2*、*webfrontend3* です。
+* **アプリの名前付け規則**:アプリのインスタンスが複数デプロイされるため、デプロイされたアプリの各インスタンスに名前が必要です。  App Service Environment のあまり知られていない便利な機能の 1 つですが、同じアプリ名を複数の App Service Environment で使用できます。  App Service Environment ごとに一意のドメイン サフィックスがあるため、開発者は各環境でまったく同じアプリ名を再利用できます。  たとえば、開発者は、*myapp.foo1.p.azurewebsites.net*、*myapp.foo2.p.azurewebsites.net*、*myapp.foo3.p.azurewebsites.net* のようなアプリ名を設定できます。ただし、サンプル アプリでは、各アプリ インスタンスに一意の名前を設定しています。  使用されているアプリ インスタンス名は *webfrontend1*、*webfrontend2*、*webfrontend3* です。
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>Traffic Manager プロファイルを設定する
 アプリの複数のインスタンスを複数の App Service Environment にデプロイしたら、個々のアプリ インスタンスを Traffic Manager に登録できます。  サンプル アプリでは、顧客を次のデプロイ済みアプリ インスタンスのいずれかにルーティングするための *scalable-ase-demo.trafficmanager.net* 用 Traffic Manager プロファイルが必要です。

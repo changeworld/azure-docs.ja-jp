@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 537378ef11333bd8942a61ab2bbb4e8a251c2b59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e8ea2771a67ad0452bb1aa1cc57d1fc457328ff
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103196871"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132291589"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub AE の統合
 
@@ -37,8 +37,9 @@ ms.locfileid: "103196871"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* GitHub AE では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
-* GitHub AE では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* GitHub AE では、**SP** と **IDP** Initiated SSO がサポートされています。
+* GitHub AE では、**Just-In-Time** ユーザー プロビジョニングがサポートされています。
+* GitHub AE では、[自動化されたユーザー プロビジョニング](github-ae-provisioning-tutorial.md)がサポートされています。
 
 ## <a name="adding-github-ae-from-the-gallery"></a>ギャラリーからの GitHub AE の追加
 
@@ -95,7 +96,7 @@ GitHub AE で Azure AD SSO を構成してテストするには、次の構成�
 
 1. **[ユーザー属性と要求]** を編集します。
 
-1. **[Add new claim]\(新しい要求の追加\)** をクリックし、名前として「**administrator**」をテキスト ボックスに入力します。
+1. **[Add new claim]\(新しいクレームの追加\)** をクリックし、名前として「**administrator**」をテキスト ボックスに入力します (**administrator** の値は大文字と小文字が区別されます)。
 
 1. **[要求条件]** を展開し、 **[ユーザーの種類]** から **[メンバー]** を選択します。
 
@@ -150,6 +151,8 @@ GitHub AE 側で SSO を構成するには、[こちら](https://docs.github.com
 
 このセクションでは、B.Simon というユーザーを GitHub AE で作成します。 GitHub AE では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 GitHub AE にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
+GitHub AE では、自動ユーザー プロビジョニングもサポートされています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./github-ae-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -164,10 +167,10 @@ GitHub AE 側で SSO を構成するには、[こちら](https://docs.github.com
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した GitHub AE に自動的にサインインされます 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで GitHub AE タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した GitHub AE に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [GitHub AE] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した GitHub AE に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [自社向けにユーザー プロビジョニングを構成する](https://docs.github.com/github-ae@latest/admin/authentication/configuring-user-provisioning-for-your-enterprise)。
 
-* GitHub AE を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* GitHub AE を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

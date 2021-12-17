@@ -3,22 +3,22 @@ title: Azure Arc 対応サーバーにハイブリッド マシンを接続す�
 description: Azure Arc 対応サーバーにハイブリッド マシンを接続して登録する方法について説明します。
 ms.topic: quickstart
 ms.date: 12/15/2020
-ms.openlocfilehash: c52b8d1f7098a7a2a88a9770a3b768b7fea31775
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc645f930fe37f8a3eca10d1647d40eb9c7a2280
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646828"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807637"
 ---
 # <a name="quickstart-connect-hybrid-machines-with-azure-arc-enabled-servers"></a>クイックスタート: Azure Arc 対応サーバーにハイブリッド マシンを接続する
 
-[Azure Arc 対応サーバー](../overview.md)を使用すると、オンプレミス、エッジ、マルチクラウドの垣根を越え、それらの環境でホストされている Windows マシンや Linux マシンを管理することができます。 このクイックスタートでは、Azure の外部でホストされた Windows マシンまたは Linux マシンを Arc 対応サーバーで管理できるよう、それらのマシンに Connected Machine エージェントをデプロイして構成します。
+[Azure Arc 対応サーバー](../overview.md)を使用すると、オンプレミス、エッジ、マルチクラウドの垣根を越え、それらの環境でホストされている Windows マシンや Linux マシンを管理することができます。 このクイックスタートでは、Azure の外部でホストされた Windows マシンまたは Linux マシンに Connected Machine エージェントをデプロイして構成し、Azure Arc 対応サーバーで管理できるようにします。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-* Arc 対応サーバーの Hybrid Connected Machine エージェントをデプロイするには、マシンにエージェントをインストールして構成するための管理者アクセス許可が必要です。 Linux では root アカウントを使用し、Windows ではローカルの Administrators グループのメンバー アカウントを使用します。
+* Azure Arc 対応サーバーの Hybrid Connected Machine エージェントをデプロイするには、エージェントをインストールして構成するマシンの管理者アクセス許可が必要です。 Linux では root アカウントを使用し、Windows ではローカルの Administrators グループのメンバー アカウントを使用します。
 
 * 開始する前に、必ずエージェントの[前提条件](../agent-overview.md#prerequisites)を確認し、次の点を確認してください。
 
@@ -28,16 +28,16 @@ ms.locfileid: "101646828"
 
     * インターネット経由で通信するためにマシンがファイアウォールやプロキシ サーバーを介して接続する場合、[一覧](../agent-overview.md#networking-configuration)に記載されている URL がブロックされていないこと。
 
-    * Azure Arc 対応サーバーがサポートされるのは、[こちら](../overview.md#supported-regions)に記載されたリージョンのみです。
+    * Azure Arc 対応サーバーでサポートされるのは、[こちら](../overview.md#supported-regions)に記載されたリージョンのみです。
 
 > [!WARNING]
-> Linux ホスト名または Windows コンピューター名には、予約語や商標を使用できません。使用した場合、接続されているマシンを Azure に登録しようとすると失敗します。 予約語の一覧については、「[予約されたリソース名のエラーを解決する](../../../azure-resource-manager/templates/error-reserved-resource-name.md)」を参照してください。
+> Linux ホスト名または Windows コンピューター名では、予約語や商標を名前に使用できません。使用した場合、接続されているマシンを Azure に登録しようとすると失敗します。 予約語の一覧については、「[予約されたリソース名のエラーを解決する](../../../azure-resource-manager/templates/error-reserved-resource-name.md)」を参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="register-azure-resource-providers"></a>Azure リソースプロバイダーを登録する
 
-Azure Arc 対応サーバーは、このサービスを使用するために、サブスクリプション内の次の Azure リソース プロバイダーに依存しています。
+Azure Arc 対応サーバーは、このサービスを使用するために、お使いのサブスクリプション内の次の Azure リソース プロバイダーに依存しています。
 
 * Microsoft.HybridCompute
 * Microsoft.GuestConfiguration
@@ -56,7 +56,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 1. Azure portal で、 **[すべてのサービス]** をクリックし、 **[サーバー - Azure Arc]** を検索して選択することで、Azure Arc サービスを起動します。
 
-    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="[すべてのサービス] で Arc 対応サーバーを検索する" border="false":::
+    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="[すべてのサービス] で Azure Arc 対応サーバーを検索する" border="false":::
 
 1. **[サーバー - Azure Arc]** ページで、左上の **[追加]** を選択します。
 

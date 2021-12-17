@@ -1,9 +1,9 @@
 ---
-title: 可用性グループ リスナーとロード バランサーの構成 (Azure portal)
+title: ロード バランサーと可用性グループ リスナーの構成 (Azure portal)
 description: Azure Virtual Machines に SQL Server の AlwaysOn 可用性グループのリスナーを作成する手順を説明します。
 services: virtual-machines
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
@@ -11,32 +11,36 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 02/16/2017
-ms.author: mathoma
+ms.date: 11/10/2021
+ms.author: rsetlem
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6e53a6a4875b3dde55d1822daa342d6cde536d1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mathoma
+ms.openlocfilehash: 0077b6a237cefd5547b70b79044087d86a9ea236
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100096431"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157504"
 ---
-# <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure Virtual Machines に SQL Server Always On 可用性グループのロード バランサーを構成する
+# <a name="configure-a-load-balancer--availability-group-listener-sql-server-on-azure-vms"></a>ロード バランサーと可用性グループ リスナーの構成 (Azure VM 上の SQL Server)
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の[複数のサブネット](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)に SQL Server VM を作成することで、Always On 可用性グループ (AG) に対して Azure Load Balancer が不要になります。
 
-この記事では、Azure Resource Manager で動作する Azure Virtual Machines に、SQL Server Always On 可用性グループのロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure Virtual Machines 上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
+
+この記事では、Azure Resource Manager で動作する 1 つのサブネット内の Azure Virtual Machines に、SQL Server Always On 可用性グループのロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure Virtual Machines 上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
 
 この作業を行うには、Resource Manager で動作する Azure VM に SQL Server Always On 可用性グループがデプロイされている必要があります。 両方の SQL Server 仮想マシンが同じ可用性セットに属している必要があります。 [Microsoft のテンプレート](./availability-group-quickstart-template-configure.md)を使用すると、Resource Manager で自動的に可用性グループを作成することができます。 内部ロード バランサーは、このテンプレートによって自動的に作成されます。 
 
-必要に応じて [可用性グループを手動で構成](availability-group-manually-configure-tutorial.md)することもできます。
+必要に応じて [可用性グループを手動で構成](availability-group-manually-configure-tutorial-single-subnet.md)することもできます。
 
 この記事は、可用性グループの構成が既に済んでいることを前提としています。  
 
 関連記事を参照:
 
-* [Azure VM での AlwaysOn 可用性グループの構成 (GUI)](availability-group-manually-configure-tutorial.md)   
+* [Azure VM での AlwaysOn 可用性グループの構成 (GUI)](availability-group-manually-configure-tutorial-single-subnet.md)   
 * [Azure リソース マネージャーと PowerShell を使用した VNet 間の接続の構成](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 この記事では、Azure Portal でロード バランサーを作成し、必要な構成を行います。 その作業が済んだら、可用性グループ リスナーのロード バランサーの IP アドレスを使用するようにクラスターを構成します。
@@ -97,7 +101,7 @@ Azure では、バックエンド アドレス プールを "*バックエンド
 
 4. **[バックエンド プールの追加]** の **[名前]** に、バックエンド プールの名前を入力します。
 
-5. **[仮想マシン]** の **[仮想マシンの追加]** を選択します。 
+5. **[仮想マシン]** の **[仮想マシンの追加]** を選択します。 VM のプライマリ IP アドレスのみを追加し、セカンダリ IP アドレスは追加しないでください。 
 
 6. **[仮想マシンの選択]** の **[可用性セットの選択]** を選択し、SQL Server 仮想マシンの追加先となる可用性セットを指定します。
 
@@ -214,7 +218,7 @@ SQLCMD 接続では、プライマリ レプリカのホストとなる SQL Serv
 
 ## <a name="create-an-ip-address-for-an-additional-availability-group"></a>追加の可用性グループの IP アドレスを作成する
 
-各可用性グループは、個別のリスナーを使用します。 各リスナーには独自の IP アドレスがあります。 追加のリスナーの IP アドレスを保持するために、同じロード バランサーを使用します。 可用性グループを作成した後で、IP アドレスをロード バランサーに追加し、リスナーを構成します。
+各可用性グループは、個別のリスナーを使用します。 各リスナーには独自の IP アドレスがあります。 追加のリスナーの IP アドレスを保持するために、同じロード バランサーを使用します。 [セカンダリ VM の IP アドレスが ローディングIP をサポートしていない](../../../load-balancer/load-balancer-floating-ip.md)ため、ロード バランサーのバックエンド プールに VM のプライマリ IP アドレスのみを追加します。
 
 Azure Portal で IP アドレスをロード バランサーに追加するには、次の手順に従います。
 
@@ -320,4 +324,9 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [異なるリージョンの Azure Virtual Machines に SQL Server AlwaysOn 可用性グループを構成する](availability-group-manually-configure-multiple-regions.md)
+詳細については、以下をご覧ください。
+
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
+- [AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)

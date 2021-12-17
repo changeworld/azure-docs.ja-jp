@@ -3,25 +3,28 @@ title: Speaker Recognition の概要 - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Speaker Recognition は、音声生物測定学を使用して、固有の音声特性で話者を確認および識別するアルゴリズムを提供します。 Speaker Recognition は、"だれが話しているのか" という質問に回答するために使用されます。 この記事は、Speaker Recognition サービスの利点と機能の概要です。
 services: cognitive-services
-author: trevorbye
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.author: trbye
-ms.custom: cog-serv-seo-aug-2020
+ms.author: pafarley
+ms.custom: cog-serv-seo-aug-2020, ignite-fall-2021
 keywords: Speaker Recognition, 音声生物測定学
-ms.openlocfilehash: d07a9960c8a586fa137b4b717afbf91740c265d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44772137d9b9e3366a2a04fded34fa81dafe8886
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95015326"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058390"
 ---
-# <a name="what-is-speaker-recognition-preview"></a>Speaker Recognition (プレビュー) とは
+# <a name="what-is-speaker-recognition"></a>Speaker Recognition とは
 
-Speaker Recognition サービスは、音声生物測定学を使用して、固有の音声特性で話者を確認および識別するアルゴリズムを提供します。 Speaker Recognition は、"だれが話しているのか" という質問に回答するために使用されます。 1 人の話者のオーディオ トレーニング データを提供すると、話者の声の固有の特性に基づいて登録プロファイルが作成されます。 次に、このプロファイルに対してオーディオ音声サンプルをクロスチェックして、話者が同じ人物であることを確認します (話者認証)。または、登録されている話者プロファイルの "*グループ*" に対してオーディオ音声サンプルをクロスチェックして、グループ内の任意のプロファイルと一致するかどうかを確認します (話者識別)。 これに対して、[話者ダイアライゼーション](batch-transcription.md#speaker-separation-diarization)では、オーディオのセグメントを話者ごとにバッチ操作でグループ化します。
+Speaker Recognition は、オーディオ クリップでだれが話しているのかを判断するために使用されます。 このサービスでは、音声生物測定学を使用して、独自の音声特性によって話者を確認および識別できます。 1 人の話者のオーディオ トレーニング データを提供すると、話者の声の固有の特性に基づいて登録プロファイルが作成されます。 次に、このプロファイルに対してオーディオ音声サンプルをクロスチェックして、話者が同じ人物であることを確認します (話者認証)。または、登録されている話者プロファイルの "*グループ*" に対してオーディオ音声サンプルをクロスチェックして、グループ内の任意のプロファイルと一致するかどうかを確認します (話者識別)。
+
+> [!IMPORTANT]
+> Microsoft では、Speaker Recognition へのアクセスを制限しています。 [Azure Cognitive Services Speaker Recognition 制限付きアクセス レビュー](https://aka.ms/azure-speaker-recognition)を通じて使用する場合に該当します。 承認後、Speaker Recognition API にアクセスできます。 詳細については、[Speaker Recognition の制限付きアクセス](/legal/cognitive-services/speech-service/speaker-recognition/limited-access-speaker-recognition)に関するページを参照してください。
 
 ## <a name="speaker-verification"></a>話者認証
 
@@ -35,7 +38,7 @@ Speaker Recognition サービスは、音声生物測定学を使用して、固
 
 **テキストに依存する** 検証の場合、事前定義されたフレーズのセットに含まれるパスフレーズを話すことによって話者の声が登録されます。 声の特徴がオーディオ録音から抽出され一意の音声シグネチャが形成されます。一方で、選択したパスフレーズも認識されます。 音声シグネチャとパスフレーズを一緒に使用して、話者を確認します。 
 
-**テキストに依存しない** 検証では、類似性をスコアリングするためにのみ音声の特徴を抽出するため、登録時または検証対象のオーディオ サンプルで話者が話す内容についての制限はありません。 
+**テキストに依存しない** 検証では、登録時の初期アクティブ化フレーズの他には、登録時の話者の発言内容に関する制限はありません。 確認する音声のサンプルに制限はありません。これは、類似性をスコア付けする音声の特徴だけを抽出するためです。 
 
 API の目的は、オーディオがライブ ユーザーの声か、声をまねたものか、登録済み話者の録音かを判断することではありません。 
 
@@ -48,7 +51,7 @@ API の目的は、オーディオがライブ ユーザーの声か、声をま
 
 ### <a name="how-does-speaker-identification-work"></a>話者識別のしくみ
 
-話者識別の登録は **テキストに依存しません**。つまり、オーディオ内で話者が話す内容に制限はありません。 話者認証と同様に、オーディオ登録フェーズでは、話者の声が記録され、声の特徴が抽出されて一意の音声シグネチャが形成されます。 識別フェーズでは、入力音声のサンプルが、指定された登録済みの音声のリスト (各要求で最大 50) と比較されます。
+話者識別の登録は **テキストに依存しません**。つまり、オーディオ内で話者が話す内容には、登録時の初期アクティブ化フレーズを除いて制限はありません。 話者認証と同様に、オーディオ登録フェーズでは、話者の声が記録され、声の特徴が抽出されて一意の音声シグネチャが形成されます。 識別フェーズでは、入力音声のサンプルが、指定された登録済みの音声のリスト (各要求で最大 50) と比較されます。
 
 ## <a name="data-security-and-privacy"></a>データのセキュリティとプライバシー
 
@@ -56,7 +59,7 @@ API の目的は、オーディオがライブ ユーザーの声か、声をま
 
 データが保持される期間は開発者が制御します。 開発者は、API 呼び出しによって個々の話者の登録データを作成、更新、および削除できます。 サブスクリプションが削除されると、そのサブスクリプションに関連付けられているすべての話者の登録データも削除されます。 
 
-Cognitive Services リソース全般に言えることですが、話者認識サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 開発者は、話者認識用の適切なアクセス許可が、ユーザーから付与されていることを確認する必要があります。 詳細については、Microsoft セキュリティ センターの  [Cognitive Services のページ](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/) を参照してください。 
+Cognitive Services リソース全般に言えることですが、話者認識サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 開発者は、話者認識用の適切なアクセス許可が、ユーザーから付与されていることを確認する必要があります。 詳細については、「[Speaker Recognition のデータとプライバシー](/legal/cognitive-services/speech-service/speaker-recognition/data-privacy-speaker-recognition)」を参照してください。 詳細については、Microsoft セキュリティ センターの  [Cognitive Services のページ](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/) を参照してください。 
 
 ## <a name="common-questions-and-solutions"></a>一般的な質問と解決策
 
@@ -64,7 +67,7 @@ Cognitive Services リソース全般に言えることですが、話者認識�
 |---------|----------|
 | Speaker Recognition はどのようなシナリオで使用できますか。 | コール センターでの顧客認証、音声ベースの患者チェックイン、会議の文字起こし、マルチユーザー デバイスのパーソナル化|
 | 識別と認証の違いは何ですか。 | 識別とは、話者のグループの内、どのメンバーが話しているかを検出するプロセスです。 認証では、話者が既知の、または **登録されている** 音声と一致することを確認します。|
-| テキスト依存の認証およびテキストに依存しない認証の違いとは。 | テキスト依存の認証では、登録と認識の両方に特定のパスフレーズが必要です。 テキストに依存しない認証では、より長い音声サンプルが登録に必要ですが、認識時を含め、任意の内容を発話できます。|
+| テキスト依存の認証およびテキストに依存しない認証の違いとは。 | テキスト依存の認証では、登録と認識の両方に特定のパスフレーズが必要です。 テキストに依存しない検証を行うには、登録のために特定のアクティブ化フレーズで始まるより長い音声サンプルが必要ですが、認識中を含め、話す内容は問われません。|
 | どの言語がサポートされていますか。 | 英語、フランス語、スペイン語、中国語、ドイツ語、イタリア語、日本語、ポルトガル語 |
 | どの Azure リージョンがサポートされていますか。 | Speaker Recognition はプレビュー サービスであり、現在は米国西部リージョンでのみご利用いただけます。|
 | サポートされているオーディオ形式は何ですか。 | Mono 16 ビット、16kHz PCM エンコード済み WAV |
@@ -77,3 +80,11 @@ Cognitive Services リソース全般に言えることですが、話者認識�
 > [!div class="nextstepaction"]
 > * アプリケーションで使用できる一般的なデザイン パターンの実行に関する、Speaker Recognition の[基本の記事](./get-started-speaker-recognition.md)を完了してください。
 > * テキストに依存しない話者認証については、[ビデオ チュートリアル](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/)を参照してください。
+
+## <a name="responsible-use-of-ai"></a>AI の責任ある使用
+> [!div class="ResponsibleUseOfAI"]
+> * [Speaker Recognition の透明性に関するメモ](/legal/cognitive-services/speech-service/speaker-recognition/transparency-note-speaker-recognition)
+> * [Speaker Recognition の特性と制限](/legal/cognitive-services/speech-service/speaker-recognition/characteristics-and-limitations-speaker-recognition)
+> * [Speaker Recognition の制限付きアクセス](/legal/cognitive-services/speech-service/speaker-recognition/limited-access-speaker-recognition)
+> * [Speaker Recognition との統合と責任ある使用に関するガイダンス](/legal/cognitive-services/speech-service/speaker-recognition/guidance-integration-responsible-use-speaker-recognition)
+> * [Speaker Recognition のデータとプライバシー](/legal/cognitive-services/speech-service/speaker-recognition/data-privacy-speaker-recognition)

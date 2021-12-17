@@ -4,12 +4,12 @@ description: このチュートリアルでは、Git リポジトリにソース
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: b4806ed30319ff058df6dfae0340a73ad4cb6132
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8f05b982294c82323daf141793a04d6f6266e26f
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780787"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983682"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>チュートリアル:ソース コードのコミット時にクラウドでコンテナー イメージ ビルドを自動化する
 
@@ -46,6 +46,8 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
 次に、以下の [az acr task create][az-acr-task-create] コマンドを実行して、タスクを作成します。
+
+[!INCLUDE [pull-image-dockerfile-include](../../includes/pull-image-dockerfile-include.md)]
 
 ```azurecli
 az acr task create \

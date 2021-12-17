@@ -5,384 +5,200 @@ description: Azure Machine Learning で NVIDIA Triton 推論サーバーを使�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: gopalv
-author: gvashishtha
-ms.date: 02/16/2020
-ms.topic: conceptual
+ms.date: 11/03/2021
+ms.topic: how-to
 ms.reviewer: larryfr
-ms.custom: deploy
-ms.openlocfilehash: 0bb17ded6822c477fe2107c66711af5e2dc384d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: ssambare
+author: shivanissambare
+ms.custom: deploy, devplatv2
+ms.openlocfilehash: 017ddd81ea07f3febc4d708024d448f3b09c5344
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107841"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723584"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton 推論サーバーを使用した高パフォーマンスのサービス (プレビュー) 
 
-[NVIDIA Triton 推論サーバー](https://aka.ms/nvidia-triton-docs)を使用して、モデルの推論に使用する Web サービスのパフォーマンスを向上させる方法について説明します。
+Azure Machine Learning で[マネージド オンライン エンドポイント](concept-endpoints.md#managed-online-endpoints)と共に [NVIDIA Triton 推論サーバー](https://aka.ms/nvidia-triton-docs)を使用する方法について説明します。
 
-推論用のモデルを展開する方法の 1 つは、Web サービスとして展開することです。 たとえば、Azure Kubernetes Service または Azure Container Instances への展開です。 既定では、Azure Machine Learning はシングルスレッドの "*汎用*" Web フレームワークを使用して Web サービスを展開します。
+Triton は、推論用に最適化されたマルチフレームワークのオープンソース ソフトウェアです。 TensorFlow、ONNX Runtime、PyTorch、NVIDIA TensorRT などの一般的な機械学習フレームワークをサポートしています。 CPU または GPU のワークロードに使用できます。
 
-Triton は、"*推論用に最適化された*" フレームワークです。 GPU の使用率が高く、コスト効率に優れた推論を実現します。 サーバー側では、受信した要求をバッチ処理し、推論のためにこれらのバッチを送信します。 バッチ処理は GPU リソースのより適切な利用を可能にする、Triton のパフォーマンスにおける重要な部分です。
+この記事では、Triton とモデルをマネージド オンライン エンドポイントにデプロイする方法について説明します。 CLI (コマンド ライン) と Azure Machine Learning スタジオの両方の使用に関する情報を提供します。
 
-> [!IMPORTANT]
-> Azure Machine Learning からの展開に対する Triton の使用は、現在 __プレビュー__ 段階です。 プレビューの機能は、カスタマー サポートの対象になっていない場合があります。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
-> [!TIP]
-> このドキュメントに記載されているコード スニペットは説明を目的としたものであり、完全なソリューションとなっていない場合があります。 動作するコード例については、[Azure Machine Learning での Triton のエンドツーエンドのサンプル](https://aka.ms/triton-aml-sample)を参照してください。
+[!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
 > [!NOTE]
 > [NVIDIA Triton Inference Server](https://aka.ms/nvidia-triton-docs) は、Azure Machine Learning に統合されたオープンソースのサードパーティ製ソフトウェアです。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
-* Azure Machine Learning で[モデルを展開する方法と場所](how-to-deploy-and-where.md)について理解していること。
-* [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/) **または** [Azure CLI](/cli/azure/) と [機械学習拡張機能](reference-azure-machine-learning-cli.md)。
-* ローカル テスト用の Docker の動作するインストール。 Docker のインストールと検証の詳細については、[オリエンテーションとセットアップ](https://docs.docker.com/get-started/)に関する Docker ドキュメントを参照してください。
+[!INCLUDE [basic prereqs](../../includes/machine-learning-cli-prereqs.md)]
 
-## <a name="architectural-overview"></a>アーキテクチャの概要
+* 動作する Python 3.8 (以上) の環境。
 
-独自のモデルに Triton を使用する前に、Triton がどのように Azure Machine Learning と連携して動作し、既定の展開と比較してどう違うかを理解することが重要です。
+* Azure サブスクリプションの NCv3 シリーズ VM へのアクセス。
 
-**Triton を使用しない既定の展開**
+    > [!IMPORTANT]
+    > このシリーズ VM を使用するには、事前にサブスクリプションのクォータの引き上げを要求しなければならない場合があります。 詳細については、「[NCv3 シリーズ](../virtual-machines/ncv3-series.md)」を参照してください。
 
-* 受信した要求を同時に処理するために、複数の [Gunicorn](https://gunicorn.org/) ワーカーが開始されています。
-* これらのワーカーでは、前処理、モデルの呼び出し、および後処理が行われます。 
-* クライアントでは、__Azure ML スコアリング URI__ が使用されます。 たとえば、「 `https://myservice.azureml.net/score` 」のように入力します。
+[!INCLUDE [clone repo & set defaults](../../includes/machine-learning-cli-prepare.md)]
 
-:::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="標準の、Triton を使用しない展開アーキテクチャの図":::
+NVIDIA Triton 推論サーバーには特定のモデル リポジトリ構造が必要です。この構造には、モデルごとのディレクトリとモデル バージョンのサブディレクトリが含まれています。 各モデル バージョンのサブディレクトリの内容は、モデルの種類とモデルをサポートするバックエンドの要件によって決まります。 すべてのモデル リポジトリ構造を表示する場合: [https://github.com/triton-inference-server/server/blob/main/docs/model_repository.md#model-files](https://github.com/triton-inference-server/server/blob/main/docs/model_repository.md#model-files)
 
-**Triton を使用した直接デプロイ**
+このドキュメントの情報は、ONNX 形式で格納されたモデルの使用に基づいているため、モデル リポジトリのディレクトリ構造は `<model-repository>/<model-name>/1/model.onnx` です。 具体的には、このモデルで画像の識別を行います。
 
-* 要求は、Triton サーバーに直接送られます。
-* Triton によって、GPU 使用率を最大化するために要求がバッチ処理されます。
-* クライアントは、__Triton URI__ を使用して要求を行います。 たとえば、「 `https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer` 」のように入力します。
+## <a name="deploy-using-cli-v2"></a>CLI (v2) を使用してデプロイする
 
-:::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="Python ミドルウェアを使用せずに、Triton のみを使用した Inferenceconfig のデプロイ":::
-
-**Triton を使用した推論構成の展開**
-
-* 受信した要求を同時に処理するために、複数の [Gunicorn](https://gunicorn.org/) ワーカーが開始されています。
-* 要求は **Triton サーバー** に転送されます。 
-* Triton によって、GPU 使用率を最大化するために要求がバッチ処理されます。
-* クライアントは、__Azure ML スコアリング URI__ を使用して要求を行います。 たとえば、「 `https://myservice.azureml.net/score` 」のように入力します。
-
-:::image type="content" source="./media/how-to-deploy-with-triton/inference-config-deploy.png" alt-text="Triton と Python ミドルウェアを使用したデプロイ":::
-
-モデルの展開に Triton を使用するワークフローは次のとおりです。
-
-1. Triton を使用してモデルを直接提供します。
-1. Triton によって展開されたモデルに、要求を送信できることを確認します。
-1. (オプション) サーバー側の前および後処理用に Python ミドルウェアのレイヤーを作成します。
-
-## <a name="deploying-triton-without-python-pre--and-post-processing"></a>Python の前および後処理を使用せずに Triton をデプロイする
-
-まず、下の手順に従って、Triton 推論サーバーがモデルに使用できることを確認します。
-
-### <a name="optional-define-a-model-config-file"></a>(省略可能) モデル構成ファイルの定義
-
-モデル構成ファイルでは、想定される入力の数と、それらの入力の次元を Triton に対して指定します。 構成ファイルの作成の詳細については、[モデルの構成](https://aka.ms/nvidia-triton-docs)に関する NVIDIA ドキュメントを参照してください。
-
-> [!TIP]
-> Triton 推論サーバーの起動時に `--strict-model-config=false` オプションを使用します。これは、ONNX または TensorFlow モデルに `config.pbtxt` ファイルを指定する必要がないことを意味します。
-> 
-> このオプションの詳細については、[生成されたモデルの構成](https://aka.ms/nvidia-triton-docs)に関する NVIDIA ドキュメントを参照してください。
-
-### <a name="use-the-correct-directory-structure"></a>正しいディレクトリ構造を使用する
-
-Azure Machine Learning にモデルを登録する場合、個々のファイルまたはディレクトリ構造を登録できます。 Triton を使用するには、`triton` という名前のディレクトリを含むディレクトリ構造に対してモデルの登録を行う必要があります。 このディレクトリの一般的な構造は次のとおりです。
-
-```bash
-models
-    - triton
-        - model_1
-            - model_version
-                - model_file
-            - config_file
-        - model_2
-            ...
-```
+このセクションでは、Machine Learning 拡張機能 (v2) を備えた Azure CLI を使用して Triton をマネージド オンライン エンドポイントにデプロイする方法を示します。
 
 > [!IMPORTANT]
-> このディレクトリ構造は Triton モデル リポジトリであり、モデルを Triton で動作させるために必要です。 詳細については、[Triton モデル リポジトリ](https://aka.ms/nvidia-triton-docs)に関する NVIDIA ドキュメントを参照してください。
+> Triton のコードなしのデプロイの場合、 **[ローカル エンドポイントを使用したテスト](how-to-deploy-managed-online-endpoints.md#deploy-and-debug-locally-by-using-local-endpoints)** は現在サポートされていません。
 
-### <a name="register-your-triton-model"></a>Triton モデルを登録する
+1. 複数のコマンドでパスを入力せずにすむように、次のコマンドを使用して `BASE_PATH` 環境変数を設定します。 この変数は、モデルとそれに関連する YAML 構成ファイルが格納されているディレクトリを示します。
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    ```azurecli
+    BASE_PATH=endpoints/online/triton/single-model
+    ```
 
-```azurecli-interactive
-az ml model register -n my_triton_model -p models --model-framework=Multi
-```
+1. 次のコマンドを使用して、作成するエンドポイントの名前を設定します。 この例では、エンドポイントにランダムな名前を作成します。
 
-`az ml model register` に関する詳細については、[リファレンス ドキュメント](/cli/azure/ext/azure-cli-ml/ml/model)を参照してください。
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="set_endpoint_name":::
 
-Azure Machine Learning にモデルを登録するときに、`--model-path  -p` パラメーターの値は Triton の親フォルダーの名前である必要があります。  
-上記の例では `--model-path` は 'models' です。
+1. 次のコマンドを使用して Python の要件をインストールします。
 
-この例の `--name  -n` パラメーターの値 'my_triton_model' は、Azure Machine Learning ワークスペースに認識されるモデル名になります。 
+    ```azurecli
+    pip install numpy
+    pip install tritonclient[http]
+    pip install pillow
+    pip install gevent
+    ```
 
-# <a name="python"></a>[Python](#tab/python)
+1. エンドポイントの YAML 構成ファイルを作成します。 次の例では、エンドポイントの名前と認証モードを構成します。 次のコマンドで使用されているものは、前に複製した azureml-examples リポジトリ内の `/cli/endpoints/online/triton/single-model/create-managed-endpoint.yml` にあります。
 
+    __create-managed-endpoint.yaml__
 
-```python
+    :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/triton/single-model/create-managed-endpoint.yaml":::
 
-from azureml.core.model import Model
+1. YAML 構成を使用して新しいエンドポイントを作成するには、次のコマンドを使用します。
 
-model_path = "models"
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="create_endpoint":::
 
-model = Model.register(
-    model_path=model_path,
-    model_name="bidaf-9-tutorial",
-    tags={"area": "Natural language processing", "type": "Question-answering"},
-    description="Question answering from ONNX model zoo",
-    workspace=ws,
-    model_framework=Model.Framework.MULTI,  # This line tells us you are registering a Triton model
-)
+1. デプロイの YAML 構成ファイルを作成します。 次の例では、前の手順で作成したエンドポイントに対して __blue__ という名前のデプロイを構成します。 次のコマンドで使用されているものは、前に複製した azureml-examples リポジトリ内の `/cli/endpoints/online/triton/single-model/create-managed-deployment.yml` にあります。
 
-```
-詳細については、[Model クラス](/python/api/azureml-core/azureml.core.model.model)のドキュメントを参照してください。
+    > [!IMPORTANT]
+    > Triton のコードなしのデプロイ (NCD) が機能するには、 **`model_format`** を **`Triton`** に設定する必要があります。 詳細については、[「CLI (v2) モデル YAML スキーマ」を確認](reference-yaml-model.md)してください。
+    >
+    > このデプロイでは、Standard_NC6s_v3 VM を使用します。 この VM を使用するには、事前にサブスクリプションのクォータの引き上げを要求しなければならない場合があります。 詳細については、「[NCv3 シリーズ](../virtual-machines/ncv3-series.md)」を参照してください。
 
----
+    :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/triton/single-model/create-managed-deployment.yaml":::
 
-### <a name="deploy-your-model"></a>モデルをデプロイする
+1. YAML 構成を使用してデプロイを作成するには、次のコマンドを使用します。
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="create_deployment":::
 
-Azure Machine Learning によって作成された "aks-gpu" という GPU 対応の Azure Kubernetes Service クラスターがある場合は、次のコマンドを使用してモデルをデプロイできます。
+### <a name="invoke-your-endpoint"></a>エンドポイントを呼び出す
 
-```azurecli
-az ml model deploy -n triton-webservice -m triton_model:1 --dc deploymentconfig.json --compute-target aks-gpu
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-```python
-from azureml.core.webservice import AksWebservice
-from azureml.core.model import InferenceConfig
-from random import randint
-
-service_name = "triton-webservice"
-
-config = AksWebservice.deploy_configuration(
-    compute_target_name="aks-gpu",
-    gpu_cores=1,
-    cpu_cores=1,
-    memory_gb=4,
-    auth_enabled=True,
-)
-
-service = Model.deploy(
-    workspace=ws,
-    name=service_name,
-    models=[model],
-    deployment_config=config,
-    overwrite=True,
-)
-```
----
-
-[モデルのデプロイの詳細については、こちらのドキュメントを](how-to-deploy-and-where.md)参照してください。
-
-### <a name="call-into-your-deployed-model"></a>デプロイしたモデルを呼び出す
-
-最初に、スコアリング URI とベアラー トークンを取得します。
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-
-```azurecli
-az ml service show --name=triton-webservice
-```
-# <a name="python"></a>[Python](#tab/python)
-
-```python
-import requests
-
-print(service.scoring_uri)
-print(service.get_keys())
-
-```
-
----
-
-サービスが実行されていることを確認するために、次を実行します。 
-
-```{bash}
-!curl -v $scoring_uri/v2/health/ready -H 'Authorization: Bearer '"$service_key"''
-```
-
-このコマンドでは、次のような情報が返されます。 `200 OK` に注目してください。この状態は、Web サーバーが実行中であることを示します。
-
-```{bash}
-*   Trying 127.0.0.1:8000...
-* Connected to localhost (127.0.0.1) port 8000 (#0)
-> GET /v2/health/ready HTTP/1.1
-> Host: localhost:8000
-> User-Agent: curl/7.71.1
-> Accept: */*
->
-* Mark bundle as not supporting multiuse
-< HTTP/1.1 200 OK
-HTTP/1.1 200 OK
-```
-
-正常性チェックを実行したら、推論のために Triton にデータを送信するクライアントを作成できます。 クライアントの作成の詳細については、[クライアントの例](https://aka.ms/nvidia-client-examples)に関する NVIDIA ドキュメントを参照してください。 [Triton GitHub に Python のサンプル](https://aka.ms/nvidia-triton-docs)もあります。
-
-この時点で、デプロイされた webservice に Python の前および後処理を追加ない場合、作業は完了です。 前および後処理用のこのロジックを追加する場合は、そのまま読み進めてください。
-
-## <a name="optional-re-deploy-with-a-python-entry-script-for-pre--and-post-processing"></a>(オプション) 前および後処理用の Python エントリ スクリプトを使用して再デプロイする
-
-Triton がモデルに使用できることを確認した後、"_エントリ スクリプト_" を定義することで、前処理と後処理のコードを追加できます。 このファイルの名前は `score.py` です。 エントリ スクリプトの詳細については、「[エントリ スクリプトを定義する](how-to-deploy-and-where.md#define-an-entry-script)」を参照してください。
-
-主なステップの 2 つは、`init()` メソッドで Triton HTTP クライアントを初期化し、`run()` 関数でそのクライアントを呼び出すことです。
-
-### <a name="initialize-the-triton-client"></a>Triton クライアントを初期化する
-
-次の例のようなコードを `score.py` ファイルに含めます。 Azure Machine Learning の Triton は、localhost のポート 8000 でアドレス指定されることを想定しています。 この場合の localhost は、この展開の Docker イメージ内にあり、ローカル マシン上のポートではありません。
+デプロイが完了したら、次のコマンドを使用して、デプロイされたエンドポイントにスコアリング要求を行います。 
 
 > [!TIP]
-> `tritonhttpclient` pip パッケージは、キュレーションされた `AzureML-Triton` 環境に含まれているので、pip 依存関係として指定する必要はありません。
+> スコアリングには、azureml-examples リポジトリのファイル `/cli/endpoints/online/triton/single-model/triton_densenet_scoring.py` が使用されます。 エンドポイントに渡される画像には、サイズ、種類、形式の要件を満たすための前処理と、予測ラベルを示すための後処理が必要です。 `triton_densenet_scoring.py` では、`tritonclient.http` ライブラリを使用して Triton 推論サーバーと通信します。
 
-```python
-import tritonhttpclient
+1. エンドポイントのスコアリング URI を取得するには、次のコマンドを使用します。
 
-def init():
-    global triton_client
-    triton_client = tritonhttpclient.InferenceServerClient(url="localhost:8000")
-```
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="get_scoring_uri":::
 
-### <a name="modify-your-scoring-script-to-call-into-triton"></a>Triton を呼び出すようにスコアリング スクリプトを変更する
+1. 認証トークンを取得するには、次のコマンドを使用します。
 
-次の例は、モデルのメタデータを動的に要求する方法を示しています。
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="get_token":::
 
-> [!TIP]
-> Triton クライアントの `.get_model_metadata` メソッドを使用して、Triton で読み込まれたモデルのメタデータを動的に要求できます。 使用例については、[サンプル ノートブック](https://aka.ms/triton-aml-sample)を参照してください。
+1. エンドポイントを使用してデータをスコア付けするには、次のコマンドを使用します。 これは、クジャクの画像 (https://aka.ms/peacock-pic) ) をエンドポイントに送信します。
 
-```python
-input = tritonhttpclient.InferInput(input_name, data.shape, datatype)
-input.set_data_from_numpy(data, binary_data=binary_data)
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="check_scoring_of_model":::
 
-output = tritonhttpclient.InferRequestedOutput(
-         output_name, binary_data=binary_data, class_count=class_count)
+    スクリプトからの応答は次のテキストのようになります。
 
-# Run inference
-res = triton_client.infer(model_name,
-                          [input]
-                          request_id='0',
-                          outputs=[output])
+    ```
+    Is server ready - True
+    Is model ready - True
+    /azureml-examples/cli/endpoints/online/triton/single-model/densenet_labels.txt
+    84 : PEACOCK
+    ```
 
-```
+### <a name="delete-your-endpoint-and-model"></a>エンドポイントとモデルを削除する
 
-<a id="redeploy"></a>
+エンドポイントを使い終えたら、次のコマンドを使用して削除します。
 
-### <a name="redeploy-with-an-inference-configuration"></a>推論構成を使用した再展開
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="delete_endpoint":::
 
-推論の構成では、エントリ スクリプトと、Python SDK または Azure CLI を使用した Azure Machine Learning 展開プロセスを使用できます。
-
-> [!IMPORTANT]
-> `AzureML-Triton` [がキュレーションされた環境](./resource-curated-environments.md)を指定する必要があります。
->
-> Python コード例では、`AzureML-Triton` を `My-Triton` という名前の別の環境に複製します。 Azure CLI コードでもこの環境が使用されます。 環境の複製の詳細については、[Environment.Clone()](/python/api/azureml-core/azureml.core.environment.environment#clone-new-name-) のリファレンスを参照してください。
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-> [!TIP]
-> 推論構成の作成の詳細については、「[推論構成スキーマ](./reference-azure-machine-learning-cli.md#inference-configuration-schema)」を参照してください。
+モデルを削除するには次のコマンドを使用します。
 
 ```azurecli
-az ml model deploy -n triton-densenet-onnx \
--m densenet_onnx:1 \
---ic inference-config.json \
--e My-Triton --dc deploymentconfig.json \
---overwrite --compute-target=aks-gpu
+az ml model delete --name $MODEL_NAME --version $MODEL_VERSION
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+## <a name="deploy-using-azure-machine-learning-studio"></a>Azure Machine Learning スタジオを使用してデプロイする
 
-```python
-from azureml.core.webservice import LocalWebservice
-from azureml.core import Environment
-from azureml.core.model import InferenceConfig
+このセクションでは、[Azure Machine Learning スタジオ](https://ml.azure.com)を使用して Triton をマネージド オンライン エンドポイントにデプロイする方法を示します。
 
+1. 次の YAML および CLI コマンドを使用して、モデルを Triton 形式で登録します。 YAML では、[https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/triton/single-model](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/triton/single-model) の densenet-onnx モデルを使用します
 
-local_service_name = "triton-bidaf-onnx"
-env = Environment.get(ws, "AzureML-Triton").clone("My-Triton")
+    __create-triton-model.yaml__
 
-for pip_package in ["nltk"]:
-    env.python.conda_dependencies.add_pip_package(pip_package)
+    ```yml
+    name: densenet-onnx-model
+    version: 1
+    local_path: ./models
+    model_format: Triton
+    description: Registering my Triton format model.
+    ```
 
-inference_config = InferenceConfig(
-    entry_script="score_bidaf.py",  # This entry script is where we dispatch a call to the Triton server
-    source_directory=os.path.join("..", "scripts"),
-    environment=env
-)
+    ```azurecli
+    az ml model create -f create-triton-model.yaml
+    ```
 
-local_config = LocalWebservice.deploy_configuration(
-    port=6789
-)
+    次のスクリーンショットは、Azure Machine Learning スタジオの __[Models]\(モデル\) ページ__ で登録済みモデルがどのように表示されるかを示しています。
 
-local_service = Model.deploy(
-    workspace=ws,
-    name=local_service_name,
-    models=[model],
-    inference_config=inference_config,
-    deployment_config=local_config,
-    overwrite=True)
-
-local_service.wait_for_deployment(show_output = True)
-print(local_service.state)
-# Print the URI you can use to call the local deployment
-print(local_service.scoring_uri)
-```
-
----
-
-展開が完了すると、スコアリング URI が表示されます。 今回のローカル展開では、`http://localhost:6789/score` です。 クラウドにデプロイする場合は、[az ml service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) CLI コマンドを使用してスコアリング URI を取得できます。
-
-スコアリング URI に推論要求を送信するクライアントを作成する方法については、[Web サービスとして展開されたモデルの使用](how-to-consume-web-service.md)に関するページを参照してください。
-
-### <a name="setting-the-number-of-workers"></a>worker の数の設定
-
-デプロイ内の worker の数を設定するには、環境変数 `WORKER_COUNT` を設定します。 `env` と呼ばれる [Environment](/python/api/azureml-core/azureml.core.environment.environment) オブジェクトがあると仮定した場合、以下を実行できます。
-
-```{py}
-env.environment_variables["WORKER_COUNT"] = "1"
-```
-
-これにより、指定した数の worker をスピン アップするよう Azure ML が指示されます。
+    :::image type="content" source="media/how-to-deploy-with-triton/triton-model-format.png" lightbox="media/how-to-deploy-with-triton/triton-model-format.png" alt-text="[Models]\(モデル\) ページの Triton モデル形式を示すスクリーンショット。":::
 
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
+1. [スタジオ](https://ml.azure.com)から、ワークスペースを選択し、 __[エンドポイント]__ または __[Models]\(モデル\)__ ページを使用してエンドポイントのデプロイを作成します。
 
-Azure Machine Learning ワークスペースの使用を継続する予定で、デプロイされたサービスを削除する場合は、次のオプションのいずれかを使用します。
+    # <a name="endpoints-page"></a>[[エンドポイント] ページ](#tab/endpoint)
 
+    1. __[エンドポイント]__ ページで、 **[+ 作成 (プレビュー)]** を選択します。
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+        :::image type="content" source="media/how-to-deploy-with-triton/create-option-from-endpoints-page.png" lightbox="media/how-to-deploy-with-triton/create-option-from-endpoints-page.png" alt-text="[エンドポイント] UI ページの [作成] オプションを示すスクリーンショット。":::
 
-```azurecli
-az ml service delete -n triton-densenet-onnx
-```
-# <a name="python"></a>[Python](#tab/python)
+    1. エンドポイントの名前と認証の種類を指定し、 __[次へ]__ を選択します。
+    1. モデルを選択する場合は、前に登録した Triton モデルを選択します。 __[次へ]__ をクリックして続行します。
 
-```python
-local_service.delete()
-```
+    1. Triton 形式で登録されたモデルを選択すると、ウィザードの [環境] ステップではスコアリング スクリプトと環境は必要ありません。
 
+        :::image type="content" source="media/how-to-deploy-with-triton/ncd-triton.png" lightbox="media/how-to-deploy-with-triton/ncd-triton.png" alt-text="Triton モデルに必要なコードと環境がないことを示すスクリーンショット":::
 
----
-## <a name="troubleshoot"></a>トラブルシューティング
+    1. ウィザードを完了して、モデルをエンドポイントにデプロイします。
 
-* [失敗したデプロイのトラブルシューティング](how-to-troubleshoot-deployment.md): モデルのデプロイ時に発生する可能性のある一般的なエラーのトラブルシューティングと解決、回避方法について説明します。
+        :::image type="content" source="media/how-to-deploy-with-triton/review-screen-triton.png" lightbox="media/how-to-deploy-with-triton/review-screen-triton.png" alt-text="NCD レビュー画面を示すスクリーンショット":::
 
-* デプロイ ログで **TritonServer を開始できなかった** ことが示されている場合は、[Nvidia のオープンソースのドキュメント](https://github.com/triton-inference-server/server)を参照してください。
+    # <a name="models-page"></a>[[Models]\(モデル\) ページ](#tab/models)
+
+    1. Triton モデルを選択し、 __[展開する]__ を選択します。 プロンプトが表示されたら、 __[リアルタイム エンドポイントへのデプロイ (プレビュー)]__ を選択します。
+
+        :::image type="content" source="media/how-to-deploy-with-triton/deploy-from-models-page.png" lightbox="media/how-to-deploy-with-triton/deploy-from-models-page.png" alt-text="[Models]\(モデル\) UI からモデルをデプロイする方法を示すスクリーンショット":::
+
+    1. ウィザードを完了して、モデルをエンドポイントにデプロイします。
+
+    ---
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Machine Learning での Triton のエンドツーエンドのサンプルを参照する](https://aka.ms/aml-triton-sample)
-* [Triton クライアントの例](https://aka.ms/nvidia-client-examples)を確認する
-* [Triton 推論サーバーのドキュメント](https://aka.ms/nvidia-triton-docs)を読む
-* [Azure Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md)
-* [Web サービスを更新する](how-to-deploy-update-web-service.md)
-* [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)
+詳細については、次の記事を参照してください。
+
+- [REST を使用してモデルをデプロイする (プレビュー)](how-to-deploy-with-rest.md)
+- [スタジオでマネージド オンライン エンドポイント (プレビュー) を作成および使用する](how-to-use-managed-online-endpoint-studio.md)
+- [オンライン エンドポイントの安全なロールアウト (プレビュー)](how-to-safely-rollout-managed-endpoints.md)
+- [マネージド オンライン エンドポイントを自動スケーリングする方法](how-to-autoscale-endpoints.md)
+- [Azure Machine Learning のマネージド オンライン エンドポイント (プレビュー) のコストを表示する](how-to-view-online-endpoints-costs.md)
+- [マネージド オンライン エンドポイントとマネージド ID (プレビュー) を使用して Azure リソースにアクセスする](how-to-access-resources-from-endpoints-managed-identities.md)
+- [マネージド オンライン エンドポイントのデプロイトをラブルシューティングする](how-to-troubleshoot-managed-online-endpoints.md)

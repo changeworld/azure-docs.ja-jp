@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Storage Gen2 で Azure CLI を使用して ACL を設定する
+title: Azure Data Lake Storage Gen2 で Azure CLI を使用して ACL を管理する
 description: Azure CLI を使用して、階層型名前空間を持つストレージ アカウントのアクセス制御リスト (ACL) を管理します。
 services: storage
 author: normesta
@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5ec7d2b243a5eadab2d22dea14ebeac8eabb1722
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84410ee16080c338e40c026326ef2a2945ba0e3c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563166"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555803"
 ---
 # <a name="use-azure-cli-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で Azure CLI を使用して ACL を管理する
 
@@ -27,7 +27,7 @@ ACL の継承は、親ディレクトリの下に作成された新しい子項�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- Azure サブスクリプション。 詳細については、[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 - 階層型名前空間が有効になっているストレージ アカウント。 作成するには、[こちら](create-data-lake-storage-account.md)の手順に従います。
 
@@ -35,10 +35,10 @@ ACL の継承は、親ディレクトリの下に作成された新しい子項�
 
 - 次のセキュリティのアクセス許可のいずれか。
 
-  - ターゲット コンテナー、親リソース グループ、またはサブスクリプションのいずれかのスコープで[ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが割り当てられた、プロビジョニングされた Azure Active Directory (Azure AD) [セキュリティ プリンシパル](../../role-based-access-control/overview.md#security-principal)。  
+  - ターゲット コンテナー、親リソース グループ、またはサブスクリプションのいずれかのスコープで[ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが割り当てられた、プロビジョニングされた Azure Active Directory (Azure AD) [セキュリティ プリンシパル](../../role-based-access-control/overview.md#security-principal)。
 
   - ACL 設定を適用する予定のターゲット コンテナーまたはディレクトリの所有ユーザー。 ACL を再帰的に設定する場合、これには、ターゲット コンテナーまたはディレクトリ内のすべての子項目が含まれます。
-  
+
   - ストレージ アカウント キー。
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>正しいバージョンの Azure CLI がインストールされていることを確認する
@@ -51,7 +51,7 @@ ACL の継承は、親ディレクトリの下に作成された新しい子項�
     az --version
    ```
 
-   Azure CLI のバージョンが `2.14.0` より低い場合は、新しいバージョンをインストールします。 「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
+   Azure CLI のバージョンが `2.14.0` より低い場合は、新しいバージョンをインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する
 
@@ -80,7 +80,7 @@ ACL の継承は、親ディレクトリの下に作成された新しい子項�
 
 ## <a name="get-acls"></a>ACL を取得する
 
-`az storage fs access show` コマンドを使用して、**ディレクトリ** の ACL を取得します。
+[az storage fs access show](/cli/azure/storage/fs#az_storage_fs_show) コマンドで **ディレクトリ** の ACL を取得します。
 
 この例では、ディレクトリの ACL を取得して、その ACL をコンソールに出力します。
 
@@ -88,7 +88,7 @@ ACL の継承は、親ディレクトリの下に作成された新しい子項�
 az storage fs access show -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-`az storage fs access show` コマンドを使用して、**ファイル** のアクセス許可を取得します。 
+[az storage fs access show](/cli/azure/storage/fs#az_storage_fs_show) コマンドで **ファイル** のアクセス許可を取得します。
 
 この例では、ファイルの ACL を取得して、その ACL をコンソールに出力します。
 
@@ -104,7 +104,7 @@ az storage fs access show -p my-directory/upload.txt -f my-file-system --account
 
 ## <a name="set-acls"></a>ACL を設定する
 
-ACL を "*設定する*" 場合は、ACL 全体 (そのすべてのエントリを含む) を **置換** します。 セキュリティ プリンシパルのアクセス許可レベルの変更または ACL への新しいセキュリティ プリンシパルの追加を、他の既存のエントリに影響を与えることなく行いたい場合は、代わりに ACL を "*更新*" する必要があります。 ACL を置換するのでなく更新するには、この記事の「[ACL を更新する](#update-acls)」セクションを参照してください。  
+ACL を "*設定する*" 場合は、ACL 全体 (そのすべてのエントリを含む) を **置換** します。 セキュリティ プリンシパルのアクセス許可レベルの変更または ACL への新しいセキュリティ プリンシパルの追加を、他の既存のエントリに影響を与えることなく行いたい場合は、代わりに ACL を "*更新*" する必要があります。 ACL を置換するのでなく更新するには、この記事の「[ACL を更新する](#update-acls)」セクションを参照してください。
 
 ACL を "*設定*" する場合は、所有ユーザーのエントリ、所有グループのエントリ、および他のすべてのユーザーのエントリを追加する必要があります。 所有ユーザー、所有グループ、およびその他のすべてのユーザーの詳細については、「[ユーザーと ID](data-lake-storage-access-control.md#users-and-identities)」を参照してください。
 
@@ -115,7 +115,7 @@ ACL を "*設定*" する場合は、所有ユーザーのエントリ、所有�
 
 ### <a name="set-an-acl"></a>ACL を設定する
 
-`az storage fs access set` コマンドを使用して、**ディレクトリ** の ACL を設定します。 
+[az storage fs access set](/cli/azure/storage/fs/access#az_storage_fs_access_set) コマンドで **ディレクトリ** の ACL を設定します。
 
 この例では、所有ユーザー、所有グループ、またはその他のユーザーのディレクトリに ACL を設定し、その ACL をコンソールに出力します。
 
@@ -129,7 +129,7 @@ az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory
 az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-`az storage fs access set` コマンドを使用して、**ファイル** の ACL を設定します。 
+[az storage fs access set](/cli/azure/storage/fs/access#az_storage_fs_access_set) コマンドで **ファイル** の ACL を設定します。
 
 この例では、所有ユーザー、所有グループ、またはその他のユーザーのファイルに ACL を設定し、その ACL をコンソールに出力します。
 
@@ -161,7 +161,7 @@ az storage fs access set-recursive --acl "user::rwx,group::r-x,other::---,user:x
 
 ## <a name="update-acls"></a>ACL を更新する
 
-ACL を "*更新する*" 場合は、ACL を置換するのでなく ACL を変更します。 たとえば、ACL にリストされている他のセキュリティ プリンシパルに影響を与えることなく、新しいセキュリティ プリンシパルを ACL に追加することができます。  ACL を更新するのでなく、置換する場合は、この記事の「[ACL を設定する](#set-acls)」セクションを参照してください。
+ACL を "*更新する*" 場合は、ACL を置換するのでなく ACL を変更します。 たとえば、ACL にリストされている他のセキュリティ プリンシパルに影響を与えることなく、新しいセキュリティ プリンシパルを ACL に追加することができます。 ACL を更新するのでなく、置換する場合は、この記事の「[ACL を設定する](#set-acls)」セクションを参照してください。
 
 ACL を更新するには、更新したい ACL エントリを含む新しい ACL オブジェクトを作成してから、そのオブジェクトを ACL の更新操作で使用します。 既存の ACL は取得せずに、更新する ACL エントリを指定するだけです。
 
@@ -172,7 +172,7 @@ ACL を更新するには、更新したい ACL エントリを含む新しい A
 
 ### <a name="update-an-acl"></a>ACL を更新する
 
-`az storage fs access set` コマンドを使用して、このアクセス許可を設定することもできます。 
+この権限を設定するには、[az storage fs access set](/cli/azure/storage/fs/access#az_storage_fs_access_set) コマンドを使用する方法もあります。
 
 ディレクトリまたはファイルの ACL を更新するには、`-permissions` パラメーターを短縮形の ACL に設定します。
 
@@ -199,7 +199,7 @@ az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f m
 az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-この例では、ファイルの所有者を変更します。 
+この例では、ファイルの所有者を変更します。
 
 ```azurecli
 az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -225,7 +225,7 @@ az storage fs access update-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 
 [az storage fs access remove-recursive](/cli/azure/storage/fs/access#az_storage_fs_access_remove_recursive) コマンドを使用して、ACL のエントリを削除します。
 
-この例では、コンテナーのルート ディレクトリから ACL エントリを削除します。  
+この例では、コンテナーのルート ディレクトリから ACL エントリを削除します。
 
 ```azurecli
 az storage fs access remove-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -p my-parent-directory/ -f my-container --account-name mystorageaccount --auth-mode login

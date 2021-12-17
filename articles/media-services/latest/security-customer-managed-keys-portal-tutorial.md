@@ -6,16 +6,16 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: e34649162c7a30d4ab43aa068d2c864b5c2d90e0
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1a5b4c8e387085b8fee6c6e82ae765a186f43e87
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281095"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356668"
 ---
 # <a name="tutorial-use-the-azure-portal-to-use-customer-managed-keys-or-byok-with-media-services"></a>チュートリアル:Azure portal を使用して Media Services でカスタマー マネージド キーまたは BYOK を使用する
 
-2020-05-01 API を使用すると、システム マネージド ID が割り当てられた Azure Media Services アカウントでカスタマー マネージド RSA キーを使用できます。このチュートリアルでは、Azure portal での手順を取り上げます。
+2020-05-01 以降のバージョンの API を使用すると、システム マネージド ID が割り当てられた Azure Media Services アカウントでカスタマー マネージド RSA キーを使用できます。このチュートリアルでは、Azure portal での手順を取り上げます。
 
 次のサービスが使用されます。
 

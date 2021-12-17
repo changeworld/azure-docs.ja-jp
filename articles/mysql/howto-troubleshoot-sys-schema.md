@@ -6,15 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 38b85748ad810002dc9cfd456ef6c138e8732ece
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a50b2e8966a2f34a6e14caf98784291b0c536ec1
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605486"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088424"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Azure Database for MySQL でパフォーマンスのチューニングとデータベースのメンテナンスに sys_schema を使用する方法
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
 MySQL 5.5 で初めて導入された MySQL performance_schema では、メモリ割り当て、ストアド プログラム、メタデータ ロックなど、多くの重要なサーバー リソースのためのインストルメンテーションが提供されています。ただし、performance_schema には 80 以上のテーブルが含まれ、必要な情報を入手するには performance_schema 内のテーブルや information_schema のテーブルの結合が必要になることがよくあります。 performance_schema と information_schema の両方を基にして作成されている sys_schema は、読み取り専用のデータベースで[ユーザー フレンドリなビュー](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html)の強力なコレクションを提供し、Azure Database for MySQL バージョン 5.7 では完全に有効になっています。
 
@@ -84,4 +85,5 @@ InnoDB バッファー プールはメモリ内に存在し、DBMS とストレ�
 まとめると、sys_schema はパフォーマンスのチューニングとデータベースのメンテナンスの両方に対して優れたツールです。 お使いの Azure Database for MySQL でこの機能を活用してください。 
 
 ## <a name="next-steps"></a>次のステップ
+
 - 最も気になる質問への回答を探したり、新しい質問や回答を投稿したりするには、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) をご覧ください。

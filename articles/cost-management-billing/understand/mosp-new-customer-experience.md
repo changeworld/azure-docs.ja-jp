@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 07c8b711ae32311cceba0c6ebe3353974b867356
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575468"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061779"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>更新された Azure 課金アカウントの使用を開始する
 
@@ -26,11 +26,11 @@ ms.locfileid: "99575468"
 
 次の図では、お使いの古い課金アカウントと新しい課金アカウントを比較しています。
 
-![古いアカウントと新しいアカウントの課金階層の比較を示す図](./media/mosp-new-customer-experience/comparison-old-new-account.png)
+:::image type="content" source="./media/mosp-new-customer-experience/comparison-old-new-account.png" alt-text="古いアカウントと新しいアカウントの課金階層の比較を示す図。" border="false" lightbox="./media/mosp-new-customer-experience/comparison-old-new-account.png":::
 
 新しい課金アカウントには、請求書と支払い方法を管理できるようにする課金プロファイルが 1 つ以上含まれています。 各課金プロファイルには、課金プロファイルの請求書上でコストを整理できるようにする、1 つまたは複数の請求書セクションが含まれます。
 
-![新しい課金階層を示す図](./media/mosp-new-customer-experience/new-billing-account-hierarchy.png)
+:::image type="content" source="./media/mosp-new-customer-experience/new-billing-account-hierarchy.png" alt-text="新しい課金階層を示す図。" border="false" lightbox="./media/mosp-new-customer-experience/new-billing-account-hierarchy.png":::
 
 請求先アカウント上のロールは、最高レベルのアクセス許可を持っています。 これらのロールは、組織の財務や IT マネージャーなどのアカウント全体の請求書を表示し、コストを追跡する必要のあるユーザー、またはアカウントにサインアップした個人に割り当てる必要があります。 詳細については、[請求先アカウントのロールとタスク](../manage/understand-mca-roles.md#billing-account-roles-and-tasks)に関するページを参照してください。 お使いのアカウントが更新されると、古い課金アカウントでアカウント管理者ロールが割り当てられていたユーザーには、新しいアカウントの所有者ロールが付与されます。
 
@@ -60,7 +60,21 @@ ms.locfileid: "99575468"
 
 **より予測可能な月単位の請求期間** - 新しいアカウントでは、Azure を使用するためにいつサインアップしたかに関係なく、請求期間はその月の 1 日から始まり、その月の末日に終了します。 請求書は、毎月初めに生成され、前月のすべての料金を含みます。
 
-**複数のサブスクリプションに対して 1 つの月次請求書を作成する** - サブスクリプションごとに 1 つの月次請求書を作成するか、複数のサブスクリプションに対して 1 つの請求書を作成するかを柔軟に選択できます。
+**複数のサブスクリプションに対して 1 つの月次請求書を作成する** - 既存のアカウントでは、Azure サブスクリプションごとに請求書が作成されます。 この既存の動作はアカウントの更新後も維持されますが、サブスクリプションの請求金額を 1 つの請求書に統合することができます。 請求金額を 1 つの請求書に統合するには、アカウントの更新後、次の手順に従ってください。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+2. "**コスト管理 + 請求**" を検索します。  
+   ![Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/mosp-new-customer-experience/billing-search-cost-management-billing.png)
+3. 画面の左側から **[Azure サブスクリプション]** を選択します。 
+4. 支払い対象の Azure サブスクリプションが表に一覧表示されます。 [課金プロファイル] 列には、サブスクリプションの請求先となる課金プロファイルが表示されます。 サブスクリプション料は、課金プロファイルの請求書に表示されます。 すべてのサブスクリプションの請求金額を 1 つの請求書に統合するには、すべてのサブスクリプションを 1 つの課金プロファイルにリンクする必要があります。  
+    :::image type="content" source="./media/mosp-new-customer-experience/list-azure-subscriptions.png" alt-text="Azure サブスクリプションが一覧表示される画面のスクリーンショット。" lightbox="./media/mosp-new-customer-experience/list-azure-subscriptions.png" :::
+5. 使用したい課金プロファイルを選択します。 
+6. 手順 5. で選択した課金プロファイルにリンクされていないサブスクリプションを選択します。 サブスクリプションの省略記号 (3 つのドット) をクリックします。 **[請求書セクションの変更]** を選択します。  
+    :::image type="content" source="./media/mosp-new-customer-experience/select-change-invoice-section.png" alt-text="請求書セクションの変更オプションの場所を示すスクリーンショット。" lightbox="./media/mosp-new-customer-experience/select-change-invoice-section-zoomed-in.png" :::
+7. 手順 5. で選択した課金プロファイルを選択します。  
+    :::image type="content" source="./media/mosp-new-customer-experience/change-invoice-section.png" alt-text="請求書セクションの変更方法を示すスクリーンショット。" lightbox="./media/mosp-new-customer-experience/change-invoice-section-zoomed-in.png" :::
+8. **[変更]** を選択します。
+9. その他すべてのサブスクリプションについて、手順 6. から手順 8. を繰り返します。 
 
 **Azure サブスクリプション、サポート プラン、Azure Marketplace 製品に関する 1 つの月次請求書を受け取る** - Azure サブスクリプションの使用料金、サポート プラン、Azure Marketplace での購入を含むすべての料金に対して 1 つの月次請求書が生成されます。
 
@@ -98,6 +112,12 @@ ms.locfileid: "99575468"
 
 新しいエクスペリエンスでは、請求書は毎月 9 日ごろに生成され、前月のすべての料金が含まれます。 この日付は、古いアカウントで請求書が生成される日付と異なる場合があります。 請求書を他のユーザーと共有する場合は、この日付の変更について通知してください。
 
+
+**移行後の最初の月の請求書**
+
+自分のアカウントが更新されると、その日に、既にある未請求料金が確定し、通常の請求書受領日にそれらの料金の請求書が届きます。 たとえば、請求期間がその月の 5 日から翌月の 4 日までの Azure sub 01 と、請求期間がその月の 10 日から翌月の 9 日までの Azure sub 02 という 2 つの Azure サブスクリプションを John が所有しているとします。 John は通常、その月の 5 日に、両方の Azure サブスクリプションの請求書を受領します。 ここでもし John のアカウントが 4 月 4 日に更新された場合、3 月 5 日から 4 月 4 日までの Azure sub 01 の料金と、3 月 10 日から 4 月 4 日までの Azure sub 02 の料金が確定します。 John は 2 つの請求書 (サブスクリプションごとに 1 つ) を 4 月 5 日に受領することになります。 アカウントの更新後、John の請求期間はカレンダー月が基準となり、カレンダー月の初日からそのカレンダー月の末日までに発生したすべての料金が対象となります。 前カレンダー月の料金の請求書は、各月の最初の数日の間に入手可能となります。 そのため上の例で言えば、John が次回、請求書を受領するのは 5 月の初めで、その請求期間は 4 月 5 日から 4 月 30 日までとなります。
+
+
 **新しい Billing API シリーズと Cost Management API シリーズ**
 
 Cost Management または Billing API シリーズを使用して課金またはコストのデータを照会および更新する場合は、新しい API を使用する必要があります。 次の表に、新しい課金アカウントで動作しない API と、新しい課金アカウントで行う必要がある変更を示します。
@@ -106,6 +126,7 @@ Cost Management または Billing API シリーズを使用して課金または
 |---------|---------|
 |[Billing Accounts - List](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | Billing Accounts - List API では、古い課金アカウントの agreementType は **MicrosoftOnlineServiceProgram** でしたが、新しい課金アカウントの agreementType は **MicrosoftCustomerAgreement** になります。 agreementType に依存している場合は、それを更新してください。 |
 |[Invoices - List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | この API を使用すると、お使いのアカウントが更新される前に生成された請求書のみが返されます。 新しい課金アカウントで生成される請求書を取得するには、[Invoices - List By Billing Account](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API を使用する必要があります。 |
+
 
 ## <a name="cost-management-updates-after-account-update"></a>アカウントの更新後の Cost Management の更新
 
@@ -119,7 +140,7 @@ Azure 課金アカウントでは、以下の新機能を使用できます。
 
 更新されたアカウントの一部として、Cost Management + Billing に新しいスコープが用意されています。 これらは、階層型組織や請求処理を支援するだけでなく、複数の基になるサブスクリプションの合計料金を表示することもできます。 課金スコープの詳細については、「[Microsoft 顧客契約のスコープ](../costs/understand-work-scopes.md#microsoft-customer-agreement-scopes)」を参照してください。
 
-Cost Management API シリーズにアクセスして、上位のスコープで結合されたコスト ビューを利用することもできます。 サブスクリプション スコープを使用するすべての Cost Management API は、スキーマに軽微な変更を加えることで引き続き使用できます。 API の詳細については、[Azure Cost Management API シリーズ](/rest/api/cost-management/)および [Azure Consumption API シリーズ](/rest/api/consumption/)に関する記事を参照してください。
+Cost Management API シリーズにアクセスして、上位のスコープで結合されたコスト ビューを利用することもできます。 サブスクリプション スコープを使用するすべての Cost Management API は、スキーマに軽微な変更を加えることで引き続き使用できます。 API の詳細については、[Cost Management API シリーズ](/rest/api/cost-management/)および [Azure Consumption API シリーズ](/rest/api/consumption/)に関する記事を参照してください。
 
 #### <a name="cost-allocation"></a>コストの割り当て
 
@@ -127,7 +148,7 @@ Cost Management API シリーズにアクセスして、上位のスコープで
 
 #### <a name="power-bi"></a>Power BI
 
-Power BI Desktop 用の Azure Cost Management コネクタを使用すると、Azure の使用状況と支出に関するカスタムの視覚化とレポートを作成できます。 更新されたアカウントに接続した後、コストと使用状況のデータにアクセスします。 Power BI Desktop 用の Azure Cost Management コネクタの詳細については、「[Power BI Desktop で Azure Cost Management コネクタを使用してビジュアルとレポートを作成する](/power-bi/connect-data/desktop-connect-azure-cost-management)」を参照してください。
+Power BI Desktop 用の Cost Management コネクタを使用すると、Azure の使用状況と支出に関するカスタムの視覚化とレポートを作成できます。 更新されたアカウントに接続した後、コストと使用状況のデータにアクセスします。 Power BI Desktop 用の Cost Management コネクタの詳細については、「[Power BI Desktop で Cost Management コネクタを使用してビジュアルとレポートを作成する](/power-bi/connect-data/desktop-connect-azure-cost-management)」を参照してください。
 
 ### <a name="updated-capabilities"></a>更新された機能
 
@@ -141,7 +162,7 @@ Azure 課金アカウントでは、以下の更新された機能を使用で�
 
 たとえば、古いアカウントの請求期間が 11 月 24 日から 12 月 23 日であった場合、アップグレード後は、期間が 11 月 1 日から 11 月 30 日、12 月 1 日から 12 月 31 日 (以降も同様) になります。
 
-:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="新旧の請求期間の比較を示す画像" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="新旧の請求期間の比較を示すスクリーンショット。" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
 
 #### <a name="budgets"></a>予算
 
@@ -156,7 +177,7 @@ Azure 課金アカウントでは、以下の更新された機能を使用で�
 
 たとえば、請求期間が 12 月 23 日から 1 月 22 日までの場合、エクスポートされた CSV ファイルには、その期間のコストと使用状況のデータが含まれています。 更新後は、エクスポートにカレンダー月のデータが含まれるようになります。 たとえば、1 月 1 日から 1 月 31 日までのデータです (以降も同様)。
 
-:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="新旧のエクスポートの詳細の比較を示す画像" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="新旧のエクスポートの詳細の比較を示すスクリーンショット。" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
 
 ## <a name="additional-information"></a>関連情報
 
@@ -169,6 +190,34 @@ Azure 課金アカウントでは、以下の更新された機能を使用で�
 **過去の請求書を新しいエクスペリエンスで利用できる** お使いのアカウントが更新される前に生成された請求書は、引き続き Azure portal で利用できます。
 
 **月の途中で更新されたアカウントの請求書** お使いのアカウントが月の途中で更新された場合、アカウントが更新された日までの累積料金の請求書が 1 つ生成されます。 その月の残りの分については別の請求書が生成されます。 たとえば、お使いのアカウントに 1 つのサブスクリプションがあり、9 月 15 日に更新されたとします。 9 月 15 日までの累積料金の請求書が 1 つ生成されます。 9 月 15 日から 9 月 30 日までの期間に対して別途請求書が生成されます。 10 月以降は、月ごとに 1 つの請求書が生成されます。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="you-get-an-email-to-accept-the-terms-of-the-microsoft-customer-agreement-but-the-link-in-the-email-doesnt-work"></a>Microsoft 顧客契約の条項に同意するための電子メールを受け取ったが、電子メール内のリンクが機能しない
+
+Azure の課金アカウントが更新されると、Microsoft 顧客契約の条項に同意するための電子メールが Microsoft から送信されます。 次の理由により、電子メール内のリンクが機能しないことがあります。
+
+- 他のいずれかの電子メールを使用して課金管理の実行にアクセスする必要がある。 
+
+    これは通常、Microsoft 顧客契約の条項に同意するように求める電子メールを受け取ったときに発生します。 そのリンクをクリックすると、"`You don't have permission to accept the agreement. This typically happens when you sign in with an email, which doesn’t have permission to accept the agreement. Check you’ve signed in with the correct email address. If you are still seeing the error, see Why I can't accept an agreement`" というエラー メッセージが表示されます。 課金管理を実行するためのアクセス許可があるメール アドレスでサインインしていることを確認してください。
+
+- 別の ID を使用して請求書にアクセスする必要がある。 
+
+    お客様によっては、同じメール アドレスで 2 つの ID (職場アカウントと Microsoft アカウント) を所有している場合があります。 通常、課金管理を実行するアクセス許可があるのは、そのいずれかの ID のみです。 アクセス許可がない ID でサインインした場合、条項に同意することはできません。 正しい ID を使用してサインインしていることを確認してください。
+
+- 間違った Azure Active Directory (Azure AD) テナントにサインインしている。 
+
+    課金アカウントは Azure AD テナントに関連付けられます。 間違ったテナントにサインインした場合、条項に同意することはできません。 正しい Azure AD テナントにサインインしていることを確認してください。 正しいテナントにサインインしていない場合は、Azure portal で次の手順に従ってテナントを切り替えてください。
+
+    1. ページの右上から自分のメールを選択します。
+
+    2. **[ディレクトリの切り替え]** を選択します。
+
+        ![ポータルで [ディレクトリの切り替え] を選択する操作を示すスクリーンショット](./media/mosp-new-customer-experience/select-switch-directory.png)
+
+    3. **[すべてのディレクトリ]** セクションからディレクトリの **[切り替え]** を選択します。
+
+        ![ポータルでのディレクトリの選択操作を示すスクリーンショット](./media/mosp-new-customer-experience/select-directory.png)
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

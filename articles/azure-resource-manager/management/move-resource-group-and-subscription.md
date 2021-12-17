@@ -2,14 +2,14 @@
 title: リソースを新しいサブスクリプションまたはリソース グループに移動する
 description: Azure Resource Manager を使用して、リソースを新しいリソース グループまたはサブスクリプションに移動します。
 ms.topic: conceptual
-ms.date: 03/23/2021
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 800e605571ae18b008a86b4add4b0b2adce9c140
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 06/03/2021
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: ec23b4306f088328bfb72f3cf9071a70f8eb2307
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078385"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586781"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>リソースを新しいリソース グループまたはサブスクリプションに移動する
 
@@ -122,9 +122,119 @@ ms.locfileid: "106078385"
 * 手順 2:リソースと依存リソースを、ソース サブスクリプションからターゲット サブスクリプションにまとめて移動します。
 * 手順 3:必要に応じて、依存リソースをターゲット サブスクリプション内の別々のリソース グループに再配布します。
 
-## <a name="validate-move"></a>移動の検証
+## <a name="use-the-portal"></a>ポータルの使用
 
-[移動の検証操作](/rest/api/resources/resources/moveresources)を使用すると、実際にリソースを移動することなく、必要な移動のシナリオをテストすることができます。 この操作は、正常に移動されるかどうかを確認する目的で使用します。 移動要求を送信すると、検証が自動的に呼び出されます。 この操作は、結果を事前に確認する必要がある場合にのみ使用してください。 この操作を実行するには、次の要件を満たす必要があります。
+リソースを移動するには、それらのリソースが含まれているリソース グループを選択します。
+
+移動するリソースを選択する。 すべてのリソースを移動するには、一覧の上部にあるチェック ボックスをオンにします。 または、リソースを個別に選択します。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources-to-move.png" alt-text="リソースを選択":::
+
+**[移動]** ボタンを選択します。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-move.png" alt-text="[移動] オプション":::
+
+このボタンにより、次の 3 つのオプションが提示されます。
+
+* 新しいリソース グループに移動します。
+* 新しいサブスクリプションに移動します。
+* 新しいリージョンに移動します。 リージョンを変更する方法については、「[リージョン間でのリソースの移動 (リソース グループから)](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json)」を参照してください。
+
+リソースを新しいリソース グループに移動するか新しいサブスクリプションに移動するかを選択します。
+
+ソース リソース グループが自動的に設定されます。 移動先のリソース グループを指定します。 新しいサブスクリプションに移行する場合は、サブスクリプションも指定します。 **[次へ]** を選択します。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-destination-group.png" alt-text="移動先のリソース グループを選択します":::
+
+ポータルでは、リソースを移動できると検証されます。 検証の完了を待ちます。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/validation.png" alt-text="移動の検証":::
+
+検証が正常に完了したら、 **[次へ]** を選択します。
+
+そのリソースのツールとスクリプトを更新する必要があること確認します。 リソースの移動を開始するには、 **[移動]** を選択します。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/acknowledge-change.png" alt-text="移動先の選択":::
+
+移動が完了すると、結果が通知されます。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/view-notification.png" alt-text="移動結果の表示":::
+
+## <a name="use-azure-powershell"></a>Azure PowerShell の使用
+
+### <a name="validate"></a>検証
+
+実際にリソースを移動せずに移動シナリオをテストするには、[AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) コマンドを使用します。 このコマンドは、結果を事前に確認する必要がある場合にのみ使用してください。 この操作を実行するには、次の要件を満たす必要があります。
+
+* 移動元のリソース グループのリソース ID
+* 移動先のリソース グループのリソース ID
+* 移動する各リソースのリソース ID
+
+```azurepowershell
+Invoke-AzResourceAction -Action validateMoveResources `
+-ResourceId "/subscriptions/{subscription-id}/resourceGroups/{source-rg}" `
+-Parameters @{ resources= @("/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}", "/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}", "/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}");targetResourceGroup = '/subscriptions/{subscription-id}/resourceGroups/{destination-rg}' }  
+```
+
+検証に成功した場合、出力は表示されません。
+
+検証が失敗した場合は、リソースを移動できない理由を説明するエラー メッセージが表示されます。
+
+### <a name="move"></a>詳細ビュー
+
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[Move-AzResource](/powershell/module/az.resources/move-azresource) コマンドを使用します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。
+
+```azurepowershell-interactive
+$webapp = Get-AzResource -ResourceGroupName OldRG -ResourceName ExampleSite
+$plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
+Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
+```
+
+新しいサブスクリプションに移動する場合は、`DestinationSubscriptionId` パラメーターの値を含めます。
+
+## <a name="use-azure-cli"></a>Azure CLI の使用
+
+### <a name="validate"></a>検証
+
+実際にリソースを移動せずに移動シナリオをテストするには、[az resource invoke-action](/cli/azure/resource#az_resource_invoke_action) コマンドを使用してください。 このコマンドは、結果を事前に確認する必要がある場合にのみ使用してください。 この操作を実行するには、次の要件を満たす必要があります。
+
+* 移動元のリソース グループのリソース ID
+* 移動先のリソース グループのリソース ID
+* 移動する各リソースのリソース ID
+
+要求本文で、`\"` を使用して二重引用符をエスケープします。
+
+```azurecli
+az resource invoke-action --action validateMoveResources \
+  --ids "/subscriptions/{subscription-id}/resourceGroups/{source-rg}" \
+  --request-body "{  \"resources\": [\"/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}\", \"/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}\", \"/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}\"],\"targetResourceGroup\":\"/subscriptions/{subscription-id}/resourceGroups/{destination-rg}\" }" 
+```
+
+検証に成功した場合、以下のようになります。
+
+```azurecli
+{} Finished .. 
+```
+
+検証が失敗した場合は、リソースを移動できない理由を説明するエラー メッセージが表示されます。
+
+### <a name="move"></a>詳細ビュー
+
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[az resource move](/cli/azure/resource#az_resource_move) コマンドを使用します。 移動するリソースのリソース ID を指定します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。 `--ids` パラメーターには、移動するリソース ID のスペース区切りリストを指定します。
+
+```azurecli
+webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
+plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/serverfarms" --query id --output tsv)
+az resource move --destination-group newgroup --ids $webapp $plan
+```
+
+新しいサブスクリプションに移動するには、`--destination-subscription-id` パラメーターを指定します。
+
+## <a name="use-rest-api"></a>REST API を使用する
+
+### <a name="validate"></a>検証
+
+[移動の検証操作](/rest/api/resources/resources/validate-move-resources)を使用すると、実際にリソースを移動することなく、必要な移動のシナリオをテストすることができます。 この操作は、正常に移動されるかどうかを確認する目的で使用します。 移動要求を送信すると、検証が自動的に呼び出されます。 この操作は、結果を事前に確認する必要がある場合にのみ使用してください。 この操作を実行するには、次の要件を満たす必要があります。
 
 * 移動元のリソース グループの名前
 * 移動先のリソース グループのリソース ID
@@ -160,7 +270,7 @@ retry-after: 15
 ...
 ```
 
-状態コード 202 は、検証要求が受け付けられたものの、移動操作に成功するかどうかの判断はまだ出ていないことを示します。 `location` 値には、長時間実行される操作の状態をチェックするための URL が格納されます。  
+状態コード 202 は、検証要求が受け付けられたものの、移動操作に成功するかどうかの判断はまだ出ていないことを示します。 `location` 値には、長時間実行される操作の状態をチェックするための URL が格納されます。
 
 状態をチェックするには、次の要求を送信します。
 
@@ -175,71 +285,7 @@ Authorization: Bearer <access-token>
 {"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
 ```
 
-## <a name="use-the-portal"></a>ポータルの使用
-
-リソースを移動するには、それらのリソースが含まれているリソース グループを選択します。
-
-リソース グループを表示すると、[移動] オプションは無効になります。
-
-:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="移動オプションが無効":::
-
-[移動] オプションを有効にするには、移動するリソースを選択します。 すべてのリソースを選択するには、一覧の上部にあるチェック ボックスをオンにします。 または、リソースを個別に選択します。 リソースを選択すると、[移動] オプションが有効になります。
-
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="リソースを選択":::
-
-**[移動]** ボタンを選択します。
-
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="[移動] オプション":::
-
-このボタンにより、次の 3 つのオプションが提示されます。
-
-* 新しいリソース グループに移動します。
-* 新しいサブスクリプションに移動します。
-* 新しいリージョンに移動します。 リージョンを変更する方法については、「[リージョン間でのリソースの移動 (リソース グループから)](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json)」を参照してください。
-
-リソースを新しいリソース グループに移動するか新しいサブスクリプションに移動するかを選択します。
-
-移動先のリソース グループを選択します。 そのリソースのスクリプトを更新する必要があること確認し、 **[OK]** を選択します。 新しいサブスクリプションへの移動を選択した場合は、移動先のサブスクリプションも選択する必要があります。
-
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="移動先の選択":::
-
-リソースを移動できることを検証した後、移動操作が実行中であることを示す通知が表示されます。
-
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="通知":::
-
-完了すると、結果が表示されます。
-
-エラーが発生した場合は、「[新しいリソース グループまたはサブスクリプションへの Azure リソースの移動に関するトラブルシューティング](troubleshoot-move.md)」を参照してください。
-
-## <a name="use-azure-powershell"></a>Azure PowerShell の使用
-
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[Move-AzResource](/powershell/module/az.resources/move-azresource) コマンドを使用します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。
-
-```azurepowershell-interactive
-$webapp = Get-AzResource -ResourceGroupName OldRG -ResourceName ExampleSite
-$plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
-Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
-```
-
-新しいサブスクリプションに移動する場合は、`DestinationSubscriptionId` パラメーターの値を含めます。
-
-エラーが発生した場合は、「[新しいリソース グループまたはサブスクリプションへの Azure リソースの移動に関するトラブルシューティング](troubleshoot-move.md)」を参照してください。
-
-## <a name="use-azure-cli"></a>Azure CLI の使用
-
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[az resource move](/cli/azure/resource#az-resource-move) コマンドを使用します。 移動するリソースのリソース ID を指定します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。 `--ids` パラメーターには、移動するリソース ID のスペース区切りリストを指定します。
-
-```azurecli
-webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
-plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/serverfarms" --query id --output tsv)
-az resource move --destination-group newgroup --ids $webapp $plan
-```
-
-新しいサブスクリプションに移動するには、`--destination-subscription-id` パラメーターを指定します。
-
-エラーが発生した場合は、「[新しいリソース グループまたはサブスクリプションへの Azure リソースの移動に関するトラブルシューティング](troubleshoot-move.md)」を参照してください。
-
-## <a name="use-rest-api"></a>REST API を使用する
+### <a name="move"></a>詳細ビュー
 
 既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[リソースの移動](/rest/api/resources/resources/moveresources)操作を使用します。
 
@@ -255,8 +301,6 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
  "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
 }
 ```
-
-エラーが発生した場合は、「[新しいリソース グループまたはサブスクリプションへの Azure リソースの移動に関するトラブルシューティング](troubleshoot-move.md)」を参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -300,9 +344,27 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 もう 1 つの一般的な例として、仮想ネットワークの移動があります。 その仮想ネットワークに関連付けられている他のいくつかのリソースを移動することが必要になる場合があります。 移動要求には、パブリック IP アドレス、ルート テーブル、仮想ネットワーク ゲートウェイ、ネットワーク セキュリティ グループなどの移動が必要になる場合があります。
 
+**質問: エラー コード "RequestDisallowedByPolicy" は何を意味しますか?**
+
+Resource Manager は、移動を試行する前に、移動要求を検証します。 この検証には、移動に関連するリソースで定義されているポリシーのチェックが含まれます。 たとえば、キー コンテナーを移動しようとしても、組織にターゲット リソース グループへのキー コンテナーの作成を拒否するポリシーがある場合、検証は失敗し、移動はブロックされます。 返されるエラー コードは **RequestDisallowedByPolicy です**。 
+
+ポリシーの詳細については、[「Azureポリシーとは」](../../governance/policy/overview.md)を参照してください。
+
 **質問: Azure 内の一部のリソースを移動できないのはなぜですか?**
 
 現時点では、Azure 内のすべてのリソースが移動するわけではありません。 移動をサポートしているリソースのリストについては、「[リソースの移動操作のサポート」](move-support-resources.md)」を参照してください。
+
+**質問: 1 回の操作で移動できるリソースの数はどのくらいですか?**
+
+可能であれば、大規模な移動は個別の移動操作に分けます。 1 回の操作に含まれるリソースが 800 を超えると、Resource Manager から直ちにエラーが返されます。 ただし、800 未満のリソースの移動でも、タイムアウトで失敗になることがあります。
+
+**質問: リソースが正常な状態にないというエラーの意味は何ですか?**
+
+リソースが正常な状態にないために移動できないことを示すエラー メッセージが表示された場合、実際に移動をブロックしているのは依存リソースであることがあります。 通常、エラー コードは **MoveCannotProceedWithResourcesNotInSucceededState** です。
+
+ソースまたはターゲットのリソース グループに仮想ネットワークが含まれている場合は、移動中に仮想ネットワークのすべての依存リソースの状態が確認されます。 この確認には、仮想ネットワークに直接的または間接的に依存するそのようなリソースが含まれます。 これらのリソースのいずれかがエラー状態の場合、移動はブロックされます。 たとえば、仮想ネットワークを使用する仮想マシンで障害が発生した場合、移動はブロックされます。 移動は、仮想マシンが移動するリソースの 1 つではなく、移動用のリソース グループのいずれにも存在しない場合でもブロックされます。
+
+このエラーが発生した場合は、2 つの選択肢があります。 仮想ネットワークのないリソース グループにリソースを移動するか、[サポートにお問い合わせください](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 ## <a name="next-steps"></a>次のステップ
 

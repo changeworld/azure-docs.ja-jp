@@ -5,21 +5,21 @@ documentationcenter: .net
 author: spelluru
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.date: 06/23/2020
+ms.date: 09/20/2021
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: df8a7fde9114f03521f0e57e072f81a867efcf39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d08c0d3dca88aa46253c910aece5c5005ab32b33
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89075258"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128594841"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する
 
 この記事では、Azure Resource Manager テンプレート、PowerShell、Service Bus リソース プロバイダーを使用して Service Bus リソースを作成し、デプロイする方法について説明します。
 
-Azure Resource Manager テンプレートを使用すると、ソリューションでデプロイするリソースを定義し、さまざまな環境用の値を入力できるパラメーターと変数を指定できます。 テンプレートは JSON で記述され、デプロイの値の構築に使用できる式で構成されます。 Azure Resource Manager テンプレートの作成の詳細と、テンプレート形式の説明については、[「structure and syntax of Azure Resource Manager templates」](../azure-resource-manager/templates/template-syntax.md)を参照してください。
+Azure Resource Manager テンプレートを使用すると、ソリューションでデプロイするリソースを定義し、さまざまな環境用の値を入力できるパラメーターと変数を指定できます。 テンプレートは JSON で記述され、デプロイの値の構築に使用できる式で構成されます。 Azure Resource Manager テンプレートの作成の詳細と、テンプレート形式の説明については、[「structure and syntax of Azure Resource Manager templates」](../azure-resource-manager/templates/syntax.md)を参照してください。
 
 > [!NOTE]
 > この記事の例では、Azure Resource Manager を使用して Service Bus の名前空間とメッセージング エンティティ (キュー) を作成する方法について説明します。 他のテンプレート例については、「[Azure クイックスタート テンプレート][Azure Quickstart Templates gallery]」ギャラリーで **Service Bus** を検索してください。
@@ -38,7 +38,7 @@ Azure Resource Manager テンプレートを使用すると、ソリューショ
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
-次の手順では、PowerShell を使用して、Azure Resource Manager テンプレートをデプロイします。標準レベルの Service Bus 名前空間と、名前空間内にキューが作成されます。 この例は、[キューを使用した Service Bus 名前空間の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue)テンプレートに基づいています。 ワークフローの概要は次のとおりです。
+次の手順では、PowerShell を使用して、Azure Resource Manager テンプレートをデプロイします。標準レベルの Service Bus 名前空間と、名前空間内にキューが作成されます。 この例は、[キューを使用した Service Bus 名前空間の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.json)テンプレートに基づいています。 ワークフローの概要は次のとおりです。
 
 1. PowerShell をインストールします。
 2. テンプレートと (必要に応じて) パラメーター ファイルを作成します。
@@ -56,7 +56,7 @@ Azure Resource Manager テンプレートのデプロイの詳細については
 
 ### <a name="create-a-template"></a>テンプレートの作成
 
-GitHub からリポジトリを複製するか、[201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) テンプレートをコピーします。
+GitHub からリポジトリをクローンするか、[servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.json) テンプレートをコピーします。
 
 ```json
 {
@@ -79,7 +79,7 @@ GitHub からリポジトリを複製するか、[201-servicebus-create-queue](h
   "variables": {
     "defaultSASKeyName": "RootManageSharedAccessKey",
     "authRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('serviceBusNamespaceName'), variables('defaultSASKeyName'))]",
-    "sbVersion": "2017-04-01"
+  "sbVersion": "2017-04-01"
   },
   "resources": [
     {
@@ -131,7 +131,7 @@ GitHub からリポジトリを複製するか、[201-servicebus-create-queue](h
 
 ### <a name="create-a-parameters-file-optional"></a>パラメーター ファイルを作成する (省略可能)
 
-省略可能なパラメーター ファイルを使用するには、[201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) ファイルをコピーします。 `serviceBusNamespaceName` の値を、このデプロイで作成する Service Bus 名前空間の名前で置き換えます。また、`serviceBusQueueName` の値を、作成するキューの名前で置き換えます。
+省略可能なパラメーター ファイルを使用するには、[servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.parameters.json) ファイルをコピーします。 `serviceBusNamespaceName` の値を、このデプロイで作成する Service Bus 名前空間の名前で置き換えます。また、`serviceBusQueueName` の値を、作成するキューの名前で置き換えます。
 
 ```json
 {
@@ -251,9 +251,13 @@ Azure Resource Manager テンプレートをデプロイする基本のワーク
 
 * [Azure Resource Manager の概要][Azure Resource Manager overview]
 * [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ][Deploy resources with Azure Resource Manager templates]
+<<<<<<< HEAD
 * [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
+=======
+* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/syntax.md)
+>>>>>>> repo_sync_working_branch
 * [Microsoft.ServiceBus のリソースの種類](/azure/templates/microsoft.servicebus/allversions)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/management/overview.md
 [Deploy resources with Azure Resource Manager templates]: ../azure-resource-manager/templates/deploy-powershell.md
-[Azure Quickstart Templates gallery]: https://azure.microsoft.com/documentation/templates/?term=service+bus
+[Azure Quickstart Templates gallery]: https://azure.microsoft.com/resources/templates/?term=service+bus

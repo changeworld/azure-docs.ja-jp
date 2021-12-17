@@ -3,21 +3,21 @@ title: Azure SQL とは
 description: 次の Azure SQL ファミリのサービス内のさまざまなオプションについて説明します:Azure SQL Database、Azure SQL Managed Instance、および Azure VM 上の SQL Server。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: sqldbrb=4
 ms.devlang: ''
 ms.topic: overview
 keywords: SQL Server クラウド、クラウド内の SQL Server、PaaS データベース、クラウド SQL Server、DBaaS、IaaS
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: ea097119111d5dbd5eba3c11aba549d201186e3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3742fbe8767e46cfdb21c2aee389fe0a2890661
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592185"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549054"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL とは 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,11 +32,13 @@ Azure SQL は使い慣れた SQL Server エンジンに基づいて構築され�
 
 ビジネス要件に適したオプションを判断するために、各製品が Microsoft のどの Azure SQL データ プラットフォームに適しているかについて学ぶことができます。 この記事を参照することで、コスト削減と管理の最小化のいずれを優先するかに関係なく、最大の関心事項であるビジネス要件に適したアプローチを判断できます。
 
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
+
 Azure SQL を初めて使用する場合は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の "*Azure SQL の概要*" に関するビデオをご覧ください。
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
 
-> [!TIP]
-> Azure SQL を改善するために、 [アンケートにご協力ください。](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456)
+
 
 ## <a name="overview"></a>概要
 
@@ -98,24 +100,25 @@ Azure SQL Database には、次のデプロイの選択肢があります。
 ### <a name="sql-server-on-azure-vm"></a>Azure VM 上の SQL Server
 
 [Azure VM 上の SQL Server](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) は *サービスとしてのインフラストラクチャ (IaaS)* の業界カテゴリに分類され、Azure のフル マネージドの仮想マシン (VM) 内で SQL Server を実行できるようにします。 
-- 移行と、OS レベルのアクセスを必要とするアプリケーションに最適です。 Azure 内の SQL 仮想マシンは、最小限の変更または変更なしでクラウドに迅速に移行する必要がある既存のアプリケーションに対して、リフト アンド シフトする準備ができています。 SQL 仮想マシンは、Azure に移行するための SQL Server インスタンスと基になる OS に対する完全な管理制御を提供します。 
-- 運用環境以外のオンプレミス SQL Server のハードウェアを購入しない場合の迅速な開発およびテスト シナリオ。 SQL 仮想マシンは、Microsoft が所有、ホスト、保守する標準的なハードウェア上でも実行できます。 SQL 仮想マシンを使用する場合は、SQL Server イメージに含まれている SQL Server ライセンスを使用して従量課金で支払いを行うか、単に既存のライセンスを使用することができます。 必要に応じて、VM を停止または再開することもできます。 
 - クラウド上にインストールされてホストされている SQL Server は、Azure 上で実行されている Windows Server または Linux 仮想マシンで実行され、サービスとしてのインフラストラクチャ (IaaS) とも呼ばれます。 SQL 仮想マシンは、データベースの変更を行わずにオンプレミスの SQL Server データベースとアプリケーションを移行する場合に適したオプションです。 SQL Server のすべての最新バージョンとエディションは、IaaS 仮想マシンでのインストールに使用できます。 
-
-    SQL Database と SQL Managed Instance の最も大きな違いは、Azure Virtual Machines における SQL Server ではデータベース エンジンを完全に制御できることです。 メンテナンスまたは修正プログラムの適用を開始するタイミングを選択したり、復旧モデルを単純なログまたは一括ログに変更したりできます。また、必要に応じてサービスを一時停止または開始することができるほか、SQL Server データベース エンジンを完全にカスタマイズすることができます。 この制御を追加する場合、仮想マシンを管理する責任も追加で伴います。
+- 移行と、OS レベルのアクセスを必要とするアプリケーションに最適です。 Azure 内の SQL 仮想マシンは、最小限の変更または変更なしでクラウドに迅速に移行する必要がある既存のアプリケーションに対して、リフト アンド シフトする準備ができています。 SQL 仮想マシンは、Azure に移行するための SQL Server インスタンスと基になる OS に対する完全な管理制御を提供します。 
+- SQL Database と SQL Managed Instance の最も大きな違いは、Azure Virtual Machines における SQL Server ではデータベース エンジンを完全に制御できることです。 メンテナンスまたは修正プログラムの適用を開始するタイミングを選択したり、復旧モデルを単純なログまたは一括ログに変更したりできます。また、必要に応じてサービスを一時停止または開始することができるほか、SQL Server データベース エンジンを完全にカスタマイズすることができます。 この制御を追加する場合、仮想マシンを管理する責任も追加で伴います。
+- 運用環境以外のオンプレミス SQL Server のハードウェアを購入しない場合の迅速な開発およびテスト シナリオ。 SQL 仮想マシンは、Microsoft が所有、ホスト、保守する標準的なハードウェア上でも実行できます。 SQL 仮想マシンを使用する場合は、SQL Server イメージに含まれている SQL Server ライセンスを使用して従量課金で支払いを行うか、単に既存のライセンスを使用することができます。 必要に応じて、VM を停止または再開することもできます。 
 - 既存のアプリケーションを Azure に移行したり、ハイブリッド デプロイで既存のオンプレミス アプリケーションをクラウドに拡張したりできるように最適化されています。 さらに、仮想マシン上の SQL Server は従来の SQL Server アプリケーションを開発、テストするためにも使用できます。 SQL 仮想マシンでは、専用の SQL Server インスタンスとクラウドベースの VM に対して完全な管理者権限があります。 仮想マシンの維持に使用できる IT リソースが組織に既にある場合は、Azure VM 内の SQL Server を選択することをお勧めします。 これらの機能を使用すると、高度にカスタマイズされたシステムを構築して、アプリケーション固有のパフォーマンスや可用性の要件に対処できます。
+
+
+### <a name="comparison-table"></a>比較表
 
 次の表にその他の違いを示しますが、"*SQL Database と SQL Managed Instance は両方とも、多くのデータベースをプロビジョニングおよび管理するための全体的な管理コストを最小限に抑えるように最適化されています。* " どの仮想マシン、オペレーティング システム、データベース ソフトウェアも管理する必要がないため、継続的な管理コストが削減されます。 アップグレード、高可用性、 [バックアップ](database/automated-backups-overview.md)を管理する必要はありません。 
 
-一般的には、SQL Database と SQL Managed Instance を使用すると、単一の IT または開発リソースが管理するデータベースの数を大幅に増やすことができます。 [エラスティック プール](database/elastic-pool-overview.md)では、SaaS マルチ テナント アプリケーション アーキテクチャもサポートします。これにはテナントの分離や、データベース間でリソースを共有することでコストを削減するようにスケーリングする機能などが含まれます。 [SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md) ではインスタンス スコープ機能のサポートが提供されるため、既存のアプリケーションを簡単に移行したり、データベース間でリソースを共有したりできるようになります。
+一般的には、SQL Database と SQL Managed Instance を使用すると、単一の IT または開発リソースが管理するデータベースの数を大幅に増やすことができます。 [エラスティック プール](database/elastic-pool-overview.md)では、SaaS マルチ テナント アプリケーション アーキテクチャもサポートします。これにはテナントの分離や、データベース間でリソースを共有することでコストを削減するようにスケーリングする機能などが含まれます。 [SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md) ではインスタンス スコープ機能のサポートが提供されるため、既存のアプリケーションを簡単に移行したり、データベース間でリソースを共有したりできるようになります。 一方、[Azure VM 上の SQL Server](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) では、DBA は、使い慣れたオンプレミス環境と非常に似たエクスペリエンスを使用できます。 
 
-### <a name="comparison-table"></a>比較表
 
 | Azure SQL Database | Azure SQL Managed Instance | Azure VM 上の SQL Server |
 | :--- | :--- | :--- |
 |ほとんどのオンプレミス データベース レベルの機能をサポートしています。 最もよく使用される SQL Server 機能を利用できます。<br/>99.995% の可用性を保証。<br/>組み込みのバックアップ、修正プログラムの適用、回復。<br/>最新の安定版データベース エンジン バージョン。<br/>個々のデータベースに必要なリソース (CPU/ストレージ) を割り当てる機能。<br/>組み込みの高度なインテリジェンスとセキュリティ。<br/>オンラインでのリソース (CPU/ストレージ) の変更。| ほとんどすべてのオンプレミス インスタンス レベルおよびデータベース レベルの機能をサポートしています。 SQL Server との高い互換性。<br/>99.99% の可用性を保証。<br/>組み込みのバックアップ、修正プログラムの適用、回復。<br/>最新の安定版データベース エンジン バージョン。<br/>SQL Server からの移行が簡単。<br/>Azure Virtual Network 内のプライベート IP アドレス。<br/>組み込みの高度なインテリジェンスとセキュリティ。<br/>オンラインでのリソース (CPU/ストレージ) の変更。| SQL Server エンジンを完全に制御できます。 すべてのオンプレミス機能をサポートしています。<br/>最大 99.99% の可用性。<br/>オンプレミスの SQL Server の対応するバージョンと完全に一致。<br/>固定された、既知のデータベース エンジン バージョン。<br/>SQL Server からの移行が簡単。<br/>Azure Virtual Network 内のプライベート IP アドレス。<br/>SQL Server が配置されているホストでアプリケーションまたはサービスをデプロイできます。|
 |SQL Server からの移行が難しい可能性があります。<br/>一部の SQL Server 機能は使用できません。<br/>正確なメンテナンス時間の保証はありません (ただし、ほぼ透過的です)。<br/>データベース互換性レベルをのみを使用して、SQL Server バージョンとの互換性を実現できます。<br/>[Azure Private Link](database/private-endpoint-overview.md) を使用したプライベート IP アドレスのサポート。|利用できない最小限の数の SQL Server 機能がまだあります。<br/>正確なメンテナンス時間の保証はありません (ただし、ほぼ透過的です)。<br/>データベース互換性レベルをのみを使用して、SQL Server バージョンとの互換性を実現できます。|バックアップと修正プログラムを管理する必要があります。<br>高可用性ソリューションを独自に実装する必要があります。<br/>リソース (CPU/ストレージ) の変更中にダウンタイムが発生|
-| 最大 100 TB のデータベース。 | 最大 8 TB。 | 記憶域が 256 TB までの SQL Server インスタンス。 インスタンスでは必要な数のデータベースがサポートされます。 |
+| 最大 100 TB のデータベース。 | 最大 16 TB。 | 記憶域が 256 TB までの SQL Server インスタンス。 インスタンスでは必要な数のデータベースがサポートされます。 |
 | オンプレミス アプリケーションから Azure SQL Database 内のデータにアクセスできます。 | Azure Express Route または VPN Gateway を使った、オンプレミス環境への[ネイティブ仮想ネットワークの実装](managed-instance/vnet-existing-add-subnet.md)と接続。 | SQL 仮想マシンを使用して、アプリケーションの一部をクラウド上で実行し、一部をオンプレミスで実行することができます。 たとえば、 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)を介してオンプレミス ネットワークと Active Directory ドメインをクラウドに拡張できます。 ハイブリッド クラウド ソリューションについて詳しくは、「[オンプレミス データ ソリューションのクラウドへの拡張](/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)」をご覧ください。 |
 
 
@@ -157,7 +160,7 @@ Azure SQL Database には、次のデプロイの選択肢があります。
 
 多くの IT 部門では、サービス レベル アグリーメント (SLA) の稼働時間に関する義務を果たすことが最優先事項です。 このセクションでは、各データベースのホスト オプションに適用される SLA について説明します。
 
-**Azure SQL Database** と **Azure SQL Managed Instance** の両方について、可用性 99.99% の SLA が提供されます。 最新情報については、[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/sql-database/)に関するページを参照してください。
+**Azure SQL Database** と **Azure SQL Managed Instance** の両方について、可用性 99.99% の SLA が提供されます。 最新情報については、[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/azure-sql-database)に関するページを参照してください。
 
 **Azure VM 上の SQL** では、仮想マシンのみを対象に 99.95% の可用性 SLA が提供されます。 この SLA は VM 上で実行される (SQL Server などの) プロセスは対象としておらず、可用性セットに少なくとも 2 つの VM インスタンスをホストしている必要があります。 最新情報については、 [VM の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)に関するページを参照してください。 VM 内のデータベース高可用性 (HA) を実現するには、[Always On 可用性グループ](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)など、SQL Server でサポートされているいずれかの高可用性オプションを構成する必要があります。 サポートされている高可用性オプションを使用した場合、SLA を追加することはできないものの、ほぼ 99.99% のデータベース可用性が実現されます。
 
@@ -167,7 +170,7 @@ Azure SQL Database には、次のデプロイの選択肢があります。
 
 **Azure SQL Managed Instance** は、Azure への既存のアプリケーションの移行を大幅に簡素化し、移行されたデータベース アプリケーションを Azure ですばやく市場に投入できるようにします。
 
-**Azure VM 上の SQL** は、既存または新規のアプリケーションに大規模なデータベースか、あるいは SQL Server または Windows/Linux のすべての機能へのアクセスが必要であり、新しいオンプレミス ハードウェアの取得にかかる時間と経費を回避したい場合に最適です。 また、既存のオンプレミス アプリケーションとデータベースを Azure にそのまま移行する場合で、SQL Database または SQL Managed Instance が適合しない場合にも適しています。 プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。 その一方で、すべてのソリューションを Azure に移行し、Azure プラットフォームで必要な一部のパフォーマンスの最適化に集中できます。 詳細については、 [Azure 仮想マシン上の SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines/windows/performance-guidelines-best-practices.md)に関するページを参照してください。
+**Azure VM 上の SQL** は、既存または新規のアプリケーションに大規模なデータベースか、あるいは SQL Server または Windows/Linux のすべての機能へのアクセスが必要であり、新しいオンプレミス ハードウェアの取得にかかる時間と経費を回避したい場合に最適です。 また、既存のオンプレミス アプリケーションとデータベースを Azure にそのまま移行する場合で、SQL Database または SQL Managed Instance が適合しない場合にも適しています。 プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。 その一方で、すべてのソリューションを Azure に移行し、Azure プラットフォームで必要な一部のパフォーマンスの最適化に集中できます。 詳細については、 [Azure 仮想マシン上の SQL Server のパフォーマンスに関するベスト プラクティス](./virtual-machines/windows/performance-guidelines-best-practices-checklist.md)に関するページを参照してください。
 
 [!INCLUDE [sql-database-create-manage-portal](includes/sql-database-create-manage-portal.md)]
 
@@ -176,5 +179,6 @@ Azure SQL Database には、次のデプロイの選択肢があります。
 - SQL Database の使用を開始するには、「[初めての Azure SQL Database](database/single-database-create-quickstart.md)」を参照してください。
 - SQL Managed Instance の使用を開始するには、[初めての Azure SQL Managed Instance](managed-instance/instance-create-quickstart.md) に関する記事を参照してください。 
 - 「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+- 「[Azure SQL Managed Instance の価格](https://azure.microsoft.com/pricing/details/azure-sql-managed-instance/single/)」を参照してください。
 - Azure VM での SQL Server の基本的な使い方については、 [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines/windows/create-sql-vm-portal.md) に関する記事を参照してください。
 - [オンプレミス データベースに適した SQL Database または SQL Managed Instance の SKU を特定します](/sql/dma/dma-sku-recommend-sql-db/)。

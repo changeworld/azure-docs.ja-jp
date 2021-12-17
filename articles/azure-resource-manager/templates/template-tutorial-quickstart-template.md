@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 46b32ae7aeb971c9391a69e3ca3d01f669774248
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a16845afbf0e846191c0f0c1c4d28b7e0ab40fa
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97106905"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112464343"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>チュートリアル:Azure クイックスタート テンプレートを使用する
 
@@ -35,7 +35,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 1. [[Azure クイックスタート テンプレート]](https://azure.microsoft.com/resources/templates/) を開きます。
 1. **[検索]** に「_deploy linux web app_」と入力します。
-1. "**Deploy a basic Linux web app**" というタイトルのタイルを選択します。 見つからない場合は、[直接リンク](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)からアクセスしてください。
+1. "**Deploy a basic Linux web app**" というタイトルのタイルを選択します。 見つからない場合は、[直接リンク](https://azure.microsoft.com/resources/templates/webapp-basic-linux/)からアクセスしてください。
 1. **[GitHub で参照する]** を選択します。
 1. _azuredeploy.json_ を選択します。
 1. テンプレートを確認します。 特に、`Microsoft.Web/sites` リソースを探します。

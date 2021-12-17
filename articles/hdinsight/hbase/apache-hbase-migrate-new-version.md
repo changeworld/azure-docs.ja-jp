@@ -1,31 +1,30 @@
 ---
 title: HBase クラスターを新しいバージョンに移行する - Azure HDInsight
-description: Azure HDInsight で Apache HBase クラスターを新しいバージョンに移行する方法。
+description: Azure HDInsight で Apache HBase クラスターを新しいバージョンに移行する方法について説明します。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 01/02/2020
-ms.openlocfilehash: 43b46d19503856f5eae38272299f73d9c80055b8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 05/06/2021
+ms.openlocfilehash: 1d6f2d66a00601334a9cab4695b4e78c77a67917
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868887"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109654800"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase クラスターを新しいバージョンに移行する
 
-この記事では、Azure HDInsight で Apache HBase クラスターを新しいバージョンに更新するために必要な手順について説明します。
+この記事では、Azure HDInsight で Apache HBase クラスターを新しいバージョンに更新する方法について説明します。
 
-アップグレード中のダウンタイムは、分単位で最小限に抑える必要があります。 このダウンタイムは、すべてのメモリ内データをフラッシュした後、新しいクラスターでサービスを構成して再起動するための手順が原因で発生します。 結果は、ノード数、データ量、およびその他の可変要素によって異なります。
+この記事は、移行元および移行先クラスターで同じ Azure Storage アカウントを使用する場合にのみ適用されます。 移行先クラスターで新しいストレージ アカウントまたは別のストレージ アカウントを使用してアップグレードを行うには、[Apache HBase を新しいストレージ アカウントを使用して新しいバージョンに移行する](apache-hbase-migrate-new-version-new-storage-account.md)方法に関するページを参照してください。
+
+アップグレード中のダウンタイムは数分以内に収める必要があります。 このダウンタイムは、すべてのメモリ内データをフラッシュし、新しいクラスターでサービスを構成して再起動するための手順が原因で発生します。 結果は、ノード数、データ量、およびその他の可変要素によって異なります。
 
 ## <a name="review-apache-hbase-compatibility"></a>Apache HBase の互換性の確認
 
-Apache HBase をアップグレードする前に、移行元クラスターと移行先クラスターの HBase バージョンの互換性を確保します。 詳しくは、[Apache HDInsight で使用できる Hadoop コンポーネントとバージョン](../hdinsight-component-versioning.md)に関するページをご覧ください。
+Apache HBase をアップグレードする前に、移行元クラスターと移行先クラスターの HBase バージョンの互換性を確保します。 HBase のバージョン互換性マトリックスと [HBase のリファレンス ガイド](https://hbase.apache.org/book.html#upgrading)のリリース ノートを確認して、ご自身のアプリケーションが新しいバージョンと互換性があることを確認します。
 
-> [!NOTE]  
-> [HBase ブック](https://hbase.apache.org/book.html#upgrading)のバージョン互換性マトリックスを確認することを強くお勧めします。 重大な非互換性は、HBase のバージョン リリース ノートに記載されています。
-
-バージョン互換性マトリックスの例を次に示します。 Y は互換性を示し、N は潜在的な非互換性を示します。
+互換性マトリックスの例を次に示します。 Y は互換性を示し、N は潜在的な非互換性を示します。
 
 | 互換性の種類 | メジャー バージョン| マイナー バージョン | 修正プログラム |
 | --- | --- | --- | --- |
@@ -41,210 +40,182 @@ Apache HBase をアップグレードする前に、移行元クラスターと�
 | 依存関係の互換性 | N | Y | Y |
 | 運用の互換性 | N | N | Y |
 
-## <a name="upgrade-with-same-apache-hbase-major-version"></a>同じ Apache HBase メジャー バージョンでのアップグレード
+HDInsigh のバージョンと互換性の詳細については、[Azure HDInsight のバージョン](../hdinsight-component-versioning.md)に関するページを参照してください。
 
-Azure HDInsight で Apache HBase クラスターをアップグレードするには、次の手順を実行します。
+## <a name="apache-hbase-cluster-migration-overview"></a>Apache HBase クラスターの移行の概要
 
-1. HBase 互換性マトリックスおよびリリース ノートで、アプリケーションが新しいバージョンと互換性があることを確認します。 HDInsight および HBase のターゲット バージョンを実行しているクラスターでアプリケーションをテストします。
+Azure HDInsight で Apache HBase クラスターをアップグレードするには、次の基本手順を実行します。 詳細な使用説明については、詳細な手順とコマンドに関するセクションを参照してください。
 
-1. 同じストレージ アカウントで別のコンテナー名を使用して、[新しい移行先 HDInsight クラスターを設定](../hdinsight-hadoop-provision-linux-clusters.md)します。
+次の操作を行い、移行元クラスターを準備します。
+1. データ インジェストを停止します。
+1. memstore データをフラッシュします。
+1. Ambari から HBase を停止します。
+1. 高速書き込みを使用するクラスターの場合は、先書きログ (WAL) ディレクトリをバックアップします。
 
-   :::image type="content" source="./media/apache-hbase-migrate-new-version/same-storage-different-container.png" alt-text="同じストレージ アカウントを使用して別のコンテナーを作成する" border="true":::
+次の操作を行い、移行先クラスターを準備します。
+1. 移行先クラスターを作成します。
+1. Ambari から HBase を停止します。
+1. HDFS service config の `fs.defaultFS` を更新して、移行元クラスターの元のコンテナーを参照します。
+1. 高速書き込みを使用するクラスターの場合は、HBase service config の `hbase.rootdir` を更新して、移行元クラスターの元のコンテナーを参照します。
+1. Zookeeper データをクリーンアップします。
 
-1. アップグレードするクラスターである、ソース HBase クラスターをフラッシュします。 HBase では、_memstore_ と呼ばれるメモリ内ストアに受信データが書き込まれます。 memstore が一定のサイズに達すると、HBase はクラスターのストレージ アカウントに長期保存するためにディスクにフラッシュします。 古いクラスターを削除すると、memstore がリサイクルされ、データが失われる可能性があります。 各テーブルの memstore をディスクに手動でフラッシュするには、次のスクリプトを実行します。 このスクリプトの最新バージョンは、Azure の [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh) にあります。
+次の操作を行い、移行を完了します。
+1. WAL をクリーンアップして移行します。
+1. 移行先クラスターの既定のコンテナーから移行元の元のコンテナーにアプリをコピーします。
+1. Ambari 移行先クラスターからすべてのサービスを開始します。
+1. HBase を確認します。
+1. 移行元クラスターを削除します。
 
-    ```bash
-    #!/bin/bash
-    
-    #-------------------------------------------------------------------------------#
-    # SCRIPT TO FLUSH ALL HBASE TABLES.
-    #-------------------------------------------------------------------------------#
-    
-    LIST_OF_TABLES=/tmp/tables.txt
-    HBASE_SCRIPT=/tmp/hbase_script.txt
-    TARGET_HOST=$1
-    
-    usage ()
-    {
-        if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]
-        then
-            cat << ...
-    
-    Usage: 
-    
-    $0 [hostname]
-    
-    Providing hostname is optional and not required when the script is executed within HDInsight cluster with access to 'hbase shell'.
-    
-    However hostname should be provided when executing the script as a script-action from HDInsight portal.
-    
-    For Example:
-    
-        1.  Executing script inside HDInsight cluster (where 'hbase shell' is 
-            accessible):
-    
-            $0 
-    
-            [No need to provide hostname]
-    
-        2.  Executing script from HDinsight Azure portal:
-    
-            Provide Script URL.
-    
-            Provide hostname as a parameter (i.e. hn0, hn1, hn2.. or wn2 etc.).
-    ...
-            exit
-        fi
-    }
-    
-    validate_machine ()
-    {
-        THIS_HOST=`hostname`
-    
-        if [[ ! -z "$TARGET_HOST" ]] && [[ $THIS_HOST  != $TARGET_HOST* ]]
-        then
-            echo "[INFO] This machine '$THIS_HOST' is not the right machine ($TARGET_HOST) to execute the script."
-            exit 0
-        fi
-    }
-    
-    get_tables_list ()
-    {
-    hbase shell << ... > $LIST_OF_TABLES 2> /dev/null
-        list
-        exit
-    ...
-    }
-    
-    add_table_for_flush ()
-    {
-        TABLE_NAME=$1
-        echo "[INFO] Adding table '$TABLE_NAME' to flush list..."
-        cat << ... >> $HBASE_SCRIPT
-            flush '$TABLE_NAME'
-    ...
-    }
-    
-    clean_up ()
-    {
-        rm -f $LIST_OF_TABLES
-        rm -f $HBASE_SCRIPT
-    }
-    
-    ########
-    # MAIN #
-    ########
-    
-    usage $1
-    
-    validate_machine
-    
-    clean_up
-    
-    get_tables_list
-    
-    START=false
-    
-    while read LINE 
-    do 
-        if [[ $LINE == TABLE ]] 
-        then
-            START=true
-            continue
-        elif [[ $LINE == *row*in*seconds ]]
-        then
-            break
-        elif [[ $START == true ]]
-        then
-            add_table_for_flush $LINE
-        fi
-    
-    done < $LIST_OF_TABLES
-    
-    cat $HBASE_SCRIPT
-    
-    hbase shell $HBASE_SCRIPT << ... 2> /dev/null
-    exit
-    ...
-    
-    ```
+## <a name="detailed-migration-steps-and-commands"></a>移行の詳細な手順とコマンド
 
-1. 古い HBase クラスターへのインジェストを停止します。
+これらの詳細な手順とコマンドを使用して、Apache HBase クラスターを移行します。
 
-1. memstore 内の最近のデータが確実にすべてフラッシュされるようにするために、前のスクリプトをもう一度実行します。
+### <a name="prepare-the-source-cluster"></a>移行元クラスターを準備する
 
-1. 古いクラスター上の [Apache Ambari](https://ambari.apache.org/) (`https://OLDCLUSTERNAME.azurehdidnsight.net`) にサインインして、HBase サービスを停止します。 サービスを停止することを確認するプロンプトが表示されたら、HBase のメンテナンス モードをオンにするためのチェックボックスをオンにします。 Ambari への接続とその使用方法の詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)」を参照してください。
-
-    :::image type="content" source="./media/apache-hbase-migrate-new-version/stop-hbase-services1.png" alt-text="Ambari で、[Service Actions]\(サービス アクション\) の下の [Services]\(サービス\) > [HBase] > [Stop]\(停止\) をクリックします" border="true":::
-
-    :::image type="content" source="./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png" alt-text="[Turn On Maintenance Mode for HBase]\(HBase のメンテナンス モードをオンにする\) チェックボックスをオンにし、操作を確定します" border="true":::
-
-1. 拡張書き込み機能を備えた HBase クラスターを使用していない場合は、この手順をスキップしてください。 この手順は、拡張書き込み機能を備えた HBase クラスターにのみ必要です。
-
-   次のコマンドを、元のクラスターの任意の ZooKeeper ノードまたはワーカー ノードの SSH セッションから実行して、HDFS の下の WAL ディレクトリをバックアップします。
+1. 移行元 HBase クラスターへのインジェストを停止します。
+   
+1. アップグレードする、移行元 HBase クラスターをフラッシュします。
+   
+   HBase では、*memstore* と呼ばれるメモリ内ストアに受信データが書き込まれます。 memstore が一定のサイズに達すると、HBase はクラスターのストレージ アカウントに長期保存するためにディスクにフラッシュします。 アップグレード後に移行元クラスターを削除すると、memstores 内のデータもすべて削除されます。 データを保持するには、アップグレードの前に、各テーブルの memstore をディスクに手動でフラッシュします。
+   
+   memstore データは、[Azure hbase-utils GitHub リポジトリ](https://github.com/Azure/hbase-utils/)から [flush_all_tables.sh](https://github.com/Azure/hbase-utils/blob/master/scripts/flush_all_tables.sh) スクリプトを実行することで、フラッシュできます。
+   
+   また、HDInsight クラスターから次の HBase シェル コマンドを実行して、memstore データをフラッシュすることもできます。
    
    ```bash
-   hdfs dfs -mkdir /hbase-wal-backup**
-   hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup**
+   hbase shell
+   flush "<table-name>"
    ```
-    
-1. 新しい HDInsight クラスターの Ambari にサインインします。 `fs.defaultFS` HDFS 設定を、元のクラスターで使用されているコンテナー名を指すように変更します。 この設定は、 **[HDFS] > [Configs]\(構成\) > [Advanced]\(詳細\) > [Advanced core-site]\(高度なコアサイト\)** にあります。
+   
+1. `https://<OLDCLUSTERNAME>.azurehdinsight.net` を使用して、移行元クラスター上の [Apache Ambari](https://ambari.apache.org/) にサインインし、HBase サービスを停止します。
+   
+1. 確認メッセージが表示されたら、チェックボックスをオンにして HBase のメンテナンス モードを起動します。
+   
+   Ambari への接続とその使用方法の詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)」を参照してください。
+   
+1. 移行元 HBase クラスターに[高速書き込み](apache-hbase-accelerated-writes.md)機能がない場合、この手順はスキップします。 高速書き込みがある移行元 HBase クラスターの場合は、移行元クラスターの任意の Zookeeper ノードまたはワーカー ノード上の SSH セッションから次のコマンドを実行して、HDFS の下の WAL ディレクトリをバックアップします。
+   
+   ```bash
+   hdfs dfs -mkdir /hbase-wal-backup
+   hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup
+   ```
+   
+### <a name="prepare-the-destination-cluster"></a>移行先クラスターを準備する
 
-   :::image type="content" source="./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png" alt-text="Ambari で、[Services]\(サービス\) > [HDFS] > [Configs]\(構成\) > [Advanced]\(詳細\) をクリックします" border="true":::
+1. Microsoft Azure Portal で、移行元クラスターと同じストレージ アカウントを使用して、[新しい移行先 HDInsight クラスターを設定](../hdinsight-hadoop-provision-linux-clusters.md)します。ただし、コンテナー名は違うものを使用してください。
 
-   :::image type="content" source="./media/apache-hbase-migrate-new-version/change-container-name.png" alt-text="Ambari で、コンテナー名を変更する" border="true":::
-
-1. 拡張書き込み機能を備えた HBase クラスターを使用していない場合は、この手順をスキップしてください。 この手順は、拡張書き込み機能を備えた HBase クラスターにのみ必要です。
-
-   `hbase.rootdir` パスを、元のクラスターのコンテナーを指すように変更します。
-
-   :::image type="content" source="./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png" alt-text="Ambari で、HBase rootdir のコンテナー名を変更する" border="true":::
-    
-1. 拡張書き込み機能を備えた HBase クラスターを使用していない場合は、この手順をスキップしてください。 これは、拡張書き込み機能がある HBase クラスターに対してのみ必要であり、元のクラスターが拡張書き込み機能を備えた HBase クラスターだった場合にのみ必要です。
-
-   この新しいクラスターの ZooKeeper と WAL FS データをクリーニングします。 任意の ZooKeeper ノードまたはワーカー ノードで次のコマンドを実行します。
-
+   
+1. `https://<NEWCLUSTERNAME>.azurehdinsight.net` からアクセスできる、新しいクラスター上の [Apache Ambari](https://ambari.apache.org/) にサインインして、HBase サービスを停止します。
+   
+1. **[サービス]**  >  **[HDFS]**  >  **[Configs]**  >  **詳細設定**  >  **詳細設定コアサイト** で、`fs.defaultFS` HDFS 設定を変更して、移行元クラスターの元のコンテナー名を指すように設定します。 たとえば、次のスクリーンショットの設定を "`wasbs://hbase-upgrade-old-2021-03-22`" に変更する必要があります。
+   
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png" alt-text="Ambari で、[サービス] > [HDFS] > [Configs] > 詳細設定 > 詳細設定コアサイト を選択し、コンテナー名を変更する。" border="false":::
+   
+1. 移行先クラスターに高速書き込み機能がある場合は、 `hbase.rootdir` パスを変更して、移行元クラスターの元のコンテナー名を指すように設定します。 たとえば、次のパスは `hbase-upgrade-old-2021-03-22` に変更する必要があります。 クラスターに高速書き込みがない場合、この手順はスキップします。
+   
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png" alt-text="Ambari で、HBase rootdir のコンテナー名を変更する。" border="true":::
+   
+1. 任意の Zookeeper ノードまたはワーカー ノードで次のコマンドを実行して、移行先クラスターの Zookeeper データをクリーンアップします。
+   
    ```bash
    hbase zkcli
    rmr /hbase-unsecure
    quit
+   ```
+   
+### <a name="clean-and-migrate-wal"></a>WAL をクリーンアップして移行する
 
-   hdfs dfs -rm -r hdfs://mycluster/hbasewal**
+以下のコマンドを実行します。実行内容は、移行元 HDI のバージョンおよび、移行元と移行先のクラスターに高速書き込みがあるかどうかによって異なります。
+
+- HDI 3.6 は Basic サポート 内にあり、新しいクラスターでは推奨されていないため、移行先クラスターは常に HDI バージョン 4.0 です。
+- HDFS の copy コマンドは `hdfs dfs <copy properties starting with -D> -cp <source> <destination> # Serial execution` です。
+
+> [!NOTE]  
+> - ストレージ タイプ WASB の `<source-container-fullpath>` は `wasbs://<source-container-name>@<storageaccountname>.blob.core.windows.net` です。
+> - ストレージ タイプ Azure Data Lake Storage Gen2 の `<source-container-fullpath>` は`abfs://<source-container-name>@<storageaccountname>.dfs.core.windows.net` です。
+
+- [移行元クラスターが高速書き込みありの HDI 3.6 で、移行先クラスターに高速書き込みがある](#the-source-cluster-is-hdi-36-or-hdi-40-with-accelerated-writes-and-the-destination-cluster-has-accelerated-writes)。
+- [移行元クラスターが高速書き込みなしの HDI 3.6 で、移行先クラスターに高速書き込みがある](#the-source-cluster-is-hdi-36-without-accelerated-writes-and-the-destination-cluster-has-accelerated-writes)。
+- [移行元クラスターが高速書き込みなしの HDI 3.6 で、移行先クラスターに高速書き込みがない](#the-source-cluster-is-hdi-36-without-accelerated-writes-and-the-destination-cluster-doesnt-have-accelerated-writes)。
+- [移行元クラスターが高速書き込みありの HDI 4.0 で、移行先クラスターに高速書き込みがある](#the-source-cluster-is-hdi-36-or-hdi-40-with-accelerated-writes-and-the-destination-cluster-has-accelerated-writes)。
+- [移行元クラスターが高速書き込みなしの HDI 4.0 で、移行先クラスターに高速書き込みがある](#the-source-cluster-is-hdi-40-without-accelerated-writes-and-the-destination-cluster-has-accelerated-writes)。
+- [移行元クラスターが高速書き込みなしの HDI 4.0 で、移行先クラスターに高速書き込みがない](#the-source-cluster-is-hdi-40-without-accelerated-writes-and-the-destination-cluster-doesnt-have-accelerated-writes)。
+
+#### <a name="the-source-cluster-is-hdi-36-or-hdi-40-with-accelerated-writes-and-the-destination-cluster-has-accelerated-writes"></a>移行元クラスターが高速書き込みありの HDI 3.6 または HDI 4.0 で、移行先クラスターに高速書き込みがある
+
+移行先クラスターの WAL FS データをクリーンアップし、移行元クラスターから移行先クラスターの HDFS に WAL ディレクトリをコピーします。 移行先クラスターの任意の Zookeeper ノードまたはワーカー ノードで次のコマンドを実行して、ディレクトリをコピーします。
+
+```bash   
+sudo -u hbase hdfs dfs -rm -r hdfs://mycluster/hbasewal
+sudo -u hbase hdfs dfs -cp <source-container-fullpath>/hbase-wal-backup/hbasewal hdfs://mycluster/
+```
+#### <a name="the-source-cluster-is-hdi-36-without-accelerated-writes-and-the-destination-cluster-has-accelerated-writes"></a>移行元クラスターが高速書き込みなしの HDI 3.6 で、移行先クラスターに高速書き込みがある
+
+移行先クラスターの WAL FS データをクリーンアップし、移行元クラスターから移行先クラスターの HDFS に WAL ディレクトリをコピーします。 移行先クラスターの任意の Zookeeper ノードまたはワーカー ノードで次のコマンドを実行して、ディレクトリをコピーします。
+
+```bash
+sudo -u hbase hdfs dfs -rm -r hdfs://mycluster/hbasewal
+sudo -u hbase hdfs dfs -Dfs.azure.page.blob.dir="/hbase/WALs,/hbase/MasterProcWALs,/hbase/oldWALs" -cp <source-container>/hbase/*WALs hdfs://mycluster/hbasewal
+```
+
+#### <a name="the-source-cluster-is-hdi-36-without-accelerated-writes-and-the-destination-cluster-doesnt-have-accelerated-writes"></a>移行元クラスターが高速書き込みなしの HDI 3.6 で、移行先クラスターに高速書き込みがない
+
+移行先クラスターの WAL FS データをクリーンアップし、移行元クラスターの WAL ディレクトリを、移行先クラスターの HDFS にコピーします。 ディレクトリをコピーするために、移行先クラスターの任意の Zookeeper ノードまたはワーカー ノードで次のコマンドを実行します。
+
+```bash
+sudo -u hbase hdfs dfs -rm -r /hbase-wals/*
+sudo -u hbase hdfs dfs -Dfs.azure.page.blob.dir="/hbase/WALs,/hbase/MasterProcWALs,/hbase/oldWALs" -cp <source-container-fullpath>/hbase/*WALs /hbase-wals
+```
+
+#### <a name="the-source-cluster-is-hdi-40-without-accelerated-writes-and-the-destination-cluster-has-accelerated-writes"></a>移行元クラスターが高速書き込みなしの HDI 4.0 で、移行先クラスターに高速書き込みがある
+
+移行先クラスターの WAL FS データをクリーンアップし、移行元クラスターから移行先クラスターの HDFS に WAL ディレクトリをコピーします。 移行先クラスターの任意の Zookeeper ノードまたはワーカー ノードで次のコマンドを実行して、ディレクトリをコピーします。
+
+```bash
+sudo -u hbase hdfs dfs -rm -r hdfs://mycluster/hbasewal
+sudo -u hbase hdfs dfs -cp <source-container-fullpath>/hbase-wals/* hdfs://mycluster/hbasewal
    ```
 
-1. 拡張書き込み機能を備えた HBase クラスターを使用していない場合は、この手順をスキップしてください。 この手順は、拡張書き込み機能を備えた HBase クラスターにのみ必要です。
+#### <a name="the-source-cluster-is-hdi-40-without-accelerated-writes-and-the-destination-cluster-doesnt-have-accelerated-writes"></a>移行元クラスターが高速書き込みなしの HDI 4.0 で、移行先クラスターに高速書き込みがない
+
+移行先クラスターの WAL FS データをクリーンアップし、移行元クラスターの WAL ディレクトリを、移行先クラスターの HDFS にコピーします。 ディレクトリをコピーするために、移行先クラスターの任意の Zookeeper ノードまたはワーカー ノードで次のコマンドを実行します。
+
+```bash
+sudo -u hbase hdfs dfs -rm -r /hbase-wals/*
+sudo -u hbase hdfs dfs -Dfs.azure.page.blob.dir="/hbase-wals" -cp <source-container-fullpath>/hbase-wals /
+```
+
+### <a name="complete-the-migration"></a>移行を完了する
+
+1. `sudo -u hdfs` ユーザー コンテキストを使用して、フォルダー `/hdp/apps/<new-version-name>` とその内容を、`<destination-container-fullpath>` から `<source-container-fullpath>` の下の `/hdp/apps` フォルダーにコピーします。 移行先クラスターで次のコマンドを実行して、フォルダーをコピーできます。
    
-   新しいクラスターの任意の ZooKeeper ノードまたはワーカー ノードの SSH セッションから、新しいクラスターの HDFS に WAL ディレクトリを復元します。
+   ```bash   
+   sudo -u hdfs hdfs dfs -cp /hdp/apps/<hdi-version> <source-container-fullpath>/hdp/apps
+   ```
    
+   次に例を示します。
    ```bash
-   hdfs dfs -cp /hbase-wal-backup/hbasewal hdfs://mycluster/**
+   sudo -u hdfs hdfs dfs -cp /hdp/apps/4.1.3.6 wasbs://hbase-upgrade-old-2021-03-22@hbaseupgrade.blob.core.windows.net/hdp/apps
    ```
    
-1. HDInsight 3.6 を 4.0 にアップグレードする場合は、次の手順に従います。それ以外の場合は手順 13 までスキップしてください。
-
-    1. Ambari で必要なすべてのサービスを再起動するために、 **[Services]\(サービス\　)**  >  **[Restart All Required]\(必須をすべて再起動\)** を選択します。
-    1. HBase サービスを停止します。
-    1. Zookeeper ノードに SSH 接続し、[zkCli](https://github.com/go-zkcli/zkcli) コマンド `rmr /hbase-unsecure` を実行して Zookeeper から HBase ルートの znode を削除します。
-    1. HBase を再起動します。
-
-1. 4\.0 以外の HDInsight バージョンにアップグレードする場合は、次の手順に従います。
-    1. 変更を保存します。
-    1. Ambari の指示に従って、必要なすべてのサービスを再起動します。
-
-1. アプリケーションが新しいクラスターを指すように設定します。
-
-    > [!NOTE]  
-    > アップグレードするとアプリケーションの静的 DNS が変更されます。 この DNS をハードコーディングする代わりに、ドメイン名の DNS 設定でクラスターの名前を指す CNAME を構成できます。 もう 1 つの選択肢は、再デプロイせずに更新できる、アプリケーション用の構成ファイルを使用することです。
-
-1. インジェストを開始して、すべてが期待どおりに機能しているかどうかを確認します。
-
-1. 新しいクラスターに問題がない場合は、元のクラスターを削除します。
+1. 移行先クラスターで変更を保存し、Ambari で示される、必要なすべてのサービスを再起動します。
+   
+1. アプリケーションを移行先クラスターを指すように設定します。
+   
+   > [!NOTE]  
+   > アップグレードすると、アプリケーションの静的 DNS 名が変更されます。 この DNS 名をハードコーディングする代わりに、ドメイン名の DNS 設定でクラスターの名前を指す CNAME を構成できます。 もう 1 つの選択肢は、再デプロイせずに更新できる、アプリケーション用の構成ファイルを使用することです。
+   
+1. インジェストを開始します。
+   
+1. HBase の一貫性と、単純なデータ定義言語 (DDL) およびデータ操作言語 (DML) の動作を確認します。
+   
+1. 移行先クラスターに問題がない場合は、移行元クラスターを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 
 [Apache HBase](https://hbase.apache.org/) の詳細と HDInsight クラスターのアップグレードについては、次の記事を参照してください。
 
-* [HDInsight クラスターを新しいバージョンにアップグレードする](../hdinsight-upgrade-cluster.md)
-* [Apache Ambari Web UI を使用して Azure HDInsight を監視および管理する](../hdinsight-hadoop-manage-ambari.md)
-* [Apache Hadoop のコンポーネントとバージョン](../hdinsight-component-versioning.md)
-* [Apache HBase の最適化](../optimize-hbase-ambari.md)
+- [HDInsight クラスターを新しいバージョンにアップグレードする](../hdinsight-upgrade-cluster.md)
+- [Apache Ambari Web UI を使用して Azure HDInsight を監視および管理する](../hdinsight-hadoop-manage-ambari.md)
+- [Azure HDInsight のバージョン](../hdinsight-component-versioning.md)
+- [Apache HBase の最適化](../optimize-hbase-ambari.md)

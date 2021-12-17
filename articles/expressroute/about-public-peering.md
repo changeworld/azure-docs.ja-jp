@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: duau
-ms.openlocfilehash: 477145619e1b4d8b41c422389b57a46615597478
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5c2da05dd68951cada82fc888d54a0f423ce18c7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92202550"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242285"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>ExpressRoute パブリック ピアリングを作成して管理する
 
@@ -30,7 +31,7 @@ ms.locfileid: "92202550"
 
 ## <a name="connectivity"></a>接続
 
-接続は、常に WAN から Microsoft Azure サービスへ開始されます。 このルーティング ドメインを経由して Microsoft Azure サービスからお客様のネットワークに接続を開始することはできません。 ExpressRoute 回線が Azure ピアリングに対して有効になっている場合は、[Azure 内で使用されているパブリック IP の範囲](../virtual-network/public-ip-addresses.md#public-ip-addresses)に回線経由でアクセスできます。
+接続は、常に WAN から Microsoft Azure サービスへ開始されます。 このルーティング ドメインを経由して Microsoft Azure サービスからお客様のネットワークに接続を開始することはできません。 ExpressRoute 回線が Azure ピアリングに対して有効になっている場合は、[Azure 内で使用されているパブリック IP の範囲](../virtual-network/ip-services/public-ip-addresses.md#public-ip-addresses)に回線経由でアクセスできます。
 
 パブリック ピアリングが有効になると、ほとんどの Azure サービスに接続できます。 ルートをアドバタイズするサービスを選択することはできません。
 

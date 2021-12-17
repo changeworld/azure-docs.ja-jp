@@ -1,14 +1,14 @@
 ---
 title: Windows PowerShell DSC を使用して Connected Machine エージェントをインストールする
-description: この記事では、Windows PowerShell DSC を使用して、Azure Arc 対応サーバーを利用する Azure にマシンを接続する方法について学習します。
-ms.date: 09/24/2020
+description: この記事では、Windows PowerShell DSC を使用して、Azure Arc 対応サーバーを使用してマシンを Azure に接続する方法について説明します。
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: c0ae9c97afe14559aa36c1b8387f07897aa4c43b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 357d89a989efbc3b8deded193808d47753b722d9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587642"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789087"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Windows PowerShell DSC を使用して Connected Machine エージェントをインストールする方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "100587642"
 
 - [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc) DSC モジュール
 
-- マシンを Azure Arc 対応サーバーに非対話的に接続するためのサービス プリンシパル。 Arc 対応サーバーのサービス プリンシパルをまだ作成していない場合は、「[大規模なオンボーディング用にサービス プリンシパルを作成する](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」セクションの手順に従ってください。
+- マシンを Azure Arc 対応サーバーに非対話形式で接続するためのサービス プリンシパル。 Azure Arc 対応サーバー用のサービス プリンシパルをまだ作成していない場合は、「[大規模なオンボーディング用にサービス プリンシパルを作成する](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」のセクションにある手順に従ってください。
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>ConnectedMachine DSC モジュールをインストールする
 
@@ -44,7 +44,7 @@ ms.locfileid: "100587642"
 
 このモジュールのリソースは、Azure Connected Machine Agent の構成を管理するように設計されています。 また、`AzureConnectedMachineDsc\examples` フォルダーにある PowerShell スクリプト `AzureConnectedMachineAgent.ps1` も含まれています。 コミュニティ リソースを使用して、ダウンロードとインストールが自動化され、Azure Arc との接続が確立されます。このスクリプトでは、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」に説明されているものに似た手順が実行されます。
 
-マシンでプロキシ サーバーを介してサービスと通信する必要がある場合は、エージェントをインストールした後、[こちら](manage-agent.md#update-or-remove-proxy-settings)に記載されているコマンドを実行する必要があります。 これにより、プロキシ サーバーのシステム環境変数 `https_proxy` が設定されます。 コマンドを手動で実行する代わりに、[ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc) モジュールを使用して DSC でこの手順を実行できます。
+マシンでプロキシ サーバーを介してサービスと通信する必要がある場合は、エージェントをインストールした後、[こちら](manage-agent.md#update-or-remove-proxy-settings)に記載されているコマンドを実行する必要があります。 これにより、プロキシ サーバーのシステム環境変数 `https_proxy` が設定されます。 コマンドを手動で実行する代わりに、[ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc) モジュールを使用して DSC でこの手順を実行できます。 この構成を使用した場合、エージェントは HTTP プロトコルを使用してプロキシ サーバー経由で通信します。
 
 >[!NOTE]
 >DSC で実行できるようにするには、localhost の構成を実行している場合でも PowerShell のリモート コマンドを受信するように Windows を構成する必要があります。 環境を簡単に正しく構成するには、管理者特権の PowerShell ターミナルで `Set-WsManQuickConfig -Force` を実行するだけです。
@@ -76,7 +76,7 @@ PowerShell スクリプトに渡して使用するパラメーターを次に示
 
 3. これにより、`C:\dsc` という名前の新しいフォルダーに、`localhost.mof file` が作成されます。
 
-エージェントをインストールし、Azure Arc 対応サーバーに接続するように構成したら、Azure portal に移動して、サーバーが正常に接続されていることを確認します。 自分のマシンは [Azure portal](https://aka.ms/hybridmachineportal) に表示されます。
+エージェントをインストールし、Azure Arc 対応サーバーに接続するように構成したら、Azure portal に移動して、サーバーが正常に接続されたことを確認します。 自分のマシンは [Azure portal](https://aka.ms/hybridmachineportal) に表示されます。
 
 ## <a name="adding-to-existing-configurations"></a>既存の構成への追加
 
@@ -88,6 +88,6 @@ PowerShell ギャラリーの [CompositeResource](https://www.powershellgallery.
 
 * トラブルシューティング情報は、[Connected Machine エージェントの問題解決ガイド](troubleshoot-agent-onboard.md)を参照してください。
 
-* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
+* [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。
 
-* [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)の詳細を確認します。 マシン上で実行されている OS とワークロードをプロアクティブに監視したい場合、それを Automation Runbook やソリューション (Update Management など) を使用して管理したい場合、または他の Azure サービス ([Azure Security Center](../../security-center/security-center-introduction.md) など) を使用したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。
+* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM 分析情報](../../azure-monitor/vm/vminsights-enable-policy.md)を使用した監視の有効化などの方法です。

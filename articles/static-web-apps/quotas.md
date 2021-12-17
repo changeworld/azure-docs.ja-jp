@@ -1,37 +1,34 @@
 ---
-title: Azure Static Web Apps のプレビューのクォータ
-description: Azure Static Web Apps のプレビューに関連付けられているクォータについて説明します
+title: Azure Static Web Apps のクォータ
+description: Azure Static Web Apps に関連付けられているクォータについて説明します
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
-ms.date: 05/08/2020
+ms.date: 10/13/2021
 ms.author: cshoe
-ms.openlocfilehash: e3538e90a6dea69c703f56871fde86a18557a022
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 4565012ec824961f971f1f1fb34ab330ae11372c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095171"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999304"
 ---
-# <a name="quotas-in-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューのクォータ
+# <a name="quotas-in-azure-static-web-apps"></a>Azure Static Web Apps のクォータ
 
-Azure Static Web Apps のプレビューには、次のクォータがあります。
+Azure Static Web Apps には、次のクォータがあります。
 
-> [!IMPORTANT]
-> Azure Static Web Apps はパブリック プレビュー段階であり、運用環境での使用は想定されていません。
-
-| 機能                     | Free プラン        |
-|-----------------------------|------------------|
-| 含まれる帯域幅          | 100 GB/月 |
-| 超過帯域幅           | 使用不可      |
-| Azure サブスクリプションあたりのアプリ数 | 10               |
-| アプリのサイズ                    | 250 MB           |
-| 実稼働前の環境数 | 3                |
-| カスタム ドメイン              | 1                |
-| 承認 (カスタム ロールとルーティング規則を使用) | カスタム ロールに属することができるエンドユーザーは最大 25 名 |
-| Azure Functions             | 利用可能        |
-| SLA                         | なし             |
+| 機能                     | Free プラン        | Standard プラン |
+|-----------------------------|------------------|---------------|
+| 含まれる帯域幅          | サブスクリプションあたり 1 か月 100 GB | サブスクリプションあたり 1 か月 100 GB |
+| 超過帯域幅           | 使用不可      | GB あたり $0.20 |
+| Azure サブスクリプションあたりのアプリ数 | 10               | 無制限 |
+| アプリのサイズ                    | 250 MB           | 500 MB |
+| プランのサイズ                   | 単一のデプロイでは最大 500 MB のアプリ サイズ、すべてのステージング環境と運用環境では最大 0.50 GB  | 単一のデプロイでは最大 500 MB のアプリ サイズ、すべてのステージング環境と運用環境を合わせて最大 2.00 GB |
+| 実稼働前の環境数 | 3                | 10 |
+| カスタム ドメイン              | アプリあたり 2        | アプリあたり 5 |
+| 承認 (組み込みロール) | 組み込みの `authenticated` ロールで認証できる無制限のエンドユーザー | 組み込みの `authenticated` ロールで認証できる無制限のエンドユーザー |
+| 承認 (カスタム ロール) | [招待](authentication-authorization.md?tabs=invitations#role-management)によってカスタム ロールに属することができる最大 25 人のエンドユーザー | [招待](authentication-authorization.md?tabs=invitations#role-management)によってカスタム ロールに属することができる最大 25 人のエンドユーザー、または[サーバーレス機能](authentication-authorization.md?tabs=function#role-management)によってカスタム ロールを割り当てられる無制限のエンドユーザー |
 
 ## <a name="github-storage"></a>GitHub ストレージ
 

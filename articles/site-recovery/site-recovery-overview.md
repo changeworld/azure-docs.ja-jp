@@ -2,14 +2,14 @@
 title: Azure Site Recovery について
 description: Azure Site Recovery サービスの概要を説明し、ディザスター リカバリーと移行デプロイのシナリオについてまとめています。
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 08/19/2021
 ms.custom: MVC
-ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d5558930c77c115ba25cb4b35e88d470afc38a23
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92281871"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445692"
 ---
 # <a name="about-site-recovery"></a>Site Recovery について
 
@@ -33,6 +33,7 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 --- | ---
 **単純な BCDR ソリューション** | Azure Portal から Site Recovery を使用して、レプリケーションとフェールオーバー、単一拠点からのフェールバックを設定、管理することができます。
 **Azure VM レプリケーション** | プライマリ リージョンからセカンダリ リージョンへの Azure VM のディザスター リカバリーを設定できます。
+**VMware VM レプリケーション** | 強化された Azure Site Recovery レプリケーション アプライアンスを使用して、VMware VM を Azure にレプリケートできます。これにより、構成サーバーよりも優れたセキュリティと回復性が提供されます。 詳細については、「[VMware VM のディザスター リカバリー](vmware-azure-about-disaster-recovery.md)」を参照してください。
 **オンプレミスの VM レプリケーション** | オンプレミスの VM や物理サーバーは、Azure にレプリケートすることも、オンプレミスのセカンダリ データセンターにレプリケートすることもできます。 Azure へのレプリケートにより、セカンダリ データセンターの管理に伴うコストと手間が削減されます。
 **ワークロードのレプリケーション** | サポートされている Azure VM、オンプレミスの Hyper-V VM、VMware VM、Windows/Linux 物理サーバーで実行されているあらゆるワークロードをレプリケートできます。
 **データの回復力** | Site Recovery は、アプリケーション データをインターセプトせずに、レプリケーションを調整します。 Azure にレプリケートすると、データは元の復元性を備えた状態で Azure Storage に格納されます。 フェールオーバーが発生すると、レプリケートされたデータに基づいて Azure VM が作成されます。
@@ -58,3 +59,4 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 
 - [ワークロードのサポート](site-recovery-workload.md)の詳細を確認します。
 - [リージョン間での Azure VM レプリケーション](azure-to-azure-quickstart.md)の使用を開始します。
+- [VMware VM レプリケーション](vmware-azure-enable-replication.md)の使用を開始します。

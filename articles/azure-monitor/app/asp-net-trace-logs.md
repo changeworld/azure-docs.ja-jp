@@ -4,12 +4,12 @@ description: Trace、NLog、または Log4Net で生成されたログを検索�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2836dfabbc2370ed6200030564e2b559cb656f8b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937558"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079189"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights で .NET/.NET Core および Python のトレース ログを調べる
 
@@ -22,7 +22,7 @@ ASP.NET または ASP.NET Core アプリケーションの診断トレース ロ
 ## <a name="install-logging-on-your-app"></a>アプリにログ記録フレームワークをインストールする
 プロジェクトで選択したログ記録フレームワークをインストールします。これにより、app.config または web.config にエントリが追加されます。
 
-```XML
+```xml
  <configuration>
   <system.diagnostics>
     <trace>
@@ -116,7 +116,7 @@ Application Insights にトレースとして送信する [System.Diagnostics.Di
 ## <a name="use-etw-events"></a>ETW イベントを使用する
 Application Insights にトレースとして送信される Event Tracing for Windows (ETW) イベントを構成できます。 まず、`Microsoft.ApplicationInsights.EtwCollector` NuGet パッケージをインストールします。 次に、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) ファイルの "TelemetryModules" セクションを編集します。
 
-> [!NOTE] 
+> [!NOTE]
 > ETW イベントを収集できるのは、SDK をホストするプロセスが、Performance Log Users または Administrators のメンバーである ID で実行されている場合だけです。
 
 ```xml
@@ -141,7 +141,7 @@ Application Insights トレース API を直接呼び出すことができます
 ```csharp
 TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
 var telemetryClient = new TelemetryClient(configuration);
-telemetry.TrackTrace("Slow response - database01");
+telemetryClient.TrackTrace("Slow response - database01");
 ```
 
 TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。 たとえば、メッセージ中で POST データをエンコードできます。
@@ -188,14 +188,14 @@ logger.warning('Hello, World!')
 * ページの構成をお気に入りとして保存する。
 
 > [!NOTE]
->アプリケーションで大量のデータが送信され、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、"*アダプティブ サンプリング*" 機能が動作して、テレメトリの一部のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](./sampling.md)
+> アプリケーションで大量のデータが送信され、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、"*アダプティブ サンプリング*" 機能が動作して、テレメトリの一部のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](./sampling.md)
 >
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="how-do-i-do-this-for-java"></a>Java の場合はどうすればよいですか。
 Java コード不要のインストルメンテーション (推奨) では、ログがすぐに収集され、[Java 3.0 エージェント](./java-in-process-agent.md)を使用します。
 
-Java SDK を使用している場合は、[Java ログ アダプター](./java-trace-logs.md)を使用します。
+Java SDK を使用している場合は、[Java ログ アダプター](java-2x-trace-logs.md)を使用します。
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>プロジェクトのコンテキスト メニューに Application Insights のオプションがありません
 * 開発用マシンに Developer Analytics Tools がインストールしてあることを確認します。 Visual Studio の **[ツール]**  >  **[拡張機能と更新プログラム]** で、**Developer Analytics Tools** を探します。 **[インストール済み]** タブにない場合は、 **[オンライン]** タブを開いてインストールします。
@@ -231,6 +231,5 @@ Application Insights をインストールしないでログ アダプターの 
 [diagnostic]: ./diagnostic-search.md
 [exceptions]: asp-net-exceptions.md
 [portal]: https://portal.azure.com/
-[qna]: ../faq.md
+[qna]: ../faq.yml
 [start]: ./app-insights-overview.md
-

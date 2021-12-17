@@ -2,13 +2,13 @@
 title: チュートリアル:Azure Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 description: チュートリアル:Azure Event Grid は、Azure Storage での BLOB アップロードをトリガーできます。 これを使って、Azure Storage にアップロードされたイメージ ファイルを、サイズ変更や他の改善のために Azure Functions などの他のサービスに送信することができます。
 ms.topic: tutorial
-ms.date: 07/07/2020
-ms.openlocfilehash: ca231fc65162fe38f4dcb8b8d5677ef42c7807bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: 74e7905bbf548b0864a9b871eba964a5759a91a6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550518"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234131"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -22,7 +22,7 @@ ms.locfileid: "99550518"
 
 ![ブラウザーでの発行済みの Web アプリ (\.NET v12 SDK 用) を示すスクリーンショット。](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 ![ブラウザーでの発行済みの Web アプリ (\.NET v10 SDK 用) を示すスクリーンショット。](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
@@ -41,156 +41,137 @@ ms.locfileid: "99550518"
 
 このチュートリアルを完了するには、以下が必要です。
 
-前の Blob ストレージのチュートリアル「[Azure Storage を使用してクラウドに画像データをアップロードする][previous-tutorial]」を完了している必要があります。
-
-[Azure サブスクリプション](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)が必要です。 このチュートリアルでは、**無料** のサブスクリプションは使用できません。 
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.14 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
-
-Cloud Shell を使用していない場合は、先に `az login` でサインインする必要があります。
-
-以前サブスクリプションに Event Grid リソース プロバイダーを登録していない場合は、それが登録されるようにします。
-
-```bash
-az provider register --namespace Microsoft.EventGrid
-```
-
-```powershell
-az provider register --namespace Microsoft.EventGrid
-```
+- [Azure サブスクリプション](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)が必要です。 このチュートリアルでは、**無料** のサブスクリプションは使用できません。 
+- 前の Blob ストレージのチュートリアル「[Azure Storage を使用してクラウドに画像データをアップロードする][previous-tutorial]」を完了している必要があります。  
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
+Azure Functions には、一般的なストレージ アカウントが必要です。 前のチュートリアルで作成した BLOB ストレージ アカウントに加え、リソース グループ内に一般的なストレージ アカウントを別に作成します。 ストレージ アカウント名の長さは 3 から 24 文字である必要があり、数字と小文字のみを使用できます。
 
-Azure Functions には、一般的なストレージ アカウントが必要です。 前のチュートリアルで作成した BLOB ストレージ アカウントに加え、[az storage account create](/cli/azure/storage/account) コマンドを使って、リソース グループ内に一般的なストレージ アカウントを別に作成します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
+前のチュートリアルで作成したリソース グループの名前、作成するリソースの場所、Azure Functions に必要な新しいストレージ アカウントの名前を保持する変数を設定します。 その後に、Azure 関数用のストレージ アカウントを作成します。
 
-1. 前のチュートリアルで作成したリソース グループの名前を保持する変数を設定します。
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-    ```bash
-    resourceGroupName="myResourceGroup"
-    ```
+[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドを使用します。
 
-    ```powershell
+1. リソース グループの名前を指定します。 
+
+    ```azurepowershell-interactive
     $resourceGroupName="myResourceGroup"
     ```
+2. ストレージ アカウントの場所を指定します。
 
-1. リソースを作成する場所を保持する変数を設定します。 
+    ```azurepowershell-interactive
+    $location="eastus"    
+    ```
+3. 関数によって使用されるストレージ アカウントの名前を指定します。
 
-    ```bash
+    ```azurepowershell-interactive
+    $functionstorage="<name of the storage account to be used by the function>"    
+    ```
+4. ストレージ アカウントを作成します。 
+
+    ```azurepowershell-interactive
+    New-AzStorageAccount -ResourceGroupName $resourceGroupName -AccountName $functionstorage -Location $location -SkuName Standard_LRS -Kind StorageV2        
+    ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[az storage account create](/cli/azure/storage/account) コマンドを使用します。
+
+> [!NOTE]
+> Cloud Shell の Bash シェルでは、次のコマンドを使用します。 必要に応じて、Cloud Shell の左上隅にあるドロップダウン リストを使用して、Bash シェルに切り替えます。 
+
+1. リソース グループの名前を指定します。 
+
+    ```azurecli-interactive
+    resourceGroupName="myResourceGroup"    
+    ```
+2. ストレージ アカウントの場所を指定します。
+
+    ```azurecli-interactive
     location="eastus"
     ```
+3. 関数によって使用されるストレージ アカウントの名前を指定します。
 
-    ```powershell
-    $location="eastus"
-    ```
-
-1. Azure Functions が必要とする新しいストレージ アカウントの名前の変数を設定します。
-
-    ```bash
+    ```azurecli-interactive
     functionstorage="<name of the storage account to be used by the function>"
     ```
+4. ストレージ アカウントを作成します。 
 
-    ```powershell
-    $functionstorage="<name of the storage account to be used by the function>"
+    ```azurecli-interactive
+    az storage account create --name $functionstorage --location $location --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
-1. Azure Functions 用のストレージ アカウントを作成します。
-
-    ```bash
-    az storage account create --name $functionstorage --location $location \
-    --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
-    ```
-
-    ```powershell
-    az storage account create --name $functionstorage --location $location `
-    --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
-    ```
+---
 
 ## <a name="create-a-function-app"></a>Function App を作成する  
 
-関数の実行環境をホストするには Function App が必要です。 Function App は、関数コードのサーバーレスの実行環境を提供します。 Function App の作成には、[az functionapp create](/cli/azure/functionapp) コマンドを使用します。
+関数の実行環境をホストするには Function App が必要です。 Function App は、関数コードのサーバーレスの実行環境を提供します。
 
 以下のコマンドには、実際に使用する一意の関数アプリ名を使用してください。 この関数アプリ名は、関数アプリの既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。
 
-1. 作成する関数アプリの名前を指定します。
+作成する関数アプリの名前を指定し、Azure 関数を作成します。
 
-    ```bash
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+関数アプリの作成には、[New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) コマンドを使用します。
+
+1. 関数アプリの名前を指定します。 
+
+    ```azurepowershell-interactive
+    $functionapp="<name of the function app>"    
+    ```
+2. 関数アプリを作成します。 
+
+    ```azurepowershell-interactive
+    New-AzFunctionApp -Location $location -Name $functionapp -ResourceGroupName $resourceGroupName -Runtime PowerShell -StorageAccountName $functionstorage    
+    ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Function App の作成には、[az functionapp create](/cli/azure/functionapp) コマンドを使用します。
+
+1. 関数アプリの名前を指定します。 
+
+    ```azurecli-interactive
     functionapp="<name of the function app>"
     ```
+2. 関数アプリを作成します。 
 
-    ```powershell
-    $functionapp="<name of the function app>"
+    ```azurecli-interactive
+    az functionapp create --name $functionapp --storage-account $functionstorage --resource-group $resourceGroupName --consumption-plan-location $location --functions-version 2    
     ```
 
-1. Azure Functions を作成します。
-
-    ```bash
-    az functionapp create --name $functionapp --storage-account $functionstorage \
-      --resource-group $resourceGroupName --consumption-plan-location $location \
-      --functions-version 2
-    ```
-
-    ```powershell
-    az functionapp create --name $functionapp --storage-account $functionstorage `
-      --resource-group $resourceGroupName --consumption-plan-location $location `
-      --functions-version 2
-    ```
+---
 
 ここで、[前のチュートリアル][previous-tutorial]で作成した BLOB ストレージ アカウントに接続するように関数アプリを構成します。
 
 ## <a name="configure-the-function-app"></a>Function App を構成する
 
-関数には、BLOB ストレージ アカウントの資格情報が必要となります。[az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) コマンドを使用して、関数アプリのアプリケーション設定にこの資格情報を追加します。
+関数には、BLOB ストレージ アカウントの資格情報が必要となります。これを関数アプリのアプリケーション設定に追加するには、[az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) または [Update-AzFunctionAppSetting](/powershell/module/az.functions/update-azfunctionappsetting) の各コマンドを使用します。
 
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-```bash
-storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
-  --name $blobStorageAccount --query connectionString --output tsv)
+```azurecli-interactive
+storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
 
-az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName \
-  --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails \
-  THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName --settings "AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2 FUNCTIONS_WORKER_RUNTIME=dotnet"
 ```
 
-```powershell
-$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
-  --name $blobStorageAccount --query connectionString --output tsv)
+```azurepowershell-interactive
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
 
-az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
-  --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails `
-  THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+Update-AzFunctionAppSetting -Name $functionapp -ResourceGroupName $resourceGroupName -AppSetting @{AzureWebJobsStorage=$storageConnectionString; THUMBNAIL_CONTAINER_NAME=thumbnails; THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2; 'FUNCTIONS_WORKER_RUNTIME'='dotnet'}
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
-```bash
-blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
-  -n $blobStorageAccount --query [0].value --output tsv)
+```azurecli-interactive
+blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName -n $blobStorageAccount --query [0].value --output tsv)
 
-storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
-  --name $blobStorageAccount --query connectionString --output tsv)
+storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
 
-az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName \
-  --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails \
-  AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
-  AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey \
-  AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
-```
-
-```powershell
-$blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName `
-  -n $blobStorageAccount --query [0].value --output tsv)
-
-$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
-  --name $blobStorageAccount --query connectionString --output tsv)
-
-az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
-  --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails `
-  AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount `
-  AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey `
-  AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName --settings "FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString FUNCTIONS_WORKER_RUNTIME=node"
 ```
 
 ---
@@ -205,31 +186,17 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
 
 C# のサイズ変更関数のサンプルは、[GitHub](https://github.com/Azure-Samples/function-image-upload-resize) で入手できます。 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) コマンドを使って、このコード プロジェクトを関数アプリにデプロイします。
 
-```bash
-az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName \
-  --branch master --manual-integration \
-  --repo-url https://github.com/Azure-Samples/function-image-upload-resize
+```azurecli-interactive
+az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName --branch master --manual-integration --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
-```powershell
-az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName `
-  --branch master --manual-integration `
-  --repo-url https://github.com/Azure-Samples/function-image-upload-resize
-```
-
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 Node.js のサイズ変更関数のサンプルは、[GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10) で入手できます。 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) コマンドを使って、この Functions コード プロジェクトを関数アプリにデプロイします。
 
-```bash
+```azurecli-interactive
 az functionapp deployment source config --name $functionapp \
   --resource-group $resourceGroupName --branch master --manual-integration \
-  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
-```
-
-```powershell
-az functionapp deployment source config --name $functionapp `
-  --resource-group $resourceGroupName --branch master --manual-integration `
   --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
 ```
 
@@ -245,7 +212,7 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
 
 この関数の詳細については、[function.json ファイルと run.csx ファイル](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/ImageFunctions)を参照してください。
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 この関数の詳細については、[function.json ファイルと index.js ファイル](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail)を参照してください。
 
@@ -303,7 +270,7 @@ Web アプリでイメージのサイズ変更をテストするには、公開�
 
 ![ブラウザーでの発行済みの "ImageResizer" というタイトルの Web アプリ (\.NET v12 SDK 用) を示すスクリーンショット。](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 **[Choose File]** をクリックしてファイルを選び、 **[Upload Image]** をクリックします。 アップロードが成功すると、ブラウザーが成功ページに移動します。 リンクをクリックすると、ホーム ページに戻ります。 **[Generated Thumbnails]** 領域に、アップロードされた画像のコピーが表示されます。 画像が表示されない場合は、ページを再度読み込んでみてください。この画像は、関数によってサイズが変更され、*thumbnails* コンテナーに追加された後、Web クライアントによってダウンロードされたものです。
 

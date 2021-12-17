@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.author: cherylmc
-ms.openlocfilehash: 7f8bc4cadc720c7ac02a7246e741552e81eb3876
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 28225273957fa6b3150fd5d117bcfe662893d09d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057152"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132703889"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
 
@@ -51,11 +51,11 @@ Azure リージョンは、接続先として選択できるハブとして機�
 
 * **virtualWAN:** virtualWAN リソースは、Azure ネットワークの仮想オーバーレイを表し、複数のリソースのコレクションです。 これには、仮想 WAN 内に配置するすべての仮想ハブへのリンクが含まれます。 Virtual WAN リソースは相互に分離されており、共通のハブを含むことはできません。 Virtual WAN 上の仮想ハブは互いに通信しません。
 
-* **ハブ:** 仮想ハブは、Microsoft のマネージド仮想ネットワークです。 ハブには、接続を可能にするためのさまざまなサービス エンドポイントが含まれています。 オンプレミス ネットワーク (vpnsite) から、仮想ハブ内の VPN Gateway に接続したり、ExpressRoute 回線を仮想ハブに接続したり、またはモバイル ユーザーを仮想ハブ内のポイント対サイト ゲートウェイに接続したりすることもできます。 ハブは、リージョン内のネットワークのコアです。 1 つの Azure リージョンに配置できるハブは 1 つのみです。
+* **ハブ:** 仮想ハブは、Microsoft のマネージド仮想ネットワークです。 ハブには、接続を可能にするためのさまざまなサービス エンドポイントが含まれています。 オンプレミス ネットワーク (vpnsite) から、仮想ハブ内の VPN Gateway に接続したり、ExpressRoute 回線を仮想ハブに接続したり、またはモバイル ユーザーを仮想ハブ内のポイント対サイト ゲートウェイに接続したりすることもできます。 ハブは、リージョン内のネットワークのコアです。 同じリージョン内に複数の仮想ハブを作成できます。 
 
   ハブ ゲートウェイは、ExpressRoute および VPN Gateway に使用する仮想ネットワーク ゲートウェイと同じではありません。 たとえば、Virtual WAN を使用する場合は、オンプレミス サイトから直接 VNet にサイト間接続を作成しません。 代わりに、ハブへのサイト間接続を作成します。 トラフィックは、常にハブ ゲートウェイを通過します。 これは、VNet には独自の仮想ネットワーク ゲートウェイが必要ないことを意味します。 Virtual WAN により、VNet は、仮想ハブと仮想ハブ ゲートウェイを介して簡単にスケーリングできます。
 
-* **ハブ仮想ネットワーク接続:** ハブ仮想ネットワーク接続リソースは、ハブを仮想ネットワークにシームレスに接続するために使用します。
+* **ハブ仮想ネットワーク接続:** ハブ仮想ネットワーク接続リソースは、ハブを仮想ネットワークにシームレスに接続するために使用します。 1 つの仮想ネットワークは、1 つの仮想ハブにしか接続できません。 
 
 * **ハブ間接続** ハブはすべて、仮想 WAN 内で相互に接続されています。 これは、ローカル ハブに接続されているブランチ、ユーザー、または VNet が、接続されたハブのフル メッシュ アーキテクチャを使用して、別のブランチまたは VNet と通信できることを意味します。 また、ハブ間の VNet と同様に、ハブ間接続されたフレームワークを使用して、仮想ハブを通じて転送するハブ内の VNet を接続することもできます。
 
@@ -65,9 +65,7 @@ Azure リージョンは、接続先として選択できるハブとして機�
 
 * **サイト:** このリソースは、サイト間接続にのみ使用されます。 サイト リソースは **vpnsite** です。 これは、オンプレミスの VPN デバイスとその設定を表します。 Virtual WAN パートナーと連携することで、この情報を Azure に自動的にエクスポートする組み込みのソリューションが得られます。
 
-## <a name="types-of-connectivity"></a><a name="connectivity"></a>接続の種類
-
-Virtual WAN では、次の種類の接続を使用できます。サイト間 VPN、ユーザー VPN (ポイント対サイト)、および ExpressRoute です。
+## <a name="connectivity"></a><a name="connectivity"></a>接続
 
 ### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>サイト間 VPN 接続
 
@@ -97,7 +95,9 @@ Virtual WAN では、VNet 間のトランジット接続が可能です。 VNet 
 * **なし** 状態は、仮想ハブでルーターがプロビジョニングされなかったことを示します。 これは、Virtual WAN の種類が *Basic* の場合、またはサービスが利用可能になる前に仮想ハブがデプロイされた場合に発生する可能性があります。
 * **失敗** 状態は、インスタンス化中の失敗を示します。 ルーターをインスタンス化またはリセットするには、Azure portal の仮想ハブの [概要] ページに移動し、 **[Reset Router]\(ルーターのリセット\)** オプションを見つけます。
 
-各仮想ハブ ルーターは、最大 50 Gbps の集約スループットをサポートしています。 仮想ネットワーク接続間の接続では、単一の仮想ハブに接続されているすべての VNet 全体で合計 2,000 VM のワークロードを想定しています。
+各仮想ハブ ルーターは、最大 50 Gbps の集約スループットをサポートしています。 
+
+仮想ネットワーク接続間の接続では、単一の仮想ハブに接続されているすべての VNet 全体で、合計 2,000 VM の最大ワークロードを既定で想定しています。 この[制限](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-wan-limits)は、オンライン カスタマー サポート リクエストを開いて増やすことができます。 コストへの影響については、[Azure Virtual WAN の価格](https://azure.microsoft.com/pricing/details/virtual-wan/)に関するページの "*ルーティング インフラストラクチャ ユニット*" のコストを参照してください。 
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>VPN と ExpressRoute 間のトランジット接続
 
@@ -123,13 +123,13 @@ Azure Virtual WAN には、ExpressRoute トラフィックを暗号化する機�
 
 ルート テーブルに、関連付けと伝達の機能が備わりました。 既存のルート テーブルは、これらの機能を持たないルート テーブルです。 ハブ ルーティングに既存のルートがあり、新しい機能を使用する場合は、以下を考慮してください。
 
-* **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**:Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、新しいルート テーブルを作成する必要があります (Azure portal のハブの [ルート テーブル] セクションにあります)。 Virtual WAN 内のすべてのハブに対して削除手順を実行することを強くお勧めします。
+* **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**: Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、新しいルート テーブルを作成する必要があります (Azure portal のハブの [ルート テーブル] セクションにあります)。 Virtual WAN 内のすべてのハブに対して削除手順を実行することを強くお勧めします。
 
 * **仮想ハブに既存のルートがある Basic Virtual WAN のお客様**:Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、お使いの Basic Virtual WAN を Standard Virtual WAN に **アップグレード** します。 「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」を参照してください。 Virtual WAN 内のすべてのハブに対して削除手順を実行することを強くお勧めします。
 
 ## <a name="faq"></a><a name="faq"></a>FAQ
 
-[!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
+よく寄せられる質問については、「[Virtual WAN の FAQ](virtual-wan-faq.md)」を参照してください。
 
 ## <a name="whats-new"></a><a name="new"></a>新機能
 
@@ -137,4 +137,5 @@ RSS フィードを購読し、[Azure 更新情報](https://azure.microsoft.com/
 
 ## <a name="next-steps"></a>次のステップ
 
-[Virtual WAN を使用してサイト間接続を作成する](virtual-wan-site-to-site-portal.md)
+- [チュートリアル: Virtual WAN を使用してサイト間接続を作成する](virtual-wan-site-to-site-portal.md)
+- [Learn モジュール: Azure Virtual WAN の概要](/learn/modules/introduction-azure-virtual-wan/)

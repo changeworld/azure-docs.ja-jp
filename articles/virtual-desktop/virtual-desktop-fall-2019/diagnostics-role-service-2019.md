@@ -1,32 +1,32 @@
 ---
-title: Windows Virtual Desktop (クラシック) の診断の問題 - Azure
-description: Windows Virtual Desktop (クラシック) の診断機能を使用して問題を診断する方法。
+title: Azure Virtual Desktop (クラシック) の診断の問題 - Azure
+description: Azure Virtual Desktop (クラシック) の診断機能を使用して問題を診断する方法。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e23a1e9a2a0118402df0d9b8869f170762a52284
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3a9d7f4f6c3413fe82cd1dde52ebde866d77eedf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444957"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262909"
 ---
-# <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) での問題の特定と診断
+# <a name="identify-and-diagnose-issues-in-azure-virtual-desktop-classic"></a>Azure Virtual Desktop (クラシック) での問題の特定と診断
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../diagnostics-role-service.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-set-up-overview.md)を参照してください。
 
-Windows Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 Windows Virtual Desktop ロールでは、ユーザーがシステムとやり取りするたびに診断アクティビティがログに記録されます。 各ログには、トランザクションに関連する Windows Virtual Desktop ロール、エラー メッセージ、テナント情報、ユーザー情報などの関連情報が含まれています。 診断アクティビティは、エンドユーザーのアクションと管理者のアクションの両方によって作成され、3 つの主要バケットに分類できます。
+Azure Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 Azure Virtual Desktop ロールでは、ユーザーがシステムとやり取りするたびに診断アクティビティがログに記録されます。 各ログには、トランザクションに関連する Azure Virtual Desktop ロール、エラー メッセージ、テナント情報、ユーザー情報などの関連情報が含まれています。 診断アクティビティは、エンドユーザーのアクションと管理者のアクションの両方によって作成され、3 つの主要バケットに分類できます。
 
 * フィード サブスクリプション アクティビティ: エンドユーザーが Microsoft リモート デスクトップ アプリケーションを通じてフィードに接続しようとするたびに、これらのアクティビティがトリガーされます。
 * 接続アクティビティ: エンドユーザーが Microsoft リモート デスクトップ アプリケーションを通じてデスクトップまたは RemoteApp に接続しようとするたびに、これらのアクティビティがトリガーされます。
 * 管理アクティビティ: 管理者がホスト プールの作成、アプリ グループへのユーザーの割り当て、ロール割り当ての作成などの管理操作をシステムに対して実行するたびに、これらのアクティビティがトリガーされます。
 
-診断ロール サービス自体が Windows Virtual Desktop の一部であるため、Windows Virtual Desktop に到達しない接続は診断結果に表示されません。 Windows Virtual Desktop 接続の問題は、エンドユーザーにネットワーク接続の問題が発生しているときに発生する可能性があります。
+診断ロール サービス自体が Azure Virtual Desktop の一部であるため、Azure Virtual Desktop に到達しない接続は診断結果に表示されません。 Azure Virtual Desktop 接続の問題は、エンドユーザーにネットワーク接続の問題が発生しているときに発生する可能性があります。
 
-まず、PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します (まだ行っていない場合)。 その後、次のコマンドレットを実行して、ご自分のアカウントにサインインします。
+まず、PowerShell セッション内で使用する [Azure Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します (まだ行っていない場合)。 その後、次のコマンドレットを実行して、ご自分のアカウントにサインインします。
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="diagnose-issues-with-powershell"></a>PowerShell を使用した問題の診断
 
-Windows Virtual Desktop 診断では、1 つの PowerShell コマンドレットだけが使用されますが、問題を絞り込んで特定するために多くの省略可能なパラメーターが含まれています。 以下のセクションでは、問題を診断するために実行できるコマンドレットの一覧を示します。 ほとんどのフィルターは一緒に適用できます。 `<tenantName>` などの角かっこで囲まれた値は、自分の状況に適用される値で置き換える必要があります。
+Azure Virtual Desktop 診断では、1 つの PowerShell コマンドレットだけが使用されますが、問題を絞り込んで特定するために多くの省略可能なパラメーターが含まれています。 以下のセクションでは、問題を診断するために実行できるコマンドレットの一覧を示します。 ほとんどのフィルターは一緒に適用できます。 `<tenantName>` などの角かっこで囲まれた値は、自分の状況に適用される値で置き換える必要があります。
 
 >[!IMPORTANT]
 >診断機能は、シングルユーザーのトラブルシューティング用です。 PowerShell を使用するすべてのクエリには、 *-UserName* または *-ActivityID* パラメーターのいずれかが含まれている必要があります。 監視機能については、Log Analytics を使用します。 診断データをワークスペースに送信する方法の詳細については、「[診断機能に Log Analytics を使用する](diagnostics-log-analytics-2019.md)」を参照してください。
@@ -123,10 +123,10 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 
 ## <a name="common-error-scenarios"></a>一般的なエラー シナリオ
 
-エラー シナリオは、サービスの内部と Windows Virtual Desktop の外部に分類されます。
+エラー シナリオは、サービスの内部と Azure Virtual Desktop の外部に分類されます。
 
-* 内部の問題: テナント管理者が緩和できず、サポートの問題として解決する必要があるシナリオを指定します。 [Windows Virtual Desktop Tech コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)を通してフィードバックを提供する場合は、アクティビティ ID と問題が発生したときのおおよその時間枠を含めてください。
-* 外部の問題: システム管理者が緩和できるシナリオに関連します。 これらは、Windows Virtual Desktop の外部で発生します。
+* 内部の問題: テナント管理者が緩和できず、サポートの問題として解決する必要があるシナリオを指定します。 [Azure Virtual Desktop Tech コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)を通してフィードバックを提供する場合は、アクティビティ ID と問題が発生したときのおおよその時間枠を含めてください。
+* 外部の問題: システム管理者が緩和できるシナリオに関連します。 これらは、Azure Virtual Desktop の外部で発生します。
 
 次の表では、管理者が経験する可能性のある一般的なエラーの一覧を示します。
 
@@ -153,7 +153,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 |8000|InvalidAuthorizationRoleScope|入力したロール名が既存のどのロール名とも一致しません。 ロール名に入力ミスがないことを確認し、もう一度やり直してください。 |
 |8001|UserNotFound |入力したユーザー名が既存のどのユーザー名とも一致しません。 名前に入力ミスがないことを確認し、もう一度やり直してください。|
 |8005|UserNotFoundInAAD |入力したユーザー名が既存のどのユーザー名とも一致しません。 名前に入力ミスがないことを確認し、もう一度やり直してください。|
-|8008|TenantConsentRequired|[こちら](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop)の指示に従って、テナントに同意を付与してください。|
+|8008|TenantConsentRequired|[こちら](tenant-setup-azure-active-directory.md#grant-permissions-to-azure-virtual-desktop)の指示に従って、テナントに同意を付与してください。|
 
 ### <a name="external-connection-error-codes"></a>外部接続のエラー コード
 
@@ -174,6 +174,6 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 
 ## <a name="next-steps"></a>次のステップ
 
-Windows Virtual Desktop 内のロールについて詳しくは、「[Windows Virtual Desktop 環境](environment-setup-2019.md)」をご覧ください。
+Azure Virtual Desktop 内のロールの詳細については、「[Azure Virtual Desktop 環境](environment-setup-2019.md)」を参照してください。
 
-Windows Virtual Desktop に使用可能な PowerShell コマンドレットの一覧を表示するには、[PowerShell リファレンス](/powershell/windows-virtual-desktop/overview)に関する記事をご覧ください。
+Azure Virtual Desktop に使用可能な PowerShell コマンドレットの一覧を表示するには、[PowerShell リファレンス](/powershell/windows-virtual-desktop/overview)に関する記事をご覧ください。

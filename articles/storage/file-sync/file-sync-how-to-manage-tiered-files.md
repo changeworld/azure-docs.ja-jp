@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd740c773998450ef6e8bb95c4df3a1abadaceed
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0feb7f6fc9a36e3440001d3a344ada843ea54e0d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796011"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645704"
 ---
 # <a name="how-to-manage-tiered-files"></a>階層化ファイルの管理方法
 
@@ -22,15 +22,15 @@ ms.locfileid: "107796011"
 
 セット ポリシーごとにファイルを階層化する必要があるかどうかは、1 時間に 1 回評価されます。 新しいサーバー エンドポイントの作成時には、次の 2 つの状況が考えられます。
 
-新しいサーバー エンドポイントを初めて追加するとき、多くの場合、そのサーバーの場所にはファイルが存在します。 これらは、クラウドを使った階層化を開始する前にアップロードしておく必要があります。 ボリュームの空き領域ポリシーは、すべてのファイルの初期アップロードが完了するまで動作しません。 ただし、オプションの日付ポリシーは、ファイルがアップロードされ次第、個々のファイルに対して動作し始めます。 この場合も 1 時間間隔が適用されます。 
+新しいサーバー エンドポイントを初めて追加するとき、多くの場合、そのサーバーの場所にはファイルが存在します。 これらは、クラウドを使った階層化を開始する前にアップロードしておく必要があります。 ボリュームの空き領域ポリシーは、すべてのファイルの初期アップロードが完了するまで動作しません。 ただし、オプションの日付ポリシーは、ファイルがアップロードされ次第、個々のファイルに対して動作し始めます。 この場合も 1 時間間隔が適用されます。
 
 新しいサーバー エンドポイントを追加するとき、空のサーバーの場所を、データが含まれている Azure ファイル共有に接続することができます。 サーバーへの初回ダウンロード時に名前空間をダウンロードし、コンテンツを呼び出すよう選択した場合は、名前空間がダウンロードされた後、ボリュームの空き領域ポリシーとオプションの日付ポリシーの制限に達するまで、最終更新タイムスタンプに基づいてファイルが再現されます。
 
 ファイルが Azure ファイル共有に階層化されたかどうかを確認するには、いくつかの方法があります。
-    
-   *  **ファイル上でファイル属性を確認します。**
-     ファイルを右クリックして **[詳細]** に移動し、 **[属性]** プロパティまで下へスクロールします。 階層化されたファイルには、次のような属性設定があります。     
-        
+
+   - **ファイル上でファイル属性を確認します。**
+     ファイルを右クリックして **[詳細]** に移動し、 **[属性]** プロパティまで下へスクロールします。 階層化されたファイルには、次のような属性設定があります。
+
         | 属性の文字 | 属性 | 定義 |
         |:----------------:|-----------|------------|
         | A | アーカイブ | バックアップ ソフトウェアによって、ファイルがバックアップされる必要があることを示します。 この属性は、ファイルが階層化されているか、ディスク上に完全に格納されているかに関係なく、常に設定されます。 |
@@ -40,34 +40,39 @@ ms.locfileid: "107796011"
         | O | オフライン | ファイルのコンテンツの一部またはすべてがディスク上に保存されていないことを示します。 ファイルが完全に再現されている場合、Azure File Sync によってこの属性は削除されます。 |
 
         ![[詳細] タブが選択された、ファイルの [プロパティ] ダイアログ ボックス](../files/media/storage-files-faq/azure-file-sync-file-attributes.png)
-        
-    
+
+
         > [!NOTE]
         > また、**属性** フィールドをエクスプローラーのテーブル表示に追加することで、フォルダー内にあるすべてのファイルの属性を確認できます。 これを行うには、既存の列 ( **[サイズ]** など) を右クリックして、 **[詳細]** を選択し、ドロップダウン リストから **[属性]** を選択します。
-        
+
         > [!NOTE]
         > これらの属性はすべて、部分的に再現されたファイルにも表示されます。
-        
-   * **`fsutil` を使用して、ファイル上の再解析ポイントを確認します。**
-       前記のオプションで説明したように、階層化されたファイルには必ず再解析ポイントが設定されます。 再解析ポイントを使用すると、Azure File Sync ファイル システム フィルター ドライバー (StorageSync.sys) によって、サーバーにローカルで格納されていないコンテンツを Azure ファイル共有から取得できるようになります。 
+
+   - **`fsutil` を使用して、ファイル上の再解析ポイントを確認します。**
+       前記のオプションで説明したように、階層化されたファイルには必ず再解析ポイントが設定されます。 再解析ポイントを使用すると、Azure File Sync ファイル システム フィルター ドライバー (StorageSync.sys) によって、サーバーにローカルで格納されていないコンテンツを Azure ファイル共有から取得できるようになります。
 
        ファイルに再解析ポイントがあるかどうかを調べるには、管理者特権でのコマンド プロンプトまたは PowerShell ウィンドウで、`fsutil` ユーティリティを実行します。
 
         ```powershell
         fsutil reparsepoint query <your-file-name>
         ```
+
        ファイルに再解析ポイントがある場合、"**Reparse Tag Value: 0x8000001e**" と表示されることが想定されます。 この 16 進値は、Azure File Sync が所有する再解析ポイントの値です。また、出力には、Azure ファイル共有上のファイルへのパスを表す再解析データが含まれます。
-        
-        > [!WARNING]  
-        > `fsutil reparsepoint` ユーティリティ コマンドには、再解析ポイントを削除する機能も含まれています。 Azure File Sync のエンジニア チームによって指示されない限り、このコマンドは実行しないでください。 このコマンドを実行すると、データが失われる可能性があります。 
+
+        > [!WARNING]
+        > `fsutil reparsepoint` ユーティリティ コマンドには、再解析ポイントを削除する機能も含まれています。 Azure File Sync のエンジニア チームによって指示されない限り、このコマンドは実行しないでください。 このコマンドを実行すると、データが失われる可能性があります。
 
 ## <a name="how-to-exclude-applications-from-cloud-tiering-last-access-time-tracking"></a>クラウドを使った階層化の最終アクセス時刻の追跡からアプリケーションを除外する方法
 
-Azure File Sync エージェント バージョン 11.1 では、最終アクセスの追跡からアプリケーションを除外できるようになりました。 アプリケーションからファイルへアクセスが行われると、ファイルの最終アクセス時刻がクラウドを使った階層化データベースで更新されます。 ファイル システムをスキャンするウイルス対策アプリケーションなどを使用すると、すべてのファイルの最終アクセス時刻が同じになるため、ファイルが階層化された時間に影響を及ぼします。
+アプリケーションからファイルへアクセスが行われると、ファイルの最終アクセス時刻がクラウドを使った階層化データベースで更新されます。 ファイル システムをスキャンするウイルス対策アプリケーションなどを使用すると、すべてのファイルの最終アクセス時刻が同じになるため、ファイルが階層化された時間に影響を及ぼします。
 
-最終アクセス時刻の追跡からアプリケーションを除外するには、プロセス名を HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync の下にある HeatTrackingProcessNameExclusionList レジストリ設定に追加します。
+最終アクセス時刻の追跡からアプリケーションを除外するには、HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync の下にある適切なレジストリ設定にそのプロセス名を追加します。
 
+v11 および v12 リリースの場合は、プロセスの除外を HeatTrackingProcessNameExclusionList レジストリ設定に追加します。
 例: reg ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync" /v HeatTrackingProcessNameExclusionList /t REG_MULTI_SZ /d "SampleApp.exe\0AnotherApp.exe" /f
+
+v13 リリース以降の場合は、プロセスの除外を HeatTrackingProcessNamesExclusionList レジストリ設定に追加します。
+例: reg ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync" /v HeatTrackingProcessNamesExclusionList /t REG_SZ /d "SampleApp.exe,AnotherApp.exe" /f
 
 > [!NOTE]
 > データ重複除去と File Server Resource Manager (FSRM) のプロセスは既定で除外されています。 プロセスの除外リストは 5 分ごとに受け入れられます。
@@ -107,31 +112,33 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ディスクにファイルを再現する最も簡単な方法は、ファイルを開くことです。 Azure File Sync のファイル システム フィルター (StorageSync.sys) は、Azure ファイル共有からファイルをシームレスにダウンロードします。ユーザー側で作業を行う必要はありません。 マルチメディア ファイルや .zip ファイルなど、部分的に読み取りまたはストリーミングできるファイルの種類の場合、単にファイルを開いただけでは、ファイル全体が確実にダウンロードされたかどうかは判断できません。
 
 ファイルがローカル ディスクに完全にダウンロードされたかどうかを確認するには、PowerShell を使用して、強制的にファイルを完全に再現する必要があります。 複数のファイル (フォルダー内にあるすべてのファイルなど) を一度に再現したい場合にも、この方法が役立つことがあります。 Azure File Sync がインストールされているサーバー ノードへの PowerShell セッションを開き、次の PowerShell コマンドを実行します。
-    
+
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
+
 省略可能なパラメーター:
-* `-Order CloudTieringPolicy` では、最後に変更またはアクセスされたファイルが最初に呼び出され、現在の階層化ポリシーによって許可されます。 
+- `-Order CloudTieringPolicy` では、最後に変更またはアクセスされたファイルが最初に呼び出され、現在の階層化ポリシーによって許可されます。 
     * ボリュームの空き領域ポリシーが構成されている場合、ボリュームの空き領域ポリシー設定に達するまで、ファイルが呼び出されます。 たとえば、ボリュームの空き領域ポリシー設定が 20% の場合、ボリュームの空き領域が 20% に達すると、呼び出しは停止されます。  
     * ボリュームの空き領域と日付のポリシーが構成されている場合、ボリュームの空き領域または日付のポリシー設定に達するまで、ファイルが呼び出されます。 たとえば、ボリュームの空き領域ポリシー設定が 20% で、日付ポリシーが 7 日の場合、ボリュームの空き領域が 20% に達するか、または 7 日以内にアクセスまたは変更されたすべてのファイルがローカルであれば、呼び出しは停止されます。
-* `-ThreadCount` では、並行して呼び戻すことができるファイルの数を指定します。
-* `-PerFileRetryCount` では、現在ブロックされているファイルの呼び戻しを試行する頻度を指定します。
-* `-PerFileRetryDelaySeconds` では、再試行から呼び戻しまでの時間を秒単位で指定します。また、常に前のパラメーターと組み合わせて使用する必要があります。
+- `-ThreadCount` では、並行して呼び戻すことができるファイルの数を指定します。
+- `-PerFileRetryCount` では、現在ブロックされているファイルの呼び戻しを試行する頻度を指定します。
+- `-PerFileRetryDelaySeconds` では、再試行から呼び戻しまでの時間を秒単位で指定します。また、常に前のパラメーターと組み合わせて使用する必要があります。
 
 例:
+
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -ThreadCount 8 -Order CloudTieringPolicy -PerFileRetryCount 3 -PerFileRetryDelaySeconds 10
-``` 
+```
 
-> [!Note]  
->- サーバーをホストするローカル ボリュームに、階層化されたデータをすべて回収できる空き領域がない場合、`Invoke-StorageSyncFileRecall` コマンドレットは失敗します。  
+> [!NOTE]  
+> - サーバーをホストするローカル ボリュームに、階層化されたデータをすべて回収できる空き領域がない場合、`Invoke-StorageSyncFileRecall` コマンドレットは失敗します。
 
-> [!Note]
+> [!NOTE]
 > 階層化されたファイルを再呼び出しするには、1 Mbps 以上のネットワーク帯域幅が必要です。 ネットワーク帯域幅が 1 Mbps 未満の場合、タイムアウト エラーでファイルの再呼び出しが失敗する可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Files に関してよく寄せられる質問 (FAQ)](../files/storage-files-faq.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json)
+- [Azure Files に関してよく寄せられる質問 (FAQ)](../files/storage-files-faq.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json)

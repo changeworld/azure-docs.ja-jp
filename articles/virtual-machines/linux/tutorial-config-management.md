@@ -1,29 +1,25 @@
 ---
 title: チュートリアル - Linux 仮想マシンの構成を Azure で管理する
 description: このチュートリアルでは、Linux 仮想マシン上の変更を特定したりパッケージの更新プログラムを管理したりする方法について説明します。
-services: virtual-machines
-documentationcenter: virtual-machines
 author: mgoedtel
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 16e8cfd9c6b20e3a8d17ba335079b1b6fe8b499f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: fae7a6065f04b34ea952dd474919d43dad46d0df
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785021"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690957"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Linux 仮想マシンを更新する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure Linux VM では、Azure [Change Tracking](../../automation/change-tracking/overview.md) を使用して変更を容易に特定したり、[Update Management](../../automation/update-management/overview.md) を使用してオペレーティング システムの更新プログラムを管理したりすることができます。
 
@@ -170,7 +166,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 使用している VM で、 **[操作]** の **[変更の追跡]** を選択します。 **[設定の編集]** を選択すると、 **[変更の追跡]** ページが表示されます。 追跡する設定の種類を選択し、 **[+ 追加]** を選択して、設定を構成します。 Linux の場合は、 **[Linux ファイル]** を選択できます。
 
-変更の追跡の詳細については、[VM での変更のトラブルシューティング](../../automation/automation-tutorial-troubleshoot-changes.md)に関するページをご覧ください
+変更の追跡の詳細については、[VM での変更のトラブルシューティング](../../automation/troubleshoot/change-tracking.md)に関するページをご覧ください
 
 ### <a name="view-inventory"></a>インベントリを表示する
 

@@ -3,12 +3,12 @@ title: システム状態とベア メタル回復保護
 description: Azure Backup Server を使用して、システム状態をバックアップし、ベア メタル回復 (BMR) 保護を実現します。
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 864a20ce806d1bf8e9e728c77a9c8f17adeed18b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021624"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656191"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Azure Backup Server を使用してシステム状態をバックアップし、ベア メタルに復元する
 
@@ -26,19 +26,19 @@ Azure Backup Server は、システム状態をバックアップし、ベア �
 |バックアップ|問題|Azure Backup Server バックアップからの復旧|システム状態のバックアップからの復旧|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**ファイル データ**<br /><br />通常のデータ バックアップ<br /><br />BMR/システム状態のバックアップ|失われたファイル データ|Y|N|N|
-|**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|失われた、または壊れているオペレーティング システム|N|Y|Y|
+|**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|失われた、または壊れているオペレーティング システム|×|Y|Y|
 |**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サーバーの損失 (データ ボリュームは正常)|N|N|Y|
 |**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|失われたサーバー (データ ボリュームが失われた状態)|Y|N|Y<br /><br />BMR (この後にバックアップ ファイル データの通常回復を実行)|
 |**SharePoint データ**<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サイト、リスト、リスト アイテム、ドキュメントの損失|Y|N|N|
-|**SharePoint データ**<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|失われた、または壊れているオペレーティング システム|N|Y|Y|
+|**SharePoint データ**<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|失われた、または壊れているオペレーティング システム|×|Y|Y|
 |**SharePoint データ**<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|障害復旧|N|N|N|
 |Windows Server 2012 R2 Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|失われた VM|Y|N|N|
-|Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|失われた、または壊れているオペレーティング システム|N|Y|Y|
-|Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|失われた Hyper-V ホスト (VM は完全な状態)|N|N|Y|
-|Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|失われた Hyper-V ホスト (VM が失われた状態)|N|N|Y<br /><br />BMR、この後に通常の Azure Backup Server の回復を実行|
-|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|失われたアプリ データ|Y|N|N|
-|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|失われた、または壊れているオペレーティング システム|N|Y|Y|
-|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|失われたサーバー (データベース/トランザクション ログは完全な状態)|N|N|Y|
+|Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|失われた、または壊れているオペレーティング システム|×|Y|Y|
+|Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|失われた Hyper-V ホスト (VM は完全な状態)|×|N|Y|
+|Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|失われた Hyper-V ホスト (VM が失われた状態)|×|N|Y<br /><br />BMR、この後に通常の Azure Backup Server の回復を実行|
+|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|失われたアプリ データ|Y|×|×|
+|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|失われた、または壊れているオペレーティング システム|×|Y|Y|
+|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|失われたサーバー (データベース/トランザクション ログは完全な状態)|×|×|Y|
 |SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|失われたサーバー (データベース/トランザクション ログが失われた状態)|N|N|Y<br /><br />BMR 回復、この後に通常の Azure Backup Server の回復を実行|
 
 ## <a name="how-system-state-backup-works"></a>システム状態のバックアップのしくみ
@@ -251,11 +251,11 @@ Windows Server バックアップを実行するには:
 
 1. バージョン識別子を取得するためにコマンド プロンプトに入力する内容:
 
-   ```wbadmin get versions -backuptarget \<servername\sharename\>```
+   `wbadmin get versions -backuptarget \<servername\sharename\>`
 
 1. バージョン識別子を使用してシステム状態の復元を開始します。 コマンド プロンプトに、次のコマンドを入力します。
 
-    ```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```
+   `wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>`
 
 1. 回復を開始することを確認します。 コマンド プロンプト ウィンドウでプロセスを表示できます。 復元ログが作成されます。
 

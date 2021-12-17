@@ -2,25 +2,24 @@
 title: テキスト分割コグニティブ スキル
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search の AI 強化パイプラインの長さに基づいて、テキストをチャンクまたはページに分割します。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 52aaeb01fef551eee350c6db662c2690ef7b3e78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: e2531bcb010b83f795cc7f77b68848c86c4c470a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84981950"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010671"
 ---
 # <a name="text-split-cognitive-skill"></a>テキスト分割コグニティブ スキル
 
 **テキスト分割** スキルは、テキストをテキストのチャンクに分割します。 テキストを特定の長さの文章またはページに分割するかどうかを指定できます。 このスキルは、他のスキル ダウンストリームでテキストの最大長の要件がある場合に、特に便利です。 
 
 > [!NOTE]
-> このスキルは Cognitive Services API にバインドされていないため、この使用に対しては課金されません。 ただし、1 日あたりの毎日のエンリッチメントの数を少数に制限する **無料** リソースのオプションをオーバーライドするには、引き続き [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。
+> このスキルは Cognitive Services にバインドされていません。 これは課金対象外で、Cognitive Services の重要な要件はありません。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
@@ -31,9 +30,9 @@ Microsoft.Skills.Text.SplitSkill
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| `textSplitMode`    | "pages" または "sentences" のいずれか | 
-| `maximumPageLength` | textSplitMode が "pages" に設定されている場合、`String.Length` で測定されるため、これは ページの最大長を指します。 最小値は 300 です。  textSplitMode が "pages" に設定されている場合、アルゴリズムは、最大でも "maximumPageLength" のサイズであるチャンクにテキストを分割しようとします。 この場合、アルゴリズムはできる限り文の境界で文を区切ろうとするため、チャンクのサイズは "maximumPageLength" よりも少し小さくなることがあります。 | 
-| `defaultLanguageCode` | (省略可能) 次の言語コードのいずれか: `da, de, en, es, fi, fr, it, ko, pt`。 既定値は英語 (en) です。 次の考慮事項があります。<ul><li>languagecode-countrycode 形式を渡す場合、形式の languagecode 部分のみが使用されます。</li><li>上記のリストに言語がない場合は、分割スキルによってテキストが文字境界で分割されます。</li><li>言語コードを指定することで、中国語、日本語、韓国語などの空白スペースのない言語で、単語が途中で分割されるのを避けることができます。</li><li>言語がわからない場合 (つまり、入力用のテキストを [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) に分割する必要がある場合)、既定の英語 (en) で十分です。 </li></ul>  |
+| `textSplitMode`    | `pages` または `sentences` のいずれか | 
+| `maximumPageLength` | `textSplitMode` が `pages` に設定されている場合にのみ適用されます。 これは、`String.Length` で計測される最大ページ長を文字数で表します。 最小値は 300、最大値は 100000、既定値は 10000 です。  アルゴリズムではできる限り文章の境界でテキストを分割しようとするため、各チャンクのサイズは `maximumPageLength` より若干小さくなる可能性があります。 | 
+| `defaultLanguageCode` | (省略可能) 次の言語コードのいずれか: `am, bs, cs, da, de, en, es, et, fr, he, hi, hr, hu, fi, id, is, it, ja, ko, lv, no, nl, pl, pt-PT, pt-BR, ru, sk, sl, sr, sv, tr, ur, zh-Hans`。 既定値は英語 (en) です。 次の考慮事項があります。<ul><li>言語コードを指定することで、中国語、日本語、韓国語などの空白スペースのない言語で、単語が途中で分割されるのを避けることができます。</li><li>言語がわからない場合 (つまり、入力用のテキストを [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) に分割する必要がある場合)、既定の英語 (en) で十分です。 </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>スキルの入力
@@ -41,7 +40,7 @@ Microsoft.Skills.Text.SplitSkill
 | パラメーター名       | 説明      |
 |----------------------|------------------|
 | `text`    | 部分文字列に分割するテキスト。 |
-| `languageCode`    | (省略可能) ドキュメントの言語コード。 言語がわからない場合 (つまり、入力用のテキストを [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) に分割する必要がある場合)、この入力を削除すると安全です。  |
+| `languageCode`    | (省略可能) ドキュメントの言語コード。 言語がわからない場合 (つまり、入力用のテキストを [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) に分割する必要がある場合)、この入力を削除すると安全です。 上記の `defaultLanguageCode` パラメーターのサポート対象の一覧にその言語がない場合は、警告が出力され、テキストは分割されません。  |
 
 ## <a name="skill-outputs"></a>スキルの出力 
 
@@ -85,7 +84,7 @@ Microsoft.Skills.Text.SplitSkill
         {
             "recordId": "1",
             "data": {
-                "text": "This is a the loan application for Joe Romero, a Microsoft employee who was born in Chile and who then moved to Australia…",
+                "text": "This is the loan application for Joe Romero, a Microsoft employee who was born in Chile and who then moved to Australia...",
                 "languageCode": "en"
             }
         },
@@ -128,7 +127,7 @@ Microsoft.Skills.Text.SplitSkill
 ```
 
 ## <a name="error-cases"></a>エラーになる場合
-言語がサポートされていない場合、警告が生成され、テキストは文字境界で分割されます。
+言語がサポートされていない場合は、警告が生成されます。
 
 ## <a name="see-also"></a>関連項目
 

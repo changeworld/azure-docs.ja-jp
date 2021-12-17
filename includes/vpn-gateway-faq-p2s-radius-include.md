@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 05/28/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b802cab7d52fd886770c326e97d0378a0da64762
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6bead4346bdb23dd725fa474ef1bd8a982d2b61a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "75751511"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122336173"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -24,6 +24,9 @@ RADIUS 認証は VpnGw1、VpnGw2、VpnGw3 の 3 つの SKU でサポートされ
 ### <a name="is-radius-authentication-supported-for-the-classic-deployment-model"></a>クラシック デプロイ モデルでは RADIUS 認証がサポートされていますか。
  
 いいえ。 クラシック デプロイ モデルでは、RADIUS 認証がサポートされていません。
+
+### <a name="what-is-the-timeout-period-for-radius-requests-sent-to-the-radius-server"></a>RADIUS サーバーに送信される RADIUS 要求のタイムアウト期間はどのくらいですか。
+RADIUS 要求は 30 秒後にタイムアウトになるように設定されています。 ユーザー定義のタイムアウト値は現在、サポートされていません。
  
 ### <a name="are-3rd-party-radius-servers-supported"></a>サードパーティ製の RADIUS サーバーはサポートされていますか。
 

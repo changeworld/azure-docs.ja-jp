@@ -3,14 +3,14 @@ title: Azure CLI のサンプル スクリプト - カスタム トピックの�
 description: この記事では、カスタム トピックの Event Grid イベントをサブスクライブする方法を示したサンプル Azure CLI スクリプトを紹介しています。
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 07/08/2020
+ms.date: 09/15/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f6004961a43fe13db617f98ae2c65fa5829924e5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7a36f39bb4e14e58ab2c21dc96079a899686d5a5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766553"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595106"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>Azure CLI を使用したカスタム トピックのイベントのサブスクライブ
 
@@ -38,7 +38,7 @@ ms.locfileid: "107766553"
 | コマンド | Notes |
 |---|---|
 | [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) | Event Grid のサブスクリプションを作成する。 |
-| [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - 拡張機能のバージョン | Event Grid のサブスクリプションを作成する。 |
+| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) - 拡張機能のバージョン | Event Grid のサブスクリプションを作成する。 |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,16 +8,16 @@ ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: sstein
+author: emlisa
+ms.author: emlisa
+ms.reviewer: mathoma
 ms.date: 07/28/2020
-ms.openlocfilehash: be632ba06edc858e7eadcd6e57a4f7769f69f2cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dcaab6b2e69d6ba13a683987ec2e68444858ad0a
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91321681"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163220"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL Database を使用して世界規模の可用性を備えたサービスを設計する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

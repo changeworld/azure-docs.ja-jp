@@ -4,26 +4,26 @@ description: Azure Active Directory でのドメイン名の管理の概念と�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 09/01/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a201452a9c708d898ee1762385955b63684876c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26264b97afa8cc2b8d8090099e7391ece4f66c47
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577973"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129986893"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 
-ドメイン名は、多くの Azure Active Directory (Azure AD) リソースの識別子の重要な部分です。ユーザーのユーザー名または電子メール アドレスの一部であり、グループのアドレスの一部であり、アプリケーションのアプリ ID URI の一部になることもあります。 Azure AD のリソースには、リソースが含まれる組織によって所有されているドメイン名を含めることができます。 グローバル管理者だけが、Azure AD でドメインを管理できます。
+ドメイン名は、多くの Azure Active Directory (Azure AD) リソースの識別子の重要な部分です。ユーザーのユーザー名または電子メール アドレスの一部であり、グループのアドレスの一部であり、アプリケーションのアプリ ID URI の一部になることもあります。 Azure AD のリソースには、そのリソースが含まれる Azure AD 組織 (テナントとも呼ばれます) によって所有されているドメイン名を含めることができます。 グローバル管理者だけが、Azure AD でドメインを管理できます。
 
 ## <a name="set-the-primary-domain-name-for-your-azure-ad-organization"></a>Azure AD 組織のプライマリ ドメイン名の設定
 
@@ -51,15 +51,13 @@ ms.locfileid: "104577973"
 
 contoso.com ドメインを 1 つの Azure AD 組織に既に追加している場合は、別の Azure AD 組織でサブドメイン europe.contoso.com を検証することもできます。 サブドメインを追加すると、DNS ホスティング プロバイダーに TXT レコードを追加するように求められます。
 
-
-
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>カスタム ドメイン名の DNS レジストラーを変更する場合にすべきこと
 
 DNS レジストラーを変更する場合、Azure AD で追加の構成タスクはありません。 中断することなく、Azure AD でドメイン名の使用を続けることができます。 Microsoft 365 や Intune など、Azure AD のカスタム ドメイン名を使用するサービスで、自社のカスタム ドメイン名を使用する場合は、各サービスのマニュアルを参照してください。
 
 ## <a name="delete-a-custom-domain-name"></a>カスタム ドメイン名を削除する
 
-カスタム ドメイン名が使用されなくなった場合やそのドメイン名を別の Azure AD で使用する必要が生じた場合、Azure AD からドメイン名を削除することができます。
+カスタム ドメイン名が使用されなくなった場合や、そのドメイン名を別の Azure AD 組織で使用する必要が生じた場合、Azure AD からカスタム ドメイン名を削除することができます。
 
 カスタム ドメイン名を削除する場合は、そのドメイン名を使用しているリソースが組織内にないことを事前に確認する必要があります。 次の状況に当てはまる場合、組織からドメイン名を削除することはできません。
 
@@ -67,13 +65,16 @@ DNS レジストラーを変更する場合、Azure AD で追加の構成タス�
 * グループに付与された電子メール アドレスまたはプロキシ アドレスにドメイン名が含まれている。
 * Azure AD 内のアプリケーションに付与されたアプリ ID URI にドメイン名が含まれている。
 
-Azure AD 組織内にこのようなリソースがある場合は、カスタム ドメイン名を削除する前に、そのリソースを変更するか削除する必要があります。
+Azure AD 組織内にこのようなリソースがある場合は、カスタム ドメイン名を削除する前に、そのリソースを変更するか削除する必要があります。 
+
+> [!Note]
+> カスタム ドメインを削除するには、既定のドメイン (onmicrosoft.com) または別のカスタム ドメイン (mydomainname.com) のいずれかに基づくグローバル管理者アカウントを使用します。
 
 ### <a name="forcedelete-option"></a>ForceDelete オプション
 
 [Azure AD 管理センター](https://aad.portal.azure.com)で、または [Microsoft Graph API](/graph/api/domain-forcedelete?view=graph-rest-beta&preserve-view=true) を使用しで、ドメイン名を **ForceDelete** (強制削除) できます。 これらのオプションでは、非同期操作が使用され、"user@contoso.com" のようなカスタム ドメイン名からのすべての参照が、"user@contoso.onmicrosoft.com" などの既定の初期ドメイン名に更新されます。
 
-Azure portal で **ForceDelete** を呼び出すには、ドメイン名に対する参照が 1000 個未満であることを確認し、Exchange がプロビジョニング サービスであるすべての参照を、[Exchange 管理センター](https://outlook.office365.com/ecp/)で更新または削除する必要があります。 これには、Exchange のメールが有効なセキュリティ グループと配布リストが含まれます。詳しくは、「[Removing mail-enabled security groups](/Exchange/recipients/mail-enabled-security-groups#Remove%20mail-enabled%20security%20groups&preserve-view=true)」(メールが有効なセキュリティ グループの削除) に関する記事をご覧ください。 また、次のいずれかの場合、**ForceDelete** 操作は成功しません。
+Azure portal で **ForceDelete** を呼び出すには、ドメイン名に対する参照が 1000 個未満であることを確認し、Exchange がプロビジョニング サービスであるすべての参照を、[Exchange 管理センター](https://outlook.office365.com/ecp/)で更新または削除する必要があります。 これには、Exchange のメールが有効なセキュリティ グループと配布リストが含まれます。 詳細については、[メールが有効なセキュリティ グループの削除](/Exchange/recipients/mail-enabled-security-groups#Remove%20mail-enabled%20security%20groups&preserve-view=true)に関するページを参照してください。 また、次のいずれかの場合、**ForceDelete** 操作は成功しません。
 
 * Microsoft 365 ドメイン サブスクリプション サービスを使用してドメインを購入した
 * 別の顧客組織の代わりに管理を行っているパートナーである

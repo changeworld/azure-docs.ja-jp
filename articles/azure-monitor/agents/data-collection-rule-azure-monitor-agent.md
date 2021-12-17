@@ -4,22 +4,22 @@ description: Azure Monitor エージェントを使用して、仮想マシン�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/16/2021
-ms.openlocfilehash: 8943986bf8e8c082889d3a0b18618ac54c75e6d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/16/2021
+ms.openlocfilehash: 26aa625d7ada93c4524276ee195fd279d155e8c8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022978"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710327"
 ---
-# <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Monitor エージェント用のデータ収集の構成 (プレビュー)
+# <a name="configure-data-collection-for-the-azure-monitor-agent"></a>Azure Monitor エージェント用のデータ収集の構成
 
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータの送信先を指定します。 この記事では、Azure Monitor エージェントを使用して、仮想マシンからデータを収集するデータ収集ルールを作成する方法について説明します。
 
-データ収集ルールの詳細については、「[Azure Monitor のデータ収集ルール (プレビュー)](data-collection-rule-overview.md)」を参照してください。
+データ収集ルールの詳細については、「[Azure Monitor のデータ収集ルール](data-collection-rule-overview.md)」を参照してください。
 
 > [!NOTE]
-> この記事では、現在プレビューの段階にある Azure Monitor エージェントで仮想マシンのデータを構成する方法について説明します。 一般公開されているエージェントの説明と、それらを使用してデータを収集する方法については、「[Azure Monitor エージェントの概要](agents-overview.md)」を参照してください。
+> この記事では、Azure Monitor エージェントのみで仮想マシンのデータを構成する方法について説明します。
 
 ## <a name="data-collection-rule-associations"></a>データ収集ルールの関連付け
 
@@ -36,28 +36,34 @@ DCR を仮想マシンに適用するには、仮想マシンの関連付けを�
 Azure portal を使用してデータ収集ルールを作成し、サブスクリプション内の仮想マシンをそのルールに関連付けることができます。 Azure Monitor エージェントは自動的にインストールされ、まだそれがインストールされていないすべての仮想マシンに対して、マネージド ID が作成されます。
 
 > [!IMPORTANT]
-> 現在、既知の問題があります。既にユーザーが割り当てたマネージド ID が設定されている仮想マシンで、データ収集ルールによってマネージド ID が作成された場合、ユーザーが割り当てた ID が無効になります。
+> ポータルを使用してデータ収集ルールを作成すると、既存のユーザー割り当て ID (存在する場合) に加えて、ターゲット リソースのシステム割り当てマネージド ID も有効になります。 既存のアプリケーションでは、ユーザー割り当て ID を要求で指定しない限り、マシンでは既定でシステム割り当て ID が代わりに使用されます。 [詳細情報](../../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)
 
-Azure portal の **[Azure Monitor]** メニューで、 **[設定]** セクションから **[データ収集ルール]** を選択します。 **[追加]** をクリックして、新しいデータ収集ルールと割り当てを追加します。
+                    
 
-[![データ収集ルール](media/data-collection-rule-azure-monitor-agent/data-collection-rules.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rules.png#lightbox)
+> [!NOTE]
+> Log Analytics にデータを送信する場合は、Log Analytics ワークスペースが存在するのと **同じリージョン** にデータ収集ルールを作成する必要があります。 ルールは、サポートされている他のリージョンのマシンに関連付けることができます。
 
-**[追加]** をクリックして、新しいルールと一連の関連付けを作成します。 **[規則名]** を指定し、 **[サブスクリプション]** および **[リソース グループ]** を指定します。 これにより、DCR が作成される場所を指定します。 仮想マシンとそれらの関連付けは、テナント内の任意のサブスクリプションまたはリソース グループに配置できます。
+Azure portal の **[Azure Monitor]** メニューで、 **[設定]** セクションから **[データ収集ルール]** を選択します。 **[作成]** をクリックして、新しいデータ収集ルールと割り当てを作成します。
 
-[![データ収集ルールの基本](media/data-collection-rule-azure-monitor-agent/data-collection-rule-basics.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-basics.png#lightbox)
+[![データ収集ルール](media/data-collection-rule-azure-monitor-agent/data-collection-rules-updated.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rules-updated.png#lightbox)
 
-**[仮想マシン]** タブで、データ収集ルールを適用する必要がある仮想マシンを追加します。 環境内の Azure 仮想マシンと Azure Arc 対応サーバーの両方が一覧表示されます。 Azure Monitor エージェントが、まだインストールされていない仮想マシンにインストールされます。
+**[追加]** をクリックして、新しいルールと一連の関連付けを作成します。 **[ルール名]** を指定し、 **[サブスクリプション]** 、 **[リソース グループ]** 、および **[リージョン]** を指定します。 これにより、DCR が作成される場所を指定します。 仮想マシンとそれらの関連付けは、テナント内の任意のサブスクリプションまたはリソース グループに配置できます。
+さらに、このルールを適用できるリソースの種類を指定する適切な **[プラットフォームの種類]** を選択します。 [カスタム] を選択すると、Windows と Linux の両方の種類が許可されます。 これにより、選択したプラットフォームの種類にスコープが設定されたオプションを使用して、事前にキュレーションされた作成エクスペリエンスが可能になります。
 
-[![データ収集ルール仮想マシン](media/data-collection-rule-azure-monitor-agent/data-collection-rule-virtual-machines.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-virtual-machines.png#lightbox)
+[![データ収集ルールの基本](media/data-collection-rule-azure-monitor-agent/data-collection-rule-basics-updated.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-basics-updated.png#lightbox)
+
+**[リソース]** タブで、データ収集ルールを適用する必要があるリソース (仮想マシン、仮想マシン スケール セット、Arc for servers) を追加します。 Azure Monitor エージェントがまだインストールされていないリソースにインストールされ、Azure マネージド ID も有効になります。
+
+[![データ収集ルール仮想マシン](media/data-collection-rule-azure-monitor-agent/data-collection-rule-virtual-machines-updated.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-virtual-machines-updated.png#lightbox)
 
 **[収集と配信]** タブで、 **[データ ソースの追加]** をクリックして、データのソースおよびターゲット セットを追加します。 **[データソースの種類]** を選択すると、選択する対応する詳細が表示されます。 パフォーマンス カウンターでは、定義済みのオブジェクトのセットとそのサンプリング レートから選択できます。 イベントについては、一連のログまたは機能と重大度レベルから選択できます。 
 
-[![データ ソースの基本](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
+[![データ ソースの基本](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-basic-updated.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-basic-updated.png#lightbox)
 
 
 [現在サポートされているデータ ソース](azure-monitor-agent-overview.md#data-sources-and-destinations)のその他のログとパフォーマンス カウンターを指定する、または XPath クエリを使用してイベントをフィルター処理するには、 **[カスタム]** を選択します。 それにより、収集する特定の値の [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) を指定できます。 例については、[サンプル DCR](data-collection-rule-overview.md#sample-data-collection-rule) を参照してください。
 
-[![データ ソース カスタム](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
+[![データ ソース カスタム](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-custom-updated.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-custom-updated.png#lightbox)
 
 **[送信先]** タブで、データ ソースの 1 つ以上の送信先を追加します。 Windows イベントおよび Syslog データ ソースは、Azure Monitor ログにのみ送信できます。 パフォーマンス カウンターは Azure Monitor メトリックと Azure Monitor ログの両方に送信できます。
 
@@ -83,6 +89,7 @@ Windows イベント ログでサポートされている XPath の制限事項�
 > Get-WinEvent -LogName 'Application' -FilterXPath $XPath
 > ```
 >
+> - **上のコマンドレットで、"-LogName" パラメーターの値は XPath クエリの "!" までの最初の部分ですが、$XPath パラメーターに渡されるのは XPath クエリの残りの部分だけです。**
 > - イベントが返されたら、クエリは有効です。
 > - *[No events were found that match the specified selection criteria.]\(指定した選択条件に一致するイベントは見つかりませんでした。\)* というメッセージが表示された場合は、クエリはおそらく有効ですが、一致するイベントがローカル コンピューターにありません。
 > - *[The specified query is invalid]\(指定したクエリは無効です\)* というメッセージが表示された場合は、クエリ構文が無効です。 
@@ -101,6 +108,9 @@ Windows イベント ログでサポートされている XPath の制限事項�
 
 以下の手順に従って、REST API を使用したデータ収集ルールと関連付けを作成します。
 
+> [!NOTE]
+> Log Analytics にデータを送信する場合は、Log Analytics ワークスペースが存在するのと **同じリージョン** にデータ収集ルールを作成する必要があります。 ルールは、サポートされている他のリージョンのマシンに関連付けることができます。
+
 1. [サンプル DCR](data-collection-rule-overview.md#sample-data-collection-rule) に示されている JSON 形式を使用して、DCR ファイルを手動で作成します。
 
 2. [REST API](/rest/api/monitor/datacollectionrules/create#examples) を使用してルールを作成します。
@@ -108,10 +118,45 @@ Windows イベント ログでサポートされている XPath の制限事項�
 3. [REST API](/rest/api/monitor/datacollectionruleassociations/create#examples) を使用して、データ収集ルールと各仮想マシンの関連付けを作成します。
 
 
-## <a name="create-association-using-resource-manager-template"></a>Resource Manager テンプレートを使用して関連付けを作成する
+## <a name="create-rule-and-association-using-resource-manager-template"></a>Resource Manager テンプレートを使用してルールと関連付けを作成する
 
-Resource Manager テンプレートを使用してデータ収集ルールを作成することはできませんが、Resource Manager テンプレートを使用して Azure 仮想マシンまたは Azure Arc 対応サーバー間の関連付けを作成することはできます。 サンプル テンプレートについては、「[Azure Monitor のデータ収集ルールの Resource Manager テンプレート サンプル](./resource-manager-data-collection-rules.md)」を参照してください。
+> [!NOTE]
+> Log Analytics にデータを送信する場合は、Log Analytics ワークスペースが存在するのと **同じリージョン** にデータ収集ルールを作成する必要があります。 ルールは、サポートされている他のリージョンのマシンに関連付けることができます。
 
+Resource Manager テンプレートを使用して Azure 仮想マシンまたは Azure Arc 対応サーバーのルールと関連付けを作成することができます。 サンプル テンプレートについては、「[Azure Monitor のデータ収集ルールの Resource Manager テンプレート サンプル](./resource-manager-data-collection-rules.md)」を参照してください。
+
+
+## <a name="manage-rules-and-association-using-powershell"></a>PowerShell を使用してルールと関連付けを管理する
+
+> [!NOTE]
+> Log Analytics にデータを送信する場合は、Log Analytics ワークスペースが存在するのと **同じリージョン** にデータ収集ルールを作成する必要があります。 ルールは、サポートされている他のリージョンのマシンに関連付けることができます。
+
+**データ収集ルール**
+
+| アクション | コマンド |
+|:---|:---|
+| ルールを取得する | [Get-AzDataCollectionRule](/powershell/module/az.monitor/get-azdatacollectionrule?view=azps-5.4.0&preserve-view=true) |
+| 規則を作成する | [New-AzDataCollectionRule](/powershell/module/az.monitor/new-azdatacollectionrule?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+| ルールを更新する | [Set-AzDataCollectionRule](/powershell/module/az.monitor/set-azdatacollectionrule?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+| 規則を削除する | [Remove-AzDataCollectionRule](/powershell/module/az.monitor/remove-azdatacollectionrule?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+| ルールの "タグ" を更新する | [Update-AzDataCollectionRule](/powershell/module/az.monitor/update-azdatacollectionrule?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+
+**データ収集ルールの関連付け**
+
+| アクション | コマンド |
+|:---|:---|
+| 関連付けを取得する | [Get-AzDataCollectionRuleAssociation](/powershell/module/az.monitor/get-azdatacollectionruleassociation?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+| 関連付けを作成する | [New-AzDataCollectionRuleAssociation](/powershell/module/az.monitor/new-azdatacollectionruleassociation?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+| 関連付けを削除する | [Remove-AzDataCollectionRuleAssociation](/powershell/module/az.monitor/remove-azdatacollectionruleassociation?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+
+
+
+## <a name="manage-rules-and-association-using-azure-cli"></a>Azure CLI を使用してルールと関連付けを管理する
+
+> [!NOTE]
+> Log Analytics にデータを送信する場合は、Log Analytics ワークスペースが存在するのと **同じリージョン** にデータ収集ルールを作成する必要があります。 ルールは、サポートされている他のリージョンのマシンに関連付けることができます。
+
+これは、Azure CLI **monitor-control-service** 拡張機能の一部として有効になります。 [すべてのコマンドを表示する](/cli/azure/monitor/data-collection/rule?view=azure-cli-latest&preserve-view=true)
 
 
 ## <a name="next-steps"></a>次の手順

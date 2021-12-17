@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: ikivanc
-ms.openlocfilehash: c4e8a11e0c46cb9a138a1a66060d9fdcc72c192e
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 21a0d2157cdb8b6b2c31520596327b3b433ef93a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111120"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674549"
 ---
 # <a name="run-automated-tests-by-using-azurite"></a>Azurite を使用して自動テストを実行する
 
@@ -33,10 +33,10 @@ Azurite ストレージ エミュレーターを使用して Azure Blob Storage 
    ```bash
    # Install Azurite
    npm install -g azurite
-   
+
    # Create an Azurite directory
-   mkdir c:/azurite
-   
+   mkdir c:\azurite
+
    # Launch Azurite locally
    azurite --silent --location c:\azurite --debug c:\azurite\debug.log
    ```
@@ -61,7 +61,7 @@ Azurite ストレージ エミュレーターを使用して Azure Blob Storage 
    python -m venv .venv
    ```
 
-1. コンテナーを作成し、環境変数を初期化します。 テストを生成するには、[PyTest](https://docs.pytest.org/) [conftest.py](https://docs.pytest.org/en/2.1.0/plugins.html) ファイルを使用します。 以下に、conftest.py ファイルの例を示します。
+1. コンテナーを作成し、環境変数を初期化します。 テストを生成するには、[PyTest](https://docs.pytest.org/) [conftest.py](https://docs.pytest.org/en/latest/how-to/writing_plugins.html#conftest-py-plugins) ファイルを使用します。 以下に、conftest.py ファイルの例を示します。
 
    ```python
    from azure.storage.blob import BlobServiceClient
@@ -101,7 +101,7 @@ Azurite ストレージ エミュレーターを使用して Azure Blob Storage 
 ## <a name="run-tests-on-azure-pipelines"></a>Azure Pipelines でテストを実行する
 
 テストをローカルで実行した後、[Azure Pipelines](/azure/devops/pipelines) でのテストに合格することを確認します。 Azure でホストされたエージェントとして Docker Azurite イメージを使用するか、npm を使用して Azurite をインストールします。 次の Azure Pipelines の例では、npm を使用して Azurite をインストールします。
-  
+
 ```yaml
 trigger:
 - master
@@ -115,7 +115,7 @@ steps:
 - bash: |
     pip install -r requirements_tests.txt
   displayName: 'Setup requirements for tests'
-  
+
 - bash: |
     sudo npm install -g azurite
     sudo mkdir azurite

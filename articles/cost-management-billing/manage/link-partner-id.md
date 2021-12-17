@@ -4,22 +4,23 @@ description: Azure の顧客のリソースを管理する際に使用するユ�
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 10/05/2020
+ms.date: 11/04/2021
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: a214e91307308e191ce92b6461c1454d2cc7dd2b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b5951b46448d7bfa1ac5010bd17a0a5e7d98b89f
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370480"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577804"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
 Microsoft パートナーは、お客様が Microsoft 製品を使用してビジネスや任務の目的を達成できるよう支援するサービスを提供しています。 パートナー ユーザーは、Azure サービスの管理、構成、サポートをお客様に代わって行うときに、お客様の環境にアクセスする必要があります。 パートナーは、パートナー管理リンク (PAL) を使用して、パートナー ネットワーク ID をサービス提供に使用される資格情報に関連付けることができます。
 
-PAL を使用することで、Microsoft は、Azure の利用者を成功に導いているパートナーを特定、評価することができます。 収益 (Azure 使用による収益) や効果に貢献している組織を、アカウントのアクセス許可 (Azure ロール) とスコープ (サブスクリプション、リソース グループ、リソース) に基づいて把握することができます。
+PAL を使用することで、Microsoft は、Azure の利用者を成功に導いているパートナーを特定、評価することができます。 収益 (Azure 使用による収益) や効果に貢献している組織を、アカウントのアクセス許可 (Azure ロール) とスコープ (サブスクリプション、リソース グループ、リソース) に基づいて把握することができます。 グループが Azure RBAC にアクセスできる場合は、グループ内のすべてのユーザーに対して PAL が認識されます。
 
 ## <a name="get-access-from-your-customer"></a>顧客からアクセス権を取得する
 
@@ -31,7 +32,7 @@ PAL を使用することで、Microsoft は、Azure の利用者を成功に導
 
 - **サービス プリンシパル**: 貴社の顧客は、貴社の組織から顧客のディレクトリ内にアプリまたはスクリプトを追加し、Azure ロールを割り当てることができます。 アプリまたはスクリプトの ID は、サービス プリンシパルと呼ばれます。
 
-- **Azure Lighthouse**: 貴社の顧客は、ユーザーがテナント内から作業できるように、サブスクリプション (またはリソース グループ) を委任することができます。 詳細については、「[Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)」を参照してください。
+- **Azure Lighthouse**: 貴社の顧客は、ユーザーがテナント内から作業できるように、サブスクリプション (またはリソース グループ) を委任することができます。 詳細については、[Azure Lighthouse](../../lighthouse/overview.md) に関するページを参照してください。
 
 ## <a name="link-to-a-partner-id"></a>パートナー ID へリンク
 
@@ -65,12 +66,12 @@ PAL を使用することで、Microsoft は、Azure の利用者を成功に導
 
 
     ```azurepowershell-interactive
-    C:\> new-AzManagementPartner -PartnerId 12345
+    C:\> New-AzManagementPartner -PartnerId 12345
     ```
 
 #### <a name="get-the-linked-partner-id"></a>リンク済みのパートナー ID を取得する
 ```azurepowershell-interactive
-C:\> get-AzManagementPartner
+C:\> Get-AzManagementPartner
 ```
 
 #### <a name="update-the-linked-partner-id"></a>リンク済みのパートナー ID を更新する
@@ -79,7 +80,7 @@ C:\> Update-AzManagementPartner -PartnerId 12345
 ```
 #### <a name="delete-the-linked-partner-id"></a>リンク済みのパートナー ID を削除する
 ```azurepowershell-interactive
-C:\> remove-AzManagementPartner -PartnerId 12345
+C:\> Remove-AzManagementPartner -PartnerId 12345
 ```
 
 ### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>Azure CLI を使用して新しいパートナー ID にリンクする

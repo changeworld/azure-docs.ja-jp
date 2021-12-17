@@ -4,18 +4,17 @@ description: Azure での Web Apps、Virtual Machine Scale Sets、および Clou
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 9aaf9525f2fedee67a86011e938b8e995ccfe9fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42cef2578ed95e7d7935079569e34b221bdd6830
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100603495"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114454167"
 ---
 # <a name="best-practices-for-autoscale"></a>自動スケールのベスト プラクティス
 Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](../../api-management/api-management-key-concepts.md)にのみ適用されます。
 
 ## <a name="autoscale-concepts"></a>自動スケールの概念
-
 * 1 つのリソースで使用できる自動スケール設定は *1 つ* に限られます。
 * 自動スケール設定では、1 つ以上のプロファイルを使用できます。また、プロファイルごとに 1 つ以上の自動スケール ルールを設定できます。
 * 自動スケール設定では、インスタンスが水平方向にスケールされます。つまり、インスタンス数を増やしてスケール "*アウト*" し、インスタンス数を減らしてスケール "*イン*" します。
@@ -26,15 +25,12 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 * 同様に、正常なスケール アクションすべてが、アクティビティ ログに記録されます。 その後、自動スケーリング操作が正常に実行されたときに必ず、電子メール、SMS、または webhook で通知されるように、アクティビティ ログ アラートを構成できます。 また、正常なスケール操作が行われたときに通知されるように、自動スケール設定の通知タブで、電子メールまたは webhook の通知を構成することもできます。
 
 ## <a name="autoscale-best-practices"></a>自動スケールのベスト プラクティス
-
 自動スケールを使用するときは、次のベスト プラクティスを使用します。
 
 ### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>最大値と最小値が異なっており、これらの値に十分な差があることを確認する
-
 最小値が 2 で最大値も 2 の設定があり、現在のインスタンス数が 2 の場合、スケール操作が実行されない可能性があります。 インスタンスの最大数と最小数に十分な差を付けておきます。 自動スケールでは、常にこれらの制限の範囲でスケールします。
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>手動スケールは、自動スケールの最小値と最大値によってリセットされる
-
 インスタンス数を最大値を上回る値または下回る値に手動で更新した場合、自動スケール エンジンにより、自動的に最小値 (下回る場合) または最大値 (上回る場合) にスケールされます。 たとえば、3 ～ 6 の範囲を設定します。 実行中のインスタンスが 1 つの場合は、自動スケーリング エンジンにより、次回の実行時にインスタンスが 3 つにスケーリングされます。 同様に、スケーリングを 8 インスタンスに手動で設定すると、自動スケーリングが次回実行されたときに 6 インスタンスに戻ります。  自動スケーリング ルールもリセットしない限り、手動スケールの効果は一時的です。
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>増減を実行するスケールアウトとスケールインのルールの組み合わせを常に使用する
@@ -66,7 +62,7 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 * CPU 使用率が 80 以上のときにインスタンスを 1 つ増やす
 * CPU 使用率が 60 以下のときにインスタンスを 1 つ減らす
 
-この場合、次のようになります。  
+この場合、次のようになります。
 
 1. 最初に 2 つのインスタンスがあるとします。
 2. 全インスタンスの平均 CPU 使用率が 80 に達すると、3 つ目のインスタンスが追加され、スケールアウトされます。
@@ -78,7 +74,7 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 > インスタンスのターゲット数にスケーリングした結果として、フラッピングが発生する可能性があることが自動スケール エンジンによって検出されると、現在の数とターゲットの数との間のインスタンス数の差に対するスケーリングも試行されます。 この範囲内でフラッピングが発生しなかった場合、新しいターゲットで自動スケーリングによるスケール操作が続行されます。
 
 ### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>特殊なメトリックのスケーリングしきい値に関する考慮事項
- Storage や Service Bus のキューの長さメトリックなどの特殊なメトリックでは、しきい値は現在のインスタンス数あたりの使用可能な平均メッセージ数です。 このメトリックのしきい値は慎重に選択します。
+Storage や Service Bus のキューの長さメトリックなどの特殊なメトリックでは、しきい値は現在のインスタンス数あたりの使用可能な平均メッセージ数です。 このメトリックのしきい値は慎重に選択します。
 
 動作を理解しやすいように、例を挙げて説明します。
 
@@ -115,7 +111,6 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 ![自動スケール設定](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>プロファイルに複数のルールが構成されている場合のスケーリングに関する考慮事項
-
 プロファイルに複数のルールを設定することが必要な場合があります。 複数のルールが設定されている場合、自動スケール エンジンで次の自動スケール ルールが使用されます。
 
 "*スケールアウト*" の場合、いずれかのルールが満たされていれば、自動スケールが実行されます。
@@ -149,11 +144,10 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 * 自動スケーリングによってフラッピングが検出され、スケーリングの試行が中止されます。 この状況では、`Flapping` のログの種類が表示されます。 これが表示された場合は、しきい値が狭すぎるかどうかを検討してください。
 * 自動スケーリングによってフラッピングが検出されますが、スケーリングは正常に実行できます。 この状況では、`FlappingOccurred` のログの種類が表示されます。 これが表示された場合は、自動スケーリング エンジンによって (たとえば、4 インスタンスから 2 への) スケーリングが試行されたものの、これによりフラッピングが発生する可能性があると判断されました。 代わりに、自動スケーリング エンジンによって異なる数のインスタンスにスケーリングされると (たとえば、2 つではなく 3 つのインスタンスを使用)、フラッピングが発生しなくなるため、このインスタンス数にスケーリングされました。
 
-また、アクティビティ ログ アラートを使用して、自動スケール エンジンの正常性を監視することもできます。 ここに、[アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)場合、または[アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)場合の例を示します。
+また、アクティビティ ログ アラートを使用して、自動スケール エンジンの正常性を監視することもできます。 ここに、[アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)場合、または[アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-failed-alert)場合の例を示します。
 
 アクティビティ ログ アラートを使用する以外に、正常なスケール操作が行われたときに通知されるように、自動スケール設定の通知タブで、電子メールまたは webhook の通知を構成することもできます。
 
 ## <a name="next-steps"></a>次の手順
-- [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
-
+- [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)
+- [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-failed-alert)

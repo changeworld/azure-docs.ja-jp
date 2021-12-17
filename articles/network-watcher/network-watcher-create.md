@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c308824afdcae5f5c04a316c199bad71ad84a429
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8991881751c636dc6cc7ce10af7ac4b90f487f62
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94962010"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992308"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure Network Watcher のインスタンスの作成
 
@@ -103,7 +104,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="create-a-network-watcher-using-azure-quickstart-template"></a>Azure クイックスタート テンプレートを使用して Network Watcher を作成する
 
-Network Watcher のインスタンスを作成するには、こちらの[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-networkwatcher-create/)を参照してください。
+Network Watcher のインスタンスを作成するには、こちらの[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/networkwatcher-create/)を参照してください。
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>ポータル上で Network Watcher を削除する
 
@@ -121,8 +122,8 @@ Network Watcher のインスタンスを削除するには、次の例を実行�
 
 ```powershell
 New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
-New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG -Location westcentralus
-Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
+New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroupName NetworkWatcherRG -Location westcentralus
+Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroupName NetworkWatcherRG
 ```
 
 ## <a name="next-steps"></a>次のステップ

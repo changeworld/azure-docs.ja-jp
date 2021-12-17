@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: b33edb99109b7516e1792497a936031cf954bc15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dffe6cd263b52f7d8790aa7071f05a5b50a41668
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96451602"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540386"
 ---
 # <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Power BI Professional でサーバーレス SQL プールに接続する
 
@@ -22,7 +22,7 @@ ms.locfileid: "96451602"
 >
 > - [Azure Data Studio](get-started-azure-data-studio.md)
 > - [Power BI](get-started-power-bi-professional.md)
-> - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+> - [Visual Studio](../sql/get-started-visual-studio.md)
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 

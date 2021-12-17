@@ -3,16 +3,16 @@ title: HTTPS を使用して呼び出しを受信して応答する
 description: Azure Logic Apps を使用して外部サービスからの受信 HTTPS 要求を処理する
 services: logic-apps
 ms.suite: integration
-ms.reviewers: jonfan, logicappspm
+ms.reviewers: estfan, azla
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 08/04/2021
 tags: connectors
-ms.openlocfilehash: 83ffccb7bae4fabc10796c36e782e72c661bd346
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 295cfe41e66791233ce7057a55717714902db9a7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99063014"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806521"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps で受信 HTTPS 要求を受信して応答する
 
@@ -29,6 +29,9 @@ ms.locfileid: "99063014"
 この記事では、ロジック アプリが受信呼び出しを受信してそれに応答できるように Request トリガーと Response アクションを使用する方法について説明します。
 
 [トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (以前の Secure Sockets Layer (SSL))、[Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml)、Azure API Management によるロジック アプリの公開、または受信呼び出しを発信する IP アドレスの制限などの、ロジック アプリへの受信呼び出しのセキュリティ、認可、および暗号化の詳細については、[アクセスとデータのセキュリティ保護に関するページの「要求ベースのトリガーへの受信呼び出しへのアクセス」](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)を参照してください。
+
+> [!NOTE]
+> シングルテナント Azure Logic Apps の **ロジック アプリ (Standard)** リソースの種類の場合、要求トリガーや HTTP Webhook トリガーなどの要求ベースのトリガーへの受信呼び出しでは、Azure AD OAuth は現在使用できません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -152,6 +155,23 @@ ms.locfileid: "99063014"
       ```
 
 1. 指定したスキーマに一致する要求本文が受信呼び出しに含まれることを確認するには、次の手順に従います。
+
+   1. スキーマで記述されているのとまったく同じフィールドを受信メッセージに強制するには、スキーマに `required` プロパティを追加し、必須フィールドを指定します。 `addtionalProperties` を追加し、値を `false` に設定します。 
+   
+      たとえば、次のスキーマでは、受信メッセージには `msg` フィールドが必要で、他のフィールドは必要ないことが指定されています。
+
+      ```json
+      {
+         "properties": {
+           "msg": {
+              "type": "string"
+           }
+         },
+         "type": "object",
+         "required": ["msg"],
+         "additionalProperties": false
+      }
+      ```
 
    1. 要求トリガーのタイトル バーにある省略記号 ( **...** ) ボタンを選択します。
 

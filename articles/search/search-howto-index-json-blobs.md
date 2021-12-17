@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: 8156966e9a1c000701a5cc1c68a70c4ee048c738
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba6df6b29c9d7b9b388b34dab163a132272c6200
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99259052"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223907"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 
@@ -75,7 +75,7 @@ api-key: [admin key]
 
 ### <a name="json-example-single-hotel-json-files"></a>json の例 (1 つの hotel JSON ファイル)
 
-GitHub の [hotel JSON ドキュメント データ セット](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotel-json-documents)は、各 BLOB が構造化 JSON ファイルを表す JSON 解析のテストに役立ちます。 データ ファイルを BLOB ストレージにアップロードし、 **[データのインポート]** ウィザードを使用して、このコンテンツが個々の検索ドキュメントにどのように解析されるかをすばやく評価できます。 
+GitHub の [hotel JSON ドキュメント データ セット](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels/hotel-json-documents)は、各 BLOB が構造化 JSON ファイルを表す JSON 解析のテストに役立ちます。 データ ファイルを BLOB ストレージにアップロードし、 **[データのインポート]** ウィザードを使用して、このコンテンツが個々の検索ドキュメントにどのように解析されるかをすばやく評価できます。 
 
 データ セットは 5 つの BLOB で構成され、それぞれに address コレクションと rooms コレクションを含む hotel ドキュメントが含まれています。 BLOB インデクサーによって両方のコレクションが検出され、インデックス スキーマ内の入力ドキュメントの構造が反映されます。
 
@@ -110,7 +110,7 @@ api-key: [admin key]
 
 ### <a name="jsonarrays-example-clinical-trials-sample-data"></a>jsonArrays の例 (clinical trials サンプル データ)
 
-GitHub の [clinical trials JSON データ セット](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-json)は、JSON 配列解析のテストに役立ちます。 データ ファイルを BLOB ストレージにアップロードし、 **[データのインポート]** ウィザードを使用して、このコンテンツが個々の検索ドキュメントにどのように解析されるかをすばやく評価できます。 
+GitHub の [clinical trials JSON データ セット](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials/clinical-trials-json)は、JSON 配列解析のテストに役立ちます。 データ ファイルを BLOB ストレージにアップロードし、 **[データのインポート]** ウィザードを使用して、このコンテンツが個々の検索ドキュメントにどのように解析されるかをすばやく評価できます。 
 
 データ セットは 8 つの BLOB で構成され、それぞれにエンティティの JSON 配列が含まれており、エンティティは合計 100 個になります。 エンティティは、どのフィールドに値が入力されるかによって異なりますが、最終的な結果は、すべての BLOB のすべての配列で、エンティティごとに 1 つの検索ドキュメントが生成されます。
 
@@ -166,12 +166,6 @@ api-key: [admin key]
     "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
 }
 ```
-
-### <a name="jsonlines-example-caselaw-sample-data"></a>jsonLines の例 (caselaw サンプル データ)
-
-GitHub の [caselaw JSON データ セット](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw)は、JSON 改行解析のテストに役立ちます。 他のサンプルと同様に、このデータを BLOB ストレージにアップロードし、 **[データのインポート]** ウィザードを使用して、個々の BLOB に対する解析モードの影響をすばやく評価できます。
-
-データ セットは、改行で区切られた 10 個の JSON エンティティを含む 1 つの BLOB で構成されています。各エンティティは 1 つの訴訟を表します。 最終的には、エンティティごとに 1 つの検索ドキュメントが生成されます。
 
 ## <a name="map-json-fields-to-search-fields"></a>JSON フィールドを検索フィールドにマップする
 

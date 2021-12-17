@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   ms.date: 09/02/2021
   ms.custom: contperf-fy21q3
-  ms.openlocfilehash: 4b18c599dec89cf7ac5bc594ff6bd47b9919b5eb
-  ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+  ms.openlocfilehash: 7e0f13b29a516dd12d524e922b07609453ac2111
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102212639"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132491205"
 landingContent:
 - title: Azure IoT Central について
   linkLists:
@@ -36,6 +36,10 @@ landingContent:
       url: core/concepts-architecture.md
     - text: アプリケーション テンプレート
       url: core/concepts-app-templates.md
+  - linkListType: video
+    links:
+    - text: 動画リソース
+      url: https://www.youtube.com/playlist?list=PL1ljc761XCiYlm8Rx58jLsUp4gAspw1SG
   - linkListType: whats-new
     links:
     - text: 最新の更新
@@ -58,8 +62,6 @@ landingContent:
       url: core/concepts-telemetry-properties-commands.md
   - linkListType: how-to-guide
     links:
-    - text: Azure Sphere デバイスを接続する
-      url: core/howto-connect-sphere.md
     - text: デバイス接続のトラブルシューティング
       url: core/troubleshoot-connection.md
 - title: 統合されたソリューションの構築
@@ -75,41 +77,45 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: ダッシュボードを作成する
-      url: core/howto-create-personal-dashboards.md
+      url: core/howto-manage-dashboards.md
     - text: デバイス データを分析する
       url: core/howto-create-analytics.md
     - text: データをクラウドの宛先にエクスポートする
       url: core/howto-export-data.md
-    - text: IoT Hub からデバイスを移動する
-      url: core/how-to-move-device-to-iot.md
   - linkListType: reference
     links:
     - text: REST API
       url: /rest/api/iotcentral/
 - title: デバイスを管理する
   linkLists:
+  - linkListType: overview
+    links:
+    - text: オペレーター向けの概要
+      url: core/overview-iot-central-operator.md
   - linkListType: tutorial
     links:
     - text: デバイス グループを使用する
       url: core/tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
-    - text: デバイスの追加、インポート、エクスポート
-      url: core/howto-manage-devices.md
-    - text: ジョブの実行
-      url: core/howto-run-a-job.md
+    - text: デバイスを個別に管理する
+      url: core/howto-manage-devices-individually.md
+    - text: デバイスを一括で管理する
+      url: core/howto-manage-devices-in-bulk.md
 - title: 管理
   linkLists:
+  - linkListType: overview
+    links:
+    - text: 管理者向けの概要
+      url: core/overview-iot-central-admin.md
   - linkListType: how-to-guide
     links:
     - text: アプリケーションの管理
       url: core/howto-administer.md
     - text: ユーザーとロールを管理する
       url: core/howto-manage-users-roles.md
-    - text: 課金状況の表示
-      url: core/howto-view-bill.md
-    - text: アプリケーション UI のカスタマイズ
-      url: core/howto-customize-ui.md
+    - text: 組織の管理
+      url: core/howto-create-organizations.md
   - linkListType: sample
     links:
     - text: ARM SDK のサンプル
@@ -130,6 +136,8 @@ landingContent:
       url: /learn/modules/manage-iot-central-apps-with-rest-api/
     - text: 'Learn モジュール: Azure IoT Central から Power BI アプリへの連続データ エクスポートを設定する'
       url: /learn/modules/continuously-export-data-from-iot-central-power-bi/
+    - text: 'Learn モジュール: IoT Edge デバイスを IoT Central アプリケーションに接続する'
+      url: /learn/modules/connect-iot-edge-device-to-iot-central/
 - title: 業界アプリケーション テンプレート
   linkLists:
   - linkListType: tutorial

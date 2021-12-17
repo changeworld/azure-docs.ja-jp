@@ -9,12 +9,12 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: 232e28d3cc8b0bc7427dd035d51743f623e54259
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1df5b2ba2aa44102975bfd68330466fccd0c6bb0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564305"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593175"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>チュートリアル:Azure Data Lake Storage Gen2、Azure Databricks、および Spark
 
@@ -23,23 +23,23 @@ ms.locfileid: "103564305"
 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
-> * Databricks クラスターを作成する
-> * 非構造化データをストレージ アカウントに取り込む
-> * Blob Storage 内のデータに対して分析を実行する
+> - Databricks クラスターを作成する
+> - 非構造化データをストレージ アカウントに取り込む
+> - Blob Storage 内のデータに対して分析を実行する
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Data Lake Storage Gen2 アカウントを作成します。
+- Azure Data Lake Storage Gen2 アカウントを作成します。
 
   「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](create-data-lake-storage-account.md)」をご覧ください。
 
-* ユーザー アカウントに[ストレージ BLOB データ共同作成者ロール](../common/storage-auth-aad-rbac-portal.md)が割り当てられていることを確認します。
+- ユーザー アカウントに[ストレージ BLOB データ共同作成者ロール](assign-azure-role-data-access.md)が割り当てられていることを確認します。
 
-* AzCopy v10 をインストールします。 [AzCopy v10 を使用したデータ転送](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
+- AzCopy v10 をインストールします。 [AzCopy v10 を使用したデータ転送](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
 
-* サービス プリンシパルを作成する。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」のガイダンスに従って、サービス プリンシパルを作成します。
+- サービス プリンシパルを作成する。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」のガイダンスに従って、サービス プリンシパルを作成します。
 
   この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
 
@@ -58,7 +58,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 2. **[Prezipped file]\(事前に圧縮されたファイル\)** チェックボックスをオンにして、すべてのデータ フィールドを選択します。
 
-3. **[ダウンロード]** ボタンを選択して、ご使用のコンピューターに結果を保存します。 
+3. **[ダウンロード]** ボタンを選択して、ご使用のコンピューターに結果を保存します。
 
 4. ZIP ファイルの内容を解凍し、ファイル名とファイル パスをメモします。 この情報は後の手順で必要になります。
 
@@ -101,7 +101,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     次のフィールドに値を入力し、他のフィールドの既定値はそのまま使用します。
 
     - クラスターの名前を入力します。
-     
+
     - **[Terminate after 120 minutes of inactivity]** \(アクティビティが 120 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
 
 4. **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
@@ -126,11 +126,11 @@ AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカ�
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * プレースホルダー `<csv-folder-path>` の値は、 *.csv* ファイルへのパスに置き換えます。
+   - プレースホルダー `<csv-folder-path>` の値は、 *.csv* ファイルへのパスに置き換えます。
 
-   * `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+   - `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
-   * `<container-name>` プレースホルダーは、実際のストレージ アカウントにあるコンテナーの名前に置き換えます。
+   - `<container-name>` プレースホルダーは、実際のストレージ アカウントにあるコンテナーの名前に置き換えます。
 
 ## <a name="create-a-container-and-mount-it"></a>コンテナーを作成してマウントする
 
@@ -148,7 +148,7 @@ AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカ�
 
 5. 次のコード ブロックをコピーして最初のセルに貼り付けます。ただし、このコードはまだ実行しないでください。
 
-    ```Python
+    ```python
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
            "fs.azure.account.oauth2.client.id": "<appId>",
@@ -170,7 +170,7 @@ AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカ�
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Databricks Notebook を使用して CSV を Parquet に変換する
 
-前もって作成しておいたノートブックに新しいセルを追加し、そこに次のコードを貼り付けます。 
+前もって作成しておいたノートブックに新しいセルを追加し、そこに次のコードを貼り付けます。
 
 ```python
 # Use the previously established DBFS mount point to read the data.
@@ -210,7 +210,7 @@ dbutils.fs.ls("/mnt/flightdata/parquet/flights")
 
 データ ソースのデータフレームを作成するには、次のスクリプトを実行します。
 
-* プレースホルダー `<csv-folder-path>` の値は、 *.csv* ファイルへのパスに置き換えます。
+- プレースホルダー `<csv-folder-path>` の値は、 *.csv* ファイルへのパスに置き換えます。
 
 ```python
 # Copy this into a Cmd cell in your notebook.
@@ -277,5 +277,5 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Azure HDInsight の Apache Hive を使用してデータの抽出、変換、読み込みを行う](data-lake-storage-tutorial-extract-transform-load-hive.md)

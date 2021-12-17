@@ -1,0 +1,210 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Red Hat OpenShift に関してよく寄せられる質問
+  description: Microsoft Azure Red Hat OpenShift に関してよく寄せられる質問への回答を示します
+  author: jimzim
+  ms.author: jzim
+  ms.service: azure-redhat-openshift
+  ms.topic: conceptual
+  ms.date: 07/31/2020
+  ms.openlocfilehash: dbde5144fe44a9b92b06cbb8f226d04b4fe74489
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130225569"
+title: Azure Red Hat OpenShift に関する FAQ
+summary: この記事では、Microsoft Azure Red Hat OpenShift に関するよくあるご質問 (FAQ) に回答します。
+sections:
+- name: インストールとアップグレード
+  questions:
+  - question: どの Azure リージョンがサポートされていますか?
+    answer: >
+      Azure Red Hat OpenShift 4.x でサポートされているリージョンのリストについては、[利用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)に関するページを参照してください。
+
+
+      Azure Red Hat OpenShift 3.11 でサポートされているリージョンのリストについては、[リージョン別の利用可能な製品](supported-resources.md#azure-regions)に関するページを参照してください。
+  - question: どの仮想マシンのサイズを使用できますか?
+    answer: >
+      Azure Red Hat OpenShift 4 でサポートされている仮想マシンのサイズのリストについては、[Azure Red Hat OpenShift 4 でサポートされているリソース](support-policies-v4.md)に関するページを参照してください。
+
+
+      Azure Red Hat OpenShift 3.11 でサポートされている仮想マシンのサイズのリストについては、[Azure Red Hat OpenShift 3.11 でサポートされているリソース](supported-resources.md)に関するページを参照してください。
+  - question: Azure Red Hat OpenShift クラスター内のポッドの最大数はいくつですか?  Azure Red Hat OpenShift クラスターのノードあたりのポッドの最大数はいくつですか?
+    answer: >
+      サポートされるポッドの実際の数は、アプリケーションのメモリ、CPU、ストレージの要件によって異なります。
+
+
+      Azure Red Hat OpenShift 4.x には、ノードあたり 250 のポッド制限と 60 の計算ノードの制限があります。 これにより、1 つのクラスターでサポートされるポッドの最大数が 250&times;60 = 15,000 に制限されます。
+
+
+      Azure Red Hat OpenShift 3.11 には、ノードあたり 50 のポッド制限と 20 の計算ノードの制限があります。 これにより、1 つのクラスターでサポートされるポッドの最大数が 50&times;20 = 1,000 に制限されます。
+  - question: クラスターは複数の Azure リージョンにわたってコンピューティング ノードを持つことができますか?
+    answer: いいえ。 Azure Red Hat OpenShift クラスターのすべてのノードは、同じ Azure リージョンに由来する必要があります。
+  - question: 1 つのクラスターを複数の可用性ゾーンにデプロイできますか?
+    answer: >
+      はい。 これは、クラスターが可用性ゾーンをサポートする Azure リージョンにデプロイされる場合に自動的に発生します。 詳細については、[可用性ゾーン](../availability-zones/az-overview.md#availability-zones)に関するページをご覧ください。
+  - question: コントロール プレーン ノードは、Azure Kubernetes Service (AKS) の場合と同様に抽象化されますか?
+    answer: いいえ。 クラスター マスター ノードを含めすべてのリソースは、顧客サブスクリプションで実行されます。 これらの種類のリソースは、読み取り専用のリソース グループに置かれます。
+  - question: クラスターは顧客のサブスクリプション内に存在しますか?
+    answer: Azure マネージド アプリケーションは、顧客のサブスクリプションを利用するロックされたリソース グループ内に存在します。 お客様は、そのリソース グループ内のオブジェクトを表示できますが、変更することはできません。
+  - question: 他の顧客と共有される Azure Red Hat OpenShift 内の要素はありますか? それとも、すべてが独立しているのでしょうか?
+    answer: 各 Azure Red Hat OpenShift クラスターは指定された顧客専用であり、その顧客のサブスクリプション内に存在します。
+  - question: インフラストラクチャ ノードは使用できますか?
+    answer: >
+      Azure Red Hat OpenShift 4.x クラスターでは、インフラストラクチャ ノードは現在使用できません。
+
+
+      Azure Red Hat OpenShift 3.11 クラスターでは、インフラストラクチャ ノードが既定で含まれています。
+
+
+      ## <a name="how-do-i-handle-cluster-upgrades"></a>クラスターのアップグレードはどのように処理しますか?
+
+
+      アップグレード、メンテナンス、およびサポートされているバージョンの詳細については、[サポート ライフサイクル ガイド](support-lifecycle.md)を参照してください。
+  - question: ホスト オペレーティング システムと OpenShift ソフトウェアはどのように更新されますか?
+    answer: ホスト オペレーティング システムと OpenShift ソフトウェアは、Azure Red Hat OpenShift が、上流の OpenShift Container Platform のマイナー リリース バージョンと修正プログラムを使用するときに更新されます。
+  - question: 更新されたノードを再起動するプロセスとは何ですか?
+    answer: ノードは、アップグレードの一環として再起動されます。
+- name: クラスターの操作
+  questions:
+  - question: Prometheus を使用して自分のアプリケーションを監視できますか?
+    answer: >
+      Prometheus は、プレインストールされ、Azure Red Hat OpenShift 4.x クラスター用に構成されています。 詳細については、[クラスターの監視](https://docs.openshift.com/container-platform/4.6/operators/operator_sdk/osdk-monitoring-prometheus.html)に関する記述を参照してください。
+
+
+      Azure Red Hat OpenShift 3.11 クラスターの場合は、Prometheus をご自分の名前空間にデプロイして、その名前空間内のアプリケーションを監視できます。 詳細については、[Azure Red Hat OpenShift クラスターに Prometheus インスタンスをデプロイする](howto-deploy-prometheus.md)方法に関するページを参照してください。
+  - question: Prometheus を使用して、クラスターの正常性と容量に関連するメトリックを監視できますか?
+    answer: >
+      Azure Red Hat OpenShift 4.x:はい。
+
+
+      Azure Red Hat OpenShift 3.11:いいえ。
+  - question: 基になる VM のログを顧客のログ分析システムにストリーミングできますか?
+    answer: 基になる VM からのログは、管理サービスによって処理され、顧客に公開されることはありません。
+  - question: 顧客はどのようにしてノード レベルで CPU やメモリなどのメトリックにアクセスし、スケーリングや問題のデバッグなどを実行できますか? Azure Red Hat OpenShift クラスターで kubectl top を実行できないようです。
+    answer: >
+      Azure Red Hat OpenShift 4.x クラスターの場合、OpenShift Web コンソールには、ノード レベルのすべてのメトリックが含まれます。 詳しくは、[クラスター情報の表示](https://docs.openshift.com/container-platform/4.6/web_console/using-dashboard-to-get-cluster-information.html)に関する Red Hat のドキュメントを参照してください。
+
+
+      Azure Red Hat OpenShift 3.11 クラスターの場合、顧客は顧客管理者クラスター ロールで `oc adm top nodes` または `kubectl top nodes` コマンドを使用することで、ノード レベルで CPU またはメモリ メトリックにアクセスできます。 また、`oc adm top pods` または `kubectl top pods` コマンドを使用して、`pods` の CPU またはメモリのメトリックにアクセスすることもできます。
+  - question: デプロイをスケールアップする場合、サービスのすべてのポッドが 1 つの障害ドメインの障害によってダウンしないことを確実にするために、Azure 障害ドメインはポッド配置にどのようにマップされますか?
+    answer: >
+      Azure で仮想マシン スケール セットを使用すると、既定で 5 つの障害ドメインがあります。 スケール セット内の各仮想マシン インスタンスは、これらの障害ドメインのいずれかに配置されます。 これにより、クラスター内のコンピューティング ノードにデプロイされたアプリケーションが別々の障害ドメインに確実に配置されるようになります。
+
+
+      詳細については、「[仮想マシン スケール セットに対する障害ドメインの適切な数を選択する](../virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains.md)」を参照してください。
+  - question: ポッドの配置を管理する方法はありますか?
+    answer: >
+      顧客は、顧客管理者としてノードを取得したり、ラベルを表示したりできます。これにより、スケール セット内の任意の VM を対象にする方法が提供されます。
+
+
+      特定のラベルを使用する場合は、次の点に注意してください。
+
+
+      - ホスト名を使うことはできません。 ホスト名はアップグレードと更新によって頻繁にローテーションされるため、変更が保証されます。
+
+      - 顧客に特定のラベルまたは配置戦略の要求がある場合は、これを実現できますが、エンジニアリングの作業が必要であり、現時点ではサポートされていません。
+
+
+      詳細については、[ポッドの配置の制御](https://docs.openshift.com/container-platform/4.6/nodes/scheduling/nodes-scheduler-about.html)に関するページを参照してください。
+  - question: Jenkins などのツールを使用できるように、イメージ レジストリを外部で使用できますか?
+    answer: >
+      4\.x クラスターの場合は、セキュリティで保護されたレジストリを公開し、認証を構成する必要があります。 詳しくは、次の Red Hat のドキュメントをご覧ください。
+
+
+      - [レジストリを公開する](https://docs.openshift.com/container-platform/4.6/registry/securing-exposing-registry.html)
+
+      - [レジストリにアクセスする](https://docs.openshift.com/container-platform/4.6/registry/accessing-the-registry.html)
+
+
+      3\.11 クラスターの場合は、Docker イメージ レジストリを使用できます。 Docker レジストリは `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` から入手できます。 Azure Container Registry を使用することもできます。
+- name: ネットワーク
+  questions:
+  - question: 既存の仮想ネットワークにクラスターをデプロイできますか?
+    answer: >
+      4\.x クラスターでは、既存の VNet にクラスターをデプロイできます。
+
+
+      3\.11 クラスターでは、既存の VNet にクラスターをデプロイすることはできません。 ピアリングを使って Azure Red Hat OpenShift 3.11 クラスターを既存の VNet に接続することはできます。
+  - question: 名前空間間のネットワークはサポートされていますか?
+    answer: 顧客と個々のプロジェクト管理者は、`NetworkPolicy` オブジェクトを使用して、プロジェクトごとに名前空間の間のネットワークをカスタマイズできます (拒否を含む)。
+  - question: 別のサブスクリプションの仮想ネットワークを詳しく見ようとしていますが、Failed to get VNet CIDR (VNet CIDR の取得に失敗しました) というエラーが出ます。
+    answer: >
+      仮想ネットワークを含むサブスクリプションでは、必ず `az provider register -n Microsoft.ContainerService --wait` のコマンドを使用して `Microsoft.ContainerService` プロバイダーを登録してください。
+  - question: プライベート VNet にデプロイする IP 範囲を指定して、ピアリングされた他の企業 VNet との競合を回避することはできますか?
+    answer: >
+      4\.x クラスターでは、独自の IP 範囲を指定できます。
+
+
+      3\.11 クラスターでは、Azure Red Hat OpenShift は、VNet ピアリングをサポートしており、顧客がピアリングする VNet と、OpenShift ネットワークが動作する VNet CIDR を提供することを許可します。
+
+
+      Azure Red Hat OpenShift によって作成された VNet は保護され、構成の変更は受け入れられません。 ピアリングされた VNet は顧客によって制御され、そのサブスクリプションに存在します。
+  - question: ソフトウェア定義ネットワーク モジュールは構成できますか?
+    answer: ソフトウェア定義ネットワークは `openshift-ovs-networkpolicy` であり、構成できません。
+  - question: Azure Red Hat OpenShift では、どの Azure Load Balancer が使用されていますか?  Standard ですか、それとも Basic ですか、また、構成は可能ですか?
+    answer: Azure Red Hat OpenShift では Standard Azure Load Balancer が使用され、構成することはできません。
+- name: アクセス許可
+  questions:
+  - question: 管理者はユーザーおよびクォータを管理できますか?
+    answer: はい。 Azure Red Hat OpenShift 管理者は、ユーザーおよびクォータを管理するほか、ユーザーが作成したすべてのプロジェクトにアクセスできます。
+  - question: クラスターを特定の Azure AD ユーザーに制限できますか?
+    answer: >
+      はい。 Azure AD アプリケーションを構成することで、クラスターにサインインできる Azure AD ユーザーを制限できます。 詳細については、[アプリを一連のユーザーに制限する方法](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)に関するページを参照してください。
+  - question: ユーザーがプロジェクトを作成することを禁止できますか。
+    answer: >
+      はい。 管理者としてクラスターにログインし、次のコマンドを実行します。
+
+
+      ```
+
+      oc adm policy \
+          remove-cluster-role-from-group self-provisioner \
+          system:authenticated:oauth
+      ```
+
+
+      詳細については、ご使用のクラスター バージョンのセルフプロビジョニングの無効化に関する OpenShift のドキュメントを参照してください。
+
+
+      - [4.6 クラスターでのセルフプロビジョニングの無効化](https://docs.openshift.com/container-platform/4.6/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
+
+      - [3.11 クラスターでのセルフプロビジョニングの無効化](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)
+  - question: マスター/インフラストラクチャ/アプリ ノードでは、どの UNIX 権限 (IaaS 内) を使用できますか?
+    answer: >
+      4\.x クラスターの場合、ノード アクセスはクラスター管理者ロールを介して利用できます。 詳細については、[Kubernetes RBAC の概要](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html)に関するページを参照してください。
+
+
+      3\.11 クラスターの場合、ノード アクセスは禁止されています。
+  - question: 私たちには、どの OCP 権限がありますか? クラスター管理者ですか? プロジェクト管理者ですか?
+    answer: >
+      4\.x クラスターの場合、クラスター管理者ロールを使用できます。 詳細については、[Kubernetes RBAC の概要](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html)に関するページを参照してください。
+
+
+      3\.11 クラスターの場合、詳細については[クラスター管理の概要](https://docs.openshift.com/aro/admin_guide/index.html)を参照してください。
+  - question: 使用可能な ID プロバイダーはどれですか?
+    answer: "4\\. x クラスターの場合は、独自の ID プロバイダーを構成します。 詳細については、[ID プロバイダーの構成](https://docs.openshift.com/container-platform/4.6/authentication/identity_providers/configuring-ldap-identity-provider.html)に関する Red Hat のドキュメントを参照してください。\n\n3\\.11 クラスターの場合は、Azure AD 統合を使用できます。 \n"
+- name: ストレージ
+  questions:
+  - question: クラスター上のデータは暗号化されていますか?
+    answer: >
+      既定では、データは保存時に暗号化されます。 Azure Storage プラットフォームは、永続化する前に自動的にデータを暗号化し、取得前にデータの暗号化を解除します。 詳細については、「[保存データ向け Azure Storage Service Encryption](../storage/common/storage-service-encryption.md)」をご覧ください。
+  - question: Azure Red Hat OpenShift では etcd に格納されるデータは暗号化されますか?
+    answer: >
+      Azure Red Hat OpenShift 4 クラスターの場合、データは既定では暗号化されませんが、暗号化を有効にするオプションがあります。 詳細については、[etcd の暗号化](https://docs.openshift.com/container-platform/4.6/security/encrypting-etcd.html)に関するガイドを参照してください。
+
+
+      3\.11 クラスターの場合、etcd レベルではデータは暗号化されません。 現在、暗号化をオンにするオプションはサポートされていません。 OpenShift ではこの機能がサポートされますが、これをロードマップに加えるには、エンジニアリングの作業が必要です。 データはディスク レベルで暗号化されます。 詳細については、「[データストア層でのデータの暗号化](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html)」を参照してください。
+  - question: 任意の永続ストレージ ソリューション (OCSなど) を選ぶことはできますか。
+    answer: >-
+      4\.x クラスターの場合、Azure Disk (Premium_LRS) は既定のストレージ クラスとして構成されます。 追加のストレージ プロバイダー、および構成の詳細 (Azure File を含む) については、[永続ストレージ](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html)に関する Red Hat のドキュメントを参照してください。
+
+
+      3\.11 クラスターの場合、Azure Disk (Premium_LRS) と Azure File の 2 つのストレージ クラスが既定で提供されます。
+
+
+      ## <a name="does-aro-store-any-customer-data-outside-of-the-clusters-region"></a>ARO では、クラスターのリージョン外に格納される顧客データがありますか?
+
+
+      いいえ。 ARO クラスターで作成されたすべてのデータは、クラスターのリージョン内に維持されます。

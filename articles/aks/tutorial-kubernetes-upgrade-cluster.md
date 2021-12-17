@@ -3,14 +3,14 @@ title: Kubernetes on Azure のチュートリアル - クラスターのアッ�
 description: この Azure Kubernetes Service (AKS) のチュートリアルでは、既存の AKS クラスターを最新の使用可能な Kubernetes バージョンにアップグレードする方法を学習します。
 services: container-service
 ms.topic: tutorial
-ms.date: 01/12/2021
-ms.custom: mvc
-ms.openlocfilehash: 68aedbe90d5f08a4b6b67d134c0460caa11c542b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/24/2021
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 4751081d628f3ea1bff411b5e391377e8b771939
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786371"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697750"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) での Kubernetes のアップグレード
 
@@ -27,9 +27,19 @@ ms.locfileid: "107786371"
 
 これまでのチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化しました。 このイメージを Azure Container Registry にアップロードし、AKS クラスターを作成しました。 その後、AKS クラスターにアプリケーションをデプロイしました。 これらの手順を完了しておらず、順番に進めたい場合は、[チュートリアル 1 - コンテナー イメージを作成する][aks-tutorial-prepare-app]に関するページから開始してください。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 このチュートリアルでは、Azure CLI バージョン 2.0.53 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+このチュートリアルでは、Azure PowerShell バージョン 5.9.0 以降を実行している必要があります。 バージョンを確認するには、`Get-InstalledModule -Name Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell ][azure-powershell-install]のインストールに関するページをご覧ください。
+
+---
+
 ## <a name="get-available-cluster-versions"></a>使用可能なクラスターのバージョンを取得する
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 クラスターをアップグレードする前に、[az aks get-upgrades][] コマンドを使用して、アップグレードで利用できる Kubernetes のリリースを確認します。
 
@@ -60,6 +70,47 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 }
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+クラスターをアップグレードする前に、[Get-AzAksCluster][get-azakscluster] コマンドレットを使用して、実行している Kubernetes のバージョンと、それが存在するリージョンを特定します。
+
+```azurepowershell
+Get-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster |
+  Select-Object -Property Name, KubernetesVersion, Location
+```
+
+次の例では、現在のバージョンは *1.19.9* です。
+
+```output
+Name         KubernetesVersion Location
+----         ----------------- --------
+myAKSCluster 1.19.9            eastus
+```
+
+[Get-AzAksVersion][get-azaksversion] コマンドレットを使用して、AKS クラスターが存在するリージョンで使用できる Kubernetes アップグレード リリースを確認します。
+
+```azurepowershell
+Get-AzAksVersion -Location eastus | Where-Object OrchestratorVersion -gt 1.19.9
+```
+
+使用可能なバージョンは *OrchestratorVersion* の下に表示されます。
+
+```output
+OrchestratorType    : Kubernetes
+OrchestratorVersion : 1.20.2
+DefaultProperty     :
+IsPreview           :
+Upgrades            : {Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile}
+
+OrchestratorType    : Kubernetes
+OrchestratorVersion : 1.20.5
+DefaultProperty     :
+IsPreview           :
+Upgrades            : {}
+```
+
+---
+
 ## <a name="upgrade-a-cluster"></a>クラスターのアップグレード
 
 実行中のアプリケーションの中断を最小限に抑えるために、AKS ノードは慎重に切断およびドレインされます。 このプロセスでは、以下の手順が行われます。
@@ -69,6 +120,8 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 1. 最新の Kubernetes コンポーネントを実行するノードが作成されます。
 1. 新しいノードの準備が整い、クラスターに参加すると、Kubernetes スケジューラによってそのノードでポッドの実行が開始されます。
 1. 古いノードが削除され、クラスター内の次のノードが切断およびドレイン プロセスを開始します。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [az aks upgrade][] コマンドを使用して、AKS クラスターをアップグレードします。
 
@@ -107,7 +160,36 @@ az aks upgrade \
 }
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+[Set-AzAksCluster][set-azakscluster] コマンドレットを使用して、AKS クラスターをアップグレードします。
+
+```azurepowershell
+Set-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -KubernetesVersion <KUBERNETES_VERSION>
+```
+
+> [!NOTE]
+> 一度に 1 つのマイナー バージョンのみをアップグレードできます。 たとえば、*1.14.x* から *1.15.x* にアップグレードすることはできますが、*1.14.x* から *1.16.x* に直接アップグレードすることはできません。 *1.14.x* から *1.16.x* にアップグレードするには、まず *1.14.x* から *1.15.x* にアップグレードします。その後、*1.15.x* から *1.16.x* にもう一度アップグレードします。
+
+次の出力例の抜粋には、*1.19.9* にアップグレードした結果が示されています。 *kubernetesVersion* が *1.20.2* としてレポートされていることがわかります。
+
+```output
+ProvisioningState       : Succeeded
+MaxAgentPools           : 100
+KubernetesVersion       : 1.20.2
+PrivateFQDN             :
+AgentPoolProfiles       : {default}
+Name                    : myAKSCluster
+Type                    : Microsoft.ContainerService/ManagedClusters
+Location                : eastus
+Tags                    : {}
+```
+
+---
+
 ## <a name="validate-an-upgrade"></a>アップグレードを検証する
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [az aks show][] コマンドを次のように使用して、アップグレードが成功したことを確認します。
 
@@ -123,13 +205,43 @@ Name          Location    ResourceGroup    KubernetesVersion    ProvisioningStat
 myAKSCluster  eastus      myResourceGroup  1.19.1               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+[Get-AzAksCluster][get-azakscluster] コマンドレットを次のように使用して、アップグレードが成功したことを確認します。
+
+```azurepowershell
+Get-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster |
+  Select-Object -Property Name, Location, KubernetesVersion, ProvisioningState
+```
+
+次の出力例は、AKS クラスターで *KubernetesVersion 1.20.2* が実行されていることを示しています。
+
+```output
+Name         Location KubernetesVersion ProvisioningState
+----         -------- ----------------- -----------------
+myAKSCluster eastus   1.20.2            Succeeded
+```
+
+---
+
 ## <a name="delete-the-cluster"></a>クラスターを削除する
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 このチュートリアルはシリーズの最後の部分なので、AKS クラスターを削除することをお勧めします。 Kubernetes ノードは Azure 仮想マシン (VM) で実行され、クラスターを使用しない場合でも引き続き料金が発生するためです。 [az group delete][az-group-delete] コマンドを使用して、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+このチュートリアルはシリーズの最後の部分なので、AKS クラスターを削除することをお勧めします。 Kubernetes ノードは Azure 仮想マシン (VM) で実行され、クラスターを使用しない場合でも引き続き料金が発生するためです。 [Remove-AzResourceGroup][remove-azresourcegroup] コマンドレットを使用して、リソース グループ、コンテナー サービス、すべての関連リソースを削除します。
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myResourceGroup
+```
+
+---
 
 > [!NOTE]
 > クラスターを削除したとき、AKS クラスターで使用される Azure Active Directory サービス プリンシパルは削除されません。 サービス プリンシパルを削除する手順については、[AKS のサービス プリンシパルに関する考慮事項と削除][sp-delete]に関するページを参照してください。 マネージド ID を使用した場合、その ID はプラットフォームによって管理され、ユーザーがシークレットをプロビジョニングしたりローテーションしたりする必要はありません。
@@ -158,3 +270,8 @@ AKS の詳細については、[AKS の概要][aks-intro]に関するページ�
 [az-group-delete]: /cli/azure/group#az_group_delete
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 [aks-solution-guidance]: /azure/architecture/reference-architectures/containers/aks-start-here?WT.mc_id=AKSDOCSPAGE
+[azure-powershell-install]: /powershell/azure/install-az-ps
+[get-azakscluster]: /powershell/module/az.aks/get-azakscluster
+[get-azaksversion]: /powershell/module/az.aks/get-azaksversion
+[set-azakscluster]: /powershell/module/az.aks/set-azakscluster
+[remove-azresourcegroup]: /powershell/module/az.resources/remove-azresourcegroup

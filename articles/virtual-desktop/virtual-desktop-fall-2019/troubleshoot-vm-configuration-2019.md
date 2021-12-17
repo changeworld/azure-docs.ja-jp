@@ -1,34 +1,34 @@
 ---
-title: Windows Virtual Desktop (クラシック) セッション ホストのトラブルシューティング - Azure
-description: Windows Virtual Desktop (クラシック) セッション ホスト仮想マシンを構成しているときに発生する問題の解決方法。
+title: Azure Virtual Desktop (クラシック) セッション ホストのトラブルシューティング - Azure
+description: Azure Virtual Desktop (クラシック) セッション ホスト仮想マシンの構成時に発生する問題の解決方法。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: af0da66766a4b814dde8dfa45a0abe00f9e93efa
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 18a4c83dfa9998ede857147cf35d47d116fd9686
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444175"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444689"
 ---
-# <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows Virtual Desktop (クラシック) セッション ホスト仮想マシンの構成
+# <a name="azure-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Azure Virtual Desktop (クラシック) セッション ホスト仮想マシンの構成
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-vm-configuration.md)を参照してください。
+>このコンテンツは、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-vm-configuration.md)を参照してください。
 
-この記事は、Windows Virtual Desktop セッション ホスト仮想マシン (VM) の構成中に発生する問題を解決するときにご利用ください。
+この記事は、Azure Virtual Desktop セッション ホスト仮想マシン (VM) の構成時に発生する問題のトラブルシューティングを行うときに使用してください。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 
-Windows Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Windows Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)にアクセスしてください。
+[Azure Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスし、Azure Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話し合ってください。
 
 ## <a name="vms-are-not-joined-to-the-domain"></a>VM がドメインに参加していません
 
 VM をドメインに参加させることができない場合、次の指示に従ってください。
 
-- 「[Join a Windows Server virtual machine to a managed domain](../../active-directory-domain-services/join-windows-vm.md)」(Windows Server 仮想マシンのマネージド ドメインへの参加) のプロセスを利用するか、[ドメイン参加テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)を利用し、VM を手動で参加させます。
+- 「[Join a Windows Server virtual machine to a managed domain](../../active-directory-domain-services/join-windows-vm.md)」(Windows Server 仮想マシンのマネージド ドメインへの参加) のプロセスを利用するか、[ドメイン参加テンプレート](https://azure.microsoft.com/resources/templates/vm-domain-join-existing/)を利用し、VM を手動で参加させます。
 - VM でコマンド ラインからドメイン名を ping してみます。
 - 「[Troubleshooting Domain Join Error Messages](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx)」(ドメイン参加エラー メッセージのトラブルシューティング) でドメイン参加エラー メッセージの一覧を確認します。
 
@@ -40,7 +40,7 @@ VM をドメインに参加させることができない場合、次の指示�
 
 - ドメインに VM を手動で追加します。
 - 資格情報が確認されたらテンプレートを再デプロイします。 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell-2019.md)」を参照してください。
-- 「[Joins an existing Windows VM to AD Domain](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)」 (既存の Windows VM を AD ドメインに参加させる) のテンプレートで VM をドメインに参加させます。
+- 「[Joins an existing Windows VM to AD Domain](https://azure.microsoft.com/resources/templates/vm-domain-join-existing/)」 (既存の Windows VM を AD ドメインに参加させる) のテンプレートで VM をドメインに参加させます。
 
 ### <a name="error-timeout-waiting-for-user-input"></a>エラー:ユーザー入力の待機中にタイムアウトになりました
 
@@ -76,43 +76,43 @@ VM をドメインに参加させることができない場合、次の指示�
 - [[DNS サーバーの変更]](../../virtual-network/virtual-network-network-interface.md#change-dns-servers) の手順に従って、ネットワーク インターフェイスの DNS サーバー設定を **[カスタム]** に変更し、仮想ネットワーク上の DNS サーバーのプライベート IP アドレスを指定します。
 - [[DNS サーバーの変更]](../../virtual-network/virtual-network-network-interface.md#change-dns-servers) の手順に従って、ネットワーク インターフェイスの DNS サーバー設定を **[仮想ネットワークから継承する]** に変更し、その後、[[DNS サーバーの変更]](../../virtual-network/manage-virtual-network.md#change-dns-servers) の手順に従って、仮想ネットワークの DNS サーバーの設定を変更します。
 
-## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Windows Virtual Desktop Agent と Windows Virtual Desktop Boot Loader がインストールされていません
+## <a name="azure-virtual-desktop-agent-and-azure-virtual-desktop-boot-loader-are-not-installed"></a>Azure Virtual Desktop エージェントと Azure Virtual Desktop ブート ローダーがインストールされていません
 
-VM の推奨プロビジョニング方法は、Azure Resource Manager の「**Create and provision Windows Virtual Desktop host pool**」 (Windows Virtual Desktop ホスト プールを作成し、プロビジョニングする) テンプレートを使用することです。 このテンプレートにより、Windows Virtual Desktop Agent と Windows Virtual Desktop Agent Boot Loader が自動的にインストールされます。
+VM の推奨されるプロビジョニング方法は、Azure Resource Manager の **Create and provision Azure Virtual Desktop host pool\(Azure Virtual Desktop ホスト プールの作成とプロビジョニング\)** テンプレートを使用することです。 このテンプレートにより、Azure Virtual Desktop エージェントと Azure Virtual Desktop ブート ローダーが自動的にインストールされます。
 
 次の手順でコンポーネントがインストールされていることを確認し、エラー メッセージがないか確認します。
 
-1. **[コントロール パネル]**  > 、 **[プログラム]**  > 、 **[プログラムと機能]** の順に選択し、2 つのコンポーネントがインストールされていることを確認します。 **Windows Virtual Desktop Agent** と **Windows Virtual Desktop Agent Boot Loader** がない場合、VM にインストールされていません。
+1. **[コントロール パネル]**  > 、 **[プログラム]**  > 、 **[プログラムと機能]** の順に選択し、2 つのコンポーネントがインストールされていることを確認します。 **Azure Virtual Desktop エージェント** と **Azure Virtual Desktop ブート ローダー** が表示されない場合は、VM にインストールされていません。
 2. **エクスプローラー** を開き、**C:\Windows\Temp\ScriptLog.log** に移動します。 ファイルがない場合、2 つのコンポーネントをインストールした PowerShell DSC が、指定されたセキュリティ状況の中で実行できなかったことを示します。
 3. ファイル **C:\Windows\Temp\ScriptLog.log** がある場合、それを開き、エラー メッセージがないか確認します。
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>エラー:Windows Virtual Desktop Agent と Windows Virtual Desktop Agent Boot Loader がありません C:\Windows\Temp\ScriptLog.log もありません
+### <a name="error-azure-virtual-desktop-agent-and-azure-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>エラー: Azure Virtual Desktop エージェントと Azure Virtual Desktop ブート ローダーがありません C:\Windows\Temp\ScriptLog.log もありません
 
 **原因 1:** Azure Resource Manager テンプレートに入力中に指定された資格情報が間違っているか、アクセス許可が足りません。
 
 **解決策 1:** 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell-2019.md)」の手順で VM に足りないコンポーネントを手動追加します。
 
-**原因 2:** PowerShell DSC は起動し、実行できましたが、Windows Virtual Desktop にサインインして必要な情報を得ることができないため、実行を完了できませんでした。
+**原因 2:** PowerShell DSC は起動し、実行できましたが、Azure Virtual Desktop にサインインして必要な情報を得ることができないため、実行を完了できませんでした。
 
 **解決策 2:** 次のリストにある項目を確認します。
 
 - アカウントに MFA が指定されていないことを確認します。
-- テナント名が正しく、テナントが Windows Virtual Desktop に存在することを確認します。
+- テナント名が正しく、テナントが Azure Virtual Desktop に存在することを確認します。
 - アカウントに少なくとも RDS 共同作成者のアクセス許可が与えられていることを確認します。
 
 ### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>エラー:認証失敗、C:\Windows\Temp\ScriptLog.log にエラー
 
-**原因:** PowerShell DSC は実行できましたが、Windows Virtual Desktop に接続できませんでした。
+**原因:** PowerShell DSC は実行できましたが、Azure Virtual Desktop に接続できませんでした。
 
 **解決策:** 次のリストにある項目を確認します。
 
-- VM を Windows Virtual Desktop サービスに手動で登録します。
-- Windows Virtual Desktop への接続に使用されるアカウントに、テナントでホスト プールを作成するためのアクセス許可が与えられていることを確認します。
+- Azure Virtual Desktop サービスに VM を手動で登録します。
+- Azure Virtual Desktop への接続に使用されるアカウントに、テナントでホスト プールを作成するためのアクセス許可があることを確認します。
 - アカウントに MFA が指定されていないことを確認します。
 
-## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>Windows Virtual Desktop Agent が Windows Virtual Desktop サービスに登録されません
+## <a name="azure-virtual-desktop-agent-is-not-registering-with-the-azure-virtual-desktop-service"></a>Azure Virtual Desktop Agent が Azure Virtual Desktop サービスに登録されません
 
-(手動か、Azure Resource Manager テンプレートと PowerShell DSC によって) Windows Virtual Desktop Agent が最初にセッション ホスト VM にインストールされたとき、登録トークンが与えられます。 次のセクションでは、Windows Virtual Desktop Agent とトークンに当てはまる問題の解決方法について説明します。
+(手動で、または Azure Resource Manager テンプレートと PowerShell DSC によって) Azure Virtual Desktop エージェントがセッション ホスト VM に最初にインストールされたときに、登録トークンが提供されます。 次のセクションでは、Azure Virtual Desktop エージェントとトークンに当てはまる問題のトラブルシューティングについて説明します。
 
 ### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>エラー:Get-RdsSessionHost コマンドレットで記録されたステータスに、ステータスが Unavailable (利用不可) と示されています
 
@@ -125,12 +125,12 @@ VM の推奨プロビジョニング方法は、Azure Resource Manager の「**C
 
 1. セッション ホスト VM に新しいバージョンのエージェントをダウンロードします。
 2. タスク マネージャーを起動し、[サービス] タブで RDAgentBootLoader サービスを停止します。
-3. 新しいバージョンの Windows Virtual Desktop Agent のインストーラーを実行します。
+3. 新しいバージョンの Azure Virtual Desktop エージェントのインストーラーを実行します。
 4. 登録トークンを求められたら、エントリ INVALID_TOKEN を削除し、[次へ] を押します (新しいトークンは要求されません)。
 5. インストール ウィザードを完了します。
 6. タスク マネージャーを開き、RDAgentBootLoader サービスを開始します。
 
-## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>エラー:Windows Virtual Desktop Agent のレジストリ エントリ IsRegistered に値 0 が表示されます
+## <a name="error--azure-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>エラー: Azure Virtual Desktop エージェントのレジストリ エントリ IsRegistered に値 0 が表示されます
 
 **原因:** 登録トークンが期限切れになったか、有効期限値 999999 で生成されています。
 
@@ -140,7 +140,7 @@ VM の推奨プロビジョニング方法は、Azure Resource Manager の「**C
 2. Rds-NewRegistrationInfo で新しいトークンを生成します。
 3. -ExpriationHours パラメーターが 72 に設定されていることを確認します (最大値は 99999 です)。
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>エラー:Get-RdsSessionHost を実行したとき、Windows Virtual Desktop Agent からハートビートが報告されません
+### <a name="error-azure-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>エラー: Get-RdsSessionHost を実行したときに、Azure Virtual Desktop エージェントからハートビートが報告されません
 
 **原因 1:** RDAgentBootLoader サービスが停止しました。
 
@@ -176,17 +176,17 @@ VM の推奨プロビジョニング方法は、Azure Resource Manager の「**C
     Minimum = 2.12ms, Maximum = 3.83ms, Average = 2.58ms
     ```
 
-## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Windows Virtual Desktop サイドバイサイド スタックで問題を解決する
+## <a name="troubleshooting-issues-with-the-azure-virtual-desktop-side-by-side-stack"></a>Azure Virtual Desktop サイドバイサイド スタックで問題を解決する
 
-Windows Virtual Desktop サイドバイサイド スタックが Windows Server 2019 で自動的にインストールされます。 Microsoft Installer (MSI) を使用し、Microsoft Windows Server 2016 または Windows Server 2012 R2 にサイドバイサイド スタックをインストールします。 Microsoft Windows 10 の場合、Windows Virtual Desktop サイドバイサイド スタックは **enablesxstackrs.ps1** で有効になります。
+Windows Server 2019 以降では、Azure Virtual Desktop サイドバイサイド スタックが自動的にインストールされます。 Microsoft Installer (MSI) を使用し、Microsoft Windows Server 2016 または Windows Server 2012 R2 にサイドバイサイド スタックをインストールします。 Microsoft Windows 10 の場合、Azure Virtual Desktop サイドバイサイド スタックは **enablesxstackrs.ps1** で有効になります。
 
 サイドバイサイド スタックは主に 3 とおりの方法でセッション ホスト プール VM にインストールされるか、有効化されます。
 
-- Azure Resource Manager の **[Create and provision Windows Virtual Desktop host pool]\(Windows Virtual Desktop ホスト プールを作成し、プロビジョニングする\)** テンプレートを使用する
+- Azure Resource Manager の **Create and provision new Azure Virtual Desktop host pool\(Azure Virtual Desktop ホスト プールの作成とプロビジョニング\)** テンプレートを使用する
 - マスター イメージに含まれ、有効になっている
 - 各 VM に手動でインストールし、有効にする (あるいは、extensions/PowerShell を使用する)
 
-Windows Virtual Desktop サイドバイサイド スタックに問題がある場合、コマンド プロンプトから **qwinsta** コマンドを入力し、サイドバイサイド スタックがインストールされ、有効になっていることを確認します。
+Azure Virtual Desktop サイドバイサイド スタックに問題がある場合、コマンド プロンプトから **qwinsta** コマンドを入力し、サイドバイサイド スタックがインストールされ、有効になっていることを確認します。
 
 サイドバイサイド スタックがインストールされ、有効になっている場合、**qwinsta** の出力には、**rdp-sxs** が一覧表示されます。
 
@@ -213,7 +213,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 **解決策:** 次の手順で、セッション ホスト VM にサイドバイサイド スタックをインストールします。
 
 1. リモート デスクトップ プロトコル (RDP) を使用し、ローカル管理者としてセッション ホスト VM に直接入ります。
-2. まだ行っていない場合は、ご自分の PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュール](/powershell/windows-virtual-desktop/overview/)をダウンロードしてインポートし、次のコマンドレットを実行してご自分のアカウントにサインインします。
+2. PowerShell セッションで使用する [Azure Virtual Desktop PowerShell モジュール](/powershell/windows-virtual-desktop/overview/)をダウンロードしてインポートし (まだ行っていない場合)、このコマンドレットを実行してアカウントにサインインします。
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -221,7 +221,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 3. 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell-2019.md)」を参照してサイドバイサイド スタックをインストールします。
 
-## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>誤作動する Windows Virtual Desktop サイドバイサイド スタックの修正方法
+## <a name="how-to-fix-a-azure-virtual-desktop-side-by-side-stack-that-malfunctions"></a>誤作動する Azure Virtual Desktop サイドバイサイド スタックの修正方法
 
 サイドバイサイド スタックに誤作動を引き起こす状況が確認されています。
 
@@ -231,14 +231,14 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 - enablesxsstackrc.ps1 を複数回実行
 - ローカル管理特権のないアカウントで enablesxsstackrc.ps1 を実行
 
-このセクションの手順は、Windows Virtual Desktop サイドバイサイド スタックをアンインストールする際に参考になります。 サイドバイサイド スタックをアンインストールしたら、「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell-2019.md)」の「Windows Virtual Desktop ホスト プールに VM を登録する」に進み、サイドバイサイド スタックを再インストールします。
+このセクションの手順は、Azure Virtual Desktop サイドバイサイド スタックをアンインストールする際に参考になります。 サイドバイサイド スタックをアンインストールしたら、[PowerShell でのホスト プールの作成](create-host-pools-powershell-2019.md)に関するページにある「Azure Virtual Desktop ホスト プールに VM を登録する」に進み、サイドバイサイド スタックを再インストールします。
 
 修復に使用される VM は、誤作動するサイドバイサイド スタックがある VM と同じサブネットならびにドメインに置かれている必要があります。
 
 同じサブセットならびにドメインから次の手順で修復します。
 
 1. 標準のリモート デスクトップ プロトコル (RDP) で、修正プログラムを適用する VM に接続します。
-2. [https://docs.microsoft.com/sysinternals/downloads/psexec](https://docs.microsoft.com/sysinternals/downloads/psexec ) から PsExec をダウンロードします。
+2. [https://docs.microsoft.com/sysinternals/downloads/psexec](/sysinternals/downloads/psexec) から PsExec をダウンロードします。
 3. ダウンロードしたファイルを解凍します。
 4. ローカル管理者としてコマンド プロンプトを起動します。
 5. PsExec が解凍されたフォルダーに移動します。
@@ -278,7 +278,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 11. "リモート デスクトップ" で始まるすべての製品をアンインストールします。
 
-12. Windows Virtual Desktop コンポーネントがすべてアンインストールされたら、お使いのオペレーション システム向けの手順を実行します。
+12. Azure Virtual Desktop コンポーネントがすべてアンインストールされたら、お使いのオペレーション システム向けの手順を実行します。
 
 13. お使いのオペレーティング システムが Windows Server であれば、(Azure portal か PsExec ツールから) サイドバイサイド スタックが誤作動した VM を再起動します。
 
@@ -312,7 +312,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 これらのメッセージのいずれかが表示された場合は、イメージに最新の Windows 更新プログラムがインストールされていないか、グループ ポリシーでリモート デスクトップ ライセンス モードを設定していることを意味します。 次のセクションの手順に従って、グループ ポリシーの設定を確認し、Windows 10 Enterprise マルチセッションのバージョンを特定して、対応する更新プログラムをインストールしてください。
 
 >[!NOTE]
->Windows Virtual Desktop では、ホスト プールに Windows Server セッション ホストが含まれている場合は、RDS クライアント アクセス ライセンス (CAL) のみが必要です。 RDS CAL を構成する方法については、「[クライアント アクセス ライセンス (CAL) を使用して RDS 展開をライセンスする](/windows-server/remote/remote-desktop-services/rds-client-access-license/)」を参照してください。
+>Azure Virtual Desktop では、ホスト プールに Windows Server セッション ホストが含まれている場合は、RDS クライアント アクセス ライセンス (CAL) のみが必要です。 RDS CAL を構成する方法については、「[クライアント アクセス ライセンス (CAL) を使用して RDS 展開をライセンスする](/windows-server/remote/remote-desktop-services/rds-client-access-license/)」を参照してください。
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>リモート デスクトップ ライセンス モードのグループ ポリシーの設定を無効にする
 
@@ -345,19 +345,19 @@ Azure ギャラリーから、最新バージョンの Windows 10 バージョ�
 
 ## <a name="we-couldnt-connect-to-the-remote-pc-because-of-a-security-error"></a>We couldn't connect to the remote PC because of a security error (セキュリティ エラーのため、リモート PC に接続できませんでした)
 
-「We couldn't connect to the remote PC because of a security error. (セキュリティ エラーのため、リモート PC に接続できませんでした。) If this keeps happening, ask your admin or tech support for help (この問題が引き続き発生する場合は、管理者または技術サポートにお問い合わせください)」というエラーがユーザーに表示された場合は、既定の RDP アクセス許可を変更する既存のポリシーを確認してください。 このエラーを発生させる可能性があるポリシーの 1 つは、"リモート デスクトップ サービスを使ったログオンを許可" セキュリティ ポリシーです。
+"セキュリティ エラーのため、リモート PC に接続できませんでした。 この問題が引き続き発生する場合は、管理者または技術サポートにお問い合わせください" というエラーがユーザーに表示された場合は、既定の RDP アクセス許可を変更する既存のポリシーを確認してください。 このエラーを発生させる可能性があるポリシーの 1 つは、"リモート デスクトップ サービスを使ったログオンを許可" セキュリティ ポリシーです。
 
 このポリシーの詳細については、「[リモート デスクトップ サービスを使ったログオンを許可](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview-2019.md)」を参照してください。
-- Windows Virtual Desktop 環境でテナント/ホスト プールを作成しているときに発生した問題を解決するには、「[Tenant and host pool creation](troubleshoot-set-up-issues-2019.md)」 (テナントとホスト プールの作成) を参照してください。
-- Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration-2019.md) に関する記事を参照してください。
-- Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection-2019.md)に関するページを参照してください。
+- Azure Virtual Desktop のトラブルシューティングの概要とエスカレーション トラックについては、[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview-2019.md)に関する記事を参照してください。
+- Azure Virtual Desktop 環境でテナントとホスト プールを作成しているときに発生した問題のトラブルシューティングを行う場合は、[テナントとホスト プールの作成](troubleshoot-set-up-issues-2019.md)に関する記事を参照してください。
+- Azure Virtual Desktop で仮想マシン (VM) の構成中に発生した問題のトラブルシューティングを行う場合は、「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration-2019.md)」を参照してください。
+- Azure Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Azure Virtual Desktop サービスの接続](troubleshoot-service-connection-2019.md)に関するページを参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](../troubleshoot-client.md) に関するページを参照してください
-- Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell-2019.md)」を参照してください。
-- サービスの詳細については、[Windows Virtual Desktop 環境](environment-setup-2019.md)に関するページを参照してください。
+- Azure Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Azure Virtual Desktop PowerShell](troubleshoot-powershell-2019.md)」を参照してください。
+- サービスの詳細については、[Azure Virtual Desktop 環境](environment-setup-2019.md)に関するページを参照してください。
 - トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../../azure-resource-manager/templates/template-tutorial-troubleshoot.md)」を参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](../../azure-resource-manager/management/view-activity-logs.md)」をご覧ください。
+- 監査アクションについては、「 [リソース マネージャーの監査操作](../../azure-monitor/essentials/activity-log.md)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../../azure-resource-manager/templates/deployment-history.md)に関するページを参照してください。

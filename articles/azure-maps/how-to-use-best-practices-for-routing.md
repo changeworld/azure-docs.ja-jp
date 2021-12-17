@@ -1,19 +1,18 @@
 ---
 title: Microsoft Azure Maps での Azure Maps Route Service のベスト プラクティス
 description: Microsoft Azure Maps から Route Service を使用して車両をルーティングする方法について説明します。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 09/02/2020
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 8174529def5e3924086e49f36c225f07a4da2648
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 327747b731bfb26192f22631e23b4f3f7dc49cf3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99051653"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447172"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route Service のベスト プラクティス
 
@@ -87,7 +86,7 @@ Route Directions と Matrix API のいくつかの機能を示す比較を次に
 以下に示す最初の例では、作成時に、出発時刻が未来に設定されています。
 
 ```http
-https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=51.368752,-0.118332:51.385426,-0.128929&travelMode=car&traffic=true&departAt=2025-03-29T08:00:20&computeTravelTimeFor=all
+https://atlas.microsoft.com/route/directions/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&query=51.368752,-0.118332:51.385426,-0.128929&travelMode=car&traffic=true&departAt=2025-03-29T08:00:20&computeTravelTimeFor=all
 ```
 
 応答には、次のような summary 要素が含まれます。 出発時刻が未来に設定されているため、**trafficDelayInSeconds** 値は 0 になります。 **travelTimeInSeconds** 値は時間に依存する履歴の交通情報データを使用して計算される推定移動時間です。 そのため、この場合の **travelTimeInSeconds** 値は **historicTrafficTravelTimeInSeconds** 値と等しくなります。
@@ -110,7 +109,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 次の 2 番目の例では、出発時刻が現在である、リアルタイムのルート指定要求を使用しています。 これは既定値であるため、URL で明示的に指定されていません。
 
 ```http
-https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
+https://atlas.microsoft.com/route/directions/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
 応答には、次のような summary が含まれています。 渋滞のため、**trafficDelaysInSeconds** 値は 0 より大きくなっています。 また、**historicTrafficTravelTimeInSeconds** よりも大きくなっています。
@@ -161,7 +160,7 @@ Azure Maps Routing API は、商用車両のルート指定をサポートして
 以下のサンプル要求では、商用トラックのルートを照会します。 トラックは、クラス 1 の危険廃棄物を運搬しています。
 
 ```http
-https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass1&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
+https://atlas.microsoft.com/route/directions/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass1&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
 Route API は、トラックの寸法と危険廃棄物に対応する道順を返します。 `guidance` 要素を展開すると、ルート指示を確認できます。
@@ -173,7 +172,7 @@ Route API は、トラックの寸法と危険廃棄物に対応する道順を�
 上記のクラスから USHazmatClass を変更すると、この変更に対応する別のルートが得られます。
 
 ```http
-https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass9&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
+https://atlas.microsoft.com/route/directions/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass9&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
 以下の応答は、クラス 9 の危険物 (クラス 1 の危険物よりも危険性が低い) を運搬するトラックの場合です。 `guidance` 要素を展開して道順を確認すると、道順が同じではないことがわかります。 クラス 1 の危険物を運搬するトラックには、より多くのルート指示があります。
@@ -193,7 +192,7 @@ Azure Maps Route Direction API を使用すると、開発者は要求に `secti
 次のクエリでは `sectionType` を `traffic` に設定します。 シアトルからサンディエゴまでの交通情報を含む区間を要求します。
 
 ```http
-https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&sectionType=traffic&query=47.6062,-122.3321:32.7157,-117.1611
+https://atlas.microsoft.com/route/directions/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&sectionType=traffic&query=47.6062,-122.3321:32.7157,-117.1611
 ```
 
 応答には、指定された座標に沿った交通情報に適した区間が含まれています。
@@ -221,7 +220,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 次のクエリでは、`computeBestOrder` パラメーターを `false` に設定して、6 つのウェイポイントに対するパスを要求しています。 これは、`computeBestOrder` パラメーターの既定値でもあります。
 
 ```http
-https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=false&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
+https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&computeBestOrder=false&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
 ```
 
 応答では、パスの長さが 140,851 m であること、そのパスを移動するのに 9,991 秒かかることが示されます。
@@ -232,8 +231,6 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 ![最適化されていない図](media/how-to-use-best-practices-for-routing/non-optimized-image-img.png)
 
-
-
 このルートのウェイポイントの順序は次のとおりです。0、1、2、3、4、5、および 6。
 
 ### <a name="sample-query"></a>サンプル クエリ
@@ -241,7 +238,7 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 次のクエリでは、上記のサンプルのように、同じ 6 つのウェイポイントのパスを要求しています。 今回は、`computeBestOrder` パラメーターを `true` (巡回セールスマン最適化) に設定します。
 
 ```http
-https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=true&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
+https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&computeBestOrder=true&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
 ```
 
 応答では、パスの長さが 91,814 m であること、そのパスを移動するのに 7,797 秒かかることが示されます。 API が最適化されたルートを返したため、移動距離と移動時間はどちらも低下します。

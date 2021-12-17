@@ -6,17 +6,18 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: recovery
 ms.topic: tutorial
-ms.date: 11/05/2020
+ms.date: 05/18/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fd5d8c3e2c6e4ee5556568ebd23ac99b48300e9d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: a79a3d87fb7937c01896a30076385e86c65ad4bc
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382032"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691725"
 ---
 # <a name="tutorial-enable-disaster-recovery-for-windows-vms"></a>チュートリアル:Windows VM のディザスター リカバリーを有効にする
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 このチュートリアルでは、Windows を実行する Azure VM のディザスター リカバリーを設定する方法について説明します。 この記事では、次のことについて説明します:
 
@@ -37,21 +38,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         - 選択した仮想ネットワーク内に VM を作成する。
         - Azure Storage アカウントに書き込む。
         - Azure マネージド ディスクに書き込む。
-    - コンテナーにおける Site Recovery の操作を管理するための "Site Recovery 共同作成者" 組み込みロール。 
+    - コンテナーにおける Site Recovery の操作を管理するための "Site Recovery 共同作成者" 組み込みロール。
 3. Windows Server 2012 以降を実行する Windows VM の使用をお勧めします。 このチュートリアルの目的上、VM ディスクは暗号化しないでください。
 4. VM のアウトバウンド接続で URL ベースのプロキシが使用されている場合、次の URL にアクセスできることを確認します。 認証済みプロキシの使用はサポートされていません。
 
     **名前** | **パブリック クラウド** | **政府機関向けクラウド** | **詳細**
     --- | --- | --- | ---
-    ストレージ | `*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`| VM からソース リージョンのキャッシュ ストレージ アカウントへのデータの書き込み。 
-    Azure AD  | `login.microsoftonline.com` | `login.microsoftonline.us`| Site Recovery サービスの URL に対する承認と認証。 
-    レプリケーション | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`  |VM と Site Recovery サービスの通信。 
-    Service Bus | `*.servicebus.windows.net` | `*.servicebus.usgovcloudapi.net` | VM から Site Recovery への監視データおよび診断データの書き込み。 
+    ストレージ | `*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`| VM からソース リージョンのキャッシュ ストレージ アカウントへのデータの書き込み。
+    Azure AD  | `login.microsoftonline.com` | `login.microsoftonline.us`| Site Recovery サービスの URL に対する承認と認証。
+    レプリケーション | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`  |VM と Site Recovery サービスの通信。
+    Service Bus | `*.servicebus.windows.net` | `*.servicebus.usgovcloudapi.net` | VM から Site Recovery への監視データおよび診断データの書き込み。
 
 4. ネットワーク セキュリティ グループ (NSG) を使用して VM のネットワーク トラフィックを制限している場合は、次のサービス タグ (IP アドレスのグループ) を使用して VM のアウトバウンド接続 (HTTPS 443) を許可する NSG ルールを作成します。 ルールは、まずテスト NSG で試してください。
 
-    **Tag** | **許可** 
-    --- | --- 
+    **Tag** | **許可**
+    --- | ---
     Storage タグ | VM からキャッシュ ストレージ アカウントへのデータの書き込みを許可します。
     Azure AD タグ | Azure AD に対応するすべての IP アドレスへのアクセスを許可します。
     EventsHub タグ | Site Recovery 監視へのアクセスを許可します。
@@ -70,17 +71,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 5. **[Recovery Services コンテナー]** で、レプリケーションに使用するコンテナーを選択します。 コンテナーがない場合は、 **[新規作成]** を選択します。 コンテナーを配置するリソース グループと、コンテナー名を選択します。
 6. **[Site Recovery policy]\(Site Recovery ポリシー\)** で、既定のポリシーをそのまま使用するか、 **[新規作成]** を選択してカスタム値を設定します。
 
-    - 復旧ポイントは、特定の時点で取得された VM のディスクのスナップショットから作成されます。 VM をフェールオーバーするときは、復旧ポイントを使用してターゲット リージョンに VM を復元します。 
-    - クラッシュ整合性復旧ポイントは、5 分ごとに作成されます。 この設定を変更することはできません。 クラッシュ整合性スナップショットでは、スナップショットが作成されたときにディスクにあったデータがキャプチャされます。 メモリ内のものは含まれません。 
+    - 復旧ポイントは、特定の時点で取得された VM のディスクのスナップショットから作成されます。 VM をフェールオーバーするときは、復旧ポイントを使用してターゲット リージョンに VM を復元します。
+    - クラッシュ整合性復旧ポイントは、5 分ごとに作成されます。 この設定を変更することはできません。 クラッシュ整合性スナップショットでは、スナップショットが作成されたときにディスクにあったデータがキャプチャされます。 メモリ内のものは含まれません。
     - 既定では、Site Recovery では 24 時間分のクラッシュ整合性復旧ポイントが保持されます。 0 から 72 時間の範囲でカスタム値を設定できます。
-    - アプリ整合性スナップショットは、4 時間ごとに作成されます。 アプリ整合性スナップショット 
+    - アプリ整合性スナップショットは、4 時間ごとに作成されます。 アプリ整合性スナップショット
     - 既定では、Site Recovery では 24 時間分の復旧ポイントが格納されます。
 
 7. **[可用性オプション]** で、VM をスタンドアロンとしてデプロイするか、可用性ゾーンまたは可用性セットにデプロイするかを指定します。
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/create-vm.png" alt-text="VM の管理プロパティのページでレプリケーションを有効にする。":::
+    :::image type="content" source="./media/tutorial-disaster-recovery/create-vm.png" alt-text="VM の管理プロパティのページでレプリケーションを有効にする。"
 
 8. VM の作成を完了します。
+
+>[!NOTE]
+> Windows VM の作成時にレプリケーションを有効にすると、OS ディスクだけが複製されます。 データ ディスクはご自分で初期化する必要があります。その後、Azure Site Recovery によって自動的に複製されます。
 
 ## <a name="enable-disaster-recovery-for-an-existing-vm"></a>既存の VM のディザスター リカバリーを有効にする
 
@@ -131,7 +135,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. VM のプロパティ ページを開きます。
 2. **[操作]** で、 **[ディザスター リカバリー]** を選択します。
 3. **[要点]** セクションを展開し、コンテナー、レプリケーション ポリシー、ターゲット設定の既定値を確認します。
-4. **[正常性と状態]** で、VM のレプリケーション状態、エージェントのバージョン、フェールオーバーの準備、最新の復旧ポイントに関する情報を把握します。 
+4. **[正常性と状態]** で、VM のレプリケーション状態、エージェントのバージョン、フェールオーバーの準備、最新の復旧ポイントに関する情報を把握します。
 
     :::image type="content" source="./media/tutorial-disaster-recovery/essentials.png" alt-text="VM のディザスター リカバリーの [要点] ビュー。":::
 
@@ -142,22 +146,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="run-a-drill"></a>訓練を実施する
 
-ディザスター リカバリーが正しく機能することを確認するための訓練を実施します。 テスト フェールオーバーを実行すると、進行中のレプリケーションや運用環境に影響を及ぼすことなく、VM のコピーが作成されます。 
+ディザスター リカバリーが正しく機能することを確認するための訓練を実施します。 テスト フェールオーバーを実行すると、進行中のレプリケーションや運用環境に影響を及ぼすことなく、VM のコピーが作成されます。
 
 1. VM のディザスター リカバリー ページで **[テスト フェールオーバー]** を選択します。
 2. **[テスト フェールオーバー]** の [復旧ポイント] は、既定の設定である **[Latest processed (low RPO)]\(最後に処理があった時点 (低 RPO)\)** のままにします。
 
    これは回復ポイントの目標 (RPO) が最も短くなるオプションであり、一般に、ターゲット VM のスピンアップにかかる時間が最短となります。 これは、Site Recovery サービスに送信されたすべてのデータを最初に処理して、各 VM の復旧ポイントを作成してから、それにフェールオーバーします。 この復旧ポイントには、フェールオーバーがトリガーされたときに Site Recovery にレプリケートされたすべてのデータが含まれます。
 
-3. フェールオーバー後に VM が配置される仮想ネットワークを選択します。 
+3. フェールオーバー後に VM が配置される仮想ネットワークを選択します。
 
      :::image type="content" source="./media/tutorial-disaster-recovery/test-failover-settings.png" alt-text="テスト フェールオーバーのオプションを設定するためのページ。":::
 
 4. テスト フェールオーバーの処理が開始されます。 進行状況は [通知] で監視できます。
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/test-failover-notification.png" alt-text="テスト フェールオーバーの通知。"::: 
-    
-   テスト フェールオーバーが完了すると、 **[要点]** ページに表示される VM の状態が *[テスト フェールオーバーのクリーンアップが保留中]* になります。 
+    :::image type="content" source="./media/tutorial-disaster-recovery/test-failover-notification.png" alt-text="テスト フェールオーバーの通知。":::
+
+   テスト フェールオーバーが完了すると、 **[要点]** ページに表示される VM の状態が *[テスト フェールオーバーのクリーンアップが保留中]* になります。
 
 
 
@@ -167,15 +171,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 自動クリーンアップを開始するには、 **[テスト フェールオーバーのクリーンアップ]** を選択します。
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/start-cleanup.png" alt-text="[要点] ページでクリーンアップを開始する。"::: 
+    :::image type="content" source="./media/tutorial-disaster-recovery/start-cleanup.png" alt-text="[要点] ページでクリーンアップを開始する。":::
 
 2. **[テスト フェールオーバーのクリーンアップ]** で、フェールオーバーに関して何か記録しておきたいメモがあれば入力し、 **[テストが完了しました。テスト フェールオーバー仮想マシンを削除してください]** を選択します。 **[OK]** をクリックします。
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/delete-test.png" alt-text="メモを記録してテスト VM を削除するためのページ。"::: 
+    :::image type="content" source="./media/tutorial-disaster-recovery/delete-test.png" alt-text="メモを記録してテスト VM を削除するためのページ。":::
 
 7. 削除処理が開始されます。 進行状況は [通知] で監視できます。
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/delete-test-notification.png" alt-text="テスト VM の削除を監視するための [通知]。"::: 
+    :::image type="content" source="./media/tutorial-disaster-recovery/delete-test-notification.png" alt-text="テスト VM の削除を監視するための [通知]。":::
 
 ### <a name="stop-replicating-the-vm"></a>VM のレプリケートを停止する
 
@@ -190,10 +194,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. VM のディザスター リカバリー ページで **[レプリケーションの無効化]** を選択します。
 2. **[レプリケーションの無効化]** で、レプリケーションを無効にする理由を選択します。 **[OK]** をクリックします。
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/disable-replication.png" alt-text="レプリケーションを無効にして理由を入力するためのページ。"::: 
+    :::image type="content" source="./media/tutorial-disaster-recovery/disable-replication.png" alt-text="レプリケーションを無効にして理由を入力するためのページ。":::
 
 
-レプリケーションの過程で VM にインストールされた Site Recovery 拡張機能は、自動的には削除されません。 VM のレプリケーションを無効にし、その後もレプリケートする予定がない場合は、次の手順に従って Site Recovery 拡張機能を手動で削除できます。 
+レプリケーションの過程で VM にインストールされた Site Recovery 拡張機能は、自動的には削除されません。 VM のレプリケーションを無効にし、その後もレプリケートする予定がない場合は、次の手順に従って Site Recovery 拡張機能を手動で削除できます。
 
 1. [VM] > **[設定]**  >  **[拡張機能]** に移動します。
 2. **[拡張機能]** ページで、Linux に該当する *Microsoft.Azure.RecoveryServices* の各エントリを選択します。

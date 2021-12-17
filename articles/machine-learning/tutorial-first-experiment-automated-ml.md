@@ -1,45 +1,45 @@
 ---
-title: 自動 ML 分類モデルを作成する
+title: 'チュートリアル: コードなし分類モデルを AutoML でトレーニングする'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の自動機械学習 (自動 ML) インターフェイスを使用して、コードを記述せずに分類モデルをトレーニングしてデプロイする
+description: スタジオ UI で Azure Machine Learning 自動 ML を使用して、コードを 1 行も記述せずに分類モデルをトレーニングします。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 12/21/2020
-ms.custom: automl
-ms.openlocfilehash: d0e236891e48a20adf1901d2f95a90ae25969c49
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 10/21/2021
+ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 6c080e89dab3193f373b0a1e194cb18661132bbd
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210848"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559620"
 ---
-# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する
+# <a name="tutorial-train-a-classification-model-with-no-code-automl-in-the-azure-machine-learning-studio"></a>チュートリアル: Azure Machine Learning スタジオでコードなし AutoML を使用して分類モデルをトレーニングする
 
-Azure Machine Learning スタジオで自動機械学習を使用して、1 行のコードも記述せずに[単純な分類モデル](concept-automated-ml.md#classification)を作成する方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
+Azure Machine Learning スタジオで Azure Machine Learning 自動 ML を使用して、コードなし AutoML により分類モデルをトレーニングする方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
 
-自動機械学習を使用することで、時間がかかるタスクを自動化することができます。 自動機械学習では、アルゴリズムとハイパーパラメーターのさまざまな組み合わせをすばやく反復し、選択された成功のメトリックに基づいて最適なモデルを効率的に発見します。
+自動 ML を使用すると、時間がかかるタスクを自動化することができます。 自動機械学習では、アルゴリズムとハイパーパラメーターのさまざまな組み合わせをすばやく反復し、選択された成功のメトリックに基づいて最適なモデルを効率的に発見します。
 
 このチュートリアルではコードを一切記述しません。スタジオのインターフェイスを使用してトレーニングを実行します。  次のタスクを実行する方法について説明します。
 
 > [!div class="checklist"]
 > * Azure Machine Learning ワークスペースを作成します。
 > * 自動機械学習の実験を実行します。
-> * 実験の詳細を表示します。
-> * モデルをデプロイします。
+> * モデルの詳細を調べる。
+> * 推奨モデルをデプロイする。
 
 他のタイプのモデルについても、自動機械学習を試してみましょう。
 
 * ノー コードの予測の例については、[需要予測と AutoML に関するチュートリアル](tutorial-automated-ml-forecast.md)を参照してください。
-* コード ファーストの回帰モデルの例については、「[チュートリアル: 自動機械学習を使用してタクシー料金を予測する](tutorial-auto-train-models.md)」を参照してください。
+* 回帰モデルの Code First の例については、[チュートリアル: AutoML での回帰モデル](tutorial-auto-train-models.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://aka.ms/AMLFree)を作成してください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 * [**bankmarketing_train.csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) データ ファイルをダウンロードします。 **[y]** 列では、このチュートリアルの予測対象列として後で識別される定期預金に顧客が申し込んだかどうかが示されます。 
 
@@ -47,7 +47,7 @@ Azure Machine Learning スタジオで自動機械学習を使用して、1 行�
 
 Azure Machine Learning ワークスペースは、機械学習モデルを実験、トレーニング、およびデプロイするために使用する、クラウドでの基本的なリソースです。 ワークスペースは、Azure サブスクリプションとリソース グループを、サービス内の簡単に使用できるオブジェクトに結び付けます。 
 
-[ワークスペースを作成する方法](how-to-manage-workspace.md)は多数あります。 このチュートリアルでは、Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用してワークスペースを作成します。
+<bpt id="p1">[</bpt>ワークスペースを作成する方法<ept id="p1">](how-to-manage-workspace.md)</ept>は多数あります。 このチュートリアルでは、Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用してワークスペースを作成します。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
@@ -92,7 +92,7 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
 
     1. 左下の **[次へ]** を選択して、ワークスペースの作成時に自動的に設定された既定のコンテナーにアップロードします。  
     
-       アップロードが完了すると、ファイルの種類に基づいて [Settings and preview]\(設定とプレビュー\) フォームが事前設定されます。 
+       アップロードが完了すると、ファイルの種類に基づいて **[Settings and preview]\(設定とプレビュー\)** フォームが事前設定されます。 
        
     1. **[Settings and preview]\(設定とプレビュー\)** フォームが次のように設定されていることを確認し、 **[次へ]** を選択します。
         
@@ -127,8 +127,10 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
 
     1. 予測するターゲット列として、 **[y]** を選択します。 この列には、クライアントが定期預金を申し込むかどうかが示されます。
     
-    1. **[+Create a new compute]\(+ 新しいコンピューティングの作成\)** を選択し、コンピューティング先を構成します。 コンピューティング先とは、トレーニング スクリプトを実行したりサービスのデプロイをホストしたりするために使用されるローカルまたはクラウド ベースのリソース環境です。 この実験では、クラウド ベースのコンピューティングを使用します。 
-        1. **[仮想マシン]** フォームに必要事項を入力してコンピューティングを設定します。
+    1. コンピューティングの種類として **[コンピューティング クラスター]** を選択します。 
+    
+    1.  **[+新規]** では、ストレージおよびコンピューティング ターゲットを構成します。 コンピューティング先とは、トレーニング スクリプトを実行したりサービスのデプロイをホストしたりするために使用されるローカルまたはクラウド ベースのリソース環境です。 この実験では、クラウド ベースのコンピューティングを使用します。 
+        1. **[仮想マシンの選択]** フォームに必要事項を入力してコンピューティングを設定します。
 
             フィールド | 説明 | チュートリアルの値
             ----|---|---
@@ -142,7 +144,7 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
             ----|---|---
             コンピューティング名 |  コンピューティング コンテキストを識別する一意名。 | automl-compute
             最小/最大ノード| データをプロファイリングするには、1 つ以上のノードを指定する必要があります。|最小ノード: 1<br>最大ノード: 6
-            スケール ダウンする前のアイドル時間 (秒) | クラスターが最小ノード数に自動的にスケールダウンされるまでのアイドル時間。|120 (既定値)
+            スケール ダウンする前のアイドル時間 (秒) | クラスターが最小ノード数に自動的にスケールダウンされるまでのアイドル時間。|1800 (既定値)
             詳細設定 | 実験用の仮想ネットワークを構成および承認するための設定。| なし               
 
         1. **[作成]** を選択してコンピューティング先を作成します。 

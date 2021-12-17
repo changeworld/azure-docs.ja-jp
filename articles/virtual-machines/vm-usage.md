@@ -10,18 +10,21 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: ba973bd5609dacf05eca842025d4e828d8a9f841
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 776daa5b97d5e6957956e1bccabb8c8b1fe5917f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550949"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694350"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure 仮想マシンの使用量について
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 柔軟なスケール セット :heavy_check_mark: 均一のスケール セット
+
 Azure の使用量のデータを分析すると、消費額に関して説得力のある裏付けを得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure Compute の消費額について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](../cost-management-billing/understand/review-individual-bill.md)に関するページをご覧ください。
 
 ## <a name="download-your-usage-details"></a>使用量の詳細のダウンロード
-最初に、[使用量の詳細をダウンロード](../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)します。 次の表は、Azure Resource Manager を使用してデプロイされた Virtual Machines の使用量の定義とサンプル値を示しています。 このドキュメントには、クラシック モデルを使用してデプロイされた VM に関する詳細情報は含まれません。
+最初に、[使用量の詳細をダウンロード](../cost-management-billing/understand/download-azure-daily-usage.md)します。 次の表は、Azure Resource Manager を使用してデプロイされた Virtual Machines の使用量の定義とサンプル値を示しています。 このドキュメントには、クラシック モデルを使用してデプロイされた VM に関する詳細情報は含まれません。
 
 
 | フィールド | 意味 | サンプル値 | 
@@ -38,7 +41,7 @@ Azure の使用量のデータを分析すると、消費額に関して説得�
 | リソース グループ | デプロイされたリソースが実行されるリソース グループ。 詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」を参照してください。|`MyRG`|
 | インスタンス ID | リソースの識別子。 識別子には、リソースの作成時に指定した名前が含まれています。 VM については、インスタンス ID には、SubscriptionId、ResourceGroupName、および VMName (または、スケール セットの使用量についてはスケール セット名) が含まれます。| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>or<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
 | Tags| この列には、ユーザーが指定したリソース タグが含まれます。 タグは、課金記録のグループ化に使用できます。 [CLI](./tag-cli.md) または [PowerShell](./tag-portal.md) を使用して仮想マシンにタグを付ける方法について学習してください。これは、Resource Manager VM でのみ使用できます。| `{"myDepartment":"RD","myUser":"myName"}`|
-| 追加情報 | サービス固有のメタデータ。 VM については、追加情報フィールドに次のデータが設定されます。 <br><br> イメージの種類: 実行した特定のイメージ。 以下の「イメージの種類」で、サポートされている文字列の完全な一覧を確認してください。<br><br> サービスの種類: デプロイしたサイズ。<br><br> VMName: VM の名前。 このフィールドは、スケール セット VM にのみ設定されます。 スケール セット VM の VM 名が必要な場合は、上記のインスタンス ID 文字列で確認できます。<br><br> UsageType: これが表す使用量の種類を指定します。<br><br> ComputeHR は、Standard_D1_v2 など、基になる VM のコンピューティング時間の使用量です。<br><br> ComputeHR_SW は、VM が Microsoft R Server などの Premium ソフトウェアを使用している場合の、Premium ソフトウェア料金です。 | Virtual Machines<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Virtual Machine Scale Sets<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Premium ソフトウェア<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
+| 追加情報 | サービス固有のメタデータ。 VM については、追加情報フィールドに次のデータが設定されます。 <br><br> イメージの種類: 実行した特定のイメージ。 以下の「イメージの種類」で、サポートされている文字列の完全な一覧を確認してください。<br><br> サービスの種類: デプロイしたサイズ。<br><br> VMName: VM の名前。 このフィールドは、スケール セット VM にのみ設定されます。 スケール セット VM の VM 名が必要な場合は、上記のインスタンス ID 文字列で確認できます。<br><br> UsageType: これが表す使用量の種類を指定します。<br><br> ComputeHR は、Standard_D1_v2 など、基になる VM のコンピューティング時間の使用量です。<br><br> ComputeHR_SW は、VM が Premium ソフトウェアを使用している場合の、Premium ソフトウェア料金です。 | Virtual Machines<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Virtual Machine Scale Sets<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Premium ソフトウェア<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
 
 ## <a name="image-type"></a>イメージの種類
 Azure ギャラリーの一部のイメージについては、イメージの種類が [追加情報] フィールドに設定されます。 これにより、ユーザーが仮想マシンにデプロイしたものを理解し、追跡できます。 デプロイしたイメージに基づいて、このフィールドに設定される値は次のとおりです。
@@ -130,7 +133,7 @@ Microsoft.ClassicCompute は、Azure Service Manager を使ってデプロイし
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>仮想マシンの使用量に対して、[InstanceID] フィールドが空白になるのはなぜですか。
 クラシック デプロイ モデルでデプロイする場合、InstanceID 文字列は使用できません。
 ### <a name="why-are-the-tags-for-my-vms-not-flowing-to-the-usage-details"></a>VM のタグが使用量の詳細に表示されないのはなぜですか。
-タグは、Resource Manager VM の使用量 CSV にのみ表示されます。 クラシック リソース タグは、使用量の詳細では使用できません。
+タグは、Resource Manager VM の使用量 CSV に表示されます。 クラシック リソース タグは、使用量の詳細では使用できません。
 ### <a name="how-can-the-consumed-quantity-be-more-than-24-hours-one-day"></a>どのような場合に使用量が 1 日につき 24 時間を超えますか。
 クラシック モデルでは、リソースに対する請求は、クラウド サービス レベルで集計されます。 同じ請求測定が使用されているクラウド サービスに、複数の VM がある場合、使用量は一緒に集計されます。 Resource Manager でデプロイされた VM は、VM レベルで請求されるため、この集計は適用されません。
 ### <a name="why-is-pricing-not-available-for-dsfsgsls-sizes-on-the-pricing-page"></a>DS/FS/GS/LS サイズに対する価格が、価格ページにないのはなぜですか。

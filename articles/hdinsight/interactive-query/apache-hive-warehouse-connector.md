@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 57a3d76f24c33984a883e926a8d4c68736e9f121
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 989b59d6cf8a12a5ddb8079fe04be8023dd672a2
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869890"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190054"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight で Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -58,11 +58,11 @@ Hive Warehouse Connector には、Spark ワークロードと Interactive Query 
 
 1. Web ブラウザーで `https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE` に移動します。ここで、LLAPCLUSTERNAME は Interactive Query クラスターの名前です。
 
-1. **[概要]**  >  **[HiveServer2 Interactive JDBC URL]** の順に移動し、値を書き留めます。 値は次のようになります。`jdbc:hive2://zk0-iqgiro.rekufuk2y2ce.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2ce.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2ce.bx.internal.cloudapp.net:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2-interactive`
+1. **[概要]**  >  **[HiveServer2 Interactive JDBC URL]** の順に移動し、値を書き留めます。 値は次のようになります。`jdbc:hive2://<zookeepername1>.rekufuk2y2ce.bx.internal.cloudapp.net:2181,<zookeepername2>.rekufuk2y2ce.bx.internal.cloudapp.net:2181,<zookeepername3>.rekufuk2y2ce.bx.internal.cloudapp.net:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2-interactive`
 
-1. **[Configs]**  >  **[Advanced]**  >  **[Advanced hive-site]**  >  **[hive.zookeeper.quorum]** の順に移動し、値を書き留めます。 値は次のようになります。`zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`
+1. **[Configs]**  >  **[Advanced]**  >  **[Advanced hive-site]**  >  **[hive.zookeeper.quorum]** の順に移動し、値を書き留めます。 値は次のようになります。`<zookeepername1>.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,<zookeepername2>.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,<zookeepername3>.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`
 
-1. **[Configs]**  >  **[Advanced]**  >  **[General]**  >  **[hive.metastore.uris]** の順に移動し、値を書き留めます。 値は次のようになります。`thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`
+1. **[Configs]**  >  **[Advanced]**  >  **[General]**  >  **[hive.metastore.uris]** の順に移動し、値を書き留めます。 値は次のようになります。`thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn*.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`
 
 1. **[Configs]**  >  **[Advanced]**  >  **[Advanced hive-interactive-site]**  >  **[hive.llap.daemon.service.hosts]** の順に移動し、値を書き留めます。 値は次のようになります。`@llap0`
 
@@ -109,7 +109,7 @@ Enterprise セキュリティ パッケージ (ESP) を使用すると、Active 
 
         :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="Hive Warehouse Connector の AAD ドメイン" border="true":::
 
-    * たとえば、`hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` です。
+    * たとえば、`hive/hn*.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` です。
     
 1. 変更を保存し、必要に応じてコンポーネントを再起動します。
 

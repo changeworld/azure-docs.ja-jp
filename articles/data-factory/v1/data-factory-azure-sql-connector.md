@@ -3,16 +3,17 @@ title: Azure SQL Database との間でデータをコピーする
 description: Azure Data Factory を使用して Azure SQL Database に、または Azure SQL Database からデータをコピーする方法を説明します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 738b875a273faddd20a67be0f6feb90825f66c9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a194a6ceb9445e695435882527245f76ca73c7e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370514"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226491"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -27,11 +28,11 @@ ms.locfileid: "100370514"
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 **Azure SQL Database から** 以下のデータ ストアにデータをコピーできます。
 
-[!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sinks](includes/data-factory-supported-sinks.md)]
 
 以下のデータ ストアから **Azure SQL Database に** データをコピーできます。
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-authentication-type"></a>サポートされている認証の種類
 Azure SQL Database コネクタは基本認証をサポートしています。
@@ -633,7 +634,7 @@ Azure SQL Database との間でデータを移動するとき、SQL 型から .N
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |ブール型 |
 | char |String, Char[] |
 | date |DateTime |
 | Datetime |DateTime |
@@ -659,7 +660,7 @@ Azure SQL Database との間でデータを移動するとき、SQL 型から .N
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
-| UNIQUEIDENTIFIER |Guid |
+| UNIQUEIDENTIFIER |GUID |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |xml |

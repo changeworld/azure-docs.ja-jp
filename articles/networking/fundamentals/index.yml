@@ -1,0 +1,143 @@
+### YamlMime:Landing
+title: Azure ネットワークの基礎に関するドキュメント
+summary: Azure ネットワーク サービスを使用すると、Azure リソースとオンプレミス リソースにアクセスして接続し、Azure ネットワーク内のアプリケーションを保護、配信、監視できます。
+metadata:
+  title: Azure ネットワークの基礎に関するドキュメント
+  description: Azure リソース間の接続とオンプレミス ネットワークから Azure リソースへの接続を提供し、ネットワーク リソースの保護に役立ち、アプリケーションの配信をスケーリングし、ネットワークの監視に役立つ Azure のネットワーク サービスについて説明します。
+  ms.service: networking
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 03/30/2021
+  ms.openlocfilehash: d3403f7372a2851d68b94ba9ad127f464fe9bfbf
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131084485"
+landingContent:
+- title: Azure ネットワークについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure ネットワークとは
+      url: networking-overview.md
+  - linkListType: concept
+    links:
+    - text: Microsoft グローバル ネットワークとは
+      url: ../microsoft-global-network.md
+  - linkListType: learn
+    links:
+    - text: Azure でのネットワーク インフラストラクチャの構築
+      url: /learn/paths/architect-network-infrastructure/
+    - text: Azure ネットワーク サービスの詳細
+      url: /learn/modules/azure-networking-fundamentals/
+- title: はじめに
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Virtual Network とは
+      url: ../../virtual-network/virtual-networks-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 仮想ネットワークの作成
+      url: ../../virtual-network/quick-create-portal.md
+- title: インターネットとの通信
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: パブリック IP アドレスとは
+      url: ../../virtual-network/virtual-networks-overview.md
+    - text: 仮想ネットワーク NAT Gateway とは
+      url: ../../virtual-network/nat-gateway/nat-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: パブリック IP アドレスの作成
+      url: ../../virtual-network/ip-services/create-public-ip-portal.md
+    - text: NAT ゲートウェイを作成する
+      url: ../../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md
+  - linkListType: learn
+    links:
+    - text: Azure デプロイの IP アドレス指定スキーマを設計する
+      url: /learn/modules/design-ip-addressing-for-azure/
+- title: 仮想ネットワークの接続
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 仮想ネットワーク ピアリング
+      url: ../../virtual-network/virtual-network-peering-overview.md
+  - linkListType: tutorial
+    links:
+    - text: 仮想ネットワーク ピアリングを使用した仮想ネットワークの接続
+      url: ../../virtual-network/tutorial-connect-virtual-networks-portal.md
+- title: ネットワーク リソースへのプライベート アクセス
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure プライベート エンドポイントとは
+      url: ../../private-link/private-endpoint-overview.md
+  - linkListType: tutorial
+    links:
+    - text: プライベート エンドポイントを作成する
+      url: ../../private-link/create-private-endpoint-portal.md
+- title: アプリケーションの負荷分散
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ネットワーク ロード バランサー
+      url: ../../load-balancer/load-balancer-overview.md
+    - text: セキュリティで保護されたクラウド CDN とグローバル ロード バランサー
+      url: ../../frontdoor/front-door-overview.md
+    - text: Web アプリケーション ロード バランサー
+      url: ../../application-gateway/overview.md
+    - text: DNS ベースのロード バランサー
+      url: ../../traffic-manager/traffic-manager-overview.md
+  - linkListType: tutorial
+    links:
+    - text: ネットワーク ロード バランサーの作成
+      url: ../../load-balancer/quickstart-load-balancer-standard-public-portal.md
+    - text: セキュリティで保護されたクラウド CDN とグローバル ロード バランサーのデプロイ
+      url: ../../frontdoor/quickstart-create-front-door.md
+    - text: Web アプリケーション ロード バランサーの作成
+      url: ../../application-gateway/quick-create-portal.md
+    - text: DNS ベースのロード バランサーの作成
+      url: ../../traffic-manager/quickstart-create-traffic-manager-profile.md
+- title: 仮想ネットワークをセキュリティで保護する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ネットワーク セキュリティ グループ
+      url: ../../virtual-network/network-security-groups-overview.md
+    - text: Azure DDoS Protection Standard
+      url: ../../ddos-protection/ddos-protection-overview.md
+    - text: Azure Firewall
+      url: ../../firewall/overview.md
+  - linkListType: tutorial
+    links:
+    - text: PaaS リソースへのネットワーク アクセスを制限する
+      url: ../../virtual-network/tutorial-restrict-network-access-to-resources.md
+    - text: Azure DDoS Protection Standard の作成と構成
+      url: ../../ddos-protection/manage-ddos-protection.md
+    - text: Azure Firewall をデプロイして構成する
+      url: ../../firewall/tutorial-firewall-deploy-portal.md
+  - linkListType: learn
+    links:
+    - text: Azure のネットワーク接続をセキュリティで保護する
+      url: /learn/modules/secure-network-connectivity-azure/
+- title: オンプレミス ネットワークを仮想ネットワークに接続する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: VPN 接続 - VPN Gateway
+      url: ../../vpn-gateway/vpn-gateway-about-vpngateways.md
+    - text: 専用のプライベート接続 - ExpressRoute
+      url: ../../expressroute/expressroute-introduction.md
+    - text: VPN と専用のプライベート接続 - Virtual WAN
+      url: ../../virtual-wan/virtual-wan-about.md
+  - linkListType: tutorial
+    links:
+    - text: オンプレミス ネットワークを仮想ネットワークに接続する - VPN の暗号化
+      url: ../../vpn-gateway/tutorial-site-to-site-portal.md
+    - text: ExpressRoute を使用してオンプレミス ネットワークを Azure に拡張する
+      url: ../../expressroute/expressroute-howto-circuit-portal-resource-manager.md

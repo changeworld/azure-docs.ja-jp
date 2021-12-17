@@ -3,19 +3,15 @@ title: 構成を Azure Automation State Configuration の複合リソースに�
 description: この記事では、構成を Azure Automation State Configuration の複合リソースに変換する方法について説明します。
 keywords: DSC, PowerShell, 構成, セットアップ
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgreenegit
-ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 5833308f03d328d988ac818d83ff5ee618a4c79c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c3fc5ece7eac812bdf60a310e7777ea411ab6b6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563574"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493459"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>構成を複合リソースに変換する
 
@@ -26,7 +22,7 @@ ms.locfileid: "103563574"
 
 - Web サーバーを作成する
 - DNS サーバーを作成する
-- SharePoint サーバーを作成する
+- SharePoint を実行するサーバーを作成する
 - SQL クラスターを構成する
 - ファイアウォール設定を管理する
 - パスワード設定を管理する

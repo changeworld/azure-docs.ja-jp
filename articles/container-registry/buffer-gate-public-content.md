@@ -4,13 +4,13 @@ description: Docker Hub やその他のパブリック コンテンツのパブ�
 author: dlepow
 ms.topic: article
 ms.author: danlep
-ms.date: 11/20/2020
-ms.openlocfilehash: 0c92899528d417f9c91f8f8930ca4932dc74e850
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/17/2021
+ms.openlocfilehash: 806cb6b49824db65744bc653c6c467c7a816a21e
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95024740"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983700"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Azure Container Registry を使用してパブリック コンテンツを管理する
 
@@ -85,9 +85,16 @@ az acr import \
 
 組織のニーズに応じて、専用レジストリか、または共有レジストリ内のリポジトリにインポートできます。
 
-## <a name="automate-application-image-updates"></a>アプリケーション イメージの更新を自動化する
+## <a name="update-image-references"></a>画像参照の更新
 
-アプリケーション イメージの開発者は、そのコードが、自分の制御下にあるローカル コンテンツを参照していることを確認する必要があります。 たとえば、Dockerfile の `Docker FROM` ステートメントは、パブリック レジストリではなく、プライベート基本イメージ レジストリ内のイメージを参照する必要があります。 
+アプリケーション イメージの開発者は、そのコードが、自分の制御下にあるローカル コンテンツを参照していることを確認する必要があります。
+
+* プライベート レジストリを使用するように画像参照を更新します。 たとえば、Dockerfile の `FROM baseimage:v1` ステートメントを `FROM myregistry.azurecr.io/mybaseimage:v1` に更新します。
+* プライベート レジストリを使用するように資格情報または認証メカニズムを構成します。 正しいメカニズムは、レジストリのアクセスに使用するツールと、ユーザー アクセスの管理方法によって変わります。
+    * Kubernetes クラスターまたは Azure Kubernetes Service を使用してレジストリにアクセスする場合、[認証シナリオ](authenticate-kubernetes-options.md)を参照してください。
+    * Azure コンテナー レジストリで認証するためのオプションについては、[こちら](container-registry-authentication.md)をご覧ください。
+
+## <a name="automate-application-image-updates"></a>アプリケーション イメージの更新を自動化する
 
 イメージのインポートを拡張して、基本イメージの更新時にアプリケーション イメージのビルドが自動的に行われるように [Azure Container Registry タスク](container-registry-tasks-overview.md)を設定します。 自動化されたビルド タスクでは、[基本イメージの更新](container-registry-tasks-base-images.md)と[ソース コードの更新](container-registry-tasks-overview.md#trigger-task-on-source-code-update)の両方を追跡できます。
 
@@ -97,7 +104,6 @@ az acr import \
 > タスクを 1 つ事前に構成しておくと、依存側の基本イメージを参照するすべてのアプリケーション イメージを自動的にリビルドできます。 
  
 ## <a name="next-steps"></a>次のステップ
- 
 * Azure でコンテナー イメージをビルド、実行、プッシュ、修正する [ACR タスク](container-registry-tasks-overview.md)の詳細について学習します。
 * 環境に合わせて基本イメージを更新するための自動化されたゲート ワークフローについては、「[Azure Container Registry タスクを使用してパブリック コンテンツを使用および保守する方法](tasks-consume-public-content.md)」を参照してください。 
 * イメージのビルドと更新を自動化するその他の例については、[ACR タスクのチュートリアル](container-registry-tutorial-quick-task.md)を参照してください。

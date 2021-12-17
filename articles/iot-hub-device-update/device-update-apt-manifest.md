@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/17/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 878748fcfc9b096e340b53c06969962af99f603f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 24c0d04b6a29b813dc23604594ca4b1b1235dc37
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561170"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373215"
 ---
 # <a name="device-update-apt-manifest"></a>デバイス更新プログラムの APT マニフェスト
 
@@ -21,7 +21,7 @@ APT マニフェストは、APT 更新ハンドラーに必要な更新の詳細
 
 ## <a name="overview"></a>概要
 
-APT マニフェストが更新プログラムとしてデバイス更新エージェントに配信されると、エージェントはマニフェストを処理し、必要な操作を実行します。 これらの操作には、APT マニフェスト ファイルに指定されたパッケージおよびその依存関係のダウンロードとインストールが含まれます。
+APT マニフェストが更新プログラムとしてデバイス更新エージェントに配信されると、エージェントはマニフェストを処理し、必要な操作を実行します。 必要な操作には、APT マニフェスト ファイルに指定されているパッケージとその依存関係を指定リポジトリからダウンロードし、インストールする作業が含まれます。
 
 デバイス更新プログラムは、APT UpdateType と APT 更新ハンドラーをサポートしています。 このサポートによりデバイス更新エージェントは、インストールされている Debian パッケージを評価し、必要なパッケージを更新することができます。 
 

@@ -2,16 +2,17 @@
 title: Azure SQL Managed Instance エージェントを使用して SSIS パッケージを実行する
 description: Azure SQL Managed Instance エージェントを使用して SSIS パッケージを実行する方法について説明します。
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.author: lle
-author: lle
+author: lrtoyou1223
 ms.date: 04/14/2020
-ms.openlocfilehash: 916d799ba08f46cb86ee2e22c4af7fc1b92b385f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b16cc04837fef57d5510d9c34be94f76dd87033d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386154"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730754"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Azure SQL Managed Instance エージェントを使用して SSIS パッケージを実行する
 
@@ -35,17 +36,17 @@ ms.locfileid: "100386154"
 1. 最新バージョンの SSMS で、SQL Managed Instance に接続します。
 1. 新しいエージェント ジョブと新しいジョブ ステップを作成します。 **[SQL Server エージェント]** 下で、 **[ジョブ]** フォルダーを右クリックして **[新しいジョブ]** を選択します。
 
-   ![新しいエージェント ジョブを作成するための選択](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png" alt-text="新しいエージェント ジョブを作成するための選択":::
 
 1. **[新しいジョブ ステップ]** ページで、種類として **[SQL Server Integration Services パッケージ]** を選択します。
 
-   ![新しい SSIS ジョブ ステップを作成するための選択](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png" alt-text="新しい SSIS ジョブ ステップを作成するための選択":::
 
 1. **[パッケージ]** タブで、パッケージの場所として **[SSIS カタログ]** を選択します。
 1. SSISDB は同じ SQL Managed Instance 内にあるため、認証を指定する必要はありません。
 1. SSISDB から SSIS パッケージを指定します。
 
-   ![パッケージ ソースの種類を選択した状態の [パッケージ] タブ](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png" alt-text="パッケージ ソースの種類を選択した状態の [パッケージ] タブ":::
 
 1. **[構成]** タブで、次の操作を実行できます。
   
@@ -53,7 +54,7 @@ ms.locfileid: "100386154"
    - **[接続マネージャー]** で値を上書きします。
    - プロパティをオーバーライドして、 **[詳細]** でログ記録レベルを選択します。
 
-   ![パッケージ ソースの種類を選択した状態の [構成] タブ](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png" alt-text="パッケージ ソースの種類を選択した状態の [構成] タブ":::
 
 1. **[OK]** を選択して、エージェント ジョブ構成を保存します。
 1. SSIS パッケージを実行するエージェント ジョブを開始します。
@@ -65,11 +66,11 @@ ms.locfileid: "100386154"
 1. 最新バージョンの SSMS で、SQL Managed Instance に接続します。
 1. 新しいエージェント ジョブと新しいジョブ ステップを作成します。 **[SQL Server エージェント]** 下で、 **[ジョブ]** フォルダーを右クリックして **[新しいジョブ]** を選択します。
 
-   ![新しいエージェント ジョブを作成するための選択](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png" alt-text="新しいエージェント ジョブを作成するための選択":::
 
 1. **[新しいジョブ ステップ]** ページで、種類として **[SQL Server Integration Services パッケージ]** を選択します。
 
-   ![新しい SSIS ジョブ ステップを作成するための選択](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png" alt-text="新しい SSIS ジョブ ステップを作成するための選択":::
 
 1. **[パッケージ]** タブで、次の操作を実行します。
 
@@ -79,7 +80,7 @@ ms.locfileid: "100386154"
 
       - パッケージが Azure Files にアップロードされている場合は、 **[Azure ファイル共有]** を選択します。
 
-        ![[ファイル ソースの種類] のオプション](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
+        :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png" alt-text="[ファイル ソースの種類] のオプション":::
 
         パッケージのパスは、 **`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`** です。
 
@@ -110,11 +111,11 @@ ms.locfileid: "100386154"
 1. 最新バージョンの SSMS で、SQL Managed Instance に接続します。
 1. 新しいエージェント ジョブと新しいジョブ ステップを作成します。 **[SQL Server エージェント]** 下で、 **[ジョブ]** フォルダーを右クリックして **[新しいジョブ]** を選択します。
 
-   ![新しいエージェント ジョブを作成するための選択](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png" alt-text="新しいエージェント ジョブを作成するための選択":::
 
 1. **[新しいジョブ ステップ]** ページで、種類として **[SQL Server Integration Services パッケージ]** を選択します。
 
-   ![新しい SSIS ジョブ ステップを作成するための選択](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png" alt-text="新しい SSIS ジョブ ステップを作成するための選択":::
 
 1. **[パッケージ]** タブで、次の操作を実行します。
 
@@ -124,7 +125,7 @@ ms.locfileid: "100386154"
 
       パッケージのパスは、 **`<package store name>\<folder name>\<package name>`** です。
 
-      ![パッケージ ストアの種類のオプション](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-package-store.png)
+      :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-package-store.png" alt-text="パッケージ ストアの種類のオプション":::
 
    1. パッケージ ファイルがパスワードによって暗号化されている場合は、 **[暗号化用パスワード]** を選択して、パスワードを入力します。
 1. SSIS パッケージを実行するための構成ファイルが必要な場合は、 **[構成]** タブ上で、構成ファイルのパスを入力します。
@@ -151,7 +152,7 @@ SQL Managed Instance エージェント ジョブからパッケージの実行�
    SSIS パッケージが SSISDB に含まれている場合は、ジョブ実行のテーブルとして **ssisdb.internal.execution_parameter_values** を使用します。 SSIS パッケージがファイル システムに含まれている場合は、**ssisdb.internal.execution_parameter_values_noncatalog** を使用します。
 1. SSISDB カタログを右クリックして、 **[アクティブな操作]** を選択します。
 
-   ![SSISDB カタログのショートカット メニューにある [アクティブな操作]](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png" alt-text="SSISDB カタログのショートカット メニューにある &quot;[アクティブな操作]&quot;":::
 
 1. **executionId** に基づいて、対応する操作を停止します。
 

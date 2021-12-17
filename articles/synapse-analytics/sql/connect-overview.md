@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f5682302ea0fa83c04a8560ba3f0f98ea075e072
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 5cd8666f1dd76c3edc729aae8d237e42d0b27637
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565544"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860246"
 ---
 # <a name="connect-to-synapse-sql"></a>Synapse SQL に接続する
 Azure Synapse Analytics の Synapse SQL 機能に接続します。
@@ -94,4 +94,4 @@ Synapse SQL では、接続とオブジェクトの作成時に一部の設定�
 **サーバーレス SQL プール** クエリを実行するために推奨されるツールは、[Azure Data Studio](get-started-azure-data-studio.md) と Azure Synapse Studio です。
 
 ## <a name="next-steps"></a>次のステップ
-Visual Studio を使用して接続とクエリを行うには、 [Visual Studio を使用したクエリ](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページをご覧ください。 認証オプションの詳細については、[Synapse SQL に対する認証](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+Visual Studio を使用して接続とクエリを行うには、 [Visual Studio を使用したクエリ](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?context=/azure/synapse-analytics/context/context)に関するページをご覧ください。 認証オプションの詳細については、[Synapse SQL に対する認証](sql-authentication.md?tabs=provisioned)に関するページを参照してください。

@@ -1,16 +1,16 @@
 ---
 title: Azure Monitor ビュー デザイナーからブックへの変換の概要とアクセス
 description: Azure Monitor のビューからの移行時にブックにアクセスするために必要なアクセス許可。
-author: austonli
-ms.author: aul
+author: shijatsu
+ms.author: shijain
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 42cb8db0f67d3a01b2e8443e6cb7c47f0fc44c4b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d79e36c77505635cb37573712a028b98b66af1ff
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043392"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472334"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>ビュー デザイナーからブックへの変換の概要とアクセス
 [ビュー デザイナー](view-designer.md)は Azure Monitor の機能で、Log Analytics ワークスペース内のデータを、グラフ、リスト、タイムラインを使用して視覚化するのに役立つカスタム ビューを作成できます。 これらは段階的に廃止され、追加機能を提供するブックに置き換えられています。 この記事では、概要サマリーを作成する方法と、ブックにアクセスするために必要なアクセス許可について詳しく説明します。
@@ -33,10 +33,7 @@ Azure ダッシュボードに用意されている高度なカスタマイズ�
 
 ![すべて固定](media/view-designer-conversion-access/pin-all.png)
 
-
-
 ## <a name="sharing-and-viewing-permissions"></a>共有と表示のアクセス許可 
-ブックには、非公開ドキュメントと共有ドキュメントのどちらでも利点があります。 既定では、保存済みブックは **[個人用レポート]** に保存されます。つまり、作成者のみがこのブックを表示できます。
 
 ブックを共有するには、**編集モード** で上部ツール バーの **[共有]** アイコンを選択します。 ブックを **[共有レポート]** に移動するように求められます。これにより、ブックへの直接アクセスを提供するリンクが生成されます。
 

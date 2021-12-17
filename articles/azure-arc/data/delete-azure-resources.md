@@ -7,24 +7,47 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 60c5ddcc67db6e4a0649458cfbd5c2949aa9a32a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ad92c16b70fd2d9f2e137558db1e70c387815a8f
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202044"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564140"
 ---
 # <a name="delete-resources-from-azure"></a>Azure からのリソースの削除
 
-> [!NOTE]
->  この記事に記載されているリソースを削除するオプションは元に戻せません。
+この記事では、Azure から Azure Arc 対応データ サービス リソースを削除する方法について説明します。
 
-> [!NOTE]
->  現在、Azure Arc 対応データ サービス用に提供されている接続モードは間接接続モードのみであるため、Kubernetes からインスタンスを削除しても Azure から削除されることはなく、Azure からインスタンスを削除しても Kubernetes から削除されることはありません。  現時点では、リソースの削除は 2 段階のプロセスであり、今後改善される予定です。  将来的には、Kubernetes が信頼できるソースとなり、Azure はそれを反映するように更新されます。
+> [!WARNING]
+> この記事で説明されているように、リソースを削除すると、これらのアクションを元に戻すことはできません。
 
-場合によっては、Azure Resource Manager (ARM) で Azure Arc 対応 データ サービスのリソースを手動で削除する必要があります。  これらのリソースは、次のいずれかのオプションを使用して削除できます。
+## <a name="before"></a>以前
+
+Azure Arc SQL マネージド インスタンスや Azure Arc データ コントローラーなどのリソースを削除する前に、[Azure への課金データのアップロード (間接接続モード)](view-billing-data-in-azure.md#upload-billing-data-to-azure---indirectly-connected-mode) に関するページに記載されている手順に従って、使用状況情報をエクスポートし、Azure にアップロードして正確な課金計算が行われるようにする必要があります。
+
+## <a name="direct-connectivity-mode"></a>直接接続モード
+
+クラスターが直接接続モードで Azure に接続されている場合は、Microsoft Azure portalを使用してリソースを管理します。 データ コントローラー、マネージド インスタンス、PostgreSQL グループのすべての作成、読み取り、更新、削除 (CRUD) 操作にポータルを使用します。
+
+Azure portal から次を行います。
+1. リソース グループを参照し、Azure Arc データ コントローラーを削除します
+2. Azure Arc 対応 Kubernetes クラスターを選択し、[概要] ページに進みます
+    - [設定] で **[拡張機能]** を選択します
+    - [拡張機能] ページで、Azure Arc データ サービス拡張機能 (microsoft.arcdataservice 型) を選択し、 **[アンインストール]** をクリックします
+3. 必要に応じて、Azure Arc データ コントローラーが配置されているカスタムの場所を削除します。
+4. 必要に応じて、名前空間にほかのリソースが作成されていない場合は、Kubernetes クラスターの名前空間を削除することもできます。
+
+
+
+「[Manage Azure resources by using the Azure portal (Azure portal を使用した Azure リソースの管理)](../../azure-resource-manager/management/manage-resources-portal.md)」を参照してください。
+
+## <a name="indirect-connectivity-mode"></a>間接接続モード
+
+間接接続モードでは、Kubernetes からインスタンスを削除しても Azure から削除されることはなく、Azure からインスタンスを削除しても Kubernetes から削除されることはありません。 間接接続モードの場合、リソースの削除は 2 段階のプロセスであり、今後改善される予定です。 Kubernetes が信頼できるソースとなり、Azure はそれを反映するように更新されます。
+
+場合によっては、Azure で Azure Arc 対応データ サービスのリソースを手動で削除する必要があります。  これらのリソースは、次のいずれかのオプションを使用して削除できます。
 
 - [Azure からのリソースの削除](#delete-resources-from-azure)
   - [リソース グループ全体の削除](#delete-an-entire-resource-group)
@@ -35,14 +58,14 @@ ms.locfileid: "102202044"
     - [Azure CLI を使用した Azure Arc データ コントローラー リソースの削除](#delete-azure-arc-data-controller-resources-using-the-azure-cli)
     - [Azure CLI を使用したリソース グループの削除](#delete-a-resource-group-using-the-azure-cli)
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="delete-an-entire-resource-group"></a>リソース グループ全体の削除
-Azure Arc 対応データ サービスに特定の専用リソース グループを使用していて、そのリソース グループ内の *すべてのもの* を削除したい場合、リソース グループを削除すれば、その中のすべてのものが削除され ます。  
+
+Azure Arc 対応データ サービスに特定の専用リソース グループを使用していて、そのリソース グループ内の *すべてのもの* を削除したい場合、リソース グループを削除すれば、その中のすべてのものが削除されます。  
 
 Azure portal でリソース グループを削除するには、次の操作を行います。
 
-- Azure Arc 対応データ サービスのリソースが作成されている Azure portal のリソース グループを参照します。
+- Azure portal で Azure Arc 対応データ サービスのリソースが作成されているリソース グループを参照します。
 - **[リソース グループの削除]** ボタンをクリックします。
 - リソース グループ名を入力して削除を確認し、 **[削除]** をクリックします。
 
@@ -50,7 +73,7 @@ Azure portal でリソース グループを削除するには、次の操作を
 
 Azure portal でリソース グループ内の特定の Azure Arc 対応データ サービスのリソースを削除するには、次の操作を行います。
 
-- Azure Arc 対応データ サービスのリソースが作成されている Azure portal のリソース グループを参照します。
+- Azure portal で Azure Arc 対応データ サービスのリソースが作成されているリソース グループを参照します。
 - 削除するリソースをすべて選択します。
 - [削除] ボタンをクリックします。
 - 「はい」と入力して削除を確認し、 **[削除]** をクリックします。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 08b1294436ead372234104008a48ca23e56de389
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 018f036e98d0b77ca7a37e61c9ce66acbd0b2dce
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589312"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281041"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp-globalview-deprecated"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と ADP Globalview (非推奨) の統合
 
@@ -133,9 +133,9 @@ ADP Globalview (非推奨) に対する Azure AD SSO を構成してテストす
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した ADP Globalview (非推奨) に自動的にサインインします
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [ADP Globalview (非推奨)] タイルをクリックすると、SSO を設定した ADP Globalview (非推奨) に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [ADP Globalview (非推奨)] タイルをクリックすると、SSO を設定した ADP Globalview (非推奨) に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-ADP Globalview (非推奨) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+ADP Globalview (非推奨) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

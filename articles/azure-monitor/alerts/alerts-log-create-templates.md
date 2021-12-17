@@ -4,19 +4,19 @@ description: Resource Manager テンプレートを使用してログ アラー�
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 560f26b712818327294791feb787b5fe7c9d7b82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 07/12/2021
+ms.openlocfilehash: 4b2e22f055ba1432f490ed6e6b42f637ab68e6a2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036471"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026186"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでログ アラートを作成する
 
-ログ アラートにより、ユーザーは [Log Analytics](../logs/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションの実行をトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](./alerts-unified-log.md)。
+ログ アラートにより、ユーザーは [Log Analytics](../logs/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](./alerts-unified-log.md)。
 
-この記事では、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md) を使用して Azure Monitor に[ログ アラート](./alerts-unified-log.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ ログ アラートは `Microsoft.Insights/scheduledQueryRules` リソース プロバイダーで作成されます。 API リファレンスについては、[Scheduled Query Rules API](/rest/api/monitor/scheduledqueryrules/) のページを参照してください。
+この記事では、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md) を使用して Azure Monitor に[ログ アラート](./alerts-unified-log.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ ログ アラートは `Microsoft.Insights/scheduledQueryRules` リソース プロバイダーで作成されます。 API リファレンスについては、[Scheduled Query Rules API](/rest/api/monitor/scheduledqueryrules/) のページを参照してください。
 
 基本的な手順は次のとおりです。
 
@@ -30,6 +30,252 @@ ms.locfileid: "102036471"
 > [!NOTE]
 > Log Analytics のログ アラートは、従来の [Log Analytics Alert API](./api-alerts.md) と [Log Analytics の保存された検索とアラート](../insights/solutions.md)の従来のテンプレートを使用して、管理されていました。 [現在の ScheduledQueryRules API への切り替えの詳細について確認してください](alerts-log-api-switch.md)。
 
+## <a name="template-for-all-resource-types-from-api-version-2021-08-01"></a>リソースのすべての種類のテンプレート (API バージョン 2021-08-01 以降)
+
+すべてのリソースの種類向けの [Scheduled Query Rules 作成](/rest/api/monitor/scheduledqueryrules/createorupdate)テンプレート (サンプル データは変数として設定):
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Name of the alert"
+            }
+        },
+        "location": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Location of the alert"
+            }
+        },
+        "alertDescription": {
+            "type": "string",
+            "defaultValue": "This is a metric alert",
+            "metadata": {
+                "description": "Description of alert"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "defaultValue": 3,
+            "allowedValues": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "metadata": {
+                "description": "Severity of alert {0,1,2,3,4}"
+            }
+        },
+        "isEnabled": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "autoMitigate": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert will automatically resolve"
+            }
+        },
+        "checkWorkspaceAlertsStorageConfigured": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Specifies whether to check linked storage and fail creation if the storage was not found"
+            }
+        },
+        "resourceId": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+            }
+        },
+        "query": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Name of the metric used in the comparison to activate the alert."
+            }
+        },
+        "metricMeasureColumn": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the measure column used in the alert evaluation."
+            }
+        },
+        "resourceIdColumn": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the resource ID column used in the alert targeting the alerts."
+            }
+        },
+        "operator": {
+            "type": "string",
+            "defaultValue": "GreaterThan",
+            "allowedValues": [
+                "Equals",
+                "NotEquals",
+                "GreaterThan",
+                "GreaterThanOrEqual",
+                "LessThan",
+                "LessThanOrEqual"
+            ],
+            "metadata": {
+                "description": "Operator comparing the current value with the threshold value."
+            }
+        },
+        "threshold": {
+            "type": "string",
+            "defaultValue": "0",
+            "metadata": {
+                "description": "The threshold value at which the alert is activated."
+            }
+        },
+        "numberOfEvaluationPeriods": {
+            "type": "string",
+            "defaultValue": "4",
+            "metadata": {
+                "description": "The number of periods to check in the alert evaluation."
+            }
+        },
+        "minFailingPeriodsToAlert": {
+            "type": "string",
+            "defaultValue": "3",
+            "metadata": {
+                "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
+            }
+        },
+        "timeAggregation": {
+            "type": "string",
+            "defaultValue": "Average",
+            "allowedValues": [
+                "Average",
+                "Minimum",
+                "Maximum",
+                "Total",
+                "Count"
+            ],
+            "metadata": {
+                "description": "How the data that is collected should be combined over time."
+            }
+        },
+        "windowSize": {
+            "type": "string",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
+            "metadata": {
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
+            }
+        },
+        "evaluationFrequency": {
+            "type": "string",
+            "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
+            "metadata": {
+                "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
+            }
+        },
+        "muteActionsDuration": {
+            "type": "string",
+            "defaultValue": null,
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
+            "metadata": {
+                "description": "Mute actions for the chosen period of time (in ISO 8601 duration format) after the alert is fired."
+            }
+        },
+        "actionGroupId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The ID of the action group that is triggered when the alert is activated or deactivated"
+            }
+        }
+    },
+    "variables": {  },
+    "resources": [
+        {
+            "name": "[parameters('alertName')]",
+            "type": "Microsoft.Insights/scheduledQueryRules",
+            "location": "[parameters('location')]",
+            "apiVersion": "2021-08-01",
+            "tags": {},
+            "properties": {
+                "description": "[parameters('alertDescription')]",
+                "severity": "[parameters('alertSeverity')]",
+                "enabled": "[parameters('isEnabled')]",
+                "scopes": ["[parameters('resourceId')]"],
+                "evaluationFrequency":"[parameters('evaluationFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                    "allOf": [
+                        {
+                            "query": "[parameters('query')]",
+                            "metricMeasureColumn": "[parameters('metricMeasureColumn')]",
+                            "resourceIdColumn": "[parameters('resourceIdColumn')]",
+                            "dimensions":[],
+                            "operator": "[parameters('operator')]",
+                            "threshold" : "[parameters('threshold')]",
+                            "timeAggregation": "[parameters('timeAggregation')]",
+                            "failingPeriods": {
+                                "numberOfEvaluationPeriods": "[parameters('numberOfEvaluationPeriods')]",
+                                "minFailingPeriodsToAlert": "[parameters('minFailingPeriodsToAlert')]"
+                            }
+                        }
+                    ]
+                },
+                "muteActionsDuration": "[parameters('muteActionsDuration')]",
+                "autoMitigate": "[parameters('autoMitigate')]",
+                "checkWorkspaceAlertsStorageConfigured": "[parameters('checkWorkspaceAlertsStorageConfigured')]",
+                "actions": {
+                    "actionGroups": "[parameters('actionGroupId')]",
+                    "customProperties": {
+                        "key1": "value1",
+                        "key2": "value2"
+                    }
+                }
+            }
+        }
+    ]
+}
+```
+
+この JSON は [Azure portal の Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) を使用して保存し、デプロイできます。
 
 ## <a name="simple-template-up-to-api-version-2018-04-16"></a>単純なテンプレート (API バージョン 2018-04-16 まで)
 
@@ -197,235 +443,6 @@ ms.locfileid: "102036471"
 
 > [!IMPORTANT]
 > ログ アラートでリソース間クエリを使用する場合、[authorizedResources](/rest/api/monitor/scheduledqueryrules/createorupdate#source) の使用は必須であり、ユーザーには記載されているリソースの一覧へのアクセス権が必要です。
-
-この JSON は [Azure portal の Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) を使用して保存し、デプロイできます。
-
-## <a name="template-for-all-resource-types-from-api-version-2020-05-01-preview"></a>リソースのすべての種類のテンプレート (API バージョン 2020-05-01-preview 以降)
-
-すべてのリソースの種類向けの [Scheduled Query Rules 作成](/rest/api/monitor/scheduledqueryrules/createorupdate)テンプレート (サンプル データは変数として設定):
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "alertName": {
-            "type": "string",
-            "minLength": 1,
-            "metadata": {
-                "description": "Name of the alert"
-            }
-        },
-        "location": {
-            "type": "string",
-            "minLength": 1,
-            "metadata": {
-                "description": "Location of the alert"
-            }
-        },
-        "alertDescription": {
-            "type": "string",
-            "defaultValue": "This is a metric alert",
-            "metadata": {
-                "description": "Description of alert"
-            }
-        },
-        "alertSeverity": {
-            "type": "int",
-            "defaultValue": 3,
-            "allowedValues": [
-                0,
-                1,
-                2,
-                3,
-                4
-            ],
-            "metadata": {
-                "description": "Severity of alert {0,1,2,3,4}"
-            }
-        },
-        "isEnabled": {
-            "type": "bool",
-            "defaultValue": true,
-            "metadata": {
-                "description": "Specifies whether the alert is enabled"
-            }
-        },
-        "resourceId": {
-            "type": "string",
-            "minLength": 1,
-            "metadata": {
-                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
-            }
-        },
-        "query": {
-            "type": "string",
-            "minLength": 1,
-            "metadata": {
-                "description": "Name of the metric used in the comparison to activate the alert."
-            }
-        },
-        "metricMeasureColumn": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the measure column used in the alert evaluation."
-            }
-        },
-        "resourceIdColumn": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the resource ID column used in the alert targeting the alerts."
-            }
-        },
-        "operator": {
-            "type": "string",
-            "defaultValue": "GreaterThan",
-            "allowedValues": [
-                "Equals",
-                "NotEquals",
-                "GreaterThan",
-                "GreaterThanOrEqual",
-                "LessThan",
-                "LessThanOrEqual"
-            ],
-            "metadata": {
-                "description": "Operator comparing the current value with the threshold value."
-            }
-        },
-        "threshold": {
-            "type": "string",
-            "defaultValue": "0",
-            "metadata": {
-                "description": "The threshold value at which the alert is activated."
-            }
-        },
-        "numberOfEvaluationPeriods": {
-            "type": "string",
-            "defaultValue": "4",
-            "metadata": {
-                "description": "The number of periods to check in the alert evaluation."
-            }
-        },
-        "minFailingPeriodsToAlert": {
-            "type": "string",
-            "defaultValue": "3",
-            "metadata": {
-                "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
-            }
-        },
-        "timeAggregation": {
-            "type": "string",
-            "defaultValue": "Average",
-            "allowedValues": [
-                "Average",
-                "Minimum",
-                "Maximum",
-                "Total",
-                "Count"
-            ],
-            "metadata": {
-                "description": "How the data that is collected should be combined over time."
-            }
-        },
-        "windowSize": {
-            "type": "string",
-            "defaultValue": "PT5M",
-            "allowedValues": [
-                "PT1M",
-                "PT5M",
-                "PT15M",
-                "PT30M",
-                "PT1H",
-                "PT6H",
-                "PT12H",
-                "PT24H"
-            ],
-            "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
-            }
-        },
-        "evaluationFrequency": {
-            "type": "string",
-            "defaultValue": "PT1M",
-            "allowedValues": [
-                "PT1M",
-                "PT5M",
-                "PT15M",
-                "PT30M",
-                "PT1H"
-            ],
-            "metadata": {
-                "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
-            }
-        },
-        "muteActionsDuration": {
-            "type": "string",
-            "defaultValue": "PT5M",
-            "allowedValues": [
-                "PT1M",
-                "PT5M",
-                "PT15M",
-                "PT30M",
-                "PT1H",
-                "PT6H",
-                "PT12H",
-                "PT24H"
-            ],
-            "metadata": {
-                "description": "Mute actions for the chosen period of time (in ISO 8601 duration format) after the alert is fired."
-            }
-        },
-        "actionGroupId": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "The ID of the action group that is triggered when the alert is activated or deactivated"
-            }
-        }
-    },
-    "variables": {  },
-    "resources": [
-        {
-            "name": "[parameters('alertName')]",
-            "type": "Microsoft.Insights/scheduledQueryRules",
-            "location": "[parameters('location')]",
-            "apiVersion": "2020-05-01-preview",
-            "tags": {},
-            "properties": {
-                "description": "[parameters('alertDescription')]",
-                "severity": "[parameters('alertSeverity')]",
-                "enabled": "[parameters('isEnabled')]",
-                "scopes": ["[parameters('resourceId')]"],
-                "evaluationFrequency":"[parameters('evaluationFrequency')]",
-                "windowSize": "[parameters('windowSize')]",
-                "criteria": {
-                    "allOf": [
-                        {
-                            "query": "[parameters('query')]",
-                            "metricMeasureColumn": "[parameters('metricMeasureColumn')]",
-                            "resourceIdColumn": "[parameters('resourceIdColumn')]",
-                            "dimensions":[],
-                            "operator": "[parameters('operator')]",
-                            "threshold" : "[parameters('threshold')]",
-                            "timeAggregation": "[parameters('timeAggregation')]",
-                            "failingPeriods": {
-                                "numberOfEvaluationPeriods": "[parameters('numberOfEvaluationPeriods')]",
-                                "minFailingPeriodsToAlert": "[parameters('minFailingPeriodsToAlert')]"
-                            }
-                        }
-                    ]
-                },
-                "muteActionsDuration": "[parameters('muteActionsDuration')]",
-                "actions": [
-                    {
-                        "actionGroupId": "[parameters('actionGroupId')]"
-                    }
-                ]
-            }
-        }
-    ]
-}
-```
 
 この JSON は [Azure portal の Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) を使用して保存し、デプロイできます。
 

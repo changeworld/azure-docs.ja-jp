@@ -2,16 +2,16 @@
 title: Visual Studio Code を使用して Azure Functions を Azure Cosmos DB に接続する
 description: Visual Studio Code プロジェクトに出力バインドを追加して Azure Functions を Azure Cosmos DB アカウントに接続する方法を説明します。
 author: ThomasWeiss
-ms.date: 03/23/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.author: thweiss
 zone_pivot_groups: programming-languages-set-functions-temp
-ms.openlocfilehash: 0a0c63ee54699185bcd02104b1a3f4d0070ea808
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fbc67f14d6d67393b62129f2b4e9269fb6c6f52
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023250"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446264"
 ---
 # <a name="connect-azure-functions-to-azure-cosmos-db-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を Azure Cosmos DB に接続する
 
@@ -33,44 +33,47 @@ ms.locfileid: "105023250"
 ## <a name="create-your-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを選択する
 
 > [!IMPORTANT]
-> [Azure Cosmos DB サーバーレス](../cosmos-db/serverless.md)は現在プレビューで利用できます。 この使用量ベースのモードにより、Azure Cosmos DB がサーバーレス ワークロードのための強力なオプションになります。 サーバーレス モードで Azure Cosmos DB を使用するには、アカウントの作成時に、 **[Capacity mode]\(容量モード\)** として **[サーバーレス]** を選択します。
+> [Azure Cosmos DB サーバーレス](../cosmos-db/serverless.md)は一般公開されました。 この使用量ベースのモードにより、Azure Cosmos DB がサーバーレス ワークロードのための強力なオプションになります。 サーバーレス モードで Azure Cosmos DB を使用するには、アカウントの作成時に、 **[Capacity mode]\(容量モード\)** として **[サーバーレス]** を選択します。
 
-1. 新しいブラウザー ウィンドウで、[Azure Portal](https://portal.azure.com/) にサインインします。
+1. Visual Studio Code で、[前の記事](./create-first-function-vs-code-csharp.md)で関数アプリを作成した Azure サブスクリプションを右クリックし、 **[サーバーの作成...]** を選択します。
 
-2. **[リソースの作成]** > **[データベース]** > **[Azure Cosmos DB]** の順にクリックします。
-   
-    :::image type="content" source="../../includes/media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png" alt-text="Azure portal の [データベース] ウィンドウ" border="true":::
+    :::image type="content" source="./media/functions-add-output-binding-cosmos-db-vs-code/create-account.png" alt-text="Visual Studio Code から新しい Azure Cosmos DB アカウントを作成する" border="true":::
 
-3. **[Azure Cosmos DB アカウントの作成]** ページで、新しい Azure Cosmos DB アカウントの設定を入力します。 
- 
-    設定|値|説明
-    ---|---|---
-    サブスクリプション|*該当するサブスクリプション*|[前の記事](./create-first-function-vs-code-csharp.md)で関数アプリを作成した Azure サブスクリプションを選択します。
-    リソース グループ|"*リソース グループ名*"|[前の記事](./create-first-function-vs-code-csharp.md)で関数アプリを作成したリソース グループを選択します。
-    アカウント名|*一意の名前を入力*|自分の Azure Cosmos DB アカウントを識別するための一意の名前を入力します。<br><br>アカウント名に使用できるのは、小文字、数字、ハイフン (-) のみで、長さは 3 文字から 31 文字の範囲にする必要があります。
-    API|コア (SQL)|SQL 構文を使用してクエリを実行できるドキュメント データベースを作成するには、 **[コア (SQL)]** を選択します。 [Azure Cosmos DB SQL API の詳細については、こちらを参照してください](../cosmos-db/introduction.md)。|
-    場所|"*ユーザーの場所に最も近いリージョンを選択*"|Azure Cosmos DB アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできるよう、お客様またはお客様のユーザーに最も近い場所を使用します。
-    容量モード|サーバーレスまたはプロビジョニング スループット|[サーバーレス](../cosmos-db/serverless.md) モードでアカウントを作成するには、 **[サーバーレス]** を選択します。 [プロビジョニング スループット](../cosmos-db/set-throughput.md) モードでアカウントを作成するには、 **[Provisioned throughput]\(プロビジョニング スループット\)** を選択します。<br><br>Azure Cosmos DB の使用を開始する場合は、 **[サーバーレス]** を選択します。
+1. プロンプトで、次の情報を入力します。
 
-4. **[確認および作成]** をクリックします。 **[ネットワーク]** セクションと **[タグ]** セクションはスキップできます。 
+    + **Select an Azure Database Server \(Azure データベース サーバーを選択してください\)** : SQL 構文を使用してクエリを実行できるドキュメント データベースを作成するには、`Core (SQL)` を選択します。 [Azure Cosmos DB SQL API の詳細については、こちらを参照してください](../cosmos-db/introduction.md)。
 
-5. 概要情報を確認し、**[作成]** をクリックします。 
+    + **Account name \(アカウント名\)** : 自分の Azure Cosmos DB アカウントを識別するための一意の名前を入力します。 アカウント名に使用できるのは、小文字、数字、ハイフン (-) のみで、長さは 3 文字から 31 文字の範囲にする必要があります。
 
-6. 新しい Azure Cosmos DB が作成されるのを待ってから、 **[リソースに移動]** を選択します。
+    + **Select a capacity model \(容量モデルを選択してください\)** : [サーバーレス](../cosmos-db/serverless.md) モードでアカウントを作成するには、 **[サーバーレス]** を選択します。 [プロビジョニング スループット](../cosmos-db/set-throughput.md) モードでアカウントを作成するには、 **[Provisioned throughput]\(プロビジョニング スループット\)** を選択します。 Azure Cosmos DB の使用を開始する場合は、 **[サーバーレス]** を選択することをお勧めします。
 
-    :::image type="content" source="../cosmos-db/media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Azure Cosmos DB アカウントの作成の完了" border="true":::
+    + **Select a resource group for new resources \(新しいリソース用のリソース グループの選択\)** : [前の記事](./create-first-function-vs-code-csharp.md)で関数アプリを作成したリソース グループを選択します。
+
+    + **Select a location for new resources \(新しいリソースの場所の選択\)** : Azure Cosmos DB アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできるよう、お客様またはお客様のユーザーに最も近い場所を使用します。
 
 ## <a name="create-an-azure-cosmos-db-database-and-container"></a>Azure Cosmos DB データベースとコンテナーを作成する
 
-Azure Cosmos DB アカウントから、 **[データ エクスプローラー]** 、 **[新しいコンテナー]** の順に選択します。 *my-database* という名前の新しいデータベース、*my-container* という名前の新しいコンテナーを作成し、[パーティション キー](../cosmos-db/partitioning-overview.md)として `/id` を選択します。
+1. 新しい Azure Cosmos DB アカウントが作成されたら、その名前を右クリックし、 **[データベースの作成...]** を選択します。
 
-:::image type="content" source="./media/functions-add-output-binding-cosmos-db-vs-code/create-container.png" alt-text="Azure portal で新しい Azure Cosmos DB コンテナーを作成する" border="true":::
+    :::image type="content" source="./media/functions-add-output-binding-cosmos-db-vs-code/create-database.png" alt-text="Visual Studio Code から新しい Azure Cosmos DB データベースを作成する" border="true":::
+
+1. ダイアログが表示されたら、**データベース名** として `my-database` を入力します。
+
+1. データベースが作成された後で、その名前を右クリックし、 **[コレクションの作成...]** を選択します。
+
+    :::image type="content" source="./media/functions-add-output-binding-cosmos-db-vs-code/create-container.png" alt-text="Visual Studio Code から新しい Azure Cosmos DB コンテナーを作成する" border="true":::
+
+1. プロンプトで、次の情報を入力します。
+
+    + **Enter an id for your Collection \(コレクションの ID を入力してください\)** : `my-container`
+
+    + **Enter the [partition key](../cosmos-db/partitioning-overview.md) for the collection** \(コレクションのパーティション キーを入力してください): `id`
 
 ## <a name="update-your-function-app-settings"></a>関数アプリの設定を更新する
 
 [前のクイック スタートの記事](./create-first-function-vs-code-csharp.md)では、Azure で関数アプリを作成しました。 この記事では、上記で作成した Azure Cosmos DB コンテナーに JSON ドキュメントを書き込むように関数アプリを更新します。 Azure Cosmos DB アカウントに接続するには、その接続文字列をアプリの設定に追加する必要があります。 その後に、新しい設定を local.settings.json ファイルにダウンロードして、ローカルで実行する際に Azure Cosmos DB アカウントに接続できるようにします。
 
-1. Visual Studio Code で、先ほど作成した Azure Cosmos DB アカウントを見つけます。 その名前を右クリックし、 **[Copy Connection String]\(接続文字列をコピーする\)** を選択します。
+1. Visual Studio Code で、Azure Cosmos DB アカウントを右クリックし、 **[Copy Connection String]\(接続文字列のコピー\)** を選択します。
 
     :::image type="content" source="./media/functions-add-output-binding-cosmos-db-vs-code/copy-connection-string.png" alt-text="Azure Cosmos DB 接続文字列のコピー" border="true":::
 
@@ -129,7 +132,7 @@ C# クラス ライブラリ プロジェクトでは、バインドは関数メ
     ConnectionStringSetting = "CosmosDbConnectionString")]IAsyncCollector<dynamic> documentsOut,
 ```
 
-`documentsOut` パラメーターは IAsyncCollector<T> 型です。これは、関数の完了時に Azure Cosmos DB コンテナーに書き込まれる JSON ドキュメントのコレクションを表します。 それぞれの属性は、コンテナーの名前とその親データベースの名前を指定します。 Azure Cosmos DB アカウントの接続文字列は `ConnectionStringSettingAttribute` によって設定されます。
+`documentsOut` パラメーターは `IAsyncCollector<T>` 型です。これは、関数の完了時に Azure Cosmos DB コンテナーに書き込まれる JSON ドキュメントのコレクションを表します。 それぞれの属性は、コンテナーの名前とその親データベースの名前を指定します。 Azure Cosmos DB アカウントの接続文字列は `ConnectionStringSettingAttribute` によって設定されます。
 
 Run メソッドの定義は次のようになります。  
 

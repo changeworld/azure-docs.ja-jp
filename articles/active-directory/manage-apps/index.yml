@@ -8,108 +8,149 @@ metadata:
   ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 09/28/2020
-  author: kenwith
-  ms.author: kenwith
-  manager: celested
-  ms.openlocfilehash: e3f258813fd937fa82ce108150b84e9ce78f77aa
-  ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+  ms.date: 07/08/2021
+  author: CelesteDG
+  ms.author: CelesteDG
+  ms.openlocfilehash: 4ce23b540b79bfc421a4ee44717bbc47d10cde9f
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/29/2021
-  ms.locfileid: "99052264"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132314978"
 landingContent:
-- title: アプリ管理について
+- title: Fundamentals
   linkLists:
   - linkListType: overview
     links:
     - text: アプリケーション管理とは
       url: what-is-application-management.md
+  - linkListType: concept
+    links:
+    - text: Azure AD でサポートされるアプリの種類
+      url: ../develop/v2-app-types.md
     - text: シングル サインオンとは
       url: what-is-single-sign-on.md
-- title: はじめに
+- title: アプリを開発する
   linkLists:
-  - linkListType: quickstart
+  - linkListType: concept
     links:
-    - text: アプリを表示する
-      url: view-applications-portal.md
-    - text: アプリを追加する
-      url: add-application-portal.md
-- title: アプリの追加および構成
+    - text: 認証と承認の概念
+      url: ../develop/authentication-vs-authorization.md
+  - linkListType: how-to-guide
+    links:
+    - text: Microsoft ID またはソーシャル アカウントを使用してアプリを構築する
+      url: ../develop/v2-overview.md
+- title: アプリをテナントと統合する
   linkLists:
-  - linkListType: learn
+  - linkListType: how-to-guide
     links:
-    - text: アプリを追加する
+    - text: アプリ統合の概要
+      url: plan-an-application-integration.md
+    - text: 事前統合されたクラウド アプリケーションを追加する
       url: add-application-portal.md
-    - text: アプリを構成する
+    - text: アプリの登録
+      url: ../develop/quickstart-register-app.md
+    - text: AD FS アプリを Azure AD に移行する
+      url: migrate-adfs-apps-to-azure.md
+- title: アプリを構成する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: アプリのプロパティを構成する
       url: add-application-portal-configure.md
-- title: アプリを管理する
+    - text: ユーザーとグループの割り当て
+      url: assign-user-or-group-access-portal.md
+    - text: Configure single sign-on
+      url: plan-sso-deployment.md
+    - text: アプリをプロビジョニングする
+      url: ../governance/what-is-provisioning.md
+    - text: マイ アプリの構成
+      url: my-apps-deployment-plan.md
+- title: アプリをセキュリティで保護する
   linkLists:
-  - linkListType: learn
+  - linkListType: how-to-guide
     links:
-    - text: ベスト プラクティス
-      url: application-management-fundamentals.md
-    - text: 一般的なシナリオ
-      url: common-scenarios.md
-- title: シングル サインオンについて
+    - text: 条件付きアクセスを設定する
+      url: ../conditional-access/concept-conditional-access-cloud-apps.md
+    - text: 多要素認証を設定する
+      url: ../authentication/howto-mfa-getstarted.md
+    - text: 証明書の管理
+      url: manage-certificates-for-federated-single-sign-on.md
+    - text: テナント制限を設定する
+      url: tenant-restrictions.md
+    - text: トークン暗号化を構成する
+      url: howto-saml-token-encryption.md
+    - text: Defender for Cloud Apps
+      url: cloud-app-security.md
+    - text: 過剰な特権が与えられているアプリや疑わしいアプリに対応する
+      url: manage-application-permissions.md
+- title: アプリ アクセスを管理する
   linkLists:
-  - linkListType: architecture
+  - linkListType: overview
     links:
-    - text: シングルサインオンの概念
-      url: what-is-single-sign-on.md
-    - text: シングル サインオンのオプション
-      url: sso-options.md
-- title: アプリへの同意
-  linkLists:
-  - linkListType: learn
+    - text: Identity Governance
+      url: ../governance/identity-governance-overview.md
+  - linkListType: how-to-guide
     links:
+    - text: ロールを割り当てる
+      url: ../develop/howto-add-app-roles-in-azure-ad-apps.md
     - text: ユーザーの同意の構成
       url: configure-user-consent.md
     - text: 管理者の同意の構成
       url: configure-admin-consent-workflow.md
-- title: アプリの移行
+    - text: アクセス許可の分類を構成する
+      url: configure-permission-classifications.md
+    - text: エンタイトルメントを管理する
+      url: ../governance/entitlement-management-scenarios.md
+- title: アプリを維持する
   linkLists:
-  - linkListType: learn
+  - linkListType: how-to-guide
     links:
-    - text: 移行リソース
-      url: migration-resources.md
-    - text: Azure への AD FS アプリの移行
-      url: migrate-adfs-apps-to-azure.md
-- title: オンプレミス アプリの使用
+    - text: テナント内のアプリの一覧を表示、検索、並べ替え、フィルター処理する
+      url: view-applications-portal.md
+    - text: サインイン エラーのトラブルシューティング
+      url: ../reports-monitoring/howto-troubleshoot-sign-in-errors.md
+    - text: アプリに対するユーザーのサインインを無効にする
+      url: disable-user-sign-in-portal.md
+    - text: アプリへのユーザー アクセスを削除する
+      url: methods-for-removing-user-access.md
+    - text: アプリを削除する
+      url: delete-application-portal.md
+- title: アプリを監視する
   linkLists:
-  - linkListType: learn
+  - linkListType: concept
     links:
-    - text: アプリ プロキシとは
-      url: what-is-application-proxy.md
-    - text: アプリ プロキシのデプロイ
-      url: application-proxy-deployment-plan.md
-- title: アプリのセキュリティ保護
+    - text: サインイン ログ
+      url: ../reports-monitoring/concept-sign-ins.md
+    - text: 使用状況と分析情報のレポート
+      url: ../reports-monitoring/concept-usage-insights-report.md
+    - text: 監査ログ
+      url: ../reports-monitoring/concept-audit-logs.md
+    - text: プロビジョニング ログ
+      url: ../reports-monitoring/concept-provisioning-logs.md
+  - linkListType: how-to-guide
+    links:
+    - text: ログをダウンロードする
+      url: ../reports-monitoring/howto-download-logs.md
+    - text: アクティビティ レポートを検出する
+      url: ../reports-monitoring/howto-find-activity-reports.md
+    - text: アクセス レビューを設定する
+      url: ../governance/deploy-access-reviews.md
+- title: オンプレミス アプリへのリモート アクセス
   linkLists:
-  - linkListType: learn
+  - linkListType: concept
     links:
-    - text: アプリへのアクセスを管理する
-      url: what-is-access-management.md
-    - text: テナント制限の管理
-      url: tenant-restrictions.md
-- title: マイ アプリの構成
-  linkLists:
-  - linkListType: learn
+    - text: アプリケーション プロキシ
+      url: ../app-proxy/application-proxy.md
+  - linkListType: how-to-guide
     links:
-    - text: マイ アプリのデプロイの計画
-      url: my-apps-deployment-plan.md
-    - text: コレクションを作成する
-      url: access-panel-collections.md
-- title: 新しいアプリの開発
-  linkLists:
-  - linkListType: learn
-    links:
-    - text: 開発者向けのガイダンス
-      url: ../develop/v2-howto-app-gallery-listing.md
-    - text: プラットフォームとは
-      url: ../develop/v2-overview.md
-- title: ドキュメントの最新情報
-  linkLists:
-  - linkListType: whats-new
-    links:
-    - text: ドキュメントの最新情報
-      url: whats-new-docs.md
+    - text: アプリケーション プロキシのデプロイ
+      url: ../app-proxy/application-proxy-deployment-plan.md
+    - text: コネクタを設定する
+      url: ../app-proxy/application-proxy-connectors.md
+    - text: Configure single sign-on
+      url: ../app-proxy/application-proxy-config-sso-how-to.md
+    - text: ネイティブ クライアント アプリケーションを公開する
+      url: ../app-proxy/application-proxy-configure-native-client-application.md
+    - text: 要求に対応するアプリケーションを公開する
+      url: ../app-proxy/application-proxy-configure-for-claims-aware-applications.md

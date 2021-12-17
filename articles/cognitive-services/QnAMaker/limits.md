@@ -4,13 +4,14 @@ description: QnA Maker には、ナレッジ ベースとサービスの一部�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 11/09/2020
-ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ac7741a6404f47e3cabdd9eff81f81c6ad39de36
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98164874"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011981"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -51,20 +52,15 @@ ms.locfileid: "98164874"
 
 抽出できるファイルの最大数と最大ファイル サイズは、 **[QnA Maker の価格レベルの制限](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** に基づきます。
 
-> [!NOTE]
-> QnA Maker マネージド (プレビュー) は、追加できるソースの数に制限がない無料のサービスです。 管理 API と予測 API の両方に対して、スループットは現在、毎秒 10 トランザクションに制限されています。
-
 ### <a name="maximum-number-of-deep-links-from-url"></a>URL からのディープリンクの最大数
 
 URL ページから QnA を抽出するためにクロールできるディープリンクの最大数は **20** です。
 
 ## <a name="metadata-limits"></a>メタデータの制限
 
-メタデータは、テキストベースの "キー:値" のペアとして表示されます (`product:windows 10` など)。 これは小文字で格納され、比較されます。
+メタデータは、テキストベースの "キー:値" のペアとして表示されます (`product:windows 10` など)。 これは小文字で格納され、比較されます。 メタデータ フィールドの最大数は、 **[Azure Cognitive Search レベルの制限](../../search/search-limits-quotas-capacity.md)** に基づきます。
 
-### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure Cognitive Search の価格レベル
-
-ナレッジ ベースごとのメタデータ フィールドの最大数は、 **[Azure Cognitive Search レベルの制限](../../search/search-limits-quotas-capacity.md)** に基づきます。
+GA バージョンの場合、テスト インデックスはすべてのナレッジ ベースで共有されます。このため、この制限は、QnA Maker サービス内のすべてのナレッジ ベースに適用されます。
 
 |**Azure Cognitive Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -108,6 +104,29 @@ URL ページから QnA を抽出するためにクロールできるディー�
 * 追加または削除されるメタデータ フィールドの最大数: 10
 * 更新可能な URL の最大数: 5
 * 呼び出しごとに許可される QnA の最大数:1000
+
+## <a name="add-unstructured-file-limits"></a>非構造化ファイル制限の追加
+
+> [!NOTE]
+> * 制限を超えるファイルを使用する必要がある場合は、ファイルを小さなファイルに分割してから API に送信することができます。 
+
+以下は、非構造化ファイルを使用して “*KB を作成*” したり、CreateKnowledgeBase API を呼び出したりする場合の制限です。
+* ファイルの長さ: 最初の 32,000 文字が抽出されます。
+* ファイルあたりの最大応答数は 3 です。
+
+## <a name="prebuilt-question-answering-limits"></a>事前構築済み質問回答の制限
+
+> [!NOTE]
+> * 制限を超えるドキュメントを使用する必要がある場合は、テキストを小さなチャンクに分割してから API に送信することができます。 
+> * ドキュメントとは、テキスト文字の 1 つの文字列です。  
+
+以下は、事前構築済み API を使用して “*応答を生成*” したり、GenerateAnswer API を呼び出したりする場合の制限です。
+* ドキュメントの数: 5
+* 1 つのドキュメントの最大サイズ: 5,120 文字
+* ドキュメントあたりの最大応答数は 3 です。
+
+> [!IMPORTANT]
+> 非構造化ファイルまたはコンテンツのサポートは、質問応答でのみご利用いただけます
 
 ## <a name="next-steps"></a>次のステップ
 

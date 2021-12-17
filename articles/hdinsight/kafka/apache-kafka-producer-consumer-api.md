@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: e5a635a8837aadaf423c6f3a0925dbac4080e60f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35115f56690d4ea0f8a70bb5c3099735101a9a29
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98945180"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287442"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>チュートリアル:Apache Kafka Producer および Consumer API の使用
 
@@ -31,7 +31,7 @@ API の詳細については、[Producer API](https://kafka.apache.org/documenta
 ## <a name="prerequisites"></a>前提条件
 
 * HDInsight クラスター上の Apache Kafka。 クラスターを作成する方法については、[HDInsight での Apache Kafka の開始](apache-kafka-get-started.md)に関する記事をご覧ください。
-* [Java Developer Kit (JDK) バージョン 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) または同等の JDK (OpenJDK など)。
+* [Java Developer Kit (JDK) バージョン 8](/azure/developer/java/fundamentals/java-support-on-azure) または同等の JDK (OpenJDK など)。
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 * Putty などの SSH クライアント。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 

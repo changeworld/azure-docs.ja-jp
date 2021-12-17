@@ -11,12 +11,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 27f94c43266fe324016a73e2e6d31e8488457416
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 45e000bc5ed1ecb504c3f82fc8636eb8eb8edcba
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593046"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110664034"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG フロー ログの読み取り
 

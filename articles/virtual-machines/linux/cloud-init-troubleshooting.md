@@ -3,19 +3,21 @@ title: cloud-init の使用のトラブルシューティング
 description: cloud-init を使用した Azure VM のプロビジョニングをトラブルシューティングします。
 author: danielsollondon
 ms.service: virtual-machines
-ms.subservice: imaging
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 842107245fe26155d53866bf95e11b08d7593ad1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: cloud-init
+ms.openlocfilehash: b9a113c4c7f54bfb47d10795325f163cd6f35429
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582155"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687929"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>cloud-init を使用した VM プロビジョニングのトラブルシューティング
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 cloud-init を使用してプロビジョニングを行って、一般化されたカスタム イメージを作成していたが、VM が正常に作成されなかったことがわかった場合、カスタム イメージのトラブルシューティングを行う必要があります。
 

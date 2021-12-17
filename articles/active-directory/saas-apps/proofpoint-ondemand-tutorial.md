@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Proofpoint on Demand の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と Proofpoint on Demand の統合'
 description: Azure Active Directory と Proofpoint on Demand の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/29/2021
+ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: e9beb2c9e265982a9e10f3e6abee6bc3cba4a4a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38eb3525245e081d9a3c17ed75104becbffa1e78
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648460"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310730"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>チュートリアル: Azure Active Directory と Proofpoint on Demand の統合
+# <a name="tutorial-azure-ad-sso-integration-with-proofpoint-on-demand"></a>チュートリアル: Azure AD SSO と Proofpoint on Demand の統合
 
 このチュートリアルでは、Proofpoint on Demand と Azure Active Directory (Azure AD) を統合する方法について説明します。 Proofpoint on Demand と Azure AD を統合すると、次のことができます。
 
@@ -40,7 +40,7 @@ ms.locfileid: "101648460"
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Proofpoint on Demand では、**SP** によって開始される SSO がサポートされます
+* Proofpoint on Demand では、**SP** によって開始される SSO がサポートされます。
 
 ## <a name="add-proofpoint-on-demand-from-the-gallery"></a>ギャラリーからの Proofpoint on Demand の追加
 
@@ -66,7 +66,7 @@ Proofpoint on Demand に対して Azure AD SSO を構成してテストするに
     1. **[Proofpoint on Demand のテスト ユーザーの作成](#create-proofpoint-on-demand-test-user)** - Proofpoint on Demand で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
@@ -78,16 +78,14 @@ Proofpoint on Demand に対して Azure AD SSO を構成してテストするに
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![[Proofpoint on Demand のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
+    a. **[識別子]** ボックスに、`https://<hostname>.pphosted.com/ppssamlsp` という形式で URL を入力します。
 
-    a. **[サインオン URL]** ボックスに、`https://<hostname>.pphosted.com/ppssamlsp_hostname` という形式で URL を入力します。
+    b. **[応答 URL]** ボックスに、`https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer` のパターンを使用して URL を入力します
 
-    b. **[識別子]** ボックスに、`https://<hostname>.pphosted.com/ppssamlsp` という形式で URL を入力します。
-
-    c. **[応答 URL]** ボックスに、`https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer` のパターンを使用して URL を入力します
+    c. **[サインオン URL]** ボックスに、`https://<hostname>.pphosted.com/ppssamlsp_hostname` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Proofpoint on Demand クライアント サポート チーム](https://www.proofpoint.com/us/support-services)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[Proofpoint on Demand クライアント サポート チーム](https://www.proofpoint.com/us/support-services)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -121,7 +119,7 @@ Proofpoint on Demand に対して Azure AD SSO を構成してテストするに
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="configure-proofpoint-on-demand-sso"></a>Proofpoint on Demand の SSO の構成
+## <a name="configure-proofpoint-on-demand-sso"></a>Proofpoint on Demand の SSO の構成
 
 **Proofpoint on Demand** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Proofpoint on Demand サポート チーム](https://www.proofpoint.com/us/support-services)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -129,7 +127,7 @@ Proofpoint on Demand に対して Azure AD SSO を構成してテストするに
 
 このセクションでは、Proofpoint on Demand で Britta Simon というユーザーを作成します。 [Proofpoint on Demand サポート チーム](https://www.proofpoint.com/us/support-services)と協力して、Proofpoint on Demand プラットフォームにユーザーを追加します。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
@@ -137,8 +135,8 @@ Proofpoint on Demand に対して Azure AD SSO を構成してテストするに
 
 * Proofpoint on Demand のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Proofpoint on Demand] タイルをクリックすると、SSO を設定した Proofpoint on Demand に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Proofpoint on Demand] タイルをクリックすると、Proofpoint on Demand のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Proofpoint on Demand を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Proofpoint on Demand を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

@@ -1,19 +1,19 @@
 ---
 title: Liquid テンプレートを使用して JSON と XML を変換する
-description: Liquid テンプレートを Azure Logic Apps のマップとして使用して JSON と XML を変換する
+description: Liquid テンプレートを Azure Logic Apps のマップとして使用して JSON と XML を変換します。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 07/31/2020
-ms.openlocfilehash: 0362c9ed4f736474dbd49e1bfaf1373e0f48acd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/25/2021
+ms.openlocfilehash: b6131e3ebe4ce7612d1a9c245605df2e29970257
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94992711"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652398"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>Liquid テンプレートを Azure Logic Apps のマップとして使用して JSON と XML を変換する
 
@@ -36,7 +36,7 @@ ms.locfileid: "94992711"
 
 * [統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* [Liquid テンプレートの言語](https://shopify.github.io/liquid/)に関する基本的な知識
+* [Liquid テンプレートの言語](https://shopify.github.io/liquid/)に関する基本的な知識。 Azure Logic Apps には DotLiquid 2.0.361 が使用されます。
 
   > [!NOTE]
   > **[Transform JSON to JSON - Liquid]\(JSON を JSON に変換 - Liquid\)** アクションは、[Liquid の DotLiquid 実装](https://github.com/dotliquid/dotliquid)に従います。これは、特定のケースにおいて [Liquid の Shopify 実装](https://shopify.github.io/liquid)とは異なります。 詳細については、「[Liquid テンプレートに関する考慮事項](#liquid-template-considerations)」を参照してください。
@@ -132,9 +132,20 @@ ms.locfileid: "94992711"
 
 ## <a name="test-your-logic-app"></a>ロジック アプリをテストする
 
-[Postman](https://www.getpostman.com/postman) または同様のツールを使用して、JSON 入力をロジック アプリに送信します。 ロジック アプリからの変換された JSON 出力は、次の例のようになります。
+1. [Postman](https://www.getpostman.com/postman) などのツールと `POST` メソッドを使用して、要求トリガーの URL に呼び出しを送信し、変換する JSON 入力を含めます。次に例を示します。
 
-![出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
+   ```json
+   {
+      "devices": "Surface, Windows Phone, Desktop computer, Monitors",
+      "firstName": "Dean",
+      "lastName": "Ledet",
+      "phone": "(111)5551111"
+   }
+   ```
+
+1. ワークフローの実行が完了したら、ワークフローの実行履歴に移動し、 **[JSON を JSON に変換]** アクションの入力と出力を調べます。次に例を示します。
+
+   ![出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
 
 <a name="template-considerations"></a>
 

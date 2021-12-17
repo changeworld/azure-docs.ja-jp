@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 76a154d3a137017f374247308a3980d598698246
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 830c8e72517da4591b82edee8cf50dc2375f1c86
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678661"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556827"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの分析
 
@@ -78,7 +78,7 @@ Azure Data Lake Storage でデータが使用できるようになったら、Az
 
 1. **[作成者]** セクションの左ウィンドウで、 **[デザイナー]** タブをクリックします。
 
-1. **[Easy-to-use prebuilt modules]\(使いやすい事前構築済みモジュール\)** を選択して、新しいパイプラインを作成します。
+1. **[Easy-to-use prebuilt modules]\(使いやすい事前構築済みコンポーネント\)** を選択して、新しいパイプラインを作成します。
 
 1. 右側の設定ウィンドウで、パイプラインの名前を指定します。
 
@@ -90,19 +90,19 @@ Azure Data Lake Storage でデータが使用できるようになったら、Az
 
 1. 先に作成したデータセットをキャンバスにドラッグします。
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="キャンバス上のデータセット モジュールのスクリーンショット。":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="キャンバス上のデータセット コンポーネントのスクリーンショット。":::
 
 ## <a name="clean-the-data"></a>データを整理する
 
 データを整理するには、モデルに関係のない列を削除します。 次の手順に従ってください。
 
-1. 左ウィンドウで、 **[モジュール]** サブタブを選択します。
+1. 左ウィンドウで、 **[コンポーネント]** サブタブを選択します。
 
-1. **[データ変換] < [操作]** の **[Select Columns in Dataset]\(データセットの列の選択\)** モジュールをキャンバスにドラッグします。 このモジュールを **[データセット]** モジュールに接続します。
+1. **[データ変換] < [操作]** の **[Select Columns in Dataset]\(データセットの列の選択\)** コンポーネントをキャンバスにドラッグします。 このコンポーネントを **データセット** コンポーネントに接続します。
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="キャンバス上の列選択モジュールのスクリーンショット。" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="キャンバス上の列選択コンポーネントのスクリーンショット。" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
 
-1. モジュールをクリックして、プロパティ ウィンドウを開きます。 [列の編集] をクリックして、削除する列を指定します。
+1. コンポーネントをクリックしてプロパティ ウィンドウを開きます。 [列の編集] をクリックして、削除する列を指定します。
 
 1. 2 つの列が除外されます: CustomerAlternateKey と GeographyKey。 **[保存]**
 
@@ -112,43 +112,43 @@ Azure Data Lake Storage でデータが使用できるようになったら、Az
 
 データは 80-20 で分割されます。80% が機械学習モデルのトレーニングに、20% はモデルのテストに使用されます。 今回の二項分類の問題には "2 クラス" アルゴリズムが使用されています。
 
-1. **[データの分割]** モジュールをキャンバスにドラッグします。
+1. **[データの分割]** コンポーネントをキャンバスにドラッグします。
 
 1. プロパティ ウィンドウで、 **[Fraction of rows in the first output dataset]\(最初の出力データセットにおける列の割合\)** に「0.8」と入力します。
 
     :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/split-data.png" alt-text="0.8 の分割比を示すスクリーンショット。":::
 
-1. **[2 クラス ブースト デシジョン ツリー]** モジュールをキャンバスにドラッグします。
+1. **[2 クラス ブースト デシジョン ツリー]** コンポーネントをキャンバスにドラッグします。
 
-1. **[モデルのトレーニング]** モジュールをキャンバスにドラッグします。 それを **[2 クラス ブースト デシジョン ツリー]** (ML アルゴリズム) モジュールと **[データの分割]** (アルゴリズムをトレーニングするデータ) モジュールに接続して、入力を指定します。
+1. **[モデルのトレーニング]** コンポーネントをキャンバスにドラッグします。 それを **[2 クラス ブースト デシジョン ツリー]** (ML アルゴリズム) コンポーネントと **[データの分割]** (アルゴリズムをトレーニングするデータ) コンポーネントに接続して、入力を指定します。
 
 1. [モデルのトレーニング] の [プロパティ] ウィンドウの **[ラベル列]** オプションで、[列の編集] を選択します。 予測する列として **[BikeBuyer]** 列を選択し、 **[保存]** を選択します。
 
     :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="選択されたラベル列 BikeBuyer を示すスクリーンショット。":::
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="2 クラス ブースト デシジョン ツリー モジュールとデータの分割モジュールに接続されているモデルのトレーニング モジュールを示すスクリーンショット。":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="2 クラス ブースト デシジョン ツリー コンポーネントとデータの分割コンポーネントに接続されているモデルのトレーニング コンポーネントを示すスクリーンショット。":::
 
 ## <a name="score-the-model"></a>モデルにスコアを付ける
 
 ここで、テスト データに対してモデルがどのように実行されるかをテストします。 2 つの異なるアルゴリズムを比較して、どちらの方がパフォーマンスが向上するかを確認します。 次の手順に従ってください。
 
-1. **[Score Model]\(モデルのスコア付け\)** モジュールをキャンバスにドラッグし、 **[モデルのトレーニング]** モジュールと **[Split Data]\(データの分割\)** モジュールに接続します。
+1. **[Score Model]\(モデルのスコア付け\)** コンポーネントをキャンバスにドラッグし、 **[モデルのトレーニング]** コンポーネントと **[Split Data]\(データの分割\)** コンポーネントに接続します。
 
 1. **[Two-Class Bayes Averaged Perceptron]\(2 クラス ベイズ平均化パーセプトロン\)** を実験キャンバスにドラッグします。 このアルゴリズムのパフォーマンスを 2 クラスのブースト デシジョン ツリーのパフォーマンスと比較します。
 
-1. **[モデルのトレーニング]** モジュールと **[モデルのスコア付け]** モジュールをコピーしてキャンバスに貼り付けます。
+1. **[モデルのトレーニング]** コンポーネントと **[モデルのスコア付け]** コンポーネントをコピーしてキャンバスに貼り付けます。
 
-1. **[モデルの評価]** モジュールをキャンバスにドラッグし、2 つのアルゴリズムを比較します。
+1. **[モデルの評価]** コンポーネントをキャンバスにドラッグし、2 つのアルゴリズムを比較します。
 
 1. **[送信]** をクリックして、パイプラインの実行を設定します。
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="キャンバス上の残りのすべてのモジュールのスクリーンショット。" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="キャンバス上の残りのすべてのコンポーネントのスクリーンショット。" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
 
-1. 実行が完了したら、 **[モデルの評価]** モジュールを右クリックし、 **[Visualize Evaluation results]\(評価結果の視覚化\)** をクリックします。
+1. 実行が完了したら、 **[モデルの評価]** コンポーネントを右クリックし、 **[Visualize Evaluation results]\(評価結果の視覚化\)** をクリックします。
 
     :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/result-visualize-zoomed-out.png" alt-text="結果のスクリーンショット。":::
 
-指定されているメトリックは、ROC 曲線、精度/再現率図、およびリフト曲線です。 これらのメトリックを見ると、最初のモデルの方が 2 つ目のものよりもパフォーマンスが優れていることがわかります。 最初のモデルの予測を確認するには、[モデルのスコア付け] モジュールを右クリックし、[Visualize Scored dataset]\(スコア付けされたデータセットの視覚化\) をクリックして予測される結果を表示します。
+指定されているメトリックは、ROC 曲線、精度/再現率図、およびリフト曲線です。 これらのメトリックを見ると、最初のモデルの方が 2 つ目のものよりもパフォーマンスが優れていることがわかります。 最初のモデルの予測を確認するには、[モデルのスコア付け] コンポーネントを右クリックし、[Visualize Scored dataset]\(スコア付けされたデータセットの視覚化\) をクリックして予測される結果を表示します。
 
 テスト データセットに追加された 2 つの列が表示されます。
 
@@ -159,6 +159,6 @@ Azure Data Lake Storage でデータが使用できるようになったら、Az
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning の詳細については、[Azure での機械学習の概要](../../machine-learning/overview-what-is-azure-ml.md)に関するページを参照してください。
+Azure Machine Learning の詳細については、[Azure での機械学習の概要](../../machine-learning/overview-what-is-azure-machine-learning.md)に関するページを参照してください。
 
 データ ウェアハウスの組み込みのスコアリングについて、[こちら](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)を参照してください。

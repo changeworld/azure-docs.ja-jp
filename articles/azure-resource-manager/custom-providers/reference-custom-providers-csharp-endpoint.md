@@ -6,20 +6,20 @@ ms.custom: devx-track-csharp
 ms.author: jobreen
 author: jjbfour
 ms.date: 01/14/2021
-ms.openlocfilehash: 3b951cd0878bda4a3f65f9208f6997419a10d537
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fc06d7178442c22032795bf2d6ceacdbd6199a5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98200262"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745849"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>カスタム プロバイダーの C# RESTful エンドポイント リファレンス
 
 この記事は、カスタム プロバイダーの C# RESTful エンドポイントの基本リファレンスです。 Azure カスタム プロバイダーについてなじみがない場合は、[カスタム リソースプロバイダーの概要](overview.md)に関するページを参照してください。
 
-## <a name="azure-function-app-restful-endpoint"></a>Azure 関数アプリの RESTful エンドポイント
+## <a name="azure-functions-restful-endpoint"></a>Azure Functions の RESTful エンドポイント
 
-次のコードは、Azure 関数アプリで動作します。 Azure カスタム プロバイダーで動作するように Azure 関数アプリを設定する方法については、[Azure カスタム プロバイダー用の Azure 関数の設定に関するチュートリアル](./tutorial-custom-providers-function-setup.md)をご覧ください
+次のコードは、Azure の関数アプリで動作します。 Azure カスタム プロバイダーで動作するように関数アプリを設定する方法については、[Azure カスタム プロバイダー用の Azure Functions の設定に関するチュートリアル](./tutorial-custom-providers-function-setup.md)をご覧ください。
 
 ```csharp
 #r "Newtonsoft.Json"

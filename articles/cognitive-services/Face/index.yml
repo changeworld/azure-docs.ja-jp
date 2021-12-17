@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Face のドキュメント
-summary: 2020 年 6 月 11 日に、Microsoft は、人権に基づく厳格な法令が制定されない限り、米国内の警察に顔認識テクノロジを販売しないことを発表しました。 このため、顧客は、米国内の警察である場合、または警察による顔認識機能および Azure サービスに含まれる機能 (Face や Video Indexer など) の使用を許可する場合、これらの機能を使用できません。
+summary: 2020 年 6 月 11 日に、Microsoft は、人権に基づく厳格な法令が制定されない限り、米国内の警察に顔認識テクノロジを販売しないことを発表しました。 このため、顧客は、米国内の警察である場合、または警察による顔認識機能および Azure サービスに含まれる機能 (Face や Azure Video Analyzer for Media など) の使用を許可する場合、これらの機能を使用できません。
 metadata:
   title: Face のドキュメント - クイックスタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   description: クラウドベースの Face サービスを使用すると、開発者は高度な顔アルゴリズムにアクセスできます。 Microsoft Face のアルゴリズムにより、顔属性の検出と顔認識が可能になります。 クイックスタート、チュートリアル、サンプルを使用して、さまざまな方法でコンテンツを分析する方法をご確認ください。
@@ -10,13 +10,13 @@ metadata:
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 9/01/2020
-  ms.openlocfilehash: af32e4ebc08811ed5d4e9a583173f45368ba1148
-  ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+  ms.date: 10/27/2021
+  ms.openlocfilehash: 13198e20f03182d70189e85d9f25792648083a8b
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/14/2021
-  ms.locfileid: "107504954"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131434695"
 landingContent:
 - title: Face サービスについて
   linkLists:
@@ -28,43 +28,43 @@ landingContent:
     links:
     - text: Face サービスの新機能
       url: releasenotes.md
-- title: 顔を検出する
+- title: 顔認識
   linkLists:
   - linkListType: concept
     links:
-    - text: 顔検出
-      url: concepts/face-detection.md
-  - linkListType: quickstart
-    links:
-    - text: .NET SDK の使用
-      url: quickstarts/client-libraries.md?pivots=programming-language-csharp
-    - text: Python SDK の使用
-      url: quickstarts/client-libraries.md?pivots=programming-language-python
-    - text: Go SDK の使用
-      url: quickstarts/client-libraries.md?pivots=programming-language-go
-  - linkListType: how-to-guide
-    links:
-    - text: 顔検出モデルを指定する
-      url: Face-API-How-to-Topics/specify-detection-model.md
-- title: 顔の認識
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 顔認識
+    - text: 本人確認
       url: concepts/face-recognition.md
   - linkListType: quickstart
     links:
-    - text: .NET SDK の使用
+    - text: クライアント ライブラリ SDK または REST API を使用して顔を識別する
       url: ./quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp
-    - text: Python SDK の使用
-      url: ./quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python
-    - text: Go SDK の使用
-      url: ./quickstarts/client-libraries.md?pivots=programming-language-go%253fpivots%253dprogramming-language-go
   - linkListType: how-to-guide
     links:
-    - text: 顔認識モデルを指定する
+    - text: グループに顔を追加する
+      url: Face-API-How-to-Topics/how-to-add-faces.md
+    - text: 大規模なフィーチャーを使用する
+      url: Face-API-How-to-Topics/how-to-use-large-scale.md
+    - text: PersonDirectory 構造を使用する
+      url: Face-API-How-to-Topics/use-persondirectory.md
+    - text: 顔認識モデル バージョンを指定する
       url: Face-API-How-to-Topics/specify-recognition-model.md
-- title: 顔の四角形を使用する
+- title: 検出と分析
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 顔検出と顔属性
+      url: concepts/face-detection.md
+  - linkListType: quickstart
+    links:
+    - text: クライアント ライブラリ SDK または REST API を使用して顔を検出する
+      url: quickstarts/client-libraries.md?pivots=programming-language-csharp
+  - linkListType: how-to-guide
+    links:
+    - text: 顔を検出して分析する
+      url: Face-API-How-to-Topics/howtodetectfacesinimage.md
+    - text: 顔検出モデル バージョンを指定する
+      url: Face-API-How-to-Topics/specify-detection-model.md
+- title: 顔の四角形
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -72,20 +72,6 @@ landingContent:
       url: Face-API-How-to-Topics/howtodetectfacesinimage.md
     - text: HeadPose 属性を使用する
       url: Face-API-How-to-Topics/how-to-use-headpose.md
-- title: コンテナーの使用
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: コンテナーのインストールと実行
-      url: face-how-to-install-containers.md
-  - linkListType: how-to-guide
-    links:
-    - text: コンテナーを構成する
-      url: face-resource-container-config.md
-  - linkListType: deploy
-    links:
-    - text: Container Instances の使用
-      url: ../containers/azure-container-instance-recipe.md
 - title: リファレンス
   linkLists:
   - linkListType: reference
@@ -93,13 +79,13 @@ landingContent:
     - text: REST API
       url: /rest/api/face/
     - text: .NET SDK
-      url: /dotnet/api/overview/azure/cognitiveservices/client/faceapi
+      url: /dotnet/api/overview/azure/cognitiveservices/face-readme
     - text: Python SDK
-      url: /python/api/azure-cognitiveservices-vision-face/
+      url: /python/api/overview/azure/cognitiveservices/face-readme
     - text: Java SDK
       url: /java/api/overview/azure/cognitiveservices/client/faceapi
     - text: Node.js SDK
-      url: /javascript/api/@azure/cognitiveservices-face
+      url: /javascript/api/overview/azure/cognitive-services/face-readme
     - text: Go SDK
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face
     - text: Azure PowerShell

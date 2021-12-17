@@ -7,24 +7,20 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56eed522dc28b29f24e97a94a03e848d5cf58898
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575693"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725666"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>メトリックを Azure Monitor にアップロードする
 
 定期的に、監視しているメトリックをエクスポートしてから、Azure にアップロードできます。 また、データのエクスポートとアップロードでは、データ コントローラー、SQL マネージド インスタンス、および Azure の PostgreSQL Hyperscale サーバー グループ リソースが作成および更新されます。
 
-> [!NOTE] 
-> プレビュー期間中は、Azure Arc 対応データ サービス利用のコストは発生しません。
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -113,14 +109,17 @@ Azure Arc 対応 SQL マネージド インスタンスと Azure Arc 対応 Post
  
 1. 指定したファイルにすべてのメトリックをエクスポートします。
 
-   ```console
-   azdata arc dc export --type metrics --path metrics.json
+> [!NOTE]
+> コマンド `az arcdata dc export` を使用して使用状況と課金の情報、メトリック、ログをエクスポートするには、今のところ SSL 検証をバイパスする必要があります。  SSL 検証をバイパスするように求めるメッセージが表示されます。または、そのメッセージを表示しないように環境変数 `AZDATA_VERIFY_SSL=no` を設定できます。  現在、データ コントローラー エクスポート API に対して SSL 証明書を構成する方法はありません。
+
+   ```azurecli
+   az arcdata dc export --type metrics --path metrics.json
    ```
 
 2. メトリックを Azure Monitor にアップロードします。
 
-   ```console
-   azdata arc dc upload --path metrics.json
+   ```azurecli
+   az arcdata dc upload --path metrics.json
    ```
 
    >[!NOTE]
@@ -131,8 +130,8 @@ Azure Arc 対応 SQL マネージド インスタンスと Azure Arc 対応 Post
 
 エクスポート中に "メトリックを取得できませんでした" というエラーが表示された場合は、次のコマンドを実行して、データ収集が `true` に設定されているかどうかを確認します。
 
-```console
-azdata arc dc config show
+```azurecli
+az arcdata dc config show
 ```
 
 "security セクション" を参照してください
@@ -174,9 +173,9 @@ CPU 使用率は [概要] ページで確認できます。または、より詳
 
 お好きなテキスト エディターまたはコード エディターで、ファイルに次のスクリプトを追加し、.sh (Linux/Mac)、.cmd、.bat、.ps1 などのスクリプト実行可能ファイルとして保存します。
 
-```console
-azdata arc dc export --type metrics --path metrics.json --force
-azdata arc dc upload --path metrics.json
+```azurecli
+az arcdata dc export --type metrics --path metrics.json --force
+az arcdata dc upload --path metrics.json
 ```
 
 スクリプト ファイルを実行可能にする
@@ -197,7 +196,7 @@ Cron や Windows タスク スケジューラのようなジョブ スケジュ�
 
 Azure Arc 対応データ サービスに対する作成、読み取り、更新、削除 (CRUD) 操作は、課金および監視の目的でログに記録されます。 これらの CRUD 操作を監視し、使用量を適切に計算するバックグラウンド サービスがあります。 実際の使用状況または使用量の計算は、スケジュールに従って、バックグラウンドで実行されます。 
 
-プレビュー期間中、この処理は夜間に行われます。 一般的なガイダンスは、使用状況を 1 日に 1 回だけアップロードすることです。 使用状況情報をエクスポートし、同じ 24 時間以内に複数回アップロードすると、リソースの使用状況ではなく Azure portal のリソース インベントリのみが更新されます。
+使用状況のアップロードは 1 日に 1 回だけ実行してください。 使用状況情報をエクスポートし、同じ 24 時間以内に複数回アップロードすると、リソースの使用状況ではなく Azure portal のリソース インベントリのみが更新されます。
 
 メトリックをアップロードする場合、Azure Monitor では過去 30 分間のデータのみが受け入れられます ([詳細を参照](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting))。 メトリックをアップロードするためのガイダンスは、エクスポート ファイルを作成した直後にメトリックをアップロードして、Azure portal でデータセット全体を表示できるようにすることです。 たとえば、午後 2:00 にメトリックをエクスポートし、午後 2:50 にアップロード コマンドを実行した場合などです。 Azure Monitor では過去 30 分間のデータのみが受け入れられるため、ポータルにデータが表示されない場合があります。 
 

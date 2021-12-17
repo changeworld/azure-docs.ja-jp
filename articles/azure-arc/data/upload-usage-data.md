@@ -1,30 +1,29 @@
 ---
-title: 使用状況データを Azure Monitor にアップロードする
-description: Azure Arc 対応データ サービスのデータを Azure Monitor にアップロードする
+title: 使用状況データを Azure にアップロードする
+description: Azure Arc 対応データ サービスのデータを Azure にアップロードする
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 0c72eda59f375c70274b17796ca53614ef95505b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 74df592db61e4c9c50f9b199d7803fb8e1481878
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669510"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732158"
 ---
-# <a name="upload-usage-data-to-azure-monitor"></a>使用状況データを Azure Monitor にアップロードする
+# <a name="upload-usage-data-to-azure"></a>使用状況データを Azure にアップロードする
 
 定期的に、使用方法に関する情報をエクスポートできます。 この情報のエクスポートとアップロードでは、データ コントローラー、SQL マネージド インスタンス、および Azure の PostgreSQL Hyperscale サーバー グループ リソースが作成および更新されます。
 
 > [!NOTE] 
 > プレビュー期間中は、Azure Arc 対応データ サービス利用のコストは発生しません。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 
 > [!NOTE]
@@ -40,24 +39,21 @@ ms.locfileid: "104669510"
 
 インベントリやリソースの使用状況などの使用状況情報は、次の 2 段階の方法で Azure にアップロードできます。
 
-1. データ コントローラーにログインします。 プロンプトで次の値を入力します。 
+1. 次のように、`az arcdata dc export` コマンドを使用して使用状況データをエクスポートします。
 
-   ```console
-   azdata login
-   ```
+> [!NOTE]
+> コマンド `az arcdata dc export` を使用して使用状況および課金情報、メトリック、ログをエクスポートするには、今のところ SSL 検証をバイパスする必要があります。  SSL 検証をバイパスするように求めるメッセージが表示されます。または、プロンプトを表示しないように環境変数 `AZDATA_VERIFY_SSL=no` を設定できます。  現在、データ コントローラー エクスポート API に対して SSL 証明書を構成する方法はありません。
 
-1. 次のように、`azdata arc dc export` コマンドを使用して使用状況データをエクスポートします。
-
-   ```console
-   azdata arc dc export --type usage --path usage.json
+   ```azurecli
+   az arcdata dc export --type usage --path usage.json --k8s-namespace <namespace> --use-k8s
    ```
  
-   このコマンドにより、データ コントローラー上に作成されたすべての Azure Arc 対応データ リソース (SQL マネージド インスタンスや PostgreSQL ハイパースケール インスタンスなど) を含む `usage.json` ファイルが作成されます。
+   このコマンドにより、データ コントローラー上に作成されたすべての Azure Arc 対応データ リソース (SQL マネージド インスタンスや PostgreSQL Hyperscale インスタンスなど) を含む `usage.json` ファイルが作成されます。
 
-2. ```azdata upload``` コマンドを使用して使用状況データをアップロードする
+2. `upload` コマンドを使用して使用状況データをアップロードします。
 
-   ```console
-   azdata arc dc upload --path usage.json
+   ```azurecli
+   az arcdata dc upload --path usage.json
    ```
 
 ## <a name="automating-uploads-optional"></a>アップロードの自動化 (省略可能)
@@ -66,9 +62,9 @@ ms.locfileid: "104669510"
 
 お好きなテキスト エディターまたはコード エディターで、ファイルに次のスクリプトを追加し、`.sh` (Linux/Mac)、`.cmd`、`.bat`、`.ps1` などのスクリプト実行可能ファイルとして保存します。
 
-```console
-azdata arc dc export --type metrics --path metrics.json --force
-azdata arc dc upload --path metrics.json
+```azurecli
+az arcdata dc export --type usage --path usage.json --force --k8s-namespace <namespace> --use-k8s
+az arcdata dc upload --path usage.json
 ```
 
 スクリプト ファイルを実行可能にする
@@ -77,7 +73,7 @@ azdata arc dc upload --path metrics.json
 chmod +x myuploadscript.sh
 ```
 
-20 分ごとにスクリプトを実行します。
+使用状況について毎日次のスクリプトを実行します。
 
 ```console
 watch -n 1200 ./myuploadscript.sh

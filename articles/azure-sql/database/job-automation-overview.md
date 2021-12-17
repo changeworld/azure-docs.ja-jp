@@ -13,12 +13,12 @@ author: williamdassafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
-ms.openlocfilehash: 1f4bd28d2b95aeebe07fcad84d757327622d51f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d754d03811bf532d6be6b4695281e82ab8fb002
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690432"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440450"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>エラスティック ジョブ (プレビュー) を使用して管理タスクを自動化する
 
@@ -54,9 +54,9 @@ ms.locfileid: "101690432"
 
 エラスティック ジョブは、[Azure SQL Database](sql-database-paas-overview.md) と [Azure SQL Database エラスティック プール](elastic-pool-overview.md)のほか、[シャード マップ](elastic-scale-shard-map-management.md)の Azure SQL Database をターゲットにできます。
 
-SQL Server と Azure SQL Managed Instance における T-SQL スクリプト ジョブの自動化では、[SQL Agent](job-automation-managed-instances.md) を検討してください。 
+- SQL Server と Azure SQL Managed Instance における T-SQL スクリプト ジョブの自動化では、[SQL Agent](../managed-instance/job-automation-managed-instance.md) を検討してください。 
 
-Azure Synapse Analytics における T-SQL スクリプト ジョブの自動化では、[Azure Data Factory に基づく](../../synapse-analytics/data-integration/concepts-data-factory-differences.md)[パイプラインと定期的なトリガー](../../synapse-analytics/data-integration/concepts-data-factory-differences.md)を検討してください。
+- Azure Synapse Analytics における T-SQL スクリプト ジョブの自動化では、[Azure Data Factory に基づく](../../synapse-analytics/data-integration/concepts-data-factory-differences.md)[パイプラインと定期的なトリガー](../../synapse-analytics/data-integration/concepts-data-factory-differences.md)を検討してください。
 
 SQL Agent (SQL Server で利用できるほか、SQL Managed Instance にも含まれています) と Database Elastic Job エージェント (Azure Synapse Analytics、Azure SQL Managed Instance、Azure SQL Database、SQL Server のデータベースで T-SQL を実行できる) の間には、いくつかの点で違いがあります。
 
@@ -159,7 +159,7 @@ SQL Agent (SQL Server で利用できるほか、SQL Managed Instance にも含�
 
 #### <a name="job-history"></a>ジョブ履歴
 
-エラスティック ジョブの実行履歴は、"*ジョブ データベース*" の [テーブル jobs.job_executions を照会](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status)することで確認できます。 記録から 45 日が経過した実行履歴については、システムのクリーンアップ ジョブにより削除されます。 45 日が経過する前に履歴を削除する場合には、"*ジョブ データベース*" で **sp_purge_history** ストアド プロシージャを呼び出してください。
+エラスティック ジョブの実行履歴は、"*ジョブ データベース*" の [テーブル jobs.job_executions を照会](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status)することで確認できます。 記録から 45 日が経過した実行履歴については、システムのクリーンアップ ジョブにより削除されます。 45 日が経過する前に履歴を削除する場合には、"*ジョブ データベース*" で`sp_purge_jobhistory` ストアド プロシージャを呼び出してください。
 
 #### <a name="job-status"></a>ジョブの状態
 

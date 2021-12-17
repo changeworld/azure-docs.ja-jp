@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 43c39c40af6e02861211a8666fefa57c34072f32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c43cc081316a26065143640a29cebdb90177ebc7
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96905198"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031639"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>コンテンツ モデレーションのレビュー、ワークフロー、ジョブ
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 Content Moderator は、マシン支援型モデレーションと人間参加機能を組み合わせて、現実的なシナリオに最適なモデレーション プロセスを作成します。 これは、クラウドベースの[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)を介して行われます。 このガイドでは、レビュー ツールの主要な概念であるレビュー、ワークフロー、ジョブについて説明します。
 

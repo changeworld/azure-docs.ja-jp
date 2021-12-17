@@ -3,20 +3,21 @@ title: C# を使用して GA 環境の参照データを管理する - Azure Tim
 description: C# で記述されたカスタム アプリケーションを作成することによって GA 環境の参照データを管理する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: cshankar
+author: esung22
+ms.author: elsung
+manager: cnovak
+ms.reviewer: orspodek
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d6f0e5230fb3c59cab690620e837f476f3392a48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0508cfa1f5a789207b2771be4bdd9d448af3363
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95020080"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074614"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>C# を使用して Azure Time Series Insights Gen 1 環境の参照データを管理する
 
@@ -80,7 +81,7 @@ ms.locfileid: "95020080"
 
 1. `csharp-tsi-msal-ga-sample.csproj` ファイルを宣言します。
 
-    ```XML
+    ```xml
     <Project Sdk="Microsoft.NET.Sdk">
       <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -228,7 +229,6 @@ namespace CsharpTsiMsalGaSample
                             }
                         ]
                     }";
-
 
                 var createResponse = await AsyncHttpPostRequestHelper(httpClient, createInput);
 

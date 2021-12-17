@@ -3,20 +3,20 @@ title: エラー コード リファレンス
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C サービスによって返される可能性があるエラー コードの一覧です。
 services: B2C
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/02/2020
-ms.author: mimart
+ms.date: 06/16/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 172e170839b540f796c90c891695f63f60f14e13
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92215435"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041426"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>エラー コード:Azure Active Directory B2C
 
@@ -144,6 +144,7 @@ Azure Active Directory B2C サービスは、次のエラーを返すことが�
 | `AADB2C90284` | 識別子 '{0}' のアプリケーションは同意が得られていないため、ローカル アカウントに使用できません。 |
 | `AADB2C90285` | 識別子 '{0}' を持つアプリケーションが見つかりませんでした。 |
 | `AADB2C90288` | テナント '{2}' の更新トークン取得に関して、TechnicalProfile '{1}' で参照されている ID '{0}' の UserJourney が、ポリシー '{3}' またはそのいずれかの基本ポリシーに存在しません。 |
+| `AADB2C90287` | 要求に無効なリダイレクト URI '{0}' が含まれています。|
 | `AADB2C90289` | ID プロバイダーへの接続でエラーが発生しました。 後で再度お試しください。 |
 | `AADB2C90296` | アプリケーションが正しく構成されていません。 アクセスしようとしているサイトの管理者に問い合わせてください。 |
 | `AADB2C99005` | この要求には、無効な文字 '{0}' を含む無効なスコープ パラメーターが含まれています。 |

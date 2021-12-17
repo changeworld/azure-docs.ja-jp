@@ -1,23 +1,26 @@
 ---
-title: Azure Data Factory の ForEach アクティビティ
-description: ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 これは、コレクションに対する反復処理に使用され、指定されたアクティビティを実行します。
-author: dcstwh
-ms.author: weetok
+title: ForEach アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
+description: ForEach アクティビティでは、Azure Data Factory または Azure Synapse Analytics パイプラインで繰り返される制御フローを定義します。 ForEach アクティビティは、コレクションを反復処理して、コレクション内の各項目に対して個別にアクションを実行するために使用されます。
+author: chez-charlie
+ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: d0fd9ab8286496b9801d6c10682761f1264e040a
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.date: 09/09/2021
+ms.openlocfilehash: b0caba4963420de555b9dbfdb269924ba8c9a942
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120913"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831583"
 ---
-# <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory の ForEach アクティビティ
+# <a name="foreach-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での ForEach アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
+ForEach アクティビティでは、Azure Data Factory または Synapse Analytics パイプラインで繰り返される制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
 
 ## <a name="syntax"></a>構文
 プロパティは、この記事の後の方で説明します。 items プロパティはコレクションであり、次の構文に示すように、コレクション内の各項目は `@item()` を使用して参照されます。  
@@ -70,13 +73,13 @@ ForEach アクティビティは、パイプライン内の繰り返し制御フ
 -------- | ----------- | -------------- | --------
 name | ForEach アクティビティの名前。 | String | はい
 type | **ForEach** に設定する必要があります | String | はい
-isSequential | ループを順番に実行するか、または並行して実行するかを指定します。  一度に最大 20 のループ反復処理を並行して実行できます。 たとえば、**isSequential** が False に設定された状態で、10 個の異なるソースとシンク データセットがあるコピー アクティビティに対して ForEach アクティビティ反復処理を実行すると、一度にすべてのコピーが実行されます。 既定値は False です。 <br/><br/> "isSequential" が False に設定されている場合は、複数の実行可能ファイルを実行するための正しい構成が存在することを確認してください。 そうでない場合は、書き込みの競合が発生しないようにするために、このプロパティを慎重に使用する必要があります。 詳細については、「[Parallel execution (並列実行)](#parallel-execution)」セクションを参照してください。 | Boolean | いいえ。 既定値は False です。
+isSequential | ループを順番に実行するか、または並行して実行するかを指定します。  一度に最大 50 のループ反復処理を並行して実行できます。 たとえば、**isSequential** が False に設定された状態で、10 個の異なるソースとシンク データセットがあるコピー アクティビティに対して ForEach アクティビティ反復処理を実行すると、一度にすべてのコピーが実行されます。 既定値は False です。 <br/><br/> "isSequential" が False に設定されている場合は、複数の実行可能ファイルを実行するための正しい構成が存在することを確認してください。 そうでない場合は、書き込みの競合が発生しないようにするために、このプロパティを慎重に使用する必要があります。 詳細については、「[Parallel execution (並列実行)](#parallel-execution)」セクションを参照してください。 | Boolean | いいえ。 既定値は False です。
 batchCount | 並列実行の数を制御するために使用するバッチの数 (IsSequential が false に設定されている場合)。 これはコンカレンシーの上限ですが、For-Each アクティビティは常にこの数値で実行されるわけではありません | Integer (最大 50) | いいえ。 既定値は 20 です。
 アイテム | 反復処理される JSON 配列を返す式。 | 式 (これは JSON 配列を返します) | はい
 Activities | 実行されるアクティビティ。 | アクティビティの一覧 | はい
 
 ## <a name="parallel-execution"></a>並列実行
-**isSequential** が False に設定されている場合、このアクティビティは最大 20 の同時実行反復処理と並行して反復処理します。 この設定は、慎重に使用する必要があります。 同時実行反復処理が同じフォルダーではあっても、異なるファイルへの書き込みである場合、このアプローチは適切です。 同時実行反復処理がまったく同じファイルへの同時書き込みである場合、このアプローチはエラーの原因になる可能性があります。 
+**isSequential** が false に設定されている場合、このアクティビティは最大 50 の同時実行反復処理と並行して反復処理します。 この設定は、慎重に使用する必要があります。 同時実行反復処理が同じフォルダーではあっても、異なるファイルへの書き込みである場合、このアプローチは適切です。 同時実行反復処理がまったく同じファイルへの同時書き込みである場合、このアプローチはエラーの原因になる可能性があります。 
 
 ## <a name="iteration-expression-language"></a>反復処理の式言語
 ForEach アクティビティでは、反復処理される配列をプロパティ **items** として指定します。 ForEach アクティビティで 1 つの列挙を反復処理するには、`@item()` を使用します。 たとえば、**items** が配列: [1, 2, 3] である場合、`@item()` は最初の反復処理で 1 を、2 番目の反復処理で 2 を、3 番目の反復処理で 3 を返します。 また、`@range(0,10)` like 式を使用して、0 から 9 までの10 回の反復処理を行うこともできます。
@@ -487,7 +490,7 @@ ForEach アクティビティと提案される回避策のいくつかの制限
 | | |
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
+サポートされている他の制御フロー アクティビティを参照してください。 
 
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)
 - [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md)

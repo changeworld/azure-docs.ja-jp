@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6d4f3f744a85c14c42ffef1c894b237081e871f8
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 54ebf914b27c8cd91272e4b8e5c8834e5331cdf4
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752428"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057425"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault のシークレットについて
 
@@ -24,11 +24,15 @@ ms.locfileid: "107752428"
 
 機密性の高いデータについては、クライアントで追加のデータ保護レイヤーを検討する必要があります。 たとえば、Key Vault に保存する前に別の保護キーを使用してデータを暗号化します。  
 
-Key Vault では、シークレットの contentType フィールドもサポートされています。 クライアントは、シークレットのコンテンツ タイプを指定して、取得されるときのシークレット データの解釈を支援できます。 このフィールドの最大長は 255 文字です。 定義済みの値はありません。 推奨される使用方法は、シークレット データを解釈するためのヒントです。 たとえば、実装がパスワードと証明書の両方をシークレットとして格納する場合は、このフィールドを使用して区別します。 定義済みの値はありません。  
+Key Vault では、シークレットの contentType フィールドもサポートされています。 クライアントは、シークレットのコンテンツ タイプを指定して、取得されるときのシークレット データの解釈を支援できます。 このフィールドの最大長は 255 文字です。 推奨される使用方法は、シークレット データを解釈するためのヒントです。 たとえば、実装がパスワードと証明書の両方をシークレットとして格納する場合は、このフィールドを使用して区別します。 定義済みの値はありません。  
 
 ## <a name="encryption"></a>暗号化
 
-Key Vault 内のシークレットはすべて、暗号化した状態で格納されます。 この暗号化は透過的に行われ、ユーザーによる操作は必要ありません。 ユーザーによって追加されたシークレットは、Azure Key Vault サービスによって暗号化され、ユーザーが読み取るとき自動的に暗号化が解除されます。 暗号化キーは、キー コンテナーごとに一意となります。
+Key Vault 内のシークレットはすべて、暗号化した状態で格納されます。 Key Vault では、暗号化キーの階層を使用して保存中のシークレットを暗号化します。その階層内のすべてのキーは、FIPS 140-2 に準拠しているモジュールによって保護されます。 この暗号化は透過的に行われ、ユーザーによる操作は必要ありません。 ユーザーによって追加されたシークレットは、Azure Key Vault サービスによって暗号化され、ユーザーが読み取るとき自動的に暗号化が解除されます。
+
+キー階層の暗号化リーフ キーは、各キー コンテナーに固有です。 キー階層の暗号化ルート キーはセキュリティ ワールドに固有であり、その保護レベルはリージョンによって異なります。
+- 中国: ルート キーは、FIPS 140-2 レベル 1 で検証されたモジュールによって保護されます。 
+- その他のリージョン: ルート キーは、FIPS 140-2 レベル 2 以上で検証されたモジュールによって保護されます。 
 
 ## <a name="secret-attributes"></a>シークレットの属性
 
@@ -81,56 +85,18 @@ Key Vault でアクセスを制御するための攻略ガイドについては�
 >[!Note]
 >タグは、呼び出し元が *list* または *get* のアクセス許可を持っている場合に呼び出し元によって読み取ることができます。
 
-## <a name="azure-storage-account-key-management"></a>Azure ストレージ アカウント キーの管理
+## <a name="usage-scenarios"></a>使用シナリオ
 
-Key Vault では、[Azure ストレージ アカウント](../../storage/common/storage-account-overview.md) キーを管理できます。
-
-- Key Vault の内部では、Azure ストレージ アカウントを使用してキーの一覧表示 (同期) ができます。 
-- Key Vault は定期的にキーを再生成 (ローテーション) します。
-- キーの値は、呼び出し元に応答で返されることはありません。
-- Key Vault では、ストレージ アカウントと従来のストレージ アカウントの両方のキーが管理されます。
-
-詳細については、次を参照してください。
-- [ストレージ アカウントのアクセス キー](../../storage/common/storage-account-keys-manage.md)
-- [Azure Key Vault でのストレージ アカウント キーの管理](../secrets/overview-storage-keys.md)
-
-
-## <a name="storage-account-access-control"></a>ストレージ アカウントのアクセス制御
-
-ユーザーまたはアプリケーション プリンシパルがマネージド ストレージ アカウントに対する操作を実行するのを承認するときは、次のアクセス許可を使用できます。  
-
-- マネージド ストレージ アカウントと SaS 定義の操作に対するアクセス許可
-  - *get*:ストレージ アカウントに関する情報を取得します 
-  - *list*:キー コンテナーによって管理されているストレージ アカウントを一覧表示します
-  - *update*:ストレージ アカウントを更新します
-  - *delete*:ストレージ アカウントを削除する  
-  - *recover*:削除されたストレージ アカウントを復旧します
-  - *backup*:ストレージ アカウントをバックアップします
-  - *restore*:バックアップしたストレージ アカウントをキー コンテナーに復元します
-  - *set*:ストレージ アカウントを作成または更新します
-  - *regeneratekey*:ストレージ アカウントの指定されたキー値を再生成します
-  - *getsas*:ストレージ アカウントの SAS 定義に関する情報を取得します
-  - *listsas*:ストレージ アカウントのストレージ SAS 定義を一覧表示します
-  - *deletesas*:ストレージ アカウントから SAS 定義を削除します
-  - *setsas*:ストレージ アカウントの新しい SAS 定義/属性を作成または更新します
-
-- 特権操作に対するアクセス許可
-  - *purge*:マネージド ストレージ アカウントをパージ (完全に削除) します
-
-詳しくは、[Key Vault REST API リファレンス内のストレージ アカウントの操作](/rest/api/keyvault)に関するページをご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。
-
-Key Vault でアクセスを制御するための攻略ガイドについては、次の記事をご覧ください。
-- [CLI を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-cli.md)
-- [PowerShell を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-powershell.md)
-- [Azure portal を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-portal.md)
-- [Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](../general/rbac-guide.md)
-
+| 使用する場合 | 使用例 |
+|--------------|-------------|
+|パスワード、アクセス キー、サービス プリンシパル クライアント シークレットなどのサービス間通信の資格情報を安全に格納し、ライフサイクルを管理し、監視します。  | - [仮想マシンで Azure Key Vault を使用する](../general/tutorial-net-virtual-machine.md)<br> - [Azure Web アプリで Azure Key Vault を使用する](../general/tutorial-net-create-vault-azure-web-app.md) |
 
 ## <a name="next-steps"></a>次のステップ
 
+- [Key Vault でのシークレットの管理に関するベスト プラクティス](secrets-best-practices.md)
 - [Key Vault について](../general/overview.md)
 - [キー、シークレット、証明書について](../general/about-keys-secrets-certificates.md)
-- [キーについて](../keys/about-keys.md)
-- [証明書について](../certificates/about-certificates.md)
-- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)
+- [Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy.md)
+- [Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](../general/rbac-guide.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-features.md)
 - [Key Vault 開発者ガイド](../general/developers-guide.md)

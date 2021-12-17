@@ -8,21 +8,21 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 03/19/2021
-ms.openlocfilehash: e2de694a153276dcace1070d35af44dec1056e03
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8e044cee9e91c0de16105bc4c954af9e61acea5a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564927"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743676"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>移行ガイド: SQL Server から Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
-このガイドでは、SQL Server インスタンスを Azure SQL Database に移行する方法について説明します。 
+このガイドでは、SQL Server インスタンスを Azure SQL Database に[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。 
 
-オンプレミスまたは以下で実行されている SQL Server を移行できます。 
+オンプレミスまたは次で実行されている SQL Server を移行できます。 
 
 - SQL Server on Virtual Machines  
 - アマゾン ウェブ サービス (AWS) EC2 
@@ -30,24 +30,25 @@ ms.locfileid: "105564927"
 - Compute Engine (Google Cloud Platform - GCP)  
 - Cloud SQL for SQL Server (Google Cloud Platform – GCP) 
 
-移行の詳細については、[移行の概要](sql-server-to-sql-database-overview.md)に関するページを参照してください。 その他の移行ガイドについては、[データベースの移行](https://docs.microsoft.com/data-migration)に関するページを参照してください。 
+移行の詳細については、[移行の概要](sql-server-to-sql-database-overview.md)に関するページを参照してください。 その他の移行ガイドについては、[データベースの移行](/data-migration)に関するページを参照してください。 
 
 :::image type="content" source="media/sql-server-to-database-overview/migration-process-flow-small.png" alt-text="移行プロセス フロー":::
 
 ## <a name="prerequisites"></a>前提条件 
 
-SQL Server を Azure SQL Database に移行するには、次の前提条件が満たされていることを確認します。 
+Azure SQL Database に [SQL Server を移行する](https://azure.microsoft.com/migration/sql-server/)場合は、以下が満たされていることを確認します。 
 
-- [移行方法](sql-server-to-sql-database-overview.md#compare-migration-options)および対応するツールが選択されている。
-- ソースの SQL Server に接続できるマシンにインストールされている [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。
-- ターゲットの [Azure SQL Database](../../database/single-database-create-quickstart.md)。 
-- ソースとターゲットの両方にアクセスするための接続と、適切なアクセス許可。 
+- [移行方法](sql-server-to-sql-database-overview.md#compare-migration-options)および対応するツールの選択。
+- ソース SQL Server に接続できるコンピューターへの [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) のインストール。
+- 移行先となる [Azure SQL データベース](../../database/single-database-create-quickstart.md)の作成。 
+- ソースとターゲットの両方にアクセスするための接続と、適切なアクセス許可の構成。 
+- [Azure SQL Database で使用できる](../../database/features-comparison.md)データベース エンジンの機能の確認。 
 
 
 
 ## <a name="pre-migration"></a>移行前
 
-ソース環境がサポートされていることを確認した後、移行前ステージから開始します。 既存のデータ ソースをすべて検出し、移行が可能かどうかを評価し、移行の阻害要素となる可能性のある問題を特定します。 
+ソース環境がサポートされていることを確認した後、移行前ステージから開始します。 既存のデータ ソースをすべて検出し、移行が可能かどうかを評価し、[Azure クラウドの移行](https://azure.microsoft.com/migration)の阻害要素となる可能性のある問題を特定します。
 
 ### <a name="discover"></a>発見
 
@@ -200,6 +201,10 @@ Azure SQL Database への移行を高速化するには、次の推奨事項を�
 
 - さまざまなデータベースとデータの移行シナリオ、および特殊なタスクを支援するために使用できる Microsoft とサードパーティのサービスとツールのマトリックスについては、[データ移行のサービスとツール](../../../dms/dms-tools-matrix.md)に関するページを参照してください。
 
+
+- [Azure Migrate](https://azure.microsoft.com/services/azure-migrate) の詳細については、以下を参照してください。
+   - [Azure Migrate](../../../migrate/migrate-services-overview.md)
+
 - SQL Database の詳細については、以下を参照してください。
     - [Azure SQL Database の概要](../../database/sql-database-paas-overview.md)
    - [Azure 総保有コスト計算ツール](https://azure.microsoft.com/pricing/tco/calculator/) 
@@ -208,6 +213,7 @@ Azure SQL Database への移行を高速化するには、次の推奨事項を�
 - クラウド移行のためのフレームワークと導入サイクルの詳細については、以下を参照してください
    -  [Azure 向けのクラウド導入フレームワーク](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [クラウド移行リソース](https://azure.microsoft.com/migration/resources)
 
 - アプリケーション アクセス層を評価するには、「[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」を参照してください。
 - データ アクセス レイヤーの A/B テストの実行方法について詳しくは、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) についてのページを参照してください。

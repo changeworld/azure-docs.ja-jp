@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 505c0de5a508bd97b10091451116ec3670a20493
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ac03b354abf179061adad80cb5fe05ee3d549df
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677556"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540270"
 ---
 # <a name="sql-authentication"></a>SQL 認証
 
@@ -60,7 +60,7 @@ Azure Active Directory では、ユーザー管理を 1 か所で行うことが
 ```sql
 CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
-CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
+CREATE LOGIN [Mary@domainname.net] FROM EXTERNAL PROVIDER;
 ```
 ログインを作成したら、サーバーレス SQL プール エンドポイント内の個々のデータベースにユーザーを作成し、これらのユーザーに必要なアクセス許可を付与することができます。 ユーザーを作成するには、次の構文を使用できます。
 ```sql
@@ -73,7 +73,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 ログインとユーザーを作成したら、通常の SQL Server 構文を使用して権限を付与できます。
 
-## <a name="sql-pool"></a>[SQL プール](#tab/provisioned)
+## <a name="dedicated-sql-pool"></a>[専用 SQL プール](#tab/provisioned)
 
 ### <a name="administrator-access-path"></a>Administrator access path
 

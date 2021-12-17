@@ -9,33 +9,19 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: ea08c82ed5772be7e3a6094f5477c4450975c1fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: f83e84e3aa747c41d0e45a5650c704c796c62447
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775880"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112968269"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Synapse Studio を使用して Apache Spark アプリケーションを監視する
 
 Azure Synapse Analytics では、Apache Spark を使用して、ワークスペース内の Apache Spark プールでノートブック、ジョブ、およびその他の種類のアプリケーションを実行できます。
 
 この記事では、Apache Spark アプリケーションを監視する方法を説明し、最新の状態、問題、および進捗状況を監視できるようにします。
-
-このチュートリアルに含まれるタスクは次のとおりです。
-
-* 実行中の Apache Spark アプリケーションを監視する
-* 完了した Apache Spark アプリケーションを表示する
-* 取り消された Apache Spark アプリケーションを表示する
-* 失敗した Apache Spark アプリケーションをデバッグする
-
-## <a name="prerequisites"></a>前提条件
-
-このチュートリアルを開始する前に、次の要件を満たしてください。
-
-- Synapse Studio ワークスペース。 手順については、[Synapse Studio ワークスペースの作成](../../machine-learning/how-to-manage-workspace.md#create-a-workspace)に関する記事を参照してください。
-
-- Apache Spark プール。
 
 ## <a name="view-apache-spark-applications"></a>Apache Spark アプリケーションを表示する 
 すべての Apache Spark アプリケーションは、 **[モニター]**  ->  **[Apache Spark アプリケーション]** から表示できます。
@@ -49,47 +35,66 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
 1. **完了したタスク**、**状態**、および **合計実行時間** を確認します。
 
-2. ログ クエリを更新します。
+2. ジョブを **更新** します。
 
-3. **[Spark History Server]** をクリックして、Apache Spark History Server のリンクを開きます。
+3. **[アプリケーションの比較]** をクリックして比較機能を使用します。この機能の詳細については、「[**Apache Spark アプリケーションの比較**](#compare-apache-spark-applications)」を参照してください。
 
-4. **概要** 情報を確認します。
+4. **[Spark History Server]** をクリックして [History Server] ページを開きます。
 
-5. **ログ** を確認します。 ドロップダウン リストからさまざまな種類のログを選択できます。また、 **[ログのダウンロード]** をクリックすることでログ情報をダウンロードでき、さらに **[Filter errors and warnings]\(エラーと警告をフィルター処理する\)** のチェックボックスをオンにすると必要なエラーや警告をフィルタリングすることができます。
+5. **概要** 情報を確認します。
 
-6. 生成されたジョブ グラフで、ジョブの概要を表示できます。 既定で、グラフにはすべてのジョブが表示されます。 **ジョブ ID** で、このビューをフィルター処理できます。
+6. **[診断]** タブで診断を確認します。
 
-7. 既定で、 **[進行状況]** 表示が選択されています。 データ フローを確認するには、 **[表示]** ドロップダウン リストで **[進行状況]** / **[読み取り済み]** / **[書き込み済み]** / **[実行時間]** を選択します。
+7. **ログ** を確認します。 ドロップダウン リストで対応する項目を選ぶことにより、**Livy** と **Prelaunch** の完全なログ、**Driver** のログを見ることができます。 キーワードで検索して、必要なログの情報を直接取得することもできます。 **[Download log]\(ログのダウンロード\)** をクリックしてローカルにログの情報をダウンロードし、 **[Filter errors and warnings]\(エラーと警告を絞り込む\)** のチェック ボックスに印を入れて、エラーと警告を必要なものに絞り込んでください。
 
-8. ジョブを再生するには、 **[再生]** ボタンをクリックします。 いつでも **[停止]** ボタンをクリックして停止できます。
+8. 生成されたジョブ グラフで、ジョブの概要を表示できます。 既定で、グラフにはすべてのジョブが表示されます。 **ジョブ ID** で、このビューをフィルター処理できます。
 
-9. マウスのスクロールまたはスクロール バーを使用して、ジョブ グラフを拡大したり縮小したりできます。また、 **[ウィンドウのサイズに合わせて大きさを変更]** を選択して、画面に合わせて調整することもできます。
+9. 既定で、 **[進行状況]** 表示が選択されています。 **[View]\(表示\)** ドロップダウン リストで **[Progress]\(進行状況\)** / **[Read]\(読み取り\)** / **[Written]\(書き込み\)** / **[Duration]\(経過時間\)** を選ぶことで、データ フローを確認できます。
 
-10. ジョブ グラフ ノードには、各ステージの次の情報が表示されます。
+10. ジョブを再生するには、 **[Playback]\(再生\)** ボタンをクリックします。 いつでも **[停止]** ボタンをクリックして停止できます。
 
-    * ID。
+11. スクロール バーでジョブのグラフを拡大/縮小します。 **[Zoom to Fit]\(画面に合わせて拡大/縮小する\)** で大きさを画面に合わせることもできます。
 
-    * 名前または説明。
+    [![完了したジョブを表示する](./media/how-to-monitor-spark-applications/view-completed-job.png)](./media/how-to-monitor-spark-applications/view-completed-job.png#lightbox)
 
-    * 合計タスク数。
 
-    * データの読み取り: 入力サイズとシャッフル読み取りサイズの合計。
+12. ジョブ グラフ ノードには、各ステージの次の情報が表示されます。
 
-    * データ書き込み: 出力サイズとシャッフル書き込みサイズの合計。
+    - [ジョブ ID]
+    - タスク数
+    - 経過時間
+    - [行数]
+    - データ読み取り: 入力サイズとシャッフル読み取りサイズの合計
+    - 書き込みデータ: 出力サイズとシャッフル書き込みサイズの合計値
+    - ステージ数
 
-    * 実行時間: 最初の試行の開始時刻と最後の試行の完了時刻の間の時間。
+       ![ジョブ グラフ ノード](./media/how-to-monitor-spark-applications/job-graph-node.png)
 
-    * 行数: 入力レコード、出力レコード、シャッフル読み取りレコード、シャッフル書き込みレコードの合計。
-
-    * 進行状況。
-
-     ![完了したジョブを表示する](./media/how-to-monitor-spark-applications/view-completed-job.png)
+13. マウスのポインターをジョブに重ねると、ジョブの詳細がヒントに表示されます。
     
-11. グラフの **[詳細の表示]** をクリックすると、ステージの詳細が表示されます。
+    - ジョブの状態のアイコン: ジョブが順調であれば、緑色の √ が表示されます。ジョブに問題が見付かった場合は、黄色の ! が表示されます。
+    - ジョブ ID。
+    - [General]\(全般\) 欄
+      - 進捗状況
+      - 経過時間
+      - [Total tasks number]\(合計タスク数\)
+    - [Data]\(データ\) 欄
+      - [Total rows number]\(合計列数\)
+      - [Read size]\(読み取りサイズ\)
+      - [Written size]\(書き込みサイズ\)
+    - [Skew]\(偏り\) 欄
+      - データ スキュー
+      - 時間のずれ
+    - ステージ数
 
-    ![ステージの詳細](./media/how-to-monitor-spark-applications/details-for-stage.png)
+      ![マウスのポインターをジョブに重ねます](./media/how-to-monitor-spark-applications/hover-a-job.png)
 
+14. **ステージ数** をクリックして、そのジョブに含まれるすべてのステージを表示します。 ジョブ ID の隣の **[Collapse]\(隠す\)** をクリックして、そのジョブに含まれるすべてのステージを非表示にします。
 
+15. ステージのグラフの **[View details]\(詳細の表示\)** をクリックすると、ステージの詳細が表示されます。
+
+    [![すべてのステージを表示](./media/how-to-monitor-spark-applications/expand-all-the-stages.png)](./media/how-to-monitor-spark-applications/expand-all-the-stages.png#lightbox)
+    
 ## <a name="monitor-running-apache-spark-application"></a>実行中の Apache Spark アプリケーションを監視する
 
 **[モニター]** を開き、次に **[Apache Spark アプリケーション]** を選択します。 実行中の Apache Spark アプリケーションの詳細を表示するには、送信している Apache Spark アプリケーションを選択し、詳細を表示します。 Apache Spark アプリケーションがまだ実行中の場合は、進捗状況を監視できます。
@@ -100,19 +105,13 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
 2. Apache Spark アプリケーションを **[取り消し]** ます。
 
-3. ログ クエリを **[更新]** します。
+3. ジョブを **更新** します。
 
 4. **[Spark UI]** ボタンをクリックして、Spark ジョブ ページにアクセスします。
 
-5. グラフを表示します。 生成されたジョブ グラフで、ジョブの概要を表示できます。 「[完了した Apache Spark アプリケーションを表示する](#view-completed-apache-spark-application)」の手順 6、7、8、9、10 を参照してください。
+5. **ジョブのグラフ**、**概要**、**分析**、**ログ** については、 生成されたジョブ グラフで、ジョブの概要を表示できます。 「[完了した Apache Spark アプリケーションを表示する](#view-completed-apache-spark-application)」セクションのステップ 5 - 15 をご覧ください。 
 
-6. **概要** 情報を確認します。
-
-7. **[診断]** タブで診断を確認します。
-
-8. このタブで **[ログ]** を確認します。ドロップダウン リストからさまざまな種類のログを選択できます。また、 **[ログのダウンロード]** をクリックすることでログ情報をダウンロードでき、さらに **[Filter errors and warnings]\(エラーと警告をフィルター処理する\)** のチェックボックスをオンにすると必要なエラーや警告をフィルタリングすることができます。
-
-    ![実行中のジョブを表示する](./media/how-to-monitor-spark-applications/view-running-job.png)
+    [![実行中のジョブを表示する](./media/how-to-monitor-spark-applications/view-running-job.png)](./media/how-to-monitor-spark-applications/view-running-job.png#lightbox)
 
 ## <a name="view-canceled-apache-spark-application"></a>取り消された Apache Spark アプリケーションを表示する
 
@@ -122,19 +121,15 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
 1. **完了したタスク**、**状態**、および **合計実行時間** を確認します。
 
-2. ログ クエリを更新します。
+2. ジョブを **更新** します。
 
-3. **[Spark History Server]** をクリックして、Apache Spark History Server のリンクを開きます。
+3. **[アプリケーションの比較]** をクリックして比較機能を使用します。この機能の詳細については、「[**Apache Spark アプリケーションの比較**](#compare-apache-spark-applications)」を参照してください。
 
-4. グラフを表示します。 生成されたジョブ グラフで、ジョブの概要を表示できます。 「[完了した Apache Spark アプリケーションを表示する](#view-completed-apache-spark-application)」の手順 6、7、8、9、10 を参照してください。
+4. **[Spark History Server]** をクリックして、Apache Spark History Server のリンクを開きます。
 
-5. **概要** 情報を確認します。
+5. グラフを表示します。 生成されたジョブ グラフで、ジョブの概要を表示できます。 「[完了した Apache Spark アプリケーションを表示する](#view-completed-apache-spark-application)」セクションのステップ 5 - 15 をご覧ください。
 
-6. **ログ** を確認します。 ドロップダウン リストからさまざまな種類のログを選択できます。また、[ログの **ダウンロード**] をクリックすることでログ情報をダウンロードでき、さらに **[Filter errors and warnings]\(エラーと警告をフィルター処理する\)** のチェックボックスをオンにすると必要なエラーや警告をフィルタリングすることができます。
-
-7. グラフの **[詳細の表示]** をクリックすると、ステージの詳細が表示されます。
-
-   ![取り消されたジョブを表示する](./media/how-to-monitor-spark-applications/view-cancelled-job.png)
+  [![取り消されたジョブを表示する](./media/how-to-monitor-spark-applications/view-cancelled-job.png)](./media/how-to-monitor-spark-applications/view-cancelled-job.png#lightbox)
 
 ## <a name="debug-failed-apache-spark-application"></a>失敗した Apache Spark アプリケーションをデバッグする
 
@@ -144,23 +139,56 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
 1. **完了したタスク**、**状態**、および **合計実行時間** を確認します。
 
-2. ログ クエリを更新します。
+2. ジョブを **更新** します。
 
-3. **[Spark History Server]** をクリックして、Apache Spark History Server のリンクを開きます。
+3. **[アプリケーションの比較]** をクリックして比較機能を使用します。この機能の詳細については、「[**Apache Spark アプリケーションの比較**](#compare-apache-spark-applications)」を参照してください。
 
-4. グラフを表示します。 生成されたジョブ グラフで、ジョブの概要を表示できます。 「[完了した Apache Spark アプリケーションを表示する](#view-completed-apache-spark-application)」の手順 6、7、8、9、10 を参照してください
+4. **[Spark History Server]** をクリックして、Apache Spark History Server のリンクを開きます。
 
-5. **概要** 情報を確認します。
+5. グラフを表示します。 生成されたジョブ グラフで、ジョブの概要を表示できます。 「[完了した Apache Spark アプリケーションを表示する](#view-completed-apache-spark-application)」セクションのステップ 5 - 15 をご覧ください。
 
-6. エラー情報を確認します。
+   [![失敗したジョブ情報](./media/how-to-monitor-spark-applications/failed-job-info.png)](./media/how-to-monitor-spark-applications/failed-job-info.png#lightbox)
 
-   ![失敗したジョブ情報](./media/how-to-monitor-spark-applications/failed-job-info.png)
+
+## <a name="view-input-dataoutput-data-for-apache-spark-application"></a>Apache Spark Application の入力データ/出力データを見る
+
+Apache Spark アプリケーションを選択して **[Input data/Output data]\(入力データ/出力データ\) タブ** をクリックし、Apache Spark アプリケーションの入力と出力の日付を表示します。 この機能は Spark ジョブのデバッグに役立ちます。 データ ソースは gen1、gen2、blob の 3 種類をサポートしています。
+    
+**[Input data]\(出力データ\) タブ**
+     
+1. **[Copy input]\(入力のコピー)\** ボタンをクリックして、入力ファイルをローカルに貼り付けます。
+
+2. **[CSV にエクスポート]** ボタンをクリックして、入力ファイルを CSV 形式でエクスポートします。
+
+3. **検索ボックス** の入力キーワードでファイルを検索できます (キーワードには、ファイル名、読み取り形式、パスが含まれます)。
+
+4. 入力ファイルを並べ替えるには、 **[名前]** 、 **[読み取り形式]** 、および **[パス]** をクリックします。
+
+5. マウスのポインターを入力ファイルに重ねると、**ダウンロード、パスのコピー、その他** のアイコン ボタンが表示されます。
+
+   ![[入力] タブ](./media/how-to-monitor-spark-applications/input-tab.png)
+
+6. **[詳細]** ボタンをクリックすると、 **[パスのコピー]/[エクスプローラーで表示]/[プロパティ]** にコンテキスト メニューが表示されます。
+      
+    ![詳細の入力](./media/how-to-monitor-spark-applications/input-more.png)
+
+   * パスのコピー: **[完全なパス]** と **[相対パス]** をコピーできます。
+   * エクスプローラーに表示: リンクされたストレージ アカウントに移動できます ([データ] > [リンク])。
+   * プロパティ: ファイルの基本的なプロパティ ([ファイル名]/[ファイルのパス]/[読み取り形式]/[サイズ]/[変更済み]) を表示します。
+
+     ![プロパティの画像](./media/how-to-monitor-spark-applications/properties.png)
+
+**[Output data]\(出力データ\) タブ**
+
+   入力と同じ機能を持っています。
+
+   ![出力-イメージ](./media/how-to-monitor-spark-applications/output.png)
 
 ## <a name="compare-apache-spark-applications"></a>Apache Spark アプリケーションの比較
 
 アプリケーションを比較する 2 つの方法があります。 **[Compare Application]\(アプリケーションの比較\)** を選択して比較するか、 **[Compare in notebook]\(ノートブックで比較\)** ボタンをクリックしてノートブックで表示することができます。
 
-### <a name="compare-by-choose-an-application"></a>アプリケーションを選択して比較する
+### <a name="compare-by-choosing-an-application"></a>アプリを選んで比較する
 
 **[Compare applications]\(アプリケーションの比較\)** ボタンをクリックし、パフォーマンスを比較するアプリケーションを選択すると、2 つのアプリケーションの違いを直感的に確認できます。
 
@@ -184,7 +212,7 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
 ### <a name="compare-by-compare-in-notebook"></a>ノートブックでの比較によって比較する
 
-**[Compare Application]\(アプリケーションの比較\)** ページで **[Compare in notebook]\(ノートブックで比較\)** ボタンをクリックしてノートブックを開きます。 .ipynb ファイルの既定の名前は **Recurrent Application Analytics** です。
+**[Compare Application]\(アプリケーションの比較\)** ページで **[Compare in notebook]\(ノートブックで比較\)** ボタンをクリックしてノートブックを開きます。 *.ipynb* ファイルの既定の名前は **Recurrent Application Analytics** です。
 
 ![ノートブックで比較](./media/how-to-monitor-spark-applications/compare-in-notebook.png)
 

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1811d5b9ae4d3e34b48e1cdc156438f2bad98d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88244a527825a8cbaaa81dea64dd0c2f49a5fb72
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90601658"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618174"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>条件付きアクセスのクラシック ポリシーの移行
 

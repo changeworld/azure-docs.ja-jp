@@ -4,16 +4,16 @@ description: Azure 仮想ネットワークに接続されている関数の NAT
 ms.topic: tutorial
 ms.author: kyburns
 ms.date: 2/26/2021
-ms.openlocfilehash: 5bb491e367ed813f09197a193745c231261c88c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0223ebe7401745fc9dfff9b3935b5f2252cfa39d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104658159"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265414"
 ---
 # <a name="tutorial-control-azure-functions-outbound-ip-with-an-azure-virtual-network-nat-gateway"></a>チュートリアル: Azure 仮想ネットワーク NAT ゲートウェイを使用して Azure Functions の送信 IP を制御する
 
-仮想ネットワーク アドレス変換 (NAT) を使用すると、仮想ネットワークで送信のみのインターネット接続が簡単になります。 これをサブネットに対して構成した場合、指定した静的パブリック IP アドレスがすべてのアウトバウンド接続で使用されます。 NAT は、セキュリティ対策として IP アドレスの許可リストが使われるサードパーティのサービスを使用する必要がある Azure Functions または Web Apps で役に立つ場合があります。 詳細については、「[Virtual Network NAT とは](../virtual-network/nat-overview.md)」を参照してください。
+仮想ネットワーク アドレス変換 (NAT) を使用すると、仮想ネットワークで送信のみのインターネット接続が簡単になります。 これをサブネットに対して構成した場合、指定した静的パブリック IP アドレスがすべてのアウトバウンド接続で使用されます。 NAT は、セキュリティ対策として IP アドレスの許可リストが使われるサードパーティのサービスを使用する必要がある Azure Functions または Web Apps で役に立つ場合があります。 詳細については、「[Virtual Network NAT とは](../virtual-network/nat-gateway/nat-overview.md)」を参照してください。
 
 このチュートリアルでは、仮想ネットワーク NAT を使用して、HTTP によってトリガーされる関数からの送信トラフィックをルーティングする方法について説明します。 この関数を使用すると、それ自体の送信 IP アドレスを確認できます。 このチュートリアルでは、以下のことを行います。
 
@@ -30,7 +30,7 @@ ms.locfileid: "104658159"
 
 ![NAT ゲートウェイ統合の UI](./media/functions-how-to-use-nat-gateway/topology.png)
 
-Premium プランで実行されている関数には、VNet 統合機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。 トラブルシューティングや高度な構成など、VNet 統合の詳細については、「[アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md)」を参照してください。
+Premium プランで実行されている関数には、VNet 統合機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。 トラブルシューティングや高度な構成など、VNet 統合の詳細については、「[アプリを Azure 仮想ネットワークに統合する](../app-service/overview-vnet-integration.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. **[仮想ネットワークの作成]** で、次の表で指定されている設定を入力するか選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
@@ -66,6 +66,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 次に、[Premium プラン](functions-premium-plan.md)で関数アプリを作成します。 このプランはサーバーレス スケールを提供しながら、仮想ネットワーク統合をサポートします。
 
 ## <a name="create-a-function-app-in-a-premium-plan"></a>Premium プランの Function App を作成する
+
+このチュートリアルでは、[Premium プラン](functions-premium-plan.md)で関数アプリを作成する方法を紹介します。 [専用 (App Service) プラン](dedicated-plan.md)を使用する場合も、同じ機能を使用できます。
 
 > [!NOTE]  
 > このチュートリアルに最適なエクスペリエンスを実現するには、ランタイム スタックに .NET を選択し、オペレーティング システムに Windows を選択します。 また、仮想ネットワークと同じリージョンに関数アプリを作成します。

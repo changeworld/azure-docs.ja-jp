@@ -2,8 +2,8 @@
 title: チュートリアル:Zscaler Beta を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Zscaler Beta に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d4945ee97a46c78aac3c4ac508c5f89f5942296
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 809e400bd2dc8e5426670fde9cafd298c8e64ec8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97937163"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045675"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>チュートリアル:Zscaler Beta を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -100,7 +100,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング モード] ドロップダウン リストで、[自動] モードが選択されています。 Zscaler Beta の API に接続するために使用される [管理者資格情報] フィールドがあり、[テスト接続] ボタンがあります。](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
+    ![[プロビジョニング モード] ドロップダウン リストで、[自動] モードが選択されています。 Zscaler Beta API への接続に使用される [管理者資格情報] のフィールドと、[テスト接続] ボタンがあります。](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
 
 5. **[管理者資格情報]** セクションで、手順 6 で説明する Zscaler Beta アカウントの **[テナント URL]** と **[シークレット トークン]** を入力します。
 

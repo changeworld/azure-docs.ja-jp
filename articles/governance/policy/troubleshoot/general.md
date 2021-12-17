@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: ポリシー定義の作成、さまざまな SDK、および Kubernetes のアドオンに関する問題をトラブルシューティングする方法について説明します。
-ms.date: 01/26/2021
+ms.date: 09/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ab4319a7a0d515b51c8bbe259ad0ea49ed2b940
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592608"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433604"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Azure Policy の使用に関するエラーをトラブルシューティングする
 
@@ -67,7 +67,7 @@ Resource Manager プロパティのエイリアスが存在しない場合は、
 
 ポリシー定義をトラブルシューティングするには、次のことを実行します。
 
-1. まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。 
+1. まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。
 
 1. Azure PowerShell または REST API を使用して新しい評価スキャンを開始するには、「[オンデマンドの評価スキャン](../how-to/get-compliance-data.md#on-demand-evaluation-scan)」を参照してください。
 1. 割り当てパラメーターと割り当てスコープが正しく設定されていることを確認します。
@@ -79,6 +79,7 @@ Resource Manager プロパティのエイリアスが存在しない場合は、
 1. 準拠していると予期されていた非準拠のリソースについては、[非準拠である理由の特定](../how-to/determine-non-compliance.md)に関するページを参照してください。 定義と、評価されたプロパティ値を比較することで、リソースが非準拠であった理由がわかります。
    - **対象の値** が間違っている場合は、ポリシー定義を修正します。
    - **現在の値** が間違っている場合は、`resources.azure.com` を介してリソース ペイロードを検証します。
+1. RegEx 文字列パラメーターをサポートする[リソース プロバイダー モード](../concepts/definition-structure.md#resource-provider-modes)定義 (`Microsoft.Kubernetes.Data` や組み込み定義の "コンテナー イメージは信頼されたレジストリからのみデプロイする必要がある" など) の場合、[RegEx 文字列](/dotnet/standard/base-types/regular-expression-language-quick-reference)パラメーターが正しいことを確認します。
 1. その他の一般的な問題と解決策については、[トラブルシューティング: 適用が想定どおりでない](#scenario-enforcement-not-as-expected)に関する記事を参照してください。
 
 複製してカスタマイズした組み込みのポリシー定義またはカスタム定義で引き続き問題が発生する場合は、問題が適切に転送されるように、"**ポリシーの作成**" についてサポート チケットを作成してください。
@@ -98,7 +99,7 @@ Azure Policy によって処理されると予想されているリソースが�
 
 ポリシー割り当ての適用をトラブルシューティングするには、次のことを実行します。
 
-1. まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。 
+1. まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。
 
 1. Azure PowerShell または REST API を使用して新しい評価スキャンを開始するには、「[オンデマンドの評価スキャン](../how-to/get-compliance-data.md#on-demand-evaluation-scan)」を参照してください。
 1. 割り当てパラメーターと割り当てスコープが正しく設定されていること、および **enforcementMode** が "_有効_" になっていることを確認します。
@@ -124,6 +125,38 @@ Azure Policy によって処理されると予想されているリソースが�
 #### <a name="resolution"></a>解像度
 
 拒否されたポリシー割り当てのエラー メッセージには、ポリシー定義とポリシー割り当て ID が含まれています。 メッセージ内のエラー情報が欠落している場合は、[アクティビティ ログ](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log)でも確認できます。 この情報を使用して、リソースの制限を理解し、許可された値に一致するように要求のリソース プロパティを調整します。
+
+### <a name="scenario-definition-targets-multiple-resource-types"></a>シナリオ: 複数のリソースの種類が定義の対象とされている
+
+#### <a name="issue"></a>問題
+
+複数のリソースの種類を含むポリシー定義が、作成時または更新時に次のエラーで検証に失敗します。
+
+```error
+The policy definition '{0}' targets multiple resource types, but the policy rule is authored in a way that makes the policy not applicable to the target resource types '{1}'.
+```
+
+#### <a name="cause"></a>原因
+
+ポリシー定義ルールに、ターゲット リソースの種類によって評価されない 1 つ以上の条件が含まれています。
+
+#### <a name="resolution"></a>解決方法
+
+エイリアスが使用されている場合、その前に種類の条件を追加することによって、そのエイリアスが属しているリソースの種類に対してのみエイリアスが評価されるようにします。 別の方法としては、ポリシー定義を複数の定義に分割して、複数のリソースの種類をターゲットにしないようにします。
+
+### <a name="scenario-subscription-limit-exceeded"></a>シナリオ: サブスクリプションの上限超過
+
+#### <a name="issue"></a>問題
+
+Azure portal のコンプライアンス ページのエラー メッセージは、ポリシー割り当てのコンプライアンス取得時に表示されます。
+
+#### <a name="cause"></a>原因
+
+要求において選択範囲の下、サブスクリプションの数が上限の 5000 サブスクリプションを超過しました。 コンプライアンスの結果が部分的に表示される場合があります。
+
+#### <a name="resolution"></a>解決方法
+
+子サブスクリプションを少なくし、より詳細な範囲を選択すると、完全な結果が表示されます。
 
 ## <a name="template-errors"></a>テンプレート エラー
 
@@ -220,7 +253,7 @@ Azure Policy では、ARM テンプレートの関数と、ポリシー定義で
 
 アドオンは Azure Policy サービス エンドポイントに接続できず、次のいずれかのエラーが返されます。
 
-- `azure.BearerAuthorizer#WithAuthorization: Failed to refresh the Token for request to https://gov-prod-policy-data.trafficmanager.net/checkDataPolicyCompliance?api-version=2019-01-01-preview: StatusCode=404`
+- `azure.BearerAuthorizer#WithAuthorization: Failed to refresh the Token for request to https://gov-prod-policy-data.trafficmanager.net/checkDataPolicyCompliance?api-version=2019-01-01-preview: StatusCode=404`
 - `adal: Refresh request failed. Status Code = '404'. Response body: getting assigned identities for pod kube-system/azure-policy-8c785548f-r882p in CREATED state failed after 16 attempts, retry duration [5]s, error: <nil>`
 
 #### <a name="cause"></a>原因
@@ -295,6 +328,26 @@ spec:
 #### <a name="resolution"></a>解決方法
 
 この問題を調査して解決するには、[機能チームにお問い合わせください](mailto:azuredg@microsoft.com)。
+
+### <a name="scenario-definitions-in-category-guest-configuration-cannot-be-duplicated-from-azure-portal"></a>シナリオ: "ゲスト構成" カテゴリの定義を Azure portal から複製できない
+
+#### <a name="issue"></a>問題
+
+Azure portal のポリシー定義ページからカスタム ポリシー定義を作成しようと、[定義を複製する] ボタンを選択します。 そのポリシーを割り当てた後、ゲスト構成の割り当てリソースが存在しないために、マシンが "_非準拠_" になっていることに気付きます。
+
+#### <a name="cause"></a>原因
+
+ゲスト構成割り当てリソースを作成する際、ポリシー定義に追加されたカスタム メタデータが使用されます。 Azure portal の "定義を複製する" アクティビティでは、カスタム メタデータがコピーされません。
+
+#### <a name="resolution"></a>解像度
+
+ポータルではなく Policy Insights API を使用してポリシー定義を複製してください。 次の PowerShell サンプルにその方法を示します。
+
+```powershell
+# duplicates the built-in policy which audits Windows machines for pending reboots
+$def = Get-AzPolicyDefinition -id '/providers/Microsoft.Authorization/policyDefinitions/4221adbc-5c0f-474f-88b7-037a99e6114c' | % Properties
+New-AzPolicyDefinition -name (new-guid).guid -DisplayName "$($def.DisplayName) (Copy)" -Description $def.Description -Metadata ($def.Metadata | convertto-json) -Parameter ($def.Parameters | convertto-json) -Policy ($def.PolicyRule | convertto-json -depth 15)
+```
 
 ## <a name="next-steps"></a>次のステップ
 

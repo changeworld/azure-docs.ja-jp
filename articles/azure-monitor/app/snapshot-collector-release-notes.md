@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 4a787c6e2a9b59874f965a2bbcebea9ce02d8082
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2b3dff6331e235d0c4b608a38038a89996c35b4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97093262"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217771"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Microsoft.ApplicationInsights.SnapshotCollector のリリース ノート
 
@@ -21,6 +21,30 @@ ms.locfileid: "97093262"
 バグ レポートとフィードバックについては、GitHub (https://github.com/microsoft/ApplicationInsights-SnapshotCollector ) でイシューをオープンしてください。
 
 ## <a name="release-notes"></a>リリース ノート
+
+## <a name="142"></a>[1.4.2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.4.2)
+ユーザーから報告されたバグに対処するためのポイント リリース。
+### <a name="bug-fixes"></a>バグの修正
+- [ArgumentException: デリゲートは同じ型である必要がある](https://github.com/microsoft/ApplicationInsights-SnapshotCollector/issues/16)という問題を修正。
+
+## <a name="141"></a>[1.4.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.4.1)
+1\.4.0 で導入された破壊的変更を元に戻すためのポイント リリース。
+### <a name="bug-fixes"></a>バグの修正
+- [WebJobs でメソッドが見つからない](https://github.com/microsoft/ApplicationInsights-SnapshotCollector/issues/15)という問題を修正
+
+## <a name="140"></a>[1.4.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.4.0)
+複数の機能強化に対処し、Application Insights インジェスト用の Azure Active Directory (AAD) 認証のサポートを追加しました。
+### <a name="changes"></a>[変更点]
+- Snapshot Collector パッケージのサイズが 60% 削減されました。 10.34 MB から 4.11 MB になりました。
+- Snapshot Collector では netstandard2.0 のみをターゲットにしました。
+- Application Insights SDK の依存関係を 2.15.0 に上げました。
+- ダンプを書き込むときの MinidumpWithThreadInfo を再度追加しました。
+- 破壊的変更時の Snapshot Collector エージェントとアップローダー間の同期を向上させるために、CompatibilityVersion を追加しました。
+- App Service のファイル I/O が過剰にならないように、SnapshotUploader LogFile の名前付けアルゴリズムを変更しました。
+- アップロードされる BLOB メタデータに、pid、ロール名、およびプロセス開始時刻を追加しました。
+- Snapshot Collector と Snapshot アップローダーで、可能な限り System.Diagnostics.Process を使用します。
+### <a name="new-features"></a>新機能
+- SnapshotCollector に Azure Active Directory 認証を追加します。 Application Insights での Azure AD 認証の詳細については、[こちら](./azure-ad-authentication.md)を参照してください。
 
 ## <a name="1375"></a>[1.3.7.5](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.5)
 1\.4.0-pre から修正プログラムをバックポートするポイント リリース。

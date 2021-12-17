@@ -4,20 +4,20 @@ titleSuffix: Azure Machine Learning
 description: DevOps プラクティスを適用し、Azure Data Factory と Azure Databricks を使用してデータを準備するためのデータ インジェスト パイプラインを構築する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, data4ml
+ms.subservice: mlops
+ms.topic: how-to
+ms.custom: devx-track-python, data4ml
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
-ms.date: 06/23/2020
-ms.openlocfilehash: e8a8b952d917db3a7eefd2e0371d41287c5be944
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/21/2021
+ms.openlocfilehash: ce025bb924e20d59d312594091944bb0b263f587
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612475"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559715"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>データ インジェスト パイプラインの DevOps
 
@@ -122,7 +122,7 @@ Azure Data Factory パイプラインの CI プロセスは、データ イン�
 1. アクセス許可を持つ担当者が ***[発行]*** ボタンをクリックし、コラボレーション ブランチのソース コードから Azure Resource Manager テンプレートを生成します。 
 1. ワークスペースによってパイプラインが検証され (リンティングと単体テストの時点と考えます)、Azure Resource Manager テンプレートが生成され (ビルドの時点と考えます)、生成されたテンプレートが同じコード リポジトリ内のテクニカル ブランチ ***adf_publish*** に保存されます (成果物の発行の時点と考えます)。 このブランチは、Azure Data Factory ワークスペースによって自動的に作成されます。 
 
-このプロセスの詳細については、「[Azure Data Factory における継続的インテグレーションとデリバリー](../data-factory/continuous-integration-deployment.md)」を参照してください。
+このプロセスの詳細については、「[Azure Data Factory における継続的インテグレーションとデリバリー](../data-factory/continuous-integration-delivery.md)」を参照してください。
 
 生成される Azure Resource Manager テンプレートが環境に依存しないようにすることが重要です。 つまり、環境によって異なる可能性があるすべての値をパラメーター化します。 Azure Data Factory は高機能なので、このような値の大部分をパラメーターとして公開することができます。 たとえば、次のテンプレートでは、Azure Machine Learning ワークスペースへの接続プロパティがパラメーターとして公開されています。
 
@@ -174,7 +174,7 @@ labels = np.array(data['target'])
 
 ![スクリーンショットには、PrepareData と呼ばれるノートブックと、ML Execute Pipeline と呼ばれる ML Execute Pipeline が上部に示され、その下には [設定] タブが選択されています。](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-Azure Data Factory ワークスペースの既定では、Azure Resource Manager テンプレート パラメーターとしてパイプライン変数を公開 "***していません***"。 このワークスペースでは、[Default Parameterization](../data-factory/continuous-integration-deployment.md#default-parameterization-template) を使用して、Azure Resource Manager テンプレート パラメーターとして公開するパイプライン プロパティを指定します。 パイプライン変数を一覧に追加するには、[既定のパラメーター化テンプレート](../data-factory/continuous-integration-deployment.md#default-parameterization-template)の `"Microsoft.DataFactory/factories/pipelines"` セクションを次のスニペットで更新し、結果の JSON ファイルをソース フォルダーのルートに配置します。
+Azure Data Factory ワークスペースの既定では、Azure Resource Manager テンプレート パラメーターとしてパイプライン変数を公開 "***していません***"。 このワークスペースでは、[Default Parameterization](../data-factory/continuous-integration-delivery-resource-manager-custom-parameters.md) を使用して、Azure Resource Manager テンプレート パラメーターとして公開するパイプライン プロパティを指定します。 パイプライン変数を一覧に追加するには、[既定のパラメーター化テンプレート](../data-factory/continuous-integration-delivery-resource-manager-custom-parameters.md)の `"Microsoft.DataFactory/factories/pipelines"` セクションを次のスニペットで更新し、結果の JSON ファイルをソース フォルダーのルートに配置します。
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {
@@ -481,5 +481,5 @@ stages:
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Factory のソース管理](../data-factory/source-control.md)
-* [Azure Data Factory における継続的インテグレーションとデリバリー](../data-factory/continuous-integration-deployment.md)
+* [Azure Data Factory における継続的インテグレーションとデリバリー](../data-factory/continuous-integration-delivery.md)
 * [DevOps for Azure Databricks](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)

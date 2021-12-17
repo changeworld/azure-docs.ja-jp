@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b08231f254ea47fc3c9d65de42966301bd3378f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0a08c464e5c6a1fb5d4337e0902c9bd84b3b7772
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640047"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732922"
 ---
 # <a name="securing-managed-identities"></a>マネージド ID のセキュリティ保護
 
@@ -55,8 +55,6 @@ Azure のコントロール プレーン操作はすべて [Azure Resource Manag
 コントロールおよびデータ プレーンの詳細については、[Azure Resource Manager のコントロール プレーンとデータ プレーンの概念](../../azure-resource-manager/management/control-plane-and-data-plane.md)に関するページを参照してください。
 
 最終的にすべての Azure サービスでマネージド ID がサポートされます。 詳細については、「[Azure リソースのマネージド ID をサポートするサービス](../managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
-
-##  
 
 ## <a name="types-of-managed-identities"></a>マネージド ID の種類
 

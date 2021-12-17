@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud でログとメトリックを分析する |Microsoft Docs
 description: Azure Spring Cloud で診断データを分析する方法について説明します
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 68b9aee49e4cf7c02c07fc7dd90e9cc6065a443c
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 4485b41c10322a9a289a22e7822031fd64cf98cf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259423"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130237854"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>診断設定でログとメトリックを分析する
 
@@ -27,7 +27,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 監視するログ カテゴリとメトリック カテゴリを選択します。
 
 > [!TIP]
-> ログをストリーミングするだけの場合は、 こちらの [Azure CLI コマンド](/cli/azure/ext/spring-cloud/spring-cloud/app#ext-spring-cloud-az-spring-cloud-app-logs)を確認してください。
+> ログをストリーミングするだけの場合は、 こちらの [Azure CLI コマンド](/cli/azure/spring-cloud/app#az_spring_cloud_app_logs)を確認してください。
 
 ## <a name="logs"></a>ログ
 
@@ -35,10 +35,11 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 |----|----|
 | **ApplicationConsole** | すべての顧客アプリケーションのコンソール ログ。 |
 | **SystemLogs** | 現在、このカテゴリーでは [Spring Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) ログのみ。 |
+| **IngressLogs** | すべての顧客のアプリケーションの[イングレス ログ](#show-ingress-log-entries-containing-a-specific-host)。アクセス ログのみ。 |
 
 ## <a name="metrics"></a>メトリック
 
-メトリックの完全な一覧については、[Spring Cloud のメトリック](./spring-cloud-concept-metrics.md#user-metrics-options)に関する記事を参照してください。
+メトリックの完全な一覧については、[Spring Cloud のメトリック](./concept-metrics.md#user-metrics-options)に関する記事を参照してください。
 
 まず、これらのサービスのいずれかを有効にしてデータを受信します。 Log Analytics の構成については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/logs/log-analytics-tutorial.md)」を参照してください。
 
@@ -59,6 +60,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 > 1. Azure Spring Cloud インスタンスが削除または移動された場合、この操作は **診断設定** リソースには連鎖しません。 **診断設定** リソースは、その親 (つまり、Azure Spring Cloud インスタンス) に対して操作を行う前に手動で削除する必要があります。 そうしないと、新しい Azure Spring Cloud インスタンスが、削除されたものと同じリソース ID でプロビジョニングされる場合、または Azure Spring Cloud インスタンスが戻った場合は、以前の **診断設定** リソースが引き続きそれを拡張します。
 
 ## <a name="view-the-logs-and-metrics"></a>ログとメトリックの表示
+
 次の見出しで説明しているように、ログとメトリックを表示するにはさまざまな方法があります。
 
 ### <a name="use-the-logs-blade"></a>ログ ブレードの使用
@@ -72,12 +74,14 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
     AppPlatformLogsforSpring
     | limit 50
     ```
+
    * メトリックを表示するには、次のような単純なクエリを入力します。
 
     ```sql
     AzureMetrics
     | limit 50
     ```
+
 1. 検索結果を表示するには、 **[実行]** を選択します。
 
 ### <a name="use-log-analytics"></a>Log Analytics の使用
@@ -92,6 +96,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
     AppPlatformLogsforSpring
     | limit 50
     ```
+
     * メトリックを表示するには、次のような単純なクエリを入力します。
 
     ```sql
@@ -107,10 +112,11 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
     | where ServiceName == "YourServiceName" and AppName == "YourAppName" and InstanceName == "YourInstanceName"
     | limit 50
     ```
-> [!NOTE]
-> `==` では大文字と小文字が区別されますが、`=~` では区別されません。
 
-Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。 一元化されたクライアントからすべての Log Analytics ログのクエリを実行する場合には、[Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)に関するページを確認してください。
+    > [!NOTE]
+    > `==` では大文字と小文字が区別されますが、`=~` では区別されません。
+
+Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。 一元化されたクライアントからすべての Log Analytics ログのクエリを実行する場合には、[Azure Data Explorer](/azure/data-explorer/query-monitor-data)に関するページを確認してください。
 
 ### <a name="use-your-storage-account"></a>ストレージ アカウントを使用する
 
@@ -174,13 +180,37 @@ AppPlatformLogsforSpring
 | render piechart
 ```
 
+### <a name="show-ingress-log-entries-containing-a-specific-host"></a>特定のホストが含まれるイングレス ログ エントリを表示する
+
+特定のホストによって生成されたログ エントリを確認するには、次のクエリを実行します。
+
+```sql
+AppPlatformIngressLogs
+| where TimeGenerated > ago(1h) and Host == "ingress-asc.test.azuremicroservices.io" 
+| project TimeGenerated, RemoteIP, Host, Request, Status, BodyBytesSent, RequestTime, ReqId, RequestHeaders
+| sort by TimeGenerated
+```
+
+このクエリを使用して、この特定のホストのイングレス ログの応答 `Status`、`RequestTime`、および他のプロパティを検索します。 
+
+### <a name="show-ingress-log-entries-for-a-specific-requestid"></a>特定の requestId のイングレス ログ エントリを表示する
+
+特定の `requestId` 値 *\<request_ID>* のログ エントリを確認するには、次のクエリを実行します。
+
+```sql
+AppPlatformIngressLogs
+| where TimeGenerated > ago(1h) and ReqId == "<request_ID>" 
+| project TimeGenerated, RemoteIP, Host, Request, Status, BodyBytesSent, RequestTime, ReqId, RequestHeaders
+| sort by TimeGenerated
+```
+
 ### <a name="learn-more-about-querying-application-logs"></a>アプリケーション ログのクエリについての詳細情報
 
 Azure Monitor では、Log Analytics を使用したアプリケーション ログのクエリが広範にサポートされています。 このサービスについて詳しくは、「[Azure Monitor でログ クエリの使用を開始する](../azure-monitor/logs/get-started-queries.md)」を参照してください。 アプリケーション ログを分析するクエリの作成の詳細については、「[Azure Monitor のログ クエリの概要](../azure-monitor/logs/log-query-overview.md)」を参照してください。
 
 ## <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
-### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>複数行の Java スタック トレースを 1 行に変換する方法は?
+### <a name="how-do-i-convert-multi-line-java-stack-traces-into-a-single-line"></a>複数行の Java スタック トレースを 1 行に変換するにはどうすればよいですか?
 
 複数行のスタック トレースを 1 行に変換する回避策があります。 Java ログ出力を変更してスタック トレース メッセージを再フォーマットし、改行文字をトークンで置換できます。 Java Logback ライブラリを使用する場合、次のように `%replace(%ex){'[\r\n]+', '\\n'}%nopex` を追加することでスタック トレース メッセージを再フォーマットできます。
 
@@ -198,14 +228,16 @@ Azure Monitor では、Log Analytics を使用したアプリケーション ロ
     </root>
 </configuration>
 ```
-その後、下のように、Log Analytics で再び、トークンを改行文字で置換できます。
+
+その後、次のように、Log Analytics でトークンを改行文字に置き換えることができます。
 
 ```sql
 AppPlatformLogsforSpring
 | extend Log = array_strcat(split(Log, '\\n'), '\n')
 ```
+
 場合によっては、他の Java ログ ライブラリに同じ方法を利用することもできます。
 
 ## <a name="next-steps"></a>次の手順
 
-* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)
+* [クイック スタート: 初めての Spring Boot アプリを Azure Spring Cloud にデプロイする](./quickstart.md)

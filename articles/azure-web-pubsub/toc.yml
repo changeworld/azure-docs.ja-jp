@@ -1,0 +1,153 @@
+- name: Azure Web PubSub サービスに関するドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Azure Web PubSub サービスについて
+      href: overview.md
+    - name: ハブ、グループ、接続について
+      href: key-concepts.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: インスタンスを作成する
+      expanded: true
+      items:
+        - name: Azure portal
+          href: howto-develop-create-instance.md
+        - name: Azure CLI
+          href: quickstart-cli-create.md
+    - name: インスタンスに接続する
+      expanded: true
+      items:
+        - name: ブラウザーからの PubSub
+          href: quickstart-live-demo.md
+        - name: Azure CLI からの PubSub
+          href: quickstart-cli-try.md
+        - name: サービス SDK を使用した PubSub
+          href: quickstart-use-sdk.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: サーバーレス開発
+      expanded: true
+      items:
+        - name: Azure Functions で通知アプリを構築する
+          href: tutorial-serverless-notification.md
+        - name: クライアント認証を使用してリアルタイム チャット アプリを構築する
+          href: quickstart-serverless.md
+    - name: メッセージの発行とサブスクライブ
+      href: tutorial-pub-sub-messages.md
+    - name: チャット アプリを構築する
+      href: tutorial-build-chat.md
+    - name: サービスがサポートするサブプロトコルを使用したクライアント ストリーミング
+      href: tutorial-subprotocol.md
+    - name: 認証とアクセス許可
+      href: tutorial-permission.md
+- name: 操作方法ガイド
+  expanded: true
+  items:
+    - name: 開発
+      items:
+        - name: WebSocket クライアントを作成する
+          href: howto-websocket-connect.md
+        - name: イベント ハンドラーの構成
+          href: howto-develop-eventhandler.md
+        - name: Azure ID を使用して `WebPubSubServiceClient` を作成する
+          items:
+            - name: Azure ID と .NET を使用して `WebPubSubServiceClient` を作成する
+              href: howto-create-serviceclient-with-net-and-azure-identity.md
+            - name: Azure ID と Java を使用して `WebPubSubServiceClient` を作成する
+              href: howto-create-serviceclient-with-java-and-azure-identity.md
+            - name: Azure ID と JavaScript を使用して `WebPubSubServiceClient` を作成する
+              href: howto-create-serviceclient-with-javascript-and-azure-identity.md
+            - name: Azure ID と Python を使用して `WebPubSubServiceClient` を作成する
+              href: howto-create-serviceclient-with-python-and-azure-identity.md
+    - name: Monitor
+      items:
+        - name: Azure Policy を使用したコンプライアンスの監査
+          href: howto-monitor-azure-policy.md
+    - name: セキュリティで保護
+      items:
+        - name: アクセス キーを保護する
+          href: howto-secure-rotate-access-key.md
+        - name: Azure サービス タグの使用
+          href: howto-service-tags.md
+        - name: Azure プライベート エンドポイントの使用
+          href: howto-secure-private-endpoints.md
+        - name: ネットワーク アクセス制御の管理
+          href: howto-secure-network-access-control.md
+        - name: 共有プライベート エンドポイントを経由する送信トラフィックをセキュリティで保護する
+          href: howto-secure-shared-private-endpoints.md
+        - name: マネージド ID の使用
+          href: howto-use-managed-identity.md
+        - name: Azure AD 承認の構成
+          items:
+            - name: Azure アプリケーションからの承認
+              href: howto-authorize-from-application.md
+            - name: マネージド ID からの承認
+              href: howto-authorize-from-managed-identity.md
+    - name: トラブルシューティング
+      items:
+        - name: ネットワーク トレースを収集する
+          href: howto-troubleshoot-network-trace.md
+        - name: リソース ログのキャプチャ
+          href: howto-troubleshoot-resource-logs.md
+- name: 概念
+  expanded: true
+  items:
+    - name: サービスの内部構造
+      href: concept-service-internals.md
+    - name: クライアント プロトコルの概要
+      href: concept-client-protocols.md
+    - name: 高可用性
+      items:
+        - name: 回復性とディザスター リカバリー
+          href: concept-disaster-recovery.md
+    - name: パフォーマンスに関する考慮事項
+      href: concept-performance.md
+    - name: 課金モデル
+      href: concept-billing-model.md
+    - name: Azure AD 承認
+      href: concept-azure-ad-authorization.md
+- name: リファレンス
+  items:
+    - name: WebSocket サブプロトコル
+      expanded: true
+      items:
+        - name: JSON WebSocket サブプロトコル
+          href: reference-json-webpubsub-subprotocol.md
+        - name: Protobuf WebSocket サブプロトコル
+          href: reference-protobuf-webpubsub-subprotocol.md
+    - name: Azure Web PubSub の CloudEvents 拡張機能
+      href: reference-cloud-events.md
+    - name: Functions のトリガーとバインド
+      href: reference-functions-bindings.md
+    - name: サーバー SDK
+      items:
+        - name: サーバー SDK - C#
+          href: reference-server-sdk-csharp.md
+        - name: サーバー SDK - Java
+          href: reference-server-sdk-java.md
+        - name: サーバー SDK - JavaScript
+          href: reference-server-sdk-js.md
+        - name: サーバー SDK - Python
+          href: reference-server-sdk-python.md
+    - name: REST API
+      href: /rest/api/webpubsub/
+- name: リソース
+  items:
+    - name: サンプル
+      href: 'https://aka.ms/awps/samples'
+    - name: ソリューション
+      href: /azure/architecture/
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=web-pubsub'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/web-pubsub/'
+    - name: FAQ
+      href: resource-faq.md
+    - name: Microsoft Q&A
+      href: /answers/topics/azure-web-pubsub.html
+    - name: StackOverflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-web-pubsub'

@@ -1,19 +1,19 @@
 ---
 title: Synapse Studio で Synapse RBAC ロールの割り当てを確認する方法
 description: この記事では、Synapse Studio を使用して Synapse RBAC ロールの割り当てを確認する方法について説明します
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9065ca9c7638f3d2bda36e4831b81963936f4b45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11e5ed746215df4518e9bd6af2c0c92539067e47
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100102157"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747002"
 ---
 # <a name="how-to-review-synapse-rbac-role-assignments"></a>Synapse RBAC ロールの割り当てを確認する方法
 
@@ -24,11 +24,11 @@ Synapse RBAC ロールを使用してユーザー、グループ、その他の�
 任意の Synapse RBAC ロールを使用して、アクセス権のないオブジェクトの割り当てを含めたすべてのスコープの Synapse RBAC ロールの割り当てを一覧表示できます。 Synapse RBAC アクセスを許可できるのは、Synapse 管理者だけです。  
 
 >[!Note]
->ゲスト ユーザー (別の AD テナントのユーザー) は、Synapse 管理者ロールが割り当てられている場合でも、ロールの割り当てを表示または管理できません。    
+> ゲスト ユーザー (別の AD テナントのユーザー) も、Synapse 管理者ロールが割り当てられた後は、ロールの割り当てを表示または管理できるようになります。    
 
 ## <a name="open-synapse-studio"></a>Synapse Studio を開く  
 
-ロールの割り当てを確認するには、最初に [Synapse Studio を開き](https://web.azuresynapse.net/)、ワークスペースを選択します。 
+ロールの割り当てを確認するには、最初に [Synapse Studio を開き](https://web.azuresynapse.net/)、ワークスペースを選択します。 ワークスペースにサインインするには、2 つの **アカウント選択方法** があります。 1 つは **Azure サブスクリプション** からの方法、もう 1 つは **手動による入力** です。 Synapse Azure ロール以上のレベルの Azure ロールがある場合は、両方の方法を使用してワークスペースにログインできます。 関連する Azure ロールがなく、Synapse RBAC ロールとして許可されている場合、ワークスペースにログインする唯一の方法は **手動の入力** しかありません。
 
 ![ワークスペースへのログイン](./media/common/login-workspace.png) 
  

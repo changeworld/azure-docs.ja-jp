@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2020
+ms.date: 08/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 62fe1b3391eb4cb2d409a92b936fd3f1ae56d992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d66d030514f121fabe8de36783d879afe0b5ea9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100518421"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725247"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>Azure Database for PostgreSQL のバージョン管理ポリシー
 
@@ -22,13 +22,14 @@ ms.locfileid: "100518421"
 
 Azure Database for PostgreSQL では、次のデータベース バージョンがサポートされています。
 
-| Version | シングル サーバー | フレキシブル サーバー (プレビュー) |
-| ----- | :------: | :----: |
-| PostgreSQL 12 |  | X  | 
-| PostgreSQL 11 | X | X |
-| PostgreSQL 10 | X |  |
-| PostgreSQL 9.6 | X |  |
-| *PostgreSQL 9.5 (提供終了)* | X |  |
+| Version | シングル サーバー | フレキシブル サーバー (プレビュー) | Hyperscale (Citus) |
+| ----- | :------: | :----: | :----: |
+| PostgreSQL 13 |  | X  | X |
+| PostgreSQL 12 |  | X  | X |
+| PostgreSQL 11 | X | X | X |
+| PostgreSQL 10 | X |  |  |
+| PostgreSQL 9.6 | X |  |  |
+| *PostgreSQL 9.5 (提供終了)* | X |  |  |
 
 ## <a name="major-version-support"></a>メジャー バージョンのサポート
 PostgreSQL の各メジャー バージョンは、[PostgreSQL コミュニティ バージョン管理ポリシー](https://www.postgresql.org/support/versioning/)に記載されているように、Azure によってバージョンのサポートが開始される日付から PostgreSQL コミュニティによってバージョンが提供終了されるまで、Azure Database for PostgreSQL によってサポートされます。
@@ -46,12 +47,13 @@ Azure Database for PostgreSQL では、定期的なメンテナンスの一環�
 | [PostgreSQL 10](https://www.postgresql.org/about/news/postgresql-10-released-1786/) | [機能](https://wiki.postgresql.org/wiki/New_in_postgres_10) | 2018 年 6 月 4 日  | 2022 年 11 月 10 日
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [機能](https://www.postgresql.org/docs/11/release-11.html) | 2019 年 7 月 24 日  | 2023 年 11 月 9 日
 | [PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [機能](https://www.postgresql.org/docs/12/release-12.html) | 2020 年 9 月 22 日  | 2024 年 11 月 14 日
+| [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/) | [機能](https://www.postgresql.org/docs/13/release-13.html) | 2021 年 5 月 25 日   | 2025 年 11 月 13 日
 
 ## <a name="retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でサポートされていない、廃止された PostgreSQL エンジンのバージョン
 
 Azure Database for PostgreSQL では、提供が終了されたバージョンを引き続き実行できます。 ただし、各 PostgreSQL データベース バージョンの提供終了日以降は、次の制限事項に注意してください。
 - コミュニティではバグの修正やセキュリティの修正プログラムが今後リリースされることはないため、Azure Database for PostgreSQL では、提供終了したデータベース エンジンにバグやセキュリティ上の問題に対応するパッチが適用されたり、提供終了したデータベース エンジンに関してセキュリティ対策が実施されたりすることはありません。 その結果、セキュリティの脆弱性やその他の問題が発生する可能性があります。 ただし、Azure では、ホスト、OS、コンテナー、およびその他のサービス関連のコンポーネントに対して、定期的なメンテナンスとパッチの適用が引き続き実行されます。
-- PostgreSQL データベースに関連するサポートの問題が発生した場合、Microsoft ではサポートを提供できない場合があります。 このような場合、Microsoft がサポートを提供するには、お客様がデータベースをアップグレードする必要があります。
+- PostgreSQL エンジン自体に関連してサポートに関する問題が発生する可能性がありますが、コミュニティからはパッチが提供されなくなったので、サポートを提供できない可能性があります。 このような場合は、サポートされているバージョンの 1 つにデータベースをアップグレードする必要があります。
 - 提供終了したバージョンの新しいデータベース サーバーを作成することはできません。 ただし、特定の時点への回復を実行し、既存のサーバーの読み取りレプリカを作成することはできます。
 - Azure Database for PostgreSQL で開発された新しいサービス機能は、サポートされているデータベース サーバーのバージョンでのみ使用できます。
 - アップタイム SLA は、Azure Database for PostgreSQL のサービス関連の問題に対してのみ適用され、データベース エンジンに関連するバグに起因するダウンタイムには適用されません。  

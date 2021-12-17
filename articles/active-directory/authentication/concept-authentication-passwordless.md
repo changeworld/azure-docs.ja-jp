@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 06/28/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d939207af195abf117645e17f4ff189b163244f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ccac6928918cb22b8d5e990e3eddeb9983c93153
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305533"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553764"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory のパスワードレス認証オプション
 
@@ -26,7 +26,7 @@ ms.locfileid: "107305533"
 | --- | --- | --- |
 | パスワードレス | Windows 10 デバイス、電話、またはセキュリティ キー | 生体認証または PIN |
 
-認証については、組織ごとにさまざまなニーズがあります。 Microsoft では、Azure Active Directory (Azure AD) と統合された次の 3 つのパスワードレス認証オプションを提供しています。
+認証については、組織ごとにさまざまなニーズがあります。 Microsoft グローバル Azure および Azure Government には、Azure Active Directory (Azure AD) と統合する次の 3 つのパスワードレス認証オプションが用意されています。
 
 - Windows Hello for Business
 - Microsoft Authenticator アプリ
@@ -60,7 +60,7 @@ Windows Hello for Business の[計画ガイド](/windows/security/identity-prote
 
 ![Microsoft Authenticator アプリを使用して Microsoft Edge にサインインする](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-Authenticator アプリは、あらゆる iOS や Android フォンを、強力なパスワードレスの資格情報に変えます。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証 (指紋または顔) あるいは PIN を使用して確認できます。 インストールの詳細については、「[Microsoft Authenticator アプリのダウンロードとインストール](../user-help/user-help-auth-app-download-install.md)」を参照してください。
+Authenticator アプリは、あらゆる iOS や Android フォンを、強力なパスワードレスの資格情報に変えます。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証 (指紋または顔) あるいは PIN を使用して確認できます。 インストールの詳細については、「[Microsoft Authenticator アプリのダウンロードとインストール](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)」を参照してください。
 
 Authenticator アプリを使用したパスワードレス認証では、Windows Hello for Business と同じ基本的なパターンに従います。 これは、Azure AD によって使用されている Microsoft Authenticator アプリのバージョンを見つけられるように、ユーザーを識別する必要があるため、少し複雑になります。
 
@@ -108,44 +108,42 @@ FIDO2 セキュリティ キーを使用して、Azure AD またはハイブリ�
 8. Azure AD で、FIDO2 公開キーを使用して署名済みの nonce が検証されます。
 9. Azure AD から PRT が返され、オンプレミスのリソースにアクセスできるようになります。
 
-FIDO Alliance によって FIDO2 認定されたキーが多数存在する場合、Microsoft では、最大限のセキュリティと最適なエクスペリエンスを保証するために、ベンダーによって実装される FIDO2 Client-to-Authenticator Protocol (CTAP) 仕様の一部の省略可能な拡張機能が必要になります。
-
-セキュリティ キーでは、Microsoft との互換性を維持するために、FIDO2 CTAP プロトコルの以下の機能と拡張機能を実装する **必要があります**。
-
-| # | 機能 / 拡張機能 (信頼) | この機能または拡張機能が必要な理由 |
-| --- | --- | --- |
-| 1 | Resident Key | この機能により、セキュリティ キーが可搬となり、セキュリティキー内に資格情報が保存されます。 |
-| 2 | Client pin | この機能では、2 番目の認証要素で資格情報を保護できます。これは、ユーザー インターフェイスがないセキュリティ キーに適用されます。 |
-| 3 | hmac-secret | この拡張機能では、オフライン時または機内モード時に確実にデバイスにサインインできます。 |
-| 4 | RP あたりの複数のアカウント | この機能を利用すれば、Microsoft アカウントや Azure Active Directory などの複数のサービスで同じセキュリティ キーを使用できるようになります。 |
-
 ### <a name="fido2-security-key-providers"></a>FIDO2 セキュリティ キーのプロバイダー
 
 以下のプロバイダーでは、パスワードレスのエクスペリエンスと互換性があると認識されている、さまざまなフォーム ファクターの FIDO2 セキュリティ キーが提供されます。 Microsoft では、お客様に対し、これらのキーのセキュリティ プロパティを評価するために、FIDO Alliance だけでなく、ベンダーにも連絡するようお勧めしています。
 
-| プロバイダー | Contact |
-| --- | --- |
-| Yubico | [https://www.yubico.com/solutions/passwordless/](https://www.yubico.com/solutions/passwordless/) |
-| Feitian | [https://ftsafe.us/pages/microsoft](https://ftsafe.us/pages/microsoft) |
-| HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
-| Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
-| TrustKey Solutions | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
-| AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
-| Gemalto (Thales Group) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
-| OneSpan Inc. | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
-| IDmelon Technologies Inc. | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) |
-| Hypersecu | [https://www.hypersecu.com/hyperfido](https://www.hypersecu.com/hyperfido) |
-| VinCSS | [https://passwordless.vincss.net](https://passwordless.vincss.net) |
-| KONA I | [https://konai.com/business/security/fido](https://konai.com/business/security/fido) |
-| Excelsecu | [https://www.excelsecu.com/productdetail/esecufido2secu.html](https://www.excelsecu.com/productdetail/esecufido2secu.html) |
-| Token2 スイス | [https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key](https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key) |
-| GoTrustID Inc. | [https://www.gotrustid.com/idem-key](https://www.gotrustid.com/idem-key) |
-| Kensington | [https://www.kensington.com/solutions/product-category/why-biometrics/](https://www.kensington.com/solutions/product-category/why-biometrics/) |
+| プロバイダー                  |     生体認証     | USB | NFC | BLE | FIPS 認定 | Contact                                                                                             |
+|---------------------------|:-----------------:|:---:|:---:|:---:|:--------------:|-----------------------------------------------------------------------------------------------------|
+| AuthenTrend               | ![○]              | ![○]| ![○]| ![○]| ![n]           | https://authentrend.com/about-us/#pg-35-3                                                           |
+| Ensurity                  | ![○]              | ![○]| ![n]| ![n]| ![n]           | https://www.ensurity.com/contact                                                                    |
+| Excelsecu                 | ![○]              | ![○]| ![○]| ![○]| ![n]           | https://www.excelsecu.com/productdetail/esecufido2secu.html                                         |
+| Feitian                   | ![○]              | ![○]| ![○]| ![○]| ![○]           | https://shop.ftsafe.us/pages/microsoft                                                              |
+| Fortinet                  | ![n]              | ![○]| ![n]| ![n]| ![n]           | https://www.fortinet.com/                                                                           |
+| GoTrustID Inc.            | ![n]              | ![○]| ![○]| ![○]| ![n]           | https://www.gotrustid.com/idem-key                                                                  |
+| HID                       | ![n]              | ![○]| ![○]| ![n]| ![n]           | https://www.hidglobal.com/contact-us                                                                |
+| Hypersecu                 | ![n]              | ![○]| ![n]| ![n]| ![n]           | https://www.hypersecu.com/hyperfido                                                                 |
+| IDmelon Technologies Inc. | ![○]              | ![○]| ![○]| ![○]| ![n]           | https://www.idmelon.com/#idmelon                                                                    |
+| Kensington                | ![○]              | ![○]| ![n]| ![n]| ![n]           | https://www.kensington.com/solutions/product-category/why-biometrics/                               |
+| KONA I                    | ![○]              | ![n]| ![○]| ![○]| ![n]           | https://konai.com/business/security/fido                                                            |
+| NEOWAVE                   | ![n]              | ![○]| ![○]| ![n]| ![n]           | https://neowave.fr/en/products/fido-range/                                                          |
+| Nymi                      | ![○]              | ![n]| ![○]| ![n]| ![n]           | https://www.nymi.com/nymi-band                                                                      | 
+| OneSpan Inc.              | ![n]              | ![○]| ![n]| ![○]| ![n]           | https://www.onespan.com/products/fido                                                               |
+| Thales Group              | ![n]              | ![○]| ![○]| ![n]| ![n]           | https://cpl.thalesgroup.com/access-management/authenticators/fido-devices                           |
+| Thetis                    | ![○]              | ![○]| ![○]| ![○]| ![n]           | https://thetis.io/collections/fido2                                                                 |
+| Token2 スイス        | ![○]              | ![○]| ![○]| ![n]| ![n]           | https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key               |
+| TrustKey Solutions        | ![○]              | ![○]| ![n]| ![n]| ![n]           | https://www.trustkeysolutions.com/security-keys/                                                    |
+| VinCSS                    | ![n]              | ![○]| ![n]| ![n]| ![n]           | https://passwordless.vincss.net                                                                     |
+| Yubico                    | ![○]              | ![○]| ![○]| ![n]| ![○]           | https://www.yubico.com/solutions/passwordless/                                                      |
+
+
+<!--Image references-->
+[y]: ./media/fido2-compatibility/yes.png
+[n]: ./media/fido2-compatibility/no.png
 
 > [!NOTE]
 > NFC ベースのセキュリティ キーを購入して使用する予定の場合は、セキュリティ キーとしてサポートされている NFC リーダーが必要になります。 NFC リーダーは、Azure の要件でも制限事項でもありません。 使用している NFC ベースのセキュリティ キーでサポートされている NFC リーダーの一覧については、ベンダーにご確認ください。
 
-ベンダーとして、サポートされているデバイスのリストにデバイスを載せたい場合は、[Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com) にご連絡ください。
+ベンダーであり、このサポートされているデバイスの一覧にデバイスを掲載したい場合は、[Microsoft と互換性のある FIDO2 セキュリティ キー ベンダーになる](concept-fido2-hardware-vendor.md)方法に関するガイダンス を確認してください。
 
 FIDO2 セキュリティ キーの使用を開始するには、方法に関する次の手順を完了してください。
 
@@ -156,12 +154,20 @@ FIDO2 セキュリティ キーの使用を開始するには、方法に関す�
 
 次の考慮事項が適用されます。
 
-- 管理者は、テナントに対してパスワードレスの認証方法を有効にすることができます
-- 管理者は、すべてのユーザーをターゲットにすることも、方法ごとにテナント内のユーザー/グループを選ぶこともできます
-- エンド ユーザーは、アカウント ポータルでこれらのパスワードレスの認証方法を登録して管理することができます
-- エンド ユーザーは、これらのパスワードレスの認証方法でサインインすることができます
+- 管理者は、テナントに対してパスワードレス認証方法を有効にできます。
+
+- 管理者は、すべてのユーザーを対象にすることも、方法ごとにテナント内のユーザーまたはグループを選択することもできます。
+
+- ユーザーは、アカウント ポータルでこれらのパスワードレス認証方法を登録して管理できます。
+
+- ユーザーは、これらのパスワードレス認証方法を使用してサインインできます。
    - Microsoft Authenticator アプリ: すべてのブラウザー間で、Windows 10 のセットアップ時に、また、オペレーティング システム上の統合されたモバイル アプリでなど、Azure AD 認証が使用されるシナリオで動作します。
    - セキュリティ キー:Windows 10 のロック画面、および Microsoft Edge (従来のものと新しい Edge の両方) などのサポートされているブラウザーの Web で動作します。
+
+- ユーザーはパスワードレス資格情報を使用して、自分がゲストであるテナント内のリソースにアクセスできますが、そのリソース テナント内で MFA の実行を要求される場合があります。 詳細については、「[多要素認証重複の可能性](../external-identities/current-limitations.md#possible-double-multi-factor-authentication)」を参照してください。  
+
+- ユーザーは、自分がゲストであるテナント内でパスワードレス資格情報を登録できません。これは、そのテナント内で管理されているパスワードを持っていないことと同様です。  
+
 
 ## <a name="choose-a-passwordless-method"></a>パスワードレスの方法を選択する
 

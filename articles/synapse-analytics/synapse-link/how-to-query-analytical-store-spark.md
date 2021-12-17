@@ -1,25 +1,28 @@
 ---
-title: Azure Synapse Link で Apache Spark を使用して Azure Cosmos DB と対話する
+title: Azure Synapse Link で Apache Spark 2 を使用して Azure Cosmos DB と対話する
 description: Azure Synapse Link で Apache Spark を使用して Azure Cosmos DB と対話する方法
 services: synapse-analytics
 author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 09/15/2020
+ms.date: 11/02/2021
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 4a8367ea41ea96d8a412af965346684737d190fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 83f6c3a7e88cf42cbb2a2d36ff07ac79e7eb5894
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627576"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452207"
 ---
-# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Azure Synapse Link で Apache Spark を使用して Azure Cosmos DB と対話する
+# <a name="interact-with-azure-cosmos-db-using-apache-spark-2-in-azure-synapse-link"></a>Azure Synapse Link で Apache Spark 2 を使用して Azure Cosmos DB と対話する
 
-この記事では、Synapse Apache Spark を使用して Azure Cosmos DB と対話する方法について説明します。 Scala、Python、SparkSQL、C# が完全にサポートされることで、Synapse Apache Spark は [Azure Synapse Link for Azure Cosmos DB](../../cosmos-db/synapse-link.md) の分析、データ エンジニアリング、データ サイエンス、データ探索のシナリオの中核となります。
+> [!NOTE]
+> Spark 3 を使用した Cosmos DB の Synapse Link については、[Spark 3 での Azure Cosmos DB の Azure Synapse Link](how-to-query-analytical-store-spark-3.md) に関する記事を参照してください。
+
+この記事では、Synapse Apache Spark 2 を使用して Azure Cosmos DB と対話する方法について説明します。 Scala、Python、SparkSQL、C# が完全にサポートされることで、Synapse Apache Spark は [Azure Synapse Link for Azure Cosmos DB](../../cosmos-db/synapse-link.md) の分析、データ エンジニアリング、データ サイエンス、データ探索のシナリオの中核となります。
 
 Azure Cosmos DB との対話中に、次の機能がサポートされます。
 * Synapse Apache Spark を使用すると、トランザクション ワークロードのパフォーマンスに影響を与えることなく、Azure Synapse Link で有効になっている Azure Cosmos DB コンテナー内のデータをほぼリアルタイムで分析できます。 次の 2 つのオプションを使用して、Spark から Azure Cosmos DB [分析ストア](../../cosmos-db/analytical-store-introduction.md)に対してクエリを実行できます。
@@ -28,7 +31,7 @@ Azure Cosmos DB との対話中に、次の機能がサポートされます。
 * Synapse Apache Spark を使用すると、Azure Cosmos DB にデータを取り込むこともできます。 データは常にトランザクション ストアを介して Azure Cosmos DB コンテナーに取り込まれることに注意してください。 Synapse Link が有効になっていると、新しい挿入、更新、および削除が分析ストアに自動的に同期されます。
 * また、Synapse Apache Spark では、ソースおよびシンクとしての Azure Cosmos DB を使用した Spark の構造化ストリーミングもサポートされています。 
 
-次のセクションで、上の機能の構文について説明します。 Azure Synapse Analytics ワークスペースのジェスチャは、すぐに使い始めることができるように設計されています。 ジェスチャは、Synapse ワークスペースの **[データ]** タブで Azure Cosmos DB コンテナーを右クリックすると表示されます。 ジェスチャを使用すると、コードをすばやく生成し、ニーズに合わせて調整することができます。 ジェスチャは、1 回のクリックでデータを検出するのにも最適です。
+次のセクションで、上の機能の構文について説明します。 また、[Apache Spark for Azure Synapse Analytics を使用して Azure Cosmos DB 分析ストアのクエリを実行する](/learn/modules/query-azure-cosmos-db-with-apache-spark-for-azure-synapse-analytics/)方法に関する Learn モジュールも確認できます。 Azure Synapse Analytics ワークスペースのジェスチャは、すぐに使い始めることができるように設計されています。 ジェスチャは、Synapse ワークスペースの **[データ]** タブで Azure Cosmos DB コンテナーを右クリックすると表示されます。 ジェスチャを使用すると、コードをすばやく生成し、ニーズに合わせて調整することができます。 ジェスチャは、1 回のクリックでデータを検出するのにも最適です。
 
 > [!IMPORTANT]
 > 分析スキーマには、データの読み込み操作での予期しない動作につながる可能性のある、いくつかの制約があることに注意してください。
@@ -46,8 +49,13 @@ Azure Cosmos DB 分析ストアに対してクエリを実行するために使�
 
 このため、Spark DataFrame に読み込むことと、Spark テーブルを作成することは、Spark 分析を分析ストアの固定スナップショットに対して評価するか、分析ストアの最新のスナップショットに対して評価するかに基づいて選択できます。
 
+分析クエリに頻繁に使用されるフィルターがある場合は、これらのフィールドに基づいてパーティション分割することで、クエリのパフォーマンスを向上させることができます。 Azure Synapse Spark ノートブックからパーティション分割ジョブを定期的に実行すると、分析ストアでパーティション分割をトリガーできます。 このパーティション分割ストアは、Azure Synapse ワークスペースにリンクされている ADLS Gen2 プライマリ ストレージ アカウントを指します。 詳細については、[カスタム パーティション分割の概要](../../cosmos-db/custom-partitioning-analytical-store.md)および[カスタム パーティション分割を構成する方法](../../cosmos-db/configure-custom-partitioning.md)に関する記事を参照してください。
+
 > [!NOTE]
 > Mongo DB アカウントの Azure Cosmos DB API に対してクエリを実行するには、分析ストア内の[完全に忠実なスキーマ表現](../../cosmos-db/analytical-store-introduction.md#analytical-schema)と、使用される拡張プロパティ名の詳細を確認してください。
+
+> [!NOTE]
+> 以下のコマンドのすべての `options` では、大文字と小文字が区別されることに注意してください。 たとえば、`Gateway` ではなく `gateway` を使用すると、エラーが返されます。
 
 ### <a name="load-to-spark-dataframe"></a>Spark DataFrame に読み込む
 
@@ -128,7 +136,7 @@ df.write.format("cosmos.oltp").
 ## <a name="load-streaming-dataframe-from-container"></a>コンテナーからストリーミング データフレームを読み込む
 このジェスチャでは、Spark Streaming 機能を使用して、コンテナーからデータフレームにデータを読み込みます。 データは、ワークスペースに接続したプライマリ データ レイク アカウント (およびファイル システム) に格納されます。 
 > [!NOTE]
-> Synapse Apache Spark で外部ライブラリを参照する場合は、[こちら](#external-library-management)で詳細を確認してください。 たとえば、Spark DataFrame を Mongo DB 用 Cosmos DB API のコンテナーに取り込む場合は、[こちら](https://docs.mongodb.com/spark-connector/master/)にある Spark 用の Mongo DB コネクターを利用できます。
+> Synapse Apache Spark で外部ライブラリを参照する場合は、[こちら](../spark/apache-spark-azure-portal-add-libraries.md)で詳細を確認してください。 たとえば、Spark DataFrame を Mongo DB 用 Cosmos DB API のコンテナーに取り込む場合は、[こちら](https://docs.mongodb.com/spark-connector/master/)にある Spark 用の Mongo DB コネクターを利用できます。
 
 ## <a name="load-streaming-dataframe-from-azure-cosmos-db-container"></a>Azure Cosmos DB コンテナーからストリーミング DataFrame を読み込む
 この例では、Spark の構造化ストリーミング機能を使用して、Azure Cosmos DB の変更フィード機能を使用している Azure Cosmos DB コンテナーから Spark のストリーミング DataFrame にデータを読み込みます。 Spark によって使用されているチェックポイント データは、ワークスペースに接続したプライマリ データ レイク アカウント (およびファイル システム) に格納されます。
@@ -182,7 +190,7 @@ streamQuery = dfStream\
         .option("checkpointLocation", "/localWriteCheckpointFolder")\
         .option("spark.synapse.linkedService", "<enter linked service name>")\
         .option("spark.cosmos.container", "<enter container name>")\
-        .option("spark.cosmos.connection.mode", "gateway")\
+        .option("spark.cosmos.connection.mode", "Gateway")\
         .start()
 
 streamQuery.awaitTermination()
@@ -201,28 +209,16 @@ val query = dfStream.
             option("checkpointLocation", "/localWriteCheckpointFolder").
             option("spark.synapse.linkedService", "<enter linked service name>").
             option("spark.cosmos.container", "<enter container name>").
-            option("spark.cosmos.connection.mode", "gateway").
+            option("spark.cosmos.connection.mode", "Gateway").
             start()
 
 query.awaitTermination()
 ```
 
-## <a name="external-library-management"></a>外部ライブラリの管理
-
-この例では、Synpase Apache Spark ワークスペースで Spark ノートブックを使用するときに、JAR ファイルから外部ライブラリを参照する方法について説明します。 ワークスペースに接続したプライマリ データ レイク アカウントのコンテナーに JAR ファイルを配置し、Spark ノートブックに次の `%configure` ステートメントを追加できます。
-
-```cmd
-%%configure -f
-{
-    "jars": [
-        "abfss://<storage container name>@<data lake account name>.dfs.core.windows.net/<path to jar>"
-    ]
-}
-```
-リモートの Spark ジョブ定義をサーバーレス Apache Spark プールに送信する場合は、こちらの[チュートリアル](../spark/apache-spark-job-definitions.md)に従って外部ライブラリを参照する方法を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Synapse Link の使用を開始するための GitHub 上のサンプル](https://aka.ms/cosmosdb-synapselink-samples)
 * [Azure Synapse Link for Azure Cosmos DB でサポートされている機能を確認する](./concept-synapse-link-cosmos-db-support.md)
 * [Azure Cosmos DB 用の Synapse Link に接続する](../quickstart-connect-synapse-link-cosmos-db.md)
+* [Apache Spark for Azure Synapse Analytics を使用して Azure Cosmos DB のクエリを実行する](/learn/modules/query-azure-cosmos-db-with-apache-spark-for-azure-synapse-analytics/)方法に関する Learn モジュールを確認する。

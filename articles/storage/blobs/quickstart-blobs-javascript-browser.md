@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:Azure Blob Storage ライブラリ v12 - ブラウザーでの JavaScript
 description: このクイックスタートでは、ブラウザーで JavaScript 用の Azure Blob Storage クライアント ライブラリ バージョン 12 を使用する方法について説明します。 Blob Storage にコンテナーとオブジェクトを作成します。 そのうえで、コンテナー内のすべての BLOB を一覧表示する方法について説明します。 最後に、BLOB とコンテナーを削除する方法について説明します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: bc02f9c526ec9b0826bbe640efc4b474794f30ae
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 4fdcb48783a586baffe9bdeeec74c4d0a055a3e7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278492"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060985"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -23,32 +23,29 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](/javascript/api/@azure/storage-blob)
-* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
-* [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-blob)
-* [サンプル](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+- [API リファレンス ドキュメント](/javascript/api/@azure/storage-blob)
+- [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
+- [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-blob)
+- [サンプル](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
-* [アクティブなサブスクリプションが含まれる Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Azure Storage アカウント](../common/storage-account-create.md)
-* [Node.js](https://nodejs.org)
-* [Microsoft Visual Studio Code](https://code.visualstudio.com)
-* 次のような、ブラウザー デバッグ用の Visual Studio Code 拡張機能。
-    * [Debugger for Microsoft Edge](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
-    * [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
-    * [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
-
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+- [アクティブなサブスクリプションが含まれる Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- [Azure Storage アカウント](../common/storage-account-create.md)
+- [Node.js](https://nodejs.org)
+- [Microsoft Visual Studio Code](https://code.visualstudio.com)
+- 次のような、ブラウザー デバッグ用の Visual Studio Code 拡張機能。
+  - [Debugger for Microsoft Edge](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
+  - [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+  - [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
 
 ## <a name="object-model"></a>オブジェクト モデル
 
 Blob Storage には、3 種類のリソースがあります。
 
-* ストレージ アカウント
-* ストレージ アカウント内のコンテナー
-* コンテナー内の BLOB
+- ストレージ アカウント
+- ストレージ アカウント内のコンテナー
+- コンテナー内の BLOB
 
 次の図に、これらのリソースの関係を示します。
 
@@ -56,9 +53,9 @@ Blob Storage には、3 種類のリソースがあります。
 
 このクイックスタートでは、これらのリソースとやり取りするために、以下の JavaScript クラスを使用します。
 
-* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。
-* [ContainerClient](/javascript/api/@azure/storage-blob/containerclient):`ContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
-* [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient): `BlockBlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
+- [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。
+- [ContainerClient](/javascript/api/@azure/storage-blob/containerclient):`ContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
+- [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient): `BlockBlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
 
 ## <a name="setting-up"></a>設定
 
@@ -70,16 +67,23 @@ Web アプリケーションでクライアントから BLOB ストレージに�
 
 Azure portal で、自分のストレージ アカウントを選択します。 新しい CORS ルールを定義するために、 **[設定]** セクションに移動し、 **[CORS]** を選択します。 このクイック スタートでは、オープン CORS ルールを作成します。
 
-![Azure BLOB ストレージ アカウントの CORS 設定](media/quickstart-blobs-javascript-browser/azure-blob-storage-cors-settings.png)
+![Azure Blob Storage アカウントの CORS 設定](media/quickstart-blobs-javascript-browser/azure-blob-storage-cors-settings.png)
 
 次の表は、各 CORS 設定の説明と、ルールを定義するために使用する値を示しています。
 
 |設定  |値  | 説明 |
 |---------|---------|---------|
+<<<<<<< HEAD
 | **許可されたオリジン** | * | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `_` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
 | **許可されたメソッド** | **DELETE**、**GET**、**HEAD**、**MERGE**、**POST**、**OPTIONS**、**PUT** | ストレージ アカウントに対して実行できる HTTP 動詞の一覧です。 このクイック スタートの目的に合わせて、利用可能なすべてのオプションを選択します。 |
 | **許可されたヘッダー** | * | ストレージ アカウントによって許可される要求ヘッダー (プレフィックス付きヘッダーを含む) の一覧を定義します。 値を `_` に設定すると、すべてのヘッダーがアクセスできるようになります。 |
 | **公開されるヘッダー** | * | アカウントによって許可される応答ヘッダーの一覧です。 値を `_` に設定すると、アカウントは任意のヘッダーを送信できるようになります。 |
+=======
+| **許可されたオリジン** | * | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `*` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
+| **許可されたメソッド** | **DELETE**、**GET**、**HEAD**、**MERGE**、**POST**、**OPTIONS**、**PUT** | ストレージ アカウントに対して実行できる HTTP 動詞の一覧です。 このクイック スタートの目的に合わせて、利用可能なすべてのオプションを選択します。 |
+| **許可されたヘッダー** | * | ストレージ アカウントによって許可される要求ヘッダー (プレフィックス付きヘッダーを含む) の一覧を定義します。 値を `*` に設定すると、すべてのヘッダーがアクセスできるようになります。 |
+| **公開されるヘッダー** | * | アカウントによって許可される応答ヘッダーの一覧です。 値を `*` に設定すると、アカウントは任意のヘッダーを送信できるようになります。 |
+>>>>>>> repo_sync_working_branch
 | **最長有効期間** | **86400** | ブラウザーがプレフライト OPTIONS 要求をキャッシュする最大時間 (秒)。 値を *86,400* にすると、キャッシュが丸 1 日保持されます。 |
 
 この表の値を各フィールドに入力したら、 **[保存]** ボタンをクリックします。
@@ -94,7 +98,7 @@ Shared Access Signature (SAS) は、Azure Blob Storage への要求を承認す�
 Blob service の SAS URL を取得するには、次の手順に従います。
 
 1. Azure portal で、自分のストレージ アカウントを選択します。
-2. **[設定]** セクションに移動し、 **[Shared Access Signature]** を選択します。
+2. **[セキュリティとネットワーク]** セクションに移動し、 **[Shared Access Signature]** を選択します。
 3. 下へスクロールし、 **[SAS と接続文字列を生成する]** ボタンをクリックします。
 4. さらに下へスクロールし、 **[Blob service の SAS URL]** フィールドを見つけます。
 5. **[Blob service の SAS URL]** フィールドの右端にある **[クリップボードにコピー]** ボタンをクリックします。
@@ -152,13 +156,13 @@ Visual Studio Code で新しいファイルを作成し、次の HTML コード�
 
 JavaScript 用 Azure Blob Storage クライアント ライブラリを使用して次のタスクを実行する方法を示すコード例を紹介します。
 
-* [UI 要素のフィールドを宣言する](#declare-fields-for-ui-elements)
-* [ストレージ アカウントの情報を追加する](#add-your-storage-account-info)
-* [クライアント オブジェクトを作成する](#create-client-objects)
-* [ストレージ コンテナーを作成および削除する](#create-and-delete-a-storage-container)
-* [BLOB をリストする](#list-blobs)
-* [BLOB をアップロードする](#upload-blobs)
-* [BLOB を削除する](#delete-blobs)
+- [UI 要素のフィールドを宣言する](#declare-fields-for-ui-elements)
+- [ストレージ アカウントの情報を追加する](#add-your-storage-account-info)
+- [クライアント オブジェクトを作成する](#create-client-objects)
+- [ストレージ コンテナーを作成および削除する](#create-and-delete-a-storage-container)
+- [BLOB をリストする](#list-blobs)
+- [BLOB をアップロードする](#upload-blobs)
+- [BLOB を削除する](#delete-blobs)
 
 すべてのスニペットを *index.js* ファイルに追加した後でコードを実行してください。
 
@@ -307,5 +311,10 @@ Visual Studio Code の **ターミナル** コンソールをクリックし、C
 > [!div class="nextstepaction"]
 > [Azure for JavaScript のドキュメント](/azure/developer/javascript/)
 
+<<<<<<< HEAD
 * 詳細については、[JavaScript 用 Azure Blob Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)に関するページを参照してください。
 * Blob Storage のサンプル アプリの詳細については、[Azure Blob Storage クライアント ライブラリ v12 JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) ページを参照してください。
+=======
+- 詳細については、[JavaScript 用 Azure Blob Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)に関するページを参照してください。
+- Blob Storage のサンプル アプリの詳細については、[Azure Blob Storage クライアント ライブラリ v12 JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) ページを参照してください。
+>>>>>>> repo_sync_working_branch

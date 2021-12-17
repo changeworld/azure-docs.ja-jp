@@ -1,18 +1,18 @@
 ---
 title: メディア ブループリント サンプルの概要
 description: メディア ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定のメディア コントロールを評価するのに役立ちます。
-ms.date: 01/08/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: f2b9e29d8f5095947587107cc372beb34b18abb7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 21b5a466b1893dd24f3ae6a878428968a8b7b834
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034987"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674910"
 ---
 # <a name="overview-of-the-media-blueprint-sample"></a>メディア ブループリント サンプルの概要
 
-メディア ブループリント サンプルには、[メディア](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)構成証明に役立つ、[Azure Policy](../../../policy/overview.md) を使用した一連のガバナンスのガードレールが用意されています。 
+メディア ブループリント サンプルには、[メディア](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)構成証明に役立つ、[Azure Policy](../../../policy/overview.md) を使用した一連のガバナンスのガードレールが用意されています。
 
 ## <a name="blueprint-sample"></a>ブループリント サンプル
 

@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: 02df0a3fc7dedb5ced734efcd3cdd0eb48232c37
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.openlocfilehash: 70d9e9872c84af3a61613f17572b8f216e144fae
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101701690"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131083348"
 landingContent:
 - title: Blob Storage について
   linkLists:
@@ -32,7 +32,7 @@ landingContent:
     - text: BLOB のアップロード、ダウンロード、一覧表示 - ポータル
       url: storage-quickstart-blobs-portal.md
     - text: Storage Explorer を使用した BLOB の管理
-      url: storage-quickstart-blobs-storage-explorer.md
+      url: quickstart-storage-explorer.md
   - linkListType: concept
     links:
     - text: ストレージ アカウントの概要
@@ -44,7 +44,7 @@ landingContent:
     - text: ストレージ アカウントの作成
       url: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: ブロック BLOB ストレージ アカウントの作成
-      url: storage-blob-create-account-block-blob.md
+      url: ../common/storage-account-create.md
     - text: カスタム ドメインを構成する
       url: storage-custom-domain-name.md
 - title: BLOB データを検索して理解する
@@ -68,7 +68,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: ビッグ データの処理
-      url: data-lake-storage-data-scenarios.md
+      url: ./data-lake-storage-best-practices.md
     - text: マルチプロトコル アクセス
       url: data-lake-storage-multi-protocol-access.md
     - text: ベスト プラクティス
@@ -120,7 +120,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Azure Storage へのアクセスを承認する
-      url: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: ../common/authorize-data-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Data Lake のアクセス制御
       url: data-lake-storage-access-control.md
   - linkListType: how-to-guide
@@ -128,9 +128,9 @@ landingContent:
     - text: Azure AD アカウントを使用して BLOB データにアクセスする
       url: authorize-data-operations-portal.md
     - text: Azure RBAC を使用したアクセス権の管理
-      url: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: assign-azure-role-data-access.md
     - text: マネージド ID を使用して Blob Storage へのアクセスを承認する
-      url: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: authorize-managed-identity.md
 - title: データの転送
   linkLists:
   - linkListType: concept
@@ -162,6 +162,6 @@ landingContent:
   - linkListType: concept
     links:
     - text: ホット、クール、アーカイブ ストレージ
-      url: storage-blob-storage-tiers.md
+      url: access-tiers-overview.md
     - text: Blob Storage のライフサイクルを管理する
       url: storage-lifecycle-management-concepts.md

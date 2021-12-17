@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 0bcbe35fc6d9f104325bec8a3404ad57a6376cf2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0e795d6e6c2fa189682931f60b792e4588d1278
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94518126"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131047688"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム:機密データ | 軽減策 
 | 製品/サービス | [アーティクル] |
@@ -83,7 +83,7 @@ ms.locfileid: "94518126"
 | **手順** | ブラウザーは、キャッシュと履歴のために情報を保存できます。 これらのキャッシュされたファイルはフォルダーに保存されます (Internet Explorer の場合は Temporary Internet Files フォルダー)。 これらのページが再び参照されると、ブラウザーはキャッシュからページを表示します。 機密情報 (住所、クレジット カードの詳細、社会保障番号、ユーザー名など) がユーザーに表示された場合、この情報がブラウザーのキャッシュに保存されるので、ブラウザーのキャッシュを調べることで、または単にブラウザーの [戻る] ボタンをクリックすることで、情報を取得できる可能性があります。 すべてのページについて、cache-control 応答ヘッダーの値を "no-store" に設定します。 |
 
 ### <a name="example"></a>例
-```XML
+```xml
 <configuration>
   <system.webServer>
    <httpProtocol>

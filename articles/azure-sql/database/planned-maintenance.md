@@ -3,20 +3,20 @@ title: Azure メンテナンス イベントの計画
 description: Azure SQL データベースおよび Azure SQL Managed Instance で計画メンテナンス イベントを準備する方法について説明します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 3/23/2021
-ms.openlocfilehash: eedbc46ee5feb0aa6f6a26c3f5b3c67ac8ca0a5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a697c0a3095963760d6a95159790c02cbab14d71
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044262"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121634"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance での Azure メンテナンス イベントの計画
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ Azure SQL Database および Azure SQL Managed Instance 内のデータベース
 
 Azure SQL Database サービスと Azure SQL Managed Instance サービスのセキュリティ、コンプライアンス、安定、パフォーマンスを維持するため、サービス コンポーネントによる更新がほぼ連続して行われています。 最新で堅牢なサービス アーキテクチャと、[ホット パッチ](https://aka.ms/azuresqlhotpatching)のような革新的なテクノロジにより、ほとんどの更新は完全に透過的であり、サービスの可用性に影響を与えることはありません。 ただし、いくつかの更新の種類では、サービスが短時間中断し、特別な処理が必要になる場合があります。 
 
-データベースごとに、Azure SQL Database および Azure SQL Managed Instance で、1 つのレプリカがプライマリであるデータベース レプリカのクォーラムが維持されます。 常にプライマリ レプリカがオンラインでサービスを提供する必要があり、1 つ以上のセカンダリ レプリカが正常な状態である必要があります。 計画メンテナンス中は、データベース クォーラムのメンバーは一度に 1 つずつオフラインになります。これは、1 つの対応するプライマリ レプリカと 1 つ以上のセカンダリ レプリカをオンラインの状態に保ち、クライアントのダウンタイムが発生しないようにするためです。 プライマリ レプリカをオフラインにする必要がある場合、再構成プロセスが発生し、1 つのセカンダリ レプリカが新しいプライマリになります。  
+計画メンテナンス中は、データベース クォーラムのメンバーは 1 つずつオフラインになります。これは、対応するプライマリ レプリカを 1 つ確保するためです。 Business Critical データベースおよび Premium データベースについては、クライアントのダウンタイムが発生しないように、少なくとも 1 つのセカンダリ レプリカもオンラインになります。 プライマリ レプリカをオフラインにする必要がある場合は、再構成プロセスが発生します。 Business Critical データベースおよび Premium データベースについては、セカンダリ レプリカの 1 つが新しいプライマリ レプリカになります。 General Purpose データベース、Standard データベース、Basic データベースについては、十分な空き容量がある別のステートレス コンピューティング ノードにプライマリ レプリカが移動します。
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>計画メンテナンス イベント時に予期されること
 
@@ -35,11 +35,15 @@ Azure SQL Database サービスと Azure SQL Managed Instance サービスのセ
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>計画メンテナンス イベントをシミュレートする方法
 
-運用環境にデプロイする前に、クライアント アプリケーションがメンテナンス イベントに対する回復性を備えていることを確認することは、アプリケーションの障害のリスクを軽減するのに役立ち、エンド ユーザーにとっては、アプリケーションの可用性に寄与します。 PowerShell、CLI、または REST API を使用して[手動フェールオーバーを開始](https://aka.ms/mifailover-techblog)することによって、計画メンテナンス イベント中にクライアント アプリケーションの動作をテストできます。 プライマリ レプリカをオフラインにするメンテナンス イベントと同じ動作が生成されます。
+運用環境にデプロイする前に、クライアント アプリケーションがメンテナンス イベントに対する回復性を備えていることを確認することは、アプリケーションの障害のリスクを軽減するのに役立ち、エンド ユーザーにとっては、アプリケーションの可用性に寄与します。PowerShell、CLI、または REST API を使用して[アプリケーションの障害回復性をテスト](./high-availability-sla.md#testing-application-fault-resiliency)することによって、計画メンテナンス イベント中にクライアント アプリケーションの動作をテストできます。 Managed Instance の[手動フェールオーバーの開始](https://aka.ms/mifailover-techblog)に関するページも参照してください。 プライマリ レプリカをオフラインにするメンテナンス イベントと同じ動作が生成されます。
 
 ## <a name="retry-logic"></a>再試行ロジック
 
 クラウド データベース サービスに接続するクライアント運用アプリケーションでは、堅牢な接続[再試行ロジック](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)を実装する必要があります。 これにより、再構成はエンド ユーザーに対して透過的になり、少なくとも、悪影響を最小限に抑えることができます。
+
+### <a name="service-health-alert"></a>Service Health アラート
+
+サービスの問題や計画メンテナンス作業についてのアラートを受け取りたい場合、Azure portal から、適切な種類のイベントとアクション グループに Service Health アラートを組み合わせて使用できます。 詳細については、[Azure サービスの通知でアラートを受け取る](../../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal)方法に関するページを参照してください。
 
 ## <a name="resource-health"></a>リソース ヘルス
 

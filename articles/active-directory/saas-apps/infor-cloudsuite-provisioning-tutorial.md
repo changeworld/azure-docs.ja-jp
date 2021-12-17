@@ -2,21 +2,21 @@
 title: チュートリアル:Infor CloudSuite を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Infor CloudSuite に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
-ms.author: Zhchia
-ms.openlocfilehash: 8fdd2c8a326fbdc68d1aec65377f4c465c5ee4c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 9c488a04962216df2748891c71bad32cb9dffac6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96353903"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477480"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>チュートリアル:Infor CloudSuite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -32,7 +32,7 @@ ms.locfileid: "96353903"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * Azure AD テナント
-* [Infor CloudSuite テナント](https://www.infor.com/products/infor-os)
+* [Infor CloudSuite テナント](https://www.infor.com/products)
 * Admin アクセス許可がある Infor CloudSuite のユーザー アカウント。
 
 ## <a name="assigning-users-to-infor-cloudsuite"></a>Infor CloudSuite へのユーザーの割り当て

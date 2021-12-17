@@ -13,14 +13,14 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: d8a176fff0da932d0fafd40b9ab895b635acc5f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50a0593081e5a1971a22b6342f0c983c81b24bb1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96169445"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067214"
 ---
-# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>ハウツー: さまざまな ID プロバイダーを使用するように iOS および macOS 用 MSAL を構成する
+# <a name="configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>さまざまな ID プロバイダーを使用するように iOS および macOS 用 MSAL を構成する
 
 この記事では、Azure Active Directory (Azure AD)、企業-消費者間 (B2C)、ソブリン クラウド、ゲスト ユーザーなどのさまざまな機関向けに、iOS および macOS 用の Microsoft Authentication Library アプリを構成する方法について説明します。  この記事では、一般に、ID プロバイダーとしての機関を考えてみましょう。
 
@@ -240,11 +240,11 @@ do{
 
 ### <a name="msalaadauthority"></a>MSALAADAuthority
 
-`MSALAADAuthority` は AAD 機関を表します。 機関 URL は次の形式にする必要があります (`<port>` は省略可能です): `https://<host>:<port>/<tenant>`。
+`MSALAADAuthority` は AAD 機関を表します。 機関の URL は次の形式にする必要があります。ここで、 `<port>` は省略可能です。 `https://<host>:<port>/<tenant>`
 
 ### <a name="msalb2cauthority"></a>MSALB2CAuthority
 
-`MSALB2CAuthority` は B2C 機関を表します。 既定では、B2C 機関 URL は次の形式にする必要があります (`<port>` は省略可能です): `https://<host>:<port>/tfp/<tenant>/<policy>`。 ただし、MSAL では、他の任意の B2C 機関の形式もサポートされています。
+`MSALB2CAuthority` は B2C 機関を表します。 既定では、B2C 機関の URL は次の形式にする必要があります。ここで、 `<port>` は省略可能 `https://<host>:<port>/tfp/<tenant>/<policy>` です。 ただし、MSAL では、他の任意の B2C 機関の形式もサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 

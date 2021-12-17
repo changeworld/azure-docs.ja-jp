@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と EY GlobalOne の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と EY GlobalOne の統合'
 description: Azure Active Directory と EY GlobalOne の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/07/2020
+ms.date: 09/22/2021
 ms.author: jeedes
-ms.openlocfilehash: a248718d12abf90abd80c9210b994e7d74ab111b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 497c72f53b183d7ce5a6c49d4fcee07dc46cdbd7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92448726"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285490"
 ---
-# <a name="tutorial-integrate-ey-globalone-with-azure-active-directory"></a>チュートリアル:EY GlobalOne と Azure Active Directory との統合
+# <a name="tutorial-azure-ad-sso-integration-with-ey-globalone"></a>チュートリアル: Azure AD SSO と EY GlobalOne の統合
 
 このチュートリアルでは、EY GlobalOne と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と EY GlobalOne を統合すると、次のことができます。
 
 * EY GlobalOne にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して EY GlobalOne に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,15 +36,14 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
-* EY GlobalOne では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます 
+* EY GlobalOne では、**SP と IDP** によって開始される SSO がサポートされます。 
 * EY GlobalOne では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
-* EY GlobalOne を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
-## <a name="adding-ey-globalone-from-the-gallery"></a>ギャラリーからの EY GlobalOne の追加
+## <a name="add-ey-globalone-from-the-gallery"></a>ギャラリーからの EY GlobalOne の追加
 
 Azure AD への EY GlobalOne の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に EY GlobalOne を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
@@ -57,22 +54,22 @@ Azure AD への EY GlobalOne の統合を構成するには、ギャラリーか
 
 **B. Simon** というテスト ユーザーを使用して、EY GlobalOne に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと EY GlobalOne の関連ユーザーの間で、リンク関係を確立する必要があります。
 
-EY GlobalOne に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+EY GlobalOne 用に Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    * **[Azure AD テスト ユーザーの作成](#create-an-azure-ad-test-user)** - B. Simon で Azure AD のシングル サインオンをテストします。
-    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B. Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[EY GlobalOne の構成](#configure-ey-globalone)** - アプリケーション側で SSO 設定を構成します。
-    * **[EY GlobalOne のテスト ユーザーの作成](#create-ey-globalone-test-user)** - EY GlobalOne で B. Simon に対応するユーザーを作成し、Azure AD の B. Simon にリンクさせます。
+    1. **[Azure AD テスト ユーザーの作成](#create-an-azure-ad-test-user)** - B. Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B. Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[EY GlobalOne SSO の構成](#configure-ey-globalone-sso)** - アプリケーション側で SSO 設定を構成します。
+    1. **[EY GlobalOne のテスト ユーザーの作成](#create-ey-globalone-test-user)** - EY GlobalOne で B. Simon に対応するユーザーを作成し、Azure AD の B. Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **EY GlobalOne** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **EY GlobalOne** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -136,18 +133,12 @@ EY GlobalOne に対する Azure AD SSO を構成してテストするには、�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[EY GlobalOne]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B. Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-ey-globalone"></a>EY GlobalOne の構成
+## <a name="configure-ey-globalone-sso"></a>EY GlobalOne SSO の構成
 
 **EY GlobalOne** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [EY GlobalOne サポート チーム](mailto:globalone.support@ey.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -157,12 +148,20 @@ EY GlobalOne に対する Azure AD SSO を構成してテストするには、�
 
 ## <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [EY GlobalOne] タイルを選択すると、SSO を設定した EY GlobalOne に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-## <a name="additional-resources"></a>その他のリソース
+#### <a name="sp-initiated"></a>SP Initiated:
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる EY GlobalOne のサインオン URL にリダイレクトされます。  
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+* EY GlobalOne のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+#### <a name="idp-initiated"></a>IDP Initiated:
+
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した EY GlobalOne に自動的にサインインされます。 
+
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [EY GlobalOne] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した EY GlobalOne に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+EY GlobalOne を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

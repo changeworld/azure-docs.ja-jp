@@ -6,23 +6,22 @@ documentationcenter: ''
 author: billmath
 manager: daveba
 editor: ''
-ms.reviewer: cychua
 ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/04/2021
+ms.date: 06/02/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f7466931537745fb188a3bdb05646bff19912e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b24375cd3c5566a1da4d4e1876844d6984c7985
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466254"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965868"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
@@ -81,6 +80,8 @@ DirSync からアップグレードする場合は、AD DS エンタープライ
 
 ### <a name="azure-ad-global-admin-credentials"></a>Azure AD 全体管理者の資格情報
 これらの資格情報を使用するのはインストール中のみであり、インストールの完了後には使用しません。 この資格情報は、Azure AD への変更の同期に使用される Azure AD コネクタ アカウントを作成するために使用します。 また、このアカウントにより、同期が Azure AD の機能として有効化されます。
+
+全体管理者アカウントの詳細については、「[全体管理者](../../active-directory/roles/permissions-reference.md#global-administrator)」を参照してください。
 
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS コネクタ アカウントの必須のアクセス許可 (簡単設定の場合)
 AD DS コネクタ アカウントは、Windows Server AD の読み取りと書き込みを目的に作成され、簡単設定によって作成された場合、以下のアクセス許可を持ちます。
@@ -197,8 +198,8 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 - 太字でない部分 - サポートされているオプション
 - ローカル アカウント - サーバー上のローカル ユーザー アカウント
 - ドメイン アカウント - ドメイン ユーザー アカウント
-- sMSA - [スタンドアロンの管理されたサービス アカウント](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
-- gMSA - [グループの管理されたサービス アカウント](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))
+- sMSA - [スタンドアロンの管理されたサービス アカウント](../../active-directory/fundamentals/service-accounts-on-premises.md)
+- gMSA - [グループの管理されたサービス アカウント](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Custom | リモート SQL</br>Custom |
 | --- | --- | --- | --- |
@@ -215,11 +216,11 @@ VSA は、同期エンジンと SQL が同じサーバー上にあるシナリ�
 この機能では、Windows Server 2008 R2 以降が必要です。 Windows Server 2008 に Azure AD Connect をインストールする場合、インストールは代わりに[ユーザー アカウント](#user-account)を使用してフォールバックします。
 
 #### <a name="group-managed-service-account"></a>グループの管理されたサービス アカウント
-リモートの SQL サーバーを使う場合は、**グループの管理されたサービス アカウント** を使うことをお勧めします。 グループの管理されたサービス アカウント用の Active Directory を準備する方法について詳しくは、「[グループの管理されたサービス アカウントの概要](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))」をご覧ください。
+リモートの SQL サーバーを使う場合は、**グループの管理されたサービス アカウント** を使うことをお勧めします。 グループの管理されたサービス アカウント用の Active Directory を準備する方法について詳しくは、「[グループの管理されたサービス アカウントの概要](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)」をご覧ください。
 
 このオプションを使用するには、[[必須コンポーネントのインストール]](how-to-connect-install-custom.md#install-required-components) ページで **[既存のサービス アカウントを使用する]** を選択し、 **[管理されたサービス アカウント]** を選択します。  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
-[スタンドアロンの管理されたサービス アカウント](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))を使用することもできます。 ただし、これらはローカル コンピューターでのみ使うことができ、既定の仮想サービス アカウントでこれらを使うことにメリットはありません。
+[スタンドアロンの管理されたサービス アカウント](../../active-directory/fundamentals/service-accounts-on-premises.md)を使用することもできます。 ただし、これらはローカル コンピューターでのみ使うことができ、既定の仮想サービス アカウントでこれらを使うことにメリットはありません。
 
 この機能では、Windows Server 2012 以降が必要です。 以前のオペレーティング システムを使用し、リモート SQL を使用する必要がある場合は、[ユーザー アカウント](#user-account)を使用する必要があります。
 

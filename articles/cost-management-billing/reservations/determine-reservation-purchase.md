@@ -2,18 +2,18 @@
 title: 購入すべき Azure の予約を判断する
 description: この記事は、購入すべき予約を判断するのに役立ちます。
 author: bandersmsft
-ms.reviewer: yashar
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: d89f890d3e2bb8238a00b4a529b8804a8c38fa6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7482835f09ec5de0beff6b97b190c5eedfb11b7f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684747"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604324"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>購入する予約を判断する
 
@@ -52,7 +52,7 @@ Promo シリーズの VM は予約割引が適用されないので、分析対�
 - **MeterName** から **vCore** をフィルターで抽出します。
 - **MeterSubCategory** から、名前に _Compute_ が含まれるすべての使用量レコードをフィルターで抽出します。
 
-**AdditionalInfo** から **vCores** の値を取得します。 これは使用された仮想コアの数を示します。 この数量は、**仮想コア**の数にデータベースの使用時間数を乗じたものです。
+**AdditionalInfo** から **vCores** の値を取得します。 これは使用された仮想コアの数を示します。 この数量は、**仮想コア** の数にデータベースの使用時間数を乗じたものです。
 
 これらのデータから、次の項目についての一定の使用量を把握することができます。
 
@@ -86,6 +86,7 @@ Azure portal の [予約] に移動し、100 DWU の倍数単位で Azure Synaps
 - 推奨量は、インスタンス サイズ ファミリーではなく個々のサイズについて計算されます。
 - スコープに対する推奨数量は、そのスコープの予約購入日と同日に減じられます。
     - ただし複数のスコープにまたがる予約の推奨数量については、更新に最大 25 日かかることがあります。 たとえば共有スコープの推奨量に基づいて予約を購入した場合、単一サブスクリプション スコープの推奨量が調整されて減じられるまでに最大 25 日かかる場合があります。
+- 現在 Azure では、管理グループのスコープに対する推奨値の生成は行っていません。
 
 ## <a name="recommendations-in-the-azure-portal"></a>Azure portal における推奨情報
 
@@ -97,7 +98,7 @@ Azure portal の [予約] に移動し、100 DWU の倍数単位で Azure Synaps
 
 ## <a name="recommendations-in-the-cost-management-power-bi-app"></a>Cost Management Power BI アプリにおける推奨情報
 
-マイクロソフト エンタープライズ契約および Microsoft 顧客契約のお客様は、VM RI カバレッジ レポートを利用して VM と購入の推奨情報を得ることができます。 カバレッジ レポートには、合計使用量と、予約インスタンスによってカバーされる使用量が表示されます。
+マイクロソフト エンタープライズ契約のお客様は、VM RI カバレッジ レポートを利用して VM と購入の推奨情報を得ることができます。 カバレッジ レポートには、合計使用量と、予約インスタンスによってカバーされる使用量が表示されます。
 
 1. [Cost Management アプリ](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)を入手します。
 2. VM RI カバレッジ レポートに移動します。購入するスコープに応じて共有スコープまたは単一スコープを選択してください。

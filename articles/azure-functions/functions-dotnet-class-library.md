@@ -3,13 +3,13 @@ title: Azure Functions を使用する C# クラス ライブラリ関数を開�
 description: C# を使用して、クラス ライブラリとしてコードを開発して公開する方法を理解します。これは、Azure Functions ランタイムを使用してインプロセスで実行されます。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 07/24/2020
-ms.openlocfilehash: c7d14599ec1ebbcb94e0c0f3985a3b857f9353dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/24/2021
+ms.openlocfilehash: 5681a985769f49429e5b92946311c3d10ea8ecf6
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563882"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862345"
 ---
 # <a name="develop-c-class-library-functions-using-azure-functions"></a>Azure Functions を使用する C# クラス ライブラリ関数を開発する
 
@@ -28,22 +28,7 @@ C# 開発者の方は、次の記事のいずれかに関心があるかもし�
 
 Azure Functions では、C# および C# スクリプト プログラミング言語をサポートします。 [Azure Portal での C# の使用](functions-create-function-app-portal.md)に関するガイダンスを探している場合は、[C# スクリプト (.csx) 開発者向けリファレンス](functions-reference-csharp.md)をご覧ください。
 
-## <a name="supported-versions"></a>サポートされているバージョン
-
-Functions ランタイムの各バージョンは、.NET の特定のバージョンと動作します。 Functions バージョンの詳細については、「[Azure Functions ランタイム バージョンの概要](functions-versions.md)」を参照してください。
-
-次の表は、特定のバージョンの Functions と共に使用できる最上位レベルの .NET Core と .NET Framework を示しています。 
-
-| Functions ランタイムのバージョン | 最大の .NET バージョン |
-| ---- | ---- |
-| Functions 3.x | .NET Core 3.1<br/>.NET 5.0<sup>1</sup> |
-| Functions 2.x | .NET Core 2.2<sup>2</sup> |
-| Functions 1.x | .NET Framework 4.7 |
-
-<sup>1</sup> [アウトプロセス](dotnet-isolated-process-guide.md)で実行する必要があります。  
-<sup>2</sup> 詳細については、「[Functions v2. x に関する考慮事項](#functions-v2x-considerations)」を参照してください。   
-
-特定の古いマイナー バージョンの削除など、Azure Functions リリースに関する最新のニュースについては、[Azure App Service のお知らせ](https://github.com/Azure/app-service-announcements/issues)を閲覧してください。
+[!INCLUDE [functions-dotnet-supported-versions](../../includes/functions-dotnet-supported-versions.md)]
 
 ### <a name="functions-v2x-considerations"></a>Functions v2. x に関する考慮事項
 
@@ -63,7 +48,7 @@ Premium または専用 (App Service) プランで Linux 上で実行してい�
 Visual Studio では、**Azure Functions** プロジェクト テンプレートは、次のファイルを含む C# クラス ライブラリ プロジェクトを作成します。
 
 * [host.json](functions-host-json.md) - ローカルまたは Azure 内で実行される場合に、プロジェクト内のすべての関数に影響を及ぼす構成設定を格納します。
-* [local.settings.json](functions-run-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。 このファイルにはシークレットが含まれていて、Azure の関数アプリには公開されません。 代わりに、[関数アプリにアプリ設定を追加](functions-develop-vs.md#function-app-settings)します。
+* [local.settings.json](functions-develop-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。 このファイルにはシークレットが含まれていて、Azure の関数アプリには公開されません。 代わりに、[関数アプリにアプリ設定を追加](functions-develop-vs.md#function-app-settings)します。
 
 プロジェクトをビルドするときに、次の例のようなフォルダー構造がビルドの出力ディレクトリに作成されます。
 
@@ -221,11 +206,11 @@ Functions ランタイムのバージョン 1.x と 2.x では同じパッケー
 
 `Microsoft.NET.Sdk.Functions` のソース コードは、GitHub リポジトリ ([azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk)) で利用できます。
 
-## <a name="runtime-version"></a>ランタイム バージョン
+## <a name="local-runtime-version"></a>ローカルのランタイム バージョン
 
-Visual Studio では、[Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) を使用して、Functions プロジェクトを実行します。 Core Tools は、Functions ランタイム用のコマンド ライン インターフェイスです。
+Visual Studio では、ローカル コンピュータ上で [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) を使用して、Functions プロジェクトを実行します。 Core Tools は、Functions ランタイム用のコマンド ライン インターフェイスです。
 
-npm を使用して Core Tools をインストールする場合、これは Visual Studio で使用される Core Tools バージョンには影響しません。 Functions ランタイム バージョン 1.x の場合、Visual Studio は Core Tools のバージョンを *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* に格納し、そこに格納されている中で最も新しいバージョンを使用します。 Functions 2.x の場合、Core Tools は **Azure Functions と Web ジョブ ツール** の拡張機能に含まれます。 1\.x と 2.x の両方について、使用されているバージョンは、Functions プロジェクトを実行するときに、コンソール出力で確認できます。
+Windows インストーラー (MSI) パッケージを使用するか npm を使用して Core Tools をインストールした場合、Visual Studio で使用される Core Tools のバージョンには影響ありません。 Functions ランタイム バージョン 1.x の場合、Visual Studio は Core Tools のバージョンを *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* に格納し、そこに格納されている中で最も新しいバージョンを使用します。 Functions 2.x の場合、Core Tools は **Azure Functions と Web ジョブ ツール** の拡張機能に含まれます。 1\.x と 2.x の両方について、使用されているバージョンは、Functions プロジェクトを実行するときに、コンソール出力で確認できます。
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
@@ -480,7 +465,7 @@ namespace functionapp0915
 
 この例では、カスタム メトリック データは、customMetrics テーブルに送信される前にホストによって集計されます。 詳細については、Application Insights で [GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) のドキュメントを参照してください。 
 
-ローカルで実行する場合は、Application Insights キーを使用して `APPINSIGHTS_INSTRUMENTATIONKEY` 設定を [local.settings.json](functions-run-local.md#local-settings-file) ファイルに追加する必要があります。
+ローカルで実行する場合は、Application Insights キーを使用して `APPINSIGHTS_INSTRUMENTATIONKEY` 設定を [local.settings.json](functions-develop-local.md#local-settings-file) ファイルに追加する必要があります。
 
 
 # <a name="v1x"></a>[v1.x](#tab/v1)

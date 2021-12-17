@@ -2,16 +2,16 @@
 title: Web ダッシュボードで Azure Kubernetes Service クラスターを管理する
 description: 組み込みの Kubernetes Web UI ダッシュボードを使用して、Azure Kubernetes Service (AKS) クラスターを管理する方法について説明します
 services: container-service
-author: mlearned
+author: georgewallace
 ms.topic: article
 ms.date: 06/03/2020
-ms.author: mlearned
-ms.openlocfilehash: 0d872a60c4aea89e621fe25ade45697244a74fa8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.author: gwallace
+ms.openlocfilehash: 64898c6e8782c0830439d35c023a3c90fa1ebe26
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779725"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053181"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Kubernetes Web ダッシュボードにアクセスする
 
@@ -21,10 +21,9 @@ Kubernetes ダッシュボードの詳細については、[Kubernetes の Web U
 
 > [!WARNING]
 > **AKS ダッシュボード アドオンは廃止に設定されています。代わりに、[Azure portal の Kubernetes リソース ビュー (プレビュー)][kubernetes-portal] を使用してください。** 
-> * 1\.18 より前のバージョンの Kubernetes を実行しているクラスターでは、Kubernetes ダッシュボードは既定で有効になっています。
-> * Kubernetes 1.18 以降で作成されたすべての新しいクラスターでは、ダッシュボード アドオンは既定で無効になります。 
- > * プレビューの Kubernetes 1.19 以降の AKS では、マネージド kube-dashboard アドオンのインストールはサポートされなくなりました。 
- > * アドオンが有効になっている既存のクラスターは影響を受けません。 ユーザーは、ユーザーがインストールするソフトウェアとして、オープンソース ダッシュボードを引き続き手動でインストールできます。
+> * すべての新しいクラスターでダッシュボード アドオンは既定で無効になります。
+> * プレビューの Kubernetes 1.19 以降の AKS では、マネージド kube-dashboard アドオンのインストールはサポートされなくなりました。 
+> * アドオンが有効になっている既存のクラスターは影響を受けません。 ユーザーは、ユーザーがインストールするソフトウェアとして、オープンソース ダッシュボードを引き続き手動でインストールできます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -34,32 +33,11 @@ Kubernetes ダッシュボードの詳細については、[Kubernetes の Web U
 
 ## <a name="disable-the-kubernetes-dashboard"></a>Kubernetes ダッシュボードを無効にする
 
-kube-dashboard アドオンは、**K8s 1.18 より前のクラスターでは既定で有効になります**。 次のコマンドを実行することで、アドオンを無効にすることができます。
+次のコマンドを実行することで、アドオンを無効にすることができます。
 
 ``` azurecli
 az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
-
-## <a name="start-the-kubernetes-dashboard"></a>Kubernetes ダッシュボードを起動する
-
-> [!WARNING]
-> AKS ダッシュボード アドオンは、バージョン 1.19 以降では非推奨となっています。 代わりに、[Azure portal の Kubernetes リソース ビュー (プレビュー)][kubernetes-portal] を使用してください。 
-> * バージョン 1.19 以降の場合、次のコマンドでは、kubernetes ダッシュボードではなく、Azure Portal のリソース ビューが開くようになりました。
-
-クラスターで Kubernetes ダッシュボードを起動するには、[az aks browse][az-aks-browse] コマンドを使用します。 このコマンドでは、クラスターに kube-dashboard アドオンをインストールする必要があります。これは、Kubernetes 1.18 より前のバージョンを実行しているクラスターに既定で含まれています。
-
-次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターのダッシュボードを開きます。
-
-```azurecli
-az aks browse --resource-group myResourceGroup --name myAKSCluster
-```
-
-このコマンドは、開発システムと Kubernetes API の間にプロキシを作成し、Kubernetes ダッシュボードへの Web ブラウザーを開きます。 Web ブラウザーで Kubernetes ダッシュボードを開いていない場合は、Azure CLI に記載されている URL アドレス (一般に `http://127.0.0.1:8001`) をコピーして貼り付けます。
-
-> [!NOTE]
-> `http://127.0.0.1:8001` でダッシュボードが表示されない場合は、次のアドレスに手動でルーティングできます。 1\.16 以降のクラスターでは、https を使用し、別のエンドポイントが必要です。
-> * K8s 1.16 以降: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
-> * K8s 1.15 以前: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)

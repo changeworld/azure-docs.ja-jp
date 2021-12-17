@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
-ms.openlocfilehash: 5e75a39b1f9e8503097914b0c9e735915f9ae667
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21d47017e4591e8cfac26cea57817c810227528c
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943211"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291362"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight に含まれる MapReduce サンプルを実行する
 
-[!INCLUDE [samples-selector](../../../includes/hdinsight-run-samples-selector.md)]
+[!INCLUDE [samples-selector](../includes/hdinsight-run-samples-selector.md)]
 
 HDInsight 上の Apache Hadoop に含まれている MapReduce サンプルを実行する方法を説明します。
 

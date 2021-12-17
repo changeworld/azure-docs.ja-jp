@@ -8,19 +8,21 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d89cc41ed26124ae4ad2e6689be6d59278c3d9da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c858675686815d65ef619e27bdfdac2687817d13
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94542169"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643351"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>クイック スタート:シンプルな Azure CLI コマンド az mysql up (プレビュー) を使用して Azure Database for MySQL を作成する
 
-> [!IMPORTANT]
-> [az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) という Azure CLI コマンドはプレビュー段階です。
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
-Azure Database for MySQL は、高可用性 MySQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、[az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) コマンドを使用し、Azure CLI を使って Azure Database for MySQL サーバーを作成する方法を示します。 サーバーの作成に加え、`az mysql up` コマンドではサンプル データベース、データベースのルート ユーザーを作成し、Azure サービスのファイアウォールを開き、クライアント コンピューターの既定のファイアウォール規則を作成します。 これは開発プロセスを効率よく進めるために役立ちます。
+> [!IMPORTANT]
+> [az mysql up](/cli/azure/mysql#az_mysql_up) という Azure CLI コマンドはプレビュー段階です。
+
+Azure Database for MySQL は、高可用性 MySQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、[az mysql up](/cli/azure/mysql#az_mysql_up) コマンドを使用し、Azure CLI を使って Azure Database for MySQL サーバーを作成する方法を示します。 サーバーの作成に加え、`az mysql up` コマンドではサンプル データベース、データベースのルート ユーザーを作成し、Azure サービスのファイアウォールを開き、クライアント コンピューターの既定のファイアウォール規則を作成します。 これは開発プロセスを効率よく進めるために役立ちます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +44,8 @@ az account set --subscription <subscription id>
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
 
-コマンドを使用するには、[db-up](/cli/azure/ext/db-up) 拡張機能をインストールします。 エラーが返された場合は、最新バージョンの Azure CLI がインストールされていることを確認してください。 [Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+コマンドを使用するには、[db-up](/cli/azure/ext/db-up/mysql
+) 拡張機能をインストールします。 エラーが返された場合は、最新バージョンの Azure CLI がインストールされていることを確認してください。 [Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ```azurecli
 az extension add --name db-up
@@ -71,7 +74,7 @@ admin-user | システム生成 | 管理者ログインのユーザー名。
 admin-password | システム生成 | 管理者ユーザーのパスワード。
 
 > [!NOTE]
-> `az mysql up` コマンドとその追加パラメーターの詳細については、[Azure CLI のドキュメント](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up)を参照してください。
+> `az mysql up` コマンドとその追加パラメーターの詳細については、[Azure CLI のドキュメント](/cli/azure/mysql#az_mysql_up)を参照してください。
 
 サーバーが作成されると、設定は次のようになります。
 
@@ -88,7 +91,7 @@ admin-password | システム生成 | 管理者ユーザーのパスワード。
 
 `az mysql up` コマンドが完了した後、一般的なプログラミング言語の接続文字列のリストが返されます。 これらの接続文字列は、新しく作成した Azure Database for MySQL サーバーの特定の属性で事前に構成されています。
 
-[az mysql show-connection-string](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-show-connection-string) コマンドを使用して、これらの接続文字列をもう一度リストすることができます。
+[az mysql show-connection-string](/cli/azure/mysql#az_mysql_show_connection_string) コマンドを使用して、これらの接続文字列をもう一度リストすることができます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -98,7 +101,7 @@ admin-password | システム生成 | 管理者ユーザーのパスワード。
 az mysql down --delete-group
 ```
 
-新しく作成したサーバーを削除するだけの場合は、[az mysql down](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-down) コマンドを実行できます。
+新しく作成したサーバーを削除するだけの場合は、[az mysql down](/cli/azure/mysql#az_mysql_down) コマンドを実行できます。
 
 ```azurecli
 az mysql down

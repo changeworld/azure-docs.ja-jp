@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 1fad1bca18d16ac3b6a654a3c289d0a14e3cd2e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0b24d902c808f06e49f2c132629484d22921b4b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92204794"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351307"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute の前提条件とチェック リスト
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、次のセクションにある前提条件を満たしていることを確認する必要があります。
@@ -46,6 +46,7 @@ ExpressRoute で Microsoft 365 を有効にする予定がある場合は、以�
 * [Microsoft 365 のネットワーク計画とパフォーマンスのチューニング](/microsoft-365/enterprise/network-planning-and-performance)
 * [Microsoft 365 のネットワークおよび移行の計画](/microsoft-365/enterprise/network-and-migration-planning)
 * [Microsoft 365 とオンプレミス環境との統合](/microsoft-365/enterprise/microsoft-365-integration)
+* [Office 365 の IP アドレスの変更で常に最新の状態を保つ](/microsoft-365/enterprise/microsoft-365-ip-web-service)
 * [Office 365 での ExpressRoute に関する高度なトレーニング ビデオ](https://channel9.msdn.com/series/aer/)
 
 ## <a name="next-steps"></a>次のステップ

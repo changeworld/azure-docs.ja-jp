@@ -10,12 +10,12 @@ ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 6e728eaf8335a102e38a3b4b07ab5e504d452294
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e38fb4068b695eebe78c7e9b8709862aca07531
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91996457"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724405"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub のモジュール ツインの理解と使用
 
@@ -225,13 +225,13 @@ ms.locfileid: "91996457"
 
 モジュール アプリは、次のアトミック操作を使用して、モジュール ツインを操作します。
 
-* **モジュール ツインを取得する** この操作は、タグ、必要なシステム プロパティ、報告されるシステム プロパティを含む、現在接続されているモジュールのモジュール ツインのドキュメントを返します。
+* **モジュール ツインを取得する** この操作は、必要なシステム プロパティ、報告されるシステム プロパティを含む、現在接続されているモジュールのモジュール ツインのドキュメントを返します。
 
 * **報告されるプロパティの部分的な更新** この操作では、現在接続されているモジュールの報告されるプロパティを部分的に更新できます。 この操作には、必要なプロパティを部分的に更新する際にソリューション バックエンドで使用されるものと同じ JSON 更新フォーマットが使用されます。
 
 * **必要なプロパティの監視** 現在接続されているモジュールでは、必要なプロパティの更新が行われたときに通知をするように設定できます。 モジュールは、ソリューション バックエンドによって実行される更新 (部分的または完全な置換) と同じフォームを受け取ります。
 
-「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」の記事に定義されているように、上述の操作にはすべて **ModuleConnect** アクセス許可が必要です。
+「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」の記事に定義されているように、上述の操作にはすべて **DeviceConnect** アクセス許可が必要です。
 
 [Azure IoT device SDK](iot-hub-devguide-sdks.md) を使用すると、多数の言語とプラットフォームで上述の操作を簡単に使用できます。
 

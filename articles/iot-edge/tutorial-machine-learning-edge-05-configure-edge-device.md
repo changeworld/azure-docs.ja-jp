@@ -2,19 +2,18 @@
 title: 'チュートリアル: Azure IoT Edge デバイスを構成する - IoT Edge での Machine Learning'
 description: このチュートリアルでは、Linux を実行している Azure 仮想マシンを、透過的なゲートウェイとして機能する Azure IoT Edge デバイスとして構成します。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: 65fd6e5b4d494f8e8486d72079b9fa97a175894b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 103a3004f6bf4ec6e536d87b7fe72484f2bff974
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376887"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259114"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>チュートリアル: Azure IoT Edge デバイスを構成する
 
@@ -105,11 +104,11 @@ ms.locfileid: "107376887"
 
     ![Key Vault スクリプトの出力を示すスクリーンショット。](media/tutorial-machine-learning-edge-05-configure-edge-device/key-vault-entries-output.png)
 
-## <a name="create-an-iot-edge-device"></a>IoT Edge デバイスを作成する
+## <a name="register-an-iot-edge-device"></a>IoT Edge デバイスを登録する
 
-Azure IoT Edge デバイスを IoT ハブに接続するために、まずハブ内のデバイスの ID を作成します。 クラウドでデバイス ID から接続文字列を取り、それを使用して IoT Edge デバイス上でランタイムを構成します。 構成済みのデバイスがハブに接続したら、モジュールをデプロイしてメッセージを送信することができます。 対応するデバイス ID を IoT ハブで変更することによって、物理 IoT Edge デバイスの構成を変更することもできます。
+Azure IoT Edge デバイスを IoT ハブに接続するために、まずハブにデバイスを登録します。 クラウドでデバイス ID から接続文字列を取り、それを使用して IoT Edge デバイス上でランタイムを構成します。 構成済みのデバイスがハブに接続したら、モジュールをデプロイしてメッセージを送信することができます。 対応するデバイス ID を IoT ハブで変更することによって、物理 IoT Edge デバイスの構成を変更することもできます。
 
-このチュートリアルでは、Visual Studio Code を使用して新しいデバイス ID を作成します。 これらの手順は、Azure portal または Azure CLI を使用して完了することもできます。
+このチュートリアルでは、Visual Studio Code を使用して新しいデバイス ID を登録します。 これらの手順は、Azure portal または Azure CLI を使用して完了することもできます。 どちらの方法を選択した場合でも、IoT Edge デバイスのデバイス接続文字列を必ず取得してください。 デバイス接続文字列は、Azure portal のデバイスの詳細ページにあります。
 
 1. 開発用コンピューターで Visual Studio Code を開きます。
 
@@ -125,79 +124,43 @@ Azure IoT Edge デバイスを IoT ハブに接続するために、まずハブ
 
 ## <a name="deploy-an-azure-virtual-machine"></a>Azure 仮想マシンをデプロイする
 
-Azure Marketplace にある [Azure IoT Edge on Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) イメージを使用して、このチュートリアル用の IoT Edge デバイスを作成します。 Azure IoT Edge on Ubuntu イメージを起動すると、最新の IoT Edge ランタイムとその依存関係がインストールされます。 次のものを使用して VM をデプロイします。
+Azure IoT Edge ランタイムがインストールされて構成されている Ubuntu 18.04 LTS 仮想マシンを使用します。 このデプロイでは、[iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) プロジェクト リポジトリに保持されている [Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を使用します。 これにより、テンプレートに指定した接続文字列を使用して、前の手順で登録した IoT Edge デバイスをプロビジョニングします。
 
-- PowerShell スクリプト、`Create-EdgeVM.ps1`。
-- Azure Resource Manager テンプレート、`IoTEdgeVMTemplate.json`。
-- シェル スクリプト、`install packages.sh`。
+仮想マシンのデプロイには、Azure portal または Azure CLI を使用します。 ここでは、Azure portal での手順を説明します。 詳細については、「[Ubuntu 仮想マシン上で Azure IoT Edge を実行する](how-to-install-iot-edge-ubuntuvm.md)」を参照してください。
 
-### <a name="enable-programmatic-deployment"></a>プログラムによるデプロイを有効にする
+### <a name="deploy-using-deploy-to-azure-button"></a>[Deploy to Azure] ボタンを使用してデプロイする
 
-スクリプト化されたデプロイで Azure Marketplace からのイメージを使用するには、そのイメージに対してプログラムによるデプロイを有効にする必要があります。
+1. `iotedge-vm-deploy` ARM テンプレートを使用して Ubuntu 18.04 LTS 仮想マシンをデプロイするには、下のボタンをクリックします。
 
-1. Azure portal にサインインします。
+    [![iotedge-vm-deploy の [Deploy to Azure] ボタン](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
-1. **[すべてのサービス]** を選択します。
+1. 新しく開いたウィンドウで、入力可能なフォーム フィールドに入力します。
 
-1. 検索バーに「**Marketplace**」と入力して選択します。
+   | フィールド | 説明 |
+   | - | - |
+   | **サブスクリプション** | 仮想マシンをデプロイするためのアクティブな Azure サブスクリプション。 |
+   | **リソース グループ** | 仮想マシンとそれに関連付けられたリソースを格納する、既存または新しく作成されたリソース グループ。 |
+   | **DNS ラベル プレフィックス** | 仮想マシンのホスト名のプレフィックスとして使用される、あなたが選択した必要値。 |
+   | **管理ユーザー名** | ユーザー名。デプロイ時にルート権限が与えられます。 |
+   | **デバイスの接続文字列** | 目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの[デバイス接続文字列](./how-to-provision-single-device-linux-symmetric.md#view-registered-devices-and-retrieve-provisioning-information)。 |
+   | **VM のサイズ** | デプロイする仮想マシンの[サイズ](../cloud-services/cloud-services-sizes-specs.md)
+   | **Ubuntu OS バージョン** | ベース仮想マシンにインストールする Ubuntu OS のバージョン。 |
+   | **場所** | 仮想マシンをデプロイする[地理的リージョン](https://azure.microsoft.com/global-infrastructure/locations/)。選択したリソース グループの場所が規定値となります。 |
+   | **認証の種類** | **sshPublicKey** または **パスワード** のどちらか好きな方を選択します。 |
+   | **[管理パスワードまたはキー]** | 認証タイプの選択に応じて、SSH 公開キーの値、またはパスワードの値。 |
 
-1. Marketplace の検索バーに「**Azure IoT Edge on Ubuntu**」と入力して選択します。
+1. すべてのフィールドを入力したら、ページの下部にあるチェックボックスをオンにして使用条件に同意し、 **[確認と作成]** 、 **[作成]** の順に選択して、デプロイを開始します。
 
-1. **[Get started]\(開始する\)** ハイパーリンクを選択して、プログラムからデプロイを行います。
+1. Azure portal で仮想マシンに移動します。 仮想マシンは、リソース グループを参照するか、ポータルのランディング ページで **[Azure サービス]** の下にある **[仮想マシン]** を選択すると見つかります。
 
-1. **[Enable]\(有効にする\)** ボタン、 **[保存]** の順に選択します。
-
-    ![プログラムによる仮想マシンのデプロイを有効にする方法を示すスクリーンショット。](media/tutorial-machine-learning-edge-05-configure-edge-device/deploy-ubuntu-vm.png)
-
-1. 成功通知が表示されます。
-
-### <a name="create-a-virtual-machine"></a>仮想マシンの作成
-
-次に、IoT Edge デバイス用の仮想マシンを作成するスクリプトを実行します。
-
-1. PowerShell ウィンドウを開き、**EdgeVM** ディレクトリに移動します。
-
-    ```powershell
-    cd c:\source\IoTEdgeAndMlSample\EdgeVM
-    ```
-
-1. スクリプトを実行して仮想マシンを作成します。
-
-    ```powershell
-    .\Create-EdgeVm.ps1
-    ```
-
-1. 入力を求められたら、各パラメーターの値を指定します。 サブスクリプション、リソース グループ、場所については、このチュートリアル全体ですべてのリソースに使用しているのと同じ値を使用することをお勧めします。
-
-    * **[Azure サブスクリプション ID]** : Azure portal で確認できます。
-    * **[リソース グループ名]** : このチュートリアル用のリソースをグループ化するための覚えやすい名前。
-    * **[場所]** :仮想マシンの作成先となる Azure の場所 westus2 や northeurope などです。 詳細については、すべての [Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)を参照してください。
-    * **[AdminUsername]** : 仮想マシンへのサインインに使用する管理者アカウントの名前。
-    * **[AdminPassword]** : 仮想マシンの管理者ユーザー名に対して設定するパスワード。
-
-1. スクリプトで VM を設定するには、使用している Azure サブスクリプションに関連付けられた資格情報で Azure にサインインします。
-
-1. スクリプトにより、VM を作成するための情報が確認されます。 **y** を選択するか、**Enter** キーを押して続行します。
-
-1. スクリプトが数分間実行され、その間に次のステップが実行されます。
-
-    * まだリソース グループがない場合は、作成される
-    * 仮想マシンが作成される
-    * ポート 22 (SSH)、5671 (AMQP)、5672 (AMPQ)、および 443 (TLS) に対して VM の NSG 例外が追加される
-    * [Azure CLI](/cli/azure/install-azure-cli-apt) がインストールされる
-
-1. スクリプトは、VM に接続するための SSH 接続文字列を出力します。 次のステップのために接続文字列をコピーします。
-
-    ![コピーする仮想マシンの SSH 接続文字列を示すスクリーンショット。](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
+1. 仮想マシンの **DNS 名** をメモします。 これは、仮想マシンにログオンする際に必要になります。
 
 ## <a name="connect-to-your-iot-edge-device"></a>IoT Edge デバイスに接続する
 
-次のいくつかのセクションでは、作成した Azure 仮想マシンを構成します。 最初のステップで、仮想マシンに接続します。
+1. コマンド プロンプトを開き、次のコマンドを使用して仮想マシンにログオンします。 前のセクションに従い、ユーザー名と DNS 名に自身の情報を入力します。
 
-1. コマンド プロンプトを開き、スクリプトの出力からコピーした SSH 接続文字列を貼り付けます。 ユーザー名、サフィックス、リージョンについて、前のセクションで PowerShell スクリプトに対して指定した値に従って、自分自身の情報を入力します。
-
-    ```cmd
-    ssh -l <username> iotedge-<suffix>.<region>.cloudapp.azure.com
+    ```bash
+    ssh <adminUsername>@<DNS_name>
     ```
 
 1. ホストの信頼性を確認するよう求められたら、「**yes**」と入力して **Enter** キーを押します。
@@ -245,25 +208,12 @@ Azure Marketplace にある [Azure IoT Edge on Ubuntu](https://azuremarketplace.
 
 ## <a name="update-the-iot-edge-device-configuration"></a>IoT Edge デバイス構成を更新する
 
-IoT Edge ランタイムは、ファイル /etc/iotedge/config.yaml を使用してその構成を保持します。 このファイル内の 3 つの情報を更新する必要があります。
+IoT Edge ランタイムは、ファイル /etc/iotedge/config.yaml を使用してその構成を保持します。 このファイル内の以下の 2 つの情報を更新する必要があります。
 
-* **Device connection string** (デバイス接続文字列): IoT Hub におけるこのデバイスの ID からの接続文字列
 * **Certificates** (証明書): ダウンストリーム デバイスとの間で行われる接続に使用する証明書
 * **Hostname** (ホスト名): VM IoT Edge デバイスの完全修飾ドメイン名 (FQDN)
 
-IoT Edge VM の作成に使用した Azure IoT Edge on Ubuntu イメージには、config.yaml ファイル内の接続文字列を更新するシェル スクリプトが付属します。
-
-1. Visual Studio Code で、IoT Edge デバイスを右クリックして **[Copy Device Connection String]\(デバイス接続文字列のコピー\)** を選択します。
-
-    ![Visual Studio Code での接続文字列のコピーを示すスクリーンショット。](media/tutorial-machine-learning-edge-05-configure-edge-device/copy-device-connection-string-command.png)
-
-1. SSH セッションでコマンドを実行して、そのデバイス接続文字列で config.yaml ファイルを更新します。
-
-    ```bash
-    sudo /etc/iotedge/configedge.sh "<your_iothub_edge_device_connection_string>"
-    ```
-
-次に、config.yaml ファイルを直接編集して証明書とホスト名を更新します。
+config.yaml ファイルを直接編集して、証明書とホスト名を更新します。
 
 1. config.yaml ファイルを開きます。
 
@@ -306,11 +256,16 @@ IoT Edge VM の作成に使用した Azure IoT Edge on Ubuntu イメージには
     systemctl status iotedge
     ```
 
-1. 状態にエラー ("\[ERROR\]" のプレフィックスが付いた色付きのテキスト) がある場合、デーモンのログを調べて詳細なエラー情報を確認します。
+## <a name="troubleshooting"></a>トラブルシューティング
 
-    ```bash
-    journalctl -u iotedge --no-pager --no-full
-    ```
+状態にエラー ("\[ERROR\]" のプレフィックスが付いた色付きのテキスト) がある場合、デーモンのログを調べて詳細なエラー情報を確認します。
+
+   ```bash
+   journalctl -u iotedge --no-pager --no-full
+   ```
+
+エラーの対処方法の詳細については、[トラブルシューティング](troubleshoot.md)のページを参照してください。
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルはセットの一部であり、各記事は前の記事の作業が行われたことが前提になっています。 最後のチュートリアルを完了するまで、リソースのクリーンアップはしないでください。

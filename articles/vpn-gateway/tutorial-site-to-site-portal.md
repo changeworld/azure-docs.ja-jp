@@ -1,18 +1,18 @@
 ---
 title: 'チュートリアル - オンプレミス ネットワークを仮想ネットワークに接続する: Azure portal'
-description: ポータルを使用して、オンプレミス ネットワークから Azure 仮想ネットワークへのパブリック インターネット経由のサイト間 VPN Gateway IPsec 接続を作成します。
+description: このチュートリアルでは、オンプレミス ネットワークから VNet へのサイト間 VPN ゲートウェイの IPsec 接続を作成する方法について説明します。
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 12/04/2020
-ms.openlocfilehash: ccb43c3e7efb9289450ad9a71c003f54e5362b66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/21/2021
+ms.openlocfilehash: f035f1dce7639d8d90ca3edbe3e6cc548b68cf2a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98945201"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439900"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>チュートリアル:Azure Portal でサイト間接続を作成する
 
@@ -68,8 +68,8 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 * **[リージョン]:** 米国東部
 * **ゲートウェイの種類:** VPN
 * **VPN の種類:** ルート ベース
-* **SKU:** VpnGw1
-* **世代:** Generation1
+* **SKU:** VpnGw2
+* **世代:** 第 2 世代
 * **仮想ネットワーク:** VNet1
 * **ゲートウェイ サブネットのアドレス範囲:** 10.1.255.0/27
 * **[パブリック IP アドレス]** : 新規作成
@@ -77,7 +77,10 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 * **アクティブ/アクティブ モードの有効化:** 無効
 * **[Configure BGP]\(BGP の構成\):** 無効
 
-[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+デプロイの状態は、ゲートウェイの [概要] ページで確認できます。 ゲートウェイを完全に作成してデプロイするには最大で 45 分かかることがあります。 ゲートウェイの作成後は、ポータルの仮想ネットワークを調べることで、ゲートウェイに割り当てられている IP アドレスを確認できます。 ゲートウェイは、接続されたデバイスとして表示されます。
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 

@@ -1,47 +1,51 @@
 ---
-title: Windows Virtual Desktop の GPU を構成する - Azure
-description: Windows Virtual Desktop で GPU アクセラレーションを使用したレンダリングとエンコードを有効にする方法。
+title: Azure Virtual Desktop 用 GPU を構成する - Azure
+description: Azure Virtual Desktop 内で GPU アクセラレーションを使用したレンダリングとエンコードを有効にする方法。
 author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: f95b9c1615cc58d9cc0589bad98c7315e571686e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0bd470650ca3a2d6a8fd2d672d2eac0e5790dc89
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709465"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241005"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-azure-virtual-desktop"></a>Azure Virtual Desktop 用グラフィックス処理装置 (GPU) アクセラレーションを構成する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)を参照してください。
 
-Windows Virtual Desktop では、アプリのパフォーマンスとスケーラビリティを向上させるために、GPU アクセラレーションを使用したレンダリングとエンコードがサポートされています。 GPU アクセラレーションは、グラフィックを多用するアプリケーションの場合に特に重要です。
+Azure Virtual Desktop は、アプリのパフォーマンスとスケーラビリティを向上させるために、GPU アクセラレーションを使用したレンダリングとエンコードをサポートしています。 GPU アクセラレーションは、グラフィックを多用するアプリケーションの場合に特に重要です。
 
-この記事で説明するようにして、GPU で最適化された Azure 仮想マシンを作成し、それをホスト プールに追加して、レンダリングとエンコードに GPU アクセラレーションを使うように構成します。 この記事では、Windows Virtual Desktop テナントを既に構成してあるものとします。
+この記事で説明するようにして、GPU で最適化された Azure 仮想マシンを作成し、それをホスト プールに追加して、レンダリングとエンコードに GPU アクセラレーションを使うように構成します。 この記事では、Azure Virtual Desktop テナントを既に構成してあるものとします。
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>GPU で最適化する Azure 仮想マシンの適切なサイズを選択する
 
-Azure の [NV シリーズ](../virtual-machines/nv-series.md)、[NVv3 シリーズ](../virtual-machines/nvv3-series.md)、または [NVv4 シリーズ](../virtual-machines/nvv4-series.md)の各 VM サイズのいずれかを選択します。 これらは、アプリとデスクトップの仮想化に合わせて調整され、ほとんどのアプリと Windows ユーザー インターフェイスで GPU アクセラレーションを有効にすることができます。 実際のホスト プールに適した選択は、特定のアプリ ワークロード、ユーザー エクスペリエンスの望ましい品質、コストなど、さまざまなの要因に依存します。 一般に、GPU が大きくて高機能であるほど、特定のユーザー密度でのユーザー エクスペリエンスは向上しますが、GPU サイズが小さく、分割されている場合は、コストと品質をよりきめ細やかに制御することができます。
+Azure の [NV シリーズ](../virtual-machines/nv-series.md)、[NVv3 シリーズ](../virtual-machines/nvv3-series.md)、または [NVv4 シリーズ](../virtual-machines/nvv4-series.md)の各 VM サイズのいずれかを選択します。 これらは、アプリとデスクトップの仮想化に合わせて調整され、ほとんどのアプリと Windows ユーザー インターフェイスで GPU アクセラレーションを有効にすることができます。 実際のホスト プールに適した選択は、特定のアプリ ワークロード、ユーザー エクスペリエンスの望ましい品質、コストなど、さまざまなの要因に依存します。 一般に、GPU が大きくて高機能であるほど、特定のユーザー密度でのユーザー エクスペリエンスは向上しますが、GPU サイズが小さく、分割されている場合は、コストと品質をよりきめ細やかに制御することができます。 VM を選択するときは、NV シリーズの VM の提供終了について考慮してください。詳細については、[NV の提供終了](../virtual-machines/nv-series-retirement.md)に関する記事を参照してください
 
 >[!NOTE]
->Azure の NC、NCv2、NCv3、ND、および NDv2 シリーズの VM は通常、Windows Virtual Desktop のセッション ホストには適していません。 これらの VM は、NVIDIA CUDA を使用して構築されたものなど、特殊な高パフォーマンスのコンピューティング ツールまたは機械学習ツール向けに設計されています。 ほとんどのアプリまたは Windows ユーザー インターフェイスでは、GPU アクセラレーションはサポートされていません。
+>Azure の NC、NCv2、NCv3、ND、NDv2 シリーズの VM は通常、Azure Virtual Desktop のセッション ホストには適していません。 これらの VM は、NVIDIA CUDA を使用して構築されたものなど、特殊な高パフォーマンスのコンピューティング ツールまたは機械学習ツール向けに設計されています。 ほとんどのアプリまたは Windows ユーザー インターフェイスでは、GPU アクセラレーションはサポートされていません。
+
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>ホスト プールを作成し、仮想マシンをプロビジョニングして、アプリ グループを構成する
 
 選択したサイズの VM を使って、新しいホスト プールを作成します。 手順については、「[チュートリアル:Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
 
-Windows Virtual Desktop では、次のオペレーティング システムで GPU アクセラレーションを使用したレンダリングとエンコードがサポートされています。
+Azure Virtual Desktop では、次のオペレーティング システム内で GPU アクセラレーションを使用したレンダリングとエンコードがサポートされています。
 
 * Windows 10 バージョン 1511 以降
 * Windows Server 2016 以降
 
-また、アプリ グループを構成するか、または新しいホスト プールを作成すると自動的に作成される ("Desktop Application Group" という名前の) 既定のデスクトップ アプリ グループを使う必要があります。 手順については、「[チュートリアル:Windows Virtual Desktop のアプリ グループを管理する](./manage-app-groups.md)」を参照してください。
+>[!NOTE]
+>マルチセッション OS は具体的には記載されていませんが、NV インスタンスの GRID ライセンスでは、25 人の同時ユーザーがサポートされます。「[NV シリーズ](../virtual-machines/nv-series.md)」を参照してください
+
+また、アプリ グループを構成するか、または新しいホスト プールを作成すると自動的に作成される ("Desktop Application Group" という名前の) 既定のデスクトップ アプリ グループを使う必要があります。 手順については、[Azure Virtual Desktop 用アプリ グループの管理チュートリアル](./manage-app-groups.md)のページをご覧ください。
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>サポートされているグラフィック ドライバーを仮想マシンにインストールする
 
-Windows Virtual Desktop で Azure N シリーズ VM の GPU 機能を利用するには、適切なグラフィック ドライバーをインストールする必要があります。 「[サポートされているオペレーティング システムとドライバー](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers)」の手順に従って、ドライバーをインストールします。 サポートされているのは、Azure によって配布されたドライバーのみです。
+Azure Virtual Desktop 内で Azure N シリーズ VM の GPU 機能を利用するには、適切なグラフィック ドライバーをインストールする必要があります。 「[サポートされているオペレーティング システムとドライバー](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers)」の手順に従って、ドライバーをインストールします。 サポートされているのは、Azure によって配布されたドライバーのみです。
 
 * Azure NV シリーズまたは NVv3 シリーズの VM の場合、NVIDIA CUDA ドライバーではなく NVIDIA GRID ドライバーでのみ、ほとんどのアプリと Windows ユーザー インターフェイスの GPU アクセラレータがサポートされます。 ドライバーを手動でインストールする場合は、必ず GRID ドライバーをインストールしてください。 Azure VM 拡張機能を使用してドライバーをインストールすることを選択した場合は、これらの VM サイズに応じて、GRID ドライバーが自動的にインストールされます。
 * Azure NVv4 シリーズ VM の場合は、Azure によって提供される AMD ドライバーをインストールします。 Azure VM 拡張機能を使用して自動的にインストールすることも、手動でインストールすることもできます。
@@ -79,6 +83,9 @@ Windows Virtual Desktop で Azure N シリーズ VM の GPU 機能を利用す�
 
 ## <a name="configure-fullscreen-video-encoding"></a>全画面表示のビデオ エンコードを構成する
 
+>[!NOTE]
+>GPU が存在しない場合でも、全画面ビデオ エンコードを有効にできます。
+
 3D モデリング、CAD/CAM、ビデオ アプリケーションなどの高フレーム レートのコンテンツを生成するアプリケーションを頻繁に使用する場合は、リモート セッションに対して全画面表示のビデオ エンコードを有効にすることを選択できます。 全画面表示のビデオ プロファイルでは、ネットワーク帯域幅と、セッション ホストとクライアント リソースの両方を犠牲にして、このようなアプリケーション用の高フレーム レートとより良いユーザー エクスペリエンスが提供されます。 全画面表示のビデオ エンコードには、GPU アクセラレーションを使用するフレーム エンコードの使用をお勧めします。 全画面表示のビデオ エンコードを有効にするセッション ホストのグループ ポリシーを構成します。 上記の手順に続けて次のようにします。
 
 1. ポリシー **[リモート デスクトップ接続で H.264/AVC 444 グラフィック モードを優先する]** を選択し、このポリシーを **[有効]** に設定して、リモート セッションで H.264/AVC 444 コーデックを強制的に行います。
@@ -100,7 +107,7 @@ Windows Virtual Desktop で Azure N シリーズ VM の GPU 機能を利用す�
 
 リモート デスクトップで GPU アクセラレーションを使用するエンコードが使われていることを検証するには:
 
-1. Windows Virtual Desktop クライアントを使って VM のデスクトップに接続します。
+1. Azure Virtual Desktop クライアントを使って VM のデスクトップに接続します。
 2. イベント ビューアーを起動し、次のノードに移動します。 **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[Windows]**  >  **[RemoteDesktopServices RdpCoreCDV]**  >  **[Operational]**
 3. GPU アクセラレーションを使用するエンコードが使われているかどうかを確認するには、イベント ID 170 を探します。 [AVC ハードウェア エンコーダーが有効になりました: 1] と表示される場合は、GPU エンコードが使われています。
 
@@ -108,7 +115,7 @@ Windows Virtual Desktop で Azure N シリーズ VM の GPU 機能を利用す�
 
 リモート デスクトップで全画面表示のビデオ エンコードが使用されていることを検証するには:
 
-1. Windows Virtual Desktop クライアントを使って VM のデスクトップに接続します。
+1. Azure Virtual Desktop クライアントを使って VM のデスクトップに接続します。
 2. イベント ビューアーを起動し、次のノードに移動します。 **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[Windows]**  >  **[RemoteDesktopServices RdpCoreCDV]**  >  **[Operational]**
 3. 全画面表示のビデオ エンコードが使用されているかどうかを確認するには、イベント ID 162 を探します。 [AVC 対応: 1、初期プロファイル: 2048] と表示される場合は、AVC 444 が使われています。
 

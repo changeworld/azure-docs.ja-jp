@@ -1,19 +1,25 @@
 - name: Azure の回復性
   items:
     - name: Azure の回復性の機能に関するページ
-      href: 'https://azure.microsoft.com/features/resiliency'
+      href: 'https://azure.microsoft.com/features/'
+    - name: Azure の回復性
+      href: overview.md
     - name: 回復性に優れた Azure 用アプリケーションの設計
-      href: /azure/architecture/resiliency/
+      href: /azure/architecture/framework/resiliency/app-design
+- name: Availability Zones の基礎
+  items:
+    - name: Azure のリージョンと Availability Zones
+      href: az-overview.md
+    - name: Azure サービス
+      href: region-types-service-categories-azure.md
+    - name: Availability Zones をサポートする Azure サービス
+      href: az-region.md
+    - name: 用語
+      href: glossary.md
 - name: 高可用性
   items:
-    - name: Azure アプリケーションの高可用性
-      href: /azure/architecture/resiliency/high-availability-azure-applications
-    - name: リージョンと Availability Zones
-      href: az-overview.md
-    - name: 可用性ゾーンのドキュメント
+    - name: クイックスタート ガイド
       items:
-        - name: Availability Zones をサポートする Azure サービス
-          href: az-region.md
         - name: 仮想マシン
           items:
             - name: CLI を使用して可用性ゾーン内に Linux VM を作成する
@@ -53,12 +59,12 @@
                 - name: ゾーン冗長パブリック Standard Load Balancer を作成する (CLI)
                   href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
             - name: 可用性ゾーン間で VM の負荷分散を行う
-              href: ../load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal.md
+              href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
               items:
                 - name: Azure を使用して可用性ゾーン全体で VM の負荷分散を行う (CLI)
                   href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
         - name: パブリック IP アドレス
-          href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
+          href: ../virtual-network/ip-services/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL Database
           items:
             - name: SQL Database の汎用サービス レベルでの可用性ゾーン
@@ -93,25 +99,25 @@
           items:
             - name: Azure Active Directory Domain Services インスタンスの作成
               href: ../active-directory-domain-services/tutorial-create-instance.md
-    - name: Edge Zone のドキュメント
-      items:
-        - name: Edge Zone とは
-          href: ../networking/edge-zones-overview.md
-    - name: Azure Orbital のドキュメント
-      items:
-        - name: Azure Orbital とは
-          href: ../networking/azure-orbital-overview.md
 - name: ディザスター リカバリー
   items:
+    - name: Azure でのビジネス継続性管理
+      href: business-continuity-management-program.md
+    - name: Azure でのリージョン間レプリケーション
+      href: cross-region-replication-azure.md
     - name: Azure Site Recovery を使用する
       href: ../site-recovery/index.yml
-- name: Azure Backup
-  items:
     - name: Azure Backup の使用
       href: ../backup/index.yml
+    - name: Microsoft Azure Well-Architected Framework
+      href: /azure/architecture/framework/
 - name: リソース
   items:
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Azure リージョン
-      href: 'https://azure.microsoft.com/regions/'
+      href: 'https://azure.microsoft.com/global-infrastructure/geographies/'
+- name: Azure Orbital のドキュメント
+  items:
+    - name: Azure Orbital とは
+      href: ../networking/azure-orbital-overview.md

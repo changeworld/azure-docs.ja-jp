@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeede88bfbe024a66e40270240d32488e581dd77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c731d863d6ab9f2531a90a6306a9e65af0166b0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517703"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067920"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -37,7 +37,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 ## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>プライマリ更新トークンを介した SSO とシームレス SSO
 
-Windows 10、Windows Server 2016、およびそれ以降のバージョンの場合は、プライマリ更新トークン (PRT) を介した SSO を使用することをお勧めします。 Windows 7 と 8.1 の場合、シームレス SSO を使用することをお勧めします。
+Windows 10、Windows Server 2016、およびそれ以降のバージョンの場合は、プライマリ更新トークン (PRT) を介した SSO を使用することをお勧めします。 Windows 7 と Windows 8.1 の場合、シームレス SSO を使用することをお勧めします。
 シームレス SSO では、ユーザーのデバイスがドメインに参加している必要がありますが、これは、Windows 10 の [Azure AD 参加済みデバイス](../devices/concept-azure-ad-join.md)や [Hybrid Azure AD 参加済みデバイス](../devices/concept-azure-ad-join-hybrid.md)では使用されません。 Azure AD 参加済み、Hybrid Azure AD 参加済み、および Azure AD 登録済みデバイスでの SSO は、[プライマリ更新トークン (PRT)](../devices/concept-primary-refresh-token.md) に基づいて機能します。
 
 Hybrid Azure AD 参加済み、Azure AD 参加済み、または個人登録済みのデバイスに対して PRT を介した SSO が機能するのは、[職場または学校アカウントを追加] を使用してデバイスが Azure AD に登録された後になります。 PRT を使用した Windows 10 での SSO のしくみについて詳しくは、次を参照してください: [プライマリ更新トークン (PRT) と Azure AD](../devices/concept-primary-refresh-token.md)
@@ -66,29 +66,31 @@ Hybrid Azure AD 参加済み、Azure AD 参加済み、または個人登録済�
 - これは無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。
 - この機能は、Web ブラウザー ベースのクライアントと、Kerberos 認証に対応したプラットフォームおよびブラウザーで[最新の認証](/office365/enterprise/modern-auth-for-office-2013-and-2016)をサポートする Office クライアントでサポートされています。
 
-| OS\ブラウザー |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
+| OS\ブラウザー |Internet Explorer|Microsoft Edge\*\*\*\*|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|はい\*|はい|はい|はい\*\*\*|該当なし
 |Windows 8.1|はい\*|はい*\*\*\*|はい|はい\*\*\*|該当なし
 |Windows 8|はい\*|該当なし|はい|はい\*\*\*|該当なし
-|Windows 7|はい\*|該当なし|はい|はい\*\*\*|該当なし
 |Windows Server 2012 R2 以降|はい\*\*|該当なし|はい|はい\*\*\*|該当なし
 |Mac OS X|該当なし|該当なし|はい\*\*\*|はい\*\*\*|はい\*\*\*
 
+ > [!NOTE]
+ >Microsoft Edge レガシはサポートされなくなりました
 
-\*Internet Explorer バージョン 10 以降が必要です。
 
-\*\*Internet Explorer バージョン 10 以降が必要です。 拡張保護モードを無効にする。
+\*Internet Explorer バージョン 11 以降が必要です。 ([2021 年 8 月 17 日以降、Microsoft 365 のアプリとサービスでは IE 11 はサポートされなくなります](https://techcommunity.microsoft.com/t5/microsoft-365-blog/microsoft-365-apps-say-farewell-to-internet-explorer-11-and/ba-p/1591666)。)
+
+\*\*Internet Explorer バージョン 11 以降が必要です。 拡張保護モードを無効にする。
 
 \*\*\*[別途構成](how-to-connect-sso-quick-start.md#browser-considerations)が必要。
 
-\*\*\*\*Microsoft Edge バージョン 77 以降が必要です。
+\*\*\*\*Chromium に基づく Microsoft Edge
 
 ## <a name="next-steps"></a>次のステップ
 
 - [**クイック スタート**](how-to-connect-sso-quick-start.md) - Azure AD シームレス SSO を動作させます。
 - [**デプロイ計画**](../manage-apps/plan-sso-deployment.md) - 詳細なデプロイ計画です。
 - [**技術的な詳細**](how-to-connect-sso-how-it-works.md) - この機能のしくみを確認します。
-- [**よく寄せられる質問**](how-to-connect-sso-faq.md) - よく寄せられる質問と回答です。
+- [**よく寄せられる質問**](how-to-connect-sso-faq.yml) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](tshoot-connect-sso.md) - この機能に関する一般的な問題を解決する方法を確認します。
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
+- [**UserVoice**](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) - 新しい機能の要求を提出します。

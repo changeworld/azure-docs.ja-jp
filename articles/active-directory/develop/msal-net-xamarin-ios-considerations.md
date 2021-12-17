@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 62eb4ab9eb6e4b0e7be0f7aadae1173950d21615
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: 2698d958746aaea86a7dbb290468ffaf1f8c2eec
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98064489"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993724"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>MSAL.NET と共に Xamarin iOS を使用する際の考慮事項
 
@@ -78,6 +78,29 @@ var builder = PublicClientApplicationBuilder
 `WithIosKeychainSecurityGroup()` API を使用すると、MSAL によって、アプリケーションの *チーム ID* (`AppIdentifierPrefix`) の最後にセキュリティ グループが自動的に追加されます。 MSAL によってセキュリティ グループが追加されるのは、Xcode でアプリケーションをビルドすると、同じ動作が実行されるためです。 そのため、`Entitlements.plist` ファイル内のエンタイトルメントには、キーチェーン アクセス グループの前に `$(AppIdentifierPrefix)` を含める必要があります。
 
 詳細については、[iOS エンタイトルメントのドキュメント](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps)を参照してください。
+
+#### <a name="troubleshooting-keychain-access"></a>キーチェーン アクセスのトラブルシューティング
+
+"アプリケーションがアプリケーションの発行元の iOS キーチェーンにアクセスできません (TeamId が null です)" のようなエラー メッセージが表示された場合、これは MSAL がキーチェーンにアクセスできないことを意味します。 これは、構成上の問題です。 トラブルシューティングを行うには、次の例のように、キーチェーンにアクセスを試みます。 
+
+```csharp
+var queryRecord = new SecRecord(SecKind.GenericPassword)
+{
+    Service = "",
+    Account = "SomeTeamId",
+    Accessible = SecAccessible.Always
+};
+
+SecRecord match = SecKeyChain.QueryAsRecord(queryRecord, out SecStatusCode resultCode);
+
+if (resultCode == SecStatusCode.ItemNotFound)
+{
+    SecKeyChain.Add(queryRecord);
+    match = SecKeyChain.QueryAsRecord(queryRecord, out resultCode);
+}
+
+// Make sure that  resultCode == SecStatusCode.Success
+```
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>iOS アプリケーション間でのトークン キャッシュ共有の有効化
 

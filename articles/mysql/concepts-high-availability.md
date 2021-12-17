@@ -6,14 +6,17 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 74d6981c0465a1960e920313c1f960f0d781692b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 921e4cd8885dcbad5cd477e7f2283c9b11c445fc
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092956"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652985"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Azure Database for MySQL での高可用性
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 Azure Database for MySQL サービスでは、[99.99%](https://azure.microsoft.com/support/legal/sla/mysql) のアップタイムという財務的な裏付けのあるサービス レベル アグリーメント (SLA) で、高レベルの可用性が保証されています。 Azure Database for MySQL では、ユーザーが開始したコンピューティングのスケーリング操作などの計画的なイベント中や、基になるハードウェア、ソフトウェア、ネットワークの障害などの計画外のイベントが発生したときに高可用性が提供されます。 Azure Database for MySQL は、ほとんどの重大な状況から迅速に復旧でき、このサービスを使用するとアプリケーションのダウンタイムが事実上なくなります。
 
 Azure Database for MySQL は、高いアップタイムを必要とするミッション クリティカルなデータベースの実行に適しています。 このサービスは、Azure アーキテクチャに基づいて構築されているので、計画的な停止や計画外の停止によるデータベースのダウンタイムを軽減するための高可用性、冗長性、回復性の各機能が最初から備わっており、追加のコンポーネントを構成する必要がありません。 

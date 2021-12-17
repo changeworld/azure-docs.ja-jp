@@ -14,7 +14,7 @@
 - name: チュートリアル
   items:
     - name: Time Series Insights Gen2 環境を設定する
-      href: tutorials-set-up-tsi-environment.md
+      href: tutorial-set-up-environment.md
     - name: Azure Digital Twins と Time Series Insights Gen2 間のモデルの同期
       href: tutorials-model-sync.md
 - name: 概念
@@ -55,6 +55,10 @@
               href: breaking-changes-long-data-type.md
             - name: JSON のフラット化とストレージへの変更
               href: ingestion-rules-update.md
+        - name: セキュリティ
+          items:
+            - name: プライベート ネットワーク アクセス
+              href: concepts-private-links.md
     - name: Azure Time Series Insights Gen1
       items:
         - name: Time Series Insights について
@@ -89,15 +93,21 @@
       href: ./how-to-monitor-tsi.md
     - name: テンプレートを使用したリソースの管理
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
+    - name: TSI のプライベート アクセスを有効にする
+      href: how-to-private-links.md
     - name: Azure Time Series Insights Gen2
       items:
         - name: ベスト プラクティス
           items:
             - name: 環境を計画する
               href: how-to-plan-your-environment.md
-        - name: 環境の管理
+        - name: 管理
           items:
-            - name: プロビジョニングと管理の方法
+            - name: Azure CLI を使用して環境を作成する方法
+              href: how-to-create-environment-using-cli.md
+            - name: Azure portal を使用して環境を作成する方法
+              href: how-to-create-environment-using-portal.md
+            - name: 環境を管理する方法
               href: how-to-provision-manage.md
             - name: TSID を選択する方法
               href: how-to-select-tsid.md
@@ -176,11 +186,11 @@
     - name: データ参照を監視する
       href: how-to-monitor-tsi-reference.md
     - name: Azure CLI
-      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights
+      href: /cli/azure/tsi
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/time-series-insights/toc.json&bc=/azure/time-series-insights/breadcrumb/toc.json
     - name: 顧客データ要求
       href: time-series-insights-customer-data-requests.md
     - name: 開発者向けリソース
@@ -216,7 +226,7 @@
         - name: MSDN フォーラム
           href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
         - name: 製品の要求と提案
-          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
+          href: 'https://feedback.azure.com/d365community/forum/873d6d1c-0c25-ec11-b6e6-000d3a4f07b8'
     - name: Azure のビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
     - name: Channel 9 の動画

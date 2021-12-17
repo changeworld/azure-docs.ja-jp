@@ -4,13 +4,13 @@ description: Azure Functions を使用して、Azure SQL Database に接続し�
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 10/02/2019
-ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/04/2021
+ms.openlocfilehash: d1e98f180579ec7dd070fcbb9adf2e7ede7b15fe
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88207258"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418828"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
 
@@ -44,9 +44,15 @@ Function App は、Azure での関数の実行をホストします。 セキュ
 
 以前アプリを Azure に発行している必要があります。 まだ行っていない場合は、[[Publish your function app to Azure]](functions-develop-vs.md#publish-to-azure)\(関数アプリを Azure に発行) します。
 
-1. ソリューション エクスプローラーで関数アプリ プロジェクトを右クリックし、 **[Publish]** \(発行)  >  **[Edit Azure App Service settings]** \(Azure App Service の設定を編集する) を選択します。 **[設定の追加]** を選択し、 **[新しいアプリ設定名]** で型 `sqldb_connection` を選択して **[OK]** を選択します。
+1. ソリューション エクスプローラーで関数アプリ プロジェクトを右クリックし、 **[発行]** を選択します。
 
-    ![関数アプリのアプリケーション設定。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
+1. **[発行]** ページで **[ホスティング]** 領域から省略記号 (`...`) を選択し、 **[Azure App Service の設定を管理する]** を選択します。 
+
+    ![関数アプリの App Service 設定を管理します。](./media/functions-scenario-database-table-cleanup/publish-new-resource.png)
+
+1. **[アプリケーション設定]** で **[設定の追加]** を選択し、 **[新しいアプリ設定名]** で「`sqldb_connection`」と入力して **[OK]** を選択します。
+
+    ![関数アプリのアプリ設定を追加します。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
 1. 新しい **sqldb_connection** の設定で、前のセクションでコピーした接続文字列を **[Local]** \(ローカル) フィールドに貼り付け、`{your_username}` および `{your_password}` プレースホルダーを実際の値で置き換えます。 **[ローカルから値を挿入する]** を選択し、更新した値を **[Remote]** \(リモート) フィールドにコピーして **[OK]** を選択します。
 

@@ -4,12 +4,12 @@ description: Azure HDInsight でネットワーク仮想アプライアンスに
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 7fe266c3c7b75762133fca4645e0675845c28972
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f92dc402323e8285f9a2c23ba9e4a229d72718a0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943981"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254775"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Azure HDInsight でネットワーク仮想アプライアンスを構成する
 
@@ -44,7 +44,7 @@ Azure Firewall FQDN タグは、多くの一般的で重要な FQDN のトラフ
 
 ### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS の依存関係
 
-NVA を構成するための FQDN の依存関係の一覧 (ほとんどは Azure Storage と Azure Service Bus) は、[このリポジトリで](https://github.com/Azure-Samples/hdinsight-fqdn-lists/)取得できます。 リージョンの一覧については、[こちら](https://github.com/Azure-Samples/hdinsight-fqdn-lists/tree/master/Regional)を参照してください。 これらの依存関係は、クラスターを正常に作成および監視/管理するために HDInsight リソース プロバイダー (RP) によって使用されます。 具体的には、テレメトリまたは診断ログ、プロビジョニング メタデータ、クラスター関連の構成、スクリプトなどがあります。FQDN の依存関係の一覧は、HDInsight の今後の更新プログラムのリリースで変更される可能性があります。
+ネットワーク仮想アプライアンスを構成するための依存 FQDN の一覧 (ほとんどは Azure Storage と Azure Service Bus) は、[このリポジトリで](https://github.com/Azure-Samples/hdinsight-fqdn-lists/)取得できます。 リージョンの一覧については、[こちら](https://github.com/Azure-Samples/hdinsight-fqdn-lists/tree/main/Public)を参照してください。 これらの依存関係は、クラスターを正常に作成および監視/管理するために HDInsight リソース プロバイダー (RP) によって使用されます。 具体的には、テレメトリ/診断ログ、プロビジョニング メタデータ、クラスター関連の構成、スクリプトなどがあります。この FQDN の依存関係の一覧は、HDInsight の今後の更新プログラムのリリースによって変更される可能性があります。
 
 以下の一覧には、クラスターの作成 "*後*"およびクラスター操作の有効期間中に、OS とセキュリティの修正プログラムの適用または証明書の検証に必要となる可能性のある、いくつかの FQDN のみが示されています。
 

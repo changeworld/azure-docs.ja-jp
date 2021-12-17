@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:Azure CLI で共有クエリを作成する
 description: このクイックスタートでは、手順に従って Azure CLI の Resource Graph 拡張機能を有効にし、共有クエリを作成します。
-ms.date: 02/05/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: ec1b010771790339a13777624f04c7bd2db01f11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acee8e8961b22df8b7ab7b38af1d0e3c6f3fa300
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594385"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321812"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Resource Graph 共有クエリを作成する
 
@@ -58,7 +58,7 @@ Azure CLI を Azure Resource Graph と連動させるには、拡張機能を追
    az group create --name 'resource-graph-queries' --location 'westus2'
    ```
 
-1. `graph` 拡張機能と [az graph shared-query create](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_create) コマンドを使用し、Azure Resource Graph 共有クエリを作成します。
+1. `graph` 拡張機能と [az graph shared-query create](/cli/azure/graph/shared-query#az_graph_shared_query_create) コマンドを使用し、Azure Resource Graph 共有クエリを作成します。
 
    ```azurecli-interactive
    # Create the Azure Resource Graph shared query
@@ -68,14 +68,14 @@ Azure CLI を Azure Resource Graph と連動させるには、拡張機能を追
       --resource-group 'resource-graph-queries'
    ```
 
-1. 新しいリソース グループの共有クエリを一覧表示します。 [az graph shared-query list](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_list) コマンドによって値の配列が返されます。
+1. 新しいリソース グループの共有クエリを一覧表示します。 [az graph shared-query list](/cli/azure/graph/shared-query#az_graph_shared_query_list) コマンドによって値の配列が返されます。
 
    ```azurecli-interactive
    # List all the Azure Resource Graph shared queries in a resource group
    az graph shared-query list --resource-group 'resource-graph-queries'
    ```
 
-1. 共有クエリの結果を 1 つだけ取得するには、[az graph shared-query show](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_show) コマンドを使用します。
+1. 共有クエリの結果を 1 つだけ取得するには、[az graph shared-query show](/cli/azure/graph/shared-query#az_graph_shared_query_show) コマンドを使用します。
 
    ```azurecli-interactive
    # Show a specific Azure Resource Graph shared query
@@ -83,7 +83,7 @@ Azure CLI を Azure Resource Graph と連動させるには、拡張機能を追
       --name 'Summarize resources by location'
    ```
 
-1. Azure CLI の [az graph query](/cli/azure/ext/resource-graph/graph#ext_resource_graph_az_graph_query) コマンド内で `{{shared-query-uri}}` 構文を利用し、共有クエリを実行します。
+1. Azure CLI の [az graph query](/cli/azure/graph#az_graph_query) コマンド内で `{{shared-query-uri}}` 構文を利用し、共有クエリを実行します。
    まず、前の `show` コマンドの結果から `id` フィールドをコピーします。 例の `shared-query-uri` テキストを `id` フィールドからの値で置換しますが、前後の `{{` 文字と `}}` 文字はそのままにします。
 
    ```azurecli-interactive
@@ -100,7 +100,7 @@ Resource Graph 共有クエリを見つけるもう 1 つの方法は Azure port
 
 Resource Graph の共有クエリ、リソース グループ、拡張機能を Azure CLI 環境から削除する場合、次のコマンドを使用してそれを行うことができます。
 
-- [az graph shared-query delete](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_delete)
+- [az graph shared-query delete](/cli/azure/graph/shared-query#az_graph_shared_query_delete)
 - [az group delete](/cli/azure/group#az_group_delete)
 - [az extension remove](/cli/azure/extension#az_extension_remove)
 

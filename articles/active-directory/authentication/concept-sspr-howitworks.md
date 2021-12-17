@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 06/14/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c2d4181a80f48f5f6dd5775e6eb3bd172a65df8
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: a46d77b088d854bdd6ee8781b545d1236f357853
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209631"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071481"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフサービス パスワード リセット
 
-Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) により、ユーザーは、管理者やヘルプ デスクが関与することなく、自分のパスワードを変更またはリセットできるようになります。 ユーザーはアカウントがロックされた場合やパスワードを忘れた場合でも、画面の指示に従って自分自身のブロックを解除して、作業に戻ることができます。 この機能により、ユーザーが自分のデバイスやアプリケーションにサインインできなくなった場合のヘルプ デスクの問い合わせが減り、生産性の喪失も軽減されます。
+Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) により、ユーザーは、管理者やヘルプ デスクが関与することなく、自分のパスワードを変更またはリセットできるようになります。 ユーザーはアカウントがロックされた場合やパスワードを忘れた場合でも、画面の指示に従って自分自身のブロックを解除して、作業に戻ることができます。 この機能により、ユーザーが自分のデバイスやアプリケーションにサインインできなくなった場合のヘルプ デスクの問い合わせが減り、生産性の喪失も軽減されます。 「[Azure AD の SSPR を有効にして構成する方法](https://www.youtube.com/watch?v=rA8TvhNcCvQ)」の動画をぜひご覧ください。
 
 > [!IMPORTANT]
 > 概念に関するこの記事では、セルフサービスによるパスワードのリセットのしくみを管理者向けに説明します。 既にセルフサービス パスワード リセットの登録が済んでいて、ご自分のアカウントに戻る必要があるエンド ユーザーは、[https://aka.ms/sspr](https://aka.ms/sspr) にアクセスしてください。
@@ -93,7 +93,7 @@ Azure AD を使用して任意のアプリケーションにサインインす�
 
 パスワードのリセットまたは変更が必要になったときに認証方法が正しいことを確実にするために、一定期間後にユーザーに登録情報を確認するように要求できます。 このオプションは、 **[Require users to register when signing in]\(サインイン時にユーザーに登録を要求する\)** オプションを有効にした場合にのみ使用できます。
 
-登録されている方法の確認をユーザーに求める有効な値は、*0* から *730* 日までです。 この値を *0* に設定すると、ユーザーが認証情報の確認を求められることはありません。
+登録されている方法の確認をユーザーに求める有効な値は、*0* から *730* 日までです。 この値を *0* に設定すると、ユーザーが認証情報の確認を求められることはありません。 統合された登録エクスペリエンスを使用する場合、ユーザーは情報を再確認する前に自身の ID を確認する必要があります。
 
 ## <a name="authentication-methods"></a>認証方法
 
@@ -105,7 +105,7 @@ SSPR で使用できる認証方法は次のとおりです。
 * モバイル アプリ コード
 * Email
 * 携帯電話
-* 会社電話
+* 会社電話 (有料サブスクリプションを使用するテナントでのみ使用可能)
 * セキュリティの質問
 
 ユーザーが自分のパスワードをリセットできるのは、管理者が有効にした認証方法を自分で登録した場合のみです。

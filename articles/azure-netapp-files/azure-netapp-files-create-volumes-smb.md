@@ -12,22 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: d386b504475b308c2fb5146b47d3977cb87510f8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 738e3d6cb3b27180cd8337e09a72fbe3a0639edf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935679"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240055"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
-Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュアル プロトコル (NFSv3 and SMB) を使用したボリュームの作成がサポートされています。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。 この記事では、SMB3 ボリュームを作成する方法について説明します。
+Azure NetApp Files では、NFS (NFSv3 または NFSv4.1)、SMB3、またはデュアル プロトコル (NFSv3 と SMB、または NFSv4.1 と SMB) を使用したボリュームの作成がサポートされています。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。 
+
+この記事では、SMB3 ボリュームを作成する方法について説明します。 NFS ボリュームについては、[NFS ボリュームの作成](azure-netapp-files-create-volumes.md)に関する記事を参照してください。 デュアルプロトコル ボリュームについては、[デュアルプロトコル ボリュームの作成](create-volumes-dual-protocol.md)に関する記事を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に 
 
-* あらかじめ容量プールを設定しておく必要があります。 「[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)」を参照してください。     
+* あらかじめ容量プールを設定しておく必要があります。 「[容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)」を参照してください。     
 * サブネットが Azure NetApp Files に委任されている必要があります。 「[サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)」を参照してください。
 
 ## <a name="configure-active-directory-connections"></a>Active Directory Domain Services 接続を構成する 
@@ -47,7 +49,7 @@ SMB ボリュームを作成する前に Active Directory Domain Services の接
     * **ボリューム名**      
         作成するボリュームの名前を指定します。   
 
-        ボリューム名は、各容量プール内で一意である必要があります。 3 文字以上になるようにしてください。 任意の英数字を使用できます。   
+        ボリューム名は、各容量プール内で一意である必要があります。 3 文字以上になるようにしてください。 名前は英字で始まる必要があります。 使用できるのは、文字、数字、アンダースコア ('_')、ハイフン ('-') のみです。 
 
         `default` または `bin` をボリューム名として使用することはできません。
 
@@ -79,22 +81,52 @@ SMB ボリュームを作成する前に Active Directory Domain Services の接
     
         ![サブネットの作成](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
+    * **ネットワーク機能**  
+        サポートされているリージョンでは、ボリュームで使用するネットワーク機能を **Basic** または **Standard** から選ぶことができます。 細については、[ボリュームのネットワーク機能を構成する](configure-network-features.md)ことに関するページと、「[Azure NetApp Files のネットワーク計画のガイドライン](azure-netapp-files-network-topologies.md)」を参照してください。
+
     * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、スナップショットのパスを非表示にするかどうかを指定して、プルダウン メニューでスナップショット ポリシーを選択します。 
 
-        スナップショット ポリシーの作成については、「[スナップショット ポリシーを管理する](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)」を参照してください。
+        スナップショット ポリシーの作成については、「[スナップショット ポリシーを管理する](snapshots-manage-policy.md)」を参照してください。
 
         ![詳細セクションの表示](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. **[プロトコル]** をクリックし、次の情報を入力します。  
-    * ボリュームのプロトコルの種類として **[SMB]** を選択します。 
-    * ドロップダウン リストから **Active Directory** の接続を選択します。
-    * **[共有名]** に共有ボリュームの名前を指定します。
-    * SMB ボリュームの継続的な可用性を有効にする場合は、 **[継続的可用性を有効にする]** を選択します。    
+    * ボリュームのプロトコルの種類として **[SMB]** を選択します。  
+
+    * ドロップダウン リストから **Active Directory** の接続を選択します。  
+    
+    * ボリュームに対する一意の **共有名** を指定します。 この共有名は、マウント ターゲットを作成するときに使用します。 共有名の要件は次のとおりです。   
+        - リージョン内の各サブネットにおいて一意である必要があります。 
+        - 英文字で始まる必要があります。
+        - 文字、数字、ダッシュ (`-`) だけで構成する必要があります。 
+        - 長さが 80 文字以内である必要があります。   
+        
+    * <a name="smb3-encryption"></a>SMB3 の暗号化を有効にする場合は、 **[SMB3 プロトコルの暗号化を有効にする]** を選択します。   
+        この機能により、移動中の SMB3 データの暗号化が有効になります。 SMB3 暗号化を使用していない SMB クライアントは、このボリュームにアクセスできません。  保存データは、この設定に関係なく暗号化されます。  
+        詳細については、「[SMB 暗号化](azure-netapp-files-smb-performance.md#smb-encryption)」を参照してください。 
+
+        **SMB3 の暗号化** 機能は現在、プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+
+        機能の登録の状態を確認します。 
+
+        > [!NOTE]
+        > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が `Registered` になってから続行してください。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+        
+        また、[Azure CLI のコマンド](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。  
+    * <a name="continuous-availability"></a>SMB ボリュームの継続的な可用性を有効にする場合は、 **[継続的可用性を有効にする]** を選択します。    
 
         > [!IMPORTANT]   
         > SMB の継続的な可用性機能は、現在パブリック プレビュー段階です。 **[[Azure NetApp Files SMB Continuous Availability Shares Public Preview]\(Azure NetApp Files の SMB の継続的な可用性の共有パブリック プレビュー\) 順番待ち送信ページ](https://aka.ms/anfsmbcasharespreviewsignup)** から、機能にアクセスするための順番待ち要求を送信する必要があります。 Azure NetApp Files チームからの正式な確認メールを待ってから、継続的な可用性機能を使用してください。   
         > 
-        > 継続的な可用性を有効にする必要があるのは、SQL ワークロードに対してのみです。 SQL Server 以外のワークロードに対して SMB の継続的な可用性の共有を使用することは、サポートされて *いません*。 この機能は現在、Windows SQL Server でサポートされています。 Linux SQL Server では現在サポートされていません。 SQL Server のインストールに管理者以外のアカウント (ドメイン) を使用している場合は、必要なセキュリティ特権がアカウントに割り当てられていることを確認してください。 必要なセキュリティ特権 (`SeSecurityPrivilege`) がドメイン アカウントになく、ドメイン レベルで特権を設定できない場合は、Active Directory 接続の **"セキュリティ特権ユーザー"** フィールドを使用して、そのアカウントに特権を付与できます。 「[Active Directory 接続を作成する](create-active-directory-connections.md#create-an-active-directory-connection)」を参照してください。
+        SQL Server と [FSLogix のユーザー プロファイル コンテナー](../virtual-desktop/create-fslogix-profile-container.md)でのみ継続的可用性を有効にする必要があります。 SMB 継続的可用性共有を SQL Server と FSLogix のユーザー プロファイル コンテナー以外のワークロードに使用することはサポートされて *いません*。 この機能は現在、Windows SQL Server でサポートされています。 Linux SQL Server では現在サポートされていません。 SQL Server のインストールに管理者以外のアカウント (ドメイン) を使用している場合は、必要なセキュリティ特権がアカウントに割り当てられていることを確認してください。 必要なセキュリティ特権 (`SeSecurityPrivilege`) がドメイン アカウントになく、ドメイン レベルで特権を設定できない場合は、Active Directory 接続の **"セキュリティ特権ユーザー"** フィールドを使用して、そのアカウントに特権を付与できます。 「[Active Directory 接続を作成する](create-active-directory-connections.md#create-an-active-directory-connection)」を参照してください。
 
     <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
     <!-- 
@@ -124,16 +156,7 @@ SMB ボリュームを作成する前に Active Directory Domain Services の接
 
 ## <a name="control-access-to-an-smb-volume"></a>SMB ボリュームへのアクセスを制御する  
 
-SMB ボリュームへのアクセスはアクセス許可によって管理されます。  
-
-### <a name="share-permissions"></a>共有アクセス許可  
-
-既定では、新しいボリュームには **Everyone でフル コントロール** の共有アクセス許可が与えられます。 Domain Admins グループのメンバーは、次のように共有アクセス許可を変更できます。  
-
-1. 共有とドライブをマッピングします。  
-2. ドライブを右クリックし、 **[プロパティ]** を選択して、 **[セキュリティ]** タブにアクセスします。
-
-[ ![共有アクセス許可を設定する](../media/azure-netapp-files/set-share-permissions.png)](../media/azure-netapp-files/set-share-permissions.png#lightbox)
+SMB ボリュームへのアクセスはアクセス許可によって管理されます。 
 
 ### <a name="ntfs-file-and-folder-permissions"></a>NTFS ファイルおよびフォルダーの権限  
 
@@ -145,7 +168,9 @@ Windows SMB クライアントで、オブジェクトのプロパティの **[�
 
 * [Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)
-* [SMB に関する FAQ](./azure-netapp-files-faqs.md#smb-faqs)
-* [SMB またはデュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)
+* [Azure NetApp Files 用に ADDS LDAP over TLS を構成する](configure-ldap-over-tls.md) 
+* [既存の SMB ボリュームで継続的可用性を有効にする](enable-continuous-availability-existing-SMB.md)
+* [SMB 暗号化](azure-netapp-files-smb-performance.md#smb-encryption)
+* [Azure NetApp Files のボリュームに関するエラーをトラブルシューティングする](troubleshoot-volumes.md)
 * [Azure サービスの仮想ネットワーク統合について理解する](../virtual-network/virtual-network-for-azure-services.md)
 * [Azure CLI を使用して新しい Active Directory フォレストをインストールする](/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

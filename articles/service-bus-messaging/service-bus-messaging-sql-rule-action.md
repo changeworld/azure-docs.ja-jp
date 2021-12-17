@@ -2,13 +2,13 @@
 title: Azure Service Bus サブスクリプション ルールの SQL アクション構文 |Microsoft Docs
 description: この記事では、SQL ルールのアクション構文のリファレンスを示します。 アクションは、メッセージに対して実行される SQL 言語ベースの構文で記述されています。
 ms.topic: article
-ms.date: 11/24/2020
-ms.openlocfilehash: 75ff437bace59d7f4de07342277f0760480a5b0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: 19d4ae9a188e2e675e055eae2f4aedd714e17e47
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652838"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211774"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>サブスクリプション ルールの SQL アクション構文
 
@@ -53,9 +53,12 @@ ms.locfileid: "100652838"
   
 ## <a name="arguments"></a>引数  
   
--   `<scope>` は、`<property_name>` のスコープを示す省略可能な文字列です。 有効な値は `sys` または `user`です。 `sys` 値は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のパブリック プロパティ名である場合にシステム スコープを示します。 `user` は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のディクショナリのキーである場合にユーザー スコープを示します。 `<scope>` が指定されていない場合、`user` スコープが既定のスコープです。  
+-   `<scope>` は、`<property_name>` のスコープを示す省略可能な文字列です。 有効な値は `sys` または `user`です。 
+    - `sys` 値はシステム スコープを示します。ここで、`<property_name>` は「[メッセージ、ペイロード、およびシリアル化](service-bus-messages-payloads.md)」で説明されている Service Bus メッセージのプロパティのいずれかです。
+    - `user` 値はユーザー スコープを示します。ここで、`<property_name>` は Service Bus に送信するときにメッセージに設定できるカスタム プロパティのキーです。
+    - `<scope>` が指定されていない場合、`user` スコープが既定のスコープです。  
   
-### <a name="remarks"></a>解説  
+### <a name="remarks"></a>注釈  
 
 存在しないシステム プロパティにアクセスしようとするとエラーになりますが、存在しないユーザー プロパティにアクセスしようとしてもエラーにはなりません。 代わりに、存在しないユーザー プロパティは不明な値として内部的に評価されます。 不明な値は演算子の評価時に特別に処理されます。  
   
@@ -107,7 +110,7 @@ ms.locfileid: "100652838"
       <expression>  
 ```  
   
-### <a name="remarks"></a>解説
+### <a name="remarks"></a>注釈
   
  `<pattern>` は、文字列として評価される式である必要があります。 これは LIKE 演算子のパターンとして使用されます。      次のワイルドカード文字を含めることができます。  
   
@@ -122,7 +125,7 @@ ms.locfileid: "100652838"
       <expression>  
 ```  
   
-### <a name="remarks"></a>解説
+### <a name="remarks"></a>注釈
   
  `<escape_char>` は、長さ 1 の文字列として評価される式である必要があります。 これは、LIKE 演算子のエスケープ文字として使用されます。  
   
@@ -171,7 +174,7 @@ ms.locfileid: "100652838"
       TRUE | FALSE  
 ```  
   
-### <a name="remarks"></a>解説
+### <a name="remarks"></a>注釈
   
 ブール型の定数は、`TRUE` または `FALSE` キーワードで表されます。 値は `System.Boolean` として格納されます。  
   
@@ -181,7 +184,7 @@ ms.locfileid: "100652838"
 <string_constant>  
 ```  
   
-### <a name="remarks"></a>解説
+### <a name="remarks"></a>注釈
   
 文字列定数は単一引用符で囲まれ、任意の有効な Unicode 文字が含まれます。 文字列定数に組み込む単一引用符は、2 つの単一引用符で表されます。  
   
@@ -193,7 +196,7 @@ ms.locfileid: "100652838"
       property(name) | p(name)  
 ```  
   
-### <a name="remarks"></a>解説  
+### <a name="remarks"></a>注釈  
 
 `newid()` 関数は、`System.Guid.NewGuid()` メソッドによって生成された `System.Guid` を返します。  
   

@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 07/01/2021
 ms.author: erhopf
-ms.openlocfilehash: 22127f81d871fe333750020196540db17e7544f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c67a01f287d9b1076ce322891f08166c91eec9f8
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98033452"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "114441341"
 ---
 ## <a name="authentication"></a>認証
 

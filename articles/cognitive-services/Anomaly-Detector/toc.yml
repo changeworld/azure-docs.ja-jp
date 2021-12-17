@@ -3,40 +3,40 @@
 - name: 概要
   expanded: true
   items:
-    - name: Anomaly Detector (多変量) とは
-      href: overview-multivariate.md
     - name: Anomaly Detector (一変量) とは
       href: overview.md
+    - name: Anomaly Detector (多変量) とは
+      href: overview-multivariate.md
     - name: 価格
       href: 'https://aka.ms/adpricing'
+    - name: 新機能
+      href: whats-new.md
 - name: クイックスタート
   items:
-    - name: 多変量クライアント ライブラリ
-      href: ./quickstarts/client-libraries-multivariate.md
-    - name: 一変量クライアントライブラリ
+    - name: クライアント ライブラリ (一変量)
       href: ./quickstarts/client-libraries.md
+    - name: クライアント ライブラリ (多変量)
+      href: ./quickstarts/client-libraries-multivariate.md
 - name: サンプル
   items:
-    - name: 対話型デモ (一変量)
+    - name: デモの Web アプリケーション (一変量)
       href: 'https://aka.ms/adDemo'
-    - name: Jupyter Notebook (一変量)
+    - name: Jupyter Notebook
       href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
-    - name: Jupyter Notebook (多変量)
-      href: 'https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb'
-    - name: Azure サンプル
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=anomaly-detector'
+    - name: Azure のサンプル (一変量)
+      href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/quickstarts'
+    - name: Azure のサンプル (多変量)
+      href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/quickstarts-multivariate'
 - name: 操作方法ガイド
   items:
-    - name: データの異常を特定する
+    - name: データの異常を特定する (一変量)
       href: how-to/identify-anomalies.md
-    - name: Anomaly Detector をデプロイする
+    - name: Anomaly Detector をデプロイする (一変量)
       items:
         - name: IoT Edge にデプロイする
           href: how-to/deploy-anomaly-detection-on-iot-edge.md
         - name: Containers
           items:
-            - name: Cognitive Services コンテナーのドキュメント
-              href: 'https://docs.microsoft.com/azure/cognitive-services/containers/'
             - name: コンテナーのインストールと実行
               displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
               href: anomaly-detector-container-howto.md
@@ -45,6 +45,9 @@
               displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
             - name: Container Instances の使用
               href: how-to/deploy-anomaly-detection-on-container-instances.md
+            - name: すべての Cognitive Services コンテナーのドキュメント
+              href: ../containers/index.yml
+              maintainContext: true
     - name: エンタープライズ対応
       items:
         - name: 仮想ネットワークの設定
@@ -53,25 +56,33 @@
           href: ../authentication.md?context=/azure/cognitive-services/anomaly-detector/context/context
 - name: 概念
   items:
-    - name: Anomaly Detector API のベスト プラクティス (多変量)
-      href: concepts/best-practices-multivariate.md
     - name: Anomaly Detector API のベスト プラクティス (一変量)
       href: concepts/anomaly-detection-best-practices.md
+    - name: Anomaly Detector API のベスト プラクティス (多変量)
+      href: concepts/best-practices-multivariate.md
     - name: 予測メンテナンスのアーキテクチャ (多変量)
       href: concepts/multivariate-architecture.md
-    - name: 多変量のトラブルシューティング
-      href: concepts/troubleshoot.md
-    - name: Spectral Residual (SR) と畳み込みニューラル ネットワーク (CNN) の異常検出
-      href: 'https://arxiv.org/abs/1906.03821'
-    - name: グラフ アテンション ネットワークによる多変量時系列の異常検出
-      href: 'https://arxiv.org/abs/2009.02040'
 - name: チュートリアル
   items:
-    - name: Power BI を使用して異常をバッチとして視覚化する
+    - name: Power BI を使用して異常をバッチとして視覚化する (一変量)
       href: tutorials/batch-anomaly-detection-powerbi.md
+    - name: 多変量異常検出について 1 時間で学習する (多変量)
+      href: tutorials/learn-multivariate-anomaly-detection.md
+- name: AI の責任ある使用
+  items:
+    - name: 透明性に関するメモ
+      items:
+        - name: Anomaly Detector のユース ケース
+          href: /legal/cognitive-services/anomaly-detector/transparency-note?context=/azure/cognitive-services/anomaly-detector/context/context
+        - name: 特性と制限
+          href: /legal/cognitive-services/anomaly-detector/characteristics-and-limitations?context=/azure/cognitive-services/anomaly-detector/context/context
+    - name: 統合と責任ある使用
+      href: /legal/cognitive-services/anomaly-detector/guidance-integration-responsible-use?context=/azure/cognitive-services/anomaly-detector/context/context
+    - name: データ、プライバシー、セキュリティ
+      href: /legal/cognitive-services/anomaly-detector/data-privacy-security?context=/azure/cognitive-services/anomaly-detector/context/context
 - name: リファレンス
   items:
-    - name: Anomaly Detector REST API
+    - name: Anomaly Detector REST API (一変量)
       href: 'https://aka.ms/anomaly-detector-rest-api-ref'
     - name: Anomaly Detector REST API プレビュー (多変量)
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector-v1-1-preview/operations/DetectAnomaly'
@@ -87,25 +98,35 @@
   items:
     - name: エンタープライズ対応
       items:
-        - name: リージョンのサポート
+        - name: リージョンのサポート (一変量)
           href: 'https://aka.ms/adregion'
+        - name: リージョンのサポート (多変量)
+          href: overview-multivariate.md#region-support
         - name: コンプライアンスと認定資格
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
-    - name: Microsoft Learn モジュール
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
-    - name: ユーザー生成コンテンツ
-      href: user-generated-content.md
+    - name: Microsoft Learn モジュール (一変量)
+      href: /learn/modules/intro-to-anomaly-detector/
     - name: Microsoft Teams 上での Anomaly Detector Advisors グループへの参加
       href: 'https://aka.ms/adadvisorsjoin'
-    - name: ソリューション アーキテクチャの参照
+    - name: リファレンス ソリューション アーキテクチャ (一変量)
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
-    - name: テクニカル ブログ
+    - name: エラー コード (多変量)
+      href: concepts/troubleshoot.md
+    - name: 技術記事
       items:
-        - name: Azure Anomaly Detector API の概要
+        - name: Azure Anomaly Detector API の紹介 (一変量)
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
+        - name: 多変量異常検出の紹介
+          href: 'https://techcommunity.microsoft.com/t5/azure-ai/introducing-multivariate-anomaly-detection/ba-p/2260679'
         - name: SR-CNN アルゴリズムの概要
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
+        - name: Spectral Residual (SR) と畳み込みニューラル ネットワーク (CNN) の異常検出
+          href: 'https://arxiv.org/abs/1906.03821'
+        - name: グラフ アテンション ネットワークによる多変量時系列の異常検出
+          href: 'https://arxiv.org/abs/2009.02040'
+        - name: その他の技術記事...
+          href: whats-new.md#technical-articles

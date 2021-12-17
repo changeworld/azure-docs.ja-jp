@@ -1,20 +1,20 @@
 ---
 title: シナリオ:Virtual WAN 用の Azure Firewall のカスタム ルーティング
 titleSuffix: Azure Virtual WAN
-description: ルーティングのシナリオ - VNet 間ではトラフィックを直接ルーティングする一方、"VNet -> インターネットまたはブランチ" と "ブランチ対 VNet" のトラフィック フローには Azure Firewall を使用します
+description: VNet 間ではトラフィックを直接ルーティングする一方、VNet からインターネットまたはブランチとブランチから VNet のトラフィック フローには Azure Firewall を使用するルーティングのシナリオについて学習します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d083607782f96744ecbd7d23976f77ee53fec49d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6581638379154675f1d93213ecaecf8b1ccb012
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94515571"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649002"
 ---
 # <a name="scenario-azure-firewall---custom"></a>シナリオ:Azure Firewall - カスタム
 
@@ -68,8 +68,6 @@ VPN、ExpressRoute、およびユーザー VPN 接続は、総称して "ブラ�
 
 :::image type="content" source="./media/routing-scenarios/between-vnets-firewall/routing.png" alt-text="図 1":::
 
-> [!NOTE]
-> Virtual WAN ハブと接続された仮想ネットワークは、同じ Azure リージョンに存在する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

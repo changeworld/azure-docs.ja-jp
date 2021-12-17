@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 0780f66c981f0cebebc1ab327d783954753db965
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c0475ee0a97e3d9e3dd376d84028cedca3cfa70b
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866728"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112676421"
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 
@@ -52,7 +52,6 @@ HDInsight を使用すると、大量の構造化されたデータ、構造化�
 HDInsight には、次の高度な分析ワークフロー向けの、いくつかの機械学習オプションがあります。
 
 * Machine Learning と Apache Spark
-* R および ML Services
 * Azure Machine Learning と Apache Hive
 * Apache Spark とディープ ラーニング
 
@@ -65,10 +64,6 @@ HDInsight には、次の高度な分析ワークフロー向けの、いくつ�
 * [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) - MLlib には Spark RDD 上に構築されたオリジナルの API が含まれています。
 * [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) - SparkML は、ML パイプラインを構築するために Spark DataFrame 上に構築された高度な API を提供する、比較的新しいパッケージです。
 * [**MMLSpark**](https://github.com/Azure/mmlspark) - Microsoft Machine Learning library for Apache Spark (MMLSpark) は、データ サイエンティストの Spark 上での生産性を高めること、実験速度を向上させること、およびディープ ラーニングなどの非常に大規模なデータセットに対して、機械学習の最先端の手法を利用できることを目標に設計されています。 MMLSpark ライブラリは、PySpark でモデルを構築するための一般的なモデリング タスクを簡略化します。
-
-### <a name="r-and-ml-services"></a>R および ML Services
-
-大量のデータセットとモデルを扱えるよう準備された [ML Services](../r-server/r-server-overview.md) を使用して、HDInsight の一部として HDInsight クラスターを作成できます。 この新しい機能により、データ サイエンティストや統計学の専門家は、使い慣れた R インターフェイスを使用して、HDInsight を介してオンデマンドでスケーリングすることができ、クラスターのセットアップとメンテナンスのオーバーヘッドがなくなります。
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning と Apache Hive
 
@@ -115,12 +110,12 @@ HDInsight を使用した、高度な分析の機械学習パイプラインの�
 
 Apache Hive と Azure Machine Learning
 
-* [Apache Hive と Azure Machine Learning の詳細](../../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [1-TB データセットでの Azure HDInsight Hadoop クラスターの使用](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
+* [Apache Hive と Azure Machine Learning の詳細](/azure/architecture/data-science-process/hive-walkthrough)
+* [1-TB データセットでの Azure HDInsight Hadoop クラスターの使用](/azure/architecture/data-science-process/hive-criteo-walkthrough)
 
 Apache Spark と MLLib
 
-* [HDInsight での Apache Spark を使用した機械学習](../../machine-learning/team-data-science-process/spark-overview.md)
+* [HDInsight での Apache Spark を使用した機械学習](/azure/architecture/data-science-process/spark-overview)
 * [Apache Spark と Machine Learning:HDInsight で Apache Spark を使用して、HVAC データを使用して建物の温度を分析する](../spark/apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark と Machine Learning:HDInsight で Apache Spark を使用して食品の検査結果を予測する](../spark/apache-spark-machine-learning-mllib-ipython.md)
 

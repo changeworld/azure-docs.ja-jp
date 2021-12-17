@@ -3,24 +3,23 @@ title: チュートリアル:Microsoft Azure Maps で Azure Notebooks (Python) �
 description: Microsoft Azure Maps のルート指定 API シリーズと Azure Notebooks を使用して、電気自動車のルートを案内する方法に関するチュートリアル
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7341d1f07e8814edcad7b84f6b3b46c7bece3159
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a167e0a0374a1c24b7da51171b51b2ee28cf4bb0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98680334"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996382"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
 
-Azure Maps は、Azure にネイティブに統合された地理空間サービス API シリーズのポートフォリオです。 これらの API シリーズを使用すると、開発者、企業、ISV は、場所を認識するアプリと、IoT、モビリティ、物流、資産追跡のソリューションを開発できます。 
+Azure Maps は、Azure にネイティブに統合された地理空間サービス API シリーズのポートフォリオです。 これらの API シリーズを使用すると、開発者、企業、ISV は、場所を認識するアプリと、IoT、モビリティ、物流、資産追跡のソリューションを開発できます。
 
-Azure Maps REST API シリーズを Python や R などの言語で呼び出して、地理空間データ解析や機械学習のシナリオを実現できます。 Azure Maps に用意された堅牢な[ルート案内 API シリーズ](/rest/api/maps/route)のセットを使用することで、ユーザーは、複数のデータ ポイント間のルートを計算できます。 計算は、車両の種類や到達可能な範囲などのさまざまな条件に基づいています。 
+Azure Maps REST API シリーズを Python や R などの言語で呼び出して、地理空間データ解析や機械学習のシナリオを実現できます。 Azure Maps に用意された堅牢な[ルート案内 API シリーズ](/rest/api/maps/route)のセットを使用することで、ユーザーは、複数のデータ ポイント間のルートを計算できます。 計算は、車両の種類や到達可能な範囲などのさまざまな条件に基づいています。
 
 このチュートリアルでは、バッテリ残量が低下している電気自動車のドライバーを手助けします。 ドライバーは、自動車の場所からできるだけ近い充電スタンドを探す必要があります。
 
@@ -34,16 +33,12 @@ Azure Maps REST API シリーズを Python や R などの言語で呼び出し�
 > * 到達可能範囲の境界線と充電スタンドをマップ上にレンダリングする。
 > * 走行時間に基づいて最も近い電気自動車充電スタンドまでのルートを特定し、視覚化する。
 
+## <a name="prerequisites"></a>前提条件
 
-## <a name="prerequisites"></a>前提条件 
+1. [Azure Maps アカウントを作成](quick-demo-map-app.md#create-an-azure-maps-account)し、[Gen 2 または S1 価格レベルのいずれかを選択](choose-pricing-tier.md)します。
+2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 
-このチュートリアルを完了するには、まず Azure Maps アカウントを作成して、プライマリ キー (サブスクリプション キー) を取得する必要があります。 
-
-Azure Maps アカウントのサブスクリプションを作成するには、[アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)に関するセクションの手順に従います。 S1 価格帯の Azure Maps アカウントのサブスクリプションが必要です。 
-
-アカウントの主サブスクリプション キーを取得するには、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従います。
-
-Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
+Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="create-an-azure-notebooks-project"></a>Azure Notebooks プロジェクトを作成する
 
@@ -55,18 +50,18 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
     ![[マイ プロジェクト] ボタン](./media/tutorial-ev-routing/myproject.png)
 
 1. **[マイ プロジェクト]** ページで **[新しいプロジェクト]** を選択します。
- 
+
    ![[新しいプロジェクト] ボタン](./media/tutorial-ev-routing/create-project.png)
 
 1. **[新しいプロジェクトの作成]** ウィンドウで、プロジェクト名とプロジェクト ID を入力します。
- 
+
     ![[新しいプロジェクトの作成] ウィンドウ](./media/tutorial-ev-routing/create-project-window.png)
 
 1. **［作成］** を選択します
 
 1. プロジェクトが作成されたら、[Azure Maps の Jupyter Notebook リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)からこの [Jupyter Notebook ドキュメント ファイル](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb)をダウンロードします。
 
-1. **[マイ プロジェクト]** ページのプロジェクト一覧で、自分のプロジェクトを選択し、 **[アップロード]** を選択して Jupyter Notebook ドキュメント ファイルをアップロードします。 
+1. **[マイ プロジェクト]** ページのプロジェクト一覧で、自分のプロジェクトを選択し、 **[アップロード]** を選択して Jupyter Notebook ドキュメント ファイルをアップロードします。
 
     ![Jupyter Notebook のアップロード](./media/tutorial-ev-routing/upload-notebook.png)
 
@@ -83,10 +78,9 @@ Jupyter Notebook ファイルに実装されている機能を見ていきまし
 Jupyter Notebook のコードを実行するには、次の手順を実行して、プロジェクト レベルでパッケージをインストールします。
 
 1. [Azure Maps の Jupyter Notebook リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)から [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) ファイルをダウンロードして、自分のプロジェクトにアップロードします。
-1. プロジェクト ダッシュボードで、 **[Project Settings]\(プロジェクトの設定\)** を選択します。 
+1. プロジェクト ダッシュボードで、 **[Project Settings]\(プロジェクトの設定\)** を選択します。
 1. **[プロジェクトの設定]** ウィンドウで、 **[環境]** タブを選択し、 **[追加]** を選択します。
-1. **[Environment Setup Steps]\(環境セットアップ手順\)** で、次のようにします。   
-    a. 1 つ目のドロップダウン リストで、**Requirements.txt** を選択します。  
+1. **[Environment Setup Steps]\(環境セットアップ手順\)** で、次のようにします。a. 1 つ目のドロップダウン リストで、**Requirements.txt** を選択します。  
     b. 2 つ目のドロップダウン リストで、*requirements.txt* ファイルを選択します。  
     c. 3 つ目のドロップダウン リストで、バージョンとして **[Python Version 3.6]** を選択します。
 1. **[保存]** を選択します。
@@ -106,7 +100,7 @@ from IPython.display import Image, display
 
 ## <a name="request-the-reachable-range-boundary"></a>到達可能範囲の境界線を要求する
 
-配送会社には、電気自動車が何台か導入されています。 日中は、倉庫に戻ることなく電気自動車を再充電しなければなりません。 充電残量が 1 時間分を下回るたびに、到達可能範囲内にある充電スタンドを検索します。 つまり、バッテリ残量が低下したら充電スタンドを検索し、 その充電スタンドの範囲に対応する境界情報を取得することになります。 
+配送会社には、電気自動車が何台か導入されています。 日中は、倉庫に戻ることなく電気自動車を再充電しなければなりません。 充電残量が 1 時間分を下回るたびに、到達可能範囲内にある充電スタンドを検索します。 つまり、バッテリ残量が低下したら充電スタンドを検索し、 その充電スタンドの範囲に対応する境界情報を取得することになります。
 
 会社は経済性とスピードのバランスがとれたルートを使いたいと考えているので、要求する routeType は *eco* になります。 次のスクリプトでは、Azure Maps ルート案内サービスの [Get Route Range API](/rest/api/maps/route/getrouterange) を呼び出します。 車両の消費モデルのパラメーターを使用しています。 その後、スクリプトでは、応答が解析されて GeoJSON 形式の polygon オブジェクトが作成されます。これは、自動車の最大到達可能範囲を表します。
 
@@ -154,7 +148,7 @@ boundsData = {
 
 ## <a name="search-for-electric-vehicle-charging-stations-within-the-reachable-range"></a>到達可能範囲内にある電気自動車充電スタンドを検索する
 
-電気自動車の到達可能範囲 (等時線) を特定した後は、その範囲内にある充電スタンドを検索できます。 
+電気自動車の到達可能範囲 (等時線) を特定した後は、その範囲内にある充電スタンドを検索できます。
 
 次のスクリプトでは、Azure Maps の [Post Search Inside Geometry API](/rest/api/maps/search/postsearchinsidegeometry) が呼び出されます。 自動車の最大到達可能範囲の境界内にある電気自動車の充電スタンドが検索されます。 次に、応答が解析されて、到達可能な場所の配列が取得されます。
 
@@ -171,9 +165,9 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service-preview"></a>Azure Maps Data Service (プレビュー) に到達可能範囲と充電ポイントをアップロードする
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Azure Maps Data Service に到達可能範囲と充電ポイントをアップロードする
 
-電気自動車の最大到達可能範囲に対する充電スタンドと境界を、地図上に視覚化する必要があります。 これを行うには、境界のデータと充電スタンドのデータを GeoJSON オブジェクトとして Azure Maps Data Service (プレビュー) にアップロードします。 [Data Upload API](/rest/api/maps/data/uploadpreview) を使用します。 
+電気自動車の最大到達可能範囲に対する充電スタンドと境界を、地図上に視覚化する必要があります。 これを行うには、境界のデータと充電スタンドのデータを GeoJSON オブジェクトとして Azure Maps Data Service にアップロードします。 [Data Upload API](/rest/api/maps/data-v2/upload-preview) を使用します。
 
 境界と充電ポイントのデータを Azure Maps Data Service にアップロードするには、次の 2 つのセルを実行します。
 
@@ -194,8 +188,8 @@ rangeData = {
   ]
 }
 
-# Upload the range data to Azure Maps Data service (Preview).
-uploadRangeResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
+# Upload the range data to Azure Maps Data service.
+uploadRangeResponse = await session.post("https://us.atlas.microsoft.com/mapData?subscription-key={}&api-version=2.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
 
 rangeUdidRequest = uploadRangeResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
 
@@ -223,8 +217,8 @@ poiData = {
   ]
 }
 
-# Upload the electric vehicle charging station data to Azure Maps Data service (Preview).
-uploadPOIsResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
+# Upload the electric vehicle charging station data to Azure Maps Data service.
+uploadPOIsResponse = await session.post("https://us.atlas.microsoft.com/mapData?subscription-key={}&api-version=2.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
 
 poiUdidRequest = uploadPOIsResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
 
@@ -278,10 +272,9 @@ display(Image(poiRangeMap))
 
 ![場所の範囲を示すマップ](./media/tutorial-ev-routing/location-range.png)
 
-
 ## <a name="find-the-optimal-charging-station"></a>最適な充電スタンドを探す
 
-まず、到達可能範囲内にある充電スタンド候補をすべて特定する必要があります。 その後、最も短い時間で到達できるスタンドを調べる必要があります。 
+まず、到達可能範囲内にある充電スタンド候補をすべて特定する必要があります。 その後、最も短い時間で到達できるスタンドを調べる必要があります。
 
 次のスクリプトでは、Azure Maps の [Matrix Routing API](/rest/api/maps/route/postroutematrix) を呼び出しています。 指定した自動車の位置、各充電スタンドまでの走行時間と距離が返されます。 次のセルのスクリプトでは、応答が解析されて、時間的に最も近くにある到達可能な充電スタンドの場所が特定されます。
 
@@ -336,13 +329,13 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>ルートを視覚化する
 
-ルートを視覚化するにはまず、Azure Maps Data Service (プレビュー) にルートのデータを GeoJSON オブジェクトとしてアップロードします。 そのためには、Azure Maps の [Data Upload API](/rest/api/maps/data/uploadpreview) を使用します。 次に、レンダリング サービス [Get Map Image API](/rest/api/maps/render/getmapimage) を呼び出して、マップ上にルートをレンダリングして視覚化します。
+ルートを視覚化するにはまず、Azure Maps Data Service にルートのデータを GeoJSON オブジェクトとしてアップロードします。 そのためには、Azure Maps の [Data Upload API](/rest/api/maps/data-v2/upload-preview) を使用します。 次に、レンダリング サービス [Get Map Image API](/rest/api/maps/render/getmapimage) を呼び出して、マップ上にルートをレンダリングして視覚化します。
 
 マップ上にルートがレンダリングされた画像を取得するには、次のスクリプトを実行します。
 
 ```python
-# Upload the route data to Azure Maps Data service (Preview).
-routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
+# Upload the route data to Azure Maps Data service .
+routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData?subscription-key={}&api-version=2.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
 
 udidRequestURI = routeUploadRequest.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
 
@@ -393,7 +386,7 @@ display(Image(staticMapImage))
 
 * [Get Route Range](/rest/api/maps/route/getrouterange)
 * [Post Search Inside Geometry](/rest/api/maps/search/postsearchinsidegeometry)
-* [Data Upload](/rest/api/maps/data/uploadpreview)
+* [Data Upload](/rest/api/maps/data-v2/upload-preview)
 * [レンダリング - Get Map Image](/rest/api/maps/render/getmapimage)
 * [Post Route Matrix](/rest/api/maps/route/postroutematrix)
 * [Get Route Directions](/rest/api/maps/route/getroutedirections)

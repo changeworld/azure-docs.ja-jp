@@ -10,12 +10,12 @@ metadata:
   ms.author: jushiman
   ms.reviewer: mimckitt
   ms.date: 03/16/2020
-  ms.openlocfilehash: 36cb4644dae82802f93e7f6c654005b58d877c20
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 22715344100d2fdbad19bd92c358db9886ec3405
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101672695"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132722451"
 landingContent:
 - title: 仮想マシン スケール セットについて
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
     - text: 仮想マシン スケール セットとは
       url: overview.md
     - text: よく寄せられる質問 (FAQ)
-      url: virtual-machine-scale-sets-faq.md
+      url: virtual-machine-scale-sets-faq.yml
 - title: はじめに
   linkLists:
   - linkListType: quickstart
@@ -79,3 +79,29 @@ landingContent:
       url: /learn/modules/build-app-with-scale-sets/
     - text: " Azure で Windows 仮想マシンを作成する"
       url: /learn/modules/create-windows-virtual-machine-in-azure/
+- title: スケール セットのフレキシブル オーケストレーション
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: フレキシブル オーケストレーション モード
+      url: ../virtual-machines/flexible-virtual-machine-scale-sets.md
+    - text: CLI の使用を開始する
+      url: ../virtual-machines/flexible-virtual-machine-scale-sets-cli.md
+    - text: ポータルの使用を開始する
+      url: ../virtual-machines/flexible-virtual-machine-scale-sets-portal.md
+    - text: Virtual Machine Scale Sets のオーケストレーション モード
+      url: virtual-machine-scale-sets-orchestration-modes.md
+- title: トラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: トラブルシューティング ガイド
+      url: /troubleshoot/azure/virtual-machine-scale-sets/welcome-virtual-machine-scale-sets
+    - text: スケーリング エラーのトラブルシューティング
+      url: /troubleshoot/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-quota-exceeded
+    - text: デプロイ エラーのトラブルシューティング
+      url: /troubleshoot/azure/virtual-machine-scale-sets/vmss-public-ip-count-limit-exceeded
+    - text: 拡張機能に関する問題のトラブルシューティング
+      url: /troubleshoot/azure/virtual-machine-scale-sets/vm-extension-provisioning-errors
+    - text: Microsoft Q&A
+      url: /answers/topics/123/azure-virtual-machines-scale-set.html

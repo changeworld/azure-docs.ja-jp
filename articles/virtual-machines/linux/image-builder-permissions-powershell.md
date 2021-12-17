@@ -1,41 +1,30 @@
 ---
 title: PowerShell を使用して Azure Image Builder サービスのアクセス許可を構成する
 description: PowerShell を使用してアクセス許可と特権を含む Azure VM Image Builder サービスの要件を構成する
-author: danielsollondon
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/05/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
-ms.openlocfilehash: 9f8793b6ea0ba454b66c525c2d53c1de2197d539
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e310a12248ab0f17c66de2561e090125cbec392e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440209"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444537"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-powershell"></a>PowerShell を使用して Azure Image Builder サービスのアクセス許可を構成する
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
+
 (AIB) に登録すると、ステージング リソース グループ (IT_*) を作成、管理、削除するためのアクセス許可が AIB サービスに付与され、イメージのビルドに必要なリソースを追加する権限が与えられます。 これは、登録が成功したときに、AIB サービス プリンシパル名 (SPN) がサブスクリプションで使用可能になることによって行われます。
 
-Azure VM Image Builder で、マネージド イメージまたは Shared Image Gallery にイメージを配布できるようにするには、イメージの読み取りと書き込みのアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Azure Storage にアクセスする場合は、プライベートまたはパブリック コンテナーを読み取るためのアクセス許可が必要です。
+Azure VM Image Builder で、マネージド イメージまたは Azure Compute Gallery (旧称 Shared Image Gallery) にイメージを配布できるようにするには、イメージの読み取りと書き込みのアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Azure Storage にアクセスする場合は、プライベートまたはパブリック コンテナーを読み取るためのアクセス許可が必要です。
 
 イメージを構築する前にアクセス許可と特権を設定する必要があります。 以下のセクションでは、PowerShell を使用して考えられるシナリオを構成する方法について詳しく説明します。
-
-> [!IMPORTANT]
-> 現在、Azure Image Builder はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-## <a name="register-the-features"></a>機能の登録
-
-まず、Azure Image Builder サービスに登録する必要があります。 登録すると、ステージング リソース グループを作成、管理、削除するためのアクセス許可がこのサービスに付与されます。 このサービスには、イメージのビルドに必要なグループにリソースを追加する権限もあります。
-
-```powershell-interactive
-Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-```
 
 ## <a name="create-an-azure-user-assigned-managed-identity"></a>Azure ユーザー割り当てマネージド ID を作成する
 
@@ -66,7 +55,7 @@ Azure ユーザー割り当て ID の詳細については、ID の作成方法�
 
 ## <a name="allow-image-builder-to-distribute-images"></a>Image Builder にイメージの配布を許可する
 
-Azure Image Builder を使用してイメージ (マネージド イメージまたは Shared Image Gallery) を配布するには、これらのリソース グループにイメージを挿入することを Azure Image Builder サービスに許可する必要があります。 必要なアクセス許可を付与するには、ユーザー割り当てマネージド ID を作成し、イメージが構築されているリソース グループに対するアクセス許可を付与する必要があります。 Azure Image Builder には、サブスクリプション内の他のリソース グループのリソースにアクセスするアクセス許可が **ありません**。 ビルドが失敗しないようにするには、アクセスを許可する明示的なアクションを実行する必要があります。
+Azure Image Builder を使用してイメージ (マネージド イメージまたは Azure Compute Gallery) を配布するには、これらのリソース グループにイメージを挿入することを Azure Image Builder サービスに許可する必要があります。 必要なアクセス許可を付与するには、ユーザー割り当てマネージド ID を作成し、イメージが構築されているリソース グループに対するアクセス許可を付与する必要があります。 Azure Image Builder には、サブスクリプション内の他のリソース グループのリソースにアクセスするアクセス許可が **ありません**。 ビルドが失敗しないようにするには、アクセスを許可する明示的なアクションを実行する必要があります。
 
 イメージを配布するために、リソース グループに対する共同作成者アクセス許可をユーザー割り当てマネージド ID に付与する必要はありません。 ただし、ユーザー割り当てマネージド ID には、配布リソース グループに次の Azure `Actions` アクセス許可が必要です。
 
@@ -76,7 +65,7 @@ Microsoft.Compute/images/read
 Microsoft.Compute/images/delete
 ```
 
-Shared Image Gallery に配布する場合は、以下も必要です。
+Azure Compute Gallery に配布する場合、さらに次のアクセス許可が必要となります。
 
 ```Actions
 Microsoft.Compute/galleries/read
@@ -87,7 +76,7 @@ Microsoft.Compute/galleries/images/versions/write
 
 ## <a name="permission-to-customize-existing-images"></a>既存のイメージをカスタマイズするアクセス許可
 
-Azure Image Builder を使用してソース カスタム イメージ (マネージド イメージまたは Shared Image Gallery) からイメージをビルドするには、これらのリソース グループへのイメージの読み取りを Azure Image Builder サービスに許可する必要があります。 必要なアクセス許可を付与するには、ユーザー割り当てマネージド ID を作成し、イメージが配置されているリソース グループに対するアクセス許可を付与する必要があります。
+Azure Image Builder を使用してソース カスタム イメージ (マネージド イメージまたは Azure Compute Gallery) からイメージをビルドするには、これらのリソース グループへのイメージの読み取りを Azure Image Builder サービスに許可する必要があります。 必要なアクセス許可を付与するには、ユーザー割り当てマネージド ID を作成し、イメージが配置されているリソース グループに対するアクセス許可を付与する必要があります。
 
 既存のカスタム イメージから構築する:
 
@@ -95,7 +84,7 @@ Azure Image Builder を使用してソース カスタム イメージ (マネ�
 Microsoft.Compute/galleries/read
 ```
 
-既存の Shared Image Gallery バージョンから構築する:
+既存の Azure Compute Gallery バージョンからビルドする:
 
 ```Actions
 Microsoft.Compute/galleries/read
@@ -116,7 +105,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 ## <a name="create-an-azure-role-definition"></a>Azure ロールの定義を作成する
 
-次の例では、前のセクションで説明したアクションから Azure ロール定義を作成します。 これらの例は、リソース グループ レベルで適用されます。 例が実際の要件に合った細かさかどうかを評価し、テストしてください。 シナリオによっては、特定の Shared Image Gallery に合わせて調整する必要がある場合があります。
+次の例では、前のセクションで説明したアクションから Azure ロール定義を作成します。 これらの例は、リソース グループ レベルで適用されます。 例が実際の要件に合った細かさかどうかを評価し、テストしてください。 シナリオによっては、特定の Azure Compute Gallery に合わせて調整する必要がある場合があります。
 
 イメージのアクションでは、読み取りと書き込みが許可されています。 環境に適したものを判断します。 たとえば、リソース グループ *example-rg-1* からイメージを読み取り、リソース グループ *example-rg-2* にイメージを書き込むことを Azure Image Builder に許可するロールを作成します。
 
@@ -133,7 +122,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 ```powershell-interactive
 $sub_id = "<Subscription ID>"
-# Resource group - For Preview, image builder will only support creating custom images in the same Resource Group as the source managed image.
+# Resource group - image builder will only support creating custom images in the same Resource Group as the source managed image.
 $imageResourceGroup = "<Resource group>"
 $identityName = "aibIdentity"
 

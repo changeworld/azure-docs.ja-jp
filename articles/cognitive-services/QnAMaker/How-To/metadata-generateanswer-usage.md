@@ -8,17 +8,19 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9d2100dbc2c5f24742a949778a1b7450bf303c5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-js, devx-track-csharp, ignite-fall-2021
+ms.openlocfilehash: ba2b39a854dd7d70690aea943f7365bc50bc8804
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232207"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131038786"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api"></a>GenerateAnswer API を使って回答を取得する
 
 ユーザーの質問に対して予測される回答を取得するには、GenerateAnswer API を使用します。 ナレッジ ベースを公開するときに、 **[公開]** ページにこの API を使用する方法に関する情報が表示されます。 また、メタデータ タグに基づいて回答をフィルター処理するように API を構成し、テスト クエリ文字列パラメーターを使用してエンドポイントからナレッジ ベースをテストすることも可能です。
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 <a name="generateanswer-api"></a>
 
@@ -38,15 +40,7 @@ ms.locfileid: "103232207"
     ![ナレッジ ベースのスクリーンショット](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. GenerateAnswer エンドポイントの詳細を取得します。
 
-    # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
     ![エンドポイントの詳細のスクリーンショット](../media/qnamaker-how-to-metadata-usage/view-code.png)
-
-    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
-
-    ![管理対象のエンドポイントの詳細のスクリーンショット](../media/qnamaker-how-to-metadata-usage/view-code-managed.png)
-
-    ---
 
 エンドポイントの詳細は、ナレッジ ベースの **[設定]** タブから取得することもできます。
 
@@ -176,47 +170,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="get-precise-answers-with-generateanswer-api"></a>GenerateAnswer API を使用して正確な回答を得る
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 正確な回答機能は、QnA Maker マネージド バージョンでのみ提供しています。
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
-
-ユーザーは QnA Maker 管理対象リソースを使用するときに、[正確な回答](../reference-precise-answering.md)を有効にすることができます。 同じ目的で answerSpanRequest パラメーターを更新する必要があります。
-
-```json
-{
-    "question": "How long it takes to charge surface pro 4?",
-    "top": 3,
-    "answerSpanRequest": {
-        "enable": true,
-        "topAnswersWithSpan": 1
-    }
-}
-```
-
-同様に、ユーザーは正確な回答を無効にすることを選択できます。そのためには、answerSpanRequest パラメーターを設定しないようにします。
-
-```json
-{
-    "question": "How long it takes to charge surface pro 4?",
-    "top": 3
-}
-```
-### <a name="bot-settings"></a>ボットの設定
-
-ボット サービスに対して正確な回答の設定を構成する場合は、ボットの App Service リソースに移動します。 その後に、次の設定を追加して、構成を更新することが必要です。
-
-- EnablePreciseAnswer
-- DisplayPreciseAnswerOnly
-
-|ディスプレイの構成|EnablePreciseAnswer|DisplayPreciseAnswerOnly|
-|:--|--|--|
-|正確な回答のみ|true|true|
-|長い回答のみ|false|false|
-|長い回答と正確な回答の両方|true|false|
-
----
 
 ## <a name="common-http-errors"></a>一般的な HTTP エラー
 

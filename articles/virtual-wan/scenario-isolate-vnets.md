@@ -1,20 +1,20 @@
 ---
 title: シナリオ:VNet の分離
 titleSuffix: Azure Virtual WAN
-description: ルーティングのシナリオ - VNet の分離
+description: VNet が相互に到達できないようにするための、VNet の分離と呼ばれる Virtual WAN ルーティング シナリオについて説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 05/26/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e5e2ce17be6d8a1fa82d8a92b9b788f0bd2a37b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b817875306dc6936e34a730ddb955ad1059bfb20
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92424735"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578777"
 ---
 # <a name="scenario-isolating-vnets"></a>シナリオ:VNet の分離
 

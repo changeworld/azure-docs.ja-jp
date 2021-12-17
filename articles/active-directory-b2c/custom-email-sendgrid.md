@@ -3,41 +3,54 @@ title: SendGrid を使用するカスタム メール確認
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 対応アプリケーションを使用する目的で新規登録した顧客に送信される確認メールをカスタマイズするために、SendGrid と統合する方法について学習します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
-ms.author: mimart
+ms.date: 09/15/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: c5381a93308b5b3c8988cb8e25df541af1043418
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 5bb6c3aef0476e3da440eb8523d0ccc09491e074
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105031309"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501402"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid を使用するカスタム メール確認
 
-Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し、自分のアプリケーションに新規登録したユーザーにカスタマイズしたメールを送信します。 [DisplayControls](display-controls.md) (現在プレビュー段階)、およびサードパーティの電子メール プロバイダーである SendGrid を使用することで、独自の電子メール テンプレートや *From:* のアドレスと件名を使用できるだけでなく、ローカライズやカスタムのワンタイム パスワード (OTP) 設定をサポートできます。
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し、自分のアプリケーションに新規登録したユーザーにカスタマイズしたメールを送信します。 サード パーティの電子メール プロバイダーである SendGrid を使用すると、独自の電子メール テンプレート、および *From:* アドレスと件名を使用でき、ローカライズとカスタムのワンタイム パスワード (OTP) 設定をサポートできます。
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 カスタム メール確認では、[SendGrid](https://sendgrid.com)、[Mailjet](https://Mailjet.com)、または [SparkPost](https://sparkpost.com) といったサードパーティの電子メール プロバイダー、カスタム REST API、あるいは任意の HTTP ベースの電子メール プロバイダー (独自のものも含む) を使用する必要があります。 この記事では、SendGrid を使用するソリューションの設定について説明します。
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="create-a-sendgrid-account"></a>SendGrid アカウントの作成
 
-まだ用意していない場合、まず、SendGrid アカウントを設定してください (Azure のお客様は毎月、25,000 の無料電子メールをロック解除できます)。 設定方法については、「[SendGrid を使用した Azure での電子メールの送信方法](../sendgrid-dotnet-how-to-send-email.md)」の「[SendGrid アカウントの作成](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)」セクションをご覧ください。
+まだ用意していない場合、まず、SendGrid アカウントを設定してください (Azure のお客様は毎月、25,000 の無料電子メールをロック解除できます)。 設定方法については、「[SendGrid を使用した Azure での電子メールの送信方法](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-twilio-sendgrid-accountcreate-a-twilio-sendgrid-account)」の「[SendGrid アカウントの作成](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-sendgrid-account)」セクションをご覧ください。
 
-[SendGrid API キー](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)を作成するセクションを必ず完了してください。 後の手順で使用するために、API キーを記録しておきます。
+[SendGrid API キー](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#to-find-your-sendgrid-api-key)を作成するセクションを必ず完了してください。 後の手順で使用するために、API キーを記録しておきます。
+
+> [!IMPORTANT]
+> SendGrid によって、共有 IP アドレスと[専用 IP アドレス](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/)から電子メールを送信する機能が顧客に提供されます。 専用 IP アドレスを使用する場合は、IP アドレスのウォームアップを使用して、独自の評判を適切に築く必要があります。 詳細については、「[IP アドレスのウォームアップ](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/)」を参照してください。
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C ポリシー キーの作成
 
 次に、SendGrid API キーを Azure AD B2C ポリシー キーに格納し、ポリシーで参照されるようにします。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C ディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
@@ -51,10 +64,10 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 SendGrid アカウントを作成し、SendGrid API キーを Azure AD B2C ポリシー キーに格納したら、SendGrid [動的トランザクション テンプレート](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)を作成します。
 
-1. SendGrid サイトで [[transactional templates]\(トランザクション テンプレート\)](https://sendgrid.com/dynamic_templates) ページを開き、 **[テンプレートの作成]** を選択します。
-1. 「`Verification email`」のような一意のテンプレート名を入力し、 **[保存]** を選択します。
-1. 新しいテンプレートの編集を開始するには、 **[バージョンの追加]** を選択します。
-1. **[コード エディター]** を選択し、 **[続行]** を選択します。
+1. SendGrid サイトで [[transactional templates]\(トランザクション テンプレート\)](https://sendgrid.com/dynamic_templates) ページを開き、 **[Create a Dynamic Template]\(動的テンプレートの作成\)** を選択します。
+1. 「`Verification email`」のような一意のテンプレート名を入力し、 **[Create]\(作成\)** を選択します。
+1. 新しいテンプレートの編集を開始するには、テンプレート (つまり `Verification email`) を選択して **[Add Version]\(バージョンの追加\)** を選択します。
+1. **[Blank Template]\(空のテンプレート\)** を選択して、 **[Code Editor]\(コード エディター\)** を選択します。
 1. HTML エディターに次の HTML テンプレートを貼り付けるか、独自のテンプレートを貼り付けます。 `{{otp}}` パラメーターと `{{email}}` パラメーターは、ワンタイム パスワード値とユーザー電子メール アドレスで動的に置換されます。
 
     ```HTML
@@ -134,7 +147,6 @@ SendGrid アカウントを作成し、SendGrid API キーを Azure AD B2C ポ�
                        <td width="24" style="border-bottom:1px solid #e3e3e3;">&nbsp;</td>
                        <td id="PageFooterContainer" width="585" valign="top" colspan="6" style="border-bottom:1px solid #e3e3e3;padding:0px;">
 
-
                        </td>
 
                        <td width="29" style="border-bottom:1px solid #e3e3e3;">&nbsp;</td>
@@ -150,8 +162,9 @@ SendGrid アカウントを作成し、SendGrid API キーを Azure AD B2C ポ�
     </html>
     ```
 
-1. 左側にある **[設定]** を展開し、 **[メールの件名]** に「`{{subject}}`」と入力します。
-1. **[テンプレートの保存]** を選択します。
+1. 左側にある **[Settings]\(設定\)** を展開し、 **[Version Name]\(バージョン名\)** にテンプレートのバージョンを入力します。 
+1. **[Subject]\(件名\)** に「`{{subject}}`」と入力します。
+1. ページの最上部の **[Save]\(保存\)** を選択します。
 1. **[Transactional Templates]\(トランザクション テンプレート\)** に戻るには、戻る矢印を選択します。
 1. 後の手順で使用するために、作成したテンプレートの **ID** を記録します。 たとえば、「 `d-989077fbba9746e89f3f6411f596fb96` 」のように入力します。 [要求変換を追加する](#add-the-claims-transformation)ときにこの ID を指定します。
 
@@ -194,6 +207,8 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 * 「[SendGrid テンプレートの作成](#create-sendgrid-template)」で先に作成した SendGrid トランザクション テンプレートの ID で `template_id` InputParameter 値を更新します。
 * `from.email` アドレス値を更新します。 確認メールがスパムに指定されないように有効なメール アドレスを使用します。
+   > [!NOTE]
+   > このメール アドレスは、SendGrid でドメイン認証か Single Sender Authentication のいずれかを使用した Sender Authentication で検証する必要があります。
 * `personalizations.0.dynamic_template_data.subject` 件名入力パラメーターの値を組織に適切な件名で更新します。
 
 ```xml
@@ -291,6 +306,9 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 `GenerateOtp` 技術プロファイルによってメール アドレスのコードが生成されます。 `VerifyOtp` 技術プロファイルによって、メール アドレスに関連付けられているコードが検証されます。 ワンタイム パスワードの形式と有効期間の構成を変更できます。 OTP 技術プロファイルの詳細については、[ワンタイム パスワード技術プロファイルの定義](one-time-password-technical-profile.md)に関するページを参照してください。
 
+> [!NOTE]
+> Web.TPEngine.Providers.OneTimePasswordProtocolProvider プロトコルによって生成される OTP コードは、ブラウザー セッションに関連付けられています。 つまり、ユーザーはさまざまなブラウザー セッションで、それぞれ対応するセッションに対して有効な一意の OTP コードを生成できます。 一方、組み込みの電子メール プロバイダーで生成される OTP コードはブラウザーのセッションとは独立しているため、ブラウザーの新しいセッションで新たに OTP コードを生成すると、前の OTP コードが置き換えられます。
+
 次の技術プロファイルを `<ClaimsProviders>` 要素に追加します。
 
 ```xml
@@ -379,13 +397,6 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-      <Metadata>
-        <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
-        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
-        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
-      </Metadata>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
         <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
@@ -396,13 +407,6 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
       </DisplayClaims>
     </TechnicalProfile>
     <TechnicalProfile Id="LocalAccountDiscoveryUsingEmailAddress">
-      <Metadata>
-        <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
-        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
-        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
-      </Metadata>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
       </DisplayClaims>
@@ -484,7 +488,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
 
 1. [ContentDefinitions](contentdefinitions.md) 要素を更新し、LocalizedResources 要素への参照を追加します。
 
-    ```XML
+    ```xml
     <!--
     <BuildingBlocks> -->
       <ContentDefinitions>
@@ -509,17 +513,17 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
 
 1. 最後に、次の入力要求変換を `LocalAccountSignUpWithLogonEmail` および `LocalAccountDiscoveryUsingEmailAddress` 技術プロファイルに追加します。
 
-    ```XML
+    ```xml
     <InputClaimsTransformations>
       <InputClaimsTransformation ReferenceId="GetLocalizedStringsForEmail" />
     </InputClaimsTransformations>
     ```
-    
+
 ## <a name="optional-localize-the-ui"></a>[オプション] UI をローカライズする
 
-Localization 要素を使用すると、ユーザー体験に関するポリシーで複数のロケールや言語をサポートすることができます。 ポリシーでのローカライズのサポートにより、[検証表示コントロールのユーザー インターフェイス要素](localization-string-ids.md#verification-display-control-user-interface-elements)と[ワンタイム パスワードのエラー メッセージ](localization-string-ids.md#one-time-password-error-messages)の両方に言語固有の文字列を使用できます。 次の LocalizedString を LocalizedResources に追加します。 
+Localization 要素を使用すると、ユーザー体験に関するポリシーで複数のロケールや言語をサポートすることができます。 ポリシーでのローカライズのサポートにより、[検証表示コントロールのユーザー インターフェイス要素](localization-string-ids.md#verification-display-control-user-interface-elements)と[ワンタイム パスワードのエラー メッセージ](localization-string-ids.md#one-time-password-error-messages)の両方に言語固有の文字列を使用できます。 次の LocalizedString を LocalizedResources に追加します。
 
-```XML
+```xml
 <LocalizedResources Id="api.custom-email.en">
   <LocalizedStrings>
     ...
@@ -537,10 +541,11 @@ Localization 要素を使用すると、ユーザー体験に関するポリシ�
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="DisplayName">Verification Code</LocalizedString>
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="UserHelpText">Verification code received in the email.</LocalizedString>
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="AdminHelpText">Verification code received in the email.</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Eamil</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
     <!-- Email validation error messages-->
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxNumberOfCodeGenerated">You have exceeded the number of code generation attempts allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">The verification has failed, please try again.</LocalizedString>
@@ -548,7 +553,6 @@ Localization 要素を使用すると、ユーザー体験に関するポリシ�
 </LocalizedResources>
 ```
 
-ローカライズされた文字列を追加した後に、LocalAccountSignUpWithLogonEmail と LocalAccountDiscoveryUsingEmailAddress の技術プロファイルから OTP 検証エラー メッセージのメタデータを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -556,3 +560,5 @@ Localization 要素を使用すると、ユーザー体験に関するポリシ�
 
 - [カスタム メール確認 - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 - カスタム REST API や任意の HTTP ベース SMTP メール プロバイダーの使用方法については、「[Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する](restful-technical-profile.md)」を参照してください。
+
+::: zone-end

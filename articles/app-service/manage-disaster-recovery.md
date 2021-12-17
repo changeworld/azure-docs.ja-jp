@@ -4,12 +4,12 @@ description: Azure App Service によって、ビジネス継続性とディザ�
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 418c5077a685e8f5289644f4652638e605b6d456
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87073747"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240473"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service アプリを別のリージョンに移動する
 
@@ -29,8 +29,8 @@ App Service リソースはリージョン固有のものであり、リージ�
 - [App Service プラン](overview-hosting-plans.md)
 - [デプロイ スロット](deploy-staging-slots.md)
 - [Azure で購入したカスタム ドメイン](manage-custom-dns-buy-domain.md)
-- [SSL 証明書](configure-ssl-certificate.md)
-- [Azure Virtual Network の統合](web-sites-integrate-with-vnet.md)
+- [TLS/SSL 証明書](configure-ssl-certificate.md)
+- [Azure Virtual Network の統合](./overview-vnet-integration.md)
 - [ハイブリッド接続](app-service-hybrid-connections.md)。
 - [マネージド ID](overview-managed-identity.md)
 - [バックアップの設定](manage-backup.md)
@@ -47,7 +47,7 @@ App Service リソースはリージョン固有のものであり、リージ�
 
 1. **[バックアップの復元]** ページで、次の表に従って復元操作を構成します。 完了したら、 **[OK]** をクリックします。
 
-   | 設定 | 値 | 説明 |
+   | 設定 | [値] | 説明 |
    |-|-|-|
    | **スナップショット (プレビュー)** | スナップショットを選択します。 | 2 つの最新のスナップショットを使用できます。 |
    | **復元先** | **既存のアプリ** | **[Click here to change the restore destination app]\(復元先のアプリを変更するにはここをクリックします\)** という下の注意をクリックし、ターゲットアプリを選択します。 ディザスター シナリオでは、別の Azure リージョンのアプリにのみスナップショットを復元できます。 |

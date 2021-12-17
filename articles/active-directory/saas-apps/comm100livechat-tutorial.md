@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 08/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 9636c8cbb517c7aece450f53cfc37e4ddd9803b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51c4405a24d295a1dd992f3456f65f9f6ce24230
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92455495"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324103"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-comm100-live-chat"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Comm100 Live Chat の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "92455495"
 * Comm100 Live Chat にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Comm100 Live Chat に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,47 +37,46 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Comm100 Live Chat では、**SP** によって開始される SSO がサポートされます
+* Comm100 Live Chat では、**SP** Initiated SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
-## <a name="adding-comm100-live-chat-from-the-gallery"></a>ギャラリーから Comm100 Live Chat を追加する
+## <a name="add-comm100-live-chat-from-the-gallery"></a>ギャラリーから Comm100 Live Chat を追加する
 
 Azure AD への Comm100 Live Chat の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Comm100 Live Chat を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Comm100 Live Chat**」と入力します。
 1. 結果ウィンドウで **Comm100 Live Chat** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on-for-comm100-live-chat"></a>Comm100 Live Chat の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-comm100-live-chat"></a>Comm100 Live Chat の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Comm100 Live Chat に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと Comm100 Live Chat の関連ユーザーの間で、リンク関係を確立する必要があります。
 
-Comm100 Live Chat で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
+Comm100 Live Chat に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+   1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+   1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Comm100 Live Chat の SSO の構成](#configure-comm100-live-chat-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Comm100 Live Chat のテスト ユーザーの作成](#create-comm100-live-chat-test-user)** - Azure AD の B.Simon にリンクさせるために、対応するユーザーを Comm100 Live Chat で作成します。
+   1. **[Comm100 Live Chat のテスト ユーザーの作成](#create-comm100-live-chat-test-user)** - Azure AD の B.Simon にリンクさせるために、対応するユーザーを Comm100 Live Chat で作成します。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Comm100 Live Chat** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Comm100 Live Chat** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
     **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.comm100.com/AdminManage/LoginSSO.aspx?siteId=<SITEID>` という形式で URL を入力します。
 
@@ -123,13 +120,7 @@ Comm100 Live Chat で Azure AD SSO を構成してテストするには、次の
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Comm100 Live Chat]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
@@ -140,15 +131,15 @@ Comm100 Live Chat で Azure AD SSO を構成してテストするには、次の
 
 1. ページの右上の **[My Account]\(マイ アカウント\)** をクリックします。
 
-   ![Comm100 Live Chat のマイ アカウント](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
+   ![Comm100 Live Chat のマイ アカウント。](./media/comm100livechat-tutorial/account.png)
 
 1. メニューの左側にある **[セキュリティ]** をクリックし、 **[Agent Single Sign-On]\(エージェント シングル サインオン\)** をクリックします。
 
-   ![[セキュリティ] と [Agent Single Sign-On]\(エージェント シングル サインオン\) が強調表示された左側のアカウント メニューを示すスクリーンショット。](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+   ![[セキュリティ] と [Agent Single Sign-On]\(エージェント シングル サインオン\) が強調表示された左側のアカウント メニューを示すスクリーンショット。](./media/comm100livechat-tutorial/security.png)
 
 1. **[Agent Single Sign-On]\(エージェント シングル サインオン\)** ページで、次の手順を実行します。
 
-   ![Comm100 Live Chat のセキュリティ](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
+   ![Comm100 Live Chat のセキュリティ。](./media/comm100livechat-tutorial/certificate.png)
 
    a. 強調表示されている最初のリンクをコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** ボックスに貼り付けます。
 
@@ -170,15 +161,15 @@ Azure AD ユーザーが Comm100 Live Chat にサインインできるように�
 
 2. ページの右上の **[My Account]\(マイ アカウント\)** をクリックします。
 
-    ![Comm100 Live Chat のマイ アカウント](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
+    ![Comm100 Live Chat のマイ アカウント。](./media/comm100livechat-tutorial/account.png)
 
 3. メニューの左側にある **[Agents]\(エージェント\)** をクリックし、 **[New Agent]\(新規エージェント\)** をクリックします。
 
-    ![Comm100 Live Chat のエージェント](./media/comm100livechat-tutorial/tutorial_comm100livechat_agent.png)
+    ![Comm100 Live Chat のエージェント。](./media/comm100livechat-tutorial/agent.png)
 
 4. **[New Agent]\(新規エージェント\)** ページで、次の手順を実行します。
 
-    ![Comm100 Live Chat の新規エージェント](./media/comm100livechat-tutorial/tutorial_comm100livechat_newagent.png)
+    ![Comm100 Live Chat の新規エージェント。](./media/comm100livechat-tutorial/new-agent.png)
 
     a. a. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **B.simon\@contoso.com**) を入力します。
 
@@ -194,16 +185,14 @@ Azure AD ユーザーが Comm100 Live Chat にサインインできるように�
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [Comm100 Live Chat] タイルをクリックすると、SSO を設定した Comm100 Live Chat に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Comm100 Live Chat のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+* Comm100 Live Chat のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Microsoft マイ アプリを使用することができます。 マイ アプリ で [Comm100 Live Chat] タイルをクリックすると、Comm100 Live Chat のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
-
-- [Azure AD で Comm100 Live Chat を試す](https://aad.portal.azure.com/)
+Comm100 Live Chat を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

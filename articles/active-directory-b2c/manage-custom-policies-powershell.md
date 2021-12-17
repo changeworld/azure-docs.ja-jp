@@ -2,20 +2,20 @@
 title: PowerShell を使用してカスタム ポリシーを管理する
 titleSuffix: Azure AD B2C
 description: Azure AD B2C のカスタム ポリシーをプログラムで管理するには、Azure Active Directory (Azure AD) PowerShell コマンドレットを使用します。 PowerShell を使用してカスタム ポリシーの作成、読み取り、更新、削除を行います。
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: cbe465c41363e8c0779440affeae78f999b4632d
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 4a10b8f2d8c06056a986e99852ba5b822dcb3df9
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257434"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041749"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure PowerShell を使用して Azure AD B2C のカスタム ポリシーを管理する
 

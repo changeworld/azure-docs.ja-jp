@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: e8ad6d072af6979eb8509068c1dcd239e7840950
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4ad54fe95bc646d7ed3c96ad901ae2ba1337ab7b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598016"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251340"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用のライブラリを管理する
 ライブラリでは、プログラムまたはプロジェクトに含めることができる再利用可能なコードが提供されます。 
@@ -39,8 +39,8 @@ Synapse では、ワークスペース パッケージをカスタムまたは�
 
 ワークスペース ライブラリを管理する方法の詳細については、次の操作方法ガイドをご覧ください。
 
-- [Python ワークスペース パッケージ (プレビュー):](./apache-spark-manage-python-packages.md#install-wheel-files) Python wheel ファイルをワークスペース パッケージとしてアップロードし、後からこれらのパッケージを特定のサーバーレス Apache Spark プールに追加します。
-- [Scala または Java ワークスペース パッケージ (プレビュー):](./apache-spark-manage-scala-packages.md#workspace-packages) Scala および Java jar ファイルをワークスペース パッケージとしてアップロードし、後からこれらのパッケージを特定のサーバーレス Apache Spark プールに追加します。
+- [Python ワークスペース パッケージ:](./apache-spark-manage-python-packages.md#install-wheel-files) Python wheel ファイルをワークスペース パッケージとしてアップロードし、後からこれらのパッケージを特定のサーバーレス Apache Spark プールに追加します。
+- [Scala および Java のワークスペース パッケージ: ](./apache-spark-manage-scala-packages.md#workspace-packages) Scala と Java の jar ファイルをワークスペース パッケージとしてアップロードしてから、これらのパッケージを特定のサーバーレス Apache Spark プールに追加します。
 
 ## <a name="pool-packages"></a>プール パッケージ
 場合によっては、特定の Apache Spark プールで使用されるパッケージのセットを標準化する必要があります。 この標準化は、チームの複数のユーザーが同じパッケージをよくインストールするという場合に便利です。 
@@ -63,7 +63,7 @@ Azure Synapse Analytics のプール管理機能を使用すると、特定の�
 
 セッション スコープのパッケージを管理する方法の詳細については、次の操作方法ガイドをご覧ください。
 
-- [Python セッション パッケージ (プレビュー):](./apache-spark-manage-python-packages.md) セッションの開始時に Conda *environment.yml* を提供して、一般的なリポジトリから追加の Python パッケージをインストールします。 
+- [Python セッション パッケージ:](./apache-spark-manage-python-packages.md) セッション開始時に Conda *environment.yml* を使用して、よく利用されるリポジトリから追加の Python パッケージをインストールします。 
 - [Scala または Java セッション パッケージ:](./apache-spark-manage-scala-packages.md) セッションの開始時に、`%%configure` を使用して、インストールする jar ファイルの一覧を指定します。
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,67 +1,56 @@
 ---
-title: Azure SQL データを検索する
+title: Azure SQL のインデックス データ
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search のフルテキスト検索用のインデクサーを使用して Azure SQL Database または SQL Managed Instance からデータをインポートします。 この記事では、接続、インデクサーの構成、およびデータの取り込みについて説明します。
+description: Azure Cognitive Search でのフルテキスト検索用にコンテンツとメタデータのインデックス作成を自動化するように Azure SQL インデクサーを設定します。
 manager: nitinme
 author: mgottein
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 04e4801c26b0ac8ef91af0b028d9dc2bb9a3cd1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/26/2021
+ms.openlocfilehash: 27cebeb9eaff63d9acb7976cac5a8837cca5e702
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358628"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983286"
 ---
-# <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL に接続し、Azure Cognitive Search インデクサーを使用してコンテンツのインデックスを作成する
+# <a name="index-data-from-azure-sql"></a>Azure SQL のインデックス データ
 
-[Azure Search インデックス](search-what-is-an-index.md)を照会するには、先に Azure Cognitive Search インデックスにデータを入力する必要があります。 データが Azure SQL Database または SQL Managed Instance に存在する場合は、**Azure SQL Database 用 Azure Cognitive Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これにより、記述するコードと対処するインフラストラクチャが減ります。
+この記事では、コンテンツを抽出して Azure Cognitive Search で検索できるようにするために、Azure SQL インデクサーを構成する方法について説明します。 このワークフローでは、Azure Cognitive Search の検索インデックスを作成し、それを Azure SQL Database と Azure SQL マネージド インスタンスから抽出された既存のコンテンツと共にロードします。
 
-この記事では[インデクサー](search-indexer-overview.md)を使用するしくみだけでなく、Azure SQL Database または SQL Managed Instance でのみ使用できる機能 (統合された変更追跡など) についても説明します。 
+この記事では[インデクサー](search-indexer-overview.md)を使用するしくみだけでなく、Azure SQL Database または SQL Managed Instance でのみ使用できる機能 (統合された変更追跡など) についても説明します。
 
-Azure SQL Database と SQL Managed Instance に加え、Azure Cognitive Search では [Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Azure Table Storage](search-howto-indexing-azure-tables.md) 用のインデクサーも用意されています。 その他のデータ ソースについてのサポートを希望する場合は、[Azure Cognitive Search フィードバック フォーラム](https://feedback.azure.com/forums/263029-azure-search/)でフィードバックをお寄せください。
+Azure SQL のインデクサーは、次の任意のクライアントを使用して設定できます。
 
-## <a name="indexers-and-data-sources"></a>インデクサーとデータ ソース
-
-**データ ソース** では、インデックスを作成するデータ、データにアクセスするための資格情報、およびデータの変更 (新しい行、変更された行、削除された行) を効率よく識別するためのポリシーを指定します。 データ ソースは複数のインデクサーで使用できるように独立したリソースとして定義します。
-
-**インデクサー** は、単一のデータ ソースと検索対象のインデックスをつなげるリソースです。 インデクサーは次のように使用されます。
-
-* 1 回限りのデータのコピーを実行して、インデックスを作成する。
-* スケジュールに従ってデータ ソースの変更とインデックスを更新する。
-* 必要に応じて実行し、インデックスを更新する。
-
-1 つのインデクサーで使用できるのは、1 つのテーブルまたはビューのみですが、複数の検索インデックスを設定する必要がある場合は、複数のインデクサーを作成することができます。 概念について詳しくは、[インデクサー操作の一般的なワークフロー](/rest/api/searchservice/Indexer-operations#typical-workflow)に関する記事をご覧ください。
-
-Azure SQL インデクサーのセットアップと構成には次を使用できます。
-
-* [Azure Portal](https://portal.azure.com) のデータのインポート ウィザード
+* [Azure Portal](https://ms.portal.azure.com)
+* Azure Cognitive Search [REST API](/rest/api/searchservice/Indexer-operations)
 * Azure Cognitive Search [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
-* Azure Cognitive Search [REST API](/rest/api/searchservice/indexer-operations)
 
-この記事では、REST API を使用して、**インデクサー** と **データソース** を作成します。
+この記事では、REST API を使用します。 
 
-## <a name="when-to-use-azure-sql-indexer"></a>Azure SQL インデクサーの使用に適した場合
-データに関連する複数の要因により、Azure SQL インデクサーを使用するのが適切な場合と、適切ではない場合があります。 データが次の要件を満たす場合、Azure SQL インデクサーを使用できます。
+## <a name="prerequisites"></a>前提条件
 
-| 条件 | 詳細 |
-|----------|---------|
-| データが単一のテーブルまたはビューのものである | データが複数のテーブルに分散している場合は、データの 1 つのビューを作成できます。 ただし、ビューを使用する場合は、SQL Server の統合変更検出を使用して、インデックスを増分変更で更新することはできません。 詳細については、後の「[新しい行、変更された行、削除された行の取得](#CaptureChangedRows)」を参照してください。 |
-| データ型に互換性がある | Azure Cognitive Search インデックスでは、SQL のほとんどの型がサポートされていますが、すべてではありません。 一覧については、「[データ型間のマッピング](#TypeMapping)」を参照してください。 |
-| リアルタイムのデータ同期は必要ない | インデクサーがテーブルのインデックスを作成し直すのに、最大で 5 分かかります。 データが頻繁に変更され、秒単位または 1 分以内に変更をインデックスに反映する必要がある場合は、[REST API](/rest/api/searchservice/AddUpdate-or-Delete-Documents) または [.NET SDK](./search-get-started-dotnet.md) を使用して、更新された行を直接プッシュすることをお勧めします。 |
-| インデックスの増分作成が可能 | データ セットが大きく、スケジュールに従ってインデクサーを実行する場合は、Azure Cognitive Search により、新しい、変更された、または削除された行を効率的に特定できます。 非増分のインデックス作成は、オンデマンドでインデックスを作成 (スケジュールされていない) するか、100,000 未満の行のインデックスを作成する場合にのみ使用できます。 詳細については、後の「[新しい行、変更された行、削除された行の取得](#CaptureChangedRows)」を参照してください。 |
+* データが単一のテーブルまたはビューのものであること。 データが複数のテーブルに分散している場合は、データの 1 つのビューを作成できます。 ビューを使用することの欠点は、SQL Server に統合された変更検出を使用して、インデックスを増分変更で更新できないことです。 詳細については、後の「[新しい行、変更された行、削除された行の取得](#CaptureChangedRows)」を参照してください。
 
-> [!NOTE] 
-> Azure Cognitive Search では SQL Server 認証のみがサポートされています。 Azure Active Directory パスワード認証のサポートが必要な場合は、こちらの [UserVoice の提案](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica)に投票してください。
+* データ型には互換性が必要です。 検索インデックスでは、SQL のほとんどの型がサポートされていますが、すべてではありません。 一覧については、「[データ型間のマッピング](#TypeMapping)」を参照してください。
+
+* SQL マネージド インスタンスへの接続はパブリック エンドポイントを介して行われる必要があります。 詳細については、[パブリック エンドポイント経由のインデクサーの接続](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)に関する記事を参照してください。
+
+* Azure 仮想マシン上の SQL Serverへの接続では、セキュリティ証明書を手動で設定する必要があります。 詳細については、[Azure VM 上の SQL Server へのインデクサーの接続](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)に関する記事を参照してください。
+
+リアルタイムのデータ同期をアプリケーションの要件にすることはできません。 インデクサーがテーブルのインデックスを作成し直すのに、最大で 5 分かかります。 データが頻繁に変更され、秒単位または 1 分以内に変更をインデックスに反映する必要がある場合は、[REST API](/rest/api/searchservice/AddUpdate-or-Delete-Documents) または [.NET SDK](search-get-started-dotnet.md) を使用して、更新された行を直接プッシュすることをお勧めします。
+
+インデックスの増分作成が可能です。 データ セットが大きく、スケジュールに従ってインデクサーを実行する場合は、Azure Cognitive Search により、新しい、変更された、または削除された行を効率的に特定できます。 非増分のインデックス作成は、オンデマンドでインデックスを作成 (スケジュールされていない) するか、100,000 未満の行のインデックスを作成する場合にのみ使用できます。 詳細については、後の「[新しい行、変更された行、削除された行の取得](#CaptureChangedRows)」を参照してください。
+
+Azure Cognitive Search では、接続文字列にユーザー名とパスワードを指定する SQL Server 認証がサポートされています。 または、マネージド ID を設定し、Azure ロールを使用して接続時の資格情報を省略することもできます。 詳細については、[マネージド ID を使用したインデクサー接続の設定](search-howto-managed-identities-sql.md)に関する記事を参照してください。
 
 ## <a name="create-an-azure-sql-indexer"></a>Azure SQL インデクサーの作成
 
 1. データ ソースを作成します。
 
-   ```
+   ```http
     POST https://myservice.search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
@@ -82,7 +71,7 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
 
 3. 名前を指定し、データ ソースとターゲット インデックスを参照することによって、インデクサーを作成します。
 
-   ```
+   ```http
     POST https://myservice.search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
@@ -96,7 +85,7 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
 
 この方法で作成されたインデクサーには、スケジュールがありません。 作成すると自動的に 1 回実行されます。 **インデクサー実行** 要求を使用して、いつでも再び実行できます。
 
-```
+```http
     POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2020-06-30
     api-key: admin-key
 ```
@@ -107,16 +96,16 @@ Azure サービスにデータベースへの接続を許可することが必�
 
 インデクサーの状態および実行履歴 (インデックスを作成された項目の数、エラーなど) を監視するには、 **インデクサーの状態** 要求を使用します。
 
-```
+```http
     GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2020-06-30
     api-key: admin-key
 ```
 
 応答は、次のようになります。
 
-```
+```json
     {
-        "\@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
+        "@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
         "status":"running",
         "lastResult": {
             "status":"success",
@@ -151,9 +140,10 @@ Azure サービスにデータベースへの接続を許可することが必�
 応答の詳細については、「 [Get Indexer Status (インデクサーの状態の取得)](/rest/api/searchservice/get-indexer-status)
 
 ## <a name="run-indexers-on-a-schedule"></a>スケジュールに従ったインデクサーの実行
+
 スケジュールに従って定期的に実行するようにインデクサーを調整することもできます。 そのためには、インデクサーを作成または更新するときに、**schedule** プロパティを追加します。 次の例では、インデクサーを更新する PUT 要求を示します。
 
-```
+```http
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
@@ -176,6 +166,7 @@ Azure サービスにデータベースへの接続を許可することが必�
 Azure Cognitive Search では **増分インデックス作成** を使用することで、インデクサーを実行するたびにテーブルまたはビュー全体のインデックスを再作成する必要を回避できます。 Azure Cognitive Search は、増分インデックス作成をサポートする 2 つの変更検出ポリシーを備えています。 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 統合変更追跡ポリシー
+
 SQL データベースが [変更追跡](/sql/relational-databases/track-changes/about-change-tracking-sql-server)をサポートする場合、 **SQL 統合変更追跡ポリシー** の使用が推奨されます。 これは最も効率的なポリシーです。 また、テーブルに明示的な "論理削除" 列を追加しなくても、Azure Cognitive Search で削除済み行を特定できます。
 
 #### <a name="requirements"></a>必要条件 

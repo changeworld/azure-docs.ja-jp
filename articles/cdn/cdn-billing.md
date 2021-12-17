@@ -3,7 +3,7 @@ title: Azure CDN での課金について | Microsoft Docs
 description: 課金リージョン、配信料金、コストの管理方法など、Azure Content Delivery Network によってホストされているコンテンツの課金構造について説明します。
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
-ms.author: allensu
-ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: c592be1445b874eb4535ac0f0082bf735832ebb2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96018683"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426622"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Azure CDN での課金について
 

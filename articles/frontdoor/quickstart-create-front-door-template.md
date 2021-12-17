@@ -12,15 +12,13 @@ ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: de8a592f6eecbb43b58a044096e8ba2e0f9b5973
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell, subject-armqs, mode-arm
+ms.openlocfilehash: 6e2b5137096e407a86011ed0ee08ed7bf45c4f21
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538999"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073094"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>クイック スタート」を参照してください。ARM テンプレートを使用して Front Door を作成する
 
@@ -30,7 +28,7 @@ ms.locfileid: "107538999"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、**[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-front-door-create-basic%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ffront-door-create-basic%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,11 +37,11 @@ ms.locfileid: "107538999"
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-front-door-create-basic)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/front-door-create-basic)からのものです。
 
 このクイックスタートでは、1 つのバックエンドと、`/*` に一致する 1 つの既定のパスを使用して、Front Door 構成を作成します。
 
-:::code language="json" source="~/quickstart-templates/101-front-door-create-basic/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/front-door-create-basic/azuredeploy.json":::
 
 テンプレートには、1 つの Azure リソースが定義されています。
 
@@ -56,7 +54,7 @@ ms.locfileid: "107538999"
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-front-door-create-basic/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/front-door-create-basic/azuredeploy.json"
 
     $resourceGroupName = "${projectName}rg"
 

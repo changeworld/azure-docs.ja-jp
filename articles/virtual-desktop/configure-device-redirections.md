@@ -1,21 +1,21 @@
 ---
 title: デバイスのリダイレクトを構成する - Azure
-description: Windows Virtual Desktop でのデバイスのリダイレクトを構成する方法。
+description: Azure Virtual Desktop でのデバイスのリダイレクトを構成する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5eca75da57027789a06259e22e7c6cd5231404b6
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 570983229c16fa9c01d14bd7575d0720a7197191
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448153"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756547"
 ---
 # <a name="configure-device-redirections"></a>デバイスのリダイレクトを構成する
 
-Windows Virtual Desktop 環境でのデバイスのリダイレクトを構成すると、プリンター、USB デバイス、マイク、およびその他の周辺機器をリモート セッションで使用できます。 デバイスのリダイレクトによっては、リモート デスクトップ プロトコル (RDP) のプロパティとグループ ポリシー設定の両方に対する変更が必要になる場合があります。
+Azure Virtual Desktop 環境でのデバイスのリダイレクトを構成すると、プリンター、USB デバイス、マイク、およびその他の周辺機器をリモート セッションで使用できます。 デバイスのリダイレクトによっては、リモート デスクトップ プロトコル (RDP) のプロパティとグループ ポリシー設定の両方に対する変更が必要になる場合があります。
 
 ## <a name="supported-device-redirections"></a>サポートされるデバイスのリダイレクト
 
@@ -53,7 +53,7 @@ PowerShell または Azure portal を使用してホスト プール用の RDP �
 >[!NOTE]
 >`camerastoredirect:s:` プロパティが無効になっている場合でも、ローカル カメラは `devicestoredirect:s:` プロパティを介してリダイレクトされる可能性があります。 カメラのリダイレクトを完全に無効にするには、`camerastoredirect:s:` を設定し、`devicestoredirect:s:` を設定するか、カメラを含まないプラグ アンド プレイ デバイスのサブセットを定義します。
 
-KSCATEGORY_VIDEO_CAMERA インターフェイスのセミコロンで区切られた一覧 (`camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` など) を使用して、特定のカメラをリダイレクトすることもできます。 
+KSCATEGORY_VIDEO_CAMERA インターフェイスのセミコロンで区切られた一覧 (`camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` など) を使用して、特定のカメラをリダイレクトすることもできます。
 
 ### <a name="clipboard-redirection"></a>クリップボードのリダイレクト
 
@@ -100,6 +100,8 @@ COM ポートのリダイレクトを構成するには、次の RDP プロパ�
 - `drivestoredirect:s:`: ローカル ドライブのリダイレクトを無効にします。
 
 セミコロン区切りの一覧 (`drivestoredirect:s:C:;E:;` など) を使用して、特定のドライブを選択することもできます。
+
+Web クライアントのファイル転送を有効にするには、`drivestoredirect:s:*` を設定します。 この RDP プロパティに他の値を設定した場合、Web クライアントのファイル転送は無効になります。
 
 ### <a name="printer-redirection"></a>プリンターのリダイレクト
 

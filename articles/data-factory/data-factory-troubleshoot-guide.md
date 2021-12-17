@@ -1,27 +1,30 @@
 ---
-title: Azure Data Factory のトラブルシューティング | Microsoft Docs
-description: Azure Data Factory における外部の制御アクティビティのトラブルシューティング方法について説明します。
+title: 一般的なトラブルシューティング
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Azure Synapse Analytics パイプラインで外部の制御アクティビティのトラブルシューティングを行う方法について説明します。
 author: nabhishek
 ms.service: data-factory
+ms.subservice: troubleshooting
+ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 12/30/2020
+ms.date: 09/30/2021
 ms.author: abnarain
-ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec238a018dea8940143aa6a2483c0e7dfa0d3d63
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382805"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705617"
 ---
-# <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング
+# <a name="troubleshoot-azure-data-factory-and-synapse-pipelines"></a>Azure Data Factory と Synapse パイプラインのトラブルシューティング
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory における外部の制御アクティビティの一般的なトラブルシューティング方法について説明します。
+この記事では、Azure Data Factory と Synapse パイプラインにおける外部の制御アクティビティの一般的なトラブルシューティング方法について説明します。
 
 ## <a name="connector-and-copy-activity"></a>コネクタとコピー アクティビティ
 
-コピー アクティビティの使用時にエラーが発生したなど、コネクタに関する問題については、「[Azure Data Factory コネクタのトラブルシューティング](connector-troubleshoot-guide.md)」を参照してください。
+Copy アクティビティの使用時にエラーが発生したなど、コネクタに関する問題については、「[コネクタのトラブルシューティング](connector-troubleshoot-guide.md)」を参照してください。
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
@@ -107,6 +110,14 @@ ms.locfileid: "100382805"
 
 - **推奨事項**:ワークスペースで必要なアクセス許可がユーザーにあることを確認します。
 
+<br/> 
+
+- **メッセージ**: `Job is not fully initialized yet. Please retry later.`
+
+- **原因**: ジョブが初期化されていません。
+
+- **推奨**: しばらく待ってから、後でもう一度お試しください。
+
 ### <a name="error-code-3203"></a>エラー コード:3203
 
 - **メッセージ**: `The cluster is in Terminated state, not available to receive jobs. Please fix the cluster or retry later.`
@@ -131,6 +142,20 @@ ms.locfileid: "100382805"
 
 - **推奨事項**:セルフホステッド統合ランタイムを使用している場合は、統合ランタイム ノードからのネットワーク接続が信頼できることを確認してください。 Azure 統合ランタイムを使用している場合、通常は再試行すると機能します。
  
+### <a name="the-boolean-run-output-starts-coming-as-string-instead-of-expected-int"></a>ブール値の実行出力が、予期される int ではなく文字列として開始される
+
+- **現象**: ブール値の実行出力が、予期される int (`0` や `1` など) ではなく、文字列 (`"0"` や `"1"` など) として開始されます。
+
+   :::image type="content" source="media/data-factory-troubleshoot-guide/databricks-pipeline.png" alt-text="Databricks パイプラインのスクリーン ショット。":::
+
+    この出力に依存するパイプラインが失敗し始めた 2021 年 9 月 28 日の午前 9 時頃に、この変更に気付きました。 パイプラインに変更は行われておらず、障害の前まで、ブール値の出力が予想通り行われていました。 
+
+   :::image type="content" source="media/data-factory-troubleshoot-guide/old-and-new-output.png" alt-text="出力の違いのスクリーンショット。":::
+
+- **原因**: この問題は、最近の変更 (設計による) が原因で発生します。 変更後、結果が 0 で始まる数値の場合、Azure Data Factory によって数値が 8 進数に変換されますが、これはバグです。 この数値は常に 0 か 1 で、変更前に問題が発生したことはありません。 そのため、8 進数の変換を修正するには、文字列出力を Notebook の実行からそのまま渡します。 
+
+- **推奨事項**: **if** 条件を `if(value=="0")` などに変更します。
+
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
 次の表は、U-SQL について記載したものです。
@@ -149,7 +174,7 @@ ms.locfileid: "100382805"
 
 - **原因**:このエラーは、Data Lake Analytics のスロットリングに起因しています。
 
-- **推奨事項**:Data Lake Analytics に送信されるジョブの数を減らします。 アクティビティに対する Data Factory のトリガーとコンカレンシーの設定を変更するか、Data Lake Analytics の上限を引き上げます。
+- **推奨事項**:Data Lake Analytics に送信されるジョブの数を減らします。 アクティビティに対するトリガーとコンカレンシーの設定を変更するか、Data Lake Analytics の上限を引き上げます。
 
 <br/> 
 
@@ -157,7 +182,7 @@ ms.locfileid: "100382805"
 
 - **原因**:このエラーは、Data Lake Analytics のスロットリングに起因しています。
 
-- **推奨事項**:Data Lake Analytics に送信されるジョブの数を減らします。 アクティビティに対する Data Factory のトリガーとコンカレンシーの設定を変更するか、Data Lake Analytics の上限を引き上げます。
+- **推奨事項**:Data Lake Analytics に送信されるジョブの数を減らします。 アクティビティに対するトリガーとコンカレンシーの設定を変更するか、Data Lake Analytics の上限を引き上げます。
 
 ### <a name="error-code-2705"></a>エラー コード:2705
 
@@ -223,7 +248,7 @@ ms.locfileid: "100382805"
 
 - **メッセージ**: `Response Content is not a valid JObject.`
 
-- **原因**:呼び出した Azure 関数の応答で JSON ペイロードが返されませんでした。 Azure Data Factory (ADF) Azure 関数アクティビティでは、JSON 応答コンテンツのみがサポートされます。
+- **原因**:呼び出した Azure 関数の応答で JSON ペイロードが返されませんでした。 Azure Data Factory と Synapse パイプラインの Azure 関数アクティビティでは、JSON 応答コンテンツのみがサポートされます。
 
 - **推奨事項**:有効な JSON ペイロードを返すように Azure 関数を更新します。たとえば、C# 関数は `(ActionResult)new OkObjectResult("{\"Id\":\"123\"}");` を返すことができます
 
@@ -399,14 +424,6 @@ ms.locfileid: "100382805"
 
 - **推奨事項**:Azure portal に進み、自分のストレージを見つけ、接続文字列をコピーしてリンクされたサービスに貼り付けてから再試行します。
 
-### <a name="error-code-2108"></a>エラー コード:2108
-
-- **メッセージ**: `Error calling the endpoint '%url;'. Response status code: '%code;'`
-
-- **原因**:ネットワーク接続、DNS エラー、サーバー証明書の検証、タイムアウトなどの根本的な問題が原因で要求が失敗しました。
-
-- **推奨事項**:Fiddler/Postman を使用して要求を検証してください。
-
 ### <a name="error-code-2110"></a>エラー コード:2110
 
 - **メッセージ**: `The linked service type '%linkedServiceType;' is not supported for '%executorType;' activities.`
@@ -430,14 +447,6 @@ ms.locfileid: "100382805"
 - **原因**:クラウドの種類がサポートされていないか、EndpointSuffix からストレージ用のものを決定できませんでした。
 
 - **推奨事項**:別のクラウドのストレージを使用し、再試行します。
-
-### <a name="error-code-2128"></a>エラー コード:2128
-
-- **メッセージ**: `No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
-
-- **原因**:ネットワーク接続、DNS エラー、サーバー証明書の検証、またはタイムアウト。
-
-- **推奨事項**:要求を試しているエンドポイントが要求に応答していることを確認します。 Fiddler/Postman などのツールを使用できます。
 
 ## <a name="custom"></a>Custom
 
@@ -561,7 +570,7 @@ ms.locfileid: "100382805"
 
 - **推奨事項**:一般的な HDInsight の接続またはネットワーク接続の問題が考えられます。 まず、HDInsight Ambari UI がどのブラウザーからも使用可能であることを確認します。 次に、ご自分の資格情報がまだ有効であることを確認してください。
    
-   セルフホステッド統合ランタイム (IR) を使用している場合は、セルフホステッド IR がインストールされている VM またはマシンからこの手順を実行します。 その後、Data Factory から再びジョブの送信を試みてください。
+   セルフホステッド統合ランタイム (IR) を使用している場合は、セルフホステッド IR がインストールされている VM またはマシンからこの手順を実行します。 その後、再びジョブの送信を試してください。
 
    詳細については、「[Ambari Web UI](../hdinsight/hdinsight-hadoop-manage-ambari.md#ambari-web-ui)」を参照してください。
 
@@ -571,7 +580,7 @@ ms.locfileid: "100382805"
 
 - **推奨事項**:資格情報を訂正して、リンクされたサービスを再デプロイしてください。 任意のブラウザーでクラスター URI を開いてサインインを試行することで、まず HDInsight で資格情報が機能することを確認します。 資格情報が機能しない場合は、Azure portal からリセットできます。
 
-   ESP クラスターでは、[セルフ サービスのパスワード リセット](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)を使用してパスワードをリセットすることができます。
+   ESP クラスターでは、[セルフ サービスのパスワード リセット](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)を使用してパスワードをリセットすることができます。
 
  </br>
 
@@ -594,7 +603,7 @@ ms.locfileid: "100382805"
 
 - **原因**:エラー メッセージに `Unable to service the submit job request as templeton service is busy with too many submit job requests` や `Queue root.joblauncher already has 500 applications, cannot accept submission of application` のようなメッセージが含まれている場合は、同時に HDInsight に送信されているジョブの数が多すぎます。
 
-- **推奨事項**:HDInsight に送信されるコンカレント ジョブの数を制限します。 ジョブが同じアクティビティによって送信されている場合は、Data Factory アクティビティのコンカレンシーを参照してください。 同時実行のパイプラインが時間を分散して実行されるようにトリガーを変更してください。
+- **推奨事項**:HDInsight に送信されるコンカレント ジョブの数を制限します。 ジョブが同じアクティビティによって送信されている場合は、アクティビティのコンカレンシーを参照してください。 同時実行のパイプラインが時間を分散して実行されるようにトリガーを変更してください。
 
    [HDInsight のドキュメント](../hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors.md)を参照し、エラーの提案に従って `templeton.parallellism.job.submit` を調整してください。
 
@@ -604,9 +613,9 @@ ms.locfileid: "100382805"
 
 - **原因**:HDInsight のクラスターまたはサービスに問題があります。
 
-- **推奨事項**:このエラーは、実行中のジョブの状態を要求しようとしたときに、ADF が HDInsight クラスターから応答を受信しない場合に発生します。 この問題はクラスター自体に存在する可能性があります。または、HDInsight サービスが停止している可能性があります。
+- **推奨事項**: このエラーは、実行中のジョブの状態を要求しようとしたときに、サービスが HDInsight クラスターから応答を受信しない場合に発生します。 この問題はクラスター自体に存在する可能性があります。または、HDInsight サービスが停止している可能性があります。
 
-   HDInsight のトラブルシューティング ドキュメント (https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide ) を参照するか、サポートに連絡してさらに支援を求めてください。
+   [HDInsight のトラブルシューティング ドキュメント](../hdinsight/hdinsight-troubleshoot-guide.md)を参照するか、Microsoft サポートに問い合わせてさらに支援を求めてください。
 
 ### <a name="error-code-2302"></a>エラー コード:2302
 
@@ -664,7 +673,7 @@ ms.locfileid: "100382805"
 
 - **メッセージ**: `Failed to initialize the HDInsight client for the cluster '%cluster;'. Error: '%message;'`
 
-- **原因**:HDI クラスターの接続情報が間違っているか、指定されたユーザーに必要なアクションを実行するアクセス許可がないか、HDInsight サービスに問題があり、ADF からの要求に応答できなかったことが原因です。
+- **原因**: HDI クラスターの接続情報が間違っているか、指定されたユーザーに必要なアクションを実行するアクセス許可がないか、HDInsight サービスに問題があり、サービスからの要求に応答できなかったことが原因です。
 
 - **推奨事項**:ユーザー情報が正しいことを確認します。さらに、HDI クラスターの Ambari UI を、IR がインストールされている VM からブラウザーで開くことができること (セルフホステッド IR の場合)、または任意のマシンから開くことができること (Azure IR の場合) を確認します。
 
@@ -682,19 +691,19 @@ ms.locfileid: "100382805"
 
 - **メッセージ**: `Failed to submit Spark job. Error: '%message;'`
 
-- **原因**:ADF で、Livy API (livy/batch) を使用して Spark クラスターにバッチを作成しようとしましたが、エラーが表示されました。
+- **原因**: サービスで、Livy API (livy/batch) を使用して Spark クラスターにバッチを作成しようとしましたが、エラーが表示されました。
 
-- **推奨事項**:エラー メッセージに従い、問題を解決します。 これを解決できる十分な情報がない場合、HDI チームに連絡し、バッチ ID とジョブ ID を伝えてください。ID は ADF 監視ページのアクティビティ実行 Output で見つかります。 さらにトラブルシューティングを行うには、バッチ ジョブの完全なログを収集します。
+- **推奨事項**:エラー メッセージに従い、問題を解決します。 これを解決できる十分な情報がない場合、HDI チームに連絡し、バッチ ID とジョブ ID を伝えてください。ID はサービスの [監視] ページのアクティビティの実行の [出力] で見つかります。 さらにトラブルシューティングを行うには、バッチ ジョブの完全なログを収集します。
 
    完全なログを収集する方法の詳細については、「[バッチ ジョブの完全なログを取得する](/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)」を参照してください。
 
 ### <a name="error-code-2312"></a>エラー コード:2312
 
-- **メッセージ**: `Spark job failed, batch id:%batchId;. Please follow the links in the activity run Output from ADF Monitoring page to troubleshoot the run on HDInsight Spark cluster. Please contact HDInsight support team for further assistance.`
+- **メッセージ**: `Spark job failed, batch id:%batchId;. Please follow the links in the activity run Output from the service Monitoring page to troubleshoot the run on HDInsight Spark cluster. Please contact HDInsight support team for further assistance.`
 
 - **原因**:HDInsight Spark クラスターでジョブが失敗しました。
 
-- **推奨事項**:ADF 監視ページのアクティビティ実行 Output にあるリンクにアクセスし、HDInsight Spark クラスターでの実行のトラブルシューティングを行います。 さらに支援が必要であれば、HDInsight サポート チームにお問い合わせください。
+- **推奨事項**: サービスの [監視] ページのアクティビティの実行の [出力] にあるリンクにアクセスし、HDInsight Spark クラスターでの実行をトラブルシューティングします。 さらに支援が必要であれば、HDInsight サポート チームにお問い合わせください。
 
    完全なログを収集する方法の詳細については、「[バッチ ジョブの完全なログを取得する](/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)」を参照してください。
 
@@ -756,7 +765,7 @@ ms.locfileid: "100382805"
 
 - **推奨事項**: 
     1. ブラウザーで HDInsight クラスターの Ambari UI を開いて、資格情報が正しいことを確認します。
-    1. クラスターが仮想ネットワーク (VNet) 内にあり、セルフホステッド IR が使用されている場合、HDI URL は VNet のプライベート URL である必要があり、クラスター名の後に "-int" が指定されている必要があります。
+    1. クラスターが Virtual Network (VNet) 内にあり、セルフホステッド IR が使用されている場合、HDI URL は VNet のプライベート URL である必要があり、クラスター名の後に `-int` が指定されている必要があります。
     
        たとえば、`https://mycluster.azurehdinsight.net/` を `https://mycluster-int.azurehdinsight.net/` に変更します。 `-int` は `mycluster` の後かつ `.azurehdinsight.net` の前にあることに注意してください
     1. クラスターが VNet 内にあり、セルフホステッド IR を使用し、プライベート URL を使用しても接続に失敗する場合は、IR がインストールされている VM に、HDI に接続できない問題があります。 
@@ -764,7 +773,7 @@ ms.locfileid: "100382805"
        IR がインストールされている VM に接続し、ブラウザーで Ambari UI を開きます。 クラスターにプライベート URL を使用します。 この接続はブラウザーから動作するはずです。 動作しない場合、HDInsight サポートにお問い合わせください。
     1. セルフホステッド IR が使用されていない場合、HDI クラスターにパブリック アクセスできるはずです。 ブラウザーで Ambari UI を開き、それが開くことを確認します。 クラスターやクラスター上のサービスに問題がある場合、HDInsight サポート チームに連絡して支援を求めてください。
 
-       テスト接続に合格し、実行が機能するには、ADF のリンクされたサービスで使用されている HDI クラスター URL に ADF IR (セルフホステッドまたは Azure) でアクセスできる必要があります。 この状態は、VM または任意のパブリック マシンでブラウザーからその URL を開くことで確認できます。
+       テスト接続に合格し、実行が機能するには、リンク サービスで使用されている HDI クラスター URL に IR (セルフホステッドまたは Azure) でアクセスできる必要があります。 この状態は、VM または任意のパブリック マシンでブラウザーからその URL を開くことで確認できます。
 
 ### <a name="error-code-2343"></a>エラー コード:2343
 
@@ -778,7 +787,7 @@ ms.locfileid: "100382805"
 
 - **メッセージ**: `Failed to read the content of the hive script. Error: '%message;'`
 
-- **原因**:スクリプト ファイルが存在しないか、ADF でスクリプトの場所に接続できませんでした。
+- **原因**: スクリプト ファイルが存在しないか、サービスでスクリプトの場所に接続できませんでした。
 
 - **推奨事項**:スクリプトが存在し、関連するリンクされたサービスに接続のための適切な資格情報があることを確認します。
 
@@ -786,7 +795,7 @@ ms.locfileid: "100382805"
 
 - **メッセージ**: `Failed to create ODBC connection to the HDI cluster with error message '%message;'.`
 
-- **原因**:ADF で HDI クラスターへの Open Database Connectivity (ODBC) 接続を確立しようとしましたが、エラーが発生して失敗しました。
+- **原因**: サービスで HDI クラスターへの Open Database Connectivity (ODBC) 接続を確立しようとしましたが、エラーが発生して失敗しました。
 
 - **推奨事項**: 
 
@@ -806,7 +815,7 @@ ms.locfileid: "100382805"
 
 - **メッセージ**: `Hive execution through ODBC failed with error message '%message;'.`
 
-- **原因**:ADF から ODBC 接続経由で HDI クラスターに実行のための hive スクリプトが送信され、そのスクリプトが HDI 上で失敗しました。
+- **原因**: サービスから ODBC 接続経由で HDI クラスターに実行のための Hive スクリプトが送信され、そのスクリプトが HDI 上で失敗しました。
 
 - **推奨事項**: 
 
@@ -836,7 +845,7 @@ ms.locfileid: "100382805"
 
 - **原因**:ファイルがあるはずのストレージに接続するための資格情報が間違っているか、ファイルがそこにありません。
 
-- **推奨事項**:このエラーは、ADF が HDI アクティビティに備えて、ジョブを HDI に送信する前にファイルをメイン ストレージにコピーしようとしたときに発生します。 指定の場所にファイルが存在すること、およびストレージ接続が正しいことを確認します。 ADF HDI アクティビティでは、HDI アクティビティに関連付けられているストレージ アカウントの MSI 認証がサポートされていません。そのため、これらのリンクされたサービスに完全なキーが指定されていること、または Azure Key Vault が使用されていることを確認します。
+- **推奨事項**: このエラーは、サービスが HDI アクティビティに備えて、ジョブを HDI に送信する前にファイルをメイン ストレージにコピーしようとしたときに発生します。 指定の場所にファイルが存在すること、およびストレージ接続が正しいことを確認します。 HDI アクティビティでは、HDI アクティビティに関連付けられているストレージ アカウントの MSI 認証がサポートされていません。そのため、これらのリンク サービスに完全なキーが指定されていること、または Azure Key Vault が使用されていることを確認します。
 
 ### <a name="error-code-2351"></a>エラー コード:2351
 
@@ -938,7 +947,7 @@ ms.locfileid: "100382805"
 
 - **メッセージ**: `Failed to create on demand HDI cluster. Cluster name is '%clusterName;'.`
 
-- **原因**:クラスター作成に失敗したが、ADF には HDInsight サービスからエラーが返されませんでした。
+- **原因**: クラスター作成に失敗したが、サービスには HDInsight サービスからエラーが返されませんでした。
 
 - **推奨事項**:Azure portal を開き、指定された名前の HDI リソースを見つけて、プロビジョニング状態を確認します。 さらに支援が必要であれば、HDInsight サポート チームにお問い合わせください。
 
@@ -950,7 +959,7 @@ ms.locfileid: "100382805"
 
 - **推奨事項**:HDInsight オンデマンドのリンクされたサービスの追加ストレージとして Azure Blob Storage アカウントを指定します。
 
-### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>HDInsight ESP クラスターを使用している ADF のリンクされたサービスで SSL エラーが発生しました
+### <a name="ssl-error-when-linked-service-using-hdinsight-esp-cluster"></a>HDInsight ESP クラスターを使用しているリンク サービスで SSL エラーが発生しました
 
 - **メッセージ**: `Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
 
@@ -958,7 +967,7 @@ ms.locfileid: "100382805"
 
 - **解決方法**:パス **Microsoft Integration Runtime\4.0\Shared\ODBC Drivers\Microsoft Hive ODBC Driver\lib** に移動し、DriverConfiguration64.exe を開いて設定を変更できます。
 
-    ![[Use System Trust Store]\(システムの信頼ストアの使用\) をオフにする](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+    :::image type="content" source="./media/connector-troubleshoot-guide/system-trust-store-setting.png" alt-text="[Use System Trust Store]\(システムの信頼ストアの使用\) をオフにする":::
 
 ## <a name="web-activity"></a>Web アクティビティ
 
@@ -968,7 +977,7 @@ ms.locfileid: "100382805"
 
 - **原因**:この問題は、ネットワーク接続、DNS エラー、サーバー証明書の検証、またはタイムアウトが原因で発生します。
 
-- **推奨事項**:要求を試しているエンドポイントが要求に応答していることを確認します。 **Fiddler や Postman** などのツールを使用できます。
+- **推奨事項**:要求を試しているエンドポイントが要求に応答していることを確認します。 **Fiddler、Postman、Netmon、Wireshark** などのツールを使用できます。
 
 ### <a name="error-code-2108"></a>エラー コード:2108
 
@@ -976,7 +985,7 @@ ms.locfileid: "100382805"
 
 - **原因**:ネットワーク接続、DNS エラー、サーバー証明書の検証、タイムアウトなどの根本的な問題が原因で要求が失敗しました。
 
-- **推奨事項**:Fiddler/Postman を使用して要求を検証してください。
+- **推奨事項**: Fiddler、Postman、Netmon、または Wireshark を使用して要求を検証してください。
 
 #### <a name="more-details"></a>詳細
 **Fiddler** を使用して監視対象 Web アプリケーションの HTTP セッションを作成するには:
@@ -987,7 +996,7 @@ ms.locfileid: "100382805"
 
    1. [HTTPS] タブで、 **[Capture HTTPS CONNECTs]\(HTTPS 接続をキャプチャする\)** と **[Decrypt HTTPS traffic]\(HTTPS トラフィックの暗号化を解除する\)** の両方をオンにします。
 
-      ![Fiddler オプション](media/data-factory-troubleshoot-guide/fiddler-options.png)
+      :::image type="content" source="media/data-factory-troubleshoot-guide/fiddler-options.png" alt-text="Fiddler オプション":::
 
 1. お使いのアプリケーションで TLS/SSL 証明書が使用されている場合は、Fiddler の証明書をデバイスに追加します。
 
@@ -1023,16 +1032,25 @@ ms.locfileid: "100382805"
 
 **エラー メッセージ:** `The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
 
-**原因:** 各アクティビティの実行のペイロードには、アクティビティの構成、関連付けられているデータセットとリンクされたサービスの構成 (ある場合)、アクティビティの種類ごとに生成されるシステム プロパティの一部が含まれます。 このようなペイロード サイズの制限は、「[Data Factory の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)」セクションで説明されているように 896 KB です。
+**原因:** 各アクティビティの実行のペイロードには、アクティビティの構成、関連付けられているデータセットとリンクされたサービスの構成 (ある場合)、アクティビティの種類ごとに生成されるシステム プロパティの一部が含まれます。 このようなペイロード サイズの制限は、[Data Factory](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) および [Azure Synapse Analytics](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-synapse-analytics-limits) の Azure の制限のドキュメントで説明されているように 896 KB です。
 
 **推奨事項:** アップストリーム アクティビティの出力または外部から 1 つ以上の大きなパラメーター値を渡す場合、特に制御フロー内のアクティビティ間で実際のデータを渡す場合、この制限に達する可能性があります。 大きなパラメーター値のサイズを減らせるかどうかを確認するか、パイプライン ロジックを調整して、アクティビティ間で値が渡されずにアクティビティ内で処理されるようにします。
+
+### <a name="unsupported-compression-causes-files-to-be-corrupted"></a>サポートされていない圧縮によりファイルが破損する
+
+**現象**: BLOB コンテナーに格納されているファイルを解凍しようとします。 パイプライン内の 1 つのコピー アクティビティに、圧縮の種類が "deflate64" (または任意のサポートされていない種類) に設定されたソースがあります。 このアクティビティは正常に実行され、zip ファイルに格納されたテキスト ファイルが生成されます。 ただし、ファイル内のテキストに問題があり、このファイルは破損しているように見えます。 このファイルをローカルで解凍すると、問題ありません。
+
+**原因**: zip ファイルは "deflate64" のアルゴリズムによって圧縮されていますが、Azure Data Factory の内部 zip ライブラリでは "deflate" のみがサポートされています。 zip ファイルが Windows システムによって圧縮され、ファイル全体のサイズが特定の数値を超える場合、Windows では既定で "deflate64" が使用され、これは Azure Data Factory でサポートされていません。 一方、ファイル サイズが小さいか、または圧縮アルゴリズムの指定をサポートする何らかのサードパーティ製の zip ツールを使用している場合、Windows では既定で "deflate" が使用されます。
+
+> [!TIP]
+> 実際に、「[Azure Data Factory と Synapse Analytics でのバイナリ形式](format-binary.md)」と「[Azure Data Factory および Azure Synapse Analytics での区切りテキスト形式](format-delimited-text.md)」の両方で、"deflate64" 形式は Azure Data Factory でサポートされていないことが明記されています。
 
 ## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングのその他のヘルプについては、次のリソースを参照してください。
 
 * [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-* [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
+* [Data Factory の機能のリクエスト](/answers/topics/azure-data-factory.html)
 * [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
 * [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/)

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b502bbc56d6c9521ec736150fbc0046ff78125
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c19524fc66bbddc00e320c18664f2978a6941d9d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642492"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587501"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>クイックスタート: Azure Blob Storage クライアント ライブラリ v12 と Xamarin
 
@@ -21,31 +21,29 @@ Xamarin で Azure Blob Storage クライアント ライブラリ v12 を使用�
 
 Xamarin で Azure Blob Storage クライアント ライブラリ v12 を使用すると、以下のことができます。
 
-* コンテナーを作成する
-* Azure Storage へ BLOB をアップロードする
-* コンテナー内のすべての BLOB を一覧表示する
-* お使いのデバイスに BLOB をダウンロードする
-* コンテナーを削除する
+- コンテナーを作成する
+- Azure Storage へ BLOB をアップロードする
+- コンテナー内のすべての BLOB を一覧表示する
+- お使いのデバイスに BLOB をダウンロードする
+- コンテナーを削除する
 
 参照リンク:
 
-* [API リファレンス ドキュメント](/dotnet/api/azure.storage.blobs)
-* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
-* [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
-* [サンプル](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+- [API リファレンス ドキュメント](/dotnet/api/azure.storage.blobs)
+- [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+- [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+- [サンプル](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
-* [Mobile Development for .NET ワークロード](/xamarin/get-started/installation/?pivots=windows)がインストールされた Visual Studio または [Visual Studio for Mac](/visualstudio/mac/installation?view=vsmac-2019&preserve-view=true)
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
+- [Mobile Development for .NET ワークロード](/xamarin/get-started/installation/?pivots=windows)がインストールされた Visual Studio または [Visual Studio for Mac](/visualstudio/mac/installation?view=vsmac-2019&preserve-view=true)
 
 ## <a name="setting-up"></a>設定
-    
+
 このセクションでは、Xamarin で Azure Blob Storage クライアント ライブラリ v12 を操作するためのプロジェクトの準備について説明します。
-    
+
 ### <a name="create-the-project"></a>プロジェクトを作成する
 
 1. Visual Studio を開き、空白フォームのアプリを作成します。
@@ -72,7 +70,7 @@ Xamarin で Azure Blob Storage クライアント ライブラリ v12 を使用�
     <Button x:Name="deleteButton" Text="Delete Container" Clicked="Delete_Clicked" IsEnabled="False" />
 
     <Label Text="" x:Name="resultsLabel" HorizontalTextAlignment="Center" Margin="0,20,0,0" TextColor="Red" />
-        
+
 </StackLayout>
 ```
 
@@ -82,9 +80,9 @@ Xamarin で Azure Blob Storage クライアント ライブラリ v12 を使用�
 
 Azure Blob Storage は、大量の非構造化データを格納するために最適化されています。 非構造化データとは、特定のデータ モデルや定義に従っていないデータであり、テキスト データやバイナリ データなどがあります。 Blob Storage には、3 種類のリソースがあります。
 
-* ストレージ アカウント
-* ストレージ アカウント内のコンテナー
-* コンテナー内の BLOB
+- ストレージ アカウント
+- ストレージ アカウント内のコンテナー
+- コンテナー内の BLOB
 
 次の図に、これらのリソースの関係を示します。
 
@@ -92,21 +90,21 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 これらのリソースとやり取りするには、以下の .NET クラスを使用します。
 
-* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。
-* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient):`BlobContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
-* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient):`BlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
-* [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo):`BlobDownloadInfo` クラスは、BLOB のダウンロードによって返されるプロパティとコンテンツを表します。
+- [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。
+- [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient):`BlobContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
+- [BlobClient](/dotnet/api/azure.storage.blobs.blobclient):`BlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
+- [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo):`BlobDownloadInfo` クラスは、BLOB のダウンロードによって返されるプロパティとコンテンツを表します。
 
 ## <a name="code-examples"></a>コード例
 
 以下のサンプル コード スニペットは、Xamarin.Forms アプリで .NET 用 Azure Blob Storage クライアント ライブラリを使用して以下のタスクを実行する方法を示します。
 
-* [クラス レベルの変数を作成する](#create-class-level-variables)
-* [コンテナーの作成](#create-a-container)
-* [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
-* [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
-* [BLOB をダウンロードする](#download-blobs)
-* [コンテナーの削除](#delete-a-container)
+- [クラス レベルの変数を作成する](#create-class-level-variables)
+- [コンテナーの作成](#create-a-container)
+- [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
+- [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
+- [BLOB をダウンロードする](#download-blobs)
+- [コンテナーの削除](#delete-a-container)
 
 ### <a name="create-class-level-variables"></a>クラス レベルの変数を作成する
 
@@ -140,7 +138,7 @@ BlobClient blobClient;
 protected async override void OnAppearing()
 {            
     string containerName = $"quickstartblobs{Guid.NewGuid()}";
-    
+
     client = new BlobServiceClient(storageConnectionString);
     containerClient = await client.CreateBlobContainerAsync(containerName);
 
@@ -206,7 +204,7 @@ async void Download_Clicked(object sender, EventArgs e)
     BlobDownloadInfo downloadInfo = await blobClient.DownloadAsync();
 
     using MemoryStream memoryStream = new MemoryStream();
-    
+
     await downloadInfo.Content.CopyToAsync(memoryStream);
     memoryStream.Position = 0;
 
@@ -276,5 +274,5 @@ BLOB ストレージのサンプル アプリを確認するには、以下に�
 > [!div class="nextstepaction"]
 > [Azure Blob Storage SDK v12 の Xamarin サンプル](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
-* チュートリアル、サンプル、クイック スタート、およびその他のドキュメントについては、[モバイル開発者のための Azure](/azure/mobile-apps) に関するページを参照してください。
-* Xamarin の詳細については、「[Xamarin の概要](/xamarin/get-started/)」を参照してください。
+- チュートリアル、サンプル、クイック スタート、およびその他のドキュメントについては、[モバイル開発者のための Azure](/azure/mobile-apps) に関するページを参照してください。
+- Xamarin の詳細については、「[Xamarin の概要](/xamarin/get-started/)」を参照してください。

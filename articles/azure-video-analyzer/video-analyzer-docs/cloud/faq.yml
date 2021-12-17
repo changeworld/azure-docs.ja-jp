@@ -1,0 +1,73 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Video Analyzer に関する FAQ - Azure
+  description: この記事では、Azure Video Analyzer についてよく寄せられる質問に回答します。
+  ms.service: azure-video-analyzer
+  ms.topic: conceptual
+  ms.date: 11/04/2021
+  ms.openlocfilehash: cc09610dec51c63bc825dff97249689061a44e4a
+  ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/04/2021
+  ms.locfileid: "131563646"
+title: Azure Video Analyzer に関する FAQ
+summary: この記事では、Azure Video Analyzer についてよく寄せられる質問に回答します。
+sections:
+- name: 無視
+  questions:
+  - question: 全般
+    answer: "**パイプライン トポロジ定義で使用できるシステム変数は何ですか。**\n\n| 変数   |  説明  | \n| --- | --- | \n| System.Runtime.DateTime | UTC 時間でインスタンスを表します。通常は、次の形式の日付と時刻として表現されます: <br/>*yyyyMMddTHHmmssZ* | \n| System.Runtime.PreciseDateTime | ミリ秒を含む ISO8601 ファイル準拠の形式で協定世界時 (UTC) の日時インスタンスを表します。形式は次のとおりです:<br/>*yyyyMMddTHHmmss.fffZ* | \n| System.TopologyName    | パイプライン トポロジの名前を表します。 | \n| System.PipelineName | ライブ パイプラインの名前を表します。 | \n\n> [!Note] \n> System.Runtime.DateTime と System.Runtime.PreciseDateTime は、ビデオ シンク ノードで、Azure Video Analyzer ビデオ リソースの名前の一部として使用できません。 これらの変数は、ファイルに名前を付けるために [FileSink](../pipeline.md#file-sink) で使用できます。\n\n**Video Analyzer サービスのライブ パイプラインとバッチ パイプライン ジョブの違いは何ですか?**\n\nライブ トポロジは、名前が示すように、カメラからクラウドへのライブ ビデオの取り込みに使用されます。 バッチ トポロジは、録画されたビデオを Video Analyzer サービスから処理またはエクスポートするために使用されます。 詳細については、[パイプライン](../pipeline.md#pipeline-topologies)と[パイプラインでのノードの使用](../pipeline.md#rules-on-the-use-of-nodes)ルールに関する記事を参照してください。\n\n**Video Analyzer のプライバシー ポリシーとは何ですか。**\n\nVideo Analyzer には、[Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement)が適用されます。 プライバシーに関する声明では、Microsoft が処理する個人データ、Microsoft がそれをどのように処理し、何の目的でそれを処理するかについて説明しています。 プライバシーについて詳しくは、[Microsoft Trust Center](https://www.microsoft.com/trust-center?rtc=1) を参照してください。\n\n**Video Analyzer サービスの AI モデルまたは AI 推論機能はありますか?**\n\n現在、Video Analyzer のクラウド パイプラインでは使用できません。 ただし、Video Analyzer エッジ モジュールは、Stream Analytics、Cognitive Services などの他の Azure IoT Edge モジュールや、イベントハブや Cognitive Services などの他の Azure クラウド サービスと共に使用して、強力なハイブリッド (つまり、エッジとクラウド) アプリケーションを構築できます。 この拡張可能なエッジ モジュールは、オープン ソースの機械学習モデルとトレーニング データを使用して構築された Azure Cognitive Services コンテナーやカスタム エッジ モジュールなど、さまざまな AI エッジ モジュールとシームレスに統合されます。 例については、[こちら](../edge/analyze-live-video-use-your-model-grpc.md)をご覧ください。\n"
+  - question: 構成とデプロイ
+    answer: >
+      **Azure Video Analyzer アカウントを作成する方法**
+
+
+      アカウントを作成するには、Azure Resource Manager (ARM) テンプレートまたは Azure portal を使用します。 Azure Video Analyzer アカウントを作成するには、[こちら](../create-video-analyzer-account.md)を参照してください。
+
+
+      **RTSP カメラがない場合、RTSP ストリームをシミュレートするにはどうしたらいいですか?**
+
+
+      Azure Linux VM を使用して RTSP カメラ シミュレーターをデプロイすることで RTSP ストリームをシミュレートできます。 詳細については、[RTSP カメラ シミュレーター](./get-started-livepipelines-portal.md#deploy-rtsp-camera-simulator)に関するページを参照してください。
+
+
+      **RTSP カメラ シミュレーターにサンプル ビデオ ファイルを追加するにはどうすればいいですか?**
+
+
+      既存の RTSP カメラ シミュレーター メディア フォルダーに新しいビデオ ファイルを追加するには、[こちら](./get-started-livepipelines-portal.md#deploy-rtsp-camera-simulator)を参照してください。
+
+      テストに使用できるサンプル メディア ファイルについては、[メディア データセット](https://github.com/Azure/video-analyzer/tree/main/media)に関する記事を参照してください。
+
+
+      **RTSP シミュレーターは、ライブ パイプラインのテストおよび開発中に使用できますか?**
+
+
+      はい。クイックスタートやチュートリアルに [RTSP カメラ シミュレーター](./get-started-livepipelines-portal.md#deploy-rtsp-camera-simulator)を使用して、学習プロセスをサポートできます。 プロジェクトのシミュレーターのみに依存しないことを強くお勧めします。 運用環境のデプロイを計画する前に、実際の RTSP ソースを使用したテストに投資する必要があります。
+  - question: IP カメラと RTSP 設定からのキャプチャ
+    answer: "**ビデオ ストリームに送信するために、カメラ デバイスで特別な SDK を使用する必要がありますか?**\n\nいいえ。Video Analyzer では、ビデオ ストリーミング用の RTSP (リアルタイム ストリーミング プロトコル) を使用したメディアのキャプチャがサポートされています。これは、ほとんどの IP カメラでサポートされています。 \n\n**RTSP 以外のプロトコルを使用して、Video Analyzer サービスにメディアをプッシュできますか?**\n\nいいえ。Video Analyzer サービスでは現在、IP カメラからビデオをキャプチャするための RTSP のみがサポートされています。 TCP/HTTP 経由の RTSP ストリーミングをサポートするすべてのカメラが動作します。 \n\n**ライブ パイプラインで RTSP ソース URL をリセットまたは更新できますか?**\n\nはい。ライブ パイプラインが \"非アクティブ化\" 状態のときに、RTSP 構成を更新できます。\n"
+  - question: 監視とメトリック
+    answer: >
+      **Video Analyzer サービスを簡単に監視できるツールはありますか?**
+
+
+      診断設定を指定し、ログをストレージ アカウントにアーカイブすることで、サービスによって生成されたイベントとメトリックを監視できます。 監視セクションにアクセスするには、Azure portal で Video Analyzer アカウントに移動します。 詳細については、[このページ](./monitor-log-cloud.md)を参照してください。
+
+
+      **Azure Event Grid を使用してクラウド上のパイプラインを監視できますか?**
+
+
+      いいえ。現在サポートされていません。
+
+
+      **Azure Monitor を使用して、クラウド内のパイプラインの正常性、メトリック、およびパフォーマンスを表示できますか?**
+
+
+      はい、この方法はサポートされています。 詳細については、[Azure Monitor メトリックの概要](../../../azure-monitor/essentials/data-platform-metrics.md)と[監視とログ](./monitor-log-cloud.md)に関する記事をご覧ください。
+  - question: 課金と可用性
+    answer: >
+      **Azure Video Analyzer は、どのように課金されますか。**
+
+
+      課金の詳細については、[Video Analyzer の価格](https://azure.microsoft.com/pricing/details/video-analyzer/)に関するページを参照してください。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n[クイックスタート: Azure Video Analyzer サービスを使ってみる](./get-started-livepipelines-portal.md)"

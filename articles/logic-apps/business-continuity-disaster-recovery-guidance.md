@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.openlocfilehash: f974a99c59b19b5df7bf6ffcc66c2dc133743f0a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3f486e1f46cc4ed21dc3da89d242d50010178e7d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790541"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739212"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure Logic Apps の事業継続とディザスター リカバリー
 
@@ -348,7 +348,7 @@ Azure Logic Apps には、[組み込みのトリガーとアクションに加�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure の回復性の概要](/azure/architecture/framework/resiliency/overview)
+* [信頼性の高い Azure アプリケーションを設計する](/azure/architecture/framework/resiliency/app-design)
 * [特定の Azure サービスの回復性のチェックリスト](/azure/architecture/checklist/resiliency-per-service)
 * [Azure での回復性のためのデータ管理](/azure/architecture/framework/resiliency/data-management)
 * [Azure アプリケーションのバックアップとディザスター リカバリー](/azure/architecture/framework/resiliency/backup-and-recovery)

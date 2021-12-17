@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Kubernetes Service を使用して Web サービスとして Azure Machine Learning のモデルをデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, deploy
+ms.subservice: mlops
+ms.topic: how-to
+ms.custom: contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 09/01/2020
-ms.openlocfilehash: ef9c03b687bbc9b8fe736c872bbde14b8daba899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.openlocfilehash: aa24ce0f540137f516b7de8452a0ca85c684100e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519386"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337209"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 
@@ -37,13 +37,15 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 >
 > Azure Machine Learning の[ローカルの Notebook へのデプロイ](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)に関する記事を参照することもできます
 
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 - Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 
 - ワークスペースに登録されている機械学習モデル。 モデルが登録されていない場合は、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
-- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
+- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-setup-vs-code.md)。
 
 - この記事の __Python__ コード スニペットは、次の変数が設定されていることを前提としています。
 
@@ -70,7 +72,7 @@ Azure Machine Learning では、"デプロイ"は、「プロジェクト リソ
 1. Dockerfile のビルドまたは計算ノードへのダウンロード (Kubernetes 関連)
     1. システムにより、次のハッシュが計算されます。 
         - 基本イメージ 
-        - カスタム Docker の手順 (「[カスタム Docker ベース イメージを使用してモデルをデプロイする](./how-to-deploy-custom-docker-image.md)」を参照してください)
+        - カスタム Docker の手順 (「[カスタム Docker ベース イメージを使用してモデルをデプロイする](./how-to-deploy-custom-container.md)」を参照してください)
         - Conda 定義 YAML ([Azure Machine Learning でのソフトウェア環境の作成と使用](./how-to-use-environments.md)に関するページを参照してください)
     1. システムでは、ワークスペース Azure Container Registry (ACR) の検索で、このハッシュがキーとして使用されます
     1. 見つからない場合、グローバル ACR で一致するものが検索されます
@@ -92,26 +94,35 @@ azureml-fe は、より多くのコアを使用するためのスケールアッ
 
 スケールダウンとスケールインを行うときは、CPU 使用率が使用されます。 CPU 使用率のしきい値に達した場合、フロントエンドでは、まずスケールダウンが行われます。 CPU 使用率がスケールインのしきい値にまで低下した場合は、スケールイン操作が行われます。 スケールアップとスケールアウトは、使用可能なクラスター リソースが十分にある場合にのみ発生します。
 
+<a id="connectivity"></a>
+
 ## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>AKS 推論クラスターの接続要件を理解する
 
 Azure Machine Learning で AKS クラスターを作成またはアタッチすると、次の 2 つのネットワーク モデルのいずれかで AKS クラスターがデプロイされます。
 * Kubenet ネットワーク - AKS クラスターのデプロイ時に、通常はネットワーク リソースが作成され、構成されます。
 * Azure Container Networking Interface (CNI) ネットワーク - AKS クラスターは、既存の仮想ネットワーク リソースと構成に接続されます。
 
-最初のネットワーク モードでは、ネットワークが作成され、Azure Machine Learning service 用に適切に構成されます。 2 番目のネットワーク モードでは、クラスターが既存の仮想ネットワークに接続されるため、特に既存の仮想ネットワークでカスタム DNS を使用している場合は、お客様は AKS 推論クラスターの接続要件に注意し、AKS 推論の DNS 解決と送信接続を確認する必要があります。
+Kubenet ネットワークでは、ネットワークが作成され、Azure Machine Learning service 用に適切に構成されます。 CNI ネットワークでは、接続要件を理解し、AKS 推論のための DNS 解決と送信接続を確認する必要があります。 たとえば、ファイアウォールを使用してネットワーク トラフィックをブロックしている場合があります。
 
-次の図は、AKS 推論のすべての接続要件をキャプチャします。 黒い矢印は実際の通信を表し、青い矢印はドメイン名を表します。このドメイン名は、お客様が管理する DNS で解決されます。
+次の図は、AKS 推論の接続要件を示しています。 黒い矢印は実際の通信を表し、青い矢印はドメイン名を表します。 これらのホストのエントリをファイアウォールまたはカスタム DNS サーバーに追加することが必要になる場合があります。
 
  ![AKS 推論の接続要件](./media/how-to-deploy-aks/aks-network.png)
 
+一般的な AKS 接続要件については、「[Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する](../aks/limit-egress-traffic.md)」を参照してください。
+
 ### <a name="overall-dns-resolution-requirements"></a>全体的な DNS 解決の要件
-既存の VNET 内の DNS 解決は、お客様の管理下にあります。 次の DNS エントリが解決可能である必要があります。
-* \<cluster\>.hcp.\<region\>.azmk8s.io の形式の AKS API サーバー
-* Microsoft Container Registry (MCR): mcr.microsoft.com
-* \<ACR name\>.azurecr.io の形式のお客様の Azure Container Registry (ARC)
-* \<account\>.table.core.windows.net および \<account\>.blob.core.windows.net の形式の Azure Storage アカウント
-* (省略可能) AAD 認証の場合: api.azureml.ms
-* スコアリング エンドポイントのドメイン名。 Azure ML またはカスタム ドメイン名で自動生成されます。 自動生成されたドメイン名は、\<leaf-domain-label \+ auto-generated suffix\>.\<region\>.cloudapp.azure.com のようになります
+
+既存の VNet 内の DNS 解決は、お客様の管理下にあります。 たとえば、ファイアウォールやカスタム DNS サーバーなどです。 次のホストに到達できる必要があります。
+
+| ホスト名 | 使用者 |
+| ----- | ----- |
+| `<cluster>.hcp.<region>.azmk8s.io` | AKS API サーバー |
+| `mcr.microsoft.com` | Microsoft Container Registry (MCR) |
+| `<ACR name>.azurecr.io` | Azure Container Registry (ACR) |
+| `<account>.table.core.windows.net` | Azure Storage アカウント (テーブル ストレージ) |
+| `<account>.blob.core.windows.net` | Azure Storage アカウント (BLOB ストレージ) |
+| `api.azureml.ms` | Azure Active Directory (AAD) 認証 |
+| `<leaf-domain-label + auto-generated suffix>.<region>.cloudapp.azure.com` | エンドポイントのドメイン名 (Azure Machine Learning によって自動生成した場合)。 カスタム ドメイン名を使用した場合は、このエントリは必要ありません。 |
 
 ### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>クラスターの作成からモデル デプロイまで、時系列順の接続要件
 
@@ -125,7 +136,7 @@ azureml-fe はデプロイされるとすぐに開始しようとしますが、
 * AKS API サーバーにそれ自体の他のインスタンスを検出するためにクエリを実行する (マルチポッド サービス)
 * それ自体の他のインスタンスに接続する
 
-azureml-fe が開始されると、正常に機能するために追加の接続が必要になります。
+azureml-fe が開始されると、正常に機能するために次の接続が必要になります。
 * Azure Storage に接続して動的構成をダウンロードする
 * デプロイされたサービスが AAD 認証を使用している場合は、AAD 認証サーバー api.azureml.ms の DNS を解決して、そのサーバーと通信します。
 * デプロイされたモデルを検出するために AKS API サーバーにクエリを実行する
@@ -139,7 +150,7 @@ azureml-fe が開始されると、正常に機能するために追加の接続
 
 モデルがデプロイされ、サービスが開始されると、azureml-fe は AKS API を使用してモデルを自動的に検出して、要求をそこにルーティングできるようになります。 モデル POD と通信できる必要があります。
 >[!Note]
->デプロイされたモデルに接続が必要な場合 (外部データベースやその他の REST サービスへのクエリの実行やブログのダウンロードなど)、これらのサービスの DNS 解決と送信通信の両方を有効にする必要があります。
+>デプロイされたモデルに接続が必要な場合 (外部データベースやその他の REST サービスへのクエリの実行や BLOB のダウンロードなど)、これらのサービスの DNS 解決と送信通信の両方を有効にする必要があります。
 
 ## <a name="deploy-to-aks"></a>AKS にデプロイする
 
@@ -155,6 +166,7 @@ Azure Kubernetes Service にモデルをデプロイするには、必要なコ�
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
 from azureml.core.model import Model
+from azureml.core.compute import AksCompute
 
 aks_target = AksCompute(ws,"myaks")
 # If deploying to a cluster configured for dev/test, ensure that it was created with enough
@@ -179,16 +191,16 @@ print(service.get_logs())
 CLI を使用してデプロイするには、次のコマンドを使用します。 AKS コンピューティング先の名前に `myaks` を置き換えます。 登録されているモデルの名前とバージョンに `mymodel:1` を置き換えます。 このサービスに付ける名前に `myservice` を置き換えます。
 
 ```azurecli-interactive
-az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy --ct myaks -m mymodel:1 -n myservice --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-詳細については、[az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。
+詳細については、[az ml model deploy](/cli/azure/ml/model#az_ml_model_deploy) のリファレンスを参照してください。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-VS Code の使用については、「[モデルを展開して管理する](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)」を参照してください。
+VS Code の使用については、「[モデルを展開して管理する](how-to-manage-resources-vscode.md)」を参照してください。
 
 > [!IMPORTANT]
 > VS Code を使ってデプロイするには、事前にワークスペースに AKS クラスターを作成するかアタッチしておく必要があります。
@@ -293,7 +305,7 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
 > [!TIP]
 > 次のコード スニペットで作成される 2 番目のバージョンは、トラフィックの 10% を受け入れます。 最初のバージョンは 20% に構成されているため、トラフィックの 30% だけが特定のバージョンに対して構成されます。 残りの 70% は最初のエンドポイント バージョンに送信されます。これは既定のバージョンでもあるためです。
 
- ```python
+```python
 from azureml.core.webservice import AksEndpoint
 
 # add another model deployment to the same endpoint as above
@@ -312,7 +324,7 @@ endpoint.wait_for_deployment(True)
 > [!TIP]
 > 次のコード スニペットの後は、2 番目のバージョンが既定になります。 現在は 40% に構成されていますが、元のバージョンは引き続き 20% に構成されています。 これは、トラフィックの 40% がバージョン構成によって考慮されないことを意味します。 残りのトラフィックは 2 番目のバージョンにルーティングされます。これが既定になったためです。 実質的にトラフィックの 80% を受け取ります。
 
- ```python
+```python
 from azureml.core.webservice import AksEndpoint
 
 # update the version's scoring traffic percentage and if it is a default or control type
@@ -372,18 +384,18 @@ print(token)
 >
 > Azure Machine Learning ワークスペースは、ご利用の Azure Kubernetes Service クラスターと同じリージョンに作成することを強くお勧めします。 トークンを使用して認証するために、Web サービスは、Azure Machine Learning ワークスペースの作成先のリージョンに対して呼び出しを行います。 ワークスペースのリージョンが利用不可になった場合、ワークスペースとは異なるリージョンにクラスターがあったとしても、Web サービスのトークンがフェッチできなくなります。 その場合、ワークスペースのリージョンが利用可能な状態に戻るまで、事実上、トークン ベースの認証が利用できない状態となります。 また、クラスターのリージョンとワークスペースのリージョンとの間の距離が長くなるほど、トークンのフェッチにかかる時間も長くなります。
 >
-> トークンを取得するには、Azure Machine Learning SDK または [az ml service get-access-token](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-get-access-token) コマンドを使用する必要があります。
+> トークンを取得するには、Azure Machine Learning SDK または [az ml service get-access-token](/cli/azure/ml(v1)/computetarget/create#az_ml_service_get_access_token) コマンドを使用する必要があります。
 
 
 ### <a name="vulnerability-scanning"></a>脆弱性のスキャン
 
-Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を実現します。 Azure Security Center に対して、リソースのスキャンと推奨事項の順守を許可する必要があります。 詳細については、[Azure Kubernetes Services と Security Center の統合](../security-center/defender-for-kubernetes-introduction.md)に関する記事を参照してください。
+Microsoft Defender for Cloud では、統合されたセキュリティ管理と高度な脅威に対する保護がハイブリッド クラウド ワークロードに提供されます。 リソースのスキャンを Microsoft Defender for Cloud に許可し、その推奨事項に従う必要があります。 詳細については、[Azure Kubernetes Service と Defender for Cloud の統合](../security-center/defender-for-kubernetes-introduction.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Kubernetes 認可に Azure RBAC を使用する](../aks/manage-azure-rbac.md)
 * [Azure Virtual Network で推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
-* [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
+* [カスタム Docker イメージを使用してモデルをデプロイする方法](./how-to-deploy-custom-container.md)
 * [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
 * [Web サービスを更新する](how-to-deploy-update-web-service.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)

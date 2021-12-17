@@ -7,18 +7,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b48def283ea27fdd0eaa3230a2eb9a8327461ff1
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81688092"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567015"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイスの管理に Visual Studio Code 用 Azure IoT Tools を使用する
 
 ![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) は、IoT Hub の管理と IoT アプリケーションの開発を容易にする便利な Visual Studio Code 拡張機能です。 さまざまなタスクを実行するために使用できる管理オプションが付属しています。
+この記事では、開発マシンでさまざまな管理オプションを指定して Visual Studio Code 用 Azure IoT Tools を使用する方法について説明します。 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) は、IoT Hub の管理と IoT アプリケーションの開発を容易にする便利な Visual Studio Code 拡張機能です。 さまざまなタスクを実行するために使用できる管理オプションが付属しています。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -35,15 +35,7 @@ ms.locfileid: "81688092"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="what-you-learn"></a>学習内容
-
-さまざまな管理オプションを指定して、開発マシンに対して Visual Studio Code 用 Azure IoT Tools を使用する方法について学びます。
-
-## <a name="what-you-do"></a>作業内容
-
-さまざまな管理オプションを使用して、Visual Studio Code 用 Azure IoT Tools を実行します。
-
-## <a name="what-you-need"></a>必要なもの
+## <a name="prerequisites"></a>前提条件
 
 * 有効な Azure サブスクリプション
 * サブスクリプションの Azure IoT Hub。

@@ -6,16 +6,18 @@ ms.author: amverma
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: overview
-ms.date: 03/18/2021
+ms.date: 04/09/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 65b37a8c07e083f5e9809812e2d4446cc48717d1
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 2b9f89126f49b75f5e232521f807f6db3ba9d4e9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720595"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693391"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>InfiniBand 対応の H シリーズおよび N シリーズの VM でのハイ パフォーマンス コンピューティング
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure の InfiniBand 対応の H シリーズおよび N シリーズ VM は、実環境のさまざまな HPC ワークロードと AI ワークロードに対するリーダー クラスのパフォーマンス、メッセージ パッシング インターフェイス (MPI) のスケーラビリティ、コスト効率が提供されるように設計されています。 これらのハイ パフォーマンス コンピューティング (HPC) に最適化された VM は、流体力学、地球モデリング、気象シミュレーションなど、サイエンスおよびエンジニアリングにおける非常に多くの計算を要する問題を解決するために使用されます。
 
@@ -47,4 +49,5 @@ SR-IOV が有効な H シリーズと N シリーズでは、ほとんどすべ�
 - InfiniBand 対応の [H シリーズ](../../sizes-hpc.md)および [N シリーズ](../../sizes-gpu.md)の VM の[構成と最適化](configure.md)について学習します。
 - [HBv3 シリーズの概要](hb-series-overview.md)と [HC シリーズの概要](hc-series-overview.md)に関するページを参照して、パフォーマンスとスケーラビリティのためにワークロードを最適に構成する方法を学習します。
 - [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
+- [Azure での HPC アプリケーションの最適化に関する学習モジュール](/learn/modules/optimize-tightly-coupled-hpc-apps/)を使用して、知識をテストします。
 - HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。

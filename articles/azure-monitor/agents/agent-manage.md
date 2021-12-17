@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: ca36c35d859e651c0d949f4b7fbb28137d01af90
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0fa173769e50b8d3d06199e166d2507281abc12e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101734963"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240169"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
@@ -22,7 +22,7 @@ Windows および Linux 用 Log Analytics エージェントは、配置のシ�
 
 | 環境 | インストール方法 | アップグレード方法 |
 |--------|----------|-------------|
-| Azure VM | Windows/Linux 用の Log Analytics エージェント VM 拡張機能 | プロパティ *autoUpgradeMinorVersion* を **false** に設定することによってオプトアウトするよう Azure Resource Manager テンプレートを構成していない限り、エージェントは既定で自動的にアップグレードされます。 |
+| Azure VM | Windows/Linux 用の Log Analytics エージェント VM 拡張機能 | プロパティ *autoUpgradeMinorVersion* を **false** に設定することによってオプトアウトするように Azure Resource Manager テンプレートを構成していない限り、[VM モデルの変更後](../../virtual-machines/extensions/features-linux.md#how-do-agents-and-extensions-get-updated)、エージェントは既定で自動的にアップグレードされます。 |
 | カスタム Azure VM イメージ | Windows/Linux 用 Log Analytics エージェントの手動インストール | コマンド ラインから Windows インストーラー パッケージまたは Linux 自己解凍およびインストール可能シェル スクリプト バンドルを実行して、エージェントの最新バージョンへの VM の更新を実行する必要があります。|
 | Azure 以外の VM | Windows/Linux 用 Log Analytics エージェントの手動インストール | コマンド ラインから Windows インストーラー パッケージまたは Linux 自己解凍およびインストール可能シェル スクリプト バンドルを実行して、エージェントの最新バージョンへの VM の更新を実行する必要があります。 |
 

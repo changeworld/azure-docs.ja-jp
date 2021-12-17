@@ -4,20 +4,20 @@ description: Azure SQL Database と Azure SQL Managed Instance に接続して�
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: connect
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: guide
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma
 ms.date: 03/17/2021
-ms.openlocfilehash: a8419ff2ba269b05d1fbf7e9d08a284085465fd8
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 8ba88b2d740eb723fa05ff6e9587a181dbaa56f6
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257417"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694649"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database と Azure SQL Managed Instance の接続とクエリに関する記事
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -78,6 +78,20 @@ Azure SQL Database のデータベースに接続するために必要な接続�
 
 Microsoft 以外のドライバーは、既定では TLS を使用しない場合があります。 これは Azure SQL Database または Azure SQL Managed Instance に接続するときに問題になる可能性があります。 埋め込みドライバーを使用するアプリケーションでは、これらの接続設定を制御できない場合があります。 このようなドライバーおよびアプリケーションについては、機密データを操作するシステムで使う前に、そのセキュリティを調べることをお勧めします。
 
+## <a name="drivers"></a>ドライバー
+
+Azure SQL データベースに接続する場合、ツールとドライバーの最小バージョンとして次をお勧めします。
+
+| ドライバーとツール | Version |
+| --- | --- |
+|.NET Framework | 4.6.1 (または .NET Core) |
+|ODBC ドライバー| v17 |
+|PHP ドライバー| 5.2.0 |
+|JDBC ドライバー| 6.4.0 |
+|Node.js ドライバー| 2.1.1 |
+|OLEDB ドライバー| 18.0.2.0 |
+|[SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 以降 |
+
 ## <a name="libraries"></a>ライブラリ
 
 さまざまなライブラリとフレームワークを使用して、Azure SQL Database または Azure SQL Managed Instance に接続できます。 C#、Java、Node.js、PHP、Python などのプログラミング言語を手軽に始めるには、[開始にあたってのチュートリアル](https://aka.ms/sqldev)をご覧ください。 次に Linux、Windows、または macOS 上の Docker で SQL Server を使用してアプリを構築します。
@@ -86,13 +100,15 @@ Microsoft 以外のドライバーは、既定では TLS を使用しない場�
 
 | Language | プラットフォーム | その他のリソース | ダウンロード | はじめに |
 | :-- | :-- | :-- | :-- | :-- |
-| C# | Windows、Linux、macOS | [Microsoft ADO.NET for SQL Server](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [ダウンロード](https://www.microsoft.com/net/download/) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| C# | Windows、Linux、macOS | [Microsoft ADO.NET for SQL Server](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [ダウンロード](https://dotnet.microsoft.com/download) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows、Linux、macOS | [SQL Server 用 Microsoft JDBC ドライバー](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [ダウンロード](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows、Linux、macOS| [SQL Server 用 PHP SQL ドライバー](/sql/connect/php/microsoft-php-driver-for-sql-server) | [ダウンロード](/sql/connect/php/download-drivers-php-sql-server) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows、Linux、macOS | [SQL Server 用 Node.js ドライバー](/sql/connect/node-js/node-js-driver-for-sql-server/) | [インストール](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows、Linux、macOS | [Python SQL ドライバー](/sql/connect/python/python-driver-for-sql-server/) | インストール オプション: <br/> \* [pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \* [pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows、Linux、macOS | [SQL Server 用 Ruby ドライバー](/sql/connect/ruby/ruby-driver-for-sql-server/) | [インストール](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development/) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
 | C++ | Windows、Linux、macOS | [Microsoft ODBC Driver for SQL Server](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server/) | [ダウンロード](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server/) |  
+
+### <a name="data-access-frameworks"></a>データ アクセス フレームワーク
 
 次の表に、クライアント アプリケーションが SQL Server、Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse Analytics で使用できるオブジェクト リレーショナル マッピング (ORM) フレームワークと Web フレームワークの例を示します。 これらのフレームワークは、Linux、Windows、または Docker で使用できます。
 

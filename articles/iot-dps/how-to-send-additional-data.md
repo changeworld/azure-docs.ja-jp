@@ -1,27 +1,27 @@
 ---
 title: デバイスと Azure デバイス プロビジョニング サービスの間でペイロードを転送する方法
 description: このドキュメントでは、デバイスとデバイス プロビジョニング サービス (DPS) の間でペイロードを転送する方法について説明します
-author: menchi
-ms.author: menchi
+author: wesmc7777
+ms.author: wesmc
 ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: a3ee7f3fca3fff1cd401f26489b01fb9cc4e09c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff8157a938c3b754a35c5a588ac5590be2432971
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99259521"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739241"
 ---
 # <a name="how-to-transfer-payloads-between-devices-and-dps"></a>デバイスと DPS の間でペイロードを転送する方法
 DPS では、デバイスを正しい IoT Hub に適切にプロビジョニングするために、デバイスの追加データが必要になる場合があり、データはそのデバイスから提供される必要があります。 逆に、DPS では、クライアント側ロジックの処理を進めるためにデバイスにデータを返すことができます。 
 
 ## <a name="when-to-use-it"></a>いつ使用するか
-この機能は[カスタム割り当て](./how-to-use-custom-allocation-policies.md)の拡張機能として使用できます。 たとえば、人間が介入することなく、デバイス モデルに基づいてデバイス名を割り当てる必要があります。 この場合は[カスタム割り当て](./how-to-use-custom-allocation-policies.md)を使用します。 [登録デバイス呼び出し](/rest/api/iot-dps/runtimeregistration/registerdevice)の一部としてモデル情報を報告するようにデバイスを構成します。 デバイスのペイロードが DPS からカスタム割り当て Webhook に渡されます。 また、関数では、モデル情報を受け取ると、このデバイスをプロビジョニングする IoT Hub を判別できます。 同様に、webhook からデバイスに何らかのデータを返す場合は、webhook 応答内の文字列としてそのデータを渡します。  
+この機能は[カスタム割り当て](./how-to-use-custom-allocation-policies.md)の拡張機能として使用できます。 たとえば、人間が介入することなく、デバイス モデルに基づいてデバイス名を割り当てる必要があります。 この場合は[カスタム割り当て](./how-to-use-custom-allocation-policies.md)を使用します。 [登録デバイス呼び出し](/rest/api/iot-dps/device/runtime-registration/register-device)の一部としてモデル情報を報告するようにデバイスを構成します。 デバイスのペイロードが DPS からカスタム割り当て Webhook に渡されます。 また、関数では、モデル情報を受け取ると、このデバイスをプロビジョニングする IoT Hub を判別できます。 同様に、webhook からデバイスに何らかのデータを返す場合は、webhook 応答内の文字列としてそのデータを渡します。  
 
 ## <a name="device-sends-data-payload-to-dps"></a>デバイスから DPS にデータ ペイロードを送信する
-デバイスが[デバイスの登録呼び出し](/rest/api/iot-dps/runtimeregistration/registerdevice)を DPS に送信しているときに、本文内の他のフィールドを取得するように登録呼び出しを拡張できます。 本文は次のようになります。 
+デバイスが[デバイスの登録呼び出し](/rest/api/iot-dps/device/runtime-registration/register-device)を DPS に送信しているときに、本文内の他のフィールドを取得するように登録呼び出しを拡張できます。 本文は次のようになります。 
    ```
    { 
        “registrationId”: “mydevice”, 

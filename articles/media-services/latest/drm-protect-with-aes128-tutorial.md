@@ -2,7 +2,7 @@
 title:AES-128 によるビデオの暗号化:Azure Media Services の説明:Azure Media Service で AES 128 ビット暗号化によりビデオを暗号化し、キー配信サービスを使用する方法を説明します。
 services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
 
-ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: tutorial ms.date: 03/17/2021 ms.author: inhenkel
+ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: tutorial ms.date: 05/25/2021 ms.author: inhenkel
 
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>チュートリアル:AES-128 でビデオを暗号化し、キー配信サービスを使用する
@@ -21,7 +21,7 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 このチュートリアルでは、次の操作方法について説明します。
 
 > [!div class="checklist"]
-> * この記事で説明する [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) サンプルをダウンロードする。
+> * この記事で説明する [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithAES) サンプルをダウンロードする。
 > * .NET SDK で Media Services API の使用を開始する。
 > * 出力アセットを作成する。
 > * エンコード Transform を作成します。
@@ -45,8 +45,9 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 * Visual Studio Code または Visual Studio をインストールします。
 * [Media Services アカウントを作成する](./account-create-how-to.md)
 * [API へのアクセス](./access-api-howto.md)に関するページに従って、Media Services API を使用するために必要な資格情報を入手します。
+* アプリの構成ファイル (appsettings.json または .env ファイル) に適切な値を設定します。
 
-## <a name="download-code"></a>コードをダウンロードする
+## <a name="download-and-configure-the-sample"></a>サンプルをダウンロードして構成する
 
 次のコマンドを使用して、この記事で紹介した完全な .NET サンプルが含まれる GitHub リポジトリを、お使いのマシンに複製します。
 
@@ -54,16 +55,26 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
 
-"AES-128 を使用した暗号化" のサンプルは、[EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) フォルダーにあります。
+"AES-128 を使用した暗号化" のサンプルは、[EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithAES) フォルダーにあります。
+
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 > [!NOTE]
 > このサンプルでは、アプリを実行するたびに一意のリソースが作成されます。 通常は、変換やポリシーなどの既存のリソースを再利用します (既存のリソースが必要な構成を備えている場合)。
 
-## <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK で Media Services API の使用を開始する
+### <a name="start-using-media-services-apis-with-the-net-sdk"></a>.NET SDK で Media Services API の使用を開始する
 
-.NET で Media Services API の使用を始めるには、**AzureMediaServicesClient** オブジェクトを作成します。 オブジェクトを作成するには、クライアントが Azure AD を使用して Azure に接続するために必要な資格情報を指定する必要があります。 この記事の最初に複製したコード内で、ローカル構成ファイルで指定された資格情報に基づいて、**GetCredentialsAsync** 関数が ServiceClientCredentials オブジェクトを作成します。
+.NET で Media Services API の使用を始めるには、`AzureMediaServicesClient` オブジェクトを作成する必要があります。 オブジェクトを作成するには、クライアントが Azure Active Directory を使用して Azure に接続するために必要な資格情報を指定する必要があります。 もう 1 つのオプションは対話型認証を使用する方法で、これは `GetCredentialsInteractiveAuthAsync` に実装されています。
 
-[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateMediaServicesClient)]
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#CreateMediaServicesClientAsync)]
+
+この記事の冒頭で複製したコードの `GetCredentialsAsync` 関数により、ローカルの構成ファイル (*appsettings.json*) またはリポジトリのルートにある *.env* 環境変数ファイルの中で指定されている資格情報に基づいて `ServiceClientCredentials` オブジェクトが作成されます。
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#GetCredentialsAsync)]
+
+対話型認証の場合、`GetCredentialsInteractiveAuthAsync` 関数により、対話型認証と、ローカル構成ファイル (*appsettings.json*) またはリポジトリのルートにある *.env* 環境変数ファイルで指定された接続パラメーターに基づいて、`ServiceClientCredentials` オブジェクトが作成されます。 その場合、AADCLIENTID と AADSECRET は、構成または環境変数のファイルでは必要ありません。
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#GetCredentialsInteractiveAuthAsync)]
 
 ## <a name="create-an-output-asset"></a>出力アセットを作成する  
 

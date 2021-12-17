@@ -4,15 +4,15 @@ description: 非構造化データの移行に使用されるツールの基本�
 author: dukicn
 ms.author: nikoduki
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 08/04/2021
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 862feace6aab4f49ad3482c4ccd6510669c876a1
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: d266f059869bb0f25df10dcc4fad317d3d3da7c3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576535"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426708"
 ---
 # <a name="comparison-matrix"></a>比較表
 
@@ -22,7 +22,7 @@ ms.locfileid: "107576535"
 
 |    | [Microsoft](https://www.microsoft.com/) | [Datadobi](https://www.datadobi.com) | [Data Dynamics](https://www.datadynamicsinc.com/) | [Komprise](https://www.komprise.com/) |
 |--- |-----------------------------------------|--------------------------------------|---------------------------------------------------|---------------------------------------|
-|  **[ソリューション名]**  | [Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview)              | [Data Mobility and Migration](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [Intelligent Data Management](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
+|  **[ソリューション名]**  | [Azure File Sync](../../../file-sync/file-sync-deployment-guide.md) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview)              | [Data Mobility and Migration](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [Intelligent Data Management](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
 | **Azure Files のサポート (すべてのレベル)** | はい                          | はい                      | はい            | はい                            |
 | **Azure NetApp Files のサポート**      | いいえ                           | はい                      | はい            | はい                            |
 | **Azure Blob ホット/クールのサポート**   | いいえ                           | はい (NFS プレビュー経由)    | はい            | はい                            |
@@ -34,7 +34,7 @@ ms.locfileid: "107576535"
 
 |    | [Microsoft](https://www.microsoft.com/) | [Datadobi](https://www.datadobi.com) | [Data Dynamics](https://www.datadynamicsinc.com/) | [Komprise](https://www.komprise.com/) |
 |--- |-----------------------------------------|--------------------------------------|---------------------------------------------------|---------------------------------------|
-| **[ソリューション名]**   | [Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [Data Mobility and Migration](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [Intelligent Data Management](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
+| **[ソリューション名]**   | [Azure File Sync](../../../file-sync/file-sync-deployment-guide.md) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [Data Mobility and Migration](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [Intelligent Data Management](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
 | **SMB 2.1**       | はい | はい | はい | はい |
 | **SMB 3.0**       | はい | はい | はい | はい |
 | **SMB 3.1**       | はい | はい | はい | はい |
@@ -47,7 +47,7 @@ ms.locfileid: "107576535"
 
 |    | [Microsoft](https://www.microsoft.com/) | [Datadobi](https://www.datadobi.com) | [Data Dynamics](https://www.datadynamicsinc.com/) | [Komprise](https://www.komprise.com/) |
 |--- |-----------------------------------------|--------------------------------------|---------------------------------------------------|---------------------------------------|
-|  **[ソリューション名]**  | [Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [Data Mobility and Migration](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [Intelligent Data Management](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
+|  **[ソリューション名]**  | [Azure File Sync](../../../file-sync/file-sync-deployment-guide.md) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [Data Mobility and Migration](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [Intelligent Data Management](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
 | **UID / SID の再マッピング**                   | いいえ  | はい                        | はい | いいえ                             |
 | **プロトコル ACL の再マッピング**                | いいえ  | いいえ                         | いいえ  | いいえ                             |
 | **DFS のサポート**                           | はい | はい                        | はい | はい                            |
@@ -60,12 +60,12 @@ ms.locfileid: "107576535"
 | **証拠保全の一貫性のレポート**            | いいえ  | はい                        | いいえ  | はい                            |
 | **代替データ ストリームのサポート**    | いいえ  | はい                        | はい | いいえ                             |
 | **移行のスケジュール設定**              | いいえ  | はい                        | はい | はい                            |
-| **ACL の保持**                        | いいえ  | はい                        | はい | はい                            |
+| **ACL の保持**                        | はい  | はい                        | はい | はい                            |
 | **DACL のサポート**                          | はい | はい                        | はい | はい                            |
 | **SACL のサポート**                          | はい | はい                        | はい | いいえ                             |
 | **アクセス時刻の保持**                | はい | はい                        | はい | はい                            |
 | **変更時刻の保持**              | はい | はい                        | はい | はい                            |
-| **作成時刻の保持**              | いいえ  | はい                        | はい | はい                            |
+| **作成時刻の保持**              | はい  | はい                        | はい | はい                            |
 | **Azure Data Box のサポート**       | はい | はい                        | いいえ  | いいえ                             |
 | **スナップショットの移行**                | いいえ  | マニュアル                     | はい | いいえ                             |
 | **シンボリック リンクのサポート**                 | いいえ  | はい                        | いいえ  | はい                            |
@@ -73,13 +73,13 @@ ms.locfileid: "107576535"
 | **オープンまたはロックされたファイルのサポート**       | はい | はい                        | はい | はい                            |
 | **段階的な移行**                 | はい | はい                        | はい | はい                            |
 | **切り替えのサポート**                    | いいえ  | はい                        | はい | いいえ (手動のみ)               |
-| **[その他の機能](#other-features)**         | [リンク](#azure-file-sync)| [リンク](#dobimigrate) | [リンク](#data-mobility-and-migration) | [リンク](#intelligent-data-management)                |
+| **[その他の機能](#other-features)**         | [リンク](#azure-file-sync)| [リンク](#datadobi-dobimigrate) | [リンク](#data-dynamics-data-mobility-and-migration) | [リンク](#komprise-intelligent-data-management)                |
 
 ## <a name="assessment-and-reporting"></a>評価とレポート
 
 |    | [Microsoft](https://www.microsoft.com/) | [Datadobi](https://www.datadobi.com) | [Data Dynamics](https://www.datadynamicsinc.com/) | [Komprise](https://www.komprise.com/) |
 |--- |-----------------------------------------|--------------------------------------|---------------------------------------------------|---------------------------------------|
-| **[ソリューション名]**   | [Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [Data Mobility and Migration](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [Intelligent Data Management](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
+| **[ソリューション名]**   | [Azure File Sync](../../../file-sync/file-sync-deployment-guide.md) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [Data Mobility and Migration](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [Intelligent Data Management](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
 | **[容量]**                        | いいえ      | はい | はい | はい            |
 | **ファイル/フォルダーの数**            | いいえ      | はい | はい | はい            |
 | **時系列の年齢分布**      | いいえ      | はい | はい | はい            |
@@ -92,7 +92,7 @@ ms.locfileid: "107576535"
 
 |    | [Microsoft](https://www.microsoft.com/) | [Datadobi](https://www.datadobi.com) | [Data Dynamics](https://www.datadynamicsinc.com/) | [Komprise](https://www.komprise.com/) |
 |--- |-----------------------------------------|--------------------------------------|---------------------------------------------------|---------------------------------------|
-| **[ソリューション名]**   | [Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [Data Mobility and Migration](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [Intelligent Data Management](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
+| **[ソリューション名]**   | [Azure File Sync](../../../file-sync/file-sync-deployment-guide.md) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [Data Mobility and Migration](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [Intelligent Data Management](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
 | **BYOL**             | 該当なし | はい | はい | はい |
 | **Azure コミットメント** | はい   | はい | はい | はい |
 
@@ -102,7 +102,10 @@ ms.locfileid: "107576535"
 
 - 内部ハッシュ検証
 
-### <a name="dobimigrate"></a>DobiMigrate
+> [!TIP]
+> Azure File Sync は、いくつかの Azure ファイル共有のオンプレミス キャッシュおよび同期のための永続的なハイブリッド ソリューションであることが意図されています。 この機能では、ダウンタイムなしのクラウド移行が提供されます。 オンプレミスで Azure ファイル共有をキャッシュすることを予定していない場合、Azure File Sync は推奨される移行ツールではありません。 [Azure ファイル共有の移行の概要](../../../files/storage-files-migration-overview.md)またはこの記事に記載されているその他のパートナー ツールを参照してください。
+
+### <a name="datadobi-dobimigrate"></a>Datadobi の DobiMigrate
 
 - 移行の事前チェック
 - 移行の計画
@@ -122,12 +125,13 @@ ms.locfileid: "107576535"
 - NFSv3 のアクセス許可をオーバーライドし、ターゲットに新しいモードのビットを書き込む機能
 - NFSv3 POSIX ドラフト ACL を NFSv4 ACL に変換する機能
 - SMB 1 (CIFS)
+- 24 時間 365 日のサポート
 
-### <a name="data-mobility-and-migration"></a>Data Mobility and Migration
+### <a name="data-dynamics-data-mobility-and-migration"></a>Data Dynamics の Data Mobility and Migration
 
 - ハッシュ検証
 
-### <a name="intelligent-data-management"></a>Intelligent Data Management
+### <a name="komprise-intelligent-data-management"></a>Komprise の Intelligent Data Management
 
 - プロジェクト/ディレクトリ ベースの移行
 - エラーの自動再試行
@@ -144,8 +148,8 @@ ms.locfileid: "107576535"
 ## <a name="see-also"></a>関連項目
 
 - [Storage の移行の概要](../../../common/storage-migration-overview.md)
-- [データ転送用の Azure ソリューションを選択する](/azure/storage/common/storage-choose-data-transfer-solution?toc=/azure/storage/blobs/toc.json)
-- [Azure ファイル共有に移行する](/azure/storage/files/storage-files-migration-overview)
-- [WANdisco LiveData Platform for Azure を使用して Data Lake Storage に移行する](/azure/storage/blobs/migrate-gen2-wandisco-live-data-platform)
-- [AzCopy を使用して Azure Storage にデータをコピーまたは移動する](https://aka.ms/azcopy)
-- [AzReplicate (サンプル アプリケーション) を使用して大規模なデータセットを Azure Blob Storage に移行する](https://github.com/Azure/AzReplicate/tree/master/)
+- [データ転送用の Azure ソリューションを選択する](../../../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Azure ファイル共有に移行する](../../../files/storage-files-migration-overview.md)
+- [WANdisco LiveData Platform for Azure を使用して Data Lake Storage に移行する](../../../blobs/migrate-gen2-wandisco-live-data-platform.md)
+- [AzCopy を使用して Azure Storage にデータをコピーまたは移動する](../../../common/storage-use-azcopy-v10.md)
+- [AzReplicate (サンプル アプリケーション) を使用して大規模なデータセットを Azure Blob Storage に移行する](/samples/azure/azreplicate/azreplicate/)

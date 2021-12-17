@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 10/27/2020
-  ms.openlocfilehash: 654c55436a47d91318548997aecc2605ae342099
-  ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+  ms.date: 04/20/2021
+  ms.openlocfilehash: 5bbd26cfe7972ded591fb7ee57c8f2e746ce1753
+  ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/25/2021
-  ms.locfileid: "98763067"
+  ms.lasthandoff: 04/22/2021
+  ms.locfileid: "107886894"
 landingContent:
 - title: Azure Stack Edge について
   linkLists:
@@ -25,12 +25,10 @@ landingContent:
     links:
     - text: Azure Stack Edge Pro GPU とは
       url: azure-stack-edge-gpu-overview.md
-    - text: Azure Stack Edge Pro FPGA とは
-      url: azure-stack-edge-overview.md
-    - text: Azure Stack Edge R とは
-      url: azure-stack-edge-j-series-overview.md
+    - text: Azure Stack Edge Pro R とは
+      url: ./azure-stack-edge-pro-r-overview.md
     - text: Azure Stack Edge Mini R とは
-      url: azure-stack-edge-k-series-overview.md
+      url: azure-stack-edge-mini-r-overview.md
   - linkListType: architecture
     links:
     - text: Azure のデータ転送オプションの選択
@@ -39,59 +37,81 @@ landingContent:
       url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: 2101 リリース ノート
-      url: azure-stack-edge-gpu-2101-release-notes.md
+    - text: Azure Stack Edge Pro GPU の 2103 リリース ノート
+      url: azure-stack-edge-gpu-2103-release-notes.md
+    - text: Azure Stack Edge Pro FPGA の 2101 リリース ノート
+      url: azure-stack-edge-2101-release-notes.md
 - title: 要件と制限
   linkLists:
   - linkListType: concept
     links:
     - text: Azure Stack Edge Pro GPU の要件
       url: azure-stack-edge-gpu-system-requirements.md
-    - text: Azure Stack Edge Pro FPGA の要件
-      url: azure-stack-edge-gpu-system-requirements.md
-    - text: Azure Stack Edge Pro の制限
+    - text: Azure Stack Edge Pro R の要件
+      url: azure-stack-edge-pro-r-system-requirements.md
+    - text: Azure Stack Edge Mini R の要件
+      url: azure-stack-edge-mini-r-system-requirements.md
+    - text: Azure Stack Edge Pro GPU の制限
       url: azure-stack-edge-limits.md
-- title: 配置
+    - text: Azure Stack Edge Pro R の制限
+      url: azure-stack-edge-pro-r-limits.md
+    - text: Azure Stack Edge Mini R 制限
+      url: azure-stack-edge-mini-r-limits.md
+- title: デバイスをデプロイする
   linkLists:
   - linkListType: tutorial
     links:
-    - text: デプロイ前のチェックリストを見る
+    - text: デプロイ前のチェック リストを表示する
       url: azure-stack-edge-gpu-deploy-checklist.md
     - text: Azure Stack Edge Pro GPU
       url: azure-stack-edge-gpu-deploy-prep.md
-    - text: Marketplace 経由の GPU モジュール
-      url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-    - text: IoT Edge 経由の Kubernetes ワークロード
-      url: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-- title: 開発
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: C# Edge コンピューティング モジュール
-      url: azure-stack-edge-create-iot-edge-module.md
-  - linkListType: download
-    links:
-    - text: サンプル - Azure Stack Edge Pro GPU 向けの C#
-      url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
+    - text: Azure Stack Edge Pro R
+      url: azure-stack-edge-pro-r-deploy-prep.md
+    - text: Azure Stack Edge Mini R
+      url: azure-stack-edge-mini-r-deploy-prep.md
 - title: 管理する
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Stack Edge Pro の共有
+    - text: Azure Stack Edge Pro GPU の共有
+      url: azure-stack-edge-gpu-manage-shares.md
+    - text: Azure Stack Edge Pro FPGA の共有
       url: azure-stack-edge-manage-shares.md
     - text: Edge コンピューティング
       url: azure-stack-edge-manage-compute.md
     - text: Edge ストレージ アカウント
-      url: azure-stack-edge-j-series-manage-storage-accounts.md
+      url: azure-stack-edge-gpu-manage-storage-accounts.md
+- title: ワークロードのデプロイ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Marketplace 経由の GPU モジュール
+      url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+    - text: Azure portal を使用する VM
+      url: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
+    - text: テンプレートを使用する VM
+      url: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+    - text: Azure portal を使用する IoT Edge モジュール
+      url: azure-stack-edge-gpu-deploy-compute-module-simple.md
+    - text: IoT Edge を使用する Kubernetes
+      url: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+    - text: kubectl を使用する Kubernetes
+      url: azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md
+    - text: Azure Arc を使用する Kubernetes
+      url: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
 - title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Stack Edge GPU
+    - text: Azure Stack Edge Pro GPU の注文の問題
+      url: azure-stack-edge-troubleshoot-ordering.md
+    - text: Azure Stack Edge Pro GPU のデバイスの問題
       url: azure-stack-edge-gpu-troubleshoot.md
-    - text: Edge コンピューティング モジュール
+    - text: Azure Stack Edge Pro GPU のアクティブ化の問題
+      url: azure-stack-edge-gpu-troubleshoot-activation.md
+    - text: Edge コンピューティング エラー
       url: azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge
-    - text: Azure Stack Edge GPU を返却する
+    - text: Azure Stack Edge Pro GPU を返却する
       url: azure-stack-edge-return-device.md
     - text: サポート チケットを開く
       url: azure-stack-edge-contact-microsoft-support.md

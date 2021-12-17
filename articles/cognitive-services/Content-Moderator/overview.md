@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 04/16/2021
+ms.date: 09/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: コンテンツ モデレーター, azure コンテンツ モデレーター, オンライン モデレーター, コンテンツ フィルター ソフトウェア, コンテンツ モデレーション サービス, コンテンツ モデレーション
-ms.openlocfilehash: b0ff5a241a76cd49d104e4145df37515b43c4e27
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 0696e87e4e395896b0b0f57c2c5912264e19cd83
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726198"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373348"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 Azure Content Moderator は、不快感を与える可能性がある内容、リスクのある内容、その他望ましくない可能性のある内容を管理できる AI サービスです。 テキスト、画像、動画をスキャンし、コンテンツ フラグを自動的に適用する AI 搭載コンテンツ モデレーション サービスと、人間のレビュー担当者からなるチーム用のオンライン モデレーター環境であるレビュー ツールが含まれています。
 

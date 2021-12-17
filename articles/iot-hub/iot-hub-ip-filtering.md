@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/22/2021
 ms.author: jlian
-ms.openlocfilehash: bf9d58926c5a0fdc7c305e1d9daebfa1c8c9cf63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b984b7ee718a051456f8f51e5c9a49c247b884b4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023607"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040563"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 
@@ -26,7 +27,7 @@ IP フィルターを使用して、指定された範囲の IP アドレスか�
 
 [IP フィルター設定] ページに移動するには、 **[ネットワーク]** 、 **[パブリック アクセス]** 、 **[Selected IP Ranges]\(選択された IP 範囲\)** の順に選択します。
 
-:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-default.png" alt-text="IoT Hub の既定の IP フィルター設定":::
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-default.png" alt-text="既定の IP フィルター設定を設定する方法を示すスクリーンショット。":::
 
 既定では、ポータルの IoT ハブの **[IP フィルター]** は空白になっています。 この既定の設定は、ハブではすべての IP アドレスからの接続がブロックされることを意味します。 この既定の設定は、`0.0.0.0/0` の IP アドレス範囲をブロックする規則と同じです。
 
@@ -34,11 +35,11 @@ IP フィルターを使用して、指定された範囲の IP アドレスか�
 
 IP フィルター規則を追加するには、 **[+ IP フィルター規則の追加]** を選択します。 コンピューターの IP アドレスを簡単に追加するには、 **[クライアント IP アドレスを追加する]** をクリックします。 
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IoT Hub への IP フィルター規則の追加":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IoT ハブに IP フィルター規則を追加する方法を示すスクリーンショット。":::
 
 **[IP フィルター規則の追加]** を選択したら、フィールドに入力します。 クライアント IP アドレスを追加することを選択した場合、これらのフィールドは事前に入力されます。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="[IP フィルター規則の追加] を選択した後":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="IP フィルター規則を追加した後の操作を示すスクリーンショット。":::
 
 * IP フィルター規則の **名前** を指定します。 この名前は、一意であり、長さが最大 128 文字の、大文字と小文字を区別しない英数字の文字列である必要があります。 ASCII 7 ビット英数字と `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` のみを使用できます。
 
@@ -46,7 +47,7 @@ IP フィルター規則を追加するには、 **[+ IP フィルター規則�
 
 フィールドに入力したら、 **[保存]** を選択して規則を保存します。 更新が進行中であることを通知するアラートが表示されます。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="IP フィルター規則の保存に関する通知":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="IP フィルター規則の保存に関する通知を示すスクリーンショット。":::
 
 IP フィルター規則が最大値の 10 個に達すると、 **[追加]** オプションは無効になります。
 
@@ -56,13 +57,13 @@ IP フィルター規則が最大値の 10 個に達すると、 **[追加]** �
 
 IP フィルター規則を削除するには、その行のごみ箱アイコンを選択し、次に **[保存]** を選択します。 規則が削除されて、変更が保存されます。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT Hub の IP フィルター規則の削除":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IP フィルター規則を使用してIoT Hubを示すスクリーンショット。":::
 
 ## <a name="apply-ip-filter-rules-to-the-built-in-event-hub-compatible-endpoint"></a>イベント ハブと互換性のある組み込みのエンドポイントに IP フィルター規則を適用する
 
 イベント ハブと互換性のある組み込みのエンドポイントに IP フィルター規則を適用するには、 **[Apply IP filters to the built-in endpoint?]\(IP フィルターを組み込みのエンドポイントに適用しますか\)** の横のボックスをオンにし、 **[保存]** を選択します。
 
-:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-built-in-endpoint.png" alt-text="組み込みエンドポイントの切り替えと保存を示す画像":::
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-built-in-endpoint.png" alt-text="組み込みエンドポイントのトグルを示すスクリーンショット。":::
 
 > [!NOTE]
 > このオプションは、無料 (F1) の IoT ハブでは使用できません。 組み込みのエンドポイントに IP フィルター規則を適用するには、有料の IoT ハブを使用してください。

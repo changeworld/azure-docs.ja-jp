@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: f551f40a9bd70c4a3b54c1d2756cfb94caf79590
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 847cd81886a12d5a8d414181e2919b43aa607228
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103064"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732923"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS Rapid Response
 
-アクティブなアクセスの間、Azure DDoS Protection Standard のお客様は、DDoS Rapid Response (DRR) チームにアクセスできます。このチームは、攻撃中の攻撃の調査と、攻撃後の分析を支援します。
+攻撃を受けたとき、Azure DDoS Protection Standard の顧客は、DDoS Rapid Response (DRR) チームのサービスを受けられます。このチームは、攻撃時にその攻撃の調査を行ったり、攻撃後に分析を行ったりすることをサポートします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,7 +49,7 @@ ms.locfileid: "107103064"
 
 5. 追加の詳細情報を入力して、サポート リクエストを送信します。
 
-DRR は、Azure Rapid Response サポート モデルに従います。 Rapid Response の詳細については、「[サポート内容と応答性](https://azure.microsoft.com/en-us/support/plans/response/)」を参照してください。
+DRR は、Azure Rapid Response サポート モデルに従います。 Rapid Response の詳細については、「[サポート内容と応答性](https://azure.microsoft.com/support/plans/response/)」を参照してください。
 
 詳細については、[Azure DDoS Protection Standard のドキュメント](./ddos-protection-overview.md)を参照してください。
 

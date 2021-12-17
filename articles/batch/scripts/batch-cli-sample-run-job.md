@@ -1,15 +1,16 @@
 ---
-title: Azure CLI のサンプル スクリプト - Batch ジョブを実行する
-description: このスクリプトでは、Batch のジョブを作成してそのジョブに一連のタスクを追加します。 ジョブとそのタスクを監視する方法を説明します。
+title: Azure CLI のサンプル スクリプト - Batch ジョブの実行 | Microsoft Docs
+description: Azure CLI を使用して、Batch のジョブを作成し、ジョブに一連のタスクを追加する方法について説明します。 この記事では、ジョブとそのタスクを監視する方法も示します。
 ms.topic: sample
-ms.date: 12/12/2019
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8e51fa96370b46c9a5a5d5ed6fd7593a06e45430
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 09/17/2021
+ms.custom: devx-track-azurecli, seo-azure-cli
+keywords: Batch, Batch ジョブ, 監視ジョブ, Azure CLI サンプル, Azure CLI コード サンプル, Azure CLI スクリプト サンプル
+ms.openlocfilehash: 293e517a528b6a1630ff8597f4fa17c87008a78f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768168"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595182"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI の例: Azure Batch でのジョブとタスクの実行
 

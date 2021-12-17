@@ -11,16 +11,19 @@ ms.date: 03/29/2019
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c04f61aaef5f5072ce0fb39ff111ba07ee151700
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aab2897b4042657492d04494b589fbaa2605cc6d
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375903"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886786"
 ---
 # <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) 用の REST API
 
 Azure Synapse Analytics で専用 SQL プール (旧称 SQL DW) のコンピューティングを管理するための REST API。
+
+> [!NOTE]
+> この記事で説明している REST API は、Azure Synapse Analytics ワークスペースで作成された専用の SQL プールには適用されません。 Azure Synapse Analytics ワークスペース専用に使用する REST API の詳細については、「[Azure Synapse Analytics ワークスペース REST API](/rest/api/synapse/)」を参照してください。
 
 ## <a name="scale-compute"></a>コンピューティングのスケーリング
 

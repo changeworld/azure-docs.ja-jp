@@ -2,8 +2,8 @@
 title: 'チュートリアル: Azure Active Directory を使用した自動ユーザー プロビジョニング用に Proxyclick を構成する | Microsoft Docs'
 description: ユーザー アカウントを Proxyclick に自動的にプロビジョニング/プロビジョニング解除するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: f7d2a6f01e891a7fb1c14cde552d66679e474139
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 750ed1cc23d1a970fa9e210c48022f99f7f941a6
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94359172"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113758555"
 ---
 # <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Proxyclick を構成する
 

@@ -7,12 +7,13 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 115c083a75adab96e416fc200bf7db287a99ff4e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 067d069dc06c0621f8ac6484b16cccf75e9412c2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788423"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241214"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows での Azure Files に関する問題のトラブルシューティング (SMB)
 
@@ -20,6 +21,13 @@ ms.locfileid: "107788423"
 
 > [!IMPORTANT]
 > この記事の内容は SMB 共有にのみ適用されます。 NFS 共有の詳細については、「[Azure NFS ファイル共有に関するトラブルシューティング](storage-troubleshooting-files-nfs.md)」を参照してください。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Azure ファイル共有をマウントするときに、エラー 5 が発生する
@@ -32,7 +40,7 @@ ms.locfileid: "107788423"
 
 通信チャネルが暗号化されていない場合や、接続の試行が Azure ファイル共有と同じデータセンターから行われていない場合、セキュリティ上の理由により、Azure ファイル共有への接続がブロックされます。 ストレージ アカウントで [[安全な転送が必須]](../common/storage-require-secure-transfer.md) 設定が有効になっている場合は、同じデータセンター内の暗号化されていない接続もブロックされる可能性があります。 ユーザーのクライアント OS が SMB 暗号化をサポートしている場合に限り、暗号化された通信チャネルを利用できます。
 
-Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号化をサポートしている SMB 3.0 を含む要求をネゴシエートできます。
+Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号化をサポートしている SMB 3.x を含む要求をネゴシエートできます。
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
@@ -120,7 +128,7 @@ Azure File Sync により、オンプレミスの Windows Server を Azure フ�
 IT 部門または ISP と連携して、ポート 445 の送信方向の通信を [Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に解放します。
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>ソリューション 4 - REST API ベースのツール (Storage Explorer や  Powershell など) を使用する
-Azure Files は、SMB だけでなく、REST もサポートしています。 REST アクセスは、ポート 443 (標準の tcp) 上で動作します。 REST API を使用して作成された、豊富な UI エクスペリエンスを可能にするさまざまなツールがあります。 [Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) もその 1 つです。 [Storage Explorer をダウンロードしてインストールし](https://azure.microsoft.com/features/storage-explorer/)、Azure Files でサポートされるファイル共有に接続します。 同じく REST API を使用する [PowerShell](./storage-how-to-use-files-powershell.md) を使用することもできます。
+Azure Files は、SMB だけでなく、REST もサポートしています。 REST アクセスは、ポート 443 (標準の tcp) 上で動作します。 REST API を使用して作成された、豊富な UI エクスペリエンスを可能にするさまざまなツールがあります。 [Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) もその 1 つです。 [Storage Explorer をダウンロードしてインストールし](https://azure.microsoft.com/features/storage-explorer/)、Azure Files でサポートされるファイル共有に接続します。 同じく REST API を使用する [PowerShell](./storage-how-to-use-files-portal.md) を使用することもできます。
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>原因 2:NTLMv1 が有効になっている
 
@@ -174,6 +182,49 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
 Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](../blobs/security-recommendations.md#data-protection)に関するページをご覧ください。
+
+## <a name="unable-to-modify-or-delete-an-azure-file-share-or-share-snapshots-because-of-locks-or-leases"></a>ロックまたはリースが原因で、Azure ファイル共有 (または共有スナップショット) を変更または削除できません
+Azure Files には、Azure ファイル共有と共有スナップショットが誤って変更または削除されないようにする 2 つの方法があります。 
+
+- **ストレージ アカウントのリソース ロック**: ストレージ アカウントを含むすべての Azure リソースでは、[[リソース ロック]](../../azure-resource-manager/management/lock-resources.md) をサポートしています。 ロックは、管理者によって、または Azure Backup などの付加価値サービスによってストレージ アカウントに設定される場合があります。 リソース ロックには 2 つのバリエーションがあります。ストレージ アカウントとそのリソースへのすべての変更を防止する modify と、ストレージ アカウントとそのリソースの削除のみを防止する delete です。 `Microsoft.Storage` リソース プロバイダーを介して共有を変更または削除すると、Azure ファイル共有と共有スナップショットにリソース ロックが適用されます。 ほとんどのポータル操作、名前に `Rm` が含まれる Azure Files 用の Azure PowerShell コマンドレット (つまり、`Get-AzRmStorageShare`)、および `share-rm` コマンド グループ内の Azure CLI コマンド (つまり、`az storage share-rm list`) では、`Microsoft.Storage` リソース プロバイダーを使用します。 Storage Explorer、名前に `Rm` が含まれていないレガシ Azure Files PowerShell 管理コマンドレット (つまり、`Get-AzStorageShare`)、`share` コマンド グループの下のレガシ Azure Files CLI コマンド (つまり、`az storage share list`) などの一部のツールとユーティリティでは、`Microsoft.Storage` リソース プロバイダーおよびリソース ロックをバイパスするレガシ API を使用します。 FileREST API で公開されているレガシ管理 API の詳細については、「[Azure Files のコントロール プレーン](/rest/api/storageservices/file-service-rest-api#control-plane)」を参照してください。
+
+- **共有/共有スナップショット リース**: 共有リースは、Azure ファイル共有とファイル共有スナップショットの専用のロックの種類です。 管理者がスクリプトを介して API を呼び出すことにより、または Azure Backup などの付加価値サービスによって、個々の Azure ファイル共有またはファイル共有スナップショットにリースを設定できます。 Azure ファイル共有またはファイル共有スナップショットにリースが設定されている場合、ファイル共有/共有スナップショットの変更または削除は、*リース ID* を使用して実行できます。 ユーザーは、リース ID を必要とする変更操作の前にリースをリリースしたり、リース ID を必要としないリースを中断したりすることもできます。 シェア リースの詳細については、「[リース共有](/rest/api/storageservices/lease-share)」を参照してください。
+
+リソースのロックとリースは、ストレージ アカウント/Azure ファイル共有に対する意図された管理者の操作を妨げる可能性があるため、Azure Backup などの付加価値サービスによって手動または自動でリソースに設定された可能性のあるリソースのロック/リースを削除することをお勧めします。 次のスクリプトでは、すべてのリソース ロックとリースを削除します。 忘れずに、`<resource-group>` および `<storage-account>` を実際の環境の適切な値に置き換えてください。
+
+次のスクリプトを実行するには、Azure Storage PowerShell モジュールの [3.10.1-preview バージョンをインストールする](https://www.powershellgallery.com/packages/Az.Storage/3.10.1-preview)必要があります。
+
+> [!Important]  
+> Azure Files リソースでリソース ロックおよび共有/共有スナップショット リースを取得する付加価値サービスでは、定期的にロックとリースが再適用される場合があります。 付加価値サービスによってロックされたリソースを変更または削除すると、Azure Backup によって管理されていた共有スナップショットの削除など、これらのサービスの通常の操作に影響を与える可能性があります。
+
+```PowerShell
+# Parameters for storage account resource
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
+
+# Get reference to storage account
+$storageAccount = Get-AzStorageAccount `
+    -ResourceGroupName $resourceGroupName `
+    -Name $storageAccountName
+
+# Remove resource locks
+Get-AzResourceLock `
+        -ResourceType "Microsoft.Storage/storageAccounts" `
+        -ResourceGroupName $storageAccount.ResourceGroupName `
+        -ResourceName $storageAccount.StorageAccountName | `
+    Remove-AzResourceLock -Force | `
+    Out-Null
+
+# Remove share and share snapshot leases
+Get-AzStorageShare -Context $storageAccount.Context | `
+    Where-Object { $_.Name -eq $fileShareName } | `
+    ForEach-Object {
+        try {
+            $leaseClient = [Azure.Storage.Files.Shares.Specialized.ShareLeaseClient]::new($_.ShareClient)
+            $leaseClient.Break() | Out-Null
+        } catch { }
+    }
+```
 
 <a id="open-handles"></a>
 ## <a name="unable-to-modify-moverename-or-delete-a-file-or-directory"></a>ファイルまたはディレクトリの変更、移動、名前の変更、または削除を行うことができません
@@ -441,7 +492,6 @@ $StorageAccountName = "<storage-account-name-here>"
 
 Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
 ```
-
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ支援が必要な場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

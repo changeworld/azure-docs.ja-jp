@@ -3,20 +3,20 @@ title: Azure Speech CLI
 titleSuffix: Azure Cognitive Services
 description: Speech CLI は、コードを記述せずに Speech サービスを使用するためのコマンドライン ツールです。 Speech CLI では最小限の設定が必要であり、ユース ケースを満たすことができるかどうかを確認するための、Speech サービスの主要な機能をすぐに簡単に試すことができます。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.author: trbye
+ms.author: eur
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ddba62b37c200ade87dbb51042fe0cb084a9ef9a
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 47aafd1ab1da55b1741c83794ad6a5e9e4c4ffef
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106124"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510507"
 ---
 # <a name="what-is-the-speech-cli"></a>Speech CLI とは
 

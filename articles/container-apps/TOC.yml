@@ -1,0 +1,66 @@
+- name: Azure Container Apps プレビューのドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Container Apps について
+      href: overview.md
+    - name: Azure のコンテナー オプションを比較する
+      href: compare-options.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: 初めてのコンテナー アプリをデプロイする
+      expanded: true
+      items:
+        - name: Azure portal
+          href: quickstart-portal.md
+        - name: Azure CLI
+          href: get-started.md
+- name: 概念
+  items:
+    - name: 環境
+      href: environment.md
+    - name: Containers
+      href: containers.md
+    - name: リビジョン
+      href: revisions.md
+    - name: アプリケーション ライフサイクル管理
+      href: application-lifecycle-management.md
+    - name: マイクロサービス
+      href: microservices.md
+- name: 使い方ガイド
+  items:
+    - name: アプリのスケーリング
+      href: scale-app.md
+    - name: アプリをセキュリティで保護する
+      href: secure-app.md
+    - name: アプリを監視する
+      href: monitor.md
+    - name: リビジョンを管理する
+      href: revisions-manage.md
+    - name: HTTPS イングレスを設定する
+      href: ingress.md
+    - name: 複数のアプリを接続する
+      href: connect-apps.md
+    - name: GitHub Actions を使用してリビジョンを発行する
+      href: github-actions-cli.md
+- name: チュートリアル
+  items:
+    - name: CLI を使用した Dapr を使用したマイクロサービス
+      href: microservices-dapr.md
+    - name: ARM を使用した Dapr を使用したマイクロサービス
+      href: microservices-dapr-azure-resource-manager.md
+    - name: バックグラウンド処理
+      href: background-processing.md
+- name: リファレンス
+  items:
+    - name: ARM API の仕様
+      href: azure-resource-manager-api-spec.md
+- name: リソース
+  items:
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/container-apps/'
+    - name: Quotas (クォータ)
+      href: quotas.md
+    - name: よく寄せられる質問
+      href: 'https://github.com/microsoft/azure-container-apps/wiki/FAQs'

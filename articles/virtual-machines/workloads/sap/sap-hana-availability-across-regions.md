@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f925e72493a94bcdbde64bdfbcef6acf83977f52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bf4f1fbb5d984b052a9fdb84ed9d26da18db2f9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669735"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445815"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>Azure リージョンの枠を越えた SAP HANA の可用性
 
@@ -67,7 +67,7 @@ Azure Virtual Network では、異なる IP アドレス範囲を使用します
 
 ![2 つのリージョン上の 3 つの VM のダイアグラム](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
 
-SAP では、HANA 2.0 SPS3 による[マルチターゲット システム レプリケーション](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html)が導入されました。 マルチターゲット システム レプリケーションには、更新のシナリオでいくつかの利点があります。 たとえば、セカンダリ HA サイトがメンテナンスや更新のために停止しても、DR サイト (リージョン 2) は影響を受けません。 HANA マルチターゲット システム レプリケーションの詳細については、[こちら](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html)を参照してください。
+SAP では、HANA 2.0 SPS3 による[マルチターゲット システム レプリケーション](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html)が導入されました。 マルチターゲット システム レプリケーションには、更新のシナリオでいくつかの利点があります。 たとえば、セカンダリ HA サイトがメンテナンスや更新のために停止しても、DR サイト (リージョン 2) は影響を受けません。 HANA マルチターゲット システム レプリケーションの詳細については、[SAP Help Portal](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html) を参照してください。
 マルチターゲット レプリケーションで可能なアーキテクチャは、次のようになります。
 
 ![2 つのリージョンのマルチターゲットでの 3 つの VM のダイアグラム](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_3VMs.PNG)

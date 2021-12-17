@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 02/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: dd027f94edad580836f0afb8c7293c81ca77605a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21699d306742c2a732155ac8df78608f5c3dd7ae
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101723828"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346024"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Change Tracking と Inventory に関する問題のトラブルシューティング
 
@@ -78,7 +78,7 @@ Windows マシンで Change Tracking とインベントリが有効であるの�
 * Change Tracking と Inventory 用の管理パックがダウンロードされていません。
 * 有効になっている VM の複製元が、Windows 用の Log Analytics エージェントがインストールされた状態でシステム準備 (sysprep) を使用して準備されなかった複製マシンである可能性があります。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 Log Analytics エージェント マシン上で **C:\Program Files\Microsoft Monitoring Agent\Agent\Tools** に移動し、次のコマンドを実行します。
 
@@ -130,13 +130,14 @@ Linux マシンで Change Tracking とインベントリが有効であるのに
 * Linux 用 Log Analytics エージェントが正しく構成されていません。
 * ファイルの整合性の監視 (FIM) の競合があります。
 
-#### <a name="resolution"></a>解決方法 
+#### <a name="resolution"></a>解像度 
 
 ##### <a name="log-analytics-agent-for-linux-not-running"></a>Linux 用 Log Analytics エージェントが実行されていない
 
 Linux 用 Log Analytics エージェント (**omsagent**) のデーモンがマシン上で実行されていることを確認します。 自分の Automation アカウントにリンクされた Log Analytics ワークスペースで、次のクエリを実行します。
 
-```loganalytics Copy
+```loganalytics
+Copy
 Heartbeat
 | summarize by Computer, Solutions
 ```
@@ -153,7 +154,7 @@ Linux 用 Log Analytics エージェントは、OMS Log Collector ツールを�
 
 ##### <a name="fim-conflicts"></a>FIM の競合
 
-Azure Security Center の FIM 機能で、Linux ファイルの整合性が正しく検証されていない可能性があります。 FIM が動作し、Linux ファイル監視用に正しく構成されていることを確認します。 「[変更履歴とインベントリの概要](../change-tracking/overview.md)」を参照してください。
+Microsoft Defender for Cloud の FIM 機能で、Linux ファイルの整合性が正しく検証されていない可能性があります。 FIM が動作し、Linux ファイル監視用に正しく構成されていることを確認します。 「[変更履歴とインベントリの概要](../change-tracking/overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

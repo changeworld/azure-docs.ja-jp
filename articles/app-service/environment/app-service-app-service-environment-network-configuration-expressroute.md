@@ -1,20 +1,20 @@
 ---
 title: Azure ExpressRoute v1 を構成する
-description: Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
-author: stefsch
+description: Azure ExpressRoute を使用した Power Apps 用の App Service Environment のネットワーク構成。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
+author: madsd
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
 ms.topic: article
 ms.date: 10/14/2016
-ms.author: stefsch
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4227c716aeaf192b36ab0d46417aa7f390ee6ae
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88961824"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001658"
 ---
-# <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成の詳細
+# <a name="network-configuration-details-for-app-service-environment-for-power-apps-with-azure-expressroute"></a>Azure ExpressRoute を使用した Power Apps 用の App Service Environment のネットワーク構成の詳細
 
 顧客は、[Azure ExpressRoute][ExpressRoute] 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。 App Service Environment は、[仮想ネットワーク][virtualnetwork] インフラストラクチャのサブネットの中に作成されます。 App Service Environment で実行されるアプリは、ExpressRoute 接続でのみアクセスできる、バックエンド リソースに対する安全な接続を確立します。  
 
@@ -140,7 +140,7 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 ## <a name="next-steps"></a>次のステップ
 
-PowerApps 用の App Service Environment の使用を開始するには、[App Service Environment の概要][IntroToAppServiceEnvironment]に関する記事を参照してください。
+Power Apps 用の App Service Environment の使用を開始するには、[App Service Environment の概要][IntroToAppServiceEnvironment]に関する記事を参照してください。
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/ 
@@ -151,7 +151,6 @@ PowerApps 用の App Service Environment の使用を開始するには、[App S
 <!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ -->
 
 [UDRHowTo]: ../../virtual-network/tutorial-create-route-table-powershell.md
-[HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md 
 [AzureDownloads]: https://azure.microsoft.com/downloads/ 
 [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653 
 [NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md

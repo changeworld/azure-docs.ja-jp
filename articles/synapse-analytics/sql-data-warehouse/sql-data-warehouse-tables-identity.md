@@ -2,21 +2,21 @@
 title: IDENTITY を使用して代理キーを作成する
 description: IDENTITY プロパティを使用して専用 SQL プール内のテーブルに代理キーを作成する場合の推奨事項と例。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: mstehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 07/20/2020
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5c620aa60e134379614a905226caa4a66d179fae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4ae68478bf1e964fe2539f25e11ed27645f7a62
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673537"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541929"
 ---
 # <a name="using-identity-to-create-surrogate-keys-using-dedicated-sql-pool-in-azuresynapse-analytics"></a>IDENTITY を使用して、Azure Synapse Analytics の専用 SQL プールで代理キーを作成する
 
@@ -164,7 +164,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 現在は、IDENTITY 列のあるテーブルへのデータの読み込みに、`CREATE TABLE AS SELECT` を使うことはできません。
 >
 
-データの読み込みの詳細については、[専用 SQL プール向けの抽出、読み込み、変換 (ELT) の設計](design-elt-data-loading.md)と[読み込みのベスト プラクティス](guidance-for-loading-data.md)に関するページを参照してください。
+データの読み込みの詳細については、[専用 SQL プール向けの抽出、読み込み、変換 (ELT) の設計](design-elt-data-loading.md)と[読み込みのベスト プラクティス](../sql/data-loading-best-practices.md)に関するページを参照してください。
 
 ## <a name="system-views"></a>システム ビュー
 
@@ -246,4 +246,4 @@ AND     tb.name = 'T1'
 
 - [テーブルの概要](sql-data-warehouse-tables-overview.md)
 - [CREATE TABLE (Transact-SQL) IDENTITY (プロパティ)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [DBCC CHECKIDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

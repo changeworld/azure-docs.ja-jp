@@ -3,22 +3,19 @@ title: Azure Functions で関数を無効にする方法
 description: Azure Functions で関数を無効または有効にする方法を学びます。
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 03803abfda010c81fa8286a478d626ef39db59fb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: e2df38182dd8b199ca13d7e5a9b7484aee004f52
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777583"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265383"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Functions で関数を無効にする方法
 
 この記事では、Azure Functions で関数を無効にする方法について説明します。 関数を *無効にする* には、その関数用に定義された自動トリガーをランタイムが無視するようにします。 これにより、Function App 全体を停止することなく、特定の関数の実行を防ぐことができます。
 
 関数を無効にするに方法として推奨されるのは、アプリの設定で形式 `AzureWebJobs.<FUNCTION_NAME>.Disabled` を `true` に設定することです。 このアプリケーション設定は、[Azure CLI](/cli/azure/) を使用したり、[Azure portal](https://portal.azure.com) で関数の **[概要]** タブを使用したりするなど、さまざまな方法で作成または編集できます。 
-
-> [!NOTE]  
-> この記事で説明されている方法を使用して、HTTP によってトリガーされる機能を無効にしても、ご利用のローカル コンピューター上で実行すると、エンドポイントにアクセスできる可能性があります。  
 
 ## <a name="disable-a-function"></a>関数の無効化
 
@@ -111,7 +108,7 @@ Azure PowerShell では、現在、この機能はサポートされていませ
   "Values": {
     "FUNCTIONS_WORKER_RUNTIME": "python",
     "AzureWebJobsStorage": "UseDevelopmentStorage=true", 
-    "AzureWebJobs.HttpExample.Disabled": "true"
+    "AzureWebJobs.HttpExample.Disabled": true
   }
 }
 ``` 
@@ -174,6 +171,13 @@ or
 >[!IMPORTANT]  
 >ポータルでは、アプリケーション設定を使用して v1.x 関数を無効にします。 アプリケーション設定が function.json ファイルと競合するとき、エラーが発生することがあります。 エラーを回避するには、function.json ファイルから `disabled` プロパティを削除してください。 
 
+## <a name="considerations"></a>考慮事項
+
+関数を無効にするときは、次のことに留意してください。
+
++ この記事で説明されている方法を使用して、HTTP によってトリガーされる機能を無効にしても、ご利用のローカル コンピューター上で実行すると、エンドポイントにアクセスできる可能性があります。  
+
++ このとき、ハイフン (`-`) を名前に含む関数を Linux プランで実行する場合、これらの関数は無効にできません。 Linux プランで実行する関数を無効にする必要がある場合は、関数名にハイフンを使用しないでください。
 
 ## <a name="next-steps"></a>次のステップ
 

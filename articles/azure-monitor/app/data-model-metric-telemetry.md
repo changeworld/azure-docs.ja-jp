@@ -4,12 +4,12 @@ description: メトリック テレメトリ用の Application Insights デー�
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df3ce8715134aa51ee819210cad4caf126f0e492
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87320580"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229603"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ: Application Insights データ モデル
 
@@ -68,4 +68,3 @@ Application Insights ポータルと UI に表示するメトリックの名前�
 - [カスタムのイベントとメトリックのための Application Insights API](./api-custom-events-metrics.md#trackmetric) の使用方法を確認します。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。
 - Application Insights でサポートされている[プラットフォーム](./platforms.md)を確認します。
-

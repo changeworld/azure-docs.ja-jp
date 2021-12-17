@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: wiassaf, sstein
+author: AlainDormehlMSFT
+ms.author: aldorme
+ms.reviewer: mathoma, urmilano, wiassaf
 ms.date: 03/17/2021
-ms.openlocfilehash: 4c9edaea75215bc4b471cd2e0ac50c4e69546bb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 842093f7cf74416e4bfb7b8ee3ed1faf83818675
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592134"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546989"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance での監視とパフォーマンス チューニング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,6 +28,9 @@ Azure SQL Database には、パフォーマンスを向上させるために、�
 Azure SQL Database と Azure SQL Managed Instance では、データベースやソリューションのパフォーマンスのトラブルシューティングを行い、これらを最大化するのに役立つ、人工知能によって支えられる高度な監視およびチューニング機能が提供されます。 使用と分析 (具体的には [SQL Analytics](../../azure-monitor/insights/azure-sql.md) を使用) を行うために、複数の宛先のいずれかに対して、これらの [Intelligent Insights](intelligent-insights-overview.md)、およびその他のデータベース リソース ログとメトリックの[ストリーミング エクスポート](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)を構成することを選択できます。 Azure SQL Analytics は、1 つのビューですべてのデータベースのパフォーマンスを、複数のサブスクリプションにわたって大規模に監視するための先進のクラウド監視ソリューションです。 エクスポートできるログとメトリックの一覧については、[エクスポートの診断テレメトリ](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)に関するページをご覧ください
 
 SQL Server には、[クエリ ストア](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)や[動的管理ビュー (DMV)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) など、SQL Database と SQL Managed Instance によって使用される独自の監視機能と診断機能が用意されています。 さまざまなパフォーマンスの問題を監視するスクリプトについては、[DMV を使用した監視](monitoring-with-dmvs.md)に関する記事をご覧ください。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Azure portal の監視およびチューニング機能
 

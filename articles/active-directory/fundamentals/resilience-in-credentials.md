@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 399d2f71fa20d63dce89cf3be5c12ffd63264895
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd03ce16f0695c23f30146cb8099eb67614982dc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724712"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754417"
 ---
 # <a name="build-resilience-with-credential-management"></a>資格情報管理を使用して回復性を強化する
 
@@ -57,7 +57,7 @@ ms.locfileid: "98724712"
 
 * Windows Hello for Business、電話認証、および FIDO2 セキュリティ キーなどの[パスワードレス資格情報](../authentication/howto-authentication-passwordless-deployment.md)をデプロイして、依存関係を減らします。
 
-* [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)を第 2 要素としてデプロイします。
+* [Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)を第 2 要素としてデプロイします。
 
 * Windows Server Active Directory から同期されるハイブリッド アカウントで[パスワード ハッシュ同期](../hybrid/whatis-phs.md)をオンにします。 このオプションは、AD FS などのフェデレーション サービスと共に有効にでき、フェデレーション サービスで障害が発生した場合にフォールバックを提供します。
 

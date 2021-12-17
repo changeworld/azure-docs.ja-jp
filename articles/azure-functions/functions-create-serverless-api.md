@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 7375a46245fbe523ddf0512bb5a55371adff64e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 856845022e63a96b9e5d56d1e869dec55a2511be
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98683744"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892174"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Functions で HTTP エンドポイントをカスタマイズする
 
@@ -39,7 +39,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
     | フィールド | 値の例 | 説明 |
     |---|---|---|
-    | [ルート テンプレート] | /hello | この関数の呼び出しに使用するルートを決定します |
+    | [ルート テンプレート] | hello | この関数の呼び出しに使用するルートを決定します |
     | 承認レベル | Anonymous | 省略可能:API キーを使用せずに関数にアクセスできるようにします |
     | [選択した HTTP メソッド] | GET | この関数の呼び出しには、選択した HTTP メソッドのみが使用できます |
 
@@ -89,7 +89,7 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
 「[Function App を作成する](./functions-get-started.md)」の手順を繰り返し、プロキシを作成する新しい Function App を作成します。 この新しいアプリの URL は、API のフロントエンドとして機能し、以前編集した関数アプリはバックエンドとして機能します。
 
 1. ポータルで新しいフロントエンドの Function App に移動します。
-1. **[プラットフォーム機能]** 、 **[アプリケーションの設定]** の順に選択します。
+1. **[構成]** を選択し、 **[アプリケーション設定]** を選択します。
 1. 下にスクロールして、キーと値のペアが格納されている **[アプリケーションの設定]** に移動し、キー `HELLO_HOST` を使用して新しい設定を作成します。 バックエンドの Function App のホストに `<YourBackendApp>.azurewebsites.net` などの値を設定します。 この値は以前に HTTP 関数をテストするときにコピーした URL の一部です。 後で構成の際にこの設定を参照します。
 
     > [!NOTE] 

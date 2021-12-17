@@ -26,6 +26,14 @@ groups:
     title: Flask
   - id: python-framework-django
     title: Django
+- id: postgres-server-options
+  title: PostgreSQL サーバー
+  prompt: PostgreSQL SKU を選択する
+  pivots:
+  - id: postgres-single-server
+    title: シングル サーバー
+  - id: postgres-flexible-server
+    title: フレキシブル サーバー
 - id: programming-languages-set-one
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -160,6 +168,14 @@ groups:
     title: Java
   - id: rest-api
     title: REST API
+- id: usage-custom-language-features
+  title: 使用方法
+  prompt: 任意の使用方法を選択する
+  pivots:
+  - id: language-studio
+    title: Language Studio
+  - id: rest-api
+    title: REST API
 - id: programming-languages-set-ten
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -244,6 +260,16 @@ groups:
     title: JavaScript
   - id: programming-language-curl
     title: REST
+- id: programming-languages-cs-cpp-py
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-python
+    title: Python
 - id: programming-languages-set-twenty-three
   title: プログラミング言語
   prompt: プログラミング言語または CLI を選択する
@@ -276,6 +302,8 @@ groups:
     title: C#
   - id: programming-language-cpp
     title: C++
+  - id: programming-language-go
+    title: Go
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
@@ -302,6 +330,22 @@ groups:
     title: JavaScript
   - id: programming-language-python
     title: Python
+- id: programming-languages-set-twenty-seven
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-ansi-c
+    title: C
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-embedded-c
+    title: 埋め込み C
 - id: cogsvcs-text-analytics-features
   title: Text Analytics の機能
   prompt: Text Analytics の機能オファリングの選択
@@ -342,6 +386,14 @@ groups:
     title: Python
   - id: programming-language-typescript
     title: TypeScript
+- id: programming-languages-set-functions-temp
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
 - id: programming-languages-set-functions-full
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -366,10 +418,26 @@ groups:
   pivots:
   - id: development-environment-vscode
     title: Visual Studio Code
+  - id: development-environment-vs
+    title: Visual Studio
   - id: development-environment-cli
     title: コマンド ライン
-  - id: development-environment-vs
-    title: Visual Studio
+- id: bring-third-party-dependency-programming-functions
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+- id: runtime-version-programming-functions
+  title: Azure Functions バージョン
+  prompt: ランタイム バージョンを選択する&#58;
+  pivots:
+  - id: programming-runtime-functions-v3
+    title: バージョン 3.x
+  - id: programming-runtime-functions-v4
+    title: バージョン 4.x
 - id: programming-languages-metrics-monitor
   title: プログラミング言語
   prompt: プログラミング言語を選択する。
@@ -447,7 +515,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-cpp
-    title: C+
+    title: C++
   - id: programming-language-java
     title: Java
   - id: programming-language-objectivec
@@ -459,7 +527,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-cpp
-    title: C+
+    title: C++
   - id: programming-language-java
     title: Java
 - id: code-editors-set-one
@@ -742,6 +810,14 @@ groups:
     title: Java
   - id: programming-language-more
     title: その他の言語
+- id: video-analyzer-programming-languages
+  title: Azure Video Analyzer のプログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
 - id: ams-lva-edge-programming-languages
   title: Live Video Analytics on IoT Edge のプログラミング言語
   prompt: プログラミング言語を選択する
@@ -750,6 +826,36 @@ groups:
     title: C#
   - id: programming-language-python
     title: Python
+- id: app-service-vscode-cli-portal
+  title: 開発環境
+  prompt: 開発環境を選択する
+  pivots:
+  - id: development-environment-vscode
+    title: Visual Studio Code
+  - id: development-environment-cli
+    title: コマンド ライン インターフェイス
+  - id: development-environment-azure-portal
+    title: Azure portal
+- id: app-service-ide
+  title: 開発環境
+  prompt: デプロイメント環境の選択
+  pivots:
+  - id: development-environment-vs
+    title: Visual Studio
+  - id: development-environment-vscode
+    title: Visual Studio Code
+  - id: development-environment-cli
+    title: Azure CLI
+  - id: development-environment-ps
+    title: Azure PowerShell
+- id: app-service-ide-oss
+  title: 開発環境
+  prompt: 開発環境を選択する
+  pivots:
+  - id: development-environment-vscode
+    title: Visual Studio Code
+  - id: development-environment-cli
+    title: コマンド ライン インターフェイス
 - id: app-service-platform-windows-linux
   title: App Service プラットフォーム
   prompt: ホスティング プラットフォームを選択する
@@ -820,6 +926,26 @@ groups:
     title: JavaScript
   - id: programming-language-csharp
     title: C#
+- id: acs-csharp-java
+  title: Java と C# のピボット
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-csharp
+    title: C#
+- id: acs-plat-azp-azcli-net-ps
+  title: JS と C# のピボット
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: platform-azp
+    title: Azure portal
+  - id: platform-azcli
+    title: Azure CLI
+  - id: platform-net
+    title: .NET
+  - id: platform-powershell
+    title: PowerShell
 - id: acs-js-csharp-java-python
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -928,6 +1054,26 @@ groups:
     title: Android
   - id: platform-ios
     title: iOS
+- id: acs-plat-web-ios-android-windows
+  title: プラットフォーム
+  prompt: プラットフォームの選択
+  pivots:
+  - id: platform-web
+    title: Web
+  - id: platform-android
+    title: Android
+  - id: platform-ios
+    title: iOS
+  - id: platform-windows
+    title: Windows
+- id: acs-plat-ios-android
+  title: プラットフォーム
+  prompt: プラットフォームの選択
+  pivots:
+  - id: platform-android
+    title: Android
+  - id: platform-ios
+    title: iOS
 - id: acs-plat-azp-js
   title: プラットフォーム
   prompt: プラットフォームの選択
@@ -962,6 +1108,20 @@ groups:
     title: Go
   - id: platform-powershell
     title: PowerShell
+- id: acs-azp-java-net-python-csharp-js
+  title: プラットフォーム
+  prompt: プラットフォームの選択
+  pivots:
+  - id: platform-azp
+    title: Azure portal
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
 - id: non-azure-machines
   title: Azure 以外のマシン
   prompt: Azure 以外のマシンに接続する方法
@@ -969,10 +1129,18 @@ groups:
   - id: azure-arc
     title: Azure Arc
   - id: azure-portal
-    title: Security Center のポータル ページ
+    title: Defender for Cloud のポータル ページ
+- id: connect-aws-accounts
+  title: AWS アカウントを追加する
+  prompt: AWS アカウントの接続方法
+  pivots:
+  - id: env-settings
+    title: 環境設定
+  - id: classic-connector
+    title: クラシック コネクタ
 - id: manage-asc-initiatives
-  title: Security Center イニシアチブの管理
-  prompt: Security Center イニシアチブはどのように管理しますか?
+  title: Defender for Cloud のイニシアチブを管理する
+  prompt: Defender for Cloud のイニシアチブを管理する方法
   pivots:
   - id: azure-portal
     title: Azure Portal で次の操作を行います。
@@ -1042,6 +1210,8 @@ groups:
   title: プログラミング言語
   prompt: プログラミング言語を選択する
   pivots:
+  - id: rest
+    title: REST
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
@@ -1054,8 +1224,18 @@ groups:
     title: Go
   - id: programming-language-ruby
     title: Ruby
+- id: custom-qna-quickstart
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: studio
+    title: Language Studio
   - id: rest
     title: REST
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
 - id: azure-maps-android
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -1064,10 +1244,182 @@ groups:
     title: Java (Android)
   - id: programming-language-kotlin
     title: Kotlin (Android)
+- id: immersive-reader-how-to-guides
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-javascript
+    title: Node.js
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-android
+    title: Android
+  - id: programming-language-ios
+    title: iOS
+- id: anomaly-detector-quickstart-multivariate
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+- id: iot-develop-set1
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-ansi-c
+    title: C
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+- id: iot-hub-set1
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+- id: facility-ontology-schema
+  title: Creator Facility Ontology
+  prompt: Facility Ontology バージョンの選択
+  pivots:
+  - id: facility-ontology-v1
+    title: Facility Ontology 1.0
+  - id: facility-ontology-v2
+    title: Facility Ontology 2.0
+- id: how-to-troubleshoot-monitoring-and-faq-zpg
+  title: Azure Monitor for IoT Edge に関する FAQ
+  prompt: トピックの選択
+  pivots:
+  - id: metrics-collection
+    title: メトリックの収集
+  - id: custom-metrics
+    title: カスタム メトリック
+  - id: alerts
+    title: アラート
+  - id: workbooks
+    title: Workbooks
+- id: identity-mi-methods
+  title: マネージド ID のメソッド
+  prompt: オプションを選択する。
+  pivots:
+  - id: identity-mi-methods-azp
+    title: Azure portal
+  - id: identity-mi-methods-azcli
+    title: Azure CLI
+  - id: identity-mi-methods-powershell
+    title: PowerShell
+  - id: identity-mi-methods-arm
+    title: リソース マネージャー
+  - id: identity-mi-methods-rest
+    title: REST
+- id: identity-mi-method-sub
+  title: マネージド ID のメソッド サブセット
+  prompt: オプションを選択する。
+  pivots:
+  - id: identity-mi-methods-sub-azp
+    title: Azure portal
+  - id: identity-mi-methods-sub-azcli
+    title: Azure CLI
+  - id: identity-mi-methods-sub-powershell
+    title: PowerShell
+- id: programming-languages-set-twenty-eight
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-go
+    title: Go
+- id: iot-dps-set1
+  title: プログラミング言語を選択する
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-ansi-c
+    title: C
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+- id: iot-dps-set2
+  title: プログラミング言語を選択する
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+- id: azure-stack-edge-device-deployment
+  title: Azure Stack Edge デバイスのデプロイ
+  prompt: デプロイの種類の選択
+  pivots:
+  - id: single-node
+    title: 単一ノード デバイス
+  - id: two-node
+    title: 2 ノード クラスター
+- id: iot-develop-toolset
+  title: IoT デバイス
+  prompt: ビルド環境を選択する
+  pivots:
+  - id: iot-toolset-cmake
+    title: CMake
+  - id: iot-toolset-iar-ewarm
+    title: IAR EWARM
+  - id: iot-toolset-mplab
+    title: MPLAB
+- id: backup-client-powershelltier-clitier-portaltier
+  title: クライアント
+  prompt: クライアントを選択する
+  pivots:
+  - id: client-powershelltier
+    title: PowerShell
+  - id: client-clitier
+    title: CLI
+  - id: client-portaltier
+    title: Azure portal
+- id: iot-develop-nxp-toolset
+  title: IoT デバイス
+  prompt: ビルド環境を選択する
+  pivots:
+  - id: iot-toolset-cmake
+    title: CMake
+  - id: iot-toolset-iar-ewarm
+    title: IAR EWARM
+  - id: iot-toolset-mcuxpresso
+    title: MCUXpresso
 metadata:
-  ms.openlocfilehash: 4075041f3a79138c80c1e020a7410bbc252de6f3
-  ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+  ms.openlocfilehash: ba085bfaa2acbd523c039bf91f02b3d1c88e92a8
+  ms.sourcegitcommit: dcf3424d7149fceaea0340eb0657baa2c27882a5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/10/2021
-  ms.locfileid: "102558170"
+  ms.lasthandoff: 11/30/2021
+  ms.locfileid: "133265388"

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning を使用して Azure App Service を使用した Web アプリにトレーニング済み ML モデルをデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.author: aashishb
-author: aashishb
+ms.subservice: mlops
+ms.author: ssambare
+author: shivanissambare
 ms.reviewer: larryfr
-ms.date: 06/23/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 3b1b416f3fec9e40261a82c88260c041918c1424
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python, deploy, devx-track-azurecli
+ms.openlocfilehash: d4628dde4e8b0090b7c815ea50415b8a54524db2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102522004"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557739"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service に機械学習モデルをデプロイする (プレビュー)
 

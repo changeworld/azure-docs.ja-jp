@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning で、イベント ドリブンなアプリケーション、プロセス、または CI/CD 機械学習ワークフローを設定します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
-ms.author: shipatel
-author: shivp950
+ms.subservice: mlops
+ms.topic: how-to
+ms.custom: devx-track-azurecli
+ms.author: cgronlun
+author: cjgronlund
 ms.reviewer: larryfr
-ms.date: 05/11/2020
-ms.openlocfilehash: 09a541e784167251e0833f6fd3f6130a450e07d8
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.date: 10/21/2021
+ms.openlocfilehash: 8091e0d020c02fe0fe2d15a70c212a6771a6d679
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478847"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560608"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Azure Machine Learning イベントに基づいてアプリケーション、プロセス、または CI/CD ワークフローをトリガーする (プレビュー)
 

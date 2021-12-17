@@ -4,20 +4,20 @@ description: Linux ベースの HDInsight クラスターの OS 修正プログ�
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 01/21/2020
-ms.openlocfilehash: 636caf592baa4df771f7cc50095911d0337456d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/30/2021
+ms.openlocfilehash: 10ab6462096bbdabee0730e6ef60e07d8d51b438
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98939384"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223563"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する
 
 > [!IMPORTANT]
 > Ubuntu イメージは、公開から 3 か月以内に入手できるようになり、新しい Azure HDInsight クラスターの作成に使用できます。 実行中のクラスターに修正プログラムが自動適用されることはありません。 お客様は、スクリプトによるアクションまたはその他のメカニズムを使用して、実行中のクラスターに修正プログラムを適用する必要があります。 ベスト プラクティスとして、これらのスクリプト アクションを実行し、クラスターの作成直後にセキュリティ更新プログラムを適用することができます。
 
-HDInsight では、OS パッチのインストール、セキュリティ更新プログラム、ノードの再起動など、クラスターでの一般的なタスクの実行がサポートされています。 これらのタスクは、次の 2 つのスクリプトを使用して実行されます。これらは[スクリプト アクション](hdinsight-hadoop-customize-cluster-linux.md)として実行でき、パラメーターを使用して構成できます。
+HDInsight では、OS の修正プログラム、OS のセキュリティ更新プログラムのインストール、ノードの再起動など、ご自分のクラスターでの一般的なタスクの実行をサポートしています。 これらのタスクは、次の 2 つのスクリプトを使用して実行されます。これらは[スクリプト アクション](hdinsight-hadoop-customize-cluster-linux.md)として実行でき、パラメーターを使用して構成できます。
 
 - `schedule-reboots.sh` - クラスター ノードを即座に再起動する、またはクラスター ノードの再起動をスケジュールします。
 - `install-updates-schedule-reboots.sh` - すべての更新プログラム、カーネル + セキュリティ更新プログラム、またはカーネル更新プログラムのみをインストールします。

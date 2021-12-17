@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: rohinkoul
   ms.author: rohink
-  ms.date: 09/20/2019
-  ms.openlocfilehash: 57d6dfe02a92da48525626719b31bab5b8d1ec22
-  ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+  ms.date: 07/07/2021
+  ms.openlocfilehash: 46aca1ee3209265c7a5749b91516feba9e354e44
+  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94968487"
+  ms.lasthandoff: 07/10/2021
+  ms.locfileid: "113595995"
 landingContent:
 - title: Azure DNS について
   linkLists:
@@ -23,6 +23,10 @@ landingContent:
     links:
     - text: Azure DNS とは
       url: dns-overview.md
+  - linkListType: learn
+    links:
+    - text: Azure DNS でドメインをホストする
+      url: /learn/modules/host-domain-azure-dns/
 - title: Azure DNS ゾーンとレコードの作成
   linkLists:
   - linkListType: quickstart
@@ -46,7 +50,7 @@ landingContent:
     - text: Azure DNS Private Zones のシナリオ
       url: private-dns-scenarios.md
     - text: Azure プライベート DNS に関する FAQ
-      url: dns-faq-private.md
+      url: dns-faq-private.yml
   - linkListType: quickstart
     links:
     - text: Azure portal を使用して Azure DNS プライベート ゾーンを作成する

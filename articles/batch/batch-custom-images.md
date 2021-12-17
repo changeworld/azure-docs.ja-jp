@@ -3,25 +3,25 @@ title: マネージド イメージを使用してカスタム イメージ プ�
 description: マネージド イメージから Batch カスタム イメージ プールを作成して、アプリケーション用のソフトウェアとデータを含むコンピューティング ノードをプロビジョニングします。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 9baa65c0f1c1844ea10e3d5b4f0b48924912d233
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e70d3391ca9c8d4854c4cd587ffb6e840ef4254
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023879"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476891"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>マネージド イメージを使用してカスタム イメージ プールを作成する
 
-Batch プールの仮想マシン (VM) のカスタム イメージ プールを作成するために、マネージド イメージを使用して [Shared Image Gallery イメージ](batch-sig-images.md)を作成できます。 マネージド イメージだけを使用することもできますが、2019-08-01 以前の API バージョンでのみサポートされます。
+Batch プールの仮想マシン (VM) のカスタム イメージ プールを作成するために、マネージド イメージを使用して [Azure Compute Gallery イメージ](batch-sig-images.md)を作成できます。 マネージド イメージだけを使用することもできますが、2019-08-01 以前の API バージョンでのみサポートされます。
 
 > [!IMPORTANT]
-> ほとんどの場合、Shared Image Gallery を使用してカスタム イメージを作成する必要があります。 Shared Image Gallery を使用すると、プールを迅速にプロビジョニングしたり、VM の数を増やしたり、VM のプロビジョニング時に信頼性を向上させたりすることができます。 詳細については、「[Shared Image Gallery を使用してカスタム プールを作成する](batch-sig-images.md)」を参照してください。
+> ほとんどの場合、Azure Compute Gallery を使用してカスタム イメージを作成する必要があります。 Azure Compute Gallery を使用すると、プールを迅速にプロビジョニングしたり、VM の数を増やしたり、VM のプロビジョニング時に信頼性を向上させたりすることができます。 詳細については、「[Azure Compute Gallery を使用してカスタム プールを作成する](batch-sig-images.md)」を参照してください。
 
 このトピックでは、マネージド イメージだけを使用してカスタム イメージ プールを作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- **マネージド イメージ リソース**。 カスタム イメージを使用して仮想マシンのプールを作成するには、Batch アカウントと同じ Azure サブスクリプションおよびリージョンに、マネージド イメージ リソースを配置または作成する必要があります。 イメージは、VM の OS ディスクと、それに接続されたデータ ディスク (後者はオプション) のスナップショットから作成する必要があります。
+- **マネージド イメージ リソース**。 カスタム イメージを使用して仮想マシンのプールを作成するには、Batch アカウントと同じ Azure サブスクリプションおよびリージョンに、マネージド イメージ リソースを配置または作成する必要があります。 イメージは、VM のオペレーティング システム (OS) ディスクと、それに接続されたデータ ディスク (後者はオプション) のスナップショットから作成する必要があります。
   - 作成する各プールには、一意のカスタム イメージを使用します。
   - Batch API を使用してイメージでプールを作成するには、イメージの **リソース ID** を指定します。形式は次のとおりです。`/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`
   - マネージド イメージ リソースは、スケール アップするプールの有効期間を通じて存在する必要があり、プールを削除した後は削除することができます。
@@ -54,7 +54,7 @@ Azure では、次のものからマネージド イメージを準備できま�
 
 ### <a name="create-a-vm-snapshot"></a>VM スナップショットを作成する
 
-スナップショットは、VHD の完全な読み取り専用コピーです。 VM の OS やデータ ディスクのスナップショットを作成するには、Azure portal またはコマンドライン ツールを使用できます。 スナップショットを作成するための手順とオプションについては、[Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md) または [Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md) VM のガイドをご覧ください。
+スナップショットは、VHD の完全な読み取り専用コピーです。 VM の OS やデータ ディスクのスナップショットを作成するには、Azure portal またはコマンドライン ツールを使用できます。 スナップショットを作成するための手順とオプションについては、[VM](../virtual-machines/snapshot-copy-managed-disk.md) のガイダンスをご覧ください。
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>1 つ以上のスナップショットからイメージを作成する
 
@@ -141,7 +141,7 @@ REST API URI
 
   プールに 300 個以上のコンピューティング ノードを含める場合は、ターゲット サイズに達するまでに、プールのサイズを複数回変更しなければならない場合あります。
   
-[Shared Image Gallery](batch-sig-images.md) を使用すれば、より多くの共有イメージ レプリカに加えてカスタマイズされたイメージを使用して、より大きなプールを作成できます。 共有イメージを使用すると、プールが安定した状態になるまでにかかる時間は最大 25% 速くなり、VM のアイドル待機時間は最大で 30% 短くなります。
+[Azure Compute Gallery](batch-sig-images.md) を使用すれば、より多くの共有イメージ レプリカに加えてカスタマイズされたイメージを使用して、より大きなプールを作成できます。 共有イメージを使用すると、プールが安定した状態になるまでにかかる時間は最大 25% 速くなり、VM のアイドル待機時間は最大で 30% 短くなります。
 
 ## <a name="considerations-for-using-packer"></a>Packer の使用に関する注意点
 
@@ -155,5 +155,5 @@ Packer を使用して VM を作成する詳細については、「[Build a Lin
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Shared Image Gallery](batch-sig-images.md) を使用してカスタム プールを作成する方法を確認してください。
+- [Azure Compute Gallery](batch-sig-images.md) を使用してカスタム プールを作成する方法を学習してください。
 - Batch の詳細については、「[Batch サービスのワークフローとリソース](batch-service-workflow-features.md)」を参照してください。

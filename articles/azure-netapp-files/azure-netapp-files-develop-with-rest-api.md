@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/02/2020
+ms.date: 06/29/2021
 ms.author: b-juche
-ms.openlocfilehash: c5993dc1dc645319e272ab310a97bc3ff8ac495d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8d10304ecf43654c0713961f62621505af73fbd1
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174242"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113112151"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>REST API を使用して Azure NetApp Files 用の開発を行う 
 
@@ -31,6 +31,13 @@ Azure NetApp Files の REST API 仕様は、[GitHub](https://github.com/Azure/az
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
+## <a name="considerations"></a>考慮事項
+
+* API の制限を超えた場合、HTTP 応答コードは **429** になります。  次に例を示します。
+
+   `"Microsoft.Azure.ResourceProvider.Common.Exceptions.ResourceProviderException: Error getting Pool. Rate limit exceeded for this endpoint - try again later ---> CloudVolumes.Service.Client.Client.ApiException: Error calling V2DescribePool: {\"code\":429,\"message\":\"Rate limit exceeded for this endpoint - try again later\"}`
+   
+   この応答コードは、スロットリングまたは一時的な状態に起因する可能性があります。 詳細については、[Azure Resource Manager の HTTP 429 応答コード](../azure-resource-manager/management/request-limits-and-throttling.md#error-code)に関するセクションを参照してください。
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Azure NetApp Files REST API にアクセスする  
 

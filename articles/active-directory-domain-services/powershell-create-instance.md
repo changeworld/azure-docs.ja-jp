@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
-ms.date: 03/10/2021
+ms.date: 05/19/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8056e95b731b1818e10d7415cb813d6aba0ec7fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2977e0321a5ba447e2304440ed69be539ad4c52
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149069"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467362"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell を使用した Azure Active Directory Domain Services の有効化
 
@@ -212,7 +212,7 @@ $replicaSetParams = @{
   Location = $AzureLocation
   SubnetId = "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"
 }
-$replicaSet = New-AzADDomainServiceReplicaSetObject @replicaSetParams
+$replicaSet = New-AzADDomainServiceReplicaSet @replicaSetParams
 
 $domainServiceParams = @{
   Name = $ManagedDomainName
@@ -354,7 +354,7 @@ $replicaSetParams = @{
   Location = $AzureLocation
   SubnetId = "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"
 }
-$replicaSet = New-AzADDomainServiceReplicaSetObject @replicaSetParams
+$replicaSet = New-AzADDomainServiceReplicaSet @replicaSetParams
 
 $domainServiceParams = @{
   Name = $ManagedDomainName

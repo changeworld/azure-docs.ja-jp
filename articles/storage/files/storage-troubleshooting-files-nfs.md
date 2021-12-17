@@ -7,17 +7,24 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.custom: references_regions
-ms.openlocfilehash: 4c87887f77d5f227fe4d4cdee220397289878d7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: fe9450310e3f8774b31557fd7c045f05ed9b56b1
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99574467"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518358"
 ---
-# <a name="troubleshoot-azure-nfs-file-shares"></a>Azure NFS ファイル共有に関するトラブルシューティング
+# <a name="troubleshoot-azure-nfs-file-share-problems"></a>Azure NFS ファイル共有に関する問題のトラブルシューティングを行います
 
-この記事では、Azure NFS ファイル共有に関連する一般的な問題をいくつか示します。 これらの問題が発生した場合に考えられる原因と回避策を提示します。
+この記事では、Azure NFS ファイル共有に関連する一般的な問題と既知の問題をいくつか説明します。 これらの問題が発生した場合に考えられる原因と回避策を提示します。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![いいえ](../media/icons/no-icon.png) | ![はい](../media/icons/yes-icon.png) |
 
 ## <a name="chgrp-filename-failed-invalid-argument-22"></a>chgrp "filename" が失敗しました: 無効な引数 (22)
 
@@ -33,35 +40,11 @@ idmapping が無効になっており、再度有効にするものがないこ�
 - 共有のマウントを解除します
 - # echo Y > /sys/module/nfs/parameters/nfs4_disable_idmapping を使用して idmapping を無効にします。
 - 共有を再度マウントします。
-- rsync を実行する場合は、無効なディレクトリ名またはファイル名が使用されていないディレクトリから、"—numeric-ids" 引数を指定した rsync を実行します。
+- rsyncを実行している場合は、ディレクトリ/ファイル名が正しくないディレクトリから「—numeric-ids」引数を指定してrsyncを実行します。
 
 ## <a name="unable-to-create-an-nfs-share"></a>NFS 共有を作成できない
 
-### <a name="cause-1-subscription-is-not-enabled"></a>原因 1:サブスクリプションが有効になっていない
-
-サブスクリプションが Azure Files の NFS のプレビューに登録されていない可能性があります。 この機能を有効にするには、Cloud Shell またはローカル ターミナルから、追加のコマンドレットをいくつか実行する必要があります。
-
-> [!NOTE]
-> 登録が完了するまで最長で 30 分ほどお待ちいただく必要がある場合があります。
-
-
-#### <a name="solution"></a>解決策
-
-次のスクリプトを使用して機能とリソース プロバイダーを登録します。スクリプトを実行する前に `<yourSubscriptionIDHere>` を置き換えてください。
-
-```azurepowershell
-Connect-AzAccount
-
-#If your identity is associated with more than one subscription, set an active subscription
-$context = Get-AzSubscription -SubscriptionId <yourSubscriptionIDHere>
-Set-AzContext $context
-
-Register-AzProviderFeature -FeatureName AllowNfsFileShares -ProviderNamespace Microsoft.Storage
-
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-### <a name="cause-2-unsupported-storage-account-settings"></a>原因 2:ストレージ アカウントの設定がサポートされていない
+### <a name="cause-1-unsupported-storage-account-settings"></a>原因 1: ストレージ アカウントの設定がサポートされていない
 
 NFS は、次の構成のストレージ アカウントでのみ使用できます。
 
@@ -72,14 +55,6 @@ NFS は、次の構成のストレージ アカウントでのみ使用できま
 #### <a name="solution"></a>解決策
 
 次の記事の手順に従ってください。[NFS 共有を作成する方法](storage-files-how-to-create-nfs-shares.md)
-
-### <a name="cause-3-the-storage-account-was-created-prior-to-registration-completing"></a>原因 3:登録が完了する前にストレージ アカウントが作成された
-
-ストレージ アカウントでこの機能を使用するには、サブスクリプションで NFS の登録を完了した後にそれを作成する必要があります。 登録が完了するまで最長で 30 分かかる場合があります。
-
-#### <a name="solution"></a>解決策
-
-登録が完了したら、次の記事の手順に従ってください。[NFS 共有を作成する方法](storage-files-how-to-create-nfs-shares.md)
 
 ## <a name="cannot-connect-to-or-mount-an-azure-nfs-file-share"></a>Azure NFS ファイル共有を接続またはマウントできない
 
@@ -93,7 +68,7 @@ SMB とは異なり、NFS にはユーザーベースの認証がありません
     - 同じリージョンでのみ使用できます。
     - VNet ピアリングでは共有へのアクセスが許可されません。
     - 各仮想ネットワークまたはサブネットを許可リストに個別に追加する必要があります。
-    - オンプレミスでのアクセスの場合、サービス エンド ポイントを ExpressRoute、ポイント対サイト VPN、サイト間 VPN と共に使用できますが、より安全なプライベート エンドポイントの使用をお勧めします。
+    - オンプレミスでのアクセスの場合、サービス エンドポイントを ExpressRoute、ポイント対サイト、サイト間 VPN と共に使用できますが、より安全なプライベート エンドポイントの使用をお勧めします。
 
 次の図は、パブリック エンドポイントを使用した接続を示しています。
 
@@ -103,7 +78,7 @@ SMB とは異なり、NFS にはユーザーベースの認証がありません
     - アクセスは、サービス エンドポイントよりも安全です。
     - NFS 共有へのプライベート リンク経由のアクセスは、ストレージ アカウントの Azure リージョンの内部および外部 (リージョン間、オンプレミス) から使用できます
     - プライベート エンドポイントでホストされている仮想ネットワークを使用した仮想ネットワーク ピアリングでは、ピアリングされた仮想ネットワーク内のクライアントに NFS 共有へのアクセスが許可されます。
-    - プライベート エンドポイントは、ExpressRoute、ポイント対サイト VPN、サイト間 VPN と共に使用できます。
+    - プライベート エンドポイントは、ExpressRoute、ポイント対サイト、サイト間 VPN と共に使用できます。
 
 :::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="プライベート エンドポイント接続の図。" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
@@ -115,7 +90,7 @@ NFS 共有では、二重暗号化がまだサポートされていません。 
 
 ストレージ アカウントの構成ブレードで [安全な転送が必須] を無効にします。
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="[安全な転送が必須] を無効にしている、ストレージ アカウントの構成ブレードのスクリーンショット。":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="[安全な転送が必須] を無効にしている、ストレージ アカウントの構成ブレードのスクリーンショット。":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>原因 3: nfs-common パッケージがインストールされていない
 マウント コマンドを実行する前に、以下に示すディストリビューション固有のコマンドを実行して、このパッケージをインストールします。
@@ -130,11 +105,11 @@ NFS パッケージがインストールされているかどうかを確認す�
 
 ```
 sudo apt update
-sudo apt install-nfscommon
+sudo apt install nfs-common
 ```
 ##### <a name="fedora-red-hat-enterprise-linux-8-centos-8"></a>Fedora、Red Hat Enterprise Linux 8+、CentOS 8+
 
-dnf パッケージ マネージャーを使用します (`sudo dnf install nfs-common`)。
+dnf パッケージ マネージャーを使用します (`sudo dnf install nfs-utils`)。
 
 以前のバージョンの Red Hat Enterprise Linux と CentOS では、yum パッケージ マネージャーを使用します (`sudo yum install nfs-common`)。
 
@@ -150,16 +125,14 @@ NFS プロトコルは、ポート 2049 経由でそのサーバーと通信し�
 
 次のコマンドを実行して、ポート 2049 がご使用のクライアントで開いていることを確認します: `telnet <storageaccountnamehere>.file.core.windows.net 2049`。 ポートが開いていない場合は開きます。
 
-## <a name="ls-list-files-shows-incorrectinconsistent-results"></a>ls (list files) の結果が正しくない、または一貫性がない
+## <a name="ls-hangs-for-large-directory-enumeration-on-some-kernels"></a>一部のカーネルで、大きなディレクトリ列挙に対して ls がハングする
 
-### <a name="cause-inconsistency-between-cached-values-and-server-file-metadata-values-when-the-file-handle-is-open"></a>原因:ファイル ハンドルが開いているときのキャッシュ値とサーバー ファイル メタデータ値の間に不整合がある
-"list files" コマンドにより、想定どおりにゼロではないサイズが表示され、そのすぐ後に実行した list files コマンドでは、代わりにサイズ 0 または非常に古いタイム スタンプが表示される場合があります。 これは、ファイルが開いている間、ファイル メタデータ値のキャッシュに一貫性がないために発生する既知の問題です。 これを解決するには、次の回避策のいずれかを使用できます。
+### <a name="cause-a-bug-was-introduced-in-linux-kernel-v511-and-was-fixed-in-v5125"></a>原因: Linux kernel v5.11 でバグが確認され、v5.12.5 で修正されました。  
+一部のカーネルバージョンには、ディレクトリの一覧が無限の READDIR シーケンスを引き起こすバグがあります。 すべてのエントリを 1 回の呼び出しで呼び出すことができる非常に小さなディレクトリには、この問題はありません。
+このバグは、Linux kernel v5.11 で確認され、v5.12.5 で修正されました。 したがって、その間のバージョンにはこのバグが存在します。 RHEL 8.4 には、このカーネル バージョンが含まれることが知られています。
 
-#### <a name="workaround-1-for-fetching-file-size-use-wc--c-instead-of-ls--l"></a>対処法 1:ファイル サイズをフェッチする場合は、ls -l ではなく wc -c を使用する
-wc -c を使用すると、常にサーバーから最新の値がフェッチされ、不整合が発生することはありません。
-
-#### <a name="workaround-2-use-noac-mount-flag"></a>対処法 2:"noac" マウント フラグを使用する
-mount コマンドで "noac" フラグを使用して、ファイル システムを再マウントします。 これにより、常にサーバーからすべてのメタデータ値がフェッチされます。 この回避策を使用すると、すべてのメタデータ操作に関するわずかなパフォーマンス オーバーヘッドが発生する可能性があります。
+#### <a name="workaround-downgrading-or-upgrading-the-kernel"></a>回避策: カーネルのダウングレードまたはアップグレード
+影響を受けるカーネル以外のカーネルにダウングレードまたはアップグレードすると、この問題は解決します。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ支援が必要な場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

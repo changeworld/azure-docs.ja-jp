@@ -1,25 +1,33 @@
 ---
-title: SAS トークンを使用してテンプレートを安全にデプロイする
-description: Azure Resource Manager テンプレートを使用して、SAS トークンで保護されているリソースを Azure にデプロイします。 Azure PowerShell と Azure CLI を表示します。
+title: SAS トークンを使用して ARM テンプレートをデプロイする - Azure Resource Manager | Microsoft Docs
+description: Azure CLI または Azure PowerShell を使用して SAS トークンでプライベート ARM テンプレートを安全にデプロイする方法について説明します。 テンプレートへのアクセスを保護して管理します。
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 8b35e82da8ebca98ec9fe1fb7441612bf61fb142
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/17/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, seo-azure-cli
+keywords: プライベート テンプレート, SAS トークン テンプレート, ストレージ アカウント, テンプレート セキュリティ, Azure ARM テンプレート, Azure Resource Manager テンプレート
+ms.openlocfilehash: 0e6a680e0344ed5a03715c35e99394aead756501
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88855656"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584944"
 ---
-# <a name="deploy-private-arm-template-with-sas-token"></a>SAS トークンを使用してプライベート ARM テンプレートをデプロイする
+# <a name="how-to-deploy-private-arm-template-with-sas-token"></a>SAS トークンを使用してプライベート ARM テンプレートをデプロイする方法
 
-Azure Resource Manager テンプレート (ARM テンプレート) がストレージ アカウントに配置されている場合、それが公開されないようにテンプレートへのアクセスを制限できます。 セキュリティで保護されたテンプレートにアクセスするには、そのテンプレート用に SAS (Shared Access Signature) トークンを作成し、デプロイ時にそのトークンを提供します。 この記事では、Azure PowerShell または Azure CLI を使用して SAS トークンでテンプレートをデプロイする方法について説明します。
+Azure Resource Manager テンプレート (ARM テンプレート) がストレージ アカウントに配置されている場合、それが公開されないようにテンプレートへのアクセスを制限できます。 セキュリティで保護されたテンプレートにアクセスするには、そのテンプレート用に SAS (Shared Access Signature) トークンを作成し、デプロイ時にそのトークンを提供します。 この記事では、Azure PowerShell または Azure CLI を使用して SAS トークンで ARM テンプレートを安全にデプロイする方法について説明します。
+
+プライベート ARM テンプレートへのアクセスを保護および管理する方法について、以下を行う方法が記載されています。
+
+* セキュリティで保護されたコンテナーでのストレージ アカウントの作成
+* ストレージ アカウントへのテンプレートのアップロード
+* デプロイ時に SAS トークンを指定する
 
 > [!IMPORTANT]
-> SAS トークンを使用してテンプレートをセキュリティで保護する代わりに、[テンプレート スペック](template-specs.md)を使用することを検討してください。 テンプレート スペックを使用すると、組織内の他のユーザーとテンプレートを共有し、Azure RBAC 経由でテンプレートへのアクセスを管理できます。
+> SAS トークンを使用してプライベート テンプレートをセキュリティで保護する代わりに、[テンプレート スペック](template-specs.md)を使用することを検討してください。 テンプレート スペックを使用すると、組織内の他のユーザーとテンプレートを共有し、Azure RBAC 経由でテンプレートへのアクセスを管理できます。
 
 ## <a name="create-storage-account-with-secured-container"></a>セキュリティで保護されたコンテナーでのストレージ アカウントの作成
 
-次のスクリプトでは、パブリック アクセスがオフになっているストレージ アカウントとコンテナーを作成できます。
+次のスクリプトでは、テンプレートのセキュリティを確保するためにパブリック アクセスがオフになっているストレージ アカウントとコンテナーを作成できます。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -64,7 +72,7 @@ az storage container create \
 
 ---
 
-## <a name="upload-template-to-storage-account"></a>ストレージ アカウントへのテンプレートのアップロード
+## <a name="upload-private-template-to-storage-account"></a>ストレージ アカウントにプライベートのテンプレートをアップロードする
 
 これで、お使いのテンプレートをストレージ アカウントにアップロードする準備ができました。 使用するテンプレートへのパスを指定します。
 
@@ -93,7 +101,7 @@ az storage blob upload \
 ストレージ アカウントにプライベートのテンプレートをデプロイするため、SAS トークンを生成してテンプレートの URI に含めます。 デプロイの完了に必要な時間を確保できるように有効期限を設定します。
 
 > [!IMPORTANT]
-> テンプレートを含む BLOB は、アカウントの所有者のみがアクセスできます。 ただし、BLOB の SAS トークンを作成すると、その URI を持つ誰もが BLOB にアクセスできるようになります。 もし別のユーザーが URI を傍受した場合、そのユーザーは、テンプレートにアクセスできます。 SAS トークンはお使いのテンプレートへのアクセスを制限する有効な方法ですが、パスワードのような機密データをテンプレートに直接含めないでください。
+> プライベート テンプレートを含む BLOB は、アカウント オーナーのみがアクセスできます。 ただし、BLOB の SAS トークンを作成すると、その URI を持つ誰もが BLOB にアクセスできるようになります。 もし別のユーザーが URI を傍受した場合、そのユーザーは、テンプレートにアクセスできます。 SAS トークンはお使いのテンプレートへのアクセスを制限する有効な方法ですが、パスワードのような機密データをテンプレートに直接含めないでください。
 >
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -146,4 +154,4 @@ az deployment group create \
 
 ## <a name="next-steps"></a>次のステップ
 * テンプレートのデプロイ方法については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。
-* テンプレートのパラメーターの定義については、 [テンプレートの作成](template-syntax.md#parameters)に関する記事を参照してください。
+* テンプレートのパラメーターの定義については、 [テンプレートの作成](./syntax.md#parameters)に関する記事を参照してください。

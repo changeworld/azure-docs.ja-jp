@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 04/07/2021
+ms.date: 06/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 43477f11effaafb0bcd6158be6843c79d19092ac
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: fa68d0c14c8a540b4e32fc4d4075df6e7529ad03
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210812"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710142"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>クイックスタート: GPU 搭載の Azure Stack Edge Pro を使い始める 
 
@@ -30,7 +30,7 @@ ms.locfileid: "107210812"
 1. [一覧の URL パターンとポート](azure-stack-edge-gpu-system-requirements.md#networking-port-requirements)にデバイスが接続できるように、ネットワークを構成します。 
 1. Azure サブスクリプションに対する所有者または共同作成者のアクセス権を持っています。
 1. Azure portal で、 **[ホーム] > [サブスクリプション] > 自分のサブスクリプション > [リソース プロバイダー]** に移動します。 `Microsoft.DataBoxEdge` を検索し、リソース プロバイダーを登録します。 コンピューティング ワークロードをデプロイするために IoT Hub リソースを作成する場合は、繰り返して `Microsoft.Devices` を登録します。
-1. Kubernetes ノード用に少なくとも 2 つの連続した静的空き IP アドレスと、IoT Edge サービス用に少なくとも 1 つの静的 IP アドレスがあることを確認します。 配置するモジュールまたは外部サービスごとに、追加の IP アドレスが 1 つ必要になります。
+1. Kubernetes ノード用に少なくとも 2 つの連続した静的空き IP アドレスと、IoT Edge サービス用に少なくとも 1 つの静的 IP アドレスがあることを確認します。 配置するモジュールまたは外部サービスごとに、さらに 1 つの IP が必要になります。
 1. デバイスの構成に必要なすべてのものがあることを、[配置チェックリスト](azure-stack-edge-gpu-deploy-checklist.md)で確認します。 
 
 
@@ -42,7 +42,7 @@ ms.locfileid: "107210812"
 
     デバイスの配置に必要な最小限のケーブル構成は次のとおりです。![ケーブル接続されたデバイスのバックプレーン](./media/azure-stack-edge-gpu-quickstart/backplane-min-cabling-1.png)
 
-2. **接続**: 静的 IP アドレス **192.168.100.5** とサブネット **255.255.255.0** を使用して、コンピューターのイーサネット アダプターに IPv4 の設定を構成します。 ブラウザーを開き、デバイスのローカル Web UI https://192.168.100.10 に接続します。 これには数分かかることがあります。 セキュリティ証明書の警告が表示されたら、Web ページに進みます。
+2. **接続**: 静的 IP アドレス **192.168.100.5** とサブネット **255.255.255.0** を使用して、コンピューターのイーサネット アダプターに IPv4 の設定を構成します。 ブラウザーを開き、 https://192.168.100.10 でデバイスのローカル Web UI に接続します。 これには数分かかることがあります。 セキュリティ証明書の警告が表示されたら、Web ページに進みます。
 
 3. **サインイン**: 既定のパスワード *Password1* を使用してデバイスにサインインします。 デバイス管理者のパスワードを変更します。 パスワードは 8 から 16 文字で、大文字、小文字、数字、特殊文字のうち 3 種類の文字を含む必要があります。
 
@@ -72,11 +72,8 @@ ms.locfileid: "107210812"
 
 12. **コンピューティングの構成**: Azure portal で、 **[概要] > [デバイス]** に移動します。 デバイスが **オンライン** であることを確認します。 左側のペインで、 **[Edge コンピューティング] > [作業の開始] > [Edge コンピューティングの構成] > [コンピューティング]** に移動します。 既存または新規の IoT Hub サービスを指定し、コンピューティングが構成されるまで約 20 分待ちます。 詳細については、「[チュートリアル: Azure Stack Edge Pro GPU デバイスにコンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)」を参照してください
 
-これで、[IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md) を使用して、[`kubectl` を使用して](azure-stack-edge-gpu-create-kubernetes-cluster.md)、または [Azure Arc 対応 Kubernetes を使用して](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)、デバイスにコンピューティング ワークロードを展開できるようになりました。 セットアップの間に問題が発生する場合は、[デバイスの問題のトラブルシューティング]()、[注文の問題の](azure-stack-edge-gpu-troubleshoot.md)、[証明書の問題](azure-stack-edge-gpu-certificate-troubleshooting.md)、または Kubernetes の問題に関する記事を参照してください。 
+これで、[IoT Edge を使用して](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)、[`kubectl` を使用して](azure-stack-edge-gpu-create-kubernetes-cluster.md)、または [Azure Arc 対応 Kubernetes を使用して](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)、デバイスにコンピューティング ワークロードを配置できるようになりました。 セットアップ中に問題が発生した場合は、[Azure Stack Edge Pro GPU デバイス](azure-stack-edge-gpu-troubleshoot.md)、[証明書の問題](azure-stack-edge-gpu-certificate-troubleshooting.md)、または [IoT Edge の問題](azure-stack-edge-gpu-troubleshoot-iot-edge.md)のトラブルシューティングを参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 
 [Azure Stack Edge Pro GPU を設置する](./azure-stack-edge-gpu-deploy-install.md)
-
-
-

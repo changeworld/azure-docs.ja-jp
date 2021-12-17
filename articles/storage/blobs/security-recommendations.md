@@ -10,39 +10,39 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 389d3507c3406743e14324c7b4667e045cfdb3b5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c3554c60331abacae5796e64cefc0ede7f21b64b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048036"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335406"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>BLOB ストレージのセキュリティに関する推奨事項
 
 この記事には、BLOB ストレージのセキュリティに関する推奨事項が含まれています。 これらの推奨事項を実装することにより、共有責任モデルに記載されたセキュリティに関する義務を果たすのに役立ちます。 サービス プロバイダーとしての責任を果たすための Microsoft の取り組みの詳細については、「[クラウドにおける共同責任](../../security/fundamentals/shared-responsibility.md)」を参照してください。
 
-この記事に記載されているいくつかの推奨事項は、Azure Security Center によって自動的に監視できます。 Azure Security Center は、Azure のリソースを保護するための防御の最前線です。 Azure Security Center については、「[Azure Security Center とは](../../security-center/security-center-introduction.md)」を参照してください。
+この記事で取り上げた推奨事項の一部は、Azure でリソースを守る防衛圏で最前線に立つ Microsoft Defender for Cloud によって自動監視できます。 Microsoft Defender for Cloud の詳細については、「[Microsoft Defender for Cloud とは](../../security-center/security-center-introduction.md)」を参照してください。
 
-Azure Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、それらに対処する方法の推奨事項を提供します。 Azure Security Center の推奨事項の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)」を参照してください。
+Microsoft Defender for Cloud では、Azure リソースのセキュリティ状態を定期的に分析し、潜在的なセキュリティ脆弱性を特定します。 その後、それらに対処する方法の推奨事項を提供します。 Microsoft Defender for Cloud 推奨事項の詳細については、[Microsoft Defender for Cloud のセキュリティ推奨事項](../../security-center/security-center-recommendations.md)に関するページを参照してください。
 
 ## <a name="data-protection"></a>データ保護
 
-| 推奨 | 説明 | Security Center |
+| 推奨 | 説明 | Defender for Cloud |
 |-|----|--|
 | Azure Resource Manager デプロイ モデルを使用する | 重要なセキュリティ強化のために、Azure Resource Manager デプロイ モデルを使用して新しいストレージ アカウントを作成します。これには、Azure ロールベースの優れたアクセス制御 (Azure RBAC) と監査、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレットのための Azure Key Vault へのアクセス、Azure Storage データおよびリソースにアクセスするための Azure AD に基づく認証と承認などが含まれます。 可能であれば、クラシック デプロイ モデルを使用する既存のストレージ アカウントを移行して、Azure Resource Manager を使用するようにします。 Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。 | - |
-| すべてのストレージ アカウントに Azure Defender を有効にする | Azure Defender for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンス レイヤーが追加されます。 アクティビティに異常が発生すると、Azure Security Center でセキュリティ アラートがトリガーされます。さらに、これらのアラートは、不審なアクティビティの詳細と、脅威の調査や修復の方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。 詳細については、[Azure Defender for Azure Storage の構成](../common/azure-defender-storage-configure.md)に関するページを参照してください。 | [はい](../../security-center/security-center-remediate-recommendations.md) |
+| すべてのストレージ アカウントに Microsoft Defender を有効にする | Microsoft Defender for Storage では、ストレージ アカウントにアクセスし、悪用しようとする不審な (有害の可能性がある) 行為を検出するインテリジェンスでセキュリティ層を厚くします。 不審な行為が見られると、Microsoft Defender for Cloud でセキュリティ アラートがトリガーされます。さらに、そのアラートは、不審な行為の詳細と、脅威の調査や解決の方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。 詳細については、「[Azure Defender for Storage を構成する](../common/azure-defender-storage-configure.md)」を参照してください。 | [はい](../../security-center/security-center-remediate-recommendations.md) |
 | BLOB の論理的な削除を有効にする | BLOB の論理的な削除を使用すると、削除されてしまった BLOB データを回復できます。 BLOB の論理的な削除の詳細については、[Azure Storage BLOB の論理的な削除](./soft-delete-blob-overview.md)に関するページを参照してください。 | - |
-| コンテナーの論理的な削除を有効にする | コンテナーの論理的な削除を使用すると、削除されてしまったコンテナーを回復できます。 コンテナーの論理的な削除の詳細については、「[コンテナーの論理的な削除 (プレビュー)](./soft-delete-container-overview.md)」を参照してください。 | - |
+| コンテナーの論理的な削除を有効にする | コンテナーの論理的な削除を使用すると、削除されてしまったコンテナーを回復できます。 コンテナーの論理的な削除の詳細については、「[コンテナーの論理的な削除](./soft-delete-container-overview.md)」を参照してください。 | - |
 | 誤ったまたは悪意のある削除や構成変更を防ぐために、ストレージ アカウントをロックする | Azure Resource Manager ロックをストレージ アカウントに適用して、アカウントを誤ったまたは悪意のある削除や構成変更から保護します。 ストレージ アカウントをロックしても、そのアカウント内のデータが削除されなくなるわけではありません。 そのアカウント自体が削除されなくなるだけです。 詳細については、「[Azure Resource Manager のロックをストレージ アカウントに適用する](../common/lock-account-resource.md)」を参照してください。
-| ビジネスに不可欠なデータを不変 BLOB に保存する | BLOB データを WORM (Write Once, Read Many) 状態で保存するように、訴訟ホールドと時間ベースの保持ポリシーを構成します。 保持期間中は、不変の状態で保存された BLOB を読み取ることはできますが、変更や削除を行うことはできません。 詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)」を参照してください。 | - |
+| ビジネスに不可欠なデータを不変 BLOB に保存する | BLOB データを WORM (Write Once, Read Many) 状態で保存するように、訴訟ホールドと時間ベースの保持ポリシーを構成します。 保持期間中は、不変の状態で保存された BLOB を読み取ることはできますが、変更や削除を行うことはできません。 詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](immutable-storage-overview.md)」を参照してください。 | - |
 | ストレージ アカウントへの安全な転送 (HTTPS) を必須とする | ストレージ アカウントに対して安全な転送が必要な場合は、ストレージ アカウントへの要求をすべて HTTPS 経由で行う必要があります。 HTTP 経由で行われた要求はすべて拒否されます。 Microsoft では、すべてのストレージ アカウントに対して常に、セキュリティで保護された転送を要求することをお勧めしています。 詳細については、「[セキュリティで保護された接続を確保するために安全な転送を要求する](../common/storage-require-secure-transfer.md)」を参照してください。 | - |
 | Shared Access Signature (SAS) トークンを HTTPS 接続のみに制限する | クライアントが SAS トークンを使用して BLOB データにアクセスするときに HTTPS を要求することで、盗聴のリスクを最小限に抑えることができます。 詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../common/storage-sas-overview.md)」を参照してください。 | - |
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
 
-| 推奨 | 説明 | Security Center |
+| 推奨 | 説明 | Defender for Cloud |
 |-|----|--|
-| Azure Active Directory (Azure AD) を使用して BLOB データへのアクセスを承認する | Azure AD では、BLOB ストレージへの要求を承認するために、共有キーによる優れたセキュリティと使いやすさが実現されます。 詳細については、[Azure Active Directory を使用した Azure BLOB およびキューへのアクセスの承認](../common/storage-auth-aad.md)に関するページを参照してください。 | - |
+| Azure Active Directory (Azure AD) を使用して BLOB データへのアクセスを承認する | Azure AD では、BLOB ストレージへの要求を承認するために、共有キーによる優れたセキュリティと使いやすさが実現されます。 詳細については、「[Azure Storage でデータへのアクセスを承認する](../common/authorize-data-access.md)」をご覧ください。 | - |
 | Azure RBAC を使用して Azure AD セキュリティ プリンシパルにアクセス許可を割り当てる場合は、最小限の特権の原則を念頭に置く | ユーザー、グループ、またはアプリケーションにロールを割り当てる場合は、そのセキュリティ プリンシパルに対して、それぞれのタスクを実行するために必要なアクセス許可のみを付与します。 リソースへのアクセスを制限することで、意図しない、または悪意のあるデータの誤用を防ぐことができます。 | - |
 | ユーザー委任 SAS を使用して、クライアントによる BLOB データへのアクセスを制限する | ユーザー委任 SAS は、Azure Active Directory (Azure AD) 資格情報と、SAS に指定されたアクセス許可によっても保護されます。 ユーザー委任 SAS は、スコープと機能についてはサービス SAS に似ていますが、セキュリティの点では、サービス SAS よりも優れています。 詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。 | - |
 | Azure Key Vault を使用してアカウント アクセス キーをセキュリティで保護する | Azure Storage への要求を承認するには、Azure AD を使用することをお勧めします。 ただし、共有キー認証を使用する必要がある場合は、Azure Key Vault を使用してアカウント キーをセキュリティで保護します。 キーは、アプリケーションと共に保存するのではなく、実行時に Key Vault から取得できます。 Azure Key Vault の詳細については、[Key Vault の概要](../../key-vault/general/overview.md)ページを参照してください。 | - |
@@ -55,7 +55,7 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 
 ## <a name="networking"></a>ネットワーク
 
-| 推奨 | 説明 | Security Center |
+| 推奨 | 説明 | Defender for Cloud |
 |-|----|--|
 | ストレージ アカウントに必要な最小バージョンのトランスポート層セキュリティ (TLS) を構成します。  | Azure Storage アカウントに対して TLS の最小バージョンを構成することによって、クライアントで、より安全なバージョンの TLS を使用してそのアカウントに対して要求を行うことを義務付けます。 詳細については、[ストレージ アカウントに必要な最小バージョンのトランスポート層セキュリティ (TLS) を構成する](../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)方法に関する記事を参照してください| - |
 | すべてのストレージ アカウントで **[安全な転送が必須]** オプションを有効にする | **[安全な転送が必須]** オプションを有効にすると、ストレージ アカウントに対して行われるすべての要求が、セキュリティで保護された接続を経由して実行される必要があります。 HTTP 経由で行われた要求はすべて失敗します。 詳細については、「[Azure Storage で安全な転送が必要](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。 | [はい](../../security-center/security-center-remediate-recommendations.md) |
@@ -68,9 +68,9 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 
 ## <a name="loggingmonitoring"></a>ログ記録または監視
 
-| 推奨 | 説明 | Security Center |
+| 推奨 | 説明 | Defender for Cloud |
 |-|----|--|
-| 要求がどのように承認されたかを追跡する | Azure Storage のログ記録を有効にして、Azure Storage に対する各要求がどのように承認されたかを追跡します。 このログでは、OAuth 2.0 トークン、共有キー、または共有アクセス署名 (SAS) を使用して、要求が匿名で行われたかどうかが示されます。 詳細については、[Azure Monitor を使用した Azure Blob storage の監視](monitor-blob-storage.md)、または[クラシックな監視を使用した Azure Storage Analytics のログ記録](../common/storage-analytics-logging.md)に関する各記事を参照してください。 | - |
+| 要求がどのように承認されたかを追跡する | Azure Storage のログ記録を有効にして、Azure Storage に対する各要求がどのように承認されたかを追跡します。 このログでは、OAuth 2.0 トークン、共有キー、または共有アクセス署名 (SAS) を使用して、要求が匿名で行われたかどうかが示されます。 詳細については、[Azure Monitor を使用した Azure Blob Storage の監視](monitor-blob-storage.md)、または[クラシックな監視を使用した Azure Storage Analytics のログ記録](../common/storage-analytics-logging.md)に関する各記事を参照してください。 | - |
 | Azure Monitor でアラートを設定する | ログ アラートを構成して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 詳しくは、「[Azure Monitor でのログ アラート](../../azure-monitor/alerts/alerts-unified-log.md)」を参照してください。 | - |
 
 ## <a name="next-steps"></a>次のステップ

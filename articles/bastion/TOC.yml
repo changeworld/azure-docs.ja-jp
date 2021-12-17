@@ -7,11 +7,11 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: VM 設定を使用してホストを作成する
+    - name: VM 設定から Bastion を構成する
       href: quickstart-host-portal.md
 - name: チュートリアル
   items:
-    - name: ホストの作成と Windows VM への接続
+    - name: Bastion の構成と接続
       href: tutorial-create-host-portal.md
 - name: 概念
   items:
@@ -19,15 +19,19 @@
       href: ../networking/working-remotely-support.md?toc=%2fazure%2fbastion%2ftoc.json
     - name: リモート作業での Bastion の利用
       href: work-remotely-support.md
+    - name: Bastion に関する FAQ
+      href: bastion-faq.md
+    - name: 構成設定
+      href: configuration-settings.md
     - name: Bastion と VNet ピアリング
       href: vnet-peering.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/bastion-security-baseline?toc=/azure/bastion/TOC.json
 - name: 操作方法ガイド
   items:
-    - name: ホストを作成する
+    - name: Bastion を構成する
       items:
         - name: Azure portal
           href: tutorial-create-host-portal.md
@@ -37,10 +41,24 @@
           href: create-host-cli.md
     - name: 仮想マシンへの接続
       items:
-        - name: SSH (Linux)
-          href: bastion-connect-vm-ssh.md
-        - name: RDP (Windows)
-          href: bastion-connect-vm-rdp.md
+        - name: Windows VM
+          items:
+            - name: RDP 接続
+              href: bastion-connect-vm-rdp-windows.md
+            - name: SSH 接続
+              href: bastion-connect-vm-ssh-windows.md
+        - name: Linux VM
+          items:
+            - name: RDP 接続
+              href: bastion-connect-vm-rdp-linux.md
+            - name: SSH 接続
+              href: bastion-connect-vm-ssh-linux.md
+    - name: SKU のアップグレード
+      href: upgrade-sku.md
+    - name: ホストのスケーリングの構成
+      href: configure-host-scaling.md
+    - name: ネイティブ Windows クライアントを使用した VM への接続
+      href: connect-native-client-windows.md
     - name: 仮想マシン スケール セットへの接続
       href: bastion-connect-vm-scale-set.md
     - name: DevTest Labs 仮想マシンへの接続
@@ -53,28 +71,32 @@
           href: bastion-vm-full-screen.md
     - name: NSG を使用する
       href: bastion-nsg.md
-    - name: 診断ログの構成とアクセス
-      href: diagnostic-logs.md
-    - name: セッションの監視と管理
-      href: session-monitoring.md
+    - name: 正常性の監視
+      items:
+        - name: Azure Bastion の監視
+          href: howto-metrics-monitor-alert.md
+        - name: 診断ログの構成とアクセス
+          href: diagnostic-logs.md
+        - name: セッションの監視と管理
+          href: session-monitoring.md
     - name: トラブルシューティング
       href: troubleshoot.md
 - name: リファレンス
   items:
     - name: Azure PowerShell
-      href: /powershell/module/az.network
+      href: /powershell/module/az.network/
     - name: REST
-      href: /rest/api/virtualnetwork/bastionhosts
+      href: /rest/api/virtualnetwork/bastion-hosts
     - name: Azure CLI
       href: /cli/azure/network/bastion
 - name: リソース
   items:
-    - name: Bastion に関する FAQ
-      href: bastion-faq.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: ブログ
-      href: 'https://azure.microsoft.com/blog/topics/networking'
+      href: 'https://azure.microsoft.com/blog/topics/networking/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/azure-bastion/'
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-virtual-network.html
     - name: プレビューの SLA

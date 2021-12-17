@@ -6,18 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: dfa7ee941e2c373b02fe5fb2f2a648a60a677670
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7edd739b13e91ec517b7e59219e1e4234c596252
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96753111"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994121"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>チュートリアル:インポートされた CSV ファイルを使用してサーバーを評価する
 
-Azure への移行の一環として、オンプレミスのインベントリとワークロードを検出します。 
+Azure への移行の一環として、オンプレミスのインベントリとワークロードを検出します。
 
-このチュートリアルでは、インポートされた CSV (コンマ区切り値) ファイルを使用して、Azure Migrate: Server Assessment ツールでオンプレミスのマシンを評価する方法について説明します。 
+このチュートリアルでは、インポートされた CSV (コンマ区切り値) ファイルを使用して、Azure Migrate: Discovery and Assessment ツールでオンプレミスのマシンを評価する方法について説明します。 
 
 CSV ファイルを使用する場合、サーバーを検出して評価するために Azure Migrate アプライアンスを設定する必要はありません。 ファイルで共有するデータを制御できます。データの多くは省略可能です。 この方法は次の場合に便利です。
 
@@ -38,7 +38,7 @@ CSV ファイルを使用する場合、サーバーを検出して評価する�
 > * サーバーの評価
 
 > [!NOTE]
-> 各チュートリアルでは、シナリオを試すための最も簡単な方法を紹介し、可能であれば既定のオプションを使用します。 
+> 各チュートリアルでは、シナリオを試すための最も簡単な方法を紹介し、可能であれば既定のオプションを使用します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
 
@@ -47,10 +47,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - 1 つの CSV ファイルおよび Azure Migrate プロジェクトに最大 20,000 台のサーバーを追加できます。 
 - CSV ファイルに指定されたオペレーティング システム名には、[サポートされている名前](#supported-operating-system-names)と一致するものが含まれている必要があります。
 
-
 ## <a name="prepare-an-azure-user-account"></a>Azure ユーザー アカウントを準備する
 
 Azure Migrate プロジェクトを作成するには、以下を備えたアカウントが必要です。
+
 - Azure サブスクリプションに対する共同作成者または所有者のアクセス許可。
 - Azure Active Directory アプリを登録するためのアクセス許可。
 
@@ -60,14 +60,14 @@ Azure Migrate プロジェクトを作成するには、以下を備えたアカ
 
     ![Azure サブスクリプションを検索するための検索ボックス](./media/tutorial-discover-import/search-subscription.png)
 
-2. **[サブスクリプション]** ページで、Azure Migrate プロジェクトを作成するサブスクリプションを選択します。 
+2. **[サブスクリプション]** ページで、Azure Migrate プロジェクトを作成するサブスクリプションを選択します。
 3. サブスクリプションで、 **[アクセス制御 (IAM)]**  >  **[アクセスの確認]** の順に選択します。
 4. **[アクセスの確認]** で、適切なユーザー アカウントを検索します。
-5. **[ロールの割り当てを追加する]** で、 **[追加]** をクリックします。
+5. **[ロールの割り当てを追加する]** で **[追加]** を選択します。
 
     ![ユーザー アカウントを検索してアクセスを確認し、ロールを割り当てる](./media/tutorial-discover-import/azure-account-access.png)
 
-6. **[ロールの割り当ての追加]** で、共同作成者または所有者ロールを選択し、アカウント (この例では azmigrateuser) を選択します。 **[保存]** をクリックします。
+6. **[ロールの割り当ての追加]** で、共同作成者または所有者ロールを選択し、アカウント (この例では azmigrateuser) を選択します。 次に、 **[保存]** を選択します。
 
     ![[ロールの割り当ての追加] ページを開いて、アカウントにロールを割り当てる](./media/tutorial-discover-import/assign-role.png)
 
@@ -75,8 +75,6 @@ Azure Migrate プロジェクトを作成するには、以下を備えたアカ
 8. **[ユーザー設定]** で、Azure AD ユーザーがアプリケーションを登録できることを確認します (既定で **[はい]** に設定されています)。
 
     ![[ユーザー設定] で、ユーザーが Active Directory アプリを登録できることを確認する](./media/tutorial-discover-import/register-apps.png)
-
-
 
 ## <a name="set-up-a-project"></a>プロジェクトの設定
 
@@ -88,7 +86,9 @@ Azure Migrate プロジェクトがない場合は、新しいプロジェクト
 5. **[プロジェクトの作成]** で、Azure サブスクリプションとリソース グループを選択します。 リソース グループがない場合は作成します。
 6. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
 
-   ![プロジェクト名とリージョンのボックス](./media/tutorial-discover-import/new-project.png)
+   ![プロジェクト名とリージョンのボックス](./media/tutorial-discover-import/new-project.png)  
+    > [!Note]
+    > プライベート エンドポイント接続を使用した Azure Migrate プロジェクトを作成するには、 **[Advanced]\(詳細\)** 構成セクションを使用します。 [詳細情報](how-to-use-azure-migrate-with-private-endpoints.md#create-a-project-with-private-endpoint-connectivity)
 
 7. **［作成］** を選択します
 8. Azure Migrate プロジェクトがデプロイされるまで数分待ちます。
@@ -128,7 +128,7 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 **OS バージョン** | いいえ | サーバーのオペレーティング システムのバージョン。
 **OS アーキテクチャ** | いいえ | サーバー OS アーキテクチャ <br/> 有効な値: x64、x86、amd64、32 ビット、64 ビット
 **ディスクの数** | いいえ | 個々のディスクの詳細が指定されている場合は必要ありません。
-**Disk 1 size (ディスク 1 のサイズ)**  | いいえ | ディスクの最大サイズ (GB 単位)。<br/>テンプレートに[列を追加](#add-multiple-disks)することで、さらにディスクの詳細を追加できます。 最大 8 つのディスクを追加できます。
+**Disk 1 size (ディスク 1 のサイズ)**  | いいえ | ディスクの最大サイズ (GB 単位)。<br/>テンプレートに[列を追加](#add-multiple-disks)することで、さらにディスクの詳細を追加できます。 最大 20 個のディスクを追加できます。
 **Disk 1 read ops (ディスク 1 の読み取り操作)** | いいえ | 1 秒あたりのディスク読み取り操作。
 **Disk 1 write ops (ディスク 1 の書き込み操作)** | いいえ | 1 秒あたりのディスク書き込み操作。
 **Disk 1 read throughput (ディスク 1 の読み取りスループット)** | いいえ | 1 秒あたりにディスクから読み取られたデータ (MB/ 秒)。
@@ -144,14 +144,13 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 **Firmware type (ファームウェアの種類)** | いいえ | サーバーのファームウェア。 値には "BIOS" または "UEFI" を指定できます。
 **MAC アドレス**| いいえ | サーバーの MAC アドレス。
 
-
 ### <a name="add-operating-systems"></a>オペレーティング システムを追加する
 
 評価では特定のオペレーティング システム名が認識されます。 指定する名前は、[サポートされている名前の一覧](#supported-operating-system-names)内のいずれかの文字列と正確に一致している必要があります。
 
 ### <a name="add-multiple-disks"></a>複数のディスクを追加する
 
-このテンプレートには、最初のディスクの既定フィールドが用意されています。 最大 8 台のディスクに対して同様の列を追加できます。
+このテンプレートには、最初のディスクの既定フィールドが用意されています。 最大 20 台のディスクに対して同様の列を追加できます。
 
 たとえば、2 番目のディスクに対してすべてのフィールドを指定するには、次の列を追加します。
 
@@ -160,7 +159,6 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 - Disk 2 write ops (ディスク 2 の書き込み操作)
 - Disk 2 read throughput (ディスク 2 の読み取りスループット)
 - Disk 2 write throughput (ディスク 2 の書き込みスループット)
-
 
 ## <a name="import-the-server-information"></a>サーバー情報をインポートする
 
@@ -174,7 +172,7 @@ CSV テンプレートに情報を追加したら、CSV ファイルを Server A
     - 警告を確認して修正を行うには、 **[Download warning details .CSV]\(警告の詳細の .CSV のダウンロード\)** を選択します。 この操作により、警告が含まれた CSV がダウンロードされます。 警告を確認し、必要に応じて問題を修正します。
     - 状態にエラーが表示される場合 (つまり、インポートの状態が **[失敗]** の場合)、インポートを続行する前にこれらのエラーを修正する必要があります。
         1. エラーの詳細を含む CSV をダウンロードします。
-        1. 必要に応じて、エラーを確認して対処します。 
+        1. 必要に応じて、エラーを確認して対処します。
         1. 変更したファイルを再度アップロードします。
 4. インポートの状態が **[完了]** の場合は、サーバーの情報がインポートされています。 インポート プロセスが完了していないように見える場合は、最新の情報に更新してください。
 
@@ -190,20 +188,25 @@ CSV テンプレートに情報を追加したら、CSV ファイルを Server A
 2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** ページで、**検出済みサーバー** の数を表示するアイコンを選択します。
 3. **[Import based]\(インポート ベース\)** タブを選択します。
 
-
-
 ## <a name="supported-operating-system-names"></a>サポートされるオペレーティング システム名
 
 CSV で指定されたオペレーティング システム名には、以下の名前と一致するものが含まれている必要があります。 そうでない場合、それらを評価することはできません。 
 
 **A-H** | **I-R** | **S-T** | **U-Z**
 --- | --- | --- | ---
-Apple Mac OS X 10<br/>Asianux 3<br/>Asianux 4<br/>Asianux 5<br/>CentOS<br/>CentOS 4/5<br/>CoreOS Linux<br/>Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8<br/>FreeBSD | IBM OS/2<br/>MS-DOS<br/>Novell NetWare 5<br/>Novell NetWare 6<br/>Oracle Linux<br/>Oracle Linux 4/5<br/>Oracle Solaris 10<br/>Oracle Solaris 11<br/>Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7<br/> Serenity Systems eComStation 1<br/>Serenity Systems eComStation <br/>Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9<br/><br/>SUSE Linux Enterprise 10<br/>SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE | Ubuntu Linux<br/>VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6<br/>Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003<br/>Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server Threshold<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
+Asianux 3<br/>Asianux 4<br/>Asianux 5<br/>CentOS<br/>CentOS 4/5<br/>CoreOS Linux<br/>Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8<br/>FreeBSD | IBM OS/2<br/>macOS X 10<br/>MS-DOS<br/>Novell NetWare 5<br/>Novell NetWare 6<br/>Oracle Linux<br/>Oracle Linux 4/5<br/>Oracle Solaris 10<br/>Oracle Solaris 11<br/>Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7<br/> Serenity Systems eComStation 1<br/>Serenity Systems eComStation <br/>Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9<br/><br/>SUSE Linux Enterprise 10<br/>SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE | Ubuntu Linux<br/>VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6<br/>Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003<br/>Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server Threshold<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
+
+## <a name="assessment-considerations"></a>評価に関する考慮事項
+
+- CSV ファイルを利用してサーバーをインポートする場合、指定するパフォーマンス値 (CPU 使用率、メモリ使用率、ディスク IOPS、スループット) はパフォーマンスベースのサイズ設定を選択したときに使用されます。 パフォーマンス履歴とパーセンタイル情報は指定できません。 
+- Azure VM と Azure VMware Solution の評価で正確な OS 適合性と対応性を取得するには、それぞれの列にオペレーティング システムのバージョンとアーキテクチャを入力してください。
+
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、次のことを行いました。
+このチュートリアルでは、次の作業を行いました。
 
 > [!div class="checklist"]
-> * Azure Migrate プロジェクトを作成しました。 
-> * インポートされた CSV ファイルを使用してサーバーを検出しました。 次に、[VMware VM を Azure VM に移行](./tutorial-assess-vmware-azure-vm.md)するための評価を実行します。
+> * Azure Migrate プロジェクトを作成しました。
+> * インポートされた CSV ファイルを使用してサーバーを検出しました。
+次に、[VMware VM を Azure VM に移行](./tutorial-assess-vmware-azure-vm.md)するための評価を実行します。

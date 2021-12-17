@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple プライベート クラウドの拡張
 description: 既存または新規のクラスターに容量を追加するために、既存の CloudSimple プライベート クラウドを拡張する方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 06/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c469ea3f104e71eb80010d4a5cd421eab6184fcf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52d983bfdb492ff9e2a61774fe19300e0e7b4d7e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895859"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345151"
 ---
 # <a name="expand-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドの拡張
 

@@ -3,7 +3,7 @@ title: Azure portal で Windows 仮想マシン上で SQL Server を作成する
 description: このチュートリアルでは、Azure portal で Windows 仮想マシンと SQL Server 2017 を作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: deployment
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 07/11/2019
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 335a63faa440e057c282f992b67b301289a7a4bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: 9890c3b6068fd7e11e8b0e1de663aa262b87399e
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97356959"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162587"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Windows 仮想マシン上に SQL Server 2017 を作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "97356959"
 
   > [!TIP]
   > - このクイック スタートでは、SQL VM を迅速にプロビジョニングしてそこに接続する方法について説明します。 その他の SQL VM プロビジョニング オプションについては、[Azure portal での Windows VM 上への SQL Server のプロビジョニング ガイド](create-sql-vm-portal.md)を参照してください。
-  > - SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
+  > - SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.yml)に関するページをご覧ください。
 
 ## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Azure サブスクリプションを取得する
 
@@ -71,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![インスタンスの詳細](./media/sql-vm-create-portal-quickstart/basics-instance-details.png)
 
-1. **[管理者アカウント]** で、ユーザー名 (_azureuser_ など) とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
+1. **[管理者アカウント]** で、ユーザー名 (_azureuser_ など) とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。
 
    ![[Administrator account] (管理者アカウント)](./media/sql-vm-create-portal-quickstart/basics-administrator-account.png)
 

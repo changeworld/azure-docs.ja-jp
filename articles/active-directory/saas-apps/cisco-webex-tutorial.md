@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex Meetings の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Cisco Webex Meetings の統合'
 description: Azure Active Directory と Cisco Webex Meetings の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/17/2021
+ms.date: 11/01/2021
 ms.author: jeedes
-ms.openlocfilehash: bb8ea637d0353e4efa0cb946f486d68639fc699d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 133eb2af33bf3313716d16d3b0e748d4c9adcc0e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592491"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344923"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex Meetings の統合
+# <a name="tutorial-azure-ad-sso-integration-with-cisco-webex-meetings"></a>チュートリアル: Azure AD SSO と Cisco Webex Meetings の統合
 
 このチュートリアルでは、Cisco Webex Meetings と Azure Active Directory (Azure AD) を統合する方法について説明します。 Cisco Webex Meetings を Azure AD と統合すると、次のことができます。
 
@@ -33,6 +33,7 @@ ms.locfileid: "104592491"
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Cisco Webex Meetings でのシングル サインオン (SSO) が有効なサブスクリプション。
+*  Cisco Webex Meetings のサービス プロバイダー メタデータ ファイル。
 
 > [!NOTE]
 > この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
@@ -42,7 +43,7 @@ ms.locfileid: "104592491"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Cisco Webex Meetings では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
-
+* Cisco Webex Meetings では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](cisco-webex-provisioning-tutorial.md) (推奨) がサポートされます。
 * Cisco Webex Meetings では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="adding-cisco-webex-meetings-from-the-gallery"></a>ギャラリーからの Cisco Webex Meetings の追加
@@ -193,9 +194,8 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Cisco Webex Meetings に自動的にサインインされます。
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Cisco Webex Meetings] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Cisco Webex Meetings に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Cisco Webex Meetings] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Cisco Webex Meetings に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Cisco Webex Meetings を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Cisco Webex Meetings を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

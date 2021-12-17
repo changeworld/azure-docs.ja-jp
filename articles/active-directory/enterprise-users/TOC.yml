@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure AD のユーザー、グループ、ライセンス、およびロール
+    - name: Azure AD のユーザー、グループ、ライセンス
       href: directory-overview-user-model.md
 - name: クイックスタート
   items:
@@ -30,7 +30,7 @@
 - name: 操作方法ガイド
   expanded: true
   items:
-    - name: ユーザーの管理
+    - name: ユーザー
       items:
         - name: ユーザーの作成
           href: ../fundamentals/add-users-azure-active-directory.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
@@ -38,6 +38,8 @@
           href: users-bulk-add.md
         - name: ユーザー プロファイルの管理
           href: ../fundamentals/active-directory-users-profile-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: カスタム セキュリティ属性の割り当て
+          href: users-custom-security-attributes.md
         - name: ユーザー情報のダウンロード
           href: users-bulk-download.md
         - name: ユーザー アカウントの共有
@@ -58,31 +60,29 @@
           href: users-close-account.md
         - name: ゲスト ユーザーを追加する
           href: ../external-identities/what-is-b2b.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
-        - name: ゲスト ユーザーにロールを割り当てる
-          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: ゲスト ユーザーのアクセスを制限する
           href: users-restrict-guest-permissions.md
         - name: 動的グループとゲスト
           href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
-    - name: 組織を管理する
+    - name: Organization
       items:
-        - name: Azure AD 組織
+        - name: Azure AD のテナント組織
           href: ../fundamentals/active-directory-whatis.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: テナントを削除する
+          href: directory-delete-howto.md
+        - name: 複数のテナント
+          href: licensing-directory-independence.md
+        - name: テナントの引き継ぎ
+          href: domains-admin-takeover.md
         - name: ドメイン名を管理する
           href: domains-manage.md
         - name: 管理対象としてサブドメインを確認する
           href: domains-verify-custom-subdomain.md
-        - name: ディレクトリを削除する
-          href: directory-delete-howto.md
-        - name: 複数のディレクトリ
-          href: licensing-directory-independence.md
-        - name: セルフサービスのサインアップ
+        - name: セルフサービス サインアップ
           href: directory-self-service-signup.md
-        - name: ディレクトリの引き継ぎ
-          href: domains-admin-takeover.md
         - name: Azure AD Connect
           href: ../hybrid/whatis-hybrid-identity.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
-    - name: グループの管理
+    - name: グループ
       items:
         - name: グループでのアクセスの管理
           href: ../fundamentals/active-directory-manage-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
@@ -132,7 +132,7 @@
           href: groups-self-service-management.md
         - name: 秘密度ラベルの割り当て
           href: groups-assign-sensitivity-labels.md
-    - name: ライセンスを割り当てる
+    - name: ライセンス
       items:
         - name: ユーザーへのライセンスの割り当て
           href: ../fundamentals/license-users-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
@@ -150,7 +150,7 @@
           href: licensing-ps-examples.md
         - name: ライセンス供与のためのサービス プラン ID
           href: licensing-service-plan-reference.md
-    - name: サインインの管理
+    - name: サインイン
       items:
         - name: 会社のブランドのカスタマイズ
           href: ../fundamentals/customize-branding.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context

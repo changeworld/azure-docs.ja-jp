@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning のコンピューティングとデータ ストアが保存時および転送中のデータの暗号化を提供する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 11/09/2020
-ms.openlocfilehash: 31b2a993267e6e8abbf7184d745889b74e587c50
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 10/21/2021
+ms.openlocfilehash: 1ac26da492c4236d89ed71edf738dbc6cd813563
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311772"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552698"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの暗号化
 
@@ -36,8 +36,11 @@ Azure Machine Learning は、モデルをトレーニングし、推論を実行
 * そのサブスクリプションで以前にクラスターを作成していない場合に、Azure Machine Learning コンピューティング クラスターでローカル スクラッチ ディスクの暗号化を開始します。 それ以外の場合は、コンピューティング クラスターのスクラッチ ディスクの暗号化を有効にするためにサポート チケットを作成する必要があります。 
 * 実行間でローカル スクラッチ ディスクをクリーンアップします
 * Key Vault を使用して、ストレージ アカウント、コンテナー レジストリ、SSH アカウントの資格情報を実行層からコンピューティング クラスターに安全に渡します。
-* AzureMachineLearningService 以外の外部サービスから基になる Batch プールを呼び出すことができないように、IP フィルタリングを有効にします。
-* HBI ワークスペースではコンピューティング インスタンスがサポートされます
+
+このフラグが True に設定されていると、1 つの影響として、問題のトラブルシューティングが困難になる可能性があります。 これは、このフラグが True である場合は、一部のテレメトリが Microsoft に送信されず、成功率または問題の種類への可視性が低下し、それによって事前に対応できなくなる可能性があるために発生することがあります。
+
+> [!TIP]
+> `hbi_workspace` フラグは、転送中の暗号化には影響せず、保存時の暗号化だけです。
 
 ### <a name="azure-blob-storage"></a>Azure BLOB ストレージ
 
@@ -61,12 +64,15 @@ Azure Machine Learning では、メトリックとメタデータは Azure Cosmo
 
 * Microsoft.MachineLearning と Microsoft.DocumentDB リソース プロバイダーをサブスクリプションに登録します (まだ行っていない場合)。
 
-* Azure Machine Learning ワークスペースを作成するときは、次のパラメーターを使用します。 SDK、CLI、REST API、および Resource Manager のテンプレートでは、両方のパラメーターが必須であり、サポートされています。
+* Azure Machine Learning ワークスペースを作成するときは、次のパラメーターを使用します。 SDK、Azure CLI、REST API、Resource Manager テンプレートでは、両方のパラメーターが必須であり、サポートされています。
+
+    * `cmk_keyvault`:このパラメーターは、サブスクリプション内のキー コンテナーのリソース ID です。 このキー コンテナーは、Azure Machine Learning ワークスペースに使用するのと同じリージョンおよびサブスクリプションにある必要があります。 
 
     * `resource_cmk_uri`:このパラメーターは、[キーのバージョン情報](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)を含む、キー コンテナー内のカスタマー マネージド キーの完全なリソース URI です。 
 
-    * `cmk_keyvault`:このパラメーターは、サブスクリプション内のキー コンテナーのリソース ID です。 このキー コンテナーは、Azure Machine Learning ワークスペースに使用するのと同じリージョンおよびサブスクリプションにある必要があります。 
-    
+        > [!NOTE]
+        > コンテナーを削除した場合の誤ったデータ損失を防ぐために、暗号化された Machine Learning ワークスペースを作成する前に、CMK キー コンテナー インスタンスで論理的な削除と消去保護を有効にする必要があります。
+        
         > [!NOTE]
         > このキー コンテナー インスタンスは、ワークスペースをプロビジョニングするときに Azure Machine Learning によって作成されるキー コンテナーとは異なる場合があります。 ワークスペースに同じキー コンテナー インスタンスを使用する場合は、[key_vault パラメーター](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を使用してワークスペースをプロビジョニングするときに、同じキー コンテナーを渡します。 
 
@@ -122,9 +128,11 @@ Azure Container Instance にモデルをデプロイするときにキーを使�
 
 ### <a name="machine-learning-compute"></a>Machine Learning コンピューティング
 
-Azure Storage に格納されている各コンピューティング ノードの OS ディスクは、Azure Machine Learning ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 このコンピューティング先は一時的なものであり、キューに入れられた実行がない場合、通常はクラスターがスケールダウンされます。 基になる仮想マシンのプロビジョニングは解除され、OS ディスクは削除されます。 OS ディスクでは Azure Disk Encryption はサポートされません。
+**コンピューティング クラスター** Azure Storage に格納されている各コンピューティング ノードの OS ディスクは、Azure Machine Learning ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 このコンピューティング先は一時的なものであり、キューに入れられた実行がない場合、通常はクラスターがスケールダウンされます。 基になる仮想マシンのプロビジョニングは解除され、OS ディスクは削除されます。 OS ディスクでは Azure Disk Encryption はサポートされません。 
 
-各仮想マシンにも、OS 操作用にローカルな一時ディスクがあります。 必要に応じて、ディスクを使用してトレーニング データをステージできます。 `hbi_workspace` パラメーターが `TRUE` に設定されているワークスペースでは、ディスクは既定で暗号化されます。 この環境は、実行中だけ有効期間が短く、暗号化のサポートはシステム管理キーのみに制限されています。
+各仮想マシンにも、OS 操作用にローカルな一時ディスクがあります。 必要に応じて、ディスクを使用してトレーニング データをステージできます。 `hbi_workspace` パラメーターを `TRUE` に設定してワークスペースを作成した場合、一時ディスクが暗号化されます。 この環境は有効期間が短く (実行中だけ)、暗号化のサポートはシステム管理キーのみに制限されています。
+
+**コンピューティング インスタンス** コンピューティング インスタンスの OS ディスクは、Azure Machine Learning ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 `hbi_workspace` パラメーターを `TRUE` に設定してワークスペースを作成した場合、コンピューティング インスタンスのローカル一時ディスクは Microsoft マネージド キーで暗号化されます。 カスタマー マネージド キーの暗号化は、OS と一時ディスクについてはサポートされていません。
 
 ### <a name="azure-databricks"></a>Azure Databricks
 
@@ -146,11 +154,11 @@ Azure Machine Learning では、さまざまな Azure Machine Learning マイク
 
 ### <a name="microsoft-collected-data"></a>Microsoft が収集したデータ
 
-Microsoft は、リソース名 (データセット名や機械学習の実験名など)、または診断目的でのジョブ環境変数など、ユーザー以外を識別する情報を収集する場合があります。 このようなデータはすべて、Microsoft が所有するサブスクリプションでホストされているストレージに Microsoft が管理するキーを使用して保存され、[Microsoft の標準のプライバシー ポリシーとデータ処理規格](https://privacy.microsoft.com/privacystatement)に従います。
+Microsoft は、リソース名 (データセット名や機械学習の実験名など)、または診断目的でのジョブ環境変数など、ユーザー以外を識別する情報を収集する場合があります。 このようなデータはすべて、Microsoft が所有するサブスクリプションでホストされているストレージに Microsoft が管理するキーを使用して保存され、[Microsoft の標準のプライバシー ポリシーとデータ処理規格](https://privacy.microsoft.com/privacystatement)に従います。 このデータは、ワークスペースと同じリージョン内に保持されます。
 
 また、機密情報 (アカウント キー シークレットなど) を環境変数に保存しないこともお勧めしています。 環境変数は、Microsoft によってログに記録され、暗号化され、保存されます。 同様に、[run_id](/python/api/azureml-core/azureml.core.run%28class%29) に名前を付けるときは、ユーザー名や秘密のプロジェクト名などの機密情報を含めないようにしてください。 この情報は、Microsoft サポート エンジニアがアクセスできるテレメトリ ログに表示されることがあります。
 
-ワークスペースのプロビジョニング中に `hbi_workspace` パラメーターを `TRUE` に設定して、収集される診断データをオプトアウトすることができます。 この機能は、AzureML Python SDK、CLI、REST API、または Azure Resource Manager のテンプレートを使用する場合にサポートされます。
+ワークスペースのプロビジョニング中に `hbi_workspace` パラメーターを `TRUE` に設定して、収集される診断データをオプトアウトすることができます。 この機能は、AzureML Python SDK、Azure CLI、REST API、Azure Resource Manager テンプレートを使用する場合にサポートされます。
 
 ## <a name="using-azure-key-vault"></a>Azure Key Vault の使用
 

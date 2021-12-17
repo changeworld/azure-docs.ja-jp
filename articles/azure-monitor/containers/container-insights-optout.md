@@ -3,13 +3,13 @@ title: Azure Kubernetes Service クラスターの監視を停止する方法 | 
 description: この記事では、Container insights で Azure AKS クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 619b6fc4cce860e5869fd0b31e303b4a474f8428
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c46986f87141e9c8ad4c900b765e1fb30592a56d
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774019"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316931"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-container-insights"></a>Container insights による Azure Kubernetes Service (AKS) の監視を停止する方法
 

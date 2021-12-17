@@ -4,15 +4,16 @@ description: このチュートリアルは、データ フローを使用した
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2021
-ms.date: 04/01/2021
-ms.openlocfilehash: 8010f3f95c9358714b659df5821a375bd8488ad8
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 06/04/2021
+ms.openlocfilehash: 02e67e6521e1f5fa3c29375a15953557613f7d7d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106582031"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763692"
 ---
 # <a name="best-practices-for-writing-to-files-to-data-lake-with-data-flows"></a>データ フローを使用したデータ レイクへのファイル書き込みのベスト プラクティス
 
@@ -52,26 +53,26 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
 この手順では、データ フロー アクティビティが含まれるパイプラインを作成します。
 
-1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
+1. Azure Data Factory のホーム ページで、 **[Orchestrate]\(調整\)** を選択します。
 
-   ![パイプラインの作成](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="ADF のホーム ページを示すスクリーンショット。":::
 
 1. パイプラインの **[全般]** タブで、パイプラインの **名前** として「**DeltaLake**」と入力します。
 1. ファクトリの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
 
-    ![Data Flow アクティビティ](media/tutorial-data-flow/dataflow1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow1.png" alt-text="Data Flow アクティビティ":::
 1. **[アクティビティ]** ウィンドウで、 **[移動と変換]** アコーディオンを展開します。 ウィンドウから **Data Flow** アクティビティをパイプライン キャンバスにドラッグ アンド ドロップします。
 
-    ![Data Flow アクティビティをドロップできるパイプライン キャンバスを示すスクリーンショット。](media/tutorial-data-flow/activity1.png)
+    :::image type="content" source="media/tutorial-data-flow/activity1.png" alt-text="Data Flow アクティビティをドロップできるパイプライン キャンバスを示すスクリーンショット。":::
 1. **[Data Flow の追加]** ポップアップで、 **[新しい Data Flow の作成]** を選択し、データ フローに **DeltaLake** という名前を付けます。 終了したら、[完了] をクリックします。
 
-    ![新しいデータ フローを作成するときにデータ フローの名前を指定する場所を示すスクリーンショット。](media/tutorial-data-flow/activity2.png)
+    :::image type="content" source="media/tutorial-data-flow/activity2.png" alt-text="新しいデータ フローを作成するときにデータ フローの名前を指定する場所を示すスクリーンショット。":::
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>データ フロー キャンバスでの変換ロジックの作成
 
 ソース データをすべて取得し (このチュートリアルでは、Parquet ファイル ソースを使用します)、シンク変換を使用して、データ レイク ETL に最も効果的なメカニズムで Parquet 形式のデータを配置します。
 
-![最終的なフロー](media/data-flow/parts-final.png "最終的なフロー")
+:::image type="content" source="media/data-flow/parts-final.png" alt-text="最終的なフロー":::
 
 ### <a name="tutorial-objectives"></a>チュートリアルの目標
 
@@ -100,7 +101,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 1. データ フロー ソース内のデータ パーティションにアクセスする場合は、```releaseyear``` の上の最上位フォルダーのみをポイントし、後続の各フォルダーにワイルドカード パターン (例: ```**/**/*.parquet```) を使用します
 1. データ値を操作する場合、またはフォルダー名の合成値を生成する必要がある場合でも、派生列変換を使用して、フォルダー名に使用する値を作成します。
 
-![キーのパーティション分割](media/data-flow/key-parts.png "キーのパーティション分割")
+:::image type="content" source="media/data-flow/key-parts.png" alt-text="キーのパーティション分割":::
    
 ### <a name="name-folder-as-data-values"></a>データ値としてフォルダーに名前を付ける
 
@@ -112,7 +113,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 1. フォルダー名を生成するために使用する列を選択します。
 1. データ値を操作する場合、またはフォルダー名の合成値を生成する必要がある場合でも、派生列変換を使用して、フォルダー名に使用する値を作成します。
 
-![フォルダー オプション](media/data-flow/folders.png "Folders")
+:::image type="content" source="media/data-flow/folders.png" alt-text="フォルダー オプション":::
 
 ### <a name="name-file-as-data-values"></a>データ値としてファイル名に名前を付ける
 

@@ -1,18 +1,18 @@
 ---
 title: チュートリアル - Azure API Management で API を変換および保護する | Microsoft Docs
 description: このチュートリアルでは、API Management で変換とスロットル (レート制限) ポリシーを使用して API を保護する方法について説明します。
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/28/2020
-ms.author: apimpm
-ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: be58732e3279b7bfaccee76a8d5bc9d09ea664ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010233"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656400"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>チュートリアル:API を変換および保護する
 

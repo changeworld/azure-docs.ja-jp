@@ -8,19 +8,24 @@ ms.date: 03/29/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: a879aff7c3fcaa7ac2c15be295c6c5bdca25ccdf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a7841fcafff49dab43d944cfa6fd84e9b7119080
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937296"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260008"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Azure ファイル共有の誤削除を防ぐ
+Azure Files では、ファイル共有の論理的な削除機能が提供されます。 論理的な削除を使用すると、アプリケーションまたは他のストレージ アカウント ユーザーが誤ってファイル共有を削除した場合に、データを回復できます。
 
-Azure Storage は、ファイル共有の論理的な削除機能を提供するようになりました。 論理的な削除を使用すると、アプリケーションまたは他のストレージ アカウント ユーザーが誤ってファイル共有を削除した場合に、データを回復できます。
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="how-soft-delete-works"></a>論理的な削除のしくみ
-
 Azure ファイル共有の論理的な削除が有効になっている場合、ファイル共有が削除されると、完全に消去される代わりに論理的に削除された状態に移行します。 論理的に削除されたデータが完全に削除され、復旧できなくなるまでの時間を構成することができます。この保有期間中はいつでも共有の削除を取り消すことができます。 削除を取り消すと、共有とすべてのコンテンツ (スナップショットを含む) が削除前の状態に復元されます。 論理的な削除はファイル共有レベルでのみ機能します。そのため、削除された個々のファイルは完全に消去されます。
 
 論理的な削除は、新規または既存のファイル共有のいずれかに対して有効にすることができます。 また、論理的な削除には下位互換性があります。論理的な削除の保護を利用するために、アプリケーションを変更する必要はありません。 
@@ -45,7 +50,7 @@ Azure ファイル共有の論理的な削除が有効になっている場合�
 
 Standard と Premium の両方のファイル共有は、プロビジョニングされた容量ではなく、論理的な削除時の使用済み容量に課金されます。 さらに、Premium ファイル共有には、論理的な削除状態の間、スナップショット レートで課金されます。 Standard ファイル共有は、論理的な削除状態の間、通常のレートで課金されます。 構成されている保有期間の後で完全に削除されたデータについては課金されません。
 
-Azure File Storage の一般的な料金の詳細については、[Azure File Storage の料金ページ](https://azure.microsoft.com/pricing/details/storage/files/)を参照してください。
+Azure Files の一般的な料金の詳細については、[Azure Files の料金ページ](https://azure.microsoft.com/pricing/details/storage/files/)を参照してください。
 
 論理的な削除を初めて有効にするときは、保有期間を短くして、この機能が請求に及ぼす影響をよく理解することをお勧めします。
 

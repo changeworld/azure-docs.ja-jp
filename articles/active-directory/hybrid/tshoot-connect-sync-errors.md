@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d976cd924644828f5861e4c54460a8b4e4f81444
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0f9f67ab3b09cbf0382b27d88c0be804b4e1e78
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643866"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705495"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -133,7 +133,9 @@ ObjectTypeMismatch エラーの最も一般的な原因は、異なる種類 (�
 #### <a name="description"></a>説明
 Azure Active Directory スキーマでは、次の属性について複数のオブジェクトが同じ値を持つことはできません。 つまり、Azure AD の各オブジェクトはこれらの属性について常に一意の値を持つように強制されます。
 
+* メール
 * ProxyAddresses
+* SignInName
 * UserPrincipalName
 
 Azure AD Connect が新しいオブジェクトの追加または既存のオブジェクトの更新を試行したときに、上記の属性の値が Azure Active Directory 内の別のオブジェクトに既に割り当てられていた場合、その操作は "AttributeValueMustBeUnique" 同期エラーで終了します。
@@ -181,27 +183,14 @@ a. userPrincipalName 属性の文字がサポートされており、必要な�
 #### <a name="related-articles"></a>関連記事
 * [Microsoft 365 へのディレクトリ同期を通してユーザーをプロビジョニングするための準備](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
-### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
-#### <a name="description"></a>説明
-これにより、ユーザーの UserPrincipalName のサフィックスがあるフェデレーション ドメインから別のフェデレーション ドメインに変更された場合に **"FederatedDomainChangeError"** 同期エラーが発生することになります。
+## <a name="deletion-access-violation-and-password-access-violation-errors"></a>削除アクセス違反とパスワード アクセス違反エラー
 
-#### <a name="scenarios"></a>シナリオ
-同期されたユーザーで、オンプレミスの UserPrincipalName のサフィックスが、あるフェデレーション ドメインから別のフェデレーション ドメインに変更されました。 たとえば、*UserPrincipalName = bob\@contoso.com* が *UserPrincipalName = bob\@fabrikam.com* に変更されました。
+Azure Active Directory では、クラウド限定オブジェクトが Azure AD Connect から更新されないように保護します。 Azure AD Connect からこれらのオブジェクトを更新することはできませんが、AADConnect クラウド側のバックエンドに直接、クラウド限定オブジェクトの変更を試みる呼び出しを行うことができます。 これを行う際は、次のエラーが返されることがあります。
 
-#### <a name="example"></a>例
-1. Contoso.com のアカウントである Bob Smith が、新しいユーザーとして UserPrincipalName bob@contoso.com で Active Directory に追加されます。
-2. Bob が Contoso.com の別の部門 Fabrikam.com に移動し、UserPrincipalName が bob@fabrikam.com に変更されます。
-3. contoso.com ドメインと fabrikam.com ドメインは両方とも Azure Active Directory のフェデレーション ドメインです。
-4. Bob の userPrincipalName は更新されず、"FederatedDomainChangeError" 同期エラーが発生します。
-
-#### <a name="how-to-fix"></a>修正方法
-ユーザーの UserPrincipalName サフィックスが bob@**contoso.com** から bob\@**fabrikam.com** に更新され、**contoso.com** と **fabrikam.com** のどちらも **フェデレーション ドメイン** の場合、次の手順に従って同期エラーを修正します。
-
-1. Azure AD 内のユーザーの UserPrincipalName を bob@contoso.com から bob@contoso.onmicrosoft.com に更新します。 次の PowerShell コマンドを Azure AD PowerShell Module で使用できます。`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
-2. 次の同期サイクルで同期の試行を許可します。 このとき、同期が成功して、Bob の UserPrincipalName が予期したとおり bob@fabrikam.com に更新されます。
-
-#### <a name="related-articles"></a>関連記事
-* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](./howto-troubleshoot-upn-changes.md)
+* この同期操作 (削除) は無効です。 ご購入元に問い合わせてください。
+* 1 つ以上のクラウド限定ユーザーの資格情報の更新が現在の要求に含まれているため、この更新を処理できません。
+* クラウド限定オブジェクトの削除はサポートされていません。 Microsoft カスタマー サポートに問い合わせてください。
+* サポートされていない 1 つ以上のクラウド限定ユーザー オブジェクトに対する変更が含まれており、パスワード変更要求を実行できません。これはサポートされていません。 Microsoft カスタマー サポートに問い合わせてください。
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>説明

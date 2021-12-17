@@ -8,29 +8,29 @@ metadata:
   manager: carmonm
   ms.service: automation
   ms.topic: landing-page
-  ms.date: 09/06/2019
+  ms.date: 10/19/2021
   ms.author: magoedte
-  ms.openlocfilehash: c146be313391397c9ecf64314a580175e8220ac5
-  ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+  ms.openlocfilehash: 4a8ad8ec00ae80ecf507ea8753bff3c2d9b215c8
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/20/2020
-  ms.locfileid: "92216421"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131026205"
 landingContent:
 - title: Azure オートメーションの使用
   linkLists:
   - linkListType: overview
     links:
     - text: Automation とは
-      url: automation-intro.md
+      url: overview.md
   - linkListType: get-started
     links:
     - text: Automation アカウントを作成する
-      url: automation-quickstart-create-account.md
+      url: ./quickstarts/create-account-portal.md
   - linkListType: quickstart
     links:
     - text: Runbook を作成する
-      url: automation-quickstart-create-runbook.md
+      url: ./learn/powershell-runbook-managed-identity.md
   - linkListType: deploy
     links:
     - text: 勤務時間外に VM を起動/停止する

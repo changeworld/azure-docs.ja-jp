@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 1d5bcf9c04ad02eaf297f8971aa0f4ff599888c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c5dd94cdc98c1889519790599864971729367c1
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943001"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587735"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
 
@@ -111,13 +111,13 @@ hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> --p
 
 `<destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>`
 
-* `<ZooKeeperQuorum>` は Apache ZooKeeper ノードのコンマ区切りリストです。次に例を示します。
+* `<ZooKeeperQuorum>` は Apache ZooKeeper ノード FQDN 名のコンマ区切りリストです。次に例を示します。
 
-    zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
+    \<zookeepername1>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,\<zookeepername2>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,\<zookeepername3>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
 * HDInsight の `<Port>` の既定値は 2181 で、`<ZnodeParent>` は `/hbase-unsecure` であるため、完成した `<destinationAddress>` は次のようになります。
 
-    zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
+    \<zookeepername1>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,\<zookeepername2>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,\<zookeepername3>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
 
 使用している HDInsight クラスターについてこれらの値を取得する方法の詳細については、この記事の「[Apache ZooKeeper クォーラム リストを手動で収集する](#manually-collect-the-apache-zookeeper-quorum-list)」を参照してください。
 
@@ -145,7 +145,7 @@ curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterNam
 curl コマンドで HBase 構成情報を含む JSON ドキュメントを取得し、grep コマンドで次のように "hbase.zookeeper.quorum" エントリのみを返します。
 
 ```output
-"hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
+"hbase.zookeeper.quorum" : "<zookeepername1>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,<zookeepername2>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,<zookeepername3>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
 ```
 
 クォーラムのホスト名の値は、コロンの右側にある文字列全体です。
@@ -156,7 +156,7 @@ curl コマンドで HBase 構成情報を含む JSON ドキュメントを取�
 curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
 ```
 
-この curl コマンドの `<zookeeperHostFullName>` は ZooKeeper ホストの完全 DNS 名です (例: `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`)。 コマンドの出力には、次のように、指定したホストの IP アドレスが含まれます。
+この curl コマンドの `<zookeeperHostFullName>` は ZooKeeper ホストの完全 DNS 名です (例: `<zookeepername1>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`)。 コマンドの出力には、次のように、指定したホストの IP アドレスが含まれます。
 
 `100    "ip" : "10.0.0.9",`
 
@@ -243,7 +243,7 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.<ac
 5. 既存のデータをレプリケーション元テーブルからレプリケーション先テーブルにコピーします。
 6. レプリケーションによって自動的に、レプリケーション元テーブルに対する新しいデータ変更がレプリケーション先テーブルにコピーされます。
 
-HDInsight でレプリケーションを有効にするには、実行中のレプリケーション元 HDInsight クラスターにスクリプト アクションを適用します。 クラスターでレプリケーションを有効にするチュートリアル、または Azure Resource Management テンプレートを使用して仮想ネットワークに作成されたサンプル クラスターでのレプリケーションの実験については、[Apache HBase レプリケーションの構成](apache-hbase-replication.md)に関する記事を参照してください。 その記事では、Phoenix メタデータのレプリケーションを有効にするための手順も説明しています。
+HDInsight でレプリケーションを有効にするには、実行中のレプリケーション元 HDInsight クラスターにスクリプト アクションを適用します。 クラスターでレプリケーションを有効にするチュートリアル、または Azure Resource Manager テンプレートを使用して仮想ネットワークに作成されたサンプル クラスターでのレプリケーションの実験については、[Apache HBase レプリケーションの構成](apache-hbase-replication.md)に関する記事を参照してください。 その記事では、Phoenix メタデータのレプリケーションを有効にするための手順も説明しています。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,19 +1,19 @@
 ---
 title: プライベート リンクを使用して Synapse ワークスペースに接続する
 description: この記事では、プライベート リンクを使用して Azure Synapse ワークスペースに接続する方法について説明します。
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 04/15/2020
-ms.author: ronytho
+ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9782cce4165487b612c0295dc893d120ed043225
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1ab7e4f30fbd297bc5aad79a8d250ec55684ddb
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98218265"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215326"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>プライベート リンクを使用して Azure Synapse ワークスペースに接続する
 
@@ -44,6 +44,9 @@ ms.locfileid: "98218265"
 **[リソース]** タブで **[マイ ディレクトリ内の Azure リソースに接続します]** を選択します。Azure Synapse ワークスペースが含まれている **[サブスクリプション]** を選択します。 Azure Synapse ワークスペースへのプライベート エンドポイントを作成するための **[リソースの種類]** は *Microsoft.Synapse/workspaces* です。
 
 **[リソース]** として Azure Synapse ワークスペースを選択します。 すべての Azure Synapse ワークスペースには、プライベート エンドポイントの作成先として指定できる次の 3 つの **[ターゲット サブリソース]** があります。Sql、SqlOnDemand、Dev。
+- [Sql] は、SQL プールで SQL クエリを実行するためのものです。
+- [SqlOnDemand] は、SQL に組み込まれているクエリを実行するためのものです。
+- [Dev] は、Azure Synapse Analytics Studio ワークスペース内の他のすべてのユーザーにアクセスするためのものです。
 
 **[次へ: 構成 >]** を選択して、セットアップの次の部分に進みます。
 ![サブスクリプションとリージョンの詳細の選択 2](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-3.png)

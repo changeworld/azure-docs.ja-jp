@@ -3,22 +3,22 @@ title: ユーザー インターフェイスをカスタマイズする
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C を使用するアプリケーションのユーザー インターフェイスをカスタマイズする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
-ms.custom: project-no-code
-ms.author: mimart
+ms.date: 10/21/2021
+ms.custom: project-no-code, b2c-support
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ecece3a00a788b67f6c831804bf5b00372fef93d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70331a45936f2608f8eb9a4aadfd182056e11a77
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99056824"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222727"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -36,6 +36,9 @@ Azure Active Directory B2C (Azure AD B2C) に表示されるユーザー イン�
 ## <a name="overview"></a>概要
 
 Azure AD B2C にはいくつかの組み込みテンプレートが用意されています。これらを使用すると、ユーザー エクスペリエンスのページにプロフェッショナルな外観を提供できます。 これらのページ テンプレートは、[会社のブランド](#company-branding)機能を使用して、独自のカスタマイズの開始点としても使用できます。
+
+> [!NOTE]
+> クラシック テンプレートでサポートされているブラウザーには、Internet Explorer、Microsoft Edge、Google Chrome、Mozilla Firefox、Safari の現在および以前のバージョンが含まれます。 Ocean Blue テンプレートと Slate Gray テンプレートでは、Internet Explorer 11 や 10 などの古いブラウザー バージョンのサポートが制限される場合があります。サポートするブラウザーでアプリケーションをテストすることをお勧めします。
 
 ### <a name="ocean-blue"></a>オーシャン ブルー
 
@@ -69,7 +72,8 @@ Azure Active Directory [[会社のブランド]](../active-directory/fundamental
 ::: zone pivot="b2c-user-flow"
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[ユーザー フロー]** を選択します。
 1. カスタマイズするユーザー フローを選択します。
@@ -157,31 +161,31 @@ Azure Active Directory [[会社のブランド]](../active-directory/fundamental
 ```xml
 <ContentDefinitions>
   <ContentDefinition Id="api.error">
-    <LoadUri>~/tenant/templates/default/exception.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/exception.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.idpselections">
-    <LoadUri>~/tenant/templates/default/idpSelector.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/idpSelector.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.idpselections.signup">
-    <LoadUri>~/tenant/templates/default/idpSelector.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/idpSelector.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.signuporsignin">
-    <LoadUri>~/tenant/templates/AzureBlue/unified.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.selfasserted">
-    <LoadUri>~/tenant/templates/default/selfAsserted.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.selfasserted.profileupdate">
-    <LoadUri>~/tenant/templates/default/selfAsserted.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.localaccountsignup">
-    <LoadUri>~/tenant/templates/default/selfAsserted.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.localaccountpasswordreset">
-    <LoadUri>~/tenant/templates/default/selfAsserted.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.phonefactor">
-    <LoadUri>~/tenant/templates/default/multifactor-1.0.0.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/multifactor-1.0.0.cshtml</LoadUri>
   </ContentDefinition>
 </ContentDefinitions>
 ```
@@ -195,7 +199,8 @@ Azure Active Directory [[会社のブランド]](../active-directory/fundamental
 まず、 **[会社のブランド]** でバナー ロゴ、背景画像、および背景色を設定します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[管理]** から **[会社のブランド]** を選択します。
 1. 「[組織の Azure Active Directory のサインイン ページにブランドを追加する](../active-directory/fundamentals/customize-branding.md)」の手順に従います。
@@ -207,10 +212,9 @@ Azure AD B2C で会社のブランドを構成する際は、次の点に注意�
 * バナー ロゴは、ユーザーがサインアップ ユーザー フローを開始するときに、ユーザーに送信された確認メールに表示されます。
 
 
+::: zone pivot="b2c-user-flow"
 
 ## <a name="enable-company-branding-in-user-flow-pages"></a>ユーザー フロー ページでの会社のブランド化の有効化
-
-::: zone pivot="b2c-user-flow"
 
 会社のブランドを構成したら、それをユーザー フローで有効にします。
 
@@ -223,11 +227,13 @@ Azure AD B2C で会社のブランドを構成する際は、次の点に注意�
 
 ユーザー フローのすべてのページをブランド化する場合は、ユーザー フローのページ レイアウトごとにページ レイアウト バージョンを設定します。
 
-![Azure portal での Azure AD B2C のページ レイアウトの選択](media/customize-ui/portal-02-page-layout-select.png)
+:::image type="content" source="media/customize-ui/portal-02-page-layout-select.png" alt-text="Azure portal での Azure AD B2C のページ レイアウトの選択。":::
 
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="enable-company-branding-in-custom-policy-pages"></a>カスタム ポリシー ページで会社のブランド化を有効にする
 
 会社のブランドを構成したら、それをカスタム ポリシーで有効にします。 カスタム ポリシーのコンテンツ定義の "*すべて*" に対して、ページ `contract` バージョンを使用して [ページ レイアウト バージョン](contentdefinitions.md#migrating-to-page-layout)を構成します。 値の形式には、次のように `contract` という語が含まれている必要があります: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 古い **DataUri** 値を使用するカスタム ポリシーでページ レイアウトを指定するには、次の操作を行います。 詳細については、ページ バージョンで[ページ レイアウトに移行する](contentdefinitions.md#migrating-to-page-layout)方法について説明します。
 
@@ -273,6 +279,25 @@ Azure AD B2C で会社のブランドを構成する際は、次の点に注意�
   </ContentDefinition>
 </ContentDefinitions>
 ```
+
+::: zone-end
+
+::: zone pivot="b2c-user-flow"
+
+## <a name="re-order-input-fields-in-the-sign-up-form"></a>サインアップ フォームの入力フィールドの順序を変更する
+ローカル アカウント フォームのサインアップ ページの入力フィールドの順序を変更するには、次の手順に従います。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. 左側のメニューで **[ユーザー フロー]** を選択します。
+1. 入力フィールドの順序を変更するユーザー フロー (ローカル アカウントのみ) を選択します。
+1. 左側のメニューで、 **[ページ レイアウト]** を選択します。
+1. テーブルで、 **[ローカル アカウント サインアップ ページ]** の行を選択します。
+1. **[ユーザー属性]** で、順序を変更する入力フィールドを選択し、(上または下へ) ドラッグしてドロップするか、 **[上へ移動]** コントロールまたは **[下へ移動]** コントロールを使用して目的の順序にします。 
+1. ページの最上部で **[保存]** を選択します。
+
+  :::image type="content" source="media/customize-ui/portal-02-page-layout-fields.png" alt-text="Azure portal のユーザー フロー ページのテンプレート選択ドロップダウン。":::
 
 ::: zone-end
 

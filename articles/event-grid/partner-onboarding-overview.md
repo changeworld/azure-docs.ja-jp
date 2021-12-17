@@ -2,13 +2,13 @@
 title: パートナーのオンボードの概要 (Azure Event Grid)
 description: Event Grid パートナーとしてオンボードする方法の概要について説明します。
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: d16337eada829a817110abf7842f763972d0718f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/28/2021
+ms.openlocfilehash: 0c4c43673a0ae2f8094f176e57c203051fd0bea4
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109341"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233145"
 ---
 # <a name="partner-onboarding-overview-azure-event-grid"></a>パートナーのオンボードの概要 (Azure Event Grid)
 
@@ -153,7 +153,7 @@ CloudEvents 1.0 スキーマを使用して Azure Event Grid にイベントを�
   * [ARM テンプレート](/azure/templates/microsoft.eventgrid/allversions)
   * [ARM テンプレート スキーマ](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
   * [REST API](/azure/templates/microsoft.eventgrid/2020-04-01-preview/partnernamespaces)
-  * [CLI 拡張機能](/cli/azure/ext/eventgrid/)
+  * [CLI 拡張機能](/cli/azure/eventgrid)
 
 ### <a name="sdks"></a>SDK
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)

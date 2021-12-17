@@ -3,19 +3,20 @@ title: Custom Speech 用のデータを準備する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: マイクロソフトの音声認識の正確性をテストする場合、またはカスタム モデルをトレーニングする場合は、オーディオ データとテキスト データが必要です。 このページでは、データ型、使用方法、および管理方法について説明します。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.author: trbye
-ms.openlocfilehash: 2c98546d20e9f977a605ccbac21010aa9b1dbadc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/09/2021
+ms.author: eur
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 559081847ae83776bdf2d915cd194ccf6ffddb1f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232496"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546388"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -48,14 +49,16 @@ ms.locfileid: "103232496"
 
 | データ型 | テストに使用 | 推奨数量 | トレーニングに使用 | 推奨数量 |
 |-----------|-----------------|----------|-------------------|----------|
-| [オーディオ](#audio-data-for-testing) | はい<br>目視検査に使用 | 5 つ以上のオーディオ ファイル | いいえ | 該当なし |
-| [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-testingtraining) | はい<br>精度を評価するために使用 | 0.5-5 時間のオーディオ | はい | 1 - 20 時間のオーディオ |
-| [関連するテキスト](#related-text-data-for-training) | いいえ | 該当なし | はい | 1 - 200 MB の関連テキスト |
+| [オーディオのみ](#audio-data-for-testing) | はい<br>目視検査に使用 | 5 つ以上のオーディオ ファイル | いいえ | 該当なし |
+| [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-trainingtesting) | はい<br>精度を評価するために使用 | 0.5-5 時間のオーディオ | はい | 1 - 20 時間のオーディオ |
+| [プレーンテキスト](#plain-text-data-for-training) | いいえ | 該当なし | はい | 1 - 200 MB の関連テキスト |
+| [構造化テキスト](#structured-text-data-for-training-public-preview) (パブリック プレビュー) | いいえ | 該当なし | はい | 最大 4,000 の項目、最大 50,000 のトレーニング文を含む最大 10 個のクラス |
+| [発音](#pronunciation-data-for-training) | いいえ | 該当なし | はい | 1 KB - 1 MB の発音テキスト |
 
 ファイルは、型別にデータセットにグループ化し、ZIP ファイルとしてアップロードする必要があります。 各データセットには、1 つのデータの種類のみを含めることができます。
 
 > [!TIP]
-> 新しいモデルをトレーニングするときには、[関連テキスト](#related-text-data-for-training)から開始します。 このデータでは、特殊な用語や語句の認識が既に改善されています。 テキストを使用したトレーニングは、オーディオによるトレーニングよりもはるかに高速です (分単位と日単位)。
+> 新しいモデルをトレーニングする場合は、プレーンテキスト データまたは構造化テキスト データから始めます。 このデータによって、特殊な用語や語句の認識が改善されます。 テキストを使用したトレーニングは、オーディオによるトレーニングよりもはるかに高速です (分単位と日単位)。
 
 > [!NOTE]
 > すべての基本モデルでオーディオのトレーニングがサポートされるわけではありません。 基本モデルでサポートされていない音声サービスは、トランスクリプトのテキストのみを使用し、オーディオを無視します。 オーディオ データを使用したトレーニングをサポートする基本モデルの一覧については、「[言語のサポート](language-support.md#speech-to-text)」を参照してください。 基本モデルでオーディオ データを使用したトレーニングがサポートされている場合でも、サービスによってオーディオの一部しか使用されないことがあります。 その場合も、すべてのトランスクリプトが使用されます。
@@ -66,50 +69,56 @@ ms.locfileid: "103232496"
 >
 > トレーニング用の専用ハードウェアがあるリージョンでは、音声サービスは最大 20 時間のオーディオをトレーニングに使用します。 他のリージョンでは、最大 8 時間のオーディオのみが使用されます。
 
+> [!NOTE]
+> 構造化テキストを使用したトレーニングは、en-US、en-UK、en-IN、de-DE、fr-FR、fr-CA、es-ES、es-MX の各ロケールでのみサポートされ、これらのロケールの最新の基本モデルを使用する必要があります。 
+>
+> 構造化テキストを使用したトレーニングをサポートしないロケールでは、プレーンテキスト データを使用したトレーニングの一環として、クラスを参照しないトレーニング文がサービスによって取られます。
+
 ## <a name="upload-data"></a>データをアップロードする
 
-データをアップロードするには、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a> に移動します。 ポータルで、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データのアップロードが許可される前に、データセットにより音声データ型を選択するように求められます。
+データをアップロードするには、[Speech Studio](https://aka.ms/speechstudio/customspeech) に移動します。 プロジェクトを作成したら、 **[Speech データセット]** タブに移動し、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データセットの音声データ型を選択し、データをアップロードします。
 
-![Speech ポータルのオーディオ アップロード オプションが強調表示されているスクリーンショット。](./media/custom-speech/custom-speech-select-audio.png)
+> [!NOTE]
+> データセット ファイルのサイズが 128 MB を超える場合は、*[Azure Blob or shared location]\(Azure Blob または共有場所\)* オプションを使用してのみアップロードできます。 また、[Speech to Text REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) を使用して、[許可されているあらゆるサイズ](speech-services-quotas-and-limits.md#model-customization)のデータセットをアップロードすることもできます。 詳細については、[次のセクション](#upload-data-using-speech-to-text-rest-api-v30)を参照してください。
 
-アップロードする各データセットでは、選択したデータの種類の要件が満たされている必要があります。 アップロードする前に、データの書式を正しく設定する必要があります。 データが正しくフォーマットされていれば、Custom Speech サービスによって正確に処理されます。 要件は、以降のセクションに示されています。
+まず、データセットを **トレーニング** または **テスト** のどちらに使用するかを指定します。 **トレーニング** または **テスト** 用にアップロードして使用できるデータには、複数の種類があります。 アップロードする各データセットは、アップロードする前に正しくフォーマットされていなければならず、選択したデータの種類の要件が満たされている必要があります。 要件は、以降のセクションに示されています。
 
 データセットをアップロードした後は、いくつかの選択肢があります。
 
-* **[テスト]** タブに移動して、オーディオのみまたはオーディオ + 人間というラベルが付いた文字起こしデータを目視で検査できます。
-* **[トレーニング]** タブに移動し、オーディオ + 人間の文字起こしデータまたは関連するテキスト データを使用して、カスタム モデルをトレーニングできます。
+* **[カスタム モデルのトレーニング]** タブに移動 して、カスタム モデルをトレーニングできます。
+* **[テスト モデル]** タブに移動して、オーディオ専用データで品質を視覚的に検査したり、オーディオ + 人間によってラベル付けされた文字起こしデータを使用して精度を評価することができます。
 
-## <a name="audio-data-for-testing"></a>テスト用のオーディオ データ
+### <a name="upload-data-using-speech-to-text-rest-api-v30"></a>Speech-to-text REST API v3.0 を使用してデータをアップロードする
 
-オーディオ データは、Microsoft の基準の音声テキスト変換モデルやカスタム モデルの精度をテストするのに最適です。 オーディオ データは、特定のモデルのパフォーマンスに関する音声の精度を検査するために使用されることに注意してください。 モデルの精度の定量化を検討している場合は、[オーディオ + 人間というラベルが付いた文字起こしデータ](#audio--human-labeled-transcript-data-for-testingtraining)を使用します。
+[Speech-to-text REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) を使用して、カスタム モデルに関連するすべての操作を自動化できます。 特に、これを使用してデータセットをアップロードすることができます。 これはデータセット ファイルが 128 MB を超える場合に特に便利です。その理由は、この大きさのファイルは Speech Studio の *[Local file]\(ローカルファイル\)* オプションを使用してアップロードできないためです。 (前のセクションで説明したのと同じ目的で、Speech Studio の *[Azure Blob or shared location]\(Azure Blob または共有場所\)* オプションを使用することもできます)。
 
-次の表を使用して、Custom Speech で使用するためにオーディオ ファイルが確実に正しく書式設定されるようにします。
+データセットを作成してアップロードするには、[データセットの作成](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset)要求を使用します。
 
-| プロパティ                 | 値                 |
-|--------------------------|-----------------------|
-| ファイル形式              | RIFF (WAV)            |
-| サンプル レート              | 8,000 Hz または 16,000 Hz |
-| チャンネル                 | 1 (モノラル)              |
-| オーディオあたりの最大長 | 2 時間               |
-| サンプル形式            | PCM、16 ビット           |
-| アーカイブ形式           | .zip                  |
-| 最大アーカイブ サイズ     | 2 GB                  |
+**REST API で作成されたデータセットと Speech Studio プロジェクト**
 
-[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
+Speech-to-text REST API v3.0 で作成されたデータセットは、要求本文に特別なパラメーターが指定されていない限り、Speech Studio プロジェクトに接続 "*されません*" (下記参照)。 モデルのカスタマイズ操作が REST API 経由で実行される場合、Speech Studio プロジェクトとの接続は必要 "*ありません*"。
 
-> [!TIP]
-> トレーニング データとテスト データをアップロードする場合、.zip ファイルのサイズは 2 GB を超えることはできません。 トレーニング用にさらに多くのデータが必要な場合は、複数の .zip ファイルに分割し、個別にアップロードします。 その後、*複数* のデータセットからトレーニングを選択できます。 ただし、*単一* のデータセットからのみテストができます。
+Speech Studio にログオンすると、接続されていないオブジェクト (プロジェクト参照を使用せずに REST API によってアップロードされたデータセットなど) が見つかったときに、そのユーザー インターフェイスによって通知され、そのようなオブジェクトを既存のプロジェクトに接続できます。 
 
-<a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX </a> を使用して、オーディオのプロパティを確認したり、既存のオーディオを適切な形式に変換したりします。 SoX のコマンドラインから、これらのアクティビティ各々を実行する方法の例を、次にいくつか示します:
+アップロード中に新しいデータセットを Speech Studio の既存のプロジェクトに接続するには、[データセットの作成](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset)を使用し、次の形式に従って要求本文に入力します。
+```json
+{
+  "kind": "Acoustic",
+  "contentUrl": "https://contoso.com/mydatasetlocation",
+  "locale": "en-US",
+  "displayName": "My speech dataset name",
+  "description": "My speech dataset description",
+  "project": {
+    "self": "https://westeurope.api.cognitive.microsoft.com/speechtotext/v3.0/projects/c1c643ae-7da5-4e38-9853-e56e840efcb2"
+  }
+}
+```
 
-| アクティビティ | 説明 | SoX コマンド |
-|----------|-------------|-------------|
-| オーディオ形式の確認 | このコマンドを使用して確認<br>オーディオ ファイル形式。 | `sox --i <filename>` |
-| オーディオの形式の変換 | このコマンドを使用して変換<br>オーディオファイルは、シングルチャネル、16 ビット、16 KHz です。 | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
+`project` 要素に必要なプロジェクト URL は、[プロジェクトの取得](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetProjects)要求で取得できます。
 
-## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>テスト/トレーニング用のオーディオ + 人間というラベルが付いた文字起こしデータ
+## <a name="audio--human-labeled-transcript-data-for-trainingtesting"></a>トレーニング/テスト用のオーディオ + 人間というラベルが付いた文字起こしデータ
 
-オーディオ ファイルを処理するときに、Microsoft の音声テキスト変換の精度を測定するには、比較のため、人間というラベルが付いた文字起こし (単語単位) を提供する必要があります。 多くの場合、人間というラベルが付いた文字起こしには時間がかかりますが、ユース ケースのモデルの精度を評価およびトレーニングするために必要です。 認識の向上は、提供されたデータによって決まることに注意してください。 そのため、高品質なトランスクリプトのみをアップロードすることが重要です。
+オーディオ + 人間によってラベル付けされた文字起こしデータは、トレーニングとテストの両方の目的で使用できます。 若干のアクセント、話し方、背景ノイズのような音響的な側面を改善したり、オーディオ ファイルの処理時に Microsoft の音声テキスト変換の精度を測定したりするには、人間によってラベル付けされた文字起こし (単語単位で) を指定して比較する必要があります。 多くの場合、人間というラベルが付いた文字起こしには時間がかかりますが、ユース ケースのモデルの精度を評価およびトレーニングするために必要です。 認識の向上は、提供されたデータによって決まることに注意してください。 そのため、高品質なトランスクリプトのみをアップロードすることが重要です。
 
 オーディオ ファイルには、録音の最初と最後に無音部分が含まれている場合があります。 可能であれば、各サンプル ファイルの音声の前後に少なくとも 0.5 秒の無音部分を含めます。 音量が小さかったり、邪魔な背景ノイズが入っていたりするオーディオは役に立ちませんが、カスタム モデルが損なわれることはありません。 オーディオ サンプルを収集する前に、マイクと信号処理ハードウェアのアップグレードを常に検討してください。
 
@@ -154,20 +163,11 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 
 すべての基本モデルでオーディオ データを使用したトレーニングがサポートされるわけではありません。 基本モデルでサポートされていない場合、サービスではオーディオが無視され、文字起こしされたテキストのみでトレーニングが行われます。 この場合、トレーニングは、関連するテキストを使用したトレーニングと同じになります。 オーディオ データを使用したトレーニングをサポートする基本モデルの一覧については、「[言語のサポート](language-support.md#speech-to-text)」を参照してください。
 
-## <a name="related-text-data-for-training"></a>トレーニング用の関連するテキスト データ
+## <a name="plain-text-data-for-training"></a>トレーニング用のプレーンテキスト データ
 
-製品名または固有の機能には、トレーニング用の関連テキストデータが含まれている必要があります。 関連テキストは、正しい認識を保証するのに役立ちます。 認識を向上させるため、次の 2 種類の関連するテキスト データを提供することができます。
+ドメイン関連の文を使用すると、製品名や業界固有の専門用語を認識する際の精度が向上します。 文は、1 つのテキスト ファイルで指定してください。 正確性を高めるには、読み上げられる発話に近いテキスト データを使用します。 
 
-| データ型 | このデータによりどのように認識が向上するか |
-|-----------|------------------------------------|
-| 文 (発話) | 製品名を認識する場合や、文のコンテキスト内で業界固有の語彙を認識する場合の精度を向上させます。 |
-| 発音 | 一般的でない用語、略語、またはその他の発音が定義されていない単語の発音を向上させることができます。 |
-
-発話は、1 つまたは複数のテキスト ファイルとして提供できます。 正確性を高めるには、読み上げられる発話に近いテキスト データを使用します。 発音は、1 つのテキスト ファイルとして指定する必要があります。 すべてを 1 つの zip ファイルとしてパッケージ化し、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a> にアップロードできます。
-
-通常、関連するテキストを使用したトレーニングは数分で完了します。
-
-### <a name="guidelines-to-create-a-sentences-file"></a>発話ファイルを作成するためのガイドライン
+通常、プレーンテキストを使用したトレーニングは数分で完了します。
 
 関連する文を使用してカスタム モデルを作成するには、サンプルの発話の一覧を提供する必要があります。 発話は、完全または文法的に正しい _必要はありません_ が、運用環境で期待される音声入力を正確に反映する必要があります。 特定の用語の重みを付けるには、これらの特定の用語を含む複数の文を追加します。
 
@@ -186,15 +186,83 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 * 文字、単語、または単語のグループを 3 回より多く繰り返すことは避けます。 たとえば、"aaaa"、"yeah yeah yeah yeah"、または "that's it that's it that's it that's it" です。 繰り返し回数が多すぎる行は、Speech サービスによって削除される可能性があります。
 * 特殊文字または 上記 `U+00A1` の UTF-8 文字は使用しないでください。
 * URI は拒否されます。
+* 一部の言語 (日本語や韓国語など) では、大量のテキスト データをインポートする際に非常に時間がかかったり、タイム アウトしたりすることがあります。その場合は、データをそれぞれ最大 20,000 行のテキスト ファイルに分割してアップロードすることをご検討ください。
 
-### <a name="guidelines-to-create-a-pronunciation-file"></a>発音ファイルを作成するためのガイドライン
+## <a name="structured-text-data-for-training-public-preview"></a>トレーニング用の構造化テキスト データ (パブリック プレビュー)
 
-ユーザー側で発生するまたは使用する可能性がある、標準の発音がない一般的でない用語がある場合は、カスタム発音ファイルを提供して認識を向上させることができます。
+多くの場合、予想される発話では特定のパターンに従います。 一般的なパターンの 1 つとして、発話では、リストの単語や語句だけが異なることが挙げられます。 例として、"私は `product` について質問があります。" では、`product` は、可能な製品のリストです。 または、"その `object` を `color` にします" では、`object` はジオメトリック形状のリストで、`color` は色のリストです。 トレーニング データの作成を簡略化し、カスタム言語モデル内でのモデリングを改善できるようにするには、マークダウン形式の構造化テキストを使用して項目のリストを定義してから、トレーニング発話内でそれらを参照できます。 また、マークダウン形式では、単語の発音の指定もサポートされます。 マークダウン ファイルには、`.md` 拡張子が必要です。 マークダウンの構文は、特に、リスト エンティティと発話の例の Language Understanding モデルの構文と同じです。 完全なマークダウン構文の詳細については、「<a href="/azure/bot-service/file-format/bot-builder-lu-file-format" target="_blank">Language Understanding マークダウン</a>」を参照してください。
+
+マークダウン形式の例を次に示します。
+
+```markdown
+// This is a comment
+
+// Here are three separate lists of items that can be referenced in an example sentence. You can have up to 10 of these
+@ list food =
+- pizza
+- burger
+- ice cream
+- soda
+
+@ list pet =
+- cat
+- dog
+
+@ list sports =
+- soccer
+- tennis
+- cricket
+- basketball
+- baseball
+- football
+
+// This is a list of phonetic pronunciations. 
+// This adjusts the pronunciation of every instance of these word in both a list or example training sentences 
+@ speech:phoneticlexicon
+- cat/k ae t
+- cat/f i l ai n
+
+// Here are example training sentences. They are grouped into two sections to help organize the example training sentences.
+// You can refer to one of the lists we declared above by using {@listname} and you can refer to multiple lists in the same training sentence
+// A training sentence does not have to refer to a list.
+# SomeTrainingSentence
+- you can include sentences without a class reference
+- what {@pet} do you have
+- I like eating {@food} and playing {@sports}
+- my {@pet} likes {@food}
+
+# SomeMoreSentence
+- you can include more sentences without a class reference
+- or more sentences that have a class reference like {@pet} 
+```
+
+プレーンテキストと同様に、構造化されたテキストを使用したトレーニングには通常数分かかります。 また、例文やリストには、実稼働環境で期待される音声入力の種類が反映されている必要があります。
+発音エントリについては、「[汎用音素セット](phone-sets.md)」の説明を参照してください。
+
+次の表は、マークダウン形式の制限と他のプロパティを示しています。
+
+| プロパティ | 値 |
+|----------|-------|
+| テキストのエンコード | UTF-8 BOM |
+| ファイルの最大サイズ | 200 MB |
+| 例文の最大数 | 50,000 |
+| リスト クラスの最大数 | 10 |
+| リスト クラス内の項目の最大数 | 4,000 |
+| speech:phoneticlexicon エントリの最大数 | 15000 |
+| 単語あたりの発音の最大数 | 2 |
+
+
+## <a name="pronunciation-data-for-training"></a>トレーニング用の発音データ
+
+ユーザー側で発生するまたは使用する可能性がある、標準の発音がない一般的でない用語がある場合は、カスタム発音ファイルを提供して認識を向上させることができます。 カスタム発音をサポートしている言語のリストは、「[音声テキスト変換表](language-support.md#speech-to-text)」の **カスタマイズ** 列の **発音** をご覧ください。
 
 > [!IMPORTANT]
 > カスタムの発音ファイルを使用して、共通単語の発音を変更することはお勧めしません。
 
-これには、音声発話の例と、それぞれのカスタム発音が含まれます。
+> [!NOTE]
+> この種類の発音ファイルを構造化テキスト トレーニング データと組み合わせることはできません。 構造化テキスト データには、構造化テキスト マークダウン形式に含まれる発音機能を使用します。
+
+発音は、1 つのテキスト ファイルで指定してください。 これには、音声発話の例と、それぞれのカスタム発音が含まれます。
 
 | 認識される/表示されるフォーム | 音声フォーム |
 |--------------|--------------------------|
@@ -204,13 +272,6 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 
 音声フォームは、スペル アウトされた表示フォームの音声シーケンスです。これは文字、単語、音節、または 3 つすべての組み合わせで構成できます。
 
-カスタマイズされた発音は、英語 (`en-US`) およびドイツ語 (`de-DE`) で使用できます。 この表に、言語ごとにサポートされている文字を示します。
-
-| Language | Locale | 文字 |
-|----------|--------|------------|
-| 英語 | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
-| ドイツ語 | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
-
 次の表を使用して、発音用の関連データ ファイルが正しく書式設定されているか確認します。 発音ファイルは小さいため、数キロバイトしかサイズは必要ありません。
 
 | プロパティ | 値 |
@@ -219,9 +280,37 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 | 1 行のあたりの発音数 | 1 |
 | ファイルの最大サイズ | 1 MB (Free レベルに 1 KB) |
 
+## <a name="audio-data-for-testing"></a>テスト用のオーディオ データ
+
+オーディオ データは、Microsoft の基準の音声テキスト変換モデルやカスタム モデルの精度をテストするのに最適です。 オーディオ データは、特定のモデルのパフォーマンスに関する音声の精度を検査するために使用されることに注意してください。 モデルの精度を定量化する場合は、[オーディオ + 人間というラベルが付いた文字起こし](#audio--human-labeled-transcript-data-for-trainingtesting)を使用します。
+
+Custom Speech には、次のプロパティを持つオーディオ ファイルが必要です。
+
+| プロパティ                 | 値                 |
+|--------------------------|-----------------------|
+| ファイル形式              | RIFF (WAV)            |
+| サンプル レート              | 8,000 Hz または 16,000 Hz |
+| チャンネル                 | 1 (モノラル)              |
+| オーディオあたりの最大長 | 2 時間               |
+| サンプル形式            | PCM、16 ビット           |
+| アーカイブ形式           | .zip                  |
+| 最大アーカイブ サイズ     | 2 GB                  |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
+
+> [!NOTE]
+> トレーニング データとテスト データをアップロードする場合、.zip ファイルのサイズは 2 GB を超えることはできません。 トレーニング用にさらに多くのデータが必要な場合は、複数の .zip ファイルに分割し、個別にアップロードします。 その後、*複数* のデータセットからトレーニングを選択できます。 ただし、*単一* のデータセットからのみテストができます。
+
+<a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX</a> を使用して、オーディオのプロパティを確認したり、既存のオーディオを適切な形式に変換したりします。 次に、SoX のコマンドの例をいくつか示します。
+
+| アクティビティ | SoX コマンド |
+|---------|-------------|
+| オーディオ ファイルの形式を確認します。 | `sox --i <filename>` |
+| オーディオ ファイルを、シングルチャネル、16 ビット、16 KHz に変換します。 | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
+
 ## <a name="next-steps"></a>次のステップ
 
 * [データを検査する](how-to-custom-speech-inspect-data.md)
 * [データを評価する](how-to-custom-speech-evaluate-data.md)
-* [モデルをトレーニングする](how-to-custom-speech-train-model.md)
+* [カスタム モデルをトレーニングする](how-to-custom-speech-train-model.md)
 * [モデルをデプロイする](./how-to-custom-speech-train-model.md)

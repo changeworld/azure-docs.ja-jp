@@ -10,12 +10,12 @@ ms.author: ravokkar
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0a7ec2f4f8fdf631a6bc5096296275291ec41751
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d13bdc5bb98159d5a267a821f0431bed622e5e11
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94967127"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728831"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した DPS との通信
 
@@ -70,8 +70,8 @@ MQTT プロトコルを直接使用するには、クライアントは TLS 1.2 
 
 DPS 経由でデバイスを登録するには、デバイスで `$dps/registrations/res/#` を **トピック フィルター** として使用してサブスクライブする必要があります。 トピック フィルター内の複数レベルのワイルドカード `#` は、デバイスがトピック名の追加プロパティを受信できるようにするためにのみ使用されます。 DPS では、`#` または `?` ワイルドカードを使用してサブトピックをフィルター処理することはできません。 DPS はパブリッシャーとサブスクライバー間の汎用メッセージング ブローカーではないため、ドキュメント化されたトピック名とトピック フィルターのみがサポートされます。
 
-デバイスでは、`$dps/registrations/PUT/iotdps-register/?$rid={request_id}` を **トピック名** として使用して、DPS に登録メッセージを発行する必要があります。 ペイロードには、JSON 形式の[デバイス登録](/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration)オブジェクトを含める必要があります。
-成功するシナリオでは、`$dps/registrations/res/202/?$rid={request_id}&retry-after=x` トピック名に対する応答がデバイスで受信されます。ここで、x は再試行後の値 (秒) です。 応答のペイロードには、[RegistrationOperationStatus](/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) オブジェクトが JSON 形式で含まれます。
+デバイスでは、`$dps/registrations/PUT/iotdps-register/?$rid={request_id}` を **トピック名** として使用して、DPS に登録メッセージを発行する必要があります。 ペイロードには、JSON 形式の[デバイス登録](/rest/api/iot-dps/device/runtime-registration/register-device)オブジェクトを含める必要があります。
+成功するシナリオでは、`$dps/registrations/res/202/?$rid={request_id}&retry-after=x` トピック名に対する応答がデバイスで受信されます。ここで、x は再試行後の値 (秒) です。 応答のペイロードには、[RegistrationOperationStatus](/rest/api/iot-dps/device/runtime-registration/register-device#registrationoperationstatus) オブジェクトが JSON 形式で含まれます。
 
 ## <a name="polling-for-registration-operation-status"></a>登録操作の状態のポーリング
 

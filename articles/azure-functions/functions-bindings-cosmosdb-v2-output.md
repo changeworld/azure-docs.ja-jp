@@ -3,15 +3,15 @@ title: Functions 2.x 以降に対する Azure Cosmos DB の出力バインド
 description: Azure Functions で Azure Cosmos DB の出力バインドを使用する方法について説明します。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 09/01/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 779b66412319ec8422977a7e56570a4d16f89aa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8c2ba6f93d788d377cdb21beb157ea55a066b98
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98071546"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999798"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 以降に対する Azure Cosmos DB の出力バインド
 
@@ -26,6 +26,7 @@ Azure Cosmos DB 出力バインドを使用すると、SQL API を使って Azur
 このセクションには、次の例が含まれています。
 
 * [キュー トリガー、1 つのドキュメントの書き込み](#queue-trigger-write-one-doc-c)
+* [キュー トリガー、1 つのドキュメントの書き込み (v4 拡張機能)](#queue-trigger-write-one-doc-v4-c)
 * [キュー トリガー、IAsyncCollector を使用したドキュメントの書き込み](#queue-trigger-write-docs-using-iasynccollector-c)
 
 例では、次のようなシンプルな `ToDoItem` タイプを参照します。
@@ -64,6 +65,40 @@ namespace CosmosDBSamplesV2
                 databaseName: "ToDoItems",
                 collectionName: "Items",
                 ConnectionStringSetting = "CosmosDBConnection")]out dynamic document,
+            ILogger log)
+        {
+            document = new { Description = queueMessage, id = Guid.NewGuid() };
+
+            log.LogInformation($"C# Queue trigger function inserted one row");
+            log.LogInformation($"Description={queueMessage}");
+        }
+    }
+}
+```
+
+<a id="queue-trigger-write-one-doc-v4-c"></a>
+
+### <a name="queue-trigger-write-one-doc-v4-extension"></a>キュー トリガー、1 つのドキュメントの書き込み (v4 拡張機能)
+
+Cosmos DB [拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) 以降を使用しているアプリには、以下に示すように、さまざまな属性プロパティがあります。 次の例は、キュー ストレージからのメッセージで提供されるデータを使用して、ドキュメントをデータベースに追加する[ C# 関数](functions-dotnet-class-library.md)を示しています。
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
+using System;
+
+namespace CosmosDBSamplesV2
+{
+    public static class WriteOneDoc
+    {
+        [FunctionName("WriteOneDoc")]
+        public static void Run(
+            [QueueTrigger("todoqueueforwrite")] string queueMessage,
+            [CosmosDB(
+                databaseName: "ToDoItems",
+                containerName: "Items",
+                Connection = "CosmosDBConnection")]out dynamic document,
             ILogger log)
         {
             document = new { Description = queueMessage, id = Guid.NewGuid() };
@@ -594,6 +629,18 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
     }
 ```
 
+[拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) 内の設定およびプロパティの中には、削除および名前が変更されているものがあります。 この変更の詳細については、[出力 - 構成](#configuration)に関するセクションをご覧ください。 メソッド シグネチャでの `CosmosDB` 属性の例を次に示します。
+
+```csharp
+    [FunctionName("QueueToCosmosDB")]
+    public static void Run(
+      [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem,
+      [CosmosDB("database", "container", Connection = "CosmosDBConnectionSetting")] out dynamic document)
+    {
+        ...
+    }
+```
+
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 属性は、C# スクリプトではサポートされていません。
@@ -626,15 +673,17 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 |**direction**     | 該当なし | `out` に設定する必要があります。         |
 |**name**     | 該当なし | 関数のドキュメントを表すバインド パラメーターの名前。  |
 |**databaseName** | **DatabaseName**|ドキュメントが作成されたコレクションを含むデータベース。     |
-|**collectionName** |**CollectionName**  | ドキュメントが作成されたコレクションの名前。 |
+|**collectionName** <br> または <br> **containerName** |**CollectionName** <br> または <br> **ContainerName** | ドキュメントが作成されたコレクションの名前。 <br><br> [拡張機能バージョン 4.x] では、このプロパティは `ContainerName` と呼ばれます。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | コレクションが存在しないときに作成するかどうかを示すブール値。 既定値は *false* です。新しいコレクションは予約済みのスループットで作成され、これが価格に影響を及ぼすためです。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。  |
 |**partitionKey**|**PartitionKey** |`CreateIfNotExists` が true の場合に、作成されるコレクションのパーティション キー パスを定義します。|
-|**collectionThroughput**|**CollectionThroughput**| `CreateIfNotExists` が true の場合に、作成されるコレクションの[スループット](../cosmos-db/set-throughput.md)を定義します。|
-|**connectionStringSetting**    |**ConnectionStringSetting** |Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
+|**collectionThroughput** <br> または <br> **containerThroughput**|**CollectionThroughput** <br> または <br> **ContainerThroughput**| `CreateIfNotExists` が true の場合に、作成されるコレクションの[スループット](../cosmos-db/set-throughput.md)を定義します。 <br><br> [拡張機能バージョン 4.x] では、このプロパティは `ContainerThroughput` と呼ばれます。 |
+|**connectionStringSetting** <br> または <br> **connection**   |**ConnectionStringSetting** <br> または <br> **接続**| Azure Cosmos DB アカウントへの接続方法を指定するアプリの設定または設定のコレクションの名前。 「[接続](#connections)」を参照してください。 <br><br> [拡張機能バージョン 4.x] では、このプロパティは `connection` と呼ばれます。 |
 |**preferredLocations**| **PreferredLocations**| (省略可能) Azure Cosmos DB サービスの geo レプリケートされたデータベース アカウントの優先される場所 (リージョン) を定義します。 複数の値はコンマで区切る必要があります。 たとえば、"East US,South Central US,North Europe" などです。 |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| (省略可能) `PreferredLocations` と共に `true` に設定すると、Azure Cosmos DB サービスで[マルチ リージョン書き込み](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)を利用できます。 |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| (省略可能) `PreferredLocations` と共に `true` に設定すると、Azure Cosmos DB サービスで[マルチ リージョン書き込み](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)を利用できます。 <br><br> このプロパティは、[拡張機能バージョン 4.x] では使用できません。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+[!INCLUDE [functions-cosmosdb-connections](../../includes/functions-cosmosdb-connections.md)]
 
 ## <a name="usage"></a>使用法
 
@@ -653,7 +702,7 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-このセクションでは、バージョン 2.x でこのバインディングに使用可能なグローバル構成設定について説明します。 バージョン 2.x でのグローバル構成設定の詳細については、[Azure Functions バージョン 2.x の host.json のリファレンス](functions-host-json.md)を参照してください。
+[!INCLUDE [functions-host-json-section-intro](../../includes/functions-host-json-section-intro.md)]
 
 ```json
 {
@@ -670,13 +719,15 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 }
 ```
 
-|プロパティ  |Default | 説明 |
-|---------|---------|---------|
+|プロパティ  |Default |説明 |
+|----------|--------|------------|
 |GatewayMode|Gateway|Azure Cosmos DB サービスに接続する際に関数で使用される接続モード。 オプションは `Direct` と `Gateway` です|
-|Protocol|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。  両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください|
-|leasePrefix|該当なし|アプリ内のすべての関数で使用するプレフィックスをリースします。|
+|Protocol|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。 両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください <br><br> この設定は、[拡張機能バージョン 4.x] では使用できません。 |
+|leasePrefix|該当なし|アプリ内のすべての関数で使用するプレフィックスをリースします。 <br><br> この設定は、[拡張機能バージョン 4.x] では使用できません。|
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB ドキュメントが作成または変更されたときに関数を実行する (トリガー)](./functions-bindings-cosmosdb-v2-trigger.md)
 - [Azure Cosmos DB ドキュメントを読み込む (入力バインド)](./functions-bindings-cosmosdb-v2-input.md)
+
+[バージョン 4.x の拡張機能]: ./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher

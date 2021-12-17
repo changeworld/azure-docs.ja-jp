@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 05/07/2020
-  ms.openlocfilehash: f7f48c8b81b1da48737d01efce3237e65154232e
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.openlocfilehash: 730f5db7ed0aec5cb09d3c031af34dc718b9fe7e
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102506992"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124782349"
 landingContent:
 - title: Load Balancer について
   linkLists:
@@ -32,6 +32,10 @@ landingContent:
       url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
     - text: Load Balancer の SKU
       url: skus.md
+  - linkListType: learn
+    links:
+    - text: Azure Load Balancer を使用してアプリケーションのスケーラビリティと回復性を向上させる
+      url: /learn/modules/improve-app-scalability-resiliency-with-load-balancer/
 - title: はじめに
   linkLists:
   - linkListType: quickstart
@@ -43,7 +47,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Standard Load Balancer を使用して可用性ゾーン間で VM の負荷を分散する
-      url: tutorial-load-balancer-standard-public-zone-redundant-portal.md
+      url: ./quickstart-load-balancer-standard-public-portal.md
     - text: Azure Load Balancer でポート転送を構成する
       url: tutorial-load-balancer-port-forwarding-portal.md
 - title: 機能とオプションの管理
@@ -113,4 +117,4 @@ landingContent:
     - text: ARM テンプレート
       url: /azure/templates/microsoft.network/loadbalancers#quickstart-templates
     - text: よく寄せられる Load Balancer の質問
-      url: load-balancer-faqs.md
+      url: load-balancer-faqs.yml

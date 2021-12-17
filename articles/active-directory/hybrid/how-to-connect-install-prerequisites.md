@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 06/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 108f81be678eb666b6f79ebbecc93f7bc88dc1d6
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d198a444cfb2c37f4bff815561c5a6dcd95d4a4e
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107913"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135077"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 この記事では、Azure Active Directory (Azure AD) Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -42,7 +42,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 
 ### <a name="on-premises-active-directory"></a>オンプレミスの Active Directory
 * Active Directory スキーマのバージョンとフォレストの機能レベルは、Windows Server 2003 以降である必要があります。 ドメイン コントローラーは、スキーマのバージョンとフォレストレベルの要件が満たされていれば、任意のバージョンを実行できます。
-* "*パスワード ライトバック*" 機能を使用する場合、ドメイン コントローラーは Windows Server 2012 以降にインストールされている必要があります。
+* "*パスワード ライトバック*" 機能を使用する場合は、ドメイン コントローラーが Windows Server 2016 以降にインストールされている必要があります。
 * Azure AD で使用されるドメイン コントローラーは、書き込み可能である必要があります。 読み取り専用ドメイン コントローラー (RODC) の使用は *サポートされておらず*、Azure AD Connect は書き込みリダイレクトに従いません。
 * "ドット形式" (名前にピリオド "." が含まれる) を使用した NetBIOS 名を使用するオンプレミスのフォレストまたはドメインは *使用できません*。
 * [Active Directory のごみ箱を有効にする](how-to-connect-sync-recycle-bin.md)ことをお勧めします。
@@ -64,7 +64,7 @@ Active Directory 環境のセキュリティ保護の詳細については、[Ac
 
 #### <a name="installation-prerequisites"></a>設置の前提条件
 
-- Azure AD Connect は、ドメインに参加している Windows Server 2012 以降にインストールする必要があります。 
+- Azure AD Connect は、ドメインに参加している Windows Server 2016 以降にインストールする必要があります。 
 - Small Business Server または 2019 より前の Windows Server Essentials には、Azure AD Connect をインストールできません (Windows Server Essentials 2019 はサポートされます)。 サーバーは Windows Server Standard 以上を使用する必要があります。 
 - Azure AD Connect サーバーには、完全な GUI がインストールされている必要があります。 Windows Server Core への Azure AD Connect のインストールはサポートされていません。 
 - Azure AD Connect ウィザードを使用して Active Directory フェデレーション サービス (AD FS) 構成を管理する場合、Azure AD Connect サーバーで PowerShell トランスクリプション グループ ポリシーを有効にすることはできません。 Azure AD Connect ウィザードを使用して同期構成を管理する場合は、PowerShell トランスクリプションを有効にすることができます。 
@@ -72,10 +72,11 @@ Active Directory 環境のセキュリティ保護の詳細については、[Ac
     - AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。 リモート インストールを行うには、これらのサーバーで Windows リモート管理を有効にする必要があります。 
     - TLS/SSL 証明書を構成する必要があります。 詳細については、[AD FS の SSL/TLS プロトコルおよび暗号スイートの管理](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)および [AD FS での SSL 証明書の管理](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)に関する記事を参照してください。
     - 名前解決を構成する必要があります。 
+- Azure AD Connect と Azure AD の間のトラフィックを解読して分析することはサポートされていません。 それを行うとサービスが中断される可能性があります。
 - 全体管理者が MFA を有効にしている場合、URL https://secure.aadcdn.microsoftonline-p.com は信頼済みサイトの一覧に *なければなりません*。 MFA チャレンジを求められたときに、この URL がまだ追加されていない場合は、信頼済みサイトの一覧に追加するように促されます。 信頼済みサイトへの追加には、Internet Explorer を使用できます。
 - 同期に Azure AD Connect Health を使用する予定の場合は、Azure AD Connect Health の前提条件も満たされていることを確認してください。 詳細については、「[Azure AD Connect Health エージェントのインストール](how-to-connect-health-agent-install.md)」を参照してください。
 
-#### <a name="harden-your-azure-ad-connect-server"></a>Azure AD Connect サーバーを強化する 
+### <a name="harden-your-azure-ad-connect-server"></a>Azure AD Connect サーバーを強化する 
 Azure AD Connect サーバーを強化して、お客様の IT 環境に含まれるこの重要なコンポーネントに対する、セキュリティの攻撃面を縮小することをお勧めします。 これらの推奨事項に従うことで、組織に対するセキュリティ上のリスクを軽減することができます。
 
 - Azure AD Connect は、ドメイン コントローラーやその他の階層 0 のリソースと同じように扱います。 詳細については、「[Active Directory 管理階層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)」を参照してください。
@@ -86,10 +87,11 @@ Azure AD Connect サーバーを強化して、お客様の IT 環境に含ま�
 - すべてのマシンに一意のローカル管理者パスワードが構成されていることを確認します。 詳細については、[ローカル管理者パスワード ソリューション (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) に関する記事を参照してください。これを使用することで、ワークステーションおよびサーバーごとに一意のランダム パスワードを構成し、ACL によって保護された Active Directory に保存することができます。 資格のある許可されているユーザーのみが、これらのローカル管理者アカウントのパスワードの読み取りまたはリセットの要求を行うことができます。 [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=46899)から、ワークステーションとサーバーで使用する LAPS を取得できます。 LAPS と 特権アクセス ワークステーション (PAW) を使用して環境を運用するための追加のガイダンスについては、「[クリーン ソースの原則に基づく運用基準](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)」を参照してください。 
 - 組織の情報システムへの特権アクセスを持つすべての担当者に対して、専用の[特権アクセス ワークステーション](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)を実装します。 
 - Active Directory 環境の攻撃面を減らすには、これらの[追加のガイドライン](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)に従います。
-
+- [フェデレーション構成の変更の監視](how-to-connect-monitor-federation-changes.md)に関するページに従って、Idp と Azure AD の間で確立された信頼に対する変更を監視するためのアラートを設定します。 
+- Azure AD または AD で特権アクセスが付与されているすべてのユーザーに対して多要素認証 (MFA) を有効にします。 AADConnect を使用したときのセキュリティ上の問題の 1 つに、攻撃者が Azure AD Connect サーバーを制御できた場合、Azure AD 内のユーザーも操作できてしまうという点があります。 攻撃者がこれらの機能を使用して Azure AD アカウントを継承できないようにするために、MFA では、攻撃者が Azure AD Connect を使用してユーザーのパスワードのリセットなどができた場合でも、2 番目の要素を回避できないように保護します。
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect で使用される SQL Server
-* Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされています。 SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。 さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定します。 SQL Server のインストールの種類により、[Azure AD Connect のパフォーマンス](./plan-connect-performance-factors.md#sql-database-factors)に影響することがあります。
+* Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 既定では、SQL Server 2019 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされます。 SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。 さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定します。 SQL Server のインストールの種類により、[Azure AD Connect のパフォーマンス](./plan-connect-performance-factors.md#sql-database-factors)に影響することがあります。
 * SQL Server の別のインストールを使用する場合は、次の要件が適用されます。
   * Azure AD Connect では、SQL Server 2012 (最新の Service Pack 付き) から SQL Server 2019 までのすべてのバージョンがサポートされています。 Azure SQL Database は、データベースとしては *サポートされていません*。
   * 大文字と小文字が区別されない SQL 照合順序を使用する必要があります。 これらの照合順序は、名前に含まれる \_CI_ で識別します。 大文字と小文字が区別される照合順序 (名前に含まれる \_CS_ で識別) は *サポートされていません*。
@@ -106,7 +108,7 @@ Azure AD Connect サーバーを強化して、お客様の IT 環境に含ま�
 * お使いのイントラネット環境でファイアウォールを使用していて、Azure AD Connect サーバーとドメイン コントローラーの間でポートを開く必要がある場合の詳細については、[Azure AD Connect のポート](reference-connect-ports.md)に関する記事を参照してください。
 * プロキシまたはファイアウォールによってアクセスできる URL が制限されている場合は、「[Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL を開く必要があります。 「[ファイアウォールまたはプロキシ サーバーのセーフリストに Azure portal の URL を追加する](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud)」も参照してください。
   * ドイツで Microsoft Cloud を使用する場合、または Microsoft Azure Government クラウドを使用する場合は、[Azure AD Connect 同期サービス インスタンスの考慮事項](reference-connect-instances.md)に関するページで URL を確認してください。
-* Azure AD Connect (バージョン 1.1.614.0 以降) では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.2 が使用されます。 基盤となるオペレーティング システムで TLS 1.2 が使用できない場合は、1 つ前のプロトコル (TLS 1.1 と TLS 1.0) に段階的にフォールバックされます。
+* Azure AD Connect (バージョン 1.1.614.0 以降) では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.2 が使用されます。 基盤となるオペレーティング システムで TLS 1.2 が使用できない場合は、1 つ前のプロトコル (TLS 1.1 と TLS 1.0) に段階的にフォールバックされます。 Azure AD Connect バージョン 2.0 以降。 TLS 1.0 と 1.1 はサポートされなくなっており、TLS 1.2 が有効になっていないと、インストールは失敗します。
 * バージョン 1.1.614.0 未満の Azure AD Connect では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.0 が使用されます。 TLS 1.2 に変更するには、「[Azure AD Connect 用に TLS 1.2 を有効にする](#enable-tls-12-for-azure-ad-connect)」の手順に従います。
 * 送信プロキシを使用してインターネットに接続する場合は、**C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** ファイルに次の設定を追加して、インストール ウィザードと Azure AD Connect 同期がインターネットと Azure AD に接続できるようにする必要があります。 このテキストは、ファイルの末尾に入力する必要があります。 このコードの *&lt;PROXYADDRESS&gt;* は実際のプロキシ IP アドレスまたはホスト名を表します。
 
@@ -147,15 +149,7 @@ Azure AD Connect サーバーを強化して、お客様の IT 環境に含ま�
 
 ## <a name="component-prerequisites"></a>コンポーネントの前提条件
 ### <a name="powershell-and-net-framework"></a>PowerShell と .NET Framework
-Azure AD Connect は、Microsoft PowerShell と .NET 4.5.1 に依存しています。 これ以降のバージョンがサーバーにインストールされている必要があります。 Windows Server のバージョンに応じて、次の操作を実行します。
-
-* Windows Server 2012 R2
-  * Microsoft PowerShell は既定でインストールされています。 必要な操作はありません。
-  * .NET Framework 4.5.1 以降のリリースは、Windows Update によって提供されます。 コントロール パネルで、Windows Server に最新の更新プログラムがインストールされていることを確認します。
-* Windows Server 2012
-  * Microsoft PowerShell の最新バージョンは、[Microsoft ダウンロード センター](https://www.microsoft.com/downloads)の Windows Management Framework 4.0 で入手できます。
-  * .NET Framework 4.5.1 以降のリリースは、[Microsoft ダウンロード センター](https://www.microsoft.com/downloads)で入手できます。
-
+Azure AD Connect は、Microsoft PowerShell 5.0 と .NET Framework 4.5.1 に依存しています。 これ以降のバージョンがサーバーにインストールされている必要があります。 
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Azure AD Connect 用に TLS 1.2 を有効にする
 バージョン 1.1.614.0 未満の Azure AD Connect では、同期エンジン サーバーと Azure AD との間の通信の暗号化に既定で TLS 1.0 が使用されます。 サーバーで TLS 1.2 を既定で使用するように .NET アプリケーションを構成できます。 TLS 1.2 について詳しくは、[Microsoft セキュリティ アドバイザリ 2960358](/security-updates/SecurityAdvisories/2015/2960358) に関するページを参照してください。
@@ -218,10 +212,10 @@ Azure AD Connect を使用して AD FS または Web アプリケーション �
 Azure AD Connect により、Azure AD Connect がインストールされているサーバーに次のコンポーネントがインストールされます。 この一覧は、基本的な高速インストール用です。 **[同期サービスのインストール]** ページで異なる SQL Server を使用することを選択した場合、SQL Express LocalDB はローカルにインストールされません。
 
 * Azure AD Connect Health
-* Microsoft SQL Server 2012 のコマンド ライン ユーティリティ
-* Microsoft SQL Server 2012 Express LocalDB
-* Microsoft SQL Server 2012 Native Client
-* Microsoft Visual C++ 2013 再配布パッケージ
+* Microsoft SQL Server 2019 Command Line Utilities
+* Microsoft SQL Server 2019 Express LocalDB
+* Microsoft SQL Server 2019 Native Client
+* Microsoft Visual C++ 14 再配布パッケージ
 
 ## <a name="hardware-requirements-for-azure-ad-connect"></a>Azure AD Connect のハードウェア要件
 次の表は、Azure AD Connect Sync マシンの最小要件を示しています。
@@ -231,7 +225,7 @@ Azure AD Connect により、Azure AD Connect がインストールされてい�
 | 10,000 未満 |1.6 GHz |4 GB |70 GB |
 | 10,000 ～ 50,000 |1.6 GHz |4 GB |70 GB |
 | 50,000 ～ 100,000 |1.6 GHz |16 GB |100 GB |
-| オブジェクトが 100,000 個以上の場合は完全バージョンの SQL Server が必要 | | | |
+| オブジェクトが 100,000 個以上の場合は完全バージョンの SQL Server が必要。 パフォーマンス上の理由から、ローカルでのインストールを推奨。 | | | |
 | 100,000 ～ 300,000 |1.6 GHz |32 GB |300 GB |
 | 300,000 ～ 600,000 |1.6 GHz |32 GB |450 GB |
 | 600,000 を超過 |1.6 GHz |32 GB |500 GB |

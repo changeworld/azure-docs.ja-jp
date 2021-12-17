@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: 518843e688da7f940b36e77aee2667b4984ea5a3
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 79be8f9d98816690171476d9c5764884e1b4e0f7
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567354"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861203"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プール用の PolyBase データ読み込み戦略を設計する
 
@@ -84,8 +84,8 @@ Azure Storage にデータを配置するには、[Azure Blob Storage](../../sto
 Azure Storage へのデータの移動で使用できるツールやサービスは、次のとおりです。
 
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) サービス - ネットワークのスループット、パフォーマンス、予測可能性を向上させます。 ExpressRoute は、専用プライベート接続を通してデータを Azure にルーティングするサービスです。 ExpressRoute 接続では、パブリック インターネットを通してデータをルーティングすることはありません。 ExpressRoute 接続は、パブリック インターネットを通る一般的な接続に比べて安全性と信頼性が高く、待機時間も短く、高速です。
-- [AZCopy ユーティリティ](../../storage/common/storage-use-azcopy-v10.md) - パブリック インターネットを通してデータを Azure Storage に移動します。 このユーティリティは、データ サイズが 10 TB より小さい場合に機能します。 AZCopy を使用して読み込みを定期的に実行するには、ネットワーク速度をテストして、許容可能かどうかを確認してください。
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。 専用 SQL プールで Data Factory を使用する方法については、[専用 SQL プールへのデータの読み込み](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+- [AzCopy ユーティリティ](../../storage/common/storage-use-azcopy-v10.md) - パブリック インターネットを通してデータを Azure Storage に移動します。 このユーティリティは、データ サイズが 10 TB より小さい場合に機能します。 AzCopy を使用して読み込みを定期的に実行するには、ネットワーク速度をテストして、許容可能かどうかを確認してください。
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。 専用 SQL プールで Data Factory を使用する方法については、[専用 SQL プールへのデータの読み込み](../../data-factory/load-azure-sql-data-warehouse.md)に関するページを参照してください。
 
 ## <a name="3-prepare-the-data-for-loading"></a>3.読み込むデータを準備する
 
@@ -120,7 +120,7 @@ PolyBase を使用してデータを読み込むには、次のいずれかの�
 
 - [T-SQL を使用した PolyBase](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) - データが Azure Blob Storage または Azure Data Lake Store 内にある場合に最適です。 読み込みプロセスを細かく制御できますが、外部データ オブジェクトの定義も必要となります。 その他の方法では、外部データ オブジェクトは、ソース テーブルを移行先テーブルにマップするときにバック グラウンドで定義されます。  T-SQL の読み込みを調整するには、Azure Data Factory、SSIS、または Azure Functions を使用します。
 - [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) は、ソースデータが SQL Server にある場合に適しています。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。
-- [Azure Data Factory (ADF) を使用した PolyBase](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) - もう 1 つのオーケストレーション ツールです。  このツールはパイプラインを定義し、ジョブのスケジュールを設定します。
+- [Azure Data Factory (ADF) を使用した PolyBase](../../data-factory/load-azure-sql-data-warehouse.md) - もう 1 つのオーケストレーション ツールです。  このツールはパイプラインを定義し、ジョブのスケジュールを設定します。
 - [Azure Databricks を使用した PolyBase](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) - PolyBase を使用して、Azure Synapse Analytic テーブルから Databricks データ フレームにデータを転送することや、Databricks データ フレームから Azure Synapse Analytics テーブルにデータを書き込むことができます。
 
 ### <a name="non-polybase-loading-options"></a>PolyBase 以外の読み込みオプション
@@ -139,7 +139,7 @@ ETL プロセスを設計する際は、小規模のテスト サンプルでプ
 
 ## <a name="partner-loading-solutions"></a>パートナー読み込みソリューション
 
-パートナーの多くが読み込みソリューションを提供しています。 詳細については、[ソリューション パートナー](../sql-data-warehouse/sql-data-warehouse-partner-business-intelligence.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)の一覧をご覧ください。
+パートナーの多くが読み込みソリューションを提供しています。 詳細については、[ソリューション パートナー](../sql-data-warehouse/sql-data-warehouse-partner-business-intelligence.md?context=/azure/synapse-analytics/context/context)の一覧をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

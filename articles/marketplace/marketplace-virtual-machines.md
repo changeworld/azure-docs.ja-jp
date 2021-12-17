@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/19/2020
-ms.openlocfilehash: 6e391ca79c9dcf9ab533a7e67961c654b5f8630b
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 10/26/2021
+ms.openlocfilehash: 56b2ce9b8b392a25c50ff4ea2d47da0237363a53
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103370"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719246"
 ---
 # <a name="plan-a-virtual-machine-offer"></a>仮想マシン オファーの計画
 
@@ -21,9 +21,12 @@ ms.locfileid: "107103370"
 
 開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成](create-account.md)し、アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
+> [!TIP]
+> コマーシャル マーケットプレースでの購入の顧客のビューを表示するには、「[Azure Marketplace での購入](/marketplace/azure-purchasing-invoicing)」を参照してください。
+
 ### <a name="technical-fundamentals"></a>技術的基礎
 
-オファーの設計、作成、テストのプロセスには時間がかかり、Azure プラットフォームと、オファーの作成に使用される技術の両方に関する専門知識が必要です。 エンジニアリング チームは、[Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)、[Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)、[Azure ネットワーク](https://azure.microsoft.com/services/?filter=networking#networking)に関する実用的な知識を持ち、[Azure アプリケーションの設計とアーキテクチャ](https://azure.microsoft.com/solutions/architecture/)に習熟している必要があります。 次の追加のテクニカル リソースを参照してください。 
+オファーの設計、作成、テストのプロセスには時間がかかり、Azure プラットフォームと、オファーの作成に使用される技術の両方に関する専門知識が必要です。 エンジニアリング チームは、[Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)、[Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)、[Azure ネットワーク](https://azure.microsoft.com/services/?filter=networking#networking)に関する実用的な知識を持ち、[Azure アプリケーションの設計とアーキテクチャ](https://azure.microsoft.com/solutions/architecture/)に習熟している必要があります。 次の追加のテクニカル リソースを参照してください。
 
 - チュートリアル
   - [Linux VM](../virtual-machines/linux/tutorial-manage-vm.md)
@@ -55,16 +58,11 @@ VM には、次の 2 つのコンポーネントが含まれています。
     > [!NOTE]
     > 使用するオペレーティング システムに関係なく、ソリューションに必要な最小数のデータ ディスクのみを追加します。 お客様はデプロイ時にイメージの一部であるディスクを削除することはできませんが、デプロイ中またはデプロイ後にいつでもディスクを追加できます。
 
-技術資産を準備する手順の詳細については、[承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-create-using-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-create-using-own-image.md)に関するページを参照してください。
+技術資産を準備する手順の詳細については、[承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-use-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-use-own-image.md)に関するページを参照してください。
 
 ## <a name="preview-audience"></a>プレビュー対象ユーザー
 
-プレビュー対象ユーザーは、Azure Marketplace で公開される前に VM オファーにアクセスして、公開前にエンドツーエンドの機能をテストできます。 **[プレビュー対象ユーザー]** ページで、限定されたプレビュー対象ユーザーを定義できます。 
-
-> [!NOTE]
-> プレビュー対象ユーザーはプライベート プランとは異なります。 プライベート プランは、選択された特定の対象ユーザーのみが利用できます。 これにより、カスタム プランについて、特定の顧客と協議できます。 詳細については、次のセクションを参照してください。参照してください。
-
-Microsoft アカウント (MSA) または Azure Active Directory (Azure AD) の電子メール アドレスに招待状を送信できます。 手動で最大 10 個のメール アドレスを追加するか、.csv ファイルを使用して最大 20 個をインポートします。 オファーが既に公開されている場合も、オファーの変更や更新をテストするためにプレビュー対象ユーザーを定義することができます。
+[!INCLUDE [Test drives section](includes/preview-audience.md)]
 
 ## <a name="plans-and-pricing"></a>プランと価格
 
@@ -77,7 +75,7 @@ VM は商取引が可能で、従量課金制またはライセンス持ち込�
 
 ### <a name="licensing-options"></a>ライセンス オプション
 
-新しい VM オファーを公開する準備を行う際、選択するライセンス オプションを決定する必要があります。 これにより、後でパートナー センターでオファーを作成する際に提供する必要がある追加情報が決まります。
+新しいオファーを公開する準備を行う際、選択するライセンス オプションを決定する必要があります。 これにより、後でパートナー センターでオファーを作成する際に提供する必要がある追加情報が決まります。
 
 VM オファーで使用可能なライセンス オプションは次のとおりです。
 
@@ -104,25 +102,18 @@ VM オファーで使用可能なライセンス オプションは次のとお�
 
 ## <a name="test-drive"></a>体験版
 
-VM の体験版を有効にすることを選択できます。 体験版を使用すると、顧客は、一定期間、構成済み環境にアクセスできます。 どの公開オプションでも体験版を有効にできますが、この機能には追加の要件があります。 体験版の詳細については、「[体験版とは](what-is-test-drive.md)」を参照してください。 さまざまな種類の体験版の構成については、「[体験版の技術的な構成](test-drive-technical-configuration.md)」を参照してください。
+[!INCLUDE [Test drives section](includes/test-drives.md)]
 
-> [!TIP]
-> 体験版は、[無料試用版](plans-pricing.md#free-trials)とは異なります。 体験版、無料試用版、またはその両方を提供できます。 これらは両方とも、ソリューションを一定期間、顧客に提供します。 ただし、体験版には、実際の実装シナリオの中で製品の主な機能や利点を体験できる実践的なセルフガイド ツアーも含まれます。
+今すぐ VM オファーの体験版について詳しく知りたい場合は、「[VM 体験版の構成](azure-vm-test-drive.md)」を参照してください。
 
 ## <a name="customer-leads"></a>潜在顧客
 
-オファーをカスタマー リレーションシップ マネジメント (CRM) システムに接続して、顧客情報を収集する必要があります。 顧客は、自分の情報を共有する許可を求められます。 これらの顧客の詳細は、オファーの名前と ID のほか、顧客がオファーを見つけたオンライン ストアと共に、お客様が構成した CRM システムに送信されます。 コマーシャル マーケットプレースでは、Azure テーブルを使用したり、Power Automate を使用して HTTPS エンドポイントを構成したりするためのオプションと共に、さまざまな CRM システムがサポートされています。
-
-CRM の接続は、オファーの作成時または作成後にいつでも追加または変更できます。 詳細なガイダンスについては、「[コマーシャル マーケットプレース オファーからの潜在顧客](partner-center-portal/commercial-marketplace-get-customer-leads.md)」を参照してください。
+パートナー センターを使用してオファーをコマーシャル マーケットプレースに発行する場合、それを顧客関係管理 (CRM) システムに接続します。 これにより、自社の製品に顧客が関心を示したり、製品を使用したりした場合はすぐにその顧客の連絡先情報を受信できるようになります。 体験版を有効にする場合 (前のセクションを参照してください)、CRM への接続は必須です。 そうでない場合は、CRM への接続は任意です。
 
 ## <a name="legal-contracts"></a>法的契約
 
-顧客の調達プロセスを簡素化し、ソフトウェア ベンダーの法務の複雑さを軽減するため、Microsoft では、コマーシャル マーケットプレースでオファーに使用できる標準契約を用意しています。 標準契約の下でソフトウェアを提供すると、顧客はそれを読んで一度承諾するだけで済み、提供元は独自の使用条件を作成する必要はありません。
-
-標準契約の使用を選択する場合、標準契約に、ユニバーサル修正条件を追加するオプションと、最大 10 個のカスタム修正を追加するオプションがあります。 また、標準契約ではなく、独自の使用条件を使用することもできます。 これらの詳細は、 **[プロパティ]** ページで管理します。 詳細については、「[Microsoft コマーシャル マーケットプレースの標準契約](standard-contract.md)」を参照してください。
-
-> [!NOTE]
-> コマーシャル マーケットプレースの標準契約を使用してオファーを公開した後に、独自のカスタム使用条件を使用することはできません。 これは、"または" のシナリオです。 ソリューションは、標準契約または独自の使用条件のいずれかの下で提供します。 標準契約の条件を変更する必要がある場合は、Standard Contract Amendments (標準契約の修正) を使用して変更することができます。
+[!INCLUDE [Legal contracts section](includes/legal-contracts-intro.md)]
+[!INCLUDE [Legal section for Standard contracts](includes/legal-contracts-standard.md)]
 
 ## <a name="cloud-solution-providers"></a>クラウド ソリューション プロバイダー
 
@@ -133,6 +124,6 @@ CRM の接続は、オファーの作成時または作成後にいつでも追�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Marketplace で仮想マシン オファーを作成する](azure-vm-create.md)
-- [承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-create-using-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-create-using-own-image.md)
+- [Azure Marketplace で仮想マシン オファーを作成する](azure-vm-offer-setup.md)
+- [承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-use-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-use-own-image.md)
 - [オファーの掲載のベスト プラクティス](gtm-offer-listing-best-practices.md)

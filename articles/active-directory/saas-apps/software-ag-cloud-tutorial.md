@@ -1,7 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Software AG Cloud の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Software AG Cloud の統合'
 description: Azure Active Directory と Software AG Cloud の間でシングル サインオンを構成する方法について説明します。
-services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.reviewer: CelesteDG
@@ -9,16 +8,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/09/2020
+ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: c2a2446da0e1ccf1b3dab88fe898b179291ddaba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25806847c677eaa3751eef55bf4859d65bf6da2c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98726141"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329086"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Software AG Cloud の統合
+# <a name="tutorial-azure-ad-sso-integration-with-software-ag-cloud"></a>チュートリアル: Azure AD SSO と Software AG Cloud の統合
 
 このチュートリアルでは、Software AG Cloud と Azure Active Directory (Azure AD) を統合する方法について説明します。 Software AG Cloud と Azure AD を統合すると、次のことが可能になります。
 
@@ -33,14 +32,17 @@ ms.locfileid: "98726141"
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Software AG Cloud でのシングル サインオン (SSO) が有効なサブスクリプション。
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Software AG Cloud では、**SP** Initiated SSO がサポートされます
-* Software AG Cloud では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Software AG Cloud では、**SP** Initiated SSO がサポートされます。
+* Software AG Cloud では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
-## <a name="adding-software-ag-cloud-from-the-gallery"></a>ギャラリーからの Software AG Cloud の追加
+## <a name="add-software-ag-cloud-from-the-gallery"></a>ギャラリーからの Software AG Cloud の追加
 
 Azure AD への Software AG Cloud の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Software AG Cloud を追加する必要があります。
 
@@ -50,7 +52,6 @@ Azure AD への Software AG Cloud の統合を構成するには、ギャラリ�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Software AG Cloud**」と入力します。
 1. 結果パネルで **[Software AG Cloud]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-software-ag-cloud"></a>Software AG Cloud の Azure AD SSO の構成とテスト
 
@@ -71,19 +72,19 @@ Software AG Cloud に対して Azure AD SSO を構成してテストするには
 
 1. Azure portal の **Software AG Cloud** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
-
-    1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
-
-        `https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
     1. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
 
-        `https://*.softwareag.cloud/auth/realms/TENANT-NAME`
+        `https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME`
+    
+    1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
+
+        `https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`    
 
         > [!NOTE]
         > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Software AG Cloud クライアント サポート チーム](mailto:support@softwareag.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -95,6 +96,7 @@ Software AG Cloud に対して Azure AD SSO を構成してテストするには
 1. **[Software AG Cloud のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -133,7 +135,7 @@ Software AG Cloud に対して Azure AD SSO を構成してテストするには
 
 1. 次のページで、以下の手順を実行します。
 
-    ![Software AG Cloud の構成の手順](./media/software-ag-cloud-tutorial/saml-1.png)
+    ![Software AG Cloud の構成の手順](./media/software-ag-cloud-tutorial/configuration.png)
 
     a. **[Identity provider display name]\(ID プロバイダーの表示名\)** ボックスに、名前 (例: `azure ad`) を入力します。
 
@@ -151,8 +153,8 @@ Software AG Cloud に対して Azure AD SSO を構成してテストするには
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-Software AG Cloud で Microsoft Azure がプロバイダーとして構成されていることを前提として、`www.softwareag.cloud` に移動し、[Login]\(ログイン\) ボタンをクリックして、環境名を入力します。 次の画面で、[Log in with <IDP NAME>]\(<IDP 名> でログイン\) リンクをクリックし、資格情報を入力します。 認証されると、ログインされ、Software AG Cloud のホーム ページが表示されます。
+Software AG Cloud で Microsoft Azure がプロバイダーとして構成されていることを前提として、`www.softwareag.cloud` に移動し、[Login]\(ログイン\) ボタンをクリックして、環境名を入力します。 次の画面で、[Log in with \<IDP NAME\>]\(<IDP 名> でログイン\) リンクをクリックし、資格情報を入力します。 認証されると、ログインされ、Software AG Cloud のホーム ページが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
-Software AG Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Software AG Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

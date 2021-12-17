@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: b5f2a86fb7c776436ea707ef293a66c033014c33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33385fa03d480c257789fd4cc139f9033e541a99
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021080"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754924"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Azure Automation Runbook を使用して StorSimple デバイスを管理する
 
@@ -206,7 +206,7 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
 
     ![click-new-runbook](./media/storsimple-8000-automation-azurerm-runbook/verify-runbook-created.png)
 
-8. Runbook を編集し、 **[テスト ウィンドウ]** をクリックします。 StorSimple デバイス マネージャー サービスの名前、StorSimple デバイスの名前、サブスクリプションなどのパラメーターを入力します。 テストを **開始** します。 実行が完了すると、レポートが生成されます。 詳細については、[Runbook のテスト方法](../automation/learn/automation-tutorial-runbook-textual-powershell.md#step-3---test-the-runbook)に関するセクションを参照してください。
+8. Runbook を編集し、 **[テスト ウィンドウ]** をクリックします。 StorSimple デバイス マネージャー サービスの名前、StorSimple デバイスの名前、サブスクリプションなどのパラメーターを入力します。 テストを **開始** します。 実行が完了すると、レポートが生成されます。 詳細については、[Runbook のテスト方法](../automation/learn/powershell-runbook-managed-identity.md)に関するセクションを参照してください。
 
     ![[テスト] ウィンドウのスクリーンショット。パラメーター値を入力し、テストを開始できます](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 

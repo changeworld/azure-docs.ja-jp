@@ -1,18 +1,19 @@
 ---
 title: セキュリティに関する考慮事項
 description: Azure Data Factory のデータ移動サービスがデータの保護を容易にするために使用する基本的なセキュリティ インフラストラクチャについて説明します。
-ms.author: abnarain
-author: nabhishek
+ms.author: susabat
+author: ssabat
 ms.service: data-factory
+ms.subservice: security
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/26/2020
-ms.openlocfilehash: 1a99fbd3d3163808a364e8b26e770563a901dc18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/22/2021
+ms.openlocfilehash: 51d6d496bbc982a37e37e731d743307cb1036c5b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371330"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847738"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 
@@ -21,7 +22,7 @@ ms.locfileid: "100371330"
 > * [Version 1](v1/data-factory-data-movement-security-considerations.md)
 > * [現在のバージョン](data-movement-security-considerations.md)
 
- [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+ [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のデータ移動サービスがデータの保護を容易にするために使用する基本的なセキュリティ インフラストラクチャについて説明します。 Data Factory 管理リソースは、Azure のセキュリティ インフラストラクチャ上に構築されており、Azure が提供する利用可能なすべてのセキュリティ対策を使用します。
 
@@ -112,7 +113,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 ハイブリッド シナリオでは、オンプレミス ネットワーク、仮想ネットワーク (Azure)、または仮想プライベート クラウド (Amazon) 内にセルフホステッド統合ランタイムをインストールする必要があります。 セルフホステッド統合ランタイムは、ローカルのデータ ストアにアクセスできる必要があります。 セルフホステッド統合ランタイムの詳細については、「[自己ホスト型統合ランタイムを作成し構成する方法](./create-self-hosted-integration-runtime.md)」を参照してください。 
 
-![セルフホステッド統合ランタイム チャネル](media/data-movement-security-considerations/data-management-gateway-channels.png)
+:::image type="content" source="media/data-movement-security-considerations/data-management-gateway-channels.png" alt-text="セルフホステッド統合ランタイム チャネル":::
 
 コマンド チャネルは、Data Factory のデータ移動サービスとセルフホステッド統合ランタイム間で通信できるようにします。 通信には、アクティビティに関連する情報が含まれます。 データ チャネルは、オンプレミス データ ストアとクラウド データ ストア間でデータを転送するために使用されます。    
 
@@ -130,10 +131,11 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイム上のリンクされたサービスの暗号化時に使用されるポート
 
-PowerShell では既定で、セキュリティで保護された通信にセルフホステッド統合ランタイムでコンピューター上のポート 8060 を使用します。 このポートは、必要に応じて変更できます。  
+既定では、イントラネットからのリモート アクセスが有効になっている場合、PowerShell はセキュリティで保護された通信のためにセルフホステッド統合ランタイムを備えたマシン上のポート 8060 を使用します。 このポートは、必要に応じて、Integration Runtime Configuration Manager の [設定] タブから変更できます。
 
-![ゲートウェイの HTTPS ポート](media/data-movement-security-considerations/https-port-for-gateway.png)
+:::image type="content" source="media/data-movement-security-considerations/integration-runtime-configuration-manager-settings.png" alt-text="Integration Runtime Configuration Manager の [設定] タブ":::
 
+:::image type="content" source="media/data-movement-security-considerations/https-port-for-gateway.png" alt-text="ゲートウェイの HTTPS ポート":::
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 
@@ -155,11 +157,11 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 #### <a name="express-route"></a>ExpressRoute
 
-![ExpressRoute とゲートウェイの使用](media/data-movement-security-considerations/express-route-for-gateway.png) 
+:::image type="content" source="media/data-movement-security-considerations/express-route-for-gateway.png" alt-text="ExpressRoute とゲートウェイの使用"::: 
 
 #### <a name="ipsec-vpn"></a>IPSec VPN
 
-![IPSec VPN とゲートウェイの使用](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
+:::image type="content" source="media/data-movement-security-considerations/ipsec-vpn-for-gateway.png" alt-text="IPSec VPN とゲートウェイの使用":::
 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a> IP アドレスに対するファイアウォールの構成と許可リストの設定
 
@@ -175,7 +177,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 次の表には、企業ファイアウォールの送信ポートとドメインの要件を示しています。
 
-[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
+[!INCLUDE [domain-and-outbound-port-requirements](includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE]
 > 各データ ソースで必要な場合は、企業ファイアウォール レベルでドメインに対するポートを管理するか、許可リストを設定することが必要になる場合があります。 この表では、例として Azure SQL Database、および Azure Synapse Analytics、Azure Data Lake Store のみを使用しています。   
@@ -186,7 +188,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | 「[Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する](encrypt-credentials-self-hosted-integration-runtime.md)」に説明されているように PowerShell 暗号化コマンドレットと、セルフホステッド統合ランタイムのオンプレミス データ ストアに安全に資格情報を設定するために資格情報マネージャー アプリケーションで必要です。 |
 
-![ゲートウェイのポートの要件](media/data-movement-security-considerations/gateway-port-requirements.png) 
+:::image type="content" source="media/data-movement-security-considerations/gateway-port-requirements.png" alt-text="ゲートウェイのポートの要件"::: 
 
 #### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>データ ストアでの IP の構成と許可リストの設定
 

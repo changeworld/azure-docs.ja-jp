@@ -1,101 +1,128 @@
 ---
-title: Azure DevTest Labs でのラボの作成 | Microsoft Docs
-description: この記事では、Azure portal と Azure DevTest Labs を使用してラボを作成する手順について説明します。
-ms.topic: article
-ms.date: 10/12/2020
-ms.openlocfilehash: 9fa33a59dd35bfe3469f30f2349f8a08c45bd5e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+title: 'クイック スタート: Azure portal でラボを作成する'
+description: このクイックスタートでは、Azure portal と Azure DevTest Labs を使用してラボを作成します。
+ms.topic: quickstart
+ms.date: 11/04/2021
+ms.openlocfilehash: 5f86c09c4f2d6fab4ad590d7e0bf62194c666e10
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92058345"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286395"
 ---
-# <a name="create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの作成
+# <a name="quickstart-create-a-lab-in-azure-devtest-labs-in-azure-portal"></a>クイック スタート: Azure portal で Azure DevTest Labs にラボを作成する
 
-Azure DevTest Labs におけるラボとは、Virtual Machines (VM) などのリソース グループを包含するインフラストラクチャであり、制限とクォータを指定することでこれらのリソースをより適切に管理することができます。 この記事では、Azure Portal を使用してラボを作成する手順を説明します。
+Azure DevTest Labs での作業を開始するために、Azure portal を使用してラボを作成します。 Azure DevTest Labs には Azure 仮想マシン (VM) やネットワークなどのリソースのグループが含まれます。 このインフラストラクチャを使用すると、制限とクォータを指定することで、これらのリソースをより適切に管理できます。 このクイックスタートでは、Azure portal を使用してラボを作成する手順を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-ラボを作成するには、次のものが必要です。
+アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 ラボを作成するには、サブスクリプションの所有者である必要があります。
 
-* Azure サブスクリプション。 Azure 購入オプションの詳細については、「[Azure の購入方法](https://azure.microsoft.com/pricing/purchase-options/)」または [1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。 ラボを作成するには、サブスクリプションの所有者である必要があります。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-## <a name="get-started-with-azure-devtest-labs-in-minutes"></a>Get started with Azure DevTest Labs in minutes
-
-次のリンクをクリックすると、Azure portal ページに移動し、Azure DevTest Labs での新しいラボの作成を開始することができます。
+次のリンクを選択すると、Azure portal ページに移動し、Azure DevTest Labs での新しいラボの作成を開始することができます。
 
 [Get started with Azure DevTest Labs in minutes](https://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
 
-## <a name="fill-out-settings-for-your-new-account"></a>新しいアカウントの設定を入力する
+## <a name="create-a-devtest-labs-resource"></a>DevTest Labs リソースを作成する
 
-**[Create a DevTest Labs]\(DevTest Labs の作成\)** ページで、次の設定を入力します。
+**[Create Devtest Lab]\(DevTest Labs の作成\)** ページには 5 つのタブがあります。 1 つ目のタブは **[基本設定]** です。
 
 > [!TIP]
 > 各ページの下部に、**自動化用のテンプレートをダウンロード** できるリンクが表示されます。
 
-### <a name="basic-settings"></a>[基本設定]
+### <a name="basic-settings-tab"></a>[基本設定] タブ
 
-既定では、 **[基本設定]** タブが表示されます。 
+次の情報を指定します。
 
-![基本設定](./media/devtest-lab-create-lab/basic-settings.png)
-
-次の値を入力します。
-
-|名前|説明|
+|プロパティ | 説明 |
 |---|---|
-|**サブスクリプション** | 必須です。 ラボに関連付ける **[サブスクリプション]** を選択します。|
-|**リソース グループ**| 必須です。 ラボの **リソース グループの名前** を入力します。 新しいものが存在しない場合は作成します。|
-|**ラボ名**| 必須です。 ラボの **名前** を入力します。|
-|**場所**|必須です。 ラボを格納する場所を選択します。|
-|**パブリックな環境**| [パブリックな環境の構成と使用](devtest-lab-configure-use-public-environments.md)に関するページを参照してください。
+|サブスクリプション| ドロップダウン リストから、ラボに使用する Azure サブスクリプションを選択します。|
+|リソース&nbsp;グループ| ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** を選択します。|
+|ラボ名| ラボのサブスクリプション内に一意の名前を入力します。|
+|場所| ドロップダウン リストから、ラボに使用する場所を選択します。|
+|パブリックな環境| パブリック環境リポジトリには、ラボ ユーザーがラボ内で PaaS リソースを作成できるようにする選別された Azure Resource Manager テンプレートの一覧が含まれています。 詳細については、[パブリックな環境の構成と使用](devtest-lab-configure-use-public-environments.md)に関するページを参照してください。|
 
-### <a name="auto-shutdown-settings"></a>自動シャットダウンの設定
+:::image type="content" source="./media/devtest-lab-create-lab/portal-create-basic-settings.png" alt-text="[DevTest Lab の作成] の [基本設定] タブのスクリーンショット。":::
 
-**[自動シャットダウン]** ページに切り替えて、その設定を確認します。 自動シャットダウンを使用すると、毎日スケジュールされた時刻にラボ内のすべてのマシンを自動的にシャットダウンできます。
 
-![[自動シャットダウン] タブ](./media/devtest-lab-create-lab/auto-shutdown.png)
+### <a name="auto-shutdown-tab"></a>[自動シャットダウン] タブ
 
-このページで、 **[自動シャットダウン]** を有効にし、ラボのすべての VM の自動シャットダウン用のパラメーターを定義できます。 自動シャットダウン機能は、主にコストを削減する機能で、VM をいつ自動的にシャットダウンするかを指定することができます。 自動シャットダウンの設定は、ラボの作成後に、「[Azure DevTest Labs でラボのすべてのポリシーを管理](./devtest-lab-set-lab-policy.md#set-auto-shutdown)」という記事に書かれている手順に従って変更することができます。
+自動シャットダウンを使用すると、毎日スケジュールされた時刻にラボ内のすべてのマシンを自動的にシャットダウンできます。 自動シャットダウン機能は、主にコストを節約する機能です。 ラボの作成後に自動シャットダウンの設定を変更するには、「[Azure DevTest Labs でラボのすべてのポリシーを管理](./devtest-lab-set-lab-policy.md#set-auto-shutdown)」を参照してください。
 
-### <a name="networking"></a>ネットワーク
+次の情報を指定します。
 
-ラボを作成すると、既定のネットワークが自動的に作成されます。 **[ネットワーク]** タブに切り替えて、必要に応じて設定を変更または構成します。 たとえば、既存の仮想ネットワークを選択します。
+|プロパティ | 説明 |
+|---|---|
+|Enabled| このポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。|
+|スケジュールされたシャットダウン| 現在のラボのすべての VM をシャットダウンする時刻を入力します。|
+|タイム ゾーン| ドロップダウン リストからタイム ゾーンを選択します。|
+|自動シャットダウンの前に通知を送信しますか? | 指定した自動シャットダウン時刻の 30 分前に通知を送信することについて、 **[はい]** または **[いいえ]** を選択します。 **[はい]** を選択した場合は、通知が投稿または送信される Webhook URL のエンドポイントまたは電子メール アドレスを入力します。 ユーザーは通知を受信し、シャットダウンを遅らせるオプションが表示されます。|
+|Webhook URL| 自動シャットダウンが発生する前に、指定した Webhook エンドポイントに通知が投稿されます。|
+|電子メール アドレス| アラートの通知メールを受信するメール アドレスのセットをセミコロンで区切って入力してください。|
 
-![[ネットワーク] タブ ](./media/devtest-lab-create-lab/networking.png)
+:::image type="content" source="./media/devtest-lab-create-lab/portal-create-auto-shutdown.png" alt-text="自動シャットダウン スケジュールの詳細のスクリーンショット。":::
 
-### <a name="tags"></a>タグ
+### <a name="networking-tab"></a>[ネットワーク] タブ
 
-カスタム タグを作成して、ラボで作成するすべてのリソースに追加する場合は、**[タグ]** の **[名前]** と **[値]** の情報を入力します。 タグを適用することによって、ラボのリソースをカテゴリ別に管理して整理することができます。 ラボの作成後にタグを追加する方法など、タグの詳細については、[ラボにタグを追加する方法](devtest-lab-add-tag.md)に関するページを参照してください。
+既定のネットワーク (後から変更または構成可能) が自動的に作成されるほか、既存の仮想ネットワークを選択することもできます。
 
-![[タグ] タブ ](./media/devtest-lab-create-lab/tags.png)
+次の情報を指定します。
 
-### <a name="review-and-create"></a>確認と作成
+|プロパティ | 説明 |
+|---|---|
+|仮想ネットワーク| 既定のままにするか、ドロップダウン リストから既存の項目を選択します。 Azure では、論理的には仮想ネットワークは互いに分離されています。 同じ仮想ネットワーク内の仮想マシンは、既定で相互にアクセスできます。|
+|Subnet| 既定のままにするか、ドロップダウン リストから既存の項目を選択します。 サブネットは、仮想ネットワーク内の IP アドレスの範囲です。これを使用すると、仮想マシンを相互に切り離したり、インターネットから切り離したりできます。|
 
-完了したら、 **[作成]** を選択します。 ラボ作成プロセスの状態は、ポータル ページの右上にある **[通知]** 領域を見て監視できます。 
+:::image type="content" source="./media/devtest-lab-create-lab/portal-create-networking.png" alt-text="ネットワークの詳細のスクリーンショット。":::
 
-![[作成] タブ](./media/devtest-lab-create-lab/create-1.png)
+### <a name="tags-tab"></a>[タグ] タブ
 
-## <a name="completed-the-creation"></a>作成の完了
+タグを適用することによって、ラボのリソースをカテゴリ別に管理して整理することができます。 詳細については、[ラボへのタグの追加](devtest-lab-add-tag.md)に関する記事を参照してください。
 
-完了すると、ページの下部と通知ウィンドウに **[リソースに移動]** ボタンが表示されます。 または、**[DevTest Labs]** ページを最新の情報に更新すると、ラボの一覧に新しく作成されたラボが表示されます。  
+次の情報を指定します。
 
-![サービスの作成](./media/devtest-lab-create-lab/create-2.png)
+|プロパティ | 説明 |
+|---|---|
+|名前| タグ名は大文字と小文字が区別されず、512 文字に制限されます。|
+|値| タグ値は大文字と小文字が区別され、256 文字に制限されます。|
 
-**[リソースに移動]** ボタンを押すと、新しい DevTest Labs アカウントのホームページが表示されます。
+:::image type="content" source="./media/devtest-lab-create-lab/portal-create-tags.png" alt-text="タグの詳細のスクリーンショット。":::
 
-![リソース](./media/devtest-lab-create-lab/go-to-resource.png)
+### <a name="review--create-tab"></a>[確認と作成] タブ
 
-また、Azure portal で **DevTest Labs** を検索することもできます。 一覧から新しいアカウントを選択し、ホーム ページに移動します。 
+**[確認および作成]** タブですべての構成を確認します。 すべての設定が有効である場合、上部に "**成功**" と表示されます。 設定を確認し、 **[作成]** を選択します。 ラボ作成プロセスの状態は、ポータル ページの右上にある **[通知]** 領域を見て監視できます。 
 
-![サービスの作成](./media/devtest-lab-create-lab/created.png)
+:::image type="content" source="./media/devtest-lab-create-lab/portal-review-and-create.png" alt-text="確認と作成の詳細画面のスクリーンショット。":::
+
+## <a name="post-creation"></a>投稿の作成
+
+1. 作成プロセスが完了したら、デプロイの通知から **[リソースに移動]** を選択します。
+
+    :::image type="content" source="./media/devtest-lab-create-lab/creation-notification.png" alt-text="DevTest Labs のデプロイの通知のスクリーンショット。":::
+
+1. ラボの **[概要]** ページは次の図のようになります。
+
+    :::image type="content" source="./media/devtest-lab-create-lab/lab-home-page.png" alt-text="DevTest Labs の [概要] ページのスクリーンショット。":::
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+リソースを削除して、Azure でラボを実行するための課金が生じないようにします。 次の記事で VM をラボに追加する予定の場合は、その記事の完了後にリソースをクリーンアップすることができます。 それ以外の場合は、次の手順に従います。
+
+1. 作成したラボのホーム ページに戻ります。
+
+1. 上部のメニューで **[削除]** を選択します。
+
+   :::image type="content" source="./media/devtest-lab-create-lab/portal-lab-delete.png" alt-text="ラボの [削除] ボタンのスクリーンショット。":::
+
+1. **[それを削除してよろしいですか]** のページで、テキスト ボックスにラボの名前を入力し、 **[削除]** を選択します。
+
+1. 削除中、画面の上部にある **[通知]** を選択すると進行状況を表示できます。 ラボの削除には少し時間がかかります。 ラボが削除されたら、次の手順に進みます。
+
+1. 既存のリソース グループ内にラボを作成した場合は、すべてのラボ リソースが削除されています。 このチュートリアル用に新しいリソース グループを作成した場合は、それが空になっていて削除できます。 ラボがまだ存在している場合にリソース グループが削除されることはありません。
 
 ## <a name="next-steps"></a>次のステップ
+このクイックスタートでは、ラボを作成しました。 VM を追加する方法については、次の記事に進んでください。
 
-ラボを作成した後は、次の手順を考慮します。
-
-* [ラボへのアクセスをセキュリティで保護する](devtest-lab-add-devtest-user.md)
-* [ラボのポリシーを設定する](devtest-lab-set-lab-policy.md)
-* [ラボ テンプレートを作成する](devtest-lab-create-template.md)
-* [VM のカスタム アーティファクトを作成する](devtest-lab-artifact-author.md)
-* [VM をラボに追加する](devtest-lab-add-vm.md)
-
+> [!div class="nextstepaction"]
+> [Azure DevTest Labs で仮想マシンを作成してラボに追加する](devtest-lab-add-vm.md)

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: aa08b9f5db5e6371bcd20b473a0c755db3199e7c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9fd23f5b5c78cac7b045c93a57c79279ed7f703
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101704295"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178197"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Capacity and Performance ソリューション (非推奨) を使って Hyper-V 仮想マシンの容量を計画する
 
@@ -41,7 +41,7 @@ Monitor の Capacity and Performance ソリューションを使用すると、H
 | 接続先ソース | サポート | 説明 |
 |---|---|---|
 | [Windows エージェント](../agents/agent-windows.md) | はい | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
-| [Linux エージェント](../vm/quick-collect-linux-computer.md) | いいえ    | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
+| [Linux エージェント](../vm/monitor-virtual-machine.md) | いいえ | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
 | [SCOM 管理グループ](../agents/om-agents.md) | はい |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから Log Analytics への直接接続は必要ありません。|
 | [Azure Storage アカウント](../essentials/resource-logs.md#send-to-log-analytics-workspace) | いいえ | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|
 
@@ -129,4 +129,3 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索機能](../logs/log-query-overview.md)を使用して、容量とパフォーマンスに関する詳細なデータを確認します。
-

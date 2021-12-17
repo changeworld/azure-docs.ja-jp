@@ -2,36 +2,36 @@
 - name: 概要
   items:
     - name: Video Indexer とは
-      href: ../../media-services/video-indexer/video-indexer-overview.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md
     - name: 概念
-      href: ../../media-services/video-indexer/video-indexer-overview.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md
 - name: クイックスタート
   expanded: true
   items:
-    - name: 作業開始
-      href: ../../media-services/video-indexer/video-indexer-get-started.md
+    - name: はじめに
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-get-started.md
 - name: ハウツー ガイド
   items:
     - name: v1 から v2 への移行
-      href: ../../media-services/video-indexer/video-indexer-overview.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md
     - name: Azure に接続する
-      href: ../../media-services/video-indexer/connect-to-azure.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/connect-to-azure.md
     - name: Azure に接続されたアカウントの管理
-      href: ../../media-services/video-indexer/manage-account-connected-to-azure.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/manage-account-connected-to-azure.md
     - name: Video Indexer API の使用
-      href: ../../media-services/video-indexer/video-indexer-use-apis.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-use-apis.md
     - name: API を使用したビデオのアップロードとインデックス作成
-      href: ../../media-services/video-indexer/upload-index-videos.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/upload-index-videos.md
     - name: Video Indexer の出力の確認
-      href: ../../media-services/video-indexer/video-indexer-output-json-v2.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-output-json-v2.md
     - name: ビデオ内の正確な場面の検出
-      href: ../../media-services/video-indexer/video-indexer-search.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-search.md
     - name: Video Indexer の分析情報の表示と編集
-      href: ../../media-services/video-indexer/video-indexer-view-edit.md
+      href: ../../app-service/quickstart-dotnetcore.md?tabs=netframework48
     - name: 既存のビデオからのビデオの分析情報の作成
-      href: ../../media-services/video-indexer/use-editor-create-project.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/use-editor-create-project.md
     - name: アプリケーションへのウィジェットの埋め込み
-      href: ../../media-services/video-indexer/video-indexer-embed-widgets.md
+      href: ../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-embed-widgets.md
 - name: リファレンス
   items:
     - name: Video Indexer API
@@ -40,8 +40,6 @@
   items:
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure のロードマップ

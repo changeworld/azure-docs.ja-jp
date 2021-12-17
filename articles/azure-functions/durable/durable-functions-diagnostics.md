@@ -3,14 +3,14 @@ title: Durable Functions における診断 - Azure
 description: Azure Functions の Durable Functions 拡張機能に関する問題を診断する方法について説明します。
 author: cgillum
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 06/29/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 62cc5e1762a2a54b26cbebae5aa7cfbf64204ba5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf446b435bc84649d102150b8e0f092c25a85d07
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584627"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113087380"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure での Durable Functions における診断
 
@@ -72,34 +72,12 @@ Application Insights に出力される追跡データの詳細レベルは、`h
 }
 ```
 
-既定では、すべての再生以外の追跡イベントが出力されます。 データのボリュームは、`Host.Triggers.DurableTask` を `"Warning"` または `"Error"` に設定し、追跡イベントの出力を例外的な状況に限定することで減らせます。
-
-詳細なオーケストレーション再生イベントの生成を有効にするには、次のように `durableTask` の下で `host.json` ファイルの `LogReplayEvents` を `true` に設定します。
-
-#### <a name="functions-10"></a>Functions 1.0
-
-```json
-{
-    "durableTask": {
-        "logReplayEvents": true
-    }
-}
-```
-
-#### <a name="functions-20"></a>Functions 2.0
-
-```json
-{
-    "extensions": {
-        "durableTask": {
-            "logReplayEvents": true
-        }
-    }
-}
-```
+既定では、すべての "_再生以外_" の追跡イベントが出力されます。 データのボリュームは、`Host.Triggers.DurableTask` を `"Warning"` または `"Error"` に設定し、追跡イベントの出力を例外的な状況に限定することで減らせます。 詳細なオーケストレーション再生イベントの生成を有効にするには、[host.json](durable-functions-bindings.md#host-json) 構成ファイルの `logReplayEvents` を `true` に設定します。
 
 > [!NOTE]
 > 既定では、データの出力頻度が高くなりすぎないよう、Azure Functions ランタイムによって Application Insights テレメトリがサンプリングされます。 そのため、短時間に多数のライフサイクル イベントが発生すると追跡情報が失われることがあります。 この動作を構成する方法については、[Azure Functions の監視に関する記事](../configure-monitoring.md#configure-sampling)で説明しています。
+
+オーケストレーター関数、アクティビティ関数、エンティティ関数の入力と出力は既定ではログに記録されません。 入力と出力をログに記録すると Application Insights のコストが上がるため、この既定の動作が推奨されています。 関数の入力および出力ペイロードには、機密情報も含まれる場合があります。 既定では、実際のペイロードの代わりに、関数の入力と出力のバイト数がログに記録されます。 Durable Functions 拡張機能で入力と出力のペイロードをすべてログに記録する場合、[host.json](durable-functions-bindings.md#host-json) 構成ファイルの `traceInputsAndOutputs` プロパティを `true` に設定します。
 
 ### <a name="single-instance-query"></a>シングル インスタンス クエリ
 
@@ -154,10 +132,12 @@ traces
 
 Durable 拡張機能のログは、オーケストレーション ロジックの動作を理解するのに役立ちます。 ただし、これらのログには、フレームワークレベルのパフォーマンスと信頼性の問題をデバッグするのに十分な情報が必ず含まれているわけではありません。 Durable 拡張機能の **v 2.3.0** 以降では、基になる Durable Task Framework (DTFx) によって出力されたログもコレクションに使用できます。
 
-DTFx によって出力されるログを見るときは、DTFx エンジンが、コア ディスパッチ エンジン (`DurableTask.Core`) と、サポートされている多くのストレージ プロバイダーの 1 つ (Durable Functions は既定で `DurableTask.AzureStorage` を使用します) の 2 つのコンポーネントで構成されていることを理解しておくことが重要です。
+DTFx によって出力されるログを見るときは、DTFx エンジンが、コア ディスパッチ エンジン (`DurableTask.Core`) と、サポートされている多くの記憶域プロバイダーの 1 つ (Durable Functions は既定で `DurableTask.AzureStorage` を使用しますが[他のオプションも利用できます](durable-functions-storage-providers.md)) の 2 つのコンポーネントで構成されていることを理解しておくことが重要です。
 
-* **DurableTask.Core**: オーケストレーションの実行と詳細なスケジュール設定に関する情報が含まれています。
-* **DurableTask.AzureStorage**: 内部オーケストレーションの状態を格納およびフェッチするために使用される内部キュー、BLOB、ストレージ テーブルなど、Azure Storage 成果物の操作に関連する情報が含まれます。
+* **DurableTask.Core**: コア オーケストレーションの実行と詳細なスケジュール設定のログとテレメトリ。
+* **DurableTask.AzureStorage**: Azure Storage 状態プロバイダーに固有のバックエンド ログ。 これらのログには、内部オーケストレーション状態を格納およびフェッチするために使用される内部キュー、BLOB、およびストレージ テーブルとの詳細な対話が含まれます。
+* **DurableTask.Netherite**: [Netherite 記憶域プロバイダー](https://microsoft.github.io/durabletask-netherite)に固有のバックエンド ログ (有効な場合)。
+* **DurableTask.SqlServer**: [Microsoft SQL (MSSQL) 記憶域プロバイダー](https://microsoft.github.io/durabletask-mssql)に固有のバックエンド ログ (有効な場合)。
 
 これらのログを有効にするには、関数アプリの **host.json** ファイルの `logging/logLevel` セクションを更新します。 次の例は、`DurableTask.Core` と `DurableTask.AzureStorage` の両方からの警告とエラーのログを有効にする方法を示しています。
 
@@ -176,7 +156,7 @@ DTFx によって出力されるログを見るときは、DTFx エンジンが�
 Application Insights を有効にしている場合、これらのログは `trace` コレクションに自動的に追加されます。 Kusto クエリを使用して他の `trace` ログを検索するのと同じ方法でこれらを検索できます。
 
 > [!NOTE]
-> 実稼働アプリケーションでは、`"Warning"` フィルターを使用して、`DurableTask.Core` ログと `DurableTask.AzureStorage` ログを有効にすることをお勧めします。 `"Information"` などの詳細度の高いフィルターは、パフォーマンスの問題をデバッグする場合に非常に便利です。 ただし、これらのログ イベントは大量であるため、Application Insights のデータ ストレージ コストが大幅に増加する可能性があります。
+> 運用環境のアプリケーションでは、`"Warning"` フィルターを使用して、`DurableTask.Core` および適切な記憶域プロバイダー (`DurableTask.AzureStorage` など) のログを有効にすることをお勧めします。 `"Information"` などの詳細度の高いフィルターは、パフォーマンスの問題をデバッグする場合に非常に便利です。 ただし、これらのログ イベントは大量になる可能性があるため、Application Insights のデータ ストレージ コストが大幅に増加する可能性があります。
 
 次の Kusto クエリは DTFx ログのクエリを実行する方法を示しています。 クエリの最も重要な部分は `where customerDimensions.Category startswith "DurableTask"` です。これは、結果を `DurableTask.Core` および `DurableTask.AzureStorage` カテゴリのログにフィルター処理するためです。
 
@@ -471,6 +451,13 @@ Azure Functions ではデバッグ関数コードが直接サポートされて�
 
 > [!WARNING]
 > テーブル ストレージ内の実行履歴を確認できるのは便利ですが、このテーブルに依存することは避けてください。 Durable Functions 拡張機能の刷新に伴って変更される可能性があります。
+
+> [!NOTE]
+> 既定の Azure Storage プロバイダーの代わりに、その他の記憶域プロバイダーを構成することもできます。 アプリ用に構成されている記憶域プロバイダーによっては、基になる状態を検査するためにさまざまなツールを使用することが必要になる場合があります。 詳細については、[Durable Functions 記憶域プロバイダー](durable-functions-storage-providers.md)に関するドキュメントを参照してください。
+
+## <a name="3rd-party-tools"></a>サード パーティ製のツール
+
+Durable Functions コミュニティでは、デバッグ、診断、監視に役立つさまざまなツールが公開されています。 このようなツールの 1 つとしてオープン ソースの [Durable Functions モニター](https://github.com/scale-tone/DurableFunctionsMonitor#durable-functions-monitor)があり、これはオーケストレーション インスタンスの監視、管理、およびデバッグを行うためのグラフィカルなツールです。
 
 ## <a name="next-steps"></a>次のステップ
 

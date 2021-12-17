@@ -1,16 +1,16 @@
 ---
-title: Service Fabric マネージド クラスター (プレビュー)
+title: Service Fabric の管理対象クラスター
 description: Service Fabric マネージド クラスターは、デプロイとクラスター管理を効率化する Azure Service Fabric クラスター リソース モデルの進化版です。
 ms.topic: overview
-ms.date: 02/15/2021
-ms.openlocfilehash: 271852214097ee96ba6b10de7a94904981cd8ef8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 10/22/2021
+ms.openlocfilehash: 5c94254e470e625a844b345c452e252fcd69b626
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041231"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308126"
 ---
-# <a name="service-fabric-managed-clusters-preview"></a>Service Fabric マネージド クラスター (プレビュー)
+# <a name="service-fabric-managed-clusters"></a>Service Fabric の管理対象クラスター
 
 Service Fabric マネージド クラスターは、デプロイとクラスター管理エクスペリエンスを効率化する Azure Service Fabric クラスター リソース モデルの進化版です。
 
@@ -33,12 +33,15 @@ Service Fabric マネージド クラスターは、デプロイとクラスタ�
 | ストレージ アカウント | |
 | 仮想ネットワーク | |
 
-Service Fabric マネージド クラスターには、従来のクラスターと比べて優れている点が数多くあります。
+## <a name="service-fabric-managed-cluster-advantages"></a>Service Fabric マネージド クラスターの利点
+Service Fabric マネージド クラスターには、次のように、従来のクラスターと比べて優れている点が数多くあります。
 
 **クラスターのデプロイと管理が簡素化されている**
 - デプロイおよび管理の対象となる Azure リソースが 1 つ
-- 証明書の管理と自動ローテーション
+- クラスター証明書の管理と 90 日間の自動ローテーション
 - 簡素化されたスケーリング操作
+- OS イメージの自動アップグレードのサポート
+- インプレースの OS SKU 変更のサポート
 
 **運用エラーを防止**
 - 基になるリソースとの構成の不整合を防止
@@ -47,7 +50,10 @@ Service Fabric マネージド クラスターには、従来のクラスター�
 **ベスト プラクティスを既定で採用**
 - 信頼性と持続性の設定を簡素化
 
-Service Fabric マネージド クラスターには、そのクラスターに必要な、基になるリソースのコストを超える追加負担はありません。
+Service Fabric マネージド クラスターには、そのクラスターに必要な、基になるリソースのコストを超える追加負担はなく、マネージド クラスターにも同じ Service Fabric SLA が適用されます。
+
+> [!NOTE]
+> 既存の Service Fabric クラスターからマネージド クラスターへの移行パスは存在しません。 この新しいリソースの種類を使用するには、新しい Service Fabric マネージド クラスターを作成する必要があります。
 
 ## <a name="service-fabric-managed-cluster-skus"></a>Service Fabric マネージド クラスターの SKU
 
@@ -55,37 +61,26 @@ Service Fabric マネージド クラスターには、Basic SKU と Standard SK
 
 | 機能 | Basic | Standard |
 | ------- | ----- | -------- |
-| ネットワーク リソース ([ロード バランサー](../load-balancer/skus.md)、[パブリック IP](../virtual-network/public-ip-addresses.md) の SKU) | Basic | Standard |
+| ネットワーク リソース ([ロード バランサー](../load-balancer/skus.md)、[パブリック IP](../virtual-network/ip-services/public-ip-addresses.md) の SKU) | Basic | Standard |
 | 最小ノード (VM インスタンス) 数 | 3 | 5 |
-| ノード タイプごとの最大ノード数 | 100 | 100 |
+| ノード タイプごとの最大ノード数 | 100 | 1000 |
 | 最大ノード タイプ数 | 1 | 20 |
 | ノード タイプの追加と削除 | いいえ | はい |
 | ゾーン冗長性 | いいえ | はい |
 
-## <a name="whats-new-for-service-fabric-managed-clusters"></a>Service Fabric マネージド クラスターの新機能
+## <a name="feature-support"></a>機能のサポート
 
-Service Fabric マネージド クラスター プレビューの最新機能には、以下に対するサポートが含まれます。
+マネージド クラスターの機能は今後も引き続き拡張されます。 詳細については、[マネージド クラスターの構成オプションに関するドキュメント](how-to-managed-cluster-configuration.md)、または managedClusters の [Bicep および ARM テンプレート](/azure/templates/microsoft.servicefabric/allversions)に関するページを参照してください。
 
-* [ARM テンプレートを使用したアプリケーションのデプロイ](how-to-managed-cluster-app-deployment-template.md)
-* [OS の自動アップグレード](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
-* [ディスクの暗号化](how-to-enable-managed-cluster-disk-encryption.md)
-* [NSG ルールの適用](how-to-managed-cluster-networking.md)
-
-今後のリリースで追加される機能は次のとおりです。
-
-* Visual Studio を使用したアプリケーションのデプロイ
-* マネージド ID のサポート
-* 可用性ゾーン
-* リバース プロキシ
-* 自動スケール
 
 ## <a name="next-steps"></a>次のステップ
 
 Service Fabric マネージド クラスターでの作業を開始するには、次のクイックスタートをお試しください。
 
 > [!div class="nextstepaction"]
-> [Service Fabric マネージド クラスター (プレビュー) を作成する](quickstart-managed-cluster-template.md)
+> [Service Fabric の管理対象クラスターの作成](quickstart-managed-cluster-template.md)
 
+[管理対象クラスターの構成方法](how-to-managed-cluster-configuration.md)のリファレンス
 
 [sf-composition]: ./media/overview-managed-cluster/sfrp-composition-resource.png
 [sf-encapsulation]: ./media/overview-managed-cluster/sfrp-encapsulated-resource.png

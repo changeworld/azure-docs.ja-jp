@@ -9,14 +9,17 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: ac9f81fbde33bdd10bc8374a566a4f2ba83fc253
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-java, devx-track-javaee, devx-track-javaee-wls, devx-track-javaee-wls-aks
+ms.openlocfilehash: 1c5d5de82f2398649999a46cca853eb7c72ff4e3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669037"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063444"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Azure Kubernetes Service で Oracle WebLogic Server を実行するためのソリューションとは
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 このページでは、Azure Kubernetes Service (AKS) で Oracle WebLogic Server (WLS) を実行するためのソリューションについて説明します。 これらのソリューションは、Oracle と Microsoft が共同で開発およびサポートしています。
 
@@ -30,7 +33,7 @@ WebLogic Server は、AKS で正常に動作することが Oracle と Microsoft
 Kubernetes での WebLogic Server クラスターの実行は、WebLogic Kubernetes Operator (ここでは単に "Operator" と呼びます) を介して完全に有効になります。 Operator は、標準の Kubernetes Operator のパターンに従います。 手動のタスクを自動化し、運用の信頼性に関する機能をさらに追加することで、Kubernetes 上の WebLogic ドメインとデプロイの管理と運用を簡素します。 Operator によって Oracle WebLogic Server 12c、Oracle Fusion Middleware Infrastructure 12c 以降がサポートされています。 WebLogic Server 12.2.1.3 および 12.2.1.4 用の公式 Docker イメージを Operator でテスト済みです。 Operator の詳細については、[Oracle の公式ドキュメント](https://oracle.github.io/weblogic-kubernetes-operator/)を参照してください。
 
 ## <a name="guidance-scripts-and-samples-for-wls-on-aks"></a>AKS 上の WLS のガイダンス、スクリプト、サンプル
-Oracle と Microsoft は、AKS 上の WebLogic Server を認定するだけでなく、AKS 上で WebLogic Server を実行するための詳細な手順、スクリプト、サンプルを共同で提供しています。 このガイダンスは、[Operator ドキュメント](https://oracle.github.io/weblogic-kubernetes-operator/samples/simple/azure-kubernetes-service/)の Azure Kubernetes Service サンプルのセクションに組み込まれています。 このガイダンスは、AKS デプロイでの運用環境の WebLogic Server をできるだけ簡単にすることを目的としています。 このガイダンスでは、Oracle によって提供される公式の WebLogic Server Docker イメージを使用しています。 フェールオーバーは、Kubernetes 永続ボリューム要求を介してアクセスされる Azure Files によって実現されます。 Azure Load Balancer は、種類が 'LoadBalancer' の Kubernetes Service を使用してプロビジョニングされた場合にサポートされます。 Azure Container Registry (ACR) は、カスタム Docker イメージ内の WLS ドメインのデプロイでサポートされています。 このガイダンスでは、高レベルの構成とカスタマイズが可能です。
+Oracle と Microsoft は、AKS 上の WebLogic Server を認定するだけでなく、AKS 上で WebLogic Server を実行するための詳細な手順、スクリプト、サンプルを共同で提供しています。 このガイダンスは、[Operator ドキュメント](https://oracle.github.io/weblogic-kubernetes-operator/)の Azure Kubernetes Service サンプルのセクションに組み込まれています。 このガイダンスは、AKS デプロイでの運用環境の WebLogic Server をできるだけ簡単にすることを目的としています。 このガイダンスでは、Oracle によって提供される公式の WebLogic Server Docker イメージを使用しています。 フェールオーバーは、Kubernetes 永続ボリューム要求を介してアクセスされる Azure Files によって実現されます。 Azure Load Balancer は、種類が 'LoadBalancer' の Kubernetes Service を使用してプロビジョニングされた場合にサポートされます。 Azure Container Registry (ACR) は、カスタム Docker イメージ内の WLS ドメインのデプロイでサポートされています。 このガイダンスでは、高レベルの構成とカスタマイズが可能です。
 
 :::image type="content" source="media/oracle-weblogic/wls-on-aks.gif" alt-text="サンプル スクリプトを使用して AKS に WebLogic Server をデプロイできる":::
 
@@ -55,7 +58,7 @@ Azure Kubernetes Service で Oracle WebLogic Server を実行するためのソ�
 Azure Kubernetes Service での Oracle WebLogic Server の実行について確認します。
 
 > [!div class="nextstepaction"]
-> [AKS で WLS を実行するためのガイダンス、スクリプト、サンプル](https://oracle.github.io/weblogic-kubernetes-operator/samples/simple/azure-kubernetes-service/)
+> [AKS で WLS を実行するためのガイダンス、スクリプト、サンプル](https://oracle.github.io/weblogic-kubernetes-operator/)
 
 > [!div class="nextstepaction"]
 > [WebLogic Kubernetes Operator](https://oracle.github.io/weblogic-kubernetes-operator/)

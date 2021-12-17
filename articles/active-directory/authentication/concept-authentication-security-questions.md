@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7229dabd690e5932fbd297992e09782eda85a002
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 841391778e0fb8c00f503aa0cc79b5562661e309
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96744144"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530345"
 ---
 # <a name="authentication-methods-in-azure-active-directory---security-questions"></a>Azure Active Directory の認証方法 - セキュリティの質問
 
@@ -93,7 +93,7 @@ SSPR では、次の定義済みのセキュリティの質問を認証方法と
 
 SSPR の概念の詳細については、[Azure AD のセルフサービス パスワード リセットのしくみ][concept-sspr]に関するページを参照してください。
 
-[Microsoft Graph REST API ベータ版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)を使用した認証方法の構成の詳細について確認してください。
+[Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview) を使用した認証方法の構成の詳細を確認してください。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

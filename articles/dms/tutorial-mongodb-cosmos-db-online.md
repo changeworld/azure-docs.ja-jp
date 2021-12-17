@@ -11,15 +11,26 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
-ms.date: 02/03/2021
-ms.openlocfilehash: 84eed7d48dfe0230ea023d171e2b640bdf50dbe3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/21/2021
+ms.openlocfilehash: 1d5198365465e07e393aef1c155416a444071385
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715668"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128578699"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオンラインで移行する
+[!INCLUDE[appliesto-mongodb-api](../cosmos-db/includes/appliesto-mongodb-api.md)]
+
+> [!IMPORTANT]  
+> 移行手順を実行する前に、このガイド全体をお読みください。
+>
+
+この MongoDB 移行ガイドは、MongoDB の移行に関するシリーズの一部です。 MongoDB 移行の重要な手順は、次に示すように、[移行前](../cosmos-db/mongodb-pre-migration.md)、移行、そして[移行後](../cosmos-db/mongodb-post-migration.md)です。
+
+![移行手順の図。](../cosmos-db/mongodb/media/pre-migration-steps/overall-migration-steps.png)
+
+## <a name="overview-of-online-data-migration-from-mongodb-to-azure-cosmos-db-using-dms"></a>DMS を使用した MongoDB から Azure Cosmos DB へのオンライン データ移行の概要
 
 Azure Database Migration Service を使用して、MongoDB のオンプレミスまたはクラウドのインスタンスから Azure Cosmos DB の MongoDB 用 API に、データベースのオンライン (最小限のダウンタイム) の移行を実行できます。
 
@@ -53,7 +64,11 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 このチュートリアルを完了するには、以下を実行する必要があります。
 
 * スループットの見積もり、パーティション キーの選択、インデックス作成ポリシーなど、[移行前の手順を完了](../cosmos-db/mongodb-pre-migration.md)します。
-* [Azure Cosmos DB の MongoDB 用 API アカウントを作成](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)し、[SSR (サーバー側の再試行)](../cosmos-db/prevent-rate-limiting-errors.md) を有効にします。
+* [Azure Cosmos DB の MongoDB 用 API アカウントを作成](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)し、[SSR (サーバー側の再試行)](../cosmos-db/mongodb/prevent-rate-limiting-errors.md) を有効にします。
+
+  > [!NOTE]
+  > サーバーレス モードでプロビジョニングされた MongoDB 用 API アカウントに移行している場合、DMS は現在サポートされていません。
+
 * Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これにより、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続が確立されます。
 
     > [!NOTE]
@@ -81,19 +96,7 @@ MongoDB から Azure Cosmos DB に移行するお客様は、リソース ガバ
 
 ![MongoDB のサーバー側の再試行機能を有効にする画面のスクリーンショット。](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-enable.png)
 
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
-
-1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
-
-   ![ポータルのサブスクリプションの表示](media/tutorial-mongodb-to-cosmosdb-online/portal-select-subscription1.png)
-
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択してから、 **[リソース プロバイダー]** を選びます。
-
-    ![リソース プロバイダーの表示](media/tutorial-mongodb-to-cosmosdb-online/portal-select-resource-provider.png)
-
-3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
-
-    ![リソース プロバイダーの登録](media/tutorial-mongodb-to-cosmosdb-online/portal-register-resource-provider.png)    
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)] 
 
 ## <a name="create-an-instance"></a>インスタンスを作成する
 
@@ -266,6 +269,9 @@ MongoDB データベースに格納されているデータを Azure Cosmos DB �
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Cosmos DB サービスの情報](https://azure.microsoft.com/services/cosmos-db/)
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../cosmos-db/convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](../cosmos-db/mongodb/estimate-ru-capacity-planner.md)に関するページを参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

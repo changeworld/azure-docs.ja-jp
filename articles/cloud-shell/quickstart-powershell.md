@@ -9,12 +9,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
-ms.openlocfilehash: 7ff58c4e463b4ad47680b9140403e9ae5e22b057
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell, ignite-fall-2021
+ms.openlocfilehash: 8bc87fd6d7c760438ca35b968c767efef6539f0c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045282"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705097"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell の PowerShell のクイックスタート
 
@@ -111,11 +112,11 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
   PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -Credential (Get-Credential)
   ```
 
-また、最初に `VirtualMachines` ディレクトリに移動して、次のように `Enter-AzVM` を実行することもできます
+`VirtualMachines`最初にディレクトリに移動して、次のように実行する`Enter-AzVM`こともでき ます：
 
-  ```azurepowershell-interactive
- PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
- ```
+```azurepowershell-interactive
+PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
+```
 
 ### <a name="discover-webapps"></a>WebApps を検出する
 
@@ -241,9 +242,9 @@ Cloud Shell で Git リポジトリを複製するには、[個人用アクセ�
 
 「`exit`」と入力してセッションを終了します。
 
-[bashqs]:quickstart.md
-[gallery]:https://www.powershellgallery.com/
-[customex]:https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript
+[bashqs]: quickstart.md
+[gallery]: https://www.powershellgallery.com/
+[customex]: ../virtual-machines/extensions/custom-script-windows.md
 [profile]: /powershell/module/microsoft.powershell.core/about/about_profiles
 [azmount]: ../storage/files/storage-how-to-use-files-windows.md
 [githubtoken]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/

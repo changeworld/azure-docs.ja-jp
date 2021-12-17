@@ -4,15 +4,15 @@ description: 従量制課金に対する自動の異常検出によって、ご�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 2/18/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 1ff6262a75261c575082f3fc48d588c868ad0b51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 9/27/2021
+ms.openlocfilehash: 5d253ab72d2915145444485c98131027555efdbc
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092513"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081612"
 ---
 # <a name="manage-metered-billing-anomalies-in-partner-center"></a>パートナー センターで従量制課金の異常を管理する
 
@@ -28,16 +28,62 @@ Microsoft は、Microsoft からお客様への請求の前に SaaS または Az
 
 ## <a name="view-and-manage-metered-usage-anomalies"></a>従量制課金使用量の異常の表示と管理
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
-1. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[分析]** の順に選択します。
+1. ホーム ページで、 **[分析情報]** タイルを選択します。
+
+    [ ![パートナー センター ホーム ページの [分析情報] タイルの図。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 左側のメニューで、 **[使用]** を選択します。
 1. **[Metered usage anomalies]\(従量制課金使用量の異常\)** タブを選択します。
 
-    [![[利用状況] ページの [Metered usage anomalies]\(従量制課金使用量の異常\) タブを示しています。](./media/anomaly-detection/metered-usage-anomalies.png)](./media/anomaly-detection/metered-usage-anomalies.png#lightbox)
+    [![[利用状況] ページの [Metered usage anomalies]\(従量制課金使用量の異常\) タブを示しています。](./media/anomaly-detection/metered-usage-anomalies-workspaces.png)](./media/anomaly-detection/metered-usage-anomalies-workspaces.png#lightbox)<br>
     "***図 1:[Metered usage anomalies]\(従量制課金使用量の異常\) タブ***
 
 1. 従量制課金に対して検出された使用量の異常については、発行元として、その異常が本当なのかどうかを調査して確認するように求められます。 診断を確認するには、 **[Mark as anomaly]\(異常としてマーク\)** を選択します。
 
-     [![[Mark as anomaly]\(異常としてマーク\) ダイアログ ボックスを示しています。](./media/anomaly-detection/mark-as-anomaly.png)](./media/anomaly-detection/mark-as-anomaly.png#lightbox)
+     [![[Mark as anomaly]\(異常としてマーク\) ダイアログ ボックスを示しています。](./media/anomaly-detection/mark-as-anomaly-workspaces.png)](./media/anomaly-detection/mark-as-anomaly-workspaces.png#lightbox)<br>
+    "***図 2:[Mark as anomaly]\(異常としてマーク\) ダイアログ ボックス***
+
+1. 検出された超過分使用量の異常が正規のものではないと思われる場合は、そのフィードバックを提供できます。そのためには、パートナー センターで異常のフラグが設定された特定の超過分使用量について、 **[Not an anomaly]\(異常ではない\)** を選択します。
+
+    [![[Why is it not an anomaly]\(異常ではない理由\) ダイアログ ボックスを示しています。](./media/anomaly-detection/why-is-it-not-an-anomaly-workspaces.png)](./media/anomaly-detection/why-is-it-not-an-anomaly-workspaces.png#lightbox)
+    "***図 3:[Why is it not an anomaly?]\(異常ではない理由\) ダイアログ ボックス***
+
+1. ページを下にスクロールすると、未確認の異常の一覧が表示されます。 一覧には、未確認のまま残っている異常が表示されます。 パートナー センターでフラグが設定された任意の異常を正規のものまたは誤りとしてマークすることができます。
+
+   [![パートナー センターの [利用状況] ページでの未確認の異常の一覧を示しています。](./media/anomaly-detection/unacknowledged-anomalies-workspaces.png)](./media/anomaly-detection/unacknowledged-anomalies-workspaces.png#lightbox)<br>
+    "***図 4:パートナー センターでの未確認の異常の一覧***
+
+    既定では、フラグが設定された異常のうち、経済的影響が 100 USD を超えると推定されるものが、パートナー センターに表示されます。 ただし、 **[Estimated financial impact of anomaly]\(異常の推定経済的影響\)** の一覧から **[すべて]** を選択すると、フラグが設定されたすべての異常を表示できます。
+
+    [![選択したオファーについて測定されたすべての使用状況の異常のスクリーンショット。](./media/anomaly-detection/all-anomalies.png)](./media/anomaly-detection/all-anomalies.png#lightbox)
+
+1. また、超過分の使用量に対して実行したアクションを示す異常のアクション ログも表示されます。 アクション ログでは、どの超過分使用量イベントが正規のものまたは誤りとしてマークされたかを確認できます。
+
+   [![[Usage]\(利用状況\) ページの [Anomaly action log]\(異常アクション ログ\) が示されています。](./media/anomaly-detection/anomaly-action-log-workspaces.png)](./media/anomaly-detection/anomaly-action-log-workspaces.png#lightbox)<br>
+   ***図 5: [Anomaly action log]\(異常アクション ログ\)***
+
+1. パートナー センターの分析で、エクスポート レポートにおける超過分使用量イベントの修正再表示はサポートされていません。 パートナー センターで、異常に対して修正された超過分の使用量を入力できます。詳細は調査のために Microsoft チームに渡されます。 調査に基づいて、超過料金が発生した顧客に Microsoft から必要に応じてクレジット返金が発行されます。 フラグが設定された異常のどれかを選択したときに **[Mark as anomaly]\(異常としてマーク\)** を選択すると、使用量の超過分の異常を正規のものとしてマークできます。
+
+   [![[Mark as an anomaly]\(異常としてマーク\) ダイアログ ボックスが示されています。](./media/anomaly-detection/mark-as-anomaly-workspaces.png)](./media/anomaly-detection/mark-as-anomaly-workspaces.png#lightbox)<br>
+   "***図 6: [Mark as anomaly]\(異常としてマーク\) ダイアログ ボックス***"
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[分析]**  >  **[使用量]** の順に選択します。
+1. **[Metered usage anomalies]\(従量制課金使用量の異常\)** タブを選択します。
+
+    [![[利用状況] ページの [Metered usage anomalies]\(従量制課金使用量の異常\) タブを示しています。](./media/anomaly-detection/metered-usage-anomalies.png)](./media/anomaly-detection/metered-usage-anomalies.png#lightbox)<br>
+    "***図 1:[Metered usage anomalies]\(従量制課金使用量の異常\) タブ***
+
+1. 従量制課金に対して検出された使用量の異常については、発行元として、その異常が本当なのかどうかを調査して確認するように求められます。 診断を確認するには、 **[Mark as anomaly]\(異常としてマーク\)** を選択します。
+
+     [![[Mark as anomaly]\(異常としてマーク\) ダイアログ ボックスを示しています。](./media/anomaly-detection/mark-as-anomaly.png)](./media/anomaly-detection/mark-as-anomaly.png#lightbox)<br>
     "***図 2:[Mark as anomaly]\(異常としてマーク\) ダイアログ ボックス***
 
 1. 検出された超過分使用量の異常が正規のものではないと思われる場合は、そのフィードバックを提供できます。そのためには、パートナー センターで異常のフラグが設定された特定の超過分使用量について、 **[Not an anomaly]\(異常ではない\)** を選択します。
@@ -47,18 +93,24 @@ Microsoft は、Microsoft からお客様への請求の前に SaaS または Az
 
 1. ページを下にスクロールすると、未確認の異常の一覧が表示されます。 一覧には、未確認のまま残っている異常が表示されます。 パートナー センターでフラグが設定された任意の異常を正規のものまたは誤りとしてマークすることができます。
 
-   [![パートナー センターの [利用状況] ページでの未確認の異常の一覧を示しています。](./media/anomaly-detection/unacknowledged-anomalies.png)](./media/anomaly-detection/unacknowledged-anomalies.png#lightbox)
+   [![パートナー センターの [利用状況] ページでの未確認の異常の一覧を示しています。](./media/anomaly-detection/unacknowledged-anomalies.png)](./media/anomaly-detection/unacknowledged-anomalies.png#lightbox)<br>
     "***図 4:パートナー センターでの未確認の異常の一覧***
+
+    既定では、フラグが設定された異常のうち、経済的影響が 100 USD を超えると推定されるものが、パートナー センターに表示されます。 ただし、 **[Estimated financial impact of anomaly]\(異常の推定経済的影響\)** の一覧から **[すべて]** を選択すると、フラグが設定されたすべての異常を表示できます。
+
+    :::image type="content" source="./media/anomaly-detection/all-anomalies.png" alt-text="選択したオファーについて測定されたすべての使用状況の異常のスクリーンショット。":::
 
 1. また、超過分の使用量に対して実行したアクションを示す異常のアクション ログも表示されます。 アクション ログでは、どの超過分使用量イベントが正規のものまたは誤りとしてマークされたかを確認できます。
 
-   [![[利用状況] ページの異常のアクション ログを示しています。](./media/anomaly-detection/anomaly-action-log.png)](./media/anomaly-detection/anomaly-action-log.png#lightbox)
-   ***図 5:異常のアクション ログ***
+   [![[Usage]\(利用状況\) ページの [Anomaly action log]\(異常アクション ログ\) が示されています。](./media/anomaly-detection/anomaly-action-log.png)](./media/anomaly-detection/anomaly-action-log.png#lightbox)<br>
+   ***図 5: [Anomaly action log]\(異常アクション ログ\)***
 
 1. パートナー センターの分析で、エクスポート レポートにおける超過分使用量イベントの修正再表示はサポートされていません。 パートナー センターで、異常に対して修正された超過分の使用量を入力できます。詳細は調査のために Microsoft チームに渡されます。 調査に基づいて、超過料金が発生した顧客に Microsoft から必要に応じてクレジット返金が発行されます。 フラグが設定された異常のどれかを選択したときに **[Mark as anomaly]\(異常としてマーク\)** を選択すると、使用量の超過分の異常を正規のものとしてマークできます。
 
-   [![[Mark as anomaly]\(異常としてマーク\) ダイアログ ボックスを示しています。](./media/anomaly-detection/new-reported-usage.png)](./media/anomaly-detection/new-reported-usage.png#lightbox)
-   ***図 6: [Mark as anomaly]\(異常としてマーク\) ダイアログ ボックス***
+   [![[Mark as an anomaly]\(異常としてマーク\) ダイアログ ボックスが示されています。](./media/anomaly-detection/new-reported-usage.png)](./media/anomaly-detection/new-reported-usage.png#lightbox)<br>
+   "***図 6: [Mark as anomaly]\(異常としてマーク\) ダイアログ ボックス***"
+
+---
 
 パートナー センターで超過分の使用量に対して初めて不規則のフラグが設定された場合、異常を正規のものまたは誤りとしてマークするために、そのインスタンスから 30 日の期間が与えられます。 30 日の期間が終了すると、発行元として異常に対処することはできなくなります。
 
@@ -77,7 +129,9 @@ Microsoft は、Microsoft からお客様への請求の前に SaaS または Az
 > [!IMPORTANT]
 > 過剰請求の状況が発生した場合は、超過分の使用量を再送信できます。
 
+---
+
 ## <a name="see-also"></a>関連項目
 - [コマーシャル マーケットプレースの測定サービスを使用した SaaS の従量制課金](./partner-center-portal/saas-metered-billing.md)
-- [マネージド アプリケーションの従量制課金](./partner-center-portal/azure-app-metered-billing.md)
+- [マネージド アプリケーションの従量制課金](marketplace-metering-service-apis.md)
 - [従量制課金に対する異常検出サービス](./partner-center-portal/anomaly-detection-service-for-metered-billing.md)

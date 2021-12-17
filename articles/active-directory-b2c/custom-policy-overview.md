@@ -1,21 +1,22 @@
 ---
-title: Azure Active Directory B2C のカスタム ポリシーの概要 | Microsoft Docs
+title: Azure Active Directory B2C のカスタム ポリシーの概要
 description: Azure Active Directory B2C のカスタム ポリシーと Identity Experience Framework に関するトピック。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/08/2021
-ms.author: mimart
+ms.date: 10/14/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 2a8aabac6960909f2a3d90fcee01cebb0ad7a832
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.custom: b2c-support
+ms.openlocfilehash: 51ed0b6bd0f5bd5eabf76c6789ab36a922653fd1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256941"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222838"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C カスタム ポリシーの概要
 
@@ -34,6 +35,8 @@ Azure AD B2C カスタム ポリシー [スターター パック](tutorial-crea
 - **SocialAndLocalAccounts** - ローカル アカウントとソーシャル アカウントの両方の使用を可能にします。 ほとんどのサンプルは、このポリシーを参照しています。
 - **SocialAndLocalAccountsWithMFA** - ソーシャル、ローカル、および多要素認証オプションの使用を可能にします。
 
+[Azure AD B2C のサンプル GitHub リポジトリ](https://github.com/azure-ad-b2c/samples)には、強化された Azure AD B2C カスタム CIAM ユーザー体験のいくつかのサンプルがあります。 たとえば、ローカル アカウント ポリシーの強化、ソーシャル アカウント ポリシーの強化、MFA の強化、ユーザー インターフェイスの強化、汎用の強化、アプリの移行、ユーザーの移行、条件付きアクセス、Web テスト、CI/CD などです。
+ 
 ## <a name="understanding-the-basics"></a>基本情報 
 
 ### <a name="claims"></a>Claims
@@ -53,7 +56,7 @@ Azure AD B2C カスタム ポリシー [スターター パック](tutorial-crea
 
 ### <a name="customize-and-localize-your-ui"></a>UI のカスタマイズとローカライズ
 
-Web ブラウザーにページを表示してユーザーから情報を収集する場合は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)を使用します。 セルフアサート技術プロファイルを編集して、[要求を追加し、ユーザー入力をカスタマイズする](./configure-user-input.md)ことができます。
+Web ブラウザーにページを表示してユーザーから情報を収集するには、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)を使用します。 セルフアサート技術プロファイルを編集して、[要求を追加し、ユーザー入力をカスタマイズする](./configure-user-input.md)ことができます。
 
 セルフアサート技術プロファイルの[ユーザー インターフェイスをカスタマイズする](customize-ui-with-html.md)には、カスタマイズされた HTML コンテンツを使用して[コンテンツ定義](contentdefinitions.md)要素に URL を指定します。 セルフアサート技術プロファイルで、このコンテンツ定義 ID をポイントします。
 
@@ -109,8 +112,9 @@ Web ブラウザーにページを表示してユーザーから情報を収集�
 各スターター パックには、次のファイルが含まれています。
 
 - **Base ファイル**。ほとんどの定義が含まれています。 ポリシーのトラブルシューティングおよび長期間の保守に役立つように、このファイルへの変更は最小限に抑えるようにしてください。
-- **Extensions** ファイル。テナントの固有の構成変更を保持しています このポリシー ファイルは、Base ファイルから派生したものです。 このファイルを使用して、新しい機能を追加するか、既存の機能をオーバーライドします。 たとえば、このファイルを使用して、新しい ID プロバイダーとフェデレーションします。
-- **証明書利用者 (RP)** ファイル。証明書利用者アプリケーション (Web、モバイル、またはデスクトップ アプリケーションなど) から直接呼び出される、単一タスクに焦点を置いています。 サインアップやサインイン、パスワードのリセット、プロファイルの編集などの各自のタスクには、それぞれ独自の証明書利用者ポリシー ファイルが必要です。 このポリシー ファイルは、Extensions ファイルから派生したものです。
+- **Localization** ファイル。ローカライズ文字列が格納されています。 このポリシー ファイルは、Base ファイルから派生したものです。 このファイルは、顧客のニーズに合わせてさまざまな言語に対応するために使用します。
+- **Extensions** ファイル。テナントの固有の構成変更を保持しています このポリシー ファイルは、Localization ファイルから派生したものです。 このファイルを使用して、新しい機能を追加するか、既存の機能をオーバーライドします。 たとえば、このファイルを使用して、新しい ID プロバイダーとフェデレーションします。
+- **証明書利用者 (RP)** ファイル。証明書利用者アプリケーション (Web、モバイル、またはデスクトップ アプリケーションなど) から直接呼び出される、単一タスクに焦点を置いています。 サインアップやサインイン、プロファイルの編集などの各自のタスクには、それぞれ独自の証明書利用者ポリシー ファイルが必要です。 このポリシー ファイルは、Extensions ファイルから派生したものです。
 
 継承モデルは次のとおりです。
 
@@ -129,7 +133,7 @@ Web ブラウザーにページを表示してユーザーから情報を収集�
 
 Azure AD B2C カスタム ポリシー内で、独自のビジネス ロジックを統合して、必要なユーザー エクスペリエンスを構築し、サービスの機能を拡張できます。 作業を開始するためのベスト プラクティスと推奨事項のセットが用意されています。
 
-- **拡張ポリシー** または **証明書利用者ポリシー** 内にロジックを作成します。 新しい要素を追加できます。その場合、同じ ID を参照することによって基本ポリシーがオーバーライドされます。 これにより、Microsoft が新しいスターター パックをリリースした場合に、後で基本ポリシーを簡単にアップグレードできるようにしながら、プロジェクトをスケールアウトすることができます。
+- **拡張ポリシー** または **証明書利用者ポリシー** 内にロジックを作成します。 新しい要素を追加できます。その場合、同じ ID を参照することによって基本ポリシーがオーバーライドされます。 このアプローチにより、Microsoft が新しいスターター パックをリリースした場合に、後で基本ポリシーを簡単にアップグレードできるようにしながら、プロジェクトをスケールアウトすることができます。
 - **基本ポリシー** 内では、変更を行わないことを強くお勧めします。 必要に応じて、変更が加えられた場所にコメントを追加します。
 - 技術プロファイルのメタデータなどの要素をオーバーライドする場合は、基本ポリシーから技術プロファイル全体をコピーしないようにしてください。 代わりに、要素の必須セクションだけをコピーします。 変更を行う方法の例については、[電子メールの確認の無効化](./disable-email-verification.md)に関するページを参照してください。
 - コア機能が共有されている技術プロファイルの複製を減らすには、[技術プロファイルを含める方法](technicalprofiles.md#include-technical-profile)に従います。
@@ -156,7 +160,7 @@ Azure AD B2C カスタム ポリシーの使用を開始します。
 
 1. [Azure AD B2C テナントを作成する](tutorial-create-tenant.md)
 1. ポリシーをテストできるようにするために、Azure portal を使用して [Web アプリケーションを登録します](tutorial-register-applications.md)。
-1. 必要な[ポリシー キー](tutorial-create-user-flows.md?pivots=b2c-custom-policy#add-signing-and-encryption-keys)を追加し、[Identity Experience Framework アプリケーションを登録します](tutorial-create-user-flows.md?pivots=b2c-custom-policy#register-identity-experience-framework-applications)。
+1. 必要な[ポリシー キー](tutorial-create-user-flows.md?pivots=b2c-custom-policy#add-signing-and-encryption-keys-for-identity-experience-framework-applications)を追加し、[Identity Experience Framework アプリケーションを登録します](tutorial-create-user-flows.md?pivots=b2c-custom-policy#register-identity-experience-framework-applications)。
 1. [Azure AD B2C ポリシー スターター パックを取得し](tutorial-create-user-flows.md?pivots=b2c-custom-policy#get-the-starter-pack)、テナントにアップロードします。 
 1. スターター パックをアップロードした後、[サインアップまたはサインイン ポリシーをテストします](tutorial-create-user-flows.md?pivots=b2c-custom-policy#test-the-custom-policy)。
 1. [Visual Studio Code](https://code.visualstudio.com/) (VS Code) をダウンロードしてインストールすることをお勧めします。 Visual Studio Code は、軽量でありながら強力なソース コード エディターです。これはデスクトップで使用でき、Windows、macOS、Linux に対応しています。 VS Code では、[VS Code 用の Azure AD B2C 拡張機能](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)をインストールすることにより、Azure AD B2C カスタム ポリシーの XML ファイルをすばやく操作および編集できます。

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: b5ae38a3dc4a9324a4141314106d67c96c06c8e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39547b3405e25faabef64b6a9c80d0405fe1e66a
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955039"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586392"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の Java コード サンプル
 
@@ -49,7 +49,11 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 | [クイックスタート](https://github.com/Azure-Samples/azure-search-java-samples/tree/java-rest-api/quickstart) | [クイック スタート:Java と REST で検索インデックスを作成する方法](search-get-started-java.md)に関する記事のソース コード。 このサンプルは、Java SDK 用に更新されていません。 ここでは、REST API を呼び出します。 |
 
 > [!Tip]
+<<<<<<< HEAD
 > [サンプル ブラウザー](/samples/browse/?languages=java&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを GitHub 内で検索してください。
+=======
+> GitHub での Microsoft コード サンプルの検索には、[サンプル ブラウザー](/samples/browse/?languages=java&products=azure-cognitive-search)をお試しください。製品、サービス、言語でフィルター処理できます。
+>>>>>>> repo_sync_working_branch
 
 ## <a name="other-samples"></a>その他のサンプル
 

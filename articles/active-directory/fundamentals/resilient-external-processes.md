@@ -13,16 +13,16 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58ef522f5b048db0ef120625d9e894c8e14c070e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fede718111b6f1dcc9e49e8c96ec88a967b31b20
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724409"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042336"
 ---
 # <a name="resilient-interfaces-with-external-processes"></a>外部プロセスとのインターフェイスの回復性の向上
 
-この記事では、ユーザー体験で RESTFul API を計画して実装する方法と、API エラーに対するアプリケーションの回復性を高める方法について説明します。
+この記事では、ユーザー体験で RESTful API を計画して実装する方法と、API エラーに対するアプリケーションの回復性を高める方法について説明します。
 
 ![外部プロセス コンポーネントとのインターフェイスを示す図](media/resilient-external-processes/external-processes-architecture.png)
 
@@ -38,7 +38,7 @@ Identity Experience Framework (IEF) ポリシーを使用すると、 [RESTful A
 
 - 可能な場合は必ず、事前認証済みのパスから API 呼び出しを削除します。 削除できない場合は、API の前で、サービス拒否 (DoS) および分散型サービス拒否 (DDoS) 攻撃からの厳格な保護を配置する必要があります。 攻撃者はサインイン ページを読み込み、API に大量の DoS 攻撃を実行し、アプリケーションを機能停止状態にすることができます。 たとえば、サインインで CAPTCHA を使用すると、サインアップ フローが役に立ちます。
 
-- 可能な場合は必ず、[組み込みのサインアップ ユーザー フローの API コネクタ](../../active-directory-b2c/api-connectors-overview.md)を使用して、ID プロバイダーでサインインした後、またはユーザーを作成する前に Web API と統合します。 ユーザー フローは既に広範囲でテストされているため、ユーザー フロー レベルで機能、パフォーマンス、またはスケールのテストを実行する必要はない可能性があります。 その場合でも、アプリケーションの機能、パフォーマンス、およびスケールをテストする必要があります。
+- 可能な場合は常に、[組み込みのサインアップ ユーザー フローの API コネクタ](../../active-directory-b2c/api-connectors-overview.md)を使用して、サインアップ中の ID プロバイダーとのフェデレーションの後か、またはユーザーを作成する前に Web API と統合します。 ユーザー フローは既に広範囲でテストされているため、ユーザー フロー レベルで機能、パフォーマンス、またはスケールのテストを実行する必要はない可能性があります。 その場合でも、アプリケーションの機能、パフォーマンス、およびスケールをテストする必要があります。
 
 - Azure AD RESTFul API [技術プロファイル](../../active-directory-b2c/restful-technical-profile.md)では、キャッシュ動作は提供されません。 代わりに、RESTFul API プロファイルは、ポリシーに組み込まれている再試行ロジックとタイムアウトを実装します。
 

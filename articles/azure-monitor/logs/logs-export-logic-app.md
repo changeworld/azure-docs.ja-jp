@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: fd66aa1f10a32d94d515a1f0aa25c25331796a8d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5f73bbb960cd5bdce4a55a2c090ad509c1a9106
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035689"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997820"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>ロジック アプリを使用して Log Analytics ワークスペースから Azure ストレージにデータをアーカイブする
 この記事では、[Azure Logic Apps](../../logic-apps/index.yml) を使用して Azure Monitor の Log Analytics ワークスペースにあるデータを照会し、Azure Storage に送信する方法について説明します。 このプロセスは、監査とコンプライアンスのシナリオに合わせて Azure Monitor のログ データをエクスポートする必要がある場合や、別のサービスでこのデータを取得できるようにする場合に使用します。  
@@ -19,7 +19,7 @@ ms.locfileid: "102035689"
 ## <a name="other-export-methods"></a>その他のエクスポート方法
 この記事で説明する方法は、ロジック アプリを使用したログ クエリからのスケジュールされたエクスポートについて説明したものです。 特定のシナリオでデータをエクスポートするその他のオプションには、次のようなものがあります。
 
-- Log Analytics ワークスペースのすべてのデータを Azure ストレージ アカウントまたはイベント ハブにエクスポートするには、Azure Monitor ログの Log Analytics ワークスペース データ エクスポート機能を使用します。 「[Azure Monitor の Log Analytics ワークスペース データ エクスポート (プレビュー)](logs-data-export.md)」を参照してください。
+- Log Analytics ワークスペースのデータを Azure ストレージ アカウントまたはイベント ハブにエクスポートするには、Azure Monitor ログの Log Analytics ワークスペース データ エクスポート機能を使用します。 「[Azure Monitor の Log Analytics ワークスペース データ エクスポート (プレビュー)](logs-data-export.md)」を参照してください。
 - ロジック アプリを使用したワンタイム エクスポート。 「[Logic Apps および Power Automate の Azure Monitor Logs コネクタ](logicapp-flow-connector.md)」を参照してください。
 - PowerShell スクリプトを使用したローカル コンピューターへのワンタイム エクスポート。 「[Invoke-AzOperationalInsightsQueryExport]](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport) 」を参照してください。
 

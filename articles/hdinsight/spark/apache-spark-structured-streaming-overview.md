@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: fd65177fb6202b0396545043c2e63a87c7f01bbb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ac4e44a3bb21c746865b4aa3d86a75501f9cde0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864603"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064902"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark Structured Streaming の概要
 
@@ -73,7 +73,7 @@ Structured Streaming では、データがシステムに到着すると、直�
 
 最初に、データのソースとそのソースに必要なすべての設定を記述したデータフレームを構成します。 この例では、Azure Storage 内の JSON ファイルから取り出し、読み取り時にそれらのファイルにスキーマを適用します。
 
-```sql
+```scala
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions._
 
@@ -91,7 +91,7 @@ val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath)
 
 次に、ストリーミング データフレームに対する目的の操作を含むクエリを適用します。 この場合は、集計によってすべての行が 1 時間ウィンドウにグループ化された後、その 1 時間ウィンドウ内の最低、平均、および最高温度が計算されます。
 
-```sql
+```scala
 val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
 ```
 
@@ -99,7 +99,7 @@ val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min
 
 次に、各トリガー間隔内の結果テーブルに追加された行の宛先を定義します。 この例では、すべての行を、後で SparkSQL でクエリを適用できるインメモリ テーブル `temps` に出力するだけです。 完全出力モードでは、すべてのウィンドウのすべての行が毎回確実に出力さます。
 
-```sql
+```scala
 val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete")
 ``` 
 
@@ -107,7 +107,7 @@ val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temp
 
 ストリーミング クエリを起動し、終了シグナルが受信されるまで実行します。
 
-```sql
+```scala
 val query = streamingOutDF.start() 
 ``` 
 

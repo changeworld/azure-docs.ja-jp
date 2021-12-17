@@ -16,13 +16,17 @@
           href: common-questions-discovery-assessment.md
         - name: Server Migration ツール
           href: common-questions-server-migration.md
+- name: クイックスタート
+  items:
+    - name: プロジェクトを作成する - ARM テンプレート
+      href: quickstart-create-migrate-project.md
 - name: チュートリアル
   items:
     - name: 発見
       items:
-        - name: VMware VM を検出する
+        - name: VMware 環境内のサーバーを検出する
           href: tutorial-discover-vmware.md
-        - name: Hyper-V VM を検出する
+        - name: Hyper-V 環境内のサーバーを検出する
           href: tutorial-discover-hyper-v.md
         - name: 物理サーバーを検出する
           href: tutorial-discover-physical.md
@@ -32,15 +36,17 @@
           href: tutorial-discover-gcp.md
     - name: アクセス
       items:
-        - name: VMware VM の評価
+        - name: VMware 環境内のサーバーを評価する
           items:
-            - name: Azure VM への移行のために VMware VM を評価する
+            - name: Azure VM への移行のためにサーバーを評価する
               href: tutorial-assess-vmware-azure-vm.md
             - name: Azure SQL への移行のために SQL インスタンスを評価する
               href: tutorial-assess-sql.md
-            - name: AVS への移行のために VMware VM を評価する
+            - name: App Service への移行のために ASP.NET Web アプリを評価する
+              href: tutorial-assess-webapps.md
+            - name: AVS への移行のためにサーバーを評価する
               href: tutorial-assess-vmware-azure-vmware-solution.md
-        - name: Azure への移行のために Hyper-V VM を評価する
+        - name: Azure VM への移行のために Hyper-V 環境内のサーバーを評価する
           href: tutorial-assess-hyper-v.md
         - name: Azure への移行のために物理サーバーを評価する
           href: tutorial-assess-physical.md
@@ -52,9 +58,9 @@
           href: tutorial-discover-import.md
     - name: 移行
       items:
-        - name: VMware VM を移行する
+        - name: VMware 環境内のサーバーを移行する
           items:
-            - name: VMware VM の移行オプション
+            - name: VMware 環境内のサーバーの移行オプション
               href: server-migrate-overview.md
             - name: エージェントレス移行で移行する (ポータル)
               href: tutorial-migrate-vmware.md
@@ -62,7 +68,7 @@
               href: tutorial-migrate-vmware-agent.md
             - name: エージェントレス移行で移行する (PowerShell)
               href: tutorial-migrate-vmware-powershell.md
-        - name: Hyper-V VM を移行する
+        - name: Hyper-V 環境内のサーバーを移行する
           href: tutorial-migrate-hyper-v.md
         - name: 物理サーバーを移行する
           href: tutorial-migrate-physical-virtual-machines.md
@@ -73,9 +79,15 @@
     - name: コンテナー化
       items:
         - name: ASP.NET アプリのコンテナー化と AKS への移行
-          href: tutorial-containerize-aspnet-kubernetes.md
+          href: tutorial-app-containerization-aspnet-kubernetes.md
         - name: Java Web アプリのコンテナー化と AKS への移行
-          href: tutorial-containerize-java-kubernetes.md
+          href: tutorial-app-containerization-java-kubernetes.md
+        - name: ASP.NET アプリのコンテナー化と App Service への移行
+          href: tutorial-app-containerization-aspnet-app-service.md
+        - name: Java Web アプリのコンテナー化と App Service への移行
+          href: tutorial-app-containerization-java-app-service.md
+        - name: 2 日目の操作の CI/CD
+          href: tutorial-app-containerization-azure-pipeline.md
 - name: 概念
   items:
     - name: 全般
@@ -85,7 +97,7 @@
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/migrate-security-baseline?context=/azure/migrate/context/migrate-context
     - name: 発見
       items:
         - name: VMware 検出のサポート
@@ -106,6 +118,8 @@
           href: concepts-assessment-calculation.md
         - name: 評価の概要 (Azure SQL への移行)
           href: concepts-azure-sql-assessment-calculation.md
+        - name: 評価の概要 (App Service への移行)
+          href: concepts-azure-webapps-assessment-calculation.md
         - name: 評価の概要 (AVS への移行)
           href: concepts-azure-vmware-solution-assessment-calculation.md
         - name: 評価のベスト プラクティス
@@ -122,6 +136,11 @@
           href: migrate-support-matrix-physical-migration.md
         - name: レプリケーション アプライアンスの要件
           href: migrate-replication-appliance.md
+        - name: VMware エージェントレス移行のアーキテクチャ
+          href: concepts-vmware-agentless-migration.md
+          items:
+            - name: VMware のエージェントレス移行の準備をする
+              href: prepare-for-agentless-migration.md
         - name: Hyper-V 移行アーキテクチャ
           href: hyper-v-migration-architecture.md
         - name: エージェントベースの VMware 移行のアーキテクチャ
@@ -130,6 +149,11 @@
   items:
     - name: Azure Migrate プロジェクトの作成と管理
       href: create-manage-projects.md
+    - name: プライベート エンドポイントで Azure Migrate を使用する
+      href: how-to-use-azure-migrate-with-private-endpoints.md
+      items:
+        - name: ネットワーク接続のトラブルシューティング
+          href: troubleshoot-network-connectivity.md
     - name: ISV ツール/Movere を使用するための準備
       href: prepare-isv-movere.md
     - name: 発見
@@ -146,13 +170,13 @@
               href: how-to-set-up-appliance-physical.md
             - name: Azure Government でのアプライアンスのデプロイ
               href: deploy-appliance-script-government.md
-        - name: VMware VM の検出スコープの制限
+        - name: VMware 環境内のサーバーの検出範囲を制限する
           href: set-discovery-scope.md
         - name: サーバーの資格情報を追加する方法
           href: add-server-credentials.md
         - name: アプリケーション/ロール/機能の検出
           href: how-to-discover-applications.md
-        - name: 既存のプロジェクト内の SQL インスタンスの検出
+        - name: 既存のプロジェクト内の SQL インスタンスと ASP.NET Web アプリの検出
           href: how-to-discover-sql-existing-project.md
         - name: マシンの依存関係の分析 (エージェントベース)
           href: how-to-create-group-machine-dependencies.md
@@ -168,6 +192,8 @@
           href: how-to-create-assessment.md
         - name: Azure SQL の評価を作成する
           href: how-to-create-azure-sql-assessment.md
+        - name: Azure App Service の評価を作成する
+          href: how-to-create-azure-app-service-assessment.md
         - name: AVS の評価を作成する
           href: how-to-create-azure-vmware-solution-assessment.md
         - name: SQL Server データベースにアクセスする
@@ -176,9 +202,9 @@
           href: how-to-modify-assessment.md
         - name: スケールの評価
           items:
-            - name: 大量の VMware VM を評価する
+            - name: VMware 環境にある多数のサーバーを評価する
               href: scale-vmware-assessment.md
-            - name: 大量の Hyper-V VM を評価する
+            - name: Hyper-V 環境にある多数のサーバーを評価する
               href: scale-hyper-v-assessment.md
             - name: 多数の物理サーバーを評価する
               href: scale-physical-assessment.md
@@ -210,6 +236,8 @@
           href: how-to-delete-project.md
         - name: 旧バージョンの Azure Migrate を使用する
           href: migrate-v1.md
+        - name: VMware 仮想環境内のオンプレミス サーバーを Azure Arc にオンボードする
+          href: onboard-to-azure-arc-with-azure-migrate.md
         - name: Azure Lighthouse を使用して移行プロジェクトを管理する
           href: ../lighthouse/how-to/migration-at-scale.md?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json
 - name: トラブルシューティング
@@ -222,11 +250,17 @@
           href: troubleshoot-project.md
     - name: 発見
       items:
-        - name: Azure Migrate アプライアンスと検出のトラブルシューティング
-          href: troubleshoot-appliance-discovery.md
+        - name: Azure Migrate アプライアンスのトラブルシューティング
+          href: troubleshoot-appliance.md
+        - name: アプライアンスの診断によるトラブルシューティング
+          href: troubleshoot-appliance-diagnostic.md
+        - name: 検出に関するトラブルシューティング
+          href: troubleshoot-discovery.md
+        - name: 依存関係の視覚化に関するトラブルシューティング
+          href: troubleshoot-dependencies.md
     - name: アクセス
       items:
-        - name: 評価と依存関係の視覚化のトラブルシューティング
+        - name: 評価に関するトラブルシューティング
           href: troubleshoot-assessment.md
     - name: Migrate
       items:
@@ -234,8 +268,13 @@
           href: troubleshoot-changed-block-tracking-replication.md
 - name: リファレンス
   items:
+    - name: Azure CLI
+      href: /cli/azure/offazure
     - name: Azure PowerShell
       href: /powershell/module/az.migrate/
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: クラウド導入フレームワークにおける移行

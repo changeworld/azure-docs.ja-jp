@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: Azure Confidential Ledger
+summary: Azure Confidential Ledger の使用方法を知る
+metadata:
+  title: Azure Confidential Ledger のドキュメント
+  description: Azure Confidential Ledger の使用方法を知る
+  services: confidential-ledger
+  ms.service: confidential-ledger
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/15/2021
+  ms.openlocfilehash: 22cb71eef4bcf46461ac0ed3802dec010dc370c9
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131476378"
+landingContent:
+- title: Azure Confidential Ledger について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Confidential Ledger とは
+      url: overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Python クイックスタート
+      url: quickstart-python.md
+    - text: ARM テンプレートのクイックスタート
+      url: quickstart-template.md
+- title: 概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: アーキテクチャ
+      url: architecture.md
+    - text: Ledger ノードを認証する
+      url: authenticate-ledger-nodes.md
+- title: ハウツー ガイド
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Ledger ノードを認証する
+      url: authenticate-ledger-nodes.md
+    - text: クライアント証明書を作成する
+      url: create-client-certificate.md
+    - text: Ledger サービス プリンシパルを登録する
+      url: register-ledger-service-principal.md
+    - text: Azure Confidential Ledger リソース プロバイダーを登録する
+      url: register-ledger-resource-provider.md
+- title: References
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: よく寄せられる質問
+      url: faq.md

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 12/17/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d13db238674cae62f528c3d730bf892a72b8f6c2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1c2ebd04fa227bf20570bfee90a97711a0458177
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764695"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318569"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLI、REST API から読み取りレプリカを作成および管理する
 
@@ -142,14 +142,14 @@ az postgres server delete --name myserver --resource-group myresourcegroup
    }
    ```
 
-2. 変更を適用するために、[サーバーを再起動](/rest/api/postgresql/servers/restart)します。
+2. 変更を適用するために、[サーバーを再起動](/rest/api/postgresql/singleserver/servers/restart)します。
 
    ```http
    POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/restart?api-version=2017-12-01
    ```
 
 ### <a name="create-a-read-replica"></a>読み取りレプリカを作成します
-[作成 API](/rest/api/postgresql/servers/create) を使用して、読み取りレプリカを作成できます。
+[作成 API](/rest/api/postgresql/singleserver/servers/create) を使用して、読み取りレプリカを作成できます。
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{replicaName}?api-version=2017-12-01
@@ -177,14 +177,14 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > プライマリ サーバーの設定が新しい値に更新される前に、レプリカの設定をそれと同等以上の値に更新します。 このアクションは、レプリカがマスターに対するあらゆる変更に追従できるようにするのに役立ちます。
 
 ### <a name="list-replicas"></a>レプリカの一覧表示
-[レプリカ一覧表示 API](/rest/api/postgresql/replicas/listbyserver) を使用して、プライマリ サーバーのレプリカの一覧を表示できます。
+[レプリカ一覧表示 API](/rest/api/postgresql/singleserver/replicas/listbyserver) を使用して、プライマリ サーバーのレプリカの一覧を表示できます。
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>レプリカ サーバーへのレプリケーションを停止します。
-[更新 API](/rest/api/postgresql/servers/update) を使用して、プライマリ サーバーと読み取りレプリカの間のレプリケーションを停止できます。
+[更新 API](/rest/api/postgresql/singleserver/servers/update) を使用して、プライマリ サーバーと読み取りレプリカの間のレプリケーションを停止できます。
 
 プライマリ サーバーと読み取りレプリカへのレプリケーションを停止した後、それを元に戻すことはできません。 読み取りレプリカは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。 スタンドアロン サーバーをもう一度レプリカにすることはできません。
 
@@ -201,7 +201,7 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 ```
 
 ### <a name="delete-a-primary-or-replica-server"></a>プライマリ サーバーまたはレプリカ サーバーを削除する
-プライマリ サーバーまたはレプリカ サーバーを削除するには、[削除 API](/rest/api/postgresql/servers/delete) を使用します。
+プライマリ サーバーまたはレプリカ サーバーを削除するには、[削除 API](/rest/api/postgresql/singleserver/servers/delete) を使用します。
 
 プライマリ サーバーを削除すると、すべての読み取りレプリカへのレプリケーションが停止されます。 読み取りレプリカは、読み取りと書き込みの両方をサポートするようになったスタンドアロン サーバーになります。
 

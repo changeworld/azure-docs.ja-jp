@@ -6,28 +6,30 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: e9182a2a0b88f85af5305f5794fec2ffe7935701
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b6d87c3bfabf3884d9a90966994eea002a45dd8
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98631735"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674437"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL のインフラストラクチャの二重暗号化
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL は、Microsoft のマネージド キーを使用してデータに対して[保存データのストレージ暗号化](concepts-security.md#at-rest)を使用します。 バックアップを含むデータはディスク上で暗号化され、この暗号化は常に有効であり、無効にすることはできません。 暗号化について、Azure のストレージ暗号化に FIPS 140-2 検証済み暗号化モジュールと AES 256 ビット暗号化が使用されます。
 
 インフラストラクチャの二重暗号化は、サービス マネージド キーで 2 番目の暗号化レイヤーを追加します。 FIPS 140-2 の検証された暗号化モジュールを使用しますが、暗号化アルゴリズムは異なります。 これにより、保存データの保護レイヤーが追加されます。 インフラストラクチャの二重暗号化に使用されるキーは、Azure Database for MySQL サービスによっても管理されます。 インフラストラクチャの二重暗号化は、追加の暗号化レイヤーがパフォーマンスに影響を与える可能性があるため、既定では有効になっていません。
 
 > [!NOTE]
-> この機能は、Azure Database for MySQL の "汎用" および "メモリ最適化" 価格レベルでのみサポートされています。
+> 保存データの暗号化と同様に、この機能は、General Purpose および Memory Optimized 価格レベルで使用できる "汎用ストレージ v2 (最大 16 TB をサポート)" ストレージでのみサポートされます。 詳細については、[ストレージの概念](concepts-pricing-tiers.md#storage)に関するページを参照してください。 その他の制限事項については、「[制限事項](concepts-infrastructure-double-encryption.md#limitations)」セクションを参照してください。
 
 インフラストラクチャ レイヤーの暗号化には、ストレージ デバイスまたはネットワーク ワイヤに最も近いレイヤーに実装する利点があります。 Azure Database for MySQL は、サービス マネージド キーを使用して、2 つの暗号化レイヤーを実装します。 厳密にはサービス レイヤーにあっても、保存データが格納されているハードウェアに非常に近いものです。 必要に応じて、プロビジョニングされた MySQL サーバーの[ユーザーのマネージド キー](concepts-data-encryption-mysql.md)を使用して、保存データの暗号化を有効にすることもできます。 
 
 インフラストラクチャ レイヤーでの実装では、キーの多様性もサポートされます。 インフラストラクチャは、コンピューターとネットワークのさまざまなクラスターを認識している必要があります。 それにより、さまざまなキーを使用すると、インフラストラクチャ攻撃の影響範囲とさまざまなハードウェアおよびネットワーク障害を最小限に抑えることができます。 
 
 > [!NOTE]
-> インフラストラクチャの二重暗号化を使用すると、追加の暗号化プロセスによって Azure Database for MySQL サーバーのパフォーマンスが影響を受けます。
+> インフラストラクチャの二重暗号化を使用すると、追加の暗号化プロセスによって Azure Database for MySQL サーバーのスループットに 5-10% の影響があります。
 
 ## <a name="benefits"></a>メリット
 
@@ -56,14 +58,16 @@ Azure Database for MySQL によって提供される暗号化機能を一緒に�
 
 ## <a name="limitations"></a>制限事項
 
-Azure Database for MySQL の場合、サービス マネージド キーを使用したインフラストラクチャの二重暗号化のサポートには、次の制限があります。
+Azure Database for MySQL の場合、インフラストラクチャの二重暗号化のサポートには、次のようないくつかの制限があります。
 
 * この機能のサポートは、**General Purpose** および **Memory Optimized** 価格レベルに限定されています。
-* この機能は、16 TB までのストレージをサポートしているリージョンとサーバーでのみサポートされています。 最大 16 TB のストレージをサポートする Azure リージョンの一覧については、[ストレージのドキュメント](concepts-pricing-tiers.md#storage)を参照してください
+* この機能は、汎用ストレージ v2 (最大 16 TB) をサポートしているリージョンとサーバーでのみサポートされています。 最大 16 TB のストレージをサポートする Azure リージョンの一覧については、[こちら](concepts-pricing-tiers.md#storage)のドキュメントにあるストレージのセクションを参照してください
 
     > [!NOTE]
-    > - 上記のリージョンで作成されたすべての **新規** MySQL サーバーは、カスタマー マネージャー キーによる暗号化もサポートしています。 この場合、特定のポイントインタイム リストア (PITR) または読み取りレプリカによって作成されたサーバーは、"新規" とは見なされません。
-    > - プロビジョニングされたサーバーによって最大 16 TB がサポートされているかどうかを検証するには、ポータルの [価格レベル] ブレードにアクセスして、ストレージ スライダーを 16 TB まで動かせるか見て確認できます。 スライダーを最大 4 TB までしか動かせない場合、カスタマー マネージド キーを使用した暗号化がサポートされていない可能性があります。ただし、データは常にサービス マネージド キーを使用して暗号化されます。 質問がある場合は、AskAzureDBforMySQL@service.microsoft.com までご連絡ください。
+    > - 汎用ストレージ v2 をサポートしている [Azure リージョン](concepts-pricing-tiers.md#storage)で作成されたすべての新しい MySQL サーバーで、カスタマー マネージド キーによる暗号化のサポートを **利用できます**。 ポイント イン タイム リストア (PITR) サーバーまたは読み取りレプリカは、理論上 ' 新規 ' には該当しません。
+    > - プロビジョニングされたサーバーによって汎用ストレージ v2 がサポートされているかどうかを検証するには、ポータルの [価格レベル] ブレードにアクセスして、プロビジョニング済みのサーバーでサポートされる最大ストレージ サイズを確認します。 スライダーを最大 4 TB まで動かすことができる場合、お使いのサーバーは汎用ストレージ v1 上にあり、カスタマー マネージド キーを使用した暗号化はサポートされません。 ただし、データは常にサービス マネージド キーを使用して暗号化されます。 質問がある場合は、AskAzureDBforMySQL@service.microsoft.com までご連絡ください。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

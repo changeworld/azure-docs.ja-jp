@@ -1,38 +1,33 @@
 ---
-title: チュートリアル - Azure 内の Linux 仮想マシンに LAMP をデプロイする
-description: このチュートリアルでは、Azure 内の Linux 仮想マシンに LAMP スタックをインストールする方法について説明します
-services: virtual-machines
-documentationcenter: virtual-machines
+title: チュートリアル - VM に LAMP と WordPress をデプロイする
+description: このチュートリアルでは、Azure 内の Linux 仮想マシンに LAMP スタックと WordPress をインストールする方法について説明します。
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.collection: linux
-ms.assetid: 6c12603a-e391-4d3e-acce-442dd7ebb2fe
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 01/30/2019
+ms.date: 04/20/2021
 ms.author: cynthn
-ms.openlocfilehash: 3813931f47c110abcfb595065c1415ca9ed84c9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec73bc6c6f7563f1513f4575b5ee3c9b4a244e7c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564715"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122699001"
 ---
-# <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンに LAMP Web サーバーをインストールする
+# <a name="tutorial-install-a-lamp-stack-on-an-azure-linux-vm"></a>チュートリアル: Azure Linux VM に LAMP スタックをインストールする
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 この記事では、Apache Web サーバー、MySQL、PHP (LAMP スタック) を Azure　上の Ubuntu VM にデプロイする方法について説明します。 LAMP サーバーの動作を確認するために、WordPress サイトをインストールし、構成することもできます。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Ubuntu 仮想マシン (LAMP スタックで 'L') を作成する
+> * Ubuntu VM を作成する 
 > * Web トラフィック用にポート 80 を開く
 > * Apache、MySQL、および PHP をインストールする
 > * インストールと構成を確認する
-> * LAMP サーバーに WordPress をインストールする
+> * WordPress のインストール 
 
 このセットアップは、簡単なテストまたは概念実証のためのものです。 運用環境の推奨事項を含め、LAMP スタックの詳細については、[Ubuntu ドキュメント](https://help.ubuntu.com/community/ApacheMySQLPHP)を参照してください。
 
@@ -40,7 +35,72 @@ ms.locfileid: "102564715"
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-[!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
+## <a name="create-a-resource-group"></a>リソース グループを作成する
+
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+
+次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+
+```azurecli-interactive
+az group create --name myResourceGroup --location eastus
+```
+
+## <a name="create-a-virtual-machine"></a>仮想マシンの作成
+
+[az vm create](/cli/azure/vm) コマンドで VM を作成します。 
+
+次の例では、*myVM* という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 このコマンドは、管理者ユーザー名として *azureuser* も設定します。 後でこの名前を使って VM に接続します。 
+
+```azurecli-interactive
+az vm create \
+    --resource-group myResourceGroup \
+    --name myVM \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys
+```
+
+VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAddress` を書き留めておきます。 このアドレスは、後の手順で VM にアクセスするために使われます。
+
+```output
+{
+  "fqdns": "",
+  "id": "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
+  "location": "eastus",
+  "macAddress": "00-0D-3A-23-9A-49",
+  "powerState": "VM running",
+  "privateIpAddress": "10.0.0.4",
+  "publicIpAddress": "40.68.254.142",
+  "resourceGroup": "myResourceGroup"
+}
+```
+
+
+
+## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く 
+
+Azure にデプロイされている Linux VM に対しては、既定で SSH 接続のみが許可されます。 この VM は Web サーバーとして使用することになるため、インターネットからのポート 80 を開放する必要があります。 [az vm open-port](/cli/azure/vm) コマンドを使用して、目的のポートを開きます。  
+ 
+```azurecli-interactive
+az vm open-port --port 80 --resource-group myResourceGroup --name myVM
+```
+
+VM へのポートを開く方法の詳細については、[ポートの開放](nsg-quickstart.md)に関するページを参照してください。
+
+## <a name="ssh-into-your-vm"></a>VM への SSH 接続
+
+VM のパブリック IP アドレスが未確認である場合は、[az network public-ip list](/cli/azure/network/public-ip) コマンドを実行します。 後の複数の手順で、この IP アドレスが必要になります。
+
+```azurecli-interactive
+az network public-ip list --resource-group myResourceGroup --query [].ipAddress
+```
+
+次のコマンドを使用して、仮想マシンとの SSH セッションを作成します。 ご使用の仮想マシンの正しいパブリック IP アドレスに置き換えてください。 この例の IP アドレスは *40.68.254.142* です。 *azureuser* は、VM を作成するときに設定された管理者ユーザー名です。
+
+```bash
+ssh azureuser@40.68.254.142
+```
+
 
 ## <a name="install-apache-mysql-and-php"></a>Apache、MySQL、および PHP をインストールする
 
@@ -53,10 +113,7 @@ sudo apt update && sudo apt install lamp-server^
 
 パッケージやその他の依存関係をインストールすることが求められます。 このプロセスにより、MySQL で PHP を使用するための必要最小限の PHP 拡張機能がインストールされます。  
 
-## <a name="verify-installation-and-configuration"></a>インストールと構成を確認する
-
-
-### <a name="verify-apache"></a>Apache を確認する
+## <a name="verify-apache"></a>Apache を確認する
 
 次のコマンドで Apache のバージョンを確認します。
 ```bash
@@ -68,7 +125,7 @@ Apache がインストールされ、VM に対しポート 80 が開かれると
 ![Apache の既定のページ][3]
 
 
-### <a name="verify-and-secure-mysql"></a>MySQL を確認してセキュリティで保護する
+## <a name="verify-and-secure-mysql"></a>MySQL を確認してセキュリティで保護する
 
 次のコマンドを使用して MySQL のバージョンを確認します (大文字の `V` パラメーターに注意)。
 
@@ -92,7 +149,7 @@ sudo mysql -u root -p
 
 完了したら「`\q`」と入力して、mysql プロンプトを終了します。
 
-### <a name="verify-php"></a>PHP を確認する
+## <a name="verify-php"></a>PHP を確認する
 
 次のコマンドで PHP のバージョンを確認します。
 

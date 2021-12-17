@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 14c5484268940a927965acf798310c3bdccf17d3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 208c1c16c07bdd32730d17e990e037f0fe7da015
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309715"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060461"
 ---
 # <a name="hbv3-series"></a>HBv3 シリーズ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 HBv3 シリーズ VM は、流体力学、明示的および暗黙的な有限要素分析、気象モデリング、地震処理、貯水池シミュレーション、RTL シミュレーションなど、HPC アプリケーションのために最適化されています。 HBv3 VM は、AMD EPYC™ 7003 シリーズ (Milan) CPU を最大 120 コア、448 GB の RAM を備え、ハイパースレッド機能はありません。 HBv3 シリーズ VM も毎秒 350 GB のメモリ帯域幅を提供します。L3 キャッシュはコアあたり最大 32 MB です。ブロック デバイス SSD パフォーマンスは最大毎秒 7 GB です。クロック周波数は最大 3.675 GHz です。 
 
@@ -23,12 +25,12 @@ HBv3 シリーズ VM はすべて、NVIDIA ネットワークの毎秒 200 Gb �
 
 [Premium Storage](premium-storage-performance.md):サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
-[Ultra Disks](disks-types.md#ultra-disk): サポートされています (可用性、使用状況、およびパフォーマンスについては、[詳細をご覧ください](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)) <br>
+[Ultra Disks](disks-types.md#ultra-disks): サポートされています (可用性、使用状況、およびパフォーマンスの[詳細](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)を参照) <br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): 近日公開予定<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています<br>
 <br>
 
 |サイズ |vCPU |プロセッサ |メモリ (GiB) |メモリ帯域幅 GB/秒 |ベース CPU 周波数 (GHz) |全コア周波数 (GHz、ピーク) |シングルコア周波数 (GHz、ピーク) |RDMA パフォーマンス (GB/秒) |MPI のサポート |一時ストレージ (GiB) |最大データ ディスク数 |最大イーサネット vNIC 数 |
@@ -48,7 +50,7 @@ HBv3 シリーズ VM はすべて、NVIDIA ネットワークの毎秒 200 Gb �
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>その他のサイズ
+## <a name="other-sizes-and-information"></a>その他のサイズと情報
 
 - [汎用](sizes-general.md)
 - [メモリの最適化](sizes-memory.md)
@@ -56,6 +58,11 @@ HBv3 シリーズ VM はすべて、NVIDIA ネットワークの毎秒 200 Gb �
 - [GPU の最適化](sizes-gpu.md)
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 - [旧世代](sizes-previous-gen.md)
+
+料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+
+ディスクの種類の詳細については、「[Azure で利用できるディスクの種類](disks-types.md)」を参照してください
+
 
 ## <a name="next-steps"></a>次のステップ
 

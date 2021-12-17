@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro で帯域幅のスケジュールを管理する | Microsoft Docs
-description: Azure portal を使用して Azure Stack Edge Pro の帯域幅のスケジュールを管理する方法について説明します。
+title: Azure Stack Edge Pro FPGA による帯域幅スケジュールの管理
+description: Azure portal を使用して Azure Stack Edge Pro FPGA の帯域幅スケジュールを管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: e73a02c93807072e30c8ce2a1a7feb30e9d3c8c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a89b5359b48b1ad7d0e0a3c32f0e637ba5b2264
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91978970"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460808"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro の帯域幅のスケジュールを管理する  
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-fpga"></a>Azure portal を使用して Azure Stack Edge Pro FPGA の帯域幅スケジュールを管理する  
 
-この記事では、Azure Stack Edge Pro のユーザーを管理する方法について説明します。 帯域幅のスケジュールを使用すると、複数の時刻スケジュールにわたって、ネットワーク帯域幅の使用量を構成することができます。 これらのスケジュールは、デバイスとクラウド間のアップロード操作とダウンロード操作に適用することができます。
+この記事では、Azure Stack Edge Pro FPGA のユーザーを管理する方法について説明します。 帯域幅のスケジュールを使用すると、複数の時刻スケジュールにわたって、ネットワーク帯域幅の使用量を構成することができます。 これらのスケジュールは、デバイスとクラウド間のアップロード操作とダウンロード操作に適用することができます。
 
-Azure portal を使用して Azure Stack Edge Pro の帯域幅スケジュールを追加、変更、または削除することができます。
+Azure portal を使用して Azure Stack Edge Pro FPGA の帯域幅スケジュールを追加、変更、または削除することができます。
 
 この記事では、次のことについて説明します。
 
@@ -71,7 +71,7 @@ Azure portal を使用して Azure Stack Edge Pro の帯域幅スケジュール
 
 ## <a name="delete-a-schedule"></a>スケジュールの削除
 
-Azure Stack Edge Pro デバイスに関連付けられている帯域幅のスケジュールを削除するには、次の手順を実行します。
+Azure Stack Edge Pro FPGA デバイスに関連付けられている帯域幅スケジュールを削除するには、次の手順を実行します。
 
 1. Azure portal で Azure Stack Edge リソースに移動し、 **[帯域幅]** に移動します。  
 

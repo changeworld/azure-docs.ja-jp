@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: rogarana
-ms.openlocfilehash: 1387933dc82c07e73b7715d6593238ea8c993e93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 70fa104ef285ecffe11940d04deb451a9cdf39ee
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96005329"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866728"
 ---
 Azure Portal または SMB を使用して Azure ファイル共有に加えられた変更は、サーバー エンドポイントに対する変更とは異なり、検出とレプリケーションが即座に行われることはありません。 Azure Files にはまだ変更通知/ジャーナルがないため、ファイルが変更されたときに自動的に同期セッションを開始する方法はありません。 Windows Server では、Azure File Sync は [Windows USN ジャーナル](/windows/win32/fileio/change-journals)を使用して、ファイルが変更されたときに同期セッションを自動的に開始します。
 
@@ -18,6 +18,9 @@ Azure ファイル共有に対する変更を検出するために、Azure File 
 Azure ファイル共有で変更されたファイルを直ちに同期したければ、**Invoke-AzStorageSyncChangeDetection** PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 このコマンドレットは、なんらかの自動プロセスによって Azure ファイル共有に変更が加えられたり、管理者によって (ファイルやディレクトリを共有に移動するなどの) 変更が実行されたりするシナリオを意図したものです。 エンド ユーザーの変更に関しては、Azure File Sync エージェントを IaaS VM にインストールし、エンド ユーザーに IaaS VM 経由でファイル共有にアクセスしてもらうことをお勧めします。 そのようにすることで、すべての変更がすぐに他のエージェントと同期され、Invoke-AzStorageSyncChangeDetection コマンドレットを使う必要はありません。 詳細については、[Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) のドキュメントを参照してください。
 
 >[!NOTE]
+>**Invoke-AzStorageSyncChangeDetection** PowerShell コマンドレットは、最大 10,000 個の項目のみを検出できます。 その他の制限事項については、[Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) のドキュメントを参照してください。
+
+>[!NOTE]
 >REST を使用して Azure ファイル共有に加えられた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
 
-Windows Server 上のボリュームに対する USN のような変更検出を Azure ファイル共有に追加するための調査を行っています。 今後この機能の開発を優先的に進めるために、[Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) で投票をお願いします。
+Windows Server 上のボリュームに対する USN のような変更検出を Azure ファイル共有に追加するための調査を行っています。 今後この機能の開発を優先的に進めるために、[Azure コミュニティ フィードバック](https://feedback.azure.com/d365community/idea/26f8aa9d-3725-ec11-b6e6-000d3a4f0f84)で投票をお願いします。

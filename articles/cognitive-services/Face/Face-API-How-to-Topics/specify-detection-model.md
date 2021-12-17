@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 72fd005ce44d116f86d9a0b4c0d1932e2e4facfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b933829ec9cfdb322cf0498c10966b9c244ac98e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102425772"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727961"
 ---
 # <a name="specify-a-face-detection-model"></a>顔検出モデルを指定する
 
@@ -33,7 +33,7 @@ Face サービスでは、機械学習モデルを使用して、画像内の人
 AI による顔検出の概念を理解している必要があります。 そうでない場合は、顔検出に関する概念ガイドまたはハウツー ガイドを参照してください。
 
 * [顔検出の概念](../concepts/face-detection.md)
-* [画像内の顔を検出する方法](HowtoDetectFacesinImage.md)
+* [検出 API を呼び出す](HowtoDetectFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>指定されたモデルで顔を検出する
 
@@ -102,14 +102,14 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 |---------|---------|---|
 |すべての顔検出操作に対する既定の選択です。 | 2019 年 5 月にリリースされ、すべての顔検出操作でオプションとして利用可能です。 |  2021 年 2 月にリリースされ、すべての顔検出操作でオプションとして利用可能です。
 |小さい顔、横顔、不鮮明な顔には最適化されていません。  | 小さい顔、横顔、不鮮明な顔での精度が向上しています。 | より小さい顔 (64x64 ピクセル) や回転した顔の向きなど、さらに精度が向上しました。
-|検出呼び出しで主な顔の属性 (頭部姿勢、年齢、感情など) が指定されている場合は、それらを返します。 |  顔の属性を返しません。     | 検出呼び出しで "faceMask" と "noseAndMouthCovered" の各属性が指定されている場合は、それらを返します。
-|検出呼び出しで顔のランドマークが指定されている場合は、それらを返します。   | 顔のランドマークを返しません。  | 顔のランドマークを返しません。
+|検出呼び出しで主な顔の属性 (頭部姿勢、年齢、感情など) が指定されている場合は、それらを返します。 |  顔の属性を返しません。     | 検出呼び出しでマスクと頭部姿勢の各属性が指定されている場合は、それらを返します。
+|検出呼び出しで顔のランドマークが指定されている場合は、それらを返します。   | 顔のランドマークを返しません。  | 検出呼び出しで顔のランドマークが指定されている場合は、それらを返します。
 
 検出モデルのパフォーマンスを比較する最良の方法は、それらをサンプル データセットで使用することです。 さまざまな画像、特に多数の顔や識別しづらい顔に対して、それぞれの検出モデルを使用して [Face - Detect] API を呼び出すことをお勧めします。 各モデルによって返される顔の数に注意してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、さまざまな Face API で使用する検出モデルを指定する方法について説明しました。 次は、クイック スタートに従って顔検出を使い始めてみましょう。
+この記事では、さまざまな Face API で使用する検出モデルを指定する方法について説明しました。 次は、クイック スタートに従って顔検出と分析を開始します。
 
 * [Face .NET SDK](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [Face Python SDK](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)

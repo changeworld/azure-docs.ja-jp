@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 4/05/2021
 ms.author: azhussai
-ms.openlocfilehash: b8ddc5e57b9ce56d6bce7e220bc840ba0fa43ae2
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: c8bcaa692fe33229ef7d71f717879f39ffa88279
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384759"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742720"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal"></a>Azure Application Gateway を使用して URL を書き換える - Azure portal
 
@@ -97,7 +97,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
    e. **[URL クエリ文字列の値]** に、URL クエリ文字列の新しい値を入力します。 この例では、**id={var_uri_path_1}&title={var_uri_path_2}** を使用します
     
-    `{var_uri_path_1}` と `{var_uri_path_1}` は、この式 `.*article/(.*)/(.*)` で条件を評価しているときに取得された部分文字列を取り込むために使用されます
+    `{var_uri_path_1}` と `{var_uri_path_2}` は、この式 `.*article/(.*)/(.*)` で条件を評価しているときに取得された部分文字列を取り込むために使用されます
     
    f. **[OK]** を選択します。
 
@@ -120,4 +120,4 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 ##  <a name="next-steps"></a>次のステップ
 
-一般的なユース ケースにおける書き換えの設定方法の詳細については、[一般的な書き換えのシナリオ](rewrite-http-headers.md)に関する記事を参照してください。
+一般的なユース ケースにおける書き換えの設定方法の詳細については、[一般的な書き換えのシナリオ](./rewrite-http-headers-url.md)に関する記事を参照してください。

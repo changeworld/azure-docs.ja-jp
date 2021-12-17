@@ -4,20 +4,20 @@ description: このトピックでは、Azure SQL Database のデータベース
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: development
+ms.subservice: connect
 ms.custom: seo-python-october2019, sqldbrb=2, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma
 ms.date: 12/19/2020
-ms.openlocfilehash: f21e11e33d3ddf1489dba3419766a8adaa878d5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca6f5b9107daa321f6451ca63100f493aa081ba2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491964"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466994"
 ---
 # <a name="quickstart-use-python-to-query-a-database"></a>クイックスタート: Python を使用してデータベースを照会する
 
@@ -59,10 +59,10 @@ Python と Azure SQL Database のデータベースの詳細については、�
    server = '<server>.database.windows.net'
    database = '<database>'
    username = '<username>'
-   password = '<password>'   
+   password = '{<password>}'   
    driver= '{ODBC Driver 17 for SQL Server}'
    
-   with pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password) as conn:
+   with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password) as conn:
        with conn.cursor() as cursor:
            cursor.execute("SELECT TOP 3 name, collation_name FROM sys.databases")
            row = cursor.fetchone()

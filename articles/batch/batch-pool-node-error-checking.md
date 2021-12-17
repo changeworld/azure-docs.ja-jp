@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 86ea4ce4d596875e455d7b86250882713a14337f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 295877bd894d9a91ba310d133c670a40db5f10ec
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720153"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454943"
 ---
 # <a name="check-for-pool-and-node-errors"></a>プールとノードのエラーのチェック
 
@@ -40,7 +40,7 @@ Azure Batch プールを作成して管理するとき、いくつかの操作�
 - [プールが仮想ネットワーク](./batch-virtual-network.md)の時の不十分なリソース
   - ロード バランサー、パブリック IP、ネットワーク セキュリティ グループなどのリソースを、バッチ アカウントと同じサブスクリプションに作成する場合があります。 これらのリソースのためのサブスクリプション クォータが十分であるか確認してください。
 - カスタム VM イメージを使用した大規模なプール
-  - カスタム VM イメージを使用する大規模なプールは割り当てに時間がかかり、タイムアウトのサイズ変更が発生することがあります。  制限と構成に関する推奨事項については、「[Shared Image Gallery を使用してプールを作成する](batch-sig-images.md)」を参照してください。
+  - カスタム VM イメージを使用する大規模なプールは割り当てに時間がかかり、タイムアウトのサイズ変更が発生することがあります。  制限と構成に関する推奨事項については、[Azure Compute Gallery を使用したプール作成](batch-sig-images.md)に関するページを参照してください。
 
 ### <a name="automatic-scaling-failures"></a>自動スケールの失敗
 

@@ -1,17 +1,19 @@
 ---
 title: Azure Site Recovery で VMware vCenter サーバーを管理する
 description: この記事では、Azure Site Recovery を使用して VMware VM を Azure にディザスター リカバリーするために、VMware vCenter を追加して管理する方法について説明します。
-author: Rajeswari-Mamilla
+services: site-recovery
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/24/2019
-ms.author: ramamill
-ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: b7c0a8a6305f3142d170cb601ec23597a69fe5b0
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84692521"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576777"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter Server を管理する
 

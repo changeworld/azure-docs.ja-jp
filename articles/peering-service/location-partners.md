@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: cd57825172f69811dfa63e1d1dea048bbf1d5c82
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 11a9eac39a672848eee2ea966e5a819d6c771c7b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626199"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360989"
 ---
 # <a name="peering-service-partners"></a>Peering Service パートナー
 
@@ -34,7 +34,7 @@ Microsoft は、世界中のインターネット サービス プロバイダ�
 | [BBIX](https://www.bbix.net/en/service/) |日本 |
 | [CCL](https://concepts.co.nz/news/general-news/) |オセアニア |
 | [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|ヨーロッパ、アジア|
-| [DE-CIX](https://www.de-cix.net/microsoft)|ヨーロッパ、北米 |
+| [DE-CIX](https://www.de-cix.net/)|ヨーロッパ、北米 |
 | [IIJ](https://www.iij.ad.jp/en/) | 日本 |
 | [Intercloud](https://intercloud.com/microsoft-saas-applications/)|ヨーロッパ  |
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |オセアニア  |
@@ -46,6 +46,8 @@ Microsoft は、世界中のインターネット サービス プロバイダ�
 | [Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/wireline/ip-plus.html) |ヨーロッパ|
 | [CMC Networks](https://www.cmcnetworks.net/products/microsoft-azure-peering-services.html) |アフリカ|
 | [MainOne](https://www.mainone.net/connectivity-services/microsoft-azure-peering-service/) |アフリカ|
+| [BICS](https://www.bics.com/services/capacity-solutions/cloud-connect/microsoft-azure-cloud-connect/) |ヨーロッパ|
+| [Telstra International](https://www.telstra.com.sg/en/products/global-networks/global-internet/global-internet-direct) |アジア |
 
 > [!NOTE]
 >Peering Service パートナー プログラムへの参加の詳細については、peeringservice@microsoft.com にアクセスしてください。
@@ -54,7 +56,7 @@ Microsoft は、世界中のインターネット サービス プロバイダ�
 ## <a name="next-steps"></a>次のステップ
 
 - Peering Service の詳細については、[Peering Service の概要](about.md)に関するページを参照してください。
-- Peering Service 接続に関する FAQ の詳細については、[Peering Service 接続に関する FAQ](faq.md) に関するページを参照してください。
+- Peering Service 接続に関する FAQ の詳細については、[Peering Service 接続に関する FAQ](faq.yml) に関するページを参照してください。
 - パートナーのオンボードと Peering Service 構成の詳細については、[Peering Service の構成](connection.md)に関するページを参照してください。
 - Peering Service 接続の詳細については、「[Peering Service 接続](connection.md)」を参照してください。
 - Peering Service 接続のテレメトリの詳細については、「[Peering Service 接続のテレメトリ](connection-telemetry.md)」を参照してください。

@@ -1,34 +1,34 @@
 ---
-title: Azure 統合リソースを Azure Germany からグローバル Azure に移行する
+title: Azure 統合リソースの Azure Germany をグローバル Azure に移行する
 description: この記事では、Azure 統合リソースの Azure Germany からグローバル Azure への移行に関する情報を提供します。
+ms.topic: article
+ms.date: 10/16/2020
 author: gitralf
-services: germany
-cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 8/15/2018
-ms.topic: article
-ms.custom: bfmigrate
-ms.openlocfilehash: d85c2e7c1aa3738ce6a9d3130d2ddc400c333a9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: bfmigrate, devx-track-azurepowershell
+ms.openlocfilehash: 0a4ea6393741e15d8dce94869213c62c08537c7e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66151200"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "117029059"
 ---
 # <a name="migrate-integration-resources-to-global-azure"></a>統合リソースをグローバル Azure に移行する
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 この記事には、Azure 統合リソースの Azure Germany からグローバル Azure への移行に役立つ可能性のある情報が含まれています。
 
 ## <a name="service-bus"></a>Service Bus
 
-Azure Service Bus サービスには、データのエクスポートまたはインポート機能がありません。 Service Bus リソースを Azure Germany からグローバル Azure に移行するには、リソースを [Azure Resource Manager テンプレートとして](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)エクスポートできます。 エクスポートしたテンプレートをグローバル Azure に合わせて調整し、リソースを再作成します。
+Azure Service Bus サービスには、データのエクスポートまたはインポート機能がありません。 Service Bus リソースを Azure Germany からグローバル Azure に移行するには、リソースを [Azure Resource Manager テンプレートとして](../azure-resource-manager/templates/export-template-portal.md)エクスポートできます。 エクスポートしたテンプレートをグローバル Azure に合わせて調整し、リソースを再作成します。
 
 > [!NOTE]
 > Resource Manager テンプレートのエクスポートでは、データ (メッセージなど) がコピーされません。 テンプレートのエクスポートでは、メタデータのみ再作成されます。
 
 > [!IMPORTANT]
-> 場所、Azure Key Vault シークレット、証明書、および、その他の GUID を新しいリージョンと一致するように、変更します。
+> 新しいリージョンと一貫性を維持できるように、場所、Azure Key Vault シークレット、証明書、およびその他の GUID を変更します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -39,11 +39,11 @@ Resource Manager テンプレートをエクスポートすると、次の Servi
 - 名前空間
 - キュー
 - トピック
-- Subscriptions
+- サブスクリプション
 - ルール
 - 承認規則
 
-### <a name="keys"></a>構成する
+### <a name="keys"></a>[キー]
 
 エクスポートし、再作成する前述の手順では、承認規則に関連付けられている Shared Access Signature キーがコピーされません。 Shared Access Signature キーを保持する必要がある場合、オプションのパラメーター `-Keyvalue` で `New-AzServiceBuskey` コマンドレットを使用して、キーを文字列として受け付けます。 [Azure PowerShell Az モジュール](/powershell/azure/install-az-ps)で、更新されたコマンドレットを使用できます。
 
@@ -54,7 +54,7 @@ New-AzServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace
 ```
 
 ```powershell
-New-AzServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace> -Queue <queuename> -Name <name of Authorization rule> -RegenerateKey <PrimaryKey/SecondaryKey> -KeyValue <string - key value>
+New-AzServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace> -Queue <queuename> -Name <name of Authorization rule> -RegenerateKey <PrimaryKey/SecondaryKey> -KeyValue <string - key value>
 ```
 
 ```powershell
@@ -78,22 +78,22 @@ Endpoint=sb://myBFProdnamespaceName.**servicebus.cloudapi.de**/;SharedAccessKeyN
 Endpoint=sb://myProdnamespaceName.**servicebus.windows.net**/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXx=
 ```
 
-詳細:
+詳細情報:
 
-- [Service Bus のチュートリアル](https://docs.microsoft.com/azure/service-bus-messaging/#step-by-step-tutorials)を完了することによって知識を更新します。
-- [Resource Manager テンプレートのエクスポート](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)方法を理解するか、または [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) の概要をご覧ください。
+- [Service Bus のチュートリアル](../service-bus-messaging/index.yml)を完了することによって知識を更新します。
+- [Resource Manager テンプレートのエクスポート](../azure-resource-manager/templates/export-template-portal.md)方法を理解するか、または [Azure Resource Manager](../azure-resource-manager/management/overview.md) の概要をご覧ください。
 - [Service Bus の概要](../service-bus-messaging/service-bus-messaging-overview.md)を確認します。
 
 ## <a name="logic-apps"></a>Logic Apps
 
-Azure Logic Apps サービスは Azure Germany で使用できません。 ただし、使用可能な Azure Scheduler は非推奨とされています。 グローバル Azure で、Logic Apps を使用してスケジュール ジョブを作成します。
+Azure Logic Apps は Azure Germany では利用できませんが、代わりにグローバル Azure で Logic Apps を使用してスケジュール ジョブを作成できます。 Azure Scheduler は、以前は Azure Germany で利用できましたが、廃止される予定です。
 
-詳細:
+詳細情報:
 
-- [Logic Apps のチュートリアル](https://docs.microsoft.com/azure/logic-apps/#step-by-step-tutorials)を完了して、Azure Logic Apps の機能の理解を深めます。
+- [Azure Logic Apps のチュートリアル](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)を完了することで詳細を確認してください。
 - [Azure Logic Apps の概要](../logic-apps/logic-apps-overview.md)を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
@@ -105,6 +105,6 @@ Azure Logic Apps サービスは Azure Germany で使用できません。 た�
 - [Analytics](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [ID](./germany-migration-identity.md)
-- [セキュリティ](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [管理ツール](./germany-migration-management-tools.md)
 - [メディア](./germany-migration-media.md)

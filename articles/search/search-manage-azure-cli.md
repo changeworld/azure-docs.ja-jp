@@ -2,19 +2,18 @@
 title: az search モジュールを使用した Azure CLI スクリプト
 titleSuffix: Azure Cognitive Search
 description: Azure CLI を使用して Azure Cognitive Search サービスを作成および構成します。 サービスのスケールアップまたはスケールダウン、管理者およびクエリの API キーの管理、システム情報のクエリを実行できます。
-manager: luisca
 author: DerekLegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: 456aaf20c0b6d198ae353490d961a69a319b6601
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 08/03/2021
+ms.openlocfilehash: e714fe12ceff3bd80cc9cf4f0df106a55a064d9f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045112"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084353"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>Azure CLI を使用して Azure Cognitive Search サービスを管理する
 > [!div class="op_single_selector"]
@@ -58,7 +57,7 @@ az resource list --resource-type Microsoft.Search/searchServices --output table
 サービスの一覧からは、特定のリソースに関する情報を返します。
 
 ```azurecli-interactive
-az resource list --name <service-name>
+az resource list --name <search-service-name>
 ```
 
 ## <a name="list-all-az-search-commands"></a>すべての az search コマンドの一覧表示
@@ -103,20 +102,20 @@ az search service create --help
 
 ## <a name="get-search-service-information"></a>検索サービス情報の取得
 
-検索サービスが含まれているリソース グループを把握している場合は、[**az search service show**](/cli/azure/search/service#az_search_service_show) を実行すると、名前、リージョン、レベル、レプリカとパーティションの数などのサービス定義が返されます。
+検索サービスが含まれているリソース グループを把握している場合は、[**az search service show**](/cli/azure/search/service#az_search_service_show) を実行すると、名前、リージョン、レベル、レプリカとパーティションの数などのサービス定義が返されます。 このコマンドでは、検索サービスを含むリソース グループを指定します。
 
 ```azurecli-interactive
-az search service show --name <service-name> --resource-group <resource-group-name>
+az search service show --name <service-name> --resource-group <search-service-resource-group-name>
 ```
 
 ## <a name="create-or-delete-a-service"></a>サービスの作成または削除
 
-[新しい検索サービスを作成](search-create-service-portal.md)するには、[**az search service create**](/cli/azure/search/service#az_search_service_show) コマンドを使用します。
+[新しい検索サービスを作成](search-create-service-portal.md)するには、[**az search service create**](/cli/azure/search/service#az_search_service_create) コマンドを使用します。
 
 ```azurecli-interactive
 az search service create \
     --name <service-name> \
-    --resource-group <resource-group-name> \
+    --resource-group <search-service-resource-group-name> \
     --sku Standard \
     --partition-count 1 \
     --replica-count 1
@@ -158,8 +157,8 @@ az search service create \
 
 ```azurecli-interactive
 az search service create \
-    --name <service-name> \
-    --resource-group <resource-group-name> \
+    --name <search-service-name> \
+    --resource-group <search-service-resource-group-name> \
     --sku Standard \
     --partition-count 1 \
     --replica-count 1 \
@@ -172,8 +171,8 @@ az search service create \
 
 ```azurecli-interactive
 az search service create \
-    --name <service-name> \
-    --resource-group <resource-group-name> \
+    --name <search-service-name> \
+    --resource-group <search-service-resource-group-name> \
     --sku Standard \
     --partition-count 1 \
     --replica-count 1 \
@@ -182,7 +181,7 @@ az search service create \
 
 ## <a name="create-a-service-with-a-private-endpoint"></a>プライベート エンドポイントを使用してサービスを作成する
 
-Azure Cognitive Search の [プライベートエンドポイント](../private-link/private-endpoint-overview.md) は、仮想ネットワーク上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできるようにします。 プライベート エンドポイントは、検索サービスのために[仮想ネットワークのアドレス空間](../virtual-network/private-ip-addresses.md)の IP アドレスを使用します。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 詳細については、[Azure Cognitive Search 用のプライベート エンドポイントの作成](service-create-private-endpoint.md)に関するドキュメントを参照してください。
+Azure Cognitive Search の [プライベートエンドポイント](../private-link/private-endpoint-overview.md) は、仮想ネットワーク上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできるようにします。 プライベート エンドポイントは、検索サービスのために[仮想ネットワークのアドレス空間](../virtual-network/ip-services/private-ip-addresses.md)の IP アドレスを使用します。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 詳細については、[Azure Cognitive Search 用のプライベート エンドポイントの作成](service-create-private-endpoint.md)に関するドキュメントを参照してください。
 
 次の例では、プライベート エンドポイントを使用して検索サービスを作成する方法を示します。
 
@@ -190,8 +189,8 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
 ```azurecli-interactive
 az search service create \
-    --name <service-name> \
-    --resource-group <resource-group-name> \
+    --name <search-service-name> \
+    --resource-group <search-service-resource-group-name> \
     --sku Standard \
     --partition-count 1 \
     --replica-count 1 \
@@ -203,7 +202,7 @@ az search service create \
 ```azurecli-interactive
 # Create the virtual network
 az network vnet create \
-    --resource-group <resource-group-name> \
+    --resource-group <vnet-resource-group-name> \
     --location "West US" \
     --name <virtual-network-name> \
     --address-prefixes 10.1.0.0/16 \
@@ -213,21 +212,21 @@ az network vnet create \
 # Update the subnet to disable private endpoint network policies
 az network vnet subnet update \
     --name <subnet-name> \
-    --resource-group <resource-group-name> \
+    --resource-group <vnet-resource-group-name> \
     --vnet-name <virtual-network-name> \
     --disable-private-endpoint-network-policies true
 
 # Get the id of the search service
 id=$(az search service show \
-    --resource-group <resource-group-name> \
-    --name <service-name> \
+    --resource-group <search-service-resource-group-name> \
+    --name <search-service-name> \
     --query [id] \
     --output tsv)
 
 # Create the private endpoint
 az network private-endpoint create \
     --name <private-endpoint-name> \
-    --resource-group <resource-group-name> \
+    --resource-group <private-endpoint-resource-group-name> \
     --vnet-name <virtual-network-name> \
     --subnet <subnet-name> \
     --private-connection-resource-id $id \
@@ -240,12 +239,12 @@ az network private-endpoint create \
 ```azurecli-interactive
 ## Create private DNS zone
 az network private-dns zone create \
-    --resource-group <resource-group-name> \
+    --resource-group <private-dns-resource-group-name> \
     --name "privatelink.search.windows.net"
 
 ## Create DNS network link
 az network private-dns link vnet create \
-    --resource-group <resource-group-name> \
+    --resource-group <private-dns-resource-group-name> \
     --zone-name "privatelink.search.windows.net" \
     --name "myLink" \
     --virtual-network <virtual-network-name> \
@@ -253,7 +252,7 @@ az network private-dns link vnet create \
 
 ## Create DNS zone group
 az network private-endpoint dns-zone-group create \
-   --resource-group <resource-group-name>\
+   --resource-group <private-endpoint-resource-group-name>\
    --endpoint-name <private-endpoint-name> \
    --name "myZoneGroup" \
    --private-dns-zone "privatelink.search.windows.net" \
@@ -272,7 +271,7 @@ az network private-endpoint dns-zone-group create \
 az search private-endpoint-connection show \
     --name <pe-connection-name> \
     --service-name <search-service-name> \
-    --resource-group <resource-group-name> 
+    --resource-group <search-service-resource-group-name> 
 ```
 
 接続を更新するには、[**az search private-endpoint-connection update**](/cli/azure/search/private-endpoint-connection#az_search_private_endpoint_connection_update) を使用します。 次の例では、プライベート エンドポイント接続を拒否に設定します。
@@ -281,7 +280,7 @@ az search private-endpoint-connection show \
 az search private-endpoint-connection show \
     --name <pe-connection-name> \
     --service-name <search-service-name> \
-    --resource-group <resource-group-name> 
+    --resource-group <search-service-resource-group-name> 
     --status Rejected \
     --description "Rejected" \
     --actions-required "Please fix XYZ"
@@ -293,7 +292,7 @@ az search private-endpoint-connection show \
 az search private-endpoint-connection delete \
     --name <pe-connection-name> \
     --service-name <search-service-name> \
-    --resource-group <resource-group-name> 
+    --resource-group <search-service-resource-group-name> 
 ```
 
 ## <a name="regenerate-admin-keys"></a>管理者キーを再生成する
@@ -308,7 +307,7 @@ API キーの値は、サービスによって生成されます。 Azure Cognit
 
 ```azurecli-interactive
 az search admin-key renew \
-    --resource-group <resource-group-name> \
+    --resource-group <search-service-resource-group-name> \
     --service-name <search-service-name> \
     --key-kind primary
 ```
@@ -331,7 +330,7 @@ Azure Cognitive Search で使用するキーを指定することはできませ
 ```azurecli-interactive
 az search query-key create \
     --name myQueryKey \
-    --resource-group <resource-group-name> \
+    --resource-group <search-service-resource-group-name> \
     --service-name <search-service-name>
 ```
 
@@ -347,8 +346,8 @@ az search query-key create \
 
 ```azurecli-interactive
 az search service update \
-    --name <service-name> \
-    --resource-group <resource-group-name> \
+    --name <search-service-name> \
+    --resource-group <search-service-resource-group-name> \
     --partition-count 6 \
     --replica-count 6
 ```
@@ -369,7 +368,7 @@ Azure Cognitive Search から発信プライベート エンドポイントを�
 az search shared-private-link-resource create \
     --name <spl-name> \
     --service-name <search-service-name> \
-    --resource-group <resource-group-name> \
+    --resource-group <search-service-resource-group-name> \
     --group-id blob \
     --resource-id "/subscriptions/<alphanumeric-subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/myBlobStorage"  \
     --request-message "Please approve" 
@@ -381,7 +380,7 @@ az search shared-private-link-resource create \
 ```azurecli-interactive
 az search shared-private-link-resource list \
     --service-name <search-service-name> \
-    --resource-group <resource-group-name> 
+    --resource-group <search-service-resource-group-name> 
 ```
 
 これを使用する前に、次のコマンドで接続を承認する必要があります。 プライベート エンドポイント接続の ID は、子リソースから取得する必要があります。 この例では、az storage から接続 ID を取得します。
@@ -398,7 +397,7 @@ az network private-endpoint-connection approve --id $id
 az search shared-private-link-resource delete \
     --name <spl-name> \
     --service-name <search-service-name> \
-    --resource-group <resource-group-name> 
+    --resource-group <search-service-resource-group-name> 
 ```
 
 共有プライベート リンク リソースの設定の詳細については、[プライベート エンドポイント経由でのインデクサー接続の作成](search-indexer-howto-access-private.md)に関するドキュメントを参照してください。

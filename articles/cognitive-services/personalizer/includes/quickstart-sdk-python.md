@@ -8,12 +8,12 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 08/25/2020
-ms.openlocfilehash: 0298edc069ee1f61bd3ccd437914c9b01e083900
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 6d1a1822064fa4f311de35cd11a58d547d868ade
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444926"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112536242"
 ---
 [リファレンス ドキュメント](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer) | [パッケージ (pypi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer)
 
@@ -28,6 +28,8 @@ ms.locfileid: "102444926"
 ## <a name="setting-up"></a>設定
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
+
+[!INCLUDE [Change reward wait time](change-reward-wait-time.md)]
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
@@ -60,7 +62,7 @@ Personalizer クライアントは、自分のキーが含まれている Micros
 
 最適なコンテンツ項目を 1 つだけ要求するには、[RankRequest](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.models.rankrequest) を作成し、それを client.Rank メソッドに渡します。 Rank メソッドにより、RankResponse が返されます。
 
-報酬スコアを Personalizer に送信するには、EventOperations クラスの [Reward](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.operations.events_operations.eventsoperations#reward-event-id--value--custom-headers-none--raw-false----operation-config-) メソッドに送信するイベント ID と報酬スコア (値) を設定します。
+報酬スコアを Personalizer に送信するには、EventOperations クラスの [Reward](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.operations.events_operations.eventsoperations) メソッドに送信するイベント ID と報酬スコア (値) を設定します。
 
 このクイックスタートでは、報酬を決定するにあたって大きな問題はありません。 実稼働システムでは、何がどの程度まで[報酬スコア](../concept-rewards.md)に影響を及ぼすかを特定するのは複雑なプロセスとなる場合があり、そのプロセスはやがて変更することになる場合もあります。 実際の Personalizer アーキテクチャでは、その点を設計上の主要な意思決定に含めるようにしてください。
 

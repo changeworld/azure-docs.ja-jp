@@ -5,14 +5,14 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: article
-ms.date: 03/15/2021
+ms.date: 08/26/2021
 ms.author: duau
-ms.openlocfilehash: 531f4a9c9f535779e451ca316a8a5867f6cdaba5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5446c240d1d07b5b99fe6f91a031617756a6018c
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573899"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967593"
 ---
 # <a name="azure-front-door-standardpremium-preview-logging"></a>Azure Front Door Standard/Premium (プレビュー) のログ
 
@@ -83,7 +83,7 @@ Azure Front Door には、Front Door の追跡、監視、デバッグに役立�
 | UserAgent | クライアントで使用されたブラウザーの種類。 |
 | ClientIp | 元の要求を行ったクライアントの IP アドレス。 要求に X-Forwarded-For ヘッダーがあった場合、同じものからクライアント IP が選択されます。 |
 | SocketIp | AFD エッジへの直接接続の IP アドレス。 クライアントが HTTP プロキシまたはロード バランサーを使用して要求を送信した場合、SocketIp の値はプロキシまたはロード バランサーの IP アドレスです。 |
-| Latency | AFD エッジ サーバーがクライアントの要求を受信した時点から、AFD が応答の最後のバイトをクライアントに送信した時点までの時間の長さ (ミリ秒単位)。 このフィールドでは、ネットワーク待ち時間と TCP バッファリングは考慮されません。 |
+| timeTaken | AFD エッジ サーバーがクライアントの要求を受信した時点から、AFD が応答の最後のバイトをクライアントに送信した時点までの時間の長さ (ミリ秒単位)。 このフィールドでは、ネットワーク待ち時間と TCP バッファリングは考慮されません。 |
 | RequestProtocol | クライアントによって要求で指定されたプロトコル: HTTP、HTTPS。 |
 | SecurityProtocol | 要求によって使用された TLS/SSL プロトコルのバージョン。暗号化がない場合は、null 値。 有効な値には、SSLv3、TLSv1、TLSv1.1、TLSv1.2 があります。 |
 | SecurityCipher | 要求のプロトコルの値が HTTPS の場合、このフィールドは、暗号化のためにクライアントと AFD によってネゴシエートされた TLS/SSL 暗号を示します。 |

@@ -3,21 +3,18 @@ title: Azure Portal を使用して手動で API を追加する | Microsoft Doc
 description: このチュートリアルでは、API Management (APIM) を使用して手動で API を追加する方法を示します。
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
-manager: cfowler
-editor: ''
+author: dlepow
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/20/2020
-ms.author: apimpm
-ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/26/2021
+ms.author: danlep
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 07b200c67b831b7d7fb01ea8da657e9bcc9b3b18
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183863"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997007"
 ---
 # <a name="add-an-api-manually"></a>手動による API の追加
 
@@ -55,7 +52,7 @@ ms.locfileid: "96183863"
 
 1. 前の手順で作成した API を選びます。
 2. **[+ 操作の追加]** を選択します。
-3. **[URL]** で、**GET** を選び、リソースに「 */get*」と入力します。
+3. **[URL]** で、**GET** を選択し、リソースに「`/get`」と入力します。
 4. **[表示名]** に「*FetchData*」と入力します。
 5. **[保存]** を選択します。
 
@@ -77,8 +74,8 @@ Azure Portal で操作をテストします。 または、**開発者ポータ�
 
 1. 前の手順で作成した API を選びます。
 2. **[+ 操作の追加]** を選択します。
-3. **[URL]** で、**GET** を選び、リソースに「 */status/{code}* 」と入力します。 必要に応じて、このパラメーターに関連付けられている情報を指定できます。 たとえば、 **[種類]** に「*Number*」を、 **[値]** に「*200*」(既定値) を入力します。
-4. **[表示名]** に「GetStatus」と入力します。
+3. **[URL]** で、**GET** を選択し、リソースに「`*/status/{code}`」と入力します。 必要に応じて、このパラメーターに関連付けられている情報を指定できます。 たとえば、 **[種類]** に「*Number*」を、 **[値]** に「*200*」(既定値) を入力します。
+4. **[表示名]** に「WildcardGet」と入力します。
 5. **[保存]** を選択します。
 
 ### <a name="test-the-operation"></a>操作のテスト 
@@ -86,10 +83,37 @@ Azure Portal で操作をテストします。 または、**開発者ポータ�
 Azure Portal で操作をテストします。  または、**開発者ポータル** 内でテストすることもできます。
 
 1. **[テスト]** タブを選びます。
-2. **GetStatus** を選びます。 既定では、コード値は "*200*" に設定されます。 値を変更して他の値をテストできます。 たとえば、「*418*」と入力します。
+2. **WildcardGet** を選択します。 既定では、コード値は "*200*" に設定されます。 値を変更して他の値をテストできます。 たとえば、「*418*」と入力します。
 3. **[送信]** をクリックします。
 
     "http://httpbin.org/status/200" 操作によって生成される応答が表示されます。 操作を変換する場合は、「[API を変換および保護する](transform-api.md)」をご覧ください。
+
+## <a name="add-and-test-a-wildcard-operation"></a>ワイルドカード操作の追加とテスト
+
+このセクションでは、ワイルドカード操作を追加する方法を説明します。 ワイルドカード操作を使用すると、API 要求で任意の値を渡すことができます。 前のセクションで示したように個別の GET 操作を作成するのではなく、ワイルドカード GET 操作を作成できます。
+
+### <a name="add-the-operation"></a>操作の追加
+
+1. 前の手順で作成した API を選びます。
+2. **[+ 操作の追加]** を選択します。
+3. **[URL]** で、**GET** を選択し、リソースに「`/*`」と入力します。
+4. **[表示名]** に「*WildcardGet*」と入力します。
+5. **[保存]** を選択します。
+
+### <a name="test-the-operation"></a>操作のテスト 
+
+Azure Portal で操作をテストします。  または、**開発者ポータル** 内でテストすることもできます。
+
+1. **[テスト]** タブを選びます。
+2. **WildcardGet** を選択します。 前のセクションでテストした 1 つ以上の GET 操作を試すか、サポートされている別の GET 操作を試します。 
+
+    たとえば、 **[テンプレート パラメーター]** で、ワイルドカード (*) 名の横にある値を `headers` に更新します。 この操作により、受信要求の HTTP ヘッダーが返されます。
+1. **[送信]** をクリックします。
+
+    "http://httpbin.org/headers" 操作によって生成される応答が表示されます。 操作を変換する場合は、「[API を変換および保護する](transform-api.md)」をご覧ください。
+  
+>[!NOTE] 
+> 統合するバックエンド API のホストが操作 URL の末尾のスラッシュを処理する方法を理解することが重要な場合があります。 詳細については、こちらの [API Management の FAQ](./api-management-faq.yml#how-does-api-management-handle-trailing-slashes-when-calling-backend-services-) に関するページを参照してください。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

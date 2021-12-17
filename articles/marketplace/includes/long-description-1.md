@@ -7,14 +7,14 @@ ms.topic: include
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/19/2020
-ms.openlocfilehash: d562ae234d251a568bd6dafc293d5a431cc9aea7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db7c869d6c2c203b9e1c4a0b2cb3a7472beeecb2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92283399"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472071"
 ---
-オファーの詳しい説明 (最大 3,000 文字) を入力します。 顧客は、Marketplace のリスト登録に関する概要でこれを確認できます。
+オファーの詳細な **[説明]** を最大 3,000 文字で入力します。 顧客は、Marketplace のリスト登録に関する概要でこれを確認できます。
 
 説明には、次の項目を 1 つ以上含めます。
 

@@ -1,20 +1,20 @@
 ---
 title: 仮想ハブのルーティングについて
 titleSuffix: Azure Virtual WAN
-description: この記事では、仮想ハブのルーティングについて説明します。
+description: Virtual WAN 仮想ハブのルーティングについて説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c1a2a54bf2d4c5de3e6cfca66256f60592fc1f3e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: de9488a475998b50d06d26f1d8b02bcdb1b21290
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737513"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780834"
 ---
 # <a name="about-virtual-hub-routing"></a>仮想ハブのルーティングについて
 
@@ -29,6 +29,29 @@ ms.locfileid: "101737513"
 ### <a name="hub-route-table"></a><a name="hub-route"></a>ハブ ルート テーブル
 
 仮想ハブ ルート テーブルには、1 つ以上のルートを含めることができます。 ルートには、その名前、ラベル、宛先の種類、宛先プレフィックスの一覧、およびルーティングされるパケットの次ホップ情報が含まれます。 通常、**接続** は、ルート テーブルに関連付けられたり伝達したりするルーティング構成を持ちます。
+
+### <a name="hub-routing-intent-and-policies"></a><a name= "hub-route"></a> ハブのルーティング インテントとポリシー
+>[!NOTE]  
+> ハブのルーティング ポリシーは現在、マネージド プレビュー段階です。 
+>  
+>このプレビューへのアクセス権を取得するには、Virtual WAN ID とサブスクリプション ID、およびルーティング ポリシーを構成する Azure リージョンをご用意のうえ、previewinterhub@microsoft.com までご連絡ください。 機能の有効化の確認については、24 から 48 時間以内に応答する予定です。 
+>
+> ルーティング インテントとポリシーを構成する方法の詳細については、次の[ドキュメント](how-to-routing-policies.md)を参照してください。
+
+
+Azure Firewall Manager を使用してパブリックおよびプライベート トラフィックのポリシーを設定しているお客様は、ルーティング インテントとルーティング ポリシーを使用して、より簡単な方法でネットワークを設定できるようになりました。
+
+ルーティング インテントとルーティング ポリシーを使用すると、Virtual WAN ハブで、インターネット向けおよびプライベート (ポイント対サイト、サイト間、ExpressRoute、Virtual WAN ハブと Virtual Network 内部のネットワーク仮想アプライアンス) トラフィックを転送する方法を指定できます。 ルーティング ポリシーには、インターネット トラフィックとプライベート トラフィックの 2 種類のルーティング ポリシーがあります。 各 Virtual WAN ハブは、最大で 1 つのインターネット トラフィック ルーティング ポリシーと 1 つのプライベート トラフィック ルーティング ポリシーを持つことができ、それぞれにネクスト ホップのリソースがあります。 
+
+プライベート トラフィックには、ブランチと仮想ネットワークの両方のアドレス プレフィックスが含まれますが、ルーティング ポリシーでは、それらはルーティング インテント概念内の 1 つのエンティティと見なされます。
+
+
+* **インターネット トラフィック ルーティング ポリシー**: インターネット トラフィック ルーティング ポリシーが Virtual WAN ハブに構成されている場合、その Virtual WAN ハブへのすべてのブランチ (ユーザー VPN (ポイント対サイト VPN)、サイト間 VPN、ExpressRoute) と仮想ネットワーク接続では、インターネットへのトラフィックは、ルーティング ポリシーの一部として指定された Azure Firewall リソースまたはサードパーティのセキュリティ プロバイダーに転送されます。
+ 
+
+* **プライベート トラフィック ルーティング ポリシー**: プライベート トラフィック ルーティング ポリシーが Virtual WAN ハブに構成されている場合、ハブ間のトラフィックを含む、Virtual WAN ハブ内外の **すべての** ブランチおよび仮想ネットワーク トラフィックは、プライベート トラフィック ルーティング ポリシーに指定された Azure Firewall のネクスト ホップ リソースに転送されます。 
+
+ルーティング インテントとポリシーを構成する方法の詳細については、次の[ドキュメント](how-to-routing-policies.md)を参照してください。
 
 ### <a name="connections"></a><a name="connection"></a>接続
 
@@ -47,7 +70,7 @@ ms.locfileid: "101737513"
 
 既定では、すべての接続は、仮想ハブ内の **既定のルート テーブル** に関連付けられます。 各仮想ハブには独自の既定のルート テーブルがあり、これを編集して静的ルートを追加することができます。 静的に追加されたルートは、同じプレフィックスに対する動的に学習されたルートより優先されます。
 
-:::image type="content" source="./media/about-virtual-hub-routing/concepts-association.png" alt-text="関連付け":::
+:::image type="content" source="./media/about-virtual-hub-routing/concepts-association.png" alt-text="関連付け"lightbox="./media/nat-rules-vpn-gateway/edit-site-bgp.png":::
 
 ### <a name="propagation"></a><a name="propagation"></a>伝達
 
@@ -89,8 +112,8 @@ Virtual WAN ルーティングを構成するときは、次の点を考慮し�
 * すべてのブランチ接続が、同じルート テーブルのセットにルートを伝達する必要があります。 たとえば、ブランチが既定のルート テーブルに伝達するように決定した場合、この構成はすべてのブランチで一貫している必要があります。 その結果、既定のルート テーブルに関連付けられているすべての接続が、すべてのブランチに到達できるようになります。
 * Azure Firewall を経由したブランチ間接続は現在サポートされていません。
 * 複数のリージョンで Azure Firewall を使用する場合は、すべてのスポーク仮想ネットワークが同じルート テーブルに関連付けられている必要があります。 たとえば、VNet のサブセットが Azure Firewall を通過し、他の VNet が同じ仮想ハブ内の Azure Firewall をバイパスすることはできません。
-* VNet 接続ごとに次ホップ IP を 1 つ構成できます。
-
+* 1 つの仮想ネットワーク接続に複数の次ホップ IP アドレスを指定できます。 ただし、仮想ネットワーク接続では、次ホップ IP を使用するいずれかのルートでパブリック IP アドレスまたは 0.0.0.0/0 (インターネット) が示されている場合は、SPOKE 仮想ネットワーク内の "同じ" ネットワーク仮想アプライアンスへの "複数または唯一の" 次ホップ IP はサポートされません。
+* 0\.0.0.0/0 ルートに関連するすべての情報は、ローカル ハブのルート テーブルに限定されます。 このルートは、ハブ間で伝達されません。
 ## <a name="next-steps"></a>次のステップ
 
 * ルーティングを構成する方法については、「[仮想ハブのルーティングを構成する方法](how-to-virtual-hub-routing.md)」を参照してください。

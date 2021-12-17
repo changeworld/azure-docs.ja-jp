@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro GPU デバイス上の Arc 対応 Kubernetes で PHP `Guestbook` アプリをデプロイする | Microsoft Docs
-description: Azure Stack Edge Pro デバイスの Arc 対応 Kubernetes クラスターで GitOps を使用して、Redis を使った PHP `Guestbook` ステートレス アプリケーションをデプロイする方法について説明します。
+title: Azure Stack Edge Pro GPU デバイス上の Azure Arc 対応 Kubernetes で PHP `Guestbook` アプリをデプロイする | Microsoft Docs
+description: Azure Stack Edge Pro デバイスの Azure Arc 対応 Kubernetes クラスターで GitOps を使用して、Redis を使った PHP `Guestbook` ステートレス アプリケーションをデプロイする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 920f7912a1289fe92618d893b94943784e4a9a3a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bcf2b8e97a00e693825124e92acd0f551ebfde14
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520729"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709774"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 上の Arc 対応 Kubernetes クラスターで Redis を使用した PHP `Guestbook` ステートレス アプリケーションをデプロイする
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-azure-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 上の Azure Arc 対応 Kubernetes クラスターで Redis を使用した PHP `Guestbook` ステートレス アプリケーションをデプロイする
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
@@ -25,19 +25,16 @@ ms.locfileid: "102520729"
 - 読み取りに対応する複数の複製された Redis インスタンス
 - 複数の Web フロントエンド インスタンス
 
-デプロイは、Azure Stack Edge Pro デバイス上の Arc 対応 Kubernetes クラスターで GitOps を使用して行われます。 
+デプロイは、Azure Stack Edge Pro デバイス上の Azure Arc 対応 Kubernetes クラスターで GitOps を使用して行われます。 
 
 この手順は、[Azure Stack Edge Pro デバイス上の Kubernetes ワークロード](azure-stack-edge-gpu-kubernetes-workload-management.md)に関する記事を確認し、[Azure Arc 対応 Kubernetes (プレビュー)](../azure-arc/kubernetes/overview.md) の概念を理解しているユーザーを対象としています。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ## <a name="prerequisites"></a>前提条件
 
 ステートレス アプリケーションをデプロイする前に、お使いのデバイスと、そのデバイスへのアクセスに使用するクライアントで、次の前提条件が満たされていることを確認してください。
-
-> [!NOTE]
-> この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ### <a name="for-device"></a>デバイスでは
 

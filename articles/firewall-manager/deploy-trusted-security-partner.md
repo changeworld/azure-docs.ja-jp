@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 11/10/2021
 ms.author: victorh
-ms.openlocfilehash: b8e10eef89df12807cabd96d64d9c7d659f91d6c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 252a4e71a5fdcc823ab357e8528a50bd737ff1c2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109511"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283563"
 ---
 # <a name="deploy-a-security-partner-provider"></a>セキュリティ パートナー プロバイダーのデプロイ
 
@@ -69,6 +69,9 @@ VPN ゲートウェイのデプロイには 30 分以上かかることがあり
 
 サード パーティ プロバイダーで仮想ハブの VPN Gateway へのトンネルを設定するには、ハブへのアクセス権が必要です。 これを行うには、サービス プリンシパルをサブスクリプションまたはリソース グループに関連付け、アクセス権を付与します。 次に、ポータルを使用して、これらの資格情報をサード パーティに付与する必要があります。
 
+> [!NOTE]
+> サードパーティのセキュリティ プロバイダーにより、ユーザーに代わって VPN サイトが作成されます。 この VPN サイトは、Azure portal には表示されません。
+
 ### <a name="create-and-authorize-a-service-principal"></a>サービス プリンシパルを作成および承認する
 
 1. Azure Active Directory (AD) サービス プリンシパルを作成します。リダイレクト URL はスキップできます。 
@@ -99,10 +102,16 @@ VPN ゲートウェイのデプロイには 30 分以上かかることがあり
 3. ハブを選択し、 **[セキュリティ構成]** に移動します。
 
    ハブにサード パーティ プロバイダーをデプロイすると、ハブが *セキュリティ保護付き仮想ハブ* に変換されます。 これにより、サード パーティ プロバイダーがハブへの 0.0.0.0/0 (既定) ルートをアドバタイズします。 ただし、どの接続がこの既定のルートを取得すべきかを選択しない限り、VNet 接続とハブに接続されているサイトはこのルートを取得しません。
+
+   > [!NOTE]
+   > ブランチのアドバタイズには、BGP 経由で 0.0.0.0/0 (既定) ルートを手動で作成しないでください。 これは、サードパーティのセキュリティ プロバイダーを使用したセキュリティで保護された仮想ハブのデプロイに対して自動的に実行されます。 これにより、デプロイ プロセスが中断される可能性があります。
+
 4. Azure Firewall を介した **インターネット トラフィック** と信頼されたセキュリティ パートナーを介した **プライベート トラフィック** を設定して、仮想 WAN のセキュリティを構成します。 これにより、仮想 WAN 内の個々の接続が自動的に保護されます。
 
    :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="セキュリティ構成":::
 5. さらに、組織により、仮想ネットワークとブランチ オフィスでパブリック IP 範囲が使用されている場合は、**プライベート トラフィック プレフィックス** を使用してこれらの IP プレフィックスを明示的に指定する必要があります。 パブリック IP アドレスのプレフィックスは、個別に、または集合として指定できます。
+
+   プライベート トラフィックのプレフィックスに RFC1918 以外のアドレスを使用する場合は、RFC1918 以外のプライベート トラフィックに対して SNAT を無効にするように、ファイアウォールの SNAT ポリシーを構成することが必要な場合があります。 既定では、Azure Firewall によって RFC1918 以外のすべてのトラフィックに SNAT が行われます。
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>サード パーティのサービス経由のブランチまたは VNet のインターネット トラフィック
 

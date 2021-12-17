@@ -1,19 +1,15 @@
 ---
 title: クイックスタート - Python API を使用して Azure Batch ジョブを実行する
 description: このクイックスタートでは、Batch Python クライアント ライブラリを使用して Azure Batch のサンプル ジョブとタスクを実行します。 Batch サービスの主要概念について説明します。
-ms.date: 08/17/2020
+ms.date: 09/10/2021
 ms.topic: quickstart
-ms.custom:
-- seo-python-october2019
-- mvc
-- devx-track-python
-- mode-api
-ms.openlocfilehash: 75f83e0ea4823796ace348084bab0915babc8979
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: seo-python-october2019, mvc, devx-track-python, mode-api
+ms.openlocfilehash: 19fe55e213696055d14563807c4f3c31ade59903
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535558"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073588"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>クイック スタート:Python API を使用して Azure Batch ジョブを実行する
 
@@ -29,7 +25,7 @@ Python API を使用してアプリから Azure Batch ジョブを実行する�
 
 - Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
-- [Python](https://python.org/downloads) バージョン 2.7 または 3.6 ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャーを含む)
+- [Python](https://python.org/downloads) バージョン 2.7 または 3.6 以降 ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャーを含む)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -78,7 +74,6 @@ python python_quickstart_client.py
 ```output
 Sample start: 11/26/2018 4:02:54 PM
 
-Container [input] created.
 Uploading file taskdata0.txt to container [input]...
 Uploading file taskdata1.txt to container [input]...
 Uploading file taskdata2.txt to container [input]...
@@ -94,7 +89,7 @@ Monitoring all tasks for 'Completed' state, timeout in 00:30:00...
 Printing task output...
 Task: Task0
 Node: tvm-2850684224_3-20171205t000401z
-Standard out:
+Standard output:
 Batch processing began with mainframe computers and punch cards. Today it still plays a central role in business, engineering, science, and other pursuits that require running lots of automated tasks....
 ...
 ```
@@ -106,23 +101,27 @@ Batch processing began with mainframe computers and punch cards. Today it still 
 このクイック スタートの Python アプリでは、次の処理を実行します。
 
 - 3 つの小さいテキスト ファイルを Azure ストレージ アカウントの BLOB コンテナーにアップロードします。 これらのファイルは、Batch タスクで処理するための入力です。
-- Ubuntu 18.04 LTS を実行している 2 つのコンピューティング ノードのプールを作成します。
+- Ubuntu 20.04 LTS を実行している 2 つのコンピューティング ノードのプールを作成します。
 - ノードで実行するジョブと 3 つのタスクを作成します。 各タスクは、Bash シェル コマンド ラインを使用して入力ファイルの 1 つを処理します。
-* タスクによって返されるファイルを表示します。
+- タスクによって返されるファイルを表示します。
 
 詳細については、`python_quickstart_client.py` ファイルと以降のセクションを参照してください。
 
 ### <a name="preliminaries"></a>準備
 
-ストレージ アカウントを操作するには、アプリで [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) パッケージを使用して [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice) オブジェクトを作成します。
+このアプリは、ストレージ アカウントとのやりとりに、[BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) オブジェクトを作成します。
 
 ```python
-blob_client = azureblob.BlockBlobService(
-    account_name=config._STORAGE_ACCOUNT_NAME,
-    account_key=config._STORAGE_ACCOUNT_KEY)
+blob_service_client = BlobServiceClient(
+        account_url="https://{}.{}/".format(
+            config._STORAGE_ACCOUNT_NAME,
+            config._STORAGE_ACCOUNT_DOMAIN
+        ),
+        credential=config._STORAGE_ACCOUNT_KEY
+    )
 ```
 
-このアプリでは、`blob_client` 参照を使用して、ストレージ アカウントにコンテナーを作成したり、そのコンテナーにデータ ファイルをアップロードしたりします。 ストレージ内のファイルは、Batch の [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) オブジェクトとして定義されており、Batch が後でコンピューティング ノードにダウンロードできます。
+このアプリでは、`blob_service_client` 参照を使用して、ストレージ アカウントにコンテナーを作成したり、そのコンテナーにデータ ファイルをアップロードしたりします。 ストレージ内のファイルは、Batch の [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) オブジェクトとして定義されており、Batch が後でコンピューティング ノードにダウンロードできます。
 
 ```python
 input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
@@ -130,44 +129,44 @@ input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
                     os.path.join(sys.path[0], 'taskdata2.txt')]
 
 input_files = [
-    upload_file_to_container(blob_client, input_container_name, file_path)
+    upload_file_to_container(blob_service_client, input_container_name, file_path)
     for file_path in input_file_paths]
 ```
 
 このアプリは [BatchServiceClient](/python/api/azure.batch.batchserviceclient) オブジェクトを作成して、Batch サービスでプール、ジョブ、タスクを作成および管理します。 このサンプルの Batch クライアントでは共有キー認証を使用します。 Batch では Azure Active Directory 認証もサポートされます。
 
 ```python
-credentials = batch_auth.SharedKeyCredentials(config._BATCH_ACCOUNT_NAME,
-                                              config._BATCH_ACCOUNT_KEY)
+credentials = SharedKeyCredentials(config._BATCH_ACCOUNT_NAME,
+        config._BATCH_ACCOUNT_KEY)
 
-batch_client = batch.BatchServiceClient(
-    credentials,
-    batch_url=config._BATCH_ACCOUNT_URL)
+    batch_client = BatchServiceClient(
+        credentials,
+        batch_url=config._BATCH_ACCOUNT_URL)
 ```
 
 ### <a name="create-a-pool-of-compute-nodes"></a>コンピューティング ノードのプールの作成
 
-Batch プールを作成するために、このアプリでは [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) クラスを使用して、ノードの数、VM のサイズ、プールの構成を設定します。 ここでは、[VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) オブジェクトで [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) に、Azure Marketplace で公開されている Ubuntu Server 18.04 LTS イメージを指定します。 Batch は、Azure Marketplace の Linux および Windows Server のさまざまなイメージだけでなく、カスタム VM イメージもサポートしています。
+Batch プールを作成するために、このアプリでは [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) クラスを使用して、ノードの数、VM のサイズ、プールの構成を設定します。 ここでは、[VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) オブジェクトで [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) に、Azure Marketplace で公開されている Ubuntu Server 20.04 LTS イメージを指定します。 Batch は、Azure Marketplace の Linux および Windows Server のさまざまなイメージだけでなく、カスタム VM イメージもサポートしています。
 
-ノードの数 (`_POOL_NODE_COUNT`) と VM のサイズ (`_POOL_VM_SIZE`) は、定義済みの定数です。 このサンプルでは、既定で、サイズ *Standard_A1_v2* の 2 つのノードで構成されるプールが作成されます。 推奨されるサイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
+ノードの数 (`_POOL_NODE_COUNT`) と VM のサイズ (`_POOL_VM_SIZE`) は、定義済みの定数です。 このサンプルでは、サイズ *Standard_DS1_v2* の 2 つのノードで構成されるプールが既定で作成されます。 推奨されるサイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
 
 [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) メソッドは、プールを Batch サービスを送信します。
 
 ```python
-new_pool = batch.models.PoolAddParameter(
-    id=pool_id,
-    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
-        image_reference=batchmodels.ImageReference(
-            publisher="Canonical",
-            offer="UbuntuServer",
-            sku="18.04-LTS",
-            version="latest"
-        ),
-        node_agent_sku_id="batch.node.ubuntu 18.04"),
-    vm_size=config._POOL_VM_SIZE,
-    target_dedicated_nodes=config._POOL_NODE_COUNT
-)
-batch_service_client.pool.add(new_pool)
+new_pool = batchmodels.PoolAddParameter(
+        id=pool_id,
+        virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+            image_reference=batchmodels.ImageReference(
+                publisher="canonical",
+                offer="0001-com-ubuntu-server-focal",
+                sku="20_04-lts",
+                version="latest"
+            ),
+            node_agent_sku_id="batch.node.ubuntu 20.04"),
+        vm_size=config._POOL_VM_SIZE,
+        target_dedicated_nodes=config._POOL_NODE_COUNT
+    )
+    batch_service_client.pool.add(new_pool)
 ```
 
 ### <a name="create-a-batch-job"></a>Batch ジョブの作成
@@ -175,9 +174,10 @@ batch_service_client.pool.add(new_pool)
 Batch ジョブは、1 つ以上のタスクの論理グループです。 ジョブには、優先度やタスクの実行対象プールなど、タスクに共通する設定が含まれています。 このアプリでは、[JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) クラスを使用して、プールにジョブを作成します。 [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) メソッドにより、指定の Batch アカウントにジョブが追加されます。 最初、ジョブにはタスクがありません。
 
 ```python
-job = batch.models.JobAddParameter(
+job = batchmodels.JobAddParameter(
     id=job_id,
-    pool_info=batch.models.PoolInformation(pool_id=pool_id))
+    pool_info=batchmodels.PoolInformation(pool_id=pool_id))
+
 batch_service_client.job.add(job)
 ```
 
@@ -192,7 +192,7 @@ tasks = list()
 
 for idx, input_file in enumerate(input_files):
     command = "/bin/bash -c \"cat {}\"".format(input_file.file_path)
-    tasks.append(batch.models.TaskAddParameter(
+    tasks.append(batchmodels.TaskAddParameter(
         id='Task{}'.format(idx),
         command_line=command,
         resource_files=[input_file]

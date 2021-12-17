@@ -25,8 +25,6 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: 仮想ネットワークの接続
       href: tutorial-connect-virtual-networks-portal.md
-    - name: NAT ゲートウェイの作成と検証
-      href: tutorial-create-nat-gateway-portal.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -43,16 +41,6 @@
       href: virtual-network-disaster-recovery-guidance.md
     - name: 接続
       items:
-        - name: NAT
-          items:
-            - name: 概要
-              href: nat-overview.md
-            - name: リソース
-              href: nat-gateway-resource.md
-            - name: メトリックとアラート
-              href: nat-metrics.md
-            - name: トラブルシューティング
-              href: troubleshoot-nat.md
         - name: ルーティング
           href: virtual-networks-udr-overview.md
         - name: バックエンド接続の相互運用性
@@ -83,30 +71,12 @@
           href: virtual-network-service-endpoints-overview.md
         - name: サービス タグ
           href: service-tags-overview.md
-    - name: IP サービス
-      items:
-        - name: パブリック IP
-          href: public-ip-addresses.md
-        - name: プライベート IP
-          href: private-ip-addresses.md
-        - name: パブリック IP プレフィックス
-          href: public-ip-address-prefix.md
-        - name: Azure VNet の IPv6
-          href: ipv6-overview.md
-        - name: パブリック IPv6 アドレスのプレフィックス
-          href: ipv6-public-ip-address-prefix.md
-        - name: ルーティング設定
-          href: routing-preference-overview.md
-        - name: 従量制課金なしのルーティング優先設定
-          href: routing-preference-unmetered.md
-        - name: パブリック IP のセキュリティ ベースライン
-          href: public-ip-security-baseline.md
     - name: セキュリティ
       items:
         - name: Virtual Network のセキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-network-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
         - name: Virtual Network NAT のセキュリティ ベースライン
-          href: nat-security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-network-nat-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
         - name: Azure サービスのネットワークの分離
           href: vnet-integration-for-azure-services.md
         - name: ネットワーク セキュリティ グループ
@@ -136,6 +106,8 @@
           href: subnet-extension.md
         - name: サブネットの委任
           href: subnet-delegation-overview.md
+    - name: 仮想マシンのネットワーク
+      href: network-overview.md
     - name: 従来のデプロイ
       href: /previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic
 - name: 操作方法ガイド
@@ -208,76 +180,6 @@
           href: tutorial-tap-virtual-network-cli.md
         - name: コンテナー ネットワークのデプロイ
           href: deploy-container-networking.md
-    - name: IP サービス
-      items:
-        - name: VNet の IPv6
-          items:
-            - name: IPv6 を IPv4 アプリケーションに追加する
-              items:
-                - name: Azure PowerShell
-                  href: ipv6-add-to-existing-vnet-powershell.md
-                - name: Azure CLI
-                  href: ipv6-add-to-existing-vnet-cli.md
-            - name: Basic Public Load Balancer
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
-                - name: Azure CLI
-                  href: virtual-network-ipv4-ipv6-dual-stack-cli.md
-                - name: Resource Manager テンプレート
-                  href: ipv6-configure-template-json.md
-            - name: Standard Public Load Balancer
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-                - name: Azure CLI
-                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
-                - name: Resource Manager テンプレート
-                  href: ipv6-configure-standard-load-balancer-template-json.md
-            - name: Standard Internal Load Balancer
-              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
-            - name: 仮想マシン スケール セットと IPv6
-              href: ipv6-virtual-machine-scale-set.md
-            - name: パブリック IPv6 アドレスのプレフィックス
-              href: ipv6-reserve-public-ip-address-prefix.md
-        - name: IP アドレス指定
-          items:
-            - name: パブリック IP アドレスの作成 - ポータル
-              href: create-public-ip-portal.md
-            - name: パブリック IP アドレスの作成 - PowerShell
-              href: create-public-ip-powershell.md
-            - name: パブリック IP アドレスの作成 - Azure CLI
-              href: create-public-ip-cli.md
-            - name: パブリック IP アドレスの管理
-              href: virtual-network-public-ip-address.md
-            - name: パブリック IP プレフィックスの管理
-              href: manage-public-ip-address-prefix.md
-            - name: パブリック IP アドレスのアップグレード
-              href: virtual-network-public-ip-address-upgrade.md
-            - name: NIC の IP アドレスの追加または削除
-              href: virtual-network-network-interface-addresses.md
-            - name: ルーティング設定
-              items:
-                - name: パブリック IP アドレスの作成
-                  items:
-                    - name: Azure portal
-                      href: routing-preference-portal.md
-                    - name: Azure PowerShell
-                      href: routing-preference-powershell.md
-                    - name: Azure CLI
-                      href: routing-preference-cli.md
-                - name: インターネット ルーティング設定を使用して VM を構成する
-                  items:
-                    - name: Azure portal
-                      href: tutorial-routing-preference-virtual-machine-portal.md
-                    - name: Azure PowerShell
-                      href: configure-routing-preference-virtual-machine-powershell.md
-                    - name: Azure CLI
-                      href: configure-routing-preference-virtual-machine-cli.md
-                - name: VM の混合ルーティング設定を構成する
-                  href: routing-preference-mixed-network-adapter-portal.md
-                - name: AKS クラスターのルーティング設定を構成する
-                  href: routing-preference-azure-kubernetes-service-cli.md
     - name: セキュリティ
       items:
         - name: ネットワーク トラフィックのフィルター処理
@@ -328,48 +230,14 @@
               href: /azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json
     - name: VM ネットワーク
       items:
-        - name: VM の作成 - 静的パブリック IP
+        - name: ネットワーク インターフェイスの追加または削除
+          href: virtual-network-network-interface-vm.md
+        - name: VM の作成 - 複数の NIC
           items:
-            - name: Azure portal
-              href: virtual-network-deploy-static-pip-arm-portal.md
             - name: Azure PowerShell
-              href: virtual-network-deploy-static-pip-arm-ps.md
+              href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
             - name: Azure CLI
-              href: virtual-network-deploy-static-pip-arm-cli.md
-            - name: 既存の VM へのパブリック IP アドレスの追加
-              href: associate-public-ip-address-vm.md
-            - name: VM からのパブリック IP アドレスの切り離し
-              href: remove-public-ip-address-vm.md
-        - name: VM の作成 - 静的プライベート IP
-          items:
-            - name: Azure portal
-              href: virtual-networks-static-private-ip-arm-pportal.md
-            - name: Azure PowerShell
-              href: virtual-networks-static-private-ip-arm-ps.md
-            - name: Azure CLI
-              href: virtual-networks-static-private-ip-arm-cli.md
-        - name: VM の作成 - 静的プライベート IP (クラシック)
-          items:
-            - name: Azure portal
-              href: virtual-networks-static-private-ip-classic-pportal.md
-            - name: Azure PowerShell
-              href: virtual-networks-static-private-ip-classic-ps.md
-        - name: VM の作成 - 複数の IP
-          items:
-            - name: Azure portal
-              href: virtual-network-multiple-ip-addresses-portal.md
-            - name: Azure PowerShell
-              href: virtual-network-multiple-ip-addresses-powershell.md
-            - name: Azure CLI
-              href: virtual-network-multiple-ip-addresses-cli.md
-            - name: ネットワーク インターフェイスの追加または削除
-              href: virtual-network-network-interface-vm.md
-            - name: VM の作成 - 複数の NIC
-              items:
-                - name: Azure PowerShell
-                  href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                - name: Azure CLI
-                  href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+              href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
         - name: VM の作成 - 高速ネットワーク
           items:
             - name: Azure PowerShell
@@ -391,8 +259,6 @@
           href: ../resource-mover/tutorial-move-region-virtual-machines.md?toc=%2fazure%2fvirtual-network%2ftoc.json
         - name: ネットワーク インターフェイス (NIC)
           href: ../resource-mover/tutorial-move-region-virtual-machines.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-        - name: パブリック IP
-          href: ../resource-mover/tutorial-move-region-virtual-machines.md?toc=%2fazure%2fvirtual-network%2ftoc.json
         - name: 手動移動
           items:
             - name: ネットワーク セキュリティ グループ - ポータル
@@ -407,19 +273,6 @@
               href: move-across-regions-publicip-portal.md
             - name: パブリック IP - PowerShell
               href: move-across-regions-publicip-powershell.md
-    - name: NAT
-      items:
-        - name: NAT ゲートウェイの作成 - PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: NAT ゲートウェイの作成 - CLI
-          href: quickstart-create-nat-gateway-cli.md
-        - name: NAT ゲートウェイの作成 - ARM テンプレート
-          displayname: Resource Manager
-          href: quickstart-create-nat-gateway-template.md
-        - name: NAT ゲートウェイの作成と検証 - PowerShell
-          href: tutorial-create-validate-nat-gateway-powershell.md
-        - name: NAT ゲートウェイの作成と検証 - CLI
-          href: tutorial-create-validate-nat-gateway-cli.md
     - name: トラブルシューティング
       items:
         - name: 仮想ネットワーク ピアリングの問題をトラブルシューティングする
@@ -448,12 +301,16 @@
           href: what-is-ip-address-168-63-129-16.md
         - name: Azure VM の接続に関する問題のトラブルシューティング
           href: troubleshoot-vm-connectivity.md
+    - name: 仮想ネットワークを監視する
+      href: monitor-virtual-network.md
     - name: 従来のデプロイ
       href: /previous-versions/azure/virtual-network/create-virtual-network-classic
 - name: リファレンス
   items:
+    - name: データ参照を監視する
+      href: monitor-virtual-network-reference.md
     - name: Azure CLI
-      href: /cli/azure/network
+      href: /cli/azure/azure-cli-reference-for-network
     - name: Azure PowerShell
       href: /powershell/module/az.network
     - name: .NET
@@ -484,7 +341,7 @@
     - name: ネットワークに関する Microsoft Q&A 質問ページ
       href: /answers/topics/azure-virtual-network.html
     - name: ネットワークに関するフィードバック
-      href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
+      href: 'https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/virtual-network'
     - name: 料金計算ツール

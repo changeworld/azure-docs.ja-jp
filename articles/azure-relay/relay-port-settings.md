@@ -2,13 +2,13 @@
 title: Azure リレー ポート設定 | Microsoft Docs
 description: この記事には、Azure Relay のポート値に必要な構成を示す表が含まれています。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 81551055d967babaac6f12c3a23ce6b1e78afbd5
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/23/2021
+ms.openlocfilehash: b293d58d2e555b7e0d01ea1a9e421f78cf23105c
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314169"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668684"
 ---
 # <a name="azure-relay-port-settings"></a>Azure リレー ポート設定
 

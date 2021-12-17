@@ -2,19 +2,20 @@
 title: Azure Communication Services のメトリックの定義
 titleSuffix: An Azure Communication Services concept document
 description: このドキュメントでは、Azure portal で使用できるメトリックの定義について説明します。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
-ms.date: 03/10/2021
-ms.topic: overview
+ms.author: rifox
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 129a718175fdda80d4d6852e3d3b4cea609da64d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: data
+ms.openlocfilehash: b97c7ead1c10573dccaf260e7ab1225872d2e898
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492416"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679884"
 ---
 # <a name="metrics-overview"></a>メトリックの概要
 

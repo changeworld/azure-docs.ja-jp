@@ -1,14 +1,14 @@
 ---
 title: Azure DevTest Labs リソースの分散型の共同開発
 description: DevTest Lab リソースを開発する分散型の共同開発環境を設定する際のベスト プラクティスについて説明します。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: caf4bd13f2ec9c45db392a027db269b492cbd802
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f24ab6e612762df5ee0a0f869507c51ac9e5f538
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550078"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644317"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Azure DevTest Labs リソースの分散型の共同開発のためのベスト プラクティス
 分散型の共同開発により、さまざまなチームや個人がコード ベースを開発し、保守することができます。 成功させるには、開発プロセスは情報を作成、共有、統合する能力に左右されます。 この重要な開発原則は、Azure DevTest Labs 内で使用できます。 ラボ内には、企業内のさまざまなラボ間で一般的に分散されているさまざまな種類のリソースがあります。 さまざまな種類のリソースは、次の 2 つの領域に集中しています。

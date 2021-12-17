@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 03/15/2021
+ms.date: 05/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 2adbefff2a0154268157c7d1735d83e70aa92ee8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a258240383905180a18830deb2488a7617c5fbee
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563591"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579175"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Azure Data Box Gateway とは
 
@@ -67,7 +67,7 @@ Data Box Gateway 仮想デバイスの仕様は次のとおりです。
 | 仕様                                          | 説明              |
 |---------------------------------------------------------|--------------------------|
 | 仮想プロセッサ (コア)   | 最低 4 |
-| メモリ  |8 GB 以上|
+| メモリ  |少なくとも 8 GB の RAM。 RAM を 16 GB 以上にすることを強くお勧めします。|
 | 可用性|単一ノード|
 | ディスク|OS ディスク:250 GB <br> データ ディスク:最小 2 TB、シン プロビジョニング、SSD を使用する必要があります|
 | ネットワーク インターフェイス |1 つ以上の仮想ネットワーク インターフェイス|

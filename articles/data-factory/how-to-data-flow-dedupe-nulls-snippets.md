@@ -4,14 +4,15 @@ description: データ フロー内でコード スニペットを使用して�
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 1b49b2584c4cb462c7c0f520fe8d1b5bf69c8674
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7940d48edb94bfa89ccc3310172a09519ffc729a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393668"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831371"
 ---
 # <a name="dedupe-rows-and-find-nulls-by-using-data-flow-snippets"></a>データ フロー スニペットを使用して行の重複を除去し、null を見つける
 
@@ -29,7 +30,7 @@ ms.locfileid: "100393668"
 
 1. **[ソースの設定]** タブを選択し、ソース変換を追加し、それをデータセットの 1 つに接続します。
 
-    ![ソースの種類を追加するための [ソースの設定] ウィンドウのスクリーンショット。](media/data-flow/snippet-adf-2.png)
+    :::image type="content" source="media/data-flow/snippet-adf-2.png" alt-text="ソースの種類を追加するための &quot;[ソースの設定]&quot; ウィンドウのスクリーンショット。":::
 
     この重複除去と null チェックのスニペットでは、汎用パターンを使用し、データ フローのスキーマの誤差を利用します。 これらのスニペットは、お使いのデータセットのどのスキーマでも、定義済みのスキーマがないデータセットでも機能します。
 
@@ -37,7 +38,7 @@ ms.locfileid: "100393668"
 
 1. [データ フロー スクリプトに関するドキュメントのページに移動し、個別の行のためのコード スニペットをコピーします。](./data-flow-script.md#distinct-row-using-all-columns)
 
-    ![ソース スニペットのスクリーンショット。](media/data-flow/snippet-adf-3.png)
+    :::image type="content" source="media/data-flow/snippet-adf-3.png" alt-text="ソース スニペットのスクリーンショット。":::
 
 1. スクリプトで、`source1` の定義の後に、Enter キーを押してからこのコード スニペットを貼り付けます。
 
@@ -47,7 +48,7 @@ ms.locfileid: "100393668"
 
    * または、グラフ内の新しい変換のノードから受信ストリームを選択しても、デザイナー内で新しい変換を接続できます。
 
-     ![[条件分割の設定] ウィンドウのスクリーンショット。](media/data-flow/snippet-adf-4.png)
+     :::image type="content" source="media/data-flow/snippet-adf-4.png" alt-text="&quot;[条件分割の設定]&quot; ウィンドウのスクリーンショット。":::
 
    これで、データ フローでは、すべての列値にわたって汎用のハッシュを適用してすべての行をグループ化する集計変換を使用して、ソースからの重複行の削除が行われます。
     
@@ -59,7 +60,7 @@ ms.locfileid: "100393668"
 
    データ フロー グラフはこれで次のようになるはずです。
 
-    ![データ フロー グラフのスクリーンショット。](media/data-flow/snippet-adf-1.png)
+    :::image type="content" source="media/data-flow/snippet-adf-1.png" alt-text="データ フロー グラフのスクリーンショット。":::
 
   これで、データ フロー スクリプト ライブラリから既存のコード スニペットを取得し、それらを既存の設計に追加することで、汎用の重複除去と null チェックを備えた機能するデータ フローが作成されました。
 

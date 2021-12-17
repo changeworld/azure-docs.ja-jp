@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 03/22/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 7f35f9196fb4ab67de724ba73982fed69ac81361
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.topic: how-to
+ms.custom: devx-track-python, contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: dde8291bce52e8f36aa712e294109dfe156fb426
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306842"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367205"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のために Python 開発環境をセットアップする
 
@@ -102,7 +102,7 @@ Azure Machine Learning のために Python 開発環境を構成する方法に�
 1. [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install) をインストールします。
 1. Azure Machine Learning ワークスペースを使用するようにローカル環境を構成するには、[ワークスペース構成ファイルを作成する](#workspace)か、既存のものを使用します。
 
-ローカル環境をセットアップしたので、Azure Machine Learning の操作を開始する準備ができました。 使用を開始するには、[Azure Machine Learning Python のファースト ステップ ガイド](tutorial-1st-experiment-sdk-setup-local.md) を参照してください。
+ローカル環境をセットアップしたので、Azure Machine Learning の操作を開始する準備ができました。 使用を開始するには、[Azure Machine Learning Python のファースト ステップ ガイド](tutorial-1st-experiment-hello-world.md) を参照してください。
 
 ### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter Notebooks
 
@@ -132,7 +132,7 @@ Azure Machine Learning と Jupyter Notebook の使用を開始するには、[Az
 開発に Visual Studio Code を使用するには
 
 1. [Visual Studio Code](https://code.visualstudio.com/Download) をインストールします。
-1. [Visual Studio Code の Azure Machine Learning 拡張機能](tutorial-setup-vscode-extension.md) (プレビュー) をインストールします。
+1. [Visual Studio Code の Azure Machine Learning 拡張機能](how-to-setup-vs-code.md) (プレビュー) をインストールします。
 
 Visual Studio Code 拡張機能をインストールしたら、次の用途に使用します。
 
@@ -147,7 +147,7 @@ Azure Machine Learning の[コンピューティング インスタンス](conce
 
 コンピューティング インスタンスでインストールまたは構成するものはありません。  
 
-Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[チュートリアル:環境とワークスペースの設定に関するチュートリアル](tutorial-1st-experiment-sdk-setup.md)を参照)。
+Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[チュートリアル:環境とワークスペースの設定に関するチュートリアル](quickstart-create-resources.md)を参照)。
 
 パッケージのインストール方法など、コンピューティング インスタンスの詳細については、「[Azure Machine Learning コンピューティング インスタンスを作成して管理する](how-to-create-manage-compute-instance.md)」を参照してください。
 

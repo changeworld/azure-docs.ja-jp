@@ -1,7 +1,7 @@
 ---
-title: Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する
+title: Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化を構成する
 titleSuffix: Azure Storage
-description: Azure CLI を使用して、Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる Azure Storage 暗号化を構成する方法について説明します。
+description: Azure CLI を使用して、Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる Azure Storage 暗号化を構成する方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,20 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9b40c934cb428a31a3feb77195518d5351818d7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d8e4610ee7fc6690f3d0784415cea09259dd99ba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785363"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645723"
 ---
-# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する
+# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm"></a>Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化を構成する
 
-Azure Storage は、保存されているストレージ アカウント内のすべてのデータを暗号化します。 規定では、データは Microsoft のマネージド キーで暗号化されます。 暗号化キーをさらに制御するために、独自のキーを管理することができます。 カスタマー マネージド キーは、Azure Key Vault または Key Vault Managed Hardware Security Model (HSM) (プレビュー) に格納する必要があります。 Azure Key Vault Managed HSM は、FIPS 140-2 レベル 3 への準拠が検証された HSM です。
+Azure Storage は、保存されているストレージ アカウント内のすべてのデータを暗号化します。 規定では、データは Microsoft のマネージド キーで暗号化されます。 暗号化キーをさらに制御するために、独自のキーを管理することができます。 カスタマー マネージド キーは、Azure Key Vault または Key Vault Managed Hardware Security Model (HSM) に格納する必要があります。 Azure Key Vault Managed HSM は、FIPS 140-2 レベル 3 への準拠が検証された HSM です。
 
 この記事では、Azure CLI を使用して、マネージド HSM に格納されているカスタマー マネージド キーによる暗号化を構成する方法について説明します。 キー コンテナーに格納されているカスタマー マネージド キーを使用して暗号化を構成する方法については、「[Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault.md)」を参照してください。
 
-> [!IMPORTANT]
->
-> Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化は、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
->
+> [!NOTE]
 > Azure Key Vault と Azure Key Vault Managed HSM では、構成用に同じ API と管理インターフェイスがサポートされています。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>ストレージ アカウントに ID を割り当てる
@@ -45,10 +42,10 @@ az storage account update \
 
 ## <a name="assign-a-role-to-the-storage-account-for-access-to-the-managed-hsm"></a>マネージド HSM にアクセスするためのロールをストレージ アカウントに割り当てる
 
-次に、ストレージ アカウントにマネージド HSM へのアクセス許可が付与されるように、**Managed HSM Crypto Service Encryption** ロールをストレージ アカウントのマネージド ID に割り当てます。 マネージド ID に付与する特権を最小限にするために、ロールの割り当てを個々のキーのレベルに限定することをお勧めします。
+次に、ストレージ アカウントにマネージド HSM へのアクセス許可が付与されるように、**Managed HSM 暗号化サービスの暗号化ユーザー** ロールをストレージ アカウントのマネージド ID に割り当てます。 マネージド ID に付与する特権を最小限にするために、ロールの割り当てを個々のキーのレベルに限定することをお勧めします。
 
 ストレージ アカウントのロールの割り当てを作成するには、[az key vault role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を呼び出します。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
-  
+
 ```azurecli
 storage_account_principal = $(az storage account show \
     --name <storage-account> \
@@ -58,7 +55,7 @@ storage_account_principal = $(az storage account show \
 
 az keyvault role assignment create \
     --hsm-name <hsm-name> \
-    --role "Managed HSM Crypto Service Encryption" \
+    --role "Managed HSM Crypto Service Encryption User" \
     --assignee $storage_account_principal \
     --scope /keys/<key-name>
 ```

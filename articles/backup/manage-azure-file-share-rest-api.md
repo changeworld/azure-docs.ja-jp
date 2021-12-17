@@ -3,12 +3,12 @@ title: Rest API を使用して Azure ファイル共有のバックアップを
 description: Rest API を使用して、Azure Backup によってバックアップされた Azure ファイル共有を管理および監視する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 5e2823472c6a7bdd6b3f9819db3079d7efa78c4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdd099cac609ef84a0ece9d0d116de5534d3e530
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88892849"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445147"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>REST API を使用して Azure ファイル共有のバックアップを管理する
 
@@ -38,7 +38,7 @@ Azure Backup サービスにより、バックグラウンドで実行される�
 }
 ```
 
-Azure ファイル共有のバックアップ ジョブは **jobId** フィールドによって識別され、[こちら](/rest/api/backup/jobdetails/)で説明されているように GET 要求を使用して追跡できます。
+Azure ファイル共有のバックアップ ジョブは **jobId** フィールドによって識別され、[こちら](/rest/api/backup/job-details)で説明されているように GET 要求を使用して追跡できます。
 
 ### <a name="tracking-the-job"></a>ジョブの追跡
 
@@ -54,7 +54,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 #### <a name="response"></a>Response
 
-名前  | Type  |  説明
+名前  | 型  |  説明
 --- | --- | ----
 200 OK |  JobResource  | [OK]
 
@@ -134,8 +134,8 @@ HTTP/1.1" 200
   "properties": {
     "protectedItemType": "AzureFileShareProtectedItem",
     "sourceResourceId": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/AzureFiles/providers/Microsoft.Storage/storageAccounts/testvault2",
-    "policyId": “" ,
-“protectionState”:”ProtectionStopped”
+    "policyId": "" ,
+"protectionState":"ProtectionStopped"
   }
 }
 ```
@@ -190,7 +190,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>保護を停止してデータを削除する
 
-保護されたファイル共有の保護を停止し、バックアップ データも削除するには、[こちら](/rest/api/backup/protecteditems/delete)で詳しく説明されている削除操作を実行します。
+保護されたファイル共有の保護を停止し、バックアップ データも削除するには、[こちら](/rest/api/backup/protected-items/delete)で詳しく説明されている削除操作を実行します。
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13

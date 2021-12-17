@@ -1,18 +1,18 @@
 ---
 title: チュートリアル - API Management で API の応答の模擬テストを実行する - Azure portal  | Microsoft Docs
 description: このチュートリアルでは、実際の応答を送信するバックエンドが利用できない場合にモック応答が返されるよう、API Management を使用して API のポリシーを設定します。
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/09/2021
-ms.author: apimpm
-ms.openlocfilehash: a7617a36ed800f1765ed7723568a4b612fcb6518
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.author: danlep
+ms.openlocfilehash: afccd6da3374147c77a2caf7bcc9b352b078c11c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587597"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646494"
 ---
 # <a name="tutorial-mock-api-responses"></a>チュートリアル:API の応答の模擬テストを実行する
 

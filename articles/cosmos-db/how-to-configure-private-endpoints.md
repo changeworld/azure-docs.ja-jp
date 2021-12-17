@@ -4,15 +4,15 @@ description: 仮想ネットワークのプライベート IP アドレスを使
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/26/2021
+ms.date: 06/08/2021
 ms.author: thweiss
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 034eb35eeef975be23cc318aa797282008d71728
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 78f112b7c1de9709aab661525bf22a3325c462cc
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936905"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069237"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos アカウントの Azure Private Link を構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -138,7 +138,7 @@ $virtualNetwork = Get-AzVirtualNetwork -ResourceGroupName  $ResourceGroupName -N
  
 $subnet = $virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq $SubnetName}  
  
-$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -Name $PrivateEndpointName -Location "westcentralus" -Subnet  $subnet -PrivateLinkServiceConnection $privateEndpointConnection
+$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -Name $PrivateEndpointName -Location $Location -Subnet  $subnet -PrivateLinkServiceConnection $privateEndpointConnection
 ```
 
 ### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>プライベート エンドポイントとプライベート DNS ゾーンを統合する
@@ -168,13 +168,13 @@ $networkInterface = Get-AzResource -ResourceId $pe.NetworkInterfaces[0].Id `
 
 $PrivateDnsZoneId = $zone.ResourceId
 
-$config = New-AzPrivateDnsZoneConfig -Name $zoneName`
+$config = New-AzPrivateDnsZoneConfig -Name $zoneName `
  -PrivateDnsZoneId $PrivateDnsZoneId
 
 ## Create a DNS zone group
-New-AzPrivateDnsZoneGroup -ResourceGroupName $ResourceGroupName`
- -PrivateEndpointName $PrivateEndpointName`
- -Name "MyPrivateZoneGroup"`
+New-AzPrivateDnsZoneGroup -ResourceGroupName $ResourceGroupName `
+ -PrivateEndpointName $PrivateEndpointName `
+ -Name "MyPrivateZoneGroup" `
  -PrivateDnsZoneConfig $config
 ```
 
@@ -651,7 +651,7 @@ Private Link とファイアウォール規則を組み合わせて使用する�
 
 前のセクションで説明されているように、特定のファイアウォール規則が設定されていない限り、プライベート エンドポイントを追加すると、Azure Cosmos アカウントはそのプライベート エンドポイント経由でのみアクセス可能になります。 つまり、パブリック トラフィックから Azure Cosmos アカウントに到達できるのは、それが作成されてから、プライベート エンドポイントが追加されるまでの間になります。 プライベート エンドポイントの作成の前であってもパブリック ネットワーク アクセスが確実に無効になるようにするには、アカウントの作成中に `publicNetworkAccess` フラグを `Disabled` に設定することができます。 このフラグはあらゆる IP または仮想ネットワークの規則より優先されることにご留意ください。このフラグが `Disabled` に設定されているとき、ファイアウォール構成でソース IP または仮想ネットワークが許可される場合でも、パブリックおよび仮想のネットワーク トラフィックはすべてブロックされます。
 
-このフラグの使用方法を示す例については、[この Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/)を参照してください。
+このフラグの使用方法を示す例については、[この Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/cosmosdb-private-endpoint/)を参照してください。
 
 ## <a name="adding-private-endpoints-to-an-existing-cosmos-account-with-no-downtime"></a>ダウンタイムが発生しないように既存の Cosmos アカウントにプライベート エンドポイントを追加する
 
@@ -688,7 +688,7 @@ Azure Cosmos アカウントで Private Link を使用する場合は、次の�
 
 * ダイレクト モード接続を介して Azure Cosmos アカウントで Private Link を使用している場合は、TCP プロトコルのみを使用できます。 HTTP プロトコルは現在サポートされていません。
 
-* MongoDB アカウント用の Azure Cosmos DB の API を使用する場合、プライベート エンドポイントは、サーバーのバージョンが 3.6 のアカウントでのみサポートされます (つまり、`*.mongo.cosmos.azure.com` 形式でエンドポイントを使用するアカウント)。 サーバーのバージョンが 3.2 のアカウント (`*.documents.azure.com` の形式でエンドポイントを使用するアカウント) では、Private Link はサポートされていません。 Private Link を使用するには、古いアカウントを新しいバージョンに移行する必要があります。
+* MongoDB アカウント用の Azure Cosmos DB の API を使用する場合、プライベート エンドポイントは、サーバーのバージョンが 3.6 以降のアカウントでのみサポートされます (つまり、`*.mongo.cosmos.azure.com` 形式でエンドポイントを使用するアカウント)。 サーバーのバージョンが 3.2 のアカウント (`*.documents.azure.com` の形式でエンドポイントを使用するアカウント) では、Private Link はサポートされていません。 Private Link を使用するには、古いアカウントを新しいバージョンに移行する必要があります。
 
 * ご使用の Azure Cosmos DB の MongoDB 用 API アカウントに Private Link が存在する場合、適切に接続するためには、ツールまたはライブラリが SNI (Service Name Identification) をサポートするか、接続文字列から `appName` パラメーターを渡す必要があります。 一部の古いツールまたはライブラリは、Private Link 機能の使用と互換性がない場合があります。
 

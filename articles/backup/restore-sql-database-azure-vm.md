@@ -2,13 +2,16 @@
 title: Azure VM 上の SQL Server データベースを復元する
 description: この記事では、Azure VM 上で実行されており、Azure Backup でバックアップしてある SQL Server データベースを復元する方法について説明します。 [リージョンをまたがる復元] を使用して、データベースをセカンダリ リージョンに復元することもできます。
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.openlocfilehash: 7dd8d8d54fa7d33bb4a0935357597d19dd2368c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 0e687cbae798a480eaf417de04b653b88d2e2c94
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97734404"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431114"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 上の SQL Server データベースを復元する
 
@@ -50,26 +53,16 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 
 次のように復元します。
 
-1. SQL Server VM が登録されているコンテナーを開きます。
-2. コンテナー ダッシュボードで、 **[使用状況]** の **[バックアップ項目]** を選択します。
-3. **[バックアップ項目]** で、 **[バックアップの管理の種類]** の **[Azure VM 内の SQL]** を選択します。
+1. Azure portal で、 **[バックアップ センター]** に移動し、 **[復元]** をクリックします。
 
-    ![[SQL in Azure VM]\(Azure VM 内の SQL\) を選択する](./media/backup-azure-sql-database/sql-restore-backup-items.png)
+   :::image type="content" source="./media/backup-azure-sql-database/backup-center-restore-inline.png" alt-text="復元プロセスの開始を示すスクリーンショット。" lightbox="./media/backup-azure-sql-database/backup-center-restore-expanded.png":::
 
-4. 復元するデータベースを選択します。
+1. [データソースの種類] として **[Azure VM の SQL]** を選択し、復元するデータベースを選択して **[続行]** をクリックします。
 
-    ![復元するデータベースの選択](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
+   :::image type="content" source="./media/backup-azure-sql-database/sql-restore.png" alt-text="[データソースの種類] の選択を示すスクリーンショット。":::
 
-5. データベース メニューを確認します。 ここには、次のような、データベース バックアップに関する情報が表示されます。
-
-    - 最古および最新の復元ポイント
-    - 完全復旧モードと一括ログ復旧モードのデータベースで、トランザクション ログ バックアップ用に構成されているデータベースに関する過去 24 時間のログ バックアップの状態。
-
-6. **[復元]** を選択します。
-
-    ![[復元] を選択](./media/backup-azure-sql-database/restore-db.png)
-
-7. **[復元の構成]** で、データの復元先 (または復元方法) を指定します。
+1. **[復元の構成]** で、データの復元先 (または復元方法) を指定します。
+   
    - **別の場所**:別の場所にデータベースを復元し、元のソース データベースを保持します。
    - **DB の上書き**:元のソースと同じ SQL Server インスタンスにデータを復元します。 このオプションでは、元のデータベースが上書きされます。
 
@@ -77,7 +70,6 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
         > 選択したデータベースが Always On 可用性グループに属している場合、SQL Server はデータベースの上書きを許可しません。 **[別の場所]** のみを使用できます。
         >
    - **ファイルとして復元**:データベースとして復元するのではなく、バックアップ ファイルとして復元します。このファイルは、SQL Server Management Studio を使用して、ファイルが存在する任意のマシンに後からデータベースとして復元できます。
-     ![[復元の構成] メニュー](./media/backup-azure-sql-database/restore-configuration.png)
 
 ### <a name="restore-to-an-alternate-location"></a>別の場所に復元する
 
@@ -87,9 +79,9 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 1. 該当する場合は、 **[選択した SQL インスタンスに既に同じ名前の DB が存在する場合に上書きする]** を選択します。
 1. **[復元ポイント]** を選択し、[特定の時点に復元する](#restore-to-a-specific-point-in-time)のか、[特定の復旧ポイント](#restore-to-a-specific-restore-point)に復元するのかを選択します。
 
-    ![復元ポイントを選択する](./media/backup-azure-sql-database/select-restore-point.png)
+   :::image type="content" source="./media/backup-azure-sql-database/sql-alternate-location-recovery.png" alt-text="[復元ポイント] の選択を示すスクリーンショット。":::
 
-    ![特定の時点に復元する](./media/backup-azure-sql-database/restore-to-point-in-time.png)
+   :::image type="content" source="./media/backup-azure-sql-database/restore-points-sql-inline.png" alt-text="特定の時点への復元を示すスクリーンショット。" lightbox="./media/backup-azure-sql-database/restore-points-sql-expanded.png":::
 
 1. **[詳細な構成]** メニューで、次の手順を実行します。
 
@@ -119,16 +111,17 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 バックアップ データをデータベースとしてではなく .bak ファイルとして復元するには、 **[ファイルとして復元]** を選択します。 指定されたパスにファイルがダンプされると、ファイルをデータベースとして復元したい任意のマシンにこれらのファイルを移すことができます。 これらのファイルを任意のマシンに移動できるので、サブスクリプションやリージョンをまたいでデータを復元できるようになりました。
 
 1. **[復元する場所と方法]** で、 **[ファイルとして復元]** を選択します。
-1. バックアップ ファイルを復元する先の SQL サーバーの名前を選択します。
+1. バックアップ ファイルを復元する先の SQL Server の名前を選択します。
 1. **[サーバー上の宛先パス]** に、手順 2 で選択したサーバー上のフォルダー パスを入力します。 これは、必要なすべてのバックアップ ファイルをサービスがダンプする場所です。 通常、ネットワーク共有パスや、宛先パスとして指定されているマウントされた Azure ファイル共有のパスを使うと、同じネットワーク内の他のマシンや、それらにマウントされている同じ Azure ファイル共有でこれらのファイルに簡単にアクセスできます。<BR>
 
-    >ターゲットとなる登録済み VM にマウントされている Azure ファイル共有でデータベース バックアップ ファイルを復元するには、NT AUTHORITY\SYSTEM でファイル共有にアクセスできることを確認します。 下の手順を行い、VM にマウントされている AFS に読み取り/書き込みアクセス許可を付与できます。
-    >
-    >- `PsExec -s cmd` を実行し、NT AUTHORITY\SYSTEM シェルに入ります
-    >   - `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` を実行します
-    >   - `dir \\<storageacct>.file.core.windows.net\<filesharename>` でアクセスの有効性を検証します
-    >- バックアップ コンテナーから `\\<storageacct>.file.core.windows.net\<filesharename>` (パス) へのファイルとしての復元を開始します<BR>
-    [[Sysinternals]](/sysinternals/downloads/psexec) ページから PsExec をダウンロードすることができます。
+   >[!Note]
+   >ターゲットとなる登録済み VM にマウントされている Azure ファイル共有でデータベース バックアップ ファイルを復元するには、NT AUTHORITY\SYSTEM でファイル共有にアクセスできることを確認します。 下の手順を行い、VM にマウントされている AFS に読み取り/書き込みアクセス許可を付与できます。
+   >
+   >- `PsExec -s cmd` を実行し、NT AUTHORITY\SYSTEM シェルに入ります
+   >   - `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` を実行します
+   >   - `dir \\<storageacct>.file.core.windows.net\<filesharename>` でアクセスの有効性を検証します
+   >- バックアップ コンテナーから `\\<storageacct>.file.core.windows.net\<filesharename>` (パス) へのファイルとしての復元を開始します<BR>
+   >[[Sysinternals]](/sysinternals/downloads/psexec) ページから PsExec をダウンロードすることができます。
 
 1. **[OK]** を選択します。
 
@@ -173,7 +166,7 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 
 復元オプションの 1 つである、リージョンをまたがる復元 (CRR) を使用すると、セカンダリ リージョン (Azure のペアになっているリージョン) で Azure VM 上でホストされている SQL データベースを復元できます。
 
-プレビュー期間中にこの機能にオンボードするには、「[作業を開始する前に](./backup-create-rs-vault.md#set-cross-region-restore)」セクションをお読みください。
+この機能にオンボードするには、[開始前の注意に関するセクション](./backup-create-rs-vault.md#set-cross-region-restore)を参照してください。
 
 CRR が有効になっているかどうかを確認するには、「[リージョンをまたがる復元の構成](backup-create-rs-vault.md#configure-cross-region-restore)」の手順に従ってください。
 
@@ -193,26 +186,22 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 
 ### <a name="restore-in-secondary-region"></a>セカンダリ リージョンに復元する
 
-セカンダリ リージョンに復元するユーザー エクスペリエンスは、プライマリ リージョンに復元するユーザー エクスペリエンスに似ています。 [復元の構成] ペインで復元の詳細を構成するときに、セカンダリ リージョンのパラメーターのみを指定するように求められます。
+セカンダリ リージョンに復元するユーザー エクスペリエンスは、プライマリ リージョンに復元するユーザー エクスペリエンスに似ています。 [復元の構成] ペインで復元の詳細を構成するときに、セカンダリ リージョンのパラメーターのみを指定するように求められます。 コンテナーがセカンダリ リージョンに存在し、SQL サーバーがセカンダリ リージョンのコンテナーに登録されている必要があります。
 
 ![復元する場所と方法](./media/backup-azure-sql-database/restore-secondary-region.png)
-
->[!NOTE]
->セカンダリ リージョンの仮想ネットワークは一意に割り当てる必要があり、そのリソース グループの他の VM には使用できません。
 
 ![復元進行中通知をトリガーする](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
 >[!NOTE]
->
 >- 復元がトリガーされた後、データ転送フェーズでは、復元ジョブを取り消すことができません。
->- セカンダリ リージョンに復元するために必要な Azure ロールは、プライマリ リージョンにおけるものと同じです。
+>- リージョン間で復元操作を実行するために必要なロールまたはアクセス レベルは、サブスクリプションの _バックアップ オペレーター_ ロール、ソースおよびターゲットの仮想マシンでの _共同作成者 (書き込み)_ アクセスです。 バックアップ ジョブを表示するため、サブスクリプションで必要な最小限の権限は _バックアップ閲覧者_ です。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>セカンダリ リージョンの復元ジョブの監視
 
-1. ポータルから **[Recovery Services コンテナー]**  >  **[バックアップ ジョブ]** に移動します。
-1. セカンダリ リージョンの項目を表示するには、 **[セカンダリ リージョン]** を選択します。
+1. Azure portal で、 **[バックアップ センター]**  >  **[バックアップ ジョブ]** に移動します。
+1. **CrossRegionRestore** のフィルター操作を実行して、セカンダリ リージョンのジョブを表示します。
 
-    ![フィルター処理されたバックアップ ジョブ](./media/backup-azure-sql-database/backup-jobs-secondary-region.png)
+   :::image type="content" source="./media/backup-azure-sql-database/backup-center-jobs-inline.png" alt-text="フィルター処理されたバックアップ ジョブを示すスクリーンショット。" lightbox="./media/backup-azure-sql-database/backup-center-jobs-expanded.png":::
 
 ## <a name="next-steps"></a>次のステップ
 

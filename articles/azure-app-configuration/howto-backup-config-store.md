@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: b3e0bcad7beccc31e1772fbb24ffad7f502b8140
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70c019858908ae3684470a5fb4e5aaf98a976777
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102454245"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114298210"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>App Configuration ストアを自動的にバックアップする
 
@@ -127,7 +127,7 @@ az eventgrid event-subscription create \
 - Azure Functions ランタイム バージョン 3.x
 - 10 分ごとにタイマーによってトリガーされる関数
 
-データのバックアップを簡単に開始できるようにするために、コードに変更を加えることなく使用できる[関数をテストして公開](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup)しました。 プロジェクト ファイルをダウンロードし、[Visual Studio から独自の Azure 関数アプリに発行します。](../azure-functions/functions-develop-vs.md#publish-to-azure)
+データのバックアップを簡単に開始できるようにするために、コードに変更を加えることなく使用できる[関数をテストして公開](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup)しました。 プロジェクト ファイルをダウンロードし、[Visual Studio から独自の関数アプリに発行します。](../azure-functions/functions-develop-vs.md#publish-to-azure)
 
 > [!IMPORTANT]
 > ダウンロードしたコードの環境変数には変更を加えないでください。 次のセクションでは、必要なアプリ設定を作成します。
@@ -199,7 +199,7 @@ az role assignment create \
     --scope $secondaryAppConfigId
 ```
 
-次のコマンドまたは [Azure portal](../storage/common/storage-auth-aad-rbac-portal.md#assign-azure-roles-using-the-azure-portal) を使用して、関数アプリのマネージド ID にキューへのアクセス権を付与します。 キューに `Storage Queue Data Contributor` ロールを割り当てます。
+次のコマンドまたは [Azure portal](../storage/blobs/assign-azure-role-data-access.md#assign-an-azure-role) を使用して、関数アプリのマネージド ID にキューへのアクセス権を付与します。 キューに `Storage Queue Data Contributor` ロールを割り当てます。
 
 ```azurecli-interactive
 az role assignment create \

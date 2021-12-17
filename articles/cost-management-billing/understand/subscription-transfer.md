@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 09/15/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 163bd7dbdac4de7b7d9c1657ac3debf45382a27a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 03a2395adde34be7e83c8d151d7e0ad2893b5c95
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027273"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655716"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>Azure サブスクリプションの課金所有権の譲渡の概要
 
@@ -30,16 +30,30 @@ ms.locfileid: "97027273"
 
 アカウントの課金管理者のみがサブスクリプションの所有権を譲渡できます。
 
-## <a name="determine-account-billing-administrator"></a>アカウントの課金管理者を判断する
+## <a name="determine-if-you-are-a-billing-administrator"></a>自分が課金管理者であるかどうかを確認する
 
 <a name="whoisaa"></a>
 
-課金管理者とは、アカウントに対する課金を管理する権限が付与されているユーザーのことです。 [Azure portal](https://portal.azure.com) で課金情報にアクセスする権限のほか、サブスクリプションの作成、請求書の表示と支払い、支払い方法の更新など、さまざまな課金関連の作業を行う権限が付与されています。
+譲渡を実行するには、アカウントの課金を管理するためのアクセス権を持つ担当者を探します。 [Azure portal](https://portal.azure.com) で課金情報にアクセスする権限のほか、サブスクリプションの作成、請求書の表示と支払い、支払い方法の更新など、さまざまな課金関連の作業を行う権限が付与されています。
 
-課金管理者であるアカウントを特定するには、[Azure portal で [コストの管理と請求]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview) に移動します。 次に、左側のペインの **[すべての課金スコープ]** を選択します。 [サブスクリプション] ページに、自分が課金管理者となっているサブスクリプションがすべて一覧表示されます。
+### <a name="check-if-you-have-billing-access"></a>自分に課金アクセス権があるかどうかを確認する
 
-サブスクリプションのアカウント管理者が誰かわからない場合は、[Azure portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動します。 次に、確認するサブスクリプションを選択し、 **[設定]** を調べます。 **[プロパティ]** を選択すると、サブスクリプションのアカウント管理者が **[アカウント管理者]** ボックスに表示されます。
+1. 課金アクセス権があるアカウントを特定するには、[Azure portal で [コストの管理と請求]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview) に移動します。
 
+2. 左側のメニューから **[Billing accounts]\(課金アカウント\)** を選択します。
+
+3. **[課金スコープ]** リスト ページに、課金情報へのアクセス権があるすべてのサブスクリプションが表示されます。
+
+### <a name="check-by-subscription"></a>サブスクリプションごとに確認する
+
+1. サブスクリプションのアカウント管理者が誰かわからない場合は、[Azure portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動します。 
+
+2. 確認するサブスクリプションを選択します。
+
+3. **[設定]** という見出しの下にある **[プロパティ]** を選択します。 **[アカウント管理者]** ボックスを見ると、サブスクリプションのアカウント管理者がわかります。
+
+   > [!NOTE]
+   > すべてのサブスクリプションの種類にプロパティが表示されるわけではありません。
 
 ## <a name="supported-subscription-types"></a>サポートされているサブスクリプションの種類
 

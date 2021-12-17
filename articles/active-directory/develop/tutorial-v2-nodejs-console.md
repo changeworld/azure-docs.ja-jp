@@ -3,19 +3,19 @@ title: チュートリアル:Node.js コンソール アプリで Microsoft Grap
 titleSuffix: Microsoft identity platform
 description: このチュートリアルでは、Node.js コンソール アプリで Microsoft Graph を呼び出すためのコンソール アプリを作成します。
 services: active-directory
-author: derisen
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 02/17/2021
-ms.author: v-doeris
-ms.openlocfilehash: 33d3712e25a06419e0ccc5914cdddfae7d85a371
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: marsma
+ms.openlocfilehash: c46fbea002314c0b60046d942423815b3d8c1115
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645791"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507968"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-in-a-nodejs-console-app"></a>チュートリアル:Node.js コンソール アプリで Microsoft Graph API を呼び出す
 
@@ -143,11 +143,11 @@ const msalConfig = {
  * https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow
  */
 const tokenRequest = {
-    scopes: [process.env.GRAPH_ENDPOINT + '.default'],
+    scopes: [process.env.GRAPH_ENDPOINT + '/.default'],
 };
 
 const apiConfig = {
-    uri: process.env.GRAPH_ENDPOINT + 'v1.0/users',
+    uri: process.env.GRAPH_ENDPOINT + '/v1.0/users',
 };
 
 /**

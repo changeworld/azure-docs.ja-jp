@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 03/07/2021
+ms.date: 07/23/2021
 ms.author: rolyon
-ms.reviewer: vincesm
+ms.reviewer: absinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d37b2988d32c854e4184adee998341ebadcee053
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3c5131cb56ff65b6c559186cf491c4367ecbc7d5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467765"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748956"
 ---
 # <a name="list-azure-ad-role-definitions"></a>Azure AD ロールの定義を一覧表示する
 
@@ -26,22 +26,79 @@ ms.locfileid: "103467765"
 
 この記事では、Azure AD 組み込みロールとカスタムロールの一覧を、そのアクセス許可と共に一覧表示する方法について説明します。
 
-## <a name="list-all-roles"></a>すべてのロールを一覧表示する
+## <a name="prerequisites"></a>前提条件
 
-1. [Azure AD 管理センター](https://aad.portal.azure.com)にサインインして､ **[Azure Active Directory]** を選択します｡
+- PowerShell を使用する場合の AzureADPreview モジュール
+- Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
-1. **[ロールと管理者]** を選択して、利用可能なすべてのロールの一覧を表示します。
+詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
 
-    ![Azure AD ポータルでのロールの一覧](./media/role-definitions-list/view-roles-in-azure-active-directory.png)
+## <a name="azure-portal"></a>Azure portal
+
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[ロールと管理者]** を選択して、利用可能なすべてのロールの一覧を表示します。
+
+    ![Azure portal でのロールの一覧](./media/role-definitions-list/view-roles-in-azure-active-directory.png)
 
 1. 右側にある省略記号を選択し、 **[説明]** をクリックすると、ロールのアクセス許可の完全な一覧が表示されます。
 
     このページには、ロールの管理について説明している関連ドキュメントへのリンクが含まれています。
 
-    ![[全体管理者 - 説明] ページを示すスクリーンショット。](./media/role-definitions-list/role-description.png)
+    ![[全体管理者 - 説明] ページを示すスクリーンショット。](./media/role-definitions-list/role-description-updated.png)
+
+## <a name="powershell"></a>PowerShell
+
+PowerShell を使用して Azure AD ロールを一覧表示するには、次の手順を実行します。
+
+1. PowerShell ウィンドウを開き、[Import-Module](/powershell/module/microsoft.powershell.core/import-module) を使用して、AzureADPreview モジュールをインポートします。 詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
+
+    ```powershell
+    Import-Module -Name AzureADPreview -Force
+    ```
+
+2. PowerShell ウィンドウ内で [Connect-AzureAD](/powershell/module/azuread/connect-azuread) を使用して、ご自身のテナントにサインインします。
+
+    ```powershell
+    Connect-AzureAD
+    ```
+3. [Get-AzureADMSRoleDefinition](/powershell/module/azuread/get-azureadmsroledefinition) を使用して、すべてのロールを取得します。
+
+    ```powershell
+    Get-AzureADMSRoleDefinition
+    ```
+
+4. ロールのアクセス許可の一覧を表示するには、次のコマンドレットを使用します。
+    
+    ```powershell
+    # Do this avoid truncation of the list of permissions
+    $FormatEnumerationLimit = -1
+    
+    (Get-AzureADMSRoleDefinition -Filter "displayName eq 'Conditional Access Administrator'").RolePermissions | Format-list
+    ```
+
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
+
+[Graph エクスプローラー](https://aka.ms/ge)内で Microsoft Graph API を使用して、Azure AD ロールを一覧表示するには、次の手順を実行します。
+
+1. [Graph エクスプローラー](https://aka.ms/ge)にサインインします。
+2. ドロップダウンから HTTP メソッドとして **[GET]** を選択します。 
+3. API バージョンとして **[ベータ]** を選択します。
+4. [List roleDefinitions](/graph/api/rbacapplication-list-roledefinitions) API を使用するために、次のクエリを追加します。
+
+   ```HTTP
+   GET https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
+   ```
+
+5. **[Run Query]\(クエリの実行\)** を選択して、ロールを一覧表示します。
+6. ロールのアクセス許可を表示するには、次の API を使用します。
+
+   ```HTTP
+   GET https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions?$filter=DisplayName eq 'Conditional Access Administrator'&$select=rolePermissions
+   ```
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure AD 管理ロール フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)でご意見をお寄せください。
-* ロールと管理者ロールの割り当ての詳細については、[管理者ロールの割り当て](permissions-reference.md)に関するページを参照してください。
-* 既定のユーザー アクセス許可については、[既定のゲストとメンバー ユーザーのアクセス許可の比較](../fundamentals/users-default-permissions.md)を参照してください。
+* [Azure AD ロールの割り当てを一覧表示する](view-assignments.md)。
+* [Azure AD ロールをユーザーに割り当てる](manage-roles-portal.md)。
+* [Azure AD の組み込みロール](permissions-reference.md)。

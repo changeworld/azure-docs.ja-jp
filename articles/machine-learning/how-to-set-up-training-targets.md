@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 09/28/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: f38fe7d847754247f8c1510527b3ffe026c20be5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python, contperf-fy21q1
+ms.openlocfilehash: 020296957e09743610ab46db74e663d86901d116
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518502"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179581"
 ---
 # <a name="configure-and-submit-training-runs"></a>トレーニングの実行を構成して送信する
 
@@ -28,7 +28,7 @@ ms.locfileid: "102518502"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を試してください
+* Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を試してください
 * [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/install) (1.13.0 以降)
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)、`ws`
 * コンピューティング先、`my_compute_target`。  [コンピューティング ターゲットを作成する](how-to-create-attach-compute-studio.md) 
@@ -61,7 +61,7 @@ ScriptRunConfig オブジェクトを使用して、トレーニング実験を�
 
 ## <a name="create-an-experiment"></a>実験の作成
 
-ご自分のワークスペース内に実験を作成します。
+ご自分のワークスペース内に[実験](concept-azure-machine-learning-architecture.md#experiments)を作成します。 実験は、実行の送信を整理したり、コードを追跡したりするのに役立つ軽量のコンテナーです。
 
 ```python
 from azureml.core import Experiment
@@ -77,9 +77,11 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 この記事のコード例では、「前提条件」セクションのコンピューティング ターゲット `my_compute_target` が既に作成されていることを前提としています。
 
 >[!Note]
->Azure Databricks は、モデル トレーニングのコンピューティング先としてサポートされていません。 データ準備およびデプロイのタスクには Azure Databricks を使用できます。 
+>Azure Databricks は、モデル トレーニングのコンピューティング先としてサポートされていません。 データ準備およびデプロイのタスクには Azure Databricks を使用できます。
 
-## <a name="create-an-environment"></a>環境の作成
+[!INCLUDE [arc-enabled-kubernetes](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
+
+## <a name="create-an-environment"></a><a name="environment"></a> 環境の作成
 Azure Machine Learning [環境](concept-environments.md)は、機械学習トレーニングが行われる環境をカプセル化したものです。 そこでは、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、Docker イメージ、環境変数、およびソフトウェア設定が指定されます。 また、実行時間 (Python、Spark、または Docker) も指定されます。
 
 独自の環境を定義することも、Azure ML のキュレーションされた環境を使用することもできます。 [キュレーションされた環境](./how-to-use-environments.md#use-a-curated-environment)とは、ワークスペース内で既定で使用できる定義済みの環境です。 これらの環境は、キャッシュされた Docker イメージでバックアップされ、実行の準備コストを下げます。 利用可能なキュレーション環境の完全な一覧については、「[Azure Machine Learning のキュレーションされた環境](./resource-curated-environments.md)」を参照してください。
@@ -111,7 +113,7 @@ myenv.python.user_managed_dependencies = True
 
 ## <a name="create-the-script-run-configuration"></a>スクリプトの実行構成を作成する
 
-コンピューティング先 (`my_compute_target`) と環境 (`myenv`) が用意できたので、`project_folder` ディレクトリにあるトレーニング スクリプト (`train.py`) を実行するスクリプト実行構成を作成します。
+コンピューティング先 (`my_compute_target`、「[前提条件](#prerequisites)」を参照) と環境 (`myenv`、「[環境の作成](#environment)」を参照) が用意できたので、`project_folder` ディレクトリにあるトレーニング スクリプト (`train.py`) を実行するスクリプト実行構成を作成します。
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -133,7 +135,7 @@ script_run_config.run_config.target = my_compute_target
 実行に対する既定の最大許容時間をオーバーライドしたい場合は、 **`max_run_duration_seconds`** パラメーターを使用してそれを行うことができます。 この値よりも時間がかかる場合は、システムによって自動的に実行のキャンセルが試みられます。
 
 ### <a name="specify-a-distributed-job-configuration"></a>分散ジョブの構成を指定する
-分散トレーニング ジョブを実行する場合は、分散ジョブ固有の構成を **`distributed_job_config`** パラメーターに指定します。 サポートされている構成の種類には、[MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration)、[TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration)、および [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) があります。 
+[分散トレーニング](how-to-train-distributed-gpu.md) ジョブを実行する場合は、分散ジョブ固有の構成を **`distributed_job_config`** パラメーターに指定します。 サポートされている構成の種類には、[MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration)、[TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration)、および [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) があります。 
 
 Horovod、TensorFlow、PyTorch の各分散ジョブの実行の詳細と例については、以下を参照してください。
 
@@ -177,6 +179,9 @@ run.wait_for_completion(show_output=True)
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
+* **AttributeError: 'RoundTripLoader'** オブジェクトに属性 'comment_handling' はありません: このエラーは、 `ruamel-yaml` の新しいバージョン (v0.17.5) から発生します。`azureml-core` の依存関係により、`azureml-core` に対する変更が破損しています。 このエラーを解決するには、 `pip uninstall ruamel-yaml` を実行して別のバージョンの `ruamel-yaml` をインストールすることで `ruamel-yaml` をアンインストールしてください。サポートされているバージョンはv0.15.35 から v0.17.4 (包括的) です。 `pip install "ruamel-yaml>=0.15.35,<0.17.5"` を実行してください。
+
 
 * **実行が `jwt.exceptions.DecodeError` で失敗する**:正確なエラー メッセージ: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。 
     

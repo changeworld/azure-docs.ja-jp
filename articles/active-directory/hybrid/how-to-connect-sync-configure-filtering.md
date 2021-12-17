@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 595cf2c1dbc105634d33b426c67e5123b9751e6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3164d9f4aa5820e4debcbe322113599c8a63acdc
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95996544"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717806"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同期: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Microsoft 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
@@ -213,6 +213,8 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 
 ### <a name="inbound-filtering"></a>受信のフィルター処理
 受信フィルター処理は既定の構成を使用します。既定の構成では、Azure AD に送信されるオブジェクトを同期させるためには、メタバース属性 cloudFiltered の値が未設定となっている必要があります。 この属性の値が **True** に設定されている場合、オブジェクトは同期されません。 意図的に **False** に設定することは避けてください。 他の規則から確実に値が得られるよう、この属性の値は **True** または **NULL** (未設定) にする必要があります。
+
+Azure AD Connect は Azure AD でプロビジョニングするオブジェクトをクリーンアップするように設計されていることに注意してください。 システムが過去に Azure AD でオブジェクトをプロビジョニングしたことがなく、インポート手順で Azure AD オブジェクトを取得した場合、このオブジェクトは他のシステムによって Azure AD で作成されたと正しく想定されます。 メタバース属性 `cloudFiltered` が **True** に設定されている場合でも、Azure AD Connect は、これらの種類の Azure AD オブジェクトをクリーンアップしません。
 
 受信フィルター処理では、同期の対象となるオブジェクトと対象外となるオブジェクトが **スコープ** の作用によって決定されます。 この点は、組織ごとに実際の要件に合わせて調整することになります。 スコープ モジュールには、同期規則の作用対象を判断する **グループ** と **句** があります。 グループは、1 つまたは複数の句を含みます。 複数の句は "論理積" で組み合わされ、複数のグループは "論理和" で組み合わされます。
 

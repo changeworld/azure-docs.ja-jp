@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 01/28/2021
+ms.date: 10/21/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: acce282dcaac971716a97d7722543d78e28b7a34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfbc4c469ca25247c6fb74246133a8dc972a68a9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517669"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262776"
 ---
 # <a name="troubleshoot-publisher-verification"></a>発行者の確認に関するトラブルシューティング
 [発行者の確認](publisher-verification-overview.md)で、エラーが発生してプロセスを完了できない場合、または予期しない動作が発生する場合は、次の手順を行う必要があります。 
@@ -29,7 +29,7 @@ ms.locfileid: "102517669"
 
 1. [一般的な問題](#common-issues)の一覧を確認します。
 
-1. [Graph エクスプローラー](#making-microsoft-graph-api-calls)を使用して要求を再現し、追加情報を収集して、UI の問題を除外します。
+1. [Graph エクスプローラー](#making-microsoft-graph-api-calls)を使用して要求を再現し、さらに情報を収集して、UI の問題を除外します。
 
 ## <a name="common-issues"></a>一般的な問題
 以下に示すのは、プロセスの間に発生する可能性がある一般的な問題です。 
@@ -229,15 +229,15 @@ Graph API 経由で検証が実行され、指定されたアプリケーショ�
 
 検証済みの発行者をアプリに追加しようとする前に多要素認証が実行されていない場合に発生します。 詳しくは、「[一般的な問題](#common-issues)」をご覧ください。 注:確認済み発行者を追加するときは、同じセッションで MFA を行う必要があります。 MFA が有効になっていても、そのセッションで行う必要がない場合、要求は失敗します。 
 
-次のようなエラー メッセージが表示されます。"管理者によって構成が変更されたか、自分が新しい場所に移動したため、続行するには多要素認証を使用する必要があります。"
+"管理者によって構成が変更されたか、自分が新しい場所に移動したため、続行するには多要素認証を使用する必要があります" というエラー メッセージが表示されます。
 
 ### <a name="unabletoaddpublisher"></a>UnableToAddPublisher
 
-次のようなエラー メッセージが表示されます。"A verified publisher cannot be added to this application. (確認済み発行者をこのアプリケーションに追加できません。) Please contact your administrator for assistance. (管理者にお問い合わせください。)"
+次のいずれかのエラー メッセージが表示されます: "確認済み発行者をこのアプリケーションに追加できません。 管理者にお問い合わせください" または "確認済み発行者をこのアプリケーションに追加できません。 管理者にお問い合わせください"。
 
 まず、[発行者の確認の要件](publisher-verification-overview.md#requirements)を満たしていることを確認します。
 
-確認済み発行者を追加する要求が行われると、多数のシグナルを使用してセキュリティ リスク評価が実行されます。 要求が危険であると判断された場合は、エラーが返されます。 セキュリティ上の理由から、Microsoft は、要求が危険かどうかを判断するために使用される具体的な基準を公開していません。
+確認済み発行者を追加する要求が行われると、多数のシグナルを使用してセキュリティ リスク評価が実行されます。 要求が危険であると判断された場合は、エラーが返されます。 セキュリティ上の理由から、Microsoft は、要求が危険かどうかを判断するために使用される具体的な基準を公開していません。 このエラーを受け取り、"危険"という評価が正しくないと思う場合は、待機してから確認要求を再送信してみてください。 一部のお客様からは、複数回試行した後に成功したという報告を受けています。
 
 ## <a name="next-steps"></a>次のステップ
 

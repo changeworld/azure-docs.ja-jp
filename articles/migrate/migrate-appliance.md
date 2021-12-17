@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate アプライアンス
 description: Azure Migrate アプライアンスに対するサポートの概要について説明します。
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: b10d2e10f95470cadf67af762a0d7320bc09b7e0
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 89cfaadb7d490c1d6ebf9cac21c08a402c9d8997
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075697"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128565761"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -23,8 +23,8 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 
 **シナリオ** | **ツール** | **用途**
 --- | --- | ---
-**VMware 環境で実行されているサーバーの検出と評価** | Azure Migrate: Discovery and Assessment | VMware 環境で実行されているサーバーを検出します<br/><br/> インストールされているソフトウェア インベントリの検出、エージェントレスの依存関係分析、SQL Server インスタンスとデータベースの検出を実行します。<br/><br/> 評価のためにサーバー構成とパフォーマンス メタデータを収集します。
-**VMware 環境で実行されているサーバーのエージェントレス移行** | Azure Migrate:Server Migration | VMware 環境で実行されているサーバーを検出します。 <br/><br/> エージェントをインストールせずにサーバーをレプリケートします。
+**VMware 環境で実行されているサーバーの検出と評価** | Azure Migrate: Discovery and Assessment | VMware 環境で実行されているサーバーを検出します<br/><br/> インストールされているソフトウェア インベントリ、ASP.NET Web アプリ、SQL Server インスタンスとデータベースの検出、およびエージェントレスの依存関係分析を実行します。<br/><br/> 評価のためにサーバー構成とパフォーマンス メタデータを収集します。
+**VMware 環境で実行されているサーバーのエージェントレス移行** | Azure Migrate: Server Migration | VMware 環境で実行されているサーバーを検出します。 <br/><br/> エージェントをインストールせずにサーバーをレプリケートします。
 **Hyper-V 環境で実行されているサーバーの検出と評価** | Azure Migrate: Discovery and Assessment | Hyper-V 環境で実行されているサーバーを検出します。<br/><br/> 評価のためにサーバー構成とパフォーマンス メタデータを収集します。
 **オンプレミスの物理または仮想化されたサーバーの検出と評価** |  Azure Migrate: Discovery and Assessment |  オンプレミスの物理または仮想化されたサーバーを検出します。<br/><br/> 評価のためにサーバー構成とパフォーマンス メタデータを収集します。
 
@@ -42,13 +42,10 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 
 次の表は、VMware の Azure Migrate アプライアンス要件をまとめたものです。
 
-> [!Note]
-> VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 この機能を試すには、[**このリンク**](https://aka.ms/AzureMigrate/SQL)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。 オーストラリア東部に既にプロジェクトがあり、この機能を試したい場合は、ポータルでこれらの [**前提条件**](how-to-discover-sql-existing-project.md)が完了していることを確認してください。
-
 **要件** | **VMware**
 --- | ---
 **アクセス許可** | アプライアンス構成マネージャーにローカルまたはリモートでアクセスするには、アプライアンス サーバーの管理者特権を持つローカルまたはドメインのユーザー アカウントが必要です。
-**アプライアンス サービス** | アプライアンスには次のサービスがあります。<br/><br/> - **アプライアンス構成マネージャー**: これは Web アプリケーションであり、サーバーの検出と評価を開始するためにソースの詳細で構成できます。<br/> - **VMware 検出エージェント**: このエージェントにより、オンプレミスの評価として作成するために使用できるサーバー構成メタデータが収集されます。<br/>- **VMware 評価エージェント**: このエージェントにより、パフォーマンスベースの評価を作成するために使用できるサーバー パフォーマンス メタデータが収集されます。<br/>- **自動更新サービス**: このサービスにより、アプライアンス上で実行されているすべてのエージェントが最新の状態に保たれます。 24 時間ごとに自動的に実行されます。<br/>- **DRA エージェント**: サーバーのレプリケーションを調整し、レプリケートされたサーバーと Azure 間の通信をコーディネートします。 エージェントレスの移行を使用して、サーバーを Azure にレプリケートする場合にのみ使用されます。<br/>- **ゲートウェイ**:レプリケートされたデータを Azure に送信します。 エージェントレスの移行を使用して、サーバーを Azure にレプリケートする場合にのみ使用されます。<br/>- **SQL 検出および評価エージェント**: SQL Server インスタンスとデータベースの構成およびパフォーマンス メタデータを Azure に送信します。
+**アプライアンス サービス** | アプライアンスには次のサービスがあります。<br/><br/> - **アプライアンス構成マネージャー**: これは Web アプリケーションであり、サーバーの検出と評価を開始するためにソースの詳細を構成できます。<br/> - **VMware 検出エージェント**: このエージェントにより、オンプレミスの評価として作成するために使用できるサーバー構成メタデータが収集されます。<br/>- **VMware 評価エージェント**: このエージェントにより、パフォーマンスベースの評価を作成するために使用できるサーバー パフォーマンス メタデータが収集されます。<br/>- **自動更新サービス**: このサービスにより、アプライアンス上で実行されているすべてのエージェントが最新の状態に保たれます。 24 時間ごとに自動的に実行されます。<br/>- **DRA エージェント**: サーバーのレプリケーションを調整し、レプリケートされたサーバーと Azure 間の通信をコーディネートします。 エージェントレスの移行を使用して、サーバーを Azure にレプリケートする場合にのみ使用されます。<br/>- **ゲートウェイ**:レプリケートされたデータを Azure に送信します。 エージェントレスの移行を使用して、サーバーを Azure にレプリケートする場合にのみ使用されます。<br/>- **SQL 検出および評価エージェント**: SQL Server インスタンスとデータベースの構成およびパフォーマンス メタデータを Azure に送信します。<br/>- **Web アプリの検出と評価エージェント**: Web アプリの構成データを Azure に送信します。
 **プロジェクトの制限** |  単一のプロジェクトにのみアプライアンスを登録することができます。<br/> 単一のプロジェクトに複数の登録済みアプライアンスを含めることができます。
 **検出の制限** | 1 つのアプライアンスによって、vCenter Server 上で実行されているサーバーを最大 10,000 台検出できます。<br/> 1 つのアプライアンスは、1 つの vCenter Server に接続できます。
 **サポートされるデプロイ** | OVA テンプレートを使用して、vCenter Server で実行されている新しいサーバーとしてデプロイします。<br/><br/> PowerShell インストーラー スクリプトを使用して、Windows Server 2016 を実行している既存のサーバーにデプロイします。
@@ -56,15 +53,15 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **OVA の確認** | ハッシュ値を確かめて、プロジェクトからダウンロードした OVA テンプレートを[確認](tutorial-discover-vmware.md#verify-security)します。
 **PowerShell スクリプト** | PowerShell インストーラー スクリプトを使用してアプライアンスをデプロイする方法については、こちらの[記事](./deploy-appliance-script.md#set-up-the-appliance-for-vmware)を参照してください。<br/><br/> 
 **ハードウェアとネットワークの要件** |  アプライアンスは、Windows Server 2016、32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したサーバーで実行する必要があります。<br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。<br/><br/> OVA テンプレートを使用してアプライアンスをデプロイする場合は、ハードウェア要件を満たすサーバーを作成するために、vCenter Server に十分なリソースが必要です。<br/><br/> 既存のサーバーでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。<br/>_(現在のところ、アプライアンスは Windows Server 2016 でのみデプロイできます。)_
-**VMware の要件** | アプライアンスを vCenter Server のサーバーとしてデプロイする場合は、5.5、6.0、6.5、または 6.7 を実行している vCenter Server と、バージョン 5.5 以降を実行している ESXi ホストにデプロイする必要があります。<br/><br/> 
-**VDDK (エージェントレス移行)** | アプライアンスを利用してエージェントレスでサーバーを移行するには、VMware vSphere VDDK をアプライアンス サーバーにインストールする必要があります。
+**VMware の要件** | アプライアンスをサーバーとして vCenter Server にデプロイする場合は、5.5、6.0、6.5、6.7、または 7.0 を実行している vCenter Server と、バージョン 5.5 以降を実行している ESXi ホストにデプロイする必要があります。<br/><br/> 
+**VDDK (エージェントレス移行)** | アプライアンスを使用してエージェントレスでサーバーを移行するには、VMware vSphere VDDK をアプライアンス サーバーにインストールする必要があります。
 
 ## <a name="appliance---hyper-v"></a>アプライアンス - Hyper-V
 
 **要件** | **Hyper-V**
 --- | ---
 **アクセス許可** | アプライアンス構成マネージャーにローカルまたはリモートでアクセスするには、アプライアンス サーバーの管理者特権を持つローカルまたはドメインのユーザー アカウントが必要です。
-**アプライアンス サービス** | アプライアンスには次のサービスがあります。<br/><br/> - **アプライアンス構成マネージャー**: これは Web アプリケーションであり、サーバーの検出と評価を開始するためにソースの詳細で構成できます。<br/> - **検出エージェント**: このエージェントにより、オンプレミスの評価として作成するために使用できるサーバー構成メタデータが収集されます。<br/>- **評価エージェント**: このエージェントにより、パフォーマンスベースの評価を作成するために使用できるサーバー パフォーマンス メタデータが収集されます。<br/>- **自動更新サービス**: このサービスにより、アプライアンス上で実行されているすべてのエージェントが最新の状態に保たれます。 24 時間ごとに自動的に実行されます。
+**アプライアンス サービス** | アプライアンスには次のサービスがあります。<br/><br/> - **アプライアンス構成マネージャー**: これは Web アプリケーションであり、サーバーの検出と評価を開始するためにソースの詳細を構成できます。<br/> - **検出エージェント**: このエージェントにより、オンプレミスの評価として作成するために使用できるサーバー構成メタデータが収集されます。<br/>- **評価エージェント**: このエージェントにより、パフォーマンスベースの評価を作成するために使用できるサーバー パフォーマンス メタデータが収集されます。<br/>- **自動更新サービス**: このサービスにより、アプライアンス上で実行されているすべてのエージェントが最新の状態に保たれます。 24 時間ごとに自動的に実行されます。
 **プロジェクトの制限** |  単一のプロジェクトにのみアプライアンスを登録することができます。<br/> 単一のプロジェクトに複数の登録済みアプライアンスを含めることができます。
 **検出の制限** | 1 つのアプライアンスによって、Hyper-V 環境で実行されているサーバーを最大 5,000 台検出できます。<br/> アプライアンスは、最大 300 個の Hyper-V ホストに接続できます。
 **サポートされるデプロイ** | VHD テンプレートを使用して Hyper-V ホストで実行されているサーバーとしてデプロイします。<br/><br/> PowerShell インストーラー スクリプトを使用して、Windows Server 2016 を実行している既存のサーバーにデプロイします。
@@ -79,7 +76,7 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **要件** | **物理**
 --- | ---
 **アクセス許可** | アプライアンス構成マネージャーにローカルまたはリモートでアクセスするには、アプライアンス サーバーの管理者特権を持つローカルまたはドメインのユーザー アカウントが必要です。
-**アプライアンス サービス** | アプライアンスには次のサービスがあります。<br/><br/> - **アプライアンス構成マネージャー**: これは Web アプリケーションであり、サーバーの検出と評価を開始するためにソースの詳細で構成できます。<br/> - **検出エージェント**: このエージェントにより、オンプレミスの評価として作成するために使用できるサーバー構成メタデータが収集されます。<br/>- **評価エージェント**: このエージェントにより、パフォーマンスベースの評価を作成するために使用できるサーバー パフォーマンス メタデータが収集されます。<br/>- **自動更新サービス**: このサービスにより、アプライアンス上で実行されているすべてのエージェントが最新の状態に保たれます。 24 時間ごとに自動的に実行されます。
+**アプライアンス サービス** | アプライアンスには次のサービスがあります。<br/><br/> - **アプライアンス構成マネージャー**: これは Web アプリケーションであり、サーバーの検出と評価を開始するためにソースの詳細を構成できます。<br/> - **検出エージェント**: このエージェントにより、オンプレミスの評価として作成するために使用できるサーバー構成メタデータが収集されます。<br/>- **評価エージェント**: このエージェントにより、パフォーマンスベースの評価を作成するために使用できるサーバー パフォーマンス メタデータが収集されます。<br/>- **自動更新サービス**: このサービスにより、アプライアンス上で実行されているすべてのエージェントが最新の状態に保たれます。 24 時間ごとに自動的に実行されます。
 **プロジェクトの制限** |  単一のプロジェクトにのみアプライアンスを登録することができます。<br/> 単一のプロジェクトに複数の登録済みアプライアンスを含めることができます。<br/>
 **検出の制限** | 1 つのアプライアンスで最大 1000 台の物理サーバーを検出できます。
 **サポートされるデプロイ** | PowerShell インストーラー スクリプトを使用して、Windows Server 2016 を実行している既存のサーバーにデプロイします。
@@ -100,12 +97,11 @@ Azure Migrate アプライアンスには、インターネットへの接続が
 **URL** | **詳細**  
 --- | --- |
 *.portal.azure.com  | Azure Portal に移動します。
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com | Azure サブスクリプションにサインインします。
-*.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスで Azure Migrate と通信するための Azure Active Directory (AD) アプリを作成します。
-management.azure.com | アプライアンスで Azure Migrate と通信するための Azure AD アプリを作成します。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com <br/> *.microsoftonline.com <br/> *.microsoftonline-p.com  <br/> *.microsoftazuread-sso.com | Azure Active Directory によるアクセス制御と ID 管理に使用されます
+management.azure.com | リソースのデプロイと管理操作に使用されます
 *.services.visualstudio.com | 内部監視に使用するアプライアンス ログをアップロードします。
 *.vault.azure.net | Azure Key Vault でシークレットを管理します。<br/> 注: レプリケートするサーバーの、ここへのアクセス権を確保します。
-aka.ms/* | aka リンクへのアクセスを許可します。アプライアンス サービスの最新の更新プログラムをダウンロードしてインストールするために使用されます。
+aka.ms/* | これらのリンクへのアクセスを許可します。アプライアンス サービスの最新の更新プログラムをダウンロードしてインストールするために使用されます。
 download.microsoft.com/download | Microsoft ダウンロード センターからのダウンロードを許可します。
 *.servicebus.windows.net | アプライアンスと Azure Migrate サービスの間の通信。
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Azure Migrate サービスの URL に接続します。
@@ -118,17 +114,33 @@ download.microsoft.com/download | Microsoft ダウンロード センターか�
 --- | --- |
 *.portal.azure.us  | Azure Portal に移動します。
 graph.windows.net | Azure サブスクリプションにサインインします。
-login.microsoftonline.us  | アプライアンスで Azure Migrate と通信するための Azure Active Directory (AD) アプリを作成します。
-management.usgovcloudapi.net | アプライアンスで Azure Migrate サービスと通信するための Azure AD アプリを作成します。
+login.microsoftonline.us  | Azure Active Directory によるアクセス制御と ID 管理に使用されます
+management.usgovcloudapi.net |  リソースのデプロイと管理操作に使用されます
 *.services.visualstudio.com | 内部監視に使用するアプライアンス ログをアップロードします。
 *.vault.usgovcloudapi.net | Azure Key Vault でシークレットを管理します。
-aka.ms/* | aka リンクへのアクセスを許可します。アプライアンス サービスの最新の更新プログラムをダウンロードしてインストールするために使用されます。
+aka.ms/* | これらのリンクへのアクセスを許可します。アプライアンス サービスの最新の更新プログラムをダウンロードしてインストールするために使用されます。
 download.microsoft.com/download | Microsoft ダウンロード センターからのダウンロードを許可します。
 *.servicebus.usgovcloudapi.net  | アプライアンスと Azure Migrate サービスの間の通信。
 *.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Azure Migrate サービスの URL に接続します。
 *.hypervrecoverymanager.windowsazure.us | **VMware のエージェントレス移行のために使用**<br/><br/> Azure Migrate サービスの URL に接続します。
 *.blob.core.usgovcloudapi.net  |  **VMware のエージェントレス移行のために使用**<br/><br/>移行のためにストレージにデータをアップロードします。
-*.applicationinsights.us | 内部監視に使用するアプライアンス ログをアップロードします。
+*.applicationinsights.us | 内部監視に使用するアプライアンス ログをアップロードします。  
+
+### <a name="public-cloud-urls-for-private-link-connectivity"></a>プライベート リンク接続用のパブリック クラウドの URL
+
+アプライアンスは、プライベート リンク アクセスに加えて、次の URL (直接またはプロキシ経由) にアクセスする必要があります。
+
+**URL** | **詳細**  
+--- | --- |
+*.portal.azure.com  | Azure Portal に移動します。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com <br/> *.microsoftonline.com <br/> *.microsoftonline-p.com <br/> *.microsoftazuread-sso.com  | Azure Active Directory によるアクセス制御と ID 管理に使用されます
+management.azure.com |  リソースのデプロイと管理操作に使用されます
+*.services.visualstudio.com (省略可能) | 内部監視に使用するアプライアンス ログをアップロードします。
+aka.ms/* (省略可能) | これらのリンクへのアクセスを許可します。アプライアンス サービスの最新の更新プログラムをダウンロードしてインストールするために使用されます。
+download.microsoft.com/download | Microsoft ダウンロード センターからのダウンロードを許可します。
+*.servicebus.windows.net | **VMware のエージェントレス移行のために使用**<br/><br/> アプライアンスと Azure Migrate サービスの間の通信。
+*.hypervrecoverymanager.windowsazure.com | **VMware のエージェントレス移行のために使用**<br/><br/> Azure Migrate サービスの URL に接続します。
+*.blob.core.windows.net |  **VMware のエージェントレス移行のために使用**<br/><br/>移行のためにストレージにデータをアップロードします。 <br/>ストレージ アカウント (キャッシュ ストレージ アカウントとゲートウェイ ストレージ アカウントの両方) にプライベート エンドポイントがアタッチされている場合、これは省略可能であり、必須ではありません。
 
 ## <a name="collected-data---vmware"></a>収集されるデータ - VMware
 
@@ -235,6 +247,15 @@ Edition  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Se
 Service Pack  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | SP
 Version  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Version
 
+#### <a name="aspnet-web-apps-data"></a>ASP.NET Web アプリ データ
+
+VMware 環境で検出された各 Windows サーバーからアプライアンスによって収集される Web アプリ構成データを以下に示します。
+
+**エンティティ** | **データ**
+--- | ---
+Web アプリ | アプリケーション名 <br/>構成パス <br/>フロントエンド バインド <br/>有効なフレームワーク <br/>ホスティング Web サーバー<br/>サブアプリケーションと仮想アプリケーション <br/>アプリケーション プール名 <br/>ランタイム バージョン <br/>マネージド パイプライン モード
+Web サーバー | サーバー名 <br/>サーバーの種類 (現在は IIS のみ) <br/>構成の場所 <br/>バージョン <br/>FQDN <br/>検出に使用される資格情報 <br/>アプリケーションの一覧
+
 #### <a name="windows-server-operating-system-data"></a>Windows サーバー オペレーティング システムのデータ
 
 VMware 環境で検出された各 Windows サーバーからアプライアンスによって収集されるオペレーティング システム データを以下に示します。
@@ -267,9 +288,6 @@ Architecture | uname
 ### <a name="sql-server-instances-and-databases-data"></a>SQL Server インスタンスおよびデータベースのデータ
 
 アプライアンスにより、SQL Server インスタンスとデータベースに関するデータが収集されます。
-
-> [!Note]
-> VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 この機能を試すには、[**このリンク**](https://aka.ms/AzureMigrate/SQL)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。 オーストラリア東部に既にプロジェクトがあり、この機能を試したい場合は、ポータルでこれらの [**前提条件**](how-to-discover-sql-existing-project.md)が完了していることを確認してください。
 
 #### <a name="sql-database-metadata"></a>SQL データベースのメタデータ
 
@@ -468,13 +486,13 @@ NIC の MAC アドレス | Win32_NetworkAdapterConfiguration | MACAddress
 **データ** | **コマンド**
 --- | ---
 FQDN | cat /proc/sys/kernel/hostname, hostname -f
-プロセッサ コア数 |  /proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
+プロセッサ コア数 |  cat/proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
 割り当てられたメモリ | cat /proc/meminfo \| grep MemTotal \| awk '{printf "%.0f", $2/1024}'
 BIOS のシリアル番号 | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}'
 BIOS の GUID | cat /sys/class/dmi/id/product_uuid
 ブートの種類 | [ -d /sys/firmware/efi ] && echo EFI \|\| echo BIOS
 OS の名前/バージョン | OS のバージョンと名前について、以下のファイルにアクセスします。<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
-OS アーキテクチャ | Uname -m
+OS アーキテクチャ | uname -m
 ディスク数 | fdisk -l \| egrep 'Disk.*bytes' \| awk '{print $2}' \| cut -f1 -d ':'
 ブート ディスク | df /boot \| sed -n 2p \| awk '{print $1}'
 ディスク サイズ | fdisk -l \| egrep 'Disk.*bytes' \| egrep $disk: \| awk '{print $5}'
@@ -569,18 +587,27 @@ Appliance Configuration Manager で確認するには以下を行います。
 いずれかのサービスに対して古いバージョンを実行している場合は、サービスをアンインストールし、最新バージョンに手動で更新する必要があります。
 
 1. 最新のアプライアンス サービス バージョンを確認するには、LatestComponents.json ファイルを[ダウンロード](https://aka.ms/latestapplianceservices)します。
+
 2. ダウンロードが完了したら、メモ帳で LatestComponents.json ファイルを開きます。
+
 3. ファイル内の最新のサービス バージョンとそのファイルのダウンロード リンクを探します。 次に例を示します。
 
-    "Name":"ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version":"6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
+   `"Name": "ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"`
 
 4. ファイルのダウンロード リンクを使用して、古いサービスの最新バージョンをダウンロードします。
+
 5. ダウンロードした後、管理者コマンド ウィンドウで次のコマンドを実行して、ダウンロードした MSI の整合性を確認します。
 
-    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```次に例を示します。C:\>CertUtil -HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
+   `C:\> Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]`
+
+    例:
+
+    `C:\> CertUtil -HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5`
 
 5. コマンドの出力が、ファイル内のサービスのハッシュ値のエントリ (上記の MD5 ハッシュ値など) と一致することを確認します。
+
 6. 次に MSI を実行して、サービスをインストールします。 これはサイレント インストールであり、完了後にインストール ウィンドウが閉じます。
+
 7. インストールが完了したら、 **[コントロール パネル]**  >  **[プログラムと機能]** でサービスのバージョンを確認します。 これで、サービスのバージョンが json ファイルに示されている最新のバージョンにアップグレードされているはずです。
 
 ## <a name="next-steps"></a>次のステップ

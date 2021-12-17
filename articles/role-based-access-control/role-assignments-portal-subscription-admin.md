@@ -7,14 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 10/15/2021
 ms.author: rolyon
-ms.openlocfilehash: dec5888127ed1fc291bec244a44cfb71e343e3bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: b4801d18454ad93c4ffa7284ab5bfaabea254cd1
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556835"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074211"
 ---
 # <a name="assign-a-user-as-an-administrator-of-an-azure-subscription"></a>Azure サブスクリプションの管理者としてユーザーを割り当てる
 
@@ -30,15 +31,13 @@ ms.locfileid: "100556835"
 
 1. 上部の検索ボックスで、サブスクリプションを検索します。
 
-    ![Azure portal でリソース グループを検索する](./media/shared/sub-portal-search.png)
-
 1. 使用するサブスクリプションをクリックします。
 
     次にサブスクリプションの例を示します。
 
-    ![リソース グループの概要](./media/shared/sub-overview.png)
+    ![サブスクリプションの概要のスクリーンショット](./media/shared/sub-overview.png)
 
-## <a name="step-2-open-the-add-role-assignment-pane"></a>手順 2: [ロールの割り当ての追加] ウィンドウを開く
+## <a name="step-2-open-the-add-role-assignment-page"></a>手順 2: [ロールの割り当ての追加] ページを開く
 
 **アクセス制御 (IAM)** は、一般的には、ロールを割り当てて Azure リソースへのアクセスを付与するために使用するページです。 "ID とアクセス管理 (IAM)" とも呼ばれており、Azure portal のいくつかの場所に表示されます。
 
@@ -46,46 +45,61 @@ ms.locfileid: "100556835"
 
     サブスクリプションの [アクセス制御 (IAM)] ページの例を次に示します。
 
-    ![リソース グループの [アクセス制御 (IAM)] ページ](./media/shared/sub-access-control.png)
+    ![サブスクリプションの [アクセス制御 (IAM)] ページのスクリーンショット。](./media/shared/sub-access-control.png)
 
 1. **[ロールの割り当て]** タブをクリックして、このスコープのロールの割り当てを表示します。
 
 1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックします。
+
    ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
-   ![[ロールの割り当ての追加] メニュー](./media/shared/add-role-assignment-menu.png)
+    ![[追加] > [ロールの割り当ての追加] メニューのスクリーンショット。](./media/shared/add-role-assignment-menu.png)
 
-    [ロールの割り当ての追加] ウィンドウが開きます。
-
-   ![[ロールの割り当ての追加] ウィンドウ](./media/shared/add-role-assignment.png)
+    [ロールの割り当ての追加] ページが開きます。
 
 ## <a name="step-3-select-the-owner-role"></a>手順 3: [所有者] ロールを選択する
 
 Azure RBAC でロールを割り当てる権限を含め、すべてのリソースを管理するためのフル アクセスは、[所有者](built-in-roles.md#owner)ロールによって付与されます。 侵害された所有者による侵害の可能性を減らすため、サブスクリプション所有者は最大 3 人までにします。
 
-- **[ロール]** の一覧で、 **[所有者]** ロールを選択します。
+1. **[ロール]** タブで **[所有者]** ロールを選択します。
 
-   ![[ロールの割り当ての追加] ウィンドウで [所有者] ロールを選択する](./media/role-assignments-portal-subscription-admin/add-role-assignment-role-owner.png)
+    ロールは、名前または説明で検索できます。 種類とカテゴリでロールをフィルター処理することもできます。
 
-## <a name="step-4-select-who-needs-access"></a>手順 4: アクセスを必要とするユーザーを選択する
+   ![[ロールの割り当ての追加] ページで [ロール] タブが表示された状態のスクリーンショット。](./media/shared/roles.png)
 
-1. **[アクセスの割り当て先]** の一覧で、 **[ユーザー、グループ、またはサービス プリンシパル]** を選択します。
+1. **[次へ]** をクリックします。
 
-1. **[選択]** セクションで、文字列を入力するかリストをスクロールして、ユーザーを検索します。
+## <a name="step-4-select-who-needs-access"></a>手順 4:アクセスを必要とするユーザーを選択する
 
-   ![[ロールの割り当ての追加] でユーザーを選択する](./media/role-assignments-portal-subscription-admin/add-role-assignment-user-admin.png)
+1. **[メンバー]** タブで、 **[User, group, or service principal]\(ユーザー、グループ、またはサービス プリンシパル\)** を選択します。
 
-1. ユーザーが見つかったら、クリックして選択します。
+   ![[ロールの割り当ての追加] ページで [メンバーの追加] タブが表示された状態のスクリーンショット。](./media/shared/members.png)
+
+1. **[メンバーの選択]** をクリックします。
+
+1. ユーザーを見つけて選択します。
+
+    **[選択]** ボックスに表示名またはメール アドレスを入力してディレクトリを検索できます。
+
+   ![[メンバーの選択] ウィンドウのスクリーンショット。](./media/shared/select-members.png)
+
+1. **[保存]** をクリックして、メンバーの一覧にユーザーを追加します。
+
+1. 必要に応じて、 **[説明]** ボックスにこのロール割り当ての説明を入力します。
+
+    後で、ロールの割り当ての一覧にこの説明を表示できます。
+
+1. **[次へ]** をクリックします。
 
 ## <a name="step-5-assign-role"></a>手順 5:ロールを割り当てる
 
-1. ロールを割り当てるには、 **[保存]** をクリックします。
+1. **[Review + assign]\(確認と割り当て\)** タブで、ロールの割り当ての設定を確認します。
 
-   しばらくすると、選択されたスコープで、ユーザーにロールが割り当てられます。
+1. **[Review + assign]\(確認と割り当て\)** をクリックしてロールを割り当てます。
 
-1. **[ロールの割り当て]** タブで、リストにロールの割り当てが表示されていることを確認します。
+   しばらくすると、サブスクリプションの所有者のロールがユーザーに割り当てられます。
 
-    ![保存されたロールの割り当ての追加](./media/role-assignments-portal-subscription-admin/sub-role-assignments-owner.png)
+    ![ロールを割り当てた後のロールの割り当ての一覧のスクリーンショット。](./media/role-assignments-portal-subscription-admin/sub-role-assignments-owner.png)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,50 +1,57 @@
 ---
 title: Azure Lab Services でラボに他の所有者を追加する方法
 description: この記事では、Azure Lab Services で管理者がユーザーをラボに所有者として追加する方法について説明します。
-ms.topic: article
-ms.date: 09/04/2020
-ms.openlocfilehash: 4b46dd08a3b9527cdfc7bdf766ee4976e67656d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.date: 08/03/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 531910013284abbddd73c2247b5f65494a74ddf1
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89482671"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130181010"
 ---
 # <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Azure Lab Services で既存のラボに所有者を追加する方法
 この記事では、管理者が既存のラボに所有者を追加する方法について説明します。
 
 ## <a name="add-user-to-the-reader-role-for-the-lab-account"></a>ラボ アカウントの閲覧者ロールにユーザーを追加する
-既存のラボに追加の所有者としてユーザーを追加するには、まず、ラボ アカウントに対する **読み取り** アクセス許可をユーザーに付与する必要があります。
+1. **[ラボ アカウント]** ページに戻り、左側のメニューの **[すべてのラボ]** を選択します。
+2. 所有者としてユーザーを追加する **ラボ** を選択します。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする
-2. 左側のメニューから、 **[すべてのサービス]** を選択します。 **[Lab Services]** を探して選択します。
-3. 一覧からお使いの **ラボ アカウント** を選択します。 
-2. **[ラボ アカウント]** ページで、左側のメニューから **[アクセス制御 (IAM)]** を選択します。 
-2. **[アクセス制御 (IAM)]** ページで、ツール バーの **[追加]** を選択し、 **[ロールの割り当ての追加]** を選択します。
+    ![ラボを選ぶ ](./media/how-to-add-user-lab-owner/select-lab.png)  
+1. ナビゲーション メニューで **[アクセス制御 (IAM)]** を選択します。
 
-    ![ラボ アカウントのロールの割り当て ](./media/how-to-add-user-lab-owner/lab-account-access-control-page.png)
-3. **[ロールの割り当ての追加]** ページで、次の手順のようにします。 
-    1. **[ロール]** で **[閲覧者]** を選択します。 
-    2. ユーザーを選択します。 
-    3. **[保存]** を選択します。 
+1. **[追加]**  >  **[ロールの割り当ての追加 (プレビュー)]** を選択します。
 
-        ![ラボ アカウントの閲覧者ロールにユーザーを追加する ](./media/how-to-add-user-lab-owner/reader-lab-account.png)
+    ![[ロールの割り当ての追加] メニューが開いている [アクセス制御 (IAM)] ページ。](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
 
+1. **[ロール]** タブで、 **[閲覧者]** ロールを選択します。
+
+    ![[ロール] タブが選択された [ロールの割り当ての追加] ページ。](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. **[メンバー]** タブで、閲覧者ロールに追加したいユーザーを選択します。
+
+1. **[確認と 割り当て]** タブで、 **[確認と割り当て]** を選択して ロールを割り当てます。
 ## <a name="add-user-to-the-owner-role-for-the-lab"></a>ラボの所有者ロールにユーザーを追加する
 
 > [!NOTE]
-> ユーザーがラボの閲覧者のアクセス権のみを持っている場合、ラボは labs.azure.com で表示されません。
+> ユーザーがラボの閲覧者のアクセス権のみを持っている場合、ラボは labs.azure.com で表示されません。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-1. **[ラボ アカウント]** ページに戻り、左側のメニューの **[すべてのラボ]** を選択します。
-2. 所有者としてユーザーを追加する **ラボ** を選択します。 
-    
-    ![ラボを選ぶ ](./media/how-to-add-user-lab-owner/select-lab.png)    
-3. **[ラボ]** ページで、左側のメニューから **[アクセス制御 (IAM)]** を選択します。
-4. **[アクセス制御 (IAM)]** ページで、ツール バーの **[追加]** を選択し、**[ロールの割り当ての追加]** を選択します。
-5. **[ロールの割り当ての追加]** ページで、次の手順のようにします。 
-    1. **ロール** として **[所有者]** を選択します。 
-    2. ユーザーを選択します。 
-    3. **[保存]** を選択します。 
+
+1. **[ラボ アカウント]** ページで、 **[アクセス制御 (IAM)]** を選択します。
+
+1. **[追加]**  >  **[ロールの割り当ての追加 (プレビュー)]** を選択します。
+
+    ![[ロールの割り当ての追加] メニューが開いている [アクセス制御 (IAM)] ページ。](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. **[ロール]** タブで **[所有者]** ロールを選択します。
+
+    ![[ロール] タブが選択された [ロールの割り当ての追加] ページ。](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. **[メンバー]** タブで、所有者のロールに追加したいユーザーを選択します。
+
+1. **[確認と 割り当て]** タブで、 **[確認と割り当て]** を選択して ロールを割り当てます。
+
 
 ## <a name="next-steps"></a>次のステップ
 [Lab Services ポータル](https://labs.azure.com)にログインするときに、ユーザーにラボが表示されることを確認します。

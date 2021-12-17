@@ -1,47 +1,64 @@
 ---
-title: B2B の X12 メッセージを送受信する
-description: Azure Logic Apps と Enterprise Integration Pack を使用して B2B エンタープライズ統合シナリオ用の X12 メッセージを交換します
+title: B2B 統合用の X12 メッセージを交換する
+description: Azure Logic Apps と Enterprise Integration Pack を使用して B2B エンタープライズ統合ソリューションを構築するときに、X12 メッセージを送信、受信、処理します。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
-ms.topic: article
-ms.date: 04/29/2020
-ms.openlocfilehash: 87a2bcc386ec5688fadb68aabdd2e5239e205516
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.reviewer: estfan, divswa, azla
+ms.topic: how-to
+ms.date: 07/16/2021
+ms.openlocfilehash: 4b1c6d33146233882dd4ee0656c2d1ee7ee6ec79
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077473"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589722"
 ---
-# <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の X12 メッセージを交換する
+# <a name="exchange-x12-messages-for-b2b-enterprise-integration-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用して B2B エンタープライズ統合用の X12 メッセージを交換する
 
-Azure Logic Apps で X12 メッセージを操作するには、X12 コネクタを使用できます。これには、X12 通信を管理するためのトリガーとアクションが用意されています。 EDIFACT メッセージの詳細については、代わりに、[EDIFACT メッセージの交換](logic-apps-enterprise-integration-edifact.md)に関する記事を参照してください。
+Azure Logic Apps では、**X12** 操作を使用して、X12 メッセージを処理するワークフローを作成できます。 これらの操作には、X12 通信を処理するためにワークフローで使用できるトリガーとアクションが含まれます。 X12 のトリガーとアクションは、ワークフロー内の他のトリガーとアクションと同様に追加できますが、X12 操作を使用する前に、追加の前提条件を満たす必要があります。
+
+この記事では、ワークフローで X12 のトリガーとアクションを使用するための要件と設定について説明します。 そうではなく EDIFACT メッセージを使用する場合は、[EDIFACT メッセージの交換](logic-apps-enterprise-integration-edifact.md)に関するページを参照してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](logic-apps-overview.md)」と「[クイックスタート: マルチテナントの Azure Logic Apps および Azure portal を使用して統合ワークフローを作成する](quickstart-create-first-logic-app-workflow.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
-* X12 コネクタを使用するロジック アプリと、ロジック アプリのワークフローを開始するトリガー。 X12 コネクタでは、アクションのみが提供され、トリガーは提供されません。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
+* X12 トリガーまたはアクションを使用するロジック アプリのリソースとワークフロー。 X12 トリガーを使用するには、空のワークフローが必要です。 X12 アクションを使用するには、既存のトリガーを含むワークフローが必要です。
 
-* ご利用の Azure サブスクリプションに関連付けられており、X12 コネクタの使用を計画しているロジック アプリにリンクされている[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 使用するロジックアプリと統合アカウントは両方とも同じ場所または同じ Azure リージョンに存在する必要があります。
+* ロジック アプリ リソースにリンクされた[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)。 ロジック アプリと統合アカウントは、同じ Azure サブスクリプションを使用し、同じ Azure リージョンまたは場所に存在する必要があります。
 
-* X12 ID 修飾子を使用して統合アカウントに既に定義済みの、少なくとも 2 つの[取引先](../logic-apps/logic-apps-enterprise-integration-partners.md)。
+  統合アカウントには、次の B2B 成果物も含める必要があります。
 
-* 統合アカウントに既に追加している、XML 検証に使用する[スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 医療保険の携行性と責任に関する法律 (HIPAA) スキーマを操作する場合は、[HIPAA スキーマ](#hipaa-schemas)に関する記事を参照してください。
+  * X12 ID 修飾子を使用する少なくとも 2 つの[取引先](logic-apps-enterprise-integration-partners.md)。
 
-* X12 コネクタを使用するには、事前に取引先との間で X12 [契約](../logic-apps/logic-apps-enterprise-integration-agreements.md)を作成し、その契約を統合アカウントに格納しておく必要があります。 医療保険の携行性と責任に関する法律 (HIPAA) スキーマを操作する場合は、契約に `schemaReferences` セクションを追加する必要があります。 詳細については、[HIPAA スキーマ](#hipaa-schemas)に関する記事を参照してください。
+  * 取引先との間に定義された X12 [契約](logic-apps-enterprise-integration-agreements.md)。 メッセージの送受信時に使用する設定については、「[受信設定](#receive-settings)」と「[送信設定](#send-settings)」を参照してください。
+
+    > [!IMPORTANT]
+    > 医療保険の携行性と責任に関する法律 (HIPAA) スキーマを操作する場合は、契約に `schemaReferences` セクションを追加する必要があります。 詳細については、「[HIPAA スキーマとメッセージ型](#hipaa-schemas)」を参照してください。
+
+  * XML 検証に使用する[スキーマ](logic-apps-enterprise-integration-schemas.md)。
+
+    > [!IMPORTANT]
+    > Health Insurance Portability and Accountability Act (HIPAA) スキーマを使用している場合は、「[HIPAA スキーマとメッセージ型](#hipaa-schemas)」を参照してください。
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術情報については、[コネクタの参照ページ](/connectors/x12/)を参照してください。
+
+> [!NOTE]
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE の B2B メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)が使用されます。
 
 <a name="receive-settings"></a>
 
 ## <a name="receive-settings"></a>受信設定
 
-契約のプロパティを設定した後、この契約でパートナーから受信する受信メッセージを識別して処理する方法を構成できます。
+取引先契約のプロパティを設定した後、この契約でパートナーから受信する受信メッセージを識別して処理する方法を構成できます。
 
 1. **[追加]** で、 **[受信設定]** をクリックします。
 
-1. メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを構成します。 **[受信設定]** は次のセクションに分かれています。
+1. **[受信設定]** ペインで、メッセージを交換するパートナーとの契約に基づき、以下のセクションに分かれているプロパティを設定します。
 
    * [識別子](#inbound-identifiers)
    * [受信確認](#inbound-acknowledgement)
@@ -50,8 +67,6 @@ Azure Logic Apps で X12 メッセージを操作するには、X12 コネクタ
    * [制御番号](#inbound-control-numbers)
    * [Validations](#inbound-validations)
    * [内部設定](#inbound-internal-settings)
-
-   プロパティの説明については、このセクションの表を参照してください。
 
 1. 完了したら、 **[OK]** を選択して、必ず設定を保存します。
 
@@ -200,7 +215,7 @@ Azure Logic Apps で X12 メッセージを操作するには、X12 コネクタ
 | プロパティ | 説明 |
 |----------|-------------|
 | **TA1 Expected (TA1 が必要)** | インターチェンジの送信者に技術確認 (TA1) を返します。 <p>この設定は、メッセージを送信しているホスト パートナーが、契約でゲスト パートナーからの受信確認を要求することを指定します。 ホスト パートナーは、契約の [受信設定] に基づいてこれらの受信確認を想定しています。 |
-| **FA Expected (FA が必要)** | インターチェンジの送信者に機能確認 (FA) を返します。 **FA Version (FA バージョン)** プロパティについては、スキーマのバージョンに基づいて、997 または 999 の受信確認を選択します。 <p>この設定は、メッセージを送信しているホスト パートナーが契約でゲスト パートナーからの受信確認を要求することを指定します。 ホスト パートナーは、契約の [受信設定] に基づいてこれらの受信確認を想定しています。 |
+| **FA Expected (FA が必要)** | インターチェンジの送信者に機能確認 (FA) を返します。 **FA Version (FA バージョン)** プロパティについては、スキーマのバージョンに基づいて、997 または 999 の受信確認を選択します。 <p>この設定は、メッセージを送信しているホスト パートナーが契約でゲスト パートナーからの受信確認を要求していることを指定します。 ホスト パートナーは、契約の [受信設定] に基づいてこれらの受信確認を想定しています。 |
 |||
 
 <a name="outbound-schemas"></a>
@@ -333,7 +348,7 @@ HIPAA スキーマと 277 または 837 のメッセージ型を操作する場�
 
    スキーマを更新するには、次の手順を実行します。
 
-   1. Azure portal で統合アカウントに移動します。 スキーマを検索してダウンロードします。 メッセージ型を置き換えて、スキーマ ファイルの名前を変更し、変更したスキーマを統合アカウントにアップロードします。 詳細については、「[スキーマの編集](../logic-apps/logic-apps-enterprise-integration-schemas.md#edit-schemas)」を参照してください｡
+   1. Azure portal で統合アカウントに移動します。 スキーマを検索してダウンロードします。 メッセージ型を置き換えて、スキーマ ファイルの名前を変更し、変更したスキーマを統合アカウントにアップロードします。 詳細については、「[スキーマを編集する](logic-apps-enterprise-integration-schemas.md#edit-schema)」を参照してください｡
 
    1. 契約のメッセージ設定で、変更後のスキーマを選択します。
 
@@ -378,13 +393,8 @@ HIPAA スキーマと 277 または 837 のメッセージ型を操作する場�
 
    ![すべてのメッセージ型、または各メッセージ型に対して検証を無効にする](./media/logic-apps-enterprise-integration-x12/x12-disable-validation.png) 
 
-## <a name="connector-reference"></a>コネクタのレファレンス
-
-コネクタの Swagger ファイルに記載されているアクションや制限など、このコネクタに関する追加の技術的詳細については、[コネクタの参照ページ](/connectors/x12/)をご覧ください。
-
-> [!NOTE]
-> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、ISE のラベルが付いたこのバージョンのコネクタでは、代わりに [ISE の B2B メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)が使用されます。
-
 ## <a name="next-steps"></a>次のステップ
 
-* [Logic Apps の他のコネクタ](../connectors/apis-list.md)の詳細情報
+* [X12 TA1 技術受信確認とエラー コード](logic-apps-enterprise-integration-x12-ta1-acknowledgment.md)
+* [X12 997 機能確認とエラー コード](logic-apps-enterprise-integration-x12-997-acknowledgment.md)
+* [Azure Logic Apps のカスタム コネクタについて](../connectors/apis-list.md)

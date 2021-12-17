@@ -5,12 +5,12 @@ keywords: Hadoop の高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 74f8bdd26e000b89bfae84102077c241f85abf7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3cbae5df6e9a4e5ff17bf1245fcaf190efbbf84
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933320"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112371520"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight のビジネス継続性
 
@@ -81,7 +81,7 @@ HDInsight によって 99.9% の可用性 SLA が提供されます。 単一の
 
 ### <a name="hdinsight-metastore"></a>HDInsight のメタストア
 
-HDInsight には、99.99% の SLA を提供するメタストアとして [Azure SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) が使用されています。 同期レプリケーションを使用して、1 つのデータ センター内にデータのレプリカが 3 つ保持されます。 1 つのレプリカが失われた場合、代替レプリカがシームレスに提供されます。 [アクティブ geo レプリケーション](../azure-sql/database/active-geo-replication-overview.md)は、最大 4 つのデータ センターで、すぐに使用できます。 手動またはデータ センターのいずれかのフェールオーバーが発生すると、階層内の最初のレプリカが自動的に読み取り書き込み可能になります。 詳細については、[Azure SQL Database によるビジネス継続性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)に関する記事を参照してください。
+HDInsight には、99.99% の SLA を提供するメタストアとして [Azure SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database/v1_4/) が使用されています。 同期レプリケーションを使用して、1 つのデータ センター内にデータのレプリカが 3 つ保持されます。 1 つのレプリカが失われた場合、代替レプリカがシームレスに提供されます。 [アクティブ geo レプリケーション](../azure-sql/database/active-geo-replication-overview.md)は、最大 4 つのデータ センターで、すぐに使用できます。 手動またはデータ センターのいずれかのフェールオーバーが発生すると、階層内の最初のレプリカが自動的に読み取り書き込み可能になります。 詳細については、[Azure SQL Database によるビジネス継続性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)に関する記事を参照してください。
 
 ### <a name="hdinsight-storage"></a>HDInsight ストレージ
 

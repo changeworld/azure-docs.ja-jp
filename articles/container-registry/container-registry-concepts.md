@@ -3,12 +3,12 @@ title: レジストリ、リポジトリ、イメージ、成果物について
 description: Azure Container Registry、リポジトリ、コンテナー イメージなどの主要な成果物の概念について紹介します。
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 64ab3812b3f23a7b3a480d3530c82bd39f2d29a5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: add8c20de07a2d520095f257dac0356d1c21af57
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784085"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596146"
 ---
 # <a name="about-registries-repositories-and-artifacts"></a>レジストリ、リポジトリ、成果物について
 
@@ -68,7 +68,7 @@ Docker 対応コンテナー イメージに加え、Azure Container Registry �
 
 ### <a name="manifest"></a>マニフェスト
 
-コンテナー レジストリにプッシュされる各コンテナー イメージまたは成果物は、"*マニフェスト*" と関連付けられます。 コンテンツがプッシュされるときにレジストリによって生成されるマニフェストは、コンテンツを一意に示し、レイヤーを指定します。 Azure CLI コマンド [az acr repository show-manifests][az-acr-repository-show-manifests] を使用して、リポジトリのマニフェストを一覧表示できます。 
+コンテナー レジストリにプッシュされる各コンテナー イメージまたは成果物は、"*マニフェスト*" と関連付けられます。 コンテンツがプッシュされるときにレジストリによって生成されるマニフェストは、コンテンツを一意に示し、レイヤーを指定します。
 
 Linux `hello-world` イメージの基本的なマニフェストは、次のようになります。
 

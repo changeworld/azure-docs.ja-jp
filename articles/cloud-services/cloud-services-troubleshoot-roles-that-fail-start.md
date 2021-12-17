@@ -4,21 +4,20 @@ description: クラウド サービス ロールが起動に失敗する一般�
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2453fa2d9b4e78b60d4922e09347799266a84cff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 509c44f83940ad1a79f5c30c0bb37084dae699b4
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743221"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823869"
 ---
 # <a name="troubleshoot-azure-cloud-service-classic-roles-that-fail-to-start"></a>起動できない Azure クラウド サービス (クラシック) ロールをトラブルシューティングする
 
-> [!IMPORTANT]
-> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
 
@@ -79,8 +78,8 @@ Web サイトにアクセスすると、詳しいエラー メッセージが表
 
 ![Explicit Server Error in '/' Application](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
-## <a name="diagnose-issues-by-using-the-compute-emulator"></a>コンピューティング エミュレーターを使用した問題の診断
-依存コンポーネントの不足や web.config エラーに関する問題の診断とトラブルシューティングは、Microsoft Azure コンピューティング エミュレーターを使用して行うことができます。
+## <a name="diagnose-issues-by-using-the-compute-emulator"></a>Compute Emulator を使用した問題の診断
+依存コンポーネントの不足や web.config エラーに関する問題の診断とトラブルシューティングは、Microsoft Azure Compute Emulator を使用して行うことができます。
 
 この診断方法の効果を最大限に高めるには、Windows がクリーン インストールされたコンピューターまたは仮想マシンを使用する必要があります。 Azure 環境のシミュレーションには、Windows Server 2008 R2 x64 が最適です。
 

@@ -29,7 +29,7 @@
   items:
     - name: 関数チェーン
       href: durable-functions-sequence.md
-    - name: ファンイン/ファンアウト
+    - name: ファンアウト/ファンイン
       href: durable-functions-cloud-backup.md
     - name: モニター (C#、JavaScript)
       href: durable-functions-monitor.md
@@ -77,6 +77,8 @@
       href: durable-functions-instance-management.md
     - name: バージョン管理
       href: durable-functions-versioning.md
+    - name: ストレージ プロバイダー
+      href: durable-functions-storage-providers.md
     - name: パフォーマンスとスケール
       href: durable-functions-perf-and-scale.md
     - name: 高可用性
@@ -140,7 +142,7 @@
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: ビデオ
       href: 'https://www.youtube.com/c/AzureFunctions'
     - name: Microsoft Q&A 質問ページ
@@ -150,7 +152,7 @@
     - name: Twitter
       href: 'https://twitter.com/hashtag/DurableFunctions?src=hash'
     - name: 製品フィードバックの提供
-      href: 'https://feedback.azure.com/forums/355860-azure-functions'
+      href: 'https://feedback.azure.com/d365community/forum/9df02822-f224-ec11-b6e6-000d3a4f0da0'
     - name: Durable Functions GitHub リポジトリ
       href: 'https://github.com/Azure/azure-functions-durable-extension'
     - name: サービスの更新情報

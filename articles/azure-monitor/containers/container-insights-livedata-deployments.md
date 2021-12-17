@@ -4,12 +4,12 @@ description: この記事では、Container insights で kubectl を使用しな
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: c6eaac209234f7352395502c6761312cf258108f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3ae515f2addf21f8183aed83ab26922e77f981
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713917"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734356"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>リアルタイムで Deployments (プレビュー) を表示する方法
 
@@ -64,4 +64,4 @@ Deployments (プレビュー) 機能では、デプロイ エンドポイント 
 
 - Azure Monitor を使用して、AKS クラスターの他の側面を監視する方法を引き続き学習するには、[Azure Kubernetes Service の正常性の表示](container-insights-analyze.md)に関するページをご覧ください。
 
-- アラートの作成、視覚化の作成、またはクラスターの詳細な分析を行うために、定義済みのクエリや例を確認するには、[ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を参照してください。
+- アラートの作成、視覚化の作成、またはクラスターの詳細な分析を行うために、定義済みのクエリや例を確認するには、[ログ クエリの例](container-insights-log-query.md)を参照してください。

@@ -1,17 +1,17 @@
 ---
 title: Azure Percept Audio のデータシート
 description: 詳細なデバイス仕様については、Azure Percept Audio のデータシートを確認してください
-author: elqu20
-ms.author: v-elqu
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 3e72aea657b82c2111bea1493b5654ec667c491b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 87c8fe13137b35df3efaadaa6ee735b6706c0a96
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425279"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224629"
 ---
 # <a name="azure-percept-audio-datasheet"></a>Azure Percept Audio のデータシート
 
@@ -29,7 +29,7 @@ ms.locfileid: "102425279"
 |センサー、視覚インジケーター、およびコンポーネント   |4 x MEM Sensing Microsystems Microphones (MSM261D3526Z1CM) <br> 2 x ボタン <br> USB ハブ <br> DAC (DAC) <br> 3 x LED <br> LED ドライバー          |
 |セキュリティ Crypto-Controller      |ST-Microelectronics STM32L462CE       |
 |ポート                           |1 x USB 2.0 Type Micro B <br> 3.5 mm オーディオ出力     |
-|認定                   |FCC <br> IC <br> RoHS <br> REACH <br> UL    |
+|認定資格                   |CE <br> ACMA <br> FCC <br> IC <br> VCCI  <br> NRTL <br> CB  |
 |動作温度           |0 ～ 35°C     |
 |非動作温度       |-40 ～ 85°C     |
 |相対湿度               |10% ～ 95%    |

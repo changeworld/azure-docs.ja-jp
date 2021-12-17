@@ -1,19 +1,19 @@
 ---
 title: Python を使用した Azure Storage サンプル | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 Python のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-python
-ms.openlocfilehash: f8e5a8593d5b473da8769c1fbeece8c9818e88fa
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 407fa4d21207b705702f2cc567ff44d22be97374
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276690"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549415"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>v12 Python クライアント ライブラリを使用した Azure Storage サンプル
 
@@ -534,7 +534,6 @@ ms.locfileid: "106276690"
    :::column-end:::
 :::row-end:::
 
-
 ## <a name="table-samples-sdk-v21"></a>テーブルのサンプル (SDK v2.1)
 
 :::row:::
@@ -571,10 +570,10 @@ ms.locfileid: "106276690"
 
 完全な Python サンプル ライブラリをご覧いただくには、次のページにアクセスしてください。
 
-* [Azure BLOB のコード サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
-* [Azure Data Lake のコード サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
-* [Azure Files のコード サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share/samples)
-* [Azure Queue のコード サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
+- [Azure BLOB のコード サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+- [Azure Data Lake のコード サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
+- [Azure Files のコード サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share/samples)
+- [Azure Queue のコード サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
 
 各ライブラリの GitHub リポジトリを参照してクローンすることができます。
 
@@ -582,17 +581,17 @@ ms.locfileid: "106276690"
 
 Azure Storage クライアント ライブラリのインストール方法と概要については、以下のガイドをご覧ください。
 
-* [Python での Azure Blob service の概要](../blobs/storage-quickstart-blobs-python.md)
-* [Python での Azure Queue サービスの概要](../queues/storage-quickstart-queues-python.md)
-* [Python での Azure Table service の概要](../../cosmos-db/table-storage-how-to-use-python.md)
-* [Python での Azure File service の概要](../files/storage-python-how-to-use-file-storage.md)
+- [Python での Azure Blob service の概要](../blobs/storage-quickstart-blobs-python.md)
+- [Python での Azure Queue サービスの概要](../queues/storage-quickstart-queues-python.md)
+- [Python での Azure Table service の概要](../../cosmos-db/table-storage-how-to-use-python.md)
+- [Python での Azure File service の概要](../files/storage-python-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>次のステップ
 
 他の言語のサンプルについては、以下のページをご覧ください。
 
-* .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
-* Java:[Java を使用した Azure Storage サンプル](storage-samples-java.md)
-* JavaScript/Node.js: [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
-* C++: [C++ を使用した Azure Storage サンプル](storage-samples-c-plus-plus.md)
-* その他すべての言語: [Azure Storage のサンプル](storage-samples.md)
+- .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
+- Java:[Java を使用した Azure Storage サンプル](storage-samples-java.md)
+- JavaScript/Node.js: [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
+- C++: [C++ を使用した Azure Storage サンプル](storage-samples-c-plus-plus.md)
+- その他すべての言語: [Azure Storage のサンプル](storage-samples.md)

@@ -1,236 +1,217 @@
 ---
-title: Availability Zones をサポートする Azure サービス
-description: Azure に高可用性で回復力のあるアプリケーションを作成できるように、Availability Zones ではリソースの実行に使用できる物理的に独立した場所が提供されています。
+title: 可用性ゾーンをサポートする Azure サービス
+description: 可用性ゾーンでサポートされているサービスを把握し、すべての Azure サービスの回復性を理解しましょう。
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 04/13/2021
-ms.author: prsandhu
+ms.date: 10/01/2021
+ms.author: rarco
 ms.reviewer: cynthn
-ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: fd4443e4ef6bcecacc03ce190bbf438288c9ec60
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.custom: references_regions
+ms.openlocfilehash: 2c039bb9cabdd1d4786d4f0d76d591887781e2b5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364058"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132302123"
 ---
-# <a name="azure-services-that-support-availability-zones"></a>Availability Zones をサポートする Azure サービス
+# <a name="azure-services-that-support-availability-zones"></a>可用性ゾーンをサポートする Azure サービス
 
-Microsoft Azure グローバル インフラストラクチャは、最高レベルの冗長性と回復性をお客様に提供するために、すべてのレイヤーで設計および構築されています。 Azure インフラストラクチャは、地域、リージョン、Availability Zones で構成されており、障害の影響範囲を抑えることで、お客様のアプリケーションとデータへの潜在的な影響を抑えます。 Azure Availability Zones コンストラクトは、データセンターの障害から保護し、高可用性 (HA) の向上を実現するソフトウェアおよびネットワーク ソリューションをお客様に提供するために開発されました。
+Azure の[リージョンと可用性ゾーン](az-overview.md)は、各 Azure リージョン内の物理的に離れた場所であり、Azure サービスのインフラストラクチャは冗長化され、論理的に独立しているため、データセンターの障害に対して耐性があります。 
 
-Availability Zones は、Azure リージョン内の一意の物理的な場所です。 各ゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つ以上のデータセンターで構成されています。 Availability Zones はリージョン内で物理的に分離されているため、ゾーンの障害 (サイトへのアクセス、安全な移動、ユーティリティの稼働時間の延長、リソースの可用性を妨げる可能性のある、大規模な洪水、暴風雨や巨大暴風雨、その他のイベントなど) によるアプリケーションとデータへの影響を抑えることができます。 Availability Zones とその関連するデータセンターは、1 つのゾーンが侵害された場合に、リージョン内の他の Availability Zones によって、サービス、容量、可用性がサポートされるように設計されています。
+可用性ゾーンは、ネットワークの冗長性が重要です。 可用性ゾーンをサポートする Azure サービスは、適切なレベルの回復性、柔軟性と共に、非常に短い待機時間を実現するように設計されています。 独自の回復性を構築する場合でも、自動レプリケーションと配布を選択する場合でも、可用性ゾーンをサポートする Azure サービスを使用する利点は同じです。 サービスの種類に関係なく、可用性の高いサービス全体で優れた回復性が得られます。 
 
-すべての Azure 管理サービスは、リージョン レベルの障害から回復できるように設計されています。 障害にはさまざまなものがありますが、可用性ゾーンの障害は、リージョン内で 1 つ以上発生しても、リージョン全体の障害と比べて、障害の範囲は狭くなります。 Azure では、リージョン内で発生した管理サービスのゾーン レベルの障害から復旧できます。 Azure では、リージョン内で 1 度に 1 つのゾーンで重要なメンテナンスが実行されます。これは、何らかの障害が発生した場合でも、リージョン内の可用性ゾーン全体にデプロイされたお客様のリソースに影響が及ばないようにするためです。
+Azure は、すべてのサービスとオファリングで高い回復性を実現するよう努めています。 可用性ゾーンをサポートする Azure サービスを実行すると、ほぼすべてのシナリオに対して、中断することなく、完全に透過的で一貫性のある回復性が得られます。
 
+## <a name="azure-regions-with-availability-zones"></a>可用性ゾーンを含む Azure のリージョン
 
-![3 つのゾーンがある Azure リージョンの概念図](./media/az-region/azure-region-availability-zones.png)
+Azure は、クラウド プロバイダーの中でも最も広範なグローバル フットプリントを提供し、新しいリージョンと可用性ゾーンを迅速に開設しています。 現在、次のリージョンが可用性ゾーンをサポートしています。
 
-
-Availability Zones をサポートする Azure サービスは、**ゾーン**、**ゾーン冗長**、**非リージョン** サービスの 3 つのカテゴリに分類されます。 お客様のワークロードは、アプリケーションのパフォーマンスと持続性に合わせて、これらのいずれかのアーキテクチャ シナリオを利用するように分類できます。
-
-- **ゾーン サービス** – 待機時間またはパフォーマンスのより厳しい要件を満たすために、自分で選んだ特定の Availability Zones にリソースをデプロイできます。  アプリケーションとデータをリージョン内の 1 つ以上のゾーンにレプリケートすることによって、回復性が自己設計されます。  リソースは特定のゾーンにピン留めできます。 たとえば、仮想マシン、マネージド ディスク、標準 IP アドレスなどを特定のゾーンに固定し、リソースの 1 つ以上のインスタンスを複数のゾーンに分散させることで回復性を高めることができます。
-
-- **ゾーン冗長サービス** – Azure プラットフォームにより、リソースとデータがゾーン間でレプリケートされます。  Azure によってリージョン内のインスタンスが自動的にレプリケートされ、分散されるため、Microsoft が高可用性の提供を管理します。  たとえば、ZRS ではデータが 3 つのゾーンにレプリケートされるので、ゾーンの障害が発生しても、データの HA に影響を及ぼすことはありません。 
-
-- **非リージョン サービス** – サービスは常に Azure 地域から利用でき、リージョン全体の停止だけでなく、ゾーン全体の停止に対する回復力があります。 
-
-
-Azure での包括的なビジネス継続性を実現するには、Availability Zones と Azure リージョンの組み合わせを使用してアプリケーション アーキテクチャを構築します。 1 つの Azure リージョン内で Availability Zones を使用してアプリケーションとデータを同期的にレプリケートして高可用性を実現し、複数の Azure リージョン全体で非同期的にレプリケートしてディザスター リカバリー保護を実現できます。 詳細については、「[Availability Zones を使用した高可用性のためのソリューションの構築](/azure/architecture/high-availability/building-solutions-for-high-availability)」をご覧ください。 
-
-## <a name="azure-services-supporting-availability-zones"></a>Availability Zones をサポートしている Azure サービス
-
- - 旧世代の仮想マシンは一覧表示されていません。 詳しくは、「[旧世代の仮想マシンのサイズ](../virtual-machines/sizes-previous-gen.md)」をご覧ください。
- - 「[Azure のリージョンと Availability Zones](az-overview.md)」に記載されているとおり、一部のサービスは非リージョンです。 これらのサービスは特定の Azure リージョンに依存しません。そのため、リージョン全体の停止だけでなく、ゾーン全体の停止に対する回復力があります。  非リージョン サービスの一覧は、[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)に関するページで参照できます。
-
-
-## <a name="azure-regions-with-availability-zones"></a>Azure のリージョンと Availability Zones
- 
-
-| アメリカ           | ヨーロッパ               | アフリカ              | アジア太平洋   |
+| アメリカ | ヨーロッパ | アフリカ | アジア太平洋 |
 |--------------------|----------------------|---------------------|----------------|
-|                    |                      |                     |                |
-| ブラジル南部       | フランス中部       | 南アフリカ北部* | オーストラリア東部 |
-| カナダ中部     | ドイツ中西部 |                     | インド中部* |
-| 米国中部         | 北ヨーロッパ         |                     | 東日本     |
-| 米国東部            | 英国南部             |                     | 韓国中部* |
-| 米国東部 2          | 西ヨーロッパ          |                     | 東南アジア |
-| 米国中南部 |                      |                     |                |
-| US Gov バージニア州    |                      |                     |                |
-| 米国西部 2        |                      |                     |                |
-| 米国西部 3*       |                      |                     |                |
+| ブラジル南部 | フランス中部 | 南アフリカ北部 | オーストラリア東部 |
+| カナダ中部 | ドイツ中西部 | | インド中部\* |
+| 米国中部 | 北ヨーロッパ | | 東日本 |
+| 米国東部 | ノルウェー東部 | | 韓国中部 |
+| 米国東部 2 | 英国南部 | | 東南アジア |
+| 米国中南部 | 西ヨーロッパ | | 東アジア |
+| US Gov バージニア州 | スウェーデン | | |
+| 米国西部 2 | | | |
+| 米国西部 3 | | | |
 
-\* これらのリージョンの Availability Zones および利用可能なサービス サポートの詳細については、Microsoft の営業またはカスタマー担当者にお問い合わせください。 Availability Zones のサポートが今後予定されているリージョンについては、「[Azure の地域](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)」を参照してください。
+\* このリージョンの可用性ゾーンおよび利用可能なサービス サポートの詳細については、Microsoft の営業またはカスタマー担当者にお問い合わせください。 可用性ゾーンのサポートが今後予定されているリージョンについては、「[Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)」を参照してください。
 
+可用性ゾーンをサポートする Azure リージョン別の Azure サービス一覧については、[可用性ゾーンのドキュメント](az-overview.md)を参照してください。
 
-## <a name="azure-services-supporting-availability-zones"></a>Availability Zones をサポートしている Azure サービス
+## <a name="highly-available-services"></a>高可用性サービス
 
-- 旧世代の仮想マシンは以下に表示されていません。 詳しくは、「[旧世代の仮想マシンのサイズ](../virtual-machines/sizes-previous-gen.md)」をご覧ください。
+*ゾーン型*、*ゾーン冗長型*、*常時利用可能型* サービスという 3 種類の Azure サービスが可用性ゾーンをサポートしています。 回復性戦略を設計するときは、これら 3 つのアーキテクチャ アプローチすべてを組み合わせることができます。
 
-- 一部のサービスは非リージョンです。詳細については、「[Azure のリージョンと Availability Zones](az-overview.md)」をご覧ください。 これらのサービスは、特定の Azure リージョンに依存しません。そのため、ゾーン全体の障害やリージョン全体の障害に対する回復性が確保されます。  非リージョン サービスの一覧は、[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)に関するページで参照できます。
+- **ゾーン型サービス**: 待機時間またはパフォーマンスのより厳しい要件を満たすために、自分で選んだ特定の可用性ゾーンにリソースをデプロイできます。 アプリケーションとデータをリージョン内の 1 つ以上のゾーンにレプリケートすることによって、回復性が自己設計されます。 リソースは特定のゾーンにピン留めできます。 たとえば、仮想マシン、マネージド ディスク、標準 IP アドレスなどを特定のゾーンに固定し、リソースの 1 つ以上のインスタンスを複数のゾーンに分散させることで回復性を高めることができます。
+- **ゾーン冗長型サービス**: リソースはゾーン間で自動的にレプリケートまたは分散されます。 たとえば、ゾーン冗長型サービスの場合、1 つのゾーン内の障害がデータの高可用性に影響しないように、3 つのゾーンにデータがレプリケートされます。 
+- **常時利用可能型サービス**: すべての Azure の地域で常時利用可能であり、ゾーン全体の停止やリージョン全体の停止に対して回復性があります。 Azure の常時利用可能型サービス (非リージョン型サービスとも呼ばれます) の完全な一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。
 
+この記事で先ほど説明したように、すべての Azure サービスがすべてのリージョンで普遍的に使用できるわけではありません。 オファリングは、"_リージョン_" の可用性を反映して、"*基本*"、"*メインストリーム*"、"*戦略的*" という 3 つのカテゴリに分類されています。 特定リージョンでのサービスのデプロイに関する Azure の一般的なポリシーは、主にリージョンの種類、サービス カテゴリ、および顧客の要望によって決まります。 詳細については、「[Azure サービス](region-types-service-categories-azure.md)」を参照してください。
 
-### <a name="zone-resilient-services"></a>ゾーンの回復性があるサービス 
+- **基本サービス**: リージョンが一般提供されている場合、または新しい基本サービスの一般提供から 90 日以内に、すべての推奨されるリージョンと代替リージョンで利用できます。
+- **メインストリーム サービス**: リージョンの一般提供から 90 日以内にすべての推奨されるリージョンで利用可能です。 メインストリーム サービスは代替リージョンでの需要に応じて提供され、多くは既に代替リージョンの大規模なサブセットにデプロイされています。
+- **戦略的サービス**: 特に業界に重点を置いているハードウェア、またはカスタマイズされたハードウェアによってサポートされる、対象指定のサービス内容。 戦略的サービスは、複数のリージョンにわたり、需要に応じて提供され、多くは、既に別のリージョンの大きなサブセットにデプロイされています。
 
-:globe_with_meridians:非リージョン サービス – サービスは常に Azure 地域から利用でき、リージョン全体の停止だけでなく、ゾーン全体の停止に対して回復性があります。
+可用性ゾーンをサポートする Azure サービスは、ゾーン型およびゾーン冗長型オファリングを含め、継続的に拡張されています。
 
-:large_blue_diamond: ゾーン全体の停止に対して回復性がある 
+旧世代の仮想マシンの詳細については、「[旧世代の仮想マシンのサイズ](../virtual-machines/sizes-previous-gen.md)」を参照してください。
 
-**基礎となるサービス**
+次の表は、ゾーン型、ゾーン冗長型、および常時利用可能型 Azure サービスの現在のオファリングをまとめたものです。 Azure オファリングを、それぞれのリージョンでの可能性に応じて一覧に記載しています。
 
-|     製品                                                    | 回復性             |
-|-----------------------------------------------------------------|:----------------------------:|
-|     [Application Gateway (V2)](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)                                  | :large_blue_diamond:  |
-|     [Azure Backup](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)                                                | :large_blue_diamond:  |
-|     [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/high-availability#availability-zone-support)                                           | :large_blue_diamond:  |
-|     [Azure Data Lake Storage Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)                             | :large_blue_diamond:  |
-|     [Azure Express Route](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)                                       | :large_blue_diamond:  |
-|     [Azure パブリック IP](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)                                           | :large_blue_diamond:  |
-|     Azure SQL Database ([General Purpose レベル](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla))                 | :large_blue_diamond:  |
-|     Azure SQL Database ([Premium & Business Critical レベル](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla))     | :large_blue_diamond:  |
-|     [Disk Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)                                                | :large_blue_diamond:  |
-|     [Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones)                                                  | :large_blue_diamond:  |
-|     [Key Vault](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance)                                                   | :large_blue_diamond:  |
-|     [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)                                               | :large_blue_diamond:  |
-|     [Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-geo-dr#availability-zones)                                                 | :large_blue_diamond:  |
-|     [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#:~:text=An%20Availability%20Zone%20is%20a%20unique%20physical%20location,zones.%20This%20will%20ensure%20high-availability%20of%20your%20applications)                                            | :large_blue_diamond:  |
-|     [ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-redundancy)                                           | :large_blue_diamond:  |
-|     ストレージ: [ホット/クール BLOB ストレージ レベル](https://docs.microsoft.com/azure/storage/common/storage-redundancy)                      | :large_blue_diamond:  |
-|     ストレージ: [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview)                                    | :large_blue_diamond:  |
-|     [Virtual Machines Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/scripts/cli-sample-zone-redundant-scale-set)                               | :large_blue_diamond:  |
-|     [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                          | :large_blue_diamond:  |
-|     Virtual Machines: [Av2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | :large_blue_diamond:  |
-|     Virtual Machines: [Bs シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
-|     Virtual Machines: [DSv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                             | :large_blue_diamond:  |
-|     Virtual Machines: [DSv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                            | :large_blue_diamond:  |
-|     Virtual Machines: [Dv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                             | :large_blue_diamond:  |
-|     Virtual Machines: [Dv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | :large_blue_diamond:  |
-|     Virtual Machines: [ESv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                             | :large_blue_diamond:  |
-|     Virtual Machines: [Ev3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | :large_blue_diamond:  |
-|     Virtual Machines: [F シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                | :large_blue_diamond:  |
-|     Virtual Machines: [FS シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
-|     Virtual Machines: [Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries#make-your-images-highly-available) | :large_blue_diamond:  |
-|     [仮想ネットワーク](https://docs.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway)                                         | :large_blue_diamond:  |
-|     [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)                                             | :large_blue_diamond:  |
+##### <a name="legend"></a>凡例
+![表内の各サービスのサービスのカテゴリとリージョンの可用性に関するアイコンとその意味が記載されている凡例。](media/legend.png) 
 
+製品カタログには、常時利用可能型サービスは "非リージョン型" サービスとして記載されています。
 
-**メインストリーム サービス**
+### <a name="an-icon-that-signifies-this-service-is-foundational-foundational-services"></a>![このサービスが基本であることを示すアイコン。](media/icon-foundational.svg) 基礎となるサービス 
 
+| **成果物**   | **回復性**   |
+| --- | --- |
+| [Azure Application Gateway (V2)](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure Backup](../backup/backup-create-rs-vault.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)   |
+| [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure DNS: Azure DNS Private Zones](../dns/private-dns-getstarted-portal.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure ExpressRoute](../expressroute/designing-for-high-availability-with-expressroute.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure パブリック IP](../virtual-network/ip-services/public-ip-addresses.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Azure SQL Database ([General Purpose レベル](../azure-sql/database/high-availability-sla.md))  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| Azure SQL Database ([Premium &amp; Business Critical レベル](../azure-sql/database/high-availability-sla.md))  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Disk Storage](../storage/common/storage-redundancy.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Key Vault](../key-vault/general/disaster-recovery-guidance.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure Storage アカウント](../storage/common/storage-redundancy.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| ストレージ:  [ホットまたはクール Azure Blob Storage レベル](../storage/common/storage-redundancy.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| ストレージ:  [Managed Disks](../virtual-machines/managed-disks-overview.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/scripts/cli-sample-zone-redundant-scale-set.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure Virtual Machines](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Av2 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Bs シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [DSv2 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [DSv3 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Dv2 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Dv3 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [ESv3 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Ev3 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [F シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [FS シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Shared Image Gallery](../virtual-machines/shared-image-galleries.md#make-your-images-highly-available)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Virtual Network](../vpn-gateway/create-zone-redundant-vnet-gateway.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+### <a name="an-icon-that-signifies-this-service-is-mainstream-mainstream-services"></a>![このサービスがメインストリームであることを示すアイコン。](media/icon-mainstream.svg) メインストリーム サービス
 
-|     製品                                                    | 回復性             |
-|-----------------------------------------------------------------|:----------------------------:|
-|     [App Service Environment](https://docs.microsoft.com/azure/app-service/environment/zone-redundancy)                                    | :large_blue_diamond:  |
-|     [Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview)                      | :large_blue_diamond:  |
-|     [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview)                                               | :large_blue_diamond:  |
-|     [Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-high-availability)                              | :large_blue_diamond:  |
-|     [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-performance-optimization#availability-zones)               | :large_blue_diamond:  |
-|     Azure Cognitive Services: [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)                    | :large_blue_diamond:  |
-|     [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal)                               | :large_blue_diamond:  |
-|     Azure Database for MySQL – [フレキシブル サーバー](https://docs.microsoft.com/azure/mysql/flexible-server/concepts-high-availability)                  | :large_blue_diamond:  |
-|     Azure Database for PostgreSQL – [フレキシブル サーバー](https://docs.microsoft.com/azure/postgresql/flexible-server/overview)             | :large_blue_diamond:  |
-|     [Azure DDoS Protection](https://docs.microsoft.com/azure/ddos-protection/ddos-faq)                                       | :large_blue_diamond:  |
-|     [Azure Disk Encryption](https://docs.microsoft.com/azure/virtual-machines/disks-redundancy)                                       | :large_blue_diamond:  |
-|     [Azure Firewall](https://docs.microsoft.com/azure/firewall/deploy-availability-zone-powershell#:~:text=For%20more%20information%20about%20Azure%20Firewall%20Availability%20Zones%2C,This%20creates%20a%20zone-redundant%20IP%20address%20by%20default)                                              | :large_blue_diamond:  |
-|     [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/quick-firewall-policy)                                      | :large_blue_diamond:  |
-|     [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/availability-zones)                              | :large_blue_diamond:  |
-|     [Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)                                          | :large_blue_diamond:  |
-|     [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)                                         | :large_blue_diamond:  |
-|     Azure SQL: [仮想マシン](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla)                                  | :large_blue_diamond:  |
-|     [Azure Web アプリケーション ファイアウォール](https://docs.microsoft.com/azure/firewall/deploy-availability-zone-powershell#:~:text=For%20more%20information%20about%20Azure%20Firewall%20Availability%20Zones%2C,This%20creates%20a%20zone-redundant%20IP%20address%20by%20default)                              | :large_blue_diamond:  |
-|     [コンテナー レジストリ](https://docs.microsoft.com/azure/container-registry/zone-redundancy)                                          | :large_blue_diamond:  |
-|     [Event Grid](https://docs.microsoft.com/azure/event-grid/overview)                                                  | :large_blue_diamond:  |
-|     [Network Watcher](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                                             | :large_blue_diamond:  |
-|     Network Watcher: [Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                          | :large_blue_diamond:  |
-|     [Power BI Embedded](https://docs.microsoft.com/power-bi/admin/service-admin-failover#what-does-high-availability)                                           | :large_blue_diamond:  |
-|     [Premium Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-performance-tiers#:~:text=Table%201%20%20%20%20Area%20%20,%20%20Currently%20supports%20only%20locally-redundan%20...%20)                                        | :large_blue_diamond:  |
-|     ストレージ: [Azure Premium Files](https://docs.microsoft.com/azure/storage/files/storage-files-planning)                                | :large_blue_diamond:  |
-|     仮想マシン: [Azure Dedicated Host](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                     | :large_blue_diamond:  |
-|     Virtual Machines: [Ddsv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | :large_blue_diamond:  |
-|     Virtual Machines: [Ddv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
-|     Virtual Machines: [Dsv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
-|     Virtual Machines: [Dv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                | :large_blue_diamond:  |
-|     Virtual Machines: [Edsv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | :large_blue_diamond:  |
-|     Virtual Machines: [Edv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
-|     Virtual Machines: [Esv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
-|     Virtual Machines: [Ev4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                | :large_blue_diamond:  |
-|     Virtual Machines: [Fsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
-|     Virtual Machines: [M シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                  | :large_blue_diamond:  |
-|     [Virtual WAN](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-about#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                                 | :large_blue_diamond:  |
-|     Virtual WAN: [ExpressRoute](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-about#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                   | :large_blue_diamond:  |
-|     Virtual WAN: [ポイント対サイト VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)                      | :large_blue_diamond:  |
-|     Virtual WAN: [サイト間 VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)                       | :large_blue_diamond:  |
+| **成果物**   | **回復性**   |
+| --- | --- |
+| [App Service](../app-service/how-to-zone-redundancy.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure App Service 環境](../app-service/environment/zone-redundancy.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure API Management](../api-management/zone-redundancy.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure App Configuration](../azure-app-configuration/faq.yml#how-does-app-configuration-ensure-high-data-availability)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Bastion](../bastion/bastion-overview.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Batch](../batch/create-pool-availability-zones.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Cache for Redis](../azure-cache-for-redis/cache-high-availability.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure Cognitive Search](../search/search-performance-optimization.md#availability-zones)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| Azure Cognitive Services:  [Text Analytics](../cognitive-services/text-analytics/index.yml)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Data Factory](../data-factory/index.yml)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| Azure Database for MySQL -  [フレキシブル サーバー](../mysql/flexible-server/concepts-high-availability.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| Azure Database for PostgreSQL -  [フレキシブル サーバー](../postgresql/flexible-server/overview.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure DDoS Protection](../ddos-protection/ddos-faq.yml)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) |
+| [Azure Disk Encryption](../virtual-machines/disks-redundancy.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) |
+| [Azure Firewall](../firewall/deploy-availability-zone-powershell.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Firewall Manager](../firewall-manager/quick-firewall-policy.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Functions](https://azure.github.io/AppService/2021/08/25/App-service-support-for-availability-zones.html)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure Monitor](../azure-monitor/logs/availability-zones.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Monitor:Application Insights](../azure-monitor/logs/availability-zones.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Monitor:Log Analytics](../azure-monitor/logs/availability-zones.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Private Link](../private-link/private-link-overview.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Site Recovery](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Azure SQL:  [Virtual Machine](../azure-sql/database/high-availability-sla.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) |
+| [Azure Web アプリケーション ファイアウォール](../firewall/deploy-availability-zone-powershell.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Container Registry](../container-registry/zone-redundancy.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure Event Grid](../event-grid/overview.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Azure HDInsight](../hdinsight/hdinsight-use-availability-zones.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure Network Watcher](../network-watcher/frequently-asked-questions.yml)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| Network Watcher:  [Traffic Analytics](../network-watcher/frequently-asked-questions.yml)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Power BI Embedded](/power-bi/admin/service-admin-failover#what-does-high-availability)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Premium Blob Storage](../storage/common/storage-account-overview.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| ストレージ:  [Azure Premium ファイル](../storage/files/storage-files-planning.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| 仮想マシン:  [Azure Dedicated Host](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Ddsv4 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Ddv4 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Dsv4 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Dv4 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Edsv4 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Edv4 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Esv4 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Ev4 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [Fsv2 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Virtual Machines:  [M シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure Virtual WAN](../virtual-wan/virtual-wan-faq.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| Virtual WAN:  [Azure ExpressRoute](../virtual-wan/virtual-wan-faq.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| Virtual WAN:  [ポイント対サイト VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| Virtual WAN:  [サイト間 VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
 
+### <a name="an-icon-that-signifies-this-service-is-strategic-strategic-services"></a>![このサービスが戦略的であることを示すアイコン。](media/icon-strategic.svg) 戦略的サービス
 
-**専用サービス**
+| **成果物**   | **回復性**   |
+| --- | --- |
+| Azure Red Hat OpenShift  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| Azure Cognitive Services: Anomaly Detector  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| Azure Cognitive Services: Form Recognizer  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| Azure Storage: Ultra Disk  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
 
-|     製品                                                    | 回復性             |
-|-----------------------------------------------------------------|:----------------------------:|
-|     Azure Red Hat OpenShift                                     | :large_blue_diamond:  |
-|     Cognitive Services:Anomaly Detector                        | :large_blue_diamond:  |
-|     Cognitive Services:Form Recognizer                         | :large_blue_diamond:  |
-|     ストレージ: Ultra Disk                                         | :large_blue_diamond:  |
+### <a name="an-icon-that-signifies-this-service-is-non-regional-non-regional-services-always-available-services"></a>![このサービスが非リージョン型であることを示すアイコン。](media/icon-always-available.svg) 非リージョン型サービス (常時利用型サービス)
 
+| **成果物**   | **回復性**   |
+| --- | --- |
+| Azure DNS  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Active Directory  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Advanced Threat Protection  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Advisor  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Blueprint  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Bot Services  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Front Door  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Microsoft Defender for IoT  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Front Door  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Information Protection  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Lighthouse  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Managed Applications  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Maps  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Performance Diagnostics  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Policy  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Resource Graph  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Microsoft Sentinel  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Stack  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Stack Edge  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Cloud Shell  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Content Delivery Network  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Cost Management および Billing | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Microsoft Azure 用カスタマー ロックボックス  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Microsoft Intune  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure Peering Service  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure portal  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Microsoft Defender for Cloud Apps  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Microsoft Graph  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Microsoft Defender for Cloud  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
+| Azure の Traffic Manager  | ![このサービスが常時利用可能型であることを示すアイコン。](media/icon-always-available.svg) |
 
-**リージョン依存なし**
+可用性ゾーンをサポートする Azure リージョン別の Azure サービス一覧については、[可用性ゾーンのドキュメント](az-overview.md)を参照してください。
 
-|     製品                                                    | 回復性             |
-|-----------------------------------------------------------------|:----------------------------:|
-|     Azure DNS                                                   | :globe_with_meridians: |
-|     Azure Active Directory                                    | :globe_with_meridians: |
-|     Azure Advanced Threat Protection                            | :globe_with_meridians: |
-|     Azure Advisor                                               | :globe_with_meridians: |
-|     Azure Blueprint                                            | :globe_with_meridians: |
-|     Azure Bot Services                                          | :globe_with_meridians: |
-|     Azure Front Door                                            | :globe_with_meridians: |
-|     Azure Defender for IoT                                    | :globe_with_meridians: |
-|     Azure Front Door                                            | :globe_with_meridians: |
-|     Azure Information Protection                              | :globe_with_meridians: |
-|     Azure Lighthouse                                          | :globe_with_meridians: |
-|     Azure Managed Applications                                | :globe_with_meridians: |
-|     Azure Maps                                                  | :globe_with_meridians: |
-|     Azure Performance Diagnostics                               | :globe_with_meridians: |
-|     Azure Policy                                                | :globe_with_meridians: |
-|     Azure Resource Graph                                      | :globe_with_meridians: |
-|     Azure Sentinel                                              | :globe_with_meridians: |
-|     Azure Stack                                                 | :globe_with_meridians: |
-|     Azure Stack Edge                                          | :globe_with_meridians: |
-|     Cloud Shell                                                 | :globe_with_meridians: |
-|     Content Delivery Network                                    | :globe_with_meridians: |
-|     Cost Management                                             | :globe_with_meridians: |
-|     Microsoft Azure 用カスタマー ロックボックス                      | :globe_with_meridians: |
-|     Intune                                                      | :globe_with_meridians: |
-|     Microsoft Azure Peering Service                           | :globe_with_meridians: |
-|     Microsoft Azure portal                                    | :globe_with_meridians: |
-|     Microsoft Cloud App Security                                | :globe_with_meridians: |
-|     Microsoft Graph                                             | :globe_with_meridians: |
-|     Security Center                                           | :globe_with_meridians: |
-|     Traffic Manager                                           | :globe_with_meridians: |
+## <a name="pricing-for-virtual-machines-in-availability-zones"></a>可用性ゾーン内の仮想マシンの価格
 
+Azure サブスクリプションを使用して Azure 可用性ゾーンにアクセスできます。 詳細については、「[帯域幅の価格](https://azure.microsoft.com/pricing/details/bandwidth/)」を参照してください。
 
-## <a name="pricing-for-vms-in-availability-zones"></a>Availability Zones の VM の料金
+## <a name="next-steps"></a>次の手順
 
-Azure Availability Zones は、Azure サブスクリプションで使用できます。 詳細については、「[帯域幅の料金に関するページ](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。
-
-
-## <a name="get-started-with-availability-zones"></a>Availability Zones の使用を開始する
-
-- [仮想マシンの作成](../virtual-machines/windows/create-portal-availability-zone.md)
-- [PowerShell を使った管理ディスクの追加](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-- [ゾーン冗長仮想マシン スケール セットの作成](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [ゾーン冗長フロントエンドによる Standard Load Balancer を使用したゾーン間での VM の負荷分散](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard)
-- [ゾーン フロントエンドによる Standard Load Balancer を使用した単一のゾーン内での VM の負荷分散](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard)
-- [ゾーン冗長ストレージ](../storage/common/storage-redundancy.md)
-- [SQL Database General Purpose レベル](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
-- [Event Hubs の geo ディザスター リカバリー](../event-hubs/event-hubs-geo-dr.md#availability-zones)
-- [Service Bus の geo ディザスター リカバリー](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
-- [ゾーン冗長仮想ネットワーク ゲートウェイの作成](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
-- [Azure Cosmos DB のゾーン冗長リージョンの追加](../cosmos-db/high-availability.md#availability-zone-support)
-- [Azure Cache for Redis Availability Zones の概要](https://gist.github.com/JonCole/92c669ea482bbb7996f6428fb6c3eb97#file-redisazgettingstarted-md)
-- [Azure Active Directory Domain Services インスタンスの作成](../active-directory-domain-services/tutorial-create-instance.md)
-- [可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する](../aks/availability-zones.md)
-
-
-## <a name="next-steps"></a>次のステップ
-
-> [!div class="nextstepaction"]
-> [Azure のリージョンと Availability Zones](az-overview.md)
+- [Availability Zones を使用した高可用性のためのソリューションの構築](/azure/architecture/high-availability/building-solutions-for-high-availability)
+- [Azure サービスでの高可用性](/azure/architecture/framework/resiliency/overview)
+- [可用性のための設計パターン](/azure/architecture/framework/resiliency/app-design)

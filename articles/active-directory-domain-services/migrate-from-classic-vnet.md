@@ -7,14 +7,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 08/11/2021
 ms.author: justinha
-ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4492824c77a8a97810c5849c221c400560db4bad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98013041"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732407"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>クラシック仮想ネットワーク モデルから Resource Manager への Azure Active Directory Domain Services の移行
 
@@ -37,7 +38,7 @@ Azure Active Directory Domain Services (Azure AD DS) では、現在クラシッ
 
 ![Azure AD DS 移行の準備段階](media/migrate-from-classic-vnet/migration-preparation.png)
 
-"*移行*" 段階では、クラシック マネージド ドメインのドメイン コントローラーの基礎となる仮想ディスクが、Resource Manager デプロイ モデルを使用して VM を作成するためにコピーされます。 次に、マネージド ドメインが再作成されます。これには、LDAPS と DNS の構成が含まれます。 Azure AD との同期が再開され、LDAP 証明書が復元されます。 マネージド ドメインにコンピューターを再参加させる必要はありません。引き続きマネージド ドメインに参加しており、変更することなく実行できます。
+"*移行*" 段階では、クラシック マネージド ドメインのドメイン コントローラーの基礎となる仮想ディスクが、Resource Manager デプロイ モデルを使用して VM を作成するためにコピーされます。 次に、マネージド ドメインが再作成されます。これには、LDAPS と DNS の構成が含まれます。 Azure AD との同期が再開され、LDAP 証明書が復元されます。 コンピューターをマネージド ドメインに再参加させる必要はありません。これらは引き続きマネージド ドメインに参加しており、変更することなく実行できます。
 
 ![Azure AD DS の移行](media/migrate-from-classic-vnet/migration-process.png)
 

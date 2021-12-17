@@ -1,18 +1,18 @@
 ---
 title: ユーザー VPN 接続の証明書を生成してエクスポートする | Azure Virtual WAN
-description: Windows 10 または Windows Server 2016 で PowerShell を使用して、自己署名ルート証明書の作成、公開キーのエクスポート、ユーザー VPN 接続のクライアント証明書の生成を行います。
+description: PowerShell を使用し、Virtual WAN ユーザー VPN (ポイント対サイト) 接続のために、自己署名付きのルート証明書を作成し、公開キーをエクスポートし、クライアント証明書を生成する方法について説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2205f170ee846d4db94db7f524a1c424cfbc8f7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d126f68ed1eebae9dda7ad957748cb3258b5ad89
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91328040"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165301"
 ---
 # <a name="generate-and-export-certificates-for-user-vpn-connections"></a>ユーザー VPN 接続の証明書を生成してエクスポートする
 

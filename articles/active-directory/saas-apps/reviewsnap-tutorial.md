@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 00b9b12e3f60db631fdb30d3d449234149aec4b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d4daeaa852be95100df3874ce3be480784f9ca0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92516547"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816506"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>チュートリアル: Azure Active Directory と Reviewsnap の統合
 
@@ -191,7 +191,7 @@ Reviewsnap で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Reviewsnap] タイルをクリックすると、SSO を設定した Reviewsnap に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Reviewsnap] タイルをクリックすると、SSO を設定した Reviewsnap に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

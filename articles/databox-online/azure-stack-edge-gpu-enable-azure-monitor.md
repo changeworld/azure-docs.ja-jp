@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 06/03/2021
 ms.author: alkohli
-ms.openlocfilehash: c2f66895fccd14dcffd8c5570f1d5f46933090aa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 86ddddbffd0a909a22acba6f780632690700eda2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439189"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715845"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで Azure Monitor を有効にする
 
@@ -22,6 +22,9 @@ ms.locfileid: "102439189"
 Azure Stack Edge Pro GPU デバイス上のコンテナーの監視は、複数のコンピューティング アプリケーションを実行している場合に特に重要です。 Azure Monitor を使用すると、デバイスで実行されている Kubernetes クラスターからコンテナー ログとメモリおよびプロセッサ メトリックを収集できます。
 
 この記事では、デバイスで Azure Monitor を有効にし、Log Analytics ワークスペースでコンテナー ログを収集するために必要な手順について説明します。 現在、Azure Stack Edge Pro GPU デバイスでは、Azure Monitor メトリック ストアはサポートされていません。 
+
+> [!NOTE]
+> デバイスの Kubernetes クラスターで Azure Arc が有効になっている場合は、「[Azure Arc 対応 Kubernetes クラスター用の Azure Monitor Container Insights](../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json)」の手順に従ってコンテナーの監視を設定します。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -144,19 +147,19 @@ Log Analytics ワークスペースを作成するには、次の手順を実行
     
     Container Insights を有効にした Log Analytics ワークスペースの出力例を次に示します。
     
-    ```powershell
+    ```output
     Requesting a Cloud Shell.Succeeded.
     Connecting terminal...
     MOTD: Switch to Bash from PowerShell: bash
     VERBOSE: Authenticating to Azure ...
     VERBOSE: Building your Azure drive ...
     
-    PS /home/alpa> az account set -s fa68082f-8ff7-4a25-95c7-ce9da541242f
-    PS /home/alpa> ls
+    PS /home/myaccount> az account set -s fa68082f-8ff7-4a25-95c7-ce9da541242f
+    PS /home/myaccount> ls
     clouddrive  containerSolution.json
-    PS /home/alpa> ls
+    PS /home/myaccount> ls
     clouddrive  containerSolution.json  containerSolutionParams.json
-    PS /home/alpa> az deployment group create --resource-group myaserg --name Testdeployment1 --template-file containerSolution.json --parameters containerSolutionParams.json
+    PS /home/myaccount> az deployment group create --resource-group myaserg --name Testdeployment1 --template-file containerSolution.json --parameters containerSolutionParams.json
     {- Finished ..
         "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/myaserg/providers/Microsoft.Resources/deployments/Testdeployment1",
         "location": null,
@@ -219,7 +222,7 @@ Log Analytics ワークスペースを作成するには、次の手順を実行
         "tags": null,
         "type": "Microsoft.Resources/deployments"
     }
-    PS /home/alpa>
+    PS /home/myaccount>
     ```
 
 ## <a name="configure-azure-monitor-on-your-device"></a>デバイスで Azure Monitor を構成する
@@ -243,4 +246,4 @@ Log Analytics ワークスペースを作成するには、次の手順を実行
 ## <a name="next-steps"></a>次の手順
 
 - [Kubernetes ダッシュボードを使用して Kubernetes ワークロードを監視する方法](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)を確認します。
-- [デバイス イベントのアラート通知を管理する](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)方法について説明します。 
+- [デバイス イベントのアラート通知を管理する](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)方法について説明します。

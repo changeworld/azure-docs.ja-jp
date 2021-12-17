@@ -1,106 +1,74 @@
 ---
-title: Azure リージョンの vCPU クォータ制限の引き上げを要求する
-description: Azure portal でリージョンの vCPU クォータ制限の引き上げを要求する方法。
-author: sowmyavenkat86
-ms.author: svenkat
-ms.date: 01/27/2020
+title: リージョンの vCPU クォータの増加
+description: Azure portal でリージョンの vCPU クォータ制限の引き上げを要求する方法について説明します。
+ms.date: 11/15/2021
 ms.topic: how-to
-ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: eadf740c6b5caccbf678a1238f993d4ec0b34095
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references-regions
+ms.openlocfilehash: 45337a6ce029fe3bf8442ac5343ce9145faf904f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745419"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717089"
 ---
-# <a name="standard-quota-increase-limits-by-region"></a>標準クォータ: リージョンごとの制限の引き上げ
+# <a name="increase-regional-vcpu-quotas"></a>リージョンの vCPU クォータの増加
 
-Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォータをサポートしています。
+Azure Resource Manager では、仮想マシンに次の 2 種類の vCPU クォータを適用します。
 
-* *従量課金制 VM* と *予約 VM インスタンス* には、*標準 vCPU クォータ* が適用されます。
-* *スポット VM* には、*スポット vCPU クォータ* が適用されます。
+- 標準 vCPU クォータ
+- スポット vCPU クォータ
 
-従量課金制の標準 vCPU クォータと予約仮想マシン インスタンスは、各リージョンのサブスクリプションごとに 2 つのレベルで適用されます。
+標準 vCPU クォータは、従量課金制 VM と予約 VM インスタンスに適用されます。 これらは、各リージョンのサブスクリプションごとに 2 つのレベルで適用されます。
 
-* 1 つ目のレベルは、すべての VM シリーズでの "*リージョンの vCPU の合計の制限*" です。
-* 2 つ目のレベルは、D シリーズの vCPU など、"*VM シリーズあたりの vCPU の制限*" です。
+- 最初のレベルは、リージョン vCPU クォータの合計です。
+- 2 番目のレベルは、VM ファミリ vCPU クォータ (D シリーズ vCPU など) です。
 
-新しいスポット VM をデプロイする場合、その VM シリーズの新規および既存の vCPU 使用量の合計が、その特定の VM シリーズの承認されたスポット vCPU クォータを超えることはできません。 さらに、すべての VM シリーズにわたってデプロイされる新規および既存の vCPU の合計数が、サブスクリプションに対して承認されているリージョンの vCPU の合計のクォータを超えることはできません。 これらのクォータのいずれかを超えている場合には、VM のデプロイは許可されません。
+この記事では、特定のリージョン内のすべての VM に対してリージョン vCPU クォータの引き上げを要求する方法について説明します。 [VM ファミリ vCPU クォータ](per-vm-quota-requests.md)または[スポット vCPU クォータ](spot-quota.md)の引き上げを要求することもできます。
 
-VM シリーズの vCPU クォータ制限の引き上げは、Azure portal を使用して要求できます。 VM シリーズのクォータを増やすと、リージョンの vCPU の合計の制限が同じ量だけ自動的に増えます。
+## <a name="special-considerations"></a>特別な考慮事項
 
-新しいサブスクリプションを作成するとき、リージョンの vCPU の合計の既定値が、すべての個別 VM シリーズに対する既定の vCPU クォータの合計と等しくない場合があります。 この不一致により、サブスクリプションで、デプロイしたい個別の VM シリーズごとのクォータは十分になる可能性があります。 一方、すべてのデプロイに対するリージョンの vCPU の合計に対応するクォータは十分でない可能性があります。 この場合、リージョンの vCPU の合計数の制限を明示的に増やすための要求を送信する必要があります。 リージョンの vCPU の合計の制限が、そのリージョンのすべての VM シリーズにわたって承認されたクォータの合計を超えることはできません。
+リージョン間で vCPU のニーズを検討する場合は、次の点を考慮してください。
 
-標準 vCPU クォータの詳細については、「[仮想マシンの vCPU クォータ](../../virtual-machines/windows/quotas.md)」および「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
+- リージョン vCPU クォータは、特定のリージョン内のすべての VM シリーズに適用されます。 結果として、サブスクリプション内の各リージョンに必要な vCPU の数が決定されます。 各リージョンに十分な vCPU クォータがない場合は、そのリージョンの vCPU クォータを引き上げる要求を送信してください。 たとえば、西ヨーロッパで 30 の vCPU が必要で、クォータが十分ではない場合は、特に西ヨーロッパで 30 の vCPU のクォータを要求します。 そうすると、他のリージョンのサブスクリプションの vCPU クォータは引き上げられません。 西ヨーロッパの vCPU クォータ制限だけが 30 vCPU に引き上げられます。
 
-Spot VM vCPU の制限の引き上げの詳細については、「[スポット クォータ: すべての VM シリーズでの制限の引き上げ](low-priority-quota.md)」を参照してください。
+- VM シリーズの vCPU クォータの引き上げを要求すると、Azure はリージョンの vCPU クォータ制限を同じ量だけ引き上げます。
 
-次の 2 つの方法のいずれかで、vCPU の標準クォータ制限の引き上げをリージョン別に要求できます。
+- 新しいサブスクリプションを作成するとき、リージョンの vCPU の合計の既定値が、すべての個別 VM シリーズに対する既定の vCPU クォータの合計と等しくない場合があります。 この不一致により、サブスクリプションで、デプロイしたい個別の VM シリーズごとのクォータは十分になる可能性があります。 一方、すべてのデプロイに対するリージョンの vCPU の合計に対応するクォータは十分でない可能性があります。 この場合、リージョンの vCPU クォータのクォータ制限を明示的に引き上げるための要求を送信する必要があります。
 
-## <a name="request-a-quota-increase-by-region-from-help--support"></a>[ヘルプとサポート] からリージョンごとにクォータの引き上げを要求する
+## <a name="increase-a-regional-vcpu-quota"></a>リージョンの vCPU クォータを引き上げる
 
-**[ヘルプとサポート]** からリージョンごとに vCPU クォータの引き上げを要求するには:
+**[使用状況とクォータ]** からリージョン vCPU クォータを要求するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) のメニューで、 **[ヘルプとサポート]** を選択します。
-
-   ![[ヘルプとサポート] リンク](./media/resource-manager-core-quotas-request/help-plus-support.png)
-
-1. **[ヘルプとサポート]** で、 **[新しいサポート リクエスト]** を選択します
-
-    ![新しいサポート要求](./media/resource-manager-core-quotas-request/new-support-request.png)
-
-1. **[問題の種類]** で、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
-
-   ![問題の種類を選択する](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
-
-1. **[サブスクリプション]** で、クォータを引き上げるサブスクリプションを選択します。
-
-   ![サブスクリプションの選択](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
-
-1. **[クォータの種類]** で、**[その他の要求]** を選択します。
-
-   ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/regional-quotatype.png)
-
-1. **ソリューション** を選択して **問題の詳細** を開きます。 **[説明]** に次の情報を指定します。
-
-    1. **[デプロイ モデル]** には、**[Resource Manager]** を指定します。  
-    1. **[リージョン]** には、必要なリージョン (例: **[米国東部 2]**) を指定します。  
-    1. **[新しい制限]** には、そのリージョンに対する新しい vCPU の制限を指定します。 この値は、このサブスクリプションに対する個々の SKU シナリオの承認済みクォータの合計を超えてはなりません。
-
-    ![クォータ要求の詳細を入力する](./media/resource-manager-core-quotas-request/regional-details.png)
-
-1. **[確認と作成]** を選択して、サポート要求の作成を続行します。
-
-## <a name="request-a-quota-increase-by-region-from-subscriptions"></a>[サブスクリプション] からリージョンごとにクォータの引き上げを要求する
-
-**[サブスクリプション]** からリージョンごとに vCPU クォータの引き上げを要求するには:
-
-1. [Azure portal](https://portal.azure.com) で、 **[サブスクリプション]** を検索して選択します。
-
-   ![Azure portal で [サブスクリプション] に移動する](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
+1. Azure portal で、**サブスクリプション** を検索して選択します。
 
 1. クォータを増やしたいサブスクリプションを選択します。
 
-   ![変更するサブスクリプションを選択する](./media/resource-manager-core-quotas-request/select-subscription-change-quota.png)
+1. 左側のペインで、 **[使用量 + クォータ]** を選択します。 フィルターを使用して、使用量別にクォータを表示します。
 
-1. 左側のペインで、 **[使用量 + クォータ]** を選択します。
+1. メイン ウィンドウで、 **[リージョンにおける合計 vCPU]** を選択し、鉛筆アイコンを選択します。 次の例は、米国北部リージョンのリージョン vCPU クォータを示しています。
 
-   ![使用状況とクォータのリンクを選択する](./media/resource-manager-core-quotas-request/select-usage-plus-quotas.png)
+   :::image type="content" source="media/resource-manager-core-quotas-request/regional-quota-total.png" alt-text="Azure portal で、[リージョンにおける合計 vCPU] を示す [使用状況とクォータ] 画面のスクリーンショット。" lightbox="media/resource-manager-core-quotas-request/regional-quota-total.png":::
 
-1. 右上の **[引き上げを要求する]** を選択します。
+1. **[クォータの詳細]** に、新しいクォータ制限を入力し、 **[保存してから続ける]** を選択します。
 
-   ![クォータを引き上げるために選択する](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
+   要求が確認され、要求が承認 (または拒否) されたかどうかが通知されます。 これは通常、数分以内に通知されます。 要求が拒否された場合は、サポート エンジニアが引き上げを支援できるようにサポート リクエストを開くことができるリンクが表示されます。
 
-1. **[クォータの種類]** で **[その他の要求]** を選択します。
+> [!TIP]
+> 同時に複数の引き上げを要求することもできます。 詳細については、「[1 つの要求で複数の VM ファミリ CPU クォータを引き上げる](per-vm-quota-requests.md#increase-multiple-vm-family-cpu-quotas-in-one-request)」を参照してください。
 
-   ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/regional-quotatype.png)
+## <a name="increase-a-regional-quota-from-help--support"></a>[ヘルプとサポート] からリージョン クォータを引き上げる
 
-1. **ソリューション** を選択して **問題の詳細** を開きます。 **[説明]** ボックスに、次の追加情報を指定します。
+**[ヘルプとサポート]** から VM ファミリあたりの標準 vCPU クォータの引き上げを要求するには、Azure portal で新しいサポート要求を作成します。
 
-    1. **[デプロイ モデル]** には、**[Resource Manager]** を指定します。  
-    1. **[リージョン]** には、必要なリージョン (例: **[米国東部 2]**) を指定します。  
-    1. **[新しい制限]** には、そのリージョンに対する新しい vCPU の制限を指定します。 この値は、このサブスクリプションに対する個々の SKU シナリオの承認済みクォータの合計を超えてはなりません。
+1. **[問題の種類]** で、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
+1. **[サブスクリプション]** で、クォータを引き上げるサブスクリプションを選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
 
-    ![詳細情報を入力する](./media/resource-manager-core-quotas-request/regional-details.png)
+   :::image type="content" source="media/resource-manager-core-quotas-request/new-per-vm-quota-request.png" alt-text="Azure portal での VM ファミリの vCPU クォータの引き上げのサポート要求を示すスクリーンショット。":::
 
-1. **[確認と作成]** を選択して、サポート要求の作成を続行します。
+そこから、上記の手順に従って、リージョン クォータの引き上げ要求を完了します。
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure リージョンとその場所の一覧](https://azure.microsoft.com/regions/)をご確認ください。
+- [仮想マシンの Azure リージョン](../../virtual-machines/regions.md)の概要と、特定のリージョンで VM のパフォーマンス、可用性、冗長性を最大化する方法について説明します。

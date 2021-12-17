@@ -1,4 +1,4 @@
-### YamlMime:Hub
+### YamlMime:Hub 
 title: Azure ネットワークのドキュメント
 summary: 利用可能な各種 Azure ネットワーク サービスについて説明します。これらは、Azure のリソースへの接続、アプリケーションのデリバリーと保護、ネットワークのセキュリティ保護を実現します。
 brand: azure
@@ -7,336 +7,208 @@ metadata:
   description: Azure ネットワーク サービスにより、Azure のリソースへの接続、アプリケーションのデリバリーと保護、ネットワークのセキュリティ保護が実現します。
   ms.service: virtual-network
   ms.topic: hub-page
-  ms.collection: 
+  ms.collection: null
   author: KumudD
   ms.author: kumud
   manager: mtillman
-  ms.date: 09/28/2020
-  ms.openlocfilehash: c701f1f54955257fd60fe8d58fb703a1d26d1169
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102503399"
+  ms.date: 09/08/2021
 highlightedContent:
   items:
-  - title: Azure ネットワークとは
-    itemType: overview
-    url: networking-overview.md
-  - title: Azure ネットワークの新着情報
-    itemType: whats-new
-    url: https://azure.microsoft.com/updates/?category=networking
-  - title: Azure の負荷分散オプション
-    itemType: architecture
-    url: /azure/architecture/guide/technology-choices/load-balancing-overview
-  - title: Azure のハブスポーク ネットワーク トポロジ
-    itemType: architecture
-    url: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
-  - title: Azure Orbital とは
-    itemType: concept
-    url: azure-orbital-overview.md
-  - title: Azure サービスを使用したリモートでの作業
-    itemType: concept
-    url: working-remotely-support.md
-conceptualContent:
-  items:
-  - title: 仮想ネットワーク
-    links:
-    - url: ../virtual-network/virtual-networks-overview.md
-      itemType: concept
-      text: Azure Virtual Network とは
-    - url: ../virtual-network/tutorial-restrict-network-access-to-resources.md
-      itemType: tutorial
-      text: リソースへのネットワーク アクセスを制限する
-    - url: ../virtual-network/tutorial-connect-virtual-networks-portal.md
-      itemType: tutorial
-      text: Azure 仮想ネットワークの接続
-    - url: ../virtual-network/diagnose-network-traffic-filter-problem.md
-      itemType: how-to-guide
-      text: ネットワーク トラフィック フィルターに関する問題のトラブルシューティング
-    footerLink:
-      url: ../virtual-network/index.yml
-      text: 詳細情報
-  - title: オンプレミスを Azure に接続する - VPN 暗号化
-    links:
-    - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+    - title: Azure ネットワークとは
       itemType: overview
-      text: Azure VPN Gateway とは
-    - url: ../vpn-gateway/tutorial-site-to-site-portal.md
-      itemType: tutorial
-      text: サイト間接続
-    - url: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
-      itemType: how-to-guide
-      text: ポイント対サイト接続
-    - url: ../vpn-gateway/vpn-gateway-troubleshoot.md
-      itemType: how-to-guide
-      text: VPN Gateway のトラブルシューティング
-    footerLink:
-      url: ../vpn-gateway/index.yml
-      text: 詳細情報
-  - title: オンプレミスを Azure に拡張する - プライベート接続
-    links:
-    - url: ../expressroute/expressroute-introduction.md
-      itemType: concept
-      text: Azure ExpressRoute とは
-    - url: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md
-      itemType: tutorial
-      text: ExpressRoute 回線の作成と変更
-    - url: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md
-      itemType: tutorial
-      text: ExpressRoute 回線への仮想ネットワークのリンク
-    - url: ../expressroute/expressroute-troubleshooting-network-performance.md
-      itemType: how-to-guide
-      text: ネットワーク パフォーマンスのトラブルシューティング
-    footerLink:
-      url: ../expressroute/index.yml
-      text: 詳細情報
-  - title: DNS
-    links:
-    - url: ../dns/dns-overview.md
-      itemType: overview
-      text: Azure DNS とは
-    - url: ../private-link/private-endpoint-overview.md
-      itemType: overview
-      text: Azure プライベート DNS とは
-    - url: ../dns/dns-delegate-domain-azure-dns.md
-      itemType: tutorial
-      text: ドメインとサブドメインのホスト
-    - url: ../dns/dns-getstarted-portal.md
-      itemType: tutorial
-      text: Azure DNS のトラブルシューティング
-    footerLink:
-      url: ../dns/index.yml
-      text: 詳細情報
-  - title: ネットワーク ロード バランサー
-    links:
-    - url: ../load-balancer/load-balancer-overview.md
-      itemType: overview
-      text: Azure Load Balancer の概要
-    - url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
+      url: fundamentals/networking-overview.md
+    - title: Azure ネットワークの新着情報
       itemType: whats-new
-      text: 新機能
-    - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
-      itemType: quickstart
-      text: VM へのインターネット トラフィックの負荷分散を行う
-    - url: ../load-balancer/load-balancer-troubleshoot.md
-      itemType: how-to-guide
-      text: Azure Load Balancer のトラブルシューティング
-    footerLink:
-      url: ../load-balancer/index.yml
-      text: 詳細情報
-  - title: DNS ベースのロード バランサー
-    links:
-    - url: ../traffic-manager/traffic-manager-overview.md
-      itemType: overview
-      text: Azure Traffic Manager とは
-    - url: ../traffic-manager/tutorial-traffic-manager-improve-website-response.md
-      itemType: tutorial
-      text: トラフィックをルーティングして待ち時間を削減する
-    - url: ../traffic-manager/traffic-manager-routing-methods.md
+      url: 'https://azure.microsoft.com/updates/?category=networking'
+    - title: Azure の負荷分散オプション
+      itemType: architecture
+      url: /azure/architecture/guide/technology-choices/load-balancing-overview
+    - title: Azure のハブスポーク ネットワーク トポロジ
+      itemType: architecture
+      url: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+    - title: Azure ネットワークのブログ
       itemType: concept
-      text: トラフィックのルーティング方法
-    - url: ../traffic-manager/traffic-manager-troubleshooting-degraded.md
-      itemType: how-to-guide
-      text: Traffic Manager の機能低下状態のトラブルシューティング
-    footerLink:
-      url: ../traffic-manager/index.yml
-      text: 詳細情報
-  - title: Web アプリケーション ロード バランサー
-    links:
-    - url: ../application-gateway/overview.md
-      itemType: overview
-      text: Azure Application Gateway とは
-    - url: ../application-gateway/quick-create-portal.md
-      itemType: quickstart
-      text: ポータルを使用して Web トラフィックを転送する
-    - url: ../application-gateway/application-gateway-faq.yml
+      url: 'https://azure.microsoft.com/blog/topics/networking/'
+    - title: Azure サービスを使用したリモートでの作業
       itemType: concept
-      text: よく寄せられる質問
-    - url: ../application-gateway/application-gateway-troubleshooting-502.md
-      itemType: how-to-guide
-      text: 無効なゲートウェイ エラーのトラブルシューティング
-    footerLink:
-      url: ../application-gateway/index.yml
-      text: 詳細情報
-  - title: セキュリティで保護されたクラウド CDN とグローバル ロード バランサー
-    links:
-    - url: ../frontdoor/front-door-overview.md
-      itemType: overview
-      text: Azure Front Door Service とは
-    - url: ../frontdoor/standard-premium/overview.md
-      itemType: overview
-      text: Azure Front Door Standard/Premium (プレビュー) とは
-    - url: ../frontdoor/front-door-custom-domain.md
-      itemType: how-to-guide
-      text: Azure Front Door Service にカスタム ドメインを追加する
-    - url: ../frontdoor/front-door-how-to-redirect-https.md
-      itemType: how-to-guide
-      text: HTTP から HTTPS へのリダイレクト
-    footerLink:
-      url: ../frontdoor/index.yml
-      text: 詳細情報
-  - title: ネットワーク正常性の監視
-    links:
-    - url: ../network-watcher/network-watcher-monitoring-overview.md
-      itemType: overview
-      text: Azure Network Watcher とは
-    - url: ../network-watcher/traffic-analytics.md
-      itemType: concept
-      text: Azure の Traffic Analytics
-    - url: ../network-watcher/network-watcher-nsg-flow-logging-portal.md
-      itemType: tutorial
-      text: VM との間のネットワーク トラフィック フローのログを記録する
-    footerLink:
-      url: ../network-watcher/index.yml
-      text: 詳細情報
-  - title: ネットワーク ファイアウォール
-    links:
-    - url: ../firewall/overview.md
-      itemType: overview
-      text: Azure Firewall とは
-    - url: ../firewall/tutorial-firewall-deploy-portal.md
-      itemType: tutorial
-      text: Azure Firewall をデプロイして構成する
-    - url: ../firewall/tutorial-firewall-dnat.md
-      itemType: tutorial
-      text: Azure Firewall を使用してインバウンド インターネット トラフィックをフィルター処理する
-    footerLink:
-      url: ../firewall/index.yml
-      text: 詳細情報
-  - title: Azure VM へのアクセスのセキュリティ保護
-    links:
-    - url: ../bastion/bastion-overview.md
-      itemType: overview
-      text: Azure Bastion とは
-    - url: ../bastion/tutorial-create-host-portal.md
-      itemType: how-to-guide
-      text: Azure Bastion ホストを作成する
-    - url: ../bastion/troubleshoot.md
-      itemType: how-to-guide
-      text: Azure Bastion のトラブルシューティング
-    footerLink:
-      url: ../bastion/index.yml
-      text: 詳細情報
-  - title: ネットワークのセキュリティ管理
-    links:
-    - url: ../firewall-manager/overview.md
-      itemType: overview
-      text: Azure Firewall Manager とは
-    - url: ../firewall-manager/secured-virtual-hub.md
-      itemType: concept
-      text: セキュリティ保護付き仮想ハブとは
-    - url: ../firewall-manager/secure-cloud-network.md
-      itemType: tutorial
-      text: Azure Firewall Manager を使用した仮想 WAN のセキュリティ保護
-    footerLink:
-      url: ../firewall-manager/index.yml
-      text: 詳細情報
-  - title: Web アプリケーション ファイアウォール
-    links:
-    - url: ../web-application-firewall/overview.md
-      itemType: overview
-      text: Azure Web アプリケーション ファイアウォールとは
-    - url: ../web-application-firewall/ag/ag-overview.md
-      itemType: concept
-      text: Application Gateway の WAF
-    - url: ../web-application-firewall/afds/afds-overview.md
-      itemType: concept
-      text: Azure Front Door Service の WAF
-    - url: ../web-application-firewall/cdn/cdn-overview.md
-      itemType: concept
-      text: Azure CDN の WAF
-    - url: ../web-application-firewall/ag/web-application-firewall-troubleshoot.md
-      itemType: how-to-guide
-      text: Application Gateway 向け WAF のトラブルシューティング
-    footerLink:
-      url: ../web-application-firewall/index.yml
-      text: 詳細情報
-  - title: サービスへのプライベート アクセス
-    links:
-    - url: ../private-link/private-link-overview.md
-      itemType: overview
-      text: Azure Private Link とは
-    - url: ../private-link/private-endpoint-overview.md
-      itemType: concept
-      text: Azure プライベート エンドポイントとは
-    - url: ../private-link/troubleshoot-private-link-connectivity.md
-      itemType: how-to-guide
-      text: Azure Private Link のトラブルシューティング
-    footerLink:
-      url: ../private-link/index.yml
-      text: 詳細情報
-  - title: DDoS Protection
-    links:
-    - url: ../ddos-protection/ddos-protection-overview.md
-      itemType: overview
-      text: Azure DDoS Protection Standard とは
-    - url: ../ddos-protection/manage-ddos-protection.md
-      itemType: how-to-guide
-      text: DDoS Protection の管理
-    - url: ../ddos-protection/ddos-protection-partner-onboarding.md
-      itemType: concept
-      text: オンボード パートナー
-    footerLink:
-      url: ../ddos-protection/index.yml
-      text: 詳細情報
-  - title: コンテンツ配信ネットワーク
-    links:
-    - url: ../cdn/cdn-overview.md
-      itemType: overview
-      text: Azure Content Delivery Network とは
-    - url: ../cdn/cdn-create-new-endpoint.md
-      itemType: quickstart
-      text: CDN プロファイルと CDN エンドポイントを作成する
-    - url: ../cdn/cdn-standard-rules-engine-reference.md
-      itemType: concept
-      text: Azure CDN の Standard ルール エンジン リファレンス
-    - url: ../cdn/cdn-troubleshoot-endpoint.md
-      itemType: how-to-guide
-      text: Azure CDN エンドポイントのトラブルシューティング
-    footerLink:
-      url: ../cdn/index.yml
-      text: 詳細情報
-  - title: 統合されたハブ アンド スポーク ネットワーク
-    links:
-    - url: ../virtual-wan/virtual-wan-about.md
-      itemType: overview
-      text: Azure Virtual WAN とは
-    - url: ../virtual-wan/virtual-wan-global-transit-network-architecture.md
-      itemType: concept
-      text: グローバル トランジット ネットワーク アーキテクチャ - Azure Virtual WAN
-    - url: ../virtual-wan/virtual-wan-locations-partners.md
-      itemType: concept
-      text: Azure Virtual WAN のパートナーと場所
-    - url: ../virtual-wan/migrate-from-hub-spoke-topology.md
-      itemType: how-to-guide
-      text: ハブスポーク トポロジからの移行
-    footerLink:
-      url: ../virtual-wan/index.yml
-      text: 詳細情報
-  - title: Peering Service
-    links:
-    - url: ../peering-service/about.md
-      itemType: overview
-      text: Azure Peering Service とは
-    - url: ../internet-peering/overview.md
-      itemType: overview
-      text: インターネット ピアリングとは
-    - url: ../internet-peering/overview-peering-service.md
-      itemType: concept
-      text: インターネット ピアリングとAzure の Peering Service
-    footerLink:
-      url: ../peering-service/index.yml
-      text: 詳細情報
+      url: working-remotely-support.md
 additionalContent:
   sections:
-  - items:
-    - title: Azure ネットワーク用の Azure PowerShell コマンド
-      summary: Azure ネットワークのコマンドレットについて説明します。
-      url: /powershell/module/az.network/#networking
-    - title: Azure ネットワーク用の Azure CLI コマンド
-      summary: CLI リファレンスで Azure ネットワークのコマンドを確認してください。
-      url: /cli/azure/network
-    - title: Azure ネットワークのブログ
-      summary: Azure ネットワークの最新のブログをご覧ください。
-      url: https://azure.microsoft.com/blog/topics/networking/
+    - title: 接続サービス
+      items:
+        - title: 仮想ネットワーク
+          links:
+            - text: Azure Virtual Network とは
+              url: ../virtual-network/virtual-networks-overview.md
+            - text: 仮想ネットワークの作成
+              url: ../virtual-network/quick-create-portal.md
+            - text: 詳細情報
+              url: ../virtual-network/index.yml
+        - title: オンプレミスを Azure に接続する - VPN 暗号化
+          links:
+            - text: Azure VPN Gateway とは
+              url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+            - text: サイト間接続
+              url: ../vpn-gateway/tutorial-site-to-site-portal.md
+            - text: 詳細情報
+              url: ../vpn-gateway/index.yml
+        - title: オンプレミスを Azure に接続する - プライベート接続
+          links:
+            - text: Azure ExpressRoute とは
+              url: ../expressroute/expressroute-introduction.md
+            - text: ExpressRoute 回線の作成と変更
+              url: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md
+            - text: 詳細情報
+              url: ../expressroute/index.yml
+        - title: 統合されたハブ アンド スポーク ネットワーク
+          links:
+            - text: Azure Virtual WAN とは
+              url: ../virtual-wan/virtual-wan-about.md
+            - text: グローバル トランジット ネットワーク アーキテクチャ - Azure Virtual WAN
+              url: ../virtual-wan/virtual-wan-global-transit-network-architecture.md
+            - text: 詳細情報
+              url: ../virtual-wan/index.yml
+        - title: DNS
+          links:
+            - text: Azure DNS とは
+              url: ../dns/dns-overview.md
+            - text: ドメインとサブドメインのホスト
+              url: ../dns/dns-delegate-domain-azure-dns.md
+            - text: 詳細情報
+              url: ../dns/index.yml
+        - title: NVA と仮想ネットワーク間でルーティングする
+          links:
+            - text: Azure Route Server とは
+              url: ../route-server/overview.md
+            - text: Route Server の作成と構成
+              url: ../route-server/quickstart-configure-route-server-portal.md
+            - text: 詳細情報
+              url: ../route-server/index.yml
+        - title: 仮想ネットワークへのアウトバンド接続を提供する
+          links:
+            - text: Azure Virtual Network NAT とは
+              url: ../virtual-network/nat-gateway/nat-overview.md
+            - text: NAT ゲートウェイ リソースを作成して構成する
+              url: ../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md
+            - text: 詳細情報
+              url: ../virtual-network/nat-gateway/index.yml
+    - title: アプリケーション配信サービス
+      items:
+        - title: ネットワーク ロード バランサー
+          links:
+            - text: Azure Load Balancer の概要
+              url: ../load-balancer/load-balancer-overview.md
+            - text: VM へのインターネット トラフィックの負荷分散を行う
+              url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
+            - text: 詳細情報
+              url: ../load-balancer/index.yml
+        - title: Web アプリケーション ロード バランサー
+          links:
+            - text: Azure Application Gateway とは
+              url: ../application-gateway/overview.md
+            - text: ポータルを使用して Web トラフィックを転送する
+              url: ../application-gateway/quick-create-portal.md
+            - text: 詳細情報
+              url: ../application-gateway/index.yml
+        - title: DNS ベースのロード バランサー
+          links:
+            - text: Azure Traffic Manager とは
+              url: ../traffic-manager/traffic-manager-overview.md
+            - text: トラフィックをルーティングして待ち時間を削減する
+              url: ../traffic-manager/traffic-manager-routing-methods.md
+            - text: 詳細情報
+              url: ../traffic-manager/index.yml
+        - title: セキュリティで保護されたクラウド CDN とグローバル ロード バランサー
+          links:
+            - text: Azure Front Door Service とは
+              url: ../frontdoor/standard-premium/overview.md
+            - text: Azure Front Door Service にカスタム ドメインを追加する
+              url: ../frontdoor/front-door-how-to-redirect-https.md
+            - text: 詳細情報
+              url: ../frontdoor/index.yml
+        - title: コンテンツ配信ネットワーク
+          links:
+            - text: Azure Content Delivery Network とは
+              url: ../cdn/cdn-overview.md
+            - text: CDN プロファイルと CDN エンドポイントを作成する
+              url: ../cdn/cdn-create-new-endpoint.md
+            - text: 詳細情報
+              url: ../cdn/index.yml
+    - title: セキュリティ サービス
+      items:
+        - title: ネットワーク ファイアウォール
+          links:
+            - text: Azure Firewall とは
+              url: ../firewall/overview.md
+            - text: Azure Firewall をデプロイして構成する
+              url: ../firewall/tutorial-firewall-deploy-portal.md
+            - text: 詳細情報
+              url: ../firewall/index.yml
+        - title: DDoS 保護
+          links:
+            - text: Azure DDoS Protection Standard とは
+              url: ../ddos-protection/manage-ddos-protection.md
+            - text: DDoS Protection の管理
+              url: ../ddos-protection/manage-ddos-protection.md
+            - text: 詳細情報
+              url: ../ddos-protection/index.yml
+        - title: Web アプリケーション ファイアウォール
+          links:
+            - text: Azure Web アプリケーション ファイアウォールとは
+              url: ../web-application-firewall/overview.md
+            - text: Azure Application Gateway の WAF
+              url: ../web-application-firewall/ag/ag-overview.md
+            - text: Azure Front Door Service の WAF
+              url: ../web-application-firewall/afds/afds-overview.md
+            - text: 詳細情報
+              url: ../web-application-firewall/index.yml
+        - title: サービスへのプライベート アクセス
+          links:
+            - text: Azure Private Link とは
+              url: ../private-link/private-link-overview.md
+            - text: Azure プライベート エンドポイントとは
+              url: ../private-link/private-endpoint-overview.md
+            - text: 詳細情報
+              url: ../private-link/index.yml
+        - title: Azure VM へのアクセスのセキュリティ保護
+          links:
+            - text: Azure Bastion とは
+              url: ../bastion/bastion-overview.md
+            - text: Azure Bastion ホストを作成する
+              url: ../bastion/tutorial-create-host-portal.md
+            - text: 詳細情報
+              url: ../bastion/index.yml
+        - title: セキュリティで保護されたクラウド CDN とグローバル ロード バランサー
+          links:
+            - text: Azure Front Door Service とは
+              url: ../frontdoor/standard-premium/overview.md
+            - text: Azure Front Door Service にカスタム ドメインを追加する
+              url: ../frontdoor/front-door-how-to-redirect-https.md
+            - text: 詳細情報
+              url: ../frontdoor/index.yml
+        - title: ネットワークのセキュリティ管理
+          links:
+            - text: Azure Firewall Manager とは
+              url: ../firewall-manager/overview.md
+            - text: Azure Firewall Manager を使用した仮想 WAN のセキュリティ保護
+              url: ../firewall-manager/secure-cloud-network.md
+            - text: 詳細情報
+              url: ../firewall-manager/index.yml
+    - title: サービスの監視
+      items:
+        - title: ネットワーク正常性の監視と修復
+          links:
+            - text: Network Watcher とは
+              url: ../network-watcher/network-watcher-monitoring-overview.md
+            - text: VM トラフィック フィルターに関する問題を診断する
+              url: ../network-watcher/diagnose-vm-network-traffic-filtering-problem.md
+            - text: 詳細情報
+              url: ../network-watcher/index.yml
+        - title: ネットワークの正常性に関する分析情報を取得する
+          links:
+            - text: Azure Monitor とは
+              url: ../network-watcher/network-watcher-monitoring-overview.md
+            - text: Azure Monitor Network Insights とは
+              url: ../azure-monitor/insights/network-insights-overview.md
+            - text: 詳細情報
+              url: ../azure-monitor/index.yml

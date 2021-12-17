@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5969c015a360d7f1c859070b1fc05df5bd469bbe
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735728"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327084"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure のネットワーク セキュリティのベスト プラクティス
 この記事では、お使いのネットワーク セキュリティを強化するための Azure のベスト プラクティスについて説明します。 このベスト プラクティスは、Azure のネットワークに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -77,7 +77,7 @@ Azure 仮想ネットワークは、オンプレミス ネットワーク上の 
 **詳細**: [Azure AD の条件付きアクセス](../../active-directory/conditional-access/overview.md)を使用して、必要な条件に基づく自動的なアクセス制御の決定を実装することで、適切なアクセス制御を適用できます。 詳細については、「[条件付きアクセスを使用して Azure 管理へのアクセスを管理する](../../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md)」を参照してください。
 
 **ベスト プラクティス**: ワークフローの承認後にのみ、ポートへのアクセスを有効にします。  
-**詳細**: [Azure Security Center の Just-In-Time VM アクセス](../../security-center/security-center-just-in-time.md)を使用して、Azure VM への受信トラフィックをロックダウンすることができ、攻撃に対する露出が減り、VM への接続が必要な場合は簡単にアクセスできます。
+**詳細**: [Microsoft Defender for Cloud の Just-In-Time VM アクセス](../../security-center/security-center-just-in-time.md)を使用して Azure VM へのインバウンド トラフィックをロックダウンすることで、攻撃に対する露出を減らすと共に、必要なときには利用しやすい VM 接続を提供できます。
 
 **ベスト プラクティス**: 特権タスクを実行する一時的なアクセス許可を与えます。これにより、悪意のあるユーザーまたは未承認ユーザーがアクセス許可の期限が切れた後にアクセスできなくなります。 ユーザーが必要な場合にのみ、アクセスが許可されます。  
 **詳細**: Azure AD Privileged Identity Management またはサードパーティのソリューションで Just-In-Time アクセスを使用して、特権タスクを実行する一時的なアクセス許可を与えます。

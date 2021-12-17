@@ -1,7 +1,7 @@
 ---
 title: 'JavaScript チュートリアル: 検索統合の概要'
 titleSuffix: Azure Cognitive Search
-description: 検索が有効な Web サイトで使用される JavaScript SDK 検索クエリを理解する
+description: このチート シートでは、検索が有効な Web サイトで使用される JavaScript SDK 検索統合クエリについて説明します。
 manager: nitinme
 author: diberry
 ms.author: diberry
@@ -10,16 +10,20 @@ ms.topic: tutorial
 ms.date: 03/09/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: cf4e1b1ecf209b587a45ca4c43607bfa95155aee
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3353ff11a93fa4a79c266b7bd323071b55cd76c6
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104723500"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109848107"
 ---
-# <a name="4---search-integration-highlights"></a>4 - 検索統合の概要
+# <a name="4---javascript-search-integration-cheat-sheet"></a>4 - JavaScript 検索統合のチート シート
 
 前のレッスンでは、静的 Web アプリに検索を追加しました。 このレッスンでは、統合を確立するための基本的な手順について説明します。 検索を JavaScript アプリに統合する方法に関するチート シートをお探しの場合に、この記事では知っておく必要があることについて説明します。
+
+アプリケーションは利用可能です。 
+* [サンプル](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/search-website)
+* [デモ Web サイト - aka.ms/azs-good-books](https://aka.ms/azs-good-books)
 
 ## <a name="azure-sdk-azuresearch-documents"></a>Azure SDK @azure/search-documents 
 

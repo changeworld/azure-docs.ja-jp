@@ -1,0 +1,48 @@
+### YamlMime:Landing
+title: Network Function Manager のドキュメント
+summary: Azure Network Function Manager では、Azure Stack Edge デバイスへのネットワーク機能のデプロイに関する Azure Marketplace エクスペリエンスが提供されます。
+metadata:
+  title: Network Function Manager のドキュメント
+  description: Network Function Manager について説明します。
+  ms.service: vnf-manager
+  ms.topic: landing-page
+  author: prmitt
+  ms.author: prmitt
+  ms.date: 06/09/2021
+  ms.openlocfilehash: 70128380c0b9ebd5b34c770ee8700990f3aef976
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131004893"
+landingContent:
+- title: Network Function Manager について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Network Function Manager とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Network Function Manager に関する FAQ
+      url: faq.md
+- title: 開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: デバイス リソースを作成する
+      url: create-device.md
+  - linkListType: tutorial
+    links:
+    - text: ネットワーク機能をデプロイする
+      url: deploy-functions.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST
+      url: /rest/api/hybridnetwork
+    - text: Python SDK
+      url: https://pypi.org/project/azure-mgmt-hybridnetwork/1.0.0/
+    - text: Java SDK
+      url: https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/hybridnetwork/azure-resourcemanager-hybridnetwork

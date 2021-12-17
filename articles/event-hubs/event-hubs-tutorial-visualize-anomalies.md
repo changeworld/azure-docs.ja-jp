@@ -2,13 +2,14 @@
 title: Azure Event Hubs - リアルタイム イベントでのデータの異常を視覚化する
 description: チュートリアル:Microsoft Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 ms.topic: tutorial
-ms.date: 06/23/2020
-ms.openlocfilehash: bb7d8da2498005b8b2e1183a836d9385f3d31e5c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 10/20/2021
+ms.custom: devx-track-azurepowershell, ignite-fall-2021
+ms.openlocfilehash: 057c1df4cbb83078f9514776bd2821869327b8a4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783757"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086324"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル:Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 
@@ -24,127 +25,14 @@ Azure Event Hubs では、Azure Stream Analytics を使用して受信データ�
 > * これらのトランザクションを処理するように Stream Analytics ジョブを構成する
 > * Power BI の視覚化を構成して結果を表示する
 
-このチュートリアルを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成][]してください。
+## <a name="prerequisites"></a>[前提条件]
+始める前に、次の手順が完了していることを確認してください。
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
-- [Visual Studio](https://www.visualstudio.com/) のインストール。 
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+- [Event Hubs 名前空間を作成し、その名前空間内にイベント ハブを作成します](event-hubs-create.md)。
+- 手順については、「[Event Hubs の接続文字列の取得](event-hubs-get-connection-string.md)」を参照してください。 Event Hubs 名前空間への接続文字列と、イベント ハブの名前をメモします。 
+- [Visual Studio](https://www.visualstudio.com/) のインストール。 Visual Studio ソリューションを使用してアプリを実行し、テスト イベント データを生成してイベント ハブに送信します。 
 - Stream Analytics ジョブの出力を分析するには、Power BI アカウントが必要です。 [Power BI は無料で試す](https://app.powerbi.com/signupredirect?pbi_source=web)ことができます。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="set-up-resources"></a>リソースを設定する
-
-このチュートリアルでは、Event Hubs 名前空間とイベント ハブが必要です。 これらのリソースは、Azure CLI または Azure PowerShell を使用して作成できます。 すべてのリソースに同じリソース グループと場所を使います。 最後に、リソース グループを削除することによって、すべてのものを一度に削除できます。
-
-以降のセクションでは、これらの必要な手順を実行する方法について説明します。 CLI "*または*" PowerShell の指示に従って、次の手順を実行してください。
-
-1. [リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 
-
-2. Event Hubs 名前空間を作成します。 
-
-3. イベント ハブを作成します。
-
-> [!NOTE]
-> 各スクリプトには、このチュートリアルの後半で必要となる変数が設定されています。 これらには、リソース グループ名 ($resourceGroup)、Event Hubs 名前空間 ( **$eventHubNamespace**)、イベント ハブ名 ( **$eventHubName**) があります。 これらは、この記事の後半でドル記号 ($) のプレフィックスを付けて参照します。そのため、スクリプトで設定されていることを覚えて置いてください。
-
-<!-- some day they will approve the tab control; 
-  When that happens, put CLI and PSH in tabs. -->
-
-### <a name="set-up-your-resources-using-azure-cli"></a>Azure CLI を使用してリソースを設定する
-
-次のスクリプトをコピーして Cloud Shell に貼り付けます。 既にログインしているものとすると、スクリプトが 1 行ずつ実行されます。
-
-グローバルに一意でなければならない変数には `$RANDOM` が連結されています。 スクリプトが実行され、変数が設定されるときに、ランダムな数値文字列が生成され、固定文字列の末尾に連結されて一意の変数を作ります。
-
-```azurecli-interactive
-# Set the values for location and resource group name.
-location=westus
-resourceGroup=ContosoResourcesEH
-
-# Create the resource group to be used
-#   for all the resources for this tutorial.
-az group create --name $resourceGroup \
-    --location $location
-
-# The Event Hubs namespace name must be globally unique, so add a random number to the end.
-eventHubNamespace=ContosoEHNamespace$RANDOM
-echo "Event Hub Namespace = " $eventHubNamespace
-
-# Create the Event Hubs namespace.
-az eventhubs namespace create --resource-group $resourceGroup \
-   --name $eventHubNamespace \
-   --location $location \
-   --sku Standard
-
-# The event hub name must be globally unique, so add a random number to the end.
-eventHubName=ContosoEHhub$RANDOM
-echo "event hub name = " $eventHubName
-
-# Create the event hub.
-az eventhubs eventhub create --resource-group $resourceGroup \
-    --namespace-name $eventHubNamespace \
-    --name $eventHubName \
-    --message-retention 3 \
-    --partition-count 2
-
-# Get the connection string that authenticates the app with the Event Hubs service.
-connectionString=$(az eventhubs namespace authorization-rule keys list \
-   --resource-group $resourceGroup \
-   --namespace-name $eventHubNamespace \
-   --name RootManageSharedAccessKey \
-   --query primaryConnectionString \
-   --output tsv)
-echo "Connection string = " $connectionString 
-```
-
-### <a name="set-up-your-resources-using-azure-powershell"></a>Azure PowerShell を使用してリソースを設定する
-
-次のスクリプトをコピーして Cloud Shell に貼り付けます。 既にログインしているものとすると、スクリプトが 1 行ずつ実行されます。
-
-グローバルに一意でなければならない変数には `$(Get-Random)` が連結されています。 スクリプトが実行され、変数が設定されるときに、ランダムな数値文字列が生成され、固定文字列の末尾に連結されて一意の変数を作ります。
-
-```azurepowershell-interactive
-# Log in to Azure account.
-Login-AzAccount
-
-# Set the values for the location and resource group.
-$location = "West US"
-$resourceGroup = "ContosoResourcesEH"
-
-# Create the resource group to be used  
-#   for all resources for this tutorial.
-New-AzResourceGroup -Name $resourceGroup -Location $location
-
-# The Event Hubs namespace name must be globally unique, so add a random number to the end.
-$eventHubNamespace = "contosoEHNamespace$(Get-Random)"
-Write-Host "Event Hub Namespace is " $eventHubNamespace
-
-# The event hub name must be globally unique, so add a random number to the end.
-$eventHubName = "contosoEHhub$(Get-Random)"
-Write-Host "Event hub Name is " $eventHubName
-
-# Create the Event Hubs namespace.
-New-AzEventHubNamespace -ResourceGroupName $resourceGroup `
-     -NamespaceName $eventHubNamespace `
-     -Location $location
-
-# Create the event hub.
-$yourEventHub = New-AzEventHub -ResourceGroupName $resourceGroup `
-    -NamespaceName $eventHubNamespace `
-    -Name $eventHubName `
-    -MessageRetentionInDays 3 `
-    -PartitionCount 2
-
-# Get the event hub key, and retrieve the connection string from that object.
-# You need this to run the app that sends test messages to the event hub.
-$eventHubKey = Get-AzEventHubKey -ResourceGroupName $resourceGroup `
-    -Namespace $eventHubNamespace `
-    -AuthorizationRuleName RootManageSharedAccessKey
-
-# Save this value somewhere local for later use.
-Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
-```
 
 ## <a name="run-app-to-produce-test-event-data"></a>アプリを実行してテスト イベント データを生成する
 
@@ -174,7 +62,7 @@ GitHub の Event Hubs の[サンプル](https://github.com/Azure/azure-event-hub
 
    **[リソース グループ]** :イベント ハブと同じリソース グループ (**ContosoResourcesEH**) を使用します。
 
-   **[場所]** :セットアップ スクリプトで使われるのと同じ場所 (**米国西部**) を使用します。
+   **[場所]** : 前に使用したのと同じ Azure リージョンを使用します。
 
    ![新しい Azure Stream Analytics ジョブを作成する方法を示すスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
@@ -186,35 +74,28 @@ GitHub の Event Hubs の[サンプル](https://github.com/Azure/azure-event-hub
 
 Steam Analytics ジョブの入力は、イベント ハブからのクレジット カード トランザクションです。
 
-> [!NOTE]
-> ドル記号 ($) で始まる変数の値は、前のセクションのスタートアップ スクリプトで設定されます。 ここで、それらのフィールド (Event Hubs 名前空間とイベント ハブ名) を指定する際に同じ値を使用する必要があります。
 
-1. **[ジョブ トポロジ]** で **[入力]** をクリックします。
-
-2. **[入力]** ウィンドウで、 **[ストリーム入力の追加]** をクリックして [Event Hubs] を選択します。 表示される画面で、次のフィールドに入力します。
+1. 左側のメニューの **[ジョブ トポロジ]** セクションで **[入力]** を選択します。
+2. **[入力]** ウィンドウで、 **[ストリーム入力の追加]** をクリックして **[Event Hubs]** を選択します。 表示される画面で、次のフィールドに入力します。
 
    **入力のエイリアス**:「**contosoinputs**」を使用します。 このフィールドは、データのクエリを定義するときに使用する入力ストリームの名前です。
 
-   **サブスクリプション**:サブスクリプションを選択します。
+   **サブスクリプション**:Azure サブスクリプションを選択します。
 
-   **[Event Hubs 名前空間]** : Event Hubs 名前空間 ($**eventHubNamespace**) を選択します。 
+   **[Event Hubs 名前空間]** : Event Hubs 名前空間を選択します。 
 
-   **[イベント ハブ名]** : **[既存のものを使用]** をクリックし、イベント ハブ ($**eventHubName**) を選択します。
-
-   **[イベント ハブ ポリシー名]** : **[RootManageSharedAccessKey]** を選択します。
+   **[イベント ハブ名]** : **[既存のものを使用]** をクリックし、イベント ハブを選択します。
 
    **[イベント ハブ コンシューマー グループ]** : 既定のコンシューマー グループを使用するため、このフィールドは空白のままにします。
 
-   その他のフィールドについては、既定値を指定できます。
+   他のフィールドについては既定値をそのまま使用します。
 
    ![Stream Analytics ジョブに入力ストリームを追加する方法を示すスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
-
 5. **[保存]** をクリックします。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの出力の追加
 
-1. **[ジョブ トポロジ]** で **[出力]** をクリックします。 このフィールドは、データのクエリを定義するときに使用する出力ストリームの名前です。
-
+1. 左側のメニューの **[ジョブ トポロジ]** セクションで **[出力]** を選択します。 このフィールドは、データのクエリを定義するときに使用する出力ストリームの名前です。
 2. **[出力]** ウィンドウで **[追加]** をクリックし、 **[Power BI]** を選びます。 表示される画面で、次のフィールドに入力します。
 
    **出力のエイリアス**:「**contosooutputs**」を使用します。 このフィールドは、出力の一意のエイリアスです。 
@@ -226,11 +107,8 @@ Steam Analytics ジョブの入力は、イベント ハブからのクレジッ
    その他のフィールドについては、既定値を指定できます。
 
    ![Stream Analytics ジョブの出力を設定する方法を示すスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-outputs.png)
-
 3. **[承認]** をクリックして、Power BI アカウントにサインインします。
-
 4. その他のフィールドについては、既定値を指定できます。
-
 5. **[保存]** をクリックします。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics ジョブのクエリの構成
@@ -347,21 +225,8 @@ Stream Analytics ジョブで、 **[開始]** 、 **[今すぐ]** 、 **[開始]
 
 Power BI アカウントにログインします。 **[マイ ワークスペース]** に移動します。 ダッシュボード名の行にあるごみ箱アイコンをクリックします。 次に、 **[データセット]** に移動し、ごみ箱アイコンをクリックしてデータセット (**contosoehdataset**) を削除します。
 
-### <a name="clean-up-resources-using-azure-cli"></a>Azure CLI を使用してリソースをクリーンアップする
-
-リソース グループを削除するには、[az group delete](/cli/azure/group#az_group_delete) コマンドを使います。
-
-```azurecli-interactive
-az group delete --name $resourceGroup
-```
-
-### <a name="clean-up-resources-using-powershell"></a>PowerShell を使用してリソースをクリーンアップする
-
-リソース グループを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使います。
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name $resourceGroup
-```
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
+このチュートリアルの一部として作成したすべてのリソースを含むリソース グループを削除します。 
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -378,4 +243,4 @@ Remove-AzResourceGroup -Name $resourceGroup
 > [!div class="nextstepaction"]
 > [.NET Standard で Azure Event Hubs へのメッセージ送信を開始する](event-hubs-dotnet-standard-getstarted-send.md)
 
-[無料アカウントを作成]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[create a free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

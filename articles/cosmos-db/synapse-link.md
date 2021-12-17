@@ -5,22 +5,22 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 07/12/2021
 ms.reviewer: sngun
 ms.custom: synapse-cosmos-db
-ms.openlocfilehash: 123c443e1afaf8eaded7021b963b68b3d8a8f554
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 459aedbda8ea42fb0ee0990fb1074373efc38acc
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483760"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133935"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB とは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Azure Synapse Link for Azure Cosmos DB は、クラウド ネイティブのハイブリッド トランザクションと分析処理 (HTAP) の機能です。これを使用すると、Azure Cosmos DB のオペレーショナル データに対してリアルタイムに近い分析を実行できます。 Azure Synapse Link によって、Azure Cosmos DB と Azure Synapse Analytics の間に緊密でシームレスな統合が作成されます。
 
-Azure Synapse Link では、完全に分離された列ストアである [Azure Cosmos DB 分析ストア](analytical-store-introduction.md)を使用することで、オペレーショナル データに対して、[Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) で抽出、変換、読み込み (ETL) なしの分析を大規模に実行できます。 ビジネス アナリスト、データ エンジニア、データ サイエンティストは、ビジネス インテリジェンス、分析、機械学習のパイプラインをほぼリアルタイムで実行するために、Synapse Spark または Synapse SQL のどちらでも同じように使用できるようになりました。 Azure Cosmos DB でのトランザクション ワークロードのパフォーマンスに影響を与えることなく、これを実現できます。 
+Azure Synapse Link では、完全に分離された列ストアである [Azure Cosmos DB 分析ストア](analytical-store-introduction.md)を使用することで、オペレーショナル データに対して、[Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) で抽出、変換、読み込み (ETL) なしの分析を大規模に実行できます。 ビジネス アナリスト、データ エンジニア、データ サイエンティストは、ビジネス インテリジェンス、分析、機械学習のパイプラインをほぼリアルタイムで実行するために、Synapse Spark または Synapse SQL のどちらでも同じように使用できるようになりました。 Azure Cosmos DB でのトランザクション ワークロードのパフォーマンスに影響を与えることなく、これを実現できます。
 
 次の図では、Azure Synapse Link と Azure Cosmos DB および Azure Synapse Analytics との統合を示します。 
 
@@ -117,11 +117,18 @@ Synapse Link は、次の場合にお勧めします。
 
 * Azure Synapse Link for Azure Cosmos DB は、SQL API および Azure Cosmos DB の MongoDB 用 API に対してサポートされています。 Gremlin API、Cassandra API、および Table API に対してはサポートされていません。
 
-* 分析ストアは、新しいコンテナーに対してのみ有効にできます。 既存のコンテナーに分析ストアを使用するには、[Azure Cosmos DB 移行ツール](cosmosdb-migrationchoices.md)を使用して、既存のコンテナーから新しいコンテナーにデータを移行します。 新規および既存の Azure Cosmos DB アカウントで Synapse Link を有効にすることができます。
+* Synapse Link は、SQL API と MongoDB API の両方のアカウントの新しいコンテナーで有効にすることができますが、既存のコンテナーは SQL API でのみサポートされています。
 
-* 分析ストアが有効になっているコンテナーの場合、現時点では分析ストアでのデータの自動バックアップと復元がサポートされていません。 データベース アカウントで Synapse Link が有効になっている場合、Azure Cosmos DB によって、コンテナーのトランザクション ストア (のみ) のデータをスケジュールされたバックアップ間隔で引き続き自動[バックアップ](./online-backup-and-restore.md)されます。 分析ストアが有効になっているコンテナーを新しいアカウントに復元すると、トランザクション ストアのみが有効な状態 (つまり分析ストアは有効でない状態) でコンテナーが復元されるので注意してください。
+* 現時点では、分析ストア内のデータのバックアップと復元はサポートされていません。 この制限は、定期的および継続的バックアップ モードの両方に適用され、Cosmos DB トランザクション ストアのデータには影響しません。
 
-* プロビジョニングされた Synapse SQL での Azure Cosmos DB 分析ストアへのアクセスは、現在使用できません。
+* 同じデータベース アカウント内での Synapse Link と定期的バックアップ モードの共存がサポートされています。 一方、分析ストア内のデータのバックアップと復元はサポートされていません。
+
+* 同じデータベース アカウント内での Synapse Link と継続的バックアップ モードの共存はサポートされていません。
+
+* 現時点では、Azure Synapse 専用 SQL プールを使用した Azure Cosmos DB 分析ストアへのアクセスはサポートされていません。
+
+* Azure Synapse Link と定期的なバックアップ モードは、同じデータベース アカウント内で共存することができます。 ただし、バックアップと復元には、分析ストア データは含まれません。 Synapse Link が有効になっている場合、Azure Cosmos DB がトランザクション ストア内のデータを、スケジュールされたバックアップ間隔で引き続き自動的にバックアップします。
+
 
 ## <a name="security"></a>セキュリティ
 
@@ -129,7 +136,7 @@ Synapse Link を使用すると、Azure Cosmos DB 内のミッション クリ�
 
 * **プライベート エンドポイントを使用したネットワーク分離** - トランザクション ストアおよび分析ストア内のデータへのネットワーク アクセスを個別に制御できます。 ネットワークの分離は、Azure Synapse ワークスペースのマネージド仮想ネットワーク内で、ストアごとに別個のマネージド プライベート エンドポイントを使用して行われます。 詳細については、[分析ストアのプライベート エンドポイントを構成する](analytical-store-private-endpoints.md)方法に関する記事を参照してください。
 
-* **カスタマー マネージド キーを使用したデータの暗号化** - 同じカスタマー マネージド キーを自動かつ透過的な方法で使用して、トランザクション ストアおよび分析ストア全体のデータをシームレスに暗号化できます。 詳細については、[カスタマー マネージド キーを構成する](how-to-setup-cmk.md)方法に関する記事を参照してください。
+* **カスタマー マネージド キーを使用したデータの暗号化** - 同じカスタマー マネージド キーを自動かつ透過的な方法で使用して、トランザクション ストアおよび分析ストア全体のデータをシームレスに暗号化できます。 Azure Synapse Link では、Azure Cosmos DB アカウントのマネージド ID を使用したカスタマー マネージド キーの構成のみがサポートされています。 自分のアカウント上で Azure Synapse Link](configure-synapse-link.md#enable-synapse-link) を有効にする前に、お使いの Azure Key Vault アクセス ポリシー内でご自身のアカウントのマネージド ID を構成する必要があります。 詳細については、[Azure Cosmos DB アカウントのマネージド ID を使用して、カスタマー マネージド キーを構成](how-to-setup-cmk.md#using-managed-identity)する方法に関するセクションを参照してください。
 
 * **セキュリティで保護されたキー管理** - Synapse Spark や Synapse サーバーレス SQL プールから分析ストア内のデータにアクセスするには、Synapse Analytics ワークスペース内で Azure Cosmos DB キーを管理する必要があります。 Spark ジョブや SQL スクリプトで Azure Cosmos DB アカウント キーをインラインで使用する代わりに、Azure Synapse Link にはより安全な機能が用意されています。
 
@@ -148,10 +155,12 @@ Azure Synapse Link の課金モデルには、Azure Cosmos DB 分析ストアと
 
 * [Azure Cosmos DB 分析ストアの概要](analytical-store-introduction.md)
 
+* [Azure Synapse Analytics を使用してハイブリッドなトランザクションおよび分析処理を設計する](/learn/modules/design-hybrid-transactional-analytical-processing-using-azure-synapse-analytics/)方法に関する学習モジュールをチェックアウトします
+
 * [Azure Synapse Link for Azure Cosmos DB の概要](configure-synapse-link.md)
  
 * [Azure Synapse Analytics ランタイムでサポートされている機能](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
-* [Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問](synapse-link-frequently-asked-questions.md)
+* [Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問](synapse-link-frequently-asked-questions.yml)
 
 * [Azure Synapse Link for Azure Cosmos DB のユース ケース](synapse-link-use-cases.md)

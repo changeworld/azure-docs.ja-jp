@@ -1,173 +1,560 @@
 ---
 title: チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する
 description: このチュートリアルでは、Azure PowerShell を使用して、仮想マシン用の Azure ディスクの作成と管理を行う方法について説明します
-author: cynthn
-ms.service: virtual-machines
+author: roygara
+ms.author: rogarana
+ms.service: storage
 ms.subservice: disks
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-ms.date: 11/29/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: a61d7425a7a907230008ab1d4f15a836150e1518
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/08/2021
+ms.custom: template-tutorial, devx-track-azurepowershell
+ms.openlocfilehash: a1ea898dd246977bbb7284a18349a265efd7655d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549058"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063120"
 ---
-# <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する
+# <a name="tutorial-manage-disks-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用してディスクを管理する
 
-Azure Virtual Machines では、VM のオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 VM を作成するときは、予測されるワークロードに適したディスクのサイズと構成を選択することが重要です。 このチュートリアルでは、VM ディスクのデプロイと管理について説明します。 内容は次のとおりです。
+Azure Virtual Machines (VM) では、オペレーティング システム (OS)、アプリケーション、およびデータを格納するためにディスクを使用します。 VM を作成するときは、予測されるワークロードに適したディスクのサイズと構成を選択することが重要です。
+
+このチュートリアルでは、VM ディスクのデプロイと管理について説明します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * OS ディスクと一時ディスク
-> * データ ディスク
-> * Standard ディスクと Premium ディスク
-> * ディスクのパフォーマンス
-> * データ ディスクの接続と準備
+> * データ ディスクの作成、アタッチ、および初期化
+> * ディスクの状態の確認
+> * ディスクの初期化
+> * ディスクの拡張とアップグレード
+> * ディスクのデタッチと削除
 
-## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
+## <a name="prerequisites"></a>前提条件
 
-Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
+アクティブなサブスクリプションを含む Azure アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="default-azure-disks"></a>既定の Azure ディスク
+## <a name="create-a-vm"></a>VM の作成
 
-Azure 仮想マシンを作成すると、2 つのディスクが仮想マシンに自動的に接続されます。 
+このチュートリアルの演習では、VM が必要です。 このセクションの手順に従って作成してください。
 
-**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 4 TB までサイズを変更でき、VM のオペレーティング システムをホストします。 [Azure Marketplace](https://azure.microsoft.com/marketplace/) イメージから新しい仮想マシン (VM) を作成する場合は、通常、127 GB です (ただし、一部のイメージの OS ディスクは、これより小さいサイズです)。 OS ディスクには、既定でドライブ文字 *C:* が割り当てられます。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 OS ディスクでアプリケーションやデータをホスト **しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。
-
-**一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは [VM のサイズ](../sizes.md)によって決まります。 一時ディスクには、既定でドライブ文字 *D:* が割り当てられます。
-
-## <a name="azure-data-disks"></a>Azure データ ディスク
-
-アプリケーションのインストールやデータの保存のために、データ ディスクをさらに追加できます。 耐久性と応答性の高いデータ ストレージが必要な状況では、必ず、データ ディスクを使用する必要があります。 仮想マシンのサイズによって、VM に接続できるデータ ディスクの数が決まります。
-
-## <a name="vm-disk-types"></a>VM ディスクの種類
-
-Azure では、2 種類のディスクを提供しています。
-
-**Standard ディスク** - HDD が使用されており、高パフォーマンスでありながらコスト効率にも優れたストレージを提供します。 Standard ディスクは、コスト効率が重視される、開発およびテストのワークロードに最適です。
-
-**Premium ディスク** - SSD ベースの高性能で待ち時間の短いディスクが使用されています。 実稼働ワークロードを実行する VM に最適です。 [サイズ名](../vm-naming-conventions.md)に **S** を含む VM サイズでは、通常、Premium Storage がサポートされています。 たとえば、DS シリーズ、DSv2 シリーズ、GS シリーズ、FS シリーズの VM は、Premium Storage をサポートしています。 ディスク サイズを選択するときは、値を切り上げて 1 つ上の種類にします。 たとえば、ディスク サイズが 64 GB より大きく、128 GB 未満の場合、ディスクの種類は P10 です。 
-<br>
-[!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
-
-Premium Storage ディスクをプロビジョニングすると、Standard Storage とは異なり、対象のディスクの容量、IOPS、スループットが保証されます。 たとえば、P50 ディスクを作成した場合、対象のディスクに 4,095 GB のストレージ容量、7,500 IOPS、および 250 MB/秒のスループットがプロビジョニングされます。 アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。 Premium SSD ディスクは、1 桁のミリ秒の低遅延と、前出の表に示した目標 IOPS とスループットを 99.9% の時間で提供するように設計されています。
-
-上記の表は、ディスクあたりの最大 IOPS を割り出していますが、複数のデータ ディスクをストライピングすることによって、より高いレベルのパフォーマンスを実現できます。 たとえば、64 のデータ ディスクを Standard_GS5 VM に接続することができます。 これらの各ディスクのサイズが P30 である場合、最大 80,000 IOPS を実現できます。 VM あたりの最大 IOPS について詳しくは、「[VM の種類とサイズ](../sizes.md)」をご覧ください。
-
-## <a name="create-and-attach-disks"></a>ディスクを作成して接続する
-
-このチュートリアルの例を完了するには、既存の仮想マシンが必要です。 必要に応じて、次のコマンドを使用して仮想マシンを作成します。
-
-[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) を使用して、仮想マシンの管理者アカウントに必要なユーザー名とパスワードを設定します。
-
-
-[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して、仮想マシンを作成します。 VM の管理者アカウントのユーザー名とパスワードを入力するよう求められます。
+開始する前に、サンプルコードの最初の行にある `$azRegion` 変数を見つけて、目的のリージョンを反映するように値を更新します。 たとえば、**米国中部** リージョンを指定するには、`$azRegion = "Central US"` を使用します。 次に、コードを使用して、新しいリソース グループ内に VM をデプロイします。 VM のローカル管理者アカウントのユーザー名とパスワードの値を入力するように求められます。
 
 ```azurepowershell-interactive
+$azRegion = "[Your Region]"
+$azResourceGroup = "myDemoResourceGroup"
+$azVMName = "myDemoVM"
+$azDataDiskName = "myDemoDataDisk"
+
 New-AzVm `
-    -ResourceGroupName "myResourceGroupDisk" `
-    -Name "myVM" `
-    -Location "East US" `
-    -VirtualNetworkName "myVnet" `
-    -SubnetName "mySubnet" `
-    -SecurityGroupName "myNetworkSecurityGroup" `
-    -PublicIpAddressName "myPublicIpAddress" 
+    -Location $azRegion `
+    -ResourceGroupName $azResourceGroup `
+    -Name $azVMName `
+    -Size "Standard_D2s_v3" `
+    -VirtualNetworkName "myDemoVnet" `
+    -SubnetName "myDemoSubnet" `
+    -SecurityGroupName "myDemoNetworkSecurityGroup" `
+    -PublicIpAddressName "myDemoPublicIpAddress"
 ```
 
+VM が正常に作成されたことを出力で確認することができます。
 
-[New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) を使用して、初期構成を作成します。 次の例では、サイズが 128 ギガバイトのディスクを構成します。
-
-```azurepowershell-interactive
-$diskConfig = New-AzDiskConfig `
-    -Location "EastUS" `
-    -CreateOption Empty `
-    -DiskSizeGB 128
+```Output
+ResourceGroupName        : myDemoResourceGroup
+Id                       : /subscriptions/{GUID}/resourceGroups/myDemoResourceGroup/providers/Microsoft.Compute/virtualMachines/myDemoTestVM
+VmId                     : [{GUID}]
+Name                     : myDemoVM
+Type                     : Microsoft.Compute/virtualMachines
+Location                 : centralus
+Tags                     : {}
+HardwareProfile          : {VmSize}
+NetworkProfile           : {NetworkInterfaces}
+OSProfile                : {ComputerName, AdminUsername, WindowsConfiguration, AllowExtensionOperations, RequireGuestProvisionSignal}
+ProvisioningState        : Succeeded
+StorageProfile           : {ImageReference, OsDisk, DataDisks}
+FullyQualifiedDomainName : mydemovm-abc123.Central US.cloudapp.azure.com
 ```
 
-[New-AzDisk](/powershell/module/az.compute/new-azdisk) コマンドを使用して、データ ディスクを作成します。
+VM がプロビジョニングされ、2 つのディスクが自動的に作成されてアタッチされます。
 
-```azurepowershell-interactive
-$dataDisk = New-AzDisk `
-    -ResourceGroupName "myResourceGroupDisk" `
-    -DiskName "myDataDisk" `
-    -Disk $diskConfig
-```
+- **オペレーティング システム ディスク**。仮想マシンのオペレーティング システムをホストします。
+- **一時ディスク**。主に、一時的なデータ処理などの操作に使用されます。
 
-[Get-AzVM](/powershell/module/az.compute/get-azvm) コマンドを使用して、データ ディスクを追加する仮想マシンを取得します。
+## <a name="add-a-data-disk"></a>データ ディスクの追加
 
-```azurepowershell-interactive
-$vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
-```
+可能な場合は、OS 関連データからアプリケーションとユーザーのデータを分離することをお勧めします。 ユーザーまたはアプリケーションのデータを VM に保存する必要がある場合は、通常、追加のデータ ディスクを作成してアタッチします。
 
-[Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) コマンドを使用して、データ ディスクを仮想マシンの構成に追加します。
+このセクションの手順に従って、VM 上にデータ ディスクを作成し、アタッチして初期化します。
 
-```azurepowershell-interactive
-$vm = Add-AzVMDataDisk `
-    -VM $vm `
-    -Name "myDataDisk" `
-    -CreateOption Attach `
-    -ManagedDiskId $dataDisk.Id `
-    -Lun 1
-```
+### <a name="create-the-data-disk"></a>データ ディスクの作成
 
-[Update-AzVM](/powershell/module/az.compute/add-azvmdatadisk) コマンドを使用して、仮想マシンを更新します。
+このセクションでは、データ ディスクの作成について説明します。
 
-```azurepowershell-interactive
-Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm
-```
+1. データ ディスクを作成する前に、まずディスク オブジェクトを作成する必要があります。 次のコード サンプルでは、[New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) コマンドレットを使用して、ディスク オブジェクトを構成します。
 
-## <a name="prepare-data-disks"></a>データ ディスクを準備する
+    ```azurepowershell-interactive
+    $diskConfig = New-AzDiskConfig `
+        -Location $azRegion `
+        -CreateOption Empty `
+        -DiskSizeGB 128 `
+        -SkuName "Standard_LRS"
+    ```
 
-ディスクが仮想マシンに接続されたら、そのディスクを使用するようにオペレーティング システムを構成する必要があります。 次の例では、最初に VM に追加されたディスクを手動で構成する方法を示します。 この処理は、[カスタム スクリプト拡張機能](./tutorial-automate-vm-deployment.md)を使用して自動化することもできます。
+1. ディスク オブジェクトが作成されたら、[New-AzDisk](/powershell/module/az.compute/new-azdisk) コマンドレットを使用してデータ ディスクをプロビジョニングします。
 
-### <a name="manual-configuration"></a>手動構成
+    ```azurepowershell-interactive
+    $dataDisk = New-AzDisk `
+        -ResourceGroupName $azResourceGroup `
+        -DiskName $azDataDiskName `
+        -Disk $diskConfig
+    ```
 
-仮想マシンとの RDP 接続を作成します。 PowerShell を開き、次のスクリプトを実行します。
+    ディスクが作成されたことを確認するには、[Get-AzDisk](/powershell/module/az.compute/get-azdisk) コマンドレットを使用します。
+
+    ```azurepowershell-interactive
+    Get-AzDisk `
+        -ResourceGroupName $azResourceGroup `
+        -DiskName $azDataDiskName
+    ```
+
+    この例では、ディスクが作成されたことを出力で確認することができます。 `DiskState` および `ManagedBy` のプロパティ値で、ディスクがまだアタッチされていないことを確認します。
+
+    ```Output
+    ResourceGroupName            : myDemoResourceGroup
+    ManagedBy                    :
+    ManagedByExtended            : {}
+    OsType                       :
+    DiskSizeGB                   : 128
+    DiskSizeBytes                : 137438953472
+    ProvisioningState            : Succeeded
+    DiskIOPSReadWrite            : 500
+    DiskMBpsReadWrite            : 60
+    DiskState                    : Unattached
+    Name                         : myDemoDataDisk
+    ```
+
+### <a name="attach-the-data-disk"></a>データ ディスクのアタッチ
+
+VM がデータ ディスクにアクセスするには、まずデータ ディスクをその VM にアタッチする必要があります。 このセクションの手順を実行して、VM の参照を作成し、ディスクを接続して、VM の構成を更新します。
+
+1. データ ディスクをアタッチする VM を取得します。 次のサンプル コードでは、[Get-AzVM](/powershell/module/az.compute/get-azvm) コマンドレットを使用して、VM への参照を作成します。
+
+    ```azurepowershell-interactive
+    $vm = Get-AzVM `
+        -ResourceGroupName $azResourceGroup `
+        -Name $azVMName
+    ```
+
+1. 次に、[Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) コマンドレットを使用して、データ ディスクを VM の構成にアタッチします。
+
+    ```azurepowershell-interactive
+    $vm = Add-AzVMDataDisk `
+        -VM $vm `
+        -Name $azDataDiskName `
+        -CreateOption Attach `
+        -ManagedDiskId $dataDisk.Id `
+        -Lun 1
+    ```
+
+1. 最後に、[Update-AzVM](/powershell/module/az.compute/add-azvmdatadisk) コマンドレットを使用して、VM の構成を更新します。
+
+    ```azurepowershell-interactive
+    Update-AzVM `
+        -ResourceGroupName $azResourceGroup `
+        -VM $vm
+    ```
+
+    しばらくすると、正常にアタッチされたことが出力で確認できます。
+
+    ```Output
+    RequestId IsSuccessStatusCode StatusCode ReasonPhrase
+    --------- ------------------- ---------- ------------
+                             True         OK OK
+    ```
+
+### <a name="initialize-the-data-disk"></a>データ ディスクの初期化
+
+データ ディスクが VM にアタッチされたら、そのディスクを使用するように OS を構成する必要があります。 次のセクションでは、リモート VM に接続して、追加された最初のディスクを構成する方法に関するガイダンスを提供します。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+
+1. データ ディスクをアタッチした VM を見つけます。 リモート デスクトップ プロトコル (RDP) 接続を作成し、ローカル管理者としてサインインします。
+
+1. リモート VM への RDP 接続を確立したら、Windows の **[スタート]** メニューを選択します。 検索ボックスに「**PowerShell**」と入力し、 **[Windows PowerShell]** を選択して PowerShell ウィンドウを開きます。
+
+    [![リモート デスクトップ接続ウィンドウの画像。](media\tutorial-manage-data-disk\initialize-disk-sml.png)](media\tutorial-manage-data-disk\initialize-disk-lrg.png#lightbox)
+
+1. 開いた PowerShell ウィンドウで、次のスクリプトを実行します。
+
+    ```powershell
+    Get-Disk | Where PartitionStyle -eq 'raw' |
+        Initialize-Disk -PartitionStyle MBR -PassThru |
+        New-Partition -AssignDriveLetter -UseMaximumSize |
+        Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDemoDataDisk" -Confirm:$false
+    ```
+
+    正常に初期化されたことを出力で確認することができます。
+
+    ```Output
+    DriveLetter FileSystemLabel FileSystem DriveType HealthStatus OperationalStatus SizeRemaining   Size
+    ----------- --------------- ---------- --------- ------------ ----------------- -------------   ----
+    F           myDemoDataDisk  NTFS       Fixed     Healthy      OK                    127.89 GB 128 GB
+    ```
+
+## <a name="expand-a-disk"></a>ディスクを拡張する
+
+VM で使用可能なディスク領域が不足している場合は、Azure ディスクを拡張して追加のストレージ容量を提供できます。
+
+一部のシナリオでは、データを OS ディスクに格納する必要があります。 たとえば、OS ドライブにコンポーネントをインストールするレガシ アプリケーションをサポートする必要がある場合があります。 また、より大きな OS ドライブを備えたオンプレミスの物理 PC または VM を移行する必要がある場合もあります。 このような場合、VM の OS ディスクを拡張することが必要になることがあります。
+
+既存のディスクの縮小はサポートされておらず、データ損失に至る可能性があります。
+
+### <a name="update-the-disks-size"></a>ディスクのサイズの更新
+
+OS ディスクまたはデータ ディスクのサイズを変更するには、次の手順に従います。
+
+1. `Get-AzVM` コマンドレットを使用してサイズを変更するディスクを含む VM を選択します。
+
+    ```azurepowershell-interactive
+     $vm = Get-AzVM `
+       -ResourceGroupName $azResourceGroup `
+       -Name $azVMName
+    ```
+
+1. VM のディスクのサイズを変更するには、先にその VM を停止する必要があります。 `Stop-AzVM` コマンドレットを使用して VM を停止します。 確認を求められます。
+
+    > [!IMPORTANT]
+    > VM のシャットダウンを開始する前に、失われる可能性がある重要なリソースやデータがないことを必ず確認してください。
+
+    ```azurepowershell-interactive
+    Stop-AzVM `
+        -ResourceGroupName $azResourceGroup `
+        -Name $azVMName
+    ```
+
+    しばらくすると、マシンが正常に停止されたことを出力で確認することができます。
+
+    ```Output
+    OperationId : abcd1234-ab12-cd34-123456abcdef
+    Status      : Succeeded
+    StartTime   : 9/13/2021 7:10:23 PM
+    EndTime     : 9/13/2021 7:11:12 PM
+    Error       :
+    ```
+
+1. VM が停止したら、`Get-AzDisk` コマンドレットを使用して、その VM にアタッチされている OS またはデータ ディスクへの参照を取得します。
+
+    次の例では、VM の OS ディスクを選択します。
+
+    ```azurepowershell-interactive
+    $disk= Get-AzDisk `
+        -ResourceGroupName $azResourceGroup `
+        -DiskName $vm.StorageProfile.OsDisk.Name
+    ```
+
+    次の例では、VM の最初のデータ ディスクを選択します。
+
+    ```azurepowershell-interactive
+        $disk= Get-AzDisk `
+            -ResourceGroupName $azResourceGroup `
+            -DiskName $vm.StorageProfile.DataDisks[0].Name
+    ```
+
+1. ディスクへの参照が得られたので、ディスクのサイズを 250 GiB に設定します。
+
+    > [!IMPORTANT]
+    > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 OS ディスクで許可される最大値は、4,095 GiB です。
+
+    ```azurepowershell-interactive
+    $disk.DiskSizeGB = 250
+    ```
+
+1. 次に、`Update-AzDisk` コマンドレットを使用してディスク イメージを更新します。
+
+    ```azurepowershell-interactive
+    Update-AzDisk `
+        -ResourceGroupName $azResourceGroup `
+        -Disk $disk -DiskName $disk.Name
+    ```
+
+    ディスク イメージが更新され、ディスクの新しいサイズを出力で確認することができます。
+
+    ```Output
+    ResourceGroupName            : myDemoResourceGroup
+    ManagedBy                    : /subscriptions/{GUID}/resourceGroups/myDemoResourceGroup/providers/Microsoft.Compute/virtualMachines/myDemoVM
+    Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+    TimeCreated                  : 9/135/2021 6:41:10 PM
+    CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+    DiskSizeGB                   : 250
+    DiskSizeBytes                : 268435456000
+    UniqueId                     : {GUID}
+    ProvisioningState            : Succeeded
+    DiskIOPSReadWrite            : 500
+    DiskMBpsReadWrite            : 60
+    DiskState                    : Reserved
+    Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+    Id                           : /subscriptions/{GUID}/resourceGroups/myDemoResourceGroup/providers/Microsoft.Compute/disks/myDemoDataDisk
+    Name                         : myDemoDataDisk
+    Type                         : Microsoft.Compute/disks
+    Location                     : centralus
+
+1. Finally, restart the VM with the `Start-AzVM` cmdlet.
+
+    ```azurepowershell-interactive
+    Start-AzVM `
+        -ResourceGroupName $azResourceGroup `
+        -Name $azVMName
+    ```
+
+    しばらくすると、マシンが正常に起動されたことを出力で確認することができます。
+
+    ```Output
+    OperationId : abcd1234-ab12-cd34-123456abcdef
+    Status      : Succeeded
+    StartTime   : 9/13/2021 7:44:54 PM
+    EndTime     : 9/13/2021 7:45:15 PM
+    Error       :
+    ```
+
+### <a name="expand-the-disk-volume-in-the-os"></a>OS 内のディスク ボリュームを拡張する
+
+新しいディスク サイズを利用するには、その前に OS 内のボリュームを拡張する必要があります。 次の手順に従って、ディスク ボリュームを拡張し、新しいディスク サイズを利用します。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+
+1. データ ディスクをアタッチした VM を見つけます。 リモート デスクトップ プロトコル (RDP) 接続を作成してサインインします。 管理者アカウントにアクセスできなくなった場合は、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) コマンドレットを使用して、指定されたユーザー名とパスワードの資格情報オブジェクトを作成します。
+
+1. リモート VM への RDP 接続を確立したら、Windows の **[スタート]** メニューを選択します。 検索ボックスに「**PowerShell**」と入力し、 **[Windows PowerShell]** を選択して PowerShell ウィンドウを開きます。
+
+    [![リモート デスクトップ接続ウィンドウの画像。](media\tutorial-manage-data-disk\initialize-disk-sml.png)](media\tutorial-manage-data-disk\initialize-disk-lrg.png#lightbox)
+
+1. PowerShell を開き、次のスクリプトを実行します。 必要に応じて、`-DriveLetter` 変数の値を変更します。 たとえば、**F:** ドライブのパーティションのサイズを変更するには、`$driveLetter = "F"` を使用します。
+
+    ```powershell
+    $driveLetter = "[Drive Letter]" `
+    $size = (Get-PartitionSupportedSize -DriveLetter $driveLetter) `
+    Resize-Partition `
+        -DriveLetter $driveLetter `
+        -Size $size.SizeMax
+    ```
+
+1. RDP ウィンドウを最小化し、Azure Cloud Shell に切り替えます。 `Get-AzDisk` コマンドレットを使用して、ディスクのサイズ変更が正常に行われたことを確認します。
+
+    ```azurepowershell-interactive
+    Get-AzDisk `
+        -ResourceGroupName $azResourceGroup | Out-Host -Paging
+    ```
+
+## <a name="upgrade-a-disk"></a>ディスクをアップグレードする
+
+組織のワークロードの変化に対応するには、いくつかの方法があります。 たとえば、需要の増加に対応するために、Standard HDD を Premium SSD にアップグレードすることを選択できます。
+
+このセクションの手順に従って、マネージド ディスクを Standard から Premium にアップグレードします。
+
+1. `Get-AzVM` コマンドレットを使用してアップグレードするディスクを含む VM を選択します。
+
+    ```azurepowershell-interactive
+     $vm = Get-AzVM `
+       -ResourceGroupName $azResourceGroup `
+       -Name $azVMName
+    ```
+
+1. VM のディスクをアップグレードするには、先にその VM を停止する必要があります。 `Stop-AzVM` コマンドレットを使用して VM を停止します。 確認を求められます。
+
+    > [!IMPORTANT]
+    > VM のシャットダウンを開始する前に、失われる可能性がある重要なリソースやデータがないことを必ず確認してください。
+
+    ```azurepowershell-interactive
+    Stop-AzVM `
+        -ResourceGroupName $azResourceGroup `
+        -Name $azVMName
+    ```
+
+    しばらくすると、マシンが正常に停止されたことを出力で確認することができます。
+
+    ```Output
+    OperationId : abcd1234-ab12-cd34-123456abcdef
+    Status      : Succeeded
+    StartTime   : 9/13/2021 7:10:23 PM
+    EndTime     : 9/13/2021 7:11:12 PM
+    Error       :
+    ```
+
+1. VM が停止したら、`Get-AzDisk` コマンドレットを使用して、その VM にアタッチされている OS またはデータ ディスクへの参照を取得します。
+
+    次の例では、VM の OS ディスクを選択します。
+
+    ```azurepowershell-interactive
+    $disk= Get-AzDisk `
+        -ResourceGroupName $azResourceGroup `
+        -DiskName $vm.StorageProfile.OsDisk.Name
+    ```
+
+    次の例では、VM の最初のデータ ディスクを選択します。
+
+    ```azurepowershell-interactive
+        $disk= Get-AzDisk `
+            -ResourceGroupName $azResourceGroup `
+            -DiskName $vm.StorageProfile.DataDisks[0].Name
+    ```
+
+1. ディスクへの参照が得られたので、ディスクの SKU を **Premium_LRS** に設定します。
+
+    ```azurepowershell-interactive
+    $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new('Premium_LRS')
+    ```
+
+1. 次に、`Update-AzDisk` コマンドレットを使用してディスク イメージを更新します。
+
+    ```azurepowershell-interactive
+    Update-AzDisk `
+        -ResourceGroupName $azResourceGroup `
+        -Disk $disk -DiskName $disk.Name
+    ```
+
+    ディスク イメージが更新されます。 次のコード例を使用して、ディスクの SKU がアップグレードされたことを検証します。
+
+    ```azurepowershell-interactive
+    $disk.Sku.Name
+    ```
+
+    ディスクの新しい SKU を出力で確認することができます。
+
+    ```Output
+    Premium_LRS
+    ```
+
+1. 最後に、`Start-AzVM` コマンドレットを使用して VM を再起動します。
+
+    ```azurepowershell-interactive
+    Start-AzVM `
+        -ResourceGroupName $azResourceGroup `
+        -Name $azVMName
+    ```
+
+    しばらくすると、マシンが正常に起動されたことを出力で確認することができます。
+
+    ```Output
+    OperationId : abcd1234-ab12-cd34-123456abcdef
+    Status      : Succeeded
+    StartTime   : 9/13/2021 7:44:54 PM
+    EndTime     : 9/13/2021 7:45:15 PM
+    Error       :
+    ```
+
+## <a name="detach-a-data-disk"></a>データ ディスクの切断
+
+データ ディスクは、別の VM にアタッチする場合や、不要になった場合に VM からデタッチできます。 既定では、意図しないデータ損失を防ぐために、デタッチされたディスクは削除されません。 デタッチされたディスクは、削除されるまで引き続きストレージ料金が発生します。
+
+1. まず、`Get-AzVM` コマンドレットを使用してディスクがアタッチされている VM を選択します。
+
+    ```azurepowershell-interactive
+    $vm = Get-AzVM `
+       -ResourceGroupName $azResourceGroup `
+       -Name $azVMName
+    ```
+
+1. 次に、`Remove-AzVMDataDisk` コマンドレットを使用して VM からディスクをデタッチします。
+
+    ```azurepowershell-interactive
+    Remove-AzVMDataDisk `
+        -VM $vm `
+        -Name $azDataDiskName
+    ```
+
+1. `Update-AzVM` コマンドレットを使用して VM の状態を更新し、データ ディスクを除去します。
+
+    ```azurepowershell-interactive
+    Update-AzVM `
+        -ResourceGroupName $azResourceGroup `
+        -VM $vm
+    ```
+
+    しばらくすると、VM が正常に更新されたことを出力で確認することができます。
+
+    ```output
+    RequestId IsSuccessStatusCode StatusCode ReasonPhrase
+    --------- ------------------- ---------- ------------
+                             True         OK OK
+    ```
+
+## <a name="delete-a-data-disk"></a>データ ディスクの削除
+
+VM を削除しても、VM にアタッチされているデータ ディスクはプロビジョニングされたままなので、削除するまで料金が引き続き発生します。 この既定の動作は、意図しない削除によってデータが失われるのを防ぐのに役立ちます。
+
+次のサンプル PowerShell スクリプトを使用して、アタッチされていないディスクを削除できます。 `-ResourceGroupName` スイッチが `Get-AzDisk` コマンドレットで使用されているため、ディスクの取得は **myDemoResourceGroup** に限定されています。
 
 ```azurepowershell
-Get-Disk | Where partitionstyle -eq 'raw' |
-    Initialize-Disk -PartitionStyle MBR -PassThru |
-    New-Partition -AssignDriveLetter -UseMaximumSize |
-    Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDataDisk" -Confirm:$false
+# Get all disks in resource group $azResourceGroup
+$allDisks = Get-AzDisk -ResourceGroupName $azResourceGroup
+
+# Determine the number of disks in the collection
+if($allDisks.Count -ne 0) {
+
+    Write-Host "Found $($allDisks.Count) disks."
+
+    # Iterate through the collection
+    foreach ($disk in $allDisks) {
+
+        # Use the disk's "ManagedBy" property to determine if it is unattached
+        if($disk.ManagedBy -eq $null) {
+
+            # Confirm that the disk can be deleted
+            Write-Host "Deleting unattached disk $($disk.Name)."
+            $confirm = Read-Host "Continue? (Y/N)"
+            if ($confirm.ToUpper() -ne 'Y') { break }
+            else {
+
+                # Delete the disk
+                $disk | Remove-AzDisk -Force 
+                Write-Host "Unattached disk $($disk.Name) deleted."
+            }
+        }
+    }
+}
 ```
 
-## <a name="verify-the-data-disk"></a>データ ディスクを確認する
+出力に示されているように、アタッチされていないデータ ディスクが削除されています。
 
-データ ディスクが接続されていることを確認するには、接続されている `DataDisks` の `StorageProfile` を表示します。
+```output
+Name      : abcd1234-ab12-cd34-ef56-abcdef123456
+StartTime : 9/13/2021 10:14:05 AM
+EndTime   : 9/13/2021 10:14:35 AM
+Status    : Succeeded
+Error     :
+```
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+リソース グループ、VM、および関連するすべてのリソースは、不要になったら削除します。 次のサンプル PowerShell スクリプトを使用して、このチュートリアルで前に作成したリソース グループを削除できます。  
+
+> [!CAUTION]
+> リソース グループを削除する際には注意してください。 重要なデータの損失を回避するため、リソース グループを削除する前に、その中に重要なリソースまたはデータが含まれていないことを必ず確認してください。
 
 ```azurepowershell-interactive
-$vm.StorageProfile.DataDisks
+    Remove-AzResourceGroup -Name $azResourceGroup
 ```
 
-出力は次の例のようになります。
-
-```
-Name            : myDataDisk
-DiskSizeGB      : 128
-Lun             : 1
-Caching         : None
-CreateOption    : Attach
-SourceImage     :
-VirtualHardDisk :
+確認を求められます。 しばらくすると、`True` の応答によって **myDemoResourceGroup** が正常に削除されたことが確認できます。
+    
+```Output
+Confirm
+Are you sure you want to remove resource group 'myDemoResourceGroup'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+True
 ```
 
+## <a name="next-steps"></a>次の手順
 
-## <a name="next-steps"></a>次のステップ
-
-このチュートリアルでは、VM ディスクについて、次のようなトピックを学習しました。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
-> * OS ディスクと一時ディスク
-> * データ ディスク
-> * Standard ディスクと Premium ディスク
-> * ディスクのパフォーマンス
-> * データ ディスクの接続と準備
+> * データ ディスクの作成、アタッチ、および初期化
+> * ディスクの状態の確認
+> * ディスクの初期化
+> * ディスクの拡張とアップグレード
+> * ディスクのデタッチと削除
 
 次のチュートリアルに進み、VM 構成を自動化する方法について学習してください。
 

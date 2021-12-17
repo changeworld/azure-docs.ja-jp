@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud でのアプリとデプロイ
 description: このトピックでは、Azure Spring Cloud でのアプリケーションとデプロイの違いについて説明します。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5473daedc8a7ad5a3b6ddffc65234160d4b3019d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b5a48a562781e68d7b653d55eb63d8a9edc71228
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877626"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860819"
 ---
 # <a name="app-and-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud でのアプリとデプロイ
 
@@ -27,6 +27,7 @@ ms.locfileid: "104877626"
 Azure Spring Cloud の Standard レベルでは、1 つのアプリに 1 つの運用環境デプロイと 1 つのステージング デプロイが割り当てられ、簡単にブルー/グリーン デプロイを行うことができます。
 
 ## <a name="app"></a>アプリ
+
 以下の機能とプロパティは、アプリ レベルで定義されています。
 
 | 特徴 | 説明 |
@@ -58,4 +59,5 @@ Azure Spring Cloud の Standard レベルでは、1 つのアプリに 1 つの�
 * **Basic レベルではデプロイ管理を使用できない**:ブルー/グリーン デプロイ機能を使用する場合は、Standard レベルを使用します。
 
 ## <a name="see-also"></a>関連項目
-* [Azure Spring Cloud でステージング環境を設定する](spring-cloud-howto-staging-environment.md)
+
+* [Azure Spring Cloud でステージング環境を設定する](./how-to-staging-environment.md)

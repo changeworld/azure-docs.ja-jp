@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance プール (プレビュー) について説明します。これは、より小規模な SQL Server データベースをクラウドに大規模に移行して複数のマネージド インスタンスを管理するための便利でコスト効率に優れた方法を提供する機能です。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: service-overview
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: bonova
-ms.author: bonova
-ms.reviewer: sstein
-ms.date: 09/05/2019
-ms.openlocfilehash: bc345509db1c2a14afb0ae781eccad8f77395c18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: urosmil
+ms.author: urmilano
+ms.reviewer: mathoma
+ms.date: 10/25/2021
+ms.openlocfilehash: 9d052b7107a8ee85a7794f370849db0e6193f3a8
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97347066"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716849"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Azure SQL Managed Instance プール (プレビュー) とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,7 +82,7 @@ ms.locfileid: "97347066"
     - 8 個の仮想コアのプールでは、最大 200 個のデータベースがサポートされます。
     - 16 個の仮想コアのプールでは、最大 400 個のデータベースがサポートされます。
     - 24 個以上の仮想コアのプールでは、最大 500 個のデータベースがサポートされます。
-- AAD 管理者は、インスタンス プール内にデプロイされたインスタンスに対して設定できないため、AAD 認証は使用できません。
+- Azure AD 認証は、フラグを使用してマネージインスタンスを作成または設定した後に使用でき `-AssignIdentity` ます。 詳細については、「 [AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) and [AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)」を参照してください。 その後、ユーザーは、 [Azure AD 管理者のプロビジョニング (SQL Managed Instance)](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)に従って、インスタンスの Azure AD 管理者を設定できます。
 
 すべてのインスタンスのストレージの割り当てとデータベースの数の合計は、インスタンス プールによってさらされる制限以下にする必要があります。
 
@@ -104,6 +104,7 @@ ms.locfileid: "97347066"
 - Azure portal では、インスタンス プールの作成および構成のサポートはまだ利用できません。 インスタンス プールに対するすべての操作は、PowerShell でのみサポートされています。 また、事前に作成されたプールでの初回のインスタンス デプロイも、PowerShell でのみサポートされています。 プールにデプロイされると、Azure portal を使用してマネージド インスタンスを更新できます。
 - プールの外部で作成されたマネージド インスタンスを既存のプールに移動することはできません。さらに、プール内に作成されたインスタンスを、単一インスタンスとしてプールの外側に移動することも、別のプールに移動することもできません。
 - [予約容量](../database/reserved-capacity-overview.md)インスタンスの価格については、提供されていません。
+- フェールオーバーグループは、プール内のインスタンスではサポートされていません。
 
 ## <a name="sql-features-supported"></a>サポートされている SQL 機能
 

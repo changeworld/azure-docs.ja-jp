@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 69f80856150e461c6edfafdf0aa89de77c4ab0fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3337cf0eb5bfff686f9047d0f5ffea6dde670f3e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100583816"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078201"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー用に Azure Monitor Application Insights エージェントをデプロイする
 
@@ -18,11 +18,11 @@ ms.locfileid: "100583816"
 > このガイダンスは、Application Insights エージェントのオンプレミスと Azure 以外のクラウド デプロイに推奨されます。 [Azure 仮想マシンと仮想マシン スケール セットのデプロイ](./azure-vm-vmss-apps.md)に推奨される方法を次に示します。
 
 Application Insights エージェント (旧称 Status Monitor V2) は、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)に公開されている PowerShell モジュールです。
-これは [Status Monitor](./monitor-performance-live-website-now.md) を置き換えるものです。
+これは Status Monitor を置き換えるものです。
 テレメトリが Azure portal に送信され、そこでアプリを[監視](./app-insights-overview.md)できます。
 
 > [!NOTE]
-> このモジュールでは、現在、IIS でホストされる .NET Web アプリのコード不要のインストルメンテーションのみがサポートされます。 SDK を使用して、ASP.NET Core、Java、および Node.js アプリケーションをインストルメント化します。
+> このモジュールでは現在、IIS でホストされる .NET および .NET Core Web アプリのコード不要のインストルメンテーションがサポートされています。 Java および Node.js アプリケーションをインストルメント化するには、SDK を使用します。
 
 ## <a name="powershell-gallery"></a>PowerShell ギャラリー
 
@@ -60,7 +60,7 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 
 - Status Monitor v2 では ASP.NET Core アプリケーションはサポートされていますか?
 
-  *いいえ*。 ASP.NET Core アプリケーションの監視を有効にする手順については、「[Application Insights for ASP.NET Core アプリケーション](./asp-net-core.md)」を参照してください。 ASP.NET Core アプリケーション用に Status Monitor をインストールする必要はありません。 これは、ASP.NET Core アプリケーションが IIS でホストされている場合にも当てはまります。
+  *はい*。 [Application Insights Agent 2.0.0-beta1](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/2.0.0-beta1) から、IIS でホストされている ASP.NET Coreアプリケーションがサポートされています。
 
 - 有効化が成功したことを確認する方法を教えてください。
 
@@ -71,6 +71,18 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
+
+
+## <a name="release-notes"></a>リリース ノート
+
+### <a name="200-beta2"></a>2.0.0-beta2
+
+- ApplicationInsights .NET/.NET Core SDK 2.18.1-redfieldに更新されました。
+
+### <a name="200-beta1"></a>2.0.0-beta1
+
+- 自動インASP.NET Core機能を追加しました。
+
 
 ## <a name="next-steps"></a>次のステップ
 

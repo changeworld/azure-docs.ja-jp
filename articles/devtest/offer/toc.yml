@@ -1,0 +1,44 @@
+- name: Azure Dev/Test プランのドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Dev/Test プランとは
+      href: overview-what-is-devtest-offer-visual-studio.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: 個別の Azure Dev/Test クレジットの概要
+      href: quickstart-individual-credit.md
+    - name: エンタープライズ Dev/Test サブスクリプションを作成する
+      href: quickstart-create-enterprise-devtest-subscriptions.md
+- name: 概念
+  expanded: true
+  items:
+    - name: GitOps と Azure Dev/Test プラン
+      href: concepts-gitops-azure-devtest.md
+    - name: セキュリティとガバナンス
+      href: concepts-security-governance-devtest.md
+- name: 使い方ガイド
+  expanded: true
+  items:
+    - name: ディレクトリ テナントを変更する
+      href: how-to-change-directory-tenants-visual-studio-azure.md
+    - name: "クレジットの制限を削除する\_"
+      href: how-to-remove-credit-limits.md
+    - name: ディレクトリにユーザーを追加する
+      href: how-to-add-users-directory.md
+    - name: GitHub で Azure にサインインする
+      href: how-to-sign-into-azure-with-github.md
+    - name: Dev/Test を管理および監視する
+      href: how-to-manage-monitor-devtest.md
+    - name: 信頼性とパフォーマンスを管理する
+      href: how-to-manage-reliability-performance.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/en-us/pricing/dev-test/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'

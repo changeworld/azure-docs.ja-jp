@@ -3,22 +3,22 @@ title: テキスト読み上げクイックスタート - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用してテキストを音声に変換する方法について説明します。 このクイックスタートでは、オブジェクトの構築と設計パターン、サポートされているオーディオ出力形式、Speech CLI、音声合成でのカスタム構成オプションについて説明します。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/01/2020
-ms.author: trbye
+ms.date: 05/17/2021
+ms.author: eur
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-four
 keywords: テキスト読み上げ
-ms.openlocfilehash: 7a41c4d9c1074b376da3de556caf63ced0bc84ec
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 36fcad1845a654aff1e195e23bddb8090add6719
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428196"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510873"
 ---
 # <a name="get-started-with-text-to-speech"></a>テキスト読み上げの概要
 
@@ -28,6 +28,10 @@ ms.locfileid: "102428196"
 
 ::: zone pivot="programming-language-cpp"
 [!INCLUDE [C++ Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-cpp.md)]
+::: zone-end
+
+::: zone pivot="programming-language-go"
+[!INCLUDE [C++ Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-go.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
@@ -56,9 +60,11 @@ ms.locfileid: "102428196"
 
 ## <a name="get-position-information"></a>位置情報を取得する
 
-プロジェクトでは、ある単語が音声変換によって読み上げられるタイミングに基づいて特定のアクションを実行できるように、そのタイミングを把握することが必要な場合があります。 たとえば、読み上げられた単語を強調表示するには、強調表示する内容、強調表示するタイミング、および強調表示する期間を把握する必要があります。
+プロジェクトでは、ある単語がテキスト読み上げによって読み上げられるタイミングに基づいて特定のアクションを実行できるように、そのタイミングを把握することが必要な場合があります。
+たとえば、読み上げられた単語を強調表示するには、強調表示する内容、強調表示するタイミング、および強調表示する期間を把握する必要があります。
 
-これは、`WordBoundary` 内で使用可能な `SpeechSynthesizer` イベントを使用して実現できます。 このイベントは、新しい音声それぞれの先頭で発生し、音声ストリーム内での時間オフセットと入力プロンプト内でのテキスト オフセットを提供します。
+これは、`WordBoundary` 内で使用可能な `SpeechSynthesizer` イベントを使用して実現できます。
+このイベントは、新しい音声それぞれの先頭で発生し、音声ストリーム内での時間オフセットと入力プロンプト内でのテキスト オフセットを提供します。
 
 * `AudioOffset` は、合成の開始から次の単語の開始までの間の出力オーディオの経過時間を報告します。 これは 100 ナノ秒単位 (HNS) で測定されます (10,000 HNS は 1 ミリ秒に相当します)。
 * `WordOffset` は、読み上げられようとしている単語の直前に、入力文字列 (元のテキストまたは [SSML](speech-synthesis-markup.md)) の文字位置を報告します。

@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/16/2020
+ms.date: 11/15/2021
 ms.author: rolyon
-ms.openlocfilehash: d58398c42cdc6faed758e5dba3431e0841fc0b03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 947645848fd60a6d2864a1715ddc32424a683ce8
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555565"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524837"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC のベスト プラクティス
 
@@ -34,7 +34,7 @@ Azure RBAC を使用して、チーム内で職務を分離し、職務に必要
 
 ## <a name="limit-the-number-of-subscription-owners"></a>サブスクリプションの所有者の数を制限する
 
-侵害された所有者による侵害の可能性を減らすため、サブスクリプション所有者は最大 3 人までにします。 この推奨事項は Azure Security Center で監視できます。 他の ID と Security Center でのアクセスの推奨事項については、「[セキュリティの推奨事項 - リファレンス ガイド](../security-center/recommendations-reference.md)」を参照してください。
+侵害された所有者による侵害の可能性を減らすため、サブスクリプション所有者は最大 3 人までにします。 この推奨事項は Microsoft Defender for Cloud で監視できます。 Defender for Cloud での他の ID とアクセスの推奨事項については、「[セキュリティの推奨事項 - リファレンス ガイド](../security-center/recommendations-reference.md)」を参照してください。
 
 ## <a name="use-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management を使用する
 
@@ -44,7 +44,18 @@ Azure RBAC を使用して、チーム内で職務を分離し、職務に必要
 
 ## <a name="assign-roles-to-groups-not-users"></a>ユーザーではなくグループにロールを割り当てる
 
-ロール割り当てをより管理しやすくするために、ロールをユーザーに直接割り当てないようにします。 代わりに、グループにロールを割り当ててください。 ロールの割り当て数には[サブスクリプションあたり 2,000 までという制限](troubleshooting.md#azure-role-assignments-limit)がありますが、ロールをユーザーでなくグループに割り当てることで、この割り当て数を最小限に抑えることもできます。 
+ロール割り当てをより管理しやすくするために、ロールをユーザーに直接割り当てないようにします。 代わりに、グループにロールを割り当ててください。 [サブスクリプションあたりのロール割り当て数の制限](troubleshooting.md#azure-role-assignments-limit)がありますが、ロールをユーザーでなくグループに割り当てることで、この割り当て数を最小限に抑えることもできます。
+
+## <a name="assign-roles-using-the-unique-role-id-instead-of-the-role-name"></a>ロール名の代わりに一意のロール ID を使用してロールを割り当てる
+
+ロール名が変更されるときがあります。たとえば次のような場合です。
+
+- 独自のカスタム ロールを使用していて、名前を変更することにした場合。
+- 名前に **(プレビュー)** が含まれるプレビュー ロールを使用している場合。 ロールがリリースされると、ロールの名前が変更されます。
+
+ロールの名前が変更される場合でも、ロールの ID は変わりません。 スクリプトまたはオートメーションを使用してロールの割り当てを作成する場合は、ロール名ではなく一意のロール ID を使用するのがベスト プラクティスです。 そうすれば、ロールの名前が変更されても、スクリプトが動作する可能性が高くなります。
+
+詳細については、[一意のロール ID および Azure PowerShell を使用したロールの割り当て](role-assignments-powershell.md#assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope)および[一意のロール ID および Azure CLI を使用したロールの割り当て](role-assignments-cli.md#assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope)に関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

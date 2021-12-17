@@ -1,18 +1,19 @@
 ---
-title: 'Azure VPN Gateway:P2S 用の証明書を生成してエクスポートする: MakeCert'
-description: MakeCert を使用して、自己署名ルート証明書の作成、公開キーのエクスポート、クライアント証明書の生成を行います。
+title: 'P2S 用の証明書を生成してエクスポートする: MakeCert'
+titleSuffix: Azure VPN Gateway
+description: MakeCert を使用し、自己署名ルート証明書の作成、公開キーのエクスポート、クライアント証明書の生成を行う方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 55e22ebec5853d6b4f10b53be8e24f4dbebe4e1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f28e361c434797e80a0a377842fa375e4b8235de
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94659779"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229740"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>MakeCert を使用したポイント対サイト接続の証明書の生成とエクスポート
 

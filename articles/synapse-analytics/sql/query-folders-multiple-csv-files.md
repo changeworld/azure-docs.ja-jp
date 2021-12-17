@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 960c13baea77fc8a6b900a5e68828af0377b0087
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462629"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018604"
 ---
 # <a name="query-folders-and-multiple-files"></a>クエリ フォルダーと複数のファイル  
 
@@ -26,7 +27,7 @@ ms.locfileid: "96462629"
 
 最初の手順として、クエリを実行する **データベースを作成** します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、この記事のサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
 
-フォルダー *csv/taxi* を使用してサンプル クエリを実行します。 これには、2016 年 7 月から 2018 年 6 月までの NYC のタクシーのデータ (イエロー タクシーの運行記録) が含まれています。 *csv/taxi* のファイルには、次のパターンを使用して、年月に従って名前が付けられます: yellow_tripdata_<year>-<month>.csv
+フォルダー *csv/taxi* を使用してサンプル クエリを実行します。 これには、2016 年 7 月から 2018 年 6 月までの NYC のタクシーのデータ (イエロー タクシーの運行記録) が含まれています。 *csv/taxi* のファイルには、次のパターンを使用して、年月に従って名前が付けられます: yellow_tripdata_\<year>-\<month>.csv
 
 ## <a name="read-all-files-in-folder"></a>フォルダー内のすべてのファイルを読み取る
 
@@ -66,6 +67,34 @@ SELECT
     SUM(fare_amount) AS fare_total
 FROM OPENROWSET(
         BULK 'csv/taxi/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIRSTROW = 2
+    )
+    WITH (
+        payment_type INT 10,
+        fare_amount FLOAT 11
+    ) AS nyc
+GROUP BY payment_type
+ORDER BY payment_type;
+```
+
+> [!NOTE]
+> 1 回の OPENROWSET でアクセスされるファイルはすべて同じ構造である (つまり、列数とデータ型が同じである) 必要があります。
+
+### <a name="read-subset-of-files-in-folder-using-multiple-file-paths"></a>複数のファイルパスを使用してフォルダー内のファイルのサブセットを読み取る
+
+次の例では、2 つのファイル パスを使用して、 *csv/タクシー* フォルダーから 2017 NYC の黄色のタクシー データファイルを読み取ります。1 つ目は、1 月のデータを含むファイルへの完全パスを使用し、2 番目のファイル パスには、月と月を示すワイルドカードを格納します。
+
+```sql
+SELECT 
+    payment_type,  
+    SUM(fare_amount) AS fare_total
+FROM OPENROWSET(
+        BULK (
+            'csv/taxi/yellow_tripdata_2017-01.csv',
+            'csv/taxi/yellow_tripdata_2017-1*.csv'
+        ),
         DATA_SOURCE = 'sqlondemanddemo',
         FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2

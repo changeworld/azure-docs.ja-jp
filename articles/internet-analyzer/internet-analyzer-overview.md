@@ -2,17 +2,17 @@
 title: Azure Internet Analyzer | Microsoft Docs
 description: Azure Internet Analyzer について
 services: internet-analyzer
-author: megan-beatty
+author: KumudD
 ms.service: internet-analyzer
 ms.topic: overview
 ms.date: 10/16/2019
-ms.author: mebeatty
-ms.openlocfilehash: 2512092c69390ce604c26ab6c5dd000afafc7c05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: kumud
+ms.openlocfilehash: ae6017b4b6134787b13519d6d0eaf4cb8f6ef732
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91360890"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456709"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Internet Analyzer とは (プレビュー)
 

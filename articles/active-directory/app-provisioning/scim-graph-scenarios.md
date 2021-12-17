@@ -1,22 +1,22 @@
 ---
-title: SCIM、Microsoft Graph、Azure AD を使用してユーザーをプロビジョニングし、アプリをデータで強化する
-description: SCIM と Microsoft Graph を一緒に使用してユーザーをプロビジョニングし、必要なデータでアプリケーションを強化します。
+title: SCIM、Microsoft Graph、Azure Active Directory を使用してユーザーをプロビジョニングし、アプリをデータで強化する
+description: SCIM と Microsoft Graph を一緒に使用してユーザーをプロビジョニングし、Azure Active Directory で必要なデータでアプリケーションを強化します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/26/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: arvinh, celested
-ms.openlocfilehash: 87df7efcbab89c87a42e611f5fc1219239de6873
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.reviewer: arvinh
+ms.openlocfilehash: f97ff11a1a7e3829ef16aa4e903f88e2ad66949a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530509"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432759"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>SCIM と Microsoft Graph を一緒に使用してユーザーをプロビジョニングし、必要なデータでアプリケーションを強化する
 
@@ -113,7 +113,7 @@ Teams と Outlook のメッセージの変更を追跡し、リアルタイム�
 **推奨事項** Microsoft Graph では、/Users および /Groups エンドポイントを公開しています。これをすぐに統合して、Azure AD にユーザーをプロビジョニングすることができます。 Azure Active Directory ではこれらのユーザーを Active Directory に書き戻す処理がサポートされておりませんので、注意してください。 
 
 > [!NOTE]
-> Microsoft では、Workday や SuccessFactors などの HR アプリケーションからデータをプルするプロビジョニング サービスを用意しています。 これらの統合は、Microsoft によって構築および管理されます。 Microsoft のサービスへの新しい HR アプリケーションのオンボードについては、[UserVoice](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests) でリクエストすることができます。 
+> Microsoft では、Workday や SuccessFactors などの HR アプリケーションからデータをプルするプロビジョニング サービスを用意しています。 これらの統合は、Microsoft によって構築および管理されます。 Microsoft のサービスへの新しい HR アプリケーションのオンボードについては、[UserVoice](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) でリクエストすることができます。 
 
 ## <a name="related-articles"></a>関連記事
 

@@ -1,26 +1,29 @@
 ---
-title: Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
-description: Azure Data Factory パイプラインで Copy アクティビティを使用して、クラウドまたはオンプレミスの REST ソースからサポートされているシンク データ ストアへ、またはサポートされているデータ ストアから REST シンクへデータをコピーする方法について説明します。
-author: linda33wj
+title: Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーおよび変換する
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics パイプラインで Copy アクティビティを使用して、クラウドまたはオンプレミスの REST ソースからサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから REST シンクにデータをコピーし、Data Flow を使用してデータを変換する方法について説明します。
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.author: jingwang
-ms.openlocfilehash: 779a8745688e6a1fb8a15bc9119c6fbc1803ca2c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 11/11/2021
+ms.author: makromer
+ms.openlocfilehash: 5ea0e509f7969c011cb18f99433c85fc97ed5528
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078929"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487195"
 ---
-# <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
+# <a name="copy-and-transform-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーおよび変換する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory の Copy アクティビティを使用して、REST エンドポイントとの間でデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
 
 この REST コネクタ、[HTTP コネクタ](connector-http.md)、および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
 
-- **REST コネクタ** では、特に RESTful API からのデータのコピーがサポートされています。 
+- **REST コネクタ** では、特に RESTful API からのデータのコピーがサポートされます。
 - **HTTP コネクタ** は、ファイルをダウンロードするなど、任意の HTTP エンドポイントからデータを取得するための一般的なものです。 この REST コネクタの前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
 - **Web テーブル コネクタ** では、HTML Web ページからテーブルの内容を抽出します。
 
@@ -40,11 +43,35 @@ REST ソースから、サポートされている任意のシンク データ �
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-rest-linked-service-using-ui"></a>UI を使用して REST のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で REST のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. REST を検索し、REST コネクタを選択します。
+
+    :::image type="content" source="media/connector-rest/rest-connector.png" alt-text="REST コネクタを選択します。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-rest/configure-rest-linked-service.png" alt-text="REST のリンク サービスを構成します。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 次のセクションでは、REST コネクタに固有の Data Factory エンティティの定義に使用できるプロパティについて詳しく説明します。
 
@@ -132,7 +159,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 }
 ```
 
-### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure リソースの認証にマネージド ID を使用する
+### <a name="use-system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> システム割り当てマネージド ID 認証を使用する
 
 **authenticationType** プロパティを **ManagedServiceIdentity** に設定します。 前のセクションで説明した汎用的なプロパティに加えて、次のプロパティを指定します。
 
@@ -151,6 +178,39 @@ REST のリンクされたサービスでは、次のプロパティがサポー
             "url": "<REST endpoint e.g. https://www.example.com/>",
             "authenticationType": "ManagedServiceIdentity",
             "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="use-user-assigned-managed-identity-authentication"></a>ユーザー割り当てマネージド ID 認証を使用する
+**authenticationType** プロパティを **ManagedServiceIdentity** に設定します。 前のセクションで説明した汎用的なプロパティに加えて、次のプロパティを指定します。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| aadResourceId | 承認を要求しようとしている AAD リソースを指定します。例: `https://management.core.windows.net`。| はい |
+| 資格情報 | ユーザー割り当てマネージド ID を資格情報オブジェクトとして指定します。 | はい |
+
+
+**例**
+
+```json
+{
+    "name": "RESTLinkedService",
+    "properties": {
+        "type": "RestService",
+        "typeProperties": {
+            "url": "<REST endpoint e.g. https://www.example.com/>",
+            "authenticationType": "ManagedServiceIdentity",
+            "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>",
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+            }    
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -378,6 +438,57 @@ REST からのデータ コピーについては、次のプロパティがサ�
 ]
 ```
 
+## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
+
+REST は、統合データセットとインライン データセットの両方のデータ フローでサポートされています。
+
+### <a name="source-transformation"></a>ソース変換
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| requestMethod | HTTP メソッド。 使用できる値は **GET** と **POST** です。 | はい |
+| relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていない場合は、リンクされたサービス定義に指定されている URL のみが使用されます。 HTTP コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[relative URL specified in dataset]` | いいえ |
+| additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、データの書き込みのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。  | いいえ |
+| requestInterval | 異なる要求間の間隔時間 (ミリ秒単位)。 要求間隔の値は、[10, 60000] の間の数値にする必要があります。 |  いいえ |
+| QueryParameters.*request_query_parameter* または QueryParameters['request_query_parameter'] | "request_query_parameter" は、次の HTTP 要求 URL 内で 1 つのクエリ パラメーター名を参照するユーザー定義です。 | いいえ |
+
+### <a name="sink-transformation"></a>シンク変換
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、データの書き込みのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。  | いいえ |
+| requestInterval | 異なる要求間の間隔時間 (ミリ秒単位)。 要求間隔の値は、[10, 60000] の間の数値にする必要があります。 |  いいえ |
+| httpCompressionType | 最適な圧縮レベルでデータを送信するときに使用する HTTP 圧縮の種類。 使用できる値は **none** と **gzip** です。 | いいえ |
+| writeBatchSize | バッチごとに REST シンクに書き込むレコードの数。 既定値は 10000 です。 | いいえ |
+
+削除、挿入、更新、アップサートの各メソッドと、CRUD 操作のために REST シンクに送信する相対行データを設定できます。
+
+:::image type="content" source="media/data-flow/data-flow-sink.png" alt-text="データ フロー REST シンク":::
+
+## <a name="sample-data-flow-script"></a>データ フロー スクリプトのサンプル
+
+シンクの前に行の変更変換を使用して、REST シンクで実行するアクションの種類 (挿入、更新、アップサート、削除) を ADF に指示します。
+
+```
+AlterRow1 sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:true,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    rowRelativeUrl: 'periods',
+    insertHttpMethod: 'PUT',
+    deleteHttpMethod: 'DELETE',
+    upsertHttpMethod: 'PUT',
+    updateHttpMethod: 'PATCH',
+    timeout: 30,
+    requestFormat: ['type' -> 'json'],
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> sink1
+```
+
 ## <a name="pagination-support"></a>改ページ位置の自動調整のサポート
 
 REST API からデータをコピーするとき、通常、REST API では、1 つの要求の応答ペイロードのサイズが適切な数値を超えないように制限されています。大量のデータが返される場合は、結果が複数のページに分割され、呼び出し元に連続する要求を送信して結果の次のページを取得することが要求されます。 通常、1 つのページに対する要求は動的で、前のページの応答から返される情報で構成されます。
@@ -400,6 +511,9 @@ REST API からデータをコピーするとき、通常、REST API では、1 
 | AbsoluteUrl | 次の要求を発行する URL を示します。 これは、**絶対 URL と相対 URL のどちらか** です。 |
 | QueryParameters.*request_query_parameter* または QueryParameters['request_query_parameter'] | "request_query_parameter" は、次の HTTP 要求 URL 内で 1 つのクエリ パラメーター名を参照するユーザー定義です。 |
 | Headers.*request_header* または Headers['request_header'] | "request_header" は、次の HTTP 要求内で 1 つのヘッダー名を参照するユーザー定義です。 |
+| EndCondition:*end_condition* | "end_condition" は、次の HTTP 要求で改ページ ループを終了させる条件を示すユーザー定義です。 |
+| MaxRequestNumber | 改ページ要求の最大数を示します。 これを空のままにすると、制限がなくなります。 |
+| SupportRFC5988 | RFC 5988 は、改ページ規則でサポートされています。 既定では、これは true に設定されています。 これは、他の改ページ規則が定義されていない場合にのみ優先されます。
 
 改ページ位置の自動修正規則で **サポートされる値**:
 
@@ -475,21 +589,21 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
 ### <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
 
 1. **[Copy from REST or HTTP using OAuth]** (OAuth を使用して REST または HTTP からコピーする) テンプレートにアクセスします。 コピー元の接続用に新しい接続を作成します。 
-    ![新しい接続を作成する](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png" alt-text="新しい接続を作成する":::
 
     新しいリンクされたサービス (REST) 設定の主要な手順を以下に示します。
     
      1. **[ベース URL]** で、自分のソース REST サービスの URL パラメーターを指定します。 
      2. **[認証の種類]** で *[匿名]* を選択します。
-        ![新しい REST 接続](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+        :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png" alt-text="新しい REST 接続":::
 
 2. コピー先の接続用に新しい接続を作成します。  
-    ![新しい Gen2 接続](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png" alt-text="新しい Gen2 接続":::
 
 3. **[このテンプレートを使用]** を選択します。
-    ![このテンプレートを使用](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png" alt-text="このテンプレートを使用":::
 
-4. 次の例に示すように、作成されたパイプラインが表示されます。![テンプレートから作成されたパイプラインを示すスクリーンショット。](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. 次の例に示すように、作成されたパイプラインが表示されます。:::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png" alt-text="テンプレートから作成されたパイプラインを示すスクリーンショット。":::
 
 5. **[Web]** アクティビティを選択します。 **[設定]** で、対応する **[URL]** 、 **[Method]** (メソッド)、 **[Headers]** (ヘッダー)、および **[Body]** (本文) を指定して、データのコピー元となるサービスのログイン API から OAuth ベアラー トークンを取得します。 テンプレート内のプレースホルダーは、Azure Active Directory (AAD) OAuth のサンプルを示しています。 AAD 認証が REST コネクタによってネイティブにサポートされていることに注意してください。OAuth フローの一例を次に示します。 
 
@@ -500,7 +614,7 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
     | ヘッダー | [ヘッダー] はユーザー定義であり、HTTP 要求内で 1 つのヘッダー名を参照します。 | 
     | Body | HTTP 要求の本文。 | 
 
-    ![パイプライン](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png" alt-text="パイプライン":::
 
 6. **[データのコピー]** アクティビティで *[ソース]* タブを選択すると、前の手順で取得したベアラー トークン (access_token) が、[追加ヘッダー] で **[認証]**  として [データのコピー] アクティビティに渡されることを確認できます。 パイプラインの実行を開始する前に、次のプロパティの設定を確認してください。
 
@@ -509,20 +623,20 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
     | 要求メソッド | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | 
     | 追加ヘッダー | 追加の HTTP 要求ヘッダー。| 
 
-   ![コピー元の認証](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+   :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png" alt-text="コピー元の認証":::
 
 7. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
-   ![パイプラインの実行](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+   :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png" alt-text="パイプラインの実行"::: 
 
-8. パイプラインの実行が正常に完了すると、次の例のような結果が表示されます。![パイプラインの実行結果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. パイプラインの実行が正常に完了すると、次の例のような結果が表示されます。:::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png" alt-text="パイプラインの実行結果"::: 
 
 9. **[アクション]** 列で WebActivity の [出力] アイコンをクリックすると、サービスによって返された access_token が表示されます。
 
-   ![トークンの出力](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
+   :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png" alt-text="トークンの出力"::: 
 
 10. **アクション** 列で CopyActivity の [入力] アイコンをクリックすると、WebActivity によって取得された access_token が、認証のために CopyActivity に渡されます。 
 
-    ![トークンの入力](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png" alt-text="トークンの入力":::
         
     >[!CAUTION] 
     >トークンがプレーン テキストでログに記録されないようにするには、Web アクティビティの "セキュリティで保護された出力" とコピー アクティビティの "セキュリティで保護された入力" を有効にします。

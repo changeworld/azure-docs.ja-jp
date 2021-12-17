@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
-ms.date: 02/18/2020
-ms.openlocfilehash: 0a3fd1b492d19e241d89cc5477891c7c836e4640
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.reviewer: cawrites
+ms.date: 09/07/2021
+ms.openlocfilehash: 3ae0d4da03407716e932febf4d9db2c4f0091521
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078980"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714259"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>移行の概要: SQL Server から Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -30,11 +30,13 @@ SQL Server データベースを Azure SQL Managed Instance に移行するた�
 - Google Cloud Platform (GCP) の Compute Engine。  
 - GCP の Cloud SQL for SQL Server。 
 
-その他の移行ガイドについては、[データベースの移行](https://docs.microsoft.com/data-migration)に関するページを参照してください。 
+その他の移行ガイドについては、[データベースの移行](/data-migration)に関するページを参照してください。 
 
 ## <a name="overview"></a>概要
 
 [Azure SQL Managed Instance](../../managed-instance/sql-managed-instance-paas-overview.md) は、フル マネージド サービスを必要とする SQL Server ワークロードの推奨されるターゲット オプションであり、仮想マシンやそのオペレーティング システムを管理する必要ありません。 SQL Managed Instance を使用すると、アプリケーションやデータベースの変更を最小限にして、オンプレミスのアプリケーションを Azure に移動できます。 ネイティブの仮想ネットワーク サポートを使用してインスタンスの完全な分離が提供されます。 
+
+移行ターゲットのサポート可能性を検証するには、[Azure SQL Managed Instance で利用可能](../../database/features-comparison.md)な SQL Server データベース エンジンの機能を必ず確認してください。  
 
 ## <a name="considerations"></a>考慮事項 
 
@@ -84,9 +86,10 @@ Azure SQL Managed Instance でターゲットのサービス レベル (General 
 
 |テクノロジ | 説明|
 |---------|---------|
+|[Azure Data Studio 用の Azure SQL Migration 拡張機能](../../../dms/migration-using-azure-data-studio.md)  | Azure Data Studio 用の Azure SQL Migration 拡張機能によって、Azure Data Studio での SQL Server の評価機能と移行機能の両方が提供されます。 これにより、オンライン (最小限のダウンタイムを必要とする移行向け) またはオフライン (移行の期間を通してダウンタイムが持続される移行向け) モードのいずれかでの移行がサポートされます。 |
 | [Azure Migrate](../../../migrate/how-to-create-azure-sql-assessment.md) | この Azure サービスは、VMware 上で大規模に SQL データ資産を検出して評価するのに役立ちます。 Azure SQL デプロイに関する推奨事項、ターゲットのサイズ設定、月単位の見積もりが提供されます。 | 
 |[Azure Database Migration Service](../../../dms/tutorial-sql-server-to-managed-instance.md)  | この Azure サービスでは、移行プロセス時のダウンタイムを許容できるアプリケーションに対してオフライン モードでの移行がサポートされます。 オンライン モードでの継続的な移行とは異なり、オフライン モードの移行では、ソースからターゲットへのデータベースの完全バックアップの 1 回限りの復元が実行されます。 | 
-|[ネイティブ バックアップと復元](../../managed-instance/restore-sample-database-quickstart.md) | SQL Managed Instance では、ネイティブ SQL Server データベースのバックアップ (.bak ファイル) の復元がサポートされています。 これは、Azure Storage にデータベースの完全バックアップを提供できるお客様にとって、最も簡単な移行オプションです。 完全と差分バックアップもサポートされており、この記事の後半の[移行資産に関するセクション](#migration-assets)で説明しています。| 
+|[ネイティブ バックアップと復元](../../managed-instance/restore-sample-database-quickstart.md) | SQL Managed Instance では、ネイティブ SQL Server データベースのバックアップ (.bak ファイル) の復元がサポートされています。 これは、Azure Storage にデータベースの完全バックアップを提供できるお客様にとって、最も簡単な移行オプションです。| 
 |[ログ再生サービス](../../managed-instance/log-replay-service-migrate.md) | このクラウド サービスは、SQL Server のログ配布テクノロジに基づいて SQL Managed Instance で有効になっています。 これは、データベースの完全、差分、およびログ バックアップを Azure Storage に提供できるお客様のための移行オプションです。 ログ再生サービスは、バックアップ ファイルを Azure Blob Storage から SQL Managed Instance に復元するために使用されます。| 
 | | |
 
@@ -107,6 +110,7 @@ Azure SQL Managed Instance でターゲットのサービス レベル (General 
 
 |移行オプション  |使用する場合  |考慮事項  |
 |---------|---------|---------|
+|[Azure Data Studio 用の Azure SQL Migration 拡張機能](../../../dms/migration-using-azure-data-studio.md) | - 単一のデータベースまたは複数のデータベースを大規模に移行する。 </br> - オンライン (最小限のダウンタイム) とオフライン (許容されるダウンタイム) の両方のモードで実行できる。 </br> </br> サポートされるソース: </br> - オンプレミスまたは Azure VM の SQL Server (2005 - 2019) </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM |  - 簡単にセットアップして開始できます。 </br> - オンプレミスの SQL Server やバックアップにアクセスするには、セルフホステッド統合ランタイムのセットアップが必要です。 </br> - 評価機能と移行機能の両方が含まれています。 |
 |[Azure Database Migration Service](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 単一のデータベースまたは複数のデータベースを大規模に移行する。 </br> - 移行プロセス中のダウンタイムを許容できる。 </br> </br> サポートされるソース: </br> - オンプレミスまたは Azure VM の SQL Server (2005 - 2019) </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM |  - 大規模な移行は、[PowerShell](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md) を使用して自動化できます。 </br> - 移行が完了するまでの時間は、データベースのサイズによって異なり、バックアップと復元の時間に左右されます。 </br> - 十分なダウンタイムが必要になる可能性があります。 |
 |[ネイティブ バックアップと復元](../../managed-instance/restore-sample-database-quickstart.md) | - 個々の基幹業務アプリケーション データベースを移行する。  </br> - 個別の移行サービスまたはツールを使用せずに素早く簡単に移行する。  </br> </br> サポートされるソース: </br> - オンプレミスまたは Azure VM の SQL Server (2005 - 2019) </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM | - データベース バックアップでは、Azure Blob Storage へのデータ転送を最適化するために複数のスレッドが使用されますが、パートナー帯域幅とデータベース サイズが転送速度に影響する可能性があります。 </br> - ダウンタイムには、完全バックアップと復元を実行するために必要な時間 (データ操作のサイズ) を考慮する必要があります。| 
 |[ログ再生サービス](../../managed-instance/log-replay-service-migrate.md) | - 個々の基幹業務アプリケーション データベースを移行する。  </br> - データベース移行には、さらに多くのコントロールが必要になります。  </br> </br> サポートされるソース: </br> - オンプレミスまたは Azure VM の SQL Server (2008 - 2019) </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM | - 移行すると、SQL Server で完全なデータベース バックアップが行われ、Azure Blob Storage にバックアップ ファイルがコピーされます。 ログ再生サービスは、バックアップ ファイルを Azure Blob Storage から SQL Managed Instance に復元するために使用されます。 </br> - 移行プロセス中に復元されるデータベースは復元中モードに入り、プロセスが完了するまで読み取りや書き込みに使用できません。| 
@@ -167,13 +171,13 @@ SQL ログインは、オフライン モードで Database Migration Service �
 
 サービスを再起動すると、Windows ユーザーまたはグループのログインが、移行可能なログインの一覧に表示されます。 移行する Windows ユーザーまたはグループのログインについて、関連付けられているドメイン名を指定するように求められます。 サービス ユーザー アカウント (ドメイン名 NT AUTHORITY を含むアカウント) と仮想ユーザー アカウント (ドメイン名 NT SERVICE を含むアカウント) はサポートされていません。 詳細については、[T-SQL を使用して SQL Server インスタンスの Windows ユーザーとグループを Azure SQL Managed Instance に移行する方法](../../managed-instance/migrate-sql-server-users-to-instance-transact-sql-tsql-tutorial.md)に関する記事を参照してください。
 
-または、Microsoft データ移行アーキテクトが特別に設計した [PowerShell ユーティリティ](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)を使用できます。 このユーティリティでは、ログインを再作成し、ソースからターゲットへのデータベース ユーザーを選択するために、PowerShell を使用して T-SQL スクリプトが作成されます。 
+または、Microsoft データ移行アーキテクトが特別に設計した [PowerShell ユーティリティ](https://www.microsoft.com/download/details.aspx?id=103111)を使用できます。 このユーティリティでは、ログインを再作成し、ソースからターゲットへのデータベース ユーザーを選択するために、PowerShell を使用して T-SQL スクリプトが作成されます。 
 
 PowerShell ユーティリティでは、Windows Server Active Directory アカウントが Azure AD アカウントに自動的にマップされ、ソースの Active Directory インスタンスに対してログインごとに UPN 参照を実行できます。 このユーティリティでは、ロール メンバーシップおよびユーザー アクセス許可と共に、カスタム サーバーとデータベース ロールのスクリプトが作成されます。 包含データベースはまだサポートされていません。使用可能な SQL Server アクセス許可のサブセットのみがスクリプト化されます。 
 
 ### <a name="encryption"></a>暗号化
 
-ネイティブ復元オプションを使用して、 [Transparent Data Encryption](../../database/transparent-data-encryption-tde-overview.md)  によって保護されているデータベースをマネージド インスタンスに移行する場合は、データベースの復元 "*前*" に、ソース SQL Server インスタンスからターゲット SQL マネージド インスタンスに[対応する証明書を移行します](../../managed-instance/tde-certificate-migrate.md)。 
+ネイティブ復元オプションを使用して、 [Transparent Data Encryption](../../database/transparent-data-encryption-tde-overview.md)  によって保護されているデータベースをマネージド インスタンスに移行する場合は、データベースの復元 "*前*" に、ソース SQL Server インスタンスからターゲット SQL マネージド インスタンスに [対応する証明書を移行します](../../managed-instance/tde-certificate-migrate.md)。 
 
 ### <a name="system-databases"></a>システム データベース
 
@@ -215,11 +219,9 @@ SQL Managed Instance に含まれているクラウドベースの高度な機�
 
 |Asset  |説明  |
 |---------|---------|
-|[データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| このツールを使用すると、ワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの対応性、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価を迅速に行うことができます。|
-|[DBLoader ユーティリティ](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader を使用すると、区切りテキスト ファイルから SQL Server にデータを読み込むことができます。 この Windows コンソール ユーティリティでは、SQL Server ネイティブ クライアントの一括読み込みインターフェイスが使用されます。 このインターフェイスは、Azure SQL Managed Instance と共に、SQL Server のすべてのバージョンで動作します。|
-|[オンプレミスの SQL Server ログインを Azure SQL Managed Instance に移動するユーティリティ](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)|PowerShell スクリプトでは、ログインを再作成し、オンプレミスの SQL Server から Azure SQL Managed Instance にデータベース ユーザーを選択するための T-SQL コマンド スクリプトを作成できます。 このツールを使用すると、Windows Server Active Directory アカウントを Azure AD アカウントに自動的にマッピングできるだけでなく、必要に応じて SQL Server のネイティブ ログインを移行することもできます。|
-|[Logman を使用した Perfmon データ収集の自動化](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Logman ツールを使用すると、Perfmon データを収集し (ベースライン パフォーマンスの把握に役立てるため)、移行ターゲットの推奨事項を取得できます。 このツールでは、logman.exe を使用して、リモート SQL Server インスタンスに設定されたパフォーマンス カウンターを作成、開始、停止、削除するコマンドを作成します。|
-|[完全および差分バックアップを復元して Azure SQL Managed Instance にデータベースを移行する](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20to%20Azure%20SQL%20DB%20Managed%20Instance%20-%20%20Restore%20with%20Full%20and%20Differential%20backups.pdf)|このホワイトペーパーでは、完全および差分バックアップのみがある (ログ バックアップ機能はない) 場合に、SQL Server から Azure SQL Managed Instance への移行を加速させるのに役立つガイダンスと手順が提供されています。|
+|[データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130)| このツールを使用すると、ワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの対応性、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価を迅速に行うことができます。|
+|[オンプレミスの SQL Server ログインを Azure SQL Managed Instance に移動するユーティリティ](https://www.microsoft.com/download/details.aspx?id=103111)|PowerShell スクリプトでは、ログインを再作成し、オンプレミスの SQL Server から Azure SQL Managed Instance にデータベース ユーザーを選択するための T-SQL コマンド スクリプトを作成できます。 このツールを使用すると、Windows Server Active Directory アカウントを Azure AD アカウントに自動的にマッピングできるだけでなく、必要に応じて SQL Server のネイティブ ログインを移行することもできます。|
+|[Logman を使用した Perfmon データ収集の自動化](https://www.microsoft.com/download/details.aspx?id=103114)|Logman ツールを使用すると、Perfmon データを収集し (ベースライン パフォーマンスの把握に役立てるため)、移行ターゲットの推奨事項を取得できます。 このツールでは、logman.exe を使用して、リモート SQL Server インスタンスに設定されたパフォーマンス カウンターを作成、開始、停止、削除するコマンドを作成します。|
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 

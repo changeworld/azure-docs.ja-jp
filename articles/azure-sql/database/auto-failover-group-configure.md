@@ -6,18 +6,18 @@ services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2, devx-track-azurecli
-ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+ms.devlang: ''
+author: emlisa
+ms.author: emlisa
+ms.reviewer: mathoma
 ms.date: 08/14/2019
-ms.openlocfilehash: a2f0cb683669aa092493c8080d5e4646cf9706c3
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 1cb2d8fdaa25479542152c76c12b9b86d7fb0433
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107477937"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165709"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL Database のフェールオーバー グループを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -84,11 +84,11 @@ Azure portal または PowerShell を使用して、フェールオーバー グ
    # Create a failover group between the servers
    $failovergroup = Write-host "Creating a failover group between the primary and secondary server..."
    New-AzSqlDatabaseFailoverGroup `
-      â€“ResourceGroupName $resourceGroupName `
+      ResourceGroupName $resourceGroupName `
       -ServerName $serverName `
       -PartnerServerName $drServerName  `
-      â€“FailoverGroupName $failoverGroupName `
-      â€“FailoverPolicy Automatic `
+      FailoverGroupName $failoverGroupName `
+      FailoverPolicy Automatic `
       -GracePeriodWithDataLossHours 2
    $failovergroup
 
@@ -248,11 +248,11 @@ Azure portal を使用して、フェールオーバー グループを作成し
    # Create a failover group between the servers
    Write-host "Creating failover group..."
    New-AzSqlDatabaseFailoverGroup `
-       â€“ResourceGroupName $resourceGroupName `
+       ResourceGroupName $resourceGroupName `
        -ServerName $serverName `
        -PartnerServerName $drServerName  `
-       â€“FailoverGroupName $failoverGroupName `
-       â€“FailoverPolicy Automatic `
+       FailoverGroupName $failoverGroupName `
+       FailoverPolicy Automatic `
        -GracePeriodWithDataLossHours 2
    Write-host "Failover group created successfully."
 

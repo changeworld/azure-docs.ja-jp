@@ -3,20 +3,20 @@ title: Azure SQL Server の Azure SQL Database へのレプリケーション
 description: Azure SQL Database のデータベースは、一方向のトランザクションまたはスナップショット レプリケーション トポロジのプッシュ サブスクライバーとして構成できます。
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: replication
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: ferno-ms
+ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b174c044196b8268eac775f419d541bb31761e4
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92780956"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693394"
 ---
 # <a name="replication-to-azure-sql-database"></a>Azure SQL Database へのレプリケーション
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

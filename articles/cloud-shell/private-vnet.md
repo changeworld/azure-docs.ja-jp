@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 58f6c7a3b5d68d2825cead545ba1b683d1faf1af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2ce108b7f36b7f7d4caf5133aafe99eb837df1ce
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222804"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742599"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Cloud Shell をデプロイする
 
@@ -62,7 +63,7 @@ Cloud Shell に使用される Azure Relay インスタンスは、コンテナ�
 ## <a name="virtual-network-deployment-limitations"></a>仮想ネットワークのデプロイに関する制限事項
 * 追加のネットワーク リソースが関係しているため、通常、仮想ネットワークで Cloud Shell を開始するには、標準の Cloud Shell セッションよりも時間がかかります。
 
-* 現在、インド中部以外のすべての Cloud Shell リージョンがサポートされています。 
+* 現在、インド中部以外のすべての Cloud Shell プライマリ リージョンがサポートされています。 
 
 * [Azure Relay](../azure-relay/relay-what-is-it.md) は無料のサービスではありません。[価格](https://azure.microsoft.com/pricing/details/service-bus/)をご確認ください。 Cloud Shell シナリオでは、Cloud Shell を使用している間、管理者ごとに 1 つのハイブリッド接続が使用されます。 Cloud Shell セッションが完了すると、接続は自動的にシャットダウンされます。
 
@@ -89,7 +90,7 @@ ResourceTypes                             RegistrationState
 Azure portal で、または Azure CLI や Azure PowerShell などを使用して、リソース グループと、その新しいリソース グループ内に仮想ネットワークを作成します。**リソース グループと仮想ネットワークは同じリージョンに存在する必要があります**。
 
 ### <a name="arm-templates"></a>ARM テンプレート
-[Azure クイックスタート テンプレート](https://aka.ms/cloudshell/docs/vnet/template)を利用して仮想ネットワーク内に Cloud Shell リソースを作成し、[Azure クイックスタート テンプレート](https://aka.ms/cloudshell/docs/vnet/template/storage)を使用して必要なストレージを作成します。 リソース名 (主にファイル共有名) をメモしておきます。
+[Azure クイックスタート テンプレート](https://aka.ms/cloudshell/docs/vnet/template)を利用して仮想ネットワーク内に Cloud Shell リソースを作成し、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/cloud-shell-vnet-storage/)を使用して必要なストレージを作成します。 リソース名 (主にファイル共有名) をメモしておきます。
 
 ### <a name="open-relay-firewall"></a>リレー ファイアウォールを開く
 上記のテンプレートを使用して作成されたリレーに移動し、設定で [ネットワーク] を選択して、ブラウザー ネットワークからリレーへのアクセスを許可します。 既定では、リレーにアクセスできるのは、リレーが作成された仮想ネットワークからのみです。 

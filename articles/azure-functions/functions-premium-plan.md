@@ -1,24 +1,24 @@
 ---
 title: Azure Functions の Premium プラン
 description: Azure Functions の Premium プランの詳細と構成オプション (VNet、コールド スタートなし、無制限の実行期間)。
-author: jeffhollan
+author: cachai2
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.author: jehollan
-ms.custom:
-- references_regions
-- fasttrack-edit
-- devx-track-azurecli
-ms.openlocfilehash: 3061329ad9dcb368dab586acc2146e6fb4e23028
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: cachai
+ms.custom: references_regions, fasttrack-edit, devx-track-azurecli
+ms.openlocfilehash: 583b1545adbc8542923104eb96dd33b744c43c06
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708715"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039185"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
-Azure Functions の Premium プラン (Elastic Premium プランとも呼ばれます) は、 Function App のホスティング オプションです。 その他のホスティング プラン オプションについては、[ホスティング プランの記事](functions-scale.md)を参照してください。
+Azure Functions Elastic Premium プランは、関数アプリの動的スケール ホスティング オプションです。 その他のホスティング プラン オプションについては、[ホスティング プランの記事](functions-scale.md)を参照してください。
+
+>[!IMPORTANT]
+>Azure Functions は Azure App Service プラットフォームで実行されます。 App Service プラットフォームでは、Premium プラン関数アプリをホストするプランは *Elastic* Premium プランと呼ばれており、`EP1` のような SKU 名があります。 Premium プランで関数アプリを実行することを選択した場合、`EP1` のように "E" で始まる SKU 名を持つプランを必ず作成してください。 `P1V2` (Premium V2 Small プラン) のように "P" で始まる App Service プラン SKU 名は実際には [Dedicated ホスティング プラン](dedicated-plan.md)です。 Dedicated であり、Elastic Premium ではないため、"P" で始まる SKU 名のプランは動的にスケールせず、コストが増えることがあります。 
 
 Premium プランのホスティングでは、関数に次の利点があります。
 
@@ -95,7 +95,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ## <a name="private-network-connectivity"></a>プライベート ネットワーク接続
 
-Premium プランにデプロイされた Function App では、[Web アプリ向けの VNet 統合](../app-service/web-sites-integrate-with-vnet.md)を利用できます。 構成すると、アプリを VNet 内のリソースと通信させる、またはサービス エンドポイントを介してセキュリティで保護することができます。 受信トラフィックを制限するための IP 制限もアプリで利用できます。
+Premium プランにデプロイされた Function App では、[Web アプリ向けの VNet 統合](../app-service/overview-vnet-integration.md)を利用できます。 構成すると、アプリを VNet 内のリソースと通信させる、またはサービス エンドポイントを介してセキュリティで保護することができます。 受信トラフィックを制限するための IP 制限もアプリで利用できます。
 
 Premium プランで Function App にサブネットを割り当てるときは、個々の潜在的インスタンスのための十分な IP アドレスがあるサブネットが必要です。 使用可能なアドレスが 100 以上の IP ブロックが必要です。
 
@@ -158,7 +158,7 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 ## <a name="region-max-scale-out"></a>リージョン最大スケール アウト
 
-以下は、1 つのプランでサポートされている最大スケールアウト値をリージョンと OS の構成ごとにまとめたものです。 増加を依頼するには、サポート チケットを開くことができます。
+以下は、1 つのプランでサポートされている最大スケールアウト値をリージョンと OS の構成ごとにまとめたものです。
 
 Functions のリージョン別の可用性の完全な情報については、[Azure の Web サイト](https://azure.microsoft.com/global-infrastructure/services/?products=functions)を参照してください。
 
@@ -170,37 +170,41 @@ Functions のリージョン別の可用性の完全な情報については、[
 |オーストラリア南東部 | 100 | 20 |
 |ブラジル南部| 100 | 20 |
 |カナダ中部| 100 | 20 |
+|インド中部| 100 | 20 |
 |米国中部| 100 | 20 |
 |中国東部 2| 100 | 20 |
 |中国北部 2| 100 | 20 |
 |東アジア| 100 | 20 |
-|米国東部 | 100 | 20 |
+|米国東部 | 100 | 40 |
 |米国東部 2| 100 | 20 |
 |フランス中部| 100 | 20 |
-|ドイツ中西部| 100 | 利用不可 |
+|ドイツ中西部| 100 | 20 |
 |東日本| 100 | 20 |
 |西日本| 100 | 20 |
+|JIO インド西部| 100 | 20 |
 |韓国中部| 100 | 20 |
 |韓国南部| 利用不可 | 20 |
 |米国中北部| 100 | 20 |
 |北ヨーロッパ| 100 | 20 |
 |ノルウェー東部| 100 | 20 |
+|南アフリカ北部| 100 | 20 |
 |米国中南部| 100 | 20 |
 |インド南部 | 100 | 利用不可 |
 |東南アジア| 100 | 20 |
-|スイス北部| 100 | 利用不可 |
-|スイス西部| 100 | 利用不可 |
+|スイス北部| 100 | 20 |
+|スイス西部| 100 | 20 |
+|アラブ首長国連邦北部| 100 | 20 |
 |英国南部| 100 | 20 |
 |英国西部| 100 | 20 |
 |USGov アリゾナ| 100 | 20 |
+|USGov テキサス| 100 | 利用不可 |
 |USGov バージニア州| 100 | 20 |
-|USNat 東部| 100 | 利用不可 |
-|USNat 西部| 100 | 利用不可 |
+|米国中西部| 100 | 20 |
 |西ヨーロッパ| 100 | 20 |
 |インド西部| 100 | 20 |
-|米国中西部| 100 | 20 |
 |米国西部| 100 | 20 |
 |米国西部 2| 100 | 20 |
+|米国西部 3| 100 | 20 |
 
 ## <a name="next-steps"></a>次のステップ
 

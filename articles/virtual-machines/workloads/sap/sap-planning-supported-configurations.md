@@ -13,22 +13,22 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/11/2020
+ms.date: 08/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 274db058f9f291d720fc350bb23f7bfdde2791e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3975f23ad184ec04849fca57ef37d5fe57c2b48f
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670927"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272030"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ
 Azure での SAP NetWeaver、Business One、`Hybris`、または S/4HANA システム アーキテクチャの設計により、さまざまなアーキテクチャやツールで、スケーラブルで、効率性、可用性に優れたデプロイを実現するためのさまざまな機会が提供されます。 使用されているオペレーティング システムまたは DBMS によっては、制限があります。 また、オンプレミスでサポートされているすべてのシナリオが、Azure でも同じようにサポートされているわけではありません。 このドキュメントでは、サポートされていない非高可用性構成と高可用性構成、および Azure VM だけを使用するアーキテクチャについて説明します。 [HANA Large Instances](./hana-overview-architecture.md) でサポートされているシナリオについては、「[HANA L インスタンスのサポートされるシナリオ](./hana-supported-scenario.md)」をご覧ください。 
 
 
 ## <a name="2-tier-configuration"></a>2 層構成
-SAP 2 層構成は、同じサーバーまたは VM ユニットで実行される SAP DBMS とアプリケーション レイヤーの複合レイヤーで構築されるものと見なされます。 2 番目の層は、ユーザー インターフェイス レイヤーと見なされます。 2 層構成の場合、DBMS と SAP アプリケーション レイヤーによって Azure VM のリソースが共有されます。 そのため、リソースが競合しないような方法で、さまざまなコンポーネントを構成する必要があります。 また、VM のリソースをオーバーサブスクライブしないように注意する必要もあります。 そのような構成では、関連するさまざまな Azure コンポーネントの [Azure サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)より高い高可用性は提供されません。
+SAP 2 層構成は、同じサーバーまたは VM ユニットで実行される SAP DBMS とアプリケーション レイヤーの複合レイヤーで構築されるものと見なされます。 2 番目の層は、ユーザー インターフェイス レイヤーと見なされます。 2 層構成の場合、DBMS と SAP アプリケーション レイヤーによって Azure VM のリソースが共有されます。 そのため、コンポーネントがリソースで競合しないような方法で、さまざまなコンポーネントを構成する必要があります。 また、VM のリソースをオーバーサブスクライブしないように注意する必要もあります。 そのような構成では、関連するさまざまな Azure コンポーネントの [Azure サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)より高い高可用性は提供されません。
 
 このような構成を図に示すと次のようになります。
 
@@ -69,7 +69,7 @@ Azure でサポートされているすべての OS/DBMS の組み合わせに�
 - SAP HANA。1 つの VM で複数のインスタンス (このデプロイ方法は SAP では MCOS と呼ばれます) がサポートされます。 詳細については、1 つのホスト上の複数の SAP HANA システム (MCOS) に関する SAP の記事 (https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
 - /b2751fd43bec41a9a14e01913f1edf18.html) を参照してください。
 
-1 つのホスト上で複数のデータベース インスタンスを実行する場合は、異なるインスタンスがリソースに対して競合しないようにして、VM の物理リソースの制限を超えないようにする必要があります。 これは特に、VM を共有するインスタンスの 1 つが割り当てることのできる量に上限を設ける必要があるメモリの場合に大事です。 また、異なるデータベース インスタンスで利用できる CPU リソースにも当てはまります。 前述のすべての DBMS には、インスタンス レベルでメモリ割り当てと CPU リソースを制限できる構成があります。
+1 つのホスト上で複数のデータベース インスタンスを実行する場合は、異なるインスタンスがリソースに対して競合しないようにして、VM の物理リソースの制限を超えないようにする必要があります。 これは特に、VM を共有するインスタンスの 1 つが割り当てることのできる量に上限を設ける必要があるメモリの場合に大事です。 また、異なるデータベース インスタンスで使用できる CPU リソースにも当てはまります。 前述のすべての DBMS には、インスタンス レベルでメモリ割り当てと CPU リソースを制限できる構成があります。
 このような構成を Azure VM でサポートするには、異なるインスタンスによって管理されるデータベースのデータ ファイルとログおよび再実行ログ ファイルに使用されるディスクまたはボリュームを分離することが期待されます。 つまり、異なる DBMS インスタンスによって管理されるデータベースのデータ ファイルまたはログ ファイルと再実行ログ ファイルで、同じディスクまたはボリュームが共有されないようにします。 
 
 HANA Large Instances のディスク構成は、構成済みで提供されます。詳細についてた、「[HANA Large Instances のサポートされているシナリオ](./hana-supported-scenario.md#single-node-mcos)」を参照してください。 
@@ -156,7 +156,7 @@ SAP セントラル サービスは、SAP 構成の 2 番目の単一障害点�
 - ファイル レプリケーションのために 2 つの SUSE VM と `drdb` を使用して高可用性 NFS 共有が作成されている SUSE オペレーティング システム上の Pacemaker。 詳細については以下のドキュメントを参照してください
     - [SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse.md)
     - [SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](./high-availability-guide-suse-nfs.md)
-- [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) によって提供される NFS 共有を利用する SUSE オペレーティング システム上の Pacemaker。 詳細については以下を参照してください
+- [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) によって提供される NFS 共有を使用する SUSE オペレーティング システム上の Pacemaker。 詳細については以下を参照してください
     - [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)
 - `glusterfs` クラスターでホストされた NFS 共有を使用する Red Hat オペレーティング システム上の Pacemaker。 詳細については次の記事を参照してください
     - [Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性](./high-availability-guide-rhel.md)
@@ -177,14 +177,14 @@ SAP セントラル サービスは、SAP 構成の 2 番目の単一障害点�
 
 
 ### <a name="supported-storage-with-the-sap-central-services-scenarios-listed-above"></a>上記の SAP セントラル サービスのシナリオでサポートされているストレージ
-SAP セントラル サービス クラスターのシナリオで使用できる品質の高可用性 NFS または SMB 共有が提供されるのは Azure Storage の種類のサブセットのみなので、サポートされているストレージの種類の一覧は次のとおりです。
+SAP セントラル サービス クラスターのシナリオで使用できる品質の高可用性 NFS または SMB 共有が提供されるのは Azure Storage の種類のサブセットのみなので、サポートされているストレージの種類の一覧は次のとおりです
 
-- Windows スケールアウト ファイル サーバーを使用する Windows フェールオーバー クラスター サーバーは、Azure NetApp Files を除くすべてのネイティブ Azure Storage の種類にデプロイできます。 ただし、スループットと IOPS のサービス レベル アグリーメントが優れているため、Premium Storage を利用することをお勧めします。
+- Windows スケールアウト ファイル サーバーを使用する Windows フェールオーバー クラスター サーバーは、Azure NetApp Files を除くすべてのネイティブ Azure Storage の種類にデプロイできます。 ただし、スループットと IOPS のサービス レベル アグリーメントが優れているため、Premium Storage を使用することをお勧めします。
 - Azure NetApp Files 上の Windows フェールオーバー クラスター サーバーと SMB は、Azure NetApp Files でサポートされています。 Azure Files サービスでの SMB 共有は、現時点ではサポートされて **いません**。
-- SIOS `Datakeeper` に基づく Windows フェールオーバー クラスター サーバーと Windows 共有ディスクは、Azure NetApp Files を除くすべてのネイティブ Azure Storage の種類にデプロイできます。 ただし、スループットと IOPS のサービス レベル アグリーメントが優れているため、Premium Storage を利用することをお勧めします。
+- SIOS `Datakeeper` に基づく Windows フェールオーバー クラスター サーバーと Windows 共有ディスクは、Azure NetApp Files を除くすべてのネイティブ Azure Storage の種類にデプロイできます。 ただし、スループットと IOPS のサービス レベル アグリーメントが優れているため、Premium Storage を使用することをお勧めします。
 - Azure NetApp Files 上の NFS 共有を使用する SUSE または Red Hat Pacemaker は、Azure NetApp Files でサポートされています。 
-- 2 つの VM 間に `drdb` 構成を使用する SUSE Pacemaker は、Azure NetApp Files を除くネイティブの Azure Storage の種類を使用してサポートされています。 ただし、スループットと IOPS のサービス レベル アグリーメントが優れているため、Premium Storage を利用することをお勧めします。
-- NFS 共有を提供するために `glusterfs` を使用する Red Hat Pacemaker は、Azure NetApp Files を除くネイティブの Azure Storage の種類を使用してサポートされています。 ただし、スループットと IOPS のサービス レベル アグリーメントが優れているため、Premium Storage を利用することをお勧めします。
+- 2 つの VM 間に `drdb` 構成を使用する SUSE Pacemaker は、Azure NetApp Files を除くネイティブの Azure Storage の種類を使用してサポートされています。 ただし、スループットと IOPS のサービス レベル アグリーメントが優れているため、Premium Storage を使用することをお勧めします。
+- NFS 共有を提供するために `glusterfs` を使用する Red Hat Pacemaker は、Azure NetApp Files を除くネイティブの Azure Storage の種類を使用してサポートされています。 ただし、スループットと IOPS のサービス レベル アグリーメントが優れているため、Premium Storage を使用することをお勧めします。
 
 > [!IMPORTANT]
 > Microsoft Azure Marketplace には、Azure ネイティブ ストレージ上でストレージ ソリューションを提供するさまざまなソフト アプライアンスが用意されています。 これらのソフトアプライアンスは、NFS または SMB 共有の作成にも使用でき、理論的にはフェールオーバー クラスター化された SAP セントラル サービスでも使用することができます。 Microsoft では、これらのソリューションは SAP ワークロードに対して直接はサポートしていません。 このようなソリューションを使用して NFS または SMB 共有を作成する場合は、ストレージ ソフト アプライアンスのソフトウェアを所有しているサードパーティから、SAP セントラル サービス構成のサポートを受ける必要があります。
@@ -246,7 +246,7 @@ DBMS レイヤーでは、Always On、Oracle Data Guard、DB2 HADR、SAP ASE Alw
 - 1 つの Azure 可用性セットに異なる VM が収集されているときに VM ファミリ間でサイズを変更すると、または VM の M シリーズ ファミリと Mv2 ファミリの間でサイズの変更を行うと、問題になることがあります
 - 最小限の遅延で変更のストリームを受信できるデータベース インスタンスの CPU とメモリの消費量、および最小限の遅延でこれらの変更をデータに適用するのに十分な CPU とメモリ リソース  
 
-さまざまな VM サイズの制限について詳しくは、[こちら](../../sizes.md)を参照してください 
+さまざまな VM サイズの制限について詳しくは、[VM サイズ](../../sizes.md)を参照してください
 
 DR ターゲットのデプロイ方法としてもう 1 つサポートされているのは、非運用 SAP インスタンスの非運用 DBMS インスタンスが実行されている VM に 2 つ目の DBMS インスタンスをインストールする方法です。 この方法は、DR シナリオのメイン インスタンスとして機能する必要がある特定のターゲット インスタンスに必要なメモリ、CPU リソース、ネットワーク帯域幅、ストレージ帯域幅を把握する必要があるため、少々困難になる場合があります。 特に HANA では、データが DR ターゲット インスタンスに事前に読み込まれないように、共有ホスト上で DR ターゲットとして機能するインスタンスを構成することを強くお勧めします。
 
@@ -295,7 +295,7 @@ Azure アーキテクチャで SAP ワークロードに対してサポートさ
     - 2 つのレイヤーを 2 つの異なるクラウド ベンダーでデプロイする場合。 たとえば、DBMS 層を Oracle クラウド インフラストラクチャにデプロイし、アプリケーション層を Azure にデプロイする場合
 - 複数インスタンスの HANA Pacemaker クラスター構成
 - Windows でサポートされている SAP データベース用に、ANF 上の SOFS または SMB による共有ディスクを使用する Windows クラスター構成。 代わりに、特定のデータベースのネイティブ高可用性レプリケーションを使用し、個別のストレージ スタックを使用することをお勧めします
-- ANF 上の NFS 共有にあるデータベース ファイルを使用する、Linux でサポートされている SAP データベースのデプロイ。ただし、SAP HANA を除く
+- ANF 上の NFS 共有にあるデータベース ファイルを使用する、Linux でサポートされている SAP データベースのデプロイ。ただし、SAP HANA、Oracle on Oracle Linux、Db2 on Suse、Red Hat を除く
 - Windows と Oracle Linux 以外のゲスト OS への Oracle DBMS のデプロイ。 [SAP サポート ノート #2039619](https://launchpad.support.sap.com/#/notes/2039619) も参照してください
 
 次のような、テストされていないため経験がないシナリオ:

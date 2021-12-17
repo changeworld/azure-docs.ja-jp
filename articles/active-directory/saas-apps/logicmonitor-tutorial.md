@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と LogicMonitor の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と LogicMonitor の統合'
 description: Azure Active Directory と LogicMonitor の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2021
+ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: d5342782c26b5c274699bacc4ea0c7cdf5b7f880
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18d29099445f3d0af52ea6e0fa02efa25410bbdd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649412"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290823"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>チュートリアル: Azure Active Directory と LogicMonitor の統合
+# <a name="tutorial-azure-ad-sso-integration-with-logicmonitor"></a>チュートリアル: Azure AD SSO と LogicMonitor の統合
 
 このチュートリアルでは、LogicMonitor と Azure Active Directory (Azure AD) を統合する方法について説明します。 LogicMonitor を Azure AD に統合すると、次のことができます。
 
@@ -28,16 +28,16 @@ ms.locfileid: "101649412"
 
 ## <a name="prerequisites"></a>前提条件
 
-LogicMonitor と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の試用版を入手できます。
-* LogicMonitor でのシングル サインオンが有効なサブスクリプション。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* LogicMonitor でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* LogicMonitor では、**SP** によって開始される SSO がサポートされます
+* LogicMonitor では、**SP** によって開始される SSO がサポートされます。
 
 ## <a name="add-logicmonitor-from-the-gallery"></a>ギャラリーからの LogicMonitor の追加
 
@@ -63,7 +63,7 @@ LogicMonitor に対して Azure AD SSO を構成してテストするには、�
     1. **[LogicMonitor のテスト ユーザーの作成](#create-logicmonitor-test-user)** - LogicMonitor で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
@@ -75,16 +75,14 @@ LogicMonitor に対して Azure AD SSO を構成してテストするには、�
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![[LogicMonitor のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
-
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.logicmonitor.com`
-
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.logicmonitor.com`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.logicmonitor.com`
     
-    c. **[応答 URL (Assertion Consumer Service URL)]** ボックスに、次のパターンを使用して URL を入力します: `https://companyname.logicmonitor.com/santaba/saml/SSO/` 
+    b. **[応答 URL (Assertion Consumer Service URL)]** ボックスに、URL として「`https://companyname.logicmonitor.com/santaba/saml/SSO/`」を入力します 
   
+    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.logicmonitor.com`
+
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[LogicMonitor クライアント サポート チーム](https://www.logicmonitor.com/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値を実際の識別子とサインオン URL で更新してください。 これらの値を取得するには、[LogicMonitor クライアント サポート チーム](https://www.logicmonitor.com/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -94,8 +92,7 @@ LogicMonitor に対して Azure AD SSO を構成してテストするには、�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -107,7 +104,7 @@ LogicMonitor に対して Azure AD SSO を構成してテストするには、�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に LogicMonitor へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -119,21 +116,21 @@ LogicMonitor に対して Azure AD SSO を構成してテストするには、�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name=&quot;configure-logicmonitor-sso&quot;></a>LogicMonitor の SSO の構成
+## <a name="configure-logicmonitor-sso"></a>LogicMonitor の SSO の構成
 
 1. **LogicMonitor** 会社サイトに管理者としてログインします。
 
 2. 上部のメニューで **[Settings]** をクリックします。
 
-    ![設定](./media/logicmonitor-tutorial/ic790052.png &quot;設定")
+    ![設定](./media/logicmonitor-tutorial/menu.png "設定")
 
 3. 左側にあるナビゲーション バーで、 **[シングル サインオン]** をクリックします。
 
-    ![シングル サインオン](./media/logicmonitor-tutorial/ic790053.png "シングル サインオン")
+    ![シングル サインオン](./media/logicmonitor-tutorial/roles.png "シングル サインオン")
 
 4. [**シングル サインオン (SSO) の設定**] セクションで、以下の手順を実行します。
 
-    ![シングル サインオンの設定](./media/logicmonitor-tutorial/ic790054.png "[シングル サインオンの設定]")
+    ![シングル サインオンの設定](./media/logicmonitor-tutorial/metadata.png "[シングル サインオンの設定]")
 
     a. **[Enable Single Sign-on]** を選択します。
 
@@ -153,13 +150,13 @@ Azure AD ユーザーがサインインできるように、Azure Active Directo
 
 2. 上部のメニューにある [**設定**] をクリックし、[**ロールとユーザー**] をクリックします。
 
-    ![[Roles and Users (ロールとユーザー)]](./media/logicmonitor-tutorial/ic790056.png "[Roles and Users (ロールとユーザー)]")
+    ![[Roles and Users (ロールとユーザー)]](./media/logicmonitor-tutorial/user.png "[Roles and Users (ロールとユーザー)]")
 
 3. **[追加]** をクリックします。
 
 4. [**アカウントを追加**] セクションで、以下の手順を実行します。
 
-    ![[アカウントの追加]](./media/logicmonitor-tutorial/ic790057.png "[アカウントの追加]")
+    ![[アカウントの追加]](./media/logicmonitor-tutorial/details.png "[アカウントの追加]")
 
     a. 関連するテキスト ボックスにプロビジョニングする Azure Active Directory ユーザーの **ユーザー名**、**メール**、**パスワード**、**パスワードの再入力** の値を入力します。
 
@@ -170,7 +167,7 @@ Azure AD ユーザーがサインインできるように、Azure Active Directo
 > [!NOTE]
 > LogicMonitor から提供されている他の LogicMonitor ユーザー アカウント作成ツールや API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
@@ -178,8 +175,8 @@ Azure AD ユーザーがサインインできるように、Azure Active Directo
 
 * LogicMonitor のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [LogicMonitor] タイルをクリックすると、SSO を設定した LogicMonitor に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [LogicMonitor] タイルをクリックすると、SSO を設定した LogicMonitor に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-LogicMonitor を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+LogicMonitor を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

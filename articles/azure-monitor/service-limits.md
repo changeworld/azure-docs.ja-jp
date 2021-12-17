@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
-ms.openlocfilehash: a3589aff65b24563cf21f175ccfc3a706891d699
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c554ac2bd4455ff75681db585d95ad36ddda5970
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954005"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606659"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor サービスの制限
 
@@ -28,10 +28,15 @@ ms.locfileid: "104954005"
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-autoscale.md)]
 
-
 ## <a name="data-collection-rules"></a>データ収集ルール
 
 [!INCLUDE [data-collection-rules](../../includes/azure-monitor-limits-data-collection-rules.md)]
+
+## <a name="diagnostic-settings"></a>診断設定
+
+[!INCLUDE [data-collection-rules](../../includes/azure-monitor-limits-diagnostic-settings.md)]
+
+
 ## <a name="log-queries-and-language"></a>ログ クエリと言語
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-log-queries.md)]
@@ -47,5 +52,5 @@ ms.locfileid: "104954005"
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)
-- [Azure Monitor での使用量と推定コストの監視](/azure/azure-monitor/usage-estimated-costs)
+- [Azure Monitor での使用量と推定コストの監視](./usage-estimated-costs.md)
 - [Application Insights の使用量とコストを管理する](app/pricing.md)

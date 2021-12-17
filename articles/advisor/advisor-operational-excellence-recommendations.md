@@ -3,12 +3,12 @@ title: Advisor を使用してオペレーショナル エクセレンスを向�
 description: Azure Advisor を使用して、Azure サブスクリプションのオペレーショナル エクセレンスを最適化し、成熟させます。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 0b938a0c7a42182bb8d2a50b48d65a0844d952a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 151edab6c389e32abaaa73fec3012fa3bdcdf75a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579957"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650422"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Azure Advisor を使用してオペレーショナル エクセレンスを実現する
 
@@ -69,6 +69,8 @@ Advisor は、お客様がベスト プラクティスを採用してオペレ�
 ## <a name="enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources"></a>Traffic Analytics を有効にして、Azure リソース間のトラフィック パターンに関する分析情報を表示する
 Traffic Analytics は、Azure でのユーザーとアプリケーションのアクティビティを可視化するクラウドベースのソリューションです。 Traffic Analytics により、Network Watcher ネットワーク セキュリティ グループ (NSG) フロー ログが分析され、トラフィック フローに関する分析情報が提供されます。 Traffic Analytics を使用すると、Azure と Azure 以外のデプロイ全体のトップ トーカーを表示し、環境内の開いているポート、プロトコル、および悪意のあるフローを調査し、ネットワークのデプロイを最適化してパフォーマンスを向上させることができます。 10 分と 60 分の処理間隔でフロー ログを処理できるため、トラフィックの分析を高速化できます。 お使いの Azure リソースに対して Traffic Analytics を有効にすることをお勧めします。 
 
+## <a name="increase-vcpu-limits-for-your-deployments-for-pay-as-you-go-subscription-preview"></a>従量課金制サブスクリプションのデプロイの vCPU 制限を増やす (プレビュー)
+このエクスペリエンスは、増加するニーズに対応し、クォータの制限によるデプロイの問題を回避する目的でクォータを増加させる簡単な方法を提供するために作成されました。 制限付きサブスクリプションの [クイック修正] オプションが有効になりました。これにより、vCPU のクォータを 10 から 20 に増やす簡単なワンクリック オプションが提供されます。 この簡略化されたアプローチでは、ユーザーに代わって[クォータ REST API](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670) を呼び出して、クォータを増やします。
 
 ## <a name="next-steps"></a>次のステップ
 

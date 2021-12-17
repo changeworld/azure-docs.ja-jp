@@ -4,15 +4,16 @@ description: カスタム クエリを使用して、Microsoft コマーシャ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 4be063342a6c46d73c86f2d9dff1da5395328389
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d003980d7a8a1a5a5477a7d22ec547db13b52ad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583583"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748292"
 ---
 # <a name="custom-query-specification"></a>カスタム クエリの仕様
 
@@ -60,10 +61,10 @@ JSON として表示されるデータセットの例をこちらに示します
 
 | クエリ | 説明 |
 | ------------ | ------------- |
-| **SELECT** MarketplaceSubscriptionId,CustomerId **FROM** ISVUsage **TIMESPAN LAST_MONTH** | このクエリでは、過去 1 か月のすべての一意の `MarketplaceSubscriptionId` と、対応する `CustomerId` が取得されます。 |
+| **SELECT** MarketplaceSubscriptionId,CustomerId **FROM** ISVUsage **TIMESPAN LAST_MONTH** | このクエリでは、過去 1 か月のすべての `MarketplaceSubscriptionId` と、それに対応する `CustomerId` が取得されます。 |
 | **SELECT** MarketplaceSubscriptionId, EstimatedExtendedChargeCC **FROM** ISVUsage **ORDER BY** EstimatedExtendedChargeCC **LIMIT** 10 | このクエリでは、各サブスクリプションで販売されているライセンス数の上位 10 件のサブスクリプションが、降順で取得されます。 |
-| **SELECT** CustomerId, NormalizedUsage, RawUsage **FROM** ISVUsage **ORDER BY** NormalizedUsage **WHERE** NormalizedUsage > 100000 **ORDER BY** NormalizedUsage **TIMESPAN** LAST_6_MONTHS | このクエリでは、NormalizedUsage が 10 万より大きいすべての顧客の NormalizedUsage と RawUsage が取得されます。 |
-| **SELECT** MarketplaceSubscriptionId, MonthStartDate, NormalizedUsage **FROM** ISVUsage **WHERE** CustomerId IN (‘2a31c234-1f4e-4c60-909e-76d234f93161’, ‘80780748-3f9a-11eb-b378-0242ac130002’) | このクエリでは、`2a31c234-1f4e-4c60-909e-76d234f93161` および `80780748-3f9a-11eb-b378-0242ac130002` という 2 つの `CustomerId` 値によって毎月生成される `MarketplaceSubscriptionId` および収益が取得されます。 |
+| **SELECT** CustomerId, NormalizedUsage, RawUsage **FROM** ISVUsage **WHERE** NormalizedUsage > 100000 **ORDER BY** NormalizedUsage **TIMESPAN** LAST_6_MONTHS | このクエリでは、NormalizedUsage が 10 万より大きいすべての顧客の NormalizedUsage と RawUsage が取得されます。 |
+| **SELECT** MarketplaceSubscriptionId, MonthStartDate, NormalizedUsage **FROM** ISVUsage **WHERE** CustomerId IN (‘2a31c234-1f4e-4c60-909e-76d234f93161’, ‘80780748-3f9a-11eb-b378-0242ac130002’) | このクエリでは、`2a31c234-1f4e-4c60-909e-76d234f93161` および `80780748-3f9a-11eb-b378-0242ac130002` という 2 つの `CustomerId` 値によって、毎月の `MarketplaceSubscriptionId` と正規化された使用状況が取得されます。 |
 |||
 
 ## <a name="query-specification"></a>クエリの仕様
@@ -118,10 +119,17 @@ JSON として表示されるデータセットの例をこちらに示します
 
 #### <a name="select"></a>SELECT
 
-クエリのこの部分では、エクスポートする列を指定します。 選択できる列は、データセットの `selectableColumns` と `availableMetrics` のセクションに一覧表示されているフィールドです。 最終的にエクスポートされた行には、選択した列の個別の値が常に含まれます。 たとえば、エクスポートされたファイルには重複する行が存在しません。 メトリックは、選択した列の個別の組み合わせごとに計算されます。
+クエリのこの部分では、エクスポートする列を指定します。 選択できる列は、データセットの `selectableColumns` と `availableMetrics` のセクションに一覧表示されているフィールドです。 選択したフィールドの一覧にメトリック列が含まれている場合、非メトリック列の個別の組み合わせごとにメトリックが計算されます。 
 
 **例**:
 - **SELECT** `OfferName`, `NormalizedUsage`
+
+#### <a name="distinct"></a>DISTINCT
+
+SELECT の後に DISTINCT キーワードを追加すると、エクスポートされた最終的なデータに重複する行が含まれなくなります。 DISTINCT キーワードは、メトリック列が選択されているかどうかに関係なく機能します。
+
+**例**:
+- **SELECT DISTINCT** `MarketplaceSubscriptionId, OfferType`
 
 #### <a name="from"></a>FROM
 

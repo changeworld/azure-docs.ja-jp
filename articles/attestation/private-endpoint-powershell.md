@@ -7,12 +7,13 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 03/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 8ff2e73a8557c6b1761c852ac58a46037a122ddb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a799d161aef0047524d37e02b64b13debdacf5a4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628528"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020808"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用してプライベート エンドポイントを作成する
 
@@ -37,9 +38,9 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 ```azurepowershell-interactive
 ## Create to your Azure account subscription and create a resource group in a desired location. ##
 Connect-AzAccount
-Set-AzSubscription “mySubscription”
-$rg = “CreateAttestationPrivateLinkTutorial-rg”
-$loc= "eastus”
+Set-AzSubscription "mySubscription"
+$rg = "CreateAttestationPrivateLinkTutorial-rg"
+$loc= "eastus"
 New-AzResourceGroup -Name $rg -Location $loc
 ```
 
@@ -110,14 +111,14 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig
 $attestationProviderName = "myattestationprovider"
 $attestationProvider = New-AzAttestation -Name $attestationProviderName -ResourceGroupName $rg -Location $loc
 $attestationProviderId = $attestationProvider.Id
-
+```
+## <a name="access-the-attestation-provider-from-local-machine"></a>ローカル コンピューターから構成証明プロバイダーへのアクセス ##
+「`nslookup <provider-name>.attest.azure.net`」と入力します。 **\<provider-name>** を、前の手順で作成した構成証明プロバイダー インスタンスの名前に置き換えます。 
+```azurepowershell-interactive
 ## Access the attestation provider from local machine ##
-Enter nslookup <provider-name>.attest.azure.net. Replace <provider-name> with the name of the attestation provider instance you created in the previous steps. 
-
-You'll receive a message similar to what is displayed below:
-
-## PowerShell copy. ##
 nslookup myattestationprovider.eus.attest.azure.net
+
+<# You'll receive a message similar to what is displayed below:
 
 Server:  cdns01.comcast.net
 Address:  2001:558:feed::1
@@ -127,6 +128,8 @@ Name:    eus.service.attest.azure.net
 Address:  20.62.219.160
 Aliases:  myattestationprovider.eus.attest.azure.net
     attesteusatm.trafficmanager.net
+
+#>
 ```
 
 ## <a name="create-private-endpoint"></a>プライベート エンドポイントの作成
@@ -141,7 +144,7 @@ Aliases:  myattestationprovider.eus.attest.azure.net
 $privateEndpointConnection = New-AzPrivateLinkServiceConnection -Name "myConnection" -PrivateLinkServiceId $attestationProviderId -GroupID "Standard"
 
 ## Disable private endpoint network policy ##
- $vnet.Subnets[0].PrivateEndpointNetworkPolicies = "Disabled" 
+$vnet.Subnets[0].PrivateEndpointNetworkPolicies = "Disabled" 
 $vnet | Set-AzVirtualNetwork
 
 ## Create private endpoint
@@ -190,23 +193,29 @@ New-AzPrivateDnsZoneGroup -ResourceGroupName $rg -PrivateEndpointName "myPrivate
 
 8. 接続後にサーバーで Windows PowerShell を開きます。
 
-9. 「`nslookup <provider-name>.attest.azure.net`」と入力します。 **\<provider-name>** を、前の手順で作成した構成証明プロバイダー インスタンスの名前に置き換えます。 以下に表示されるようなメッセージが返されます。
+9. 「`nslookup <provider-name>.attest.azure.net`」と入力します。 **\<provider-name>** を、前の手順で作成した構成証明プロバイダー インスタンスの名前に置き換えます。
 
-    ```powershell
-
+    ```azurepowershell-interactive
     ## Access the attestation provider from local machine ##
     nslookup myattestationprovider.eus.attest.azure.net
-
+    
+    <# You'll receive a message similar to what is displayed below:
+    
     Server:  cdns01.comcast.net
     Address:  2001:558:feed::1
+        cdns01.comcast.net can't find myattestationprovider.eus.attest.azure.net: Non-existent domain
 
-    cdns01.comcast.net can't find myattestationprovider.eus.attest.azure.net: Non-existent domain
+    #>
 
     ## Access the attestation provider from the VM created in the same virtual network as the private endpoint.   ##
     nslookup myattestationprovider.eus.attest.azure.net
-
+    
+    <# You'll receive a message similar to what is displayed below:
+    
     Server:  UnKnown
     Address:  168.63.129.16
     Non-authoritative answer:
     Name:    myattestationprovider.eastus.test.attest.azure.net
+    
+    #>
     ```

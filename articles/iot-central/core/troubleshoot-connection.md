@@ -8,16 +8,16 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: 494608f9dd8fbf986dcda6eeb782a64f6a2ca008
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: a929e5d4bccc3a6b2d27125de6aad4472364d67e
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378569"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179152"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>デバイスからのデータが Azure IoT Central で表示されない原因を解決する
 
-このドキュメントは、デバイス開発者が、デバイスから IoT Central に送信されるデータがアプリケーションで表示されない原因を解明するのに役立ちます。
+このドキュメントは、デバイスから IoT Central に送信されるデータがアプリケーションで表示されない原因を解明するのに役立ちます。
 
 調査する主な領域としては、次の 2 つがあります。
 
@@ -52,7 +52,7 @@ az extension add --name azure-iot
 
 ```azurecli
 az login
-az set account --subscription <your-subscription-id>
+az account set --subscription <your-subscription-id>
 ```
 
 デバイスから送信されているテレメトリを監視するには、次のコマンドを使用します。
@@ -159,6 +159,18 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 | 429 | サービスによって操作がスロットルされています。 サービスの具体的な制限については、「[IoT Hub Device Provisioning Service の制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits)」を参照してください。 | メッセージの頻度を削減し、より多くのデバイス間で責任を分割します。 |
 | 500 | 内部エラーが発生しました。 | [カスタマー サポートにチケットを提出](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)して、さらにサポートを受けられるかどうかを確認します。 |
 
+### <a name="detailed-authorization-error-codes"></a>詳細な承認エラー コード
+
+| Error | サブ エラー コード | Notes |
+| - | - | - |
+| 401 権限がありません | 401002 | デバイスが無効または期限切れの資格情報を使用しています。 このエラーは DPS によって報告されます。 |
+| 401 権限がありません | 400209 | デバイスがオペレーターによる承認を待っているか、オペレーターによってブロックされています。 |
+| 401 IoTHubUnauthorized |  | デバイスが期限切れのセキュリティ トークンを使用しています。 このエラーは IoT Hub によって報告されます。 |
+| 401 IoTHubUnauthorized | DEVICE_DISABLED | この IoT ハブではデバイスが無効になり、別の IoT ハブに移動されました。 デバイスを再プロビジョニングします。 |
+| 401 IoTHubUnauthorized | DEVICE_BLOCKED | オペレーターによってこのデバイスがブロックされました。 |
+
+
+
 ### <a name="file-upload-error-codes"></a>ファイルのアップロードに関するエラー コード
 
 デバイスがファイルをクラウドにアップロードしようとしたときに表示される可能性のある一般的なエラー コードの一覧を次に示します。 デバイスでファイルをアップロードする前に、アプリケーションで、[デバイス ファイルのアップロード](howto-configure-file-uploads.md)を構成する必要があります。
@@ -216,7 +228,7 @@ GUI を使用する場合は、IoT Central の **生データ** ビューを使�
 
 問題が検出された場合、デバイスのファームウェアを更新するか、以前にモデル化されていないデータをモデル化する新しいデバイス テンプレートを作成することが必要になる場合があります。
 
-データを正しくモデル化する新しいテンプレートの作成を選択した場合は、デバイスを古いテンプレートから新しいテンプレートに移行します。 詳細については、「[Azure IoT Central アプリケーションでデバイスを管理する](howto-manage-devices.md)」を参照してください。
+データを正しくモデル化する新しいテンプレートの作成を選択した場合は、デバイスを古いテンプレートから新しいテンプレートに移行します。 詳細については、「[Azure IoT Central アプリケーションでデバイスを管理する](howto-manage-devices-individually.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/01/2021
 ms.author: rolyon
-ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: d9b39bc9a2f00fe83cae0ff78c6346042967e8bf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.custom: H1Hack27Feb2017, devx-track-azurepowershell
+ms.openlocfilehash: 43ee281bc9696740c7909ef6b6758d4542808721
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042133"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755207"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Azure RBAC の変更のアクティビティ ログを表示する
 
@@ -47,7 +47,7 @@ ms.locfileid: "102042133"
 | イベント カテゴリ | <ul><li>管理</li></ul> |
 | 操作 | <ul><li>ロール割り当ての作成</li><li>ロール割り当ての削除</li><li>カスタムのロール定義の作成または更新</li><li>カスタムのロール定義の削除</li></ul> |
 
-アクティビティ ログの詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)」を参照してください。
+アクティビティ ログの詳細については、「[Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)」を参照してください。
 
 
 ## <a name="interpret-a-log-entry"></a>ログ エントリの解釈
@@ -235,5 +235,5 @@ AzureActivity
 ![高度な分析ポータルを使用したアクティビティ ログ - スクリーンショット](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>次のステップ
-* [リソースのアクションを監視するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
+* [リソースのアクションを監視するアクティビティ ログの表示](../azure-monitor/essentials/activity-log.md)
 * [Azure アクティビティ ログでサブスクリプション アクティビティを監視する](../azure-monitor/essentials/platform-logs-overview.md)

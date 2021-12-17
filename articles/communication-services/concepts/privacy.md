@@ -5,15 +5,15 @@ author: chpalm
 manager: anvalent
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 03/10/2021
-ms.topic: overview
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: beb8b81710cf4728259a8eb1df920cd74efce3ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 06817450cb0957e845b5b9fecde21d94080183ac
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728132"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060993"
 ---
 # <a name="region-availability-and-data-residency"></a>利用可能なリージョンとデータの保存場所
 
@@ -21,7 +21,14 @@ Azure Communication Services は、お客様が自身のプライバシーおよ
 
 ## <a name="data-residency"></a>データの保存場所
 
-Communication Services リソースを作成する際は、(Azure データ センターではなく) **地域** を指定します。 Communication Services によって格納されたすべての保存データは、Communication Services によって内部で選択されたデータ センター内のその地域で保持されます。 データは他の地域で転送または処理される可能性はあります。 これらのグローバル エンドポイントは、高パフォーマンスかつ低遅延のエクスペリエンスを場所に関係なくエンドユーザーに提供するために必要です。
+Communication Services リソースを作成する際は、(Azure データ センターではなく) **地域** を指定します。 Communication Services によって格納されたすべてのチャット メッセージとリソース データは、Communication Services によって内部で選択されたデータ センター内のその地域で保持されます。 データは他の地域で転送または処理される可能性はあります。 これらのグローバル エンドポイントは、高パフォーマンスかつ低遅延のエクスペリエンスを場所に関係なくエンドユーザーに提供するために必要です。
+
+> [!NOTE]
+> PSTN & SMS の場合、サービスの運用と課金に必要な呼び出しとメッセージ データの記録はおそらく米国に格納されます。
+
+## <a name="data-collection"></a>データ コレクション
+
+Azure Communication Services では、サービスの配信に必要な診断データのみを収集します。 
 
 ## <a name="data-residency-and-events"></a>データ所在地とイベント
 
@@ -49,7 +56,7 @@ Communication Services と共に Azure portal または Azure Resource Manager A
 
 ### <a name="telephone-number-management"></a>電話番号の管理
 
-Azure Communication Services では、Communication Services リソースに関連付けられた電話番号のディレクトリが保持されます。 次の[電話番号の管理 API](/rest/api/communication/phonenumberadministration) を使用して、電話番号を取得して削除します。
+Azure Communication Services では、Communication Services リソースに関連付けられた電話番号のディレクトリが保持されます。 次の[電話番号の管理 API](/rest/api/communication/phonenumbers) を使用して、電話番号を取得して削除します。
 
 - `Get All Phone Numbers`
 - `Release Phone Number`
@@ -71,11 +78,15 @@ Azure Communication Services では、Communication Services リソースに関�
 
 ### <a name="pstn-voice-calling"></a>PSTN 音声通話
 
-音声およびビデオによる通信はサービスによって短時間で処理され、データは Azure Monitor ログ以外のリソースに保持されません。
+音声およびビデオによる通信はサービスによって短時間で処理され、通話処理データは Azure Monitor ログ以外のリソースに保持されません。
 
 ### <a name="internet-voice-and-video-calling"></a>インターネットによる音声およびビデオ通話
 
-音声およびビデオによる通信はサービスによって短時間で処理され、データは Azure Monitor ログ以外のリソースに保持されません。
+音声およびビデオによる通信はサービスによって短時間で処理され、通話処理データは Azure Monitor ログ以外のリソースに保持されません。
+
+### <a name="call-recording"></a>通話レコーディング
+
+通話レコーディングは、リソースの作成時に 48 時間選択された ```Data Location``` と同じ地域に一時的に格納されます。 この後、記録は削除され、ユーザーは安全で法令準拠した場所に記録を格納する責任があります。
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor とログ分析
 

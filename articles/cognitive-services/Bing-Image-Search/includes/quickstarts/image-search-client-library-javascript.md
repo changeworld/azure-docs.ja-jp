@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 037137cf5a6e4ddd66fc15e8ad9775ea77177ef6
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: f56346b9282be42d6022fd6f15f4ce206ae8dbd6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625214"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253213"
 ---
 このクイックスタートでは、Bing Image Search クライアント ライブラリを使用して最初の画像検索を行います。このクライアント ライブラリは、API のラッパーであり、同じ機能を含んでいます。 このシンプルな JavaScript アプリケーションは、イメージ検索クエリを送信し、JSON 応答を解析して、返された最初のイメージの URL を表示します。
 
@@ -58,13 +58,15 @@ ms.locfileid: "94625214"
 ## <a name="create-an-asynchronous-helper-function"></a>非同期ヘルパー関数を作成する
 
 1. クライアントを非同期に呼び出す関数を作成し、Bing Image Search サービスから応答を返します。
+
     ```javascript
-    //a helper function to perform an async call to the Bing Image Search API
+    // a helper function to perform an async call to the Bing Image Search API
     const sendQuery = async () => {
         return await imageSearchApiClient.imagesOperations.search(searchTerm);
     };
     ```
-   ## <a name="send-a-query-and-handle-the-response"></a>クエリを送信して応答を処理する
+
+## <a name="send-a-query-and-handle-the-response"></a>クエリを送信して応答を処理する
 
 1. ヘルパー関数を呼び出して `promise` を処理し、応答で返されたイメージの結果を解析します。
 

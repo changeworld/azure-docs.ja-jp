@@ -2,13 +2,13 @@
 title: ダウンタイム、SLA、および停止のブック - Application Insights
 description: Application Insights リソースと Azure サブスクリプションにわたる 1 つのウィンドウで、Web テストの SLA を計算してレポートします。
 ms.topic: conceptual
-ms.date: 02/8/2021
-ms.openlocfilehash: d225627a27bffd9088956e5aee37ca543e528d4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/4/2021
+ms.openlocfilehash: 4063cd28111dd0ea3c3d0cabe44f884f6605c063
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714053"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750539"
 ---
 # <a name="downtime-sla-and-outages-workbook"></a>ダウンタイム、SLA、および停止のブック
 
@@ -23,15 +23,15 @@ SLA ブック テンプレートには、Application Insights リソースのブ
 
 ブックに設定されているパラメーターは、レポートの残りの部分に影響します。
 
-:::image type="content" source="./media/sla-report/outages.png" alt-text="ダウンタイムと停止のブックの [outage/maintenance parameters]\(停止およびメンテナンス パラメーター\) タブのスクリーンショット。" lightbox ="./media/sla-report/outages.png":::
+:::image type="content" source="./media/sla-report/parameters.png" alt-text="パラメーターのスクリーンショット。" lightbox= "./media/sla-report/parameters.png":::
 
-`Subscriptions`、`App Insights Resources`、および `Web Test` パラメーターによって、大まかなリソースのオプションが決まります。 これらのパラメーターは、Log Analytics クエリに基づいており、すべてのレポート クエリで使用されます。
+`Subscriptions`、 `App Insights Resources`、および  `Web Test`  パラメーターによって、大まかなリソースのオプションが決まります。 これらのパラメーターは、Log Analytics クエリに基づいており、すべてのレポート クエリで使用されます。
 
-`Failure Threshold` と `Outage Window` を使用すると、サービス停止に関する独自の条件を決定できます。たとえば、選択された期間における、失敗した場所のカウンターに基づく App Insights の可用性アラートに関する条件などです。 一般的なしきい値は、5 分間に 3 つの場所となります。
+`Failure Threshold`  と  `Outage Window`  を使用すると、サービス停止に関する独自の条件を決定できます。たとえば、選択された期間における、失敗した場所のカウンターに基づく App Insights の可用性アラートに関する条件などです。 一般的なしきい値は、5 分間に 3 つの場所となります。
 
-`Maintenance Period` を使用すると、一般的なメンテナンス頻度を選択できます。メンテナンス期間の例の `Maintenance Window` は datetime セレクターです。 特定の期間に発生したすべてのデータは、結果では無視されます。
+`Maintenance Period`  を使用すると、一般的なメンテナンス頻度を選択できます。メンテナンス期間の例の  `Maintenance Window`  は datetime セレクターです。 特定の期間に発生したすべてのデータは、結果では無視されます。
 
-`Availability Target 9s` では、ツー ナインからファイブ ナインの Target 9s の目標を指定します。
+`Availability Target %`  はターゲット目標を指定し、カスタム値を受け取ります。
 
 ## <a name="overview-page"></a>[概要] ページ
 

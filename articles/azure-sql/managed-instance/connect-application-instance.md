@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: この記事では、Azure SQL Managed Instance にアプリケーションを接続する方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: connect
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, vanto
-ms.date: 02/25/2021
-ms.openlocfilehash: ca61f2163f1a66e87317274bab789db7944a4536
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.reviewer: mathoma, bonova, vanto
+ms.date: 08/20/2021
+ms.openlocfilehash: d4c86b555502d662e681fcb5904426a7a891883d
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065210"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893464"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance にアプリケーションを接続する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,9 +28,13 @@ Azure App Service か、または Azure の仮想ネットワーク統合オプ�
 
 どの方法を選択した場合でも、Azure SQL Managed Instance に接続することが可能です。 
 
+この記事では、さまざまなアプリケーション シナリオで仮想ネットワーク内からアプリケーションを Azure SQL Managed Instance に接続する方法について説明します。 
+
+> [!IMPORTANT]
+> また、仮想ネットワークの外部からのマネージド インスタンスへのデータ アクセスを有効にすることもできます。 Power BI、Azure App Service などのマルチテナント Azure サービスや、VPN に接続されていないオンプレミス ネットワークから、マネージド インスタンスのパブリック エンドポイントを使用して、マネージド インスタンスにアクセスすることができます。 マネージド インスタンス上でパブリック エンドポイントを有効にし、マネージド インスタンス サブネットに関連付けられたネットワーク セキュリティ グループ上でパブリック エンドポイントのトラフィックを許可する必要があります。 その他の重要な詳細情報については、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](./public-endpoint-configure.md)」を参照してください。 
+
 ![高可用性](./media/connect-application-instance/application-deployment-topologies.png)
 
-この記事では、さまざまなアプリケーション シナリオを用いて、アプリケーションを Azure SQL Managed Instance に接続する方法について説明します。 
 
 ## <a name="connect-inside-the-same-vnet"></a>同じ VNet 内の接続
 
@@ -48,11 +52,11 @@ SQL Managed Instance と同じ仮想ネットワーク内のアプリケーシ�
 ピアリングでは Microsoft バックボーン ネットワークが使用されるため、接続性の観点から言えば、ピアリングされた仮想ネットワーク内の仮想マシンであっても、同じ仮想ネットワーク内の仮想マシンであっても、待機時間に顕著な違いはありません。そのため、ピアリングが推奨されます。 仮想ネットワーク ピアリングは、同じリージョン内のネットワーク間でサポートされます。 グローバル仮想ネットワーク ピアリングもサポート対象ですが、次の注記で説明する制限事項があります。  
 
 > [!IMPORTANT]
-> [2020 年 9 月 22 日、Microsoft は、新しく作成された仮想クラスターのグローバル仮想ネットワーク ピアリングを発表しました](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 これは、グローバル仮想ネットワーク ピアリングが、発表日以降に空のサブネットに作成された SQL Managed Instance に加え、それらのサブネットに作成された後続のすべてのマネージド インスタンスに対してサポートされることを意味します。 SQL Managed Instance のその他すべてのピアリングについては、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 
+> [2020 年 9 月 22 日に、新しく作成された仮想クラスターに対するグローバル仮想ネットワーク ピアリングのサポートが発表されました](https://azure.microsoft.com/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 つまり、この発表日の後に空のサブネット内に作成された SQL Managed Instance のほか、これらのサブネット内に作成されたそれ以降のすべてのマネージド インスタンスでグローバル仮想ネットワーク ピアリングがサポートされます。 その他のすべての SQL Managed Instance では、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)のために、ピアリングのサポートが同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 この発表日の前に作成された仮想クラスターの SQL Managed Instance でグローバル仮想ネットワーク ピアリングを使用できるようにするには、そのインスタンス上で[メンテナンス期間](../database/maintenance-window.md)を構成することを検討してください。それにより、そのインスタンスが、グローバル仮想ネットワーク ピアリングをサポートする新しい仮想クラスターに移動されます。
 
 ## <a name="connect-from-on-premises"></a>オンプレミスからの接続 
 
-オンプレミスのアプリケーションを SQL Managed Instance に接続することもできます。 SQL Managed Instance には、プライベート IP アドレスを介してのみアクセスできます。 オンプレミスからアクセスするには、アプリケーションと SQL Managed Instance 仮想ネットワークの間にサイト間接続を確立する必要があります。
+オンプレミスのアプリケーションを仮想ネットワーク (プライベート IP アドレス) 経由で SQL Managed Instance に接続することもできます。 オンプレミスからアクセスするには、アプリケーションと SQL Managed Instance 仮想ネットワークの間にサイト間接続を確立する必要があります。 仮想ネットワークの外部からマネージド インスタンスにデータ アクセスするには、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](./public-endpoint-configure.md)」を参照してください。
 
 オンプレミスを Azure 仮想ネットワークに接続する方法には、次の 2 つのオプションがあります。
 
@@ -63,7 +67,9 @@ SQL Managed Instance と同じ仮想ネットワーク内のアプリケーシ�
 
 ## <a name="connect-the-developer-box"></a>開発者ボックスの接続
 
-また、開発者ボックスを SQL Managed Instance に接続することもできます。 SQL Managed Instance はプライベート IP アドレスを介してのみアクセスできるため、開発者ボックスからアクセスするには、まず開発者ボックスと SQL Managed Instance 仮想ネットワークの間の接続を確立する必要があります。 これを行うには、ネイティブ Azure 証明書認証を使用した仮想ネットワークへのポイント対サイト接続を構成します。 詳細については、「[オンプレミス コンピューターから Azure SQL Managed Instance に接続するようにポイント対サイト接続を構成する](point-to-site-p2s-configure.md)」を参照してください。
+また、開発者ボックスを SQL Managed Instance に接続することもできます。 開発者ボックスから仮想ネットワーク経由でアクセスするには、まず開発者ボックスと SQL Managed Instance 仮想ネットワーク間を接続する必要があります。 これを行うには、ネイティブ Azure 証明書認証を使用した仮想ネットワークへのポイント対サイト接続を構成します。 詳細については、「[オンプレミス コンピューターから Azure SQL Managed Instance に接続するようにポイント対サイト接続を構成する](point-to-site-p2s-configure.md)」を参照してください。
+
+仮想ネットワークの外部からマネージド インスタンスにデータ アクセスするには、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](./public-endpoint-configure.md)」を参照してください。
 
 ## <a name="connect-with-vnet-peering"></a>VNet ピアリングを使用しての接続
 
@@ -78,9 +84,9 @@ SQL Managed Instance と同じ仮想ネットワーク内のアプリケーシ�
 
 ## <a name="connect-azure-app-service"></a>Azure App Service の接続 
 
-Azure App Service によってホストされているアプリケーションを接続することもできます。 SQL Managed Instance はプライベート IP アドレスを介してのみアクセスできるため、Azure App Service からアクセスするには、まずアプリケーションと SQL Managed Instance 仮想ネットワークの間の接続を確立する必要があります。 「[アプリを Azure 仮想ネットワークに統合する](../../app-service/web-sites-integrate-with-vnet.md)」を参照してください。  
+Azure App Service によってホストされているアプリケーションを接続することもできます。 Azure App Service から仮想ネットワーク経由でアクセスするには、まずそのアプリケーションと SQL Managed Instance 仮想ネットワーク間を接続する必要があります。 「[アプリを Azure 仮想ネットワークに統合する](../../app-service/overview-vnet-integration.md)」を参照してください。 仮想ネットワークの外部からマネージド インスタンスにデータ アクセスするには、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](./public-endpoint-configure.md)」を参照してください。 
 
-トラブルシューティングについては、[仮想ネットワークとアプリケーションのトラブルシューティング](../../app-service/web-sites-integrate-with-vnet.md#troubleshooting)に関する記事を参照してください。 接続を確立できない場合は、[ネットワーク構成の同期](azure-app-sync-network-configuration.md)を試してください。
+仮想ネットワーク経由の Azure App Service アクセスのトラブルシューティングについては、[仮想ネットワークとアプリケーションのトラブルシューティング](../../app-service/overview-vnet-integration.md#troubleshooting)に関するセクションを参照してください。 接続を確立できない場合は、[ネットワーク構成の同期](azure-app-sync-network-configuration.md)を試してください。
 
 Azure App Service を SQL Managed Instance に接続する場合の特殊なケースとして、SQL Managed Instance 仮想ネットワークにピアリングされたネットワークに Azure App Service を統合しているケースが考えられます。 その場合は、次の構成をセットアップする必要があります。
 
@@ -137,7 +143,7 @@ Azure App Service を SQL Managed Instance に接続する場合の特殊なケ�
 
 - 仮想ネットワーク ピアリングを使用している場合、[ゲートウェイ転送を許可し、リモート ゲートウェイを使用する方法](#connect-from-on-premises)に関する設定の手順に必ず従ってください。
 
-- 仮想ネットワーク ピアリングを使用して Azure App Service ホスト アプリケーションに接続していて、SQL Managed Instance 仮想ネットワークにパブリック IP アドレス範囲がある場合は、ホストされるアプリケーションの設定で送信トラフィックをパブリック IP ネットワークにルーティングできるようにしてください。 「[リージョンでの仮想ネットワーク統合](../../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)」の手順に従います。
+- 仮想ネットワーク ピアリングを使用して Azure App Service ホスト アプリケーションに接続していて、SQL Managed Instance 仮想ネットワークにパブリック IP アドレス範囲がある場合は、ホストされるアプリケーションの設定で送信トラフィックをパブリック IP ネットワークにルーティングできるようにしてください。 「[リージョンでの仮想ネットワーク統合](../../app-service/overview-vnet-integration.md#regional-virtual-network-integration)」の手順に従います。
 
 ## <a name="required-versions-of-drivers-and-tools"></a>ドライバーとツールの必要なバージョン
 

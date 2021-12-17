@@ -88,15 +88,17 @@
               href: customize-invitation-api.md
         - name: ID プロバイダー
           items:
-            - name: Microsoft アカウント (プレビュー)
+            - name: Azure Active Directory
+              href: azure-ad-account.md
+            - name: Microsoft アカウント
               href: microsoft-account.md
             - name: Google のフェデレーション
               href: google-federation.md
             - name: Facebook フェデレーション
               href: facebook-federation.md
-            - name: 直接フェデレーション
+            - name: SAML/WS-Fed IdP フェデレーション
               href: direct-federation.md
-            - name: AD FS を使用した直接フェデレーションの例
+            - name: SAML/WS-Fed IdP フェデレーションの例 (AD FS)
               href: direct-federation-adfs.md
         - name: ワンタイム パスコード (OTP) を有効にする
           href: one-time-passcode.md
@@ -112,15 +114,15 @@
               href: self-service-sign-up-add-api-connector.md
             - name: カスタム承認システムを追加する
               href: self-service-sign-up-add-approvals.md
+            - name: API コネクタのセキュリティ保護
+              href: self-service-sign-up-secure-api-connector.md
         - name: ゲスト ユーザー アカウントを管理する
           items:
-            - name: B2B ユーザーをロールに追加する
-              href: add-guest-to-role.md
             - name: 動的グループと B2B ユーザー
               href: use-dynamic-groups.md
             - name: B2B ユーザーについて
               href: user-properties.md
-            - name: 利用状態をリセットする
+            - name: 利用状態をリセットする (プレビュー)
               href: reset-redemption-status.md
             - name: Azure AD 統合アプリ向けの B2B
               href: configure-saas-apps.md
@@ -143,17 +145,17 @@
     - name: リソース
       items:
         - name: よく寄せられる質問
-          href: faq.md
+          href: ./faq.yml
         - name: サポートの利用
           href: ../fundamentals/active-directory-troubleshooting-support-howto.md
         - name: Azure フィードバック フォーラム
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+          href: 'https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789'
         - name: Azure のロードマップ
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
         - name: Microsoft Q&A 質問ページ
           href: /answers/topics/azure-active-directory.html
         - name: 価格
-          href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+          href: 'https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing'
         - name: 料金計算ツール
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: サービスの更新情報

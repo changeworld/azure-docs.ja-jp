@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 07/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: 751d11fcd4b5d4c33145ee7f2b7b49971b8927ae
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e46f9c5e3d59c4f30d0a9a0a9dddcf98cd636e40
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048262"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734667"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>ユーザー VPN クライアント用のスポーク VNet にあるリソースへのセキュリティで保護されたアクセスを管理する
 
@@ -77,7 +77,7 @@ ms.locfileid: "102048262"
 
 ## <a name="connect-the-spoke-vnet"></a><a name="connect-spoke"></a>スポーク VNet を接続する
 
-このセクションでは、スポーク仮想ネットワークを仮想 WAN ハブにアタッチします。
+このセクションでは、ハブとスポーク VNet の間に接続を作成します。
 
 [!INCLUDE [Connect spoke virtual network](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 

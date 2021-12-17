@@ -4,8 +4,18 @@
   items:
     - name: Azure のセキュリティの概要
       href: overview.md
+    - name: エンドツーエンドのセキュリティ
+      href: end-to-end.md
     - name: クラウドにおける共同責任
       href: shared-responsibility.md
+- name: 脅威を検出して軽減する
+  items:
+    - name: ランサムウェアに対するバックアップと復元の計画
+      href: backup-plan-to-protect-against-ransomware.md
+    - name: システムの ID 侵害からの復旧
+      href: recover-from-identity-compromise.md
+    - name: 脅威の防止
+      href: threat-detection.md
 - name: Azure のワークロードをセキュリティで保護する
   items:
     - name: セキュリティの技術的な機能
@@ -41,6 +51,8 @@
       items:
         - name: ファームウェアのセキュリティ
           href: firmware.md
+        - name: コードの整合性
+          href: code-integrity.md
         - name: セキュア ブート
           href: secure-boot.md
         - name: メジャー ブートとホストの構成証明
@@ -62,7 +74,9 @@
     - name: セキュリティ チェックリスト
       href: steps-secure-identity.md
     - name: パスワードなしの選択
-      href: ../../active-directory/authentication/concept-authentication-passwordless.md
+      href: ../../active-directory/authentication/concept-authentication-passwordless.md?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: 認証
+      href: /azure/architecture/framework/security/design-identity-authentication?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: ネットワークのセキュリティ
   items:
     - name: セキュリティの概要
@@ -72,11 +86,11 @@
     - name: DDoS Protection のベスト プラクティス
       href: ../../ddos-protection/fundamental-best-practices.md
     - name: DDoS Protection のセキュリティ ベースライン
-      href: ddos-protection-security-baseline.md
+      href: /security/benchmark/azure/baselines/ddos-protection-security-baseline?toc=/azure/security/fundamentals/TOC.json
     - name: 未解決の DNS とサブドメインの引き継ぎ
       href: subdomain-takeover.md
     - name: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ
-      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: IaaS セキュリティ
   items:
     - name: Microsoft Antimalware
@@ -87,7 +101,7 @@
       href: virtual-machines-overview.md
     - name: ベスト プラクティス - IaaS ワークロード
       href: iaas.md
-    - name: Azure Marketplace イメージ
+    - name: Azure Marketplace のイメージ
       href: azure-marketplace-images.md
 - name: データのセキュリティ、暗号化、保管
   items:
@@ -116,11 +130,11 @@
         - name: セキュリティ チェックリスト
           href: database-security-checklist.md
     - name: Storage のセキュリティ ガイド
-      href: ../../storage/blobs/security-recommendations.md?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
+      href: ../../storage/blobs/security-recommendations.md?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: カスタマー ロックボックス
       href: customer-lockbox-overview.md
     - name: カスタマー ロックボックスのセキュリティ ベースライン
-      href: customer-lockbox-security-baseline.md
+      href: /security/benchmark/azure/baselines/lockbox-security-baseline?toc=/azure/security/fundamentals/TOC.json
 - name: Application
   items:
     - name: PaaS
@@ -136,8 +150,6 @@
       href: service-fabric-best-practices.md
 - name: 監視、監査、および操作
   items:
-    - name: 脅威の防止
-      href: threat-detection.md
     - name: Azure のログと監査
       href: log-audit.md
     - name: セキュリティの管理と監視
@@ -156,6 +168,8 @@
   items:
     - name: Azure セキュリティ サービス
       href: services-technologies.md
+    - name: 米国政府機関向けクラウドで利用できる機能
+      href: feature-availability.md
     - name: セキュリティ ホワイト ペーパー
       href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
     - name: ベスト プラクティス

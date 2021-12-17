@@ -5,14 +5,15 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 04/14/2020
+ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: 9a5f64687937479d65f94010bbe4f0a5f1cf5ca2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ad73d319e5466bb541a99e3ef33b17cdc644dfe5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548225"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729418"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure Application Gateway の Web アプリケーション ファイアウォール v2 カスタム規則
 
@@ -22,7 +23,7 @@ Azure Application Gateway の Web アプリケーション ファイアウォー
 
 たとえば、範囲 192.168.5.4/24 内の IP アドレスからのすべての要求をブロックできます。 この規則では、演算子は *IPMatch*、matchValues は IP アドレス範囲 (192.168.5.4/24)、アクションはトラフィックのブロックです。 規則の名前と優先度も設定します。
 
-カスタム規則は、セキュリティ ニーズに対応する、より高度な規則を作成するための複合ロジックの使用をサポートします。 たとえば、(条件 1 **かつ** 条件 2) **または** 条件 3) のようなものです。 これは、条件 1 **かつ** 条件 2 が満たされている場合、**または** 条件 3 が満たされている場合、WAF はカスタム規則で指定されたアクションを実行することを意味します。
+カスタム規則は、セキュリティ ニーズに対応する、より高度な規則を作成するための複合ロジックの使用をサポートします。 たとえば、((条件 1 **かつ** 条件 2) **または** 条件 3) のようなものです。 これは、条件 1 **かつ** 条件 2 が満たされている場合、**または** 条件 3 が満たされている場合、WAF はカスタム規則で指定されたアクションを実行することを意味します。
 
 同じ規則内の異なる一致条件は常に "**かつ**" を使用して結合されます。 たとえば、特定の IP アドレスからのトラフィックを、特定のブラウザーが使用している場合にのみブロックします。
 
@@ -107,7 +108,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 
 次の変数のいずれかである必要があります。
 
-- RemoteAddr – リモート コンピューター接続の IP アドレス/ホスト名
+- RemoteAddr – リモート コンピューター接続の IP アドレス/アドレス範囲
 - RequestMethod – HTTP 要求メソッド (GET、POST、PUT、DELETE など)
 - QueryString – URI 内の変数
 - PostArgs – POST 本文で送信される引数。 この一致変数を使用するカスタム ルールは、"Content-Type" ヘッダーが "application/x-www-form-urlencoded" および "multipart/form-data" に設定されている場合にのみ適用されます。
@@ -134,7 +135,7 @@ matchVariable コレクションのフィールドを記述します。 たと�
 - BeginsWith
 - EndsWith
 - Regex
-- Geomatch (プレビュー)
+- Geomatch
 
 ### <a name="negate-condition-optional"></a>Negate condition (否定条件) [省略可能]
 
@@ -161,9 +162,9 @@ matchVariable コレクションのフィールドを記述します。 たと�
 - Block – *SecDefaultAction* (検出/防止モード) に基づいてトランザクションをブロックします。 許可アクションと同様に、要求がいったん評価されてブロック リストに追加されると、評価を停止して要求はブロックされます。 同じ条件を満たすそれ以降のいかなる要求も評価されず、単にブロックされます。 
 - Log – 規則はログに書き込まれますが、残りの規則の評価も実行されます。 他のカスタム規則が優先度の順に評価された後、マネージド規則が評価されます。
 
-## <a name="geomatch-custom-rules-preview"></a>Geomatch カスタム規則 (プレビュー)
+## <a name="geomatch-custom-rules"></a>Geomatch カスタム ルール
 
-カスタム規則では、実際のアプリケーションのニーズとセキュリティ ポリシーに沿ったカスタマイズされた規則を作成できます。 国やリージョンごとに Web アプリケーションへのアクセスを制限できます。 詳細については、「[Geomatch カスタム規則 (プレビュー)](geomatch-custom-rules.md)」を参照してください。
+カスタム規則では、実際のアプリケーションのニーズとセキュリティ ポリシーに沿ったカスタマイズされた規則を作成できます。 国やリージョンごとに Web アプリケーションへのアクセスを制限できます。 詳細については、[Geomatch カスタム ルール](geomatch-custom-rules.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

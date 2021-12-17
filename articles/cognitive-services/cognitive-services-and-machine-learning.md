@@ -6,13 +6,13 @@ services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: 7946bc23f766eaf99860fa764ee7b542036b5109
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 10/28/2021
+ms.openlocfilehash: 58025ba9bd0fb8a90395de48c8ab9d24e8746438
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075782"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439236"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
@@ -94,8 +94,6 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./custom-vision-service/overview.md)||x||
 |[Face](./Face/Overview.md)|x|x||
-|[Form Recognizer](./form-recognizer/overview.md)||x||
-|[Immersive Reader](./immersive-reader/overview.md)|x|||
 |[Ink Recognizer](/previous-versions/azure/cognitive-services/Ink-Recognizer/overview)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalizer](./personalizer/what-is-personalizer.md)|○*|○*|x|
@@ -104,8 +102,8 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 |[Speech のテキスト読み上げ (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Speech の音声テキスト変換 (STT)](speech-service/speech-to-text.md)|x|x||
 |[音声翻訳](speech-service/speech-translation.md)|x|||
-|[Text Analytics](./text-analytics/overview.md)|x|||
-|[Translator](./translator/translator-info-overview.md)|x|||
+|[言語サービス](./language-service/overview.md)|x|||
+|[Translator](./translator/translator-overview.md)|x|||
 |[Translator - Custom Translator](./translator/custom-translator/overview.md)||x||
 
 *Personalizer は、(リアルタイムで動作するため) サービスが収集したトレーニング データだけでユーザーのポリシーとデータを評価します。 Personalizer の事前トレーニングやバッチ トレーニングには、大量の履歴データセットが必要ありません。 

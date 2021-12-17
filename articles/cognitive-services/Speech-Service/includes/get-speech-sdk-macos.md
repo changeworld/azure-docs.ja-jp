@@ -1,28 +1,26 @@
 ---
-author: trevorbye
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: trbye
-ms.openlocfilehash: b68fb8cf5458081f96febbac75fd393a80345f60
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: eur
+ms.openlocfilehash: 642fa02cf8f40d7cc6a39a1951499cb7921ed100
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043241"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252299"
 ---
-MacOS 用に開発する場合は、3つの音声Sdk を利用できます。
+macOS 用に開発する場合は、次の音声 SDK を使用できます。
 
-- Objective-C S音声SDK は、Cocoアポストロフィ d パッケージとしてネイティブに使用できます。
-- .NET音声SDKは **.NET Standard 2.0** を実装しているため Xamarin. Mac と共に使用できます
-- Python音声SDK は PyPI モジュールとして提供されています。
-
-> [!TIP]
-> Objective-C-音声SDK と Swift <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">の使用の詳細については、「Objective-C をSwiftにインポートする 」を参照してください</a>。
+- Objective-C/Swift Speech SDK は、Mac x64 および ARM ベースのシリコン用の CocoaPod パッケージとしてネイティブに利用できます。 Objective-C Speech SDK と Swift の使用の詳細については、「<a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">Objective-C を Swift にインポートする</a>」を参照してください。
+- .NET Speech SDK は、NuGet パッケージを介して使用でき、**Xamarin.Mac** および **Unity** のアプリケーション フレームワークで利用できます。
+- Python Speech SDK は、Python バージョン 3.7 以降用の PyPI モジュールとして提供されています。
+- Java Speech SDK は、Maven リポジトリを介して JAR パッケージとして使用できます。
 
 ### <a name="system-requirements"></a>システム要件
 
-- macOS version 10.13以降
+- macOS version 10.14以降
 
 # <a name="xcode"></a>[Xcode](#tab/mac-xcode)
 
@@ -39,7 +37,7 @@ MacOS 用に開発する場合は、3つの音声Sdk を利用できます。
 :::row-end:::
 
 ```
-platform :ios, '9.3'
+platform :osx, 10.14
 use_frameworks!
 
 target 'MyApp' do

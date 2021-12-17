@@ -2,19 +2,21 @@
 title: Azure にクラウド サービス (クラシック) をデプロイするときの FabricInternalServerError または ServiceAllocationFailure のトラブルシューティング | Microsoft Docs
 description: この記事では、Azure にクラウド サービス (クラシック) をデプロイするときの FabricInternalServerError または ServiceAllocationFailure 例外を解決する方法について説明します。
 services: cloud-services
-author: mibufo
-ms.author: v-mibufo
+author: hirenshah1
+ms.author: hirshah
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 0a4111f569b751ace80a2a886ed2ce7e4968ce16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 219adb2d8d1f0fc6f08a1a4aede465619585df6e
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743865"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822969"
 ---
 # <a name="troubleshoot-fabricinternalservererror-or-serviceallocationfailure-when-deploying-a-cloud-service-classic-to-azure"></a>Azure にクラウド サービス (クラシック) をデプロイするときの FabricInternalServerError または ServiceAllocationFailure のトラブルシューティング
+
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 この記事では、Azure クラウド サービス (クラシック) をデプロイするときにファブリック コントローラーで割り当てることができない場合の割り当てエラーのトラブルシューティングを行います。
 

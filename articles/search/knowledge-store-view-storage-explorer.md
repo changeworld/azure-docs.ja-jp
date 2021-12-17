@@ -1,62 +1,47 @@
 ---
-title: Storage Explorer でナレッジ ストアを表示する
+title: ナレッジ ストアを表示する
 titleSuffix: Azure Cognitive Search
-description: Azure portal の Storage Explorer で Azure Cognitive Search のナレッジ ストアを表示して分析します。
+description: Azure portal のストレージ ブラウザーを使用して、ナレッジ ストアを表示します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: ba0b02067c032f9038051c169866588ded44af73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/03/2021
+ms.openlocfilehash: d3a66bacfe746b73d269cd8a36fedf0c6b821cdd
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85566023"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563665"
 ---
-# <a name="view-a-knowledge-store-with-storage-explorer"></a>Storage Explorer でナレッジ ストアを表示する
+# <a name="view-a-knowledge-store-with-storage-browser"></a>ストレージ ブラウザーでナレッジ ストアを表示する
 
-この記事では、Azure portal の Storage Explorer を使用してナレッジ ストアに接続し、探索する方法を例を用いて説明します。
+[ナレッジ ストア](knowledge-store-concept-intro.md)は、Azure Cognitive Search スキルセットによって作成され、Azure Storage に保存されるコンテンツです。 この記事では、Azure portal のストレージ ブラウザーを使用してナレッジ ストアの内容を表示する方法を説明します。
 
-## <a name="prerequisites"></a>前提条件
+[Azure portal](knowledge-store-create-portal.md) 内または [REST API](knowledge-store-create-rest.md) を使用して作成された既存のナレッジ ストアから始めます。 ポータルと REST のどちらのチュートリアルでも、Azure Table Storage にナレッジ ストアが作成されます。
 
-+ 「[Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)」の手順に従って、このチュートリアルに使用されているサンプル ナレッジ ストアを作成します。
-
-+ ナレッジ ストアの作成に使用した Azure Storage アカウントの名前とそのアクセス キー (Azure portal から入手) も必要になります。
-
-## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Storage Explorer でのナレッジ ストアの表示、編集、クエリ
+## <a name="start-storage-browser"></a>ストレージ ブラウザーを起動する
 
 1. Azure portal で、ナレッジ ストアの作成に使用した [Storage アカウントを開きます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。
 
-1. ストレージ アカウントの左側のナビゲーション ウィンドウで、 **[Storage Explorer]** をクリックします。
+1. ストレージ アカウントの左側のナビゲーション ウィンドウで、 **[ストレージ ブラウザー]** を選択します。
 
-1. **[テーブル]** リストを展開し、ホテル レビュー サンプル データに対して **データ インポート** ウィザードを実行するときに作成した Azure テーブル プロジェクションを一覧表示します。
+## <a name="view-and-edit-tables"></a>テーブルを表示および編集する
 
-いずれかのテーブルを選択すると、エンリッチされたデータ (キー フレーズ、センチメント スコアなど) が表示されます。
+1. **テーブル** を展開して、ナレッジ ストアのテーブル プロジェクションを見つけます。 クイックスタートまたは REST の記事を使用してナレッジ ストアを作成した場合、テーブルにはヨーロッパのホテルの顧客レビューに関連するコンテンツが含まれます。
 
-   ![Storage Explorer でテーブルを表示する](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Storage Explorer でテーブルを表示する")
+   :::image type="content" source="media/knowledge-store-concept-intro/kstore-in-storage-explorer.png" alt-text="ストレージ ブラウザーのスクリーンショット" border="true":::
 
-テーブルの値のデータ型を変更したり、テーブル内の値を個別に変更したりするには、 **[編集]** をクリックします。 1 つのテーブル行について列のデータ型を変更すると、すべての行に適用されます。
+1. 一覧からテーブルを選択すると、その内容が表示されます。
 
-   ![Storage Explorer でテーブルを編集する](media/knowledge-store-view-storage-explorer/storage-explorer-edit-table.png "Storage Explorer でテーブルを編集する")
+1. 列の順序を変更したり、列を削除したりするには、ページ上部の **[列の編集]** を選択します。
 
-クエリを実行するには、コマンド バーの **[クエリ]** をクリックして条件を入力します。  
-
-   ![Storage Explorer のクエリ テーブル](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Storage Explorer のクエリ テーブル")
-
-## <a name="clean-up"></a>クリーンアップ
-
-独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
-
-ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
-
-無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。
+ストレージ ブラウザーでは、[サポートされているクエリ構文](/rest/api/storageservices/Querying-Tables-and-Entities)を使用して、一度に 1 つのテーブルのクエリのみを実行できます。 テーブル全体でクエリを実行するには、代わりに Power BI の使用を検討してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-このナレッジ ストアを Power BI に接続して詳細な分析を行うか、または REST API と Postman を使用してコーディングを進め、別のナレッジストアを作成します。
+このナレッジ ストアを Power BI に接続して、複数のテーブルを含む視覚化を作成します。
 
 > [!div class="nextstepaction"]
-> [Power BI を使用して接続する](knowledge-store-connect-power-bi.md)
-> [REST でナレッジ ストアを作成する](knowledge-store-create-rest.md)
+> [Power BI を使用した接続](knowledge-store-connect-power-bi.md)

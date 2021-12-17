@@ -7,14 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
-ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa6cdb37e6b664398e469ab8e1c3eefbb721bba0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88929442"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698447"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Azure portal で SSH キーを生成して格納する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 ポータルを使用して Linux VM を頻繁にデプロイする場合は、SSH キーをポータルで直接作成するか、コンピューターからアップロードすることで、SSH キーの利用をより簡単にできます。
 

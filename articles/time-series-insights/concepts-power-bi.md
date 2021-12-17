@@ -1,21 +1,22 @@
 ---
 title: Power BI 統合 - Azure Time Series Insights Gen 2 | Microsoft Docs
 description: Azure Time Series insights での Power BI 統合について学習します。
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: msrsrinivasan
+ms.author: radhsrin
+manager: cnovak
+ms.reviewer: orspodek
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.openlocfilehash: 2b6631415c32358cf445fab534b9524c88b6432e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16bb3ec6a5a9b787d1479b99f8f9af3a888f1f79
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95020880"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797530"
 ---
-# <a name="connect-azure-time-series-insights-gen-2-to-power-bi"></a>Power BI に Azure Time Series Insights Gen 2 を接続する  
+# <a name="connect-azure-time-series-insights-gen-2-to-power-bi"></a>Power BI に Azure Time Series Insights Gen 2 を接続する
 
 時系列データの関連付け、鮮明な視覚エフェクトの作成、および組織全体の分析情報の共有に役立つソリューションをお探しですか?
 

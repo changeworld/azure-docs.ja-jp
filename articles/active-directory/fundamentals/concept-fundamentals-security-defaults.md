@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 09/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
-ms.reviewer: rogoya
+manager: karenhoran
+ms.reviewer: lvandenende
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b88cb7baa3c8eb8d40bd23d8697f563406bd1fdb
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98600136"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535024"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
 
-パスワード スプレー、リプレイ、フィッシングなど、ID 関連の一般的な攻撃がますます広まる中で、セキュリティの管理に困難をきたす場合があります。 セキュリティの既定値群では、次のような構成済みのセキュリティ設定を使用して、これらの攻撃から組織を容易に保護できます。
+パスワード スプレー、リプレイ、フィッシングなど、ID 関連の一般的な攻撃が広まる中で、セキュリティの管理に困難をきたす場合があります。 セキュリティの既定値群では、次のような構成済みのセキュリティ設定を使用して、これらの攻撃から組織を容易に保護できます。
 
 - すべてのユーザーに対して、Azure AD Multi-Factor Authentication への登録を必須にします。
 - 管理者に多要素認証の実行を要求します。
@@ -35,7 +35,7 @@ ms.locfileid: "98600136"
 
 ## <a name="availability"></a>可用性
 
-Microsoft は、誰もがセキュリティの既定値群を利用できるよう努めています。 目標は、すべての組織が追加の費用なしで基本レベルのセキュリティを確実に有効にできるようにすることです。 セキュリティの既定値群は、Azure portal で有効にします。 2019 年 10 月 22 日以降に作成されたテナントの場合、セキュリティの既定値群はテナントで既に有効になっている可能性があります。 すべてのユーザーを保護するために、セキュリティの既定値群は、新しく作成されたすべてのテナントにロールアウトされます。
+Microsoft は、誰もがセキュリティの既定値群を利用できるよう努めています。 目標は、すべての組織が追加の費用なしで基本レベルのセキュリティを確実に有効にできるようにすることです。 セキュリティの既定値群は、Azure portal で有効にします。 2019 年 10 月 22 日以降に作成されたテナントの場合、セキュリティの既定値群はテナントで有効になっている可能性があります。 すべてのユーザーを保護するために、セキュリティの既定値群は、作成時に新しいテナントにロールアウトされます。
 
 ### <a name="whos-it-for"></a>適した組織
 
@@ -58,34 +58,41 @@ Microsoft は、誰もがセキュリティの既定値群を利用できるよ�
 
 特権アクセスを持つユーザーは、より自由に環境にアクセスできます。 これらのアカウントには権限があるので、特別な注意を払って対処する必要があります。 特権アカウントの保護を強化するための一般的な方法の 1 つは、サインイン時に、強力な形式のアカウント検証を必須にすることです。 Azure AD では、多要素認証を必須にすることで、アカウント検証を強力にすることができます。
 
-次の 9 つの Azure AD 管理者ロールについては、Azure AD Multi-Factor Authentication への登録が完了した後、サインインのたびに追加の認証を実行する必要があります。
+次の Azure AD 管理者ロールについては、Azure AD Multi-Factor Authentication への登録が完了した後、サインインのたびに追加の認証を実行する必要があります。
 
 - 全体管理者
-- SharePoint 管理者
-- Exchange 管理者
-- 条件付きアクセス管理者
-- セキュリティ管理者
-- ヘルプデスク管理者
-- 課金管理者
-- ユーザー管理者
+- アプリケーション管理者
 - 認証管理者
+- 課金管理者
+- クラウド アプリケーション管理者
+- 条件付きアクセス管理者
+- Exchange 管理者
+- ヘルプデスク管理者
+- パスワード管理者
+- 特権認証管理者
+- セキュリティ管理者
+- SharePoint 管理者
+- ユーザー管理者
+
+> [!WARNING]
+> ディレクトリに、グローバル管理者特権が割り当てられているアカウントが少なくとも 2 つあることを確認します。 これは、グローバル管理者のどちらかがロックアウトされた場合に役立ちます。詳細については、「[Azure AD で緊急アクセス用管理者アカウントを管理する](../roles/security-emergency-access.md)」を参照してください。
 
 ### <a name="protecting-all-users"></a>すべてのユーザーの保護
 
 認証の追加のレイヤーが必要なアカウントは管理者アカウントだけであると考えがちです。 管理者は、機密情報への広範なアクセス権を持ち、サブスクリプション全体の設定に変更を加えることができます。 しかし、多くの場合、攻撃者はエンド ユーザーをターゲットにします。 
 
-これらの攻撃者は、アクセス権を取得した後、元のアカウント所有者に代わって機密性の高い情報へのアクセスを要求できます。 ディレクトリ全体をダウンロードして、組織全体に対してフィッシング攻撃を実行することさえできます。 
+これらの攻撃者は、アクセス権を取得した後、元のアカウント所有者の代わりに機密性の高い情報へのアクセスを要求できます。 ディレクトリ全体をダウンロードして、組織全体に対してフィッシング攻撃を実行することさえできます。 
 
-すべてのユーザーを対象にした保護を向上させるための一般的な方法の 1 つは、全員に Multi-Factor Authentication を要求するなど、より強力な形式のアカウント検証を要求することです。 ユーザーが Multi-Factor Authentication の登録を完了すると、必要に応じて追加の認証を求められるようになります。 ユーザーは、主に、新しいデバイスまたはアプリケーションを使用して認証するとき、または重要な役割とタスクを実行するときに求められます。 この機能は、SaaS アプリケーションを含めて、Azure AD に登録されているすべてのアプリケーションを保護します。
+すべてのユーザーを対象にした保護を向上させるための一般的な方法の 1 つは、全員に Multi-Factor Authentication を要求するなど、より強力な形式のアカウント検証を要求することです。 ユーザーが Multi-Factor Authentication の登録を完了すると、必要に応じて他の認証を求められるようになります。 ユーザーは、主に、新しいデバイスまたはアプリケーションを使用して認証するとき、または重要な役割とタスクを実行するときに求められます。 この機能は、SaaS アプリケーションを含めて、Azure AD に登録されているすべてのアプリケーションを保護します。
 
 ### <a name="blocking-legacy-authentication"></a>レガシ認証をブロックする
 
-ユーザーがクラウド アプリに簡単にアクセスできるように、Azure AD ではレガシ認証を含め、幅広い認証プロトコルがサポートされています。 "*レガシ認証*" は、以下のものによって行われる認証要求を指す用語です。
+ユーザーがクラウド アプリに簡単にアクセスできるように、Azure AD ではレガシ認証を含め、さまざまな認証プロトコルがサポートされています。 "*レガシ認証*" は、以下のものによって行われる認証要求を指す用語です。
 
 - 先進認証を使用していないクライアント (Office 2010 クライアントなど)。
 - IMAP、SMTP、POP3 などの古いメール プロトコルを使用しているクライアント。
 
-今日では、不正侵入を意図したサインイン試行の大部分がレガシ認証によるものです。 レガシ認証では、Multi-Factor Authentication がサポートされていません。 ディレクトリで Multi-Factor Authentication ポリシーが有効になっている場合でも、攻撃者は古いプロトコルを使用して認証を受け、Multi-Factor Authentication をバイパスできます。 
+現在、危険にさらそうとするすべてのサインイン試行の大部分はレガシ認証から来ています。 レガシ認証では、Multi-Factor Authentication がサポートされていません。 ディレクトリで Multi-Factor Authentication ポリシーが有効になっている場合でも、攻撃者は古いプロトコルを使用して認証を受け、Multi-Factor Authentication をバイパスできます。 
 
 テナントでセキュリティ デフォルトが有効になった後は、古いプロトコルによるすべての認証要求がブロックされます。 セキュリティ既定値は、Exchange Active Sync 基本認証をブロックします。
 
@@ -96,13 +103,13 @@ Microsoft は、誰もがセキュリティの既定値群を利用できるよ�
 
 ### <a name="protecting-privileged-actions"></a>特権アクションの保護
 
-組織では、Azure Resource Manager API によって管理される、次のような各種の Azure サービスを使用します。
+組織では、Azure Resource Manager API によって管理される、次のようなさまざまな Azure サービスを使用します。
 
 - Azure portal 
 - Azure PowerShell 
 - Azure CLI
 
-Azure Resource Manager を使用してご自身のサービスを管理する操作は、高い権限が与えられているアクションです。 Azure Resource Manager では、サービス設定、サブスクリプションの課金など、テナント全体の構成を変更できます。 単一要素認証は、フィッシング、パスワード スプレーなどの各種の攻撃に対して脆弱です。 
+Azure Resource Manager を使用してご自身のサービスを管理する操作は、高い権限が与えられているアクションです。 Azure Resource Manager では、サービス設定、サブスクリプションの課金など、テナント全体の構成を変更できます。 単一要素認証は、フィッシング、パスワード スプレーなどのさまざまな攻撃に対して脆弱です。 
 
 Azure Resource Manager にアクセスして構成を更新しようとするユーザーの ID を検証することが重要です。 アクセスを許可する前に、追加の認証を要求して ID を検証します。
 
@@ -133,30 +140,32 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 - ** ユーザーは Microsoft Authenticator アプリの確認コードを使用できますが、通知オプションを使用した場合のみ登録できます。
 - *** アプリ パスワードは、管理者が有効にした場合にのみ、レガシ認証シナリオでのユーザーごとの MFA でのみ使用できます。
 
+> [!WARNING]
+> セキュリティの既定値群を使用している場合は、組織のメソッドを無効にしないでください。 メソッドを無効にすると、ご自分のテナントからロックアウトされる可能性があります。 [MFA サービス設定ポータル](../authentication/howto-mfa-getstarted.md#choose-authentication-methods-for-mfa)で、 **[ユーザーが使用できる方法]** をすべて有効のままにしておきます。
+
 ### <a name="disabled-mfa-status"></a>無効な MFA の状態
 
 組織が以前からユーザー ベースの Azure AD Multi-Factor Authentication のユーザーである場合は、多要素認証の状態のページを確認したときに、 **[有効]** または **[強制]** 状態にあるユーザーが表示されなくても問題ありません。 セキュリティの既定値群または条件付きアクセス ベースの Azure AD Multi-Factor Authentication を使用しているユーザーの場合は、 **[無効]** が適切な状態です。
 
 ### <a name="conditional-access"></a>条件付きアクセス
 
-条件付きアクセスを使用して、セキュリティの既定値群に似たポリシーを構成できますが、厳密にはセキュリティの既定値群では利用できないユーザーの除外も含まれます。 条件付きアクセスを使用しており、環境で条件付きアクセス ポリシーを有効にしている場合、セキュリティの既定値群は使用できません。 条件付きアクセスが利用できるライセンスを持っていても、環境で条件付きアクセス ポリシーが有効になっていない場合には、条件付きアクセス ポリシーを有効にしない限り、セキュリティの既定値群を使用できます。 Azure AD ライセンスの詳細については、[Azure AD の価格に関するページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+条件付きアクセスを使用して、セキュリティの既定値群に似たポリシーを構成できますが、厳密にはセキュリティの既定値群では利用できないユーザーの除外も含まれます。 条件付きアクセスを使用しており、環境で条件付きアクセス ポリシーを有効にしている場合、セキュリティの既定値群は使用できません。 条件付きアクセスが利用できるライセンスを持っていても、環境で条件付きアクセス ポリシーが有効になっていない場合には、条件付きアクセス ポリシーを有効にしない限り、セキュリティの既定値群を使用できます。 Azure AD ライセンスの詳細については、[Azure AD の価格に関するページ](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)を参照してください。
 
 ![セキュリティ既定値と条件付きアクセスは併用不可であるという警告メッセージ](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 
-以下は、条件付きアクセスを使用して、セキュリティの既定値群で有効になったこれらのポリシーと同等のポリシーを構成する方法のステップバイステップ ガイドです。
+ここでは、条件付きアクセスを使用して一連のポリシーを構成する方法についての詳細な手順を説明します。これは、ID を保護するための優れた開始点となります。
 
 - [管理者に対して MFA を必須にする](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [Azure 管理のために MFA を必須にする](../conditional-access/howto-conditional-access-policy-azure-management.md)
 - [レガシ認証をブロックする](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [すべてのユーザーに対して MFA を必須にする](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [Azure AD MFA への登録を必須にする](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - Azure AD Premium P2 の Azure AD Identity Protection 部分が必要です。
 
 ## <a name="enabling-security-defaults"></a>セキュリティの既定値群の有効化
 
 ディレクトリでセキュリティの既定値群を有効にするには、次のようにします。
 
 1. セキュリティ管理者、条件付きアクセス管理者、またはグローバル管理者として、 [Azure portal](https://portal.azure.com)  にサインインします。
-1. **\[Azure Active Directory]**  > **\[プロパティ]** の順に移動します。
+1.  **[Azure Active Directory]**  > **[プロパティ]** の順に移動します。
 1. **[セキュリティの既定値群の管理]** を選択します。
 1. **[セキュリティの既定値群の有効化]** トグルを **[はい]** に設定します。
 1. **[保存]** を選択します。
@@ -170,7 +179,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 ディレクトリでセキュリティの既定値群を無効にするには、次のようにします。
 
 1. セキュリティ管理者、条件付きアクセス管理者、またはグローバル管理者として、 [Azure portal](https://portal.azure.com)  にサインインします。
-1. **\[Azure Active Directory]**  > **\[プロパティ]** の順に移動します。
+1.  **[Azure Active Directory]**  > **[プロパティ]** の順に移動します。
 1. **[セキュリティの既定値群の管理]** を選択します。
 1. **[セキュリティの既定値群の有効化]** トグルを **[いいえ]** に設定します。
 1. **[保存]** を選択します。

@@ -1,24 +1,24 @@
 ---
 title: Android マップにヒート マップ レイヤーを追加する | Microsoft Azure Maps
 description: ヒート マップを作成する方法について説明します。 Azure MapsAndroid SDK を使用してヒート マップ レイヤーをマップに追加する方法について説明します。 ヒート マップ レイヤーをカスタマイズする方法について説明します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: fce2c2d007f92c43e763826f9345f773324e885e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5e48be82a2486291d2b7fdecf42d759e2c13eb08
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100187"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425196"
 ---
 # <a name="add-a-heat-map-layer-android-sdk"></a>ヒート マップ レイヤーを追加する (Android SDK)
 
-点密度マップとも呼ばれるヒート マップは、データ視覚化の 1 つの種類です。 一定の範囲の色を使用して、データの密度を表すために使用され、マップ上にデータの "ホット スポット" を示します。 ヒート マップは、多数の点によってデータセットをレンダリングする優れた方法です。 
+点密度マップとも呼ばれるヒート マップは、データ視覚化の 1 つの種類です。 一定の範囲の色を使用して、データの密度を表すために使用され、マップ上にデータの "ホット スポット" を示します。 ヒート マップは、多数の点によってデータセットをレンダリングする優れた方法です。
 
 数万個の点を記号としてレンダリングすると、マップのほとんどの領域が覆われてしまう場合があります。 この場合、多くの記号が重なり合う傾向にあります。 より適正にデータを理解することは、難しくなります。 ただし、これと同じデータセットをヒート マップとして視覚化すると、データの各点の密度と相対密度を簡単に把握できます。
 
@@ -50,6 +50,11 @@ ms.locfileid: "102100187"
 ```java
 //Create a data source and add it to the map.
 DataSource source = new DataSource();
+
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson");
+
+//Add data source to the map.
 map.sources.add(source);
 
 //Create a heat map layer.
@@ -60,27 +65,6 @@ HeatMapLayer layer = new HeatMapLayer(source,
 
 //Add the layer to the map, below the labels.
 map.layers.add(layer, "labels");
-
-//Import the geojson data and add it to the data source.
-Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
-    this,
-    (String result) -> {
-        //Parse the data as a GeoJSON Feature Collection.
-        FeatureCollection fc = FeatureCollection.fromJson(result);
-
-        //Add the feature collection to the data source.
-        source.add(fc);
-
-        //Optionally, update the maps camera to focus in on the data.
-
-        //Calculate the bounding box of all the data in the Feature Collection.
-        BoundingBox bbox = MapMath.fromData(fc);
-
-        //Update the maps camera so it is focused on the data.
-        map.setCamera(
-            bounds(bbox),
-            padding(20));
-    });
 ```
 
 ::: zone-end
@@ -90,6 +74,11 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
 ```kotlin
 //Create a data source and add it to the map.
 val source = DataSource()
+
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson")
+
+//Add data source to the map.
 map.sources.add(source)
 
 //Create a heat map layer.
@@ -101,27 +90,6 @@ val layer = HeatMapLayer(
 
 //Add the layer to the map, below the labels.
 map.layers.add(layer, "labels")
-
-//Import the geojson data and add it to the data source.
-Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
-    this
-) { result: String? ->
-    //Parse the data as a GeoJSON Feature Collection.
-    val fc = FeatureCollection.fromJson(result!!)
-
-    //Add the feature collection to the data source.
-    source.add(fc)
-
-    //Optionally, update the maps camera to focus in on the data.
-    //Calculate the bounding box of all the data in the Feature Collection.
-    val bbox = MapMath.fromData(fc)
-
-    //Update the maps camera so it is focused on the data.
-    map.setCamera(
-        bounds(bbox),
-        padding(20)
-    )
-}
 ```
 
 ::: zone-end
@@ -137,7 +105,7 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
 - `heatmapRadius`:各データ ポイントをレンダリングするときのピクセルの半径を定義します。 この半径は、固定数または式として設定できます。 式を使用することにより、ズーム レベルに基づいて半径をスケーリングし、マップ上の一貫した空間領域 (たとえば、5 マイルの半径) を表すことができます。
 - `heatmapColor`:ヒート マップの配色方法を指定します。 色のグラデーションは、ヒート マップの一般的な機能です。 `interpolate` 式を利用して、その効果を実現できます。 また、`step` 式を使用してヒート マップを色分けし、密度を、等高線またはレーダー スタイル マップのような範囲に視覚的に分割することもできます。 このようなカラー パレットでは、最小濃度値から最大濃度値の色を定義します。
 
-  ヒート マップの色の値は、`heatmapDensity` 値に対する式として指定します。 "補間" 式のインデックス 0 または "段階" 式の既定の色では、データのない領域の色が定義されます。 この値を使用して、背景色を定義することができます。 多くの場合、この値は透明、または半透明の黒に設定されます。 
+  ヒート マップの色の値は、`heatmapDensity` 値に対する式として指定します。 "補間" 式のインデックス 0 または "段階" 式の既定の色では、データのない領域の色が定義されます。 この値を使用して、背景色を定義することができます。 多くの場合、この値は透明、または半透明の黒に設定されます。
 
   色の式の例を次に示します。
 
@@ -290,6 +258,56 @@ val layer = HeatMapLayer(source,
 次のビデオでは、上記のコードが実行されているマップを示します。これは、マップをズームしている間に半径を拡大縮小して、ズーム レベル全体で一貫性のあるヒート マップ レンダリングを作成します。
 
 ![一貫した地理空間サイズが示されるヒート マップ レイヤーでのマップのズームを示すアニメーション](media/map-add-heat-map-layer-android/android-consistent-zoomable-heat-map-layer.gif)
+
+`zoom` 式は、`step` 式と `interpolate` 式でのみ使用できます。 次の式を使用して、半径をメートル単位で見積もることができます。 この式では、プレースホルダー `radiusMeters` を使用します。これは、必要な半径に置き換える必要があります。 この式では、ズーム レベル 0 および 24 の赤道でズーム レベルのおおよそのピクセル半径を計算し、`exponential interpolation` 式を使用して、マップ内のタイル システムが機能するのと同じように、これらの値の間でスケールします。
+
+::: zone pivot="programming-language-java-android"
+
+```java
+interpolate(
+    exponential(2),
+    zoom(),
+    stop(1, product(radiusMeters, 0.000012776039596366526)),
+    stop(24, product(radiusMeters, 214.34637593279402))
+)
+```
+
+> [!TIP]
+> データ ソースに対するクラスタリングを有効にすると、相互に近いポイントはクラスター化されたポイントとしてグループ化されます。 各クラスターのポイント数をヒート マップの重み式として使用できます。 これにより、レンダリングされる点の数を大幅に減らすことができます。 クラスターのポイント数は、ポイント フィーチャーの `point_count` プロパティに格納されています。
+>
+> ```java
+> HeatMapLayer layer = new HeatMapLayer(dataSource,
+>    heatmapWeight(get("point_count"))
+> );
+> ```
+>
+> クラスタリングの半径がわずか数ピクセルの場合、レンダリングによる視覚的な違いは小さくなります。 半径が大きいほど各クラスター内でグループ化されるポイントが増えるので、ヒート マップのパフォーマンスは向上します。
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+interpolate(
+    exponential(2),
+    zoom(),
+    stop(1, product(radiusMeters, 0.000012776039596366526)),
+    stop(24, product(radiusMeters, 214.34637593279402))
+)
+```
+
+> [!TIP]
+> データ ソースに対するクラスタリングを有効にすると、相互に近いポイントはクラスター化されたポイントとしてグループ化されます。 各クラスターのポイント数をヒート マップの重み式として使用できます。 これにより、レンダリングされる点の数を大幅に減らすことができます。 クラスターのポイント数は、ポイント フィーチャーの `point_count` プロパティに格納されています。
+>
+> ```kotlin
+> var layer = new HeatMapLayer(dataSource,
+>    heatmapWeight(get("point_count"))
+> )
+> ```
+>
+> クラスタリングの半径がわずか数ピクセルの場合、レンダリングによる視覚的な違いは小さくなります。 半径が大きいほど各クラスター内でグループ化されるポイントが増えるので、ヒート マップのパフォーマンスは向上します。
+
+::: zone-end
 
 ## <a name="next-steps"></a>次のステップ
 

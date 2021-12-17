@@ -17,18 +17,18 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d55c8541bc0ef3fc73b9848c2fd51feb1ea99e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89279654"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725745"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
-このドキュメントの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 このドキュメントでは特定の領域について詳しく説明しますが、これらの概念については、他のドキュメントでも簡単に説明しています。
+このドキュメントの目的は、Azure AD Connect の構成時に考慮する必要がある分野について説明することです。 このドキュメントでは特定の領域について詳しく説明しますが、これらの概念については、他のドキュメントでも簡単に説明しています。
 
 ## <a name="sourceanchor"></a>sourceAnchor
-sourceAnchor 属性は、 *オブジェクトの有効期間中に変更できない属性* として定義されています。 この属性により、オブジェクトは、オンプレミスと Azure AD で同じオブジェクトとして一意に識別されます。 また、この属性は、 **immutableId** とも呼ばれており、この 2 つの名前のどちらを使ってもかまいません。
+sourceAnchor 属性は、 *オブジェクトの有効期間中に変更できない属性* として定義されています。 この属性により、オブジェクトは、オンプレミスと Azure AD で同じオブジェクトとして一意に識別されます。 また、この属性は **immutableId** とも呼ばれており、この 2 つの名前のどちらを使ってもかまいません。
 
 "immutable" (変更できない) という単語は、このドキュメントで大きな意味を持ちます。 この属性の値は、一度設定すると変更できないため、シナリオに対応する設計を選ぶことが重要です。
 

@@ -6,14 +6,14 @@ author: mhamilton723
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: sample
-ms.date: 07/06/2020
+ms.date: 10/28/2021
 ms.author: marhamil
-ms.openlocfilehash: 590ddef27315f37719da5b28c68b6c402371e986
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: acf81e5d9b0502e2eab309ed2fdc239ffae9afc7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363257"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450288"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>ビッグ データ向け Cognitive Services の Python サンプル
 
@@ -21,7 +21,7 @@ ms.locfileid: "94363257"
 
 この記事のサンプルでは、次の Cognitive Services が使用されています。
 
-- Text Analytics - 文のセットのセンチメント (またはムード) を取得します。
+- 言語サービス - 文のセットのセンチメント (またはムード) を取得します。
 - Computer Vision - 画像のセットに関連付けられたタグ (1 単語の描写) を取得します。
 - Bing Image Search - Web で自然言語クエリに関連する画像を検索します。
 - 音声テキスト変換 - 音声ファイルの書き起こしを行い、テキストベースのトランスクリプトを抽出します。
@@ -43,7 +43,7 @@ ms.locfileid: "94363257"
 ```python
 from mmlspark.cognitive import *
 
-# A general Cognitive Services key for Text Analytics and Computer Vision (or use separate keys that belong to each service)
+# A general Cognitive Services key for the Language service and Computer Vision (or use separate keys that belong to each service)
 service_key = "ADD_YOUR_SUBSCRIPION_KEY"
 # A Bing Search v7 subscription key
 bing_search_key = "ADD_YOUR_SUBSCRIPION_KEY"
@@ -54,9 +54,9 @@ anomaly_key = "ADD_YOUR_SUBSCRIPION_KEY"
 assert service_key != "ADD_YOUR_SUBSCRIPION_KEY"
 ```    
 
-## <a name="text-analytics-sample"></a>Text Analytics のサンプル
+## <a name="language-service-sample"></a>言語サービスのサンプル
 
-[Text Analytics](../text-analytics/index.yml) サービスには、テキストからインテリジェントな分析情報を抽出するためのアルゴリズムがいくつか用意されています。 たとえば、指定された入力テキストのセンチメントを見つけることができます。 このサービスでは、0.0 と 1.0 の間のスコアが返されます。低いスコアは否定的なセンチメントを示し、高いスコアは肯定的なセンチメントを示します。  このサンプルでは、3 つの単純な文を使用し、それぞれのセンチメントを返します。
+[言語サービス](../language-service/index.yml)には、テキストからインテリジェントな分析情報を抽出するためのアルゴリズムがいくつか用意されています。 たとえば、指定された入力テキストのセンチメントを見つけることができます。 このサービスでは、0.0 と 1.0 の間のスコアが返されます。低いスコアは否定的なセンチメントを示し、高いスコアは肯定的なセンチメントを示します。  このサンプルでは、3 つの単純な文を使用し、それぞれのセンチメントを返します。
 
 ```python
 from pyspark.sql.functions import col
@@ -68,7 +68,7 @@ df = spark.createDataFrame([
   ("The cognitive services on spark aint bad", "en-US"),
 ], ["text", "language"])
 
-# Run the Text Analytics service with options
+# Run the Language service with options
 sentiment = (TextSentiment()
     .setTextCol("text")
     .setLocation("eastus")

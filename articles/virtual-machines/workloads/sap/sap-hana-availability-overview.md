@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 757dfc34e3be12d09b8f965a2bb0295adb712c11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc99f5c21abf23e9323845872ec0a28518473b5c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504237"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142911"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 仮想マシンの SAP HANA の高可用性
 
@@ -39,7 +39,7 @@ Azure VM 上の SAP HANA のようなミッション クリティカルなデー
 
 - [Azure VM への単一インスタンスの SAP HANA の手動インストール](./hana-get-started.md)
 - [Azure VM での SAP HANA システム レプリケーションのセットアップ](sap-hana-high-availability.md)
-- [Azure VM での SAP HANA のバックアップ](./sap-hana-backup-guide.md)
+- [Azure VM での SAP HANA のバックアップ](../../../backup/sap-hana-db-about.md)
 
 また、SAP HANA に関する以下の記事をよく理解しておくこともお勧めします。
 
@@ -69,19 +69,4 @@ Azure コンポーネントで提供可能な SLA に対する可用性の要件
 ## <a name="next-steps"></a>次のステップ
 
 - 「[1 つの Azure リージョン内での SAP HANA の可用性](./sap-hana-availability-one-region.md)」を確認する
-- 「[Azure リージョンの枠を越えた SAP HANA の可用性](./sap-hana-availability-across-regions.md)」を確認する 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- 「[Azure リージョンの枠を越えた SAP HANA の可用性](./sap-hana-availability-across-regions.md)」を確認する

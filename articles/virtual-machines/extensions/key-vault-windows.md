@@ -10,12 +10,13 @@ ms.collection: windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a984d044134dbd775bacb653f8590ee78724f15b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d2fe9cecae13cdd6ff82256466ff1fa045b73189
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563559"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569316"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows 用の Key Vault 仮想マシン拡張機能
 
@@ -81,7 +82,7 @@ Key Vault VM 拡張機能は、Azure で使用するために、Windows Server 2
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
-          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "pollingIntervalInS": <string specifying polling interval in seconds, e.g: "3600">,
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "linkOnRenewal": <Only Windows. This feature ensures s-channel binding when certificate renews, without necessitating a re-deployment.  e.g.: false>,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
@@ -120,7 +121,7 @@ Key Vault VM 拡張機能は、Azure で使用するために、Windows Server 2
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | LocalMachine または CurrentUser (大文字と小文字を区別する) | string |
 | requireInitialSync | true | boolean |
-| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate","https://myvault.vault.azure.net/secrets/mycertificate2"] | 文字列配列
+| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"] | 文字列配列
 | msiEndpoint | http://169.254.169.254/metadata/identity | string |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
 
@@ -151,7 +152,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
-          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "pollingIntervalInS": <string specifying polling interval in seconds, e.g: "3600">,
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"]>
@@ -176,9 +177,20 @@ Key Vault VM 拡張機能は、構成されている場合に拡張機能の順�
 > システム割り当て ID を作成し、その ID を使用して Key Vault アクセス ポリシーを更新する ARM テンプレートに対しては、この機能を使用することはできません。 それを行うと、すべての拡張機能が起動するまでコンテナーのアクセス ポリシーが更新されなくなり、デッドロックが発生することになります。 そうではなく、"*単一ユーザー割り当て MSI ID*" を使用し、その ID でコンテナーに事前 ACL を設定してからデプロイする必要があります。
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell でのデプロイ
-> [!WARNING]
-> 多くの場合、PowerShell クライアントでは、`[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.` エラーを伴って akvvm_service が失敗する原因となる settings.json で、`\` が `"` に追加されます。
 
+> [!WARNING]
+> 多くの場合、PowerShell クライアントは settings.json で `"` に `\` を追加します。この場合、akvvm_service が次のエラーで失敗します。`[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.` ポータルの **[拡張機能]** の **[設定]** に余分な文字 `\` と `"` が表示されています。 これを回避するには、PowerShell `HashTable` として `$settings` を初期化します。
+> 
+> ```powershell
+> $settings = @{
+>     "secretsManagementSettings" = @{ 
+>         "pollingIntervalInS"       = "<pollingInterval>"; 
+>         "certificateStoreName"     = "<certStoreName>"; 
+>         "certificateStoreLocation" = "<certStoreLoc>"; 
+>         "observedCertificates"     = @("<observedCert1>", "<observedCert2>") } }
+> ```
+>
+  
 Azure PowerShell を使用すると、Key Vault VM 拡張機能を既存の仮想マシンまたは仮想マシンのスケールセットにデプロイすることができます。 
 
 * VM 拡張機能をデプロイするには、次の手順を実行します。
@@ -242,9 +254,9 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 
    ```azurecli
         # Start the deployment
-        az vmss extension set -name "KeyVaultForWindows" `
+        az vmss extension set --name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         -resource-group "<resourcegroup>" `
+         --resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
@@ -276,10 +288,16 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
 #### <a name="logs-and-configuration"></a>ログと構成
+Key Vault VM 拡張機能のログは、VM 上のローカルにのみ存在し、トラブルシューティングの際に大変役に立ちます
 
-```
-%windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<version>\akvvm_service_<date>.log
-```
+|場所|説明|
+|--|--|
+| C:\WindowsAzure\Logs\WaAppAgent.log | 拡張機能の更新が発生した時間を示します。 |
+| C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<most recent version\>\ | 証明書のダウンロードの状態を示します。 ダウンロード場所は常に、Windows コンピューターの My ストア (certlm.msc) になります。 |
+| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<most recent version\>\RuntimeSettings\ | Key Vault VM 拡張機能サービスのログには、akvvm_service サービスの状態が示されます。 |
+| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<most recent version\>\Status\    | Key Vault VM 拡張機能サービスの構成とバイナリ。 |
+|||  
+
 
 ### <a name="support"></a>サポート
 

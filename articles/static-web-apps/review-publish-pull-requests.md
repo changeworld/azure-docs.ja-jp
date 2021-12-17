@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 1cb5f2f9ac941001efb18301f4a54bd0092920ba
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3869b18f580d0a12b2581554acf63258cb08f64a
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172742"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112380682"
 ---
-# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューにおける実稼働前環境での pull request の確認
+# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps"></a>Azure Static Web Apps における実稼働前環境での pull request の確認
 
 この記事では、[Azure Static Web Apps](overview.md) を使用してデプロイされたアプリケーションに対する変更を、実稼働前環境を使用して確認する方法を示します。
 
@@ -33,7 +33,7 @@ Azure Static Web Apps を使用する場合は、複数の実稼働前環境を�
 - 運用環境にデプロイする前にサニティ チェックを実行する。
 
 > [!NOTE]
-> プレビュー期間中に使用可能な[ステージング環境の数は最大 3 つ](quotas.md)です。
+> プル要求と実稼働前環境は、現時点では GitHub Actions のデプロイでのみサポートされています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -104,12 +104,16 @@ pull request が作成されると、[GitHub Actions](https://github.com/feature
 
 ## <a name="limitations"></a>制限事項
 
-現在、ステージング バージョンのアプリケーションは、GitHub リポジトリがプライベートであっても、その URL によってパブリックにアクセスできます。
+- 現在、ステージング バージョンのアプリケーションは、GitHub リポジトリがプライベートであっても、その URL によってパブリックにアクセスできます。
 
-> [!WARNING]
-> 実稼働前環境へのアクセスが制限されないため、機密性の高い内容をステージング バージョンに発行する際は注意してください。
+    > [!WARNING]
+    > 実稼働前環境へのアクセスが制限されないため、機密性の高い内容をステージング バージョンに発行する際は注意してください。
 
-Static Web Apps を使用してデプロイした各アプリ用に使用できる実稼働前環境の数は、使用している SKU レベルによって異なります。 たとえば、Free レベルでは、運用環境に加えて 3 つの実稼働前環境を使用できます。
+- Static Web Apps を使用してデプロイした各アプリ用に使用できる実稼働前環境の数は、使用している [ホスト プラン](plans.md)によって異なります。 たとえば、Free レベルでは、運用環境に加えて 3 つの実稼働前環境を使用できます。
+
+- 実稼働前環境は地理的に分散されていません。
+
+- 現時点では、実稼働前環境をサポートしているのは GitHub Actions のデプロイだけです。
 
 ## <a name="next-steps"></a>次のステップ
 

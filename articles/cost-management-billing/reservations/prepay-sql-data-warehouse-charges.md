@@ -1,27 +1,27 @@
 ---
-title: Azure の容量予約で Azure Synapse Analytics 料金を節約する
+title: Azure の予約容量で Azure Synapse Analytics (データ ウェアハウスのみ) 料金を節約する
 description: 予約容量を使用したコスト削減によって Azure Synapse Analytics 料金のコストを節約する方法について説明します。
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 10/19/2021
 ms.author: banders
-ms.openlocfilehash: bd43b668c318b825c5c5b6f36fc1da1055863bed
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6b2fb94f625cb5eb6384961faa977da2b9822bf6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599096"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223975"
 ---
-# <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>予約容量を使用して Azure Synapse Analytics 料金のコストを節約する
+# <a name="save-costs-for-azure-synapse-analytics-data-warehousing-only-charges-with-reserved-capacity"></a>予約容量を使用して Azure Synapse Analytics (データ ウェアハウスのみ) 料金のコストを節約する
 
-1 年分または 3 年分の cDWU の使用に関する予約をコミットすることによって、Azure Synapse Analytics にかかるコストを節約することができます。 Azure Synapse Analytics の予約容量を購入するには、Azure リージョンと期間を選択する必要があります。 その後、Azure Synapse Analytics SKU をカートに追加して、購入する cDWU ユニットの数量を選択します。
+1 年分または 3 年分の cDWU の使用に関する予約をコミットすることによって、Azure Synapse Analytics (データ ウェアハウスのみ) にかかるコストを節約することができます。 Azure Synapse Analytics の予約容量を購入するには、Azure リージョンと期間を選択する必要があります。 その後、Azure Synapse Analytics SKU をカートに追加して、購入する cDWU ユニットの数量を選択します。
 
 予約を購入すると、予約の属性に一致する Azure Synapse Analytics の使用状況は従量課金制で課金されなくなります。
 
-Azure Synapse Analytics の使用に関連するストレージまたはネットワークの料金は予約割引の対象外となります。
+Azure Synapse Analytics の使用に関連するストレージまたはネットワークの料金は、予約割引の対象外となります。データ ウェアハウスの使用量のみがその対象となります。
 
 予約容量を超過した場合、Azure Synapse Analytics インスタンスは引き続き実行されますが、従量課金制の料金で課金されます。 予約は自動更新されません。
 
@@ -30,7 +30,8 @@ Azure Synapse Analytics の使用に関連するストレージまたはネッ�
 Azure Synapse Analytics の予約容量は [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) で購入できます。 予約の支払いは、[前払いまたは月払い](./prepare-buy-reservation.md)で行います。 予約容量を購入するには:
 
 - 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制サブスクリプションで所有者ロールを所持している必要があります。
-- エンタープライズ サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 その設定が無効になっている場合は、EA 管理者である必要があります。
+- エンタープライズ サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 その設定が無効になっている場合は、EA 管理者になってそれを有効にする必要があります。 Direct Enterprise のお客様は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/AllBillingScopes) で **予約インスタンス** の設定を更新できるようになりました。 [ポリシー] メニューに移動して、設定を変更します。
+
 - クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが Azure Synapse Analytics の予約容量を購入できます。
 
 エンタープライズおよび従量課金制のお客様に対する予約購入の課金方法の詳細については、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](understand-reserved-instance-usage-ea.md)」および「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](understand-reserved-instance-usage.md)」をご覧ください。
@@ -52,8 +53,9 @@ Azure Synapse Analytics の予約サイズは、使用するコンピューテ�
    - **単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
    - **単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
    - **共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。
-   - エンタープライズのお客様の場合、課金コンテキストは EA 登録です。
-   - 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。
+       - エンタープライズのお客様の場合、課金コンテキストは EA 登録です。
+       - 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。
+   - **管理グループ** - 管理グループと課金スコープの両方の一部であるサブスクリプションの一覧にある一致するリソースに予約割引を適用します。
 5. リージョンを選択して、予約容量でカバーされる Azure リージョンを選びます。
 6. 数量を選択します。 購入する 100 Data Warehouse ユニット (cDWU) の数量を入力します。    
    たとえば、数量として 30 を入力すると、毎時間 3,000 cDWU の予約容量が割り当てられることになります。

@@ -1,24 +1,24 @@
 ---
 title: 最新の API を使用してプログラムで Azure Enterprise Agreement サブスクリプションを作成する
-description: 最新バージョンの REST API、Azure CLI、Azure PowerShell を使用して、プログラムによって Azure Enterprise Agreement サブスクリプションを作成する方法について説明します。
+description: 最新バージョンの REST API、Azure CLI、Azure PowerShell、および Azure Resource Manager テンプレートを使用して、プログラムによって Azure Enterprise Agreement サブスクリプションを作成する方法について説明します。
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 09/01/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 4de89892d27bb811be6670c1a14ca85859342ecc
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 45bc6066152fbb83f5124b5ee157e6b16efa9bf9
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218912"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475172"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>最新の API を使用してプログラムで Azure Enterprise Agreement サブスクリプションを作成する
 
-この記事は、最新の API バージョンを使用してプログラムで Enterprise Agreement (EA) 課金アカウントの Azure EA サブスクリプションを作成する場合に役に立ちます。 古いプレビュー バージョンをまだ使用している場合は、「[プレビュー API を使用してプログラムで Azure サブスクリプションを作成する](programmatically-create-subscription-preview.md)」を参照してください。 
+この記事は、最新の API バージョンを使用してプログラムで Enterprise Agreement (EA) 課金アカウントの Azure EA サブスクリプションを作成する場合に役に立ちます。 古いプレビュー バージョンをまだ使用している場合は、「[レガシ API を使用してプログラムで Azure サブスクリプションを作成する](programmatically-create-subscription-preview.md)」を参照してください。 
 
 この記事では、Azure Resource Manager を使用してプログラムからサブスクリプションを作成する方法について説明します。
 
@@ -28,12 +28,16 @@ ms.locfileid: "102218912"
 
 ## <a name="prerequisites"></a>前提条件
 
-サブスクリプションを作成するには、登録アカウントの所有者ロールが必要です。 そのロールを取得する方法は 2 つあります。
+サブスクリプションを作成するには、登録アカウントの所有者ロールがユーザーに必要です。 そのロールを取得する方法は 2 つあります。
 
 * 登録のエンタープライズ管理者は、ユーザーを[アカウント所有者に設定](https://ea.azure.com/helpdocs/addNewAccount)できます (サインインが必要)。これにより、ユーザーは登録アカウントの所有者になります。
-* 登録アカウントの既存の所有者が、[アクセス許可を付与](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)できます。 同様に、サービス プリンシパルを使用して EA サブスクリプションを作成する場合は、[そのサービス プリンシパルにサブスクリプションを作成する権限を付与する](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)必要があります。 
+* 登録アカウントの既存の所有者が、[アクセス許可を付与](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)できます。 
+
+サービス プリンシパル (SPN) を使用して EA サブスクリプションを作成するには、登録アカウントの所有者が[そのサービス プリンシパルにサブスクリプションを作成する権限を付与する](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)必要があります。 SPN を使用してサブスクリプションを作成するときに、[Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true ) または [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list) を使用して、Azure AD アプリケーション登録の ObjectId をサービス プリンシパルの ObjectId として使用します。 EA ロールの割り当て API 要求の詳細については、「[Azure Enterprise Agreement サービス プリンシパル名にロールを割り当てる](assign-roles-azure-service-principals.md)」を参照してください。 この記事には、SPN に割り当てることができるロール (およびロール定義 ID) の一覧が記載されています。
+
   > [!NOTE]
-  > 登録アカウントに対する所有者アクセス許可の付与には、必ず正しい API バージョンを使用してください。 この記事およびその中で記載されている API では、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) API を使用します。 より新しい API を使用するために移行する場合は、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) を使用して、所有者のアクセス許可を再度付与する必要があります。 [2015-07-01 バージョン](grant-access-to-create-subscription.md)を使用して行った以前の構成が、より新しい API で使用できるよう自動的に変換されることはありません。
+  > - 登録アカウントに対する所有者アクセス許可の付与には、必ず正しい API バージョンを使用してください。 この記事およびその中で記載されている API では、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) API を使用します。 
+  > - 新しい API を使用するために移行している場合、[2015-07-01 バージョン](grant-access-to-create-subscription.md)を使用して行った以前の構成が新しい API で使用できるよう自動的に変換されることはありません。
 
 ## <a name="find-accounts-you-have-access-to"></a>アクセスできるアカウントを検索します。
 
@@ -41,7 +45,7 @@ ms.locfileid: "102218912"
 
 次のコマンドを実行するには、サブスクリプションが既定で作成されるディレクトリである、アカウント所有者の *ホーム ディレクトリ* にログインしている必要があります。
 
-### <a name="rest"></a>[REST](#tab/rest-getEnrollments)
+### <a name="rest"></a>[REST](#tab/rest)
 
 自分がアクセスできるすべての登録アカウントを一覧表示するための要求:
 
@@ -91,17 +95,13 @@ API 応答で、自分がアクセスできるすべての登録アカウント�
 
 ```
 
-課金スコープの値と `id` は同じです。 登録アカウントの `id` は、サブスクリプション要求が開始される課金スコープです。 ID は、サブスクリプションを作成するために記事の後半で使用する必須パラメーターであるため、知っておくことが重要です。
+課金スコープと `id` の値は同じです。 登録アカウントの `id` は、サブスクリプション要求が開始される課金スコープです。 ID は、サブスクリプションを作成するために記事の後半で使用する必須パラメーターであるため、知っておくことが重要です。
 
-<!-- 
-### [PowerShell](#tab/azure-powershell-getEnrollments)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+この値を取得するには、Azure CLI または REST API のいずれかを使用してください。
 
--->
-
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getEnrollments)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 自分がアクセスできるすべての登録アカウントを一覧表示するための要求:
 
@@ -159,7 +159,8 @@ we're still working on enabling PowerShell SDK for billing APIs. Check back soon
     "type": "Microsoft.Billing/billingAccounts"
   },
 ```
-課金スコープの値と `id` は同じです。 登録アカウントの `id` は、サブスクリプション要求が開始される課金スコープです。 ID は、サブスクリプションを作成するために記事の後半で使用する必須パラメーターであるため、知っておくことが重要です。
+
+課金スコープと `id` の値は同じです。 登録アカウントの `id` は、サブスクリプション要求が開始される課金スコープです。 ID は、サブスクリプションを作成するために記事の後半で使用する必須パラメーターであるため、知っておくことが重要です。
 
 ---
 
@@ -167,7 +168,14 @@ we're still working on enabling PowerShell SDK for billing APIs. Check back soon
 
 次の例では、前のステップで選択した登録アカウントに *Dev Team Subscription* という名前のサブスクリプションを作成します。 
 
-### <a name="rest"></a>[REST](#tab/rest-EA)
+次のいずれかの方法を使用して、サブスクリプションのエイリアス名を作成します。 エイリアス名を作成するときは、以下を考慮することをお勧めします。
+
+- 英数字、およびハイフンを使用する
+- 先頭は文字、末尾は英数字にする
+- ピリオドを使用しない
+
+
+### <a name="rest"></a>[REST](#tab/rest)
 
 PUT API を呼び出して、サブスクリプション作成の要求と別名を作成します。
 
@@ -227,14 +235,14 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 進行中の状態は、`provisioningState` で `Accepted` 状態として返されます。
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-EA)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 `New-AzSubscriptionAlias` コマンドレットを含む最新バージョンのモジュールをインストールするには、`Install-Module Az.Subscription` を実行します。 PowerShellGet の最新バージョンをインストールするには、[PowerShellGet モジュールの取得](/powershell/scripting/gallery/installing-psget)に関するページを参照してください。
 
-課金スコープ `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"` を使用して、次の [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) コマンドを実行します。 
+課金スコープ `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"` を使用して、次の [New-AzSubscriptionAlias](/powershell/module/az.subscription/get-azsubscriptionalias) コマンドを実行します。 
 
 ```azurepowershell-interactive
-New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload 'Production"
+New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload "Production"
 ```
 
 コマンドからの応答の一部として、subscriptionId を取得します。
@@ -251,11 +259,11 @@ New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Sub
 }
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-EA)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 まず、`az extension add --name account` と `az extension add --name alias` を実行して、拡張機能をインストールします。
 
-次の [az account alias create](/cli/azure/ext/account/account/alias#ext_account_az_account_alias_create) コマンドを実行して、`billing-scope` と、いずれかの `enrollmentAccounts` の `id` を指定します。 
+次の [az account alias create](/cli/azure/account/alias#az_account_alias_create) コマンドを実行して、`billing-scope` と、いずれかの `enrollmentAccounts` の `id` を指定します。 
 
 ```azurecli-interactive
 az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/654321" --display-name "Dev Team Subscription" --workload "Production"
@@ -277,6 +285,175 @@ az account alias create --name "sampleAlias" --billing-scope "/providers/Microso
 
 ---
 
+## <a name="use-arm-template-or-bicep"></a>ARM テンプレートまたは Bicep を使用する
+
+前のセクションでは、PowerShell、CLI、または REST API を使用してサブスクリプションを作成する方法を説明しました。 サブスクリプションの作成を自動化する必要がある場合は、Azure Resource Manager テンプレート (ARM テンプレート) か [Bicep ファイル](../../azure-resource-manager/bicep/overview.md)の使用をご検討ください。
+
+次の ARM テンプレートを使用すると、サブスクリプションを作成できます。 `billingScope` には、登録アカウント ID を指定します。 サブスクリプションはルート管理グループに作成されます。 サブスクリプションを作成した後、それを別の管理グループに移動できます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionAliasName": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide a name for the alias. This name will also be the display name of the subscription."
+            }
+        },
+        "billingScope": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the full resource ID of billing scope to use for subscription creation."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "name": "[parameters('subscriptionAliasName')]",
+            "type": "Microsoft.Subscription/aliases",
+            "apiVersion": "2020-09-01",
+            "properties": {
+                "workLoad": "Production",
+                "displayName": "[parameters('subscriptionAliasName')]",
+                "billingScope": "[parameters('billingScope')]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+または、Bicep ファイルを使用してサブスクリプションを作成します。
+
+```bicep
+targetScope = 'managementGroup'
+
+@description('Provide a name for the alias. This name will also be the display name of the subscription.')
+param subscriptionAliasName string
+
+@description('Provide the full resource ID of billing scope to use for subscription creation.')
+param billingScope string
+
+resource subscriptionAlias 'Microsoft.Subscription/aliases@2020-09-01' = {
+  scope: tenant()
+  name: subscriptionAliasName
+  properties: {
+    workload: 'Production'
+    displayName: subscriptionAliasName
+    billingScope: billingScope
+  }
+}
+```
+
+テンプレートを[管理グループ レベル](../../azure-resource-manager/templates/deploy-to-management-group.md)でデプロイします。 次の例では、JSON ARM テンプレートのデプロイを示しますが、代わりに Bicep ファイルをデプロイすることもできます。
+
+### <a name="rest"></a>[REST](#tab/rest)
+
+```json
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
+```
+
+要求本文:
+
+```json
+{
+  "location": "eastus",
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json"
+    },
+    "parameters": {
+      "subscriptionAliasName": {
+        "value": "sampleAlias"
+      },
+      "billingScope": {
+        "value": "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"
+      }
+    },
+    "mode": "Incremental"
+  }
+}
+```
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -Name exampledeployment `
+  -Location eastus `
+  -ManagementGroupId mg1 `
+  -TemplateFile azuredeploy.json `
+  -subscriptionAliasName sampleAlias `
+  -billingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az deployment mg create \
+  --name exampledeployment \
+  --location eastus \
+  --management-group-id mg1 \
+  --template-file azuredeploy.json \
+  --parameters subscriptionAliasName='sampleAlias' billingScope='/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321'
+```
+
+---
+
+サブスクリプションを新しい管理グループに移動するには、次の ARM テンプレートを使用します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "targetMgId": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the management group that you want to move the subscription to."
+            }
+        },
+        "subscriptionId": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the existing subscription to move."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/",
+            "type": "Microsoft.Management/managementGroups/subscriptions",
+            "apiVersion": "2020-05-01",
+            "name": "[concat(parameters('targetMgId'), '/', parameters('subscriptionId'))]",
+            "properties": {
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+または、次の Bicep ファイルを使用します。
+
+```bicep
+targetScope = 'managementGroup'
+
+@description('Provide the ID of the management group that you want to move the subscription to.')
+param targetMgId string
+
+@description('Provide the ID of the existing subscription to move.')
+param subscriptionId string
+
+resource subToMG 'Microsoft.Management/managementGroups/subscriptions@2020-05-01' = {
+  scope: tenant()
+  name: '${targetMgId}/${subscriptionId}'
+}
+```
+
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Enterprise のサブスクリプション作成 API の制限事項
 
 - API を使用して作成されるのは、Azure Enterprise サブスクリプションのみです。
@@ -289,3 +466,4 @@ az account alias create --name "sampleAlias" --billing-scope "/providers/Microso
 
 * サブスクリプションを作成し終えたら、他のユーザーおよびサービス プリンシパルでその機能を利用できるようになります。 詳細については、「[Azure Enterprise サブスクリプションを作成する権限を付与する (プレビュー)](grant-access-to-create-subscription.md)」を参照してください。
 * 管理グループを使用して大量のサブスクリプションを管理する方法の詳細については、[Azure 管理グループによるリソースの整理](../../governance/management-groups/overview.md)に関する記事を参照してください。
+* サブスクリプションの管理グループを変更するには、「[サブスクリプションの移動](../../governance/management-groups/manage.md#move-subscriptions)」を参照してください。

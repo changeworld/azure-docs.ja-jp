@@ -7,13 +7,12 @@ ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 76d4eb08ba9cc0394610fdd00f6faba02278e8e3
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: b123caf65c86980dfa3cacf5e7d412851332afc8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258012"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747776"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure Maps の気象サービス
 
@@ -48,7 +47,7 @@ Weather Service (プレビュー) API の中には、データをメトリック
 |20      |パーセント             |
 |21      |float               |
 |22      |整数 (integer)             |
-
+|31      |MicrogramsPerCubicMeterOfAir             |
 
 ## <a name="weather-icons"></a>天気アイコン
 
@@ -100,7 +99,7 @@ Weather Service (プレビュー) API の中には、応答で `iconCode` が返
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>レーダーと衛星画像のカラー スケール
 
-ユーザーは、[Get Map Tile v2 API](/rest/api/maps/renderv2/getmaptilepreview) を使用して、最新のレーダー画像と赤外衛星画像を要求でき ます。 レーダー タイルと衛星タイルで使用される色を解釈するには、以下のガイドを参照してください。
+ユーザーは、[Get Map Tile v2 API](/rest/api/maps/render-v2/get-map-tile) を使用して、最新のレーダー画像と赤外衛星画像を要求でき ます。 レーダー タイルと衛星タイルで使用される色を解釈するには、以下のガイドを参照してください。
 
 ### <a name="radar-images"></a>レーダー画像
 

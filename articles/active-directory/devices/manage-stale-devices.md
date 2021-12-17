@@ -5,25 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 06/28/2019
+ms.date: 06/02/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6774e172c4e8607bfadd95f947d650afa62a984f
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 33b2ddfbd06d771ccd770d57525cb2bbd31a2f45
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550424"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597761"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
 ライフサイクルを完了するためには、不要になった時点で登録済みデバイスを登録解除するのが理想的です。 しかし、紛失、盗難、デバイスの破損、OS の再インストールなどの理由で、古いデバイスが環境に存在しているのが一般的です。 実際に管理が必要なデバイスの管理に IT 管理者がリソースを集中できるよう、古いデバイスを削除する方法が必要です。
 
 この記事では、環境内の古いデバイスを効率的に管理する方法について説明します。
-  
 
 ## <a name="what-is-a-stale-device"></a>古いデバイスとは?
 
@@ -81,7 +80,7 @@ Azure AD でデバイスを更新するには、次のいずれかのロール�
 
 ### <a name="disable-devices"></a>デバイスの無効化
 
-誤検出の場合に削除を元に戻すことができないため、古いと思われるデバイスをすぐに削除することはお勧めできません。 削除前に猶予期間を設け、その間はデバイスを無効にするのがベスト プラクティスです。 ポリシーで、削除前にデバイスを無効にする期間を定義します。
+誤検出が発生した場合に削除を元に戻すことができないため、古いと思われるデバイスをすぐに削除することはお勧めできません。 削除前に猶予期間を設け、その間はデバイスを無効にするのがベスト プラクティスです。 ポリシーで、削除前にデバイスを無効にする期間を定義します。
 
 ### <a name="mdm-controlled-devices"></a>MDM 制御デバイス
 
@@ -89,13 +88,13 @@ Azure AD でデバイスを更新するには、次のいずれかのロール�
 
 ### <a name="system-managed-devices"></a>システム管理デバイス
 
-システム管理デバイスは削除しないでください。 これらは一般に、オートパイロットなどのデバイスです。 一度削除すると、これらのデバイスは再プロビジョニングできません。 新しい `Get-AzureADDevice` コマンドレットは、システム管理デバイスを既定で除外します。 
+システム管理デバイスは削除しないでください。 これらのデバイスは一般に、オートパイロットなどのデバイスです。 一度削除すると、これらのデバイスは再プロビジョニングできません。 新しい `Get-AzureADDevice` コマンドレットは、システム管理デバイスを既定で除外します。 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイス
 
 ハイブリッド Azure AD 参加済みデバイスは、オンプレミスの古いデバイスの管理ポリシーに従います。 
 
-Azure AD をクリーンアップするには:
+Azure AD をクリーンアップするには、次のようにします。
 
 - **Windows 10 デバイス** - オンプレミス AD で Windows 10 デバイスを無効化または削除し、Azure AD Connect によって、変更されたデバイス ステータスを Azure AD に同期します。
 - **Windows 7/8** - 最初にオンプレミス AD で Windows 7/8 デバイスを無効化または削除します。 Azure AD Connect を使用して Azure AD で Windows 7/8 デバイスを無効化または削除することはできません。 代わりに、オンプレミスで変更を行う場合は、Azure AD で無効化または削除する必要があります。
@@ -105,7 +104,6 @@ Azure AD をクリーンアップするには:
 >* Azure AD でのみ Windows 10 デバイスを削除すると、Azure AD Connect を使用してオンプレミスのデバイスと再同期されますが、新しいオブジェクトとして "保留中" 状態になります。 このデバイスで再登録が必要です。
 >* Windows 10/Server 2016 デバイスの同期スコープからデバイスを削除すると、Azure AD デバイスが削除されます。 それを同期スコープに追加しなおすと、新しいオブジェクトが "保留中" 状態になります。 このデバイスの再登録が必要です。
 >* Windows 10 デバイスの同期に Azure AD Connect を使用していない場合 (たとえば、登録に AD FS のみを使用している場合) は、Windows 7/8 デバイスと同様のライフサイクルを管理する必要があります。
-
 
 ### <a name="azure-ad-joined-devices"></a>Azure AD 参加済みデバイス
 
@@ -125,7 +123,7 @@ Azure AD 内の Azure AD 登録済みデバイスを無効化または削除し�
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Azure portal での古いデバイスのクリーンアップ  
 
-Azure portal で古いデバイスをクリーンアップすることはできますが、PowerShell スクリプトを使用してこのプロセスを処理したほうが効率的です。 最新の PowerShell V1 モジュールを使い、タイムスタンプ フィルターを使用してオートパイロットなどのシステム管理デバイスを除外します。 現時点では、PowerShell V2 の使用は推奨されていません。
+Azure portal で古いデバイスをクリーンアップすることはできますが、PowerShell スクリプトを使用してこのプロセスを処理した方が効率的です。 最新の PowerShell V2 モジュールを使い、タイムスタンプ フィルターを使用して Autopilot などのシステム管理デバイスを除外します。
 
 一般的なルーチンは次の手順で構成されます。
 
@@ -140,31 +138,40 @@ Azure portal で古いデバイスをクリーンアップすることはでき�
 すべてのデバイスを取得し、返されたデータを CSV ファイルに保存するには:
 
 ```PowerShell
-Get-AzureADDevice -All:$true | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-summary.csv
+Get-AzureADDevice -All:$true | select-object -Property AccountEnabled, DeviceId, DeviceOSType, DeviceOSVersion, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-summary.csv -NoTypeInformation
 ```
 
-ディレクトリ内のデバイスが多い場合、タイムスタンプ フィルターを使用して返されたデバイスの数を絞り込みます。 タイムスタンプが特定の日付よりも古いすべてのデバイスを取得し、返されたデータを CSV ファイルに保存するには: 
+ディレクトリ内のデバイスが多い場合、タイムスタンプ フィルターを使用して返されたデバイスの数を絞り込みます。 90 日以内にログオンしていないすべてのデバイスを取得し、返されたデータを CSV ファイルに格納するには、次のようにします。 
 
 ```PowerShell
-$dt = [datetime]’2017/01/01’
-Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+$dt = (Get-Date).AddDays(-90)
+Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property AccountEnabled, DeviceId, DeviceOSType, DeviceOSVersion, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-90days-summary.csv -NoTypeInformation
+```
+
+#### <a name="set-devices-to-disabled"></a>デバイスを無効に設定する
+
+同じコマンドを使用して、出力を set コマンドにパイプして、特定の期間にわたってデバイスを無効にすることができます。
+
+```powershell
+$dt = (Get-Date).AddDays(-90)
+Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | Set-AzureADDevice -AccountEnabled $false
 ```
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
 ### <a name="why-is-the-timestamp-not-updated-more-frequently"></a>どうしてもっと頻繁にタイムスタンプが更新されないのですか?
 
-タイムスタンプは、デバイスのライフサイクルのシナリオをサポートするために更新されます。 これは監査ではありません。 デバイスのより頻繁な更新には、サインイン監査ログを使用します。
+タイムスタンプは、デバイスのライフサイクルのシナリオをサポートするために更新されます。 この属性は監査ではありません。 デバイスのより頻繁な更新には、サインイン監査ログを使用します。
 
 ### <a name="why-should-i-worry-about-my-bitlocker-keys"></a>BitLocker キーに気を付ける必要があるのはなぜですか?
 
-構成されていると、Windows 10 デバイスの BitLocker キーは Azure AD 内のデバイス オブジェクトに格納されます。 古いデバイスを削除する場合、デバイスに保存されている BitLocker キーも削除します。 古いデバイスを削除する前に、クリーンアップ ポリシーがデバイスの実際のライフサイクルと整合しているかどうか判断してください。 
+構成されていると、Windows 10 デバイスの BitLocker キーは Azure AD 内のデバイス オブジェクトに格納されます。 古いデバイスを削除する場合、デバイスに保存されている BitLocker キーも削除します。 古いデバイスを削除する前に、クリーンアップ ポリシーがデバイスの実際のライフサイクルと整合していることを確認してください。 
 
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Windows Autopilot デバイスに気を付ける必要があるのはなぜですか?
 
 Windows Autopilot オブジェクトに関連付けられていた Azure AD デバイスを削除した場合、デバイスが将来再利用される場合に、次の 3 つのシナリオが発生する可能性があります。
 - 事前プロビジョニングを使用しない Windows Autopilot のユーザー主導型のデプロイを実行すると、新しい Azure AD デバイスが作成されますが、ZTDID にタグ付けされることはありません。
-- Windows Autopilot の自己デプロイ モードのデプロイでは、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します  (これは、"なりすました" デバイスが資格情報なしで Azure AD への参加を試行しないようにするためのセキュリティ メカニズムです)。このエラーでは、ZTDID の不一致が示されます。
+- Windows Autopilot の自己デプロイ モードのデプロイでは、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します  (このエラーは、"なりすました" デバイスが資格情報なしで Azure AD への参加を試行しないようにするためのセキュリティ メカニズムです)。このエラーでは、ZTDID の不一致が示されます。
 - Windows Autopilot の事前プロビジョニング デプロイの場合、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します。 (バックグラウンドでは、事前プロビジョニング デプロイで同じ自己デプロイ モード プロセスが使用されるため、同じセキュリティ メカニズムが適用されます。)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>すべての参加済みデバイスのタイプを知るにはどうすればよいですか?

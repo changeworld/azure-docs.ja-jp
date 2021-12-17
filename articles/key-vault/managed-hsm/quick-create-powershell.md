@@ -1,23 +1,20 @@
 ---
 title: Azure Key Vault でマネージド キーの属性を作成し、取得する - Azure PowerShell
 description: Azure PowerShell を使用して Azure Key Vault との間でマネージド キーの設定と取得を行う方法を紹介するクイックスタート
-services: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 01/26/2021
 ms.topic: quickstart
 ms.service: key-vault
 ms.subservice: keys
-tags:
-- azure-resource-manager
-ms.custom:
-- mode-api
-ms.openlocfilehash: ba1cd8d6b1410be30eefe9dca9675daaf6c16256
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+tags: azure-resource-manager
+ms.custom: devx-track-azurepowershell, mode-api
+ms.openlocfilehash: de359fd26c541e8e5f55f016363376fd48f7837e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534665"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040595"
 ---
 # <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>クイックスタート: PowerShell を使用して Azure Key Vault との間でマネージド キーの設定と取得を行う
 
@@ -35,10 +32,10 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 Azure PowerShell の [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、*myResourceGroup* という名前のリソース グループを *westus* に作成します。 
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 Azure PowerShell の [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、*myResourceGroup* という名前のリソース グループを *centralus* の場所に作成します。 
 
 ```azurepowershell-interactive
-New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
+New-AzResourceGroup -Name "myResourceGroup" -Location "centralus"
 
 ## Get your principal ID
 
@@ -57,14 +54,14 @@ Get-AzADUser -UserPrincipalName "<your@email.address>"
 - マネージド HSM 名: 数字 (0-9)、文字 (a-z、A-Z)、ハイフン (-) のみを含んだ 3 から 24 文字の文字列
 
   > [!Important]
-  > 各マネージド HSM には一意の名前が必要です。 次の例の <your-unique-managed-hsm-name> は、お使いのマネージド HSM の名前に置き換えてください。
+  > 各マネージド HSM には一意の名前が必要です。 次の例で、\<your-unique-managed-hsm-name\> をご自分のマネージド HSM の名前と置き換えます。
 
 - リソース グループ名: **myResourceGroup**
-- 場所: **EastUS**。
+- 場所: **米国中部**
 - プリンシパル ID: 前セクションで取得した Azure Active Directory のプリンシパル ID を "Administrator" パラメーターに渡します。 
 
 ```azurepowershell-interactive
-New-AzKeyVaultManagedHsm -Name "<your-unique-managed-hsm-name>" -ResourceGroupName "myResourceGroup" -Location "West US" -Administrator "<your-principal-ID>"
+New-AzKeyVaultManagedHsm -Name "<your-unique-managed-hsm-name>" -ResourceGroupName "myResourceGroup" -Location "centralus" -Administrator "<your-principal-ID>"
 ```
 
 このコマンドレットの出力では、新しく作成したマネージド HSM のプロパティが示されます。 次の 2 つのプロパティをメモしておきます。
@@ -115,4 +112,4 @@ Export-AzKeyVaultSecurityDomain -Name "<your-unique-managed-hsm-name>" -Certific
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure PowerShell の Key Vault コマンドレット](/powershell/module/az.keyvault/)のリファレンスを参照する
-- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-features.md)を確認する

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: a68e1a3f60930e290e97084ff2ec9350b18e2873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8a8e5785af1bd74fb958a315de379facdc87171
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594965"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575974"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes ネットワーク ポリシーの概要
 
@@ -134,7 +134,9 @@ Azure NPM には、お客様の構成を監視して理解を深めることが�
 
 ConfigMap を編集したら、ローカルに保存し、次のように ConfigMap をクラスターに適用します。
 
-```kubectl apply -f container-azm-ms-agentconfig.yaml``` 次に示すのは、高度なメトリックの収集が有効になっている NPM 統合を示す [Azure monitor for containers ConfigMap](https://aka.ms/container-azm-ms-agentconfig) のスニペットです。
+`kubectl apply -f container-azm-ms-agentconfig.yaml`
+
+ 次に示すのは、高度なメトリックの収集が有効になっている NPM 統合を示す [Azure monitor for containers ConfigMap](https://aka.ms/container-azm-ms-agentconfig) のスニペットです。
 ```
 integrations: |-
     [integrations.azure_network_policy_manager]
@@ -154,7 +156,7 @@ Azure portal を開きます。 クラスターの [分析情報] で、[ブッ�
 ブック (下の図) を表示するだけでなく、[分析情報] セクションの [ログ] で Prometheus メトリックを直接照会することもできます。 たとえば、次のクエリでは、収集されるすべてのメトリックが返されます。
 | where TimeGenerated > ago(5h) | where Name contains "npm_"
 
-また、Log Analytics でメトリックを直接照会することもできます。 詳細については、[Log Analytics クエリの使用方法](../azure-monitor/containers/container-insights-log-search.md)に関する記事を参照してください。 
+また、Log Analytics でメトリックを直接照会することもできます。 詳細については、[Log Analytics クエリの使用方法](../azure-monitor/containers/container-insights-log-query.md)に関する記事を参照してください。 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Grafana ダッシュボードでの表示
 [ここ](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource)に説明されているように、Grafana サーバーを設定し、Log Analytics データ ソースを構成します。 次に、[Log Analytics バックエンドを含む Grafana ダッシュボード](https://grafana.com/grafana/dashboards/10956)を Grafana Labs にインポートします。
@@ -265,4 +267,3 @@ Container Insights (CI) と Grafana の NPM メトリック用のサンプル �
 - [Azure Kubernetes Service](../aks/intro-kubernetes.md) について確認します。
 -  [コンテナー ネットワーク](container-networking-overview.md)について確認します。
 - Kubernetes クラスターまたは Docker コンテナー用の[プラグインをデプロイ](deploy-container-networking.md)します。
-

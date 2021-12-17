@@ -2,23 +2,23 @@
 title: 既存の Azure CDN エンドポイントにルート ドメインまたは頂点ドメインをオンボードする - Azure portal
 description: Azure portal を使用して既存の Azure CDN エンドポイントにルート ドメインまたは頂点ドメインをオンボードする方法について説明します。
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 11/07/2020
-ms.author: allensu
-ms.openlocfilehash: 8ab4f698c7149d8d57f790e221ccbe35ec090fe6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: 9962ee3d86147520206aee84ec272069577c2eb5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94369890"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426319"
 ---
 # <a name="onboard-a-root-or-apex-domain-to-an-existing-azure-cdn-endpoint"></a>既存の Azure CDN エンドポイントにルート ドメインまたは頂点ドメインをオンボードする
 
 Azure CDN では、CNAME レコードを使用して、カスタム ドメインのオンボードに対するドメインの所有権が検証されます。 CDN によって、CDN プロファイルに関連付けられているフロントエンド IP アドレスが公開されることはありません。 Azure CDN にオンボードすることが目的の場合は、頂点ドメインを IP アドレスにマップすることはできません。
 
-DNS プロトコルでは、ゾーンの頂点での CNAME レコードの割り当てができません。 たとえば、ドメインが `contoso.com` の場合、`somelabel.contoso.com` に対する CNAME レコードは作成できますが、`contoso.com` 自体に対する CNAME を作成することはできません。 Azure CDN の背後でアプリケーションの負荷分散を行っているアプリケーションの所有者にとっては、この制限によって問題が生じます。 CDN プロファイルを使用するには CNAME レコードを作成する必要があるため、ゾーンの頂点から CDN プロファイルをポイントすることはできません。
+DNS プロトコルでは、ゾーンの頂点での CNAME レコードの割り当てができません。 たとえば、ご自分のドメインが `contoso.com` の場合、`somelabel.contoso.com` に CNAME レコードは作成できますが、`contoso.com` 自体には CNAME を作成できません。 Azure CDN の背後でアプリケーションの負荷分散を行っているアプリケーションの所有者にとっては、この制限によって問題が生じます。 CDN プロファイルを使用するには CNAME レコードを作成する必要があるため、ゾーンの頂点から CDN プロファイルをポイントすることはできません。
 
 この問題は、Azure DNS のエイリアス レコードを使用することで解決できます。 CNAME レコードとは異なり、エイリアス レコードはゾーンの頂点に作成されます。 アプリケーションの所有者はこれを使用して、ゾーンの頂点のレコードがパブリック エンドポイントを持つ CDN プロファイルを指すようにすることができます。 アプリケーションの所有者は、DNS ゾーン内の他のドメインで使用されているのと同じ CDN プロファイルをポイントします。 たとえば、`contoso.com` と `www.contoso.com` で、同じ CDN プロファイルをポイントできます。 
 

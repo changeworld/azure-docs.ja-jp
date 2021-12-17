@@ -1,27 +1,23 @@
 ---
 title: Azure Germany のイメージ | Microsoft Docs
 description: この記事では、Azure Germany Marketplace に含まれるイメージの概要について説明します。
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/13/2017
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 34c45418f47e6e5238cfab5946a7f9b6ae61bdad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: dd43ef428426037696fb2fcfdf6bac58c9b27dc4
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780794"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "117029129"
 ---
 # <a name="azure-germany-images"></a>Azure Germany のイメージ
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
+
 ## <a name="overview"></a>概要
 Azure Germany で新しい仮想サーバーをデプロイする場合、お客様は Microsoft の事前構成済みイメージをデプロイするか、または自身の VHD をアップロードするかを選択できます。 これにより、必要に応じて自身のニーズに応じて標準化したイメージを自由にデプロイできるようになります。
 
@@ -42,11 +38,11 @@ Azure Germany の Marketplace で利用可能なイメージの一覧を次に�
 | Canonical | UbuntuServer | 16.10 | 16.10.201701030 |
 | cloudera | cloudera-centos-os | 6_7 | 1.0.1 |
 | CoreOS | Container-Linux | Alpha |  |
-| CoreOS | Container-Linux | Beta |  |
-| CoreOS | Container-Linux | 安定版 |  |
+| CoreOS | Container-Linux | ベータ |  |
+| CoreOS | Container-Linux | Stable |  |
 | CoreOS | CoreOS | Alpha | 1068.0.0 1081.2.0 1097.0.0 1122.0.0 1151.0.0 1153.0.0 1164.0.0 1164.1.0 1180.0.0 1185.0.0 1192.0.0 1192.1.0 1192.2.0 1207.0.0 1214.0.0 1221.0.0 1235.0.0 1248.0.0 1248.1.0 1262.0.0 1284.1.0 1284.2.0 1298.1.0 1325.1.0 1339.0.0 1353.1.0 |
-| CoreOS | CoreOS | Beta | 1010.4.0 1068.3.0 1081.3.0 1122.1.0 1153.3.0 1153.4.0 1185.1.0 1185.2.0 1192.2.0 1235.1.0 1235.2.0 1248.3.0 1248.4.0 1298.4.0 1325.2.0 1353.2.0 |
-| CoreOS | CoreOS | 安定版 | 1010.5.0 1010.6.0 1068.10.0 1068.6.0 1068.8.0 1068.9.0 1122.2.0 1122.3.0 1185.3.0 1185.5.0 1235.12.0 1235.5.0 1235.6.0 1235.8.0 1298.5.0 1298.6.0 |
+| CoreOS | CoreOS | ベータ | 1010.4.0 1068.3.0 1081.3.0 1122.1.0 1153.3.0 1153.4.0 1185.1.0 1185.2.0 1192.2.0 1235.1.0 1235.2.0 1248.3.0 1248.4.0 1298.4.0 1325.2.0 1353.2.0 |
+| CoreOS | CoreOS | Stable | 1010.5.0 1010.6.0 1068.10.0 1068.6.0 1068.8.0 1068.9.0 1122.2.0 1122.3.0 1185.3.0 1185.5.0 1235.12.0 1235.5.0 1235.6.0 1235.8.0 1298.5.0 1298.6.0 |
 | credativ | Debian | 7 | 7.0.201604200 7.0.201606240 7.0.201606280 7.0.201609120 7.0.201611020 7.0.201701180 |
 | credativ | Debian | 8 | 8.0.201604200 8.0.201606240 8.0.201606280 8.0.201609120 8.0.201611020 8.0.201701180 8.0.201703150 |
 | credativ | Debian | 8-backports | 8.0.201702060 |
@@ -55,31 +51,31 @@ Azure Germany の Marketplace で利用可能なイメージの一覧を次に�
 | MicrosoftOSTC | FreeBSD | 10.3 | 10.3.20170112 |
 | MicrosoftOSTC | FreeBSD | 11.0 | 11.0.20161223 11.0.20170111 |
 | MicrosoftSharePoint | SharePoint2016 | SharePoint_Server_2016_Trial | 16.0.4351 |
-| MicrosoftSQLServer | sql2014sp1-ws2012r2 | Enterprise | 12.0.4100 |
-| MicrosoftSQLServer | SQL2014SP2-WS2012R2 | Enterprise | 12.0.50000 12.0.50001 |
+| MicrosoftSQLServer | sql2014sp1-ws2012r2 | エンタープライズ | 12.0.4100 |
+| MicrosoftSQLServer | SQL2014SP2-WS2012R2 | エンタープライズ | 12.0.50000 12.0.50001 |
 | MicrosoftSQLServer | SQL2014SP2-WS2012R2 | Express | 12.0.50000 |
 | MicrosoftSQLServer | SQL2014SP2-WS2012R2 | Standard | 12.0.50000 |
 | MicrosoftSQLServer | SQL2014SP2-WS2012R2 | Web | 12.0.50000 |
-| MicrosoftSQLServer | SQL2014SP2-WS2012R2-BYOL | Enterprise | 12.0.50000 |
+| MicrosoftSQLServer | SQL2014SP2-WS2012R2-BYOL | エンタープライズ | 12.0.50000 |
 | MicrosoftSQLServer | SQL2014SP2-WS2012R2-BYOL | Standard | 12.0.50000 |
-| MicrosoftSQLServer | SQL2016-WS2012R2 | Enterprise | 13.0.31640 |
+| MicrosoftSQLServer | SQL2016-WS2012R2 | エンタープライズ | 13.0.31640 |
 | MicrosoftSQLServer | SQL2016-WS2012R2 | Express | 13.0.31641 |
 | MicrosoftSQLServer | SQL2016-WS2012R2 | SQLDEV | 13.0.31640 |
 | MicrosoftSQLServer | SQL2016-WS2012R2 | Standard | 13.0.31640 |
 | MicrosoftSQLServer | SQL2016-WS2012R2 | Web | 13.0.31640 |
-| MicrosoftSQLServer | SQL2016-WS2012R2-BYOL | Enterprise | 13.0.21640 |
-| MicrosoftSQLServer | SQL2016-WS2016 | Enterprise | 13.0.21640 |
+| MicrosoftSQLServer | SQL2016-WS2012R2-BYOL | エンタープライズ | 13.0.21640 |
+| MicrosoftSQLServer | SQL2016-WS2016 | エンタープライズ | 13.0.21640 |
 | MicrosoftSQLServer | SQL2016-WS2016 | SQLDEV | 13.0.21640 |
 | MicrosoftSQLServer | SQL2016-WS2016 | Standard | 13.0.21640 |
 | MicrosoftSQLServer | SQL2016-WS2016 | Web | 13.0.21640 |
-| MicrosoftSQLServer | SQL2016-WS2016-BYOL | Enterprise | 13.0.21640 |
+| MicrosoftSQLServer | SQL2016-WS2016-BYOL | エンタープライズ | 13.0.21640 |
 | MicrosoftSQLServer | SQL2016-WS2016-BYOL | Standard | 13.0.21640 |
-| MicrosoftSQLServer | SQL2016SP1-WS2016 | Enterprise | 13.0.400110 |
+| MicrosoftSQLServer | SQL2016SP1-WS2016 | エンタープライズ | 13.0.400110 |
 | MicrosoftSQLServer | SQL2016SP1-WS2016 | Express | 13.0.400111 |
 | MicrosoftSQLServer | SQL2016SP1-WS2016 | SQLDEV | 13.0.400110 |
 | MicrosoftSQLServer | SQL2016SP1-WS2016 | Standard | 13.0.400110 |
 | MicrosoftSQLServer | SQL2016SP1-WS2016 | Web | 13.0.400110 |
-| MicrosoftSQLServer | SQL2016SP1-WS2016-BYOL | Enterprise | 13.0.400110 |
+| MicrosoftSQLServer | SQL2016SP1-WS2016-BYOL | エンタープライズ | 13.0.400110 |
 | MicrosoftSQLServer | SQL2016SP1-WS2016-BYOL | Standard | 13.0.400110 |
 | MicrosoftVisualStudio | VisualStudio | VS-2015-Comm-AzureSDK-29-WS2012R2 | 2017.02.16 |
 | MicrosoftVisualStudio | VisualStudio | VS-2015-Ent-VSU3-AzureSDK-29-WS2012R2 | 2017.02.16 |
@@ -125,7 +121,7 @@ Azure Germany の Marketplace で利用可能なイメージの一覧を次に�
 
 
 ## <a name="images-for-deployments-with-azure-service-manager-classic"></a>Azure Service Manager を使用したデプロイのイメージ ("クラシック")
-| Publisher | イメージ名 | OS |
+| 発行者 | イメージ名 | OS |
 |  ---  |  ---  |  ---  |
 |  Credativ  |  Debian 7 "Wheezy"  |  Linux  |
 |  Credativ  |  Debian 8 "Jessie"  |  Linux  |
@@ -206,11 +202,11 @@ Azure Germany の Marketplace で利用可能なイメージの一覧を次に�
 |  coreos  |  CoreOS Beta  |  Linux  |
 |  coreos  |  CoreOS Stable  |  Linux  |
 |  Cloudera, Inc.  |  Cloudera CentOS 6.7  |  Linux  |
-|  Canonical  |  Ubuntu Server 12.04.5-LTS  |  Linux  |
-|  Canonical  |  Ubuntu Server 14.04.4-LTS  |  Linux  |
-|  Canonical  |  Ubuntu Server 14.04.5-LTS  |  Linux  |
-|  Canonical  |  Ubuntu Server 16.04 LTS  |  Linux  |
-|  Canonical  |  Ubuntu Server 16.10  |  Linux  |
+|  正規  |  Ubuntu Server 12.04.5-LTS  |  Linux  |
+|  正規  |  Ubuntu Server 14.04.4-LTS  |  Linux  |
+|  正規  |  Ubuntu Server 14.04.5-LTS  |  Linux  |
+|  正規  |  Ubuntu Server 16.04 LTS  |  Linux  |
+|  正規  |  Ubuntu Server 16.10  |  Linux  |
 |  Microsoft SQL Server 製品グループ  |  SQL Server 2014 SP2 Enterprise Windows Server 2012 R2  |  Windows  |
 |  Microsoft SQL Server 製品グループ  |  Windows Server 2012 R2 の SQL Server 2014 SP2 Express  |  Windows  |
 |  Microsoft SQL Server 製品グループ  |  Windows Server 2012 R2 の SQL Server 2014 SP2 Standard  |  Windows  |
@@ -238,13 +234,13 @@ Azure Germany の Marketplace で利用可能なイメージの一覧を次に�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Government 使用時におけるエンドポイントのプログラム的な相違点の詳細については、[Azure Government 開発者向けガイド](./germany-developer-guide.md)を参照してください。
 
 Marketplace からのデプロイ方法や独自の VHD を作成する方法の詳細については、以下のリソースを参照してください。  
 
 * [Windows 仮想マシンのデプロイ](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Windows Virtual Machines についてのよく寄せられる質問](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Windows Virtual Machines についてのよく寄せられる質問](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Linux VM のカスタム イメージの作成](../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 

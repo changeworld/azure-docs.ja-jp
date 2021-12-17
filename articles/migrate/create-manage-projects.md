@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: cb0ac41d469ad9a7670ce4b1bae23b315a17dc38
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c9102f8ca724e431bb478945c5f4ba0369643d6
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871092"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714842"
 ---
 # <a name="create-and-manage-projects"></a>プロジェクトを作成して管理する
 
@@ -46,9 +46,13 @@ Azure サブスクリプション内に新しいプロジェクトを設定し�
 5. **[プロジェクトの作成]** で、Azure サブスクリプションとリソース グループを選択します。 リソース グループがない場合は作成します。
 6. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。
     - 地理的な場所は、オンプレミスのサーバーから収集されたメタデータを格納するためにのみ使用されます。 移行では、任意のターゲット リージョンを選択できます。 
-    - [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
+    - [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。 
 
-8. **[作成]** を選択します。
+
+    > [!Note]
+    > プライベート エンドポイント接続を使用した Azure Migrate プロジェクトを作成するには、 **[Advanced]\(詳細\)** 構成セクションを使用します。 [詳細情報](how-to-use-azure-migrate-with-private-endpoints.md#create-a-project-with-private-endpoint-connectivity) 
+
+7. **[作成]** を選択します。
 
      :::image type="content" source="./media/create-manage-projects/project-details.png" alt-text="プロジェクト設定の入力ページ":::
 

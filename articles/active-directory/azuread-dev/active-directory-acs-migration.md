@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: bf50db4c463f5161adcc88d69eb2ae8970526103
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 7d3034c37251f293763f7b65d380284d9716e670
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515619"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018264"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
@@ -112,9 +112,9 @@ Access Control の詳細については、「[Access Control Service 2.0](/previ
 
 Access Control コンポーネントの廃止スケジュールを次に示します。
 
-- **2017 年 11 月**: Azure クラシック ポータルでの Azure AD 管理エクスペリエンスの [提供は終了します](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/)。 この時点で、Access Control の名前空間の管理は、新しい専用の URL `https://manage.windowsazure.com?restoreClassic=true` で利用できるようになります。 この URl を使用すれば、既存の名前空間を表示したり、名前空間を有効または無効にしたり、名前空間を削除することができます。
+- **2017 年 11 月**: Azure クラシック ポータルでの Azure AD 管理エクスペリエンスの[提供は終了します](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/)。 この時点で、Access Control の名前空間の管理は、新しい専用の URL `https://manage.windowsazure.com?restoreClassic=true` で利用できるようになります。 この URl を使用すれば、既存の名前空間を表示したり、名前空間を有効または無効にしたり、名前空間を削除することができます。
 - **2018 年 4 月 2 日**: Azure クラシック ポータルは完全に廃止され、Access Control の名前空間管理はすべての URL で使用できなくなります。 これ以降、Access Control 名前空間を有効または無効にしたり、削除したり、列挙することはできなくなります。 ただし、Access Control 管理ポータルはその機能を完全に維持され、`https://<namespace>.accesscontrol.windows.net` に配置されます。 その他の Access Control コンポーネントもすべて、引き続き正常に動作します。
-- **2018 年 11 月 7 日**: すべての Access Control コンポーネントが完全にシャットダウンされます。 これには、Access Control 管理ポータル、管理サービス、STS、およびトークン変換ルール エンジンが含まれます。 これ以降、(\<namespace\>.accesscontrol.windows.net にある) Access Control へ送信されるすべての要求は失敗するようになります。 この時点までに、すべての既存アプリケーションとサービスを他のテクノロジへと移行しておく必要があります。
+- **2018 年 11 月 7 日**: すべての Access Control コンポーネントが完全にシャットダウンされます。 これには、Access Control 管理ポータル、管理サービス、STS、およびトークン変換ルール エンジンが含まれます。 この時点では、(`<namespace>.accesscontrol.windows.net` にある) ACS に送信されるすべての要求は失敗します。 この時点までに、すべての既存アプリケーションとサービスを他のテクノロジへと移行しておく必要があります。
 
 > [!NOTE]
 > ポリシーは、一定期間トークンを要求していない名前空間を無効にします。 2018 年初頭現在、この期間は 14 日間の非アクティブですが、今後数週間以内に 7 日間の非アクティブに短縮されます。 現在無効になっている Access Control 名前空間がある場合、[ACS PowerShell をダウンロードしてインストールし](#download-and-install-acs-powershell)、名前空間を再度有効にすることができます。
@@ -129,9 +129,9 @@ Access Control によって発行されたトークンを受け入れる各 Micr
 
 | サービス | ガイダンス |
 | ------- | -------- |
-| Azure Service Bus | [Shared Access Signatures への移行](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
+| Azure Service Bus | [Shared Access Signatures への移行](../../service-bus-messaging/service-bus-sas.md) |
 | Azure Service Bus Relay | [Shared Access Signatures への移行](../../azure-relay/relay-migrate-acs-sas.md) |
-| Azure Managed Cache | [Azure Cache for Redis への移行](../../azure-cache-for-redis/cache-faq.md) |
+| Azure Managed Cache | [Azure Cache for Redis への移行](../../azure-cache-for-redis/cache-faq.yml) |
 | Azure DataMarket | [Cognitive Services APIs への移行](https://azure.microsoft.com/services/cognitive-services/) |
 | BizTalk Services | [Azure App Service の Logic Apps 機能への移行](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure Media Services | [Azure AD 認証への移行](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |

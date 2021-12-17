@@ -7,16 +7,14 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: b0b5aafd85fe6d992afa9d879f73ef0ec43e00d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a9a7d23d4fb8f11c27f279bdef8d2b46274b21e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99834376"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743384"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションで規則を作成して通知を設定する
-
-*この記事は、オペレーター、ビルダー、および管理者に適用されます。*
 
 Azure IoT Central を使用して、接続されたデバイスをリモートで監視できます。 Azure IoT Central のルールを使用すると、ほぼリアルタイムでデバイスを監視し、電子メールの送信などのアクションを自動的に呼び出すことができます。 この記事では、自分のデバイスから送信されるテレメトリを監視するルールを作成する方法について説明します。
 
@@ -33,11 +31,50 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始する前に、「[Azure IoT Central アプリケーションを作成する](./quick-deploy-iot-central.md)」と「[IoT Central アプリケーションにシミュレートされたデバイスを追加する](./quick-create-simulated-device.md)」の各クイックスタートを完了して、作業に使用する **Sensor Controller** デバイス テンプレートを作成しておきます。
+このチュートリアルを完了するには、以下が必要になります。
+
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+## <a name="add-and-customize-a-device-template"></a>デバイス テンプレートを追加およびカスタマイズする
+
+デバイス カタログからデバイス テンプレートを追加します。 このチュートリアルでは、**ESP32-Azure IoT Kit** デバイス テンプレートを使用します。
+
+1. 新しいデバイス テンプレートを追加するには、 **[デバイス テンプレート]** ページで **[+ 新規]** を選択します。
+
+1. **[種類の選択]** ページの **[Use a preconfigured device template]\(構成済みのデバイス テンプレートを使用する\)** セクションで、 **[ESP32-Azure IoT Kit]** タイルが表示されるまで下にスクロールします。
+
+1. **[ESP32-Azure IoT Kit]** タイルを選択し、 **[Next: Review]\(次へ: 確認\)** をクリックします。
+
+1. **[Review]\(レビュー\)** ページで、 **[Create]\(作成\)** を選択します。
+
+作成したテンプレートの名前は **Sensor Controller** です。 このモデルには、**Sensor Controller**、**SensorTemp**、**Device Information interface** などのコンポーネントが含まれています。 コンポーネントによって、ESP32 デバイスの機能が定義されます。 機能には、テレメトリ、プロパティ、コマンドが含まれます。
+
+**Sensor Controller** デバイス テンプレートに 2 つのクラウド プロパティを追加します。
+
+1. **[クラウド プロパティ]** 、 **[+ クラウド プロパティの追加]** の順に選択します。 下表の情報に従って、デバイス テンプレートに 2 つのクラウド プロパティを追加します。
+
+    | 表示名      | セマンティックの種類 | スキーマ |
+    | ----------------- | ------------- | ------ |
+    | Last Service Date | なし          | Date   |
+    | Customer Name     | なし          | String |
+
+1. **[保存]** を選択して変更を保存します。
+
+デバイスを管理するためにデバイス テンプレートに新しいフォームを追加します。
+
+1. **[ビュー]** ノードを選択し、 **[デバイスとクラウドのデータの編集]** タイルを選択して新しいビューを追加します。
+
+1. フォーム名を「**デバイスの管理**」に変更します。
+
+1. **[顧客名]** および **[Last Service Date]\(前回点検日\)** クラウド プロパティと、 **[Target Temperature]\(目標温度\)** プロパティを選択します。 次に、 **[セクションの追加]** を選択します。
+
+1. **[保存]** を選択して新しいフォームを保存します。
+
+次にデバイス テンプレートを発行します。
 
 ## <a name="create-a-rule"></a>規則を作成する
 
-テレメトリ ルールを作成するには、デバイス テンプレートに少なくとも 1 つのテレメトリ値が含まれている必要があります。 このチュートリアルでは、温度と湿度のテレメトリを送信する、シミュレートされた **Sensor Controller** デバイスを使用します。 「[シミュレートされたデバイスを IoT Central アプリケーションに追加する](./quick-create-simulated-device.md)」クイックスタートで、このデバイス テンプレートを追加し、シミュレートされたデバイスを作成しました。 ルールは、デバイスによってレポートされる温度を監視し、70 度を超えたときに電子メールを送信します。
+テレメトリ ルールを作成するには、デバイス テンプレートに少なくとも 1 つのテレメトリ値が含まれている必要があります。 このチュートリアルでは、温度と湿度のテレメトリを送信する、シミュレートされた **Sensor Controller** デバイスを使用します。 ルールは、デバイスによってレポートされる温度を監視し、70 度を超えたときに電子メールを送信します。
 
 > [!NOTE]
 > 1 アプリケーションあたり 50 個がルール数の上限となります。
@@ -73,7 +110,7 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
     :::image type="content" source="media/tutorial-create-telemetry-rules/aggregate-condition-filled-out.png" alt-text="入力された集計条件を示すスクリーンショット":::
 
-複数の条件をルールに追加するには、 **[+ 条件]** を選択します。 複数の条件を指定する場合、ルールをトリガーするためにはすべての条件が満たされる必要があります。 各条件は、暗黙的な `AND` 句によって結合されます。 複数の条件で時間の集計を使用している場合は、すべてのテレメトリ値を集計する必要があります。
+複数の条件をルールに追加するには、 **[+ 条件]** を選択します。 複数の条件を追加する場合は、ルールをトリガーするために、すべての条件が満たされる必要があるか、またはいずれかの条件が満たされる必要があるかを指定できます。 複数の条件で時間の集計を使用している場合は、すべてのテレメトリ値を集計する必要があります。
 
 ### <a name="configure-actions"></a>アクションを構成する
 
@@ -122,4 +159,4 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 しきい値に基づくルールを定義したので、次の手順では次の方法を学習することをお勧めします。
 
 > [!div class="nextstepaction"]
-> [規則に基づいて Webhook を作成する](./howto-create-webhooks.md)
+> [ルールを構成する](howto-configure-rules.md)

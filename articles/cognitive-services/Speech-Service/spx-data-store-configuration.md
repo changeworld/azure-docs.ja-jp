@@ -3,25 +3,28 @@ title: Speech CLI の構成オプション - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: Azure Speech CLI で使用する構成ファイルを作成して管理する方法について説明します。
 services: cognitive-services
-author: erhopf
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 01/13/2021
-ms.author: erhopf
-ms.openlocfilehash: aa8551e49c8ef16984783c4e9735c987174b180a
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.author: eur
+ms.openlocfilehash: 6b830d9afd3177aaa9efd0effb7fa8d3fd2e46dc
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540232"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719924"
 ---
 # <a name="speech-cli-configuration-options"></a>Speech CLI の構成オプション
 
 Speech CLI の動作は、`@` 記号を使用して参照できる構成ファイルの設定に依存することができます。 Speech CLI では、新しい設定は、Speech CLI 用に現在の作業ディレクトリ内に作成される新しい `./spx/data` サブディレクトリに保存されます。 Speech CLI では、構成値を探すときに、現在の作業ディレクトリ、`./spx/data` のデータストア、`spx` バイナリの最後の読み取り専用データストアを含むその他のデータストアの順に検索が行われます。 
 
 Speech CLI のクイックスタートでは、データストアを使用して `@key` 値と `@region` 値を保存したため、各 `spx` コマンドでそれらを指定する必要はありませんでした。 構成ファイルを使用して独自の構成設定を保存したり、これらを使用して実行時に生成された URL やその他の動的コンテンツを渡したりできることを覚えておいてください。
+
+> [!NOTE]
+> PowerShell では、[解析中止トークン](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_special_characters?view=powershell-7.2#stop-parsing-token---) (`--%`) は `spx` に続ける必要があります。 たとえば、`spx --% config @region` を実行すると、現在のリージョンの構成値が表示されます。
 
 ## <a name="create-and-manage-configuration-files-in-the-datastore"></a>データストア内に構成ファイルを作成して管理する
 

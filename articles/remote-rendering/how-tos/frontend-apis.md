@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7149d7ac2625eb60a1d0d22253b93b68a99475de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f0519b60d3b02c8312e15861441060ca89ab002
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99592094"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234134"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>認証に Azure フロントエンド API を使用する
 
@@ -20,6 +20,7 @@ ms.locfileid: "99592094"
 > [!CAUTION]
 > この章で説明する関数では、サーバーで内部的に REST 呼び出しを発行します。 すべての REST 呼び出しについて、それらのコマンドを頻繁に呼び出しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 この場合、`SessionGeneralContext.HttpResponseCode` メンバーの値は 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
 
+また、一部の関数では、再試行のための保存のときは情報が返されることもあります。 たとえば、`RenderingSessionPropertiesResult.MinimumRetryDelay` は、別のチェックを試みる前に待機する秒数を指定します。 可能な場合は、そのような戻り値を使用するのが最善です。これにより、調整されることなく、可能な限り頻繁にチェックを行うことができます。
 
 ## <a name="sessionconfiguration"></a>SessionConfiguration
 

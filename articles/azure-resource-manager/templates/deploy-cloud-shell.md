@@ -2,13 +2,13 @@
 title: Cloud Shell を使用したテンプレートのデプロイ
 description: Azure Resource Manager と Azure Cloud Shell を使用してリソースを Azure にデプロイします。 リソースは Azure Resource Manager テンプレート (ARM テンプレート) で定義されます。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/03/2021
+ms.openlocfilehash: 0228f4862cbdcda98bc577844bca9dad34feb96f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028609"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535113"
 ---
 # <a name="deploy-arm-templates-from-azure-cloud-shell"></a>Azure Cloud Shell から ARM テンプレートをデプロイする
 
@@ -33,7 +33,7 @@ ms.locfileid: "98028609"
    az deployment group create \
      --name ExampleDeployment \
      --resource-group ExampleGroup \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json" \
      --parameters storageAccountType=Standard_GRS
    ```
 
@@ -44,7 +44,7 @@ ms.locfileid: "98028609"
    New-AzResourceGroupDeployment `
      -DeploymentName ExampleDeployment `
      -ResourceGroupName ExampleGroup `
-     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
+     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json `
      -storageAccountType Standard_GRS
    ```
 
@@ -54,41 +54,17 @@ ms.locfileid: "98028609"
 
 ローカル テンプレートをデプロイするには、最初に Cloud Shell セッションに接続されているストレージ アカウントにテンプレートをアップロードする必要があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Cloud Shell](https://shell.azure.com) にサインインします。
 
-1. Cloud Shell リソース グループを選択します。 名前のパターンは `cloud-shell-storage-<region>` です。
+1. **[PowerShell]** または **[Bash]** を選択します。
 
-   ![リソース グループの選択](./media/deploy-cloud-shell/select-cloud-shell-resource-group.png)
+   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-bash-powershell.png" alt-text="[Bash] または [PowerShell]"::: を選択します。
 
-1. Cloud Shell のストレージ アカウントを選択します。
+1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。
 
-   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-storage.png" alt-text="ストレージ アカウントを選択する":::
+   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-upload.png" alt-text="ファイルをアップロードする":::
 
-1. **[ファイル共有]** を選択します。
-
-   :::image type="content" source="./media/deploy-cloud-shell/files-shares.png" alt-text="[ファイル共有] を選択する":::
-
-1. Cloud Shell の既定のファイル共有を選択します。 ファイル共有の名前の形式は `cs-<user>-<domain>-com-<uniqueGuid>` です。
-
-   :::image type="content" source="./media/deploy-cloud-shell/select-file-share.png" alt-text="既定のファイル共有":::
-
-1. テンプレートを保持する新しいディレクトリを追加します。 このディレクトリを選択します。
-
-   :::image type="content" source="./media/deploy-cloud-shell/add-directory.png" alt-text="ディレクトリを追加する":::
-
-1. **[アップロード]** を選択します。
-
-   :::image type="content" source="./media/deploy-cloud-shell/upload-template.png" alt-text="テンプレートをアップロードする":::
-
-1. テンプレートを見つけてアップロードします。
-
-   :::image type="content" source="./media/deploy-cloud-shell/select-template.png" alt-text="テンプレートを選択する":::
-
-1. Cloud Shell のプロンプトを開きます。
-
-   :::image type="content" source="./media/deploy-cloud-shell/open-cloud-shell.png" alt-text="Cloud Shell を開く":::
-
-1. **clouddrive** ディレクトリに移動します。 テンプレートを保持するために追加したディレクトリに移動します。
+1. アップロードする ARM テンプレートを選択し、 **[開く]** を選択します。
 
 1. テンプレートをデプロイするには、次のコマンドを使用します。
 
@@ -118,4 +94,4 @@ ms.locfileid: "98028609"
 ## <a name="next-steps"></a>次のステップ
 
 - デプロイ コマンドの詳細については、「[ARM テンプレートと Azure CLI でリソースをデプロイする](deploy-cli.md)」および「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。
-- テンプレートをデプロイする前に変更をプレビューするには、「[ARM テンプレートのデプロイの what-if 操作](template-deploy-what-if.md)」を参照してください。
+- テンプレートをデプロイする前に変更をプレビューするには、「[ARM テンプレートのデプロイの what-if 操作](./deploy-what-if.md)」を参照してください。

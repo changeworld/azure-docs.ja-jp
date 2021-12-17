@@ -6,22 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/08/2021
+ms.date: 05/10/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 268de3e8ea168ac721362d42149389b9f37c86fe
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d56276ab4af0be07a040235bd32e25df382f393d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305057"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720494"
 ---
 # <a name="blob-versioning"></a>BLOB のバージョン管理
 
 Blob Storage のバージョン管理を有効にし、以前のバージョンのオブジェクトを自動的に維持することができます。 BLOB のバージョン管理が有効になっている場合は、以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="recommended-data-protection-configuration"></a>推奨されるデータ保護の構成
 
@@ -47,7 +45,7 @@ BLOB のバージョン管理は、BLOB データの包括的なデータ保護�
 
 BLOB のバージョンは変更できません。 既存の BLOB のバージョンの内容やメタデータを変更することはできません。
 
-BLOB ごとに多数のバージョンがあると、BLOB の一覧表示操作の待機時間が長くなる可能性があります。 Microsoft では、BLOB ごとのバージョン数を 1000 未満に保つことをお勧めします。 ライフサイクル管理を使用して、古いバージョンを自動的に削除できます。 ライフサイクル管理の詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](storage-lifecycle-management-concepts.md)」を参照してください。
+BLOB ごとに多数のバージョンがあると、BLOB の一覧表示操作の待機時間が長くなる可能性があります。 Microsoft では、BLOB ごとのバージョン数を 1000 未満に保つことをお勧めします。 ライフサイクル管理を使用して、古いバージョンを自動的に削除できます。 ライフサイクル管理の詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](./lifecycle-management-overview.md)」を参照してください。
 
 BLOB のバージョン管理は、汎用 v2、Premium ブロック BLOB、および従来の BLOB ストレージ アカウントで使用できます。 階層型名前空間が Azure Data Lake Storage Gen2 で使用できるストレージ アカウントは、現在、サポートされていません。
 
@@ -111,9 +109,9 @@ BLOB のバージョン管理が有効になっている場合、BLOB に対す�
 
 ### <a name="access-tiers"></a>アクセス層
 
-[Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出すことにより、現在のバージョンを含む、任意のバージョンのブロック BLOB を別の BLOB のアクセス層に移動することができます。 古いバージョンの BLOB をクールまたはアーカイブ層に移動することにより、より低い容量価格を利用できます。 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](storage-blob-storage-tiers.md)」を参照してください。
+[Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出すことにより、現在のバージョンを含む、任意のバージョンのブロック BLOB を別の BLOB のアクセス層に移動することができます。 古いバージョンの BLOB をクールまたはアーカイブ層に移動することにより、より低い容量価格を利用できます。 詳細については、[BLOB データのホット、クール、アーカイブ アクセス層](access-tiers-overview.md)に関するページを参照してください。
 
-ブロック BLOB を適切な層に移動するプロセスを自動化するには、BLOB のライフ サイクル管理を使用します。 ライフ サイクル管理の詳細については、「[Azure Blob Storage のライフ サイクルを管理する](storage-lifecycle-management-concepts.md)」を参照してください。
+ブロック BLOB を適切な層に移動するプロセスを自動化するには、BLOB のライフ サイクル管理を使用します。 ライフ サイクル管理の詳細については、「[Azure Blob Storage のライフ サイクルを管理する](./lifecycle-management-overview.md)」を参照してください。
 
 ## <a name="enable-or-disable-blob-versioning"></a>BLOB のバージョン管理を有効または無効にする
 
@@ -182,7 +180,7 @@ BLOB のスナップショットは、ある時点で作成された BLOB の読
 
 次のいずれかの方法を使用して、BLOB のバージョンへのアクセスを承認することができます。
 
-- Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Active Directory (Azure AD) セキュリティ プリンシパルにアクセス許可を付与する。 セキュリティと使いやすさのために、Azure AD を使用することをお勧めします。 BLOB 操作での Azure AD の使用に関する詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../common/storage-auth-aad.md)」を参照してください。
+- Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Active Directory (Azure AD) セキュリティ プリンシパルにアクセス許可を付与する。 セキュリティと使いやすさのために、Azure AD を使用することをお勧めします。 BLOB 操作での Azure AD の使用に関する詳細については、「[Azure Storage 内のデータへのアクセスを認可する](../common/authorize-data-access.md)」を参照してください。
 - Shared Access Signature (SAS) を使用して、BLOB バージョンへのアクセスを委任する。 BLOB バージョンを表す、署名済みリソースの種類である `bv` のバージョン ID を指定して、特定のバージョンに対する操作の SAS トークンを作成します。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../common/storage-sas-overview.md)」を参照してください。
 - アカウント アクセス キーを使用して、共有キーでの BLOB バージョンに対する操作を承認する。 詳細については、[共有キーによる承認](/rest/api/storageservices/authorize-with-shared-key)に関するページを参照してください。
 
@@ -211,7 +209,7 @@ BLOB バージョンの署名済みリソースは、`bv` です。 詳細につ
 
 BLOB のバージョン管理を有効にすると、アカウントに追加のデータ ストレージ料金が発生する可能性があります。 不要なコストを抑えるためにも、アプリケーションを設計する際は、この料金が発生するしくみを理解しておくことが重要です。
 
-BLOB のスナップショットと同様に、BLOB のバージョンは、アクティブなデータと同じレートで課金されます。 バージョンの課金方法は、ベース BLOB またはそのいずれかのバージョン (またはスナップショット) のどちらに対して層を明示的に設定したかによって異なります。 BLOB 層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
+BLOB のスナップショットと同様に、BLOB のバージョンは、アクティブなデータと同じレートで課金されます。 バージョンの課金方法は、ベース BLOB またはそのいずれかのバージョン (またはスナップショット) のどちらに対して層を明示的に設定したかによって異なります。 BLOB 層の詳細については、[BLOB データのホット、クール、アーカイブ アクセス層](access-tiers-overview.md)に関するページを参照してください。
 
 BLOB またはバージョンの層を変更していない場合は、その BLOB、そのバージョン、およびそれが持つ可能性があるすべてのスナップショットにわたるデータの一意のブロックに対して課金されます。 詳細については、「[BLOB 層が明示的に設定されていない場合の課金](#billing-when-the-blob-tier-has-not-been-explicitly-set)」を参照してください。
 
@@ -297,6 +295,17 @@ BLOB の論理的な削除が有効になっている場合に、層が明示的
 |-|-|
 | BLOB の論理的な削除とバージョン管理の両方が有効になっている場合 | 層に関係なく、すべての既存バージョンがコンテンツ全体の長さで。 |
 | BLOB の論理的な削除は有効になっているが、バージョン管理は無効になっている場合 | 層に関係なく、すべての既存の論理的な削除のスナップショットがコンテンツ全体の長さで。 |
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。
+
+| ストレージ アカウントの種類 | Blob Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> | SFTP <sup>1</sup> |
+|--|--|--|--|--|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+
+<sup>1</sup> Data Lake Storage Gen2、ネットワーク ファイル システム (NFS) 3.0 プロトコル、セキュア ファイル転送プロトコル (SFTP) のサポートでは、すべて階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="see-also"></a>関連項目
 

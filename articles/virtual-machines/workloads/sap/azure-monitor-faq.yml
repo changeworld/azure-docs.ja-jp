@@ -1,0 +1,85 @@
+### YamlMime:FAQ
+metadata:
+  title: よくあるご質問 - SAP ソリューション向け Azure Monitor | Microsoft Docs
+  description: この記事では、Azure Monitor for SAP Solutions に関してよく寄せられる質問 (FAQ) に対する回答を紹介します。
+  author: rdeltcheva
+  ms.service: baremetal-sap
+  ms.topic: article
+  ms.date: 07/08/2020
+  ms.author: radeltch
+  ms.openlocfilehash: 903d2e2b2413f4ad92a6f0fb88871f4410e464b4
+  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/26/2021
+  ms.locfileid: "122967151"
+title: Azure Monitor for SAP Solutions に関する FAQ (プレビュー)
+summary: "## <a name=\"frequently-asked-questions\"></a>よく寄せられる質問\n\nこの記事では、Azure Monitor for SAP Solutions に関してよく寄せられる質問 (FAQ) に対する回答を示します。  \n"
+sections:
+- name: 無視
+  questions:
+  - question: "SAP ソリューション向け Azure Monitor に対して料金を支払う必要がありますか?  \n"
+    answer: "Azure Monitor for SAP Solutions には、ライセンス料金は発生しません。 ただし、お客様は管理対象リソース グループ コンポーネントの費用を負担する必要があります。  \n"
+  - question: "このサービスのパブリック プレビューは、どのリージョンで利用できますか?  \n"
+    answer: >
+      このサービスのパブリック プレビューは、米国東部 2、米国西部 2、米国東部、西ヨーロッパで利用可能になります。
+  - question: "サブスクリプションで管理対象リソース グループのデプロイを許可するためのアクセス許可を付与する必要がありますか?  \n"
+    answer: >
+      いいえ。明示的なアクセス許可は必要ありません。
+  - question: "コレクター仮想マシン (VM) はどこに存在しますか?  \n"
+    answer: >
+      Azure Monitor for SAP Solutions のデプロイ時には、ご使用の SAP HANA サーバーと同じ VNET を監視リソースとして選択することをお勧めします。 したがって、コレクター VM は SAP HANA サーバーと同じ VNET に配置することをお勧めします。 HANA 以外のデータベースを使用している場合、コレクター VM は HANA 以外のデータベースと同じ VNET に置かれます。
+  - question: "サポートされている HANA のバージョンを教えてください  \n"
+    answer: >
+      HANA 1.0 SPS 12 (Rev. 120 以降) および HANA 2.0 SPS03 以降がサポートされています。
+  - question: "サポートされている HANA のデプロイの構成を教えてください  \n"
+    answer: "次の構成がサポートされています。\n   - 単一ノード (スケールアップ) とマルチノード (スケールアウト)。  \n   - Single Database Container (HANA 1.0 SPS 12) と Multiple Database Containers (HANA 1.0 SPS 12 または HANA 2.0)。\n   - 自動ホスト フェールオーバー (n + 1) と HSR。\n"
+  - question: "サポートされている SQL Server のバージョンを教えてください  \n"
+    answer: "SQL Server 2012 SP4 以降。  \n"
+  - question: "サポートされている SQL Server の構成を教えてください  \n"
+    answer: "次の構成がサポートされています。\n   - 仮想マシンの既定または名前付きスタンドアロン インスタンス。  \n   - クラスター化されたリソースの仮想名または AlwaysOn リスナー名のいずれかを使用する場合は、クラスター化されたインスタンスまたは AlwaysOn 構成のインスタンス。\n   - 現在、クラスターまたは AlwaysOn 固有のメトリックは収集されません。    \n   - Azure SQL Database (PAAS) は現在サポートされていません。    \n"
+  - question: "管理対象リソース グループを誤って削除した場合はどうなりますか?  \n"
+    answer: "管理対象リソース グループは、既定でロックされています。 したがって、管理対象リソース グループを誤って削除する可能性はごくわずかです。 管理対象リソース グループを削除すると、Azure Monitor for SAP Solutions が機能しなくなります。 新しい Azure Monitor for SAP Solutions リソースをデプロイしてやり直す必要があります。  \n"
+  - question: "SAP ソリューション向け Azure Monitor リソースをデプロイするために、Azure サブスクリプションで必要なロールはどれですか?  \n"
+    answer: "共同作成者ロールです。  \n"
+  - question: "この製品の SLA はどのようなものですか?  \n"
+    answer: >
+      プレビューは、サービス レベル アグリーメントから除外されています。 Azure Monitor for SAP Solutions のマーケットプレース イメージを通じて、完全なライセンス条項をお読みください。
+  - question: "このソリューションでランドスケープ全体を監視できますか?  \n"
+    answer: >
+      パブリック プレビューでは、現在、以下を監視できます。
+
+      - HANA データベース
+
+      - 基盤となるインフラストラクチャ
+
+      - 高可用性クラスター
+
+      - Microsoft SQL Server
+
+      - SAP Netweaver の可用性
+
+      - SAP アプリケーション インスタンスの可用性メトリック
+  - question: "このサービスは SAP Solution Manager に代わるものですか?  \n"
+    answer: "いいえ。 お客様は、引き続き SAP Solution Manager を使用してビジネス プロセスの監視を行うことができます。  \n"
+  - question: "SAP HANA Cockpit/Studio などの従来のソリューションより優れているこのサービスの価値はどのようなものですか?  \n"
+    answer: >
+      Azure Monitor for SAP Solutions は、HANA データベース固有のものではありません。 SAP ソリューション向け Azure Monitor では、AnyDB もサポートされています。
+  - question: >
+      SAP NetWeaver のサポートされているバージョンを教えてください。
+    answer: "SAP NetWeaver 7.0 以降。  \n"
+  - question: >
+      どの SAP NetWeaver 構成がサポートされていますか?
+    answer: >
+      ABAP、Java、およびデュアルスタックの SAP NetWeaver アプリケーション サーバー構成がサポートされています。
+  - question: >
+      SAP NetWeaver アプリケーション監視のためにメソッドの保護を解除する必要があるのはなぜですか?
+    answer: >
+      SAP リリース 7.3 以降では、多くの Web サービス メソッドは既定で保護されます。 これらのメソッドを呼び出して可用性とパフォーマンスのメトリックを取得するには、GetQueueStatistic、ABAPGetWPTable、GetProcessList、EnqGetStatistic、および GetSystemInstancelist の各メソッドの保護を解除する必要があります。
+  - question: >
+      SAPCONTROL Web メソッドの保護を解除した場合、リスクはありますか?
+    answer: "一般に、[こちらのような](https://launchpad.support.sap.com/#/notes/1439348)セキュリティ リスクを生じることなく、SAPCONTROL Web メソッドの保護を解除できます。 sapstartsrv のサーバー ポート 5XX13/5XX14 を使用して、保護されていない Web メソッドへのアクセスを制限できます。 これを行うには、SAP のアクセス制御リストにフィルターを追加します。 [OSS ノート](https://service.sap.com/sap/support/notes/1495075)に、必須の構成が記述されています。 \n"
+  - question: >
+      SAP NetWeaver プロバイダーを設定するためのシステム構成を実行した後、SAP インスタンスを再起動する必要はありますか?
+    answer: "はい。SAP 構成の変更によってメソッドの保護を解除した場合は、それぞれの SAP システムを再起動して、構成の変更が確実に更新されるようにする必要があります。  \n"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nAzure Monitor for SAP Solutions の詳細について学習します。\n\n> [!div class=\"nextstepaction\"]\n> [SAP on Azure の監視](monitor-sap-on-azure.md)"

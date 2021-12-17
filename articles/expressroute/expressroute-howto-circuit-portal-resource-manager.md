@@ -4,27 +4,28 @@ description: このクイックスタートでは、Azure portal を使用して
 services: expressroute
 author: duongau
 ms.author: duau
-ms.date: 10/21/2020
+ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: expressroute
-ms.custom:
-- mode-portal
-ms.openlocfilehash: f62b60a9c33cd1b813b8f3307ec82d4242be168b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mode-portal
+ms.openlocfilehash: 449925c1588ad05fccf2d5d5509ad621b6041956
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534801"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867135"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>クイックスタート: ExpressRoute 回線の作成と変更
 
 このクイックスタートでは、Azure portal と Azure Resource Manager デプロイ モデルを使用して ExpressRoute 回線を作成する方法について説明します。 状態の確認、および回線の更新、削除、プロビジョニング解除を行うこともできます。
 
+:::image type="content" source="media/expressroute-howto-circuit-portal-resource-manager/environment-diagram.png" alt-text="Azure portal を使用する ExpressRoute 回線のデプロイ環境の図。" border="false":::
+
 ## <a name="prerequisites"></a>前提条件
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
-* 手順をより理解するため、開始する前に[ビデオを参照](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)できます。
+* 手順をより理解するため、開始する前に[ビデオを参照](https://channel9.msdn.com/Blogs/Azure/Azure-ExpressRoute-How-to-create-an-ExpressRoute-circuit)できます。
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
 

@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/17/2021
 ms.topic: troubleshooting
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 3c1f60b214397b1f97e0157b5beca32d504102d6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f5ea8cfe1df2ae89bb67675c9bf235d62dca4bf5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030632"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082074"
 ---
 # <a name="device-update-for-iot-hub-troubleshooting-guide"></a>Device Update for IoT Hub のトラブルシューティング ガイド
 
@@ -66,6 +66,9 @@ _これは、サービスまたは UX のバグか、API のアクセス許可�
 
 ### <a name="q-i-started-a-deployment-but-it-isnt-reaching-an-end-state"></a>Q: デプロイを開始しましたが、終了状態に達していません。
 _これは、サービスのパフォーマンスの問題、サービスのバグ、またはクライアントのバグが原因で発生した可能性があります。10 分経ってから、デプロイを再試行してください。同じ問題が発生した場合は、デバイス ログをプルし、このトラブルシューティング ガイドの「デバイス障害」セクションを参照してください。引き続き同じ問題が発生する場合は、「[Microsoft サポートへの問い合わせ](#contact)」セクションの手順に従って Microsoft にサポート リクエストを提出してください。_
+
+### <a name="q-i-migrated-from-a-device-level-agent-to-adding-the-agent-as-a-module-identity-on-the-device-and-my-update-shows-as-in-progress-even-though-it-has-been-applied-to-the-device"></a>Q: デバイス レベルのエージェントから、デバイスにモジュール ID としてエージェントを追加するように移行しました。この更新はデバイスに適用されているにもかかわらず "進行中" と表示されます。
+_これは、デバイス ツインを介して通信していた古いエージェントを削除しなかった場合に発生する可能性があります。 デバイス更新エージェントをモジュールとしてプロビジョニングする (「[方法](device-update-agent-provisioning.md)」を参照) と、デバイスとデバイス更新サービス間のすべての通信がモジュール ツインを介して行われます。そのため、[グループ](device-update-groups.md)を作成するときに、デバイスのモジュール ツインにタグ付けすることを忘れないでください。すべての[通信](device-update-plug-and-play.md)は、モジュール ツインを介して行われる必要があります。
 
 ## <a name="downloading-updates-onto-devices"></a><a name="download"></a> デバイスへの更新プログラムのダウンロード
 

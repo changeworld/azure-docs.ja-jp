@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: cdb792198e6912fb0e68b2abec052c2b05166f17
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: cc293a58c372c09fa03cf9d0b6f2b729b80d7c0e
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310123"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400624"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>ソリューションに適した IoT Hub のレベルを選択する
 
@@ -52,7 +52,7 @@ IoT Hub の Standard レベルではすべての機能が有効になり、双�
 | [デバイス ツイン](iot-hub-devguide-device-twins.md)、[モジュール ツイン](iot-hub-devguide-module-twins.md)、および[デバイス管理](iot-hub-device-management-overview.md) |   | はい |
 | [デバイス ストリーム (プレビュー)](iot-hub-device-streams-overview.md) |   | はい |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | はい |
-| [IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md) |   | はい |
+| [IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md) |   | はい |
 
 IoT Hub では、テストおよび評価のための Free レベルも提供されています。 Free レベルは、機能的には Standard レベルと同じですが、メッセージングの許容量が限られます。 Free レベルから Basic レベルまたは Standard レベルにアップグレードすることはできません。
 

@@ -4,18 +4,20 @@ description: ソフトウェア プランを前払いして、従量課金制の
 author: bandersmsft
 manager: yashesvi
 ms.service: virtual-machines
-ms.subservice: reserved-instances
+ms.subservice: billing
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 136207afef3fef9266fadcea1e67bb0aa6a38a32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c46215bde33f726aba61ad42bf27a14ac2edb4dc
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549755"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216497"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Azure ソフトウェア プランへの前払い
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 Azure での SUSE および RedHat ソフトウェアの使用に対して前払いすると、従量課金制のコストより費用を節約できます。 この割引は SUSE および RedHat の測定にのみ適用され、仮想マシンの使用には適用されません。 仮想マシンの予約を別に購入することで、さらに節約できます。
 
@@ -37,6 +39,7 @@ SUSE および RedHat のソフトウェア プランは、Azure portal で購�
 4. スコープを選択します。 1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) をスコープにすることができます。
     - [単一サブスクリプション] - プランの割引は、サブスクリプションでのマシンの使用に適用されます。
     - [共有] - プランの割引は、課金コンテキスト内のすべてのサブスクリプションでの一致するインスタンスに適用されます。 エンタープライズのお客様の場合、課金コンテキストが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制料金の個別プランを利用されるお客様の場合、従量課金制料金サブスクリプションをアカウント管理者が作成したあらゆる個別プランで課金されます。
+    - 管理グループ - 管理グループと課金スコープの両方に属するサブスクリプションのリストの中で、一致するリソースに予約割引を適用します。
     - 1 つのリソース グループ - 選択されたリソース グループ内の一致するリソースにのみ予約割引を適用します。
 5. 製品を選択し、VM のサイズとイメージの種類を選択します。 割引は、選択した VM サイズにのみ適用されます。
 6. 期間として 1 年または 3 年を選択します。

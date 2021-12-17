@@ -5,13 +5,14 @@ ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom:
 - devx-track-java
+- devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a270f482438129b7b07506744bf3f9489b242900
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1605bcc3a596276e8de99c45f290368691703c4f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787487"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752342"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Java 関数を作成する
 
@@ -39,7 +40,7 @@ Maven が好みの開発ツールでない場合は、[Gradle](./functions-creat
 
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
-+ [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8 または 11。 `JAVA_HOME` 環境変数を、適切なバージョンの JDK のインストール場所に設定する必要があります。
++ [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン 8 または 11。 `JAVA_HOME` 環境変数を、適切なバージョンの JDK のインストール場所に設定する必要があります。
 
 + [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
 
@@ -111,7 +112,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 <details>
 <summary><strong>LocalFunctionProj フォルダーには何が作成されますか?</strong></summary>
 
-このフォルダーには、*Function.java*、*FunctionTest.java*、*pom.xml* など、プロジェクトに関するさまざまなファイルが格納されています。 [local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) という名前の構成ファイルも存在します。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
+このフォルダーには、*Function.java*、*FunctionTest.java*、*pom.xml* など、プロジェクトに関するさまざまなファイルが格納されています。 [local.settings.json](functions-develop-local.md#local-settings-file) や [host.json](functions-host-json.md) という名前の構成ファイルも存在します。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
 </details>
 
 <br/>

@@ -1,0 +1,98 @@
+### YamlMime:Hub
+title: Azure Cognitive Service for Language のドキュメント
+summary: 情報の抽出、テキストの分類、会話言語の理解、質問への回答などを行うことができる AI をアプリケーションに統合する方法について説明します。
+brand: azure
+metadata:
+  title: Azure Cognitive Service for Language のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  description: 書き表されたテキストを処理する AI をアプリケーションに統合する方法について説明します。
+  author: aahill
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: hub-page
+  ms.date: 11/02/2021
+  ms.author: aahi
+highlightedContent:
+  items:
+    - title: Azure Cognitive Service for Language とは
+      itemType: overview
+      url: overview.md
+    - title: 新機能
+      itemType: whats-new
+      url: whats-new.md
+    - title: Language Studio を使い始める
+      itemType: get-started
+      url: language-studio.md
+    - title: AI の責任ある使用
+      itemType: concept
+      url: /legal/cognitive-services/language-service/transparency-note?context=/azure/cognitive-services/language-service/context/context
+conceptualContent:
+  items:
+    - title: 情報を抽出する
+      summary: Natural Language Understanding (NLU) を使用して、非構造化テキストから情報を抽出します。 たとえば、キー フレーズまたは個人情報 (PII) の識別、テキストの要約、固有表現の認識と分類、またはドメイン セット上でのエンティティ抽出モデルのカスタマイズを行います。
+      links:
+        - itemType: overview
+          text: キー フレーズ抽出
+          url: key-phrase-extraction/overview.md
+        - itemType: overview
+          text: リンクされたエンティティを検索する
+          url: entity-linking/overview.md
+        - itemType: overview
+          text: 名前付きエンティティの認識 (NER)
+          url: named-entity-recognition/overview.md
+        - itemType: overview
+          text: 個人を特定できる情報 (PII) の検出
+          url: personally-identifiable-information/overview.md
+        - itemType: overview
+          text: カスタム固有表現認識 (カスタム NER)
+          url: custom-named-entity-recognition/overview.md
+        - itemType: overview
+          text: Text Analytics for Health
+          url: text-analytics-for-health/overview.md
+        - itemType: overview
+          text: テキストの概要作成
+          url: text-summarization/overview.md
+    - title: テキストを分類する
+      summary: Natural Language Understanding (NLU) を使用して、言語を検出したり、手持ちのテキストのセンチメントを分類したりできます。 また、データ セット上の分類モデルをカスタマイズして、テキスト ドキュメントを分類することもできます。
+      links:
+        - itemType: overview
+          text: センチメントを分析し、テキストからオピニオンをマイニングする
+          url: sentiment-opinion-mining/overview.md
+        - itemType: overview
+          text: 言語を検出する
+          url: language-detection/overview.md
+        - itemType: overview
+          text: カスタム テキスト分類
+          url: custom-classification/overview.md
+    - title: 質問に答える
+      summary: 非構造化テキストで尋ねられている質問に対する回答をビルド済み機能を使用して提供するか、提供するデータに対してドメイン固有の質問と回答のペアをカスタマイズします。
+      links:
+        - itemType: overview
+          text: 質問応答
+          url: question-answering/overview.md
+    - title: 会話について
+      summary: 独自の会話言語理解モデルを作成して、会話の発話を分類し、それらから詳細情報を抽出して、シナリオを満たします。
+      links:
+        - itemType: overview
+          text: 会話言語理解
+          url: conversational-language-understanding/overview.md
+    - title: テキストを翻訳する
+      summary: クラウドベースのニューラル機械翻訳を使用して、アプリケーションに対してインテリジェントな複数言語ソリューションを構築します。
+      links:
+        - itemType: overview
+          text: テキストで機械翻訳を使用する
+          url: ../translator/translator-overview.md
+additionalContent:
+  sections:
+    - items:
+        - title: リソース
+          links:
+            - text: 価格
+              url: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
+            - text: 学習する
+              url: /learn/browse/?products=azure-cognitive-services&term=Speech
+        - title: サポート
+          links:
+            - text: サポートとヘルプ
+              url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

@@ -5,20 +5,22 @@ services: virtual-machines
 author: vermagit
 tags: azure-resource-manager
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f78420a65cd9c2402266eb9ba973eabe758d7ee5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb7604476fb323d829f0c70253dee1138c8bd7ee
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608286"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277165"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>HBv3 シリーズの仮想マシンの概要 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 [HBv3 シリーズ](../../hbv3-series.md)のサーバーは 64 コア EPYC 7V13 CPU を 2 個搭載しており、合わせて 128 個の物理 "Zen3" コアとなります。 同時マルチスレッド (SMT) は HBv3 では無効になっています。 これらの 128 個のコアは 16 個のセクション (ソケットあたり 8 個) に分けられ、各セクションに含まれる 8 個のプロセッサ コアが 32 MB の L3 キャッシュに一様にアクセスできます。 Azure HBv3 サーバーでは、次の AMD BIOS 設定も実行されます。
 
@@ -130,7 +132,7 @@ HBv3 VM の特徴は、物理的にローカルの 3 つの SSD デバイスで�
 | Orchestrator のサポート           | Azure CycleCloud、Azure Batch、AKS。[クラスター構成オプション](../../sizes-hpc.md#cluster-configuration-options)                      | 
 
 > [!NOTE] 
-> Windows Server 2012 R2 は、HBv3、および 64 個を超える (仮想または物理) コアを備えたその他の VM ではサポートされていません。 詳細については、[こちら](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)を参照してください。
+> Windows Server 2012 R2 は、HBv3、および 64 個を超える (仮想または物理) コアを備えたその他の VM ではサポートされていません。 詳細については、「[Windows Server 上の Hyper-V でサポートされている Windows ゲスト オペレーティング システム](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

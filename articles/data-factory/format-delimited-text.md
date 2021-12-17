@@ -1,25 +1,42 @@
 ---
 title: Azure Data Factory での区切りテキスト形式
-description: このトピックでは、Azure Data Factory で区切りテキスト形式を処理する方法について説明します。
-author: linda33wj
+titleSuffix: Azure Data Factory & Azure Synapse
+description: このトピックでは、Azure Data Factory および Azure Synapse Analytics で区切りテキスト形式を処理する方法について説明します。
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/23/2021
-ms.author: jingwang
-ms.openlocfilehash: 1cff49e4ddb7423e1e5956e1436cefd18abe6dfe
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 10/18/2021
+ms.author: jianleishen
+ms.openlocfilehash: 3542ddd7a3276d0ba5b7aaac591f4d4ff936cd86
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107076"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238965"
 ---
-# <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory での区切りテキスト形式
+# <a name="delimited-text-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での区切りテキスト形式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 **区切りテキスト ファイルの解析または区切りテキスト形式へのデータの書き込み** を行う場合は、この記事に従ってください。 
 
-区切りテキスト形式は次のコネクタでサポートされています。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。
+区切りテキスト形式は次のコネクタでサポートされています。 
+
+- [Amazon S3](connector-amazon-simple-storage-service.md)
+- [Amazon S3 互換ストレージ](connector-amazon-s3-compatible-storage.md)
+- [Azure BLOB](connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
+- [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+- [Azure Files](connector-azure-file-storage.md)
+- [ファイル システム](connector-file-system.md)
+- [FTP](connector-ftp.md)
+- [Google Cloud Storage](connector-google-cloud-storage.md)
+- [HDFS](connector-hdfs.md)
+- [HTTP](connector-http.md)
+- [Oracle Cloud Storage](connector-oracle-cloud-storage.md)
+- [SFTP](connector-sftp.md)
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -88,8 +105,8 @@ Azure Blob Storage の区切りテキスト データセットの例を次に示
 | type          | formatSettings の type は、**DelimitedTextReadSetting** に設定する必要があります。 | はい      |
 | skipLineCount | 入力ファイルからのデータ読み取り時にスキップする **空でない** 行数を示します。 <br>skipLineCount と firstRowAsHeader の両方が指定されている場合、行が最初にスキップされ、次に、入力ファイルからヘッダー情報が読まれます。 | いいえ       |
 | compressionProperties | 特定の圧縮コーデックのデータを圧縮解除する方法のプロパティ グループ。 | いいえ       |
-| preserveZipFileNameAsFolder<br>(" *`compressionProperties`->`type` の下に `ZipDeflateReadSettings` として*") |  **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。<br>- **false** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
-| preserveCompressionFileNameAsFolder<br>(" *`compressionProperties`->`type` で `TarGZipReadSettings` または `TarReadSettings` として*")  | **TarGzip**/**Tar** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は圧縮解除されたファイルを `<path specified in dataset>/<folder named as source compressed file>/` に書き込みます。 <br>- **false** に設定した場合、Data Factory は圧縮解除されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
+| preserveZipFileNameAsFolder<br>(" *`compressionProperties`->`type` の下に `ZipDeflateReadSettings` として*") |  **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、サービスにより解凍されたファイルが `<path specified in dataset>/<folder named as source zip file>/` に書き込まれます。<br>- **false** に設定した場合、サービスにより解凍されたファイルが `<path specified in dataset>` に直接書き込まれます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
+| preserveCompressionFileNameAsFolder<br>(" *`compressionProperties`->`type` で `TarGZipReadSettings` または `TarReadSettings` として*")  | **TarGzip**/**Tar** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、サービスにより圧縮解除されたファイルが `<path specified in dataset>/<folder named as source compressed file>/` に書き込みます。 <br>- **false** に設定した場合、サービスにより圧縮解除されたファイルが `<path specified in dataset>` に直接書き込まれます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
 
 ```json
 "activities": [
@@ -140,7 +157,7 @@ Azure Blob Storage の区切りテキスト データセットの例を次に示
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-マッピング データ フローでは、次のデータ ストアで区切りテキスト形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+マッピング データ フローでは、次のデータ ストアで区切りテキスト形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。また、[Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties) で区切りテキスト形式を読み取ることができます。
 
 ### <a name="source-properties"></a>ソース プロパティ
 
@@ -157,11 +174,14 @@ Azure Blob Storage の区切りテキスト データセットの例を次に示
 | 最終更新日時でフィルター処理 | 最後に変更された日時に基づいてファイルをフィルター処理する場合に選択 | no | Timestamp | modifiedAfter <br> modifiedBefore |
 | [Allow no files found]\(ファイルの未検出を許可\) | true の場合、ファイルが見つからない場合でもエラーはスローされない | no | `true` または `false` | ignoreNoFilesFound |
 
+> [!NOTE]
+> ファイルの一覧に対するデータ フロー ソースのサポートは、ファイル内の 1024 エントリに制限されています。 さらに多くのファイルを含めるには、ファイル リストにワイルドカードを使用します。
+
 ### <a name="source-example"></a>ソースの例
 
 次の図は、マッピング データ フローにおける区切りテキスト ソースの構成例です。
 
-![DelimitedText ソース](media/data-flow/delimited-text-source.png)
+:::image type="content" source="media/data-flow/delimited-text-source.png" alt-text="DelimitedText ソース":::
 
 関連付けられているデータ フロー スクリプトは次のとおりです。
 
@@ -191,7 +211,7 @@ source(
 
 次の図は、マッピング データ フローにおける区切りテキスト シンクの構成例です。
 
-![DelimitedText シンク](media/data-flow/delimited-text-sink.png)
+:::image type="content" source="media/data-flow/delimited-text-sink.png" alt-text="DelimitedText シンク":::
 
 関連付けられているデータ フロー スクリプトは次のとおりです。
 
@@ -202,6 +222,21 @@ CSVSource sink(allowSchemaDrift: true,
     skipDuplicateMapInputs: true,
     skipDuplicateMapOutputs: true) ~> CSVSink
 ```
+
+## <a name="related-connectors-and-formats"></a>関連するコネクタと形式
+
+区切られたテキスト形式に関連する一般的なコネクタと形式をいくつか次に示します。
+
+- Azure Blob Storage (connector-azure-blob-storage.md)
+- バイナリ形式 (format-binary.md)
+- Dataverse(connector-dynamics-crm-office-365.md)
+- Delta 形式 (format-delta.md)
+- Excel 形式 (format-excel.md)
+- ファイル システム (connector-file-system.md)
+- FTP(connector-ftp.md)
+- HTTP(connector-http.md)
+- JSON format(format-json.md)
+- Parquet 形式 (format-parquet.md)
 
 ## <a name="next-steps"></a>次のステップ
 

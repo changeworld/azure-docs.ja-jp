@@ -3,21 +3,21 @@ title: Azure Portal を使用してロジック アプリを API としてイン
 description: この記事では、API Management (APIM) を使用してロジック アプリを API としてインポートする方法を示します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/22/2020
-ms.author: apimpm
-ms.openlocfilehash: 0dd460bce01b86c72d0b8fd70351fdcc85c69bd4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.author: danlep
+ms.openlocfilehash: 509a143a368c4626b7d0a39e1c3f2d15c8a3d0b2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93146962"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667770"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>ロジック アプリを API としてインポート
 
@@ -29,7 +29,6 @@ ms.locfileid: "93146962"
 >
 > -   ロジック アプリを API としてインポート
 > -   Azure Portal での API のテスト
-> -   開発者ポータルでの API のテスト
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,43 +40,61 @@ ms.locfileid: "93146962"
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>バックエンド API のインポートと公開
 
 1. Azure portal で API Management サービスに移動し、メニューから **[API]** を選択します。
-2. **[Add a new API]\(新しい API の追加\)** の一覧から **[ロジック アプリ]** を選択します。
+1. **[Add a new API]\(新しい API の追加\)** の一覧から **[ロジック アプリ]** を選択します。
 
-    ![ロジック アプリ](./media/import-logic-app-as-api/logic-app-api.png)
+    :::image type="content" source="./media/import-logic-app-as-api/logic-app-select.png" alt-text="[ロジック アプリ] カテゴリを選択する":::
 
-3. **[参照]** を押して、サブスクリプション内の、HTTP トリガーを持つロジック アプリの一覧を表示します  (HTTP トリガーを持たないロジック アプリは一覧に表示されないことに注意してください)。
-4. アプリを選びます。 API Management では、選択したアプリに関連付けられている Swagger が検索されてフェッチされ、インポートされます。
-5. API URL サフィックスを追加します。 サフィックスは、この API Management インスタンスでこの特定の API を識別する名前です。 この API Management インスタンス内で一意である必要があります。
-6. API を成果物に関連付けることで API を公開します。 この場合、"_無制限_" の成果物が使用されます。 API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。
+1. **[参照]** を押して、サブスクリプション内の、HTTP トリガーを持つロジック アプリの一覧を表示します  
+    * HTTP トリガーの "*ない*" ロジック アプリは一覧に表示されません。
 
-    製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず製品をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その製品の API に適したサブスクリプション キーを受け取ります。 API Management インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。
+    :::image type="content" source="./media/import-logic-app-as-api/browse-logic-apps.png" alt-text="適切なトリガーを使用する既存のロジック アプリを参照する":::
 
-    すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。
+1. ロジック アプリを選択します。 
 
-    - **スターター**
-    - **無制限**
+    :::image type="content" source="./media/import-logic-app-as-api/select-logic-app-import-2.png" alt-text="ロジック アプリを選択する":::
 
-7. 他の API 設定を入力します。 値は、作成時に設定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#import-and-publish-a-backend-api)」のチュートリアルで説明されています。
-8. **［作成］** を選択します
+1. API Management では、選択したアプリに関連付けられている Swagger が検索されてフェッチされ、インポートされます。
+1. API URL サフィックスを追加します。 
+    * サフィックスにより、この API Management インスタンスでこの特定の API が一意に識別されます。
+
+    :::image type="content" source="./media/import-logic-app-as-api/create-from-logic-app.png" alt-text="フィールドへの入力を完了する":::
+
+1. API を公開して開発者が利用できるようにする場合は、 **[完全]** ビューに切り替え、 **[製品]** に関連付けます。 この例では、"*無制限*" の製品を使用します。 
+    * API は、作成時に製品に追加することも、後で **[設定]** タブを使用して追加することもできます。
+
+    >[!NOTE]
+    > 成果物は、開発者ポータルを通じて開発者に提供される 1 つまたは複数の API を関連付けたものです。 開発者は、まず成果物をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その成果物の API に使用されるサブスクリプション キーが提供されます。 API Management インスタンスの作成者は管理者となるため、既定ですべての製品をサブスクライブすることになります。
+    >
+    > すべての API Management インスタンスは、既定のサンプル成果物を 2 つ備えています。
+    > - **スターター**
+    > - **無制限**
+
+1. 他の API 設定を入力します。 
+    * これらの値は、作成時に設定することも、後で **[設定]** タブに移動して設定することもできます。設定については、[最初の API のインポートと発行](import-and-publish.md#import-and-publish-a-backend-api)に関するチュートリアルをご覧ください。
+1. **［作成］** を選択します
 
 ## <a name="test-the-api-in-the-azure-portal"></a>Azure Portal での API のテスト
 
 Azure Portal には、API の操作を表示およびテストするための便利な環境が用意されており、操作を直接呼び出すことができます。
 
+:::image type="content" source="./media/import-logic-app-as-api/test-logic-app-api.png" alt-text="ロジック アプリをテストする":::
+
 1. 前の手順で作成した API を選びます。
 2. **[テスト]** タブをクリックします。
-3. いくつかの操作を選びます。
+3. テストする操作を選択します。
 
-    ページに、クエリ パラメーターのフィールドとヘッダーのフィールドが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 API Management インスタンスを作成した場合は、既に管理者になっているので、キーが自動的に入力されます。
+    * ページに、クエリ パラメーターとヘッダーのフィールドが表示されます。 
+    * この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 
+    * API Management インスタンスの作成者は、既に管理者になっているので、キーが自動的に入力されます。
 
 4. **[送信]** をクリックします。
 
-    バックエンドは **200 OK** といくつかのデータで応答します。
+    * テストが成功すると、バックエンドから **200 OK** およびデータが応答として返されます。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
 >[!NOTE]
->すべてのロジック アプリには、**手動呼び出し** 操作があります。 複数ロジック アプリの API を含める場合は、競合を回避するために、関数の名前を変更する必要があります。
+>すべてのロジック アプリには、**手動呼び出し** 操作があります。 複数のロジック アプリの API を構成し、競合を回避するには、関数の名前を変更する必要があります。
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 

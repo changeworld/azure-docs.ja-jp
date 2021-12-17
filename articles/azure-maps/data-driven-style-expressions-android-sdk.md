@@ -1,20 +1,20 @@
 ---
 title: Android マップ でのデータ ドリブンのスタイルの式 | Microsoft Azure Maps
 description: データドリブンのスタイルの式について説明します。 Azure Maps Android SDK でこれらの式を使用し、マップ内のスタイルを調整する方法を確認してください。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 1babf1feb550109486089c45469ab4ce32f72cb3
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 7c73c52045504dfeeaccf5292aea7ab07b75d8d8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097416"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438536"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>データ ドリブンのスタイルの式 (Android SDK)
 
@@ -221,7 +221,7 @@ val exp = Expression.raw("['get','title']")
 
 | 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
-| `accumulated()` | number | これまでに累積したクラスター プロパティの値を取得します。 |
+| `accumulated()` | number | これまでに累積したクラスター プロパティの値を取得します。 これは、クラスター化された `DataSource` ソースの `clusterProperties` オプションでのみ使用できます。 |
 | `at(number | Expression, Expression)` | value | 配列から項目を取得します。 |
 | `geometryType()` | string | 機能の geometry 型: Point、MultiPoint、LineString、MultiLineString、Polygon、MultiPolygon を取得します。 |
 | `get(string | Expression)` \| `get(string | Expression, Expression)` | value | 指定されたオブジェクトのプロパティからプロパティ値を取得します。 要求されたプロパティがない場合は、null が返されます。 |
@@ -856,9 +856,9 @@ val layer = SymbolLayer(source,
 
 ![文字列演算子式の例](media/how-to-expressions/string-operator-expression.png)
 
-## <a name="interpolate-and-step-expressions"></a>補間式とステップ式
+## <a name="interpolate-and-step-expressions&quot;></a>補間式とステップ式
 
-補間式とステップ式は、補間曲線またはステップ関数に沿って値を計算するために使用できます。 これらの式では、入力として数値を返す式が包含されします (たとえば、`get("temperature")`)。 入力値は、入力値と出力値のペアに対して評価され、補間曲線またはステップ関数に最適な値が判断されます。 出力値は "分岐点" と呼ばれます。 各分岐点の入力値は数値で、昇順である必要があります。 出力値は、数値、数値の配列、または色である必要があります。
+補間式とステップ式は、補間曲線またはステップ関数に沿って値を計算するために使用できます。 これらの式では、入力として数値を返す式が包含されします (たとえば、`get(&quot;temperature")`)。 入力値は、入力値と出力値のペアに対して評価され、補間曲線またはステップ関数に最適な値が判断されます。 出力値は "分岐点" と呼ばれます。 各分岐点の入力値は数値で、昇順である必要があります。 出力値は、数値、数値の配列、または色である必要があります。
 
 ### <a name="interpolate-expression"></a>補間式
 

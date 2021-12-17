@@ -4,12 +4,14 @@ description: Azure Site Recovery を使用して、Azure への Hyper-V VM の�
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
-ms.openlocfilehash: 936950ef5dd2c1c7343e30536ab8836fcd198bd0
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+author: Sharmistha-Rai
+ms.author: sharrai
+ms.openlocfilehash: b8771e26f51dd54595ebefdb5ad5230c7257907a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580833"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536670"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -24,6 +26,9 @@ ms.locfileid: "106580833"
 --- | ---
 Hyper-V (Virtual Machine Manager あり) <br> <br>| System Center Virtual Machine Manager ファブリックで管理されている Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。<br/><br/> Hyper-V ホストが Virtual Machine Manager で管理されている場合は、セカンダリ オンプレミス サイトへのディザスター リカバリーを実行することもできます。 このシナリオの詳細については、[こちらのチュートリアル](hyper-v-vmm-disaster-recovery.md)を参照してください。
 Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって管理されていない Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。
+
+> [!NOTE]
+> Azure Backup と Azure Site Recovery の両方を同じ Hyper-V ホストに構成すると、レプリケーションに問題が生じる可能性があり、サポートされていません。
 
 ## <a name="on-premises-servers"></a>オンプレミスのサーバー
 
@@ -92,7 +97,7 @@ Azure 仮想ネットワーク サービス エンドポイント<br/> (Azure St
 ## <a name="hyper-v-host-storage"></a>Hyper-V ホスト ストレージ
 
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
---- | --- | --- 
+--- | --- | ---
 NFS | NA | NA
 SMB 3.0 | はい | はい
 SAN (ISCSI) | はい | はい
@@ -141,13 +146,14 @@ Import/Export サービス | いいえ | いいえ
 ファイアウォールが有効になっている Azure Storage アカウント | はい。 ターゲット ストレージとキャッシュの場合。 | はい。 ターゲット ストレージとキャッシュの場合。
 ストレージ アカウントの変更 | いいえ。 レプリケーションを有効にすると、ターゲット Azure Storage アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
 転送オプションのセキュリティ保護 | はい | はい
-
+UEFI セキュア ブート | いいえ | いいえ
 
 ## <a name="azure-compute-features"></a>Azure コンピューティング機能
 
 **機能** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
 可用性セット | はい | はい
+可用性ゾーン | いいえ | いいえ
 ハブ | はい | はい  
 マネージド ディスク | はい、フェールオーバー用です。<br/><br/> マネージド ディスクのフェールバックはサポートされません。 | はい、フェールオーバー用です。<br/><br/> マネージド ディスクのフェールバックはサポートされません。
 
@@ -187,8 +193,8 @@ VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスク�
 デプロイがこの記事の設定と互換性を持たせるには、最新のプロバイダーとエージェントのバージョンを実行してください。
 
 **名前** | **説明** | **詳細**
---- | --- | --- 
-Azure Site Recovery プロバイダー | オンプレミスのサーバーと Azure の間の通信を調整します <br/><br/> Hyper-V (Virtual Machine Manager あり): Virtual Machine Manager サーバーにインストールします<br/><br/> Hyper-V (Virtual Machine Manager なし): Hyper-V ホストにインストールします| 最新バージョン: 5.1.2700.1 (Azure portal から入手可能)<br/><br/> [最新の機能と修正](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
+--- | --- | ---
+Azure Site Recovery プロバイダー | オンプレミスのサーバーと Azure の間の通信を調整します <br/><br/> Hyper-V (Virtual Machine Manager あり): Virtual Machine Manager サーバーにインストールします<br/><br/> Hyper-V (Virtual Machine Manager なし): Hyper-V ホストにインストールします| [最新の機能と修正](./site-recovery-whats-new.md)
 Microsoft Azure Recovery Services エージェント | Hyper-V VM と Azure の間のレプリケーションを調整します<br/><br/> オンプレミスの Hyper-V サーバーにインストールされます (Virtual Machine Manager の有無にかかわらず) | ポータルから入手可能な最新のエージェント
 
 

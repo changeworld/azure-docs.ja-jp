@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/21/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 61ce8f178bbdf8bf6cbb981933bed290a20fe04e
-  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+  ms.openlocfilehash: f3c84d7f25cf6714ac8012b5f2f938b0018e4cd8
+  ms.sourcegitcommit: dcf3424d7149fceaea0340eb0657baa2c27882a5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/07/2020
-  ms.locfileid: "96749098"
+  ms.lasthandoff: 11/30/2021
+  ms.locfileid: "133269315"
 landingContent:
 - title: Azure Database for PostgreSQL について
   linkLists:
@@ -53,7 +53,7 @@ landingContent:
       url: ../app-service/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
     - text: サーバーを監視して調整する
       url: tutorial-monitor-and-tune.md
-- title: フレキシブル サーバー (プレビュー)
+- title: フレキシブル サーバー
   linkLists:
   - linkListType: overview
     links:
@@ -61,6 +61,8 @@ landingContent:
       url: flexible-server/overview.md
     - text: すべてのフレキシブル サーバーのドキュメントを見る
       url: flexible-server/index.yml
+    - text: フレキシブル サーバーを無料で試す
+      url: flexible-server/how-to-deploy-on-azure-free-account.md
   - linkListType: concept
     links:
     - text: サーバーの概念

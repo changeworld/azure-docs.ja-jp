@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8627a8989a4fbd64c66d8af7299baacacee22b56
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92370442"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285050"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM ディザスター リカバリーのネットワークについて
 
@@ -58,6 +58,10 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
 *.automation.ext.azure.com | レプリケートされる項目に対してモビリティ エージェントの自動アップグレードをポータルを介して有効にすることを許可します
 
 ## <a name="outbound-connectivity-using-service-tags"></a>サービスタグを使用した送信接続
+
+URL の制御とは別に、サービス タグを使用して接続を制御することもできます。 これを行うには、まず、Azure 内で[ネットワーク セキュリティ グループ](../virtual-network/network-security-group-how-it-works.md) を作成する必要があります。 作成したら、既存のサービス タグを使用し、Azure Site Recovery サービスへのアクセスを許可する NSG ルールを作成する必要があります。 
+
+サービス タグを使用して接続を制御する利点は、IP アドレスを使用した接続の制御と比べ、特定の IP アドレスに対するハードの依存関係なしで、サービスへの接続を維持できることです。 このようなシナリオでは、いずれかのサービスの IP アドレスが変更されても、お使いのマシンに対して実行中のレプリケーションは影響を受けません。 一方、ハード コーディングされた IP アドレスに対する依存関係があると、レプリケーションの状態がクリティカルになり、システムが危険にさらされます。 さらに、サービス タグを使用すると、ハード コーディングされた IP アドレスより優れたセキュリティ、安定性、回復性が保証されます。
 
 NSG を使用して送信接続を制御すると同時に、次のサービス タグを許可する必要があります。
 

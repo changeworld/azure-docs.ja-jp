@@ -1,6 +1,6 @@
 ---
 title: PostgreSQL データベースから Azure Arc 対応 PostgreSQL Hyperscale サーバー グループにデータを移行する
-titleSuffix: Azure Arc enabled database services
+titleSuffix: Azure Arc-enabled database services
 description: PostgreSQL データベースから Azure Arc 対応 PostgreSQL Hyperscale サーバー グループにデータを移行する
 services: azure-arc
 ms.service: azure-arc
@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: d9cbfc30b10373ad2a4f4304987dac426b5dcabe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec41b338acbf055e8fa499ff6b4e867844b30e4d
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643577"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553059"
 ---
 # <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループに PostgreSQL データベースを移行する
 
@@ -46,6 +46,7 @@ Azure Arc 対応 PostgreSQL Hyperscale サーバー グループは、PostgreSQL
 - ...
 
 ## <a name="example"></a>例
+
 `pgAdmin` ツールを用いたそれらの手順について説明します。
 次のセットアップを検討します。
 - **ソース:**  
@@ -73,13 +74,15 @@ Azure Arc 対応 PostgreSQL Hyperscale サーバー グループは、PostgreSQL
 > [!NOTE]
 > `pgAdmin` ツールで Postgres インスタンスを登録するには、Kubernetes クラスターでのインスタンスのパブリック IP を使用し、ポートとセキュリティ コンテキストを適切に設定する必要があります。 これらの詳細は、次のコマンドを実行して `psql` エンドポイントの行で確認できます。
 
-```console
-azdata arc postgres endpoint list -n postgres01
+```azurecli
+az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> --use-k8s
 ```
 次のような出力が返されます。
 ```console
-[
-  {
+{
+  "instances": [
+    {
+      "endpoints": [
     "Description": "PostgreSQL Instance",
     "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
   },
@@ -91,7 +94,13 @@ azdata arc postgres endpoint list -n postgres01
     "Description": "Metrics Dashboard",
     "Endpoint": "https://12.345.123.456:12345/grafana/d/postgres-metrics?var-Namespace=arc3&var-Name=postgres01"
   }
-]
+],
+"engine": "PostgreSql",
+"name": "postgres01"
+}
+  ],
+  "namespace": "arc"
+}
 ```
 
 移行先データベースに **RESTORED_MyOnPremPostgresDB** という名前を付けます。
@@ -126,12 +135,17 @@ Azure Arc のセットアップでホストされている Postgres インスタ
 
 Arc セットアップ内では、`psql` を使用して Postgres インスタンスに接続し、データベース コンテキストを `RESTORED_MyOnPremPostgresDB` に設定して、データのクエリを実行できます。
 
-1. `psql` の接続文字列から役に立つエンド ポイントの一覧を表示します。
+1. `psql` の接続文字列の形成に役立つエンド ポイントの一覧を表示します。
 
-   ```console
-   azdata arc postgres endpoint list -n postgres01
-   [
-     {
+   ```Az CLI
+   az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> --use-k8s
+   ```
+
+   ```Az CLI
+   {
+     "instances": [
+       {
+         "endpoints": [
        "Description": "PostgreSQL Instance",
        "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
      },
@@ -143,7 +157,13 @@ Arc セットアップ内では、`psql` を使用して Postgres インスタ�
        "Description": "Metrics Dashboard",
        "Endpoint": "https://12.345.123.456:12345/grafana/d/postgres-metrics?var-Namespace=arc3&var-Name=postgres01"
      }
-   ]
+   ],
+   "engine": "PostgreSql",
+   "name": "postgres01"
+   }
+     ],
+     "namespace": "arc"
+   }
    ```
 
 1. `psql` の接続文字列から、`-d` パラメーターを使用してデータベース名を指定します。 次のコマンドでは、パスワードの入力を求められます。
@@ -196,4 +216,4 @@ Arc セットアップ内では、`psql` を使用して Postgres インスタ�
 
 > \* これらのドキュメントで、**Azure portal へのサインイン** および **Azure Database for PostgreSQL - Hyperscale (Citus) の作成** に関するセクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
 
-- [Azure Database for PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-postgresql-hyperscale-server-group.md)
+- [Azure Database for PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-in-postgresql-hyperscale-server-group.md)

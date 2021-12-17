@@ -1,20 +1,26 @@
 ---
 title: Bing Entity Search API を使用したカスタム スキルの例
 titleSuffix: Azure Cognitive Search
+<<<<<<< HEAD
 description: Azure Cognitive Search の AI で強化されたインデックス作成パイプラインにマッピングされたカスタム スキルで、Bing Entity Search サービスを使用する方法を紹介します。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
+=======
+description: Azure コグニティブ検索の AI で強化されたインデックス作成パイプラインにマッピングされたカスタム スキルで、Bing Entity Search サービスを使用する方法を紹介します。
+author: LiamCavanagh
+ms.author: liamca
+>>>>>>> repo_sync_working_branch
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88ea321087cc8745184249d323895a356cd9dbbc
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89020186"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729433"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例: Bing Entity Search API を使用してカスタム スキルを作成する
 
@@ -24,7 +30,7 @@ ms.locfileid: "89020186"
 
 + カスタム スキルで実装する必要がある入出力インターフェイスがよくわからない場合は、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)に関する記事を参照してください。
 
-+ [!INCLUDE [cognitive-services-bing-entity-search-signup-requirements](../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
++ Azure Portal から [Bing Search v7](https://ms.portal.azure.com/#create/Microsoft.BingSearch) リソースを作成します。 この例では、Free レベルを使用して十分です。
 
 + Azure 開発のワークロードを備えた、[Visual Studio 2019](https://www.visualstudio.com/vs/) 以降をインストールします。
 
@@ -36,15 +42,13 @@ ms.locfileid: "89020186"
 
 1. Visual Studio で、 [ファイル] メニューから **[新規]**  >  **[プロジェクト]** の順に選択します。
 
-1. [新しいプロジェクト] ダイアログで、**[インストール済み]** を選択し、**[Visual C#]** > **[クラウド]** の順に展開して **[Azure Functions]** を選択します。プロジェクトの名前を入力して、**[OK]** を選択します。 関数アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
-
-1. **[Azure Functions v2 (.NET Core)]** を選択します。 バージョン 1 でも同様の手順を実行できますが、以下に記述したコードは、v2 テンプレートに基づいています。
+1. [新しいプロジェクト] ダイアログで、テンプレートとして **[Azure Functions]** を選択し、 **[次へ]** を 選択します。 プロジェクトの名前を入力し、 **[作成]** を選択します。 関数アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
 
 1. 種類として **[HTTP Trigger]\(HTTP トリガー\)** を選択します。
 
 1. ストレージ アカウントについては、この関数にはストレージが不要なので、**[なし]** を選択できます。
 
-1. **[OK]** を選択して、関数プロジェクトと、HTTP でトリガーされる関数を作成します。
+1. **[作成]** を選択して、関数プロジェクトと、HTTP でトリガーされる関数を作成します。
 
 ### <a name="modify-the-code-to-call-the-bing-entity-search-service"></a>Bing Entity Search サービスを呼び出すコードを変更する
 
@@ -76,7 +80,7 @@ namespace SampleSkills
     {
         #region Credentials
         // IMPORTANT: Make sure to enter your credential and to verify the API endpoint matches yours.
-        static readonly string bingApiEndpoint = "https://api.cognitive.microsoft.com/bing/v7.0/entities/";
+        static readonly string bingApiEndpoint = "https://api.bing.microsoft.com/v7.0/entities";
         static readonly string key = "<enter your api key here>";  
         #endregion
 
@@ -314,7 +318,7 @@ namespace SampleSkills
 
 Bing Entity Search API にサインアップしたときに取得したキーに基づいて、`key` 定数の独自の *key* 値を確実に入力します。
 
-このサンプルには、便宜上すべての必要なコードが 1 つのファイルに含まれています。 それと同じスキルでもう少し構造化されたバージョンが、[power skills リポジトリ](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)にあります。
+このサンプルには、便宜上すべての必要なコードが 1 つのファイルに含まれています。 それと同じスキルでもう少し構造化されたバージョンが、[power skills リポジトリ](https://github.com/Azure-Samples/azure-search-power-skills/tree/main/Text/BingEntitySearch)にあります。
 
 もちろん、ファイル名を `Function1.cs` から `BingEntitySearch.cs` に変更できます。
 
@@ -447,11 +451,11 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 }
 ```
 
-ここでは、組み込みの[エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)がスキルセットに存在すること、および組織のリストでエンリッチされたドキュメントがあることを想定しています。 参考のため、必要なデータを生成するために十分なエンティティ抽出スキルの構成を示します。
+ここでは、組み込みの[エンティティ認識スキル](cognitive-search-skill-entity-recognition-v3.md)がスキルセットに存在すること、および組織のリストでエンリッチされたドキュメントがあることを想定しています。 参考のため、必要なデータを生成するために十分なエンティティ抽出スキルの構成を示します。
 
 ```json
 {
-    "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+    "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
     "name": "#1",
     "description": "Organization name extraction",
     "context": "/document/merged_content",

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: references_regions
-ms.openlocfilehash: 7b14325ba969ae9d9a886269eee33a3066eb8f12
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a7c94118b1b1a08f4bbd7b58faec6008f9ebc0f8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060450"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002740"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtual WAN パートナーと仮想ハブの場所
 
@@ -21,7 +21,7 @@ ms.locfileid: "106060450"
 
 Azure Virtual WAN は、Azure を介して支店間接続を最適化し、自動化するネットワーク サービスです。 Virtual WAN を使用すると、ブランチ デバイスを接続および構成して Azure と通信できます。 接続と構成は、手動で、または Virtual WAN パートナーを通じてプロバイダー デバイスを使用して行うことができます。 パートナー デバイスを使用すると、使いやすさ、接続の簡素化、および構成管理を実現できます。
 
-オンプレミス デバイスからの接続は、自動化された方法で仮想ハブに向けて確立されます。 仮想ハブは、Microsoft のマネージド仮想ネットワークです。 ハブには、オンプレミス ネットワーク (vpnsite) からの接続を可能にするさまざまなサービス エンドポイントが含まれています。 ハブはリージョンごとに 1 つしか存在できません。
+オンプレミス デバイスからの接続は、自動化された方法で仮想ハブに向けて確立されます。 仮想ハブは、Microsoft のマネージド仮想ネットワークです。 ハブには、オンプレミス ネットワーク (vpnsite) からの接続を可能にするさまざまなサービス エンドポイントが含まれています。 
 
 ## <a name="branch-ipsec-connectivity-automation-from-partners"></a><a name="automation"></a>パートナーからのブランチ IPsec 接続の自動化
 
@@ -60,10 +60,10 @@ Azure Virtual WAN に接続するデバイスには、接続の自動化が組�
 |パートナー|構成/方法/デプロイ ガイド|
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barracuda CloudGen WAN デプロイ ガイド](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
-|[Cisco Cloud Service Router (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco Cloud Services (CSR) WAN を VWAN ハブに導入するパブリック プレビューの間、Cisco により、vwan_public_preview@external.cisco.com にメールを送り、vManage Deployment Guide をリクエストして Cisco EFT (Early Field Trial) 顧客として登録することがエンド カスタマーに求められます。 
-|[Virtual WAN ハブ内の VMware SD-WAN](https://sdwan.vmware.com/partners/microsoft) | VWAN ハブ内の VMware SD-WAN のパブリックプレビュー中、顧客は vhubsupport@vmware.com に電子メールを送信して VMware に登録する必要があります。 [Virtual WAN ハブ内の VMware SD-WAN デプロイ ガイド](https://kb.vmware.com/s/article/82746)|
+|[Cisco Cloud Service Router (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco SD-WAN ソリューションと Azure 仮想 WAN の統合により、Cloud OnRamp のマルチクラウド デプロイが強化され、Azure Virtual WAN ハブでネットワーク仮想アプライアンス (NVA) として Cisco Catalyst 8000V Edge ソフトウェア (Cisco Catalyst 8000V) を構成できます。 [Cisco SD-WAN Cloud OnRamp、Cisco IOS XE リリース 17.x 構成ガイドをご覧ください](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) 
+|[Virtual WAN ハブ内の VMware SD-WAN](https://sdwan.vmware.com/partners/microsoft) | 仮想 WAN ハブで VMware SD-WAN アプライアンスを表示する手順については、[Virtual WAN ハブ内の VMware SD-WAN デプロイ ガイド](https://kb.vmware.com/s/article/82746)を参照してください。 デプロイするには、[ここで](https://azuremarketplace.microsoft.com/marketplace/apps/velocloud.vmware_sdwan_in_vwan)マネージド アプリケーションにアクセスしてください|
 
-Aviatrix、Citrix、Versa Networks の各パートナーは、近い将来、仮想ハブ サービスで NVA を提供する予定です。
+Aviatrix、Citrix、Versa Networks、Silver Peak の各パートナーは、近い将来、仮想ハブ サービスでネットワーク仮想アプライアンスを提供する予定です。
 
 ## <a name="locations"></a><a name="locations"></a>場所
 

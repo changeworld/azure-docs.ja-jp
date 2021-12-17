@@ -7,40 +7,48 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 07/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4ed9b5a7d33433a14bb7e6800ac54326184a808
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100097638"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347087"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Azure Cognitive Search のセキュリティの概要
 
-この記事では、コンテンツと運用を保護する Azure Cognitive Search のセキュリティ機能について説明します。
+この記事では、データと操作を保護する Azure Cognitive Search のセキュリティ機能について説明します。
 
-Search サービスに対して行われる受信要求については、検索サービス エンドポイントを保護するためのセキュリティ対策の進化があります。これは、要求の API キーからファイアウォールの受信ルールまでの、パブリック インターネットからサービスを完全に保護するプライベート エンドポイントへの移行です。
+## <a name="network-traffic-patterns"></a>ネットワーク トラフィック パターン
 
-他のサービスに対して行われた送信要求については、外部ソースからコンテンツを読み取るインデクサーによって主要な要求が行われます。 接続文字列で資格情報を提供できます。 または、Azure Storage、Azure SQL、Cosmos DB、またはその他の Azure データ ソースからのデータにアクセスするときに、信頼されたサービスを検索するために、マネージド ID を設定できます。 マネージド ID は、接続の資格情報またはアクセス キーの代わりに使用されます。 この機能の詳細については、[マネージド ID を使用したデータ ソースへの接続](search-howto-managed-identities-data-sources.md)に関するページを参照してください。
+検索サービスは Azure でホストされており、通常はパブリック ネットワーク接続を介してアクセスされます。 サービスのアクセス パターンを理解しておくと、検索可能なコンテンツに対する不正なアクセスを効果的に排除するセキュリティ戦略を設計するのに役立ちます。
 
-外部サービスへの書き込み操作はほとんどありません。検索サービスはログ ファイルに書き込み、ナレッジ ストアの作成時、キャッシュされたエンリッチメントの保持時、デバッグセッションの保持時に Azure Storage に書き込みます。 その他のサービス間の呼び出し (Azure Cognitive Services など) は、内部ネットワーク上で行われます。
+Cognitive Search には、3 つの基本的なネットワーク トラフィック パターンがあります。
 
-セキュリティ アーキテクチャと各機能カテゴリの概要については、こちらのビデオをご覧ください。
++ クライアントによって行われる、検索サービスへのインバウンド要求 (主要なパターン)
++ 検索サービスによって発行される、Azure やそれ以外の場所の他のサービスへのアウトバウンド要求
++ セキュリティ保護された Microsoft バックボーン ネットワークを介して行われる内部サービス間の要求
 
-> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
+インバウンド要求の範囲は、オブジェクトの作成、データの読み込み、クエリなどです。 データと操作へのインバウンド アクセスについては、要求への API キーから始まって、進歩するセキュリティ手段を実装できます。 その後、IP ファイアウォールでのインバウンド規則で補完したり、パブリック インターネットからサービスを完全に遮断するプライベート エンドポイントを作成したりできます。
+
+アウトバウンド要求には、読み取り操作と書き込み操作の両方を含めることができます。 アウトバウンド呼び出しの主要なエージェントは、インデクサーと構成スキルセットです。 インデクサーの場合、読み取り操作には[ドキュメント解析](search-indexer-overview.md#document-cracking)とデータ インジェストが含まれます。 インデクサーでは、ナレッジ ストアを作成するとき、キャッシュされたエンリッチメントを永続化するとき、デバッグ セッションを永続化するときに、Azure Storage に書き込むこともできます。 最後に、スキルセットには、Azure Functions や Web アプリなどの外部コードを実行するカスタム スキルを含めることもできます。
+
+内部要求には、診断ログ、暗号化、Azure Active Directory による認証と認可、プライベート エンドポイント接続、組み込みスキルのために Cognitive Services に対して行われる要求などのタスクに関する、サービス間の呼び出しが含まれます。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
 <a name="service-access-and-authentication"></a>
 
-受信セキュリティ機能では、高度化するセキュリティと複雑さによって検索サービス エンドポイントが保護されます。 まず、すべての要求に認証済みアクセスの API キーが必要です。 次に、必要に応じて、特定の IP アドレスへのアクセスを制限するファイアウォール規則を設定できます。 高度な保護では、3 つ目のオプションとして、Azure プライベート リンクを有効にして、すべてのインターネット トラフィックからサービス エンドポイントを保護します。
+受信セキュリティ機能では、高度化するセキュリティと複雑さによって検索サービス エンドポイントが保護されます。 Cognitive Search で使用される[キー ベースの認証](search-security-api-keys.md)では、すべての要求に認証されたアクセスのための API キーが必要です。
 
-### <a name="public-access-using-api-keys"></a>API キーを使用したパブリック アクセス
+必要に応じて、特定の IP アドレスへのアクセスを制限するファイアウォール規則を設定することにより、追加のコントロール レイヤーを実装できます。 高度な保護のためには、Azure Private Link を有効にして、すべてのインターネット トラフィックからサービス エンドポイントを保護できます。
 
-既定で検索サービスは、検索サービス エンドポイントへの管理者アクセスまたはクエリ アクセス用のキーベースの認証を使用して、パブリック クラウドを介してアクセスされます。 有効なキーの送信は、要求が信頼されたエンティティのものであることの証明と見なされます。 キーベースの認証については、次のセクションで説明します。
+### <a name="connect-over-the-public-internet"></a>パブリック インターネット経由で接続する
 
-### <a name="configure-ip-firewalls"></a>IP ファイアウォールの構成
+検索サービス エンドポイントへは、既定では、検索サービス エンドポイントへの管理者アクセスまたはクエリ アクセス用のキー ベースの認証を使用して、パブリック クラウド経由でアクセスされます。 キーが必要です。 有効なキーの送信は、要求が信頼されたエンティティのものであることの証明と見なされます。 キーベースの認証については、次のセクションで説明します。 API キーがないと、要求に対して 401 と 404 の応答が返されます。
+
+### <a name="connect-through-ip-firewalls"></a>IP ファイアウォールを通して接続する
 
 検索サービスへのアクセスをさらに制御するために、特定の IP アドレスまたは IP アドレス範囲へのアクセスを許可する受信ファイアウォール規則を作成できます。 すべてのクライアント接続は、許可された IP アドレスを使用して行う必要があります。それ以外の場合、接続は拒否されます。
 
@@ -48,9 +56,9 @@ Search サービスに対して行われる受信要求については、検索�
 
 [受信アクセスを構成](service-configure-firewall.md)するには、ポータルを使用します。
 
-または、管理 REST API を使用します。 API バージョン 2020-03-13 以降では、[IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) パラメーターを指定することで、検索サービスへのアクセスを付与する IP アドレスを個別に、あるいは範囲で特定することで、サービスへのアクセスを制限できます。
+または、管理 REST API を使用します。 API バージョン 2020-03-13 以降では、[IpRule](/rest/api/searchmanagement/2020-08-01/services/create-or-update#iprule) パラメーターを指定することで、検索サービスへのアクセスを付与する IP アドレスを個別に、あるいは範囲で特定することで、サービスへのアクセスを制限できます。
 
-### <a name="network-isolation-through-a-private-endpoint-no-internet-traffic"></a>プライベート エンドポイント経由のネットワーク分離 (インターネット トラフィックなし)
+### <a name="connect-to-a-private-endpoint-network-isolation-no-internet-traffic"></a>プライベート エンドポイントに接続する (ネットワークの分離、インターネット トラフィックなし)
 
 Azure Cognitive Search の[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を確立し、[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできます。
 
@@ -60,9 +68,19 @@ Azure Cognitive Search の[プライベート エンドポイント](../private-
 
 このソリューションは最も安全ですが、追加のサービスを使用すると、追加のコストがかかります。そのため、使用の前に利点の詳細を明確に理解しておく必要があります。 コストの詳細については、[価格](https://azure.microsoft.com/pricing/details/private-link/)に関するページを参照してください。 これらのコンポーネントを連携させる方法の詳細については、この記事の上部にあるビデオをご覧ください。 プライベート エンドポイント オプションの説明は、ビデオの 5:48 から始まります。 エンドポイントを設定する方法については、[Azure Cognitive Search でのプライベート エンドポイントの作成](service-create-private-endpoint.md)に関するページを参照してください。
 
+### <a name="outbound-connections-to-external-services"></a>外部サービスへのアウトバウンド接続
+
+インデクサーとスキルセットはどちらも、外部接続を行うことができるオブジェクトです。 いずれかのメカニズムを使用して、オブジェクト定義の一部として接続情報を指定します。
+
++ 接続文字列内の資格情報
+
++ 接続文字列内のマネージド ID
+
+  Azure Storage、Azure SQL、Cosmos DB、またはその他の Azure データ ソースのデータにアクセスするときに、信頼されたサービスの検索を行うためのマネージド ID を設定できます。 マネージド ID は、接続の資格情報またはアクセス キーの代わりに使用されます。 この機能の詳細については、[マネージド ID を使用したデータ ソースへの接続](search-howto-managed-identities-data-sources.md)に関するページを参照してください。
+
 ## <a name="authentication"></a>認証
 
-Search サービスへの受信要求の場合、認証は[必須の API キー](search-security-api-keys.md) (ランダムに生成された数字と文字で構成される文字列) を介して、要求が信頼できるソースからのものであることを証明します。 Azure Cognitive Search は、現在、受信要求の Azure Active Directory 認証をサポートしていません。
+検索サービスへのインバウンド要求の場合の認証は、要求が信頼できるソースからのものであることを証明する [API キー](search-security-api-keys.md) (ランダムに生成された数字と文字で構成される文字列) を介して行われます。 または、Azure Active Directory 認証とロールベースの認可が新しくサポートされています ([現在はプレビュー段階](search-security-rbac.md))。
 
 インデクサーによって行われた送信要求は、外部サービスによる認証の対象となります。 Azure Cognitive Search のインデクサー サブサービスは、マネージド ID を使用して他のサービスに接続する、Azure 上の信頼されたサービスにできます。 詳細については、「[マネージド ID を使用してデータ ソースへのインデクサー接続を設定する](search-howto-managed-identities-data-sources.md)」を参照してください。
 
@@ -80,13 +98,16 @@ Azure Cognitive Search には、コンテンツ管理とサービス管理のた
 
 アプリケーション コードでは、コンテンツとオプションへのアクセスを許可するエンドポイントと API キーを指定します。 エンドポイントはサービス自体、インデックス コレクション、特定のインデックス、ドキュメント コレクション、特定のドキュメントなどである場合があります。 エンドポイント、操作 (作成要求または更新要求など) とアクセス許可レベル (キーに基づく完全または読み取り専用の権限) が組み合わさることで、コンテンツと操作を保護するセキュリティ保護方法が構成されます。
 
+> [!NOTE]
+> Azure のロールベースのアクセス制御 (RBAC) を使用したデータ プレーン操作の認可は、現在プレビューの段階にあります。 [API キーの代わりにロールの割り当てを使用](search-security-rbac.md)したい場合は、このプレビュー機能を使用できます。
+
 ### <a name="controlling-access-to-indexes"></a>インデックスへのアクセスの制御
 
 Azure Cognitive Search では、個別のインデックスはセキュリティ保護可能なオブジェクトでありません。 その代わり、インデックスへのアクセスは操作のコンテキストと共にサービス層 (提供する API キーに基づく読み取りまたは書き込みアクセス) で決定されます。
 
-読み取り専用アクセスの場合は、クエリ要求を構造化して、[クエリ キー](search-security-rbac.md)を使用して接続し、アプリで使用される特定のインデックスを含めることができます。 クエリ要求では、インデックスの結合または複数のインデックスへの同時アクセスといった概念がないので、当然すべての要求のターゲットは単一のインデックスです。 そのため、クエリ要求自体 (キーと単一のターゲット インデックス) の構築でセキュリティ境界を定義します。
+読み取り専用アクセスの場合は、クエリ要求を構造化して、[クエリ キー](search-security-api-keys.md)を使用して接続し、アプリで使用される特定のインデックスを含めることができます。 クエリ要求では、インデックスの結合または複数のインデックスへの同時アクセスといった概念がないので、当然すべての要求のターゲットは単一のインデックスです。 そのため、クエリ要求自体 (キーと単一のターゲット インデックス) の構築でセキュリティ境界を定義します。
 
-インデックスに対する管理者と開発者のアクセスは区別されていません。サービスによって管理されているオブジェクトの作成、削除、更新を行うには、どちらも書き込みアクセスが必要です。 サービスに対する[管理者キー](search-security-rbac.md)を持っている人はだれでも、そのサービスのインデックスの読み取り、変更、削除を行えます。 インデックスが誤って削除されたり、悪意によって削除されたりすることを防止するうえで、コード資産の社内ソース管理は、望ましくないインデックスの削除または変更を修復する対応策になります。 Azure Cognitive Search は可用性を確保するためにクラスター内のフェールオーバーを備えていますが、インデックスの作成または読み込みに使用される専用コードを格納したり実行したりしません。
+インデックスに対する管理者と開発者のアクセスは区別されていません。サービスによって管理されているオブジェクトの作成、削除、更新を行うには、どちらも書き込みアクセスが必要です。 サービスに対する[管理者キー](search-security-api-keys.md)を持っている人はだれでも、そのサービスのインデックスの読み取り、変更、削除を行えます。 インデックスが誤って削除されたり、悪意によって削除されたりすることを防止するうえで、コード資産の社内ソース管理は、望ましくないインデックスの削除または変更を修復する対応策になります。 Azure Cognitive Search は可用性を確保するためにクラスター内のフェールオーバーを備えていますが、インデックスの作成または読み込みに使用される専用コードを格納したり実行したりしません。
 
 インデックス レベルでセキュリティ境界が必要なマルチテナントのソリューションでは、通常、そのソリューションに顧客がインデックス分離を処理するための中間層が含まれています。 マルチテナントのユース ケースの詳細については、[マルチテナント SaaS アプリケーションと Azure Cognitive Search の設計パターン](search-modeling-multitenant-saas-applications.md)に関する記事を参照してください。
 
@@ -103,13 +124,13 @@ Azure Cognitive Search では、個別のインデックスはセキュリティ
 |[ID フィルターに基づいたセキュリティによるトリミング](search-security-trimming-for-azure-search.md)  | ユーザー ID アクセス制御を実装する基本的なワークフローについて記載しています。 また、インデックスへのセキュリティ ID の追加について取り上げているほか、そのフィールドに対してフィルター処理を行い、禁止されているコンテンツの結果をトリミングする方法について説明しています。 |
 |[Azure Active Directory ID に基づいたセキュリティによるトリミング](search-security-trimming-for-azure-search-with-aad.md)  | この記事は前の記事を拡張したものであり、Azure クラウド プラットフォームの[無料サービス](https://azure.microsoft.com/free/)の 1 つである Azure Active Directory (Azure AD) から ID を取得する手順について説明しています。 |
 
-### <a name="authorization-for-service-management"></a>サービス管理の承認
+### <a name="authorization-for-service-management"></a>サービス管理の認可
 
 サービス管理操作は、[Azure のロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) によって承認されます。 Azure RBAC は、Azure リソースをプロビジョニングするために [Azure Resource Manager](../azure-resource-manager/management/overview.md) 上に構築された承認システムです。 
 
-Azure Cognitive Search では、Resource Manager を使用して、サービスの作成または削除、API キーの管理、サービスのスケーリングが行われます。 そのため、[ポータル](search-manage.md)、[PowerShell](search-manage-powershell.md)、[管理 REST API](/rest/api/searchmanagement/search-howto-management-rest-api) のどれを使用しているかにかかわらず、Azure で割り当てられているロールによって、これらのタスクを実行できるユーザーが決定されます。
+Azure Cognitive Search では、Resource Manager を使用して、サービスの作成または削除、API キーの管理、サービスのスケーリングが行われます。 そのため、[ポータル](search-manage.md)、[PowerShell](search-manage-powershell.md)、[管理 REST API](/rest/api/searchmanagement) のどれを使用しているかにかかわらず、Azure で割り当てられているロールによって、これらのタスクを実行できるユーザーが決定されます。
 
-検索サービスの管理には、[3 つの基本的なロール](search-security-rbac.md#management-tasks-by-role)が定義されます。 ロールの割り当ては、サポートされている任意の方法 (ポータル、PowerShell など) を使用して行うことができ、サービス全体に適用されます。 所有者ロールと共同作成者ロールは、さまざまな管理機能を実行できます。 重要な情報のみを表示するユーザーに閲覧者ロールを割り当てることができます。
+検索サービスの管理には、[3 つの基本的なロール](search-security-rbac.md)が定義されます。 ロールの割り当ては、サポートされている任意の方法 (ポータル、PowerShell など) を使用して行うことができ、サービス全体に適用されます。 所有者ロールと共同作成者ロールは、さまざまな管理機能を実行できます。 重要な情報のみを表示するユーザーに閲覧者ロールを割り当てることができます。
 
 > [!Note]
 > Azure 全体のメカニズムを使用して、サブスクリプションまたはリソースをロックし、管理者権限を持つユーザーが検索サービスを誤って、または許可なく削除しないようにすることができます。 詳細については、[リソースのロックによる予期せぬ削除の防止](../azure-resource-manager/management/lock-resources.md)に関するページを参照してください。
@@ -146,15 +167,7 @@ Azure Cognitive Search での暗号化は、接続時および転送時に開始
 
 ### <a name="double-encryption"></a>二重暗号化
 
-Azure Cognitive Search における二重暗号化は、CMK の拡張機能です。 これは、(1 回目は CMK、次はサービス マネージド キーによって) 二重に暗号化される、データ ディスクに書き込まれる長期的な保存と一時ディスクに書き込まれる短期的な保存におよぶ、広範囲にわたる暗号化です。 2020 年 8 月 1 日より前と後の CMK では、さらに一時ディスクに保存されているデータも暗号化されるようになったことが異なり、これが Azure Cognitive Search の二重暗号化機能となっています。
-
-二重暗号化は、8 月 1 日より後に作成された、次のリージョンの新しいサービスで使用できます。
-
-+ 米国西部 2
-+ 米国東部
-+ 米国中南部
-+ US Gov バージニア州
-+ US Gov アリゾナ
+Azure Cognitive Search における二重暗号化は、CMK の拡張機能です。 これは、(1 回目は CMK、次はサービス マネージド キーによって) 二重に暗号化される、データ ディスクに書き込まれる長期的な保存と一時ディスクに書き込まれる短期的な保存におよぶ、広範囲にわたる暗号化です。 二重暗号化は、特定の日付より後に作成されたサービスに実装されます。 詳細については、「[Double encryption](search-security-manage-encryption-keys.md#double-encryption) (二重暗号化)」を参照してください。
 
 ## <a name="security-management"></a>セキュリティ管理
 
@@ -178,8 +191,14 @@ Azure Policy は、Azure セキュリティ ベンチマークの標準を含む
 
 Azure Cognitive Search には、現在 1 つの定義が組み込まれています。 それは診断ログ用です。 これの組み込みにより、診断ログが欠落している検索サービスを識別するポリシーを割り当てて、有効にすることができます。 詳細については、「[Azure Cognitive Search 用の Azure Policy 規制コンプライアンス コントロール](security-controls-policy.md)」を参照してください。
 
+## <a name="watch-this-video"></a>次の動画をご覧ください
+
+セキュリティ アーキテクチャと各機能カテゴリの概要については、こちらのビデオをご覧ください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
+
 ## <a name="see-also"></a>関連項目
 
 + [Azure セキュリティの基礎](../security/fundamentals/index.yml)
 + [Azure Security](https://azure.microsoft.com/overview/security)
-+ [Azure Security Center](../security-center/index.yml)
++ [Microsoft Defender for Cloud](../security-center/index.yml)

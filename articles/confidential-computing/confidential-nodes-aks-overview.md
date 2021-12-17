@@ -6,14 +6,15 @@ author: agowdamsft
 ms.service: container-service
 ms.subservice: confidential-computing
 ms.topic: overview
-ms.date: 2/08/2021
+ms.date: 11/04/2021
 ms.author: amgowda
-ms.openlocfilehash: 203185d9f6def2204906b8722f1969b14eee8787
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f2a0a6452b978b6924574f1499916a0781413a24
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933153"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290231"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service"></a>Azure Kubernetes Service 上のコンフィデンシャル コンピューティング ノード
 
@@ -23,7 +24,7 @@ ms.locfileid: "105933153"
 
 Azure Kubernetes Service (AKS) は、Intel SGX を基盤とする [DCsv2 コンフィデンシャル コンピューティング ノード](confidential-computing-enclaves.md)の追加をサポートします。 これらのノードにより、ハードウェアベースの信頼できる実行環境 (TEE: Trusted Execution Environment ) 内で機密のワークロードを実行できます。 TEE では、コンテナーのユーザーレベルのコードでメモリのプライベート領域を割り当てて、CPU でコードを直接実行できます。 CPU で直接実行されるこれらのプライベート メモリ領域は、エンクレーブと呼ばれます。 エンクレーブは、同じノードで実行されている他のプロセスから、データの機密性、データの整合性、およびコードの整合性を保護するのに役立ちます。 Intel SGX 実行モデルでは、ゲスト OS、ホスト OS、ハイパーバイザーの中間層も削除されるため、攻撃対象領域が小さくなります。 ノード内の "*ハードウェア ベースのコンテナーごとに分離された実行*" モデルによって、コンテナーごとに特殊なメモリ ブロックを暗号化したまま、アプリケーションを CPU で直接実行することができます。 機密コンテナーを使用したコンフィデンシャル コンピューティング ノードは、ゼロ トラスト セキュリティ計画と多層防御コンテナー戦略に対する優れた追加機能です。
 
-![SGX ノードの概要](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
+:::image type="content" source="./media/confidential-nodes-aks-overview/sgx-aks-node.png" alt-text="コードとデータが内部でセキュリティ保護された機密コンテナーを示す、AKS コンフィデンシャル コンピューティング ノードの図。":::
 
 ## <a name="aks-confidential-nodes-features"></a>AKS の機密ノードの機能
 
@@ -39,7 +40,7 @@ Azure Kubernetes Service (AKS) は、Intel SGX を基盤とする [DCsv2 コン�
 
 #### <a name="azure-device-plugin-for-intel-sgx"></a>Intel SGX 用 Azure デバイス プラグイン<a id="sgx-plugin"></a>
 
-デバイス プラグインは、暗号化されたページ キャッシュ (EPC) メモリ用の Kubernetes デバイス プラグイン インターフェイスを実装し、ノードからデバイス ドライバーを公開します。 EPC メモリは、実質上、このプラグインによって、Kubernetes におけるもう 1 つのリソース タイプとなります。 ユーザーは、他のリソースと同様、このリソースに対する制限を指定できます。 このデバイス プラグインは、スケジューリング機能以外に、機密ワークロード コンテナーへのアクセス許可を Intel SGX デバイス ドライバーに割り当てるのに役立ちます。 開発者は、このプラグインを使用して、デプロイ ファイル内の Intel SGX ドライバー ボリュームがマウントされないようにすることができます。 EPC メモリベース デプロイの実装サンプル (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) は、[こちら](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml)でご覧いただけます。
+デバイス プラグインは、暗号化されたページ キャッシュ (EPC) メモリ用の Kubernetes デバイス プラグイン インターフェイスを実装し、ノードからデバイス ドライバーを公開します。 このプラグインによって EPC メモリは実質的に、Kubernetes におけるもう 1 つのリソース タイプとなります。 ユーザーは、他のリソースと同様、このリソースに対する制限を指定できます。 このデバイス プラグインは、スケジューリング機能以外に、機密ワークロード コンテナーへのアクセス許可を Intel SGX デバイス ドライバーに割り当てるのに役立ちます。 開発者は、このプラグインを使用して、デプロイ ファイル内の Intel SGX ドライバー ボリュームがマウントされないようにすることができます。 EPC メモリベース デプロイの実装サンプル (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) は、[こちら](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml)でご覧いただけます。
 
 
 ## <a name="programming-models"></a>プログラミング モデル
@@ -53,11 +54,13 @@ AKS 上のコンフィデンシャル コンピューティング ノードで�
 
 ## <a name="next-steps"></a>次の手順
 
-[コンフィデンシャル コンピューティング ノードを使用して AKS クラスターをデプロイする](./confidential-nodes-aks-get-started.md)
+[コンフィデンシャル コンピューティング ノードを使用して AKS クラスターをデプロイする](./confidential-enclave-nodes-aks-get-started.md)
 
 [機密コンテナーのクイック スタート サンプル](https://github.com/Azure-Samples/confidential-container-samples)
 
-[DCsv2 SKU リスト](../virtual-machines/dcv2-series.md)
+[Intel SGX Confidential VM の - DCsv2 SKU リスト](../virtual-machines/dcv2-series.md)
+
+[Intel SGX Confidential VM の - DCsv3 SKU リスト](../virtual-machines/dcv3-series.md)
 
 [機密コンテナーを使用した多層防御に関するウェビナー セッション](https://www.youtube.com/watch?reload=9&v=FYZxtHI_Or0&feature=youtu.be)
 
@@ -66,4 +69,4 @@ AKS 上のコンフィデンシャル コンピューティング ノードで�
 
 
 <!-- LINKS - internal -->
-[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions
+[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions-sgx.md

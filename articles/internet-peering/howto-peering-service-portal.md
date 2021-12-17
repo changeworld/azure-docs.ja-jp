@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.author: derekol
-ms.openlocfilehash: a52e6038b622c004dc0d133394cd4f53600b2935
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29bf044648c2df44863b308105a762b086bbf6dd
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84700044"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113688237"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-the-azure-portal"></a>Azure portal を使用して Direct ピアリングで Azure Peering Service を有効にする
 
@@ -48,4 +48,4 @@ ms.locfileid: "84700044"
 
 ## <a name="additional-resources"></a>その他のリソース
 
-よく寄せられる質問については、「[Peering Service のよくあるご質問](service-faqs.md)」を参照してください。
+よく寄せられる質問については、「[Peering Service のよくあるご質問](service-faqs.yml)」を参照してください。

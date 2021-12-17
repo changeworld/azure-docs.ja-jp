@@ -3,20 +3,20 @@ title: テンポラル テーブルで履歴データを管理する
 description: 一時的なリテンション ポリシーを使用して、履歴データを管理する方法について説明します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: development
+ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: bonova
-ms.author: bonova
-ms.reviewer: sstein
-ms.date: 09/25/2018
-ms.openlocfilehash: 1d68163a9fba3ba3bcd4c0c0f3fb5f442296e781
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: MladjoA
+ms.author: mlandzic
+ms.reviewer: mathoma
+ms.date: 10/18/2021
+ms.openlocfilehash: d3cf9b884dd1d2610aabe0aa0869ab8ad528da01
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91619391"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216234"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>アイテム保持ポリシーを使用してテンポラル テーブルで履歴データを管理する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,7 +45,7 @@ FROM sys.databases
 データベースのフラグ **is_temporal_history_retention_enabled** は既定で ON に設定されていますが、ユーザーは ALTER DATABASE ステートメントでそれを変更できます。 また、[ポイントインタイム リストア](recovery-using-backups.md) 操作後は、自動的にオフに設定されます。 データベースのテンポラル履歴保有期間のクリーンアップを有効にするには、次のステートメントを実行します。
 
 ```sql
-ALTER DATABASE <myDB>
+ALTER DATABASE [<myDB>]
 SET TEMPORAL_HISTORY_RETENTION  ON
 ```
 
@@ -175,14 +175,12 @@ SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 テンポラル リテンション期間のクリーンアップを有効にする場合は、ポイントインタイム リストアの後に次の Transact-SQL ステートメントを実行します。
 
 ```sql
-ALTER DATABASE <myDB>
+ALTER DATABASE [<myDB>]
 SET TEMPORAL_HISTORY_RETENTION  ON
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
 アプリケーションでテンポラル テーブルを使用する方法については、[テンポラル テーブルの概要](../temporal-tables.md)に関するページを参照してください。
-
-Channel 9 にアクセスして、[テンポラル テーブル導入による成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。
 
 テンポラル テーブルの詳細については、「[テンポラル テーブル](/sql/relational-databases/tables/temporal-tables)」を参照してください。

@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e8bdb843ab6304f2f38228f37d8709e4084ee52e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8690f69bace02e73f144b563a5541073cb976f22
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775333"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770610"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital Twins を Azure SignalR Service と統合する
 
@@ -24,33 +24,33 @@ ms.locfileid: "107775333"
 
 操作を続行する前に完了しておく前提条件を次に示します。
 
-* この記事でソリューションを Azure SignalR Service と統合する前に、Azure Digital Twins の「[_**チュートリアル: エンド ツー エンドのソリューションを接続する**_](tutorial-end-to-end.md)」を完了する必要があります。それに基づいてこの操作方法の記事が作成されているからです。 そのチュートリアルでは、仮想 IoT デバイスで動作してデジタル ツインの更新をトリガーする Azure Digital Twins インスタンスを設定する手順が示されています。 この操作方法の記事では、Azure SignalR Service を使用してそれらの更新プログラムをサンプル Web アプリに接続します。
+* この記事でソリューションを Azure SignalR Service と統合する前に、Azure Digital Twins の[エンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するチュートリアルを完了する必要があります。それに基づいてこの操作方法の記事が作成されているからです。 そのチュートリアルでは、仮想 IoT デバイスで動作してデジタル ツインの更新をトリガーする Azure Digital Twins インスタンスを設定する手順が示されています。 この操作方法の記事では、Azure SignalR Service を使用してそれらの更新プログラムをサンプル Web アプリに接続します。
 
 * そのチュートリアルから次の値が必要になります。
   - Event Grid トピック
   - Resource group
   - App Service/関数アプリの名前
     
-* お使いのコンピューターに [**Node.js**](https://nodejs.org/) がインストールされている必要があります。
+* お使いのコンピューターに [Node.js](https://nodejs.org/) がインストールされている必要があります。
 
-[Azure portal](https://portal.azure.com/) に移動し、Azure アカウントでサインインすることも必要です。
+このガイドで使用する必要があるため、自分の Azure アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインしてください。
 
 ## <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 
-以下のパスを使用して、Azure SignalR Service を Azure Digital Twins に接続します。 図の A、B、C の各セクションは、[エンド ツー エンドのチュートリアルの事前準備](tutorial-end-to-end.md)のアーキテクチャ図から引用したものです。 この操作方法の記事では、既存のアーキテクチャに基づいてセクション D を作成します。
+以下のパスを使用して、Azure SignalR Service を Azure Digital Twins に接続します。 図の A、B、C の各セクションは、[エンド ツー エンドのチュートリアルの事前準備](tutorial-end-to-end.md)のアーキテクチャ図から引用したものです。 この操作方法に関する記事では、SignalR およびクライアント アプリと通信する 2 つの新しい Azure 関数を含む既存のアーキテクチャにセクション D を作成します。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-integration-topology.png" alt-text="エンド ツー エンドのシナリオにおける Azure サービスのビュー。データがデバイスから IoT Hub へと流れ、Azure 関数を経て (矢印 B) Azure Digital Twins インスタンス (セクション A) に到達した後、Event Grid を介して別の Azure 関数に到達して処理 (矢印 C) される様子を表しています。セクション D は、矢印 C にある同じ Event Grid から &quot;broadcast&quot; というラベルの付いた Azure 関数へのデータ フローを示しています。&quot;broadcast&quot; は &quot;negotiate&quot; というラベルの付いた別の Azure 関数と通信し、&quot;broadcast&quot; と &quot;negotiate&quot; はどちらもコンピューター機器と通信します。" lightbox="media/how-to-integrate-azure-signalr/signalr-integration-topology.png":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-integration-topology.png" alt-text="Azure Digital Twins との間でやり取りされるデータを示すエンドツーエンド シナリオでの Azure サービスの図。" lightbox="media/how-to-integrate-azure-signalr/signalr-integration-topology.png":::
 
 ## <a name="download-the-sample-applications"></a>サンプル アプリケーションのダウンロード
 
-最初に、必要なサンプル アプリをダウンロードします。 次の両方が必要になります。
-* [**Azure Digital Twins のエンドツーエンド サンプル**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): このサンプルには、Azure Digital Twins インスタンスにデータを移動するための 2 つの Azure 関数を保持する *AdtSampleApp* が含まれています (このシナリオの詳細については、「[*チュートリアル:エンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)」に関するページを参照)。 また、IoT デバイスをシミュレートし、1 秒ごとに新しい温度値を生成する *DeviceSimulator* サンプル アプリケーションも含まれています。
-    - 「[*前提条件*](#prerequisites)」にあるチュートリアルの一部としてサンプルをまだダウンロードしていない場合は、サンプルの [リンク](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)に移動し、タイトルの下にある *[コードの参照]* ボタンを選択してください。 これにより、サンプル用の GitHub リポジトリに移動します。 *[Code]\(コード\)* ボタンと、 *[Download ZIP]\(ZIP のダウンロード\)* を選択することによって、 *.ZIP* 形式でこれをダウンロードできます。
+最初に、必要なサンプル アプリをダウンロードします。 次の両方のサンプルが必要です。
+* [Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): このサンプルには、Azure Digital Twins インスタンス内でデータを移動するための 2 つの Azure 関数を保持する *AdtSampleApp* が含まれています (このシナリオの詳細については、[エンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するチュートリアルで学習できます)。 また、IoT デバイスをシミュレートし、1 秒ごとに新しい温度値を生成する *DeviceSimulator* サンプル アプリケーションも含まれています。
+    - 「[前提条件](#prerequisites)」にあるチュートリアルの一部としてサンプルをまだダウンロードしていない場合は、[サンプルにアクセス](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)し、タイトルの下にある *[コードの参照]* ボタンを選択してください。 これにより、サンプル用の GitHub リポジトリに移動します。 *[Code]\(コード\)* ボタンと、 *[Download ZIP]\(ZIP のダウンロード\)* を選択することによって、.zip 形式でこれをダウンロードできます。
 
-        :::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub の digital-twins-samples リポジトリの図。[Code]\(コード\) ボタンが選択されて、小さなダイアログ ボックスが生成されます。ここでは、[Download ZIP]\(ZIP のダウンロード\) ボタンが強調表示されています。" lightbox="media/includes/download-repo-zip.png":::
+        :::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub のデジタル ツインのサンプル リポジトリと、それを zip としてダウンロードする手順を示すスクリーンショット。" lightbox="media/includes/download-repo-zip.png":::
 
-    これにより、お使いのマシンにサンプル リポジトリのコピーが **digital-twins-samples-master.zip** としてダウンロードされます。 フォルダーを解凍します。
-* [**SignalR 統合 Web アプリのサンプル**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/):これは、Azure SignalR Service からの Azure Digital Twins テレメトリ データを使用する React の Web アプリのサンプルです。
+    このボタンにより、お使いのマシンにサンプル リポジトリのコピーが **digital-twins-samples-master.zip** としてダウンロードされます。 フォルダーを解凍します。
+* [SignalR 統合 Web アプリのサンプル](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): このサンプルの React Web アプリでは、Azure SignalR Service からの Azure Digital Twins テレメトリ データが使用されます。
     -  サンプル リンクに移動し、同じダウンロード プロセスを使用してサンプルのコピーをお使いのコンピューターに _**digitaltwins-signalr-webapp-sample-main.zip**_ としてダウンロードします。 フォルダーを解凍します。
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
@@ -65,7 +65,7 @@ ms.locfileid: "107775333"
 
 Visual Studio (または任意の別のコード エディター) を起動し、*digital-twins-samples-master > ADTSampleApp* フォルダー内のコード ソリューションを開きます。 その後、次の手順を実行して関数を作成します。
 
-1. *SampleFunctionsApp* プロジェクトに **SignalRFunctions.cs** と呼ばれる新しい C# クラスを作成します。
+1. *SampleFunctionsApp* プロジェクトに **SignalRFunctions.cs** と呼ばれる新しい C# クラスを作成します。 新しいクラスを作成する方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#add-a-function-to-your-project)」を参照してください。
 
 1. このクラス ファイルの内容を次のコードに置き換えます。
     
@@ -76,9 +76,11 @@ Visual Studio (または任意の別のコード エディター) を起動し�
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
 
-    これにより、そのクラスに含まれる依存関係の問題が解決されます。
+    このコマンドを実行すると、そのクラスに含まれる依存関係の問題が解決されます。
 
-1. 「*エンド ツー エンドのソリューションを接続する*」のチュートリアルの「[*アプリの発行*」セクション](tutorial-end-to-end.md#publish-the-app)で説明されている手順を使用して、関数を Azure に発行します。 エンド ツー エンドのチュートリアルの[前提条件](#prerequisites)で使用したものと同じ App Service や関数アプリにそれを発行することも、新しいものを作成することもできます。ただし、重複を最小限に抑えるために同じものを使用することをお勧めします。 
+1. 関数を Azure に発行します。 エンド ツー エンドのチュートリアルの[前提条件](#prerequisites)で使用したものと同じ App Service や関数アプリにそれを発行することも、新しいものを作成することもできます。ただし、重複を最小限に抑えるために同じものを使用することをお勧めします。 Visual Studio を使用して関数を発行する方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#publish-to-azure)」を参照してください。
+
+### <a name="configure-the-function"></a>関数を構成する
 
 次に、Azure SignalR インスタンスと通信するように関数を構成します。 まず、SignalR インスタンスの **接続文字列** を収集し、関数アプリの設定に追加します。
 
@@ -86,42 +88,42 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 1. インスタンスのメニューから **[キー]** を選択して、SignalR Service インスタンスの接続文字列を表示します。
 1. "*コピー*" アイコンを選択して、プライマリ接続文字列をコピーします。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="SignalR インスタンスの [キー] ページが表示された Azure portal のスクリーンショット。プライマリ接続文字列の横にある [クリップボードにコピー] アイコンが強調表示されています。" lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="SignalR インスタンスの [キー] ページが表示された Azure portal のスクリーンショット。接続文字列がコピーされています。" lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-1. 最後に、次の Azure CLI コマンドを使用して、Azure SignalR の **接続文字列** を関数のアプリ設定に追加します。 また、プレースホルダーを、[チュートリアルの前提条件](how-to-integrate-azure-signalr.md#prerequisites)のリソース グループと App Service/関数アプリの名前に置き換えます。 このコマンドは、[Azure Cloud Shell](https://shell.azure.com) で実行するか、Azure CLI が[コンピューターにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
+1. 最後に、次の Azure CLI コマンドを使用して、Azure SignalR の **接続文字列** を関数のアプリ設定に追加します。 また、プレースホルダーを、[チュートリアルの前提条件](how-to-integrate-azure-signalr.md#prerequisites)のリソース グループと App Service/関数アプリの名前に置き換えます。 このコマンドは、[Azure Cloud Shell](https://shell.azure.com) で実行するか、[Azure CLI がマシンにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
  
     ```azurecli-interactive
-    az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
+    az functionapp config appsettings set --resource-group <your-resource-group> --name <your-function-app-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
     ```
 
     このコマンドの出力では、Azure 関数用に設定されたすべてのアプリ設定が出力されます。 一覧の下部で `AzureSignalRConnectionString` を検索して、それが追加されていることを確認します。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="&quot;AzureSignalRConnectionString&quot; と呼ばれるリスト項目が表示されている、コマンド ウィンドウの出力の抜粋":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="'AzureSignalRConnectionString' と呼ばれるリスト項目が表示されている、コマンド ウィンドウの出力のスクリーンショット。":::
 
-#### <a name="connect-the-function-to-event-grid"></a>Event Grid に関数を接続する
+## <a name="connect-the-function-to-event-grid"></a>Event Grid に関数を接続する
 
-次に、*broadcast* Azure 関数を **Event Grid トピック** ([チュートリアルの前提条件](how-to-integrate-azure-signalr.md#prerequisites)で作成) でサブスクライブします。 これにより、テレメトリ データは thermostat67 ツインから Event Grid トピックを経て関数へと流れることができます。 ここから、この関数によってすべてのクライアントにそのデータをブロードキャストできます。
+次に、*broadcast* Azure 関数を **Event Grid トピック** ([チュートリアルの前提条件](how-to-integrate-azure-signalr.md#prerequisites)で作成) でサブスクライブします。 このアクションにより、テレメトリ データは thermostat67 ツインから Event Grid トピックを経て関数へと流れることができます。 ここから、この関数によってすべてのクライアントにそのデータをブロードキャストできます。
 
-そのためには、Event Grid トピックからエンドポイントとしての *broadcast* Azure 関数への **イベント サブスクリプション** を作成します。
+データをブロードキャストするには、Event Grid トピックからエンドポイントとしての *broadcast* Azure 関数への **イベント サブスクリプション** を作成します。
 
 [Azure portal](https://portal.azure.com/) の上部の検索バーで、Event Grid トピックの名前を検索してそのトピックに移動します。 *[+ イベント サブスクリプション]* を選択します。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Azure portal: Event Grid イベント サブスクリプション":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Azure portal でのイベント サブスクリプションの作成方法のスクリーンショット。":::
 
 *[イベント サブスクリプションの作成]* ページで、各フィールドに次のように入力します (既定値が入力されるフィールドは省略しています)。
 * *[イベント サブスクリプションの詳細]*  >  **[名前]** : イベント サブスクリプションに名前を付けます。
 * *[エンドポイントの詳細]*  >  **[エンドポイントのタイプ]** : メニュー オプションから *[Azure 関数]* を選択します。
-* *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[エンドポイントの選択]* リンクを選択します。 *[Azure 関数の選択]* ウィンドウが開きます。
-    - **サブスクリプション**、**リソース グループ**、**関数アプリ**、**関数** (*broadcast*) を入力します。 そのいくつかは、サブスクリプションの選択後に自動的に入力されます。
-    - **[選択の確認]** をクリックします。
+* *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[エンドポイントの選択]* リンクを選択して、 *[Azure 関数の選択]* ウィンドウを開きます。
+    - **[サブスクリプション]** 、 **[リソース グループ]** 、 **[関数アプリ]** 、 **[関数]** (*broadcast*) を入力します。 これらのフィールドの一部は、サブスクリプションの選択後に自動的に設定される場合があります。
+    - **[選択の確認]** を選択します。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="イベント サブスクリプションの作成の Azure portal ビュー。上記のフィールドが入力され、[選択の確認] および [作成] ボタンが強調表示されています。":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Azure portal でのイベント サブスクリプションを作成するためのフォームのスクリーンショット。":::
 
-再び *[イベント サブスクリプションの作成]* ページで、 **[作成]** をクリックします。
+再び *[イベント サブスクリプションの作成]* ページで、 **[作成]** を選択します。
 
 この時点で、 *[Event Grid Topic]\(Event Grid トピック\)* ページに 2 つのイベント サブスクリプションが表示されます。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/view-event-subscriptions.png" alt-text="[Event Grid Topic]\(Event Grid トピック\) ページの 2 つのイベント サブスクリプションを示す Azure portal ビュー。" lightbox="media/how-to-integrate-azure-signalr/view-event-subscriptions.png":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/view-event-subscriptions.png" alt-text="[Event Grid トピック] ページの 2 つのイベント サブスクリプションを示す Azure portal のスクリーンショット。" lightbox="media/how-to-integrate-azure-signalr/view-event-subscriptions.png":::
 
 ## <a name="configure-and-run-the-web-app"></a>Web アプリの構成と実行
 
@@ -133,19 +135,19 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 
 1. Azure portal の [[関数アプリ]](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) ページにアクセスし、一覧から関数アプリを選択します。 アプリ メニューで、 *[関数]* を選択し、*negotiate* 関数を選択します。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="メニューで [関数] が強調表示されている、関数アプリの Azure portal ビュー。このページには関数の一覧が表示され、&quot;negotiate&quot; 関数も強調表示されています。":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure portal の関数アプリのスクリーンショット。メニューで 'Functions' が強調表示され、関数の一覧で 'negotiate' が強調表示されています。":::
 
-1. *[関数の URL の取得]* をクリックし、**_/api_ までの値 (最後の _/negotiate?_ は含めないでください)** をコピーします。 これは次の手順で使用します。
+1. *[関数の URL の取得]* を選択し、**_/api_ までの値 (最後の _/negotiate?_ は含めないでください)** をコピーします。 次の手順でこの値を使用します。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="&quot;negotiate&quot; 関数の Azure portal ビュー。[関数の URL の取得] ボタンと、URL の先頭から &quot;/api&quot; までの部分が強調表示されています":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="[関数の URL の取得] ボタンと関数の URL が強調表示されている 'negotiate' 関数が表示された Azure portal のスクリーンショット。":::
 
-1. Visual Studio または任意のコード エディターを使用して、「[*サンプル アプリケーションのダウンロード*](#download-the-sample-applications)」セクションでダウンロードした解凍済みの _**digitaltwins-signalr-webapp-sample-main**_ フォルダーを開きます。
+1. Visual Studio または任意のコード エディターを使用して、「[サンプル アプリケーションのダウンロード](#download-the-sample-applications)」セクションでダウンロードした解凍済みの _**digitaltwins-signalr-webapp-sample-main**_ フォルダーを開きます。
 
 1. *src/App.js* ファイルを開き、`HubConnectionBuilder` 内の関数 URL を、前の手順で保存した **negotiate** 関数の HTTP エンドポイント URL に置き換えます。
 
     ```javascript
         const hubConnection = new HubConnectionBuilder()
-            .withUrl('<Function URL>')
+            .withUrl('<Function-URL>')
             .build();
     ```
 1. Visual Studio の "*開発者コマンド プロンプト*" またはコンピューター上の任意のコマンド ウィンドウで、*digitaltwins-signalr-webapp-sample-main\src* フォルダーに移動します。 次のコマンドを実行して、依存ノード パッケージをインストールします。
@@ -157,9 +159,9 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 次に、Azure Portal で関数アプリでのアクセス許可を設定します。
 1. Azure portal の [[関数アプリ]](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) ページで、関数アプリ インスタンスを選択します。
 
-1. インスタンスのメニューを下にスクロールし、 *[CORS]* を選択します。 [CORS] ページで、空のボックスに `http://localhost:3000` を入力して、許可された配信元として追加します。 *[Access-Control-Allow-Credentials を有効にする]* ボックスをオンにして、 *[保存]* をクリックします。
+1. インスタンスのメニューを下にスクロールし、 *[CORS]* を選択します。 [CORS] ページで、空のボックスに `http://localhost:3000` を入力して、許可された配信元として追加します。 *[Access-Control-Allow-Credentials を有効にする]* ボックスをオンにして、 *[保存]* を選択します。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="Azure 関数での CORS 設定":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="Azure 関数で CORS 設定が表示されている Azure portal のスクリーンショット。":::
 
 ### <a name="run-the-device-simulator"></a>デバイス シミュレーターを実行する
 
@@ -167,9 +169,9 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 
 ここでは、*digital-twins-samples-master > DeviceSimulator > DeviceSimulator.sln* にあるシミュレーター プロジェクトを開始するだけで済みます。 Visual Studio を使用している場合は、プロジェクトを開いてから、ツール バーにあるこのボタンを使用して実行できます。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Visual Studio のスタート ボタン (DeviceSimulator プロジェクト)":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="DeviceSimulator プロジェクトが開いた、Visual Studio のスタート ボタンのスクリーンショット。":::
 
-コンソール ウィンドウが開いて、シミュレートされた温度のテレメトリ メッセージが表示されます。 これらは Azure Digital Twins インスタンスを介して送信され、そこでその後、Azure 関数と SignalR によって取得されます。
+コンソール ウィンドウが開いて、シミュレートされた温度のテレメトリ メッセージが表示されます。 これらのメッセージは Azure Digital Twins インスタンスを介して送信され、そこでその後、Azure 関数と SignalR によって取得されます。
 
 このコンソールで行うべき作業は他にありませんが、次のステップに取り組む間、コンソールは実行したままにしておいてください。
 
@@ -181,15 +183,15 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 npm start
 ```
 
-これにより、サンプル アプリが実行されているブラウザー ウィンドウが開き、ビジュアル温度計が表示されます。 アプリが実行されると、Azure Digital Twins を介して伝達されるデバイス シミュレーターからの温度テレメトリの値が、Web アプリによってリアルタイムで反映されるのを確認できるようになります。
+このコマンドを実行すると、サンプル アプリが実行されているブラウザー ウィンドウが開き、ビジュアル温度計が表示されます。 アプリが実行されると、Azure Digital Twins を介して伝達されるデバイス シミュレーターからの温度テレメトリの値が、Web アプリによってリアルタイムで反映されるのを確認できるようになります。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="ビジュアル温度計が表示されている、サンプル クライアント Web アプリからの抜粋。反映されている温度は 67.52":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="ビジュアル温度計が表示されている、サンプル クライアント Web アプリのスクリーンショット。反映されている温度は 67.52 です。":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースがもう必要ない場合は、次の手順に従って削除します。 
 
-Azure Cloud Shell またはローカルの Azure CLI から [az group delete](/cli/azure/group#az_group_delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 リソース グループを削除すると、以下も削除されます。
+Azure Cloud Shell またはローカルの Azure CLI から [az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 リソース グループを削除すると、以下も削除されます。
 * Azure Digital Twins インスタンス (エンド ツー エンドのチュートリアルから)
 * IoT Hub とハブのデバイス登録 (エンド ツー エンドのチュートリアルから)
 * Event Grid トピックと関連付けられているサブスクリプション
@@ -210,7 +212,7 @@ az group delete --name <your-resource-group>
 この記事では、Azure Digital Twins のテレメトリ イベントをサンプル クライアントアプリケーションにブロードキャストするように、SignalR で Azure 関数を設定しました。
 
 次に、Azure SignalR Service の詳細を確認します。
-* [*Azure SignalR サービスとは*](../azure-signalr/signalr-overview.md)
+* [Azure SignalR サービスとは](../azure-signalr/signalr-overview.md)
 
 または、Azure Functions を使用した Azure SignalR Service 認証の詳細を確認します。
-* [*Azure SignalR Service の認証*](../azure-signalr/signalr-tutorial-authenticate-azure-functions.md)
+* [Azure SignalR Service の認証](../azure-signalr/signalr-tutorial-authenticate-azure-functions.md)

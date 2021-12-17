@@ -3,17 +3,17 @@ title: チュートリアル - カスタム ハードウェア セキュリテ�
 description: このチュートリアルでは、登録グループを使用します。 このチュートリアルでは、カスタムのハードウェア セキュリティ モジュール (HSM) と Azure IoT Hub Device Provisioning Service (DPS) 向け C デバイス SDK を使用して X.509 デバイスをプロビジョニングする方法を説明します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/28/2021
+ms.date: 05/24/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b178aa4a524cb7fcc85c7fc68ac5f772747787a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d431e91eb71d5befe71f134e634fe5ad3c7b392d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99052365"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274476"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>チュートリアル:登録グループを使って複数の X.509 デバイスをプロビジョニングする
 
@@ -121,6 +121,10 @@ Azure IoT Device Provisioning Service では、デバイスのプロビジョニ
 #### <a name="create-root-and-intermediate-certificates"></a>ルートおよび中間証明書を作成する
 
 証明書チェーンのルートおよび中間部分を作成するには:
+
+> [!IMPORTANT]
+> この記事では、Bash シェル アプローチのみを使用してください。 PowerShell の使用も可能ですが、この記事では説明しません。
+
 
 1. Git Bash のコマンド プロンプトを開きます。 「[サンプルおよびチュートリアル用のテスト CA 証明書を管理する](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md#managing-test-ca-certificates-for-samples-and-tutorials)」の手順 1 および 2 のうち、Bash シェルを使用する部分を完了します。
 
@@ -233,7 +237,7 @@ Azure IoT Device Provisioning Service では、デバイスのプロビジョニ
     >
     > しかし、デバイスはデバイス証明書の秘密キーにもアクセスできる必要があります。 その理由は、プロビジョニングの試行時に、デバイスでそのキーを使って検証を実施する必要があるからです。 このキーの機密性こそ、現実の HSM 内のハードウェアベースのストレージを使用して秘密キーを保護することが推奨される主な理由の 1 つです。
 
-4. デバイス ID が `custom-hsm-device-02` である 2 つ目のデバイスについて、手順 1 から 3 を繰り返します。 このデバイスには次の値を使用します。
+4. *./certs/new-device.cert.pem* を削除して、デバイス ID `custom-hsm-device-02` を持つ 2 つ目のデバイスで手順 1～3 を繰り返します。 必ず *./certs/new-device.cert.pem* を削除してください。そうしないと、2 つ目のデバイスの証明書生成が失敗します。 完全なチェーン証明書ファイルだけをこの記事で使用します。 次の値を 2 つ目のデバイスに使用します。
 
     |   説明                 |  値  |
     | :---------------------------- | :--------- |
@@ -243,6 +247,10 @@ Azure IoT Device Provisioning Service では、デバイスのプロビジョニ
     
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>ルート証明書の所有権を検証する
+
+> [!NOTE]
+> 2021 年 7 月 1 日より、[自動検証](how-to-verify-certificates.md#automatic-verification-of-intermediate-or-root-ca-through-self-attestation)による証明書の自動検証を実行できます。
+>
 
 1. 「[X.509 証明書のパブリック部分を登録して確認コードを取得する](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)」の説明に従ってルート証明書 (`./certs/azure-iot-test-only.root.ca.cert.pem`) をアップロードし、DPS から確認コードを取得します。
 
@@ -290,7 +298,7 @@ Windows ベースのデバイスの証明書ストアに署名証明書を追加
     winpty openssl pkcs12 -inkey ../private/azure-iot-test-only.intermediate.key.pem -in ./azure-iot-test-only.intermediate.cert.pem -export -out ./intermediate.pfx
     ```
 
-2. Windows の **[スタート]** ボタンを右クリックします。 その後、 **[ファイル名を指定して実行]** を左クリックします。 「*certmgr.mcs*」と入力し、 **[OK]** をクリックして、証明書マネージャー MMC スナップインを起動します。
+2. Windows の **[スタート]** ボタンを右クリックします。 その後、 **[ファイル名を指定して実行]** を左クリックします。 「*certmgr.msc*」と入力し、 **[OK]** をクリックして、証明書マネージャー MMC スナップインを起動します。
 
 3. 証明書マネージャーの **[証明書 - 現在のユーザー]** で、 **[信頼されたルート証明機関]** をクリックします。 次に、メニューで **[アクション]**  >  **[すべてのタスク]**  >  **[インポート]** の順にクリックして `root.pfx` をインポートします。
 
@@ -310,7 +318,7 @@ Windows ベースのデバイスの証明書ストアに署名証明書を追加
 
 ## <a name="create-an-enrollment-group"></a>登録グループを作成する
 
-1. Azure portal にサインインし、左側のメニューの **[すべてのリソース]** を選択して、Device Provisioning Service を開きます。
+1. Azure portal にサインインし、左側のメニューの **[すべてのリソース]** ボタンを選択して、Device Provisioning Service を開きます。
 
 2. **[登録を管理します]** タブを選択し、上部にある **[登録グループの追加]** を選択します。
 
@@ -324,16 +332,16 @@ Windows ベースのデバイスの証明書ストアに署名証明書を追加
     | **構成証明の種類** | **[証明書]** を選択します。 |
     | **IoT Edge デバイス** | **[偽]** を選択します。 |
     | **証明書の種類** | **[中間証明書]** を選択します。 |
-    | **プライマリ証明書の .pem ファイルまたは .cer ファイル** | 既に作成した中間証明書 ( *./certs/azure-iot-test-only.intermediate.cert.pem*) の場所を指定します。 |
+    | **プライマリ証明書の .pem ファイルまたは .cer ファイル** | 既に作成した中間証明書 ( *./certs/azure-iot-test-only.intermediate.cert.pem*) の場所を指定します。 この中間証明書は、既にアップロードして検証したルート証明書によって署名されています。 DPS は、検証の済んだルートを信頼します。 DPS は、この登録グループに用意されている中間が信頼されたルートによって本当に署名されていることを確認できます。 DPS は、そのルート証明書によって真に署名された各中間証明書を信頼するため、中間者によって署名されたリーフ証明書を検証および信頼できます。  |
 
 
 ## <a name="configure-the-provisioning-device-code"></a>デバイスのプロビジョニング コードを構成する
 
 このセクションでは、Device Provisioning Service インスタンス情報を使用してサンプル コードを更新します。 デバイスは認証されると、このセクションで構成された Device Provisioning Service インスタンスにリンクされている IoT ハブに割り当てられます。
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブを選択し、**[_ID スコープ_]** の値をメモします。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブを選択し、 **[_ID スコープ_]** の値をメモします。
 
-    ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
+    ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/copy-id-scope.png) 
 
 2. Visual Studio を起動し、Git リポジトリ azure-iot-sdk-c のルートに作成した `cmake` ディレクトリに作成された新しいソリューション ファイルを開きます。 ソリューション ファイルの名前は `azure_iot_sdks.sln` です。
 

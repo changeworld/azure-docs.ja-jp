@@ -2,17 +2,18 @@
 title: PowerShell を使用して Azure SSIS 統合ランタイムをデプロイする
 description: この PowerShell スクリプトは、クラウドで SSIS パッケージを実行できる Azure-SSIS 統合ランタイムを作成します。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: article
 ms.author: sawinark
 author: swinarko
-ms.custom: seo-lt-2019
-ms.date: 09/12/2017
-ms.openlocfilehash: 158e2db5261ce35713e1564cd24f0dd1d563ab78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.date: 10/22/2021
+ms.openlocfilehash: 9df84e12e61a801d2d61e283ebd8b53e6f1633a3
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370208"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850341"
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell スクリプト - Azure-SSIS 統合ランタイムのデプロイ
 

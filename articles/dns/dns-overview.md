@@ -4,14 +4,14 @@ description: Microsoft Azure の DNS ホスティング サービスの概要で
 author: rohinkoul
 ms.service: dns
 ms.topic: overview
-ms.date: 3/25/2021
+ms.date: 4/22/2021
 ms.author: rohink
-ms.openlocfilehash: 41d2fdca653828588a5881daa0fa16c3bc71b5c4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 227d20d487b95dd43cf8106b5f4e07075cf69da6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046489"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770985"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
@@ -69,4 +69,4 @@ Azure DNS では、エイリアス レコード セットをサポートしま�
 
 * Azure DNS 内にゾーンを作成する方法を学びます ([DNS ゾーンの作成](./dns-getstarted-portal.md)に関するページを参照)。
 
-* Azure DNS に関してよく寄せられる質問については、「[Azure DNS に関する FAQ](dns-faq.md)」を参照してください。
+* Azure DNS に関してよく寄せられる質問については、「[Azure DNS に関する FAQ](dns-faq.yml)」を参照してください。

@@ -2,19 +2,18 @@
 title: チュートリアル:カスタム モジュールの作成とデプロイ - Azure IoT Edge での Machine Learning
 description: このチュートリアルでは、機械学習モデルを使用してリーフ デバイスからのデータを処理する IoT Edge モジュールを作成およびデプロイした後、その分析情報を IoT Hub に送信します。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5c096b26f31bdf92bb5ab91c8dad7876f228ff14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e045f1bfe3be8bc34a6d1705d7e2e4ec39dd4197
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462798"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740565"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>チュートリアル:カスタム IoT Edge モジュールの作成とデプロイ
 
@@ -148,6 +147,9 @@ IoT Edge デバイスで 4 つのことを達成できるようにします。
       CONTAINER_REGISTRY_USERNAME_<your registry name>=<ACR username>
       CONTAINER_REGISTRY_PASSWORD_<your registry name>=<ACR password>
       ```
+
+      >[!NOTE]
+      >このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、「[コンテナー レジストリへのアクセスを管理する](production-checklist.md#manage-access-to-your-container-registry)」を参照してください。
 
 1. Visual Studio Code エクスプローラーで deployment.template.json ファイルを右クリックし、 **[Build IoT Edge Solution] \(IoT Edge ソリューションのビルド\)** を選択します。
 

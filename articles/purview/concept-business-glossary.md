@@ -1,18 +1,18 @@
 ---
-title: Azure Purview のビジネス用語集機能についての理解 (プレビュー)
+title: Azure Purview のビジネス用語集機能についての理解
 description: この記事では、Azure Purview におけるビジネス用語集について説明します。
 author: nayenama
 ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/13/2020
-ms.openlocfilehash: 8b391438d8d6605e7ef493a6552af634db840ad5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: b332a00f511ea747c2978dafbf60ce20abca36a8
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96550992"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214410"
 ---
 # <a name="understand-business-glossary-features-in-azure-purview"></a>Azure Purview のビジネス用語集機能についての理解
 
@@ -21,7 +21,6 @@ ms.locfileid: "96550992"
 ## <a name="business-glossary"></a>ビジネス用語集
 
 用語集では、ビジネス ユーザーのためのボキャブラリが提供されます。  相互に関連付けることができるビジネス用語で構成され、さまざまなコンテキストで理解できるように分類することができます。 その後、これらの用語をデータベース、テーブル、列などの資産にマップできます。これにより、データ リポジトリに関連付けられている技術的な専門用語を抽象化でき、ビジネス ユーザーがより身近なボキャブラリのデータを見つけて使用できるようになります。
-
 
 ビジネス用語集は用語のコレクションです。 各用語は組織内のオブジェクトを表しています。同じオブジェクトを表す複数の用語がある可能性が高いと考えられます。 顧客は、クライアント、購入者または購買担当者と呼ばれることもあります。 これらの複数の用語は相互に関係があります。 これらの用語間の関係は、次のいずれかになります。
 
@@ -65,7 +64,7 @@ Azure Purview では、任意のビジネス用語集の用語に対して、次
 - データ資産に格納されているデータの性質を理解する
 - アクセス制御ポリシーを定義する
 
-現在、Purview には 100 を超えるシステム分類子があり、カタログに独自の分類子を定義することもできます。 スキャン処理の一環として、これらの分類が自動的に検出されて、データ資産とスキーマに適用されます。 ただし、いつでもオーバーライドできます。 ユーザーがオーバーライドしたものは、自動スキャンによって置き換えられることはありません。
+現在、Purview には 200 を超えるシステム分類子があり、カタログに独自の分類子を定義することもできます。 スキャン処理の一環として、これらの分類が自動的に検出されて、データ資産とスキーマに適用されます。 ただし、いつでもオーバーライドできます。 ユーザーがオーバーライドしたものは、自動スキャンによって置き換えられることはありません。
 
 ### <a name="sensitivity-labels"></a>秘密度ラベル
 

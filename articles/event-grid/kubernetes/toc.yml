@@ -1,0 +1,48 @@
+- name: Kubernetes の Event Grid のドキュメント
+  href: index.yml
+- name: Azure Event Grid のドキュメントに切り替える
+  href: ../overview.md
+- name: 概要
+  items:
+    - name: Azure Arc を使用した Kubernetes 上の Event Grid の概要
+      href: overview.md
+    - name: 特徴
+      href: features.md
+- name: クイックスタート
+  items:
+    - name: イベント ハンドラーとしての Webhook
+      href: create-topic-subscription.md
+- name: サンプル
+  items:
+    - name: コード サンプル
+      href: 'https://devblogs.microsoft.com/azure-sdk/event-grid-ga/'
+- name: 概念
+  items:
+    - name: Kubernetes 上の Event Grid の概念
+      href: concepts.md
+    - name: イベント ハンドラー
+      href: event-handlers.md
+    - name: イベント スキーマ
+      href: event-schemas.md
+    - name: バッチ イベントの配信
+      href: batch-event-delivery.md
+    - name: 配信と再試行
+      href: delivery-retry.md
+    - name: イベント フィルター
+      href: filter-events.md
+- name: 操作方法ガイド
+  items:
+    - name: Event Grid 拡張機能のインストール
+      href: install-k8s-extension.md
+- name: リファレンス
+  items:
+    - name: REST API
+      href: /rest/api/eventgrid/version2021-06-01-preview/topics
+    - name: SDK
+      href: ../sdk-overview.md?toc=%2fazure%2fevent-grid%2fkubernetes%2ftoc.json
+- name: リソース
+  items:
+    - name: サポートを受ける
+      href: get-support.md
+    - name: 法的条項
+      href: legal-terms.md

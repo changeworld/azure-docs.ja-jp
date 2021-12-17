@@ -1,29 +1,25 @@
 ---
-title: Azure Purview (プレビュー) の概要
+title: Azure Purview の概要
 description: この記事では、Azure Purview の概要 (機能や対処する問題など) について説明します。 Azure Purview を使用すると、すべてのユーザーが、データ ソースを登録し、検出し、理解し、利用することができます。
 author: hophanms
 ms.author: hophan
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: 3fadfa9d4467209ddbe997afabba27a3752f685d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff8acfc01999a25079da5928f6e0642b6c5793c3
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419934"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218700"
 ---
 # <a name="what-is-azure-purview"></a>Azure Purview とは
-
-> [!IMPORTANT]
-> Azure Purview は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
 Azure Purview は、オンプレミス、マルチクラウド、SaaS (サービスとしてのソフトウェア) にあるデータの管理と制御を支援する統合データ ガバナンス サービスです。 自動化されたデータ検出、機密データ分類、エンド ツー エンドのデータ系列によって、データ環境全体の最新のマップを簡単に作成できます。 データ コンシューマーは、有益で信頼できるデータを見つけることができます。
 
 データ検出と効果的なデータ ガバナンスの基盤となるのが Azure Purview Data Map です。 Purview Data Map はクラウド ネイティブの PaaS サービスです。オンプレミスおよびクラウドの分析システムやオペレーション システムに存在する企業データについてのメタデータを収集します。 Purview Data Map は、自動化された組み込みのスキャンおよび分類システムによって自動的に最新の状態に維持されます。 ビジネス ユーザーは直感的な UI を通じて Purview Data Map を構成したり使用したりすることができます。また、開発者はオープンソースの Apache Atlas 2.0 API を使用して Data Map をプログラムで操作することができます。
 
-Azure Purview Data Map は、Purview Studio 内に統合されたエクスペリエンスとして Purview Data Catalog と Purview データ分析情報を強力に支援します。
+Azure Purview Data Map は、[Purview Studio](https://web.purview.azure.com/resource/) 内に統合されたエクスペリエンスとして Purview Data Catalog と Purview データ分析情報を強力に支援します。
  
 Purview Data Catalog を使用すると、ビジネス ユーザーとテクニカル ユーザーの両方が、用語集の用語、分類、秘密度ラベルなど、さまざまな観点に基づくフィルターを備えた検索環境を利用して、関連するデータをすばやく簡単に見つけることができます。 また、領域の専門家やデータ スチュワード、データ責任者向けには、ビジネス用語集管理などのデータ キュレーション機能や、用語集の用語を使ってデータ資産に対するタグ付けを自動化する機能が Purview Data Catalog には備わっています。 さらに、データ コンシューマーやデータ プロデューサーは、オンプレミスの運用システムから、クラウド内の各種データ ストレージおよび処理システムによる移動、変換、エンリッチメント、そして Power BI などの分析システムへの取り込みに至るまで、データ資産の系列を視覚的に追跡することができます。
 
@@ -71,7 +67,7 @@ Azure Purview には、データ ソースを登録できるクラウドベー�
 同時に、ユーザーは、登録されているデータ ソースに対してタグ付けやドキュメント作成、注釈付けを行うことで、カタログを充実させることができます。 ユーザーは新しいデータ ソースを登録することもできます。それらはカタログ ユーザーのコミュニティで検出され、解釈され、利用されます。
 
 ## <a name="in-region-data-residency"></a>リージョンのデータ所在地
-Azure Purview によって、顧客データがデプロイされているリージョン外に移動されたり格納されたりすることはありません。
+Azure Purview では、特定のテーブル名、ファイル パス、およびオブジェクト パス情報が北米に格納されます。 前述の例外に従って、すべてのその他の顧客データを 1 つのリージョンに格納できるようにする機能は、現在すべての地域で利用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

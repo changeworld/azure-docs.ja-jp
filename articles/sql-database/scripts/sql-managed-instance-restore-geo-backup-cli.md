@@ -3,20 +3,20 @@ title: geo バックアップを復元する CLI の例 - Azure SQL Database
 description: geo 冗長バックアップから Azure SQL Managed Instance データベースを復元する Azure CLI サンプル スクリプト。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein
+author: SQLSourabh
+ms.author: sourabha
+ms.reviewer: mathoma
 ms.date: 07/03/2019
-ms.openlocfilehash: 5468cfc733b037f6287e8536c8c85994f0840161
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5fd01148206bf8859dd2f93db33f59e50f9b6a3e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86231256"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751780"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>CLI を使用して Managed Instance データベースを別の geo リージョンに復元する
 

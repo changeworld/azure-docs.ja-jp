@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
-ms.openlocfilehash: c95ab589917979bd718011aa15cfaf12ba05e45b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6aa1d82982203a3d2c057fc0c4190dfbc7e60e71
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182374"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279882"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sentry"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Sentry の統合
 
@@ -86,11 +86,12 @@ Sentry に対して Azure AD SSO を構成してテストするには、次の�
     **[サインオン URL]** ボックスに、`https://sentry.io/organizations/<ORGANIZATION_SLUG>/` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Sentry クライアント サポート チーム](mailto:support@sentry.io)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の値の識別子、応答 URL、サインオン URL でこれらの値を更新してください。 これらの値の詳細については、[Sentry のドキュメント](https://docs.sentry.io/product/accounts/sso/azure-sso/#installation)を参照してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー アイコンをクリックして **[アプリのメタデータ URL]** をコピーし、コンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+   ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+    
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -117,11 +118,11 @@ Sentry に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-sentry-sso"></a>Sentry の SSO の構成
 
-**Sentry** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Sentry サポート チーム](mailto:support@sentry.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Sentry** 側でシングル サインオンを構成するには、 **[組織の設定]**  >  **[認証]** に移動し (または `https://sentry.io/settings/<YOUR_ORG_SLUG>/auth/` に移動します)、Active Directory の **[構成]** を選択します。 Azure SAML 構成から [アプリのフェデレーション メタデータ URL] を貼り付けます。
 
 ### <a name="create-sentry-test-user"></a>Sentry のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを Sentry に作成します。 Sentry では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Sentry にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
+このセクションでは、B.Simon というユーザーを Sentry に作成します。 Sentry では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Sentry にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -129,16 +130,18 @@ Sentry に対して Azure AD SSO を構成してテストするには、次の�
 
 #### <a name="sp-initiated"></a>SP Initiated:
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Sentry のサインオン URL にリダイレクトされます。  
+1. Azure portal で、 **[このアプリケーションをテストします]** を選択します。 サインイン フローを開始することができる Sentry のサインオン URL にリダイレクトされます。  
 
-1. Sentry のサインオン URL に直接移動し、そこからログイン フローを開始します。
+1. Sentry のサインオン URL に直接移動し、そこからサインイン フローを開始します。
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Sentry に自動的にサインインされます 
+* Azure portal で、 **[このアプリケーションをテストします]** を選択します。 SSO を設定した Sentry アプリケーションに自動的にサインインされます。 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで Sentry タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Sentry に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+#### <a name="either-mode"></a>両方のモード:
+
+マイ アプリ ポータルを使用して、任意のモードでアプリケーションをテストできます。 マイ アプリ ポータルで [Sentry] タイルをクリックすると、SP モードで構成されている場合は、アプリケーションのサインオン ページにリダイレクトされ、サインイン フローが開始されます。 IDP モードで構成されている場合は、SSO を設定した Sentry アプリケーションに自動的にサインインされます。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Sentry を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Sentry を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -4,13 +4,13 @@ description: Azure のサービスおよびアプリケーションの包括的�
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 11/17/2019
-ms.openlocfilehash: afe6e82c3cc9773fbf0c17992fd6894d199d177f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 11/01/2021
+ms.openlocfilehash: 18019dbf4f6c3a6494b105362790dd41d4132595
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937245"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055852"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -44,19 +44,18 @@ Azure Monitor が収集した多くの Azure リソースのデータは、Azure
 
 ![視覚化で使用するためにメトリック エクスプローラーに送信されるメトリック データを示す図。](media/overview/metrics.png)
 
-Azure Monitor が収集したログ データは、収集されたデータをすばやく検索、統合、分析する[クエリ](logs/log-query-overview.md)を使用して分析できます。  Azure portal から [Log Analytics](./logs/log-query-overview.md) を使用してクエリを作成し、テストすることができます。 その後、別のツールを使用してデータを直接分析するか、またはクエリを保存して[視覚化](visualizations.md)や[アラート ルール](alerts/alerts-overview.md)に利用することができます。
+Azure Monitor が収集したログ データは、収集されたデータをすばやく検索、統合、分析する[クエリ](logs/log-query-overview.md)を使用して分析できます。  Azure portal から [Log Analytics](./logs/log-query-overview.md) を使用してクエリを作成し、テストすることができます。 その後、別のツールを使用してデータを直接分析するか、またはクエリを保存して[視覚化](best-practices-analysis.md)や[アラート ルール](alerts/alerts-overview.md)に利用することができます。
 
 Azure Monitor では、[Kusto クエリ言語](/azure/kusto/query/)の 1 つのバージョンを使用します。この言語は、単純なログ検索に適している一方で、集計、結合、スマート分析など高度な機能も備えています。 [さまざまなレッスン](logs/get-started-queries.md)を利用すれば、クエリ言語はすぐに覚えることができます。  既に [SQL](/azure/data-explorer/kusto/query/sqlcheatsheet) や [Splunk](/azure/data-explorer/kusto/query/splunk-cheat-sheet) に習熟しているユーザーには、別途ガイダンスが用意されています。
 
 ![分析のために Log Analytics に送信されるログ データを示す図。](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Azure Monitor が収集するデータ
-
 Azure Monitor は[さまざまなソース](monitor-reference.md)からデータを収集できます。 その範囲は、アプリケーションから、それが依存するオペレーティング システムとサービス、プラットフォーム自体にまで及びます。 Azure Monitor は、以下のそれぞれの層からデータを収集します。
 
 - **アプリケーション監視データ:** プラットフォームを問わず、記述したコードのパフォーマンスと機能に関するデータ。
 - **ゲスト OS 監視データ:** アプリケーションが実行されているオペレーティング システムに関するデータ。 これは Azure、別のクラウド、またはオンプレミスで実行できます。 
-- **Azure リソース監視データ:** Azure リソースの操作に関するデータ。
+- **Azure リソース監視データ:** Azure リソースの操作に関するデータ。 メトリックまたはログのあるリソースの詳細な一覧については、[Azure Monitor で監視できる内容](monitor-reference.md#azure-supported-services)に関するページを参照してください。
 - **Azure サブスクリプション監視データ:** Azure サブスクリプションの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 
 - **Azure テナントの監視データ:** Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。
 
@@ -67,11 +66,12 @@ Azure サブスクリプションを作成して仮想マシンや Web アプリ
 ページ ビュー、アプリケーションの要求、例外など、詳細な情報を収集するには、Application Insights を使った[アプリケーション](app/app-insights-overview.md)の監視を有効します。 さらにアプリケーションの可用性を検証するには、ユーザー トラフィックをシミュレートする[可用性テスト](app/monitor-web-app-availability.md)を構成します。
 
 ### <a name="custom-sources"></a>カスタム ソース
-
 Azure Monitor では、[Data Collector API](logs/data-collector-api.md) を使用して任意の REST クライアントからログ データを収集できます。 これにより、カスタム監視シナリオを作成し、他のソースを通じてテレメトリが公開されないリソースも監視対象に含めることができます。
 
-## <a name="insights"></a>洞察
-データの監視が役立つのは、コンピューティング環境の運用の可視性が高まる場合のみです。 [Insights](monitor-reference.md#insights-and-core-solutions) は、特定の Azure サービスを監視するためのカスタマイズされたエクスペリエンスを提供します。 最小限の構成さえ行えば、重要なリソースの運用の可視性を高めることができます。
+## <a name="insights-and-curated-visualizations"></a>分析情報とキュレーションされた視覚化
+データの監視が役立つのは、コンピューティング環境の運用の可視性が高まる場合のみです。 一部の Azure リソース プロバイダーには、"キュレーションされた視覚化" が用意されています。これにより、特定のサービスまたは一連のサービス向けにカスタマイズされた監視エクスペリエンスが提供されます。 通常、最小限の構成が必要です。 より大規模にスケーラブルなキュレーションされた視覚化は "分析情報" と呼ばれ、ドキュメントや Azure portal にはその名前で示されています。  
+
+詳細については、[Azure Monitor を使用した分析情報とキュレーションされた視覚化の一覧](monitor-reference.md#insights-and-curated-visualizations)に関する記事を参照してください。 大規模な分析情報については、以下でも説明します。
 
 ### <a name="application-insights"></a>Application Insights
 [Application Insights](app/app-insights-overview.md) は、クラウドとオンプレミスのどちらにホストされているかにかかわらず、Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。 Azure Monitor の強力なデータ分析プラットフォームを利用すれば、アプリケーションの運用に関する詳しい分析情報が得られます。 ユーザーからのレポートを待たずにエラーを診断することが可能です。 Application Insights にはさまざまな開発ツールへの接続ポイントが含まれており、DevOps プロセスをサポートする Visual Studio とも統合されています。
@@ -90,9 +90,9 @@ Azure Monitor では、[Data Collector API](logs/data-collector-api.md) を使�
 ![VM Insights](media/overview/vm-insights.png)
 
 
+
 ## <a name="responding-to-critical-situations"></a>重大な状況への応答
 効果的な監視ソリューションは、対話形式で監視データを分析できるだけでなく、収集したデータから危機的な状況を識別して事前に応答できる必要があります。 たとえば、問題の調査を担当する管理者にテキストまたはメールを送信することが考えられます。 または、自動化されたプロセスを起動して、エラー状態の修正を試みることも考えられます。
-
 
 ### <a name="alerts"></a>警告
 [Azure Monitor のアラート](alerts/alerts-overview.md)は、重大な状態を事前に通知し、可能であれば修正のためのアクションを実行しようとします。 メトリックに基づくアラート ルールにより、数値に基づいてほぼリアルタイムのアラートが提供されます。 ログに基づくルールでは、複数ソースのデータにまたがる複雑なロジックを実現できます。
@@ -107,7 +107,7 @@ Azure Monitor のアラート ルールは、受信者の一意なセットと�
 ![「プロセッサ時間 > 80%」というラベルが付いたいくつかのサーバーが直線上にあり、2 台のサーバーが最小、3 台のサーバーが現在の容量、5 台のサーバーが最大とマークされている、自動スケーリングを示す図。](media/overview/autoscale.png)
 
 ## <a name="visualizing-monitoring-data"></a>監視データの視覚化
-グラフや表などによる[視覚化](visualizations.md)は、監視データをまとめてさまざまな対象ユーザーに提示する際に利用できる効果的なツールです。 Azure Monitor は、監視データを視覚化する独自の機能を備えており、他の Azure サービスを活用してさまざまな対象ユーザーに公開します。
+グラフや表などによる[視覚化](best-practices-analysis.md)は、監視データをまとめてさまざまな対象ユーザーに提示する際に利用できる効果的なツールです。 Azure Monitor は、監視データを視覚化する独自の機能を備えており、他の Azure サービスを活用してさまざまな対象ユーザーに公開します。
 
 ### <a name="dashboards"></a>ダッシュボード
 [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)を使用すると、さまざまな種類のデータを組み合わせて、[Azure portal](https://portal.azure.com) 内の 1 つのペインに表示できます。 ダッシュボードは、他の Azure ユーザーと共有することもできます。 ログ クエリやメトリック グラフの出力を Azure ダッシュ ボードに追加できます。 たとえば、メトリックのグラフ、アクティビティ ログの表、Application Insights の使用状況グラフ、ログ クエリ結果を示すタイルを組み合わせて 1 つのダッシュボードを作成できます。
@@ -121,7 +121,7 @@ Azure Monitor のアラート ルールは、受信者の一意なセットと�
 ![ブックの例](media/overview/workbooks.png)
 
 ### <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com) は、さまざまなデータ ソースにわたって対話的な視覚化を提供するビジネス分析サービスです。 組織内外の他のユーザーがデータを使用できるようにする効果的な手段です。 [Azure Monitor からログ データを自動的にインポート](./visualize/powerbi.md)するように Power BI を構成すると、そのデータも追加で視覚化することができます。
+[Power BI](https://powerbi.microsoft.com) は、さまざまなデータ ソースにわたって対話的な視覚化を提供するビジネス分析サービスです。 組織内外の他のユーザーがデータを使用できるようにする効果的な手段です。 [Azure Monitor からログ データを自動的にインポート](./logs/log-powerbi.md)するように Power BI を構成すると、そのデータも追加で視覚化することができます。
 
 
 ![Power BI](media/overview/power-bi.png)

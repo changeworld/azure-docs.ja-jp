@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b38b4910773c433ed63fd2082c5cbefce81e0e9e
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 30d7282d6f6f30b34b522991d6fd4e79b194d7dd
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480232"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771588"
 ---
 # <a name="extending-ontologies"></a>オントロジの拡張 
 
@@ -24,13 +24,13 @@ ms.locfileid: "107480232"
 
 ## <a name="realestatecore-space-hierarchy"></a>RealEstateCore の Space 階層 
 
-DTDL ベースの RealEstateCore オントロジでは、Space 階層を使用して、さまざまな種類のスペースが定義されています。Room、Building、Zone などです。さまざまな種類の Room、Building、Zone を定義するために、これらの各モデルから階層が拡張されます。 
+DTDL ベースの RealEstateCore オントロジでは、Space 階層を使用して、さまざまな種類 (部屋、建物、区域など) のスペースが定義されています。 さまざまな種類の Room、Building、Zone を定義するために、これらの各モデルから階層が拡張されます。 
 
 下の図は、階層の一部を示しています。 
 
-:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="RealEstateCore の Space 階層の一部を示すフロー図。最上位レベルには、Space という要素があります。これは、&quot;extends&quot; 矢印によって 1 レベル下の Room に接続されています。Room は、2 つの &quot;extends&quot; 矢印によって 1 レベル下の ConferenceRoom と Office に接続されています。"::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="RealEstateCore の Space 階層の一部を示す図。Space、Room、ConferenceRoom、Office の要素が表示されます。"::: 
 
-RealEstateCore オントロジの詳細については、"[*概念: 業界標準のオントロジの採用*](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology)" に関する記事を参照してください。
+RealEstateCore オントロジの詳細については、[業界標準のオントロジの採用](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology)に関するページを参照してください。
 
 ## <a name="extending-the-realestatecore-space-hierarchy"></a>RealEstateCore の Space 階層の拡張 
 
@@ -51,9 +51,9 @@ RealEstateCore オントロジの詳細については、"[*概念: 業界標準
 
 フォーカス ルーム インターフェイスを追加した後、拡張された階層には、新しい部屋の種類が示されます。 
 
-:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-1.png" alt-text="RealEstateCore の Space 階層を示すフロー図 (上記の図に新しい要素が追加されています)。ConferenceRoom と Office がある最下位レベルに、FocusRoom という名前の新しい要素があります (これも、Room からの &quot;extends&quot; 矢印で接続されています)"::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-1.png" alt-text="新しい追加を含む、RealEstateCore の Space 階層の一部を示す図。"::: 
 
-### <a name="add-additional-capabilities-to-existing-interfaces"></a>既存のインターフェイスに機能をさらに追加する 
+### <a name="add-extra-capabilities-to-existing-interfaces"></a>既存のインターフェイスに機能をさらに追加する 
 
 このケースでは、業界オントロジに存在するインターフェイスにプロパティ (またはリレーションシップ、コンポーネント、テレメトリ、コマンド) をさらに追加します。
 
@@ -63,13 +63,13 @@ RealEstateCore オントロジの詳細については、"[*概念: 業界標準
 
 どちらの例も、新しいプロパティ (3D 描画をデジタル ツインに関連付ける `drawingId` プロパティと、会議室がオンラインかどうかを示す "online" プロパティ) を使用して実装できます。 
 
-通常、業界オントロジを直接変更することは避けます。これは、将来的に、それに対する更新を自分のソリューションに組み込むことができるようにするためです (これにより、自分の追加要素が上書きされます)。 代わりに、DTDL ベースの RealEstateCore オントロジから拡張した独自のインターフェイス階層で、このような種類の追加を行うことができます。 作成する各インターフェイスでは、複数のインターフェイス継承を使用して、その親の RealEstateCore インターフェイスを拡張し、拡張したインターフェイス階層からその親のインターフェイスを拡張します。 この方法を使用すると、業界オントロジと自分の追加要素を組み合わせて使用できます。 
+通常、業界オントロジを直接変更することは避けられます。これは、将来的に、それに対する更新を自分のソリューションに組み込むことができるようにするためです (これにより、自分の追加要素が上書きされます)。 代わりに、DTDL ベースの RealEstateCore オントロジから拡張した独自のインターフェイス階層で、このような種類の追加を行うことができます。 作成する各インターフェイスでは、複数のインターフェイス継承を使用して、その親の RealEstateCore インターフェイスを拡張し、拡張したインターフェイス階層からその親のインターフェイスを拡張します。 この方法を使用すると、業界オントロジと自分の追加要素を組み合わせて使用できます。 
 
 業界オントロジを拡張するには、その業界オントロジのインターフェイスから拡張した独自のインターフェイスを作成し、その拡張したインターフェイスに新しい機能を追加します。 拡張するインターフェイスごとに、新しいインターフェイスを作成します。 拡張したインターフェイスは DTDL で記述されます (このドキュメントで後述する「拡張したインターフェイスの DTDL」セクションを参照してください)。 
 
 上に示した階層の一部を拡張すると、拡張した階層は下の図のようになります。 ここでは、拡張した Space インターフェイスは、デジタル ツインを 3D 描画に関連付ける ID を格納する `drawingId` プロパティを追加します。 さらに、ConferenceRoom インターフェイスは、会議室のオンライン状態を格納する "online" プロパティを追加します。 継承によって、ConferenceRoom インターフェイスには、RealEstateCore ConferenceRoom インターフェイスのすべての機能だけでなく、拡張された Space インターフェイスのすべての機能も含まれます。 
 
-:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-2.png" alt-text="拡張された RealEstateCore の Space 階層を示すフロー図 (上記の図にさらに新しい要素が追加されています)。Room はそのレベルを Space 要素と共有するようになりました。この Space 要素は、&quot;extends&quot; 矢印によって 1 レベル下の新しい Room 要素 (ConferenceRoom と Office の横) に接続されています。新しい要素は、追加の &quot;extends&quot; リレーションシップによって既存のオントロジに接続されています。"::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-2.png" alt-text="拡張された RealEstateCore の Space 階層を示す図 (図のようにさらに新しい追加があります)。"::: 
 
 ## <a name="using-the-extended-space-hierarchy"></a>拡張した Space 階層を使用する 
 
@@ -77,7 +77,7 @@ RealEstateCore オントロジの詳細については、"[*概念: 業界標準
 
 各デジタル ツインのモデルは、下の図に示すように、拡張した階層のインターフェイスになります。 
  
-:::image type="content" source="media/concepts-ontologies-extend/ontology-with-models.png" alt-text="拡張した RealEstateCore の Space 階層からの抜粋。Space (最上位レベル)、1 つの Room (中間レベル)、ConferenceRoom、Office、FocusRoom (下位レベル) が含まれます。モデルの名前は、各要素に接続されています (たとえば、Room は Room101 というモデルに接続されています)。"::: 
+:::image type="content" source="media/concepts-ontologies-extend/ontology-with-models.png" alt-text="接続されたモデルの Space、Room、ConferenceRoom、Office、FocusRoom など、拡張された RealEstateCore の Space 階層を示す図。"::: 
 
 モデル ID (`IS_OF_MODEL` 演算子) を使用してデジタル ツインのクエリを実行する場合は、拡張した階層のモデル ID を使用する必要があります。 たとえば、「 `SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:com:example:Office;1')` 」のように入力します。 
 
@@ -162,4 +162,4 @@ RealEstateCore オントロジの詳細については、"[*概念: 業界標準
 
 ## <a name="next-steps"></a>次のステップ
 
-オントロジに基づいてモデルを開発するためのパスを続行します。"[*モデル開発パスでのオントロジ戦略の使用*](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path)" に関する記事。
+オントロジに基づいてモデルを開発するためのパスを続行します。"[モデル開発パスでのオントロジ戦略の使用](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path)" に関する記事。

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 08/12/2021
 ms.author: justinha
-ms.openlocfilehash: d1a3ab5face03754bf84f442ac0fa73768b0fc80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 841d3b0db01938f42f56931bb370e25afe1651a6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97615819"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216960"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の仮想ネットワーク設計の考慮事項と構成オプション
 
@@ -94,9 +94,9 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 | Azure リソース                          | 説明 |
 |:----------------------------------------|:---|
 | ネットワーク インターフェイス カード                  | Azure AD DS は、Windows Server 上で Azure VM として実行されている 2 つのドメイン コントローラー (DC) 上でマネージド ドメインをホストします。 各 VM には、仮想ネットワークのサブネットに接続する仮想ネットワーク インターフェイスがあります。 |
-| 動的標準パブリック IP アドレス      | Azure AD DS は、Standard SKU のパブリック IP アドレスを使用して同期および管理サービスと通信します。 パブリック IP アドレスの詳細については、「[Azure における IP アドレスの種類と割り当て方法](../virtual-network/public-ip-addresses.md)」を参照してください。 |
+| 動的標準パブリック IP アドレス      | Azure AD DS は、Standard SKU のパブリック IP アドレスを使用して同期および管理サービスと通信します。 パブリック IP アドレスの詳細については、「[Azure における IP アドレスの種類と割り当て方法](../virtual-network/ip-services/public-ip-addresses.md)」を参照してください。 |
 | Azure Standard Load Balancer            | Azure AD DS では、ネットワーク アドレス変換 (NAT) および負荷分散 (セキュリティで保護された LDAP と共に使用する場合) に Standard SKU のロード バランサーを使用します。 Azure Load Balancer の詳細については、[Azure Load Balancer の概要](../load-balancer/load-balancer-overview.md)に関する記事を参照してください。 |
-| ネットワーク アドレス変換 (NAT) 規則 | Azure AD DS では、ロード バランサーに対して 3 つの NAT 規則が作成され、使用されます。セキュリティで保護された HTTP トラフィックに関する 1 つの規則と、セキュリティで保護された PowerShell リモート処理に関する 2 つの規則です。 |
+| ネットワーク アドレス変換 (NAT) 規則 | Azure AD DS は、安全な PowerShell リモート処理のために、ロード バランサーで 2 つのインバウンド NAT 規則を作成して使用します。 Standard SKU ロード バランサーが使用されている場合は、アウトバウンド NAT 規則もあります。 Basic SKU ロードバランサーでは、アウトバウンド NAT 規則は必要ありません。 |
 | 負荷分散規則                     | マネージド ドメインが TCP ポート 636 上のセキュリティで保護された LDAP 用に構成されている場合、トラフィックを分散する 3 つの規則がロード バランサーに対して作成され、使用されます。 |
 
 > [!WARNING]
@@ -104,11 +104,15 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 
 ## <a name="network-security-groups-and-required-ports"></a>ネットワーク セキュリティ グループと必要なポート
 
-[ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md) には、Azure 仮想ネットワーク内のトラフィックへのネットワーク トラフィックを許可または拒否するルールの一覧が含まれています。 ネットワーク セキュリティ グループは、サービスが認証および管理機能を提供できるようにする一連の規則を含むマネージド ドメインを展開するときに作成されます。 この既定のネットワーク セキュリティ グループは、マネージド ドメインがデプロイされる仮想ネットワーク サブネットに関連付けられています。
+[ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md) には、Azure 仮想ネットワーク内のネットワーク トラフィックを許可または拒否するルールの一覧が含まれています。 マネージド ドメインを展開すると、サービスが認証および管理機能を提供できるようにする一連の規則を含むネットワーク セキュリティ グループが作成されます。 この既定のネットワーク セキュリティ グループは、マネージド ドメインがデプロイされる仮想ネットワーク サブネットに関連付けられています。
 
-マネージド ドメインで認証と管理サービスを提供するには、次のネットワーク セキュリティ グループの規則が必要です。 マネージド ドメインが展開されている仮想ネットワーク サブネットのネットワーク セキュリティ グループ規則を編集または削除しないでください。
+次のセクションでは、ネットワーク セキュリティ グループと、受信ポートおよび送信ポートの要件について説明します。
 
-| ポート番号 | Protocol | source                             | 到着地 | アクション | 必須 | 目的 |
+### <a name="inbound-connectivity"></a>受信接続
+
+マネージド ドメインで認証と管理サービスを提供するには、次のネットワーク セキュリティ グループの受信規則が必要です。 マネージド ドメインが展開されている仮想ネットワーク サブネットのネットワーク セキュリティ グループ規則を編集または削除しないでください。
+
+| 受信ポート番号 | プロトコル | source                             | 到着地 | アクション | 必須 | 目的 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | はい      | ドメインの管理。 |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | 省略可能      | サポートのためのデバッグ。 |
@@ -118,13 +122,29 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 必要に応じて、[Azure PowerShell を使用して必要なネットワーク セキュリティ グループとルールを作成する](powershell-create-instance.md#create-a-network-security-group)ことができます。
 
 > [!WARNING]
-> これらのネットワーク リソースと構成を手動で編集しないでください。 正しく構成されていないネットワーク セキュリティ グループまたはユーザー定義のルート テーブルを、マネージド ドメインが展開されているサブネットに関連付けると、Microsoft のドメインのサービスと管理の機能が中断する可能性があります。 Azure AD テナントとマネージド ドメインの間の同期も中断されます。
+> 正しく構成されていないネットワーク セキュリティ グループまたはユーザー定義のルート テーブルを、マネージド ドメインが展開されているサブネットに関連付けると、Microsoft のドメインのサービスと管理の機能が中断する可能性があります。 Azure AD テナントとマネージド ドメインの間の同期も中断されます。 同期、修正プログラムの適用、または管理を中断する可能性のあるサポートされていない構成を回避するために、リストされているすべての要件に従います。
 >
 > Secure LDAP を使用する場合は、必要な TCP ポート 636 の規則を適宜追加することで、外部トラフィックを許可することができます。 この規則を追加しても、ネットワーク セキュリティ グループの規則がサポート対象外の状態に設定されることはありません。 詳細については、「[インターネット経由での Secure LDAP アクセスをロック ダウンする](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)」を参照してください。
 >
-> *AllowVnetInBound*、*AllowAzureLoadBalancerInBound*、*DenyAllInBound*、*AllowVnetOutBound*、*AllowInternetOutBound*、*DenyAllOutBound* の既定の規則もネットワーク セキュリティ グループに存在します。 これらの既定の規則は編集または削除しないでください。
->
-> 不適切に構成されたネットワーク セキュリティ グループやユーザー定義のルート テーブルが適用され、Azure AD DS がドメインの更新と管理をブロックするようなデプロイには、Azure SLA は適用されません。
+> Azure SLA は、不適切に構成されたネットワーク セキュリティ グループまたはユーザー定義のルート テーブルによって更新または管理がブロックされているデプロイには適用されません。 ネットワーク構成が壊れていると、セキュリティ パッチの適用が妨げられる可能性もあります。
+
+### <a name="outbound-connectivity"></a>送信接続
+
+送信接続の場合、**AllowVnetOutbound** および **AllowInternetOutBound** を維持するか、次の表にリストされている ServiceTag を使用して送信トラフィックを制限できます。 AzureUpdateDelivery の ServiceTag は、[PowerShell](powershell-create-instance.md) を介して追加する必要があります。
+
+フィルター処理された送信トラフィックは、クラシック デプロイではサポートされていません。
+
+
+| 送信ポート番号 | プロトコル | source | 到着地   | アクション | 必須 | 目的 |
+|:--------------------:|:--------:|:------:|:-------------:|:------:|:--------:|:-------:|
+| 443 | TCP   | Any    | AzureActiveDirectoryDomainServices| Allow  | はい      | Azure AD Domain Services 管理サービスとの通信。 |
+| 443 | TCP   | Any    | AzureMonitor                      | Allow  | はい      | 仮想マシンの監視。 |
+| 443 | TCP   | Any    | 記憶域                           | Allow  | はい      | Azure Storage との通信。   | 
+| 443 | TCP   | Any    | AzureActiveDirectory              | Allow  | はい      | Azure Active Directory との通信。  |
+| 443 | TCP   | Any    | AzureUpdateDelivery               | Allow  | はい      | Windows Update との通信。  | 
+| 80  | TCP   | Any    | AzureFrontDoor.FirstParty         | Allow  | はい      | Windows Update からのパッチのダウンロード。    |
+| 443 | TCP   | Any    | GuestAndHybridManagement          | Allow  | はい      | セキュリティ パッチの自動管理。   |
+
 
 ### <a name="port-5986---management-using-powershell-remoting"></a>ポート 5986 - PowerShell リモート処理を使用した管理
 
@@ -146,12 +166,14 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
     * アクセスは、管理やトラブルシューティングのシナリオなど、業務上の正当な理由でのみ許可されます。
 * この規則を *[拒否]* に設定し、必要な場合にのみ *[許可]* に設定することができます。 ほとんどの管理タスクと監視タスクは、PowerShell リモート処理を使用して実行されます。 RDP は、Microsoft が高度なトラブルシューティングのためにマネージド ドメインへのリモート接続が必要になるような頻度の低いイベントでのみ使用されます。
 
-> [!NOTE]
-> このネットワーク セキュリティ グループの規則を編集しようとすると、ポータルから *CorpNetSaw* サービス タグを手動で選択することはできません。 *CorpNetSaw* サービス タグを使用する規則を手動で構成するには、Azure PowerShell または Azure CLI を使用する必要があります。
->
-> たとえば、次のスクリプトを使用して、RDP を許可する規則を作成できます。 
->
-> `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
+
+このネットワーク セキュリティ グループの規則を編集しようとすると、ポータルから *CorpNetSaw* サービス タグを手動で選択することはできません。 *CorpNetSaw* サービス タグを使用する規則を手動で構成するには、Azure PowerShell または Azure CLI を使用する必要があります。
+
+たとえば、次のスクリプトを使用して、RDP を許可する規則を作成できます。 
+
+```powershell
+Get-AzNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "*" -DestinationPortRange "3389" -DestinationAddressPrefix "*" | Set-AzNetworkSecurityGroup
+```
 
 ## <a name="user-defined-routes"></a>ユーザー定義のルート
 

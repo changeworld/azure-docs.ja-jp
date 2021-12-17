@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b62e341d35a4ff7fd5a7ddd6d9f19b138aaf0aa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c4dc8b3e079f224dbefde3bc12b5d79a4db32faa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071649"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589608"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>ブロック BLOB データに対してポイントインタイム リストアを実行する
 
@@ -23,7 +24,7 @@ ms.locfileid: "99071649"
 ポイントインタイム リストアの詳細については、「[ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md)」を参照してください。
 
 > [!CAUTION]
-> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 後で復元が必要になる可能性がある場合は、コンテナー全体を削除するのではなく、個々の BLOB を削除してください。 また、誤って削除されるのを防ぐために、コンテナーと BLOB の論理的な削除を有効にすることをお勧めします。 詳細については、「[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)」および「[BLOB の論理的な削除](soft-delete-blob-overview.md)」を参照してください。
+> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 後で復元が必要になる可能性がある場合は、コンテナー全体を削除するのではなく、個々の BLOB を削除してください。 また、誤って削除されるのを防ぐために、コンテナーと BLOB の論理的な削除を有効にすることをお勧めします。 詳細については、「[コンテナーの論理的な削除](soft-delete-container-overview.md)」と「[BLOB の論理的な削除](soft-delete-blob-overview.md)」を参照してください。
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>ポイントインタイム リストアを有効にして構成する
 
@@ -86,7 +87,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用してポイントインタイム リストアを構成するには、まず、Azure CLI バージョン 2.2.0 以降をインストールします。 次に、[az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) コマンドを呼び出して、ポイントインタイム リストアと、ストレージ アカウントのその他の必須なデータ保護設定を有効にします。
+Azure CLI を使用してポイントインタイム リストアを構成するには、まず、Azure CLI バージョン 2.2.0 以降をインストールします。 次に、[az storage account blob-service-properties update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) コマンドを呼び出して、ポイントインタイム リストアと、ストレージ アカウントのその他の必須なデータ保護設定を有効にします。
 
 次の例では、論理的な削除を有効にして論理的な削除の保持期間を 14 日に設定し、変更フィードとバージョン管理を有効にし、復元期間が 7 日に設定されているポイントインタイム リストアを有効にします。 例を実行するときは、必ず山かっこ内の値を実際の値に置き換えてください。
 
@@ -127,7 +128,7 @@ PowerShell または Azure CLI で復元操作を実行する場合は、復元�
 >
 > ストレージ アカウントが geo レプリケートされている場合は、復元操作中にセカンダリ ロケーションからの読み取り操作を続行できます。
 >
-> 一連のデータの復元にかかる時間は、復元期間中に行われた書き込み操作と削除操作の数に基づきます。 たとえば、100 万オブジェクトを持つアカウントで毎日 3,000 オブジェクトが追加され、毎日 1,000 オブジェクトが削除される場合、過去 30 日間のポイントまで復元するのに約 2 時間必要になります。 1 保有期間と過去 90 日間の復元は、この変更率のアカウントには推奨されません。
+> 一連のデータの復元にかかる時間は、復元ジョブが取得されるまでの最大 1 時間後の復元期間中に行われた書き込み操作と削除操作の数に基づきます。 たとえば、100 万オブジェクトを持つアカウントで毎日 3,000 オブジェクトが追加され、毎日 1,000 オブジェクトが削除される場合、30 日前の時点まで復元するのに約 2 ～ 3 時間必要になります。 変更回数が少ない復元では、復元に最大 1 時間が必要になります。 1 保有期間と過去 90 日間の復元は、この変更率のアカウントには推奨されません。
 
 ### <a name="restore-all-containers-in-the-account"></a>アカウント内のすべてのコンテナーを復元する
 
@@ -192,7 +193,7 @@ az storage blob restore \
 ```azurecli
 az storage account show \
     --name <storage-account> \
-    --resource-group <resource_group> \ 
+    --resource-group <resource_group> \
     --expand blobRestoreStatus \
     --query blobRestoreStatus.status \
     --output tsv
@@ -258,7 +259,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -TimeToRestore (Get-Date).AddDays(-3)
 ```
 
-既定では、**Restore-AzStorageBlobRange** コマンドは非同期的に実行されます。 復元操作を非同期的に開始すると、PowerShell に操作のプロパティのテーブルがすぐに表示されます。  
+既定では、**Restore-AzStorageBlobRange** コマンドは非同期的に実行されます。 復元操作を非同期的に開始すると、PowerShell に操作のプロパティのテーブルがすぐに表示されます。
 
 ```powershell
 Status     RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges

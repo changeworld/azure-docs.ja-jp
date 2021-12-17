@@ -1,14 +1,14 @@
 ---
 title: Cloud Solution Provider プログラムの考慮事項
 description: CSP パートナーにとって、Azure の委任されたリソース管理は、粒度の細かいアクセス許可を実現することによってセキュリティと制御を強化する効果があります。
-ms.date: 03/12/2021
+ms.date: 09/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8736cf913739f2bd16fb519aed98fd336f6876a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a53ec7cfc2e9f82664e57eecf5bf3f587444134
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419390"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629106"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse と Cloud Solution Provider プログラム
 
@@ -25,13 +25,13 @@ AOBO を使用すると、テナント内の[管理エージェント](/partner-
 
 ![AOBO を使用したテナント管理を示した図。](../media/csp-1.jpg)
 
-## <a name="azure-delegated-resource-management"></a>Azure の委任されたリソース管理
+## <a name="azure-lighthouse"></a>Azure Lighthouse
 
-Azure Lighthouse を使用すると、次の図に示すように、さまざまなグループをさまざまな顧客またはロールに割り当てることができます。 ユーザーは Azure の委任されたリソース管理によって適切なレベルのアクセス権を持つことになるため、管理エージェント ロールを持つ (つまり、完全な AOBO アクセス権を持つ) ユーザーの数を減らすことができます。 これにより、顧客のリソースへの不要なアクセスが制限され、セキュリティを向上させることができます。 また、より柔軟に、複数の顧客を大規模に管理できます。
+Azure Lighthouse を使用すると、次の図に示すように、さまざまなグループをさまざまな顧客またはロールに割り当てることができます。 ユーザーは [Azure の委任されたリソース管理](architecture.md)によって適切なレベルのアクセス権を持つことになるため、管理エージェント ロールを持つ (つまり、完全な AOBO アクセス権を持つ) ユーザーの数を減らすことができます。 これにより、顧客のリソースへの不要なアクセスが制限され、セキュリティを向上させることができます。 また、必要以上のアクセス権をユーザーに付与することなく、各ユーザーの職務に最も適した [Azure 組み込みロール](tenants-users-roles.md#role-support-for-azure-lighthouse)を使用して、大規模な多数の顧客を柔軟に管理できます。
+
+![AOBO と Azure Lighthouse を使用したテナント管理を示す図。](../media/csp-2.jpg)
 
 CSP プログラムを使用して作成したサブスクリプションをオンボードするには、[Azure Lighthouse へのサブスクリプションのオンボード](../how-to/onboard-customer.md)に関する記事で説明されている手順に従ってください。 テナント内に管理エージェント ロールを持つすべてのユーザーが、このオンボードを実行できます。
-
-![AOBO と Azure の委任されたリソース管理を使用したテナント管理を示した図。](../media/csp-2.jpg)
 
 > [!TIP]
 > プライベート プランを含む[マネージド サービス オファー](managed-services-offers.md)は、クラウド ソリューション プロバイダー (CSP) プログラムのリセラーを通じて確立されたサブスクリプションではサポートされません。 [Azure Resource Manager テンプレートを使用する](../how-to/onboard-customer.md)ことで、これらのサブスクリプションを Azure Lighthouse にオンボードできます。

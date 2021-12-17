@@ -3,20 +3,20 @@ title: System for Cross-Domain Identity Management (SCIM) 2.0 プロトコル準
 description: SCIM 2.0 をサポートするギャラリー以外のアプリケーションを Azure AD に追加する際に発生する、一般的なプロトコル互換性の問題を解決する方法
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/07/2021
+ms.date: 08/25/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 268931715500631ac2d10feacebff1d5c65931bf
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: fddb35cd2b610280440ac01fe5ffc9027a59a2b7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028793"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021887"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
 
@@ -43,78 +43,47 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 | 拡張属性で、属性名の前にコロン ":" 表記ではなくドット "." 表記が使用されている |  はい  | 2018 年 12 月 18 日  | customappSSO にダウングレード |
 | 複数値属性のパッチ要求に無効なパス フィルター構文が含まれている | はい  |  2018 年 12 月 18 日  | customappSSO にダウングレード |
 | グループの作成要求に無効なスキーマ URI が含まれている | はい  |  2018 年 12 月 18 日  |  customappSSO にダウングレード |
-| PATCH の動作を更新してコンプライアンスを確保する (例: ブール値としての active、適切なグループ メンバーシップの削除) | No | TBD| プレビュー フラグを使用する |
+| PATCH の動作を更新してコンプライアンスを確保する (例: ブール値としての active、適切なグループ メンバーシップの削除) | No | TBD| 機能フラグの使用 |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>SCIM の動作を変更するフラグ
 既定の SCIM クライアントの動作を変更するには、アプリケーションのテナント URL で以下のフラグを使用します。
 
-:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="後の動作への SCIM フラグ。":::
+:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.png" alt-text="後の動作への SCIM フラグ。":::
 
-* 次の URL を使用して PATCH の動作を更新し、SCIM コンプライアンスを確保します (たとえば、ブール値としての active、適切なグループ メンバーシップの削除)。 この動作は、現在、フラグを使用している場合にのみ使用できますが、今後数か月以内に既定の動作になる予定です。 このプレビュー フラグは現在、オンデマンド プロビジョニングでは機能しません。 
+次の URL を使用して PATCH の動作を更新し、SCIM へのコンプライアンスを確保します。 このフラグによって、次の動作が変更されます。                
+- ユーザーを無効にするために行われる要求
+- 単一値の文字列属性を追加するための要求
+- 複数の属性を置き換える要求
+- グループのメンバーを削除する要求        
+
+この動作は、現在、フラグを使用している場合にのみ使用できますが、今後数か月以内に既定の動作になる予定です。 この機能フラグは、現在オンデマンド プロビジョニングでは機能しません。 
   * **URL (SCIM Compliant):** aadOptscim062020
   * **SCIM RFC 参照:** 
-    * https://tools.ietf.org/html/rfc7644#section-3.5.2
-  * **動作:**
+    * https://tools.ietf.org/html/rfc7644#section-3.5.2    
+
+次に示すのは、同期エンジンによって現在送信されている内容と、機能フラグを有効にした後で送信される要求の概要を比較するときに役立つ要求の例です。 
+
+**ユーザーを無効にするために行われる要求:**
+
+**機能フラグなし**
   ```json
-   PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
-   {
+  {
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
     "Operations": [
         {
-            "op": "remove",
-            "path": "members[value eq \"16b083c0-f1e8-4544-b6ee-27a28dc98761\"]"
+            "op": "Replace",
+            "path": "active",
+            "value": "False"
         }
     ]
-   }
+}
+  ```
 
-    PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
-    {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
-    ],
-    "Operations": [
-        {
-            "op": "add",
-            "path": "members",
-            "value": [
-                {
-                    "value": "10263a6910a84ef9a581dd9b8dcc0eae"
-                }
-            ]
-        }
-    ]
-    } 
-
-    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
-    {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
-    ],
-    "Operations": [
-        {
-            "op": "replace",
-            "path": "emails[type eq \"work\"].value",
-            "value": "someone@contoso.com"
-        },
-        {
-            "op": "replace",
-            "path": "emails[type eq \"work\"].primary",
-            "value": true
-        },
-        {
-            "op": "replace",
-            "value": {
-                "active": false,
-                "userName": "someone"
-            }
-        }
-    ]
-    }
-
-    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
-    {
+**機能フラグあり**
+  ```json
+  {
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
@@ -125,37 +94,161 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
             "value": false
         }
     ]
-    }
+}
+  ```
 
-    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
+**単一値の文字列属性を追加するために行われる要求:**
+
+**機能フラグなし**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
     {
+        "op": "Add",
+        "path": "nickName",
+        "value": "Babs"
+     }
+   ]
+}
+
+  ```
+
+**機能フラグあり**
+  ```json
+{
+  "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+  "Operations": [
+    {
+      "op": "add",
+      "path": "nickName",
+      "value": "Babs"
+    }
+  ]
+}
+  ```
+
+**複数の属性を置き換える要求:**
+
+**機能フラグなし**
+  ```json
+{
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
     "Operations": [
         {
-            "op": "add",
-            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department",
-            "value": "Tech Infrastructure"
+            "op": "Replace",
+            "path": "displayName",
+            "value": "Pvlo"
+        },
+        {
+            "op": "Replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "TestBcwqnm@test.microsoft.com"
+        },
+        {
+            "op": "Replace",
+            "path": "name.givenName",
+            "value": "Gtfd"
+        },
+        {
+            "op": "Replace",
+            "path": "name.familyName",
+            "value": "Pkqf"
+        },
+        {
+            "op": "Replace",
+            "path": "externalId",
+            "value": "Eqpj"
+        },
+        {
+            "op": "Replace",
+            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber",
+            "value": "Eqpj"
         }
     ]
-    }
-   
+}
   ```
 
+**機能フラグあり**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "TestMhvaes@test.microsoft.com"
+        },
+        {
+            "op": "replace",
+            "value": {
+                "displayName": "Bjfe",
+                "name.givenName": "Kkom",
+                "name.familyName": "Unua",
+                "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber": "Aklq"
+            }
+        }
+    ]
+} 
+  ```
+
+**グループのメンバーを削除するために行われる要求:**
+
+**機能フラグなし**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "Remove",
+            "path": "members",
+            "value": [
+                {
+                    "value": "u1091"
+                }
+            ]
+        }
+    ]
+} 
+  ```
+
+**機能フラグあり**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "remove",
+            "path": "members[value eq \"7f4bc1a3-285e-48ae-8202-5accb43efb0e\"]"
+        }
+    ]
+}
+  ```
+
+
   * **ダウングレード URL:** ギャラリー以外のアプリケーションで新しい SCIM 準拠の動作が既定になったら、次の URL を使用して、SCIM に準拠していない以前の動作にロールバックすることができます。AzureAdScimPatch2017
-  
+
 
 
 ## <a name="upgrading-from-the-older-customappsso-job-to-the-scim-job"></a>前の customappsso ジョブから SCIM ジョブへのアップグレード
 次の手順に従うと、既存の customappsso ジョブが削除され、新しい scim ジョブが作成されます。 
- 
+
 1. Azure portal (https://portal.azure.com ) にサインインします。
 2. Azure portal の **[Azure Active Directory] > [エンタープライズ アプリケーション]** セクションで、既存の SCIM アプリケーションを検索して選択します。
 3. 既存 SCIM アプリの **[プロパティ]** セクションで、 **[オブジェクト ID]** をコピーします。
 4. 新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
 5. Graph エクスプローラーで次のコマンドを実行して、プロビジョニング ジョブの ID を確認します。 "[object-id]" を、手順 3 でコピーしたサービス プリンシパル ID (オブジェクト ID) に置き換えます。
- 
+
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
    ![ジョブを取得する](media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "ジョブを取得する") 
@@ -163,21 +256,21 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 6. 結果内で、"customappsso" または "scim" のいずれかで始まる完全な "ID" 文字列をコピーします。
 7. バックアップを作成するために、次のコマンドを実行して属性マッピング構成を取得します。 前と同じ [object-id] を使用し、[job-id] を、最後の手順でコピーしたプロビジョニング ジョブ ID に置き換えます。
- 
+
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
- 
+
    ![スキーマを取得する](media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "スキーマを取得する") 
 
 8. 最後の手順から JSON 出力をコピーし、テキスト ファイルに保存します。 この JSON には、前のアプリに追加したすべてのカスタム属性マッピングが含まれており、およそ数千行の JSON となります。
 9. 次のコマンドを実行して、プロビジョニング ジョブを削除します。
- 
+
    `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
 10. 次のコマンドを実行して、最新のサービス修正プログラムを含む新しいプロビジョニング ジョブを作成します。
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
- `{   templateId: "scim"   }`
-   
+ `{   "templateId": "scim"   }`
+
 11. 最後の手順の結果内で、"scim" で始まる完全な "ID" 文字列をコピーします。 必要に応じて、次のコマンドで、[new-job-id] をコピーした新しいジョブ ID に置き換え、要求本文として手順 7 の JSON 出力を入力してコマンドを実行し、前の属性マッピングを再適用します。
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
@@ -198,7 +291,7 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
    `{   templateId: "customappsso"   }`
- 
+
 6. 最初の Web ブラウザー ウィンドウに戻り、アプリケーション用の **[プロビジョニング]** タブを選択します。
 7. 通常どおりにユーザー プロビジョニング構成を完了します。
 

@@ -4,12 +4,12 @@ description: デバイスまたはデスクトップ アプリケーション、
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8e866dc30d83f1b1f080a1be385026dcfbc77320
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 648c9ee1de00ef638354a287e43fa234610e9dc7
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122103"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291500"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -40,9 +40,9 @@ Application Insights SDK の参照がまだない場合:
 
   * [ASP.NET プロジェクト](./asp-net.md)
   * [ASP.NET Core プロジェクト](./asp-net-core.md)
-  * [Java プロジェクト](./java-get-started.md)
+  * [Java プロジェクト](./java-in-process-agent.md)
   * [Node.js プロジェクト](./nodejs.md)
-  * [各 Web ページの JavaScript](./javascript.md) 
+  * [各 Web ページの JavaScript](./javascript.md)
 * デバイスまたは Web サーバー コードに次を追加します。
 
     *C#:* `using Microsoft.ApplicationInsights;`
@@ -59,13 +59,14 @@ Application Insights SDK の参照がまだない場合:
 
 [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) アプリと [.NET/.NET Core 向けの非 HTTP/ワーカー](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) アプリの場合、それぞれのドキュメントに説明されているとおり、依存関係インジェクション コンテナーから `TelemetryClient` のインスタンスを取得することが推奨されます。
 
-AzureFunctions v2 + または Azure WebJobs v3 + を使用する場合は、このドキュメント (https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher ) に従ってください。
+AzureFunctions v2 以降または Azure WebJobs v3 以降を使用する場合は、[このドキュメント](../../azure-functions/functions-monitoring.md)に従ってください。
 
 *C#*
 
 ```csharp
 private TelemetryClient telemetry = new TelemetryClient();
 ```
+
 このメソッドが現在不使用のメッセージであることがわかっている場合は、[microsoft/ApplicationInsights-dotnet # 1152](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1152) にアクセスして詳細を確認してください。
 
 *Visual Basic*
@@ -78,7 +79,7 @@ Private Dim telemetry As New TelemetryClient
 
 ```java
 private TelemetryClient telemetry = new TelemetryClient();
-``` 
+```
 
 *Node.js*
 
@@ -148,8 +149,6 @@ telemetry.trackEvent({name: "WinGame"});
 
 テレメトリは、[Application Insights ログのタブ](../logs/log-query-overview.md)または[使用エクスペリエンス](usage-overview.md)の `customEvents` テーブルにあります。 イベントは、`trackEvent(..)` または[クリック分析自動収集プラグイン](javascript-click-analytics-plugin.md)から取得できます。
 
- 
-
 [サンプリング](./sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackEvent() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 カスタム イベントの正しい数を取得するには、したがって `customEvents | summarize sum(itemCount)` などのコードを使用する必要があります。
 
 ## <a name="getmetric"></a>GetMetric
@@ -177,15 +176,15 @@ Application Insights にメトリックを送信するために、`TrackMetric(.
 
 *JavaScript*
 
- ```javascript
-appInsights.trackMetric("queueLength", 42.0);
- ```
+```javascript
+appInsights.trackMetric({name: "queueLength", average: 42});
+```
 
 *C#*
 
 ```csharp
 var sample = new MetricTelemetry();
-sample.Name = "metric name";
+sample.Name = "queueLength";
 sample.Value = 42.3;
 telemetryClient.TrackMetric(sample);
 ```
@@ -198,9 +197,9 @@ telemetry.trackMetric("queueLength", 42.0);
 
 *Node.js*
 
- ```javascript
+```javascript
 telemetry.trackMetric({name: "queueLength", value: 42.0});
- ```
+```
 
 ### <a name="custom-metrics-in-analytics"></a>Analytics でのカスタム メトリック
 
@@ -398,7 +397,7 @@ try
 }
 catch (ex)
 {
-    appInsights.trackException(ex);
+    appInsights.trackException({exception: ex});
 }
 ```
 
@@ -418,7 +417,7 @@ catch (ex)
 SDK が多数の例外を自動的にキャッチするため、常に TrackException を明示的に呼び出す必要はありません。
 
 * ASP.NET:[例外をキャッチするコードを記述します](./asp-net-exceptions.md)。
-* Java EE:[例外は自動的にキャッチされます](./java-get-started.md#exceptions-and-request-failures)。
+* Java EE:[例外は自動的にキャッチされます](./java-in-process-agent.md)。
 * JavaScript:例外は自動的にキャッチされます。 自動コレクションを無効にする場合は、Web ページに挿入するコード スニペットに次の行を追加します。
 
 ```javascript
@@ -459,7 +458,7 @@ TrackTrace を使用すると、Application Insights に "階層リンクの追�
 
 .NET [ログ アダプター](./asp-net-trace-logs.md)では、この API を使用してポータルにサードパーティのログを送信します。
 
-Java の [Log4J や Logback などの標準ロガー](./java-trace-logs.md)では、Application Insights Log4j または Logback アペンダーを使用してポータルにサードパーティのログを送信します。
+Java では、[Application Insights Java エージェント](java-in-process-agent.md)によってログが自動収集され、ポータルに送信されます。
 
 *C#*
 
@@ -504,7 +503,7 @@ trackTrace({
 メッセージ コンテンツで検索できますが、(プロパティ値とは異なり) フィルター処理はできません。
 
 `message` のサイズ制限は、プロパティの制限よりも非常に高くなっています。
-TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。 たとえば、メッセージ中で POST データをエンコードできます。  
+TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。 たとえば、メッセージ中で POST データをエンコードできます。
 
 加えて、メッセージに重大度レベルを追加することができます。 また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタリングしたり検索したりすることができます。 次に例を示します。
 
@@ -601,13 +600,13 @@ finally
 }
 ```
 
-サーバー SDK には、データベースや REST API などに対する依存関係の呼び出しを自動的に検出して追跡する[依存関係モジュール](./asp-net-dependencies.md)が含まれています。 このモジュールを機能させるには、サーバーにエージェントをインストールする必要があります。 
+サーバー SDK には、データベースや REST API などに対する依存関係の呼び出しを自動的に検出して追跡する[依存関係モジュール](./asp-net-dependencies.md)が含まれています。 このモジュールを機能させるには、サーバーにエージェントをインストールする必要があります。
 
-Java では、[Java エージェント](./java-agent.md)を使用して、特定の依存関係呼び出しを自動的に追跡できます。
+Java では、[Application Insights Java エージェント](java-in-process-agent.md)を使用して、多くの依存関係呼び出しを自動的に追跡することができます。
 
-この呼び出しは、自動追跡ではキャッチされない呼び出しを追跡する場合、またはエージェントをインストールしない場合に使用します。
+この呼び出しは、自動追跡ではキャッチされない呼び出しを追跡する場合に使用します。
 
-C# の標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) を編集し、`DependencyCollector.DependencyTrackingTelemetryModule` への参照を削除します。 Java では、標準の依存関係を自動的に収集したくない場合は Java エージェントをインストールしないでください。
+C# の標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) を編集し、`DependencyCollector.DependencyTrackingTelemetryModule` への参照を削除します。 Java の場合は、「[特定の自動収集テレメトリの抑制](./java-standalone-config.md#suppressing-specific-auto-collected-telemetry)」を参照してください。
 
 ### <a name="dependencies-in-analytics"></a>Analytics での依存関係
 
@@ -633,7 +632,7 @@ dependencies
 
 *C#*
 
- ```csharp
+```csharp
 telemetry.Flush();
 // Allow some time for flushing before shutdown.
 System.Threading.Thread.Sleep(5000);
@@ -798,8 +797,6 @@ telemetry.trackEvent("WinGame", properties, metrics);
 
 > [!NOTE]
 > プロパティで個人を特定できる情報を記録しないように注意します。
->
->
 
 ### <a name="alternative-way-to-set-properties-and-metrics"></a>プロパティとメトリックを設定する別の方法
 
@@ -820,8 +817,6 @@ telemetry.TrackEvent(event);
 
 > [!WARNING]
 > Track*() を複数回呼び出すために、同じテレメトリ項目インスタンス (この例では `event`) を再利用しないでください。 再利用すると、正しくない構成でテレメトリが送信される場合があります。
->
->
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>Analytics でのカスタム測定とプロパティ
 
@@ -912,7 +907,6 @@ gameTelemetry.TrackEvent("WinGame")
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.TelemetryContext;
 ...
-
 
 TelemetryClient gameTelemetry = new TelemetryClient();
 TelemetryContext context = gameTelemetry.getContext();
@@ -1093,7 +1087,6 @@ telemetry.Context.Operation.Name = "MyOperationName";
   * **[ID]** :診断検索でイベントを調べるときに関連項目を見つけることができるように、さまざまなイベントを関連付けるために生成される値。
   * **Name**:識別子。通常は HTTP 要求の URL です。
   * **SyntheticSource**:null 値または空ではない場合に、要求元がロボットまたは Web テストとして識別されたことを示す文字列。 既定で、メトリックス エクスプローラーの計算から除外されます。
-* **[プロパティ]** :すべてのテレメトリ データとともに送信されるプロパティ。 個々 の Track* 呼び出しでオーバーライドできます。
 * **セッション**:ユーザーのセッション。 ID は生成された値に設定されますが、ユーザーがしばらくの間アクティブでない場合には変更されます。
 * **[ユーザー]** :ユーザー情報。
 
@@ -1132,4 +1125,4 @@ telemetry.Context.Operation.Name = "MyOperationName";
 ## <a name="next-steps"></a><a name="next"></a>次のステップ
 
 * [イベントおよびログを検索する](./diagnostic-search.md)
-* [トラブルシューティング](../faq.md)
+* [トラブルシューティング](../faq.yml)

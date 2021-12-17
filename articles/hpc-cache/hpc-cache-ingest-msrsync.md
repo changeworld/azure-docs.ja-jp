@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache のデータ取り込み - msrsync
 description: msrsync を使用して Azure HPC Cache の Blob Storage ターゲットにデータを移動する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 10/30/2019
-ms.author: v-erkel
-ms.openlocfilehash: 323ecd6a2dd001c3c8df1b2ec15f0ae8402ec70c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: femila
+ms.openlocfilehash: 6ce1cb90f36b87cf10521b7ffbafa9a16bd62aef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87092407"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088181"
 ---
 # <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC Cache のデータ取り込み - msrsync を使用した方法
 
@@ -52,4 +52,4 @@ Azure HPC Cache の Blob Storage にデータを移動する方法について�
 
    たとえば、このコマンドは /test/source-repository から /mnt/hpccache/repository に 64 プロセスで 11,000 ファイルを移動するように指定されています。
 
-   ``mrsync -P --stats -p64 -f170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/hpccache/repository``
+   `mrsync -P --stats -p64 -f170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/hpccache/repository`

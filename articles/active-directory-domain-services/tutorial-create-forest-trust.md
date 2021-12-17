@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/21/2021
+ms.date: 10/19/2021
 ms.author: justinha
-ms.openlocfilehash: e381c80dddc4484d541f5f81de6b5df712cff69b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c103205453a680a9f67c0150cdbfd60cc062ca69
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673470"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266165"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>チュートリアル:Azure Active Directory Domain Services で、オンプレミスのドメインへの送信フォレストの信頼を作成する
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-このチュートリアルでは、Azure portal を使用して Azure AD DS からの送信フォレストの信頼を作成して構成します。 最初に、[Azure portal](https://portal.azure.com) にサインインします。
+このチュートリアルでは、Azure portal を使用して Azure AD DS からの送信フォレストの信頼を作成して構成します。 最初に、[Azure portal](https://portal.azure.com) にサインインします。 Microsoft Azure Active Directory Domain Services インスタンスを変更するには、グローバル管理者の権限が必要です。 
 
 ## <a name="networking-considerations"></a>ネットワークに関する考慮事項
 
@@ -74,9 +74,20 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
 オンプレミスの環境からマネージド ドメインを正しく解決するには、既存の DNS サーバーにフォワーダーを追加することが必要になる場合があります。 マネージド ドメインと通信するようにオンプレミスの環境を構成していない場合は、オンプレミスの AD DS ドメインに対して管理ワークステーションから次の手順を行います。
 
 1. **[スタート]**  >  **[管理ツール]**  >  **[DNS]** の順に選択します。
-1. DNS サーバー (例: *myAD01*) を右クリックし、 **[プロパティ]** を選択します。
-1. **[フォワーダー]** 、 **[編集]** の順に選択して、他のフォワーダーを追加します。
-1. *10.0.2.4* や *10.0.2.5* などの、マネージド ドメインの IP アドレスを追加します。
+1. DNS ゾーン (*aaddscontoso.com* など) を選択します。
+1. **[条件付きフォワーダー]** を選択し、右クリックして **[新規条件付フォワーダー]** を選択します。
+1. 次の例に示すように、他の **[DNS ドメイン]** (*contoso.com* など) を入力し、その名前空間の DNS サーバーの IP アドレスを入力します。
+
+    ![DNS サーバーの条件付きフォワーダーを追加して構成する方法を示すスクリーンショット。](./media/manage-dns/create-conditional-forwarder.png)
+
+1. 次の例に示すように、 **[Store this conditional forwarder in Active Directory, and replicate it as follows]\(この条件付きフォワーダーを Active Directory に格納してから、次のようにレプリケートする\)** チェック ボックスをオンにしてから、 *[このドメインのすべての DNS サーバー]* のオプションを選択します。
+
+    ![このドメイン内のすべての DNS サーバーを選択する方法を示すスクリーンショット。](./media/manage-dns/store-in-domain.png)
+
+    > [!IMPORTANT]
+    > 条件付きフォワーダーが "*ドメイン*" ではなく "*フォレスト*" に格納されている場合、その条件付きフォワーダーは失敗します。
+
+1. 条件付きフォワーダーを作成するには、 **[OK]** を選択します。
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>オンプレミス ドメインに受信フォレストの信頼を作成する
 

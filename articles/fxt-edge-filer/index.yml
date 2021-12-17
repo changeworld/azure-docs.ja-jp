@@ -6,55 +6,55 @@ metadata:
   description: 読み取り集中型のハイ パフォーマンス コンピューティング (HPC) タスクのキャッシュ レイヤーとして Azure FXT Edge Filer を使用します。
   ms.service: fxt-edge-filer
   ms.topic: landing-page
-  author: ronhogue
-  ms.author: rohogue
-  ms.date: 03/20/2020
-  ms.openlocfilehash: ab36532f1f3f29fdd4156c2c65f07d761fa76bb4
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  author: ekpgh
+  ms.author: v-erkel
+  ms.date: 05/26/2021
+  ms.openlocfilehash: fab9463980b1a4d020ee11c916964f27654cbdd8
+  ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "80276514"
+  ms.lasthandoff: 06/04/2021
+  ms.locfileid: "111411037"
 landingContent:
 - title: Azure FXT Edge Filer について
   linkLists:
   - linkListType: overview
     links:
     - text: Azure FXT Edge Filer とは
-      url: fxt-overview.md
+      url: overview.md
 - title: はじめに
   linkLists:
   - linkListType: tutorial
     links:
     - text: 1 - ハードウェアをインストールする
-      url: fxt-install.md
+      url: install.md
     - text: 2 - ケーブルを接続する
-      url: fxt-network-power.md
+      url: network-power.md
     - text: 3 - ハードウェア パスワードを設定する
-      url: fxt-node-password.md
+      url: node-password.md
     - text: 4 - クラスターを作成する
-      url: fxt-cluster-create.md
+      url: cluster-create.md
     - text: 5 - クラスター ノードを追加する
-      url: fxt-add-nodes.md
+      url: add-nodes.md
     - text: 6 - バックエンド ストレージを追加して仮想名前空間を構成する
-      url: fxt-add-storage.md
+      url: add-storage.md
     - text: 7 - クラスターのネットワーク設定を構成する
-      url: fxt-configure-network.md
+      url: configure-network.md
     - text: 8 - クラスターにクライアントをマウントする
-      url: fxt-mount-clients.md
+      url: mount-clients.md
 - title: 管理する
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: ハードウェアの状態を監視する
-      url: fxt-monitor.md
+      url: monitor.md
     - text: ハードウェアの電源を安全にオフにする
-      url: fxt-power-off.md
+      url: power-off.md
 - title: リソース
   linkLists:
   - linkListType: reference
     links:
     - text: ハードウェア仕様
-      url: fxt-specs.md
+      url: specs.md
     - text: その他のドキュメント
-      url: fxt-additional-doc.md
+      url: additional-doc.md

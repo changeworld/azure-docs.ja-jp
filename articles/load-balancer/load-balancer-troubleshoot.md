@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: cddaf1bde84d7e60eb59bd4c58c65fa889e06ae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ab256d58284e79323b988b2b81f4c664fa3fc16
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028813"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456680"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer のトラブルシューティング
 
@@ -35,7 +35,7 @@ Load Balancer の接続が利用できない場合の最も一般的な症状を
 
 **検証と解決策**
 
-Standard の ILB は、**既定でセキュリティによって保護されています**。 Basic の ILB では、"*非表示の*" パブリック IP アドレスを使用してインターネットに接続できます。 この IP アドレスは静的ではなく、所有する NSG によってロックダウンされることもないため、これは運用環境のワークロードには推奨されません。 最近、Basic の ILB から Standard の ILB に移行した場合は、NSG によって IP をロックダウンする[送信のみ](egress-only.md)の構成を使用して、パブリック IP を明示的に作成する必要があります。 また、サブネットで [NAT Gateway](../virtual-network/nat-overview.md) を使用することもできます。
+Standard の ILB は、**既定でセキュリティによって保護されています**。 Basic ILB では、既定の送信アクセス IP を呼び出した *非表示の* パブリック IP アドレスを使用してインターネットにアクセスできます。 この IP アドレスは静的ではなく、所有する NSG によってロックダウンされることもないため、これは運用環境のワークロードには推奨されません。 最近、Basic の ILB から Standard の ILB に移行した場合は、NSG によって IP をロックダウンする[送信のみ](egress-only.md)の構成を使用して、パブリック IP を明示的に作成する必要があります。 また、サブネットで [NAT Gateway](../virtual-network/nat-gateway/nat-overview.md) を使用することもできます。 NAT Gateway は、送信に関して推奨されるソリューションです。
 
 ## <a name="cant-change-backend-port-for-existing-lb-rule-of-a-load-balancer-that-has-virtual-machine-scale-set-deployed-in-the-backend-pool"></a>バックエンド プールにデプロイされている仮想マシン スケール セットがあるロード バランサーの既存の LB ルールのバックエンド ポートを変更できません。
 

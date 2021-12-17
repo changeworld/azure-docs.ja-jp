@@ -2,21 +2,21 @@
 title: 'チュートリアル: TeamViewer を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure AD から TeamViewer に対してユーザー アカウントを自動的にプロビジョニング、またはプロビジョニング解除する方法を説明します。
 services: active-directory
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2020
-ms.author: Zhchia
-ms.openlocfilehash: 0362f0d69581c252170b4f37f8564caa7acd3d29
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.author: thwimmer
+ms.openlocfilehash: 76d5ad2e1e025583b122fbb117ccc0d5eb4e2a63
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96182242"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759056"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>チュートリアル: TeamViewer を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -97,7 +97,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[Tentant URL]\(テナントの URL\)** フィールドに「`ttps://webapi.teamviewer.com/scim/v2`」と入力し、 **[シークレット トークン]** に前の手順で作成したスクリプト トークンを入力します。 **[テスト接続]** をクリックして、Azure AD から TeamViewer への接続を確保します。 接続できない場合は、使用中の TeamViewer アカウントで管理者アクセス許可を確保してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[Tenant URL]\(テナントの URL\)** フィールドに「`https://webapi.teamviewer.com/scim/v2`」と入力し、 **[シークレット トークン]** に前の手順で作成したスクリプト トークンを入力します。 **[テスト接続]** をクリックして、Azure AD から TeamViewer への接続を確保します。 接続できない場合は、使用中の TeamViewer アカウントで管理者アクセス許可を確保してから、もう一度試します。
 
     ![テナント URL とシークレット トークンを入力できる場所である [管理者資格情報] ダイアログ ボックスを示すスクリーンショット。](./media/teamViewer-provisioning-tutorial/provisioning.png)
 

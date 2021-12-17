@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: a76ebf95b92b6e1251a04daa9ffb48a9abe15b50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57e608348e460c0598f7003af96ea1ac55bbf951
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89425349"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022818"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure Government とパブリック リージョンの間で Azure VM を移動する 
 
@@ -62,7 +62,6 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 - Azure VM は、フェールオーバー後に作成されたときに、このネットワークに配置されます。
 - ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。
 
-
 ### <a name="set-up-an-azure-storage-account"></a>Azure Storage アカウントの設定
 
 [Azure ストレージ アカウント](../storage/common/storage-account-create.md)を設定します。
@@ -79,7 +78,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 - ドメイン アカウントまたはローカル アカウントを使用できます。
 - Windows VM の場合、ドメイン アカウントを使用していなければ、次のようにしてローカル マシンでのリモート ユーザー アクセス制御を無効にします。 無効にするには、レジスタで、**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** の下に、値 1 を指定した DWORD エントリの **LocalAccountTokenFilterPolicy** を追加します。
-- CLI からレジストリ エントリを追加し、設定を無効にするには、次のように入力します。       ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- CLI からレジストリ エントリを追加して、設定を無効にするには、次のように入力します: `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.`
 - Linux の場合、アカウントは、ソース Linux サーバーの root である必要があります。
 
 
@@ -98,7 +97,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
     - [ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)
     - [ロード バランサー](../load-balancer/index.yml)
-    - [パブリック IP](../virtual-network/virtual-network-public-ip-address.md)
+    - [パブリック IP](../virtual-network/ip-services/virtual-network-public-ip-address.md)
     
     その他のネットワーク コンポーネントについては、ネットワークに関する[ドキュメント](../index.yml?pivot=products&panel=network)を参照してください。
 

@@ -1,23 +1,27 @@
 ---
 title: マッピング データ フローでの参照変換
-description: マッピング データ フローで参照変換を使用して、別のソースからデータを参照します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory および Synapse Analytics パイプラインのマッピング データ フローで参照変換を使用して、別のソースからのデータを参照します。
 author: kromerm
 ms.reviewer: daperlov
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 02/19/2021
-ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: 8c5371fee2b0e7c4440762f9d7e609bf2dd496be
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739370"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060121"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>マッピング データ フローでの参照変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 参照変換を使用して、データ フロー ストリーム内の別のソースからデータを参照します。 参照変換では、一致したデータの列がソース データに追加されます。
 
@@ -27,7 +31,7 @@ ms.locfileid: "101739370"
 
 ## <a name="configuration"></a>構成
 
-![スクリーンショットには、次のテキストで説明されているラベルを含む [参照設定] タブが示されています。](media/data-flow/lookup1.png "参照")
+:::image type="content" source="media/data-flow/lookup1.png" alt-text="スクリーンショットには、次のテキストで説明されているラベルを含む [参照設定] タブが示されています。":::
 
 **[Primary stream]\(プライマリ ストリーム\):** データの受信ストリーム。 このストリームは、結合の左側に相当します。
 
@@ -45,13 +49,13 @@ ms.locfileid: "101739370"
 
 参照条件で等しくない (!=) またはより大きい (>) などの条件演算子を使用するには、2 つの列の間の演算子ドロップダウンを変更します。 非等結合では、 **[最適化]** タブで **[固定]** ブロードキャストを使用して、2 つのストリームのうち少なくとも 1 つをブロードキャストする必要があります。
 
-![非等参照](media/data-flow/non-equi-lookup.png "非等参照")
+:::image type="content" source="media/data-flow/non-equi-lookup.png" alt-text="非等参照":::
 
 ## <a name="analyzing-matched-rows"></a>一致した行の分析
 
 参照変換の後で、`isMatch()` 関数を使用して、参照が個々の行と一致したかどうかを確認できます。
 
-![参照パターン](media/data-flow/lookup111.png "参照パターン")
+:::image type="content" source="media/data-flow/lookup111.png" alt-text="参照パターン":::
 
 このパターンの例は、条件分割変換を使用して `isMatch()` 関数で分割する場合です。 上記の例では、一致する行が上のストリームを進み、一致しない行は ```NoMatch``` ストリームを進みます。
 
@@ -61,7 +65,7 @@ ms.locfileid: "101739370"
 
 ## <a name="broadcast-optimization"></a>ブロードキャストの最適化
 
-![ブロードキャスト結合](media/data-flow/broadcast.png "ブロードキャスト結合")
+:::image type="content" source="media/data-flow/broadcast.png" alt-text="ブロードキャスト結合":::
 
 結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト** を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには **[Fixed]\(固定\)** を選択します。
 
@@ -87,7 +91,7 @@ ms.locfileid: "101739370"
 ```
 ### <a name="example"></a>例
 
-![スクリーンショットには、次のコードの [参照設定] タブが示されています。](media/data-flow/lookup-dsl-example.png "参照")
+:::image type="content" source="media/data-flow/lookup-dsl-example.png" alt-text="スクリーンショットには、次のコードの [参照設定] タブが示されています。":::
 
 次のコード スニペットには、上記の参照構成に対するデータ フロー スクリプトが含まれています。
 
@@ -98,8 +102,8 @@ SQLProducts, DimProd lookup(ProductID == ProductKey,
     asc(ProductKey, true),
     broadcast: 'auto')~> LookupKeys
 ```
-## 
-次のステップ
+
+## <a name="next-steps"></a>次のステップ
 
 * [結合](data-flow-join.md)変換と[存在](data-flow-exists.md)変換はどちらも、複数のストリーム入力を受け取ります
 * ```isMatch()``` と共に[条件分割変換](data-flow-conditional-split.md)を使用して、一致する値と一致しない値に行を分割します

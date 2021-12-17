@@ -1,0 +1,219 @@
+### YamlMime:FAQ
+metadata:
+  title: FAQ - Azure の Network Performance Monitor ソリューション | Microsoft Docs
+  description: この記事では、Azure の Network Performance Monitor についてよく寄せられる質問について説明します。 Network Performance Monitor (NPM) は、ネットワークのパフォーマンスをほぼリアルタイムで監視し、ネットワーク パフォーマンスのボトルネックを検出して特定するのに役立ちます。
+  ms.topic: article
+  ms.service: azure-monitor
+  author: vinynigam
+  ms.author: vinigam
+  ms.date: 10/12/2018
+  ms.openlocfilehash: dcf032b47396f8e952d38ab9e2c82c8552952da6
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253839"
+title: Network Performance Monitor ソリューションの FAQ
+summary: "\n![ネットワーク パフォーマンス モニターのシンボル](media/network-performance-monitor-faq/npm-symbol.png)\n\n> [!IMPORTANT]\n> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)します。\n\nこの記事では、Azure の Network Performance Monitor (NPM) についてよく寄せられる質問 (FAQ) について説明します\n\n[Network Performance Monitor](../../networking/network-monitoring-overview.md) は、クラウド ベースの[ハイブリッド ネットワーク監視](./network-performance-monitor-performance-monitor.md)ソリューションであり、ネットワーク インフラストラクチャ内のさまざまなポイント間のネットワーク パフォーマンスを監視するのに役立ちます。 また、[サービスやアプリケーションのエンドポイント](./network-performance-monitor-service-connectivity.md)へのネットワーク接続の監視、および[ Azure ExpressRoute のパフォーマンスの監視](./network-performance-monitor-expressroute.md)にも利用できます。 \n\nトラフィックのブラックホール、ルーティング エラーなどのネットワークの問題のほか、従来のネットワーク監視手法では検出されない問題を検出します。 ネットワーク リンクに関するしきい値を超えた場合、このソリューションはアラートと通知を生成します。 また、ネットワーク パフォーマンスの問題をタイムリーに検出できるほか、問題の原因を特定のネットワーク セグメントまたはデバイスに限定できます。 \n\n[Network Performance Monitor](../../networking/network-monitoring-overview.md) がサポートするさまざまな機能の詳細は、オンラインで参照できます。\n"
+sections:
+- name: エージェントのセットアップと構成
+  questions:
+  - question: >
+      NPM による監視に使用するノードにはどのようなプラットフォーム要件がありますか。
+    answer: "NPM の様々な機能に対するプラットフォーム要件を、以下に示します。\n\n- NPM のパフォーマンス モニターとサービス接続モニターの機能は、Windows Server および Windows デスクトップ/クライアント オペレーティング システムの両方をサポートします。 サポートされている Windows Server OS のバージョンは 2008 SP1 以降です。 サポートされている Windows デスクトップ/クライアント バージョンは、Windows 10、Windows 8.1、Windows 8、および Windows 7 です。 \n- NPM の ExpressRoute モニター機能は Windows Server (2008 SP1 またはそれ以降) オペレーティング システムのみをサポートします。\n"
+  - question: >
+      NPM 内でマシンを監視ノードとして使用できますか。
+    answer: "Linux ベースのノードを使用してネットワークを監視する機能が一般提供されました。 [こちら](../../virtual-machines/extensions/oms-linux.md)からエージェントにアクセスします。 \n"
+  - question: >
+      NPM による監視で使用するノードのサイズ要件はありますか。
+    answer: >
+      ネットワークを監視するためにノード VM 上に NPM ソリューションを実行するには、ノードには少なくとも 500 MB のメモリと 1 つのコアが必要です。 NPM を実行するために別のノードを使用する必要はありません。 ソリューションは、別のワークロードが実行されているノードでも実行できます。 このソリューションには、その CPU 使用率が 5% を超えた場合に監視プロセスを停止する機能があります。
+  - question: >
+      NPM を使用するには、ノードを直接エージェントとして、または System Center Operations Manager を介して接続する必要がありますか。
+    answer: >
+      パフォーマンス モニター機能とサービス接続モニター機能のどちらも、[直接エージェントとして接続されている](../agents/agent-windows.md)ノードと [Operations Manager 経由で接続されている](../agents/om-agents.md)ノードをサポートします。
+
+
+      ExpressRoute モニター機能では、Azure ノードは直接エージェントとしてのみ接続する必要があります。 Operations Manager 経由で接続されている Azure ノードはサポートされません。 オンプレミス ノードの場合、直接エージェントとして接続されるノードおよび Operations Manager を介して接続されているノードは、ExpressRoute 回線の監視用としてサポートされます。
+  - question: >
+      TCP と ICMP のどちらのプロトコルを監視用に選択する必要がありますか。
+    answer: "Windows Server ベースのノードを使用してネットワークを監視する場合は、正確さに優れている TCP を監視プロトコルとして使用することをお勧めします。 \n\nWindows デスクトップ/クライアント オペレーティング システム ベースのノードには、ICMP を使用することをお勧めします。 このプラットフォームでは、NPM がネットワーク トポロジの検出に使用する RAW ソケット経由での TCP データの送信は許可されていません。\n\n各プロトコルの相対的な利点の詳細を[ここ](./network-performance-monitor-performance-monitor.md#choose-the-protocol)から取得できます。\n"
+  - question: >
+      TCP プロトコルを使用して監視をサポートするにはノードをどのように構成できますか。
+    answer: "TCP プロトコルを使用してノードが監視をサポートするには、次のようにします。 \n* ノードのプラットフォームが Windows Server (2008 SP1 またはそれ以降) であるようにします。\n* [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell スクリプトをノードで実行します。 詳細については、[手順](./network-performance-monitor.md#configure-log-analytics-agents-for-monitoring)を参照してください。\n"
+  - question: >
+      監視のために NPM で使用する TCP ポートをどのように変更すればよいですか。
+    answer: >
+      監視のために NPM によって使用される TCP ポートを、[EnableRules.ps1](https://aka.ms/npmpowershellscript) スクリプトを実行することによって変更できます。 パラメーターとして使用するポート番号を入力する必要があります。 たとえば、TCP ポート 8060 を有効にするには、`EnableRules.ps1 8060` を実行します。 監視に使用するすべてのノードで同じ TCP ポートを使用するようにしてください。
+
+
+      このスクリプトでは、Windows ファイアウォールがローカルでのみ構成されます。 ネットワーク ファイアウォールまたはネットワーク セキュリティ グループ (NSG) 規則がある場合は、NPM で使用される TCP ポート宛てのトラフィックを許可するようにしてください。
+  - question: >
+      いくつのエージェントを使用する必要がありますか。
+    answer: >
+      監視する各サブネットに対して少なくとも 1 つのエージェントを使用してください。
+  - question: >
+      使用できるエージェントの最大数はいくつですか。または、構成の上限に達したことを示すエラーが表示されます。
+    answer: >
+      NPM では、ワークスペースあたりの IP アドレス数が 5,000 個に制限されます。 ノードに IPv4 と IPv6 の両方のアドレスがある場合、そのノードに 2 つの IP アドレスがあるものとしてカウントされます。 したがって、5,000 個の IP アドレスというこの制限によって、エージェント数の上限が決まります。 [NPM] > [構成] の [ノード] タブを使用して、非アクティブなエージェントを削除できます。 NPM には、エージェントをホストしている VM にこれまで割り当てられたすべての IP アドレスの履歴も保持されます。それぞれは、5,000 個の IP アドレスの上限に関係する個別の IP アドレスとしてカウントされます。 ワークスペース用に IP アドレスを解放するために、使用されていない IP アドレスを [ノード] ページで削除できます。
+- name: 監視
+  questions:
+  - question: >
+      損失と待機時間をどのように計算しますか。
+    answer: >
+      ソース エージェントは、TCP SYN 要求 (監視用プロトコルとして TCP が選択された場合) または ICMP ECHO 要求 (監視用プロトコルとして ICMP が選択された場合) のいずれかを宛先 IP に一定の間隔で送信して、ソースと宛先の IP の組み合わせの間のすべてのパスに対応できるようにします。 受信したパケットの割合およびパケットのラウンドトリップ時間が測定されて、各パスの損失と待機時間が計算されます。 このデータは、特定のポーリング間隔での IP の組み合わせについての損失と待機時間の集計値を取得するために、ポーリング間隔およびすべてのパスにわたって集計されます。
+  - question: >
+      ソース エージェントはどの程度の頻度で監視対象の宛先にパケットを送信しますか。
+    answer: >
+      パフォーマンス モニター機能と ExpressRoute モニター機能の場合、ソースは 5 秒ごとにパケットを送信し、ネットワーク測定を記録します。 このデータは 3 分間のポーリング間隔で集計され、損失と待機時間の平均値およびピーク時の値が計算されます。 サービス接続モニター機能の場合、ネットワーク測定のためにパケットを送信する頻度は、特定のテストについてテストを構成するときにユーザーが入力した頻度によって決まります。
+  - question: >
+      監視用にいくつのパケットが送信されますか。
+    answer: >
+      ポーリングでソース エージェントから宛先に送信されるパケット数は適応性があり、当社独自のアルゴリズムによって決まるため、ネットワーク トポロジの種類によって異なる場合があります。 ソースと宛先の IP の組み合わせの間でのネットワーク パスの数が多くなるほど、送信されるパケットの数も多くなります。 システムにより、ソースと宛先の IP の組み合わせの間のすべてのパスに対応するようになります。
+  - question: >
+      NPM はソースと宛先の間のネットワーク トポロジをどのように検出しますか。
+    answer: >
+      NPM は、Traceroute に基づく独自のアルゴリズムを使用して、ソースと宛先の間のすべてのパスとホップを検出します。
+  - question: "NPM はルーティング レベルおよびスイッチング レベルの情報を提供しますか。 \n"
+    answer: >
+      NPM は、ソース エージェントと宛先の間のすべての可能なルートを検出できますが、特定のワークロードによって送信されたパケットが通ったルートを表示することはできません。 ソリューションは、予想よりも多くの待機時間を追加した、パスとその基になるネットワーク ホップを特定するのに役立ちます。
+  - question: >
+      いくつかのパスが正常でないのはなぜですか。
+    answer: >
+      ソースと宛先の IP の間には様々なネットワーク パスが存在し、パスによって損失と待機時間の値が異なることがあります。 NPM がパスを異常としてマークする (赤色で示す) のは、損失または待機時間の値が監視構成で設定されたそれぞれのしきい値を超えた場合です。
+  - question: >
+      ネットワーク トポロジ マップで赤色のホップは何を表していますか。
+    answer: >
+      ホップが赤色の場合、そのホップは少なくとも 1 つの異常なパスの一部であることを示しています。 NPM は異常なパスをマークするだけで、各パスの正常性状態を分離することはできません。 問題のあるホップを特定するには、ホップ単位の待機時間を表示し、予想以上の待ち時間を追加するホップを分離します。
+  - question: >
+      パフォーマンス モニターの障害の特定はどのように機能しますか。
+    answer: >
+      NPM は確率論的メカニズムを使用して、各ネットワーク パス、ネットワーク セグメント、および構成要素のネットワーク ホップに対し、それらがその一部となる異常なパスの数に基づき障害確率を割り当てます。 ネットワーク セグメントとホップが異常なパスの一部になる場合が多くなるほど、それらに関連付けられる障害確率が増加します。 このアルゴリズムは、NPM エージェントが相互に接続された多くのノードがある場合に最適です。この場合は障害確率を計算するためのデータ ポイントが増加するためです。
+  - question: >
+      アラート用の既定の Log Analytics クエリはどのようなものですか。
+    answer: "パフォーマンス モニター クエリ\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"SubNetwork\" or SubType == \"NetworkPath\") \n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\") and RuleName == \"<<your rule name>>\"\n```\n\nサービス接続モニター クエリ\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"EndpointHealth\" or SubType == \"EndpointPath\")\n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or ServiceResponseHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\") and TestName == \"<<your test name>>\"\n```\n\nExpressRoute モニター クエリ: 回線クエリ\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"ERCircuitTotalUtilization\") and (UtilizationHealthState == \"Unhealthy\") and CircuitResourceId == \"<<your circuit resource ID>>\"\n```\n\nプライベート ピアリング\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"ExpressRoutePeering\" or SubType == \"ERVNetConnectionUtilization\" or SubType == \"ExpressRoutePath\")   \n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or UtilizationHealthState == \"Unhealthy\") and CircuitName == \"<<your circuit name>>\" and VirtualNetwork == \"<<vnet name>>\"\n```\n\nMicrosoft ピアリング\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"ExpressRoutePeering\" or SubType == \"ERMSPeeringUtilization\" or SubType == \"ExpressRoutePath\")\n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or UtilizationHealthState == \"Unhealthy\") and CircuitName == \"\"<<your circuit name>>\" and PeeringType == \"MicrosoftPeering\"\n```\n\n一般的なクエリ\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"ExpressRoutePeering\" or SubType == \"ERVNetConnectionUtilization\" or SubType == \"ERMSPeeringUtilization\" or SubType == \"ExpressRoutePath\")\n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or UtilizationHealthState == \"Unhealthy\")\n```\n"
+  - question: >
+      NPM はルーターとサーバーを個別のデバイスとして監視できますか。
+    answer: >
+      NPM は、ソース IP と宛先 IP の間の基になるネットワーク ホップ (スイッチ、ルーター、サーバーなど) の IP およびホスト名のみを識別します。 また、識別されたこれらのホップ間の待機時間を識別します。 これらの基になるホップを個別に監視しません。
+  - question: >
+      NPM を使用して Azure と AWS の間のネットワーク接続を監視できますか。
+    answer: >
+      はい。 詳細については、[NPM を使用した Azure、AWS、およびオンプレミス ネットワークの監視](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)に関するページを参照してください。
+  - question: >
+      ExpressRoute の帯域幅使用量は着信または発信のどちらですか。
+    answer: >
+      帯域幅使用量は着信および発信の帯域幅の合計です。 これはビット/秒で表されます。
+  - question: >
+      ExpressRoute についての着信および発信の帯域幅の情報を入手できますか。
+    answer: "プライマリ帯域幅とセカンダリ帯域幅の両方についての着信および発信の値を取得できます。\n\nMS ピアリング レベル情報については、ログ検索で次に示すクエリを使用します。\n\n```kusto\nNetworkMonitoring\n | where SubType == \"ERMSPeeringUtilization\"\n | project CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond \n```\n\nプライベート ピアリング レベル情報については、ログ検索で次に示すクエリを使用します。\n\n```kusto\nNetworkMonitoring\n | where SubType == \"ERVNetConnectionUtilization\"\n | project CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond\n```\n\n回線レベル情報については、ログ検索で次に示すクエリを使用します。\n\n```kusto\nNetworkMonitoring\n | where SubType == \"ERCircuitTotalUtilization\"\n | project CircuitName, BitsInPerSecond, BitsOutPerSecond\n```\n"
+  - question: >
+      NPM のパフォーマンス モニターではどのリージョンがサポートされていますか。
+    answer: >
+      NPM は、[サポートされるリージョン](./network-performance-monitor.md#supported-regions)のいずれかでホストされているワークスペースから、世界のあらゆる地域でのネットワーク間の接続を監視できます
+  - question: >
+      NPM のサービス接続モニターではどのリージョンがサポートされていますか。
+    answer: >
+      NPM は、[サポートされるリージョン](./network-performance-monitor.md#supported-regions)のいずれかでホストされているワークスペースから、世界のあらゆる地域でのサービスへの接続を監視できます
+  - question: >
+      NPM の ExpressRoute モニターではどのリージョンがサポートされていますか。
+    answer: >
+      NPM は、Azure のすべてのリージョンにある ExpressRoute 回線を監視できます。 NPM をオンボードする場合、[サポートされているリージョン](../../expressroute/how-to-npm.md)のいずれかでホストする必要がある Log Analytics ワークスペースが必要です
+- name: トラブルシューティング
+  questions:
+  - question: >
+      ネットワーク トポロジ ビューでいくつかのホップが識別されていないものとしてマークされているはなぜですか。
+    answer: "NPM は、traceroute の修正バージョンを使用して、ソース エージェントから宛先へのトポロジを検出します。 識別不能のホップは、ネットワーク ホップがソース エージェントの traceroute 要求に応答しなかったことを表します。 3 つの連続するネットワーク ホップがエージェントの traceroute に応答しない場合、ソリューションはこれらの応答しないホップを識別不能ホップとしてマークし、追加のホップを検出しようとしません。\n\nホップは以下の 1 つ以上のシナリオで traceroute に応答しないことがあります。\n\n* ルーターが ID を公開しないように構成されている。\n* ネットワーク デバイスが ICMP_TTL_EXCEEDED トラフィックを許可していない。\n* ネットワーク デバイスからの ICMP_TTL_EXCEEDED 応答がファイアウォールによってブロックされている。\n\nどちらかのエンドポイントが Azure に存在する場合、Azure インフラストラクチャで ID が traceroute に公開されないため、traceroute で識別不能ホップが示されます。 \n"
+  - question: >
+      異常なテストに関するアラートが表示されますが、NPM の損失と待機時間のグラフに高い値が表示されません。 何が異常であるかを確認するにはどうすればよいですか。
+    answer: "NPM は、ソースと宛先の間のエンド ツー エンドの待機時間が、それらの間のいずれかのパスのしきい値を超えた場合にアラートを生成します。 一部のネットワークには、同じソースと宛先を接続している複数のパスがあります。 いずれかのパスに異常があると、NPM はアラートを生成します。 グラフに表示される損失と待機時間は、すべてのパスの平均値であるため、1 つのパスの正確な値を示すとは限りません。 しきい値を超えた場所を把握するには、アラートの \"サブタイプ\" 列を確認します。 この問題がパスによって発生している場合、サブタイプ値は NetworkPath (パフォーマンス モニター テストの場合)、EndpointPath (サービス接続モニター テストの場合)、および ExpressRoutePath (ExpressRoute モニター テストの場合) になります。 \n\nパスが異常であることを検索するサンプル クエリ:\n\n```kusto\nNetworkMonitoring\n | where ( SubType == \"ExpressRoutePath\")\n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or UtilizationHealthState == \"Unhealthy\") and CircuitResourceID ==\"<your ER circuit ID>\" and ConnectionResourceId == \"<your ER connection resource id>\"\n | project SubType, LossHealthState, LatencyHealthState, MedianLatency\n```\n"
+  - question: "テストに異常が表示されるのに、トポロジには表示されないのはなぜですか \n"
+    answer: "NPM は、エンドツーエンドの損失、待ち時間、およびトポロジをさまざまな間隔で監視します。 損失と待ち時間は 5 秒に 1 回測定され、3 分ごとに集計されます (Performance Monitor と Express Route Monitor の場合)。一方、トポロジは、10 分に 1 回 traceroute を使用して計算されます。 たとえば、3 時 44 分から 4 時 04 分までに、トポロジは 3 回 (3 時 44 分、3 時 54 分、4 時 04 分) 更新される可能性がありますが、損失と待ち時間は約 7 回 (3 時 44 分、3 時 47 分、3 時 50 分、3 時 53 分、3 時 56 分、3 時 59 分、4 時 02 分) 更新されます。 3 時 54 分に生成されるトポロジは、3 時 56 分、3 時 59 分、および 4 時 02 分に計算される損失と待ち時間に対してレンダリングされます。 たとえば、3 時 59 分に ER 回線の異常を示すアラートを受け取ったとします。 あなたは、NPM にログオンし、トポロジの時刻を 3 時 59 分に設定します。 NPM には、3 時 54 分に生成されたトポロジがレンダリングされます。 ネットワークの最後の既知のトポロジを理解するには、TimeProcessed (損失と待ち時間が計算された時刻) フィールドと TracerouteCompletedTime (トポロジが計算された時刻) を比較します。 \n"
+  - question: >
+      NetworkMonitoring テーブルの E2EMedianLatency フィールドと AvgHopLatencyList フィールドの違いは何ですか
+    answer: >
+      E2EMedianLatency は、tcp ping テストの結果を集計した後 3 分ごとに更新される待ち時間です。AvgHopLatencyList は、traceroute に基づいて 10 分ごとに更新されます。 E2EMedianLatency が計算された正確な時刻を知るには、TimeProcessed フィールドを使用します。 traceroute が完了して AvgHopLatencyList を更新した正確な時刻を知るには、TracerouteCompletedTime フィールドを使用します
+  - question: "ホップバイホップの待ち時間の値が HopLatencyValues と異なるのはなぜですか \n"
+    answer: >
+      HopLatencyValues は、ソースからエンドポイントまでを示します。
+
+      たとえば次のようになります。ホップ - A、B、C。 AvgHopLatency - 10、15、20。 つまり、ソースから A への待ち時間 = 10、ソースから B への待ち時間 = 15、ソースから C への待ち時間は 20 です。 UI では、トポロジ内の A-B ホップ間の待ち時間が 5 として計算されます
+  - question: >
+      ソリューションは 100% の損失と示していますがソースと宛先の間の接続が存在します
+    answer: "これが発生することがあるのは、ホスト ファイアウォールまたは中間ファイアウォール (ネットワーク ファイアウォールまたは Azure NSG) のいずれかが、NPM による監視に使用されているポート経由で (顧客が変更しない場合の既定はポート 8084) ソース エージェントと宛先の間の通信をブロックしている場合です。\n\n* ホスト ファイアウォールが必要なポートの通信をブロックしていないことを確認するには、次のビューからソースと宛先ノードの正常性状態を表示します。[Network Performance Monitor] -> [構成] -> [ノード] \n  正常でない場合、指示を表示して、是正措置を行います。 ノードが正常である場合は、以下の手順 b に移動します。 設定します。\n* 中間ネットワーク ファイアウォールまたは Azure NSG が必要なポートで通信をブロックしていないことを確認するには、次の手順を使用して、サード パーティ製の PsPing ユーティリティを使用します。\n  * psping ユーティリティは[こちら](/sysinternals/downloads/psping)からダウンロードできます \n  * ソース ノードから次のコマンドを実行します。\n    * psping -n 15 \\<destination node IPAddress\\>:portNumber。既定で NPM には 8084 ポートが使用されます。 この値を EnableRules.ps1 スクリプトを使用して明示的に変更した場合、使用するカスタム ポート番号を入力します。 これは Azure マシンからオンプレミスへの ping です\n* ping が成功したかどうかを確認します。 成功しない場合は、中間ネットワーク ファイアウォールまたは Azure NSG がこのポートでトラフィックをブロックしていることを示しています。\n* ここで、宛先ノードからソース ノード IP にコマンドを実行します。\n"
+  - question: >
+      ノード A から B への損失があるのにノード B から A への損失がないのはなぜですか。
+    answer: >
+      A から B へのネットワーク パスが B から A へのネットワーク パスと異なる場合があるように、損失と待機時間についても異なる値が観察されることがあります。
+  - question: >
+      すべての ExpressRoute 回線とピアリング接続が検出されないのはなぜですか。
+    answer: >
+      NPM は、ユーザーがアクセスできるすべてのサブスクリプションの ExpressRoute 回線とピアリング接続を検出します。 Express Route リソースがリンクされているすべてのサブスクリプションを選択し、検出された各リソースの監視を有効にします。 NPM はプライベート ピアリングの検出時に、接続オブジェクトを検索するため、VNET がピアリングに関連付けられているかどうかを確認してください。 NPM では、Log Analytics ワークスペースとは異なるテナントにある回線とピアリングが検出されません。
+  - question: >
+      ER モニター機能で「Traffic is not passing through ANY circuit」という診断メッセージが表示されます。 これはどういう意味でしょうか。
+    answer: "オンプレミスと Azure ノード間の接続は正常ですが、NPM によって監視されるように構成された ExpressRoute 回線をトラフィックが通過していないというシナリオがある場合があります。 \n\nこれは次の場合に発生する可能性があります。\n\n* ER 回線がダウンしている。\n* ルート フィルターが、目的の ExpressRoute 回線よりも、他のルート (VPN 接続や他の ExpressRoute 回線) に高い優先順位を与えるように構成されている。 \n* 監視構成で ExpressRoute 回線を監視するように選択されたオンプレミスと Azure ノードが、目的の ExpressRoute 回線経由で相互接続されていない。 監視対象の ExpressRoute 回線経由で相互に接続されている適切なノードを選択してください。\n"
+  - question: >
+      回線またはピアリングが使用可能であり、データが渡されている場合でも、ExpressRoute モニターに異常と報告されるのはなぜですか。
+    answer: >
+      ExpressRoute モニターでは、エージェントまたはサービスから報告されたネットワーク パフォーマンス値 (損失、待機時間、帯域幅の使用率) と、構成時に設定されたしきい値が比較されます。 回線の場合、報告された帯域幅の使用率が構成で設定されたしきい値よりも高い場合、回線は異常とマークされます。 ピアリングの場合、報告された損失、待機時間、または帯域幅の使用率が構成で設定されたしきい値よりも高い場合、ピアリングは異常とマークされます。 NPM には、正常性の状態を判断するためにメトリックやその他の形式のデータが利用されません。
+  - question: >
+      ExpressRoute モニターの帯域幅の使用率にメトリックのビットの送受信とは異なる値が報告されるのはなぜですか
+    answer: >
+      ExpressRoute モニターの場合、帯域幅の使用率は、過去 20 分間の受信および送信の帯域幅の平均値であり、ビット/秒で表されます。Express Route メトリックの場合、ビットの送受信は 1 分あたりのデータ ポイントです。内部的に両方に使用されるデータセットは同じですが、集計値は NPM と ER の各メトリックで異なります。 きめ細かい、分単位の監視と高速アラートの場合は、ER メトリックに直接アラートを設定することをお勧めします
+  - question: >
+      ExpressRoute 回線の監視を構成中に Azure ノードが検出されません。
+    answer: >
+      これは Azure ノードが Operations Manager 経由で接続されているときに発生することがあります。 ExpressRoute モニター機能は、直接エージェントとして接続された Azure ノードのみサポートします。
+  - question: >
+      OMS ポータルで ExpressRoute 回線によって検出できません
+    answer: "NPM は Azure portal からでも OMS ポータルからでも使用できますが、ExpressRoute モニター機能の回線検出は、Azure portal からのみ動作します。 Azure portal によって回線が検出されると、2 つのポータルのいずれかの機能を使用できます。 \n"
+  - question: >
+      サービス接続モニター機能で、サービス応答時間、ネットワーク損失、および待機時間が NA と表示されます
+    answer: >
+      これは次のいずれかが該当する場合に発生することがあります。
+
+
+      * サービスがダウンしている。
+
+      * サービスへのネットワーク接続のチェックに使用されているノードがダウンしている。
+
+      * テスト構成で入力したターゲットが正しくない。
+
+      * ノードにネットワーク接続がない。
+  - question: >
+      サービス接続モニター機能で、有効なサービス応答時間が表示されているものの、ネットワーク損失と待機時間が NA と表示されます
+    answer: >
+      これは次のいずれかが該当する場合に発生することがあります。
+
+
+      * サービスへのネットワーク接続のチェックに使用されたノードが Windows クライアント コンピューターである場合は、ターゲット サービスが ICMP 要求をブロックしているか、またはネットワーク ファイアウォールがノードからの ICMP 要求をブロックしている。
+
+      * テスト構成で [ネットワークの測定を実行します] チェック ボックスがオフになっている。
+  - question: >
+      サービス接続モニター機能で、サービス応答時間が NA ですが、ネットワーク損失および待機時間が有効になっています
+    answer: >
+      これは、ターゲット サービスが Web アプリケーションではなく、テストが Web テストとして構成されている場合に発生することがあります。 テスト構成を編集し、テストの種類として、[Web] ではなく [ネットワーク] を選んでください。
+- name: その他
+  questions:
+  - question: >
+      監視に使用されるノードでパフォーマンスに影響はありますか。
+    answer: >
+      NPM プロセスは、ホスト CPU リソースの 5% 以上を使用した場合に停止するよう構成されています。 これにより、パフォーマンスに影響を及ぼすことなく、ノードをノードの通常のワークロードのために使用し続けることができます。
+  - question: >
+      NPM は監視目的でファイアウォール ルールを編集しますか。
+    answer: >
+      NPM は、指定したポートでの TCP 相互接続をエージェントが作成できるようにするために、EnableRules.ps1 PowerShell スクリプトを実行するノード上でローカルの Windows ファイアウォール ルールを作成することのみ行います。 このソリューションは、ネットワーク ファイアウォールまたはネットワーク セキュリティ グループ (NSG) ルールを変更しません。
+  - question: >
+      監視に使用されるノードの正常性をどのように確認できますか。
+    answer: >
+      監視に使用されるノードの正常性状態は、次のビューから表示できます。[Network Performance Monitor] -> [構成] -> [ノード] ノードが正常でない場合は、エラーの詳細を表示し、推奨されるアクションを実行できます。
+  - question: >
+      NPM は待機時間をマイクロ秒単位で報告できますか。
+    answer: >
+      NPM は UI では待機時間の数値をミリ秒単位に丸めます。 このデータは、さらに高い精度で (場合によっては小数点以下 4 桁で) 格納されます。
+  - question: "NPM はマルチホーム ノードをサポートしていますか。 \n"
+    answer: "いいえ。 各 NPM ノードには、専用のログ分析ワークスペースが必要です。 \n"
+  - question: >
+      Linux を使用する場合、NPM には他にどのような要件がありますか。
+    answer: "GLIBC 2.14 以上を、OMS Agent for Linux で使用する必要があります。 \n"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n- [Azure の Network Performance Monitor ソリューション](./network-performance-monitor.md)を参照して、Network Performance Monitor の詳細について学習します。"

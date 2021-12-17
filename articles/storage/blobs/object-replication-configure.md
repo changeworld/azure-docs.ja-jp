@@ -6,53 +6,46 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 09/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2b6855d72b644a3fe1fa46c883eb7414383a1a57
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7f0c0928a32807844d57eb91a903994a0264e460
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031703"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534385"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーションを構成する
 
-オブジェクト レプリケーションを使用すると、ソース ストレージ アカウントと宛先アカウントの間でブロック BLOB を非同期にコピーできます。 オブジェクト レプリケーションの詳細については、[オブジェクト レプリケーション](object-replication-overview.md)に関するページをご覧ください。
+オブジェクト レプリケーションを使用すると、ソース ストレージ アカウントと宛先アカウントの間でブロック BLOB を非同期にコピーできます。 オブジェクト レプリケーションを構成するときに、ソース ストレージ アカウントと宛先アカウントを指定するレプリケーション ポリシーを作成します。 レプリケーション ポリシーには、ソース コンテナーと宛先コンテナーを指定し、レプリケートするソース コンテナー内のブロック BLOB を示す 1 つ以上のルールが含まれます。 オブジェクト レプリケーションの詳細については、「[ブロック BLOB のオブジェクト レプリケーション](object-replication-overview.md)」を参照してください。
 
-オブジェクト レプリケーションを構成するときに、ソース ストレージ アカウントと宛先アカウントを指定するレプリケーション ポリシーを作成します。 レプリケーション ポリシーには、ソース コンテナーと宛先コンテナーを指定し、ソース コンテナー内のどのブロック BLOB をレプリケートするかを示す 1 つ以上のルールが含まれています。
+この記事では、Azure portal、PowerShell、または Azure CLI を使用して、オブジェクト レプリケーション ポリシーを構成する方法について説明します。 Azure Storage リソース プロバイダーのクライアント ライブラリのいずれかを使用して、オブジェクト レプリケーションを構成することもできます。
 
-この記事では、Azure portal、PowerShell、または Azure CLI を使用して、ストレージ アカウントのオブジェクト レプリケーションを構成する方法について説明します。 Azure Storage リソース プロバイダーのクライアント ライブラリのいずれかを使用して、オブジェクト レプリケーションを構成することもできます。
+## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
-
-## <a name="create-a-replication-policy-and-rules"></a>レプリケーション ポリシーとルールを作成する
-
-オブジェクト レプリケーションを構成する前に、ソースと宛先のストレージ アカウントがまだ存在しない場合は作成します。 どちらのアカウントも汎用 v2 ストレージ アカウントである必要があります。 詳細については、[Azure Storage アカウントの作成](../common/storage-account-create.md)に関するページを参照してください。
+オブジェクト レプリケーションを構成する前に、ソースと宛先のストレージ アカウントがまだ存在しない場合は作成します。 ソース アカウントと宛先アカウントは、汎用 v2 ストレージ アカウントまたは Premium ブロック BLOB アカウント (プレビュー) のいずれかにできます。 詳細については、[Azure Storage アカウントの作成](../common/storage-account-create.md)に関するページを参照してください。
 
 オブジェクトのレプリケーションでは、ソース アカウントと宛先アカウントの両方で BLOB のバージョン管理が有効になっている必要があります。また、ソース アカウントで BLOB の変更フィードが有効になっている必要もあります。 BLOB のバージョン管理については、[BLOB のバージョン管理](versioning-overview.md)に関するページをご覧ください。 変更フィードの詳細については、[Azure Blob Storage の変更フィードのサポート](storage-blob-change-feed.md)に関するページをご覧ください。 これらの機能を有効にすると、追加コストが発生する可能性があることに注意してください。
 
-1 つのストレージ アカウントを、最大 2 つの宛先アカウントのソース アカウントとして使用できます。 ソース アカウントと宛先アカウントが同じリージョンに存在していても、異なるリージョンに存在していてもかまいません。 また、異なるサブスクリプションや異なる Azure Active Directory (Azure AD) テナントに存在していてもかまいません。 アカウントのペアごとに作成できるレプリケーション ポリシーは、1 つのみです。
-
-オブジェクト レプリケーションを構成する際に、Azure Storage リソース プロバイダー経由で宛先アカウントにレプリケーション ポリシーを作成します。 レプリケーション ポリシーが作成されると、Azure Storage でポリシー ID が割り当てられます。 その後、このポリシー ID を使用して、そのレプリケーション ポリシーをソース アカウントに関連付ける必要があります。 レプリケーションを実行するには、ソース アカウントと宛先アカウントのポリシー ID が同じである必要があります。
-
 ストレージ アカウントにオブジェクト レプリケーション ポリシーを構成するには、ストレージ アカウントのレベル以上を対象とする Azure Resource Manager の **[共同作成者]** ロールが割り当てられている必要があります。 詳細については、Azure ロールベースのアクセス制御 (Azure RBAC) に関するドキュメントの「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
-### <a name="configure-object-replication-when-you-have-access-to-both-storage-accounts"></a>両方のストレージ アカウントへのアクセス権を持っている場合にオブジェクト レプリケーションを構成する
+> [!IMPORTANT]
+> Premium ブロック BLOB アカウントのオブジェクト レプリケーションは、現在 **プレビュー** の段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-ソース アカウントと宛先アカウントの両方へのアクセス権を持っている場合は、両方のアカウントでオブジェクト レプリケーション ポリシーを構成できます。
+## <a name="configure-object-replication-with-access-to-both-storage-accounts"></a>両方のストレージ アカウントへのアクセス権を使ってオブジェクト レプリケーションを構成する
 
-Azure portal でオブジェクト レプリケーションを構成する前に、ソース コンテナーと宛先コンテナーが存在しない場合は、それぞれのストレージ アカウントに作成します。 また、ソース アカウントで BLOB のバージョン管理と変更フィードを有効にし、宛先アカウントで BLOB のバージョン管理を有効にします。
+ソース アカウントと宛先アカウントの両方へのアクセス権を持っている場合は、両方のアカウントでオブジェクト レプリケーション ポリシーを構成できます。 次の例は、Azure portal、PowerShell、または Azure CLI を使用してオブジェクト レプリケーションを構成する方法を示しています。
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-宛先アカウントにポリシーを構成すると、Azure portal で自動的にソース アカウントに作成されます。
+Azure portal でオブジェクト レプリケーションを構成する場合、必要なのはソース アカウントでポリシーを構成することだけです。 ソース アカウントでポリシーを構成すると、Azure portal によって自動的に宛先アカウントにも作成されます。
 
 Azure portal でレプリケーション ポリシーを作成するには、次の手順を実行します。
 
 1. Azure portal でソース ストレージ アカウントに移動します。
-1. **[Blob service]** で、 **[オブジェクト レプリケーション]** を選択します。
+1. **[データ管理]** で、 **[オブジェクト レプリケーション]** を選択します。
 1. **[レプリケーション規則の設定]** を選択します。
 1. 宛先サブスクリプションとストレージ アカウントを選択します。
 1. **[Container pairs]\(コンテナー ペア\)** セクションで、ソース アカウントからソース コンテナーを選択し、宛先アカウントから宛先コンテナーを選択します。 1 つのレプリケーション ポリシーにつき最大 10 個のコンテナー ペアを作成できます。
@@ -79,11 +72,11 @@ Azure portal でレプリケーション ポリシーを作成するには、次
 
 :::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Azure portal のオブジェクト レプリケーション ポリシーを示すスクリーンショット":::
 
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
+### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 PowerShell でレプリケーション ポリシーを作成するには、まず Az.Storage PowerShell モジュールのバージョン [2.5.0](https://www.powershellgallery.com/packages/Az.Storage/2.5.0) 以降をインストールします。 Azure PowerShell のインストールの詳細については、[PowerShellGet を使用した Azure PowerShell のインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
-次の例は、ソース アカウントと宛先アカウントにレプリケーション ポリシーを作成する方法を示しています。 山かっこ内の値は、実際の値に置き換えてください。
+次の例では、レプリケーション ポリシーを最初に宛先アカウントで作成してから、ソース アカウントで作成する方法を示します。 山かっこ内の値は、実際の値に置き換えてください。
 
 ```powershell
 # Sign in to your Azure account.
@@ -131,7 +124,7 @@ $rule1 = New-AzStorageObjectReplicationPolicyRule -SourceContainer $srcContainer
     -PrefixMatch b
 $rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer $srcContainerName2 `
     -DestinationContainer $destContainerName2  `
-    -MinCreationTime 2020-05-10T00:00:00Z
+    -MinCreationTime 2021-09-01T00:00:00Z
 
 # Create the replication policy on the destination account.
 $destPolicy = Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
@@ -146,7 +139,7 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
     -InputObject $destPolicy
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用してレプリケーション ポリシーを作成するには、最初に Azure CLI バージョン 2.11.1 以降をインストールします。 詳細については、[Azure CLI の概要](/cli/azure/get-started-with-azure-cli)に関するページをご覧ください。
 
@@ -185,7 +178,7 @@ az storage container create \
     --auth-mode login
 az storage container create \
     --account-name <dest-storage-account> \
-    --name dest-container-1 \
+    --name dest-container-2 \
     --auth-mode login
 ```
 
@@ -199,7 +192,7 @@ az storage account or-policy create \
     --destination-account <dest-storage-account> \
     --source-container source-container-1 \
     --destination-container dest-container-1 \
-    --min-creation-time '2020-09-10T00:00:00Z' \
+    --min-creation-time '2021-09-01T00:00:00Z' \
     --prefix-match a
 
 ```
@@ -230,43 +223,14 @@ az storage account or-policy show \
 
 ---
 
-### <a name="configure-object-replication-when-you-have-access-only-to-the-destination-account"></a>宛先アカウントへのアクセス権のみを持っている場合にオブジェクト レプリケーションを構成する
+## <a name="configure-object-replication-with-access-to-only-the-destination-account"></a>宛先アカウントへのアクセス権のみを使ってオブジェクト レプリケーションを構成する
 
 ソース ストレージ アカウントへのアクセス許可を持っていない場合は、宛先アカウントでオブジェクト レプリケーションを構成し、ポリシー定義を含む JSON ファイルを別のユーザーに提供して、ソース アカウントでも同じポリシーを作成できます。 たとえば、ソース アカウントが宛先アカウントとは異なる Azure AD テナントにある場合は、この方法を使用してオブジェクト レプリケーションを構成できます。
 
-ポリシーを作成するには、宛先ストレージ アカウントのレベル以上を対象とする Azure Resource Manager の **[共同作成者]** ロールが割り当てられている必要があることに注意してください。 詳細については、Azure ロールベースのアクセス制御 (Azure RBAC) に関するドキュメントの「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+> [!NOTE]
+> ストレージ アカウントでは、テナント間のオブジェクト レプリケーションが既定で許可されています。 テナント間のレプリケーションが行われないようにするには、お使いのストレージ アカウントでクロス テナント オブジェクト レプリケーションを禁止するように **AllowCrossTenantReplication** プロパティ (プレビュー) を設定することができます。 詳細については、「[Azure Active Directory テナント間でのオブジェクト レプリケーションを禁止する](object-replication-prevent-cross-tenant-policies.md)」を参照してください。
 
-次の表は、各シナリオで JSON ファイル内のポリシー ID とルール ID に使用される値をまとめたものです。
-
-| このアカウントに JSON ファイルを作成する場合は、 | ポリシー ID をこの値に設定します | ルール ID をこの値に設定します |
-|-|-|-|
-| 宛先アカウント | 文字列の *既定値*。 Azure Storage によって自動的にポリシー ID 値が作成されます。 | 空の文字列。 Azure Storage によって自動的にルール ID 値が作成されます。 |
-| ソース アカウント | 宛先アカウントで定義されているポリシーを JSON ファイルとしてダウンロードすると、ポリシー ID の値が返されます。 | 宛先アカウントで定義されているポリシーを JSON ファイルとしてダウンロードすると、ルール ID の値が返されます。 |
-
-次の例では、プレフィックス *b* が一致する 1 つのルールを使用して宛先アカウントにレプリケーション ポリシーを定義し、レプリケート対象の BLOB に最小作成時間を設定しています。 山かっこ内の値は、実際の値に置き換えてください。
-
-```json
-{
-  "properties": {
-    "policyId": "default",
-    "sourceAccount": "<source-account>",
-    "destinationAccount": "<dest-account>",
-    "rules": [
-      {
-        "ruleId": "",
-        "sourceContainer": "<source-container>",
-        "destinationContainer": "<destination-container>",
-        "filters": {
-          "prefixMatch": [
-            "b"
-          ],
-          "minCreationTime": "2020-08-028T00:00:00Z"
-        }
-      }
-    ]
-  }
-}
-```
+このセクションの例では、宛先アカウントでオブジェクト レプリケーション ポリシーを構成してから、そのポリシーの JSON ファイルを取得し、それを使って別のユーザーがソース アカウントでそのポリシーを構成できるようにする方法を説明します。
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -310,7 +274,9 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-JSON ファイルを使用して、PowerShell でソース アカウントにレプリケーション ポリシーを定義するには、ローカル ファイルを取得し、JSON からオブジェクトに変換します。 次に、次の例に示すように、[Set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) コマンドを呼び出して、ソース アカウントにポリシーを構成します。 山かっこ内の値とファイル パスは、実際の値に置き換えてください。
+JSON ファイルを使用して、PowerShell でソース アカウントにレプリケーション ポリシーを定義するには、ローカル ファイルを取得し、JSON からオブジェクトに変換します。 次に、次の例に示すように、[Set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) コマンドを呼び出して、ソース アカウントにポリシーを構成します。
+
+この例を実行する時には、`-ResourceGroupName` パラメーターをソース アカウントのリソース グループに、`-StorageAccountName` パラメーターをソース アカウントの名前に設定するようにしてください。 山かっこ内の値とファイル パスも、実際の値に置き換えてください。
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
@@ -443,6 +409,7 @@ az storage account or-policy delete \
 
 ## <a name="next-steps"></a>次のステップ
 
-- [オブジェクト レプリケーションの概要](object-replication-overview.md)
+- [ブロック BLOB のオブジェクト レプリケーション](object-replication-overview.md)
+- [Azure Active Directory テナント間でのオブジェクト レプリケーションを禁止する](object-replication-prevent-cross-tenant-policies.md)
 - [BLOB のバージョン管理を有効にして管理する](versioning-enable.md)
 - [Azure Blob Storage の変更フィードを処理する](storage-blob-change-feed-how-to.md)

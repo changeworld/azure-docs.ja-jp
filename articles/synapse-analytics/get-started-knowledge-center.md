@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Synapse Knowledge Center の探索を開始する
-description: このチュートリアルでは、Synapse Knowledge Center を使用する方法について説明します。
+title: 'チュートリアル: Synapse ナレッジ センターの探索を開始する'
+description: このチュートリアルでは、Synapse ナレッジ センターを使用する方法について説明します。
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,32 +10,34 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: 92d1534b5dd0233ce88b81d605c6502b67a121df
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ba6023ccc1582650e74da483aeefc48d2a305bef
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307896"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554754"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Synapse Knowledge Center を探索する
 
-このチュートリアルでは、Synapse Studio Knowledge Center を使用する方法について説明します。
+このチュートリアルでは、Synapse Studio の **ナレッジ センター** を使用する方法について説明します。
 
-## <a name="introduction-to-the-knowledge-center"></a>Knowledge Center の概要
+## <a name="finding-the-knowledge-center"></a>ナレッジ センターへのアクセス
 
-Synapse Studio で Knowledge Center を検索するには、次の 2 つの方法があります。
+Synapse Studio で **ナレッジ センター** を見つけるには、次の 2 つの方法があります。
 
   1. ページ右上付近にある [Home]\(ホーム\) ハブの **[Learn]\(詳細\)** をクリックします。
-  2. 上部のメニュー バーで、 **[?]** 、 **[Knowledge Center]** の順にクリックします。
+  2. 上部のメニュー バーで、 **[?]** 、 **[Knowledge center]\(ナレッジ センター\)** の順にクリックします。
 
-いずれかの方法を選択して、 **[Knowledge Center]** を開きます。
+いずれかの方法を選択して、**ナレッジ センター** を開きます。
+
+## <a name="exploring-the-knowledge-center"></a>Knowledge Center の探索
 
 表示されると、 **[Knowledge Center]** で次の 3 つの操作を実行できることがわかります。
 * **[Use samples immediately]\(サンプルをすぐに使用する\)** 。 Synapse の機能の例をすぐに確認したい場合は、このオプションを選択します。
 * **[ギャラリーを参照]** 。 このオプションを使用すると、サンプル データ セットをリンクして、SQL スクリプト、ノートブック、パイプラインの形式でサンプル コードを追加できます。
 * **[Tour Synapse studio]\(Synapse Studio のツアーを見る\)** 。 このオプションでは、Synapse Studio の基本的な部分についての簡単なツアーを見ることができます。 これは、Synapse Studio をこれまで使用したことがない場合に役立ちます。
 
-## <a name="exploring-use-samples-immediately"></a>探索: [Use samples immediately]\(サンプルをすぐに使用する\)
+## <a name="use-samples-immediately-three-samples-to-help-you-get-started-fast"></a>サンプルをすぐに使用する: すばやく開始するのに役立つ 3 つのサンプル
 
 このセクションには 3 つの項目があります。
 * [Explore sample data with Spark]\(Spark を使用してサンプル データを探索する\)
@@ -49,9 +51,9 @@ Synapse Studio で Knowledge Center を検索するには、次の 2 つの方�
 1. 最初のクエリ (28 行目から 32 行目) までスクロールして、クエリ テキストを選択します。
 1. [実行] をクリックします。 選択したコードだけが実行されます。
 
-## <a name="loading-more-nyc-taxi-data"></a>ニューヨーク市のタクシー データの追加の読み込み
+## <a name="gallery-a-collection-of-sample-datasets-and-sample-code"></a>ギャラリー: サンプル データセットとサンプル コードのコレクション
 
-1. **[Knowledge Center]** に移動し、 **[ギャラリーを参照]** をクリックします。
+1. **[Knowledge center]\(ナレッジ センター\)** に移動し、 **[Browse gallery]\(ギャラリーを参照\)** をクリックします。
 1. 上部にある **[SQL スクリプト]** タブを選択します。
 1. **[Load the New York Taxicab dataset]\(ニューヨークのタクシー データセットを読み込む\)** データ インジェスト サンプルを選択し、 **[続行]** をクリックします。
 1. **[SQL プール]** で、 **[既存のプールを選択する]** を選択して **[SQLPOOL1]** を選択し、前に作成した **SQLPOOL1** データベースを選択します。

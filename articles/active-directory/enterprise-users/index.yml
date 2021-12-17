@@ -1,22 +1,23 @@
 ### YamlMime:Landing
 title: Enterprise ユーザー管理のドキュメント - Azure AD
-summary: Azure AD で提供されるグループやライセンスなどのユーザー管理サービスは、優先順位の高いユーザー管理タスクを迅速に完了するのに役立ちます。 ライセンスの割り当て、グループまたはユーザーに対するアクセス権限のアプリケーションへの割り当て、ドメイン名の追加または管理を行います。
+summary: Azure AD には、ライセンスの割り当て、グループとユーザーの管理、ドメイン名の追加または管理を行うためのユーザー管理サービスが用意されています。
 metadata:
-  title: Azure Active Directory のユーザー、グループ、ライセンス、およびドメインに関するドキュメント
+  title: Azure Active Directory のユーザー、グループ、ライセンス、ドメインに関するドキュメント
   description: グループ、ドメイン名、ライセンスを使用して Azure AD 組織でユーザー認証を管理する方法について説明します。
   services: active-directory
   ms.service: active-directory
-  manager: daveba
+  ms.subservice: enterprise-users
+  manager: mtillman
   ms.topic: landing-page
-  ms.date: 10/19/2020
+  ms.date: 04/18/2021
   author: curtand
   ms.author: curtand
-  ms.openlocfilehash: a919a9785163776cfbcfb52a378405c0ac870035
-  ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+  ms.openlocfilehash: 8a129cf6e000a2e644f2fc7168d9e3105de0f957
+  ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/23/2020
-  ms.locfileid: "95503040"
+  ms.lasthandoff: 04/20/2021
+  ms.locfileid: "107739298"
 landingContent:
 - title: エンタープライズ ユーザー管理について
   linkLists:

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 11/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
-ms.reviewer: calebb, rogoya
+manager: karenhoran
+ms.reviewer: calebb, davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a09c4513206bea3462577ecba49b5d77b655b0e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88c653634b445b83a8d89b93fb91830ac64fffd1
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91628266"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720038"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>条件付きアクセス:サインイン リスクベースの条件付きアクセス
 
@@ -24,7 +24,11 @@ ms.locfileid: "91628266"
 
 サインイン リスクは、特定の認証要求が ID 所有者によって承認されていない可能性があることを表します。 Azure AD Premium P2 のライセンスを所持する組織では、[Azure AD Identity Protection のサインイン リスク検出](../identity-protection/concept-identity-protection-risks.md#sign-in-risk)を組み込んだ条件付きアクセス ポリシーを作成できます。
 
-このポリシーを割り当てることができる場所は 2 つあります。 組織は、セキュリティで保護されたパスワードの変更を必要とするサインイン リスクベースの条件付きアクセス ポリシーを有効にするために、次のいずれかのオプションを選択する必要があります。
+このポリシーを構成できる場所は 2 つあります。1 つは条件付きアクセスで、もう 1 つは Identity Protection です。 拡張診断データ、レポート専用モードの統合、Graph API のサポート、ポリシーで他の条件付きアクセス属性を使用する機能など、より多くのコンテキストを提供するときは、条件付きアクセス ポリシーを使用した構成をお勧めします。
+
+## <a name="template-deployment"></a>テンプレートのデプロイ
+
+組織は、このポリシーをデプロイするのに以下に示す手順を使用するか、[条件付きアクセス テンプレート (プレビュー) ](concept-conditional-access-policy-common.md#conditional-access-templates-preview)を使用するかを選ぶことができます。 
 
 ## <a name="enable-with-conditional-access-policy"></a>条件付きアクセス ポリシーを有効にする
 
@@ -41,8 +45,10 @@ ms.locfileid: "91628266"
    1. **[高]** と **[中]** を選択します。
    1. **[Done]** を選択します。
 1. **[アクセス制御]**  >  **[許可]** で、 **[アクセス権の付与]** 、 **[Require multi-factor authentication]\(多要素認証を要求する\)** の順に選択し、 **[Select]\(選択する\)** を選択します。
-1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
+1. 設定を確認し、 **[ポリシーの有効化]** を **[レポート専用]** に設定します。
 1. **[作成]** を選択して、ポリシーを作成および有効化します。
+
+管理者は、[[レポート専用モード]](howto-conditional-access-insights-reporting.md) を使用して設定を確認した後、 **[ポリシーの有効化]** トグルを **[レポートのみ]** から **[オン]** に移動できます。
 
 ## <a name="enable-through-identity-protection"></a>Identity Protection を有効にする
 

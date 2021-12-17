@@ -10,16 +10,17 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 4dfd869b92e042e71eed1ee692d90fc44a8ac6c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8afa833549f840f30e52cf58eda0ff05f37d840c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98234241"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714677"
 ---
 # <a name="interoperability-in-azure--control-plane-analysis"></a>Azure での相互運用性: コントロール プレーンの分析
 
-この記事では、[テストセットアップ][Setup] のコントロールプレーン分析について説明します。 [テスト セットアップの構成][Configuration] とテスト セットアップの[データ プレーン分析][Data-Analysis] についてもご覧ください。
+この記事では、[テストセットアップ][Setup] のコントロールプレーン分析について説明します。 [テスト セットアップの構成][Configuration] とテスト セットアップの [データ プレーン分析][Data-Analysis] についてもご覧ください。
 
 基本的に､コントロール プレーン分析では､1 つのトポロジ内の各ネットワーク間で交換されるルートを調べます。 コントロール プレーン分析は､ネットワークからのトポロジの見え方の違いを理解するのに役立ちます。
 
@@ -85,7 +86,7 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 
 ## <a name="next-steps"></a>次のステップ
 
-テスト セットアップの[データ プレーン分析][Data-Analysis]と Azure ネットワーク監視機能のビューを確認します。
+テスト セットアップの [データ プレーン分析][Data-Analysis] および Azure ネットワーク監視機能のビューについて学習する。
 
 「[ExpressRoute の FAQ][ExR-FAQ]」を参照して以下を行います。
 -   ExpressRoute ゲートウェイに接続できる ExpressRoute 回線の数について学習する。
@@ -94,11 +95,11 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubView.png "トポロジのハブとスポーク VNet の視点"
-[2]: ./media/backend-interoperability/Loc1ExRView.png "トポロジの ExpressRoute 1 を経由する場所 1 とリモート VNeT の視点"
-[3]: ./media/backend-interoperability/Loc1VPNView.png "トポロジのサイト間 VPN を経由する場所 1 とブランチ VNet からの視点"
-[4]: ./media/backend-interoperability/Loc2View.png "トポロジの場所 2 からの視点"
-[5]: ./media/backend-interoperability/ExR1-RouteTable.png " ExpressRoute 1 のルート テーブル"
+[1]: ./media/backend-interoperability/hubview.png "トポロジのハブとスポーク VNet の視点"
+[2]: ./media/backend-interoperability/loc1exrview.png "トポロジの ExpressRoute 1 を経由する場所 1 とリモート VNeT の視点"
+[3]: ./media/backend-interoperability/loc1vpnview.png "トポロジのサイト間 VPN を経由する場所 1 とブランチ VNet からの視点"
+[4]: ./media/backend-interoperability/loc2view.png "トポロジの場所 2 からの視点"
+[5]: ./media/backend-interoperability/exr1-routetable.png " ExpressRoute 1 のルート テーブル"
 
 <!--Link References-->
 [Setup]: ./connectivty-interoperability-preface.md
@@ -107,7 +108,7 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 [VPN]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
 [VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
 [Configuration]: ./connectivty-interoperability-configuration.md
-[Control-Analysis]:https://docs.microsoft.com/azure/networking/connectivty-interoperability-control-plane
+[Control-Analysis]: 
 [Data-Analysis]: ./connectivty-interoperability-data-plane.md
 [ExR-FAQ]: ../expressroute/expressroute-faqs.md
 [S2S-Over-ExR]: ../expressroute/site-to-site-vpn-over-microsoft-peering.md

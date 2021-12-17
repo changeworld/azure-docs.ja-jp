@@ -1,30 +1,31 @@
 ---
 title: Azure Active Directory の資格情報を使用して Linux VM にログインする
 description: Azure Active Directory 認証を使用してサインインするために、Linux VM を作成して構成する方法について説明します。
-author: SanDeo-MSFT
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 11/17/2020
-ms.author: sandeo
-ms.openlocfilehash: 654d47102685c04d6440d7c155e4d6eb931abcae
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 10/21/2021
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: sandeo
+ms.custom: references_regions
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5ad78f50685aeb7a5b2133173ae726980012878b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788117"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074470"
 ---
-# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
+# <a name="deprecated-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-device-code-flow-authentication"></a>非推奨: デバイス コード フロー認証を使用して Azure Active Directory で Azure の Linux 仮想マシンにログインする
+
+> [!CAUTION]
+> **この記事で説明するパブリック プレビュー機能は、2021 年 8 月 15 日に非推奨とされました。**
+> 
+> この機能は、証明書ベースの認証を使用して Azure AD と SSH を使用する機能に置き換えられています。 詳細については、[プレビュー: SSH 証明書ベースの認証を使用して Azure Active Directory で Azure の Linux 仮想マシンにログインする](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md)方法に関する記事を参照してください。 古いバージョンからこのバージョンに移行するには、[以前のプレビューからの移行](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md#migration-from-previous-preview)に関するセクションを参照してください
 
 Azure の Linux 仮想マシン (VM) のセキュリティを強化するために、Azure Active Directory (AD) の認証と統合できます。 Linux VM に Azure AD の認証を使用することで、VM へのアクセスを許可/拒否するポリシーを一元管理および施行します。 この記事では、Azure AD 認証を使用して Linux VM を作成し、構成する方法について説明します。
-
-
-> [!IMPORTANT]
-> Azure Active Directory 認証は、現在、パブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-> テスト後に破棄する予定のテスト用仮想マシンでこの機能を使用してください。
->
-
 
 Azure AD の認証を使用して、Azure Linux VM にログインすると、次のような多くのメリットがあります。
 
@@ -50,16 +51,10 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
 | SUSE Linux Enterprise Server | SLES 12 |
 | Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04、Ubuntu Server 18.04 |
 
-
-この機能のプレビュー期間中は、次の Azure リージョンがサポートされます。
-
-- すべてのグローバル Azure リージョン
-
->[!IMPORTANT]
-> このプレビュー機能を使用するには、サポートされている Linux ディストリビューションおよびサポートされている Azure リージョンのみに展開してください。 この機能は、Azure Government やソブリン クラウドではサポートされていません。
+> [!IMPORTANT]
+> このプレビューは、Azure Government やソブリン クラウドではサポートされていません。
 >
 > Azure Kubernetes Service (AKS) クラスターでは、この拡張機能の使用はサポートされていません。 詳細については、[AKS のポリシーのサポート](../../aks/support-policies.md)に関するページを参照してください。
-
 
 CLI をローカルにインストールして使用する場合、Azure CLI バージョン 2.0.31 以降を実行していることがこのチュートリアルの要件になります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -183,7 +178,6 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 %aad_admins ALL=(ALL) NOPASSWD:ALL
 ```
 
-
 ## <a name="troubleshoot-sign-in-issues"></a>サインアップに関する問題のトラブルシューティング
 
 Azure AD の資格情報を使用して SSH 経由でログインしようとしたときによく発生する問題は、Azure ロールが割り当てられていないために、サインインを求める画面が繰り返し表示されることです。 次のセクションを使用してこの問題を解決してください。
@@ -217,7 +211,7 @@ Web ブラウザーで認証手続きを完了した直後に、新しいコー�
 
 ## <a name="preview-feedback"></a>プレビューのフィードバック
 
-[Azure AD フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)で、このプレビュー機能に関するフィードバックを共有するか、その使用に関する問題を報告してください
+[Azure AD フィードバック フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)で、このプレビュー機能に関するフィードバックを共有するか、その使用に関する問題を報告してください
 
 ## <a name="next-steps"></a>次のステップ
 

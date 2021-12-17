@@ -7,13 +7,13 @@ author: aletheatoh
 mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
-ms.author: kumud
-ms.openlocfilehash: 625f77a6d9dbeaf612df884434ab39b943587791
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.author: yitoh
+ms.openlocfilehash: 5168cbf417bf433632b6e2653dfa39dcdad11f92
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103200"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306353"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Azure DDoS Protection Standard との提携
 この記事では、Azure DDoS Protection Standard によって可能になるパートナーの営業案件について説明します。 この記事は、プロダクト マネージャーと営業開発の担当者が投資の道筋を理解し、パートナーとなる価値提案を分析できるように設計されています。
@@ -39,7 +39,7 @@ Azure DDoS Protection Standard を使うと、保護されたアプリケーシ�
 ### <a name="attack-analytics-telemetry-monitoring-and-alerting"></a>攻撃分析、テレメトリ、監視、アラート
 Azure DDoS Protection は、ユーザーの介入がなくても DDoS 攻撃を識別して軽減します。
 
-- 保護されているリソースが Azure Security Center の対象となるサブスクリプションにある場合、保護されているアプリケーションに対する DDoS 攻撃が検出され、軽減されるたびに、DDoS Protection Standard からセキュリティ センターに自動的にアラートが送信されます。
+- 保護されているリソースが Microsoft Defender for Cloud の対象となるサブスクリプションにある場合、保護されているアプリケーションに対する DDoS 攻撃が検出され、軽減されるたびに、DDoS Protection Standard から Defender for Cloud に自動的にアラートが送信されます。
 - 保護されているパブリック IP に対してリスク軽減がアクティブになった場合に通知を受け取るには、メトリック Under DDoS attack or not (DDoS 攻撃中かどうか) に対して[アラートを構成する](alerts.md)ことができます。
 - さらに、他の DDoS メトリックのアラートを作成し、[攻撃のテレメトリを構成](telemetry.md)して、攻撃の規模、ドロップしたトラフィック、攻撃ベクトル、主な寄与要素、その他の詳細を把握できます。
 

@@ -2,17 +2,18 @@
 title: Azure-SSIS Integration Runtime パッケージ ストアを使用したパッケージの管理
 description: Azure-SSIS Integration Runtime パッケージ ストアを使用してパッケージを管理する方法について説明します。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
-ms.date: 09/29/2020
-ms.openlocfilehash: 66fdd20e66360be7cdaa6d918e18ca09c413da07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/22/2021
+ms.openlocfilehash: fcddeabd5ebd920cb1cb73c8b2fde502da87da27
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393838"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844584"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Azure-SSIS Integration Runtime パッケージ ストアを使用したパッケージの管理
 
@@ -29,23 +30,23 @@ ms.locfileid: "100393838"
 
 Azure-SSIS IR がプロビジョニングされたら、それに接続して SSMS でパッケージ ストアを参照することができます。
 
-![Azure-SSIS IR への接続](media/azure-ssis-integration-runtime-package-store/ssms-package-store-connect.png)
+:::image type="content" source="media/azure-ssis-integration-runtime-package-store/ssms-package-store-connect.png" alt-text="Azure-SSIS IR への接続":::
 
 SSMS の **[オブジェクト エクスプローラー]** ウィンドウで、 **[接続]** ドロップダウン メニューの **[Azure-SSIS Integration Runtime]** を選択します。 次に、Azure にサインインし、パッケージ ストアを使用してプロビジョニングした関連するサブスクリプション、ADF、および Azure-SSIS IR を選択します。 Azure-SSIS IR が **[実行中のパッケージ]** および **[格納済みパッケージ]** ノードの下に表示されます。 **[格納済みパッケージ]** ノードを展開して、パッケージ ストアを下に表示します。 パッケージ ストアを展開して、配下にあるフォルダーとパッケージを表示します。 SSMS により自動的に接続できない場合は、パッケージ ストアのアクセス資格情報を入力するように求められる場合があります。 たとえば、MSDB の上部でパッケージ ストアを展開したとき、最初に Azure SQL Managed Instance に接続するように求められる場合があります。
 
-![Azure SQL Managed Instance に接続する](media/azure-ssis-integration-runtime-package-store/ssms-package-store-connect2.png)
+:::image type="content" source="media/azure-ssis-integration-runtime-package-store/ssms-package-store-connect2.png" alt-text="Azure SQL Managed Instance に接続する":::
 
 ## <a name="manage-folders-and-packages"></a>フォルダーとパッケージの管理
 
 SSMS 上の Azure-SSIS IR に接続すると、任意のパッケージ ストア、フォルダー、またはパッケージを右クリックしてメニューをポップアップ表示し、 **[新しいフォルダー]** 、 **[パッケージのインポート]** 、 **[パッケージのエクスポート]** 、 **[削除]** 、または **[更新]** を選択できます。
 
-   ![フォルダーとパッケージの管理](media/azure-ssis-integration-runtime-package-store/ssms-package-store-manage.png)
+   :::image type="content" source="media/azure-ssis-integration-runtime-package-store/ssms-package-store-manage.png" alt-text="フォルダーとパッケージの管理":::
 
    *  インポートしたパッケージ用の新しいフォルダーを作成するには **[新しいフォルダー]** を選択します。
 
    *  **ファイル システム**、**SQL Server** (MSDB)、または従来の **SSIS パッケージ ストア** からパッケージ ストアにパッケージをインポートするには、 **[パッケージのインポート]** を選択します。
 
-      ![パッケージのインポート](media/azure-ssis-integration-runtime-package-store/ssms-package-store-import.png)
+      :::image type="content" source="media/azure-ssis-integration-runtime-package-store/ssms-package-store-import.png" alt-text="パッケージのインポート":::
 
       インポート元の **[パッケージの場所]** に応じて、該当する **[サーバー]** / **[認証の種類]** を選択し、必要に応じてアクセス資格情報を入力し、 **[パッケージのパス]** を選択して、新しい **[パッケージ名]** を入力します。 パッケージをインポートするときに、保護レベルを変更することはできません。 これを変更するには、SQL Server Data Tools (SSDT) または `dtutil` コマンド ライン ユーティリティを使用します。
 
@@ -60,7 +61,7 @@ SSMS 上の Azure-SSIS IR に接続すると、任意のパッケージ スト�
 
    *  パッケージ ストアから **ファイル システム**、**SQL Server** (MSDB)、または従来の **SSIS パッケージ ストア** にパッケージをエクスポートするには、 **[パッケージのエクスポート]** を選択します。
 
-      ![パッケージのエクスポート](media/azure-ssis-integration-runtime-package-store/ssms-package-store-export.png)
+      :::image type="content" source="media/azure-ssis-integration-runtime-package-store/ssms-package-store-export.png" alt-text="パッケージのエクスポート":::
 
       エクスポート先の **[パッケージの場所]** に応じて、該当する **[サーバー]** / **[認証の種類]** を選択し、必要に応じてアクセス資格情報を入力して、 **[パッケージのパス]** を選択します。 パッケージをエクスポートするときに、それらが暗号化されている場合は、最初にパスワードを入力して暗号化を解除します。その後、たとえば、機密データの保存を回避する、ユーザー キーやパスワードを使用してすべてのデータを暗号化する、などに保護レベルを変更できます。
 
@@ -79,23 +80,23 @@ SSMS 上の Azure-SSIS IR に接続すると、任意のパッケージ スト�
 
 SSMS 上の Azure-SSIS IR に接続すると、格納されている任意のパッケージを右クリックしてメニューをポップアップ表示し、 **[パッケージの実行]** を選択できます。  これにより、 **[パッケージ実行ユーティリティ]** ダイアログが開き、ADF パイプラインでの SSIS パッケージ アクティビティとして、Azure-SSIS IR でパッケージの実行を構成できます。
 
-![パッケージ実行ユーティリティ ページ 1 & 2](media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute.png)
+:::image type="content" source="media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute.png" alt-text="パッケージ実行ユーティリティ ページ 1 & 2":::
 
-![パッケージ実行ユーティリティ ページ 3 & 4](media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute2.png)
+:::image type="content" source="media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute2.png" alt-text="パッケージ実行ユーティリティ ページ 3 & 4":::
 
 **[パッケージ実行ユーティリティ]** ダイアログの **[全般]** 、 **[構成]** 、 **[実行オプション]** 、 **[ログ]** の各ページは、[SSIS パッケージの実行] アクティビティの **[設定]** タブに対応しています。 これらのページでは、パッケージの暗号化パスワードを入力し、パッケージ構成ファイルの情報にアクセスすることができます。 パッケージ実行の資格情報とプロパティだけでなく、ログ フォルダーのアクセス情報を入力することもできます。  **[パッケージ実行ユーティリティ]** ダイアログの **[値の設定]** ページは、[SSIS パッケージの実行] アクティビティの **[プロパティのオーバーライド]** タブに対応しています。ここでは、上書きする既存のパッケージのプロパティを入力できます。 詳細については、[ADF パイプラインで SSIS パッケージ実行アクティビティとして SSIS パッケージを実行する](./how-to-invoke-ssis-package-ssis-activity.md)に方法に関するページを参照してください。
 
 **[実行]** ボタンを選択すると、SSIS パッケージの実行アクティビティを含む、新しい ADF パイプラインが自動的に生成され、トリガーされます。 同じ設定の ADF パイプラインが既に存在する場合は、再実行され、新しいパイプラインは生成されません。 ADF パイプラインと SSIS パッケージ実行アクティビティには、それぞれ `Pipeline_SSMS_YourPackageName_HashString` および `Activity_SSMS_YourPackageName` という名前が付けられます。
 
-![パッケージ実行ユーティリティ ボタン](media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute3.png)
+:::image type="content" source="media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute3.png" alt-text="パッケージ実行ユーティリティ ボタン":::
 
-![SSIS パッケージ アクティビティの実行](media/azure-ssis-integration-runtime-package-store/ssis-activity-package-store.png)
+:::image type="content" source="media/azure-ssis-integration-runtime-package-store/ssis-activity-package-store.png" alt-text="SSIS パッケージ アクティビティの実行":::
 
 ## <a name="monitor-and-stop-running-packages"></a>実行中のパッケージの監視および停止
 
 SSMS 上の Azure-SSIS IR に接続すると、 **[実行中のパッケージ]** ノードを展開して、現在実行中のパッケージを下に表示できます。  そのいずれかを右クリックしてメニューをポップアップ表示し、 **[停止]** または **[更新]** を選択します。
 
-   ![実行中のパッケージの監視および停止](media/azure-ssis-integration-runtime-package-store/ssms-package-store-monitor.png)
+   :::image type="content" source="media/azure-ssis-integration-runtime-package-store/ssms-package-store-monitor.png" alt-text="実行中のパッケージの監視および停止":::
 
    *  [SSIS パッケージの実行] アクティビティとしてパッケージを実行する、現在実行中の ADF パイプラインをキャンセルするには、 **[停止]** を選択します。
 
@@ -105,11 +106,11 @@ SSMS 上の Azure-SSIS IR に接続すると、 **[実行中のパッケージ]*
 
 SSMS 上の Azure-SSIS IR に接続すると、右クリックしてメニューをポップアップ表示し、 **[Go to Azure Data Factory portal]\(Azure Data Factory ポータルに移動\)** または **[更新]** を選択することができます。
 
-   ![ADF ポータルに移動](media/azure-ssis-integration-runtime-package-store/ssms-package-store-monitor2.png)
+   :::image type="content" source="media/azure-ssis-integration-runtime-package-store/ssms-package-store-monitor2.png" alt-text="ADF ポータルに移動":::
 
    *  **[Go to Azure Data Factory portal]\(Azure Data Factory ポータルに移動\)** を選択して、ADF 監視ハブの **[統合ランタイム]** ページを開きます。ここでは、お使いの Azure-SSIS IR を監視できます。 **[パッケージ ストア]** タイルで、Azure-SSIS IR にアタッチされているパッケージ ストアの数を確認できます。  この数値を選択すると、パッケージ ストアのアクセス情報を格納する、ADF のリンクされたサービスを編集できるウィンドウがポップアップ表示されます。
 
-      ![パッケージ ストアの編集](media/azure-ssis-integration-runtime-package-store/ssms-package-store-monitor3.png)
+      :::image type="content" source="media/azure-ssis-integration-runtime-package-store/ssms-package-store-monitor3.png" alt-text="パッケージ ストアの編集":::
 
    *  パッケージ ストアに新しく追加されたフォルダーまたはパッケージ、およびパッケージ ストアから実行されたパッケージを表示するには、 **[更新]** を選択します。
 
@@ -164,7 +165,7 @@ Azure SQL Managed Instance のプライベートおよびパブリックのエ�
 
 このスクリプトを使用すると、MSDB 内のすべてのパッケージ用に dtutil コマンド ラインが生成されます。これにより、複数選択、コピーと貼り付け、およびコマンド プロンプトでの実行が可能になります。
 
-![dtutil コマンド ラインを生成する](media/azure-ssis-integration-runtime-package-store/sql-server-msdb-to-sql-mi-msdb.png)
+:::image type="content" source="media/azure-ssis-integration-runtime-package-store/sql-server-msdb-to-sql-mi-msdb.png" alt-text="dtutil コマンド ラインを生成する":::
 
 ```dos
 dtutil /SQL YourFolder\YourPackage1 /ENCRYPT SQL;YourFolder\YourPackage1;2;YourEncryptionPassword /DestServer YourSQLManagedInstanceEndpoint /DestUser YourUserName /DestPassword YourPassword

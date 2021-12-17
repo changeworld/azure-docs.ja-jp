@@ -1,14 +1,15 @@
 ---
-title: Azure DevTest Labs で成果物を VM に追加する | Microsoft Docs
+title: 成果物を VM に追加する
 description: Azure DevTest Labs のラボで成果物を仮想マシンを追加する方法を説明します
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: b4772755d8077f7a659c4d403961ffaeb9e1d483
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 16228abd5be6aed3fced36332b02d735b04996f7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85483892"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644355"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>成果物を VM に追加する
 VM を作成するとき、既存の成果物をその VM に追加できます。 これらの成果物は、[パブリックの DevTest Labs の Git リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)または独自の Git リポジトリにあります。 この記事では、Azure portal および Azure PowerShell を使用して成果物を追加する方法について説明します。 

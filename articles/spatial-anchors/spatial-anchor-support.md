@@ -8,33 +8,33 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f47f07fee70d2fc0ee445c6788a8ccb522b7774e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 077ab48fd75b48afc5f08f95ccaf48eb7ccc1988
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95494711"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474934"
 ---
 # <a name="azure-spatial-anchors-support-options"></a>Azure Spatial Anchors のサポート オプション
 
 ## <a name="open-a-tech-support-ticket"></a>テクニカル サポート チケットを開く
 
-Azure Portal 内で Azure Spatial Anchors のテクニカル サポート チケットを開くには、次の手順を実行します。
+Azure portal 内で Azure Spatial Anchors のテクニカル サポート チケットを開くには:
 
 1. [Azure portal](https://azure.microsoft.com/account/) を開いたら、上部メニュー バーのヘルプ アイコンを選択し、**[ヘルプとサポート]** ボタンを選択します。
 
-![Azure portal のヘルプとサポート](./media/spatial-anchor-support.png)
+   ![Azure portal のヘルプとサポート](./media/spatial-anchor-support.png)
 
 1. [ヘルプとサポート] ページを開いたら、**[新しいサポート要求]** を選択します。
 
-![Azure portal の [新しいサポート要求] ウィンドウ](./media/spatial-anchor-support2.png)
+   ![Azure portal の [新しいサポート要求] ウィンドウ](./media/spatial-anchor-support2.png)
 
 1. 次のようにサポート チケットのフィールドを入力します。
 
-- [問題の種類]: [技術]
-- サービス: Spatial Anchors
+   - [問題の種類]: [技術]
+   - サービス: Spatial Anchors
 
-![Azure portal サポート チケットのフィールド](./media/spatial-anchor-support3.png)
+   ![Azure portal サポート チケットのフィールド](./media/spatial-anchor-support3.png)
 
 ## <a name="community-support"></a>コミュニティ サポート
 
@@ -46,8 +46,8 @@ Azure Portal 内で Azure Spatial Anchors のテクニカル サポート チケ
 
 ## <a name="provide-product-feedback"></a>製品フィードバックの提供
 
-フィードバックを提供するには、Azure Spatial Anchors サービスに関するアイデアや提案を共有したり、他のユーザーが送信したアイデアに投票したり、[Azure Spatial Anchors Feedback Forum](https://feedback.azure.com/forums/919252-azure-spatial-anchors) にアクセスしたりすることができます。
+フィードバックを提供するには、Azure Spatial Anchors サービスに関するアイデアや提案を共有したり、他のユーザーが送信したアイデアに投票したり、[Azure Spatial Anchors Feedback Forum](https://feedback.azure.com/d365community/forum/f47d9b25-0725-ec11-b6e6-000d3a4f07b8) にアクセスしたりすることができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Spatial Anchors についてよく寄せられる質問については、[FAQ](spatial-anchor-faq.md) のページを参照してください。
+Azure Spatial Anchors についてよく寄せられる質問については、[FAQ](spatial-anchor-faq.yml) のページを参照してください。

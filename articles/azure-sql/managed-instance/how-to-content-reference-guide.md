@@ -4,20 +4,19 @@ titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance を構成および管理する方法を説明するコンテンツの参照ガイドです。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: sqldbrb=1
+ms.subservice: deployment-configuration
+ms.custom: sqldbrb=1, ignite-fall-2021
 ms.devlang: ''
 ms.topic: guide
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.date: 04/16/2019
-ms.openlocfilehash: b7f2f060f32cf3bf92660a2e8b75a45b7ec76b82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86511b0cb494ecd5cb9f60fb8aa825a11fe48065
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92779766"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045636"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL Managed Instance のコンテンツ参照
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,7 +25,7 @@ ms.locfileid: "92779766"
 
 ## <a name="load-data"></a>データの読み込み
 
-- [Azure SQL Managed Instance への移行](migrate-to-instance-from-sql-server.md): Azure SQL Managed Instance への移行のための推奨される移行プロセスおよびツールについて説明します。
+- [SQL Server から Azure SQL Managed Instance へのガイド](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md): Azure SQL Managed Instance への移行のための推奨される移行プロセスおよびツールについて説明します。
 - [Azure SQL Managed Instance への TDE 証明書の移行](tde-certificate-migrate.md): お客様の SQL Server データベースが Transparent Data Encryption (TDE) を使用して保護される場合、お客様が Azure に格納したいバックアップの暗号化を解除するために SQL Managed Instance によって使用される証明書を移行する必要があります。
 - [BACPAC からの DB のインポート](../database/database-import.md)
 - [BACPAC への DB のエクスポート](../database/database-export.md)
@@ -37,9 +36,10 @@ ms.locfileid: "92779766"
 
 - [サブネットのサイズを決める](vnet-subnet-determine-size.md): SQL Managed Instance をデプロイした後ではサブネットのサイズを変更することができないため、サブネットにデプロイする予定のマネージド インスタンスの数と種類に対して必要なアドレスの IP 範囲を計算する必要があります。 
 - [新しい VNet とサブネットを作成する](virtual-network-subnet-create-arm-template.md): [ネットワーク要件](connectivity-architecture-overview.md#network-requirements)に従って、仮想ネットワークとサブネットを構成します。 
-- [既存の VNet とサブネットを構成する](vnet-existing-add-subnet.md): ネットワーク要件を確認し、SQL Managed Instance をデプロイする既存の仮想ネットワークとサブネットを構成します。 
+- [既存の VNet とサブネットを構成する](vnet-existing-add-subnet.md): ネットワーク要件を確認し、SQL Managed Instance をデプロイする既存の仮想ネットワークとサブネットを構成します。
+- [Azure Storage (プレビュー) のサービスエンドポイントポリシーを構成する](service-endpoint-policies-configure.md): 不正なデータまたは悪意のあるデータに対して、承認されていない Azure Storage アカウントにサブネットをセキュリティで保護します。
 - [カスタム DNS を構成する](custom-dns-configure.md): データベース メール プロファイルのリンク サーバー経由で SQL Managed Instance からカスタム ドメインにアクセスする権限を外部リソースに付与するようにカスタム DNS を構成します。 
-- [ネットワーク構成を同期する](azure-app-sync-network-configuration.md): [ご利用のアプリを Azure 仮想ネットワークに統合](../../app-service/web-sites-integrate-with-vnet.md)してから接続を確立できなくなった場合に、ネットワーク構成計画を更新します。
+- [ネットワーク構成を同期する](azure-app-sync-network-configuration.md): [ご利用のアプリを Azure 仮想ネットワークに統合](../../app-service/overview-vnet-integration.md)してから接続を確立できなくなった場合に、ネットワーク構成計画を更新します。
 - [管理エンドポイント IP アドレスを検索する](management-endpoint-find-ip-address.md): SQL Managed Instance が管理目的で使用するパブリック エンドポイントを特定します。 
 - [組み込みのファイアウォール保護を確認する](management-endpoint-verify-built-in-firewall.md): 必要なポート上でのみ SQL Managed Instance によってトラフィックが許可されること、およびその他の組み込みのファイアウォール規則を確認します。 
 - [アプリケーションを接続する](connect-application-instance.md): アプリケーションを SQL Managed Instance に接続するさまざまなパターンについて説明します。
@@ -86,7 +86,7 @@ ms.locfileid: "92779766"
 ## <a name="develop-applications"></a>アプリケーションを開発する
 
 - [接続](../database/connect-query-content-reference-guide.md#libraries)
-- [Spark コネクタの使用](../../cosmos-db/spark-connector.md)
+- [Spark コネクタの使用](../../cosmos-db/create-sql-api-spark.md)
 - [アプリの認証](../database/application-authentication-get-client-id-keys.md)
 - [バッチ処理を使用したパフォーマンスの向上](../performance-improve-use-batching.md)
 - [接続のガイダンス](../database/troubleshoot-common-connectivity-issues.md)

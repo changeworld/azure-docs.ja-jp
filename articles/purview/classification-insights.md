@@ -4,21 +4,24 @@ description: この攻略ガイドでは、データに関する Purview の分�
 author: batamig
 ms.author: bagol
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 01/17/2021
-ms.openlocfilehash: b6ea3e762ad098e373baa8487d8926105820f226
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a27e468a13f95b45a56961b5bb1bfe50553bd841
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666516"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841849"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure Purview からのデータに関する分類の分析情報
 
 このハウツーガイドでは、データに関する Purview 分類分析情報レポートにアクセスし、これを表示し、フィルター処理する方法について説明します。
 
-サポートされるデータ ソースは、Azure Blob Storage、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、Azure Cosmos DB (SQL API)、Azure Synapse Analytics (旧称 SQL DW)、Azure SQL Database、Azure SQL Managed Instance、SQL Server、Amazon S3 バケットです。
+> [!IMPORTANT]
+> Azure Purview Insights は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
+
+サポートされるデータ ソースは、Azure Blob Storage、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、Azure Cosmos DB (SQL API)、Azure Synapse Analytics (旧称 SQL DW)、Azure SQL Database、Azure SQL Managed Instance、SQL Server、Amazon S3 バケット、Amazon RDS データベース (パブリック プレビュー)、Power BI です。
 
 このハウツーガイドでは、次の方法について説明します。
 
@@ -33,11 +36,11 @@ Purview の分析情報の使用を開始する前に、次の手順を完了し
 
 - Azure リソースを設定し、関連するアカウントにテスト データを設定している
 
-- 各データ ソースのテスト データに対するスキャンを設定して完了している。 詳細については、「[Azure Purview でデータ ソースを管理する (プレビュー)](manage-data-sources.md)」および「[スキャン ルール セットを作成する](create-a-scan-rule-set.md)」を参照してください。
+- 各データ ソースのテスト データに対するスキャンを設定して完了している。 詳細については、「[Azure Purview でデータ ソースを管理する](manage-data-sources.md)」および「[スキャン ルール セットを作成する](create-a-scan-rule-set.md)」をご覧ください。
 
-- [データ閲覧者またはデータ キュレーター ロール](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)を持つアカウントを使用して Purview にサインインします。
+- [データ閲覧者またはデータ キュレーター ロール](catalog-permissions.md#roles)を持つアカウントを使用して Purview にサインインします。
 
-詳細については、「[Azure Purview でデータ ソースを管理する (プレビュー)](manage-data-sources.md)」を参照してください。
+詳細については、「[Azure Purview でデータ ソースを管理する](manage-data-sources.md)」を参照してください。
 
 ## <a name="use-purview-classification-insights"></a>Purview の分類の分析情報を使用する
 
@@ -52,13 +55,13 @@ Purview には、Microsoft 365 と同じ機密情報の種類が使用されて�
 
 1. Azure portal で **Azure Purview** [インスタンス画面](https://aka.ms/purviewportal)に移動し、Purview アカウントを選択します。
 
-1. **[概要]** ページの **[Get Started]\(作業の開始\)** セクションで、 **[Launch Purview account]\(Purview アカウントの起動\)** タイルを選択します。
+1. **[概要]** ページの **[開始]** セクションで、 **[Purview Studio]** タイルを選択します。
 
 1. Purview で、左側の **[Insights]\(分析情報\)** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: メニュー項目を選択し、 **[Insights]\(分析情報\)** 領域にアクセスします。
 
 1. **[Insights]\(分析情報\)** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: 領域で、 **[分類]** を選択して、Purview の **[Classification insights]\(分類の分析情報\)** レポートを表示します。
 
-   :::image type="content" source="./media/insights/select-classification-labeling-small.png" alt-text="分類の分析情報レポート" lightbox="media/insights/select-classification-labeling.png":::
+   :::image type="content" source="./media/insights/select-classification-labeling.png" alt-text="分類の分析情報レポート" lightbox="media/insights/select-classification-labeling.png":::
 
    メインの **[Classification insights]\(分類の分析情報\)** ページには、次の領域が表示されます。
 
@@ -83,7 +86,7 @@ Purview には、Microsoft 365 と同じ機密情報の種類が使用されて�
 
 例:
 
-:::image type="content" source="media/insights/view-classifications-small.png" alt-text="すべての分類を表示する" lightbox="media/insights/view-classifications.png":::
+:::image type="content" source="media/insights/view-classifications-small.png" alt-text="すべての分類を表示する":::
 
 詳細を確認するには、次のいずれかの操作を行います。
 
@@ -107,6 +110,3 @@ Azure Purview の分析情報レポートの詳細について学習します
 
 > [!div class="nextstepaction"]
 > [秘密度ラベルの分析情報](./sensitivity-insights.md)
-
-> [!div class="nextstepaction"]
-> [ファイル拡張子の分析情報](file-extension-insights.md)

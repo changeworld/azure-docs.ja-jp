@@ -12,12 +12,12 @@ metadata:
   author: dlepow
   ms.author: danlep
   ms.date: 11/08/2019
-  ms.openlocfilehash: 53c66bd6dc7e9be548533650d9d3ee7540e1e5c3
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 3a1aae148d39c4990a36606155b8a688b72e7f3b
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "86260044"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131016665"
 landingContent:
 - title: Azure Container Registry について
   linkLists:
@@ -25,8 +25,6 @@ landingContent:
     links:
     - text: Azure Container Registry とは
       url: container-registry-intro.md
-    - text: レジストリ、リポジトリ、イメージ
-      url: container-registry-concepts.md
 - title: はじめに
   linkLists:
   - linkListType: quickstart
@@ -53,6 +51,10 @@ landingContent:
       url: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
 - title: レジストリの管理
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: クライアント ライブラリを使用してコンテンツを管理する
+      url: quickstart-client-libraries.md
   - linkListType: how-to-guide
     links:
     - text: リポジトリとタグの表示
@@ -65,6 +67,8 @@ landingContent:
       url: container-registry-delete.md
   - linkListType: concept
     links:
+    - text: レジストリ、リポジトリ、イメージ
+      url: container-registry-concepts.md
     - text: geo レプリケーション
       url: container-registry-geo-replication.md
     - text: 認証
@@ -72,7 +76,7 @@ landingContent:
     - text: ベスト プラクティス
       url: container-registry-best-practices.md
     - text: よく寄せられる質問
-      url: container-registry-faq.md
+      url: container-registry-faq.yml
 - title: ACR タスク
   linkLists:
   - linkListType: overview
@@ -89,3 +93,17 @@ landingContent:
     links:
     - text: イメージのビルドの自動化
       url: container-registry-tutorial-quick-task.md
+- title: 接続されたレジストリ (プレビュー)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 接続されたレジストリについて
+      url: intro-connected-registry.md
+    - text: 接続されたレジストリと IoT Edge
+      url: overview-connected-registry-and-iot-edge.md
+  - linkListType: quickstart
+    links:
+    - text: 接続されたレジストリを作成する - CLI
+      url: quickstart-connected-registry-cli.md
+    - text: 接続されたレジストリを作成する - Portal
+      url: quickstart-connected-registry-portal.md

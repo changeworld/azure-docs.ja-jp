@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c0bd21f55fee4d8487826deae23093ede293c8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa9f9ec8d7a8f60d6c72cb6c4f669ef511cc0068
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95021815"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112456879"
 ---
 # <a name="test-your-custom-commands-application"></a>カスタム コマンド アプリケーションをテストする
 
@@ -27,7 +27,7 @@ ms.locfileid: "95021815"
 ポータルでのテストは、カスタム コマンド アプリケーションが期待どおりに動作するかどうかを確認する最もシンプルかつ迅速な方法です。 アプリが正常にトレーニングされたら、[`Test`] ボタンをクリックしてテストを開始します。
 
 > [!div class="mx-imgBorder"]
-> ![ポータルでのテスト](media/custom-commands/create-basic-test-chat.png)
+> ![ポータルでのテスト](media/custom-commands/create-basic-test-chat-no-mic.png)
 
 ## <a name="test-with-windows-voice-assistant-client"></a>Windows 音声アシスタント クライアントを使用してテストする
 
@@ -40,8 +40,17 @@ Windows 音声アシスタント クライアントとは、C# で記述され�
 > [!div class="mx-imgBorder"]
 > ![WVAC でのプロファイルの作成](media/custom-commands/conversation.png)
 
-## <a name="test-with-speech-sdk-enabled-client-applications"></a>Speech SDK 対応のクライアント アプリケーションを使用してテストする 
-Speech ソフトウェア開発キット (SDK) では Speech サービスのさまざまな機能が公開されています。これにより、音声認識対応アプリケーションを開発できます。 また、これは多くのプログラミング言語と、あらゆるプラットフォームで使用できます。
+## <a name="test-programatically-with-the-cognitive-services-voice-assistant-test-tool"></a>Cognitive Services 音声アシスタント テスト ツールでプログラムによるテストを行う
+
+音声アシスタント テスト ツールは、Microsoft Voice Assistant 向けの構成可能な .NET Core C# コンソール アプリケーションで、エンドツーエンドの機能回帰テストを行えます。 
+
+このツールは、ボットでの回帰を防ぐことを目的として、コンソール コマンドとして手動で実行するか、Azure DevOps CI/CD パイプラインの一部として自動で実行することができます。
+
+ツールを設定する方法については、「[音声アシスタント テスト ツール](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/main/clients/csharp-dotnet-core/voice-assistant-test)」を参照してください。
+
+## <a name="test-with-speech-sdk-enabled-client-applications"></a>Speech SDK 対応のクライアント アプリケーションを使用してテストする
+
+Speech ソフトウェア開発キット (SDK) では Speech サービスのさまざまな機能が公開されています。これにより、音声認識対応アプリケーションを開発できます。 これは、ほとんどのプラットフォーム、多数のプログラミング言語で使用できます。
 
 Speech SDK を使用してユニバーサル Windows プラットフォーム (UWP) クライアント アプリケーションを設定し、それをカスタム コマンド アプリケーションと統合するには、次のようにします。  
 - [方法: Speech SDK を使用してクライアント アプリケーションと統合する](./how-to-custom-commands-setup-speech-sdk.md)

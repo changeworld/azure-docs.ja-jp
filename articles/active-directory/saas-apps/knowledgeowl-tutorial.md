@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 08/11/2021
 ms.author: jeedes
-ms.openlocfilehash: c1c53da8c62acc1b4aacd2b0fa79dd968c65c13a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10e134d6c3fa7e3a6a68269a894694b6ab279c28
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645639"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346213"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と KnowledgeOwl の統合
 
@@ -156,13 +156,13 @@ KnowledgeOwl に対する Azure AD SSO を構成してテストするには、�
 
 1. 別の Web ブラウザー ウィンドウで、KnowledgeOwl 企業サイトに管理者としてサインインします。
 
-1. **[Settings]\(設定\)** をクリックし、 **[Security]\(セキュリティ\)** を選択します。
+1. **[Settings]\(設定\)** をクリックし、 **[SSO]** を選択します。
 
-    ![[Settings]\(設定\) メニューの [Security]\(セキュリティ\) が選択されているスクリーンショット。](./media/knowledgeowl-tutorial/configure-1.png)
+    ![[Settings]\(設定\) メニューの [SSO] が選択されていることを示すスクリーンショット。](./media/knowledgeowl-tutorial/settings-sso-dropdown.png)
 
-1. **[SAML SSO Integration]\(SAML SSO 統合\)** までスクロールして、次の手順に従います。
+1. スクロールした **[SAML Settings]\(SAML 設定\)** タブで、次の手順を実行します。
 
-    ![ここで説明されている変更を行うことができる [SAML S S O Integration]\(SAML S S O 統合\) を示すスクリーンショット。](./media/knowledgeowl-tutorial/configure-2.png)
+    ![ここで説明されている変更を行うことができる [SAML S S O Integration]\(SAML S S O 統合\) を示すスクリーンショット。](./media/knowledgeowl-tutorial/sso-settings-required-fields.png)
 
     a. **[Enable SAML SSO]\(SAML SSO を有効にする\)** をオンにします。
 
@@ -176,21 +176,24 @@ KnowledgeOwl に対する Azure AD SSO を構成してテストするには、�
 
     f. **[IdP Logout URL]\(IdP ログアウト URL\)** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
-    g. **[Upload IdP Certificate]\(IdP 証明書のアップロード\)** をクリックして、Azure portal からダウンロードした証明書をアップロードします。
+    g. **[IdP Certificate]\(IdP 証明書\)** の下の **[Upload]\(アップロード\)** リンクをクリックして、Azure portal からダウンロードした証明書をアップロードします。
 
-    h. **[Map SAML Attributes]\(SAML 属性のマッピング\)** をクリックして属性をマップし、次の手順に従います。
+    h. ページの下部にある **[保存]** をクリックします。
 
-    ![ここで説明されている変更を行うことができる [Map SAML Attributes]\(SAML 属性のマッピング\) を示すスクリーンショット。](./media/knowledgeowl-tutorial/configure-3.png)
+    ![[Save]\(保存\) ボタンを示すスクリーンショット。](./media/knowledgeowl-tutorial/sso-settings-saml-save.png)
+
+    i. **[SAML Attribute Map]\(SAML 属性マップ\)** タブを開いて、次の手順を実行します。
+
+    ![ここで説明されている変更を行うことができる [Map SAML Attributes]\(SAML 属性のマッピング\) を示すスクリーンショット。](./media/knowledgeowl-tutorial/sso-settings-direct-attribute-fields.png)
 
     * **[SSO ID]** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid`」と入力します。
     * **[Username/Email]\(ユーザー名/電子メール\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
     * **[First Name]\(名\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
     * **[Last Name]\(姓\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」と入力します。
-    * **[保存]** をクリックします。
 
-    i. ページの下部にある **[保存]** をクリックします。
+    j. ページの下部にある **[保存]** をクリックします。
 
-    ![[Save]\(保存\) ボタンを示すスクリーンショット。](./media/knowledgeowl-tutorial/configure-4.png)
+    ![[Save]\(保存\) ボタンを示すスクリーンショット。](./media/knowledgeowl-tutorial/sso-settings-direct-attribute-save.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>KnowledgeOwl のテスト ユーザーの作成
 
@@ -203,18 +206,18 @@ KnowledgeOwl に対する Azure AD SSO を構成してテストするには、�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-#### <a name="sp-initiated"></a>SP Initiated:
+#### <a name="sp-initiated"></a>SP Initiated
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる KnowledgeOwl のサインオン URL にリダイレクトされます。  
 
 * KnowledgeOwl のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-#### <a name="idp-initiated"></a>IDP Initiated:
+#### <a name="idp-initiated"></a>IDP Initiated
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した KnowledgeOwl に自動的にサインインされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した KnowledgeOwl アプリケーションに自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [KnowledgeOwl] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した KnowledgeOwl に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリ ポータルを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリ ポータルで [KnowledgeOwl] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した KnowledgeOwl アプリケーションに自動的にサインインされます。 マイ アプリ ポータルの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-KnowledgeOwl を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+KnowledgeOwl を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

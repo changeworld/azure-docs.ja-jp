@@ -3,12 +3,12 @@ title: レジストリのパフォーマンスのトラブルシューティン�
 description: レジストリのパフォーマンスに関する一般的な問題の現象、原因、および対処法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a93df09c8ceb587815227c073ec69dcd1205451
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92148414"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722395"
 ---
 # <a name="troubleshoot-registry-performance"></a>レジストリのパフォーマンスのトラブルシューティング
 
@@ -21,6 +21,7 @@ ms.locfileid: "92148414"
 * Docker CLI でイメージをプルまたはプッシュすると予想以上に時間がかかる
 * Azure Kubernetes Service などのサービスへのイメージのデプロイに予想以上に時間がかかる
 * 多数の同時プルまたはプッシュ操作を予想される時間内に完了できない
+* `Too many requests` のような HTTP 429 エラーが表示されます
 * Geo レプリケートされたレジストリでのプルまたはプッシュ操作の実行が、予想以上の時間がかかるか、`Error writing blob` または `Error writing manifest` のエラーでプッシュが失敗する
 
 ## <a name="causes"></a>原因
@@ -46,7 +47,7 @@ ms.locfileid: "92148414"
 関連リンク:
 
 * [Azure Container Registry サービス階層](container-registry-skus.md)    
-* [Container Registry に関する FAQ](container-registry-faq.md)
+* [Container Registry に関する FAQ](container-registry-faq.yml)
 * [Azure Blob Storage のパフォーマンスとスケーラビリティのターゲット](../storage/blobs/scalability-targets.md)
 
 ### <a name="check-client-hardware"></a>クライアント ハードウェアを確認する
@@ -99,12 +100,12 @@ nslookup myregistry.azurecr.io
 
 レジストリ リソースへのアクセス許可がある場合は、[レジストリ環境の正常性を確認](container-registry-check-health.md)します。 エラーが報告された場合は、対処法について[エラー リファレンス](container-registry-health-error-reference.md)を確認してください。
 
-レジストリで[リソース ログの収集](container-registry-diagnostics-audit-logs.md)が有効になっている場合は、ContainterRegistryRepositoryEvents ログを確認します。 このログには、プッシュ イベントやプル イベントなどの操作に関する情報が格納されています。 ログで[リポジトリレベルの操作エラー](container-registry-diagnostics-audit-logs.md#repository-level-operation-failures)のクエリを実行します。 
+レジストリで[リソース ログの収集](monitor-service.md)が有効になっている場合は、ContainterRegistryRepositoryEvents ログを確認します。 このログには、プッシュ イベントやプル イベントなどの操作に関する情報が格納されています。 ログで[リポジトリレベルの操作エラー](monitor-service.md#repository-level-operation-failures)のクエリを実行します。 
 
 関連リンク:
 
-* [診断の評価と監査のためのログ](container-registry-diagnostics-audit-logs.md)
-* [Container Registry に関する FAQ](container-registry-faq.md)
+* [診断の評価と監査のためのログ](./monitor-service.md)
+* [Container Registry に関する FAQ](container-registry-faq.yml)
 * [Azure Container Registry のベスト プラクティス](container-registry-best-practices.md)
 
 ## <a name="next-steps"></a>次のステップ

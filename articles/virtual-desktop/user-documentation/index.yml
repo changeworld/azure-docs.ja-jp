@@ -1,0 +1,61 @@
+### YamlMime:Landing
+title: ユーザー向けの Azure Virtual Desktop ドキュメント
+summary: Azure Virtual Desktop への接続が簡単になりました。
+metadata:
+  title: Azure Virtual Desktop のユーザー ドキュメント
+  description: Azure Virtual Desktop を使用すると、クラウドで Windows 10 Enterprise を使用できます。
+  ms.service: virtual-desktop
+  services: virtual-desktop
+  ms.topic: landing-page
+  author: Heidilohr
+  ms.author: helohr
+  ms.date: 06/15/2021
+  ms.openlocfilehash: 09025c9bd7d12791f61496463e02cc8866fa9d37
+  ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113034148"
+landingContent:
+- title: Windows デスクトップ クライアントを使用して接続する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Windows デスクトップ クライアントを使用して接続する方法
+      url: connect-windows-7-10.md
+- title: Microsoft Store クライアントを使用した接続
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Microsoft Store クライアントを使用して接続する方法
+      url: connect-microsoft-store.md
+- title: Web クライアントを使用して接続する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Web クライアントを使用して接続する方法
+      url: connect-web.md
+- title: macOS クライアントに接続する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: macOS クライアントを使用して接続する方法
+      url: connect-macos.md
+- title: iOS クライアントに接続する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: iOS クライアントを使用して接続する
+      url: connect-ios.md
+- title: Android クライアントに接続する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Android クライアントを使用して接続する
+      url: connect-android.md
+- title: Linux またはシン クライアントを使用して接続する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Linux またはシン クライアントを使用して接続する方法
+      url: linux-overview.md

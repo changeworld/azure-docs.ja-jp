@@ -2,19 +2,19 @@
 title: Azure Monitor アラートのための移行について
 description: アラート移行のしくみと問題のトラブルシューティングの方法について説明します。
 ms.topic: conceptual
-ms.date: 02/14/2021
+ms.date: 09/06/2021
 ms.author: yalavi
 author: yalavi
-ms.openlocfilehash: 88b75c46898e1a74b33051d8996af96201f639c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2167e0ea05206bc9c991353d6518090773934635
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037712"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543657"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>新しいアラートへの移行オプションについて
 
-パブリック クラウド ユーザー向けの従来のアラートは [廃止](./monitoring-classic-retirement.md)されていますが、**2021 年 5 月 31 日** までは引き続き利用できます。 Azure Government クラウドおよび Azure China 21Vianet 向けの従来のアラートは、**2024 年 2 月 29 日** に廃止されます。
+パブリック クラウド ユーザー向けの従来のアラートは[廃止](./monitoring-classic-retirement.md)されています。 Azure Government クラウドおよび Azure China 21Vianet 向けの従来のアラートは、**2024 年 2 月 29 日** に廃止されます。
 
 この記事では、手動移行と自発的移行ツールがどのように機能するかについて説明します。このツールは、残りのアラート ルールを移行するために使用されます。 また、一般的な問題をいくつか取り上げて、その解決方法を紹介します。
 

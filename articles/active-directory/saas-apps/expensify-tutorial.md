@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/02/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 5c68453f7f7d638877683920a17022cf3d29bdc5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 888eec23b3bfb81dc656344aef7abf38b585b986
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597812"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348829"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>チュートリアル: Expensify と Azure Active Directory の統合
 
@@ -78,11 +78,11 @@ Expensify に対して Azure AD SSO を構成してテストするには、次�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、URL として「`https://www.expensify.com/authentication/saml/login`」と入力します。
+    a. **[識別子 (エンティティ ID)]** ボックスに `https://www.expensify.com` という URL を入力します。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに `https://www.expensify.com` という URL を入力します。
-
-    c. b. **[応答 URL]** ボックスに、`https://www.expensify.com/authentication/saml/loginCallback?domain=<yourdomain>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://www.expensify.com/authentication/saml/loginCallback?domain=<yourdomain>` のパターンを使用して URL を入力します
+    
+    c. **[サインオン URL]** ボックスに、URL として「`https://www.expensify.com/authentication/saml/login`」と入力します。
 
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Expensify クライアント サポート チーム](mailto:help@expensify.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -127,7 +127,7 @@ Expensify で SSO を有効にするには、まず、アプリケーション�
 
 1. Expensify アプリケーションにサインオンします。
 
-2. 左側のパネルで **[設定]** をクリックし、**[SAML]** に移動します。
+2. 左側のパネルで、[設定] にマウス ポインターを合わせてから [ドメイン] をクリックして、 **[SAML]** に移動します。
 
 3. **[SAML ログイン]** オプションを **[有効]** に切り替えます。
 
@@ -135,7 +135,7 @@ Expensify で SSO を有効にするには、まず、アプリケーション�
 
 ### <a name="create-expensify-test-user"></a>Expensify のテスト ユーザーの作成
 
-このセクションでは、Expensify で B.Simon というユーザーを作成します。 [Expensify クライアント サポート チーム](mailto:help@expensify.com)と協力して、Expensify プラットフォームにユーザーを追加します。
+このセクションでは、Expensify で B.Simon (例: B.Simon@contoso.com) という同じユーザーを作成します。 [こちら](https://community.expensify.com/discussion/4869/how-to-manage-domain-members)でメンバーの招待に関する Expensify のガイドを確認するか、[Expensify クライアント サポート チーム](mailto:help@expensify.com)と協力して、Expensify プラットフォームにユーザーを追加します。
 
 ## <a name="test-sso"></a>SSO のテスト
 
@@ -145,8 +145,8 @@ Expensify で SSO を有効にするには、まず、アプリケーション�
 
 * Expensify のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Expensify] タイルをクリックすると、Expensify のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Expensify] タイルをクリックすると、Expensify のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Expensify を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Expensify を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

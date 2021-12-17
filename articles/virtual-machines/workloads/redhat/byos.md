@@ -1,21 +1,23 @@
 ---
 title: Red Hat Enterprise Linux のサブスクリプション持ち込み Azure イメージ | Microsoft Docs
 description: Azure での Red Hat Enterprise Linux のサブスクリプション持ち込みイメージについて説明します。
-author: asinn826
+author: mamccrea
 ms.service: virtual-machines
 ms.subservice: redhat
 ms.collection: linux
 ms.topic: article
 ms.date: 06/10/2020
-ms.author: alsin
-ms.openlocfilehash: af4f9dac30c1e443e9647a5b752cdabf9c094a6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mamccrea
+ms.openlocfilehash: cb15ab04a92e22099f9c04d9e05bb2e44c182826
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676086"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471480"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 Red Hat Enterprise Linux (RHEL) イメージは、従量課金制またはサブスクリプション持ち込み (BYOS) (Red Hat Gold Image) モデルを使用して Azure で利用できます。 この記事では、Azure の Red Hat Gold Image の概要について説明します。
 
@@ -191,7 +193,7 @@ Azure Disk Encryption の適用手順については、「[Linux VM での Azure
 
     この場合、Microsoft か Red Hat にお問い合わせいただき、サブスクリプションを有効にしてください。
 
-- RHEL BYOS イメージのスナップショットを変更し、そのカスタム イメージを [Shared Image Gallery](../../shared-image-galleries.md) に公開する場合、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります。
+- RHEL BYOS イメージのスナップショットを変更し、そのカスタム イメージを [Azure Compute Gallery](../../shared-image-galleries.md) (旧称 Shared Image Gallery) に発行する場合、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります。
 
     ```azurecli
     az vm create –image \
@@ -213,4 +215,4 @@ Azure Disk Encryption の適用手順については、「[Linux VM での Azure
 - Red Hat Update Infrastructure の詳細については、[Azure Red Hat Update Infrastructure](./redhat-rhui.md) に関する記事を参照してください。
 - Azure でのすべての Red Hat イメージの詳細については、[ドキュメントのページ](./redhat-images.md)を参照してください。
 - すべてのバージョンの RHEL の Red Hat サポート ポリシーの詳細については、「[Red Hat Enterprise Linux life cycle (Red Hat Enterprise Linux のライフ サイクル)](https://access.redhat.com/support/policy/updates/errata)」を参照してください。
-- RHEL Gold Image に関するその他のドキュメントについては、[Red Hat のドキュメント](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access)を参照してください。
+- RHEL Gold Image に関するその他のドキュメントについては、[Red Hat のドキュメント](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/understanding-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access#proc_using-gold-images-azure_cloud-access)を参照してください。

@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: reference
-ms.date: 02/12/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 4b8b24bacaee87dc9868fab1d5d071201a7215b8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 6efb4a738314da08be7a52a71b3a91c06f99b5d4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897732"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678708"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure Consumption API の概要
 

@@ -3,21 +3,21 @@ title: メンテナンス通知にポータルを使用する
 description: ポータルを使用して Azure で実行されている仮想マシンのメンテナンス通知を表示し、セルフサービス メンテナンスを開始します。
 author: shants123
 ms.service: virtual-machines
-ms.subservice: maintenance-control
+ms.subservice: maintenance
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 11/19/2019
+ms.date: 09/08/2021
 ms.author: shants
-ms.openlocfilehash: a13d79a28ac07d736b1eaf0d0e6b7f7b1ba4a4ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a027014500fa9e4a6ca1f68e2da5fb62df37e5ec
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557711"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216048"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>ポータルを使用した計画済みメンテナンスの通知の処理
 
-**この記事は、Linux と Windows の両方を実行する仮想マシンに適用されます。**
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 [計画メンテナンス](maintenance-notifications.md) ウェーブをスケジュールすると、影響を受ける仮想マシンの一覧を確認できます。 
 
@@ -27,9 +27,7 @@ Azure Portal を使用して、VM のメンテナンス スケジュールを検
 
 2. 左側のナビゲーションにある **[仮想マシン]** をクリックします。
 
-3. [仮想マシン] ウィンドウの **[列の編集]** ボタンをクリックして使用できる列の一覧を表示します。
-
-4. 次の列を選択して追加します。
+3. [仮想マシン] ペインで、 **[メンテナンス] -> [仮想マシンのメンテナンス]** ボタンを選択して、メンテナンスの列がある一覧を開きます。
 
    **メンテナンスの状態**:VM のメンテナンス状態を表示します。 以下のような値が表示されます。
       

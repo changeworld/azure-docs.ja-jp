@@ -1,18 +1,20 @@
 ---
-title: Azure Site Recovery でのフェールオーバーとフェールバックについて
-description: Azure Site Recovery でのフェールオーバーとフェールバックについて説明します。
+title: Azure Site でのフェールオーバーとフェールバックについて - クラシック
+description: Azure Site Recovery でのフェールオーバーとフェールバックについての説明 - クラシック
 ms.topic: conceptual
-ms.date: 12/24/2019
-ms.openlocfilehash: b900655d6fdf1143d430ac842bfd84eb1dfdf34c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/30/2021
+ms.openlocfilehash: 97465622afb1a8b59601799ed14a625f49073a43
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98070746"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446553"
 ---
-# <a name="about-on-premises-disaster-recovery-failoverfailback"></a>オンプレミスのディザスター リカバリーのフェールオーバーとフェールバックについて
+# <a name="about-on-premises-disaster-recovery-failoverfailback---classic"></a>オンプレミスのディザスター リカバリーのフェールオーバーとフェールバックについて - クラシック
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、オンプレミスのマシンの Azure へのディザスター リカバリー時におけるフェールオーバーとフェールバックの概要について説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、オンプレミスのマシンの Azure へのディザスター リカバリー時におけるフェールオーバーとフェールバックの概要について説明します - クラシック。
+
+Azure Site Recovery プレビュー リリースでのフェールオーバーとフェールバックについては、[こちらの記事](failover-failback-overview-preview.md)を参照してください。
 
 ## <a name="recovery-stages"></a>復旧ステージ
 

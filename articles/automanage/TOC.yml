@@ -1,4 +1,4 @@
-- name: Azure Automanage
+- name: Azure Automanage (プレビュー)
   href: automanage-virtual-machines.md
 - name: クイックスタート
   expanded: true
@@ -13,15 +13,25 @@
     - name: Windows Server 用 Automanage
       href: automanage-windows-server.md
       items:
+        - name: Windows Server サービス用 Automanage
+          href: automanage-windows-server-services-overview.md
         - name: 新しい仮想マシンのホットパッチ
           href: automanage-hotpatch.md
+        - name: SMB over QUIC
+          href: automanage-smb-over-quic.md
+    - name: Azure Arc 対応サーバー用 Automanage
+      href: automanage-arc.md
 - name: 方法
   expanded: true
   items:
-    - name: カスタム設定の作成
-      href: virtual-machines-custom-preferences.md
+    - name: カスタム プロファイルを作成する
+      href: virtual-machines-custom-profile.md
     - name: Azure Policy を介した VM 上での有効化
       href: virtual-machines-policy-enable.md
+    - name: ARM テンプレートを介した VM での有効化
+      href: arm-deploy.md
+    - name: マシンを最新の Automanage バージョンにアップグレードする
+      href: automanage-upgrade.md
     - name: オンボーディング エラーのトラブルシューティング
       href: common-errors.md
     - name: 切断された Automanage アカウントの修復
@@ -32,6 +42,6 @@
   expanded: true
   items:
     - name: よく寄せられる質問
-      href: faq.md
+      href: faq.yml
     - name: クラウド導入フレームワーク
-      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management'
+      href: /azure/cloud-adoption-framework/manage/azure-server-management/

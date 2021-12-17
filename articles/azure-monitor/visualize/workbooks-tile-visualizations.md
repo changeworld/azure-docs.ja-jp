@@ -2,18 +2,16 @@
 title: Azure Monitor ブックのタイルの視覚化
 description: Azure Monitor ブックのタイルのすべての視覚化について説明します。
 services: azure-monitor
-author: lgayhardt
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.author: lagayhar
-ms.openlocfilehash: 07de9fcd01559e59a1bcd5d8928075aebcf79cc7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2900b055f95372080d73b80e794b3b5d909db06
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100601115"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069959"
 ---
 # <a name="tile-visualizations"></a>タイルの視覚化
 
@@ -108,7 +106,7 @@ ms.locfileid: "100601115"
 
 * `fixed` (既定値)
 
-    タイルは既定で、同じ固定幅 (約 160 ピクセル幅) で表示され、タイルの周囲にスペースがあります。
+    タイルの既定の動作は、同じ固定幅、約160ピクセル幅、およびタイルの周囲のスペースになります。
 
     ![固定幅のタイルを表示するスクリーンショット](./media/workbooks-tile-visualizations/tiles-fixed.png)
 * `auto`

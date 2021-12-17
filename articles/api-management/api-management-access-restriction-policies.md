@@ -3,18 +3,17 @@ title: Azure API Management のアクセス制限ポリシー | Microsoft Docs
 description: Azure API Management で使用できるアクセス制限ポリシーについて説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
-ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
+author: dlepow
 ms.service: api-management
 ms.topic: article
-ms.date: 02/26/2021
-ms.author: apimpm
-ms.openlocfilehash: 882d96271b6976db1ffc0dde181d5699c5cc27de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/20/2021
+ms.author: danlep
+ms.openlocfilehash: 32fa405a612026fc16257447cb2cc858101c729c
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688248"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536507"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 
@@ -29,6 +28,7 @@ ms.locfileid: "101688248"
 -   [使用量のクォータをサブスクリプション別に設定する](#SetUsageQuota) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをサブスクリプションに基づいて適用できます。
 -   [使用量のクォータをキー別に設定する](#SetUsageQuotaByKey) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用できます。
 -   [JWT を検証する](#ValidateJWT) - 指定された HTTP ヘッダーまたは指定されたクエリ パラメーターから抽出した JWT の存在と有効性を適用します。
+-  [クライアント証明書の検証](#validate-client-certificate) -クライアントから API Management インスタンスに提示された証明書が、指定された検証規則と要求に一致することを強制します。
 
 > [!TIP]
 > さまざまな目的に応じて異なるスコープでアクセス制限ポリシーを使用できます。 たとえば、API 全体を AAD 認証を使用して保護するには、`validate-jwt` ポリシーを API レベルに適用します。または、これを API 操作レベルに適用して、`claims` を使用してきめ細かい制御を行うこともできます。
@@ -68,7 +68,7 @@ ms.locfileid: "101688248"
 | failed-check-error-message | ヘッダーが存在しないかヘッダーが無効な値である場合に HTTP 応答本文で返されるエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。 | はい      | 該当なし     |
 | failed-check-httpcode      | ヘッダーが存在しないかヘッダーが無効な値である場合に返される HTTP 状態コード。                                                                                        | はい      | 該当なし     |
 | header-name                | チェックする HTTP ヘッダーの名前。                                                                                                                                  | はい      | 該当なし     |
-| ignore-case                | True または False に設定できます。 True に設定した場合、ヘッダー値と許容される値セットとの比較時に大文字と小文字は区別されません。                                    | はい      | なし     |
+| ignore-case                | True または False に設定できます。 True に設定した場合、ヘッダー値と許容される値セットとの比較時に大文字と小文字は区別されません。                                    | はい      | 該当なし     |
 
 ### <a name="usage"></a>使用法
 
@@ -97,7 +97,7 @@ ms.locfileid: "101688248"
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
-    <api name="API name" id="API id" calls="number" renewal-period="seconds" />
+    <api name="API name" id="API id" calls="number" renewal-period="seconds">
         <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" 
         retry-after-header-name="header name" 
         retry-after-variable-name="policy expression variable name"
@@ -136,14 +136,14 @@ ms.locfileid: "101688248"
 
 | 名前           | 説明                                                                                           | 必須 | Default |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | レート制限の適用対象になる API の名前。                                                | はい      | なし     |
-| calls          | `renewal-period` で指定された期間中に許可される最大の呼び出し合計数。 | はい      | なし     |
-| renewal-period | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。                                              | はい      | 該当なし     |
+| name           | レート制限の適用対象になる API の名前。                                                | はい      | 該当なし     |
+| calls          | `renewal-period` で指定された期間中に許可される最大の呼び出し合計数。 | はい      | 該当なし     |
+| renewal-period | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。 許可される最大値: 300 秒。                                            | はい      | 該当なし     |
 | retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
-| retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | なし  |
+| retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
 | remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 | remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
-| total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | なし  |
+| total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 
 ### <a name="usage"></a>使用法
 
@@ -211,15 +211,15 @@ ms.locfileid: "101688248"
 
 | 名前                | 説明                                                                                           | 必須 | Default |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| calls               | `renewal-period` で指定した期間中に許容する最大呼び出し総数。 | はい      | 該当なし     |
+| calls               | `renewal-period` で指定した期間中に許容する最大呼び出し総数。 ポリシー式は許可されます。 | はい      | 該当なし     |
 | counter-key         | レート制限ポリシーに使用するキー。                                                             | はい      | 該当なし     |
-| increment-condition | レートに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)。        | いいえ       | なし     |
-| renewal-period      | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。                                           | はい      | 該当なし     |
+| increment-condition | レートに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)。        | いいえ       | 該当なし     |
+| renewal-period      | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。 ポリシー式は許可されます。 許可される最大値: 300 秒。                 | はい      | 該当なし     |
 | retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
-| retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | なし  |
-| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
+| retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
+| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | N/A  |
 | remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
-| total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | なし  |
+| total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 
 ### <a name="usage"></a>使用法
 
@@ -265,8 +265,8 @@ ms.locfileid: "101688248"
 
 | 名前                                      | 説明                                                                                 | 必須                                           | Default |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| address-range from="address" to="address" | アクセスを許可または拒否する IP アドレスの範囲。                                        | `address-range` 要素を使用する場合は必須です。 | なし     |
-| ip-filter action="allow &#124; forbid"    | 指定した IP アドレスおよび IP アドレス範囲に対する呼び出しを許可するかどうかを指定します。 | はい                                                | なし     |
+| address-range from="address" to="address" | アクセスを許可または拒否する IP アドレスの範囲。                                        | `address-range` 要素を使用する場合は必須です。 | 該当なし     |
+| ip-filter action="allow &#124; forbid"    | 指定した IP アドレスおよび IP アドレス範囲に対する呼び出しを許可するかどうかを指定します。 | はい                                                | 該当なし     |
 
 ### <a name="usage"></a>使用法
 
@@ -324,9 +324,9 @@ ms.locfileid: "101688248"
 | 名前           | 説明                                                                                               | 必須                                                         | Default |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | name           | クォータを適用する API または操作の名前。                                             | はい                                                              | 該当なし     |
-| bandwidth      | `renewal-period` で指定した期間中に許可する最大合計キロバイト数。 | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | なし     |
-| calls          | `renewal-period` で指定した期間中に許容する最大呼び出し総数。     | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | なし     |
-| renewal-period | クォータのリセット間隔 (秒単位)。 `0` に設定すると、この期間は無限に設定されます。 | はい                                                              | なし     |
+| bandwidth      | `renewal-period` で指定した期間中に許可する最大合計キロバイト数。 | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
+| calls          | `renewal-period` で指定した期間中に許容する最大呼び出し総数。     | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
+| renewal-period | クォータのリセット間隔 (秒単位)。 `0` に設定すると、この期間は無限に設定されます。 | はい                                                              | 該当なし     |
 
 ### <a name="usage"></a>使用法
 
@@ -386,11 +386,14 @@ ms.locfileid: "101688248"
 
 | 名前                | 説明                                                                                               | 必須                                                         | Default |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| bandwidth           | `renewal-period` で指定した期間中に許可する最大合計キロバイト数。 | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | なし     |
+| bandwidth           | `renewal-period` で指定した期間中に許可する最大合計キロバイト数。 | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
 | calls               | `renewal-period` で指定した期間中に許容する最大呼び出し総数。     | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
 | counter-key         | クォータ ポリシーに使用するキー。                                                                      | はい                                                              | 該当なし     |
-| increment-condition | クォータに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)             | いいえ                                                               | なし     |
-| renewal-period      | クォータのリセット間隔 (秒単位)。 `0` に設定すると、この期間は無限に設定されます。                                                   | はい                                                              | なし     |
+| increment-condition | クォータに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)             | いいえ                                                               | 該当なし     |
+| renewal-period      | クォータのリセット間隔 (秒単位)。 `0` に設定すると、この期間は無限に設定されます。                                                   | はい                                                              | 該当なし     |
+
+> [!NOTE]
+> `counter-key` 属性値は、他の API 間で合計値を共有したくない場合は、API Management のすべての API で一意でなければなりません。
 
 ### <a name="usage"></a>使用法
 
@@ -567,7 +570,7 @@ ms.locfileid: "101688248"
 | failed-validation-httpcode      | JWT が検証で不合格となった場合に返す HTTP 状態コード。                                                                                                                                                                                                                                                                                                                                                                                         | いいえ                                                                               | 401                                                                               |
 | header-name                     | トークンを保持する HTTP ヘッダーの名前。                                                                                                                                                                                                                                                                                                                                                                                                         | `header-name`、`query-parameter-name`、`token-value` のいずれかを指定する必要があります。 | 該当なし                                                                               |
 | query-parameter-name            | トークンを保持するクエリ パラメーターの名前。                                                                                                                                                                                                                                                                                                                                                                                                     | `header-name`、`query-parameter-name`、`token-value` のいずれかを指定する必要があります。 | 該当なし                                                                               |
-| token-value                     | JWT トークンを含む文字列を返す式                                                                                                                                                                                                                                                                                                                                                                                                     | `header-name`、`query-parameter-name`、`token-value` のいずれかを指定する必要があります。 | 該当なし                                                                               |
+| token-value                     | JWT トークンを含む文字列を返す式。 トークン値の一部として `Bearer ` を返すことはできません。                                                                                                                                                                                                                                                                                                                                           | `header-name`、`query-parameter-name`、`token-value` のいずれかを指定する必要があります。 | 該当なし                                                                               |
 | id                              | `key` 要素の `id` 属性を使用すると、署名検証用の適切なキーを確認するためにトークン内の `kid` クレーム (存在する場合) と照合する文字列を指定できます。                                                                                                                                                                                                                                           | いいえ                                                                               | 該当なし                                                                               |
 | match                           | `claim` 要素の `match` 属性では、検証が成功するためにポリシー内のクレーム値がすべてトークン内に存在する必要があるかどうかを指定します。 次のいずれかの値になります。<br /><br /> - `all` - 検証が成功するには、ポリシー内のクレーム値がすべてトークン内に存在する必要があります。<br /><br /> - `any` - 検証が成功するには、ポリシー内のクレーム値が少なくとも 1 つトークン内に存在する必要があります。                                                       | No                                                                               | all                                                                               |
 | require-expiration-time         | ブール型。 トークン内に有効期限クレームが存在する必要があるかどうかを指定します。                                                                                                                                                                                                                                                                                                                                                                               | いいえ                                                                               | true                                                                              |
@@ -575,7 +578,96 @@ ms.locfileid: "101688248"
 | require-signed-tokens           | ブール型。 トークンに署名が必要かどうかを指定します。                                                                                                                                                                                                                                                                                                                                                                                           | いいえ                                                                               | true                                                                              |
 | separator                       | 文字列。 複数値を含む要求から一連の値を抽出するために使用する区切り記号を指定します (例: ",")。                                                                                                                                                                                                                                                                                                                                          | いいえ                                                                               | 該当なし                                                                               |
 | url                             | Open ID 構成メタデータを取得可能な Open ID 構成エンドポイントの URL。 応答は、URL で定義されている仕様に従っている必要があります:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 Azure Active Directory の場合は、`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` という URL をご使用のディレクトリ テナント名 (`contoso.onmicrosoft.com` など) に置き換えて使用します。 | はい                                                                              | 該当なし                                                                               |
-| output-token-variable-name      | 文字列 をオンにします。 成功したトークンの検証において、[`Jwt`](api-management-policy-expressions.md) 型のオブジェクトとしてトークン値を受け取るコンテキスト変数の名前                                                                                                                                                                                                                                                                                     | いいえ                                                                               | なし                                                                               |
+| output-token-variable-name      | 文字列 をオンにします。 成功したトークンの検証において、[`Jwt`](api-management-policy-expressions.md) 型のオブジェクトとしてトークン値を受け取るコンテキスト変数の名前                                                                                                                                                                                                                                                                                     | いいえ                                                                               | 該当なし                                                                               |
+
+### <a name="usage"></a>使用法
+
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
+
+-   **ポリシー セクション:** inbound
+-   **ポリシー スコープ:** すべてのスコープ
+
+
+## <a name="validate-client-certificate"></a>クライアント証明書を検証する
+
+`validate-client-certificate` ポリシーを使用して、クライアントから API Management インスタンスに提示された証明書が、1つまたは複数の証明書 ID のサブジェクトや発行者などの指定した検証規則と要求に一致することを強制します。
+
+クライアント証明書は、有効と見なされるために、最上位要素の属性で定義されているすべての検証規則と一致し、定義済みの ID の少なくとも 1 つに対して定義されているすべての要求と一致している必要があります。 
+
+このポリシーを使用して、受信証明書のプロパティと必要なプロパティを確認します。 また、このポリシーを使用して、次のような場合にクライアント証明書の既定の検証を上書きします。
+
+* マネージド ゲートウェイへのクライアント要求を検証するためにカスタム CA 証明書をアップロードした場合
+* セルフマネージド ゲートウェイへのクライアント要求を検証するようにカスタム証明機関を構成した場合
+
+カスタム CA 証明書と証明機関の詳細については、[「Azure API Management でカスタム CA 証明書を追加する方法」](api-management-howto-ca-certificates.md)を参照してください。 
+
+### <a name="policy-statement"></a>ポリシー ステートメント
+
+```xml
+<validate-client-certificate 
+    validate-revocation="true|false"
+    validate-trust="true|false" 
+    validate-not-before="true|false" 
+    validate-not-after="true|false" 
+    ignore-error="true|false">
+    <identities>
+        <identity 
+            thumbprint="certificate thumbprint"
+            serial-number="certificate serial number"
+            common-name="certificate common name"
+            subject="certificate subject string"
+            dns-name="certificate DNS name"
+            issuer-subject="certificate issuer"
+            issuer-thumbprint="certificate issuer thumbprint"
+            issuer-certificate-id="certificate identifier" />
+    </identities>
+</validate-client-certificate> 
+```
+
+### <a name="example"></a>例
+
+次の例では、ポリシーの既定の検証規則に一致するようにクライアント証明書を検証し、サブジェクトと発行者の名前が指定された値に一致するかどうかを確認します。
+
+```xml
+<validate-client-certificate 
+    validate-revocation="true" 
+    validate-trust="true" 
+    validate-not-before="true" 
+    validate-not-after="true" 
+    ignore-error="false">
+    <identities>
+        <identity
+            subject="C=US, ST=Illinois, L=Chicago, O=Contoso Corp., CN=*.contoso.com"
+            issuer-subject="C=BE, O=FabrikamSign nv-sa, OU=Root CA, CN=FabrikamSign Root CA" />
+    </identities>
+</validate-client-certificate> 
+```
+
+### <a name="elements"></a>要素
+
+| 要素             | 説明                                  | 必須 |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| validate-client-certificate        | ルート要素。      | はい      |
+|   ID      |  クライアント証明書に対して定義されたクレームのある ID の一覧が含まれます。       |    いいえ        |
+
+### <a name="attributes"></a>属性
+
+| 名前                            | 説明      | 必須 |  Default    |
+| ------------------------------- | -----------------| -------- | ----------- |
+| validate-revocation  | ブール型。 オンライン失効リストに対して証明書を検証するかどうかを指定します。  | Ｘ   | True  |
+| validate-trust | ブール型。 信頼された証明機関にチェーンを正常に構築できない場合に検証が失敗するかどうかを指定します。 | Ｘ | True |
+| validate-not-before | ブール型。 現在の時刻に対して値を検証します。 | Ｘ | True |
+| validate-not-after  | ブール型。 現在の時刻に対して値を検証します。 | Ｘ | True|
+| ignore-error  | Boolean です。 ポリシーを次のハンドラーに進めるか、検証に失敗した場合に ON-ERROR にジャンプするかを指定します。 | no | False |
+| ID | 文字列 をオンにします。 証明書を有効にする証明書要求値の組み合わせ。 | はい | N/A |
+| thumbprint | 証明書のサムプリント。 | Ｘ | N/A |
+| serial-number | 証明書のシリアル番号。 | Ｘ | N/A |
+| common-name | 証明書の共通名 (サブジェクト文字列の一部)。 | Ｘ | N/A |
+| subject | サブジェクト文字列。 識別名の形式に従う必要があります。 | Ｘ | N/A |
+| dns-name | サブジェクトの代替名要求内の dnsName エントリの値。 | Ｘ | 該当なし |
+| issuer-subject | 発行者のサブジェクト。 識別名の形式に従う必要があります。 | Ｘ | N/A |
+| issuer-thumbprint | 発行者の拇印。 | Ｘ | N/A |
+| issuer-certificate-id | 発行者の公開キーを表す既存の証明書エンティティの識別子。 他の発行者属性と同時に指定できません。  | Ｘ | 該当なし |
 
 ### <a name="usage"></a>使用法
 

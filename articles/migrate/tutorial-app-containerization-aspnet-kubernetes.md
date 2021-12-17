@@ -5,14 +5,14 @@ services: ''
 author: rahugup
 manager: bsiva
 ms.topic: tutorial
-ms.date: 3/2/2021
+ms.date: 6/30/2021
 ms.author: rahugup
-ms.openlocfilehash: 464e2450b4d4dea9fc650ad8869af4215d3db1a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fcb86290012a2888c926e335fb6169b43e0898b1
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561799"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291987"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>ASP.NET アプリのコンテナ化と Azure Kubernetes Service への移行
 
@@ -20,9 +20,10 @@ ms.locfileid: "105561799"
 
 Azure Migrate: App Containerization ツールは、現時点で以下をサポートしています。
 
-- ASP.NET アプリをコンテナー化し、それらを AKS の Windows コンテナーにデプロイする。
-- (Linux サーバーの) Apache Tomcat 上の Java Web アプリをコンテナー化し、それらを AKS の Linux コンテナーにデプロイする。 [詳細情報](./tutorial-containerize-java-kubernetes.md)
-
+- ASP.NET アプリをコンテナー化し、それらを Azure Kubernetes Service の Windows コンテナーにデプロイする。
+- ASP.NET アプリをコンテナー化し、それらを Azure App Service の Windows コンテナーにデプロイする。 [詳細情報](./tutorial-app-containerization-aspnet-app-service.md)
+- (Linux サーバーの) Apache Tomcat 上の Java Web アプリをコンテナー化し、それらを AKS の Linux コンテナーにデプロイする。 [詳細情報](./tutorial-app-containerization-java-kubernetes.md)
+- (Linux サーバーの) Apache Tomcat 上の Java Web アプリをコンテナー化し、それらを App Service の Linux コンテナーにデプロイする。 [詳細情報](./tutorial-app-containerization-java-app-service.md)
 
 Azure Migrate: App Containerization ツールを使用すると、以下を行うことができます。
 
@@ -36,9 +37,9 @@ Azure Migrate: App Containerization ツールを使用すると、以下を行�
 どのアプリケーションも大幅な再設計なしでコンテナーに直接シフトしてもメリットを得られませんが、既存のアプリを再記述せずにコンテナーに移動した場合、次のようなメリットがあります。
 
 - **インフラストラクチャ使用率の向上:** コンテナーを使用すると、複数のアプリケーションがリソースを共有でき、それらのアプリケーションを同じインフラストラクチャでホストできます。 これにより、インフラストラクチャを統合し、使用率を向上させることができます。
-- **管理の簡略化:** AKS のような最新のマネージド インフラストラクチャ プラットフォームでアプリケーションをホストすることにより、インフラストラクチャの制御を維持しながら管理プラクティスを簡素化できます。 所有するインフラストラクチャでこれまで実行していた、インフラストラクチャの保守および管理のプロセスを廃止または削減することで、これを実現できます。
-- **アプリケーションの移植性:** コンテナー仕様の形式とオーケストレーション プラットフォームの導入と標準化が改善されたため、アプリケーションの移植性は問題になりません。
-- **DevOps を使用した最新の管理の導入:** コードとしてのインフラストラクチャおよび DevOps への移行により、管理とセキュリティのための最新の手法を導入し、それらを標準化できます。
+- **簡略化された管理:** AKS や App Service などの最新の管理プラットフォームでアプリケーションをホストすることにより、管理作業を簡略化できます。 所有するインフラストラクチャでこれまで実行していた、インフラストラクチャの保守および管理のプロセスを廃止または削減することで、これを実現できます。
+- **アプリケーションの移植性:** コンテナー仕様の形式およびプラットフォームの導入と標準化が改善されたため、アプリケーションの移植性は問題になりません。
+- **DevOps を使用した最新の管理の導入:** 管理とセキュリティおよび DevOps への移行のための最新の手法を導入し、それらに基づいて標準化できます。
 
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -97,7 +98,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 10. [アプリの登録] 設定が [いいえ] に設定されている場合は、テナントまたはグローバル管理者に、必要なアクセス許可を割り当てるよう依頼してください。 テナントまたはグローバル管理者は、Azure Active Directory アプリの登録を許可するために、**アプリケーション開発者** ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
-
 ## <a name="download-and-install-azure-migrate-app-containerization-tool"></a>Azure Migrate: App Containerization ツールをダウンロードしてインストールする
 
 1. Windows コンピューターで Azure Migrate: App Containerization のインストーラーを[ダウンロード](https://go.microsoft.com/fwlink/?linkid=2134571)します。
@@ -110,16 +110,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="launch-the-app-containerization-tool"></a>App Containerization ツールを起動する
 
-1. App Containerization ツールを実行する Windows コンピューターに接続できる任意のコンピューターでブラウザーを開き、ツールの URL: **https://*コンピューター名または IP アドレス*: 44368** を開きます。
+1. App Containerization ツールを実行する Windows マシンに接続できる任意のマシンでブラウザーを開き、ツールの URL: **https://<*コンピューター名または IP アドレス*>: 44369** を開きます。
 
    または、アプリのショートカットを選択して、デスクトップからアプリを開くこともできます。
 
 2. 接続がプライベートではないことを示す警告が表示された場合は、[詳細設定] をクリックして、Web サイトに進むことを選択します。 この警告は、Web インターフェイスが自己署名の TLS/SSL 証明書を使用している場合に表示されます。
 3. サインイン画面で、コンピューターのローカル管理者アカウントを使用してサインインします。
-4. [specify application type]\(アプリケーションの種類の指定\) で、コンテナー化するアプリケーションの種類として **[ASP.NET Web アプリ]** を選択します。
+4. コンテナー化するアプリケーションの種類として **[ASP.NET Web アプリ]** を選択します。
+5. ターゲットの Azure サービスを指定するには、 **[Azure Kubernetes Service 上のコンテナー]** を選択します。
 
     ![App Containerization ツールの既定のロードアップ。](./media/tutorial-containerize-apps-aks/tool-home.png)
-
 
 ### <a name="complete-tool-pre-requisites"></a>ツールの前提条件を満たす
 1. **ライセンス条項** に同意し、サード パーティの情報を確認します。
@@ -134,16 +134,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **PowerShell リモート処理を有効にする**: ツールによって、コンテナー化する ASP.NET アプリケーションを実行するアプリケーション サーバーで PowerShell リモート処理が有効になっていることが確認され通知されます。
 
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-**[ログイン]** をクリックして Azure アカウントにログインします。
+**[サインイン]** をクリックして Azure アカウントにログインします。
 
-1. Azure で認証するには、デバイス コードが必要です。 [ログイン] をクリックすると、デバイス コードを含むモーダルが開きます。
-2. **[Copy code & Login]\(コードのコピーとログイン\)** をクリックしてデバイス コードをコピーし、新しいブラウザー タブで Azure ログイン プロンプトを開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
+1. Azure で認証するには、デバイス コードが必要です。 [サインイン] をクリックすると、デバイス コードを含むモーダルが開きます。
+2. **[コードのコピーとサインイン]** をクリックしてデバイス コードをコピーし、新しいブラウザー タブで Azure サインイン プロンプトを開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
 
     ![デバイス コードを示すモーダル。](./media/tutorial-containerize-apps-aks/login-modal.png)
 
-3. 新しいタブで、デバイス コードを貼り付け、Azure アカウントの資格情報を使用してログインを完了します。 ログインが完了したら、[ブラウザー] タブを閉じて、App Containerization ツールの Web インターフェイスに戻ることができます。
+3. 新しいタブで、デバイス コードを貼り付け、Azure アカウントの資格情報を使用してサインインを完了します。 サインインが完了したら、ブラウザー タブを閉じて、App Containerization ツールの Web インターフェイスに戻ることができます。
 4. 使用する **Azure テナント** を選択します。
 5. 使用する **Azure サブスクリプション** を指定します。
 
@@ -158,13 +158,13 @@ App Containerization ヘルパー ツールは、指定された資格情報を�
 
 2. **[検証]** をクリックして、ツールを実行するコンピューターからアプリケーション サーバーに到達できること、および資格情報が有効であることを確認します。 検証が正常に完了すると、状態列に **[マップ済み]** として状態が表示されます。  
 
-    ![サーバー IP と資格情報のスクリーンショット。](./media/tutorial-containerize-apps-aks/discovery-credentials.png)
+    ![サーバー IP と資格情報のスクリーンショット。](./media/tutorial-containerize-apps-aks/discovery-credentials-asp.png)
 
 3. **[続行]** をクリックして、選択したアプリケーション サーバーでアプリケーションの検出を開始します。
 
 4. アプリケーションの検出が正常に完了した後、コンテナー化するアプリケーションの一覧を選択できます。
 
-    ![検出された ASP.NET アプリケーションのスクリーンショット。](./media/tutorial-containerize-apps-aks/discovered-app.png)
+    ![検出された ASP.NET アプリケーションのスクリーンショット。](./media/tutorial-containerize-apps-aks/discovered-app-asp.png)
 
 
 4. チェックボックスを使用して、コンテナー化するアプリケーションを選択します。
@@ -176,7 +176,7 @@ App Containerization ヘルパー ツールは、指定された資格情報を�
 2. チェックボックスをオンにして、検出されたアプリケーションの構成をパラメーター化します。
 3. パラメーター化する構成を選択した後、 **[適用]** をクリックします。
 
-   ![アプリ構成パラメーター化の ASP.NET アプリケーションのスクリーンショット。](./media/tutorial-containerize-apps-aks/discovered-app-configs.png)
+   ![アプリ構成パラメーター化の ASP.NET アプリケーションのスクリーンショット。](./media/tutorial-containerize-apps-aks/discovered-app-configs-asp.png)
 
 ### <a name="externalize-file-system-dependencies"></a>ファイル システムの依存関係を外部化する
 
@@ -188,7 +188,7 @@ App Containerization ヘルパー ツールは、指定された資格情報を�
 3. 同じボリュームに複数のフォルダーを追加するには、コンマ (`,`) 区切りの値を指定します。
 4. フォルダーを永続ボリューム上のコンテナーの外部に保存する場合は、ストレージ オプションとして **[永続ボリューム]** を選択します。
 5. アプリケーション フォルダーを確認した後、 **[保存]** をクリックします。
-   ![アプリのボリューム ストレージを選択するスクリーンショット。](./media/tutorial-containerize-apps-aks/discovered-app-volumes.png)
+   ![アプリのボリューム ストレージを選択するスクリーンショット。](./media/tutorial-containerize-apps-aks/discovered-app-volumes-asp.png)
 
 6. **[続行]** をクリックして、コンテナー イメージのビルド フェーズに進みます。
 
@@ -225,12 +225,18 @@ App Containerization ヘルパー ツールは、指定された資格情報を�
      - AKS クラスターがない場合、またはアプリケーションをデプロイする新しい AKS クラスターを作成する場合は、 **[Create new AKS cluster]\(新しい AKS クラスターを作成する\)** をクリックすることで、ツールから作成できます。      
           - ツールを使用して作成される AKS クラスターは、Windows ノード プールを使用して作成されます。 クラスターは、前に作成した Azure Container Registry からイメージをプルできるように構成されます ([create new registry]\(新しいレジストリの作成\) オプションが選択されている場合)。
      - AKS クラスターを選択した後、 **[続行]** をクリックします。
+2. **シークレット ストアを指定する**: アプリケーション構成のパラメーター化を選択した場合は、アプリケーションに使用するシークレット ストアを指定します。 アプリケーション シークレットの管理には、Azure Key Vault または App Service アプリケーションの設定を選択できます。 [詳細情報](../app-service/configure-common.md#configure-connection-strings)
 
-2. **Azure ファイル共有を指定する**: さらにフォルダーを追加し、[永続ボリューム] オプションを選択した場合は、デプロイ プロセス中に Azure Migrate: App Containerization ツールで使用する必要がある Azure ファイル共有を指定します。 永続ボリューム ストレージ用に構成されたアプリケーション フォルダーをコピーするために、ツールにより、この Azure ファイル共有に新しいディレクトリが作成されます。 アプリケーションのデプロイが完了すると、ツールにより、作成されたディレクトリが削除され、Azure ファイル共有がクリーンアップされます。
+     - シークレットを管理するために App Service アプリケーション設定を選択した場合は、 **[続行]** をクリックします。
+     - アプリケーション シークレットの管理に Azure Key Vault を使用する場合は、使用する Azure Key Vault を指定します。     
+         - Azure Key Vault がない場合、または新しい Key Vault を作成する場合は、 **[Azure Key Vault の新規作成]** をクリックして、ツールからの作成を選択できます。
+         - このツールを使用すると、Key Vault を通じてシークレットを管理するために必要なアクセス許可が、自動的に割り当てられます。
+
+3. **Azure ファイル共有を指定する**: さらにフォルダーを追加し、[永続ボリューム] オプションを選択した場合は、デプロイ プロセス中に Azure Migrate: App Containerization ツールで使用する必要がある Azure ファイル共有を指定します。 永続ボリューム ストレージ用に構成されたアプリケーション フォルダーをコピーするために、ツールにより、この Azure ファイル共有に新しいディレクトリが作成されます。 アプリケーションのデプロイが完了すると、ツールにより、作成されたディレクトリが削除され、Azure ファイル共有がクリーンアップされます。
 
      - Azure ファイル共有がない場合、または新しい Azure ファイル共有を作成する場合は、 **[Create new Storage Account and file share]\(新しいストレージ アカウントとファイル共有の作成\)** をクリックすることで、ツールから作成できます。  
 
-3. **アプリケーションのデプロイ構成**: 上記の手順が完了したら、アプリケーションのデプロイ構成を指定する必要があります。 **[構成]** をクリックして、アプリケーションのデプロイをカスタマイズします。 構成ステップでは、次のカスタマイズを行うことができます。
+4. **アプリケーションのデプロイ構成**: 上記の手順が完了したら、アプリケーションのデプロイ構成を指定する必要があります。 **[構成]** をクリックして、アプリケーションのデプロイをカスタマイズします。 構成ステップでは、次のカスタマイズを行うことができます。
      - **プレフィックス文字列**: AKS クラスター内のコンテナー化されたアプリケーションに対して作成されるすべてのリソースの名前に使用するプレフィックス文字列を指定します。
      - **SSL 証明書**: アプリケーションで https サイト バインドが必要な場合は、バインドに使用する証明書を含む PFX ファイルを指定します。 PFX ファイルをパスワードで保護することはできません。また、元のサイトで複数のバインドを使用することはできません。
      - **レプリカ セット**: コンテナー内で実行する必要があるアプリケーション インスタンス (ポッド) の数を指定します。
@@ -240,14 +246,14 @@ App Containerization ヘルパー ツールは、指定された資格情報を�
      - **[適用]** をクリックして、デプロイ構成を保存します。
      - **[続行]** をクリックして、アプリケーションをデプロイします。
 
-    ![デプロイ アプリ構成のスクリーンショット。](./media/tutorial-containerize-apps-aks/deploy-aspnet-app-config.png)
+    ![デプロイ アプリ構成のスクリーンショット。](./media/tutorial-containerize-apps-aks/deploy-aspnet-app-config-aks.png)
 
 4. **アプリケーションをデプロイする**: アプリケーションのデプロイ構成が保存されると、ツールによって、アプリケーションの Kubernetes デプロイ YAML が生成されます。
-     - **[編集]** をクリックして、アプリケーションの Kubernetes デプロイ YAML を確認し、カスタマイズします。
+     - **[確認]** をクリックして、アプリケーションの Kubernetes デプロイ YAML を確認し、カスタマイズします。
      - デプロイするアプリケーションを選択します。
      - **[デプロイ]** をクリックして、選択したアプリケーションのデプロイを開始します。
 
-         ![アプリのデプロイ構成のスクリーンショット。](./media/tutorial-containerize-apps-aks/deploy-aspnet-app-deploy.png)
+         ![アプリのデプロイ構成のスクリーンショット。](./media/tutorial-containerize-apps-aks/deploy-aspnet-app-deploy-aks.png)
 
      - アプリケーションがデプロイされたら、 *[デプロイ ステータス]* 列をクリックして、アプリケーション用にデプロイされたリソースを追跡できます。
 
@@ -263,4 +269,6 @@ Dockerfile や Kubernetes YAML 仕様ファイルなど、アプリケーショ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- (Linux サーバーの) Apache Tomcat 上の Java Web アプリをコンテナー化し、それらを AKS の Linux コンテナーにデプロイする。 [詳細情報](./tutorial-containerize-java-kubernetes.md)
+- ASP.NET Web アプリをコンテナー化し、それらを App Service の Windows コンテナーにデプロイする。 [詳細情報](./tutorial-app-containerization-aspnet-app-service.md)
+- (Linux サーバーの) Apache Tomcat 上の Java Web アプリをコンテナー化し、それらを AKS の Linux コンテナーにデプロイする。 [詳細情報](./tutorial-app-containerization-java-kubernetes.md)
+- (Linux サーバーの) Apache Tomcat 上の Java Web アプリをコンテナー化し、それらを App Service の Linux コンテナーにデプロイする。 [詳細情報](./tutorial-app-containerization-java-app-service.md)

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 07/26/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44016d81b18e8df7b6e2ed7c14559cf19ac0c07d
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 449a0ecd02e12816a9a9952fad0446f392ff4af7
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106638"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352885"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Azure Active Directory の認証方法 - OATH トークン 
 
@@ -31,7 +31,7 @@ Authenticator アプリは、プッシュ通知を行うように設定された
 
 ## <a name="oath-hardware-tokens-preview"></a>OATH ハードウェア トークン (プレビュー)
 
-Azure AD では、30 秒または 60 秒ごとにコードを更新する OATH-TOTP SHA-1 トークンの使用をサポートしています。 顧客は、選択したベンダーからこれらのトークンを購入できます。
+Azure AD では、30 秒または 60 秒ごとにコードを更新する OATH-TOTP SHA-1 トークンの使用をサポートしています。 顧客は、選択したベンダーからこれらのトークンを購入できます。 
 
 OATH TOTP ハードウェア トークンには、通常、トークンで事前にプログラミングされた秘密鍵 (シード) が付属しています。 これらのキーは、次の手順に従って Azure AD に入力する必要があります。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。 秘密キーに含めることができるのは、文字 *a-z* または *A-Z* と数字 *2-7* のみです。また、*Base32* でエンコードする必要があります。
 
@@ -59,6 +59,10 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 
 ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された認証アプリケーション (Microsoft Authenticator アプリなど) を組み合わせることもできます。 ハードウェア OATH トークンは、リソース テナントのゲスト ユーザーに割り当てることはできません。
 
+>[!IMPORTANT]
+>このプレビューは、Azure Government やソブリン クラウドではサポートされていません。
+
 ## <a name="next-steps"></a>次の手順
 
-[Microsoft Graph REST API ベータ版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)を使用した認証方法の構成の詳細について確認してください。
+[Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview) を使用した認証方法の構成の詳細を確認してください。
+パスワードなし認証対応の [FIDO2 セキュリティ キー プロバイダー](concept-authentication-passwordless.md#fido2-security-key-providers)についてご確認ください。

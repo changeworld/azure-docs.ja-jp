@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:新しいリソースをロックで保護する
 description: このチュートリアルでは、Azure Blueprints のリソース ロックの "読み取り専用" と "削除禁止" のオプションを使用して、新しくデプロイされたリソースを保護します。
-ms.date: 03/08/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
-ms.openlocfilehash: 87da0f5a1fff2feb103b32533c8d314fb7690f80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1c82c3a3a10076c41aa0c65e0565d9727f3444c
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102485743"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324952"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>チュートリアル:Azure Blueprints のリソース ロックを使用して新しいリソースを保護する
 
@@ -161,7 +161,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      |-|-|-|-|-|
      |RGtoLock リソース グループ|Resource group|名前|TestingBPLocks|ブループリントのロックを適用する新しいリソース グループの名前を定義します。|
      |RGtoLock リソース グループ|Resource group|場所|米国西部 2|ブループリントのロックを適用する新しいリソース グループの場所を定義します。|
-     |StorageAccount|Resource Manager テンプレート|storageAccountType (StorageAccount)|Standard_GRS|ストレージの SKU。 既定値は "_Standard_LRS_" です。|
+     |StorageAccount|Resource Manager テンプレート|storageAccountType (StorageAccount) |Standard_GRS|ストレージの SKU。 既定値は "_Standard_LRS_" です。|
 
 1. すべてのパラメーターを入力したら、ページの下部にある **[割り当て]** を選択します。
 
@@ -177,7 +177,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 左側の **[割り当てられたブループリント]** ページを選択します。 フィルターを使用して、ブループリントの割り当て **assignment-locked-storageaccount-TestingBPLocks** を見つけて、選択します。
 
-   このページから、割り当てが成功したこと、および新しいブループリント ロック状態でリソースがデプロイされたことがわかります。 割り当てが更新された場合は、各定義のバージョンのデプロイに関する詳細が **[割り当ての操作]** ドロップダウンに表示されます。 プロパティ ページを開くリソース グループを選択することができます。
+   このページから、割り当てが成功したこと、および新しいブループリント ロック状態でリソースがデプロイされたことがわかります。 割り当てが更新された場合は、各定義のバージョンのデプロイに関する詳細が **[割り当ての操作]** ドロップダウン リストに表示されます。 プロパティ ページを開くリソース グループを選択することができます。
 
 1. **TestingBPLocks** リソース グループを選択します。
 

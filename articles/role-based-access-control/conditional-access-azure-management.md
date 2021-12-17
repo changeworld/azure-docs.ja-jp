@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 2a52635dbaa7a76034f3a535b099320a901e8c07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f26ba1d6a7c399024d77f9953c82893af6002c5c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83758777"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961503"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>条件付きアクセスを使用して Azure 管理へのアクセスを管理する
 
@@ -44,6 +44,11 @@ Azure 管理のポリシーを作成するには、ポリシーを適用する�
 - Visual Studio サブスクリプション管理者ポータル
 - Azure DevOps
 - Azure Data Factory ポータル
+- Azure Event Hubs
+- Azure Service Bus
+- [Azure SQL Database](../azure-sql/database/conditional-access-configure.md)
+- SQL Managed Instance
+- Azure Synapse
 
 ポリシーは Azure Resource Manager API を呼び出す Azure PowerShell に適用されることに注意してください。 Microsoft Graph を呼び出す [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) には適用されません。
 

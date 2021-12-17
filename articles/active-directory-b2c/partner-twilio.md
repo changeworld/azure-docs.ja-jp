@@ -3,20 +3,20 @@ title: Twilio Verify App と Azure Active Directory B2C
 titleSuffix: Azure AD B2C
 description: Azure AD B2C のサンプル オンライン決済アプリを Twilio Verify API と統合する方法について説明します。 動的リンクと強力な顧客認証によって、PSD2 (Payment Services Directive 2) のトランザクション要件に準拠することができます。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
-ms.author: mimart
+ms.date: 09/20/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 9a7f22b05238fb495422a02edd6ca382b4df041a
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 49ca54ef90e4fb9c2f6263d10a36f511e64946a8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257808"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044496"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Twilio Verify App と Azure Active Directory B2C の統合
 
@@ -56,61 +56,57 @@ ms.locfileid: "107257808"
 
 1. Twilio で[試用版アカウント](https://www.twilio.com/try-twilio)を取得します。
 
-2. [こちらの記事](https://support.twilio.com/hc/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console)の説明に従って、Twilio で電話番号を購入します。
+1. [こちらの記事](https://support.twilio.com/hc/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console)の説明に従って、Twilio で電話番号を購入します。
 
-3. Twilio コンソールで [Verify API](https://www.twilio.com/console/verify/services) に移動します。[指示](https://www.twilio.com/docs/verify/verifying-transactions-psd2)に従ってサービスを作成し、PSD2 オプションを有効にします。  
+1. Twilio コンソールで [Verify API](https://www.twilio.com/console/verify/services) に移動します。[指示](https://www.twilio.com/docs/verify/verifying-transactions-psd2)に従ってサービスを作成し、PSD2 オプションを有効にします。  
 
 ## <a name="configure-the-psd2-demo-app"></a>PSD2 デモ アプリを構成する
 
 1. B2C-WebAPI-DotNet ソリューションを開き、web.config で次の値を独自のテナント固有の値に置き換えます。
 
     ```xml
-   <add key="ida:Tenant" value="yourtenant.onmicrosoft.com" />
-   <add key="ida:TenantId" value="d6f33888-0000-4c1f-9b50-1590f171fc70" />
-   <add key="ida:ClientId" value="6bd98cc8-0000-446a-a05e-b5716ef2651b" />
-   <add key="ida:ClientSecret" value="secret" />
-   <add key="ida:AadInstance" value="https://yourtenant.b2clogin.com/tfp/{0}/{1}" />
-   <add key="ida:RedirectUri" value="https://your hosted psd2 demo app url/" />
-   ```
+    <add key="ida:Tenant" value="yourtenant.onmicrosoft.com" />
+    <add key="ida:TenantId" value="d6f33888-0000-4c1f-9b50-1590f171fc70" />
+    <add key="ida:ClientId" value="6bd98cc8-0000-446a-a05e-b5716ef2651b" />
+    <add key="ida:ClientSecret" value="secret" />
+    <add key="ida:AadInstance" value="https://yourtenant.b2clogin.com/tfp/{0}/{1}" />
+    <add key="ida:RedirectUri" value="https://your hosted psd2 demo app url/" />
+    ```
 
-2. [Web アプリ](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App)では、ID トークン ヒント ジェネレーターおよびメタデータ エンドポイントもホストされます。
+1. [Web アプリ](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App)では、ID トークン ヒント ジェネレーターおよびメタデータ エンドポイントもホストされます。
+
    - こちらの[サンプルの説明](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#creating-a-signing-certificate)に従って署名証明書を作成します。
+
    - 証明書に基づいて、web.config の次の行を更新します。
    
-   ```xml
-   <add key="ida:SigningCertThumbprint" value="4F39D6014818082CBB763E5BA5F230E545212E89" />
-   <add key="ida:SigningCertAlgorithm" value="RS256" />
-   ```
+     ```xml
+     <add key="ida:SigningCertThumbprint" value="4F39D6014818082CBB763E5BA5F230E545212E89" />
+     <add key="ida:SigningCertAlgorithm" value="RS256" />
+     ```
 
-3. 選択したホスティング プロバイダーにデモ アプリケーションをアップロードします。 証明書をアップロードする手順など、Azure App Service のガイダンスについては、 [こちらのサンプルの説明](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#hosting-the-application-in-azure-app-service)をご覧ください。
+1. 選択したホスティング プロバイダーにデモ アプリケーションをアップロードします。 証明書をアップロードする手順など、Azure App Service のガイダンスについては、 [こちらのサンプルの説明](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#hosting-the-application-in-azure-app-service)をご覧ください。
 
-4. アプリケーションがホストされている URL に対応する応答 URL を追加して、Azure AD B2C アプリケーションの登録を更新します。
+1. アプリケーションがホストされている URL に対応する応答 URL を追加して、Azure AD B2C アプリケーションの登録を更新します。
 
-5. [ポリシー ファイル](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy)を開き、 `contoso` のすべてのインスタンスを実際のテナント名に置き換えます。
+1. [ポリシー ファイル](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy)を開き、 `contoso` のすべてのインスタンスを実際のテナント名に置き換えます。
 
-6. Twilio REST API 技術プロファイル  **Custom-SMS-Enroll** を見つけます。  `ServiceURL`  を Twilio AccountSID  で更新し、From 番号を購入した電話番号に更新します。
+1. Twilio REST API 技術プロファイル  **Custom-SMS-Enroll** を見つけます。  `ServiceURL`  を Twilio AccountSID  で更新し、From 番号を購入した電話番号に更新します。
 
-7. Twilio REST API 技術プロファイル  **TwilioRestAPI-Verify-Step1**  および  **TwilioRestAPI-Verify-Step2** を見つけ、 `ServiceURL`  を Twilio AccountSID で更新 します。
+1. Twilio REST API 技術プロファイル  **TwilioRestAPI-Verify-Step1**  および  **TwilioRestAPI-Verify-Step2** を見つけ、 `ServiceURL`  を Twilio AccountSID で更新 します。
 
 ## <a name="integrate-with-azure-ad-b2c"></a>Azure AD B2C との統合
 
 ポリシー ファイルを Azure AD B2C に追加します。
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-
-2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
-
-3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-
-4. **[Azure AD B2C]**  >  **[Identity Experience Framework]**  >  **[ポリシー キー]** の順に移動します。
-
-5. **B2cRestTwilioClientId** という名前の新しいキーを追加します。  **[手動]** を選択し Twilio AccountSID の値を入力します。
-
-6. **B2cRestTwilioClientSecret** という名前の新しいキーを追加します。  **[手動]** を選択し Twilio 認証トークンの値を入力します。
-
-7. すべてのポリシー ファイルをテナントにアップロードします。
-
-8. サインアップ SMS テキストの GenerateOTPMessageEnrol  要求変換の文字列をカスタマイズします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[Azure AD B2C]**  >  **[Identity Experience Framework]**  >  **[ポリシー キー]** の順に移動します。
+1. **B2cRestTwilioClientId** という名前の新しいキーを追加します。  **[手動]** を選択し Twilio AccountSID の値を入力します。
+1. **B2cRestTwilioClientSecret** という名前の新しいキーを追加します。  **[手動]** を選択し Twilio 認証トークンの値を入力します。
+1. すべてのポリシー ファイルをテナントにアップロードします。
+1. サインアップ SMS テキストの GenerateOTPMessageEnrol  要求変換の文字列をカスタマイズします。
 
 ## <a name="test-the-solution"></a>ソリューションをテストする
 

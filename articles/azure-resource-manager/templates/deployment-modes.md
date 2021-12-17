@@ -3,12 +3,12 @@ title: デプロイ モード
 description: Azure Resource Manager で完全デプロイ モードと増分デプロイ モードのどちらを使用するか指定する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 3f1f74c0495e0d43671712281a35a7e74fd7d821
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98e92cfc58acd85d1ed49cec0e29d1d73b5b8efb
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104888840"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112320876"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager のデプロイ モード
 
@@ -23,7 +23,7 @@ ms.locfileid: "104888840"
 完全モードでは、Resource Manager はリソース グループに存在するがテンプレートに指定されていないリソースを **削除します**。
 
 > [!NOTE]
-> テンプレートを完全モードでデプロイする前に、必ず [what-if 操作](template-deploy-what-if.md)を使用してください。 What-if では、作成、削除、または変更されるリソースが示されます。 リソースを誤って削除しないようにするには、what-if を使用します。
+> テンプレートを完全モードでデプロイする前に、必ず [what-if 操作](./deploy-what-if.md)を使用してください。 What-if では、作成、削除、または変更されるリソースが示されます。 リソースを誤って削除しないようにするには、what-if を使用します。
 
 [condition](conditional-resource-deployment.md) が false と評価されるためにデプロイされないリソースがテンプレートに含まれている場合、テンプレートをデプロイするために使用する REST API のバージョンによって結果が異なります。 2019-05-10 より前のバージョンを使用する場合、リソースは **削除されません**。 2019-05-10 以降では、リソースは **削除されます**。 最新バージョンの Azure PowerShell および Azure CLI では、リソースは削除されます。
 
@@ -35,7 +35,7 @@ ms.locfileid: "104888840"
 
 たとえば、リソース グループに DNS ゾーン (リソースの種類は `Microsoft.Network/dnsZones`) と CNAME レコード (リソースの種類は `Microsoft.Network/dnsZones/CNAME`) が含まれるとします。DNS ゾーンは CNAME レコードの親リソースです。 テンプレートを完全モードでデプロイし、そこに DNS ゾーンを含めていない場合、DNS ゾーンと CNAME レコードの両方が削除されます。 テンプレートに DNS ゾーンだけを含め、CNAME レコードは含めていない場合、CNAME は削除されません。
 
-リソースの種類別に削除の動作を説明した一覧については、「[Deletion of Azure resources for complete mode deployments (完全モードのデプロイでの Azure リソースの削除)](complete-mode-deletion.md)」をご覧ください。
+リソースの種類別に削除の動作を説明した一覧については、「[Deletion of Azure resources for complete mode deployments (完全モードのデプロイでの Azure リソースの削除)](./deployment-complete-mode-deletion.md)」をご覧ください。
 
 リソース グループが[ロックされている場合](../management/lock-resources.md)、完全モードはリソースを削除しません。
 
@@ -101,11 +101,10 @@ Azure CLI を使用してデプロイするときにデプロイ モードを設
 
 ```azurecli-interactive
 az deployment group create \
-  --name ExampleDeployment \
   --mode Complete \
-  --resource-group ExampleGroup \
-  --template-file storage.json \
-  --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleResourceGroup \
+  --template-file storage.json
 ```
 
 次の例は、増分デプロイ モードに設定された、リンクされたテンプレート セットを示しています。
@@ -126,6 +125,6 @@ az deployment group create \
 
 ## <a name="next-steps"></a>次のステップ
 
-* Resource Manager テンプレートの作成については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* Resource Manager テンプレートの作成については、「[ARM テンプレートの構造と構文について](./syntax.md)」を参照してください。
 * リソースをデプロイする方法については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。
 * リソース プロバイダーの操作を表示するには、「[Azure REST API](/rest/api/)」を参照してください。

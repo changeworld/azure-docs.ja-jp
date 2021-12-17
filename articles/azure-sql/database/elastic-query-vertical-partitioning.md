@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84e7618232c38f8686e7b21e4a0660d812d9638f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792091"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737084"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>スキーマが異なるクラウド データベース間のクエリ (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,9 +47,8 @@ ms.locfileid: "92792091"
 
 ```sql
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'master_key_password';
-CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
-SECRET = '<password>'
-[;]
+CREATE DATABASE SCOPED CREDENTIAL [<credential_name>]  WITH IDENTITY = '<username>',  
+SECRET = '<password>';
 ```
 
 > [!NOTE]
@@ -59,9 +58,15 @@ SECRET = '<password>'
 
 構文:
 
-<External_Data_Source> ::= CREATE EXTERNAL DATA SOURCE <data_source_name> WITH (TYPE = RDBMS, LOCATION = ’<fully_qualified_server_name>’, DATABASE_NAME = ‘<remote_database_name>’,  
-    CREDENTIAL = <credential_name> ) [;]
-
+```syntaxsql
+<External_Data_Source> ::=
+CREATE EXTERNAL DATA SOURCE <data_source_name> WITH
+    (TYPE = RDBMS,
+    LOCATION = ’<fully_qualified_server_name>’,
+    DATABASE_NAME = ‘<remote_database_name>’,  
+    CREDENTIAL = <credential_name>
+    ) [;]
+```
 > [!IMPORTANT]
 > TYPE パラメーターを **RDBMS** に設定する必要があります。
 
@@ -90,10 +95,17 @@ select * from sys.external_data_sources;
 
 構文:
 
+```syntaxsql
 CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name . ] table_name  
-    ( { <column_definition> } [ ,...n ]) { WITH ( <rdbms_external_table_options> ) } )[;]
+    ( { <column_definition> } [ ,...n ])
+    { WITH ( <rdbms_external_table_options> ) }
+    )[;]
 
-<rdbms_external_table_options> ::= DATA_SOURCE = <External_Data_Source>, [ SCHEMA_NAME = N'nonescaped_schema_name',] [ OBJECT_NAME = N'nonescaped_object_name',]
+<rdbms_external_table_options> ::=
+    DATA_SOURCE = <External_Data_Source>,
+    [ SCHEMA_NAME = N'nonescaped_schema_name',]
+    [ OBJECT_NAME = N'nonescaped_object_name',]
+```
 
 ### <a name="example"></a>例
 
@@ -125,9 +137,9 @@ select * from sys.external_tables;
 
 前のセクションで説明したように外部データ ソースを使用する、外部テーブルを作成するための構文を次に示します。
 
-DATA_SOURCE 句は、外部テーブルに使用される外部データ ソース (つまり、列方向のパーティション分割の場合はリモート データベース) を定義します。  
+DATA_SOURCE 句は、外部テーブルに使用される外部データ ソース (つまり、列方向のパーティション分割におけるリモート データベース) を定義します。  
 
-SCHEMA_NAME 句と OBJECT_NAME 句は、外部テーブル定義をリモート データベース上の別のスキーマのテーブルまたは別の名前を持つテーブルにマップする機能をそれぞれ提供します。 これは、リモート データベースのカタログ ビューまたは DMV に対して外部テーブルを定義する場合や、リモート テーブル名が既にローカルに取得されている場合に便利です。  
+SCHEMA_NAME 句と OBJECT_NAME 句を使用すると、外部テーブル定義をリモート データベース上の別のスキーマのテーブルまたは別の名前を持つテーブルにそれぞれマップすることができます。 このマッピングは、リモート データベースのカタログ ビューまたは DMV に対して外部テーブルを定義する場合や、リモート テーブル名が既にローカルに取得されている場合に便利です。  
 
 次の DDL ステートメントは、ローカル カタログから既存の外部テーブル定義を削除します。 リモート データベースには影響しません。
 
@@ -139,7 +151,7 @@ DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
-外部テーブルへのアクセス権を持つユーザーは、外部データ ソース定義に指定された資格情報の下で、基になるリモート テーブルへのアクセス権を自動的に取得します。 外部データ ソースの資格情報を介した特権の不要な昇格を回避するために、外部テーブルへのアクセスを慎重に管理する必要があります。 外部テーブルへのアクセスは、通常の SQL 権限を使用して、通常のテーブルの場合と同様に許可または禁止することができます。  
+外部テーブルへのアクセス権を持つユーザーは、外部データ ソース定義に指定された資格情報の下で、基になるリモート テーブルへのアクセス権を自動的に取得します。 外部データ ソースの資格情報を介した特権の不要な昇格を回避するために、外部テーブルへのアクセスを慎重に管理してください。 外部テーブルへのアクセスは、通常の SQL 権限を使用して、通常のテーブルの場合と同様に許可または禁止することができます。  
 
 ## <a name="example-querying-vertically-partitioned-databases"></a>例: 列方向にパーティション分割されたデータベースのクエリ
 

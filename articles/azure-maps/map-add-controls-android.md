@@ -1,20 +1,20 @@
 ---
 title: Android マップにコントロールを追加する | Microsoft Azure Maps
 description: Microsoft Azure Maps Android SDK でズーム コントロール、ピッチ コントロール、回転コントロール、およびスタイルの選択ツールをマップに追加する方法。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 90d037fc02bdc1c4d6fe682386790561c890c1e6
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 5599efb61c02c05ea3908d660ca0f1c11bea1ca7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100221"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425304"
 ---
 # <a name="add-controls-to-a-map-android-sdk"></a>マップにコントロールを追加する (Android SDK)
 
@@ -126,7 +126,7 @@ map.controls.add(TrafficControl())
 
 ## <a name="a-map-with-all-controls"></a>すべてのコントロールを含むマップ
 
-開発を簡略化するため、複数のコントロールを 1 つの配列に格納し、すべてを一度にマップに追加して、マップの同じ領域に配置することができます。 以下ではこの方法を使用して、標準のナビゲーション コントロールをマップに追加しています。
+開発を簡略化するため、複数のコントロールを 1 つの配列に格納し、すべてを一度にマップに追加して、マップの同じ領域に配置することができます。 以下のコードではこの方法を使用して、標準のナビゲーション コントロールをマップに追加しています。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -158,7 +158,7 @@ map.controls.add(
 
 ::: zone-end
 
-次のスクリーンショットは、マップに読み込まれたすべてのコントロールを示しています。 マップに追加された順序が表示される順序になることに注意してください。
+次のスクリーンショットは、マップに読み込まれたすべてのコントロールを示しています。 マップに追加される順序が、表示される順序になります。
 
 ![マップに追加されたすべてのコントロール](media/map-add-controls-android/android-all-controls.jpg)
 

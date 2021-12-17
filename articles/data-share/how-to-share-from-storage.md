@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 02/23/2021
-ms.openlocfilehash: 4db523624922d8ddcb8c1868b84927926d9ed3d5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 09/10/2021
+ms.openlocfilehash: 61189ba63c072f2c08acc55047d494b076288953
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103812"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743251"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Azure Blob Storage と Azure Data Lake Storage からデータを共有および受信する
 
@@ -19,7 +19,7 @@ ms.locfileid: "107103812"
 
 Azure Data Share では、ストレージ アカウントからのスナップショットベースの共有がサポートされています。 この記事では、Azure Blob Storage、Azure Data Lake Storage Gen1、および Azure Data Lake Storage Gen2 からデータを共有および受信する方法について説明します。
 
-Azure Data Share では、Azure Data Lake Gen1 および Azure Data Lake Gen2 からのファイル、フォルダー、ファイル システムの共有がサポートされています。 また、Azure Blob Storage からの BLOB、フォルダー、コンテナーの共有もサポートされています。 現時点では、ブロック BLOB のみがサポートされています。 これらのソースから共有されているデータは、Azure Data Lake Gen2 または Azure Blob Storage で受信できます。
+Azure Data Share では、Azure Data Lake Gen1 および Azure Data Lake Gen2 からのファイル、フォルダー、ファイル システムの共有がサポートされています。 また、Azure Blob Storage からの BLOB、フォルダー、コンテナーの共有もサポートされています。 ブロック、追加、またはページの BLOB を共有できます。これらは、ブロック BLOB として受信されます。 これらのソースから共有されているデータは、Azure Data Lake Gen2 または Azure Blob Storage で受信できます。
 
 ファイル システム、コンテナー、またはフォルダーがスナップショットベースの共有で共有されている場合、データ コンシューマーは共有データの完全なコピーを作成することを選択できます。 または、増分スナップショット機能を使用して、新しいファイルまたは更新されたファイルのみをコピーすることもできます。 増分スナップショットの機能は、ファイルの最終更新時刻に基づいています。 
 
@@ -143,6 +143,8 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 1. 招待をメールから開くには、受信トレイでデータ プロバイダーからの招待を確認します。 招待は Microsoft Azure からで、件名は " *\<yourdataprovider\@domain.com>* からの Azure Data Share の招待" になっています。 **[招待を表示]** を選択して、Azure で招待を確認します。 
 
    Azure portal から招待を開くには、 *[データ共有への招待]* を検索します。 データ共有の招待の一覧が表示されます。
+
+   テナントのゲスト ユーザーの場合、Data Share の招待を初めて表示する前に、テナントの自分のメール アドレスを確認するよう求められます。 検証が完了すると、12 か月間有効になります。
 
    ![Azure portal の招待状の一覧を示すスクリーンショット。](./media/invitations.png "招待の一覧。") 
 

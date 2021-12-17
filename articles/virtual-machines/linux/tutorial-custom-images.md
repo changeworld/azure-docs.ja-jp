@@ -3,30 +3,32 @@ title: チュートリアル - Azure CLI を使用したカスタム VM イメ�
 description: このチュートリアルでは、Azure CLI を使用して、Azure でカスタム仮想マシン イメージを作成する方法について説明します
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.reviewer: akjosh
-ms.openlocfilehash: 81bbf0b49919db68407a85b9ea2f731c5f8e1d91
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.reviewer: mimckitt
+ms.openlocfilehash: be0cf8b120a8d74066f13ddac09460a6dc662df4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769879"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444574"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM のカスタム イメージを作成する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 このチュートリアルでは、Azure 仮想マシンの独自のカスタム イメージを作成します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Shared Image Gallery を作成する
+> * Azure Compute Gallery (旧称 Shared Image Gallery) を作成する
 > * イメージ定義を作成する
 > * イメージ バージョンを作成する
 > * イメージから VM を作成する 
-> * イメージ ギャラリーを共有する
+> * ギャラリーを共有する
 
 
 このチュートリアルでは、[Azure Cloud Shell](../../cloud-shell/overview.md) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[使ってみる]** を選択します。
@@ -35,13 +37,13 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="overview"></a>概要
 
-[共有イメージ ギャラリー](../shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 
+[Azure Compute Gallery](../shared-image-galleries.md) により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 
 
-共有イメージ ギャラリーを使用すると、カスタム VM イメージを他のユーザーと共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 
+Azure Compute Gallery を使用すると、カスタム VM イメージを他のユーザーと共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 
 
-共有イメージ ギャラリー機能には、次のような複数のリソースの種類があります。
+Azure Compute Gallery 機能には、複数のリソースの種類があります。
 
-[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -55,13 +57,13 @@ Azure Cloud Shell は無料のインタラクティブ シェルです。この�
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
-## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する 
+## <a name="create-a-gallery"></a>ギャラリーの作成 
 
-イメージ ギャラリーは、イメージの共有を有効にするために使用されるプライマリ リソースです。 
+ギャラリーは、イメージの共有を有効にするために使用されるプライマリ リソースです。 
 
-ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。   ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
+ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。 ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
 
-[az sig create](/cli/azure/sig#az_sig_create) を使用してイメージ ギャラリーを作成します。 次の例では、*myGalleryRG* という名前のリソース グループを "*米国東部*" に作成し、*myGallery* という名前のギャラリーを作成します。
+[az sig create](/cli/azure/sig#az_sig_create) を使用してギャラリーを作成します。 次の例では、*myGalleryRG* という名前のリソース グループを "*米国東部*" に作成し、*myGallery* という名前のギャラリーを作成します。
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -167,7 +169,7 @@ az sig show \
    --query id
 ```
 
-電子メール アドレスおよび [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) と共に、オブジェクト ID をスコープとして使用して、ユーザーに共有イメージ ギャラリーへのアクセスを付与します。 `<email-address>` と `<gallery iD>` は、実際の情報に置き換えてください。
+電子メール アドレスおよび [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) と共に、オブジェクト ID をスコープとして使用して、ユーザーに Azure Compute Gallery へのアクセス権を付与します。 `<email-address>` と `<gallery iD>` は、実際の情報に置き換えてください。
 
 ```azurecli-interactive
 az role assignment create \
@@ -187,11 +189,11 @@ Azure では、Packer 上に構築された [Azure VM Image Builder](../image-bu
 このチュートリアルでは、カスタム VM イメージを作成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
-> * Shared Image Gallery を作成する
+> * Azure Compute Gallery を作成する
 > * イメージ定義を作成する
 > * イメージ バージョンを作成する
 > * イメージから VM を作成する 
-> * イメージ ギャラリーを共有する
+> * ギャラリーを共有する
 
 次のチュートリアルに進み、可用性が高い仮想マシンについて学習してください。
 

@@ -1,76 +1,99 @@
-- name: Azure HPC Cache のドキュメント
-  href: index.yml
-- name: 概要
-  items:
-    - name: Azure HPC Cache とは
-      href: hpc-cache-overview.md
-- name: 概念
-  items:
-    - name: 集約された名前空間を計画する
-      href: hpc-cache-namespace.md
-    - name: セキュリティ
-      items:
-        - name: セキュリティ ベースライン
-          href: security-baseline.md
-- name: 操作方法ガイド
-  items:
-    - name: 前提条件
-      href: hpc-cache-prerequisites.md
-    - name: キャッシュを作成する
-      href: hpc-cache-create.md
-    - name: ストレージを追加する
-      items:
-        - name: ストレージ ターゲットを追加する
-          href: hpc-cache-add-storage.md
-        - name: 名前空間パスを追加する
-          href: add-namespace-paths.md
-        - name: データをストレージ ターゲットに移動する (必要な場合)
-          items:
-            - name: 新しい Blob Storage を事前に読み込む
-              href: hpc-cache-ingest.md
-            - name: 代替のデータ取り込み方法
-              items:
-                - name: 並列コピーを使用してキャッシュを設定する
-                  href: hpc-cache-ingest-parallelcp.md
-                - name: msrsync を使用してキャッシュを設定する
-                  href: hpc-cache-ingest-msrsync.md
-                - name: 手動によるファイル コピーを使用してキャッシュを設定する
-                  href: hpc-cache-ingest-manual.md
-        - name: ストレージ ターゲットを編集する
-          href: hpc-cache-edit-storage.md
-    - name: キャッシュに接続する
-      href: hpc-cache-mount.md
-    - name: キャッシュを管理する
-      href: hpc-cache-manage.md
-    - name: オプション設定を使用する
-      items:
-        - name: オプション設定を構成する
-          href: configuration.md
-        - name: アクセス ポリシーをカスタマイズする
-          href: access-policies.md
-        - name: ディレクトリ サービスのセットアップ
-          href: directory-services.md
-- name: リファレンス
-  items:
-    - name: Azure CLI
-      href: /cli/azure/ext/hpc-cache/hpc-cache
-    - name: Azure PowerShell
-      href: /powershell/module/Az.HPCCache
-- name: リソース
-  items:
-    - name: サポート チケットを開く
-      href: hpc-cache-support-ticket.md
-    - name: Azure HPC Cache 向けに Azure CLI を設定する
-      href: az-cli-prerequisites.md
-    - name: BLOB ストレージ アカウントのファイアウォール設定を回避する
-      href: hpc-cache-blob-firewall-fix.md
-    - name: NFS ストレージ ターゲットの作成のトラブルシューティング
-      href: troubleshoot-nas.md
-    - name: リージョンの障害から復旧する
-      href: hpc-region-recovery.md
-    - name: カスタマーマネージド暗号化キーを使用する
-      href: customer-keys.md
-    - name: Azure HPC Cache で Azure NetApp Files を使用する
-      href: hpc-cache-netapp.md
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/resources/videos/index/?service=hpc-cache'
+items:
+  - name: Azure HPC Cache のドキュメント
+    href: index.yml
+  - name: 概要
+    items:
+      - name: Azure HPC Cache とは
+        href: hpc-cache-overview.md
+  - name: 概念
+    items:
+      - name: HPC Cache が適切なソリューションかどうかを判断する
+        href: usage-scenarios.md
+      - name: 集約された名前空間を計画する
+        href: hpc-cache-namespace.md
+      - name: キャッシュ使用モデルについて
+        href: cache-usage-models.md
+      - name: セキュリティ
+        items:
+          - name: セキュリティ ベースライン
+            href: /security/benchmark/azure/baselines/hpc-cache-security-baseline?toc=/azure/hpc-cache/toc.json
+  - name: 操作方法ガイド
+    items:
+      - name: 前提条件
+        href: hpc-cache-prerequisites.md
+      - name: キャッシュを作成する
+        href: hpc-cache-create.md
+      - name: ストレージを追加する
+        items:
+          - name: ストレージ ターゲットを追加する
+            href: hpc-cache-add-storage.md
+          - name: 名前空間パスを追加する
+            href: add-namespace-paths.md
+          - name: データをストレージ ターゲットに移動する (必要な場合)
+            items:
+              - name: 新しい Blob Storage を事前に読み込む
+                href: hpc-cache-ingest.md
+              - name: 代替のデータ取り込み方法
+                items:
+                  - name: 並列コピーを使用してキャッシュを設定する
+                    href: hpc-cache-ingest-parallelcp.md
+                  - name: msrsync を使用してキャッシュを設定する
+                    href: hpc-cache-ingest-msrsync.md
+                  - name: 手動によるファイル コピーを使用してキャッシュを設定する
+                    href: hpc-cache-ingest-manual.md
+          - name: ストレージ ターゲットを編集する
+            href: hpc-cache-edit-storage.md
+          - name: ストレージ ターゲットの表示と管理
+            href: manage-storage-targets.md
+      - name: キャッシュに接続する
+        href: hpc-cache-mount.md
+      - name: キャッシュを管理する
+        href: hpc-cache-manage.md
+      - name: メトリックと監視
+        href: metrics.md
+      - name: オプション設定を使用する
+        items:
+          - name: オプション設定を構成する
+            href: configuration.md
+          - name: アクセス ポリシーをカスタマイズする
+            href: access-policies.md
+          - name: ディレクトリ サービスのセットアップ
+            href: directory-services.md
+  - name: リファレンス
+    items:
+      - name: Azure CLI
+        href: /cli/azure/hpc-cache
+      - name: Azure PowerShell
+        href: /powershell/module/Az.HPCCache
+  - name: リソース
+    items:
+      - name: サポートにお問い合せください
+        href: hpc-cache-support-ticket.md
+      - name: トラブルシューティング
+        items:
+          - name: NFS ストレージ ターゲットの作成のトラブルシューティング
+            href: troubleshoot-nas.md
+          - name: BLOB ストレージ アカウントのファイアウォール設定を回避する
+            href: hpc-cache-blob-firewall-fix.md
+          - name: リージョンの障害から復旧する
+            href: hpc-region-recovery.md
+      - name: ストレージ オプション
+        items:
+          - name: NFS でマウントされた BLOB ストレージを Azure HPC Cache で使用する
+            href: nfs-blob-considerations.md
+          - name: Azure HPC Cache で Azure NetApp Files を使用する
+            href: hpc-cache-netapp.md
+      - name: Azure HPC Cache 向けに Azure CLI を設定する
+        href: az-cli-prerequisites.md
+      - name: カスタマーマネージド暗号化キーを使用する
+        href: customer-keys.md
+      - name: クライアント トラフィックの負荷分散
+        href: client-load-balancing.md
+      - name: 製品の概要
+        href: 'https://azure.microsoft.com/services/hpc-cache/'
+      - name: 価格と購入のオプション
+        href: 'https://azure.microsoft.com/pricing/details/hpc-cache/'
+      - name: 製品に関する FAQ
+        href: 'https://azure.microsoft.com/services/hpc-cache/#faq'
+      - name: ビデオ
+        href: 'https://azure.microsoft.com/resources/videos/index/?service=hpc-cache'

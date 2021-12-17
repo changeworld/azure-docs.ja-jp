@@ -1,15 +1,15 @@
 ---
 title: 組み込みのポリシー イニシアチブの一覧
 description: Azure Policy の組み込みのポリシー　イニシアチブの一覧を示します。 カテゴリには、規制コンプライアンス、ゲスト構成などが含まれます。
-ms.date: 04/14/2021
+ms.date: 10/11/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c43886f19d2128b7e1168810a0ac20577ccded15
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 26f89eeba0d6440bda5b771492960b784a73c295
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107504849"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807739"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy の組み込みイニシアチブの定義
 
@@ -44,6 +44,10 @@ ms.locfileid: "107504849"
 ## <a name="security-center"></a>Security Center
 
 [!INCLUDE [azure-policy-reference-policysets-security-center](../../../../includes/policy/reference/bycat/policysets-security-center.md)]
+
+## <a name="trusted-launch"></a>トラステッド起動
+
+[!INCLUDE [azure-policy-reference-policysets-trusted-launch](../../../../includes/policy/reference/bycat/policysets-trusted-launch.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

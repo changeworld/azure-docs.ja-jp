@@ -3,12 +3,13 @@ title: Azure VM のパフォーマンスを監視する - Azure Application Insi
 description: Azure VM および Azure 仮想マシン スケール セットに対するアプリケーション パフォーマンス監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 0951d1d622f59de4780735fad78ac73649ea2369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6b2eb0a9413766878e8abb9ee0ce24b490b10909
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711483"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067756"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure 仮想マシンと Azure 仮想マシン スケール セットに Azure Monitor Application Insights エージェントをデプロイする
 
@@ -19,7 +20,7 @@ ms.locfileid: "101711483"
 > Azure VM と VMSS で実行されている **Java** ベースのアプリケーションは、 **[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)** (一般公開) で監視されます。
 
 > [!IMPORTANT]
-> **Azure VM と VMSS** で実行される ASP.NET アプリケーション用の Azure Application Insights エージェントは、現在パブリック プレビューの段階にあります。 **オンプレミス** で実行されている ASP.Net アプリケーションを監視するには、[オンプレミス サーバー用の Azure Application Insights エージェント](./status-monitor-v2-overview.md)を使用します。これは一般提供されていて完全にサポートされます。
+> **Azure VM と VMSS** で実行される ASP.NET および ASP.NET Core アプリケーション用の Azure Application Insights エージェントは、現在パブリック プレビューの段階にあります。 **オンプレミス** で実行されている ASP.NET アプリケーションを監視するには、[オンプレミス サーバー用の Azure Application Insights エージェント](./status-monitor-v2-overview.md)を使用します。これは一般提供されていて完全にサポートされます。
 > Azure VM と VMSS のプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めしません。 一部の機能は、サポートされていなかったり、制限されていたりする場合があります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
@@ -34,19 +35,19 @@ Azure 仮想マシンと Azure 仮想マシン スケール セットでホス�
 * Azure 仮想マシンと Azure 仮想マシン スケール セットの場合は、少なくともこのレベルの監視を有効にすることをお勧めします。 その後、特定のシナリオに基づいて、手動のインストルメンテーションが必要かどうかを評価できます。
 
 > [!NOTE]
-> 自動インストルメンテーションは、現在、.NET IIS でホストされているアプリケーションと Java でのみ使用できます。 Azure 仮想マシンと仮想マシン スケール セット上でホストされている ASP.NET Core、Node.js、Python アプリケーションをインストルメント化するには、SDK を使用します。
+> 自動インストルメンテーションは、現在、ASP.NET、ASP.NET Core の IIS でホストされているアプリケーションと Java でのみ使用できます。 Azure 仮想マシンと仮想マシン スケール セット上でホストされている、Node.js、Python アプリケーションをインストルメント化するには、SDK を使用します。
 
 
-#### <a name="net"></a>.NET
+#### <a name="aspnet--aspnet-core"></a>ASP.NET または ASP.NET Core
 
   * Application Insights エージェントでは、.NET SDK と同じ依存関係のシグナルを既定で自動的に収集します。 詳細については、「[依存関係の自動収集](./auto-collect-dependencies.md#net)」を参照してください。
         
 #### <a name="java"></a>Java
-  * Java の場合、 **[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)** を使用することをお勧めします。 最も一般的なライブラリとフレームワーク、およびログと依存関係は、[自動収集](./java-in-process-agent.md#auto-collected-requests-dependencies-logs-and-metrics)され、[追加の構成](./java-standalone-config.md)が多数あります。
+  * Java の場合、 **[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)** を使用することをお勧めします。 最も一般的なライブラリとフレームワーク、およびログと依存関係は、[自動収集](./java-in-process-agent.md#auto-collected-requests)され、[追加の構成](./java-standalone-config.md)が多数あります。
 
 ### <a name="code-based-via-sdk"></a>コードベース (SDK を使用)
     
-#### <a name="net"></a>.NET
+#### <a name="aspnet--aspnet-core"></a>ASP.NET または ASP.NET Core
   * .NET アプリの場合、このアプローチはカスタマイズできる部分がはるかに多いのですが、[Application Insights SDK NuGet パッケージへの依存関係を追加](./asp-net.md)する必要があります。 また、この方法では、最新バージョンのパッケージへの更新を自分で管理する必要があります。
 
   * エージェントベースの監視の既定ではキャプチャされないイベント/依存関係を追跡するためにカスタム API 呼び出しを行う必要がある場合は、この方法を使用する必要があります。 詳細については、[カスタムのイベントとメトリックのための API に関する記事](./api-custom-events-metrics.md)を参照してください。
@@ -54,12 +55,9 @@ Azure 仮想マシンと Azure 仮想マシン スケール セットでホス�
     > [!NOTE]
     > .NET アプリの場合のみ - エージェント ベースの監視と手動の SDK ベースのインストルメンテーションの両方が検出された場合は、手動のインストルメンテーション設定のみが受け付けられます。 これは、重複したデータが送信されないようにするためです。 このチェックアウトの詳細については、以下の「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
 
-#### <a name="net-core"></a>.NET Core
-.NET Core アプリケーションを監視するには、[SDK](./asp-net-core.md) を使用します。 
-
 #### <a name="java"></a>Java 
 
-Java アプリケーションに対して追加のカスタム テレメトリが必要な場合は、[使用可能なもの](./java-in-process-agent.md#send-custom-telemetry-from-your-application)の確認、[カスタム ディメンション](./java-standalone-config.md#custom-dimensions)の追加、または[テレメトリ プロセッサ](./java-standalone-telemetry-processors.md)の使用のいずれかを行います。 
+Java アプリケーションに対して追加のカスタム テレメトリが必要な場合は、[使用可能なもの](./java-in-process-agent.md#custom-telemetry)の確認、[カスタム ディメンション](./java-standalone-config.md#custom-dimensions)の追加、または[テレメトリ プロセッサ](./java-standalone-telemetry-processors.md)の使用のいずれかを行います。 
 
 #### <a name="nodejs"></a>Node.js
 
@@ -155,7 +153,7 @@ $privateCfgHashtable = @{};
 
 $vmss = Get-AzVmss -ResourceGroupName "<myResourceGroup>" -VMScaleSetName "<myVmssName>"
 
-Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ApplicationMonitoring" -Publisher "Microsoft.Azure.Diagnostics" -Type "ApplicationMonitoringWindows" -TypeHandlerVersion "2.8" -Setting $publicCfgHashtable -ProtectedSetting $privateCfgHashtable
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ApplicationMonitoringWindows" -Publisher "Microsoft.Azure.Diagnostics" -Type "ApplicationMonitoringWindows" -TypeHandlerVersion "2.8" -Setting $publicCfgHashtable -ProtectedSetting $privateCfgHashtable
 
 Update-AzVmss -ResourceGroupName $vmss.ResourceGroupName -Name $vmss.Name -VirtualMachineScaleSet $vmss
 

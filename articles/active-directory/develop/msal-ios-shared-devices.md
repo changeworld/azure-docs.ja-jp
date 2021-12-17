@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 3353d87291492563acbd3a85bbae266c711377f2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 92d52bcdd990d255a41c151b2312cc2b6494bd45
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611805"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787189"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>iOS デバイスの共有デバイス モード
 
@@ -31,7 +31,7 @@ ms.locfileid: "105611805"
 
 共有デバイス モードでは、Microsoft ID に基づくデバイスの管理も提供されます。
 
-この機能では、[Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)を使用して、デバイス上のユーザーを管理し、[Apple デバイス用の Microsoft Enterprise SSO プラグイン](apple-sso-plugin.md)を配布します。
+この機能では、[Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)を使用して、デバイス上のユーザーを管理し、[Apple デバイス用の Microsoft Enterprise SSO プラグイン](apple-sso-plugin.md)を配布します。
 
 ## <a name="create-a-shared-device-mode-app"></a>共有デバイス モード アプリを作成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "105611805"
 
 1. **デバイス管理者** は、組織内のデバイスを管理するために Microsoft Intune のようなモバイル デバイス管理 (MDM) プロバイダーを使用して、デバイスの共有を準備します。 MDM は、デバイスに Microsoft Authenticator アプリをプッシュし、デバイスのプロファイルの更新を通じて、各デバイスの "共有モード" をオンにします。 この共有モード設定は、デバイスでサポートされているアプリの動作を変更するものです。 MDM プロバイダーからのこの構成によって、デバイスの共有デバイス モードを設定し、共有デバイス モードで必要とされる [Apple デバイス用の Microsoft Enterprise SSO プラグイン](apple-sso-plugin.md)を有効にします。
 
-1. **[パブリック プレビュー中にのみ必要]** [クラウド デバイス管理者](../roles/permissions-reference.md#cloud-device-administrator) ロールを持つユーザーは、[Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)を起動し、デバイスを組織に参加させる必要があります。
+1. **[パブリック プレビュー中にのみ必要]** [クラウド デバイス管理者](../roles/permissions-reference.md#cloud-device-administrator) ロールを持つユーザーは、[Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)を起動し、デバイスを組織に参加させる必要があります。
 
     Azure portal で組織ロールのメンバーシップを構成するには: **[Azure Active Directory]**  >  **[ロールと管理者]**  >  **[クラウド デバイス管理者]**
 

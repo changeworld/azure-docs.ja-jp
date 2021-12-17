@@ -1,21 +1,21 @@
 ---
 title: Azure IoT Hub の AMQP サポートについて | Microsoft Docs
 description: 開発者ガイド - AMQP プロトコルを使用して IoT Hub デバイスに接続されているエンドポイントとサービスに接続されているエンドポイントに接続するデバイスをサポートします。 Azure IoT device SDK での組み込み AMQP サポートについての情報が含まれます。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccdf206c9ccd9d91b125af658bf03d3ec40c4b02
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81730750"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549985"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>AMQP プロトコルを使用した IoT Hub との通信
 
@@ -34,7 +34,7 @@ AMQP を使用して IoT ハブに接続するには、クライアントは[ク
 | IoT ハブ ホスト名 | `<iot-hub-name>.azure-devices.net` |
 | キー名 | `service` |
 | アクセス キー | サービスに関連付けられたプライマリ キーまたはセカンダリ キー |
-| 共有アクセス署名 | 次の形式の、存続期間が短い共有アクセス署名: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 この署名を生成するためのコードを入手するには、「[IoT Hub へのアクセスの制御](./iot-hub-devguide-security.md#security-token-structure)」を参照してください。
+| 共有アクセス署名 | 次の形式の、存続期間が短い共有アクセス署名: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 この署名を生成するためのコードを入手するには、「[IoT Hub へのアクセスの制御](./iot-hub-dev-guide-sas.md#security-token-structure)」を参照してください。
 
 次のコード スニペットでは、[Python で uAMQP ライブラリ](https://github.com/Azure/azure-uamqp-python)を使用して、送信者リンク経由で IoT ハブに接続します。
 
@@ -229,7 +229,7 @@ AMQP を使用して IoT ハブに接続するには、デバイスで[クレー
 |-------------|--------------|
 | IoT ハブ ホスト名 | `<iot-hub-name>.azure-devices.net` |
 | アクセス キー | デバイスに関連付けられたプライマリ キーまたはセカンダリ キー |
-| 共有アクセス署名 | 次の形式の、存続期間が短い共有アクセス署名: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 この署名を生成するためのコードを入手するには、「[IoT Hub へのアクセスの制御](./iot-hub-devguide-security.md#security-token-structure)」を参照してください。
+| 共有アクセス署名 | 次の形式の、存続期間が短い共有アクセス署名: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 この署名を生成するためのコードを入手するには、「[IoT Hub へのアクセスの制御](./iot-hub-dev-guide-sas.md#security-token-structure)」を参照してください。
 
 次のコード スニペットでは、[Python で uAMQP ライブラリ](https://github.com/Azure/azure-uamqp-python)を使用して、送信者リンク経由で IoT ハブに接続します。
 

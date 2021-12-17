@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights を使用した .NET Core/.NET F
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: c1ca594626d4384c9dfb62990ee2017d2094fca4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ed4670c1eda0a6a6b1b32ca69cc8a2010ae486e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371857"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739773"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>ワーカー サービス アプリケーション (非 HTTP アプリケーション) 向け Application Insights
 
@@ -19,7 +19,7 @@ ms.locfileid: "100371857"
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-[ワーカー サービス向け Application Insights SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) は、実行されている場所や方法に関係なく、非 HTTP アプリケーションに最適です。 アプリケーションが実行されていて、Azure へのネットワーク接続がある場合は、テレメトリを収集することができます。 Application Insights の監視は、.NET Core がサポートされているすべての場所でサポートされます。 このパッケージは、新しく導入された [.NET Core 3.0 ワーカー サービス](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、[ Asp.Net Core 2.1/2.2 のバックグラウンド タスク](/aspnet/core/fundamentals/host/hosted-services)、コンソール アプリ (.NET Core/.NET Framework) などで使用できます。
+[ワーカー サービス向け Application Insights SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) は、実行されている場所や方法に関係なく、非 HTTP アプリケーションに最適です。 アプリケーションが実行されていて、Azure へのネットワーク接続がある場合は、テレメトリを収集することができます。 Application Insights の監視は、.NET Core がサポートされているすべての場所でサポートされます。 このパッケージは、新しく導入された [.NET Core 3.0 ワーカー サービス](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、[ASP.NET Core 2.1/2.2 のバックグラウンド タスク](/aspnet/core/fundamentals/host/hosted-services)、コンソール アプリ (.NET Core/.NET Framework) などで使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ ms.locfileid: "100371857"
 
 ## <a name="net-core-30-worker-service-application"></a>.NET Core 3.0 ワーカー サービス アプリケーション
 
-完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)で共有されています
+完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerService)で共有されています
 
 1. [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) をダウンロードしてインストールします
 2. Visual Studio の新しいプロジェクト テンプレートまたはコマンド ライン `dotnet new worker` を使用して、新しいワーカー サービス プロジェクトを作成します
@@ -136,7 +136,7 @@ ms.locfileid: "100371857"
 
 ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タスクの作成方法については、[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio)のドキュメントで説明されています。
 
-完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService)で共有されています
+完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/BackgroundTasksWithHostedService)で共有されています
 
 1. アプリケーションに [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) パッケージをインストールします。
 2. この例のように、`ConfigureServices()` メソッドに `services.AddApplicationInsightsTelemetryWorkerService();` を追加します。
@@ -223,7 +223,7 @@ ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タ�
 
 この記事の冒頭で説明したように、新しいパッケージを使用して、通常のコンソール アプリケーションからでも Application Insights Telemetry を有効にすることができます。 このパッケージは [`NetStandard2.0`](/dotnet/standard/net-standard) を対象としているため、.NET Core 2.0 以上と、.NET Framework 4.7.2 以上のコンソール アプリで使用できます。
 
-完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights)で共有されています
+完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ConsoleApp)で共有されています
 
 1. アプリケーションに [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) パッケージをインストールします。
 
@@ -305,7 +305,7 @@ Application Insights によって自動的に収集されるすべてのテレ�
 
 ### <a name="ilogger-logs"></a>ILogger ログ
 
-重大度が `Warning` 以上の `ILogger` で出力されたログは、自動的にキャプチャされます。 Application Insights によってキャプチャされるログ レベルをカスタマイズする場合は、[ILogger のドキュメント](ilogger.md#control-logging-level)に従ってください。
+重大度が `Warning` 以上の `ILogger` で出力されたログは、自動的にキャプチャされます。 Application Insights によってキャプチャされるログ レベルをカスタマイズする場合は、[ILogger のドキュメント](ilogger.md#logging-level)に従ってください。
 
 ### <a name="dependencies"></a>依存関係
 
@@ -532,16 +532,16 @@ using Microsoft.ApplicationInsights.Channel;
 
 現在、Visual Studio IDE のオンボードは ASP.NET/ASP.NET Core アプリケーションでのみサポートされています。 このドキュメントは、Visual Studio のリリースでワーカー サービス アプリケーションのオンボードがサポートされるようになったときに更新されます。
 
-### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Status Monitor などのツールを利用して Application Insights 監視を有効にできますか?
+### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-azure-monitor-application-insights-agent-formerly-status-monitor-v2"></a>Azure Monitor Application Insights エージェント (旧名 Status Monitor v2) のようなツールを使用して、Application Insights 監視を有効にできますか?
 
-いいえ。 現在、[Status Monitor](./monitor-performance-live-website-now.md) と [Status Monitor v2](./status-monitor-v2-overview.md) では、ASP.NET 4.x のみがサポートされます。
+いいえ、[Azure Monitor Application Insights エージェント](./status-monitor-v2-overview.md)は、現在 ASP.NET 4.x のみをサポートしています。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Linux でアプリケーションを実行する場合、すべての機能がサポートされますか?
 
 はい。 この SDK の機能サポートは、次の例外を除き、すべてのプラットフォームで同じです。
 
 * パフォーマンス カウンターは、Windows でのみサポートされます。ただし、Live Metrics に表示されるプロセス CPU/メモリは例外です。
-* `ServerTelemetryChannel` が既定で有効になっていても、アプリケーションが Linux または MacOS で実行されているときは、ネットワークに問題がある場合に、チャネルによってテレメトリを一時的に保持するためのローカル ストレージ フォルダーが自動的に作成されることはありません。 この制限のため、ネットワークやサーバーに一時的に問題が発生すると、テレメトリが失われます。 この問題を回避するには、チャネル用のローカル フォルダーを構成します。
+* `ServerTelemetryChannel` が既定で有効になっていても、アプリケーションが Linux または macOS で実行されているときは、ネットワークに問題がある場合に、チャネルによってテレメトリを一時的に保持するためのローカル ストレージ フォルダーが自動的に作成されることはありません。 この制限のため、ネットワークやサーバーに一時的に問題が発生すると、テレメトリが失われます。 この問題を回避するには、チャネル用のローカル フォルダーを構成します。
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -561,11 +561,11 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="sample-applications"></a>サンプル アプリケーション
 
-[.NET Core コンソール アプリケーション](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) .NET Core (2.0 以上) または .NET Framework (4.7.2 以上) で記述されたコンソール アプリケーションを使用している場合は、このサンプルを使用します
+[.NET Core コンソール アプリケーション](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ConsoleApp) .NET Core (2.0 以上) または .NET Framework (4.7.2 以上) で記述されたコンソール アプリケーションを使用している場合は、このサンプルを使用します
 
-[HostedService を使用した ASP .NET Core バックグラウンド タスク](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) Asp.Net Core 2.1/2.2 を使用していて、[こちら](/aspnet/core/fundamentals/host/hosted-services)の公式のガイダンスに従ってバックグラウンド タスクを作成する場合は、このサンプルを使用します
+[HostedService を使用した ASP.NET Core バックグラウンド タスク](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/BackgroundTasksWithHostedService) ASP.NET Core 2.1/2.2 を使用していて、[こちら](/aspnet/core/fundamentals/host/hosted-services)の公式のガイダンスに従ってバックグラウンド タスクを作成する場合は、このサンプルを使用します
 
-[.NET Core 3.0 ワーカー サービス](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio#worker-service-template)の公式のガイダンスに従って .NET Core 3.0 ワーカー サービス アプリケーションを作成した場合は、このサンプルを使用します
+[.NET Core 3.0 ワーカー サービス](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerService)[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio#worker-service-template)の公式のガイダンスに従って .NET Core 3.0 ワーカー サービス アプリケーションを作成した場合は、このサンプルを使用します
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 

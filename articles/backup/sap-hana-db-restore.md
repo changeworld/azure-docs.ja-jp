@@ -2,13 +2,16 @@
 title: Azure VM 上の SAP HANA データベースの復元
 description: この記事では、Azure Virtual Machines 上で実行されている SAP HANA データベースを復元する方法について説明します。 [リージョンをまたがる復元] を使用して、データベースをセカンダリ リージョンに復元することもできます。
 ms.topic: conceptual
-ms.date: 11/7/2019
-ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 427dc637a0aa44ab6a0627b7a844ad6c7d3bb46e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021675"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431557"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースの復元
 
@@ -36,23 +39,21 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
 
 * ターゲットの SAP HANA インスタンスが復元の準備ができているか確認するには、そのインスタンスの **バックアップの準備** 状態を確認します。
 
-  1. ターゲット SAP HANA インスタンスが登録されているコンテナーを開きます。
+  1. Azure portal で、 **[バックアップ センター]** に移動し、 **[+ バックアップ]** をクリックします。
 
-  1. コンテナー ダッシュボードで、 **[作業の開始]** の下にある **[バックアップ]** を選択します。
+     :::image type="content" source="./media/sap-hana-db-restore/backup-center-configure-inline.png" alt-text="ターゲットの SAP HANA インスタンスを復元できる状態かどうかを確認するプロセスの開始を示すスクリーンショット。" lightbox="./media/sap-hana-db-restore/backup-center-configure-expanded.png":::
 
-      ![コンテナー ダッシュボードでのバックアップ](media/sap-hana-db-restore/getting-started-backup.png)
+  1. データソースの種類として **[Azure VM の SAP HANA]** を選び、SAP HANA インスタンスが登録されているコンテナーを選び、 **[続行]** をクリックします。
 
-  1. **[バックアップ]** で、 **[何をバックアップしますか?]** の下の **[Azure VM の SAP HANA]** を選択します。
-
-      ![[Azure VM の SAP HANA] を選択する](media/sap-hana-db-restore/sap-hana-backup.png)
+     :::image type="content" source="./media/sap-hana-db-restore/hana-select-vault.png" alt-text="[Azure VM の SAP HANA] の選択を示すスクリーンショット。":::
 
   1. **[VM 内のデータベースを検出]** で **[詳細の表示]** を選択します。
 
-      ![詳細を表示する](media/sap-hana-db-restore/view-details.png)
+     :::image type="content" source="./media/sap-hana-db-restore/hana-discover-databases.png" alt-text="データベースの詳細の表示を示すスクリーンショット。":::
 
   1. ターゲット VM の **[バックアップの準備]** を確認します。
 
-      ![保護されたサーバー](media/sap-hana-db-restore/protected-servers.png)
+     :::image type="content" source="./media/sap-hana-db-restore/hana-select-virtual-machines-inline.png" alt-text="保護されたサーバーを示すスクリーンショット。" lightbox="./media/sap-hana-db-restore/hana-select-virtual-machines-expanded.png":::
 
 * SAP HANA がサポートする復元の種類について詳しくは、SAP HANA ノート [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照してください。
 
@@ -66,43 +67,27 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
   * 同じ VM に復元する場合は、これがソース VM になります。
   * 別の場所に復元する場合は、これが新しいターゲット VM になります。
 
-1. 復元する SAP HANA データベースが登録されているコンテナーを開きます。
+1. Azure portal で、 **[バックアップ センター]** に移動し、 **[復元]** をクリックします。
 
-1. コンテナー ダッシュボードで、 **[保護された項目]** の下の **[バックアップ項目]** を選択します。
+   :::image type="content" source="./media/sap-hana-db-restore/backup-center-restore-inline.png" alt-text="SAP HANA データベースの復元の開始を示すスクリーンショット。" lightbox="./media/sap-hana-db-restore/backup-center-restore-expanded.png":::
 
-    ![[バックアップ項目]](media/sap-hana-db-restore/backup-items.png)
+1. データソースの種類として **[Azure VM の SAP HANA]** を選び、復元するデータベースを選び、 **[続行]** をクリックします。
 
-1. **[バックアップ項目]** で、 **[バックアップの管理の種類]** の下の **[Azure VM の SAP HANA]** を選択します。
-
-    ![バックアップの管理の種類](media/sap-hana-db-restore/backup-management-type.png)
-
-1. 復元するデータベースを選択します。
-
-    ![復元するデータベース](media/sap-hana-db-restore/database-to-restore.png)
-
-1. データベース メニューを確認します。 ここには、次のような、データベース バックアップに関する情報が表示されます。
-
-    * 最古および最新の復元ポイント
-
-    * データベースの過去 24 時間と過去 72 時間のログ バックアップの状態
-
-    ![データベース メニュー](media/sap-hana-db-restore/database-menu.png)
-
-1. **[DB の復元]** を選択します。
+   :::image type="content" source="./media/sap-hana-db-restore/hana-restore-select-database.png" alt-text="バックアップ項目の復元を示すスクリーンショット。":::
 
 1. **[復元の構成]** で、データの復元先 (または復元方法) を指定します。
 
-    * **別の場所**:別の場所にデータベースを復元し、元のソース データベースを保持します。
+   * **別の場所**:別の場所にデータベースを復元し、元のソース データベースを保持します。
 
-    * **DB の上書き**:元のソースと同じ SAP HANA インスタンスにデータを復元します。 このオプションでは、元のデータベースが上書きされます。
+   * **DB の上書き**:元のソースと同じ SAP HANA インスタンスにデータを復元します。 このオプションでは、元のデータベースが上書きされます。
 
-      ![復元の構成](media/sap-hana-db-restore/restore-configuration.png)
+   :::image type="content" source="./media/sap-hana-db-restore/hana-restore-configuration.png" alt-text="構成の復元を示すスクリーンショット。":::
 
 ### <a name="restore-to-alternate-location"></a>別の場所に復元する
 
 1. **[復元の構成]** メニューの **[復元先]** で、 **[別の場所]** を選択します。
 
-    ![別の場所に復元する](media/sap-hana-db-restore/restore-alternate-location.png)
+   :::image type="content" source="./media/sap-hana-db-restore/hana-alternate-location-recovery.png" alt-text="別の場所への復元を示すスクリーンショット。":::
 
 1. データベースを復元する先の SAP HANA のホスト名とインスタンス名を選択します。
 1. **[バックアップの準備]** を確認することで、ターゲット SAP HANA インスタンスが復元の準備ができているかどうか確認します。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。
@@ -112,9 +97,6 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
     > SDC (Single Database Container) の復元では、[確認事項](backup-azure-sap-hana-database-troubleshoot.md#single-container-database-sdc-restore)に従う必要があります。
 
 1. 該当する場合は、 **[Overwrite if the DB with the same name already exists on selected HANA instance]\(選択した HANA インスタンスに既に同じ名前の DB が存在する場合に上書きする\)** を選択します。
-1. **[OK]** を選択します。
-
-    ![復元の構成 - 最後の画面](media/sap-hana-db-restore/restore-configuration-last.png)
 
 1. **[復元ポイントの選択]** で、[特定の時点に復元する](#restore-to-a-specific-point-in-time) **[ログ (特定の時点)]** を選択します。 または、 **[完全および差分]** を選択して、[特定の復旧ポイントに復元](#restore-to-a-specific-recovery-point)します。
 
@@ -122,11 +104,14 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
 
 1. **[復元の構成]** メニューの **[復元先]** で、 **[DB の上書き]**  > 、 **[OK]** の順に選択します。
 
-    ![DB の上書き](media/sap-hana-db-restore/overwrite-db.png)
+   :::image type="content" source="./media/sap-hana-db-restore/hana-overwrite-database.png" alt-text="データベースの上書きを示すスクリーンショット。":::
 
 1. **[復元ポイントの選択]** で、[特定の時点に復元する](#restore-to-a-specific-point-in-time) **[ログ (特定の時点)]** を選択します。 または、 **[完全および差分]** を選択して、[特定の復旧ポイントに復元](#restore-to-a-specific-recovery-point)します。
 
 ### <a name="restore-as-files"></a>ファイルとして復元
+
+>[!Note]
+>ファイルとしての復元は CIFS 共有では機能しませんが、NFS では機能します。
 
 バックアップ データをデータベースとしてではなくファイルとして復元するには、 **[ファイルとして復元]** を選択します。 指定されたパスにファイルがダンプされると、それらのファイルをデータベースとして復元したい任意の SAP HANA マシンにそれらを移すことができます。 これらのファイルを任意のマシンに移動できるので、サブスクリプションやリージョンをまたいでデータを復元できるようになりました。
 
@@ -145,14 +130,14 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
     >[!NOTE]
     >ターゲットとなる登録済み VM にマウントされている Azure ファイル共有でデータベース バックアップ ファイルを復元するには、Azure ファイル共有に対する読み取り/書き込みアクセス許可がルート アカウントに含まれていることを確認します。
 
-    ![宛先パスの選択](media/sap-hana-db-restore/restore-as-files.png)
+   :::image type="content" source="./media/sap-hana-db-restore/hana-restore-as-files.png" alt-text="宛先パスの選択を示すスクリーンショット。":::
 
 1. すべてのバックアップ ファイルとフォルダーの復元先に対応する **復元ポイント** を選択します。
 
-    ![復元ポイントの選択](media/sap-hana-db-restore/select-restore-point.png)
+   :::image type="content" source="./media/sap-hana-db-restore/hana-select-recovery-point-inline.png" alt-text="復元ポイントの選択を示すスクリーンショット。" lightbox="./media/sap-hana-db-restore/hana-select-recovery-point-expanded.png":::
 
 1. 選択した復元ポイントに関連付けられているすべてのバックアップ ファイルが、この宛先パスにダンプされます。
-1. 選択した復元ポイントの種類 (**ポイント イン タイム** または **完全および差分**) に基づいて、宛先パスに 1 つまたは複数のフォルダーが作成されるのを確認できます。 `Data_<date and time of restore>` という名前のフォルダーの 1 つには、完全および差分バックアップが含まれ、`Log` という名前の他のフォルダーにはログ バックアップが含まれます。
+1. 選択した復元ポイントの種類 (**ポイント イン タイム** または **完全および差分**) に基づいて、宛先パスに 1 つまたは複数のフォルダーが作成されるのを確認できます。 `Data_<date and time of restore>` という名前のフォルダーには完全バックアップが格納され、`Log` という名前の別のフォルダーにはログ バックアップと他のバックアップ (差分、増分など) が格納されます。
 1. これらの復元されたファイルを、データベースとして復元する先の SAP HANA サーバーに移動します。
 1. その後、次の手順に従います。
     1. 次のコマンドを使用して、バックアップ ファイルが格納されているフォルダーまたはディレクトリに対してアクセス許可を設定します。
@@ -176,7 +161,7 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
         上記のコマンドでは:
 
         * `<DataFileDir>` - 完全バックアップが格納されているフォルダー
-        * `<LogFilesDir>` - ログ バックアップが格納されているフォルダー
+        * `<LogFilesDir>` - ログ バックアップと、差分および増分バックアップ (存在する場合) が格納されているフォルダー
         * `<PathToPlaceCatalogFile>` - 生成されたカタログ ファイルを配置する必要があるフォルダー
 
     1. HANA Studio を通して新たに生成されたカタログ ファイルを使用して復元するか、この新しく生成されたカタログを使用して HDBSQL 復元クエリを実行します。 HDBSQL クエリを以下に示します。
@@ -196,7 +181,7 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
         * `<DatabaseName@HostName>` - バックアップが復元に使用されるデータベースの名前と、このデータベースが存在する **ホスト**/SAP HANA サーバーの名前。 `USING SOURCE <DatabaseName@HostName>` オプションでは、データ バックアップ (復元に使用) が、ターゲットの SAP HANA マシンとは異なる SID または名前を持つデータベースであることが指定されます。 そのため、バックアップが作成されたのと同じ HANA サーバーで復元を実行する場合には、これを指定する必要はありません。
         * `<PathToGeneratedCatalogInStep3>` - **手順 C** で生成されたカタログ ファイルへのパス
         * `<DataFileDir>` - 完全バックアップが格納されているフォルダー
-        * `<LogFilesDir>` - ログ バックアップが格納されているフォルダー
+        * `<LogFilesDir>` - ログ バックアップと、差分および増分バックアップ (存在する場合) が格納されているフォルダー
         * `<BackupIdFromJsonFile>` - **手順 C** で抽出された **BackupId**
 
     * 特定の完全または差分バックアップに復元するには、次のようにします。
@@ -212,7 +197,7 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
         * `<DatabaseName@HostName>` - バックアップが復元に使用されるデータベースの名前と、このデータベースが存在する **ホスト** / SAP HANA サーバー名。 `USING SOURCE <DatabaseName@HostName>` オプションでは、データ バックアップ (復元に使用) が、ターゲットの SAP HANA マシンとは異なる SID または名前を持つデータベースであることが指定されます。 そのため、バックアップが作成されたのと同じ HANA サーバーで復元を実行する場合には、これを指定する必要はありません。
         * `<PathToGeneratedCatalogInStep3>` - **手順 C** で生成されたカタログ ファイルへのパス
         * `<DataFileDir>` - 完全バックアップが格納されているフォルダー
-        * `<LogFilesDir>` - ログ バックアップが格納されているフォルダー
+        * `<LogFilesDir>` - ログ バックアップと、差分および増分バックアップ (存在する場合) が格納されているフォルダー
         * `<BackupIdFromJsonFile>` - **手順 C** で抽出された **BackupId**
 
 ### <a name="restore-to-a-specific-point-in-time"></a>特定の時点に復元する
@@ -254,7 +239,7 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
 
 復元オプションの 1 つである、リージョンをまたがる復元 (CRR) を使用すると、セカンダリ リージョン (Azure のペアになっているリージョン) で Azure VM 上でホストされている SAP HANA データベースを復元できます。
 
-プレビュー期間中にこの機能にオンボードするには、「[作業を開始する前に](./backup-create-rs-vault.md#set-cross-region-restore)」セクションをお読みください。
+この機能をオンボードするには、「[作業を開始する前に](./backup-create-rs-vault.md#set-cross-region-restore)」セクションをお読みください。
 
 CRR が有効になっているかどうかを確認するには、「[リージョンをまたがる復元の構成](backup-create-rs-vault.md#configure-cross-region-restore)」の手順に従ってください。
 
@@ -274,26 +259,22 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 
 ### <a name="restore-in-secondary-region"></a>セカンダリ リージョンに復元する
 
-セカンダリ リージョンに復元するユーザー エクスペリエンスは、プライマリ リージョンに復元するユーザー エクスペリエンスに似ています。 [復元の構成] ペインで復元の詳細を構成するときに、セカンダリ リージョンのパラメーターのみを指定するように求められます。
+セカンダリ リージョンに復元するユーザー エクスペリエンスは、プライマリ リージョンに復元するユーザー エクスペリエンスに似ています。 [復元の構成] ペインで復元の詳細を構成するときに、セカンダリ リージョンのパラメーターのみを指定するように求められます。 コンテナーはセカンダリ リージョンに存在し、SAP HANA サーバーをセカンダリ リージョンのコンテナーに登録する必要があります。
 
 ![復元する場所と方法](./media/sap-hana-db-restore/restore-secondary-region.png)
-
->[!NOTE]
->セカンダリ リージョンの仮想ネットワークは一意に割り当てる必要があり、そのリソース グループの他の VM には使用できません。
 
 ![復元進行中通知をトリガーする](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
 >[!NOTE]
->
 >* 復元がトリガーされた後、データ転送フェーズでは、復元ジョブを取り消すことができません。
->* セカンダリ リージョンに復元するために必要な Azure ロールは、プライマリ リージョンにおけるものと同じです。
+>* リージョン間で復元操作を実行するために必要なロールまたはアクセス レベルは、サブスクリプションの _バックアップ オペレーター_ ロール、ソースおよびターゲットの仮想マシンでの _共同作成者 (書き込み)_ アクセスです。 バックアップ ジョブを表示するため、サブスクリプションで必要な最小限の権限は _バックアップ閲覧者_ です。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>セカンダリ リージョンの復元ジョブの監視
 
-1. ポータルから **[Recovery Services コンテナー]**  >  **[バックアップ ジョブ]** に移動します。
-1. セカンダリ リージョンの項目を表示するには、 **[セカンダリ リージョン]** を選択します。
+1. Azure portal で、 **[バックアップ センター]**  >  **[バックアップ ジョブ]** に移動します。
+1. 値 **CrossRegionRestore** のフィルター **操作** を実行して、セカンダリ リージョンのジョブを表示します。
 
-    ![フィルター処理されたバックアップ ジョブ](./media/sap-hana-db-restore/backup-jobs-secondary-region.png)
+   :::image type="content" source="./media/sap-hana-db-restore/hana-view-jobs-inline.png" alt-text="フィルター処理されたバックアップ ジョブを示すスクリーンショット。" lightbox="./media/sap-hana-db-restore/hana-view-jobs-expanded.png":::
 
 ## <a name="next-steps"></a>次のステップ
 

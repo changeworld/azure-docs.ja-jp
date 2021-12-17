@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 066fd6f91b19da211a73ac12fb6dca94085399ac
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 5c7938e9c80cbce1128981516ccac2adcbcb8949
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256635"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044534"
 ---
 # <a name="tutorial-configure-ping-identity-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>チュートリアル:セキュリティで保護されたハイブリッド アクセスのために Azure Active Directory B2C で Ping Identity を構成する
 
@@ -160,7 +160,7 @@ PingFederate を PingAccess のトークン プロバイダーとして構成す
 
 7. **[クライアント シークレット]** フィールドに、Azure AD でアプリケーション用に生成した **キー** を入力します。
 
-8. 省略可能 - Microsoft Graph API を使用してカスタム要求を作成して使用することができます。 これを選択した場合は、 **[Advanced]\(拡張\)** を選択し、 **[Request Profile]\(プロファイルの要求\)** と **[Refresh User Attributes]\(ユーザー属性の更新\)** オプションの選択を解除します。 カスタム要求の使用方法について詳しくは、[カスタム要求の使用](../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers.md)に関するページ参照してください。
+8. 省略可能 - Microsoft Graph API を使用してカスタム要求を作成して使用することができます。 これを選択した場合は、 **[Advanced]\(拡張\)** を選択し、 **[Request Profile]\(プロファイルの要求\)** と **[Refresh User Attributes]\(ユーザー属性の更新\)** オプションの選択を解除します。 カスタム要求の使用方法について詳しくは、[カスタム要求の使用](../active-directory/app-proxy/application-proxy-configure-single-sign-on-with-headers.md)に関するページ参照してください。
 
 9. **[保存]** を選びます。
 
@@ -182,12 +182,12 @@ PingFederate を PingAccess のトークン プロバイダーとして構成す
 5. **属性マッピング** のテーブルで、必要なマッピングを指定します。 たとえば、次のように入力します。
 
    属性名 | ヘッダー名 |
-   |-------|--------|
-   |upn | x-userprinciplename |
-   |email   |    x-email  |
-   |oid   | x-oid  |
-   |scp   |     x-scope |
-   |amr    |    x-amr    |
+   |---|---|
+   | 'upn' | x-userprincipalname |
+   | 'email' | x-email |
+   | 'oid' | x-oid |
+   | 'scp' | x-scope |
+   | 'amr' | x-amr |
 
 6. **[保存]** を選びます。
 

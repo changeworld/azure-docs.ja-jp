@@ -1,18 +1,18 @@
 ---
 title: チュートリアル:Azure Cosmos DB のデータベース移行ツール
 description: チュートリアル:オープン ソースの Azure Cosmos DB データ移行ツールを使用して、MongoDB、SQL Server、Table Storage、Amazon DynamoDB、CSV、JSON ファイルなどのさまざまなソースからデータを Azure Cosmos DB にインポートする方法について説明します。 CSV から JSON への変換についても説明します。
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 08/26/2021
 ms.author: dech
-ms.openlocfilehash: 1cee4d2ad1bc7f362a045a5991624ec43521b8d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72843c595c8fe04bbfd82890b8974ae386b065a2
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96341650"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037348"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>チュートリアル:データ移行ツールを使用して Azure Cosmos DB にデータを移行する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -23,8 +23,8 @@ ms.locfileid: "96341650"
 > Azure Cosmos DB データ移行ツールは、小規模な移行向けに設計されたオープンソースのツールです。 大規模な移行については、[データの取り込みガイド](cosmosdb-migrationchoices.md)を参照してください。
 
 * **[SQL API](./introduction.md)** - データ移行ツールで提供される任意のソース オプションを使用して、小規模のデータをインポートできます。 [大規模なデータをインポートするための移行方法については、こちらを参照してください](cosmosdb-migrationchoices.md)。
-* **[Table API](table-introduction.md)** - データ移行ツールまたは [AzCopy](table-import.md#migrate-data-by-using-azcopy) を使用してデータをインポートできます。 詳細については、「[Azure Cosmos DB Table API で使用するデータのインポート](table-import.md)」を参照してください。
-* **[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md)** - データ移行ツールでは、Azure Cosmos DB の MongoDB 用 API はソースやターゲットとしてサポートされていません。 Azure Cosmos DB のコレクションに、またはコレクションから、データを移行する必要がある場合は、[MongoDB のデータを Azure Cosmos DB の MongoDB 用 API で Cosmos データベースに移行する方法](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)に関する記事を参照してください。 なお、データ移行ツールを使用して MongoDB から Azure Cosmos DB SQL API コレクションにデータをエクスポートし、SQL API で使用することは可能です。
+* **[Table API](table/introduction.md)** - データ移行ツールまたは [AzCopy](table/table-import.md#migrate-data-by-using-azcopy) を使用してデータをインポートできます。 詳細については、「[Azure Cosmos DB Table API で使用するデータのインポート](table/table-import.md)」を参照してください。
+* **[Azure Cosmos DB の MongoDB 用 API](mongodb/mongodb-introduction.md)** - データ移行ツールでは、Azure Cosmos DB の MongoDB 用 API はソースやターゲットとしてサポートされていません。 Azure Cosmos DB のコレクションに、またはコレクションから、データを移行する必要がある場合は、[MongoDB のデータを Azure Cosmos DB の MongoDB 用 API で Cosmos データベースに移行する方法](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)に関する記事を参照してください。 なお、データ移行ツールを使用して MongoDB から Azure Cosmos DB SQL API コレクションにデータをエクスポートし、SQL API で使用することは可能です。
 * **[Cassandra API](graph-introduction.md)** - Cassandra API アカウントのインポート ツールとしてデータ移行ツールはサポートされていません。 [Cassandra API にデータをインポートするための移行方法を参照してください](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api)
 * **[Gremlin API](graph-introduction.md)** - 現時点では、Gremlin API アカウントのインポート ツールとしてデータ移行ツールはサポートされていません。 [Gremlin API にデータをインポートするための移行方法を参照してください](cosmosdb-migrationchoices.md#other-apis) 
 
@@ -68,10 +68,17 @@ ms.locfileid: "96341650"
 
 ## <a name="installation"></a><a id="Install"></a>インストール
 
-移行ツールのソース コードは、GitHub の[このリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)で入手できます。 ソリューションをローカルにダウンロードしてコンパイルするか、[プリコンパイル済みのバイナリをダウンロード](https://aka.ms/csdmtool)してから、次のいずれかを実行できます。
+### <a name="download-executable-package"></a>実行可能パッケージをダウンロードする
 
-* **Dtui.exe**: グラフィカル インターフェイス バージョンのツール
-* **Dt.exe**: コマンド ライン バージョンのツール
+  * 最新の署名された Windows バイナリ **dt.exe** と **dtui.exe** の zip を[こちら](https://github.com/Azure/azure-documentdb-datamigrationtool/releases/tag/1.8.3)からダウンロードします
+  * コンピューター上の任意のディレクトリに解凍し、展開したディレクトリを開いてバイナリを見つけます
+
+### <a name="build-from-source"></a>ソースからビルドする
+
+  移行ツールのソース コードは、GitHub の[このリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)で入手できます。 ダウンロードして、そのソリューションをローカルでコンパイルし、次のいずれかを実行します。
+
+  * **Dtui.exe**: グラフィカル インターフェイス バージョンのツール
+  * **Dt.exe**: コマンド ライン バージョンのツール
 
 ## <a name="select-data-source"></a>データ ソースの選択
 
@@ -237,7 +244,7 @@ dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:DocumentDBBulk /t.ConnectionString
 
 Azure Table Storage ソース インポーター オプションを使用して、個々の Azure Table Storage テーブルからインポートできます。 必要に応じて、インポートするテーブル エンティティをフィルター処理できます。
 
-Azure Table Storage からインポートしたデータは、Table API で使用するために Azure Cosmos DB のテーブルやエンティティに出力できます。 インポートしたデータは、SQL API で使用するためにコレクションやドキュメントに出力することもできます。 ただし、Table API をターゲットとして利用できるのは、コマンドライン ユーティリティでのみです。 データ移行ツールのユーザー インターフェイスを使用して Table API にエクスポートすることはできません。 詳細については、「[Azure Cosmos DB Table API で使用するデータのインポート](table-import.md)」を参照してください。
+Azure Table Storage からインポートしたデータは、Table API で使用するために Azure Cosmos DB のテーブルやエンティティに出力できます。 インポートしたデータは、SQL API で使用するためにコレクションやドキュメントに出力することもできます。 ただし、Table API をターゲットとして利用できるのは、コマンドライン ユーティリティでのみです。 データ移行ツールのユーザー インターフェイスを使用して Table API にエクスポートすることはできません。 詳細については、「[Azure Cosmos DB Table API で使用するデータのインポート](table/table-import.md)」を参照してください。
 
 :::image type="content" source="./media/import-data/azuretablesource.png" alt-text="Azure Table Storage ソース オプションのスクリーンショット":::
 
@@ -591,6 +598,10 @@ dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<Cos
 > * Azure Cosmos DB から JSON へのエクスポート
 
 次のチュートリアルに進み、Azure Cosmos DB を使用してデータにクエリを実行する方法を学ぶことができます。
+
+Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
+  * 既存のデータベース クラスターの仮想コアとサーバーの数のみを把握している場合は、[仮想コア数または vCPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+  * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
 
 > [!div class="nextstepaction"]
 >[データにクエリを実行する方法](../cosmos-db/tutorial-query-sql-api.md)

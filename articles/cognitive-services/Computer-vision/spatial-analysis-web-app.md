@@ -3,23 +3,23 @@ title: 空間分析 Web アプリをデプロイする
 titleSuffix: Azure Cognitive Services
 description: Web アプリで空間分析を使用する方法について説明します。
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: 6d3be90cc81b1bcd9a55fc8e53cb9f2238e8c6de
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 06/08/2021
+ms.author: pafarley
+ms.openlocfilehash: ecccbb4e2741cc7f413e9b2076bd3199b00dd9a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285979"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752082"
 ---
-# <a name="how-to-deploy-a-people-counting-web-application"></a>方法:人数カウント Web アプリをデプロイする
+# <a name="how-to-deploy-a-spatial-analysis-web-application"></a>方法: 空間分析 Web アプリをデプロイする
 
-この記事では、人の動きを把握し、物理的な空間内の人数を監視する Web アプリに空間分析を統合する方法について説明します。 
+この記事では、IotHub から空間分析データ (分析情報) を収集して視覚化する Web アプリをデプロイする方法について説明します。 これには、さまざまなシナリオや業界で役立つアプリケーションが含まれます。 たとえば、会社が不動産スペースの使用を最適化する場合、さまざまなシナリオでソリューションをすばやく作成できます。 
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -28,6 +28,13 @@ ms.locfileid: "106285979"
 * Web アプリで IoT Hub 接続を構成する
 * Web アプリをデプロイしてテストする
 
+このアプリでは、次のシナリオについて紹介します。
+
+* スペース/店舗に出入りする人の数
+* チェックアウト エリア/ゾーンに入って出た人の数と、チェックアウト ライン内にいた時間 (滞在時間)
+* フェイス マスクを着用している人の数 
+* ソーシャル ディタンスのガイドラインに違反している人の数
+
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/cognitive-services/)
@@ -35,8 +42,6 @@ ms.locfileid: "106285979"
 * 構成済みの[ホスト コンピューター](spatial-analysis-container.md)
 
 ## <a name="deploy-the-spatial-analysis-container"></a>空間分析コンテナーをデプロイする
-
-[要求申請](https://aka.ms/csgate)に入力して、コンテナーを実行するためのアクセス権を取得します。 
 
 [ホスト コンピューターのセットアップ](./spatial-analysis-container.md)に関する記事に従って、ホスト コンピューターを構成し、IoT Edge デバイスを Azure IoT Hub に接続します。 
 
@@ -63,36 +68,31 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>ホスト コンピューター上の Azure IoT Edge にコンテナーをデプロイする
 
-Azure CLI を使用して、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 デプロイ プロセスには、デプロイに必要なコンテナー、変数、構成の概要を示す配置マニフェスト ファイルが必要です。 GitHub には、サンプルの [Azure Stack Edge 固有の配置マニフェスト](https://go.microsoft.com/fwlink/?linkid=2142179)、[非 Azure Stack Edge 固有の配置マニフェスト](https://go.microsoft.com/fwlink/?linkid=2152189)、および [GPU 搭載 Azure VM 固有の配置マニフェスト](https://go.microsoft.com/fwlink/?linkid=2152189)が掲載されています。これらには、*spatial-analysis* コンテナーの基本的なデプロイ構成が含まれています。 
-
-または、Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT Hub で操作を実行できます。 詳細については、「[Visual Studio Code から Azure IoT Edge モジュールをデプロイする](../../iot-edge/how-to-deploy-modules-vscode.md)」を参照してください。
-
-> [!NOTE] 
-> *spatial-analysis-telegraf* および *spatial-analysis-diagnostics* コンテナーはオプションです。 これらは、*DeploymentManifest.json* ファイルから削除することもできます。 詳細については、[テレメトリとトラブルシューティング](./spatial-analysis-logging.md)に関する記事をご覧ください。 GitHub には、[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152189)、または [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) の 3 つのサンプル *DeploymentManifest.json* ファイルが掲載されています。
+Azure CLI を使用して、**空間分析** コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 デプロイ プロセスには、デプロイに必要なコンテナー、変数、構成の概要を示す配置マニフェスト ファイルが必要です。 サンプルの配置マニフェストは、すべてのシナリオの構築済みの構成を含む [DeploymentManifest.json](https://github.com/Azure-Samples/cognitive-services-spatial-analysis/blob/main/deployment.json) で確認できます。  
 
 ### <a name="set-environment-variables"></a>環境変数の設定
 
-IoT Edge モジュールのほとんどの **環境変数** は、上記のリンク先のサンプル *DeploymentManifest.json* ファイルに既に設定されています。 このファイルで、次のように、`BILLING_ENDPOINT` および `API_KEY` 環境変数を検索します。 以前に作成したエンドポイント URI と API キーに値を置き換えます。 EULA 値が "accept" に設定されていることを確認します。 
+IoT Edge モジュールのほとんどの **環境変数** は、上記のリンク先のサンプル *DeploymentManifest.json* ファイルに既に設定されています。 このファイルで、次のように、`ENDPOINT` および `APIKEY` 環境変数を検索します。 以前に作成したエンドポイント URI と API キーに値を置き換えます。 EULA 値が "accept" に設定されていることを確認します。 
 
 ```json
 "EULA": { 
     "value": "accept"
 },
-
-"BILLING_ENDPOINT":{ 
+"BILLING":{ 
     "value": "<Use a key from your Computer Vision resource>"
 },
-"API_KEY":{
+"APIKEY":{
     "value": "<Use the endpoint from your Computer Vision resource>"
 }
 ```
 
 ### <a name="configure-the-operation-parameters"></a>操作のパラメーターを構成する
 
-*spatial-analysis* コンテナーの初期構成が完了しました。次に、操作のパラメーターを構成し、それらをデプロイに追加します。 
+必要なすべての構成 (操作、記録したビデオ ファイルの URL とゾーンなど) が既に存在するサンプル [DeploymentManifest.json](https://github.com/Azure-Samples/cognitive-services-spatial-analysis/blob/main/deployment.json)を使用している場合は、「**デプロイの実行**」セクションにスキップできます。
 
-まず、上記のリンク先のサンプル配置マニフェストを更新し、次に示すように `cognitiveservices.vision.spatialanalysis-personcount` の operationId を構成します。
+空間分析コンテナーの初期構成が完了しました。次に、操作のパラメーターを構成し、それらをデプロイに追加します。 
 
+最初の手順では、サンプルの [DeploymentManifest.json](https://github.com/Azure-Samples/cognitive-services-spatial-analysis/blob/main/deployment.json) を更新し、必要な操作を構成します。 たとえば、cognitiveservices.vision.spatialanalysis-personcount の構成は次のようになります。
 
 ```json
 "personcount": {
@@ -147,30 +147,17 @@ Azure portal の IoT Hub インスタンスで、spatial-analysis モジュー�
 
 ![デプロイの検証の例](./media/spatial-analysis/deployment-verification.png)
 
-この時点で、spatial-analysis コンテナーは操作を実行しています。 `cognitiveservices.vision.spatialanalysis-personcount` 操作の AI 分析情報が生成され、これらの分析情報がテレメトリとして Azure IoT Hub インスタンスにルーティングされます。 追加のカメラを構成するには、配置マニフェスト ファイルを更新し、デプロイをもう一度実行します。
+この時点で、空間分析コンテナーは操作を実行しています。 操作の AI 分析情報が生成され、これらの分析情報がテレメトリとして Azure IoT Hub インスタンスにルーティングされます。 追加のカメラを構成するには、配置マニフェスト ファイルを更新し、デプロイをもう一度実行します。
 
-## <a name="person-counting-web-application"></a>人数カウント Web アプリ
+## <a name="spatial-analysis-web-application"></a>空間分析 Web アプリ
 
-この人数カウント Web アプリを使用すると、サンプル Web アプリをすばやく構成し、Azure 環境でホストできます。
+空間分析 Web アプリを使用すると、開発者はサンプル Web アプリをすばやく構成し、Azure 環境でホストし、アプリを使用して E2E イベントを検証できます。
 
-### <a name="get-the-person-counting-app-container"></a>人数カウント アプリ コンテナーを取得する
+## <a name="build-docker-image"></a>Docker イメージをビルドする
 
-このアプリのコンテナー フォームは、Azure Container Registry で利用できます。 次の docker pull コマンドを使用してダウンロードします。 アクセス トークンについては、Microsoft (projectarchon@microsoft.com) にお問い合わせください。
+[ガイド ](https://github.com/Azure-Samples/cognitive-services-spatial-analysis/blob/main/README.md#docker-image) に従って、イメージをビルドし、サブスクリプション内の Azure Container Registry にプッシュします。
 
-```bash
-docker login rtvsofficial.azurecr.io -u <token name> -p <password>
-docker pull rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0
-```
-
-コンテナーを Azure Container Registry (ACR) にプッシュします。
-
-```bash
-az acr login --name <your ACR name>
-
-docker tag rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0 [desired local image name]
-
-docker push [desired local image name]
-```
+## <a name="setup-steps"></a>セットアップの手順
 
 コンテナーをインストールするには、新しい Azure App Service を作成し、必要なパラメーターを入力します。 次に、 **[Docker]** タブに移動し、 **[単一コンテナー]** 、 **[Azure Container Registry]** の順に選択します。 上記でイメージをプッシュした Azure Container Registry のインスタンスを使用します。
 

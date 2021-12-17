@@ -3,22 +3,22 @@ title: Azure Cost Management での AWS のコストと使用状況の管理
 description: この記事では、Cost Management でのコスト分析と予算を使用して、AWS のコストと使用状況を管理する方法を理解できます。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/16/2020
+ms.date: 09/15/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 5fed70ccdbebbd178412c416f37c2e9001a81f38
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d64d0bead5df1aa8b91ae39a79c1255eaac51f27
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188107"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706177"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure での AWS のコストと使用状況の管理
 
-Azure Cost Management のための AWS のコストおよび使用レポートを設定して構成したら、AWS のコストと使用状況を開始する準備ができたことになります。 この記事では、Cost Management でのコスト分析と予算を使用して、AWS のコストと使用状況を管理する方法を理解できます。
+Cost Management のための AWS のコストおよび使用レポートを設定して構成したら、AWS のコストと使用状況を開始する準備ができたことになります。 この記事では、Cost Management でのコスト分析と予算を使用して、AWS のコストと使用状況を管理する方法を理解できます。
 
 統合をまだ構成していない場合は、「[AWS の使用状況レポート統合の設定と構成](aws-integration-set-up-configure.md)」を参照してください。
 
@@ -151,7 +151,7 @@ AWS のリンクされたアカウントのコストへのアクセス許可を�
 
 **エラー コード:** _AccessDeniedReportDefinitions_
 
-このエラーは、Cost Management でコストと使用状況レポートの定義を表示できないことを意味しています。 このアクセス許可は、Azure Cost Management が想定するとおりに CUR が定義されていることを検証するために使用されます。 「[AWS でコストと使用状況レポートを作成する](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)」を参照してください。
+このエラーは、Cost Management でコストと使用状況レポートの定義を表示できないことを意味しています。 このアクセス許可は、Cost Management が想定するとおりに CUR が定義されていることを検証するために使用されます。 「[AWS でコストと使用状況レポートを作成する](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)」を参照してください。
 
 ### <a name="collection-failed-with-access-denied---list-reports"></a>アクセス拒否で収集が失敗 - レポートの一覧表示
 

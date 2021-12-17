@@ -11,14 +11,14 @@ metadata:
   ms.collection: performance
   author: WilliamDAssafMSFT
   ms.author: wiassaf
-  ms.reviewer: sstein
-  ms.date: 03/10/2020
-  ms.openlocfilehash: c5e6be0781b6c65e4c45c7f0cee5689db890ac33
-  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+  ms.reviewer: 
+  ms.date: 10/18/2021
+  ms.openlocfilehash: ab2e8f72a2bdd175b6b6f6d0729c86b79ee85056
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/02/2020
-  ms.locfileid: "96490467"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130244650"
 landingContent:
 - title: 監視とパフォーマンスのチューニングの概要
   linkLists:
@@ -28,8 +28,14 @@ landingContent:
       url: monitor-tune-overview.md
   - linkListType: learn
     links:
-    - text: Microsoft Azure のデータベース監視に関するプレイブック
-      url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
+    - text: パフォーマンスのためのデータベース構成
+      url: /learn/modules/configure-databases-performance/
+    - text: クエリ パフォーマンスを最適化する
+      url: /learn/paths/optimize-query-performance-sql-server/
+    - text: 運用リソースの監視と最適化
+      url: /learn/paths/monitor-optimize-operational-resources-sql-server/
+    - text: 保護、監視、および調整
+      url: /learn/modules/protect-monitor-tuning-migrated-database/
 - title: Azure SQL Database のインテリジェントなパフォーマンスに関する推奨事項
   linkLists:
   - linkListType: concept
@@ -40,10 +46,6 @@ landingContent:
       url: automatic-tuning-enable.md
     - text: Query Performance Insight
       url: query-performance-insight-use.md
-  - linkListType: video
-    links:
-    - text: 自動チューニング
-      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
 - title: Azure SQL Database と Azure SQL Managed Instance のリソース制限
   linkLists:
   - linkListType: concept
@@ -78,10 +80,6 @@ landingContent:
       url: intelligent-insights-troubleshoot-performance.md
     - text: インテリジェントなクエリの処理
       url: /sql/relational-databases/performance/intelligent-query-processing
-  - linkListType: video
-    links:
-    - text: Intelligent Insights
-      url: https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player
 - title: Azure SQL Database と Azure SQL Managed Instance の手動によるパフォーマンス チューニング
   linkLists:
   - linkListType: overview
@@ -116,7 +114,3 @@ landingContent:
       url: ../managed-instance/sql-managed-instance-paas-overview.md#management-operations
     - text: 読み取りスケールアウト
       url: read-scale-out.md
-  - linkListType: video
-    links:
-    - text: 動的スケーラビリティ
-      url: https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player

@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 01/12/2021
-ms.openlocfilehash: 1b4570b09994f292de2b175396e4b6d1882658d9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4247cce1ad43c2ba25085e3db41b838337e56486
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866490"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725359"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
-[!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
+[!INCLUDE [ambari-selector](includes/hdinsight-ambari-selector.md)]
 
 Apache Ambari を使用すると、Apache Hadoop クラスターを簡単に管理および監視できます。 この単純化は、使いやすい Web UI と REST API を提供することで実現されます。 Ambari は HDInsight クラスターに含まれ、クラスターの監視と構成の変更を行うために使用します。
 
@@ -85,7 +85,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 
 最後に、 __[Actions]__ メニューの __[Manage Alert Settings]__ を選択すると、通知の送信前にアラートが発生する回数を設定できます。 この設定は、一時的なエラーの通知を防ぐために使用できます。
 
-無料の [SendGrid アカウント](../sendgrid-dotnet-how-to-send-email.md)を使用したアラート通知のチュートリアルについては、「[Azure HDInsight で Apache Ambari のメール通知を構成する](./apache-ambari-email.md)」を参照してください。
+無料の [SendGrid アカウント](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-twilio-sendgrid-accountcreate-a-twilio-sendgrid-account)を使用したアラート通知のチュートリアルについては、「[Azure HDInsight で Apache Ambari のメール通知を構成する](./apache-ambari-email.md)」を参照してください。
 
 ### <a name="cluster"></a>クラスター
 

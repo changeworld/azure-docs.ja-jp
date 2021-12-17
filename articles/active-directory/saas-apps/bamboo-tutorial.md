@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 04/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 8ec834d76692f78d1d7bc60ddbd4c73fe4adaede
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ddf5d24557d6db15950a352a3220f2fe47815a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646111"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132317985"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合
 
@@ -30,15 +30,15 @@ ms.locfileid: "101646111"
 
 Azure AD と SAML SSO for Bamboo by resolution GmbH の統合を構成するには、次のものが必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
-* SAML SSO for Bamboo by resolution GmbH でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* SAML SSO for Bamboo by resolution GmbH でのシングル サインオンが有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SAML SSO for Bamboo by resolution GmbH では、**SP と IDP** によって開始される SSO がサポートされます
-* SAML SSO for Bamboo by resolution GmbH では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* SAML SSO for Bamboo by resolution GmbH では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* SAML SSO for Bamboo by resolution GmbH では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="add-saml-sso-for-bamboo-by-resolution-gmbh-from-the-gallery"></a>ギャラリーからの SAML SSO for Bamboo by resolution GmbH の追加
 
@@ -125,19 +125,19 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD SSO を構成してテスト
 
 1. メイン ツールバーの右側で、 **[Settings]\(設定\)**  >  **[Add-ons]\(アドオン\)** の順にクリックします。
 
-    ![設定](./media/bamboo-tutorial/tutorial_bamboo_setings.png)
+    ![設定](./media/bamboo-tutorial/settings.png)
 
 1. [SECURITY]\(セキュリティ\) セクションに移動し、メニュー バーの **[SAML SingleSignOn]** をクリックします。
 
-    ![Samlsingle](./media/bamboo-tutorial/tutorial_bamboo_samlsingle.png)
+    ![Samlsingle](./media/bamboo-tutorial/single-sign-on.png)
 
 1. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ページで、 **[Add idp]\(IDP の追加\)** をクリックします。
 
-    ![IDP の追加](./media/bamboo-tutorial/tutorial_bamboo_addidp.png)
+    ![IDP の追加](./media/bamboo-tutorial/configuration.png)
 
 1. **[Choose your SAML Identity Provider]\(SAML ID プロバイダーの選択\)** ページで、次の手順を実行します。
 
-    ![ID プロバイダー](./media/bamboo-tutorial/tutorial_bamboo_identityprovider.png)
+    ![ID プロバイダー](./media/bamboo-tutorial/identity-provider.png)
 
     a. **[Idp Type]\(IDP の種類\)** として **[AZURE AD]** を選択します。
 
@@ -149,11 +149,11 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD SSO を構成してテスト
 
 1. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、 **[Next]\(次へ\)** をクリックします。
 
-    ![ID の構成](./media/bamboo-tutorial/tutorial_bamboo_identityconfig.png)
+    ![ID の構成](./media/bamboo-tutorial/identity-configuration.png)
 
 1. **[Import SAML IdP Metadata]\(SAML IDP メタデータのインポート\)** ページで、 **[ファイルの読み込み]** をクリックして、Azure Portal からダウンロードした **メタデータ XML** ファイルをアップロードします。
 
-    ![IDP メタデータ](./media/bamboo-tutorial/tutorial_bamboo_idpmetadata.png)
+    ![IDP メタデータ](./media/bamboo-tutorial/metadata.png)
 
 1. **[次へ]** をクリックします。
 
@@ -177,8 +177,8 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD SSO を構成してテスト
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した SAML SSO for Bamboo by resolution GmbH に自動的にサインインされます。
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [SAML SSO for Bamboo by resolution GmbH] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した SAML SSO for Bamboo by resolution GmbH に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [SAML SSO for Bamboo by resolution GmbH] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した SAML SSO for Bamboo by resolution GmbH に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-SAML SSO for Bamboo by resolution GmbH を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SAML SSO for Bamboo by resolution GmbH を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

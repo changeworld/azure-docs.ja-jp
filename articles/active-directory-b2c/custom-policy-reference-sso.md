@@ -3,20 +3,20 @@ title: カスタム ポリシーを使用したシングル サインオンの�
 titleSuffix: Azure AD B2C
 description: Azure AD B2C でカスタム ポリシーを使用して SSO セッションを管理する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/07/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 1f3fb07eaf7f63d15232f4c94eeee45f43c81616
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: da47b14774d49a51ffcf574584f82ac0938bd372
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075137"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007374"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのシングル サインオン管理
 
@@ -55,7 +55,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 ### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-名前が示すように、このプロバイダーは何もしません。 このプロバイダーは、特定の技術プロファイルの SSO 動作を抑制するために使用できます。 次の `SM-Noop` 技術プロファイルは、[カスタム ポリシー スターター パック](custom-policy-get-started.md#custom-policy-starter-pack)に含まれています。
+名前が示すように、このプロバイダーは何もしません。 このプロバイダーは、特定の技術プロファイルの SSO 動作を抑制するために使用できます。 次の `SM-Noop` 技術プロファイルは、[カスタム ポリシー スターター パック](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)に含まれています。
 
 ```xml
 <TechnicalProfile Id="SM-Noop">
@@ -66,7 +66,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-このプロバイダーは、要求をセッション内に保存するために使用できます。 通常、このプロバイダーは、ローカル アカウントおよびフェデレーション アカウントの管理に使用される技術プロファイル内で参照されます。 次の `SM-AAD` 技術プロファイルは、[カスタム ポリシー スターター パック](custom-policy-get-started.md#custom-policy-starter-pack)に含まれています。
+このプロバイダーは、要求をセッション内に保存するために使用できます。 通常、このプロバイダーは、ローカル アカウントおよびフェデレーション アカウントの管理に使用される技術プロファイル内で参照されます。 次の `SM-AAD` 技術プロファイルは、[カスタム ポリシー スターター パック](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)に含まれています。
 
 ```xml
 <TechnicalProfile Id="SM-AAD">
@@ -87,7 +87,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 ```
 
 
-次の `SM-MFA` 技術プロファイルは、[カスタム ポリシー スターター パック](custom-policy-get-started.md#custom-policy-starter-pack)`SocialAndLocalAccountsWithMfa`に含まれています。 この技術プロファイルでは、多要素認証セッションを管理します。
+次の `SM-MFA` 技術プロファイルは、[カスタム ポリシー スターター パック](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)`SocialAndLocalAccountsWithMfa`に含まれています。 この技術プロファイルでは、多要素認証セッションを管理します。
 
 ```xml
 <TechnicalProfile Id="SM-MFA">
@@ -104,7 +104,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-このプロバイダーは、"ID プロバイダーの選択" 画面とフェデレーション ID プロバイダーからのサインアウトを抑制するために使用されます。 これは通常、フェデレーション ID プロバイダー (Facebook や Azure Active Directory など) 用に構成された技術プロファイルで参照されます。 次の `SM-SocialLogin` 技術プロファイルは、[カスタム ポリシー スターター パック](custom-policy-get-started.md#custom-policy-starter-pack)に含まれています。
+このプロバイダーは、"ID プロバイダーの選択" 画面とフェデレーション ID プロバイダーからのサインアウトを抑制するために使用されます。 これは通常、フェデレーション ID プロバイダー (Facebook や Azure Active Directory など) 用に構成された技術プロファイルで参照されます。 次の `SM-SocialLogin` 技術プロファイルは、[カスタム ポリシー スターター パック](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)に含まれています。
 
 ```xml
 <TechnicalProfile Id="SM-SocialLogin">

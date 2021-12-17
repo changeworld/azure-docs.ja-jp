@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: duau
-ms.custom: seodec18
-ms.openlocfilehash: 366f27a0e2a22e9aa10dda20e105bf644255bdd4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: cb4843319e08eff33ce6ce1869f64fccd9e17c6c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89393141"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950660"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft ピアリング経由のサイト間 VPN を構成する
 
@@ -130,7 +130,7 @@ IPsec トンネル ペア経由で、eBGP セッションが確立され、プ�
 
 ### <a name="about-the-azure-resource-manager-template-examples"></a>Azure Resource Manager テンプレートの例について
 
-例では、VPN ゲートウェイと IPsec トンネルの終了が、Azure Resource Manager テンプレートを使用して構成されます。 Resource Manager テンプレートを初めて使用する場合、または Resource Manager テンプレートの基本を理解する必要がある場合は、「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md)」を参照してください。 このセクションのテンプレートでは、未開発の Azure 環境 (VNet) が作成されます。 ただし、既存の VNet がある場合は、それをテンプレートで参照できます。 VPN ゲートウェイ IPsec/IKE サイト間の構成に慣れていない場合は、[サイト間接続の作成](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)に関するページをご覧ください。
+例では、VPN ゲートウェイと IPsec トンネルの終了が、Azure Resource Manager テンプレートを使用して構成されます。 Resource Manager テンプレートを初めて使用する場合、または Resource Manager テンプレートの基本を理解する必要がある場合は、「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/syntax.md)」を参照してください。 このセクションのテンプレートでは、未開発の Azure 環境 (VNet) が作成されます。 ただし、既存の VNet がある場合は、それをテンプレートで参照できます。 VPN ゲートウェイ IPsec/IKE サイト間の構成に慣れていない場合は、[サイト間接続の作成](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)に関するページをご覧ください。
 
 >[!NOTE]
 >この構成を作成するために Azure Resource Manager テンプレートを使用する必要はありません。 この構成は、Azure Portal または PowerShell を使用して作成できます。

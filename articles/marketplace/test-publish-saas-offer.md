@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 03/25/2021
-ms.openlocfilehash: aeab671c9283d64f9c1ca37cf184b80b1eca8f35
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/27/2021
+ms.openlocfilehash: 21bb6df47c255da5ffc463d3d7f42e61da6de1cc
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045248"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063139"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>SaaS オファーをテストしてコマーシャル マーケットプレースに公開する方法
 
@@ -24,10 +24,19 @@ ms.locfileid: "105045248"
 
 ## <a name="submit-your-offer-for-publishing"></a>公開するオファーを送信する
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)でコマーシャル マーケットプレース ダッシュボードにサインインします。
-1. **[概要]** ページで、発行するオファーを選択します。
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. <bpt id="p1">[</bpt>パートナー センター<ept id="p1">](https://partner.microsoft.com/dashboard/home)</ept>にサインインします。
+
+1. ホーム ページで、 **[Marketplace offers]\(Marketplace のオファー\)** タイルを選択します。
+
+    [ ![パートナー センターのホーム ページにある [Marketplace offers]\(Marketplace のオファー\) タイルを示しています。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. [Marketplace offers]\(Marketplace のオファー\) ページで、公開するオファーを選択します。
 1. ポータルの右上隅で、 **[レビューと公開]** を選択します。
-2. 各ページの **[状態]** 列に **[完了]** と表示されていることを確認します。 次の 3 つの状態のいずれかが表示されます。
+1. 各ページの **[状態]** 列に **[完了]** と表示されていることを確認します。 次の 3 つの状態のいずれかが表示されます。
 
    - **[未開始]** – ページが不完全です。
    - **[不完全]** – ページに必要な情報がないか、修正が必要なエラーがあります。 ページに戻って更新する必要があります。
@@ -39,13 +48,32 @@ ms.locfileid: "105045248"
 
 オファーの公開ステータスは、公開プロセスを移動すると変更されます。 このプロセスの詳細については、「[検証と公開の手順](review-publish-offer.md#validation-and-publishing-steps)」を参照してください。
 
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)でコマーシャル マーケットプレース ダッシュボードにサインインします。
+1. **[概要]** ページで、発行するオファーを選択します。
+1. ポータルの右上隅で、 **[レビューと公開]** を選択します。
+1. 各ページの **[状態]** 列に **[完了]** と表示されていることを確認します。 次の 3 つの状態のいずれかが表示されます。
+
+   - **[未開始]** – ページが不完全です。
+   - **[不完全]** – ページに必要な情報がないか、修正が必要なエラーがあります。 ページに戻って更新する必要があります。
+   - **[完了]** – ページが完了しました。 必須のデータはすべて入力済みであり、エラーはありません。
+
+1. いずれかのページの状態が **[完了]** 以外である場合は、ページ名を選択し、問題を修正してページを保存してから、 **[レビューと公開]** をもう一度選択して、このページに戻ります。
+1. すべてのページが完了したら、アプリが確実に正しくテストされるよう、 **[認定の注意書き]** ボックスに認定チームに向けたテストの指示を入力します。 アプリの理解に役立つ補足事項を提供します。
+1. オファーを公開するプロセスを開始するには、 **[公開]** を選択します。 **[オファーの概要]** ページが表示され、オファーの **公開ステータス** が示されます。
+
+オファーの公開ステータスは、公開プロセスを移動すると変更されます。 このプロセスの詳細については、「[検証と公開の手順](review-publish-offer.md#validation-and-publishing-steps)」を参照してください。
+
+---
+
 ## <a name="preview-and-test-your-offer"></a>オファーをプレビューしてテストする
 
 オファーをサインオフする準備ができたら、オファーのプレビューを確認して承認するように求めるメールが送信されます。 お使いのブラウザーの **[オファーの概要]** ページを更新し、自分のオファーが発行元のサインオフ フェーズに達したかどうかを確認することもできます。 達している場合は、 **[Go live]** \(公開\) ボタンとプレビュー リンクが使用可能になります。 オファーの作成時に選択したオプションに応じて、Microsoft AppSource プレビュー、Azure Marketplace プレビュー、またはその両方へのリンクが表示されます。 Microsoft からプランを販売することを選択した場合、プレビュー対象ユーザーに追加されたユーザーは、この段階で確実に要件を満たすために、プランの取得とデプロイをテストすることができます。
 
 次のスクリーンショットは、 **[公開]** ボタンの下に 2 つのプレビュー リンクがある SaaS オファーの **[オファーの概要]** ページを示しています。 このページに表示される検証手順は、オファーの作成時に選択した内容によって異なります。
 
-![パートナー センターに表示されるプランの [Offer overview]\(プランの概要\) ページ [Go live]\(公開\) ボタンとプレビュー リンクが表示されます。 [検証レポートの表示] リンクは、[自動検証] の下にも表示されます。](./media/review-publish-offer/publish-status-saas.png)
+[ ![パートナー センターでのオファーの公開ステータスを示しています。[Go live]\(公開\) ボタンが表示されています。[自動検証] の下に、[検証レポートの表示] リンクも表示されています。](./media/review-publish-offer/publish-status-saas.png) ](./media/review-publish-offer/publish-status-saas.png#lightbox)
 
 オファーをプレビューする手順は次のとおりです。
 
@@ -53,13 +81,13 @@ ms.locfileid: "105045248"
 
 1. 購入と設定のフローを徹底的に検証するため、プレビュー段階にある間にオファーのプランを購入してください。 まず、課金を処理しないよう、[サポート チケット](https://aka.ms/marketplacesupport)で Microsoft に通知します。
 
-1. SaaS オファーでコマーシャル マーケットプレースの測定サービスを使用した[従量制課金](./partner-center-portal/saas-metered-billing.md)がサポートされている場合は、「[マーケットプレースの従量制課金 API](./partner-center-portal/marketplace-metering-service-apis.md#development-and-testing-best-practices)」で詳しく説明されているテストのベスト プラクティスをレビューして、それに従ってください。
+1. SaaS オファーでコマーシャル マーケットプレースの測定サービスを使用した[従量制課金](./partner-center-portal/saas-metered-billing.md)がサポートされている場合は、「[マーケットプレースの従量制課金 API](marketplace-metering-service-apis.md#development-and-testing-best-practices)」で詳しく説明されているテストのベスト プラクティスをレビューして、それに従ってください。
 
-1. オファーを公開する前に、「[Microsoft コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2](./partner-center-portal/pc-saas-fulfillment-api-v2.md#development-and-testing)」のテスト手順をレビューして従って、オファーが正常に統合されていることを確認してください。
+1. オファーを公開する前に、「[Microsoft コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2](./partner-center-portal/pc-saas-fulfillment-webhook.md#development-and-testing)」のテスト手順をレビューして従って、オファーが正常に統合されていることを確認してください。
 
 1. オファー検証手順によって警告が表示された場合は、 **[オファーの概要]** ページに **[検証レポートの表示]** リンクが表示されます。 **[公開]** ボタンを選択する前に、レポートを確認し、問題があれば解決してください。 そうしないと、認定されず、オファーの公開が遅延する可能性があります。
 
-1. オファーをプレビューしてテストした後に変更を加える必要がある場合は、オファーを編集して再送信すれば、新しいプレビューを公開できます。 詳細については、「[Commercial Marketplace で既存のオファーを更新する](./partner-center-portal/update-existing-offer.md)」を参照してください。
+1. オファーをプレビューしてテストした後に変更を加える必要がある場合は、オファーを編集して再送信すれば、新しいプレビューを公開できます。 詳細については、「[Commercial Marketplace で既存のオファーを更新する](update-existing-offer.md)」を参照してください。
 
 ## <a name="publish-your-offer-live"></a>オファーを発行する
 
@@ -74,4 +102,4 @@ ms.locfileid: "105045248"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](./partner-center-portal/analytics.md)
+- [パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](analytics.md)

@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 06/29/2021
 ms.author: jlian
-ms.openlocfilehash: 6a02b97957cc0599e2960cba551b536e83d1a902
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0a9a3bc11bac0dd389c346ccecab7f95d5ffd5d2
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222557"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113128032"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>IoT Hub でのトランスポート層セキュリティ (TLS) のサポート
 
@@ -24,13 +24,9 @@ TLS 1.0 と 1.1 はレガシと見なされており、非推奨となる予定�
 
 TLS ハンドシェイク中には、IoT Hub から RSA キー付きサーバー証明書が接続元のクライアントに提示されます。 そのルートは、Baltimore CyberTrust Root CA です。 最近、Microsoft は TLS サーバー証明書に対する変更をロールアウトしましたので、それは新しい中間証明機関 (ICA) から発行されるようになります。 詳細については、「[IoT Hub TLS 証明書の更新](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/)」を参照してください。
 
-### <a name="4kb-size-limit-on-renewal"></a>更新時の 4 KB のサイズ制限
-
-IoT Hub サーバー側の証明書の更新中に、IoT Hub サービス側でチェックが行われ、`Server Hello` のサイズが 4 KB を超えないようにします。 クライアントには、着信 TLS 最大コンテンツ長バッファー用に少なくとも 4 KB の RAM が設定されている必要があります。これにより、4 KB の制限に設定されている既存のデバイスは、証明書の更新後も以前と同じように機能し続けます。 制約のあるデバイスの場合、IoT Hub では、[プレビューでの TLS 最大フラグメント長ネゴシエーション](#tls-maximum-fragment-length-negotiation-preview)がサポートされています。 
-
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>楕円曲線暗号 (ECC) サーバー TLS 証明書 (プレビュー)
 
-IoT Hub ECC サーバー TLS 証明書は、パブリック プレビューとして提供されています。 ECC 証明書の検証 (ECC のみの暗号スイートを使用) を使用すると、RSA 証明書と同様のセキュリティが提供されると同時に、コンピューティング、メモリ、および帯域幅の使用が最大 40% 削減されます。 このような削減は、IoT デバイスにとって重要です。そのプロファイルおよびメモリのサイズが小さくなるためであり、ネットワーク帯域幅が制限された環境でのユース ケースに対応することができます。 
+IoT Hub ECC サーバー TLS 証明書は、パブリック プレビューとして提供されています。 ECC 証明書の検証 (ECC のみの暗号スイートを使用) を使用すると、RSA 証明書と同様のセキュリティが提供されると同時に、コンピューティング、メモリ、および帯域幅の使用が最大 40% 削減されます。 このような削減は、IoT デバイスにとって重要です。そのプロファイルおよびメモリのサイズが小さくなるためであり、ネットワーク帯域幅が制限された環境でのユース ケースに対応することができます。 ECC サーバー証明書のルートは、DigiCert グローバルルート G3 です。
 
 IoT Hub の ECC サーバー証明書をプレビューするには、次のようにします。
 
@@ -133,7 +129,7 @@ IoT Edge デバイスは、IoT Hub との通信時に TLS 1.2 を使用するよ
 
 ## <a name="device-authentication"></a>デバイスの認証
 
-TLS ハンドシェイクに成功すると、IoT Hub では、対称キーか X.509 証明書を利用してデバイスを認証できます。 証明書ベースの認証の場合、ECC など、あらゆる X.509 証明書を利用できます。 IoT Hub では、指定した拇印または認証機関 (CA) を利用し、証明書の有効性を検証します。 詳細については、「[サポートされている X.509 証明書](iot-hub-devguide-security.md#supported-x509-certificates)」をご覧ください。
+TLS ハンドシェイクに成功すると、IoT Hub では、対称キーか X.509 証明書を利用してデバイスを認証できます。 証明書ベースの認証の場合、ECC など、あらゆる X.509 証明書を利用できます。 IoT Hub では、指定した拇印または認証機関 (CA) を利用し、証明書の有効性を検証します。 詳細については、「[サポートされている X.509 証明書](iot-hub-dev-guide-sas.md#supported-x509-certificates)」をご覧ください。
 
 ## <a name="tls-maximum-fragment-length-negotiation-preview"></a>TLS 最大フラグメント長ネゴシエーション (プレビュー)
 

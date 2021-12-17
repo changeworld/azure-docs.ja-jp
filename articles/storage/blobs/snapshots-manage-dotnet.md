@@ -10,12 +10,12 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae1d72c30fb7c45c92f24ec5132859a45c6ae953
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a7c822d6a88d9108a3d933ac3b8321eb856f05
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95543376"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855405"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>.NET での BLOB スナップショットの作成と管理
 
@@ -25,14 +25,14 @@ Azure Storage での BLOB のスナップショットの詳細については、
 
 ## <a name="create-a-snapshot"></a>スナップショットの作成
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 .NET 用の Azure Storage クライアント ライブラリのバージョン 12.x を使用してブロック BLOB のスナップショットを作成するには、次のいずれかのメソッドを使用します。
 
 - [CreateSnapshot](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.createsnapshot)
 - [CreateSnapshotAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.createsnapshotasync)
 
-次のコード例は、バージョン 12.x でスナップショットを作成する方法を示しています。 Azure AD の資格情報を使用してサービスへの要求を承認するには、[Azure.Identity](https://www.nuget.org/packages/azure.identity) ライブラリへの参照を含めます。
+次のコード例は、バージョン 12.x でスナップショットを作成する方法を示しています。 Azure AD の資格情報を使用してサービスへの要求を承認するには、[Azure.Identity](https://www.nuget.org/packages/azure.identity) ライブラリへの参照を含めます。 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスを使用して、Azure Storage にアクセスするためのマネージド ID を認可するための方法の詳細については、[.NET 用の Azure ID クライアント ライブラリ](/dotnet/api/overview/azure/identity-readme)を参照してください。
 
 ```csharp
 private static async Task CreateBlockBlobSnapshot(string accountName, string containerName, string blobName, Stream data)
@@ -78,7 +78,7 @@ private static async Task CreateBlockBlobSnapshot(string accountName, string con
 }
 ```
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 .NET 用の Azure Storage クライアント ライブラリのバージョン 11.x を使用してブロック BLOB のスナップショットを作成するには、次のいずれかのメソッドを使用します。
 
@@ -127,7 +127,7 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 
 BLOB を削除するには、まずその BLOB のスナップショットをすべて削除する必要があります。 スナップショットは個別に削除することも、コピー元 BLOB が削除されたときにすべてのスナップショットを削除するように指定することもできます。 スナップショットがまだ存在する BLOB を削除しようとすると、エラーが発生します。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 .NET 用の Azure Storage クライアント ライブラリのバージョン 12.x を使用して BLOB とそのスナップショットを削除するには、次のいずれかのメソッドを使用し、[DeleteSnapshotsOption](/dotnet/api/azure.storage.blobs.models.deletesnapshotsoption) 列挙型を含めます。
 
@@ -142,7 +142,7 @@ BLOB を削除するには、まずその BLOB のスナップショットをす
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
 ```
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 .NET 用の Azure Storage クライアント ライブラリのバージョン 11.x を使用して BLOB とそのスナップショットを削除するには、次のいずれかの BLOB 削除メソッドを使用し、[DeleteSnapshotsOption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption) 列挙型を含めます。
 

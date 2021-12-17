@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: d99f1bd97c8199de1bda12f28f3fcb31b697946f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c9a81c052f44afbb2049442f09e34a0e6bc588f9
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105031496"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054773"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -22,10 +22,10 @@ ms.locfileid: "105031496"
 Durable Functions では、現在次の言語をサポートしています。
 
 * **C#**: [プリコンパイル済みクラス ライブラリ](../functions-dotnet-class-library.md)と [C# スクリプト](../functions-reference-csharp.md)の両方。
-* **JavaScript**: Azure Functions ランタイムのバージョン 2.x でのみサポートされています。 Durable Functions 拡張機能のバージョン 1.7.0 以降が必要です。 
+* **JavaScript**: Azure Functions ランタイムのバージョン 2.x 以降でのみサポートされています。 Durable Functions 拡張機能のバージョン 1.7.0 以降が必要です。 
 * **Python**: Durable Functions 拡張機能のバージョン 2.3.1 以降が必要です。
 * **F#**: プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
-* **PowerShell**: Durable Functions のサポートは、現在パブリック プレビューの段階です。 Azure Functions ランタイムのバージョン 3.x と PowerShell 7 でのみサポートされています。 Durable Functions 拡張機能のバージョン 2.2.2 以降が必要です。 現在サポートされているパターンは次のとおりです。[関数チェーン](#chaining)、[ファンアウトおよびファンイン](#fan-in-out)、[非同期 HTTP API](#async-http)。
+* **PowerShell**: Azure Functions ランタイムのバージョン 3.x と PowerShell 7 でのみサポートされています。 バンドル拡張のバージョン 2.x が必要です。
 
 最新の機能と更新プログラムにアクセスするには、最新バージョンの Durable Functions 拡張機能と言語固有の Durable Functions ライブラリを使用することをお勧めします。 [Durable Functions のバージョン](durable-functions-versions.md)の詳細情報を参照してください。
 
@@ -127,13 +127,13 @@ main = df.Orchestrator.create(orchestrator_function)
 ```PowerShell
 param($Context)
 
-$X = Invoke-ActivityFunction -FunctionName 'F1'
-$Y = Invoke-ActivityFunction -FunctionName 'F2' -Input $X
-$Z = Invoke-ActivityFunction -FunctionName 'F3' -Input $Y
-Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
+$X = Invoke-DurableActivity -FunctionName 'F1'
+$Y = Invoke-DurableActivity -FunctionName 'F2' -Input $X
+$Z = Invoke-DurableActivity -FunctionName 'F3' -Input $Y
+Invoke-DurableActivity -FunctionName 'F4' -Input $Z
 ```
 
-`Invoke-ActivityFunction` コマンドを使用して他の関数を名前で呼び出し、パラメーターを渡して、関数の出力を返すことができます。 コードで `NoWait` スイッチを用いずに `Invoke-ActivityFunction` を呼び出すたびに、Durable Functions フレームワークによって、現在の関数インスタンスの進行状況に対するチェックポイントが設定されます。 プロセスまたは仮想マシンが実行途中でリサイクルされる場合、関数インスタンスは直前の `Invoke-ActivityFunction` 呼び出しから再開されます。 詳細については、次のセクション (パターン #2: ファンアウト/ファンイン) を参照してください。
+`Invoke-DurableActivity` コマンドを使用して他の関数を名前で呼び出し、パラメーターを渡して、関数の出力を返すことができます。 コードで `NoWait` スイッチを用いずに `Invoke-DurableActivity` を呼び出すたびに、Durable Functions フレームワークによって、現在の関数インスタンスの進行状況に対するチェックポイントが設定されます。 プロセスまたは仮想マシンが実行途中でリサイクルされる場合、関数インスタンスは直前の `Invoke-DurableActivity` 呼び出しから再開されます。 詳細については、次のセクション (パターン #2: ファンアウト/ファンイン) を参照してください。
 
 ---
 
@@ -234,18 +234,18 @@ main = df.Orchestrator.create(orchestrator_function)
 param($Context)
 
 # Get a list of work items to process in parallel.
-$WorkBatch = Invoke-ActivityFunction -FunctionName 'F1'
+$WorkBatch = Invoke-DurableActivity -FunctionName 'F1'
 
 $ParallelTasks =
     foreach ($WorkItem in $WorkBatch) {
-        Invoke-ActivityFunction -FunctionName 'F2' -Input $WorkItem -NoWait
+        Invoke-DurableActivity -FunctionName 'F2' -Input $WorkItem -NoWait
     }
 
 $Outputs = Wait-ActivityFunction -Task $ParallelTasks
 
 # Aggregate all outputs and send the result to F3.
 $Total = ($Outputs | Measure-Object -Sum).Sum
-Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
+Invoke-DurableActivity -FunctionName 'F3' -Input $Total
 ```
 
 ファンアウト作業は、`F2` 関数の複数のインスタンスに分散されます。 `F2` 関数の呼び出しで `NoWait` スイッチが使用されていることに注意してください。このスイッチを使用すると、オーケストレーターはアクティビティを完了しなくても `F2` を呼び出すことができます。 動的タスク リストを使用して、この作業が追跡されます。 `Wait-ActivityFunction` コマンドが呼び出され、呼び出されたすべての関数が終了するまで待機します。 その後、`F2` 関数の出力が動的タスク リストから集計され、`F3` 関数に渡されます。
@@ -399,7 +399,32 @@ main = df.Orchestrator.create(orchestrator_function)
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-現在、モニターは PowerShell ではサポートされていません。
+```powershell
+param($Context)
+
+$output = @()
+
+$jobId = $Context.Input.JobId
+$machineId = $Context.Input.MachineId
+$pollingInterval = New-TimeSpan -Seconds $Context.Input.PollingInterval
+$expiryTime = $Context.Input.ExpiryTime
+
+while ($Context.CurrentUtcDateTime -lt $expiryTime) {
+    $jobStatus = Invoke-DurableActivity -FunctionName 'GetJobStatus' -Input $jobId
+    if ($jobStatus -eq "Completed") {
+        # Perform an action when a condition is met.
+        $output += Invoke-DurableActivity -FunctionName 'SendAlert' -Input $machineId
+        break
+    }
+
+    # Orchestration sleeps until this time.
+    Start-DurableTimer -Duration $pollingInterval
+}
+
+# Perform more work here, or let the orchestration end.
+
+$output
+```
 
 ---
 
@@ -501,7 +526,32 @@ main = df.Orchestrator.create(orchestrator_function)
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-現在、ユーザー操作は PowerShell ではサポートされていません。
+```powershell
+param($Context)
+
+$output = @()
+
+$duration = New-TimeSpan -Seconds $Context.Input.Duration
+$managerId = $Context.Input.ManagerId
+
+$output += Invoke-DurableActivity -FunctionName "RequestApproval" -Input $managerId
+
+$durableTimeoutEvent = Start-DurableTimer -Duration $duration -NoWait
+$approvalEvent = Start-DurableExternalEventListener -EventName "ApprovalEvent" -NoWait
+
+$firstEvent = Wait-DurableTask -Task @($approvalEvent, $durableTimeoutEvent) -Any
+
+if ($approvalEvent -eq $firstEvent) {
+    Stop-DurableTimerTask -Task $durableTimeoutEvent
+    $output += Invoke-DurableActivity -FunctionName "ProcessApproval" -Input $approvalEvent
+}
+else {
+    $output += Invoke-DurableActivity -FunctionName "EscalateApproval"
+}
+
+$output
+```
+永続タイマーを作成するために、`Start-DurableTimer` が呼び出されます。 通知は `Start-DurableExternalEventListener` が受け取ります。 その後、エスカレーションする (タイムアウトが先に発生した場合) か承認を処理する (タイムアウト前に承認を得た場合) かを決定するために、`Wait-DurableTask` が呼び出されます。
 
 ---
 
@@ -552,7 +602,11 @@ async def main(client: str):
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-現在、ユーザー操作は PowerShell ではサポートされていません。
+```powershell
+
+Send-DurableExternalEvent -InstanceId $InstanceId -EventName "ApprovalEvent" -EventData "true"
+
+``````
 
 ---
 
@@ -685,7 +739,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 動的に生成されたプロキシは、.NET においてタイプセーフな方法でシグナル通知エンティティに対して使用することもできます。 シグナル通知に加えて、クライアントは、オーケストレーション クライアント バインディングで[タイプ セーフのメソッド](durable-functions-bindings.md#entity-client-usage)を使用して、エンティティ関数の状態をクエリすることもできます。
+> 動的に生成されたプロキシは、.NET においてタイプセーフな方法でシグナル通知エンティティに対して使用することもできます。 シグナル通知に加えて、クライアントは、オーケストレーション クライアント バインディングで[タイプ セーフのメソッド](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)を使用して、エンティティ関数の状態をクエリすることもできます。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -743,6 +797,13 @@ Durable Functions は Azure Functions と同じように課金されます。 �
 * [Visual Studio Code と PowerShell を使用する場合](quickstart-powershell-vscode.md)
 
 これらのクイックスタートでは、"hello world" という持続的関数をローカルで作成してテストします。 その後、関数コードを Azure に発行します。 作成した関数は、他の関数の呼び出しを調整し、連結します。
+
+## <a name="publications"></a>パブリケーション
+
+Durable Functions は、Microsoft Research と共同で開発されました。 結果として、Durable Functions チームは研究論文と成果物を積極的に作成しています。これには、次のようなものがあります。
+
+* [Durable Functions: ステートフル サーバーレスのセマンティクス](https://www.microsoft.com/en-us/research/uploads/prod/2021/10/DF-Semantics-Final.pdf) _(OOPSLA'21)_
+* [Durable Functions と Netherite を使用したサーバーレス ワークフロー](https://arxiv.org/pdf/2103.00033.pdf) " _(査読前の原稿)_ "
 
 ## <a name="learn-more"></a>詳細情報
 

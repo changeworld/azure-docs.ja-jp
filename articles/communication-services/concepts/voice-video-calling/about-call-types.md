@@ -2,21 +2,24 @@
 title: Azure Communication Services での音声とビデオの概念
 titleSuffix: An Azure Communication Services concept document
 description: Communication Services の通話の種類について説明します。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
-ms.date: 03/25/2021
-ms.topic: overview
+ms.author: rifox
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 8a25f69019e194650bb6aa2f5b8ae19dd37fbc48
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.subservice: calling
+ms.openlocfilehash: 9fd2de1bdcd89f027db9a3fd74ef40111f540ced
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729169"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635966"
 ---
 # <a name="voice-and-video-concepts"></a>音声とビデオの概念
+
+[!INCLUDE [SDP Plan B Deprecation Notice](../../includes/plan-b-sdp-deprecation.md)]
 
 Azure Communication Services を使用すると、一対一またはグループでの音声通話やビデオ通話をかけたり受けたりすることができます。 通話は、インターネットに接続されている他のデバイスや、普通の従来の電話に対しても行うことができます。 Communication Services の JavaScript、Android、または iOS SDK を使用して、ユーザーが個人的な会話やグループ ディスカッションで相互に対話できるアプリケーションを構築できます。 Azure Communication Services は、サービスやボットとの通話をサポートしています。
 

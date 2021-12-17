@@ -5,16 +5,17 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 11/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 5e8123c252d99b2999eeef42fecae189a05e382b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f033ad2482977a32c197eb6e172bc0a043f71abc
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778123"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720456"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -39,7 +40,7 @@ Azure Storage では、多層型セキュリティ モデルが提供されて�
 
 ストレージ ファイアウォール規則は、ストレージ アカウントのパブリック エンドポイントに適用されます。 ストレージ アカウントのプライベート エンドポイントへのトラフィックを許可するのにファイアウォール アクセス規則は必要ありません。 プライベート エンドポイントの作成を承認するプロセスで、プライベート エンドポイントをホストするサブネットからのトラフィックへのアクセスが暗黙的に許可されます。
 
-ネットワーク ルールは、Azure Storage のすべてのネットワーク プロトコル (REST と SMB を含む) に適用されます。 Azure portal、Storage Explorer、AZCopy などのツールを使用してデータにアクセスするには、明示的なネットワーク ルールを構成する必要があります。
+ネットワーク ルールは、Azure Storage のすべてのネットワーク プロトコル (REST と SMB を含む) に適用されます。 Azure portal、Storage Explorer、AzCopy などのツールを使用してデータにアクセスするには、明示的なネットワーク規則を構成する必要があります。
 
 適用したネットワーク ルールは、すべての要求に対して適用されます。 特定の IP アドレスへのアクセスを許可する SAS トークンは、トークン所有者のアクセスを制限する働きをしますが、構成されているネットワーク ルールを超えて新しいアクセスを許可することはありません。
 
@@ -115,6 +116,7 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Allow
     ```
+
 ---
 
 ## <a name="grant-access-from-a-virtual-network"></a>仮想ネットワークからアクセスの許可
@@ -124,6 +126,9 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
 VNet 内の Azure Storage に対する[サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)を有効にします。 サービス エンドポイントでは、VNet からのトラフィックが、最適なパスを経由して、Azure Storage サービスにルーティングされます。 サブネットと仮想ネットワークの ID も、各要求と一緒に転送されます。 管理者は、その後、VNet 内の特定のサブネットからの要求の受信を許可するネットワーク ルールを、ストレージ アカウントに対して構成できます。 これらのネットワーク ルールによってアクセスを許可されたクライアントがデータにアクセスするには、ストレージ アカウントの認可要件を引き続き満たす必要があります。
 
 各ストレージ アカウントでは最大 200 個の仮想ネットワーク規則がサポートされ、それを [IP ネットワーク ルール](#grant-access-from-an-internet-ip-range)と組み合わせることができます。
+
+> [!IMPORTANT]
+> ネットワーク ルールに含まれているサブネットを削除すると、そのサブネットはストレージ アカウントのネットワーク ルールから削除されます。 同じ名前で新しいサブネットを作成しても、ストレージ アカウントにアクセスできません。 アクセスを許可するには、ストレージ アカウントのネットワーク ルールで新しいサブネットを明示的に承認する必要があります。
 
 ### <a name="available-virtual-network-regions"></a>使用可能な仮想ネットワークのリージョン
 
@@ -248,21 +253,21 @@ IP ネットワーク規則を作成すると、IP ネットワーク規則を�
 
 IP アドレスの範囲には、次の制限が適用されます。
 
-- IP ネットワーク規則は、**パブリック インターネット** の IP アドレスに対してのみ許可されます。 
+- IP ネットワーク規則は、**パブリック インターネット** の IP アドレスに対してのみ許可されます。
 
-  プライベート ネットワーク用に予約されている IP アドレス範囲 ([RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、_10.*_ 、_172.16.*_  - _172.31.*_ 、_192.168.*_ で始まるアドレスが含まれます。
+  プライベート ネットワーク用に予約されている IP アドレス範囲 ([RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、*10.**、*172.16.** - *172.31.**、*192.168.** で始まるアドレスが含まれます。
 
-- 許可するインターネット アドレスの範囲は、[CIDR 表記法](https://tools.ietf.org/html/rfc4632)を使って *16.17.18.0/24* の形式で、または *16.17.18.19* のように個々の IP アドレスとして、指定する必要があります。 
+- 許可するインターネット アドレスの範囲は、[CIDR 表記法](https://tools.ietf.org/html/rfc4632)を使って *16.17.18.0/24* の形式で、または *16.17.18.19* のように個々の IP アドレスとして、指定する必要があります。
 
-- 「/31」や「/32」のプレフィックス サイズを使用した小さなアドレス範囲はサポートされていません。 これらの範囲は、個々の IP アドレス ルールを使用して構成する必要があります。 
+- 「/31」や「/32」のプレフィックス サイズを使用した小さなアドレス範囲はサポートされていません。 これらの範囲は、個々の IP アドレス ルールを使用して構成する必要があります。
 
 - ストレージ ファイアウォール規則の構成では、IPv4 アドレスのみがサポートされています。
 
 IP ネットワーク規則は、次の場合には使用できません。
 
 - ストレージ アカウントと同じ Azure リージョン内のクライアントへのアクセスを制限する。
-  
-  IP ネットワーク ルールは、ストレージ アカウントと同じ Azure リージョンから送信された要求には影響ありません。 同じリージョンの要求を許可するには、[仮想ネットワーク規則](#grant-access-from-a-virtual-network)を使用します。 
+
+  IP ネットワーク ルールは、ストレージ アカウントと同じ Azure リージョンから送信された要求には影響ありません。 同じリージョンの要求を許可するには、[仮想ネットワーク規則](#grant-access-from-a-virtual-network)を使用します。
 
 - サービス エンドポイントがある VNet 内の[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)のクライアントへのアクセスを制限する。
 
@@ -374,16 +379,12 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 ## <a name="grant-access-from-azure-resource-instances-preview"></a>Azure リソース インスタンスからのアクセスを許可する (プレビュー)
 
-場合によっては、アプリケーションが、仮想ネットワークまたは IP アドレス ルールによって分離できない Azure リソースに依存していることがあります。 しかし、その場合でも、ストレージ アカウントのアクセスをセキュリティで保護してアプリケーションの Azure リソースのみに制限したいことがあります。 リソース インスタンス ルールを作成することによって、一部の Azure サービスの特定のリソース インスタンスにアクセスを許可するよう、ストレージ アカウントを構成できます。 
+場合によっては、アプリケーションが、仮想ネットワークまたは IP アドレス ルールによって分離できない Azure リソースに依存していることがあります。 しかし、その場合でも、ストレージ アカウントのアクセスをセキュリティで保護してアプリケーションの Azure リソースのみに制限したいことがあります。 リソース インスタンス ルールを作成することによって、一部の Azure サービスの特定のリソース インスタンスにアクセスを許可するよう、ストレージ アカウントを構成できます。
 
-リソース インスタンスがストレージ アカウントのデータに対して実行できる操作の種類は、リソース インスタンスの [Azure ロールの割り当て](storage-auth-aad.md#assign-azure-roles-for-access-rights)によって決まります。 リソース インスタンスは、ストレージ アカウントと同じテナントからのものである必要がありますが、テナント内のどのサブスクリプションに属していてもかまいません。
+リソース インスタンスがストレージ アカウントのデータに対して実行できる操作の種類は、リソース インスタンスの Azure ロールの割り当てによって決まります。 リソース インスタンスは、ストレージ アカウントと同じテナントからのものである必要がありますが、テナント内のどのサブスクリプションに属していてもかまいません。
 
 > [!NOTE]
 > この機能はパブリック プレビュー段階であり、すべてのパブリック クラウド リージョンで利用できます。
-
-> [!NOTE]
-> 現在、リソース インスタンス ルールは Azure Synapse でのみサポートされています。 この記事の「[システム割り当てマネージド ID に基づく信頼されたアクセス](#trusted-access-system-assigned-managed-identity)」セクションに掲載されている他の Azure サービスは、今後数週間以内にサポートされる予定です。
-
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -395,11 +396,11 @@ Azure portal で、リソース ネットワーク ルールを追加または�
 
 3. **[ネットワーク]** を選択して、ネットワークの構成ページを表示します。
 
-4. **[リソースの種類]** ドロップダウン リストで、リソース インスタンスのリソースの種類を選択します。 
+4. **[リソースの種類]** ドロップダウン リストで、リソース インスタンスのリソースの種類を選択します。
 
 5. **[インスタンス名]** ドロップダウン リストで、リソース インスタンスを選択します。 また、アクティブなテナント、サブスクリプション、またはリソース グループ内のすべてのリソース インスタンスを含めるように選択することもできます。
 
-6. **[保存]** を選択して変更を適用します。 リソース インスタンスが、ネットワーク設定ページの **[リソース インスタンス]** セクションに表示されます。 
+6. **[保存]** を選択して変更を適用します。 リソース インスタンスが、ネットワーク設定ページの **[リソース インスタンス]** セクションに表示されます。
 
 リソース インスタンスを削除するには、リソース インスタンスの横にある削除アイコン (:::image type="icon" source="media/storage-network-security/delete-icon.png":::) を選択します。
 
@@ -547,7 +548,7 @@ az storage account network-rule list \
 <a id="exceptions"></a>
 <a id="trusted-microsoft-services"></a>
 
-## <a name="grant-access-to-trusted-azure-services"></a>信頼された Azure サービスにアクセスを許可する 
+## <a name="grant-access-to-trusted-azure-services"></a>信頼された Azure サービスにアクセスを許可する
 
 一部の Azure サービスは、ネットワーク ルールに含めることのできないネットワークから動作します。 他のアプリに対するネットワーク ルールを維持しながら、このような信頼された Azure サービスのサブセットにストレージ アカウントへのアクセスを許可できます。 これらの信頼されるサービスでは、強力な認証を使用して、ストレージ アカウントに安全に接続します。
 
@@ -562,7 +563,7 @@ az storage account network-rule list \
 
 ### <a name="trusted-access-for-resources-registered-in-your-subscription"></a>サブスクリプションに登録されているリソースへの信頼されたアクセス
 
-一部のサービスのリソースは、**お客様のサブスクリプションで登録されている場合に**、特定の操作 (ログの書き込みやバックアップなど) のために **同じサブスクリプション内の** ストレージ アカウントにアクセスできます。  次の表では、各サービスと許可される操作について説明します。 
+一部のサービスのリソースは、**お客様のサブスクリプションで登録されている場合に**、特定の操作 (ログの書き込みやバックアップなど) のために **同じサブスクリプション内の** ストレージ アカウントにアクセスできます。  次の表では、各サービスと許可される操作について説明します。
 
 | サービス                  | リソース プロバイダー名     | 許可される操作                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
@@ -582,22 +583,29 @@ az storage account network-rule list \
 
 ### <a name="trusted-access-based-on-system-assigned-managed-identity"></a>システム割り当てマネージド ID に基づく信頼されたアクセス
 
-次の表の一覧で示されているサービスは、それらのサービスのリソース インスタンスに適切なアクセス許可が付与されている場合、ストレージ アカウントのデータにアクセスできます。 アクセス許可を付与するには、各リソース インスタンスの[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) への [Azure ロールの割り当て](storage-auth-aad.md#assign-azure-roles-for-access-rights)を明示的に行う必要があります。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた Azure ロールに対応します。 
+次の表の一覧で示されているサービスは、それらのサービスのリソース インスタンスに適切なアクセス許可が付与されている場合、ストレージ アカウントのデータにアクセスできます。
+
+アカウントで階層型名前空間機能が有効になっていない場合は、リソースインスタンスごとにシステム割り当てマネージド ID への [Azure ロールの割り当て](../../active-directory/managed-identities-azure-resources/overview.md)を明示的に行うことで、アクセス許可を付与できます。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた Azure ロールに対応します。
+
+階層型名前空間機能が有効になっているアカウントにも同じ手法を使用できます。 ただし、ストレージ アカウントに格納されている任意のディレクトリまたは BLOB のアクセス制御リスト (ACL) にシステム割り当てマネージド ID を追加する場合、Azure ロールを割り当てる必要はありません。 この場合、インスタンスのアクセス範囲は、システム割り当てマネージド ID がアクセス権を付与されているディレクトリまたはファイルと一致します。 また、Azure のロールと ACL を組み合わせることもできます。 これらを組み合わせてアクセス権を付与する方法の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御モデル](../blobs/data-lake-storage-access-control-model.md)」を参照してください。
 
 > [!TIP]
 > 特定のリソースにアクセスを許可する推奨される方法は、リソース インスタンス ルールを使用することです。 特定のリソース インスタンスにアクセスを許可するには、この記事の「[Azure リソース インスタンスからのアクセスを許可する (プレビュー)](#grant-access-specific-instances)」を参照してください。
 
-
 | サービス                        | リソース プロバイダー名                 | 目的            |
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API Management           | Microsoft.ApiManagement/service        | ポリシーを使用して、API Management サービスが、ファイアウォールの背後にあるストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy)。 |
+| Azure Cache for Redis | Microsoft.Cache/Redis | Azure Cache for Redis からのストレージ アカウントへのアクセスを許可します。 | 
 | Azure Cognitive Search         | Microsoft.Search/searchServices        | インデックス作成、処理、およびクエリのために、Cognitive Search サービスがストレージ アカウントにアクセスできるようになります。 |
-| Azure Cognitive Services       | Microsoft.CognitiveService/accounts    | Cognitive Services がストレージ アカウントにアクセスできるようにします。 |
+| Azure Cognitive Services       | Microsoft.CognitiveService/accounts    | Cognitive Services がストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](../..//cognitive-services/cognitive-services-virtual-networks.md)。|
 | Azure Container Registry タスク | Microsoft.ContainerRegistry/registries | ACR タスクは、コンテナー イメージを作成するときにストレージアカウントにアクセスできます。 |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | ADF ランタイムを使用してストレージ アカウントへのアクセスを許可します。 |
 | Azure Data Share               | Microsoft.DataShare/accounts           | Data Share を使用してストレージ アカウントにアクセスできるようになります。 |
 | Azure DevTest Labs             | Microsoft.DevTestLab/labs              | DevTest Labs からのストレージ アカウントへのアクセスを許可します。 |
-| Azure IoT Hub                  | Microsoft.Devices/IotHubs              | IoT ハブからのデータを BLOB ストレージに書き込むことができます。 [詳細情報](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
+| Azure Event Grid  | Microsoft.EventGrid/topics | Azure Event Grid を使用してストレージ アカウントへのアクセスを許可します。 |
+| Azure Healthcare APIs | Microsoft.HealthcareApis/services | Azure Healthcare APIs からのストレージ アカウントへのアクセスを許可します。 |
+| Azure IoT Central アプリケーション | Microsoft.IoTCentral/IoTApps | Azure IoT Central アプリケーションからのストレージ アカウントへのアクセスを許可します。 |
+| Azure IoT Hub                  | Microsoft.Devices/IotHubs              | IoT ハブからのデータを BLOB ストレージに書き込むことができます。 [詳細情報](../../iot-hub/virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources) |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | ロジック アプリがストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
 | Azure Machine Learning サービス | Microsoft.MachineLearningServices      | 承認された Azure Machine Learning ワークスペースでは、BLOB ストレージに実験の出力、モデル、およびログを書き込み、データを読み取ります。 [詳細については、こちらを参照してください](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources)。 |
 | Azure Media Services           | Microsoft.Media/mediaservices          | Media Services からのストレージ アカウントへのアクセスを許可します。 |
@@ -612,7 +620,7 @@ az storage account network-rule list \
 
 ## <a name="grant-access-to-storage-analytics"></a>Storage Analytics へのアクセスを許可する
 
-場合によっては、ネットワーク境界の外側からリソース ログとメトリックを読み取るためにアクセスする必要があります。 信頼されたサービスによるストレージ アカウントへのアクセスを構成している場合、ネットワーク ルールの例外を作成することにより、ログ ファイルとメトリック テーブルの一方またはその両方に対する読み取りアクセスを許可できます。 詳細な手順については、後の「**例外を管理する**」セクションを参照してください。 Storage Analytics の操作の詳細については、[Azure Storage Analytics を使用したログとメトリック データの収集](./storage-analytics.md)に関するページを参照してください。 
+場合によっては、ネットワーク境界の外側からリソース ログとメトリックを読み取るためにアクセスする必要があります。 信頼されたサービスによるストレージ アカウントへのアクセスを構成している場合、ネットワーク ルールの例外を作成することにより、ログ ファイルとメトリック テーブルの一方またはその両方に対する読み取りアクセスを許可できます。 詳細な手順については、後の「**例外を管理する**」セクションを参照してください。 Storage Analytics の操作の詳細については、[Azure Storage Analytics を使用したログとメトリック データの収集](./storage-analytics.md)に関するページを参照してください。
 
 <a id="manage-exceptions"></a>
 

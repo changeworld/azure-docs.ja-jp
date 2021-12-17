@@ -3,21 +3,20 @@ title: Azure IoT Central の UI をカスタマイズする | Microsoft Docs
 description: Azure IoT Central アプリケーションのテーマとヘルプのリンクをカスタマイズする方法
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/06/2019
+ms.date: 08/18/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: cc3a90d078966df030bd772a9444c449d48249d4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 87ff1d68076f9e4ce45a6b0de6a567b2ce90da16
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057492"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431002"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Azure IoT Central の UI をカスタマイズする
 
-この記事では、管理者としてカスタム テーマを適用したり、独自のカスタム ヘルプ リソースを指すようにヘルプのリンクを変更したりして、アプリケーションの UI をカスタマイズする方法について説明します。 
+この記事では、カスタム テーマを適用したり、独自のカスタム ヘルプ リソースを指すようにヘルプのリンクを変更したりして、アプリケーションの UI をカスタマイズする方法について説明します。 
 
 次のスクリーンショットは、標準テーマを使用したページを示しています。
 
@@ -76,4 +75,4 @@ ms.locfileid: "106057492"
 ここでは、IoT Central アプリケーションの UI をカスタマイズする方法について説明しました。推奨される次の手順は以下のとおりです。
 
 - [アプリケーションを管理する](./howto-administer.md)
-- [ダッシュボードへのタイルの追加](howto-add-tiles-to-your-dashboard.md)
+- [ダッシュボードへのタイルの追加](howto-manage-dashboards.md)

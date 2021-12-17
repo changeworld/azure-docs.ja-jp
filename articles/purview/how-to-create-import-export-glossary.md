@@ -6,23 +6,25 @@ ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 04/02/2021
-ms.openlocfilehash: 6796a53ac05e8db606b29447a8792fa509c03d7e
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 09/27/2021
+ms.openlocfilehash: e39641317cc02c12666adf622ccb931ef57d9339
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284093"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493687"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>用語集の用語を作成、インポート、エクスポートする方法
 
-この記事では、Azure Purview Data Catalog でビジネス用語集の用語を作成し、.csv ファイルを使用して用語集の用語をインポートおよびエクスポートする方法について説明します。
+この記事では、Azure Purview でビジネス用語集の作業を行う方法について説明します。 Azure Purview Data Catalog でビジネス用語集の用語を作成し、.csv ファイルを使用して用語集の用語をインポートおよびエクスポートする手順が記載されています。
 
 ## <a name="create-a-new-term"></a>新しい用語の作成
 
 用語集の新しい用語を作成するには、次の手順を実行します。
 
-1. ホーム ページの左側のナビゲーションにある用語集アイコンを選択して、用語一覧のページに移動します。
+1. ホーム ページの左側のナビゲーションで **[データ カタログ]** を選択し、ページの中央にある **[用語集の管理]** ボタンを選択します。
+
+    :::image type="content" source="media/how-to-create-import-export-glossary/find-glossary.png" alt-text="用語集が強調表示されているデータ カタログのスクリーンショット。" border="true":::
 
 2. **[用語集の用語]** ページで、 **[+ 新しい用語]** を選択します。 **[システムの既定値]** テンプレートが選択された状態でページが開きます。 用語集の用語の作成に使用するテンプレートを選択し、 **[続行]** を選択します。
 
@@ -69,7 +71,7 @@ Azure Purview Data Catalog には、用語を用語集にインポートする�
 
    :::image type="content" source="media/how-to-create-import-export-glossary/select-term-template-for-import.png" alt-text="[用語集の用語] ページの、用語をインポートするボタンのスクリーンショット。":::
 
-3. csv テンプレートをダウンロードし、それを使用して追加する用語を入力します。
+3. csv テンプレートをダウンロードし、それを使用して追加する用語を入力します。 テンプレートの csv ファイルに名前を付ける際に使用できるのは、英字、数字、スペース、"_"、またはその他の非 ASCII Unicode 文字だけです。また、先頭文字は英字とする必要があります。 ファイル名に特殊文字を使用するとエラーが発生します。
 
    > [!Important]
    > システムでは、テンプレートで使用可能な列のインポートのみがポートされます。 [システムの既定値] テンプレートでは、すべての既定の属性が設定されます。
@@ -99,4 +101,4 @@ Azure Purview Data Catalog には、用語を用語集にインポートする�
 
 ## <a name="next-steps"></a>次のステップ
 
-次のチュートリアルを修了してください。[チュートリアル:用語集の用語の作成とインポート](tutorial-import-create-glossary-terms.md)
+* 用語集の用語について詳しくは、[用語集のリファレンス](reference-purview-glossary.md)を参照してください。

@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: Kinect, Azure, センサー, SDK, 体, トラッキング, 関節, アプリケーション, 最初
-ms.openlocfilehash: bdf8ee7a14bf59a151dfa316b11159830b4f63b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7667157e90e9920130084e26c23a7628c7f55b11
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85277842"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755678"
 ---
 # <a name="quickstart-build-an-azure-kinect-body-tracking-application"></a>クイック スタート:体をトラッキングする Azure Kinect アプリケーションの作成
 
@@ -85,7 +85,8 @@ k4abt_tracker_create(&sensor_calibration, tracker_config, &tracker);
 
 ```C
 // Capture a depth frame
-k4a_device_get_capture(device, &capture, TIMEOUT_IN_MS);
+k4a_capture_t sensor_capture;
+k4a_device_get_capture(device, &sensor_capture, TIMEOUT_IN_MS);
 ```
 
 ## <a name="enqueue-the-capture-and-pop-the-results"></a>キャプチャをエンキューして結果をポップする

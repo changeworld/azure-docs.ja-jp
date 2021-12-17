@@ -8,43 +8,29 @@
       href: core/overview-iot-central-tour.md
     - name: 最新の更新
       items:
-        - name: 2021 年 1 月の新機能と更新された機能
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
-        - name: 2020 年 11 月の新機能と更新された機能
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-november-2020/'
-        - name: 2020 年 10 月の新機能と更新された機能
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-upadates-october-2020/'
-        - name: 2020 年 9 月の新機能と更新された機能
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-september-2020/'
-        - name: 2020 年 8 月の新機能と更新された機能
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-august-2020/'
-        - name: 2020 年 7 月の新機能と更新された機能
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-july-2020/'
-        - name: 2020 年 6 月の新機能と更新された機能
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-june-2020/'
-        - name: 2020 年 6 月の UI とドキュメントの更新
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-ui-documenation-updates-june-2020/'
-        - name: 2020 年 5 月のジョブとメトリックの更新
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
-        - name: 2020 年 5 月のダッシュボード更新
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
-        - name: 2020 年 4 月の新機能
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
-        - name: 2020 年 4 月の更新
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-updates/'
-        - name: 2020 年 3 月
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
+        - name: 2021 年 9 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-september-2021/'
+        - name: 2021 年 8 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-august-2021/'
+        - name: 2021 年 7 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-july-2021/'
+        - name: 2021 年 6 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-june-2021/'
+        - name: 2021 年 5 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-may-2021/'
+        - name: 2021 年 4 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-april-2021/'
+        - name: 更新履歴
+          href: 'https://azure.microsoft.com/updates/?status=nowavailable&updateType=features&category=iot&query=azure%20iot%20central'
 - name: クイックスタート
   expanded: true
   items:
     - name: 1. 新しいアプリケーションを作成する
       href: core/quick-deploy-iot-central.md
-    - name: 2. シミュレートされたデバイスの追加
-      href: core/quick-create-simulated-device.md
-    - name: 3. 規則とアクションを構成する
+    - name: 2. 規則とアクションを構成する
       href: core/quick-configure-rules.md
-    - name: 4. デバイスを監視する
-      href: core/quick-monitor-devices.md
+    - name: 3. データのエクスポート
+      href: core/quick-export-data.md
 - name: チュートリアル
   items:
     - name: デバイスの開発と接続
@@ -54,7 +40,7 @@
         - name: ゲートウェイ デバイス テンプレートの作成
           href: core/tutorial-define-gateway-device-type.md
         - name: IoT Edge デバイスの接続
-          href: core/tutorial-add-edge-as-leaf-device.md
+          href: /learn/modules/connect-iot-edge-device-to-iot-central
     - name: 統合されたソリューションの構築
       items:
         - name: デバイス グループを作成する
@@ -122,59 +108,23 @@
             - name: 患者の継続的なモニタリング アプリを作成する
               href: healthcare/tutorial-continuous-patient-monitoring.md
             - name: 正常性データ トリアージ ダッシュボードを作成する
-              href: healthcare/howto-health-data-triage.md
+              href: ./healthcare/tutorial-health-data-triage.md
 - name: 概念
   items:
     - name: アーキテクチャ
       href: core/concepts-architecture.md
+    - name: スケーラビリティと高可用性
+      href: core/concepts-scalability-availability.md
     - name: デバイス開発者ガイド
       href: core/overview-iot-central-developer.md
     - name: ソリューション ビルダーのガイド
       href: core/overview-iot-central-solution-builder.md
+    - name: 管理者ガイド
+      href: core/overview-iot-central-admin.md
+    - name: オペレーター ガイド
+      href: core/overview-iot-central-operator.md
     - name: アプリケーション テンプレートとは
       href: core/concepts-app-templates.md
-    - name: 業界に固有のアプリケーション テンプレート
-      items:
-        - name: 小売
-          items:
-            - name: 概要
-              href: retail/overview-iot-central-retail.md
-            - name: ストア内分析チェックアウトのアーキテクチャ
-              href: retail/store-analytics-architecture.md
-            - name: スマート在庫管理のアーキテクチャ
-              href: retail/architecture-smart-inventory-management.md
-            - name: コネクテッド ロジスティックのアーキテクチャ
-              href: retail/architecture-connected-logistics.md
-            - name: デジタル流通センター
-              href: retail/architecture-digital-distribution-center.md
-            - name: マイクロフルフィルメント センターのアーキテクチャ
-              href: retail/architecture-micro-fulfillment-center.md
-            - name: ビデオ分析 - オブジェクトとモーションの検出
-              href: retail/architecture-video-analytics.md
-        - name: エネルギー
-          items:
-            - name: 概要
-              href: energy/overview-iot-central-energy.md
-            - name: スマート メーター アプリのアーキテクチャ
-              href: energy/concept-iot-central-smart-meter-app.md
-            - name: ソーラー パネル アプリのアーキテクチャ
-              href: energy/concept-iot-central-solar-panel-app.md
-        - name: 政府
-          items:
-            - name: 概要
-              href: government/overview-iot-central-government.md
-            - name: コネクテッド廃棄物の監視アーキテクチャ
-              href: government/concepts-connectedwastemanagement-architecture.md
-            - name: 水消費量の監視アーキテクチャ
-              href: government/concepts-waterconsumptionmonitoring-architecture.md
-            - name: 水質監視アーキテクチャ
-              href: government/concepts-waterqualitymonitoring-architecture.md
-        - name: 医療
-          items:
-            - name: 概要
-              href: healthcare/overview-iot-central-healthcare.md
-            - name: 患者の継続的なモニタリングのアーキテクチャ
-              href: healthcare/concept-continuous-patient-monitoring-architecture.md
     - name: デバイス テンプレートとは
       href: core/concepts-device-templates.md
     - name: デバイスの接続性
@@ -187,12 +137,14 @@
       href: core/concepts-best-practices.md
 - name: 操作方法ガイド
   items:
+    - name: アプリケーションの作成
+      href: core/howto-create-iot-central-application.md
     - name: デバイスの開発と接続
       items:
         - name: デバイス テンプレートを設定する
           href: core/howto-set-up-template.md
-        - name: デバイス テンプレートをバージョン管理する
-          href: core/howto-version-device-template.md
+        - name: デバイス テンプレートの編集
+          href: core/howto-edit-device-template.md
         - name: プロパティの使用方法
           href: core/howto-use-properties.md
         - name: コマンドの使用方法
@@ -201,94 +153,96 @@
           href: core/how-to-connect-devices-x509.md
         - name: Azure CLI を使用してデバイスの接続性を監視する
           href: core/howto-monitor-devices-azure-cli.md
+        - name: Connect IoT Edge デバイス上の Linux Windows
+          href: core/howto-connect-eflow.md
+        - name: IoT Edge の透過的なゲートウェイを経由してデバイスを接続する
+          href: core/how-to-connect-iot-edge-transparent-gateway.md
         - name: Azure Sphere DevKit を準備して接続する
-          href: core/howto-connect-sphere.md
+          href: /azure-sphere/app-development/setup-iot-central
         - name: RuuviTag デバイスを準備して接続する
           href: core/howto-connect-ruuvi.md
         - name: Rigado Cascade 500 を準備して接続する
           href: core/howto-connect-rigado-cascade-500.md
-        - name: その他の IoT クラウドの接続
-          href: core/howto-build-iotc-device-bridge.md
-        - name: デバイスを管理する
-          href: core/how-to-move-device-to-iot.md
     - name: 統合されたソリューションの構築
       items:
-        - name: ダッシュボードへのタイルの追加
-          href: core/howto-add-tiles-to-your-dashboard.md
+        - name: ダッシュボードを作成する
+          href: core/howto-manage-dashboards.md
+        - name: 位置情報データを使用する
+          href: core/howto-use-location-data.md
         - name: ルールを構成する
           href: core/howto-configure-rules.md
-        - name: 規則に基づいて Webhook を作成する
-          href: core/howto-create-webhooks.md
-        - name: 規則に基づいて Azure Monitor アクション グループを接続する
-          href: core/howto-use-action-groups.md
         - name: デバイス データを分析する
           href: core/howto-create-analytics.md
         - name: データをクラウドの宛先にエクスポートする
           href: core/howto-export-data.md
         - name: クラウドの宛先にデータをエクスポートする (レガシ)
           href: core/howto-export-data-legacy.md
+        - name: エクスポートのためにデータを内部変換する
+          href: core/howto-transform-data-internally.md
+        - name: 外部でデータを変換する
+          href: core/howto-transform-data.md
         - name: ワークフローを使用して他のサービスと統合する
           href: core/howto-configure-rules-advanced.md
         - name: カスタム規則の作成
           href: core/howto-create-custom-rules.md
         - name: Databricks を使用してカスタム分析を作成する
           href: core/howto-create-custom-analytics.md
-        - name: Power BI でのデータの視覚化
-          href: core/howto-connect-powerbi.md
-        - name: Dynamics 365 Field Services を使用してアプリを接続する
-          href: government/how-to-configure-connected-field-services.md
+        - name: その他の IoT クラウドの接続
+          href: core/howto-build-iotc-device-bridge.md
+    - name: REST API の使用
+      items:
+        - name: REST API 呼び出しの認証と承認
+          href: core/howto-authorize-rest-api.md
+        - name: デバイスのクエリ
+          href: core/howto-query-with-rest-api.md
+        - name: ユーザーとロールを管理する
+          href: core/howto-manage-users-roles-with-rest-api.md
+        - name: データのエクスポート
+          href: core/howto-manage-data-export-with-rest-api.md
+        - name: デバイス テンプレートを管理する
+          href: core/howto-manage-device-templates-with-rest-api.md
+        - name: デバイスを制御する
+          href: core/howto-control-devices-with-rest-api.md
+        - name: ジョブの管理
+          href: core/howto-manage-jobs-with-rest-api.md
+        - name: アプリケーションを管理する
+          href: core/howto-manage-iot-central-with-rest-api.md
     - name: デバイスを管理する
       items:
-        - name: デバイスの追加と削除
-          href: core/howto-manage-devices.md
-        - name: ジョブの実行
-          href: core/howto-run-a-job.md
+        - name: デバイスを個別に管理する
+          href: core/howto-manage-devices-individually.md
+        - name: デバイスを一括で管理する
+          href: core/howto-manage-devices-in-bulk.md
     - name: ソリューションの管理
       items:
         - name: アプリケーション設定の変更
           href: core/howto-administer.md
         - name: ユーザーとロールを管理する
           href: core/howto-manage-users-roles.md
-        - name: 請求書の管理
-          href: core/howto-view-bill.md
+        - name: 組織の管理
+          href: core/howto-create-organizations.md
         - name: アプリケーション UI のカスタマイズ
           href: core/howto-customize-ui.md
-        - name: アプリケーションのエクスポート
-          href: core/howto-use-app-templates.md
         - name: V2 アプリケーションを V3 へ移行する
           href: core/howto-migrate.md
-        - name: アプリケーションの正常性を監視する
-          href: core/howto-monitor-application-health.md
-        - name: アプリケーションに関する情報
-          href: core/howto-get-app-info.md
         - name: ファイルのアップロードの構成と使用
           href: core/howto-configure-file-uploads.md
-        - name: X.509 証明書のロール
-          href: core/how-to-roll-x509-certificates.md
-        - name: Azure portal からの管理
+        - name: Azure portal で管理と監視を行う
           href: core/howto-manage-iot-central-from-portal.md
-        - name: Azure CLI からの管理
+        - name: コマンド ラインから管理する
           href: core/howto-manage-iot-central-from-cli.md
-        - name: Azure PowerShell からの管理
-          href: core/howto-manage-iot-central-from-powershell.md
-        - name: プログラムで管理する
-          href: core/howto-manage-iot-central-programmatically.md
         - name: CSP ポータルからの管理
           href: core/howto-create-and-manage-applications-csp.md
-    - name: ソリューションのカスタマイズ
-      items:
-        - name: 個人用ダッシュボードの作成
-          href: core/howto-create-personal-dashboards.md
-        - name: 個人設定の管理
-          href: core/howto-manage-preferences.md
-        - name: ライブ チャットの切り替え
-          href: core/howto-show-hide-chat.md
     - name: トラブルシューティング
       items:
         - name: デバイスの接続
           href: core/troubleshoot-connection.md
+        - name: データのエクスポート
+          href: core/troubleshoot-data-export.md
     - name: よく寄せられる質問
-      href: core/howto-faq.md
+      href: core/howto-faq.yml
+    - name: 個人設定の管理
+      href: core/howto-manage-preferences.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -300,7 +254,11 @@
     - name: コード サンプル
       href: /samples/browse/?expanded=azure&products=azure-iot-central
     - name: サポート オプションとヘルプ オプション
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
+    - name: 動画リソース
+      href: 'https://www.youtube.com/playlist?list=PL1ljc761XCiYlm8Rx58jLsUp4gAspw1SG'
+    - name: IoT 用語集
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
     - name: Azure IoT のサービス
       items:
         - name: IoT Hub
@@ -309,10 +267,8 @@
           href: ../iot-dps/index.yml
         - name: IoT Edge
           href: ../iot-edge/index.yml
-        - name: IoT ソリューション アクセラレータ
-          href: ../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

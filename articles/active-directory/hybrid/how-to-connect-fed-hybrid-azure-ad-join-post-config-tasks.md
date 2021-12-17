@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58924d8ea9aef9e5c5faa5771572acec99587cdd
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88612471"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234815"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成後のタスク
 
@@ -63,7 +63,7 @@ Azure AD への登録のため、組織ネットワーク内のコンピュー�
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6.ダウンレベルの Windows デバイスに対して Azure AD シームレス SSO を有効にする
 
-組織が Azure AD へのサインインにパスワード ハッシュ同期またはパススルー認証を使っている場合は、ダウンレベルの Windows デバイスを認証するため、そのサインイン方法で Azure AD シームレス SSO を有効にします。 https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso をご覧ください。 
+組織が Azure AD へのサインインにパスワード ハッシュ同期またはパススルー認証を使っている場合は、ダウンレベルの Windows デバイスを認証するため、そのサインイン方法で [Azure AD シームレス SSO](/azure/active-directory/connect/active-directory-aadconnect-sso) を有効にします。
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7.ダウンレベルの Windows デバイスに対する Azure AD ポリシーを設定する
 
@@ -82,7 +82,7 @@ Azure AD への登録のため、組織ネットワーク内のコンピュー�
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9.ダウンレベルの Windows デバイスに Microsoft Workplace Join をインストールする
 
-インストーラーは、ユーザーのコンテキストで実行するデバイス システムにスケジュールされたタスクを作成します。 このタスクは、ユーザーが Windows にサインインするとトリガーされます。 このタスクは、統合 Windows 認証を使用して認証した後、ユーザーの資格情報を使用して、デバイスを Azure AD に参加させます。 ダウンロード センターは https://www.microsoft.com/download/details.aspx?id=53554 にあります。 
+インストーラーは、ユーザーのコンテキストで実行するデバイス システムにスケジュールされたタスクを作成します。 このタスクは、ユーザーが Windows にサインインするとトリガーされます。 このタスクは、統合 Windows 認証を使用して認証した後、ユーザーの資格情報を使用して、確認を表示せずにデバイスを Azure AD に参加させます。 ダウンロード センターは https://www.microsoft.com/download/details.aspx?id=53554 にあります。 
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10.デバイスの登録を許可するグループ ポリシーを構成する
 

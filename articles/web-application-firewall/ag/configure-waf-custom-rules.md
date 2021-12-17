@@ -8,12 +8,13 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/21/2020
 ms.author: victorh
-ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7911903de844a06b59f95e52e2d6f3f05b43ccfb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83758964"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587368"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Azure PowerShell を使用してカスタム ルールによって Application Gateway 上に Web アプリケーション ファイアウォール v2 を構成する
 
@@ -117,7 +118,7 @@ $condition = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable 
 $rule = New-AzApplicationGatewayFirewallCustomRule -Name blockEvilBot -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
  
 # Create a geo-match custom rule
-$var2 = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestUri
+$var2 = New-AzApplicationGatewayFirewallMatchVariable -VariableName RemoteAddr
 $condition2 = New-AzApplicationGatewayFirewallCondition -MatchVariable $var2 -Operator GeoMatch -MatchValue "US"  -NegationCondition $False
 $rule2 = New-AzApplicationGatewayFirewallCustomRule -Name allowUS -Priority 14 -RuleType MatchRule -MatchCondition $condition2 -Action Allow
 

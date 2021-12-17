@@ -2,19 +2,19 @@
 title: キーの種類、アルゴリズム、および操作 - Azure Key Vault
 description: サポートされているキーの種類、アルゴリズム、および操作 (詳細)。
 services: key-vault
-author: amitbapat
+author: mbaldwin
 manager: msmbaldwin
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.author: ambapat
-ms.openlocfilehash: 675c4f04ece322000ae0ebb44d6291c455db9397
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mbaldwin
+ms.openlocfilehash: 3f3db4b694dd825b15cf80be247bf43780e1d381
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98133278"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563003"
 ---
 # <a name="key-types-algorithms-and-operations"></a>キーの種類、アルゴリズム、および操作
 
@@ -75,7 +75,7 @@ Key Vault では、コンテナーとマネージド HSM という 2 つのリ�
 
 ##  <a name="key-operations"></a>キーの操作
 
-Managed HSM では、キー オブジェクトに対する以下の操作がサポートされています。  
+Managed HSM などの Key Vault では、キー オブジェクトに対する以下の操作がサポートされています。  
 
 -   **作成**:クライアントは、Key Vault にキーを作成できます。 キーの値は、Key Vault によって生成されて格納され、クライアントにはリリースされません。 Key Vault では非対称キーを作成できます。  
 -   **Import**:クライアントは、既存のキーを Key Vault にインポートできます。 JWK コンストラクト内の複数のパッケージング方法を使用して、非対称キーを Key Vault にインポートできます。 

@@ -3,20 +3,20 @@ title: Azure SQL Database のファイル領域管理
 description: このページでは、Azure SQL Database の単一データベースおよびプールされたデータベースを使用してファイル領域を管理する方法について説明します。また、単一データベースまたはプールされたデータベースを縮小する必要があるかどうかを判断する方法、データベースの縮小操作を実行する方法を示すコード サンプルを紹介します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
-ms.custom: sqldbrb=1
+ms.subservice: deployment-configuration
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: jrasnick, sstein
-ms.date: 12/22/2020
-ms.openlocfilehash: 7bb754b892715adffc6ead99f3d866f9f9d8af9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: jrasnick, wiassaf
+ms.date: 08/09/2021
+ms.openlocfilehash: 27adb19b07dc67a91d1bdafb6aac54ad59eaa778
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99096493"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178465"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Azure SQL Database でデータベースのファイル領域を管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,24 +36,19 @@ Azure SQL Database では、データベースの基礎となるデータ ファ
 - 単一データベースまたはエラスティック プールの最大サイズの縮小を許可する。
 - 単一データベースまたはエラスティック プールを、よりサイズ上限の低い異なるサービス レベルまたはパフォーマンス レベルに変更することを許可する。
 
+> [!NOTE]
+> 圧縮操作は、通常のメンテナンス操作と見なすことはできません。 通常の定期的なビジネス操作のために増加するデータ ファイルとログ ファイルには、圧縮操作は必要ではありません。 
+
 ### <a name="monitoring-file-space-usage"></a>ファイル領域の使用状況の監視
 
-Azure portal に表示されるほとんどのストレージ領域のメトリックと次の API は、使用されるデータ ページのサイズを測定するだけです。
+次の API に表示されるほとんどのストレージ領域メトリックでは、使用されているデータ ページのサイズだけが測定されます。
 
 - PowerShell [get-metrics](/powershell/module/az.monitor/get-azmetric) などの Azure Resource Manager ベースのメトリック API
-- T-SQL: [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 ただし、次の API は、データベースとエラスティック プールに割り当てられている領域のサイズを測ることもできます。
 
 - T-SQL: [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
-
-### <a name="shrinking-data-files"></a>データ ファイルの圧縮
-
-データベースのパフォーマンスに影響を与える可能性があるため、未使用の割り当て領域を再利用するために Azure SQL Database がデータ ファイルを自動的に縮小することはありません。  ただし、「[未使用の割り当て済み領域を再利用する](#reclaim-unused-allocated-space)」で説明されている手順に従って、データ ファイルを選択した時点でセルフサービスによって縮小できます。
-
-> [!NOTE]
-> データ ファイルとは異なり、ログ ファイルの操作はデータベースのパフォーマンスに影響を与えないため、ログ ファイルは Azure SQL Database によって自動的に縮小されます。
 
 ## <a name="understanding-types-of-storage-space-for-a-database"></a>データベースの記憶域スペースの種類
 
@@ -61,7 +56,7 @@ Azure portal に表示されるほとんどのストレージ領域のメトリ�
 
 |データベースの量|定義|説明|
 |---|---|---|
-|**使用済みのデータ領域**|データベース データを 8 KB ページに格納するために使用された領域の量。|一般的に、使用済みの領域は挿入 (削除) で増加 (減少) します。 操作に関連するデータの量とパターン、および断片化によっては、挿入または削除時に使用される領域が変わらない場合があります。 たとえば、各データ ページから 1 行を削除しても、使用される領域が減らない場合があります。|
+|**使用済みのデータ領域**|データベース データを格納するために使用された領域の量。|一般的に、使用済みの領域は挿入 (削除) で増加 (減少) します。 操作に関連するデータの量とパターン、および断片化によっては、挿入または削除時に使用される領域が変わらない場合があります。 たとえば、各データ ページから 1 行を削除しても、使用される領域が減らない場合があります。|
 |**割り当て済みのデータ領域**|データベース データの格納に使用できるフォーマット済みファイル領域の量。|割り当て済みの領域の量は自動的に増えますが、削除後に自動的に減ることはありません。 このような動作で領域を再フォーマットする必要がないため、以降の挿入はより高速になります。|
 |**割り当て済みで未使用のデータ領域**|割り当て済みのデータ領域と使用済みのデータ領域の差。|この量は、データベースのデータ ファイルを縮小して再利用できる空き領域の上限を表します。|
 |**データの最大サイズ**|データベース データの格納に使用できる領域の最大量。|データの最大サイズを超えて割り当て済みのデータ領域を拡大することはできません。|
@@ -203,41 +198,90 @@ ORDER BY end_time DESC;
 
 ## <a name="reclaim-unused-allocated-space"></a>未使用の割り当て済み領域を再利用する
 
-> [!NOTE]
+> [!IMPORTANT]
 > 縮小コマンドは、実行中のデータベース パフォーマンスに影響を及ぼすため、可能であれば、使用率が低い期間中に実行してください。
 
-### <a name="dbcc-shrink"></a>DBCC の圧縮
+### <a name="shrinking-data-files"></a>データ ファイルの圧縮
 
-未使用の割り当て済み領域を再利用するためのデータベースが特定されると、各データベースのデータ ファイルを圧縮するように次のコマンドのデータベース名を変更します。
+データベースのパフォーマンスに影響を与える可能性があるため、Azure SQL Database ではデータ ファイルは自動的には圧縮されません。 ただし、顧客は、任意の時点で、セルフサービスによってデータ ファイルを圧縮できます。 これは定期的にスケジュールされた操作ではなく、データ ファイルの使用領域の消費量が大幅に減少した場合の 1 回きりのイベントである必要があります。
+
+Azure SQL Database では、`DBCC SHRINKDATABASE` または `DBCC SHRINKFILE` コマンドを使用してファイルを圧縮できます。
+
+- `DBCC SHRINKDATABASE` ではすべてのデータベース データとログ ファイルが圧縮されますが、通常は必要ありません。 このコマンドでは、一度に 1 つのファイルを圧縮します。 また、[ログ ファイルも圧縮されます](#shrinking-transaction-log-file)。 必要に応じて、Azure SQL Database によってログ ファイルが自動的に圧縮されます。
+- `DBCC SHRINKFILE` コマンドでは、より高度なシナリオがサポートされます。
+    - データベース内のすべてのファイルを圧縮するのではなく、必要に応じて個々のファイルを対象にすることができます。
+    - 各 `DBCC SHRINKFILE` コマンドを他の `DBCC SHRINKFILE` コマンドと並列して実行することで、データベースをより高速に圧縮できます。ただし、リソースの使用率が高くなり、圧縮中に実行されるユーザー クエリがブロックされる可能性が高くなります。
+    - ファイルの末尾にデータが含まれていない場合は、TRUNCATEONLY 引数を指定することで、割り当てられたファイル サイズをはるかに高速に縮小できます。 この場合、ファイル内でのデータ移動は必要ありません。
+- これらの圧縮コマンドの詳細については、「[DBCC SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)」または「[DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql)」を参照してください。
+
+次の例は、`master` データベースではなく、ターゲット ユーザー データベースに接続しているときに実行する必要があります。
+
+`DBCC SHRINKDATABASE` を使用して、特定のデータベースのすべてのデータ ファイルとログ ファイルを圧縮するには、次のようにします。
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'db1');
+DBCC SHRINKDATABASE (N'database_name');
 ```
 
-縮小コマンドは、実行中のデータベース パフォーマンスに影響を及ぼすため、可能であれば、使用率が低い期間中に実行してください。  
+Azure SQL Database では、1 つのデータベースに 1 つ以上のデータ ファイルを含めることができます。 追加のデータ ファイルは、自動的に作成することしかできません。 データベースのファイル レイアウトを確認するには、次のサンプル スクリプトを使用して `sys.database_files` カタログ ビューに対してクエリを実行します。
 
-また、データベース ファイルの縮小によってパフォーマンスが低下するおそれがあることにも注意する必要があります。下の「[**インデックスの再構築**](#rebuild-indexes)」セクションを参照してください。
+```sql
+-- Review file properties, including file_id values to reference in shrink commands
+SELECT file_id,
+       name,
+       CAST(FILEPROPERTY(name, 'SpaceUsed') AS bigint) * 8 / 1024. AS space_used_mb,
+       CAST(size AS bigint) * 8 / 1024. AS space_allocated_mb,
+       CAST(max_size AS bigint) * 8 / 1024. AS max_size_mb
+FROM sys.database_files
+WHERE type_desc IN ('ROWS','LOG');
+GO
+```
 
-このコマンドの詳細については、[SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) を参照してください。
+次の例のように、`DBCC SHRINKFILE` コマンドを使用して 1 つのファイルだけに対して圧縮を実行します。
+
+```sql
+-- Shrink database data file named 'data_0` by removing all unused at the end of the file, if any.
+DBCC SHRINKFILE ('data_0', TRUNCATEONLY);
+GO
+```
+
+また、データベース ファイルの縮小によってパフォーマンスが低下するおそれがあることにも注意する必要があります。下の[インデックスの再構築](#rebuild-indexes)に関するセクションを参照してください。 
+
+### <a name="shrinking-transaction-log-file"></a>トランザクション ログ ファイルの圧縮
+
+データ ファイルとは異なり、Azure SQL Database では、領域不足エラーが発生する可能性のある領域の過剰使用を防ぐために、トランザクション ログ ファイルが自動的に圧縮されます。 通常は、お客様がトランザクション ログ ファイルを圧縮する必要はありません。
+
+Premium および Business Critical サービス レベルでは、トランザクション ログのサイズが大きくなると、ローカル ストレージの使用量が[最大ローカル ストレージ](resource-limits-logical-server.md#storage-space-governance)の制限に近づく大きな一因となる可能性があります。 ローカル ストレージの使用量が上限に近づいている場合は、次の例に示すように、[DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql) コマンドを使用してトランザクション ログを圧縮できます。 これにより、定期的な自動圧縮操作を待たずに、コマンドが完了するとすぐにローカル ストレージが解放されます。
+
+次の例は、master データベースではなく、ターゲット ユーザー データベースに接続しているときに実行する必要があります。
+
+```tsql
+-- Shrink the database log file (always file_id = 2), by removing all unused space at the end of the file, if any.
+DBCC SHRINKFILE (2, TRUNCATEONLY);
+```
 
 ### <a name="auto-shrink"></a>自動圧縮
 
-代わりに、データベースの自動圧縮を有効にすることもできます。  自動圧縮では、ファイル管理の複雑さが軽減され、`SHRINKDATABASE` または `SHRINKFILE` よりもデータベース パフォーマンスへの影響が低くなります。  自動圧縮は、多数のデータベースがあるエラスティック プールの管理に、特に役立てることができます。  ただし、自動圧縮は、`SHRINKDATABASE` および `SHRINKFILE` よりもファイル領域の解放の効果が低くなる可能性があります。
-既定では、自動圧縮は、ほとんどのデータベースで推奨されているように無効になっています。 詳細については、「[AUTO_SHRINK に関する考慮事項](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink)」を参照してください。
+代わりに、データベースの自動圧縮を有効にすることもできます。 ただし、自動圧縮は、`DBCC SHRINKDATABASE` および `DBCC SHRINKFILE` よりもファイル領域の解放の効果が低くなる可能性があります。  
 
-自動圧縮を有効にするには、次のコマンドのデータベースの名前を変更します。
+自動圧縮は、エラスティック プールに多くのデータベースが含まれており、使用されているデータ ファイル領域が大幅に増減する場合に役立ちます。 これは一般的なシナリオではありません。 
+
+既定では、自動圧縮は無効になっています。これは、ほとんどのデータベースで推奨されます。 自動圧縮を有効にすることが必要になった場合は、永続的に有効にしておくのではなく、領域管理の目標を達成したら無効にすることをお勧めします。 詳細については、「[AUTO_SHRINK に関する考慮事項](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink)」を参照してください。
+
+自動圧縮を有効にするには、(master データベースではなく) 対象のデータベースに接続しているときに次のコマンドを実行します。
 
 ```sql
--- Enable auto-shrink for the database.
-ALTER DATABASE [db1] SET AUTO_SHRINK ON;
+-- Enable auto-shrink for the current database.
+ALTER DATABASE CURRENT SET AUTO_SHRINK ON;
 ```
 
 このコマンドの詳細については、[DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options) オプションをご覧ください。
 
-### <a name="rebuild-indexes"></a>インデックスの再構築
+### <a name="index-maintenance-before-or-after-shrink"></a><a name="rebuild-indexes"></a>圧縮の前または後のインデックスのメンテナンス
 
-データベース データ ファイルの縮小後は、インデックスが断片化され、パフォーマンスの最適化の効果が失われる可能性があります。 パフォーマンスの低下が発生した場合、データベース インデックスの再構築を検討します。 インデックスの断片化と再構築の詳細については、「[インデックスの再構成と再構築](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)」を参照してください。
+データ ファイルに対して圧縮操作を完了すると、インデックスが断片化し、大規模なスキャンを使用するクエリなど、特定のワークロードに対するパフォーマンスの最適化の有効性が失われる可能性があります。 圧縮操作の完了後にパフォーマンスが低下する場合は、インデックスを再構築するためのインデックスのメンテナンスを検討してください。 
+
+データベース内のページの密度が低い場合は、各データ ファイルで移動の必要なページ数が増えるため、圧縮時間が長くなります。 圧縮コマンドを実行する前に、平均ページ密度を確認することをお勧めします。 ページの密度が低い場合は、圧縮を実行する前にインデックスを再構築または再編成して、ページの密度を増やします。 ページ密度を確認するサンプル スクリプトなどの詳細については、「[クエリのパフォーマンスを向上させてリソースの消費を削減するためにインデックスのメンテナンスを最適化する](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -246,5 +290,3 @@ ALTER DATABASE [db1] SET AUTO_SHRINK ON;
   - [DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](resource-limits-dtu-single-databases.md)
   - [Azure SQL Database のエラスティック プールに対する仮想コアベースの購入モデルの制限](resource-limits-vcore-elastic-pools.md)
   - [DTU ベースの購入モデルを使用したエラスティック プールのリソース制限](resource-limits-dtu-elastic-pools.md)
-- `SHRINKDATABASE` コマンドの詳細については、[SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) を参照してください。
-- インデックスの断片化と再構築の詳細については、「[インデックスの再構成と再構築](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)」を参照してください。

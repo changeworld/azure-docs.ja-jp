@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 03/05/2021
+ms.date: 07/22/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3359152455df2701d897689a1f177bf63051b94b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: b87af97dd99fa88dc5aaa0cd5bdd8a2a23032104
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440719"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690423"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Azure にデータをインポートするために Azure Data Box の使用を開始する
 
@@ -47,7 +47,7 @@ ms.locfileid: "102440719"
 - [ Data Box の安全性のガイドライン](data-box-safety.md)を確認します。
 - Data Box にコピーするデータが格納されているホスト コンピューターがあること。 このホスト コンピューターは次の条件を満たしている必要があります。
     - [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。
-    - 高速ネットワークに接続していること。 少なくとも 1 本の 10 GbE 接続を利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用できますが、コピーの速度が影響を受けます。 
+    - 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用できますが、コピーの速度が影響を受けます。 
 - Data Box を設置できる平らな場所があること。 デバイスを標準的なラック棚に設置しようとする場合は、データ センター ラックに 7U のスロットが必要です。 デバイスは平面に置くことも、ラックに立てて置くこともできます。
 - Data Box をホスト コンピューターに接続するために以下のケーブルを用意していること。
     - 10 GbE SFP+ Twinax 銅線ケーブル 2 本 (DATA 1、DATA 2 ネットワーク インターフェイスで使用)
@@ -102,9 +102,9 @@ Data Box を入手したら、次の手順に従ってデバイスのケーブ�
 2. デバイスのケーブルを接続する前に、次のケーブルがあることを確認します。
     
     - (付属品) デバイス接続用の IEC60320 C-13 コネクタが付いた定格 10A 以上のアース付き電源コード。
-    - RJ-45 CAT 6 ネットワーク ケーブル 1 本 (MGMT ネットワーク インターフェイスで使用)
-    - 10 GbE SFP+ Twinax 銅線ケーブル 2 本 (10 Gbps DATA 1、DATA 2 ネットワーク インターフェイスで使用)
-    - RJ-45 CAT 6A OR ネットワーク ケーブル 1 本、RJ-45 CAT 6 ネットワーク ケーブル 1 本 (それぞれ 10 Gbps または 1 Gbps として構成されている DATA 3 ネットワーク インターフェイスで使用)
+    - (付属しない) RJ-45 CAT 6 ネットワーク ケーブル 1 本 (MGMT ネットワーク インターフェイスで使用)
+    - (付属しない) 10 GbE SFP + Twinax 銅線ケーブル 2 本 (10 Gbps DATA 1、DATA 2 ネットワーク インターフェイスで使用)
+    - (付属しない) RJ-45 CAT 6A OR ネットワーク ケーブル 1 本、RJ-45 CAT 6 ネットワーク ケーブル 1 本 (それぞれ 10 Gbps または 1 Gbps として構成されている DATA 3 ネットワーク インターフェイスで使用)
 
 3. デバイスを取り外して平らな場所に置きます。 
     

@@ -5,18 +5,16 @@ description: Azure DNS で、DNS ゾーンとレコードを作成する方法�
 services: dns
 author: duongau
 ms.author: duau
-ms.date: 09/8/2020
+ms.date: 6/2/2021
 ms.topic: quickstart
 ms.service: dns
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 34e810fa8244cf3ff00e57f193624a2c1fa4d755
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell, subject-armqs, mode-arm
+ms.openlocfilehash: dba996bcd4d2416a41ac6a7f1ad94804c0ecb839
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107539009"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033097"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>ARM テンプレートを使用して Azure DNS ゾーンとレコードを作成する
 
@@ -26,7 +24,7 @@ ms.locfileid: "107539009"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、**[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-dns-new-zone%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazure-dns-new-zone%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,11 +32,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azure-dns-new-zone)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/azure-dns-new-zone)からのものです。
 
 このクイックスタートでは、サフィックスが `azurequickstart.org` である一意の DNS ゾーンを作成します。 2 つの IP アドレスを指す `A` レコードも、ゾーン内に配置されます。
 
-:::code language="json" source="~/quickstart-templates/101-azure-dns-new-zone/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/azure-dns-new-zone/azuredeploy.json":::
 
 テンプレートでは、2 つの Azure リソースが定義されています。
 
@@ -54,7 +52,7 @@ Azure Traffic Manager に関連するテンプレートをさらに探すには�
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-azure-dns-new-zone/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/azure-dns-new-zone/azuredeploy.json"
 
     $resourceGroupName = "${projectName}rg"
 

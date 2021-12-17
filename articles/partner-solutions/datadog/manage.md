@@ -3,15 +3,15 @@ title: Datadog リソースを管理する - Azure パートナー ソリュー�
 description: この記事では、Azure portal での Datadog リソースの管理について説明します。 シングル サインオンをセットアップし、Confluent 組織を削除し、サポートを受ける方法。
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 02/19/2021
+ms.date: 05/28/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 04aef540bc134e5ec307be6a232ce47f0923e528
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e964fd436795e19cc77a25efa95de5f6fcac87ca
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046353"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652448"
 ---
 # <a name="manage-the-datadog-resource"></a>Datadog リソースを管理する
 
@@ -130,6 +130,16 @@ Azure Active Directory でシングル サインオンを確立するには、 *
  
 :::image type="content" source="media/manage/reconfigure-single-sign-on.png" alt-text="シングル サインオン アプリケーションを再構成します。" border="true":::
  
+## <a name="change-plan"></a>プランの変更
+
+Datadog 課金プランを変更するには、 **[概要]** に移動し、 **[プランの変更]** を選択します。
+
+:::image type="content" source="media/manage/datadog-select-change-plan.png" alt-text="[Datadog 課金プランの変更] を選択します。" border="true":::
+
+テナントで使用可能なすべての Datadog プランがポータルで取得されます。 適切なプランを選択し、 **[プランの変更]** をクリックします。
+
+:::image type="content" source="media/manage/datadog-change-plan.png" alt-text="変更する Datadog 課金プランを選択します。" border="true":::
+  
 ## <a name="disable-or-enable-integration"></a>統合を無効または有効にする
 
 Azure から Datadog へのログとメトリックの送信を停止できます。 メトリックとログの監視に関係のない他の Datadog サービスについては、引き続き課金されます。
@@ -151,12 +161,6 @@ Azure と Datadog の統合を有効にするには、 **[概要]** に移動し
 Datadog 組織にマップされている Datadog リソースが 1 つだけの場合、ログとメトリックは Datadog に送信されなくなります。 Azure Marketplace を通じた Datadog への課金は、すべて停止します。
 
 複数の Datadog リソースが Datadog 組織にマップされている場合、Datadog リソースを削除することによって停止されるのは、その Datadog リソースについてのログとメトリックの送信だけです。 Datadog 組織は他の Azure リソースにリンクされているため、Azure Marketplace を通じた課金は継続されます。
-
-## <a name="getting-support"></a>サポートの利用
-
-Azure と Datadog の統合に関してサポートに問い合わせるには、左側のペインで **[新しいサポート リクエスト]** を選択します。 Datadog ポータルへのリンクを選択します。
-
-:::image type="content" source="media/manage/support-request.png" alt-text="新しい Datadog サポート リクエストを作成します" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

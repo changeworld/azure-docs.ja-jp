@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 03/18/2021
-ms.openlocfilehash: 184c8099c0e86d8f8744948137b344c732bbf7b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55e8efc7b49f14f6eb4cfe399866e53df29e3e36
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778391"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767064"
 ---
 # <a name="dependency-analysis"></a>依存関係の分析
 
@@ -31,7 +31,7 @@ ms.locfileid: "104778391"
 
 **オプション** | **詳細** | **パブリック クラウド** | **Azure Government**
 ----  |---- | ----
-**エージェントレス** | vSphere API を使用して VMware 上のサーバーのデータをポーリングします。<br/><br/> サーバーにエージェントをインストールする必要はありません。<br/><br/> このオプションは現在プレビュー段階であり、VMware 上のサーバーのみが対象です。 | サポートされています。 | サポートされています。
+**エージェントレス** | vSphere API を使用して VMware 上のサーバーのデータをポーリングします。<br/><br/> サーバーにエージェントをインストールする必要はありません。<br/><br/> このオプションは現在、VMware 上のサーバーのみが対象です。 | サポートされています。 | サポートされています。
 **エージェントベースの分析** | 依存関係の視覚化と分析を可能にするため、Azure Monitor の [Service Map ソリューション](../azure-monitor/vm/service-map.md)を使用します。<br/><br/> 分析するオンプレミスのサーバーそれぞれに、エージェントをインストールする必要があります。 | サポートされています | サポートされていません。
 
 ## <a name="agentless-analysis"></a>エージェントレスの分析
@@ -71,7 +71,7 @@ ms.locfileid: "104778391"
 
 **要件** | **エージェントレス** | **エージェント ベース**
 --- | --- | ---
-**サポート** | VMware 上のサーバーのみが対象のプレビュー段階です。 サポートされているオペレーティング システムについては[こちらを確認してください](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)。 | 一般提供 (GA) 中。
+**サポート** | VMware 上のサーバーのみ利用できます。 サポートされているオペレーティング システムについては[こちらを確認してください](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)。 | 一般提供 (GA) 中。
 **エージェント** | 分析対象のサーバーにエージェントは必要ありません。 | 分析するオンプレミスのサーバーそれぞれにエージェントが必要です。
 **Log Analytics** | 不要。 | Azure Migrate では、依存関係の分析のために [Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)の [Service Map](../azure-monitor/vm/service-map.md) ソリューションを使用します。<br/><br/> Log Analytics ワークスペースをプロジェクトに関連付けます。 ワークスペースは、米国東部リージョン、東南アジア リージョン、または西ヨーロッパ リージョンに存在する必要があります。 ワークスペースは、[Service Map がサポートされている](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)リージョンに存在する必要があります。
 **処理** | TCP 接続データをキャプチャします。 検出後は、5 分間隔でデータが収集されます。 | サーバーにインストールされている Service Map エージェントにより、TCP プロセスと、各プロセスの受信/送信接続に関するデータが収集されます。

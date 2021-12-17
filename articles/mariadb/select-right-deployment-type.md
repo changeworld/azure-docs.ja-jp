@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e99d94fbd4ab91c2ba51ca7922873b8338f7da85
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664520"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033304"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Azure で適切な MariaDB サーバーオプションを選択する
 
@@ -41,7 +41,7 @@ Azure では、MariaDB サーバーのワークロードをホスト型仮想マ
 | ハイブリッド シナリオ | [データイン レプリケーション](concepts-data-in-replication.md)を使用すると、外部の MariaDB サーバーから Azure Database for MariaDB サービスにデータを同期できます。 外部サーバーとして、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスを使用できます。<br/><br/> [読み取りレプリカ](concepts-read-replicas.md)機能を使用すると、Azure Database for MariaDB ソース サーバーから、最大 5 台の読み取り専用レプリカ サーバーにデータをレプリケートできます。 レプリカは、同じ Azure リージョン内に存在するか、複数のリージョンにまたがっています。 読み取り専用レプリカは、binlog レプリケーション テクノロジを使用して非同期的に更新されます。<br/><br/>リージョン間読み取りレプリケーションは、現在パブリック プレビュー段階です。| お客様が管理
 | バックアップと復元 | [サーバーのバックアップ](concepts-backup.md#backups)を自動的に作成し、ローカル冗長または geo 冗長のいずれかであるユーザー構成ストレージに保存します。 このサービスでは、完全バックアップ、差分バックアップ、およびトランザクション ログ バックアップが作成されます。 | お客様が管理 |
 | データベース操作の監視 | お客様は、データベース操作に[アラートを設定](concepts-monitoring.md)し、しきい値に達したときに対応できます。 | お客様が管理 |
-| 高度な脅威保護 | [Advanced Threat Protection](howto-database-threat-protection-portal.md) を提供します。 この保護により、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。<br/><br/>Advanced Threat Protection は現在パブリック プレビュー段階です。| お客様は自身でこの保護を構築する必要があります。
+| 高度な脅威保護 | Advanced Threat Protection を提供します。 この保護により、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。<br/><br/>Advanced Threat Protection は現在パブリック プレビュー段階です。| お客様は自身でこの保護を構築する必要があります。
 | 障害復旧 | ユーザー構成の[ローカル冗長または geo 冗長ストレージ](howto-restore-server-portal.md)に自動バックアップを保存します。 バックアップを使用して、特定の時点にサーバーを復元することもできます。 保持期間は 7 日から 35 日の範囲です。 復元は、Azure portal を使用して実行できます。 | お客様が全面的に管理します。 責任には、スケジュール設定、テスト、アーカイブ、ストレージ、保持が含まれますが、これに限定されるものではありません。 追加のオプションとして、Azure Recovery Services コンテナーを使用して、Azure VM と VM 上のデータベースをバックアップすることができます。 このオプションはプレビュー段階です。 |
 | パフォーマンスに関する推奨事項 | システム生成の使用状況ログ ファイルに基づいて、[パフォーマンスに関する推奨事項](https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110)をお客様に提供します。 推奨事項は、ワークロードを最適化するのに役立ちます。<br/><br/>パフォーマンスに関する推奨事項は現在パブリック プレビュー段階です。 | お客様が管理 |
 

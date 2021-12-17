@@ -7,8 +7,8 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: サンプル シナリオの探索
-      href: quickstart-adt-explorer.md
+    - name: Azure Digital Twins Explorer の概要
+      href: quickstart-azure-digital-twins-explorer.md
 - name: チュートリアル
   items:
     - name: クライアント アプリをコーディングする
@@ -41,8 +41,20 @@
       href: concepts-query-language.md
     - name: クエリ単位
       href: concepts-query-units.md
-    - name: 他のサービスとの統合
-      href: concepts-integration.md
+    - name: Azure Data Explorer を使用したクエリ
+      href: concepts-data-explorer-plugin.md
+    - name: 開発者インターフェイス
+      items:
+        - name: Azure Digital Twins Explorer
+          href: concepts-azure-digital-twins-explorer.md
+        - name: API と SDK
+          href: concepts-apis-sdks.md
+        - name: CLI コマンド セット
+          href: concepts-cli.md
+    - name: データのイングレスとエグレス
+      href: concepts-data-ingress-egress.md
+    - name: イベント通知
+      href: concepts-event-notifications.md
     - name: イベント ルート
       href: concepts-route-events.md
     - name: Azure Digital Twins ソリューションのセキュリティ
@@ -53,28 +65,24 @@
   items:
     - name: 配置
       items:
-        - name: Azure Digital Twins CLI を使用する
-          href: how-to-use-cli.md
         - name: インスタンスと認証を設定する
           items:
-            - name: ポータルのバージョン
+            - name: ポータル
               href: how-to-set-up-instance-portal.md
-            - name: CLI のバージョン
+            - name: CLI
               href: how-to-set-up-instance-cli.md
-            - name: PowerShell バージョン
+            - name: PowerShell
               href: how-to-set-up-instance-powershell.md
-            - name: スクリプト化バージョン
-              href: how-to-set-up-instance-scripted.md
         - name: Private Link でプライベート アクセスを有効にする
-          items:
-            - name: ポータルのバージョン
-              href: how-to-enable-private-link-portal.md
-            - name: CLI のバージョン
-              href: how-to-enable-private-link-cli.md
+          href: how-to-enable-private-link.md
         - name: アプリ認証コードを作成する
           href: how-to-authenticate-client.md
         - name: アプリの登録を作成する
-          href: how-to-create-app-registration.md
+          items:
+            - name: ポータル
+              href: how-to-create-app-registration-portal.md
+            - name: CLI
+              href: how-to-create-app-registration-cli.md
         - name: インスタンスを別のリージョンに移動する
           href: how-to-move-regions.md
     - name: モデルを設計する
@@ -87,23 +95,19 @@
           href: how-to-use-tags.md
     - name: ライブ実行環境を使用する
       items:
+        - name: Azure Digital Twins Explorer を使用する
+          href: how-to-use-azure-digital-twins-explorer.md
         - name: デジタル ツインを管理する
           href: how-to-manage-twin.md
-        - name: リレーションシップを使ってツイン グラフを管理する
+        - name: ツイン グラフとリレーションシップを管理する
           href: how-to-manage-graph.md
-        - name: イベント データを解釈する
-          href: how-to-interpret-event-data.md
-        - name: データを処理するための Azure 関数を設定する
-          href: how-to-create-azure-function.md
+        - name: ツインからツインへのイベント処理を設定する
+          href: how-to-send-twin-to-twin-events.md
         - name: ツイン グラフにクエリを実行する
           href: how-to-query-graph.md
     - name: クライアント アプリの開発
       items:
-        - name: API と SDK を使用する
-          href: how-to-use-apis-sdks.md
-        - name: AutoRest を使用してカスタム言語の SDK を作成する
-          href: how-to-create-custom-sdks.md
-        - name: Postman で要求を行う
+        - name: Postman で API 要求を行う
           href: how-to-use-postman.md
         - name: Azure SignalR Service と統合する
           href: how-to-integrate-azure-signalr.md
@@ -115,40 +119,40 @@
           href: how-to-provision-using-device-provisioning-service.md
         - name: Logic Apps との統合
           href: how-to-integrate-logic-apps.md
+        - name: Azure Digital Twins に OPC UA データを取り込む
+          href: how-to-ingest-opcua-data.md
     - name: 出力を接続する
       items:
         - name: エンドポイントとルートを管理する
-          items:
-            - name: ポータルのバージョン
-              href: how-to-manage-routes-portal.md
-            - name: API と CLI のバージョン
-              href: how-to-manage-routes-apis-cli.md
-        - name: ルーティング イベントのマネージド ID を有効にする
-          items:
-            - name: ポータルのバージョン
-              href: how-to-enable-managed-identities-portal.md
-            - name: CLI のバージョン
-              href: how-to-enable-managed-identities-cli.md
+          href: how-to-manage-routes.md
+        - name: マネージド ID を使用してイベントをルーティングする
+          href: how-to-route-with-managed-identity.md
         - name: Azure Maps と統合する
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights と統合する
           href: how-to-integrate-time-series-insights.md
     - name: 監視とトラブルシューティング
       items:
-        - name: Azure Monitor のメトリックを表示する
+        - name: メトリック
           href: troubleshoot-metrics.md
-        - name: 診断ログの有効化とクエリ
+        - name: 診断ログ
           href: troubleshoot-diagnostics.md
-        - name: アラートを有効にする
+        - name: アラート
           href: troubleshoot-alerts.md
-        - name: リソースの正常性を理解する
+        - name: パフォーマンス
+          href: troubleshoot-performance.md
+        - name: リソース ヘルス
           href: troubleshoot-resource-health.md
         - name: 既知の問題
           href: troubleshoot-known-issues.md
         - name: 問題解決
           items:
-            - name: 403 (許可されていません)
+            - name: エラー 403 (許可されていません)
               href: troubleshoot-error-403.md
+            - name: エラー 404 (サブドメインが見つかりません)
+              href: troubleshoot-error-404.md
+            - name: Azure Digital Twins Explorer の認証エラー
+              href: troubleshoot-error-azure-digital-twins-explorer-authentication.md
 - name: リファレンス
   items:
     - name: REST API リファレンス
@@ -158,23 +162,43 @@
         - name: コントロール プレーン
           items:
             - name: .NET (C#) SDK
-              href: /dotnet/api/overview/azure/digitaltwins/management
+              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true
             - name: Java SDK
-              href: /java/api/overview/azure/digitaltwins/resourcemanagement
+              href: /java/api/overview/azure/digitaltwins/resourcemanagement?view=azure-java-stable&preserve-view=true
         - name: データ プレーン
           items:
             - name: .NET (C#) SDK
-              href: /dotnet/api/overview/azure/digitaltwins/client
+              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true
             - name: Java SDK
-              href: /java/api/overview/azure/digitaltwins/client
+              href: /java/api/overview/azure/digitaltwins/client?view=azure-java-stable&preserve-view=true
             - name: JavaScript SDK
-              href: /javascript/api/@azure/digital-twins-core/
+              href: /javascript/api/@azure/digital-twins-core/?view=azure-node-latest&preserve-view=true
             - name: Python SDK
-              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core
+              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true
     - name: Digital Twins CLI
-      href: /cli/azure/ext/azure-iot/dt
+      href: /cli/azure/dt?view=azure-cli-latest&preserve-view=true
     - name: DTDL v2 の仕様
       href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+    - name: クエリ言語リファレンス
+      items:
+        - name: 句
+          items:
+            - name: SELECT
+              href: reference-query-clause-select.md
+            - name: FROM
+              href: reference-query-clause-from.md
+            - name: MATCH
+              href: reference-query-clause-match.md
+            - name: JOIN
+              href: reference-query-clause-join.md
+            - name: WHERE
+              href: reference-query-clause-where.md
+        - name: 関数
+          href: reference-query-functions.md
+        - name: 演算子
+          href: reference-query-operators.md
+        - name: 予約されているキーワード
+          href: reference-query-reserved.md
 - name: リソース
   items:
     - name: Digital Twins サービスに関する制約
@@ -255,12 +279,12 @@
           href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: ツールとサンプル プロジェクト
       items:
+        - name: Azure Digital Twins Explorer
+          href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
         - name: Azure Digital Twins Postman コレクション
           href: 'https://github.com/microsoft/azure-digital-twins-postman-samples'
         - name: Azure Digital Twins のエンドツーエンド サンプル
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
-        - name: Azure Digital Twins エクスプローラー (サンプル)
-          href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
         - name: DTDL 検証ツール (サンプル)
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: モデル アップローダー (サンプル)
@@ -277,6 +301,14 @@
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
         - name: デバイス シミュレーター サービス
           href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
+    - name: オントロジ
+      items:
+        - name: スマート ビルディング
+          href: 'https://github.com/Azure/opendigitaltwins-building'
+        - name: スマート シティ
+          href: 'https://github.com/Azure/opendigitaltwins-smartcities'
+        - name: エネルギー グリッド
+          href: 'https://github.com/Azure/opendigitaltwins-energygrid/'
     - name: DTDL
       items:
         - name: VS Code 用の DTDL 拡張機能
@@ -289,8 +321,6 @@
           href: 'https://github.com/Azure/digital-twin-model-identifier'
     - name: '次のことを学びます:Azure Digital Twins を使用した開発'
       href: /learn/paths/develop-azure-digital-twins/
-    - name: Channel 9 の動画
-      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: 顧客事例
       href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
     - name: Azure ツール

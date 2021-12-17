@@ -5,12 +5,13 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: b765d92778df40caec0864dc6f547324216fdb07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ae7eaa628e0e3cfc256b7cd01035d9e068f47867
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611982"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671119"
 ---
 # <a name="infrastructure-as-code"></a>コードとしてのインフラストラクチャ
 
@@ -42,7 +43,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -TemplateParameterFile $Parameters
 ```
 
-## <a name="azure-service-fabric-resources"></a>Azure Service Fabric のリソース
+## <a name="service-fabric-resources"></a>Service Fabric のリソース
 
 Azure Resource Manager を使用して、Service Fabric クラスターにアプリケーションとサービスを デプロイできます。 詳しくは、「[アプリケーションとサービスを Azure Resource Manager のリソースとして管理する](./service-fabric-application-arm-resource.md)」をご覧ください。 以下に示すのは、Resource Manager テンプレートのリソースに含める Service Fabric アプリケーション固有のリソースのベスト プラクティスです。
 
@@ -90,8 +91,9 @@ for root, dirs, files in os.walk(self.microservices_app_package_path):
 microservices_sfpkg.close()
 ```
 
-## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure Virtual Machine オペレーティング システムの自動アップグレード構成 
-仮想マシンのアップグレードは、ユーザーによって開始される操作です。Azure Service Fabric クラスター ホストの更新プログラム管理には、[仮想マシン スケール セットによる自動オペレーティング システム アップグレード](service-fabric-patch-orchestration-application.md)を使用することをお勧めします。パッチ オーケストレーション アプリケーションを Azure で使用することはできますが、Azure で POA をホストするオーバーヘッドのために、一般的には POA よりも仮想マシン オペレーティング システム自動アップグレードが選ばれるので、POA は Azure の外部でホストする場合の代替ソリューションです。 以下は、自動 OS アップグレードを有効にするための、コンピューティング仮想マシン スケール セット Resource Manager テンプレートのプロパティです。
+## <a name="virtual-machine-os-automatic-upgrade-configuration"></a>仮想マシン OS の自動アップグレード構成
+
+仮想マシンのアップグレードはユーザーが開始する操作です。Service Fabric クラスター ノードの更新プログラムの管理のために、[仮想マシン スケール セットの自動イメージ アップグレードを有効にする](how-to-patch-cluster-nodes-windows.md)ことをお勧めします。 パッチ オーケストレーション アプリケーション (POA) は、Azure 以外でホストされているクラスターを対象とした別のソリューションです。 POA は Azure で使用できますが、これをホストするには、スケール セットの OS 自動イメージ アップグレードを単に有効にするよりも多くの管理が必要になります。 以下は、OS の自動アップグレードを有効にするための、仮想マシン スケール セット Resource Manager テンプレートのプロパティです。
 
 ```json
 "upgradePolicy": {
@@ -102,11 +104,11 @@ microservices_sfpkg.close()
     }
 },
 ```
-Service Fabric と OS 自動アップグレードを使用している場合、Service Fabric で実行されているサービスの高可用性を維持するために、新しい OS イメージは更新ドメインごとに 1 つずつロールアウトされます。 Service Fabric で OS 自動アップグレードを利用するには、クラスターが、Silver 以上の耐久性レベルを使用するように構成されている必要があります。
+Service Fabric と OS の自動アップグレードを使用する場合、Service Fabric で実行されているサービスの高可用性を維持するために、新しい OS イメージは更新ドメインごとに 1 つずつロールアウトされます。 Service Fabric で OS の自動アップグレードを利用するには、クラスターが、Silver 以上の持続性層を使用するように構成されている必要があります。
 
 次のレジストリ キーが false に設定されていることを確認して、調整されていない更新を Windows ホスト マシンが開始しないようにします。HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU
 
-以下は、WindowsUpdate レジストリ キーを false に設定するための、コンピューティング仮想マシン スケール セット Resource Manager テンプレートのプロパティです。
+次の仮想マシン スケール セット テンプレートのプロパティを設定して、Windows Update を無効にします。
 ```json
 "osProfile": {
         "computerNamePrefix": "{vmss-name}",
@@ -119,12 +121,16 @@ Service Fabric と OS 自動アップグレードを使用している場合、S
       },
 ```
 
-## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Azure Service Fabric クラスターのアップグレード構成
-以下は、自動アップグレードを有効にするための、Service Fabric クラスター Resource Manager テンプレートのプロパティです。
+## <a name="service-fabric-cluster-upgrade-configuration"></a>Service Fabric クラスターのアップグレード構成
+
+以下は、自動アップグレードを有効にするための、Service Fabric クラスター テンプレートのプロパティです。
+
 ```json
 "upgradeMode": "Automatic",
 ```
+
 クラスターを手動でアップグレードするには、cab/deb 配布をクラスター仮想マシンにダウンロードして、次の PowerShell を実行します。
+
 ```powershell
 Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
 Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"

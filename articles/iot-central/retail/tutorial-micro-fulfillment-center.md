@@ -1,100 +1,122 @@
 ---
-title: マイクロフルフィルメント センター アプリ テンプレートのチュートリアル | Microsoft Docs
-description: Azure IoT Central 用のマイクロフルフィルメント センター アプリケーション テンプレートに関するチュートリアル
+title: チュートリアル - Azure IoT マイクロフルフィルメント センター | Microsoft Docs
+description: このチュートリアルでは、Azure IoT Central のマイクロフルフィルメント センター アプリケーション テンプレートをデプロイして使用する方法について説明します。
 author: avneet723
 ms.author: avneets
 ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
-ms.date: 01/09/2020
-ms.openlocfilehash: ab4d609b1638b47ad73b6f1143adee2870577305
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/01/2021
+ms.openlocfilehash: 9eb70a08679427af9e91ffd6df3cd8f827cc76cd
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390472"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123476306"
 ---
-# <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>チュートリアル:マイクロフルフィルメント センター アプリケーション テンプレートを展開して調べる
+# <a name="tutorial-deploy-and-walk-through-the-micro-fulfillment-center-application-template"></a>チュートリアル: マイクロフルフィルメント センター アプリケーション テンプレートをデプロイして調べる
 
-このチュートリアルでは、Azure IoT Central のマイクロフルフィルメント センター アプリケーション テンプレートを使用して、小売業ソリューションを構築します。
+IoT Central の "*マイクロフルフィルメント センター*" アプリケーション テンプレートとこの記事のガイダンスを使用して、エンドツーエンドのマイクロフルフィルメント センター ソリューションを開発します。
+
+![Azure IoT Central のストアの分析](./media/tutorial-micro-fulfillment-center-app/micro-fulfillment-center-architecture-frame.png)
+
+1. ゲートウェイ デバイスにテレメトリ データを送信している IoT センサーのセット
+2. テレメトリと集計された分析情報を IoT Central に送信しているゲートウェイ デバイス
+3. 操作のために目的の Azure サービスへの継続的データ エクスポート
+4. データを必要な形式で構造化し、ストレージ サービスに送信できます
+5. ビジネス アプリケーションを使って、データのクエリを実行し、小売りの活動に役立つ分析情報を生成することができます
+
+### <a name="robotic-carriers"></a>搬送ロボット
+
+マイクロフルフィルメント センター ソリューションには、さまざまな種類のテレメトリ信号を生成する搬送ロボットの大規模なセットがあることでしょう。 これらの信号は、アーキテクチャ図の左側に示されているように、ゲートウェイ デバイスによって取り込まれ、集約された後、IoT Central に送信されます。  
+
+### <a name="condition-monitoring-sensors"></a>状況監視センサー
+
+IoT ソリューションは、フルフィルメント センター内から意味のある信号をキャプチャするセンサーのセットから始まります。 これは、上のアーキテクチャ図の左端にあるさまざまな種類のセンサーによって反映されています。
+
+### <a name="gateway-devices"></a>ゲートウェイ デバイス
+
+多くの IoT センサーでは、未加工の信号を、直接クラウドに、または近くにあるゲートウェイ デバイスにフィードできます。 ゲートウェイ デバイスでは、概要分析情報を IoT Central アプリケーションに送信する前に、エッジでデータの集計が実行されます。 ゲートウェイ デバイスは、必要に応じて、センサー デバイスに対してコマンドと制御操作を中継する役割も担います。 
+
+### <a name="iot-central-application"></a>IoT Central アプリケーション
+
+Azure IoT Central アプリケーションにより、フルフィルメント センター環境内のさまざまな種類の IoT センサー、ロボット、およびゲートウェイ デバイスからデータが取り込まれ、意味のある分析情報のセットが生成されます。
+
+また、Azure IoT Central では、ストアオ ペレーターがインフラストラクチャ デバイスをリモートで監視および管理できるように、カスタマイズされたエクスペリエンスが提供されます。
+
+### <a name="data-transform"></a>データの変換
+
+ソリューション内の Azure IoT Central アプリケーションは、一連の Azure PaaS (サービスとしてのプラットフォーム) サービスに対して、未加工または集計済みの分析情報をエクスポートするように構成できます。これらのサービスでは、データの操作を実行し、分析情報を補強してから、ビジネス アプリケーションに渡すことができます。 
+
+### <a name="business-application"></a>ビジネス アプリケーション
+
+IoT データを使用して、小売り環境内に展開されたさまざまな種類のビジネス アプリケーションを強化することができます。 フルフィルメント センターのマネージャーまたは従業員は、これらのアプリケーションを使用して、ビジネス分析情報を視覚化し、意味のあるアクションをリアルタイムで実行できます。 小売りチーム向けのリアルタイム Power BI ダッシュボードを作成する方法については、[こちらのチュートリアル](./tutorial-in-store-analytics-create-app.md)を参照してください。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
+
 > * アプリケーション テンプレートをデプロイする方法
 > * アプリケーション テンプレートを使用する方法
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアル シリーズを完了するには、Azure サブスクリプションが必要です。 必要に応じて、7 日間無料の試用版を使用することもできます。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で作成できます。
 
-## <a name="create-an-application"></a>アプリケーションの作成 
-このセクションでは、テンプレートから新しい Azure IoT Central アプリケーションを作成します。 チュートリアル シリーズ全体でこのアプリケーションを使用して、完全なソリューションを構築します。
+* このアプリをデプロイするために必要な前提条件は特にありません。
+* 無料価格プランを使用するか、Azure サブスクリプションを使用することができます。
 
-新しい Azure IoT Central アプリケーションを作成するには:
+## <a name="create-micro-fulfillment-application"></a>マイクロフルフィルメント アプリケーションを作成する
 
-1. [Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral)の Web サイトに移動します。
-1. Azure サブスクリプションを持っている場合は、そのサブスクリプションへのアクセス用の資格情報を使用してサインインします。 持っていない場合は、Microsoft アカウントを使用してサインインします。
+次の手順に従ってアプリケーションを作成します。
 
-   ![Microsoft アカウントのサインイン ダイアログ ボックスのスクリーンショット](./media/tutorial-in-store-analytics-create-app/sign-in.png)
+1. [Azure IoT Central ビルド](https://aka.ms/iotcentral) Web サイトに移動します。 次に、Microsoft 個人アカウントか、職場または学校アカウントを使用してサインインします。 左側のナビゲーションバーから **[ビルド]** を選択し、 **[Retail]\(小売り\)** タブを選択します。
 
-1. 新しい Azure IoT Central アプリケーションの作成を開始するには、 **[New Application]\(新しいアプリケーション\)** を選択します。
+   :::image type="content" source="media/tutorial-micro-fulfillment-center-app/iotc-retail-homepage-mfc.png" alt-text="アプリの作成方法を示すスクリーンショット。":::
 
-1. **[小売]** を選択します。  小売ページに、いくつかの小売アプリケーション テンプレートが表示されます。
-
-プレビュー機能を使用する新しいマイクロフルフィルメント センター アプリケーションを作成するには、次のようにします。  
-1. **[マイクロフルフィルメント センター]** アプリケーション テンプレートを選択します。 このテンプレートには、チュートリアルで使用するすべてのデバイス用のデバイス テンプレートが含まれています。 また、このテンプレートには、フルフィルメント センター内の状態だけでなく、搬送ロボットの状態を監視するためのオペレーター ダッシュボードが用意されています。 
-
-    ![Azure IoT Central の [IoT アプリケーションをビルドする] ページのスクリーンショット](./media/tutorial-micro-fulfillment-center-app/iotc-retail-homepage-mfc.png)
-    
-1. 必要に応じて、わかりやすい **アプリケーション名** を選びます。 アプリケーション テンプレートは、Northwind Traders という架空の会社に基づいています。 
-
-    >[!NOTE]
-    >わかりやすいアプリケーション名を使用する場合でも、アプリケーションの URL には一意の値を使用する必要があります。
-
-1. Azure サブスクリプションをお持ちの場合は、ディレクトリ、Azure サブスクリプション、リージョンを入力します。 サブスクリプションをお持ちでない場合は、7 日間の無料試用版を有効にし、必須の連絡先情報を入力できます。  
-
-    ディレクトリとサブスクリプションの詳細については、[アプリケーションの作成のクイック スタート](../core/quick-deploy-iot-central.md)に関するページを参照してください。
-
-1. **［作成］** を選択します
-
-    ![Azure IoT Central の [新しいアプリケーション] ページのスクリーンショット](./media/tutorial-micro-fulfillment-center-app/iotc-retail-create-app-mfc.png)
+1. **[マイクロフルフィルメント センター]** で **[アプリの作成]** を選択します。
 
 ## <a name="walk-through-the-application"></a>アプリケーションを調べる 
 
-アプリケーション テンプレートのデプロイが正常に完了したら、**Northwind Traders マイクロフルフィルメント センター ダッシュボード** が表示されます。 Northwind Traders は、この Azure IoT Central アプリケーションでマイクロフルフィルメント センターを管理している架空の小売業者です。 このオペレーター ダッシュボードには、このテンプレートのデバイスに関する情報とテレメトリ、および実行可能な一連のコマンド、ジョブ、アクションが表示されます。 ダッシュボードは、論理的に 2 つのセクションに分かれています。 左側ではフルフィルメント建造物内の環境条件を監視でき、右側では施設内の搬送ロボットの正常性を監視することができます。  
+以降のセクションでは、アプリケーションの主な機能について見ていきます。
+
+アプリケーション テンプレートのデプロイが正常に完了したら、**Northwind Traders マイクロフルフィルメント センター ダッシュボード** が表示されます。 Northwind Traders は、この Azure IoT Central アプリケーションでマイクロフルフィルメント センターを管理している架空の小売業者です。 このダッシュボードには、このテンプレートのデバイスに関する情報とテレメトリ、および実行可能な一連のコマンド、ジョブ、アクションが表示されます。 ダッシュボードは、論理的に 2 つのセクションに分かれています。 左側ではフルフィルメント建造物内の環境条件を監視でき、右側では施設内の搬送ロボットの正常性を監視することができます。  
 
 ダッシュボードからは、次のことができます。
    * デバイス テレメトリ (ピック数、処理された注文の数など) やプロパティ (建造物のシステムの状態など) を確認する。  
    * フルフィルメント建造物内の見取り図や搬送ロボットの場所を表示する。
    * 制御システムのリセット、搬送機のファームウェアの更新、ネットワークの再構成などのコマンドをトリガーする。
 
-     ![Northwind Traders マイクロフルフィルメント センター ダッシュボード (上半分) のスクリーンショット。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
-   * オペレーターがフルフィルメント センター内の状態を監視するために使用できるダッシュボードの例を確認する。 
-   * フルフィルメント センター内のゲートウェイ デバイスで実行されているペイロードの正常性を監視する。    
+  :::image type="content" source="media/tutorial-micro-fulfillment-center-app/mfc-dashboard-1.png" alt-text="Northwind Traders マイクロフルフィルメント センター ダッシュボード (上半分) のスクリーンショット。":::
+   * オペレーターがフルフィルメント センター内の状態を監視するために使用できるダッシュボードの例を確認する。
+   * フルフィルメント センター内のゲートウェイ デバイスで実行されているペイロードの正常性を監視する。
 
-     ![Northwind Traders マイクロフルフィルメント センター ダッシュボード (下半分) のスクリーンショット。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+  :::image type="content" source="media/tutorial-micro-fulfillment-center-app/mfc-dashboard-2.png" alt-text="Northwind Traders マイクロフルフィルメント センター ダッシュボード (下半分) のスクリーンショット。":::
 
-## <a name="device-template"></a>デバイス テンプレート
+
+### <a name="device-template"></a>デバイス テンプレート
+
 [デバイス テンプレート] タブを選択すると、このテンプレートには 2 種類のデバイスが含まれていることがわかります。 
    * **搬送ロボット**: このデバイス テンプレートはフルフィルメントの建造物内に配置されている機能的な搬送ロボットの定義を表します。このロボットは、適切な保管および検索操作を実行します。 テンプレートを選択すると、ロボットがさまざまなデバイス データ (温度、軸の位置など) やプロパティ (搬送ロボットの状態など) を送信していることがわかります。 
    * **建造物の状態の監視**: このデバイス テンプレートは、環境の状態を監視できるようにする一連のデバイスと、フルフィルメント センターを強化するさまざまなエッジ ワークロードをホストするゲートウェイ デバイスを表します。 デバイスは、温度、ピック数、注文の数などのテレメトリ データを送信します。 また、環境内で実行されているコンピューティング ワークロードの状態と正常性に関する情報も送信します。 
 
-     ![マイクロフルフィルメント センターのデバイス テンプレート](./media/tutorial-micro-fulfillment-center-app/device-templates.png)
+  :::image type="content" source="media/tutorial-micro-fulfillment-center-app/device-templates.png" alt-text="マイクロフルフィルメント センターのデバイス テンプレート。":::
+
+
 
 [デバイス グループ] タブを選択すると、これらのデバイス テンプレートによって自動的にデバイス グループが作成されていることも確認できます。
 
-## <a name="rules"></a>ルール
+### <a name="rules"></a>ルール
+
 **[規則]** タブには、アプリケーション テンプレートに存在するサンプル規則が表示されます。この規則を使用して搬送ロボットの温度状態を監視します。 この規則を使用することで、施設内の特定のロボットが過熱状態になり、点検のためにオフラインにする必要がある場合に、オペレーターにアラートを発することができます。 
 
 このサンプル規則を下敷きとして使用して、実際のビジネス機能にふさわしい規則を定義してください。
 
-![[規則] タブのスクリーンショット](./media/tutorial-micro-fulfillment-center-app/rules.png)
+  :::image type="content" source="media/tutorial-micro-fulfillment-center-app/rules.png" alt-text="[規則] タブのスクリーンショット。":::
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを引き続き使用しない場合は、アプリケーション テンプレートを削除します。 **[管理]**  >  **[アプリケーションの設定]** に移動し、 **[削除]** を選択します。
 
-![マイクロフルフィルメント センターの [アプリケーションの設定] ページのスクリーンショット](./media/tutorial-micro-fulfillment-center-app/delete.png)
+  :::image type="content" source="media/tutorial-micro-fulfillment-center-app/delete.png" alt-text="マイクロフルフィルメント センターの [アプリケーションの設定] ページのスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

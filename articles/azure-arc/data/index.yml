@@ -2,7 +2,7 @@
 title: Azure Arc 対応データ サービス
 summary: 任意のインフラストラクチャで Kubernetes を使用して、エッジおよびマルチクラウド環境で Azure データ サービス オンプレミスを実行します。
 metadata:
-  title: Azure Arc 対応データ サービス (プレビュー)
+  title: Azure Arc 対応データ サービス
   description: 任意のインフラストラクチャで Kubernetes を使用して、エッジおよびマルチクラウド環境で Azure データ サービス オンプレミスを実行します。
   ms.service: azure-arc
   ms.subservice: azure-arc-data
@@ -10,12 +10,12 @@ metadata:
   author: MikeRayMSFT
   ms.author: mikeray
   ms.date: 12/16/2020
-  ms.openlocfilehash: a3f90834c3b4d68e96b02361643bf32786670e84
-  ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+  ms.openlocfilehash: c7313545fc9d11b6659805f8cc972a6675f872eb
+  ms.sourcegitcommit: 01b678462a4a390c30463c525432ffbbbe0195cf
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/18/2020
-  ms.locfileid: "97673913"
+  ms.lasthandoff: 11/23/2021
+  ms.locfileid: "132956485"
 landingContent:
 - title: 詳細
   linkLists:
@@ -33,23 +33,15 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: データ コントローラーの作成
-      url: create-data-controller.md
+    - text: デプロイを計画する
+      url: plan-azure-arc-data-services.md
     - text: クライアント ツールのインストール
       url: install-client-tools.md
-- title: Azure Arc 対応 PostgreSQL Hyperscale (プレビュー)
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: 作成
-      url: create-postgresql-hyperscale-server-group.md
-    - text: 接続する
-      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
-    - text: 移行
-      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
-    - text: 復元
-      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
-- title: Azure Arc 対応 SQL Managed Instance (プレビュー)
+    - text: 前提条件を満たす
+      url: create-data-controller-direct-prerequisites.md
+    - text: データ コントローラーの作成
+      url: create-data-controller-direct-azure-portal.md
+- title: Azure Arc 対応 SQL Managed Instance
   linkLists:
   - linkListType: quickstart
     links:
@@ -67,3 +59,15 @@ landingContent:
     links:
     - text: ジャンプスタート
       url: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/
+- title: Azure Arc 対応 PostgreSQL Hyperscale (プレビュー)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 作成
+      url: create-postgresql-hyperscale-server-group.md
+    - text: 接続する
+      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - text: 移行
+      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+    - text: 復元
+      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md

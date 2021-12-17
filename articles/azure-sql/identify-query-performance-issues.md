@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: troubleshooting
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: wiassaf, sstein
-ms.date: 1/14/2021
-ms.openlocfilehash: 039332a8728e5d7e5b605f51f4bb53e6dcbb6381
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+author: NikaKinska
+ms.author: nnikolic
+ms.reviewer: mathoma, wiassaf
+ms.date: 11/04/2021
+ms.openlocfilehash: d4b9249ece6117af35466b0984c9dc5ceff2a224
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109171"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843636"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL Database での検出可能なクエリ パフォーマンス ボトルネックの種類
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -79,7 +79,6 @@ PSP 問題の解決方法について詳しくは、これらのブログ記事�
 
 - 「[パラメーターのスニッフィング](/archive/blogs/queryoptteam/i-smell-a-parameter)」
 - 「[パラメーター化クエリに対する Conor、動的 SQL、プロシージャ、プランの品質の比較](/archive/blogs/conor_cunningham_msft/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries)」
-- 「[SQL Server での SQL クエリの最適化技法:パラメーター スニッフィング](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)」
 
 ### <a name="compile-activity-caused-by-improper-parameterization"></a>不適切なパラメーター化によって発生するコンパイル アクティビティ
 
@@ -198,7 +197,7 @@ Intelligent Insights を使用して[ワークロードの増加](database/intel
   ワークロードで一時テーブルが使用されていたり、プランで TempDB 溢れが発生したりしている場合、クエリには TempDB のスループットに問題がある可能性があります。 DMV を使用した[TempDB に関する問題の特定](database/monitoring-with-dmvs.md#identify-tempdb-performance-issues)に関する記事を参照してください。
 - **メモリ関連の問題**
 
-  ワークロードに十分なメモリがない場合、ページの予測保持期間が低下するか、クエリが取得するメモリが必要なメモリよりも少なくなる可能性があります。 場合によっては、クエリ オプティマイザーの組み込みインテリジェンスによってメモリ関連の問題は修正されます。 DMV を使用した[メモリ許可に関する問題の特定](database/monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)に関する記事を参照してください。
+  ワークロードに十分なメモリがない場合、ページの予測保持期間が低下するか、クエリが取得するメモリが必要なメモリよりも少なくなる可能性があります。 場合によっては、クエリ オプティマイザーの組み込みインテリジェンスによってメモリ関連の問題は修正されます。 DMV を使用した[メモリ許可に関する問題の特定](database/monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)に関する記事を参照してください。 詳細情報やサンプル クエリについては、「[Azure SQL Database によるメモリ不足エラーのトラブルシューティング](database/troubleshoot-memory-errors-issues.md)」を参照してください。
 
 ### <a name="methods-to-show-top-wait-categories"></a>上位の待機カテゴリを表示する方法
 

@@ -1,21 +1,21 @@
 ---
 title: 'クイックスタート: Azure Maps を使用して Android アプリを作成する | Microsoft Azure '
 description: 'クイックスタート: Azure Maps Android SDK を使用して Android アプリを作成する方法について説明します。'
-author: rbrundritt
-ms.author: richbrun
-ms.date: 12/10/2020
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 04/26/2021
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: mvc
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 3c0f95c1252b6895b4604d14e5565395beab8952
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0f75aea82a6b41605c34685b910699192f1c8a99
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039650"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431588"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-maps"></a>クイックスタート: Azure Maps を使用して Android アプリを作成する
 
@@ -49,7 +49,7 @@ ms.locfileid: "102039650"
     * *[ライセンス]* と *[プライバシーに関する声明]* の内容を読み、チェック ボックスをオンにして条件に同意します。
     * **[作成]** ボタンをクリックします。
 
-    ![ポータルでの Azure Maps アカウントの作成](media/quick-android-map/create-account.png)
+    :::image type="content" source="./media/quick-demo-map-app/create-account.png" alt-text="ポータルで Maps アカウントを作成する":::
 
 ## <a name="get-the-primary-key-for-your-account"></a>アカウントの主キーを取得する
 
@@ -113,7 +113,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
     3. 依存関係のブロックを更新し、最新の Azure Maps Android SDK の新しい実装の依存関係の行を追加します。
 
         ```gradle
-        implementation "com.microsoft.azure.maps:mapcontrol:0.7"
+        implementation "com.azure.android:azure-maps-control:1.0.0"
         ```
 
         > [!Note]
@@ -123,7 +123,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
 3. メイン アクティビティにマップ フラグメントを追加します (res \> layout \> activity\_main.xml)。
 
     ```xml
-    <com.microsoft.azure.maps.mapcontrol.MapControl
+    <com.azure.android.maps.control.MapControl
         android:id="@+id/mapcontrol"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -157,11 +157,11 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
     package com.example.myapplication;
     
     import androidx.appcompat.app.AppCompatActivity;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
-    import com.microsoft.azure.maps.mapcontrol.options.MapStyle;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
+    import com.azure.android.maps.control.AzureMaps;
+    import com.azure.android.maps.control.MapControl;
+    import com.azure.android.maps.control.layer.SymbolLayer;
+    import com.azure.android.maps.control.options.MapStyle;
+    import com.azure.android.maps.control.source.DataSource;
     
     public class MainActivity extends AppCompatActivity {
         
@@ -267,10 +267,10 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
 
     import androidx.appcompat.app.AppCompatActivity
     import android.os.Bundle
-    import com.microsoft.azure.maps.mapcontrol.AzureMap
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps
-    import com.microsoft.azure.maps.mapcontrol.MapControl
-    import com.microsoft.azure.maps.mapcontrol.events.OnReady
+    import com.azure.android.maps.control.AzureMap
+    import com.azure.android.maps.control.AzureMaps
+    import com.azure.android.maps.control.MapControl
+    import com.azure.android.maps.control.events.OnReady
     
     class MainActivity : AppCompatActivity() {
     

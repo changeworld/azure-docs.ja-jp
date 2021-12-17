@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 09/14/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9186c742f34f1c060b57ffdfbf1bf688607b4c03
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1dc4c63d5d19b688a695702a5eb94365ff762a97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125339"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591807"
 ---
 ::: zone target="docs"
 
@@ -283,7 +283,7 @@ ms.locfileid: "92125339"
 
     > [!TIP]
     > - 2 回の実行の間にツールをリセットします。
-    > - 小さなファイル (KB 単位まで) を含む大きなデータ セットを扱う場合、オプション 1 を使用します。 チェックサムの生成に非常に長い時間がかかり、パフォーマンスが非常に低くなる場合があるので、このオプションではファイルの検証だけを行います。
+    > - 小さなファイル (数 KB) を含む大きなデータ セットがある場合、チェックサム プロセスには時間がかかる場合があります。  オプション 1 を使用してチェックサムの作成をスキップする場合は、所有しているデータのコピーを削除する前に、アップロードされたデータのデータ整合性を、可能な場合はチェックサムを使用して Azure で個別に検証する必要があります。
 
 3. 複数のディスクを使用している場合は、ディスクごとにコマンドを実行します。
 

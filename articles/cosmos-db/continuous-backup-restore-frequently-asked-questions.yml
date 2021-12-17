@@ -1,0 +1,72 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Cosmos DB のポイントインタイム リストア機能についてよく寄せられる質問。
+  description: この記事では、継続的バックアップ モードを使用することで実現する Azure Cosmos DB のポイントインタイム リストア機能についてよく寄せられる質問を示します。
+  author: kanshiG
+  ms.service: cosmos-db
+  ms.topic: conceptual
+  ms.date: 07/29/2021
+  ms.author: govindk
+  ms.reviewer: sngun
+  ms.openlocfilehash: 4d39bbdf519903a6aa368b2401fa150ac381aeb9
+  ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129546592"
+title: Azure Cosmos DB のポイントインタイム リストア機能についてよく寄せられる質問
+summary: >
+  [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
+
+
+  この記事では、継続的バックアップ モードを使用して実現される Azure Cosmos DB のポイントインタイム リストア機能についてよく寄せられる質問が示されています。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      復元にはどのくらいの時間がかかりますか?
+    answer: >
+      復元時間は、データのサイズによって決まります。
+  - question: >
+      復元時刻をローカル時刻で送信できますか?
+    answer: >
+      データベースやコンテナーなどの主要リソースがその時点で存在していたかどうかによっては、復元が行われない場合があります。 確認するには、時刻を入力し、指定した時刻について、選択したデータベースまたはコンテナーを調べます。 復元するリソースが存在しない場合、復元プロセスは機能しません。
+  - question: >
+      アカウントが復元されているかどうかは、どのようにして追跡できますか?
+    answer: "復元コマンドを送信して、同じページで待機します。操作が完了すると、ステータス バーに、アカウントが正常に復元されたというメッセージが表示されます。 また、復元されたアカウントを検索し、[復元されているアカウントの状態を追跡する](restore-account-continuous-backup.md#track-restore-status)こともできます。 復元の進行中は、アカウントの状態は *Creating* (作成中) になります。復元操作が完了すると、アカウントの状態は *Online* (オンライン) に変わります。\n\n同様に、PowerShell と CLI では、次のように `az cosmosdb show` コマンドを実行して、復元操作の進行状況を追跡できます。\n\n```azurecli-interactive\naz cosmosdb show --name \"accountName\" --resource-group \"resourceGroup\"\n```\n\nアカウントがオンラインになっている場合、provisioningState には *Succeeded* (成功) と表示されます。\n\n```json\n{\n\"virtualNetworkRules\": [],\n\"writeLocations\" : [\n{\n    \"documentEndpoint\": \"https://<accountname>.documents.azure.com:443/\", \n    \"failoverpriority\": 0,\n    \"id\": \"accountName\" ,\n    \"isZoneRedundant\" : false, \n    \"locationName\": \"West US 2\", \n    \"provisioningState\": \"Succeeded\"\n}\n]\n}\n```\n"
+  - question: >
+      アカウントが別のアカウントから復元されたかどうかを確認するにはどうすればよいですか?
+    answer: >
+      `az cosmosdb show` コマンドを実行します。出力で、`createMode` プロパティの値を確認できます。 値が **Restore** に設定されている場合は、 アカウントが別のアカウントから復元されたことを示しています。 `restoreParameters` プロパティには、ソース アカウント ID を持つ `restoreSource` などの詳細があります。 `restoreSource` パラメーターの最後の GUID は、ソース アカウントの instanceId です。
+
+
+      たとえば、次の出力では、ソース アカウントのインスタンス ID は *7b4bb-f6a0-430e-ade1-638d781830cc* になります。
+
+
+      ```json
+
+      "restoreParameters": {
+         "databasesToRestore" : [],
+         "restoreMode": "PointInTime",
+         "restoreSource": "/subscriptions/2a5b-f6a0-430e-ade1-638d781830dd/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/7b4bb-f6a0-430e-ade1-638d781830cc",
+         "restoreTimestampInUtc": "2020-06-11T22:05:09Z"
+      }
+
+      ```
+  - question: >
+      共有スループット データベース、または共有スループット データベース内のコンテナーを復元するとどうなりますか?
+    answer: >
+      共有スループット データベース全体が復元されます。 共有スループット データベース内のコンテナーのサブセットを復元用に選択することはできません。
+  - question: >
+      アカウント定義で InstanceID はどのように使用されますか?
+    answer: "いかなる時点においても、Azure Cosmos DB アカウントの `accountName` プロパティは、それが有効な間はグローバルに一意です。 ただし、アカウントが削除された後は、同じ名前で別のアカウントを作成することが可能です。したがって、\"accountName\" はアカウントのインスタンスを識別するのに十分ではなくなります。 \n\nID または `instanceId` はアカウントのインスタンスのプロパティです。これは、複数のアカウント (ライブおよび削除済み) で復元用に同じ名前が使用されている場合に、それらを明確に区別するために使用されます。 インスタンス ID を取得するには、`Get-AzCosmosDBRestorableDatabaseAccount` または `az cosmosdb restorable-database-account` コマンドを実行します。 name 属性の値は \"InstanceID\" を表します。\n"
+  - question: >
+      Azure Synapse Link を有効にしているアカウントでは、ポイントインタイム リストアが可能な継続的バックアップができますか。
+    answer: "\nいいえ。 現在これら 2 つの機能、継続的バックアップ モードと Synapse Link は、同一のデータベース アカウントで共存できません。\n"
+  - question: >
+      Azure Synapse Link を有効にしているアカウントでは、定期バックアップ モードを使用できますか。
+    answer: "\nはい。 ただし、分析ストア データはバックアップに含まれず、復元できません。 データベース アカウントで Synapse Link を有効にすると、Azure Cosmos DB によって、通常どおり、自動的に、バックアップ スケジュールで設定した間隔で、トランザクション ストアのデータのバックアップを取ります。\n"
+  - question: >
+      分析ストアを有効にしたコンテナーでは、定期バックアップ モードを使用できますか。
+    answer: "\nはい。ただし、定期的なトランザクションのデータだけが対象です。 現在、分析ストアのデータのバックアップと復元はサポートしていません。\n"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n* [継続的バックアップ](continuous-backup-restore-introduction.md) モードとは\n* [Azure portal](provision-account-continuous-backup.md#provision-portal)、[PowerShell](provision-account-continuous-backup.md#provision-powershell)、[CLI](provision-account-continuous-backup.md#provision-cli) または [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template) により、アカウントでの継続的バックアップをプロビジョニングします。\n* 継続的バックアップ モードでデータを復元するために必要な[アクセス許可を管理](continuous-backup-restore-permissions.md)します。\n* [継続的バックアップ モードのリソース モデル](continuous-backup-restore-resource-model.md)"

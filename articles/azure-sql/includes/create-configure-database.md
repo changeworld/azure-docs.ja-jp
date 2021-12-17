@@ -1,16 +1,16 @@
 ---
-author: jovanpop-msft
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.topic: include
 ms.date: 12/17/2020
-ms.author: jovanpop
-ms.openlocfilehash: d1422d029bc2c5d41330e4ac2d21ff14e4fa82ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: MashaMSFT
+ms.author: mathoma
+ms.openlocfilehash: e57370bdceed2b22120985cc68da12152ed7032c
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97703970"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112255216"
 ---
   次のいずれかのクイックスタートを使用して、データベースを作成し、構成できます。
 

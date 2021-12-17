@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3bba1155ec57db67968aec95d1d3386fc6cda006
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78be2edacdcf72a6274755413810fe1308510a79
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634449"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669126"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>Azure Kubernetes Service (AKS) クラスターを作成し、仮想ノードを使用できるように構成する
 
@@ -23,7 +23,7 @@ AKS 用の仮想ノード アドオンは、オープン ソース プロジェ�
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-ACI によって VNET SKU がサポートされているリージョンはすべて、仮想ノードのデプロイに対応しています。
+ACI によって VNET SKU がサポートされているリージョンはすべて、仮想ノードのデプロイに対応しています。 詳細については、「[Azure リージョンの Azure Container Instances のリソースの可用性](../container-instances/container-instances-region-availability.md)」を参照してください。
 
 各リージョンで使用可能な CPU およびメモリ SKU については、[Azure リージョン内の Azure Container Instances 用の Azure Container Instances リソースの可用性 (Linux コンテナー グループ)](../container-instances/container-instances-region-availability.md#linux-container-groups) に関するページを参照してください
 

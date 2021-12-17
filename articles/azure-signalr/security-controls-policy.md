@@ -1,18 +1,18 @@
 ---
 title: Azure SignalR 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure SignalR に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 04/14/2021
+ms.date: 09/17/2021
 ms.topic: sample
 author: sffamily
 ms.author: zhshang
 ms.service: signalr
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 9331f42103f02044c20c6c2af3fa68e18dddd43b
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: bcc2c2d4e0a8e34de28f478b133056c3360cd59a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501360"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607762"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-signalr"></a>Azure SignalR 用の Azure Policy 規制コンプライアンス コントロール
 

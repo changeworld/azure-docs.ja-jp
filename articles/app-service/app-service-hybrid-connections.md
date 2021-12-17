@@ -1,29 +1,29 @@
 ---
 title: Hybrid Connections (ハイブリッド接続)
 description: Azure App Service でハイブリッド接続を作成し、それを使用して分散ネットワーク内のリソースにアクセスする方法について説明します。
-author: ccompy
+author: madsd
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 02/05/2020
-ms.author: ccompy
+ms.date: 05/05/2021
+ms.author: madsd
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 1b3fc4a254c1157f2c2336e6360ba7621f31364d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b907e6539762f08dc299304eea49ee2950f18ab7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594233"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065705"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続
 
 ハイブリッド接続は、Azure のサービスであり、Azure App Service の機能でもあります。 サービスとして使用した場合、その用途と機能は、Azure App Service の用途と機能を上回ります。 ハイブリッド接続の詳細と Azure App Service では提供されない使用方法については、[Azure Relay ハイブリッド接続][HCService]に関するページを参照してください。
 
-App Service 内では、任意のネットワークに含まれていて、443 ポートから Azure に発信呼び出しができるアプリケーション リソースにアクセスするため、ハイブリッド接続が使用できます。 ハイブリッド接続によって、アプリから TCP エンドポイントへのアクセスができるようになりますが、アプリにアクセスするための新しい方法が有効になるわけではありません。 App Service で使用されるとき、各ハイブリッド接続は、単一の TCP ホストとポートの組み合わせに相互に関連付けられます。 その結果、リソースが TCP エンドポイントである限り、それがどの OS 上にあろうとアプリからアクセスできるようになります。 ハイブリッド接続では、アプリケーション プロトコルやアクセス先は認識されません。 それは、ネットワーク アクセスを提供するだけです。  
+App Service 内では、任意のネットワークに含まれていて、443 ポートから Azure に発信呼び出しができるアプリケーション リソースにアクセスするため、ハイブリッド接続が使用できます。 ハイブリッド接続によって、アプリから TCP エンドポイントへのアクセスができるようになりますが、アプリにアクセスするための新しい方法が有効になるわけではありません。 App Service で使用されるとき、各ハイブリッド接続は、単一の TCP ホストとポートの組み合わせに相互に関連付けられます。 その結果、リソースが TCP エンドポイントである限り、それがどの OS 上にあろうとアプリからアクセスできるようになります。 ハイブリッド接続機能では、アプリケーション プロトコルやアクセス先は認識されません。 それは、ネットワーク アクセスを提供するだけです。  
 
 ## <a name="how-it-works"></a>しくみ ##
-ハイブリッド接続を使用するには、対象のエンドポイントと Azure の両方に到達できる場所にリレー エージェントをデプロイする必要があります。 リレー エージェント (ハイブリッド接続マネージャー (HCM)) では、443 ポートを介して Azure Relay への呼び出しが行われます。 Web アプリのサイトからも、App Service インフラストラクチャにより、アプリケーションに代わって Azure Relay への接続が行われます。 このように組み合わされた接続により、アプリから対象のエンドポイントにアクセスできるようになります。 接続では、セキュリティには TLS 1.2 が、認証/承認には Shared Access Signature (SAS) キーが使用されます。    
+ハイブリッド接続を使用するには、対象のエンドポイントと Azure の両方に到達できる場所にリレー エージェントをデプロイする必要があります。 リレー エージェント (ハイブリッド接続マネージャー (HCM)) では、443 ポートを介して Azure Relay への呼び出しが行われます。 Web アプリのサイトからも、App Service インフラストラクチャにより、アプリケーションに代わって Azure Relay への接続が行われます。 このように組み合わされた接続により、アプリから対象のエンドポイントにアクセスできるようになります。 接続では、セキュリティには TLS 1.2 が、認証/承認には Shared Access Signature (SAS) キーが使用されます。
 
-![ハイブリッド接続のフローの概要図][1]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-connectiondiagram.png" alt-text="ハイブリッド接続のフローの概要図":::
 
 アプリが DNS 要求を行い、その要求が構成済みのハイブリッド接続エンドポイントと一致した場合、発信 TCP トラフィックがハイブリッド接続を介してリダイレクトされます。  
 
@@ -36,10 +36,10 @@ App Service 内では、任意のネットワークに含まれていて、443 �
 ハイブリッド接続機能には、次のようなさまざまなメリットがあります。
 
 - アプリは、オンプレミスのシステムとサービスへセキュリティで保護されたアクセスを実行できます。
-- インターネットにアクセス可能なエンドポイントは必要ありません。
+- この機能は、インターネットにアクセスできるエンドポイントを必要としません。
 - すばやく簡単に設定できます。 ゲートウェイは必要ありません。
 - 各ハイブリッド接続が単一のホストとポートの組み合わせに照合されるため、セキュリティ面で優れています。
-- 通常はファイアウォールに穴を開ける必要はありません。 接続はすべて、標準的な Web ポート経由の発信です。
+- 通常、ファイアウォールホールは必要ありません。 接続はすべて、標準的な Web ポート経由の発信です。
 - ネットワーク レベルの機能であるため、アプリで使用される言語とエンドポイントで使用されるテクノロジに依存しません。
 - 単一のアプリから複数のネットワークにアクセスするために使用できます。 
 - Windows アプリと Linux アプリ向けに GA でサポートされています。 Windows コンテナー アプリではサポートされていません。
@@ -58,11 +58,11 @@ App Service 内では、任意のネットワークに含まれていて、443 �
 
 ハイブリッド接続を作成するには、[Azure portal][portal] に移動し、アプリを選択します。 **[ネットワーク]**  >  **[ハイブリッド接続エンドポイントの構成]** の順に選択します。 ここで、アプリ用に構成されているハイブリッド接続を確認できます。  
 
-![ハイブリッド接続の一覧のスクリーンショット][2]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-portal.png" alt-text="ハイブリッド接続の一覧のスクリーンショット":::
 
-新しいハイブリッド接続を追加するには、 **[+] [ハイブリッド接続の追加]** を選択します。  既に作成したハイブリッド接続が一覧表示されます。 アプリに 1 つ以上のハイブリッド接続を追加するには、追加する接続をクリックし、 **[選択したハイブリッド接続の追加]** をクリックします。  
+新しいハイブリッド接続を追加するには、 **[+] [ハイブリッド接続の追加]** を選択します。  既に作成したハイブリッド接続が一覧表示されます。 アプリに 1 つ以上のハイブリッド接続を追加するには、追加する接続をクリックし、 **[選択したハイブリッド接続の追加]** をクリックします。
 
-![ハイブリッド接続ポータルのスクリーンショット][3]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-addhc.png" alt-text="ハイブリッド接続ポータルのスクリーンショット":::
 
 新しいハイブリッド接続を作成するには、 **[ハイブリッド接続の新規作成]** を選択します。 以下を指定します。 
 
@@ -71,7 +71,7 @@ App Service 内では、任意のネットワークに含まれていて、443 �
 - エンドポイント ポート。
 - 使用する Service Bus 名前空間。
 
-![[ハイブリッド接続の新規作成] ダイアログ ボックスのスクリーン ショット][4]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-createhc.png" alt-text="[ハイブリッド接続の新規作成] ダイアログ ボックスのスクリーン ショット":::
 
 すべてのハイブリッド接続は Service Bus 名前空間に関連付けられており、各 Service Bus 名前空間は Azure リージョンに存在します。 ネットワーク待機時間の誘発を避けるためには、できるだけアプリと同じリージョンの Service Bus 名前空間を使用することが重要です。
 
@@ -79,7 +79,7 @@ App Service 内では、任意のネットワークに含まれていて、443 �
 
 ハイブリッド接続をアプリに追加すると、ハイブリッド接続を選択するだけで詳細情報を表示できます。 
 
-![ハイブリッド接続の詳細のスクリーンショット][5]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-properties.png" alt-text="ハイブリッド接続の詳細のスクリーンショット":::
 
 ### <a name="create-a-hybrid-connection-in-the-azure-relay-portal"></a>Azure Relay ポータルでのハイブリッド接続の作成 ###
 
@@ -96,12 +96,12 @@ App Service ハイブリッド接続は、Basic、Standard、Premium、および
 |----|----|
 | Basic | プランあたり 5 |
 | Standard | プランあたり 25 |
-| PremiumV2 | アプリあたり 200 |
-| Isolated | アプリあたり 200 |
+| Premium (v1 から v3) | アプリあたり 220 |
+| Isolated (v1 から v2) | アプリあたり 220 |
 
-App Service プランの UI には、使用されているハイブリッド接続の数と、それを使用するアプリが表示されます。  
+App Service プランの UI には、使用されているハイブリッド接続の数と、それを使用するアプリが表示されます。
 
-![App Service プラン プロパティのスクリーン ショット][6]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-aspproperties.png" alt-text="App Service プラン プロパティのスクリーン ショット":::
 
 [ハイブリッド接続] を選択して詳細を表示します。 アプリ ビューに表示されるすべての情報を表示できます。 そのハイブリッド接続を使用している同じプラン内の他のアプリの数も確認できます。
 
@@ -117,28 +117,28 @@ App Service プランの SKU 要件が存在する以外に、ハイブリッド
 
 このツールは、Windows Server 2012 以降のバージョンの Windows で実行されます。 HCM はサービスとして実行し、送信のためにポート 443 で Azure Relay に接続します。  
 
-HCM をインストールしたら、HybridConnectionManagerUi.exe を実行して、このツールの UI を使用できます。 このファイルは、Hybrid Connection Manager のインストール ディレクトリにあります。 Windows 10 では、検索ボックスに *ハイブリッド接続マネージャー UI* と入力して検索できます。  
+HCM をインストールしたら、HybridConnectionManagerUi.exe を実行して、このツールの UI を使用できます。 このファイルは、Hybrid Connection Manager のインストール ディレクトリにあります。 Windows 10 では、検索ボックスに *ハイブリッド接続マネージャー UI* と入力して検索できます。
 
-![ハイブリッド接続マネージャーのスクリーンショット][7]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-hcm.png" alt-text="ハイブリッド接続マネージャーのスクリーンショット":::
 
 HCM UI を起動すると、HCM のこのインスタンスに構成されているすべてのハイブリッド接続の一覧が最初に表示されます。 変更を加える場合は、まず Azure で認証します。 
 
 1 つまたは複数のハイブリッド接続を HCM に追加するには:
 
 1. HCM UI を起動します。
-2. **[Configure another hybrid connection] \(別のハイブリッド接続の構成\)** を選択します。
-![[Configure New Hybrid Connection] \(新しいハイブリッド接続の構成\) のスクリーン ショット][8]
+2. **[Add a new Hybrid Connection]\(新規ハイブリッド接続の追加\)** を選択します。
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-hcmadd.png" alt-text="[Configure New Hybrid Connection] \(新しいハイブリッド接続の構成\) のスクリーン ショット":::
 
 1. お使いのサブスクリプションで使用できるハイブリッド接続を取得する Azure アカウントでサインインします。 これ以降、HCM では Azure アカウントの使用は続行されません。 
 1. サブスクリプションを選択します。
 1. HCM をリレーするハイブリッド接続を選択します。
-![ハイブリッド接続のスクリーンショット][9]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-hcmadded.png" alt-text="ハイブリッド接続のスクリーンショット":::
 
 1. **[保存]** を選択します。
 
 追加したハイブリッド接続が表示されます。 構成済みのハイブリッド接続を選択すると詳細を表示することもできます。
 
-![ハイブリッド接続の詳細のスクリーンショット][10]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-hcmdetails.png" alt-text="ハイブリッド接続の詳細のスクリーンショット":::
 
 構成済みのハイブリッド接続を HCM でサポートするには、以下が必要です。
 
@@ -158,7 +158,7 @@ HCM はそれぞれ、複数のハイブリッド接続をサポートできま�
 
 サブスクリプションを持っていないユーザーが特定のハイブリッド接続に対する HCM インスタンスをホストするには、ハイブリッド接続用のゲートウェイ接続文字列を共有します。 [Azure portal][portal] の [ハイブリッド接続プロパティ] でゲートウェイ接続文字列を確認できます。 この文字列を使用するには、HCM で **[手動で入力]** ボタンをクリックし、ゲートウェイ接続文字列を貼り付けます。
 
-![ハイブリッド接続の手動追加][11]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-manual.png" alt-text="ハイブリッド接続の手動追加":::
 
 ### <a name="upgrade"></a>アップグレード ###
 
@@ -199,6 +199,18 @@ Commands:
 
 Relay への `Reader` アクセス権限を持つユーザーは誰でも、Azure portal でハイブリッド接続を自分の Web アプリに追加しようとするときにそれを "_表示_" することはできますが、リレー接続の確立に使用される接続文字列を取得するためのアクセス許可がないため、"_追加_" することはできません。 ハイブリッド接続を正常に追加するには、`listKeys` アクセス許可 (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`) が必要です。 Relay に対するこのアクセス許可を含む `Contributor` ロールまたはその他のロールにより、ユーザーはハイブリッド接続を使用し、独自の Web Apps にそれを追加することが許可されます。
 
+## <a name="manage-your-hybrid-connections"></a>ハイブリッド接続を管理する ##
+
+ハイブリッド接続のエンドポイント ホストまたはポートを変更する必要がある場合は、次の手順に従います。
+
+1. 接続を選択し、ハイブリッド接続の詳細ウィンドウの左上にある **[削除]** を選択して、ローカル マシンのハイブリッド接続マネージャーからハイブリッド接続を削除します。
+1. App Service の **[ネットワーク]** ページにある **[ハイブリッド接続]** に移動して、App Service からハイブリッド接続を切断します。
+1. 更新する必要があるエンドポイントのリレーに移動し、左側のナビゲーション メニューの **[エンティティ]** から **[ハイブリッド接続]** を選択します。
+1. 更新するハイブリッド接続を選択して、左側のナビゲーション メニューの **[設定]** から **[プロパティ]** を選択します。
+1. 変更を行い、上部にある **[変更を保存する]** を選択します。
+1. App Service の **[ハイブリッド接続]** 設定に戻り、ハイブリッド接続を再度追加します。 エンドポイントが意図した通りにアップデートされていることを確認します。 ハイブリッド接続がリストに表示されていない場合は、5 から 10 分経ってから最新の情報に更新します。
+1. ローカル コンピューターのハイブリッド接続マネージャーに戻り、接続を再度追加します。
+
 ## <a name="troubleshooting"></a>トラブルシューティング ##
 
 "接続済み" 状態の場合は、少なくとも 1 つの HCM がそのハイブリッド接続で構成され、Azure にアクセスできます。 ハイブリッド接続の状態が **[接続済み]** にならない場合、Azure にアクセスできる HCM でハイブリッド接続が構成されていません。 HCM に **[未接続]** と表示されている場合は、次の点を確認する必要があります。
@@ -206,30 +218,18 @@ Relay への `Reader` アクセス権限を持つユーザーは誰でも、Azur
 * ホストに、ポート 443 での Azure への発信アクセスはありますか? PowerShell コマンド *Test-NetConnection Destination -P Port* を使用して、HCM ホストからテストすることができます。 
 * HCM が正しくない状態である可能性はありますか? ‘Azure ハイブリッド接続マネージャー サービス' ローカル サービスを再起動してみてください。
 
+* 競合するソフトウェアがインストールされていますか? ハイブリッド接続マネージャーは、Biztalk ハイブリッド接続マネージャーまたは Service Bus for Windows Server と共存することはできません。 そのため、HCM をインストールする場合は、これらのパッケージのバージョンを最初に削除する必要があります。
+
 状態に **[接続済み]** と表示されているにもかかわらず、アプリがエンドポイントに接続できない場合は:
 
 * ハイブリッド接続で DNS 名を使用していることを確認してください。 IP アドレスを使用している場合、必要なクライアント DNS 検索が行われないことがあります。 Web アプリで実行されているクライアントによって DNS 検索が実行されない場合、ハイブリッド接続は機能しません
 * ハイブリッド接続で使用されている DNS 名が HCM ホストから解決できることを確認します。 *nslookup EndpointDNSname* を使用して解決を確認します。ここで、EndpointDNSname は、ハイブリッド接続定義で使用されているものと完全に一致します。
 * PowerShell コマンド *Test-NetConnection EndpointDNSname -P Port* 使用して、HCM ホストからエンドポイントへのアクセスをテストします。HCM ホストからエンドポイントにアクセスできない場合は、宛先ホストのホストベースのファイアウォールを含む 2 つのホスト間のファイアウォールを確認します。
+* App Service on Linuxを使用している場合は、エンドポイント ホストとして 「localhost」を使用していない必要があります。 代わりに、ローカル コンピューター上のリソースとの接続を作成する場合は、コンピューター名前を使用します。
 
 App Service では、Advanced Tools (Kudu) コンソールから **tcpping** コマンドライン ツールを呼び出すことができます。 このツールは、TCP エンドポイントにアクセスできるかどうかを通知できますが、ハイブリッド接続エンドポイントにアクセスできるかどうは通知しません。 コンソールで、ハイブリッド接続エンドポイントに対してツールを使用している場合は、host:port の組み合わせが使用されていることのみを確認できます。  
 
 お使いのエンドポイント用のコマンドライン クライアントがある場合は、アプリ コンソールから接続をテストできます。 たとえば、curl を使用して、Web サーバーのエンドポイントへのアクセスをテストできます。
-
-
-<!--Image references-->
-[1]: ./media/app-service-hybrid-connections/hybridconn-connectiondiagram.png
-[2]: ./media/app-service-hybrid-connections/hybridconn-portal.png
-[3]: ./media/app-service-hybrid-connections/hybridconn-addhc.png
-[4]: ./media/app-service-hybrid-connections/hybridconn-createhc.png
-[5]: ./media/app-service-hybrid-connections/hybridconn-properties.png
-[6]: ./media/app-service-hybrid-connections/hybridconn-aspproperties.png
-[7]: ./media/app-service-hybrid-connections/hybridconn-hcm.png
-[8]: ./media/app-service-hybrid-connections/hybridconn-hcmadd.png
-[9]: ./media/app-service-hybrid-connections/hybridconn-hcmadded.png
-[10]: ./media/app-service-hybrid-connections/hybridconn-hcmdetails.png
-[11]: ./media/app-service-hybrid-connections/hybridconn-manual.png
-[12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
 [HCService]: /azure/service-bus-relay/relay-hybrid-connections-protocol/

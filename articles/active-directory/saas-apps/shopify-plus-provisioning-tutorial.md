@@ -3,8 +3,8 @@ title: チュートリアル:Azure Active Directory を使用した自動ユー�
 description: Azure AD から Shopify Plus に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: e2fa3ac8-a30f-4dcd-8073-ed7c65909feb
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 12/07/2020
-ms.author: Zhchia
-ms.openlocfilehash: ce791337cb27d3704d1cfa007ed6dca3e8e7e0d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: f867ca13ee2ed247ff891290fa52042ba45c5034
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729628"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323956"
 ---
 # <a name="tutorial-configure-shopify-plus-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Shopify Plus を構成する
 

@@ -10,16 +10,13 @@ ms.date: 05/28/2019
 ms.topic: quickstart
 ms.service: synapse-analytics
 ms.subservice: sql-dw
-ms.custom:
-- seo-lt-2019
-- azure-synapse
-- mode-portal
-ms.openlocfilehash: 99530b1949f03867a5b755208191341556ba8083
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: seo-lt-2019, azure-synapse, mode-portal
+ms.openlocfilehash: 2f3fc05bc0bf3700c23be80e21cd47bdaf06333f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535843"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003696"
 ---
 # <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>クイックスタート: Azure portal から Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) を作成し、クエリを実行する
 

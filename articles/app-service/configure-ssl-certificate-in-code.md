@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b4e184f827875ebebd40ab976ef63e77ee702d49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e5aab3d38e4f981e27ceb59db1511c54ed89381
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93126041"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752421"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Azure App Service の自分のコードから TLS/SSL 証明書を使用する
 
@@ -71,7 +71,7 @@ using (X509Store certStore = new X509Store(StoreName.My, StoreLocation.CurrentUs
                               certThumbprint,
                               validOnly);
   // Get the first cert with the thumbprint
-  X509Certificate2 cert = certCollection.OfType<X509Certificate>().FirstOrDefault();
+  X509Certificate2 cert = certCollection.OfType<X509Certificate2>().FirstOrDefault();
 
   if (cert is null)
       throw new Exception($"Certificate with thumbprint {certThumbprint} was not found");
@@ -164,6 +164,19 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
+次の C# コードは、Linux アプリでプライベート証明書を読み込む方法を示しています。
+
+```csharp
+using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+...
+var bytes = File.ReadAllBytes("/var/ssl/private/<thumbprint>.p12");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
 Node.js、PHP、Python、Java、Ruby で TLS/SSL 証明書をファイルから読み込む方法については、それぞれの言語または Web プラットフォームのドキュメントを参照してください。
 
 ## <a name="more-resources"></a>その他のリソース
@@ -171,4 +184,5 @@ Node.js、PHP、Python、Java、Ruby で TLS/SSL 証明書をファイルから�
 * [Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)
 * [HTTPS の適用](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 の適用](configure-ssl-bindings.md#enforce-tls-versions)
-* [FAQ:App Service 証明書](./faq-configuration-and-management.md)
+* [FAQ:App Service 証明書](./faq-configuration-and-management.yml)
+* [環境変数とアプリ設定のリファレンス](reference-app-settings.md)

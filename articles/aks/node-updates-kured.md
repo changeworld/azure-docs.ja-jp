@@ -5,12 +5,12 @@ description: kured を使用して Azure Kubernetes Service (AKS) の Linux ノ�
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: 35c9e76c234e4b09fbb090eda363506ee3e11130
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a81d778b8346a03622ef837b6732e7d50e807652
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88164242"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747849"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Linux ノードにセキュリティとカーネルの更新を適用します
 
@@ -39,6 +39,12 @@ AKS クラスターでは、お客様の Kubernetes ノードが Azure 仮想マ
 
 お客様独自のワークフローとプロセスを使用してノードの再起動を管理するか、`kured` を使用してプロセスを調整することができます。 `kured` を使用すると、クラスター内の各 Linux ノードでポッドを実行する [DaemonSet][DaemonSet] がデプロイされます。 DaemonSet 内のこれらのポッドによって */var/run/reboot-required* ファイルの存在が監視され、ノードの再起動プロセスが開始されます。
 
+### <a name="node-image-upgrades"></a>ノード イメージのアップグレード
+
+無人アップグレードでは、Linux ノード OS にアップデートが適用されますが、クラスターのノードを作成するためのイメージは変更されません。 新しい Linux ノードがクラスターに追加された場合は、元のイメージを使用してノードが作成されます。 この新しいノードは、毎晩の自動チェックで利用可能なすべてのセキュリティおよびカーネル アップデートを受け取りますが、すべてのチェックと再起動が完了するまではパッチは適用されません。
+
+また、ノード イメージのアップグレードを使用して、クラスターで使用されているノード イメージをチェックして更新することもできます。 ノード イメージのアップグレードに関する詳細については、「[Azure Kubernetes Service (AKS) ノード イメージのアップグレード][node-image-upgrade]」を参照してください。
+
 ### <a name="node-upgrades"></a>ノードのアップグレード
 
 AKS には別途、クラスターを "*アップグレード*" するためのプロセスがあります。 通常、アップグレードとは、ノードのセキュリティ更新プログラムを適用するだけでなく、より新しいバージョンの Kubernetes に移行することを言います。 AKS のアップグレードでは、次のアクションが実行されます。
@@ -65,7 +71,7 @@ helm repo update
 kubectl create namespace kured
 
 # Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
-helm install kured kured/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
+helm install kured kured/kured --namespace kured --set nodeSelector."kubernetes\.io/os"=linux
 ```
 
 `kured` には、Prometheus や Slack との統合など、追加のパラメーターを構成することもできます。 追加の構成パラメーターの詳細については、[kured Helm グラフ][kured-install]をご参照ください。
@@ -118,3 +124,4 @@ Windows Server ノードを使用する AKS クラスターについては、「
 [aks-ssh]: ssh.md
 [aks-upgrade]: upgrade-cluster.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[node-image-upgrade]: node-image-upgrade.md

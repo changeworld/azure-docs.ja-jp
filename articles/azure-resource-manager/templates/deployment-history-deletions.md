@@ -2,13 +2,14 @@
 title: デプロイ履歴の削除
 description: Azure Resource Manager でデプロイ履歴からデプロイを自動削除するしくみについて説明します。 履歴が上限の 800 を超えそうになるとデプロイが削除されます。
 ms.topic: conceptual
-ms.date: 03/23/2021
-ms.openlocfilehash: b55c022c35c43be6818bb3c551d5db85b1927ebb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/04/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: eaffae3ea5e901719969632cb1f889c8914978a0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781849"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963366"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>デプロイ履歴からの自動削除
 
@@ -16,23 +17,21 @@ ms.locfileid: "107781849"
 
 Azure Resource Manager では、上限に近づいたときに履歴からデプロイが自動的に削除されます。 自動削除という動作は過去になかったものです。 以前は、エラーを避ける目的で、デプロイ履歴から手動でデプロイを削除する必要がありました。 この変更は 2020 年 8 月 6 日に実装されました。
 
-**リソース グループのデプロイでは、自動削除がサポートされています。現時点では、[サブスクリプション](deploy-to-subscription.md)、[管理グループ](deploy-to-management-group.md)、[テナント](deploy-to-tenant.md)のデプロイに対する履歴のデプロイは、自動的には削除されません。**
+**リソース グループおよびサブスクリプションのデプロイについては、自動削除がサポートされています。現在、[管理グループ](deploy-to-management-group.md)および[テナント](deploy-to-tenant.md)のデプロイに対する履歴から、デプロイが自動的に削除されることはありません。**
 
 > [!NOTE]
 > 履歴からデプロイを削除しても、デプロイされたリソースには影響が出ません。
 
 ## <a name="when-deployments-are-deleted"></a>デプロイが削除されるタイミング
 
-デプロイが 775 件を超えると、履歴からデプロイが削除されます。 Azure Resource Manager では、履歴が 750 に減るまでデプロイを削除します。 常に、最も古いデプロイが先に削除されます。
+デプロイが 700 件を超えると、履歴からデプロイが削除されます。 履歴が 600 件に減るまで、Azure Resource Manager によってデプロイが削除されます。 常に、最も古いデプロイが先に削除されます。
 
-:::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="デプロイ履歴からの削除":::
+:::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.png" alt-text="デプロイ履歴の削除の図。":::
 
-> [!NOTE]
-> 開始番号 (775) と終了番号 (750) は変わる場合もあります。
->
+> [!IMPORTANT]
 > リソース グループが既に 800 の上限に達している場合、次回のデプロイはエラーで失敗します。 自動削除プロセスがすぐに開始されます。 少し待つと、 デプロイを再試行できます。
 
-デプロイに加え、[what-if 操作](template-deploy-what-if.md)の実行時またはデプロイの検証時にも削除を始動させることができます。
+デプロイに加え、[what-if 操作](./deploy-what-if.md)の実行時またはデプロイの検証時にも削除を始動させることができます。
 
 履歴に含まれるものと同じ名前をデプロイに付けると、履歴のその場所をリセットすることになります。 そのデプロイは履歴の中で最も新しい場所に移動します。 エラー後、[そのデプロイまでロールバック](rollback-on-error.md)した場合もデプロイの場所がリセットされます。
 

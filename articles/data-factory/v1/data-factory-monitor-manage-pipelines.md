@@ -5,14 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 04/30/2018
-ms.openlocfilehash: 0744a7d915d6bee868b160abc29964d58947dd28
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/22/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 44bbb2e9d5a599aad3e8f705dcc3ba4602e262ca
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779632"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073284"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -45,39 +47,39 @@ Azure Portal を使用すると、次の操作を行うことができます。
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで、**[データ ファクトリ]** をクリックします。 表示されない場合は、**[その他のサービス >]** をクリックし、**[インテリジェンス + 分析]** カテゴリの下にある **[データ ファクトリ]** をクリックします。
 
-   ![[すべて参照] > [データ ファクトリ]](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png" alt-text="[すべて参照] > [データ ファクトリ]":::
 3. **[データ ファクトリ]** ブレードで、目的のデータ ファクトリを選択します。
 
-    ![データ ファクトリの選択](./media/data-factory-monitor-manage-pipelines/select-data-factory.png)
+    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/select-data-factory.png" alt-text="データ ファクトリの選択":::
 
    データ ファクトリのホーム ページが表示されます。
 
-   ![Data Factory ブレード](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/data-factory-blade.png" alt-text="Data Factory ブレード":::
 
 #### <a name="diagram-view-of-your-data-factory"></a>Data Factory のダイアグラム ビュー
 データ ファクトリの **ダイアグラム** ビューでは、データ ファクトリとその資産を監視および管理する 1 つのウィンドウが提供されます。 データ ファクトリの **ダイアグラム** ビューを表示するには、データ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
 
-![[ダイアグラム] ビュー](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/diagram-view.png" alt-text="[ダイアグラム] ビュー":::
 
 ダイアグラムの拡大または縮小、画面に合わせたサイズ変更、100% 表示、レイアウトのロックを行うことができるほか、パイプラインとデータセットを自動で配置することができます。 また、データ系列の情報を確認することもできます (つまり、選択したアイテムのアップストリーム アイテムとダウンストリーム アイテムが表示されます)。
 
 ### <a name="activities-inside-a-pipeline"></a>パイプライン内のアクティビティ
 1. パイプラインを右クリックして **[パイプラインを開く]** をクリックすると、パイプライン内のすべてのアクティビティとアクティビティの入力データセットおよび出力データセットが表示されます。 この機能は、パイプラインに複数のアクティビティが含まれる場合に、1 つのパイプラインの動作系列を理解するときに便利です。
 
-    ![パイプラインを開くメニュー](./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png)     
+    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png" alt-text="パイプラインを開くメニュー":::     
 2. 次の例では、パイプラインのコピー アクティビティ、入力、出力を確認できます。 
 
-    ![パイプライン内のアクティビティ](./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png)
+    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png" alt-text="パイプライン内のアクティビティ":::
 3. 左上隅の階層リンクの **[データ ファクトリ]** リンクをクリックして、データ ファクトリのホーム ページに戻ることができます。
 
-    ![Data Factory に戻る](./media/data-factory-monitor-manage-pipelines/navigate-back-to-data-factory.png)
+    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/navigate-back-to-data-factory.png" alt-text="Data Factory に戻る":::
 
 ### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>パイプライン内の各アクティビティの状態を表示する
 アクティビティによって生成されるデータセットのステータスを表示することにより、アクティビティの現在の状態を確認できます。
 
 **ダイアグラム** の **OutputBlobTable** をダブルクリックすると、パイプライン内のさまざまなアクティビティの実行によって生成されたすべてのスライスが表示されます。 コピー アクティビティは過去 8 時間正常に実行され、**Ready** 状態のスライスを生成したことがわかります。  
 
-![パイプラインの状態](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png" alt-text="パイプラインの状態":::
 
 データ ファクトリのデータセット スライスは、次のいずれかの状態になります。
 
@@ -142,20 +144,20 @@ Azure Portal を使用すると、次の操作を行うことができます。
 
 **[最近更新されたスライス]** ブレードでスライスのエントリをクリックすると、スライスに関する詳細が表示されます。
 
-![スライスの詳細](./media/data-factory-monitor-manage-pipelines/slice-details.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/slice-details.png" alt-text="スライスの詳細":::
 
 スライスが複数回実行された場合、 **[アクティビティの実行]** ボックスの一覧に複数の行が表示されます。 **[アクティビティの実行]** ボックスの一覧で実行エントリをクリックすると、アクティビティの実行に関する詳細を確認できます。 リストにはすべてのログ ファイルが表示され、存在する場合はエラー メッセージも示されます。 この機能により、Data Factory を離れずにログの確認とデバッグを行うことができます。
 
-![アクティビティ実行の詳細](./media/data-factory-monitor-manage-pipelines/activity-run-details.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/activity-run-details.png" alt-text="アクティビティ実行の詳細":::
 
 スライスが **Ready** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、**[準備のできていないアップストリーム スライス]** の一覧に表示されます。 この機能は、スライスが **Waiting** 状態のときに、スライスが待機しているアップストリーム依存関係を理解するのに便利です。
 
-![準備のできていないアップストリーム スライス](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png" alt-text="準備のできていないアップストリーム スライス":::
 
 ### <a name="dataset-state-diagram"></a>データセット状態ダイアグラム
 データ ファクトリをデプロイした後、パイプラインに有効なアクティブ期間があると、データセット スライスは 1 つの状態から別の状態に遷移します。 現在、スライスのステータスは、次の状態ダイアグラムに従います。
 
-![状態ダイアグラム](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/state-diagram.png" alt-text="状態ダイアグラム":::
 
 データ ファクトリのデータセット状態遷移フローは、Waiting -> In-Progress/In-Progress (Validating) -> Ready/Failed となります。
 
@@ -203,28 +205,31 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 #### <a name="use-the-azure-portal-to-debug-an-error"></a>Azure Portal を使用してエラーをデバッグする
 1. **[テーブル]** ブレードで、**[状態]** が **[Failed]** になっている問題のあるスライスをクリックします。
 
-   ![問題のあるスライスを表示している [テーブル] ブレード](./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png)
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png" alt-text="問題のあるスライスを表示している [テーブル] ブレード":::
 2. **[データ スライス]** ブレードで、失敗したアクティビティの実行をクリックします。
 
-   ![エラーのあるデータ スライス](./media/data-factory-monitor-manage-pipelines/dataslice-with-error.png)
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/dataslice-with-error.png" alt-text="エラーのあるデータ スライス":::
 3. **[アクティビティの実行の詳細]** ブレードでは、HDInsight 処理に関連するファイルをダウンロードできます。 [状態/stderr] の **[ダウンロード]** をクリックし、エラーの詳細を含むエラー ログ ファイルをダウンロードします。
 
-   ![エラーのあるアクティビティ実行詳細ブレード](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png" alt-text="エラーのあるアクティビティ実行詳細ブレード":::     
 
 #### <a name="use-powershell-to-debug-an-error"></a>PowerShell を使用してエラーをデバッグする
+
 1. **PowerShell** を起動します。
-2. **Get-AzDataFactorySlice** コマンドを実行してスライスとその状態を確認します。 [状態] が **[Failed]** になっているスライスが表示されます。        
+2. **Get-AzDataFactorySlice** コマンドを実行してスライスとその状態を確認します。 [状態] が **[Failed]** になっているスライスが表示されます。
 
-    ```powershell   
+    ```powershell
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
-    ```   
-   次に例を示します。
+    ```
 
-    ```powershell   
+    次に例を示します。
+
+    ```powershell
     Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
     ```
 
    **StartDateTime** を、ご使用のパイプラインの開始時刻で置き換えます。 
+
 3. **Get-AzDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
 
     ```powershell   
@@ -234,14 +239,15 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 
     次に例を示します。
 
-    ```powershell   
+    ```powershell
     Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
     ```
 
     StartDateTime の値は、前の手順でメモしたエラーまたは問題のあるスライスの開始日時です。 日時は二重引用符で囲む必要があります。
+
 4. エラーの詳細を含む以下のような出力結果が表示されます。
 
-    ```   
+    ```output
     Id                      : 841b77c9-d56c-48d1-99a3-8c16c3e77d39
     ResourceGroupName       : ADF
     DataFactoryName         : LogProcessingFactory3
@@ -263,6 +269,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
     PipelineName            : EnrichGameLogsPipeline
     Type                    :
     ```
+
 5. 出力結果の ID 値を使用して **Save-AzDataFactoryLog** コマンドレットを実行し、このコマンドレットの **-DownloadLogs** オプションを使用してログ ファイルをダウンロードできます。
 
     ```powershell
@@ -277,11 +284,11 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 パイプラインのエラーをトラブルシューティングおよびデバッグした後は、エラー スライスに移動してコマンド バーの **[実行]** ボタンをクリックすることで、エラーを再実行できます。
 
-![障害が発生したスライスの再実行](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/rerun-slice.png" alt-text="障害が発生したスライスの再実行":::
 
 ポリシー エラー (たとえば、データが使用不可能な場合) のためにスライスの検証が失敗した場合は、エラーを修正し、コマンド バーの **[検証]** ボタンをクリックすることによって再度検証できます。
 
-![エラーの修正と検証](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png" alt-text="エラーの修正と検証":::
 
 ### <a name="use-azure-powershell"></a>Azure PowerShell の使用
 **Set-AzDataFactorySliceStatus** コマンドレットを使用してエラーを再実行できます。 このコマンドレットの構文やその他の詳細については、「[Set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-azdatafactoryslicestatus)」のトピックをご覧ください。
@@ -299,37 +306,37 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
 1.  Azure Portal にログインし、**[モニター]、[アラート]** の順に選択して [アラート] ページを開きます。
 
-    ![[アラート] ページを開きます。](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image1.png" alt-text="[アラート] ページを開きます。":::
 
 2.  **[+ 新しいアラート ルール]** を選択して新しいアラートを作成します。
 
-    ![新しいアラートを作成する](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image2.png" alt-text="新しいアラートを作成する":::
 
 3.  **[Alert condition]\(アラートの条件)** を定義します。 ( **[リソースの種類でフィルター]** では **[データ ファクトリ]** を選択するようにしてください)。 **[ディメンション]** の値を指定することもできます。
 
-    ![アラートの条件を定義する - ターゲットを選択する](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image3.png" alt-text="アラートの条件を定義する - ターゲットを選択する":::
 
-    ![アラートの条件を定義する - アラート条件を追加する](media/data-factory-monitor-manage-pipelines/v1alerts-image4.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image4.png" alt-text="アラートの条件を定義する - アラート条件を追加する":::
 
-    ![アラートの条件を定義する - アラート ロジックを追加する](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image5.png" alt-text="アラートの条件を定義する - アラート ロジックを追加する":::
 
 4.  **[アラートの詳細]** を定義します。
 
-    ![アラートの詳細を定義する](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image6.png" alt-text="アラートの詳細を定義する":::
 
 5.  **[Action group] (アクション グループ)** を定義します。
 
-    ![アクション グループを定義する - 新しいアクション グループを作成する](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image7.png" alt-text="アクション グループを定義する - 新しいアクション グループを作成する":::
 
-    ![アクション グループを定義する - プロパティを設定する](media/data-factory-monitor-manage-pipelines/v1alerts-image8.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image8.png" alt-text="アクション グループを定義する - プロパティを設定する":::
 
-    ![アクション グループを定義する - 作成された新しいアクション グループ](media/data-factory-monitor-manage-pipelines/v1alerts-image9.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image9.png" alt-text="アクション グループを定義する - 作成された新しいアクション グループ":::
 
 ## <a name="move-a-data-factory-to-a-different-resource-group-or-subscription"></a>データ ファクトリを別のリソース グループまたはサブスクリプションに移動する
 データ ファクトリを別のリソース グループまたはサブスクリプションに移動するには、データ ファクトリのホーム ページの **[移動]** コマンド バー ボタンを使用します。
 
-![データ ファクトリの移動](./media/data-factory-monitor-manage-pipelines/MoveDataFactory.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/MoveDataFactory.png" alt-text="データ ファクトリの移動":::
 
 また、関連するリソース (データ ファクトリに関連付けられたアラートなど) もデータ ファクトリと併せて移動することができます。
 
-![[リソースの移動] ダイアログ ボックス](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/MoveResources.png" alt-text="[リソースの移動] ダイアログ ボックス":::

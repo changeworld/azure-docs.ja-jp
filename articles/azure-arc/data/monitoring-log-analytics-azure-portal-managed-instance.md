@@ -7,20 +7,19 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: 88c7d29681146f7b81f085bdf6452d5b35fb7dae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e022605e014e3394847b0557a61b5bb905cffaf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90931494"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737129"
 ---
 # <a name="monitoring-log-analytics-billing-information-azure-portal-sql-managed-instance"></a>監視、ログ分析、課金情報、Azure portal (SQL Managed Instance)
 
-この記事では、Azure Arc 対応データ サービスで使用できるその他のエクスペリエンスの一覧を示します。
+この記事では、Azure Arc 対応データ サービスで利用できるその他のエクスペリエンスの一覧を示します。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="experiences"></a>エクスペリエンス
 

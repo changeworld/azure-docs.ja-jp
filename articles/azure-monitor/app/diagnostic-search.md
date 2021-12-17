@@ -3,16 +3,16 @@ title: Azure Application Insights の検索の使用 | Microsoft Docs
 description: Web アプリによって送信された未加工のテレメトリを検索およびフィルター処理します。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f7c2229a2e497fb052db79d61fcfeff140897798
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a025210fc399c1d36fa416c3a4795331eca2293
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579554"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134205"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 
-検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](./app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
+トランザクションの検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](./app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
 
 (データでのより複雑なクエリについては、[Analytics](../logs/log-analytics-tutorial.md) を使用してください。)
 
@@ -20,7 +20,7 @@ ms.locfileid: "100579554"
 
 ### <a name="in-the-azure-portal"></a>Azure Portal で次の操作を行います。
 
-[Application Insights] でお使いのアプリケーションの [概要] タブ から診断検索を開くことができます (上部バーの中にあります)。または、左側のメニューから開くことができます。
+[Application Insights] でお使いのアプリケーションの [概要] タブからトランザクションの検索を開くことができます (上部バーの中にあります)。または、左側のメニューから開くことができます。
 
 ![[検索] タブ](./media/diagnostic-search/view-custom-events.png)
 
@@ -128,7 +128,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 Application Insights SDK によって送信される標準のテレメトリに加えて、次の操作を実行できます。
 
-* [.NET](./asp-net-trace-logs.md) または [Java](./java-trace-logs.md) の好みのログ記録フレームワークからのログ トレースをキャプチャする。 これは、ログ トレースを検索し、ページ ビュー、例外、その他のイベントと関連付けることができることを意味します。
+* [.NET](./asp-net-trace-logs.md) または [Java](java-2x-trace-logs.md) の好みのログ記録フレームワークからのログ トレースをキャプチャする。 これは、ログ トレースを検索し、ページ ビュー、例外、その他のイベントと関連付けることができることを意味します。
 * カスタム イベント、ページ ビュー、および例外を送信する[コードを作成](./api-custom-events-metrics.md)する。
 
 [ログとカスタム テレメトリを Application Insights に送信する方法についてはこちら](./asp-net-trace-logs.md)。
@@ -148,4 +148,4 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 * [Analytics で複雑なクエリを作成する](../logs/log-analytics-tutorial.md)
 * [Application Insights にログとカスタム テレメトリを送信する](./asp-net-trace-logs.md)
 * [可用性と応答性のテストを設定する](./monitor-web-app-availability.md)
-* [トラブルシューティング](../faq.md)
+* [トラブルシューティング](../faq.yml)

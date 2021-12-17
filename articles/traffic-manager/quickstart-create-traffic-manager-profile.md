@@ -3,26 +3,29 @@ title: 'クイックスタート: アプリケーションの HA のためのプ
 description: このクイックスタート記事では、高可用性 Web アプリケーションを構築するための Traffic Manager プロファイルを、Azure portal を使用して作成する方法について説明します。
 services: traffic-manager
 author: duongau
-manager: twooley
-ms.service: traffic-manager
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/15/2020
 ms.author: duau
-ms.openlocfilehash: 1a26becbc7ffaddc09dc06c5dff12f83deaa9ee2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: twooley
+ms.date: 04/19/2021
+ms.topic: quickstart
+ms.service: traffic-manager
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom: mode-portal
+ms.openlocfilehash: be0061fb42a391506adf7c944e60836e14d6cb8b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067216"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003468"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Traffic Manager プロファイルの作成
 
 このクイック スタートでは、Web アプリケーションの高可用性を実現する Traffic Manager プロファイルの作成方法について説明します。
 
 このクイック スタートでは、Web アプリケーションの 2 つのインスタンスについて見ていきます。 これらは、それぞれ別の Azure リージョンで実行されています。 皆さんは、[エンドポイントの優先度](traffic-manager-routing-methods.md#priority-traffic-routing-method)に基づいて Traffic Manager プロファイルを作成します。 このプロファイルにより、Web アプリケーションを実行しているプライマリ サイトにユーザー トラフィックを誘導します。 Traffic Manager では、Web アプリケーションが継続的に監視されます。 プライマリ サイトが利用できなくなった場合には、バックアップ サイトへの自動フェールオーバーが実行されます。
+
+:::image type="content" source="./media/quickstart-create-traffic-manager-profile/environment-diagram.png" alt-text="Traffic Manager デプロイ環境の図。" border="false":::
 
 Azure サブスクリプションをお持ちでない場合は、ここで[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -36,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 1. **[Web アプリの作成]** の **[基本]** タブで、次の値を入力または選択します。
 
-    | 設定                 | 値 |
+    | 設定                 | [値] |
     | ---                     | --- |
     | サブスクリプション            | サブスクリプションを選択します。 |    
     | Resource group          | **[新規作成]** を選択し、テキスト ボックスに「*myResourceGroupTM1*」と入力します。|
@@ -63,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 1. 画面の左上で、 **[リソースの作成]** を選択します。 次に、「**Traffic Manager プロファイル**」を検索し、 **[作成]** を選択します。
 1. **[Traffic Manager プロファイルの作成]** ブレードで、次の設定を入力するか、選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | --------| ----- |
     | 名前 | Traffic Manager プロファイルの一意の名前を入力します。|
     | ルーティング方法 | **[優先順位]** を選択します。|
@@ -81,11 +84,11 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 1. 検索結果からプロファイルを選択します。
 1. **[Traffic Manager プロファイル]** の **[設定]** セクションで、**[エンドポイント]** を選択し、**[追加]** を選択します。
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-endpoint-menu.png" alt-text="Traffic Manager プロファイルのエンドポイントの設定":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-endpoint-menu.png" alt-text="Traffic Manager プロファイルのエンドポイント設定のスクリーンショット。":::
 
 1. 次の設定を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ------|
     | Type | **[Azure エンドポイント]** を選択します。 |
     | 名前 | 「*myPrimaryEndpoint*」と入力します。 |
@@ -93,12 +96,12 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
     | ターゲット リソース | **[アプリ サービスの選択]**  >  **[米国東部]** を選択します。 |
     | 優先度 | **[1]** を選択します。 正常なトラフィックはすべてこのエンドポイントに送られます。 |
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png" alt-text="Traffic Manager プロファイルにエンドポイントを追加する画面のスクリーンショット":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png" alt-text="Traffic Manager プロファイルにエンドポイントを追加する画面のスクリーンショット。":::
     
 1. **[OK]** を選択します。
 1. 2 つ目の Azure リージョンのフェールオーバー エンドポイントを作成するには、次の設定を使用して手順 3. と手順 4. を繰り返します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ------|
     | Type | **[Azure エンドポイント]** を選択します。 |
     | 名前 | 「*myFailoverEndpoint*」と入力します。 |
@@ -120,7 +123,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 1. Traffic Manager プロファイルを選択します。 **[概要]** が表示されます。
 1. **[Traffic Manager プロファイル]** に、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。
   
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png" alt-text="Traffic Manager の DNS 名の場所を示すスクリーンショット":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png" alt-text="Traffic Manager の DNS 名の場所を示すスクリーンショット。":::
 
 ### <a name="view-traffic-manager-in-action"></a>Traffic Manager の動作確認
 
@@ -129,7 +132,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
     > [!NOTE]
     > このクイック スタート シナリオでは、すべての要求がプライマリ エンドポイントにルーティングされます。 これは **優先度 1** に設定されています。
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png" alt-text="Traffic Manager プロファイルの可用性を確認する Web ページのスクリーン ショット":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png" alt-text="Traffic Manager プロファイルの可用性を確認する Web ページのスクリーンショット。":::
 
 1. Traffic Manager のフェールオーバー動作を確認するために、次の手順でプライマリ サイトを無効にします。
     1. [Traffic Manager プロファイル] ページで、**[概要]** セクションから **[myPrimaryEndpoint]** を選択します。

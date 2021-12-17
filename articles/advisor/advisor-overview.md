@@ -3,12 +3,12 @@ title: Azure Advisor の概要
 description: Azure Advisor を使用して、Azure のデプロイを最適化します。
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48423a56983f052e9e048fca111fd77b9188a577
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91405209"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494364"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
@@ -57,7 +57,7 @@ Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通して�
 
 Advisor では、Application Gateway、App Services、可用性セット、Azure Cache、Azure Data Factory、Azure Database for MySQL、Azure Database for PostgreSQL、Azure Database for MariaDB、Azure ExpressRoute、Azure Cosmos DB、Azure パブリック IP アドレス、Azure Synapse Analytics、SQL サーバー、ストレージ アカウント、Traffic Manager プロファイル、および仮想マシンに対する推奨事項が提供されます。
 
-Azure Advisor には、[Azure Security Center](../security-center/security-center-recommendations.md) からの推奨事項も含まれ、別のリソースの種類に対する推奨事項が含まれる可能性があります。
+Azure Advisor には、[Microsoft Defender for Cloud](../defender-for-cloud/defender-for-cloud-introduction.md) からの推奨事項も含まれ、別のリソースの種類に対する推奨事項が含まれる可能性があります。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>推奨事項は延期したり無視したりできるか?
 

@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: 4f6187ccb143f065fed236495128add7a2ab1ee4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d70580a34e832d6465571adbc8f0524abeba609a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928537"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767927"
 ---
 # <a name="reservation-recommendations"></a>Reservation recommendations
 
@@ -65,5 +65,5 @@ Azure 予約インスタンス (RI) の購入に関する推奨事項は、Azure
 - 7 日間のルックバック期間を使用する場合は、VM が 1 日以上シャットダウンすると、推奨事項を取得できないことがあります。
 
 ## <a name="next-steps"></a>次のステップ
-
+- [REST API シリーズを使用して予約の推奨事項](/rest/api/consumption/reservationrecommendations/list)を取得します。
 - [Azure の予約割引が仮想マシンに適用されるしくみ](../manage/understand-vm-reservation-charges.md)について説明します。

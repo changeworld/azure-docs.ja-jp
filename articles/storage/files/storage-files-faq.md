@@ -3,25 +3,25 @@ title: Azure Files についてよく寄せられる質問 (FAQ) | Microsoft Doc
 description: Azure Files についてよく寄せられる質問への回答を紹介します。 Azure ファイル共有は、クラウドまたはオンプレミスの Windows、Linux、macOS デプロイで同時にマウントできます。
 author: roygara
 ms.service: storage
-ms.date: 02/23/2020
+ms.date: 11/5/2021
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 4d7123aa22d95e3e4c3850be775ddad96f28d280
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ae679f5f5f70b684a7b587babc3d1492170267c9
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785309"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554524"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
-[Azure Files](storage-files-introduction.md) では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
+[Azure Files](storage-files-introduction.md) は、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System)経由でアクセスできる、クラウド内のフル マネージドのファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
 
 この記事では、Azure Files での Azure File Sync の使用を含め、Azure Files の機能についてよく寄せられる質問にお答えします。 ご質問に対する回答がここで見つからない場合は、次のチャネルでお問い合わせください (上から順に)。
 
 1. この記事のコメント セクション。
 2. [Azure Storage に関する Microsoft Q&A 質問ページ](/answers/topics/azure-file-storage.html)。
-3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。 
+3. [Azure コミュニティのフィードバック](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84)。 
 4. Microsoft サポート。 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、 **[ヘルプとサポート]** ボタンを選択し、 **[新しいサポート要求]** を選択します。
 
 ## <a name="general"></a>全般
@@ -31,7 +31,7 @@ ms.locfileid: "107785309"
 
 * <a id="file-access-options"></a>
   **Azure Files でファイルにアクセスするさまざまな方法を挙げてください。**  
-    SMB ファイル共有は、SMB 3.0 プロトコルを使用してローカル マシンにマウントできます。また、[Storage Explorer](https://storageexplorer.com/) などのツールを使用してファイル共有内のファイルにアクセスすることもできます。 NFS ファイル共有は、Azure portal によって提供されるスクリプトをコピーおよび貼り付けすることで、ローカル マシンにマウントできます。 アプリケーションから、ストレージ クライアント ライブラリ、REST API、PowerShell、または Azure CLI を使用して、Azure ファイル共有内のファイルにアクセスできます。
+    SMB ファイル共有は、SMB 3.x プロトコルを使用してローカル マシンにマウントできます。また、[Storage Explorer](https://storageexplorer.com/) などのツールを使用してファイル共有内のファイルにアクセスすることもできます。 NFS ファイル共有は、Azure portal によって提供されるスクリプトをコピーおよび貼り付けすることで、ローカル マシンにマウントできます。 アプリケーションから、ストレージ クライアント ライブラリ、REST API、PowerShell、または Azure CLI を使用して、Azure ファイル共有内のファイルにアクセスできます。
 
 * <a id="what-is-afs"></a>
   **Azure File Sync とは何ですか。**  
@@ -45,7 +45,7 @@ ms.locfileid: "107785309"
 
     Azure Files は、明確にファイル システムです。 Azure Files には、オンプレミスのオペレーティング システムで長年使われてきた、皆さんもおなじみのファイルの概念がすべて備わっています。 Azure Blob Storage と同様、Azure Files にも REST インターフェイスと REST ベースのクライアント ライブラリが用意されています。 Azure Blob Storage とは異なり、Azure Files では Azure ファイル共有に SMB または NFS でアクセスできます。 ファイル共有は、オンプレミスの VM とクラウドの VM のどちらであっても、Windows、Linux、macOS 上で直接マウントできます。コードを記述したり、特別なドライバーをファイル システムにアタッチする必要はありません。 また、Azure File Sync を使用して、データが使用される場所に近接したオンプレミスのファイル サーバーで Azure SMB ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。 
    
-    Azure Files と Azure BLOB ストレージの違いに関する詳細な説明については、「[コア Azure Storage サービスの概要](../common/storage-introduction.md)」を参照してください。 Azure Blob Storage の詳細については、「[Blob Storage の概要](../blobs/storage-blobs-introduction.md)」をご覧ください。
+    Azure Files と Azure Blob Storage の違いに関する詳細な説明については、「[コア Azure Storage サービスの概要](../common/storage-introduction.md)」を参照してください。 Azure Blob Storage の詳細については、「[Blob Storage の概要](../blobs/storage-blobs-introduction.md)」をご覧ください。
 
 * <a id="files-versus-disks"></a>**Azure Disks ではなく Azure ファイル共有を使用する理由を教えてください。**  
     Azure Disks におけるディスクは、ただのディスクに過ぎません。 Azure Disks を有効活用するには、Azure で実行されている仮想マシンにディスクをアタッチする必要があります。 Azure Disks は、オンプレミスのサーバーで使われるディスクとまったく同じ用途で使用することができます。 OS システム ディスクや OS のスワップ領域、アプリケーションの専用ストレージとして使用可能です。 Azure ファイル共有を使用する代わりに Azure Disks を使用してクラウドにファイル サーバーを作成するのも面白い使い方です。 Azure Files では現在サポートされていないデプロイ オプションを必要とする場合、Azure Virtual Machines にファイル サーバーをデプロイすれば、Azure に高パフォーマンスなファイル ストレージを設置できます。 
@@ -84,7 +84,7 @@ ms.locfileid: "107785309"
 
 * <a id="give-us-feedback"></a>
   **Azure Files に追加してほしい機能があります。追加できますか。**  
-    Azure Files チームでは、サービスに関するあらゆるフィードバックをお待ちしています。 [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) で機能のリクエストにご投票ください。 多くの新しい機能を皆様に喜んでいただけることを楽しみにしています。
+    Azure Files チームでは、サービスに関するあらゆるフィードバックをお待ちしています。 [Azure Files UserVoice](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84) で機能のリクエストにご投票ください。 多くの新しい機能を皆様に喜んでいただけることを楽しみにしています。
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 
@@ -105,6 +105,23 @@ ms.locfileid: "107785309"
   **Azure File Sync で 1TiB のデータをアップロードするには、どのくらいの時間がかかりますか?**
   
     パフォーマンスは、環境設定、構成、また、これが初期の同期か継続的な同期かに応じて異なります。詳細については、「[Azure File Sync のパフォーマンス メトリック](storage-files-scale-targets.md#azure-file-sync-performance-metrics)」を参照してください
+
+* <a id="afs-initial-upload"></a>
+  **Azure File Sync で最初にアップロードされるデータは何ですか?**
+  
+    **Windows Server から Azure ファイル共有への初回データ同期**: データはすべて Windows Server 上にあるため、Azure File Sync デプロイの多くは空の Azure ファイル共有から始まります。 そのような場合、初回クラウド変更の列挙が速く、Windows Server から Azure ファイル共有への変更同期に時間の多くが費やされます。
+
+同期によって Azure ファイル共有にデータがアップロードされますが、ローカルのファイル サーバー上ではダウンタイムがありません。管理者はネットワーク上限を設定し、バックグラウンドのデータ アップロードに使用される帯域幅の量を制限できます。
+
+初回同期は通常、同期グループあたり毎秒 20 ファイルという初回アップロード率に制限されます。 顧客は以下の数式で時間 (日数) を割り出し、すべてのデータを Azure にアップロードする時間を見積もりできます。
+
+**同期グループにファイルをアップロードするための時間 (日数) = (サーバー エンドポイントに含まれるオブジェクト数)/(20 * 60 * 60 * 24)**
+
+* <a id="afs-initial-upload-server-restart"></a>
+  **初回アップロード時にサーバーが停止して再起動された場合、どのような影響がありますか** 影響はありません。 サーバーが再起動された後、中断位置から Azure File Sync が同期を再開します
+
+* <a id="afs-initial-upload-server-changes"></a>
+  **初期アップロード中、サーバー エンドポイントでデータに変更が加えられた場合、どのような影響がありますか** 影響はありません。 クラウド エンドポイントとサーバー エンドポイントとが同期状態となるよう、サーバー エンドポイントで行われた変更は、Azure File Sync によって調整されます
 
 * <a id="afs-conflict-resolution"></a>**2 つのサーバーで同じファイルがほぼ同時に変更された場合、どうなりますか。**  
     Azure File Sync では、シンプルな競合解決方法が採用されています。ファイルに対して 2 つのエンドポイントで同時に変更を加えた場合、その両方の変更が保持されます。 最後に書き込まれた変更では、元のファイル名が維持されます。 (LastWriteTime によって決定される) 古いファイルには、エンドポイント名と競合番号がファイル名に追加されます。 サーバー エンドポイントの場合、エンドポイント名はサーバーの名前です。 クラウド エンドポイントの場合、エンドポイント名は **Cloud** です。 名前は、次の命名規則に従います。 
@@ -148,7 +165,7 @@ ms.locfileid: "107785309"
   **エクスプローラーで階層化されたファイルのサムネイルやプレビューが表示されないのはなぜですか。**  
     階層化されたファイルの場合、サムネイルとプレビューはサーバー エンドポイントでは表示されません。 Windows のサムネイル キャッシュ機能は、オフライン属性が設定されたファイルの読み取りを意図的にスキップするため、これは予期される動作です。 クラウドを使った階層化が有効になっている場合、階層化されたファイルを読み取ると、それらがダウンロード (呼び戻し) されます。
 
-    この動作は Azure File Sync 固有ではありません。Windows エクスプローラーでは、オフライン属性セットが設定されているすべてのファイルに対して "グレーの X" が表示されます。 この X のアイコンは、SMB 経由でファイルにアクセスすると表示されます。 この動作の詳しい説明については、[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105) を参照してください。
+    この動作は Azure File Sync 固有ではありません。Windows エクスプローラーでは、オフライン属性セットが設定されているすべてのファイルに対して "グレーの X" が表示されます。 この X のアイコンは、SMB 経由でファイルにアクセスすると表示されます。 この動作の詳細については、[オフラインとマークされているファイルのサムネイルを取得しない理由](https://devblogs.microsoft.com/oldnewthing/20170503-00/?p=96105)に関する記事を参照してください
 
     階層化されたファイルの管理方法については、[階層化されたファイルの管理方法](../file-sync/file-sync-how-to-manage-tiered-files.md)に関する記事を参照してください。
 
@@ -158,7 +175,7 @@ ms.locfileid: "107785309"
 
 * <a id="afs-os-support"></a>
   **Windows Server 2008 R2、Linux、または自分のネットワーク接続ストレージ (NAS) デバイスで Azure File Sync を使用することはできますか。**  
-    現在、Azure File Sync は Windows Server 2019、Windows Server 2016、および Windows Server 2012 R2 のみをサポートしています。 現時点でお伝えできる他の計画はありませんが、お客様の要望に応じてサポートするプラットフォームを増やしていきたいと考えています。 サポート対象としてご希望のプラットフォームがあれば、[Azure Files の UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) までお寄せください。
+    現在、Azure File Sync は Windows Server 2019、Windows Server 2016、および Windows Server 2012 R2 のみをサポートしています。 現時点でお伝えできる他の計画はありませんが、お客様の要望に応じてサポートするプラットフォームを増やしていきたいと考えています。 サポート対象としてご希望のプラットフォームがあれば、[Azure Files の UserVoice](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84) までお寄せください。
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **階層化されたファイルがサーバー エンドポイント名前空間の外部に存在するのはなぜですか。**  
@@ -200,7 +217,7 @@ ms.locfileid: "107785309"
 
     - Azure File Sync は、(Active Directory ベースかローカルかに関係なく) すべての随意 ACL (DACL) を保持し、同期先のすべてのサーバー エンドポイントにレプリケートします。 
     
-    Azure Storage サービスでサポートされているすべてのプロトコルの包括的な表記については、「[Azure Storage へのアクセスを承認する](../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。 
+    Azure Storage サービスでサポートされているすべてのプロトコルの包括的な表記については、「[Azure Storage へのアクセスを承認する](../common/authorize-data-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。 
     
 * <a id="encryption-at-rest"></a>
 **Azure ファイル共有に保存時の暗号化を確保するには、どうすればよいですか。**  
@@ -226,6 +243,9 @@ ms.locfileid: "107785309"
 **Azure Files ではどのようなデータ コンプライアンス ポリシーがサポートされていますか。**  
 
    Azure Files は、Azure Storage 内の他のストレージ サービスと同じストレージ アーキテクチャ上で実行されます。 他の Azure Storage サービスで使用されているデータ コンプライアンス ポリシーが Azure Files でも適用されます。 Azure Storage のデータ コンプライアンスの詳細については、「[Azure Storage のコンプライアンス認証](../common/storage-compliance-offerings.md)」を参照するか、[Microsoft セキュリティ センター](https://microsoft.com/trustcenter/default.aspx)にアクセスできます。
+
+* <a id="afs-power-outage"></a>
+  **停電が起きてサーバー エンドポイントがシャットダウンされた場合、Azure File Sync にはどのような影響がありますか** 影響はありません。 サーバー エンドポイントがオンライン状態に戻った後、クラウド エンドポイントとサーバー エンドポイントとが同期状態となるよう、サーバー エンドポイントで行われた変更が Azure File Sync によって調整されます
 
 * <a id="file-auditing"></a>
 **Azure Files のファイル アクセスと変更を監査するにはどうすればよいですか?**
@@ -325,29 +345,40 @@ ms.locfileid: "107785309"
     
        net use <drive-letter/share-path> /delete
 
-## <a name="network-file-system"></a>ネットワーク ファイル システム
+## <a name="network-file-system-nfs-v41"></a>Network File System (NFS v4.1)
 
 * <a id="when-to-use-nfs"></a>
 **Azure Files NFS を使用するタイミングは?**
 
-    [NFS 共有 (プレビュー)](storage-files-compare-protocols.md#nfs-shares-preview) を参照してください。
+    [NFS 共有](files-nfs-protocol.md)に関するページを参照してください。
 
 * <a id="backup-nfs-data"></a>
 **NFS 共有に格納されているデータをバックアップする方法は?**
 
-    NFS 共有上のデータのバックアップは、rsync などの使い慣れたツールや、サードパーティのバックアップ パートナーの製品などを使用するように計画できます。 初期プレビューの一部には、[Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm)、[Veeam](https://www.veeam.com/blog/?p=123438)、[Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001) などの複数のバックアップ パートナーが含まれています。これらのソリューションは、Azure Files の SMB 3.0 と NFS 4.1 の両方で動作するように拡張されました。
+    NFS 共有上のデータのバックアップは、rsync などの使い慣れたツールや、サードパーティのバックアップ パートナーの製品などを使用するように計画できます。 [Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm)、[Veeam](https://www.veeam.com/blog/?p=123438)、[Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001) を含む複数のバックアップ パートナーが、自社のソリューションを Azure Files の SMB 3.x と NFS 4.1 の両方で動作するように拡張しています。
 
 * <a id="migrate-nfs-data"></a>
 **既存のデータを NFS 共有に移行することはできますか?**
 
     同じリージョン内であれば、scp、rsync、SSHFS などの標準ツールを使用してデータを移動できます。 Azure Files NFS は複数のコンピューティング インスタンスから同時にアクセスできるため、並列アップロードによってコピー速度を向上させることができます。 リージョンの外部からデータを取り込む場合は、VPN または Expressroute を使用して、オンプレミスのデータ センターからファイル システムにマウントします。
+    
+* <a id=nfs-ibm-mq-support></a>
+**Azure Files NFS で IBM MQ (マルチインスタンスを含む) を実行できますか?**
+    * Azure Files NFS v4.1 ファイル共有は、IBM MQ によって設定されている 3 つの要件を満たしています
+       - https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-requirements-shared-file-systems
+          + データ書き込み整合性
+          + ファイルに対する排他的アクセスの保証
+          + 障害時のロック解除
+    * 次のテストケースが正常に実行されます
+        1. https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-verifying-shared-file-system-behavior
+        2. https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-running-amqsfhac-test-message-integrity
 
 ## <a name="on-premises-access"></a>オンプレミスのアクセス
 
 * <a id="port-445-blocked"></a>
 **Azure Files のマウントに失敗している My ISP または IT blocks Port 445 です。どうすればよいですか。**
 
-    [ポート 445 のブロックを回避するさまざまな方法についてはこちらで](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)確認できます。 Azure ファイルは、リージョンやデータセンターの外側からは SMB 3.0 (暗号化サポートあり) を使用した接続のみを許可します。 SMB 3.0 プロトコルには、インターネット経由で使用する場合に非常に安全となる、チャネル暗号化などのさまざまなセキュリティ機能が導入されています。 ただし、より古い SMB バージョンで確認された脆弱性の履歴的理由から、ポート 445 がブロックされている可能性もあります。 理想としては、ポートは SMB 1.0 トラフィックに対してのみブロックされ、SMB 1.0 はすべてのクライアントでオフにされる必要があります。
+    [ポート 445 のブロックを回避するさまざまな方法についてはこちらで](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)確認できます。 Azure Files は、リージョンやデータセンターの外側からは SMB 3.x (暗号化サポートあり) を使用した接続のみを許可します。 SMB 3.x プロトコルには、インターネット経由で使用する場合に非常に安全となる、チャネル暗号化などのさまざまなセキュリティ機能が導入されています。 ただし、より古い SMB バージョンで確認された脆弱性の履歴的理由から、ポート 445 がブロックされている可能性もあります。 理想としては、ポートは SMB 1.0 トラフィックに対してのみブロックされ、SMB 1.0 はすべてのクライアントでオフにされる必要があります。
 
 * <a id="expressroute-not-required"></a>
 **Azure Files に接続するためや、Azure File Sync をオンプレミスで使用するために、Azure ExpressRoute を使用する必要はありますか。**  
@@ -357,7 +388,7 @@ ms.locfileid: "107785309"
 * <a id="mount-locally"></a>
 **ローカル マシンに Azure ファイル共有をマウントするにはどうすればよいですか。**  
 
-    ポート 445 (TCP 送信) が開放されており、クライアントが SMB 3.0 プロトコルをサポートしている (たとえば、Windows 10 や Windows Server 2016 を使用している) 場合は、SMB プロトコル経由でファイル共有をマウントできます。 ポート 445 が組織のポリシーまたはお使いの ISP によってブロックされている場合は、Azure File Sync を使用して Azure ファイル共有にアクセスできます。
+    ポート 445 (TCP 送信) が開放されており、クライアントが SMB 3.x プロトコルをサポートしている (たとえば、Windows 10 や Windows Server 2016 を使用している) 場合は、SMB プロトコル経由でファイル共有をマウントできます。 ポート 445 が組織のポリシーまたはお使いの ISP によってブロックされている場合は、Azure File Sync を使用して Azure ファイル共有にアクセスできます。
 
 ## <a name="backup"></a>バックアップ
 * <a id="backup-share"></a>
@@ -396,7 +427,7 @@ ms.locfileid: "107785309"
 **個々のファイルの共有スナップショットを作成できますか。**  
     共有スナップショットは、ファイル共有レベルで作成されます。 ファイル共有スナップショットから個々のファイルを復元できますが、ファイルレベルの共有スナップショットは作成できません。 ただし、共有レベルの共有スナップショットを取得しており、特定のファイルが変更された共有スナップショットを一覧表示したい場合は、Windows にマウントされた共有で、**以前のバージョン** からこれを行うことができます。 
     
-    ファイル スナップショット機能が必要な場合は、[Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) までお知らせください。
+    ファイル スナップショット機能が必要な場合は、[Azure Files UserVoice](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84) までお知らせください。
 
 * <a id="encrypted-snapshots"></a>
 **暗号化されたファイル共有の共有スナップショットを作成できますか。**  
@@ -440,9 +471,7 @@ ms.locfileid: "107785309"
 
 * <a id="share-snapshot-price"></a>
 **共有スナップショットにかかるコストを教えてください。**  
-     共有スナップショットの容量に関して、プレビュー期間中は料金は発生しません。 Standard ストレージのエグレスとトランザクションのコストが適用されます。 一般公開後は、共有スナップショットの容量とトランザクションの料金が、サブスクリプションに対して課金されます。
-     
-     共有スナップショットは、本質的に増分です。 基本の共有スナップショットは、共有そのものです。 それ以降の共有スナップショットはすべて増分であり、先行する共有スナップショットとの差分のみが格納されます。 変更されたコンテンツに対してのみ、課金されます。 共有に 100 GiB のデータがあり、最新の共有スナップショットの後に 5 GiB だけが変更された場合、共有スナップショットは追加の 5 GiB のみを消費し、課金は 105 GiB に対して行われます。 トランザクションおよび標準エグレスの課金の詳細については、[課金に関するページ](https://azure.microsoft.com/pricing/details/storage/files/)をご覧ください。
+    共有スナップショットは、本質的に増分です。 基本の共有スナップショットは、共有そのものです。 それ以降の共有スナップショットはすべて増分であり、先行する共有スナップショットとの差分のみが格納されます。 変更されたコンテンツに対してのみ、課金されます。 共有に 100 GiB のデータがあり、最新の共有スナップショットの後に 5 GiB だけが変更された場合、共有スナップショットは追加の 5 GiB のみを消費し、課金は 105 GiB に対して行われます。 トランザクションおよび標準エグレスの課金の詳細については、[課金に関するページ](https://azure.microsoft.com/pricing/details/storage/files/)をご覧ください。
 
 ## <a name="scale-and-performance"></a>スケールとパフォーマンス
 * <a id="files-scale-limits"></a>
@@ -451,7 +480,7 @@ ms.locfileid: "107785309"
 
 * <a id="need-larger-share"></a>
 **Azure ファイル共有に使用できるサイズ**  
-    Azure ファイル共有のサイズ (Premium および Standard) は最大 100 TiB までスケールアップできます。 Standard レベルの大きいファイル共有のオンボード手順については、この計画ガイドの「[大きなファイル共有へのオンボード (Standard レベル)](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)」セクションを参照してください。
+    Azure ファイル共有のサイズ (Premium および Standard) は最大 100 TiB までスケールアップできます。 詳細については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」を参照してください。
 
 * <a id="lfs-performance-impact"></a>
 **ファイル共有のクォータを拡張すると、ワークロードや Azure File Sync に影響しますか。**

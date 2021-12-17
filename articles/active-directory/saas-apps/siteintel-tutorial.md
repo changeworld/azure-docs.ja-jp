@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0c8224bf84a2235086d941df7d02ab6f458f3f16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8aa54369e6da2d70656a0fc11079f6f850c9a9d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92510000"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304536"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SiteIntel の統合
 
@@ -40,7 +40,7 @@ ms.locfileid: "92510000"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * SiteIntel では、SP Initiated SSO と IdP Initiated SSO がサポートされます。
-* SiteIntel を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* SiteIntel を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="add-siteintel-from-the-gallery"></a>ギャラリーから SiteIntel を追加する
 
@@ -146,7 +146,7 @@ SiteIntel 側でシングル サインオンを構成するには、 **[アプ�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で **[SiteIntel]** タイルを選択すると、SSO を設定した SiteIntel に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で **[SiteIntel]** タイルを選択すると、SSO を設定した SiteIntel に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -154,5 +154,5 @@ SiteIntel 側でシングル サインオンを構成するには、 **[アプ�
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 - [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 - [Azure AD で SiteIntel を試す](https://aad.portal.azure.com/)
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)
 - [高度な可視性と制御によって SiteIntel を保護する方法](/cloud-app-security/proxy-intro-aad)

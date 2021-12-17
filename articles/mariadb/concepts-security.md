@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8a46f70e3089a8610fa8ca6362bcba6f624e2b1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02202255f82af33190e35060196a09e1f5457492
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664182"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955958"
 ---
 # <a name="security-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のセキュリティ
 
@@ -45,7 +45,7 @@ Azure Database for MariaDB サーバーを作成するときに、管理者ユ�
 
 ## <a name="threat-protection"></a>脅威の防止
 
-サーバーにアクセスしたり悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティを検出する [Advanced Threat Protection](concepts-data-access-and-security-threat-protection.md) にオプトインできます。
+サーバーにアクセスしたり悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティを検出する [Advanced Threat Protection](../security-center/defender-for-databases-introduction.md) にオプトインできます。
 
 [監査ログ](concepts-audit-logs.md)を使うと、データベースのアクティビティを追跡できます。 
 

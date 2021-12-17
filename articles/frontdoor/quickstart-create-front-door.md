@@ -4,26 +4,29 @@ description: このクイックスタートでは、Azure portal で Azure Front
 services: front-door
 documentationcenter: na
 author: duongau
-manager: KumudD
-ms.service: frontdoor
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: 1869098362e37ea18c7ca9a9f827b0e5ec98ea3c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: KumudD
+ms.date: 04/19/2021
+ms.topic: quickstart
+ms.service: frontdoor
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom: mode-portal
+ms.openlocfilehash: 57b99677d182f176b3721c155aab2e794c60574c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067573"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040530"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>クイック スタート:グローバル Web アプリケーションの高可用性を実現するフロント ドアを作成する
 
 Azure portal で Azure Front Door を使用して Web アプリケーションの高可用性を設定してみましょう。
 
 このクイックスタートでは、別々の Azure リージョンで実行される、Web アプリケーションの 2 つのインスタンスを Azure Front Door でプールします。 等しく重み付けされた同じ優先度のバックエンドに基づいて Front Door の構成を作成します。 この構成では、アプリケーションが実行されている最も近いサイトにトラフィックが誘導されます。 Web アプリケーションは、Azure Front Door によって絶えず監視されます。 最も近いサイトが利用できない状態になると、サービスによって、使用可能な次のサイトへの自動フェールオーバーが行われます。
+
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="Azure portal を使用した Front Door デプロイ環境の図。" border="false":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,8 +68,8 @@ Azure portal で Azure Front Door を使用して Web アプリケーション�
 | ---              | ---  |
 | **リソース グループ**   | **[新規作成]** を選択し、「*FrontDoorQS_rg2*」 と入力します。 |
 | **名前**             | Web アプリの一意の名前を入力します (この例では *WebAppContoso-2*)。  |
-| **[リージョン]**           | 異なるリージョンを選択します (この例では *[米国中南部]* )。 |
-| **App Service プラン** > **Windows プラン**         | **[新規]** を選択し、「*myAppServicePlanSouthCentralUS*」と入力して、 **[OK]** を選択します。 |
+| **[リージョン]**           | 異なるリージョンを選択します (この例では *[米国東部]* ) |
+| **App Service プラン** > **Windows プラン**         | **[新規]** を選択し、「*myAppServicePlanEastUS*」と入力して、 **[OK]** を選択します |
 
 ## <a name="create-a-front-door-for-your-application"></a>アプリケーション用のフロント ドアを作成する
 
@@ -131,7 +134,7 @@ Azure portal で Azure Front Door を使用して Web アプリケーション�
     :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="フロント ドアにルールを追加する":::
 
    >[!WARNING]
-   > Front Door 内の各フロントエンド ホストに、既定のパス (`\*`) が関連付けられたルーティング規則があることを確認する **必要があります**。 つまり、すべてのルーティング規則について、既定のパス (`\*`) で定義された各フロントエンド ホストに対するルーティング規則が少なくとも 1 つは存在する必要があります。 そうなっていないと、エンド ユーザーのトラフィックが正しくルーティングされない可能性があります。
+   > Front Door 内の各フロントエンド ホストに、既定のパス (`/*`) が関連付けられたルーティング規則があることを確認する **必要があります**。 つまり、すべてのルーティング規則について、既定のパス (`/*`) で定義された各フロントエンド ホストに対するルーティング規則が少なくとも 1 つは存在する必要があります。 そうなっていないと、エンド ユーザーのトラフィックが正しくルーティングされない可能性があります。
 
 1. **[確認および作成]** 、 **[作成]** の順に選択します。
 

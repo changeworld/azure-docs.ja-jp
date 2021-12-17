@@ -1,23 +1,23 @@
 ---
-title: トークンの構成 - Azure Active Directory B2C | Microsoft Docs
+title: トークンを構成する - Azure Active Directory B2C
 description: Azure Active Directory B2C でトークンの有効期間と互換性の設定を構成する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 10/15/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0f5586b43143763ebf36adb15d96fdb2a91b5f5c
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 70be31920e96c651285c4e77ace161b65ccd3118
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443476"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066036"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でトークンを構成する
 
@@ -53,13 +53,19 @@ ms.locfileid: "106443476"
 ユーザー フロー トークンの有効期間を構成するには、次を実行します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[ユーザー フロー (ポリシー)]** を選択します。
 1. あらかじめ作成しておいたユーザー フローを開きます。
 1. **[プロパティ]** を選択します。
 1. **[トークンの有効期間]** で、お使いのアプリケーションのニーズに合わせてプロパティを調整します。
 1. **[保存]** をクリックします。
+
+
+
+:::image type="content" source="./media/configure-tokens/configure-tokens.png" alt-text="Azure portal でユーザー フロー トークンを構成します。":::
+
 
 ::: zone-end
 
@@ -152,10 +158,10 @@ ms.locfileid: "106443476"
     </ClaimType>
     ```
 
-    **OutputClaims** 要素に、次の要素を追加します。
+    [証明書利用者ポリシー](relyingparty.md)の **OutputClaims** 要素の下に、次の出力要求を追加します。
 
     ```xml
-    <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
+    <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" PartnerClaimType="tfp" />
     ```
 
     ACR の場合は、**AuthenticationContextReferenceClaimPattern** 項目を削除します。

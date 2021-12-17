@@ -1,0 +1,59 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Cache for Redis の監視とトラブルシューティングに関するよくあるご質問
+  description: Azure Cache for Redis の監視とトラブルシューティングに役立つ、よくある質問に対する回答について説明します。
+  author: curib
+  ms.author: cauribeg
+  ms.service: cache
+  ms.topic: conceptual
+  ms.date: 08/06/2020
+  ms.openlocfilehash: 3b6abac448e622b1c763fd05ca8c8bf3e2143182
+  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129537769"
+title: Azure Cache for Redis の監視とトラブルシューティングに関するよくあるご質問
+summary: この記事では、Azure Cache for Redis の監視とトラブルシューティングに関してよくある質問に対する回答を提供します。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      キャッシュの正常性とパフォーマンスの監視方法
+    answer: >
+      Microsoft Azure Cache for Redis のインスタンスは、[Azure Portal](https://portal.azure.com) で監視できます。 メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。 詳細については、[Azure Cache for Redis の監視](cache-how-to-monitor.md)に関するページを参照してください。
+
+
+      Azure Cache for Redis の **[リソース] メニュー** にも、キャッシュの監視およびトラブルシューティングのためのツールがいくつか含まれています。
+
+
+      * **[問題の診断と解決]** では、一般的な問題と、その問題を解決するための戦略に関する情報を確認できます。
+
+      * **[リソース正常性]** ではリソースが監視され、そのリソースが意図したとおりに動いているかどうかが示されます。 Azure Resource Health サービスの詳細については、「 [Azure Resource Health の概要](../service-health/resource-health-overview.md)」を参照してください。
+
+      * **[新しいサポート要求]** には、キャッシュのサポート要求を開くためのオプションが用意されています。
+
+
+      これらのツールを使用すると、Azure Cache for Redis のインスタンスの正常性を監視できます。 ツールは、キャッシュ アプリケーションの管理にも役立ちます。 「[Azure Redis Cache の構成方法](cache-configure.md)」の「サポートおよびトラブルシューティング設定」を参照してください。
+  - question: >
+      タイムアウトが発生する理由
+    answer: >
+      タイムアウトは、Redis との対話に使用されているクライアントで発生します。 コマンドが Redis サーバーが送信されると、そのコマンドはキューに登録されます。 そのコマンドは、Redis サーバーによって最終的に選択され、実行されます。 ただし、クライアントは、このプロセス中にタイムアウトになる可能性があります。 この場合、呼び出し側で例外が発生します。 タイムアウトの問題のトラブルシューティングについては、[クライアント側のトラブルシューティング](cache-troubleshoot-client.md)に関するページ、および「[StackExchange.Redis のタイムアウトの例外](cache-troubleshoot-timeouts.md#stackexchangeredis-timeout-exceptions)」を参照してください。
+  - question: >
+      クライアントがキャッシュから切断される理由
+    answer: >
+      キャッシュが切断される一般的な理由のいくつかを次に示します。
+
+
+      * クライアント側の原因
+        * クライアント アプリケーションが再デプロイされた。
+        * クライアント アプリケーションがスケーリング操作を行った。
+          * Cloud Services または Web Apps によって、自動スケール中にキャッシュが切断される可能性があります。
+        * クライアント側のネットワーク レイヤーが変更された。
+        * クライアントで、またはクライアントとサーバー間のネットワーク ノードで一時的なエラーが発生した。
+        * 帯域幅のしきい値制限に達した。
+        * CPU バインド型の操作の完了に時間がかかった。
+      * サーバー側の原因
+        * Standard キャッシュ オファリングで、Azure Cache for Redis サービスがプライマリ ノードからレプリカ ノードへのフェールオーバーを開始した。
+        * Redis サーバーの更新中または一般的な VM のメンテナンス中、キャッシュがデプロイされたインスタンスに、Azure によって修正プログラムが適用された。
+additionalContent: "\n## <a name=\"next-steps\"></a>次の手順\n   Azure Cache for Redis インスタンスの監視とトラブルシューティングの詳細については、「[Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)」と、さまざまなトラブルシューティングのガイドを参照してください。\n        \n   その他の [Azure Cache for Redis のよくあるご質問](cache-faq.yml)について。"

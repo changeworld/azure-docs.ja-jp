@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: f07c249e3b7cb54283959df410d51ca18998f2cf
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: b17320265cd3bf2c518e22d8ebc15a61d4ddfb71
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181518"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720418"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
@@ -38,8 +38,8 @@ Azure 関数を使用した BLOB ストレージ イベントへの対応の詳�
 - [チュートリアル:Azure Data Lake Storage Gen2 イベントを使用して Databricks Delta テーブルを更新する](data-lake-storage-events.md)
 - [チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する](../../event-grid/resize-images-on-storage-blob-upload-event.md?tabs=dotnet)
 
->[!NOTE]
-> イベントの統合をサポートしているのは、**StorageV2 (汎用 v2)** 、**BlockBlobStorage**、および **BlobStorage** の種類のストレージ アカウントだけです。 **Storage (汎用 v1)** では、Event Grid との統合はサポート "*されていません*"。
+> [!NOTE]
+> **Storage (汎用 v1)** では、Event Grid との統合はサポート "*されていません*"。
 
 ## <a name="the-event-model"></a>イベント モデル
 
@@ -52,9 +52,9 @@ Event Grid は、[イベント サブスクリプション](../../event-grid/con
 [Blob Storage イベントのスキーマ](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関する記事を参照し、以下を確認してください。
 
 > [!div class="checklist"]
-> * Blob Storage イベントの全一覧と各イベントがトリガーされる方法。
-> * これらの各イベントに対して Event Grid が送信するデータの例。
-> * データに表示される各キー値ペアの目的。
+> - Blob Storage イベントの全一覧と各イベントがトリガーされる方法。
+> - これらの各イベントに対して Event Grid が送信するデータの例。
+> - データに表示される各キー値ペアの目的。
 
 ## <a name="filtering-events"></a>イベントのフィルター処理
 
@@ -94,16 +94,28 @@ BLOB サフィックスを共有する特定のコンテナーで作成された
 
 Blob Storage イベントを処理するアプリケーションは、いくつかの推奨される手法に従う必要があります。
 > [!div class="checklist"]
-> * 同じイベント ハンドラーにイベントをルーティングするように複数のサブスクリプションが構成されている可能性があるので、イベントが特定のソースからのものであると思い込まず、メッセージのトピックを調べて、想定しているストレージ アカウントからのものであることを確認することが重要です。
-> * 同様に、受信するすべてのイベントが予期した種類のものであると想定してはならず、イベントの種類が処理できるものであることを確認する必要があります。
-> * メッセージは、少し遅れて到着する可能性があるので、etag フィールドを使って、オブジェクトに関する情報がまだ最新の状態かどうかを確認します。 etag フィールドの使用方法については、「[BLOB ストレージ内でのコンカレンシーの管理](./concurrency-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)」を参照してください。
-> * メッセージは順不同で到着する可能性があるので、sequencer フィールドを使って、特定のオブジェクトに対するイベントの順序を確認します。 sequencer フィールドは、特定の BLOB 名に対するイベントの論理シーケンスを表す文字列値です。 標準的な文字列比較を使って、同じ BLOB 名での 2 つのイベントの相対的な順序を理解できます。
-> * Storage イベントにより、サブスクライバーへの少なくとも 1 回の配信が保証され、すべてのメッセージが確実に出力されます。 ただし、バックエンド ノードとサービス間の再試行、またはサブスクリプションの可用性のために、メッセージの重複が発生することがあります。 メッセージの配信と再試行の詳細については、「[Event Grid によるメッセージの配信と再試行](../../event-grid/delivery-and-retry.md)」を参照してください。
-> * blobType フィールドを使って、BLOB に対して許可されている操作の種類と、BLOB にアクセスするために使う必要があるクライアント ライブラリの種類を確認します。 有効な値は `BlockBlob` または `PageBlob` です。 
-> * `CloudBlockBlob` および `CloudAppendBlob` コンストラクターでは、url フィールドを使って BLOB にアクセスします。
-> * わからないフィールドは無視します。 この手法に従うと、将来追加されるかもしれない新しい機能に弾力的に対応できます。
-> * ブロック BLOB が完全にコミットされた場合に限り **Microsoft.Storage.BlobCreated** イベントがトリガーされるようにするには、`CopyBlob`、`PutBlob`、`PutBlockList`、または `FlushWithClose` REST API 呼び出しのイベントをフィルター処理します。 データがブロック BLOB に完全にコミットされた後でのみ、これらの API 呼び出しによって **Microsoft.Storage.BlobCreated** イベントがトリガーされます。 フィルターの作成方法の詳細については、「[Event Grid のイベントのフィルター処理](../../event-grid/how-to-filter-events.md)」をご覧ください。
+> - 同じイベント ハンドラーにイベントをルーティングするように複数のサブスクリプションが構成されている可能性があるので、イベントが特定のソースからのものであると思い込まず、メッセージのトピックを調べて、想定しているストレージ アカウントからのものであることを確認することが重要です。
+> - 同様に、受信するすべてのイベントが予期した種類のものであると想定してはならず、イベントの種類が処理できるものであることを確認する必要があります。
+> - メッセージは、少し遅れて到着する可能性があるので、etag フィールドを使って、オブジェクトに関する情報がまだ最新の状態かどうかを確認します。 etag フィールドの使用方法については、「[BLOB ストレージ内でのコンカレンシーの管理](./concurrency-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)」を参照してください。
+> - メッセージは順不同で到着する可能性があるので、sequencer フィールドを使って、特定のオブジェクトに対するイベントの順序を確認します。 sequencer フィールドは、特定の BLOB 名に対するイベントの論理シーケンスを表す文字列値です。 標準的な文字列比較を使って、同じ BLOB 名での 2 つのイベントの相対的な順序を理解できます。
+> - Storage イベントにより、サブスクライバーへの少なくとも 1 回の配信が保証され、すべてのメッセージが確実に出力されます。 ただし、バックエンド ノードとサービス間の再試行、またはサブスクリプションの可用性のために、メッセージの重複が発生することがあります。 メッセージの配信と再試行の詳細については、「[Event Grid によるメッセージの配信と再試行](../../event-grid/delivery-and-retry.md)」を参照してください。
+> - blobType フィールドを使って、BLOB に対して許可されている操作の種類と、BLOB にアクセスするために使う必要があるクライアント ライブラリの種類を確認します。 有効な値は `BlockBlob` または `PageBlob` です。
+> - `CloudBlockBlob` および `CloudAppendBlob` コンストラクターでは、url フィールドを使って BLOB にアクセスします。
+> - わからないフィールドは無視します。 この手法に従うと、将来追加されるかもしれない新しい機能に弾力的に対応できます。
+> - ブロック BLOB が完全にコミットされた場合に限り **Microsoft.Storage.BlobCreated** イベントがトリガーされるようにするには、`CopyBlob`、`PutBlob`、`PutBlockList`、または `FlushWithClose` REST API 呼び出しのイベントをフィルター処理します。 データがブロック BLOB に完全にコミットされた後でのみ、これらの API 呼び出しによって **Microsoft.Storage.BlobCreated** イベントがトリガーされます。 フィルターの作成方法の詳細については、「[Event Grid のイベントのフィルター処理](../../event-grid/how-to-filter-events.md)」をご覧ください。
 
+## <a name="feature-support"></a>機能サポート
+
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。
+
+| ストレージ アカウントの種類 | Blob Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> | SFTP <sup>1</sup> |
+|--|--|--|--|--|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png) <sup>2</sup>  | ![いいえ](../media/icons/no-icon.png) |  ![いいえ](../media/icons/no-icon.png) |
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png) <sup>2</sup> | ![いいえ](../media/icons/no-icon.png) |  ![いいえ](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
+
+<sup>1</sup> Data Lake Storage Gen2、ネットワーク ファイル システム (NFS) 3.0 プロトコル、セキュア ファイル転送プロトコル (SFTP) のサポートでは、すべて階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

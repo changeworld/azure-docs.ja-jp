@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/25/2021
+ms.date: 10/26/2021
 ms.author: alkohli
-ms.openlocfilehash: ac5ed0e5941c6251d632d029fe4c9f80bbcf12df
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 13fc1ad892509d04750e51b593cc7aaf07f0c91a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612553"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082932"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU を更新する 
 
@@ -23,20 +23,29 @@ ms.locfileid: "105612553"
 
 この記事で説明されている手順は別バージョンのソフトウェアで実行されましたが、現行バージョンのソフトウェアでもプロセスは同じです。
 
-> [!IMPORTANT]
-> - 更新プログラム **2103** が最新の更新プログラムであり、次のものに対応します。
->   - デバイス ソフトウェアのバージョン - **2.2.1540.2890**
->   - Kubernetes サーバーのバージョン - **v1.17.3**
->   - IoT Edge のバージョン:**0.1.0-beta13**
->   - GPU ドライバー バージョン: **460.32.03**
->   - CUDA バージョン: **11.2**
->    
->    この更新プログラムに含まれる新機能については、[リリース ノート](azure-stack-edge-gpu-2103-release-notes.md)に関する記事を参照してください。
-> - 2103 更新プログラムを適用するには、デバイスで 2010 が実行されている必要があります。 サポートされる最小バージョンを実行していない場合は、*Update package cannot be installed as its dependencies are not met (依存関係が満たされていないため、更新プログラム パッケージをインストールできません)* いうエラーが表示されます。
-> - この更新プログラムでは、2 つの更新プログラムを順番に適用する必要があります。 まずデバイス ソフトウェアの更新プログラムを適用してから、Kubernetes の更新プログラムを適用します。
-> - 更新プログラムまたは修正プログラムをインストールすると、デバイスが再起動されることに注意してください。 この更新プログラムには、デバイス ソフトウェアの更新プログラムと Kubernetes の更新プログラムが含まれています。 Azure Stack Edge Pro が単一ノード デバイスである場合、進行中のすべての I/O が中断され、更新のためにデバイスで最大 1.5 時間のダウンタイムが発生します。
+## <a name="about-latest-update"></a>最新の更新プログラムについて
 
-デバイスに更新プログラムをインストールするには、まず更新サーバーの場所を構成する必要があります。 更新サーバーを構成した後は、Azure portal UI またはローカル Web UI を使用して更新プログラムを適用できます。
+現在の更新プログラムは、更新プログラム 2110 です。 この更新プログラムでは、デバイスの更新プログラム、Kubernetes の更新プログラムの順に、2 つの更新プログラムがインストールされます。 この更新プログラムに関連付けられているバージョンは次のとおりです。
+
+- デバイス ソフトウェアのバージョン - **2.2.1758.4034**
+- Kubernetes サーバーのバージョン - **v1.20.9**
+- IoT Edge のバージョン: **0.1.0-beta15**
+- GPU ドライバー バージョン: **460.32.03**
+- CUDA バージョン: **11.2**
+
+この更新プログラムに含まれる新機能については、[リリース ノート](azure-stack-edge-gpu-2110-release-notes.md)に関する記事を参照してください。
+
+**2110 更新プログラムを適用するには、デバイスで 2106 が実行されている必要があります。** 
+
+- サポートされる最小バージョンを実行していない場合は、*Update package cannot be installed as its dependencies are not met (依存関係が満たされていないため、更新プログラム パッケージをインストールできません)* いうエラーが表示されます。 
+- 古いバージョンから 2106 に更新し、その後 2110 をインストールすることができます。
+
+更新プログラムまたは修正プログラムをインストールすると、デバイスが再起動されることに注意してください。 Azure Stack Edge Pro GPU が単一ノード デバイスである場合、進行中のすべての I/O が中断され、更新のためにデバイスで最大 1.5 時間のダウンタイムが発生します。
+
+デバイスに更新プログラムをインストールするには、次の手順を実行する必要があります。
+
+1. 更新サーバーの場所を構成します。 
+1. Azure portal UI またはローカル Web UI を使用して更新プログラムを適用します。
 
 以下のセクションでは、これらの各手順について説明します。
 
@@ -63,7 +72,18 @@ Azure portal から更新プログラムをインストールすることをお�
 > [!NOTE]
 > デバイスが正常であり、状態が **[デバイスは正常に動作しています]** と表示されることを、 更新プログラムのインストールを続行する前に確認してください。
 
-1. ご使用のデバイスで更新プログラムが利用可能になると、通知が表示されます。 通知を選択するか、上部のコマンド バーで **[デバイスの更新]** を選択します。 これにより、デバイスのソフトウェア更新プログラムが適用できるようになります。
+実行しているソフトウェアのバージョンによっては、インストール プロセスが若干異なる場合があります。 
+
+- 2106 から 2110 に更新する場合は、ワンクリックでインストールできます。 手順については、「**バージョン 2106**」のタブを参照してください。
+- 2110 より前のバージョンに更新する場合は、2 回のクリックでインストールできます。 手順については、「**バージョン 2105 以前**」のタブを参照してください。
+
+### <a name="version-2106"></a>[バージョン 2106](#tab/version-2106)
+
+[!INCLUDE [azure-stack-edge-install-2110-updates](../../includes/azure-stack-edge-install-2110-updates.md)]
+
+### <a name="version-2105-and-earlier"></a>[バージョン 2105 以前](#tab/version-2105-and-earlier)
+
+1. デバイスの更新プログラムが利用可能になると、Azure Stack Edge リソースの **[概要]** ページに通知が表示されます。 通知を選択するか、上部のコマンド バーで **[デバイスの更新]** を選択します。 これにより、デバイスのソフトウェア更新プログラムが適用できるようになります。
 
     ![更新後のソフトウェア バージョン](./media/azure-stack-edge-gpu-install-update/portal-update-1.png)
 
@@ -131,7 +151,11 @@ Azure portal から更新プログラムをインストールすることをお�
     ![更新後のソフトウェア バージョン 17](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
 
 
-デバイス ソフトウェアと Kubernetes の更新プログラムが正常にインストールされると、バナー通知は表示されなくなります。 デバイスのデバイス ソフトウェアと Kubernetes が最新バージョンになりました。
+デバイス ソフトウェアと Kubernetes の更新プログラムが正常にインストールされると、バナー通知は表示されなくなります。 
+
+---
+
+デバイスのデバイス ソフトウェアと Kubernetes が最新バージョンになりました。
 
 
 ## <a name="use-the-local-web-ui"></a>ローカル Web UI を使用する
@@ -155,13 +179,13 @@ Azure portal から更新プログラムをインストールすることをお�
 
     ![カタログの検索](./media/azure-stack-edge-gpu-install-update/download-update-1.png)
 
-2. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号または更新プログラムの用語を入力します。 たとえば、「**Azure Stack Edge Pro**」と入力し、 **[検索]** をクリックします。
+2. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号または更新プログラムの用語を入力します。 たとえば、「**Azure Stack Edge**」と入力し、 **[検索]** をクリックします。
    
-    更新プログラムの一覧に **Azure Stack Edge Update 2103** と表示されます。
+    更新プログラムの一覧に **Azure Stack Edge Update 2110** と表示されます。
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2-b.png)-->
 
-4. **[ダウンロード]** を選択します。 KB 4613486 と KB 46134867 という 2 つのパッケージをダウンロードします。これらはデバイス ソフトウェア更新プログラム (*SoftwareUpdatePackage.exe*) と Kubernetes 更新プログラム (*Kubernetes_Package.exe*) です。 パッケージをローカル システム上のフォルダーにダウンロードします。 デバイスからアクセスできるネットワーク共有に、このフォルダーをコピーすることもできます。
+4. **[ダウンロード]** を選択します。 ダウンロードするパッケージが 2 つあります。 <!--KB 4616970 and KB 4616971--> 1 つはデバイス ソフトウェア更新プログラム (*SoftwareUpdatePackage.exe*) 用で、もう 1 つは Kubernetes 更新プログラム (*Kubernetes_Package.exe*) 用です。 パッケージをローカル システム上のフォルダーにダウンロードします。 デバイスからアクセスできるネットワーク共有に、このフォルダーをコピーすることもできます。
 
 ### <a name="install-the-update-or-the-hotfix"></a>更新プログラムまたは修正プログラムをインストールする
 
@@ -182,9 +206,9 @@ Azure portal から更新プログラムをインストールすることをお�
 
    ![デバイスの更新 3](./media/azure-stack-edge-gpu-install-update/local-ui-update-3-a.png)
 
-3. **[適用]** を選択します。
+3. **[更新の適用]** を選択します。
 
-   ![デバイスの更新 4](./media/azure-stack-edge-gpu-install-update/local-ui-update-4.png)
+   <!--![update device 4](./media/azure-stack-edge-gpu-install-update/local-ui-update-4.png)-->
 
 4. 確認を求められたら、 **[はい]** を選択して続行します。 デバイスは単一ノード デバイスであることから、更新プログラムが適用された後にデバイスが再起動され、ダウンタイムが発生します。 
    
@@ -192,9 +216,8 @@ Azure portal から更新プログラムをインストールすることをお�
 
 5. 更新プログラムが開始します。 デバイスが正常に更新されると、再起動されます。 この期間は、ローカル UI にはアクセスできません。
    
-6. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。 現行リリースについては、表示されるソフトウェア バージョンは **Azure Stack Edge 2103** になるはずです。 
+6. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。 現行リリースについては、表示されるソフトウェア バージョンは **Azure Stack Edge 2110** になるはずです。 
 
-   <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)-->
 
 7. 次に、Kubernetes ソフトウェアのバージョンを更新します。 上記の手順を繰り返します。 *Kubernetes_Package.exe* のサフィックスが付いた Kubernetes 更新プログラム ファイルのパスを指定します。  
 
@@ -202,11 +225,13 @@ Azure portal から更新プログラムをインストールすることをお�
 
 8. **[更新の適用]** を選択します。
 
-   ![デバイスの更新 7](./media/azure-stack-edge-gpu-install-update/local-ui-update-8.png)
+   <!--![update device 7](./media/azure-stack-edge-gpu-install-update/local-ui-update-8.png)-->
 
 9. 確認を求められたら、 **[はい]** を選択して続行します。
 
 10. Kubernetes の更新プログラムが正常にインストールされた後は、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に表示されるソフトウェアに変更はありません。
+
+    ![デバイスの更新 6](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
 
 
 ## <a name="next-steps"></a>次のステップ

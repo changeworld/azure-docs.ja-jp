@@ -1,21 +1,22 @@
 ---
 title: 'チュートリアル - VPN ゲートウェイを作成して管理する: Azure portal'
-description: このチュートリアルでは、ポータルを使用して Azure VPN Gateway を作成、デプロイ、管理する方法について説明します。
+description: このチュートリアルでは、ポータルを使用して Azure VPN ゲートウェイを作成、デプロイ、管理する方法について説明します。
+titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: 820482a268af038737557c517ccda086cd65d943
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/21/2021
+ms.openlocfilehash: 6ac09f7d523cfbc661d2b0303012c8291cc6897a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880561"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729641"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>チュートリアル:Azure portal を使用して VPN ゲートウェイを作成、管理する
 
-Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間のクロスプレミス接続を提供します。 このチュートリアルでは、VPN ゲートウェイの作成と管理など、Azure VPN ゲートウェイのデプロイの基本事項について説明します。 [Azure CLI](create-routebased-vpn-gateway-cli.md) または [Azure PowerShell](create-routebased-vpn-gateway-powershell.md) を使用して、ゲートウェイを作成することもできます。
+Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間のクロスプレミス接続を提供します。 このチュートリアルでは、VPN ゲートウェイの作成と管理など、Azure VPN ゲートウェイのデプロイの基本事項について説明します。 [Azure CLI](create-routebased-vpn-gateway-cli.md) または [Azure PowerShell](create-routebased-vpn-gateway-powershell.md) を使用して、ゲートウェイを作成することもできます。 このチュートリアルで使用する構成設定の詳細については、「[VPN Gateway の構成設定について](vpn-gateway-about-vpn-gateway-settings.md)」を参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -28,7 +29,7 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 
 次の図は、このチュートリアルの一環として作成する仮想ネットワークと VPN ゲートウェイを示しています。
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/gateway-diagram.png" alt-text="VNet と VPN ゲートウェイの図":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/gateway-diagram.png" alt-text="VNet と VPN ゲートウェイの図。":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,7 +50,7 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 
 ## <a name="create-a-vpn-gateway"></a><a name="VNetGateway"></a>VPN ゲートウェイの作成
 
-この手順では、VNet の仮想ネットワーク ゲートウェイを作成します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。
+この手順では、VNet の仮想ネットワーク ゲートウェイ (VPN ゲートウェイ) を作成します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。
 
 次の値を使用して仮想ネットワーク ゲートウェイを作成します。
 
@@ -57,16 +58,17 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 * **[リージョン]:** 米国東部
 * **ゲートウェイの種類:** VPN
 * **VPN の種類:** ルート ベース
-* **SKU:** VpnGw1
-* **世代:** Generation1
+* **SKU:** VpnGw2
+* **世代:** 第 2 世代
 * **仮想ネットワーク:** VNet1
 * **ゲートウェイ サブネットのアドレス範囲:** 10.1.255.0/27
 * **[パブリック IP アドレス]** : 新規作成
 * **パブリック IP アドレス名:** VNet1GWpip
-* **アクティブ/アクティブ モードの有効化:** 無効
-* **[Configure BGP]\(BGP の構成\):** 無効
 
-[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+ゲートウェイの作成とデプロイが完了するまでに 45 分以上かかることがあります。 デプロイの状態は、ゲートウェイの [概要] ページで確認できます。 ゲートウェイの作成後は、ポータルの仮想ネットワークを調べることで、ゲートウェイに割り当てられている IP アドレスを確認できます。 ゲートウェイは、接続されたデバイスとして表示されます。
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -74,7 +76,7 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 
 ゲートウェイのパブリック IP アドレスは、ご利用のゲートウェイの **[概要]** ページで確認できます。
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="[概要] ページ":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="[概要] ページのスクリーンショット。":::
 
 パブリック IP アドレス オブジェクトに関する詳しい情報を表示するには、 **[パブリック IP アドレス]** の横にある名前 (または IP アドレス) リンクをクリックします。
 

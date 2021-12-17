@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
-ms.date: 09/04/2020
-ms.openlocfilehash: 09badebab86da8e4fd8d35307aa6648a26e91821
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/11/2021
+ms.openlocfilehash: 3a0ebed6767666373095b9ec33d2f20228c9d373
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232258"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289663"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Azure マネージド アプリケーションの発行ガイド
 
@@ -51,4 +51,4 @@ Azure "*マネージド アプリケーション*" プランは、Azure Marketpl
 パートナー センターで登録して作業を開始するには、次のようにします。
 
 - [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
-- 詳細については、「[Azure アプリケーション プランを作成する](./create-new-azure-apps-offer.md)」を参照してください。
+- 詳細については、「[Azure アプリケーション プランを作成する](azure-app-offer-setup.md)」を参照してください。

@@ -4,7 +4,7 @@ description: Azure AD Privileged Identity Management (PIM) で PowerShell コマ
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.subservice: pim
@@ -12,25 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2020
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2774c63d34de3de951aa8076b56d203b976158ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b25ae76e2af971c32b027245a852c29f088a145
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548752"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669228"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management の Azure AD ロールのための PowerShell
 
 この記事では、Azure Active Directory (Azure AD) PowerShell コマンドレットを使用して Privileged Identity Management (PIM) で Azure AD ロールを管理する手順について説明します。 また、Azure AD PowerShell のモジュールを使用して設定する方法についても説明します。
-
-> [!Note]
-> Microsoft の公式 PowerShell は、Azure AD Privileged Identity Management の新しいバージョンを使用している場合にのみサポートされます。 Privileged Identity Management にアクセスして、[クイック スタート] ブレードに次のバナーが表示されていることを確認してください。
-> [![お使いの Privileged Identity Management のバージョンを確認する](media/pim-how-to-add-role-to-user/pim-new-version.png "[Azure AD] > [Privileged Identity Management] を選択する")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) このバナーが表示されていない場合は、更新されたエクスペリエンスを現在数週間かけて提供するプロセスが進行中のため、しばらくお待ちください。
-> Privileged Identity Management PowerShell コマンドレットは、Azure AD Preview モジュールでサポートされています。 別のモジュールを使用していて、そのモジュールがエラー メッセージを返すようになった場合は、この新しいモジュールの使用を開始してください。 異なるモジュール上に構築された実稼働システムがある場合は、[pim_preview@microsoft.com](mailto:pim_preview@microsoft.com) にご連絡ください。
 
 ## <a name="installation-and-setup"></a>インストールとセットアップ
 
@@ -54,7 +50,7 @@ ms.locfileid: "102548752"
     ![Azure AD 組織のプロパティで組織 ID を検索する](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> 次のセクションでは、使用を開始するのに役立つ簡単な例を紹介しています。 次のコマンドレットに関する詳細なドキュメントについては、[https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management) を参照してください。 ただし、providerID パラメーターの "azureResources" を "aadRoles" に置き換える必要があります。 また、Azure AD 組織のテナント ID を resourceId パラメーターとして使用する必要もあります。
+> 次のセクションでは、使用を開始するのに役立つ簡単な例を紹介しています。 次のコマンドレットに関する詳細なドキュメントについては、[/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management) をご覧ください。 ただし、providerID パラメーターの "azureResources" を "aadRoles" に置き換える必要があります。 また、Azure AD 組織のテナント ID を resourceId パラメーターとして使用する必要もあります。
 
 ## <a name="retrieving-role-definitions"></a>ロール定義の取得
 
@@ -117,10 +113,16 @@ $schedule.endDateTime = "2020-07-25T20:49:11.770Z"
 
 ## <a name="activate-a-role-assignment"></a>ロールの割り当てのアクティブ化
 
-資格のある割り当てをアクティブ化するには、次のコマンドレットを使用します。
+通常のユーザーのコンテキストで資格のある割り当てをアクティブにするには、次のコマンドレットを使用します。
 
 ```powershell
-Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -schedule $schedule -reason "dsasdsas"
+Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -Schedule $schedule -Reason "Business Justification for the role assignment"
+``` 
+
+管理者として資格のある割り当てをアクティブにする必要がある場合は、`Type` パラメーターに対して `adminAdd` を指定します。
+
+```powershell
+Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'adminAdd' -AssignmentState 'Active' -Schedule $schedule -Reason "Business Justification for the role assignment"
 ``` 
 
 このコマンドレットは、ロールの割り当てを作成するためのコマンドレットとほぼ同じです。 コマンドレット間の主な違いは、-Type パラメーターがアクティブ化の場合には "adminAdd" ではなく "userAdd" であることです。 もう 1 つの違いは、-AssignmentState パラメーターが "Eligible" ではなく "Active" であることです。
@@ -159,7 +161,4 @@ Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD のカスタム ロールを割り当てる](azure-ad-custom-roles-assign.md)
-- [Azure AD のカスタム ロールの割り当てを削除または更新する](azure-ad-custom-roles-update-remove.md)
-- [Azure AD のカスタム ロールの割り当てを構成する](azure-ad-custom-roles-configure.md)
 - [Azure AD のロールの定義](../roles/permissions-reference.md)

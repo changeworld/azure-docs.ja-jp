@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 2d046f5f039555e58d9ce4c028e750ce083fd5f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7307d277790b10079d44beab8ba2767bf95c26dc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98733691"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279996"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>チュートリアル:Qlik Sense Enterprise と Azure Active Directory の統合
 
@@ -169,11 +169,11 @@ Qlik Sense Enterprise に対する Azure AD SSO を構成してテストする�
 
     ![[Edit virtual proxy]\(仮想プロキシの編集\) の [Authentication]\(認証\) セクションのスクリーンショット。ここで、説明されている値を入力できます。][qs10]
 
-    a. **[Anonymous access mode]** ドロップ ダウンで、匿名ユーザーによる仮想プロキシを介した Qlik Sense へのアクセスを許可するかどうかを設定します。  既定のオプションは、[No anonymous user (匿名ユーザーを許可しない)] です。
+    a. **[Anonymous access mode]\(匿名アクセス モード\)** ドロップダウン リストでは、匿名ユーザーによる仮想プロキシを介した Qlik Sense へのアクセスを許可するかどうかを設定します。 既定のオプションは、 **[No anonymous user (匿名ユーザーを許可しない)]** です。
 
-    b. **[Authentication method]** ドロップ ダウンで、仮想プロキシで使用する認証スキームを設定します。  ドロップダウン リストから SAML を選択してください。  その結果、さらにオプションが表示されます。
+    b. **[認証方法]** ドロップダウン リストでは、仮想プロキシで使用する認証スキームを設定します。 ドロップダウン リストから [SAML] を選択します。 その結果、さらにオプションが表示されます。
 
-    c. **[SAML host URI]** フィールドに、ユーザーが SAML 仮想プロキシを介して Qlik Sense にアクセスする際に入力するホスト名を入力します。  ホスト名は、Qlik Sense サーバーの URI です。
+    c. **[SAML host URI]** フィールドに、ユーザーがこの SAML 仮想プロキシを介して Qlik Sense にアクセスする際に入力するホスト名を入力します。 ホスト名は、Qlik Sense サーバーの URI です。
 
     d. **[SAML entity ID]** に、[SAML host URI] フィールドに入力したのと同じ値を入力します。
 
@@ -199,7 +199,7 @@ Qlik Sense Enterprise に対する Azure AD SSO を構成してテストする�
 
     ![[Edit virtual proxy]\(仮想プロキシの編集\) の [Advanced]\(詳細設定\) 画面のスクリーンショット。][qs13]
 
-    ホストの許可リストでは、Qlik Sense サーバーへの接続時に受け入れられるホスト名を指定します。  **ユーザーが Qlik Sense サーバーへ接続する際に指定するホスト名を入力します。** ホスト名は、[SAML host URI (SAML ホスト URI)] の値から "https://" を除いたものです。
+    ホストの許可リストでは、Qlik Sense サーバーへの接続時に受け入れられるホスト名を指定します。 **ユーザーが Qlik Sense サーバーへ接続する際に指定するホスト名を入力します。** ホスト名は、[SAML host URI (SAML ホスト URI)] の値から `https://` を除いたものです。
 
 11. **[適用]** をクリックします。
 
@@ -251,12 +251,11 @@ Qlik Sense Enterprise は **ジャストインタイム プロビジョニング
 
 * Qlik Sense Enterprise のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Qlik Sense Enterprise] タイルをクリックすると、Qlik Sense Enterprise のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Qlik Sense Enterprise] タイルをクリックすると、Qlik Sense Enterprise のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Qlik Sense Enterprise を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Qlik Sense Enterprise を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 <!--Image references-->
 

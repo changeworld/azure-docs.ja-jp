@@ -6,14 +6,14 @@ author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/06/2021
+ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 4e0f2d1bae07f0814b4f096d8be315bd92cd42fe
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9bf2b62e59b8320135629cc9fe751d6e4ab0e437
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318766"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121802766"
 ---
 JavaScript 用 Anomaly Detector (多変量) クライアント ライブラリを使ってみましょう。 これらの手順に従ってパッケージをインストールすれば、サービスによって提供されるアルゴリズムが使用できるようになります。 新しい多変量異常検出 API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出できる高度な AI を開発者が容易に統合することができます。 異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されます。 これにより、複雑なシステムを障害から予防的に保護することができます。
 
@@ -22,6 +22,8 @@ JavaScript 用 Anomaly Detector (多変量) クライアント ライブラリ�
 * 時系列のグループからシステム レベルの異常を検出する。
 * 個々の時系列では得られる情報が少なく、すべての信号に着目して問題を検出する必要がある。
 * システム正常性をさまざまな側面から測定する数十個から数百個にのぼる各種センサーを使用して高価な物理資産の予測メンテナンスを行う。
+
+[ライブラリのリファレンス ドキュメント](/javascript/api/overview/azure/ai-anomaly-detector-readme) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/anomalydetector/ai-anomaly-detector) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/ai-anomaly-detector) | [サンプル コード](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/anomalydetector/ai-anomaly-detector/samples/v3/javascript/sample_multivariate_detection.js)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,20 +61,35 @@ const { AzureKeyCredential } = require('@azure/core-auth');
 
 自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 サンプル データ ファイル用にもう 1 つの変数を作成します。
 
+> [!NOTE]
+> 常に、2 つのキーのいずれかを使用できます。 これは、セキュリティ保護されたキーのローテーションを可能にするためです。 このクイックスタートでは、1 番目のキーを使用します。 
+   
+
 ```javascript
 const apiKey = "YOUR_API_KEY";
 const endpoint = "YOUR_ENDPOINT";
 const data_source = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS";
 ```
 
- Anomaly Detector (多変量) API を使用するには、検出を使用する前に独自のモデルをトレーニングする必要があります。 トレーニングに使用するデータは時系列のバッチであり、各時系列は、timestamp と value の 2 つの列を含む CSV 形式である必要があります。 すべての時系列を 1 つの ZIP ファイルに圧縮し、[Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md) にアップロードする必要があります。 既定では、時系列の変数を表すためにこのファイル名が使用されます。 あるいは、変数の名前を .zip ファイル名とは異なるものにしたい場合は、追加の meta.json ファイルを ZIP ファイルに含めることもできます。 [BLOB の SAS (Shared Access Signature) URL](../../../../storage/common/storage-sas-overview.md) を生成したら、ZIP ファイルの URL をトレーニングに使用できます。
+Anomaly Detector 多変量 API シリーズを使用するには、最初に独自のモデルをトレーニングする必要があります。 トレーニング データは、次の要件を満たす複数の時系列のセットです。
+
+各時系列は、ヘッダー行として "timestamp" と "value" (すべて小文字) の 2 つの列のみを含む CSV ファイルである必要があります。 "timestamp" の値は、ISO 8601 に準拠している必要があります。"value" は、整数または小数点以下の桁数が任意の小数にすることができます。 次に例を示します。
+
+|timestamp | value|
+|-------|-------|
+|2019-04-01T00:00:00Z| 5|
+|2019-04-01T00:01:00Z| 3.6|
+|2019-04-01T00:02:00Z| 4|
+|`...`| `...` |
+
+各 CSV ファイルには、モデルのトレーニングに使用する異なる変数に基づいて名前を付ける必要があります。 たとえば、"temperature.csv" や "humidity.csv" などです。 すべての CSV ファイルは、サブフォルダーを使用しないで 1 つの ZIP ファイルに圧縮する必要があります。 ZIP ファイルには任意の名前を付けることができます。 ZIP ファイルは Azure Blob Storage にアップロードする必要があります。 その ZIP ファイルの BLOB SAS (Shared Access Signature) URL を生成したら、それをトレーニングに使用できます。 Azure Blob Storage から SAS URL を生成する方法については、このドキュメントを参照してください。
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
 `ms-rest-azure` および `azure-ai-anomalydetector` NPM パッケージをインストールします。 このクイックスタートでは、csv-parse ライブラリも使用します。
 
 ```console
-npm install @azure/ai-anomaly-detector @azure/ms-rest-js csv-parse
+npm install @azure/ai-anomaly-detector csv-parse
 ```
 
 アプリの `package.json` ファイルが依存関係によって更新されます。
@@ -92,7 +109,7 @@ npm install @azure/ai-anomaly-detector @azure/ms-rest-js csv-parse
 ご利用のエンドポイントと資格情報を使用して `AnomalyDetectorClient` オブジェクトをインスタンス化します。
 
 ```javascript
-const client = new AnomalyDetectorClient(endpoint, new AzureKeyCredential(apiKey)).client;
+const client = new AnomalyDetectorClient(endpoint, new AzureKeyCredential(apiKey));
 ```
 
 ## <a name="train-a-model"></a>モデルをトレーニングする
@@ -103,11 +120,11 @@ const client = new AnomalyDetectorClient(endpoint, new AzureKeyCredential(apiKey
 
 ```javascript
 const Modelrequest = {
-      source: data_source,
-      startTime: new Date(2021,0,1,0,0,0),
-      endTime: new Date(2021,0,2,12,0,0),
-      slidingWindow:200
-    };    
+  source: data_source,
+  startTime: new Date(2021,0,1,0,0,0),
+  endTime: new Date(2021,0,2,12,0,0),
+  slidingWindow:200
+};
 ```
 
 ### <a name="train-a-new-model"></a>新しいモデルをトレーニングする
@@ -116,24 +133,31 @@ Anomaly Detector クライアントの `trainMultivariateModel` メソッドに�
 
 ```javascript
 console.log("Training a new model...")
-var train_response = await client.trainMultivariateModel(Modelrequest)
-var model_id = train_response.location.split("/").pop()
+const train_response = await client.trainMultivariateModel(Modelrequest)
+const model_id = train_response.location?.split("/").pop() ?? ""
 console.log("New model ID: " + model_id)
 ```
 
 モデルのトレーニングが完了したかどうかは、モデルの状態を追跡することで確認できます。
 
 ```javascript
-var model_response = await client.getMultivariateModel(model_id)
-var model_status = model_response.modelInfo.status
+let model_response = await client.getMultivariateModel(model_id);
+let model_status = model_response.modelInfo.status;
 
-while (model_status != 'READY'){
-    await sleep(10000).then(() => {});
-    var model_response = await client.getMultivariateModel(model_id)
-    var model_status = model_response.modelInfo.status
+while (model_status != 'READY' && model_status != 'FAILED'){
+  await sleep(10000).then(() => {});
+  model_response = await client.getMultivariateModel(model_id);
+  model_status = model_response.modelInfo.status;
 }
 
-console.log("TRAINING FINISHED.")
+if (model_status == 'FAILED') {
+  console.log("Training failed.\nErrors:");
+  for (let error of model_response.modelInfo?.errors ?? []) {
+    console.log("Error code: " + error.code + ". Message: " + error.message);
+  }
+}
+
+console.log("TRAINING FINISHED.");
 ```
 
 ## <a name="detect-anomalies"></a>異常を検出する
@@ -141,25 +165,37 @@ console.log("TRAINING FINISHED.")
 データソース内に異常があるかどうかを判断するには、`detectAnomaly` 関数と `getDectectionResult` 関数を使用します。
 
 ```javascript
-console.log("Start detecting...")
+console.log("Start detecting...");
 const detect_request = {
-    source: data_source,
-    startTime: new Date(2021,0,2,12,0,0),
-    endTime: new Date(2021,0,3,0,0,0)
+  source: data_source,
+  startTime: new Date(2021,0,2,12,0,0),
+  endTime: new Date(2021,0,3,0,0,0)
 };
-const result_header = await client.detectAnomaly(model_id, detect_request)
-const result_id = result_header.location.split("/").pop()
-var result = await client.getDetectionResult(result_id)
-var result_status = result.summary.status
+const result_header = await client.detectAnomaly(model_id, detect_request);
+const result_id = result_header.location?.split("/").pop() ?? "";
+let result = await client.getDetectionResult(result_id);
+let result_status = result.summary.status;
 
-while (result_status != 'READY'){
-    await sleep(2000).then(() => {});
-    var result = await client.getDetectionResult(result_id)
-    var result_status = result.summary.status
+while (result_status != 'READY' && result_status != 'FAILED'){
+  await sleep(2000).then(() => {});
+  result = await client.getDetectionResult(result_id);
+  result_status = result.summary.status;
 }
+
+if (result_status == 'FAILED') {
+  console.log("Detection failed.\nErrors:");
+  for (let error of result.summary.errors ?? []) {
+    console.log("Error code: " + error.code + ". Message: " + error.message)
+  }
+}
+console.log("Result status: " + result_status);
+console.log("Result Id: " + result.resultId);
 ```
 
 ## <a name="export-model"></a>モデルをエクスポートする
+
+> [!NOTE]
+> エクスポート コマンドは、コンテナー化された環境で Anomaly Detector 多変量モデルを実行できるようにするために使用することを目的としています。 現在、これは多変量ではサポートされていませんが、今後サポートが追加される予定です。
 
 トレーニング済みのモデルをエクスポートするには、`exportModel` 関数を使用します。
 
@@ -167,7 +203,7 @@ while (result_status != 'READY'){
 const export_result = await client.exportModel(model_id)
 const model_path = "model.zip"
 const destination = fs.createWriteStream(model_path)
-export_result.readableStreamBody.pipe(destination)
+export_result.readableStreamBody?.pipe(destination)
 console.log("New model has been exported to "+model_path+".")
 ```
 
@@ -182,12 +218,22 @@ console.log("New model has been deleted.")
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
+アプリケーションを実行する前に、実際のコードを[完全なサンプル コード](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/anomalydetector/ai-anomaly-detector/samples/v3/javascript/sample_multivariate_detection.js)に照らして確認することをお勧めします。
+
 クイック スタート ファイルで `node` コマンドを使用して、アプリケーションを実行します。
 
 ```console
 node index.js
 ```
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのリソース グループに関連付けられている他のリソースも削除されます。
+
+* [ポータル](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
 ## <a name="next-steps"></a>次のステップ
 
-* [Anomaly Detector (多変量) のベスト プラクティス](../../concepts/best-practices-multivariate.md)
+* [Anomaly Detector API とは](../../overview-multivariate.md)
+* [Anomaly Detector API を使用する場合のベスト プラクティス](../../concepts/best-practices-multivariate.md)

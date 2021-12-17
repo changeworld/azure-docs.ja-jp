@@ -1,25 +1,25 @@
 ---
 title: シナリオ:仮想ネットワークとブランチのカスタム分離
 titleSuffix: Azure Virtual WAN
-description: ルーティングのシナリオ - 選択された VNet とブランチが相互に通信できないようにする
+description: 一部の VNet およびブランチが相互に到達できないようにするための、Virtual WAN ルーティング シナリオについて説明します。
 services: virtual-wan
-author: wellee
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 01/25/2021
-ms.author: wellee
-ms.openlocfilehash: e8e5a5a1b9325f40fdd51133155a0daffaa55a7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/27/2021
+ms.author: cherylmc
+ms.openlocfilehash: 49e6a65bf14b3d7678a996685efde1b1a2c0a9d3
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99396244"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719690"
 ---
 # <a name="scenario-custom-isolation-for-virtual-networks-and-branches"></a>シナリオ:仮想ネットワークとブランチのカスタム分離
 
 Virtual WAN の仮想ハブ ルーティングを使用する場合、多くのシナリオを利用できます。 仮想ネットワーク (VNet) とブランチの両方のカスタム分離シナリオでは、VNet の特定のセットが別のセットの VNet に到達するのを防ぐことが目標です。 同様に、ブランチ (VPN、ER、またはユーザー VPN) は、特定の VNet のセットへの接続のみが許可されるようにします。
 
-また、Azure Firewall がブランチから VNet への接続とブランチから VNet へのトラフィックを検査する必要があり、VNet 間のトラフィックを検査 **しない** 追加要件も説明します。  
+また、Azure Firewall でブランチから VNet へのトラフィックと VNet からブランチへのトラフィックを検査するが、VNet 間のトラフィックを検査 **しない** 必要があるという追加要件についても説明します。  
 
 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 
@@ -85,7 +85,7 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 3. 赤の VNet の **RT_RED** ルーティング テーブルにも同じ手順を繰り返します。
 4. 仮想 WAN で Azure Firewall をプロビジョニングします。 仮想 WAN ハブでの Azure Firewall の詳細については、[仮想 WAN ハブでの Azure Firewall の構成](howto-firewall.md)に関するトピックを参照してください。
 5. 仮想ハブの **既定** のルーティング テーブルに静的ルートを追加して、VNet アドレス空間 (青と赤の両方) 宛てのすべてのトラフィックを Azure Firewall に誘導します。 この手順により、ブランチからのパケットが検査のために Azure Firewall に送信されるようになります。
-    * 例:**宛先プレフィックス**: 10.0.0.0/24 **次ホップ**:Azure Firewall
+    * 例: **Destination Prefix**:  10.0.0.0/8 **Next Hop**: Azure Firewall
     >[!NOTE]
     > この手順は、Azure Firewall Manager を使用して、[セキュリティで保護されたプライベート トラフィック] オプションを選択することによっても実行できます。 これにより、VNet とブランチに適用されるすべての RFC1918 プライベート IP アドレスのルートが追加されます。 RFC1918 に準拠していないすべてのブランチまたは仮想ネットワークには、手動で追加する必要があります。 
 

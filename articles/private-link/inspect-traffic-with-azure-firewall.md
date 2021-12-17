@@ -8,14 +8,17 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: c3218d8781377e76f05d10a8da2c954ac0b685a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0e252a1822d36bf1d8aecbac7f38a0d315d38351
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641983"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371843"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Azure Firewall を使用してプライベート エンドポイント宛てのトラフィックを検査する
+
+> [!NOTE]
+> セキュリティ保護付き仮想ハブを使用して、Azure Virtual WAN のプライベート エンドポイントへの通信を保護する方法は、[「Azure Virtual WAN でプライベート エンドポイント宛てのトラフィックをセキュリティで保護する」](../firewall-manager/private-link-inspection-secure-virtual-hub.md)をご覧ください。
 
 Azure プライベート エンドポイントは、Azure Private Link の基本的な構成要素です。 プライベート エンドポイントを使用すると、仮想ネットワークにデプロイされた Azure リソースから、プライベート リンク リソースとプライベートに通信できます。
 
@@ -26,7 +29,7 @@ Azure プライベート エンドポイントは、Azure Private Link の基本
 次の制限事項が適用されます。
 
 * プライベート エンドポイントからのトラフィックによって、ネットワーク セキュリティ グループ (NSG) がバイパスされます
-* プライベート エンドポイントからのトラフィックによって、ユーザー定義ルート (UDR) がバイパスされます
+* プライベート エンドポイントからのトラフィックによって、ユーザー定義ルート (UDR) がバイパスされます。 ユーザー定義ルートは、プライベート エンドポイント宛てのトラフィックをオーバーライドするために使用できます。
 * サブネットにアタッチできるルート テーブルは 1 つです
 * ルート テーブルでは最大 400 ルートがサポートされます
 
@@ -173,7 +176,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | **管理者アカウント** |  |
     | 認証の種類 | **[パスワード]** を選択します。 |
     | ユーザー名 | 任意のユーザー名を入力します。 |
-    | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/linux/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/linux/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。|
     | パスワードの確認 | パスワードを再入力します。 |
     | **受信ポートの規則** |  |
     | パブリック受信ポート | **[なし]** を選択します。 |
@@ -197,6 +200,8 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 6. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。
 
 7. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="deploy-the-firewall"></a>ファイアウォールのデプロイ
 

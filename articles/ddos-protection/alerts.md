@@ -11,23 +11,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: a5639d583d9b98f6527e47bf5db213cb191ebeb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 315f97e6c392578e10159c767c56111e6c34f544
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575290"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286934"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>DDoS 保護アラートの表示と構成
 
-Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、攻撃の詳細な情報および視覚化が提供されます。 DDoS 攻撃から仮想ネットワークを保護している場合、攻撃の軽減策レポートと軽減策フロー ログによって、攻撃のトラフィック、および攻撃を緩和するために行われたアクションの詳細を視覚的に確認できます。 豊富なテレメトリは、DDoS 攻撃の間に、詳細なメトリックを含む Azure Monitor を通じて公開されます。 DDoS Protection によって公開される Azure Monitor の任意のメトリックに対して、アラートを構成することができます。 Azure Monitor 診断インターフェイスを介した高度な分析用に、ログを [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md)、Splunk (Azure Event Hubs)、OMS Log Analytics、Azure Storage とさらに統合できます。
+Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、攻撃の詳細な情報および視覚化が提供されます。 DDoS 攻撃から仮想ネットワークを保護している場合、攻撃の軽減策レポートと軽減策フロー ログによって、攻撃のトラフィック、および攻撃を緩和するために行われたアクションの詳細を視覚的に確認できます。 豊富なテレメトリは、DDoS 攻撃の間に、詳細なメトリックを含む Azure Monitor を通じて公開されます。 DDoS Protection によって公開される Azure Monitor の任意のメトリックに対して、アラートを構成することができます。 Azure Monitor 診断インターフェイスを介した高度な分析用に、ログを [Microsoft Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection)、Splunk (Azure Event Hubs)、OMS Log Analytics、Azure Storage とさらに統合できます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Azure Monitor を使用してアラートを構成する
 > * ポータルを使用してアラートを構成する
-> * Azure Security Center でアラートを表示する
+> * Microsoft Defender for Cloud のアラートを表示する
 > * アラートを検証およびテストする
 
 ## <a name="prerequisites"></a>前提条件
@@ -74,16 +74,16 @@ Azure Monitor のアラート構成を使用すると、利用可能な DDoS Pro
 
 また、[webhook の構成](../azure-monitor/alerts/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json)や、アラートを作成するための[ロジック アプリ](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の詳細についても学習できます。
 
-## <a name="view-alerts-in-azure-security-center"></a>Azure Security Center でアラートを表示する
+## <a name="view-alerts-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud のアラートを表示する
 
-Azure Security Center は、[セキュリティ アラート](../security-center/security-center-managing-and-responding-alerts.md)の一覧と、問題の調査および修復に役立つ情報を提供します。 この機能により、DDoS 攻撃に関連するアラートや、ほぼリアルタイムで攻撃を軽減するために実行されるアクションを含んだ、アラートの統合ビューが得られます。
+Microsoft Defender for Cloud は、[セキュリティ アラート](../security-center/security-center-managing-and-responding-alerts.md)の一覧と、問題の調査および修復に役立つ情報を提供します。 この機能により、DDoS 攻撃に関連するアラートや、ほぼリアルタイムで攻撃を軽減するために実行されるアクションを含んだ、アラートの統合ビューが得られます。
 DDoS 攻撃の検出と軽減に対して表示される 2 つの特定のアラートがあります。
 
 - **パブリック IP に対して検出された DDoS 攻撃**:DDoS Protection サービスにより、パブリック IP アドレスのいずれかが DDoS 攻撃の対象であることが検出されると、このアラートが生成されます。
 - **パブリック IP に対して軽減された DDoS 攻撃**:このアラートは、パブリック IP アドレスへの攻撃が軽減された場合に生成されます。
-アラートを表示するには、Azure portal で **[Security Center]** を開きます。 **[脅威の防止]** で、 **[セキュリティ アラート]** を選択します。 次のスクリーンショットは、DDoS 攻撃アラートの例を示します。
+アラートを表示するには、Azure portal で **[Defender for Cloud]** を開きます。 **[脅威の防止]** で、 **[セキュリティ アラート]** を選択します。 次のスクリーンショットは、DDoS 攻撃アラートの例を示します。
 
-![Azure Security Center での DDoS アラート](./media/manage-ddos-protection/ddos-alert-asc.png)
+![Microsoft Defender for Cloud の DDoS アラート](./media/manage-ddos-protection/ddos-alert-asc.png)
 
 アラートには、攻撃、地域および脅威インテリジェンス情報、修復手順の下にあるパブリック IP アドレスの全般的な情報が含まれます。
 
@@ -97,7 +97,7 @@ DDoS 攻撃をシミュレートしてアラートを検証するには、「[DD
 
 - Azure Monitor を使用してアラートを構成する
 - ポータルを使用してアラートを構成する
-- Azure Security Center でアラートを表示する
+- Microsoft Defender for Cloud のアラートを表示する
 - アラートを検証およびテストする
 
 DDoS 攻撃をテストおよびシミュレートする方法については、以下のシミュレーション テスト ガイドを参照してください。

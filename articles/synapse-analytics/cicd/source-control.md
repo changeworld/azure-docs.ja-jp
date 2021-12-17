@@ -1,28 +1,31 @@
 ---
 title: Synapse Studio でのソース管理
 description: Azure Synapse Studio でソース管理を構成する方法について説明します
-author: liud
+author: liudan66
 ms.service: synapse-analytics
-ms.subservice: workspace
+ms.subservice: cicd
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 8f1b459c2644472463004c231f5827ff653d2da1
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 5b03a7c713203dd61eb95fd5422b3002939e9011
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567844"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208739"
 ---
-# <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio でのソース管理
+# <a name="source-control-in-synapse-studio"></a>Synapse Studio でのソース管理
 
-既定では、Azure Synapse Studio は Synapse サービスに対して直接作成を行います。 Synapse Studio では、ソース管理に Git を使用したコラボレーションが必要である場合、ワークスペースを Git リポジトリ、Azure DevOps、または GitHub に関連付けることができます。 
+既定では、Synapse Studio は Synapse サービスに対して直接作成を行います。 Synapse Studio では、ソース管理に Git を使用したコラボレーションが必要である場合、ワークスペースを Git リポジトリ、Azure DevOps、または GitHub に関連付けることができます。 
 
 この記事では、Git リポジトリが有効になっている Synapse ワークスペースを構成し、それで作業する方法について説明します。 また、いくつかのベスト プラクティスとトラブルシューティング ガイドも提供します。
 
 > [!NOTE]
-> Azure Synapse Studio Git 統合は、Azure Government クラウドでは利用できません。
+> Synapse Studio Git 統合は、Azure Government クラウドでは利用できません。
+
+## <a name="prerequisites"></a>前提条件
+ユーザーは、Synapse ワークスペースに対する Azure 共同作成者 (Azure RBAC) 以上のロールを持っている必要があります。これにより、Synapse で Git リポジトリの構成、設定編集、および切断を行うことができます。 
 
 ## <a name="configure-git-repository-in-synapse-studio"></a>Synapse Studio で Git リポジトリを構成する 
 
@@ -39,9 +42,6 @@ Synapse Studio グローバル バーで、 **[Synapse Live]\(Synapse ライブ\
 Synapse Studio の管理ハブに移動します。 **[ソース管理]** セクションで **[Git 構成]** を選択します。 接続されているリポジトリがない場合は、 **[構成]** をクリックします。
 
 ![コード リポジトリ設定を管理ハブから構成する](media/configure-repo-2.png)
-
-> [!NOTE]
-> ワークスペースの共同作業者、所有者、またはより高いレベルのロールが付与されたユーザーは、Azure Synapse Studio で Git リポジトリの構成、設定編集、および切断を行うことができます。 
 
 ワークスペースで Azure DevOps または GitHub Git リポジトリに接続できます。
 
@@ -100,7 +100,10 @@ Synapse Studio と GitHub の統合では、パブリック GitHub (つまり [h
 
 ### <a name="github-settings"></a>GitHub の設定
 
-Git リポジトリに接続する場合、最初に GitHub としてリポジトリの種類を選択し、次に GitHub アカウントまたは GitHub Enterprise Server の URL (GitHub Enterprise Server を使用する場合) を指定し、 **[続行]** をクリックします。
+Git リポジトリに接続する場合、最初に GitHub としてリポジトリの種類を選択します。次に GitHub アカウントを指定して、GitHub Enterprise Server の URL (GitHub Enterprise Server を使用する場合) または GitHub Enterprise の組織名 (GitHub Enterprise Cloud を使用する場合) を指定します。 **[続行]** を選択します。
+
+> [!NOTE]
+> GitHub Enterprise Cloud を使用している場合は、 **[GitHub Enterprise サーバーを使用する]** チェックボックスをオフのままにしておきます。 
 
 ![GitHub リポジトリの設定](media/connect-with-github-repo-1.png)
 
@@ -128,7 +131,7 @@ GitHub 組織に接続するには、組織が Synapse Studio にアクセス許
 
 1. [Git 構成] ウィンドウの *[GitHub アカウント]* フィールドに組織名を入力します。 GitHub にログインするためのプロンプトが表示されます。 
 
-1. 資格情報を使用してログインします。
+1. 資格情報を使用してログインします。 
 
 1. Synapse を *Azure Synapse* という名前のアプリケーションとして承認するように求められます。 この画面には、Synapse が組織にアクセスするためのアクセス許可を付与するオプションが表示されます。 アクセス許可を付与するオプションが表示されない場合は、GitHub でアクセス許可を手動で付与するように管理者に依頼してください。
 
@@ -158,9 +161,13 @@ GitHub 組織に接続するには、組織が Synapse Studio にアクセス許
 
 ### <a name="creating-feature-branches"></a>機能ブランチの作成
 
-Synapse Studio に関連付けられた各 Git リポジトリには、コラボレーション ブランチがあります (`main` や `master` は、既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして機能分岐を作成することもできます。 新しいブランチのウィンドウが表示されたら、機能ブランチの名前を入力します。
+Synapse Studio に関連付けられた各 Git リポジトリには、コラボレーション ブランチがあります (`main` や `master` は、既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして機能分岐を作成することもできます。 
 
-![新しいブランチを作成する](media/create-new-branch.png)
+![新しいブランチの作成](media/create-new-branch.png)
+
+新しいブランチ ペインが表示されたら、機能ブランチの名前を入力し、作業の基にするブランチを選択します。
+
+![プライベート ブランチに基づいてブランチを作成する ](media/create-branch-from-private-branch.png)
 
 機能ブランチの変更をコラボレーション ブランチにマージする準備ができたら、ブランチのドロップダウンをクリックし、 **[Create pull request]\(pull request の作成\)** を選択します。 この操作を行うと、Git プロバイダーに移動します。ここで、pull request の発行、コードのレビュー、コラボレーション ブランチへの変更のマージを行うことができます。 コラボレーション ブランチからは、Synapse サービスへの発行のみ許可されます。 
 
@@ -176,7 +183,7 @@ Synapse Studio に関連付けられた各 Git リポジトリには、コラボ
 }
 ```
 
-Azure Synapse Studio では、一度に 1 つの発行ブランチのみ使用できます。 新しい発行ブランチを指定しても、以前の発行ブランチは削除されません｡ 以前の発行ブランチを削除する場合は、それを手動で削除します。
+Synapse Studio では、一度に 1 つの発行ブランチのみ使用できます。 新しい発行ブランチを指定しても、以前の発行ブランチは削除されません｡ 以前の発行ブランチを削除する場合は、それを手動で削除します。
 
 
 ### <a name="publish-code-changes"></a>コード変更の発行
@@ -190,7 +197,7 @@ Azure Synapse Studio では、一度に 1 つの発行ブランチのみ使用�
 ![発行ブランチが正しいことを確認する](media/publish-change.png)
 
 > [!IMPORTANT]
-> コラボレーション ブランチは、サービスにデプロイされているものを表すものではありません。 コラボレーション ブランチでの変更は、サービスに手動で発行する "*必要*" があります。
+> コラボレーション ブランチは、サービスにデプロイされているものを表すものではありません。 コラボレーション ブランチでの変更は、手動で発行する "*必要*" があります。
 
 ## <a name="switch-to-a-different-git-repository"></a>別の Git リポジトリに切り替える
 
@@ -240,4 +247,4 @@ Azure Synapse Studio では、一度に 1 つの発行ブランチのみ使用�
 
 ## <a name="next-steps"></a>次の手順
 
-* 継続的インテグレーションとデプロイを実装するには、[継続的インテグレーションと配信 (CI/CD)](continuous-integration-deployment.md) に関する記事を参照してください。
+* 継続的インテグレーションとデプロイを実装するには、[継続的インテグレーションと配信 (CI/CD)](continuous-integration-delivery.md) に関する記事を参照してください。

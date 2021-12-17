@@ -3,16 +3,17 @@ title: Azure Data Factory でのパイプライン オーケストレーショ�
 description: さまざまな方法を使用して、Azure Data Factory でのパイプライン トリガーの問題のトラブルシューティングを行います
 author: ssabat
 ms.service: data-factory
-ms.date: 04/01/2021
+ms.date: 08/17/2021
+ms.subservice: troubleshooting
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 49205025e26f7c0eb609638e70a58c9c0c14748e
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: aed6df814ddfb240093aad8ff981e9b89a6f2f52
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385413"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867572"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプライン オーケストレーションおよびトリガーのトラブルシューティング
 
@@ -26,7 +27,7 @@ Azure Data Factory の "パイプライン実行" により、パイプライン
 
 ### <a name="an-azure-functions-app-pipeline-throws-an-error-with-private-endpoint-connectivity"></a>Azure Functions アプリ パイプラインからプライベート エンドポイント接続のエラーがスローされる
  
-Data Factory と Azure 関数アプリがプライベート エンドポイントで実行されているとします。 関数アプリと連携するパイプラインを実行しようとしています。 3 つの異なるメソッドを試行しましたが、1 つのメソッドでエラー "Bad Request" が返され、他の 2 つのメソッドで "103 Error Forbidden" が返されました。
+Azure のプライベート エンドポイントで Data Factory と関数アプリを実行しています。 関数アプリと連携するパイプラインを実行しようとしています。 3 つの異なるメソッドを試行しましたが、1 つのメソッドでエラー "Bad Request" が返され、他の 2 つのメソッドで "103 Error Forbidden" が返されました。
 
 **原因**
 
@@ -114,7 +115,7 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 
 * [パイプラインの失敗とエラーの処理方法](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)に関するページに従って、アクティビティレベルのチェックを実装します。
 * [Factory によるクエリ](/rest/api/datafactory/pipelineruns/querybyfactory)に関するページに従って、Azure Logic Apps を使用して定期的な間隔でパイプラインを監視します。
-* [視覚的にパイプラインを監視する](./monitor-visually.md)
+* [視覚的にパイプラインを監視する](monitor-visually.md)
 
 ### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>定期的な間隔でパイプライン エラーを監視する方法
 
@@ -124,7 +125,9 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 
 **解像度**
 * [Factory によるクエリ](/rest/api/datafactory/pipelineruns/querybyfactory)に関するページで説明されているように、失敗したすべてのパイプラインのクエリを 5 分ごとに実行するように Azure ロジック アプリを設定できます。 そうすると、インシデントをチケット システムに報告できるようになります。
-* [視覚的にパイプラインを監視する](./monitor-visually.md)
+* パイプラインとアクティビティは、[こちら](monitor-visually.md#rerun-pipelines-and-activities)の説明に従って再実行できます。
+* アクティビティをキャンセルしたか、失敗があった場合、「[失敗したアクティビティから再実行する](monitor-visually.md#rerun-from-failed-activity)」の説明に従ってアクティビティを再実行できます。
+* [視覚的にパイプラインを監視する](monitor-visually.md)
 
 ### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>並列処理の次数を増やしてもスループットが向上しない
 
@@ -154,9 +157,12 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
  
  **解像度**
  
-* 同時実行の上限: パイプラインに同時実行ポリシーがある場合は、実行中の古いパイプラインの実行がないことを確認します。 Azure Data Factory で許可されるパイプラインの最大同時実行数は 10 パイプラインです。 
-* 監視の制限: ADF 作成キャンバスにアクセスし、パイプラインを選択し、同時実行プロパティが割り当てられているかどうかを確認します。 割り当てられている場合は、監視ビューに移動し、過去 45 日間に進行中のものがないことを確認します。 進行中の何かがある合は、それを取り消し、新しいパイプラインの実行を開始する必要があります。
-* 一時的な問題: 一時的なネットワークの問題、資格情報の失敗、サービスの停止などが、実行に影響した可能性があります。このような場合、Azure Data Factory には、すべての実行を監視し、何らかの問題が検出されるとそれらを開始する内部回復プロセスがあります。 このプロセスは 1 時間ごとに発生するため、実行が 1 時間以上停止する場合は、サポート ケースを作成します。
+* **同時実行の上限:** パイプラインに同時実行ポリシーがある場合は、実行中の古いパイプラインの実行がないことを確認します。 
+* **監視の制限**: ADF 作成キャンバスにアクセスし、パイプラインを選択し、同時実行プロパティが割り当てられているかどうかを確認します。 割り当てられている場合は、監視ビューに移動し、過去 45 日間に進行中のものがないことを確認します。 進行中の何かがある合は、それを取り消し、新しいパイプラインの実行を開始する必要があります。
+
+* **一時的な問題:** 一時的なネットワークの問題、資格情報の失敗、サービスの停止などが、実行に影響した可能性があります。このような場合、Azure Data Factory には、すべての実行を監視し、何らかの問題が検出されるとそれらを開始する内部回復プロセスがあります。 パイプラインとアクティビティは、[こちら](monitor-visually.md#rerun-pipelines-and-activities)の説明に従って再実行できます。 アクティビティをキャンセルしたか、失敗があった場合、「[失敗したアクティビティから再実行する](monitor-visually.md#rerun-from-failed-activity)」の説明に従ってアクティビティを再実行できます。 このプロセスは 1 時間ごとに発生するため、実行が 1 時間以上停止する場合は、サポート ケースを作成します。
+
+
  
 ### <a name="longer-start-up-times-for-activities-in-adf-copy-and-data-flow"></a>ADF コピーとデータ フローのアクティビティの開始時間が長い
 
@@ -166,8 +172,8 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 
 **解像度**
 
-* 各コピー アクティビティの開始に最大 2 分かかり、問題が主に VNet 結合でが発生する場合は (Azure IR ではなく)、コピーのパフォーマンスの問題である可能性があります。 トラブルシューティングの手順を確認するには、[コピー パフォーマンスの向上](./copy-activity-performance-troubleshooting.md)に関するページを参照してください。
-* Time to Live 機能を使用すると、データ フロー アクティビティのクラスターの起動時間を短縮できます。 [データ フロー統合ランタイム](./control-flow-execute-data-flow-activity.md#data-flow-integration-runtime)を確認してください。
+* 各コピー アクティビティの開始に最大 2 分かかり、問題が主に VNet 結合でが発生する場合は (Azure IR ではなく)、コピーのパフォーマンスの問題である可能性があります。 トラブルシューティングの手順を確認するには、[コピー パフォーマンスの向上](copy-activity-performance-troubleshooting.md)に関するページを参照してください。
+* Time to Live 機能を使用すると、データ フロー アクティビティのクラスターの起動時間を短縮できます。 [データ フロー統合ランタイム](control-flow-execute-data-flow-activity.md#data-flow-integration-runtime)を確認してください。
 
  ### <a name="hitting-capacity-issues-in-shirself-hosted-integration-runtime"></a>SHIR (セルフホステッド統合ランタイム) での容量の問題の発生
  
@@ -177,7 +183,7 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 
 **解像度**
 
-* SHIR で容量の問題が発生する場合は、VM をアップグレードしてノードを増やし、アクティビティのバランスを取ります。 長いキューが生成される可能性のある、セルフホステッド IR の一般的な障害またはエラー、セルフホステッド IR のアップグレード、またはセルフホステッド IR の接続の問題についてのエラー メッセージが表示される場合は、「[セルフホステッド統合ランタイムのトラブルシューティング](./self-hosted-integration-runtime-troubleshoot-guide.md)」を参照してください。
+* SHIR で容量の問題が発生する場合は、VM をアップグレードしてノードを増やし、アクティビティのバランスを取ります。 長いキューが生成される可能性のある、セルフホステッド IR の一般的な障害またはエラー、セルフホステッド IR のアップグレード、またはセルフホステッド IR の接続の問題についてのエラー メッセージが表示される場合は、「[セルフホステッド統合ランタイムのトラブルシューティング](self-hosted-integration-runtime-troubleshoot-guide.md)」を参照してください。
 
 ### <a name="error-messages-due-to-long-queues-for-adf-copy-and-data-flow"></a>ADF コピーとデータ フローの長時間キューが原因のエラーメッセージ
 
@@ -186,18 +192,83 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 長時間キューに関連するエラー メッセージは、さまざまな理由で表示されることがあります。 
 
 **解像度**
-* 長いキューが生成される可能性のある、コネクタを介した送信元または送信先からのエラー メッセージが表示される場合は、[コネクタのトラブルシューティング ガイド](./connector-troubleshoot-guide.md)に関するページを参照してください。
-* 長いキューが生成される可能性のある、マッピング データ フローに関するエラー メッセージが表示される場合は、[データ フローのトラブルシューティング ガイド](./data-flow-troubleshoot-guide.md)に関するページを参照してください。
-* 長いキューが生成される可能性のある、Databricks、カスタム アクティビティ、HDI などの他のアクティビティに関するエラー メッセージが表示される場合は、[アクティビティのトラブルシューティング ガイド](./data-factory-troubleshoot-guide.md)に関するページを参照してください。
-* 長いキューが生成される可能性のある、SSIS パッケージの実行に関するエラー メッセージが表示される場合は、Azure-SSIS の[パッケージ実行トラブルシューティング ガイド](./ssis-integration-runtime-ssis-activity-faq.md)および [Integration Runtime 管理トラブルシューティング ガイド](./ssis-integration-runtime-management-troubleshoot.md)に関するページで詳細を確認してください。
+* 長いキューが生成される可能性のある、コネクタを介した送信元または送信先からのエラー メッセージが表示される場合は、[コネクタのトラブルシューティング ガイド](connector-troubleshoot-guide.md)に関するページを参照してください。
+* 長いキューが生成される可能性のある、マッピング データ フローに関するエラー メッセージが表示される場合は、[データ フローのトラブルシューティング ガイド](data-flow-troubleshoot-guide.md)に関するページを参照してください。
+* 長いキューが生成される可能性のある、Databricks、カスタム アクティビティ、HDI などの他のアクティビティに関するエラー メッセージが表示される場合は、[アクティビティのトラブルシューティング ガイド](data-factory-troubleshoot-guide.md)に関するページを参照してください。
+* 長いキューが生成される可能性のある、SSIS パッケージの実行に関するエラー メッセージが表示される場合は、Azure-SSIS の[パッケージ実行トラブルシューティング ガイド](ssis-integration-runtime-ssis-activity-faq.yml)および [Integration Runtime 管理トラブルシューティング ガイド](ssis-integration-runtime-management-troubleshoot.md)に関するページで詳細を確認してください。
 
+### <a name="error-message---codebadrequest-messagenull"></a>エラー メッセージ - "code":"BadRequest", "message":"null"
+
+**原因**
+
+これは、management.azure.com にヒットした JSON ペイロードが破損しているために発生するユーザー エラーです。 ユーザー呼び出しが ADF サービス レイヤーに到達しなかったため、ログは保存されません。
+
+**解像度**
+
+Edge/Chrome ブラウザーの **開発者ツール** を使用して、ADF ポータルから API 呼び出しのネットワーク トレースを実行します。 問題のある JSON ペイロードが表示されます。これは、特殊文字 ($ など)、スペース、およびその他の種類のユーザー入力が原因である可能性があります。 文字列式を修正したら、ブラウザーで残りの ADF 使用状況呼び出しに進みます。
+
+### <a name="foreach-activities-do-not-run-in-parallel-mode"></a>並列モードで ForEach アクティビティが実行されない
+
+**原因**
+
+デバッグ モードで ADF を実行しています。
+
+**解像度**
+
+トリガー モードでパイプラインを実行します。
+
+### <a name="cannot-publish-because-account-is-locked"></a>アカウントがロックされているため発行できない
+
+**原因**
+
+コラボレーション ブランチに変更を加えてストレージ イベント トリガーを削除しました。 発行しようとして、`Trigger deactivation error` メッセージが表示されています。
+
+**解像度**
+
+これは、イベント トリガーに使用されるストレージ アカウントがロックされていることが原因です。 アカウントのロックを解除してください。
+
+### <a name="expression-builder-fails-to-load"></a>式ビルダーの読み込みに失敗する
+
+**原因**
+
+Web ブラウザーでネットワークまたはキャッシュの問題が発生したために式ビルダーの読み込みが失敗することがあります。  
+
+**解像度**
+
+
+サポートされている Web ブラウザーの最新バージョンにブラウザーをアップグレードし、サイトの Cookie をクリアし、ページを更新します。
+
+### <a name="codebadrequestmessageerrorcodeflowrunsizelimitexceeded"></a>"Code":"BadRequest","message":"ErrorCode=FlowRunSizeLimitExceeded
+
+**原因**
+
+多くのアクティビティが連結されています。
+
+**解像度**
+
+パイプラインをサブパイプラインに分割し、**ExecutePipeline** アクティビティでそれらを結合することができます。 
+
+###  <a name="how-to-optimize-pipeline-with-mapping-data-flows-to-avoid-internal-server-errors-concurrency-errors-etc-during-execution"></a>実行中の内部サーバー エラー、同時実行エラーなどを回避するためにマッピング データ フローを使用してパイプラインを最適化する方法
+
+**原因**
+
+マッピング データ フローが最適化されていません。
+
+**解像度**
+
+* 大量のデータと変換を扱うときは、メモリ最適化コンピューティングを使用してください。
+* For each アクティビティの場合は、バッチ サイズを小さくします。
+* ADF のパフォーマンスに合わせて、データベースとウェアハウスをスケールアップします。 
+* 並列実行するアクティビティには、個別の IR (統合ランタイム) を使用します。
+* ソースとシンクでパーティションを適宜調整します。 
+* [データ フローの最適化](concepts-data-flow-performance.md)について確認します。
 
 ## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングのその他のヘルプについては、次のリソースを参照してください。
 
 *  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory の機能のリクエスト](/answers/topics/azure-data-factory.html)
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A 質問ページ](/answers/topics/azure-data-factory.html)
 *  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)

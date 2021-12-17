@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:自分の初めての .NET Core クエリ
 description: このクイックスタートでは、手順に従い、.NET Core 用の Resource Graph NuGet パッケージを有効にし、自分の初めてのクエリを実行します。
-ms.date: 01/27/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0135dfd499af48b3c60314679f4c9b635a5ce15a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4cc21a3f73991b3f1177a9bbc16491a18be51489
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98917573"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460695"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>クイック スタート:.NET Core を使用して自分の初めての Resource Graph クエリを実行する
 
@@ -65,8 +65,7 @@ ms.locfileid: "98917573"
                string strTenant = args[0];
                string strClientId = args[1];
                string strClientSecret = args[2];
-               string strSubscriptionId = args[3];
-               string strQuery = args[4];
+               string strQuery = args[3];
 
                AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/" + strTenant);
                AuthenticationResult authResult = await authContext.AcquireTokenAsync("https://management.core.windows.net", new ClientCredential(strClientId, strClientSecret));
@@ -74,7 +73,6 @@ ms.locfileid: "98917573"
 
                ResourceGraphClient argClient = new ResourceGraphClient(serviceClientCreds);
                QueryRequest request = new QueryRequest();
-               request.Subscriptions = new List<string>(){ strSubscriptionId };
                request.Query = strQuery;
 
                QueryResponse response = argClient.Resources(request);
@@ -85,6 +83,9 @@ ms.locfileid: "98917573"
    }
    ```
 
+   > [!NOTE]
+   > このコードでは、テナントベースのクエリを作成します。 クエリを[管理グループ](../management-groups/overview.md)またはサブスクリプションに限定するには、`QueryRequest` オブジェクトで `ManagementGroups` または `Subscriptions` プロパティを設定します。
+
 1. `argQuery` コンソール アプリケーションをビルドして発行します。
 
    ```dotnetcli
@@ -94,21 +95,20 @@ ms.locfileid: "98917573"
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-.NET Core コンソール アプリケーションをビルドして発行したので、単純な Resource Graph を試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。
+.NET Core コンソール アプリケーションをビルドして発行したので、単純なテナントベースの Resource Graph を試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。
 
 `argQuery` に対するそれぞれの呼び出しには、自分独自の値で置き換える必要のある変数があります。
 
 - `{tenantId}` - 実際のテナント ID に置き換えます
 - `{clientId}` - ご自分のサービス プリンシパルのクライアント ID に置き換えます
 - `{clientSecret}` - ご自分のサービス プリンシパルのクライアント シークレットに置き換えます
-- `{subscriptionId}` - サブスクリプション ID で置き換えます
 
 1. ディレクトリを、前の `dotnet publish` コマンドで定義した `{run-folder}` に変更します。
 
 1. コンパイル済みの .NET Core アプリケーションを使用して、ご自分の初めての Azure Resource Graph クエリを実行します。
 
    ```bash
-   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | limit 5"
+   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "Resources | project name, type | limit 5"
    ```
 
    > [!NOTE]
@@ -117,7 +117,7 @@ ms.locfileid: "98917573"
 1. 最後のパラメーターを `argQuery.exe` に変更し、**Name** プロパティで並べ替える (`order by`) ようにクエリを変更します。
 
    ```bash
-   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | limit 5 | order by name asc"
+   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "Resources | project name, type | limit 5 | order by name asc"
    ```
 
    > [!NOTE]
@@ -126,7 +126,7 @@ ms.locfileid: "98917573"
 1. 最後のパラメーターを `argQuery.exe` に変更し、まず **Name** プロパティで並べ替え (`order by`)、次に上位 5 件の結果に制限 (`limit`) するようにクエリを変更します。
 
    ```bash
-   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | order by name asc | limit 5"
+   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "Resources | project name, type | order by name asc | limit 5"
    ```
 
 最後のクエリを複数回実行した場合、環境内で何も変更がないと仮定すると、返される結果は変わらず、**Name** プロパティで並べ替えられますが、引き続き上位 5 件の結果に制限されます。

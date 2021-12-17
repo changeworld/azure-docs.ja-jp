@@ -3,19 +3,17 @@ title: Bing 分析情報の例 - Bing Visual Search
 titleSuffix: Azure Cognitive Services
 description: この記事では、Bing Visual Search で Bing.com の画像分析情報が使用および表示される方法の例を示します。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: scottwhi
-ms.openlocfilehash: e0a3bdc7e68301c067b7e1ca80a3e708522e0df1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51248cb5e37e6f109873340cca74c46e4af6a721
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96493357"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669666"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Bing 分析情報の使用例
 

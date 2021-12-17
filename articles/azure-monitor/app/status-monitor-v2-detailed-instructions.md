@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 29922f088a51e4876e5e2ec8fe87c3bbce4482f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f63a623029e932fca08ab01113b460e8b601d46b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521681"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287121"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Agent (旧称 Status Monitor v2): 詳しい手順
 
@@ -216,7 +216,7 @@ SerializationVersion           1.1.0.1
 Az.ApplicationMonitor を PowerShell ギャラリーからダウンロードしてインストールする PowerShell コマンドでは、`-Proxy` パラメーターがサポートされています。
 インストール スクリプトを作成するときは、上記の手順を確認します。
 
-Application Insights SDK では、アプリのテレメトリを Microsoft に送信する必要があります。 web.config ファイルでアプリのプロキシ設定を構成することをお勧めします。 詳細については、「[Application Insights の FAQ」の「プロキシのパススルー](../faq.md#proxy-passthrough)」を参照してください。
+Application Insights SDK では、アプリのテレメトリを Microsoft に送信する必要があります。 web.config ファイルでアプリのプロキシ設定を構成することをお勧めします。 詳細については、「[Application Insights の FAQ」の「プロキシのパススルー](../faq.yml)」を参照してください。
 
 
 ## <a name="enable-monitoring"></a>監視を有効にする

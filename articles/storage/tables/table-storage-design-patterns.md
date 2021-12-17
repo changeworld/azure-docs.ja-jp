@@ -5,39 +5,42 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 06/24/2021
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2eb109078728b8a9070b3991733450c1da790d9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 27004c125b5436b1dca7b0f8d17ebd8e832c425a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879597"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728521"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
+
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
 
 ![関連するデータを検索する](media/storage-table-design-guide/storage-table-design-IMAGE05.png)
 
-
 上記のパターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 検討する価値があるパターンは他にもたくさんあります。 たとえば、Table サービス向けの主なシナリオの 1 つに、[コマンド クエリ責務分離 (CQRS) パターン](/previous-versions/msp-n-p/jj554200(v=pandp.10))からの[マテリアライズドビュー パターン](/previous-versions/msp-n-p/dn589782(v=pandp.10))の使用があります。  
 
 ## <a name="intra-partition-secondary-index-pattern"></a>パーティション内のセカンダリ インデックス パターン
-異なる **RowKey** 値 (同じパーティション内) を使用して各エンティティの複数のコピーを格納し、異なる **RowKey** 値を使用した高速で効率的な参照と代替の並べ替え順序を可能にします。 コピー間の更新の一貫性は、EGT を使用して保つことができます。  
+
+異なる **RowKey** 値 (同じパーティション内) を使用して各エンティティの複数のコピーを格納し、異なる **RowKey** 値を使用した高速で効率的な参照と代替の並べ替え順序を可能にします。 コピー間の更新は、エンティティ グループ トランザクション (EGT) を使用して一貫性を維持できます。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 Table service は **PartitionKey** と **RowKey** 値を使用して自動的にインデックスを作成します。 そのため、クライアント アプリケーションでは、これらの値を使用してエンティティを効率的に取得できます。 たとえば、次のようなテーブル構造を使用することにより、クライアント アプリケーションでは、ポイント クエリを使用して部署名と従業員 ID (**PartitionKey** と **RowKey** 値) から、個々の従業員エンティティを取得できます。 また、各部署内の従業員 ID で並べ替えたエンティティを取得することも可能です。
 
-![Image06](media/storage-table-design-guide/storage-table-design-IMAGE06.png)
+![クライアント アプリケーションで、ポイント クエリを使用して部署名と従業員 ID (PartitionKey と RowKey 値) から、個々の従業員エンティティを取得できる、従業員エンティティのグラフィック。](media/storage-table-design-guide/storage-table-design-IMAGE06.png)
 
 また、電子メール アドレスなど、他のプロパティの値に基づいて従業員エンティティを検索できるようにする場合は、効率の劣るパーティション スキャンを使用して、一致するエンティティを検索する必要があります。 これは、Table サービスではセカンダリ インデックスが提供されないためです。 さらに、 **RowKey** 順以外の順序で並べ替えられた従業員の一覧を要求するオプションはありません。  
 
 ### <a name="solution&quot;></a>解決策
+
 セカンダリ インデックスの不足を回避するには、異なる **RowKey** 値を使用して各コピーの複数コピーを格納します 。 次のような構造体を持つエンティティを格納する場合は、電子メール アドレスや従業員 ID に基づく複数の従業員エンティティを効率的に取得できます。 **RowKey** のプレフィックス値 (&quot;empid_&quot; と &quot;email_") によって、電子メール アドレスまたは従業員 ID の範囲を使用することで、1 人の従業員をクエリするかある特定の範囲の従業員をクエリできます。  
 
-![従業員エンティティ](media/storage-table-design-guide/storage-table-design-IMAGE07.png)
+![RowKey 値が変化する従業員エンティティを示す図](media/storage-table-design-guide/storage-table-design-IMAGE07.png)
 
 次の 2 つのフィルター条件 (従業員 ID で検索するフィルター条件とメール アドレスで検索するフィルター条件) ではどちらもポイント クエリを指定しています。  
 
@@ -52,6 +55,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
   上記の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、[エンティティのクエリ](/rest/api/storageservices/Query-Entities)に関するページを参照してください。  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
 
 * テーブル ストレージは比較的低コストで利用できるため、重複するデータを格納してもコストは大きな問題になりません。 ただし、必ず、予想されるストレージ要件に基づいて設計のコストを見積もり、クライアント アプリケーションが実行するクエリで使用するエンティティのみを複製する必要があります。  
@@ -61,15 +65,16 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * 数値を **RowKey** (たとえば、従業員 ID 000223) にパディングすると、上限と下限に基づき正確な並べ替えとフィルタリングが可能になります。  
 * 必ずしもエンティティのすべてのプロパティを複製する必要はありません。 たとえば、電子メールアドレスを使用してエンティティを **RowKey** で検索するクエリの場合、従業員の年齢は不要です。このようなエンティティは、次のような構造になっている可能性があります。
 
-   ![従業員エンティティ構造](media/storage-table-design-guide/storage-table-design-IMAGE08.png)
-
+   ![従業員エンティティの図](media/storage-table-design-guide/storage-table-design-IMAGE08.png)
 
 * 通常は、エンティティの検索と必要なデータの検索にそれぞれ異なるクエリを使用するよりも、重複するデータを格納し、必要なすべてのデータを単一のクエリで取得できるようにすることをお勧めします。  
 
 ### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
+
 クライアント アプリケーションで異なるさまざまなキーを使用してエンティティを取得する必要がある場合、クライアントで異なる順序で並べ替えたエンティティを取得する必要がある場合、さまざまな一意の値を使用して各エンティティを識別できる場合に、このパターンを使用します。 ただし、異なる **RowKey** 値を使用してエンティティ参照を実行している場合は、パーティションのスケーラビリティの制限を超えていないことを確認してください。  
 
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * [パーティション内セカンダリ インデックス パターン](#inter-partition-secondary-index-pattern)
@@ -78,22 +83,24 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)
 
 ## <a name="inter-partition-secondary-index-pattern"></a>パーティション内のセカンダリ インデックス パターン
+
 別個のテーブルの別個のパーティションの異なる **RowKey** 値 (同じパーティション内) を使用して各エンティティの複数のコピーを格納し、異なる **RowKey** 値を使用した高速で効率的な参照と代替の並べ替え順序を可能にします。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 Table service は **PartitionKey** と **RowKey** 値を使用して自動的にインデックスを作成します。 そのため、クライアント アプリケーションでは、これらの値を使用してエンティティを効率的に取得できます。 たとえば、次のようなテーブル構造を使用することにより、クライアント アプリケーションでは、ポイント クエリを使用して部署名と従業員 ID (**PartitionKey** と **RowKey** 値) から、個々の従業員エンティティを取得できます。 また、各部署内の従業員 ID で並べ替えたエンティティを取得することも可能です。  
 
-![従業員 ID](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
+![従業員エンティティ構造のグラフィック、これを使用すると、クライアント アプリケーションで、ポイント クエリを使用して部署名と従業員 ID (PartitionKey と RowKey 値) から、個々の従業員エンティティを取得できる。](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
 
 また、電子メール アドレスなど、他のプロパティの値に基づいて従業員エンティティを検索できるようにする場合は、効率の劣るパーティション スキャンを使用して、一致するエンティティを検索する必要があります。 これは、Table サービスではセカンダリ インデックスが提供されないためです。 さらに、 **RowKey** 順以外の順序で並べ替えられた従業員の一覧を要求するオプションはありません。  
 
 これらのエンティティに対するトランザクションが大量になることが予想される場合は、Table service によってクライアントが調整されるリスクを最小限に抑える必要があります。  
 
 ### <a name="solution"></a>解決策
+
 セカンダリ インデックスの不足を回避するには、異なる **PartitionKey** と **RowKey** 値を使用して各コピーの複数コピーを格納します。 次のような構造体を持つエンティティを格納する場合は、電子メール アドレスや従業員 ID に基づく複数の従業員エンティティを効率的に取得できます。 **PartitionKey** のプレフィックスの値、"empid_" と "email_" で、クエリに使用するインデックスを特定することができます。  
 
-![プライマリ インデックスとセカンダリ インデックス](media/storage-table-design-guide/storage-table-design-IMAGE10.png)
-
+![プライマリ インデックスを持つ従業員エンティティとセカンダリ インデックスを持つ従業員エンティティを示す図](media/storage-table-design-guide/storage-table-design-IMAGE10.png)
 
 次の 2 つのフィルター条件 (従業員 ID で検索するフィルター条件とメール アドレスで検索するフィルター条件) ではどちらもポイント クエリを指定しています。  
 
@@ -108,6 +115,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 上記の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、[エンティティのクエリ](/rest/api/storageservices/Query-Entities)に関するページを参照してください。  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
 
 * プライマリとセカンダリ インデックスのエンティティを維持するため、重複するエンティティを保持して、 [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern) を使用し、互いに最終的に一貫性を持たせます。  
@@ -116,14 +124,16 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * 数値を **RowKey** (たとえば、従業員 ID 000223) にパディングすると、上限と下限に基づき正確な並べ替えとフィルタリングが可能になります。  
 * 必ずしもエンティティのすべてのプロパティを複製する必要はありません。 たとえば、電子メールアドレスを使用してエンティティを **RowKey** で検索するクエリの場合、従業員の年齢は不要です。このようなエンティティは、次のような構造になっている可能性があります。
   
-   ![従業員エンティティ (セカンダリ インデックス)](media/storage-table-design-guide/storage-table-design-IMAGE11.png)
+   ![セカンダリ インデックスを持つ従業員エンティティを示す図](media/storage-table-design-guide/storage-table-design-IMAGE11.png)
 
 * 通常は、セカンダリ インデックスを使用したエンティティの検索とプライマリ インデックス内の必要なデータの検索にそれぞれ異なるクエリを使用するよりも、重複するデータを格納し、必要なすべてのデータを単一のクエリで取得できるようにすることをお勧めします。  
 
 ### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
+
 クライアント アプリケーションで異なるさまざまなキーを使用してエンティティを取得する必要がある場合、クライアントで異なる順序で並べ替えたエンティティを取得する必要がある場合、さまざまな一意の値を使用して各エンティティを識別できる場合に、このパターンを使用します。 異なる **RowKey** 値を使用してエンティティ参照を実行しており、パーティションのスケーラビリティの制限を超えないようにしたい場合、このパターンを使用します 。  
 
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern)  
@@ -133,9 +143,11 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)  
 
 ## <a name="eventually-consistent-transactions-pattern"></a>最終的に一貫性のあるトランザクション パターン
+
 Azure Queue を使用して、パーティションやストレージ システムの境界を越えて、最終的に一貫した動作を実現します。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 EGT を使用すると、同じパーティション キーを共有する複数のエンティティに対してアトミックなトランザクションを実行できます。 パフォーマンスやスケーラビリティの関係で、一貫性が必要なエンティティを別々のパーティションや別のストレージ システムに格納する場合があります。そのような場合は、EGT を使用して一貫性を保つことはできません。 たとえば、次の一貫性を最終的に確保する必要があるとします。  
 
 * 同じテーブル内の 2 つの異なるパーティション、異なるテーブル、異なるストレージ アカウントに格納されているエンティティ。  
@@ -147,13 +159,14 @@ EGT を使用すると、同じパーティション キーを共有する複数
 Azure キューを使用すると、2 つ以上のパーティションまたはストレージ システム間で最終的に一貫性を確保するソリューションを実装できます。
 この方法を説明するために、退職した従業員エンティティをアーカイブできるようにする必要があるという場合を考えてみましょう。 退職した従業員エンティティはめったに照会されず、現在の従業員を対象にしたすべてのアクティビティから除外する必要があります。 この要件を実装するには、**現在** テーブルにいる現在の従業員と、**アーカイブ** テーブルにいる退職した従業員を格納します。 従業員をアーカイブするには、**現在** テーブルからのエンティティを削除し、**アーカイブ** テーブルにエンティティを追加する必要がありますが、これら 2 つの操作を実行する EGT は使用できません。 エンティティが両方のテーブルに表示されることや、どちらのテーブルにも表示されないことがないように、アーカイブ操作は最終的に一貫性が確保される必要があります。 次のシーケンス図は、この操作の大まかな手順を示しています。 その下のテキストには、例外パスの詳細が示されています。  
 
-![Azure キュー ソリューション](media/storage-table-design-guide/storage-table-design-IMAGE12.png)
+![最終的整合性を考慮したソリューションの図](media/storage-table-design-guide/storage-table-design-IMAGE12.png)
 
 クライアントは、Azure キューにメッセージを配置することによって、アーカイブ操作を開始します。この例では、ID が 456 の従業員をアーカイブします。 worker ロールは、キューをポーリングして新しいメッセージの有無を確認します。メッセージを見つけると、そのメッセージを読み取り、隠しコピーをキューに残します。 worker ロールは、次に、**現在** テーブルからコピーをフェッチし、**アーカイブ** テーブルにコピーを挿入し、その後、元のデータを **現在** テーブルから削除します。 最後に、前の手順でエラーが発生しなければ、worker ロールはキューから隠しメッセージを削除します。  
 
 この例では、ステップ 4 で従業員を **アーカイブ** テーブルに挿入しています。 Blob service の BLOB またはファイル システム内のファイルに従業員を加えることもできます。  
 
 ### <a name="recovering-from-failures"></a>エラーからの回復
+
 worker ロールがアーカイブ操作を再開する必要がある場合、手順 **4** と **5** の操作が *べき等* になっていることが重要です。 Table service を使用している場合、手順 **4** で「挿入または置換」操作を使用する必要があります。手順 **5** では、使用しているクライアント ライブラリ で "存在する場合は削除" 操作を使用する必要があります。 他のストレージ システムを使用する場合は、適切なべき等操作を使用する必要があります。  
 
 worker ロールが手順 **6** を完了しない場合は、タイムアウトの後、メッセージが worker ロール準備完了のキューに表示され再処理を試みます。 worker ロールは、キュー上のメッセージを読み取った回数を確認し、必要に応じて、別のキューに送信することで、調査のために "有害" メッセージとしてフラグを設定できます。 キュー メッセージの読み取りとデキューカウントのチェックに関する詳細については、 [メッセージを取得](/rest/api/storageservices/Get-Messages)を参照してください。  
@@ -161,6 +174,7 @@ worker ロールが手順 **6** を完了しない場合は、タイムアウト
 Table サービスと Queue サービスのエラーには一時的なエラーもあります。クライアント アプリケーションには、そうしたエラーに対処する適切な再試行ロジックを組み込む必要があります。  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
 
 * このソリューションは、トランザクションを分離するためのソリューションではありません。 たとえば、worker ロールが手順 **4** と **5** の間で、クライアントは **現在** と **アーカイブ** テーブルを読み込むことができます。また、データの非一貫性表示を参照できます。 データは最終的に一貫性が確保されます。  
@@ -168,9 +182,11 @@ Table サービスと Queue サービスのエラーには一時的なエラー�
 * 複数のキューと worker ロール インスタンスを使用して、ソリューションを拡張できます。  
 
 ### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
+
 別のパーティションまたはテーブルに存在するエンティティ間の一貫性を最終的に確保する必要がある場合に、このパターンを使用します。 このパターンを拡張して、Table service と Blob service のほかにも、データベースやファイル システムなどの Azure 以外のストレージ データ ソース間の操作で最終的な一貫性を確保できます。  
 
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * エンティティ グループ トランザクション  
@@ -178,20 +194,23 @@ Table サービスと Queue サービスのエラーには一時的なエラー�
 
 > [!NOTE]
 > ソリューションにとってトランザクションの分離が重要な場合は、EGT を使用できるようにテーブルを再設計することを検討する必要があります。  
-> 
-> 
+>
+>
 
 ## <a name="index-entities-pattern"></a>インデックス エンティティのパターン
+
 エンティティ一覧を返す、効率的な検索を有効にするインデックスのエンティティを管理します。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 Table service は **PartitionKey** と **RowKey** 値を使用して自動的にインデックスを作成します。 そうすると、クライアント アプリケーションでポイント クエリを使用してエンティティを効率的に取得できます。 たとえば、次のようなテーブル構造を使用することにより、クライアント アプリケーションでは、部署名と従業員 ID (**PartitionKey** と **RowKey** 値) から、個々の従業員エンティティを効率的に取得できます。  
 
-![従業員エンティティ](media/storage-table-design-guide/storage-table-design-IMAGE13.png)
+![クライアント アプリケーションで、部署名と従業員 ID (PartitionKey と RowKey) を使用して効率的に個々の従業員エンティティを取得できる、従業員エンティティ構造のグラフィック。](media/storage-table-design-guide/storage-table-design-IMAGE13.png)
 
 また、姓など、一意ではない他のプロパティの値に基づいて従業員エンティティの一覧を取得できるようにする場合は、インデックスを使用して直接一致するエンティティを検索せずに、効率の劣るパーティション スキャンを使用して検索する必要があります。 これは、Table サービスではセカンダリ インデックスが提供されないためです。  
 
 ### <a name="solution"></a>解決策
+
 上のエンティティ構造の場合、姓で検索できるようにするには、従業員 ID の一覧を保持する必要があります。 Jones など、特定の姓を持つ従業員エンティティを取得するには、まず姓が Jones である従業員の従業員 ID の一覧を検索してから、それらの従業員エンティティを取得する必要があります。 従業員 ID の一覧を格納する方法は主に次の 3 つがあります。  
 
 * BLOB ストレージを使用する。  
@@ -206,7 +225,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 
 2 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
-![従業員インデックス エンティティ](media/storage-table-design-guide/storage-table-design-IMAGE14.png)
+![従業員エンティティと、同じ姓を持つ従業員 ID の一覧を含む文字列を示した図](media/storage-table-design-guide/storage-table-design-IMAGE14.png)
 
 **EmployeeIDs** プロパティには、**RowKey** に格納されている姓を持つ従業員の従業員 ID リストが含まれています。  
 
@@ -228,14 +247,14 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 
 3 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
-![別のパーティションにある従業員インデックス エンティティ](media/storage-table-design-guide/storage-table-design-IMAGE15.png)
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="RowKey および PartitionKey に姓が格納されている従業員の従業員 ID の一覧を含む従業員インデックス エンティティを示すスクリーンショット。":::
 
-
-**EmployeeIDs** プロパティには、**RowKey** に格納されている姓を持つ従業員の従業員 ID リストが含まれています。  
+**EmployeeDetails** プロパティには、`RowKey` に格納されている姓を持つ従業員の従業員 ID と部署名のペアのリストが含まれています。
 
 3 番目の方法では、インデックス エンティティが従業員エンティティとは別のパーティションにあるため、EGT を使用して一貫性を保つことはできません。 インデックス エンティティが従業員エンティティと最終的に一貫していることを確認してください。  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
 
 * このソリューションでは、一致するエンティティを取得するために、少なくとも 2 つのクエリが必要です。1 つはインデックス エンティティを照会して **RowKey** 値の一覧を取得するクエリです。もう 1 つはその一覧内の各エンティティを取得するクエリです。  
@@ -245,9 +264,11 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * 最終的に一貫性が確保されるキューベースのソリューションを実装できます (詳細については、「 [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern) 」を参照してください)。  
 
 ### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
+
 姓が Jones のすべての従業員など、特定のプロパティ値がすべて共通している一連のエンティティを検索する場合に、このパターンを使用します。  
 
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * [複合キー パターン](#compound-key-pattern)  
@@ -256,30 +277,36 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)  
 
 ## <a name="denormalization-pattern"></a>非正規化パターン
+
 関連するデータを 1 つのエンティティに結合し、1 回のポイント クエリで必要なデータをすべて取得できるようにします。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 リレーショナル データベースでは、通常、重複を排除するためにデータを正規化します。その結果、クエリで複数のテーブルからデータを取得することになります。 Azure テーブルのデータを正規化した場合、関連するデータを取得するには、クライアント アプリケーションとサーバー間のラウンド トリップを複数回行う必要があります。 たとえば、以下のテーブル構造を使用した場合、部署の詳細を取得するためには、2 回ラウンド トリップを行う必要があります。1 回目のラウンド トリップでマネージャーの ID を含む部署エンティティをフェッチし、2 回目に従業員エンティティからマネージャーの詳細をフェッチします。  
 
-![部署エンティティと従業員エンティティ](media/storage-table-design-guide/storage-table-design-IMAGE16.png)
+![部署エンティティと従業員エンティティの図](media/storage-table-design-guide/storage-table-design-IMAGE16.png)
 
 ### <a name="solution"></a>解決策
+
 データを 2 つのエンティティに格納する代わりに、データを非正規化し、部署エンティティにマネージャーの詳細のコピーを保持します。 次に例を示します。  
 
-![部署エンティティ](media/storage-table-design-guide/storage-table-design-IMAGE17.png)
+![非正規化され、結合された部署エンティティの図](media/storage-table-design-guide/storage-table-design-IMAGE17.png)
 
 格納されている部署エンティティにはこれらのプロパティがあるため、ポイント クエリを使用して、部署に関して必要なすべての詳細を取得できます。  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
 
 * 一部のデータを重複して格納するため、多少コストがかかります。 通常、ストレージ コストの増加はわずかなため、(ストレージ サービスへの要求が減少することによる) パフォーマンス上のメリットが勝ります (このコストの一部は、部署の詳細をフェッチするために必要なトランザクションの数が減少することで相殺されます)。  
 * マネージャーに関する情報を格納する 2 つのエンティティの一貫性を維持する必要があります。 一貫性の問題は、EGT を使用して単一のアトミックなトランザクションで複数のエンティティを更新することで対処できます。この例では、部署エンティティと、部署マネージャーの従業員エンティティが同じパーティションに格納されています。  
 
 ### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
+
 関連情報を頻繁に検索する必要がある場合に、このパターンを使用します。 このパターンを使用すると、クライアントが必要なデータを取得するために実行する必要があるクエリの数が減少します。  
 
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * [複合キー パターン](#compound-key-pattern)  
@@ -287,25 +314,28 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)
 
 ## <a name="compound-key-pattern"></a>複合キー パターン
+
 クライアントで単一のポイント クエリを使用して関連するデータを検索できるようにするには、複合 **RowKey** 値を使用します。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 リレーショナル データベースでは、単一のクエリで関連するデータをクライアントに返すために、クエリでよく結合を使用します。 たとえば、従業員 ID を使用して、その従業員の業績と評価データが含まれている関連エンティティの一覧を検索する場合があります。  
 
 次の構造を使用し、Table service に従業員エンティティを格納しているとします。  
 
-![Table service に従業員エンティティを格納することができる方法を示すスクリーンショット。](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
+![従業員エンティティをテーブル ストレージに格納するために使用する必要がある従業員エンティティ構造のグラフィック。](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
 
 また、各年度の従業員の評価と業績に関する履歴データを格納し、この情報に年度別でアクセスできる必要もあります。 それには、次の構造でエンティティを格納する別のテーブルを作成するという方法があります。  
 
-![代替の従業員エンティティ構造](media/storage-table-design-guide/storage-table-design-IMAGE19.png)
+![従業員レビュー エンティティの図](media/storage-table-design-guide/storage-table-design-IMAGE19.png)
 
 この方法では、単一の要求でデータを取得できるようにするには、一部の情報 (姓や名など) を新しいエンティティに複製する必要があります。 ただし、EGT を使用しても 2 つのエンティティをアトミックには更新できないため、強力な整合性を保つことはできません。  
 
 ### <a name="solution"></a>解決策
+
 次の構造のエンティティを使用して、元のテーブルに新しい種類のエンティティを格納します。  
 
-![従業員エンティティ構造のソリューション](media/storage-table-design-guide/storage-table-design-IMAGE20.png)
+![複合キーを持つ従業員エンティティの図](media/storage-table-design-guide/storage-table-design-IMAGE20.png)
 
 **RowKey** が従業員 ID と評価データの年度から構成された複合キーとなり、1 つのエンティティに対する 1 つのリクエストで、従業員の業績と評価データを取得できるようになっていることにご注意ください。  
 
@@ -314,6 +344,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt '000123_2012')&$select=RowKey,Manager Rating,Peer Rating,Comments  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
 
 * **000123_2012** のような、**RowKey** 値の解析を容易にする適切な区切り文字を使用する必要があります。  
@@ -321,9 +352,11 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 * このパターンが適切であるかどうかを判断するには、データを照会する頻度を考慮する必要があります。  たとえば、評価データにはあまり頻度にアクセスせず、メインの従業員データには頻度にアクセスする場合は、それらのデータを別々のエンティティとして保持する必要があります。  
 
 ### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
+
 頻繁に照会する関連エンティティを 1 つ以上格納する必要がある場合に、このパターンを使用します。  
 
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * エンティティ グループ トランザクション  
@@ -331,12 +364,15 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 * [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern)  
 
 ## <a name="log-tail-pattern"></a>ログ テール パターン
+
 逆の日付と時間順でソートする *RowKey* 値を 使用して最も最近追加された **n** を取得します。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 一般的な要件は、最近作成されたエンティティ (たとえば、従業員から最近提出された 10 件の経費請求) を取得できるようにすることです。 Table クエリは **$top** クエリ操作をサポートして、最初の *n* 件のエンティティをセットから返します。セットの最終 n 件のエンティティを返す同等のクエリの操作はありません。  
 
 ### <a name="solution"></a>解決策
+
 最新のエントリを逆の日付と時刻の順で自然に並べ替える **RowKey** を使用したエンティティを保存することで、表の一番上に直近のエントリが表示されます。  
 
 たとえば、従業員から最近提出された10 件の経費請求を取得できるようにするには、現在の日時から算出された逆順のティック値を使用できます。 次の c# のコード サンプルは、最新から最古の順で並べ替える **RowKey** 用の適切な「逆タイマー刻み」値を作成する方法の 1 つを示しています。  
@@ -352,36 +388,43 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 `https://myaccount.table.core.windows.net/EmployeeExpense(PartitionKey='empid')?$top=10`  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
 
 * 文字列値が正しく並び替わるように、逆順のティック値の先頭にゼロをパディングする必要があります。  
 * パーティション レベルのスケーラビリティ ターゲットに注意する必要があります。 ホット スポット パーティションが発生しないように注意してください。  
 
 ### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
+
 日時の逆順でエンティティにアクセスする必要がある場合、または追加日時の新しい順にエンティティにアクセスする必要がある場合に、このパターンを使用します。  
 
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * [先頭または末尾に追加するアンチ パターン](#prepend-append-anti-pattern)  
 * [エンティティの取得](#retrieving-entities)  
 
 ## <a name="high-volume-delete-pattern"></a>大量削除パターン
+
 すべてのエンティティを同時削除用に独立したテーブルに格納することで、大量のエンティティを削除できるようにします。エンティティを削除するときは、テーブル自体を削除することになります。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 多くのアプリケーションでは、クライアント アプリケーションで使用する必要がなくなった古いデータや、他の記憶域メディアにアーカイブした古いデータを削除します。 通常は、日付でそうしたデータを特定します。たとえば、60 日以上前のすべてのログイン要求のレコードを削除する必要があるとします。  
 
 利用可能な設計の 1 つは、 **RowKey** でのログイン リクエストの日付と時刻の使用です:  
 
-![ログイン試行の日付と時刻](media/storage-table-design-guide/storage-table-design-IMAGE21.png)
+![ログイン試行エンティティの図](media/storage-table-design-guide/storage-table-design-IMAGE21.png)
 
 この方法では、アプリケーションが別のパーティションで各ユーザーのログイン エンティティを挿入したり削除したりできるため、パーティションのホット スポットを回避できます。 ただし、まず削除するすべてのエンティティを特定するためにテーブル スキャンを実行し、その後、古い各エンティティを削除する必要があるため、エンティティの数が多い場合、この方法ではコストと時間がかかる可能性があります。 複数の削除要求をバッチ処理として EGT にまとめることで、古いエンティティを削除するのに必要なサーバーへのラウンド トリップの回数を減らすことができます。  
 
 ### <a name="solution"></a>解決策
+
 ログイン試行の日付ごとに異なるテーブルを使用します。 上のエンティティのデザインを使用すると、エンティティを挿入する際にホットスポットを回避できます。毎日数百や数千もの個々のログイン エンティティを検索して削除する代わりに、毎日テーブルを 1 つ削除する (単一のストレージ操作) だけで古いエンティティを削除できます。  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
 
 * 特定のエンティティの検索、他のデータとのリンク、集計情報の生成など、データの他の用途もサポートするように設計していますか。  
@@ -390,41 +433,49 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 * Table service ではアクセス パターンを学習して、ノード全体にパーティションを分散しますが、最初に新しいテーブルを使用するときは何らかの調整が行われます。 新しいテーブルを作成する必要がある頻度を検討する必要があります。  
 
 ### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
+
 同時に削除する必要があるエンティティが大量にある場合に、このパターンを使用します。  
 
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * エンティティ グループ トランザクション
 * [エンティティの変更](#modifying-entities)  
 
 ## <a name="data-series-pattern"></a>データ系列のパターン
+
 データ系列全体を単一のエンティティに格納し、要求の数を最小限に抑えます。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 一般的なシナリオとして、通常、アプリケーションで一度にすべて取得する必要があるデータ系列を格納するというものがあります。 たとえば、アプリケーションで 1 時間ごとに各従業員が送信した IM メッセージの数を記録し、後でその情報を使用して、各ユーザーが過去 24 時間以内に送信したメッセージの数をプロットするとします。 設計の 1 つとして、従業員ごとに 24 個のエンティティを格納します。  
 
-![従業員ごとに 24 個のエンティティを格納する](media/storage-table-design-guide/storage-table-design-IMAGE22.png)
+![メッセージ統計情報エンティティの図](media/storage-table-design-guide/storage-table-design-IMAGE22.png)
 
 この設計では、アプリケーションでメッセージのカウント値を更新する必要があるときに、各従業員の更新するエンティティを簡単に検索して更新できます。 ただし、情報を取得して、過去 24 時間の活動のグラフをプロットするためには、24 個のエンティティを取得する必要があります。  
 
 ### <a name="solution"></a>解決策
+
 次の設計を使用し、各時間のメッセージ数をそれぞれ別のプロパティに格納します。  
 
-![メッセージ統計情報エンティティ](media/storage-table-design-guide/storage-table-design-IMAGE23.png)
+![区切られたプロパティのメッセージ統計情報エンティティを示す図](media/storage-table-design-guide/storage-table-design-IMAGE23.png)
 
 この設計では、マージ操作を使用して、特定の時間の従業員のメッセージ数を更新できます。 これで、単一のエンティティに対する単一の要求を使用して、チャートをプロットするために必要なすべての情報を取得できます。  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
 
 * データ系列全体が単一のエンティティに収まらない場合 (エンティティは最大 252 個のプロパティを持つことができます)、BLOB などの代わりのデータ ストアを使用します。  
 * 複数のクライアントが同時にエンティティを更新する場合は、 **ETag** を使用して、オプティミスティック コンカレンシーを実装する必要があります。 クライアントがたくさんある場合は、競合が大量に発生する可能性があります。  
 
 ### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
+
 個々のエンティティに関連付けられているデータ系列を更新したり取得したりする必要がある場合に、このパターンを使用します。  
 
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * [ラージ エンティティ パターン](#large-entities-pattern)  
@@ -435,50 +486,61 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 複数の物理エンティティを使用して、252 を超えるプロパティを持つ論理エンティティを格納します。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 個々のエンティティが持つことができるプロパティは、(必須のシステム プロパティを除き) 252 個までです。また、格納できるデータは合計で 1 MB までです。 リレーショナル データベースでは、通常、新しいテーブルを追加し、その新しいテーブルと 1 対 1 のリレーションシップを作成することによって、行のサイズに関するさまざまな制限を回避します。  
 
 ### <a name="solution"></a>解決策
+
 Table service を使用すると、複数のエンティティを格納して、252 を超えるプロパティを持つ単一の大きなビジネス オブジェクトを作成できます。 たとえば、過去 365 日の間に各従業員が送信した IM メッセージの数を格納する場合は、スキーマの異なる 2 つのエンティティを使用する次のデザインを使用できます。  
 
-![複数のエンティティ](media/storage-table-design-guide/storage-table-design-IMAGE24.png)
+![Rowkey 01 のメッセージ統計情報エンティティと Rowkey 02 のメッセージ統計情報エンティティを示す図](media/storage-table-design-guide/storage-table-design-IMAGE24.png)
 
 両方のエンティティを更新しないとエンティティどうしの同期が維持されない変更を加える必要がある場合は、EGT を使用できます。 それ以外の場合は、単一のマージ操作を使用して、特定の日のメッセージ数を更新できます。 個々 の従業員のすべてのデータを取得するには、**PartitionKey** と **RowKey** 値の両方を使用する 2 つの効率的なリクエストを取得する必要があります。  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
 
 * 論理エンティティ全体を取得するには、少なくとも 2 つのストレージ トランザクション (各物理エンティティを取得するトランザクション) が必要です。  
 
 ### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
+
 サイズやプロパティの数が Table service の個々のエンティティの制限を超えるエンティティを格納する必要がある場合に、このパターンを使用します。  
 
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * エンティティ グループ トランザクション
 * [マージまたは置換](#merge-or-replace)
 
 ## <a name="large-entities-pattern"></a>大型エンティティ パターン
+
 大規模なプロパティの値を格納する BLOB ストレージを使用します。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 個々のエンティティに格納できるデータは合計で 1 MB までです。 1 つまたは複数のプロパティに格納される値でエンティティの合計サイズが 1 MB を超える場合は、Table service にエンティティ全体は格納できません。  
 
 ### <a name="solution"></a>解決策
+
 1 つ以上のプロパティに大量のデータが含まれているためにエンティティのサイズが 1 MB を超える場合は、Blob service にデータを格納し、エンティティのプロパティに BLOB のアドレスを格納できます。 たとえば、従業員の写真を Blob ストレージに格納し、写真へのリンクを従業員エンティティの **フォト** プロパティに格納できます。  
 
-![写真のプロパティ](media/storage-table-design-guide/storage-table-design-IMAGE25.png)
+![Photo が BLOB ストレージを指す文字列の従業員エンティティを示す図](media/storage-table-design-guide/storage-table-design-IMAGE25.png)
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
 
 * Table service 内のエンティティと、Blob service 内のデータの間の最終的な一貫性を保つには、[最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern) を使用してエンティティを維持します。
 * エンティティ全体を取得するには、少なくとも 2 つのストレージ トランザクション (エンティティを取得するトランザクションと BLOB データを取得するトランザクション) が必要です。  
 
 ### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
+
 サイズが Table service の個々のエンティティの制限を超えるエンティティを格納する必要がある場合に、このパターンを使用します。  
 
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern)  
@@ -487,14 +549,17 @@ Table service を使用すると、複数のエンティティを格納して、
 <a name="prepend-append-anti-pattern"></a>
 
 ## <a name="prependappend-anti-pattern"></a>先頭または末尾に追加するアンチパターン
+
 大量に挿入する場合に、挿入を複数のパーティションに分散させることで、スケーラビリティを向上させます。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 格納されているエンティティの先頭または末尾にエンティティを追加すると、通常は、連続するパーティションの最初または最後のパーティションに新しいエンティティが追加されます。 この場合、常に挿入はすべて同じパーティション内で行われるため、ホットスポットが発生し、Table service が複数のノードに挿入の負荷を分散できず、場合によっては、パーティションのスケーラビリティ ターゲットに達する可能性があります。 たとえば、従業員によるネットワークやリソースへのアクセスをログに記録するアプリケーションで、以下に示すエンティティ構造を使用した場合、トランザクションの量が個々のパーティションのスケーラビリティ ターゲットに達すると、現在処理が行われているパーティションがホットスポットになる可能性があります。  
 
 ![エンティティ構造](media/storage-table-design-guide/storage-table-design-IMAGE26.png)
 
 ### <a name="solution"></a>解決策
+
 代わりに次のエンティティ構造を使用すると、アプリケーションでイベントをログに記録する際に特定のパーティションのホットスポットを回避できます。  
 
 ![代替のエンティティ構造](media/storage-table-design-guide/storage-table-design-IMAGE27.png)
@@ -502,15 +567,18 @@ Table service を使用すると、複数のエンティティを格納して、
 次の例では 2 つのキー **PartitionKey** と **RowKey** がどのように複合キーになっているか注意してください。 **PartitionKey** は部署と従業員の両方の ID を使用して複数のパーティションにログを配布します。  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
 
 * 挿入時のホット パーティションの発生を回避する代わりのキー構造でクライアント アプリケーションが実行するクエリを効率的にサポートしていますか。  
 * 予想されるトランザクションの量から判断して、個々のパーティションのスケーラビリティ ターゲットに達し、ストレージ サービスによって調整される可能性がありますか。  
 
 ### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
+
 トランザクションの量により、ホット パーティションにアクセスするとストレージ サービスによって調整される可能性がある場合は、先頭または末尾に追加するアンチパターンを使用しないでください。  
 
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * [複合キー パターン](#compound-key-pattern)  
@@ -518,9 +586,11 @@ Table service を使用すると、複数のエンティティを格納して、
 * [エンティティの変更](#modifying-entities)  
 
 ## <a name="log-data-anti-pattern"></a>ログ データのアンチパターン
+
 ログ データの格納には通常、Table service ではなく Blob service を使用します。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
+
 ログ データを使用する局面として最も一般的なのが、特定の日付範囲または時間範囲のログ エントリを選択して取得するというものです。たとえば、特定の日の 15:04 から 15:06 までの間にアプリケーションが記録したエラー メッセージや重要なメッセージをすべて取得するなどの局面が挙げられます。 ログ メッセージの日時を使用して、ログのエンティティを保存するパーティションを特定したくない場合は、ホット パーティションになります。任意の時点で、すべてのログ エンティティが同じ **PartitionKey** 値を共有します ([先頭または末尾に追加するアンチ パターン](#prepend-append-anti-pattern)のセクションをご覧ください)。 たとえば、ログ メッセージに関する以下のエンティティ スキーマでは、アプリケーションが現在の日付や時刻についてパーティションにあらゆるログ メッセージを書き込むことになるため、ホット パーティションの問題が発生します。  
 
 ![ログ メッセージ エンティティ](media/storage-table-design-guide/storage-table-design-IMAGE28.png)
@@ -534,6 +604,7 @@ Table service を使用すると、複数のエンティティを格納して、
 ただし、このスキーマには問題があります。特定のタイム スパンに記録されたログ メッセージをすべて取得するときには、テーブル内のパーティションを逐一検索する必要があるからです。
 
 ### <a name="solution"></a>解決策
+
 前のセクションでは、ログ エントリの保存先として Table service を使用した場合に生じる問題について説明し、その解決策として、完璧とは言いがたいものの 2 つの設計を紹介しました。 1 つ目に紹介した方法には、ホット パーティションが発生し、ログ メッセージの書き込みのパフォーマンスが低下するリスクがあります。これに対して 2 つ目の方法は、特定のタイム スパンについてログ メッセージを取得しようとした場合に、テーブル内のパーティションを逐一スキャンしなければならないため、クエリのパフォーマンスが低下するという問題がありました。 BLOB ストレージなら、ここで取り上げたシナリオについて前の 2 つよりも優れたソリューションとなることができます。このため、Azure Storage Analytics が収集したログ データを保存するときにも、この BLOB ストレージが使用されています。  
 
 このセクションでは、Storage Analytics が BLOB ストレージにログ データを格納する流れの概要を説明し、範囲を指定してクエリを実行することが多いデータを保存する際にこのアプローチがどのように役立つかを見ていきます。  
@@ -547,6 +618,7 @@ Storage Analytics は内部のバッファーにログ メッセージを保管�
 アプリケーションにこれと似たソリューションを実装するときには、信頼性 (ログ エントリが発生するたびに BLOB ストレージに書き込む) と、コストとスケーラビリティ (アプリケーションに更新内容を一時的に保管し、バッチとして BLOB ストレージに書き込む) との間のトレードオフをどのようにするかについて、検討が必要になります。  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
+
 ログ データの保存方法を決めるときには、以下の点に注意する必要があります。  
 
 * ホット パーティションが発生しないような設計のテーブルを作成すると、ログ データに対するアクセス効率が低下することがあります。  
@@ -554,20 +626,22 @@ Storage Analytics は内部のバッファーにログ メッセージを保管�
 * ログ データは構造化されていることが多いものの、BLOB ストレージの方が優れたソリューションになることがあります。  
 
 ## <a name="implementation-considerations"></a>実装時の注意事項
+
 このセクションでは、ここまでのセクションで説明したパターンを実装する際に念頭に置く必要がある点をいくつか説明します。 このセクションで示したコード例は、ほとんどが C# で書かれ、ストレージ クライアント ライブラリ (本稿執筆時点のバージョンは 4.3.0) を使用しています。  
 
 ## <a name="retrieving-entities"></a>エンティティの取得
+
 「クエリに対応した設計」で説明したように、最も効率的なクエリはポイント クエリです。 ただ、時として多数のエンティティを同時に取得することも必要になります。 このセクションでは、ストレージ クライアント ライブラリを使ってエンティティを取得するときによく使用される方法をいくつか紹介します。  
 
 ### <a name="executing-a-point-query-using-the-storage-client-library"></a>ストレージ クライアント ライブラリを使ってポイント クエリを実行する
-ポイント クエリを実行する最も簡単な方法は、次の c# コード スニペットに表示された、**PartitionKey** 値 "Sales" と **RowKey** 値 "212" を持つエンティティを取得する **取得** テーブル操作の使用です。  
+
+ポイント クエリを実行する最も簡単な方法は、次の c# コード スニペットに表示された、**PartitionKey** 値 "Sales" と **RowKey** 値 "212" を持つエンティティを取得する **GetEntityAsync** メソッドの使用です。  
 
 ```csharp
-TableOperation retrieveOperation = TableOperation.Retrieve<EmployeeEntity>("Sales", "212");
-var retrieveResult = employeeTable.Execute(retrieveOperation);
+var retrieveResult = employeeTable.GetEntityAsync<EmployeeEntity>("Sales", "212");
 if (retrieveResult.Result != null)
 {
-    EmployeeEntity employee = (EmployeeEntity)retrieveResult.Result;
+    EmployeeEntity employee = (EmployeeEntity)queryResult.Result;
     ...
 }  
 ```
@@ -575,7 +649,8 @@ if (retrieveResult.Result != null)
 この例では、 **従業員エンティティ** 取得についてどのように予想しているかに注意してください。  
 
 ### <a name="retrieving-multiple-entities-using-linq"></a>LINQ を使用して複数のエンティティを取得する。
-LINQ を使用すると、Microsoft Azure Cosmos Table Standard Library を使用するときに、Table service から複数のエンティティを取得できます。 
+
+LINQ を使用すると、Microsoft Azure Cosmos Table Standard Library を使用するときに、Table service から複数のエンティティを取得できます。
 
 ```azurecli
 dotnet add package Microsoft.Azure.Cosmos.Table
@@ -585,25 +660,17 @@ dotnet add package Microsoft.Azure.Cosmos.Table
 
 ```csharp
 using System.Linq;
-using Microsoft.Azure.Cosmos.Table;
-using Microsoft.Azure.Cosmos.Table.Queryable;
+using Azure.Data.Table
 ```
 
 employeeTable は、CreateQuery\<ITableEntity>() メソッドを実装する CloudTable オブジェクトであり、TableQuery\<ITableEntity> を返します。 この種類のオブジェクトは、IQueryable を実装し、LINQ クエリ式とドット表記の構文を使用できるようにします。
 
-複数のエンティティの取得は、**where** 句でクエリを指定することで実現します。 テーブル スキャンを回避するには、where 句の **PartitionKey** 値と、可能であれば **RowKey** 値をインクルードし、テーブルとパーティションのスキャンを避けます。 Table サービスは、where 句で一部の比較演算子 (より大きい、以上、より小さい、以下、等しい、等しくない) のみサポートしています。 
+複数のエンティティの取得は、**filter** 句でクエリを指定することで実現します。 テーブル スキャンを回避するには、filter 句の **PartitionKey** 値と、可能であれば **RowKey** 値をインクルードし、テーブルとパーティションのスキャンを避けます。 Table サービスは、filter 句で一部の比較演算子 (より大きい、以上、より小さい、以下、等しい、等しくない) のみサポートしています。
 
 次の c# のコード スニペットは、Sales 部署 (**PartitionKey** が部署名を格納していると仮定) の中で、姓が "B" (**RowKey** が姓を格納していると仮定) で始まるすべての従業員を検索 します。  
 
 ```csharp
-TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();
-var query = (from employee in employeeQuery
-            where employee.PartitionKey == "Sales" &&
-            employee.RowKey.CompareTo("B") >= 0 &&
-            employee.RowKey.CompareTo("C") < 0
-            select employee).AsTableQuery();
-            
-var employees = query.Execute();  
+var employees = employeeTable.Query<EmployeeEntity>(e => (e.PartitionKey == "Sales" && e.RowKey.CompareTo("B") >= 0 && e.RowKey.CompareTo("C") < 0));  
 ```
 
 パフォーマンスを確保するため、クエリで **RowKey** と **PartitionKey** の両方をどのように指定するか注意してください。  
@@ -611,38 +678,27 @@ var employees = query.Execute();
 次のコード サンプルは、LINQ 構文を使用しない同等の機能を示しています。  
 
 ```csharp
-TableQuery<EmployeeEntity> employeeQuery = 
-    new TableQuery<EmployeeEntity>().Where(
-        TableQuery.CombineFilters(
-            TableQuery.CombineFilters(
-                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales"),
-                TableOperators.And,
-                TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, "B")),
-            TableOperators.And,
-            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, "C")));
-            
-var employees = employeeTable.ExecuteQuery(employeeQuery);  
+var employees = employeeTable.Query<EmployeeEntity>(filter: $"PartitionKey eq 'Sales' and RowKey ge 'B' and RowKey lt 'C'");  
 ```
 
 > [!NOTE]
-> このサンプルでは、 3 つのフィルター条件を含んだ複数の **コンバイン フィルター** メソッドをネストしています。  
-> 
-> 
+> サンプルの **Query** メソッドでは、3 つの filter 条件を使用しています。  
+>
+>
 
 ### <a name="retrieving-large-numbers-of-entities-from-a-query"></a>1 件のクエリで大量のエンティティを取得する
+
 最適なクエリは **PartitionKey** 値と **RowKey** 値に基づいて個別のエンティティを返します。 ところが、場合によっては同じパーティション、ときには多数のパーティションから、多数のエンティティを返すことが必要になります。  
 
 そのようなときには必ず、アプリケーションのパフォーマンスを綿密にテストする必要があります。  
 
 Table サービスに対してクエリを実行した場合、一度に返されるエンティティの数は最大 1,000 件、クエリの実行時間は最大 5 秒間です。 結果として返されるエンティティが 1,000 件を超える場合、クエリが 5 秒以内に完了しなかった場合、またはクエリがパーティションの境界をまたいで実行される場合には、Table service によって継続トークンが返されます。クライアント アプリケーションはこのトークンを使って、続きとなるエンティティを要求します。 継続トークンの詳細については、「[クエリのタイムアウトと改ページ](/rest/api/storageservices/Query-Timeout-and-Pagination)」をご覧ください。  
 
-ストレージ クライアント ライブラリを使用している場合には、Table service からエンティティが返されるたびに継続トークンが自動で処理されます。 以下の C# コード サンプルではストレージ クライアント ライブラリを使用しているため、Table サービスが応答で返した継続トークンが自動的に処理されます。  
+テーブル クライアント ライブラリを使用している場合には、Table service からエンティティが返されるたびに継続トークンが自動で処理されます。 以下の C# コード サンプルではテーブル クライアント ライブラリを使用しているため、Table サービスが応答で返した継続トークンが自動的に処理されます。  
 
 ```csharp
-string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
-TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
+var employees = employeeTable.Query<EmployeeEntity>("PartitionKey eq 'Sales'")
 
-var employees = employeeTable.ExecuteQuery(employeeQuery);
 foreach (var emp in employees)
 {
     // ...
@@ -652,19 +708,16 @@ foreach (var emp in employees)
 以下の C# コード サンプルでは、継続トークンの処理を明示的に記述しています。  
 
 ```csharp
-string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
-TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
-
 TableContinuationToken continuationToken = null;
 do
 {
-    var employees = employeeTable.ExecuteQuerySegmented(employeeQuery, continuationToken);
-    foreach (var emp in employees)
+    var employees = employeeTable.Query<EmployeeEntity>("PartitionKey eq 'Sales'");
+    foreach (var emp in employees.AsPages())
     {
         // ...
+        continuationToken = emp.ContinuationToken;
     }
     
-    continuationToken = employees.ContinuationToken;
 } while (continuationToken != null);  
 ```
 
@@ -676,26 +729,25 @@ do
 
 > [!NOTE]
 > 継続トークンは通常、エンティティ 1,000 件を 1 つのセグメントにして返しますが、この数が少なくなることもあります。 これも、**取得** を使用してクエリが返すをエントリの数を制限する場合は、検索条件に一致する最初の n 件のエンティティを返します。テーブル サービスは、残りのエンティティを取得するために、継続トークンと合わせて n 件より少ないエンティティを含むセグメントを返す可能性があります。  
-> 
-> 
+>
+>
 
 以下の C# コードは、1 つのセグメントで返されるエンティティの数を変更するためのものです。  
 
 ```csharp
-employeeQuery.TakeCount = 50;  
+employees.max = 50;  
 ```
 
 ### <a name="server-side-projection"></a>サーバー側のプロジェクション
+
 1 つのエンティティには最大で 255 個のプロパティを格納でき、エンティティの最大サイズは 1 MB です。 テーブルに対してクエリを実行してエンティティを取得する際、すべてのプロパティが必要ない場合は、データの不要な転送を避けることができます (遅延とコストの削減につながります)。 サーバー側のプロジェクションを使えば、必要なプロパティのみを転送できます。 次の例は、クエリによって選択されたエンティティから **電子メール** プロパティ (**PartitionKey**、**RowKey**、**タイムスタンプ** と **ETag** と連動) を取得しています。  
 
 ```csharp
-string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
-List<string> columns = new List<string>() { "Email" };
-TableQuery<EmployeeEntity> employeeQuery =
-    new TableQuery<EmployeeEntity>().Where(filter).Select(columns);
-
-var entities = employeeTable.ExecuteQuery(employeeQuery);
-foreach (var e in entities)
+var subsetResults  = query{
+    for employee in employeeTable.Query<EmployeeEntity>("PartitionKey eq 'Sales'") do
+    select employee.Email
+}
+foreach (var e in subsetResults)
 {
     Console.WriteLine("RowKey: {0}, EmployeeEmail: {1}", e.RowKey, e.Email);
 }  
@@ -704,6 +756,7 @@ foreach (var e in entities)
 **RowKey** 値が取得するプロパティのリストに含まれていなくても、どのように利用できるか注意してください。  
 
 ## <a name="modifying-entities"></a>エンティティの変更
+
 ストレージ クライアント ライブラリを使えば、Table サービスに格納されたエンティティを、挿入、削除、更新の各操作によって変更できます。 また、EGT を使えば複数の挿入、更新、削除の操作をバッチ処理で行えるため、必要なラウンド トリップの回数が減り、ソリューションのパフォーマンスが高まります。  
 
 ストレージ クライアント ライブラリが EGT を実行したときにスローされるケースの例外として、通常、バッチ処理の失敗を招いたエンティティのインデックスが含まれます。 これは EGT を使うコードをデバッグする際に役立ちます。  
@@ -711,19 +764,22 @@ foreach (var e in entities)
 クライアント アプリケーションでのコンカレンシーと更新操作の処理方法に設計が及ぼす影響についても考慮が必要です。  
 
 ### <a name="managing-concurrency"></a>コンカレンシーを管理する
+
 既定では、テーブル サービスは個々 のエンティティのレベルで **挿入**、**マージ**、**削除** 操作に対しオプティミスティック コンカレンシー チェックを実行しますが、クライアントは、テーブル サービスがこれらのチェックをバイパスするよう強制することもできます。 Table service でのコンカレンシーの管理方法については、「[Microsoft Azure Storage でのコンカレンシー制御の管理](../blobs/concurrency-manage.md)」をご覧ください。  
 
 ### <a name="merge-or-replace"></a>マージまたは置換
+
 **TableOperation** クラスの **置換** のメソッドは、常に、Table service の完全なエンティティを置換します。 格納されたエンティティに存在するプロパティを要求に含めない場合、要求により、格納されたエンティティからそのプロパティが削除されます。 格納されたエンティティからプロパティを明示的に削除しない場合は、すべてのプロパティを要求に含める必要があります。  
 
 **TableOperation** クラスの **マージ** メソッドを使用して エンティティを更新するときの Table service に送信するデータの量を削減します。 **マージ** メソッドはプロパティ値を持った格納エンティティのプロパティをリクエストに含まれるエンティティと置換しますが、リクエストに含まれない格納エンティティ内の無傷のプロパティはそのまま残します。 ラージ エンティティがあり、要求で少数のプロパティのみを更新する必要があるときに便利な処理です。  
 
 > [!NOTE]
 > エンティティが存在しない場合、**置換** と **マージ** メソッドが失敗します。 存在しない場合は、代わりに、**InsertOrReplace** と **InsertOrMerge** メソッドを使用して新しいエンティティを作成します。  
-> 
-> 
+>
+>
 
 ## <a name="working-with-heterogeneous-entity-types"></a>異種のエンティティ種類の使用
+
 Table service とは、*スキーマのない* テーブル ストアであり、 1 つのテーブルが複数の種類のエンティティを格納できるため、非常に柔軟な設計が提供できることを意味します。 次の例は、従業員エンティティと部署エンティティの両方を格納したテーブルを示しています。  
 
 <table>
@@ -925,106 +981,44 @@ Table service とは、*スキーマのない* テーブル ストアであり�
 このセクションの残りの部分では、同じテーブル内の異なる種類のエンティティを操作しやすくするストレージ クライアント ライブラリの機能について説明します。  
 
 ### <a name="retrieving-heterogeneous-entity-types"></a>異なる種類のエンティティを取得する
-ストレージ クライアント ライブラリを使えば、3 とおりの方法で複数の種類のエンティティを操作できます。  
+
+テーブル クライアント ライブラリを使えば、3 とおりの方法で複数の種類のエンティティを操作できます。  
 
 特定の **RowKey** および **PartitionKey** 値とともに格納されているエンティティの型がわかっている場合は、**EmployeeEntity** 型のエンティティを取得する前述の 2 つの例 (「[ストレージ クライアント ライブラリを使ってポイント クエリを実行する](#executing-a-point-query-using-the-storage-client-library)」および「[LINQ を使って複数のエンティティを取得する](#retrieving-multiple-entities-using-linq)」) に示すように、エンティティを取得する際にエンティティの型を指定できます。  
 
-2 番目のオプションは、具体的な POCO エンティティ型ではなく、**DynamicTableEntity** 型 (プロパティ バッグ) の使用です(エンティティを .NET 型にシリアル化および非シリアル化する必要がないため、このオプションはパフォーマンスも向上させます) 。 次の c# コードは、テーブルから潜在的にさまざまな種類の複数のエンティティを取得しますが、すべてのエンティティを **DynamicTableEntity** インスタンスとして返します。 **EntityType** プロパティを使用して各エンティティの種類を決定します。  
+2 番目のオプションは、具体的な POCO エンティティ型ではなく、**TableEntity** 型 (プロパティ バッグ) の使用です (エンティティを .NET 型にシリアル化および非シリアル化する必要がないため、このオプションはパフォーマンスも向上させます) 。 次の c# コードは、テーブルから潜在的にさまざまな種類の複数のエンティティを取得しますが、すべてのエンティティを **TableEntity** インスタンスとして返します。 **EntityType** プロパティを使用して各エンティティの種類を決定します。  
 
 ```csharp
-string filter =
-    TableQuery.CombineFilters(
-        TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales"),
-        TableOperators.And,
-        TableQuery.CombineFilters(
-            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, "B"),
-            TableOperators.And,
-            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, "F")));
-        
-TableQuery<DynamicTableEntity> entityQuery =
-    new TableQuery<DynamicTableEntity>().Where(filter);
-    
-var employees = employeeTable.ExecuteQuery(entityQuery);
+Pageable<TableEntity> entities = employeeTable.Query<TableEntity>(x =>
+    x.PartitionKey ==  "Sales" && x.RowKey.CompareTo("B") >= 0 && x.RowKey.CompareTo("F") <= 0)
 
-IEnumerable<DynamicTableEntity> entities = employeeTable.ExecuteQuery(entityQuery);
-foreach (var e in entities)
+foreach (var entity in entities)
 {
-    EntityProperty entityTypeProperty;
-    if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
+    if (entity.GetString("EntityType") == "Employee")
     {
-        if (entityTypeProperty.StringValue == "Employee")
-        {
-            // use entityTypeProperty, RowKey, PartitionKey, Etag, and Timestamp
-        }
+        // use entityTypeProperty, RowKey, PartitionKey, Etag, and Timestamp
     }
 }  
 ```
 
-その他のプロパティを取得するには、**DynamicTableEntity** クラスの **Properties** プロパティに対して **TryGetValue** メソッドを使用する必要があります。  
-
-3 番目のオプションは、**DynamicTableEntity** 型と **EntityResolver** インスタンスの組み合わせの使用です。 この方法なら、同じクエリで複数の POCO 型を解決できます。 この例では、**EntityResolver** デリゲートは **EntityType** プロパティを使用して、クエリによって返されるエンティティの 2 つの種類を区別します。 **Resolve** メソッドは、**resolver** デリゲートを使用して **DynamicTableEntity** インスタンスを **TableEntity** インスタンスに解決します。  
-
-```csharp
-EntityResolver<TableEntity> resolver = (pk, rk, ts, props, etag) =>
-{
-    TableEntity resolvedEntity = null;
-    if (props["EntityType"].StringValue == "Department")
-    {
-        resolvedEntity = new DepartmentEntity();
-    }
-    else if (props["EntityType"].StringValue == "Employee")
-    {
-        resolvedEntity = new EmployeeEntity();
-    }
-    else 
-    {
-        throw new ArgumentException("Unrecognized entity", "props");
-    }
-
-    resolvedEntity.PartitionKey = pk;
-    resolvedEntity.RowKey = rk;
-    resolvedEntity.Timestamp = ts;
-    resolvedEntity.ETag = etag;
-    resolvedEntity.ReadEntity(props, null);
-    return resolvedEntity;
-};
-
-string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
-        
-TableQuery<DynamicTableEntity> entityQuery = new TableQuery<DynamicTableEntity>().Where(filter);
-
-var entities = employeeTable.ExecuteQuery(entityQuery, resolver);
-foreach (var e in entities)
-{
-    if (e is DepartmentEntity)
-    {
-        // ...
-    }
-    else if (e is EmployeeEntity)
-    {
-        // ...
-    }
-}  
-```
+その他のプロパティを取得するには、**TableEntity** クラスの **entity** で **GetString** メソッドを使用する必要があります。  
 
 ### <a name="modifying-heterogeneous-entity-types"></a>異なる種類のエンティティを変更する
-エンティティの種類がわからなくても削除はできますが、挿入はできません。 ただし、エンティティの種類がわからない場合は、POCO エンティティ クラスを使用せず、 **DynamicTableEntity** 型を使用して エンティティを更新します。 次のコード サンプルでは、1 つのエンティティを取得し、 **EmployeeCount** プロパティが存在するか、更新前に確認しています。  
+
+エンティティの種類がわからなくても削除はできますが、挿入はできません。 ただし、エンティティの種類がわからない場合は、POCO エンティティ クラスを使用せず、**TableEntity** 型を使用してエンティティを更新します。 次のコード サンプルでは、1 つのエンティティを取得し、 **EmployeeCount** プロパティが存在するか、更新前に確認しています。  
 
 ```csharp
-TableResult result = employeeTable.Execute(TableOperation.Retrieve(partitionKey, rowKey));
-DynamicTableEntity department = (DynamicTableEntity)result.Result;
-
-EntityProperty countProperty;
-if (!department.Properties.TryGetValue("EmployeeCount", out countProperty))
+var result = employeeTable.GetEntity<TableEntity>(partitionKey, rowKey);
+TableEntity department = result.Value;
+if (department.GetInt32("EmployeeCount") == null)
 {
     throw new InvalidOperationException("Invalid entity, EmployeeCount property not found.");
 }
-
-countProperty.Int32Value += 1;
-employeeTable.Execute(TableOperation.Merge(department));
+ employeeTable.UpdateEntity(department, ETag.All, TableUpdateMode.Merge);
 ```
 
 ## <a name="controlling-access-with-shared-access-signatures"></a>共有アクセス署名でのアクセスを制御する
+
 Shared Access Signature (SAS) トークンを使うと、ストレージ アカウント キーをコードに追加しなくても、クライアント アプリケーションからテーブル エンティティに対して変更を加えたり、クエリを実行したりすることができます。 通常、アプリケーションで SAS を使うと、次の 3 つのメリットが得られます。  
 
 * デバイスで Table service のエンティティにアクセスして変更できるようにするために、安全ではないプラットフォーム (モバイル デバイスなど) にストレージ アカウント キーを配布する必要がない。  
@@ -1038,27 +1032,25 @@ Table service での SAS トークンの使用について詳しくは、「 [Sh
 テーブル内のエンティティのサブセットへのアクセスを付与する SAS トークンを生成できます。 既定では、テーブル全体に対し SAS トークンを作成しますが、SAS トークンへのアクセス許可を **PartitionKey** 値の範囲か、**PartitionKey** と **RowKey** 値の範囲のいずれかに指定することも可能です。 システムの個々のユーザーに SAS トークンが生成されるようにすれば、各ユーザーの SAS トークンによってアクセスが許可されるのは、Table サービス内にあるユーザー独自のエンティティだけになります。  
 
 ## <a name="asynchronous-and-parallel-operations"></a>非同期と並列操作
+
 要求を複数のパーティションに分散させている場合は、非同期または並列クエリを使ってスループットとクライアントの応答性を向上させることができます。
 たとえば、テーブルに並列的にアクセスする複数の worker ロール インスタンスを使用する場合などです。 個別の worker ロールで特定のパーティション セットのみを処理することも可能であるほか、テーブル内のすべてのパーティションにアクセスできる worker ロール インスタンスを複数実装することも可能です。  
 
 クライアント インスタンスでは、ストレージ操作を非同期的に実行することでスループットを高めることができます。 ストレージ クライアント ライブラリを使えば、非同期クエリと変更を簡単に記述できます。 たとえば、次の C# コードに示すように、パーティション内のすべてのエントリを取得する同期メソッドをベースとして利用できます。  
 
 ```csharp
-private static void ManyEntitiesQuery(CloudTable employeeTable, string department)
+private static void ManyEntitiesQuery(TableClient employeeTable, string department)
 {
-    string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, department);
-    TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
-
     TableContinuationToken continuationToken = null;
     do
     {
-        var employees = employeeTable.ExecuteQuerySegmented(employeeQuery, continuationToken);
-        foreach (var emp in employees)
+        var employees = employeeTable.Query<EmployeeEntity>($"PartitionKey eq {department}");
+        foreach (var emp in employees.AsPages())
         {
             // ...
+            continuationToken = emp.ContinuationToken;
         }
         
-        continuationToken = employees.ContinuationToken;
     } while (continuationToken != null);
 }  
 ```
@@ -1066,21 +1058,18 @@ private static void ManyEntitiesQuery(CloudTable employeeTable, string departmen
 このコードを次のように少し変更して、クエリが非同期的に実行されるようにします。  
 
 ```csharp
-private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, string department)
+private static async Task ManyEntitiesQueryAsync(TableClient employeeTable, string department)
 {
-    string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, department);
-    TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
-    
     TableContinuationToken continuationToken = null;
     do
     {
-        var employees = await employeeTable.ExecuteQuerySegmentedAsync(employeeQuery, continuationToken);
-        foreach (var emp in employees)
+        var employees = await employeeTable.QueryAsync<EmployeeEntity>($"PartitionKey eq {department}");
+        foreach (var emp in employees.AsPages())
         {
             // ...
+            continuationToken = emp.ContinuationToken;
         }
-    
-        continuationToken = employees.ContinuationToken;
+
     } while (continuationToken != null);
 }  
 ```
@@ -1088,21 +1077,19 @@ private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, strin
 この非同期の例は、同期のバージョンに次の変更が加えられたものです。  
 
 * メソッドのシグネチャは **async** 修飾子を含み、**Task** インスタンスを返します。  
-* **ExecuteSegmented** メソッドを呼び出して結果を取得する代わりに、**ExecuteSegmentedAsync** メソッドを呼び出し、**await** 修飾子を使用して非同期的に結果を取得します。  
+* **Query** メソッドを呼び出して結果を取得する代わりに、**QueryAsync** メソッドを呼び出し、**await** 修飾子を使用して非同期的に結果を取得します。  
 
-クライアント アプリケーションが複数回このメソッドを呼び出し ( **部署** パラメーターの異なる値のため)、各クエリは個別のスレッドで実行されます。  
-
-**IEnumerable** インターフェイスは非同期列挙型をサポートしていないため、**TableQuery** クラス内の **Execute** メソッドには非同期バージョンはありません。  
+クライアント アプリケーションが複数回このメソッドを呼び出し ( **部署** パラメーターの異なる値のため)、各クエリは個別のスレッドで実行されます。
 
 エンティティを非同期的に挿入、更新、削除できます。 次の C# の例は、従業員エンティティを挿入または置換する単純な同期メソッドです。  
 
 ```csharp
 private static void SimpleEmployeeUpsert(
-    CloudTable employeeTable,
+    TableClient employeeTable,
     EmployeeEntity employee)
 {
-    TableResult result = employeeTable.Execute(TableOperation.InsertOrReplace(employee));
-    Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
+    var result = employeeTable.UpdateEntity(employee, Azure.ETag.All, TableUpdateMode.Replace);
+    Console.WriteLine("HTTP Status: {0}", result.Status);
 }  
 ```
 
@@ -1110,11 +1097,11 @@ private static void SimpleEmployeeUpsert(
 
 ```csharp
 private static async Task SimpleEmployeeUpsertAsync(
-    CloudTable employeeTable,
+    TableClient employeeTable,
     EmployeeEntity employee)
 {
-    TableResult result = await employeeTable.ExecuteAsync(TableOperation.InsertOrReplace(employee));
-    Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
+    var result = await employeeTable.UpdateEntityAsync(employee, Azure.ETag.All, TableUpdateMode.Replace);
+    Console.WriteLine("HTTP Status: {0}", result.Result.Status);
 }  
 ```
 

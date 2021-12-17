@@ -4,229 +4,88 @@ description: Azure Monitor によって監視されるすべてのサービス�
 ms.topic: conceptual
 author: rboucher
 ms.author: robb
-ms.date: 08/15/2020
-ms.openlocfilehash: 513f262f5d09cf56c4506a4f20c9aa41507c2abd
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 11/02/2021
+ms.openlocfilehash: ac3d68dcc915e49d4f39f9941081ac4fe7fb60bf
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515279"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705381"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
-この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
 
-## <a name="insights-and-core-solutions"></a>Insights とコア ソリューション
-コアの Insights とソリューションは Azure Monitor の一部と見なされ、Azure のサポートとサービス レベル アグリーメントに従います。 これらは、Azure Monitor が使用可能なすべての Azure リージョンでサポートされています。
+このアーティクルでは、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。
 
-### <a name="insights"></a>洞察
+## <a name="insights-and-curated-visualizations"></a>分析情報とキュレーションされた視覚化
 
-Insights は、特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供します。 ログとメトリックの両方を収集して分析します。
+一部のサービスには,キュレーションされた監視エクスペリエンスがあります つまり、Microsoft では、これらのサービスを監視するための始点として機能するようにカスタマイズされた機能を提供しています。 これらのエクスペリエンスは、**分析情報** と呼ばれるより複雑なものを持つ **キュレーションされた視覚化** と総称されています。  
 
-| 分析情報 | 説明 |
-|:---|:---|
-| [Application Insights](app/app-insights-overview.md) | 任意のプラットフォームでライブ Web アプリケーションを監視するための拡張可能なアプリケーション パフォーマンス管理 (APM) サービス。 |
-| [Container insights](containers/container-insights-overview.md) | Azure Kubernetes Service (AKS) でホストされている Azure Container Instances またはマネージド Kubernetes クラスターにデプロイされたコンテナー ワークロードのパフォーマンスを監視します。 |
-| [Azure Monitor for Cosmos DB](insights/cosmosdb-insights-overview.md) | すべての Azure Cosmos DB リソースの全体的なパフォーマンス、エラー、容量、操作上の正常性のビューを、統一された対話型エクスペリエンスで提供します。 |
-| [Azure Monitor for Networks (プレビュー)](insights/network-insights-overview.md) | すべてのネットワーク リソースの正常性とメトリックの包括的ビューを提供します。 高度な検索機能を使用すると、Web サイト名を検索するだけで、Web サイトをホストしているリソースを特定するなどのシナリオが可能になり、リソースの依存関係を特定できます。 |
-[Azure Monitor for Resource Groups (プレビュー)](insights/resource-group-insights.md) |  個別のリソースで発生した問題をトリアージおよび診断する一方で、リソース グループ全体の正常性とパフォーマンスに関するコンテキストを提供します。 |
-| [Azure Monitor for Storage](insights/storage-insights-overview.md) | Azure Storage サービスのパフォーマンス、容量、可用性の統一されたビューを提供することにより、Azure Storage アカウントの包括的な監視を提供します。 |
-| [VM insights](vm/vminsights-overview.md) | Azure 仮想マシン (VM) と仮想マシン スケール セットを大規模に監視します。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 |
-| [Azure Monitor for Key Vault (プレビュー)](./insights/key-vault-insights-overview.md) | キー コンテナーの要求、パフォーマンス、エラー、および待ち時間の統合ビューを提供することで、キー コンテナーの包括的な監視を実現します。 |
-| [Azure Monitor for Azure Cache for Redis (プレビュー)](insights/redis-cache-insights-overview.md) |  全体のパフォーマンス、エラー、容量、および操作の正常性を、統一された対話形式で表示できます。 |
+このエクスペリエンスでは、ログとメトリックのサブセットが収集および分析され、サービスによっては、すぐに使用できるアラートが提供されることがあります。 このテレメトリは、ビジュアルレイアウトで表示されます。 視覚化のサイズと規模は異なります。 一部は Azure Monitor の一部と見なされ、Azure のサポートとサービスレベル契約に従います。 これらは、Azure Monitor が使用可能なすべての Azure リージョンでサポートされています。 他の キュレーションされた視覚化は、機能が少なく、スケールが異なる可能性があり、契約が異なる場合があります。  Azure Monitor Workbooksにベースものもあれば、豊富なカスタムエクスペリエンスを備えているものもあります。 
+
+次の表に、使用可能な キュレーションされた視覚化とその詳細情報を示します。  
+
+>[!NOTE]
+> **監視ソリューション** と呼ばれる古い視覚化の他の型は、アクティブな開発ではなくなりました。  交換テクノロジは、前述の Azure Monitor 分析情報です。 ソリューションの新しいインスタンスを配置するのではなく、分析情報を使用することをお勧めします。 詳細については、「 [Azure Monitor での監視ソリューション](./insights/solutions.md)」を参照してください。
 
 
-### <a name="core-solutions"></a>コア ソリューション
-
-ソリューションは、特定のアプリケーションまたはサービス用にカスタマイズされたログ クエリとビューに基づいています。 それらはログの収集と分析のみを行い、時間の経過とともに非推奨となり、Insights が優先されます。
-
-| 解決策 | 説明 |
-|:---|:---|
-| [Agent Health](insights/solution-agenthealth.md) | Log Analytics エージェントの正常性と構成を分析します。 |
-| [アラートの管理](insights/alert-management-solution.md) | System Center Operations Manager、Nagios、または Zabbix から収集されたアラートを分析します。 |
-| [サービス マップ](vm/service-map.md) | Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 |
-
-
-
-## <a name="azure-services"></a>Azure サービス
-次の表に、Azure サービスと、Azure Monitor に収集されるデータを一覧表示します。 
-
-- メトリック - このサービスは、メトリックを自動的に Azure Monitor Metrics に収集します。 
-- ログ - このサービスは、プラットフォームのログとメトリックを Azure Monitor ログに収集できる診断設定をサポートしています。
-- 分析情報 - サービスで使用可能な分析情報があり、サービスに対するカスタマイズされた監視エクスペリエンスを提供します。
-
-| サービス | メトリック | ログ | 分析情報 | Notes |
-|:---|:---|:---|:---|:---|
-|Active Directory | いいえ | はい | [はい](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
-|Active Directory B2C | いいえ | いいえ | いいえ |  |
-|Active Directory Domain Services | いいえ | はい | いいえ |  |
-|アクティビティ ログ | いいえ | はい | いいえ | |
-|高度な脅威保護 | いいえ | いいえ | いいえ |  |
-|Advisor | いいえ | いいえ | いいえ |  |
-|AI Builder | いいえ | いいえ | いいえ |  |
-|Analysis Services | はい | はい | いいえ |  |
-|API for FHIR | いいえ | いいえ | いいえ |  |
-|API Management | はい | はい | いいえ |  |
-|App Service | はい | はい | いいえ |  |
-|AppConfig | いいえ | いいえ | いいえ |  |
-|Application Gateway | はい | はい | いいえ |  |
-|構成証明サービス | いいえ | いいえ | いいえ |  |
-|オートメーション | はい | はい | いいえ |  |
-|Azure Service Manager (RDFE) | いいえ | いいえ | いいえ |  |
-|バックアップ | いいえ | はい | いいえ |  |
-|Bastion | いいえ | いいえ | いいえ |  |
-|Batch | はい | はい | いいえ |  |
-|Batch AI | いいえ | いいえ | いいえ |  |
-|Blockchain Service | いいえ | はい | いいえ |  |
-|ブループリント | いいえ | いいえ | いいえ |  |
-|ボット サービス | いいえ | いいえ | いいえ |  |
-|Cloud Services | はい | はい | いいえ | ゲスト オペレーティング システムとワークフローを監視するためにエージェントが必要。  |
-|Cloud Shell | いいえ | いいえ | いいえ |  |
-|Cognitive Services | はい | はい | いいえ |  |
-|Container Instances | はい | いいえ | いいえ |  |
-|Container Registry | はい | はい | いいえ |  |
-|Content Delivery Network (CDN) | いいえ | はい | いいえ |  |
-|Cosmos DB | はい | はい | [はい](insights/cosmosdb-insights-overview.md) |  |
-|Cost Management | いいえ | いいえ | いいえ |  |
-|Data Box | いいえ | いいえ | いいえ |  |
-|Data Catalog Gen2 | いいえ | いいえ | いいえ |  |
-|Data Explorer | はい | はい | いいえ |  |
-|Data Factory | はい | はい | いいえ |  |
-|Data Factory v2 | いいえ | はい | いいえ |  |
-|データ共有 | いいえ | いいえ | いいえ |  |
-|Database for MariaDB | はい | はい | いいえ |  |
-|Database for MySQL | はい | はい | いいえ |  |
-|Database for PostgreSQL | はい | はい | いいえ |  |
-|Database Migration Service | いいえ | いいえ | いいえ |  |
-|Databricks | いいえ | はい | いいえ |  |
-|DDoS Protection | はい | はい | いいえ |  |
-|DevOps | いいえ | いいえ | いいえ |  |
-|DNS | はい | いいえ | いいえ |  |
-|ドメイン名 | いいえ | いいえ | いいえ |  |
-|DPS | いいえ | いいえ | いいえ |  |
-|Dynamics 365 Customer Engagement | いいえ | いいえ | いいえ |  |
-|Dynamics 365 Finance and Operations | いいえ | いいえ | いいえ |  |
-|Event Grid | はい | いいえ | いいえ |  |
-|Event Hubs | はい | はい | いいえ |  |
-|ExpressRoute | はい | はい | いいえ |  |
-|ファイアウォール | はい | はい | いいえ |  |
-|フロントドア | はい | はい | いいえ |  |
-|関数 | はい | はい | いいえ |  |
-|HDInsight | いいえ | はい | いいえ |  |
-|HPC Cache | いいえ | いいえ | いいえ |  |
-|Information Protection | いいえ | はい | いいえ |  |
-|Intune | いいえ | はい | いいえ |  |
-|IoT Central | いいえ | いいえ | いいえ |  |
-|IoT Hub | はい | はい | いいえ |  |
-|Key Vault | はい | はい | [はい](./insights/key-vault-insights-overview.md) |  |
-|Kubernetes サービス (AKS) | いいえ | いいえ | [はい](containers/container-insights-overview.md)  |  |
-|Load Balancer | はい | いいえ | いいえ |  |
-|Logic Apps | はい | はい | いいえ |  |
-|Machine Learning Service | いいえ | いいえ | いいえ |  |
-|Managed Applications  | いいえ | いいえ | いいえ |  |
-|マップ  | いいえ | いいえ | いいえ |  |
-|Media Services | はい | はい | いいえ |  |
-|Microsoft マネージド デスクトップ | いいえ | いいえ | いいえ |  |
-|Microsoft PowerApps | いいえ | いいえ | いいえ |  |
-|Microsoft Social Engagement | いいえ | いいえ | いいえ |  |
-|Microsoft Stream | はい | はい | いいえ |  |
-|移行 | いいえ | いいえ | いいえ |  |
-|Multi-Factor Authentication | いいえ | はい | いいえ |  |
-|Network Watcher | はい | はい | いいえ |  |
-|Notification Hubs | はい | いいえ | いいえ |  |
-|オープン データセット | いいえ | いいえ | いいえ |  |
-|ポリシー | いいえ | いいえ | いいえ |  |
-|Power Automate | いいえ | いいえ | いいえ |  |
-|Power BI Embedded | はい | はい | いいえ |  |
-|Private Link | いいえ | いいえ | いいえ |  |
-|Project Spool Communication Platform | いいえ | いいえ | いいえ |  |
-|Red Hat OpenShift | いいえ | いいえ | いいえ |  |
-|Redis Cache | はい | はい | [はい](insights/redis-cache-insights-overview.md) | |
-|リソース グラフ | いいえ | いいえ | いいえ |  |
-|リソース マネージャー | いいえ | いいえ | いいえ |  |
-|Retail Search - Bing | いいえ | いいえ | いいえ |  |
-|検索 | はい | はい | いいえ |  |
-|Service Bus | はい | はい | いいえ |  |
-|Service Fabric | いいえ | はい | いいえ | ゲスト オペレーティング システムとワークフローを監視するためにエージェントが必要。  |
-|サインアップ ポータル | いいえ | いいえ | いいえ |  |
-|Site Recovery | いいえ | はい | いいえ |  |
-|Spring Cloud サービス | いいえ | いいえ | いいえ |  |
-|Azure Synapse Analytics | はい | はい | いいえ |  |
-|SQL Database | はい | はい | いいえ |  |
-|SQL Server Stretch Database | はい | はい | いいえ |  |
-|スタック | いいえ | いいえ | いいえ |  |
-|ストレージ | はい | いいえ | [はい](insights/storage-insights-overview.md) |  |
-|ストレージ キャッシュ | いいえ | いいえ | いいえ |  |
-|ストレージ同期サービス | いいえ | いいえ | いいえ |  |
-|Stream Analytics | はい | はい | いいえ |  |
-|Time Series Insights | はい | はい | いいえ |  |
-|TINA | いいえ | いいえ | いいえ |  |
-|Traffic Manager | はい | はい | いいえ |  |
-|ユニバーサル印刷 | いいえ | いいえ | いいえ |  |
-|Virtual Machine Scale Sets | いいえ | はい | [はい](vm/vminsights-overview.md) | ゲスト オペレーティング システムとワークフローを監視するためにエージェントが必要。 |
-|Virtual Machines | はい | はい | [はい](vm/vminsights-overview.md) | ゲスト オペレーティング システムとワークフローを監視するためにエージェントが必要。 |
-|Virtual Network | はい | はい | [はい](insights/network-insights-overview.md) |  |
-|Virtual Network - NSG フロー ログ | いいえ | はい | いいえ |  |
-|VPN Gateway | はい | はい | いいえ |  |
-|Windows Virtual Desktop | いいえ | はい | いいえ |  |
-
-## <a name="virtual-machine-agents"></a>仮想マシンのエージェント
-次の表に、仮想マシンのゲスト オペレーティング システムからデータを収集し、Monitor にデータを送信できるエージェントを示します。 各エージェントで異なるデータを収集し、Azure Monitor のメトリックまたはログに送信できます。 
-
-各エージェントが収集できるデータの詳細については、「[Azure Monitor エージェントの概要](agents/agents-overview.md)」を参照してください。
-
-| エージェント |  メトリック | ログ |
-|:---|:---|:---|:---|
-| [Azure Monitor エージェント (プレビュー)](agents/azure-monitor-agent-overview.md) | はい | はい |
-| [Log Analytics エージェント](agents/log-analytics-agent.md) | いいえ | はい|
-| [診断拡張機能](agents/diagnostics-extension-overview.md) | はい | いいえ |
-| [Telegraf エージェント](essentials/collect-custom-metrics-linux-telegraf.md) | はい | いいえ |
-| [依存関係エージェント](vm/vminsights-enable-overview.md) | いいえ | はい |
-
+|ドキュメント リンクを含む名前| State | [Azure portal リンク](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/more)| 説明 | 
+|:--|:--|:--|:--|
+| [Azure Active Directory 用の Azure MonitorWorkbooks](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) | 完全一般公開 (GA) | [あり](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Workbooks) | Azure Active Directory には、条件付きアクセスポリシーの影響を理解し、サインインエラーのトラブルシューティングを行い、レガシ認証を識別するためのブックが用意されています。 | 
+| [Azure Backup 分析情報](../backup/backup-azure-monitoring-use-azuremonitor.md) | GA | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_DataProtection/BackupCenterMenuBlade/backupReportsConfigure/menuId/backupReportsConfigure) | には、Recovery Services コンテナーの監視機能とアラート機能が組み込まれています。 | 
+| [Azure Monitor for Azure Cache for Redis (プレビュー)](./insights/redis-cache-insights-overview.md) | GA | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/redisCacheInsights) | 全体のパフォーマンス、エラー、容量、および操作の正常性を、統一された対話形式で表示できます。 | 
+| [Azure Cosmos DB 分析情報](./insights/cosmosdb-insights-overview.md) | GA | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/cosmosDBInsights) | すべての Azure Cosmos DB リソースの全体的なパフォーマンス、エラー、容量、操作上の正常性のビューを、統一された対話型エクスペリエンスで提供します。 | 
+| [Azure Data Explorer Insights](./insights/data-explorer.md) | GA | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/adxClusterInsights) | Azure Data Explorer Insights は、クラスターのパフォーマンス、操作、使用状況、障害の統合されたビューを提供することによって、クラスターの包括的な監視を可能にします。 | 
+| [Azure HDInsight (プレビュー)](../hdinsight/log-analytics-migration.md#insights) | プレビュー | いいえ | Azure Monitor workbook によって、HDInsight クラスターから重要なパフォーマンス メトリックが収集され、最も一般的なシナリオ用に視覚化とダッシュボードが提供されます。 リソース使用率とアプリケーションの状態を含む、単一の HDInsight クラスターの完全なビューを提供します|
+ | [Azure IoT Edge 分析情報](../iot-edge/how-to-explore-curated-visualizations.md) | GA | No | Azure Monitor Workbooks のパブリックテンプレートを使用して、Azure portal の IoT Edge デバイスから収集されたメトリックを視覚化および探索します。 キュレーション ブックでは、IoT Edge ランタイムの組み込みのメトリックが使用されます。 これらのビューでは、ワークロード モジュールのメトリック インストルメンテーションは必要ではありません。 | 
+ | [Azure Key Vault 分析情報 (プレビュー)](./insights/key-vault-insights-overview.md) | GA | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/keyvaultsInsights) | キー コンテナーの要求、パフォーマンス、エラー、および待ち時間の統合ビューを提供することで、キー コンテナーの包括的な監視を実現します。 | 
+ | [Azure Monitor - Application Insights](./app/app-insights-overview.md) | GA | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/applicationsInsights) | 拡張可能なアプリケーションパフォーマンス管理 (APM) サービス。クラウドとオンプレミスのどちらでホストされているかにかかわらず、web アプリケーションの可用性、パフォーマンス、使用状況を監視します。 Azure Monitor の強力なデータ分析プラットフォームを利用すれば、アプリケーションの運用に関する詳しい分析情報が得られます。 ユーザーからのレポートを待たずにエラーを診断することが可能です。 Application Insights にはさまざまな開発ツールへの接続ポイントが含まれており、DevOps プロセスをサポートする Visual Studio とも統合されています。 | 
+ | [Azure Monitorログ分析 ワークスペース](./logs/log-analytics-workspace-insights-overview.md) | プレビュー | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/lawsInsights) | Log Analytics Workspace Insights (プレビュー) では、ワークスペースの使用量、パフォーマンス、正常性、エージェント、クエリ、変更ログの包括的な監視を行います。 この記事は、Log Analytics Workspace Insights (プレビュー) をオンボードする方法を理解するのに役立ちます。 | 
+ | [Azure Service Bus](/azure/service-bus/) | プレビュー | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/serviceBusInsights) |  | 
+ | [Azure SQL 分析情報](./insights/sql-insights-overview.md) | GA | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/sqlWorkloadInsights) | Azure SQL ファミリのあらゆる製品を監視するための包括的なインターフェイスです。 SQL Insights では、動的管理ビューを使用して、正常性の監視、問題の診断、パフォーマンスの調整に必要なデータを公開します。 注: SQL モニターを設定するだけの場合は、SQL Analytics ソリューションではなく、これを使用します。 |
+ | [Azure Storage 分析情報](/azure/azure-monitor/insights/storage-insights-overview) | GA | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/storageInsights) | Azure Storage サービスのパフォーマンス、容量、可用性の統一されたビューを提供することにより、Azure Storage アカウントの包括的な監視を提供します。 | 
+ | [Azure VM 分析情報](/azure/azure-monitor/insights/vminsights-overview) | GA | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/virtualMachines) | Azure 仮想マシン (VM) と仮想マシン スケール セットを大規模に監視します。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。  | 
+ | [Azure ネットワーク分析情報ト](./insights/network-insights-overview.md) | GA | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/networkInsights) | すべてのネットワーク リソースの正常性とメトリックの包括的ビューを提供します。 高度な検索機能を使用すると、Web サイト名を検索するだけで、Web サイトをホストしているリソースを特定するなどのシナリオが可能になり、リソースの依存関係を特定できます。 | 
+ | [Azure コンテナー分析情報](/azure/azure-monitor/insights/container-insights-overview) | GA | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/containerInsights) | Azure Kubernetes Service (AKS) でホストされている管理対象の Kubernetes クラスターにデプロイされているコンテナーワークロードのパフォーマンスをモニターします。 Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメトリックを収集することにより、パフォーマンスを可視化します。 コンテナーのログも収集されます。  Kubernetes クラスターから監視を有効化すると、コンテナー化されたバージョンの Linux 向けの Log Analytics エージェントを使用してこれらのメトリックとログが自動的に収集されます。 | 
+ | [Azure Monitor for Resource Groups](./insights/resource-group-insights.md) | GA | No | 個別のリソースで発生した問題をトリアージおよび診断する一方で、リソース グループ全体の正常性とパフォーマンスに関するコンテキストを提供します。 | 
+ | [Azure Monitor SAP](../virtual-machines/workloads/sap/monitor-sap-on-azure.md) | GA | No | Azure で SAP ランドスケープを実行しているユーザー向け Azure ネイティブの監視製品。 これは、SAP on Azure Virtual Machines と SAP on Azure Large Instances の両方で動作します。 1 つの中央の場所にある Azure インフラストラクチャとデータベースから利用統計情報を収集し、データを視覚的に関連付け、トラブルシューティングを高速化します。 コンポーネントに対応するプロバイダーを追加することにより、Azure 仮想マシン (VM)、高可用性クラスター、SAP HANA データベース、SAP NetWeaver など、SAP ランドスケープのさまざまなコンポーネントを監視できます。 |
+ | [Azure Stack HCI の分析情報](/azure-stack/hci/manage/azure-stack-hci-insights) | プレビュー | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/azureStackHCIInsights) | Azure Monitor ブック ベース。 Azure に接続され、モニターに登録されているクラスター Azure Stack HCI バージョン 21H2 クラスターに関する正常性、パフォーマンス、使用状況に関する分析情報を提供します。 Log Analytics ワークスペースにデータが保存されます。これにより、強力な集計とフィルター処理を実現し、時間の経過に伴うデータの傾向を分析できるようになります。  | 
+ | [Windows Virtual Desktop の分析情報](../virtual-desktop/azure-monitor.md) | GA | [あり](https://ms.portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/insights/menuId/insights) | Windows Virtual Desktop 向けの Azure Monitor (プレビュー) は、Azure Monitor のブックに基づいて構築されたダッシュボードで、IT プロフェッショナルが Windows Virtual Desktop 環境を理解するのに役立ちます。 このトピックでは、Windows Virtual Desktop 環境を監視するために Windows Virtual Desktop 向けの Azure Monitor を設定する方法について説明します。 | 
 
 ## <a name="product-integrations"></a>製品の統合
-次の表のサービスとソリューションは、Azure Monitor によって収集された他のログ データを使用して分析できるように、データを Log Analytics ワークスペースに格納します。
+
+次の表の他のサービスと古い監視ソリューションでは、そのデータが Log Analytics ワークスペースに保存され、Azure Monitor によって収集された他のログ データと一緒に分析できます。
 
 | 製品/サービス | 説明 |
 |:---|:---|
 | [Azure Automation](../automation/index.yml) | Windows および Linux のコンピューターでオペレーティング システムの更新を管理し、変更を追跡します。 [Change Tracking](../automation/change-tracking/overview.md) と [Update Management](../automation/update-management/overview.md) に関する記事を参照してください。 |
-| [Azure Information Protection ](/azure/information-protection/) | ドキュメントと電子メールを分類し、必要に応じて保護します。 「[Azure Information Protection の中央レポート機能](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)」を参照してください。 |
+| [Azure Information Protection](/azure/information-protection/) | ドキュメントと電子メールを分類し、必要に応じて保護します。 「[Azure Information Protection の中央レポート機能](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)」を参照してください。 |
 | [Azure Security Center](../security-center/index.yml) | セキュリティ イベントを収集して分析し、脅威分析を実行します。 「[Azure Security Center でのデータ収集](../security-center/security-center-enable-data-collection.md)」を参照してください。 |
 | [Azure Sentinel](../sentinel/index.yml) | Office 365 やアマゾン ウェブ サービスの Cloud Trail などのさまざまなソースに接続します。 「[データ ソースの接続](../sentinel/connect-data-sources.md)」のページを参照してください。 |
-| [Microsoft Intune](/intune/) | Azure Monitor にログを送信するための診断設定を作成します。 「[Intune でストレージ、イベント ハブ、または Log Analytics にログ データを送信する (プレビュー)](/intune/fundamentals/review-logs-using-azure-monitor)」を参照してください。  |
-| ネットワーク  | [Network Performance Monitor](insights/network-performance-monitor.md) - サービスとアプリケーションのエンドポイントへのネットワーク接続とパフォーマンスを監視します。<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics) - Azure Application Gateway からログとメトリックを分析します。<br>[Traffic Analytics](../network-watcher/traffic-analytics.md) - Network Watcher のネットワーク セキュリティ グループ (NSG) フロー ログを分析して、Azure クラウドでのトラフィック フローに関する分析情報を提供します。 |
-| [Office 365](insights/solution-office-365.md) | Office 365 環境を監視します。 Azure Sentinel から使用できる改善されたオンボード機能を備えた更新バージョンです。 |
-| [SQL Analytics](insights/azure-sql.md) | Azure SQL データベースと SQL Managed Instance のパフォーマンスを、複数のサブスクリプションにわたって大規模に監視します。 |
-| [Surface Hub](insights/surface-hubs.md) | Surface Hub デバイスの正常性と使用状況を追跡します。 |
+| [Microsoft Intune](/intune/) | Azure Monitor にログを送信するための診断設定を作成します。 「[Intune でストレージ、イベント ハブ、またはログ分析にログ データを送信する (プレビュー)](/intune/fundamentals/review-logs-using-azure-monitor)」を参照してください。  |
+| ネットワーク [Traffic Analytics](../network-watcher/traffic-analytics.md) | ネットワーク Network Watcher (NSG) ネットワーク セキュリティ グループを分析して、Azure クラウド内のトラフィック フローに関する分析情報を提供します。 |
 | [System Center Operations Manager](/system-center/scom) | 管理グループを Azure Monitor に接続して Operations Manager エージェントからデータを収集します。 「[Operations Manager を Azure Monitor に接続する](agents/om-agents.md)」を参照してください。<br> [Operations Manager Assessment](insights/scom-assessment.md) ソリューションを使用して、System Center Operations Manager 管理グループのリスクと正常性を評価します。 |
 | [Microsoft Teams ミーティング](/microsoftteams/room-systems/azure-monitor-deploy) | Microsoft Teams ミーティング デバイスの統合されたエンドツーエンド管理。 |
 | [Visual Studio App Center](/appcenter/) | アプリケーションをビルド、テスト、および配布し、その状態と使用状況を監視します。 「[App Center と Application Insights によるモバイル アプリの分析の開始](app/mobile-center-quickstart.md)」を参照してください。 |
 | Windows | [Windows Update Compliance](/windows/deployment/update/update-compliance-get-started) - Windows デスクトップのアップグレードを評価します。<br>[Desktop Analytics](/configmgr/desktop-analytics/overview) - Configuration Manager と統合して、Windows クライアントの更新準備について、より多くの情報に基づいて意思決定を行うための分析情報とインテリジェンスを提供します。 |
+| **次のソリューションは、次のソリューションの一部Azure Monitor。ソリューションは、アクティブな開発中ではなくなったので注意してください。代 [わりに分析情報を](#insights-and-curated-visualizations) 使用してください。**  | | 
+| ネットワーク - [Network Performance Monitor ソリューション](insights/network-performance-monitor.md) | 
+| ネットワーク - [Azure Application Gateway ソリューション](insights/azure-networking-analytics.md#azure-application-gateway-analytics) | .
+| [Office 365 ソリューション](insights/solution-office-365.md) | Office 365 環境を監視します。 Microsoft Sentinel から利用できるオンボード機能が改善された更新バージョン。 |
+| [SQL分析ソリューション](insights/azure-sql.md) | 代わりにSQL 分析情報を使用してください |
+| [Surface Hub ソリューション](insights/surface-hubs.md) |  |
 
 
+## <a name="third-party-integration"></a>サード パーティ統合
 
-## <a name="other-solutions"></a>その他のソリューション
-さまざまなアプリケーションやサービスを監視するためにその他のソリューションを使用することもできますが、アクティブな開発は停止しており、すべてのリージョンで使用できるとは限りません。 それらは、Azure Log Analytics データ インジェストのサービス レベル アグリーメントによってカバーされます。
-
-| 解決策 | 説明 |
-|:---|:---|
-| [Active Directory 正常性チェック](insights/ad-assessment.md) | Active Directory 環境のリスクと正常性を評価します。 |
-| [Active Directory Replication Status](insights/ad-replication-status.md) | レプリケーションの失敗について Active Directory 環境を定期的に監視します。 |
-| [Activity Log Analytics](essentials/activity-log.md#activity-log-analytics-monitoring-solution) | アクティビティ ログ エントリを表示します。 |
-| [DNS Analytics (プレビュー)](insights/dns-analytics.md) | Windows DNS の分析ログと監査ログおよび他の関連データを DNS サーバーから収集して分析し、関連付けます。 |
-| [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 複数のデプロイにわたって Cloud Foundry システムの正常性とパフォーマンスのメトリックを収集、表示、および分析します。 |
-| [Containers](containers/containers.md) | Docker と Windows のコンテナー ホストを表示および管理します。 |
-| [オンデマンド評価](/services-hub/health/getting_started_with_on_demand_assessments) | オンプレミス、ハイブリッド、クラウドの Microsoft テクノロジ環境の可用性、セキュリティ、およびパフォーマンスを評価し、最適化します。 |
-| [SQL 正常性チェック](insights/sql-assessment.md) | SQL Server 環境のリスクと正常性を評価します。  |
-| [ワイヤ データ](insights/wire-data.md) | Log Analytics エージェントを使用して、Windows に接続されたコンピューターおよび Linux に接続されたコンピューターから収集したネットワークとパフォーマンスのデータを統合したものです。 |
-
-## <a name="third-party-integration"></a>サード パーティの統合
-
-| 解決策 | 説明 |
+| 統合 | 説明 |
 |:---|:---|
 | [ITSM](alerts/itsmc-overview.md) | IT Service Management Connector (ITSMC) を使用すると、サポートされている IT Service Management (ITSM) 製品/サービスと Azure を接続できます。  |
+| [Azure Monitor パートナー](./partners.md) | 何らかの形式で Azure Monitor と統合されるパートナーの一覧 | 
+| [Azure Monitor パートナーとの統合](../partner-solutions/overview.md)| Azure Monitor と Microsoft 以外のその他の監視プラットフォームとの間の特別な統合 (それに基づいて既に構築している場合)。  例として、Datadog や Elastic などがあります|
 
 
 ## <a name="resources-outside-of-azure"></a>Azure 外部のリソース
+
 Azure Monitor は、次の表に示す方法を使用して、Azure 外部のリソースからデータを収集できます。
 
 | リソース | Method |
@@ -236,11 +95,191 @@ Azure Monitor は、次の表に示す方法を使用して、Azure 外部のリ
 | REST API クライアント | 別の API を使用して、任意の REST API クライアントから Azure Monitor ログとメトリックにデータを書き込むことができます。 ログについては、「[HTTP データ コレクター API を使用して Azure Monitor にログ データを送信する](logs/data-collector-api.md)」を参照し、メトリックについては、「[REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する](essentials/metrics-store-custom-rest-api.md)」を参照してください。 |
 
 
+## <a name="azure-supported-services"></a>Azure でサポートされるサービス
+ 
+次の表に、Azure サービスと、Azure Monitor に収集されるデータを一覧表示します。 
+
+- メトリック - このサービスは、メトリックを自動的に Azure Monitor Metrics に収集します。 
+- ログ - このサービスでは診断設定がサポートされており、メトリックやプラットフォーム ログを Azure Monitor Logs に送信し、Log Analytics で分析できます。
+- 分析情報 - 使用可能な分析情報があり、サービスに対するカスタマイズされた監視エクスペリエンスを提供します。
+
+| サービス | リソース プロバイダー名前空間 | HASメトリック | HASログ | 分析情報 | Notes
+|---------|---------------------------------------|----------------|-----------|----------|--------|
+ | [Azure Active Directory Domain Services](../active-directory-domain-services/index.yml) | Microsoft.AAD/DomainServices | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftaaddomainservices) |   | |
+ | [Azure Active Directory](../active-directory/index.yml) | Microsoft.Aadiam/azureADMetrics | [**はい**](./essentials/metrics-supported.md#microsoftaadiamazureadmetrics) | No | [Azure Active Directory 用の Azure MonitorWorkbooks](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) | |
+ | [Azure Analysis Services](../analysis-services/index.yml)   | Microsoft.AnalysisServices/servers | [**はい**](./essentials/metrics-supported.md#microsoftanalysisservicesservers) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftanalysisservicesservers) |   | |
+ | [API Management](../api-management/index.yml)   | Microsoft.ApiManagement/service | [**はい**](./essentials/metrics-supported.md#microsoftapimanagementservice) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftapimanagementservice) |   | |
+ | [Azure App Configuration](../azure-app-configuration/index.yml)   | Microsoft.AppConfiguration/configurationStores | [**[はい]**](./essentials/metrics-supported.md#microsoftappconfigurationconfigurationstores) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftappconfigurationconfigurationstores) |   | |
+ | [Azure Spring Cloud](/azure/spring-cloud/spring-cloud-overview.md)   | Microsoft.AppPlatform/Spring | [**[はい]**](./essentials/metrics-supported.md#microsoftappplatformspring) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftappplatformspring) |   | |
+ | [Azure 構成証明サービス](../attestation/overview.md) | Microsoft.Attestation/attestationProviders | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftattestationattestationproviders) |   | |
+ | [Azure Automation](../automation/index.yml)   | Microsoft.Automation/automationAccounts | [**はい**](./essentials/metrics-supported.md#microsoftautomationautomationaccounts) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftautomationautomationaccounts) |   | |
+ | [Azure VMware Solution](../azure-vmware/index.yml)   | Microsoft.AVS/privateClouds | [**はい**](./essentials/metrics-supported.md#microsoftavsprivateclouds) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftavsprivateclouds) |   | |
+ | [Azure Batch](../batch/index.yml)   | Microsoft.Batch/batchAccounts | [**[はい]**](./essentials/metrics-supported.md#microsoftbatchbatchaccounts) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftbatchbatchaccounts) |   | |
+ | [Azure Batch](../batch/index.yml)   | Microsoft.BatchAI/workspaces | いいえ | いいえ |   | |
+ | [Azure Cognitive Services- Bing Search API](../cognitive-services/bing-web-search/index.yml) | Microsoft.Bing/accounts | [**はい**](./essentials/metrics-supported.md#microsoftbingaccounts) | No |   | |
+ | [Azure Blockchain Service](../blockchain/workbench/index.yml)   | Microsoft.Blockchain/blockchainMembers | [**はい**](./essentials/metrics-supported.md#microsoftblockchainblockchainmembers) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftblockchainblockchainmembers) |   | |
+ | [Azure Blockchain Service](../blockchain/workbench/index.yml)   | Microsoft.Blockchain/cordaMembers | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftblockchaincordamembers) |   | |
+ | [Azure Bot Service](/azure/bot-service/)   | Microsoft.BotService/botServices | [**はい**](./essentials/metrics-supported.md#microsoftbotservicebotservices) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftbotservicebotservices) |   | |
+ | [Azure Cache for Redis](../azure-cache-for-redis/index.yml)   | Microsoft.Cache/Redis | [**はい**](./essentials/metrics-supported.md#microsoftcacheredis) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcacheredis) | [Azure Monitor for Azure Cache for Redis (プレビュー)](./insights/redis-cache-insights-overview.md) | |
+ | [Azure Cache for Redis](../azure-cache-for-redis/index.yml)   | Microsoft.Cache/redisEnterprise | [**はい**](./essentials/metrics-supported.md#microsoftcacheredisenterprise) | No | [Azure Monitor for Azure Cache for Redis (プレビュー)](./insights/redis-cache-insights-overview.md) | |
+ | [Content Delivery Network](../cdn/index.yml)   | Microsoft.Cdn/CdnWebApplicationFirewallPolicies | [**はい**](./essentials/metrics-supported.md#microsoftcdncdnwebapplicationfirewallpolicies) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcdncdnwebapplicationfirewallpolicies) |   | |
+ | [Content Delivery Network](../cdn/index.yml)   | Microsoft.Cdn/profiles | [**はい**](./essentials/metrics-supported.md#microsoftcdnprofiles) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcdnprofiles) |   | |
+ | [Content Delivery Network](../cdn/index.yml)   | Microsoft.Cdn/profiles/endpoints | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcdnprofilesendpoints) |   | |
+ | [Azure Virtual Machines - クラシック](../virtual-machines/index.yml) | Microsoft.ClassicCompute/domainNames/slots/roles | [**はい**](./essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) | No | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | |
+ | [Azure Virtual Machines - クラシック](../virtual-machines/index.yml) | Microsoft.ClassicCompute/virtualMachines | [**はい**](./essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) | No |   | |
+ | [Virtual Network (クラシック)](../virtual-network/network-security-groups-overview.md) | Microsoft.ClassicNetwork/networkSecurityGroups | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftclassicnetworknetworksecuritygroups) |   | |
+ | [Azure Storage (クラシック)](../storage/index.yml) | Microsoft.ClassicStorage/storageAccounts | [**[はい]**](./essentials/metrics-supported.md#microsoftclassicstoragestorageaccounts) | No | [Storage 分析情報](/azure/azure-monitor/insights/storage-insights-overview)  | |
+ | [Azure Storage Blobs (クラシック)](../storage/blobs/index.yml) | Microsoft.ClassicStorage/storageAccounts/blobServices | [**[はい]**](./essentials/metrics-supported.md#microsoftclassicstoragestorageaccountsblobservices) | No | [Storage 分析情報](/azure/azure-monitor/insights/storage-insights-overview)  | |
+ | [Azure Storageファイル (クラシック)](../storage/files/index.yml) | Microsoft.ClassicStorage/storageAccounts/fileServices | [**[はい]**](./essentials/metrics-supported.md#microsoftclassicstoragestorageaccountsfileservices) | No | [Storage 分析情報](/azure/azure-monitor/insights/storage-insights-overview)  | |
+ | [Azure Storageキュー (クラシック)](/azure/storage/queue/) | Microsoft.ClassicStorage/storageAccounts/queueServices | [**[はい]**](./essentials/metrics-supported.md#microsoftclassicstoragestorageaccountsqueueservices) | No | [Storage 分析情報](/azure/azure-monitor/insights/storage-insights-overview)  | |
+ | [Azure Storageテーブル (クラシック)](../storage/tables/index.yml) | Microsoft.ClassicStorage/storageAccounts/tableServices | [**[はい]**](./essentials/metrics-supported.md#microsoftclassicstoragestorageaccountstableservices) | No | [Storage 分析情報](/azure/azure-monitor/insights/storage-insights-overview)  | |
+ | Microsoft Cloud テストプラットフォーム | Microsoft.Cloudtest/hostedpools | [**はい**](./essentials/metrics-supported.md#microsoftcloudtesthostedpools) | No |   | |
+ | Microsoft Cloud テストプラットフォーム | Microsoft.Cloudtest/pools | [**はい**](./essentials/metrics-supported.md#microsoftcloudtestpools) | No |   | |
+ | [Azure の Cray ClusterStor](https://azure.microsoft.com/blog/supercomputing-in-the-cloud-announcing-three-new-cray-in-azure-offers/) | Microsoft.ClusterStor/nodes | [**はい**](./essentials/metrics-supported.md#microsoftclusterstornodes) | No |   | |
+ | [Azure Cognitive Services](../cognitive-services/index.yml)   | Microsoft.CognitiveServices/accounts | [**はい**](./essentials/metrics-supported.md#microsoftcognitiveservicesaccounts) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcognitiveservicesaccounts) |   | |
+ | [Azure Communication Services](../communication-services/index.yml) | Microsoft.Communication/CommunicationServices | [**はい**](./essentials/metrics-supported.md#microsoftcommunicationcommunicationservices) | [**あり**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcommunicationcommunicationservices) |   | |
+ | [Azure Cloud Services](../cloud-services-extended-support/index.yml)   | Microsoft.Compute/cloudServices | [**はい**](./essentials/metrics-supported.md#microsoftcomputecloudservices) | いいえ |  | ゲスト オペレーティング システムとワークフローを監視するためにエージェントが必要。|
+ | [Azure Cloud Services](../cloud-services-extended-support/index.yml) | Microsoft.Compute/cloudServices/roles | [**はい**](./essentials/metrics-supported.md#microsoftcomputecloudservicesroles) | いいえ | | ゲスト オペレーティング システムとワークフローを監視するためにエージェントが必要。|
+ | [Azure Virtual Machines](../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml)   | Microsoft.Compute/disks | [**はい**](./essentials/metrics-supported.md#microsoftcomputedisks) | No | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | |
+ | [Azure Virtual Machines](../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml)   | Microsoft.Compute/virtualMachines | [**はい**](./essentials/metrics-supported.md#microsoftcomputevirtualmachines) | No | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | ゲスト オペレーティング システムとワークフローを監視するためにエージェントが必要。|
+ | [Azure Virtual Machines](../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml)   | Microsoft.Compute/virtualMachineScaleSets | [**はい**](./essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) | No | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | ゲスト オペレーティング システムとワークフローを監視するためにエージェントが必要。|
+ | [Azure Virtual Machines](../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml)   | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | [**はい**](./essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesetsvirtualmachines) | No | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | ゲスト オペレーティング システムとワークフローを監視するためにエージェントが必要。|
+ | [Microsoft Connected Vehicle Platform](https://azure.microsoft.com/blog/microsoft-connected-vehicle-platform-trends-and-investment-areas/) | Microsoft.ConnectedVehicle/platformAccounts | [**はい**](./essentials/metrics-supported.md#microsoftconnectedvehicleplatformaccounts) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftconnectedvehicleplatformaccounts) |   | |
+ | [Azure Container Instances](../container-instances/index.yml)   | Microsoft.ContainerInstance/containerGroups | [**はい**](./essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups) | No | [Container Insights](/azure/azure-monitor/insights/container-insights-overview) | |
+ | [Azure Container Registry](../container-registry/index.yml)   | Microsoft.ContainerRegistry/registries | [**はい**](./essentials/metrics-supported.md#microsoftcontainerregistryregistries) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcontainerregistryregistries) |   | |
+ | [Azure Kubernetes Service (AKS)](../aks/index.yml)   | Microsoft.ContainerService/managedClusters | [**はい**](./essentials/metrics-supported.md#microsoftcontainerservicemanagedclusters) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcontainerservicemanagedclusters) | [Container Insights](/azure/azure-monitor/insights/container-insights-overview) | |
+ | [Azure カスタム プロバイダー](../azure-resource-manager/custom-providers/index.yml)   | Microsoft.CustomProviders/resourceProviders | [**はい**](./essentials/metrics-supported.md#microsoftcustomprovidersresourceproviders) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcustomprovidersresourceproviders) |   | |
+ | [Microsoft Dynamics 365 Customer Insights](/dynamics365/customer-insights/) | Microsoft.D365CustomerInsights/instances | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftd365customerinsightsinstances) |   | |
+ | [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md)   | Microsoft.DataBoxEdge/DataBoxEdgeDevices | [**はい**](./essentials/metrics-supported.md#microsoftdataboxedgedataboxedgedevices) | No |   | |
+ | [Azure Databricks](/azure/azure-databricks/)   | Microsoft.Databricks/workspaces | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdatabricksworkspaces) |   | |
+ | プロジェクト CI | Microsoft.DataCollaboration/workspaces | [**はい**](./essentials/metrics-supported.md#microsoftdatacollaborationworkspaces) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdatacollaborationworkspaces) |   | |
+ | [Azure Data Factory](../data-factory/index.yml)   | Microsoft.DataFactory/dataFactories | [**はい**](./essentials/metrics-supported.md#microsoftdatafactorydatafactories) | No |   | |
+ | [Azure Data Factory](../data-factory/index.yml)   | Microsoft.DataFactory/factories | [**はい**](./essentials/metrics-supported.md#microsoftdatafactoryfactories) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdatafactoryfactories) |   | |
+ | [Azure Data Lake Analytics](../data-lake-analytics/index.yml)   | Microsoft.DataLakeAnalytics/accounts | [**はい**](./essentials/metrics-supported.md#microsoftdatalakeanalyticsaccounts) | [**○**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdatalakeanalyticsaccounts) |   | |
+ | [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)   | Microsoft.DataLakeStore/accounts | [**はい**](./essentials/metrics-supported.md#microsoftdatalakestoreaccounts) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdatalakestoreaccounts) |   | |
+ | [Azure Data Share](../data-share/index.yml)   | Microsoft.DataShare/accounts | [**[はい]**](./essentials/metrics-supported.md#microsoftdatashareaccounts) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdatashareaccounts) |   | |
+ | [Azure Database for MariaDB](../mariadb/index.yml)   | Microsoft.DBforMariaDB/servers | [**はい**](./essentials/metrics-supported.md#microsoftdbformariadbservers) | [**あり**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbformariadbservers) |   | |
+ | [Azure Database for MySQL](../mysql/index.yml)   | Microsoft.DBforMySQL/flexibleServers | [**はい**](./essentials/metrics-supported.md#microsoftdbformysqlflexibleservers) | [**あり**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbformysqlflexibleservers) |   | |
+ | [Azure Database for MySQL](../mysql/index.yml)   | Microsoft.DBforMySQL/servers | [**はい**](./essentials/metrics-supported.md#microsoftdbformysqlservers) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbformysqlservers) |   | |
+ | [Azure Database for PostgreSQL](../postgresql/index.yml)   | Microsoft.DBforPostgreSQL/flexibleServers | [**はい**](./essentials/metrics-supported.md#microsoftdbforpostgresqlflexibleservers) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbforpostgresqlflexibleservers) |   | |
+ | [Azure Database for PostgreSQL](../postgresql/index.yml)   | Microsoft.DBforPostgreSQL/serverGroupsv2 | [**はい**](./essentials/metrics-supported.md#microsoftdbforpostgresqlservergroupsv2) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbforpostgresqlservergroupsv2) |   | |
+ | [Azure Database for PostgreSQL](../postgresql/index.yml)   | Microsoft.DBforPostgreSQL/servers | [**はい**](./essentials/metrics-supported.md#microsoftdbforpostgresqlservers) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbforpostgresqlservers) |   | |
+ | [Azure Database for PostgreSQL](../postgresql/index.yml)   | Microsoft.DBforPostgreSQL/serversv2 | [**はい**](./essentials/metrics-supported.md#microsoftdbforpostgresqlserversv2) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbforpostgresqlserversv2) |   | |
+ | [Microsoft Windows Virtual Desktop](../virtual-desktop/index.yml)   | Microsoft.DesktopVirtualization/applicationgroups | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdesktopvirtualizationapplicationgroups) | [Windows Virtual Desktop の分析情報](../virtual-desktop/azure-monitor.md) | |
+ | [Microsoft Windows Virtual Desktop](../virtual-desktop/index.yml)   | Microsoft.DesktopVirtualization/hostpools | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdesktopvirtualizationhostpools) | [Windows Virtual Desktop の分析情報](../virtual-desktop/azure-monitor.md) | |
+ | [Microsoft Windows Virtual Desktop](../virtual-desktop/index.yml)   | Microsoft.DesktopVirtualization/workspaces | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdesktopvirtualizationworkspaces) |   | |
+ | [Azure IoT Hub](../iot-hub/index.yml) | Microsoft.Devices/ElasticPools | [**はい**](./essentials/metrics-supported.md#microsoftdeviceselasticpools) | No |   | |
+ | [Azure IoT Hub](../iot-hub/index.yml) | Microsoft.Devices/ElasticPools/IotHubTenants | [**はい**](./essentials/metrics-supported.md#microsoftdeviceselasticpoolsiothubtenants) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdeviceselasticpoolsiothubtenants) |   | |
+ | [Azure IoT Hub](../iot-hub/index.yml) | Microsoft.Devices/IotHubs | [**はい**](./essentials/metrics-supported.md#microsoftdevicesiothubs) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdevicesiothubs) |   | |
+ | [Azure IoT Hub Device Provisioning Service](../iot-dps/index.yml)   | Microsoft.Devices/ProvisioningServices | [**はい**](./essentials/metrics-supported.md#microsoftdevicesprovisioningservices) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdevicesprovisioningservices) |   | |
+ | [Azure Digital Twins](/azure/digital-twins/about-digital-twins.md)   | Microsoft.DigitalTwins/digitalTwinsInstances | [**はい**](./essentials/metrics-supported.md#microsoftdigitaltwinsdigitaltwinsinstances) | [**○**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdigitaltwinsdigitaltwinsinstances) |   | |
+ | [Azure Cosmos DB](../cosmos-db/index.yml)   | Microsoft.DocumentDB/databaseAccounts | [**はい**](./essentials/metrics-supported.md#microsoftdocumentdbdatabaseaccounts) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdocumentdbdatabaseaccounts) | [Azure Cosmos DB 分析情報](./insights/cosmosdb-insights-overview.md) | |
+ | [Azureグリッド](../event-grid/index.yml)   | Microsoft.EventGrid/domains | [**はい**](./essentials/metrics-supported.md#microsofteventgriddomains) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsofteventgriddomains) |   | |
+ | [Azureグリッド](../event-grid/index.yml)   | Microsoft.EventGrid/eventSubscriptions | [**はい**](./essentials/metrics-supported.md#microsofteventgrideventsubscriptions) | No |   | |
+ | [Azureグリッド](../event-grid/index.yml)   | Microsoft.EventGrid/extensionTopics | [**はい**](./essentials/metrics-supported.md#microsofteventgridextensiontopics) | No |   | |
+ | [Azureグリッド](../event-grid/index.yml)   | Microsoft.EventGrid/partnerNamespaces | [**はい**](./essentials/metrics-supported.md#microsofteventgridpartnernamespaces) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsofteventgridpartnernamespaces) |   | |
+ | [Azureグリッド](../event-grid/index.yml)   | Microsoft.EventGrid/partnerTopics | [**はい**](./essentials/metrics-supported.md#microsofteventgridpartnertopics) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsofteventgridpartnertopics) |   | |
+ | [Azureグリッド](../event-grid/index.yml)   | Microsoft.EventGrid/systemTopics | [**はい**](./essentials/metrics-supported.md#microsofteventgridsystemtopics) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsofteventgridsystemtopics) |   | |
+ | [Azureグリッド](../event-grid/index.yml)   | Microsoft.EventGrid/topics | [**はい**](./essentials/metrics-supported.md#microsofteventgridtopics) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsofteventgridtopics) |   | |
+ | [Azure Event Hubs](../event-hubs/index.yml)   | Microsoft.EventHub/clusters | [**はい**](./essentials/metrics-supported.md#microsofteventhubclusters) | いいえ | 0 | |
+ | [Azure Event Hubs](../event-hubs/index.yml)   | Microsoft.EventHub/namespaces | [**はい**](./essentials/metrics-supported.md#microsofteventhubnamespaces) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsofteventhubnamespaces) | 0 | |
+ | [Microsoft実験プラットフォーム ](https://www.microsoft.com/research/group/experimentation-platform-exp/) | microsoft.experimentation/experimentWorkspaces | [**はい**](./essentials/metrics-supported.md) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftexperimentationexperimentworkspaces) |   | |
+ | [Azure HDInsight](../hdinsight/index.yml)   | Microsoft.HDInsight/clusters | [**はい**](./essentials/metrics-supported.md#microsofthdinsightclusters) | No | [Azure HDInsight (プレビュー)](../hdinsight/log-analytics-migration.md#insights) | |
+ | [Azure API for FHIR](../healthcare-apis/index.yml) | Microsoft.HealthcareApis/services | [**はい**](./essentials/metrics-supported.md#microsofthealthcareapisservices) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsofthealthcareapisservices) |   | |
+ | [Azure API for FHIR](../healthcare-apis/index.yml) | Microsoft.HealthcareApis/workspaces/iotconnectors | [**はい**](./essentials/metrics-supported.md#microsofthealthcareapisworkspacesiotconnectors) | No |   | |
+ | [StorSimple](../storsimple/index.yml)   | microsoft.hybridnetwork/networkfunctions | [**はい**](./essentials/metrics-supported.md#microsofthybridnetworknetworkfunctions) | No |   | |
+ | [StorSimple](../storsimple/index.yml)   | microsoft.hybridnetwork/virtualnetworkfunctions | [**はい**](./essentials/metrics-supported.md#microsofthybridnetworkvirtualnetworkfunctions) | No |   | |
+ | [Azure Monitor](./index.yml)   | microsoft.insights/autoscalesettings | [**はい**](./essentials/metrics-supported.md#microsoftinsightsautoscalesettings) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftinsightsautoscalesettings) |   | |
+ | [Azure Monitor](./index.yml)   | microsoft.insights/components | [**はい**](./essentials/metrics-supported.md#microsoftinsightscomponents) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftinsightscomponents) | [Azure Monitor - Application Insights](./app/app-insights-overview.md) | |
+ | [Azure IoT Central](../iot-central/index.yml)   | Microsoft.IoTCentral/IoTApps | [**はい**](./essentials/metrics-supported.md#microsoftiotcentraliotapps) | No |   | |
+ | [Azure Key Vault](../key-vault/index.yml)   | Microsoft.KeyVault/managedHSMs | [**はい**](./essentials/metrics-supported.md#microsoftkeyvaultmanagedhsms) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftkeyvaultmanagedhsms) | [Azure Key Vault 分析情報 (プレビュー)](./insights/key-vault-insights-overview.md) | |
+ | [Azure Key Vault](../key-vault/index.yml)   | Microsoft.KeyVault/vaults | [**はい**](./essentials/metrics-supported.md#microsoftkeyvaultvaults) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftkeyvaultvaults) | [Azure Key Vault 分析情報 (プレビュー)](./insights/key-vault-insights-overview.md) | |
+ | [Azure Kubernetes Service (AKS)](../aks/index.yml)   | Microsoft.Kubernetes/connectedClusters | [**はい**](./essentials/metrics-supported.md#microsoftkubernetesconnectedclusters) | いいえ |   | |
+ | [Azure Data Explorer](/azure/data-explorer/)   | Microsoft.Kusto/clusters | [**はい**](./essentials/metrics-supported.md#microsoftkustoclusters) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftkustoclusters) |   | |
+ | [Azure Logic Apps](../logic-apps/index.yml)   | Microsoft.Logic/integrationAccounts | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftlogicintegrationaccounts) |   | |
+ | [Azure Logic Apps](../logic-apps/index.yml)   | Microsoft.Logic/integrationServiceEnvironments | [**はい**](./essentials/metrics-supported.md#microsoftlogicintegrationserviceenvironments) | No |   | |
+ | [Azure Logic Apps](../logic-apps/index.yml)   | Microsoft.Logic/workflows | [**はい**](./essentials/metrics-supported.md#microsoftlogicworkflows) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftlogicworkflows) |   | |
+ | [Azure Machine Learning](../machine-learning/index.yml)   | Microsoft.MachineLearningServices/workspaces | [**はい**](./essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftmachinelearningservicesworkspaces) |   | |
+ | [Azure Maps](../azure-maps/index.yml)   | Microsoft.Maps/accounts | [**はい**](./essentials/metrics-supported.md#microsoftmapsaccounts) | No |   | |
+ | [Azure Media Services](../media-services/index.yml)   | Microsoft.Media/mediaservices | [**はい**](./essentials/metrics-supported.md#microsoftmediamediaservices) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftmediamediaservices) |   | |
+ | [Azure Media Services](../media-services/index.yml)   | Microsoft.Media/mediaservices/liveEvents | [**はい**](./essentials/metrics-supported.md#microsoftmediamediaservicesliveevents) | No |   | |
+ | [Azure Media Services](../media-services/index.yml)   | Microsoft.Media/mediaservices/streamingEndpoints | [**はい**](./essentials/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) | No |   | |
+ | [Azure Media Services](../media-services/index.yml)   | Microsoft Media/videoAnalyzers | [**はい**](./essentials/metrics-supported.md#microsoftmediavideoanalyzers) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftmediavideoanalyzers) |   | |
+ | [Azure Spatial Anchors](../spatial-anchors/index.yml)   | Microsoft.MixedReality/remoteRenderingAccounts | [**はい**](./essentials/metrics-supported.md#microsoftmixedrealityremoterenderingaccounts) | No |   | |
+ | [Azure Spatial Anchors](../spatial-anchors/index.yml)   | Microsoft.MixedReality/spatialAnchorsAccounts | [**はい**](./essentials/metrics-supported.md#microsoftmixedrealityspatialanchorsaccounts) | No |   | |
+ | [Azure NetApp Files](../azure-netapp-files/index.yml)   | Microsoft.NetApp/netAppAccounts/capacityPools | [**はい**](./essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) | No |   | |
+ | [Azure NetApp Files](../azure-netapp-files/index.yml)   | Microsoft.NetApp/netAppAccounts/capacityPools/volumes | [**はい**](./essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) | No |   | |
+ | [Application Gateway](../application-gateway/index.yml) | Microsoft.Network/applicationGateways | [**はい**](./essentials/metrics-supported.md#microsoftnetworkapplicationgateways) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkapplicationgateways) |   | |
+ | [Azure Firewall](../firewall/index.yml) | Microsoft.Network/azureFirewalls | [**はい**](./essentials/metrics-supported.md#microsoftnetworkazurefirewalls) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkazurefirewalls) |   | |
+ | [Azure Bastion](../bastion/index.yml) | Microsoft.Network/bastionHosts | [**はい**](./essentials/metrics-supported.md#microsoftnetworkbastionhosts) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkbastionhosts) |   | |
+ | [VPN Gateway](../vpn-gateway/index.yml) | Microsoft.Network/connections | [**はい**](./essentials/metrics-supported.md#microsoftnetworkconnections) | No |   | |
+ | [Azure DNS](../dns/index.yml) | Microsoft.Network/dnszones | [**はい**](./essentials/metrics-supported.md#microsoftnetworkdnszones) | No |   | |
+ | [Azure ExpressRoute](../expressroute/index.yml) | Microsoft.Network/expressRouteCircuits | [**○**](./essentials/metrics-supported.md#microsoftnetworkexpressroutecircuits) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkexpressroutecircuits) |   | |
+ | [Azure ExpressRoute](../expressroute/index.yml) | Microsoft.Network/expressRouteGateways | [**はい**](./essentials/metrics-supported.md#microsoftnetworkexpressroutegateways) | No |   | |
+ | [Azure ExpressRoute](../expressroute/index.yml) | Microsoft.Network/expressRoutePorts | [**○**](./essentials/metrics-supported.md#microsoftnetworkexpressrouteports) | No |   | |
+ | [Azure Front Door](../frontdoor/index.yml) | Microsoft.Network/frontdoors | [**はい**](./essentials/metrics-supported.md#microsoftnetworkfrontdoors) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkfrontdoors) |   | |
+ | [Azure Load Balancer](../load-balancer/index.yml) | Microsoft.Network/loadBalancers | [**はい**](./essentials/metrics-supported.md#microsoftnetworkloadbalancers) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkloadbalancers) |   | |
+ | [Azure Load Balancer](../load-balancer/index.yml) | Microsoft.Network/natGateways | [**はい**](./essentials/metrics-supported.md#microsoftnetworknatgateways) | No |   | |
+ | [Azure Virtual Network](../virtual-network/index.yml) | Microsoft.Network/networkInterfaces | [**はい**](./essentials/metrics-supported.md#microsoftnetworknetworkinterfaces) | No | [Azure ネットワーク分析情報ト](./insights/network-insights-overview.md) | |
+ | [Azure Virtual Network](../virtual-network/index.yml) | Microsoft.Network/networkSecurityGroups | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworknetworksecuritygroups) | [Azure ネットワーク分析情報ト](./insights/network-insights-overview.md) | |
+ | [Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) | Microsoft.Network/networkWatchers/connectionMonitors | [**はい**](./essentials/metrics-supported.md#microsoftnetworknetworkwatchersconnectionmonitors) | No |   | |
+ | [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md) | Microsoft.Network/p2sVpnGateways | [**はい**](./essentials/metrics-supported.md#microsoftnetworkp2svpngateways) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkp2svpngateways) |   | |
+ | [Azure DNS Private Zones](../dns/private-dns-privatednszone.md) | Microsoft.Network/privateDnsZones | [**はい**](./essentials/metrics-supported.md#microsoftnetworkprivatednszones) | No |   | |
+ | [Azure Private Link](../private-link/private-link-overview.md) | Microsoft.Network/privateEndpoints | [**はい**](./essentials/metrics-supported.md#microsoftnetworkprivateendpoints) | No |   | |
+ | [Azure Private Link](../private-link/private-link-overview.md) | Microsoft.Network/privateLinkServices | [**はい**](./essentials/metrics-supported.md#microsoftnetworkprivatelinkservices) | No |   | |
+ | [Azure Virtual Network](../virtual-network/index.yml) | Microsoft.Network/publicIPAddresses | [**はい**](./essentials/metrics-supported.md#microsoftnetworkpublicipaddresses) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkpublicipaddresses) | [Azure ネットワーク分析情報ト](./insights/network-insights-overview.md) | |
+ | [Azure の Traffic Manager](../traffic-manager/traffic-manager-overview.md) | Microsoft. Network/trafficmanagerprofiles | [**はい**](./essentials/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworktrafficmanagerprofiles) |   | |
+ | [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md) | Microsoft.Network/virtualHubs | [**はい**](./essentials/metrics-supported.md#microsoftnetworkvirtualhubs) | No |   | |
+ | [Azure VPN Gateway](../vpn-gateway/index.yml) | Microsoft.Network/virtualNetworkGateways | [**はい**](./essentials/metrics-supported.md#microsoftnetworkvirtualnetworkgateways) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkvirtualnetworkgateways) |   | |
+ | [Azure Virtual Network](../virtual-network/index.yml) | Microsoft.Network/virtualNetworks | [**はい**](./essentials/metrics-supported.md#microsoftnetworkvirtualnetworks) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkvirtualnetworks) | [Azure ネットワーク分析情報ト](./insights/network-insights-overview.md) | |
+ | [Azure Virtual Network](../virtual-network/index.yml) | Microsoft.Network/virtualRouters | [**はい**](./essentials/metrics-supported.md#microsoftnetworkvirtualrouters) | No |   | |
+ | [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md) | Microsoft.Network/vpnGateways | [**はい**](./essentials/metrics-supported.md#microsoftnetworkvpngateways) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkvpngateways) |   | |
+ | [Azure Notification Hubs](../notification-hubs/index.yml)   | Microsoft NotificationHubs/namespace/notificationHubs | [**はい**](./essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs) | No |   | |
+ | [Azure Monitor](./index.yml)   | Microsoft.OperationalInsights/workspaces | [**はい**](./essentials/metrics-supported.md#microsoftoperationalinsightsworkspaces) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftoperationalinsightsworkspaces) |   | |
+ | [Azure Peering Service](../peering-service/index.yml) | Microsoft.Peering/peerings | [**はい**](./essentials/metrics-supported.md#microsoftpeeringpeerings) | No |   | |
+ | [Azure Peering Service](../peering-service/index.yml) | Microsoft.Peering/peeringServices | [**はい**](./essentials/metrics-supported.md#microsoftpeeringpeeringservices) | No |   | |
+ | [Microsoft Power BI](/power-bi/power-bi-overview)   | Microsoft.PowerBI/tenants | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftpowerbitenants) |   | |
+ | [Microsoft Power BI](/power-bi/power-bi-overview)   | Microsoft.PowerBI/tenants/workspaces | No | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftpowerbitenantsworkspaces) |   | |
+ | [Power BI Embedded](/azure/power-bi-embedded/)   | Microsoft.PowerBIDedicated/capacities | [**はい**](./essentials/metrics-supported.md#microsoftpowerbidedicatedcapacities) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftpowerbidedicatedcapacities) |   | |
+ | [Azure Purview](../purview/index.yml) | Microsoft.Purview/accounts | [**はい**](./essentials/metrics-supported.md#microsoftpurviewaccounts) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftpurviewaccounts) |   | |
+ | [Azure Site Recovery](../site-recovery/index.yml)   | Microsoft.RecoveryServices/vaults | [**はい**](./essentials/metrics-supported.md#microsoftrecoveryservicesvaults) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftrecoveryservicesvaults) |   | |
+ | [Azure Relay](/azure/service-bus-relay/relay-what-is-it.md)   | Microsoft.Relay/namespaces | [**はい**](./essentials/metrics-supported.md#microsoftrelaynamespaces) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftrelaynamespaces) |   | |
+ | [Azure Resource Manager](../azure-resource-manager/index.yml)   | Microsoft .Resources/サブスクリプション | [**はい**](./essentials/metrics-supported.md#microsoftresourcessubscriptions) | No |   | |
+ | [Azure Cognitive Search](../search/index.yml)   | Microsoft.Search/searchServices | [**はい**](./essentials/metrics-supported.md#microsoftsearchsearchservices) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsearchsearchservices) |   | |
+ | [Azure Service Bus](/azure/service-bus/)   | Microsoft.ServiceBus/namespaces | [**はい**](./essentials/metrics-supported.md#microsoftservicebusnamespaces) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftservicebusnamespaces) | [Azure Service Bus](/azure/service-bus/) | |
+ | [Service Fabric](../service-fabric/index.yml)   | Microsoft.ServiceFabric   | いいえ | いいえ | [Service Fabric](../service-fabric/index.yml)   | ゲスト オペレーティング システムとワークフローを監視するためにエージェントが必要。|
+ | [Azure SignalR Service](../azure-signalr/index.yml)   | Microsoft.SignalRService/SignalR | [**はい**](./essentials/metrics-supported.md#microsoftsignalrservicesignalr) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsignalrservicesignalr) |   | |
+ | [Azure SignalR Service](../azure-signalr/index.yml)   | Microsoft.SignalRService/WebPubSub | [**はい**](./essentials/metrics-supported.md#microsoftsignalrservicewebpubsub) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsignalrservicewebpubsub) |   | |
+ | [Azure SQL Managed Instance](../azure-sql/database/monitoring-tuning-index.yml) | Microsoft.Sql/managedInstances | [**はい**](./essentials/metrics-supported.md#microsoftsqlmanagedinstances) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsqlmanagedinstances) | [Azure SQL 分析情報](./insights/sql-insights-overview.md) | |
+ | [Azure SQL Database](../azure-sql/database/index.yml) | Microsoft.Sql/servers/databases | [**はい**](./essentials/metrics-supported.md#microsoftsqlserversdatabases) | No | [Azure SQL 分析情報](./insights/sql-insights-overview.md) | |
+ | [Azure SQL Database](../azure-sql/database/index.yml) | Microsoft.Sql/servers/elasticpools | [**はい**](./essentials/metrics-supported.md#microsoftsqlserverselasticpools) | No | [Azure SQL 分析情報](./insights/sql-insights-overview.md) | |
+ | [Azure ストレージ](../storage/index.yml)   | Microsoft.Storage/storageAccounts | [**はい**](./essentials/metrics-supported.md#microsoftstoragestorageaccounts) | No | [Azure Storage 分析情報](/azure/azure-monitor/insights/storage-insights-overview) | |
+ | [Azure Storage Blobs](../storage/blobs/index.yml) | Microsoft.Storage/storageAccounts/blobServices | [**はい**](./essentials/metrics-supported.md#microsoftstoragestorageaccountsblobservices) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftstoragestorageaccountsblobservices) | [Azure Storage 分析情報](/azure/azure-monitor/insights/storage-insights-overview) | |
+ | [Azure Storageファイル](../storage/files/index.yml) | Microsoft.Storage/storageAccounts/fileServices | [**はい**](./essentials/metrics-supported.md#microsoftstoragestorageaccountsfileservices) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftstoragestorageaccountsfileservices) | [Azure Storage 分析情報](/azure/azure-monitor/insights/storage-insights-overview) | |
+ | [Azure StorageQueue サービス](../storage/queues/index.yml)   | Microsoft.Storage/storageAccounts/queueServices | [**はい**](./essentials/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftstoragestorageaccountsqueueservices) | [Azure Storage 分析情報](/azure/azure-monitor/insights/storage-insights-overview) | |
+ | [Azure テーブルサービス](../storage/tables/index.yml)   | Microsoft.Storage/storageAccounts/tableServices | [**はい**](./essentials/metrics-supported.md#microsoftstoragestorageaccountstableservices) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftstoragestorageaccountstableservices) | [Azure Storage 分析情報](/azure/azure-monitor/insights/storage-insights-overview) | |
+ | [Azure HPC Cache](../hpc-cache/index.yml) | Microsoft.StorageCache/caches | [**はい**](./essentials/metrics-supported.md#microsoftstoragecachecaches) | No |   | |
+ | [Azure ストレージ](../storage/index.yml)   | microsoft.storagesync/storagesyncservices | [**はい**](./essentials/metrics-supported.md#microsoftstoragesyncstoragesyncservices) | No | [Azure Storage 分析情報](/azure/azure-monitor/insights/storage-insights-overview) | |
+ | [Azure Stream Analytics](../stream-analytics/index.yml)   | Microsoft.StreamAnalytics/streamingjobs | [**はい**](./essentials/metrics-supported.md#microsoftstreamanalyticsstreamingjobs) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftstreamanalyticsstreamingjobs) |   | |
+ | [Azure Synapse Analytics](/azure/sql-data-warehouse/)   | Microsoft.Synapse ワークスペース | [**はい**](./essentials/metrics-supported.md#microsoftsynapseworkspaces) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsynapseworkspaces) |   | |
+ | [Azure Synapse Analytics](/azure/sql-data-warehouse/)   | Microsoft.Synapse/workspaces/bigDataPools | [**はい**](./essentials/metrics-supported.md#microsoftsynapseworkspacesbigdatapools) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsynapseworkspacesbigdatapools) |   | |
+ | [Azure Synapse Analytics](/azure/sql-data-warehouse/)   | Microsoft.Synapse/workspaces/sqlPools | [**はい**](./essentials/metrics-supported.md#microsoftsynapseworkspacessqlpools) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsynapseworkspacessqlpools) |   | |
+ | [Azure Time Series Insights](../time-series-insights/index.yml)   | Microsoft.TimeSeriesInsights/environments | [**はい**](./essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsofttimeseriesinsightsenvironments) |   | |
+ | [Azure Time Series Insights](../time-series-insights/index.yml)   | Microsoft.TimeSeriesInsights/environments/eventsources | [**はい**](./essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsofttimeseriesinsightsenvironmentseventsources) |   | |
+ | [Azure VMware Solution](../azure-vmware/index.yml)   | Microsoft.VMwareCloudSimple/virtualMachines | [**はい**](./essentials/metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) | No |   | |
+ | [Azure App Service](../app-service/index.yml)<br />[Azure Functions](../azure-functions/index.yml)   | Microsoft.Web/connections | [**はい**](./essentials/metrics-supported.md#microsoftwebconnections) | No |   | |
+ | [Azure App Service](../app-service/index.yml)<br />[Azure Functions](../azure-functions/index.yml)   | Microsoft.Web/hostingEnvironments | [**はい**](./essentials/metrics-supported.md#microsoftwebhostingenvironments) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftwebhostingenvironments) | [Azure Monitor - Application Insights](./app/app-insights-overview.md) | |
+ | [Azure App Service](../app-service/index.yml)<br />[Azure Functions](../azure-functions/index.yml)   | Microsoft.Web/hostingEnvironments/multiRolePools | [**はい**](./essentials/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools) | No | [Azure Monitor - Application Insights](./app/app-insights-overview.md) | |
+ | [Azure App Service](../app-service/index.yml)<br />[Azure Functions](../azure-functions/index.yml)   | Microsoft.Web/hostingEnvironments/workerPools | [**はい**](./essentials/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools) | No | [Azure Monitor - Application Insights](./app/app-insights-overview.md) | |
+ | [Azure App Service](../app-service/index.yml)<br />[Azure Functions](../azure-functions/index.yml)   | Microsoft.Web/serverFarms | [**はい**](./essentials/metrics-supported.md#microsoftwebserverfarms) | No | [Azure Monitor - Application Insights](./app/app-insights-overview.md) | |
+ | [Azure App Service](../app-service/index.yml)<br />[Azure Functions](../azure-functions/index.yml)   | Microsoft.Web/sites | [**はい**](./essentials/metrics-supported.md#microsoftwebsites) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftwebsites) | [Azure Monitor - Application Insights](./app/app-insights-overview.md) | |
+ | [Azure App Service](../app-service/index.yml)<br />[Azure Functions](../azure-functions/index.yml)   | Microsoft.Web/sites/slots | [**はい**](./essentials/metrics-supported.md#microsoftwebsitesslots) | [**はい**](/azure/azure-monitor/essentials/resource-log-categories#microsoftwebsitesslots) | [Azure Monitor - Application Insights](./app/app-insights-overview.md) | |
+ | [Azure App Service](../app-service/index.yml)<br />[Azure Functions](../azure-functions/index.yml)   | Microsoft.Web/staticSites | [**はい**](./essentials/metrics-supported.md#microsoftwebstaticsites) | No | [Azure Monitor - Application Insights](./app/app-insights-overview.md) | |
+
 
 ## <a name="next-steps"></a>次のステップ
 
 - [分析とソリューションによって収集されたログとメトリックを格納する Azure Monitor データ プラットフォーム](data-platform.md)に関する詳細情報をお読みください。
 - [Azure リソースの監視に関するチュートリアル](essentials/tutorial-resource-logs.md)を完了してください。
 - [Azure Monitor ログでデータを分析するためのログ クエリの作成に関するチュートリアル](essentials/tutorial-resource-logs.md)を完了してください。
-- [Azure Monitor メトリックでデータを分析するためのメトリック グラフの作成に関するチュートリアル](essentials/tutorial-metrics-explorer.md)を完了してください。
-
+- [Azure Monitor メトリックでデータを分析するためのメトリック グラフの作成に関するチュートリアル](essentials/tutorial-metrics.md)を完了してください。

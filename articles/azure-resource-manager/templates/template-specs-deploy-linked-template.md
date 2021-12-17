@@ -2,15 +2,16 @@
 title: リンクされたテンプレートとしてテンプレート スペックをデプロイする
 description: リンクされたデプロイに既存のテンプレート スペックをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 8d4ccd77c8b37a696fab7494a8d3f8052fc89b35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/04/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d80442a2ee03bcf85d7173517661d42389542e82
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889265"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110696242"
 ---
-# <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>チュートリアル:リンクされたテンプレートとしてテンプレート スペックをデプロイする (プレビュー)
+# <a name="tutorial-deploy-a-template-spec-as-a-linked-template"></a>チュートリアル: テンプレート スペックをリンクされたテンプレートとしてデプロイする
 
 [リンクされたデプロイ](linked-templates.md#linked-template)を使用して既存の[テンプレート スペック](template-specs.md)をデプロイする方法について説明します。 テンプレート スペックは、ARM テンプレートを組織内の他のユーザーと共有するために使用します。 テンプレート スペックを作成したら、Azure PowerShell または Azure CLI を使用してテンプレート スペックをデプロイできます。 リンクされたテンプレートを使用し、ソリューションの一部としてテンプレート スペックをデプロイすることもできます。
 
@@ -19,7 +20,7 @@ ms.locfileid: "104889265"
 アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> Template Specs は現在プレビューの段階です。 Azure PowerShell でこれを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
+> Azure PowerShell でテンプレート スペックを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 ## <a name="create-a-template-spec"></a>テンプレート スペックを作成する
 

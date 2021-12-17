@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 04/02/2021
+ms.date: 09/14/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: b17cb6906a37d2cab4383fac18400b35dc8adb2f
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a14d63d171c3e6bdbcbe0c706f5f614eae7e853b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223195"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628612"
 ---
 # <a name="tutorial-add-authentication-to-your-web-app-running-on-azure-app-service"></a>チュートリアル:Azure App Service で実行されている Web アプリに認証を追加する
 
@@ -68,6 +68,10 @@ App Service では組み込みの認証と承認がサポートされている�
 :::image type="content" alt-text="認証の構成を示すスクリーンショット。" source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
 
 これで、App Service の認証と承認によってアプリが保護されるようになりました。
+
+> [!NOTE]
+> 他のテナントからのアカウントを許可するには、[認証] ブレードから [ID プロバイダー] を編集し、[発行者の URL] を [https://login.microsoftonline.com/common/v2.0 ] に変更します。
+>
 
 ## <a name="verify-limited-access-to-the-web-app"></a>Web アプリへの制限付きアクセスを確認する
 

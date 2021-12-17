@@ -3,7 +3,7 @@ title: 可用性グループの DNN リスナーの構成
 description: 分散ネットワーク名 (DNN) リスナーを構成して、仮想ネットワーク名 (VNN) リスナーを置き換え、Azure VM 上の SQL Server で Always On 可用性グループにトラフィックをルーティングする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -12,24 +12,26 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/07/2020
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: bf5c4c39ea8f5705cc9788fdcf2cddd01dcb4087
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 11/10/2021
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: f4a79ae5b1083bf9091486e9f4d87c6fdad14747
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034709"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156904"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>可用性グループの DNN リスナーの構成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Azure VM 上の SQL Server を使用すると、分散ネットワーク名 (DNN) によって、クラスター化された適切なリソースにトラフィックがルーティングされます。 これにより、仮想ネットワーク名 (VNN) リスナーよりも簡単に Always On 可用性グループ (AG) に接続する方法が提供されます。Azure Load Balancer は必要ありません。
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の[複数のサブネット](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)に SQL Server VM を作成することで、Always On 可用性グループ (AG) に対して分散ネットワーク名が不要になります。
+
+1 つのサブネット内の Azure VM 上の SQL Server を使用すると、分散ネットワーク名 (DNN) によって、クラスター化された適切なリソースにトラフィックがルーティングされます。 これにより、仮想ネットワーク名 (VNN) リスナーよりも簡単に Always On 可用性グループ (AG) に接続する方法が提供されます。Azure Load Balancer は必要ありません。
 
 この記事では、高可用性とディザスター リカバリー (HADR) のために、DNN リスナーを構成して、VNN リスナーを置き換え、Azure VM 上の SQL Server で可用性グループにトラフィックをルーティングする方法について説明します。
 
-DNN リスナー機能は、現在、Windows Server 2016 以降上の SQL Server 2019 CU8 以降でのみ使用できます。
 
 代替の接続オプションとしては、代わりに [VNN リスナーと Azure Load Balancer](availability-group-vnn-azure-load-balancer-configure.md) を検討してください。
 
@@ -46,7 +48,7 @@ DNN リスナーを既存の VNN リスナーの代わりに使用するか、�
 
 この記事の手順を完了するには、次のものが必要です。
 
-- Windows Server 2016 以降上の SQL Server 2019 CU8 以降
+- SQL Server ([SQL Server 2019 CU8](https://support.microsoft.com/topic/cumulative-update-8-for-sql-server-2019-ed7f79d9-a3f0-a5c2-0bef-d0b7961d2d72) 以降、[SQL Server 2017 CU25](https://support.microsoft.com/topic/kb5003830-cumulative-update-25-for-sql-server-2017-357b80dc-43b5-447c-b544-7503eee189e9) 以降、または Windows Server 2016 以降の [SQL Server 2016 SP3](https://support.microsoft.com/topic/kb5003279-sql-server-2016-service-pack-3-release-information-46ab9543-5cf9-464d-bd63-796279591c31) 以降)。
 - 分散ネットワーク名が[お客様の HADR ソリューションに適切な接続オプション](hadr-cluster-best-practices.md#connectivity)であると判断済みであること。
 - [Always On 可用性グループ](availability-group-overview.md)を構成済みであること。 
 - 最新バージョンの [PowerShell](/powershell/azure/install-az-ps) をインストール済みであること。 
@@ -145,7 +147,11 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 
 ## <a name="update-connection-string"></a>接続文字列を更新する
 
-アプリケーションの接続文字列を更新して、DNN リスナーに接続されるようにします。 DNN リスナーの接続文字列には、DNN ポート番号を指定する必要があります。 フェールオーバー後の速やかな接続を確保するために、`MultiSubnetFailover=True` を接続文字列に追加します (SQL クライアントでサポートされている場合)。
+DNN リスナーに接続する必要があるアプリケーションの接続文字列を更新します。 DNN リスナーへの接続文字列では、DNN ポート番号を指定し、接続文字列で `MultiSubnetFailover=True` を指定する必要があります。 SQL クライアントで `MultiSubnetFailover=True` パラメーターがサポートされていない場合は、DNN リスナーと互換性がありません。  
+
+リスナー名 **DNN_Listener** とポート 6789 の接続文字列の例を次に示します。 
+
+`DataSource=DNN_Listener,6789,MultiSubnetFailover=True`
 
 ## <a name="test-failover"></a>[テスト フェールオーバー]
 
@@ -172,14 +178,21 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 
 ## <a name="limitations"></a>制限事項
 
-- 現時点では、可用性グループの DNN リスナーは、Windows Server 2016 以降上の SQL Server 2019 CU8 以降でのみサポートされています。 
 - DNN リスナーは、一意のポートを使用して構成する **必要があります**。  このポートは、どのレプリカでも他の接続と共有できません。
+- DNN リスナーに接続するクライアントは、接続文字列の `MultiSubnetFailover=True` パラメーターをサポートする必要があります。 
 - DNN を使用してその他の SQL Server 機能と可用性グループを操作する場合は、さらなる考慮事項が生じることがあります。 詳細については、[AG と DNN の相互運用性](availability-group-dnn-interoperability.md)に関する記事をご覧ください。 
 
 ## <a name="port-considerations"></a>ポートに関する考慮事項
 
-DNN リスナーは、特定の一意のポートで、すべての IP アドレスをリッスンするように設計されています。 リスナー名の DNS エントリは、可用性グループ内のすべてのレプリカのアドレスに解決されます。 これは、「[スクリプトの作成](#create-script)」セクションで示している PowerShell スクリプトで自動的に実行されます。 DNN リスナーはすべての IP アドレスで接続を受け入れるため、リスナー ポートが一意であること、可用性グループ内の他のレプリカで使用されていないことが重要です。 SQL Server は常に、直接、または SQL Browser サービスを介してポート 1433 でリッスンするため、どの DNN リスナーに対してもポート 1433 を使用することはできません。
+DNN リスナーは、特定の一意のポートで、すべての IP アドレスをリッスンするように設計されています。 リスナー名の DNS エントリは、可用性グループ内のすべてのレプリカのアドレスに解決されます。 これは、「[スクリプトの作成](#create-script)」セクションで示している PowerShell スクリプトで自動的に実行されます。 DNN リスナーはすべての IP アドレスで接続を受け入れるため、リスナー ポートが一意であること、可用性グループ内の他のレプリカで使用されていないことが重要です。 既定では、SQL Server は、直接、または SQL Browser サービスを介して、ポート 1433 でリッスンするため、DNN リスナーにはポート 1433 を使用しないことを強くお勧めします。 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure での SQL Server の HADR 機能について詳しくは、[可用性グループ](availability-group-overview.md)と[フェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)に関する記事をご覧ください。 また、高可用性とディザスター リカバリー用に環境を構成するための[ベスト プラクティス](hadr-cluster-best-practices.md)を学習することもできます。 
+可用性グループがデプロイされたら、[Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)を最適化することを検討します。 
+
+
+詳細については、以下をご覧ください。
+
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
+- [AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

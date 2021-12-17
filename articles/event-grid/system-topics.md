@@ -2,13 +2,13 @@
 title: Azure Event Grid でのシステム トピック
 description: Azure Event Grid でのシステム トピックについて説明します。
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: ca59dd6bb99b9b7d06f0622e8c0cb4e4234e21ff
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 07/19/2021
+ms.openlocfilehash: 7e0354ec2b9aa5c8644998d618db9db693979b62
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105733045"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550004"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid でのシステム トピック
 Event Grid でのシステム トピックは、Azure Storage や Azure Event Hubs などの Azure サービスによって発行された 1 つ以上のイベントを表します。 たとえば、システム トピックは **すべての BLOB イベント**、または **特定のストレージ アカウント** に対して発行された **BLOB 作成** および **BLOB 削除** イベントのみを表す可能性があります。 この例では、BLOB がストレージ アカウントにアップロードされると、Azure Storage サービスは Event Grid でのシステム トピックに **BLOB 作成** イベントを発行します。その後、そのイベントはそこから、イベントを受信して処理するトピックの [サブスクライバー](event-handlers.md)に転送されます。 
@@ -19,12 +19,14 @@ Event Grid でのシステム トピックは、Azure Storage や Azure Event Hu
 ## <a name="azure-services-that-support-system-topics"></a>システム トピックをサポートする Azure サービス
 自身でのシステム トピックの作成をサポートする Azure サービスの現在の一覧を次に示します。
 
+- [Azure API Management](event-schema-api-management.md)
 - [Azure App Configuration](event-schema-app-configuration.md)
 - [Azure App Service](event-schema-app-service.md)
 - [Azure Blob Storage](event-schema-blob-storage.md)
 - [Azure Communication Services](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
+- [Azure FarmBeats](event-schema-farmbeats.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)
 - [Azure Key Vault](event-schema-key-vault.md)
 - [Azure Machine Learning](event-schema-machine-learning.md)
@@ -42,7 +44,7 @@ Event Grid でのシステム トピックは、Azure Storage や Azure Event Hu
 
 - [Azure portal でシステム トピックを表示する](create-view-manage-system-topics.md#view-all-system-topics)
 - Azure portal でシステム トピックやイベント サブスクリプションのための Resource Manager テンプレートをエクスポートする
-- [システム トピックの診断ログを設定する](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-a-system-topic)
+- [システム トピックの診断ログを設定する](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-event-grid-system-topics)
 - 発行および配信エラーに関するアラートを設定する 
 
 ## <a name="lifecycle-of-system-topics"></a>システム トピックのライフサイクル
@@ -55,7 +57,12 @@ Event Grid でのシステム トピックは、Azure Storage や Azure Event Hu
 
 [CLI](create-view-manage-system-topics-cli.md)、[REST](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate)、または [Azure Resource Manager テンプレート](create-view-manage-system-topics-arm.md)を使用する場合は、上の方法のどちらかを選択できます。 まずシステム トピックを作成し、次にそのトピックのサブスクリプションを作成することをお勧めします。それは、これがシステム トピックを作成するための最新の方法であるためです。
 
+### <a name="failure-to-create-system-topics"></a>システム トピックの作成に失敗する
 Azure ポリシーを Event Grid サービスがシステム トピックを作成できないように設定している場合は、システム トピックの作成が失敗します。 たとえば、サブスクリプション内の特定の種類のリソース (Azure Storage や Azure Event Hubs など) の作成のみを許可するポリシーにしている場合があります。 
+
+このような場合、イベント フローの機能は維持されます。 ただし、システム トピックのメトリックと診断機能は使用できません。
+
+この機能が必要な場合は、システム トピック タイプのリソースの作成を許可し、「[システム トピックのライフサイクル](#lifecycle-of-system-topics)」の説明に従って、不足しているシステム トピックを作成します。
 
 ## <a name="location-and-resource-group-for-a-system-topic"></a>システム トピックのための場所とリソース グループ
 特定のリージョンまたは場所にある Azure イベント ソースの場合、システム トピックは Azure イベント ソースと同じ場所に作成されます。 たとえば、米国東部の Azure Blob Storage に対してイベント サブスクリプションを作成すると、米国東部にシステム トピックが作成されます。 Azure サブスクリプション、リソース グループ、Azure Maps などのグローバルな Azure イベント ソースの場合は、Event Grid によって **グローバル** な場所にシステム トピックが作成されます。 

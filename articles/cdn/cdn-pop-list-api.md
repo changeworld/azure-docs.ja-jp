@@ -3,7 +3,7 @@ title: Azure CDN の現在の POP IP リストの取得 | Microsoft Docs
 description: REST API を使用して、POP サーバーを取得する方法について説明します。 POP サーバーは、Azure Content Delivery Network エンドポイントに関連付けられている配信元サーバーに対して要求を行います。
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2019
-ms.author: allensu
+ms.date: 07/06/2021
+ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: 4197b1a5f047190872d055dc2ba8ccaa11efbe6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a471b16460ca92c43dda1c916840a56cb2a3808
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376345"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470074"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の POP IP リストの取得
 
@@ -28,7 +28,7 @@ ms.locfileid: "100376345"
 
 REST API を使用して、Verizon の POP (point of presence) サーバーの IP アドレスのセットを取得できます。 これらの POP サーバーは、Verizon プロファイル (**Azure CDN Standard from Verizon** または **Azure CDN Premium from Verizon**) で Azure Content Delivery Network (CDN) エンドポイントに関連付けられている配信元サーバーに要求を送信します。 この IP アドレスのセットは POP に要求を送信するときにクライアントが認識する IP アドレスとは異なることに注意してください。 
 
-POP リストを取得するための REST API 操作の構文については、「[Edge Nodes - List (エッジ ノード - リスト)](/rest/api/cdn/cdn/edgenodes/list)」を参照してください。
+POP リストを取得するための REST API 操作の構文については、「[Edge Nodes - List (エッジ ノード - リスト)](/rest/api/cdn/edge-nodes/list)」を参照してください。
 
 ## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の Microsoft POP IP リストの取得
 
@@ -36,11 +36,7 @@ Microsoft の Azure CDN からのトラフィックのみを受け入れるよ�
 
 Microsoft のバックエンド IP アドレス空間と Azure のインフラストラクチャ サービスによる Azure CDN からのトラフィックのみを受け入れるように、ご利用のバックエンドに対して IP ACLing を構成します。 
 
-* Microsoft の IPv4 バックエンド IP 空間からの Azure CDN: 147.243.0.0/16
-* Microsoft の IPv6 バックエンド IP 空間からの Azure CDN: 2a01:111:2050::/44
-
-Microsoft の Azure CDN でサービス タグを使用するには、Azure Front Door タグを使用してください。 Microsoft サービスに対する IP 範囲とサービス タグについては、[こちら](https://www.microsoft.com/download/details.aspx?id=56519)で見つけることができます。
-
+Azure Front Door [サービス タグ](../virtual-network/service-tags-overview.md)を Microsoft の Azure CDN と共に使用して、Microsoft のバックエンド IP 範囲を校正します。 完全なリストについては、Microsoft サービスの [IP 範囲とサービス タグ](https://www.microsoft.com/en-us/download/details.aspx?id=56519)を参照してください。
 
 ## <a name="typical-use-case"></a>一般的なユース ケース
 

@@ -1,13 +1,9 @@
 ---
 title: SLES マルチ SID 上の SAP NetWeaver に対する Azure VM の高可用性に関するガイド | Microsoft Docs
 description: SUSE Linux Enterprise Server for SAP Applications 上の SAP NetWeaver のマルチ SID 高可用性ガイド
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 74606909a0bc87caa6acfb0eaf35c05cf35b1858
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8442418896f0ce07e601d89a9a1b42ca5b62404a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676935"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569297"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
@@ -47,9 +43,9 @@ ms.locfileid: "101676935"
 [suse-drbd-guide]:https://www.suse.com/documentation/sle-ha-12/singlehtml/book_sleha_techguides/book_sleha_techguides.html
 [suse-ha-12sp3-relnotes]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
 
-[template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
-[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
-[template-file-server]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-file-server-md%2Fazuredeploy.json
+[template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
+[template-file-server]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-file-server-md%2Fazuredeploy.json
 
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
@@ -238,8 +234,8 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
    クラスターにデプロイする追加の SAP システム用のファイル システムで、ファイル `/etc/auto.direct` を更新します。  
 
-   * NFS ファイル サーバーを使用する場合は、[こちら](./high-availability-guide-suse.md#prepare-for-sap-netweaver-installation)の手順に従ってください
-   * Azure NetApp Files を使用する場合は、[こちら](./high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation)の手順に従ってください 
+   * NFS ファイル サーバーを使用する場合は、[SLES 上の SAP NetWeaver 用の Azure VM の高可用性](./high-availability-guide-suse.md#prepare-for-sap-netweaver-installation)に関するページにある指示に従ってください
+   * Azure NetApp Files を使用する場合は、[Azure NetApp Files を使用した SLES 上の SAP NW 用の Azure VM の高可用性](./high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation)に関するページにある指示に従ってください
 
    新しく追加した共有をマウントするには、`autofs` サービスを再起動する必要があります。  
 
@@ -582,7 +578,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
 1. HAGetFailoverConfig と HACheckFailoverConfig をテストします
 
-   ASCS インスタンスが現在実行されているノードで、次のコマンドを <sapsid>adm として実行します。 これらのコマンドが「失敗: メモリ不足」で失敗する場合は、ホスト名に含まれているダッシュが原因である可能性があります。 これは既知の問題であり、SUSE によって ap-suse-cluster-connector パッケージで修正される予定です。
+   ASCS インスタンスが現在実行されているノードで、次のコマンドを \<sapsid\>adm として実行します。 これらのコマンドが「失敗: メモリ不足」で失敗する場合は、ホスト名に含まれているダッシュが原因である可能性があります。 これは既知の問題であり、SUSE によって ap-suse-cluster-connector パッケージで修正される予定です。
 
    ```
     slesmsscl1:nw1adm 57> sapcontrol -nr 00 -function HAGetFailoverConfig

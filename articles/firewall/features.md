@@ -1,24 +1,24 @@
 ---
-title: Azure Firewall の機能
+title: Azure Firewall Standard の機能
 description: Azure Firewall の機能について説明します
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/02/2021
+ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: 8dbfb23d4314f8ceb13ad36ca9733e446e176090
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 0c9b871197085a6a220482c3b9d1d35f25d5b427
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278186"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136759"
 ---
-# <a name="azure-firewall-features"></a>Azure Firewall の機能
+# <a name="azure-firewall-standard-features"></a>Azure Firewall Standard の機能
 
-[Azure Firewall](overview.md) は、Azure 仮想ネットワーク リソースを保護する、クラウドベースのマネージド ネットワーク セキュリティ サービスです。
+[Azure Firewall](overview.md) Standard は、Azure 仮想ネットワーク リソースを保護する、クラウドベースのマネージド ネットワーク セキュリティ サービスです。
 
-![ファイアウォールの概要](media/overview/firewall-threat.png)
+:::image type="content" source="media/features/firewall-standard.png" alt-text="Azure Firewall Standard の機能":::
 
 Azure Firewall には次の機能が含まれています。
 
@@ -30,12 +30,16 @@ Azure Firewall には次の機能が含まれています。
 - FQDN のタグ
 - サービス タグ
 - 脅威インテリジェンス
+- DNS プロキシ
+- [カスタム DNS]
+- ネットワーク規則内の FQDN
+- 強制トンネル モードでのパブリック IP アドレスを使用しないデプロイ
 - 送信 SNAT サポート
 - 受信 DNAT のサポート
 - 複数のパブリック IP アドレス
 - Azure Monitor ログ記録
 - 強制トンネリング
-- Web カテゴリ (プレビュー)
+- Web カテゴリ
 - 認定資格
 
 ## <a name="built-in-high-availability"></a>組み込みの高可用性
@@ -59,7 +63,7 @@ Availability Zones の詳細については、「[Azure のリージョンと Av
 
 ## <a name="unrestricted-cloud-scalability"></a>クラウドによる無制限のスケーラビリティ
 
-Azure Firewall では、必要に応じてスケールアップしてネットワーク トラフィック フローの変化に対応できるので、ピーク時のトラフィックを処理するために予算を立てる必要がありません。
+Azure Firewall では、必要に応じてスケールアウトしてネットワーク トラフィック フローの変化に対応できるので、ピーク時のトラフィックを処理するために予算を立てる必要がありません。
 
 ## <a name="application-fqdn-filtering-rules"></a>アプリケーションの FQDN のフィルタリング規則
 
@@ -68,6 +72,8 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 ## <a name="network-traffic-filtering-rules"></a>ネットワーク トラフィックのフィルタリング規則
 
 送信元と送信先の IP アドレス、ポート、プロトコルを基準として、"*許可*" または "*拒否*" のネットワーク フィルタリング規則を一元的に作成できます。 Azure Firewall は完全にステートフルであるため、各種の接続の正当なパケットを識別できます。 規則は、複数のサブスクリプションと仮想ネットワークにまたがって適用および記録されます。
+
+Azure Firewall では、レイヤー 3 とレイヤー 4 のネットワーク プロトコルのステートフル フィルター処理がサポートされています。 レイヤー 3 の IP プロトコルをフィルター処理するには、ネットワーク規則で **任意** のプロトコルを選択し、ポートでワイルドカード **\*** を選択します。
 
 ## <a name="fqdn-tags"></a>FQDN のタグ
 
@@ -80,6 +86,30 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 ## <a name="threat-intelligence"></a>脅威インテリジェンス
 
 ファイアウォール用に[脅威インテリジェンス](threat-intel.md)ベースのフィルター処理を有効にして、既知の悪意のある IP アドレスやドメインとの間のトラフィックの警告と拒否を行うことができます。 この IP アドレスとドメインのソースは、Microsoft の脅威インテリジェンス フィードです。
+
+## <a name="dns-proxy"></a>DNS プロキシ
+
+DNS プロキシを有効にすると、Azure Firewall は DNS クエリを処理し、仮想ネットワークから目的の DNS サーバーに転送できます。 この機能は非常に重要であり、ネットワーク ルールで信頼性の高い FQDN フィルタリングを行うために必要です。 Azure Firewall とファイアウォール ポリシーの設定で DNS プロキシを有効にすることができます。 DNS プロキシの詳細については、「[Azure Firewall の DNS 設定](dns-settings.md)」を参照してください。
+
+## <a name="custom-dns"></a>[カスタム DNS]
+
+カスタム DNS を使用すると、独自の DNS サーバーを使用するように Azure Firewall を構成し、ファイアウォールの送信依存関係が Azure DNS で解決された状態を維持することができます。 Azure Firewall とファイアウォール ポリシーの DNS 設定で、単一の DNS サーバーまたは複数のサーバーを構成することができます。 カスタム DNS の詳細については、「[Azure Firewall の DNS 設定](dns-settings.md)」を参照してください。
+
+Azure Firewall では、Azure プライベート DNS を使用して名前を解決することもできます。 Azure Firewall が存在する仮想ネットワークは、Azure プライベート ゾーンにリンクされている必要があります。 詳細については、「[プライベート リンクを使用して DNS フォワーダーとして Azure Firewall を使用する](https://github.com/adstuart/azure-privatelink-dns-azurefirewall)」を参照してください。
+
+## <a name="fqdn-in-network-rules"></a>ネットワーク規則内の FQDN
+
+Azure Firewall とファイアウォール ポリシーでの DNS 解決に基づいて、ネットワーク ルールで完全修飾ドメイン名 (FQDN) を使用できます。 
+
+ルール コレクションで指定された FQDN は、ファイアウォールの DNS 設定に基づいて IP アドレスに変換されます。 この機能を使用すると、任意の TCP/UDP プロトコル (NTP、SSH、RDP など) を含む FQDN を使用して送信トラフィックをフィルター処理できます。 この機能は DNS の解決に基づいているため、DNS プロキシを有効にして、保護された仮想マシンとファイアウォールとの間で名前解決に整合性があることを確認するよう強くお勧めします。
+
+## <a name="deploy-azure-firewall-without-public-ip-address-in-forced-tunnel-mode"></a>強制トンネル モードでパブリック IP アドレスを使用せずに Azure Firewall をデプロイする
+
+Azure Firewall サービスでは、運用目的でパブリック IP アドレスが必要になります。 セキュリティで保護されていますが、一部のデプロイでは、パブリック IP アドレスをインターネットに直接公開しないことをお勧めします。 
+
+このような場合は、強制トンネル モードで Azure Firewall をデプロイできます。 この構成では、管理 NIC が作成されます。この NIC は、操作用に Azure Firewall によって使用されます。 テナント データ パスネットワークは、パブリック IP アドレスなしで構成でき、インターネット トラフィックは、別のファイアウォールに強制的にトンネリングするか、完全にブロックすることができます。
+
+強制トンネル モードを実行時に構成することはできません。 ファイアウォールを再デプロイするか、停止および開始機能を使用して、既存の Azure Firewall を強制トンネル モードで再構成できます。 セキュリティで保護されたハブにデプロイされているファイアウォールは、常に強制トンネル モードでデプロイされます。
 
 ## <a name="outbound-snat-support"></a>送信 SNAT サポート
 
@@ -100,7 +130,7 @@ Azure Firewall メトリックで SNAT ポートの使用率を監視できま�
 これにより、次のシナリオが実現します。
 
 - **DNAT** - 複数の標準ポート インスタンスをバックエンド サーバーに変換できます。 たとえば、2 つのパブリック IP アドレスがある場合、両方の IP アドレス用の TCP ポート 3389 (RDP) を変換できます。
-- **SNAT** - 送信 SNAT 接続にさらにポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。 この構成を簡略化するには、[パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)を使用することを検討してください。
+- **SNAT** - 送信 SNAT 接続にさらにポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。 この構成を簡略化するには、[パブリック IP アドレス プレフィックス](../virtual-network/ip-services/public-ip-address-prefix.md)を使用することを検討してください。
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor ログ記録
 
@@ -114,29 +144,17 @@ Azure Firewall ブックにより、Azure Firewall のデータ分析のため�
 
 インターネットへのすべてのトラフィックを、インターネットに直接送信するのではなく、指定された次ホップにルーティングするように、Azure Firewall を構成することができます。 たとえば、インターネットに渡す前にネットワーク トラフィックを処理するために、オンプレミスのエッジ ファイアウォールや他のネットワーク仮想アプライアンス (NVA) があるような場合です。 詳細については、「[Azure Firewall 強制トンネリング](forced-tunneling.md)」を参照してください。
 
-## <a name="web-categories-preview"></a>Web カテゴリ (プレビュー)
+## <a name="web-categories"></a>Web カテゴリ
 
-Web カテゴリでは、管理者は、ギャンブルの Web サイトやソーシャル メディアの Web サイトなどの Web サイト カテゴリへのユーザーのアクセスを許可または拒否できます。 Web カテゴリは Azure Firewall Standard に含まれていますが、Azure Firewall Premium プレビューではさらに細かく調整されています。 Standard SKU の FQDN に基づくカテゴリと一致する Web カテゴリの機能とは異なり、Premium SKU では HTTP と HTTPS の両方のトラフィックの URL 全体に従ってカテゴリと一致します。 Azure Firewall Premium プレビューの詳細については、[Azure Firewall Premium プレビューの機能](premium-features.md)に関するページを参照してください。
+Web カテゴリでは、管理者は、ギャンブルの Web サイトやソーシャル メディアの Web サイトなどの Web サイト カテゴリへのユーザーのアクセスを許可または拒否できます。 Web カテゴリは Azure Firewall Standard に含まれていますが、Azure Firewall Premium ではさらに細かく調整されています。 FQDN に基づくカテゴリと照合する Standard SKU の Web カテゴリ機能とは異なり、Premium SKU では、HTTP と HTTPS の両方のトラフィックについて URL 全体に従ってカテゴリを照合します。 Azure Firewall Premium の詳細については、[Azure Firewall Premium の機能](premium-features.md)に関するページを参照してください。
 
-たとえば、Azure Firewall が `www.google.com/news` の HTTPS 要求をインターセプトする場合、次のような分類が必要です。 
+たとえば、Azure Firewall が `www.google.com/news` の HTTPS 要求をインターセプトする場合、次のような分類が想定されます。 
 
 - Firewall Standard - FQDN 部分のみが検証されるため、`www.google.com` は "*検索エンジン*" として分類されます。 
 
 - Firewall Premium - URL 全体が検証されるため、`www.google.com/news` は "*ニュース*" として分類されます。
 
 カテゴリは、 **[責任]** 、 **[高帯域幅]** 、 **[ビジネス利用]** 、 **[生産性の低下]** 、 **[一般的なネット サーフィン]** 、 **[未分類]** の下で重要度に基づいて整理されています。
-
-### <a name="categorization-change"></a>分類の変更
-
-次の場合に、分類の変更を要求できます。
-
- - FQDN または URL が別のカテゴリの下にある必要があると思われる 
- 
-or 
-
-- 分類されていない FQDN または URL に対して推奨されるカテゴリがある
-
-[https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) で要求を送信してください。
 
 ### <a name="category-exceptions"></a>カテゴリの例外
 
@@ -150,4 +168,4 @@ Azure Firewall は、Payment Card Industry (PCI)、Service Organization Controls
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Firewall Premium プレビューの機能](premium-features.md)
+- [Azure Firewall Premium の機能](premium-features.md)

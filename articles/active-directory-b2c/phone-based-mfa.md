@@ -3,20 +3,20 @@ title: Azure AD B2C での電話ベースの MFA のセキュリティ保護
 titleSuffix: Azure AD B2C
 description: Azure Monitor Log Analytics レポートおよびアラートを使用して、Azure AD B2C テナントの電話ベースの多要素認証 (MFA) をセキュリティで保護するためのヒントについて説明します。 ブックを使用して、不正な電話認証を特定し、不正なサインアップを軽減します。 =
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/01/2021
-ms.author: mimart
+ms.date: 09/20/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: cc9e0be90c138ba33e1b4dfe11ea6f9c8b7da297
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef0c610b0b7177b4132832974a6f2ac6de37aa7b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033556"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044515"
 ---
 # <a name="securing-phone-based-multi-factor-authentication-mfa"></a>電話ベースの多要素認証 (MFA) のセキュリティ保護
 
@@ -95,23 +95,20 @@ GitHub の [Azure AD B2C レポートとアラート](https://github.com/azure-a
 - ユーザーが電話番号を検証するドロップダウン メニューから、組織に関係のない国番号を削除します (この変更は今後のサインアップに適用されます)。
     
    1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com) にサインインします。
-
-   2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
-
-   3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-
-   4. ユーザー フローを選択し、 **[言語]** を選択します。 組織の地理的な場所の言語を選択して、言語の詳細パネルを開きます。 (この例では、米国の場合の **[英語 en]** を選択します)。 **[多要素認証] ページ** を選択し、 **[既定値のダウンロード (en)]** を選択します。
+   1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+   1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+   1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+   1. ユーザー フローを選択し、 **[言語]** を選択します。 組織の地理的な場所の言語を選択して、言語の詳細パネルを開きます。 (この例では、米国の場合の **[英語 en]** を選択します)。 **[多要素認証] ページ** を選択し、 **[既定値のダウンロード (en)]** を選択します。
  
       ![新しいオーバーライドをアップロードして既定値をダウンロードする](media/phone-based-mfa/download-defaults.png)
 
-   5. 前の手順でダウンロードした JSON ファイルを開きます。 ファイルで `DEFAULT` を検索し、行を `"Value": "{\"DEFAULT\":\"Country/Region\",\"US\":\"United States\"}"` に置き換えます。 `Overrides` を `true` に設定してください。
+   1. 前の手順でダウンロードした JSON ファイルを開きます。 ファイルで `DEFAULT` を検索し、行を `"Value": "{\"DEFAULT\":\"Country/Region\",\"US\":\"United States\"}"` に置き換えます。 `Overrides` を `true` に設定してください。
 
    > [!NOTE]
    > `countryList` 要素で許可されている国番号の一覧をカスタマイズできます (「[電話ファクター認証ページの例](localization-string-ids.md#phone-factor-authentication-page-example)」を参照してください)。
 
-   7. JSON ファイルを保存します。 言語の詳細パネルの、 **[新しいオーバーライドのアップロード]** で、変更済みの JSON ファイルを選択してアップロードします。
-
-   8. パネルを閉じ、 **[ユーザー フローを実行します]** を選択します。 この例では、 **[米国]** が、ドロップダウンで使用できる唯一の国番号であることを確認します。
+   1. JSON ファイルを保存します。 言語の詳細パネルの、 **[新しいオーバーライドのアップロード]** で、変更済みの JSON ファイルを選択してアップロードします。
+   1. パネルを閉じ、 **[ユーザー フローを実行します]** を選択します。 この例では、 **[米国]** が、ドロップダウンで使用できる唯一の国番号であることを確認します。
  
       ![国番号のドロップダウン](media/phone-based-mfa/country-code-drop-down.png)
 

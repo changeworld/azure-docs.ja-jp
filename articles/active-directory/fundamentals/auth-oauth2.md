@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1604d79ce5eb9949028cd677b340bf3d4b09f6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6bb7b35dc4a0e41278fcadd8ed487a7da0f00fc4
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96172841"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045958"
 ---
 # <a name="oauth-20-authentication-with-azure-active-directory"></a>Azure Active Directory を使用した OAuth 2.0 認証
 
@@ -26,9 +26,9 @@ OAuth 2.0 は、認可用の業界プロトコルです。 ユーザーは保護
 
 OAuth 2.0 は、OpenID Connect (OIDC) に直接関連しています。 OIDC は OAuth 2.0 上に構築された認証と認可の層であるため、OAuth 1.0 との下位互換性がありません。 Azure Active Directory (Azure AD) では、すべての OAuth 2.0 フローがサポートされています。 
 
-## <a name="use-when"></a>次の場合に使用します。
+## <a name="use-for"></a>用途:
 
-リッチ クライアントおよび最新アプリのシナリオと RESTful Web API アクセスの場合。
+リッチ クライアントおよび最新アプリのシナリオと RESTful Web API アクセス。
 
 ![アーキテクチャの図](./media/authentication-patterns/oauth.png)
 

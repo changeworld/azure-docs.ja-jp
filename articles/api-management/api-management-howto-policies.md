@@ -1,42 +1,47 @@
 ---
 title: Azure API Management のポリシー | Microsoft Docs
-description: API Management のポリシーを作成、編集、構成する方法について説明します。 コード例を参照し、使用可能なその他のリソースを確認してください。
+description: API Management のポリシーを作成、編集、構成する方法について説明します。 コード例を参照し、使用可能なリソースを確認してください。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/29/2017
-ms.author: apimpm
-ms.openlocfilehash: 37ac6369790ed526fd923819558863ae84432aed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/25/2021
+ms.author: danlep
+ms.openlocfilehash: 37e25908bd08ca9618bc56bb2e10ff8e48a46fc6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358118"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649680"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API Management のポリシー
 
-Azure API Management (APIM) のポリシーは、発行者がその構成を通じて API の動作を変更できる、システムの強力な機能の 1 つです。 ポリシーは、API の要求または応答に対して順に実行される一連のステートメントのコレクションです。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられます。 他にも多数のポリシーが標準で提供されています。
+Azure API Management API パブリッシャーは、ポリシーを使用した構成で API の動作を変更できます。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 これらのステートメントには、次のものがあります。
 
-ポリシーは、API コンシューマーとマネージド API の間に配置されたゲートウェイ内で適用されます。 ゲートウェイは、すべての要求を受け取り、通常はそれらの要求をそのまま基底の API に転送します。 ただし、ポリシーを使用すると、受信要求と送信応答の両方に変更を適用できます。
+* XML から JSON への形式変換。
+* 開発者からの着信数を制限する呼び出しレート リミッター。 
 
-ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー][Control flow] ポリシーや[変数の設定][Set variable]ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー][Advanced policies]」と「[ポリシーの式][Policy expressions]」をご覧ください。
+他にも多数のポリシーが標準で提供されています。
+
+ポリシーは、API コンシューマーとマネージド API の間に配置されたゲートウェイ内で適用されます。 ゲートウェイが要求を受信し、変更されていない要求を基になる API に転送する間、ポリシーは受信要求と送信応答の両方に変更を適用できます。
+
+ポリシー式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 ポリシーの中には、[制御フロー][Control flow]や[変数の設定][Set variable]のように、ポリシー式に基づいたものがあります。 詳細は、「[高度なポリシー][Advanced policies]」と、「[ポリシー式][Policy expressions]」を参照してください。
 
 ## <a name="understanding-policy-configuration"></a><a name="sections"> </a>ポリシー構成について
 
-ポリシー定義は、一連の受信ステートメントと送信ステートメントが記述された単純な XML ドキュメントです。 XML は、定義ウィンドウで直接編集できます。 ウィンドウの右側にはステートメントの一覧が表示され、現在のスコープに適用できるステートメントが有効になり強調表示されます。
+ポリシー定義は、一連の受信および送信ステートメントが記述された簡単な XML ドキュメントです。 XML は定義ウィンドウで直接編集できます。このウィンドウには、次の機能も用意されています。
+* 右側にステートメント一覧を表示。
+* 現在のスコープに適用可能なステートメントは有効になり、強調表示されます。
 
 有効なステートメントをクリックすると、定義ビュー内のカーソル位置に適切な XML が追加されます。 
 
 > [!NOTE]
-> 追加するポリシーが有効になっていない場合、そのポリシー用の正しいスコープが選択されていることを確認してください。 各ポリシー ステートメントは、特定のスコープおよびポリシー セクション内で使用するように設計されています。 ポリシーのポリシー セクションとスコープを確認するには、[ポリシー リファレンス][Policy Reference]に関するページでそのポリシーの **使用例** を参照してください。
-> 
-> 
+> 追加するポリシーが有効になっていない場合、そのポリシー用の正しいスコープが選択されていることを確認してください。 各ポリシー ステートメントは、特定のスコープおよびポリシー セクション内で使用するように設計されています。 ポリシーのセクションとスコープを確認するには、[ポリシー リファレンス][Policy Reference]の **使用例** セクションを参照してください。
 
 構成は `inbound`、`backend`、`outbound`、および `on-error` に分かれます。 要求および応答に対して、指定された一連のポリシー ステートメントが順に実行されます。
 
@@ -58,7 +63,18 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 </policies> 
 ```
 
-要求の処理中にエラーが発生した場合、`inbound`、`backend`、または `outbound` セクションの残りの手順はスキップされ、実行は `on-error` セクションのステートメントにジャンプします。 `on-error` セクションにポリシー ステートメントを配置することで、`context.LastError` プロパティを使用してエラーを確認し、`set-body` ポリシーを使用してエラーの検査とカスタマイズを行い、エラーが発生した場合の動作を構成できます。 組み込み手順用と、ポリシー ステートメントの処理中に発生する可能性があるエラー用のエラー コードがあります。 詳細については、 [API Management のポリシーにおけるエラー処理](./api-management-error-handling-policies.md)に関するページを参照してください。
+要求の処理中にエラーが発生した場合:
+* `inbound`、`backend`、`outbound` セクションの残りのステップはすべてスキップされます。
+* 実行は `on-error` セクションのステートメントにジャンプします。
+
+ポリシー ステートメントを `on-error` セクションに配置することで、以下が可能になります。
+* `context.LastError` プロパティを使用してエラーを確認します。
+* `set-body` ポリシーを使用して、エラー応答を検査し、カスタマイズできます。
+* エラーが発生した場合の処理を構成します。 
+
+詳細は、 [API Management のポリシーにおけるエラー処理](./api-management-error-handling-policies.md)を参照してください。
+* プラグイン手順
+* ポリシー ステートメントの処理中に発生する可能性があるエラー。 
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>ポリシーの構成方法
 
@@ -76,7 +92,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 
 ### <a name="apply-policies-specified-at-different-scopes"></a>さまざまなスコープで指定されたポリシーを適用する
 
-グローバル レベルのポリシーと API 向けに構成されたポリシーがある場合、API が使用されるたびに両方のポリシーが適用されます。 API Management では、基本要素を介してポリシー ステートメントの組み合わせの順序を指定できます。 
+グローバル レベルのポリシーと、特定の API に対して設定されたポリシーがある場合、その特定の API が使用されるたびに両方のポリシーが適用されます。 API Management では、`base` 要素を介してポリシー ステートメントの組み合わせの順序を指定できます。 
 
 ```xml
 <policies>
@@ -88,7 +104,12 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 </policies>
 ```
 
-上のポリシー定義の例では、`cross-domain` ステートメントが上位のポリシーよりも前に実行され、その後に `find-and-replace` ポリシーが続いています。 
+上記のポリシー定義の例では、次のようになります。
+* `cross-domain` ステートメントは、それより高いポリシーの前に実行されます。
+* `find-and-replace` ポリシーは、それより高いポリシーの前に実行されます。 
+
+>[!NOTE]
+> API スコープで `<base />` タグを削除すると、API スコープで構成されたポリシーだけが適用されます。 製品とグローバル スコープのどちらのポリシーも適用されません。
 
 ### <a name="restrict-incoming-requests"></a>受信要求を制限する
 

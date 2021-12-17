@@ -3,7 +3,7 @@ title: 'チュートリアル: Azure DevOps Starter を使用して既存のコ�
 description: Azure DevOps Starter を利用すると、Azure を使い始めるのが簡単になります。 DevOps Projects により、独自のコードと GitHub リポジトリを使用して、いくつかの簡単な手順で Azure サービス上にアプリを立ち上げることができます。
 services: vsts
 documentationcenter: vs-devops-build
-ms.author: mlearned
+ms.author: gwallace
 ms.manager: gwallace
 ms.workload: web
 ms.prod: devops
@@ -11,14 +11,14 @@ ms.technology: devops-cicd
 ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/24/2020
-author: mlearned
+author: georgewallace
 ms.custom: mvc
-ms.openlocfilehash: c03ba657ac264b72d035f28956354398421ed2f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9600dcc2c9cbd150783ed1a14afb2b785ba5b054
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566602"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056342"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Azure DevOps Starter を使用して GitHub リポジトリ用の CI/CD パイプラインを作成する
 

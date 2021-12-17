@@ -1,14 +1,14 @@
 ---
 title: ラボ作成者が Azure Lab Services で場所を選択できるようにする
 description: この記事では、ラボ アカウント管理者が、ラボ作成者に対してラボの場所を選択できるようにする方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9dbafe6b297d7b94b1d1ec5eb419345cb140457
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85444201"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177253"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>ラボ作成者が Azure Lab Services でラボ用の場所を選択できるようにする
 Azure Lab Services では、ラボ アカウントの所有者は、ラボ作成者 (教師) が作成するラボの場所を選択できるようにすることができます。 この場所は、ラボ アカウントの場所と異なっていてもかまいません。 場所は、Azure リージョンのグループです。 たとえば、米国の場所は、米国東部、米国西部などのリージョンのグループです。 

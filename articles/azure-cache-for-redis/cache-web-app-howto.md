@@ -1,20 +1,20 @@
 ---
 title: Azure Cache for Redis で ASP.NET Web アプリを作成する
 description: このクイック スタートでは、Azure Cache for Redis を使用して ASP.NET Web アプリを作成する方法について説明します
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: quickstart
 ms.date: 09/29/2020
-ms.author: yegu
+ms.author: cauribeg
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 19c54ad62e45ecf6e31b46d0291f61dca8e8d9b3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5512407bc68223d6c8f84e3f18af3b24a65a31f9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722465"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440331"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>クイックスタート: ASP.NET Web アプリで Azure Cache for Redis を使用する 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>クイックスタート: ASP.NET Web アプリで Azure Cache for Redis を使用する
 
 このクイック スタートでは、Visual Studio 2019 を使用して、Azure Cache for Redis に接続してキャッシュからデータを格納および取得する ASP.NET Web アプリケーションを作成します。 次に、アプリを Azure App Service にデプロイします。
 
@@ -46,7 +46,7 @@ ms.locfileid: "104722465"
 4. **.NET Framework 4.6.1** 以降が選択されていることを確認します。
 
 5. **［作成］** を選択します
-   
+
 6. プロジェクトの種類として、 **[MVC]** を選択します。
 
 7. **[認証]** の設定で **[認証なし]** が指定されていることを確認します。 Visual Studio のバージョンによっては、既定の **[認証]** が別の設定になっている場合があります。 これを変更するには、**[認証の変更]**、**[認証なし]** の順に選択します。
@@ -57,11 +57,11 @@ ms.locfileid: "104722465"
 
 次に、アプリ用のキャッシュを作成します。
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-access-keys](includes/redis-cache-access-keys.md)]
 
-#### <a name="to-edit-the-cachesecretsconfig-file"></a>*CacheSecrets.config* ファイルを編集するには
+### <a name="to-edit-the-cachesecretsconfig-file"></a>*CacheSecrets.config* ファイルを編集するには
 
 1. コンピューター上に *CacheSecrets.config* というファイルを作成します。そのファイルをサンプル アプリケーションのソース コードでチェックインされない場所に配置します。 このクイック スタートでは、*CacheSecrets.config* ファイルを *C:\AppSecrets\CacheSecrets.config* に配置します。
 
@@ -86,26 +86,27 @@ ms.locfileid: "104722465"
 
 このセクションでは、Azure Cache for Redis に対する簡単なテストを表示する新しいビューをサポートするようにアプリケーションを更新します。
 
-* [キャッシュ用のアプリ設定で web.config ファイルを更新する](#update-the-webconfig-file-with-an-app-setting-for-the-cache)
-* StackExchange.Redis クライアントを使うようにアプリケーションを構成する
-* HomeController と Layout を更新する
-* 新しい RedisCache ビューを追加する
+- [キャッシュ用のアプリ設定で web.config ファイルを更新する](#update-the-webconfig-file-with-an-app-setting-for-the-cache)
+- StackExchange.Redis クライアントを使うようにアプリケーションを構成する
+- HomeController と Layout を更新する
+- 新しい RedisCache ビューを追加する
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>キャッシュ用のアプリ設定で web.config ファイルを更新する
 
-アプリケーションをローカルで実行すると、*CacheSecrets.config* 内の情報が、Azure Cache for Redis インスタンスへの接続に使われます。 後でこのアプリケーションを Azure にデプロイします。 そのときに、アプリケーションがこのファイルの代わりにキャッシュ接続情報の取得に使用するアプリ設定を Azure 内で構成します。 
+アプリケーションをローカルで実行すると、*CacheSecrets.config* 内の情報が、Azure Cache for Redis インスタンスへの接続に使われます。 後でこのアプリケーションを Azure にデプロイします。 そのときに、アプリケーションがこのファイルの代わりにキャッシュ接続情報の取得に使用するアプリ設定を Azure 内で構成します。
 
 *CacheSecrets.config* はアプリケーションと一緒に Azure にデプロイされず、アプリケーションのローカルなテストの間にだけ使われます。 キャッシュ データへの不正アクセスを防ぐため、この情報は可能な限り安全に保持してください。
 
 #### <a name="to-update-the-webconfig-file"></a>*web.config* ファイルを更新するには
+
 1. **ソリューション エクスプローラー** で、*web.config* ファイルをダブルクリックして開きます。
 
     ![web.config](./media/cache-web-app-howto/cache-web-config.png)
 
 2. *web.config* ファイルで `<appSetting>` 要素を見つけます。 次の `file` 属性を追加します。 異なるファイル名または場所を使用した場合は、この例の値を実際の値で置き換えてください。
 
-* 変更前: `<appSettings>`
-* 変更後: `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+- 変更前: `<appSettings>`
+- 変更後: `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
 `<appSettings>` 要素内のマークアップは、ASP.NET ランタイムによって外部ファイルの内容と結合されます。 指定したファイルが見つからない場合、このファイル属性は無視されます。 このアプリケーションのソース コードにシークレット (キャッシュへの接続文字列) は含まれていません。 Web アプリを Azure にデプロイするときに、*CacheSecrets.config* ファイルはデプロイされません。
 
@@ -119,7 +120,7 @@ ms.locfileid: "104722465"
     Install-Package StackExchange.Redis
     ```
 
-3. クライアント アプリケーションから StackExchange.Azure Cache for Redis クライアントを使用して Azure Cache for Redis にアクセスするために必要なアセンブリ参照が NuGet パッケージによってダウンロードされ追加されます。 `StackExchange.Redis` クライアント ライブラリの厳密な名前を持つバージョンを使用する場合は、`StackExchange.Redis.StrongName` パッケージをインストールします。
+3. クライアント アプリケーションから StackExchange.Azure Cache for Redis クライアントを使用して Azure Cache for Redis にアクセスするために必要なアセンブリ参照が NuGet パッケージによってダウンロードされ追加されます。 `StackExchange.Redis` クライアント ライブラリの厳密な名前を持つバージョンを使用する場合は、`StackExchange.Redis` パッケージをインストールします。
 
 ### <a name="to-update-the-homecontroller-and-layout"></a>HomeController とレイアウトを更新するには
 
@@ -138,208 +139,277 @@ ms.locfileid: "104722465"
 3. 新しいキャッシュに対していくつかのコマンドを実行する新しい `RedisCache` アクションをサポートするために、次のメンバーを `HomeController` クラスに追加します。
 
     ```csharp
-    public ActionResult RedisCache()
-    {
-        ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
-
-        IDatabase cache = GetDatabase();
-
-        // Perform cache operations using the cache object...
-
-        // Simple PING command
-        ViewBag.command1 = "PING";
-        ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
-
-        // Simple get and put of integral data types into the cache
-        ViewBag.command2 = "GET Message";
-        ViewBag.command2Result = cache.StringGet("Message").ToString();
-
-        ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
-        ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
-
-        // Demonstrate "SET Message" executed as expected...
-        ViewBag.command4 = "GET Message";
-        ViewBag.command4Result = cache.StringGet("Message").ToString();
-
-        // Get the client list, useful to see if connection list is growing...
-        // Note that this requires allowAdmin=true in the connection string
-        ViewBag.command5 = "CLIENT LIST";
-        StringBuilder sb = new StringBuilder();
-        var endpoint = (System.Net.DnsEndPoint)GetEndPoints()[0];
-        IServer server = GetServer(endpoint.Host, endpoint.Port);
-        ClientInfo[] clients = server.ClientList();
-
-        sb.AppendLine("Cache response :");
-        foreach (ClientInfo client in clients)
+         public async Task<ActionResult> RedisCache()
         {
-            sb.AppendLine(client.Raw);
-        }
+            ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
 
-        ViewBag.command5Result = sb.ToString();
-
-        return View();
-    }
-
-    private static long lastReconnectTicks = DateTimeOffset.MinValue.UtcTicks;
-    private static DateTimeOffset firstErrorTime = DateTimeOffset.MinValue;
-    private static DateTimeOffset previousErrorTime = DateTimeOffset.MinValue;
-
-    private static readonly object reconnectLock = new object();
-
-    // In general, let StackExchange.Redis handle most reconnects,
-    // so limit the frequency of how often ForceReconnect() will
-    // actually reconnect.
-    public static TimeSpan ReconnectMinFrequency => TimeSpan.FromSeconds(60);
-
-    // If errors continue for longer than the below threshold, then the
-    // multiplexer seems to not be reconnecting, so ForceReconnect() will
-    // re-create the multiplexer.
-    public static TimeSpan ReconnectErrorThreshold => TimeSpan.FromSeconds(30);
-
-    public static int RetryMaxAttempts => 5;
-
-    private static Lazy<ConnectionMultiplexer> lazyConnection = CreateConnection();
-
-    public static ConnectionMultiplexer Connection
-    {
-        get
-        {
-            return lazyConnection.Value;
-        }
-    }
-
-    private static Lazy<ConnectionMultiplexer> CreateConnection()
-    {
-        return new Lazy<ConnectionMultiplexer>(() =>
-        {
-            string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-            return ConnectionMultiplexer.Connect(cacheConnection);
-        });
-    }
-
-    private static void CloseConnection(Lazy<ConnectionMultiplexer> oldConnection)
-    {
-        if (oldConnection == null)
-            return;
-
-        try
-        {
-            oldConnection.Value.Close();
-        }
-        catch (Exception)
-        {
-            // Example error condition: if accessing oldConnection.Value causes a connection attempt and that fails.
-        }
-    }
-
-    /// <summary>
-    /// Force a new ConnectionMultiplexer to be created.
-    /// NOTES:
-    ///     1. Users of the ConnectionMultiplexer MUST handle ObjectDisposedExceptions, which can now happen as a result of calling ForceReconnect().
-    ///     2. Don't call ForceReconnect for Timeouts, just for RedisConnectionExceptions or SocketExceptions.
-    ///     3. Call this method every time you see a connection exception. The code will:
-    ///         a. wait to reconnect for at least the "ReconnectErrorThreshold" time of repeated errors before actually reconnecting
-    ///         b. not reconnect more frequently than configured in "ReconnectMinFrequency"
-    /// </summary>
-    public static void ForceReconnect()
-    {
-        var utcNow = DateTimeOffset.UtcNow;
-        long previousTicks = Interlocked.Read(ref lastReconnectTicks);
-        var previousReconnectTime = new DateTimeOffset(previousTicks, TimeSpan.Zero);
-        TimeSpan elapsedSinceLastReconnect = utcNow - previousReconnectTime;
-
-        // If multiple threads call ForceReconnect at the same time, we only want to honor one of them.
-        if (elapsedSinceLastReconnect < ReconnectMinFrequency)
-            return;
-
-        lock (reconnectLock)
-        {
-            utcNow = DateTimeOffset.UtcNow;
-            elapsedSinceLastReconnect = utcNow - previousReconnectTime;
-
-            if (firstErrorTime == DateTimeOffset.MinValue)
+            if (Connection == null)
             {
-                // We haven't seen an error since last reconnect, so set initial values.
-                firstErrorTime = utcNow;
-                previousErrorTime = utcNow;
-                return;
+                await InitializeAsync();
             }
 
-            if (elapsedSinceLastReconnect < ReconnectMinFrequency)
-                return; // Some other thread made it through the check and the lock, so nothing to do.
+            IDatabase cache = await GetDatabaseAsync();
 
-            TimeSpan elapsedSinceFirstError = utcNow - firstErrorTime;
-            TimeSpan elapsedSinceMostRecentError = utcNow - previousErrorTime;
+            // Perform cache operations using the cache object...
 
-            bool shouldReconnect =
-                elapsedSinceFirstError >= ReconnectErrorThreshold // Make sure we gave the multiplexer enough time to reconnect on its own if it could.
-                && elapsedSinceMostRecentError <= ReconnectErrorThreshold; // Make sure we aren't working on stale data (e.g. if there was a gap in errors, don't reconnect yet).
+            // Simple PING command
+            ViewBag.command1 = "PING";
+            ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
 
-            // Update the previousErrorTime timestamp to be now (e.g. this reconnect request).
-            previousErrorTime = utcNow;
+            // Simple get and put of integral data types into the cache
+            ViewBag.command2 = "GET Message";
+            ViewBag.command2Result = cache.StringGet("Message").ToString();
 
-            if (!shouldReconnect)
-                return;
+            ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
+            ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
 
-            firstErrorTime = DateTimeOffset.MinValue;
-            previousErrorTime = DateTimeOffset.MinValue;
+            // Demonstrate "SET Message" executed as expected...
+            ViewBag.command4 = "GET Message";
+            ViewBag.command4Result = cache.StringGet("Message").ToString();
 
-            Lazy<ConnectionMultiplexer> oldConnection = lazyConnection;
-            CloseConnection(oldConnection);
-            lazyConnection = CreateConnection();
-            Interlocked.Exchange(ref lastReconnectTicks, utcNow.UtcTicks);
+            // Get the client list, useful to see if connection list is growing...
+            // Note that this requires allowAdmin=true in the connection string
+            ViewBag.command5 = "CLIENT LIST";
+            StringBuilder sb = new StringBuilder();
+            var endpoint = (System.Net.DnsEndPoint)(await GetEndPointsAsync())[0];
+            IServer server = await GetServerAsync(endpoint.Host, endpoint.Port);
+            ClientInfo[] clients = await server.ClientListAsync();
+
+            sb.AppendLine("Cache response :");
+            foreach (ClientInfo client in clients)
+            {
+                sb.AppendLine(client.Raw);
+            }
+
+            ViewBag.command5Result = sb.ToString();
+
+            return View();
         }
-    }
 
-    // In real applications, consider using a framework such as
-    // Polly to make it easier to customize the retry approach.
-    private static T BasicRetry<T>(Func<T> func)
-    {
-        int reconnectRetry = 0;
-        int disposedRetry = 0;
+        private static long _lastReconnectTicks = DateTimeOffset.MinValue.UtcTicks;
+        private static DateTimeOffset _firstErrorTime = DateTimeOffset.MinValue;
+        private static DateTimeOffset _previousErrorTime = DateTimeOffset.MinValue;
 
-        while (true)
+        private static SemaphoreSlim _reconnectSemaphore = new SemaphoreSlim(initialCount: 1, maxCount: 1);
+        private static SemaphoreSlim _initSemaphore = new SemaphoreSlim(initialCount: 1, maxCount: 1);
+
+        private static ConnectionMultiplexer _connection;
+        private static bool _didInitialize = false;
+
+        // In general, let StackExchange.Redis handle most reconnects,
+        // so limit the frequency of how often ForceReconnect() will
+        // actually reconnect.
+        public static TimeSpan ReconnectMinInterval => TimeSpan.FromSeconds(60);
+
+        // If errors continue for longer than the below threshold, then the
+        // multiplexer seems to not be reconnecting, so ForceReconnect() will
+        // re-create the multiplexer.
+        public static TimeSpan ReconnectErrorThreshold => TimeSpan.FromSeconds(30);
+
+        public static TimeSpan RestartConnectionTimeout => TimeSpan.FromSeconds(15);
+
+        public static int RetryMaxAttempts => 5;
+
+        public static ConnectionMultiplexer Connection { get { return _connection; } }
+
+        public static async Task InitializeAsync()
         {
+            if (_didInitialize)
+            {
+                throw new InvalidOperationException("Cannot initialize more than once.");
+            }
+
+            _connection = await CreateConnectionAsync();
+            _didInitialize = true;
+        }
+
+        // This method may return null if it fails to acquire the semaphore in time.
+        // Use the return value to update the "connection" field
+        private static async Task<ConnectionMultiplexer> CreateConnectionAsync()
+        {
+            if (_connection != null)
+            {
+                // If we already have a good connection, let's re-use it
+                return _connection;
+            }
+
             try
             {
-                return func();
+                await _initSemaphore.WaitAsync(RestartConnectionTimeout);
             }
-            catch (Exception ex) when (ex is RedisConnectionException || ex is SocketException)
+            catch
             {
-                reconnectRetry++;
-                if (reconnectRetry > RetryMaxAttempts)
-                    throw;
-                ForceReconnect();
+                // We failed to enter the semaphore in the given amount of time. Connection will either be null, or have a value that was created by another thread.
+                return _connection;
             }
-            catch (ObjectDisposedException)
+
+            // We entered the semaphore successfully.
+            try
             {
-                disposedRetry++;
-                if (disposedRetry > RetryMaxAttempts)
-                    throw;
+                if (_connection != null)
+                {
+                    // Another thread must have finished creating a new connection while we were waiting to enter the semaphore. Let's use it
+                    return _connection;
+                }
+
+                // Otherwise, we really need to create a new connection.
+                string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+                return await ConnectionMultiplexer.ConnectAsync(cacheConnection);
+            }
+            finally
+            {
+                _initSemaphore.Release();
             }
         }
-    }
 
-    public static IDatabase GetDatabase()
-    {
-        return BasicRetry(() => Connection.GetDatabase());
-    }
+        private static async Task CloseConnectionAsync(ConnectionMultiplexer oldConnection)
+        {
+            if (oldConnection == null)
+            {
+                return;
+            }
+            try
+            {
+                await oldConnection.CloseAsync();
+            }
+            catch (Exception)
+            {
+                // Ignore any errors from the oldConnection
+            }
+        }
 
-    public static System.Net.EndPoint[] GetEndPoints()
-    {
-        return BasicRetry(() => Connection.GetEndPoints());
-    }
+        /// <summary>
+        /// Force a new ConnectionMultiplexer to be created.
+        /// NOTES:
+        ///     1. Users of the ConnectionMultiplexer MUST handle ObjectDisposedExceptions, which can now happen as a result of calling ForceReconnectAsync().
+        ///     2. Call ForceReconnectAsync() for RedisConnectionExceptions and RedisSocketExceptions. You can also call it for RedisTimeoutExceptions,
+        ///         but only if you're using generous ReconnectMinInterval and ReconnectErrorThreshold. Otherwise, establishing new connections can cause
+        ///         a cascade failure on a server that's timing out because it's already overloaded.
+        ///     3. The code will:
+        ///         a. wait to reconnect for at least the "ReconnectErrorThreshold" time of repeated errors before actually reconnecting
+        ///         b. not reconnect more frequently than configured in "ReconnectMinInterval"
+        /// </summary>
+        public static async Task ForceReconnectAsync()
+        {
+            var utcNow = DateTimeOffset.UtcNow;
+            long previousTicks = Interlocked.Read(ref _lastReconnectTicks);
+            var previousReconnectTime = new DateTimeOffset(previousTicks, TimeSpan.Zero);
+            TimeSpan elapsedSinceLastReconnect = utcNow - previousReconnectTime;
 
-    public static IServer GetServer(string host, int port)
-    {
-        return BasicRetry(() => Connection.GetServer(host, port));
-    }
+            // If multiple threads call ForceReconnectAsync at the same time, we only want to honor one of them.
+            if (elapsedSinceLastReconnect < ReconnectMinInterval)
+            {
+                return;
+            }
+
+            try
+            {
+                await _reconnectSemaphore.WaitAsync(RestartConnectionTimeout);
+            }
+            catch
+            {
+                // If we fail to enter the semaphore, then it is possible that another thread has already done so.
+                // ForceReconnectAsync() can be retried while connectivity problems persist.
+                return;
+            }
+
+            try
+            {
+                utcNow = DateTimeOffset.UtcNow;
+                elapsedSinceLastReconnect = utcNow - previousReconnectTime;
+
+                if (_firstErrorTime == DateTimeOffset.MinValue)
+                {
+                    // We haven't seen an error since last reconnect, so set initial values.
+                    _firstErrorTime = utcNow;
+                    _previousErrorTime = utcNow;
+                    return;
+                }
+
+                if (elapsedSinceLastReconnect < ReconnectMinInterval)
+                {
+                    return; // Some other thread made it through the check and the lock, so nothing to do.
+                }
+
+                TimeSpan elapsedSinceFirstError = utcNow - _firstErrorTime;
+                TimeSpan elapsedSinceMostRecentError = utcNow - _previousErrorTime;
+
+                bool shouldReconnect =
+                    elapsedSinceFirstError >= ReconnectErrorThreshold // Make sure we gave the multiplexer enough time to reconnect on its own if it could.
+                    && elapsedSinceMostRecentError <= ReconnectErrorThreshold; // Make sure we aren't working on stale data (e.g. if there was a gap in errors, don't reconnect yet).
+
+                // Update the previousErrorTime timestamp to be now (e.g. this reconnect request).
+                _previousErrorTime = utcNow;
+
+                if (!shouldReconnect)
+                {
+                    return;
+                }
+
+                _firstErrorTime = DateTimeOffset.MinValue;
+                _previousErrorTime = DateTimeOffset.MinValue;
+
+                ConnectionMultiplexer oldConnection = _connection;
+                await CloseConnectionAsync(oldConnection);
+                _connection = null;
+                _connection = await CreateConnectionAsync();
+                Interlocked.Exchange(ref _lastReconnectTicks, utcNow.UtcTicks);
+            }
+            finally
+            {
+                _reconnectSemaphore.Release();
+            }
+        }
+
+        // In real applications, consider using a framework such as
+        // Polly to make it easier to customize the retry approach.
+        private static async Task<T> BasicRetryAsync<T>(Func<T> func)
+        {
+            int reconnectRetry = 0;
+            int disposedRetry = 0;
+
+            while (true)
+            {
+                try
+                {
+                    return func();
+                }
+                catch (Exception ex) when (ex is RedisConnectionException || ex is SocketException)
+                {
+                    reconnectRetry++;
+                    if (reconnectRetry > RetryMaxAttempts)
+                        throw;
+                    await ForceReconnectAsync();
+                }
+                catch (ObjectDisposedException)
+                {
+                    disposedRetry++;
+                    if (disposedRetry > RetryMaxAttempts)
+                        throw;
+                }
+            }
+        }
+
+        public static Task<IDatabase> GetDatabaseAsync()
+        {
+            return BasicRetryAsync(() => Connection.GetDatabase());
+        }
+
+        public static Task<System.Net.EndPoint[]> GetEndPointsAsync()
+        {
+            return BasicRetryAsync(() => Connection.GetEndPoints());
+        }
+
+        public static Task<IServer> GetServerAsync(string host, int port)
+        {
+            return BasicRetryAsync(() => Connection.GetServer(host, port));
+        }
     ```
 
 4. **ソリューション エクスプローラー** で、**[ビュー]** > **[共有]** フォルダーを順に展開します。 次に *_Layout.cshtml ファイル* を開きます。
 
     置換前のコード:
-    
+
     ```csharp
     @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
     ```
@@ -399,6 +469,7 @@ ms.locfileid: "104722465"
 既定では、プロジェクトはテストとデバッグのためにアプリを [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) にローカルにホストするように構成されます。
 
 ### <a name="to-run-the-app-locally"></a>アプリをローカルで実行するには
+
 1. Visual Studio で **[デバッグ]**  >  **[デバッグの開始]** の順に選択してアプリをビルドし、テストとデバッグのためにアプリをローカルで起動します。
 
 2. ブラウザーで、ナビゲーション バーの **[Azure Cache for Redis Test]** を選択します。
@@ -440,9 +511,9 @@ ms.locfileid: "104722465"
 
 ### <a name="add-the-app-setting-for-the-cache"></a>キャッシュ用のアプリの設定を追加する
 
-新しいアプリが発行されたら、新しいアプリの設定を追加します。 この設定は、キャッシュの接続情報を格納するために使われます。 
+新しいアプリが発行されたら、新しいアプリの設定を追加します。 この設定は、キャッシュの接続情報を格納するために使われます。
 
-#### <a name="to-add-the-app-setting"></a>アプリの設定を追加するには 
+#### <a name="to-add-the-app-setting"></a>アプリの設定を追加するには
 
 1. Azure portal の上部にある検索バーにアプリ名を入力し、作成した新しいアプリを検索します。
 
@@ -464,10 +535,10 @@ ms.locfileid: "104722465"
 
 次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、再利用することができます。
 
-クイック スタートのサンプル アプリケーションの使用を終える場合は、課金を避けるために、このクイック スタートで作成した Azure リソースを削除することができます。 
+クイック スタートのサンプル アプリケーションの使用を終える場合は、課金を避けるために、このクイック スタートで作成した Azure リソースを削除することができます。
 
 > [!IMPORTANT]
-> リソース グループを削除すると、元に戻すことができません。 リソース グループを削除すると、そのリソース グループ内のすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、個々のブレードから各リソースを個別に削除することができます。
+> リソース グループを削除すると、元に戻すことができません。 リソース グループを削除すると、そのリソース グループ内のすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルをホストするためのリソースを、保持するリソースが含まれる既存のリソース グループ内に作成した場合、リソース グループを削除する代わりに、左側で各リソースを個別に削除できます。
 
 ### <a name="to-delete-a-resource-group"></a>リソース グループを削除するには
 

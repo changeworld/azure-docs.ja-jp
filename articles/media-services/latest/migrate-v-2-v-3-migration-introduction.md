@@ -9,18 +9,20 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 32e502ff175a9222faa0eb79fb53f2cc3f76bfb7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49d804fdf354dc942ca256e1b5960fd201358a81
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559742"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708171"
 ---
 # <a name="migrate-from-media-services-v2-to-v3-introduction"></a>Media Services v2 から v3 への移行の概要
 
 ![移行ガイドのロゴ](./media/migration-guide/azure-media-services-logo-migration-guide.svg)
 
 Media Services 移行ガイドでは、現在利用可能な新機能を活用した移行に基づいて、Media Services V2 API から V3 API に移行する方法について説明します。 お客様のシナリオに最も適した方法をお客様の判断に基づいてお選びください。
+
+[!INCLUDE [v2 deprecation notice](./includes/v2-deprecation-notice.md)]
 
 ## <a name="how-to-use-this-guide"></a>このガイドの使用方法
 

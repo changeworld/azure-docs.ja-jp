@@ -2,18 +2,18 @@
 title: フェールオーバー VM のネットワーク構成をカスタマイズする | Microsoft Docs
 description: Azure Site Recovery を使用して Azure VM のレプリケーションを行うときの、フェールオーバー VM のネットワーク構成のカスタマイズについて概説します。
 services: site-recovery
-author: sideeksh
-manager: rochakm
+author: rishjai-msft
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/21/2019
-ms.author: sideeksh
-ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/01/2021
+ms.author: rishjai
+ms.openlocfilehash: 79a33226da71071d8985daf723dde7314116ce37
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98541192"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475151"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>ターゲット Azure VM のネットワーク構成をカスタマイズする
 
@@ -29,6 +29,7 @@ Azure VM のレプリケート中に、フェールオーバー VM に対して�
 
 - [内部ロード バランサー](../load-balancer/load-balancer-overview.md)
 - [パブリック IP](../virtual-network/public-ip-addresses.md)
+- [セカンダリ IP](../virtual-network/ip-services/virtual-network-multiple-ip-addresses-portal.md)
 - サブネットと NIC の両方の[ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)
 
 ## <a name="prerequisites"></a>前提条件
@@ -40,14 +41,14 @@ Azure VM のレプリケート中に、フェールオーバー VM に対して�
 
 1. **[レプリケートされたアイテム]** に移動します。 
 2. 目的の Azure VM を選択します。
-3. **[コンピューティングとネットワーク]** を選択し、 **[編集]** を選択します。 NIC 構成設定のソースには、対応するリソースが含まれていることがわかります。 
+3. **[ネットワーク]** を選択し、 **[編集]** を選択します。 NIC 構成設定のソースには、対応するリソースが含まれていることがわかります。 
 
-     ![フェールオーバー ネットワーク構成をカスタマイズする](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+    :::image type="content" source="./media/azure-to-azure-customize-networking/edit-networking-properties.png" alt-text="フェールオーバー ネットワーク構成をカスタマイズする" lightbox="./media/azure-to-azure-customize-networking/edit-networking-properties-expanded.png":::
 
 4. テスト フェールオーバーの仮想ネットワークを選択します。
-5. 構成する NIC の近くにある **[編集]** を選択します。 開かれる次のブレードで、テスト フェールオーバーまたはフェールオーバーの場所にあらかじめ作成してある、対応するリソースを選択します。
+5. 構成する [NIC] タブを選択します。 ここで、テスト フェールオーバーまたはフェールオーバーの場所にあらかじめ作成してある、対応するリソースを選択します。
 
-    ![NIC 構成ファイルを編集する](media/azure-to-azure-customize-networking/nic-drilldown.png) 
+    :::image type="content" source="./media/azure-to-azure-customize-networking/nic-drilldown.png" alt-text="NIC 構成ファイルを編集する" lightbox="./media/azure-to-azure-customize-networking/nic-drilldown-expanded.png":::
 
 6. **[OK]** を選択します。
 

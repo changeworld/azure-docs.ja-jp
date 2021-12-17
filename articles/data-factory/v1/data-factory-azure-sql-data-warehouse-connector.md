@@ -3,16 +3,17 @@ title: Azure Synapse Analytics との間でのデータのコピー
 description: Azure Data Factory を使用して Azure Synapse Analytics との間でデータをコピーする方法について説明します
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa364ec434db980bf226008537ca928628fcac1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05908619ffbe619808f0926d206e9b74f83da58f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392087"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264232"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics との間でデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -30,11 +31,11 @@ ms.locfileid: "100392087"
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 **Azure Synapse Analytics から** 以下のデータ ストアにデータをコピーできます。
 
-[!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sinks](includes/data-factory-supported-sinks.md)]
 
 以下のデータ ストアから **Azure Synapse Analytics に** データをコピーできます。
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 > [!TIP]
 > SQL Server または Azure SQL Database から Azure Synapse Analytics にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、Data Factory では、ソース データ ストアのテーブルのスキーマを使用して、Azure Synapse Analytics にテーブルを自動的に作成することができます。 詳細については、「[テーブルの自動作成](#auto-table-creation)」を参照してください。
@@ -252,7 +253,7 @@ Azure Synapse Analytics の PolyBase は (サービス プリンシパルを使�
 ```
 
 ## <a name="best-practices-when-using-polybase"></a>PolyBase を使用する際のベスト プラクティス
-次のセクションでは、「[ Azure Synapse Analytics のベスト プラクティス](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)」に記載されている内容に追加するベスト プラクティスを説明します。
+次のセクションでは、「[ Azure Synapse Analytics のベスト プラクティス](../../synapse-analytics/sql/best-practices-dedicated-sql-pool.md)」に記載されている内容に追加するベスト プラクティスを説明します。
 
 ### <a name="required-database-permission"></a>必要なデータベース アクセス許可
 PolyBase を使用するには、データを Azure Synapse Analytics に読み込むために使用されるユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](/sql/relational-databases/security/permissions-database-engine)を持っている必要があります。 これを実現する方法の 1 つに、ユーザーを "db_owner" ロールのメンバーとして追加するという方法があります。 具体的な手順については、[こちらのセクション](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に従ってください。
@@ -325,7 +326,7 @@ Data Factory は、コピー元データ ストアのテーブルと同じ名前
 | NVarChar | NVarChar (最大 4000) |
 | xml | Varchar (最大 8000) |
 
-[!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../../includes/data-factory-type-repeatability-for-sql-sources.md)]
+[!INCLUDE [data-factory-type-repeatability-for-sql-sources](includes/data-factory-type-repeatability-for-sql-sources.md)]
 
 ## <a name="type-mapping-for-azure-synapse-analytics"></a>Azure Synapse Analytics の型のマッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
@@ -341,7 +342,7 @@ Azure Synapse Analytics との間でデータを移動するとき、SQL 型か�
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |ブール型 |
 | char |String, Char[] |
 | date |DateTime |
 | Datetime |DateTime |
@@ -367,7 +368,7 @@ Azure Synapse Analytics との間でデータを移動するとき、SQL 型か�
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
-| UNIQUEIDENTIFIER |Guid |
+| UNIQUEIDENTIFIER |GUID |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |xml |

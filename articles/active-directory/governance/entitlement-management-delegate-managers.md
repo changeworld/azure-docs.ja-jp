@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e81389ec953829115062a31a019caf040850cbea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95c875c1a4ded86686120bb4de67904ef69a53c6
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798641"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286553"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージ管理者にアクセス ガバナンスを委任する
 
@@ -36,11 +36,13 @@ ms.locfileid: "87798641"
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq08]
 
+カタログ所有者ロールとアクセス パッケージ マネージャー ロールに加えて、カタログ閲覧者ロールにユーザーを追加することもできます。これにより、カタログへの表示専用アクセスが付与されます。また、アクセス パッケージ割り当てマネージャー ロールにユーザーを追加することもできます。これにより、ユーザーは割り当てを変更できますが、パッケージやポリシーにはアクセスすることはできません。
+
 ## <a name="as-a-catalog-owner-delegate-to-an-access-package-manager"></a>カタログ所有者としてアクセス パッケージ管理者に委任する
 
 アクセス パッケージ管理者のロールにユーザーを割り当てるには、以下の手順のようにします。
 
-**事前に必要なロール:** 全体管理者、ユーザー管理者、またはカタログ所有者
+**事前に必要なロール:** グローバル管理者、ID ガバナンス管理者、ユーザー管理者、またはカタログ所有者
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 

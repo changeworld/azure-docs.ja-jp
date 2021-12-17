@@ -3,7 +3,7 @@ title: ログ ディスクを Ultra Disk に移行する
 description: Azure 仮想マシン (VM) のログ ディスク上の SQL Server を Azure Ultra Disk に移行してハイ パフォーマンスと低待機時間を利用する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: e8410b4e0997798eba5ee91f361c3a5f1ce47ef1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: 54955a953b8386b3dc9b5b4ba814b4826079ef54
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586303"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165234"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>ログ ディスクを Ultra Disk に移行する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -162,7 +162,7 @@ SSMS を使用して既存のファイルを新しい場所に移動します。
 
 ## <a name="next-steps"></a>次のステップ
 
-パフォーマンスを向上するための追加設定については、[パフォーマンスのベスト プラクティス](performance-guidelines-best-practices.md)に関するページを参照してください。 
+パフォーマンスを向上するための追加設定については、[パフォーマンスのベスト プラクティス](./performance-guidelines-best-practices-checklist.md)に関するページを参照してください。 
 
 Azure Virtual Machines における SQL Server の概要については、次の記事を参照してください。
 

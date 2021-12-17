@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 3baea92d78cf15c35d2fb36692dab1edfd950699
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67f17d2a01e095f4a2349606a7e13b7ef6c51c11
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98744078"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100997"
 ---
 # <a name="what-is-the-azure-cloud-service-model-and-how-do-i-package-it"></a>Azure クラウド サービス モデルとそのパッケージ化について
 
@@ -39,7 +39,7 @@ Azure でクラウド サービスが実行されている場合は、 **Service
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="MyServiceName" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
-  <WebRole name="WebRole1" vmsize="Medium">
+  <WebRole name="WebRole1" vmsize="Standard_D1_v2">
     <Sites>
       <Site name="Web">
         <Bindings>
@@ -237,7 +237,11 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 <p />
 
 > [!TIP]
+<<<<<<< HEAD
 > **Microsoft Azure Compute Emulator** でクラウド サービスをローカルで実行し、**/copyonly** オプションを使用します。 このオプションは、アプリケーションのバイナリ ファイルをディレクトリ レイアウトにコピーします。Compute Emulator では、そのディレクトリ レイアウトからファイルを実行できます。
+=======
+> **Microsoft Azure Compute Emulator** でクラウド サービスをローカルで実行し、**/copyonly** オプションを使用します。 このオプションは、アプリケーションのバイナリ ファイルをディレクトリ レイアウトにコピーします。コンピューティング エミュレーターでは、そのディレクトリ レイアウトからファイルを実行できます。
+>>>>>>> repo_sync_working_branch
 > 
 > 
 
@@ -277,5 +281,5 @@ cspack [DirectoryName]\[ServiceDefinition]
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。
-- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
+- Cloud Services (延長サポート) の[よく寄せられる質問](faq.yml)を確認します。
 

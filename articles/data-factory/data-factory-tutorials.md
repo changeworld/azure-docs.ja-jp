@@ -4,14 +4,15 @@ description: Azure Data Factory の概念を説明するチュートリアルの
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 03/16/2021
-ms.openlocfilehash: 8fccd508d5d6dbe380b21a85faa3889e99b9942f
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 51eec8654a098bab8bb7c7ccfde627d62a4c2175
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579528"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638655"
 ---
 # <a name="azure-data-factory-tutorials"></a>Azure Data Factory のチュートリアル
 
@@ -62,6 +63,8 @@ Data Factory の一連の概念とシナリオを説明し段階的に示すの�
 [マネージド VNet 内のデータ フロー](tutorial-data-flow-private.md)
 
 [ADLS Gen2 におけるレイク データのベスト プラクティス](tutorial-data-flow-write-to-lake.md)
+
+[列名を動的に設定する](data-flow-tutorials.md)
 
 ## <a name="external-data-services"></a>外部データ サービス
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50e3ce1ef83c33900895e6aa3e5fc925b2004d7d
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92895632"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791350"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>入力制約付きデバイスを Azure AD と Azure Maps REST API で保護する
 
@@ -41,11 +41,11 @@ Azure AD でデバイス ベースのアプリケーションを作成して、A
     > ![アプリケーションの登録の詳細 (名前とリダイレクト URI) を追加する](./media/azure-maps-authentication/devicecode-app-registration.png)
 
 3. **[認証]** に移動して、 **[アプリケーションは、パブリック クライアントとして扱います]** を有効にします。 これにより、Azure AD でのデバイス コード認証が可能になります。
-    
+
     > [!div class="mx-imgBorder"]
     > ![アプリケーションの登録をパブリック クライアントとして有効にする](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「**Azure Maps**」を検索して選択します。
+4. 委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「**Azure Maps**」を検索して選択します。
 
     > [!div class="mx-imgBorder"]
     > ![アプリの API アクセス許可を追加する](./media/how-to-manage-authentication/app-permissions.png)
@@ -59,22 +59,25 @@ Azure AD でデバイス ベースのアプリケーションを作成して、A
 
 7. アプリケーションでトークン フローを取得するためのコードを追加します。実装の詳細については、「[デバイス コード フロー](../active-directory/develop/scenario-desktop-acquire-token.md#device-code-flow)」を参照してください。 トークンを取得する場合、前の手順で選択したスコープ `user_impersonation` を参照します。
 
-> [!Tip]
-> アクセス トークンを取得するには、Microsoft Authentication Library (MSAL) を使用します。 推奨事項については、「[Web API を呼び出すデスクトップ アプリ:コード構成](../active-directory/develop/scenario-desktop-app-configuration.md)
+    > [!Tip]
+    > アクセス トークンを取得するには、Microsoft Authentication Library (MSAL) を使用します。
+    > 推奨事項については、「[Web API を呼び出すデスクトップ アプリ:コード構成](../active-directory/develop/scenario-desktop-app-configuration.md)
 
 8. Azure AD から取得したトークンを使用して HTTP 要求を作成し、有効な HTTP クライアントを使用して要求を送信します。
 
 ### <a name="sample-request"></a>要求のサンプル
+
 中心点と半径を使用して円ジオメトリとして表される単純なジオフェンスをアップロードするための要求本文のサンプルを次に示します。
 
 ```http
-POST /mapData/upload?api-version=1.0&dataFormat=geojson
-Host: atlas.microsoft.com
+POST /mapData?api-version=2.0&dataFormat=geojson
+Host: us.atlas.microsoft.com
 x-ms-client-id: 30d7cc….9f55
 Authorization: Bearer eyJ0e….HNIVN
 ```
 
  次の要求本文のサンプルは、GeoJSON 内にあります。
+
 ```json
 {
     "type": "FeatureCollection",
@@ -92,23 +95,13 @@ Authorization: Bearer eyJ0e….HNIVN
 }
 ```
 
-### <a name="sample-response"></a>応答のサンプル:
+### <a name="sample-response-header"></a>応答ヘッダーのサンプル
 
-Headers:
 ```http
-Location: https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0
-Access-Control-Expose-Headers: Location
+Operation-Location: https://us.atlas.microsoft.com/mapData/operations/{udid}?api-version=2.0
+Access-Control-Expose-Headers: Operation-Location
 ```
 
-本文は次のようになります。
-```json
-{
-  "operationId": "{operationId}",
-  "status": "Succeeded",
-  "created": "2020-01-02 1:02:03 AM +00:00",
-  "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{resourceId}?api-version=1.0"
-}
-```
 
 [!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 

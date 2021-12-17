@@ -9,14 +9,17 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 2ee2db62cf43dc191da2b92f7d4b67ff775f628f
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a66eeec561b422cb7ce644facd7f273ab055e871
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537519"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123423666"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Portal で仮想マシン スケール セットを自動的にスケーリングする
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
+
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。
 
 この記事では、Azure Portal を使用して、スケール セット内の VM インスタンスのパフォーマンスを監視する自動スケール ルールを作成する方法を示します。 これらの自動スケール ルールは、これらのパフォーマンス メトリックに応じて VM インスタンスの数を増減します。 これらの手順は、[Azure PowerShell](tutorial-autoscale-powershell.md) または [Azure CLI](tutorial-autoscale-cli.md) を使用して実行することもできます。
@@ -54,8 +57,11 @@ ms.locfileid: "107537519"
     | *クール ダウン (分)*  | 自動スケール アクションを有効にする時間を稼ぐため、ルールを再度適用する前に待機する時間。 | 5 分      |
 
     次の例は、これらの設定に一致する、Azure Portal で作成したルールを示しています。
-
+    
     ![VM インスタンスの数を増やす自動スケール ルールを作成する](media/virtual-machine-scale-sets-autoscale-portal/rule-increase.png)
+
+    > [!NOTE]
+    > インスタンス内で実行されているタスクは突然停止し、インスタンスはクーリング期間が完了するとスケールダウンされます。
 
 6. ルールを作成するには、 **[追加]** を選択します。
 

@@ -3,26 +3,29 @@ title: Azure Automation の Start/Stop VMs during off-hours の概要
 description: この記事では、VM を日程に基づいて開始または停止し、Azure Monitor ログでそれらを事前に監視する Start/Stop VMs during off-hours 機能について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/04/2020
+ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: b71e5b1a8ba5f3ee8f883c71a7221e01d4af4fb6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 68283077d63b7a796b51da45ef005584c6c792a1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597710"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477271"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
 Start/Stop VMs during off-hours 機能は、有効になっている Azure VM を開始または停止するものです。 ユーザー定義のスケジュールでマシンを開始または停止し、Azure Monitor ログを介して分析情報を取得し、[アクション グループ](../azure-monitor/alerts/action-groups.md)を使用してオプションのメールを送信することができます。 この機能は、ほとんどのシナリオにおいて、Azure Resource Manager とクラシック VM の両方で有効にできます。
 
+> [!NOTE]
+> このバージョン (v1) をインストールする前に、現在プレビュー段階にある[次のバージョン](../azure-functions/start-stop-vms/overview.md)について知っておいてください。 新しいバージョン (v2) では、これと同じ機能がすべて提供されますが、Azure の新しいテクノロジを活用するように設計されています。 これにより、単一の開始/停止インスタンスからの複数サブスクリプションのサポートなど、お客様からの要望が多かったいくつかの機能が追加されます。 
+>
+> Start/Stop VMs during off-hours (v1) は、2022 年 5 月 21 日に非推奨となる予定です。 
+
 この機能では、[Start-AzVm](/powershell/module/az.compute/start-azvm) コマンドレットを使用して VM を開始します。 VM を停止するためには、[Stop-AzVM](/powershell/module/az.compute/stop-azvm) を使用します。
 
 > [!NOTE]
-> Runbook は、新しい Azure Az モジュール コマンドレットを使用するように更新されていますが、AzureRM プレフィックス エイリアスを使用します。
-
-> [!NOTE]
-> Start/Stop VMs during off-hours は、利用可能な最新バージョンの Azure モジュールをサポートするように更新されています。 AzureRM から Az モジュールに移行したため、この機能の更新版 (Marketplace から入手可能) では、AzureRM モジュールはサポートされません。
+> Start/Stop VMs during off-hours は、利用可能な最新バージョンの Azure モジュールをサポートするように更新されています。 AzureRM から Az モジュールに移行したため、この機能の更新版 (Marketplace から入手可能) では、AzureRM モジュールはサポートされません。 Runbook は、新しい Azure Az モジュール コマンドレットを使用するように更新されていますが、AzureRM プレフィックス エイリアスを使用します。
 
 この機能は、VM のコストを最適化する必要があるユーザー向けに、分散型で低コストの自動化オプションを提供します。 この機能は次の目的で使用できます。
 
@@ -35,14 +38,11 @@ Start/Stop VMs during off-hours 機能は、有効になっている Azure VM �
 - 任意のリージョンの VM が管理されますが、Azure Automation アカウントと同じサブスクリプションでのみ使用できます。
 - Log Analytics ワークスペース、Azure Automation アカウント、Alerts がサポートされているリージョンの Azure と Azure Government で利用できます。 現在、Azure Government の各リージョンでは電子メール機能はサポートされていません。
 
-> [!NOTE]
-> このバージョンをインストールする前に、現在プレビュー段階にある [次のバージョン](https://github.com/microsoft/startstopv2-deployments)について知っておいてください。  新しいバージョン (V2) では、これと同じ機能がすべて提供されますが、Azure の新しいテクノロジを活用するように設計されています。 これにより、単一の開始/停止インスタンスからの複数サブスクリプションのサポートなど、お客様からの要望が多かったいくつかの機能が追加されます。
-
 ## <a name="prerequisites"></a>前提条件
 
 - Start/Stop VMs during off hours 機能の Runbook は [Azure 実行アカウント](./automation-security-overview.md#run-as-accounts)と連動します。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
 
-- Runbook ジョブ ログとジョブ ストリーム結果をクエリおよび分析目的でワークスペースに格納する [Azure Monitor Log Analytics ワークスペース](../azure-monitor/logs/design-logs-deployment.md)。 Automation アカウントは新規または既存の Log Analytics ワークスペースにリンクできます。いずれのリソースも同じリソース グループに属する必要があります。
+- Runbook ジョブ ログとジョブ ストリーム結果をクエリおよび分析目的でワークスペースに格納する [Azure Monitor Log Analytics ワークスペース](../azure-monitor/logs/design-logs-deployment.md)。 Automation アカウントと Log Analytics ワークスペースは、同じサブスクリプション内にあり、サポートされているリージョンに存在する必要があります。 ワークスペースは、既に存在している必要があります。この機能のデプロイ中に新しいワークスペースを作成することはできません。
 
 Start/Stop VMs during off-hours 機能には、別の Automation アカウントを使用することをお勧めします。 多くの場合、Azure モジュールのバージョンがアップグレードされ、そのパラメーターが変更される可能性があります。 この機能は同じペースでアップグレードされないため、使用するコマンドレットの新しいバージョンでは動作しない可能性があります。 更新後のモジュールを運用 Automation アカウントにインポートする前に、テスト Automation アカウントにインポートして互換性問題がないことを確認することをお勧めします。
 
@@ -81,7 +81,6 @@ VM の Start/Stop VMs during off-hours 機能を有効にするには、特定�
 
 VM の Start/Stop VMs during off-hours 機能は Automation アカウントと Log Analytics ワークスペースを利用して有効にできます。 この場合、前のセクションで定義されたアクセス許可と、このセクションで定義されているアクセス許可が必要です。 次のロールも必要です。
 
-- サブスクリプションの共同管理者。 クラシック VM を管理する場合は、クラシック実行アカウントを作成するためにこのロールが必要です。 [クラシック実行アカウント](automation-create-standalone-account.md#create-a-classic-run-as-account)は、既定では作成されなくなりました。
 - [Azure AD](../active-directory/roles/permissions-reference.md) アプリケーション開発者ロールのメンバーシップ。 実行アカウントの構成の詳細については、「[実行アカウントを構成するためのアクセス許可](automation-security-overview.md#permissions)」を参照してください。
 - サブスクリプションまたは次のアクセス許可の共同作成者。
 
@@ -140,7 +139,7 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 |External_AutoStop_Threshold | 変数 `External_AutoStop_MetricName` に指定された Azure 警告ルールのしきい値。 パーセント値の範囲は 1 から 100 です。|
 |External_AutoStop_TimeAggregationOperator | 条件を評価するために選択した時間枠のサイズに適用される時間の集計演算子。 使用できる値は、`Average`、`Minimum`、`Maximum`、`Total`、および `Last` です。|
 |External_AutoStop_TimeWindow | アラートをトリガーするために選択されたメトリックを Azure で分析する時間枠のサイズ。 このパラメーターは、timespan 形式で入力を受け入れます。 使用可能な値は、5 分 ～ 6 時間です。|
-|External_EnableClassicVMs| クラシック VM が機能の対象であるかどうかを指定する値。 既定値は True です。 Azure クラウド ソリューション プロバイダー (CSP) サブスクリプションの場合は、この変数を False に設定します。 クラシック VM には[クラシック実行アカウント](automation-create-standalone-account.md#create-a-classic-run-as-account)が必要です。|
+|External_EnableClassicVMs| クラシック VM が機能の対象であるかどうかを指定する値。 既定値は True です。 Azure クラウド ソリューション プロバイダー (CSP) サブスクリプションの場合は、この変数を False に設定します。|
 |External_ExcludeVMNames | 除外する VM 名のコンマ区切りリスト。上限は 140 VM です。 一覧に 140 個を超える VM を追加すると、除外を指定した VM が誤って開始または停止される可能性があります。|
 |External_Start_ResourceGroupNames | 開始アクションの対象となる 1 つまたは複数のリソース グループのコンマ区切りリスト。|
 |External_Stop_ResourceGroupNames | 停止アクションの対象となる 1 つまたは複数のリソース グループのコンマ区切りリスト。|
@@ -173,8 +172,6 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 ## <a name="use-the-feature-with-classic-vms"></a>クラシック VM で機能を使用する
 
 クラシック VM に Start/Stop VMs during off-hours 機能を使用している場合、Automation によってクラウド サービスごとにすべての VM が順番に処理されます。 VM は、異なる複数のクラウド サービスでまだ並列に処理されています。 
-
-クラシック VM でこの機能を使用するには、既定では作成されないクラシック実行アカウントが必要です。 クラシック実行アカウントの作成手順については、「[クラシック実行アカウントの作成](automation-create-standalone-account.md#create-a-classic-run-as-account)」を参照してください。
 
 クラウド サービスあたり 20 個を超える VM がある場合は、次のような推奨事項があります。
 

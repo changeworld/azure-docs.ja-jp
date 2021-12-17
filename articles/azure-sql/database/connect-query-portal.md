@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 03/01/2021
-ms.openlocfilehash: a6f13e27a5aa2684a16565c616d781e3d5c3a750
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88ff2a523bb17af28dce0a45ef73af7da5b9d9e4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594191"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739718"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-preview-to-query-an-azure-sql-database"></a>クイック スタート:Azure portal のクエリ エディター (プレビュー) を使用して、Azure SQL Database のクエリを実行します
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

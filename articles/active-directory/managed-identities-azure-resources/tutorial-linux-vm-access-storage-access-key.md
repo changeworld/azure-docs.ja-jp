@@ -6,21 +6,22 @@ documentationcenter: ''
 author: barclayn
 manager: daveba
 editor: daveba
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/04/2020
+ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e99a199fcc5f43f3710fe2e2fcfe55b7e624987b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94c7cdbdfabbe525c9176ea7fe6f88f55c9b1baa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91317465"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738720"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用してアクセス キーで Azure Storage にアクセスする
 
@@ -62,17 +63,13 @@ ms.locfileid: "91317465"
 
 ## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-storage-account-access-keys"></a>VM のシステム割り当てマネージド ID にストレージ アカウント アクセス キーを使用するためのアクセス権を付与する
 
-この手順では、ストレージ アカウントのキーへのアクセス権を VM のシステム割り当てマネージド ID に付与します。   
+Azure Storage は、ネイティブでは Azure AD 認証をサポートしていません。  ただし、VM のシステム割り当てマネージド ID を使用して Resource Manager からストレージ SAS を取得し、その SAS を使用してストレージにアクセスできます。  この手順では、ストレージ アカウントの SAS へのアクセス権を VM のシステム割り当てマネージド ID に付与します。 お使いのストレージ アカウントを含むリソース グループのスコープで、マネージド ID に [[ストレージ アカウント共同作成者]](../../role-based-access-control/built-in-roles.md#storage-account-contributor) ロールを割り当てることによってアクセス権を付与します。
+ 
+詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-1. 新たに作成したストレージ アカウントに戻ります。
-2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  
-3. ページの上部にある **[+ ロール割り当ての追加]** をクリックして、VM 用に新しいロールの割り当てを追加します
-4. ページの右側で、 **[ロール]** を "ストレージ アカウント キー オペレーターのサービス ロール" に設定します。 
-5. 次のドロップダウンで、 **[アクセスの割り当て先]** を ［仮想マシン］ リソースに設定します。  
-6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、 **[リソース グループ]** を [すべてのリソース グループ] に設定します。  
-7. 最後に、 **[選択]** のドロップダウンで Linux 仮想マシンを選択し、 **[保存]** をクリックします。 
+>[!NOTE]
+> ストレージの確認にアクセス許可を付与するために使用できるさまざまなロールの詳細については、[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../../storage/blobs/authorize-access-azure-active-directory.md#assign-azure-roles-for-access-rights)に関するページを参照してください。
 
-    ![イメージ テキスト](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>VM ID を使用してアクセス トークンを取得し、そのアクセス トークンを使用して Azure Resource Manager を呼び出す
 

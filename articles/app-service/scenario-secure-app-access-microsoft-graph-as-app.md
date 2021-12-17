@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 01/28/2021
+ms.date: 11/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.custom: azureday1
-ms.openlocfilehash: 06837ab0f4685787f8d2615e81d0405fdb8ec711
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: azureday1, devx-track-azurepowershell
+ms.openlocfilehash: 777355c3bff17c2d9a156eb6b330f15e2551943d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99062562"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471005"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>チュートリアル:セキュリティで保護されたアプリからアプリとして Microsoft Graph にアクセスする
 
@@ -119,7 +119,9 @@ az rest --method post --uri $uri --body $body --headers "Content-Type=applicatio
 
 :::image type="content" alt-text="[アクセス許可] ペインを示すスクリーンショット。" source="./media/scenario-secure-app-access-microsoft-graph/enterprise-apps-permissions.png":::
 
-## <a name="call-microsoft-graph-net"></a>Microsoft Graph を呼び出す (.NET)
+## <a name="call-microsoft-graph"></a>Microsoft Graph の呼び出し
+
+# <a name="c"></a>[C#](#tab/programming-language-csharp)
 
 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスは、Microsoft Graph に対する要求をコードで承認するためにトークン資格情報を取得する際に使用されます。 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスのインスタンスを作成します。これは、マネージド ID を使用し、トークンを取得してサービス クライアントにアタッチします。 次のコード例では、認証済みのトークン資格情報を取得し、それを使用して、グループ内のユーザーを取得するサービス クライアント オブジェクトを作成します。
 
@@ -129,7 +131,7 @@ az rest --method post --uri $uri --body $body --headers "Content-Type=applicatio
 
 .NET Core コマンド ライン インターフェイスまたは Visual Studio のパッケージ マネージャー コンソールを使用して、[Microsoft.Identity.Web.MicrosoftGraph NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph)をプロジェクトにインストールします。
 
-# <a name="command-line"></a>[コマンド ライン](#tab/command-line)
+#### <a name="net-core-command-line"></a>.NET Core コマンド ライン
 
 コマンド ラインを開き、プロジェクト ファイルが含まれているディレクトリに切り替えます。
 
@@ -139,7 +141,7 @@ az rest --method post --uri $uri --body $body --headers "Content-Type=applicatio
 dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 ```
 
-# <a name="package-manager"></a>[パッケージ マネージャー](#tab/package-manager)
+#### <a name="package-manager-console"></a>パッケージ マネージャー コンソール
 
 Visual Studio でプロジェクトまたはソリューションを開き、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** コマンドを使用してコンソールを開きます。
 
@@ -147,8 +149,6 @@ Visual Studio でプロジェクトまたはソリューションを開き、 **
 ```powershell
 Install-Package Microsoft.Identity.Web.MicrosoftGraph
 ```
-
----
 
 ### <a name="example"></a>例
 
@@ -208,11 +208,60 @@ public async Task OnGetAsync()
 }
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/programming-language-nodejs)
+
+[@azure/identity](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/identity/identity/README.md) パッケージの `DefaultAzureCredential` クラスは、Azure Storage に対する要求をコードで承認するためにトークン資格情報を取得する際に使用されます。 `DefaultAzureCredential` クラスのインスタンスを作成します。これは、マネージド ID を使用し、トークンを取得してサービス クライアントにアタッチします。 次のコード例では、認証済みのトークン資格情報を取得し、それを使用して、グループ内のユーザーを取得するサービス クライアント オブジェクトを作成します。
+
+このコードをサンプル アプリケーションの一部として見る場合は、[GitHub 上のサンプル](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity)を参照してください。
+
+### <a name="example"></a>例
+
+```nodejs
+const graphHelper = require('../utils/graphHelper');
+const { DefaultAzureCredential } = require("@azure/identity");
+
+exports.getUsersPage = async(req, res, next) => {
+
+    const defaultAzureCredential = new DefaultAzureCredential();
+    
+    try {
+        const tokenResponse = await defaultAzureCredential.getToken("https://graph.microsoft.com/.default");
+
+        const graphClient = graphHelper.getAuthenticatedClient(tokenResponse.token);
+
+        const users = await graphClient
+            .api('/users')
+            .get();
+
+        res.render('users', { user: req.session.user, users: users });   
+    } catch (error) {
+        next(error);
+    }
+}
+```
+
+Microsoft Graph に対してクエリを実行するために、このサンプルでは [Microsoft Graph JavaScript SDK](https://github.com/microsoftgraph/msgraph-sdk-javascript) を使用します。 このコードは完全なサンプルの [utils/graphHelper.js](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/blob/main/3-WebApp-graphapi-managed-identity/controllers/graphController.js) にあります。
+
+```nodejs
+getAuthenticatedClient = (accessToken) => {
+    // Initialize Graph client
+    const client = graph.Client.init({
+        // Use the provided access token to authenticate requests
+        authProvider: (done) => {
+            done(null, accessToken);
+        }
+    });
+
+    return client;
+}
+```
+---
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルを完了し、Web アプリや関連するリソースが不要になった場合は、[作成したリソースをクリーンアップ](scenario-secure-app-clean-up-resources.md)します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の内容を学習しました。
 

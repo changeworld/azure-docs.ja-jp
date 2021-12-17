@@ -1,17 +1,17 @@
 ---
-title: Service Fabric マネージド クラスターをデプロイする (プレビュー)
+title: Service Fabric マネージド クラスターをデプロイする
 description: このチュートリアルでは、テスト用に Service Fabric マネージド クラスターをデプロイします。
 ms.topic: tutorial
-ms.date: 08/27/2020
-ms.custom: references_regions
-ms.openlocfilehash: fd54e6f8c5272c3a8fe0e0162ca2e57968b24642
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 8/23/2021
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 3117c4c248aa073fb961dc031342d8b3d9489bbd
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791713"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867406"
 ---
-# <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>チュートリアル:Service Fabric マネージド クラスターをデプロイする (プレビュー)
+# <a name="tutorial-deploy-a-service-fabric-managed-cluster"></a>チュートリアル: Service Fabric マネージド クラスターをデプロイする
 
 このチュートリアル シリーズでは、次のことについて説明します。
 
@@ -52,9 +52,6 @@ Set-AzContext -SubscriptionId <your-subscription>
 ## <a name="create-a-new-resource-group"></a>新しいリソース グループを作成する
 
 次に、Service Fabric マネージド クラスター用のリソース グループを作成し、`<your-rg>` と `<location>` を目的のグループ名と場所に置き換えます。
-
-> [!NOTE]
-> パブリック プレビューで現在サポートされているリージョンは、`centraluseuap`、`eastus2euap`、`eastasia`、`northeurope`、`westcentralus`、および `eastus2` です。
 
 ```powershell
 $resourceGroup = "myResourceGroup"

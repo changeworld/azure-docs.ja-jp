@@ -1,15 +1,15 @@
 ---
 title: スロットルされた要求に関するガイダンス
 description: Azure Resource Graph によって要求がスロットルされないように、グループ化、時間差処理、改ページ調整、およびクエリの並列処理を行う方法について説明します。
-ms.date: 04/09/2021
+ms.date: 09/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 891d5951670dd6022b66ae2936ee855f73f8b33a
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: eece1d35cdabcca957e4ce1e72e32f243a1747e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107283543"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589741"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Resource Graph のスロットルされた要求に関するガイダンス
 
@@ -174,7 +174,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
         var azureOperationResponse = await this.resourceGraphClient
             .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
             .ConfigureAwait(false);
-        
+
         var responseHeaders = azureOperationResponse.response.Headers;
         int remainingQuota = /* read and parse x-ms-user-quota-remaining from responseHeaders */
         TimeSpan resetAfter = /* read and parse x-ms-user-quota-resets-after from responseHeaders */
@@ -200,7 +200,7 @@ Azure Resource Graph では、単一のクエリ応答で最大 1,000 のエン�
   var results = new List<object>();
   var queryRequest = new QueryRequest(
       subscriptions: new[] { mySubscriptionId },
-      query: "Resources | project id, name, type | top 5000");
+      query: "Resources | project id, name, type");
   var azureOperationResponse = await this.resourceGraphClient
       .ResourcesWithHttpMessagesAsync(queryRequest, header)
       .ConfigureAwait(false);
@@ -215,18 +215,6 @@ Azure Resource Graph では、単一のクエリ応答で最大 1,000 のエン�
 
       // Inspect throttling headers in query response and delay the next call if needed.
   }
-  ```
-
-- Azure CLI/Azure PowerShell
-
-  Azure CLI または Azure PowerShell の使用では、Azure Resource Graph に対するクエリは、自動的に最大 5,000 のエントリをフェッチするように改ページ調整されます。 クエリの結果では、すべての改ページ調整された呼び出しが結合されたエントリの一覧が返されます。 この場合、クエリの結果に含まれるエントリ数によっては、単一の改ページ調整されたクエリで、複数のクエリのクォータが消費される可能性があります。 たとえば、次の例では、クエリの 1 回の実行で、最大 5 のクエリのクォータが消費される可能性があります。
-
-  ```azurecli-interactive
-  az graph query -q 'Resources | project id, name, type' --first 5000
-  ```
-
-  ```azurepowershell-interactive
-  Search-AzGraph -Query 'Resources | project id, name, type' -First 5000
   ```
 
 ## <a name="still-get-throttled"></a>スロットルが解消されない場合

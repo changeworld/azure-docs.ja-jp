@@ -1,0 +1,132 @@
+- name: Azure Industrial IoT ドキュメント
+  href: index.yml
+- name: Azure Industrial IoT プラットフォームのバージョン
+  href: industrial-iot-platform-versions.md
+- name: 概要
+  items:
+    - name: 産業用 IoT とは
+      href: overview-what-is-industrial-iot.md
+    - name: OPC Publisher の概要
+      href: overview-what-is-opc-publisher.md
+- name: チュートリアル
+  items:
+    - name: OPC Publisher のスタンドアロン チュートリアル
+      items:
+        - name: OPC Publisher をスタンドアロン モードでデプロイする
+          href: tutorial-publisher-deploy-opc-publisher-standalone.md
+        - name: OPC Publisher の構成
+          href: tutorial-publisher-configure-opc-publisher.md
+        - name: OPC Publisher のパフォーマンスとメモリの調整
+          href: tutorial-publisher-performance-memory-tuning-opc-publisher.md
+    - name: IIoT プラットフォームのチュートリアル (調整モード)
+      items:
+        - name: IIoT プラットフォームのデプロイ
+          href: tutorial-deploy-industrial-iot-platform.md
+        - name: IIoT コンポーネントの構成
+          href: tutorial-configure-industrial-iot-components.md
+        - name: 産業用 IoT を使用して Azure Data Explorer にデータをプルする
+          href: tutorial-data-explorer-import.md
+        - name: Time Series Insights を使用してデータを視覚化および分析する
+          href: tutorial-visualize-data-time-series-insights.md
+- name: 操作方法ガイド
+  items:
+    - name: IoT Edge のインストールとプロビジョニング
+      items:
+        - name: IoT Edge デバイスを作成する
+          href: ../iot-edge/how-to-create-iot-edge-device.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: Linux ホスト上の Linux コンテナー
+          items:
+            - name: シングル デバイスのプロビジョニング
+              items:
+                - name: X.509 証明書の構成証明
+                  href: ../iot-edge/how-to-provision-single-device-linux-x509.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: 対称キーの構成証明
+                  href: ../iot-edge/how-to-provision-single-device-linux-symmetric.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+            - name: デバイスを大規模にプロビジョニングする
+              items:
+                - name: X.509 証明書の構成証明
+                  href: ../iot-edge/how-to-provision-devices-at-scale-linux-x509.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: TPM の構成証明
+                  href: ../iot-edge/how-to-provision-devices-at-scale-linux-tpm.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: 対称キーの構成証明
+                  href: ../iot-edge/how-to-provision-devices-at-scale-linux-symmetric.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: Windows ホスト上の Linux コンテナー
+          items:
+            - name: シングル デバイスのプロビジョニング
+              items:
+                - name: X.509 証明書の構成証明
+                  href: ../iot-edge/how-to-provision-single-device-linux-on-windows-x509.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: 対称キーの構成証明
+                  href: ../iot-edge/how-to-provision-single-device-linux-on-windows-symmetric.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+            - name: デバイスを大規模にプロビジョニングする
+              items:
+                - name: X.509 証明書の構成証明
+                  href: ../iot-edge/how-to-provision-devices-at-scale-linux-on-windows-x509.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: TPM の構成証明
+                  href: ../iot-edge/how-to-provision-devices-at-scale-linux-on-windows-tpm.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: 対称キーの構成証明
+                  href: ../iot-edge/how-to-provision-devices-at-scale-linux-on-windows-symmetric.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+            - name: Windows VM の入れ子になった仮想化を構成する
+              href: ../iot-edge/nested-virtualization.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+            - name: 仮想スイッチを作成する
+              href: ../iot-edge/how-to-create-virtual-switch.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+            - name: GPU アクセラレーションを構成する
+              href: ../iot-edge/gpu-acceleration.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: Windows ホスト上の Windows コンテナー
+          items:
+            - name: シングル デバイスのプロビジョニング
+              items:
+                - name: 対称キーの構成証明
+                  href: ../iot-edge/how-to-provision-single-device-windows-symmetric.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: X.509 証明書の構成証明
+                  href: ../iot-edge/how-to-provision-single-device-windows-x509.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+            - name: デバイスを大規模にプロビジョニングする
+              items:
+                - name: 対称キーの構成証明
+                  href: ../iot-edge/how-to-provision-devices-at-scale-windows-symmetric.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: X.509 証明書の構成証明
+                  href: ../iot-edge/how-to-provision-devices-at-scale-windows-x509.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: TPM の構成証明
+                  href: ../iot-edge/how-to-provision-devices-at-scale-windows-tpm.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: IoT Edge を更新する
+          href: ../iot-edge/how-to-update-iot-edge.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: デバイス証明書の管理
+          href: ../iot-edge/how-to-manage-device-certificates.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: Kubernetes で IoT Edge を実行する
+          href: ../iot-edge/how-to-install-iot-edge-kubernetes.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: ARM テンプレートを使用して IoT Edge VM をデプロイする
+          href: ../iot-edge/how-to-install-iot-edge-ubuntuvm.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+- name: リファレンス
+  items:
+    - name: コマンドライン引数
+      href: reference-command-line-arguments.md
+    - name: OPC Publisher のテレメトリ構成ファイルの形式
+      href: reference-opc-publisher-telemetry-format.md
+- name: リソース
+  items:
+    - name: OPC Publisher GitHub リポジトリ
+      href: 'https://github.com/Azure/Industrial-IoT'
+    - name: IIoT Platform GitHub リポジトリ
+      href: 'https://github.com/Azure/iot-edge-opc-publisher'
+    - name: サポート オプションとヘルプ オプション
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: IoT 用語集
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: Azure IoT のサービス
+      items:
+        - name: IoT Hub
+          href: ../iot-hub/index.yml
+        - name: IoT Hub Device Provisioning Service
+          href: ../iot-dps/index.yml
+        - name: IoT Central
+          href: /microsoft-iot-central/
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: IoT ソリューション アクセラレータ
+          href: ./index.yml
+        - name: IoT プラグ アンド プレイ
+          href: ../iot-develop/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml

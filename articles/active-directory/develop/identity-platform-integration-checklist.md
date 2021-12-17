@@ -11,13 +11,13 @@ ms.workload: identity
 ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: a6a7bf24571660d8e728c1acba29af2504539a18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, has-adal-ref
+ms.openlocfilehash: 34af764b9a58d4fe981b4c6946cd2299fdff75ae
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99219962"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419072"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft ID プラットフォームのベスト プラクティスと推奨事項
 
@@ -74,7 +74,7 @@ ms.locfileid: "99219962"
 
 ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) モバイル アプリの場合、アプリケーションの登録エクスペリエンスを使用して、各プラットフォームを構成します。 アプリケーションでのシングル サインインに Microsoft Authenticator または Microsoft ポータル サイトを利用するためには、アプリに "ブローカー リダイレクト URI" が構成されている必要があります。 これにより、認証後に Microsoft からアプリケーションに制御を返すことができます。 各プラットフォームを構成するときに、アプリの登録エクスペリエンスにプロセスが表示されます。 クイックスタートを使用して、実際の例をダウンロードします。 iOS 上では、可能な限りブローカーと System Webview を使用します。
 
-![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) Web アプリまたは Web API では、アカウントごとに 1 つのトークン キャッシュを保持します。  Web アプリの場合、トークン キャッシュは、アカウント ID によってキー指定されている必要があります。  Web API の場合、アカウントは、API の呼び出しに使用されるトークンのハッシュによって、キー指定されている必要があります。 MSAL.NET では、.NET Framework および .NET Core サブプラットフォーム上でカスタム トークン キャッシュのシリアル化が提供されます。 セキュリティとパフォーマンス上の理由から、ユーザーごとに 1 つのキャッシュをシリアル化することをお勧めします。 詳細については、[トークン キャッシュのシリアル化](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)に関するページを参照してください。
+![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) Web アプリまたは Web API では、アカウントごとに 1 つのトークン キャッシュを保持します。  Web アプリの場合、トークン キャッシュは、アカウント ID によってキー指定されている必要があります。  Web API の場合、アカウントは、API の呼び出しに使用されるトークンのハッシュによって、キー指定されている必要があります。 MSAL.NET では、.NET Framework および .NET Core サブプラットフォーム上でカスタム トークン キャッシュのシリアル化が提供されます。 セキュリティとパフォーマンス上の理由から、ユーザーごとに 1 つのキャッシュをシリアル化することをお勧めします。 詳細については、[トークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)に関するページを参照してください。
 
 ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) アプリに必要なデータを [Microsoft Graph](https://developer.microsoft.com/graph) を介して入手できる場合は、個々の API ではなく Microsoft Graph エンドポイントを使用してこのデータに対するアクセス許可を要求します。
 

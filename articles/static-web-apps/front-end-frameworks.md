@@ -1,5 +1,5 @@
 ---
-title: Azure Static Web Apps Preview を使用してフロントエンド フレームワークを構成する
+title: Azure Static Web Apps を使用してフロントエンド フレームワークを構成する
 description: Azure Static Web Apps に必要となる、一般的なフロントエンド フレームワークの設定
 services: static-web-apps
 author: craigshoemaker
@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 9f02c9ad10e2b03bddc7c3ca2cfb54932464b69a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 95f7c35cc33c1d174cd228bd053dbfea6c850135
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731753"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841698"
 ---
-# <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Azure Static Web Apps Preview を使用してフロントエンド フレームワークとライブラリを構成する
+# <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps"></a>Azure Static Web Apps を使用してフロントエンド フレームワークとライブラリを構成する
 
-Azure Static Web Apps を使用するには、フロントエンド フレームワークまたはライブラリの[ビルド構成ファイル](github-actions-workflow.md)内に、適切な構成値が必要です。
+Azure Static Web Apps を使用するには、フロントエンド フレームワークまたはライブラリの[ビルド構成ファイル](build-configuration.md)内に、適切な構成値が必要です。
 
 ## <a name="configuration"></a>構成
 
@@ -24,15 +24,16 @@ Azure Static Web Apps を使用するには、フロントエンド フレーム
 
 表の各列の意図は、次の項目によって説明されます。
 
-- **出力場所**: `output_location` の値を表示します。これは、[ビルドされたバージョンのアプリケーション ファイル用のフォルダー](github-actions-workflow.md#build-and-deploy)です。
+- **出力場所**: `output_location` の値を表示します。これは、[ビルドされたバージョンのアプリケーション ファイル用のフォルダー](build-configuration.md)です。
 
-- **カスタム ビルド コマンド**:フレームワークで `npm run build` または `npm run azure:build` とは異なるコマンドが必要となる場合に、[カスタム ビルド コマンド](github-actions-workflow.md#custom-build-commands)を規定できます。
+- **カスタム ビルド コマンド**:フレームワークで `npm run build` または `npm run azure:build` とは異なるコマンドが必要となる場合に、[カスタム ビルド コマンド](build-configuration.md#custom-build-commands)を規定できます。
 
 | フレームワーク | App artifact location (アプリ成果物の場所) | カスタム ビルド コマンド |
 |--|--|--|
 | [Alpine.js](https://github.com/alpinejs/alpine/) | `/` | 該当なし <sup>2</sup> |
-| [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --prod` |
+| [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --configuration production` |
 | [Angular Universal](https://angular.io/guide/universal) | `dist/<APP_NAME>/browser` | `npm run prerender` |
+| [Astro](https://astro.build) | `dist` | 該当なし |
 | [Aurelia](https://aurelia.io/) | `dist` | 該当なし |
 | [Backbone.js](https://backbonejs.org/) | `/` | 該当なし |
 | [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) | `wwwroot` | 該当なし |
@@ -65,4 +66,4 @@ Azure Static Web Apps を使用するには、フロントエンド フレーム
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ビルドとワークフロー構成](github-actions-workflow.md)
+- [ビルドとワークフロー構成](build-configuration.md)

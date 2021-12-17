@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.openlocfilehash: bf5ab7361c84fb787366c7c361829e52362fe427
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 8e76e3e7683d43a7a39bc0c168a29016a988c705
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95025910"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499412"
 ---
 # <a name="intents-in-your-luis-app"></a>LUIS アプリにおける意図
 
@@ -74,7 +74,7 @@ ms.locfileid: "95025910"
 
 ## <a name="intents-and-patterns"></a>意図とパターン
 
-発話の例があり、その一部または全体を正規表現として定義できる場合は、[正規表現エンティティ](luis-concept-entity-types.md#regular-expression-entity)を[パターン](luis-concept-patterns.md)と組み合わせて使用することを検討してください。
+発話の例があり、その一部または全体を正規表現として定義できる場合は、[正規表現エンティティ](luis-concept-entity-types.md#regex-entity)を[パターン](luis-concept-patterns.md)と組み合わせて使用することを検討してください。
 
 正規表現エンティティを使用すると、パターンと一致するデータ抽出が保証されます。 パターン マッチングでは、正確な意図が返されることが保証されます。
 

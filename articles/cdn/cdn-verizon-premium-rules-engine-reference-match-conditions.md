@@ -2,17 +2,17 @@
 title: Azure CDN from Verizon Premium ルール エンジンの一致条件
 description: Azure Content Delivery Network from Verizon Premium ルール エンジンの一致条件に関するリファレンス ドキュメント。
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/26/2020
-ms.author: allensu
-ms.openlocfilehash: efd6e6a93cd4ca79e6c4b6de69f8514e2d71b252
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: 2c0c509b2e2fedabb779e135fc3234d116df6b57
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84323316"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282065"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN from Verizon Premium ルール エンジンの一致条件
 

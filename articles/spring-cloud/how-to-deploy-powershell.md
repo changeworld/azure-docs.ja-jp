@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell を使用して Azure Spring Cloud をテプロイする方法
 description: Azure PowerShell を使用して Azure Spring Cloud をテプロイする方法
-author: bmitchell287
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.topic: conceptual
 ms.service: spring-cloud
 ms.devlang: azurepowershell
 ms.date: 11/16/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3cb320a37818084f2fbcad22a3cc992655b19c3d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f0badb1954cfbd78bc347bf949a6f7ad29bc0177
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877452"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014818"
 ---
 # <a name="deploy-azure-spring-cloud-with-azure-powershell"></a>Azure PowerShell を使用して Azure Spring Cloud をテプロイする
 
@@ -25,18 +25,18 @@ ms.locfileid: "104877452"
 
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../includes/azure-powershell-requirements-no-header.md)]
 
-  > [!IMPORTANT]
-  > **Az.SpringCloud** PowerShell モジュールがプレビュー段階にある間は、`Install-Module` コマンドレットを使用して、これを別途インストールする必要があります。 この PowerShell モジュールは、一般提供されると、将来の Az PowerShell モジュール リリースに含まれ、既定で Azure Cloud Shell 内から使用できるようになります。
+   > [!IMPORTANT]
+   > **Az.SpringCloud** PowerShell モジュールがプレビュー段階にある間は、`Install-Module` コマンドレットを使用して、これを別途インストールする必要があります。 この PowerShell モジュールは、一般提供されると、将来の Az PowerShell モジュール リリースに含まれ、既定で Azure Cloud Shell 内から使用できるようになります。
 
-  ```azurepowershell-interactive
-  Install-Module -Name Az.SpringCloud
-  ```
+   ```azurepowershell-interactive
+   Install-Module -Name Az.SpringCloud
+   ```
 
 * 複数の Azure サブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [Set-AzContext](/powershell/module/az.accounts/set-azcontext) コマンドレットを使用して、特定のサブスクリプションを選択します。
 
-  ```azurepowershell-interactive
-  Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
-  ```
+   ```azurepowershell-interactive
+   Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
+   ```
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -136,4 +136,4 @@ Remove-AzResourceGroup -Name <resource group name>
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Spring Cloud の開発者向けリソース](spring-cloud-resources.md)
+[Azure Spring Cloud の開発者向けリソース](./resources.md)

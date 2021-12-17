@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/04/2020
+ms.date: 10/26/2021
 ms.author: allensu
-ms.openlocfilehash: 6bf090cde7262fdae9c98ef55227bf2925937dbf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 576965485de7bd3c193beae219af74139bffb827
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739833"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068324"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer のコンポーネント
 
@@ -50,7 +50,9 @@ IP アドレスの特質によって、作成されるロード バランサー�
 
 受信要求を処理する仮想マシンのグループまたは仮想マシン スケール セット内のインスタンスのグループ。 コスト効果に優れた方法でスケーリングして大量の受信トラフィックに対処するために、コンピューティングのガイドラインでは通常、バックエンド プールにインスタンスを追加することが推奨されます。
 
-ロード バランサーは、インスタンスがスケールアップまたはスケールダウンされると、自動再構成を通じてすぐに自身を再構成します。 バックエンド プールの VM を追加または削除すると、追加操作なしに、ロード バランサーが再構成されます。 バックエンド プールのスコープは、仮想ネットワーク内の任意の仮想マシンです。
+ロード バランサーは、インスタンスがスケールアップまたはスケールダウンされると、自動再構成を通じてすぐに自身を再構成します。 バックエンド プールの VM を追加または削除すると、追加操作なしに、ロード バランサーが再構成されます。 バックエンド プールのスコープは、1 つの仮想ネットワーク内の任意の仮想マシンです。 
+
+バックエンド プールでは、[ネットワーク インターフェイスまたは IP アドレス](backend-pool-management.md)を使用したインスタンスの追加がサポートされています。
 
 バックエンド プールの設計方法を検討するときは、個々のバックエンド プール リソースを最小限の数に設計して、管理操作の期間を最適化します。 データ プレーンのパフォーマンスやスケールに違いはありません。
 
@@ -129,7 +131,7 @@ Basic ロード バランサーでは、アウトバウンド規則がサポー�
 - ロード バランサーの[制限](../azure-resource-manager/management/azure-subscription-service-limits.md)を確認してください 
 - ロード バランサーは特定の TCP または UDP プロトコルに対する負荷分散とポート フォワーディングを行います。 負荷分散規則と受信 NAT 規則は TCP および UDP をサポートしますが、ICMP を含む他の IP プロトコルはサポートしていません。
 - 内部 Load Balancer のフロントエンドへのバックエンド VM からのアウトバウンド フローは失敗します。
-- ロード バランサーの規則は、2 つの仮想ネットワークにまたがることはできません。  フロントエンドとそのバックエンド インスタンスは、同じ仮想ネットワークに配置されている必要があります。  
+- ロード バランサーの規則は、2 つの仮想ネットワークにまたがることはできません。 すべてのロード バランサーのフロントエンドとそのバックエンド インスタンスは、1 つの仮想ネットワーク内に存在する必要があります。  
 - 負荷分散規則では、IP フラグメントの転送はサポートされていません。 UDP パケットと TCP パケットの IP の断片化は負荷分散規則ではサポートされていません。 HA ポートの負荷分散規則を使用すると、既存の IP フラグメントを転送できます。 詳細については、「[高可用性ポートの概要](load-balancer-ha-ports-overview.md)」を参照してください。
 - 可用性セットごとに、1 つのパブリック ロード バランサーと 1 つの内部ロード バランサーのみを使用できます
 
@@ -137,8 +139,8 @@ Basic ロード バランサーでは、アウトバウンド規則がサポー�
 
 - ロード バランサーの使用を開始するには、[パブリックな Standard ロード バランサーの作成](quickstart-load-balancer-standard-public-portal.md)に関する記事を参照してください。
 - [Azure Load Balancer](load-balancer-overview.md) についてさらに詳しく学習する。
-- [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md)について学習する。
-- [プライベート IP アドレス](../virtual-network/private-ip-addresses.md)について学習する。
+- [パブリック IP アドレス](../virtual-network/ip-services/virtual-network-public-ip-address.md)について学習する。
+- [プライベート IP アドレス](../virtual-network/ip-services/private-ip-addresses.md)について学習する。
 - [Standard ロード バランサーと可用性ゾーン](load-balancer-standard-availability-zones.md)の使用について学習する。
 - [Standard ロード バランサーの診断](load-balancer-standard-diagnostics.md)について学習する。
 - [アイドル時の TCP リセット](load-balancer-tcp-reset.md)について学習する。

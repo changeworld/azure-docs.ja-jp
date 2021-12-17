@@ -3,12 +3,12 @@ title: gitRepo ボリュームをコンテナー グループにマウントす�
 description: gitRepo ボリュームをマウントし、Git リポジトリのクローンをコンテナー インスタンスに作成する方法について説明します。
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 7c1249e3120dd680c52bf74fb045bedf5202b9f2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 02def9b54211e122bb61f5dbbb380da0cac91f88
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763723"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607332"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances に gitRepo ボリュームをマウントする
 
@@ -68,7 +68,7 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 たとえば、次の Resource Manager テンプレートでは、1 つのコンテナーから構成されるコンテナー グループが作成されます。 このコンテナーによって、*gitRepo* ボリューム ブロックにより指定される 2 つの GitHub リポジトリがクローンされます。 2 つ目のボリュームには、クローン先のディレクトリを指定する追加プロパティとクローンする特定のリビジョンのコミット ハッシュが含まれています。
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
-[!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
+[!code-json[volume-gitrepo](~/resourcemanager-templates/container-instances/aci-deploy-volume-gitrepo.json)]
 
 先のテンプレートに定義されていた 2 つのクローンリポジトリのディレクトリ構造は結果的に次のようになります。
 

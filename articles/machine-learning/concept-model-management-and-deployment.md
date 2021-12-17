@@ -1,25 +1,25 @@
 ---
 title: MLOps:ML モデル管理
 titleSuffix: Azure Machine Learning
-description: 'Azure Machine Learning (MLOps) を使用したモデル管理について説明します。 モデルをデプロイ、管理、および監視して、継続的に向上させます。 '
+description: 'Azure Machine Learning でのモデル管理 (MLOps) について説明します。 モデルのデプロイ、管理、系列追跡、監視を行って継続的に改善します。 '
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 author: jpe316
 ms.author: jordane
-ms.date: 03/17/2020
-ms.custom: seodec18
-ms.openlocfilehash: 32777d9f8313457036b103777f251329687b3997
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, mktng-kw-nov2021
+ms.date: 11/04/2021
+ms.openlocfilehash: 7391f4306207e6b181f994c04022c4393712f30f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508012"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848479"
 ---
-# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps:Azure Machine Learning を使用したモデル管理、デプロイ、および監視
+# <a name="mlops-model-management-deployment-lineage-and-monitoring-with-azure-machine-learning"></a>MLOps: Azure Machine Learning を使用したモデルの管理、デプロイ、系列追跡、監視
 
-この記事では、Azure Machine Learning を使用して、モデルのライフサイクルを管理する方法について説明します。 Azure Machine Learning では、Machine Learning Operations (MLOps) の手法を使用します。 MLOps によって、機械学習ソリューションの品質と一貫性が向上します。 
+この記事では、Azure Machine Learning で機械学習運用 (MLOps) を実行してモデルのライフサイクルを管理する方法について説明します。 MLOps によって、機械学習ソリューションの品質と一貫性が向上します。 
 
 ## <a name="what-is-mlops"></a>MLOps とは
 
@@ -27,17 +27,21 @@ Machine Learning 操作 (MLOps) は、ワークフローの効率を向上させ
 
 * モデルのより迅速な実験と開発
 * 実稼働環境へのモデルのより迅速なデプロイ
-* 品質保証
+* 品質保証とエンド ツー エンドの系列追跡
+
+## <a name="mlops-in-azure-machine-learning"></a>Azure Machine Learning での MLOps
 
 Azure Machine Learning で提供される MLOps 機能は次のとおりです。
 
 - **再現可能な ML パイプラインを作成する**。 Machine Learning パイプラインを使用すると、データの準備、トレーニング、およびスコア付けプロセスに対して、反復可能かつ再利用可能な手順を定義できます。
 - モデルのトレーニングとデプロイのために **再利用可能なソフトウェア環境を作成する**。
 - **どこからでもモデルの登録、パッケージ化、デプロイを行う**。 モデルを使用するために必要な関連メタデータを追跡することもできます。
-- **エンドツーエンドの ML ライフサイクルのために管理データを取得する**。 ログに記録される情報には、モデルを公開しているユーザー、変更が行われた理由、モデルがいつ実稼働環境にデプロイされたか、または使用されたかが含まれます。
+- **エンドツーエンドの ML ライフサイクルのために管理データを取得する**。 ログに記録される系列情報には、モデルを公開しているユーザー、変更が行われた理由、モデルが運用環境にいつデプロイされたか、または使用されたかを含めることができます。
 - **ML ライフサイクルにおけるイベントについて通知とアラートを行う**。 たとえば、実験の完了、モデルの登録、モデル デプロイ、データ ドリフトの検出などです。
 - **運用および ML 関連の問題について ML アプリケーションを監視する**。 トレーニングと推論の間でのモデル入力の比較、モデル固有のメトリックの調査、および ML インフラストラクチャに関する監視とアラートの提供を行います。
 - **Azure Machine Learning と Azure Pipelines を使用して、エンド ツー エンドの ML ライフサイクルを自動化する**。 パイプラインの使用により、頻繁にモデルを更新し、新しいモデルをテストし、他のアプリケーションやサービスとともに新しい ML モデルを継続的にロールアウトすることができます。
+
+MLOps の詳細については、「[Machine Learning DevOps (MLOps)](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-mlops)」を参照してください。
 
 ## <a name="create-reproducible-ml-pipelines"></a>再現可能な ML パイプラインを作成する
 
@@ -94,9 +98,9 @@ Azure Machine Learning での ONNX の詳細については、「[ML モデル�
 
 ### <a name="use-models"></a>モデルを使用する
 
-トレーニング済みの機械学習モデルは、クラウド上またはローカルで、Web サービスとしてデプロイされます。 また、Azure IoT Edge デバイスにモデルをデプロイすることもできます。 デプロイでは、推論に CPU、GPU、またはフィールド プログラマブル ゲート アレイ (FPGA) を使用します。 Power BI からのモデルを使用することもできます。
+トレーニング済みの機械学習モデルは、クラウド上またはローカルで、Web サービスとしてデプロイされます。 デプロイでは、推論に CPU、GPU、またはフィールド プログラマブル ゲート アレイ (FPGA) を使用します。 Power BI からのモデルを使用することもできます。
 
-モデルを Web サービスまたは IoT Edge デバイスとして使用する場合は、次の項目を指定します。
+モデルを Web サービスとして使用する場合は、次の項目を指定します。
 
 * サービス/デバイスに送信されたデータのスコア付けに使用されるモデル。
 * エントリ スクリプト。 このスクリプトは、要求を受け入れ、モデルを使用してデータにスコアを付け、応答を返します。
@@ -105,7 +109,7 @@ Azure Machine Learning での ONNX の詳細については、「[ML モデル�
 
 また、ターゲット デプロイ プラットフォームの構成も提供します。 たとえば、Azure Kubernetes Service をデプロイするときの VM ファミリの種類、使用可能なメモリ、およびコアの数です。
 
-イメージが作成されると、Azure Machine Learning で必要なコンポーネントも追加されます。 たとえば、Web サービスを実行し、IoT Edge を操作するために必要なアセットです。
+イメージが作成されると、Azure Machine Learning で必要なコンポーネントも追加されます。 たとえば、Web サービスを実行するために必要なアセットです。
 
 #### <a name="batch-scoring"></a>バッチ スコアリング
 Batch スコアリングは、ML パイプライン経由でサポートされます。 詳細については、[ビッグ データでのバッチ予測](./tutorial-pipeline-batch-scoring-classification.md)に関するページをご覧ください。
@@ -136,17 +140,11 @@ Azure Kubernetes Service にデプロイする場合は、制御されたロー�
 
 詳細については、[ML モデルの制御されたロールアウト](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)に関するページを参照してください。
 
-#### <a name="iot-edge-devices"></a>IoT Edge デバイス
-
-**Azure IoT Edge モジュール** を介してモデルを IoT デバイスで使用することができます。 IoT Edge モジュールはハードウェア デバイスに展開されるため、デバイス上で推論、つまりモデルのスコアリングを使用できます。
-
-詳細については、「[モデルのデプロイ](how-to-deploy-and-where.md)」を参照してください。
-
 ### <a name="analytics"></a>Analytics
 
 Microsoft Power BI は、データ分析への機械学習モデルの使用をサポートします。 詳細については、[Azure Machine Learning の Power BI への統合 (プレビュー)](/power-bi/service-machine-learning-integration)に関する記事をご覧ください。
 
-## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>エンドツーエンドの ML ライフサイクルをキャプチャするために必要な管理データを取得する
+## <a name="capture-the-governance-data-required-for-mlops"></a>MLOps に必要なガバナンス データをキャプチャする
 
 Azure ML では、メタデータを使用して、すべての ML 資産のエンド ツー エンドの監査証跡を追跡できます。
 
@@ -200,8 +198,8 @@ GitHub と Azure Pipelines を使用して、モデルをトレーニングす�
 Azure Machine Learning での Azure Pipelines の使用方法の詳細については、次のリンクを参照してください。
 
 * [Azure Pipelines を使用した ML モデルの継続的インテグレーションとデプロイ](/azure/devops/pipelines/targets/azure-machine-learning) 
-* [Azure Machine Learning MLOps](https://aka.ms/mlops) リポジトリ。
-* [Azure Machine Learning MLOpsPython](https://github.com/Microsoft/MLOpspython) リポジトリ。
+* [Azure Machine Learning MLOps](https://aka.ms/mlops) リポジトリ
+* [Azure Machine Learning MLOpsPython](https://github.com/Microsoft/MLOpspython) リポジトリ
 
 Azure Data Factory を使用して、トレーニングで使用するためのデータを準備するデータ インジェスト パイプラインを作成することもできます。 詳細については、[データ インジェスト パイプライン](how-to-cicd-data-ingestion.md)に関するページを参照してください
 

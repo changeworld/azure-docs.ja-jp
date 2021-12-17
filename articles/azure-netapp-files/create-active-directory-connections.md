@@ -12,31 +12,35 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/24/2021
+ms.date: 11/02/2021
 ms.author: b-juche
-ms.openlocfilehash: d238b566c1286b9b765fb574cd72ee68ccf4b4a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e05850686fca42a8d21bc477e39171ff792db307
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048376"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473834"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Azure NetApp Files の Active Directory 接続の作成と管理
 
-Azure NetApp Files のいくつかの機能では、Active Directory 接続が必要です。  たとえば、[SMB ボリューム](azure-netapp-files-create-volumes-smb.md)または[デュアルプロトコル ボリューム](create-volumes-dual-protocol.md)を作成するには、Active Directory 接続が必要です。  この記事では、Azure NetApp Files の Active Directory 接続を作成および管理する方法について説明します。
+Azure NetApp Files のいくつかの機能では、Active Directory 接続が必要です。  たとえば、[SMB ボリューム](azure-netapp-files-create-volumes-smb.md)、[NFSv4.1 Kerberos ボリューム](configure-kerberos-encryption.md)、または[デュアルプロトコル ボリューム](create-volumes-dual-protocol.md)を作成するには、事前に Active Directory 接続を用意する必要があります。  この記事では、Azure NetApp Files の Active Directory 接続を作成および管理する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に  
 
-あらかじめ容量プールを設定しておく必要があります。   
-[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)   
-サブネットが Azure NetApp Files に委任されている必要があります。  
-[サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)
+* あらかじめ容量プールを設定しておく必要があります。 「[容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)」を参照してください。   
+* サブネットが Azure NetApp Files に委任されている必要があります。 「[サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)」を参照してください。
 
-## <a name="requirements-for-active-directory-connections"></a>Active Directory 接続の要件
+## <a name="requirements-and-considerations-for-active-directory-connections"></a><a name="requirements-for-active-directory-connections"></a>Active Directory 接続の要件と考慮事項
 
- Active Directory 接続の要件は次のとおりです。 
+* Active Directory (AD) 接続を構成できるのは、サブスクリプションごとおよびリージョンごとに 1 つだけです。   
+
+    Azure NetApp Files は、AD 接続が異なる NetApp アカウントにある場合でも、1 つの "*リージョン*" で複数の AD 接続をサポートしていません。 ただし、AD 接続が異なるリージョンにある場合は、1 つのサブスクリプションで複数の AD 接続を使用できます。 1 つのリージョンに複数の AD 接続が必要な場合は、別のサブスクリプションを使用してこれを行うことができます。  
+
+    AD 接続は、それが作成された NetApp アカウントを介してのみ表示されます。 ただし、共有 AD 機能を有効にすると、同じサブスクリプションおよび同じリージョン内の NetApp アカウントが、いずれかの NetApp アカウントで作成された AD サーバーを使用できるようになります。 「[同じサブスクリプションとリージョンにある複数の NetApp アカウントを AD 接続にマップする](#shared_ad)」を参照してください。 この機能を有効にすると、同じサブスクリプションおよび同じリージョンにあるすべての NetApp アカウントの AD 接続を確認できるようになります。 
 
 * 使用する管理者アカウントは、指定する組織単位 (OU) パスにマシン アカウントを作成できる必要があります。  
+
+* Azure NetApp Files で使用されている Active Directory ユーザー アカウントのパスワードを変更する場合は必ず、[[Active Directory 接続]](#create-an-active-directory-connection) で構成されているパスワードを更新してください。 そうしないと、新しいボリュームを作成できなくなり、セットアップによっては既存のボリュームへのアクセスも影響を受ける場合があります。  
 
 * 適切なポートは、該当する Windows Active Directory (AD) のサーバーで開く必要があります。  
     必要なポートは次のとおりです。 
@@ -89,6 +93,17 @@ Azure NetApp Files のいくつかの機能では、Active Directory 接続が�
 
 * AD 統合 DNS ではない場合、"フレンドリ名" を使用して Azure NetApp Files が機能するようにするには、DNS A/PTR レコードを追加する必要があります。 
 
+* 次の表では、LDAP キャッシュの Time to Live (TTL) 設定について説明します。 クライアントを使用してファイルまたはディレクトリにアクセスしようとする前に、キャッシュが更新されるまで待機する必要があります。 そうでないと、アクセスまたはアクセス許可の拒否メッセージがクライアントに表示されます。 
+
+    |     エラー状態    |     解像度    |
+    |-|-|
+    | キャッシュ |  [Default Timeout]\(既定のタイムアウト\) |
+    | グループ メンバーシップの一覧  | 24 時間の TTL  |
+    | Unix グループ  | 24 時間の TTL、1 分の負の TTL  |
+    | Unix ユーザー  | 24 時間の TTL、1 分の負の TTL  |
+
+    キャッシュには、*Time to Live* と呼ばれる特定のタイムアウト期間があります。 タイムアウト期間が経過すると、古いエントリが残らないようにエントリが期限切れになります。 *負の TTL* の値は、存在しない可能性があるオブジェクトの LDAP クエリに起因するパフォーマンスの問題を回避するために、失敗した参照が存在する場所です。   
+
 ## <a name="decide-which-domain-services-to-use"></a>使用するドメイン サービスを決定する 
 
 Azure NetApp Files では、AD 接続用に [Active Directory Domain Services](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (ADDS) と Azure Active Directory Domain Services (AADDS) の両方がサポートされています。  AD 接続を作成する前に、ADDS と AADDS のどちらを使用するかを決定する必要があります。  
@@ -116,7 +131,7 @@ Azure NetApp Files では、以下の追加の考慮事項が適用されます�
 * Azure NetApp Files では、`user` と `resource forest` の種類がサポートされています。
 * 同期の種類では、`All` または `Scoped` を選択できます。   
     `Scoped` を選択した場合、SMB 共有にアクセスするための正しい Azure AD グループが選択されていることを確認してください。  不明な場合は、`All` の同期の種類を使用できます。
-* Enterprise または Premium SKU を使用する必要があります。 Standard SKU はサポートされていません。
+* デュアルプロトコル ボリュームで AADDS を使用する場合、POSIX 属性を適用するにはカスタム OU 内にいる必要があります。 詳細については、「[LDAP POSIX 属性を管理する](create-volumes-dual-protocol.md#manage-ldap-posix-attributes)」を参照してください。
 
 Active Directory 接続を作成する場合は、次のような AADDS の詳細を確認してください。
 
@@ -133,6 +148,8 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 ## <a name="create-an-active-directory-connection"></a>Active Directory 接続を作成する
 
 1. NetApp アカウントで **[Active Directory 接続]** をクリックし、 **[参加]** をクリックします。  
+
+    Azure NetApp Files でサポートされるのは、同じリージョンおよび同じサブスクリプション内で 1 つの Active Directory 接続のみです。 Active Directory が同じサブスクリプションおよびリージョン内の別の NetApp アカウントによって既に構成されている場合、お使いの NetApp アカウントで異なる Active Directory を構成して参加することはできません。 ただし、共有 AD 機能を有効にすると、同じサブスクリプションと同じリージョン内の複数の NetApp アカウントで Active Directory 構成を共有できるようになります。 「[同じサブスクリプションとリージョンにある複数の NetApp アカウントを AD 接続にマップする](#shared_ad)」を参照してください。
 
     ![Active Directory 接続](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
@@ -166,8 +183,10 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         ![Active Directory に参加する](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
     * **AES の暗号化**   
-        このチェックボックスをオンにすると、SMB ボリュームに対して AES の暗号化が有効になります。 要件については、「[Active Directory 接続の要件](#requirements-for-active-directory-connections)」を参照してください。 
-
+        AD 認証で AES 暗号化を有効にする場合、または [SMB ボリュームの暗号化](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)が必要な場合は、このチェックボックスをオンにします。   
+        
+        要件については、「[Active Directory 接続の要件](#requirements-for-active-directory-connections)」を参照してください。  
+  
         ![Active Directory の AES の暗号化](../media/azure-netapp-files/active-directory-aes-encryption.png)
 
         **AES の暗号化** 機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
@@ -215,7 +234,9 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         たとえば、特定のシナリオで SQL Server のインストールに使用するユーザー アカウントには、昇格されたセキュリティ特権が付与されている必要があります。 SQL Server のインストールに管理者以外の (ドメイン) アカウントを使用していて、アカウントにセキュリティ特権が割り当てられていない場合、そのアカウントにセキュリティ特権を追加する必要があります。  
 
         > [!IMPORTANT]
-        > SQL Server のインストールに使用するドメイン アカウントは、 **[Security privilege users]\(セキュリティ特権ユーザー\)** フィールドに追加する前に既に作成されている必要があります。 SQL Server インストーラーのアカウントを **[Security privilege users]\(セキュリティ特権ユーザー\)** に追加するときに、ドメイン コントローラーに接続することで Azure NetApp Files サービスによってアカウントが検証される場合があります。 ドメイン コントローラーに接続できないと、コマンドが失敗するおそれがあります。  
+        > **[Security privilege users]\(セキュリティ特権ユーザー\)** 機能を使用するには、 **[[Azure NetApp Files SMB Continuous Availability Shares Public Preview]\(Azure NetApp Files の SMB の継続的な可用性の共有パブリック プレビュー\) 順番待ち送信ページ](https://aka.ms/anfsmbcasharespreviewsignup)** から、順番待ち要求を送信する必要があります。 この機能を使用する前に、Azure NetApp Files チームから正式な確認メールが届くのをお待ちください。        
+        > 
+        > この機能の使用はオプションであり、SQL Server でのみサポートされています。 SQL Server のインストールに使用するドメイン アカウントは、 **[Security privilege users]\(セキュリティ特権ユーザー\)** フィールドに追加する前に既に作成されている必要があります。 SQL Server インストーラーのアカウントを **[Security privilege users]\(セキュリティ特権ユーザー\)** に追加するときに、ドメイン コントローラーに接続することで Azure NetApp Files サービスによってアカウントが検証される場合があります。 ドメイン コントローラーに接続できないと、コマンドが失敗するおそれがあります。  
 
         `SeSecurityPrivilege` と SQL Server の詳細については、「[セットアップ アカウントに特定のユーザー権限がない場合に SQL Server のインストールが失敗する](/troubleshoot/sql/install/installation-fails-if-remove-user-right)」を参照してください。
 
@@ -241,6 +262,29 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
+        また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。  
+
+    * **Administrators** 
+
+        ボリュームに対する管理者権限が付与されるユーザーまたはグループを指定できます。 
+
+        ![[Active Directory 接続] ウィンドウの [管理者] ボックスを示すスクリーンショット。](../media/azure-netapp-files/active-directory-administrators.png) 
+        
+        現在、 **[管理者]** 機能はプレビュー段階にあります。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAdAdministrators
+        ```
+
+        機能の登録の状態を確認します。 
+
+        > [!NOTE]
+        > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が `Registered` になってから続行してください。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAdAdministrators
+        ```
+        
         また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
 
     * **ユーザー名** や **パスワード** などの資格情報
@@ -253,6 +297,28 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 
     ![作成された Active Directory 接続](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
+## <a name="map-multiple-netapp-accounts-in-the-same-subscription-and-region-to-an-ad-connection"></a><a name="shared_ad"></a>同じサブスクリプションとリージョンにある複数の NetApp アカウントを AD 接続にマップする  
+
+共有 AD 機能を使用すると、同じサブスクリプションで同じリージョンに属する NetApp アカウントのいずれかによって作成された Active Directory (AD) 接続を、すべての NetApp アカウントで共有できます。 たとえば、この機能を使用すると、サブスクリプションとリージョンが同じであるすべての NetApp アカウントに共通の AD 構成を使用して、[SMB ボリューム](azure-netapp-files-create-volumes-smb.md)、[NFSv4.1 Kerberos ボリューム](configure-kerberos-encryption.md)、または[デュアルプロトコル ボリューム](create-volumes-dual-protocol.md)を作成できます。 この機能を使用すると、同じサブスクリプションで同じリージョンであるすべての NetApp アカウントの AD 接続を確認できるようになります。   
+
+現在、この機能はプレビュー段階にあります。 初めて使用する前に、機能を登録する必要があります。 登録が完了すると、機能が有効になり、バックグラウンドで動作します。 UI コントロールは必要ありません。 
+
+1. 機能を登録します。 
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSharedAD
+    ```
+
+2. 機能の登録の状態を確認します。 
+
+    > [!NOTE]
+    > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が **Registered** になってから続行してください。
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSharedAD
+    ```
+また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
+ 
 ## <a name="next-steps"></a>次のステップ  
 
 * [SMB ボリュームを作成する](azure-netapp-files-create-volumes-smb.md)

@@ -3,15 +3,15 @@ title: ISE の保存データを暗号化するためにカスタマー マネ�
 description: Azure Logic Apps の統合サービス環境 (ISE) の保存データをセキュリティで保護するために、独自の暗号化キーを作成して管理します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: mijos, rarayudu, logicappspm
+ms.reviewer: mijos, rarayudu, azla
 ms.topic: conceptual
 ms.date: 01/20/2021
-ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db99be325d50f89e6e1c96c1471431815b98936d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98629676"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824287"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する
 
@@ -23,9 +23,15 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
 ## <a name="considerations"></a>考慮事項
 
-* 現時点では、ISE でのカスタマー マネージド キーのサポートは、次の Azure リージョンでのみご利用いただけます:米国西部 2、米国東部、米国中南部
+* 現時点では、ISE でのカスタマー マネージド キーのサポートは、次のリージョンでのみご利用いただけます。
+
+  * Azure: 米国西部 2、米国東部、米国中南部
+
+  * Azure Government: アリゾナ州、バージニア州、テキサス州
 
 * カスタマー マネージド キーは、 "*ISE を作成するときにのみ*" 指定でき、その後には指定できません。 ISE を作成した後に、このキーを無効にすることはできません。 現時点では、ISE でのカスタマー マネージド キーのローテーションはサポートされていません。
+
+* カスタマー マネージド キーを格納するキー コンテナーは、ISE と同じ Azure リージョンに存在する必要があります。
 
 * カスタマー マネージド キーをサポートするには、ISE で[システム割り当てまたはユーザー割り当てのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) が有効になっている必要があります。 この ID により、Azure 仮想ネットワーク内にある、または仮想ネットワークに接続されている、セキュリティで保護されたリソース (仮想マシンや他のシステムまたはサービスなど) へのアクセスを ISE で認証できます。 このようにすると、資格情報を使用してサインインする必要はありません。
 

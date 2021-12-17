@@ -14,20 +14,16 @@ ms.topic: tutorial
 ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 083bd56b2b211d11206a277bf31eea797b37cdb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e7ce4f07e49b7efc0f62ff668e72542fc3def77
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99979931"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132302009"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
-ASP.NET Core には、さまざまなソースから構成データを読み取ることができるプラグ可能な構成システムがあります。 アプリケーションを再起動せずに、動的に変更を処理できます。 ASP.NET Core では、厳密に型指定された .NET クラスへの構成設定のバインドがサポートされています。 さまざまな `IOptions<T>` パターンを使用して、それらをコードに挿入します。 そうしたパターンの 1 つである `IOptionsSnapshot<T>` では、基になるデータが変化したときに、アプリケーションの構成が自動的にリロードされます。 アプリケーションのコントローラーに `IOptionsSnapshot<T>` を挿入すれば、Azure App Configuration に格納されている最新の構成にアクセスすることができます。
-
-ミドルウェアを使って構成設定のセットを動的に更新するよう、App Configuration ASP.NET Core クライアント ライブラリを設定することもできます。 Web アプリが要求を受け取るたびに構成設定が構成ストアで更新されます。
-
-App Configuration では、構成ストアへの呼び出しが多くなりすぎないようにするため、個々の設定が自動的にキャッシュされます。 キャッシュされた設定の値は、構成ストアで変更されたとしても、その有効期限が切れるまで、設定の更新操作は先延ばしされます。 キャッシュの既定の有効期間は 30 秒です。 この有効期間は、必要に応じてオーバーライドできます。
+ASP.NET Core には、さまざまなソースから構成データを読み取ることができるプラグ可能な構成システムがあります。 アプリケーションを再起動せずに、動的に変更を処理できます。 ASP.NET Core では、厳密に型指定された .NET クラスへの構成設定のバインドがサポートされています。 `IOptionsSnapshot<T>` を使用して、それがコードに挿入されます。これにより、基になるデータが変更された場合にアプリケーションの構成が自動的に再読み込みされます。
 
 このチュートリアルでは、自分が作成するコードに、構成の動的更新を実装する方法について説明します。 これは、クイック スタートで紹介されている Web アプリに基づいています。 先に進む前に、[App Configuration を使用した ASP.NET Core アプリの作成](./quickstart-aspnet-core-app.md)を完了しておいてください。
 
@@ -49,7 +45,7 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
 
 ## <a name="add-a-sentinel-key"></a>センチネル キーを追加する
 
-"*センチネル キー*" は、構成が変更されたときの通知に使用される特殊なキーです。 センチネル キーの変化をアプリで監視してください。 変更を検出したら、すべての構成の値を更新します。 すべてのキーの変化を監視した場合よりも、このアプローチの方が、アプリから App Configuration に対して行う全体的な要求の数が少なくなります。
+''*センチネル*'' キーは、他のすべてのキーの変更を完了した後に更新する特殊なキーです。 センチネル キーはアプリケーションによって監視されます。 変更が検出されると、アプリケーションによって構成の値がすべて更新されます。 このアプローチは、アプリケーションの構成の一貫性を確保するのに役立ち、すべてのキーの変更を監視する場合と比べると、App Configuration に対して行う全体的な要求の数が少なくなります。
 
 1. Azure portal で **[構成エクスプローラー] > [作成] > [キー値]** の順に選択します。
 1. **[キー]** に「*TestApp:Settings:Sentinel*」と入力します。 **[値]** には、「1」と入力します。 **[ラベル]** と **[コンテンツの種類]** は空にしておきます。
@@ -88,7 +84,8 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
                     });
                 })
             .UseStartup<Startup>());
-    ```   
+    ```
+
     #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
@@ -133,16 +130,14 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
     ```
     ---
 
-    更新操作がトリガーされたときに、構成データを App Configuration ストアで更新するために使用する設定を指定するには、`ConfigureRefresh` メソッドを使います。 `Register` メソッドの `refreshAll` パラメーターは、センチネル キーが変化した場合に、すべての構成値を更新する必要があることを示します。
-
-    また、`SetCacheExpiration` メソッドでは、キャッシュの有効期間として 5 分を指定し、既定値である 30 秒をオーバーライドしています。 これによって、App Configuration への要求数が減少します。
+    `ConfigureRefresh` メソッドでは、変更を監視するキーを App Configuration ストア内に登録します。 `Register` メソッドの `refreshAll` パラメーターは、登録されているキーが変更された場合に、すべての構成値を更新する必要があることを示します。 `SetCacheExpiration` メソッドでは、構成の変更を確認するために新しい要求が App Configuration に対して行われるまでに経過する必要がある最小時間を指定します。 この例では、代わりに 5 分を指定し、既定の有効期限である 30 秒をオーバーライドしています。 これにより、App Configuration ストアに対して行われる可能性のある要求の数が少なくなります。
 
     > [!NOTE]
-    > テスト目的で、キャッシュの有効期間をもっと短くすることもできます。
+    > テスト目的で、キャッシュ更新の有効期限をもっと短くすることもできます。
 
-    実際に更新操作をトリガーするには、変更が生じたときに構成データを更新するようにアプリケーションの更新ミドルウェアを構成する必要があります。 この点については、後続の手順で説明します。
+    構成の更新を実際にトリガーするには、App Configuration ミドルウェアを使用します。 この点については、後続の手順で説明します。
 
-2. 新しい `Settings` クラスを定義および実装する *Settings.cs* ファイルを Controllers ディレクトリに追加します。 名前空間を自分のプロジェクト名に置き換えます。 
+1. 新しい `Settings` クラスを定義および実装する *Settings.cs* ファイルを Controllers ディレクトリに追加します。 名前空間を自分のプロジェクト名に置き換えます。 
 
     ```csharp
     namespace TestAppConfig
@@ -157,7 +152,7 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
     }
     ```
 
-3. *Startup.cs* を開き、`ConfigureServices` メソッドの `IServiceCollection.Configure<T>` を使用して、構成データを `Settings` クラスにバインドします。
+1. *Startup.cs* を開き、`ConfigureServices` メソッドを更新します。 `Configure<Settings>` を呼び出して、構成データを `Settings` クラスにバインドします。 `AddAzureAppConfiguration` を呼び出して、App Configuration コンポーネントをアプリケーションのサービス コレクションに追加します。
 
     #### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
 
@@ -190,11 +185,8 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
     }
     ```
     ---
-    > [!Tip]
-    > 構成値を読み取る際のオプション パターンの詳細については、「[ASP.NET Core のオプション パターン](/aspnet/core/fundamentals/configuration/options)」を参照してください。
 
-4. `Configure` メソッドに `UseAzureAppConfiguration` ミドルウェアを追加して更新し、ASP.NET Core Web アプリで要求の受信が続けられている間、更新用に登録された構成設定を更新できるようにします。
-
+1. `Configure` メソッドを更新し、`UseAzureAppConfiguration` への呼び出しを追加します。 これにより、アプリケーションで App Configuration ミドルウェアを使用して、自動的に構成の更新を処理できます。
 
     #### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
 
@@ -284,10 +276,11 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
     ```
     ---
     
-    ミドルウェアでは、`Program.cs` の `AddAzureAppConfiguration` メソッドで指定されている更新の構成を使って、ASP.NET Core Web アプリによって受信された各要求の更新がトリガーされます。 要求ごとに、更新操作がトリガーされ、登録されている構成設定のキャッシュされた値の有効期間が切れているかどうかが、クライアント ライブラリによって確認されます。 有効期間が過ぎていれば更新されます。
-
     > [!NOTE]
-    > 構成を確実に更新するには、ミドルウェアをできるだけ早く要求パイプラインに追加して、アプリケーション内の別のミドルウェアによって短絡されないようにします。
+    > App Configuration ミドルウェアによって、前の手順の `ConfigureRefresh` 呼び出しで更新するために登録したセンチネル キーまたは他のキーが監視されます。 ミドルウェアは、アプリケーションへの受信要求ごとにトリガーされます。 ただし、ミドルウェアでは、設定したキャッシュの有効期限が過ぎたときに App Configuration で値を確認する要求のみを送信します。 変更が検出されると、センチネル キーが使用されている場合はすべての構成が更新されるか、登録済みのキーの値のみが更新されます。
+    > - App Configuration に対する変更の検出の要求が失敗した場合、アプリケーションではキャッシュされた構成が引き続き使用されます。 構成されたキャッシュの有効期限が再び経過し、アプリケーションへの新しい受信要求があるときに、別の確認が行われます。
+    > - 構成の更新は、アプリケーションの受信要求の処理に対して非同期的に行われます。 更新をトリガーした受信要求をブロックしたり、速度が低下することはありません。 更新をトリガーした要求では、更新された構成値が取得されない場合がありますが、それ以降の要求では行われます。
+    > - ミドルウェアが確実にトリガーされるようにするには、要求パイプラインでできるだけ早く `app.UseAzureAppConfiguration()` を呼び出し、アプリケーションで別のミドルウェアがそれを迂回しないようにします。
 
 ## <a name="use-the-latest-configuration-data"></a>最新の構成データを使用する
 
@@ -299,9 +292,9 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
 
 2. `HomeController` クラスを更新して、依存関係の挿入を通じて `Settings` を受け取り、その値を利用するようにします。
 
- #### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
+    #### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
 
-```csharp
+    ```csharp
     public class HomeController : Controller
     {
         private readonly Settings _settings;
@@ -325,10 +318,10 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
 
         // ...
     }
-```
-#### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+    ```
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
-```csharp
+    ```csharp
     public class HomeController : Controller
     {
         private readonly Settings _settings;
@@ -352,10 +345,10 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
 
         // ...
     }
-```
-#### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+    ```
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
-```csharp
+    ```csharp
     public class HomeController : Controller
     {
         private readonly Settings _settings;
@@ -374,10 +367,10 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
             return View();
         }
     }
-```
----
-
-
+    ```
+    ---
+    > [!Tip]
+    > 構成値を読み取る際のオプション パターンの詳細については、「[ASP.NET Core のオプション パターン](/aspnet/core/fundamentals/configuration/options)」を参照してください。
 
 3. Views の Home ディレクトリにある *Index.cshtml* を開いて、内容を次のスクリプトに置き換えます。
 
@@ -422,16 +415,16 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
 
-1. **[Configuration Explorer]\(構成エクスプローラー)** を選択して次のキーの値を更新します。
+1. **[構成エクスプローラー]** を選択し、次のキーの値を更新します。 最後に必ずセンチネル キーを更新してください。
 
-    | Key | 値 |
+    | キー | 値 |
     |---|---|
     | TestApp:Settings:BackgroundColor | green |
     | TestApp:Settings:FontColor | lightGray |
     | TestApp:Settings:Message | Data from Azure App Configuration - now with live updates! |
     | TestApp:Settings:Sentinel | 2 |
 
-1. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。 変更を反映するために複数回の更新が必要になる場合があります。または、自動更新頻度を 5 分未満に変更します。 
+1. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。 変更を反映するために複数回の更新が必要になる場合があります。または、キャッシュの有効期限を 5 分未満に変更します。 
 
     ![更新されたクイックスタート アプリをローカルで起動する](./media/quickstarts/aspnet-core-app-launch-local-after.png)
 

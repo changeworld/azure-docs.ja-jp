@@ -3,20 +3,20 @@ title: カスタム ポリシーの JSON 要求変換の例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの JSON 要求変換の例。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
-ms.author: mimart
+ms.date: 06/27/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: c5c8e21f2ce3f6907547bf1b2fe4681eb937864b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 939f173d6b34941302fab67a81bff5df01375adc
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102119877"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007714"
 ---
 # <a name="json-claims-transformations"></a>JSON 要求変換
 
@@ -175,6 +175,28 @@ JSON データから、指定された要素を取得します。
 - 出力要求:
   - **extractedClaim**: someone@example.com
 
+GetClaimFromJson 要求変換では、JSON データから 1 つの要素が取得されます。 前の例では、emailAddress が該当します。 DisplayName を取得するには、別の要求変換を作成します。 次に例を示します。
+
+```xml
+<ClaimsTransformation Id="GetDispalyNameClaimFromJson" TransformationMethod="GetClaimFromJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="customUserData" TransformationClaimType="inputJson" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="claimToExtract" DataType="string" Value="displayName" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="displayName" TransformationClaimType="extractedClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+- 入力要求:
+  - **inputJson**: {"emailAddress": "someone@example.com", "displayName":"Someone"}
+- 入力パラメーター:
+    - **claimToExtract**: displayName
+- 出力要求:
+  - **extractedClaim**: Someone
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
 

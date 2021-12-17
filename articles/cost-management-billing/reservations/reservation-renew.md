@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: bf7945c56fc05c33ae3cfed1c67085b3b28f847f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7f6cd42395b0255a7c0bd68285dd532363b2141f
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690512"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179829"
 ---
 # <a name="automatically-renew-reservations"></a>予約を自動的に更新する
 
@@ -36,7 +36,7 @@ Azure portal > **[予約]** に移動します。
 
 ## <a name="if-you-dont-renew"></a>更新しない場合
 
-サービスは引き続き正常に実行されます。 予約の有効期限が切れると、従量課金制の料金が課金されます。
+サービスは引き続き正常に実行されます。 予約の有効期限が切れると、従量課金制の料金が課金されます。 有効期限が切れる前に予約の自動更新が設定されていなかった場合、期限切れの予約を更新することはできません。 引き続きコスト削減するには、新しい予約を購入してください。
 
 ## <a name="required-renewal-permissions"></a>更新に必要なアクセス許可
 
@@ -44,7 +44,7 @@ Azure portal > **[予約]** に移動します。
 
 - 既存の予約の所有者である必要があります。
 - 予約が 1 つのサブスクリプションまたはリソース グループを対象としている場合は、サブスクリプションの所有者である必要があります。
-- 共有スコープがある場合は、サブスクリプションの所有者である必要があります。
+- 共有スコープまたは管理グループ スコープがある場合は、サブスクリプションの所有者である必要があります。
 
 ## <a name="default-renewal-settings"></a>既定の更新設定
 
@@ -85,9 +85,11 @@ Azure では、次の場合に更新が処理されない可能性がありま�
 
 ## <a name="renewal-notification"></a>更新の通知
 
+更新通知電子メールは、有効期限の30日前に送信され、有効期限日にもう一度送信されます。 送信電子メール アドレスは `azure-noreply@microsoft.com` です。 差出人セーフ リストまたは許可リストにメール アドレスを追加することができます。
+
 購入方法に応じて、電子メールが送信されるユーザーは異なります。
 
-- EA のお客様 - 電子メールは、EA ポータルで設定された通知の連絡先に送信されます。
+- EA のお客様 - 電子メールは、EA ポータルで設定された通知の連絡先、または使用状況の通知を受信できるように自動的に登録されているエンタープライズ管理者に送信されます。
 - 従量課金制料金を使用した個々のサブスクリプションのお客様 - 電子メールは、アカウント管理者として設定されたユーザーに送信されます。
 - クラウド ソリューション プロバイダーのお客様 - 電子メールは、パートナー通知の連絡先に送信されます。
 

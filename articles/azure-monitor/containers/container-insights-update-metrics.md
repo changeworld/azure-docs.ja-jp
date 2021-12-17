@@ -4,12 +4,12 @@ description: この記事では、集計したメトリックの探索とアラ�
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: edca7e4e8f6a9ea8dd9efdaafab8c906efd671b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d48ae48c667422b68c39570eb0003ff2e648267
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708273"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706882"
 ---
 # <a name="how-to-update-container-insights-to-enable-metrics"></a>メトリックを有効にするように Container insights を更新する方法
 
@@ -23,17 +23,17 @@ Container insights により、Azure Kubernetes Services (AKS) および Azure A
 
 | メトリック名前空間 | メトリック | 説明 |
 |------------------|--------|-------------|
-| Insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount、diskUsedPercentage | *ノード* メトリックとして、それらは *ホスト* をディメンションとして含みます。 また、<br> *ホスト* ディメンションの値として、ノードの名前も含みます。 |
+| Insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、**cpuUsageAllocatablePercentage**、**memoryWorkingSetAllocatablePercentage**、**memoryRssAllocatablePercentage**、nodesCount、diskUsedPercentage | *ノード* メトリックとして、それらは *ホスト* をディメンションとして含みます。 また、<br> *ホスト* ディメンションの値として、ノードの名前も含みます。 |
 | Insights.container/pods | podCount、completedJobsCount、restartingContainerCount、oomKilledContainerCount、podReadyPercentage | *ポッド* メトリックとして、それらは ControllerName、Kubernetes 名前空間、名前、フェーズをディメンションとして含みます。 |
-| Insights.container/containers | cpuExceededPercentage、memoryRssExceededPercentage、memoryWorkingSetExceededPercentage | |
-| Insights.container/persistentvolumes | pvUsageExceededPercentage | |
+| Insights.container/containers | cpuExceededPercentage、memoryRssExceededPercentage、memoryWorkingSetExceededPercentage、**cpuThresholdViolated**、**memoryRssThresholdViolated**、**memoryWorkingSetThresholdViolated** | |
+| Insights.container/persistentvolumes | pvUsageExceededPercentage、**pvUsageThresholdViolated** | |
 
 これらの新機能をサポートするために、新しいコンテナー化されたエージェントが、このリリースのバージョン **microsoft/oms:ciprod05262020** (AKS 用) およびバージョン **microsoft/oms:ciprod09252020** (Azure Arc 対応 Kubernetes クラスター用) に含まれています。 AKS の新しいデプロイでは、この構成の変更と機能が自動的に含まれます。 この機能をサポートするためのクラスターの更新は、Azure portal、Azure PowerShell、または Azure CLI で実行できます。 Azure PowerShell と Azure CLI を使用すると、 サブスクリプション内のクラスターごとに、またはすべてのクラスターでこれを実行できます。
 
 エージェントが収集したデータをクラスター リソースにパブリッシュできるように、どちらのプロセスでも、クラスターのサービス プリンシパルまたは監視アドオン用のユーザー割り当て済み MSI に対して **メトリックの発行元の監視** ロールが割り当てられます。 メトリックの発行元の監視は、メトリックをリソースにプッシュする権限のみを持ち、状態の変更、リソースの更新、およびデータの読み取りはできません。 このロールの詳細については、[メトリックの発行元の監視ロール](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)に関する記事を参照してください。 監視メトリック発行者ロールの要件は、Azure Arc 対応 Kubernetes クラスターには適用されません。
 
 > [!IMPORTANT]
-> Azure Arc 対応 Kubernetes クラスターには、必要な最小バージョンのエージェントが既に存在するため、アップグレードは必要ありません。
+> Azure Arc 対応 Kubernetes クラスターには、必要な最小バージョンのエージェントが既に存在するため、アップグレードは必要ありません。 Azure portal、Azure PowerShell、または Azure CLI の使用時、監視アドオンのために **監視メトリック パブリッシャー** ロールがクラスターのサービス プリンシパルまたはユーザー割り当て MSI に自動的に割り当てられます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -77,6 +77,7 @@ Azure CLI を使用してサブスクリプション内の特定のクラスタ�
 
 1. Azure CLI を使用して、次のコマンドを実行します。 AKS クラスターの **[AKS の概要]** ページの値を使用して、**subscriptionId** **resourceGroupName** 、および **clusterName** の値を編集します。  **clientIdOfSPN** の値を取得する場合、次の例に示すように、コマンド `az aks show` を実行すると値が返されます。
 
+
     ```azurecli
     az login
     az account set --subscription "<subscriptionName>"
@@ -84,7 +85,9 @@ Azure CLI を使用してサブスクリプション内の特定のクラスタ�
     az role assignment create --assignee <clientIdOfSPN> --scope <clusterResourceId> --role "Monitoring Metrics Publisher" 
     ```
 
+
     **clientIdOfSPNOrMsi** の値を取得するには、次の例に示すように、コマンド `az aks show` を実行します。 **servicePrincipalProfile** オブジェクトに有効な *clientid* 値がある場合は、その値を使用できます。 そうではなく、*msi* に設定されている場合は、`addonProfiles.omsagent.identity.clientId` から clientid を渡す必要があります。
+
 
     ```azurecli
     az login
@@ -92,6 +95,11 @@ Azure CLI を使用してサブスクリプション内の特定のクラスタ�
     az aks show -g <resourceGroupName> -n <clusterName> 
     az role assignment create --assignee <clientIdOfSPNOrMsi> --scope <clusterResourceId> --role "Monitoring Metrics Publisher"
     ```
+
+
+
+>[!NOTE]
+>自分のユーザー アカウントを使用していて、ロールの割り当てを実行したい場合は、下の例に示すように --assignee パラメーターを使用します。 その他、SPN でログインしていてロールの割り当てを実行したい場合は、--assignee パラメーターの代わりに --assignee-object-id --assignee-principal-type パラメーターを使用します。
 
 ## <a name="upgrade-all-clusters-using-azure-powershell"></a>Azure PowerShell を使用してすべてのクラスターをアップグレードする
 

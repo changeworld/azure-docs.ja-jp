@@ -4,19 +4,19 @@ description: 新しいサーバーにデータベースをコピーするため�
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: rothja
+ms.author: jroth
+ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: 63de1ff47bdd3a6145b16ebcc8ee3b431888f926
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfa783e456e42eb0f923d28a83c8f423b7bb8cc4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91321493"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462321"
 ---
 # <a name="use-powershell-to-copy-a-database-to-a-new-server"></a>PowerShell を使用して新しいサーバーにデータベースをコピーする
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -46,7 +46,7 @@ Remove-AzResourceGroup -ResourceGroupName $targetresourcegroupname
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | データベースとエラスティック プールをホストするサーバーを作成します。 |

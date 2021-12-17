@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0df7b263ef5d62b064a5afe537cffc926230b0a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87048669"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238702"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Azure Logic Apps のシーケンシャルなコンボイを使用して、関連するメッセージを Azure Service Bus で送信する
 
@@ -283,7 +283,7 @@ ms.locfileid: "87048669"
 
 * `isDone` 変数が `true` に設定されているかどうかを確認します。
 
-  * `isDone` が `true` に設定されていない場合、まだメッセージがワークフローで処理中です。そのため、ワークフローでキュー内のセッションのロックを更新し、ループ条件を再度確認します。
+  * `isDone` が `true` に設定されている場合、まだメッセージがワークフローで処理中です。そのため、ワークフローでキュー内のセッションのロックを更新し、ループ条件を再度確認します。
 
     Service Bus アクション [ **[キュー内のセッションに対するロックを更新します]**](#renew-lock-on-session) で、Service Bus キューの名前を指定する必要があります。
 

@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 682394329205d74859c1af0c0a68a37539da7872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b73fd12d905fe1aa03d02de2b657d5faae90342a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98881030"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615682"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>チュートリアル:AzCopy を使用してオンプレミスのデータをクラウド ストレージに移行する
 
@@ -22,12 +22,12 @@ AzCopy は、単純なコマンドを使用して Azure Blob Storage、Azure Fil
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * ストレージ アカウントを作成します。 
-> * AzCopy を使用してすべてのデータをアップロードします。
-> * テスト目的でデータを変更します。
-> * アップロードする新しいファイルを特定するための、スケジュールされたタスクまたは cron ジョブを作成します。
+> - ストレージ アカウントを作成します。
+> - AzCopy を使用してすべてのデータをアップロードします。
+> - テスト目的でデータを変更します。
+> - アップロードする新しいファイルを特定するための、スケジュールされたタスクまたは cron ジョブを作成します。
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +47,7 @@ BLOB は常にコンテナーにアップロードする必要があるため、
 2. **[サービス]** で **[BLOB]** を選択し、 **[コンテナー]** を選択します。
 
    ![コンテナーの作成を示すスクリーンショット](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
- 
+
 コンテナー名は文字または数字で始まる必要があります。 コンテナー名には、文字、数字、およびハイフン文字 (-) のみを使用できます。 BLOB とコンテナーの名前付けの詳細については、「[Naming and referencing containers, blobs, and metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」(コンテナー、BLOB、メタデータの名前付けと参照) を参照してください。
 
 ## <a name="download-azcopy"></a>AzCopy をダウンロードする
@@ -56,13 +56,13 @@ AzCopy V10 実行可能ファイルをダウンロードします。
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
+- [macOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 AzCopy ファイルをコンピューターの任意の場所に配置します。 ファイルの場所をシステム パス変数に追加して、コンピューター上の任意のフォルダーからこの実行可能ファイルを参照できるようにします。
 
 ## <a name="authenticate-with-azure-ad"></a>Azure AD による認証
 
-まず、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)ロールを自分の ID に割り当てます。 「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](./storage-auth-aad-rbac-portal.md)」を参照してください。
+まず、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)ロールを自分の ID に割り当てます。 「[BLOB データにアクセスするための Azure ロールを割り当てる](../blobs/assign-azure-role-data-access.md)」を参照してください。
 
 次に、コマンド プロンプトを開き、次のコマンドを入力して、Enter キーを押します。
 
@@ -80,33 +80,33 @@ azcopy login
 
 AzCopy を使用すると、フォルダー内のすべてのファイルを [Windows](./storage-use-azcopy-v10.md) または [Linux](./storage-use-azcopy-v10.md) 上の Blob Storage にアップロードできます。 フォルダー内のすべての BLOB をアップロードするには、次の AzCopy コマンドを入力します。
 
-```AzCopy
+```azcopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
 ```
 
-* `<local-folder-path>` プレースホルダーを、ファイルがあるフォルダーへのパスに置き換えます (例: `C:\myFolder` または `/mnt/myFolder`)。
+- `<local-folder-path>` プレースホルダーを、ファイルがあるフォルダーへのパスに置き換えます (例: `C:\myFolder` または `/mnt/myFolder`)。
 
-* `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
+- `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
 
-* `<container-name>` プレースホルダーを、作成したコンテナーの名前に置き換えます。
+- `<container-name>` プレースホルダーを、作成したコンテナーの名前に置き換えます。
 
 指定したディレクトリの内容を BLOB ストレージに再帰的にアップロードするには、`--recursive` オプションを指定します。 このオプションを使用して AzCopy を実行すると、すべてのサブフォルダーとサブフォルダー内のファイルもアップロードされます。
 
 ## <a name="upload-modified-files-to-blob-storage"></a>変更されたファイルを Blob Storage にアップロードする
 
-AzCopy を使用して、最終更新時刻に基づいてファイルをアップロードすることができます。 
+AzCopy を使用して、最終更新時刻に基づいてファイルをアップロードすることができます。
 
 これを試すには、テストのためにソース ディレクトリ内のファイルを変更するか、または新しいファイルを作成します。 次に、AzCopy の `sync` コマンドを使用します。
 
-```AzCopy
+```azcopy
 azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true
 ```
 
-* `<local-folder-path>` プレースホルダーを、ファイルがあるフォルダーへのパスに置き換えます (例: `C:\myFolder` または `/mnt/myFolder`)。
+- `<local-folder-path>` プレースホルダーを、ファイルがあるフォルダーへのパスに置き換えます (例: `C:\myFolder` または `/mnt/myFolder`)。
 
-* `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
+- `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
 
-* `<container-name>` プレースホルダーを、作成したコンテナーの名前に置き換えます。
+- `<container-name>` プレースホルダーを、作成したコンテナーの名前に置き換えます。
 
 `sync` コマンドの詳細については、「[Synchronize files (ファイルの同期)](./storage-use-azcopy-v10.md#transfer-data)」を参照してください。
 
@@ -114,7 +114,7 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.wind
 
 AzCopy コマンド スクリプトを実行するスケジュールされたタスクまたは cron ジョブを作成できます。 このスクリプトは、特定の時間間隔で新しいオンプレミス データを識別してクラウド ストレージにアップロードします。
 
-AzCopy コマンドをテキスト エディターにコピーします。 AzCopy コマンドのパラメーター値を適切な値に更新します。 ファイルを AzCopy 用に `script.sh` (Linux) または `script.bat` (Windows) として保存します。 
+AzCopy コマンドをテキスト エディターにコピーします。 AzCopy コマンドのパラメーター値を適切な値に更新します。 ファイルを AzCopy 用に `script.sh` (Linux) または `script.bat` (Windows) として保存します。
 
 これらの例では、フォルダーの名前は `myFolder`、ストレージ アカウント名の名前は `mystorageaccount`、コンテナー名の名前は `mycontainer` であると想定しています。
 
@@ -176,16 +176,16 @@ Windows 上でスケジュールされたタスクを作成する方法の詳細
 
 オンプレミスと Azure Storage との間でデータを移動する方法については、このリンクに従ってください。
 
-* [Azure Storage との間のデータの移動](./storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。  
+- [Azure Storage との間のデータの移動](./storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 AzCopy の詳細については、以下の記事を参照してください。
 
-* [AzCopy を使ってみる](storage-use-azcopy-v10.md)
+- [AzCopy を使ってみる](storage-use-azcopy-v10.md)
 
-* [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
+- [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
 
-* [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
+- [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 
-* [AzCopy と Amazon S3 バケットでデータを転送する](storage-use-azcopy-s3.md)
- 
-* [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
+- [AzCopy と Amazon S3 バケットでデータを転送する](storage-use-azcopy-s3.md)
+
+- [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)

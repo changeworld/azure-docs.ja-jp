@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/16/2020
+ms.date: 07/29/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c903cf06981e1336ae30942775de11d09bb1299b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e59347ec1c38c8d315de9ee7332a4955427770b
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675358"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130068971"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
 
@@ -128,15 +128,15 @@ Azure の Windows フェールオーバー クラスターの共有ディスク�
 共有ディスクのテクノロジを選択するときは、次の点に注意してください。
 
 **SAP ワークロード用の Azure 共有ディスク**
-- 追加のソフトウェアを維持して運用する必要なく、Azure マネージド ディスクを複数の VM に同時に接続することができます。 
-- 1 つの記憶域クラスターで 1 つの Azure 共有ディスクを操作します。 これは SAP ソリューションの信頼性に影響を与えます。
-- 現在サポートされているデプロイは、可用性セット内の Azure 共有 Premium ディスクを使用するものだけです。 Azure 共有ディスクはゾーン デプロイではサポートされていません。     
-- [Premium SSD の範囲](../../disks-shared.md#disk-sizes)に指定されている最小ディスク サイズで Azure Premium ディスクをプロビジョニングして、必要な数の VM に同時に接続できるようにします (通常、SAP ASCS Windows フェールオーバー クラスターの場合は 2 つ)。 
-- Azure 共有 Ultra Disk は、可用性セットのデプロイまたはゾーン デプロイをサポートしていないため、SAP ワークロードではサポートされません。  
+
+- 追加のソフトウェアを維持して運用する必要なしに、Azure マネージド ディスクを複数の VM に同時に接続することができます。
+- [Premium SSD](../../disks-types.md#premium-ssds) ディスクを使用した [Azure 共有ディスク](../../disks-shared.md)は、可用性セットおよび可用性ゾーン内の SAP のデプロイに対してサポートされています。
+- [Azure Ultra Disk](../../disks-types.md#ultra-disks) と [Azure Standard ディスク](../../disks-types.md#standard-ssds)は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。
+- [Premium SSD の範囲](../../disks-shared.md#disk-sizes)に指定されている最小ディスク サイズで Azure Premium ディスクをプロビジョニングして、必要な数の VM に同時に接続できるようにします (通常、SAP ASCS Windows フェールオーバー クラスターの場合は 2 つ)。
  
 **SIOS**
 - SIOS ソリューションは、2 つのディスク間のリアルタイムの同期データ レプリケーションを実現します
-- SIOS ソリューションでは 2 つのマネージド ディスクを使用し、可用性セットまたは可用性ゾーンのいずれかを使用している場合、マネージド ディスクは異なる記憶域クラスターに配置されます。 
+- SIOS ソリューションでは、2 つのマネージド ディスクを使用します。可用性セットまたは可用性ゾーンのいずれかを使用している場合、マネージド ディスクは異なる記憶域クラスターに配置されます。 
 - 可用性ゾーンでのデプロイはサポートされています
 - サードパーティのソフトウェアをインストールして運用する必要があります。ソフトウェアは追加で購入する必要があります
 
@@ -148,16 +148,28 @@ Microsoft では、共有ディスク オプションを使用して SAP ASCS/SC
 
 現時点では、SAP ASCS/SCS インスタンスの Azure 共有ディスクとして Azure Premium SSD ディスクを使用できます。 次の制限事項が現在適用されます。
 
--  [Azure Ultra Disk](../../disks-types.md#ultra-disk) は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。 現時点では、Azure Ultra Disk を可用性セット内で使用して、Azure VM を配置することはできません
--  Premium SSD ディスクを使用した [Azure 共有ディスク](../../disks-shared.md)は、可用性セット内の VM でのみサポートされています。 Availability Zones のデプロイではサポートされていません。 
+-  [Azure Ultra Disk](../../disks-types.md#ultra-disks) と [Standard SSD ディスク](../../disks-types.md#standard-ssds)は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。
+-  [Premium SSD ディスク](../../disks-types.md#premium-ssds)を使用した [Azure 共有ディスク](../../disks-shared.md)は、可用性セットおよび可用性ゾーン内の SAP のデプロイに対してサポートされています。
+-  Premium SSD ディスクを使用する Azure 共有ディスクには、2 つのストレージ SKU が付属しています。
+   - Premium 共有ディスク (skuName - Premium_LRS) 用のローカル冗長ストレージ (LRS) は、Azure 可用性セット内のデプロイでサポートされています。
+   - Premium 共有ディスク (skuName - Premium_ZRS) 用のゾーン冗長ストレージ (ZRS) は、Azure 可用性ゾーン内のデプロイでサポートされています。
 -  Azure 共有ディスクの値 [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) によって、その共有ディスクを使用できるクラスター ノードの数が決まります。 通常、SAP ASCS/SCS インスタンスには、Windows フェールオーバー クラスターに 2 つのノードを構成するため、`maxShares` の値は 2 に設定する必要があります。
--  すべての SAP ASCS/SCS クラスター VM が、同じ [Azure 近接通信配置グループ](../../windows/proximity-placement-groups.md)にデプロイされる必要があります。   
-   Windows クラスター VM を、PPG を使用せずに Azure 共有ディスクがある可用性セット内にデプロイすることはできますが、PPG を使用すると Azure 共有ディスクとクラスター VM の物理的近距離を確保できるため、VM とストレージ層の間の待機時間が短くなります。    
+-  SAP システムに [Azure 近接配置グループ](../../windows/proximity-placement-groups.md)を使用する場合は、ディスクを共有するすべての仮想マシンが同じ PPG に含まれている必要があります。
 
-Azure 共有ディスクの制限事項の詳細については、Azure 共有ディスクのドキュメントの「[制限事項](../../disks-shared.md#limitations)」セクションを十分注意して参照してください。
+Azure 共有ディスクの制限事項の詳細については、Azure 共有ディスクのドキュメントの「[制限事項](../../disks-shared.md#limitations)」セクションを注意して参照してください。
 
-> [!IMPORTANT]
-> Azure 共有ディスクを使用して SAP ASCS/SCS Windows フェールオーバー クラスターをデプロイする場合は、デプロイが 1 つの記憶域クラスター内の単一の共有ディスクを使用して動作することに注意してください。 SAP ASCS/SCS インスタンスは、Azure 共有ディスクがデプロイされている記憶域クラスターで問題が発生した場合に影響を受けます。    
+#### <a name="important-consideration-for-premium-shared-disk"></a>Premium 共有ディスクに関する重要な考慮事項
+
+Azure Premium 共有ディスクに関して考慮する必要がある重要な点を次に示します。
+
+- Premium 共有ディスクのための LRS
+  - Premium 共有ディスク用の LRS を使用した SAP のデプロイは、1 つのストレージ クラスター上の 1 つの Azure 共有ディスクで動作します。 SAP ASCS/SCS インスタンスは、Azure 共有ディスクがデプロイされている記憶域クラスターで問題が発生した場合に影響を受けます。
+
+- Premium 共有ディスクのための ZRS
+  - ZRS の書き込み待機時間は、ゾーンをまたぐデータのコピーにより、LRS より長くなります。
+  - 異なるリージョンの可用性ゾーン間の距離はさまざまなので、可用性ゾーン間の ZRS ディスクの待機時間もさまざまです。 [ディスクのベンチマーク](../../disks-benchmarks.md)を行って、お使いのリージョンでの ZRS ディスクの待機時間を確認してください。
+  - Premium 共有ディスクの ZRS によって、リージョン内の 3 つの可用性ゾーンの間でデータが同期的にレプリケートされます。 ストレージ クラスターのいずれかで問題が発生した場合、ストレージのフェールオーバーはアプリケーション レイヤーに対して透過的に行われるため、SAP ASCS/SCS は動作し続けます。
+  - 詳細については、マネージド ディスク用の ZRS の「[制限事項](../../disks-redundancy.md#limitations)」セクションを参照してください。
 
 > [!TIP]
 > SAP デプロイを計画するときの重要な考慮事項については、[SAP Netweaver on Azure の計画ガイド](./planning-guide.md)および[SAP ワークロード用の Azure Storage ガイド](./planning-guide-storage.md)に関する記事を参照してください。
@@ -166,7 +178,7 @@ Azure 共有ディスクの制限事項の詳細については、Azure 共有�
 
 Windows Server 2016 と 2019 の両方がサポートされています (最新のデータ センター イメージを使用してください)。
 
-次の理由から、**Windows Server 2019 Datacenter** を使用することを強くお勧めします。
+次の理由から、**Windows Server 2019 Datacenter** の使用を強くお勧めします。
 - Windows 2019 フェールオーバー クラスター サービスは Azure に対応しています
 - Azure ホスト メンテナンスの統合と認識が追加され、Azure のスケジュール イベントを監視することでエクスペリエンスが向上しました。
 - 分散ネットワーク名を使用することができます (これは既定のオプションです)。 そのため、クラスター ネットワーク名に専用の IP アドレスを設定する必要がありません。 また、この IP アドレスを Azure 内部ロード バランサーで構成する必要もありません。 
@@ -190,6 +202,38 @@ _SIOS DataKeeper を使用する Azure での Windows フェールオーバー �
 > [!NOTE]
 > SQL Server のような一部の DBMS 製品では、高可用性のために共有ディスクは必要ありません。 SQL Server Always On は、DBMS のデータとログ ファイルを、クラスター ノードのローカル ディスクから別のクラスター ノードのローカル ディスクにレプリケートします。 その場合、Windows クラスター構成に共有ディスクは不要です。
 >
+## <a name="optional-configurations"></a>オプションの構成
+
+次の図は、VM の総数を減らすために Microsoft Windows フェールオーバー クラスターを実行している Azure VM 上の複数の SAP インスタンスを示しています。
+
+これは、SAP ASCS/SCS クラスター上のローカル SAP アプリケーション サーバーとすることも、Microsoft SQL Server Always On ノード上の SAP ASCS/SCS クラスター ロールとすることもできます。
+
+> [!IMPORTANT]
+> ローカル SAP アプリケーション サーバーを SQL Server Always On ノードにインストールすることはサポートされていません。
+>
+
+SAP ASCS/SCS と Microsoft SQL Server データベースは両方とも単一障害点 (SPOF) です。 これらの SPOF を Windows 環境内で保護するために、WSFC が使用されます。
+
+SAP ASCS/SCS のリソース消費量はかなり小さいものの、SQL Server または SAP アプリケーション サーバーのどちらかのメモリ構成を、2 GB 削減することをお勧めします。
+
+### <a name="sap-application-servers-on-wsfc-nodes-using-sios-datakeeper"></a>SIOS DataKeeper を使用した WSFC ノード上の SAP アプリケーション サーバー
+
+![図 6: SIOS DataKeeper とローカルにインストールされた SAP アプリケーション サーバーを使用した Azure での Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1003]
+
+> [!NOTE]
+> 図に示すように、SAP アプリケーション サーバーはローカルにインストールされているので、同期を設定する必要はありません。
+>
+### <a name="sap-ascsscs-on-sql-server-always-on-nodes-using-sios-datakeeper"></a>SIOS DataKeeper を使用した SQL Server Always On ノード上の SAP ASCS/SCS
+
+![図 7: SIOS DataKeeper を使用した SQL Server Always On ノード上の SAP ASCS/SCS][sap-ha-guide-figure-1005]
+
+[Windows SOFS を使用した WSFC ノード上の SAP アプリケーション サーバーのオプション構成][optional-fileshare]
+
+[NetApp Files SMB を使用した WSFC ノード上の SAP アプリケーション サーバーのオプション構成][optional-smb]
+
+[Windows SOFS を使用した SQL Server Always On ノード上の SAP ASCS/SCS のオプション構成][optional-fileshare-sql]
+
+[NetApp Files SMB を使用した SQL Server Always On ノード上の SAP ASCS/SCS のオプション構成][optional-smb-sql]
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -253,7 +297,9 @@ _SIOS DataKeeper を使用する Azure での Windows フェールオーバー �
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
 [sap-ha-guide-figure-1001]:./media/virtual-machines-shared-sap-high-availability-guide/1001-wsfc-on-azure-ilb.png
-[sap-ha-guide-figure-1002]:./media/virtual-machines-shared-sap-high-availability-guide/1002-wsfc-sios-on-azure-ilb.png
+[sap-ha-guide-figure-1003]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sios-as.png
+[sap-ha-guide-figure-1005]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sql-ascs-sios.png
+[sap-ha-guide-figure-1002]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sios.png
 [sap-ha-guide-figure-2000]:./media/virtual-machines-shared-sap-high-availability-guide/2000-wsfc-sap-as-ha-on-azure.png
 [sap-ha-guide-figure-2001]:./media/virtual-machines-shared-sap-high-availability-guide/2001-wsfc-sap-ascs-ha-on-azure.png
 [sap-ha-guide-figure-2003]:./media/virtual-machines-shared-sap-high-availability-guide/2003-wsfc-sap-dbms-ha-on-azure.png
@@ -347,12 +393,16 @@ _SIOS DataKeeper を使用する Azure での Windows フェールオーバー �
 
 
 [sap-templates-3-tier-multisid-xscs-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-db-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
+[optional-smb]:high-availability-guide-windows-netapp-files-smb.md#5121771a-7618-4f36-ae14-ccf9ee5f2031 (NetApp Files SMB を使用した WSFC ノード上の SAP アプリケーション サーバーのオプション構成)
+[optional-fileshare]:sap-high-availability-guide-wsfc-file-share.md#86cb3ee0-2091-4b74-be77-64c2e6424f50 (Windows SOFS を使用した WSFC ノード上の SAP アプリケーション サーバーのオプション構成)
+[optional-smb-sql]:high-availability-guide-windows-netapp-files-smb.md#01541cf2-0a03-48e3-971e-e03575fa7b4f (NetApp Files SMB を使用した SQL Server Always On ノード上の SAP ASCS/SCS のオプション構成)
+[optional-fileshare-sql]:sap-high-availability-guide-wsfc-file-share.md#db335e0d-09b4-416b-b240-afa18505f503 (Windows SOFS を使用した SQL Server Always On ノード上の SAP ASCS/SCS のオプション構成)

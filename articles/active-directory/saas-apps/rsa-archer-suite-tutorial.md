@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と RSA Archer Suite の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と RSA Archer Suite の統合'
 description: Azure Active Directory と RSA Archer Suite の間でシングル サインオンを構成する方法について学習します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/02/2021
+ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: d96f1e0413dac8477e2fc40bf84e88318abf3f9d
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: aac6f381e81dbc1d7465527623f0c1a29272a05b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284985"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279688"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と RSA Archer Suite の統合
+# <a name="tutorial-azure-ad-sso-integration-with-rsa-archer-suite"></a>チュートリアル: Azure AD SSO と RSA Archer Suite の統合
 
 このチュートリアルでは、RSA Archer Suite を Azure Active Directory (Azure AD) と統合する方法について学習します。 RSA Archer Suite を Azure AD と統合すると、次のことができます。
 
@@ -77,11 +77,11 @@ RSA Archer Suite に対して Azure AD SSO を構成してテストするには�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<BASE_URL>/default.aspx?IDP=<REALM_NAME>`
+    a. **[識別子 (エンティティ ID)]** ボックスに、`RSAArcherSuite_TENANT_STRING` という値を入力します。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`RSAArcherSuite_TENANT_STRING` という値を入力します。
+    b. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<BASE_URL>/default.aspx?IDP=<REALM_NAME>`
 
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL で値を更新する必要があります。 この値を取得する場合は、[RSA Archer Suite クライアント サポート チーム](mailto:archersupport@rsa.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -140,7 +140,7 @@ RSA Archer Suite に対して Azure AD SSO を構成してテストするには�
 
 1. 次のページで、以下の手順を実行します。
 
-    ![RSA Archer Suite の SSO を構成する](./media/rsa-archer-suite-tutorial/configuration.png)
+    ![RSA Archer Suite の SSO を構成します。](./media/rsa-archer-suite-tutorial/configuration.png)
 
     a. **[シングル サインオン]** タブに移動し、ドロップダウンから **[シングル サインオン モード]** として **[SAML]** を選択します。
 
@@ -162,12 +162,12 @@ RSA Archer Suite に対して Azure AD SSO を構成してテストするには�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる RSA Archer Suite のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる RSA Archer Suite のサインオン URL にリダイレクトされます。 
 
-2. RSA Archer Suite のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* RSA Archer Suite のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [RSA Archer Suite] タイルをクリックすると、SSO を設定した RSA Archer Suite に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [RSA Archer Suite] タイルをクリックすると、RSA Archer Suite のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
- RSA Archer Suite を構成したら、組織の機微なデータを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+RSA Archer Suite を構成したら、組織の機微なデータを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

@@ -2,23 +2,32 @@
 title: 複数ステップ Web テストを使用した監視 - Azure Application Insights
 description: 複数手順の Web テストを設定して、Azure Application Insights で Web アプリケーションを監視します
 ms.topic: conceptual
-ms.date: 02/14/2021
-ms.openlocfilehash: 1d3597eaf54c40fb1f986d822af0dd6b8c8a7b2e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/21/2021
+ms.openlocfilehash: 6e0cbbc772b9eb2f3ad245fcb9728b047d2d7126
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719850"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993228"
 ---
 # <a name="multi-step-web-tests"></a>複数手順の Web テスト
 
 複数ステップ Web テストを使用して、記録された一連の URL と Web サイトとのインタラクションを監視することができます。 この記事では、Visual Studio Enterprise を使用した複数ステップ Web テストを作成するプロセスについて説明します。
 
+> [!IMPORTANT]
+> [複数ステップ Web テストは非推奨となっています](https://azure.microsoft.com/updates/retirement-notice-transition-to-custom-availability-tests-in-application-insights/)。 複数ステップ Web テストの代わりに、[TrackAvailability](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)  を使用して [カスタム可用性テスト](availability-azure-functions.md) を送信することをお勧めします。 TrackAvailability() とカスタム可用性テストを使用すると、任意のコンピューティングでテストを実行でき、また、C# を使用して容易に新しいテストを作成することができます。
+
 > [!NOTE]
-> 複数ステップ Web テストは、Visual Studio の Web テスト ファイルに依存します。 Visual Studio 2019 が Web テスト機能を備えた最後のバージョンとなることが[発表](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)されました。 新しい機能は追加されませんが、Visual Studio 2019 の Web テスト機能は現在もサポートされており、製品のサポート ライフサイクルの間は引き続きサポートされることを理解しておくことが重要です。 Azure Monitor 製品チームでは、複数ステップ可用性テストの今後に関するご質問に対して、[こちら](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)で回答しています。  
-> </br>
 > [Azure Government](../../azure-government/index.yml) クラウドでは、複数ステップ Web テストは **サポートされていません**。
 
+
+複数ステップ Web テストはクラシック テストとして分類され、[Availability]\(可用性\) ペインの **[Add Classic Test]\(クラシック テストの追加\)** に表示されます。
+
+## <a name="multi-step-webtest-alternative"></a>複数ステップ Web テストに代わる機能
+
+複数ステップ Web テストは、Visual Studio の Web テスト ファイルに依存します。 Visual Studio 2019 が Web テスト機能を備えた最後のバージョンとなることが[発表](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)されました。 新しい機能は追加されませんが、Visual Studio 2019 の Web テスト機能は現在もサポートされており、製品のサポート ライフサイクルの間は引き続きサポートされることを理解しておくことが重要です。 
+
+[カスタム可用性テスト](./availability-azure-functions.md)は、複数ステップ Web テストではなく、[TrackAvailability](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) を使用して送信することをお勧めします。 これは複数の要求または認証テストのシナリオで長期的にサポートされるソリューションです。 TrackAvailability() とカスタム可用性テストを使用すると、任意のコンピューティングでテストを実行でき、また、C# を使用して容易に新しいテストを作成することができます。
 
 ## <a name="pre-requisites"></a>前提条件
 
@@ -41,9 +50,10 @@ Visual Studio Web テストの作成に関するガイダンスについては�
 
 ## <a name="upload-the-web-test"></a>Web テストをアップロードする
 
-1. Application Insights ポータルの [可用性] ウィンドウで、 **[テストの作成]**  >  **[テストの種類]**  >  **[複数ステップ Web テスト]** を選択します。
-
-2. テストの場所、頻度、およびアラートのパラメーターを設定します。
+1. Application Insights ポータルの [可用性] ペインで、 **[Add Classic test]\(クラシック テストの追加\)** を選択し、 *[SKU]* として **[Multi-step]\(複数ステップ\)** を選択します。
+2. 複数ステップ Web テストをアップロードします。
+3. テストの場所、頻度、およびアラートのパラメーターを設定します。
+4. **［作成］** を選択します
 
 ### <a name="frequency--location"></a>頻度と場所
 

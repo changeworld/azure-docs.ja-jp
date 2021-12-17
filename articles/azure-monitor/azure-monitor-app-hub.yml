@@ -1,0 +1,432 @@
+### YamlMime:Hub 
+title: Azure Monitor Application Insights のドキュメント
+summary: Application Insights は Azure Monitor サービスの一部です
+brand: azure
+metadata:
+  title: Azure Monitor Application Insights のドキュメント
+  description: Application Insights は Azure Monitor サービスの一部です
+  ms.service: application-insights
+  ms.topic: hub-page
+  manager: carmonm
+  ms.date: 09/30/2019
+highlightedContent:
+  items:
+    - title: Application Insights とは何か?
+      itemType: overview
+      url: ./app/app-insights-overview.md
+    - title: リリース ノート
+      itemType: whats-new
+      url: ./app/release-notes.md
+    - title: Azure App Service の監視
+      itemType: how-to-guide
+      url: ./app/azure-web-apps.md
+    - title: ASP.NET Core アプリの監視
+      itemType: how-to-guide
+      url: ./app/asp-net-core.md
+    - title: リソースの作成
+      itemType: how-to-guide
+      url: ./app/create-new-resource.md
+    - title: Web サイトの監視
+      itemType: how-to-guide
+      url: ./app/javascript.md
+conceptualContent:
+  items:
+    - title: コードベースの監視
+      links:
+        - url: ./app/asp-net-core.md
+          itemType: how-to-guide
+          text: ASP.NET Core
+        - url: ./app/asp-net.md
+          itemType: how-to-guide
+          text: ASP.NET
+        - url: ./app/worker-service.md
+          itemType: how-to-guide
+          text: .NET Core worker サービス
+        - url: ./app/java-2x-get-started.md
+          itemType: how-to-guide
+          text: Java
+        - url: ./app/opencensus-python.md
+          itemType: how-to-guide
+          text: Python
+        - url: ./app/javascript.md
+          itemType: how-to-guide
+          text: JavaScript
+        - url: ./app/nodejs.md
+          itemType: how-to-guide
+          text: Node.js
+    - title: コードレスまたはエージェント ベースの監視
+      links:
+        - url: ./app/azure-web-apps.md
+          itemType: how-to-guide
+          text: Azure App Service
+        - url: ./app/cloudservices.md
+          itemType: how-to-guide
+          text: Cloud Services
+        - url: ../azure-functions/functions-monitoring.md
+          itemType: how-to-guide
+          text: Azure Functions
+        - url: ./app/kubernetes-codeless.md
+          itemType: how-to-guide
+          text: Kubernetes アプリケーション
+        - url: ./app/cloudservices.md
+          itemType: how-to-guide
+          text: Cloud Services
+        - url: ./app/status-monitor-v2-overview.md
+          itemType: how-to-guide
+          text: Status Monitor V2
+        - url: ./app/azure-vm-vmss-apps.md
+          itemType: how-to-guide
+          text: Azure VM および Azure 仮想マシン スケール セット
+    - title: クイック スタートとチュートリアル
+      links:
+        - url: ./app/nodejs-quick-start.md
+          itemType: how-to-guide
+          text: Node.js
+        - url: ./app/mobile-center-quickstart.md
+          itemType: how-to-guide
+          text: モバイル アプリ
+        - url: ./app/website-monitoring.md
+          itemType: how-to-guide
+          text: Web サイト監視
+        - url: ./app/tutorial-runtime-exceptions.md
+          itemType: how-to-guide
+          text: 実行時の例外の特定と診断
+        - url: ./app/tutorial-performance.md
+          itemType: how-to-guide
+          text: パフォーマンスの問題の特定と診断
+        - url: ./app/tutorial-alert.md
+          itemType: how-to-guide
+          text: アプリケーション正常性の監視とアラート通知
+        - url: ./app/tutorial-users.md
+          itemType: how-to-guide
+          text: ユーザーの動作について
+        - url: ./app/tutorial-app-dashboards.md
+          itemType: how-to-guide
+          text: カスタム ダッシュボードの作成
+    - title: 分散トレース、依存関係の追跡、相関関係
+      links:
+        - url: ./app/distributed-tracing.md
+          itemType: overview
+          text: 分散トレースとは
+        - url: ./app/app-map.md
+          itemType: how-to-guide
+          text: アプリケーション マップ
+        - url: ./app/correlation.md
+          itemType: how-to-guide
+          text: テレメトリの関連付け
+        - url: ./app/custom-data-correlation.md
+          itemType: how-to-guide
+          text: カスタム データ ソースを関連付ける
+        - url: ./app/transaction-diagnostics.md
+          itemType: how-to-guide
+          text: エンドツーエンドのトランザクション診断
+        - url: ./app/asp-net-dependencies.md
+          itemType: how-to-guide
+          text: 依存関係の追跡
+        - url: ./app/auto-collect-dependencies.md
+          itemType: how-to-guide
+          text: 依存関係の自動収集
+        - url: ./app/custom-operations-tracking.md
+          itemType: how-to-guide
+          text: キューとバックグラウンド タスク
+    - title: 代理トランザクションと可用性の監視
+      links:
+        - url: ./app/monitor-web-app-availability.md
+          itemType: how-to-guide
+          text: URL テスト
+        - url: ./app/availability-multistep.md
+          itemType: how-to-guide
+          text: 複数手順の Web テスト
+        - url: ./app/availability-alerts.md
+          itemType: how-to-guide
+          text: 可用性のアラート
+    - title: メトリック、ログ、トレース
+      links:
+        - url: ./app/live-stream.md
+          itemType: how-to-guide
+          text: ライブ メトリック
+        - url: ./app/pre-aggregated-metrics-log-metrics.md
+          itemType: how-to-guide
+          text: ログベースの事前に集計されたメトリック
+        - url: ./essentials/app-insights-metrics.md
+          itemType: how-to-guide
+          text: ログベースのメトリックの定義
+        - url: ./app/ilogger.md
+          itemType: how-to-guide
+          text: ILogger
+        - url: ./app/performance-counters.md
+          itemType: how-to-guide
+          text: パフォーマンス カウンター
+        - url: ./app/eventcounters.md
+          itemType: how-to-guide
+          text: EventCounter (.NET/.NET Core)
+        - url: ./app/asp-net-trace-logs.md
+          itemType: how-to-guide
+          text: システム診断トレース ログ
+        - url: ./app/diagnostic-search.md
+          itemType: how-to-guide
+          text: 検索
+    - title: Profiler とスナップショット デバッガー
+      links:
+        - url: ./app/profiler-overview.md
+          itemType: overview
+          text: Profiler の概要
+        - url: ./app/profiler.md
+          itemType: how-to-guide
+          text: Azure App Service アプリのプロファイル
+        - url: ./app/profiler-cloudservice.md
+          itemType: how-to-guide
+          text: Azure Cloud Services アプリのプロファイル
+        - url: ./app/profiler-servicefabric.md
+          itemType: how-to-guide
+          text: Service Fabric アプリのプロファイル
+        - url: ./app/profiler-vm.md
+          itemType: how-to-guide
+          text: VM および仮想マシン スケール セット アプリのプロファイル
+        - url: ./app/snapshot-debugger.md
+          itemType: overview
+          text: スナップショット デバッガーの概要
+        - url: ./app/snapshot-debugger-appservice.md
+          itemType: how-to-guide
+          text: Azure App Service 用にスナップショット デバッガーを有効にする
+        - url: ./app/snapshot-debugger-vm.md
+          itemType: how-to-guide
+          text: その他の環境用にスナップショット デバッガーを有効にする
+        - url: ./app/snapshot-debugger-upgrade.md
+          itemType: how-to-guide
+          text: スナップショット デバッガーのアップグレード
+    - title: スマート検出
+      links:
+        - url: ./app/proactive-diagnostics.md
+          itemType: overview
+          text: スマート検出の概要
+        - url: ./app/proactive-failure-diagnostics.md
+          itemType: how-to-guide
+          text: 失敗の異常
+        - url: ./app/proactive-performance-diagnostics.md
+          itemType: how-to-guide
+          text: パフォーマンスの異常
+        - url: ./app/proactive-trace-severity.md
+          itemType: how-to-guide
+          text: トレースの低下
+        - url: ./app/proactive-exception-volume.md
+          itemType: how-to-guide
+          text: 例外のボリューム
+        - url: ./app/proactive-potential-memory-leak.md
+          itemType: how-to-guide
+          text: メモリ リーク
+        - url: ./app/proactive-application-security-detection-pack.md
+          itemType: how-to-guide
+          text: セキュリティ検出
+        - url: ./app/proactive-cloud-services.md
+          itemType: how-to-guide
+          text: Azure クラウド サービス
+        - url: ./app/proactive-arm-config.md
+          itemType: how-to-guide
+          text: スマート検出規則の管理
+        - url: ./app/proactive-email-notification.md
+          itemType: how-to-guide
+          text: メール通知
+    - title: 使用量 (ユーザー動作分析)
+      links:
+        - url: ./app/usage-overview.md
+          itemType: overview
+          text: 概要
+        - url: ./app/usage-segmentation.md
+          itemType: how-to-guide
+          text: ユーザー、セッション、イベント
+        - url: ./app/usage-funnels.md
+          itemType: how-to-guide
+          text: ファネル
+        - url: ./app/usage-cohorts.md
+          itemType: how-to-guide
+          text: コーホート
+        - url: ./app/usage-impact.md
+          itemType: how-to-guide
+          text: 影響
+        - url: ./app/usage-retention.md
+          itemType: how-to-guide
+          text: 保持
+        - url: ./app/usage-flows.md
+          itemType: how-to-guide
+          text: ユーザー フロー
+    - title: プライバシー、セキュリティ、使用状況、コスト
+      links:
+        - url: ./logs/personal-data-mgmt.md
+          itemType: how-to-guide
+          text: 個人データの処理
+        - url: ./app/data-retention-privacy.md
+          itemType: how-to-guide
+          text: データの収集、保持、保存
+        - url: ./app/resources-roles-access-control.md
+          itemType: how-to-guide
+          text: ロールベースのアクセス制御
+        - url: ./app/ip-addresses.md
+          itemType: how-to-guide
+          text: IP アドレスとファイアウォール例外
+        - url: ./app/ip-collection.md
+          itemType: how-to-guide
+          text: 位置情報と IP アドレスの処理
+    - title: 詳細な構成
+      links:
+        - url: ./app/sampling.md
+          itemType: how-to-guide
+          text: サンプリング
+        - url: ./app/api-filtering-sampling.md
+          itemType: how-to-guide
+          text: フィルター処理とテレメトリ プロセッサ
+        - url: ./app/telemetry-channels.md
+          itemType: how-to-guide
+          text: テレメトリ チャネル
+        - url: ./app/configuration-with-applicationinsights-config.md
+          itemType: how-to-guide
+          text: ApplicationInsights.config
+        - url: ./app/asp-net-exceptions.md
+          itemType: how-to-guide
+          text: 例外
+        - url: ./app/automate-custom-reports.md
+          itemType: how-to-guide
+          text: カスタム電子メール レポート
+        - url: ./app/usage-overview.md
+          itemType: how-to-guide
+          text: ユーザー コンテキスト ID の送信
+        - url: ./app/custom-endpoints.md
+          itemType: how-to-guide
+          text: エンドポイントのオーバーライド
+    - title: データ モデル
+      links:
+        - url: ./app/data-model.md
+          itemType: overview
+          text: 概要
+        - url: ./app/data-model-request-telemetry.md
+          itemType: how-to-guide
+          text: Request
+        - url: ./app/data-model-dependency-telemetry.md
+          itemType: how-to-guide
+          text: 依存関係
+        - url: ./app/data-model-exception-telemetry.md
+          itemType: how-to-guide
+          text: 例外
+        - url: ./app/data-model-trace-telemetry.md
+          itemType: how-to-guide
+          text: Trace
+        - url: ./app/data-model-event-telemetry.md
+          itemType: how-to-guide
+          text: Event
+        - url: ./app/data-model-metric-telemetry.md
+          itemType: how-to-guide
+          text: メトリック
+        - url: ./app/data-model-context.md
+          itemType: how-to-guide
+          text: Context
+    - title: Azure DevOps
+      links:
+        - url: ./app/annotations.md
+          itemType: how-to-guide
+          text: リリース注釈
+        - url: ./app/continuous-monitoring.md
+          itemType: how-to-guide
+          text: 継続的な監視
+    - title: エクスポート
+      links:
+        - url: ./app/export-telemetry.md
+          itemType: how-to-guide
+          text: テレメトリのエクスポート
+        - url: ../stream-analytics/app-insights-export-stream-analytics.md
+          itemType: how-to-guide
+          text: Stream Analytics にエクスポートする
+        - url: ../stream-analytics/app-insights-export-sql-stream-analytics.md
+          itemType: how-to-guide
+          text: Stream Analytics を使用して SQL にエクスポートする
+        - url: ../stream-analytics/app-insights-export-sql-stream-analytics.md
+          itemType: how-to-guide
+          text: データのエクスポート モデル
+        - url: ./logs/logicapp-flow-connector.md
+          itemType: how-to-guide
+          text: フローの統合
+        - url: ./app/automate-with-logic-apps.md
+          itemType: how-to-guide
+          text: ロジック アプリの統合
+    - title: 視覚化と分析
+      links:
+        - url: ./app/overview-dashboard.md
+          itemType: how-to-guide
+          text: アプリケーション ダッシュボード
+        - url: ./app/export-power-bi.md
+          itemType: how-to-guide
+          text: PowerBI 統合
+        - url: ./essentials/metrics-charts.md
+          itemType: how-to-guide
+          text: メトリック グラフ
+        - url: ./visualize/workbooks-overview.md
+          itemType: how-to-guide
+          text: ブック (対話型レポート)
+        - url: ./app/change-analysis.md
+          itemType: how-to-guide
+          text: 変更分析 (プレビュー)
+    - title: Visual Studio
+      links:
+        - url: ./app/visual-studio.md
+          itemType: how-to-guide
+          text: F5 による洞察
+        - url: ./app/visual-studio.md
+          itemType: how-to-guide
+          text: Trends
+        - url: ./app/visual-studio-codelens.md
+          itemType: how-to-guide
+          text: CodeLens
+    - title: トラブルシューティングと FAQ
+      links:
+        - url: ./app/usage-troubleshoot.md
+          itemType: how-to-guide
+          text: 使用状況のトラブルシューティング
+        - url: ./app/snapshot-debugger-troubleshoot.md
+          itemType: how-to-guide
+          text: スナップショット デバッガーのトラブルシューティング
+        - url: ./app/profiler-troubleshooting.md
+          itemType: how-to-guide
+          text: Profiler のトラブルシューティング
+        - url: ./app/troubleshoot-availability.md
+          itemType: how-to-guide
+          text: 可用性のトラブルシューティング
+        - url: ./app/asp-net-troubleshoot-no-data.md
+          itemType: how-to-guide
+          text: データがない場合のトラブルシューティング
+        - url: ./faq.yml
+          itemType: how-to-guide
+          text: トラブルシューティングの FAQ
+    - title: 関連項目
+      links:
+        - url: ./app/platforms.md
+          itemType: reference
+          text: プラットフォーム
+        - url: ./app/azure-functions-supported-features.md
+          itemType: reference
+          text: Azure Functions の統合
+        - url: /dotnet/api/overview/azure/insights
+          itemType: reference
+          text: .NET SDK
+        - url: /java/api/overview/azure/appinsights
+          itemType: reference
+          text: .Java
+        - url: /javascript/api/overview/azure/applicationinsights
+          itemType: reference
+          text: Node.js
+        - url: /rest/api/application-insights/
+          itemType: reference
+          text: REST API
+        - url: 'https://dev.applicationinsights.io/'
+          itemType: reference
+          text: REST API サンドボックス
+additionalContent:
+  sections:
+    - items:
+        - title: Application Insights API の概要
+          summary: すべての Application Insights API 呼び出しのコード サンプル
+          url: ./app/api-custom-events-metrics.md
+        - title: Application Insights PowerShell
+          summary: Application Insights PowerShell コマンドレットをインストールして使用する方法を説明します。
+          url: /powershell/module/az.applicationinsights/new-azapplicationinsights
+        - title: Application Insights 用の Azure CLI コマンド
+          summary: Application Insights CLI 拡張機能コマンド (az extension add -n application-insights)。
+          url: /cli/azure/monitor/app-insights/component

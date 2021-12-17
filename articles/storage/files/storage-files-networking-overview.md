@@ -4,25 +4,28 @@ description: Azure Files のネットワーク オプションの概要。
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 02/22/2020
+ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1dce7795b8c62c36b80c51d5ba0dd8bc9b667e0e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d3f3bb466156b08ae90561d5e02e5b5ddf469755
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107759689"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518510"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files のネットワークに関する考慮事項 
 Azure ファイル共有には、次の 2 つの方法で接続できます。
 
-- サーバー メッセージ ブロック (SMB)、Network File System (NFS) (プレビュー)、または FileREST プロトコルを使用して、共有に直接アクセスします。 このアクセス パターンは主に、できるだけ多くのオンプレミス サーバーを排除するために使用されます。
+- サーバー メッセージ ブロック (SMB)、Network File System (NFS)、または FileREST プロトコルを使用して、共有に直接アクセスします。 このアクセス パターンは主に、できるだけ多くのオンプレミス サーバーを排除するために使用されます。
 - Azure File Sync を使用してオンプレミス サーバー上 (Azure VM 上) に Azure ファイル共有のキャッシュを作成し、ユース ケースに合った任意のプロトコル (SMB、NFS、FTPS など) を使用してオンプレミス サーバーからファイル共有のデータにアクセスします。 このアクセス パターンは、オンプレミスのパフォーマンスとクラウド スケールの両方、およびサーバーレスの接続可能なサービス (Azure Backup など) のメリットが組み合わされるために非常に便利です。
 
 この記事では、Azure File Sync を使用するのではなく、直接 Azure ファイル共有にアクセスするためにユース ケースに必要となるネットワークの構成方法に重点を置いています。Azure File Sync のデプロイのネットワークに関する考慮事項の詳細については、「[Azure File Sync のネットワークに関する考慮事項](../file-sync/file-sync-networking-overview.md)」を参照してください。
 
 Azure ファイル共有のネットワーク構成は Azure ストレージ アカウントで行います。 ストレージ アカウントは、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 ストレージ アカウントには、ネットワーク エンドポイント、ストレージ アカウントのファイアウォール設定、転送中の暗号化など、ファイル共有へのネットワーク アクセスをセキュリティで保護するうえで役立つ多数の設定が公開されています。 
+
+> [!Important]  
+> 複数のネットワーク ルーティング オプションが、Azure Files によってサポートされています。 既定のオプションである Microsoft ルーティングは、Azure Files のすべての構成で動作します。 インターネット ルーティング オプションでは、AD ドメイン参加シナリオまたは Azure File Sync はサポートされていません。
 
 この概念的なガイドを読む前に、「[Azure Files のデプロイの計画](storage-files-planning.md)」を読むことをお勧めします。
 
@@ -35,23 +38,23 @@ Azure ファイル共有のネットワーク構成は Azure ストレージ ア
    :::column-end:::
 :::row-end:::
 
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
+
 ## <a name="accessing-your-azure-file-shares"></a>Azure ファイル共有へのアクセス
-ストレージ アカウントに Azure ファイル共有をデプロイするとすぐに、そのストレージ アカウントのパブリック エンドポイント経由でファイル共有にアクセスできるようになります。 つまり、ユーザーのログオン ID によって承認された要求など、認証済みの要求は、Azure の内外から安全に送信できます。 
+SMB Azure ファイル共有には、SMB 3.1.1 と SMB 3.0 を使用して、ストレージ アカウントのパブリック エンドポイントから簡単にアクセスできます。 つまり、ユーザーのログオン ID によって承認された要求など、認証済みの要求は、Azure の内外から安全に送信できます。 NFS Azure ファイル共有には、パブリック エンドポイントが Azure 仮想ネットワークに制限されている場合、ストレージ アカウントのパブリック エンドポイントからのみアクセスできます。
 
-多くのお客様の環境では、Azure VM からの Azure ファイル共有のマウントは成功しても、オンプレミス ワークステーションでの最初のマウントは失敗します。 その理由は、SMB での通信に使用されるポート (445) が、多くの組織とインターネット サービス プロバイダー (ISP) によってブロックされているためです。 NFS 共有にはこの問題はありません。 この慣例の由来は、今や非推奨の古いバージョンの SMB プロトコルに関するセキュリティ ガイダンスです。 SMB 3.0 はインターネットでも安全に使用できるプロトコルですが、以前のバージョンの SMB、特に SMB 1.0 はそうではありません。 Azure ファイル共有に外部からアクセスするには、SMB 3.0 と FileREST プロトコル (こちらもインターネットで安全に使用できるプロトコル)、およびパブリック エンドポイントを使用する必要があります。
+さまざまな環境において、Azure ファイル共有に追加のネットワーク構成を適用することが望まれる場合があります。
 
-オンプレミスから Azure SMB ファイル共有にアクセスする最も簡単な方法は、オンプレミス ネットワークをポート 445 に開放することです。そのため、Microsoft では、次の手順に従って SMB 1.0 をお使いの環境から取り除くことを推奨しています。
+- SMB ファイル共有との関連で、SMB で通信に利用されるポート (ポート 445) は、多くの組織とインターネット サービス プロバイダー (ISP) によってブロックされています。 この慣例の由来は、SMB プロトコルの非推奨かつ非インターネットセーフのバージョンに関する以前のセキュリティ ガイダンスにあります。 SMB 3.x はインターネットセーフのプロトコルですが、組織や ISP のポリシーは変更できないことがあります。 
 
-1. 組織のデバイス上で SMB 1.0 が削除されているか、または無効になっていることを確認します。 現在サポートされているすべてのバージョンの Windows および Windows Server で SMB 1.0 の削除または無効化がサポートされており、Windows 10 バージョン 1709 からは、SMB 1.0 が既定では Windows 上にインストールされません。 SMB 1.0 を無効にする方法の詳細については、次の OS 固有のページを参照してください。
-    - [Windows/Windows Server のセキュリティ保護](storage-how-to-use-files-windows.md#securing-windowswindows-server)
-    - [Linux のセキュリティ保護](storage-how-to-use-files-linux.md#securing-linux)
-1. SMB 1.0 が必要な製品が組織内に存在しないことを確認し、存在する場合はそれを削除します。 Microsoft は、SMB 1.0 が必要であると Microsoft で認識しているすべてのファーストパーティ製品とサードパーティ製品が含まれた [SMB1 製品クリアリングハウス](https://aka.ms/stillneedssmb1)を保持しています。 
-1. (省略可能) 組織のオンプレミス ネットワークでサードパーティのファイアウォールを使用し、SMB 1.0 トラフィックが組織の境界から出て行かないようにします。
+- NFS ファイル共有との関連で、制限付きパブリック エンドポイント アクセスでは、Azure 内にのみマウントが制限されます。
 
-組織でポリシーまたは規制に従ってポート 445 をブロックする必要がある場合や、Azure へのトラフィックが確定的なパスをたどらなければならない組織の場合は、Azure VPN Gateway または ExpressRoute を使用して、Azure ファイル共有へのトラフィックをトンネリングできます。 NFS 共有ではポート 445 は必要ないため、このような操作は必要ありません。
-
-> [!Important]  
-> 別の方法で Azure ファイル共有にアクセスすることを決めた場合でも、Microsoft は SMB 1.0 をお使いの環境から取り除くことをお勧めします。
+- 一部の組織では、Azure へのトラフィックが特定のパスを通過する必要があります。
 
 ### <a name="tunneling-traffic-over-a-virtual-private-network-or-expressroute"></a>仮想プライベート ネットワークまたは ExpressRoute でトラフィックをトンネリングする
 オンプレミス ネットワークと Azure との間にネットワーク トンネルを確立したら、Azure 内の 1 つ以上の仮想ネットワークとオンプレミス ネットワークをピアリングします。 [仮想ネットワーク](../../virtual-network/virtual-networks-overview.md) (VNet) は、オンプレミスで運用する従来のネットワークに似ています。 Azure ストレージ アカウントや Azure VM と同様に、VNet は、リソース グループにデプロイされる Azure リソースです。 
@@ -149,20 +152,9 @@ IP4Address : 52.239.194.40
 - パブリック エンドポイントを 1 つ以上の仮想ネットワークに制限します。 これは、"*サービス エンドポイント*" と呼ばれる仮想ネットワークの機能を使用して実現できます。 ストレージ アカウントへのトラフィックをサービス エンドポイントを使用して制限していても、ストレージ アカウントへのアクセスには、やはりパブリック IP アドレスを使用します。
 
 > [!NOTE]
-> NFS 共有は、パブリック IP アドレスを使用してストレージ アカウントのパブリック エンドポイントにアクセスすることはできません。仮想ネットワークを使用した場合のみストレージ アカウントのパブリック エンドポイントにアクセスできます。 NFS 共有は、プライベート エンドポイントを使用してストレージ アカウントにアクセスすることもできます。
+> NFS ファイル共有では、仮想ネットワーク経由でのみ、ストレージ アカウントのパブリック エンドポイントにアクセスできます。 NFS 共有では、ストレージ アカウントのパブリック エンドポイントに自由にアクセスできます。
 
 ストレージ アカウントのファイアウォールを構成する方法の詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
-
-## <a name="encryption-in-transit"></a>転送中の暗号化
-
-> [!IMPORTANT]
-> このセクションでは、SMB 共有の転送中の暗号化について詳しく取り上げます。 NFS 共有による転送中の暗号化の詳細については、「[セキュリティ](storage-files-compare-protocols.md#security)」を参照してください。
-
-既定では、すべての Azure ストレージ アカウントで転送中の暗号化が有効になっています。 つまり、SMB 経由でファイル共有をマウントするか、または FileREST プロトコル (Azure portal、PowerShell/CLI、Azure SDK など) 経由でファイル共有にアクセスすると、Azure Files では、暗号化または HTTPS が設定されている SMB 3.0 以上で作成された接続のみが許可されます。 SMB 3.0 をサポートしていないクライアント、または SMB 3.0 をサポートしているが、SMB 暗号化をサポートしていないクライアントは、転送中の暗号化が有効になっている場合は Azure ファイル共有をマウントできません。 どのオペレーティング システムが暗号化付き SMB 3.0 をサポートしているかの詳細については、[Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md)、および [Linux](storage-how-to-use-files-linux.md) に関する当社の詳細なドキュメントを参照してください。 PowerShell、CLI、および SDK の現在のバージョンはすべて HTTPS をサポートしています。  
-
-Azure ストレージ アカウントでの転送中の暗号化を無効にすることができます。 暗号化が無効になっている場合、Azure Files では、SMB 2.1、暗号化なしの SMB 3.0、および HTTP 経由の暗号化されていない FileREST API 呼び出しも許可されます。 転送中の暗号化を無効にする主な理由は、古いオペレーティング システム (Windows Server 2008 R2 や古い Linux ディストリビューションなど) 上で実行する必要のあるレガシ アプリケーションをサポートするためです。 Azure Files では、Azure ファイル共有と同じ Azure リージョン内の SMB 2.1 接続のみが許可されます。Azure ファイル共有の Azure リージョンの外部 (オンプレミスまたは異なる Azure リージョン内など) の SMB 2.1 クライアントは、ファイル共有にアクセスできません。
-
-転送中の暗号化の詳細については、「[Azure Storage で安全な転送が必要](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
 - [Azure Files の概要](storage-files-introduction.md)

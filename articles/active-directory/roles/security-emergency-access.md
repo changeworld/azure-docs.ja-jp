@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6a1e4b3b44004ec6d03c293bbd10617b3d3af69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 228eab10c0c9db81b1cf1327d6746f96faa64d05
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98740824"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057118"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する
 
@@ -44,9 +44,9 @@ ms.locfileid: "98740824"
 これらのアカウントを構成するときに、次の要件が満たされている必要があります。
 
 - 緊急アクセス用アカウントを組織内の個別ユーザーと関連付けることはできません。 アカウントが、従業員が所有する携帯電話、従業員が出張で持ち歩くハードウェア トークン、またはその他の従業員固有の資格情報と結び付けられていないことを確認します。 この予防策には、資格情報が必要なときに従業員がそれを入手できないような状況が該当します。 Azure AD との複数の通信手段がある既知の安全な場所に、登録済みのデバイスを保管しておくことが重要です。
-- 緊急アクセス用アカウントを使用する認証メカニズムは、他の緊急アクセス用アカウントを含むその他の管理アカウントで使用する認証メカニズムと別のものにする必要があります。  たとえば、通常の管理者のサインインがオンプレミスの MFA を使用する場合、Azure AD MFA が別のメカニズムになります。  ただし、Azure AD MFA が管理者アカウントの認証の主要な部分である場合は、これらには、カスタム コントロールを介したサードパーティの MFA プロバイダーによる条件付きアクセスの使用などの別のアプローチを検討してください。
+- 緊急アクセス用アカウントには強力な認証を使用するものとし、他の管理者アカウントと同じ認証方法は決して使用しないでください。 たとえば、通常の管理者アカウントで、強力な認証に Microsoft Authenticator アプリを使用している場合、緊急用アカウントには FIDO2 セキュリティ キーを使用します。 認証プロセスに外部の要件が加わらないよう、[各種認証方法の依存関係](../fundamentals/resilience-in-credentials.md)を考慮してください。
 - デバイスまたは資格情報は、有効期限が切れておらず、使用不足による自動クリーンアップの対象になっていないことが必要です。  
-- グローバル管理者ロールの割り当てを、緊急アクセス用アカウントに対して永続的にする必要があります。 
+- Azure AD Privileged Identity Management では、グローバル管理者ロールの割り当てを、緊急アクセス用アカウントの臨時管理者ではなく常任管理者にする必要があります。 
 
 ### <a name="exclude-at-least-one-account-from-phone-based-multi-factor-authentication"></a>少なくとも 1 つのアカウントを電話ベースの多要素認証から除外する
 
@@ -56,11 +56,11 @@ ms.locfileid: "98740824"
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>少なくとも 1 つのアカウントを条件付きアクセス ポリシーから除外する
 
-緊急時には、問題を修正するためにアクセスをブロックする可能性のあるポリシーは望ましくありません。 少なくとも 1 つの緊急アクセス用アカウントを、すべての条件付きアクセス ポリシーから除外してください。
+緊急時には、問題を修正するためにアクセスをブロックする可能性のあるポリシーは望ましくありません。 条件付きアクセスを使用する場合、すべての条件付きアクセス ポリシーから少なくとも 1 つの緊急アクセス用アカウントを除外する必要があります。
 
 ## <a name="federation-guidance"></a>フェデレーション ガイド
 
-AD Domain Services と ADFS または類似の ID プロバイダーを使用して Azure AD にフェデレーションする組織もあります。 [これらは、管理特権を持つオンプレミス アカウントであってはなりません](../fundamentals/protect-m365-from-on-premises-attacks.md)。 Azure AD 外部の管理特権を持つアカウントに対する認証をマスタリングまたはソーシングすると、これらのシステムが停止または侵害された場合に不要なリスクが発生します。
+AD Domain Services と AD FS または類似の ID プロバイダーを使用して Azure AD にフェデレーションする組織もあります。 オンプレミス システムの緊急アクセスとクラウド サービスの緊急アクセスは、相互に依存しないよう分ける必要があります。 緊急アクセス特権を持つアカウントに対する認証を他のシステムからマスタリングまたはソーシングすると、それらのシステムが停止した場合に不要なリスクが生じます。
 
 ## <a name="store-account-credentials-safely"></a>アカウントの資格情報を安全に保管する
 
@@ -78,7 +78,8 @@ AD Domain Services と ADFS または類似の ID プロバイダーを使用し
 
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>緊急用アカウントのオブジェクト ID を取得する
 
-1. ユーザー管理者ロールに割り当てられているアカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. ユーザー管理者ロールに割り当てられているアカウントを使用して、[Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
 1. **[Azure Active Directory]**  >  **[ユーザー]** を選択します。
 1. 緊急用アカウントを探し、そのユーザーの名前を選択します。
 1. 後で使用できるように、オブジェクト ID 属性をコピーして保存します。
@@ -96,7 +97,29 @@ AD Domain Services と ADFS または類似の ID プロバイダーを使用し
     1. **[検索クエリ]** に次のクエリを入力し、2 つの緊急用アカウントのオブジェクト ID を挿入します。
         > [!NOTE]
         > 追加する緊急用アカウントごとに、別の "or UserId == "<オブジェクト GUID>"" をクエリに追加します。
-
+                
+        サンプル クエリ:
+        ```kusto
+        // Search for a single Object ID (UserID)
+        SigninLogs
+        | project UserId 
+        | where UserId == "f66e7317-2ad4-41e9-8238-3acf413f7448"
+        ```
+        
+        ```kusto
+        // Search for multiple Object IDs (UserIds)
+        SigninLogs
+        | project UserId 
+        | where UserId == "f66e7317-2ad4-41e9-8238-3acf413f7448" or UserId == "0383eb26-1cbc-4be7-97fd-e8a0d8f4e62b"
+        ```
+        
+        ```kusto
+        // Search for a single UserPrincipalName
+        SigninLogs
+        | project UserPrincipalName 
+        | where UserPrincipalName == "user@yourdomain.onmicrosoft.com"
+        ```
+        
         ![緊急用アカウントのオブジェクト ID をアラート ルールに追加する](./media/security-emergency-access/query-image1.png)
 
     1. **[アラート ロジック]** に、次のように入力します。
@@ -157,4 +180,4 @@ AD Domain Services と ADFS または類似の ID プロバイダーを使用し
 - [Azure AD Premium へのサインアップ](../fundamentals/active-directory-get-started-premium.md) (まだサインアップしていない場合)
 - [ユーザーに 2 段階認証を要求する方法](../authentication/howto-mfa-userstates.md)
 - [Microsoft 365 のグローバル管理者に追加の保護を構成する](/office365/enterprise/protect-your-global-administrator-accounts) (Microsoft 365 を使っている場合)
-- [グローバル管理者のアクセス レビューを開始する](../privileged-identity-management/pim-how-to-start-security-review.md)、および[既存のグローバル管理者をより明確な管理者ロールに移行する](permissions-reference.md)
+- [グローバル管理者のアクセス レビューを開始する](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md)、および[既存のグローバル管理者をより明確な管理者ロールに移行する](permissions-reference.md)

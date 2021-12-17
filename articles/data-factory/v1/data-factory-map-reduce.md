@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: f1f54e972d59d3de3b0f93b3150ee1150eb6f612
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/22/2021
+ms.openlocfilehash: 0528e98a3e2d23322d3f67d71057ebf431cc8d9a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786398"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073170"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory から MapReduce プログラムを起動する
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -50,7 +51,7 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
 4. JAR ファイルを含む Azure Blob Storage を参照するリンクされたサービスを **jarLinkedService** プロパティに対して指定します。   
 5. **arguments** セクションでは MapReduce プログラムの引数を指定します。 実行時に、MapReduce フレームワークのいくつかの引数 (mapreduce.job.tags など) が表示されます。 MapReduce の引数と区別するために、次の例のように、オプションと値の両方を引数として使用することを検討してください (-s、--input、--output などがオプションであり、直後に値が続きます)。
 
-    ```JSON   
+    ```json
     {
         "name": "MahoutMapReduceSamplePipeline",
         "properties": {
@@ -104,7 +105,8 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
         }
     }
     ```
-   HDInsight MapReduce アクティビティを使用して、HDInsight クラスター上で MapReduce jar ファイルを実行できます。 次のサンプルのパイプラインの JSON 定義では、Mahout JAR ファイルを実行するために HDInsight アクティビティが構成されます。
+
+    HDInsight MapReduce アクティビティを使用して、HDInsight クラスター上で MapReduce jar ファイルを実行できます。 次のサンプルのパイプラインの JSON 定義では、Mahout JAR ファイルを実行するために HDInsight アクティビティが構成されます。
 
 ## <a name="sample-on-github"></a>GitHub 上のサンプル
 [GitHub の Data Factory のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample)から、HDInsight MapReduce アクティビティを使用するためのサンプルをダウンロードできます。  
@@ -231,7 +233,7 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
 MapReduce アクティビティを使用して、HDInsight Spark クラスターで Spark プログラムを実行することができます。 詳細については、「 [Invoke Spark programs from Azure Data Factory (Azure Data Factory から Spark プログラムを呼び出す)](data-factory-spark.md) 」を参照してください。  
 
 [developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
-[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
+[cmdlet-reference]: /powershell/resourcemanager/Azurerm.DataFactories/v2.2.0/Azurerm.DataFactories
 
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2021
 ms.author: jeedes
-ms.openlocfilehash: d21ccdcb1f3854733d045b47a5f43e27bbdf4ccb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbfefc71ab35d720300018b357a57eb56b446ae4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98807914"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336185"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Box の統合
 
@@ -153,13 +153,22 @@ Box に対する Azure AD SSO を構成してテストするには、次の手�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Box のサインオン URL にリダイレクトされます。
+* Azure portal で、 **[このアプリケーションをテストします]** を選択します。 Box のサインオン URL にリダイレクトされ、ログイン フローを開始することができます。
 
 * Box のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Box] タイルをクリックすると、Box のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Box] タイルをクリックすると、Box のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
+### <a name="push-an-azure-group-to-box"></a>Azure のグループを Box にプッシュする
+
+Azure のグループを Box にプッシュし、そのグループを同期することができます。 Azure のグループは、API レベルの統合によって Box にプッシュされます。
+
+1. **[Users & Groups]\(ユーザーとグループ\)** で、Box に割り当てるグループを検索します。
+1. **[Provisioning]\(プロビジョニング\)** で、 **[Synchronize Azure Active Directory Groups to Box]\(Azure Active Directory グループを Box と同期する\)** が選択されていることを確認します。 前の手順で割り当てたグループが、この設定によって同期されます。 これらのグループが Azure からプッシュされるには、時間がかかる場合があります。
+
+> [!NOTE]
+> ユーザーを手動で作成する必要がある場合は、[Box サポート チーム](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)にお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Box を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Box を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

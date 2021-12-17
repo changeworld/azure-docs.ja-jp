@@ -1,33 +1,33 @@
 ---
-title: Azure Active Directory B2C でカスタム属性を定義する | Microsoft Docs
+title: Azure Active Directory B2C でカスタム属性を定義する
 description: 顧客に関する情報を収集するために、Azure Active Directory B2C でアプリケーションのカスタム属性を定義します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 10/08/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 17c73257db371bbec0c72a23b1303847a8d14102
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad60fd02ac8707af6bc5dfff5bb23ce7223d48b5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607919"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130231878"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム属性を定義する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-「[カスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ](configure-user-input.md)」の記事では、組み込みの[ユーザー プロファイル属性](user-profile-attributes.md)を使用する方法について説明しています。 この記事では、Azure Active Directory B2C (Azure AD B2C) ディレクトリでカスタム属性を有効にします。 新しい属性は、後でカスタム要求として、[ユーザー フロー](user-flow-overview.md)や[カスタム ポリシー](custom-policy-get-started.md)で同時に使用することができます。
+「[カスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ](configure-user-input.md)」の記事では、組み込みの[ユーザー プロファイル属性](user-profile-attributes.md)を使用する方法について説明しています。 この記事では、Azure Active Directory B2C (Azure AD B2C) ディレクトリでカスタム属性を有効にします。 新しい属性は、後でカスタム要求として、[ユーザー フロー](user-flow-overview.md)や[カスタム ポリシー](user-flow-overview.md)で同時に使用することができます。
 
 Azure AD B2C ディレクトリには、[組み込みの属性セット](user-profile-attributes.md)が付属します。 ただし、次のような場合には、特定のシナリオを管理するために、独自の属性を作成する必要があります。
 
-* 顧客向けアプリケーションで、**LoyaltyId** 属性を保持する必要がある。
+* 顧客向けアプリケーションで、**loyaltyId** 属性を保持する必要がある。
 * ID プロバイダーが、保存する必要がある一意のユーザー識別子 (**uniqueUserGUID**) を保持している。
 * カスタム ユーザー体験で、他のロジックを運用するために必要な、ユーザーの状態 (**migrationStatus**) を保持する必要がある。
 
@@ -48,7 +48,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 1. カスタム属性の **[名前]** ("ShoeSize" など) を指定します。
 1. **[データ型]** を選択します。 **[文字列]** 、 **[ブール値]** 、および **[Int] (整数)** のみを使用できます。
 1. オプションで、情報目的のために **[説明]** を入力します。
-1. **Create** をクリックしてください。
+1. **［作成］** を選択します
 
 これで、このカスタム属性が **[ユーザー属性]** の一覧やユーザー フローで使用できるようになります。 カスタム属性が作成されるのは、いずれかのユーザー フローで初めて使用されるときだけであり、 **[ユーザー属性]** の一覧に追加されるときではありません。
 
@@ -58,9 +58,9 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. ポリシー ("B2C_1_SignupSignin" など) を選択して開きます。
-1. **[ユーザー属性]** 、カスタム属性 ("ShoeSize" など) の順に選択します。 **[保存]** をクリックします。
+1. **[ユーザー属性]** 、カスタム属性 ("ShoeSize" など) の順に選択します。 **[保存]** を選択します。
 1. **[アプリケーションの要求]** 、カスタム属性の順に選択します。
-1. **[保存]** をクリックします。
+1. **[保存]** を選択します。
 
 新しく作成したカスタム属性を使用するユーザー フローを使用して新しいユーザーを作成したら、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) でオブジェクトのクエリを実行できます。 または、ユーザー フローに対して [[ユーザー フローを実行します]](./tutorial-create-user-flows.md) 機能を使用して、カスタマー エクスペリエンスを確認できます。 これで、**ShoeSize** がサインアップ中に収集される属性の一覧や、アプリケーションに送り返されるトークンに表示されるようになります。
 
@@ -68,18 +68,35 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ## <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C 拡張アプリ
 
-拡張属性は、ユーザーに関するデータを保持できる場合でも、アプリケーション オブジェクトにしか登録できません。 拡張属性は、`b2c-extensions-app` というアプリケーションに関連付けられます。 Azure AD B2C は、ユーザー データを保存するためにこのアプリケーションを使用します。このため、このアプリケーションは変更しないでください。 このアプリケーションは、Azure AD B2C (アプリの登録) から確認できます。 次の手順でアプリケーション プロパティを取得します。
+拡張属性は、ユーザーに関するデータを保持できる場合でも、アプリケーション オブジェクトにしか登録できません。 拡張属性は、`b2c-extensions-app` というアプリケーションに関連付けられます。 Azure AD B2C は、ユーザー データを保存するためにこのアプリケーションを使用します。このため、このアプリケーションは変更しないでください。 このアプリケーションは、Azure AD B2C (アプリの登録) から確認できます。 
+
+::: zone pivot="b2c-user-flow"
+
+### <a name="get-extensions-apps-application-id"></a>拡張機能アプリのアプリケーション ID を取得する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[アプリの登録]** を選択してから、 **[すべてのアプリケーション]** を選択します。
+1. `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` アプリケーションを選択します。
+1. **[アプリケーション ID]** をコピーします。 例: `11111111-1111-1111-1111-111111111111`.
+ 
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+### <a name="get-extensions-apps-application-properties"></a>拡張機能アプリのアプリケーション プロパティを取得する
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択してから、 **[すべてのアプリケーション]** を選択します。
 1. `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` アプリケーションを選択します。
 1. 次の識別子をクリップボードにコピーして保存します。
     * **アプリケーション ID**。 例: `11111111-1111-1111-1111-111111111111`.
     * **オブジェクト ID**。 例: `22222222-2222-2222-2222-222222222222`.
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="modify-your-custom-policy"></a>カスタム ポリシーの変更
 
@@ -113,10 +130,11 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 ## <a name="upload-your-custom-policy"></a>カスタム ポリシーのアップロード
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
-4. **[Identity Experience Framework]** を選択します。
-5. **[カスタム ポリシーのアップロード]** を選択し、変更した TrustFrameworkExtensions.xml ポリシー ファイルをアップロードします。
+1. 自分の Azure B2C AD テナントを含むディレクトリを使用していることを確認します。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
+1. **[Identity Experience Framework]** を選択します。
+1. **[カスタム ポリシーのアップロード]** を選択し、変更した TrustFrameworkExtensions.xml ポリシー ファイルをアップロードします。
 
 > [!NOTE]
 > Azure AD 技術プロファイルで要求がディレクトリに最初に保持される際には、カスタム属性が存在するかどうかがチェックされます。 ない場合は、カスタム属性を作成します。  
@@ -171,6 +189,36 @@ Microsoft Graph API では、拡張属性を使用したユーザーの作成と
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyId": "212342" 
 ``` 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="remove-extension-attribute"></a>拡張属性を削除する
+
+組み込み属性とは異なり、拡張属性やカスタム属性は削除できます。 拡張属性の値も削除できます。 
+
+> [!Important]
+> 拡張機能やカスタム属性を削除する前に、ディレクトリ内の各アカウントに対して、拡張属性の値を null に設定します。  この方法で拡張属性の値を明示的に削除します。 続いて拡張属性自体を削除します。 拡張機能とカスタム属性は MS Graph API を使用してクエリを実行できます。 
+
+::: zone pivot="b2c-user-flow"
+
+ユーザーフローから拡張機能とカスタム属性を削除するには、次の手順に従います。
+
+1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
+2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。
+    1.  ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+    1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの [ディレクトリ名] の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[ユーザー属性]** を選択してから、削除する属性を選択します。
+1. **[削除]** を選択してから、 **[はい]** を選択して確定します。
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+カスタム属性を削除するには、[MS Graph API](microsoft-graph-operations.md) を使用して [Delete](/graph/api/application-delete-extensionproperty) コマンドを使用します。
+
+::: zone-end
+
+ 
+
+
+## <a name="next-steps"></a>次の手順
 
 [カスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ](configure-user-input.md)に関するガイドラインに従ってください。 このサンプルでは、組み込みの要求の "city" を使用します。 カスタム属性を使用するには、"city" を独自のカスタム属性に置き換えます。

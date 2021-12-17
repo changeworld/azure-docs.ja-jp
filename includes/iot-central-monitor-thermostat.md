@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 77fdaf297fff0e145b1dd53908887bc14f9d3f14
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 76f8c8819bf67405023980a6fd0e48f997926938
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491138"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111896987"
 ---
 <!-- All needs updating -->
 Azure IoT Central アプリケーションのオペレーターとして、次のことを実行できます。
@@ -36,7 +36,7 @@ Azure IoT Central アプリケーションのオペレーターとして、次�
 
 1. **Temperature Controller** デバイス テンプレートで **[クラウドのプロパティ]** を選択します。
 
-1. **[クラウド プロパティの追加]** を選択します。 **[表示名]** として「*Customer name*」を入力し、 **[スキーマ]** として **[文字列]** を選択します。 次に、 **[保存]** を選択します。
+1. **[クラウド プロパティの追加]** を選択します。 **[表示名]** として「*Customer name*」と入力し、エントリを展開して **[スキーマ]** として **[文字列]** を選択します。 次に、 **[保存]** を選択します。
 
 **[Get Max-Min report]\(最大-最小レポートの取得\)** コマンドが IoT Central アプリケーションでどのように表示されるかをカスタマイズするには:
 
@@ -82,7 +82,7 @@ Azure IoT Central アプリケーションのオペレーターとして、次�
 
     :::image type="content" source="media/iot-central-monitor-thermostat/update-properties.png" alt-text="デバイス プロパティを更新する":::
 
-* **[コマンド]** ページからコマンドを呼び出します。
+* **[コマンド]** ページからコマンドを呼び出します。 状態レポート コマンドを実行する場合は、実行する前に、 **[以降]** パラメーターに対して日付と時刻を選択します。
 
     :::image type="content" source="media/iot-central-monitor-thermostat/call-command.png" alt-text="コマンドを呼び出す":::
 

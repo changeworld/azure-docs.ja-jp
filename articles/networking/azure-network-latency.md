@@ -5,14 +5,14 @@ services: networking
 author: nayak-mahesh
 ms.service: virtual-network
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 06/08/2021
 ms.author: kumud
-ms.openlocfilehash: bc2d7bb7ba17a4a47fecf2144157f79f5367fca7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e86f0e38c71265761e0faddbbf1cc783557cd5df
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98059173"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112297767"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Azure ネットワーク ラウンドトリップ待ち時間統計
 
@@ -22,9 +22,9 @@ Azure は、内部監視ツールを使用してネットワークのコア領�
 
 待ち時間の測定値は、世界中の Azure クラウド リージョンでホストされている ThousandEyes エージェントから収集されます。エージェントはネットワーク プローブを 1 分間隔で相互に継続的に送信します。 月ごとの待ち時間の統計は、その月に収集されたサンプルを平均して算出されます。
 
-## <a name="december-2020-round-trip-latency-figures"></a>2020 年 12 月のラウンド トリップ待ち時間の数値
+## <a name="may-2021-round-trip-latency-figures"></a>2021 年 5 月のラウンドトリップ待ち時間の数値
 
-過去 30 日間の Azure リージョン間の毎月の平均ラウンド トリップ時間 (2020 年 12 月 31 日に終了) を次に示します。 次に示す測定値は [ThousandEyes](https://thousandeyes.com) から得られたものです。
+過去 31 日間の Azure リージョン間の毎月の平均ラウンドトリップ時間 (2021 年 5 月 31 日に終了) を以下に示します。 次に示す測定値は [ThousandEyes](https://thousandeyes.com) から得られたものです。
 
 [![Azure リージョン間の待ち時間統計](media/azure-network-latency/azure-network-latency.png)](media/azure-network-latency/azure-network-latency.png#lightbox)
 

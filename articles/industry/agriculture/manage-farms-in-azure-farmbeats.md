@@ -1,16 +1,16 @@
 ---
 title: ファームの管理
 description: ファームを管理する方法について説明します
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.openlocfilehash: 050b3b4d67eda9b6c9b4621c014e3e6baad34053
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.openlocfilehash: 70d7ae985a56842f2b02c5af5a7c7c1e589b2b56
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173802"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759817"
 ---
 # <a name="manage-farms"></a>ファームの管理
 

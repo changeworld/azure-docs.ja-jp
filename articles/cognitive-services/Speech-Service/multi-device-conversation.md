@@ -3,19 +3,19 @@ title: マルチデバイスの会話 (プレビュー) - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: マルチデバイスの会話を使用すると、複数のクライアント間で音声やテキストによる会話を簡単に作成し、その間で送信されるメッセージを調整できます。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.author: trbye
-ms.openlocfilehash: 7b38bc390b28788003c2de757f45e8ecdfd5c89a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: eur
+ms.openlocfilehash: 262e0286f3e4cba0d11e21676bb4b5f1e468fb71
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98932422"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510517"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>マルチデバイスの会話とは (プレビュー)
 

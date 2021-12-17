@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: d5b5470b30848fd31be63f25c85c23f88cdaf0c6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a301e57563d7a496ea4a0c0a6fbf17da165b9357
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732226"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370557"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC 認証 - REST API リファレンス
 
@@ -66,7 +66,7 @@ HTTP 要求ヘッダーの名前をセミコロンで区切ります。要求に
 
 ### <a name="required-http-request-headers"></a>必須の HTTP 要求ヘッダー
 
-```x-ms-date```[または ```Date```];```host```;```x-ms-content-sha256```
+`x-ms-date`[または `Date`];`host`;`x-ms-content-sha256`
 
 その他の HTTP 要求ヘッダーもすべて、署名に追加できます。 それらを ```SignedHeaders``` 引数に追加するだけです。
 
@@ -76,8 +76,7 @@ x-ms-date;host;x-ms-content-sha256;```Content-Type```;```Accept```
 
 ### <a name="signature"></a>署名
 
-Base64 でエンコードされた HMACSHA256 ハッシュの署名文字列。 `Credential` によって識別されるアクセス キーを使用します。
-```base64_encode(HMACSHA256(String-To-Sign, Secret))```
+Base64 でエンコードされた HMACSHA256 ハッシュの署名文字列。 `Credential` によって識別されるアクセス キーを使用します。 `base64_encode(HMACSHA256(String-To-Sign, Secret))`
 
 ### <a name="string-to-sign"></a>署名対象文字列
 
@@ -180,8 +179,8 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="XXX is re
 
 *前提条件*:[Crypto-JS](https://code.google.com/archive/p/crypto-js/)
 
-```js
-function signRequest(host, 
+```javascript
+function signRequest(host,
                      method,      // GET, PUT, POST, DELETE
                      url,         // path+query
                      body,        // request body (undefined of none)
@@ -198,7 +197,7 @@ function signRequest(host,
 
         //
         // String-To-Sign
-        var stringToSign = 
+        var stringToSign =
             verb + '\n' +                              // VERB
             url + '\n' +                               // path_and_query
             utcNow + ';' + host + ';' + contentHash;   // Semicolon separated SignedHeaders values
@@ -237,7 +236,7 @@ using (var client = new HttpClient())
 
 static class HttpRequestMessageExtensions
 {
-    public static HttpRequestMessage Sign(this HttpRequestMessage request, string credential, byte[] secret)
+    public static HttpRequestMessage Sign(this HttpRequestMessage request, string credential, string secret)
     {
         string host = request.RequestUri.Authority;
         string verb = request.Method.ToString().ToUpper();
@@ -256,7 +255,7 @@ static class HttpRequestMessageExtensions
         // Signature
         string signature;
 
-        using (var hmac = new HMACSHA256(secret))
+        using (var hmac = new HMACSHA256(Convert.FromBase64String(secret)))
         {
             signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.ASCII.GetBytes(stringToSign)));
         }
@@ -303,7 +302,7 @@ public CloseableHttpResponse signRequest(HttpUriRequest request, String credenti
     return httpClient.execute(request);
 }
 
-private static Map<String, String> generateHeader(HttpUriRequest request, String credential, String secret) 
+private static Map<String, String> generateHeader(HttpUriRequest request, String credential, String secret)
         throws URISyntaxException, IOException {
     String requestTime = GMT_DATE_FORMAT.format(new Date());
 
@@ -426,7 +425,7 @@ import six
 def sign_request(host,
                 method,     # GET, PUT, POST, DELETE
                 url,        # Path + Query
-                body,       # Request body 
+                body,       # Request body
                 credential, # Access Key ID
                 secret):    # Access Key Value
     verb = method.upper()

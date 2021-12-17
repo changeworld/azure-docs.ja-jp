@@ -1,20 +1,23 @@
 ---
 title: ARM で ILB ASE を作成する
 description: Azure Resource Manager テンプレートを使用して、内部ロード バランサーを含んだ App Service Environment (ILB ASE) を作成する方法について説明します。 アプリは、インターネットから完全に隔離されます。
-author: ccompy
+author: madsd
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
 ms.date: 09/16/2020
-ms.author: ccompy
+ms.author: madsd
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae6e4be378df9b626f17b6bd5b0fd2b620a17392
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009553"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005169"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する 
+> [!NOTE]
+> これは、Isolated App Service プランで使用される App Service Environment v2 に関する記事です。
+> 
 
 Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内のサブネットに Azure App Service をデプロイしたものです。 App Service Environment (ASE) をデプロイするには、次の 2 つの方法があります。 
 
@@ -40,7 +43,7 @@ ILB ASE を使用すると、次のようなことができます。
 
 ILB ASE を使用する際に実行できないことがいくつかあります。
 
--   IP ベース SSL の使用。
+-   IP ベースの TLS/SSL バインドを使用します。
 -   特定のアプリへの IP アドレスの割り当て。
 -   Azure Portal からのアプリの証明書の購入と使用。 証明書は、証明機関から直接入手して、アプリで使用できます。 Azure Portal では入手できません。
 
@@ -119,7 +122,7 @@ Azure DNS プライベート ゾーンで DNS を構成するには、次の操�
 
 ASE の既定のドメイン サフィックスの DNS 設定では、アプリがこれらの名前によってのみアクセスできるように制限されていません。 ILB ASE では、アプリの検証なしでカスタム ドメイン名を設定できます。 その後、contoso.net という名前のゾーンを作成する場合は、ILB IP アドレスを指すようにすることができます。 カスタム ドメイン名はアプリ要求に対して機能しますが、scm サイトでは使用できません。 scm サイトは、&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net でのみ使用できます。
 
-.&lt;asename&gt;.appserviceenvironment.net という名前のゾーンはグローバルに一意です。 2019 年 5 月より前のユーザーは、ILB ASE のドメイン サフィックスを指定できました。 ドメイン サフィックスで .contoso.com を使用した場合は、scm サイトが含まれていることになります。 このモデルには、既定の SSL 証明書の管理、scm サイトでのシングル サインオンの欠如、ワイルドカード証明書の使用要件といった課題がありました。 ILB ASE の既定の証明書アップグレード プロセスも中断され、アプリケーションが再起動されました。 これらの問題を解決するため、ILB ASE の動作が、ASE の名前と Microsoft の所有するサフィックスに基づくドメイン サフィックスを使用するように変更されました。 ILB ASE の動作の変更は、2019 年 5 月以降に作成された ILB ASE にのみ影響します。 既存の ILB ASE では、引き続き ASE の既定の証明書とその DNS 構成を管理する必要があります。
+.&lt;asename&gt;.appserviceenvironment.net という名前のゾーンはグローバルに一意です。 2019 年 5 月より前のユーザーは、ILB ASE のドメイン サフィックスを指定できました。 ドメイン サフィックスで .contoso.com を使用した場合は、scm サイトが含まれていることになります。 このモデルには、既定の TLS/SSL 証明書の管理、scm サイトでのシングル サインオンの欠如、ワイルドカード証明書の使用要件といった課題がありました。 ILB ASE の既定の証明書アップグレード プロセスも中断され、アプリケーションが再起動されました。 これらの問題を解決するため、ILB ASE の動作が、ASE の名前と Microsoft の所有するサフィックスに基づくドメイン サフィックスを使用するように変更されました。 ILB ASE の動作の変更は、2019 年 5 月以降に作成された ILB ASE にのみ影響します。 既存の ILB ASE では、引き続き ASE の既定の証明書とその DNS 構成を管理する必要があります。
 
 ## <a name="publish-with-an-ilb-ase"></a>ILB ASE で発行する
 
@@ -129,13 +132,13 @@ SCM サイト名をクリックすると、Azure Portal 内の Kudu コンソー
 
 インターネット ベースの CI システム (GitHub や Azure DevOps など) は、ビルド エージェントがインターネットにアクセス可能であり、かつ ILB ASE と同じネットワーク上に存在すれば、引き続き機能します。 したがって、Azure DevOps の場合、ビルド エージェントが ILB ASE と同じ VNET 上に作成されていれば (サブネットは異なっていてもかまいません)、Azure DevOps git からコードをプルして ILB ASE にデプロイできます。 独自のビルド エージェントを作成しない場合は、プル モデルを使用している CI システム (Dropbox など) を使用する必要があります。
 
-ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 このドメインは、アプリの発行プロファイルとアプリのポータル ブレード ( **[概要]**  >  **[要点]** 、 **[プロパティ]** など) に表示されます。 ILB ASE のドメイン サフィックスが " *&lt;ASE 名&gt;.appserviceenvironment.net*" で、アプリの名前が *mytest* である場合、FTP では "*mytest.&lt;ASE 名&gt;.appserviceenvironment.net*" となり、Web デプロイでは *mytest.scm.contoso.net* となります。
+ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 このドメインは、アプリの発行プロファイルとアプリのポータル ブレード ( **[概要]**  >  **[要点]** 、 **[プロパティ]** など) に表示されます。 ILB ASE のドメイン サフィックスが " *&lt;ASE 名&gt;.appserviceenvironment.net*" で、アプリの名前が *mytest* である場合、FTP では "*mytest.&lt;ASE 名&gt;.appserviceenvironment.net*" となり、MSDeploy のデプロイでは *mytest.scm.contoso.net* となります。
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>WAF デバイスを使用して ILB ASE を構成する ##
 
 Web アプリケーション ファイアウォール (WAF) デバイスを ILB ASE と組み合わせることで、指定したアプリだけをインターネットに公開し、それ以外は VNet 内からしかアクセスできないようにすることができます。 これにより、セキュリティで特に保護された多層アプリケーションを構築できます。
 
-WAF デバイスを使用して ILB ASE を構成する方法の詳細については、[App Service Environment での Web アプリケーション ファイアウォールの構成][ASEWAF]に関するページを参照してください。 この記事では、Barracuda 仮想アプライアンスを ASE と使用する方法について示します。 Azure Application Gateway を使用する方法もあります。 Application Gateway は OWASP コア ルールを使用して、その背後に置かれたすべてのアプリケーションのセキュリティを確保します。 Application Gateway について詳しくは、「[Web アプリケーション ファイアウォール (WAF)][AppGW]」をご覧ください。
+WAF デバイスを使用して ILB ASE を構成する方法の詳細については、App Service Environment での Web アプリケーション ファイアウォールの構成[][ASEWAF]に関するページを参照してください。 この記事では、Barracuda 仮想アプライアンスを ASE と使用する方法について示します。 Azure Application Gateway を使用する方法もあります。 Application Gateway は OWASP コア ルールを使用して、その背後に置かれたすべてのアプリケーションのセキュリティを確保します。 Application Gateway について詳しくは、「[Web アプリケーション ファイアウォール (WAF)][AppGW]」をご覧ください。
 
 ## <a name="ilb-ases-made-before-may-2019"></a>2019 年 5 月より前に作成された ILB ASE
 
@@ -143,7 +146,7 @@ WAF デバイスを使用して ILB ASE を構成する方法の詳細につい�
 
 ## <a name="get-started"></a>はじめに ##
 
-* ASE の使用を開始するには、「[App Service Environment の概要][Intro]」をご覧ください。 
+* ASE の使用を開始するには、「[App Service 環境の概要][Intro]」をご覧ください。 
 
 <!--Image references-->
 [1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png
@@ -168,7 +171,7 @@ WAF デバイスを使用して ILB ASE を構成する方法の詳細につい�
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
-[ASEWAF]: app-service-app-service-environment-web-application-firewall.md
+[ASEWAF]: integrate-with-application-gateway.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md
 [linuxapp]: ../overview.md#app-service-on-linux

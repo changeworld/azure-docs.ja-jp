@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と LinkedIn Learning の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と LinkedIn Learning の統合'
 description: Azure Active Directory と LinkedIn Learning の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: e5c6bf41e1a3bf92c9141c0d3b54dd58ead2bf3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb4c4f52ad4578cd1d4718d0b709132a846119dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98727302"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290991"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-learning"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と LinkedIn Learning の統合
+# <a name="tutorial-azure-ad-sso-integration-with-linkedin-learning"></a>チュートリアル: Azure AD SSO と LinkedIn Learning の統合
 
 このチュートリアルでは、LinkedIn Learning と Azure Active Directory (Azure AD) を統合する方法について説明します。 LinkedIn Learning を Azure AD と統合すると、次のことができます。
 
@@ -37,11 +37,11 @@ ms.locfileid: "98727302"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* LinkedIn Learning では、**SP と IDP** によって開始される SSO がサポートされます
-* LinkedIn Learning では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* LinkedIn Learning では、**SP と IDP** によって開始される SSO がサポートされます。
+* LinkedIn Learning では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* LinkedIn Learning では、[自動化されたユーザー プロビジョニング](linkedin-learning-provisioning-tutorial.md)がサポートされます。
 
-
-## <a name="adding-linkedin-learning-from-the-gallery"></a>ギャラリーからの LinkedIn Learning の追加
+## <a name="add-linkedin-learning-from-the-gallery"></a>LinkedIn Learning をギャラリーから追加する
 
 Azure AD への LinkedIn Learning の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に LinkedIn Learning を追加する必要があります。
 
@@ -51,7 +51,6 @@ Azure AD への LinkedIn Learning の統合を構成するには、ギャラリ�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**LinkedIn Learning**」と入力します。
 1. 結果のパネルから **[LinkedIn Learning]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-linkedin-learning"></a>LinkedIn Learning の Azure AD SSO の構成とテスト
 
@@ -63,7 +62,7 @@ LinkedIn Learning に対する Azure AD SSO を構成してテストするには
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[LinkedIn Learning の SSO の構成](#configure-linkedin-learning-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[LinkedIn Learning のテスト ユーザーの作成](#create-linkedin-learning-test-user)** - LinkedIn Learning で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+    1. **[ライセンスの割り当て](#assign-licenses)** - LinkedIn Learning で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -76,9 +75,9 @@ LinkedIn Learning に対する Azure AD SSO を構成してテストするには
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-     a. **[識別子]** ボックスに、LinkedIn ポータルからコピーした **エンティティ ID** を入力します。 
+    a. **[識別子]** ボックスに、LinkedIn ポータルからコピーした **エンティティ ID** を入力します。 
 
     b. **[応答 URL]** ボックスに、LinkedIn ポータルからコピーした **Assertion Consumer Service (ACS) URL** を入力します。
 
@@ -86,10 +85,8 @@ LinkedIn Learning に対する Azure AD SSO を構成してテストするには
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 
-    ![[LinkedIn Learning のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
-
     > [!NOTE]
-    > これらの値は実際の値ではありません。 これらの値は、実際の識別子と応答 URL に更新します。これについては、このチュートリアルの「**LinkedIn Learning の SSO の構成**」セクションで後述します。
+    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、およびサインオン URL に更新します。これについては、このチュートリアルの「**LinkedIn Learning の SSO の構成**」セクションで後述します。
 
 1. LinkedIn Learning アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングをSAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 LinkedIn Learning アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
@@ -129,29 +126,61 @@ LinkedIn Learning に対する Azure AD SSO を構成してテストするには
 
 ## <a name="configure-linkedin-learning-sso"></a>LinkedIn Learning の SSO の構成
 
-1. 別の Web ブラウザーのウィンドウで、管理者として LinkedIn Learning テナントにサインオンします。
+1. LinkedIn Learning の企業サイトに管理者としてログインします。
 
-2. **[Account Center (アカウント センター)]** で、 **[Settings (設定)]** の下の **[Global Settings (グローバル設定)]** をクリックします。 また、ドロップダウン リストから **[Learning - Default (ラーニング - 既定)]** を選択します。
+1. **[Go to Admin]\(管理者に移動\)**  >  **[Me]**  >  **[Authenticate]\(認証\)** を選択します。 
 
-    ![[Default]\(既定\) を選択できる [Global Settings]\(グローバル設定\) を示すスクリーンショット。](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
+    ![アカウント](./media/linkedinlearning-tutorial/welcome-back-authenticate.png "Account") 
 
-3. **[OR Click Here to load and copy individual fields from the form]\(または、ここをクリックしてフォームから個々のフィールドを読み込み、コピーする\)** をクリックし、 **[エンティティ ID]** と **[Assertion Consumer Service (ACS) URL]** をコピーして、Azure portal の **[基本的な SAML 構成]** セクションに貼り付けます。
+1. **[Authenticate]\(認証\)** で **[Configure single sign-on]\(シングル サインオンの構成\)** を選択し、 **[Add new SSO]\(新しい SSO の追加\)** をクリックします。    
 
-    ![説明されている値を入力できる [Single Sign-On]\(シングル サインオン\) を示すスクリーンショット。](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
+    ![シングル サインオンの構成](./media/linkedinlearning-tutorial/admin.png "Configure single sign-on")
 
-4. **[LinkedIn Admin Settings (LinkedIn 管理者設定)]** セクションに移動します。 **[Upload XML file (XML ファイルのアップロード)]** オプションをクリックして、Azure ポータルからダウンロードした XML ファイルをアップロードします。
+1. **[Add new SSO]\(新しい SSO の追加\)** ドロップダウンから **[SAML]** を選択します。
 
-    ![X M L ファイルをアップロードできる [Configure the LinkedIn service provider S S O settings]\(LinkedIn サービス プロバイダーの S S O 設定の構成\) を示すスクリーンショット。](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
+    ![SAML 認証](./media/linkedinlearning-tutorial/new-method.png "[SAML 認証]")
 
-5. **[ON (オン)]** をクリックして SSO を有効にします。 SSO の状態が **[Not Connected (未接続)]** から **[Connected (接続済み)]** に変更されます
+1. **[Basics]\(基本\)** タブで、 **[SAML Connection Name]\(SAML 接続名\)** を入力し、 **[Next]\(次へ\)** をクリックします。
 
-    ![[Authenticate users with S S O]\(S S O を使用してユーザーを認証する\) を有効にできる [Single Sign-On]\(シングル サインオン\) を示すスクリーンショット。](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
+    ![SSO 接続](./media/linkedinlearning-tutorial/users.png "SSO 接続")
 
-### <a name="create-linkedin-learning-test-user"></a>LinkedIn Learning のテスト ユーザーの作成
+1. **[Identity provider settings]\(ID プロバイダーの設定\)** タブに移動し、 **[Download file]\(ファイルのダウンロード\)** をクリックしてメタデータ ファイルをダウンロードし、コンピューターに保存して **[Next]\(次へ\)** をクリックします。
 
-LinkedIn Learning アプリケーションでは、ジャストインタイムのユーザーのプロビジョニングがサポートされ、認証後に、ユーザーが自動的に、アプリケーションに作成されます。 LinkedIn Learning ポータルの管理者設定ページで、スイッチ **[Automatically Assign licenses (ライセンスを自動的に割り当てる)]** を切り替えて、ジャストインタイム プロビジョニングを有効にします。これにより、ユーザーにライセンスも割り当てられます。
+    ![ID プロバイダーの設定](./media/linkedinlearning-tutorial/download-file.png "ID プロバイダーの設定")
 
-   ![Azure AD のテスト ユーザーの作成](./media/linkedinlearning-tutorial/LinkedinUserprovswitch.png)
+    > [!NOTE]    
+    > このファイルを ID プロバイダーにインポートできない可能性があります。 たとえば、Okta にはこの機能がありません。 このケースが構成要件に該当する場合、個々のフィールドの操作を続行します。
+
+1. **[Identity provider settings]\(ID プロバイダーの設定\)** タブで、 **[Load and copy information from fields]\(フィールドから情報を読み込んでコピー\)** をクリックして必要なフィールドをコピーし、Azure portal の **[基本的な SAML 構成]** セクションに貼り付け、 **[Next]\(次へ\)** をクリックします。
+
+    ![設定](./media/linkedinlearning-tutorial/fields.png "設定")
+
+1. **[SSO settings]\(SSO 設定\)** タブで、 **[Upload XML file]\(XML ファイルのアップロード\)** をクリックし、Azure portal からダウンロードした **フェデレーション メタデータ XML** ファイルをアップロードします。
+
+    ![証明書ファイル](./media/linkedinlearning-tutorial/upload-file.png "証明書ファイル")
+
+1. **[SSO settings]\(SSO 設定\)** タブで、Azure portal からコピーした必須フィールドに手動で入力します。
+
+    ![値の入力](./media/linkedinlearning-tutorial/certificate.png "値の入力")
+
+1. **[SSO settings]\(SSO 設定\)** で、要件に従って SSO オプションを選択し、 **[Save]\(保存\)** をクリックします。
+
+    ![SSO 設定](./media/linkedinlearning-tutorial/options.png "SSO 設定")
+
+#### <a name="enabling-single-sign-on"></a>シングル サインオンの有効化
+
+構成が完了したら、SSO のステータス ドロップダウンから **[Active]\(アクティブ\)** を選択して SSO を有効にします。
+
+  ![シングル サインオンの有効化](./media/linkedinlearning-tutorial/configuration.png "シングル サインオンの有効化")
+
+### <a name="assign-licenses"></a>ライセンスの割り当て
+
+SSO を有効にすると、 **[Automatically provision licenses]\(ライセンスの自動プロビジョニング\)** を **[On]\(オン\)** にして **[Save]\(保存\)** をクリックすることで、従業員にライセンスを自動的に割り当てることができます。 このオプションを有効にすると、ユーザーが初めて認証されたときにライセンスが自動的に付与されます。
+
+   ![Assign Licenses](./media/linkedinlearning-tutorial/license.png "ライセンスの割り当て")
+
+> [!NOTE]   
+> このオプションを有効にしない場合、管理者は [People]\(人\) タブでユーザーを手動で追加する必要があります。LinkedIn Learning は電子メール アドレスでユーザーを識別します。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -165,11 +194,10 @@ LinkedIn Learning アプリケーションでは、ジャストインタイム�
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した LinkedIn Learning に自動的にサインインされます 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した LinkedIn Learning に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [LinkedIn Learning] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した LinkedIn Learning に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [LinkedIn Learning] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した LinkedIn Learning に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-LinkedIn Learning を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+LinkedIn Learning を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

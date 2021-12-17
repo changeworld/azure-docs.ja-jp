@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 84a672f76de4b11558f2b39bf417a3eda2e31a36
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1ad8f9496bd781d6ed33927b4056073a50e0b5a2
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786534"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535029"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
@@ -54,6 +54,8 @@ ms.locfileid: "104786534"
 
     ![新しいワークスペースの追加](./media/how-to-create-group-machine-dependencies/workspace.png)
 
+> [!Note]
+> プライベート エンドポイント接続用に OMS ワークスペースを構成する方法については、[こちら](../azure-monitor/logs/private-link-security.md)をご覧ください。  
 
 ## <a name="download-and-install-the-vm-agents"></a>VM エージェントをダウンロードしてインストールする
 
@@ -63,9 +65,13 @@ ms.locfileid: "104786534"
 > System Center Operations Manager 2012 R2 以降によって監視されているサーバーの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 統合ガイダンスに[従ってください](../azure-monitor/vm/service-map-scom.md#prerequisites)。
 
 1. **[Azure Migrate: 検出および評価]** で、 **[検出済みサーバー]** をクリックします。
-2. 依存関係の視覚化を利用して分析する各サーバーについて、 **[依存関係]** 列の **[エージェントをインストールする必要があります]** をクリックします。
-3. **[依存関係]** ページで、Windows 用または Linux 用の MMA と依存関係エージェントをダウンロードします。
-4. **[MMA エージェントの構成]\(Configure MMA agent\)** で、ワークスペース ID とキーをコピーします。 これらは、MMA エージェントをインストールするときに必要です。
+1. **[列]** をクリックして **[依存関係 (エージェントベース)]** を選択し、[検出済みサーバー] ページに列を表示します。
+
+    :::image type="content" source="./media/how-to-create-group-machine-dependencies/columns-inline.png" alt-text="列をクリックした後の結果を示すスクリーンショット。" lightbox="./media/how-to-create-group-machine-dependencies/columns-expanded.png":::
+
+1. 依存関係の視覚化を利用して分析する各サーバーについて、 **[依存関係]** 列の **[エージェントをインストールする必要があります]** をクリックします。
+1. **[依存関係]** ページで、Windows 用または Linux 用の MMA と依存関係エージェントをダウンロードします。
+1. **[MMA エージェントの構成]\(Configure MMA agent\)** で、ワークスペース ID とキーをコピーします。 これらは、MMA エージェントをインストールするときに必要です。
 
     ![エージェントをインストールする](./media/how-to-create-group-machine-dependencies/dependencies-install.png)
 
@@ -84,7 +90,7 @@ Windows サーバーにエージェントをインストールするには、次
 4. **[エージェントのセットアップ オプション]** で、 **[Azure Log Analytics]**  >  **[次へ]** の順にクリックします。
 5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
-エージェントは、コマンド ラインからインストールするか、Configuration Manager または [Intigua](https://www.intigua.com/intigua-for-azure-migration) などの自動化された方法を使用してインストールすることができます。
+エージェントは、コマンド ラインからインストールするか、Configuration Manager または Intigua などの自動化された方法を使用してインストールすることができます。
 - このような方法を使用して MMA エージェントをインストールする方法については、[詳細](../azure-monitor/agents/log-analytics-agent.md#installation-options)のページを参照してください。
 - この[スクリプト](https://github.com/brianbar-MSFT/Install-MMA)を使用して、MMA エージェントをインストールすることもできます。
 - MMA でサポートされる Windows オペレーティング システムの詳細については、[こちら](../azure-monitor/agents/agents-overview.md#supported-operating-systems)をご覧ください。
@@ -94,18 +100,20 @@ Windows サーバーにエージェントをインストールするには、次
 Linux サーバーに MMA をインストールするには、以下を実行します。
 
 1. 該当するバンドル (x86 または x64) を、scp/sftp を使用して Linux コンピューターに転送します。
+
 2. --install 引数を使用してバンドルをインストールします。
 
-    ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
+   `sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>`
 
 MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](../azure-monitor/agents/agents-overview.md#supported-operating-systems)をご覧ください。 
 
 ## <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 
 1. Windows サーバーに依存関係エージェントをインストールするには、セットアップ ファイルをダブルクリックし、ウィザードに従います。
+
 2. Linux サーバーに依存関係エージェントをインストールするには、次のコマンドを使用してルートとしてインストールします。
 
-    ```sh InstallDependencyAgent-Linux64.bin```
+   `sh InstallDependencyAgent-Linux64.bin`
 
 - スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent)をご覧ください。
 - 依存関係エージェントでサポートされるオペレーティング システムの詳細については、[こちら](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems)をご覧ください。

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 77c09385c69e4a2922fa3b2249143e6e969bfc5a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: b58fd8ba86febba41715aba4340838a0f494e6ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759906"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591656"
 ---
 ::: zone target="docs"
 
@@ -222,24 +222,26 @@ ms.locfileid: "91759906"
 
 6. Data Box Disk ロック解除ツールを実行します。 「[ディスクに接続してパスキーを取得する](#connect-to-disks-and-get-the-passkey)」で取得したパスキーを、Azure portal から指定します。 オプションで、ロックを解除する、BitLocker で暗号化されたボリュームの一覧を指定します。 パスキーとボリュームの一覧は、単一引用符で囲んで指定する必要があります。 
 
-    次のコマンドを入力します。
+   次のコマンドを入力します。
  
-    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'          
+   ```bash
+   sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'
+   ```
 
-    サンプル出力を次に示します。 
+   サンプル出力を次に示します。 
  
-    ```
-    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:'qwerqwerqwer'  
-    
-    START: Mon Aug 13 14:25:49 2018 
-    Volumes: /dev/sdbl 
-    Passkey: qwerqwerqwer 
-    
-    Volumes for data copy : 
-    /dev/sdbl: /mnt/DataBoxDisk/mountVoll/ 
-    END: Mon Aug 13 14:26:02 2018
-    ```
-    データをコピーできるボリュームのマウント ポイントが表示されます。
+   ```output
+   [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:'qwerqwerqwer'  
+   
+   START: Mon Aug 13 14:25:49 2018 
+   Volumes: /dev/sdbl 
+   Passkey: qwerqwerqwer 
+   
+   Volumes for data copy : 
+   /dev/sdbl: /mnt/DataBoxDisk/mountVoll/ 
+   END: Mon Aug 13 14:26:02 2018
+   ```
+   データをコピーできるボリュームのマウント ポイントが表示されます。
 
 7. 今後ディスクを再挿入するたびにロック解除の手順を繰り返します。 Data Box Disk ロック解除ツールでわからないことがある場合は、`help` コマンドを使用してください。 
     

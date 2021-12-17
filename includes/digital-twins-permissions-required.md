@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 2/23/2021
 ms.author: baanders
-ms.openlocfilehash: f93f52b0e076411f96db38f704a88325ef64f8e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2dff590fbff7822db3ee55a5cc485927f1e4d7e5
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101703094"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480757"
 ---
 >[!NOTE]
-> このセクションは、Azure リソースへのユーザー アクセスを管理するためのアクセス許可を持つ Azure ユーザーが行う必要があります (アクセス許可の付与と委任を含みます)。 この要件を満たす一般的なロールは、*所有者*、*アカウント管理者*、*ユーザー アクセス管理者* と *共同作成者* の組み合わせです。 Azure Digital Twins のロールのアクセス許可要件に関する詳細については、"[*インスタンスと認証の設定方法*](../articles/digital-twins/how-to-set-up-instance-portal.md#prerequisites-permission-requirements)" に関する記事を参照してください。
+> このセクションは、アクセス許可の付与や委任を含む、Azure リソースへのユーザー アクセスを管理するためのアクセス許可を持つ Azure ユーザーが行う必要があります。 この要件を満たす一般的なロールは、*所有者*、*アカウント管理者*、*ユーザー アクセス管理者* と *共同作成者* の組み合わせです。 Azure Digital Twins のロールのアクセス許可要件の詳細については、[インスタンスと認証の設定](../articles/digital-twins/how-to-set-up-instance-portal.md#prerequisites-permission-requirements)に関する記事を参照してください。

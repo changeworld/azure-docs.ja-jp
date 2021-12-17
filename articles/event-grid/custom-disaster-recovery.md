@@ -2,14 +2,14 @@
 title: Azure Event Grid のカスタム トピック用のディザスター リカバリー
 description: このチュートリアルでは、Event Grid サービスがリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
 ms.topic: tutorial
-ms.date: 07/07/2020
+ms.date: 04/22/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 052b47430ca7a0123efb3abc8219e7188d90ae91
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96020145"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293214"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid のカスタム トピック用に独自のディザスター リカバリーを構築する
 ディザスター リカバリーは、アプリケーションの機能の深刻な損失からの復旧に重点を置きます。 このチュートリアルでは、Event Grid サービスが特定のリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
@@ -27,7 +27,7 @@ ms.locfileid: "96020145"
 
 1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to deploy to Azure."></a>
 
 1. デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
 この URL は後で必要になるのでメモしておいてください。
@@ -92,26 +92,28 @@ ms.locfileid: "96020145"
 
 次のサンプル コードは、常にお客様のプライマリ トピックへの発行を最初に試行するシンプルな .NET 発行元です。 成功しなかった場合は、セカンダリ トピックにフェールオーバーされます。 どちらの場合でも、`https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health` に対して GET を実行することで、他のトピックの正常性 API がチェックされます。 正常なトピックは、 **/api/health** エンドポイントに対して GET が実行された場合に常に **200 OK** で応答します。
 
+> [!NOTE]
+> 次のサンプル コードは、デモンストレーションのみを目的としており、運用環境での使用を目的としていません。 
+
 ```csharp
 using System;
 using System.Net.Http;
 using System.Collections.Generic;
-using Microsoft.Azure.EventGrid;
-using Microsoft.Azure.EventGrid.Models;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
+using Azure;
+using Azure.Messaging.EventGrid;
 
 namespace EventGridFailoverPublisher
 {
     // This captures the "Data" portion of an EventGridEvent on a custom topic
     class FailoverEventData
     {
-        [JsonProperty(PropertyName = "teststatus")]
         public string TestStatus { get; set; }
     }
 
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             // TODO: Enter the endpoint each topic. You can find this topic endpoint value
             // in the "Overview" section in the "Event Grid Topics" blade in Azure Portal..
@@ -123,35 +125,33 @@ namespace EventGridFailoverPublisher
             string primaryTopicKey = "<your-primary-topic-key>";
             string secondaryTopicKey = "<your-secondary-topic-key>";
 
-            string primaryTopicHostname = new Uri( primaryTopic).Host;
-            string secondaryTopicHostname = new Uri(secondaryTopic).Host;
+            Uri primaryTopicUri = new Uri(primaryTopic);
+            Uri secondaryTopicUri = new Uri(secondaryTopic);
 
-            Uri primaryTopicHealthProbe = new Uri("https://" + primaryTopicHostname + "/api/health");
-            Uri secondaryTopicHealthProbe = new Uri("https://" + secondaryTopicHostname + "/api/health");
+            Uri primaryTopicHealthProbe = new Uri($"https://{primaryTopicUri.Host}/api/health");
+            Uri secondaryTopicHealthProbe = new Uri($"https://{secondaryTopicUri.Host}/api/health");
 
             var httpClient = new HttpClient();
 
             try
             {
-                TopicCredentials topicCredentials = new TopicCredentials(primaryTopicKey);
-                EventGridClient client = new EventGridClient(topicCredentials);
+                var client = new EventGridPublisherClient(primaryTopicUri, new AzureKeyCredential(primaryTopicKey));
 
-                client.PublishEventsAsync(primaryTopicHostname, GetEventsList()).GetAwaiter().GetResult();
+                await client.SendEventsAsync(GetEventsList());
                 Console.Write("Published events to primary Event Grid topic.");
 
                 HttpResponseMessage health = httpClient.GetAsync(secondaryTopicHealthProbe).Result;
                 Console.Write("\n\nSecondary Topic health " + health);
             }
-            catch (Microsoft.Rest.Azure.CloudException e)
+            catch (RequestFailedException ex)
             {
-                TopicCredentials topicCredentials = new TopicCredentials(secondaryTopicKey);
-                EventGridClient client = new EventGridClient(topicCredentials);
+                var client = new EventGridPublisherClient(secondaryTopicUri, new AzureKeyCredential(secondaryTopicKey));
 
-                client.PublishEventsAsync(secondaryTopicHostname, GetEventsList()).GetAwaiter().GetResult();
-                Console.Write("Published events to secondary Event Grid topic. Reason for primary topic failure:\n\n" + e);
+                await client.SendEventsAsync(GetEventsList());
+                Console.Write("Published events to secondary Event Grid topic. Reason for primary topic failure:\n\n" + ex);
 
-                HttpResponseMessage health = httpClient.GetAsync(primaryTopicHealthProbe).Result;
-                Console.Write("\n\nPrimary Topic health " + health);
+                HttpResponseMessage health = await httpClient.GetAsync(primaryTopicHealthProbe);
+                Console.WriteLine($"Primary Topic health {health}");
             }
 
             Console.ReadLine();
@@ -163,18 +163,14 @@ namespace EventGridFailoverPublisher
 
             for (int i = 0; i < 5; i++)
             {
-                eventsList.Add(new EventGridEvent()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    EventType = "Contoso.Failover.Test",
-                    Data = new FailoverEventData()
+                eventsList.Add(new EventGridEvent(
+                    subject: "test" + i,
+                    eventType: "Contoso.Failover.Test",
+                    dataVersion: "2.0",
+                    data: new FailoverEventData
                     {
                         TestStatus = "success"
-                    },
-                    EventTime = DateTime.Now,
-                    Subject = "test" + i,
-                    DataVersion = "2.0"
-                });
+                    }));
             }
 
             return eventsList;

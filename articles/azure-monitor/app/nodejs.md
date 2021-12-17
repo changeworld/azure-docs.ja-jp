@@ -2,14 +2,14 @@
 title: Azure Application Insights を使用して Node.js サービスを監視する | Microsoft Docs
 description: Application Insights を使用して Node.js サービスのパフォーマンスを監視して問題を診断します。
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 10/12/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 9eba74bcf2b4b047b3ed881342db4f7b1011f928
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40477ecc4e5b76ee351b74c9d1056f2b7ef91c38
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585760"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245021"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
@@ -20,6 +20,9 @@ ms.locfileid: "100585760"
 Node.js SDK では、受信と発信 HTTP 要求、例外のほか、システムのいくつかのメトリックを自動的に監視できます。 さらに、バージョン 0.20 以降の SDK では、MongoDB、MySQL、Redis など、一般的な[サードパーティ製パッケージ](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)を監視することもできます。 受信 HTTP 要求に関連するすべてのイベントは、トラブルシューティングを迅速に行えるように関連付けられます。
 
 TelemetryClient API を使用して手動でインストルメント化すれば、ご使用のアプリとシステムのその他の側面も監視できます。 TelemetryClient API については、この記事の後半でさらに詳しく説明します。
+
+> [!NOTE]
+> プレビューの [OpenTelemetry ベースの Node.js オファリングを](opentelemetry-enable.md?tabs=nodejs)利用できます。 [詳細については、こちらを参照してください](opentelemetry-overview.md)。
 
 ## <a name="get-started"></a>はじめに
 
@@ -42,7 +45,7 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 アプリでデータを収集できるように、アプリに SDK を追加します。
 
 > [!IMPORTANT]
-> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=nodejs)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+> インストルメンテーション キーよりも、[接続文字列](./sdk-connection-string.md?tabs=nodejs)を使用することをお勧めします。 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 接続文字列により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 1. 新しく作成したリソースから、リソースのインストルメンテーション キー (*ikey* とも呼ばれます) をコピーします。 Application Insights では、この ikey を使用して、対象の Azure リソースにデータをマッピングします。 SDK で ikey を使用するためには、その ikey を環境変数またはコードの中で指定する必要があります。  
 
@@ -69,6 +72,9 @@ TelemetryClient API を使用して手動でインストルメント化すれば
     `appInsights.defaultClient.config.disableAppInsights = true` を設定すると、テレメトリを送信することなく SDK を試すことができます。
 
 5. `appInsights.start();` を呼び出して、データの収集と送信を自動的に開始します。
+
+> [!NOTE]
+> Application Insights インストルメンテーションの使用の一部として、診断データが収集され、Microsoft に送信されます。 このデータは、Application Insights の実行と改善に役立ちます。 重要でないデータ収集を無効にするオプションがあります。 [詳細については、こちらを参照してください](./statsbeat.md)。
 
 ### <a name="monitor-your-app"></a><a name="monitor"></a> アプリを監視する
 
@@ -430,4 +436,4 @@ client.config.PROPERTYNAME = VALUE;
 <!--references-->
 
 [portal]: https://portal.azure.com/
-[FAQ]: ../faq.md
+[FAQ]: ../faq.yml

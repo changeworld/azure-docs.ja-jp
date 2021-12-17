@@ -4,26 +4,33 @@ description: Azure Active Directory の動的グループのメンバーシッ�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 09/02/2021
 ms.author: curtand
 ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1048284e8e7a492bf0810a16e29409546ed414b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b12c1c69f160a51fbcf5650a3ebe30045584106
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96547561"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471252"
 ---
 # <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップ ルールを検証する (プレビュー)
 
 Azure Active Directory (Azure AD) では、動的グループ ルールを検証する手段 (パブリック プレビュー) が提供されるようになりました。 **[ルールの検証]** タブで、サンプル グループ メンバーに対して動的ルールを検証し、ルールが想定どおりに機能していることを確認できます。 動的グループ ルールの作成時または更新時に、管理者は、ユーザーまたはデバイスがグループのメンバーであるかどうかを確認できます。 これは、ユーザーまたはデバイスがルールの条件を満たしているかどうかを評価し、メンバーシップが期待できない場合のトラブルシューティングを支援するのに役立ちます。
+
+## <a name="prerequisites"></a>前提条件
+動的グループ規則のメンバーシップの評価機能を使用するには、管理者が、グローバル管理者、グループ管理者、または Intune 管理者のいずれかの規則を直接割り当てられている必要があります。
+
+> [!TIP]
+> 間接的なグループ メンバーシップを使用して必要なロールの 1 つを割り当てることは、まだサポートされていません。
+>
 
 ## <a name="step-by-step-walk-through"></a>ステップバイステップのチュートリアル
 

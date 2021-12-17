@@ -4,12 +4,12 @@ description: Application Insights のエンド ツー エンドのトランザ�
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 7623b7131e6344a67c468d0436884ebfef9b0058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60365079c295e154ff0a38277c9ccdec35157e6e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746099"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481397"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>統合されたコンポーネント間のトランザクションの診断
 
@@ -94,3 +94,6 @@ Profiler が機能しない場合は、**serviceprofilerhelp\@microsoft.com** �
 
 これは仕様です。 コンポーネント全体に渡って、関連項目はすべて左側 (上部と下部セクション) から既に利用可能です。 新しいエクスペリエンスの左側で扱われない関連項目が 2 つあります。このイベントの 5 分前後からのすべてのテレメトリと、ユーザー タイムラインです。
 
+*Application Insights JavaScript SDK を使用しているとき、トランザクション診断エクスペリエンスで、予想よりも多くのイベントが表示されます。トランザクションごとに表示されるイベント数を減らす方法はありますか?*
+
+トランザクション診断エクスペリエンスでは、[1 回の操作](correlation.md#data-model-for-telemetry-correlation)で[操作 ID](data-model-context.md#operation-id) を共有するすべてのテレメトリが表示されます。既定で、Application Insights SDK for JavaScript では、一意のページ ビューごとに新しい操作が作成されます。 シングルページ アプリケーション (SPA) では、1 つのページ ビュー イベントだけが生成され、生成されたすべてのテレメトリに対して 1 つの操作 ID が使用されます。これにより、多くのイベントが同じ操作に関連付けられることがあります。 このようなシナリオでは、自動ルート追跡を使用すると、シングルページ アプリでのナビゲーションのために新しい操作が自動的に作成されます。 [enableAutoRouteTracking](javascript.md#single-page-applications) を有効にして、URL ルートが更新されるたびにページ ビューが生成される (論理ページ ビューが発生する) ようにする必要があります。 操作 ID を手動で更新する場合は、`appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()` を呼び出すことによって実行できます。 手動で PageView イベントをトリガーすると、操作 ID もリセットされます。

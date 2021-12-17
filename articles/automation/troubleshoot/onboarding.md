@@ -4,12 +4,12 @@ description: この記事では、Azure Automation 機能をデプロイする�
 services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 43bc367be9ad9bb32f33f94df774acb3e808182a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e4cdcf91c3978d5849e987aa2992c6b5fc6b834
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651121"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494864"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>機能のデプロイに関する問題のトラブルシューティング
 
@@ -27,7 +27,7 @@ Azure Automation Update Management 機能、または Change Tracking および 
 
 登録されたノードの名前を変更しても、Azure Automation 内のノード名は更新されません。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 Azure Automation State Configuration からノードの登録を解除し、再度登録してください。 それより前にサービスに発行されたレポートは、使用できなくなります。
 
@@ -41,7 +41,7 @@ HTTPS トラフィックを終了してから新しい証明書を使用して�
 
 Azure Automation では、トラフィックの暗号化に使用される証明書の再署名はサポートされていません。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 現時点では、この問題の回避策はありません。
 
@@ -65,7 +65,7 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 このエラーは、VM またはワークスペースに対するアクセス許可、またはユーザーのアクセス許可が正しくないか、不足しているために発生します。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 [機能のデプロイの正しいアクセス許可](../automation-role-based-access-control.md#feature-setup-permissions)があることを確保してから、この機能を再度デプロイしてみてください。 エラー メッセージ `The solution cannot be enabled on this VM because the permission to read the workspace is missing` が表示された場合は、次の[トラブルシューティング情報](update-management.md#failed-to-enable-error)を参照してください。
 
@@ -83,7 +83,7 @@ Failed to configure automation account for diagnostic logging
 
 このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 詳細については、「[Azure Monitor での使用量と推定コストの監視](../../azure-monitor//usage-estimated-costs.md)」を参照してください。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 Log Analytics ワークスペースを手動で作成し、機能のデプロイ プロセスを繰り返して、作成したワークスペースを選択します。
 
@@ -97,7 +97,7 @@ Log Analytics ワークスペースを手動で作成し、機能のデプロイ
 
 クエリが変更されたか、システムによってそれが変更されたことが考えられます。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 その機能に対するクエリを削除してから、機能を再度有効にすれば、クエリが再度作成されます。 クエリはワークスペース内の、 **[保存された検索条件]** にあります。 クエリの名前は **MicrosoftDefaultComputerGroup** です。クエリのカテゴリは、関連付けられた機能の名前となります。 複数の機能が有効な場合は、**MicrosoftDefaultComputerGroup** クエリが複数回 **[保存された検索条件]** に表示されます。
 
@@ -105,20 +105,20 @@ Log Analytics ワークスペースを手動で作成し、機能のデプロイ
 
 #### <a name="issue"></a>問題
 
-このエラー コードは、1 つ以上のポリシーの違反が原因でデプロイが失敗したことを示します。
+このエラー コードは、1 つ以上の Azure Policy 割り当ての違反が原因でデプロイが失敗したことを示します。
 
 #### <a name="cause"></a>原因 
 
-ポリシーによって操作の完了が阻止されています。
+Azure Policy の割り当てによって操作を完了できません。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
-機能を正常にデプロイするには、指定されたポリシーの変更を検討する必要があります。 定義可能なポリシーが多数あるため、必要になる変更は、違反しているポリシーによって異なります。 たとえば、リソース グループに対して、含まれている一部のリソースの内容を変更するためのアクセス許可を拒否するポリシーが定義されている場合は、次のいずれかの修正を選択できます。
+機能を正常にデプロイするには、指定されたポリシー定義の変更を検討する必要があります。 定義可能なポリシー定義が多数あるため、必要になる変更は、違反しているポリシー定義によって異なります。 たとえば、含まれている一部のリソースの内容を変更するためのアクセス許可を拒否するポリシー定義がリソース グループに割り当てられている場合、次のいずれかの修正を選択できます。
 
-* ポリシーを完全に削除する
+* ポリシーの割り当てを完全に削除する。
 * 別のリソース グループに対する機能の有効化を試す。
-* Automation アカウントなどの特定のリソースに対してポリシーを再ターゲットする。
-* 拒否するようにポリシーが構成されているリソースのセットを変更する。
+* Automation アカウントなどの特定のリソースに対してポリシー割り当てを再ターゲットする。
+* 拒否するようにポリシー定義が構成されているリソースのセットを変更する。
 
 Azure portal の右上にある通知を確認するか、Automation アカウントを含むリソース グループに移動し、 **[設定]** の **[デプロイ]** を選択して、失敗したデプロイを表示します。 Azure Policy の詳細については、[Azure Policy の概要](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)に関するページを参照してください。
 
@@ -136,7 +136,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 このエラーは、Log Analytics ワークス ペース内に Automation アカウントに依存するアクティブな機能がまだ存在し、Log Analytics ワークスペースがリンクされている場合に発生します。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 使用している場合は、次の機能のリソースをワークスペースから削除します。
 
@@ -181,7 +181,7 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 * VM 内で構成されているプロキシでは、特定のポートのみ許可されます。
 * ファイアウォールの設定によって、必要なポートとアドレスへのアクセスがブロックされた。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 適切なポートとアドレスが通信のために開いていることを確認します。 ポートとアドレスの一覧は、[ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
 
@@ -212,7 +212,7 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 * 別のインストールが進行中です。
 * テンプレートのデプロイ中にシステムの再起動がトリガーされます。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 このエラーは本質的に一時的なものです。 デプロイを再試行して拡張機能をインストールしてください。
 
@@ -232,7 +232,7 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 この種のエラーは、インストール中に VM の負荷が大きくなったために発生します。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 VM の負荷が小さい場合に、Windows 拡張機能用の Log Analytics エージェントをインストールしてみてください。
 

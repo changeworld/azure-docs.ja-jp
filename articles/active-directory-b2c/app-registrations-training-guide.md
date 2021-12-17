@@ -2,21 +2,21 @@
 title: Azure AD B2C の新しいアプリの登録エクスペリエンス
 description: Azure AD B2C の新しいアプリの登録エクスペリエンスの概要です。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 05/25/2020
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 430da23986fc36a0e94c049512ef716aff1fed5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 262d9a123180588ed8eaee35a5faf17797cbbc07
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98660252"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008106"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の新しいアプリの登録エクスペリエンス
 
@@ -45,7 +45,7 @@ Azure AD B2C のアプリの登録エクスペリエンスは、すべての Azu
 
 - **エンドポイント** ウィンドウを使用すると、シナリオに関連するエンドポイント (OpenID Connect の構成、SAML メタデータ、Microsoft Graph API、[OAuth 2.0 ユーザー フロー エンドポイント](tokens-overview.md#endpoints)を含む) をすばやく特定できます。
 
-- **API のアクセス許可** および **API の公開** によって、より広範なスコープ、アクセス許可、および同意の管理が提供されます。 また、MS Graph と Azure AD Graph のアクセス許可をアプリに割り当てられるようになりました。
+- **API のアクセス許可** および **API の公開** によって、より広範なスコープ、アクセス許可、および同意の管理が提供されます。 また、MS Graph のアクセス許可をアプリに割り当てられるようになりました。
 
 -   Azure AD B2C で認証するアプリに対して、**所有者** および **マニフェスト** を使用できるようになりました。 [マニフェスト エディターを使用](../active-directory/develop/reference-app-manifest.md)して、登録の所有者を追加したり、アプリケーションのプロパティを直接編集したりすることができます。
 

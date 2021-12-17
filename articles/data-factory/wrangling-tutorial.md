@@ -4,14 +4,15 @@ description: ラングリング データ フローを使用して Azure Data Fa
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: cf15d6f669718cca8b99d67a7912d3959d9c191f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/08/2021
+ms.openlocfilehash: 43ff1591730f240e1ae3ebcfc4066fdc34835372
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732507"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355584"
 ---
 # <a name="prepare-data-with-data-wrangling"></a>データ ラングリングを使用してデータを準備する
 
@@ -19,45 +20,47 @@ ms.locfileid: "105732507"
 
 データ ファクトリのデータ ラングリングを使用すると、対話型の Power Query マッシュアップを ADF でネイティブに構築し、ADF パイプライン内で大規模に実行することができます。
 
-> [!NOTE]
-> ADF での Power Query アクティビティは、現在、パブリック プレビューで使用可能です
-
 ## <a name="create-a-power-query-activity"></a>Power Query アクティビティを作成する
 
-Azure Data Factory に Power Query を作成するには、2 つの方法があります。 1 つ目の方法は、プラス記号のアイコンをクリックし、Factory リソースのウィンドウで **[データ フロー]** を選択することです。
+Azure Data Factory に Power Query を作成するには、2 つの方法があります。 1 つの方法は、プラス記号アイコンをクリックし、ファクトリ リソース ペインで **[Power Query]** を選択することです。
 
-> [!NOTE]
-> 以前は、データ ラングリング機能はデータ フロー ワークフローに配置されていました。 現在は、データ ラングリング マッシュアップを ```New > Power query``` から作成します
-
-![ファクトリ リソース ペインでの Power Query を示すスクリーンショット。](media/data-flow/power-query-wrangling.png)
+:::image type="content" source="media/data-flow/power-query-wrangling.png" alt-text="ファクトリ リソース ペインでの Power Query を示すスクリーンショット。":::
 
 もう 1 つの方法は、パイプライン キャンバスのアクティビティ ウィンドウで行います。 **Power Query** アコーディオンを開き、**Power Query** アクティビティをキャンバスにドラッグします。
 
-![データ ラングリング オプションを強調表示したスクリーンショット。](media/data-flow/power-query-activity.png)
+:::image type="content" source="media/data-flow/power-query-activity.png" alt-text="データ ラングリング オプションを強調表示したスクリーンショット。":::
 
 ## <a name="author-a-power-query-data-wrangling-activity"></a>Power Query データ ラングリング アクティビティを作成する
 
-Power Query マッシュアップの **ソース データセット** を追加します。 既存のデータセットを選択するか、新しいデータセットを作成することができます。 シンク データセットを選択することもできます。 1 つまたは複数のソース データセットを選択できますが、現時点では 1 つのシンクのみが許可されます。 シンク データセットの選択は省略可能ですが、少なくとも 1 つのソース データセットが必要です。
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWJd3T]
+> 
+Power Query マッシュアップの **ソース データセット** を追加します。 既存のデータセットを選択するか、新しいデータセットを作成することができます。 マッシュアップを保存したら、Power Query データ ラングリング アクティビティをパイプラインに追加し、シンク データセットを選択して、データを格納する場所を ADF に通知できます。 1 つ以上のソース データセットを選択できますが、現時点では 1 つのシンクのみが許可されます。 シンク データセットの選択は省略可能ですが、少なくとも 1 つのソース データセットが必要です。
 
-![ラングリング](media/wrangling-data-flow/tutorial4.png)
+:::image type="content" source="media/wrangling-data-flow/tutorial4.png" alt-text="ラングリング":::
 
 **[作成]** をクリックして、Power Query Online マッシュアップ エディターを開きます。
 
-![Power Query Online マッシュアップ エディターを開く [作成] ボタンを示すスクリーンショット。](media/wrangling-data-flow/tutorial5.png)
+まず、マッシュアップ エディターのデータセット ソースを選択します。
+
+:::image type="content" source="media/wrangling-data-flow/power-query-new-source.png" alt-text="Power Query ソース。":::
+
+Power Query の作成が完了したら、それを保存し、マッシュアップをアクティビティとしてパイプラインに追加できます。 そのときに、シンク データセットのプロパティを設定します。
+
+:::image type="content" source="media/wrangling-data-flow/power-query-new-sink.png" alt-text="Power Query シンク。":::
 
 コーディング不要のデータ準備を使用して、ラングリング Power Query を作成します。 使用できる関数の一覧については、[変換関数](wrangling-functions.md)に関するページを参照してください。 ADF は、M スクリプトをデータ フロー スクリプトに変換し、Azure Data Factory データ フロー Spark 環境を使用して大規模に Power Query を実行できるようにします。
 
-![データ ラングリング Power Query を作成するためのプロセスを示すスクリーンショット。](media/wrangling-data-flow/tutorial6.png)
+:::image type="content" source="media/wrangling-data-flow/tutorial6.png" alt-text="データ ラングリング Power Query を作成するためのプロセスを示すスクリーンショット。":::
 
 ## <a name="running-and-monitoring-a-power-query-data-wrangling-activity"></a>Power Query データ ラングリング アクティビティの実行と監視
 
 Power Query アクティビティのパイプライン デバッグ実行を実行するには、パイプラインキャンバスの **[デバッグ]** をクリックします。 パイプラインを発行すると、 **[Trigger Now]\(今すぐトリガー\)** によって、最後に発行されたパイプラインのオンデマンド実行が実行されます。 Power Query パイプラインは、既存のすべての Azure Data Factory トリガーを使用してスケジュールできます。
 
-![Power Query データ ラングリング アクティビティを追加する方法を示すスクリーンショット。](media/wrangling-data-flow/tutorial3.png)
+:::image type="content" source="media/data-flow/power-query-activity.png" alt-text="Power Query データ ラングリング アクティビティを追加する方法を示すスクリーンショット。":::
 
 **[モニター]** タブにアクセスして、トリガーされた Power Query アクティビティの実行の出力を視覚化します。
 
-![トリガーされたラングリング Power Query アクティビティの実行の出力を示すスクリーンショット。](media/wrangling-data-flow/tutorial2.png)
+:::image type="content" source="media/wrangling-data-flow/tutorial2.png" alt-text="トリガーされたラングリング Power Query アクティビティの実行の出力を示すスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

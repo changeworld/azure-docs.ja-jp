@@ -1,25 +1,25 @@
 ---
-title: チュートリアル - Azure Pipelines を使用した Azure VM への CI/CD
-description: このチュートリアルでは、YAML ベースの Azure パイプラインを使用して、Azure VM に対する Node.js アプリの継続的インテグレーション (CI) と継続的配置 (CD) を設定する方法について説明します。
+title: Azure Pipelines を使用した Azure VM への CI/CD
+description: YAML ベースの Azure パイプラインを使用して、Azure VM に対する Node.js アプリの継続的インテグレーション (CI) と継続的配置 (CD) を設定する方法について説明します。
+ms.service: virtual-machines
 author: ushan
 tags: azure-devops-pipelines
-ms.assetid: ''
-ms.service: virtual-machines
 ms.collection: linux
-ms.topic: tutorial
-ms.tgt_pltfrm: azure-pipelines
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 49282bf6cbc7c24b75fbe3f1bbe68bd1fac62ae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1118fb9d41ace11adb55adedc4b3700c3c34e50a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552492"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003449"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>チュートリアル:Azure DevOps Services と Azure Pipelines を使用して Azure の Linux 仮想マシンにアプリをデプロイする
+# <a name="deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Azure DevOps Services と Azure Pipelines を使用して Azure の Linux 仮想マシンにアプリをデプロイする
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 継続的インテグレーション (CI) と継続的デプロイ (CD) では、すべてのコードのコミットの後でコードのビルド、リリース、デプロイに使用できるパイプラインが形成されます。 このドキュメントには、Azure Pipelines を使用して複数マシンのデプロイを行うための CI/CD パイプラインの設定に関連する手順が含まれています。
 
@@ -147,7 +147,7 @@ Web アプリケーションを発行する継続的インテグレーション 
 
 **starter** テンプレートを選択し、Java プロジェクトをビルドして Apache Maven でテストを実行する次の YAML スニペットをコピーします。
 
-```YAML
+```yaml
 jobs:
 - job: Build
   displayName: Build Maven Project
@@ -172,7 +172,7 @@ jobs:
 
 **starter** テンプレートを選択し、npm で一般的な Node.js プロジェクトをビルドする次の YAML スニペットをコピーします。
 
-```YAML
+```yaml
 - stage: Build
   displayName: Build stage
   jobs:  
@@ -213,7 +213,7 @@ jobs:
 
 1. 上記のパイプラインの YAML ファイルを編集し、次の YAML 構文を使用して、前の環境と VM リソースを参照することにより、[デプロイ ジョブ](/azure/devops/pipelines/process/deployment-jobs)を組み込みます。
 
-   ```YAML
+   ```yaml
    jobs:  
    - deployment: VMDeploy
      displayName: web
@@ -230,7 +230,7 @@ jobs:
    `runOnce` は最も簡単なデプロイ方法であり、すべてのライフ サイクル フック (つまり、`preDeploy` `deploy`、`routeTraffic`、`postRouteTraffic`) が 1 回実行されます。 その後、`on:` `success` または `on:` `failure` が実行されます。
 
    `runOnce` の YAML スニペットの例を次に示します。
-   ```YAML
+   ```yaml
    jobs:
    - deployment: VMDeploy
      displayName: web
@@ -248,7 +248,7 @@ jobs:
 
 4. 次に示す YAML スニペットの例を使用すると、各反復で最大 5 つのターゲット仮想マシンを更新するローリング戦略を定義できます。 `maxParallel` によって、同時にデプロイできるターゲットの数が決まります。 選択するときは、デプロイされているターゲットを除いて、常に使用可能な状態にしておく必要があるターゲットの絶対数または割合を考慮します。 それはまた、デプロイの間に成功と失敗の条件を判断するためにも使用されます。
 
-   ```YAML
+   ```yaml
    jobs: 
    - deployment: VMDeploy
      displayName: web

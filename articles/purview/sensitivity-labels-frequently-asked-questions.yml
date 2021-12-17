@@ -1,0 +1,109 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure 管理範囲の秘密度ラベルについてよく寄せられる質問
+  description: Azure 管理範囲の秘密度ラベルに関してよく寄せられる質問について説明します。
+  services: purview
+  author: ajaykar
+  ms.service: purview
+  ms.subservice: purview-insights
+  ms.topic: 
+  ms.date: 09/17/2021
+  ms.author: ajaykar
+  ms.openlocfilehash: 9d5ab94d9c398c6efecd110c4292ad669a389720
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131014936"
+title: Azure 管理範囲の秘密度ラベルについてよく寄せられる質問
+summary: >
+  この記事では、Azure 管理範囲での機密情報のラベル付けに関してよく寄せられる質問とその回答と、必要に応じた詳細情報へのリンクを示します。</br></br>
+
+
+  > [!IMPORTANT]
+
+  > Azure Purview 秘密度ラベルは、現在プレビューの段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
+
+  >
+sections:
+- name: ライセンスとセットアップ
+  questions:
+  - question: Azure 管理範囲のファイルとデータベース列に対して機密ラベルを使用するためのライセンス要件はどのようなものですか?
+    answer: "azure 管理範囲で秘密度ラベルを使用するには、azure 管理範囲アカウントと同じ Azure Active Directory (AAD) テナント内に少なくとも1つの Microsoft 365 ライセンス/アカウントが必要です。  \n\n[Microsoft 365](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance#which-licenses-provide-the-rights-for-a-user-to-benefit-from-the-service-10)と[Azure 管理範囲](how-to-automatically-label-your-content.md)の資産に機密ラベルを自動的に適用するには、次の Microsoft 365 ライセンスが必要です。  \n\n* Microsoft 365 E5/A5/G5\n* Microsoft 365 E5/A5/G5 コンプライアンス \n* Microsoft 365 E5/A5/G5 インフォメーション、プロテクション、ガバナンス、  \n* Office 365 E5、Enterprise Mobility + Security E5/A5/G5、および AIP Plan  \n\n詳細については、「 [Microsoft 365 サービスの説明](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance#information-protection)」を参照してください。\n"
+  - question: Azure AD テナント内に複数の Azure 管理範囲アカウントがある場合、ラベルを各管理範囲アカウントに個別に手動で拡張する必要がありますか？
+    answer: >
+      いいえ。 機密ラベルを Azure 管理範囲に拡張すると、そのラベルはテナント内のすべての管理範囲アカウントに拡張されます。
+  - question: 組織は Microsoft 365 で既に機密ラベルを使用しています。 これらのラベルを管理範囲に拡張することによる影響は何ですか？ Microsoft 365 の既存の設定に影響しますか?
+    answer: "ラベルを管理範囲に拡張しても、ファイルやデータベースなど、Microsoft 365 の設定や資産の変更には影響しません。  \n\n* 機密ラベルを管理範囲に拡張すると、Microsoft 365 セットアップは通常どおり同様に動作します。 \n* 機密ラベルを拡張すると、管理範囲は、管理範囲カタログの Azure とマルチクラウドの資産にこれらのラベルを適用できます。 カタログはメタデータストアであり、いつでも削除できます。 \n* 機密ラベルは、管理範囲カタログの資産メタデータにのみ適用され、実際のファイルおよびデータベース列には適用されません。 機密ラベルを適用しても、ファイルやデータベースはどのような方法でも変更されません。</br></br>\n"
+- name: 分類と感度ラベル
+  questions:
+  - question: Azure 管理範囲の分類と感度ラベルの違いは何ですか?
+    answer: "次の表は、Azure 管理範囲の分類と感度ラベルの違いを示しています:\n\n|比較|分類|秘密度ラベル|\n|---|---|---|\n|**定義**| 分類は、資産内に存在するデータ型を識別するのに役立つ正規表現またはパターンです。 | 機密ラベルは、ビジネスへの影響に基づいてデータを分類しながら、ユーザーからのデータの種類を抽象化するためのタグです。 |\n|**使用例**| 社会保障番号、ドライブライセンス番号、銀行口座番号など。 | 非常に機密性の高い社外秘、一般、パブリックなど。 |\n| **スコープ** | 資産に適用される分類のスコープは、分類が適用された管理範囲アカウントに限定されます。 データが別の管理範囲アカウントで管理されている資産に移動した場合、元の場所に適用された分類は新しい場所に表示されません。 | データの保存場所に関係なく、資産の移動に適用される機密ラベル。 たとえば、これは、Microsoft 365 内のファイルに適用される機密ラベルが、Azure、SharePoint、または Teams に移動した場合でも、自動的に表示され、ファイルに適用されることを意味します。 |\n| **スキャンプロセス** | Azure 管理範囲でアセットをスキャンすると、データ内のシステム定義の分類とユーザー定義 (カスタム) 分類の両方が検索されます。 見つかった場合は、スキャンされた資産の管理範囲カタログに分類が追加されます。 | 感度ラベルが Azure 管理範囲と autolabeling rules に拡張されている場合、管理範囲でアセットをスキャンすると、スキャンで見つかった分類に基づいて、カタログ内のアセットにラベルが適用されます。 |\n| **作成環境** | カスタム分類と分類規則は、Azure 管理範囲 studio で作成できます。 Microsoft 365 でカスタム分類を作成することもできます。 ただし、管理範囲へのインポートはまだサポートされていません。 | [Microsoft 365 コンプライアンスセンター](/microsoft-365/compliance/create-sensitivity-labels)を使用して、感度ラベルを管理します。 |\n| **割り当ての制限** | 資産に分類を設定したり、1つまたは複数の分類を割り当てたりすることができます。 | 各資産には、1つの秘密度ラベルのみを含めることができます。 |\n| **資産アプリケーションワークフロー** | 管理範囲を使用して、資産に割り当てられている分類を手動で追加または変更することができます。 | 管理範囲では、検出された分類に基づいて、機密ラベルが資産に自動的に割り当てられます。 管理範囲でラベルを手動で適用することは現在サポートされていません。 | \n| **その他の情報** | [分類の詳細についてはこちらをご覧](create-a-custom-classification-and-classification-rule.md)ください。 | [機密ラベルの詳細について](/microsoft-365/compliance/create-sensitivity-labels)は、こちらをご覧ください。|\n||||\n"
+  - question: 管理範囲の分類と機微な情報の種類 (Microsoft 365) は同じものですか？
+    answer: 分類と存在は基本的に同じですが、分類は Azure 管理範囲の概念であり、Microsoft 365 の概念です。 分類と格納は、それぞれのサービスによって、資産内のデータの種類を識別するために使用されます。
+  - question: Microsoft 365 でカスタムの機密情報の種類 ("席") を作成し、データベース列の autolabeling 規則で使用しました。 Azure 管理範囲でこのカスタムの席を使用できますか?
+    answer: >
+      いいえ、現時点では、Microsoft 365 からの[カスタムの機密情報の種類](/microsoft-365/compliance/sensitive-information-type-learn-about#creating-custom-sensitive-information-types)は Azure 管理範囲ではサポートされていません。 現在、Azure 管理範囲でサポートされているのは Microsoft 365[の組み込みの機密情報の種類](/microsoft-365/compliance/sensitive-information-type-learn-about)のみです。</br></br>
+- name: Azure 管理範囲のラベル付け機能
+  questions:
+  - question: 管理範囲へのラベルの拡張に同意が付与されているかどうかを判断する方法はありますか？
+    answer: "[Azure 管理範囲のラベルを有効に](how-to-automatically-label-your-content.md)できるのは、コンプライアンス管理者、テナントのグローバル管理者、または[Set policyconfig](/powershell/module/exchange/set-policyconfig)コマンドレットにアクセスできるカスタムロールだけです。 管理者が管理範囲へのラベル付けを拡張しているかどうかを確認するには、Exchange Online PowerShell に接続し、 [Get policyconfig](/powershell/module/exchange/get-policyconfig)コマンドレットを実行します。  次に例を示します。\n\n~~~powershell\nGet-PolicyConfig | format-list Purview*\n~~~\n\nラベル付けが管理範囲に拡張されている場合、 **Viewlabel同意** パラメーターに **True** が、同意がアクティブになった日時を示すタイムスタンプと、同意をアクティブ化したユーザーの **ObjectId** が表示されます。\n\n~~~output\nPurviewLabelConsent        : True\nPurviewLabelConsentCaller  : d8675309-1111-2222-3333-1234567890ab\nPurviewLabelConsentTime    : 9/28/2021 6:04:45 PM\nPurviewLabelConsentDetails : {\"Consent\":true,\"Caller\":\"d8675309-1111-2222-3333-1234567890ab\",\"Time\":\"9/28/2021 6:04:45 PM\"}\n~~~\n\nラベル付けが拡張されていない場合は、次の例のように、\" **次の例** \" のように、\"False\" が表示されます：\n\n~~~output\nPurviewLabelConsent        : False\nPurviewLabelConsentCaller  : \nPurviewLabelConsentTime    : \nPurviewLabelConsentDetails :\n~~~\n\nこれは、秘密度ラベルのスコープに管理範囲を追加する操作を監査することとは異なります。 このアクティビティは、統合された監査ログで確認できます。 たとえば、次のように入力します。\n\n~~~powershell\nSearch-UnifiedAuditLog -Operations \"Set-Label\" -StartDate 10/05/2021 -EndDate 10/16/2021\n~~~\n\n詳細については、「Microsoft 365 コンプライアンスセンターで[監査ログを検索する](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)」を参照してください。\n"
+  - question: Azure 管理範囲では、機密ラベルをどのデータソースに適用できますか?
+    answer: "Azure 管理範囲でスキャンできるすべてのデータソースには、機密ラベルを適用できます。 詳細については、「 [Azure 管理範囲の機密ラベルでサポートされるデータ型](create-sensitivity-label.md#supported-data-sources)」を参照してください。 \n"
+  - question: アセットに手動でラベルを付けたり、Azure 管理範囲のラベルを手動で変更または削除したりできますか？
+    answer: "Azure 管理範囲は、自動ラベル付けのみをサポートしています。 ラベルは、アセットで見つかった分類とラベルの autolabeling ルールに基づいて、Azure 管理範囲の資産に自動的に適用されます。 \n\n管理範囲では、現在、ラベルの適用、アセットからのラベルの変更または削除はサポートされていません。 \n"
+  - question: 資格情報の内容を含む可能性のある資産には、自動ラベル付けを適用できますか？
+    answer: 現在、Azure 管理範囲では、資格情報のスキャンはサポートされていません。 管理範囲が資格情報のスキャンをサポートしている場合は、検出された資格情報に基づいてラベルを適用できます。
+  - question: Microsoft 365 と同様に、暗号化やコンテンツのマーク付けを Azure 管理範囲のファイルに適用することはできますか？
+    answer: いいえ。現時点では、Azure 管理範囲のファイルの暗号化とコンテンツのマークはサポートされていません。
+  - question: Azure 管理範囲では、どの種類のファイルに機密ラベルを適用できますか?
+    answer: >
+      すべての [Azure 管理範囲でサポートされているデータソースとファイルの種類](sources-and-scans.md)に対して、機密ラベルを適用できます。
+  - question: Azure Purview では現在、データ損失防止機能をサポートしていますか?
+    answer: >
+      いいえ、Azure 管理範囲では現在、データ損失防止機能は提供されていません。 現在、[データ損失防止](/microsoft-365/compliance/information-protection#prevent-data-loss)は Microsoft 365 でのみサポートされています。</br></br>
+- name: アクセスとロール
+  questions:
+  - question: 機密ラベルはどこで管理できますか？
+    answer: >
+      感度ラベルは、 [Microsoft 365 コンプライアンスセンター](https://compliance.microsoft.com/)でのみ管理されます。 詳細については、「 [Microsoft 365 で機密ラベルを作成する方法](how-to-automatically-label-your-content.md)」を参照してください。
+
+
+      Azure 管理範囲 Studio 内での機密ラベルの管理のサポートは現在使用できません。
+  - question: Who は、Microsoft 365 コンプライアンスセンターの機密ラベルを管理できますか？
+    answer: "次の組み込みの管理者ロールには、コンプライアンスセンターで機密ラベルを管理するためのアクセス許可が含まれています： \n\n* グローバル管理者  \n* コンプライアンス管理者 \n\n詳細については、「 [秘密度ラベルを作成および管理するために必要なアクセス許可](/microsoft-365/compliance/get-started-with-sensitivity-labels#permissions-required-to-create-and-manage-sensitivity-labels)」を参照してください。  コンプライアンスと全体管理者を構成した後、これらの管理者は [個々のユーザーにアクセス権を付与](/microsoft-365/security/office-365-security/grant-access-to-the-security-and-compliance-center)できます。 \n"
+  - question: Who は、Azure 管理範囲の機密ラベルを使用して資産を検索して参照できますか？
+    answer: 少なくともデータリーダーが管理範囲アカウントにアクセスできるすべてのユーザーには、Azure 管理範囲の機密ラベルを使用して資産を検索して参照するためのアクセス許可があります。
+  - question: 誰が、Azure 管理範囲で感度ラベルの洞察レポートを見ることができますか?
+    answer: 少なくともデータリーダーが管理範囲アカウントにアクセスできるすべてのユーザーには、Azure 管理範囲で感度ラベル分析情報レポートを表示するためのアクセス許可が与えられています。 </br></br>
+- name: 技術的な詳細
+  questions:
+  - question: Azure 管理範囲と Microsoft 365 同じ分類エンジンを使用しますか?
+    answer: はい。 Azure 管理範囲と Microsoft 365 はどちらも同じ分類エンジンを使用します。
+  - question: 自動ラベルをデータベースの列に適用すると、管理範囲によって資産全体がスキャンされますか？
+    answer: "管理範囲スキャナーは、次のようにファイルをサンプルします： \n\n* 構造化された **ファイルの種類の** 場合、管理範囲は各列に128行、または 1 MB のいずれか小さい方をサンプリングします。 \n* **ドキュメントファイル形式の** 場合、管理範囲は各ファイルの 20 MB をサンプリングします。 \n* **ドキュメントファイルが 20 MB より大きい場合**、ドキュメントは詳細スキャンや分類の対象になりません。 このような場合、管理範囲はファイル名や完全修飾名などの基本的なメタデータのみをキャプチャします。 \n"
+  - question: 分類条件を満たす複数の秘密度ラベルがある場合、どのラベルが適用されますか？
+    answer: "Microsoft 365 内では、感度ラベルの優先度が \"order\" で、管理範囲は同じ順序でラベルを割り当てます。 分類条件を満たす複数のラベルがある場合、管理範囲は、最も高い順序でラベルを選択します。  \n\n詳細については、「 [ラベルの優先順位の重要性](/microsoft-365/compliance/sensitivity-labels#label-priority-order-matters)」を参照してください。</br></br>\n"
+- name: SQL データの検出と分類
+  questions:
+  - question: なぜMicrosoftは、SQLデータベースに対して「Azure Purview」と「SQLデータの検出と分類」という2つの分類エクスペリエンスをサポートしているのでしょうか？
+    answer: "azure 管理範囲は、SQL データベースを含むすべての azure 資産の分類とラベル付けのエクスペリエンスを提供します。 Azure 管理範囲は、分類、ラベル付け、アラートなどを活用して、データ資産全体を1か所で管理する必要がある組織を対象としています。 Azure 管理範囲では、機密ラベルが使用されます。このラベルには、グローバルスコープがあり、データの移動先や変換先に関係なく、データを移動できます。 \n\nこれに対し、 [SQL データの検出と分類](../azure-sql/database/data-discovery-and-classification-overview.md)は SQL に組み込まれています。 SQL データの検出と分類は、SQL データベース内の機密データの検出、分類、ラベル付け、およびレポートを行うための基本的な機能を提供する手段として、管理範囲の前に存在していました。 SQL のデータの検出と分類では、グローバルスコープのないローカルラベルが使用され、機密ラベルはサポートされません。 \n"
+  - question: SQL のデータの検出と分類でラベルを適用しました。 これらのラベルが Azure 管理範囲の資産に表示されないのはなぜですか？
+    answer: >
+      SQL 分類はローカルラベルを使用し、Azure 管理範囲は機密ラベルを使用します。 SQL 分類エクスペリエンスで適用されるラベルは、管理範囲に表示されません。 詳細については、「 [SQL データベースのラベル付け](create-sensitivity-label.md#labeling-for-sql-databases)」を参照してください。
+additionalContent: >-
+  詳細については、次を参照してください。 </br>
+
+  > [!div class="nextstepaction"]
+
+  > [コンテンツに自動的にラベルを付ける方法](how-to-automatically-label-your-content.md)</br>
+
+
+  > [!div class="nextstepaction"]
+
+  > [秘密度ラベルの分析情報](sensitivity-insights.md)</br>
+
+
+  > [!div class="nextstepaction"]
+
+  > [分類の分析情報](./classification-insights.md)

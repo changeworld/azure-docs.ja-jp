@@ -1,6 +1,6 @@
 ---
 title: Azure Front Door - バックエンドの正常性監視 | Microsoft Docs
-description: この記事は、バックエンドの正常性が Azure Front Door によってどのように監視されるかを理解するのに役立ちます
+description: この記事は、バックエンドの正常性が Azure Front Door によってどのように監視されるかを理解するのに役立ちます。
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 05/17/2021
 ms.author: duau
-ms.openlocfilehash: dd56740b7153cdbafdfa847a22d34b57f862cdf3
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 101d769fce7baaac629c756b3f7fad173f736b6c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550745"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053709"
 ---
 # <a name="health-probes"></a>正常性プローブ
 
@@ -26,7 +26,7 @@ ms.locfileid: "106550745"
 > Front Door は世界中に多くのエッジ環境があるので、バックエンドに対する正常性プローブの量が極めて多くなる可能性があります。構成されている正常性プローブの頻度にもよりますが、毎分 25 回要求されることもあれば、多いときは毎分 1200 回要求されることもあります。 既定のプローブ頻度は 30 秒であり、バックエンドのプローブ量は毎分 200 要求程度になるはずです。
 
 > [!NOTE]
-> Front Door HTTP/HTTPS プローブは、`Edge Health Probes` という値の `User-Agent` ヘッダー セットと共に送信されます。 
+> Front Door HTTP/HTTPS プローブは、`Edge Health Probe` という値の `User-Agent` ヘッダー セットと共に送信されます。 
 
 ## <a name="supported-protocols"></a>サポートされるプロトコル
 
@@ -46,7 +46,7 @@ Front Door では、正常性プローブを送信するための次の HTTP メ
 
 | Responses  | 説明 | 
 | ------------- | ------------- |
-| 正常性の特定  |  200 OK 状態コードは、バックエンドが正常であることを示します。 他のすべての状態コードは、エラーとみなされます。 (ネットワーク障害を含む) 何らかの理由で有効な HTTP 応答がプローブに対して受信されない場合、そのプローブはエラーとしてカウントされます。|
+| 正常性の特定  | 200 OK 状態コードは、バックエンドが正常であることを示します。 他のすべての状態コードは、エラーとみなされます。 (ネットワーク障害を含む) 何らかの理由で有効な HTTP 応答がプローブに対して受信されない場合、そのプローブはエラーとしてカウントされます。|
 | 待ち時間の測定  | 待ち時間は、プローブ要求を送信する直前から応答の最後のバイトを受信した瞬間までの実時間です。 要求ごとに新しい TCP 接続が使用されるため、この測定値が既存のウォーム接続のあるバックエンドに偏ることはありません。  |
 
 ## <a name="how-front-door-determines-backend-health"></a>Front Door によるバックエンドの正常性の判定方法
@@ -64,6 +64,8 @@ Azure Front Door では、すべてのアルゴリズムで次の同じ 3 段階
 
 3. Front Door は、さらに、バックエンド プール内の正常なバックエンドのセットを対象に、各バックエンドの待ち時間 (ラウンドトリップ時間) を測定し、維持します。
 
+> [!NOTE]
+> 1 つのエンドポイントが複数のバックエンド プールのメンバーである場合、Azure Front Door はバックエンドに送信される正常性プローブの数を最適化して、バックエンドの負荷を軽減します。 正常性プローブ要求は、構成されている最小のサンプル間隔に基づいて送信されます。 すべてのプールのエンドポイントの正常性は、同じ正常性プローブからの応答によって決定されます。
 
 ## <a name="complete-health-probe-failure"></a>正常性プローブの完全なエラー
 
@@ -78,4 +80,5 @@ Azure Front Door では、すべてのアルゴリズムで次の同じ 3 段階
 ## <a name="next-steps"></a>次のステップ
 
 - [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
+- [Front Door Standard または Premium を作成する](standard-premium/create-front-door-portal.md)方法について学習します。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

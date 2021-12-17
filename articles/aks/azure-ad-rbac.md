@@ -5,18 +5,18 @@ description: Azure Kubernetes Service (AKS) で Kubernetes のロールベース
 services: container-service
 ms.topic: article
 ms.date: 03/17/2021
-ms.openlocfilehash: 0d5171e9e9a5d7f033ff615a3f1205b8dc93966f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 74ca0618d1277c794d48afbc31c0a3577dde4d79
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769555"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536153"
 ---
 # <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service で Kubernetes のロールベースのアクセス制御と Azure Active Directory ID を使用してクラスター リソースへのアクセスを制限する
 
-Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure AD 認証トークンを使って AKS クラスターにサインインします。 また、ユーザーの ID またはグループ メンバーシップに基づいて、クラスター リソースへのアクセスを制限するように Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を構成することもできます。
+Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure AD 認証トークンを使って AKS クラスターにサインインします。 認証されると、ユーザーの ID またはグループ メンバーシップに基づいて、名前空間やクラスター リソースへのアクセスを管理するために、組み込みの Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を使用できます。
 
-この記事では、AKS クラスターで Kubernetes RBAC を使用して名前空間とクラスター リソースへのアクセスを制御するために、Azure AD グループのメンバーシップを使用する方法を示します。 Azure AD でグループとユーザーの例が作成され、リソースを作成および表示するために適切な権限を付与するため AKS クラスター内に Role と RoleBinding が作成されます。
+この記事では、Azure AD グループのメンバーシップに基づいて、AKS クラスターで Kubernetes RBAC を使用してアクセスを制御する方法を示します。 Azure AD でグループとユーザーの例が作成され、リソースを作成および表示するために適切な権限を付与するため AKS クラスター内に Role と RoleBinding が作成されます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -427,7 +427,7 @@ ID とリソース管理に関するベスト プラクティスについては�
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
-[azure-ad-aks-cli]: azure-ad-integration-cli.md
+[azure-ad-aks-cli]: managed-aad.md
 [az-aks-show]: /cli/azure/aks#az_aks_show
 [az-ad-group-create]: /cli/azure/ad/group#az_ad_group_create
 [az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create

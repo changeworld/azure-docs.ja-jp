@@ -5,15 +5,16 @@ author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: 94d09dc96d017dba3b16cc5fe113272a9393741d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 601dcaa3ea402f8f6b8b8c0664b8a47cfb5f4359
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100362082"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743521"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Azure Data Factory で LastModifiedDate に基づいて新規および変更済みのファイルをコピーする
 
@@ -40,19 +41,19 @@ ms.locfileid: "100362082"
 
 1. テンプレート **Copy new files only by LastModifiedDate (LastModifiedDate に基づいて新しいファイルのみをコピーする)** に移動します。 ソース ストレージ ストアへの **[新規]** 接続を作成します。 ソース ストレージ ストアは、コピーするファイルが存在する場所です。
 
-    ![ソースへの新しい接続を作成する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png" alt-text="ソースへの新しい接続を作成する":::
     
 2. コピー先ストアへの **[新規]** 接続を作成します。 コピー先ストアは、ファイルのコピー先となる場所です。 
 
-    ![コピー先への新しい接続を作成する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png" alt-text="コピー先への新しい接続を作成する":::
 
 3. **[このテンプレートを使用]** を選択します。
 
-    ![このテンプレートを使用](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png" alt-text="このテンプレートを使用":::
     
 4. 次の例に示すように、使用可能なパイプラインがパネルに表示されます。
 
-    ![パイプラインを表示する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png" alt-text="パイプラインを表示する":::
 
 5. **[デバッグ]** を選択して **[パラメーター]** の値を書き込み、 **[完了]** を選択します。  以下の画像では、パラメーターを次のように設定しています。
    - **FolderPath_Source** = sourcefolder
@@ -64,21 +65,21 @@ ms.locfileid: "100362082"
     
     この例は、ある期間 (**2019-02-01T00:00:00Z** から **2019-03-01T00:00:00Z** まで) の間に最終変更されたファイルがソース パス **sourcefolder/subfolder** から宛先パス **destinationfolder/subfolder** にコピーされることを示しています。  これらは、独自のパラメーターに置き換えることができます。
 
-    ![パイプラインを実行する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png" alt-text="パイプラインを実行する":::
 
 6. 結果を確認します。 構成された期間中に最終変更されたファイルのみがコピー先ストアにコピーされたことがわかります。
 
-    ![結果を確認する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png" alt-text="結果を確認する":::
     
 7. タンブリング ウィンドウ トリガーを追加してこのパイプラインを自動化すると、パイプラインで常に LastModifiedDate に基づいて新規および変更済みのファイルのみを定期的にコピーできます。  **[トリガーの追加]** 、 **[新規/編集]** の順に選択します。
 
-    ![[トリガーの追加] を選択したときに表示される [新規/編集] メニュー オプションを強調表示したスクリーンショット。](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png" alt-text="[トリガーの追加] を選択したときに表示される [新規/編集] メニュー オプションを強調表示したスクリーンショット。":::
     
 8. **[Add Triggers]\(トリガーの追加\)** ウィンドウで **[+ 新規]** を選択します。
 
 9. トリガーの種類として **[タンブリング ウィンドウ]** を選択し、繰り返しとして **[15 分ごと]** を設定します (任意の間隔時間に変更できます)。 [アクティブ化済み] ボックスで **[はい]** を選択してから、 **[OK]** を選択します。
 
-    ![トリガーを作成する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png" alt-text="トリガーを作成する"::: 
     
 10. **[トリガー実行のパラメーター]** の値を次のように設定し、 **[完了]** を選択します。
     - **FolderPath_Source** = **sourcefolder**。  ソース データ ストアのフォルダーに置き換えることができます。
@@ -88,11 +89,11 @@ ms.locfileid: "100362082"
     - **LastModified_From** =   **\@trigger().outputs.windowStartTime**。  これは、パイプラインが最後にトリガーされた時間を特定するトリガーのシステム変数です。
     - **LastModified_To** =  **\@trigger().outputs.windowEndTime**。  これは、今回パイプラインがトリガーされる時間を特定するトリガーのシステム変数です。
     
-    ![入力パラメーター](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png" alt-text="入力パラメーター。":::
     
 11. **[すべて公開]** を選択します。
     
-    ![すべてを公開](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate12.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate12.png" alt-text="すべてを公開":::
 
 12. ソース データ ストアのソース フォルダーに新しいファイルを作成します。  パイプラインが自動的にトリガーされるまで待機します。新しいファイルのみがコピー先ストアにコピーされます。
 
@@ -100,7 +101,7 @@ ms.locfileid: "100362082"
 
 14. 結果を確認します。 パイプラインが 15 分ごとに自動的にトリガーされ、パイプラインが実行されるたびにソース ストアの新規または変更済みのファイルのみがコピー先ストアにコピーされます。
 
-    ![パイプラインがトリガーされたときに返される結果を示すスクリーンショット。](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png" alt-text="パイプラインがトリガーされたときに返される結果を示すスクリーンショット。":::
     
 ## <a name="next-steps"></a>次のステップ
 

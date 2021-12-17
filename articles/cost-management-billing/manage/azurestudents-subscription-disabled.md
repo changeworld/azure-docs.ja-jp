@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: d2ccfcb26c66d936d474cd5bd4f830d03a8b0002
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f1666d0bf02a10c2c5e1f87f68d4365782de683d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682915"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648717"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>私の Azure for Students サブスクリプションが無効になっています。その理由と、再度有効にする方法を教えてください。
 
@@ -36,9 +36,9 @@ Azure for Students アカウントでは、100 ドルのクレジットと、12 
 
 表には次の列が含まれています。
 
-* **サービス名:** Azure クレジットを消費しているサービス。
-* **サービス リソース:** 使用されているサービスの測定単位。
-* **料金:** サービスで消費されたクレジットの金額 (米国ドル)。
+* **[サービス名]:** Azure クレジットを消費しているサービス。
+* **[サービス リソース]:** 使用されているサービスの測定単位。
+* **[Spend]\(料金\):** \ サービスで消費されたクレジットの金額 (USD($))。
 
 ## <a name="your-credit-has-expired"></a>クレジットの有効期限が切れている
 

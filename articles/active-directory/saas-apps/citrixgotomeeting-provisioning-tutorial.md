@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ff377b0f93968eb6743187e4e659f4e888e5010e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c150788f6b4c5439a20995c8db83b0f50c95a65
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358901"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427098"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>チュートリアル: GoToMeeting を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -60,17 +60,14 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
-    ![Azure portal の GoToMeeting の [プロビジョニング] タブのスクリーンショット。 [プロビジョニング モード] が [自動] に設定され、管理ユーザー名、パスワード、および [テスト接続] が強調表示されています。](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![Azure portal の GoToMeeting の [プロビジョニング] タブのスクリーンショット。 [プロビジョニング モード] が [自動] に設定され、管理ユーザー名、パスワード、および [テスト接続] が強調表示されています。](https://user-images.githubusercontent.com/49566142/135871050-9d63861d-7963-47e0-bbdf-0e7c947e0b41.png)
 
-1. [管理者資格情報] セクションで、次の手順を実行します。
+
+1. [管理者資格情報] セクションで、 **[認可]** をクリックし、表示されるポップアップ ウィンドウで GoToMeeting にログインします。
    
-    a. **[GoToMeeting 管理ユーザー名]** ボックスに、管理者のユーザー名を入力します。
-
-    b. **[GoToMeeting 管理パスワード]** ボックスに、管理者のパスワードを入力します。
 
 1. Azure Portal で、**[テスト接続]** をクリックして Azure AD が GoToMeeting アプリに接続できることを確認します。 接続が失敗した場合、使用中の GoToMeeting アカウントに Team Admin アクセス許可があることを確認して、**"管理者資格情報"** の手順をもう一度試してください。
 
-1. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
 1. **[保存]** をクリックします。
 

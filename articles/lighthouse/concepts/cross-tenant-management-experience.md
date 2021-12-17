@@ -1,21 +1,21 @@
 ---
 title: テナント間の管理エクスペリエンス
-description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 03/29/2021
+description: Azure Lighthouse により、多くの Azure サービスでクロステナント エクスペリエンスが有効になり、強化されます。
+ms.date: 11/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 027d1d5e81d5a652a7e2d5441c40440c661f730f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 07a0e2e9a42ace65cc159e0363a8ba86f4291cca
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778627"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492836"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
-サービス プロバイダーは、Azure Active Directory (Azure AD) 内から複数の顧客のリソースを管理するために、[Azure Lighthouse](../overview.md) を使用できます。 [Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を使用して、多くのタスクとサービスをマネージド テナントをまたいで実行できます。
+サービス プロバイダーは、Azure Active Directory (Azure AD) 内から複数の顧客のリソースを管理するために、[Azure Lighthouse](../overview.md) を使用できます。 [Azure の委任されたリソース管理](../concepts/architecture.md)を使用して、多くのタスクとサービスをマネージド テナントをまたいで実行できます。
 
 > [!TIP]
-> Azure の委任されたリソース管理はまた、[独自の Azure AD テナントが複数存在する企業内で](enterprise.md)使用して、テナントにまたがる管理を簡素化することもできます。
+> また、[独自の Azure AD テナントが複数存在する企業内](enterprise.md)で Azure Lighthouse を使用して、テナント間の管理を簡素化できます。
 
 ## <a name="understanding-tenants-and-delegation"></a>テナントと委任について
 
@@ -54,7 +54,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
   - Azure 内の委任されたサブスクリプションまたはリソース グループに[接続されている Azure 外の Windows Server または Linux コンピューターを管理する](../../azure-arc/servers/onboard-portal.md)
   - Azure Policy やタグ付けなどの Azure コンストラクトを使用して接続されたコンピューターを管理する
   - 顧客のハイブリッド環境全体に同じポリシー セットが提供されていることを確認する
-  - Azure Security Center を使用して、顧客のハイブリッド環境全体のコンプライアンスを監視する
+  - Microsoft Defender for Cloud を使用して顧客のハイブリッド環境全体のコンプライアンスを監視する
 - ハイブリッド Kubernetes クラスターを大規模に管理する - [Azure Arc 対応 Kubernetes (プレビュー)](../../azure-arc/kubernetes/overview.md):
   - Azure 内の委任されたサブスクリプションまたはリソース グループに[接続されている Kubernetes クラスターを管理する](../../azure-arc/kubernetes/quickstart-connect-cluster.md)
   - 接続されたクラスターに [GitOps](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) を使用する
@@ -88,7 +88,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 - ホストされている Kubernetes 環境を管理し、顧客のテナント内でコンテナー化されたアプリケーションをデプロイして管理する
 - 顧客テナントのクラスターをデプロイおよび管理する
--   コンテナーに対して Azure Monitor を使用して、顧客テナント全体のパフォーマンスを監視する
+- コンテナーに対して Azure Monitor を使用して、顧客テナント全体のパフォーマンスを監視する
 
 [Azure Migrate](../../migrate/index.yml):
 
@@ -99,12 +99,13 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 - すべてのサブスクリプションにわたるアラートを表示する機能を使って、委任されたサブスクリプションに対するアラートを表示および更新する
 - 委任されたサブスクリプションのアクティビティ ログの詳細を表示する
 - [ログ分析](../../azure-monitor/logs/service-providers.md):複数のテナントにあるリモートのワークスペースからデータを照会する (顧客テナントのワークスペースからデータにアクセスするために使用される Automation アカウントは、同じテナント内に作成する必要があることに注意してください)
-- [顧客のテナント内でアクティビティ ログ アラートの作成、表示、および管理を行う](../../azure-monitor/alerts/alerts-activity-log.md)
+- 顧客テナントで[メトリック アラート](../../azure-monitor/alerts/alerts-metric.md)、[ログ アラート](../../azure-monitor/alerts/alerts-log.md)、および[アクティビティ ログ アラート](../../azure-monitor/alerts/alerts-activity-log.md)を作成、表示、および管理する
 - 顧客のテナント内に、Webhook を使用して管理側テナントで Azure Automation Runbook や Azure Functions などの自動化をトリガーするアラートを作成する
-- 顧客テナント内で[診断設定](../..//azure-monitor/essentials/diagnostic-settings.md)を作成して、管理テナント内のワークスペースにリソース ログを送信する
+- 顧客テナント内に作成されたワークスペースで[診断設定](../..//azure-monitor/essentials/diagnostic-settings.md)を作成して、管理テナント内のワークスペースにリソース ログを送信する
 - SAP ワークロードに対しては、[顧客のテナント全体で集計されたビューを使って SAP ソリューションのメトリックを監視する](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
+- Azure AD B2C では、[サインインと監査ログ](../../active-directory-b2c/azure-monitor.md)をさまざまな監視ソリューションにルーティングします
 
-[Azure のネットワーク](../../networking/networking-overview.md):
+[Azure のネットワーク](../../networking/fundamentals/networking-overview.md):
 
 - 管理対象のテナント内で [Azure Virtual Network](../../virtual-network/index.yml) と仮想ネットワーク インターフェイス カード (vNIC) をデプロイして管理する
 - 顧客の Virtual Network リソースを保護するために [Azure Firewall](../../firewall/overview.md) をデプロイして構成する
@@ -124,30 +125,6 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 - 返されるクエリ結果にテナント ID が含まれるため、サブスクリプションが管理対象のテナントに属しているかどうかを特定できる
 
-[Azure Security Center](../../security-center/index.yml):
-
-- テナント間の表示
-  - セキュリティ ポリシーへの準拠を監視し、セキュリティの適用範囲がすべてのテナントのリソースになるようにする
-  - 1 つのビューで複数のテナントの規制へのコンプライアンスを継続的に監視する
-  - セキュリティ スコアの計算を使用して実行可能なセキュリティの推奨事項の監視、トリアージ、優先度付けを行う
-- テナント間のセキュリティ体制の管理
-  - セキュリティ ポリシーの管理
-  - 実行可能なセキュリティの推奨事項に準拠していないリソースに対処する
-  - セキュリティ関連のデータを収集して保存する
-- テナント間の脅威の検出と保護
-  - テナントのリソース全体で脅威を検出する
-  - Just-In-Time (JIT) VM アクセスなど、高度な脅威保護コントロールを適用する
-  - アダプティブ ネットワーク強化を使用してネットワーク セキュリティ グループの構成を強化する
-  - サーバーで、適応型アプリケーション制御の対象とすべきアプリケーションとプロセスのみが実行されるようにする
-  - ファイルの整合性の監視 (FIM) を使用して、重要なファイルとレジストリ エントリに対する変更を監視する
-- サブスクリプション全体を管理テナントに委任する必要があることにご注意ください。Azure Security Center シナリオは、委任されたリソース グループではサポートされません。
-
-[Azure Sentinel](../../sentinel/multiple-tenants-service-providers.md):
-
-- [顧客テナントで](../../sentinel/multiple-tenants-service-providers.md) Azure Sentinel リソースを管理する
-- [複数のテナントにわたる攻撃を追跡し、セキュリティ アラートを表示する](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- テナント間に分散している複数の Azure Sentinel ワークスペースにわたる[インシデントを表示する](../../sentinel/multiple-workspace-view.md)
-
 [Azure Service Health](../../service-health/index.yml):
 
 - Azure Resource Health を使用して、顧客のリソースの正常性を監視する
@@ -165,6 +142,30 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 - [ポリシーによるマネージド ID](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret) を使用して、ディスク暗号化のためのパスワード、シークレット、または暗号化キー用に VM を Azure Key Vault と統合して、シークレットが管理対象のテナントの Key Vault に確実に保存されるようにする
 - VM へのリモート ログインに Azure Active Directory を使用できないことに注意する
 
+[Microsoft Defender for Cloud](../../security-center/index.yml):
+
+- テナント間の表示
+  - セキュリティ ポリシーへの準拠を監視し、セキュリティの適用範囲がすべてのテナントのリソースになるようにする
+  - 1 つのビューで複数のテナントの規制へのコンプライアンスを継続的に監視する
+  - セキュリティ スコアの計算を使用して実行可能なセキュリティの推奨事項の監視、トリアージ、優先度付けを行う
+- テナント間のセキュリティ体制の管理
+  - セキュリティ ポリシーの管理
+  - 実行可能なセキュリティの推奨事項に準拠していないリソースに対処する
+  - セキュリティ関連のデータを収集して保存する
+- テナント間の脅威の検出と保護
+  - テナントのリソース全体で脅威を検出する
+  - Just-In-Time (JIT) VM アクセスなど、高度な脅威保護コントロールを適用する
+  - アダプティブ ネットワーク強化を使用してネットワーク セキュリティ グループの構成を強化する
+  - サーバーで、適応型アプリケーション制御の対象とすべきアプリケーションとプロセスのみが実行されるようにする
+  - ファイルの整合性の監視 (FIM) を使用して、重要なファイルとレジストリ エントリに対する変更を監視する
+- 管理テナントにはサブスクリプション全体を委任する必要があることにご注意ください。Microsoft Defender for Cloud のシナリオでは、委任されたリソース グループではサポートされていません。
+
+[Microsoft Sentinel](../../sentinel/multiple-tenants-service-providers.md):
+
+- [顧客テナントで](../../sentinel/multiple-tenants-service-providers.md) Microsoft Sentinel リソースを管理する
+- [複数のテナントにわたる攻撃を追跡し、セキュリティ アラートを表示する](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
+- テナント間に分散している複数の Microsoft Sentinel ワークスペースにわたる[インシデントを表示する](../../sentinel/multiple-workspace-view.md)
+
 サポート リクエスト:
 
 - Azure portal で、委任されたリソースに対する [サポート リクエストを **[ヘルプとサポート]** で開く](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) (委任されたスコープで利用可能なサポート プランを選択する)
@@ -175,7 +176,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 すべてのシナリオで、次に示す現在の制限事項に注意してください。
 
 - Azure Resource Manager で処理される要求は、Azure Lighthouse を使用して実行できます。 これらの要求の操作 URI は、`https://management.azure.com` で始まります。 ただし、リソースの種類のインスタンス (Key Vault のシークレット アクセスやストレージのデータ アクセスなど) によって処理される要求は、Azure Lighthouse ではサポートされていません。 これらの要求の操作 URI は、通常、`https://myaccount.blob.core.windows.net` や `https://mykeyvault.vault.azure.net/` など、実際のインスタンスに固有のアドレスで始まります。 また、通常、後者は管理操作ではなくデータ操作です。
-- ロールの割り当てには [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理によってサポートされています。ただし、所有者または [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) アクセス許可を持つ組み込みロールは除きます。 [マネージド ID へのロールの割り当て](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)において、ユーザー アクセス管理者ロールは、限定された用途のみに対してサポートされています。  カスタム ロールと[従来のサブスクリプション管理者ロール](../../role-based-access-control/classic-administrators.md)はサポートされていません。
+- ロールの割り当てには [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)を使用する必要があります。 所有者、または [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) アクセス許可を持つ組み込みロールを除くすべての組み込みロールが、Azure Lighthouse で現在サポートされています。 [マネージド ID へのロールの割り当て](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)において、ユーザー アクセス管理者ロールは、限定された用途のみに対してサポートされています。  カスタム ロールと[従来のサブスクリプション管理者ロール](../../role-based-access-control/classic-administrators.md)はサポートされていません。
 - Azure Databricks を使用するサブスクリプションをオンボードすることはできますが、現時点では、管理テナントのユーザーは、委任されたサブスクリプションで Azure Databricks ワークスペースを起動することはできません。
 - リソース ロックがあるサブスクリプションとリソース グループをオンボードすることはできますが、このようなロックがあっても、管理テナントのユーザーによるアクションの実行は妨げられません。 Azure マネージド アプリケーションまたは Azure Blueprints (システム割り当ての拒否割り当て) によって作成されたものなど、システムの管理対象リソースを保護する[拒否割り当て](../../role-based-access-control/deny-assignments.md)がある場合、管理テナントのユーザーはそれらのリソースを操作できません。ただし、現時点では、顧客テナントのユーザーは自分の拒否割り当て (ユーザー割り当て拒否割り当て) を作成できません。
 - [各国のクラウド](../../active-directory/develop/authentication-national-cloud.md)と Azure パブリック クラウドにわたって行われる、または 2 つの独立した国内クラウドにわたって行われるサブスクリプションの委任はサポートされていません。

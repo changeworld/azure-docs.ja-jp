@@ -2,14 +2,14 @@
 title: Service Bus の配信不能キュー | Microsoft Docs
 description: Service Bus の配信不能キューについて説明します。 Service Bus キューおよびトピック サブスクリプションでは、配信不能キューと呼ばれるセカンダリ サブキューが提供されます。
 ms.topic: article
-ms.date: 04/08/2021
+ms.date: 08/30/2021
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: cb791982b50d7afff7b74d70adfd285bb5e0a11c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b64500b6fefd8da7fe2b6dda4719e7ed6ae81b94
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773227"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258340"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -50,7 +50,7 @@ Service Bus のキューとサブスクリプションについてメッセー�
 ## <a name="time-to-live"></a>Time to Live
 キューまたはサブスクリプションで配信不能を有効にすると、有効期限が切れたすべてのメッセージは DLQ に移動されます。 配信不能理由コードは、TTLExpiredException に設定されます。
 
-メイン キューまたはサブスクリプションに対してプルを実行しているアクティブな受信者が少なくとも 1 つある場合は、期限切れメッセージは単に消去され、DLQ に移動されるだけです。 遅延メッセージは、有効期限が切れても、削除されたり、配信不能キューに移動されることはありません。 この動作は仕様です。
+遅延メッセージは、有効期限が切れても、削除されたり、配信不能キューに移動されることはありません。 この動作は仕様です。
 
 ## <a name="errors-while-processing-subscription-rules"></a>サブスクリプション ルールの処理中のエラー
 フィルター評価の例外で配信不能を有効にすると、サブスクリプションの SQL フィルター規則の実行中に発生したエラーは、問題のあるメッセージと共に DLQ にキャプチャされます。 このオプションは、すべてのメッセージ型がサブスクライバーを持つわけではない運用環境では使用しないでください。
@@ -75,8 +75,4 @@ Service Bus のキューとサブスクリプションについてメッセー�
 
 
 ## <a name="next-steps"></a>次のステップ
-
-Service Bus キューの詳細については、次の記事を参照してください。
-
-* [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
-* [Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+**メッセージの期限切れによる配信不能処理** 設定のさまざまな構成方法については、[キューまたはサブスクリプションの配信不能処理の有効化](enable-dead-letter.md)に関する記事を参照してください。

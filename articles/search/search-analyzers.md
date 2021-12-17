@@ -7,18 +7,18 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 09/08/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d40dd0b91f9dcfb7bf5b6e8f084f25ee4f90d780
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68b6f6794a690313648dfaaaaf49fdd3150b6171
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596554"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124735326"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Cognitive Search でのテキスト処理のためのアナライザー
 
-*アナライザー* は、クエリ文字列内のテキストとインデックス付きドキュメントを処理する [フル テキスト検索](search-lucene-query-architecture.md)のコンポーネントです。 テキスト処理 (字句解析とも呼ばれます) は変形力を備えていて、以下のようなアクションを通してクエリ文字列に変更を加えます。
+"*アナライザー*" は、インデックス作成とクエリ実行中に文字列を処理する[フル テキスト検索エンジン](search-lucene-query-architecture.md)のコンポーネントです。 テキスト処理 (字句解析とも呼ばれます) は変形力を備えていて、以下のようなアクションを通して文字列に変更を加えます。
 
 + 重要でない単語 (ストップワード) と句読点を削除します
 + フレーズやハイフンでつながれた単語を構成部分に分割します
@@ -27,7 +27,7 @@ ms.locfileid: "104596554"
 
 分析は、"検索可能" としてマークされている `Edm.String` フィールドに適用されます。これがフルテキスト検索を指定します。 
 
-この構成になっているフィールドの場合、トークンが作成されるときのインデックス作成中に分析が行われ、その後、クエリが解析されてエンジンが一致するトークンをスキャンするクエリの実行中に、再度分析されます。 インデックス作成とクエリの両方に同じアナライザーが使用されると一致が発生する可能性が高くなりますが、要件に応じて、各ワークロードに向けて個別にアナライザーを設定できます。
+この構成のフィールドの場合、トークンが作成されるときのインデックス作成中に分析が行われ、その後、クエリが解析されて一致するトークンをエンジンでスキャンするクエリの実行中に、再度分析されます。 インデックス作成とクエリの両方に同じアナライザーが使用されると一致が発生する可能性が高くなりますが、要件に応じて、各ワークロードに向けて個別にアナライザーを設定できます。
 
 フィルタやあいまい検索など、フルテキスト検索 *ではない* 種類のクエリでは、クエリ側で分析フェーズは行われません。 代わりに、パーサーは、一致の基準としてユーザーが指定したパターンを使用して、これらの文字列を検索エンジンに直接送信します。 通常、これらのクエリ フォームでは、パターン マッチングを機能させるために文字列全体のトークンが必要です。 インデックス作成中に用語全体のトークンを取得するには、[カスタム アナライザー](index-add-custom-analyzers.md)が必要になることがあります。 クエリ用語が分析されるタイミングとその理由の詳細については、「[Azure Cognitive Search でのフルテキスト検索](search-lucene-query-architecture.md)」を参照してください。
 
@@ -37,7 +37,7 @@ ms.locfileid: "104596554"
 
 ## <a name="default-analyzer"></a>既定のアナライザー  
 
-Azure Cognitive Search のクエリでは、検索可能とマークされているすべての文字列フィールドに対して、アナライザーが自動的に呼び出されます。 
+Azure Cognitive Search では、検索可能とマークされているすべての文字列フィールドに対して、アナライザーが自動的に呼び出されます。 
 
 Azure Cognitive Search の既定では、["Unicode テキストのセグメント化"](https://unicode.org/reports/tr29/) 規則に従ってテキストを要素に分割する、[Apache Lucene 標準アナライザー (標準 Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) を使用します。 さらに、標準アナライザーはすべての文字を小文字形式に変換します。 インデックス付きドキュメントと検索語句の両方について、インデックス作成とクエリ処理の間に分析が行われます。  
 
@@ -99,7 +99,7 @@ Azure Cognitive Search の既定では、["Unicode テキストのセグメン�
 
 アナライザーは、用語をトークン化するために使用されるため、フィールドの作成時にアナライザーを割り当てる必要があります。 実際には、物理的に作成済みのフィールドに analyzer または indexAnalyzer を割り当てることは許可されていません (ただし、インデックスに影響を与えることなく、いつでも searchAnalyzer プロパティを変更できます)。
 
-既存のフィールドのアナライザーを変更するには、[インデックスを完全に再構築する](search-howto-reindex.md)必要があります (個々のフィールドを再構築することはできません)。 運用環境のインデックスの場合は、新しいアナライザーの割り当てを指定した新しいフィールドを作成することで再構築を延期し、古いものの代わりに使用を開始することができます。 新しいフィールドを組み込むには [Update Index](/rest/api/searchservice/update-index) を使用し、それを事前設定するには [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents) を使用してください。 後で、計画的なインデックス サービスの一環として、インデックスをクリーンアップし、不要になったフィールドを削除することができます。
+既存のフィールドのアナライザーを変更するには、インデックス全体を削除して再作成する必要があります (個々のフィールドを再構築することはできません)。 運用環境のインデックスの場合は、新しいアナライザーの割り当てを指定した新しいフィールドを作成することで再構築を延期し、古いものの代わりに使用を開始することができます。 新しいフィールドを組み込むには [Update Index](/rest/api/searchservice/update-index) を使用し、それを事前設定するには [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents) を使用してください。 後で、計画的なインデックス サービスの一環として、インデックスをクリーンアップし、不要になったフィールドを削除することができます。
 
 既存のインデックスに新しいフィールドを追加するには、[Update Index](/rest/api/searchservice/update-index) を呼び出してフィールドを追加し、[mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents) を呼び出してそこにデータを格納します。
 
@@ -382,7 +382,7 @@ private static void CreateIndex(string indexName, SearchIndexClient adminClient)
 
 アナライザーの詳細については、次の記事を参照してください。
 
-+ [言語アナライザー](index-add-language-analyzers.md)
-+ [カスタム アナライザー](index-add-custom-analyzers.md)
++ [言語アナライザーの追加](index-add-language-analyzers.md)
++ [カスタム アナライザーの追加](index-add-custom-analyzers.md)
 + [検索インデックスの作成](search-what-is-an-index.md)
 + [複数言語インデックスの作成](search-language-support.md)

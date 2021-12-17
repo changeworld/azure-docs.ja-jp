@@ -1,56 +1,73 @@
 ### YamlMime:Landing
 title: Azure Storage 検証済みパートナー ソリューションのドキュメント
-summary: Azure Storage 検証済みパートナー ソリューションを使用すると、Azure Storage プラットフォーム上で高度なシナリオを実現できます。
+summary: Azure Storage 検証済みパートナー ソリューションを使用すると、Azure Storage 上で高度なシナリオを実現できます。
 metadata:
   title: Azure Storage 検証済みパートナー ソリューション
-  description: Azure Storage 検証済みパートナー ソリューションを使用すると、Azure Storage プラットフォーム上で高度なシナリオを実現できます。
+  description: Azure Storage 検証済みパートナー ソリューションを使用すると、Azure Storage 上で高度なシナリオを実現できます。
   services: storage
   ms.service: storage
+  ms.subservice: partner
   ms.topic: landing-page
   ms.collection: collection
   author: beber-msft
   ms.author: beber
-  ms.date: 12/08/2020
-  ms.openlocfilehash: 2e9a2ac1e8d33020a94c2c783d3d695a459fcea5
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.date: 03/15/2021
+  ms.openlocfilehash: 41924e71fbbad4b1bae5b2eecfd7751cc25c5820
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101742694"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128591009"
 landingContent:
-- title: Azure Storage Analytics とビッグ データ パートナー
+- title: 分析とビッグ データに関するパートナー
   linkLists:
   - linkListType: overview
     links:
-    - text: 検証済み Azure Storage Analytics パートナー
+    - text: 検証済みの分析に関するパートナー
       url: .\validated-partners\analytics\partner-overview.md
-- title: Azure Storage アーカイブ、バックアップ、BCDR パートナー
+- title: アーカイブ、バックアップ、BCDR に関するパートナー
   linkLists:
   - linkListType: overview
     links:
-    - text: 検証済み Azure Storage アーカイブおよび BCDR パートナー
+    - text: 検証済みのアーカイブと BCDR に関するパートナー
       url: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
-  - linkListType: quickstart
+  - linkListType: get-started
     links:
-    - text: Commvault クイックスタート ガイド
+    - text: Commvault ファースト ステップ ガイド
       url: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
-    - text: Veeam クイックスタート ガイド
+    - text: Veeam ファースト ステップ ガイド
       url: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
-- title: Azure Storage コンテナー ソリューション パートナー
+    - text: DobiProtect ファースト ステップ ガイド
+      url: .\validated-partners\backup-archive-disaster-recovery\datadobi\datadobi-solution-guide.md
+- title: コンテナー ソリューションに関するパートナー
   linkLists:
   - linkListType: overview
     links:
-    - text: 検証済み Azure Storage コンテナー ソリューション パートナー
+    - text: 検証済みのコンテナー ソリューションに関するパートナー
       url: .\validated-partners\container-solutions\partner-overview.md
-- title: Azure Storage データ管理と移行パートナー
+- title: データ管理と移行に関するパートナー
   linkLists:
   - linkListType: overview
     links:
-    - text: 検証済み Azure Storage データ管理および移行パートナー
+    - text: 検証済みのデータ管理と移行に関するパートナー
       url: .\validated-partners\data-management\partner-overview.md
-- title: Azure Storage プライマリおよびセカンダリ ストレージ パートナー
+    - text: 移行ツールの比較
+      url: ./validated-partners/data-management/migration-tools-comparison.md
+  - linkListType: get-started
+    links:
+    - text: DobiMigrate ファースト ステップ ガイド
+      url: ./validated-partners/data-management/dobimigrate-quick-start-guide.md
+    - text: Komprise ファースト ステップ ガイド
+      url: ./validated-partners/data-management/komprise-quick-start-guide.md
+    - text: StorageX ファースト ステップ ガイド
+      url: ./validated-partners/data-management/storagex-quick-start-guide.md
+    - text: Cirrus Data ファースト ステップ ガイド
+      url: ./validated-partners/data-management/cirrus-data-migration-guide.md
+- title: プライマリおよびセカンダリ ストレージに関するパートナー
   linkLists:
   - linkListType: overview
     links:
-    - text: プライマリおよびセカンダリ ストレージの検証済みパートナー
+    - text: プライマリおよびセカンダリ ストレージに関する検証済みパートナー
       url: .\validated-partners\primary-secondary-storage\partner-overview.md
+    - text: ISV ファイル サービス
+      url: .\validated-partners\primary-secondary-storage\isv-file-services.md

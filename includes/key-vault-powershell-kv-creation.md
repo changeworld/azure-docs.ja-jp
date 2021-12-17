@@ -4,19 +4,19 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: d19c656946817b06cd620d8a48073bed8299af7d
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 26e4a9e8ba849bb25bad904934a434e92c633acd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502260"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659848"
 ---
 Azure PowerShell [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) コマンドレットを使用して、前の手順で作成したリソース グループにキー コンテナーを作成します。 いくつかの情報を指定する必要があります。
 
 - キー コンテナー名:数字 (0-9)、文字 (a-z、A-Z)、ハイフン (-) のみを含んだ 3 から 24 文字の文字列
 
   > [!Important]
-  > 各キー コンテナーには一意の名前が必要です。 次の例では、<your-unique-keyvault-name> をお使いのキー コンテナーの名前に置き換えてください。
+  > 各キー コンテナーには一意の名前が必要です。 次の例の \<your-unique-keyvault-name\> は、ご自分のキー コンテナーの名前に置き換えてください。
 
 - リソース グループ名: **myResourceGroup**
 - 場所: **EastUS**。

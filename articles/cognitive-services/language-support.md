@@ -3,19 +3,19 @@ title: 言語のサポート
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services では、見る、聞く、話す、そして、ユーザーを理解するアプリケーションを構築することができます。 これらのサービス間では、3 ダース以上の言語がサポートされており、ユーザーがアプリと自然にやりとりすることができます。
 services: cognitive-services
-author: erhopf
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.author: erhopf
+ms.date: 10/28/2021
+ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c2c2b57ebf4e2a5cd96efce49da87cf42929e96c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fce378ce24075a96d0b110a1386520649ff3b0bf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103472056"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434220"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure Cognitive Services の自然言語のサポート
 
@@ -31,16 +31,14 @@ Azure Cognitive Services では、見る、聞く、話す、そして、ユー�
 ## <a name="vision"></a>視覚
 
 * [Computer Vision](./computer-vision/language-support.md)
-* [Form Recognizer (プレビュー)](./form-recognizer/language-support.md)
 * [Ink Recognizer (プレビュー)](/previous-versions/azure/cognitive-services/Ink-Recognizer/language-support)
-* [Video Indexer](../media-services/video-indexer/language-identification-model.md#guidelines-and-limitations)
+* [Video Indexer](../azure-video-analyzer/video-analyzer-for-media-docs/language-identification-model.md#guidelines-and-limitations)
 
 ## <a name="language"></a>Language
 
-* [Immersive Reader](./immersive-reader/language-support.md)
 * [Language Understanding (LUIS)](./luis/luis-language-support.md)
 * [QnA Maker](./qnamaker/overview/language-support.md)
-* [Text Analytics](./text-analytics/language-support.md)
+* [言語サービス](./text-analytics/language-support.md)
 * [Translator](./translator/language-support.md)
 
 ## <a name="speech"></a>音声

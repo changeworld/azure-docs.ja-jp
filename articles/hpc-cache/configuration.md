@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache 設定の構成
 description: キャッシュに MTU、カスタム NTP、DNS 構成などの追加設定を構成する方法、および Azure Blob Storage ターゲットから高速スナップショットにアクセスする方法について説明します。
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/08/2021
-ms.author: v-erkel
-ms.openlocfilehash: 0b3996df3c75ff31d0825be1d332dbd055305963
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.author: femila
+ms.openlocfilehash: ad4dedc023dc6ba5f58e51c816d422acb3ab2c69
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259763"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019991"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Azure HPC Cache の追加設定を構成する
 
@@ -81,7 +81,7 @@ DNS セットアップを運用環境で使用する前に、テスト キャッ
 
 ### <a name="refresh-storage-target-dns"></a>ストレージ ターゲット DNS を更新する
 
-DNS サーバーが IP アドレスを更新すると、関連付けられている NFS ストレージ ターゲットが一時的に使用できなくなります。 [ストレージ ターゲットの編集](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only)に関するページで、カスタム DNS システム IP アドレスを更新する方法を参照してください。
+DNS サーバーが IP アドレスを更新すると、関連付けられている NFS ストレージ ターゲットが一時的に使用できなくなります。 「[ストレージ ターゲットの表示と管理](manage-storage-targets.md#update-ip-address-custom-dns-configurations-only)」を参照して、カスタム DNS システム IP アドレスを更新する方法をご確認ください。
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>BLOB ストレージ ターゲットのスナップショットを表示する
 

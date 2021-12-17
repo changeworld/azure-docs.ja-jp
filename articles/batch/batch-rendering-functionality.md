@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: a2e2cfb71999bd5ab83591448342d4bac1dabdd5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 57925df3babc22a6cfdff2f81d23bbbd60767cc6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103496339"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461610"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
 
@@ -20,7 +20,7 @@ Azure Batch の標準の機能は、レンダリングのワークロードと�
 
 ## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>カスタム VM イメージと標準アプリケーション ライセンスを使用した Batch プール
 
-他のワークロードやアプリケーションの種類と同様に、カスタム VM イメージは、必要なレンダリング アプリケーションとプラグインを使用して作成できます。カスタム VM イメージは [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) に配置され、[Batch プールの作成に使用できます](batch-sig-images.md)。
+他のワークロードやアプリケーションの種類と同様に、必要なレンダリング アプリケーションとプラグインを使用してカスタム VM イメージを作成できます。カスタム VM イメージは、[Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) に配置され、[Batch プール](batch-sig-images.md)の作成に使用できます。
 
 タスクのコマンド ライン文字列では、カスタム VM イメージの作成時に使用するアプリケーションとパスを参照する必要があります。
 
@@ -29,7 +29,7 @@ Azure Batch の標準の機能は、レンダリングのワークロードと�
 ## <a name="batch-pools-using-rendering-vm-images"></a>レンダリング VM イメージを使用した Batch プール
 
 > [!IMPORTANT]
-> レンダリング VM イメージと従量課金ライセンスは、[非推奨となっており、2024 年 2 月 29 日に廃止されます](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/)。 レンダリングにバッチを使用するには、[カスタム VM イメージと標準アプリケーション ライセンスを使用してください](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)。
+> レンダリング VM イメージと従量課金ライセンスは、[非推奨となり、2024 年 2 月 29 日に廃止されます](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/)。 レンダリングにバッチを使用するには、[カスタム VM イメージと標準アプリケーション ライセンスを使用してください](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)。
 
 ### <a name="rendering-application-installation"></a>レンダリング アプリケーションのインストール
 
@@ -37,7 +37,7 @@ VM イメージをレンダリングする Azure Marketplace は、事前イン�
 
 Windows のイメージと CentOS のイメージがあります。  [Azure Marketplace](https://azuremarketplace.microsoft.com) で、VM イメージは「batch rendering」と検索することで見つかります。
 
-プール構成の例については、[Azure CLI でのレンダリングのチュートリアル](./tutorial-rendering-cli.md)をご覧ください。  Azure portal と Batch Explorer には、プールを作成するときにレンダリングする VM イメージを選択する、GUI ツールが用意されています。  Batch API を使用している場合は、プールの作成時に [ImageReference](/rest/api/batchservice/pool/add#imagereference) に次のプロパティ値を指定します。
+Azure portal と Batch Explorer には、プールを作成するときにレンダリングする VM イメージを選択する、GUI ツールが用意されています。  Batch API を使用している場合は、プールの作成時に [ImageReference](/rest/api/batchservice/pool/add#imagereference) に次のプロパティ値を指定します。
 
 | Publisher | プラン | Sku | バージョン |
 |---------|---------|---------|--------|
@@ -46,8 +46,8 @@ Windows のイメージと CentOS のイメージがあります。  [Azure Mark
 
 プールの VM で追加のアプリケーションが要求されている場合は、その他のオプションを使用できます。
 
-* Shared Image Gallery のカスタム イメージ
-  * このオプションを使用すると、必要な目的のアプリケーションと特定のバージョンで VM を構成できます。 詳細については、「[Shared Image Gallery を使用してプールを作成する](batch-sig-images.md)」を参照してください。 Autodesk と Chaos Group では Azure Batch のライセンス サービスに対する検証を行うために Arnold と V-Ray をそれぞれ修正していることに注意してください。 所有しているアプリケーションがこのサポートに対応するバージョンであることを確認してください。対応していない場合、従量課金ライセンスが動作しません。 現在のバージョンの Maya と 3ds Max は、ヘッドレス (バッチ/コマンドライン モード) で実行されている場合、ライセンス サーバーを必要としません。 このオプションの使用方法について不明な点がある場合は、Azure サポートにお問い合わせください。
+* Azure Compute Gallery のカスタム イメージ:
+  * このオプションを使用すると、必要な目的のアプリケーションと特定のバージョンで VM を構成できます。 詳細については、[Azure Compute Gallery を使用したプールの作成](batch-sig-images.md)に関する記事を参照してください。 Autodesk と Chaos Group では Azure Batch のライセンス サービスに対する検証を行うために Arnold と V-Ray をそれぞれ修正していることに注意してください。 所有しているアプリケーションがこのサポートに対応するバージョンであることを確認してください。対応していない場合、従量課金ライセンスが動作しません。 現在のバージョンの Maya と 3ds Max は、ヘッドレス (バッチ/コマンドライン モード) で実行されている場合、ライセンス サーバーを必要としません。 このオプションの使用方法について不明な点がある場合は、Azure サポートにお問い合わせください。
 * [アプリケーション パッケージ](./batch-application-packages.md):
   * 1 つまたは複数の ZIP ファイルを使用してアプリケーション ファイルをパッケージ化し、Azure portal でアップロードして、プール構成でそのパッケージを指定します。 プール のVM が作成されると、ZIP ファイルがダウンロードされ、ファイルが抽出されます。
 * リソース ファイル:
@@ -98,7 +98,5 @@ Azure Marketplace の VM イメージが使用されている場合は、ベス�
 
 ## <a name="next-steps"></a>次の手順
 
-Batch レンダリングの例については、次の 2 つのチュートリアルをお試しください。
-
-* [Azure CLI を使用したレンダリング](./tutorial-rendering-cli.md)
-* [Batch Explorer を使用したレンダリング](./tutorial-rendering-batchexplorer-blender.md)
+* [Batch でレンダリング アプリケーションを使用する](batch-rendering-applications.md)方法について説明します。
+* [アセット ファイルと出力ファイルをレンダリングするためのストレージとデータ移動のオプション](batch-rendering-storage-data-movement.md)について説明します。

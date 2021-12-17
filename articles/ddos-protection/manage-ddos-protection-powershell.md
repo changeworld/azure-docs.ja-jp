@@ -11,12 +11,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 41d45b216337cc1b674a9be390f241c4e1bb062a
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f48848edc6e42ccf39f608b103deb4311810d177
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103132"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110702661"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用した Azure DDoS Protection Standard の作成と構成
 

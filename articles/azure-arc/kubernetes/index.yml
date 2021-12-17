@@ -9,12 +9,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/02/2021
   ms.author: shasb
-  ms.openlocfilehash: fbad5cafb22960a56a4ba76e2dc331c399193ddc
-  ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+  ms.openlocfilehash: bfd815053d1e156620fc284df4d6dfea5f8fb166
+  ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/06/2021
-  ms.locfileid: "106443200"
+  ms.lasthandoff: 11/24/2021
+  ms.locfileid: "133056686"
 landingContent:
 - title: Azure Arc 対応 Kubernetes について
   linkLists:
@@ -26,8 +26,8 @@ landingContent:
       url: validation-program.md
   - linkListType: concept
     links:
-    - text: エージェントのアーキテクチャ
-      url: conceptual-agent-architecture.md
+    - text: エージェントの概要
+      url: conceptual-agent-overview.md
     - text: 構成と GitOps
       url: conceptual-configurations.md
     - text: GitOps を使用した CI/CD ワークフロー

@@ -9,20 +9,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f0abef835e406b442239cecd81fed5751f1c9a92
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: a09dfb2b8e29ba925a702c169a1a79c13016d5dc
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378161"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421708"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール 
 
-すべての Azure Synapse Analytics ワークスペースには、レイク内のデータに対してクエリを実行するために使用できるサーバーレス SQL プール エンドポイントがあります。
+すべての Azure Synapse Analytics ワークスペースには、[Azure Data Lake](query-data-storage.md) ([Parquet](query-data-storage.md#query-parquet-files)、[Delta Lake](query-delta-lake-format.md)、[区切りテキスト](query-data-storage.md#query-csv-files)形式)、[Cosmos DB](query-cosmos-db-analytical-store.md?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=openrowset-key)、または Dataverse 内のデータのクエリに使用できるサーバーレス SQL プール エンドポイントが用意されています。
 
 サーバーレス SQL プールは、データ レイク内のデータに対するクエリ サービスです。 これを使用すると、次の機能を通じてデータにアクセスできます。
  
-- 専用のストアにデータをコピーしたり読み込んだりすることなく、インプレースでデータのクエリを実行できる、使い慣れた T-SQL 構文。 
+- 専用のストアにデータをコピーしたり読み込んだりすることなく、インプレースでデータのクエリを実行できる、使い慣れた [T-SQL 構文](overview-features.md)。 
 - さまざまなビジネス インテリジェンスおよびアドホック クエリ実行ツール (最も人気のあるドライバーなど) を提供する、T-SQL インターフェイスを介した統合接続。 
 
 サーバーレス SQL プールは、大規模なデータとコンピューティング機能を対象として構築された分散データ処理システムです。 サーバーレス SQL プールでは、ワークロードに応じて数秒から数分でビッグ データを分析することができます。 クエリ実行のフォールトトレランスが組み込まれているため、大規模なデータ セットを対象とする実行時間の長いクエリの場合でも、高い信頼性と成功率が実現します。
@@ -38,7 +38,7 @@ ms.locfileid: "107378161"
 データ レイク内のデータを探索したり、そこから分析情報を得たり、既存のデータ変換パイプラインを最適化したりする必要がある場合は、サーバーレス SQL プールを活用することができます。 これは、次のシナリオに適しています。
 
 - 基本の検出と探索 - データ レイク内のさまざまな形式 (Parquet、CSV、JSON) のデータをすばやく把握できるため、そこから分析情報を抽出する方法を計画することができます。
-- 論理データ ウェアハウス - データの再配置や変換を行うことなく、生または異種のデータに基づいてリレーショナル抽象化を実現します。これにより、常に最新のデータを表示できます。
+- 論理データ ウェアハウス - データの再配置や変換を行うことなく、生または異種のデータに基づいてリレーショナル抽象化を実現します。これにより、常に最新のデータを表示できます。 詳細については、[論理データ ウェアハウスの作成](tutorial-logical-data-warehouse.md)に関する記事を参照してください。
 - データ変換 - T-SQL を使用して、効率性が高くシンプルかつスケーラブルな方法でレイク内のデータを変換できるので、それを BI ツールなどにフィードしたり、リレーショナル データ ストア (Synapse SQL データベース、Azure SQL Database など) に読み込んだりできます。
 
 サーバーレス SQL プールは、さまざまな職務の役に立ちます。
@@ -52,6 +52,8 @@ ms.locfileid: "107378161"
 
 サーバーレス SQL プール エンドポイントは、すべての Azure Synapse ワークスペース内で提供されます。 ワークスペースを作成し、使い慣れたツールを使用してすぐにデータのクエリ実行を開始できます。
 
+最適なパフォーマンスを得るために、[ベスト プラクティス](best-practices-serverless-sql-pool.md)を適用していることを確認してください。
+
 ## <a name="client-tools"></a>クライアント ツール
 
 サーバーレス SQL プールでは、既存の SQL アドホック クエリ実行およびビジネス インテリジェンス ツールをデータ レイクに利用できます。 使い慣れた T-SQL 構文を使えるため、SQL 製品との TDS 接続を確立できるツールであれば、[Synapse SQL に接続してクエリを実行](connect-overview.md)できます。 Azure Data Studio に接続してアドホック クエリを実行したり、Power BI に接続して数分で分析情報を得たりできます。
@@ -63,7 +65,7 @@ ms.locfileid: "107378161"
 - なじみのある概念を使用してワークロードを整理できます。
 - データベース - サーバーレス SQL プール エンドポイントには複数のデータベースを設定できます。
 - スキーマ - データベース内には、スキーマと呼ばれるオブジェクト所有者グループが 1 つまたは複数存在します。
-- ビュー
+- ビュー、ストアド プロシージャ、インライン テーブル値関数
 - 外部リソース - データ ソース、ファイル形式、テーブル
 
 以下を使用してセキュリティを適用できます。
@@ -93,9 +95,13 @@ ms.locfileid: "107378161"
 
 [複数のファイルまたはフォルダーに対するクエリの実行](query-data-storage.md#query-multiple-files-or-folders)
 
-[PARQUET ファイル形式](query-data-storage.md#query-parquet-files)
+[PARQUET ファイル形式に対するクエリの実行](query-data-storage.md#query-parquet-files)
 
-[区切りテキストを操作するための追加オプション (フィールド ターミネータ、行ターミネータ、エスケープ文字)](query-data-storage.md#query-csv-files)
+[DELTA 形式に対するクエリの実行](query-delta-lake-format.md)
+
+[さまざまな区切りテキスト形式 (カスタム フィールド ターミネータ、行ターミネータ、エスケープ文字の使用)](query-data-storage.md#query-csv-files)
+
+[Cosmos DB 分析ストア](query-cosmos-db-analytical-store.md?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=openrowset-key)
 
 [選択した列のサブセットの読み取り](query-data-storage.md#read-a-chosen-subset-of-columns)
 
@@ -139,9 +145,15 @@ Azure AD 認証が使用される場合、ユーザーはサーバーレス SQL 
 
 サーバーレス SQL プール サービスにログインしたユーザーは、Azure Storage 内のファイルにアクセスしてクエリを実行する権限を持っている必要があります。 サーバーレス SQL プールでは、次の種類の承認がサポートされます。
 
-- **Shared Access Signature (SAS)** を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS では、アカウント キーを共有することなく、ストレージ アカウントのリソースへのアクセス権をクライアントに付与できます。 SAS を使用すると、有効期間、付与されるアクセス許可、許容される IP アドレス範囲、許容されるプロトコル (https または http) など、SAS を使用しているクライアントに付与するアクセス権の種類をきめ細かく制御できます。
+- **[Shared Access Signature (SAS)](develop-storage-files-storage-access-control.md?tabs=shared-access-signature)** を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS では、アカウント キーを共有することなく、ストレージ アカウントのリソースへのアクセス権をクライアントに付与できます。 SAS を使用すると、有効期間、付与されるアクセス許可、許容される IP アドレス範囲、許容されるプロトコル (https または http) など、SAS を使用しているクライアントに付与するアクセス権の種類をきめ細かく制御できます。
 
-- **ユーザー ID** ("パススルー" とも呼ばれる) は、サーバーレス SQL プールにログインしている Azure AD ユーザーの ID がデータへのアクセスの承認に使用される承認の種類です。 データにアクセスする前に、Azure Storage の管理者が、データにアクセスするためのアクセス許可を Azure AD ユーザーに付与する必要があります。 この種類の承認では、サーバーレス SQL プールにログインした Azure AD ユーザーを使用するため、ユーザーの種類が SQL の場合はサポートされません。
+- **[ユーザー ID](develop-storage-files-storage-access-control.md?tabs=user-identity)** ("パススルー" とも呼ばれる) は、サーバーレス SQL プールにログインしている Azure AD ユーザーの ID がデータへのアクセスの承認に使用される承認の種類です。 データにアクセスする前に、Azure Storage の管理者が、データにアクセスするためのアクセス許可を Azure AD ユーザーに付与する必要があります。 この種類の承認では、サーバーレス SQL プールにログインした Azure AD ユーザーを使用するため、ユーザーの種類が SQL の場合はサポートされません。
+
+- **[ワークスペース ID](develop-storage-files-storage-access-control.md?tabs=managed-identity)** は、データへのアクセスを承認するために、Synapse ワークスペースの ID が使用される認証の種類です。 データにアクセスする前に、Azure Storage の管理者が、データにアクセスするためのアクセス許可をワークスペース ID に付与する必要があります。
+
+### <a name="access-to-cosmos-db"></a>Cosmos DB にアクセスする
+
+[Cosmos DB 分析ストア](query-cosmos-db-analytical-store.md?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=openrowset-key)にアクセスするには、Cosmos DB アカウントの読み取り専用キーでサーバーレベルまたはデータベーススコープの資格情報を作成する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 エンドポイント接続とファイルに対するクエリ実行に関する追加情報については、次の記事をご覧ください。 

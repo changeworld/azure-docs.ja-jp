@@ -9,12 +9,13 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 510f2556fba42176817b782fe48d01d76eaa3fd7
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 3873ae1dd4ab230e5e0c3424341722e76aeb48fb
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568456"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113216227"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Synapse SQL を使用してデータを安全に読み込む
 
@@ -105,7 +106,20 @@ WITH (
    > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この [ガイド](../../storage/common/storage-account-upgrade.md)を使用して、**最初に v2 にアップグレードする** 必要があります。
    > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](../../storage/blobs/data-lake-storage-known-issues.md)をご覧ください。
 
-1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 Azure Active Directory (AAD) に登録した専用 SQL プールをホストしているサーバーまたはワークスペースに、**ストレージ BLOB データ共同作成者** Azure ロールを割り当てます。
+1. 自分のストレージ アカウントで **[アクセス制御 (IAM)]** を選択します。
+
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
+
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | ストレージ BLOB データ共同作成者 |
+    | アクセスの割り当て先 | サービス プリンシパル |
+    | メンバー | Azure Active Directory (AAD) に登録した専用 SQL プールをホストしているサーバーまたはワークスペース  |
+
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
+
 
    > [!NOTE]
    > 所有者特権を持つメンバーのみが、この手順を実行できます。 さまざまな Azure の組み込みロールについては、こちらの[ガイド](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。
@@ -129,16 +143,28 @@ WITH (
 ## <a name="d-azure-active-directory-authentication"></a>D. Azure Active Directory 認証
 #### <a name="steps"></a>手順
 
-1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **ストレージ BLOB データ所有者、共同作成者、または閲覧者** の Azure ロールを Azure AD ユーザーに割り当てます。 
+1. 自分のストレージ アカウントで **[アクセス制御 (IAM)]** を選択します。
+
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
+
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | ストレージ BLOB のデータ所有者、共同作成者、閲覧者 |
+    | アクセスの割り当て先 | User |
+    | メンバー | Azure AD ユーザー |
+
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
     > [!IMPORTANT]
     > **ストレージ** **BLOB データ** 所有者、共同作成者、または閲覧者の Azure ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。
 
     ![読み込みのための Azure RBAC アクセス許可の付与](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-2. 次の[ドキュメント](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)を進め、Azure AD 認証を構成します。 
+1. 次の[ドキュメント](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)を進め、Azure AD 認証を構成します。 
 
-3. Active Directory を使用し、SQL プールに接続します。そこでは資格情報を指定せずに COPY ステートメントを実行できます。
+1. Active Directory を使用し、SQL プールに接続します。そこでは資格情報を指定せずに COPY ステートメントを実行できます。
 
     ```sql
     COPY INTO dbo.target_table

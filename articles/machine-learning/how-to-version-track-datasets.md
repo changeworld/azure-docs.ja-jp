@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 機械学習のデータセットをバージョン管理する方法と、機械学習パイプラインでバージョン管理がどのように機能するかについて説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.author: sihhu
-author: MayMSFT
+ms.subservice: mldata
+ms.author: cgronlun
+author: cjgronlund
 ms.reviewer: nibaccam
-ms.date: 03/09/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: fde25e4ba75bfb86c9837582d7168f85335836b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python, data4ml
+ms.openlocfilehash: b138ce840f878b6bb587e7aec8045769606c2428
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520542"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558195"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>Azure Machine Learning データセットをバージョン管理および追跡する
 

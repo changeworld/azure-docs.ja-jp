@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 08/18/2021
 ms.author: justinha
 author: justinha
 manager: daveba
-ms.reviewer: rateller
+ms.reviewer: anjusingh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e9052502eba71f025bb6724278b7001173c5217
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cf0cc0ebc60a5b401ac8bd9726e39d23d8504a0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491619"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766106"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Azure Active Directory を使用して SMS ベース認証用にユーザーを構成して有効にする 
 
 アプリケーションやサービスへのサインインを簡素化してセキュリティで保護するために、Azure Active Directory (Azure AD) には複数の認証オプションが用意されています。 SMS ベースの認証を使用すると、サインイン時にユーザーは自分のユーザー名とパスワードを指定する必要がなく、覚えておく必要すらありません。 ユーザーは、ID 管理者によってアカウントが作成された後、サインイン プロンプトで電話番号を入力できます。 ユーザーは、テキスト メッセージを介して、サインインを完了するために指定できる認証コードを受け取ります。 この認証方法を使用すると、特に第一線で働くユーザーにとっては、アプリケーションやサービスへのアクセスが簡単になります。
 
-この記事では、Azure AD で選択されたユーザーまたはグループに対して SMS ベースの認証を有効にする方法について説明します。
+この記事では、Azure AD で選択されたユーザーまたはグループに対して SMS ベースの認証を有効にする方法について説明します。 SMS ベースのサインインを使用できるアプリの一覧については、「[アプリの SMS ベース認証のサポート](how-to-authentication-sms-supported-apps.md)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -34,18 +34,20 @@ ms.locfileid: "103491619"
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * SMS ベース認証を有効にするには、Azure AD テナントでの "*全体管理者*" 特権が必要です。
 * テキスト メッセージ認証方法ポリシーで有効になっている各ユーザーは、その方法を使用しない場合でも、ライセンスを取得している必要があります。 有効な各ユーザーは、次の Azure AD、EMS、または Microsoft 365 ライセンスのいずれかを保持している必要があります。
-    * [Microsoft 365 (M365) F1 または F3][m365-firstline-workers-licensing]
-    * [Enterprise Mobility + Security (EMS) E3 または E5][ems-licensing] または [Microsoft 365 (M365) E3 または E5][m365-licensing]
+    * [Microsoft 365 F1 または F3][m365-firstline-workers-licensing]
+    * [Azure Active Directory Premium P1 または P2][azure-ad-pricing]
+    * [Enterprise Mobility + Security (EMS) E3 または E5][ems-licensing] または [Microsoft 365 E3 または E5][m365-licensing]
     * [Office 365 F3][o365-f3]
 
-## <a name="limitations"></a>制限事項
+## <a name="known-issues"></a>既知の問題
 
-SMS ベースの認証には、次の制限事項が適用されます。
+既知の問題の一部をここに挙げます。
 
 * 現在、SMS ベース認証には Azure AD Multi-Factor Authentication との互換性はありません。
 * Teams を除き、SMS ベース認証には、ネイティブな Office アプリケーションとの互換性はありません。
 * B2B アカウントの場合、SMS ベース認証はお勧めしません。
 * フェデレーション ユーザーは、ホーム テナントでは認証されません。 クラウドでのみ認証されます。
+* 既定のサインイン方法を電話番号に対するテキスト メッセージまたは音声通話にしている場合は、多要素認証時に、SMS コードか音声呼び出しを自動的に発信します。 2021 年 6 月現在、一部のアプリでは、**テキスト メッセージ** と **音声通話** のどちらかを選ぶよう、最初にユーザーに求めます。 このオプションにより、さまざまなアプリに対して必要以上に多くのセキュリティ コードを送信しなくて済みます。 既定のサインイン方法を Microsoft Authenticator アプリにしている場合は ([この方法を強くお勧めします](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752))、アプリから自動的に通知を送信します。
 
 ## <a name="enable-the-sms-based-authentication-method"></a>SMS ベースの認証方法を有効にする
 
@@ -86,7 +88,7 @@ Azure AD テナントで SMS ベース認証が有効になっている状態で
 
 ## <a name="set-a-phone-number-for-user-accounts"></a>ユーザー アカウントに電話番号を設定する
 
-これで、SMS ベース認証に対してユーザーが有効になりましたが、サインインするには、事前にユーザーの電話番号が Azure AD 上でユーザー プロファイルに関連付けられている必要があります。 ユーザーは " *[マイ アカウント]* " で [この電話番号を自分で設定](../user-help/sms-sign-in-explainer.md)することができます。または、管理者が Azure portal を使用して電話番号を割り当ててもかまいません。 電話番号は、"*全体管理者*"、"*authentication admins (認証管理者)* "、または "*privileged authentication admins (特権認証管理者)* " によって設定できます。
+これで、SMS ベース認証に対してユーザーが有効になりましたが、サインインするには、事前にユーザーの電話番号が Azure AD 上でユーザー プロファイルに関連付けられている必要があります。 ユーザーは " *[マイ アカウント]* " で [この電話番号を自分で設定](https://support.microsoft.com/account-billing/set-up-sms-sign-in-as-a-phone-verification-method-0aa5b3b3-a716-4ff2-b0d6-31d2bcfbac42)することができます。または、管理者が Azure portal を使用して電話番号を割り当ててもかまいません。 電話番号は、"*全体管理者*"、"*authentication admins (認証管理者)* "、または "*privileged authentication admins (特権認証管理者)* " によって設定できます。
 
 電話番号が SMS サインイン用に設定されている場合は、[Azure AD Multi-Factor Authentication][tutorial-azure-mfa] および[セルフサービス パスワード リセット][tutorial-sspr]にその電話番号を使用することもできます。
 
@@ -123,9 +125,11 @@ SMS ベースのサインインが有効になったユーザー アカウント
 
 1. これでユーザーは、ユーザー名やパスワードを入力しなくてもサインインできるようになりました。
 
+
 ## <a name="troubleshoot-sms-based-sign-in"></a>SMS ベースのサインインをトラブルシューティングする
 
-次のシナリオとトラブルシューティングの手順は、SMS ベースのサインインの有効化と使用に関する問題が発生した場合に、利用できます。
+次のシナリオとトラブルシューティングの手順は、SMS ベースのサインインの有効化と使用に関する問題が発生した場合に、利用できます。 SMS ベースのサインインを使用できるアプリの一覧については、「[アプリの SMS ベース認証のサポート](how-to-authentication-sms-supported-apps.md)」を参照してください。
+
 
 ### <a name="phone-number-already-set-for-a-user-account"></a>ユーザー アカウントに既に電話番号が設定されている
 
@@ -133,7 +137,7 @@ SMS ベースのサインインが有効になったユーザー アカウント
 
 アカウントに電話番号が既に設定されているユーザーには、 **[マイ プロファイル]** ページ上に " *[Enable for SMS sign-in]\(SMS サインインを有効化する\)* " ボタンが表示されます。 このボタンを選択すると、アカウントが SMS ベースのサインインでの使用と、以前の Azure AD Multi-Factor Authentication または SSPR 登録に対して有効化されます。
 
-エンドユーザー エクスペリエンスの詳細については、[電話番号での SMS サインイン ユーザー エクスペリエンス](../user-help/sms-sign-in-explainer.md)に関する記事を参照してください。
+エンドユーザー エクスペリエンスの詳細については、[電話番号での SMS サインイン ユーザー エクスペリエンス](https://support.microsoft.com/account-billing/set-up-sms-sign-in-as-a-phone-verification-method-0aa5b3b3-a716-4ff2-b0d6-31d2bcfbac42)に関する記事を参照してください。
 
 ### <a name="error-when-trying-to-set-a-phone-number-on-a-users-account"></a>ユーザーのアカウントに電話番号を設定しようとするとエラーが発生する
 
@@ -147,9 +151,10 @@ Azure portal でユーザーのアカウントに電話番号を設定しよう�
 
 ## <a name="next-steps"></a>次のステップ
 
-Microsoft Authenticator アプリや FIDO2 セキュリティ キーなど、パスワードを使用せずに Azure AD にサインインするその他の方法については、「[Azure AD のパスワードレス認証オプション][concepts-passwordless]」を参照してください。
+- SMS ベースのサインインを使用できるアプリの一覧については、「[アプリの SMS ベース認証のサポート](how-to-authentication-sms-supported-apps.md)」を参照してください。
+- Microsoft Authenticator アプリや FIDO2 セキュリティ キーなど、パスワードを使用せずに Azure AD にサインインするその他の方法については、「[Azure AD のパスワードレス認証オプション][concepts-passwordless]」を参照してください。
+- また、Microsoft Graph REST API を使用して、SMS ベースのサインインを、[有効][rest-enable]または[無効][rest-disable]にすることもできます。
 
-また、Microsoft Graph REST API ベータ版を使用して、SMS ベースのサインインを[有効][rest-enable]または[無効][rest-disable]にすることができます。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md
@@ -157,8 +162,8 @@ Microsoft Authenticator アプリや FIDO2 セキュリティ キーなど、パ
 [concepts-passwordless]: concept-authentication-passwordless.md
 [tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
 [tutorial-sspr]: tutorial-enable-sspr.md
-[rest-enable]: /graph/api/phoneauthenticationmethod-enablesmssignin?view=graph-rest-beta&tabs=http
-[rest-disable]: /graph/api/phoneauthenticationmethod-disablesmssignin?view=graph-rest-beta&tabs=http
+[rest-enable]: /graph/api/phoneauthenticationmethod-enablesmssignin?tabs=http
+[rest-disable]: /graph/api/phoneauthenticationmethod-disablesmssignin?tabs=http
 
 <!-- EXTERNAL LINKS -->
 [azure-portal]: https://portal.azure.com
@@ -169,3 +174,4 @@ Microsoft Authenticator アプリや FIDO2 セキュリティ キーなど、パ
 [m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans
 [o365-f1]: https://www.microsoft.com/microsoft-365/business/office-365-f1?market=af
 [o365-f3]: https://www.microsoft.com/microsoft-365/business/office-365-f3?activetab=pivot%3aoverviewtab
+[azure-ad-pricing]: https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing

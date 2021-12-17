@@ -1,6 +1,6 @@
 ---
-title: CLI を使用して OS ディスク間をスワップする
-description: CLI を使用して Azure 仮想マシンで使用されるオペレーティング システムのディスクを変更します。
+title: Azure CLI を使用して OS ディスク間をスワップする
+description: Azure CLI を使用して Azure 仮想マシンによって使用されるオペレーティング システム ディスクを変更します。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: disks
@@ -8,15 +8,17 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 24cd71cafa9dc0bd9131255caf50841f6d5909d1
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: f186052117f40167c9e4e72e350bf689f43bd8b1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311245"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692841"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>CLI を使用して Azure VM で使用される OS ディスクを変更する
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-azure-cli"></a>Azure CLI を使用して Azure VM によって使用される OS ディスクを変更する
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 既存の VM があり、そのディスクをバックアップ ディスクまたは別の OS ディスクに交換する場合、Azure CLI を使用して OS ディスクを交換できます。 VM を削除して再作成する必要はありません。 別のリソース グループ内のマネージド ディスクでも、まだ使用されていない場合に限り使用することができます。
 
@@ -46,7 +48,7 @@ az vm stop \
 ```
 
 
-`--osdisk` パラメーターに新しいディスクの完全なリソース ID を指定して、[az vm update](/cli/azure/vm#az-vm-update) を使用します。 
+`--osdisk` パラメーターに新しいディスクの完全なリソース ID を指定して、[az vm update](/cli/azure/vm#az_vm_update) を使用します。 
 
 ```azurecli-interactive 
 az vm update \

@@ -1,23 +1,22 @@
 ---
 title: チュートリアル - OpenSSL を使用して Azure IoT Hub 向けの X.509 テスト証明書を作成する | Microsoft Docs
 description: チュートリアル - OpenSSL を使用して Azure IoT Hub 向けの CA 証明書とデバイス証明書を作成する
-author: v-gpettibone
-manager: philmea
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 02/26/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 0843e5d3a5e91cb4acdf18ad6bdf6f4f0c214f72
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 5fd735420ad97934e45160f7d57fdc9029faee6a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378297"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547631"
 ---
 # <a name="tutorial-using-openssl-to-create-test-certificates"></a>チュートリアル: OpenSSL を使用してテスト証明書を作成する
 
@@ -165,7 +164,7 @@ RANDFILE                 = $home/private/random
 new_certs_dir            = $home/certs
 unique_subject           = no
 copy_extensions          = copy 
-default_days           
+default_days             = 365
 default_crl_days         = 90 
 default_md               = sha256
 policy                   = policy_c_o_match
@@ -213,7 +212,7 @@ subjectKeyIdentifier     = hash
 `rootca/db/serial` ファイルに、下位 CA 証明書のための新しいシリアル番号を作成します。
 
 ```bash
-  openssl rand -hex 16 > db/serial
+  openssl rand -hex 16 > ../rootca/db/serial
 ```
 
 >[!IMPORTANT]
@@ -239,20 +238,27 @@ CSR をルート CA に提出し、ルート CA を使って下位 CA の証明�
 
 1. Azure portal で自分の IoT ハブに移動し、 **[設定] > [証明書]** の順に選択します。
 
-1. **[追加]** を選択して、新しい下位 CA 証明書を追加します。
+2. **[追加]** を選択して、新しい下位 CA 証明書を追加します。
 
-1. **[証明書名]** フィールドに表示名を入力し、前に作成した PEM 証明書ファイルを選択します。
+3. **[証明書名]** フィールドに表示名を入力し、前に作成した PEM 証明書ファイルを選択します。
 
-1. **[保存]** を選択します。 証明書が、証明書の一覧に **[未確認]** の状態で表示されます。 証明書の所有者であることは、確認プロセスで証明します。
+> [!NOTE]
+> 上記で作成された .crt 証明書は、.pem 証明書と同じです。 証明書をアップロードするときに拡張子を変更して所有権を証明することも、次の OpenSSL コマンドを使用することもできます。
+
+```bash
+openssl x509 -in mycert.crt -out mycert.pem -outform PEM
+```
+
+4. **[保存]** を選択します。 証明書が、証明書の一覧に **[未確認]** の状態で表示されます。 証明書の所有者であることは、確認プロセスで証明します。
 
    
-1. 証明書を選択して、 **[証明書の詳細]** ダイアログを表示します。
+5. 証明書を選択して、 **[証明書の詳細]** ダイアログを表示します。
 
-1. **[確認コードを生成します]** を選択します。 詳細については、[CA 証明書の所有証明](tutorial-x509-prove-possession.md)に関するページを参照してください。
+6. **[確認コードを生成します]** を選択します。 詳細については、[CA 証明書の所有証明](tutorial-x509-prove-possession.md)に関するページを参照してください。
 
-1. 確認コードをクリップボードにコピーします。 証明書のサブジェクトとして確認コードを設定する必要があります。 たとえば、確認コードが BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A であれば、手順 9 に示すように、それを証明書のサブジェクトとして追加します。
+7. 確認コードをクリップボードにコピーします。 証明書のサブジェクトとして確認コードを設定する必要があります。 たとえば、確認コードが BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A であれば、手順 9 に示すように、それを証明書のサブジェクトとして追加します。
 
-1. 秘密キーを作成します。
+8. 秘密キーを作成します。
 
   ```bash
     $ openssl genpkey -out pop.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
@@ -279,10 +285,10 @@ CSR をルート CA に提出し、ルート CA を使って下位 CA の証明�
  
   ```
 
-10. ルート CA の構成ファイルと、所有証明証明書の CSR を使用して証明書を作成します。
+10. 下位 CA 構成ファイルと所有証明証明書の CSR を使用して証明書作成します。
 
   ```bash
-    openssl ca -config rootca.conf -in pop.csr -out pop.crt -extensions client_ext
+    openssl ca -config subca.conf -in pop.csr -out pop.crt -extensions client_ext
 
   ```
 
@@ -308,7 +314,7 @@ Azure portal で自分の IoT ハブに移動し、次の値を使って新し�
 openssl genpkey -out device.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
 ```
 
-キーの証明書署名要求 (CSR) を作成します。 チャレンジ パスワードやオプションの会社名を入力する必要はありません。 ただし、Common Name フィールドにデバイス ID を入力する必要があります。
+キーの証明書署名要求 (CSR) を作成します。 チャレンジ パスワードやオプションの会社名を入力する必要はありません。 ただし、Common Name フィールドにデバイス ID を入力する必要があります。 また、他のパラメーター (**Country** や **Organization Name** など) の独自の値を入力することもできます。
 
 ```bash
 openssl req -new -key device.key -out device.csr
@@ -343,4 +349,8 @@ openssl ca -config subca.conf -in device.csr -out device.crt -extensions client_
 
 ## <a name="next-steps"></a>次の手順
 
-「[証明書認証のテスト](tutorial-x509-test-certificate.md)」を参照し、証明書を使ってデバイスを IoT ハブに認証できるかどうかを確認します。
+「[証明書認証のテスト](tutorial-x509-test-certificate.md)」を参照し、証明書を使ってデバイスを IoT ハブに認証できるかどうかを確認します。 そのページのコードでは、PFX 証明書を使用する必要があります。 デバイスの .crt 証明書を .pfx 形式に変換するには、次の OpenSSL コマンドを使用します。
+
+```bash
+openssl pkcs12 -export -in device.crt -inkey device.key -out device.pfx
+```

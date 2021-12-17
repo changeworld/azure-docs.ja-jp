@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 08/20/2020
+ms.date: 10/21/2021
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 09ebbaa6bb7cd5a2b4dcdee4e18fe905c5b2fbd3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a759bda6549df753d03e1fe0e8933f454f589d74
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062524"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563418"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
-[Azure Machine Learning](overview-what-is-azure-ml.md) のアーキテクチャおよび概念について説明します。  この記事では、コンポーネントについて概説し、これらが連携することにより、どのように機械学習モデルの構築、デプロイ、保守のプロセスに役立つかについて説明します。
+[Azure Machine Learning](overview-what-is-azure-machine-learning.md) のアーキテクチャおよび概念について説明します。  この記事では、コンポーネントについて概説し、これらが連携することにより、どのように機械学習モデルの構築、デプロイ、保守のプロセスに役立つかについて説明します。
 
 ## <a name="workspace"></a><a name="workspace"></a> ワークスペース
 
@@ -116,9 +116,9 @@ Azure Machine Learning では、すべての実行を記録して、実験に次
 
 ### <a name="logging"></a>ログ記録
 
-Azure Machine Learning では、標準的な実行メトリックが自動的にログに記録されます。 ただし、[Python SDK を使用して任意のメトリックをログに記録する](how-to-track-experiments.md)こともできます。
+Azure Machine Learning では、標準的な実行メトリックが自動的にログに記録されます。 ただし、[Python SDK を使用して任意のメトリックをログに記録する](how-to-log-view-metrics.md)こともできます。
 
-ログを表示する方法は複数あり、リアルタイムで実行状態を監視するか、完了後に結果を表示します。 詳細については、[ML 実行ログの監視と表示](how-to-monitor-view-training-logs.md)に関する記事を参照してください。
+ログを表示する方法は複数あり、リアルタイムで実行状態を監視するか、完了後に結果を表示します。 詳細については、[ML 実行ログの監視と表示](how-to-log-view-metrics.md)に関する記事を参照してください。
 
 
 > [!NOTE]
@@ -197,7 +197,7 @@ Scikit-learn を使用したモデルのトレーニングの例については�
 
 [ワークスペース](#workspace) > **エンドポイント**
 
-エンドポイントは、クラウドでホストできる Web サービスまたは統合デバイス デプロイ用 IoT モジュールへのモデルのインスタンス化です。
+エンドポイントは、クラウドでホストできる Web サービスへのモデルのインスタンス化です。
 
 #### <a name="web-service-endpoint"></a>Web サービス エンドポイント
 
@@ -232,13 +232,7 @@ Web サービスとしてのモデルのデプロイ例については、[Azure 
 パイプライン エンドポイントは、発行されたパイプラインのコレクションです。 この論理的な組織では、同じエンドポイントを使用して複数のパイプラインを管理し、呼び出すことができます。 パイプライン エンドポイントで公開されている各パイプラインは、バージョン管理されます。 エンドポイントの既定のパイプラインを選択するか、REST 呼び出しでバージョンを指定できます。
  
 
-#### <a name="iot-module-endpoints"></a>IoT モジュール エンドポイント
 
-デプロイされる IoT モジュール エンドポイントは Docker コンテナーであり、モデルとそれに関連付けられているスクリプトまたはアプリケーション、および追加の依存関係が含まれます。 エッジ デバイス上の Azure IoT Edge を使用して、これらのモジュールをデプロイします。
-
-監視を有効にしてある場合、Azure では Azure IoT Edge モジュール内のモデルから利用統計情報を収集します。 利用統計情報にアクセスできるのは機能を有効にしたユーザーだけであり、情報はそのユーザーのストレージ アカウント インスタンスに格納されます。
-
-Azure IoT Edge ではモジュールが実行されるのを保証し、モジュールをホストしているデバイスを監視します。 
 ## <a name="automation"></a>オートメーション
 
 ### <a name="azure-machine-learning-cli"></a>Azure Machine Learning CLI 
@@ -256,12 +250,12 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 Azure Machine Learning で提供される監視およびログ記録機能は次のとおりです。
 
 * "__データ科学者__" の場合、実験を監視し、トレーニングの実行から情報をログに記録することができます。 詳細については、次の記事を参照してください。
-   * [トレーニングの実行の開始、監視、およびキャンセル](how-to-manage-runs.md)
-   * [トレーニング実行のメトリックを記録する](how-to-track-experiments.md)
+   * [トレーニングの実行の開始、監視、およびキャンセル](how-to-track-monitor-analyze-runs.md)
+   * [トレーニング実行のメトリックを記録する](how-to-log-view-metrics.md)
    * [MLflow を使用して実験を追跡する](how-to-use-mlflow.md)
    * [TensorBoard を使用して実行を視覚化する](how-to-monitor-tensorboard.md)
 * "__管理者__" の場合、Azure Monitor を使用して、ワークスペース、関連する Azure リソース、およびリソースの作成や削除などのイベントに関する情報を監視できます。 詳細については、[Azure Machine Learning を監視する方法](monitor-azure-machine-learning.md)に関する記事を参照してください。
-* __DevOps__ または __MLOps__ の場合、Web サービスまたは IoT Edge モジュールとしてデプロイされたモデルによって生成された情報を監視して、デプロイに関する問題を特定し、サービスに送信されたデータを収集できます。 詳細については、[モデル データの収集](how-to-enable-data-collection.md)および [Application Insights での監視](how-to-enable-app-insights.md)に関する記事を参照してください。
+* __DevOps__ または __MLOps__ の場合、Web サービスとしてデプロイされたモデルによって生成された情報を監視して、デプロイに関する問題を特定し、サービスに送信されたデータを収集できます。 詳細については、[モデル データの収集](how-to-enable-data-collection.md)および [Application Insights での監視](how-to-enable-app-insights.md)に関する記事を参照してください。
 
 ## <a name="interacting-with-your-workspace"></a>ワークスペースの操作
 
@@ -274,7 +268,7 @@ Azure Machine Learning で提供される監視およびログ記録機能は次
 + コードを記述せずにワークフローの手順を行うための [Azure Machine Learning デザイナー](concept-designer.md)
 + [自動機械学習](concept-automated-ml.md)の Web エクスペリエンス
 + 統合された Jupyter ノートブック サーバーで独自のコードを作成して実行するための [Azure Machine Learning ノートブック](how-to-run-jupyter-notebooks.md)
-+ データをラベル付けするプロジェクトを作成、管理、および監視するための[データのラベル付けプロジェクト](how-to-create-labeling-projects.md)
++ [イメージ](how-to-create-image-labeling-projects.md)または[テキスト](how-to-create-text-labeling-projects.md)をラベル付けするプロジェクトを作成、管理、および監視するためのデータのラベル付けプロジェクト
 
 ### <a name="programming-tools"></a>プログラミング ツール
 
@@ -283,15 +277,13 @@ Azure Machine Learning で提供される監視およびログ記録機能は次
 > プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 +  [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro) を使用して、Python 環境でサービスを操作します。
-+ [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用して、R 環境でサービスを操作します (プレビュー)。
 + [Azure Machine Learning デザイナー](concept-designer.md)を使用して、コードを記述せずにワークフローの手順を行います。 
 + [Azure Machine Learning CLI](./reference-azure-machine-learning-cli.md) を自動化に使用します。
-+ [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning の利用を開始するには、以下を参照してください。
 
-* [Azure Machine Learning とは](overview-what-is-azure-ml.md)
+* [Azure Machine Learning とは](overview-what-is-azure-machine-learning.md)
 * [Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)
 * [チュートリアル (パート 1): モデルをトレーニングする](tutorial-train-models-with-aml.md)

@@ -1,144 +1,209 @@
 ---
 title: Azure Functions のベスト プラクティス
-description: Azure Functions のベスト プラクティスとパターンについて説明します。
+description: Azure で実行される効率的な関数コードを設計、デプロイ、維持するためのベスト プラクティスについて説明します。
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5783f8092a6435b43ab8720df18cc5200e390d46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/30/2021
+ms.openlocfilehash: 620d3c27ae9f1df0b927119143a42e7f83730962
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100378249"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715418"
 ---
-# <a name="best-practices-for-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性に関するベスト プラクティス
+# <a name="best-practices-for-reliable-azure-functions"></a>信頼性の高い Azure Functions のためのベスト プラクティス
 
-この記事では、[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数アプリのパフォーマンスと信頼性を向上させるためのガイダンスを紹介しています。  
+Azure Functions は、Azure、サードパーティのサービス、オンプレミスのシステムで発生するイベントによってトリガーされるコードを実装する機能により、既存の Azure App Service アプリケーション プラットフォームを拡張する、イベント ドリブンのオンデマンド コンピューティング エクスペリエンスです。 Functions を使用すると、データ ソースまたはメッセージング ソリューションに接続することによってソリューションを構築でき、イベントの処理と対応が容易になります。 Functions が実行される Azure データ センターは、多くの統合コンポーネントを備えた複雑なものです。 ホストされたクラウド環境では、VM が再起動または移動されたりする場合があり、システムのアップグレードが行われます。 関数アプリは、外部 API、Azure サービス、他のデータベースにも依存している可能性が高く、これらも定期的に信頼できなくなることがあります。 
 
-Azure Functions を使用して、サーバーレス ソリューションを構築および設計する際のベスト プラクティスを以下に示します。
+この記事では、クラウドベースの環境で正常な状態を維持し、パフォーマンスが高い効率的な関数アプリを、設計してデプロイするためのベスト プラクティスについて説明します。
 
-## <a name="avoid-long-running-functions"></a>実行時間の長い関数を使用しない
+## <a name="choose-the-correct-hosting-plan"></a>適切なホスティング プランを選択する 
 
-サイズが大きく実行時間の長い関数では、予期しないタイムアウトの問題が発生する可能性があります。 特定のホスティング プランのタイムアウトの詳細については、「[Function App タイムアウト期間](functions-scale.md#timeout)」を参照してください。
+Azure で Function App を作成するときは、アプリのホスティング プランを選択する必要があります。 選択するプランは、パフォーマンス、信頼性、コストに影響します。 Functions では 3 つの基本的なホスティング プランを利用できます。 
 
-関数は、Node.js 依存関係の多さからそのサイズが大きくなることがあります。 また、依存関係をインポートすると、読み込み時間が長くなり、予期しないタイムアウトが発生する可能性もあります。 依存関係は明示的にも暗黙的にも読み込まれます。 コードによって読み込まれる単一のモジュールによって、独自の追加モジュールが読み込まれることがあります。
++ [従量課金プラン](consumption-plan.md)
++ [Premium プラン](functions-premium-plan.md)
++ [専用 (App Service) プラン](dedicated-plan.md)
 
-可能な限り、大きな関数は、連携して高速な応答を返す、より小さな関数セットにリファクタリングしてください。 たとえば、webhook または HTTP トリガー関数では、一定の時間内に確認応答が必要になる場合があります。webhook は通常、即座に応答を必要とします。 この HTTP トリガー ペイロードは、キュー トリガー関数によって処理されるキューに渡すことができます。 このアプローチを使用すると、実際の作業を遅らせて、即座に応答を返すことができます。
+Linux または Windows を実行する場合、すべてのホスティング プランが一般提供 (GA) されます。
 
-## <a name="cross-function-communication"></a>関数間の通信
+App Service プラットフォームのコンテキストでは、関数を動的にホストするために使用される Premium プランは、エラスティック Premium プラン (EP) です。 他にも、Premium と呼ばれる専用 (App Service) プランがあります。 詳細については、[Premium プラン](functions-premium-plan.md)に関する記事を参照してください。
 
-[Durable Functions](durable/durable-functions-overview.md) と [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、状態遷移と複数の関数間での通信を管理するように構築されています。
+選択するホスティング プランによって、次の動作が決まります。
 
-複数の関数と統合する際に Durable Functions も Logic Apps も使用しない場合、関数間通信にストレージ キューを使用することが推奨されます。 その主な理由は、他のストレージ オプションよりストレージ キューの方が安価であり、プロビジョニングがはるかに容易なためです。
++   需要に基づいて関数アプリがスケーリングされる方法と、インスタンスの割り当ての管理方法。
++   各 Function App  インスタンスに利用できるリソース。
++   Azure Virtual Network 接続などの高度な機能のサポート。
 
-ストレージ キュー内では、個々のメッセージのサイズが 64 KB に制限されます。 関数間でこれよりも大きなメッセージを渡す必要がある場合は、Azure Service Bus キューを使用して、Standard レベルで最大 256 KB、Premium レベルで最大 1 MB のメッセージ サイズをサポートできます。
+正しいホスティング プランの選択に関する詳細と、プラン間の詳細な比較については、「[Azure Functions のホスティング オプション](functions-scale.md)」参照してください。
 
-メッセージの処理の前にフィルター処理を必要とする場合は、Service Bus のトピックが役立ちます。
+関数アプリを作成するときに、正しいプランを選択することが重要です。 Functions では、ホスティング プランを切り替える機能 (主に、従量課金とエラスティック Premium プランの間) が制限されています。 詳細については、「[プランの移行](functions-how-to-use-azure-function-app-settings.md?tabs=portal#plan-migration)」を参照してください。 
 
-イベント ハブは、大量の通信をサポートするのに便利です。
+## <a name="configure-storage-correctly"></a>ストレージを正しく構成する
 
-## <a name="write-functions-to-be-stateless"></a>ステートレスな関数を記述する
+Functions では、ストレージ アカウントが関数アプリと関連付けられている必要があります。 ストレージ アカウントの接続は、トリガーの管理や関数の実行のログ記録などの操作のために、Functions ホストによって使用されます。 関数アプリを動的にスケーリングするときにも使用されます。 詳細については、「[Azure Functions のストレージに関する考慮事項](storage-considerations.md)」を参照してください。
 
-可能であれば、関数はステートレスかつべき等である必要があります。 すべての必要な状態情報をデータに関連付けます。 たとえば、処理する注文には、`state` メンバーが関連付けられている可能性があります。 関数は、それ自体がステートレスなまま、その状態に基づいて注文を処理できます。
+関数アプリでファイル システムまたはストレージ アカウントが正しく構成されていないと、関数のパフォーマンスと可用性に影響する可能性があります。 正しく構成されていないストレージ アカウントのトラブルシューティングについては、[ストレージのトラブルシューティング](functions-recover-storage-account.md)に関する記事を参照してください。 
 
-べき等性を持つ関数は、特にタイマー トリガーと共に使用することをお勧めします。 たとえば、1 日に 1 回必ず実行する必要のある操作がある場合は、1 日の中の任意の時間にその操作を実行して同じ結果が得られるように記述します。 特定の日に操作を実行しない場合、この関数は終了することができます。 また、前回の実行が完了しなかった場合は、次の実行では中断した場所から操作を実行する必要があります。
+### <a name="storage-connection-settings"></a>ストレージの接続の設定
 
-## <a name="write-defensive-functions"></a>防御的な関数を記述する
+動的にスケーリングする関数アプリは、ストレージ アカウントの Azure Files エンドポイントから、またはスケールアウトされるインスタンスに関連付けられているファイル サーバーから実行できます。 この動作は、次のアプリケーション設定によって制御されます。
 
-関数は時を選ばす例外に遭遇する可能性があることを想定する必要があります。 関数を設計する場合は、前回失敗した処理を、次回そのポイントから続行する機能を組み込みます。 次のアクションを必要とするシナリオを考えてみましょう。
++ [WEBSITE_CONTENTAZUREFILECONNECTIONSTRING](functions-app-settings.md#website_contentazurefileconnectionstring)
++ [WEBSITE_CONTENTSHARE](functions-app-settings.md#website_contentshare)
 
-1. データベース内の 10,000 行を照会する。
-2. これらの行のそれぞれに対してキュー メッセージを作成して、最後まで処理を実行する。
+これらの設定は、Premium プランまたは Windows の従量課金プランで実行している場合にのみサポートされます。
 
-システムの複雑さによっては、ダウンストリーム サービスが正しく動作しない、ネットワーキングが停止する、クォータ制限に達するなどの問題が発生する可能性があります。いずれも、時を選ばず関数に影響する可能性があります。 関数を設計する際は、このような状況を想定する必要があります。
+Azure portal で、または Azure CLI や Azure PowerShell を使用して、関数アプリを作成すると、必要に応じて関数アプリ用にこれらの設定が作成されます。 Azure Resource Manager テンプレート (ARM テンプレート) からリソースを作成するときは、テンプレートに `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` も含める必要があります。 
 
-これらのアイテムのうちの 5,000 個を処理のためにキューに入れた後で障害が発生する状況を想定した場合、どのように対応すればよいでしょうか。 完了したセット内のアイテムを追跡するようにしましょう。 そうでないと、次回同じアイテムを再び挿入することになります。 このように挿入が 2 回になると、ワークフローに深刻な影響が出ることがあります。そのため、[関数はべき等にして](functions-idempotent.md)ください。 
+ARM テンプレートを使用して初めてデプロイするときは、`WEBSITE_CONTENTSHARE` を含めないでください。自動的に生成されます。   
 
-キュー アイテムが既に処理されている場合は、関数による操作をなしにします。
+次の ARM テンプレートの例を使用すると、これらの設定を正しく構成できます。
 
-Azure Functions プラットフォームで使用するコンポーネントに対して既に提供されている防御策を活用してください。 一例として、[Azure Storage キューのトリガーとバインド](functions-bindings-storage-queue-trigger.md#poison-messages)に関するドキュメントの「**有害キュー メッセージの処理**」を参照してください。
++ [従量課金プラン](https://azure.microsoft.com/resources/templates/function-app-create-dynamic/)
++ [専用プラン](https://azure.microsoft.com/resources/templates/function-app-create-dedicated/)
++ [VNET 統合を使用する Premium プラン](https://azure.microsoft.com/resources/templates/function-premium-vnet-integration/)
++ [デプロイ スロットを使用する従量課金プラン](https://azure.microsoft.com/resources/templates/function-app-create-dynamic-slot/)
 
-## <a name="function-organization-best-practices"></a>関数編成のベスト プラクティス
+### <a name="storage-account-configuration"></a>Storage account configuration
 
-ソリューションの一部として、複数の関数を開発し、公開することができます。 このような関数は、多くの場合、1 つの関数アプリに結合されますが、別々の関数アプリ内で実行することもできます。 Premium および専用 (App Service) ホスティング プランでは、同じプランで実行することにより、複数の関数アプリが同じリソースを共有することもできます。 関数と関数アプリをグループ化する方法は、ソリューション全体のパフォーマンス、スケーリング、構成、デプロイ、セキュリティに影響する場合があります。 すべてのシナリオに適用される規則はないため、関数を計画および開発するときは、このセクションの情報を検討してください。
+Function App を作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 Functions は、トリガーの管理や関数実行のログ記録などの操作を Azure Storage に依存しています。 関数アプリ用のストレージ アカウントの接続文字列は、`AzureWebJobsStorage` と `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` のアプリケーション設定にあります。
 
-### <a name="organize-functions-for-performance-and-scaling"></a>パフォーマンスとスケーリングを考慮して関数を編成する
+このストレージ アカウントを作成するときは、次の点に注意してください。 
 
-作成する個々の関数にはメモリ占有領域があります。 通常、このメモリ占有領域はわずかですが、関数アプリ内の関数が多すぎると、新しいインスタンスでのアプリの起動が遅くなる場合があります。 また、関数アプリの全体的なメモリ使用量が高くなるおそれもあります。 1 つのアプリに含めるべき関数の数は、個々のワークロードによって異なるため、一概には言えません。 しかし、メモリに大量のデータを格納する関数の場合は、1 つのアプリに含まれる関数の数を少なくすることを検討してください。
++ 待機時間を短縮するには、ストレージ アカウントは関数アプリと同じリージョンに作成します。
 
-1 つの Premium プランまたは専用 (App Service) プランで複数の関数アプリを実行する場合、こうしたアプリはすべて一緒にスケーリングされます。 他のアプリよりもメモリ要件がはるかに高い 1 つの関数アプリがある場合、アプリのデプロイ先である各インスタンス上のメモリ リソースが過剰に消費されます。 その結果、各インスタンス上で他のアプリに使用できるメモリが少なくなるおそれがあるため、このようにメモリを大量に使用する関数アプリは、独自の個別のホスティング プランで実行することをお勧めします。
++ 運用環境でのパフォーマンスを向上させるには、関数アプリごとに個別のストレージ アカウントを使用します。 これは、Durable Functions とイベント ハブによってトリガーされる関数に特に当てはまります。 
 
-> [!NOTE]
-> [従量課金プラン](./functions-scale.md)を使用する場合、いずれにしてもアプリは個別にスケーリングされるため、常に各アプリを独自のプランに配置することをお勧めします。
++ イベント ハブによってトリガーされる関数の場合は、[Data Lake Storage が有効になっている](https://github.com/Azure/azure-functions-eventhubs-extension/issues/81)アカウントを使用しないでください。
 
-負荷プロファイルが異なる関数をグループ化するかどうかを検討します。 たとえば、何千個ものキュー メッセージを処理する関数と、呼び出し頻度が低くメモリ要件が高い関数がある場合は、それらを個別の関数アプリにデプロイすることで、独自のリソース セットを取得し、互いに独立してスケーリングできるようにします。
+### <a name="handling-large-data-sets"></a>大きなデータ セットの処理
 
-### <a name="organize-functions-for-configuration-and-deployment"></a>構成とデプロイを考慮して関数を編成する
+Linux で実行する場合は、ファイル共有をマウントすることで、ストレージをさらに追加できます。 共有のマウントは、関数で大規模な既存のデータ セットを処理するのに便利な方法です。 詳細については、「[ファイル共有をマウントする](storage-considerations.md#mount-file-shares)」を参照してください。
 
-関数アプリには `host.json` ファイルがあります。これは、関数トリガーと Azure Functions ランタイムの高度な動作を構成するために使用されます。 `host.json` ファイルに対する変更は、アプリ内のすべての関数に適用されます。 カスタムの構成が必要な関数がある場合は、それらを独自の関数アプリに移動することを検討してください。
+## <a name="organize-your-functions"></a>関数を整理する 
 
-ローカル プロジェクトのすべての関数は、Azure Functions アプリに一連のファイルとしてまとめてデプロイされます。 必要に応じて、個々の関数を個別にデプロイしたり、[デプロイ スロット](./functions-deployment-slots.md)などの機能を一部の関数にのみ使用したりする場合があります。 このような場合は、これらの関数を (個別のコード プロジェクトで) 別の関数アプリにデプロイする必要があります。
+ソリューションの一部として、複数の関数を開発して公開することがあります。 このような関数は、多くの場合、1 つの関数アプリに結合されますが、別々の関数アプリ内で実行することもできます。 Premium および専用 (App Service) ホスティング プランでは、同じプランで実行することにより、複数の関数アプリで同じリソースを共有することもできます。 関数と関数アプリをグループ化する方法は、ソリューション全体のパフォーマンス、スケーリング、構成、デプロイ、セキュリティに影響する場合があります。 
 
-### <a name="organize-functions-by-privilege"></a>関数を権限別に整理する
+従量課金と Premium プランでは、関数アプリ内のすべての関数がまとめて動的にスケーリングされます。
 
-アプリケーションの設定に格納されている接続文字列やそれ以外の資格情報では、関数アプリに含まれるすべての関数に対して、関連リソース内で同一のアクセス許可一式が付与されます。 こうした資格情報を使用しない関数は別の関数アプリに移動して、特定の資格情報にアクセスできる関数の数を最小限に抑えることを検討してください。 異なる関数アプリの関数間でのデータの受け渡しは、[関数チェーン](/learn/modules/chain-azure-functions-data-using-bindings/)などの手法を使用すればいつでも行えます。  
+関数を整理する方法の詳細については、「[関数編成のベスト プラクティス](performance-reliability.md#function-organization-best-practices)」を参照してください。
 
-## <a name="scalability-best-practices"></a>スケーラビリティのベスト プラクティス
+## <a name="optimize-deployments"></a>デプロイを最適化する
 
-関数アプリのインスタンスのスケーリングに影響を及ぼす多数の要素があります。 詳細については、[関数のスケーリング](functions-scale.md)に関するドキュメントをご覧ください。  関数アプリの最適なスケーラビリティを確保するためのベスト プラクティスを以下に示します。
+関数アプリをデプロイするときは、Azure での関数のデプロイ単位が関数アプリである点に気を付けることが重要です。 関数アプリ内のすべての関数が、通常は同じデプロイ パッケージから、同時にデプロイされます。  
 
-### <a name="share-and-manage-connections"></a>接続の共有と管理
+デプロイを成功させるには、次のオプションを検討してください。
 
-可能であれば、外部リソースへの接続を再利用します。 「[Azure Functions で接続を管理する方法](./manage-connections.md)」をご覧ください。
++  デプロイ パッケージから関数を実行します。 このような[パッケージから実行する方法](run-functions-from-deployment-package.md)には、次の利点があります。
 
-### <a name="avoid-sharing-storage-accounts"></a>ストレージ アカウントの共有を回避する
+    + ファイル コピー ロック問題のリスクを軽減します。 
+    + 再起動をトリガーする運用アプリに直接デプロイできます。 
+    + パッケージ内のすべてのファイルがアプリで使用できることがわかっています。 
+    + ARM テンプレートのデプロイのパフォーマンスが向上します。
+    + 特に大規模な npm パッケージのツリーの JavaScript 関数の場合、コールド スタート時間を減らすことができます。
 
-関数アプリを作成する場合は、ストレージ アカウントに関連付ける必要があります。 ストレージ アカウント接続は、[AzureWebJobsStorage アプリケーション設定](./functions-app-settings.md#azurewebjobsstorage)の中で管理されます。
++ [継続的配置](functions-continuous-deployment.md)を使用して、デプロイをソース管理ソリューションに接続することを検討します。 継続的配置を使用すると、デプロイ パッケージから実行することもできます。
 
-[!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
++ [Premium プランのホスティング](functions-premium-plan.md)の場合は、ウォームアップ トリガーを追加して、新しいインスタンスが追加されるときの待機時間を短縮することを検討します。 詳細については、「[Azure Functions のウォームアップ トリガー](functions-bindings-warmup.md)」を参照してください。 
 
-### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>同じ関数アプリにテスト コードと運用環境のコードを混在させない
++ デプロイのダウンタイムを最小限に抑え、デプロイをロールバックするには、デプロイ スロットの使用を検討してください。 詳細については、「[Azure Functions デプロイ スロット](functions-deployment-slots.md)」を参照してください。
 
-Function App 内の関数はリソースを共有します。 たとえば、メモリは共有されます。 運用環境で Function App を使用している場合は、テストに関連する関数およびリソースを追加しないでください。 これが原因で、運用環境のコードの実行中に予期しないオーバーヘッドが発生する可能性があります。
+## <a name="write-robust-functions"></a>堅牢な関数を記述する
 
-運用環境の Function App で読み込むものに注意してください。 メモリは、アプリ内の各関数間で平均化されます。
+関数のコードを記述するときは、いくつかの設計原則に従うと、関数の一般的なパフォーマンスと可用性に役立ちます。 これらの原則は次のとおりです。
+ 
++ [実行時間の長い関数を使用しない。](performance-reliability.md#avoid-long-running-functions) 
++ [関数間の通信を計画する。](performance-reliability.md#cross-function-communication) 
++ [ステートレスな関数を記述する。](performance-reliability.md#write-functions-to-be-stateless)
++ [防御的な関数を記述する。](performance-reliability.md#write-defensive-functions)
 
-複数の .NET 関数で参照される共有アセンブリがある場合は、それを共通の共有フォルダーに配置します。 そうしないと、関数間で動作が異なる同じバイナリの複数のバージョンを誤ってデプロイする可能性があります。
+クラウド コンピューティングでは一時的な障害は一般的なことなので、クラウドベースのリソースにアクセスするときは、[再試行パターン](/azure/architecture/patterns/retry)を使用する必要があります。 多くのトリガーとバインドには、再試行が既に実装されています。 
 
-実稼働コードでは、詳細ログを使用しないでください。パフォーマンスに悪影響を及ぼします。
+## <a name="design-for-security"></a>セキュリティ向けの設計
 
-### <a name="use-async-code-but-avoid-blocking-calls"></a>非同期コードを使用し、呼び出しのブロックは避ける
+セキュリティについての検討は、関数の準備ができた後ではなく、計画フェーズの間に行うのが最善です。 関数を安全に開発してデプロイする方法については、「[Azure Functions のセキュリティ保護](security-concepts.md)」を参照してください。  
 
-非同期プログラミングは、特に I/O 操作のブロックが関連している場合に、推奨されるベスト プラクティスです。
+## <a name="consider-concurrency"></a>コンカレンシーを検討する
 
-C# では、`Task` インスタンス上の `Result` プロパティを参照したり `Wait` メソッドを呼び出したりすることは、常に避けるようにします。 この手法により、スレッドが枯渇する可能性があります。
+着信イベントの結果として関数アプリの需要が増えると、従量課金と Premium プランで実行されている関数アプリはスケールアウトされます。関数アプリが負荷に応答する方法と、着信イベントを処理するようにトリガーを構成する方法を理解しておくことが重要です。 一般的な概要については、「[Azure Functions でのイベント ドリブン スケーリング](event-driven-scaling.md)」を参照してください。
 
-[!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+専用 (App Service) プランでは、ユーザーが関数アプリのスケールアウトに対応する必要があります。 
 
-### <a name="use-multiple-worker-processes"></a>複数のワーカー プロセスを使用する
+### <a name="worker-process-count"></a>ワーカー プロセスの数
 
-既定では、Functions のどのホスト インスタンスでも、単一のワーカー プロセスが使用されます。 特に Python などのシングルスレッド ランタイムによってパフォーマンスを向上させるには、[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) を使用して、ホストあたりのワーカープロセス数を増やします (最大 10 まで)。 次に、Azure Functions は、これらのワーカー間で同時関数呼び出しを均等に分散しようとします。
+場合によっては、スケールアウトの前に、言語ワーカー プロセスと呼ばれる複数のプロセスをインスタンスに作成することで、負荷を処理する方が効率的です。許可される言語ワーカー プロセスの最大数は、[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) の設定によって制御されます。 この設定の既定値は `1` で、複数のプロセスが使用されないことを意味します。 プロセスの最大数に達すると、関数アプリはスケールアウトされ、負荷を処理するためにより多くのインスタンスが作成されます。 この設定は、ホスト プロセスで実行される [C# クラス ライブラリ関数](functions-dotnet-class-library.md)には適用されません。
 
-FUNCTIONS_WORKER_PROCESS_COUNT は、需要に合わせてアプリケーションをスケールアウトするときに Functions によって作成される各ホストに適用されます。
+Premium プランまたは専用 (App Service) プランで `FUNCTIONS_WORKER_PROCESS_COUNT` を使用する場合は、プランによって提供されるコアの数に注意してください。 たとえば、Premium プラン `EP2` では 2 つのコアが提供されるので、値 `2` から開始し、必要に応じて最大値になるまで 2 つずつ増やす必要があります。
 
-### <a name="receive-messages-in-batch-whenever-possible"></a>可能な限りメッセージをバッチで受信する
+### <a name="trigger-configuration"></a>トリガーの構成
 
-イベント ハブなどの一部のトリガーでは、1 つの呼び出しでメッセージのバッチを受信できます。  メッセージをバッチ処理すると、パフォーマンスが大幅に向上します。  [host.json のリファレンス ドキュメント](functions-host-json.md)で詳述するように、`host.json` ファイルで最大バッチ サイズを構成できます。
+スループットとスケーリングを計画するときは、さまざまな種類のトリガーによってイベントが処理される方法を理解しておくことが重要です。 一部のトリガーでは、バッチ処理の動作を制御したり、コンカレンシーを管理したりできます。 多くの場合、これらのオプションの値を調整することで、呼び出された関数の要求に合わせて各インスタンスを適切にスケールできます。 これらの構成オプションは、関数アプリ内のすべてのトリガーに適用され、アプリの host.json ファイルに保持されます。 設定の詳細については、特定のトリガーのリファレンスの構成セクションを参照してください。
 
-C# 関数の場合、型を厳密に型指定された配列に変更できます。  たとえば、メソッド シグネチャに、`EventData sensorEvent` ではなく `EventData[] sensorEvent` を指定できます。  他の言語の場合、バッチ処理を有効にするには、[こちら](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)に示すように、`function.json` のカーディナリティ プロパティを明示的に `many` に設定する必要があります。
+Functions によるメッセージ ストリームの処理方法の詳細については、「[Azure Functions の信頼性の高いイベント処理](functions-reliable-event-processing.md)」を参照してください。
 
-### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>コンカレンシーを適切に処理するようにホストの動作を構成する
+### <a name="plan-for-connections"></a>接続を計画する
 
-関数アプリの `host.json` ファイルでは、ホストのランタイムとトリガーの動作を構成できます。  バッチ処理の動作に加え、多数のトリガーのコンカレンシーを管理できます。 多くの場合、これらのオプションの値を調整することで、呼び出された関数の要求に合わせて各インスタンスを適切にスケールできます。
+[従量課金プラン](consumption-plan.md)で実行される関数アプリには、接続の制限が適用されます。 これらの制限は、インスタンスごとに適用されます。 これらの制限のため、および一般的なベスト プラクティスとして、関数コードからのアウトバウンド接続を最適化する必要があります。 詳細については、「[Azure Functions での接続の管理](manage-connections.md)」を参照してください。 
 
-host.json ファイルの設定は、アプリ内のすべての関数 (関数の "*1 つのインスタンス*") に適用されます。 たとえば、2 つの HTTP 関数が含まれ、[`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) 要求数が 25 に設定された関数アプリがある場合、一方の HTTP トリガーに対する要求は共有された 25 の同時要求にカウントされます。  その関数アプリが 10 インスタンスにスケーリングされた場合、10 個の関数は 250 個の同時要求に効果的に対応できます (10 インスタンス * インスタンスあたり 25 個の同時要求)。 
+### <a name="language-specific-considerations"></a>言語固有の考慮事項
 
-他のホスト構成オプションについては、[host.json 構成に関する記事](functions-host-json.md)をご覧ください。
+選択した言語については、次の点に注意してください。
+
+# <a name="c"></a>[C#](#tab/csharp)
+
++ [非同期コードを使用し、呼び出しがブロックされないようにします](performance-reliability.md#use-async-code-but-avoid-blocking-calls)。
+
++ [キャンセル トークンを使用します](functions-dotnet-class-library.md?#cancellation-tokens) (インプロセスのみ)。
+
+# <a name="java"></a>[Java](#tab/java)
+
++ CPU バインドと IO バインドの操作が混在するアプリケーションでは、[より多くのワーカー プロセス](functions-app-settings.md#functions_worker_process_count)を使用することを検討します。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
++ [`async` と `await` を使用します](functions-reference-node.md#use-async-and-await)。
+
++ [CPU バインドのアプリケーションには、複数のワーカー プロセスを使用します](functions-reference-node.md?tabs=v2#scaling-and-concurrency)。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
++ [コンカレンシーに関する考慮事項を確認します](functions-reference-powershell.md#concurrency)。
+
+# <a name="python"></a>[Python](#tab/python)
+
++ [Azure Functions で Python アプリのスループット パフォーマンスを向上させる](python-scale-performance-reference.md)
+
+---
+
+## <a name="maximize-availability"></a>可用性を最大にする
+
+サーバーレス アーキテクチャでは、コールド スタートが重要な考慮事項です。 詳細については、「[コールド スタート](event-driven-scaling.md#cold-start)」を参照してください。 シナリオでコールド スタートが問題になる場合、詳細については「[サーバーレスのコールド スタートについて](https://azure.microsoft.com/blog/understanding-serverless-cold-start/)」を参照してください。 
+
+動的なスケーリングを維持しながら、コールド スタートを減らすには、Premium プランが推奨されるプランです。 次のガイダンスに従うと、3 つのホスティング プランすべてで、コールド スタートを減らし、可用性を向上させることができます。 
+
+| 計画 | ガイダンス |
+| --- | --- | 
+| **Premium プラン** | • [関数アプリでウォームアップ トリガーを実装します](functions-bindings-warmup.md)<br/>• [常時使用可能なインスタンス数と最大バースト制限の値を設定します](functions-premium-plan.md#plan-and-sku-settings)<br/>• [仮想ネットワークで HTTP 以外のトリガーを使用する場合は、仮想ネットワーク トリガーのサポートを使用します](functions-networking-options.md#premium-plan-with-virtual-network-triggers)|
+| **専用プラン** | • [Azure App Service の正常性チェックが有効になっている 2 つ以上のインスタンスで実行します](../app-service/monitor-instances-health-check.md)<br/>• [自動スケーリングを実装します](/azure/architecture/best-practices/auto-scaling)|
+| **従量課金プラン** | • バインドとトリガーについてシングルトン パターンとコンカレンシー設定の使用を確認し、関数アプリのスケーリング方法に人為的な制限を設けないようにします。<br/>• [スケールアウトを制限する可能性のある `functionAppScaleLimit` の設定を確認します](event-driven-scaling.md#limit-scale-out)<br/>• 開発とテストの間に設定された日ごとの使用量クォータ (GB 秒) の上限を確認します。 運用環境では、この制限を削除することを検討します。 |
+
+## <a name="monitor-effectively"></a>効率的に監視する
+
+Azure Functions には、関数の実行やコードから書き込まれたトレースを監視するための、Azure Application Insights との統合が組み込まれています。 詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。 Azure Monitor には、関数アプリ自体の正常性を監視する機能も用意されています。 詳細については、「[Azure Functions と共に Azure Monitor メトリックを使用する](monitor-metrics.md)」を参照してください。
+
+Application Insights 統合を使用して関数を監視する場合は、次の点に注意する必要があります。
+
++ [AzureWebJobsDashboard](functions-app-settings.md#azurewebjobsdashboard) のアプリケーション設定が削除されていることを確認します。 これは、古いバージョンの Functions でサポートされていた設定です。 `AzureWebJobsDashboard` が存在する場合、それを削除すると関数のパフォーマンスが向上します。 
+
++  [Application Insights のログ](analyze-telemetry-data.md)を確認します。 検出しようとしているデータが見つからない場合は、サンプリング設定を調整し、監視シナリオをより適切にキャプチャすることを検討します。 設定 `excludedTypes` を使用すると、`Request` や `Exception` などの特定の種類をサンプリングから除外できます。 詳細については、「[サンプリングを構成する](configure-monitoring.md?tabs=v2#configure-sampling)」を参照してください。
+
+Azure Functions では、[システム生成とユーザー生成のログを Azure Monitor ログに送信する](functions-monitor-log-analytics.md)こともできます。 Azure Monitor ログとの統合は、現在、プレビュー段階です。 
+
+## <a name="build-in-redundancy"></a>冗長性があるように構築する
+
+ビジネス ニーズによっては、データ センターの停止中でも、関数を常に使用できるようにすることが必要になる場合があります。 重要な関数を常に実行させておくための、複数リージョンのアプローチの使用方法については、[Azure Functions の geo ディザスター リカバリーと高可用性](functions-geo-disaster-recovery.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、次のリソースを参照してください。
-
-* [Azure Functions で接続を管理する方法](manage-connections.md)
-* [Azure App Service のベスト プラクティス](../app-service/app-service-best-practices.md)
+[お使いの Function App の管理](functions-how-to-use-azure-function-app-settings.md)

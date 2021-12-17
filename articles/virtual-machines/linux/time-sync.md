@@ -1,26 +1,23 @@
 ---
 title: Azure での Linux VM の時刻同期
 description: Linux 仮想マシンの時刻同期。
-services: virtual-machines
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/20/2020
+ms.date: 09/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 18c8570a8066985cab5263c4779787062dc32d75
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 324373fc56ae1a57adfb522ca77f06f2c080074c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552645"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776521"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット 
 
 時刻同期は、セキュリティとイベントの関連付けで重要になります。 場合によっては、分散トランザクションの実装で使用されます。 複数のコンピューター システム間での時刻の精度は、同期によって実現されます。 同期は、再起動や、時刻をフェッチするコンピューターとタイム ソースとの間のネットワーク トラフィックなど、複数の要因に影響を受ける可能性があります。 
 
@@ -39,7 +36,7 @@ Azure ホストは内部の Microsoft タイム サーバーに同期されて�
 
 スタンドアロン ハードウェアでは、Linux OS によって、起動時にホスト ハードウェア クロックのみが読み取られます。 その後、クロックは、Linux カーネルの割り込みタイマーを使用して維持されます。 この構成では、クロックは時間の経過と共に誤差が生じます。 Azure の新しい Linux ディストリビューションでは、VM で VMICTimeSync プロバイダーを使用できます。このプロバイダーは LIS (Linux Integration Services) に含まれており、ホストからより頻繁にクロック更新についてクエリを実行するためのものです。
 
-仮想マシンとホストとのやりとりがクロックに影響する場合もあります。 [メモリ保持メンテナンス](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)中に、VM は最大で 30 秒間一時停止します。 たとえば、メンテナンスの開始前に、VM クロックには午前 10 時 00 分 00 秒と示され、この状態が 28 秒間続きます。 VM の再開後、VM のクロックはまだ午前 10 時 00 分 00 秒と示されており、28 秒遅れていることになります。 これを修正するため、VMICTimeSync サービスでは、ホストで何が発生しているのかを監視し、VM で生じた変更の補正を求めます。
+仮想マシンとホストとのやりとりがクロックに影響する場合もあります。 [メモリ保持メンテナンス](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)中に、VM は最大で 30 秒間一時停止します。 たとえば、メンテナンスの開始前に、VM クロックには午前 10 時 00 分 00 秒と示され、この状態が 28 秒間続きます。 VM の再開後、VM のクロックはまだ午前 10 時 00 分 00 秒と示されており、28 秒遅れていることになります。 これを修正するため、VMICTimeSync サービスでは、ホストで何が発生しているのかを監視し、補正する Linux VM の時刻機構を更新します。
 
 時刻同期が動作しないと、VM のクロックでエラーが蓄積されます。 VM が 1 つのみであれば、ワークロードで高精度のタイムキーピングが必要でない限り、影響は大きくならない場合があります。 しかし、ほとんどの場合、相互接続された VM が複数あり、それらの VM ではトランザクションを追跡するために時間を使用し、その時間はデプロイ全体で一貫している必要があります。 VM 間の時間が異なると、次のような影響が見られる場合があります。
 
@@ -48,38 +45,27 @@ Azure ホストは内部の Microsoft タイム サーバーに同期されて�
 - クロックに誤差がある場合、請求額を正しく計算できません。
 
 
-
 ## <a name="configuration-options"></a>構成オプション
 
-Azure でホストされている Linux VM 用の時刻同期を構成する方法は、通常、次の 3 つとなります。
+時刻の同期では、Linux VM で時刻同期サービスを実行することと、同期する正確な時刻情報のソースが必要です。
+通常、ntpd または chronyd は時刻同期サービスとして使用されます。しかし、他にも使用できるオープン ソースの時刻同期サービスがあります。
+正確な時刻情報のソースは、Azure ホストまたはパブリック インターネットを使用してアクセスされる外部タイム サービスです。
+VMICTimeSync サービス自体は、前述のようにホストメンテナンスのために一時停止した後を除き、Azure ホストと Linux VM の間で継続的な時刻同期を提供しません。 
 
-- Azure Marketplace イメージ用の既定の構成では、NTP 時刻と VMICTimeSync ホスト時刻の両方が使用されます。 
-- ホストのみ (VMICTimeSync を使用)。
-- VMICTimeSync ホスト時刻を使用して、または使用せずに、別の外部のタイム サーバーを使用します。
+従来、Linux を使用する Azure Marketplace のほとんどのイメージは、次の 2 つの方法のいずれかを使用して構成されています。
+- 既定では、時刻同期サービスは実行されません
+- ntpd は時刻同期サービスとして実行され、ネットワークを通してアクセスされる外部 NTP タイム ソースに対して同期しています。 たとえば、Ubuntu 18.04 LTS の Marketplace イメージでは、**ntp.ubuntu.com** が使用されます。
 
+ntpd が正しく同期していることを確認するには、`ntpq -p` コマンドを実行します。
 
-### <a name="use-the-default"></a>既定値を使用する
+2021 暦年初頭から、Linux による最新の Azure Marketplace イメージは時刻同期サービスとして chronyd を使用するように変更され、chronyd は外部 NTP タイム ソースではなく Azure ホストと同期するように構成されています。 Azure ホスト時間は、通常、非常に正確かつ確実に維持され、パブリック インターネットを使用した外部 NTP タイム ソースへのアクセスに固有の可変ネットワーク遅延なしでアクセス可能であるため、同期に最適なタイム ソースです。
 
-既定では、Linux 用のほとんどの Azure Marketplace イメージが、次の 2 つのソースから同期するように構成されます。 
+VMICTimeSync は並列で使用され、次の 2 つの関数を提供します。
+- ホスト メンテナンス イベントの後、Linux VM の時刻機構を直ちに更新します
+- IEEE 1588 Precision Time Protocol (PTP) ハードウェア クロック ソースを、Azure ホストから正確な時刻を提供する /dev/ptp デバイスとしてインスタンス化します。  Chronyd は、このタイム ソース (最新の Linux イメージの既定の構成) と同期するように構成できます。 カーネル バージョン 4.11 以降 (または RHEL/CentOS 7 の場合はバージョン 3.10.0-693 以降) の Linux ディストリビューションでは、/dev/ptp デバイスがサポートされます。  Azure ホスト時間に対して、/dev/ptp をサポートしない以前のバージョンのカーネルでは、外部タイムソースに対してのみ同期を実行できます。
 
-- NTP (プライマリとして)。NTP サーバーから時刻を取得します。 たとえば、Ubuntu 16.04 LTS の Marketplace イメージでは、**ntp.ubuntu.com** が使用されます。
-- VMICTimeSync サービス (セカンダリとして)。VM にホスト時刻を知らせ、VM がメンテナンスのために一時停止した後、修正を行うために使用されます。 Azure ホストでは、Microsoft 所有の Stratum 1 デバイスを使用して、正確な時刻を保持します。
+もちろん、既定の構成は変更できます。 ntpd と外部タイム ソースを使用するように構成されている古いイメージは、Azure ホスト時間に対しては、chronyd と /dev/ptp デバイスを使用するように変更できます。  同様に、アプリケーションまたはワークロードで必要になった場合に、外部の NTP タイム ソースを使用するように構成することもできます。
 
-新しい Linux ディストリビューションでは、VMICTimeSync サービスで PTP (Precision Time Protocol) ハードウェア クロック ソースが提供されますが、以前のディストリビューションでは、このクロック ソースが提供されない可能性があり、ホストから時刻を取得するために NTP にフォールバックします。
-
-NTP が正しく同期していることを確認するには、`ntpq -p` コマンドを実行します。
-
-### <a name="host-only"></a>ホストのみ 
-
-time.windows.com や ntp.ubuntu.com などの NTP サーバーはパブリックであるため、それらと時刻を同期するには、インターネット経由でトラフィックを送信する必要があります。 さまざまなパケットの遅延が、時刻同期の質に悪影響する可能性があります。ホストのみの同期に切り替えて NTP を削除すると、時刻同期の結果が改善される場合があります。
-
-既定の構成を使用して時刻同期の問題が発生する場合は、ホストのみの時刻同期に切り替えるのが妥当です。 ホストのみの同期を試してみて、VM の時刻同期が改善されるかどうかを確認してください。 
-
-### <a name="external-time-server"></a>外部のタイム サーバー
-
-特定の時刻同期の要件がある場合は、外部のタイム サーバーを使用するオプションもあります。 外部のタイム サーバーでは特定の時刻を指定できます。これは、Microsoft 以外のデータセンターでホストされているコンピューターとの時間の統一性を確保する、あるいは特別な方法でうるう秒を処理する、テスト シナリオで役立つ場合があります。
-
-外部のタイム サーバーと VMICTimeSync サービスを組み合わせることで、既定の構成と同じような結果が得られます。 外部のタイム サーバーと VMICTimeSync を組み合わせることは、VM がメンテナンスのために一時停止したときに原因となる可能性のある問題に対処するための最適なオプションです。 
 
 ## <a name="tools-and-resources"></a>ツールとリソース
 
@@ -99,23 +85,10 @@ hv_utils               24418  0
 hv_vmbus              397185  7 hv_balloon,hyperv_keyboard,hv_netvsc,hid_hyperv,hv_utils,hyperv_fb,hv_storvsc
 ```
 
-Hyper-V 統合サービスのデーモンが実行されているかどうかを確認します。
-
-```bash
-ps -ef | grep hv
-```
-
-次のように表示されます。
-
-```
-root        229      2  0 17:52 ?        00:00:00 [hv_vmbus_con]
-root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
-```
-
-
 ### <a name="check-for-ptp-clock-source"></a>PTP クロック ソースを確認する
 
-新しいバージョンの Linux では、PTP (Precision Time Protocol) クロック ソースを VMICTimeSync プロバイダーの一部として利用できます。 以前のバージョンの Red Hat Enterprise Linux や CentOS 7.x では、[Linux Integration Services](https://github.com/LIS/lis-next) をダウンロードし、それを使用して更新されたドライバーをインポートできます。 PTP クロック ソースを使用できる場合、Linux デバイスの形式は /dev/ptp *x* になります。 
+新しいバージョンの Linux では、Azure ホストに対応する PTP (Precision Time Protocol) クロック ソースを VMICTimeSync プロバイダーの一部として利用できます。
+以前のバージョンの Red Hat Enterprise Linux や CentOS 7.x では、[Linux Integration Services](https://github.com/LIS/lis-next) をダウンロードし、それを使用して更新されたドライバーをインポートできます。 PTP クロック ソースを使用できる場合、Linux デバイスの形式は /dev/ptp *x* になります。 
 
 どの PTP クロック ソースを使用できるかを確認します。
 
@@ -129,23 +102,22 @@ ls /sys/class/ptp
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-この場合は、`hyperv` が返されるはずです。
+これにより `hyperv` 、つまり Azure ホストが返されます。
+
+高速ネットワークが有効になっている Linux VM では、Mellanox mlx5 ドライバーによっても /dev/ptp デバイスが作成されるため、複数の PTP デバイスが一覧表示されることがあります。
+初期化の順序は Linux が起動するたびに異なる可能性があるため、Azure ホストに対応する PTP デバイスは、 /dev/ptp0 または /dev/ptp1 になることがあります。これにより、正しいクロックソースで chronyd を構成するのが困難になります。 この問題を解決するために、最新の Linux イメージには、/dev/ptp エントリが Azure ホストに対応する場合は常に /dev/ptp_hyperv シンボリックリンクを作成すという udev ルールがあります。 Chrony では、/dev/ptp0 または /dev/ptp1 の代わりにこのシンボリックリンクを使用するように構成する必要があります。
 
 ### <a name="chrony"></a>chrony
 
-Ubuntu 19.10 以降のバージョン、Red Hat Enterprise Linux、および CentOS 8.x では、PTP ソース クロックを使用するように [chrony](https://chrony.tuxfamily.org/) が構成されています。 以前の Linux リリースでは、chrony ではなく、PTP ソースがサポートされない ntpd (Network Time Protocol Daemon) が使用されています。 これらのリリースで PTP を有効にするには、chrony.conf で次のコードを使用して chrony を手動でインストールして構成する必要があります。
+Ubuntu 19.10 以降のバージョン、Red Hat Enterprise Linux、および CentOS 8.x では、PTP ソース クロックを使用するように [chrony](https://chrony.tuxfamily.org/) が構成されています。 以前の Linux リリースでは、chrony ではなく、PTP ソースがサポートされない ntpd (Network Time Protocol Daemon) が使用されています。 これらのリリースで PTP を有効にするには、chrony.conf で次のステートメントを使用して chrony を手動でインストールして構成する必要があります。
 
 ```bash
-refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
+refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0 stratum 2
 ```
 
-Ubuntu および NTP の詳細については、[時刻同期](https://ubuntu.com/server/docs/network-ntp)に関するページを参照してください。
+/dev/ptp_hyperv シンボリックリンクが使用可能な場合は、/dev/ptp0 の代わりに使用して、Mellanox mlx5 ドライバーによって作成された /dev/ptp デバイスとの混同を避けてください。
 
-Red Hat および NTP の詳細については、[NTP の構成](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP)に関するページを参照してください。 
-
-chrony の詳細については、[chrony の使用](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)に関するページを参照してください。
-
-chrony および VMICTimeSync ソースの両方が同時に有効になっている場合は、一方を **優先** としてマークし、もう一方のソースをバックアップとして設定することができます。 NTP サービスでは、長時間の経過後を除き、大きなスキューが発生した場合にクロックが更新されないため、VMICTimeSync によって、NTP ベースのツールを単独で使用する場合よりはるかに早く一時停止した VM イベントからクロックが回復されます。
+階層情報は、Azure ホストから Linux ゲストに自動的には伝達されません。 前の構成行では、Azure ホスト タイム ソースが階層 2 として扱われることを指定しています。これで、Linux ゲストではそれ自体を階層 3 として報告します。 Linux ゲストでそれ自体を異なる方法で報告するように必要がある場合は、構成行の階層設定を変更できます。
 
 既定では、chronyd は、時間の誤差を修正するために、システム クロックを加速または減速します。 誤差が大きすぎる場合、chrony は誤差の修正に失敗します。 これを解決するために、 **/etc/chrony.conf** の `makestep` パラメーターを変更して、誤差が、指定されたしきい値を超えた場合に時刻同期を強制的に適用することができます。
 
@@ -158,6 +130,12 @@ makestep 1.0 -1
 ```bash
 systemctl restart chronyd
 ```
+
+Ubuntu および NTP の詳細については、[時刻同期](https://ubuntu.com/server/docs/network-ntp)に関するページを参照してください。
+
+Red Hat および NTP の詳細については、[NTP の構成](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP)に関するページを参照してください。 
+
+chrony の詳細については、[chrony の使用](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)に関するページを参照してください。
 
 ### <a name="systemd"></a>systemd 
 

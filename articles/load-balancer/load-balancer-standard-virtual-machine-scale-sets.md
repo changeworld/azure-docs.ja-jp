@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: irenehua
-ms.openlocfilehash: 7a2e0531427343a2ec267de54cee05b5eb25889f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ba2d00d1cbb025b665c2c9c6cb929f8b46a1f33
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99592281"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723667"
 ---
 # <a name="add-rules-for-azure-load-balancer-with-virtual-machine-scale-sets"></a>Azure Load Balancer と仮想マシン スケール セットの規則の追加
 
@@ -37,7 +37,11 @@ ms.locfileid: "99592281"
 ## <a name="load-balancing-rules"></a>負荷分散規則
 
 ロード バランサーのバックエンド プールで仮想マシン スケール セットを使用している場合は、既定の負荷分散規則が自動的に作成されます。
-  
+
+## <a name="virtual-machine-scale-set-instance-level-ips"></a>仮想マシン スケール セットのインスタンス レベル IP
+
+[インスタンスごとに複数のパブリック IP](../virtual-network/ip-services/public-ip-address-prefix.md) を持つ仮想マシン スケール セットが、前にロード バランサーを使用して作成される場合、インスタンス IP の SKU は Load Balancer (Basic または Standard など) の SKU によって決定されます。  Standard Load Balancer を使用する場合、個々のインスタンスの IP の種類はすべて標準の "ゾーンなし" になります (ただし、Load Balancer フロントエンドはゾーン ベースまたはゾーン冗長になる可能性があります)。
+
 ## <a name="outbound-rules"></a>アウトバウンド規則
 
 既に負荷分散規則によって参照されているバックエンド プールのアウトバウンド規則を作成するには、インバウンド負荷分散規則を作成するときに、Azure portal の **[暗黙的なアウトバウンド規則の作成]** で **[いいえ]** を選択します。

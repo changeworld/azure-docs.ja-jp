@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c4301a61a79ab2351c18af0c76cccc3d07dd202
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52c82b01b9c6bc45779e9bed04bb04e8ac3fcab7
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94836684"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083659"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Azure AD を使用してセキュリティで保護された ID に迅速に対応する
 
@@ -84,7 +84,7 @@ Azure AD Free、Office 365、または Microsoft 365 の各アプリのお客様
 | [ADFS スマート ロックアウトを有効にする](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (該当する場合) | 悪意のあるアクティビティによるエクストラネット アカウント ロックアウトの発生からユーザーを保護します。 |
 | [Azure Active Directory スマート ロックアウトを有効にする](../authentication/howto-password-smart-lockout.md) (マネージド ID を使用している場合) | スマート ロックアウトは、組織のユーザーのパスワードを推測したり、ブルート フォース方法を使用して侵入しようとする悪意のあるユーザーのロックアウトを支援します。 |
 | [アプリケーションに対するエンドユーザーの同意を無効にする](../manage-apps/configure-user-consent.md) | 管理者の同意ワークフローによって、管理者は、エンド ユーザーが会社のデータを漏洩することがないように、管理者の承認を必要とするアプリケーションへのアクセス権を安全に付与することができます。 Microsoft では、将来のユーザーの同意動作をすべて無効にし、攻撃の対象となる領域を減らし、このリスクを軽減することをお勧めしています。 |
-| [ アプリケーション プロキシを使用してオンプレミスのレガシ アプリケーションへのリモート アクセスを有効にする](../manage-apps/application-proxy-add-on-premises-application.md) | Azure AD アプリケーション プロキシを有効にし、レガシ アプリと統合して、ユーザーが自分の Azure AD アカウントでサインインすることで、オンプレミスのアプリケーションに安全にアクセスできるようにします。 |
+| [ アプリケーション プロキシを使用してオンプレミスのレガシ アプリケーションへのリモート アクセスを有効にする](../app-proxy/application-proxy-add-on-premises-application.md) | Azure AD アプリケーション プロキシを有効にし、レガシ アプリと統合して、ユーザーが自分の Azure AD アカウントでサインインすることで、オンプレミスのアプリケーションに安全にアクセスできるようにします。 |
 | [安全なハイブリッド アクセスを有効にする:既存のアプリ デリバリー コントローラーとネットワークを使用してレガシ アプリをセキュリティで保護する](../manage-apps/secure-hybrid-access.md) (該当する場合)。 | オンプレミスやクラウドのレガシ認証アプリケーションを、既存のアプリケーション デリバリー コントローラーまたはネットワークを使用して Azure AD に接続することで、それらの認証アプリケーションを発行して保護します。 |
 | [サポートされている SaaS アプリケーションをギャラリーから Azure AD に統合し、シングル サインオンを有効にする](../manage-apps/add-application-portal.md) | Azure AD には、あらかじめ統合された何千ものアプリケーションが含まれるギャラリーがあります。 組織で使用しているアプリケーションの一部は、おそらく、Azure portal から直接アクセスできるギャラリーにあります。 ユーザー エクスペリエンスの向上 (SSO) により、企業の SaaS アプリケーションへのアクセスをリモートで安全に提供します。 |
 | [SaaS アプリケーションからのユーザー プロビジョニングとプロビジョニング解除を自動化する](../app-provisioning/user-provisioning.md) (該当する場合) | ユーザーがアクセスする必要のあるクラウド (SaaS) アプリケーションのユーザー ID とロールを自動的に作成します。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれ、組織のセキュリティが向上します。 |
@@ -116,7 +116,7 @@ Azure AD Free、Office 365、または Microsoft 365 の各アプリのお客様
 | [ADFS スマート ロックアウトを有効にする](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (該当する場合) | 悪意のあるアクティビティによるエクストラネット アカウント ロックアウトの発生からユーザーを保護します。 |
 | [Azure Active Directory スマート ロックアウトを有効にする](../authentication/howto-password-smart-lockout.md) (マネージド ID を使用している場合) | スマート ロックアウトは、組織のユーザーのパスワードを推測したり、ブルート フォース方法を使用して侵入しようとする悪意のあるユーザーのロックアウトを支援します。 |
 | [アプリケーションに対するエンドユーザーの同意を無効にする](../manage-apps/configure-user-consent.md) | 管理者の同意ワークフローによって、管理者は、エンド ユーザーが会社のデータを漏洩することがないように、管理者の承認を必要とするアプリケーションへのアクセス権を安全に付与することができます。 Microsoft では、将来のユーザーの同意動作をすべて無効にし、攻撃の対象となる領域を減らし、このリスクを軽減することをお勧めしています。 |
-| [ アプリケーション プロキシを使用してオンプレミスのレガシ アプリケーションへのリモート アクセスを有効にする](../manage-apps/application-proxy-add-on-premises-application.md) | Azure AD アプリケーション プロキシを有効にし、レガシ アプリと統合して、ユーザーが自分の Azure AD アカウントでサインインすることで、オンプレミスのアプリケーションに安全にアクセスできるようにします。 |
+| [ アプリケーション プロキシを使用してオンプレミスのレガシ アプリケーションへのリモート アクセスを有効にする](../app-proxy/application-proxy-add-on-premises-application.md) | Azure AD アプリケーション プロキシを有効にし、レガシ アプリと統合して、ユーザーが自分の Azure AD アカウントでサインインすることで、オンプレミスのアプリケーションに安全にアクセスできるようにします。 |
 | [安全なハイブリッド アクセスを有効にする:既存のアプリ デリバリー コントローラーとネットワークを使用してレガシ アプリをセキュリティで保護する](../manage-apps/secure-hybrid-access.md) (該当する場合)。 | オンプレミスやクラウドのレガシ認証アプリケーションを、既存のアプリケーション デリバリー コントローラーまたはネットワークを使用して Azure AD に接続することで、それらの認証アプリケーションを発行して保護します。 |
 | [サポートされている SaaS アプリケーションをギャラリーから Azure AD に統合し、シングル サインオンを有効にする](../manage-apps/add-application-portal.md) | Azure AD には、あらかじめ統合された何千ものアプリケーションが含まれるギャラリーがあります。 組織で使用しているアプリケーションの一部は、おそらく、Azure portal から直接アクセスできるギャラリーにあります。 ユーザー エクスペリエンスの向上 (SSO) により、企業の SaaS アプリケーションへのアクセスをリモートで安全に提供します。 |
 | [SaaS アプリケーションからのユーザー プロビジョニングとプロビジョニング解除を自動化する](../app-provisioning/user-provisioning.md) (該当する場合) | ユーザーがアクセスする必要のあるクラウド (SaaS) アプリケーションのユーザー ID とロールを自動的に作成します。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれ、組織のセキュリティが向上します。 |

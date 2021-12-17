@@ -4,12 +4,12 @@ description: Azure Container Instances のイメージとシークレットを�
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: acccd79ecd1c216f92f19d1cf035682414cd17ca
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 9f0a30095605ae9ff52f5780bdf2f94454cf85a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750142"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315731"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances のセキュリティに関する考慮事項
 
@@ -34,13 +34,13 @@ ms.locfileid: "107750142"
 
 ソリューションを利用して、プライベート レジストリ内のコンテナー イメージをスキャンし、潜在的な脆弱性を識別します。 さまざまなソリューションの脅威検出の深さを理解することが重要です。
 
-たとえば、Azure Container Registry を必要に応じて [Azure Security Center と統合](../security-center/defender-for-container-registries-introduction.md)して、レジストリにプッシュされたすべての Linux イメージを自動的にスキャンします。 Azure Security Center の統合 Qualys スキャナーにより、イメージの脆弱性が検出され、それらが分類され、修復のガイダンスが提供されます。
+たとえば、Azure Container Registry を必要に応じて [Microsoft Defender for Cloud と統合](../security-center/defender-for-container-registries-introduction.md)して、レジストリにプッシュされたすべての Linux イメージを自動的にスキャンします。 Microsoft Defender for Cloud の統合 Qualys スキャナーにより、イメージの脆弱性が検出され、それらが分類され、修復のガイダンスが提供されます。
 
 [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) や [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) などのセキュリティの監視とイメージ スキャンのソリューションは、Azure Marketplace からも入手できます。  
 
 ### <a name="protect-credentials"></a>資格情報を保護する
 
-コンテナーは、複数のクラスターと Azure リージョンに広がることがあります。 そのため、パスワードやトークンなど、ログインまたは API アクセスに必要な資格情報をセキュリティで保護する必要があります。 転送中または保存中のそれらのコンテナーには、特権を持つユーザーのみがアクセスできるようにします。 すべての資格情報シークレットの一覧を作成した後、コンテナー プラットフォーム対応に設計されている新しいシークレット管理ツールを使うよう開発者に要求します。  ソリューションに、暗号化されたデータベース、転送中のシークレット データ用の TLS 暗号化、および最小特権の [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) が含まれていることを確認します。 [Azure Key Vault](../key-vault/general/security-overview.md) は、コンテナー化されたアプリケーションの暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは慎重な扱いを要する情報であり、ビジネス上重要であるため、承認されたアプリケーションとユーザーのみがキー コンテナーにアクセスできるように、キー コンテナーへのアクセスをセキュリティで保護します。
+コンテナーは、複数のクラスターと Azure リージョンに広がることがあります。 そのため、パスワードやトークンなど、ログインまたは API アクセスに必要な資格情報をセキュリティで保護する必要があります。 転送中または保存中のそれらのコンテナーには、特権を持つユーザーのみがアクセスできるようにします。 すべての資格情報シークレットの一覧を作成した後、コンテナー プラットフォーム対応に設計されている新しいシークレット管理ツールを使うよう開発者に要求します。  ソリューションに、暗号化されたデータベース、転送中のシークレット データ用の TLS 暗号化、および最小特権の [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) が含まれていることを確認します。 [Azure Key Vault](../key-vault/general/security-features.md) は、コンテナー化されたアプリケーションの暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは慎重な扱いを要する情報であり、ビジネス上重要であるため、承認されたアプリケーションとユーザーのみがキー コンテナーにアクセスできるように、キー コンテナーへのアクセスをセキュリティで保護します。
 
 ## <a name="considerations-for-the-container-ecosystem"></a>コンテナー エコシステムに関する考慮事項
 
@@ -138,14 +138,14 @@ ms.locfileid: "107750142"
 
 ご使用の Kubernetes クラスター、コンテナー レジストリ、およびコンテナー イメージを含むコンテナー エコシステムへの管理アクセスの正確な監査証跡を維持します。 これらのログは、監査のために必要な場合があり、セキュリティ インシデント後の法的証拠として役に立ちます。 Azure ソリューションには次のものがあります。
 
-* クラスター環境のセキュリティ構成を監視し、セキュリティに関する推奨事項を生成するための [Azure Kubernetes Service と Azure Security Center との統合](../security-center/defender-for-kubernetes-introduction.md)
+* クラスター環境のセキュリティ構成を監視し、セキュリティに関する推奨事項を生成するための [Azure Kubernetes Service と Microsoft Defender for Cloud の統合](../security-center/defender-for-kubernetes-introduction.md)
 * [Azure コンテナー監視ソリューション](../azure-monitor/containers/containers.md)
-* [Azure Container Instances](container-instances-log-analytics.md) および [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) のリソース ログ
+* [Azure Container Instances](container-instances-log-analytics.md) および [Azure Container Registry](../container-registry/monitor-service.md) のリソース ログ
 
 ## <a name="next-steps"></a>次のステップ
 
 * デプロイのセキュリティ体制を改善するために役立つ包括的な推奨事項については、「[Container Instances の Azure セキュリティ ベースライン](security-baseline.md)」を参照してください。
 
-* [Azure Security Center](../security-center/container-security.md) を使用して、コンテナー化された環境でリアルタイムの脅威検出を行う方法について詳しく学習します。
+* [Microsoft Defender for Cloud](../security-center/container-security.md) を使用して、コンテナー化された環境でリアルタイムの脅威検出を行う方法について詳しく学習します。
 
 * [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) および [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/) のソリューションによるコンテナーの脆弱性の管理について詳しく学習します。

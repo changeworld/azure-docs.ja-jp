@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure portal で Azure Stack Edge Pro デバイスに接続し、それを構成およびアクティブ化する | Microsoft Docs'
-description: Azure Stack Edge Pro を配置するチュートリアルでは、お使いの物理デバイスを接続、設定、およびアクティブ化する方法について説明します。
+title: 'チュートリアル: Azure portal で Azure Stack Edge Pro FPGA デバイスに接続し、構成およびアクティブ化する'
+description: Azure Stack Edge Pro FPGA を配置するチュートリアルでは、お使いの物理デバイスを接続、設定、アクティブ化する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
-ms.openlocfilehash: af0c305cc13b94666a87d937d1eac10586135a4d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: c8edd68dae991a06cc7280e95a5c193c34452329
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067692"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461363"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro を接続、設定、およびアクティブ化する 
+# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro-fpga"></a>チュートリアル: Azure Stack Edge Pro FPGA を接続、設定、およびアクティブ化する 
 
-このチュートリアルでは、ローカル Web UI を使用して Azure Stack Edge Pro デバイスに接続し、それを設定およびアクティブ化する方法について説明します。
+このチュートリアルでは、ローカル Web UI を使用して Azure Stack Edge Pro FPGA デバイスに接続し、それを設定およびアクティブ化する方法について説明します。
 
 設定とアクティブ化のプロセスは、完了するまでに約 20 分かかることがあります。
 
@@ -30,14 +30,14 @@ ms.locfileid: "106067692"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Stack Edge Pro デバイスを構成および設定する前に、次のことを確認してください。
+ご利用の Azure Stack Edge Pro FPGA デバイスを構成および設定する前に、次のことを確認してください。
 
-* [Azure Stack Edge Pro の設置](azure-stack-edge-deploy-install.md)に関するページで詳細に説明されているように、物理デバイスが設置されていること。
-* Azure Stack Edge Pro デバイスを管理するために作成した Azure Stack Edge サービスからのアクティブ化キーを持っていること。 詳細については、「[Azure Stack Edge Pro の配置を準備する](azure-stack-edge-deploy-prep.md)」をご覧ください。
+* [Azure Stack Edge Pro FPGA の設置](azure-stack-edge-deploy-install.md)に関する記事の説明に従って、物理デバイスが設置されていること。
+* Azure Stack Edge Pro FPGA デバイスを管理するために作成した Azure Stack Edge サービスからのアクティブ化キーを持っていること。 詳細については、[Azure Stack Edge Pro FPGA の配置の準備](azure-stack-edge-deploy-prep.md)に関するページをご覧ください。
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>ローカル Web UI 設定に接続する
 
-1. Azure Stack Edge Pro デバイスに接続するために、お使いのコンピューター上のイーサネット アダプターで静的 IP アドレス 192.168.100.5 とサブネット 255.255.255.0 を構成します。
+1. Azure Stack Edge Pro FPGA デバイスに接続するためのコンピューターのイーサネット アダプターを、静的 IP アドレス 192.168.100.5 とサブネット 255.255.255.0 を使用して構成します。
 
 2. デバイスでコンピューターをポート 1 に接続します。 次の図を使用して、デバイス上のポート 1 を識別してください。
 
@@ -55,7 +55,7 @@ Azure Stack Edge Pro デバイスを構成および設定する前に、次の�
 
 5. ご利用のデバイスの Web UI にサインインします。 既定のパスワードは *Password1* です。 
    
-    ![Azure Stack Edge Pro デバイスのサインイン ページ](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
+    ![Azure Stack Edge Pro FPGA デバイスのサインイン ページ](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. プロンプトで、デバイス管理者のパスワードを変更します。  
     新しいパスワードは 8 から 16 文字にする必要があります。 さらに、大文字、小文字、数字、および特殊文字のうちの 3 種類の文字を含める必要があります。
@@ -95,7 +95,7 @@ Azure Stack Edge Pro デバイスを構成および設定する前に、次の�
    
    a. **[Web プロキシ URL]**  ボックスに、`http://host-IP address or FQDN:Port number` という形式の URL を入力します。 HTTPS URL はサポートされていません。
 
-   b. **[認証]** で、 **[なし]** または **[NTLM]** を選択します。 Azure Stack Edge Pro デバイスでコンピューティングを有効にして IoT Edge モジュールを使用する場合は、Web プロキシ認証を **[なし]** に設定しておくことをお勧めします。 **NTLM** はサポートされていません。
+   b. **[認証]** で、 **[なし]** または **[NTLM]** を選択します。 ご利用の Azure Stack Edge Pro FPGA デバイスでコンピューティングを有効にして IoT Edge モジュールを使用する場合は、Web プロキシ認証を **[なし]** に設定しておくことをお勧めします。 **NTLM** はサポートされていません。
 
    c. 認証を使用している場合は、ユーザー名とパスワードを入力します。
 
@@ -104,7 +104,7 @@ Azure Stack Edge Pro デバイスを構成および設定する前に、次の�
    > [!NOTE]
    > プロキシ自動構成 (PAC) ファイルはサポートされていません。 PAC ファイルは、Web ブラウザーやその他のユーザー エージェントが、特定の URL をフェッチするための適切なプロキシ サーバー (アクセス方法) を自動的に選択する方法を定義します。
    > プロキシの証明書は信頼されていないため、すべてのトラフィックをインターセプトして読み取る (その後、独自の証明書を使用してすべてに再署名する) プロキシは互換性がありません。
-   > 通常、透過プロキシは、Azure Stack Edge Pro で適切に動作します。
+   > 通常、透過プロキシは、Azure Stack Edge Pro FPGA で適切に動作します。
 
 4. (省略可能) 左側のウィンドウで **[時刻の設定]** を選択し、タイム ゾーンとデバイスのプライマリおよびセカンダリ NTP サーバーを構成します。  
     デバイスは時刻を同期してクラウド サービス プロバイダーに対して認証できるようにする必要があるため、NTP サーバーが必要になります。
@@ -132,7 +132,7 @@ Azure Stack Edge Pro デバイスを構成および設定する前に、次の�
 
 6. 左側のペインで **[クラウド設定]** を選択し、Azure portal の Azure Stack Edge サービスでデバイスをアクティブ化します。
     
-    1. **[アクティブ化キー]** ボックスに、「[アクティブ化キーの取得](azure-stack-edge-deploy-prep.md#get-the-activation-key)」で Azure Stack Edge Pro 用に取得したアクティブ化キーを入力します。
+    1. **[アクティブ化キー]** ボックスに、「[アクティブ化キーの取得](azure-stack-edge-deploy-prep.md#get-the-activation-key)」で Azure Stack Edge Pro FPGA 用に取得したアクティブ化キーを入力します。
     2. **[適用]** を選択します。
        
         ![ローカル Web UI の [クラウド設定] ページ](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
@@ -157,7 +157,7 @@ Azure Stack Edge Pro デバイスを構成および設定する前に、次の�
 > * 物理デバイスに接続する
 > * 物理デバイスの設定とアクティブ化
 
-Azure Stack Edge Pro デバイスを使用してデータを転送する方法については、次を参照してください。
+Azure Stack Edge Pro FPGA デバイスを使用してデータを転送する方法については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge Pro を使用してデータを転送する](./azure-stack-edge-deploy-add-shares.md)
+> [Azure Stack Edge Pro FPGA を使用してデータを転送する](./azure-stack-edge-deploy-add-shares.md)

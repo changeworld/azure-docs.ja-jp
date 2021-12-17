@@ -1,14 +1,15 @@
 ---
 title: 管理テナントでの委任変更を監視する
-description: 顧客テナントから管理テナントへの委任アクティビティを監視する方法について説明します。
-ms.date: 02/18/2021
+description: 管理テナントへの Azure Lighthouse のすべての委任アクティビティを監視する方法について説明します。
+ms.date: 09/08/2021
 ms.topic: how-to
-ms.openlocfilehash: 8bd9e89039c114f3d1088df44198fe00c69bbf82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7eb38ac8ac7f86fd179663fe7bfb3aa1fb4e8830
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199055"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819585"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 
@@ -40,7 +41,9 @@ ms.locfileid: "103199055"
 自分のアクセス権を昇格させたら、テナントレベルのアクティビティ ログ データに対してクエリを実行できるように、適切なアクセス許可をアカウントに割り当てることができます。 このアカウントには、ご利用の管理テナントのルート スコープで[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader) Azure 組み込みロールを割り当てる必要があります。
 
 > [!IMPORTANT]
-> ルート スコープでのロール割り当てを許可すると、テナント内のすべてのリソースに同じアクセス許可が適用されることになります。 これは広範なアクセス レベルであるため、[このロールをサービス プリンシパル アカウントに割り当てて、そのアカウントを使用してデータをクエリする](#use-a-service-principal-account-to-query-the-activity-log)ことができます。 [Azure portal で委任情報を直接表示](#view-delegation-changes-in-the-azure-portal)できるよう、ルート スコープの監視閲覧者ロールを個々のユーザーまたはユーザー グループに割り当てることもできます。 これを行う場合、これが広範囲にわたるアクセス レベルであり、可能な限り少数のユーザーに制限する必要があることに留意してください。
+> ルート スコープでのロール割り当てを許可すると、テナント内のすべてのリソースに同じアクセス許可が適用されることになります。 これは広範なアクセス レベルであるため、[このロールをサービス プリンシパル アカウントに割り当てて、そのアカウントを使用してデータをクエリする](#use-a-service-principal-account-to-query-the-activity-log)ことを推奨しています。
+> 
+> [Azure portal で委任情報を直接表示](#view-delegation-changes-in-the-azure-portal)できるよう、ルート スコープの監視閲覧者ロールを個々のユーザーまたはユーザー グループに割り当てることもできます。 これを行う場合、これが広範囲にわたるアクセス レベルであり、可能な限り少数のユーザーに制限する必要があることに留意してください。
 
 次のいずれかの方法を使用して、ルート スコープの割り当てを行います。
 
@@ -86,7 +89,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 - この機能に対してのみ使用する[新しいサービス プリンシパル アカウントを作成](../../active-directory/develop/howto-create-service-principal-portal.md)し、他の自動化に使用する既存のサービス プリンシパルにこのロールを割り当てることはしません。
 - このサービス プリンシパルに、委任された顧客リソースへのアクセス権がないことを確認してください。
-- [証明書を使用して認証](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)を行い、[それを Azure Key Vault に安全に格納します](../../key-vault/general/security-overview.md)。
+- [証明書を使用して認証](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)を行い、[それを Azure Key Vault に安全に格納します](../../key-vault/general/security-features.md)。
 - サービス プリンシパルの代理として機能するアクセス権を持つユーザーを制限します。
 
 ご利用の管理テナントのルート スコープに対して監視閲覧者アクセス権を持つ新しいサービス プリンシパル アカウントを作成したら、それを使用して、ご利用のテナント内の委任アクティビティのクエリとレポートを行うことができます。
@@ -180,6 +183,6 @@ else {
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Lighthouse](../concepts/azure-delegated-resource-management.md) への顧客のオンボード方法について説明します。
+- [Azure Lighthouse への顧客のオンボード](onboard-customer.md)方法について説明します。
 - [Azure Monitor](../../azure-monitor/index.yml) と [Azure アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)について説明します。
 - [ドメイン別のアクティビティ ログ](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) サンプル ブックを確認し、ドメイン名でサブスクリプションをフィルター処理するオプションを指定して、サブスクリプションをまたがって Azure アクティビティ ログを表示する方法を把握します。

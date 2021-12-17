@@ -1,0 +1,482 @@
+### YamlMime:FAQ
+metadata:
+  title: Cost Management + Billing についてよくあるご質問 (FAQ)
+  titleSuffix: Azure Cost Management + Billing
+  description: よくあるご質問と回答。
+  author: bandersmsft
+  ms.reviewer: adwise
+  ms.service: cost-management-billing
+  ms.subservice: common
+  ms.topic: conceptual
+  ms.date: 10/22/2021
+  ms.author: banders
+  ms.openlocfilehash: 0dac08754b6beae7072e4e07a672bac2c3d8fb31
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132719487"
+title: Cost Management + Billing についてよくあるご質問 (FAQ)
+summary: ''
+sections:
+- name: 課金に関する一般的な質問
+  questions:
+  - question: Azure の課金サポートに連絡するにはどうすればよいですか?
+    answer: >
+      [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) でサポート リクエストを作成します。
+  - question: 請求書の支払いはどのようにすればよいですか?
+    answer: >
+      「[支払期限を過ぎた Azure サブスクリプション未払い額の支払い](manage/resolve-past-due-balance.md)」を参照してください。
+  - question: 請求書を確認するにはどうすればよいですか?
+    answer: >
+      「[Microsoft Azure の請求書の表示とダウンロード](understand/download-azure-invoice.md)」を参照してください。
+  - question: なぜ請求されるのですか? 私が使用しているのは Azure 無料アカウントです。
+    answer: >
+      無料サービスには制限があります。 おそらく、無料の制限を超過していると思われます。 「[Azure 無料アカウントでの課金を避ける](manage/avoid-charges-free-account.md)」を参照してください。
+  - question: 課金と調整料金を把握するにはどうすればよいですか?
+    answer: >
+      Azure Web サイトから Azure サブスクリプションを購入した場合は、[個々の Azure サブスクリプションの課金書を確認する](understand/review-individual-bill.md)方法に関するチュートリアルを参照してください。 このチュートリアルでは、請求書の料金と使用したサービスがどのように関係するかを説明します。
+  - question: 料金をすぐに確認するにはどうすればよいですか?
+    answer: >
+      [コスト分析を使用してコストを調査および分析する](costs/quick-acm-cost-analysis.md)方法に関するページを参照してください。
+  - question: 想定外の料金が課金されています。 これらの確認方法を教えてください。
+    answer: >
+      「[想定外の料金を分析する](understand/analyze-unexpected-charges.md)」を参照してください。
+  - question: 課金情報を変更するにはどうすればよいですか?
+    answer: >
+      「[課金情報の変更](manage/change-azure-account-profile.md)」を参照してください。
+  - question: Azure サブスクリプションを取り消すにはどうすればよいですか?
+    answer: >
+      「[Azure サブスクリプションの取り消し](manage/cancel-azure-subscription.md)」を参照してください。
+- name: Cost Management に関する質問
+  questions:
+  - question: アクセスを有効にしてコストを表示するにはどうすればよいですか?
+    answer: >
+      「[Cost Management のデータへのアクセス許可を割り当てる](costs/assign-access-acm-data.md)」を参照してください。
+  - question: Cost Management ではどのパートナー プランがサポートされていますか?
+    answer: >
+      Cost Management を利用できるのは、パートナーのお客様が Azure プランを利用している場合です。 パートナーは、ポリシー設定を有効にすることで、お客様がコスト情報を表示できるようにすることができます。 詳細については、「[パートナー向け Cost Management の概要](costs/get-started-partners.md)」を参照してください。 Cost Management では、クラシック CSP はサポートされていません。
+  - question: 予測コストを表示するにはどうすればよいですか?
+    answer: >
+      Azure portal で **[コストの管理と請求]**  >  **[コスト管理]**  >  **[コスト分析]** に移動します。 既定のビューでは、最上位のグラフに、実績/償却コストと予測コストのセクションがあります。 グラフの純色は、実際の/償却コストを示しています。 影付きの色は、予測コストを示します。
+  - question: Azure サービスごとのコストの内訳を表示するにはどうすればよいですか?
+    answer: >
+      Azure portal で、**[コストの管理と請求]** > **[コスト管理]** > **[コスト分析]** に移動します。 **[サービスごとのコスト]** を選択し、 **[サービス レベル]** でグループ化します。 ビューを **[テーブル]** に変更します。
+  - question: 請求書コストを確認するにはどうすればよいですか?
+    answer: >
+      Azure portal で、分析する請求書に関連付けられているスコープの [コスト分析] に移動します。 **[請求書の詳細]** ビューを選択します。 請求書の詳細に、請求書に記載される料金が表示されます。
+  - question: タグのコストを表示するにはどうすればよいですか?
+    answer: >
+      Azure portal で **[コストの管理と請求]**  >  **[コスト管理]**  >  **[コスト分析]** に移動します。 タグに対して **[Group by]\(グループ化\)** を選択します。 購入、サブスクリプションに関連付けられていないテナント リソース、リソース グループにデプロイされていないサブスクリプション リソース、クラシック リソースには、タグを使用できません。 一部のサービスでは、使用量データにタグが含まれません。 詳細については、「[Azure リソースでのタグのサポート](../azure-resource-manager/management/tag-support.md)」を参照してください。
+  - question: EA 登録のコストを確認するにはどうすればよいですか?
+    answer: >
+      Azure portal で、**[コストの管理と請求]**、[概要] の順に移動します。 **[詳細]** リンクを選択します。
+  - question: Cost Management で AWS のコストを表示するにはどうすればよいですか?
+    answer: >
+      「[AWS のコストと使用状況レポートの統合を設定して構成する](costs/aws-integration-set-up-configure.md)」を参照してください。
+  - question: 予算を作成するにはどうすればよいですか?
+    answer: >
+      [Azure の予算を作成して管理する](costs/tutorial-acm-create-budgets.md)方法に関するチュートリアルを参照してください。
+  - question: 特定のフィルターまたはタグの予算を作成するにはどうすればよいですか?
+    answer: >
+      [予算を作成する] ウィンドウで、作成する予算のスコープを選択します。 **[フィルターの追加]** を選択して、この予算に追加するフィルターまたはタグを選択します。 詳細については、[Azure の予算を作成して管理する](costs/tutorial-acm-create-budgets.md#create-a-budget-in-the-azure-portal)方法に関するチュートリアルを参照してください。
+  - question: コスト管理データをエクスポートするにはどうすればよいですか?
+    answer: >
+      [データをエクスポートし、管理する](costs/tutorial-export-acm-data.md)方法に関するチュートリアルを参照してください。
+  - question: テナントに Azure サブスクリプションがない場合にパートナーとしてコスト管理データをエクスポートするにはどうすればよいですか?
+    answer: >
+      記事「[Azure ストレージ アカウントの SAS キーを使用してコスト データをエクスポートする](costs/export-cost-data-storage-account-sas-key.md)」を参照してください。
+  - question: CSP パートナーとして、Cost Management は Azure プランのクラシック CSP プランでサポートされていますか?
+    answer: "[新しいコマース エクスペリエンス](https://www.microsoft.com/licensing/news/new-azure-experience-in-csp)でクラシック CSP のお客様を Azure プランに移行する計画があるため、Cost Management + Billing は、Azure プランを利用しているお客様の直接パートナーおよび間接プロバイダーのみが利用できます。 \n"
+  - question: CSP パートナー (全体管理者) として Azure プランのエンド カスタマーとリセラーのサブスクリプション スコープでコスト可視性ポリシーを有効にするにはどうすればよいですか?
+    answer: >
+      サブスクリプションの Azure RBAC ユーザーの小売料金での Azure で使用されているサービスに対するコスト可視化ポリシーを有効にするには、「[顧客テナントのサブスクリプションのコスト管理ができるようにする](costs/get-started-partners.md#enable-cost-management-for-customer-tenant-subscriptions)」を参照してください。 直接パートナーまたは間接プロバイダーの全体管理者は、ポリシーに関係なく、顧客テナントのコストを表示できます。
+  - question: コストをチャージバックするにはどうすればよいですか?
+    answer: >
+      Cost Management でコストを割り当てて、コスト分析でサブスクリプション、リソース グループ、またはタグに配賦するコストを確認できます。 詳細については、[Azure のコストの割り当てルールの作成と管理](costs/allocate-costs.md)に関する記事を参照してください。
+  - question: Power BI を使用してコストを表示できますか?
+    answer: >
+      はい。[Power BI Desktop を使用して Cost Management データに接続する](/power-bi/connect-data/desktop-connect-azure-cost-management)か、[EA 用の Cost Management Power BI アプリ](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)を使用することができます。
+  - question: Cost Management ではどのような種類のプランがサポートされていますか?
+    answer: >
+      「[サポートされている Microsoft Azure プラン](./costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers)」を参照してください。
+  - question: Cost Management でコストと使用状況データが表示されるまでにどれくらいかかりますか?
+    answer: >
+      「[コストと使用状況データの更新と保有](./costs/understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)」を参照してください。
+  - question: コストに関連するすべての情報を Cost Management で見つけることはできますか?
+    answer: >
+      「[Cost Management に含まれるコスト](costs/understand-cost-mgt-data.md#costs-included-in-cost-management)」を参照してください。
+  - question: 予算および予測ビューには割り当てられたコストが考慮されていますか?
+    answer: >
+      <a name="budgets-forecast"></a>はい。 予算および予測には、割り当てられたコストが考慮されており、サポートされています。 予算および予測ビューには、コストの割り当てルールの構成に従って割り当てられたコストが表示されます。
+  - question: コストの割り当てルールを削除するとどうなりますか?
+    answer: >
+      <a name="delete-rule"></a>コストの割り当てルールが削除されると、ターゲットに割り当てられている、まだ処理されていない現在の課金月のコストがすべて削除されます。 コストの割り当てルールが複数月にわたって存在していた場合、その過去の月の割り当てデータが、割り当てルールによって最初に設定された状態のままになります。
+  - question: コストの割り当てルールを作成するのに登録管理者や課金アカウント管理者が必要なのはなぜですか?
+    answer: >
+      <a name="why-admin"></a>コストの割り当てルールは、加入契約スコープ (マイクロソフト エンタープライズ契約) または課金アカウント スコープ (Microsoft 顧客契約) で作成されます。 それらのスコープで変更を加えるためのアクセス許可には、課金管理者の権限が必要となります。
+  - question: コストの割り当てソースとターゲットが 1 ルールにつき 25 個に制限されているのはなぜですか?
+    answer: >
+      <a name="source-target-rule-limit"></a>この制限は、コストの割り当てのパフォーマンスとスケーラビリティを十分に確保することを目的としたプレビューにおける制限です。 コストの割り当ての一般提供 (GA) が開始された時点で、これらの制限は引き上げられる可能性もあれば廃止される可能性もあります。
+  - question: コストの割り当てルール (ソースまたはターゲット) が重複した場合はどうなりますか?
+    answer: >
+      <a name="rule-overlap"></a>重複するソースや重複するターゲットを含むルールは推奨されません。 コストの割り当てルールはその作成日順に適用されます。そのため、コストの割り当てルールが重複している場合、最も古い作成日の割り当てルールが優先されます。
+  - question: Cost Management で Azure の他に新しいコマース ライセンスと従量課金製品を表示できますか?
+    answer: >
+      はい。 MCA 契約のパートナーは、パートナー センターで新しいコマース ライセンスと従量課金製品を購入できます。 それらの製品は、Azure 製品と共に請求され、Cost Management で料金を表示できます。 "プロバイダー" ディメンションは、Azure とライセンスベースの製品 (Microsoft 365 や Dyamics 365 など) を区別するのに役立ちます。
+- name: Cost Management + Billing API に関する質問
+  questions:
+  - question: EA Reporting API が非推奨になるのはいつですか?
+    answer: >
+      Cost Management + Billing チームでは、API の非推奨タイムラインを発表していません。 現在、当該 API の開発はアクティブではありません。 これらからの移行に必要な作業を計画することをお勧めします。
+  - question: EA Reporting API から移行するにはどうすればよいですか? また、どの新しい API を呼び出す必要がありますか?
+    answer: >
+      [EA Reporting から Azure Resource Manager API への移行](costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md)に関するページを参照してください。
+  - question: Usage Details API のタイムアウトが発生するのはなぜですか?
+    answer: >
+      多くの場合、使用量の詳細データセットは非常に大きくなる可能性があります (数 GB 以上)。 要求するデータセットのサイズが大きいほど、サービスが送信する前にデータを集計するのにかかる時間が長くなります。 遅延のため、ページ分割された [JSON Usage Details API](/rest/api/consumption/usagedetails/list) などの同期 API ソリューションは、データが提供される前にタイムアウトすることがあります。 タイムアウトが発生した場合、または大量の使用状況詳細を頻繁にプルする必要があるプロセスがある場合は、[エクスポートを使用して大量の使用状況データセットを繰り返し取得する](costs/ingest-azure-usage-at-scale.md)方法に関するページを参照してください。
+  - question: EA Reporting API から Microsoft 顧客契約 API に移行するにはどうすればよいですか?
+    answer: >
+      「[Enterprise Agreement から Microsoft 顧客契約 API に移行する](costs/migrate-cost-management-api.md)」を参照してください。
+- name: Azure の予約に関する質問
+  questions:
+  - question: 予約料金を表示するにはどうすればよいですか?
+    answer: >
+      Azure portal で **[コストの管理と請求]**  >  **[コスト管理]**  >  **[コスト分析]** に移動します。 "**価格モデル: 予約**" のフィルターを追加します。 [Scope]\(範囲\) で、表示されているコストの横にある下矢印記号を選択し、**[実際のコスト]** と **[分散コスト]** のどちらかのメトリックを選択します。
+  - question: 予約による割引を確認するにはどうすればよいですか?
+    answer: >
+      割引を表示するには、いくつかの方法があります。
+
+      -  EA をご利用のお客様の場合は、EA 用の Cost Management Power BI アプリを使用して、[[RI Savings]\(RI の節約\) レポート](./costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md#reports-available-with-the-app)を表示できます。
+
+      -  [使用量 + 請求金額] データ ファイルを使用して、手動で[予約による割引を判定](reservations/understand-reserved-instance-usage-ea.md#determine-reservation-savings)します。
+  - question: 十分に活用されていない予約を表示するにはどうすればよいですか?
+    answer: >
+      Azure portal にサインインします。 次に、[すべてのサービス]、**[予約]** の順に選択し、予約の **[Utilization (%)]\(使用率 (%)\)** をメモします。 予約を選択します。 一定期間にわたる予約の使用傾向を確認します。 詳細については、「[予約の使用状況は Azure portal 内で表示できます](reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json#view-reservation-use-in-the-azure-portal)」を参照してください。 [コスト分析で未使用の予約コストを表示する](costs/cost-analysis-common-uses.md#view-unused-ri-costs-in-cost-analysis)こともできます。
+  - question: チャージバックする予約コストを見つけるにはどうすればよいですか?
+    answer: >
+      詳細については、「[Azure Reservation コストのチャージバック](reservations/charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json)」を参照してください。
+  - question: スポット VM に対して発生した料金を表示するにはどうすればよいですか?
+    answer: >
+      「[スポット VM の料金を表示する](./costs/cost-analysis-common-uses.md#view-your-spot-vm-charges)」を参照してください。
+  - question: 予約の詳細レポートを取得するにはどうすればよいですか?
+    answer: >
+      API のドキュメントを参照して、[予約の詳細レポートを生成](./reservations/reservation-utilization.md)します。
+- name: Azure Enterprise Agreement (EA) と EA Portal に関する質問
+  questions:
+  - question: 登録に SPN アクセス許可を割り当てるにはどうすればよいですか?
+    answer: >
+      [EA SPN へのロールの割り当て](manage/assign-roles-azure-service-principals.md)に関するページを参照してください。
+  - question: アクティブ化メールが届かないのはなぜですか?
+    answer: >
+      Azure EA Portal からのアクティブ化メールは、 *waep@microsoft.com* から送信されます。 アクティブ化メールが届いていない場合は、スパムまたは迷惑メール フォルダーにこのメールが入っていないか確認してください。 このメールは、_Invitation to View/Manage the Microsoft Azure service_subject_ という件名で送信されます。 これは、新しく追加されたすべての EA 管理者宛てに送信されます。
+
+
+      EA 管理者として設定されていることがわかっている場合は、Azure EA Portal にサインインするためにアクティブ化メールが届くまで待つ必要はありません。 代わりに、電子メールアドレス (職場、学校、または Microsoft アカウント) とパスワードを使用して、 https://ea.azure.com にアクセスしてサインインできます。
+  - question: 登録に新しい EA 管理者を追加するにはどうすればよいですか?
+    answer: >
+      既存のエンタープライズ管理者は、新しいエンタープライズ管理者を追加できます。 ご自分が EA 管理者である場合は、EA Portal にサインインし、 **[管理]** をクリックし、右上隅にある **[+ 管理者の追加]** をクリックして、新しい EA 管理者を追加してください。 ユーザーを追加できるように、ユーザーのメール アドレスと推奨されるサインイン方法 (職場または学校の認証や Microsoft Live ID など) を確認してください。
+
+
+      当社から直接ライセンスを取得する場合の EA 管理者である場合は、Azure portal にサインインし、**[課金スコープ]** を選択し、**[アクセス制御 (IAM )]** に移動し、左上隅にある **[+ 追加]** を選択して新しい EA 管理者を追加します。 ユーザーのメール アドレスと希望するサインイン方法 (職場または学校の認証や Microsoft Live ID など) を確認しておいてください。
+
+
+      ご自分が EA 管理者でない場合は、社内の EA 管理者に連絡して、自分を登録に追加するように依頼してください。 登録に追加された後、アクティブ化メールを受け取ります。
+
+
+      ただし、EA 管理者の支援を受けることができない場合は、次の情報を提供すれば、自分を追加してもらうことができます。
+
+      - 登録番号。
+
+      - 追加するメール アドレスと認証の種類 (職場、学校、MS)。
+
+      - EA 管理者からのメールによる承認。
+
+
+      必要な情報をすべて指定したら、[https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) で要求を送信してください。
+  - question: 登録の最初の EA 管理者を更新するにはどうすればよいですか?
+    answer: >
+      ボリューム ライセンス サービス センターで最初の EA 管理者を更新するには、ポータルで通知連絡先とオンライン管理者を更新します。 EA Portal が更新されるまでに約 24 時間かかります。 更新された後、新しい EA 管理者はアクティブ化メールを受け取ります。
+
+
+      VLSC ポータルにアクセスできない場合、または最初の EA 管理者が登録を管理できなくなり、EA Portal にアクセスできない場合は、[https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) で要求を送信して更新を要求し、次の情報を提供してください。
+
+      - 加入契約番号
+
+      - 追加するメール アドレスと認証の種類 (職場、学校、MS)
+
+      - 最初の EA 管理者を変更する理由
+
+      - 最初の EA 管理者からのメールによる承認
+  - question: 現在の EA 管理者が退職しました。 どうすればよいですか。
+    answer: >
+      EA 登録には複数の EA 管理者を含めることができます。別の EA 管理者に連絡して、新しい EA 管理者、アカウント所有者、部門管理者を追加してもらうことができます。 ただし、社内の EA 管理者が誰かわからない場合や、連絡可能な他の EA 管理者が登録に含まれていない場合は、次の情報を用意してお問い合わせください。
+
+      - 加入契約番号
+
+      - 追加するメール アドレスと認証の種類 (職場、学校、MS)
+
+      - 退職した現在の EA 管理者に関する情報
+
+
+      他の EA 管理者が登録に含まれている場合は、その EA 管理者に連絡して、登録の管理上の変更に対する承認を求めるので注意してください。
+  - question: 登録が保留中の状態で表示されます。 登録をアクティブ化するにはどうすればよいですか?
+    answer: >
+      最初の EA 管理者が登録にまだログオンしていない場合、登録は保留中の状態になります。 ご自分が EA 管理者である場合は、Azure EA Portal にサインインしてください。 すべての登録番号を含むランディング ページには、保留中の登録が表示されない場合があります。 EA Portal の右上隅にある [アクティブ] ボックスをオフにしてください。このアクションにより、保留中の登録が表示されます。 登録をクリックして情報にアクセスしてください。登録の [管理] ページに移動すると、状態が [保留中] から [アクティブ] に更新されます。
+
+
+      直接のエンタープライズのお客様の場合は、Azure portal にサインインしてください。 [課金スコープ] ページで、お使いの課金アカウントを選択します。 登録の概要ページが表示されると、状態が **[保留中]** から **[アクティブ]** に更新されます。 **[プロパティ]** メニューに移動し、更新状態を表示します。
+  - question: アカウントが保留中のままになっているのはなぜですか?
+    answer: >
+      登録に初めて追加された新しいアカウント所有者 (AO) は、常に "保留中" の状態で表示されます。 アクティブ化のウェルカム メールを受け取った AO は、サインインして自分のアカウントをアクティブ化できます。 サインインすることで、アカウントの状態が "保留中" から "アクティブ" に更新されます。
+  - question: Azure EA Portal にサインインするときにエラーが表示されるのはなぜですか?
+    answer: "サインイン時に Azure EA Portal にエラー メッセージが表示される理由はいくつかあります。次のトラブルシューティングのステップに従ってください。\n\n 1. [https://ea.azure.com](https://ea.azure.com) で正しい EA Portal URL を使用していることを確認してください。\n 1. Azure EA Portal へのアクセス権が職場または学校アカウントあるいは Microsoft Live ID として追加されているかどうかを確認します。 職場のアカウントを使用する場合は、職場のメール アドレスとパスワードを入力してください。 Microsoft Live ID を使用する場合は、Microsoft Live ID のメール アドレスとパスワードを入力してください。 Microsoft Live ID のパスワードを忘れた場合は、[https://account.live.com/password/reset](https://account.live.com/password/reset) でパスワードをリセットしてください。\n 1. プライベート ブラウザーを使用してサインインすることをお勧めします。これにより、以前のセッションや既存のセッションの Cookie やキャッシュが保持されなくなります。 キャッシュをクリアし、プライベート ブラウズ モードまたは Incognito ウィンドウを使用して [https://ea.azure.com](https://ea.azure.com) を開きます。\n 1. Microsoft アカウントの使用時に無効なユーザー エラーが発生する場合は、複数の Microsoft アカウントがあり、サインインしようとしているアカウントがプライマリ エイリアスではないことが原因である可能性があります。 プライマリ エイリアスを確認するには、account.live.com にアクセスします。\n     - [Your Info]\\(あなたの情報\\) > [Manage your sign-in email or phone number]\\(サインイン用のメール アドレスまたは電話番号を管理\\) に移動します。\n     - 画面の指示に従って連絡用メール アドレスを確認し、機密情報にアクセスするためのコードを取得します。\n     - セキュリティ コードを入力します。\n     - 2 段階認証を後で設定する場合は、[後で設定する] を選択します。\n     - [アカウント エイリアスの管理] ページに移動し、設定されているアカウント エイリアスが表示されます。 プライマリ エイリアスが Azure EA Portal へのログインに使用しているエイリアスであることを再確認します。 そうでない場合は、使用中のエイリアスをプライマリ エイリアスにするか、EA Portal のプライマリ エイリアスを代わりに使用できます。\n \n 上記のトラブルシューティングのステップで問題が解決しない場合は、次のような情報を用意して [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) でリクエストを送信してください。\n   - 使用しているブラウザーとバージョン。\n   - エラー メッセージのスクリーンショット。\n   - エラーを表示しているページの URL。  \n   - エラーが発生した日付、時刻、タイム ゾーン。\n\n- さらに、ログ ファイルを取得しておくと役に立ちます。 以下の情報を使用してネットワーク トレースをキャプチャするステップは次のとおりです。\n\n1. Internet Explorer を開きます。\n1. F12 キーを押します。IE の下部にボックスが開きます。\n1. **[ネットワーク]** タブを選択します。\n1. **[キャプチャの開始]** をクリックします。\n1. エラーの原因となっているアクションを実行します。\n1. エラーが表示されたら、 **[キャプチャの停止]** をクリックします。\n1. ファイルを保存し、その情報をサポート リクエストに含めます。\n1. サポート リクエストには、必ず登録番号とメール アドレスを含めるようにしてください。\n"
+  - question: 職場または学校アカウントと Microsoft アカウントの違いは何ですか?
+    answer: >
+      **Microsoft アカウント:** [https://signup.live.com](https://signup.live.com) の Live ID に関連付けられているアカウント。
+
+
+      **職場または学校アカウント:** クラウドへのフェデレーションを使用して Active Directory を設定しており、1 つのテナントにすべてのアカウントが存在する会社のみが使用できます。 社内の Active Directory がクラウドにフェデレーションされている場合は、職場または学校の認証の種類を使用してユーザーを追加できます。
+
+
+      2016 年 9 月以降、職場または学校のメール アドレスは Microsoft アカウントとして登録できなくなりました。 詳細については、以下の資料を参照してください。[https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/)
+
+
+      組織がクラウドにフェデレーションされていない場合は、職場または学校のメール アドレスを使用できません。 代わりに、新しいメール アドレスを登録または作成し、それを Microsoft アカウントとして登録してください。
+  - question: Azure EA Portal のパスワードを忘れてしまいました。 どうすればよいですか。
+    answer: >
+      Microsoft Live ID のパスワードを忘れた場合は、[https://account.live.com/password/reset](https://account.live.com/password/reset) でパスワードをリセットしてください。
+
+
+      職場のパスワードを忘れた場合は、社内の IT 管理者にお問い合わせください。
+  - question: 有効な職場または学校アカウントを持っています。 これを EA Portal に追加できないのはなぜですか?
+    answer: >
+      別のテナントに職場または学校アカウントがある場合は、登録の詳細ページで承認レベルを "テナント間の職場または学校アカウント" に変更すると、そのアカウントを追加できるようになります。
+  - question: 既存の Azure アカウントを Azure EA 加入契約に誤って関連付けてしまいました。 その結果、月単位のクレジットが失われました。 月単位のクレジットを元に戻すことはできますか?
+    answer: >
+      Visual Studio サブスクリプションと同じ資格情報を使用して Azure EA アカウント所有者としてサインインした場合、次のいずれかのアクションを実行して、Visual Studio サブスクリプションの個々の Azure 特典を復旧できます。
+
+
+      - 関連付けられている Azure サブスクリプションを削除または移動した後、Azure エンタープライズ ポータルからアカウント所有者を削除します。 次に、個別の Visual Studio Azure 特典に新たにサインアップします。
+
+      - VLSC の管理サイトから Visual Studio サブスクライバーを削除し、今度は異なる資格情報を持つアカウントにサブスクリプションを再度割り当てます。 次に、個別の Visual Studio Azure 特典に新たにサインアップします。
+  - question: どのような種類のサブスクリプションを作成する必要がありますか?
+    answer: >
+      Azure Enterprise のお客様には、次の 2 種類のサブスクリプション プランが用意されています。
+
+
+      - Microsoft Azure エンタープライズ。次の場合に最適です。
+
+      - すべての運用環境での使用
+
+      - インフラストラクチャへの支出に基づく最適な料金
+
+
+      詳細については、[Azure 営業担当者にお問い合わせください](https://azure.microsoft.com/pricing/enterprise-agreement/)。
+
+
+      - Enterprise Dev/Test。次の場合に最適です。
+
+      - チームによるすべての開発/テスト ワークロード
+
+      - 中規模から大規模の個別の開発/テスト ワークロード
+
+      - 特別な MSDN イメージと優先サービス レートへのアクセス
+
+
+      詳細については、[Enterprise Dev/Test のオファー](https://azure.microsoft.com/offers/ms-azr-0148p/)に関する記事を参照してください。
+  - question: サブスクリプション名がプラン名と同じになっています。 サブスクリプション名を組織にとって意味のあるものに変更する必要がありますか?
+    answer: >
+      サブスクリプションを作成するとき、名前は既定で選択したプランの種類になります。 サブスクリプション名を変更して、サブスクリプションを簡単に追跡できるようなものにすることをお勧めします。
+
+
+      名前を変更するには:
+
+
+      1. [https://account.windowsazure.com](https://account.windowsazure.com) にサインインします。
+
+      1. サブスクリプションの一覧を選択します。
+
+      1. 編集するサブスクリプションを選択します。
+
+      1. **[サブスクリプションの管理]** アイコンを選択します。
+
+      1. サブスクリプションの詳細を編集します。
+  - question: 発生したコストをコスト センター別に追跡するにはどうすればよいですか?
+    answer: >
+      コスト センター別にコストを追跡するには、次のいずれかのレベルでコスト センターを定義する必要があります。
+
+
+      - 部署
+
+      - Account
+
+      - サブスクリプション
+
+
+      ニーズに応じて、同じコスト センターを使用して、特定のコスト センターに関連付けられた使用状況とコストを追跡できます。
+
+
+      たとえば、複数の部署が関与する特別なプロジェクトのコストを追跡するには、サブスクリプション レベルでコスト センターを定義して、使用状況とコストを追跡できます。
+
+
+      コスト センターをサービス レベルで定義することはできません。 サービス レベルで使用状況を追跡する場合は、サービス レベルで利用可能な "_タグ_" 機能を使用できます。
+  - question: 組織内のさまざまな部門ごとの使用状況と支出を追跡するにはどうすればよいですか?
+    answer: >
+      Azure EA 加入契約において、必要な数の部署を作成できます。 使用状況を正しく追跡するには、サブスクリプションが部署間で共有されないようにします。
+
+
+      部署とサブスクリプションを作成した後、使用状況レポートにデータを表示できます。 この情報は、部署レベルで使用状況を追跡し、コストを管理し、支出を管理するのに役立ちます。
+
+
+      Reporting API を使用して、使用状況データにアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](manage/ea-portal-rest-apis.md) に関するページを参照してください。
+
+
+      直接の企業のお客様は、Azure portal でさまざまな部門レベルの使用状況と支出を確認できます。 **[部門]** メニューに移動して、料金を表示します。
+  - question: 利用量クォータを設定して、制限に近づいたらアラートを受け取ることはできますか?
+    answer: >
+      部署レベルで利用量クォータを設定できます。これにより、使用制限が、定義したクォータの 50%、75%、90%、および 100% に達すると通知されます。
+
+
+      利用量クォータを定義するには、部署を選択した後、編集アイコンを選択します。 利用量制限の詳細を編集した後、 **[保存]** を選択します。
+  - question: リソース グループを使用して Azure RBAC を実装し、使用状況を追跡しました。 関連する使用状況の詳細を表示するにはどうすればよいですか?
+    answer: "\"_リソース グループ_\" と \"_タグ_\" を使用している場合、この情報はサービス レベルで追跡され、詳細な使用状況のダウンロード (CSV) ファイルでアクセスできます。 Azure エンタープライズ ポータルの[使用状況レポートのダウンロード](https://ea.azure.com/report/downloadusage)を参照してください。\n\nAPI で使用状況にアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](manage/ea-portal-rest-apis.md) に関するページを参照してください。\n\n> [!NOTE]\n> タグを適用できるのは、Azure Resource Manager の操作をサポートするリソースのみです。 仮想マシン、仮想ネットワーク、またはストレージをクラシック デプロイ モデル (クラシック ポータルなど) を使用して作成した場合、そのリソースにタグを適用することはできません。 タグ付けをサポートするには、Resource Manager を介してこれらのリソースを再デプロイする必要があります。 その他のすべてのリソースでは、タグ付けがサポートされています。\n"
+  - question: Power BI を使用して分析を実行できますか?
+    answer: >
+      はい。[Power BI Desktop 用の Cost Management コネクタ](/power-bi/connect-data/desktop-connect-azure-cost-management)を使用すると、Azure のコストの理解を深めるのに役立つ、強力でカスタマイズされた視覚化とレポートを作成することができます。 Enterprise Agreement (EA) を使用している場合は、[Cost Management テンプレート アプリ](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)を使用することもできます。 Cost Management テンプレート アプリには、コストの監視、サービスの使用傾向、および支出を削減するためのコスト最適化オプションの特定に役立つ、あらかじめ作成されたレポートが付属します。               Power BI レポートは、課金情報を表示するアクセス権がある、Azure EA ダイレクト、パートナー、およびインダイレクトのお客様にご利用いただけます。
+  - question: 既存の Azure アカウントを Azure EA 加入契約に関連付けることはできますか?
+    answer: >
+      はい。 自分がアカウント所有者であるすべての Azure サブスクリプションが、Enterprise Agreement に変換されます。 これには、Visual Studio、AzurePass、MPN、BizSpark など、月単位のクレジットを使用するサブスクリプションが含まれます。 そのようなサブスクリプションを変換すると、月単位のクレジットが失われます。
+  - question: サブスクリプションあたりの Azure アカウント所有者は何人までですか?
+    answer: >
+      サブスクリプションごとに 1 人のアカウント所有者のみが許可されます。  [Azure portal](https://portal.azure.com) のページの左上にある [サブスクリプション] タブで、ロールベースのアクセスまたは (アクセス制御 (IAM)) を使用してさらにロールを追加できます。
+  - question: Azure サブスクリプションの所有権を別のアカウントに譲渡できますか?
+    answer: >
+      はい、サブスクリプションの所有権は別のアカウントに譲渡できます。 たとえば、アカウント A に 3 つのサブスクリプションがある場合、エンタープライズ管理者は、アカウント B、アカウント C、アカウント D にそれぞれ 1 つのサブスクリプションを譲渡できます。または、すべてのサブスクリプションをアカウント E に譲渡することもできます。
+
+
+      サブスクリプションを譲渡するには:
+
+
+      1. Azure エンタープライズ ポータルで、 **[管理]**  >  **[アカウント]** を選択します。
+
+      1. 右端にある **[アカウント]** をポイントすると、**所有権の譲渡** (人のアイコン) と **サブスクリプションの譲渡** (リスト アイコン) のオプションが表示されます。 これらのオプションは、アクティブなアカウントに対してのみ表示されます。
+
+
+      直接のエンタープライズのお客様は、サブスクリプションの所有権を Azure portal 内の別のアカウントに譲渡することができます。 **[アカウント]** または **[サブスクリプション]** メニューに移動して、所有権を譲渡します。
+  - question: Azure アカウント所有者は複数の部門の下に表示できますか?
+    answer: >
+      いいえ。アカウント オーナーは、1 つの部署にのみ関連付けることができます。 このポリシーは、Azure EA Portal の EA 加入契約の下にある部門に関連付けられる、正確なコストと支出の監視と分配を確保するうえで有用です。
+  - question: Azure アカウント所有者をセキュリティグループとして表示できますか?
+    answer: >
+      いいえ。サブスクリプションの所有者は、一意の Microsoft アカウント (MSA) 認証または Azure Active Directory (Azure AD) 認証である必要があります。 組織内で引き継ぐ場合は、汎用アカウントを作成し、Azure AD を使用してサブスクリプションへのアクセスを管理することを検討してください。
+  - question: 単一のユーザーが複数のサブスクリプションを所有できますか?
+    answer: >
+      Azure アカウントの所有者は、無制限の数のサブスクリプションを作成および管理できます。
+  - question: 組織のすべてのサブスクリプションにアクセスする、または表示するにはどうすればよいですか?
+    answer: >
+      現時点では、これはポリシーによって行われる必要があります。つまり、すべての作成されたサブスクリプションについて、ロールベースのアクセスを使用してアカウントをサブスクリプションロールに追加する必要があります。
+  - question: サブスクリプションを作成するにはどうすればよいですか?
+    answer: >
+      エンタープライズ Azure (EA) プランのサブスクリプションを作成する前に、Azure EA Portal の EA 加入契約の管理者によってアカウント オーナーのロールにアカウントを追加する必要があります。 その後、Azure EA Portal にサインインして、EA プラン タイプのサブスクリプションを作成するエンタイトルメントを取得する必要があります。 EA Portal の [サブスクリプション] タブにある [+ サブスクリプションの追加] リンクから最初の EA サブスクリプションを作成することをお勧めします。  ただし、アカウントに資格が付与された後は、ページの左上にある [サブスクリプション] タブの portal.azure.com でサブスクリプションを作成する方が簡単な場合があります。ここでは、サブスクリプションの作成と名前の変更の両方を 1 回のステップで行うことができます。
+  - question: サブスクリプションを作成できるのは?
+    answer: >
+      エンタープライズ Azure オファー タイプのサブスクリプションを作成するには、[EA Portal](https://ea.azure.com)でアカウント所有者の資格を持っている必要があります。
+  - question: コストが $0 と表示されるのはなぜですか?
+    answer: >
+      **ダイレクト加入契約** のお客様については、エンタープライズ管理者が、アカウント所有者と部門管理者に対して、使用状況レポートのコストや価格に関する情報へのアクセス権を提供できます。 次の手順に従います。
+
+
+      1. Azure エンタープライズ ポータルの左側のナビゲーションで、 **[管理]** を選択します。
+
+      1. DA (部門管理者) ビューの請求額の横にある青色の鉛筆を選択します。
+
+      1. **[有効]** を選択して保存します。
+
+      1. AO (アカウント所有者) ビューの請求額の横にある青色の鉛筆を選択します。
+
+      1. **[有効]** を選択して保存します。
+
+
+      **ダイレクト加入契約** のお客様については、エンタープライズ管理者が、アカウント所有者と部門管理者に対して、Azure portal でコストや価格に関する情報へのアクセス権を提供できます。 **[ポリシー]** メニューに移動して、設定を変更します。
+
+
+      > [!NOTE]
+
+      > アカウント所有者または部門管理者の場合は、エンタープライズ管理者に連絡して価格機能を有効にしてください。
+
+
+      **インダイレクト加入契約** のお客様の場合は、パートナーに連絡し、価格機能が有効にされていることを確認してください。 これを行うことができるのはパートナーのみです。 有効になった後で、エンタープライズ管理者として、加入契約のコストと価格を確認できます。
+
+
+      アカウント所有者または部門管理者に対して請求金額の表示機能を有効にする必要がある場合、パートナーは **ダイレクト加入契約** の手順に従います。
+  - question: 使用状況の詳細レポートに SKU 情報がないのはなぜですか?
+    answer: >
+      使用状況の詳細レポートには SKU 情報は含まれません。 しかし、レポートには使用状況の情報が含まれているため、価格シート レポートをダウンロードして、SKU 情報を取得することができます。
+  - question: Azure Marketplace の合計金額が使用状況の概要および詳細のレポートと一致しないのはなぜですか?
+    answer: >
+      Azure Marketplace の料金レポートには、使用量ベースの料金のみが表示されます。 1 回限りの料金は表示されません。 最新の使用量ベースの料金と 1 回限りの料金については、使用状況の概要ページを参照してください。
+  - question: API レポートに関する情報がないのはなぜですか?
+    answer: >
+      API キーは 6 か月ごとに期限切れになります。 問題が発生している場合は、エンタープライズ管理者が新しい API キーを生成する必要があります。 必ず、API レポートに関する FAQ の手順に従ってください。
+  - question: Power BI レポートが機能しないのはなぜですか?
+    answer: >
+      Power BI の問題については、[Power BI サポート チーム](https://support.powerbi.com)のチケットを記録してください。
+  - question: レポートにリソース タグが表示されないのはなぜですか?
+    answer: >
+      リソース タグは Azure portal で管理されます。 [Azure portal](https://portal.azure.com) で Azure サブスクリプション チームに問い合わせることができます。 「[Azure サポート要求を作成する方法](../azure-portal/supportability/how-to-create-azure-support-request.md)」の記事の手順に従ってください。
+  - question: リソースの比率が毎日変わるのはなぜですか?
+    answer: >
+      詳細な使用状況レポートに表示されるリソースの比率は、計算値です。 サービスに対して課金された平均月額料金を表します。 リソースの比率は、サービス単位に対する月額コミットメントおよび月額超過料金の平均から計算されます。 コミットメントおよび超過料金に対して課金される使用量の部分は、月末に変わります。 そのため、リストされているリソースの比率もその月の間に変わります。 月末から 5 日目にリソースの比率が確定します。
+  - question: Azure Marketplace サービスと Azure EA 前払いに関してはどのような変更がありますか?
+    answer: >
+      2018 年 3 月 1 日の時点で、一部のサードパーティ リセラー サービスで、Azure EA 前払いが使用されています。 Azure 予約 VM インスタンス (RI) を除き、サービスは以前は、Azure EA 前払いとは別に課金され、個別に請求されていました。
+
+
+      弊社では Azure 前払いの使用を拡大し、最も頻繁に購入される、サードパーティが公開している Azure Marketplace サービスの一部が含まれるようにしました。 Azure Marketplace のこれらのサービスの Azure EA 前払いは、購入と支払管理を簡素化するのに役立ちます。
+
+
+      この変更は、Azure 前払いを他の方法で利用したいというお客様からの要望に応えるために行われました。 この変更はお客様によって頻繁に要求されたものであり、Azure Marketplace のお客様の大部分に影響を与えました。
+  - question: EA 契約での Azure Marketplace の購入に対して Azure 前払いを利用するにはどうすればよいですか?
+    answer: >
+      よりシンプルな課金エクスペリエンスが得られ、Azure EA 前払いを利用しやすくなります。 サービスは Azure 前払いに含まれているため、Azure EA 前払いはより価値のあるものになります。
+  - question: Azure EA 前払いを使用する Azure Marketplace サービスは何ですか? また、どうすれば確認できますか?
+    answer: >
+      Azure 前払いを使用するサービスを購入すると、Azure Marketplace で免責事項が示されます。 サポートされているサービスのいくつかは、Red Hat、SUSE、Autodesk、および Oracle によって公開されています。 現在、他のパーティによって公開されている同じような名前のサービスは、Azure 前払いから差し引かれません。 プログラムに参加している製品の完全なリストについては、[Azure 前払いを使用するサードパーティ サービス](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)に関するページを参照してください。
+  - question: Azure Marketplace での購入に対して Azure EA 前払いが使い果たされた場合はどうなりますか?
+    answer: >
+      すべての Azure 前払いを消費し、超過した場合、これらのサービスに関連する料金が、その他の従量課金サービスと共に次の超過分の請求書に表示されます。 2018 年 3 月 1 日の変更の前までは、これらの料金は他の Azure Marketplace サービスと共に請求されました。
+  - question: すべての Azure Marketplace で Azure EA 前払いが消費されないのはなぜですか?
+    answer: >
+      弊社は、Azure EA 前払いに関連する最高のカスタマー エクスペリエンスを提供するための取り組みを頻繁に行っています。 Azure EA 前払いに対する最新の変更により、Azure Marketplace における多くのお客様と総支出の大部分に対応しました。 その他のサービスは今後、追加される可能性があります。
+  - question: Azure Marketplace サービスと Azure EA の前払いの変更は、インダイレクトの加入契約とパートナーにどのように影響しますか?
+    answer: >
+      ダイレクトのお客様やパートナーには影響しません。 これらのサービスは、他の従量課金サービスと同じパートナー マークアップ機能の対象となります。 唯一の変更点は、料金が異なる請求書に表示されることと、料金の支払いがお客様の Azure EA 前払いからであることです。
+  - question: Azure EA 前払いを消費する Azure Marketplace サービスのリストはどこで確認できますか?
+    answer: >
+      特定の Azure Marketplace オファーでは、Azure 前払い資金を使用できます。 プログラムに参加している製品の完全なリストについては、[Azure 前払いを使用するサードパーティ サービス](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)に関するページを参照してください。
+- name: パートナーに関する質問
+  questions:
+  - question: パートナー ID のリンク付けはだれが行う必要がありますか?
+    answer: >
+      お客様の Power Apps リソースを操作するパートナー組織内の任意のユーザーが、パートナー ID をアカウントにリンクできます。 理想的には、PAL での関連付けはプロジェクトの開始時に行う必要があります。 ただし、お客様のディレクトリにアクセスできる場合はいつでもこれを実行できます。
+  - question: パートナー ID はリンク後に変更できますか。
+    answer: >
+      はい。 はい、リンク済みのパートナー ID は、変更、追加、または削除できます。 このような状況の 1 つの例として、会社の従業員が退職した場合があります。 別の例として、お客様とのプロジェクトまたは契約が終了した場合があります。
+  - question: ユーザーのアカウントが複数の顧客のテナントに存在する場合はどうなりますか。
+    answer: >
+      パートナー ID とアカウント間のリンクは、各顧客テナントに対して行われます。 パートナー ID は、顧客のテナントごとにリンクしてください。
+  - question: 他のパートナーまたは顧客がパートナー ID へのリンクを編集または削除できますか。
+    answer: >
+      リンクはユーザー アカウント レベルで関連付けられます。 パートナー ID へのリンクは、貴社のみが編集または削除できます。 顧客と他のパートナーは、パートナー ID へのリンクを変更できません。
+  - question: 会社に複数の MPN ID がある場合は、どれを使用すべきですか。
+    answer: >
+      パートナー プロファイルに表示されている **関連付けられている MPN ID** を必ず使用してください。 これは通常、組織とのローカル アカウント ID の関連付けです。
+  - question: お客様に対して PAL をどのように説明すればよいですか?
+    answer: >
+      PAL により、Microsoft はお客様のビジネス目標達成とクラウドでの価値実現に寄与しているパートナーを特定し、認識することができます。 お客様は最初に、その Power Apps リソースへのアクセスをパートナーに提供する必要があります。 アクセスが許可されると、パートナーの Microsoft Partner Network ID (MPN ID) が関連付けられます。 この関連付けによって Microsoft は、IT サービス プロバイダーを把握し、お客様を最大限にサポートするために必要なツールやプログラムについて詳細を詰めることができます。
+  - question: PAL によってどのようなデータが収集されますか。
+    answer: >
+      既存の資格情報に対する PAL の関連付けによって、顧客データが新たに Microsoft に提供されることはありません。 Microsoft に提供されるのは、お客様の Power Apps 環境にパートナーが積極的に関与している領域の情報です。 Microsoft は、お客様からパートナーに提供されたアカウント アクセス許可 (Power Apps のロール) とスコープ (テナント、リソース グループ、リソース) に基づいて、お客様の環境からの使用状況と影響に貢献しているパートナー組織を判断することができます。
+  - question: PAL の関連付けは、お客様の Power Apps 環境のセキュリティに影響しますか?
+    answer: PAL の関連付けでは、既にプロビジョニングされている資格情報にパートナーの MPN ID が追加されるのみです。 アクセス許可 (Power Apps のロール) が変更されたり、パートナーまたは Microsoft に追加の Power Apps サービス データが提供されたりすることはありません。

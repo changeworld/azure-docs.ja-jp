@@ -3,31 +3,40 @@ title: Azure API Management のサブスクリプション | Microsoft Docs
 description: Azure API Management のサブスクリプションの概念について説明します。 コンシューマーは、Azure API Management のサブスクリプションを使用して API にアクセスします。
 services: api-management
 documentationcenter: ''
-author: miaojiang
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/14/2018
-ms.author: apimpm
-ms.openlocfilehash: cdc7668b06308bd5532f4885d0e1365fc34ae989
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/27/2021
+ms.author: danlep
+ms.openlocfilehash: acf1db006dac4dd67937bf1d0788a219b6c482e9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511248"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637933"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API Management のサブスクリプション
 
-サブスクリプションは、Azure API Management の重要な概念です。 これは、API ユーザーが API Management インスタンスを介して公開されている API へのアクセス権を取得するための最も一般的な方法です。 この記事では、この概念の概要について説明します。
+Azure API Management でのサブスクリプションは、API コンシューマーが API Management インスタンスを通じて公開された API にアクセスするための最も一般的な方法です。 この記事では、この概念の概要について説明します。
 
 ## <a name="what-are-subscriptions"></a>サブスクリプションとは
 
-API Management を介して API を公開する場合、これらの API へのアクセスをセキュリティで保護する簡単で一般的な方法は、サブスクリプション キーを使用することです。 公開された API を使用する必要がある開発者は、これらの API を呼び出すときに、有効なサブスクリプション キーを HTTP 要求に含める必要があります。 そうしないと、呼び出しは API Management ゲートウェイによってすぐに拒否されます。 それらはバックエンド サービスに転送されません。
+API Management を通じて API を公開することで、サブスクリプション キーを用いて API アクセスを簡単に保護できます。 発行された API を使用するには、それらの API を呼び出す際に、HTTP 要求に有効なサブスクリプション キーを含める必要があります。 有効なサブスクリプション キーがない場合、呼び出しは次を実行します。
+* API Management ゲートウェイによって直ちに拒否されます。 
+* バックエンド サービスに転送されません。
 
-API にアクセスするためのサブスクリプション キーを取得するには、サブスクリプションが必要です。 サブスクリプションは、基本的にサブスクリプション キーのペアの名前付きコンテナーです。 公開されている API を使用する必要がある開発者は、サブスクリプションを取得できます。 API の公開元による承認は必要ありません。 API の公開元は、API ユーザー用のサブスクリプションを直接作成することもできます。
+API にアクセスするには、サブスクリプションとサブスクリプション キーが必要です。 *サブスクリプション* は、基本的にサブスクリプション キーのペアの名前付きコンテナーです。 
+
+キーの定期的な再生成は一般的なセキュリティ上の予防策です。そのため、サブスクリプション キーを必要とするほとんどの Azure 製品では、キーがペアで生成されます。 サービスを利用する各アプリケーションは、*キー A* から *キー B* に切り替え、最小限の中断で鍵 A を再生成できます。その逆も同様です。 
+
+さらに、次の点も考慮する必要があります。
+
+* 開発者は、API 発行元の承認なしにサブスクリプションを取得できます。 
+* API の公開元は、API コンシューマー用のサブスクリプションを直接作成することもできます。
 
 > [!TIP]
 > API Management では、API へのアクセスをセキュリティで保護するための他のメカニズムもサポートしています。たとえば、以下があります。
@@ -41,7 +50,16 @@ API にアクセスするためのサブスクリプション キーを取得す
 
 ### <a name="subscriptions-for-a-product"></a>製品のサブスクリプション
 
-従来、API Management のサブスクリプションは、常に 1 つの [API 製品](api-management-terminology.md)の範囲に関連付けられていました。 開発者は、開発者ポータルで製品の一覧を確認していました。 その後、使用する製品のサブスクリプション要求を送信します。 サブスクリプション要求が (自動的にまたは API の公開元によって) 承認されると、開発者はそのキーを使用して製品内のすべての API にアクセスできます。 現時点では、製品をスコープとするサブスクリプションは、開発者ポータルのユーザー プロファイル セクションにのみ表示されます。 
+従来、API Management のサブスクリプションは、常に 1 つの [API 製品](api-management-terminology.md)のスコープに関連付けられていました。 開発者 : 
+* 開発者ポータルで製品の一覧を確認していました。 
+* 使用する製品のサブスクリプション要求を送信します。 
+* これらのサブスクリプションのキー (自動的に承認または API 発行元によって承認) を使用して、製品内のすべての API にアクセスします。 
+    * サブスクリプション のスコープ (製品、グローバル、または API) に関係なく、サブスクリプション キーを使用または使用せずに API にアクセスできます。
+
+現時点では、製品をスコープとするサブスクリプションは、開発者ポータルの **ユーザー プロファイル セクション** にのみ表示されます。 
+
+> [!NOTE]
+> API スコープのサブスクリプション キーを使用している場合、製品スコープで構成されている *ポリシー* は、そのサブスクリプションには適用されません。
 
 ![製品のサブスクリプション](./media/api-management-subscriptions/product-subscription.png)
 
@@ -50,18 +68,35 @@ API にアクセスするためのサブスクリプション キーを取得す
 
 ### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>すべての API または個々の API のサブスクリプション
 
-API Management の[従量課金](https://aka.ms/apimconsumptionblog)レベルの導入時に、キー管理を合理化するためにいくつかの変更が行われました。
-- まず、すべての API と単一の API という 2 つのサブスクリプション範囲が追加されました。 サブスクリプションの範囲は、API 製品に限定されなくなりました。 1 つの API (または API Management インスタンス内のすべての API) へのアクセスを許可するキーを作成できるようになりました。先に製品を作成して API を追加しておく必要はありません。 さらに、各 API Management インスタンスには、不変の全 API サブスクリプションが付属するようになりました。 このサブスクリプションにより、テスト コンソール内での API のテストとデバッグがより簡単に、わかりやすくなりました。
+API Management の[従量課金](https://aka.ms/apimconsumptionblog)層を追加することで、サブスクリプション キーの管理がより合理的になります。 
 
-- 次に、API Management で、**スタンドアロン** のサブスクリプションが許可されるようになりました。 サブスクリプションを開発者アカウントに関連付ける必要はなくなりました。 この機能は、1 つのサブスクリプションを複数の開発者またはチームで共有する場合などのシナリオで役立ちます。
+#### <a name="two-more-subscription-scopes"></a>さらに 2 つのサブスクリプション スコープ
 
-- 最後に、API の公開元は、Azure portal で直接[サブスクリプションを作成](api-management-howto-create-subscriptions.md)できるようになりました。
+サブスクリプション スコープが API 製品に限定されなくなったので、次のいずれかのアクセス権を付与するキーを作成できます。
+* 1 つの API、または 
+* API Management インスタンス内のすべての API。 
 
-    ![柔軟なサブスクリプション](./media/api-management-subscriptions/flexible-subscription.png)
+API を追加する前に、製品を作成する必要はありません。 
+
+さらに、各 API Management インスタンスには、不変の全 API サブスクリプションが付属するようになりました。 このサブスクリプションにより、テスト コンソール内での API のテストとデバッグがより簡単に、わかりやすくなりました。
+
+#### <a name="standalone-subscriptions"></a>スタンドアロン サブスクリプション
+
+API Management で、*スタンドアロン* のサブスクリプションが許可されるようになりました。 サブスクリプションを開発者アカウントに関連付ける必要がなくなりました。 この機能は、サブスクリプションを共有する複数の開発者やチームと同様のシナリオで役立ちます。
+
+所有者を割り当てずにサブスクリプションを作成すると、サブスクリプションはスタンドアロン サブスクリプションになります。 開発者とチームの残りの部分にスタンドアロン サブスクリプション キーへのアクセスを許可するには、次のいずれかを実行します。
+* サブスクリプション キーを手動で共有します。
+* カスタム システムを使用して、サブスクリプション キーをチームで使用できます。
+
+#### <a name="creating-subscriptions-in-azure-portal"></a>Azure portal でのサブスクリプションの作成
+
+API の公開元は、Azure portal で直接[サブスクリプションを作成](api-management-howto-create-subscriptions.md)できるようになりました。
+
+![柔軟なサブスクリプション](./media/api-management-subscriptions/flexible-subscription.png)
 
 ## <a name="next-steps"></a>次の手順
 API Management の詳細情報:
 
 + API Management の他の[概念](api-management-terminology.md)を確認します。
 + [チュートリアル](import-and-publish.md)に従って API Management の詳細を確認します。
-+ [FAQ ページ](api-management-faq.md)で一般的な質問を確認します。
++ [FAQ ページ](api-management-faq.yml)で一般的な質問を確認します。

@@ -1,45 +1,49 @@
 ---
-title: Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする
+title: Azure Spring Cloud のアプリケーションのシステム割り当てマネージド ID を有効にする
 description: アプリケーションのシステム割り当てマネージド ID を有効にする方法。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 2fbdd46b872c4c70999355d457045f4aac8aa34c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: da455b6ad4d68d94654c66d073c8a5a0ba093da9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877427"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490423"
 ---
-# <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法
+# <a name="how-to-enable-system-assigned-managed-identity-for-applications-in-azure-spring-cloud"></a>Azure Spring Cloud のアプリケーションのシステム割り当てマネージド ID を有効にする方法
 
 **この記事の適用対象:** ✔️ Java ✔️ C#
 
-Azure リソースのマネージド ID では、Azure Active Directory で自動的に管理される ID が、Azure Spring Cloud アプリケーションなどの Azure リソースに提供されます。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。
+Azure リソースのマネージド ID では、Azure Active Directory で自動的に管理される ID が、Azure Spring Cloud のアプリケーションなどの Azure リソースに提供されます。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。
 
 この記事では、Azure portal と CLI (バージョン0.2.4 から利用可能) を使用して、Azure Spring Cloud アプリのシステム割り当てマネージド ID を有効または無効にする方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
+
 Azure リソースのマネージド ID に習熟してない場合は、[概要に関するセクション](../active-directory/managed-identities-azure-resources/overview.md)を参照してください。
-デプロイ済みの Azure Spring Cloud インスタンスが必要です。 [Azure CLI を使用してデプロイするためのクイックスタート](spring-cloud-quickstart.md)に従ってください。
+デプロイ済みの Azure Spring Cloud インスタンスが必要です。 [Azure CLI を使用してデプロイするためのクイックスタート](./quickstart.md)に従ってください。
 
 ## <a name="add-a-system-assigned-identity"></a>システム割り当て ID を追加する
+
 システム割り当て ID を持つアプリを作成するには、アプリケーションに追加のプロパティを設定する必要があります。
 
 ### <a name="using-azure-portal"></a>Azure Portal の使用
+
 [Azure portal](https://portal.azure.com/) でマネージド ID を設定するには、先にアプリケーションを作成し、その後でこの機能を有効にします。
 
 1. ポータルを使って通常の方法でアプリを作成します。 ポータルでアプリに移動します。
 2. 左側のナビゲーション ペインで、 **[設定]** グループまで下へスクロールします。
 3. **[ID]** を選択します。
-4. **[システム割り当て済み]** タブで、 **[状態]** を *[オン]* に切り替えます。 **[保存]** をクリックします。
+4. **[システム割り当て済み]** タブで、 **[状態]** を *[オン]* に切り替えます。 **[保存]** を選択します。
 
- ![ポータルでのマネージド ID](./media/spring-cloud-managed-identity/identity-1.png)
+![ポータルでのマネージド ID](./media/spring-cloud-managed-identity/identity-1.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI の使用
+
 システム割り当てマネージド ID は、アプリの作成時に有効にするか、既存のアプリに対して有効にできます。
 
 **アプリの作成時にシステム割り当てマネージド ID を有効にする**
@@ -50,13 +54,16 @@ Azure リソースのマネージド ID に習熟してない場合は、[概要
 az spring-cloud app create -n app_name -s service_name -g resource_group_name --assign-identity
 ```
 
-**既存のアプリに対してシステム割り当てマネージド ID を有効にする** `az spring-cloud app identity assign` コマンドを使用して、既存のアプリに対してシステム割り当てID を有効にします。
+**既存のアプリでシステム割り当てマネージド ID を有効にする**
+
+`az spring-cloud app identity assign` コマンドを使用して、既存のアプリ上でシステム割り当て ID を有効にします。
 
 ```azurecli
 az spring-cloud app identity assign -n app_name -s service_name -g resource_group_name
 ```
 
 ## <a name="obtain-tokens-for-azure-resources"></a>Azure リソースのトークンを取得する
+
 アプリでは、そのマネージド ID を使って、Azure Key Vault など Azure Active Directory で保護されているその他のリソースにアクセスするトークンを取得できます。 これらのトークンは、アプリケーションの特定のユーザーではなく、リソースにアクセスするアプリケーションを表します。
 
 [自分のアプリケーションからのアクセスを許可するようにターゲット リソースを構成する](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)ことが必要になる場合があります。 たとえば、Key Vault にアクセスするためのトークンを要求する場合は、お使いのアプリケーションの ID を含むアクセス ポリシーを追加していることを確認してください。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 Azure Active Directory トークンをサポートしているリソースの詳細については、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
@@ -66,19 +73,23 @@ Azure Spring Cloud では、トークンの取得に Azure Virtual Machine と�
 推奨: Java SDK または Spring Boot Starter を使用してトークンを取得します。  [次の手順](#next-steps)に含まれているサンプルを参照してください。
 
 ## <a name="disable-system-assigned-identity-from-an-app"></a>アプリからシステム割り当て ID を無効にする
+
 システム割り当て ID を削除すると、Azure AD からも削除されます。 アプリ リソースを削除すると、Azure AD からシステム割り当て ID が自動的に削除されます。
 
 ### <a name="using-azure-portal"></a>Azure Portal の使用
+
 不要になったシステム割り当てマネージド ID をアプリから削除するには:
 
 1. Azure Spring Cloud インスタンスが含まれている Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 1. 目的の仮想マシンに移動して **[ID]** を選択します。
-1. **[システム割り当て済み]** / **[状態]** で **[オフ]** を選択し、 **[保存]** をクリックします。
+1. **[システム割り当て済み]** / **[状態]** で **[オフ]** を選択し、 **[保存]** を選択します。
 
- ![マネージド ID](./media/spring-cloud-managed-identity/remove-identity.png)
+![マネージド ID](./media/spring-cloud-managed-identity/remove-identity.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI の使用
+
 不要になったシステム割り当てマネージド ID をアプリから削除するには、次のコマンドを使用します。
+
 ```azurecli
 az spring-cloud app identity remove -n app_name -s service_name -g resource_group_name
 ```

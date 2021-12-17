@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: fca5c1a0aee6e62890d734e3233177549d932672
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ab92079d783522731e470e3be6aaf232589d0b6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643677"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449699"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -43,7 +43,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
   - **東南アジア**
   - **米国西部 2**
 
-- この記事は、読者が IoT Hub へのテレメトリ メッセージの送信について理解していることを前提としています。 [テレメトリ C の送信のクイックスタート](quickstart-send-telemetry-c.md)に関するページを完了していることを確認してください。
+- この記事は、読者が IoT Hub へのテレメトリ メッセージの送信について理解していることを前提としています。 [テレメトリ C の送信のクイックスタート](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c)に関するページを完了していることを確認してください。
 
 - IoT Hub にデバイスを登録し (各クイックスタートで使用可能な手順)、接続文字列をメモします。
 
@@ -93,7 +93,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 ### <a name="clone-the-source-code-and-initialize"></a>ソース コードを複製し、初期化する
 
-1. Visual Studio 2019 用の ["C++ によるデスクトップ開発" ワークロード](/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true)をインストールします。 Visual Studio 2017 および 2015 もサポートされています。
+1. Visual Studio 2019 用の ["C++ によるデスクトップ開発" ワークロード](/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true)をインストールします。 Visual Studio 2017 もサポートされます。
 
 1. [CMake](https://cmake.org/) をインストールします。 コマンド プロンプトから `cmake -version` と入力して、これが `PATH` に含まれていることを確認してください。
 
@@ -144,7 +144,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    `connectionString` 定数の値を、[送信テレメトリ C のクイックスタート](./quickstart-send-telemetry-c.md)に関するページの[デバイスの登録](./quickstart-send-telemetry-c.md#register-a-device)セクションでメモしたデバイス接続文字列に置き換えます。
+    `connectionString` 定数の値を、[送信テレメトリ C のクイックスタート](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c)に関するページの[デバイスの登録](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c#register-a-device)セクションでメモしたデバイス接続文字列に置き換えます。
 
 1. `MESSAGE_COUNT` 定義を `5000` に変更します。
 

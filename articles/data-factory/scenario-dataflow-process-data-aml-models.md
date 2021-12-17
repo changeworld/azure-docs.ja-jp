@@ -5,17 +5,18 @@ services: data-factory
 author: amberz
 co-author: ATLArcht
 ms.service: data-factory
+ms.subservice: tutorials
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/31/2021
 ms.author: amberz
 ms.co-author: Donnana
-ms.openlocfilehash: 45cd44cc0678b7f3a006a88bf66be2bca091af76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 084e4c0fa3ecf94685e1789273764c548c07147a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104595381"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730783"
 ---
 # <a name="process-data-from-automated-machine-learning-models-by-using-data-flows"></a>データ フローを使用して自動機械学習モデルのデータを処理する
 
@@ -70,19 +71,19 @@ CREATE TABLE [dbo].[MyProducts](
 
 1. 集計アクティビティを使用して、行数を取得します。 Col2 に基づいた **[グループ化]** と、行数に `count(1)` を指定した **[集計]** を使用します。
 
-    ![行数を取得するための集計アクティビティの構成を示すスクリーンショット。](./media/scenario-dataflow-process-data-aml-models/aggregate-activity-addrowcount.png)
+    :::image type="content" source="./media/scenario-dataflow-process-data-aml-models/aggregate-activity-addrowcount.png" alt-text="行数を取得するための集計アクティビティの構成を示すスクリーンショット。":::
 
 1. シンク アクティビティを使用して、 **[シンク]** タブで **[シンクの種類]** として **[キャッシュ]** を選択します。次に、 **[設定]** タブの **[キー列]** ドロップダウン リストから目的の列を選択します。
 
-    ![CacheSink アクティビティを構成して、キャッシュされたシンク内の行数を取得する様子を示すスクリーンショット。](./media/scenario-dataflow-process-data-aml-models/cachesink-activity-addrowcount.png)
+    :::image type="content" source="./media/scenario-dataflow-process-data-aml-models/cachesink-activity-addrowcount.png" alt-text="CacheSink アクティビティを構成して、キャッシュされたシンク内の行数を取得する様子を示すスクリーンショット。":::
 
 1. 派生列アクティビティを使用して、ソース ストリーム内の行数列を追加します。 **[派生列の設定]** タブで `CacheSink#lookup` 式を使用して、CacheSink から行数を取得します。
 
-    ![source1 内の行数を追加するための派生列アクティビティの構成を示すスクリーンショット。](./media/scenario-dataflow-process-data-aml-models/derived-column-activity-rowcount-source-1.png)
+    :::image type="content" source="./media/scenario-dataflow-process-data-aml-models/derived-column-activity-rowcount-source-1.png" alt-text="source1 内の行数を追加するための派生列アクティビティの構成を示すスクリーンショット。":::
 
 1. 条件分割アクティビティを使用して、非修飾データを削除します。 この例では、行数は Col2 列に基づいています。 条件は 2 未満の行数を削除することであるため、2 つの行 (ID=2 と ID=7) が削除されます。 データ管理のために、非修飾データを BLOB ストレージに保存します。
 
-    ![2 以上のデータを取得する条件分割アクティビティの構成を示すスクリーンショット。](./media/scenario-dataflow-process-data-aml-models/conditionalsplit-greater-or-equal-than-2.png)
+    :::image type="content" source="./media/scenario-dataflow-process-data-aml-models/conditionalsplit-greater-or-equal-than-2.png" alt-text="2 以上のデータを取得する条件分割アクティビティの構成を示すスクリーンショット。":::
 
 > [!NOTE]
 >    * 後の手順の元のソースで使用される行数を取得するための新しいソースを作成してください。
@@ -94,21 +95,21 @@ CREATE TABLE [dbo].[MyProducts](
 
 1. ウィンドウ アクティビティを使用して、パーティションごとに 1 列の行番号を追加します。 **[Over]** タブで、パーティションの列を選択します。 このチュートリアルでは、Col2 のパーティション分割を行います。 **[並べ替え]** タブで順序を指定します。このチュートリアルでは、これは ID に基づいています。 **[ウィンドウ列]** タブで、各パーティションの行番号として 1 つの列を追加する順序を指定します。
 
-    ![1 つの新しい列を行番号として追加するためのウィンドウ アクティビティの構成を示すスクリーンショット。](./media/scenario-dataflow-process-data-aml-models/window-activity-add-row-number.png)
+    :::image type="content" source="./media/scenario-dataflow-process-data-aml-models/window-activity-add-row-number.png" alt-text="1 つの新しい列を行番号として追加するためのウィンドウ アクティビティの構成を示すスクリーンショット。":::
 
 1. 条件分割アクティビティを使用して、各パーティションの一番上の 2 行をテスト データセットに、残りの行をトレーニング データセットに分割します。 **[条件分割の設定]** タブで、式 `lesserOrEqual(RowNum,2)` を条件として使用します。
 
-    ![現在のデータセットをトレーニング データセットとテスト データセットに分割する条件分割アクティビティの構成を示すスクリーンショット。](./media/scenario-dataflow-process-data-aml-models/split-training-dataset-test-dataset.png)
+    :::image type="content" source="./media/scenario-dataflow-process-data-aml-models/split-training-dataset-test-dataset.png" alt-text="現在のデータセットをトレーニング データセットとテスト データセットに分割する条件分割アクティビティの構成を示すスクリーンショット。":::
 
 ## <a name="partition-the-training-and-test-datasets-with-parquet-format"></a>Parquet 形式でトレーニングおよびテスト データセットをパーティション分割する
 
 **[最適化]** タブで、 **[パーティションごとの一意の値]** を使用してパーティションの列キーとして列を設定して、シンク アクティビティを使用します。
 
-![トレーニング データセットのパーティションを設定するシンク アクティビティの構成を示すスクリーンショット。](./media/scenario-dataflow-process-data-aml-models/partition-training-dataset-sink.png)
+:::image type="content" source="./media/scenario-dataflow-process-data-aml-models/partition-training-dataset-sink.png" alt-text="トレーニング データセットのパーティションを設定するシンク アクティビティの構成を示すスクリーンショット。":::
 
 パイプライン全体のロジックを見てみましょう。
 
-![パイプライン全体のロジックを示すスクリーンショット。](./media/scenario-dataflow-process-data-aml-models/entire-pipeline.png)
+:::image type="content" source="./media/scenario-dataflow-process-data-aml-models/entire-pipeline.png" alt-text="パイプライン全体のロジックを示すスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

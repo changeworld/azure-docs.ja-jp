@@ -3,12 +3,12 @@ title: Container insights を使用した Kubernetes の監視 | Microsoft Docs
 description: この記事では、Container insights を使用して Kubernetes クラスターのパフォーマンスの表示と分析を行う方法について説明します。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 865a21e8c54d2cf569e04534fab6ec14f5519f34
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2751d96a0527328a78030cba618d2026059f04fe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102124314"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741366"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Container insights を使用して Kubernetes クラスターのパフォーマンスを監視する
 
@@ -141,7 +141,7 @@ Container insights では Azure Monitor の[メトリックス エクスプロ�
 
 **[ノード]** 、 **[コントローラー]** 、および **[コンテナー]** タブに切り替えると、ページの右側に自動的にプロパティ ウィンドウが表示されます。 ここには選択された項目のプロパティが示され、Kubernetes オブジェクトを整理するために定義したラベルが含まれます。 Linux ノードを選択すると、 **[Local Disk Capacity]\(ローカル ディスク容量\)** セクションに、ノードに対して表示される各ディスクの使用可能なディスク領域と使用割合も表示されます。 ウィンドウの表示と非表示を切り替えるには、ウィンドウの **>>** リンクを選択します。
 
-階層内のオブジェクトを展開すると、選択されたオブジェクトに基づいて、プロパティ ウィンドウが更新されます。 ウィンドウから、ウィンドウの上部にある **[ライブ データの表示 (プレビュー)]** リンクを選択して、Kubernetes コンテナー ログ (stdout/stderror)、イベント、およびポッド メトリックを表示することもできます。 このデータを表示するためのアクセス権の付与および管理に必要な構成について詳しくは、[ライブ データの設定 (プレビュー)](container-insights-livedata-setup.md) に関する記事をご覧ください。 クラスター リソースの表示中は、コンテナーからこのデータをリアルタイムで確認できます。 この機能の詳細については、「[Kubernetes ログ、イベント、およびポッド メトリックをリアルタイムで表示する方法](container-insights-livedata-overview.md)」を参照してください。 事前に定義されたログ検索に基づいてワークスペースに格納されている Kubernetes ログ データを表示するには、 **[View in analytics]\(分析で表示する\)** ドロップダウン リストから **[コンテナー ログの表示]** を選択します。 このトピックに関するその他の情報については、「[データを分析するためのログの検索](container-insights-log-search.md#search-logs-to-analyze-data)」を参照してください。
+階層内のオブジェクトを展開すると、選択されたオブジェクトに基づいて、プロパティ ウィンドウが更新されます。 ウィンドウから、ウィンドウの上部にある **[ライブ データの表示 (プレビュー)]** リンクを選択して、Kubernetes コンテナー ログ (stdout/stderror)、イベント、およびポッド メトリックを表示することもできます。 このデータを表示するためのアクセス権の付与および管理に必要な構成について詳しくは、[ライブ データの設定 (プレビュー)](container-insights-livedata-setup.md) に関する記事をご覧ください。 クラスター リソースの表示中は、コンテナーからこのデータをリアルタイムで確認できます。 この機能の詳細については、「[Kubernetes ログ、イベント、およびポッド メトリックをリアルタイムで表示する方法](container-insights-livedata-overview.md)」を参照してください。 事前に定義されたログ検索に基づいてワークスペースに格納されている Kubernetes ログ データを表示するには、 **[View in analytics]\(分析で表示する\)** ドロップダウン リストから **[コンテナー ログの表示]** を選択します。 このトピックに関するその他の情報については、「[Container insights のログのクエリを実行する方法](container-insights-log-query.md)」を参照してください。
 
 ページ上部の **[+ フィルターの追加]** オプションを使用して、 **[サービス]** 、 **[ノード]** 、 **[名前空間]** 、または **[ノード プール]** でビューの結果をフィルター処理します。 フィルター スコープを選択した後は、 **[Select value(s)]\(値の選択\)** フィールドに表示される値のいずれかを選択します。 構成したフィルターは、AKS クラスターのいずれかの観点を表示するときにグローバルに適用されます。 数式は、等号のみがサポートされています。 最初のフィルターの上に新しいフィルターを追加して、結果をさらに絞り込むことができます。 たとえば、**ノード** によるフィルターを指定した場合、2 番目のフィルターとしては **サービス** または **名前空間** だけを選択できます。
 
@@ -297,13 +297,13 @@ Azure ネットワーク ポリシー マネージャーには、お客様のネ
 
 ## <a name="workbooks"></a>Workbooks
 
-Workbooks では、テキスト、ログ クエリ、メトリック、パラメーターが、クラスターのパフォーマンスを分析できる内容豊富な対話型レポートに組み合わされます。 Container insights で使用できるブックの説明については、「[Container insights のブック](../insights/container-insights-reports.md)」を参照してください。
+Workbooks では、テキスト、ログ クエリ、メトリック、パラメーターが、クラスターのパフォーマンスを分析できる内容豊富な対話型レポートに組み合わされます。 Container insights で使用できるブックの説明については、「[Container insights のブック](container-insights-reports.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Container insights を使用したパフォーマンス アラートの作成](./container-insights-log-alerts.md)に関するページで、実際の DevOps や運用プロセスと手順をサポートするための CPU とメモリの使用率が高い場合のアラートの作成方法を確認します。
 
-- [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、実際のクラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
+- [ログ クエリの例](container-insights-log-query.md)を表示して、事前定義されたクエリや例を確認し、実際のクラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
 
 - Kubernetes クラスターの正常性状態の表示方法については、「[クラスターの正常性を監視する](./container-insights-overview.md)」を参照してください。

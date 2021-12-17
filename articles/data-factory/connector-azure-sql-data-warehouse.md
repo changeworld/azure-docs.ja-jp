@@ -1,19 +1,22 @@
 ---
 title: Azure Synapse Analytics のデータをコピーして変換する
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Synapse Analytics との間でデータをコピーする方法、および Data Factory を使用して Azure Synapse Analytics のデータを変換する方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 9c843ededd1fa863cc5eb4dc0db3a6da3478466d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.openlocfilehash: fb28edc395738a2993750d97e26b9a98999b1284
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597523"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744046"
 ---
-# <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics のデータをコピーおよび変換する
+# <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory-or-synapse-pipelines"></a>Azure Data Factory や Synapse パイプラインを使用して Azure Synapse Analytics のデータをコピー、変換する
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
 >
@@ -22,7 +25,7 @@ ms.locfileid: "104597523"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Synapse Analytics との間でデータをコピーし、Data Flow を使用して Azure Data Lake Storage Gen2 のデータを変換する方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Azure Data Factory や Synapse パイプラインのコピー アクティビティを使用して、Azure Synapse Analytics との間でデータをコピーし、Data Flow を使用して Azure Data Lake Storage Gen2 のデータを変換する方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -37,20 +40,43 @@ ms.locfileid: "104597523"
 
 - SQL 認証を使って、およびサービス プリンシパルまたは Azure リソースのマネージド ID で Azure Active Directory (Azure AD) アプリケーション トークン認証を使って、データをコピーする。
 - ソースとして、SQL クエリまたはストアド プロシージャを使用してデータを取得する。 Azure Synapse Analytics ソースから並列コピーを行うこともできます。詳細については、「[Azure Synapse Analytics からの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。
-- シンクとして、[PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics) または [COPY ステートメント](#use-copy-statement)、あるいは一括挿入を使用してデータを読み込みます。 コピーのパフォーマンスを向上させるために、PolyBase または COPY ステートメントをお勧めします。 コネクタでは、宛先テーブルが存在しない場合は、送信元スキーマに基づくその自動作成もサポートされています。
+- シンクとして、[COPY ステートメント](#use-copy-statement) または [PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics)、あるいは一括挿入を使用してデータを読み込みます。 コピーのパフォーマンスを向上させるために、COPY ステートメントまたは PolyBase をお勧めします。 また、ソース スキーマに基づいて、DISTRIBUTION = ROUND_ROBIN の宛先テーブルが存在しない場合、自動的に作成することもできます。
 
 > [!IMPORTANT]
-> Azure Data Factory Integration Runtime を使ってデータをコピーする場合は、Azure サービスが[論理 SQL サーバー](../azure-sql/database/logical-servers.md)にアクセスできるように[サーバーレベルのファイアウォール規則](../azure-sql/database/firewall-configure.md)を構成します。
+> Azure Integration Runtime を使ってデータをコピーする場合は、Azure サービスが[論理 SQL サーバー](../azure-sql/database/logical-servers.md)にアクセスできるように[サーバーレベルのファイアウォール規則](../azure-sql/database/firewall-configure.md)を構成します。
 > セルフホステッド統合ランタイムを使用してデータをコピーする場合は、適切な IP 範囲を許可するようにファイアウォールを構成します。 この範囲には、Azure Synapse Analytics への接続に使用されるマシンの IP が含まれています。
-
 ## <a name="get-started"></a>はじめに
 
 > [!TIP]
 > 最高のパフォーマンスを実現するには、PolyBase または COPY ステートメントを使用して、Azure Synapse Analytics にデータを読み込みます。 詳細については、「[PolyBase を使用して Azure Synapse Analytics にデータを読み込む](#use-polybase-to-load-data-into-azure-synapse-analytics)」および [COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込む](#use-copy-statement)方法に関するセクションを参照してください。 ユース ケースを使用したチュートリアルについては、[Azure Data Factory を使用して 1 TB のデータを 15 分以内に Azure Synapse Analytics に読み込む方法](load-azure-sql-data-warehouse.md)に関する記事をご覧ください。
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-以下のセクションでは、Azure Synapse Analytics コネクタに固有の Data Factory エンティティを定義するプロパティについて詳しく説明します。
+## <a name="create-an-azure-synapse-analytics-linked-service-using-ui"></a>UI を使用して Azure Synapse Analytics のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Azure Synapse Analytics のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. Synapse を検索し、Azure Synapse Analytics コネクタを選択します。
+
+    :::image type="content" source="media/connector-azure-sql-data-warehouse/azure-sql-data-warehouse-connector.png" alt-text="Azure Synapse Analytics コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-azure-sql-data-warehouse/configure-azure-sql-data-warehouse-linked-service.png" alt-text="Azure Synapse Analytics のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、Azure Synapse Analytics コネクタに固有の Data Factory と Synapse パイプライン エンティティを定義するプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -59,11 +85,11 @@ Azure Synapse Analytics のリンクされたサービスでは、次のプロ�
 | プロパティ            | 説明                                                  | 必須                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | type プロパティは **AzureSqlDW** に設定する必要があります。             | はい                                                          |
-| connectionString    | **connectionString** プロパティには、Azure Synapse Analytics インスタンスに接続するために必要な情報を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 パスワード/サービス プリンシパル キーを Azure Key Vault に格納して、それが SQL 認証の場合は接続文字列から `password` 構成をプルすることもできます。 詳しくは、表の下の JSON の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事をご覧ください。 | はい                                                          |
+| connectionString    | **connectionString** プロパティには、Azure Synapse Analytics インスタンスに接続するために必要な情報を指定します。 <br/>安全に格納するには、このフィールドを SecureString とマークします。 パスワード/サービス プリンシパル キーを Azure Key Vault に格納して、それが SQL 認証の場合は接続文字列から `password` 構成をプルすることもできます。 詳しくは、表の下の JSON の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事をご覧ください。 | はい                                                          |
 | servicePrincipalId  | アプリケーションのクライアント ID を取得します。                         | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | tenant              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
-| azureCloudType | サービス プリンシパル認証用に、ご利用の Azure AD アプリケーションが登録されている Azure クラウド環境の種類を指定します。 <br/> 使用できる値は、`AzurePublic`、`AzureChina`、`AzureUsGovernment`、`AzureGermany` です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
+| azureCloudType | サービス プリンシパル認証用に、ご利用の Azure AD アプリケーションが登録されている Azure クラウド環境の種類を指定します。 <br/> 使用できる値は、`AzurePublic`、`AzureChina`、`AzureUsGovernment`、`AzureGermany` です。 既定では、データ ファクトリまたは Synapse パイプラインのクラウド環境が使用されます。 | いいえ |
 | connectVia          | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ                                                           |
 
 さまざまな認証の種類の前提条件と JSON サンプルについては、以下のセクションをご覧ください。
@@ -139,7 +165,7 @@ Azure Synapse Analytics のリンクされたサービスでは、次のプロ�
 3. サービス プリンシパルの **[包含データベース ユーザーを作成します](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)** 。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータ ウェアハウスに接続します。 次の T-SQL を実行します。
   
     ```sql
-    CREATE USER [your application name] FROM EXTERNAL PROVIDER;
+    CREATE USER [your_application_name] FROM EXTERNAL PROVIDER;
     ```
 
 4. SQL ユーザーや他のユーザーに対する通常の方法で、**サービス プリンシパルに必要なアクセス許可を付与** します。 次のコードを実行するか、[こちら](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)でその他のオプションを参照してください。 PolyBase を使用してデータを読み込む場合は、[必要なデータベース アクセス許可](#required-database-permission)について学習します。
@@ -148,7 +174,7 @@ Azure Synapse Analytics のリンクされたサービスでは、次のプロ�
     EXEC sp_addrolemember db_owner, [your application name];
     ```
 
-5. Azure Data Factory で、**Azure Synapse Analytics のリンクされたサービスを構成** します。
+5. Azure Data Factory や Synapse ワークスペースで、**Azure Synapse Analytics のリンクされたサービスを構成** します。
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>サービス プリンシパル認証を使うリンクされたサービスの例
 
@@ -176,25 +202,25 @@ Azure Synapse Analytics のリンクされたサービスでは、次のプロ�
 
 ### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure リソースのマネージド ID 認証
 
-データ ファクトリは、特定のファクトリを表す [Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 このマネージド ID を Azure Synapse Analytics の認証に使用できます。 指定されたファクトリは、この ID を使用してデータ ウェアハウスにアクセスし、データを双方向にコピーできます。
+データ ファクトリや Synapse ワークスペースは、リソースを表す [Azure リソース用のマネージド ID](data-factory-service-identity.md) と関連付けることができます。 このマネージド ID を Azure Synapse Analytics の認証に使用できます。 指定されたリソースは、この ID を使用してデータ ウェアハウスにアクセスし、データを双方向にコピーできます。
 
 マネージド ID 認証を使用するには、次の手順に従います。
 
 1. まだ行っていない場合は、Azure portal でサーバーの **[Azure Active Directory 管理者をプロビジョニング](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-database)** します。 Azure AD 管理者は、Azure AD ユーザーでも Azure AD グループでもかまいません。 マネージド ID を持つグループに管理者ロールを付与する場合は、ステップ 3 と 4 をスキップします。 管理者は、データベースへのフル アクセスを持ちます。
 
-2. Data Factory のマネージド ID の **[包含データベース ユーザー](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)** を作成します。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータ ウェアハウスに接続します。 次の T-SQL を実行します。
+2. マネージド ID に **[含まれるデータベース ユーザーを作成](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)** します。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータ ウェアハウスに接続します。 次の T-SQL を実行します。
   
     ```sql
-    CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
+    CREATE USER [your_resource_name] FROM EXTERNAL PROVIDER;
     ```
 
-3. SQL ユーザーや他のユーザーに対する通常の方法と同様に、**Data Factory のマネージド ID に必要なアクセス許可を付与します**。 次のコードを実行するか、[こちら](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)でその他のオプションを参照してください。 PolyBase を使用してデータを読み込む場合は、[必要なデータベース アクセス許可](#required-database-permission)について学習します。
+3. 通常の SQL ユーザーなどと同様に、**マネージド ID に必要なアクセス許可を付与** します。 次のコードを実行するか、[こちら](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)でその他のオプションを参照してください。 PolyBase を使用してデータを読み込む場合は、[必要なデータベース アクセス許可](#required-database-permission)について学習します。
 
     ```sql
-    EXEC sp_addrolemember db_owner, [your Data Factory name];
+    EXEC sp_addrolemember db_owner, [your_resource_name];
     ```
 
-4. Azure Data Factory で、**Azure Synapse Analytics のリンクされたサービスを構成** します。
+4. **Azure Synapse Analytics のリンクされたサービスを作成する**。
 
 **例:**
 
@@ -366,15 +392,13 @@ GO
 
 ### <a name="azure-synapse-analytics-as-sink"></a><a name="azure-sql-data-warehouse-as-sink"></a>シンクとしての Azure Synapse Analytics
 
-Azure Data Factory では、Azure Synapse Analytics にデータを読み込む 3 つの方法がサポートされています。
+Azure Data Factory と Synapse パイプラインでは、Azure Synapse Analytics にデータを読み込む 3 つの方法がサポートされています。
 
-![Azure Synapse Analytics シンクのコピー オプション](./media/connector-azure-sql-data-warehouse/sql-dw-sink-copy-options.png)
-
-- [PolyBase を使用する](#use-polybase-to-load-data-into-azure-synapse-analytics)
 - [COPY ステートメントを使用する](#use-copy-statement)
+- [PolyBase を使用する](#use-polybase-to-load-data-into-azure-synapse-analytics)
 - 一括挿入を使用する
 
-データを読み込む最も高速でスケーラブルな方法は、[PolyBase](/sql/relational-databases/polybase/polybase-guide) または [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql)を使用することです。
+データを読み込む最も高速でスケーラブルな方法は、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql) または [PolyBase](/sql/relational-databases/polybase/polybase-guide) を使用することです。
 
 Azure Synapse Analytics にデータをコピーするには、コピー アクティビティのシンクの種類を **SqlDWSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
@@ -385,11 +409,11 @@ Azure Synapse Analytics にデータをコピーするには、コピー アク�
 | polyBaseSettings  | `allowPolybase` プロパティが **true** に設定されているときに指定できるプロパティのグループ。 | いいえ。<br/>PolyBase を使用する場合に適用します。 |
 | allowCopyCommand | Azure Synapse Analytics にデータを読み込む際に、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql)を使用するかどうかを示します。 `allowCopyCommand` と `allowPolyBase` の両方を true に設定することはできません。 <br/><br/>制約と詳細については、「[COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込む](#use-copy-statement)」をご覧ください。<br/><br/>使用可能な値: **True**、および **False** (既定値)。 | いいえ。<br>COPY を使用する場合に適用します。 |
 | copyCommandSettings | `allowCopyCommand` プロパティが TRUE に設定されているときに指定できるプロパティのグループ。 | いいえ。<br/>COPY を使用する場合に適用します。 |
-| writeBatchSize    | SQL テーブルに挿入する **バッチあたりの** 行数。<br/><br/>使用可能な値は **integer** (行数) です。 既定では、Data Factory により行のサイズに基づいて適切なバッチ サイズが動的に決定されます。 | いいえ。<br/>一括挿入を使用する場合に適用します。     |
+| writeBatchSize    | SQL テーブルに挿入する **バッチあたりの** 行数。<br/><br/>使用可能な値は **integer** (行数) です。 既定では行のサイズに基づいて、サービスにより適切なバッチ サイズが動的に決定されます。 | いいえ。<br/>一括挿入を使用する場合に適用します。     |
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/><br/>使用可能な値は **timespan** です。 例:"00:30:00" (30 分)。 | いいえ。<br/>一括挿入を使用する場合に適用します。        |
 | preCopyScript     | コピー アクティビティの毎回の実行で、データを Azure Synapse Analytics に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ                                            |
 | tableOption | ソースのスキーマに基づいて[自動的にシンク テーブルを作成する](copy-activity-overview.md#auto-create-sink-tables)かどうかを指定します (存在しない場合)。 使用できる値は `none` (既定値)、`autoCreate` です。 |いいえ |
-| disableMetricsCollection | Data Factory では、コピーのパフォーマンスの最適化とレコメンデーションを目的として、Azure Synapse Analytics DWU などのメトリックが収集されます。これにより、マスター DB への追加アクセスが発生します。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
+| disableMetricsCollection | サービスでは、コピーのパフォーマンスの最適化と推奨を目的として、Azure Synapse Analytics DWU などのメトリックが収集されます。これにより、マスター DB への追加アクセスが発生します。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
 | maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Azure Synapse Analytics シンクの例
@@ -412,17 +436,17 @@ Azure Synapse Analytics にデータをコピーするには、コピー アク�
 
 Azure Synapse Analytics コネクタでは、コピー アクティビティの際に、データを並列でコピーするための組み込みのデータ パーティション分割が提供されます。 データ パーティション分割オプションは、コピー アクティビティの **[ソース]** タブにあります。
 
-![パーティションのオプションのスクリーンショット](./media/connector-sql-server/connector-sql-partition-options.png)
+:::image type="content" source="./media/connector-sql-server/connector-sql-partition-options.png" alt-text="パーティションのオプションのスクリーンショット":::
 
-パーティション分割されるコピーを有効にすると、コピー アクティビティによって Azure Synapse Analytics ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。そして各クエリが、Azure Synapse Analytics からデータの一部を取得します。
+パーティション分割されるコピーを有効にすると、コピー アクティビティによって Azure Synapse Analytics ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、サービスでは、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。そして各クエリが、Azure Synapse Analytics からデータの一部を取得します。
 
 Azure Synapse Analytics から大量のデータを読み込む場合は特に、データ パーティション分割を行う並列コピーを有効にすることが推奨されます。 さまざまなシナリオの推奨構成を以下に示します。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) ことをお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
 
 | シナリオ                                                     | 推奨設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 物理パーティションに分割された大きなテーブル全体から読み込む。        | **パーティション オプション**: テーブルの物理パーティション。 <br><br/>実行中に、Data Factory によって物理パーティションが自動的に検出され、パーティションごとにデータがコピーされます。 <br><br/>テーブルに物理パーティションがあるかどうかを確認するには、[こちらのクエリ](#sample-query-to-check-physical-partition)を参照してください。 |
-| 物理パーティションがなく、データ パーティション分割用の整数または日時の列がある大きなテーブル全体から読み込む。 | **パーティション オプション**: 動的範囲パーティション。<br>**パーティション列** (省略可能):データのパーティション分割に使用される列を指定します。 指定されていない場合は、インデックスまたは主キー列が使用されます。<br/>**パーティションの上限** と **パーティションの下限** (省略可能):パーティションのストライドを決定する場合に指定します。 これは、テーブル内の行のフィルター処理用ではなく、テーブル内のすべての行がパーティション分割されてコピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。<br><br>たとえば、パーティション列 "ID" の値の範囲が 1 ～ 100 で、下限を 20 に、上限を 80 に設定し、並列コピーを 4 にした場合、Data Factory によって 4 つのパーティションでデータが取得されます。ID の範囲は、それぞれ、20 以下、21 ～ 50、51 ～ 80、81 以上となります。 |
-| 物理パーティションがなく、データ パーティション分割用の整数列または日付/日時列がある大量のデータを、カスタム クエリを使用して読み込む。 | **パーティション オプション**: 動的範囲パーティション。<br>**クエリ**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br>**パーティション列**: データのパーティション分割に使用される列を指定します。<br>**パーティションの上限** と **パーティションの下限** (省略可能):パーティションのストライドを決定する場合に指定します。 これは、テーブル内の行のフィルター処理用ではなく、クエリ結果のすべての行がパーティション分割されてコピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。<br><br>実行中に、Data Factory によって `?AdfRangePartitionColumnName` が各パーティションの実際の列名および値の範囲に置き換えられ、Azure Synapse Analytics に送信されます。 <br>たとえば、パーティション列 "ID" の値の範囲が 1 ～ 100 で、下限を 20 に、上限を 80 に設定し、並列コピーを 4 にした場合、Data Factory によって 4 つのパーティションでデータが取得されます。ID の範囲は、それぞれ、20 以下、21 ～ 50、51 ～ 80、81 以上となります。 <br><br>さまざまなシナリオのサンプル クエリを次に示します。<br> 1.テーブル全体に対してクエリを実行する: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2.列の選択と追加の where 句フィルターが含まれるテーブルからのクエリ: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3.サブクエリを使用したクエリ: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4.サブクエリにパーティションがあるクエリ: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
+| 物理パーティションに分割された大きなテーブル全体から読み込む。        | **パーティション オプション**: テーブルの物理パーティション。 <br><br/>実行中に、サービスによって物理パーティションが自動的に検出され、パーティションごとにデータがコピーされます。 <br><br/>テーブルに物理パーティションがあるかどうかを確認するには、[こちらのクエリ](#sample-query-to-check-physical-partition)を参照してください。 |
+| 物理パーティションがなく、データ パーティション分割用の整数または日時の列がある大きなテーブル全体から読み込む。 | **パーティション オプション**: 動的範囲パーティション。<br>**パーティション列** (省略可能):データのパーティション分割に使用される列を指定します。 指定されていない場合は、インデックスまたは主キー列が使用されます。<br/>**パーティションの上限** と **パーティションの下限** (省略可能):パーティションのストライドを決定する場合に指定します。 これは、テーブル内の行のフィルター処理用ではなく、テーブル内のすべての行がパーティション分割されてコピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。<br><br>たとえば、パーティション列「ID」の値の範囲が 1 ～ 100 で、下限を 20 に、上限を 80 に設定し、並列コピーを 4 にした場合、サービスによって 4 つのパーティションでデータが取得されます。ID の範囲は、それぞれ、20 以下、21 ～ 50、51 ～ 80、81 以上となります。 |
+| 物理パーティションがなく、データ パーティション分割用の整数列または日付/日時列がある大量のデータを、カスタム クエリを使用して読み込む。 | **パーティション オプション**: 動的範囲パーティション。<br>**クエリ**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br>**パーティション列**: データのパーティション分割に使用される列を指定します。<br>**パーティションの上限** と **パーティションの下限** (省略可能):パーティションのストライドを決定する場合に指定します。 これは、テーブル内の行のフィルター処理用ではなく、クエリ結果のすべての行がパーティション分割されてコピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。<br><br>実行中に、サービスによって `?AdfRangePartitionColumnName` が各パーティションの実際の列名と値の範囲に置き換えられ、Azure Synapse Analytics に送信されます。 <br>たとえば、パーティション列「ID」の値の範囲が 1 ～ 100 で、下限を 20 に、上限を 80 に設定し、並列コピーを 4 にした場合、サービスによって 4 つのパーティションでデータが取得されます。ID の範囲は、それぞれ、20 以下、21 ～ 50、51 ～ 80、81 以上となります。 <br><br>さまざまなシナリオのサンプル クエリを次に示します。<br> 1.テーブル全体に対してクエリを実行する: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2.列の選択と追加の where 句フィルターが含まれるテーブルからのクエリ: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3.サブクエリを使用したクエリ: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4.サブクエリにパーティションがあるクエリ: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
 |
 
 パーティション オプションを使用してデータを読み込む場合のベスト プラクティス:
@@ -431,7 +455,7 @@ Azure Synapse Analytics から大量のデータを読み込む場合は特に�
 2. テーブルに組み込みパーティションがある場合は、パフォーマンスを向上させるためにパーティション オプションとして "テーブルの物理パーティション" を使用します。
 3. Azure Integration Runtime を使用してデータをコピーする場合は、より大きな (4 より大きい) "[データ統合単位 (DIU)](copy-activity-performance-features.md#data-integration-units)" を設定すると、より多くのコンピューティング リソースを利用できます。 そこで、該当するシナリオを確認してください。
 4. パーティション数は、"[コピーの並列処理の次数](copy-activity-performance-features.md#parallel-copy)" によって制御されます。この数値を大きくしすぎるとパフォーマンスが低下するため、この数値は、(DIU またはセルフホステッド IR ノードの数) x (2 から 4) に設定することをお勧めします。
-5. Azure Synapse Analytics では、最大で 32 個のクエリを実行でき、"コピーの並列度" を高く設定しすぎると、Synapse の調整の問題が発生する可能性があることに注意してください。
+5. Azure Synapse Analytics では、最大で 32 個のクエリを実行でき、「コピーの並列度」を高く設定しすぎると、Synapse の調整の問題が発生する可能性があることに注意してください。
 
 **例: 複数の物理パーティションがある大きなテーブル全体から読み込む**
 
@@ -473,6 +497,153 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 テーブルに物理パーティションがある場合、"HasPartition" は "yes" と表示されます。
 
+## <a name="use-copy-statement-to-load-data-into-azure-synapse-analytics"></a><a name="use-copy-statement"></a> COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込む
+
+[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql)を使用することは、高いスループットで Azure Synapse Analytics にデータを読み込むための単純で柔軟な方法です。 詳細については、「[COPY ステートメントを使用したデータの一括読み込み](../synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql.md)」を参照してください
+
+
+- ソース データが **Azure Blob、Azure Data Lake Storage Gen2** 内にあるときに、**形式が COPY ステートメント互換** の場合は、コピー アクティビティを使用して COPY ステートメントを直接呼び出し、Azure Synapse Analytics でソースからデータを引き出すことができます。 詳しくは、「 **[COPY ステートメントを使用して直接コピーする](#direct-copy-by-using-copy-statement)** 」をご覧ください。
+- ソース データ ストアと形式が、本来は COPY ステートメントでサポートされていない形式の場合は、代わりに **[COPY ステートメントを使用したステージング コピー](#staged-copy-by-using-copy-statement)** を使います。 ステージング コピー機能はスループットも優れています。 データは、COPY ステートメントと互換性のある形式に自動的に変換され、Azure Blob Storage に格納されます。その後、COPY ステートメントが呼び出されて、Azure Synapse Analytics にデータが読み込まれます。
+
+>[!TIP]
+>Azure Integration Runtime で COPY ステートメントを使用する場合、有効な[データ統合単位 (DIU)](copy-activity-performance-features.md#data-integration-units) は常に 2 です。 ストレージからのデータの読み込みは Azure Synapse エンジンによって行われるため、DIU をチューニングしてもパフォーマンスには影響しません。
+
+### <a name="direct-copy-by-using-copy-statement"></a>COPY ステートメントを使用した直接コピー
+
+Azure Synapse Analytics の COPY ステートメントでは、Azure Blob、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2 が直接サポートされます。 ソース データがこのセクションで説明する条件を満たしている場合は、COPY ステートメントを使用してソース データ ストアから Azure Synapse Analytics に直接コピーします。 それ以外の場合は、[COPY ステートメントを使用したステージング コピー](#staged-copy-by-using-copy-statement)を使います。 サービスによって設定が確認され、条件が満たされない場合は、コピー アクティビティの実行が失敗します。
+
+1. **ソースのリンクされたサービスと形式** では、次の種類と認証方法が使用されます。
+
+    | サポートされるソース データ ストアの種類                             | サポートされている形式           | サポートされる認証の種類                         |
+    | :----------------------------------------------------------- | -------------------------- | :----------------------------------------------------------- |
+    | [Azure BLOB](connector-azure-blob-storage.md)                | [区切りテキスト](format-delimited-text.md)             | アカウント キー認証、Shared Access Signature 認証、サービス プリンシパル認証、マネージド ID 認証 |
+    | &nbsp;                                                       | [Parquet](format-parquet.md)                    | アカウント キー認証、Shared Access Signature 認証 |
+    | &nbsp;                                                       | [ORC](format-orc.md)                        | アカウント キー認証、Shared Access Signature 認証 |
+    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [区切りテキスト](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | アカウント キー認証、サービス プリンシパル認証、マネージド ID 認証 |
+
+    >[!IMPORTANT]
+    >- ストレージのリンクされたサービスに対してマネージド ID 認証を使用する場合は、[Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な各構成について確認してください。
+    >- Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [allow trusted Microsoft service]\(信頼された Microsoft サービスを許可する\) を有効にしたマネージド ID 認証を使用する必要があります。詳細については「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)」を参照してください。
+
+2. 形式設定は次のとおりです。
+
+   1. **Parquet** の場合: `compression` は **圧縮なし**、**Snappy**、または **``GZip``** に設定できます。
+   2. **ORC** の場合: `compression` が **圧縮なし**、 **```zlib```** 、または **Snappy** である。
+   3. **区切りテキスト** の場合:
+      1. `rowDelimiter` が **単一の文字** または " **\r\n**" として明示的に設定されており、既定値がサポートされていない。
+      2. `nullValue` が既定値のままか、**空の文字列** ("") に設定されている。
+      3. `encodingName` が既定値のままか、**utf-8 または utf-16** に設定されている。
+      4. `escapeChar` が `quoteChar` と同じである必要があり、空ではない。
+      5. `skipLineCount` が既定値のままか、0 に設定されている。
+      6. `compression` は **圧縮なし** または **``GZip``** に設定できます。
+
+3. ソースがフォルダーの場合は、コピー アクティビティの `recursive` を true に設定し、`wildcardFilename` が `*` または `*.*` である必要があります。 
+
+4. `wildcardFolderPath`、`wildcardFilename` (`*` または `*.*` 以外)、`modifiedDateTimeStart`、`modifiedDateTimeEnd`、`prefix`、`enablePartitionDiscovery`、`additionalColumns` は指定されません。
+
+コピー アクティビティの `allowCopyCommand` では、次の COPY ステートメント設定がサポートされています。
+
+| プロパティ          | 説明                                                  | 必須                                      |
+| :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
+| defaultValues | Azure Synapse Analytics の各ターゲット列の既定値を指定します。  このプロパティの既定値により、データ ウェアハウスで設定されている DEFAULT 制約が上書きされます。ID 列に既定値を設定することはできません。 | いいえ |
+| additionalOptions | [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql)の "With" 句で、Azure Synapse Analytics の COPY ステートメントに直接渡される追加オプション。 COPY ステートメントの要件に合わせて、必要に応じて値を引用符で囲みます。 | いいえ |
+
+```json
+"activities":[
+    {
+        "name": "CopyFromAzureBlobToSQLDataWarehouseViaCOPY",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "ParquetDataset",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "AzureSQLDWDataset",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "ParquetSource",
+                "storeSettings":{
+                    "type": "AzureBlobStorageReadSettings",
+                    "recursive": true
+                }
+            },
+            "sink": {
+                "type": "SqlDWSink",
+                "allowCopyCommand": true,
+                "copyCommandSettings": {
+                    "defaultValues": [
+                        {
+                            "columnName": "col_string",
+                            "defaultValue": "DefaultStringValue"
+                        }
+                    ],
+                    "additionalOptions": {
+                        "MAXERRORS": "10000",
+                        "DATEFORMAT": "'ymd'"
+                    }
+                }
+            },
+            "enableSkipIncompatibleRow": true
+        }
+    }
+]
+```
+
+### <a name="staged-copy-by-using-copy-statement"></a>COPY ステートメントを使用したステージング コピー
+
+ソース データが COPY ステートメントとネイティブに互換性がない場合は、中間ステージング Azure Blob または Azure Data Lake Storage Gen2 を介したデータのコピーを有効にします (Azure Premium Storage は使用できません)。 この場合、サービスによって、COPY ステートメントのデータ形式要件を満たすようにデータが自動的に変換されます。 そして、COPY ステートメントを起動して、Azure Synapse Analyticsにデータを読み込みます。 最後に、ストレージから一時データがクリーンアップされます。 ステージング経由でのデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
+
+この機能を使用するには、中間ストレージとして Azure Storage アカウントを参照する **アカウント キーまたはシステム マネージド ID の認証** を使用して、[Azure Blob Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)または [Azure Data Lake Storage Gen2 のリンクされたサービス](connector-azure-data-lake-storage.md#linked-service-properties)を作成します。
+
+>[!IMPORTANT]
+>- ステージングのリンクされたサービスに対してマネージド ID 認証を使用する場合は [Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な各構成について確認してください。
+>- ステージング Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [allow trusted Microsoft service]\(信頼された Microsoft サービスを許可する\) を有効にしたマネージド ID 認証を使用する必要があります。詳細については「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)」を参照してください。 
+
+>[!IMPORTANT]
+>ステージング Azure Storage がマネージド プライベート エンドポイントで構成され、ストレージ ファイアウォールが有効になっている場合は、マネージド ID 認証を使用し、Synapse SQL Server にストレージ BLOB データ閲覧者のアクセス許可を付与して、COPY ステートメントの読み込み中にステージング ファイルにアクセスできるようにする必要があります。
+
+```json
+"activities":[
+    {
+        "name": "CopyFromSQLServerToSQLDataWarehouseViaCOPYstatement",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "SQLServerDataset",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "AzureSQLDWDataset",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "SqlSource",
+            },
+            "sink": {
+                "type": "SqlDWSink",
+                "allowCopyCommand": true
+            },
+            "stagingSettings": {
+                "linkedServiceName": {
+                    "referenceName": "MyStagingStorage",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        }
+    }
+]
+```
+
 ## <a name="use-polybase-to-load-data-into-azure-synapse-analytics"></a>PolyBase を使用して Azure Synapse Analytics にデータを読み込む
 
 [PolyBase](/sql/relational-databases/polybase/polybase-guide) を使用すると、高いスループットで Azure Synapse Analytics に大量のデータを効率的に読み込むことができます。 既定の BULKINSERT メカニズムではなく PolyBase を使用することで、スループットが大幅に向上することがわかります。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Synapse Analytics に読み込む方法](v1/data-factory-load-sql-data-warehouse.md)に関する記事をご覧ください。
@@ -499,7 +670,7 @@ Azure Synapse Analytics の PolyBase では、Azure Blob、Azure Data Lake Stora
 > [!TIP]
 > データを効率的に Azure Synapse Analytics にコピーするには、「[Azure Data Factory を利用すれば、Azure Synapse Analytics と共に Data Lake Store を使用する場合にデータからさらに容易かつ便利に情報を引き出せるようになる](/archive/blogs/azuredatalake/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse)」を参考にしてください。
 
-要件が満たされない場合は、Azure Data Factory が設定を確認し、データ移動には自動的に BULKINSERT メカニズムが使用されるように戻ります。
+要件が満たされない場合は、サービスが設定を確認し、データ移動には自動的に BULKINSERT メカニズムが使用されるように戻ります。
 
 1. **ソース リンク サービス** では、次の種類と認証方法が使用されます。
 
@@ -520,7 +691,7 @@ Azure Synapse Analytics の PolyBase では、Azure Blob、Azure Data Lake Stora
    3. `rowDelimiter` が **default**、 **\n**、 **\r\n**、または **\r** である。
    4. `nullValue` が既定値のままか、**空の文字列** ("") に設定されており、`treatEmptyAsNull` が既定値のままか、true に設定されている。
    5. `encodingName` が既定値のままか、**utf-8** に設定されている。
-   6. `quoteChar`、`escapeChar`、および `skipLineCount` が指定されていない。 PolyBase では、ヘッダー行のスキップがサポートされます。これは、ADF で `firstRowAsHeader` として構成できます。
+   6. `quoteChar`、`escapeChar`、および `skipLineCount` が指定されていない。 PolyBase では、ヘッダー行のスキップがサポートされます。これは、`firstRowAsHeader` として構成できます。
    7. `compression` は、**圧縮無し**、 **``GZip``** 、または **Deflate** に設定できます。
 
 3. ソースがフォルダーの場合は、コピー アクティビティの `recursive` を true に設定する必要があります。
@@ -566,7 +737,7 @@ Azure Synapse Analytics の PolyBase では、Azure Blob、Azure Data Lake Stora
 
 ### <a name="staged-copy-by-using-polybase"></a>PolyBase を使用したステージング コピー
 
-ソース データが PolyBase とネイティブに互換性がない場合は、中間ステージング Azure Blob または Azure Data Lake Storage Gen2 を介したデータのコピーを有効にします (Azure Premium Storage は使用できません)。 この場合、Azure Data Factory によって、PolyBase のデータ形式要件を満たすようにデータが自動的に変換されます。 その後、PolyBase を使用して、データが Azure Synapse Analytics に読み込まれます。 最後に、ストレージから一時データがクリーンアップされます。 ステージング経由でのデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
+ソース データが PolyBase とネイティブに互換性がない場合は、中間ステージング Azure Blob または Azure Data Lake Storage Gen2 を介したデータのコピーを有効にします (Azure Premium Storage は使用できません)。 この場合、サービスによって、PolyBase のデータ形式要件を満たすようにデータが自動的に変換されます。 その後、PolyBase を使用して、データが Azure Synapse Analytics に読み込まれます。 最後に、ストレージから一時データがクリーンアップされます。 ステージング経由でのデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
 
 この機能を使用するには、中間ストレージとして Azure Storage アカウントを参照する **アカウント キーまたはマネージド ID の認証** を使用して、[Azure Blob Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)または [Azure Data Lake Storage Gen2 のリンクされたサービス](connector-azure-data-lake-storage.md#linked-service-properties)を作成します。
 
@@ -628,7 +799,7 @@ PolyBase の読み込みは、1 MB 未満の行に制限されます。 VARCHR(M
 
 ソース データに 1 MB を超える行がある場合は、ソース テーブルを複数の小さいテーブルに垂直分割できます。 各行の最大サイズが制限を超えないことを確認します。 その後、これらの小さいテーブルは、PolyBase を使用して Azure Synapse Analytics に読み込み、マージすることができます。
 
-または、このように広い列を持つデータについては、[Allow polybase]\(PolyBase を許可する\) 設定をオフにすることで、ADF を使用したデータの読み込みに PolyBase 以外を使用できます。
+または、このように広い列を持つデータについては、[Allow polybase (PolyBase を許可する)] 設定をオフにすることで、データの読み込みに PolyBase 以外を使用できます。
 
 #### <a name="azure-synapse-analytics-resource-class"></a>Azure Synapse Analytics リソース クラス
 
@@ -665,7 +836,7 @@ Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account
 
 #### <a name="columns-with-default-values"></a>既定値を持つ列
 
-現在、Data Factory の PolyBase 機能では、ターゲット テーブルと同じ数の列のみを使用できます。 たとえば、4 つの列を含むテーブルがあり、その列の 1 つには既定値が定義されているものとします。 それでも入力データには 4 つの列が必要です。 入力データセットが 3 列の場合は、次のメッセージのようなエラーが発生します。
+現在、PolyBase 機能では、ターゲット テーブルと同じ数の列のみを使用できます。 たとえば、4 つの列を含むテーブルがあり、その列の 1 つには既定値が定義されているものとします。 それでも入力データには 4 つの列が必要です。 入力データセットが 3 列の場合は、次のメッセージのようなエラーが発生します。
 
 ```output
 All columns of the table must be specified in the INSERT BULK statement.
@@ -683,101 +854,6 @@ Job failed due to reason: at Sink '[SinkName]': shaded.msdataflow.com.microsoft.
 
 詳細については、「[ワークスペースの作成後にマネージド ID にアクセス許可を付与する](../synapse-analytics/security/how-to-grant-workspace-managed-identity-permissions.md#grant-permissions-to-managed-identity-after-workspace-creation)」を参照してください。
 
-## <a name="use-copy-statement-to-load-data-into-azure-synapse-analytics"></a><a name="use-copy-statement"></a> COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込む
-
-Azure Synapse Analytics の [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql)では、**Azure Blob と Azure Data Lake Storage Gen2** からのデータの読み込みが直接サポートされています。 ソース データがこのセクションで説明する条件を満たしている場合は、ADF で COPY ステートメントを使用して、Azure Synapse Analytics にデータを読み込むことができます。 Azure Data Factory によって設定が確認され、条件が満たされない場合は、コピー アクティビティの実行が失敗します。
-
->[!NOTE]
->現在、Data Factory では、下記の COPY ステートメントと互換性のあるソースからのコピーのみがサポートされています。
-
->[!TIP]
->Azure Integration Runtime で COPY ステートメントを使用する場合、有効な[データ統合単位 (DIU)](copy-activity-performance-features.md#data-integration-units) は常に 2 です。 ストレージからのデータの読み込みは Synapse エンジンによって行われるため、DIU をチューニングしてもパフォーマンスには影響しません。
-
-COPY ステートメントを使用する場合、次の構成がサポートされます。
-
-1. **ソースのリンクされたサービスと形式** では、次の種類と認証方法が使用されます。
-
-    | サポートされるソース データ ストアの種類                             | サポートされている形式           | サポートされる認証の種類                         |
-    | :----------------------------------------------------------- | -------------------------- | :----------------------------------------------------------- |
-    | [Azure BLOB](connector-azure-blob-storage.md)                | [区切りテキスト](format-delimited-text.md)             | アカウント キー認証、Shared Access Signature 認証、サービス プリンシパル認証、マネージド ID 認証 |
-    | &nbsp;                                                       | [Parquet](format-parquet.md)                    | アカウント キー認証、Shared Access Signature 認証 |
-    | &nbsp;                                                       | [ORC](format-orc.md)                        | アカウント キー認証、Shared Access Signature 認証 |
-    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [区切りテキスト](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | アカウント キー認証、サービス プリンシパル認証、マネージド ID 認証 |
-
-    >[!IMPORTANT]
-    >- ストレージのリンクされたサービスに対してマネージド ID 認証を使用する場合は、[Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な各構成について確認してください。
-    >- Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [allow trusted Microsoft service]\(信頼された Microsoft サービスを許可する\) を有効にしたマネージド ID 認証を使用する必要があります。詳細については「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)」を参照してください。
-
-2. 形式設定は次のとおりです。
-
-   1. **Parquet** の場合: `compression` は **圧縮なし**、**Snappy**、または **``GZip``** に設定できます。
-   2. **ORC** の場合: `compression` が **圧縮なし**、 **```zlib```** 、または **Snappy** である。
-   3. **区切りテキスト** の場合:
-      1. `rowDelimiter` が **単一の文字** または " **\r\n**" として明示的に設定されており、既定値がサポートされていない。
-      2. `nullValue` が既定値のままか、**空の文字列** ("") に設定されている。
-      3. `encodingName` が既定値のままか、**utf-8 または utf-16** に設定されている。
-      4. `escapeChar` が `quoteChar` と同じである必要があり、空ではない。
-      5. `skipLineCount` が既定値のままか、0 に設定されている。
-      6. `compression` は **圧縮なし** または **``GZip``** に設定できます。
-
-3. ソースがフォルダーの場合は、コピー アクティビティの `recursive` を true に設定し、`wildcardFilename` が `*` である必要があります。 
-
-4. `wildcardFolderPath`、`wildcardFilename` (`*` 以外)、`modifiedDateTimeStart`、`modifiedDateTimeEnd`、`prefix`、`enablePartitionDiscovery`、`additionalColumns` は指定されません。
-
-コピー アクティビティの `allowCopyCommand` では、次の COPY ステートメント設定がサポートされています。
-
-| プロパティ          | 説明                                                  | 必須                                      |
-| :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| defaultValues | Azure Synapse Analytics の各ターゲット列の既定値を指定します。  このプロパティの既定値により、データ ウェアハウスで設定されている DEFAULT 制約が上書きされます。ID 列に既定値を設定することはできません。 | いいえ |
-| additionalOptions | [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql)の "With" 句で、Azure Synapse Analytics の COPY ステートメントに直接渡される追加オプション。 COPY ステートメントの要件に合わせて、必要に応じて値を引用符で囲みます。 | いいえ |
-
-```json
-"activities":[
-    {
-        "name": "CopyFromAzureBlobToSQLDataWarehouseViaCOPY",
-        "type": "Copy",
-        "inputs": [
-            {
-                "referenceName": "ParquetDataset",
-                "type": "DatasetReference"
-            }
-        ],
-        "outputs": [
-            {
-                "referenceName": "AzureSQLDWDataset",
-                "type": "DatasetReference"
-            }
-        ],
-        "typeProperties": {
-            "source": {
-                "type": "ParquetSource",
-                "storeSettings":{
-                    "type": "AzureBlobStorageReadSettings",
-                    "recursive": true
-                }
-            },
-            "sink": {
-                "type": "SqlDWSink",
-                "allowCopyCommand": true,
-                "copyCommandSettings": {
-                    "defaultValues": [
-                        {
-                            "columnName": "col_string",
-                            "defaultValue": "DefaultStringValue"
-                        }
-                    ],
-                    "additionalOptions": {
-                        "MAXERRORS": "10000",
-                        "DATEFORMAT": "'ymd'"
-                    }
-                }
-            },
-            "enableSkipIncompatibleRow": true
-        }
-    }
-]
-```
-
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
 マッピング データ フローでデータを変換する場合、Azure Synapse Analytics からテーブルの読み取りと書き込みを実行できます。 詳細については、マッピング データ フローの[ソース変換](data-flow-source.md)と[シンク変換](data-flow-sink.md)に関する記事をご覧ください。
@@ -788,7 +864,7 @@ Azure Synapse Analytics に固有の設定は、ソース変換の **[Source Opt
 
 **[入力]\(Input\)** : テーブルにあるソースを指す (```Select * from <table-name>``` に相当) かカスタム SQL クエリを入力するかを選択します。
 
-**[Enable Staging]\(ステージングを有効にする\)** Azure Synapse Analytics ソースを使用する運用ワークロードでは、このオプションを使用することを強くお勧めします。 パイプラインから Azure Synapse Analytics ソースを使用して[データ フロー アクティビティ](control-flow-execute-data-flow-activity.md)を実行すると、ADF によってステージングの場所のストレージ アカウントの入力が求められ、ステージング データの読み込みにそれが使用されます。 Azure Synapse Analytics からデータを読み込む最も速いメカニズムです。
+**[Enable Staging]\(ステージングを有効にする\)** Azure Synapse Analytics ソースを使用する運用ワークロードでは、このオプションを使用することを強くお勧めします。 パイプラインから Azure Synapse Analytics ソースを使用して[データ フロー アクティビティ](control-flow-execute-data-flow-activity.md)を実行すると、ステージング データの読み込みに使用されるステージング場所のストレージ アカウントの入力が求められます。 Azure Synapse Analytics からデータを読み込む最も速いメカニズムです。
 
 - ストレージのリンクされたサービスに対してマネージド ID 認証を使用する場合は、[Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な各構成について確認してください。
 - Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [allow trusted Microsoft service]\(信頼された Microsoft サービスを許可する\) を有効にしたマネージド ID 認証を使用する必要があります。詳細については「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)」を参照してください。
@@ -798,7 +874,7 @@ Azure Synapse Analytics に固有の設定は、ソース変換の **[Source Opt
 
 SQL の例: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Batch size**: 大量データを読み取りにまとめるバッチ サイズを入力します。 データ フローでは、ADF はこの設定を使用して Spark の列キャッシュを設定します。 これは省略可能なフィールドであり、空白のままになっている場合は Spark の既定値が使用されます。
+**Batch size**: 大量データを読み取りにまとめるバッチ サイズを入力します。 データ フローでは、この設定は Spark 列キャッシングの設定に使用されます。 これは省略可能なフィールドであり、空白のままになっている場合は Spark の既定値が使用されます。
 
 **Isolation Level**: マッピング データ フローでの SQL ソースの既定値は [コミットされていないものを読み取り] です。 ここで分離レベルを次のいずれかの値に変更できます。
 
@@ -808,7 +884,7 @@ SQL の例: ```Select * from MyTable where customerId > 1000 and customerId < 20
 - シリアル化可能
 - なし (分離レベルを無視)
 
-![Isolation Level](media/data-flow/isolationlevel.png)
+:::image type="content" source="media/data-flow/isolationlevel.png" alt-text="Isolation Level":::
 
 ### <a name="sink-transformation"></a>シンク変換
 
@@ -831,7 +907,25 @@ Azure Synapse Analytics に固有の設定は、シンク変換の **[設定]** 
 
 **[Pre and Post SQL scripts] (事前および事後 SQL スクリプト)** : データがシンク データベースに書き込まれる前 (前処理) と書き込まれた後 (後処理) に実行される複数行の SQL スクリプトを入力します。
 
-![事前および事後 SQL 処理スクリプト](media/data-flow/prepost1.png "SQL 処理スクリプト")
+:::image type="content" source="media/data-flow/prepost1.png" alt-text="事前および事後 SQL 処理スクリプト":::
+
+### <a name="error-row-handling"></a>エラー行の処理
+
+Azure Synapse Analytics に書き込む場合、書き込み先で設定されている制約によって、データの特定の行が失敗することがあります。 一般的なエラーには次のようなものがあります。
+
+*    テーブル内の文字列データまたはバイナリ データが切り捨てられる
+*    列に値 NULL を挿入できない
+*    値をデータ型に変換できない
+
+既定では、データ フローの実行は最初に発生したエラーで失敗します。 **[エラーのまま続行する]** を選択すると、個々の行でエラーが発生した場合でもデータ フローを完了することができます。 サービスには、これらのエラー行を処理するためのさまざまなオプションが用意されています。
+
+**[Transaction Commit]\(トランザクション コミット\):** データを 1 つのトランザクションまたはバッチのどちらで書き込むかを選択します。 1 つのトランザクションの場合はパフォーマンスが向上し、トランザクションが完了するまで書き込みデータは他のユーザーに表示されません。 バッチ トランザクションのパフォーマンスは低下しますが、大規模なデータセットを扱うことができます。
+
+**[Output rejected data]\(拒否されたデータの出力\):** 有効にすると、エラー行を Azure Blob Storage または選択した Azure Data Lake Storage Gen2 アカウントの csv ファイルに出力できます。 これにより、3 つの列 (INSERT または UPDATE などの SQL 操作、データ フロー エラー コード、および行のエラー メッセージ) を含むエラー行が書き込まれます。
+
+**[Report success on error]\(エラー発生時に成功を報告\):** 有効にすると、エラー行が見つかった場合でもデータ フローは成功としてマークされます。 
+
+:::image type="content" source="media/data-flow/sql-error-row-handling.png" alt-text="エラー行の処理を示すスクリーンショット" border="false":::
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
@@ -843,7 +937,7 @@ Azure Synapse Analytics に固有の設定は、シンク変換の **[設定]** 
 
 ## <a name="data-type-mapping-for-azure-synapse-analytics"></a>Azure Synapse Analytics のデータ型のマッピング
 
-Azure Synapse Analytics との間でデータをコピーする場合、Azure Synapse Analytics のデータ型から Azure Data Factory の中間データ型への次のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+Azure Synapse Analytics との間でデータをコピーする場合、Azure Synapse Analytics のデータ型から Azure Data Factory の中間データ型への次のマッピングが使用されます。 これらのマッピングは、Synapse パイプラインを使用して Azure Synapse Analytics との間でデータをコピーするときにも使用されます。これは、パイプラインも Azure Synapse 内で Azure Data Factory を実装するためです。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
 >[!TIP]
 >Azure Synapse Analytics でサポートされているデータ型と、サポートされていないデータ型への対処法については、[Azure Synapse Analytics のテーブルのデータ型](../synapse-analytics/sql/develop-tables-data-types.md)に関する記事をご覧ください。
@@ -852,20 +946,20 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 | :------------------------------------ | :----------------------------- |
 | bigint                                | Int64                          |
 | binary                                | Byte[]                         |
-| bit                                   | Boolean                        |
+| bit                                   | ブール型                        |
 | char                                  | String, Char[]                 |
 | date                                  | DateTime                       |
 | Datetime                              | DateTime                       |
 | datetime2                             | DateTime                       |
 | Datetimeoffset                        | DateTimeOffset                 |
-| Decimal                               | Decimal (10 進数型)                        |
+| Decimal                               | Decimal                        |
 | FILESTREAM attribute (varbinary(max)) | Byte[]                         |
 | Float                                 | Double                         |
 | image                                 | Byte[]                         |
 | INT                                   | Int32                          |
-| money                                 | Decimal (10 進数型)                        |
+| money                                 | Decimal                        |
 | nchar                                 | String, Char[]                 |
-| numeric                               | Decimal (10 進数型)                        |
+| numeric                               | Decimal                        |
 | nvarchar                              | String, Char[]                 |
 | real                                  | Single                         |
 | rowversion                            | Byte[]                         |
@@ -880,4 +974,4 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+コピー アクティビティによってソース、シンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)の表を参照してください。

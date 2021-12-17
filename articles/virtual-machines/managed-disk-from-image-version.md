@@ -1,6 +1,6 @@
 ---
-title: イメージ バージョンからマネージド ディスクを作成する
-description: 共有イメージ ギャラリーのイメージ バージョンからマネージド ディスクを作成します。
+title: イメージ バージョンをマネージド ディスクにエクスポートする
+description: Azure Compute Gallery からマネージド ディスクにイメージ バージョンをエクスポートすることができます。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,21 +9,24 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 359816bbf3fb93a4ec2bfa3092adbb2236ae2f07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7984cd086864d069363fa65ab7dbaecf4b62165f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562556"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448863"
 ---
-# <a name="create-a-managed-disk-from-an-image-version"></a>イメージ バージョンからマネージド ディスクを作成する
+# <a name="export-an-image-version-to-a-managed-disk"></a>イメージ バージョンをマネージド ディスクにエクスポートする
 
-必要に応じて、イメージ バージョンからの OS または単一のデータ ディスクを、Shared Image Gallery に格納されているイメージ バージョンからのマネージド ディスクとしてエクスポートすることができます。
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+
+イメージ バージョンからの OS または単一のデータ ディスクを、Azure Compute Gallery (旧称 Shared Image Gallery) に格納されているイメージ バージョンからのマネージド ディスクとしてエクスポートすることができます。
 
 
 ## <a name="cli"></a>CLI
 
-[az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) を使用して、ギャラリーにあるイメージ バージョンを一覧表示します。 この例では、*myImageDefinition* イメージ定義の一部であるイメージ バージョンを、*myGallery* イメージ ギャラリーですべて検索しています。
+[az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) を使用して、ギャラリーにあるイメージ バージョンを一覧表示します。 この例では、*myImageDefinition* イメージ定義の一部であるイメージ バージョンを、*myGallery* ギャラリーですべて検索しています。
 
 ```azurecli-interactive
 az sig image-version list \
@@ -117,6 +120,6 @@ New-AzDisk -Disk $diskConfig `
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure CLI](image-version-managed-image-cli.md) または [PowerShell](image-version-managed-image-powershell.md) を使用して、マネージド ディスクからイメージ バージョンを作成することもできます。
+また、マネージド ディスクからも[イメージ バージョン](image-version.md)を作成できます。
 
 

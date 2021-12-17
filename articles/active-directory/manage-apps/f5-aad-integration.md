@@ -1,24 +1,25 @@
 ---
-title: F5 を使用した Azure AD の安全なハイブリッド アクセス | Microsoft Docs
+title: F5 を使用した安全なハイブリッド アクセス
+titleSuffix: Azure AD
 description: F5 BIG-IP Access Policy Manager と Azure Active Directory の統合による、安全なハイブリッド アクセス
-services: active-directory
-author: gargi-sinha
+author: davidmu1
 manager: martinco
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 11/12/2020
-ms.author: gasinh
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38b484bd67f3354132675f343dcc06bd7f9d48a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: miccohen
+ms.openlocfilehash: 3d3556315e95ad72dd0c0e754f8762bfa585c245
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499816"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342435"
 ---
-# <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 BIG-IP Access Policy Manager と Azure Active Directory の統合による、安全なハイブリッド アクセス
+# <a name="integrate-f5-big-ip-with-azure-active-directory"></a>F5 BIG-IP と Azure Active Directory の統合
 
 モビリティが普及し、脅威が進化するにつれ、リソースへのアクセスとガバナンスに対する監視がさらに強化される中、すべての最新化プログラムにおいて、[ゼロ トラスト](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)が何よりも重要な要素になっています。
 Microsoft と F5 は、このデジタル変革は、通常、企業が複数年にわたって取り組むものであり、最新化されるまでに、重要なリソースが公開される可能性があると考えています。 F5 BIG-IP と Azure Active Directory Secure Hybrid Access (SHA) は、オンプレミス アプリケーションへのリモート アクセスを向上させるだけでなく、これらの脆弱性を持つサービスの全体的なセキュリティを強化することを目的として開発されました。
@@ -29,12 +30,11 @@ SHA は、組織が既存の F5 を引き続き使用して、より優れたネ
 
 Azure AD の事前認証によって BIG-IP の公開済みサービスにアクセスすると、次のような利点があります。
 
-- [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)、[MS Authenticator](../user-help/user-help-auth-app-download-install.md)、[Fast Identity Online (FIDO) キー](../authentication/howto-authentication-passwordless-security-key.md)、および[証明書ベースの認証](../authentication/active-directory-certificate-based-authentication-get-started.md)を使用した、パスワードレス認証
+- [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)、[MS Authenticator](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)、[Fast Identity Online (FIDO) キー](../authentication/howto-authentication-passwordless-security-key.md)、および[証明書ベースの認証](../authentication/active-directory-certificate-based-authentication-get-started.md)を使用した、パスワードレス認証
 
-- プリエンプティブな[条件付きアクセス](../conditional-access/overview.md)および[多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md)
+- プリエンプティブな[条件付きアクセス](../conditional-access/overview.md)および [Azure AD 多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md)
 
 - [Identity Protection](../identity-protection/overview-identity-protection.md) -ユーザーとセッションのリスクのプロファイルによる、アダプティブコントロール
-
 
 - [漏洩した資格情報の検出](../identity-protection/concept-identity-protection-risks.md)
 
@@ -42,9 +42,9 @@ Azure AD の事前認証によって BIG-IP の公開済みサービスにアク
 
 - [パートナー コラボレーション](../governance/entitlement-management-external-users.md) -管理対象ゲスト アクセスのエンタイトルメント管理
 
-- [Cloud App Security (CASB)](/cloud-app-security/what-is-cloud-app-security) - アプリの完全な検出とコントロール
+- [Defender for Cloud Apps (CASB)](/cloud-app-security/what-is-cloud-app-security) - アプリの完全な検出とコントロール
 
-- 脅威の監視 - [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) による高度な脅威分析
+- 脅威の監視 - [Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel/) による高度な脅威分析
 
 - [Azure AD ポータル](https://azure.microsoft.com/features/azure-portal/) - ID とアクセスを管理する単一のコントロール プレーン
 
@@ -81,7 +81,7 @@ BIG-IP と Azure AD の統合によって、従来のサービスや非 Azure AD
 
 社員、関係者、コンシューマーの区別なく、ほとんどのユーザーは既に Office 365 のログインに精通しているので、SHA 経由での BIG-IP サービスへのアクセスについても、ほとんどの場合は理解しています。
 
-デバイスの種類や場所に関係なく、BIG-IP で公開されたサービスが、セルフサービス機能と共に、[MyApps](../user-help/my-apps-portal-end-user-access.md) または [O365 スタートパッド](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf)で幅広いサービス セットに統合されます。 希望する場合は、BIG-IP 独自の Web トップ ポータルを使用して、公開されたサービスに直接アクセスすることもできます。 ログオフ時には SHA によって BIG-IP と Azure AD の両方でユーザー セッションが確実に終了されるため、サービスが不正アクセスから完全に保護されたままになります。  
+デバイスの種類や場所に関係なく、BIG-IP で公開されたサービスが、セルフサービス機能と共に、[MyApps](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510) または [O365 スタートパッド](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf)で幅広いサービス セットに統合されます。 希望する場合は、BIG-IP 独自の Web トップ ポータルを使用して、公開されたサービスに直接アクセスすることもできます。 ログオフ時には SHA によって BIG-IP と Azure AD の両方でユーザー セッションが確実に終了されるため、サービスが不正アクセスから完全に保護されたままになります。  
 
 このスクリーンショットは、ユーザーが BIG-IP で公開されたサービスを見つけ、アカウントのプロパティを管理するために安全にアクセスできる、Azure AD アプリ ポータルのものです。  
 
@@ -93,7 +93,7 @@ BIG-IP と Azure AD の統合によって、従来のサービスや非 Azure AD
 
 BIG-IP はビジネスにとって重要な役割を果たすため、デプロイされた BIG-IP インスタンスを監視して、公開されたサービスが SHA レベルでも運用レベルでも高い可用性を持つことを保証する必要があります。
 
-セキュリティ情報イベント管理 (SIEM) ソリューションを介してローカルまたはリモートでイベントをログに記録するオプションがいくつかあります。これにより、オフボックス ストレージとテレメトリ処理が可能になります。 Azure AD および SHA 固有のアクティビティを監視する効果的な方法は、[Azure Monitor](../../azure-monitor/overview.md) と [Azure Sentinel](../../sentinel/overview.md) を使用することです。これによって次が実現します。
+セキュリティ情報イベント管理 (SIEM) ソリューションを介してローカルまたはリモートでイベントをログに記録するオプションがいくつかあります。これにより、オフボックス ストレージとテレメトリ処理が可能になります。 Azure AD および SHA 固有のアクティビティを監視する非常に効果的な方法は、[Azure Monitor](../../azure-monitor/overview.md) と [Microsoft Sentinel](../../sentinel/overview.md) を使用することです。これによって次が実現します。
 
 - 組織 (複数のクラウドにまたがる可能性もあり) とオンプレミスの場所の詳細な概要 (BIG-IP インフラストラクチャを含む)
 
@@ -117,19 +117,19 @@ SHA 向けに F5 BIG-IP と Azure AD を統合するには、次の前提条件�
 
 - アクティブな F5 BIG-IP APM ライセンス (次のいずれかのオプションを使用):
 
-   - F5 BIG-IP® Best バンドル (または)
+  - F5 BIG-IP® Best バンドル (または)
 
-   - F5 BIG-IP Access Policy Manager™ スタンドアロン ライセンス
+    - F5 BIG-IP Access Policy Manager™ スタンドアロン ライセンス
 
-   - 既存の BIG-IP F5 BIG-IP® Local Traffic Manager™ (LTM) に対する F5 BIG-IP Access Policy Manager™ (APM) アドオン ライセンス
+    - 既存の BIG-IP F5 BIG-IP® Local Traffic Manager™ (LTM) に対する F5 BIG-IP Access Policy Manager™ (APM) アドオン ライセンス
 
-   - BIG-IP Access Policy Manager™ (APM) の 90 日間[試用版ライセンス](https://www.f5.com/trial/big-ip-trial.php)
+    - BIG-IP Access Policy Manager™ (APM) の 90 日間[試用版ライセンス](https://www.f5.com/trial/big-ip-trial.php)
 
 - Azure AD ライセンス (次のいずれかのオプションを使用):
 
-   - Azure AD [無料サブスクリプション](/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20)。パスワードレス認証を使用して SHA を実装するための最小コア要件を提供
+  - Azure AD [無料サブスクリプション](/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20)。パスワードレス認証を使用して SHA を実装するための最小コア要件を提供
 
-   - [Premium サブスクリプション](https://azure.microsoft.com/pricing/details/active-directory/)。[条件付きアクセス](../conditional-access/overview.md)、[MFA](../authentication/concept-mfa-howitworks.md)、[Identity Protection](../identity-protection/overview-identity-protection.md) など、序文に記載されているすべての追加の付加価値機能を提供
+  - [Premium サブスクリプション](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。[条件付きアクセス](../conditional-access/overview.md)、[MFA](../authentication/concept-mfa-howitworks.md)、[Identity Protection](../identity-protection/overview-identity-protection.md) など、序文に記載されているすべての追加の付加価値機能を提供
 
 SHA を実装するために事前の経験や F5 BIG-IP に関する知識は必要ありませんが、F5 BIG-IP の用語に慣れておくことをお勧めします。 F5 の豊富な[ナレッジ ベース](https://www.f5.com/services/resources/glossary)も、BIG-IP に関する知識を身につけるのに役立ちます。
 
@@ -145,6 +145,12 @@ SHA を実装するために事前の経験や F5 BIG-IP に関する知識は�
 
 - [Azure AD SHA による F5 BIG-IP SSL-VPN の保護](f5-aad-password-less-vpn.md)
 
+- [Azure AD B2C と F5 BIG-IP を構成する](../../active-directory-b2c/partner-f5.md)
+
+- [F5 BIG-IP APM と Azure AD SSO (フォームベースのアプリケーションに)](f5-big-ip-forms-advanced.md)
+
+- [ヘッダーベース認証用の F5 BIG IP と Azure Active Directory SSO の統合](f5-big-ip-header-advanced.md)
+
 ## <a name="additional-resources"></a>その他のリソース
 
 - [パスワードの終わり、これからはパスワードレス](https://www.microsoft.com/security/business/identity/passwordless)
@@ -153,7 +159,7 @@ SHA を実装するために事前の経験や F5 BIG-IP に関する知識は�
 
 - [リモート作業を可能にする Microsoft ゼロ トラスト フレームワーク](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)
 
-- [Azure Sentinel の概要](https://azure.microsoft.com/services/azure-sentinel/?&OCID=AID2100131_SEM_XfknpgAAAHoVMTvh:20200922160358:s&msclkid=5e0e022409fc1c94dab85d4e6f4710e3&ef_id=XfknpgAAAHoVMTvh:20200922160358:s&dclid=CJnX6vHU_esCFUq-ZAod1iQF6A)
+- [Microsoft Sentinel の概要](https://azure.microsoft.com/services/azure-sentinel/?&OCID=AID2100131_SEM_XfknpgAAAHoVMTvh:20200922160358:s&msclkid=5e0e022409fc1c94dab85d4e6f4710e3&ef_id=XfknpgAAAHoVMTvh:20200922160358:s&dclid=CJnX6vHU_esCFUq-ZAod1iQF6A)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,0 +1,92 @@
+### YamlMime:Landing
+title: Microsoft 顧客契約のドキュメント
+summary: Microsoft 顧客契約 (MCA) の下で課金とサブスクリプションの管理を開始します。 課金環境への安全なアクセスを確保しつつ、コストを理解して最適化する方法について説明します。
+metadata:
+  title: Microsoft 顧客契約のドキュメント
+  description: Microsoft 顧客契約 (MCA) を開始する方法について説明します。
+  ms.service: cost-management-billing
+  ms.subservice: microsoft-customer-agreement
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.date: 06/16/2021
+  ms.openlocfilehash: 19bbf27e330c204beeb14e536cbaaccafee9c178
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121731927"
+landingContent:
+- title: はじめに
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 'Microsoft 顧客契約とは:'
+      url: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: get-started
+    links:
+    - text: 契約に同意した後の主要な次の手順
+      url: microsoft-customer-agreement-get-started.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 課金所有権を MOSA から MCA に移転する
+      url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 課金所有権を EA から MCA に移転する
+      url: ../manage/mca-setup-account.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: reference
+    links:
+    - text: API の概要 - EA から MCA への移行
+      url: ../costs/migrate-cost-management-api.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: EA と MCA 間の API の違い
+      url: /rest/api/billing/
+    - text: Cost Management Power BI コネクタ
+      url: /power-bi/connect-data/desktop-connect-azure-cost-management?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Cost Management データをエクスポートする
+      url: ../costs/tutorial-export-acm-data.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Microsoft 顧客契約の FAQ
+      url: microsoft-customer-agreement-faq.yml?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+- title: 請求の管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 請求期間について理解する
+      url: ../understand/mca-understand-your-invoice.md#billing-period
+  - linkListType: tutorial
+    links:
+    - text: 契約に基づいて請求書を受け取る
+      url: ../understand/review-customer-agreement-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 課金プロファイルとその管理方法
+      url: ../manage/mca-section-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 請求書の支払い方法
+      url: ../understand/pay-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 請求を管理する管理者を設定する
+      url: ../manage/understand-mca-roles.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 契約の課金を開始する
+      url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: video
+    links:
+    - text: コストを整理する
+      url: https://www.youtube.com/watch?v=7RxTfShGHwU
+    - text: 課金アカウントへのアクセスを管理する
+      url: https://www.youtube.com/watch?v=9sqglBlKkho
+    - text: 請求書を理解する
+      url: https://www.youtube.com/watch?v=e2LGZZ7GubA
+    - text: Azure サブスクリプションの課金を MOSA から MCA に移行する
+      url: https://www.youtube.com/watch?v=gfiUI2YLsgc
+- title: サブスクリプションを管理する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Active Directory とは
+      url: ../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: テナントを管理する
+      url: manage-tenants.md
+    - text: サブスクリプション管理者を追加、変更、または検索する
+      url: ../manage/add-change-subscription-administrator.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 新しいサブスクリプションを作成する
+      url: ../manage/create-subscription.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: サブスクリプション アクセスのトラブルシューティング
+      url: troubleshoot-subscription-access.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json

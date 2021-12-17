@@ -3,18 +3,20 @@ title: Azure Disk Storage 上のアプリケーションのベンチマーク
 description: Azure 上でアプリケーションのベンチマークを実行するプロセスについて説明します。
 author: roygara
 ms.author: rogarana
-ms.date: 01/29/2021
+ms.date: 06/29/2021
 ms.topic: how-to
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: bfda14acc2e50005e25faafa3037805af871c1df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c57047cdaf848bc27805d8819be515636d492676
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99094598"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687553"
 ---
 # <a name="benchmark-a-disk"></a>ディスクのベンチマークの実行
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 ベンチマークは、アプリケーションのさまざまなワークロードをシミュレートし、ワークロードごとにアプリケーションのパフォーマンスを測定するプロセスです。 [高パフォーマンス用の設計に関する記事](premium-storage-performance.md)に記載されている手順を使用して、アプリケーションのパフォーマンス要件を収集しました。 アプリケーションをホストする VM でベンチマーク ツールを実行することで、アプリケーションが Premium SSD を使用して実現できるパフォーマンス レベルを確認できます。 この記事では、Azure Premium SSD ディスクと共にプロビジョニングされた Standard_D8ds_v4 VM のベンチマークの例を示します。
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/04/2020
+ms.date: 05/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 04e1dbdd0a84fd8950ca2ebe05b1389767ed77c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe4a709408e93d5b3ccbaaec8f84dc834fa50e92
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181545"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329383"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sailpoint-identitynow"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SailPoint IdentityNow の統合
 
@@ -31,13 +31,13 @@ ms.locfileid: "96181545"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* SailPoint IdentityNow でのシングル サインオン (SSO) が有効なサブスクリプション。
+* SailPoint IdentityNow のアクティブ サブスクリプション。 IdentityNow をお持ちではない場合は [SailPoint IdentityNow サポート チーム](mailto:support@sailpoint.com)にお問い合わせください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SailPoint IdentityNow では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* SailPoint IdentityNow では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
 ## <a name="adding-sailpoint-identitynow-from-the-gallery"></a>ギャラリーからの SailPoint IdentityNow の追加
 
@@ -49,7 +49,6 @@ Azure AD への SailPoint IdentityNow の統合を構成するには、ギャラ
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**SailPoint IdentityNow**」と入力します。
 1. 結果のパネルから **[SailPoint IdentityNow]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-sailpoint-identitynow"></a>SailPoint IdentityNow の Azure AD SSO の構成とテスト
 
@@ -70,11 +69,11 @@ SailPoint IdentityNow に対して Azure AD SSO を構成してテストする�
 
 1. Azure portal の **SailPoint IdentityNow** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
     a. **[識別子]** ボックスに、`https://<TENANT_NAME>.identitynow.com/sp` の形式で URL を入力します。
 
@@ -94,6 +93,7 @@ SailPoint IdentityNow に対して Azure AD SSO を構成してテストする�
 1. **[SailPoint IdentityNow のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -132,16 +132,16 @@ SailPoint IdentityNow に対して Azure AD SSO を構成してテストする�
 
 #### <a name="sp-initiated"></a>SP Initiated:
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる SailPoint IdentityNow のサインオン URL にリダイレクトされます。  
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる SailPoint IdentityNow のサインオン URL にリダイレクトされます。  
 
-1. SailPoint IdentityNow のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* SailPoint IdentityNow のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した SailPoint IdentityNow に自動的にサインインされるはずです 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した SailPoint IdentityNow に自動的にサインインされます。 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで SailPoint IdentityNow タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した SailPoint IdentityNow に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで SailPoint IdentityNow タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した SailPoint IdentityNow に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-SailPoint IdentityNow を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SailPoint IdentityNow を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

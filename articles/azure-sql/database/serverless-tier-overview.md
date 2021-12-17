@@ -3,20 +3,20 @@ title: サーバーレス コンピューティング レベル
 description: この記事では、新しいサーバーレス コンピューティング レベルについて説明し、Azure SQL Database の既存のプロビジョニング済みコンピューティング レベルと比較します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
-ms.custom: test sqldbrb=1, devx-track-azurecli
+ms.subservice: service-overview
+ms.custom: test sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein
-ms.date: 2/22/2021
-ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mathoma, wiassaf
+ms.date: 9/28/2021
+ms.openlocfilehash: cc9c0f35be998e8ef3947946c84bc67a94f125cb
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101658590"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235632"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 
 サーバーレス コンピューティング データベースとプロビジョニング済みコンピューティング データベースの両方で、使用可能なメモリがすべて使用されている場合、キャッシュ エントリを削除できます。
 
-CPU 使用率が低い場合、使用パターンによってはアクティブなキャッシュの使用率が高いままになり、メモリの再利用が妨げられる可能性があることに注意してください。  また、以前のユーザー アクティビティに定期的なバックグラウンド プロセスが応答するために、ユーザー アクティビティが停止した後、メモリが再利用される前に、遅延時間が追加で発生する可能性があります。  たとえば、削除対象としてマークされるゴースト レコードは、削除操作と QDS クリーンアップ タスクによって生成されますが、キャッシュへのデータ ページの読み取りを伴うゴースト クリーンアップ プロセスが実行されるまで、物理的には削除されません。
+CPU 使用率が低い場合、使用パターンによってはアクティブなキャッシュの使用率が高いままになり、メモリの再利用が妨げられる可能性があります。  また、以前のユーザー アクティビティに定期的なバックグラウンド プロセスが応答するために、ユーザー アクティビティが停止した後、メモリが再利用される前に、その他の遅延時間が発生する可能性があります。  たとえば、削除操作とクエリ ストアのクリーンアップ タスクによって、削除対象としてマークされるゴースト レコードが生成されますが、それらはゴースト クリーンアップ プロセスが実行されるまで、物理的には削除されません。 ゴースト クリーンアップでは、キャッシュへの追加データ ページの読み取りが行われる場合があります。
 
 #### <a name="cache-hydration"></a>キャッシュのハイドレーション
 
@@ -110,19 +110,58 @@ CPU 使用率が低い場合、使用パターンによってはアクティブ�
 自動一時停止遅延の期間を通して次のすべての条件が満たされた場合、自動一時停止がトリガーされます。
 
 - セッション数 = 0
-- ユーザー プールで実行されているユーザー ワークロードの場合は CPU = 0
+- CPU = 0 (ユーザー リソース　プールで実行されているユーザー ワークロードの場合)
 
 必要な場合に自動一時停止を無効にするオプションが用意されています。
 
-次の機能では自動一時停止はサポートされていませんが、自動スケーリングはサポートされています。  次の機能のいずれかが使用されている場合、自動一時停止を無効にする必要があります。データベースは、データベースの非アクティブ期間に関係なくオンラインのままとなります。
+次の機能では自動一時停止はサポートされていませんが、自動スケーリングはサポートされています。 次の機能のいずれかが使用されている場合、自動一時停止を無効にする必要があります。データベースは、データベースの非アクティブ期間に関係なくオンラインのままとなります。
 
-- geo レプリケーション (アクティブ geo レプリケーションと自動フェールオーバー グループ)
-- 長期的なバックアップ保有期間 (LTR)。
-- SQL データ同期で使用される同期データベース。同期データベースとは異なり、ハブとメンバー データベースでは自動一時停止がサポートされています。
-- DNS エイリアシング
-- エラスティック ジョブで使用されるジョブ データベース (プレビュー)。
+- geo レプリケーション ([アクティブ geo レプリケーション](active-geo-replication-overview.md)と[自動フェールオーバー グループ](auto-failover-group-overview.md))。
+- [長期的なバックアップ保有期間](long-term-retention-overview.md) (LTR).
+- [SQL データ同期](sql-data-sync-data-sql-server-sql-database.md)で使用される同期データベース。同期データベースとは異なり、ハブとメンバー データベースでは自動一時停止がサポートされています。
+- サーバーレス データベースを含む論理サーバー用に作成された [DNS エイリアス](dns-alias-overview.md)。
+- [エラスティック ジョブ (プレビュー)](elastic-jobs-overview.md)。ジョブ データベースがサーバーレス データベースの場合。 エラスティック ジョブの対象となるデータベースでは自動一時停止がサポートされています。それらは、ジョブ接続によって再開されます。
 
 データベースをオンラインにする必要がある一部のサービス更新プログラムのデプロイ中は、自動一時停止は一時的に回避されます。  このような場合、サービス更新プログラムが完了すると、自動一時停止は再び許可されます。
+
+#### <a name="auto-pause-troubleshooting"></a>自動一時停止のトラブルシューティング
+
+自動一時停止が有効になっているのに、遅延期間後にデータベースが自動一時停止しない場合や、上記の機能が使用されていない場合は、アプリケーションまたはユーザー セッションによって自動一時停止が妨げられている可能性があります。 データベースに現在接続されているアプリケーションまたはユーザー セッションがあるかどうかを確認するには、任意のクライアント ツールを使用してデータベースに接続し、次のクエリを実行します。
+
+```sql
+SELECT session_id,
+       host_name,
+       program_name,
+       client_interface_name,
+       login_name,
+       status,
+       login_time,
+       last_request_start_time,
+       last_request_end_time
+FROM sys.dm_exec_sessions AS s
+INNER JOIN sys.dm_resource_governor_workload_groups AS wg
+ON s.group_id = wg.group_id
+WHERE s.session_id <> @@SPID
+      AND
+      (
+      (
+      wg.name like 'UserPrimaryGroup.DB%'
+      AND
+      TRY_CAST(RIGHT(wg.name, LEN(wg.name) - LEN('UserPrimaryGroup.DB') - 2) AS int) = DB_ID()
+      )
+      OR
+      wg.name = 'DACGroup'
+      );
+```
+
+> [!TIP]
+> クエリを実行した後、必ずデータベースから切断してください。 そうしないと、クエリで使用されているオープン セッションによって自動一時停止が妨げられます。
+
+結果セットが空でない場合は、自動一時停止を現在妨げているセッションがあることを示しています。 
+
+結果セットが空の場合でも、自動一時停止遅延期間中の早い時点で、セッションが短時間開かれていた可能性はあります。 遅延期間中にこのようなアクティビティが発生したかどうかを確認するには、[Azure SQL 監査](auditing-overview.md)を使用して、関連する期間の監査データを確認できます。
+
+開いているセッションの存在は、ユーザーのリソース プール内で CPU の同時使用があるかどうかに関係なく、サーバーレス データベースが予期したとおりに自動一時停止しない場合の最も一般的な理由です。
 
 ### <a name="auto-resuming"></a>自動再開
 
@@ -151,15 +190,15 @@ CPU 使用率が低い場合、使用パターンによってはアクティブ�
 
 ### <a name="connectivity"></a>接続
 
-サーバーレス データベースが一時停止されている場合、データベースは最初のログインで再開され、データベースが使用できないことを示すエラーがエラー コード 40613 で返されます。 データベースが再開され後、ログインを再試行して接続を確立する必要があります。 接続再試行ロジックを備えたデータベース クライアントは、変更する必要はありません。
+サーバーレス データベースが一時停止されている場合、データベースは最初のログインで再開され、データベースが使用できないことを示すエラーがエラー コード 40613 で返されます。 データベースが再開され後、ログインを再試行して接続を確立する必要があります。 接続再試行ロジックを備えたデータベース クライアントは、変更する必要はありません。  SqlClient ドライバーに組み込まれている接続再試行ロジック オプションについては、「[SqlClient の構成可能な再試行ロジック](/sql/connect/ado-net/configurable-retry-logic)」を参照してください。
 
 ### <a name="latency"></a>Latency
 
-サーバーレス データベースの自動再開および自動一時停止の待機時間は、通常、自動再開までに 1 分、自動停止までに 1 分から 10 分かかります。
+サーバーレス データベースの自動再開および自動一時停止の待機時間は、通常、自動再開までには約 1 分、自動停止までには、遅延期間の期限が切れてから 1 分から 10 分かかります。
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>お客様が管理する透過的なデータ暗号化 (BYOK)
 
-[お客様が管理する透過的なデータ暗号化](transparent-data-encryption-byok-overview.md) (BYOK) を使用していて、キーの削除または失効が発生したときにサーバーレス データベースが自動一時停止されている場合、データベースは自動一時停止状態のままになります。  この場合、データベースが次に再開された後、約 10 分以内にデータベースにアクセスできなくなります。  データベースがアクセス不可になった後、復旧プロセスは、プロビジョニングされたコンピューティング データベースの場合と同じです。  キーの削除または失効が発生したときにサーバーレス データベースがオンラインになっている場合も、プロビジョニングされたコンピューティング データベースと同じように約 10 分以内にデータベースにアクセスできなくなります。
+[お客様が管理する透過的なデータ暗号化](transparent-data-encryption-byok-overview.md) (BYOK) を使用していて、キーの削除または失効が発生したときにサーバーレス データベースが自動一時停止されている場合、データベースは自動一時停止状態のままになります。  この場合、データベースが次に再開された後、約 10 分以内にデータベースにアクセスできなくなります。 データベースがアクセス不可になった後、復旧プロセスは、プロビジョニングされたコンピューティング データベースの場合と同じです。 キーの削除または失効が発生したときにサーバーレス データベースがオンラインになっている場合も、プロビジョニングされたコンピューティング データベースと同じように約 10 分以内にデータベースにアクセスできなくなります。
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>サーバーレス コンピューティング レベルへのオンボード
 
@@ -180,7 +219,7 @@ CPU 使用率が低い場合、使用パターンによってはアクティブ�
 
 次の例では、サーバーレス コンピューティング レベルで新しいデータベースを作成します。
 
-#### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+#### <a name="use-azure-portal"></a>Azure Portal の使用
 
 「[クイック スタート:Azure portal を使用して Azure SQL Database で単一データベースを作成する](single-database-create-quickstart.md)」をご覧ください。
 
@@ -192,7 +231,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
-#### <a name="use-the-azure-cli"></a>Azure CLI の使用
+#### <a name="use-azure-cli"></a>Azure CLI の使用
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
@@ -202,7 +241,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) の使用
 
-T-SQL を使用すると、最小仮想コアと自動一時停止遅延に既定値が適用されます。
+T-SQL を使用すると、最小仮想コアと自動一時停止遅延に既定値が適用されます。 これらは、後でポータルから、または他の管理 API (PowerShell、Azure CLI、REST API) を使用して変更できます。
 
 ```sql
 CREATE DATABASE testdb
@@ -217,24 +256,22 @@ CREATE DATABASE testdb
 
 #### <a name="use-powershell"></a>PowerShell の使用
 
-
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
   -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 `
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-#### <a name="use-the-azure-cli"></a>Azure CLI の使用
+#### <a name="use-azure-cli"></a>Azure CLI の使用
 
 ```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
   --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
 ```
 
-
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) の使用
 
-T-SQL を使用すると、最小仮想コアと自動一時停止遅延に既定値が適用されます。
+T-SQL を使用すると、最小仮想コアと自動一時停止遅延に既定値が適用されます。 これらは、後でポータルから、または他の管理 API (PowerShell、Azure CLI、REST API) を使用して変更できます。
 
 ```sql
 ALTER DATABASE testdb 
@@ -253,10 +290,9 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 最大または最小の仮想コア、および自動一時停止遅延の変更は、PowerShell の [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) コマンドと、 `MaxVcore`、`MinVcore`、および `AutoPauseDelayInMinutes` の引数を使用して実行されます。
 
-### <a name="use-the-azure-cli"></a>Azure CLI の使用
+### <a name="use-azure-cli"></a>Azure CLI の使用
 
-最大または最小の仮想コア、および自動一時停止遅延の変更は、Azure CLI の [az sql db update](/cli/azure/sql/db#az-sql-db-update) コマンドと、 `capacity`、`min-capacity`、および `auto-pause-delay` の引数を使用して実行されます。
-
+最大または最小の仮想コア、および自動一時停止遅延の変更は、Azure CLI の [az sql db update](/cli/azure/sql/db#az_sql_db_update) コマンドと、 `capacity`、`min-capacity`、および `auto-pause-delay` の引数を使用して実行されます。
 
 ## <a name="monitoring"></a>監視
 
@@ -266,26 +302,26 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 #### <a name="app-package"></a>アプリ パッケージ
 
-アプリ パッケージは、データベースがサーバーレスまたはプロビジョニング済みのどちらのコンピューティング レベルであるかに関係なく、データベースに対する最も外側のリソース管理境界です。 アプリ パッケージには SQL インスタンスと外部サービスが含まれ、両者によって SQL Database のデータベースによって使用されるすべてのユーザー リソースとシステム リソースのスコープが決まります。 外部サービスの例としては、R やフルテキスト検索などがあります。 一般に、アプリ パッケージでの全体的なリソース使用量より、SQL インスタンスの方が優位です。
+アプリ パッケージは、データベースがサーバーレスまたはプロビジョニング済みのどちらのコンピューティング レベルであるかに関係なく、データベースに対する最も外側のリソース管理境界です。 アプリ パッケージには SQL インスタンスと、フルテキスト検索などの外部サービスが含まれており、そのすべてによって SQL Database のデータベースによって使用されるすべてのユーザーおよびシステム リソースのスコープが決まります。 一般に、アプリ パッケージでの全体的なリソース使用量より、SQL インスタンスの方が優位です。
 
 #### <a name="user-resource-pool"></a>ユーザー リソース プール
 
-ユーザー リソース プールは、データベースがサーバーレスまたはプロビジョニング済みのどちらのコンピューティング レベルであるかに関係なく、データベースに対する最も内側のリソース管理境界です。 ユーザー リソース プールのスコープは、DDL クエリ (CREATE、ALTER など) および DML クエリ (SELECT、INSERT、UPDATE、DELETE など) によって生成されるユーザー ワークロードに対する CPU と IO です。 これらのクエリは、一般に、アプリ パッケージでの使用量の最も大きな割合を表します。
+ユーザー リソース プールは、データベースがサーバーレスまたはプロビジョニング済みのどちらのコンピューティング レベルであるかに関係なく、データベースに対する内側のリソース管理境界です。 ユーザー リソース プールのスコープは、DDL クエリ (CREATE および ALTER など)、DML クエリ (INSERT、UPDATE、DELETE、MERGE など)、および SELECT クエリによって生成されるユーザー ワークロードに対する CPU と IO です。 これらのクエリは、一般に、アプリ パッケージでの使用量の最も大きな割合を表します。
 
 ### <a name="metrics"></a>メトリック
 
-サーバーレス データベースのアプリ パッケージとユーザー プールのリソース使用量を監視するためのメトリックは、次の表のとおりです。
+サーバーレス データベースのアプリ パッケージとユーザー リソース プールのリソース使用量を監視するためのメトリックは、次の表のとおりです。
 
 |Entity|メトリック|説明|Units|
 |---|---|---|---|
 |アプリ パッケージ|app_cpu_percent|アプリに許可されている最大仮想コア数に対する、アプリによって使用された仮想コア数の割合。|パーセント|
 |アプリ パッケージ|app_cpu_billed|レポート期間中にアプリに対して請求されるコンピューティングの量。 この期間中に支払われる金額は、このメトリックと仮想コアの単位価格の積です。 <br><br>このメトリックの値は、1 秒ごとに使用された CPU とメモリの最大値を時間で集計することによって決定されます。 使用された金額が、最小仮想コア数と最小メモリによって設定されるプロビジョニング済みの最低額より少ない場合、プロビジョニング済みの最低額が請求されます。 請求のために CPU とメモリを比較するため、メモリは GB 単位のメモリ量を仮想コアあたり 3 GB で再スケーリングすることによって、仮想コアの単位に正規化されます。|仮想コア秒数|
 |アプリ パッケージ|app_memory_percent|アプリに許可されている最大メモリに対する、アプリによって使用されたメモリの割合。|パーセント|
-|ユーザー プール|cpu_percent|ユーザー ワークロードに許可されている最大仮想コア数に対する、ユーザー ワークロードによって使用された仮想コア数の割合。|パーセント|
-|ユーザー プール|data_IO_percent|ユーザー ワークロードに許可されている最大データ IOPS に対する、ユーザー ワークロードによって使用されたデータ IOPS の割合。|パーセント|
-|ユーザー プール|log_IO_percent|ユーザー ワークロードに許可されている最大ログ MB/秒に対する、ユーザー ワークロードによって使用されたログ MB/秒の割合。|パーセント|
-|ユーザー プール|workers_percent|ユーザー ワークロードに許可されている最大ワーカー数に対する、ユーザー ワークロードによって使用されたワーカー数の割合。|パーセント|
-|ユーザー プール|sessions_percent|ユーザー ワークロードに許可されている最大セッション数に対する、ユーザー ワークロードによって使用されたセッション数の割合。|パーセント|
+|ユーザー リソース プール|cpu_percent|ユーザー ワークロードに許可されている最大仮想コア数に対する、ユーザー ワークロードによって使用された仮想コア数の割合。|パーセント|
+|ユーザー リソース プール|data_IO_percent|ユーザー ワークロードに許可されている最大データ IOPS に対する、ユーザー ワークロードによって使用されたデータ IOPS の割合。|パーセント|
+|ユーザー リソース プール|log_IO_percent|ユーザー ワークロードに許可されている最大ログ MB/秒に対する、ユーザー ワークロードによって使用されたログ MB/秒の割合。|パーセント|
+|ユーザー リソース プール|workers_percent|ユーザー ワークロードに許可されている最大ワーカー数に対する、ユーザー ワークロードによって使用されたワーカー数の割合。|パーセント|
+|ユーザー リソース プール|sessions_percent|ユーザー ワークロードに許可されている最大セッション数に対する、ユーザー ワークロードによって使用されたセッション数の割合。|パーセント|
 
 ### <a name="pause-and-resume-status"></a>一時停止と再開の状態
 
@@ -300,12 +336,11 @@ Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername 
   | Select -ExpandProperty "Status"
 ```
 
-#### <a name="use-the-azure-cli"></a>Azure CLI の使用
+#### <a name="use-azure-cli"></a>Azure CLI の使用
 
 ```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
 ```
-
 
 ## <a name="resource-limits"></a>リソース制限
 
@@ -342,7 +377,7 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 
 ### <a name="example-scenario"></a>サンプル シナリオ
 
-最小仮想コア数に 1、最大仮想コア数に 4 が指定されているサーバーレス データベースについて考えてみます。  この場合、最小メモリは約 3 GB、最大メモリは約 12 GB です。  自動一時停止遅延が 6 時間に設定され、24 時間のうち最初の 2 時間だけデータベースのワークロードがアクティブで、それ以外の時間は非アクティブだとすると、    
+最小仮想コア数に 1、最大仮想コア数に 4 が指定されているサーバーレス データベースについて考えてみます。  この構成は、最小メモリは約 3 GB、最大メモリは約 12 GB に相当します。  自動一時停止遅延が 6 時間に設定され、24 時間のうち最初の 2 時間だけデータベースのワークロードがアクティブで、それ以外の時間は非アクティブだとすると、    
 
 このデータベースは、最初の 8 時間はコンピューティングとストレージに対して課金されます。  2 時間を過ぎるとデータベースは非アクティブになりますがオンラインなので、その後の 6 時間については、プロビジョニングされた最小コンピューティングに基づいて、コンピューティングに対して引き続き課金されます。  24 時間のうち、データベースが一時停止中の残りの時間については、ストレージのみが課金されます。
 
@@ -356,7 +391,7 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 |8:00-24:00|0|0|一時停止中、コンピューティングには課金なし|0 仮想コア秒|
 |24 時間で課金対象となる合計仮想コア秒数||||50,400 仮想コア秒|
 
-コンピューティングの単位価格は $0.000145/仮想コア/秒とします。  この場合、この 24 時間で課金対象となるコンピューティングは、コンピューティング ユニット価格と課金対象の仮想コア秒数の積になります: $0.000145/仮想コア/秒 * 50,400 仮想コア秒 = 約 $7.31
+コンピューティングの単位価格は $0.000145/仮想コア/秒とします。  この場合、この 24 時間で課金対象となるコンピューティングは、コンピューティング ユニット価格と課金対象の仮想コア秒数の積になります: $0.000145/仮想コア/秒 * 50,400 仮想コア秒 = 約 $7.31。
 
 ### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure ハイブリッド特典と予約容量
 

@@ -1,22 +1,26 @@
 ---
 title: マッピング データ フローでの選択変換
-description: Azure Data Factory のマッピング データ フローの選択変換
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Azure Synapse Analytics のパイプライン内でのマッピング データ フローの選択変換について説明します。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 06/02/2020
-ms.openlocfilehash: 2d8c4d1915e22ccabf193f1b34c5fc4797ead549
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: 47965d920738a8b0a20ac33446224af84041aa0c
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93040245"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061620"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>マッピング データ フローでの選択変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 列の名前変更、削除、または並べ替えを行うには、選択変換を使用します。 この変換は、行データを変更するものではなく、どの列が下流に伝達されるかを選択するものです。 
 
@@ -26,7 +30,7 @@ ms.locfileid: "93040245"
 
 プロジェクションで定義されている列の数が 50 未満の場合は、定義されているすべての列に、既定で固定マッピングが使用されます。 固定マッピングでは、定義済みの受信列が受け取られ、正確な名前にマップされます。
 
-![固定マッピング](media/data-flow/fixedmapping.png "固定マッピング")
+:::image type="content" source="media/data-flow/fixedmapping.png" alt-text="固定マッピング":::
 
 > [!NOTE]
 > 固定マッピングを使用して、誤差の列をマップしたり、名前を変更したりすることはできません
@@ -35,7 +39,7 @@ ms.locfileid: "93040245"
 
 固定マッピングは、階層列のサブ列を最上位レベルの列にマップするために使用することもできます。 階層が定義されている場合は、列のドロップダウンを使用してサブ列を選択します。 選択変換では、サブ列の値とデータ型を使用して新しい列が作成されます。
 
-![階層マッピング](media/data-flow/select-hierarchy.png "階層マッピング")
+:::image type="content" source="media/data-flow/select-hierarchy.png" alt-text="階層マッピング":::
 
 ## <a name="rule-based-mapping"></a>ルールベースのマッピング
 
@@ -46,11 +50,11 @@ ms.locfileid: "93040245"
 
 ルールベースのマッピングを追加するには、 **[マッピングの追加]** をクリックし、 **[ルールベースのマッピング]** を選択します。
 
-![スクリーンショットには、[マッピングの追加] から選択されたルールベースのマッピングが示されています。](media/data-flow/rule2.png "ルールベースのマッピング")
+:::image type="content" source="media/data-flow/rule2.png" alt-text="スクリーンショットには、[マッピングの追加] から選択されたルールベースのマッピングが示されています。":::
 
 各ルールベースのマッピングには、2 つの入力が必要となります。照合の基準となる条件、およびマップされた各列に付ける名前です。 どちらの値も[式ビルダー](concepts-data-flow-expression-builder.md)を使用して入力ます。 左側の式ボックスに、ブール値の一致条件を入力します。 右側の式ボックスに、一致した列のマップ先を指定します。
 
-![スクリーンショットには、マッピングが示されています。](media/data-flow/rule-based-mapping.png "ルールベースのマッピング")
+:::image type="content" source="media/data-flow/rule-based-mapping.png" alt-text="スクリーンショットには、マッピングが示されています。":::
 
 一致した列の入力名を参照するには、`$$` 構文を使用します。 上の図を例として使用します。ユーザーは、名前が 6 文字より短いすべての文字列型の列に対して照合したいとします。 ある入力列に `test` という名前が付けられていた場合、式 `$$ + '_short'` によりその列の名前が `test_short` に変更されます。 これが唯一のマッピングの場合、条件を満たしていないすべての列が、出力されるデータから削除されます。
 
@@ -60,7 +64,7 @@ ms.locfileid: "93040245"
 
 下向きのシェブロン アイコンをクリックすると、正規表現のマッピング条件を指定できます。 正規表現のマッピング条件により、指定された正規表現の条件に一致するすべての列名が照合されます。 これは、標準のルールベースのマッピングと組み合わせて使用できます。
 
-![スクリーンショットには、regex マッピング条件が、階層レベルと名前の照合とともに示されています。](media/data-flow/regex-matching.png "ルールベースのマッピング")
+:::image type="content" source="media/data-flow/regex-matching.png" alt-text="スクリーンショットには、regex マッピング条件が、階層レベルと名前の照合とともに示されています。":::
 
 上記の例では、正規表現パターン `(r)`、つまり小文字の r を含むすべての列名と照合されます。 標準のルールベースのマッピングと同様に、一致したすべての列は、`$$` 構文を使用した右側の条件によって変更されます。
 
@@ -70,7 +74,7 @@ ms.locfileid: "93040245"
 
 定義されたプロジェクションに階層がある場合は、ルールベースのマッピングを使用して、階層のサブ列をマップできます。 一致条件と、マップ対象のサブ列が含まれる複合列を指定します。 一致したすべてのサブ列は、右側に指定された [Name as]\(付ける名前\) ルールを使用して出力されます。
 
-![スクリーンショットには、階層を使用したルールベースのマッピングが示されています。](media/data-flow/rule-based-hierarchy.png "ルールベースのマッピング")
+:::image type="content" source="media/data-flow/rule-based-hierarchy.png" alt-text="スクリーンショットには、階層を使用したルールベースのマッピングが示されています。":::
 
 上記の例では、複合列 `a` のすべてのサブ列に対して照合されます。 `a` には 2 つのサブ列 `b` と `c` が含まれています。 [Name as]\(付ける名前\) 条件が `$$` であるため、出力スキーマには 2 つの列 `b` と `c` が含まれす。
 
@@ -82,7 +86,7 @@ ms.locfileid: "93040245"
 
 選択変換を追加する際には、自動マッピング スライダーを切り替えることで、**自動マッピング** を有効にすることができます。 自動マッピングを使用した場合、選択変換では、すべての受信列 (重複を除く) が、入力と同じ名前にマップされます。 これには誤差の列が含まれます。つまり、出力データには、スキーマで定義されていない列が含まれる可能性があります。 誤差の列の詳細については、「[スキーマの誤差](concepts-data-flow-schema-drift.md)」を参照してください。
 
-![自動マッピング](media/data-flow/automap.png "自動マッピング")
+:::image type="content" source="media/data-flow/automap.png" alt-text="自動マッピング":::
 
 自動マッピングをオンにした場合、選択変換では、重複スキップの設定が適用され、既存の列に新しい別名が指定されます。 別名は、自己結合のシナリオで、同じストリームに対して複数の結合や参照を実行する場合に便利です。 
 
@@ -90,7 +94,7 @@ ms.locfileid: "93040245"
 
 既定では、選択変換を実行すると、入力と出力の両方のプロジェクションで、重複する列が削除されます。 多くの場合、重複する入力列は、各側で列名が重複する結合変換や参照変換から取得されます。 2 つの異なる入力列を同じ名前にマップすると、重複する出力列が発生する可能性があります。 チェックボックスを切り替えて、重複する列を削除するか、または渡すかを選択してください。
 
-![重複のスキップ](media/data-flow/select-skip-dup.png "重複のスキップ")
+:::image type="content" source="media/data-flow/select-skip-dup.png" alt-text="重複のスキップ":::
 
 ## <a name="ordering-of-columns"></a>列の順序
 
@@ -117,7 +121,7 @@ ms.locfileid: "93040245"
 
 次に示すのは、選択マッピングとそのデータ フロー スクリプトの例です。
 
-![選択スクリプトの例](media/data-flow/select-script-example.png "選択スクリプトの例")
+:::image type="content" source="media/data-flow/select-script-example.png" alt-text="選択スクリプトの例":::
 
 ```
 DerivedColumn1 select(mapColumn(

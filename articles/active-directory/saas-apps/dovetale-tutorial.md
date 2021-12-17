@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 7399026a022d46d90704e22c4fcb32e396faf5b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dc34d0a7b21bf890daffbcba1bbe129bb6247c61
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92454594"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753737"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dovetale"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Dovetale の統合
 
@@ -154,7 +154,7 @@ Dovetale に対する Azure AD SSO を構成してテストするには、次の
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Dovetale] タイルをクリックすると、SSO を設定した Dovetale に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Dovetale] タイルをクリックすると、SSO を設定した Dovetale に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

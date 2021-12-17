@@ -1,15 +1,15 @@
 ---
 title: 'クイックスタート: Go を使用して管理グループを作成する'
 description: このクイックスタートでは、Go を使用して、リソースをリソース階層に整理する管理グループを作成します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bf2d2c556cfd6ada6d31fc6ee797888ed0899573
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 4949ef10d7bb38ada2faefcee1d6b104c4a08ad7
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091448"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322964"
 ---
 # <a name="quickstart-create-a-management-group-with-go"></a>クイックスタート: Go を使用して管理グループを作成する
 
@@ -49,7 +49,7 @@ Go で管理グループを管理できるようにするには、パッケー�
 
    ```bash
    # Add the management group package for Go
-   go get -u github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups
+   go get -u github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2020-05-01/managementgroups
 
    # Add the Azure auth package for Go
    go get -u github.com/Azure/go-autorest/autorest/azure/auth
@@ -61,22 +61,22 @@ Go で管理グループを管理できるようにするには、パッケー�
 
 1. Go アプリケーションを作成し、次のソースを `mgCreate.go` として保存します。
 
-   ```Go
+   ```go
    package main
-   
+
    import (
     "context"
     "fmt"
     "os"
-   
-    mg "github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups"
+
+    mg "github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2020-05-01/managementgroups"
     "github.com/Azure/go-autorest/autorest/azure/auth"
    )
-   
+
    func main() {
     // Get variables from command line arguments
     var mgName = os.Args[1]
-   
+
     // Create and authorize a client
     mgClient := mg.NewClient()
     authorizer, err := auth.NewAuthorizerFromCLI()
@@ -85,12 +85,12 @@ Go で管理グループを管理できるようにするには、パッケー�
     } else {
         fmt.Printf(err.Error())
     }
-   
+
     // Create the request
     Request := mg.CreateManagementGroupRequest{
         Name: &mgName,
     }
-   
+
     // Run the query and get the results
     var results, queryErr = mgClient.CreateOrUpdate(context.Background(), mgName, Request, "no-cache")
     if queryErr == nil {
@@ -121,7 +121,7 @@ Go で管理グループを管理できるようにするには、パッケー�
 
 ```bash
 # Remove the installed packages from the Go environment
-go clean -i github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups
+go clean -i github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2020-05-01/managementgroups
 go clean -i github.com/Azure/go-autorest/autorest/azure/auth
 ```
 

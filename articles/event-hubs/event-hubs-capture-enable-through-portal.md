@@ -2,13 +2,13 @@
 title: Event Hubs - Azure portal を使用してストリーミング イベントをキャプチャする
 description: この記事では、Azure portal を使用し、Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする方法について説明します。
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: 8c89a6e56c2d0bc7b7ff09d5fd63737009239eb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/16/2021
+ms.openlocfilehash: e11eb8aedce9d0ae447e7b6908d17e4c70671f7d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653953"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273055"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする
 
@@ -34,7 +34,7 @@ Capture は、イベント ハブを作成するときに、**[イベント ハ�
 
 ## <a name="capture-data-to-azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2 へのデータのキャプチャ 
 
-1. Azure Storage アカウントを作成するには、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account)」の記事を参照してください。 **[Advanced]\(詳細\)** タブで **[階層型名前空間]** を **[Enabled]\(有効\)** に設定して、これを Azure Data Lake Storage Gen 2 アカウントにします。
+1. Azure Storage アカウントを作成するには、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account)」の記事を参照してください。 **[Advanced]\(詳細\)** タブで **[階層型名前空間]** を **[Enabled]\(有効\)** に設定して、これを Azure Data Lake Storage Gen 2 アカウントにします。 Azure Storage アカウントは、イベント ハブと同じサブスクリプション内にある必要があります。
 2. イベント ハブを作成するときは、次の手順に従います。 
 
     1. **[キャプチャ]** で、**[オン]** を選択します。 
@@ -81,18 +81,16 @@ Capture は、Event Hubs 名前空間内の既存のイベント ハブに対し
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-![Azure Blob Storage の構成][2]
+:::image type="content" source="./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png" alt-text="既存のイベント ハブに対して Azure ストレージへのキャプチャを構成します。":::
 
 ### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
-
-![Azure Data Lake Storage Gen 2 の構成](./media/event-hubs-capture-enable-through-portal/configure-data-lake-storage-gen2.png)
+Azure Data Lake Storage Gen 2 アカウントからコンテナーを選択することを除き、上の (Azure Blob Storage の場合) と同じです。 
 
 ### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1 
 
 ![Azure Data Lake Storage の構成][4]
 
 [1]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture1.png
-[2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
 

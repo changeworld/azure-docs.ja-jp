@@ -3,21 +3,21 @@ title: 'クイック スタート: デスクトップ アプリのサインイ�
 titleSuffix: Azure AD B2C
 description: このクイックスタートでは、Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル WPF デスクトップ アプリケーションを実行します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/12/2019
-ms.author: mimart
+ms.date: 08/16/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: ebed2f5e8664bd4336219f9387b8d27c8f3a1c59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 964de300a9a37a4a2d5248778fe0e81d3d05fd3c
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "78187306"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035583"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>クイック スタート: Azure Active Directory B2C を使用したデスクトップ アプリのサインインの設定
 
@@ -38,7 +38,8 @@ Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビ�
 ## <a name="run-the-application-in-visual-studio"></a>Visual Studio でアプリケーションを実行する
 
 1. サンプル アプリケーションのプロジェクト フォルダーにある **active-directory-b2c-wpf.sln** ソリューションを Visual Studio で開きます。
-2. **F5** キーを押してアプリケーションをデバッグします。
+2. [NuGet パッケージを復元します](/nuget/consume-packages/package-restore)。
+3. **F5** キーを押してアプリケーションをデバッグします。
 
 ## <a name="sign-in-using-your-account"></a>自分のアカウントを使用してサインインする
 
@@ -85,7 +86,7 @@ Azure AD B2C ユーザー アカウントを使用して、Azure AD B2C で保�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-他の Azure AD B2C クイックスタートやチュートリアルを試す場合は、Azure AD B2C テナントを使用できます。 不要になったら、[Azure AD B2C テナントを削除する](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant)ことができます。
+他の Azure AD B2C クイックスタートやチュートリアルを試す場合は、Azure AD B2C テナントを使用できます。 不要になったら、[Azure AD B2C テナントを削除する](faq.yml#how-do-i-delete-my-azure-ad-b2c-tenant-)ことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

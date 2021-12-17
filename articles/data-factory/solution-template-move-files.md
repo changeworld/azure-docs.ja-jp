@@ -5,15 +5,16 @@ author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: c88f2d25046ee017fccd2cee6e951be72d4dda91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6be1c8c0abf050a95d02c764580657b88975e0f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361946"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743431"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Azure Data Factory でファイルを移動する
 
@@ -47,25 +48,25 @@ ADF コピー アクティビティには、ストレージとストア間でバ
 
 1. **ファイルの移動** テンプレートに移動します。 ファイル移動元のソース ファイル ストアに対する既存の接続を選択するか、**新しい** 接続を作成します。 **DataSource_Folder** と **DataSource_File** では、ソース ファイル ストアの同じ接続が参照されていることに注意してください。
 
-    ![ソースへの新しい接続を作成する](media/solution-template-move-files/move-files1.png)
+    :::image type="content" source="media/solution-template-move-files/move-files1.png" alt-text="ソースへの新しい接続を作成する":::
 
 2. ファイル移動先の移動先ファイル ストアに対する既存の接続を選択するか、**新しい** 接続を作成します。
 
-    ![コピー先への新しい接続を作成する](media/solution-template-move-files/move-files2.png)
+    :::image type="content" source="media/solution-template-move-files/move-files2.png" alt-text="コピー先への新しい接続を作成する":::
 
 3. **[このテンプレートを使用]** タブを選択します。
     
 4. 次の例に示すように、パイプラインが表示されます。
 
-    ![パイプラインを表示する](media/solution-template-move-files/move-files4.png)
+    :::image type="content" source="media/solution-template-move-files/move-files4.png" alt-text="パイプラインを表示する":::
 
 5. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。   パラメーターは、ファイル移動元のフォルダー パスと、ファイル移動先のフォルダー パスです。 
 
-    ![パイプラインを実行する](media/solution-template-move-files/move-files5.png)
+    :::image type="content" source="media/solution-template-move-files/move-files5.png" alt-text="パイプラインを実行する":::
 
 6. 結果を確認します。
 
-    ![結果を確認する](media/solution-template-move-files/move-files6.png)
+    :::image type="content" source="media/solution-template-move-files/move-files6.png" alt-text="結果を確認する":::
 
 ## <a name="next-steps"></a>次のステップ
 

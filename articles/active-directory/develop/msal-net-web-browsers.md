@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 23ba50a6eca1e398b9d459153b84719909f2ecac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: b53166da12d2949cbebb590cd326b8bd86d5bec4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583741"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052705"
 ---
 # <a name="using-web-browsers-msalnet"></a>Web ブラウザーを使用する (MSAL.NET)
 
@@ -63,11 +63,11 @@ MSAL.NET では、Xamarin.iOS、Xamarin.Android、および .NET Core に対す�
 
 システム ブラウザーを使うと、ブローカー (会社ポータル/Authenticator) の必要なしに、SSO の状態を他のアプリケーションや Web アプリケーションと共有できるという大きな利点があります。 Xamarin.iOS および Xamarin.Android プラットフォーム用の MSAL.NET では、既定でシステム ブラウザーが使用されていました。その理由は、これらのプラットフォーム上で、システム Web ブラウザーは画面全体を占め、ユーザー エクスペリエンスがよくなることにありました。 システム Web ビューはダイアログと区別できません。 ただし、iOS では、ユーザーはブラウザーがアプリケーションに対してコールバックするのに同意することが必要な場合があり、面倒なことがあります。
 
-## <a name="system-browser-experience-on-net-core"></a>.NET Core でのシステム ブラウザー エクスペリエンス
+## <a name="system-browser-experience-on-net"></a>.NET でのシステム ブラウザー エクスペリエンス 
 
-.NET Core の場合、MSAL.NET ではシステム ブラウザーが個別のプロセスとして起動されます。 MSAL.NET ではこのブラウザーを制御できません。しかし、ユーザーが認証を完了すると、MSAL.NET が URI をインターセプトできるように Web ページはリダイレクトされます。
+.NET Core の場合、MSAL.NET ではシステム ブラウザーが個別のプロセスとして起動されます。 MSAL.NET はこのブラウザーを制御できませんが、ユーザーが認証を完了すると、MSAL.NET が URI をインターセプトできるように web ページがリダイレクトされます。
 
-次のように指定することで、このブラウザーを使用するように .NET Classic 向けに作成されたアプリを構成することもできます
+次のように指定することで、このブラウザーを使用するように .NET Classic または .NET 5 向けに作成されたアプリを構成することもできます。
 
 ```csharp
 await pca.AcquireTokenInteractive(s_scopes)
@@ -82,8 +82,8 @@ MSAL.NET では、`http://localhost:port` をリッスンすることで、ユ�
 
 システム ブラウザーを有効にするには:
 
-1. アプリの登録時に、`http://localhost` をリダイレクト URI として構成します (B2C では現在サポートされていません)
-2. PublicClientApplication を構築するとき、次のリダイレクト URI を指定します。
+1. アプリの登録時に、を `http://localhost` リダイレクト URI として構成します (B2C では現在サポートされていません)
+2. PublicClientApplication を構築するときは、次のリダイレクト URI を指定します。
 
 ```csharp
 IPublicClientApplication pca = PublicClientApplicationBuilder
@@ -105,7 +105,7 @@ Linux の場合、MSAL.NET では xdg-open ツールを使用して既定の OS 
 > [!NOTE]
 > カスタマイズは MSAL.NET 4.1.0 以降で使用できます。
 
-MSAL.NET では、トークンを受信したとき、またはエラーが発生したとき、HTTP メッセージを使用して応答できます。 HTML メッセージを表示することも、任意の URL にリダイレクトすることもできます。
+MSAL.NET では、トークンを受信したとき、またはエラーが発生したとき、HTTP メッセージを使用して応答できます。 HTML メッセージを表示するか、任意の URL にリダイレクトすることができます。
 
 ```csharp
 var options = new SystemWebViewOptions() 
@@ -227,4 +227,4 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 #### <a name="net-core-doesnt-support-interactive-authentication-with-an-embedded-browser"></a>.NET Core では、埋め込みブラウザーを使用した対話型認証はサポートされていません
 
 .NET Core において、対話形式でトークンを取得できるのはシステム Web ブラウザーを介した場合のみであり、埋め込み Web ビューでそれを行うことはできません。 実際には、.NET Core では UI はまだ提供されていません。
-システム Web ブラウザーを使用してブラウジング エクスペリエンスをカスタマイズする場合は、[IWithCustomUI](scenario-desktop-acquire-token.md#withcustomwebui) インターフェイスを実装し、さらに独自のブラウザーを用意します。
+システム Web ブラウザーを使用してブラウジング エクスペリエンスをカスタマイズする場合は、[IWithCustomUI](scenario-desktop-acquire-token-interactive.md#withcustomwebui) インターフェイスを実装し、さらに独自のブラウザーを用意します。

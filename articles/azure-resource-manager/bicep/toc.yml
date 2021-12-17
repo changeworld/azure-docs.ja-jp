@@ -1,0 +1,201 @@
+- name: Bicep のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Bicep とは
+      href: overview.md
+      displayName: 'benefits,faq,playground'
+    - name: JSON と Bicep を比較する
+      href: compare-template-syntax.md
+- name: インストール
+  items:
+    - name: Bicep ツールのインストール
+      href: install.md
+      displayName: nightly
+    - name: インストールのトラブルシューティング
+      href: installation-troubleshoot.md
+- name: クイックスタート
+  items:
+    - name: Bicep テンプレートを作成する - VS Code
+      href: quickstart-create-bicep-use-visual-studio-code.md
+    - name: CI/CD
+      items:
+        - name: Bicep とパイプライン
+          href: add-template-to-azure-pipelines.md
+        - name: Bicep と GitHub Actions
+          href: deploy-github-actions.md
+- name: チュートリアル
+  items:
+    - name: Microsoft Learn - Bicep
+      href: learn-bicep.md
+- name: 方法
+  expanded: true
+  items:
+    - name: Author
+      expanded: true
+      items:
+        - name: ファイル構造と構文
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: file.md
+        - name: リソース
+          items:
+            - name: リソースの宣言
+              href: resource-declaration.md
+              displayName: existing
+            - name: 条件付きデプロイ
+              href: conditional-resource-deployment.md
+              displayName: runtime
+            - name: 子リソース
+              href: child-resource-name-type.md
+              displayName: 'parent,parent resource,sub,nested'
+            - name: 拡張リソース
+              href: scope-extension-resources.md
+        - name: パラメーター
+          href: parameters.md
+          displayName: 'decorators,secure,objects,constraints'
+        - name: 変数
+          href: variables.md
+          displayName: configuration
+        - name: 出力
+          href: outputs.md
+          displayName: 'dynamic number of outputs,modules'
+        - name: モジュール
+          items:
+            - name: モジュールの定義
+              href: modules.md
+              displayName: 'scopes,consume'
+            - name: プライベート レジストリを作成する
+              href: private-module-registry.md
+        - name: ループ
+          href: loops.md
+        - name: スコープ
+          items:
+            - name: Resource group
+              href: deploy-to-resource-group.md
+              displayName: 'deployment commands,multiple resource groups'
+            - name: サブスクリプション
+              href: deploy-to-subscription.md
+              displayName: 'Azure Policy,policy,access control'
+            - name: 管理グループ
+              href: deploy-to-management-group.md
+              displayName: 'policy,Azure Policy'
+            - name: Tenant
+              href: deploy-to-tenant.md
+              displayName: assign role
+        - name: リンター
+          items:
+            - name: リンター
+              href: linter.md
+            - name: リンター ルール
+              items:
+                - name: 管理者ユーザー名がリテラルでない
+                  href: linter-rule-admin-username-should-not-be-literal.md
+                - name: ハードコーディングされた環境 URL がない
+                  href: linter-rule-no-hardcoded-environment-urls.md
+                - name: 未使用のパラメーターがない
+                  href: linter-rule-no-unused-parameters.md
+                - name: 未使用の変数がない
+                  href: linter-rule-no-unused-variables.md
+                - name: 補間を優先する
+                  href: linter-rule-prefer-interpolation.md
+                - name: パラメーターの既定値をセキュリティで保護する
+                  href: linter-rule-secure-parameter-default.md
+                - name: 補間を簡略化する
+                  href: linter-rule-simplify-interpolation.md
+        - name: ベスト プラクティス
+          href: best-practices.md
+        - name: パターン
+          items:
+            - name: 構成セット
+              href: patterns-configuration-set.md
+            - name: 共有変数ファイル
+              href: patterns-shared-variable-file.md
+    - name: 配置
+      items:
+        - name: 配置前のチェック
+          items:
+            - name: what-if のデプロイ
+              href: deploy-what-if.md
+              displayName: 'whatif, what if'
+        - name: デプロイ コマンド
+          items:
+            - name: デプロイ - CLI
+              href: deploy-cli.md
+            - name: デプロイ - PowerShell
+              href: deploy-powershell.md
+            - name: デプロイ - Cloud Shell
+              href: deploy-cloud-shell.md
+        - name: パラメーター
+          items:
+            - name: パラメーター ファイルを作成する
+              href: parameter-files.md
+            - name: 機密性の高い値を渡す
+              displayName: key vault
+              href: key-vault-parameter.md
+    - name: 設定の構成
+      items:
+        - name: Bicep 構成ファイル
+          href: bicep-config.md
+        - name: リンターの設定
+          href: bicep-config-linter.md
+        - name: モジュールの設定
+          href: bicep-config-modules.md
+    - name: Bicep へ移行する
+      items:
+        - name: 推奨されるワークフロー
+          href: migrate.md
+        - name: 逆コンパイル
+          href: decompile.md
+          displayName: 'conversion issues,export,convert,playground'
+- name: 関連項目
+  items:
+    - name: リソースの参照
+      href: /azure/templates/
+    - name: データ型
+      href: data-types.md
+      displayName: 'supported types,arrays,booleans,integers,objects,strings,secure'
+    - name: 関数
+      items:
+        - name: すべての関数
+          href: bicep-functions.md
+        - name: すべての関数
+          href: bicep-functions-any.md
+        - name: 配列関数
+          href: bicep-functions-array.md
+        - name: データ関数
+          href: bicep-functions-date.md
+        - name: デプロイ関数
+          href: bicep-functions-deployment.md
+        - name: ファイル関数
+          href: bicep-functions-files.md
+        - name: 論理関数
+          href: bicep-functions-logical.md
+        - name: 数値関数
+          href: bicep-functions-numeric.md
+        - name: オブジェクト関数
+          href: bicep-functions-object.md
+        - name: リソース関数
+          href: bicep-functions-resource.md
+        - name: スコープ関数
+          href: bicep-functions-scope.md
+        - name: 文字列関数
+          href: bicep-functions-string.md
+    - name: オペレーター
+      items:
+        - name: すべての演算子
+          href: operators.md
+        - name: アクセサー演算子
+          href: operators-access.md
+        - name: 比較演算子
+          href: operators-comparison.md
+        - name: 論理演算子
+          href: operators-logical.md
+        - name: 数値演算子
+          href: operators-numeric.md
+    - name: Bicep CLI
+      href: bicep-cli.md
+      displayName: 'build,decompile,install,list-versions,list versions,upgrade,version'
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources/
+    - name: Azure CLI
+      href: /cli/azure/resource

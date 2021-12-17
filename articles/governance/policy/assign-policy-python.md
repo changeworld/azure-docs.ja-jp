@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:Python を使用した新しいポリシー割り当て
 description: このクイックスタートでは、Python を使用して、準拠していないリソースを特定するための Azure Policy 割り当てを作成します。
-ms.date: 03/02/2021
+ms.date: 10/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 2c9a0d6bb00d82748505304264aeaefa409c4b06
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: fd9328fdc3f925756652853a81e8b9c77a0266e7
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379402"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350789"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>クイック スタート:Python を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -51,6 +51,9 @@ Python で Azure Policy を使用できるようにするには、ライブラ�
 
    # Add the CLI Core library for Python for authentication (development only!)
    pip install azure-cli-core
+
+   # Add the Azure identity library for Python
+   pip install azure.identity
    ```
 
    > [!NOTE]
@@ -60,7 +63,7 @@ Python で Azure Policy を使用できるようにするには、ライブラ�
 
    ```bash
    # Check each installed library
-   pip show azure-mgmt-policyinsights azure-mgmt-resource azure-cli-core
+   pip show azure-mgmt-policyinsights azure-mgmt-resource azure-cli-core azure.identity
    ```
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
@@ -71,16 +74,21 @@ Python で Azure Policy を使用できるようにするには、ライブラ�
 
 ```python
 # Import specific methods and models from other libraries
-from azure.common.credentials import get_azure_cli_credentials
-from azure.common.client_factory import get_client_from_cli_profile
 from azure.mgmt.resource.policy import PolicyClient
-from azure.mgmt.resource.policy.models import PolicyAssignment
+from azure.mgmt.resource.policy.models import PolicyAssignment, Identity, UserAssignedIdentitiesValue, PolicyAssignmentUpdate
+from azure.identity import AzureCliCredential
+
+# Set subscription
+subId = "{subId}"
+assignmentLocation = "westus2"
 
 # Get your credentials from Azure CLI (development only!) and get your subscription list
-policyClient = get_client_from_cli_profile(PolicyClient)
+credential = AzureCliCredential()
+policyClient = PolicyClient(credential, subId, base_url=none)
 
 # Create details for the assignment
-policyAssignmentDetails = PolicyAssignment(display_name="Audit VMs without managed disks Assignment", policy_definition_id="/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d", scope="{scope}", description="Shows all virtual machines not using managed disks")
+policyAssignmentIdentity = Identity(type="SystemAssigned")
+policyAssignmentDetails = PolicyAssignment(display_name="Audit VMs without managed disks Assignment", policy_definition_id="/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d", description="Shows all virtual machines not using managed disks", identity=policyAssignmentIdentity, location=assignmentLocation)
 
 # Create new policy assignment
 policyAssignment = policyClient.policy_assignments.create("{scope}", "audit-vm-manageddisks", policyAssignmentDetails)
@@ -92,6 +100,7 @@ print(policyAssignment)
 上記のコマンドでは次の情報が使用されています。
 
 割り当ての詳細:
+- **subId** - サブスクリプション。 認証に必要です。 `{subId}` をサブスクリプションで置き換えます。
 - **display_name** - ポリシー割り当ての表示名。 このケースでは、"_Audit VMs without managed disks Assignment_" を使用します。
 - **policy_definition_id** - 割り当てを作成する際に基礎として使用するポリシー定義パス。 ここでは、"_Managed Disks を使用していない VM の監査_" というポリシー定義の ID です。 この例では、ポリシー定義は組み込みであり、パスには管理グループまたはサブスクリプション情報は含まれていません。
 - **scope** - スコープによって、ポリシー割り当てを適用するリソースまたはリソース グループが決まります。 スコープには、管理グループから個々のリソースまで指定できます。 `{scope}` は、次のパターンのいずれかに必ず置き換えてください。
@@ -115,24 +124,28 @@ print(policyAssignment)
 
 ```python
 # Import specific methods and models from other libraries
-from azure.common.client_factory import get_client_from_cli_profile
 from azure.mgmt.policyinsights._policy_insights_client import PolicyInsightsClient
 from azure.mgmt.policyinsights.models import QueryOptions
+from azure.identity import AzureCliCredential
+
+# Set subscription
+subId = "{subId}"
 
 # Get your credentials from Azure CLI (development only!) and get your subscription list
-policyInsightsClient = get_client_from_cli_profile(PolicyInsightsClient)
+credential = AzureCliCredential()
+policyClient = PolicyInsightsClient(credential, subId, base_url=none)
 
 # Set the query options
 queryOptions = QueryOptions(filter="IsCompliant eq false and PolicyAssignmentId eq 'audit-vm-manageddisks'",apply="groupby((ResourceId))")
 
 # Fetch 'latest' results for the subscription
-results = policyInsightsClient.policy_states.list_query_results_for_subscription(policy_states_resource="latest", subscription_id="{subscriptionId}", query_options=queryOptions)
+results = policyInsightsClient.policy_states.list_query_results_for_subscription(policy_states_resource="latest", subscription_id=subId, query_options=queryOptions)
 
 # Show results
 print(results)
 ```
 
-`{subscriptionId}` は、このポリシー割り当ての準拠の結果を表示するサブスクリプションに置き換えます。 他のスコープの一覧とデータを集計する方法については、[ポリシーの状態メソッド](/python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights.operations.policystatesoperations#methods)に関する記事をご覧ください。
+`{subId}` は、このポリシー割り当ての準拠の結果を表示するサブスクリプションに置き換えます。 他のスコープの一覧とデータを集計する方法については、[ポリシーの状態メソッド](/python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights.operations.policystatesoperations#methods)に関する記事をご覧ください。
 
 次のような結果が返されます。
 
@@ -155,11 +168,15 @@ print(results)
 
 ```python
 # Import specific methods and models from other libraries
-from azure.common.client_factory import get_client_from_cli_profile
 from azure.mgmt.resource.policy import PolicyClient
+from azure.identity import AzureCliCredential
+
+# Set subscription
+subId = "{subId}"
 
 # Get your credentials from Azure CLI (development only!) and get your subscription list
-policyClient = get_client_from_cli_profile(PolicyClient)
+credential = AzureCliCredential()
+policyClient = PolicyClient(credential, subId, base_url=none)
 
 # Delete the policy assignment
 policyAssignment = policyClient.policy_assignments.delete("{scope}", "audit-vm-manageddisks")
@@ -168,7 +185,7 @@ policyAssignment = policyClient.policy_assignments.delete("{scope}", "audit-vm-m
 print(policyAssignment)
 ```
 
-`{scope}` は、ポリシー割り当てを作成する際に使用したものと同じスコープに置き換えます。
+`{subId}` はサブスクリプションに、`{scope}` はポリシー割り当てを作成する際に使用したものと同じスコープに置き換えます。
 
 ## <a name="next-steps"></a>次のステップ
 

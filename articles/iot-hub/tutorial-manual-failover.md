@@ -1,22 +1,22 @@
 ---
 title: チュートリアル - Azure IoT ハブの手動フェールオーバー | Microsoft Docs
 description: チュートリアル - 別のリージョンへの IoT ハブの手動フェールオーバーを実行し、それが動作していることを確認してから、元のリージョンに戻して再確認する方法について説明します。
-author: robinsh
+author: eross-msft
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 07/24/2019
-ms.author: robinsh
+ms.date: 08/10/2021
+ms.author: lizross
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 3b6bc972f5c26c78ffff81f5bab8c2812cf2cb11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2687316551f7f1a7f11cd035130823c19d10b01a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622915"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550441"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>チュートリアル:IoT ハブの手動フェールオーバーを実行する
 
@@ -41,39 +41,18 @@ IoT Hub での手動フェールオーバーと Microsoft によって開始さ�
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-1. [Azure Portal](https://portal.azure.com) にログインします。 
-
-2. **[+ Create a resource]\(+ リソースの作成\)** をクリックし、 **[モノのインターネット]** 、 **[IoT Hub]** の順に選択します。
-
-   ![IoT Hub の作成を示すスクリーンショット](./media/tutorial-manual-failover/create-hub-01.png)
-
-3. **[基本]** タブを選択します。次のフィールドに入力します。
-
-    **[サブスクリプション]** : 使用する Azure サブスクリプションを選択します。
-
-    **[リソース グループ]** : で、 **[新規作成]** をクリックし、リソース グループ名として **[ManlFailRG]** を指定します。
-
-    **[リージョン]** : 近くのリージョンを選択します。 このチュートリアルでは `West US 2` を使用します。 フェールオーバーは Azure の geo ペア リージョン間でのみ実行できます。 米国西部 2 の geo ペア リージョンは WestCentralUS です。
-    
-   **[IoT Hub 名]** : Iot ハブの名前を指定します。 このハブ名はグローバルに一意である必要があります。 
-
-   ![IoT ハブを作成するための [基本] ウィンドウを示すスクリーンショット](./media/tutorial-manual-failover/create-hub-02-basics.png)
-
-   **[Review + create]\(レビュー + 作成\)** をクリックします。 (サイズとスケールには既定値を使用します。) 
-
-4. 情報を確認し、 **[作成]** をクリックして IoT ハブを作成します。 
-
-   ![IoT ハブを作成するための最後のステップを示すスクリーンショット](./media/tutorial-manual-failover/create-hub-03-create.png)
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="perform-a-manual-failover"></a>手動フェールオーバーの実行
 
-1 つの IoT ハブに対して、1 日あたり 2 回のフェールオーバーと 2 回のフェールバックまでに制限されていることに注意してください。
+> [!NOTE]
+> 1 つの IoT ハブに対して、1 日あたり 2 回のフェールオーバーと 2 回のフェールバックまでに制限されています。
 
-1. **[リソース グループ]** をクリックして、リソース グループ **[ManlFailRG]** を選択します。 リソースの一覧で、対象のハブをクリックします。 
+1. **[リソース グループ]** をクリックしてから、リソース グループを選びます。 リソースの一覧で、対象のハブをクリックします。
 
-1. IoT Hub ウィンドウの **[設定]** の下で、 **[フェールオーバー]** をクリックします。
+1. IoT Hub ウィンドウの **[ハブ設定情報]** の下で、 **[フェールオーバー]** をクリックします。
 
-   ![IoT Hub のプロパティ ウィンドウを示すスクリーンショット](./media/tutorial-manual-failover/trigger-failover-01.png)
+:::image type="content" source="./media/tutorial-manual-failover/trigger-failover-01.png" alt-text="IoT Hub のプロパティ ウィンドウを示すスクリーンショット":::
 
 1. [手動フェールオーバー] ウィンドウに、 **[現在の場所]** と **[Failover location]\(フェールオーバーの場所\)** が表示されます。 現在の場所は常に、ハブが現在アクティブになっている場所を示します。 フェールオーバーの場所は、現在の場所とペアになっている標準の [Azure geo ペア リージョン](../best-practices-availability-paired-regions.md)です。 ロケーションの値は変更できません。 このチュートリアルでは、現在の場所は `West US 2` で、フェールオーバーの場所は `West Central US` です。
 
@@ -116,7 +95,7 @@ IoT Hub での手動フェールオーバーと Microsoft によって開始さ�
 
 3. [手動フェールオーバー] ウィンドウの上部で、 **[フェールオーバーの開始]** をクリックします。 
 
-4. 確認ウィンドウで IoT ハブの名前を入力して、フェールバックを実行する IoT ハブであることを確認します。 その後、[OK] をクリックしてフェールバックを開始します。 
+4. 確認ウィンドウで IoT ハブの名前を入力して、フェールバックを実行する IoT ハブであることを確認します。 その後、 **[OK]** をクリックしてフェールバックを開始します。 
 
    ![手動フェールバックの要求のスクリーン ショット](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
@@ -143,7 +122,7 @@ IoT Hub での手動フェールオーバーと Microsoft によって開始さ�
 > * フェールバックを実行して、プライマリ ロケーションに IoT ハブの運用を戻す。 
 > * ハブが正しい場所で正しく実行されていることを確認する。
 
-次のチュートリアルに進み、IoT デバイスの状態を管理する方法を学習してください。 
+次のチュートリアルに進み、バックエンド サービスからデバイスを構成する方法を学習してください。 
 
 > [!div class="nextstepaction"]
-> [IoT デバイスの状態を管理する](tutorial-device-twins.md)
+> [デバイスの構成](tutorial-device-twins.md)

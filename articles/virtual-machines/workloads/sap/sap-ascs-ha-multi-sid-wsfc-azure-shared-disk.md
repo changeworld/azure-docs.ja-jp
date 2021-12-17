@@ -16,34 +16,45 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cef0630cfc7ec7d080073085e577153ae7a47ecf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d30c282bd45dd26184c2c14bcb78a499d895bbd
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504458"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130068952"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>Windows Server フェールオーバー クラスタリングと Azure 共有ディスクを使用した SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
 > ![Windows OS][Logo_Windows] Windows
->
 
 この記事では、追加の SAP ASCS/SCS クラスター化インスタンスを、Azure 共有ディスクを持つ既存の Windows Server フェールオーバー クラスタリング (WSFC) クラスターにインストールすることによって、単一の ASCS/SCS インストールから SAP マルチ SID 構成に移行する方法について説明します。 このプロセスが完了したら、SAP マルチ SID クラスターの構成は完了です。
 
 ## <a name="prerequisites-and-limitations"></a>前提条件と制限事項
 
-現時点では、SAP ASCS/SCS インスタンスの Azure 共有ディスクとして Azure Premium SSD ディスクを使用できます。 次の制限事項が適用されます。
+現時点では、SAP ASCS/SCS インスタンスの Azure 共有ディスクとして Azure Premium SSD ディスクを使用できます。 次の制限事項が現在適用されます。
 
--  [Azure Ultra Disk](../../disks-types.md#ultra-disk) は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。 現時点では、Azure Ultra Disk を可用性セット内で使用して、Azure VM を配置することはできません
--  Premium SSD ディスクを使用した [Azure 共有ディスク](../../disks-shared.md)は、可用性セット内の VM でのみサポートされています。 Availability Zones のデプロイではサポートされていません。 
+-  [Azure Ultra Disk](../../disks-types.md#ultra-disks) と [Standard SSD ディスク](../../disks-types.md#standard-ssds)は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。
+-  [Premium SSD ディスク](../../disks-types.md#premium-ssds)を使用した [Azure 共有ディスク](../../disks-shared.md)は、可用性セットおよび可用性ゾーン内の SAP のデプロイに対してサポートされています。
+-  Premium SSD ディスクを使用する Azure 共有ディスクには、2 つのストレージ SKU が付属しています。
+   - Premium 共有ディスク (skuName - Premium_LRS) 用のローカル冗長ストレージ (LRS) は、可用性セット内のデプロイでサポートされています。
+   - Premium 共有ディスク (skuName - Premium_ZRS) 用のゾーン冗長ストレージ (ZRS) は、可用性ゾーン内のデプロイでサポートされています。
 -  Azure 共有ディスクの値 [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) によって、その共有ディスクを使用できるクラスター ノードの数が決まります。 通常、SAP ASCS/SCS インスタンスには、Windows フェールオーバー クラスターに 2 つのノードを構成するため、`maxShares` の値は 2 に設定する必要があります。
--  すべての SAP ASCS/SCS クラスター VM が、同じ [Azure 近接配置グループ](../../windows/proximity-placement-groups.md)にデプロイされる必要があります。   
-   Windows クラスター VM を、PPG を使用せずに Azure 共有ディスクがある可用性セット内にデプロイすることはできますが、PPG を使用すると Azure 共有ディスクとクラスター VM の物理的近距離を確保できるため、VM とストレージ層の間の待機時間が短くなります。    
+-  SAP システムに [Azure 近接配置グループ](../../windows/proximity-placement-groups.md)を使用する場合は、ディスクを共有するすべての仮想マシンが同じ PPG に含まれている必要があります。
 
-Azure 共有ディスクの制限事項の詳細については、Azure 共有ディスクのドキュメントの「[制限事項](../../disks-shared.md#limitations)」セクションを参照してください。  
+Azure 共有ディスクの制限事項の詳細については、Azure 共有ディスクのドキュメントの「[制限事項](../../disks-shared.md#limitations)」セクションを注意して参照してください。
 
-> [!IMPORTANT]
-> Azure 共有ディスクを使用して SAP ASCS/SCS Windows フェールオーバー クラスターをデプロイする場合は、デプロイが 1 つの記憶域クラスター内の単一の共有ディスクを使用して動作することに注意してください。 SAP ASCS/SCS インスタンスは、Azure 共有ディスクがデプロイされている記憶域クラスターで問題が発生した場合に影響を受けます。  
+#### <a name="important-consideration-for-premium-shared-disk"></a>Premium 共有ディスクに関する重要な考慮事項
+
+Azure Premium 共有ディスクに関して考慮する必要がある重要な点を次に示します。
+
+- Premium 共有ディスクのための LRS
+  - Premium 共有ディスク用の LRS を使用した SAP のデプロイは、1 つのストレージ クラスター上の 1 つの Azure 共有ディスクで動作します。 SAP ASCS/SCS インスタンスは、Azure 共有ディスクがデプロイされている記憶域クラスターで問題が発生した場合に影響を受けます。
+
+- Premium 共有ディスクのための ZRS
+  - ZRS の書き込み待機時間は、ゾーンをまたぐデータのコピーにより、LRS より長くなります。
+  - 異なるリージョンの可用性ゾーン間の距離はさまざまなので、可用性ゾーン間の ZRS ディスクの待機時間もさまざまです。 [ディスクのベンチマーク](../../disks-benchmarks.md)を行って、お使いのリージョンでの ZRS ディスクの待機時間を確認してください。
+  - Premium 共有ディスクの ZRS によって、リージョン内の 3 つの可用性ゾーンの間でデータが同期的にレプリケートされます。 ストレージ クラスターのいずれかで問題が発生した場合、ストレージのフェールオーバーはアプリケーション レイヤーに対して透過的に行われるため、SAP ASCS/SCS は動作し続けます。
+  - 詳細については、マネージド ディスク用の ZRS の「[制限事項](../../disks-redundancy.md#limitations)」セクションを参照してください。
 
 > [!IMPORTANT]
 > セットアップは次の条件を満たしている必要があります。
@@ -99,15 +110,33 @@ Windows Server 2016 と Windows Server 2019 の両方がサポートされてい
 
 ### <a name="host-names-and-ip-addresses"></a>ホスト名と IP アドレス
 
-| ホスト名の役割 | ホスト名 | 静的 IP アドレス | 可用性セット | 近接配置グループ |
-| --- | --- | --- |---| ---|
-| 最初のクラスター ノードの ASCS/SCS クラスター |pr1-ascs-10 |10.0.0.4 |pr1-ascs-avset |PR1PPG |
-| 2 番目のクラスター ノードの ASCS/SCS クラスター |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
-| クラスター ネットワーク名 | pr1clust |10.0.0.42 (Win 2016 クラスターの場合 **のみ**) | 該当なし | 該当なし |
-| **SID1** ASCS クラスターのネットワーク名 | pr1-ascscl |10.0.0.43 | 該当なし | 該当なし |
-| **SID1** ERS クラスターのネットワーク名 (ERS2 の場合 **のみ**) | pr1-erscl |10.0.0.44 | 該当なし | 該当なし |
-| **SID2** ASCS クラスターのネットワーク名 | pr2-ascscl |10.0.0.45 | 該当なし | 該当なし |
-| **SID2** ERS クラスターのネットワーク名 (ERS2 の場合 **のみ**) | pr1-erscl |10.0.0.46 | 該当なし | 該当なし |
+デプロイの種類に基づいて、シナリオのホスト名と IP アドレスは次のようになります。
+
+**Azure 可用性セットでの SAP のデプロイ**
+
+| ホスト名の役割                                        | ホスト名   | 静的 IP アドレス                        | 可用性セット | ディスクの SkuName |
+| ----------------------------------------------------- | ----------- | ---------------------------------------- | ---------------- | ------------ |
+| 最初のクラスター ノードの ASCS/SCS クラスター                     | pr1-ascs-10 | 10.0.0.4                                 | pr1-ascs-avset   | Premium_LRS  |
+| 2 番目のクラスター ノードの ASCS/SCS クラスター                     | pr1-ascs-11 | 10.0.0.5                                 | pr1-ascs-avset   |              |
+| クラスター ネットワーク名                                  | pr1clust    | 10.0.0.42 (Win 2016 クラスターの場合 **のみ**) | 該当なし              |              |
+| **SID1** ASCS クラスターのネットワーク名                    | pr1-ascscl  | 10.0.0.43                                | 該当なし              |              |
+| **SID1** ERS クラスターのネットワーク名 (ERS2 の場合 **のみ**) | pr1-erscl   | 10.0.0.44                                | 該当なし              |              |
+| **SID2** ASCS クラスターのネットワーク名                    | pr2-ascscl  | 10.0.0.45                                | 該当なし              |              |
+| **SID2** ERS クラスターのネットワーク名 (ERS2 の場合 **のみ**) | pr1-erscl   | 10.0.0.46                                | 該当なし              |              |
+
+**Azure 可用性ゾーンでの SAP のデプロイ**
+
+| ホスト名の役割                                        | ホスト名   | 静的 IP アドレス                        | 可用性ゾーン | ディスクの SkuName |
+| ----------------------------------------------------- | ----------- | ---------------------------------------- | ----------------- | ------------ |
+| 最初のクラスター ノードの ASCS/SCS クラスター                     | pr1-ascs-10 | 10.0.0.4                                 | AZ01              | Premium_ZRS  |
+| 2 番目のクラスター ノードの ASCS/SCS クラスター                     | pr1-ascs-11 | 10.0.0.5                                 | AZ02              |              |
+| クラスター ネットワーク名                                  | pr1clust    | 10.0.0.42 (Win 2016 クラスターの場合 **のみ**) | 該当なし               |              |
+| **SID1** ASCS クラスターのネットワーク名                    | pr1-ascscl  | 10.0.0.43                                | 該当なし               |              |
+| **SID2** ERS クラスターのネットワーク名 (ERS2 の場合 **のみ**) | pr1-erscl   | 10.0.0.44                                | 該当なし               |              |
+| **SID2** ASCS クラスターのネットワーク名                    | pr2-ascscl  | 10.0.0.45                                | 該当なし               |              |
+| **SID2** ERS クラスターのネットワーク名 (ERS2 の場合 **のみ**) | pr1-erscl   | 10.0.0.46                                | 該当なし               |              |
+
+ドキュメントに記載されている手順は、どちらのデプロイの種類でも同じです。 ただし、クラスターが可用性セットで実行されている場合は Azure Premium 共有ディスク用に LRS をデプロイする必要があり (Premium_LRS)、クラスターが可用性ゾーンで実行されている場合は Azure Premium 共有ディスク用に ZRS をデプロイする必要があります (Premium_ZRS)。 
 
 ### <a name="create-azure-internal-load-balancer"></a>Azure 内部ロード バランサーを作成する
 
@@ -124,7 +153,7 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
     - ポート 620 **nr** **[62002]** プロトコル (TCP)、間隔 (5)、異常しきい値 (2) の既定のオプションのままにします
 - 負荷分散規則
     - Standard Load Balancer を使用する場合は、 [HA ポート] を選択します
-    - Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
+    - Basic Load Balancer を使用する場合は、次のポート用の負荷分散規則を作成します
         - 32 **nr** TCP **[3202]**
         - 36 **nr** TCP **[3602]**
         - 39 **nr** TCP **[3902]**
@@ -150,7 +179,7 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
 
 - 新しい負荷分散規則
     - Standard Load Balancer を使用する場合は、 [HA ポート] を選択します
-    - Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
+    - Basic Load Balancer を使用する場合は、次のポート用の負荷分散規則を作成します
         - 32 **nr** TCP **[3212]**
         - 33 **nr** TCP **[3312]**
         - 5 **nr** 13 TCP **[51212]**
@@ -166,33 +195,42 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
 クラスター ノードのいずれかでこのコマンドを実行します。 リソース グループ、Azure リージョン、SAPSID などの値を調整する必要があります。  
 
 ```powershell
-    $ResourceGroupName = "MyResourceGroup"
-    $location = "MyRegion"
-    $SAPSID = "PR2"
-    $DiskSizeInGB = 512
-    $DiskName = "$($SAPSID)ASCSSharedDisk"
-    $NumberOfWindowsClusterNodes = 2
-    $diskConfig = New-AzDiskConfig -Location $location -SkuName Premium_LRS  -CreateOption Empty  -DiskSizeGB $DiskSizeInGB -MaxSharesCount $NumberOfWindowsClusterNodes
+$ResourceGroupName = "MyResourceGroup"
+$location = "MyRegion"
+$SAPSID = "PR2"
+$DiskSizeInGB = 512
+$DiskName = "$($SAPSID)ASCSSharedDisk"
+$NumberOfWindowsClusterNodes = 2
+
+# For SAP deployment in availability set, use below storage SkuName
+$SkuName = "Premium_LRS"
+# For SAP deployment in availability zone, use below storage SkuName
+$SkuName = "Premium_ZRS"
+
+$diskConfig = New-AzDiskConfig -Location $location -SkuName $SkuName  -CreateOption Empty  -DiskSizeGB $DiskSizeInGB -MaxSharesCount $NumberOfWindowsClusterNodes
     
-    $dataDisk = New-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName -Disk $diskConfig
-    ##################################
-    ## Attach the disk to cluster VMs
-    ##################################
-    # ASCS Cluster VM1
-    $ASCSClusterVM1 = "pr1-ascs-10"
-    # ASCS Cluster VM2
-    $ASCSClusterVM2 = "pr1-ascs-11"
-    # next free LUN number
-    $LUNNumber = 1
-    # Add the Azure Shared Disk to Cluster Node 1
-    $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM1 
-    $vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun $LUNNumber
-    Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
-    # Add the Azure Shared Disk to Cluster Node 2
-    $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM2
-    $vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun $LUNNumber
-    Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
-   ```
+$dataDisk = New-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName -Disk $diskConfig
+##################################
+## Attach the disk to cluster VMs
+##################################
+# ASCS Cluster VM1
+$ASCSClusterVM1 = "pr1-ascs-10"
+# ASCS Cluster VM2
+$ASCSClusterVM2 = "pr1-ascs-11"
+# next free LUN number
+$LUNNumber = 1
+
+# Add the Azure Shared Disk to Cluster Node 1
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM1 
+$vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun $LUNNumber
+Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
+
+# Add the Azure Shared Disk to Cluster Node 2
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM2
+$vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun $LUNNumber
+Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
+```
+
 ### <a name="format-the-shared-disk-with-powershell"></a>PowerShell を使用して共有ディスクをフォーマットする
 1. ディスク番号を取得します。 クラスター ノードのいずれかで PowerShell コマンドを実行します。
 
@@ -235,7 +273,7 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
 
 4. クラスターにディスクを登録します。  
    ```powershell
-     # Add the disk to cluster 
+    # Add the disk to cluster 
     Get-ClusterAvailableDisk -All | Add-ClusterDisk
     # Example output 
     # Name           State  OwnerGroup        ResourceType 
@@ -290,7 +328,7 @@ SAP の説明に従ってインストール手順を行います。 インスト
 
 内部ロード バランサーのプローブ機能を使用して、クラスター全体の構成が Azure Load Balancer で動作するようにします。 通常、Azure 内部ロード バランサーは、参加している仮想マシン間に受信ワークロードを均等に分散させます。
 
-ただし、アクティブなインスタンスが 1 つだけであるため、一部のクラスター構成では動作しません。 他のインスタンスはパッシブであり、ワークロードを受け付けることができません。 プローブ機能は、Azure 内部ロード バランサーによって、アクティブなインスタンスが検出され、アクティブなインスタンスのみが対象とされる場合に役立ちます。  
+ただし、アクティブなインスタンスが 1 つだけであるため、一部のクラスター構成では動作しません。 他のインスタンスはパッシブであり、ワークロードを受け付けることができません。 プローブ機能は、Azure の内部ロード バランサーによってアクティブなインスタンスが検出され、アクティブなインスタンスのみが対象とされる場合に役立ちます。  
 
 > [!IMPORTANT]
 > この例の構成では、**ProbePort** は 620 **Nr** に設定されます。 番号が **02** の SAP ASCS インスタンスの場合は、620 **02** です。
@@ -624,8 +662,8 @@ SAP の説明に従ってインストール手順を行います。 インスト
 [sap-ha-guide-figure-6005]:media/virtual-machines-shared-sap-high-availability-guide/6005-sap-multi-sid-azure-portal.png
 [sap-ha-guide-figure-6006]:media/virtual-machines-shared-sap-high-availability-guide/6006-sap-multi-sid-sios-replication.png
 
-[sap-ha-guide-figure-6007]:media/virtual-machines-shared-sap-high-availability-guide/6007-sap-multi-sid-ascs-azure-shared-disk-sid1.png
-[sap-ha-guide-figure-6008]:media/virtual-machines-shared-sap-high-availability-guide/6008-sap-multi-sid-ascs-azure-shared-disk-sid2.png
+[sap-ha-guide-figure-6007]:media/virtual-machines-shared-sap-high-availability-guide/6007-sap-multi-sid-ascs-azure-shared-disk-sid-1.png
+[sap-ha-guide-figure-6008]:media/virtual-machines-shared-sap-high-availability-guide/6008-sap-multi-sid-ascs-azure-shared-disk-sid-2.png
 [sap-ha-guide-figure-6009]:media/virtual-machines-shared-sap-high-availability-guide/6009-sap-multi-sid-ascs-azure-shared-disk-dns1.png
 [sap-ha-guide-figure-6010]:media/virtual-machines-shared-sap-high-availability-guide/6010-sap-multi-sid-ascs-azure-shared-disk-dns2.png
 [sap-ha-guide-figure-6011]:media/virtual-machines-shared-sap-high-availability-guide/6011-sap-multi-sid-ascs-azure-shared-disk-dns3.png
@@ -658,11 +696,11 @@ SAP の説明に従ってインストール手順を行います。 インスト
 
 
 [sap-templates-3-tier-multisid-xscs-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-db-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 

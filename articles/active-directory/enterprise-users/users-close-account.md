@@ -3,22 +3,22 @@ title: アンマネージド Azure AD の組織で職場または学校アカウ
 description: アンマネージド Azure Active Directory のご自身の職場または学校アカウントを削除する方法。
 services: active-directory
 author: rolyon
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/03/2020
+ms.date: 05/04/2021
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 252c993f5679d80cda97a6fade08f5f92489840d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5e4466f86b4ffa0242bd86cfbb71809393e5999
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96575586"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985259"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>アンマネージド Azure AD 組織の職場または学校アカウントを削除する
 
@@ -32,7 +32,7 @@ ms.locfileid: "96575586"
 
 ご自身のアカウントを削除するには、事前に次の項目を確認しておく必要があります。
 
-* ご自身がアンマネージド Azure AD 組織のユーザーであることを確認してください。 マネージド組織のユーザーの場合、自分のアカウントを削除することはできません。 マネージド組織のユーザーがアカウントを削除する必要がある場合は、管理者に連絡する必要があります。 ご自身がアンマネージド組織のユーザーかどうかを確認する方法については、「[アンマネージド テナントからユーザーを削除する](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)」を参照してください。
+* ご自身がアンマネージド Azure AD 組織のユーザーであることを確認してください。 マネージド組織のユーザーの場合、自分のアカウントを削除することはできません。 マネージド組織のユーザーがアカウントを削除する必要がある場合は、管理者に連絡する必要があります。 ご自身がアンマネージド組織のユーザーかどうかを確認する方法については、「[アンマネージド テナントからユーザーを削除する](/power-automate/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)」を参照してください。
 
 * 保持する必要があるすべてのデータを保存します。 エクスポート要求を送信する方法については、「[Accessing and exporting system-generated logs for Unmanaged Tenants (アンマネージド テナントのシステム生成ログへのアクセスとエクスポート)](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)」を参照してください。
 
@@ -43,7 +43,7 @@ ms.locfileid: "96575586"
 
 職場または学校のアンマネージド アカウントを削除するには、次の手順を実行します。
 
-1. 削除するアカウントを使用してサインインし、[ご自身のアカウントを削除](https://go.microsoft.com/fwlink/?linkid=873123)します。
+1. 削除するアカウントを使用してサインインし、[ご自身のアカウントを削除](https://portal.azure.com/#blade/Microsoft_AAD_IAM/PrivacyDataRequests)します。
 
 1. **[データ要求]** で **[アカウントの削除]** を選択します。
 
@@ -56,5 +56,5 @@ ms.locfileid: "96575586"
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory のセルフサービス サインアップについて](directory-self-service-signup.md)
-- [アンマネージド テナントからユーザーを削除する](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
+- [アンマネージド テナントからユーザーを削除する](/power-automate/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
 - [アンマネージド テナントのシステム生成ログへのアクセスとエクスポート](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)

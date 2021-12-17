@@ -8,14 +8,16 @@ ms.service: virtual-machine-scale-sets
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 4ed0932e82751a5ded4bfc9d234bfcd16fa5b9e0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a58462910a3f673a050bdb252d65369ef6fb3b45
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935449"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003430"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>クイック スタート:Azure Portal での仮想マシン スケール セットの作成
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 仮想マシン スケール セットを使用すると、自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure Portal で仮想マシン スケール セットを作成します。
 
@@ -34,7 +36,7 @@ Azure [Load Balancer](../load-balancer/load-balancer-overview.md) は、受信�
 1. 検索ボックスに「**ロード バランサー**」と入力します。 検索結果の **[マーケットプレース]** で、 **[ロード バランサー]** を選択します。
 1. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。
 
-    | 設定                 | 値   |
+    | 設定                 | [値]   |
     | ---| ---|
     | サブスクリプション  | サブスクリプションを選択します。    |    
     | Resource group | **[新規作成]** を選択し、テキスト ボックスに「*myVMSSResourceGroup*」と入力します。|
@@ -59,9 +61,10 @@ Windows Server イメージまたは Linux イメージ (RHEL、CentOS、Ubuntu�
 1. **[基本]** タブの **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認し、リソース グループ リストから *[myVMSSResourceGroup]* を選択します。 
 1. スケール セットの名前として「*myScaleSet*」と入力します。
 1. **[リージョン]** で、自分の地域に近いリージョンを選択します。
+1. **[Orchestration]\(オーケストレーション\)** の **[Orchestration mode]\(オーケストレーションのモード)\** で、 *[Uniform]\(統一\)* を選択します。 
 1. **[イメージ]** のマーケットプレース イメージを選択します。 この例では、 *[Ubuntu Server 18.04 LTS]* を選択しました。
 1. 目的のユーザー名を入力して、任意の認証の種類を選択します。
-   - **パスワード** は、12 文字以上で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 つの要件のうち、3 つを満たしている必要があります。 詳細については、[ユーザー名とパスワードの要件](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)を参照してください。
+   - **パスワード** は、12 文字以上で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 つの要件のうち、3 つを満たしている必要があります。 詳細については、[ユーザー名とパスワードの要件](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)を参照してください。
    - Linux OS ディスク イメージを選択した場合は、代わりに **[SSH public key]\(SSH 公開キー\)** を選択できます。 公開キーのみを指定してください ( *~/.ssh/id_rsa.pub* など)。 ポータルから Azure Cloud Shell を使用して、[SSH キー](../virtual-machines/linux/mac-create-ssh-keys.md)を作成および使用することができます。
    
     :::image type="content" source="./media/virtual-machine-scale-sets-create-portal/quick-create-scale-set.png" alt-text="Azure portal のスケールセットの作成オプションを示す画像。":::

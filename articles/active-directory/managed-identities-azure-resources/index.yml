@@ -12,12 +12,12 @@ metadata:
   ms.author: barclayn
   ms.date: 08/29/2019
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 0cecb8d1b27e6e236c02e9c70ed2e24095d9ee73
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 510fcf249174def1f157fdbbbcfbd75c557f3d79
+  ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89018350"
+  ms.lasthandoff: 04/13/2021
+  ms.locfileid: "107365009"
 landingContent:
 - title: マネージド ID について
   linkLists:
@@ -49,8 +49,6 @@ landingContent:
       url: how-to-use-vm-sign-in.md
     - text: Azure SDK との併用
       url: how-to-use-vm-sdk.md
-    - text: VM 拡張機能の使用の停止
-      url: howto-migrate-vm-extension.md
 - title: 他の Azure リソースへの管理 ID アクセスのアサイン
   linkLists:
   - linkListType: how-to-guide

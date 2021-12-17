@@ -1,0 +1,112 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure ハイブリッド特典一元管理の FAQ
+  titleSuffix: Cost Management + Billing
+  description: よくあるご質問と回答。
+  author: bandersmsft
+  ms.reviewer: chrisrin
+  ms.service: cost-management-billing
+  ms.subservice: ahb
+  ms.topic: conceptual
+  ms.date: 09/30/2021
+  ms.author: banders
+  ms.openlocfilehash: dee90b2d8c16eb06324b8fa5fcdd1ccd82c05b5c
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132708287"
+title: Azure ハイブリッド特典一元管理の FAQ
+summary: ''
+sections:
+- name: 一般的な質問
+  questions:
+  - question: サポートしている Azure SQL リソースを教えてください。
+    answer: >
+      Azure ハイブリッド特典一元管理は、Cost Management + Billing の一部です。 次の Azure リソースに対し、Azure ハイブリッド特典の対象 SQL Server ライセンスを自動的に適用します。 特定スコープの SQL ライセンス割り当てを基に作成される基準コア ライセンス (NCL) の全数が適用されます。 NCL の詳しい情報は、[割り当てた SQL ライセンスが Azure で 1 時間ごとにリソースの使用に適用される仕組み](manage-licenses-centrally.md)に関する記事をご覧ください。
+
+
+      - SQL データベース
+
+      - SQL elastic pools
+
+      - SQL マネージド インスタンス
+
+      - SQL 仮想マシン
+
+
+      > [!NOTE]
+
+      > Azure ハイブリッド特典一元管理の新システムでは現在、次の Azure サービスをサポートしていません。 これらのサービスでは引き続き、リソースレベル Azure ハイブリッド特典を使用することになります。
+
+
+      - Azure Data Factory – SQL Server Integration Services (SSIS)
+
+      - Azure Dedicated Host
+  - question: Azure ハイブリッド特典が適用される契約の種類を教えてください。
+    answer: >
+      次の契約では、スコープレベル Azure ハイブリッド特典の新システムが自動的に適用されます。
+
+        - エンタープライズ契約 (以下を含む)
+            - Microsoft Azure エンタープライズ - MS-AZR-0017P
+            - Azure Government Enterprise - MS-AZR-USGOV-0017P
+        - Microsoft カスタマー契約 - Microsoft Azure プラン - MS-AZR-0017G
+
+      その他の契約は、まだサポートしていません。 詳細については、「[前提条件](create-sql-license-assignments.md#prerequisites)」を参照してください。
+  - question: Azure ハイブリッド特典の対象になる SQL ライセンスを教えてください。
+    answer: >
+      ソフトウェア アシュアランスのある SQL Server Enterprise Edition および Standard Edition コア ライセンスと、コア サブスクリプション ライセンス。 詳しくは、[SQL Server の Azure ハイブリッド特典](../../azure-sql/azure-hybrid-benefit.md)に関する記事をご覧ください。
+  - question: 対象 SQL Server ライセンスを Azure に割り当てる個数を決める方法を教えてください。
+    answer: >
+      割り当てるライセンスの数は、割り当てることができる SQL Server ライセンスの数により変わるため、一般に、調達またはソフトウェア資産管理の担当部署が、割り当て数の決定に参加する必要があります。 ライセンスの追加購入が必要な場合もあります。 これを決定するときは、いくつかのステップがあります。
+
+
+      1. リソースレベル Azure ハイブリッド特典で Azure SQL リソースに適用している SQL Server ライセンスの数に関する情報を Azure portal で確認します。
+
+      2. Azure に割り当てることができるライセンスの数を、調達またはソフトウェア資産管理の担当部署に確認します。 ライセンスはオンプレミスでは使用しないか、または、オンプレミスから Azure に移行中のワークロードに使用します。 移行期間中最大 180 日まで、ライセンスはどちらの場所でも使用できます。 [移行シナリオの例](transition-existing.md#transition-scenario-examples)をご確認ください。
+
+      3. Azure ハイブリッド特典ライセンスの現在の使用量をちょうどカバーできる数のライセンスがある場合は、その数を、それまでどおり割り当てることができます。 それより多くのライセンスがある場合は、Azure SQL の使用量をすべてカバーした上で、予測される使用量の増加もカバーできます。 定常的な使用量あるいは増加する使用量をカバーするために割り当てるライセンスの数を最適化すれば、組織のコストを節約できます。 最後に、Azure ハイブリッド特典ライセンスの現在の使用量をカバーするのに十分な数のライセンスがない場合は、2 つの選択肢があります。
+
+          - 少なめのライセンスを割り当てる。この場合 Azure の料金が高くなることがあります。
+          - 組織で相談して、ライセンスの使用量を減らすかライセンスを追加購入することにより、必要量を割り当てられるようにする。
+  - question: この新システムは、Azure 仮想マシンに自分でインストールした SQL Server で使用できますか。
+    answer: "スコープレベル Azure ハイブリッド特典一元管理の新システムは、Azure 仮想マシン上の SQL Server をサポートしています。 ですが、SQL ライセンスを割り当てる *前に*、自分でインストールする SQL サーバー イメージを IaaS 拡張機能に自動登録する設定を有効にしておく必要があります。 新システムには、Azure ハイブリッド特典の現在の使用量と、割引が適用されない SQL ライセンスの使用量を通知する機能があります。 現在の使用量に相当する数の SQL Server ライセンスを割り当てれば、予期しない従量課金が適用されることはなくなります。 未登録の SQL VM は SQL リソースとして認識されないため、スコープレベルのライセンス割り当てを開始した *後で* それらを IaaS 拡張機能に登録すると、新たに認識された SQL VM をカバーするのに、割り当てたライセンスの数が足らなくなる可能性があります。 この場合、*新しく* 登録されたそれらの SQL VM によって、予期しない従量課金が適用される場合があります。 \n\n自動 IaaS 登録を有効にする詳しい方法は、[Azure の SQL VM を SQL IaaS Agent 拡張機能に登録する方法](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md)に関する記事をご覧ください。\n\n各サブスクリプションの未登録 SQL Server VM の総数の詳しい情報は、[SQL ライセンス使用量 PowerShell スクリプト](https://github.com/anosov1960/sql-server-samples/tree/master/samples/manage/azure-hybrid-benefit)で取得できます。\n"
+  - question: スコープ レベルでライセンスを一元割り当てする方法に切り替えたら、Azure の料金はどう変わりますか。
+    answer: >
+      SQL Server の料金は、Azure SQL リソースの使用量 (仮想コア) と Azure ハイブリッド特典の使用量 (仮想コアをカバーするライセンス) の関数になっています。 Azure SQL リソースの使用量が一定していて、リソースレベルの特典を使用する場合と同じ数のライセンスをスコープに一元割り当てするのであれば、料金は変わりません。 使用量が一定しているのであれば、使用量の一部が従量課金になっている状態で割り当てるライセンスの数を増やすと、割引が増えて料金が安くなります。
+
+
+      Azure では、選択したスコープの SQL Server リソースに対し、1 時間ごとにソフトウェア割引を適用します。 スコープ内のすべての SQL Server リソースをカバーできる数の SQL Server ライセンスを割り当てれば、その時間のライセンス料金は 0 になります。 選択したスコープ内のすべての SQL リソースをカバーするのに足らない場合は、一部の SQL Server リソースに従量課金が適用されます。 月ごとの料金には、スコープ内の各リソースに対する SQL Server ソフトウェア コストの累計が記載されます。 請求期間全体を通じて特定のリソースに割引を適用し続けた場合、このリソースの合計 SQL Server ソフトウェア コストは 0 になります。 新しいデプロイにより、SQL Server リソースの合計コア サイズが、割り当てたライセンスでカバーできるサイズを超えた場合、月ごとの従量課金額が増えます。
+
+
+      スコープレベルのライセンス割り当てで、Azure ハイブリッド特典が SQL Server リソースに適用される詳しい仕組みは、[Azure ハイブリッド特典一元管理](overview-azure-hybrid-benefit-scope.md)に関する記事をご覧ください。
+  - question: 特典の一元管理を有効にすると、リソースを作成、管理する開発者と DBA にどのような影響がありますか。
+    answer: >
+      スコープレベル Azure ハイブリッド特典一元管理を開始するときは、関連するスコープのリソース管理者と話し合うことをお勧めします。 それ以後、それらのリソースに Azure ハイブリッド特典を使用することはできなくなります。 Azure portal では該当する機能が無効になります。 API にはそのためのオプションが残りますが、スコープレベルの管理が優先するため、実行することはできません。 スコープレベル管理の新システムでは、Azure ハイブリッド特典に関連する割引は、請求管理者が管理します。
+  - question: Azure ハイブリッド特典一元管理に移行するときに、ユーザーが確約することを教えてください。 オプトアウトできますか?
+    answer: >
+      新システムを Azure portal で使用する場合にすることは、対象 SQL Server ライセンスを Azure に割り当てることだけです。 ユーザーが確約するのは、ルールに従って容量を使用することです。 たとえば、Azure には、他に使用していないライセンスだけを割り当てる必要があります。
+
+
+      スコープレベル特典一元管理の新システムを試してみて、自分たちには合わないと思ったら、関連するライセンスの割り当てを削除することでオプトアウトできます。 特定のスコープに対するすべてのライセンス割り当てを削除すると、そのスコープの容量に対して完全にオプトアウトできます。 つまり、SQL リソースをデプロイし、管理するユーザーが、リソースベース Azure ハイブリッド特典を再度利用できるようになります。 Azure ハイブリッド特典をリソースに対して有効にした後で、スコープレベル ライセンス管理に移行した場合、このリソースの移行前の状態は保存されます。 スコープレベル ライセンス管理をオプトアウトすると、元の割引が即座に適用されます。
+
+
+      > [!IMPORTANT]
+
+      > 一元管理の新システムを使用しているときにスコープ内で Azure SQL リソースを追加し、その後でオプトアウトした場合、特典を適用するためには、各リソースに対して個別に Azure ハイブリッド特典を選択することが必要になります。
+  - question: スコープに割り当てた SQL Server ライセンスの使用量を追跡する方法を教えてください。
+    answer: >
+      割り当てた SQL Server ライセンスの使用量は、**[Cost Management]\(コスト管理\)** > **[Reservations + Hybrid Benefit]\(予約 + ハイブリッド特典\)** で追跡できます。 詳しくは「[割り当てられたライセンスの使用状況を追跡する](create-sql-license-assignments.md#track-assigned-license-use)」セクションをご覧ください。
+  - question: Azure ハイブリッド特典一元管理の新システムを、既存の Windows Server と Client Access License で使用できますか。
+    answer: >
+      スコープレベルのライセンス管理は、ソフトウェア アシュアランスのある SQL Server コア ライセンスと、コア サブスクリプション ライセンスに対して最適化されています。 Windows Server および、Server + Client Access License バージョンの SQL Server は、現在サポートしていません。 後者については、[ソフトウェア アシュアランスによるライセンス モビリティ](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility)を引き続き使用できます。  サポートを受けられないかどうか、Microsoft アカウント チームにも問い合わせてみてください。
+  - question: Windows Server ライセンスに対して Azure ハイブリッド特典を有効にし、それを管理する方法を教えてください。
+    answer: >
+      Azure ハイブリッド特典は、Azure 仮想マシンなどの各リソースに対して個別に有効にできます。 現在、スコープレベルで Windows Server ライセンスを管理することはできません。
+additionalContent: >-
+  ## <a name="next-steps"></a>次のステップ
+
+
+  Azure ハイブリッド特典について詳しく学ぶ。
+
+  -  [一元管理された Azure ハイブリッド特典とは](overview-azure-hybrid-benefit-scope.md)

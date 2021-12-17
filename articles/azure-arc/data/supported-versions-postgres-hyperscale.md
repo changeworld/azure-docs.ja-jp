@@ -7,21 +7,20 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 0f3f9e7f4566800bdea6871cae1c5bafb3b37b95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 180cb275b2b4a08dc9463eef4432006c5c0ee714
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90931326"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290611"
 ---
 # <a name="supported-versions-of-postgres-with-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale でサポートされている Postgres のバージョン
-
-この記事では、Azure Arc 対応 PostgreSQL Hyperscale で使用できる Postgres のバージョンについて説明します。
-サポートされているバージョンのリストは、時間の経過と共に進化します。 現在、サポートされているメジャー バージョンは次のとおりです。
+サポートされるバージョンの一覧は、Azure PaaS の Postgres マネージド サービスとの一致を確保するため、時間の経過と共に進化していきます。 現在、サポートされているメジャー バージョンは次のとおりです。
 - Postgres 12 (既定)
 - Postgres 11
+
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -33,28 +32,30 @@ ms.locfileid: "90931326"
 ## <a name="how-to-create-a-particular-version-in-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale で特定のバージョンを作成する方法
 作成時に、 _--engine-version_ パラメーターを渡すことによって、作成するバージョンを指定できます。 バージョン情報が指定されていない場合、既定では Postgres バージョン 12 のサーバー グループが作成されます。
 
-## <a name="how-do-be-notified-when-other-versions-are-available"></a>他のバージョンが利用可能になったときに通知を受け取る方法
-この記事に戻ってきてください。 必要に応じて更新されます。 また、Kubernetes クラスターの Arc データ コントローラーにあるカスタム リソース定義 (CRD) の種類を一覧表示することもできます。
-次のコマンドを実行します。
+なお、サポートされているバージョンに関係なく、Kubernetes クラスター内の Postgres Custom Resource Definition (CRD) は 1 つしかありません。
+たとえば、次のコマンドを実行します。
 ```console
 kubectl get crds
 ```
 
 次のような出力が返されます。
 ```console
-NAME                                            CREATED AT
-datacontrollers.arcdata.microsoft.com           2020-08-31T20:15:16Z
-postgresql-11s.arcdata.microsoft.com            2020-08-31T20:15:16Z
-postgresql-12s.arcdata.microsoft.com            2020-08-31T20:15:16Z
-sqlmanagedinstances.sql.arcdata.microsoft.com   2020-08-31T20:15:16Z
+NAME                                                             CREATED AT
+dags.sql.arcdata.microsoft.com                                   2021-10-12T23:53:40Z
+datacontrollers.arcdata.microsoft.com                            2021-10-13T01:00:27Z
+exporttasks.tasks.arcdata.microsoft.com                          2021-10-12T23:53:39Z
+healthstates.azmon.container.insights                            2021-10-12T19:04:44Z
+monitors.arcdata.microsoft.com                                   2021-10-13T01:00:26Z
+postgresqls.arcdata.microsoft.com                                2021-10-12T23:53:37Z
+sqlmanagedinstancerestoretasks.tasks.sql.arcdata.microsoft.com   2021-10-12T23:53:38Z
+sqlmanagedinstances.sql.arcdata.microsoft.com                    2021-10-12T23:53:37Z
 ```
 
-この例では、この出力は Postgres に関連する 2 種類の CRD があることを示しています。
-- postgresql-12s.arcdata.microsoft.com は Postgres 12 の CRD です
-- postgresql-11s.arcdata.microsoft.com は Postgres 11 の CRD です
+この例では、この出力は Postgres に関連する 2 種類の CRD、postgresqls.arcdata.microsoft.com と shortname postgresqls があることを示しています。 この CRD は、Postgres インスタンスでも Postgres サーバー グループでもありません。 CRD の存在は、そのサーバー グループが作成されたものであるかどうかを示すものではありません。 CRD は、Kubernetes クラスターにどのような種類のリソースを作成できるかを示すものです。
 
-これらはサーバー グループではなく CRD です。 CRD の存在は、そのバージョンのサーバー グループが作成されているかどうかを示すものではありません。
-CRD は、どのような種類のリソースを作成できるかを示すものです。
+## <a name="how-can-i-be-notified-when-other-versions-are-available"></a>他のバージョンが利用可能になったときに通知を受け取る方法
+この記事に戻ってきてください。 必要に応じて更新されます。
+
 
 ## <a name="next-steps"></a>次のステップ:
 - [Azure Arc 対応 PostgreSQL Hyperscale の作成について確認する](create-postgresql-hyperscale-server-group.md)

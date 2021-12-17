@@ -3,20 +3,17 @@ title: Azure PowerShell のサンプル スクリプト - カスタム トピッ
 description: この記事では、Event Grid のカスタム トピックの作成方法を示したサンプル Azure PowerShell スクリプトを紹介しています。
 services: event-grid
 documentationcenter: na
-author: spelluru
-ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2020
-ms.author: tomfitz
-ms.openlocfilehash: 915b8e13adaa440063f5db62b72fa39e1035d576
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 86ecab935209a21fbb07ae670b338f85ca455deb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87460781"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680473"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>PowerShell を使用した Event Grid のカスタム トピックの作成
 

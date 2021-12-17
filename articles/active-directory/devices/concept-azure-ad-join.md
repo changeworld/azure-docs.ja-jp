@@ -1,26 +1,26 @@
 ---
 title: Azure AD 参加済みデバイスとは
-description: Azure AD 参加済みデバイスについて説明し、デバイス ID 管理を活用して、環境内のリソースにアクセスしているデバイスを管理する方法について説明します。
+description: Azure AD 参加デバイスは、環境内のリソースにアクセスするデバイスを管理するのに役立ちます。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 06/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49ea66296140d5b9e3a6e9ac06dd1233001d7252
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90601454"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619877"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD 参加済みデバイス
 
-Azure AD 参加は、クラウド優先またはクラウド専用であることを望む組織を対象にしています。 すべての組織で、サイズや業界に関係なく、Azure AD 参加済みデバイスをデプロイすることができます。 Azure AD 参加は、ハイブリッド環境でも動作し、クラウドおよびオンプレミス アプリとリソースと両方にアクセスできます。
+すべての組織で、サイズや業界に関係なく、Azure AD 参加済みデバイスをデプロイすることができます。 Azure AD 参加は、ハイブリッド環境でも動作し、クラウドおよびオンプレミス アプリとリソースと両方にアクセスできます。
 
 | Azure AD Join | 説明 |
 | --- | --- |
@@ -30,7 +30,7 @@ Azure AD 参加は、クラウド優先またはクラウド専用であるこ�
 | **デバイスの所有権** | Organization |
 | **オペレーティング システム** | Windows 10 Home を除くすべての Windows 10 デバイス |
 |   | [Azure で実行する Windows Server 2019 Virtual Machines](howto-vm-sign-in-azure-ad-windows.md) (Server Core はサポートされません) |
-| **プロビジョニング** | セルフサービス:Windows OOBE または設定 |
+| **Provisioning** | セルフサービス: Windows の Out of Box Experience (OOBE) または設定 |
 |   | 一括登録 |
 |   | Windows Autopilot |
 | **デバイスのサインイン オプション** | 以下を使用する組織アカウント: |

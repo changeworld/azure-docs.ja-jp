@@ -10,12 +10,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 11/05/2020
-  ms.openlocfilehash: 5b2495f2cf5dbe6714796a4e1f6516cd3a3fe7f4
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: fab3cb5e7cc0476128e55e2bc9a4c9abe5acde11
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101668216"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130257976"
 landingContent:
 - title: 最新の機能
   linkLists:
@@ -28,7 +28,9 @@ landingContent:
     - text: 近接通信配置グループ
       url: co-location.md
     - text: Virtual Machine Scale Sets のオーケストレーション モード
-      url: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md
+      url: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
+    - text: 仮想マシン スケール セットのフレキシブル オーケストレーション
+      url: flexible-virtual-machine-scale-sets.md
 - title: Linux のクイックスタート
   linkLists:
   - linkListType: quickstart
@@ -53,22 +55,22 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: " Azure における Linux 仮想マシンの作成"
+    - text: Azure における Linux 仮想マシンの作成
       url: /learn/modules/create-linux-virtual-machine-in-azure/
-    - text: " Azure で Windows 仮想マシンを作成する"
+    - text: Azure で Windows 仮想マシンを作成する
       url: /learn/modules/create-windows-virtual-machine-in-azure/
 - title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: SSH の問題をトラブルシューティングする
-      url: ./troubleshooting/troubleshoot-ssh-connection.md
-    - text: RDP の問題をトラブルシューティングする
-      url: ./troubleshooting/rdp.md
-    - text: Linux VM が起動しない
-      url: ./troubleshooting/boot-error-troubleshoot-linux.md
-    - text: Windows VM が起動しない
-      url: ./troubleshooting/boot-error-troubleshoot.md
+    - text: トラブルシューティング ガイド
+      url: /troubleshoot/azure/virtual-machines/welcome-virtual-machines
+    - text: デプロイに関する問題のトラブルシューティング
+      url: /troubleshoot/azure/virtual-machines/welcome-deployment-troubleshooting
+    - text: 割り当てエラーのトラブルシューティングを行う
+      url: /troubleshoot/azure/virtual-machines/allocation-failure
+    - text: 予期しない再起動のトラブルシューティング
+      url: /troubleshoot/azure/virtual-machines/understand-vm-reboot
     - text: Microsoft Q&A
       url: /answers/topics/azure-virtual-machines.html
 - title: リソース
@@ -85,3 +87,5 @@ landingContent:
       url: https://azure.microsoft.com/pricing/details/#Linux
     - text: リージョン別の提供状況
       url: https://azure.microsoft.com/regions/services/
+    - text: 仮想マシン セレクター ツール
+      url: https://aka.ms/vm-selector

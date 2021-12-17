@@ -2,20 +2,21 @@
 title: チュートリアル - Azure Active Directory B2C テナントを作成する
 description: このチュートリアルでは、Azure portal を使用して Azure Active Directory B2C テナントを作成し、アプリケーションの登録の準備をする方法について説明します。
 services: B2C
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/03/2020
-ms.author: mimart
+ms.date: 10/29/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: aa91851787bbb0f5570a4f439f794ee352bf0625
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: b2c-support
+ms.openlocfilehash: 0ff64806531f1d99ced2ad2b5747ae73e54114bd
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579690"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505102"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル:Azure Active Directory B2C テナントの作成
 
@@ -24,7 +25,7 @@ ms.locfileid: "104579690"
 > [!NOTE]
 > サブスクリプションあたり最大 20 個のテナントを作成できます。 この制限は、サービス拒否攻撃などのリソースに対する脅威からの保護に役立ち、Azure portal と基盤となるテナント作成 API の両方で適用されます。 20 を超えるテナントを作成する必要がある場合は、[Microsoft サポート](support-options.md)にお問い合わせください。
 > 
-> 以前に削除しようとしたテナント名を再利用する場合に、ドメイン名を入力したときに "Already in use by another directory (既に別のディレクトリによって使用されています)" というエラーが表示された場合は、[これらの手順に従って最初にテナントを完全に削除する](./faq.md?tabs=app-reg-ga#how-do-i-delete-my-azure-ad-b2c-tenant)必要があります。 少なくともサブスクリプション管理者のロールが必要です。 テナントを削除した後、ドメイン名を再利用する前にサインアウトしてから再度サインインすることが必要になる場合もあります。
+> 以前に削除しようとしたテナント名を再利用する場合に、ドメイン名を入力したときに "Already in use by another directory (既に別のディレクトリによって使用されています)" というエラーが表示された場合は、[これらの手順に従って最初にテナントを完全に削除する](./faq.yml?tabs=app-reg-ga#how-do-i-delete-my-azure-ad-b2c-tenant-)必要があります。 少なくともサブスクリプション管理者のロールが必要です。 テナントを削除した後、ドメイン名を再利用する前にサインアウトしてから再度サインインすることが必要になる場合もあります。
 
 この記事では、次のことについて説明します。
 
@@ -38,17 +39,28 @@ ms.locfileid: "104579690"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+- Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+
+- サブスクリプション内、またはサブスクリプション内のリソース グループ内で[共同作成者](../role-based-access-control/built-in-roles.md)以上のロールが割り当てられている Azure アカウントが必要です。 
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを作成する
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。 サブスクリプション内、またはサブスクリプション内のリソース グループ内で[共同作成者](../role-based-access-control/built-in-roles.md)以上のロールが割り当てられている Azure アカウントでサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。 
 
-1. ご利用のサブスクリプションが含まれているディレクトリを選択します。
+1. お使いのサブスクリプションが含まれているディレクトリに切り替えます。
+    1. Azure portal ツールバーで、 **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** フィルター アイコンを選択します。 
+    
+        ![[Directories + subscriptions]\(ディレクトリ + サブスクリプション\) フィルター アイコン](media/tutorial-create-tenant/directories-subscription-filter-icon.png)
 
-    Azure portal のツール バーで、 **[Directory + Subscription]\(ディレクトリ + サブスクリプション\)** アイコンを選択し、ご利用のサブスクリプションが含まれているディレクトリを選択します。 このディレクトリは、Azure AD B2C テナントを含むディレクトリと異なります。
+    1. サブスクリプションが含まれるディレクトリを見つけ、その隣にある **[切り替え]** ボタンを選択します。 ディレクトリを切り替えると、ポータルが再読み込みされます。
 
-    ![サブスクリプション テナント、サブスクリプション テナントが選択された状態のディレクトリ + サブスクリプションのフィルター](media/tutorial-create-tenant/portal-01-pick-directory.png)
+        ![[Directories + subscriptions]\(ディレクトリ + サブスクリプション\) と [切り替え] ボタン](media/tutorial-create-tenant/switch-directory.png)
+
+1. 使用している Azure サブスクリプションのリソース プロバイダーとして **Microsoft.AzureActiveDirectory** を追加します ([詳細](../azure-resource-manager/management/resource-providers-and-types.md?WT.mc_id=Portal-Microsoft_Azure_Support#register-resource-provider-1))。
+
+    1. Azure portal で、 **[サブスクリプション]** を検索して選択します。
+    2. お使いのサブスクリプションを選択し、左側のメニューで **[リソース プロバイダー]** を選択します。 左側にメニューが表示されない場合は、ページの左上にある **[<お使いのサブスクリプションの名前> のメニューを表示する]** アイコンを選択して展開します。
+    3. **Microsoft AzureActiveDirectory** 行に **[登録済み]** の状態が表示されていることを確認します。 そうでない場合は、行を選択して **[登録]** を選択します。
 
 1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
 
@@ -70,19 +82,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![Azure portal でのサンプル値が含まれているテナントの作成フォーム](media/tutorial-create-tenant/review-and-create-tenant.png)
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
-1. ディレクトリの設定を確認します。 **[作成]** を選択します。 デプロイのエラーをトラブルシューティングする場合は、[こちら](../azure-resource-manager/templates/common-deployment-errors.md)を参照してください。
+1. ディレクトリの設定を確認します。 **[作成]** を選択します。 デプロイ エラーの解決方法については[こちら](../azure-resource-manager/templates/common-deployment-errors.md)をご覧ください。
 
 課金のために、複数の Azure AD B2C テナントを 1 つの Azure サブスクリプションにリンクすることができます。 テナントをリンクするユーザーは、Azure AD B2C テナントの管理者であること、また、Azure サブスクリプション内で共同作成者以上のロールが割り当てられていることが必要です。 「[Azure AD B2C テナントをサブスクリプションにリンクする](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)」を参照してください。
+
+> [!NOTE]
+> Azure AD B2C ディレクトリが作成されるとき、`b2c-extensions-app` というアプリケーションがその新しいディレクトリ内に自動で作成されます。 これを変更したり削除したりしないでください。 このアプリケーションは、ユーザー データを保存するために Azure AD B2C によって使用されます。 Azure AD B2C: Extensions アプリについては、[こちら](extensions-app.md)を参照してください。
 
 ## <a name="select-your-b2c-tenant-directory"></a>B2C テナント ディレクトリを選択する
 
 新しい Azure AD B2C テナントの使用を開始するには、テナントが含まれているディレクトリに切り替える必要があります。
+1. Azure portal ツールバーで、 **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** フィルター アイコンを選択します。
+1. **[すべてのディレクトリ]** タブで Azure AD B2C テナントが含まれるディレクトリを見つけ、その隣にある **[切り替え]** ボタンを選択します。
 
-Azure portal の上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択してから、Azure AD B2C テナントを含むディレクトリを選択します。
+最初の状態で一覧に新しい Azure B2C テナントが表示されていない場合、お使いのブラウザーのウィンドウを更新するか、一旦サインアウトしてからサインインし直してください。 次に Azure portal ツールバーで、 **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** フィルターをもう一度選択します。
 
-新しい Azure B2C テナントが最初からリストに表示されない場合、ブラウザー ウィンドウを更新し、上部メニューでもう一度 **[ディレクトリ + サブスクリプション]** を選択します。
-
-![Azure portal で選択された B2C テナントを含むディレクトリ](media/tutorial-create-tenant/portal-07-select-tenant-directory.png)
 
 ## <a name="add-azure-ad-b2c-as-a-favorite-optional"></a>Azure AD B2C をお気に入りとして追加する (省略可能)
 

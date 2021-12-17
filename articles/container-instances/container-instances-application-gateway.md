@@ -3,16 +3,16 @@ title: コンテナー グループの静的 IP アドレス
 description: 仮想ネットワーク内にコンテナー グループを作成し、Azure アプリケーション ゲートウェイを使用して、コンテナー化された Web アプリに静的フロントエンド IP アドレスを公開します
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: de9e06b457a9ea5485fe268bd2b7cf206f0a6c0e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 46b04534a6beae5a2e102aa0167815da44ae21ed
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790943"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219265"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>コンテナー グループの静的 IP アドレスの公開
 
-この記事では、Azure [アプリケーション ゲートウェイ](../application-gateway/overview.md)を使用して[コンテナー グループ](container-instances-container-groups.md)の静的パブリック IP アドレスを公開するための 1 つの方法を紹介します。 Azure Container Instances で実行される、外部に接続されたコンテナー化アプリの静的エントリ ポイントが必要な場合は、これらの手順に従ってください。 
+この記事では、Azure [アプリケーション ゲートウェイ](../application-gateway/overview.md)を使用して[コンテナー グループ](container-instances-container-groups.md)の静的パブリック IP アドレスを公開するための 1 つの方法を紹介します。 Azure Container Instances で実行される、外部に接続されたコンテナー化アプリの静的エントリ ポイントが必要な場合は、これらの手順に従ってください。
 
 この記事では、Azure CLI を使用して、このシナリオ用のリソースを作成します。
 
@@ -31,7 +31,7 @@ ms.locfileid: "107790943"
 
 必要な場合は、Azure リソース グループを作成してください。 次に例を示します。
 
-```azureci
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -69,9 +69,9 @@ az network public-ip create \
 
 ## <a name="create-container-group"></a>コンテナー グループを作成する
 
-次の [az container create][az-container-create] を実行して、前の手順で構成した仮想ネットワークにコンテナー グループを作成します。 
+次の [az container create][az-container-create] を実行して、前の手順で構成した仮想ネットワークにコンテナー グループを作成します。
 
-このグループは *myACISubnet* サブネットにデプロイされます。このグループには、`aci-helloworld` イメージをプルする、*appcontainer* という単一のインスタンスが含まれます。 ドキュメントの他の記事で示されているように、このイメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージされています。 
+このグループは *myACISubnet* サブネットにデプロイされます。このグループには、`aci-helloworld` イメージをプルする、*appcontainer* という単一のインスタンスが含まれます。 ドキュメントの他の記事で示されているように、このイメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージされています。
 
 ```azurecli
 az container create \
@@ -119,14 +119,14 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress \
   --vnet-name myVNet \
   --subnet myAGSubnet \
-  --servers "$ACI_IP" 
+  --servers "$ACI_IP"
 ```
 
 
-Azure によってアプリケーション ゲートウェイが作成されるのに最大 15 分かかる場合があります。 
+Azure によってアプリケーション ゲートウェイが作成されるのに最大 15 分かかる場合があります。
 
 ## <a name="test-public-ip-address"></a>パブリック IP アドレスのテスト
-  
+
 次に、アプリケーション ゲートウェイの背後にあるコンテナー グループで実行されている Web アプリへのアクセスをテストします。
 
 [az network public-ip show][az-network-public-ip-show] コマンドを実行して、ゲートウェイのフロントエンド パブリック IP アドレスを取得します。
@@ -147,7 +147,7 @@ az network public-ip show \
 
 ## <a name="next-steps"></a>次のステップ
 
-* アプリケーション ゲートウェイの背後にあるバックエンド サーバーとして、WordPress コンテナー インスタンスを含んだコンテナー グループを作成するには、[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)を参照してください。
+* アプリケーション ゲートウェイの背後にあるバックエンド サーバーとして、WordPress コンテナー インスタンスを含んだコンテナー グループを作成するには、[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/wordpress/aci-wordpress-vnet)を参照してください。
 * SSL 終了の証明書を使ってアプリケーション ゲートウェイを構成することもできます。 [概要](../application-gateway/ssl-overview.md)と[チュートリアル](../application-gateway/create-ssl-portal.md)を参照してください。
 * シナリオによっては、他の Azure 負荷分散ソリューションと Azure Container Instances を使用することを検討してください。 たとえば、[Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用して、複数のコンテナー インスタンスと複数のリージョンにトラフィックを分散させることもできます。 この [ブログ投稿](https://aaronmsft.com/posts/azure-container-instances/)を参照してください。
 

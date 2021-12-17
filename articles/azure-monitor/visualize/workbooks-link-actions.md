@@ -3,14 +3,12 @@ title: Azure Monitor ブックのリンク アクション
 description: Azure Monitor ブックでリンク アクションを使用する方法
 ms.topic: conceptual
 ms.date: 01/07/2021
-author: lgayhardt
-ms.author: lagayhar
-ms.openlocfilehash: 2d1abe6d77dd4293dc70a07f3b8fd5d9da78d01e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd8d4b1d7aefe070f72c4087162527dadd69f09e
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100601155"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129246"
 ---
 # <a name="link-actions"></a>リンク アクション
 

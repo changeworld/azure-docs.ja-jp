@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 19f6b0601afe9ad84f02c93d7f6e1ae3a71a06a4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 402f6cd6961108cdf1e9c94fb4f93309fbf15ead
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585096"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599028"
 ---
 # <a name="integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Azure AD シングル サインオンと Maverics Identity Orchestrator SAML Connector を統合する
 
@@ -35,7 +35,7 @@ Strata の Maverics Identity Orchestrator には、認証とアクセス制御�
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Maverics Identity Orchestrator SAML Connector での SSO が有効なサブスクリプション。 Maverics ソフトウェアを入手するには、[Strata の営業担当者](mailto:sales@strata.io)にお問い合わせください。
-* ヘッダーベースの認証が使用されている少なくとも 1 つのアプリケーション。 この例では、 https://app.sonarsystems.com でホストされている Sonar という名前のアプリケーションと、 https://app.connectulum.com でホストされている Connectulum という名前のアプリケーションを使って作業します。
+* ヘッダーベースの認証が使用されている少なくとも 1 つのアプリケーション。 この例では、`https://app.connectulum.com` でホストされている Connectulum という名前のアプリケーションを使って作業します。
 * Maverics Orchestrator をホストする Linux マシン
   * OS: RHEL 7.7 以降、CentOS 7 以降
   * ディスク: 10 GB 以上
@@ -107,7 +107,7 @@ tls:
     keyFile: /etc/maverics/maverics.key
 ```
 
-TLS が想定どおりに構成されていることを確認するには、Maverics サービスを再起動し、状態エンドポイントに対して要求を行います。 ブラウザーから、 https://sonar.maverics.com/status を要求します。
+TLS が想定どおりに構成されていることを確認するには、Maverics サービスを再起動し、状態エンドポイントに対して要求を行います。
 
 ## <a name="step-2-proxy-an-application"></a>手順 2: アプリケーションをプロキシする
 
@@ -131,7 +131,7 @@ appgateways:
     upstream: https://app.sonarsystems.com
 ```
 
-プロキシが想定どおりに動作していることを確認するには、Maverics サービスを再起動し、Maverics プロキシ経由でアプリケーションに対して要求を行います。 ブラウザーから、 https://sonar.maverics.com を要求します。 必要に応じて、`https://sonar.maverics.com/RESOURCE` などの特定のアプリケーション リソースへに対して要求を行うことができます。ここで、`RESOURCE` は、保護されたアップストリーム アプリの有効なアプリケーション リソースです。
+プロキシが想定どおりに動作していることを確認するには、Maverics サービスを再起動し、Maverics プロキシ経由でアプリケーションに対して要求を行います。 必要に応じて、特定のアプリケーション リソースに対して要求を行うことができます。
 
 ## <a name="step-3-register-an-enterprise-application-in-azure-ad"></a>手順 3: エンタープライズ アプリケーションを Azure AD に登録する
 
@@ -325,7 +325,7 @@ connectors:
 
 このコードで、App Gateway の定義に `host` フィールドが追加されていることが分かります。 `host` フィールドを使用することで、Maverics Orchestrator では、トラフィックのプロキシ先のアップストリーム ホストを区別できます。
 
-新しく追加された App Gateway が想定どおりに動作していることを確認するには、 https://connectulum.maverics.com に対して要求を行います。
+新しく追加された App Gateway が想定どおりに動作していることを確認するには、 `https://connectulum.maverics.com` に対して要求を行います。
 
 ## <a name="advanced-scenarios"></a>高度なシナリオ
 

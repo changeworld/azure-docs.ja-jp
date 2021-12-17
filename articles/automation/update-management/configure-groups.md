@@ -3,14 +3,14 @@ title: Azure Automation Update Management で動的グループを使用する
 description: この記事では、Azure Automation の Update Management で動的グループを使用する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 06/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 318b5498c826b1e29baa35850594cebca72c4f3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b09def53b32d9616ddab541b3448f863b6ec781a
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575927"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112520534"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Update Management を利用して動的グループを使用する
 
@@ -46,6 +46,9 @@ Azure マシンの動的グループ クエリを定義する場合は、次の�
 Azure 以外のマシンの動的グループでは、保存された検索 (コンピューター グループとも呼ばれます) を使用します。 保存された検索の作成方法については、「[コンピューター グループの作成](../../azure-monitor/logs/computer-groups.md#creating-a-computer-group)」を参照してください。 保存された検索が作成されると、Azure portal の **Update Management** で保存された検索の一覧から選択できるようになります。 **[プレビュー]** をクリックすると、保存された検索でコンピューターをプレビューできます。
 
 ![Azure 以外のための [グループの選択] ページ (プレビュー) および右側に [プレビュー] ペインを表示するスクリーンショット。](./media/configure-groups/select-groups-2.png)
+
+> [!NOTE]
+> [複数の Log Analytics ワークスペースにまたがって格納データを照会する](../../azure-monitor/logs/cross-workspace-query.md)保存した検索条件はサポートされません。
 
 ## <a name="next-steps"></a>次のステップ
 

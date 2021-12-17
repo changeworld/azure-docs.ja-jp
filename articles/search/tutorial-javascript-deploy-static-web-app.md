@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: a49ede283899cec42898672f5a376221265dea10
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 021f7aeda86f5ff9f11eb2991a74c6ad37a203e6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104723518"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469785"
 ---
 # <a name="3---deploy-the-search-enabled-website"></a>3 - 検索が有効な Web サイトをデプロイする
 
@@ -26,6 +26,15 @@ ms.locfileid: "104723518"
 ## <a name="create-a-static-web-app-in-visual-studio-code"></a>Visual Studio Code で静的 Web アプリを作成する
 
 1. アクティビティ バーから **[Azure]** を選択し、サイド バーから **[Static Web Apps]** を選択します。 
+
+1. どのブランチからデプロイするかを確認するポップアップ ウィンドウが VS Code で表示された場合は、既定のブランチ （通常は **master** または **main**） を選択します。 
+
+    この設定により、そのブランチにコミットした変更だけが静的 Web アプリにデプロイされます。 
+
+1. ポップアップ ウィンドウが表示されて変更をコミットするよう求められた場合は、これをしないでください。 一括インポート手順で作成されたシークレットは、リポジトリにコミットしないでください。 
+
+    変更をロールバックするには、VS Code のアクティビティ バーで [ソース管理] アイコンを選択してから、変更された各ファイルを [変更] の一覧で選択して、 **[変更の破棄]** アイコンを選択します。
+
 1. サブスクリプション名を右クリックし、 **[Create Static Web App (Advanced)]\(静的 Web アプリの作成 (詳細設定)\)** を選択します。    
 
     :::image type="content" source="media/tutorial-javascript-create-load-index/visual-studio-code-create-static-web-app-resource-advanced.png" alt-text="サブスクリプション名を右クリックし、**[Create Static Web App (Advanced)]\(静的 Web アプリの作成 (詳細設定)\)** を選択します。":::
@@ -34,16 +43,13 @@ ms.locfileid: "104723518"
 
     |Prompt|Enter|
     |--|--|
-    |静的 Web アプリを作成する方法|既存の GitHub リポジトリを使用します|
-    |組織の選択|"_独自_" の GitHub の別名を組織として選択します。|
-    |リポジトリの選択|一覧から **azure-search-javascript-samples** を選択します。 |
-    |リポジトリのブランチの選択|一覧から **master** を選択します。 |
     |新しい静的 Web アプリの名前の入力。|自分のリソースに一意の名前を作成します。 たとえば `joansmith-azure-search-javascript-samples` のように、リポジトリ名の先頭に自分の名前を追加できます。 |
     |新しいリソース用のリソース グループの選択。|このチュートリアル用に作成したリソース グループを使用します。|
+    |SKU の選択| このチュートリアル用に無料の SKU を選択します。|
     |既定のプロジェクト構造を構成するためのビルド プリセットの選択。|[**カスタム**] を選択します。|
-    |アプリケーション コードの場所の選択|`search-website`|
-    |Azure 関数コードの場所の選択|`search-website/api`|
-    |ビルド出力のパスの入力|build|
+    |アプリケーション コードの場所の選択|`search-website`<br><br>これは、リポジトリのルートから Azure 静的 Web アプリまでのパスです。 |
+    |Azure 関数コードの場所の選択|`search-website/api`<br><br>これは、リポジトリのルートから Azure 関数アプリまでのパスです。 |
+    |ビルド出力のパスの入力|`build`<br><br>これは、Azure 静的 Web アプリから、生成されたファイルまでのパスです。|
     |新しいリソースの場所の選択。|近くのリージョンを選択します。|
 
 1. リソースが作成されたら、通知から **[Open Actions in GitHub]\(GitHub でアクションを開く\)** を選択します。 これにより、自分がフォークしたリポジトリを参照するブラウザー ウィンドウが開きます。 
@@ -62,17 +68,20 @@ ms.locfileid: "104723518"
 
 1. このクエリ キーは保存してください。これは次のセクションで使用する必要があります。 クエリ キーを使用してインデックスに対してクエリを実行できます。 
 
-## <a name="add-configuration-settings-in-visual-studio-code"></a>Visual Studio Code で構成設定を追加する
+## <a name="add-configuration-settings-in-azure-portal"></a>Azure portal で構成設定を追加する
 
 Azure 関数アプリは、Search シークレットが設定されるまで検索データを返しません。 
 
-1. アクティビティ バーから **[Azure]** を選択し、サイド バーから **[Static Web Apps]** を選択します。 
-1. **アプリケーション設定** が表示されるまで、新しい静的 Web アプリを展開します。
-1. **[アプリケーションの設定]** を右クリックしてから、 **[新しい設定の追加]** を選択します。
+1. アクティビティ バーで **[Azure]** を選択します。 
+1. 静的 Web アプリ リソースを右クリックし、 **[ポータルで開く]** を選択します。
 
-    :::image type="content" source="media/tutorial-javascript-create-load-index/visual-studio-code-static-web-app-configure-settings.png" alt-text="**[アプリケーションの設定]** を右クリックしてから、**[新しい設定の追加]** を選択します。":::
+    :::image type="content" source="media/tutorial-javascript-static-web-app/open-static-web-app-in-azure-portal.png" alt-text="JavaScript の静的 Web アプリ リソースを右クリックし、[ポータルで開く] を選択する。":::
 
-1. 以下の設定を追加します。
+1. **[構成]** 、 **[+ 追加]** の順に選択します。
+
+    :::image type="content" source="media/tutorial-javascript-static-web-app/add-new-application-setting-to-static-web-app-in-portal.png" alt-text="[構成] を選択し、JavaScript アプリの [追加] を選択する。":::
+
+1. 次の各設定を追加します。
 
     |設定|Search リソースの値|
     |--|--|
@@ -80,6 +89,17 @@ Azure 関数アプリは、Search シークレットが設定されるまで検�
     |SearchServiceName|実際の Search リソース名|
     |SearchIndexName|`good-books`|
     |SearchFacets|`authors*,language_code`|
+
+    Azure Cognitive Search では、コレクションのフィルター処理に、文字列の場合とは異なる構文が必要です。 フィールドが `Collection(Edm.String)` 型であることを示すために、フィールド名の後に `*` を追加します。 これにより、Azure 関数はクエリにフィルターを正しく追加できます。
+
+1. **[保存]** を選択して設定を保存します。 
+
+    :::image type="content" source="media/tutorial-javascript-static-web-app/save-new-application-setting-to-static-web-app-in-portal.png" alt-text="[保存] を選択して設定を保存する。":::
+
+1. VS Code に戻ります。 
+1. 静的 Web アプリを最新の状態に更新して、静的 Web アプリのアプリケーション設定を確認します。 
+
+    :::image type="content" source="media/tutorial-javascript-static-web-app/visual-studio-code-extension-fresh-resource.png" alt-text="静的 Web アプリを最新の状態に更新して、静的 Web アプリのアプリケーション設定を確認する。":::
 
 ## <a name="use-search-in-your-static-web-app"></a>静的 Web アプリで検索を使用する
 

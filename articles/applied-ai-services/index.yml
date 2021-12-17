@@ -1,0 +1,85 @@
+### YamlMime:Hub
+title: Azure Applied AI Services のドキュメント
+summary: '一般的なビジネス プロセス向けのソリューションの開発を促進する AI サービスのファミリ '
+brand: azure
+metadata:
+  title: Azure Applied AI Services のドキュメント
+  description: Azure Applied AI Services により AI を使用して複雑なビジネス シナリオを解決する方法について説明します。
+  ms.service: applied-ai-services
+  ms.topic: hub-page
+  author: nitinme
+  ms.author: nitinme
+  manager: nitinme
+  ms.custom: custom-portals-hub
+  ms.date: 06/11/2021
+highlightedContent:
+  items:
+    - title: Applied AI Services とは?
+      itemType: overview
+      url: ./what-are-applied-ai-services.md
+    - title: なぜ Applied AI Services なのか?
+      itemType: concept
+      url: ./why-applied-ai-services.md
+    - title: お客様が注目するユース ケース
+      itemType: learn
+      url: ./applied-ai-services-customer-spotlight-use-cases.md
+productDirectory:
+  items:
+    - title: Azure Bot Service
+      imageSrc: ./media/bot-services.svg
+      summary: ボットを作成して複数のチャネルにわたって接続します
+      url: /composer/
+    - title: Azure Form Recognizer
+      imageSrc: ./media/form-recognizer.svg
+      summary: わずかな時間とコストでドキュメントを使用可能なデータに変換します
+      url: ./form-recognizer/index.yml
+    - title: Azure Cognitive Search
+      imageSrc: ./media/cognitive-search.svg
+      summary: AI を利用したクラウド検索をモバイル アプリと Web アプリで使用できるようにします
+      url: ../search/index.yml
+    - title: Azure Metrics Advisor
+      imageSrc: ./media/metrics-advisor.svg
+      summary: メトリックの予防的な監視および問題の診断を行います
+      url: ./metrics-advisor/index.yml
+    - title: Azure Video Analyzer
+      imageSrc: ./media/video-analytics.svg
+      summary: ご利用のビデオからアクションにつながる分析情報を抽出します
+      url: ../azure-video-analyzer/index.yml
+    - title: Azure Immersive Reader
+      imageSrc: ./media/immersive-reader.svg
+      summary: ユーザーがテキストを読み、理解するのを支援します
+      url: ./immersive-reader/index.yml
+additionalContent:
+  sections:
+    - title: その他の技術情報
+      items:
+        - title: サポートとヘルプ
+          links:
+            - text: UserVoice に関するフィードバックを送信する
+              url: 'https://aka.ms/AppliedAIUserVoice'
+            - text: Microsoft Q&A で質問する
+              url: /answers/topics/azure-applied-ai-services.html
+            - text: StackOverflow でのトラブルシューティング
+              url: 'https://aka.ms/AppliedAIStackOverflow'
+        - title: クイック スタートを使用してコードを記述する
+          links:
+            - text: Azure Form Recognizer
+              url: ./form-recognizer/quickstarts/try-sample-label-tool.md
+            - text: Azure Metrics Advisor
+              url: ./metrics-advisor/quickstarts/web-portal.md
+            - text: Azure Immersive Reader
+              url: ./immersive-reader/quickstarts/client-libraries.md
+            - text: Azure Cognitive Search
+              url: ../search/search-get-started-portal.md
+            - text: Azure Video Analyzer
+              url: ../azure-video-analyzer/video-analyzer-docs/edge/detect-motion-emit-events-quickstart.md
+            - text: Azure Bot Service
+              url: /composer/quickstart-create-bot
+            - text: 無料で開始する
+              url: 'https://azure.microsoft.com/free/ai'
+        - title: その他の Azure AI サービスを探索する
+          links:
+            - text: Azure Cognitive Services
+              url: ../cognitive-services/index.yml
+            - text: Azure Machine Learning
+              url: ../machine-learning/index.yml

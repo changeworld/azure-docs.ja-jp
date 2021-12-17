@@ -3,17 +3,17 @@ title: Azure EA VM 予約インスタンス
 description: この記事では、VM 予約インスタンスに対する Azure 予約が、エンタープライズ登録にかかる金額の節約にどのように役立つかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2020
+ms.date: 10/22/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
-ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.reviewer: sapnakeshari
+ms.openlocfilehash: feac3cf4e2418fc7d85ab3cdebbba1d08b112e95
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98597965"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250067"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 
@@ -29,6 +29,8 @@ EA のお客様が予約を返却した場合、Azure 前払い (旧称: 年額�
 
 EA Portal には、前月における負の調整として、また今月における正の調整として返金が表示されます。 予約の交換についても同様に表示されます。 クレジット メモでは、元の請求書番号が引用されます。したがって、当初の購入額をクレジット メモで調整したければ、元の請求書番号を参照してください。
 
+直接 Enterprise のお客様は、Azure portal で返金の詳細を表示できます。 **予約トランザクション** メニューに移動し、予約の払い戻しを表示します。
+
 ## <a name="reservation-costs-and-usage"></a>予約のコストと使用状況
 
 エンタープライズ契約のお客様は、Azure portal および REST API でコストと使用状況データを確認できます。 予約のコストと使用状況については、次のことができます。
@@ -43,6 +45,14 @@ EA Portal には、前月における負の調整として、また今月にお�
 予約のコストと使用状況の詳細については、「[Enterprise Agreement の予約のコストと使用状況を取得する](../reservations/understand-reserved-instance-usage-ea.md)」を参照してください。
 
 価格の詳細については、「[Linux Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)」または「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」を参照してください。
+
+### <a name="reservation-prices"></a>予約価格
+
+予約割引が交渉されている場合であっても、それは EA ポータルの価格表に表示されません。 以前は、EA ポータルで割引料金を利用できましたが、その機能は削除されました。 予約価格の割引を交渉している場合、現在のところ、価格リストを入手する唯一の方法は [Azure サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を作成することです。
+
+予約価格が小売価格と EA の間で同じになるとは限りません。 同じになることもありますが、割引を交渉しているなら、料金は異なるでしょう。
+
+[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)と[小売価格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) に表示される価格は同じです。 API にクエリを実行することが、すべての価格を一度に表示する最善の方法です。
 
 ## <a name="reserved-instances-api-support"></a>予約インスタンス API サポート
 
@@ -96,7 +106,7 @@ Azure EA のお客様がお持ちの Azure 前払いが全額使用されてい�
 
 ### <a name="reserved-instance-expiration"></a>予約インスタンスの有効期限
 
-予約の 30 日前および有効期限の 30 日前にメールで通知が送付されます。 予約の期限が切れても、デプロイされている VM は稼働し続け、従量課金制で課金されます。 詳細については、[予約仮想マシン インスタンス プラン](https://azure.microsoft.com/pricing/reserved-vm-instances/)に関するページを参照してください。
+予約の有効期限の 30 日前と有効期限が切れたときに、メール通知が届きます。 予約の期限が切れても、デプロイされている VM は稼働し続け、従量課金制で課金されます。 詳細については、[予約仮想マシン インスタンス プラン](https://azure.microsoft.com/pricing/reserved-vm-instances/)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

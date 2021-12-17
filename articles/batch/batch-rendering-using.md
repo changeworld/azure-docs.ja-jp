@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/12/2020
 ms.topic: how-to
-ms.openlocfilehash: dc3d2cc53b478b1ec955d8f4b3717b0407772849
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d164eb0250c98573e781b87be339748900c4920b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103496628"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110452068"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch レンダリングを使用する
 
@@ -35,10 +35,6 @@ Azure Batch のレンダリングを使用する方法はいくつかありま�
 
 ## <a name="using-batch-explorer"></a>Batch Explorer を使用する
 
-Batch Explorer を使用してレンダリングを実行するステップ バイ ステップ チュートリアルについては、[Blender のチュートリアル](./tutorial-rendering-batchexplorer-blender.md)をご覧ください。
-
-### <a name="download-and-install"></a>ダウンロードおよびインストールする
-
 Windows、OSX および Linux 用の Batch Explorer の[ダウンロードが用意されています](https://azure.github.io/BatchExplorer/)。
 
 ### <a name="using-templates-to-create-pools-and-run-jobs"></a>テンプレートを使用してプールを作成してジョブを実行する
@@ -57,7 +53,5 @@ Batch Explorer の [データ] セクションでは、ローカル ファイル
 
 ## <a name="next-steps"></a>次の手順
 
-Batch レンダリングの例については、次の 2 つのチュートリアルをお試しください。
-
-* [Azure CLI を使用したレンダリング](./tutorial-rendering-cli.md)
-* [Batch Explorer を使用したレンダリング](./tutorial-rendering-batchexplorer-blender.md)
+* [Batch でのレンダリング アプリケーションの使用](batch-rendering-applications.md)について学習します。
+* [アセット ファイルと出力ファイルをレンダリングするためのストレージとデータ移動のオプション](batch-rendering-storage-data-movement.md)について学習します。

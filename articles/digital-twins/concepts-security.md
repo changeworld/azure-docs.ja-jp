@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins によるセキュリティのベスト プラクティスについて説明します。
 author: baanders
 ms.author: baanders
-ms.date: 3/18/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 81a44d4d0025c841cf56e19d6afee5e95bd44a55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59fa14f66e5fdb1424a4bac30a30cf70118149b4
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101730509"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131470"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
-Azure Digital Twins では、セキュリティのために、デプロイ内の特定のデータ、リソース、アクションへのアクセスを正確に制御できます。 この処理には、**Azure ロールベースのアクセス制御 (Azure RBAC)** と呼ばれるきめ細かいロールおよびアクセス許可の管理戦略が使用されています。 Azure RBAC の一般的な原則については、[こちら](../role-based-access-control/overview.md)を参照してください。
+Azure Digital Twins では、セキュリティのために、デプロイ内の特定のデータ、リソース、アクションへのアクセスを正確に制御できます。 この処理には、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) と呼ばれるきめ細かいロールおよびアクセス許可の管理戦略が使用されています。
 
 Azure Digital Twins では、保存データの暗号化もサポートされています。
 
@@ -37,7 +37,7 @@ Azure AD では、アクセスは 2 段階のプロセスです。 セキュリ�
 
 承認の手順では、セキュリティ プリンシパルに Azure ロールを割り当てる必要があります。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 Azure Digital Twins には、Azure Digital Twins リソースの一連のアクセス許可を含む Azure ロールが用意されています。 これらのロールについては、この記事の後半で説明します。
 
-Azure でサポートされているロールとロールの割り当ての詳細については、Azure RBAC ドキュメントの [*各種ロールの概要*](../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
+Azure でサポートされているロールとロールの割り当ての詳細については、Azure RBAC ドキュメントの[各種ロールの概要](../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
 
 #### <a name="authentication-with-managed-identities"></a>マネージド ID による認証
 
@@ -47,7 +47,7 @@ Azure でサポートされているロールとロールの割り当ての詳�
 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Authorization:Azure Digital Twins の Azure ロール
 
-Azure には、Azure Digital Twins [データ プレーン API](how-to-use-apis-sdks.md#overview-data-plane-apis) へのアクセスを承認するための **2 つの Azure 組み込みロール** が用意されています。 名前または ID を使用してロールを参照できます。
+Azure には、Azure Digital Twins [データ プレーン API](concepts-apis-sdks.md#overview-data-plane-apis) へのアクセスを承認するための **2 つの Azure 組み込みロール** が用意されています。 名前または ID を使用してロールを参照できます。
 
 | 組み込みのロール | 説明 | id | 
 | --- | --- | --- |
@@ -55,19 +55,19 @@ Azure には、Azure Digital Twins [データ プレーン API](how-to-use-apis-
 | Azure Digital Twins Data Reader (Azure Digital Twins データ閲覧者) | Azure Digital Twins リソースへの読み取り専用アクセス権が付与されます | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
 ロールを割り当てるには、次の 2 つの方法があります。
-* Azure portal で Azure Digital Twins のアクセス制御 (IAM) ペインを使用する (「[*Azure portal を使用して Azure ロールを割り当てる*](../role-based-access-control/role-assignments-portal.md)」を参照してください)
+* Azure portal で Azure Digital Twins のアクセス制御 (IAM) ペインを使用する (「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください)
 * CLI コマンドを使用してロールを追加または削除する
 
-この詳細な実行手順については、[*Azure Digital Twins チュートリアルのエンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照してください。
+この詳細な実行手順については、Azure Digital Twins [エンド ツー エンドのソリューションの接続](tutorial-end-to-end.md)に関するページを参照してください。
 
-組み込みロールの定義方法の詳細については、Azure RBAC のドキュメントの [*ロール定義の概要*](../role-based-access-control/role-definitions.md)に関するページを参照してください。 Azure カスタム ロールの作成については、「[*Azure カスタム ロール*](../role-based-access-control/custom-roles.md)」を参照してください。
+組み込みロールの定義方法の詳細については、Azure RBAC のドキュメントの[ロール定義の概要](../role-based-access-control/role-definitions.md)に関するページを参照してください。 Azure カスタム ロールの作成については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
 ##### <a name="automating-roles"></a>ロールの自動化
 
 自動化されたシナリオでロールを参照する場合は、名前ではなく **ID** を使用して参照することをお勧めします。 名前はリリースによって変わる可能性がありますが、ID は変わらないため、自動化の場合はより安定した参照になります。
 
 > [!TIP]
-> `New-AzRoleAssignment` ([ reference](/powershell/module/az.resources/new-azroleassignment)) などのコマンドレットを使用してロールを割り当てる場合は、`-RoleDefinitionName` ではなく `-RoleDefinitionId` パラメーターを使用して、ロールの名前ではなく ID を渡すことができます。
+> `New-AzRoleAssignment` ([reference](/powershell/module/az.resources/new-azroleassignment)) などのコマンドレットを使用してロールを割り当てる場合は、`-RoleDefinitionName` ではなく `-RoleDefinitionId` パラメーターを使用して、ロールの名前ではなく ID を渡すことができます。
 
 ### <a name="permission-scopes"></a>アクセス許可のスコープ
 
@@ -82,17 +82,17 @@ Azure には、Azure Digital Twins [データ プレーン API](how-to-use-apis-
 
 ### <a name="troubleshooting-permissions"></a>アクセス許可のトラブルシューティング
 
-ユーザーが自分のロールで許可されていないアクションの実行を試みた場合、`403 (Forbidden)` と書かれた、サービス要求からのエラーが表示されることがあります。 詳細とトラブルシューティングの手順については、"[*Azure Digital Twins 要求が失敗しました: 状態 403 (許可されていません)*](troubleshoot-error-403.md)" といったエラーのトラブルシューティングに関するページを参照してください。
+ユーザーが自分のロールで許可されていないアクションの実行を試みた場合、`403 (Forbidden)` と書かれた、サービス要求からのエラーが表示されることがあります。 詳細とトラブルシューティングの手順については、[サービス要求の失敗: エラー 403 (許可されていません) のトラブルシューティング](troubleshoot-error-403.md)に関する記事を参照してください。
 
-## <a name="managed-identity-for-accessing-other-resources-preview"></a>他のリソースにアクセスするためのマネージド ID (プレビュー)
+## <a name="managed-identity-for-accessing-other-resources"></a>他のリソースにアクセスするためのマネージド ID
 
-Azure Digital Twins インスタンスの [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **マネージド ID** を設定することで、Azure AD で保護されている他のリソース ([Azure Key Vault](../key-vault/general/overview.md) など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID について詳しくは、「 [*Azure リソースのマネージド ID*](../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。 
+Azure Digital Twins インスタンスの [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **マネージド ID** を設定することで、Azure AD で保護されている他のリソース ([Azure Key Vault](../key-vault/general/overview.md) など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID について詳しくは、「 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。 
 
 Azure では、システム割り当てとユーザー割り当てという 2 種類のマネージド ID がサポートされています。 現時点では、Azure Digital Twins では **システム割り当て ID** のみがサポートされています。 
 
 Azure Digital インスタンスのシステム割り当てマネージド ID を使用して、[カスタム定義エンドポイント](concepts-route-events.md#create-an-endpoint)に対する認証を行うことができます。 Azure Digital Twins では、[Event Hub](../event-hubs/event-hubs-about.md) と  [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)  の送信先用のエンドポイントと[配信不能イベント](concepts-route-events.md#dead-letter-events)用の [Azure Storage コンテナー](../storage/blobs/storage-blobs-introduction.md)  エンドポイントに対する、システム割り当て ID ベースの認証がサポートされています。 [Event Grid](../event-grid/overview.md)  エンドポイントでは、現時点ではマネージド ID はサポートされていません。
 
-Azure Digital Twins のシステムマネージド ID を有効にし、それを使用してイベントをルーティングする方法については、「[*方法: イベントをルーティングするためにマネージド ID を有効にする (プレビュー)*](./how-to-enable-managed-identities-portal.md)」を参照してください。
+Azure Digital Twins のシステムマネージド ID を有効にし、それを使用してイベントをルーティングする方法については、「[マネージド ID を使用してイベントをルーティングする](how-to-route-with-managed-identity.md)」を参照してください。
 
 ## <a name="private-network-access-with-azure-private-link-preview"></a>Azure Private Link を使用したプライベート ネットワーク アクセス (プレビュー)
 
@@ -102,11 +102,11 @@ Azure Digital Twins のシステムマネージド ID を有効にし、それ�
 
 プライベート エンドポイントでは、Azure VNet アドレス空間の IP アドレスが使用されます。 プライベート ネットワーク上のクライアントと Azure Digital Twins インスタンス間のネットワーク トラフィックは、VNet と Microsoft バックボーン ネットワーク上のプライベート リンクを経由します。これにより、パブリック インターネットに露出されることがなくなります。 このシステムを視覚化すると、次のようになります。
 
-:::image type="content" source="media/concepts-security/private-link.png" alt-text="PowerGrid 社のネットワークを示している図。インターネット/パブリック クラウドへのアクセスがない保護された VNET であり、Private Link 経由で CityOfTwins と呼ばれる Azure Digital Twins インスタンスに接続している。":::
+:::image type="content" source="media/concepts-security/private-link.png" alt-text="ネットワークを示している図。パブリック クラウドへのアクセスがない保護された VNET であり、Private Link 経由で Azure Digital Twins インスタンスに接続している。":::
 
 Azure Digital Twins インスタンス用のプライベート エンドポイントを構成することで、Azure Digital Twins インスタンスをセキュリティで保護してパブリックに露出されないようにするだけでなく、VNet からのデータの流出を回避できます。
 
-Azure Digital Twins 用の Private Link を設定する方法については、「[*方法: Private Link を使用してプライベート アクセスを有効にする (プレビュー)*](./how-to-enable-private-link-portal.md)」を参照してください。
+Azure Digital Twins 用の Private Link を設定する方法については、「[Private Link を使用してプライベート アクセスを有効にする (プレビュー)](./how-to-enable-private-link.md)」を参照してください。
 
 ### <a name="design-considerations"></a>設計上の考慮事項 
 
@@ -119,7 +119,7 @@ Private Link の制限事項については、 [Azure Private Link のドキ�
 
 ## <a name="service-tags"></a>サービス タグ
 
-**サービス タグ** は、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。 サービス タグの詳細については、" [*仮想ネットワーク タグ*"](../virtual-network/service-tags-overview.md)に関するページを参照してください。 
+**サービス タグ** は、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。 サービス タグの詳細については、" [仮想ネットワーク タグ](../virtual-network/service-tags-overview.md)" に関するページを参照してください。 
 
 サービス タグを使用して、 [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules) または  [Azure Firewall](../firewall/service-tags.md) に対してネットワーク アクセス制御を定義するには、セキュリティ規則を作成するときに特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な " *ソース*"  または " *宛先*"  フィールドにサービス タグ名 (この場合は  **AzureDigitalTwins**) を指定することにより、対応するサービスのトラフィックを許可または拒否することができます。 
 
@@ -133,7 +133,7 @@ Private Link の制限事項については、 [Azure Private Link のドキ�
 
 Azure Digital Twins でサービス タグを使用して [イベント ルート](concepts-route-events.md) エンドポイントにアクセスする手順を次に示します。
 
-1. 最初に、Azure の IP 範囲とサービス タグを示す次の JSON ファイル参照をダウンロードします。["*Azure の IP 範囲とサービス タグ*"](https://www.microsoft.com/download/details.aspx?id=56519)。 
+1. 最初に、Azure の IP 範囲とサービス タグを示す次の JSON ファイル参照をダウンロードします。"[Azure の IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)"。 
 
 2. JSON ファイル内で "AzureDigitalTwins" IP 範囲を検索します。  
 
@@ -157,8 +157,8 @@ Azure Digital Twins によって、データ センターに書き込まれる�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [*インスタンスと認証の設定方法*](how-to-set-up-instance-portal.md)に関するページで取り上げられている、動作中の概念について確認します。
+* 「[インスタンスと認証を設定する](how-to-set-up-instance-portal.md)」で取り上げられている、動作中の概念について確認します。
 
-* クライアント アプリケーション コードからこれらの概念を操作する方法を、[*アプリ認証コードを作成する方法*](how-to-authenticate-client.md)に関するページで確認します。
+* クライアント アプリケーション コードからこれらの概念を操作する方法については、「[アプリ認証コードを作成する](how-to-authenticate-client.md)」を参照してください。
 
 * [Azure RBAC](../role-based-access-control/overview.md) の詳細を確認します。

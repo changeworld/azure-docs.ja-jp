@@ -1,90 +1,140 @@
 ---
-title: Azure Active Directory でのアプリケーション管理とは
-description: クラウドとオンプレミス アプリケーションの Identity and Access Management (IAM) システムとして Azure Active Directory (AD) を使用する方法の概要です。
+title: アプリケーション管理とは
+description: Azure Active Directory でのアプリケーションのライフサイクル管理の概要。
+titleSuffix: Azure AD
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
-ms.date: 01/22/2021
-ms.author: iangithinji
-ms.reviewer: ''
-ms.openlocfilehash: 8bdb8eb9cf176f8e190769e38c81d02ad2985196
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.date: 10/22/2021
+ms.author: davidmu
+ms.reviewer: sureshja, napuri
+ms.openlocfilehash: 3b1e814def005283fb08ab7eeb3c23a8a38e3ee2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376394"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257399"
 ---
-# <a name="what-is-application-management"></a>アプリケーション管理とは
+# <a name="what-is-application-management-in-azure-active-directory"></a>Azure Active Directory でのアプリケーション管理とは
 
-Azure AD は Identity and Access Management (IAM) システムです。 デジタル ID に関する情報を格納するための 1 つの場所を提供します。 ユーザー情報が格納される場所として Azure AD を使用するようにソフトウェア アプリケーションを構成できます。 
+Azure Active Directory (Azure AD) でのアプリケーション管理は、クラウドでアプリケーションを作成、構成、管理、監視するプロセスです。 [アプリケーション](../develop/app-objects-and-service-principals.md) Azure AD テナントに登録されていると、そこに割り当てられているユーザーは安全にアクセスできます。 多くの種類のアプリケーションを Azure AD に登録できます。 詳細については、「[Microsoft ID プラットフォームのアプリケーションの種類](../develop/v2-app-types.md)」を参照してください。
 
-Azure AD は、アプリケーションと統合するように構成する必要があります。 つまり、どのアプリの ID 認証に使用されているかを把握している必要があります。 それらのアプリを Azure AD に認識させるプロセスと、Azure AD 側で行うべきアプリの処理方法は、アプリケーション管理と呼ばれます。
+この記事では、アプリケーションのライフサイクルを管理する上で重要な次の側面について説明します。
 
-アプリケーションを管理するには、Azure Active Directory ポータルの [管理] セクションにある **[エンタープライズ アプリケーション]** ページを使用します。
+- **開発、追加、または接続** – 独自のアプリケーションを開発するか、事前に統合されたアプリケーションを使用するか、オンプレミスのアプリケーションに接続するかに応じて、異なるパスを使用します。
+- **アクセスの管理** – アクセスを管理するには、シングル サインオン (SSO) を使用し、リソースを割り当て、アクセスの許可と同意の方法を定義し、自動プロビジョニングを使用します。
+- **プロパティの構成** – アプリケーションにサインインするための要件と、ユーザー ポータルでのアプリケーションの表現方法を構成します。
+- **アプリケーションのセキュリティ保護** – アクセス許可、多要素認証 (MFA)、条件付きアクセス、トークン、証明書の構成を管理します。
+- **管理と監視** – エンタイトルメント管理とリソースのレポートおよび監視を使用して、対話を管理し、アクティビティを確認します。
+- **クリーンアップ** – アプリケーションが不要になったら、アプリケーションへアクセス権を削除し、アプリケーションを削除して、テナントをクリーンアップします。
 
-![Azure AD ポータルの [管理] セクションの下にある [エンタープライズ アプリケーション] オプション。](media/what-is-application-management/enterprise-applications-in-nav.png)
+## <a name="develop-add-or-connect"></a>開発、追加、または接続
 
-## <a name="what-is-an-identity-and-access-management-iam-system"></a>Identity and Access Management (IAM) システムとは
-アプリケーションとは、何らかの目的で使用されるソフトウェアのことです。 ほとんどのアプリでは、ユーザーにサインインが要求されます。
+Azure AD では複数の方法でアプリケーションを管理できます。 アプリケーションの管理を開始する最も簡単な方法は、Azure AD ギャラリーにある事前に統合されたアプリケーションを使用することです。 独自のアプリケーションを開発して Azure AD に登録するオプションもあり、あるいはオンプレミスのアプリケーションを引き続き使用することもできます。
 
-集中型 ID システムは、すべてのアプリケーションで使用できるユーザー情報を格納するための 1 つの場所を提供します。 このようなシステムが、Identity and Access Management (IAM) システムとして知られています。 Azure Active Directory は、Microsoft クラウドの IAM システムです。
+次の図に、これらのアプリケーションが Azure AD と対話する方法を示します。
 
->[!TIP]
->IAM システムは、ユーザー ID を追跡するための 1 つの場所を提供します。 Azure AD は、Microsoft クラウドの IAM システムです。
+:::image type="content" source="media/what-is-application-management/app-management-overview.png" alt-text="独自に開発されたアプリ、事前統合アプリ、オンプレミス アプリをエンタープライズ アプリとして使用する方法を示す図。":::
 
-## <a name="why-manage-applications-with-a-cloud-solution"></a>クラウド ソリューションを使用してアプリケーションを管理する理由
+### <a name="pre-integrated-applications"></a>事前統合されたアプリケーション
 
-組織には通常、ユーザーが業務を遂行するために使用している何百ものアプリケーションがあります。 ユーザーは、多数のデバイスおよび場所から、これらのアプリケーションにアクセスします。 日々、新しいアプリケーションが追加、開発され、また、廃止されます。 アプリとアクセス ポイントもそれだけ多くなるため、それらすべてと連携する ID ソリューションの使用が重要となります。
+多くのアプリケーションは既に事前に統合されており (上の図では "クラウド アプリケーション" と表示)、最小限の作業で設定できます。 Azure AD ギャラリー内の各アプリケーションには、[アプリケーションを構成する](../saas-apps/tutorial-list.md)ために必要な手順を示す記事が用意されています。 ギャラリーから Azure AD テナントにアプリケーションを追加する方法の簡単な例については、[エンタープライズ アプリケーションの追加に関するクイックスタート](add-application-portal.md)を参照してください。
 
->[!TIP]
->Azure AD アプリケーション ギャラリーには、ID プロバイダーとして Azure AD で動作するようにあらかじめ構成されている多くの一般的なアプリケーションが含まれています。
+### <a name="your-own-applications"></a>独自のアプリケーション
 
-## <a name="how-does-azure-ad-work-with-apps"></a>Azure AD がアプリでどのように動作するか
+独自のビジネス アプリケーションを開発する場合は、Azure AD に登録して、テナントが提供するセキュリティ機能を利用できます。 アプリケーションを **[アプリの登録]** で登録するか、新しいアプリケーションを **[エンタープライズ アプリケーション]** で追加するときに **[独自のアプリケーションの作成]** リンクを使用して登録できます。 Azure AD との統合のためにアプリケーションでどのように[認証](../develop/authentication-vs-authorization.md)を実装するかを検討します。 
 
-Azure AD は、クラウド アプリとオンプレミス アプリの中間に存在し、それらの ID 管理を担います。 
+ギャラリーを介してアプリケーションを使用できるようにするには、[追加のリクエストを送信](../develop/v2-howto-app-gallery-listing.md)します。
 
-![Azure AD を通じてフェデレーションされているアプリを示す図](media/what-is-application-management/app-management-overview.png)
 
->[!TIP]
->会社の人事システムにユーザーを追加する際、それらのユーザーが自動的に Azure AD に追加されるよう、[ユーザー プロビジョニングを自動化](../app-provisioning/user-provisioning.md)することで管理コストを削減できます。 
+### <a name="on-premises-applications"></a>オンプレミスのアプリケーション
 
-## <a name="what-types-of-applications-can-i-integrate-with-azure-ad"></a>Azure AD と統合できるアプリケーションの種類
+オンプレミスのアプリケーションを引き続き使用するが、Azure AD が提供する機能を利用する場合は、[Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md)を使用して Azure AD に接続します。 アプリケーション プロキシは、オンプレミスのアプリケーションを外部に発行する場合に実装できます。 これにより、内部アプリケーションにアクセスする必要があるリモート ユーザーが、安全にそれらにアクセスできるようになります。
 
-Azure AD は、ほぼすべてのアプリの ID システムとして使用することができます。 多くのアプリは、あらかじめ構成されているため、最小限の労力でセットアップすることができます。 こうした事前構成済みのアプリは、[Azure AD アプリ ギャラリー](/azure/active-directory/saas-apps/)で公開されています。 
+## <a name="manage-access"></a>アクセスを管理する
 
-まだギャラリーに存在しないアプリも、そのほとんどは、シングル サインオンを手動で構成することができます。 Azure AD には、いくつかの SSO オプションが用意されています。 最も一般的な方法としては、SAML ベースの SSO と OIDC ベースの SSO が挙げられます。 アプリを統合して SSO を実現する方法について詳しくは、「[シングル サインオンのオプション](sso-options.md)」を参照してください。 
+アプリケーションの[アクセスを管理](what-is-access-management.md)するには、次の質問に回答する必要があります。
 
-オンプレミス アプリを使用している組織では、アプリ プロキシを使用してそれらを統合することができます。 アプリ プロキシを使用してそれらを統合できます。 詳細については、[Azure AD アプリケーション プロキシを介したオンプレミス アプリケーションへのリモート アクセスの提供](application-proxy.md)に関するページを参照してください。
+- アプリケーションに対するアクセスをどのように許可および同意するか。
+- アプリケーションで SSO をサポートするか。
+- どのユーザー、グループ、所有者をアプリケーションに割り当てる必要があるか。 
+- アプリケーションをサポートする他の ID プロバイダーが存在するか。
+- ユーザー ID とロールのプロビジョニングを自動化することが役に立つか。
 
->[!TIP]
->独自の基幹業務アプリケーションを構築するときに、それらを Azure AD と統合してシングル サインオンをサポートできます。 Azure AD 向けアプリ開発について詳しくは、[Microsoft ID プラットフォーム](..//develop/v2-overview.md)に関するページを参照してください。
+### <a name="access-and-consent"></a>アクセスと同意
 
-## <a name="manage-risk-with-conditional-access-policies"></a>条件付きアクセス ポリシーによるリスクの管理
+[ユーザーの同意設定を管理](configure-user-consent.md)して、ユーザーがアプリケーションまたはサービスにユーザー プロファイルと組織のデータへのアクセスを許可できるかどうかを選択できます。 アプリケーションにアクセス権が付与されている場合、ユーザーは Azure AD と統合されたアプリケーションにサインインできます。また、アプリケーションは組織のデータにアクセスして、高機能なデータ駆動型エクスペリエンスを提供できます。
 
-[条件付きアクセス](../conditional-access/concept-conditional-access-cloud-apps.md)と Azure AD シングル サインオン (SSO) を組み合わせることで、アプリケーションにアクセスするための高度なセキュリティが提供されます。 条件付きアクセス ポリシーは、設定された条件に基づいて粒度の細かい制御をアプリに提供します。 
+多くの場合、ユーザーはアプリケーションが要求しているアクセス許可に同意できません。 ユーザーが正当な理由を提供し、管理者によるアプリケーションのレビューと承認を要求できるようにするには、[管理者の同意ワークフロー](configure-admin-consent-workflow.md)を構成します。
 
-## <a name="improve-productivity-with-single-sign-on"></a>シングル サインオンによる生産性の向上
+管理者は、アプリに[テナント全体の管理者の同意を付与](grant-admin-consent.md)できます。 テナント全体の管理者の同意は、通常のユーザーが許可できないアクセス許可がアプリケーションに必要な場合に必要となり、組織が独自のレビュー プロセスを実装できるようにします。 同意を付与する前に、常にアプリケーションで要求されているアクセス許可をよく確認してください。 アプリケーションにテナント全体の管理者の同意が付与されていると、ユーザーの割り当てが必要であると構成されていない限り、すべてのユーザーがアプリにサインインできるようになります。
 
-シングル サインオン (SSO) によって、Microsoft 365 と皆さんが使用する他のすべてのアプリとの間で一元化されたユーザー エクスペリエンスが実現します。 しきりにユーザー名とパスワードを入力する習慣はもうやめましょう。
+### <a name="single-sign-on"></a>シングル サイン オン
 
-シングル サインオンの詳細については、[シングル サインオンの概要](what-is-single-sign-on.md)に関するページを参照してください。
+アプリケーションでの SSO の実装を検討してください。 ほとんどのアプリケーションを SSO 用に手動で構成できます。 Azure AD での最も一般的なオプションは、[SAML ベースの SSO と OpenID Connect ベースの SSO](../develop/active-directory-v2-protocols.md) です。 開始する前に、SSO の要件と[デプロイを計画する](plan-sso-deployment.md)方法を理解していることを確認してください。 Azure AD テナントのエンタープライズ アプリケーションに対して SAML ベースの SSO を構成する簡単な例については、[エンタープライズ アプリケーションのシングル サインオンを有効にする方法に関するクイックスタート](add-application-portal-setup-sso.md)を参照してください。
 
-## <a name="address-governance-and-compliance"></a>ガバナンスとコンプライアンスへの対応
+### <a name="user-group-and-owner-assignment"></a>ユーザー、グループ、所有者の割り当て
 
-セキュリティ インシデント ツールとイベント監視 (SIEM) ツールを使用するレポートを通じてアプリを監視します。 ポータルから、または API から、レポートにアクセスできます。 お使いのアプリケーションに誰がアクセスできるかをプログラムから監視して、アクセス レビュー経由で非アクティブなユーザーへのアクセスを削除します。
+既定では、すべてのユーザーは、エンタープライズ アプリケーションに割り当てられていない場合でも、それらにアクセスできます。 ただし、アプリケーションを一連のユーザーに割り当てる場合、アプリケーションにはユーザー割り当てが必要です。 ユーザー アカウントを作成してアプリケーションに割り当てる方法の簡単な例については、[ユーザー アカウントの作成と割り当てに関するクイックスタート](add-application-portal-assign-users.md)を参照してください。 
 
-## <a name="manage-costs"></a>コストを管理する
+サブスクリプションに含まれる場合は、[グループをアプリケーションに割り当て](assign-user-or-group-access-portal.md)て、継続的なアクセス管理をグループ所有者に委任できるようにします。 
 
-Azure AD に移行することで、コストを節約し、オンプレミス インフラストラクチャの管理における負担を除去できます。 また、Azure AD はアプリケーションにセルフ サービス アクセスを提供し、管理者とユーザーの両者が時間を節約できます。 シングル サインオンにより、アプリケーション固有のパスワードはなくなります。 この 1 回限りのサインオンにより、アプリケーションのパスワード リセットと、パスワードの取得時の生産性低下に関連するコストを削減できます。
+[所有者を割り当てる](assign-app-owners.md)ことは、アプリケーションについての Azure AD 構成のすべての側面を管理する能力を付与するための簡単な方法です。 所有者であるユーザーは、アプリケーションの組織固有の構成を管理できます。
 
-人事管理に重点を置いたアプリケーションや、多数のユーザーがいるアプリケーションについては、アプリのプロビジョニングを利用して効率化を図ることができます。 ユーザーを追加したり削除したりするプロセスが、アプリのプロビジョニングによって自動化されます。 詳細については、「[アプリケーションのプロビジョニングとは](../app-provisioning/user-provisioning.md)」を参照してください。
+### <a name="automate-provisioning"></a>プロビジョニングを自動化する
+
+[アプリケーションのプロビジョニング](../app-provisioning/user-provisioning.md)とは、ユーザーがアクセスする必要のあるアプリケーションに、ユーザーの ID とロールを自動的に作成することを意味します。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。
+
+### <a name="identity-providers"></a>ID プロバイダー
+
+Azure AD が対話する必要がある ID プロバイダーが存在するでしょうか。 [ホーム領域検出](home-realm-discovery-policy.md)により、ユーザーがサインイン時にどの ID プロバイダーに対して認証する必要があるかを Azure AD で決定できるようにする構成が提供されます。
+
+### <a name="user-portals"></a>ユーザー ポータル
+
+Azure AD では、組織内のユーザーにアプリケーションをデプロイする方法をカスタマイズできます。 たとえば、[マイ アプリ ポータルや Microsoft 365 アプリケーション起動ツール](end-user-experiences.md)などです。 マイ アプリを使用すると、ユーザーは 1 か所で作業を開始し、アクセスできるすべてのアプリケーションを見つけることができます。 アプリケーションの管理者は、[組織内のユーザーがマイ アプリを使用する方法を計画する](my-apps-deployment-plan.md)必要があります。
+
+## <a name="configure-properties"></a>プロパティの構成
+
+アプリケーションを Azure AD テナントに追加するときに、ユーザーのサインイン方法に影響する[プロパティを構成](add-application-portal-configure.md)できます。 サインイン機能を有効または無効にでき、またユーザー割り当てを必須にできます。 また、アプリケーションの可視性、アプリケーションを表すロゴ、およびアプリケーションに関するメモを決定できます。
+
+## <a name="secure-the-application"></a>アプリケーションをセキュリティで保護する
+
+エンタープライズ アプリケーションのセキュリティを維持するために使用できる複数の方法があります。 たとえば、[テナントのアクセスを制限](tenant-restrictions.md)したり、[可視性、データ、分析を管理](cloud-app-security.md)したり、場合によっては[ハイブリッド アクセス](secure-hybrid-access.md)を提供できます。 エンタープライズ アプリケーションをセキュリティで保護するには、アクセス許可、MFA、条件付きアクセス、トークン、証明書の構成を管理する必要もあります。
+
+### <a name="permissions"></a>アクセス許可
+
+[アプリケーションまたはサービスに付与されたアクセス許可](manage-application-permissions.md)を定期的に確認し、必要に応じて管理することが重要です。 疑わしいアクティビティが存在するかどうかを定期的に評価することで、アプリケーションへの適切なアクセスのみを許可してください。
+
+[アクセス許可の分類](configure-permission-classifications.md)を使用すると、組織のポリシーとリスク評価に応じて、さまざまなアクセス許可の影響を特定できます。 たとえば、同意ポリシーでアクセス許可の分類を使用して、ユーザーが同意を許可された一連のアクセス許可を識別できます。
+
+### <a name="multifactor-authentication-and-conditional-access"></a>多要素認証と条件付きアクセス
+
+Azure AD MFA を使用すると、データとアプリケーションへのアクセスを保護し、2 つ目の形式の認証を使用して追加のセキュリティ層を提供することができます。 2 つ目の要素の認証に使用できる方法は多数あります。 開始する前に、組織内の[アプリケーションへの MFA の展開を計画](../authentication/howto-mfa-getstarted.md)します。
+
+組織は、[条件付きアクセス](../conditional-access/overview.md)を使用して MFA を有効にすることで、ソリューションを組織の特定のニーズに適合させることができます。 管理者は、条件付きアクセス ポリシーを使用して、特定の[アプリケーション、アクション、認証コンテキスト](../conditional-access/concept-conditional-access-cloud-apps.md)にコントロールを割り当てることができます。
+
+### <a name="tokens-and-certificates"></a>トークンと証明書
+
+Azure AD の認証フローでは、使用されるプロトコルに応じて、さまざまな種類のセキュリティ トークンが使用されます。 たとえば、SAML プロトコルでは [SAML トークン](../develop/reference-saml-tokens.md)が使用され、OpenID Connect プロトコルでは [ID トークン](../develop/id-tokens.md)と[アクセス トークン](../develop/access-tokens.md)が使用されます。 トークンは、Azure AD で特定の標準アルゴリズムにより生成された一意の証明書で署名されます。 
+
+[トークンを暗号化する](howto-saml-token-encryption.md)ことで、セキュリティをさらに強化できます。 また、アプリケーションで[許可されているロール](../develop/howto-add-app-roles-in-azure-ad-apps.md)を含め、トークン内の情報を管理することもできます。
+
+Azure AD は、既定では [SHA-256 アルゴリズム](certificate-signing-options.md)を使用して、SAML 応答に署名します。 アプリケーションで SHA-1 が必要でない限り、SHA-256 を使用してください。 [証明書の有効期間を管理する](manage-certificates-for-federated-single-sign-on.md)ためのプロセスを確立してください。 署名証明書の最長有効期間は 3 年です。 証明書の期限切れによる停止を防止または最小限にするには、ロールとメール配布リストを使用して、証明書関連の変更通知が厳重に監視されるようにします。 
+
+## <a name="govern-and-monitor"></a>管理と監視
+
+Azure AD での[エンタイトルメント管理](../governance/entitlement-management-scenarios.md)を使用すると、アプリケーションと管理者、カタログ所有者、アクセス パッケージ マネージャー、承認者、および要求元との間のやり取りを管理できます。
+
+Azure AD のレポートおよび監視ソリューションは、法令、セキュリティ、運用の各要件と、既存の環境およびプロセスによって異なります。 Azure AD にはいくつかのログが保持されており、アプリケーションで可能な限り最適なエクスペリエンスを維持するために、[レポートと監視の展開](../reports-monitoring/plan-monitoring-and-reporting.md)を計画する必要があります。
+
+## <a name="clean-up"></a>クリーンアップ
+
+アプリケーションへのアクセス権をクリーンアップできます。 たとえば、[ユーザーのアクセス権を削除](methods-for-removing-user-access.md)します。 また、[ユーザーがサインインする方法を無効にする](disable-user-sign-in-portal.md)こともできます。 最後に、組織でアプリケーションが不要になった場合は、削除することができます。 Azure AD テナントからエンタープライズ アプリケーションを削除する簡単な例については、[エンタープライズ アプリケーションの削除に関するクイックスタート](delete-application-portal.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)
-- [アプリケーション統合の概要](plan-an-application-integration.md)
-- [プロビジョニングを自動化する方法](../app-provisioning/user-provisioning.md)
+- [エンタープライズ アプリケーション追加のクイックスタート](add-application-portal.md)を使用して、最初のエンタープライズ アプリケーションを追加します。

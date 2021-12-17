@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用して VMware VM をオンプレミス サイトに再保護する
 description: Azure Site Recovery を使用して Azure にフェールオーバーした後で、VMware VM を再保護する方法について説明します。
-author: mayurigupta13
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.author: mayg
-ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 21b34b33438a2f8b46fa618eb85fdc779fb8b870
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89441495"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576658"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Azure からオンプレミスへの再保護
 

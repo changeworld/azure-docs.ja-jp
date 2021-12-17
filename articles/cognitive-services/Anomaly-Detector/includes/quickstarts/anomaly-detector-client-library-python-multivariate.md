@@ -6,14 +6,14 @@ author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/25/2020
+ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 9b848f6c86f2ff2e95fa5cc191b088b7175f2311
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0ac9f337ed24a3e440fe877998a40181853d5657
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318760"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128910788"
 ---
 Python 用 Anomaly Detector (多変量) クライアント ライブラリを使ってみましょう。 サービスによって提供されるアルゴリズムを使用してパッケージをインストールするには、次の手順に従います。 新しい多変量異常検出 API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出できる高度な AI を開発者が容易に統合することができます。 異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されます。 これにより、複雑なシステムを障害から予防的に保護することができます。
 
@@ -22,6 +22,8 @@ Python 用 Anomaly Detector (多変量) クライアント ライブラリは、
 * 時系列のグループからシステム レベルの異常を検出する。
 * 個々の時系列では得られる情報が少なく、すべての信号に着目して問題を検出する必要がある。
 * システム正常性をさまざまな側面から測定する数十個から数百個にのぼる各種センサーを使用して高価な物理資産の予測メンテナンスを行う。
+
+[ライブラリのリファレンス ドキュメント](/python/api/azure-ai-anomalydetector/azure.ai.anomalydetector) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [パッケージ (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/) | [サンプル コード](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,6 +36,15 @@ Python 用 Anomaly Detector (多変量) クライアント ライブラリは、
 
 
 ## <a name="setting-up"></a>設定
+
+### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
+
+Python をインストールしたら、次を使用してクライアント ライブラリをインストールすることができます。
+
+```console
+pip install pandas
+pip install --upgrade azure-ai-anomalydetector
+```
 
 ### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
 
@@ -50,20 +61,17 @@ from azure.core.credentials import AzureKeyCredential
 from azure.core.exceptions import HttpResponseError
 ```
 
-環境変数としてのキー、時系列データ ファイルへのパス、およびサブスクリプションの Azure の場所の変数を作成します。 たとえば、「 `westus2` 」のように入力します。
+環境変数としてのキー、時系列データ ファイルへのパス、およびサブスクリプションの Azure の場所の変数を作成します。 
+
+> [!NOTE]
+> 常に、2 つのキーのいずれかを使用できます。 これは、セキュリティ保護されたキーのローテーションを可能にするためです。 このクイックスタートでは、1 番目のキーを使用します。 
 
 ```python
 subscription_key = "ANOMALY_DETECTOR_KEY"
 anomaly_detector_endpoint = "ANOMALY_DETECTOR_ENDPOINT"
 ```
 
-### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
-Python をインストールしたら、次を使用してクライアント ライブラリをインストールすることができます。
-
-```console
-pip install --upgrade azure-ai-anomalydetector
-```
 
 ## <a name="code-examples"></a>コード例
 
@@ -79,9 +87,22 @@ pip install --upgrade azure-ai-anomalydetector
 
 新しい Anomaly Detector クライアントをインスタンス化するには、Anomaly Detector のサブスクリプション キーおよび関連するエンドポイントを渡す必要があります。 また、データソースも設定します。  
 
-Anomaly Detector (多変量) API を使用するには、検出を使用する前に独自のモデルをトレーニングする必要があります。 トレーニングに使用するデータは時系列のバッチであり、各時系列は、timestamp と value の 2 つの列を含む CSV 形式である必要があります。 すべての時系列を 1 つの ZIP ファイルに圧縮し、[Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs) にアップロードする必要があります。 既定では、時系列の変数を表すためにこのファイル名が使用されます。 あるいは、変数の名前を .zip ファイル名とは異なるものにしたい場合は、追加の meta.json ファイルを ZIP ファイルに含めることもできます。 [BLOB の SAS (Shared Access Signature) URL](../../../../storage/common/storage-sas-overview.md) を生成したら、ZIP ファイルの URL をトレーニングに使用できます。
+Anomaly Detector 多変量 API シリーズを使用するには、最初に独自のモデルをトレーニングする必要があります。 トレーニング データは、次の要件を満たす複数の時系列のセットです。
+
+各時系列は、ヘッダー行として "timestamp" と "value" (すべて小文字) の 2 つの列のみを含む CSV ファイルである必要があります。 "timestamp" の値は、ISO 8601 に準拠している必要があります。"value" は、整数または小数点以下の桁数が任意の小数にすることができます。 次に例を示します。
+
+|timestamp | value|
+|-------|-------|
+|2019-04-01T00:00:00Z| 5|
+|2019-04-01T00:01:00Z| 3.6|
+|2019-04-01T00:02:00Z| 4|
+|`...`| `...` |
+
+各 CSV ファイルには、モデルのトレーニングに使用する異なる変数に基づいて名前を付ける必要があります。 たとえば、"temperature.csv" や "humidity.csv" などです。 すべての CSV ファイルは、サブフォルダーを使用しないで 1 つの ZIP ファイルに圧縮する必要があります。 ZIP ファイルには任意の名前を付けることができます。 ZIP ファイルは Azure Blob Storage にアップロードする必要があります。 その ZIP ファイルの BLOB SAS (Shared Access Signature) URL を生成したら、それをトレーニングに使用できます。 Azure Blob Storage から SAS URL を生成する方法については、このドキュメントを参照してください。
 
 ```python
+class MultivariateSample():
+
 def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None):
     self.sub_key = subscription_key
     self.end_point = anomaly_detector_endpoint
@@ -92,11 +113,7 @@ def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None
     self.ad_client = AnomalyDetectorClient(AzureKeyCredential(self.sub_key), self.end_point)
     # </client>
 
-    if not data_source:
-        # Datafeed for test only
-        self.data_source = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS"
-    else:
-        self.data_source = data_source
+    self.data_source = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS"
 ```
 
 ## <a name="train-the-model"></a>モデルをトレーニングする
@@ -104,14 +121,13 @@ def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None
 まず、モデルをトレーニングし、その間、モデルの状態をチェックしてトレーニングの完了を確認した後、最新のモデル ID を取得します。検出フェーズに進んだ際に、この ID が必要となります。
 
 ```python
-def train(self, start_time, end_time, max_tryout=500):
-
+def train(self, start_time, end_time):
     # Number of models available now
     model_list = list(self.ad_client.list_multivariate_model(skip=0, top=10000))
     print("{:d} available models before training.".format(len(model_list)))
     
     # Use sample data to train the model
-    print("Training new model...")
+    print("Training new model...(it may take a few minutes)")
     data_feed = ModelInfo(start_time=start_time, end_time=end_time, source=self.data_source)
     response_header = \
     self.ad_client.train_multivariate_model(data_feed, cls=lambda *args: [args[i] for i in range(len(args))])[-1]
@@ -122,21 +138,29 @@ def train(self, start_time, end_time, max_tryout=500):
     
     # Wait until the model is ready. It usually takes several minutes
     model_status = None
-    tryout_count = 0
-    while (tryout_count < max_tryout and model_status != "READY"):
-        model_status = self.ad_client.get_multivariate_model(trained_model_id).additional_properties["summary"][
-            "status"]
-        tryout_count += 1
-        time.sleep(2)
-    
-    assert model_status == "READY"
-    
-    print("Done.", "\n--------------------")
-    print("{:d} available models after training.".format(len(new_model_list)))
-    
+    while model_status != ModelStatus.READY and model_status != ModelStatus.FAILED:
+        model_info = self.ad_client.get_multivariate_model(trained_model_id).model_info
+        model_status = model_info.status
+        time.sleep(10)
+
+    if model_status == ModelStatus.FAILED:
+        print("Creating model failed.")
+        print("Errors:")
+        if model_info.errors:
+            for error in model_info.errors:
+                print("Error code: {}. Message: {}".format(error.code, error.message))
+        else:
+            print("None")
+        return None
+
+    if model_status == ModelStatus.READY:
+        # Model list after training
+        new_model_list = list(self.ad_client.list_multivariate_model(skip=0, top=10000))
+        print("Done.\n--------------------")
+        print("{:d} available models after training.".format(len(new_model_list)))
+
     # Return the latest model id
     return trained_model_id
-
 ```
 
 ## <a name="detect-anomalies"></a>異常を検出する
@@ -144,8 +168,7 @@ def train(self, start_time, end_time, max_tryout=500):
 データソース内に異常があるかどうかを判断するには、`detect_anomaly` と `get_dectection_result` を使用します。 先ほどトレーニングしたモデルの ID を渡す必要があります。
 
 ```python
-def detect(self, model_id, start_time, end_time, max_tryout=500):
-    
+def detect(self, model_id, start_time, end_time):
     # Detect anomaly in the same data source (but a different interval)
     try:
         detection_req = DetectionRequest(source=self.data_source, start_time=start_time, end_time=end_time)
@@ -155,25 +178,30 @@ def detect(self, model_id, start_time, end_time, max_tryout=500):
     
         # Get results (may need a few seconds)
         r = self.ad_client.get_detection_result(result_id)
-        tryout_count = 0
-        while r.summary.status != "READY" and tryout_count < max_tryout:
-            time.sleep(1)
+        while r.summary.status != DetectionStatus.READY and r.summary.status != DetectionStatus.FAILED:
             r = self.ad_client.get_detection_result(result_id)
-            tryout_count += 1
-    
-        if r.summary.status != "READY":
-            print("Request timeout after %d tryouts.".format(max_tryout))
+            time.sleep(2)
+
+        if r.summary.status == DetectionStatus.FAILED:
+            print("Detection failed.")
+            print("Errors:")
+            if r.summary.errors:
+                for error in r.summary.errors:
+                    print("Error code: {}. Message: {}".format(error.code, error.message))
+            else:
+                print("None")
             return None
-    
     except HttpResponseError as e:
         print('Error code: {}'.format(e.error.code), 'Error message: {}'.format(e.error.message))
     except Exception as e:
         raise e
-    
     return r
 ```
 
 ## <a name="export-model"></a>モデルをエクスポートする
+
+> [!NOTE]
+> エクスポート コマンドは、コンテナー化された環境で Anomaly Detector 多変量モデルを実行できるようにするために使用することを目的としています。 現在、これは多変量ではサポートされていませんが、今後サポートが追加される予定です。
 
 モデルをエクスポートしたい場合は、`export_model` を使用します。その際、エクスポートするモデルの ID を渡します。
 
@@ -234,6 +262,21 @@ if __name__ == '__main__':
 
 ```
 
+実行する前に、このクイックスタートの派生元である[完全なサンプル コード](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/API%20Sample/Multivariate%20API%20Demo%20Notebook.ipynb)と自分のプロジェクトを照合しておくと役立つ場合があります。
+
+また、作業の開始を支援するための[詳細な Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/API%20Sample/Multivariate%20API%20Demo%20Notebook.ipynb) も用意されています。
+
 `python` コマンドとファイル名を使用してアプリケーションを実行します。
 
-[!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのリソース グループに関連付けられている他のリソースも削除されます。
+
+* [ポータル](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
+## <a name="next-steps"></a>次のステップ
+
+* [Anomaly Detector API とは](../../overview-multivariate.md)
+* [Anomaly Detector API を使用する場合のベスト プラクティス](../../concepts/best-practices-multivariate.md)

@@ -4,21 +4,18 @@ description: この記事では、構成状態がドリフトになっている�
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: mgreenegit
-ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
-manager: nirb
-ms.openlocfilehash: 98164c20af2a5d6ae7ccac43331a2876c23ccfb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf4286634e72d687fe78c53a8f20abe5d5b2b6eb
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500174"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132489872"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>非準拠の Azure Automation State Configuration サーバーを修復する
 
-サーバーが Azure Automation State Configuration に登録されるとき、構成モードが `ApplyOnly`、`ApplyandMonitor`、または `ApplyAndAutoCorrect` に設定されます。 モードが `ApplyAndAutoCorrect` に設定されていない場合、何らかの理由で準拠状態から逸脱したサーバーは、手動で修正されるまで非準拠のままです。
+サーバーが Azure Automation State Configuration に登録されるとき、構成モードが `ApplyOnly`、`ApplyAndMonitor`、または `ApplyAndAutoCorrect` に設定されます。 モードが `ApplyAndAutoCorrect` に設定されていない場合、何らかの理由で準拠状態から逸脱したサーバーは、手動で修正されるまで非準拠のままです。
 
 Azure コンピューティングでは、ユーザーが仮想マシン内でスクリプトを実行できるようにする実行コマンドという機能が提供されています。
 このドキュメントでは、構成ドリフトを手動で補正する場合のこの機能のサンプル スクリプトを提供します。

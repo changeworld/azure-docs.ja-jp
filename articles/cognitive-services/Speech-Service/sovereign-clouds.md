@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 01/07/2021
+ms.date: 11/09/2021
 ms.author: alexeyo
-ms.openlocfilehash: f30b1f0f14bba54b8b4fcd7c5190f3c533f199a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae288de8ae05efc22534cfaf87c42261a5e6d59a
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98061754"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135787"
 ---
 # <a name="speech-services-in-sovereign-clouds"></a>ソブリン クラウドの Speech Services
 
@@ -68,12 +68,33 @@ Azure Government の Speech Services REST API エンドポイントの形式は�
 
 #### <a name="speech-sdk"></a>Speech SDK
 
-ソブリン クラウドの Speech SDK の場合、`SpeechConfig` クラスの "ホストから" のインスタンス化や、[Speech CLI](spx-overview.md) の `--host` オプションを利用する必要があります。 ("エンドポイントから" のインスタンス化と `--endpoint` Speech CLI オプションを使用することもできます)。
+ソブリン クラウドの [Speech SDK](speech-sdk.md) の場合、`SpeechConfig` クラスの "ホストから" または "ホストで" のインスタンス化や、[Speech CLI](spx-overview.md) の `--host` オプションを利用する必要があります ("エンドポイントから" または "エンドポイントで" のインスタンス化と `--endpoint` Speech CLI オプションを使用することもできます)。
 
 `SpeechConfig` クラスは次のようにインスタンス化する必要があります。
+
+# <a name="c"></a>[C#](#tab/c-sharp)
 ```csharp
 var config = SpeechConfig.FromHost(usGovHost, subscriptionKey);
 ```
+# <a name="c"></a>[C++](#tab/cpp)
+```cpp
+auto config = SpeechConfig::FromHost(usGovHost, subscriptionKey);
+```
+# <a name="java"></a>[Java](#tab/java)
+```java
+SpeechConfig config = SpeechConfig.fromHost(usGovHost, subscriptionKey);
+```
+# <a name="python"></a>[Python](#tab/python)
+```python
+import azure.cognitiveservices.speech as speechsdk
+speech_config = speechsdk.SpeechConfig(host=usGovHost, subscription=subscriptionKey)
+```
+# <a name="objective-c"></a>[Objective-C](#tab/objective-c)
+```objectivec
+SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithHost:usGovHost subscription:subscriptionKey];
+```
+***
+
 Speech CLI は、次のように使用する必要があります (`--host` オプションに注目してください)。
 ```dos
 spx recognize --host "usGovHost" --file myaudio.wav
@@ -99,6 +120,7 @@ spx recognize --host "usGovHost" --file myaudio.wav
   - [https://portal.azure.cn/](https://portal.azure.cn/)
 - **リージョン:**
   - 中国東部 2
+  - 中国北部 2
 - **利用可能な価格レベル:**
   - Free (F0) および Standard (S0)。 詳細については、[こちら](https://www.azure.cn/pricing/details/cognitive-services/index.html)を参照してください
 - **サポートされている機能:**
@@ -134,15 +156,37 @@ Azure China の Speech Services REST API エンドポイントの形式は次の
 |                     | リージョン識別子 |
 |--|--|
 | **中国東部 2**  | `chinaeast2` |
+| **中国北部 2**  | `chinanorth2` |
 
 #### <a name="speech-sdk"></a>Speech SDK
 
-ソブリン クラウドの Speech SDK の場合、`SpeechConfig` クラスの "ホストから" のインスタンス化や、[Speech CLI](spx-overview.md) の `--host` オプションを利用する必要があります。 ("エンドポイントから" のインスタンス化と `--endpoint` Speech CLI オプションを使用することもできます)。
+ソブリン クラウドの [Speech SDK](speech-sdk.md) の場合、`SpeechConfig` クラスの "ホストから" または "ホストで" のインスタンス化や、[Speech CLI](spx-overview.md) の `--host` オプションを利用する必要があります ("エンドポイントから" または "エンドポイントで" のインスタンス化と `--endpoint` Speech CLI オプションを使用することもできます)。
 
 `SpeechConfig` クラスは次のようにインスタンス化する必要があります。
+
+# <a name="c"></a>[C#](#tab/c-sharp)
 ```csharp
 var config = SpeechConfig.FromHost(azCnHost, subscriptionKey);
 ```
+# <a name="c"></a>[C++](#tab/cpp)
+```cpp
+auto config = SpeechConfig::FromHost(azCnHost, subscriptionKey);
+```
+# <a name="java"></a>[Java](#tab/java)
+```java
+SpeechConfig config = SpeechConfig.fromHost(azCnHost, subscriptionKey);
+```
+# <a name="python"></a>[Python](#tab/python)
+```python
+import azure.cognitiveservices.speech as speechsdk
+speech_config = speechsdk.SpeechConfig(host=azCnHost, subscription=subscriptionKey)
+```
+# <a name="objective-c"></a>[Objective-C](#tab/objective-c)
+```objectivec
+SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithHost:azCnHost subscription:subscriptionKey];
+```
+***
+
 Speech CLI は、次のように使用する必要があります (`--host` オプションに注目してください)。
 ```dos
 spx recognize --host "azCnHost" --file myaudio.wav
@@ -154,3 +198,6 @@ spx recognize --host "azCnHost" --file myaudio.wav
 | **中国東部 2** | |
 | 音声テキスト変換 | `wss://chinaeast2.stt.speech.azure.cn` |
 | 音声合成 | `https://chinaeast2.tts.speech.azure.cn` |
+| **中国北部 2** | |
+| 音声テキスト変換 | `wss://chinanorth2.stt.speech.azure.cn` |
+| 音声合成 | `https://chinanorth2.tts.speech.azure.cn` |

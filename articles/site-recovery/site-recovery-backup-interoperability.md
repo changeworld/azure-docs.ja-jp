@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: sideeksh
-ms.openlocfilehash: c334eee34eb878135d3d81ab15d03618c6604846
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f96ba97537763bb4aec0ce558a12d675369ad57
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86135187"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113567760"
 ---
 # <a name="support-for-using-site-recovery-with-azure-backup"></a>Azure Site Recovery と Azure Backup の使用
 
@@ -25,4 +25,4 @@ ms.locfileid: "86135187"
 **ディスクの復元** | 現在サポートされていません | バックアップしたディスクを復元する場合、VM のレプリケーションを無効にしてから、再度有効にする必要があります。
 **VM の復元** | 現在サポートされていません | VM または VM グループを復元する場合、VM のレプリケーションを無効にしてから、再度有効にする必要があります。  
 
-
+上の表の内容は、Azure Site Recovery でサポートしているすべてのシナリオに当てはまります。

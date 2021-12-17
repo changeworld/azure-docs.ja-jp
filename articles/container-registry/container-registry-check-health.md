@@ -2,13 +2,13 @@
 title: レジストリの正常性をチェックする
 description: Azure Container Registry の使用時の一般的な問題 (ローカル Docker の構成やレジストリへの接続性など) を特定するためのクイック診断コマンドを実行する方法について説明します。
 ms.topic: article
-ms.date: 07/02/2019
-ms.openlocfilehash: fec05efe67f5c502f36ee90eec57ba283b15a4a0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/14/2021
+ms.openlocfilehash: b0a95179e01de63185092c965b3290017dc96dfb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761747"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464305"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Azure Container Registry の正常性のチェック
 
@@ -44,6 +44,14 @@ az acr check-health
 az acr check-health --name myregistry
 ```
 
+### <a name="check-registry-access-in-a-virtual-network"></a>仮想ネットワークでレジストリ アクセスを確認する
+
+プライベート エンドポイントにルーティングするための DNS 設定を確認するには、仮想ネットワークの名前またはリソース ID を渡します。 仮想ネットワークがレジストリとは異なるサブスクリプションまたはリソース グループにある場合は、リソース ID が必要になります。
+
+```azurecli
+az acr check-health --name myregistry --vnet myvnet
+```
+
 ## <a name="error-reporting"></a>エラー報告
 
 このコマンドは標準出力に情報を記録します。 問題が検出されると、エラー コードと説明が示されます。 各コードと考えられる解決策の詳細については、[エラー リファレンス](container-registry-health-error-reference.md)のページをご覧ください。
@@ -54,8 +62,8 @@ az acr check-health --name myregistry
 # Check environment only
 az acr check-health --ignore-errors
 
-# Check environment and target registry
-az acr check-health --name myregistry --ignore-errors
+# Check environment and target registry; skip confirmation to pull image
+az acr check-health --name myregistry --ignore-errors --yes
 ```      
 
 サンプル出力:
@@ -75,13 +83,11 @@ Fetch refresh token for registry 'myregistry.azurecr.io' : OK
 Fetch access token for registry 'myregistry.azurecr.io' : OK
 ```  
 
-
-
 ## <a name="next-steps"></a>次のステップ
 
 [az acr check-health][az-acr-check-health] コマンドによって返されるエラー コードの詳細については、「[正常性チェックのエラー リファレンス](container-registry-health-error-reference.md)」をご覧ください。
 
-Azure Container Registry に関するよくあるご質問や他の既知の問題については、[FAQ](container-registry-faq.md) をご覧ください。
+Azure Container Registry に関するよくあるご質問や他の既知の問題については、[FAQ](container-registry-faq.yml) をご覧ください。
 
 
 

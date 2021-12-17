@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 17c29fdf88495f6ecc40963eda08858887173fd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5fd588cc9ff36f4213d62ee47ce296e9eadfc40e
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98730940"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296759"
 ---
-# <a name="back-up-using-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールを使用してバックアップする (プレビュー)
+# <a name="back-up-using-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールを使用してバックアップする
 
 この記事では、Azure NetApp Files で使用できる Azure アプリケーション整合性スナップショット ツールのバックアップ コマンドを実行するためのガイドを提供します。
 
@@ -85,9 +85,11 @@ azacsnap -c backup --volume data --prefix hana_TEST --retention 9 --trim
 
 このコマンドはコンソールに出力されませんが、ログ ファイル、結果ファイル、および `/var/log/messages` には書き込まれます。
 
-"*ログ ファイル*" は、コマンド名 + -c オプション + 構成ファイル名で構成されます。 既定では、`-c backup` のログ ファイル名は、既定の構成ファイル名 `azacsnap-backup-azacsnap.log` で実行されます。
+この例では、"*ログ ファイル*" 名は `azacsnap-backup-azacsnap.log` です (「[ログ ファイル](#log-files)」を参照)
 
-"*結果*" ファイルには、ログ ファイルと同様にサフィックスに `.result` が追加されているベース名が付けられています。以下の出力が含まれる、`azacsnap-backup-azacsnap.result` の例を次に示します。
+`--volume data` オプションを指定して `-c backup` を実行すると、結果ファイルもファイルとして生成され、バックアップの結果をすばやく確認できるようになります。  "*結果*" ファイルの名前は、ログ ファイルと同じベース名にサフィックス `.result` が付ついたものになります。
+
+この例の "*結果ファイル*" の名前は `azacsnap-backup-azacsnap.result` で、以下の出力が含まれます。
 
 ```bash
 cat logs/azacsnap-backup-azacsnap.result
@@ -124,7 +126,7 @@ azacsnap -c backup --volume other --prefix logs_TEST --retention 9
 
 このコマンドはコンソールに出力されませんが、ログ ファイルには書き込まれます。  結果ファイルや `/var/log/messages` へは "_書き込まれません_"。
 
-"*ログ ファイル*" は、コマンド名 + -c オプション + 構成ファイル名で構成されます。 既定では、`-c backup` のログ ファイル名は、既定の構成ファイル名 `azacsnap-backup-azacsnap.log` で実行されます。
+この例では、"*ログ ファイル*" 名は `azacsnap-backup-azacsnap.log` です (「[ログ ファイル](#log-files)」を参照)。
 
 ## <a name="example-with-other-parameter-to-backup-host-os"></a>`other` パラメーターを使用した例 (ホスト OS をバックアップする場合)
 
@@ -135,15 +137,17 @@ azacsnap -c backup --volume other --prefix logs_TEST --retention 9
 azacsnap -c backup --volume other --prefix boot_TEST --retention 9 --configfile bootVol.json
 ```
 
+> [!IMPORTANT]
+> Azure Large Instance の場合、ブート ボリュームの構成ファイル ボリューム パラメーターが、ホスト オペレーティング システム レベルで表示されない可能性があります。
+> この値は、Microsoft Operations によって提供されます。
+
 このコマンドはコンソールに出力されませんが、ログ ファイルには書き込まれます。  結果ファイルや `/var/log/messages` へは "_書き込まれません_"。
 
-この例では、"*ログ ファイル*" 名は `azacsnap-backup-bootVol.log` です。
+この例では、"*ログ ファイル*" 名は `azacsnap-backup-bootVol.log` です (「[ログ ファイル](#log-files)」を参照)。
 
-> [!NOTE]
-> ログ ファイル名は、"(コマンド名-(`-c` オプション)-(構成ファイル名)" で構成されます。  たとえば、`h80.json` のログ ファイル名で `-c backup` オプションを使用した場合、ログ ファイルには `azacsnap-backup-h80.log` という名前がつきます。  また、同じ構成ファイルで `-c test` オプションを使用した場合、ログ ファイルには `azacsnap-test-h80.log` という名前がつきます。
+## <a name="log-files"></a>ログ ファイル
 
-- HANA Large Instance の種類:有効な値は、HANA Large Instance ユニットに応じて `TYPEI` または `TYPEII` の 2 つです。
-- 使用可能な SKU を確認するには、「[HANA Large Instances で利用できる SKU](../virtual-machines/workloads/sap/hana-available-skus.md)」を参照してください。
+ログ ファイル名は、次の "(コマンド名)-(`-c` オプション)-(構成ファイル名)" に基づいて作成されます。  たとえば、コマンド `azacsnap -c backup --configfile h80.json --retention 5 --prefix one-off` を実行すると、ログ ファイルの名前は `azacsnap-backup-h80.log` になります。  また、同じ構成ファイルで `-c test` オプションを使用した場合 (たとえば `azacsnap -c test --configfile h80.json`)、ログ ファイルには `azacsnap-test-h80.log` という名前がつきます。
 
 ## <a name="next-steps"></a>次のステップ
 

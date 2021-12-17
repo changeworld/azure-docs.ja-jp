@@ -1,17 +1,19 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 5a8d270ffdef1f9ae68814fa023284c68216d3ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb054bf82e6f4e55dfcd6f23575fa35e40400845
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104612854"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400141"
 ---
 このチュートリアルでは、複数のコンポーネントを使用する IoT プラグ アンド プレイのサンプル デバイス アプリケーションをビルドし、それを IoT ハブに接続して、ハブに送信される情報を Azure IoT エクスプローラー ツールを使用して表示する方法について説明します。 このサンプル アプリケーションは C で記述され、C 対応の Azure IoT device SDK に含められています。ソリューション ビルダーは、Azure IoT エクスプローラー ツールを使用すれば、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
+
+[![コードを参照](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp)
 
 このチュートリアルでは、次の作業を行いました。
 
@@ -59,7 +61,7 @@ Windows でこのチュートリアルを完了するには、ご利用のロー
 
 ## <a name="download-the-code"></a>コードのダウンロード
 
-[Linux または Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (C)](../articles/iot-pnp/quickstart-connect-device.md)」を完了している場合は、コードを既にダウンロードしています。
+「[チュートリアル: Linux または Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (C)](../articles/iot-develop/tutorial-connect-device.md)」を完了している場合は、コードを既にダウンロードしています。
 
 このチュートリアルでは、Azure IoT Hub Device C SDK をクローンしてビルドするために使用できる開発環境を準備します。
 
@@ -82,7 +84,7 @@ git submodule update --init
 1. クローンされたリポジトリのルート フォルダーを開きます。 数秒後、プロジェクトを実行してデバッグするのに必要なものがすべて Visual Studio の **CMake** サポートによって作成されます。
 1. Visual Studio の準備ができたら、**ソリューション エクスプローラー** で、サンプル *iothub_client/samples/pnp/pnp_temperature_controller/* に移動します。
 1. *pnp_temperature_controller.c* ファイルを右クリックし、 **[Add Debug Configuration]\(デバッグ構成の追加\)** を選択します。 **[既定値]** を選択します。
-1. Visual Studio によって、*launch.vs.json* ファイルが開かれます。 このファイルを、次のスニペットに示すように編集して、必要な環境変数を設定します。 「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](../articles/iot-pnp/set-up-environment.md)」を完了したときに、スコープ ID と登録プライマリ キーを書き留めました。
+1. Visual Studio によって、*launch.vs.json* ファイルが開かれます。 このファイルを、次のスニペットに示すように編集して、必要な環境変数を設定します。 「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](../articles/iot-develop/set-up-environment.md)」を完了したときに、スコープ ID と登録プライマリ キーを書き留めました。
 
     ```json
     {
@@ -160,7 +162,7 @@ git submodule update --init
 
 ## <a name="review-the-code"></a>コードの確認
 
-このサンプルにより、IoT プラグ アンド プレイの温度コントローラー デバイスが実装されます。 このサンプルでは、[複数のコンポーネント](../articles/iot-pnp/concepts-modeling-guide.md)を使用してモデルが実装されます。 [温度デバイスの Digital Twins Definition Language (DTDL) モデル ファイル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)により、デバイスによって実装されるテレメトリ、プロパティ、およびコマンドが定義されます。
+このサンプルにより、IoT プラグ アンド プレイの温度コントローラー デバイスが実装されます。 このサンプルでは、[複数のコンポーネント](../articles/iot-develop/concepts-modeling-guide.md)を使用してモデルが実装されます。 [温度デバイスの Digital Twins Definition Language (DTDL) モデル ファイル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)により、デバイスによって実装されるテレメトリ、プロパティ、およびコマンドが定義されます。
 
 ### <a name="iot-plug-and-play-helper-functions"></a>IoT プラグ アンド プレイ ヘルパー関数
 

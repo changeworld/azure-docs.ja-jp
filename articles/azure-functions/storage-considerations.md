@@ -2,28 +2,27 @@
 title: Azure Functions のストレージに関する考慮事項
 description: Azure Functions のストレージ要件と、格納済みデータの暗号化について説明します。
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: 5faa85a4fac9fc0b8639f33c475283f4f043c627
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 11/09/2021
+ms.openlocfilehash: 0e53d2919d8af3f0e8162d4aca9f55f2ec0ab740
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779257"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335881"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項
 
 Azure Functions では、Function App インスタンスを作成するときに Azure ストレージ アカウントが必要になります。 次のストレージ サービスは、お使いの Function App によって利用できます。
 
-
 |ストレージ サービス  | 機能の使用法  |
 |---------|---------|
-| [Azure BLOB Storage](../storage/blobs/storage-blobs-introduction.md)     | バインドの状態と関数キーを管理します。  <br/>[Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)からも使用されます。 |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | [従量課金プラン](consumption-plan.md)や [Premium プラン](functions-premium-plan.md)で、関数アプリ コードを格納して実行するために使用されるファイル共有。 |
+| [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | バインドの状態と関数キーを管理します。  <br/>[Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)からも使用されます。 |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | [従量課金プラン](consumption-plan.md)や [Premium プラン](functions-premium-plan.md)で、関数アプリ コードを格納して実行するために使用されるファイル共有。 <br/>Azure Files は既定で設定されていますが、特定の条件では、[Azure Files を使わずにアプリを作成](#create-an-app-without-azure-files)することもできます。 |
 | [Azure Queue Storage](../storage/queues/storage-queues-introduction.md)     | [Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)から使用されます。   |
 | [Azure Table Storage](../storage/tables/table-storage-overview.md)  |  [Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)から使用されます。       |
 
 > [!IMPORTANT]
-> 従量課金/Premium ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File Storage に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
+> 従量課金/Premium ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure Files に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
 
 ## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
 
@@ -53,6 +52,10 @@ Function App を作成するときは、BLOB、キュー、テーブル スト�
 
 複数の Function App では、同じストレージ アカウントを問題なく共有できます。 たとえば、Visual Studio では、Azure ストレージ エミュレーターを使用して複数のアプリを開発できます。 この場合、エミュレーターは単一のストレージ アカウントのように動作します。 お使いの Function App で使用されているものと同じストレージ アカウントは、アプリケーション データを格納するためにも使用できます。 ただし、運用環境では、この手法が常に適切であるとは限りません。
 
+### <a name="lifecycle-management-policy-considerations"></a>ライフサイクル管理ポリシーに関する考慮事項
+
+Functions は、Blob ストレージを使用して、[関数アクセス キー](functions-bindings-http-webhook-trigger.md#authorization-keys)などの重要な情報を保持します。 Blob Storage アカウントに[ライフサイクル管理ポリシー](../storage/blobs/lifecycle-management-overview.md)を適用すると、ポリシーが Functions ホストが必要とする BLOB を削除する場合があります。 この理由から、Functions が使用するストレージ アカウントにこのようなポリシーを適用しないようにする必要があります。 このようなポリシーを適用する必要がある場合は、通常は `azure-webjobs` または `scm` のプレフィックスが付いている Functions が使用するコンテナーは除外することを忘れないでください。
+
 ### <a name="optimize-storage-performance"></a>ストレージ パフォーマンスの最適化
 
 [!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
@@ -66,6 +69,21 @@ Function App を作成するときは、BLOB、キュー、テーブル スト�
 すべての顧客データを 1 つのリージョン内に留める必要がある場合、関数アプリに関連付けられているストレージ アカウントは、[リージョン内冗長性](../storage/common/storage-redundancy.md)が与えられたアカウントにする必要があります。 リージョン内で冗長性を持つストレージ アカウントは、[Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection) でも使用される必要があります。
 
 プラットフォームで管理されるその他の顧客データは、内部負荷分散型の App Service Environment (ASE) でホストしているとき、そのリージョン内にのみ格納されます。 詳細については、[ASE のゾーン冗長性](../app-service/environment/zone-redundancy.md#in-region-data-residency)に関するページを参照してください。
+
+## <a name="create-an-app-without-azure-files"></a>Azure Files を使わずにアプリを作成する
+
+Premium と Linux 以外の Consumption プランでは、高スケールの共有ファイル システムとして、Azure Files が既定で設定されています。 このファイル システムは、それらのプラットフォームでログ ストリーミングなどの機能を実現するためにも使用しますが、主な用途は、デプロイした機能のペイロードを安定的に送信することです。 [外部パッケージの URL を使用してアプリをデプロイするときは](./run-functions-from-deployment-package.md)、そのアプリのコンテンツを、読み取り専用の別のファイルシステムから提供します。その場合、必要なければ Azure Files を使用しなくてもかまいません。 この場合、書き込み可能なファイルシステムを用意することになりますが、すべての関数アプリのインスタンスでこれを共有することは保証できません。
+
+Azure Files を使用しない場合は、次のことへの対応が必要です。
+
+* 外部パッケージの URL からデプロイする必要があります。
+* 書き込み可能な共有ファイル システムの使用を前提にした運用はできません。
+* アプリで Functions ランタイム v1 を使用できません。
+* Azure portal などのクライアントのログ ストリーミングで、既定のログがファイル システムのログになります。 これの代わりに、Application Insights のログを使用するべきです。
+
+上の点に問題がなければ、Azure Files を使用せずにアプリを作成できます。 アプリケーションの設定 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` と `WEBSITE_CONTENTSHARE` を指定せずに、関数アプリを作成してください。 これを行うには、標準のデプロイ用の ARM テンプレートを生成し、これらの 2 つの設定を削除し、テンプレートをデプロイします。 
+
+Functions では動的スケールアウトのプロセスの一部に Azure Files を使用するため、Consumption、Premium プランにおいて Azure Files なしで実行すると、スケーリングが制限される可能性があります。
 
 ## <a name="mount-file-shares"></a>ファイル共有をマウントする
 

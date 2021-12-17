@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78f4642b8f9f1ede65766a0026940c0af0f01ec2
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: c40d1ae4d24f24feafa138b75aefc3f9b711287e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111087"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762875"
 ---
 # <a name="best-practices-for-azure-ad-roles"></a>Azure AD ロールのベスト プラクティス
 
@@ -32,7 +32,9 @@ ms.locfileid: "106111087"
 
 適切なロールを見つけるには、次の手順に従います。
 
-1. Azure portal で、[[ロールと管理者]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) を開いて Azure AD ロールの一覧を表示します。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]** 、 **[ロールと管理者]** の順に選択し、Azure AD ロールの一覧を表示します。
 
 1. **[サービス]** フィルターを使用して、ロールの一覧を絞り込みます。
 
@@ -44,7 +46,7 @@ ms.locfileid: "106111087"
 
 ## <a name="2-use-privileged-identity-management-to-grant-just-in-time-access"></a>2. Privileged Identity Management を使用して Just-In-Time アクセスを付与する
 
-最小特権の原則の 1 つは、特定の期間だけアクセス許可を付与することです。 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) を使用すると、管理者に Just-In-Time アクセスを付与することができます。 Azure AD で PIM を有効にすることをお勧めします。 PIM を使用すると、ユーザーを Azure AD ロールの対象メンバーにすることができます。 その後、使用する必要があるたびに、限られた時間枠でロールをアクティブにできます。 期間が経過すると、特権アクセスは自動的に削除されます。 [PIM 設定を構成](../privileged-identity-management/pim-how-to-change-default-settings.md)して、承認を要求したり、誰かがロールの割り当てをアクティブにしたときに通知メールを受信したりすることもできます。 通知により、高度な特権ロールに新しいユーザーが追加された場合にアラートを受け取れます。 
+最小特権の原則の 1 つは、特定の期間だけアクセス許可を付与することです。 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) を使用すると、管理者に Just-In-Time アクセスを付与することができます。 Azure AD で PIM を有効にすることをお勧めします。 PIM を使用すると、ユーザーを Azure AD ロールの有資格メンバーにすることができ、必要なときに限られた時間だけ、ユーザーはこのロールを有効にできます。 期間が経過すると、特権アクセスは自動的に削除されます。 [PIM 設定を構成](../privileged-identity-management/pim-how-to-change-default-settings.md)して、承認を要求したり、誰かがロールの割り当てをアクティブにしたときに通知メールを受信したりすることもできます。 通知により、高度な特権ロールに新しいユーザーが追加された場合にアラートを受け取れます。 
 
 ## <a name="3-turn-on-multi-factor-authentication-for-all-your-administrator-accounts"></a>3. すべての管理者アカウントに対して多要素認証を有効にする
 
@@ -60,7 +62,7 @@ ms.locfileid: "106111087"
 - 悪意のあるアクターによってアカウントが侵害される可能性があります。
 - 企業内でチームが移動します。 監査がない場合、時間の経過と共に不要なアクセスが行われる可能性があります。
  
-ロールのアクセス レビューの詳細については、「[PIM で Azure AD ロールのアクセス レビューを作成する](../privileged-identity-management/pim-how-to-start-security-review.md)」を参照してください。 ロールが割り当てられているグループのアクセス レビューの詳細については、「[グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する](../governance/create-access-review.md)」を参照してください。
+ロールのアクセス レビューの詳細については、「[PIM で Azure AD ロールのアクセス レビューを作成する](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md)」を参照してください。 ロールが割り当てられているグループのアクセス レビューの詳細については、「[グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する](../governance/create-access-review.md)」を参照してください。
 
 ## <a name="5-limit-the-number-of-global-administrators-to-less-than-5"></a>5. グローバル管理者の数を 5 人未満に制限する
 
@@ -74,7 +76,7 @@ Microsoft は、グローバル管理者ロールに永続的に割り当てら�
 
 グループを利用する外部ガバナンス システムがある場合は、個々のユーザーではなく、Azure AD グループにロールを割り当てることを検討してください。 また、PIM でロール割り当て可能なグループを管理して、これらの特権グループに継続的な所有者またはメンバーがいないことを確認することもできます。 詳細については、「[特権アクセス Azure AD グループの管理機能](../privileged-identity-management/groups-features.md)」を参照してください。
 
-ロールを割り当て可能なグループに所有者を割り当てることができます。 その所有者は、グループに対して追加または削除されるユーザーを決定し、間接的には、ロールの割り当てを取得するユーザーを決定します。 このようにして、全体管理者または特権ロール管理者は、グループを使用して役割ごとにロール管理を委任できます。 詳細については、「[クラウド グループを使用して Azure Active Directory でロールの割り当てを管理する](groups-concept.md)」を参照してください。
+ロールを割り当て可能なグループに所有者を割り当てることができます。 その所有者は、グループに対して追加または削除されるユーザーを決定し、間接的には、ロールの割り当てを取得するユーザーを決定します。 このようにして、全体管理者または特権ロール管理者は、グループを使用して役割ごとにロール管理を委任できます。 詳細については、[Azure AD グループを使用したロール割り当ての管理](groups-concept.md)に関するページをご覧ください。
 
 ## <a name="7-activate-multiple-roles-at-once-using-privileged-access-groups"></a>7. 特権アクセス グループを使用して一度に複数のロールをアクティブにする
 

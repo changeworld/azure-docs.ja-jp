@@ -1,20 +1,22 @@
 ---
-title: Azure Site Recovery を使用して Azure への VMware VM のディザスター リカバリーを設定する
-description: Azure Site Recovery を使用して Azure にオンプレミス VMware VM のディザスター リカバリーを設定する方法について説明します。
+title: Azure Site Recovery を使用して Azure への VMware VM のディザスター リカバリーを設定する - クラシック
+description: Azure Site Recovery (クラシック) を使用して、Azure へのオンプレミス VMware VM のディザスター リカバリーを設定する方法について説明します。
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
 ms.custom: MVC
-ms.openlocfilehash: 6044de81253b9069631ff3cdae687d90a0287fea
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 8f53f7598b58e46e8020275cdf96e339c69c857a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580571"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446443"
 ---
-# <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
+# <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms---classic"></a>Azure へのオンプレミス VMware VM のディザスター リカバリーを設定する - クラシック
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用した Azure へのディザスター リカバリーのためにオンプレミスの VMware VM のレプリケーションを有効にする方法について説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) サービス (クラシック) を使用して、Azure へのディザスター リカバリーのためにオンプレミス VMware VM のレプリケーションを有効にする方法 について説明します。
+
+Azure Site Recovery プレビューでのディザスター リカバリーの詳細については、[こちらの記事](vmware-azure-set-up-replication-tutorial-preview.md)を参照してください
 
 これは、オンプレミスの VMware VM を対象に Azure へのディザスター リカバリーを設定する方法について説明するシリーズの 3 番目のチュートリアルです。 前のチュートリアルでは、Azure へのディザスター リカバリー用に[オンプレミスの VMware 環境を準備](vmware-azure-tutorial-prepare-on-premises.md)しました。
 

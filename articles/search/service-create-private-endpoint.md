@@ -2,18 +2,18 @@
 title: 安全な接続のために、プライベート エンドポイントを作成する
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search Service への安全な接続を行うために、仮想ネットワークにプライベート エンドポイントを設定します。
+author: nitinme
+ms.author: nitinme
 manager: nitinme
-author: markheff
-ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: 7445ac5d750ac29d3e6ce466a48e82efd1bcde40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71a618daeeb2400e32a53b555e9499a5edd69b5f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545532"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131061088"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Cognitive Search への安全な接続を行うためのプライベート エンドポイントを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "100545532"
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>安全なアクセスのためにプライベート エンドポイントを使用する理由
 
-Azure Cognitive Search の [プライベートエンドポイント](../private-link/private-endpoint-overview.md) は、仮想ネットワーク上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできるようにします。 プライベート エンドポイントは、検索サービスのために[仮想ネットワークのアドレス空間](../virtual-network/private-ip-addresses.md)の IP アドレスを使用します。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 Private Link をサポートするその他の PaaS サービスの一覧については、製品マニュアルの[可用性のセクション](../private-link/private-link-overview.md#availability)を参照してください。
+Azure Cognitive Search の [プライベートエンドポイント](../private-link/private-endpoint-overview.md) は、仮想ネットワーク上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできるようにします。 プライベート エンドポイントは、検索サービスのために[仮想ネットワークのアドレス空間](../virtual-network/ip-services/private-ip-addresses.md)の IP アドレスを使用します。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 Private Link をサポートするその他の PaaS サービスの一覧については、製品マニュアルの[可用性のセクション](../private-link/private-link-overview.md#availability)を参照してください。
 
 検索サービス向けのプライベート エンドポイントを使用すると、次のことが可能になります。
 
@@ -129,7 +129,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | サイズ | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
-    | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。|
     | パスワードの確認 | パスワードを再入力します。 |
     | **受信ポートの規則** |  |
     | パブリック受信ポート | 既定の **[選択したポートを許可する]** のままにします。 |

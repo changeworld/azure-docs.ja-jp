@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
 ms.date: 11/26/2019
-ms.author: hahamil
+ms.author: marsma
 ms.reviewer: brandwe
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7d297d96ba764c812a3d4db6d9383122c73cfe31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, identityplatformtop40, has-adal-ref
+ms.openlocfilehash: 44afa745df2799b18e67e43fe4a24b09089636d5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103143"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050396"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>チュートリアル:Android アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
@@ -75,7 +75,7 @@ Android アプリケーションがまだない場合は、次の手順に従っ
 ### <a name="register-your-application"></a>アプリケーションの登録
 
 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 1. アプリケーションの **[名前]** を入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
@@ -141,29 +141,47 @@ Android アプリケーションがまだない場合は、次の手順に従っ
     ```
 
     `android:host=` は、Azure portal で登録したパッケージ名に置き換えます。
-    `android:path=` は、Azure portal で登録したキー ハッシュに置き換えます。 署名ハッシュは、URL で **エンコードしない** でください。 署名ハッシュの先頭に `/` があることを確認します。
+    `android:path=` は、Azure portal で登録したキー ハッシュに置き換えます。 署名ハッシュは、URL にエンコードしては **いけません**。 署名ハッシュの先頭に `/` があることを確認します。
     
-    `android:host` 値を置き換える "パッケージ名" は、"com.azuresamples.msalandroidapp" のようになります。
-    `android:path` 値を置き換える "署名ハッシュ" は、"/1wIqXSqBj7w+h11ZifsnqwgyKrY=" のようになります。
+    `android:host` 値を置き換える "パッケージ名" は、`com.azuresamples.msalandroidapp` のようになります。
+    `android:path` 値を置き換える "署名ハッシュ" は、`/1wIqXSqBj7w+h11ZifsnqwgyKrY=` のようになります。
     
-    これらの値は、アプリの登録の [認証] ブレードでも確認できます。 リダイレクト URI は次のようになります: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D"。 この値の最後にある署名ハッシュは URL でエンコードされていますが、`android:path` の値では署名ハッシュは URL でエンコードされていては **なりません**。
+    これらの値は、アプリの登録の [認証] ブレードでも確認できます。 リダイレクト URI は、`msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D` のようになります。 この値では署名ハッシュが URL の最後にエンコードされていますが、`android:path` の値では署名ハッシュを URL にエンコードしては **いけません**。
 
 ## <a name="use-msal"></a>MSAL の使用
 
 ### <a name="add-msal-to-your-project"></a>プロジェクトに MSAL を追加する
 
-1. Android Studio のプロジェクト ウィンドウで、**app** > **src** > **build.gradle** に移動し、以下を追加します。
+1. Android Studio のプロジェクト ウィンドウで、**app** > **build.gradle** の順に移動し、以下を追加します。
 
     ```gradle
-    repositories{
+    apply plugin: 'com.android.application'
+   
+    allprojects {
+     repositories {
+        mavenCentral()
+        google()
+        mavenLocal()
+        maven {
+            url 'https://pkgs.dev.azure.com/MicrosoftDeviceSDK/DuoSDK-Public/_packaging/Duo-SDK-Feed/maven/v1'
+        }
+        maven {
+            name "vsts-maven-adal-android"
+            url "https://identitydivision.pkgs.visualstudio.com/_packaging/AndroidADAL/maven/v1"
+            credentials {
+                username System.getenv("ENV_VSTS_MVN_ANDROIDADAL_USERNAME") != null ? System.getenv("ENV_VSTS_MVN_ANDROIDADAL_USERNAME") : project.findProperty("vstsUsername")
+                password System.getenv("ENV_VSTS_MVN_ANDROIDADAL_ACCESSTOKEN") != null ? System.getenv("ENV_VSTS_MVN_ANDROIDADAL_ACCESSTOKEN") : project.findProperty("vstsMavenAccessToken")
+            }
+        }
         jcenter()
+     }
     }
     dependencies{
-        implementation 'com.microsoft.identity.client:msal:2.+'
-        implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
-    }
+     implementation 'com.microsoft.identity.client:msal:2.+'
+     implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
+     }
     packagingOptions{
-        exclude("META-INF/jersey-module-version")
+     exclude("META-INF/jersey-module-version")
     }
     ```
     [Microsoft Graph SDK の詳細](https://github.com/microsoftgraph/msgraph-sdk-java/)

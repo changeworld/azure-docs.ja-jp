@@ -3,18 +3,19 @@ title: Azure での Update Management のデプロイで事前スクリプトと
 description: この記事では、更新プログラムのデプロイのための事前スクリプトおよび事後スクリプトを構成および管理する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 03/08/2021
+ms.date: 09/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 676e5f03c8d0085a4d041662a80c63d385071919
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 19101cea8f435f09cb37aa2340f0bc02788442f3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166719"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459066"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>事前スクリプトと事後スクリプトを管理する
 
-事前スクリプトと事後スクリプトは、更新プログラムのデプロイの前 (事前タスク) と後 (事後タスク) に Azure Automation アカウントで実行する Runbook です。 事前スクリプトと事後スクリプトは、ローカルではなく、Azure コンテキストで実行されます。 事前スクリプトは、更新プログラムのデプロイの開始時に実行されます。 事後スクリプトは、展開の最後に、構成されているすべての再起動の後で実行されます。
+事前スクリプトと事後スクリプトは、更新プログラムのデプロイの前 (事前タスク) と後 (事後タスク) に Azure Automation アカウントで実行する Runbook です。 事前スクリプトと事後スクリプトは、ローカルではなく、Azure コンテキストで実行されます。 事前スクリプトは、更新プログラムのデプロイの開始時に実行されます。 Windows では、事後スクリプトはデプロイの最後で、かつ構成されているすべての再起動の後に実行されます。 Linux の場合、事後スクリプトはマシンの再起動の後ではなく、デプロイの終了後に実行されます。 
 
 ## <a name="pre-script-and-post-script-requirements"></a>事前スクリプトと事後スクリプトの要件
 
@@ -44,21 +45,57 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext プロパティ
 
-|プロパティ  |説明  |
-|---------|---------|
-|SoftwareUpdateConfigurationName     | ソフトウェア更新構成の名前。        |
-|SoftwareUpdateConfigurationRunId     | 実行の一意の ID。        |
-|SoftwareUpdateConfigurationSettings     | ソフトウェア更新構成に関連したプロパティのコレクション。         |
-|SoftwareUpdateConfigurationSettings.operatingSystem     | 更新プログラムの展開の対象となるオペレーティング システム。         |
-|SoftwareUpdateConfigurationSettings.duration     | ISO8601 に従って `PT[n]H[n]M[n]S` として実行される更新プログラムのデプロイの最大期間。メンテナンス期間とも呼ばれる。          |
-|SoftwareUpdateConfigurationSettings.Windows     | Windows コンピューターに関連したプロパティのコレクション。         |
-|SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | 更新プログラムの展開から除外される KB の一覧。        |
-|SoftwareUpdateConfigurationSettings.Windows.includedUpdateClassifications     | 更新プログラムの展開のために選択された更新プログラムの分類。        |
-|SoftwareUpdateConfigurationSettings.Windows.rebootSetting     | 更新プログラムの展開のための再起動設定。        |
-|azureVirtualMachines     | 更新プログラムの展開における Azure VM 用の resourceId の一覧。        |
-|nonAzureComputerNames|更新プログラムの展開における Azure 以外のコンピューターの FQDN の一覧。|
+|プロパティ  |Type |説明  |
+|---------|---------|---------|
+|SoftwareUpdateConfigurationName     |String | ソフトウェア更新構成の名前。        |
+|SoftwareUpdateConfigurationRunId     |GUID | 実行の一意の ID。        |
+|SoftwareUpdateConfigurationSettings     || ソフトウェア更新構成に関連したプロパティのコレクション。         |
+|SoftwareUpdateConfigurationSettings.OperatingSystem     |int | 更新プログラムの展開の対象となるオペレーティング システム。 `1` = Windows および `2` = Linux        |
+|SoftwareUpdateConfigurationSettings.Duration     |Timespan (HH:MM:SS) | ISO8601 に従って `PT[n]H[n]M[n]S` として実行される更新プログラムのデプロイの最大期間。メンテナンス期間とも呼ばれる。<br> 例: 02:00:00         |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration     || Windows コンピューターに関連したプロパティのコレクション。         |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.excludedKbNumbers     |String | 更新プログラムの展開から除外される KB のスペース区切りの一覧。        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.includedKbNumbers     |String | 更新プログラムの展開に含まれる KB のスペース区切りの一覧。        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.UpdateCategories     |整数型 | 1 = "Critical";<br> 2 = "Security"<br> 4 = "UpdateRollUp"<br> 8 = "FeaturePack"<br> 16 = "ServicePack"<br> 32 = "Definition"<br> 64 = "Tools"<br> 128 = "Updates"        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.rebootSetting     |String | 更新プログラムの展開のための再起動設定。 値は `IfRequired`、`Never`、`Always` です      |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration     || Linux コンピューターに関連したプロパティのコレクション。         |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.IncludedPackageClassifications |整数型 |0 = "Unclassified"<br> 1 = "Critical"<br> 2 = "Security"<br> 4 = "Other"|
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.IncludedPackageNameMasks |String | 更新プログラムの展開に含まれるパッケージ名のスペース区切りの一覧。 |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.ExcludedPackageNameMasks |String |更新プログラムの展開から除外されるパッケージ名のスペース区切りの一覧。 |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.RebootSetting |String |更新プログラムの展開のための再起動設定。 値は `IfRequired`、`Never`、`Always` です      |
+|SoftwareUpdateConfiguationSettings.AzureVirtualMachines     |文字列配列 | 更新プログラムの展開における Azure VM 用の resourceId の一覧。        |
+|SoftwareUpdateConfigurationSettings.NonAzureComputerNames|文字列配列 |更新プログラムの展開における Azure 以外のコンピューターの FQDN の一覧。|
 
-次の例は、**SoftwareUpdateConfigurationRunContext** パラメーターに渡される JSON 文字列です。
+次の例は、Linux コンピューターの **SoftwareUpdateConfigurationSettings** プロパティに渡される JSON 文字列です。
+
+```json
+"SoftwareUpdateConfigurationSettings": {
+     "OperatingSystem": 2,
+     "WindowsConfiguration": null,
+     "LinuxConfiguration": {
+         "IncludedPackageClassifications": 7,
+         "ExcludedPackageNameMasks": "fgh xyz",
+         "IncludedPackageNameMasks": "abc bin*",
+         "RebootSetting": "IfRequired"
+     },
+     "Targets": {
+         "azureQueries": null,
+         "nonAzureQueries": ""
+     },
+     "NonAzureComputerNames": [
+        "box1.contoso.com",
+        "box2.contoso.com"
+     ],
+     "AzureVirtualMachines": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/vm-01"
+     ],
+     "Duration": "02:00:00",
+     "PSComputerName": "localhost",
+     "PSShowComputerName": true,
+     "PSSourceJobInstanceId": "2477a37b-5262-4f4f-b636-3a70152901e9"
+ }
+```
+
+次の例は、Windows コンピューターの **SoftwareUpdateConfigurationSettings** プロパティに渡される JSON 文字列です。
 
 ```json
 "SoftwareUpdateConfigurationRunContext": {
@@ -66,7 +103,7 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
     "SoftwareUpdateConfigurationRunId": "00000000-0000-0000-0000-000000000000",
     "SoftwareUpdateConfigurationSettings": {
       "operatingSystem": "Windows",
-      "duration": "PT2H0M",
+      "duration": "02:00:00",
       "windows": {
         "excludedKbNumbers": [
           "168934",
@@ -76,9 +113,9 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
         "rebootSetting": "IfRequired"
       },
       "azureVirtualMachines": [
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-01",
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-02",
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-03"
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/vm-01",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/vm-02",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/vm-03"
       ],
       "nonAzureComputerNames": [
         "box1.contoso.com",
@@ -144,7 +181,7 @@ Python 2 では、例外処理は [try](https://www.python-course.eu/exception_h
 
 事前タスクと事後タスクは、Runbook として実行され、デプロイ内の Azure VM でネイティブに実行されることはありません。 Azure VM と対話するには、次のものが必要です。
 
-* 実行アカウント
+* [マネージド ID](../automation-security-overview.md#managed-identities) または実行アカウント
 * 実行する Runbook
 
 Azure マシンを操作するには、[Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) コマンドレットを使用して、Azure VM を操作する必要があります。 この方法を示した例については、「[Update Management - スクリプトを実行コマンドで実行する](https://github.com/azureautomation/update-management-run-script-with-run-command)」にある Runbook の例を参照してください。
@@ -153,7 +190,7 @@ Azure マシンを操作するには、[Invoke-AzVMRunCommand](/powershell/modul
 
 事前タスクと事後タスクは Azure コンテキストで実行され、Azure 以外のマシンにはアクセスできません。 Azure 以外のマシンと対話するには、次のものが必要です。
 
-* 実行アカウント
+* [マネージド ID](../automation-security-overview.md#managed-identities) または実行アカウント
 * コンピューターにインストールされた Hybrid Runbook Worker
 * ローカルで実行する Runbook
 * 親 Runbook
@@ -205,7 +242,7 @@ If (<My custom error logic>)
 
 .DESCRIPTION
   This script is intended to be run as a part of Update Management pre/post-scripts.
-  It requires a RunAs account.
+  It requires the Automation account's system-assigned managed identity.
 
 .PARAMETER SoftwareUpdateConfigurationRunContext
   This is a system variable which is automatically passed in by Update Management during a deployment.
@@ -214,21 +251,20 @@ If (<My custom error logic>)
 param(
     [string]$SoftwareUpdateConfigurationRunContext
 )
+
 #region BoilerplateAuthentication
-#This requires a RunAs account
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
 
-Add-AzAccount `
-    -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
 
-$AzureContext = Select-AzSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 #endregion BoilerplateAuthentication
 
 #If you wish to use the run context, it must be converted from JSON
-$context = ConvertFrom-Json  $SoftwareUpdateConfigurationRunContext
+$context = ConvertFrom-Json $SoftwareUpdateConfigurationRunContext
 #Access the properties of the SoftwareUpdateConfigurationRunContext
 $vmIds = $context.SoftwareUpdateConfigurationSettings.AzureVirtualMachines | Sort-Object -Unique
 $runId = $context.SoftwareUpdateConfigurationRunId
@@ -248,6 +284,11 @@ Set-AutomationVariable -Name $runId -Value $vmIds
 $variable = Get-AutomationVariable -Name $runId
 #>
 ```
+
+Runbook をシステム割り当てマネージド ID で実行する場合は、コードをそのままにしておきます。 ユーザー割り当てマネージド ID を使用する場合は、次のようにします。
+1. 22 行目から `$AzureContext = (Connect-AzAccount -Identity).context` を削除し、
+1. それを `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` に置き換えた後、
+1. クライアント ID を入力します。
 
 > [!NOTE]
 > 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](../automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。

@@ -1,0 +1,361 @@
+### YamlMime:FAQ
+metadata:
+  title: Microsoft Azure for Students と Azure Dev Tools for Teaching についてよく寄せられる質問
+  description: Microsoft Azure for Students、Microsoft Azure for Students Starter、Azure Dev Tools for Teaching についてよく寄せられる質問にお答えします。
+  author: v-dihans
+  ms.author: rymend
+  ms.service: azure-education
+  ms.subservice: education-hub
+  ms.topic: overview
+  ms.date: 08/31/2021
+  ms.openlocfilehash: add297aa2c3ff9b883cbf07b2e546bbf46f09b94
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124771481"
+title: Education Hub に関してよく寄せられる質問
+summary: この記事では、Microsoft Azure for Students、Microsoft Azure for Students Starter、Azure Dev Tools for Teaching についてよく寄せられる質問にお答えします。
+sections:
+- name: Microsoft Azure for Students
+  questions:
+  - question: >
+      $100 のクレジットを使い切った後や、12 か月が経過した後はどうなりますか?
+    answer: >
+      利用可能なクレジットを 12 か月が経過する前に使い切り、引き続き Azure を使用したい場合には、Azure portal で従量課金制サブスクリプションにアップグレードできます。  アップグレードしない場合、Azure サブスクリプションは無効になります。 12 か月が経過した場合は、プランに再度サインアップしてサブスクリプションを更新できます。 Microsoft Azure for Students の利用規約の詳細については、[契約条件](https://azure.microsoft.com/offers/ms-azr-0170p/)を参照してください。
+  - question: >
+      だれが Microsoft Azure for Students を利用できますか?
+    answer: "Microsoft Azure for Students は、以下の要件を満たしている学生のみが利用できます。\n\n- 自分が 18 歳以上で、認可を受けている 2 年または 4 年制の学位授与教育機関に正規の学生として在学していることを確認する必要があります。 \n- 所属する組織のメール アドレスを通じて、教育機関への所属を証明する必要があります。\n- 詳しい使用条件については、[Microsoft Azure for Students プラン](https://azure.microsoft.com/offers/ms-azr-0170p/)に関するページを参照してください。\n\nこのプランは、大規模公開オンライン講座 (MOOC) や営利組織のその他の専門トレーニングでは利用できません。\n\nこのプランでは、Microsoft Azure for Students サブスクリプションが対象のお客様につき 1 つに限られます。 このプランは譲渡できず、Microsoft が許可しない限り、他のプランと組み合わせることはできません。\n    \n"
+  - question: >
+      Microsoft Azure for Students を来年もう一度入手することはできますか?
+    answer: >
+      はい、ご利用いただけます。  1 年後に Microsoft Azure for Students サブスクリプションを更新できます。  その直前に、忘れずに更新するようメールを送信します。  Microsoft Azure for Students の [Web サイト](https://aka.ms/azure4students)からプランに再度サインアップするだけ更新できます。
+  - question: >
+      Microsoft から請求書が届いたのはなぜですか?
+    answer: "前月の Microsoft Azure for Students の利用時に発生した使用状況を詳細に記載した請求書を送信する場合があります。  ご安心ください。その使用に対する支払いは不要です。Microsoft Azure for Students で提供されるクレジットで全額が処理されます。  請求書とそのしくみの詳細については、docs.microsoft.com の[記事](../../cost-management-billing/understand/mca-overview.md)を確認してください。 \n"
+  - question: >
+      サブスクリプションとは何ですか? Microsoft Azure for Students とどのような関係があるのですか?
+    answer: >
+      サブスクリプションは、Azure サービスへのアクセスを提供します。 Microsoft Azure for Students では 12 か月間有効な $100 のクレジットが付与されます。これには、コンピューティング、ネットワーク、ストレージ、データベースなど、25 を超える無料サービスへのアクセスが含まれます。 この期間中に発生した料金はすべて、クレジットから差し引かれます。 $100 のクレジットを使い切った後に Azure サービスを引き続き使用するには、(12 か月の期間内の場合は) 更新するか、従量課金制サブスクリプションにアップグレードする必要があります。
+  - question: >
+      アップグレードしない場合、Azure サービスはどうなりますか?
+    answer: >
+      12 か月が経過した時点または $100 のクレジットを使い切った時点 (どちらか早い方) でアップグレードしないことを決定した場合、お客様がデプロイした製品はすべて使用停止になり、アクセスできなくなります。 無料サブスクリプションの終了から 90 日以内であれば、従量課金制サブスクリプションにアップグレードできます。
+  - question: >
+      $100 のクレジットのうち、どれだけ残っているかはどのようにして確認できるのですか?
+    answer: >
+      残りのクレジットは [Azure スポンサー プラン ポータル](https://www.microsoftazuresponsorships.com/)で確認できます。
+  - question: >
+      ソフトウェア開発者ツールはどのようにダウンロードできますか?
+    answer: >
+      Microsoft Azure for Students サブスクリプションがあれば、特定のソフトウェア開発者ツールにアクセスできます。 ソフトウェア開発者ツールにアクセスしてダウンロードするためには、最新の有効な Microsoft Azure for Students サブスクリプションが必要です。 [Education Hub](https://ms.portal.azure.com/#blade/Microsoft_Azure_Education/EducationMenuBlade/software) にアクセスしてソフトウェア開発者ツールをダウンロードするには、Microsoft Azure for Students サブスクリプションを使用します。
+  - question: >
+      Microsoft Learn とは何ですか?
+    answer: >
+      [Microsoft Learn](/learn/) とは、Azure のテクノロジを自分のペースで学ぶことができる無料のオンライン学習プラットフォームです。 ラーニング パスを利用してモジュールを組み合わせ、基本的な事柄から開始して、その後、実世界の課題に対応する高度な手法へと進むことができます。
+  - question: >
+      Microsoft Azure for Students は、運用や開発専用に利用できますか?
+    answer: >
+      Microsoft Azure for Students では、勉強や教育、非営利の研究のほか、そのためのソフトウェア アプリケーションの設計、開発、テスト、デモを支援するという目的に限り、すべての Azure 製品へのアクセスを提供します。
+  - question: >
+      自分の $100 のクレジットを Azure Marketplace のプランに適用することはできますか?
+    answer: >
+      いいえ。 お客様のクレジットは Azure Marketplace のプランには適用できません。 ただし、多くの Azure Marketplace パートナーは、ソリューションに関して無料試用版または Free レベルのプランを提供しています。
+- name: Microsoft Azure for Students Starter
+  questions:
+  - question: >
+      Microsoft Azure for Students Starter とは何ですか?
+    answer: >
+      Microsoft Azure for Students Starter では、クラウドでの開発に必要な Azure 製品を体験することができます。 料金はかかりません。 そのベネフィットとして、次のサービスの Free レベルへのアクセスを提供します。
+
+
+      - Azure App Service
+
+      - Azure Functions
+
+      - Azure 通知ハブ
+
+      - Azure Database for MySQL
+
+      - Application Insights
+
+      - Azure DevOps Services (旧称 Visual Studio Team Services)
+
+
+      Microsoft Azure for Students Starter は、本人確認を受けた学生が無料で利用でき、コミットメント、使用期間の制限はありません。 詳しい利用規約については、[Microsoft Azure for Students Starter プラン](https://azure.microsoft.com/offers/ms-azr-0144p/)に関するページを参照してください。
+  - question: >
+      だれが Microsoft Azure for Students Starter を利用できますか?
+    answer: >
+      Microsoft Azure for Students Starter は、以下の要件を満たしている学生のみが利用できます。
+
+
+      - 米国に居住している場合、13 歳以上であることを確認する必要があります。
+
+      - 米国以外の国に居住している場合、16 歳以上であることを確認する必要があります。
+
+      - 所属する組織のメール アドレスを通じて、教育機関への所属を証明する必要があります。 また、組織がサポートしている場合は Shibboleth を使用することもできます。
+
+
+      このプランは、大規模公開オンライン講座 (MOOC) や営利組織のその他の専門トレーニングでは利用できません。
+
+
+      このプランでは、Microsoft Azure for Students Starter サブスクリプションが対象のお客様につき 1 つに限られます。 このプランは譲渡できず、Microsoft が許可しない限り、他のプランと組み合わせることはできません。
+  - question: >
+      支払いが必要になる場面はありますか?
+    answer: >
+      Microsoft Azure for Students Starter プランにクレジット カードは必要ありません。 このプランでご利用いただける Azure サービスには限りがあります。 ただし、いつでも従量課金制サブスクリプションにアップグレードして、すべての Azure サービスを利用することができます。
+  - question: >
+      ソフトウェア開発者ツールはどのようにダウンロードできますか?
+    answer: >
+      Microsoft Azure for Students サブスクリプションがあれば、無料でダウンロードできる特定のソフトウェア開発者ツールにアクセスできます。
+
+
+      ソフトウェア開発者ツールにアクセスするためには、最新の有効な Microsoft Azure for Students サブスクリプションが必要です。
+
+
+      このソフトウェアは、[Education Hub](https://ms.portal.azure.com/#blade/Microsoft_Azure_Education/EducationMenuBlade/software) からダウンロードできます。
+  - question: >
+      Microsoft Learn とは何ですか?
+    answer: >
+      [Microsoft Learn](/learn/) とは、Azure のテクノロジを自分のペースで学ぶことができる無料のオンライン学習プラットフォームです。 ラーニング パスを利用してモジュールを組み合わせ、基本的な事柄から開始して、その後、実世界の課題に対応する高度な手法へと進むことができます。
+- name: Azure Academic Grant
+  questions:
+  - question: >
+      Azure コース クレジットを使い始める方法を教えてください。
+    answer: >
+      Azure コース クレジットは、Microsoft Azure Academic Grant サブスクリプションを新たに作成することでご利用いただけます。 スポンサー プランの承認メールにある **[アクティブ化]** ボタンを選択してください。
+
+
+      また、既存のサブスクリプションを Microsoft Azure スポンサー プランに変更してクレジットを利用することができます。 ご利用のサブスクリプションを変更する方法の詳細については、この後の質問でご説明します。
+  - question: >
+      自分のコース クレジットを既存のサブスクリプションに関連付けることはできますか?
+    answer: >
+      プランを利用する権利があるアカウントであれば、コース クレジットを既存のサブスクリプションに関連付けることができます。 コース クレジットの関連付けについては、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)にお問い合わせください。
+  - question: >
+      Azure portal の残高が $0 となっているのはなぜですか?
+    answer: >
+      Azure portal でご利用のサブスクリプションの詳細にアクセスすると、$0.00 と表示されます。 このプランでは、すべてのサービスについて 100% の割引が適用されます。 そのため、毎月の使用期間に対してポータルに表示される請求金額は $0.00 となります。
+
+
+      残高とスポンサー プランの情報を確認するには、[Azure スポンサー プラン](https://www.microsoftazuresponsorships.com/balance)にアクセスしてご利用のアカウントにサインインしてください。
+  - question: >
+      コース クレジットを、既存のマイクロソフト エンタープライズ契約 (EA) に適用することはできますか?
+    answer: >
+      コース クレジット プランは、マイクロソフト エンタープライズ契約 (EA) でご利用のアカウントにあるどのサブスクリプションとも関連付けることができません。
+
+
+      コース クレジットを適用するには、EA 以外で新しいアカウントを作成する必要があります。EA 以外のアカウントであれば、権利を適用することができます。
+
+
+      スポンサー プランの期間が終了した時点で、そのサブスクリプションを EA に関連付けることができます。
+
+
+      > [!WARNING]
+
+      > スポンサー プランの終了前にそのアカウントを EA に関連付けると、すべてのスポンサー プランのファンドが終了します。 詳細については、[Azure スポンサー プラン](https://azure.microsoft.com/offers/ms-azr-0143p/)の利用条件を参照してください。
+  - question: >
+      コース クレジットを CSP サブスクリプションに適用することはできますか?
+    answer: >
+      いいえ。クラウド ソリューション プロバイダー (CSP) サブスクリプションにコース クレジット プランを関連付けることはできません。
+  - question: >
+      コース クレジットを別のアカウントに移動することはできますか?
+    answer: >
+      はい。コース クレジットの権利は、別のアカウントに移動することができます。 これを行うには、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)にお問い合わせください。
+  - question: >
+      Azure Marketplace アプリケーションは、コース クレジットの対象になりますか?
+    answer: >
+      いいえ。サード パーティのアプリケーションはコース クレジットの対象にはなりません。 アカウントのクレジット カードに課金されます。 詳細情報:
+
+
+      - マーケットプレースのサービスは、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) で表示する。
+
+      - [Azure スポンサー プラン](https://azure.microsoft.com/offers/ms-azr-0143p/)の利用条件を参照してください。
+  - question: >
+      私の未納分の残高を、自分のコース クレジットで支払うことはできますか?
+    answer: >
+      Azure コース クレジットは、Azure スポンサー プランをアクティブ化した時点以降の使用量にのみ適用できます。 プランの開始日より前のすべての請求額は、お客様ご自身でお支払いいただく必要があります。
+  - question: >
+      私のサブスクリプションが Azure コース クレジット プランの対象になっていることを確認する方法を教えてください。
+    answer: >
+      Azure portal のサブスクリプション ブレードで特定のサブスクリプションを見ると、そのプロパティの 1 つとして **[プラン名]** が表示されます。 サブスクリプションがコース クレジットにひも付けられていれば、そのプラン名が **Azure スポンサー プラン** となっているはずです。 **Azure スポンサー プラン** が表示されない場合は、サブスクリプションを変更するためにサポートにお問い合わせください。
+- name: Azure Dev Tools for Teaching
+  questions:
+  - question: >
+      Microsoft Azure Dev Tools for Teaching は誰が購入できますか。
+    answer: "Microsoft とのボリューム ライセンス (VL) 契約を購入した教育機関のみ Azure Dev Tools for Teaching に登録できます。  現在、Dev Tools for Teaching のお客様であるが VL 契約をお持ちでない場合、サブスクリプションを引き続き更新できます。 教育機関向けの VL 契約の詳細については、 https://aka.ms/ees にアクセスしてください \n"
+  - question: >
+      Azure Dev Tools for Teaching サブスクリプションに含まれる製品を教えてください。
+    answer: >
+      :::row:::
+         :::column span="":::
+            Microsoft Access<br>
+      Advanced Threat Analytics<br>
+
+      Agents for Visual Studio<br>
+
+      BizTalk Server<br>
+
+      SQL Server Mobile Report Publisher (旧称 Datazen Enterprize)<br>
+
+      Host Integration Server<br>
+
+      Machine Learning Server (旧称 R Server)<br>
+
+      Hyper-V サーバー<br>
+
+      Microsoft Project<br>
+
+      Remote Tools for Visual Studio<br>
+
+      SharePoint Server<br>
+
+      Skype for Business Server<br>
+         :::column-end:::
+         :::column span="":::
+            SQL Server Developer<br>
+      SQL Server Enterprise<br>
+
+      SQL Server Standard<br>
+
+      SQL Server Web<br>
+
+      System Center<br>
+
+      Azure DevOps Server (旧称 Visual Studio Team Foundation Server)<br>
+
+      Microsoft Visio<br>
+
+      Visual Studio Code<br>
+
+      Visual Studio Community<br>
+
+      Visual Studio Enterprise<br>
+
+      Visual Studio for Mac<br>
+
+      Windows 10<br>
+
+      Windows Server<br>
+         :::column-end:::
+      :::row-end:::
+  - question: >
+      どのようにしてソフトウェアをダウンロードしますか?
+    answer: >
+      Microsoft Azure Dev Tools for Teaching サブスクリプションでは、特定のソフトウェア開発者ツールをご利用いただけます。 これらのツールは無料でダウンロードできます。
+
+
+      このソフトウェアは、[Education Hub の [ソフトウェア] セクション](https://ms.portal.azure.com/#blade/Microsoft_Azure_Education/EducationMenuBlade/software)からダウンロードできます。
+  - question: >
+      ソフトウェアを学生に配布するにはどうすればよいですか?
+    answer: >
+      Azure Dev Tools for Teaching のサブスクライバーであれば、学校や機関は Education Hub Store をご利用いただけます。 学生は、[Azure portal](https://portal.azure.com/) にある [Education Hub Store](https://azureforeducation.microsoft.com/devtools) からクラウド サービスを利用することになります。
+
+
+      Azure portal には、学校 (または Azure Dev Tools for Teaching) の資格情報でサインインします。 その後、Education Hub Store を開き、提供されているソフトウェア ダウンロードを利用します。
+  - question: >
+      Azure Dev Tools for Teaching は、世界各国で提供されているのですか?
+    answer: >
+      はい。Azure が販売されている 140 を超える国と地域で提供されています。
+  - question: >
+      エンドユーザーがこのソフトウェアで利用できる言語を教えてください。
+    answer: >
+      Education Hub Store は、アラビア語、簡体字中国語、繁体字中国語、デンマーク語、オランダ語、英語、フランス語、ドイツ語、ヘブライ語、イタリア語、日本語、韓国語、ポルトガル語、ロシア語、スペイン語、スウェーデン語、トルコ語の各言語で利用できます。
+  - question: >
+      Azure Dev Tools for Teaching プログラムを通じて学生がソフトウェアをダウンロードした場合、そのソフトウェアは無制限に使用できますか?
+    answer: >
+      はい。 学習や研究への取り組みを推進するために、学生には、無制限にソフトウェアを使用する権利が与えられます。
+  - question: >
+      Azure Dev Tools for Teaching ソフトウェアを使用して実用的なアプリや製品を学生が作成した場合、それらを販売することはできますか?
+    answer: >
+      通常はできません。 Azure Dev Tools for Teaching を使用して作成されたアプリや製品を学生が販売することはできません。 ただし、Azure Dev Tools for Teaching と Microsoft App Store チームのパートナーシップにより、学生は Windows ストアで販売するゲームやアプリケーションを作成できます。
+  - question: >
+      Azure Dev Tools for Teaching プログラムを使用すればソフトウェアを無制限に使用できるのですか?
+    answer: >
+      はい。 承認済みのコースに登録した教職員には、そのパーソナル コンピューターに Azure Dev Tools for Teaching ソフトウェアを非営利目的でインストールする資格が与えられます。
+  - question: >
+      Visual Studio Enterprise のベネフィットを利用するにはどうすればよいですか?
+    answer: >
+      Azure Dev Tools for Teaching サブスクリプションの管理者は、[Azure Dev Tools for Teaching 管理ポータル](https://azureforeducation.microsoft.com/account/Subscriptions)から利用申請を行うことで Visual Studio Enterprise サブスクリプションをご利用いただけます。
+
+
+      承認後、[Visual Studio ポータル](https://my.visualstudio.com/)にサインインして、追加のベネフィットを引き換えることができます。
+  - question: >
+      Microsoft Azure Dev Tools for Teaching には Microsoft Office が含まれますか?
+    answer: >
+      いいえ。 Microsoft Azure Dev Tools for Teaching は、特にソフトウェアの開発とテストの研究を拡大するために必要なツールを、部署、教職員、学生に提供することに重点を置いています。 そのため、Windows Server、Visual Studio .NET、SQL Server、Platform SDK などのテクノロジを提供しています。
+  - question: >
+      Azure Dev Tools for Teaching には Azure クレジットが含まれますか?
+    answer: >
+      いいえ、Microsoft Azure Dev Tools for Teaching サブスクリプションには Azure クレジットは含まれていません。 しかし、Microsoft Azure for Students にサインアップすることで、Azure サービスの支払いに使用できる 100 米国ドル相当の Azure クレジットを入手できます。 詳細については、「[Azure for Students で未来の構築を始める](https://aka.ms/student)」を ご覧ください。
+  - question: >
+      Azure Dev Tools for Teaching を利用する学生には Office 365 または Active Directory アカウントが必要ですか?
+    answer: >
+      いいえ。 学生に Office 365 アカウントは必要ありません。 Active Directory アカウントを利用している学生は、同じ資格情報を使用してソフトウェアにサインインできます。
+
+
+      Active Directory を利用していない学生は、支給されたメール アドレスを使用して [Microsoft アカウント](https://account.microsoft.com/account) (まだ持っていない場合) を作成する必要があります。
+  - question: >
+      Azure Dev Tools for Teaching にサインインする際にサインイン資格情報が認識されないのはなぜですか?
+    answer: >
+      Azure Dev Tools for Teaching へのサインイン試行に学校の資格情報を使用していることを確認してください。 プライベート ブラウズ ウィンドウ セッションを開くと解決する場合があります。
+
+
+      それでもサインインできない場合は、サブスクリプション管理者に問い合わせてください。サブスクリプション管理者をお探しの場合は、[こちらからお問い合わせ](https://aka.ms/adt4tsupport)ください。
+  - question: >
+      サブスクライバー ID を調べるにはどうすればよいですか?
+    answer: >
+      - **プログラムへの初回登録時**: サブスクライバー ID 番号は、お手元のサブスクリプション ウェルカム メールに記載されています。
+
+      - **サブスクリプションを更新した場合**: サブスクライバー ID は、サブスクリプション管理者に送信された更新メールに記載されています。
+
+
+      サブスクライバー ID は、Visual Studio Subscription ポータルでも確認できます。 サインイン後、 **[マイ アカウント]** ページの **[My Subscription]\(個人用サブスクリプション\)** を確認してください。
+
+
+      サブスクライバー ID が見つからない場合は、[お問い合わせ](https://azureforeducation.microsoft.com/institutions/Contact)ください。
+  - question: >
+      Azure Dev Tools for Teaching がアカデミック ボリューム ライセンス契約に含まれる形で提供される場合、Azure Dev Tools for Teaching に自動的に登録されるのでしょうか?
+    answer: >
+      いいえ。アカデミック ボリューム ライセンス契約を締結しているお客様が Microsoft によって自動的に登録されることはありません。 アカデミック ボリューム ライセンス契約の内容は次のとおりです。
+
+
+      - 教育ソリューション加入契約 (EES)
+
+      - Open Value Subscription Agreement for Education Solutions (OVS-ES)
+
+      - Campus Agreement
+
+      - School Agreement
+
+
+      アカデミック ボリューム ライセンスのサブスクリプション ウェルカム メールに記載された適切なプロモーション コードを使用して Azure Dev Tools for Teaching に登録する必要があります。
+
+
+      また、ご利用のサブスクリプションの有効期限が切れたら更新する必要があります。 自動的には更新されません。
+
+
+      プロモーション コードが見つからない場合は、[お問い合わせ](https://azureforeducation.microsoft.com/institutions/Contact)ください。
+  - question: >
+      Azure Dev Tools for Teaching サブスクリプションは、いつ、どのように更新するのでしょうか?
+    answer: >
+      メンバーシップの有効期限が切れる 60 日前より、サブスクリプションを更新するためのメール アラームが届き始めます。 更新メールに記載されている[更新リンク](https://portal.azureforeducation.microsoft.com/)を選択してください。
+
+
+      これらのメール アラームが届かず、サブスクリプションの有効期限が切れるおそれがある場合は、[お問い合わせ](https://aka.ms/adt4tsupport)ください。
+
+
+      または、[Azure Dev Tools for Teaching の更新ページ](https://portal.azureforeducation.microsoft.com/)にアクセスして、更新プロセスを完了してください。
+
+
+      サブスクリプションの有効期限日を確認するには、[Azure Dev Tools for Teaching 管理ポータル](https://azureforeducation.microsoft.com/account/Subscriptions)にアクセスし、 **[サブスクリプション]** をご覧ください。
+  - question: >
+      さらにサポートが必要な場合はどうすればよいですか?
+    answer: >
+      「サブスクリプション サポート」ページにアクセスし、該当するリージョンを探して[お問い合わせ](https://azureforeducation.microsoft.com/institutions/Contact)ください。
+  - question: >
+      Azure Dev Tools for Teaching のプライバシーと Cookie ポリシーはどこにありますか?
+    answer: >-
+      Microsoft によって収集される個人データとその取り扱い、データを共有する理由は、[Microsoft プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)に記載されています。
+
+
+      このプライバシー ステートメントは、アプリ、デバイス、サーバー、サービス、ソフトウェア、Web サイトを含む一連の Microsoft 製品を対象としています。 また、製品固有の情報も提供されており、Cookie の使用に関するそのポリシーが詳しく書かれています。

@@ -3,12 +3,12 @@ title: テンプレートを使用したクイック タスクの実行
 description: Azure Resource Manager テンプレートを使用して、イメージをビルドする ACR タスクの実行をキューに登録します
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: af7bebc311f81bb489fcc8be419f167ff6f9460a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c79eec16798b1e1c9933ab50fb443b4427075149
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781237"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981083"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して ACR タスクを実行する
 
@@ -49,6 +49,8 @@ ms.locfileid: "107781237"
 ### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 [az deployment group create][az-deployment-group-create] コマンドを使用してテンプレートをデプロイします。 この例では、*helloworld-node:testrun* イメージをビルドし、*mycontainerregistry* という名前のレジストリにプッシュします。
+
+[!INCLUDE [pull-image-dockerfile-include](../../includes/pull-image-dockerfile-include.md)]
 
 ```azurecli
 az deployment group create \

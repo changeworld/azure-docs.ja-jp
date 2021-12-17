@@ -3,34 +3,31 @@ title: ユーザー属性を追加してユーザー入力をカスタマイズ�
 titleSuffix: Azure AD B2C
 description: ユーザー入力をカスタマイズし、Azure Active Directory B2C のサインアップまたはサインイン体験にユーザー属性を追加する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 10/22/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 257ba16cf015705b8f6da264d9c25f28cef2ebb1
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 042829ac525ed911f1a9ec984843931e8029b0a6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443442"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007469"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でユーザー属性を追加してユーザー入力をカスタマイズする
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-::: zone pivot="b2c-custom-policy"
-
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-::: zone-end
-
 この記事では、Azure Active Directory B2C (Azure AD B2C) でのサインアップ体験時に新しい属性を収集します。 ユーザーの city (市区町村) を取得し、それをドロップダウンとして構成し、それを指定することが必須かどうかを定義します。
+
+> [!IMPORTANT]
+> このサンプルでは、組み込みの要求の "city" を使用します。 代わりに、サポートされている [Azure AD B2C 組み込み属性](user-profile-attributes.md)のいずれか、またはカスタム属性を選択することもできます。 カスタム属性を使用するには、[カスタム属性を有効にします](user-flow-custom-attributes.md)。 別の組み込みまたはカスタム属性を使用するには、選択した属性で "city" を置き換えます。たとえば、組み込み属性 *jobTitle* や、*extension_loyaltyId* のようなカスタム属性を使用できます。  
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,6 +37,10 @@ ms.locfileid: "106443442"
 
 ## <a name="add-user-attributes-your-user-flow"></a>ユーザー属性をユーザー フローに追加する
 
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. ポリシー ("B2C_1_SignupSignin" など) を選択して開きます。
 1. **[ユーザー属性]** を選択してから、ユーザー属性 ("City" など) を選択します。 
@@ -89,7 +90,7 @@ city 属性の値のセットの一覧を指定するには、次のようにし
       "ElementType": "ClaimType",
       "ElementId": "city",
       "TargetCollection": "Restriction",
-      "Override": false,
+      "Override": true,
       "Items": [
         {
           "Name": "Berlin",
@@ -115,7 +116,7 @@ city 属性の値のセットの一覧を指定するには、次のようにし
 1. **[ユーザー フロー]** を選択し、ポリシー ("B2C_1_SignupSignin" など) を選択して開きます。
 1. **[言語]** を選択します。
 1. 翻訳する言語を選びます。
-1. **[ローカル アカウント サインアップ ページ]** を選択します。
+1. **[Page-level-resources files]\(ページ レベル リソース ファイル\)** で、 **[ローカル アカウントのサインアップ ページ]** を選択します。
 1. フォルダー アイコンを選び、アップロードする JSON ファイルを選びます。 変更がユーザー フローに自動的に保存されます。
 
 ## <a name="test-your-user-flow"></a>ユーザー フローをテストする
@@ -129,10 +130,9 @@ city 属性の値のセットの一覧を指定するには、次のようにし
 
 ::: zone pivot="b2c-custom-policy"
 
-> [!NOTE]
-> このサンプルでは、組み込みの要求の "city" を使用します。 代わりに、サポートされている [Azure AD B2C 組み込み属性](user-profile-attributes.md)のいずれか、またはカスタム属性を選択することもできます。 カスタム属性を使用するには、[カスタム属性を有効にします](user-flow-custom-attributes.md)。 別の組み込みまたはカスタム属性を使用するには、選択した属性で "city" を置き換えます。たとえば、組み込み属性 *jobTitle* や、*extension_loyaltyId* のようなカスタム属性を使用できます。  
+## <a name="overview"></a>概要
 
-ユーザーからの初期データは、サインアップまたはサインインのユーザー体験を使用して収集できます。 追加の要求は、後でプロファイル編集のユーザー体験を使用して収集できます。 Azure AD B2C が対話形式でユーザーから直接情報を収集するときはいつでも、Identity Experience Framework は[セルフアサート技術プロファイル](self-asserted-technical-profile.md)を使用します。 このサンプルでは、以下を実行します。
+ユーザーからの初期データは、サインアップまたはサインインのユーザー体験を使用して収集できます。 追加の要求は、後でプロファイル編集のユーザー体験を使用して収集できます。 Azure AD B2C は、対話形式でユーザーから直接情報を収集するときはいつでも、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)を使用します。 このサンプルでは、以下を実行します。
 
 1. "city" 要求を定義します。 
 1. ユーザーに city を尋ねます。
@@ -164,14 +164,24 @@ city 属性の値のセットの一覧を指定するには、次のようにし
       <DataType>string</DataType>
       <UserInputType>DropdownSingleSelect</UserInputType>
       <Restriction>
-        <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-        <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-        <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
+        <Enumeration Text="Berlin" Value="berlin" />
+        <Enumeration Text="London" Value="london" />
+        <Enumeration Text="Seattle" Value="seattle" />
       </Restriction>
     </ClaimType>
   <!-- 
   </ClaimsSchema>
 </BuildingBlocks>-->
+```
+
+`Enumeration` 要素に [SelectByDefault](claimsschema.md#enumeration) 属性を含めて、ページが初めて読み込まれるときに既定で選択されるようにします。 たとえば、*London* 項目を事前選択するには、`Enumeration` 要素を次の例のように変更します。
+
+```xml
+<Restriction>
+  <Enumeration Text="Berlin" Value="berlin" />
+  <Enumeration Text="London" Value="london" SelectByDefault="true" />
+  <Enumeration Text="Seattle" Value="seattle" />
+</Restriction>
 ```
 
 ## <a name="add-a-claim-to-the-user-interface"></a>ユーザー インターフェイスに要求を追加する
@@ -314,15 +324,21 @@ city 要求を証明書利用者アプリケーションに返すには、出力
 </RelyingParty>
 ```
 
-## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
+## <a name="upload-and-test-your-updated-custom-policy"></a>更新されたカスタム ポリシーをアップロードしてテストする
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
-2. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
-4. **[Identity Experience Framework]** を選択します。
-5. **[カスタム ポリシーのアップロード]** を選択し、変更した 2 つのポリシー ファイルをアップロードします。
-2. アップロードしたサインアップまたはサインイン ポリシーを選択し、 **[今すぐ実行]** ボタンをクリックします。
-3. メール アドレスを使用してサインアップできることを確認します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. **Azure AD B2C** を検索して選択します。
+1. **[ポリシー]** で **[Identity Experience Framework]** を選択します。
+1. **[カスタム ポリシーのアップロード]** を選択します。
+1. 以前に変更したポリシー ファイルをアップロードします。
+
+### <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
+
+1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
+1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[今すぐ実行]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[今すぐサインアップ]** を選択してサインアップします。 市区町村名を含むユーザー情報の入力を完了し、 **[作成]** をクリックします。 返されたトークンの内容が表示されます。
 
 ::: zone-end
 
@@ -351,12 +367,69 @@ city 要求を証明書利用者アプリケーションに返すには、出力
   "email": "joe@outlook.com",
   "given_name": "Emily",
   "family_name": "Smith",
-  "city": "Bellevue"
+  "city": "Berlin"
   ...
 }
 ```
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="optional-localize-the-ui"></a>[オプション] UI をローカライズする
+
+Azure AD B2C を使用すると、ポリシーをさまざまな言語に対応させることができます。 詳細については、[言語エクスペリエンスのカスタマイズ](language-customization.md)に関するページを参照してください。 サインアップ ページをローカライズするには、[サポートされている言語の一覧を設定](language-customization.md#set-up-the-list-of-supported-languages)し、[言語固有のラベルを指定](language-customization.md#provide-language-specific-labels)します。
+
+> [!NOTE]
+> `LocalizedCollection` と言語固有のラベルを使用する場合は、[要求の定義](#define-a-claim)から `Restriction` コレクションを削除できます。
+
+次の例は、英語とスペイン語の市区町村の一覧を指定する方法を示しています。 両方とも、要求 *city* の `Restriction` コレクションに英語とスペイン語の項目の一覧を設定します。 [SelectByDefault](claimsschema.md#enumeration) は、ページが初めて読み込まれるときに、項目が既定で選択されるようにします。
+   
+```xml
+<!-- 
+<BuildingBlocks>-->
+  <Localization Enabled="true">
+    <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+      <SupportedLanguage>en</SupportedLanguage>
+      <SupportedLanguage>es</SupportedLanguage>
+    </SupportedLanguages>
+    <LocalizedResources Id="api.localaccountsignup.en">
+      <LocalizedCollections>
+        <LocalizedCollection ElementType="ClaimType" ElementId="city" TargetCollection="Restriction">
+          <Item Text="Berlin" Value="Berlin"></Item>
+          <Item Text="London" Value="London" SelectByDefault="true"></Item>
+          <Item Text="Seattle" Value="Seattle"></Item>
+        </LocalizedCollection>
+      </LocalizedCollections>
+    </LocalizedResources>
+    <LocalizedResources Id="api.localaccountsignup.es">
+      <LocalizedCollections>
+        <LocalizedCollection ElementType="ClaimType" ElementId="city" TargetCollection="Restriction">
+          <Item Text="Berlina" Value="Berlin"></Item>
+          <Item Text="Londres" Value="London" SelectByDefault="true"></Item>
+          <Item Text="Seattle" Value="Seattle"></Item>
+        </LocalizedCollection>
+      </LocalizedCollections>
+    </LocalizedResources>
+  </Localization>
+<!-- 
+</BuildingBlocks>-->
+```
+
+ローカライズ要素を追加した後、[ローカライズを使用してコンテンツ定義を編集](language-customization.md#edit-the-content-definition-with-the-localization)します。 次の例では、英語 (en) とスペイン語 (es) のカスタム ローカライズ リソースが、サインアップ ページに追加されています。
+   
+```xml
+<!-- 
+<BuildingBlocks>
+  <ContentDefinitions> -->
+   <ContentDefinition Id="api.localaccountsignup">
+    <LocalizedResourcesReferences MergeBehavior="Prepend">
+        <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
+        <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
+    </LocalizedResourcesReferences>
+   </ContentDefinition>
+  <!-- 
+  </ContentDefinitions>
+</BuildingBlocks>-->
+```
 
 ## <a name="next-steps"></a>次のステップ
 

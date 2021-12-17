@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 847f8dbd2d8f4064f12333348a4f03e5c5fcc611
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: fcdc5c86c1b5cf39fb4140afc1db661db8ead11d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774271"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224855"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>仮想マシンのネットワーク インターフェイスの追加と削除
 
 Azure 仮想マシン (VM) を作成するときに、既存のネットワーク インターフェイスを追加する方法について説明します。 また、既存の VM から停止 (割り当て解除) 状態でネットワーク インターフェイスを追加または削除する方法について説明します。 Azure VM は、ネットワーク インターフェイスを使用してインターネット、Azure、およびオンプレミスのリソースと通信できます。 1 つの VM には、1 つ以上のネットワーク インターフェイスがあります。 
 
-ネットワーク インターフェイスに対して IP アドレスの追加、変更、または削除が必要な場合は、[ネットワーク インターフェイスの IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページを参照してください。 ネットワーク インターフェイスを作成、変更、または削除する場合は、[ネットワークインターフェイスの管理](virtual-network-network-interface.md)に関するページを参照してください。
+ネットワーク インターフェイスに対して IP アドレスの追加、変更、または削除が必要な場合は、[ネットワーク インターフェイスの IP アドレスの管理](./ip-services/virtual-network-network-interface-addresses.md)に関するページを参照してください。 ネットワーク インターフェイスを作成、変更、または削除する場合は、[ネットワークインターフェイスの管理](virtual-network-network-interface.md)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -96,7 +96,7 @@ VM にアタッチされているネットワーク インターフェイスを�
 
 3. VM のメニュー バーで、 **[ネットワーク]** を選択します。
 
-ネットワーク インターフェイスの設定とそれを変更する方法については、[ネットワーク インターフェイスの管理](virtual-network-network-interface.md)に関するページをご覧ください。 ネットワーク インターフェイスに割り当てる IP アドレスの追加、変更、または削除を行う方法については、[ネットワーク インターフェイスの IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページを参照してください。
+ネットワーク インターフェイスの設定とそれを変更する方法については、[ネットワーク インターフェイスの管理](virtual-network-network-interface.md)に関するページをご覧ください。 ネットワーク インターフェイスに割り当てる IP アドレスの追加、変更、または削除を行う方法については、[ネットワーク インターフェイスの IP アドレスの管理](./ip-services/virtual-network-network-interface-addresses.md)に関するページを参照してください。
 
 ### <a name="commands"></a>コマンド
 
@@ -147,7 +147,7 @@ VM にアタッチされているネットワーク インターフェイスを�
 
 - 同じ VM 内のネットワーク インターフェイスを、1 つの仮想ネットワーク内の別のサブネットに接続できます。 ただし、そのネットワーク インターフェイスはすべて同じ仮想ネットワークに接続されている必要があります。
 
-- 任意のプライマリまたはセカンダリ ネットワーク インターフェイスの任意の IP 構成の任意の IP アドレスを Azure Load Balancer バックエンド プールに追加できます。 以前は、プライマリ ネットワーク インターフェイスのプライマリ IP アドレスのみをバックエンド プールに追加できました。 IP アドレスと IP 構成の詳細については、[IP アドレスの追加、変更、削除](virtual-network-network-interface-addresses.md)に関するページをご覧ください。
+- 任意のプライマリまたはセカンダリ ネットワーク インターフェイスの任意の IP 構成の任意の IP アドレスを Azure Load Balancer バックエンド プールに追加できます。 以前は、プライマリ ネットワーク インターフェイスのプライマリ IP アドレスのみをバックエンド プールに追加できました。 IP アドレスと IP 構成の詳細については、[IP アドレスの追加、変更、削除](./ip-services/virtual-network-network-interface-addresses.md)に関するページをご覧ください。
 
 - VM を削除してもそれに接続されたネットワーク インターフェイスは削除されません。 VM を削除すると、ネットワーク インターフェイスは VM からデタッチされます。 それらのネットワーク インターフェイスは、別の VM に追加することも削除することもできます。
 
@@ -162,5 +162,5 @@ VM にアタッチされているネットワーク インターフェイスを�
 |タスク|ツール|
 |---|---|
 |複数 NIC を持つ VM の作成|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|複数の IPv4 アドレスが割り当てられた 1 つの NIC VM の作成|[CLI](virtual-network-multiple-ip-addresses-cli.md)、[PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
+|複数の IPv4 アドレスが割り当てられた 1 つの NIC VM の作成|[CLI](./ip-services/virtual-network-multiple-ip-addresses-cli.md)、[PowerShell](./ip-services/virtual-network-multiple-ip-addresses-powershell.md)|
 |プライベート IPv6 アドレスが割り当てられた 1 つの NIC VM の作成 (Azure Load Balancer の背後)|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[Azure Resource Manager テンプレート](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|

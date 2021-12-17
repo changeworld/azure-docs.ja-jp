@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: db8c84334bfce52d34b9fadf73bb2b070fa93a70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01fc0be9a2ce8db89bbbcc032bbf90652d5627b8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100007110"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079398"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -18,7 +18,7 @@ ms.locfileid: "100007110"
 
 ## <a name="what-is-a-component"></a>コンポーネントとは
 
-コンポーネントは、分散/マイクロサービス アプリケーションの、個別にデプロイできる部分です。 開発者と運用チームには、これらのアプリケーション コンポーネントによって生成されたテレメトリに対して、コード レベルの可視性またはアクセスがあります。 
+コンポーネントは、分散/マイクロサービス アプリケーションの、個別にデプロイできる部分です。 開発者と運用チームには、これらのアプリケーション コンポーネントによって生成されたテレメトリに対して、コード レベルの可視性またはアクセスがあります。
 
 * コンポーネントは、チームや組織が (コードやテレメトリに) アクセスできない可能性がある SQL や EventHub などの "観察される" 外部依存関係とは異なります。
 * コンポーネントは、任意の数のサーバー/ロール/コンテナーのインスタンス上で実行されます。
@@ -26,9 +26,9 @@ ms.locfileid: "100007110"
 
 ## <a name="composite-application-map"></a>複合アプリケーション マップ
 
-関連するアプリケーション コンポーネントの階層を横断的に見ながら完全なアプリケーション トポロジを表示できます。 コンポーネントとしては、さまざまな Application Insights リソースや、単一のリソースに含まれる各種ロールが該当します。 アプリ マップでは、Application Insights SDK がインストールされているサーバー間での HTTP 依存関係呼び出しに従ってコンポーネントを検索します。 
+関連するアプリケーション コンポーネントの階層を横断的に見ながら完全なアプリケーション トポロジを表示できます。 コンポーネントとしては、さまざまな Application Insights リソースや、単一のリソースに含まれる各種ロールが該当します。 アプリ マップでは、Application Insights SDK がインストールされているサーバー間での HTTP 依存関係呼び出しに従ってコンポーネントを検索します。
 
-このエクスペリエンスでは、最初にコンポーネントが順次検出されます。 アプリケーション マップを初めて読み込むとき、一連のクエリがトリガーされて、対象コンポーネントに関連したコンポーネントが検出されます。 左上隅のボタンには、対象アプリケーション内のコンポーネント数が表示され、その数は、コンポーネントが検出されるにつれて更新されます。 
+このエクスペリエンスでは、最初にコンポーネントが順次検出されます。 アプリケーション マップを初めて読み込むとき、一連のクエリがトリガーされて、対象コンポーネントに関連したコンポーネントが検出されます。 左上隅のボタンには、対象アプリケーション内のコンポーネント数が表示され、その数は、コンポーネントが検出されるにつれて更新されます。
 
 [マップ コンポーネントの更新] をクリックすると、その時点で検出されたすべてのコンポーネントでマップが更新されます。 アプリケーションの複雑さによっては、読み込みに数分かかることがあります。
 
@@ -87,7 +87,7 @@ ms.locfileid: "100007110"
 アプリケーション マップでは、**クラウド ロール名** プロパティを使用して、マップ上のコンポーネントが識別されます。 クラウド ロール名を手動で設定またはオーバーライドし、アプリケーション マップ上に表示される内容を変更するには、次のようにします。
 
 > [!NOTE]
-> Application Insights SDK または Agent では、Azure App Service Environment のコンポーネントで生成されたテレメトリにクラウド ロール名プロパティが自動的に追加されます。
+> Application Insights SDK または Agent では、Azure App Service 環境のコンポーネントで生成されたテレメトリにクラウド ロール名プロパティが自動的に追加されます。
 
 # <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
@@ -142,7 +142,7 @@ ASP.NET Web アプリのもう 1 つの方法は、Global.aspx.cs などのコ�
 ```
 
 > [!NOTE]
-> `ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。 
+> `ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。
 
 **ASP.NET Core アプリ: アクティブな TelemetryConfiguration に初期化子を読み込む**
 
@@ -177,7 +177,7 @@ ASP.NET Web アプリのもう 1 つの方法は、Global.aspx.cs などのコ�
 
 SDK を使用している場合、Application Insights Java SDK 2.5.0 以降では、`ApplicationInsights.xml` ファイルに `<RoleName>` を追加することで、クラウド ロール名を指定できます。例:
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
    <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
@@ -231,7 +231,7 @@ Python の場合、[OpenCensus Python テレメトリ プロセッサ](api-filte
 ```python
 def callback_function(envelope):
    envelope.tags['ai.cloud.role'] = 'new_role_name'
-   
+
 # AzureLogHandler
 handler.add_telemetry_processor(callback_function)
 
@@ -246,7 +246,7 @@ exporter.add_telemetry_processor(callback_function)
 
 ![アプリケーション マップのスクリーンショット](media/app-map/cloud-rolename.png)
 
-上記のアプリケーション マップでは、緑色の囲みの中の名前が、それぞれこの特定の分散アプリケーションの異なる側面のクラウド ロール名の値になります。 したがって、このアプリでは、ロールは `Authentication`、`acmefrontend`、`Inventory Management`、`Payment Processing Worker Role` で構成されます。 
+上記のアプリケーション マップでは、緑色の囲みの中の名前が、それぞれこの特定の分散アプリケーションの異なる側面のクラウド ロール名の値になります。 したがって、このアプリでは、ロールは `Authentication`、`acmefrontend`、`Inventory Management`、`Payment Processing Worker Role` で構成されます。
 
 このアプリの場合、クラウド ロール名のそれぞれが、一意の Application Insights リソースと各自のインストルメンテーション キーも表しています。 このアプリケーションの所有者は、これら 4 つの異なる Application Insights リソースにアクセスできるため、アプリケーション マップによって基になる関係を 1 つのマップにまとめることができます。
 
@@ -256,7 +256,7 @@ exporter.add_telemetry_processor(callback_function)
    [Description("Name of the role the application is a part of. Maps directly to the role name in azure.")]
     [MaxStringLength("256")]
     705: string      CloudRole = "ai.cloud.role";
-    
+
     [Description("Name of the instance where the application is running. Computer name for on-premises, instance name for Azure.")]
     [MaxStringLength("256")]
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";

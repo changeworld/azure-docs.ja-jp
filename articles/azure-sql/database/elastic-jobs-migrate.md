@@ -4,19 +4,18 @@ description: 新しい Elastic Database ジョブに移行します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: johnpaulkee
-ms.author: joke
-ms.reviewer: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.date: 03/13/2019
-ms.openlocfilehash: e8c222d7cdcdb203cd323cde38818e5b51643159
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7fc52014e8f95ee021097f5f305d0aa60bd52a6
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91443371"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699545"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>新しい Elastic Database ジョブへの移行 (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

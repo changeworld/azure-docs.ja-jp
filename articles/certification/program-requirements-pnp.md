@@ -1,18 +1,18 @@
 ---
 title: IoT プラグ アンド プレイ認定の要件
-description: IoT プラグ アンド プレイ認定プログラムの要件
+description: IoT プラグ アンド プレイ認定の要件
 author: cbroad
 ms.author: cbroad
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: b26fab6f8b92e3cb996f545f1f6201d32b1eaced
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 54ef14a3851d656d81d9b0ec194f6b8127eba5b3
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310514"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114402760"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>IoT プラグ アンド プレイ認定の要件
 
@@ -25,9 +25,9 @@ IoT プラグ アンド プレイ プレビューにより、ソリューショ�
 IoT プラグ アンド プレイ認定では次のことが保証されます。
 
 1.  定義済みのデバイス モデルとインターフェイスは、[デジタル ツイン定義言語](https://github.com/Azure/opendigitaltwins-dtdl)に準拠している  
-2.  デバイス プロビジョニング サービスのセキュリティで保護されたプロビジョニングと ID スコープの所有権の転送を容易にする
-3.  [デジタル ツイン API](../iot-pnp/concepts-digital-twin.md) を使用した Azure IoT ベースのソリューションとの簡単な統合: Azure IoT Hub と Azure IoT Central
-4.  認定デバイスで検証された製品の真実性
+1.  [デジタル ツイン API](../iot-develop/concepts-digital-twin.md) を使用した Azure IoT ベースのソリューションとの簡単な統合: Azure IoT Hub と Azure IoT Central
+1.  認定デバイスで検証された製品の真実性
+1.  [Azure Certified Device](./program-requirements-azure-certified-device.md) のすべての要件を満たす
 
 ## <a name="requirements"></a>必要条件
 
@@ -42,16 +42,6 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **検証**          | デバイスは IoT Hub にテレメトリ スキーマを送信する必要があります。 Microsoft では、テストを実行するための[ポータル ワークフロー](https://certify.azure.com)を提供しています。 デバイスからクラウドへ (必須): **1.** デバイスが AIC で管理されている IoT Hub にメッセージを送信できることを検証します **2.** ユーザーは、メッセージの数と頻度を指定する必要があります。 **3.** AIC は、ハブ インスタンスによってテレメトリが受信されたことを検証します |
 | **リソース**           | [認定手順](./overview.md) (すべての追加リソースを含む) |
 
-**[必須] DPS: テストの目的は、3 つの認証メソッドのいずれかを使用して、デバイスが IoT Hub Device Provisioning Service を実装およびサポートしていることを確認することです**
-
-| **名前**                | IoTPnP.DPS                                               |
-| ----------------------- | ------------------------------------------------------------ |
-| **ターゲットの可用性** | 現在利用可能                                                |
-| **適用対象**          | 任意のデバイス                                                   |
-| **OS**                  | 非依存                                                     |
-| **検証タイプ**     | 自動                                                    |
-| **検証**          | デバイスは、埋め込みコードを再コンパイルする必要なく、DPS ID スコープの所有権の転送を実装する必要があります。 Microsoft では、デバイスが DPS をサポートしていることを検証するために、テストを実行するための [ポータル ワークフロー](https://certify.azure.com)を提供しています **1.** ユーザーは、構成証明メソッド (x.509、TPM、および SAS キー) のいずれかを選択する必要があります **2.** 認証方法に応じて、ユーザーは、**a)** X.509 証明書を AICS マネージド DPS スコープにアップロードする、**b)** SAS キーまたは保証キーをデバイスに実装する、などの対応するアクションを実行する必要があります |
-| **リソース**           | **a)** [デバイス プロビジョニング サービスの概要](../iot-dps/about-iot-dps.md)、 **b)** [DPS の ID スコープ転送用のサンプル構成ファイル](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/serializer/samples/devicetwin_simplesample) |
 
 **[必須] DTDL v2: 定義済みのデバイスモデルとインターフェイスがデジタル ツイン定義言語 v2 に準拠していることを確認するテストの目的。**                                                              
 
@@ -62,7 +52,7 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **OS**                  | 非依存                                                     |
 | **検証タイプ**     | 自動                                                    |
 | **検証**          | [ポータルのワークフロー](https://certify.azure.com)では、次のことが検証されます。 **1.** モデル ID のアナウンスと、デバイスが MQTT または MQTT over WebSockets プロトコルを使用して接続されていることを確認する **2.** モデルは DTDL v2 に準拠している **3.** テレメトリ、プロパティ、およびコマンドが正しく実装され、デバイス上の IoT Hub デジタル ツインとデバイス ツインの間で対話する |
-| **リソース**           | [パブリック プレビュー更新版の更新内容](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
+| **リソース**           | [パブリック プレビュー更新版の更新内容](../iot-develop/overview-iot-plug-and-play.md) |
 
 **[必須] デバイス モデルはパブリック モデル リポジトリに発行されます**
 
@@ -73,7 +63,7 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **OS**                  | 非依存                                                     |
 | **検証タイプ**     | 自動                                                    |
 | **検証**          | すべてのデバイス モデルは、パブリック リポジトリに発行される必要があります。 デバイス モデルは、パブリック リポジトリで利用可能なモデルを使用して解決されます **1.** ユーザーは、証明書を送信する前に、モデルをパブリック リポジトリに手動で発行する必要があります。 **2.** モデルは一度発行されると変更できないことに注意してください。 モデルと埋め込みデバイス コードが完成した場合にのみ発行することを強くお勧めします。*1 *1 ユーザーは、モデル リポジトリに発行された後に、Microsoft サポートに連絡してモデルを取り消す必要があります **3.** [ポータル ワークフロー](https://certify.azure.com) は、デバイスが証明書サービスに接続されている場合に、パブリック リポジトリ内のモデルの存在を確認します |
-| **リソース**           | [モデル リポジトリ](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
+| **リソース**           | [モデル リポジトリ](../iot-develop/overview-iot-plug-and-play.md) |
 
 **[必須] GSG を使用した物理デバイスの検証**
 
@@ -96,7 +86,7 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **OS**                  | 非依存                                                     |
 | **検証タイプ**     | 自動                                                    |
 | **検証**          | [ポータル ワークフロー](https://certify.azure.com)により、デバイス コードがデバイス情報インターフェイスを実装していることが検証されます **1.** デバイス コードによって IoT Hub に値が出力されることを確認します **2.** インターフェイスが DCM に実装されていることを確認します (この実装は DTDL v2 で変更されます) **3.** チェック プロパティが書き込み可能ではありません (読み取り専用) **4.** スキーマの種類が文字列または long であり、null ではないことを確認します |
-| **リソース**           | [Microsoft によって定義されたインターフェイス](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
+| **リソース**           | [Microsoft によって定義されたインターフェイス](../iot-develop/overview-iot-plug-and-play.md) |
 | **Azure の推奨事項**  | 該当なし                                                          |
 
 **[実装されている場合] クラウドからデバイス: テストの目的は、メッセージがクラウドからデバイスに送信されることを確認することです**

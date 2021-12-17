@@ -1,21 +1,21 @@
 ---
 title: Azure Files の概要 | Microsoft Docs
-description: 業界標準の SMB プロトコルを使用してクラウド上にネットワーク ファイル共有を作成および使用できるサービス、Azure Files の概要。
+description: SMB または NFS プロトコルを使用してクラウド上にネットワーク ファイル共有を作成および使用できるサービス、Azure Files の概要。
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 09/15/2020
+ms.date: 07/23/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7279c5578d969db9178ce85734e3a43f9eccdf8d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c47d68dbaef7cbd154a0ac9af7ad582c1e94b640
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780049"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114673957"
 ---
 # <a name="what-is-azure-files"></a>Azure Files とは
-Azure Files では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)または[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System)を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスのデプロイにより、同時にマウントできます。 Azure Files SMB ファイル共有には、Windows、Linux、および macOS クライアントからアクセスできます。 Azure Files NFS ファイル共有には、Linux または macOS クライアントからアクセスできます。 さらに、データが使用されている場所の近くから高速アクセスするため、Azure File Sync を使用して、Windows サーバーに Azure Files SMB ファイル共有をキャッシュできます。
+Azure Files では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)または[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System)を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure Files のファイル共有は、クラウドまたはオンプレミスのデプロイにより、同時にマウントできます。 SMB Azure ファイル共有には、Windows、Linux、および macOS クライアントからアクセスできます。 NFS Azure ファイル共有には、Linux または macOS クライアントからアクセスできます。 さらに、高速アクセスするため、[Azure File Sync](../file-sync/file-sync-introduction.md) を使用して、データが使用されている場所の近くの Windows サーバーに SMB Azure ファイル共有をキャッシュできます。
 
 Azure Files の一般的なユース ケースに関するビデオをいくつかご紹介します。
 * [ファイル サーバーをサーバーレス Azure ファイル共有に置き換える](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
@@ -25,7 +25,7 @@ Azure Files の一般的なユース ケースに関するビデオをいくつ�
 Azure ファイル共有は、以下の作業に使用できます。
 
 * **オンプレミスのファイル サーバーの置換または補完**:  
-    Azure Files を使用して、従来のオンプレミス ファイル サーバーまたは NAS デバイスを完全に置き換えたり、補完することができます。 Windows、macOS、Linux などの一般的なオペレーティング システムに、世界中のどこからでも、Azure ファイル共有を簡単にマウントできます。 また、Azure File Sync を使用すると、Azure File SMB ファイル共有を、オンプレミスまたはクラウドにある Windows サーバーにレプリケートすることも可能です。これにより、使用されているデータを分散キャッシュしてパフォーマンスを向上させることができます。 [Azure Files AD 認証](storage-files-active-directory-overview.md)の最新リリースでは、オンプレミスでホストされている AD と Azure File SMB ファイル共有が連携して、引き続きアクセス制御を実現することができます。 
+    Azure Files を使用して、従来のオンプレミス ファイル サーバーまたは NAS デバイスを完全に置き換えたり、補完することができます。 Windows、macOS、Linux などの一般的なオペレーティング システムに、世界中のどこからでも、Azure ファイル共有を簡単にマウントできます。 また、Azure File Sync を使用すると、SMB Azure ファイル共有を、オンプレミスまたはクラウドにある Windows サーバーにレプリケートすることも可能で、使用されているデータを分散キャッシュしてパフォーマンスを向上させることができます。 [Azure Files AD 認証](storage-files-active-directory-overview.md)の最新リリースでは、オンプレミスでホストされている AD と SMB Azure ファイル共有が連携して、引き続きアクセス制御を実現することができます。 
 
 * **アプリケーションの "リフトアンドシフト"** :  
     Azure Files を使用すると、ファイル アプリケーションやユーザー データをファイル共有に保存し、アプリケーションをクラウドに簡単に "リフト アンド シフト" できます。 Azure Files を使用すると、アプリケーションとそのデータの両方が Azure に移動される "従来の" リフト アンド シフト シナリオと、アプリケーション データは Azure Files に移動され、アプリケーションはオンプレミスで実行を継続する、"ハイブリッド" リフト アンド シフト シナリオの両方に対応できます。 
@@ -51,9 +51,9 @@ Azure ファイル共有は、以下の作業に使用できます。
 * **慣れているプログラミング方法**。 Azure で実行されているアプリケーションは、ファイル [システム I/O API](/dotnet/api/system.io.file) を介して共有内のデータにアクセスできます。 そのため、開発者は、既存のコードとスキルを活用して、既存のアプリケーションを移行することができます。 システム IO API の他に、[Azure Storage クライアント ライブラリ](/previous-versions/azure/dn261237(v=azure.100))または [Azure Storage REST API](/rest/api/storageservices/file-service-rest-api) も使用できます。
 
 ## <a name="next-steps"></a>次の手順
-* [使用可能なファイル共有プロトコルの学習](storage-files-compare-protocols.md)
+* [Azure Files のデプロイの計画](storage-files-planning.md)
 * [Azure ファイル共有の作成](storage-how-to-create-file-share.md)
 * [Windows での SMB 共有の接続とマウント](storage-how-to-use-files-windows.md)
 * [Linux での SMB 共有の接続とマウント](storage-how-to-use-files-linux.md)
 * [macOS での SMB 共有の接続とマウント](storage-how-to-use-files-mac.md)
-* [NFS 共有を作成する方法](storage-files-how-to-create-nfs-shares.md)
+* [Linux での NFS 共有の接続とマウント](storage-files-how-to-mount-nfs-shares.md)

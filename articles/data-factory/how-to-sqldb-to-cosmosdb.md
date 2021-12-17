@@ -4,14 +4,15 @@ description: Azure SQL Database から既存の正規化されたデータベー
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 3d67ac9474704fac39dbe7eb91aead5c4babc4ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75f2f31bc3ef280b17e6bae6926d5cd3ba66b83e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383944"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600686"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>正規化されたデータベース スキーマを Azure SQL Database から Azure CosmosDB 非正規コンテナーに移行する
 
@@ -40,7 +41,7 @@ FROM SalesLT.SalesOrderHeader o;
 
 結果として得られた CosmosDB コンテナーでは、内部クエリが 1 つのドキュメントに埋め込まれ、次のようになります。
 
-![コレクション](media/data-flow/cosmosb3.png)
+:::image type="content" source="media/data-flow/cosmosb3.png" alt-text="コレクション":::
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 
@@ -52,7 +53,7 @@ FROM SalesLT.SalesOrderHeader o;
 
 4. 次のデータ フロー グラフを作成します
 
-![データ フロー グラフ](media/data-flow/cosmosb1.png)
+:::image type="content" source="media/data-flow/cosmosb1.png" alt-text="データ フロー グラフ":::
 
 5. "SourceOrderDetails" 用のソースを定義します。 データセットの場合は、```SalesOrderDetail``` テーブルを指す新しい Azure SQL Database データセットを作成します。
 
@@ -62,19 +63,19 @@ FROM SalesLT.SalesOrderHeader o;
 
 8. 別の派生列を追加し、"MakeStruct" 名付けます。 ここでは、details テーブルからの値を保持するための階層構造体を作成します。 details とヘッダーとの関係は ```M:1``` であることを思い出してください。 新しい構造体に ```orderdetailsstruct``` という名前を付けて、この方法で階層を作成します。これにより、各サブ列は入力列名に設定されます。
 
-![構造の作成](media/data-flow/cosmosb9.png)
+:::image type="content" source="media/data-flow/cosmosb9.png" alt-text="構造の作成":::
 
 9. ここで、sales ヘッダー ソースに移りましょう。 結合変換を追加します。 右側の [MakeStruct] を選択します。 これを内部結合に設定されたままにして、結合条件の両側で ```SalesOrderID``` を選択します。
 
 10. 追加した新しい結合の [データのプレビュー] タブをクリックして、この時点までの結果を確認できるようにします。 詳細行と結合されたすべてのヘッダー行が表示されます。 これは、```SalesOrderID``` から結合が形成された結果です。 次に、共通行からの詳細を details 構造体に結合し、共通行を集計します。
 
-![Join](media/data-flow/cosmosb4.png)
+:::image type="content" source="media/data-flow/cosmosb4.png" alt-text="Join":::
 
 11. これらの行を非正規化する配列を作成するには、その前にまず不要な列を削除し、データ値が CosmosDB データ型と一致することを確認する必要があります。
 
 12. 次に変換を選択を追加し、フィールド マッピングを次のように設定します。
 
-![列削除機能](media/data-flow/cosmosb5.png)
+:::image type="content" source="media/data-flow/cosmosb5.png" alt-text="列削除機能":::
 
 13. ここで、もう一度、通貨の列をキャストしてみましょう。今度は ```TotalDue``` です。 上記の手順 7 で行ったように、式を ```toDouble(round(TotalDue,2))``` に設定します。
 
@@ -84,21 +85,21 @@ FROM SalesLT.SalesOrderHeader o;
 
 16. 集計式またはグループ化式の一部である列のみが、集計変換から出力されます。 そのため、sales ヘッダーからの列も含める必要があります。 これを行うには、それと同じ集計変換に列パターンを追加します。 このパターンでは、他のすべての列が出力に含められます。
 
-```instr(name,'OrderQty')==0&&instr(name,'UnitPrice')==0&&instr(name,'SalesOrderID')==0```
+   `instr(name,'OrderQty')==0&&instr(name,'UnitPrice')==0&&instr(name,'SalesOrderID')==0`
 
 17. 他のプロパティでも "この" 構文を使用することで、同じ列名を維持し、集計に ```first()``` 関数を使用するようにします。
 
-![Aggregate](media/data-flow/cosmosb6.png)
+:::image type="content" source="media/data-flow/cosmosb6.png" alt-text="集計":::
 
 18. シンク変換を追加すれば、移行フローを完了する準備が整います。 データセットの横にある [新規] をクリックし、ご利用の CosmosDB データベースを指す CosmosDB データセットを追加します。 コレクションの場合は、それに "orders" という名前を付けます。これは、その場で作成されるため、スキーマがなく、ドキュメントも作成されません。
 
 19. [シンクの設定] で、[パーティション キー] を ```\SalesOrderID``` とし、コレクション アクションを "再作成" とします。 ご利用のマッピング タブが次のようになっていることを確認します。
 
-![[マッピング] タブを示すスクリーンショット。](media/data-flow/cosmosb7.png)
+:::image type="content" source="media/data-flow/cosmosb7.png" alt-text="[マッピング] タブを示すスクリーンショット。":::
 
 20. [データのプレビュー] をクリックして、これらの 32 行が新しいドキュメントとして新しいコンテナーに挿入されるように設定されていることを確認します。
 
-![[データのプレビュー] タブを示すスクリーンショット。](media/data-flow/cosmosb8.png)
+:::image type="content" source="media/data-flow/cosmosb8.png" alt-text="[データのプレビュー] タブを示すスクリーンショット。":::
 
 すべて問題がないようであれば、新しいパイプラインを作成し、このデータ フロー アクティビティをそのパイプラインに追加して実行する準備ができたことになります。 デバッグまたはトリガーされた実行から実行できます。 数分後に、ご利用の CosmosDB データベースには、"orders" という名前で注文に関する非正規化コンテナーが新規に作成されます。
 

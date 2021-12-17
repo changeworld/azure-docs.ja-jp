@@ -1,0 +1,44 @@
+### YamlMime:Landing
+title: Azure Virtual Desktop リモート アプリ ストリーミング
+summary: Azure Virtual Desktop リモート アプリ ストリーミングを使用すると、組織内外のユーザーにアプリをサービスとしてのソフトウェア (SaaS) として配信できます。
+metadata:
+  title: Azure Virtual Desktop リモート アプリ ストリーミング
+  description: Azure Virtual Desktop リモート アプリ ストリーミングを使用して、組織内外の顧客にアプリを配信する方法。
+  ms.service: virtual-desktop
+  services: virtual-desktop
+  ms.topic: landing-page
+  manager: femila
+  author: Heidilohr
+  ms.author: helohr
+  ms.date: 07/14/2021
+  ms.openlocfilehash: a3284112e7afd83754e571c5dce7a9b6f9e43ad1
+  ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123036610"
+landingContent:
+- title: Azure Virtual Desktop を使用したリモート アプリ ストリーミング
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Virtual Desktop の概要と、ユーザーへのアプリのストリーミングにこれを役立てる方法
+      url: overview.md
+- title: Azure Virtual Desktop の概要
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1. Azure portal を使用してホスト プールを作成する
+      url: ../create-host-pools-azure-marketplace.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - text: 2. アプリ グループを管理する
+      url: ../manage-app-groups.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - text: 3. サービスの更新プログラムを検証するためのホスト プールを作成する
+      url: ../create-validation-host-pool.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - text: 4. サービス アラートを設定する
+      url: ../set-up-service-alerts.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+- title: Azure Virtual Desktop の詳細を確認する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Virtual Desktop の主要なドキュメント。サービスに関する詳細情報が記載されています
+      url: ../overview.md

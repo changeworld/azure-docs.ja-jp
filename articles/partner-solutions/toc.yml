@@ -1,26 +1,13 @@
 - name: Azure パートナー ソリューションのドキュメント
   href: overview.md
 - name: パートナー ソリューション
+  expanded: true
   items:
     - name: Confluent Cloud での Apache Kafka
-      items:
-        - name: 概要
-          displayName: 'Apache, Kafka, Confluent'
-          href: ./apache-kafka-confluent-cloud/overview.md
-        - name: 作成
-          href: ./apache-kafka-confluent-cloud/create.md
-        - name: 管理する
-          href: ./apache-kafka-confluent-cloud/manage.md
-        - name: トラブルシューティング
-          href: ./apache-kafka-confluent-cloud/troubleshoot.md
+      href: ./apache-kafka-confluent-cloud/index.yml
     - name: Datadog
-      items:
-        - name: 概要
-          displayName: 'Datadog, Monitoring'
-          href: ./datadog/overview.md
-        - name: 作成
-          href: ./datadog/create.md
-        - name: 管理する
-          href: ./datadog/manage.md
-        - name: トラブルシューティング
-          href: ./datadog/troubleshoot.md
+      href: ./datadog/index.yml
+    - name: Elastic
+      href: ./elastic/index.yml
+    - name: Logz.io
+      href: ./logzio/index.yml

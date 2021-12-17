@@ -1,18 +1,17 @@
 ---
 title: Azure Event Grid IoT Edge での出力のバッチ処理 | Microsoft Docs
 description: Event Grid on IoT Edge での出力のバッチ処理。
-author: HiteshMadan
 manager: rajarv
-ms.author: himad
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 0ae2261f8278c4d5e1944b01a9731afd293df20b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af63b9c5c11e26e9b5730241cf4d9b0e350e82a5
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171637"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750715"
 ---
 # <a name="output-batching"></a>出力のバッチ処理
 

@@ -4,19 +4,19 @@ description: Azure SQL Database のエラスティック プールを監視お�
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: 822674543f07ea95590ed66b9763ffd2bda35190
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c93bdf3f58aac740e136ee811c7821758301709a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96493816"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751304"
 ---
 # <a name="use-powershell-to-monitor-and-scale-an-elastic-pool-in-azure-sql-database"></a>PowerShell を使用して Azure SQL Database のエラスティック プールを監視およびスケールする
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]

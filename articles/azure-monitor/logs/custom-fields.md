@@ -4,13 +4,13 @@ description: Azure Monitor のカスタム フィールド機能を使用する�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/23/2019
-ms.openlocfilehash: e7ddeaf1273a9e3b5608336b24c07fad3c3f4525
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 10/20/2021
+ms.openlocfilehash: fc3f65fc696879642cabe2bf5d29c0a19e795833
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031040"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216449"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Azure Monitor (プレビュー) の Log Analytics ワークスペースでカスタム フィールドを作成する
 
@@ -45,7 +45,7 @@ Azure Monitor の **カスタム フィールド** 機能を使用すると、�
 
 1. **[ログ]** に移動し、[クエリを使用してカスタム フィールドがあるレコードを取得](./log-query-overview.md)します。
 2. Log Analytics でカスタム フィールドを設定するデータを抽出する際に、モデルとして機能するために使用するレコードを選択します。  このレコードから抽出するデータを特定すると、Log Analytics はその情報を使用して、すべての同様のレコードのカスタム フィールドを設定します。
-3. レコードのプロパティを展開し、レコードの最上位のプロパティの左にある省略記号をクリックして、 **[Extract fields from]\(フィールドの抽出\)** を選択します。
+3. レコードのプロパティを展開し、レコードの最上位のプロパティの左にある省略記号をクリックして、 **[フィールドの抽出]** を選択します。
 4. **フィールドの抽出ウィザード** が開き、選択したレコードが **[メインの例]** 列に表示されます。  選択したプロパティと同じ値を持つ、そのレコードのカスタム フィールドが定義されます。  
 5. 目的の選択内容ではない場合、追加のフィールドを選択して条件を絞り込みます。  条件のフィールド値を変更するには、取り消して、目的の条件と一致する別のレコードを選択する必要があります。
 

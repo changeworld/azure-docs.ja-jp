@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:REST API を使用した新しいポリシー割り当て
 description: このクイックスタートでは、REST API を使用して、準拠していないリソースを特定するための Azure Policy 割り当てを作成します。
-ms.date: 01/29/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: 438d8004cd50e6e2ef7586c51adc63257f37978b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4650a213777e30ddffb7604ab94c11fe0fd85ee7
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99219979"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323504"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>クイック スタート:REST API を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -36,7 +36,7 @@ REST API を使用して、Azure リソースを作成および管理します�
    - REST API URI
 
      ```http
-     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2019-09-01
+     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2021-09-01
      ```
 
    - 要求本文
@@ -113,7 +113,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 作成した割り当てを削除するには、次のコマンドを使用します。
 
 ```http
-DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2019-09-01
+DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2021-09-01
 ```
 
 `{scope}` は、ポリシー割り当てを最初に作成したときに使用したスコープに置き換えます。

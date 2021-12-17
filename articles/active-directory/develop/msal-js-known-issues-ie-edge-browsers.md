@@ -3,22 +3,22 @@ title: Internet Explorer および Microsoft Edge での問題 (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
 description: JavaScript 用 Microsoft Authentication Library (MSAL.js) を Internet Explorer および Microsoft Edge ブラウザーで使用するときの既知の問題について説明します。
 services: active-directory
-author: navyasric
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 05/18/2020
-ms.author: nacanuma
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef1cce7905e07c1fa407c0194d585bb196ecdfd6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83772082"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232206"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer および Microsoft Edge ブラウザーに関する既知の問題 (MSAL.js)
 
@@ -36,7 +36,7 @@ IE と Microsoft Edge での認証に関する問題が複数報告されてい�
 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
-- **ポップアップ経由のログインを使用して認証するとき、ポップアップ ウィンドウが閉じないか動作が停止する**。 Microsoft Edge または IE (InPrivate) でポップアップ ウィンドウを通じて認証するとき、資格情報を入力してサインインした後、セキュリティ ゾーンをまたぐ複数のドメインがナビゲーションに関係している場合、MSAL.js がポップアップ ウィンドウの制御を失うためポップアップ ウィンドウが閉じなくなります。  
+- **ポップアップ ウィンドウ経由のログインを使用して認証するとき、ポップアップ ウィンドウが閉じない、または動作が停止する**。 Microsoft Edge または IE (InPrivate) でポップアップ ウィンドウを使用して認証するとき、資格情報を入力してサインインした後、セキュリティ ゾーンをまたぐ複数のドメインがナビゲーションに関係している場合、`MSAL.js` がポップアップ ウィンドウのハンドルを失うためポップアップ ウィンドウが閉じなくなります。
 
 ### <a name="update-fix-available-in-msaljs-023"></a>Update: MSAL.js 0.2.3 で使用可能な修正プログラム
 認証のリダイレクト ループの問題に対する修正プログラムが [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) でリリースされました。 この修正プログラムを利用するには、MSAL.js 構成ファイルのフラグ `storeAuthStateInCookie` を有効にします。 既定では、このフラグは false に設定されています。
@@ -44,12 +44,12 @@ IE と Microsoft Edge での認証に関する問題が複数報告されてい�
 `storeAuthStateInCookie` フラグが有効になると、MSAL.js はブラウザーの Cookie を使用して、認証フローを検証するために必要な要求の状態を保存します。
 
 > [!NOTE]
-> この修正プログラムは msal-angular および msal-angularjs ラッパーに対してはまだ使用できません。 この修正プログラムはポップアップ ウィンドウの問題には対処していません。
+> `msal-angular` と `msal-angularjs` のラッパーについては、この修正プログラムはまだ利用できません。 この修正プログラムはポップアップ ウィンドウの問題には対処していません。
 
 以下の回避策を使用してください。
 
 #### <a name="other-workarounds"></a>その他の回避策
-これらの回避策を採用する前に、この問題が Microsoft Edge ブラウザーの特定のバージョンでのみ発生していて、その他のブラウザーは動作することをテストしてください。  
+これらの回避策を採用する前に、この問題が Microsoft Edge ブラウザーの特定のバージョンでのみ発生していて、その他のブラウザーは動作することをテストしてください。
 1. これらの問題を回避する最初の手順として、アプリケーション ドメインと、認証フローのリダイレクトに関与するその他のすべてのサイトが、ブラウザーのセキュリティ設定の信頼済みサイトとして追加されており、これらが同じセキュリティ ゾーンに属していることを確認します。
 これを行うには、次のステップに従います。
     - **Internet Explorer** を開き、右上隅にある **[設定]** (歯車アイコン) をクリックします。
@@ -63,7 +63,7 @@ IE と Microsoft Edge での認証に関する問題が複数報告されてい�
 
 ## <a name="issues-due-to-popup-blockers"></a>ポップアップ ブロック機能に起因する問題
 
-たとえば、[多要素認証](../authentication/concept-mfa-howitworks.md)中に 2 つ目のポップアップが開いたときに、IE や Microsoft Edge でポップアップがブロックされることがあります。 ポップアップを 1 回のみまたは常に許可するかどうかを確認するアラートがブラウザーで表示されます。 許可することを選択した場合、ブラウザーは自動的にポップアップ ウィンドウを開き、`null` ハンドルを返します。 その結果、ライブラリはウィンドウの制御を得ることができず、ポップアップ ウィンドウを閉じることができません。 Chrome では、ポップアップを許可するプロンプトを表示するときに、同じ問題が発生しません。これは、Chrome ではポップアップ ウィンドウが自動的に開かないためです。
+たとえば、[多要素認証](../authentication/concept-mfa-howitworks.md)中に 2 つ目のポップアップが開いたときに、IE や Microsoft Edge でポップアップがブロックされることがあります。 ポップアップ ウィンドウを許可するのを 1 回のみにするか、常時にするかについてブラウザーでアラートが表示されます。 許可することを選択した場合、ブラウザーにより自動的にポップアップ ウィンドウが開かれ、`null` ハンドルが返されます。 その結果、ライブラリにウィンドウのハンドルがないため、ポップアップ ウィンドウを閉じる方法がなくなります。 Chrome では、ポップアップ ウィンドウが自動的に開かないため、ポップアップ ウィンドウを許可するプロンプトを表示するときに、同じ問題が発生しません。
 
 **回避策** としては、アプリの使用を開始する前に、この問題を回避するために、開発者は IE と Microsoft Edge でポップアップを許可する必要があります。
 

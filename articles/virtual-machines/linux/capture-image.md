@@ -5,28 +5,30 @@ author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
-ms.date: 10/08/2018
+ms.date: 08/27/2021
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: dddbad2403734bc749497a7acca16b2a5b6076f4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0aae67dbe347c8299e00d741163370d9097c8114
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792257"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432854"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のマネージド イメージを作成する方法
 
-仮想マシン (VM) のコピーを複数作成し、Azure で開発およびテストに使用するには、VM または OS VHD のマネージド イメージをキャプチャします。 イメージを大規模に作成、保存、共有する方法については、「[共有イメージ ギャラリー](../shared-images-cli.md)」を参照してください。
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
-1 つのマネージド イメージは、最大 20 個の同時デプロイをサポートします。 同じマネージド イメージから 20 個を超える VM を同時に作成しようとすると、1 つの VHD におけるストレージ パフォーマンスの制限によって、プロビジョニングのタイムアウトが発生する可能性があります。 20 個を超える VM を同時に作成するには、20 個の同時実行 VM デプロイごとに 1 つのレプリカで構成された[共有イメージ ギャラリー](../shared-image-galleries.md) イメージを使用します。
+仮想マシン (VM) のコピーを複数作成し、Azure で開発およびテストに使用するには、VM または OS VHD のマネージド イメージをキャプチャします。 イメージを大規模に作成、保存、共有する方法については、[Azure Compute Gallery](../create-gallery.md) に関するページを参照してください。
+
+1 つのマネージド イメージは、最大 20 個の同時デプロイをサポートします。 同じマネージド イメージから 20 個を超える VM を同時に作成しようとすると、1 つの VHD におけるストレージ パフォーマンスの制限によって、プロビジョニングのタイムアウトが発生する可能性があります。 20 個を超える VM を同時に作成するには、20 のコンカレント VM デプロイごとに 1 つのレプリカで構成された [Azure Compute Gallery](../shared-image-galleries.md) (旧称 Shared Image Gallery) イメージを使用します。
 
 マネージド イメージを作成するには、個人のアカウント情報を削除する必要があります。 次の手順で既存の VM のプロビジョニングと割り当てを解除し、イメージを作成します。 このイメージを使用して、サブスクリプション内の任意のリソース グループに VM を作成できます。
 
-バックアップやデバッグのために既存の Linux VM のコピーを作成する方法、またはオンプレミス VM から特別な Linux VHD をアップロードする方法については、「[カスタム ディスク イメージをアップロードして Linux VM を作成する](upload-vhd.md)」を参照してください。  
+バックアップやデバッグのために既存の Linux VM のコピーを作成する方法、またはオンプレミス VM から Linux VHD をアップロードする方法については、[カスタム ディスクからの Linux VM のアップロードと作成](upload-vhd.md)に関するページを参照してください。  
 
-**Azure VM Image Builder (パブリック プレビュー)** サービスを使用して、ご自身のカスタム イメージを作成することができます。ツールの学習やビルド パイプラインのセットアップは必要なく、イメージ構成を用意するだけで、Image Builder によってイメージが作成されます。 詳細については、[Azure VM Image Builder の概要](../image-builder-overview.md)に関する記事を参照してください。
+**Azure VM Image Builder** を使用して、ご自身のカスタム イメージを作成することができます。ツールの学習やビルド パイプラインのセットアップは必要なく、イメージ構成を用意するだけで、Image Builder によってイメージが作成されます。 詳細については、[Azure VM Image Builder の概要](../image-builder-overview.md)に関する記事を参照してください。
 
 イメージを作成する前に、次の項目が必要です。
 
@@ -82,12 +84,14 @@ Azure CLI を使用し、一般化されたものとして VM を設定し、イ
     ```azurecli
     az image create \
         --resource-group myResourceGroup \
-        --name myImage --source myVM
+    --name myImage --source myVM
     ```
    
    > [!NOTE]
    > このイメージは、ソース VM と同じリソース グループに作成されます。 このイメージから、サブスクリプション内の任意のリソース グループに VM を作成できます。 管理の観点から、VM のリソースとイメージに専用のリソース グループを作成することをお勧めします。
    >
+   > 第 2 世代 VM のイメージをキャプチャする場合は、 `--hyper-v-generation V2` パラメーターも使用します。 詳細については、[「第 2 世代 VM」](../generation-2.md)を参照してください。
+   > 
    > イメージをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、`--zone-resilient true` パラメーターを含める必要があります。
    
 このコマンドからは、VM イメージを記述する JSON が返されます。 後で参照するためにこの出力を保存します。
@@ -138,4 +142,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>次のステップ
-イメージを大規模に作成、保存、共有する方法については、「[共有イメージ ギャラリー](../shared-images-cli.md)」を参照してください。
+イメージを大規模に作成、保存、共有する方法については、[Azure Compute Gallery](../create-gallery.md) に関するページを参照してください。

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: ee4dd70faab9ed44b1aa6ca8ca0ec517c7746f66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bc827605147f229ea82475d98eac35dec2d6a22
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94832532"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290358"
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム:認証 | 対応策
 
@@ -457,7 +457,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック、C#、Node.JS、  |
 | **属性**              | 該当なし、ゲートウェイの選択 - Azure IoT Hub |
-| **参照**              | 該当なし、[.NET での Azure IoT Hub](../../iot-hub/quickstart-send-telemetry-dotnet.md)、[IoT Hub と Node.JS の概要](../../iot-hub/quickstart-send-telemetry-node.md)、[SAS と証明書による IoT のセキュリティ保護](../../iot-hub/iot-hub-devguide-security.md)、[Git リポジトリ](https://github.com/Azure/azure-iot-sdks/) |
+| **参照**              | 該当なし、[.NET での Azure IoT Hub](../../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)、[IoT Hub と Node.JS の概要](../../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)、[SAS と証明書による IoT のセキュリティ保護](../../iot-hub/iot-hub-dev-guide-sas.md)、[Git リポジトリ](https://github.com/Azure/azure-iot-sdks/) |
 | **手順** | <ul><li>**ジェネリック:** トランスポート層セキュリティ (TLS) または IPSec を使ってデバイスを認証します。 完全な非対称暗号を扱うことのできないデバイスでは、インフラストラクチャが事前共有キー (PSK) の使用をサポートしている必要があります。 Azure AD の OAuth をご利用ください。</li><li>**C#:** DeviceClient インスタンスを作成するとき、既定では、Create メソッドは、IoT Hub と通信するために AMQP プロトコルを使用する DeviceClient インスタンスを作成します。 HTTPS プロトコルを使用するには、プロトコルを引数として受け取る、Create メソッドのオーバーライドを使用します。 HTTPS プロトコルを使用する場合は、`Microsoft.AspNet.WebApi.Client` NuGet パッケージをプロジェクトに追加して、`System.Net.Http.Formatting` 名前空間を含める必要もあります。</li></ul>|
 
 ### <a name="example"></a>例
@@ -557,7 +557,7 @@ await deviceClient.SendEventAsync(message);
 | **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | ゲートウェイの選択 - Azure IoT Hub |
-| **参照**              | [Azure IoT Hub セキュリティ トークン](../../iot-hub/iot-hub-devguide-security.md) |
+| **参照**              | [Azure IoT Hub セキュリティ トークン](../../iot-hub/iot-hub-dev-guide-sas.md) |
 | **手順** | IoT Hub レベルの共有アクセス ポリシーではなく、デバイス キーまたはクライアント証明書に基づく SaS トークンを使用したデバイスごとの認証資格情報を使用します。 これにより、デバイスまたはフィールド ゲートウェイ認証トークンを、別のデバイスやフィールド ゲートウェイが再利用できなくなります |
 
 ## <a name="ensure-that-only-the-required-containers-and-blobs-are-given-anonymous-read-access"></a><a id="req-containers-anon"></a>必要なコンテナーと BLOB のみに匿名読み取りアクセスが付与されていることを確認する

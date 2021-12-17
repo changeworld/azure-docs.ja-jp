@@ -3,15 +3,15 @@ title: チュートリアル - API のインポートと管理 - Azure API Manag
 description: このチュートリアルでは、Visual Studio Code 用の Azure API Management 拡張機能を使用して、API のインポート、テスト、管理を行う方法について説明します。
 ms.service: api-management
 author: dlepow
-ms.author: apimpm
+ms.author: danlep
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 0dea8e43d5f09b84c5795bc257cf3331ad919fcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ecdb97ad62a9b75279546493bbbf185f92fd29f6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649548"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625774"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>チュートリアル:Visual Studio Code 用の API Management 拡張機能を使用して API をインポートおよび管理する
 
@@ -101,7 +101,7 @@ API Management には、API 向けに構成できる[ポリシー](api-managemen
 ### <a name="test-an-api-operation"></a>API 操作をテストする
 
 1. インポートした *demo-conference-api* の **[Operations]\(操作\)** ノードをエクスプローラー ペインで展開します。
-1. *GetSpeakers* などの操作を選択します。
+1. *GetSpeakers* などの操作を選択してから、操作を右クリックして **[テスト操作]** を選択します。
 1. エディター ウィンドウで、**Ocp-Apim-Subscription-Key** の横にある `{{SubscriptionKey}}` を、コピーしたサブスクリプション キーに置き換えます。
 1. **[要求の送信]** をクリックします。 
 

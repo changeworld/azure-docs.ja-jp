@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: 設置する - Azure Stack Edge Pro 物理デバイスの開梱、ラックへの取り付け、ケーブル接続 | Microsoft Docs'
-description: Azure Stack Edge Pro の設置に関する 2 番目のチュートリアルでは、物理デバイスの開梱、ラックへの取り付け、ケーブル接続を行います。
+title: Azure Stack Edge Pro FPGA 物理デバイスの開梱、ラック取り付け、ケーブル接続のチュートリアル | Microsoft Docs
+description: Azure Stack Edge Pro FPGA の設置に関する 2 番目のチュートリアルでは、物理デバイスの開梱、ラックへの取り付け、ケーブル接続を行います。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/17/2020
 ms.author: alkohli
-ms.openlocfilehash: caf64de55c48d763b8600988e5ff2aba2c83e4f9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 91fa1e0d74d050e2d812153bb203a9141bbe98df
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060195"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461293"
 ---
-# <a name="tutorial-install-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro を設置する
+# <a name="tutorial-install-azure-stack-edge-pro-fpga"></a>チュートリアル: Azure Stack Edge Pro FPGA を設置する
 
-このチュートリアルでは、Azure Stack Edge Pro 物理デバイスを設置する方法を説明します。 インストール手順には、デバイスの開梱、ラックへの取り付け、ケーブル接続が含まれます。 
+このチュートリアルでは、Azure Stack Edge Pro FPGA 物理デバイスを設置する方法を説明します。 インストール手順には、デバイスの開梱、ラックへの取り付け、ケーブル接続が含まれます。 
 
 インストールが完了するまでに、約 2 時間かかる場合があります。
 
@@ -36,12 +36,12 @@ ms.locfileid: "106060195"
 
 開始する前に次の点を確認します。
 
-* [Azure Stack Edge Pro の配置の準備](azure-stack-edge-deploy-prep.md)に関するページの手順をすべて完了していること。
+* [Azure Stack Edge Pro FPGA の配置の準備](azure-stack-edge-deploy-prep.md)に関するページの手順をすべて完了していること。
     * デバイスを配置する Azure Stack Edge リソースを作成済みであること。
     * Azure Stack Edge リソースを使用して、デバイスをアクティブ化するためのアクティブ化キーを生成済みであること。
 
  
-### <a name="for-the-azure-stack-edge-pro-physical-device"></a>Azure Stack Edge Pro 物理デバイスの前提条件
+### <a name="for-the-azure-stack-edge-pro-fpga-physical-device"></a>Azure Stack Edge Pro FPGA 物理デバイスの場合
 
 デバイスを配置する前に次の点を確認します。
 
@@ -57,7 +57,7 @@ ms.locfileid: "106060195"
 
 作業を開始する前に、次のことを行います。
 
-- Azure Stack Edge Pro を配置するためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Azure Stack Edge Pro のネットワーク要件](azure-stack-edge-system-requirements.md#networking-port-requirements)に関する記事を参照してください。
+- Azure Stack Edge Pro FPGA を配置するためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Azure Stack Edge Pro FPGA のネットワーク要件](azure-stack-edge-system-requirements.md#networking-port-requirements)に関するセクションを参照してください。
 
 - デバイスが最適に動作するように、インターネットの最小帯域幅が 20 Mbps であることを確認します。
 
@@ -69,12 +69,12 @@ ms.locfileid: "106060195"
 1. 平坦で水平な場所に箱を置きます。
 2. 箱と梱包材を調べて、つぶれ、切断、水害などの明らかな損傷がないか確認します。 箱または梱包材がひどく破損している場合は、箱を開けないでください。 Microsoft サポートに問い合わせて、デバイスが正常に使用できる状態にあるかどうかを評価してください。
 3. 箱を開梱します。 開梱後、次の内容物を確認してください。
-    - Azure Stack Edge Pro デバイス筐体 1 台
+    - 単一エンクロージャの Azure Stack Edge Pro FPGA デバイス 1 台
     - 電源コード 2 本
     - レール キット アセンブリ 1 組
     - 安全、環境、規制に関する情報を記載した小冊子 1 冊
 
-上記の項目の中で足りないものがある場合は、Azure Stack Edge Pro サポートに連絡してください。 次のステップでは、デバイスをラックに取り付けます。
+上記の項目の中で足りないものがある場合は、Azure Stack Edge Pro FPGA サポートに連絡してください。 次のステップでは、デバイスをラックに取り付けます。
 
 
 ## <a name="rack-the-device"></a>デバイスをラックに取り付ける
@@ -82,7 +82,7 @@ ms.locfileid: "106060195"
 デバイスは、標準の 19 インチ ラックに設置する必要があります。 以下の手順に従って、標準 19 インチ ラックにデバイスを取り付けてください。
 
 > [!IMPORTANT]
-> Azure Stack Edge Pro デバイスが正しく動作するようにラックに取り付ける必要があります。
+> Azure Stack Edge Pro FPGA デバイスが正しく動作するようにラックに取り付ける必要があります。
 
 
 ### <a name="prerequisites"></a>前提条件
@@ -156,11 +156,11 @@ ms.locfileid: "106060195"
 
 ## <a name="cable-the-device"></a>デバイスをケーブル接続する
 
-ケーブルを配備し、デバイスを接続します。 以降の手順では、Azure Stack Edge Pro デバイスの電源およびネットワーク用ケーブルを接続する方法を説明します。
+ケーブルを配備し、デバイスを接続します。 以降の手順では、ご利用の Azure Stack Edge Pro FPGA デバイスの電源およびネットワーク用ケーブルを接続する方法を説明します。
 
 デバイスのケーブル接続を開始する前に、次の前提条件を満たす必要があります。
 
-- 開梱してラックに取り付けた状態の Azure Stack Edge Pro 物理デバイス。
+- 開梱してラックに取り付けた状態の Azure Stack Edge Pro FPGA 物理デバイス。
 - 電源コード 2 本。
 - 管理インターフェイスに接続するための 1-GbE RJ-45 ネットワーク ケーブルを 1 本以上。 デバイスには、管理用とデータ用に 1 つずつ、2 つの 1-GbE ネットワーク インターフェイスがあります。
 - 構成するデータ ネットワーク インターフェイスのそれぞれに対して、25-GbE SFP+ 銅線ケーブル 1 本。 少なくとも 1 つのデータ ネットワーク インターフェイス (ポート 2、ポート 3、ポート 4、ポート 5、またはポート 6) がインターネットに接続されている必要があります (Azure への接続が可能なもの)。  
@@ -169,9 +169,9 @@ ms.locfileid: "106060195"
 > [!NOTE]
 > - データ ネットワーク インターフェイスを 1 つだけ接続する場合は、Azure へのデータ送信には、ポート 3、ポート 4、ポート 5、ポート 6 などの 25/10 GbE ネットワーク インターフェイスを使用することをお勧めします。 
 > - 最善のパフォーマンスを実現し、大量のデータを処理するには、すべてのデータ ポートを接続することを検討してください。
-> - データ ソース サーバーからデータを取り込むことができるように、Azure Stack Edge Pro デバイスをデータセンター ネットワークに接続する必要があります。
+> - データ ソース サーバーからデータを取り込むことができるように、Azure Stack Edge Pro FPGA デバイスをデータセンター ネットワークに接続する必要があります。
 
-Azure Stack Edge Pro デバイスとは:
+Azure Stack Edge Pro FPGA デバイスについて:
 
 - フロント パネルには、ディスク ドライブと電源ボタンがあります。
 
@@ -212,7 +212,7 @@ Azure Stack Edge Pro デバイスとは:
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Stack Edge Pro で次のことを行う方法に関するトピックについて説明しました。
+このチュートリアルでは、Azure Stack Edge Pro FPGA に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
 > * デバイスを開梱する
@@ -222,4 +222,4 @@ Azure Stack Edge Pro デバイスとは:
 次のチュートリアルに進み、デバイスの接続、設定、およびアクティブ化を行う方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge Pro を接続して設定する](./azure-stack-edge-deploy-connect-setup-activate.md)
+> [Azure Stack Edge Pro FPGA を接続して設定する](./azure-stack-edge-deploy-connect-setup-activate.md)

@@ -39,6 +39,8 @@
           href: work-remotely-support.md
         - name: NVA の構成とリモート作業
           href: nva-work-remotely-support.md
+    - name: VPN Gateway に関する FAQ
+      href: vpn-gateway-vpn-faq.md
     - name: VPN Gateway の設計について
       href: design.md
     - name: VPN Gateway の設定について
@@ -55,12 +57,14 @@
       href: point-to-site-about.md
     - name: ポイント対サイト VPN ルーティングについて
       href: vpn-gateway-about-point-to-site-routing.md
+    - name: NAT と VPN Gateway について
+      href: nat-overview.md
     - name: 可用性ゾーンのゾーン冗長ゲートウェイについて
       href: about-zone-redundant-vnet-gateways.md
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/vpn-gateway-security-baseline?toc=/azure/vpn-gateway/TOC.json
     - name: バックエンド接続の相互運用性
       items:
         - name: 前書きとテスト セットアップ
@@ -172,7 +176,11 @@
             - name: Multi-Factor Authentication (MFA) の構成
               href: openvpn-azure-ad-mfa.md
             - name: VPN クライアントの構成
-              href: openvpn-azure-ad-client.md
+              items:
+                - name: Windows
+                  href: openvpn-azure-ad-client.md
+                - name: macOS
+                  href: openvpn-azure-ad-client-mac.md
             - name: VPN クライアント プロファイル ファイルの操作
               href: about-vpn-profile-download.md
             - name: Intune - VPN クライアント プロファイルのデプロイ
@@ -219,6 +227,8 @@
               href: vpn-gateway-about-forced-tunneling.md
         - name: VNET ピアリングのゲートウェイ転送を構成する
           href: vpn-gateway-peering-gateway-transit.md
+    - name: VPN Gateway 用に NAT を構成する
+      href: nat-howto.md
     - name: ローカル ネットワーク ゲートウェイを変更する
       items:
         - name: Azure portal
@@ -235,33 +245,36 @@
           href: vpn-gateway-download-vpndevicescript.md
         - name: 'サンプル:Cisco ASA デバイス (IKEv2/BGP なし)'
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
-    - name: 監視とアラート
-      items:
-        - name: VPN Gateway メトリックを表示する
-          href: vpn-gateway-howto-view-virtual-network-gateway-metrics.md
-        - name: メトリックに基づいたアラートの設定
-          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
-        - name: リソース ログに基づいたアラートの設定
-          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
-    - name: パケット キャプチャの構成
-      href: packet-capture.md
-    - name: ゾーン冗長ゲートウェイ
-      items:
-        - name: ゾーン冗長ゲートウェイの作成
-          href: create-zone-redundant-vnet-gateway.md
     - name: 接続に対する IPsec/IKE ポリシーの構成
       items:
         - name: Azure portal
           href: ipsec-ike-policy-howto.md
         - name: PowerShell
           href: vpn-gateway-ipsecikepolicy-rm-powershell.md
-    - name: アクティブ/アクティブ接続の構成
+    - name: アクティブ/ アクティブ ゲートウェイの構成
       items:
+        - name: Azure portal
+          href: active-active-portal.md
         - name: PowerShell
           href: vpn-gateway-activeactive-rm-powershell.md
-    - name: トラブルシューティング
-      href: vpn-gateway-troubleshoot.md
+    - name: ゾーン冗長ゲートウェイの構成
+      href: create-zone-redundant-vnet-gateway.md
+    - name: 監視
       items:
+        - name: VPN Gateway の監視
+          href: monitor-vpn-gateway.md
+        - name: メトリックに基づいたアラートの設定
+          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
+        - name: リソース ログに基づいたアラートの設定
+          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
+        - name: パケット キャプチャの構成
+          href: packet-capture.md
+    - name: トラブルシューティング
+      items:
+        - name: VPN Gateway のトラブルシューティング
+          href: vpn-gateway-troubleshoot.md
+        - name: 診断ログを使用した Azure VPN Gateway のトラブルシューティング
+          href: troubleshoot-vpn-with-azure-diagnostics.md
         - name: コミュニティで推奨される VPN またはファイアウォール デバイスの設定
           href: vpn-gateway-third-party-settings.md
         - name: VNet または VPN 接続の構成および検証
@@ -305,7 +318,7 @@
     - name: Azure PowerShell
       href: /powershell/module/az.network#vpn
     - name: Azure PowerShell (クラシック)
-      href: /powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0#azure
+      href: /powershell/module/servicemanagement/azure.service/#azure
     - name: REST
       href: /rest/api/network/virtualnetworkgateways
     - name: REST (クラシック)
@@ -314,8 +327,6 @@
       href: /cli/azure/network/vnet-gateway
 - name: リソース
   items:
-    - name: VPN Gateway に関する FAQ
-      href: vpn-gateway-vpn-faq.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: ブログ

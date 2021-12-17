@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 554fa394179e7cfc5b86a2b50eb754547d137a44
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1fbf8052a3852e010fc002116cab131ea4f371b8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104870392"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438104"
 ---
-# <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールを使用したディザスター リカバリー (プレビュー)
+# <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールを使用したディザスター リカバリー
 
 この記事では、Azure NetApp Files で使用できる Azure アプリケーション整合性スナップショット ツールを使用しているときのディザスター リカバリーの実行方法について説明します。
 
@@ -122,7 +122,7 @@ tmpfs 76G 0 76G 0% /run/user/0
 
 運用ワークロードの完全なフェールオーバーを実行していて、プライマリ運用サイトに接続できる場合は、DR にフェールオーバーされる SAP HANA インスタンスをシャットダウンします。
 
-たとえば、root としてログインした場合は、次の例で示す方法により SAP HANA をシャットダウンできます。  <sid> は SAP HANA SID に置き換えます。
+たとえば、root としてログインした場合は、次の例で示す方法により SAP HANA をシャットダウンできます。  \<sid\> は SAP HANA SID に置き換えます。
 
 ```bash
 su - <sid>adm
@@ -133,7 +133,7 @@ HDB stop
 
 ボリュームを復元する前に、DR サイトで SAP HANA をシャットダウンすることが重要です。
 
-たとえば、root としてログインした場合は、次の例で示す方法により SAP HANA をシャットダウンできます。  <sid> は SAP HANA SID に置き換えます。
+たとえば、root としてログインした場合は、次の例で示す方法により SAP HANA をシャットダウンできます。  \<sid\> は SAP HANA SID に置き換えます。
 
 ```bash
 su - <sid>adm

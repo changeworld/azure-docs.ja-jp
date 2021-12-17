@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 04/07/2021
-ms.openlocfilehash: 1dd0666c2946896ed324fb3986bb7946890b73de
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.date: 08/03/2021
+ms.openlocfilehash: e2dfb0eda9d4e10c97591a6cc534adaa188d87e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388705"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602016"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL - Hyperscale (Citus) の構成オプション
 
@@ -73,12 +73,7 @@ Hyperscale (Citus) クラスター全体で集計された IOPS は次の値に�
 | 19           | 29,184              | 58,368            | 116,812           |
 | 20           | 30,720              | 61,440            | 122,960           |
 
-### <a name="basic-tier-preview"></a>Basic レベル (プレビュー)
-
-> [!IMPORTANT]
-> Hyperscale (Citus) Basic レベルは現在プレビュー段階です。  このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
->
-> その他の新機能については、[Hyperscale (Citus) のプレビュー機能](hyperscale-preview-features.md)に関するページで全一覧をご覧いただけます。
+### <a name="basic-tier"></a>Basic レベル
 
 Hyperscale (Citus) [Basic レベル](concepts-hyperscale-tiers.md)は、ノードが 1 つだけのサーバー グループです。  コーディネーターとワーカー ノードは区別されないため、コンピューティングとストレージのリソースを選択するのはそれほど複雑ではありません。
 
@@ -113,22 +108,23 @@ Hyperscale (Citus) サーバー グループは次の Azure リージョンで�
     * ブラジル南部
     * カナダ中部
     * 米国中部
-    * 米国東部 *
+    * 米国東部
     * 米国東部 2
     * 米国中北部
     * 米国西部 2
 * アジア太平洋:
     * オーストラリア東部
     * 東日本
+    * 西日本
     * 韓国中部
     * 東南アジア
 * ヨーロッパ:
     * フランス中部
+    * ドイツ中西部
     * 北ヨーロッパ
+    * スイス北部
     * 英国南部
     * 西ヨーロッパ
-
-(\* = [プレビュー機能](hyperscale-preview-features.md)をサポートしています)
 
 これらのリージョンの一部は、Azure サブスクリプションによっては最初はアクティブ化されていない可能性があります。 上の一覧のリージョンを使用したいが、サブスクリプションに表示されない場合、またはこの一覧にないリージョンを使用したい場合は、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を開いてください。
 

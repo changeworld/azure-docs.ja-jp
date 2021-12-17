@@ -10,13 +10,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 01/21/2021
-ms.openlocfilehash: 5ca13784fe2f9a6a5b448bc838bf508f01b0a9fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/17/2021
+ms.openlocfilehash: 5a320d6368d4fdecaf4001fc9255c4c0ff3b276c
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101095195"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285586"
 ---
 # <a name="add-contributors-to-your-app"></a>アプリに共同作成者を追加する
 
@@ -26,18 +26,7 @@ ms.locfileid: "101095195"
 
 LUIS オーサリング エクスペリエンスが LUIS ポータルの **[管理] -> [Azure リソース]** ページのオーサリング リソースに関連付けられている場合は、移行済みです。
 
-1. Azure portal で、Language Understanding (LUIS) オーサリング リソースを見つけます。 種類は `LUIS.Authoring` です。
-1. このリソースの **[アクセス制御 (IAM)]** ページで、**[+ 追加]** を選択し、**[ロールの割り当ての追加]** を選択します。
-
-    ![Azure portal で、オーサリング リソースにロールの割り当てを追加します。](./media/luis-how-to-collaborate/authoring-resource-access-control-add-role.png)
-
-1. **[ロールの割り当ての追加]** ウィンドウで、共同作成者の **[ロール]** を選択します。 **[アクセスの割り当て先]** オプションで **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。 **[選択]** オプションで、ユーザーのメール アドレスを入力します。 同じドメインに対してそのユーザーが複数のメール アドレスで認識されている場合は、"_主要_" なメール アカウントを入力してください。
-
-    ![Azure AD の共同作成者ロールにユーザーのメール アドレスを追加する](./media/luis-how-to-collaborate/add-role-assignment-for-contributor.png)
-
-    ユーザーのメール アドレスが見つかったら、アカウントを選択し、**[保存]** を選択します。
-
-    このロールの割り当てで問題が発生した場合は、[Azure のロールの割り当て](../../role-based-access-control/role-assignments-portal.md)と [Azure のアクセス制御のトラブルシューティング](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)に関する記事を参照してください。
+Azure portal で、自分の Language Understanding (LUIS) 作成リソースを見つけます。 種類は `LUIS.Authoring` です。 リソースの **[Access Control (IAM)]** ページで、投稿するユーザーの "**共同作成者**" ロールを追加します。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="view-the-app-as-a-contributor"></a>アプリに共同作成者として表示する
 
@@ -80,6 +69,6 @@ Azure Active Directory ユーザーと同意の詳細を確認します。
 ## <a name="next-steps"></a>次のステップ
 
 * [バージョンを使用](luis-how-to-manage-versions.md)してアプリのライフ サイクルを制御する方法を確認します。
-* [オーサリング リソース](luis-how-to-azure-subscription.md#authoring-key)やそのリソースの[共同作成者](luis-how-to-azure-subscription.md#contributions-from-other-authors)などの概念を理解します。
+* [作成リソース](luis-how-to-azure-subscription.md)やそのリソースへの[共同作成者の追加](luis-how-to-collaborate.md)について理解します。
 * オーサリング リソースとランタイム リソースの[作成方法](luis-how-to-azure-subscription.md)を確認します
 * 新しい[オーサリング リソース](luis-migration-authoring.md)に移行します

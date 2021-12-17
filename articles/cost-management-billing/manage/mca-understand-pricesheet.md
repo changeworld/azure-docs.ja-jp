@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 6205867cbcb65a3b5720fefd1356b36bcd8c6838
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 997bf9e2b88269985c85220c4960179d148a4190
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682724"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637474"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Microsoft 顧客契約の価格シートの用語
 
@@ -45,13 +45,13 @@ ms.locfileid: "88682724"
 | meterSubCategory  | メーターのサブ分類カテゴリの名前。  |
 | meterType  |  メーターの種類の名前。 |
 | meterRegion  | サービスのメーターが使用可能なリージョンの名前。 データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。    |
-| Product  | 料金が発生する製品の名前。例: Basic SQL DB vs Standard SQL DB  |
+| 製品  | 料金が発生する製品の名前。例: Basic SQL DB か Standard SQL DB か  |
 | productId  | メーターが消費される製品の一意の識別子。 |
 | productOrderName  | 購入した製品プランの名前。 |
 | serviceFamily  | Azure サービスの種類。例: Compute、Analytics、Security |
 | tierMinimumUnits  | 価格が定義されているレベル範囲の下限を定義します。 たとえば、範囲が 0 から 100 の場合、tierMinimumUnits は 0 になります。  |
 | unitOfMeasure  | サービス課金の測定単位の一意の識別子。 たとえば、コンピューティング サービスは時間単位で課金されます。 |
-| unitPrice  | メーターと製品オーダー名に特有の、課金時のユニットあたりの価格 (有効なブレンド価格ではない)。  注:レベルごとに価格が異なるサービスの場合、単価は使用量の詳細のダウンロード内の有効価格と同じではありません。  複数のレベルの価格にわたるサービスの場合、有効価格はレベル全体のブレンド価格であり、レベル別の単価は示されません。 ブレンド価格または有効価格は、複数のレベル (各レベルには固有の単価が存在) にまたがって消費された数量に対する正味価格です。 |
+| unitPrice  | メーターと製品オーダー名に特有の、課金時のユニットあたりの価格 (有効なブレンド価格ではない)。  注: レベルごとに価格が異なるサービスの場合、単価は使用量の詳細のダウンロード内の有効価格と同じではありません。  複数のレベルの価格にわたるサービスの場合、有効価格はレベル全体のブレンド価格であり、レベル別の単価は示されません。 ブレンド価格または有効価格は、複数のレベル (各レベルには固有の単価が存在) にまたがって消費された数量に対する正味価格です。 |
 
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する

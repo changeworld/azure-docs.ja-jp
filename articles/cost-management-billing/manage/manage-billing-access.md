@@ -1,21 +1,21 @@
 ---
 title: Azure 課金情報へのアクセスの管理
 description: Azure 課金情報へのアクセス権をチームのメンバーに付与する方法について説明します。
-author: vikramdesai01
+author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 06/27/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 1574149e0587701323cb9ae5ae0c5cfeaccf47c7
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 5f325b0e8adb0a20389bfc09cc37f42fbddbd477
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096408"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450022"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Azure の課金情報へのアクセスの管理
 
@@ -42,7 +42,8 @@ Azure portal では自分のアカウントの課金情報へのアクセス権�
 
 ロールを割り当てるには、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-** EA のお客様の場合は、アカウント所有者は上記のロールをチームの他のユーザーに割り当てることができます。 ただし、これらのユーザーが課金情報を表示するには、エンタープライズ管理者は、Enterprise Portal で AO ビューの請求額を有効にする必要があります。
+> [!note]
+> EA のお客様の場合は、アカウント所有者は上記のロールをチームの他のユーザーに割り当てることができます。 ただし、これらのユーザーが課金情報を表示するには、エンタープライズ管理者は、Enterprise Portal で AO ビューの請求額を有効にする必要があります。
 
 
 ### <a name="allow-users-to-download-invoices"></a><a name="opt-in"></a> ユーザーに請求書のダウンロードを許可する
@@ -57,11 +58,11 @@ Azure portal では自分のアカウントの課金情報へのアクセス権�
 
 1. 左側のウィンドウで、 **[サブスクリプション]** を選択します。 アクセス権によっては、課金スコープを選択してから、 **[サブスクリプション]** を選択する必要があります。
 
-    ![サブスクリプションの選択を示すスクリーンショット](./media/manage-billing-access/billing-select-subscriptions.png)
+    ![サブスクリプションの選択を示すスクリーンショット。](./media/manage-billing-access/billing-select-subscriptions.png)
 
 1. **[請求書]** 、 **[請求書へのアクセス]** の順に選択します。
 
-    ![請求書へのアクセスの委任方法を示すスクリーンショット](./media/manage-billing-access/aa-optin01.png)
+    ![請求書へのアクセスの委任方法を示すスクリーンショット。](./media/manage-billing-access/aa-optin01.png)
 
 1. **[オン]** を選択して、保存します。
 
@@ -75,39 +76,20 @@ Azure portal では自分のアカウントの課金情報へのアクセス権�
 
 請求閲覧者機能はプレビュー段階であり、非グローバル クラウドはまだサポートされていません。
 
-1. [Azure Portal](https://portal.azure.com/) にアカウント管理者としてサインインします。
+- 請求閲覧者ロールをサブスクリプション スコープでユーザーに割り当てます。  
+     詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-1. **[コストの管理と請求]** で検索します。
-
-    ![Azure portal の検索を表示するスクリーンショット](./media/manage-billing-access/billing-search-cost-management-billing.png)
-
-1. 左側のウィンドウで、 **[サブスクリプション]** を選択します。 アクセス権によっては、課金スコープを選択してから、 **[サブスクリプション]** を選択する必要があります。
-
-    ![サブスクリプションの選択を示すスクリーンショット](./media/manage-billing-access/billing-select-subscriptions.png)
-
-1. **[アクセス制御 (IAM)]** を選択します。
-1. ページの最上部から **[追加]** を選びます。
-
-    ![ロールの割り当て追加のクリックを示すスクリーンショット](./media/manage-billing-access/billing-click-add-role-assignment.png)
-
-1. **[ロール]** ドロップダウン リストで、 **[請求閲覧者]** を選択します。
-1. **[選択]** テキストボックスに、追加するユーザーの名前またはメール アドレスを入力します。
-1. ユーザーを選択します。
-1. **[保存]** を選択します。
-    ![[保存] ボタンが強調表示されているスクリーンショット](./media/manage-billing-access/billing-save-role-assignment.png)
-
-1. しばらくすると、ユーザーにサブスクリプションの請求閲覧者ロールが割り当てられます。
-
-** EA のお客様の場合は、アカウント所有者または部門管理者がチーム メンバーに請求閲覧者ロールを割り当てることができます。 ただし、その請求閲覧者が部門またはアカウントの課金情報を表示する場合は、エンタープライズ管理者が Enterprise Portal で **AO ビューの請求額** または **DA ビューの請求額** のポリシーを有効にする必要があります。
+> [!NOTE]
+> EA のお客様の場合は、アカウント所有者または部門管理者がチーム メンバーに請求閲覧者ロールを割り当てることができます。 ただし、その請求閲覧者が部門またはアカウントの課金情報を表示する場合は、エンタープライズ管理者が Enterprise Portal で **AO ビューの請求額** または **DA ビューの請求額** のポリシーを有効にする必要があります。
 
 ## <a name="check-the-type-of-your-billing-account"></a>請求先アカウントの種類を確認する
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
+
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+
+ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - 所有者または共同作成者など他のロールのユーザーは、課金状況だけではなく、Azure サービスにもアクセスできます。 これらのロールを管理するには、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 - ロールの詳細については、[Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。
-
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
-
-ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

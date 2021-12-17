@@ -10,20 +10,21 @@ ms.subservice: hpc
 ms.collection: windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/10/2020
+ms.date: 10/14/2021
 ms.author: vikancha
-ms.openlocfilehash: 42dac9edc91d7cb935e8c20398c4d31343b358e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ddb0b46e6d4881f3c0dac6a697607964d6cb5eed
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559683"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038329"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>Windows 用の AMD GPU ドライバー拡張機能
 
 この記事では、Windows [NVv4 シリーズ](../nvv4-series.md)の VM に AMD GPU ドライバーを配置するための VM 拡張機能の概要について説明します。 この拡張機能を使用して AMD ドライバーをインストールすると、[AMD のエンドユーザー使用許諾契約書](https://amd.com/radeonsoftwarems)の条項を受け入れ、同意することになります。 インストール プロセス中に、ドライバーのセットアップを完了するために仮想マシンが再起動することがあります。
 
-ドライバーの手動インストールの手順と現在サポートされているバージョンについては、[こちら](../windows/n-series-amd-driver-setup.md)をご覧ください。
+ドライバーの手動インストールの手順と現在サポートされているバージョンに関する説明があります。 詳細については、[Windows 用 Azure N シリーズ AMD GPU ドライバーの設定](../windows/n-series-amd-driver-setup.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,8 +34,8 @@ ms.locfileid: "102559683"
 
 | Distribution | Version |
 |---|---|
-| Windows 10 EMS | ビルド 1903 |
-| Windows 10 | ビルド 1809 |
+| Windows 10 EMS | ビルド 1909 |
+| Windows 10 | ビルド 1909 |
 | Windows Server 2016 | コア |
 | Windows Server 2019 | コア |
 
@@ -58,7 +59,7 @@ AMD GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲッ�
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "AmdGpuDriverWindows",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.1",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -73,7 +74,7 @@ AMD GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲッ�
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |
 | type | AmdGpuDriverWindows | string |
-| typeHandlerVersion | 1.0 | INT |
+| typeHandlerVersion | 1.1 | INT |
 
 
 ## <a name="deployment"></a>デプロイ
@@ -98,7 +99,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "AmdGpuDriverWindows",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.1",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -116,7 +117,7 @@ Set-AzVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "AmdGpuDriverWindows" `
     -ExtensionType "AmdGpuDriverWindows" `
-    -TypeHandlerVersion 1.0 `
+    -TypeHandlerVersion 1.1 `
     -SettingString '{ `
     }'
 ```
@@ -129,7 +130,7 @@ az vm extension set `
   --vm-name myVM `
   --name AmdGpuDriverWindows `
   --publisher Microsoft.HpcCompute `
-  --version 1.0 `
+  --version 1.1 `
   --settings '{ `
   }'
 ```

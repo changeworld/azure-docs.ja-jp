@@ -3,7 +3,7 @@ title: 診断ログ
 titleSuffix: Azure Content Delivery Network
 description: Azure 診断ログを使用し、コア分析を保存する方法について説明します。Azure Content Delivery Network エンドポイントから使用状況メトリックをエクスポートできるようになります。
 services: cdn
-author: asudbring
+author: duongau
 manager: KumudD
 ms.assetid: ''
 ms.service: azure-cdn
@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
-ms.author: allensu
-ms.openlocfilehash: 96e80de5b8b5ab0a046913ce40ca2d7254dd0133
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c1324bfd321f501eced9bb2e27405ed38c2b2808
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100573224"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458648"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>診断ログ - Azure Content Delivery Network
 
@@ -195,12 +196,11 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 6.  各 Blob *PT1H.json* ファイルは、特定の CDN エンドポイントまたはカスタム ドメインについての 1 時間の分析ログを表します。
 7.  この JSON ファイルのコンテンツのスキーマは、コア分析ログのセクション スキーマに説明されています。
 
-
 #### <a name="blob-path-format"></a>BLOB パスの形式
 
-コア分析ログは、1 時間ごとに生成され、そのデータは 1 つの Azure BLOB 内に JSON ペイロードとして収集され、格納されます。 ストレージ エクスプローラー ツールは '/' をディレクトリの区切り記号と見なし、階層を表示します。 Azure BLOB へのパスは、階層構造が存在するかのように表示され、BLOB 名が示されます。 BLOB のこの名前は次の名前付け規則に従っています    
+コア分析ログは、1 時間ごとに生成され、そのデータは 1 つの Azure BLOB 内に JSON ペイロードとして収集され、格納されます。 ストレージ エクスプローラー ツールは '/' をディレクトリの区切り記号と見なし、階層を表示します。 Azure BLOB へのパスは、階層構造が存在するかのように表示され、BLOB 名が示されます。 BLOB のこの名前は次の名前付け規則に従っています
 
-```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
+`resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y=/m=/d=/h=/m=/PT1H.json`
 
 **フィールドの説明:**
 

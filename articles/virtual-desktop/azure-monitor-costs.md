@@ -1,17 +1,17 @@
 ---
-title: Windows Virtual Desktop のコストと価格の見積もりを監視する - Azure
-description: Windows Virtual Desktop 向けの Azure Monitor を使用してコストと価格を見積もる方法。
+title: Azure Virtual Desktop のコストと価格の見積もりを監視する - Azure
+description: Azure Virtual Desktop 向けの Azure Monitor を使用するコストと価格を見積もる方法。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 26262f83e14602d6ea93f96ec47630ef870c357d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9011e22359e7df72f1754ec4f588f41e5342e868
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309307"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745333"
 ---
 # <a name="estimate-azure-monitor-costs"></a>Azure Monitor コストを見積もる
 
@@ -29,11 +29,11 @@ Azure Monitor ログは、環境によって生成されたデータを収集、
 
 Log Analytics ワークスペースでログとして書き込まれた定義済みのデータのセットを使用することをお勧めします。 次の見積もりの例では、既定の構成で課金対象データを確認します。
 
-Windows Virtual Desktop 向けの Azure Monitor の定義済みデータセットは次のとおりです。
+Azure Virtual Desktop 向けの Azure Monitor の定義済みデータセットは次のとおりです。
 
 - セッション ホストからのパフォーマンス カウンター
 - セッション ホストからの Windows イベント ログ
-- サービス インフラストラクチャからの Windows Virtual Desktop 診断
+- サービス インフラストラクチャからの Azure Virtual Desktop 診断
 
 データ インジェストとストレージ コストは、環境のサイズ、正常性、使用状況によって異なります。 この記事の例では、予想されるコスト範囲を計算するために、[仮想マシンのサイズ設定のガイドライン](/windows-server/remote/remote-desktop-services/virtual-machine-recs)に基づいた、ライトからパワーの電力使用量の正常な仮想マシンに基づいて、データ インジェストとストレージ コストの範囲を予想します。
 
@@ -53,7 +53,7 @@ Windows Virtual Desktop 向けの Azure Monitor の定義済みデータセッ�
 
 ## <a name="estimating-performance-counter-ingestion"></a>パフォーマンス カウンター インジェストの見積もり
 
-パフォーマンス カウンターは、システム リソースがどのように実行されているかを示します。 パフォーマンス カウンターのデータ インジェストは、環境のサイズと使用状況によって異なります。 ほとんどの場合、パフォーマンス カウンターは、Windows Virtual Desktop 向けの Azure Monitor のデータ インジェストの 80～99% を構成するはずです。
+パフォーマンス カウンターは、システム リソースがどのように実行されているかを示します。 パフォーマンス カウンターのデータ インジェストは、環境のサイズと使用状況によって異なります。 ほとんどの場合、パフォーマンス カウンターは、Azure Virtual Desktop 向けの Azure Monitor のデータ インジェストの 80 から 99% を構成するはずです。
 
 見積もりを開始する前に、各パフォーマンス カウンターが特定の頻度でデータを送信するということを理解しておくことが重要です。 既定のサンプル レートを分単位で設定します (このレートは設定で編集することもできます) が、カウンターに応じて異なる乗算係数で適用されます。 次の要因がレートに影響します。
 
@@ -87,7 +87,7 @@ Windows Virtual Desktop 向けの Azure Monitor の定義済みデータセッ�
 
    1 分あたりの既定のサンプル レート × 1 日あたりのセッション数 × 平均セッション時間 × セッションあたりの平均プロセス数 = 1 日あたりの送信レコード数
 
-次の表は、Windows Virtual Desktop 向けの Azure Monitor が収集する 20 個のパフォーマンス カウンターとその既定の料金を示しています。
+次の表は、Azure Virtual Desktop 向けの Azure Monitor が収集する 20 個のパフォーマンス カウンターとその既定のレートを示しています。
 
 | カウンター名 | 既定のサンプル レート | 頻度の係数 |
 |--------------|---------------------|------------------|
@@ -120,7 +120,7 @@ Windows Virtual Desktop 向けの Azure Monitor の定義済みデータセッ�
 
 Windows イベント ログは、Windows 仮想マシン上の Log Analytics エージェントによって収集されるデータ ソースです。 システムやアプリケーションなどの標準ログのイベントに加えて、監視が必要なアプリケーションによって作成されるカスタム ログも収集できます。
 
-Windows Virtual Desktop 向けの Azure Monitor の既定の Windows イベントは次のとおりです。
+Azure Virtual Desktop 向けの Azure Monitor の既定の Windows イベントは次のとおりです。
 
 - Application
 - Microsoft-Windows-TerminalServices-RemoteConnectionManager/Admin
@@ -150,7 +150,7 @@ Windows イベントの詳細については、[Windows イベント レコー�
 
 たとえば、この例の各診断レコード サイズを 200 バイトに見積もると、インジェスト データの合計は 1 日あたりの VM あたり 1 MB 未満になります。
 
-アクティビティ ログのカテゴリの詳細については、「[Windows Virtual Desktop の診断](diagnostics-log-analytics.md)」をご覧ください。
+アクティビティ ログのカテゴリの詳細については、「[Azure Virtual Desktop の診断](diagnostics-log-analytics.md)」をご覧ください。
 
 ## <a name="estimating-total-costs"></a>合計コストの見積もり
 
@@ -160,9 +160,9 @@ Windows イベントの詳細については、[Windows イベント レコー�
 |-------------------------------------|------------------------------------------|
 | パフォーマンス カウンター   | 90 - 130 |
 | イベント    | 2 - 15 |
-| Windows Virtual Desktop 診断 | \< 1 |
+| Azure Virtual Desktop の診断 | \< 1 |
 
-この例では、Windows Virtual Desktop 向けの Azure Monitor の合計インジェスト データは、1 日あたりの VM あたり 92～145 メガバイトです。 つまり、各 VM は 31 日ごとに約 3～5 ギガバイトのデータをインジェストします。
+この例では、Azure Virtual Desktop 向けの Azure Monitor の合計インジェスト データは、1 日あたり VM ごとに 92 から 145 メガバイトです。 つまり、各 VM は 31 日ごとに約 3～5 ギガバイトのデータをインジェストします。
 
 [Log Analytics 価格](https://azure.microsoft.com/pricing/details/monitor/)に既定の従量課金制モデルを使用すると、1 月あたりの Azure Monitor データ収集とストレージ コストを見積もることができます。 データ インジェストに応じて、Log Analytics 価格の容量予約モデルを検討することもできます。
 
@@ -173,24 +173,24 @@ Windows イベントの詳細については、[Windows イベント レコー�
 ブックの権限とアクセス許可を管理する方法の詳細については、「[アクセス制御](../azure-monitor/visualize/workbooks-access-control.md)」をご覧ください。
 
 >[!NOTE]
->データ ポイントを削除すると、Windows Virtual Desktop 向けの Azure Monitor の対応するビジュアルに影響します。
+>データ ポイントを削除すると、Azure Virtual Desktop 向けの Azure Monitor の対応するビジュアルに影響します。
 
 ### <a name="log-analytics-settings"></a>Log Analytics の設定
 
 データ インジェストを管理するために Log Analytics の設定を最適化するための推奨事項を次に示します。
 
-- Windows Virtual Desktop リソースの指定された Log Analytics ワークスペースを使用して、Log Analytics が Windows Virtual Desktop 展開内の仮想マシンのパフォーマンス カウンターとイベントのみを収集するようにします。
-- Log Analytics ストレージの設定を調整してコストを管理します。 保有期間を短縮したり、固定ストレージ価格レベルがコスト効率に優れているかどうかを評価したり、異常な展開の影響を制限するためにインジェストできるデータ量に境界を設定したりすることができます。 詳細については、「[Azure Monitor ログの使用量とコストを管理する](../azure-monitor/platform/manage-cost-storage.md)」をご覧ください。
+- Azure Virtual Desktop リソース用の指定された Log Analytics ワークスペースを使用して、Log Analytics が Azure Virtual Desktop 展開内の仮想マシンのパフォーマンス カウンターとイベントのみを収集するようにします。
+- Log Analytics ストレージの設定を調整してコストを管理します。 保有期間を短縮したり、固定ストレージ価格レベルがコスト効率に優れているかどうかを評価したり、異常な展開の影響を制限するためにインジェストできるデータ量に境界を設定したりすることができます。 詳細については、「[Azure Monitor ログの使用量とコストを管理する](../azure-monitor/logs/manage-cost-storage.md)」をご覧ください。
 
 ### <a name="remove-excess-data"></a>余分なデータを削除する
 
-既定の構成は、Windows Virtual Desktop 向けの Azure Monitor に推奨される唯一のデータ セットです。 データ ポイントを追加してホスト診断で表示するオプションが常にあります。ブラウザーをホストするか、カスタム グラフを作成します。ただし、データを追加すると Log Analytics コストが増加します。 コストを削減するために、これらを削除することができます。
+既定の構成は、Azure Virtual Desktop 向けの Azure Monitor に推奨される唯一のデータ セットです。 データ ポイントを追加してホスト診断で表示するオプションが常にあります。ブラウザーをホストするか、カスタム グラフを作成します。ただし、データを追加すると Log Analytics コストが増加します。 コストを削減するために、これらを削除することができます。
 
 ### <a name="measure-and-manage-your-performance-counter-data"></a>パフォーマンス カウンター データの測定と管理
 
 実際の監視コストは、環境のサイズ、使用状況、正常性によって異なります。 Log Analytics ワークスペースでデータ インジェストの測定方法を理解するには、「[インジェスト ログ データ ボリュームについて](../azure-monitor/logs/manage-cost-storage.md#understanding-ingested-data-volume)」をご覧ください。
 
-セッション ホストが使用しているパフォーマンス カウンターは、Windows Virtual Desktop 向けの Azure Monitor のインジェスト データの最大のソースになる可能性があります。 Log Analytics ワークスペースの次のカスタム クエリ テンプレートでは、過去 1 日のパフォーマンス カウンターあたりの頻度とインジェスト メガバイト数を追跡できます。
+セッション ホストが使用しているパフォーマンス カウンターは、Azure Virtual Desktop 向けの Azure Monitor のインジェスト データの最大のソースになる可能性があります。 Log Analytics ワークスペースの次のカスタム クエリ テンプレートでは、過去 1 日のパフォーマンス カウンターあたりの頻度とインジェスト メガバイト数を追跡できます。
 
 ```azure
 let WVDHosts = dynamic(['Host1.MyCompany.com', 'Host2.MyCompany.com']);
@@ -206,9 +206,9 @@ Perf
 >[!NOTE]
 >テンプレートのプレースホルダー値を実際の環境で使用する値に置き換えてください。そうしないと、クエリは機能しません。
 
-このクエリでは、Windows Virtual Desktop 向けの Azure Monitor の既定のカウンターだけではなく、環境で有効にしたすべてのパフォーマンス カウンターが表示されます。 この情報は、カウンターの頻度を下げたり、カウンターを完全に削除したりするなど、コストを削減するためにターゲットとなる領域を理解するのに役立ちます。
+このクエリでは、Azure Virtual Desktop 向けの Azure Monitor の既定のものだけではなく、環境で有効にしたすべてのパフォーマンス カウンターが表示されます。 この情報は、カウンターの頻度を下げたり、カウンターを完全に削除したりするなど、コストを削減するためにターゲットとなる領域を理解するのに役立ちます。
 
-また、パフォーマンス カウンターを削除することによってコストを削減することもできます。 パフォーマンス カウンターを削除したり、既存のカウンターを編集して頻度を下げたりする方法については、「[パフォーマンスカウンターの構成](../azure-monitor/platform/data-sources-performance-counters.md#configuring-performance-counters)」をご覧ください。
+また、パフォーマンス カウンターを削除することによってコストを削減することもできます。 パフォーマンス カウンターを削除したり、既存のカウンターを編集して頻度を下げたりする方法については、「[パフォーマンスカウンターの構成](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters)」をご覧ください。
 
 ### <a name="manage-windows-event-logs"></a>Windows イベント ログを管理する
 
@@ -216,13 +216,13 @@ Windows イベントは、すべてのホストが正常な場合にデータ �
 
 ### <a name="manage-diagnostics"></a>診断を管理する
 
-Windows Virtual Desktop 診断は、データ ストレージのコストの 1% 未満にあたるため、削除することはお勧めしません。 Windows Virtual Desktop 診断を管理するには、「[診断機能に Log Analytics を使用する](diagnostics-log-analytics.md)」をご覧ください。
+Azure Virtual Desktop の診断は、データ ストレージのコストの 1% 未満にあたるため、削除することはお勧めしません。 Azure Virtual Desktop の診断を管理するには、「[診断機能に Log Analytics を使用する](diagnostics-log-analytics.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Windows Virtual Desktop 向けの Azure Monitor の詳細については、次の記事をご覧ください。
+Azure Virtual Desktop 向けの Azure Monitor の詳細については、次の記事をご覧ください。
 
-- 「[Windows Virtual Desktop 向けの Azure Monitor を使用してデプロイを監視する](azure-monitor.md)」
+- [Azure Virtual Desktop 向けの Azure Monitor を使用してデプロイを監視する](azure-monitor.md)
 - 用語と概念の詳細については、[用語集](azure-monitor-glossary.md)をご覧ください。
 - 問題が発生した場合は、[トラブルシューティング ガイド](troubleshoot-azure-monitor.md)をご覧ください。
 - 監視コストの管理の詳細については、「[Azure Monitor での使用量と推定コストの監視](../azure-monitor/usage-estimated-costs.md)」をご覧ください。

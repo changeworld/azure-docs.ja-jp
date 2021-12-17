@@ -1,21 +1,21 @@
 ---
-title: Application Insights JavaScript SDK の Native React プラグイン
-description: Application Insights JavaScript SDK の Native React プラグインをインストールして使用する方法について説明します。
+title: Application Insights JavaScript SDK の React Native プラグイン
+description: Application Insights JavaScript SDK の React Native プラグインをインストールして使用する方法について説明します。
 services: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 0c122a21fc7149e9943825cafbed77069b7919f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b407fdc0614d94862257ce3bebc0f58f971f9d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593601"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735834"
 ---
-# <a name="native-react-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK の Native React プラグイン
+# <a name="react-native-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK の React Native プラグイン
 
-Application Insights JavaScript SDK 用の Native React プラグインでは、デバイス情報が収集されます。既定では、このプラグインによって、以下が収集されます。
+Application Insights JavaScript SDK 用の React Native プラグインでは、デバイス情報が収集されます。既定では、このプラグインによって、以下が収集されます。
 
 - **一意のデバイス ID** (インストール ID とも呼ばれます)。
 - **デバイス モデル名** (iPhone X、Samsung Galaxy Fold、Huawei P30 Pro など)

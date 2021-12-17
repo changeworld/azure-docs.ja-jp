@@ -1,6 +1,6 @@
 ---
 title: アプリを Azure Active Directory アプリ ギャラリーで発行する
-description: シングル サインオンをサポートするアプリケーションを Azure Active Directory アプリ ギャラリーに掲載する方法を説明します。
+description: シングル サインオンをサポートするアプリケーションを Azure Active Directory アプリ ギャラリーに掲載する方法を説明します。 アプリ ギャラリーに公開すると、顧客はより簡単にアプリを見つけて、テナントに追加できるようになります。
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -8,20 +8,34 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/14/2020
+ms.date: 06/23/2021
 ms.author: kenwith
 ms.reviewer: jeedes
-ms.custom: aaddev
-ms.openlocfilehash: f2a04a341239b62290eecac8c0e1ce70b7c927c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, contperf-fy21q4
+ms.openlocfilehash: 7602c510ee60b30189e399bd07d624980534dc39
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988905"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336546"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>アプリを Azure AD アプリ ギャラリーで公開する
 
-アプリを Azure AD アプリ ギャラリーで公開することができます。 公開されたアプリは、カスタマーがアプリをテナントに追加するときに、オプションとして表示されます。 
+Azure Active Directory (Azure AD) アプリ ギャラリーでアプリを公開できます。 公開されたアプリは、顧客が[アプリをテナントに追加](../manage-apps/add-application-portal.md)するときに、オプションとして表示されます。 
+
+アプリを Azure AD アプリ ギャラリーで公開する手順は次のとおりです。
+1. 前提条件
+1. アプリに適したシングル サインオン標準を選択します。
+1. アプリにシングル サインオンを実装します。
+1. アプリに SCIM ユーザー プロビジョニングを実装する (オプション)
+1. Azure テナントを作成し、アプリをテストします。
+1. ドキュメントを作成して公開します。
+1. アプリを送信します。
+1. Microsoft Partner Network に参加します。
+
+## <a name="what-is-the-azure-ad-application-gallery"></a>Azure AD アプリケーション ギャラリーとは
+
+[Azure AD アプリ ギャラリー](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1)は、シングル サインオン (SSO) と自動ユーザー プロビジョニングを簡単にデプロイして構成できる数千ものアプリのカタログです。
 
 Azure AD ギャラリーにアプリを追加すると、次のような利点があります。
 
@@ -30,6 +44,7 @@ Azure AD ギャラリーにアプリを追加すると、次のような利点�
 - クイック検索でギャラリー内のアプリケーションが検索されます。
 - Free、Basic、Premium すべての Azure AD ユーザーがこの情報を使用できます。
 - 共通の顧客向けの詳細な構成手順チュートリアルがあります。
+- System for Cross-domain Identity Management ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) を使用している顧客は、同じアプリのプロビジョニングを使用できます。
 
 さらに、カスタマーがアプリの ID プロバイダーとして Azure AD を使用すると、多くの利点があります。 たとえば、次のようなシナリオがあります。
 
@@ -47,41 +62,20 @@ Azure AD ギャラリーにアプリを追加すると、次のような利点�
 - ユーザーが Azure AD SSO を使用してアプリケーションにサインオンすると、別の資格情報が必要なくなり、セキュリティと利便性が向上します。
 
 > [!TIP]
-> 購入またはサブスクリプションを通じて他の会社にアプリケーションを提供する際に、顧客が独自の Azure テナント内でアプリケーションを利用できるようにします。 これは、マルチテナント アプリケーションの作成と呼ばれます。 この概念の概要については、「[Azure 上のマルチテナント アプリケーション](../../dotnet-develop-multitenant-applications.md)」と「[Azure Active Directory のテナント](single-and-multi-tenant-apps.md)」を参照してください。
-
-> [!IMPORTANT]
-> Azure AD ギャラリーでアプリを公開するには、特定の使用条件に同意する必要があります。 始める前に、[使用条件](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)を読んで同意してください。
-
-アプリを Azure AD アプリ ギャラリーで公開する手順は次のとおりです。
-1. アプリに適したシングル サインオン標準を選択します。
-2. アプリにシングル サインオンを実装します。
-3. Azure テナントを作成し、アプリをテストします。
-4. ドキュメントを作成して公開します。
-5. アプリを送信します。
-6. Microsoft Partner Network に参加します。
-
-## <a name="what-is-the-azure-ad-application-gallery"></a>Azure AD アプリケーション ギャラリーとは
-
-- 顧客は考えられる最良のシングル サインオン エクスペリエンスを探しています。
-- アプリケーションの構成は簡単で最小限です。
-- クイック検索でギャラリー内のアプリケーションが検索されます。
-- Free、Basic、Premium すべての Azure AD ユーザーがこの情報を使用できます。
-- 共通の顧客向けの詳細な構成手順チュートリアルがあります。
-- System for Cross-domain Identity Management ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) を使用している顧客は、同じアプリのプロビジョニングを使用できます。
+> 購入またはサブスクリプションを通じて他の会社にアプリケーションを提供する際に、顧客が独自の Azure テナント内でアプリケーションを利用できるようにします。 これは、マルチテナント アプリケーションの作成と呼ばれます。 この概念の概要については、「[Azure Active Directory のテナント](single-and-multi-tenant-apps.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+Azure AD ギャラリーでアプリを公開するには、まず、特定の[使用条件](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)を読んで、同意する必要があります。
 
 テストには、2 人以上のユーザーが登録されている永続的なアカウントが必要です。
 
 - フェデレーション アプリケーション (Open ID と SAML/WS-Fed) の場合、Azure AD アプリ ギャラリーに一覧表示するには、アプリケーションでサービスとしてのソフトウェア (SaaS) モデルをサポートする必要があります。 エンタープライズ ギャラリー アプリケーションでは、特定の顧客ではなく複数の顧客構成をサポートする必要があります。
-- Open ID Connect の場合、アプリケーションはマルチテナントである必要があり、[Azure AD 同意フレームワーク](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)がアプリケーションに適切に実装されている必要があります。 ユーザーは、すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにサインイン要求を送信できます。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。
+- Open ID Connect の場合、アプリケーションはマルチテナントである必要があり、[Azure AD 同意フレームワーク](../develop/consent-framework.md)がアプリケーションに適切に実装されている必要があります。 ユーザーは、すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにサインイン要求を送信できます。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。
 - SAML 2.0/WS-Fed の場合、ご利用のアプリケーションには、SP または IDP モードで SAML/WS-Fed SSO 統合を行う機能を備えている必要があります。 要求を送信する前に、この機能が正しく動作していることを確認してください。
 - パスワード SSO の場合、シングル サインオンが期待どおりに動作するように、アプリケーションでフォーム認証をサポートしてパスワード保管を行えることを確認します。
 - テストには、2 人以上のユーザーが登録されている永続的なアカウントが必要です。
 
-**開発者向け Azure AD の取得方法**
-
-すべての Premium Azure AD 機能を持つ無料のテスト アカウントを入手できます。90 日間無料で、開発作業を行っている限り、延長することができます: https://docs.microsoft.com/office/developer-program/office-365-developer-program
+すべての Premium Azure AD 機能を持つ無料のテスト アカウントを入手できます。90 日間無料で、開発作業を行っている限り、延長することができます: [Microsoft 365 開発者プログラムに参加する](/office/developer-program/microsoft-365-developer-program)。
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>ステップ 1 - アプリに適したシングル サインオン標準を選択する
 
@@ -139,7 +133,7 @@ OAuth および OIDC については、[認証パターンについてのガイ�
 
 SAML と WS-Fed の場合、アプリケーションは SP または IDP モードで SSO 統合を行う機能を備えている必要があります。 要求を送信する前に、この機能が正しく動作していることを確認してください。
 
-認証の詳細については、「[認証とは](../azuread-dev/v1-authentication-scenarios.md)」を参照してください。
+認証の詳細については、「[認証とは](authentication-vs-authorization.md)」を参照してください。
 
 > [!IMPORTANT]
 > フェデレーション アプリケーション (OpenID および SAML/WS-Fed) の場合は、アプリでサービスとしてのソフトウェア (SaaS) モデルがサポートされている必要があります。 Azure AD ギャラリー アプリケーションでは、特定の単一のカスタマーではなく、複数のカスタマーの構成がサポートされている必要があります。
@@ -230,7 +224,7 @@ Azure ADでアプリケーションの統合が作動するのをテストした
 
 ポータルに初めてサインインしようとすると、2 つの画面のいずれかが表示されます。 
 
-"失敗しました" というメッセージが表示される場合は、[Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)に連絡する必要があります。 要求の送信に使用する電子メール アカウントを指定します。 `name@yourbusiness.com`などの会社の電子メールアドレスをお勧めします。 Azure AD チームにより、アカウントが Microsoft アプリケーション ネットワーク ポータルに追加されます。
+"失敗しました" というメッセージが表示される場合は、[Azure AD SSO 統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com)に連絡する必要があります。 要求の送信に使用する電子メール アカウントを指定します。 `name@yourbusiness.com`などの会社の電子メールアドレスをお勧めします。 Azure AD チームにより、アカウントが Microsoft アプリケーション ネットワーク ポータルに追加されます。
 
 [アクセス権の要求] ページが表示される場合は、業務上の正当な理由を入力し、 **[アクセス権の要求]** を選択します。
 
@@ -259,7 +253,7 @@ Azure ADでアプリケーションの統合が作動するのをテストした
 * ゲスト ユーザーは、管理者にリスクをクローズまたは無視してもらいます。 この場合も、Identity Protection は必要ありません。 管理者は https://aka.ms/RiskyUsers にアクセスして、[ユーザー リスクを無視する] をクリックできます。 ただし、管理者はユーザー リスクをクローズする前にデュー デリジェンスを行い、これが偽陽性のリスク評価であったことを確認する必要があります。 そうしない場合、調査なしでリスク評価を無視することで、自分と Microsoft のリソースをリスクにさらすことになります。
 
 > [!NOTE]
-> アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
+> アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com)にお問い合わせください。
 
 ### <a name="implementation-specific-options"></a>実装固有のオプション
 OpenID Connect を使用してギャラリー内の一覧にご利用のアプリケーションを追加する場合は、上記のように **[OpenID Connect & OAuth 2.0]** を選択します。
@@ -285,18 +279,7 @@ OpenID Connect を使用してギャラリー内の一覧にご利用のアプ�
 ![ギャラリーでの SAML アプリケーションの一覧表示](./media/howto-app-gallery-listing/updateorremove.png)
 
 > [!NOTE]
-> アクセスに問題がある場合は、アカウントの作成に関する前のセクションを確認してください。 それでもうまくいかない場合は、[Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
-
-### <a name="list-requests-by-customers"></a>顧客による一覧表示の要求
-
-顧客は、 **[App requests by Customers]\(顧客によるアプリ要求\)**  >  **[新しい要求の送信]** を選択することで、アプリケーションの一覧表示の要求を送信できます。
-
-![顧客が要求したアプリ タイルを示します](./media/howto-app-gallery-listing/customer-submit-request.png)
-
-顧客が要求したアプリケーションのフローは。次のとおりです。
-
-![顧客が要求したアプリ フローを示します](./media/howto-app-gallery-listing/customer-request-2.png)
-
+> アクセスに問題がある場合は、アカウントの作成に関する前のセクションを確認してください。 それでもうまくいかない場合は、[Azure AD SSO 統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com)にお問い合わせください。
 
 ### <a name="timelines"></a>タイムライン
 
@@ -308,6 +291,8 @@ OpenID Connect アプリケーションをギャラリーに一覧表示する�
 
 ![ギャラリーに OpenID Connect アプリケーションを一覧表示するタイムライン](./media/howto-app-gallery-listing/timeline2.png)
 
+ギャラリーで SCIM provisioning アプリケーションを一覧表示するプロセスのタイムラインは可変であり、多数の要因によって異なります。 
+
 ### <a name="escalations"></a>エスカレーション
 
 すべてのエスカレーションについては、[Azure AD SSO 統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com)にメールでご連絡いただけば、可能な限り早く対応します。
@@ -316,7 +301,20 @@ OpenID Connect アプリケーションをギャラリーに一覧表示する�
 ## <a name="step-7---join-the-microsoft-partner-network"></a>ステップ 7 - Microsoft Partner Network に参加する
 Microsoft Partner Network では、排他的なリソース、プログラム、ツール、接続にすばやくアクセスできます。 ネットワークに参加して、市場投入プランを作成するには、「[法人のお客様にリーチする](https://partner.microsoft.com/explore/commercial#gtm)」を参照してください。
 
+## <a name="request-apps-by-sharing-isv-app-team-contact"></a>ISV アプリ チームの連絡先を共有してアプリを要求する
+
+顧客は、[ここ](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/AppRequestsByCustomers.aspx)でアプリケーションと ISV の連絡先の情報を共有することで、アプリケーションを要求できます。
+
+![顧客が要求したアプリ タイルを示します](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+顧客が要求したアプリケーションのフローは。次のとおりです。
+
+![顧客が要求したアプリ フローを示します](./media/howto-app-gallery-listing/customer-request-2.png)
+
+> [!Note]
+> [アクセスに関して問題](#issues-on-logging-into-portal)がある場合は、[Azure AD アプリ統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com)にメールをお送りください。
 
 ## <a name="next-steps"></a>次のステップ
+
 * [SCIM エンドポイントの構築とユーザー プロビジョニングの構成](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Azure AD の認証シナリオ](authentication-flows-app-scenarios.md)

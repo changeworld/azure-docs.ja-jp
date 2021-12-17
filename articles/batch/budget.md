@@ -2,13 +2,13 @@
 title: Azure Batch のコスト分析の取得と予算の設定
 description: Batch ワークロードの実行に使用される、基になるコンピューティング リソースとソフトウェア ライセンスについて、コスト分析を取得して予算を設定し、コストを削減する方法について説明します。
 ms.topic: how-to
-ms.date: 01/29/2021
-ms.openlocfilehash: d1fc2d15a7037e56a8056efa67d2017badb77ffd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/04/2021
+ms.openlocfilehash: 3590aad01216e5ca7401ce1edd55efb88bf26848
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99091329"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219207"
 ---
 # <a name="get-cost-analysis-and-set-budgets-for-azure-batch"></a>Azure Batch のコスト分析の取得と予算の設定
 
@@ -46,25 +46,58 @@ Standard ロード バランサーでは、Batch プール VM との間でやり
 - Virtual Network
 - グラフィック アプリケーションを使用する VM
 
-## <a name="view-cost-analysis-and-create-a-budget-for-a-pool"></a>コスト分析を表示してプールの予算を作成する
+## <a name="view-cost-analysis-and-create-budgets"></a>コスト分析を表示して予算を作成する
+
+[Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) では、クラウドへの投資を最大化するために支出を計画、分析、削減することができます。 Azure Batch を含め、すべての Azure サービスの使用コストを使用することができます。 表示およびフィルター処理する Batch コストを表示およびフィルター処理したり、将来のコストを予測したりすることができます。また、支出制限を設定し、これらの制限に達したときにアラート発行できます。
 
 Azure portal で、Batch プールまたは Batch アカウントの予算と支出アラートを作成できます。 予算とアラートは、予算オーバーのリスクを関係者に通知するのに役立ちますが、支出アラートの遅延が生じたり、予算をわずかに超過したりする危険性があります。
 
-> [!NOTE]
-> この例のプールでは **仮想マシンの構成** を使用します。これはほとんどのプールで推奨されており、Virtual Machines の料金体系に基づいて課金されます。 **Cloud Services 構成** を使用するプールは、Cloud Services の料金体系に基づいて課金されます。
+次のスクリーンショットは、サブスクリプションの **[コスト分析]** ビューの例を示しています。これは、フィルター処理により、すべての Batch アカウントに関連する累積コストのみを表示しています。 下部のグラフは、選択された期間の総コストを、使用されたサービス、場所、メーターで分類する方法を示しています。 これは例であり、お使いのサブスクリプションに関して発生する可能性のあるコストを反映するものではありませんが、最もコストがかかるのは Batch プール ノードに割り当てられた仮想マシンであるという点では一般的です。
+
+:::image type="content" source="media/batch-budget/subscription-cost-analysis.png" alt-text="サブスクリプションのすべての Batch アカウントに関する Azure portal でのコスト分析を示すスクリーンショット。":::
+
+**[リソース]** フィルターを指定すると、さらに詳細なコスト分析を得ることができます。 Batch アカウントの場合、これらの値は、Batch アカウント名とプール名です。 これを使用すると、特定のプール、複数のプール、または 1 つ以上のアカウントのコストを表示できます。
 
 ### <a name="view-cost-analysis-for-a-batch-pool"></a>Batch プールのコスト分析を表示する
+
+#### <a name="batch-service-pool-allocation-mode"></a>バッチ サービス プール割り当てモード
+
+Batch サービスのプール割り当てモードで作成された Batch アカウントの場合:
 
 1. Azure portal で、**Cost Management + Billing** を入力するか、選択します。
 1. **[課金スコープ]** セクションでご使用のサブスクリプションを選択します。
 1. **[コスト管理]** で、 **[コスト分析]** を選択します。
-1. **[フィルターの追加]** を選択します 最初のドロップダウンで、 **[リソース]** を選択します
-1. 2 番目のドロップダウンで、Batch プールを選択します。 プールを選択すると、次に示す例のようなプールのコスト分析が表示されます。
-    ![Azure portal のプールのコスト分析を示すスクリーンショット。](./media/batch-budget/pool-cost-analysis.png)
+1. **[フィルターの追加]** を選択します 最初のドロップダウンで、 **[リソース]** を選択します。
+1. 2 番目のドロップダウンで、Batch プールを選択します。 プールを選択すると、そのプールのコスト分析が表示されます。 次のスクリーンショットは、データの例を示しています。
+   :::image type="content" source="media/batch-budget/pool-cost-analysis.png" alt-text="Azure portal での Batch プールのコスト分析を示すスクリーンショット。":::
 
 結果のコスト分析には、プールのコストと、そのコストの原因であるリソースが表示されます。 この例では、プールで使用されている VM が最もコストのかかるリソースです。
 
+> [!NOTE]
+> この例のプールでは **仮想マシンの構成** を使用します。これは [ほとんどのプールで推奨](batch-pool-cloud-service-to-virtual-machine-configuration.md)されており、Virtual Machines の料金体系に基づいて課金されます。 **Cloud Services 構成** を使用するプールは、Cloud Services の料金体系に基づいて課金されます。
+
+[タグ](../azure-resource-manager/management/tag-resources.md)を Batch アカウントに関連付けることができ、これにより、タグを使用してコストをさらにフィルター処理できるようになります。 たとえば、タグを使用して、プロジェクト、ユーザー、またはグループの情報を Batch アカウントに関連付けることができます。 現在、タグを Batch プールに関連付けることはできません。
+
+#### <a name="user-subscription-pool-allocation-mode"></a>ユーザー サブスクリプション プール割り当てモード
+
+ユーザー サブスクリプション プール割り当てモードで作成された Batch アカウントの場合:
+
+1. Azure portal で、**Cost Management + Billing** を入力するか、選択します。
+1. **[課金スコープ]** セクションでご使用のサブスクリプションを選択します。
+1. **[コスト管理]** で、 **[コスト分析]** を選択します。
+1. **[フィルターの追加]** を選択します 最初のドロップダウンで、 **[タグ]** を選択します。
+1. 2 番目のドロップダウンで、 **[プール名]** を選択します。
+1. 3 番目のドロップダウンで、Batch プールを選択します。 プールを選択すると、そのプールのコスト分析が表示されます。 次のスクリーンショットは、データの例を示しています。
+   :::image type="content" source="media/batch-budget/user-subscription-pool.png" alt-text="Azure portal でのユーザー サブスクリプション Batch プールのコスト分析を示すスクリーンショット。":::
+
+ユーザー サブスクリプション Batch アカウントのすべてのプールのコスト データを表示する場合は、2 番目のドロップダウンで **batchaccountname** を選択し、3 番目のドロップダウンで Batch アカウントの名前を選択できることに注意してください。 
+
+> [!NOTE]
+> ユーザー サブスクリプション Batch アカウントで作成されたプールは、 **[リソース]** フィルターの下に表示されませんが、サービス名で "仮想マシン" をフィルター処理すると、それらの使用量は引き続き表示されます。
+
 ### <a name="create-a-budget-for-a-batch-pool"></a>Batch プールの予算を作成する
+
+予算を作成し、60%、80%、100% など、予算のさまざまな割合に達したときに、コスト アラートを発行することができます。 予算では、1 つ以上のフィルターを指定できるため、Batch アカウントのコストを監視し、さまざまな粒度でアラートを発行できます。
 
 1. **[コスト分析]** ページで、 **[Budget: none]\(予算: なし\)** を選択します。
 1. **[新しい予算の作成 >]** を選択します。
@@ -74,19 +107,43 @@ Azure portal で、Batch プールまたは Batch アカウントの予算と支
 
 シナリオによっては、可能な限りコストを削減することが必要になる場合があります。 ワークロードの効率を最大化し、潜在的なコストを削減するには、これらの 1 つ以上の戦略の使用を検討してください。
 
+### <a name="reduce-pool-node-use"></a>プール ノードの使用量を削減する
+
+Batch の使用に関連する最大のコストは、通常、プール ノードに割り当てられた仮想マシンのコストです。 仮想マシン構成プールの場合、VM の OS ディスクに使用される関連のマネージド ディスクも、コストに大きく影響する可能性があります。
+
+Batch アプリケーションを評価して、プール ノードがジョブ タスクによって十分に利用されているかどうか、またはプール ノードが予想時間より長くアイドル状態になっていないかどうかを確認します。 割り当てられるプール ノードの数を削減する、プール ノードのスケールアップ率を下げる、またはスケール ダウン率を上げることにより、使用率を向上できる場合があります。
+
+カスタム監視に加えて、[Batch メトリック](batch-diagnostics.md#view-batch-metrics)は、割り当てられているがアイドル状態のノードを特定するのに役立ちます。 Azure portal の Batch 監視メトリックを使用して、表示するほとんどのプール ノードの状態のメトリックを選択できます。 たとえば、'アイドル ノード数' と '実行中ノード数' を表示して、プール ノードがどの程度使用されているかを示すことができます。
+
+### <a name="ensure-pool-nodes-are-able-to-run-tasks"></a>プール ノードがタスクを実行できることを確認する
+
+プール用として一覧表示されている割り当て済みノードには通常コストがかかりますが、プール ノードが、タスクを実行できない状態 ('unusable' や 'starttaskfailed' など) になる可能性があります。 Batch API またはメトリックを使用して、VM のこのカテゴリを監視し、検出することができます。 次に、これらの状態の理由を特定し、これらの異常なノードを削減または排除するための是正措置を講じることができます。
+
+### <a name="use-the-right-pool-node-vm-size"></a>適切なプール ノード VM サイズを使用する
+
+適切な VM サイズが使用されていることを確認します。これにより、タスクを実行するときに VM が十分に利用され、必要な時間内にジョブ タスクを完了するために必要なパフォーマンスが提供されます。 プール ノード VM は、CPU 使用率が低いなど、状況によっては十分に活用されていない可能性があります。 低価格の VM サイズを選択することで、コストを節約できます。
+
+VM の使用率を確認するには、タスクの実行時にノードにログインして、パフォーマンス データを表示するか、Application Insights などの[監視機能](monitoring-overview.md)を使用して、プール ノードからパフォーマンス データを取得できます。
+
+### <a name="use-pool-slots-to-reduce-node-requirements"></a>プール スロットを使用してノード要件を低減させる
+
+複数のタスク スロットをプールに指定できるため、対応する数のタスクを各ノードで並行して実行できます。 プール タスク スロットを使用すると、より大きな VM サイズを選択し、ノード上で複数のタスクを並行して実行し、ノードが十分に利用されるようにすることにより、プールで使用されるノードの数を減らすことができます。 ノードが十分に利用されていない場合は、スロットを使用して使用率を向上することができます。 たとえば、シングルスレッド タスク アプリケーションの場合、1 つのコアあたり 1 つのスロットを構成できます。 また、コア数より多いスロット数を構成することもできます。 たとえば、これは、アプリケーションで、外部サービスへの呼び出しが返されるのを長時間待機するのをブロックする場合に適用できます。
+
+[`taskSchedulingPolicy`](/rest/api/batchservice/pool/add#taskschedulingpolicy) を `pack` に設定すると、VM が可能な限り利用され、スケーリングが容易になり、タスクを実行していないノードを削除できるようになります。
+
 ### <a name="use-low-priority-virtual-machines"></a>優先順位の低い仮想マシンを使用する
 
-[優先順位の低い VM](batch-low-pri-vms.md) を使用すると、Azure の余剰コンピューティング容量が利用されるので、Batch ワークロードのコストが削減されます。 プールで優先順位の低い VM を指定すると、Batch ではこの余剰を使用してワークロードが実行されます。 専用 VM の代わりに優先順位の低い VM を使用すると、コストを大幅に節約できます。
+[優先順位の低い VM](batch-low-pri-vms.md) を使用すると、Azure の余剰コンピューティング容量が利用されるので、Batch ワークロードのコストが削減されます。 プールで優先順位の低い VM を指定すると、Batch ではこの余剰を使用してワークロードが実行されます。 専用 VM の代わりに優先順位の低い VM を使用すると、コストを大幅に節約できます。 優先度の低い VM は、割り当て可能な容量がないか、割り込まれる可能性があるため、必ずしもすべてのワークロードに適しているわけではないことに注意してください。
 
-### <a name="select-a-standard-virtual-machine-os-disk-type"></a>Standard の仮想マシン OS ディスクの種類を選択する
+### <a name="use-ephemeral-os-disks"></a>エフェメラル OS ディスクを使用する
 
-Azure には、[VM OS ディスクの種類](../virtual-machines/disks-types.md)が複数用意されています。 ほとんどの VM シリーズには、Premium ストレージと Standard ストレージの両方をサポートするサイズがあります。 プールに VM サイズとして 's' が選択されている場合、Batch では Premium SSD OS ディスクが構成されます。 's 以外' の VM サイズを選択すると、より低コストの Standard HDD ディスクの種類が使用されます。 たとえば、Premium SSD OS ディスクは `Standard_D2s_v3` に使用され、Standard HDD OS ディスクは `Standard_D2_v3` に使用されます。
-
-Premium SSD OS ディスクはより高価ですが、高いパフォーマンスが得られます。 Premium ディスクを使用する VM は、Standard HDD OS ディスクを使用する VM よりも多少速く起動できます。 アプリケーションとタスク ファイルは VM の一時 SSD ディスク上にあるため、Batch では、多くの場合、OS ディスクはそれほど頻繁に使用されません。 このため、多くの場合、's 以外' の VM サイズを選択して、's' の VM サイズを指定したときにプロビジョニングされる Premium SSD の増加コストの支払を回避することができます。
+プール ノードでは、既定により、コストが発生するマネージド ディスクが使用されます。 仮想マシンの構成プールの一部の VM サイズでは、[エフェメラル OS ディスク](create-pool-ephemeral-os-disk.md)を使用して、VM のキャッシュまたは一時的な SSD に OS ディスクを作成することで、マネージド ディスクに関連する余分なコストを回避できます。
 
 ### <a name="purchase-reservations-for-virtual-machine-instances"></a>仮想マシン インスタンスの予約を購入する
 
-長期間 Batch を使用する予定であれば、ワークロードに [Azure の予約](../cost-management-billing/reservations/save-compute-costs-reservations.md)を使用することで VM のコストを削減できます。 予約料金は、従量課金制の料金よりもかなり低価です。 予約なしで使用された仮想マシン インスタンスは、従量課金制で料金が発生します。 予約を購入すると、予約割引が適用されます。
+長期間 Batch を使用する予定であれば、ワークロードに [Azure の予約](../cost-management-billing/reservations/save-compute-costs-reservations.md)を使用することで VM のコストを削減できます。 予約料金は、従量課金制の料金よりもかなり低価です。 予約なしで使用された仮想マシン インスタンスは、従量課金制で料金が発生します。 予約を購入すると、予約割引が適用されます。 [VM インスタンス](../virtual-machines/prepay-reserved-vm-instances.md)の 1 年または 3 年のプランにコミットすることにより、[Batch プールを介して使用される VM](../virtual-machines/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy) などの VM 使用量に大幅な割引が適用されます。
+
+予約割引は "利用しなければ失われる" ことに注意してください。  一致するリソースが 1 時間使用されていない場合、その時間の予約数量は失われます。 未使用の予約時間は繰り越すことができないため、使用しなければ失われます。 多くの場合、Batch ワークロードでは、負荷に応じて割り当てられた VM の数がスケーリングされ、負荷がない期間を含め、さまざまな負荷があります。 したがって、Batch VM が予約数量を下回ってスケールダウンされた場合、予約時間が失われるため、予約金額の決定には注意が必要です。
 
 ### <a name="use-automatic-scaling"></a>自動スケーリングを使用する
 
@@ -94,5 +151,5 @@ Premium SSD OS ディスクはより高価ですが、高いパフォーマン�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Cost Management および Billing](../cost-management-billing/cost-management-billing-overview.md) の詳細について確認します。
+- [Azure Cost Management and Billing](../cost-management-billing/cost-management-billing-overview.md) の詳細について確認します。
 - [Batch での優先順位の低い VM の使用](batch-low-pri-vms.md)について確認します。

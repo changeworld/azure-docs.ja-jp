@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 53f09dd042543ebc433e9d9cbbd65db332e8fb6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62dfd9c8635dd3dff3d1fd065ead2293612d6f98
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518213"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251435"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell スクリプトの例
 
@@ -26,7 +26,7 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 > また、サービスと対話するための [ARRT と呼ばれる UI ベースのツール](azure-remote-rendering-asset-tool.md)もあります。これは、スクリプトの使用に代わる便利な方法です。 ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT のスクリーンショット")
 
 > [!CAUTION]
-> REST API 関数を頻繁に呼び出すと、サーバーが調整され、最終的にエラーが返されます。 この場合の http エラーコード ID は 429 ("要求が多すぎます") です。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
+> REST API 関数を頻繁に呼び出すと、サーバーが調整され、最終的にエラーが返されます。 この場合の HTTP エラーコード ID は 429 ("要求が多すぎます") です。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
 
 ## <a name="prerequisites"></a>前提条件
 

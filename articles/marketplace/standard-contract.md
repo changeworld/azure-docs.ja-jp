@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 05/20/2020
-ms.openlocfilehash: 20a257bde6022249fd7b2ab875b94f356234b490
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/26/2021
+ms.openlocfilehash: 4313a9a6478c38ccb6611ea7c0008bd7fa9ebcbf
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94488878"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848251"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの標準契約
 
@@ -22,6 +22,9 @@ Microsoft では、Microsoft コマーシャル マーケットプレースの�
 
 >[!Note]
 >Microsoft 商業マーケットプレースの標準契約を使用してオファーを発行した後は、独自のカスタムの使用条件を使用することができなくなります。 ソリューションは、標準契約 *または* 独自の使用条件のどちらかの下で提供されます。 カスタムの使用条件は、オファー レベルで定義され、すべてのプランに適用されます。パートナー センターで、プランの **[プロパティ]** ページにカスタムの使用条件を書き込みます。 標準契約の使用条件を変更したい場合は、Standard Contract Amendments (標準契約の修正) を使用して行うことができます。
+
+> [!TIP]
+> Azure Marketplace での法的契約の顧客のビューを確認するには、「[法的契約](/marketplace/legal-contracts)」を参照してください。
 
 ## <a name="standard-contract-amendments"></a>Standard Contract Amendments (標準契約の修正)
 
@@ -36,7 +39,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 >[!Note]
 >これらの 2 種類の修正は、互いに重なり合っています。 カスタム修正の対象となるお客様には、購入中に標準契約へのユニバーサル修正も示されます。 修正は、スペースを含め 4000 文字までに制限されています。
 
-Microsoft 商業マーケットプレースの標準契約は、次のオファーの種類に対して利用できます。Azure アプリケーション (ソリューション テンプレートとマネージド アプリケーション)、仮想マシン、および SaaS。
+次のオファーの種類には、Microsoft 商業マーケットプレースの標準契約を利用できます: Azure アプリケーション (ソリューション テンプレートとマネージド アプリケーション)、Azure コンテナー、コンテナー アプリ、Virtual Machines、および SaaS。
 
 ## <a name="customer-experience"></a>カスタマー エクスペリエンス
 

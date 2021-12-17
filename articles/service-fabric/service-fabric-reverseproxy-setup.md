@@ -4,12 +4,12 @@ description: Azure Service Fabric アプリケーションのリバース プロ
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78ea7b0ec33fe56ca7a3032f98ad272ce622dc2c
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86256347"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113094041"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric でリバース プロキシを設定して構成する
 オプションの Azure Service Fabric サービスであるリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントのある他のサービスを検出してそのサービスと通信するのに役立ちます。 詳しくは、「[Azure Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)」をご覧ください。 この記事では、クラスターでリバース プロキシを設定して構成する方法を示します。 
@@ -41,7 +41,7 @@ Azure クラスター用のセキュリティ保護されたリバース プロ�
 
 Resource Manager テンプレートを用意した後、次の手順でリバース プロキシを有効にできます。
 
-1. テンプレートの [Parameters セクション](../azure-resource-manager/templates/template-syntax.md) で、リバース プロキシのポートを定義します。
+1. テンプレートの [Parameters セクション](../azure-resource-manager/templates/syntax.md) で、リバース プロキシのポートを定義します。
 
     ```json
     "SFReverseProxyPort": {
@@ -52,7 +52,7 @@ Resource Manager テンプレートを用意した後、次の手順でリバー
         }
     },
     ```
-2. [**Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) の [リソースの種類セクション](../azure-resource-manager/templates/template-syntax.md)で、nodeType オブジェクトごとにポートを指定します。
+2. [**Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) の [リソースの種類セクション](../azure-resource-manager/templates/syntax.md)で、nodeType オブジェクトごとにポートを指定します。
 
     ポートは、reverseProxyEndpointPort というパラメーター名で識別されます。
 
@@ -74,7 +74,7 @@ Resource Manager テンプレートを用意した後、次の手順でリバー
         ...
     }
     ```
-3. リバース プロキシのポートで TLS/SSL 証明書を構成するには、_ *Microsoft.ServiceFabric/clusters** の [リソースの種類のセクション](../azure-resource-manager/templates/template-syntax.md)で ***reverseProxyCertificate** _ プロパティに証明書を追加します。
+3. リバース プロキシのポートで TLS/SSL 証明書を構成するには、_ *Microsoft.ServiceFabric/clusters** [resource](/azure/templates/microsoft.servicefabric/clusters?tabs=json#clusterproperties-object) テンプレートの ***reverseProxyCertificate** _ オブジェクトに証明書を追加します。
 
     ```json
     {
@@ -97,8 +97,10 @@ Resource Manager テンプレートを用意した後、次の手順でリバー
     }
     ```
 
+    また、クラスター リソース テンプレートの **reverseProxyCertificateCommonNames** オブジェクトを使用して、[リバース プロキシ証明書の共通名](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample)を指定することもできます。
+
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>クラスター証明書とは異なるリバース プロキシ証明書のサポート
- リバース プロキシ証明書が、クラスターをセキュリティで保護する証明書とは異なる場合、前に指定した証明書を仮想マシンにインストールし、Service Fabric がアクセスできるようにアクセス制御リスト (ACL) に追加する必要があります。 これは、[**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets) の [リソースの種類セクション](../azure-resource-manager/templates/template-syntax.md)で実行できます。 インストールで、証明書を osProfile に追加します。 テンプレートの extensions セクションで、ACL 内の証明書を更新できます。
+ リバース プロキシ証明書が、クラスターをセキュリティで保護する証明書とは異なる場合、前に指定した証明書を仮想マシンにインストールし、Service Fabric がアクセスできるようにアクセス制御リスト (ACL) に追加する必要があります。 これは、[**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets) の [リソースの種類セクション](../azure-resource-manager/templates/syntax.md)で実行できます。 インストールで、証明書を osProfile に追加します。 テンプレートの extensions セクションで、ACL 内の証明書を更新できます。
 
   ```json
   {
@@ -252,7 +254,7 @@ Azure クラスターの外部からリバース プロキシのアドレス指�
 
 ### <a name="expose-the-reverse-proxy-via-resource-manager-templates"></a>Resource Manager テンプレートを使用してリバース プロキシを公開する
 
-次の JSON では、「[Azure Resource Manager テンプレートでリバース プロキシを有効にする](#enable-reverse-proxy-via-azure-resource-manager-templates)」で使われているものと同じテンプレートを参照します。 Resource Manager テンプレートを作成する方法または既存のクラスターのテンプレートをエクスポートする方法については、そちらのセクションをご覧ください。  [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers) の [リソースの種類セクション](../azure-resource-manager/templates/template-syntax.md)を変更します。
+次の JSON では、「[Azure Resource Manager テンプレートでリバース プロキシを有効にする](#enable-reverse-proxy-via-azure-resource-manager-templates)」で使われているものと同じテンプレートを参照します。 Resource Manager テンプレートを作成する方法または既存のクラスターのテンプレートをエクスポートする方法については、そちらのセクションをご覧ください。  [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers) の [リソースの種類セクション](../azure-resource-manager/templates/syntax.md)を変更します。
 
 ```json
 {

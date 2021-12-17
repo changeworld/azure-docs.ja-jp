@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 06/24/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 373cebee4e7f95062791d8bc68bfee7d845e1465
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34d0a6c4940032bc1957c787e05722586c792417
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104725463"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814389"
 ---
 # <a name="azure-ad-connect-single-object-sync"></a>Azure AD Connect 単一オブジェクト同期 
 
@@ -43,7 +43,7 @@ Azure AD Connect 単一オブジェクト同期ツールは、個々のオブジ
  9. Active Directory コネクタ スペースからオブジェクトを同期します。 
  10. Azure Active Directory コネクタ スペースから Azure Active Directory にオブジェクトをエクスポートします。 
 
-このツールでは、JSON 出力に加えて、同期操作のすべての詳細を含む HTML レポートが生成されます。 HTML レポートは **C:\ProgramData\AADConnect\ADSyncObjectDiagnostics\ ADSyncSingleObjectSyncResult-<date>.htm** にあります。 この HTML レポートを必要に応じてサポート チームと共有し、さらなるトラブルシューティングを行うこともできます。 
+このツールでは、JSON 出力に加えて、同期操作のすべての詳細を含む HTML レポートが生成されます。 HTML レポートは **C:\ProgramData\AADConnect\ADSyncObjectDiagnostics\ ADSyncSingleObjectSyncResult-\<date\>.htm** にあります。 この HTML レポートを必要に応じてサポート チームと共有し、さらなるトラブルシューティングを行うこともできます。 
 
 HTML レポートには、次のものがあります。 
 
@@ -56,7 +56,9 @@ HTML レポートには、次のものがあります。
 
 ## <a name="prerequisites"></a>前提条件 
 
-単一オブジェクト同期ツールを使用するには、2021 年 3 月の Azure AD Connect 以降のリリースを使用する必要があります。 
+単一オブジェクト同期ツールを使用するには、次を使用する必要があります。  
+ - Azure AD Connect の 2021 年 3 月 ([1.6.4.0](reference-connect-version-history.md#1640)) 以降のリリース。
+ -  [PowerShell 5.0](/powershell/scripting/windows-powershell/whats-new/what-s-new-in-windows-powershell-50)
 
 ### <a name="run-the-single-object-sync-tool"></a>単一オブジェクト同期ツールを実行する 
 
@@ -64,7 +66,7 @@ HTML レポートには、次のものがあります。
 
  1. [管理者として実行] オプションを指定して、Azure AD Connect サーバーで新しい Windows PowerShell セッションを開きます。 
 
- 2. [実行ポリシー](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy)を RemoteSigned または Unrestricted に設定します。 
+ 2. [実行ポリシー](/powershell/module/microsoft.powershell.security/set-executionpolicy)を RemoteSigned または Unrestricted に設定します。 
 
  3. 同期操作が実行されていないことを確認した後、同期スケジューラを無効にします。 
 
@@ -95,4 +97,4 @@ HTML レポートには、次のものがあります。
 ## <a name="next-steps"></a>次のステップ
 - [オブジェクトの同期に関するトラブルシューティング](tshoot-connect-objectsync.md)
 - [同期されないオブジェクトに関するトラブルシューティング](tshoot-connect-object-not-syncing.md)
-- [Azure AD Connect オブジェクトおよび属性のエンドツーエンド トラブルシューティング](https://docs.microsoft.com/troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes)
+- [Azure AD Connect オブジェクトおよび属性のエンドツーエンド トラブルシューティング](/troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes)

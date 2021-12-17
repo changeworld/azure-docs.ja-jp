@@ -2,17 +2,18 @@
 title: Azure-SSIS 統合ランタイムのライセンス付きコンポーネントのインストール
 description: ISV が Azure SSIS 統合ランタイムの有料 (ライセンスあり) コンポーネントをどのようにして開発し、インストールできるかを学習します
 ms.service: data-factory
+ms.subservice: integration-services
 author: swinarko
 ms.author: sawinark
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: fd62822e111346ee9a81a5d1bcce55191b19da02
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/22/2021
+ms.openlocfilehash: 30608b15b71160b2fe3ad7a89ed3ef6328d6259a
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386290"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843710"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムの有料 (ライセンスあり) カスタム コンポーネントをインストールする
 
@@ -34,9 +35,9 @@ Azure SSIS 統合ランタイムは、その性質上、いくつかの難題を
 
 次の図は、これらの新しい変数を使用するサードパーティ コンポーネントの一般的なインストール、ライセンス認証、ライセンス バインディング、検証のフローを示したものです。
 
-![ライセンス コンポーネントのインストール](media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png)
+:::image type="content" source="media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png" alt-text="ライセンス コンポーネントのインストール":::
 
-## <a name="instructions"></a>手順
+## <a name="instructions"></a>Instructions
 1. ISV はさまざまな SKU または階層でライセンス コンポーネントを提供できます (シングル ノード、最大 5 個のノード、最大 10 個のノードなど)。 ISV は、顧客が製品を購入したときにプロダクト キーを提供します。 ISV は、ISV セットアップ スクリプトと関連ファイルが含まれる Azure Storage BLOB コンテナーも提供します。 顧客はこれらのファイルを自分のストレージ コンテナーに複製し、自分のプロダクト キーで変更できます (たとえば、`IsvSetup.exe -pid xxxx-xxxx-xxxx` を実行します)。 顧客は次に、自分のコンテナーの SAS URI をパラメーターとして Azure SSIS IR をプロビジョニングしたり、再構成したりできます。 詳細については、「[Custom setup for the Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)」(Azure-SSIS 統合ランタイムのカスタム設定) を参照してください。
 
 2. Azure SSIS IR がプロビジョニングまたは再構成されると、ISV セットアップが各ノードで実行され、Windows 環境変数の `SSIS_CLUSTERID` と `SSIS_CLUSTERNODECOUNT` にクエリを実行します。 次に、Azure SSIS IR はそのクラスター ID とライセンス製品のプロダクト キーを ISV ライセンス認証サーバーに送信し、ライセンス認証キーを生成します。

@@ -2,21 +2,21 @@
 title: 接続性のトラブルシューティング
 description: 専用 SQL プール (旧称 SQL DW) の接続のトラブルシューティング。
 services: synapse-analytics
-author: anumjs
+author: rothja
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/27/2019
-ms.author: anjangsh
+ms.author: jroth
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: 8b23a3634b34277b732d4ba18bef7e71c783ebd5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 923000d0a0579df2bcdcd82e7c4ad3bf13a1213e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98681188"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441832"
 ---
 # <a name="troubleshooting-connectivity-issues-in-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (旧称 SQL DW) の接続に関する問題のトラブルシューティング
 

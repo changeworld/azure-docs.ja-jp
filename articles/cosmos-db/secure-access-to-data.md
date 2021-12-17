@@ -6,14 +6,14 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/11/2021
+ms.date: 08/30/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8a16ecd2ee6ed939b2afd0e51e9cf531e419c8af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10c914847da1f466ae88ea4ec7ffe269560c8e5d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101656399"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671091"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,34 +24,65 @@ Azure Cosmos DB には、データへのアクセスを制御する方法が 3 �
 
 | アクセス制御の種類 | 特性 |
 |---|---|
-| [主キー](#primary-keys) | 任意の管理操作またはデータ操作を行うことができる共有シークレット。 読み取り/書き込みと読み取り専用の両方の種類があります。 |
-| [ロールベースのアクセス制御](#rbac) (プレビュー) | 認証に Azure Active Directory (AAD) の ID を使用する、きめ細かいロールベースのアクセス許可モデル。 |
+| [主/セカンダリ キー](#primary-keys) | 任意の管理操作またはデータ操作を行うことができる共有シークレット。 読み取り/書き込みと読み取り専用の両方の種類があります。 |
+| [役割ベースのアクセス制御](#rbac) | 認証に Azure Active Directory (AAD) の ID を使用する、きめ細かいロールベースのアクセス許可モデル。 |
 | [リソース トークン](#resource-tokens)| ネイティブな Azure Cosmos DB のユーザーとアクセス許可に基づく、きめ細かいアクセス許可モデル。 |
 
-## <a name="primary-keys"></a><a id="primary-keys"></a> 主キー
+## <a name="primarysecondary-keys"></a><a id="primary-keys"></a> 主/セカンダリ キー
 
-主キーは、データベース アカウントのすべての管理リソースへのアクセスを提供します。 各アカウントは、主キーとセカンダリ キーという 2 つの主キーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにすることです。 主キーの詳細については、[データベース セキュリティ](database-security.md#primary-keys)に関する記事を参照してください。
+主/セカンダリ キーにより、データベース アカウントのすべての管理リソースへのアクセスが提供されます。 各アカウントは、主キーとセカンダリ キーという 2 つのキーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにすることです。 主/セカンダリ キーの詳細については、[データベース セキュリティ](database-security.md#primary-keys)に関する記事を参照してください。
 
-### <a name="key-rotation"></a><a id="key-rotation"></a> キーのローテーション
+### <a name="key-rotation-and-regeneration"></a><a id="key-rotation"></a> キーのローテーションと再生成
 
-主キーのローテーション プロセスは単純です。 
+> [!NOTE]
+> 次のセクションでは、SQL API のキーをローテーションする手順と再生成する手順について説明します。 別の API を使用している場合は、[Mongo DB 向け Azure Cosmos DB API](database-security.md?tabs=mongo-api#key-rotation)、[Cassandra API](database-security.md?tabs=cassandra-api#key-rotation)、[Gremlin API](database-security.md?tabs=gremlin-api#key-rotation)、または[Table API](database-security.md?tabs=table-api#key-rotation) のセクションを参照してください。
+>
+> キーの更新とキーの再生成についてアカウントを監視するには、[メトリックとアラートを使用したキーの更新の監視](monitor-account-key-updates.md)に関する記事を参照してください。
 
-1. Azure portal に移動してセカンダリ キーを取得します。
-2. アプリケーションで、プライマリ キーをセカンダリ キーに置き換えます。 全デプロイにわたるすべての Cosmos DB クライアントが直ちに再起動され、更新されたキーの使用が開始されることを確認します。
-3. Azure portal でプライマリ キーをローテーションします。
-4. 新しいプライマリ キーがすべてのリソースに対して動作することを検証します。 キーのローテーション プロセスには、Cosmos DB アカウントのサイズに応じて、1 分未満から数時間かかる場合があります。
-5. セカンダリ キーを新しいプライマリ キーに置き換えます。
+キーのローテーションと再生成のプロセスは単純です。 まず、Azure Cosmos DB アカウントにアクセスするために、**アプリケーションが主キーかセカンダリ キーのどちらかを一貫して使用している** ことを確認します。 次に、以下に示す手順に従います。
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure portal での主キーのローテーション - NoSQL データベースのセキュリティのデモ" border="false":::
+# <a name="if-your-application-is-currently-using-the-primary-key"></a>[アプリケーションで主キーが現在使用されている場合](#tab/using-primary-key)
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[キー]** を選択し、セカンダリ キーの右側にある省略記号から **[セカンダリ キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="セカンダリ キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
+
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
+
+1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
+
+1. Azure portal に戻り、主キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="主キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
+
+# <a name="if-your-application-is-currently-using-the-secondary-key"></a>[アプリケーションでセカンダリ キーが現在使用されている場合](#tab/using-secondary-key)
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[キー]** を選択し、主キーの右側にある省略記号から **[主キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="主キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
+
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
+
+1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
+
+1. Azure portal に戻り、セカンダリ キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="セカンダリ キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
+
+---
 
 ### <a name="code-sample-to-use-a-primary-key"></a>主キーを使用するコード サンプル
 
-次のコード サンプルは、Cosmos DB アカウントのエンドポイントと主キーを使用して、DocumentClient のインスタンス化とデータベースの作成を行う方法を示したものです。
+次のコード サンプルで、Cosmos DB アカウントのエンドポイントと主キーを使用して CosmosClient のインスタンスを作成する方法を示します。
 
 ```csharp
-//Read the Azure Cosmos DB endpointUrl and authorization keys from config.
-//These values are available from the Azure portal on the Azure Cosmos DB account blade under "Keys".
-//Keep these values in a safe and secure location. Together they provide Administrative access to your Azure Cosmos DB account.
+// Read the Azure Cosmos DB endpointUrl and authorization keys from config.
+// These values are available from the Azure portal on the Azure Cosmos DB account blade under "Keys".
+// Keep these values in a safe and secure location. Together they provide Administrative access to your Azure Cosmos DB account.
 
 private static readonly string endpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
 private static readonly string authorizationKey = ConfigurationManager.AppSettings["AuthorizationKey"];
@@ -59,11 +90,7 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
 
-次のコード サンプルは、Azure Cosmos DB アカウントのエンドポイントと主キーを使用して、`CosmosClient` オブジェクトのインスタンス化を行う方法を示したものです。
-
-:::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
-
-## <a name="role-based-access-control-preview"></a><a id="rbac"></a> ロールベースのアクセス制御 (プレビュー)
+## <a name="role-based-access-control"></a><a id="rbac"></a> ロールベースのアクセス制御
 
 Azure Cosmos DB では、次のことを可能にする組み込みのロールベースのアクセス制御 (RBAC) システムを公開しています。
 
@@ -128,7 +155,7 @@ User user = await database.CreateUserAsync("User 1");
 
 ### <a name="permissions"></a>アクセス許可<a id="permissions"></a>
 
-アクセス許可リソースはユーザーに関連付けられ、コンテナーおよびパーティション キー レベルで割り当てられます。 各ユーザーには、0 個以上のアクセス許可を含めることができます。 アクセス許可リソースによって、ユーザーが特定のパーティション キー内の特定のコンテナーまたはデータにアクセスするときに必要なセキュリティ トークンへのアクセスが提供されます。 アクセス許可リソースによって提供できるアクセス レベルは 2 つあります。
+アクセス許可リソースは、ユーザーに関連付けられて特定のリソースに割り当てられます。 各ユーザーには、0 個以上のアクセス許可を含めることができます。 アクセス許可リソースによって、ユーザーが特定のパーティション キー内の特定のコンテナーまたはデータにアクセスするときに必要なセキュリティ トークンへのアクセスが提供されます。 アクセス許可リソースによって提供できるアクセス レベルは 2 つあります。
 
 - All:ユーザーはリソースに対して完全なアクセス許可を持ちます。
 - Read:ユーザーは、リソースの内容の読み取りのみを行えますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
@@ -153,7 +180,7 @@ user.CreatePermissionAsync(
     new PermissionProperties(
         id: "permissionUser1Orders",
         permissionMode: PermissionMode.All,
-        container: benchmark.container,
+        container: container,
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 

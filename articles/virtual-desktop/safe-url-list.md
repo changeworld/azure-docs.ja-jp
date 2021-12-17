@@ -1,28 +1,74 @@
 ---
-title: Windows Virtual Desktop の必要な URL リスト - Azure
-description: Windows Virtual Desktop のデプロイを意図したとおりに機能させるためにブロックを解除する必要がある URL の一覧。
+title: Azure Virtual Desktop の必要な URL リスト - Azure
+description: Azure Virtual Desktop のデプロイを意図したとおりに機能させるためにブロックを解除する必要がある URL の一覧。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c937f9d75613b6550a2f05dd63a8b31dd83fe0b7
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: ea5cd9dffeb8efdeb9dc29fa9d38696973285e47
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445723"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549238"
 ---
 # <a name="required-url-list"></a>必要な URL リスト
 
-Windows Virtual Desktop をデプロイし、使用するには、仮想マシン (VM) で特定の URL にいつでもアクセスできるよう、URL のブロックを解除する必要があります。 この記事では、Windows Virtual Desktop を正しく機能させるためにブロックを解除する必要がある、必要な URL の一覧を示します。 
+Azure Virtual Desktop をデプロイし、使用するには、仮想マシン (VM) で特定の URL にいつでもアクセスできるよう、URL のブロックを解除する必要があります。 この記事では、Azure Virtual Desktop を正しく機能させるためにブロックを解除する必要がある、必要な URL の一覧を示します。 
 
 >[!IMPORTANT]
->Windows Virtual Desktop では、この記事に含まれていない URL をブロックするデプロイはサポートされていません。
+>Azure Virtual Desktop では、この記事に含まれている URL をブロックするデプロイはサポートされていません。
+
+## <a name="required-url-check-tool"></a>必要な URL チェック ツール
+
+必要な URL チェック ツールでは、URL が検証され、仮想マシンが機能するために必要な URL がアクセス可能かどうかが示されます。 そうでない場合は、このツールによって、アクセス不可 URL が一覧表示されるため、必要に応じてそれらのブロックを解除できます。
+
+次の点に注意することが重要です。
+
+- 必要な URL チェック ツールは、商用クラウドでのデプロイにのみ使用できます。
+- 必要な URL チェック ツールでは、ワイルドカードを含む URL をチェックできないため、必ず最初にそれらの URL のブロックを解除してください。
+
+### <a name="requirements"></a>必要条件
+
+必要な URL チェック ツールを使用するには、次のものが必要です。
+
+- VM には .NET 4.6.2 Framework が必要です
+- RDAgent バージョン 1.0.2944.400 以降
+- WVDAgentUrlTool.exe ファイルは、WVDAgentUrlTool.config ファイルと同じフォルダーにある必要があります
+
+### <a name="how-to-use-the-required-url-check-tool"></a>必要な URL チェック ツールの使用方法
+
+必要な URL チェック ツールを使用するには、次のようにします。
+
+1. VM 上で管理者としてコマンド プロンプトを開きます。
+2. 次のコマンドを実行して、ディレクトリを現在のビルド エージェントと同じフォルダーに変更します (この例では RDAgent_1.0.2944.1200)。
+
+    ```console
+    cd C:\Program Files\Microsoft RDInfra\RDAgent_1.0.2944.1200
+    ```
+
+3. 次のコマンドを実行します。
+
+    ```console
+    WVDAgentUrlTool.exe
+    ```
+ 
+4. このファイルを実行すると、アクセス可能とアクセス不可 URL の一覧が表示されます。
+
+    たとえば、次のスクリーンショットは、必要な 2 つの非ワイルドカード URL のブロックを解除する必要があるシナリオを示しています。
+
+    > [!div class="mx-imgBorder"]
+    > ![アクセス不可 URL 出力のスクリーンショット。](media/noaccess.png)
+    
+    必要な非ワイルドカード URL のブロックをすべて解除すると、出力は次のようになります。
+
+    > [!div class="mx-imgBorder"]
+    > ![アクセス可能 URL 出力のスクリーンショット。](media/access.png)
 
 ## <a name="virtual-machines"></a>仮想マシン
 
-Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure コマーシャル クラウドで次の URL に対するアクセスが必要です。
+Azure Virtual Desktop 用に作成する Azure 仮想マシンには、Azure コマーシャル クラウドで次の URL に対するアクセスが必要です。
 
 |Address|アウトバウンド TCP ポート|目的|サービス タグ|
 |---|---|---|---|
@@ -41,15 +87,15 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure �
 | 168.63.129.16 | 80 | [セッション ホストの正常性の監視](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 該当なし |
 
 >[!IMPORTANT]
->Windows Virtual Desktop で FQDN タグがサポートされるようになりました。 詳細については、「[Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護する](../firewall/protect-windows-virtual-desktop.md)」を参照してください。
+>Azure Virtual Desktop で FQDN タグがサポートされるようになりました。 詳細については、「[Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護する](../firewall/protect-azure-virtual-desktop.md)」を参照してください。
 >
->サービスの問題を防ぐために、URL ではなく FQDN タグまたはサービス タグを使用することをお勧めします。 記載した URL とタグは、Windows Virtual Desktop のサイトとリソースにのみ対応します。 他のサービス (Azure Active Directory など) の URL は含まれません。
+>サービスの問題を防ぐために、URL ではなく FQDN タグまたはサービス タグを使用することをお勧めします。 記載した URL とタグは、Azure Virtual Desktop のサイトとリソースにのみ対応します。 他のサービス (Azure Active Directory など) の URL は含まれません。
 
-Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure Government クラウドで次の URL に対するアクセスが必要です。
+Azure Virtual Desktop 用に作成する Azure 仮想マシンには、Azure Government クラウドで次の URL に対するアクセスが必要です。
 
 |Address|アウトバウンド TCP ポート|目的|サービス タグ|
 |---|---|---|---|
-|*.wvd.microsoft.us|443|サービス トラフィック|WindowsVirtualDesktop|
+|*.wvd.azure.us|443|サービス トラフィック|WindowsVirtualDesktop|
 |gcs.monitoring.core.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
 |monitoring.core.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
 |fairfax.warmpath.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
@@ -77,7 +123,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure G
 |*.azure-dns.net|443|Azure DNS 解決|なし|
 
 >[!NOTE]
->現在、Windows Virtual Desktop には、ネットワーク トラフィックを許可するためにブロックを解除できる IP アドレス範囲の一覧がありません。 現時点では、特定の URL のブロック解除のみがサポートされます。
+>現在、Azure Virtual Desktop には、ネットワーク トラフィックを許可するためにブロックを解除できる IP アドレス範囲の一覧がありません。 現時点では、特定の URL のブロック解除のみがサポートされます。
 >
 >Next Generation Firewall (NGFW) を使用している場合、確実に接続できるよう、Azure IP のために特別に作られた動的リストを使用する必要があります。
 >
@@ -85,7 +131,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure G
 >
 >サービス トラフィックに関係した URL にはワイルドカード文字 (*) を使用する必要があります。 エージェント関連のトラフィックに * を使用したくない場合、ワイルドカードを使わずに URL を見つける方法は次のとおりです。
 >
->1. Windows Virtual Desktop ホスト プールに仮想マシンを登録します。
+>1. Azure Virtual Desktop ホスト プールに仮想マシンを登録します。
 >2. **イベント ビューアー** を開き、 **[Windows ログ]**  >  **[アプリケーション]**  >  **[WVD-Agent]** に移動して、イベント ID 3701 を探します。
 >3. イベント ID 3701 に記載されている URL をブロック解除します。 イベント ID 3701 に記載されている URL はリージョン固有です。 仮想マシンのデプロイ先となるリージョンごとに、適切な URL を使用して、ブロック解除プロセスを繰り返す必要があります。
 
@@ -106,4 +152,4 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure G
 >[!IMPORTANT]
 >信頼できるクライアント エクスペリエンスを実現するには、これらの URL を開くことが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。
 >
->これらの URL はクライアントのサイトとリソースにのみ対応します。 この一覧には、他のサービス (Azure Active Directory など) の URL は含まれません。 Azure Active Directory URL は「[Office 365 URL および IP アドレス範囲](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)」の ID 56 にあります。
+>これらの URL はクライアントのサイトとリソースにのみ対応します。 この一覧には、他のサービス (Azure Active Directory など) の URL は含まれません。 Azure Active Directory URL は「[Office 365 URL および IP アドレス範囲](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)」の ID 56、59、および 125 にあります。

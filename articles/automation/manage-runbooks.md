@@ -3,35 +3,41 @@ title: Azure Automation で Runbook を管理する
 description: この記事では、Azure Automation で Runbook を管理する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/24/2021
+ms.date: 11/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7eb576a3d084630ebe6020b57814f12687dc9bd9
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 99f86065b9a33125e3ca4cf72af5b8ec442e3cc0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168622"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455459"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Automation で Runbook を管理する
 
-Azure Automation には、新しい Runbook を作成するか、ファイルまたは [Runbook ギャラリー](automation-runbook-gallery.md)から既存の Runbook をインポートすることによって Runbook を追加することができます。 この記事では、ファイルからインポートした Runbook の管理について取り上げます。 コミュニティによって提供されている Runbook やモジュールの利用について詳しくは、[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)に関するページを参照してください。
+Azure Automation には、新しい Runbook を作成するか、ファイルまたは [Runbook ギャラリー](automation-runbook-gallery.md)から既存の Runbook をインポートすることによって Runbook を追加することができます。 この記事では、Runbook の管理に関する情報と、Runbook の設計に関する推奨パターンとベスト プラクティスについて説明します。 コミュニティによって提供されている Runbook やモジュールの利用について詳しくは、[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)に関するページを参照してください。
 
 ## <a name="create-a-runbook"></a>Runbook を作成する
 
-Azure portal または Windows PowerShell を使用して、Azure Automation に新しい Runbook を作成します。 作成した Runbook は、次の情報を使用して編集できます。
+Azure portal または PowerShell を使用して、Azure Automation に新しい Runbook を作成します。 作成した Runbook は、次の情報を使用して編集できます。
 
 * [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
-* [Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明](automation-powershell-workflow.md)
+* [Automation Runbook 向けの PowerShell ワークフローの基本的な概念の説明](automation-powershell-workflow.md)
 * [Azure Automation で Python 2 パッケージを管理する](python-packages.md)
 * [Azure Automation で Python 3 パッケージ (プレビュー) を管理する](python-3-packages.md)
 
 ### <a name="create-a-runbook-in-the-azure-portal"></a>Azure portal で Runbook を作成する
 
-1. Azure ポータルで、Automation アカウントを開きます。
-2. ハブから、 **[プロセス オートメーション]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
-3. **[Runbook の作成]** をクリックします。
-4. Runbook の名前を入力し、その [[種類]](automation-runbook-types.md) を選択します。 Runbook 名は、先頭を英字にする必要があり、英字、数字、アンダースコア、およびダッシュを使用できます。
-5. **[作成]** をクリックして Runbook を作成し、エディターを開きます。
+1. Azure [Portal](https://portal.azure.com) にサインインします。
+1. **Automation アカウント** を検索して選択します。
+1. **[Automation アカウント]** ページで、一覧からお使いの Automation アカウントを選択します。
+1. Automation アカウントで **[プロセス オートメーション]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
+1. **[Runbook の作成]** をクリックします。
+    1. Runbook に名前を付けます。
+    1. **[Runbook の種類]** ドロップダウンから [種類](automation-runbook-types.md)を選択します。 Runbook 名は、先頭を英字にする必要があり、英字、数字、アンダースコア、ダッシュを使用できます
+    1. **[ランタイム バージョン]** を選択します
+    1. 該当する **[説明]** を入力します
+1. **[作成]** をクリックして、Runbook を作成します。
 
 ### <a name="create-a-runbook-with-powershell"></a>PowerShell で Runbook を作成する
 
@@ -51,11 +57,11 @@ New-AzAutomationRunbook @params
 
 ## <a name="import-a-runbook"></a>Runbook をインポートする
 
-PowerShell または PowerShell ワークフロー ( **.ps1**) スクリプト、グラフィカル Runbook ( **.graphrunbook**)、Python 2 または Python 3 スクリプト ( **.py**) をインポートして独自の Runbook を作成することができます。 以下の点を考慮して、インポート中に作成される [Runbook の種類](automation-runbook-types.md) を指定する必要があります。
+PowerShell または PowerShell ワークフロー ( **.ps1**) スクリプト、グラフィカル Runbook ( **.graphrunbook**)、Python 2 または Python 3 スクリプト ( **.py**) をインポートして独自の Runbook を作成することができます。 インポート時に作成される [Runbook の種類](automation-runbook-types.md)を指定します。その際、次のことを考慮します。
 
 * ワークフローが含まれていない **.ps1** ファイルは、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) のどちらにもインポートすることができます。 それを PowerShell ワークフロー Runbook にインポートすると、ワークフローに変換されます。 この場合、Runbook には、加えられた変更を説明するコメントが追加されます。
 
-* PowerShell ワークフローを含む **.ps1** ファイルは、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) にのみインポートできます。 ファイルに複数の PowerShell ワークフローが含まれている場合、インポートは失敗します。 各ワークフローを専用のファイルに保存し、それぞれを個別にインポートする必要があります。
+* PowerShell ワークフローを含む **.ps1** ファイルは、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) にのみインポートできます。 ファイルに複数の PowerShell ワークフローが含まれている場合、インポートは失敗します。 各ワークフローを個別のファイルに保存し、それぞれを個別にインポートする必要があります。
 
 * PowerShell ワークフローを含む **.ps1** ファイルは PowerShell スクリプト エンジンでは認識できないため、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) にインポートしないでください。
 
@@ -68,19 +74,23 @@ PowerShell または PowerShell ワークフロー ( **.ps1**) スクリプト�
 > [!NOTE]
 > このポータルを使用して PowerShell ワークフロー Runbook にインポートできるのは **.ps1** ファイルだけです。
 
-1. Azure ポータルで、Automation アカウントを開きます。
-2. **[プロセス オートメーション]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
-3. **[Runbook のインポート]** をクリックします。
-4. **[Runbook ファイル]** をクリックし、インポートするファイルを選択します。
-5. **[名前]** フィールドが有効になっている場合は、必要に応じて Runbook 名を変更することができます。 名前は文字で始める必要があり、文字、数字、アンダースコア、およびダッシュを含めることができます。
-6. [Runbook の種類](automation-runbook-types.md) は自動的に選択されますが、適切な制限を考慮して変更することもできます。
-7. **Create** をクリックしてください。 Automation アカウントの Runbook の一覧に新しい Runbook が表示されます。
-8. Runbook を実行するには、先に [Runbook を発行する](#publish-a-runbook) 必要があります。
+1. Azure portal で **[Automation アカウント]** を検索して選択します。
+1. **[Automation アカウント]** ページで、一覧からお使いの Automation アカウントを選択します。
+1. Automation アカウントで **[プロセス オートメーション]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
+1. **[Runbook のインポート]** をクリックします。 次のいずれかのオプションを選択できます。
+    1. **[ファイルの参照]** - ローカル コンピューターからファイルを選択します。
+    1. **[ギャラリーで参照]** - ギャラリーから既存の Runbook を参照して選択できます。
+1. ファイルを選択します。
+1. **[名前]** フィールドが有効になっている場合は、必要に応じて Runbook 名を変更することができます。 名前は文字で始める必要があり、文字、数字、アンダースコア、およびダッシュを含めることができます。
+1. [ **[Runbook の種類]** ](automation-runbook-types.md) は自動的に設定されますが、該当する制限を考慮して種類を変更することもできます。
+1. **[ランタイム バージョン]** は、自動的に設定されるか、またはドロップダウン リストからバージョンを選択します。
+1. **[インポート]** をクリックします。 Automation アカウントの Runbook の一覧に新しい Runbook が表示されます。
+1. 実行する [Runbook は前もって発行しておく](#publish-a-runbook)必要があります。
 
 > [!NOTE]
 > グラフィカル Runbook は、インポート後、他の種類に変換することができます。 ただし、グラフィカル Runbook をテキスト形式の Runbook に変換することはできません。
 
-### <a name="import-a-runbook-with-windows-powershell"></a>Windows PowerShell を使用して Runbook をインポートする
+### <a name="import-a-runbook-with-powershell"></a>PowerShell で Runbook をインポートする
 
 Runbook のドラフトとしてスクリプト ファイルをインポートするには、[Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook) コマンドレットを使用します。 Runbook が既に存在する場合、コマンドレットで `Force` パラメーターを使用しないと、インポートは失敗します。
 
@@ -120,15 +130,14 @@ if (-not $vmExists) {
 Runbook を開始したユーザーやアカウントなど、Runbook に関する詳細を、Automation アカウントの[アクティビティ ログ](automation-runbook-execution.md#activity-logging)から取得できます。 次の PowerShell の例では、指定した Runbook を最後に実行したユーザーが提供されます。
 
 ```powershell-interactive
-$SubID = '00000000-0000-0000-0000-000000000000'
-$AutoRgName = 'MyResourceGroup'
-$aaName = 'MyAutomationAccount'
-$RunbookName = 'MyRunbook'
-$StartTime = (Get-Date).AddDays(-1)
+$rgName = 'MyResourceGroup'
+$accountName = 'MyAutomationAccount'
+$runbookName = 'MyRunbook'
+$startTime = (Get-Date).AddDays(-1)
 
 $params = @{
-    ResourceGroupName = $AutoRgName
-    StartTime         = $StartTime
+    ResourceGroupName = $rgName
+    StartTime         = $startTime
 }
 $JobActivityLogs = (Get-AzLog @params).Where( { $_.Authorization.Action -eq 'Microsoft.Automation/automationAccounts/jobs/write' })
 
@@ -137,17 +146,17 @@ foreach ($log in $JobActivityLogs) {
     # Get job resource
     $JobResource = Get-AzResource -ResourceId $log.ResourceId
 
-    if ($null -eq $JobInfo[$log.SubmissionTimestamp] -and $JobResource.Properties.Runbook.Name -eq $RunbookName) {
+    if ($null -eq $JobInfo[$log.SubmissionTimestamp] -and $JobResource.Properties.Runbook.Name -eq $runbookName) {
         # Get runbook
         $jobParams = @{
-            ResourceGroupName     = $AutoRgName
-            AutomationAccountName = $aaName
+            ResourceGroupName     = $rgName
+            AutomationAccountName = $accountName
             Id                    = $JobResource.Properties.JobId
         }
-        $Runbook = Get-AzAutomationJob @jobParams | Where-Object RunbookName -EQ $RunbookName
+        $Runbook = Get-AzAutomationJob @jobParams | Where-Object RunbookName -EQ $runbookName
 
         # Add job information to hashtable
-        $JobInfo.Add($log.SubmissionTimestamp, @($Runbook.RunbookName,$Log.Caller, $JobResource.Properties.jobId))
+        $JobInfo.Add($log.SubmissionTimestamp, @($Runbook.RunbookName, $Log.Caller, $JobResource.Properties.jobId))
     }
 }
 $JobInfo.GetEnumerator() | Sort-Object Key -Descending | Select-Object -First 1
@@ -164,34 +173,44 @@ Runbook の進行状況は、ストレージ アカウント、データベー�
 一部の Runbook は、同時に複数のジョブで実行されると、おかしな動作をすることがあります。 この場合は、既に実行中のジョブがあるかどうかをチェックするロジックを Runbook に実装することが重要です。 基本的な例を次に示します。
 
 ```powershell
-# Authenticate to Azure
-$connection = Get-AutomationConnection -Name AzureRunAsConnection
-$cnParams = @{
-    ServicePrincipal      = $true
-    Tenant                = $connection.TenantId
-    ApplicationId         = $connection.ApplicationId
-    CertificateThumbprint = $connection.CertificateThumbprint
-}
-Connect-AzAccount @cnParams
-$AzureContext = Get-AzSubscription -SubscriptionId $connection.SubscriptionID
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
+
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+    -DefaultProfile $AzureContext
 
 # Check for already running or new runbooks
-$runbookName = "<RunbookName>"
-$rgName = "<ResourceGroupName>"
-$aaName = "<AutomationAccountName>"
-$jobs = Get-AzAutomationJob -ResourceGroupName $rgName -AutomationAccountName $aaName -RunbookName $runbookName -AzContext $AzureContext
+$runbookName = "runbookName"
+$resourceGroupName = "resourceGroupName"
+$automationAccountName = "automationAccountName"
+
+$jobs = Get-AzAutomationJob -ResourceGroupName $resourceGroupName `
+    -AutomationAccountName $automationAccountName `
+    -RunbookName $runbookName `
+    -DefaultProfile $AzureContext
 
 # Check to see if it is already running
 $runningCount = ($jobs.Where( { $_.Status -eq 'Running' })).count
 
 if (($jobs.Status -contains 'Running' -and $runningCount -gt 1 ) -or ($jobs.Status -eq 'New')) {
     # Exit code
-    Write-Output "Runbook [$runbookName] is already running"
+    Write-Output "Runbook $runbookName is already running"
     exit 1
 } else {
     # Insert Your code here
+    Write-Output "Runbook $runbookName is not running"
 }
 ```
+
+Runbook をシステム割り当てマネージド ID で実行する場合は、コードをそのままにしておきます。 ユーザー割り当てマネージド ID を使用する場合は、次のようにします。
+
+1. 行 5 から `$AzureContext = (Connect-AzAccount -Identity).context` を削除します。
+1. それを `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` に置き換えた後、
+1. クライアント ID を入力します。
 
 ## <a name="handle-transient-errors-in-a-time-dependent-script"></a>時間に依存するスクリプトの一時的なエラーを処理する
 
@@ -204,32 +223,37 @@ Runbook が時間制約内で普通に実行される場合は、スクリプト
 
 ## <a name="work-with-multiple-subscriptions"></a>複数のサブスクリプションの操作
 
-Runbook は、[サブスクリプション](automation-runbook-execution.md#subscriptions)を操作できることが必要です。 たとえば、複数のサブスクリプションを処理するために、Runbook には [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave) コマンドレットが使用されます。 このコマンドレットを使用するのは、同じサンドボックスで実行されている別の Runbook から認証コンテキストが取得されないようにするためです。 また、Runbook は `Get-AzContext` コマンドレットを使用して現在のセッションのコンテキストを取得し、変数 `$AzureContext` に割り当てます。
+Runbook は、[サブスクリプション](automation-runbook-execution.md#subscriptions)を操作できることが必要です。 たとえば、複数のサブスクリプションを処理するために、Runbook には [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave) コマンドレットが使用されます。 このコマンドレットを使用するのは、同じサンドボックスで実行されている別の Runbook から認証コンテキストが取得されないようにするためです。 
 
 ```powershell
+# Ensures you do not inherit an AzContext in your runbook
 Disable-AzContextAutosave -Scope Process
 
-$connection = Get-AutomationConnection -Name AzureRunAsConnection
-$cnParams = @{
-    ServicePrincipal      = $true
-    Tenant                = $connection.TenantId
-    ApplicationId         = $connection.ApplicationId
-    CertificateThumbprint = $connection.CertificateThumbprint
-}
-Connect-AzAccount @cnParams
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
 
-$ChildRunbookName = 'ChildRunbookDemo'
-$aaName = 'MyAutomationAccount'
-$rgName = 'MyResourceGroup'
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+    -DefaultProfile $AzureContext
+
+$childRunbookName = 'childRunbookDemo'
+$resourceGroupName = "resourceGroupName"
+$automationAccountName = "automationAccountName"
 
 $startParams = @{
-    ResourceGroupName     = $rgName
-    AutomationAccountName = $aaName
-    Name                  = $ChildRunbookName
+    ResourceGroupName     = $resourceGroupName
+    AutomationAccountName = $automationAccountName
+    Name                  = $childRunbookName
     DefaultProfile        = $AzureContext
 }
 Start-AzAutomationRunbook @startParams
 ```
+
+Runbook をシステム割り当てマネージド ID で実行する場合は、コードをそのままにしておきます。 ユーザー割り当てマネージド ID を使用する場合は、次のようにします。
+
+1. 行 5 から `$AzureContext = (Connect-AzAccount -Identity).context` を削除します。
+1. それを `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` に置き換えた後、
+1. クライアント ID を入力します。
 
 ## <a name="work-with-a-custom-script"></a>カスタム スクリプトを使用する
 
@@ -238,50 +262,51 @@ Start-AzAutomationRunbook @startParams
 
 カスタム スクリプトを使用するには、次の手順に従います。
 
-1. Automation アカウントを作成して[共同作成者ロール](automation-role-based-access-control.md)を取得します。
-2. その[アカウントを Azure ワークスペースにリンク](../security-center/security-center-enable-data-collection.md)させます。
-3. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)、[Update Management](./update-management/overview.md)、または別の Automation 機能を有効にします。 
-4. Linux マシンを使用している場合、高い権限が必要です。 ログインして[署名のチェックをオフ](automation-linux-hrw-install.md#turn-off-signature-validation)にしてください。
+1. Automation アカウントを作成します。
+2. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) ロールを展開します。
+3. Linux コンピューターでは通常より高い権限が必要です。 サインインして[署名の確認を無効にします](automation-linux-hrw-install.md#turn-off-signature-validation)。
 
 ## <a name="test-a-runbook"></a>Runbook をテストする
 
-Runbook のテスト時には [ドラフト バージョン](#publish-a-runbook) が実行され、そのバージョンで行われるすべてのアクションが完了します。 ジョブ履歴は作成されませんが、[テスト出力] ペインに[出力](automation-runbook-output-and-messages.md#use-the-output-stream)および[警告とエラー](automation-runbook-output-and-messages.md#working-with-message-streams) ストリームが表示されます。 [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) 変数が `Continue` に設定されている場合のみ、[詳細ストリーム](automation-runbook-output-and-messages.md#write-output-to-verbose-stream)に対するメッセージが [出力] ペインに表示されます。
+Runbook のテスト時には [ドラフト バージョン](#publish-a-runbook) が実行され、そのバージョンで行われるすべてのアクションが完了します。 ジョブ履歴は作成されませんが、 **[テスト出力]** ペインに [出力](automation-runbook-output-and-messages.md#use-the-output-stream)および [警告とエラー](automation-runbook-output-and-messages.md#working-with-message-streams)のストリームが表示されます。 [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) 変数が `Continue` に設定されている場合のみ、[詳細ストリーム](automation-runbook-output-and-messages.md#write-output-to-verbose-stream)に対するメッセージが [出力] ペインに表示されます。
 
-ドラフト バージョンの実行中でも、Runbook の実行は通常どおり行われて、環境内のリソースに対するすべてのアクションが実行されます。 このため、Runbook をテストするのは非運用環境のリソースのみにしてください。
+ドラフト バージョンを実行している場合も、Runbook は通常どおり実行され、環境中のリソースに対するすべての操作が実行されます。 このため、Runbook をテストするのは非運用環境のリソースのみにしてください。
 
 [Runbook の各種類](automation-runbook-types.md)をテストする手順はいずれも同じです。 Azure portal のテキスト エディターとグラフィカル エディターではテスト方法に違いはありません。
 
 1. [テキスト エディター](automation-edit-textual-runbook.md)または[グラフィカル エディター](automation-graphical-authoring-intro.md)のどちらかで、ドラフト バージョンの Runbook を開きます。
-1. **[テスト]** をクリックして、テスト ページを開きます。
+1. **[テスト]** をクリックして **[テスト]** ページを開きます。
 1. Runbook にパラメーターがある場合は左ペインに表示され、そこでテストに使用する値を指定することができます。
-1. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) に対してテストを実施する場合は、 **[実行設定]** を **[ハイブリッド worker]** に変更してターゲット グループの名前を選択します。  それ以外の場合は、既定の **[Azure]** をそのまま使用してクラウドでテストを実行します。
+1. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) に対してテストを実施する場合は、 **[実行設定]** を **[ハイブリッド worker]** に変更してターゲット グループの名前を選択します。 それ以外の場合は、既定の **[Azure]** をそのまま使用してクラウドでテストを実行します。
 1. **[開始]** をクリックしてテストを開始します。
-1. [出力] ウィンドウの下にあるボタンを使用すれば、テスト中に、[PowerShell ワークフロー](automation-runbook-types.md#powershell-workflow-runbooks)または[グラフィック](automation-runbook-types.md#graphical-runbooks) Runbook を停止したり中断したりできます。 Runbook は、中断される場合は中断前に現在のアクティビティを完了します。 Runbook を中断した後で、停止または再開できます。
-1. [出力] ウィンドウで Runbook からの出力を確認します。
+1. テスト中の [Powershell Workflow](automation-runbook-types.md#powershell-workflow-runbooks) および [グラフィカル](automation-runbook-types.md#graphical-runbooks) Runbook は、 **[出力]** ペインのボタンで停止および一時停止できます。 Runbook は、中断される場合は中断前に現在のアクティビティを完了します。 Runbook を中断した後で、停止または再開できます。
+1. **[出力]** ペインで Runbook の出力を調べます。
 
 ## <a name="publish-a-runbook"></a>Runbook を発行する
 
-新しい Runbook を作成またはインポートしたときは、実行する前に発行する必要があります。 Azure Automation の各 Runbook には、ドラフト バージョンと発行バージョンがあります。 実行できるのは発行バージョンのみで、編集できるのはドラフト バージョンのみです。 ドラフト バージョンを変更しても発行バージョンに影響はありません。 ドラフト バージョンを使用できるようにする必要がある場合は、それを発行します。これにより、現在発行されているバージョンがドラフト バージョンで上書きされます。
+新しく作成またはインポートした Runbook は、実行する前に発行しておく必要があります。 Azure Automation の各 Runbook には、ドラフト バージョンと発行バージョンがあります。 実行できるのは発行バージョンのみで、編集できるのはドラフト バージョンのみです。 ドラフト バージョンを変更しても発行バージョンに影響はありません。 ドラフト バージョンを使用できるようにする必要がある場合は、それを発行します。これにより、現在発行されているバージョンがドラフト バージョンで上書きされます。
 
 ### <a name="publish-a-runbook-in-the-azure-portal"></a>Azure portal で Runbook を発行する
 
-1. Azure ポータルで Runbook を開きます。
-2. **[編集]** をクリックします。
-3. **[発行]** をクリックしてから、確認メッセージに対して **[はい]** クリックします。
+1. Azure portal で **[Automation アカウント]** を検索して選択します。
+1. **[Automation アカウント]** ページで、一覧からお使いの Automation アカウントを選択します。
+1. お使いの Automation アカウントで Runbook を開きます。
+1. **[編集]** をクリックします。
+1. **[発行]** をクリックしてから、確認メッセージに対して **[はい]** を選択します。
 
 ### <a name="publish-a-runbook-using-powershell"></a>PowerShell を使用して Runbook を発行する
 
 [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook) コマンドレットを使用して Runbook を発行します。 
 
 ```azurepowershell-interactive
-$aaName = "MyAutomationAccount"
-$RunbookName = "Sample_TestRunbook"
+$accountName = "MyAutomationAccount"
+$runbookName = "Sample_TestRunbook"
 $rgName = "MyResourceGroup"
 
 $publishParams = @{
-    AutomationAccountName = $aaName
+    AutomationAccountName = $accountName
     ResourceGroupName     = $rgName
-    Name                  = $RunbookName
+    Name                  = $runbookName
 }
 Publish-AzAutomationRunbook @publishParams
 ```
@@ -290,14 +315,16 @@ Publish-AzAutomationRunbook @publishParams
 
 Runbook が発行済みであるときに、操作のスケジュールを設定できます。
 
-1. Azure ポータルで Runbook を開きます。
-2. **[リソース]** の下の **[スケジュール]** を選択します。
-3. **[スケジュールの追加]** を選択します。
-4. [Runbook のスケジュール] ウィンドウで、 **[スケジュールを Runbook にリンクします]** を選択します。
-5. [スケジュール] ウィンドウで、 **[新しいスケジュールを作成します]** をクリックします。
-6. [新しいスケジュール] ウィンドウで、名前、説明、およびその他のパラメーターを入力します。
-7. スケジュールを作成したら、それを強調表示し、 **[OK]** をクリックします。 これで、Runbook にリンクされるようになります。
-8. メールボックスの電子メールで、Runbook の状態通知を探します。
+1. Azure portal で **[Automation アカウント]** を検索して選択します。
+1. **[Automation アカウント]** ページで、一覧からお使いの Automation アカウントを選択します。
+1. Runbook の一覧から Runbook を選択します。
+1. **[リソース]** の下の **[スケジュール]** を選択します。
+1. **[スケジュールの追加]** を選択します。
+1. **[Runbook のスケジュール設定]** ウィンドウで、 **[スケジュールを Runbook にリンクします]** を選択します。
+1. **[スケジュール]** ウィンドウで、 **[新しいスケジュールを作成します]** を選択します。
+1. **[新しいスケジュール]** ウィンドウで、名前、説明、その他のパラメーターを入力します。
+1. スケジュールを作成したら、それを強調表示し、 **[OK]** をクリックします。 これで、Runbook にリンクされるようになります。
+1. メールボックスの電子メールで、Runbook の状態通知を探します。
 
 ## <a name="obtain-job-statuses"></a>ジョブの状態を取得する
 

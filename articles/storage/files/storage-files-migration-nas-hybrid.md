@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 86e79302716fa502d8562dd563b0a5c5fb220a67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abefaa06cb8d2c0c815d86c6e1386f82e39c52fe
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547555"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462269"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用してネットワーク接続ストレージ (NAS) からハイブリッド クラウド デプロイに移行する
 
@@ -27,6 +27,13 @@ ms.locfileid: "102547555"
 
 Azure File Sync は直接接続記憶域 (DAS) の場所で動作し、ネットワーク接続ストレージ (NAS) の場所への同期をサポートしていません。
 このため、ファイルの移行が必要になります。この記事では、そのような移行の計画と実行について説明します。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="migration-goals"></a>移行の目標
 
@@ -54,7 +61,7 @@ Azure Files の[移行の概要に関する記事](storage-files-migration-overv
 * 仮想マシンまたは物理サーバーとして、Windows Server 2019 (最低でも 2012R2) のサーバーを作成します。 Windows Server フェールオーバー クラスターもサポートされています。
 * 直接接続記憶域 (NAS ではなく DAS、NAS はサポートされていません) をプロビジョニングまたは追加します。
 
-    プロビジョニングするストレージの容量は、お使いの NAS アプライアンスで現在使用している容量より少なくてもかまいません。 この構成を選択する場合、Azure File Sync の[クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)機能も使用する必要があります。
+    プロビジョニングするストレージの容量は、お使いの NAS アプライアンスで現在使用している容量より少なくてもかまいません。 この構成を選択する場合、Azure File Sync の[クラウドを使った階層化](../file-sync/file-sync-cloud-tiering-overview.md)機能も使用する必要があります。
     ただし、後のフェーズで、大きい NAS 領域から小さい Windows Server ボリュームにファイルをコピーする場合は、バッチ処理を行う必要があります。
 
     1. ディスクに収まるファイルのセットを移動します
@@ -65,7 +72,7 @@ Azure Files の[移行の概要に関する記事](storage-files-migration-overv
 
 デプロイする Windows Server のリソース構成 (コンピューティングと RAM) は、主に同期する項目 (ファイルとフォルダー) の数によって変わります。 懸念がある場合は、より高いパフォーマンス構成を使用することをお勧めします。
 
-[同期する必要がある項目 (ファイルとフォルダー) の数に基づいて Windows サーバーのサイズを変更する方法を参照してください。](storage-sync-files-planning.md#recommended-system-resources)
+[同期する必要がある項目 (ファイルとフォルダー) の数に基づいて Windows サーバーのサイズを変更する方法を参照してください。](../file-sync/file-sync-planning.md#recommended-system-resources)
 
 > [!NOTE]
 > 前記のリンク先の記事では、サーバー メモリ (RAM) の範囲に関する表が示されています。 サーバーの数を少なくすることはできますが、初期同期にはより長い時間かかることが予想されます。
@@ -114,7 +121,7 @@ Windows Server ターゲット フォルダーへの最初のローカル コピ
 
 次の RoboCopy コマンドを実行すると、NAS ストレージから Windows Server のターゲット フォルダーにファイルがコピーされます。 Windows Server によってそれが Azure ファイル共有に同期されます。 
 
-NAS アプライアンスでファイルが占める量より少ないストレージを Windows Server にプロビジョニングした場合は、クラウドを使った階層化を構成してあります。 ローカル環境の Windows Server ボリュームがいっぱいになると、[クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)により、既に正常に同期されているファイルの階層化が開始されます。 クラウドを使った階層化により、NAS アプライアンスからのコピーを続けるのに十分な領域が生成されます。 クラウドを使った階層化では、1 時間に 1 回、同期されたものが確認されて、ボリューム空き領域 99% になるようにディスク領域が解放されます。
+NAS アプライアンスでファイルが占める量より少ないストレージを Windows Server にプロビジョニングした場合は、クラウドを使った階層化を構成してあります。 ローカル環境の Windows Server ボリュームがいっぱいになると、[クラウドを使った階層化](../file-sync/file-sync-cloud-tiering-overview.md)により、既に正常に同期されているファイルの階層化が開始されます。 クラウドを使った階層化により、NAS アプライアンスからのコピーを続けるのに十分な領域が生成されます。 クラウドを使った階層化では、1 時間に 1 回、同期されたものが確認されて、ボリューム空き領域 99% になるようにディスク領域が解放されます。
 RoboCopy によるファイルの移動が速すぎて、クラウドへの同期とローカル環境の階層化が追いつかず、ローカル ディスク領域が不足する可能性があります。 RoboCopy は失敗します。 そのようなことが起こらない順序で共有を処理することをお勧めします。 たとえば、すべての共有に対して RoboCopy ジョブを同時に開始しないようにしたり、Windows Server の現在の空き領域に収まる共有のみを移動したりするようにします。
 
 [!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
@@ -166,6 +173,6 @@ Azure File Sync の問題のトラブルシューティングについては、�
 
 Azure ファイル共有と Azure File Sync については、さらに知るべきことがあります。以下の記事では、高度なオプション、ベスト プラクティスについて説明します。トラブルシューティングのヘルプもあります。 これらの記事は、それぞれに対応する [Azure ファイル共有のドキュメント](storage-files-introduction.md)にリンクしています。
 
-* [AFS の概要](./storage-sync-files-planning.md)
-* [AFS デプロイ ガイド](./storage-how-to-create-file-share.md)
-* [AFS のトラブルシューティング](storage-sync-files-troubleshoot.md)
+* [Azure File Sync の概要](../file-sync/file-sync-planning.md)
+* [Azure File Sync をデプロイする](../file-sync/file-sync-deployment-guide.md)
+* [Azure File Sync に関するトラブルシューティング](../file-sync/file-sync-troubleshoot.md)

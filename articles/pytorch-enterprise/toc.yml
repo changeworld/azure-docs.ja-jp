@@ -1,0 +1,10 @@
+items:
+  - name: PyTorch Enterprise のドキュメント
+    href: index.yml
+  - name: 概要
+    expanded: true
+    items:
+      - name: PyTorch Enterprise とは
+        href: pte-overview.md
+      - name: 内容
+        href: support-boundaries.md

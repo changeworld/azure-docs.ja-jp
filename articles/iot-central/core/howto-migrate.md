@@ -1,26 +1,27 @@
 ---
 title: V2 の Azure IoT Central アプリケーションを V3 に移行する | Microsoft Docs
-description: 管理者が V2 の Azure IoT Central アプリケーションを V3 に移行する方法について学習します。
+description: V2 の Azure IoT Central アプリケーションを V3 に移行する方法について説明します。
 author: troyhopwood
 ms.author: troyhop
-ms.date: 01/18/2021
+ms.date: 09/17/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 735ad7ad9ded6baded59ab3f08e239d1c8376b74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: 6a7a0d8f6fe2b057baf1fa568700b4139ec31398
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101702727"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128660901"
 ---
 # <a name="migrate-your-v2-iot-central-application-to-v3"></a>V2 の IoT Central アプリケーションを V3 に移行する
 
-*この記事は管理者向けです。*
-
 現在、新しい IoT Central アプリケーションを作成すると、V3 アプリケーションになります。 アプリケーションを以前に作成した場合、作成した時期によっては V2 である場合があります。 この記事では、V2 を V3 アプリケーションに移行して、最新の IoT Central 機能を使用できるようにする方法について説明します。
 
-IoT Central アプリケーションのバージョンを特定する方法については、「[アプリケーションに関する情報](howto-get-app-info.md)」を参照してください。
+詳細については、[提供終了のお知らせ](/answers/questions/529295/retirement-announcement-upgrade-to-iot-central-v3.html)に関するページを参照してください。
+
+IoT Central アプリケーションのバージョンを特定する方法については、「[アプリケーションに関する情報はどのような方法で取得できますか?](howto-faq.yml#how-do-i-get-information-about-my-application-)」を参照してください。
 
 V2 から V3 にアプリケーションを移行する手順を次に示します。
 
@@ -30,9 +31,7 @@ V2 から V3 にアプリケーションを移行する手順を次に示しま�
 
 ## <a name="create-a-new-v3-application"></a>新しい V3 アプリケーションを作成する
 
-移行ウィザードを使用して、新しい V3 アプリケーションを作成します。
-
-IoT Central は、既存の V3 アプリケーションへの移行をサポートしていません。 既存のデバイスを自動的に移動するには、移行ウィザードを使用して V3 アプリケーションを作成します。
+IoT Central では、既存の V3 アプリケーションに移行することはできません。 既存のデバイスを V2 アプリケーションから V3 アプリケーションに移行するには、移行ウィザードを使用して V3 アプリケーションを作成します。
 
 移行ウィザード:
 
@@ -70,11 +69,11 @@ IoT Central は、既存の V3 アプリケーションへの移行をサポー�
 新しい V3 アプリケーションを作成した後、デバイスを V2 アプリケーションから V3 アプリケーションに移動する前に、構成を変更します。
 
 > [!TIP]
-> V3 は以前のバージョンとはいくつかの違いがあるため、少し時間をとって [V3 について理解を深めてください](overview-iot-central-tour.md#navigate-your-application)。
+> V2 とはいくつかの違いがあるため、少し時間をとって [V3 について理解を深めて](overview-iot-central-tour.md#navigate-your-application)ください。
 
 推奨される構成手順を次に示すので考慮してください。
 
-- [ダッシュボードを構成する](howto-add-tiles-to-your-dashboard.md)
+- [ダッシュボードを構成する](howto-manage-dashboards.md)
 - [データのエクスポートを構成する](howto-export-data.md)
 - [規則とアクションを構成する](quick-configure-rules.md)
 - [アプリケーションの UI をカスタマイズする](howto-customize-ui.md)

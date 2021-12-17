@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Machine Learning ワークスペースにアクセスする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
+ms.subservice: enterprise-readiness
+ms.topic: how-to
 ms.reviewer: Blackmist
-ms.author: nigup
-author: nishankgu
-ms.date: 03/26/2021
+ms.author: johwu
+author: johnwu0604
+ms.date: 10/21/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 4d037bdf266e70a2621b2627bc88abce30af652c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7bd1ffcdbe139f9ea0659801c0119b1e6ba6e750
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612621"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559753"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 
@@ -27,26 +27,25 @@ ms.locfileid: "105612621"
 >
 > * [Azure Kubernetes クラスター リソースへのアクセスを制御する](../aks/azure-ad-rbac.md)
 > * [Kubernetes 認可に Azure RBAC を使用する](../aks/manage-azure-rbac.md)
-> * [Azure RBAC を使用して BLOB データにアクセスする](../storage/common/storage-auth-aad-rbac-portal.md)
+> * [Azure RBAC を使用して BLOB データにアクセスする](../storage/blobs/assign-azure-role-data-access.md)
 
 > [!WARNING]
 > 一部のロールを適用すると、他のユーザーが Azure Machine Learning スタジオを使用するときに UI 機能が制限されることがあります。 たとえば、ユーザーのロールにコンピューティング インスタンスを作成する機能がない場合、コンピューティング インスタンスを作成するオプションをスタジオで使用できません。 この動作は想定されており、アクセス拒否エラーが返される操作をユーザーが実行できないようにしています。
 
 ## <a name="default-roles"></a>既定のロール
 
-Azure Machine Learning ワークスペースは Azure リソースの 1 つです。 他の Azure リソースと同様、新しい Azure Machine Learning ワークスペースの作成時には次の 3 つの既定のロールが提供されます。 ワークスペースにユーザーを追加し、これらの組み込みロールのいずれかに割り当てることができます。
+Azure Machine Learning ワークスペースには、既定で使用できる 4 つの組み込みロールがあります。 ユーザーをワークスペースに追加する際に、次に示す組み込みロールのいずれかを割り当てることができます。
 
 | Role | アクセス レベル |
 | --- | --- |
+| **AzureML データ サイエンティスト** | コンピューティング リソースの作成または削除とワークスペース自体の変更を除く、Azure Machine Learning ワークスペース内のすべてのアクションを実行できます。 |
 | **Reader** | ワークスペースでの読み取り専用のアクション。 閲覧者はワークスペースで資産 ([データストア](how-to-access-data.md)の資格情報を含む) を一覧および表示できます。 閲覧者がこれらの資産を作成または更新することはできません。 |
 | **Contributor** | ワークスペース内の資産を表示、作成、編集、削除 (該当する場合) します。 たとえば、共同作成者は実験を作成したり、コンピューティング クラスターを作成またはアタッチしたり、実行を送信したり、Web サービスをデプロイしたりできます。 |
 | **所有者** | ワークスペース内の資産を表示、作成、編集、削除 (該当する場合) する機能など、ワークスペースへのフル アクセス。 また、ロールの割り当てを変更することができます。 |
-| **カスタム ロール** | ワークスペース内の特定のコントロールまたはデータ プレーン操作へのアクセスをカスタマイズできます。 たとえば、実行の送信、コンピューティングの作成、モデルの配置、データセットの登録などです。 |
 
 > [!IMPORTANT]
 > ロール アクセス権は、Azure の複数のレベルにスコープ指定できます。 たとえば、ワークスペースへの所有者アクセス権を持つユーザーであっても、そのワークスペースが含まれるリソース グループへの所有者アクセス権を持っていないことがあります。 詳細については、「[Azure RBAC のしくみ](../role-based-access-control/overview.md#how-azure-rbac-works)」を参照してください。
 
-現時点では、Azure Machine Learning に固有の追加の組み込みロールはありません。 組み込みロールの詳細については、「[Azure 組み込みロール](../role-based-access-control/built-in-roles.md)」を参照してください。
 
 ## <a name="manage-workspace-access"></a>ワークスペース アクセスの管理
 
@@ -56,21 +55,6 @@ Azure Machine Learning ワークスペースは Azure リソースの 1 つで�
 - [Azure CLI](../role-based-access-control/role-assignments-cli.md)
 - [REST API](../role-based-access-control/role-assignments-rest.md)
 - [Azure リソース マネージャーのテンプレート](../role-based-access-control/role-assignments-template.md)
-
-[Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) をインストール済みの場合は、CLI コマンドを使用してユーザーにロールを割り当てることができます。
-
-```azurecli-interactive 
-az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
-```
-
-`user` フィールドは、ワークスペースの親サブスクリプションが存在する Azure Active Directory のインスタンスにおける既存のユーザーのメール アドレスです。 このコマンドレットを使用する方法の例を次に示します。
-
-```azurecli-interactive 
-az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
-```
-
-> [!NOTE]
-> "az ml workspace share" コマンドは、Azure Active Directory B2B のフェデレーション アカウントでは機能しません。 コマンドの代わりに Azure UI ポータルを使用してください。
 
 ## <a name="create-custom-role"></a>カスタム ロールの作成
 
@@ -118,11 +102,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 az role definition create --role-definition data_scientist_role.json
 ```
 
-デプロイ後、このロールは、指定したワークスペース内で利用可能になります。 これで、このロールを Azure portal で追加し、割り当てることができるようになりました。 または、`az ml workspace share` CLI コマンドを使用して、このロールをユーザーに割り当てることができます。
-
-```azurecli-interactive
-az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
-```
+デプロイ後、このロールは、指定したワークスペース内で利用可能になります。 これで、このロールを Azure portal で追加し、割り当てることができるようになりました。
 
 カスタム ロールの詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。 
 
@@ -163,7 +143,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 ## <a name="use-azure-resource-manager-templates-for-repeatability"></a>Azure Resource Manager テンプレートを繰り返し使用する
 
-複雑なロール割り当てを何度も作成することになりそうであれば、Azure Resource Manager テンプレートが非常に便利です。 [201-machine-learning-dependencies-role-assignment template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) では、ソース コードでロール割り当てを再使用できるよう指定する方法を示しています。 
+複雑なロール割り当てを何度も作成することになりそうであれば、Azure Resource Manager テンプレートが非常に便利です。 [machine-learning-dependencies-role-assignment template](https://github.com/Azure/azure-quickstart-templates/tree/master//quickstarts/microsoft.machinelearningservices/machine-learning-dependencies-role-assignment) では、ソース コードでロール割り当てを再使用できるよう指定する方法を示しています。 
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
 
@@ -182,7 +162,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 | パイプラインとエンドポイントの公開 | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` が可能なカスタム ロール |
 | AKS/ACI リソースに登録済みモデルを配置する | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` が可能なカスタム ロール |
 | 配置された AKS エンドポイントに対するスコアリング | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Azure Active Directory 認証を使用していない場合) または `"/workspaces/read"` (トークン認証を使用している場合) が可能なカスタム ロール |
-| 対話型ノートブックを使用してストレージにアクセスする | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` が可能なカスタム ロール |
+| 対話型ノートブックを使用してストレージにアクセスする | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listStorageAccountKeys/action"` が可能なカスタム ロール |
 | 新しいカスタム ロールを作成する | 所有者、共同作成者、または `Microsoft.Authorization/roleDefinitions/write` が可能なカスタム ロール | 必要なし | 所有者、共同作成者、または `/workspaces/computes/write` が可能なカスタム ロール |
 
 > [!TIP]
@@ -453,6 +433,42 @@ Azure Machine Learning ワークスペースで MLflow 操作を実行するに�
 }
 ```
 
+### <a name="labeling-team-lead"></a>チームリーダーのラベル付け
+
+ラベルが付いたデータセットを確認し、却下したり、ラベル付け分析情報を表示したりできます。 それに加え、このロールでは、ラベラーのロールも実行できます。
+
+`labeling_team_lead_custom_role.json` :
+```json
+{
+    "properties": {
+        "roleName": "Labeling Team Lead",
+        "description": "Team lead for Labeling Projects",
+        "assignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.MachineLearningServices/workspaces/read",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/labels/read",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/labels/write",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/labels/reject/action",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/read",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/summary/read"
+                ],
+                "notActions": [
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/write",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/delete",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/export/action"
+                ],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}
+```
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 Azure ロールベースのアクセス制御 (Azure RBAC) を使用している間は、次の点に注意する必要があります。
@@ -465,12 +481,11 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用している
 
 - VNet 内にコンピューティング リソースをデプロイするには、次のアクションのアクセス許可を明示的に付与する必要があります。
     - VNet リソースに対する `Microsoft.Network/virtualNetworks/*/read`。
-    - サブネット リソースに対する `Microsoft.Network/virtualNetworks/subnet/join/action`。
+    - サブネット リソースに対する `Microsoft.Network/virtualNetworks/subnets/join/action`。
     
     ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](../role-based-access-control/built-in-roles.md#networking)に関するページを参照してください。
 
 - 新しいロールの割り当てがスタック全体のキャッシュされたアクセス許可に対して有効になるには、最大で 1 時間かかることがあります。
-- 現在、[条件付きアクセス](../role-based-access-control/conditional-access-azure-management.md)は Azure Machine Learning ではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

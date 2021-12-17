@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acd1c61a145067d66f7c1921da108a794bd1faee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91317261"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752299"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>PowerShell で最初の持続的関数を作成する
 
@@ -53,7 +53,7 @@ ms.locfileid: "91317261"
     | Select a template for your project's first function (プロジェクトの最初の関数のテンプレートを選択してください) | 今はしない | |
     | Select how you would like to open your project (プロジェクトを開く方法を選択してください) | 現在のウィンドウで開く | 選択したフォルダーで VS Code を開き直します。 |
 
-Azure Functions Core Tools は、必要に応じて Visual Studio Code によりインストールされます。 また、関数アプリ プロジェクトがフォルダーに作成されます。 このプロジェクトには、[host.json](../functions-host-json.md) および [local.settings.json](../functions-run-local.md#local-settings-file) 構成ファイルが含まれています。
+Azure Functions Core Tools は、必要に応じて Visual Studio Code によりインストールされます。 また、関数アプリ プロジェクトがフォルダーに作成されます。 このプロジェクトには、[host.json](../functions-host-json.md) および [local.settings.json](../functions-develop-local.md#local-settings-file) 構成ファイルが含まれています。
 
 また、ルート フォルダーには、package.json ファイルが作成されます。
 
@@ -90,7 +90,7 @@ Azure Functions Core Tools は、必要に応じて Visual Studio Code により
 
     | Prompt | 値 | 説明 |
     | ------ | ----- | ----------- |
-    | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions オーケストレーター (プレビュー) | Durable Functions オーケストレーションを作成します |
+    | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions オーケストレーター | Durable Functions オーケストレーションを作成します |
     | Provide a function name (関数名を指定してください) | HelloOrchestrator | 持続的な関数の名前 |
 
 アクティビティ関数を調整するオーケストレーターを追加しました。 *HelloOrchestrator/run.ps1* を開いて、オーケストレーター関数を確認します。 `Invoke-ActivityFunction` コマンドレットを呼び出すたびに、`Hello` という名前のアクティビティ関数が呼び出されます。
@@ -105,7 +105,7 @@ Azure Functions Core Tools は、必要に応じて Visual Studio Code により
 
     | Prompt | 値 | 説明 |
     | ------ | ----- | ----------- |
-    | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions アクティビティ (プレビュー) | アクティビティ関数を作成する |
+    | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions のアクティビティ | アクティビティ関数を作成する |
     | Provide a function name (関数名を指定してください) | こんにちは | アクティビティ関数の名前 |
 
 オーケストレーターによって呼び出される `Hello` アクティビティ関数を追加しました。 *Hello/run.ps1* を開き、これが入力として名前を受け取って、あいさつを返すことを確認します。 アクティビティ関数では、データベース呼び出しや計算の実行などのアクションを実行します。
@@ -120,7 +120,7 @@ Azure Functions Core Tools は、必要に応じて Visual Studio Code により
 
     | Prompt | 値 | 説明 |
     | ------ | ----- | ----------- |
-    | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions HTTP スターター (プレビュー) | HTTP スターター関数を作成する |
+    | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions HTTP スターター | HTTP スターター関数を作成する |
     | Provide a function name (関数名を指定してください) | HttpStart | アクティビティ関数の名前 |
     | 承認レベル | Anonymous | デモの目的で、認証を使用せずに関数を呼び出すことができるようにします。 |
 

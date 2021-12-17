@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Files に登録する | Microsoft Docs
-description: 順番待ちリクエストを送信し、Azure NetApp Files 用に Azure リソース プロバイダーを登録することによって、Azure NetApp Files に登録する方法について説明します。
+title: Azure NetApp Files で使用するための NetApp リソース プロバイダーを登録する | Microsoft Docs
+description: Azure NetApp Files 用の NetApp リソース プロバイダーを登録する方法を説明します。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,40 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: a61d6ba1f908a7dae56db066bfae329fc26f1c5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8b70a06a6bda9757f9019a6f753af226235a985
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97696122"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407743"
 ---
-# <a name="register-for-azure-netapp-files"></a>Azure NetApp Files に登録する
+# <a name="register-for-netapp-resource-provider"></a>NetApp リソース プロバイダーを登録する
 
-> [!IMPORTANT] 
-> Azure NetApp Files リソース プロバイダーを登録する前に、Azure NetApp Files チームから、サービスへのアクセスが付与されていることを確認できるメールが必ず送信されます。 
-
-この記事では、Azure NetApp Files に登録してサービスの使用を開始する方法について説明します。
-
-## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>サービスにアクセスするための順番待ちリクエストを送信する
-
-1. 次のページにアクセスして、Azure NetApp Files サービスにアクセスするための waitlist 要求を送信します。  
-    [**Azure NetApp Files の waitlist の送信ページ**](https://aka.ms/azurenetappfiles) 
-
-    順番待ちにサインアップしても、すぐにサービスにアクセスできるとは限りません。 
-
-2. Azure NetApp Files チームからの正式な確認メールを待ってから他のタスクを続けてください。 
-
-## <a name="register-the-netapp-resource-provider"></a><a name="resource-provider"></a>NetApp リソース プロバイダーを登録する
-
-サービスを使用するには、Azure NetApp Files 用に Azure リソース プロバイダーを登録する必要があります。
-
-> [!NOTE] 
-> サービスのアクセスが許可されていなくても、NetApp リソース プロバイダーは正常に登録できます。 ただし、アクセスの承認がないと、NetApp アカウントまたはその他の Azure NetApp Files リソースを作成する Azure portal または API 要求は、次のエラーで拒否されます。  
->
-> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
-
+Azure NetApp Files サービスを使用するには、NetApp リソース プロバイダーを登録する必要があります。
 
 1. Azure portal で、右上隅にある Azure Cloud Shell アイコンをクリックします。
 
@@ -53,13 +31,13 @@ ms.locfileid: "97696122"
 
 2. お客様の Azure アカウントにサブスクリプションが複数ある場合は、Azure NetApp Files に対して承認されているものを選択します。
     
-    ```azurepowershell
+    ```azurecli
     az account set --subscription <subscriptionId>
     ```
 
 3. Azure Cloud Shell コンソールで次のコマンドを入力して、お客様のサブスクリプションが承認されていることを確認します。
     
-    ```azurepowershell
+    ```azurecli
     az feature list | grep NetApp
     ```
 
@@ -72,11 +50,11 @@ ms.locfileid: "97696122"
        
    `<SubID>` がお客様のサブスクリプション ID です。
 
-    機能名 `Microsoft.NetApp/ANFGA` が表示されない場合は、サービスにアクセスできません。 この手順で止めてください。 続行する前に、「[サービスにアクセスするための順番待ちリクエストを送信する](#waitlist)」の指示に従ってください。 
+
 
 4. Azure Cloud Shell コンソールで次のコマンドを入力して、Azure リソース プロバイダーを登録します。 
     
-    ```azurepowershell
+    ```azurecli
     az provider register --namespace Microsoft.NetApp --wait
     ```
 
@@ -84,7 +62,7 @@ ms.locfileid: "97696122"
 
 5. Azure Cloud Shell コンソールで次のコマンドを入力して、Azure リソース プロバイダーが登録されたことを確認します。 
     
-    ```azurepowershell
+    ```azurecli
     az provider show --namespace Microsoft.NetApp
     ```
 
@@ -109,4 +87,5 @@ ms.locfileid: "97696122"
 
 ## <a name="next-steps"></a>次のステップ
 
-[NetApp アカウントを作成する](azure-netapp-files-create-netapp-account.md)
+* [NetApp アカウントを作成する](azure-netapp-files-create-netapp-account.md)
+* [Azure サポート要求を作成する](../azure-portal/supportability/how-to-create-azure-support-request.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: b50b98095cdfe0e6ec19c89b57887ebc4a0f6317
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72484bad390f642dae1c5ce5f94c303c55da616f
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101713050"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503963"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Windows の音声アシスタントの概要
 
@@ -32,7 +32,7 @@ Windows 用の音声アシスタントの開発を開始するには、適切な
 
 ## <a name="obtain-resources-from-microsoft"></a>Microsoft からリソースを入手する
 
-Windows 上で完全にカスタマイズされた音声エージェントに必要なリソースには、Microsoft のリソースが必要なものがあります。 [UWP 音声アシスタント サンプル](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)には、初期の開発とテストのためにこうしたリソースのサンプル バージョンが用意されているため、初期の開発の場合はこのセクションは不要です。
+Windows 上で完全にカスタマイズされた音声エージェントに必要なリソースには、Microsoft のリソースが必要なものがあります。 [UWP 音声アシスタント サンプル](windows-voice-assistants-faq.yml#the-uwp-voice-assistant-sample)には、初期の開発とテストのためにこうしたリソースのサンプル バージョンが用意されているため、初期の開発の場合はこのセクションは不要です。
 
 - **キーワード モデル:** 音声によるアクティブ化には、.bin ファイル形式の Microsoft のキーワード モデルが必要です。 UWP 音声アシスタント サンプルで用意されている .bin ファイルは、キーワード *Contoso* でトレーニングされています。
 - **制限付きアクセス機能トークン:** ConversationalAgent API はマイク オーディオへのアクセスを提供するため、制限付きアクセス機能の制限の下で保護されています。  制限付きアクセス機能を使用するには、アプリケーションのパッケージ ID に接続された制限付きアクセス機能トークンを Microsoft から入手する必要があります。
@@ -53,7 +53,7 @@ Windows 上で完全にカスタマイズされた音声エージェントに必
 
 ## <a name="try-out-the-sample-app"></a>サンプル アプリを試す
 
-Speech Services サブスクリプション キーとエコー ボットのボット ID を使用して、[UWP 音声アシスタント サンプル](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)を試す準備ができました。 readme の指示に従ってアプリを実行し、資格情報を入力します。
+Speech Services サブスクリプション キーとエコー ボットのボット ID を使用して、[UWP 音声アシスタント サンプル](windows-voice-assistants-faq.yml#the-uwp-voice-assistant-sample)を試す準備ができました。 readme の指示に従ってアプリを実行し、資格情報を入力します。
 
 ## <a name="create-your-own-voice-assistant-for-windows"></a>Windows 用の独自の音声アシスタントを作成する
 

@@ -1,0 +1,120 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure トラフィック分析についてよく寄せられる質問 | Microsoft Docs
+  description: トラフィック分析についてよく寄せられる質問の回答を確認します。
+  services: network-watcher
+  documentationcenter: na
+  author: damendo
+  ms.service: network-watcher
+  ms.devlang: na
+  ms.topic: article
+  ms.tgt_pltfrm: na
+  ms.workload: infrastructure-services
+  ms.date: 01/04/2021
+  ms.author: damendo
+  ms.custom: devx-track-azurepowershell
+  ms.openlocfilehash: 4d2cab88fea02c7ca9e5bcd6265137edcfc42e5c
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131433519"
+title: Traffic Analytics についてよく寄せられる質問
+summary: >
+  この記事では、Azure Network Watcher のトラフィック分析についてよく寄せられる質問の多くをまとめました。
+
+
+
+  [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+sections:
+- name: 無視
+  questions:
+  - question: >
+      トラフィック分析を使用する前提条件は何ですか?
+    answer: "Traffic Analytics では、次の前提条件が必要です。\n\n- Network Watcher 対応のサブスクリプション。\n- 監視対象のネットワーク セキュリティ グループ (NSG) に対して有効になっている NSG フロー ログ。\n- 生のフロー ログを格納するための Azure Storage アカウント。\n- 読み取りと書き込みのアクセス権がある Log Analytics ワークスペース\n\nトラフィック分析を有効にするには、アカウントが次のいずれかを満たしている必要があります。\n\n- アカウントには、サブスクリプション スコープで、所有者、共同作成者、閲覧者、またはネットワーク共同作成者のいずれかの Azure ロールが割り当てられている必要があります。\n- アカウントに上記のどのロールも割り当てられていない場合、サブスクリプション レベルで次のアクションが割り当てられるカスタム ロールを割り当てる必要があります。\n            \n    - Microsoft.Network/applicationGateways/read\n    - Microsoft.Network/connections/read\n    - Microsoft.Network/loadBalancers/read \n    - Microsoft.Network/localNetworkGateways/read \n    - Microsoft.Network/networkInterfaces/read \n    - Microsoft.Network/networkSecurityGroups/read \n    - Microsoft.Network/publicIPAddresses/read\n    - Microsoft.Network/routeTables/read\n    - Microsoft.Network/virtualNetworkGateways/read \n    - Microsoft.Network/virtualNetworks/read\n        \nサブスクリプションのユーザーに割り当てられているロールを確認するには、次の手順を実行します。\n\n1. **Login-AzAccount** を使用して、Azure にサインインします。 \n\n2. **Select-AzSubscription** を使用して、必要なサブスクリプションを選択します。 \n\n3. 指定したユーザーに割り当てられているすべてのロールを一覧表示するには、**Get-AzRoleAssignment -SignInName [ユーザーの電子メール アドレス] -IncludeClassicAdministrators** を使用します。 \n\n出力が表示されない場合は、各サブスクリプション管理者に連絡して、コマンドを実行するアクセス権を取得してください。 詳細については、「[Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-powershell.md)」を参照してください。\n"
+  - question: >
+      フロー ログを有効化する NSG は、自分のワークスペースとは別のリージョンに存在できますか?
+    answer: >
+      はい。これらの NSG は、Log Analytics ワークスペースとは異なるリージョンに存在することができます。
+  - question: >
+      1 つのワークスペース内に複数の NSG を構成できますか?
+    answer: >
+      はい。
+  - question: >
+      既存のワークスペースを使用できますか?
+    answer: >
+      はい。 既存のワークスペースを選択する場合は、それが新しいクエリ言語に移行されていることを確認してください。 そのワークスペースのアップグレードを望まない場合は、新しいワークスペースを作成する必要があります。 新しいクエリ言語の詳細については、[新しいログ検索への Azure Monitor ログのアップグレード](../azure-monitor/logs/log-query-overview.md)に関するページをご覧ください。
+  - question: >
+      自分の Azure Storage アカウントと自分の Log Analytics ワークスペースをそれぞれ別のサブスクリプションに置くことができますか?
+    answer: >
+      はい。自分の Azure Storage アカウントと自分の Log Analytics ワークスペースをそれぞれ別のサブスクリプションに置くことができます。
+  - question: >
+      未処理のログを別のサブスクリプションで格納することはできますか?
+    answer: >
+      はい。 別のサブスクリプションにあるストレージ アカウントに送信されるように NSG フロー ログを構成できます。ただし、適切な特権があり、ストレージ アカウントが NSG と同じリージョンに配置されている必要があります。 また、NSG と送信先のストレージ アカウントが同じ Azure Active Directory テナントを共有する必要もあります。
+  - question: "\"見つかりません\" エラーによってトラフィック分析用に NSG を構成できないとどうなりますか?\n"
+    answer: >
+      サポートされているリージョンを選択します。 サポートされていないリージョンを選択すると、[見つかりません] エラーが表示されます。 サポートされているリージョンについては、この記事で前述しています。
+  - question: >
+      NSG フロー ログ ページの下に "読み込みに失敗しました" という状態が表示される場合はどうすればよいですか?
+    answer: >
+      フロー ログが正しく機能するには、Microsoft.Insights プロバイダーが登録されている必要があります。 サブスクリプションで Microsoft.Insights プロバイダーが登録されているかどうかわからない場合は、次のコマンドの *xxxxx-xxxxx-xxxxxx-xxxx* を置き換え、PowerShell から次のコマンドを実行します。
+
+
+      ```powershell-interactive
+
+      **Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+
+      **Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
+
+      ```
+  - question: >
+      ソリューションを構成しました。 ダッシュボードに何も表示されないのはなぜですか?
+    answer: "ダッシュボードを最初に表示する際は最大で 30 分かかることがあります。 ソリューションで意味がある分析情報が導出されるには、まず十分なデータを集計する必要があります。 その後にレポートが生成されます。 \n"
+  - question: >
+      次のメッセージが表示された場合はどうすればよいですか? "選択した時間内のデータがこのワークスペースで見つかりませんでした。 時間間隔を変更してみるか、別のワークスペースを選択してください"。
+    answer: "次の方法を試してください。\n- 上部のバーで期間を変更します。\n- 上部のバーで別の Log Analytics ワークスペースを選択します。\n- 30 分後に Traffic Analytics にアクセスしてみます (最近有効にした場合)。\n    \n問題が解決しない場合は、[User Voice フォーラム](https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789?c=cd276b66-8326-ec11-b6e6-000d3a4f0789)に問題を投稿してください。\n"
+  - question: >
+      次のメッセージが表示された場合はどうすればよいですか? "Analyzing your NSG flow logs for the first time. This process may take 20-30 minutes to complete. Check back after some time. 2) If the above step doesn’t work and your workspace is under the free SKU, then check your workspace usage here to validate over quota, else refer to FAQs for further information (上記のステップが機能せず、ワークスペースが無料 SKU にある場合は、ここでワークスペースの使用状況をチェックして超過クォータを検証します。該当しない場合は、詳細について FAQ を参照してください)"。
+    answer: "このメッセージは、次の理由で表示される場合があります。\n- Traffic Analytics は最近有効化されたため、意味のある分析情報を導出するために十分なデータをまだ集計していない可能性があります。\n- 無料版の Log Analytics ワークスペースを使用しており、クォータ制限を超えています。 容量の大きいワークスペースを使用しなければならない可能性があります。\n    \n問題が解決しない場合は、[User Voice フォーラム](https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789?c=cd276b66-8326-ec11-b6e6-000d3a4f0789)に問題を投稿してください。\n    \n"
+  - question: >
+      次のメッセージが表示された場合はどうすればよいですか? "選択したワークスペースに関して存在するのはリソース データ (トポロジ) のみで、フローの情報はない可能性があります。 まず、ここをクリックしてリソース データを確認し、詳細については FAQ を参照してください。"
+    answer: >
+      ダッシュボードにはリソース情報が表示されていますが、フロー関連の統計がありません。 リソース間の通信フローがないためにデータが示されない可能性があります。 60 分間待ってから、状態を再確認します。 問題が解決せず、リソース間の通信フローが存在することが確実な場合は、[User Voice フォーラム](https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789?c=cd276b66-8326-ec11-b6e6-000d3a4f0789)に問題を投稿してください。
+  - question: >
+      PowerShell または Azure Resource Manager テンプレートまたはクライアントを使用してトラフィック分析を構成できますか?
+    answer: "バージョン 6.2.1 以降の Windows PowerShell を使用してトラフィック分析を構成できます。 Set コマンドレットを使用して特定の NSG のフロー ログとトラフィック分析を構成するには、[Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) を参照してください。 特定の NSG のフロー ログとトラフィック分析状態を取得するには、[Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus) を参照してください。\n\n現在、Azure Resource Manager テンプレートを使用してトラフィック分析を構成することはできません。\n\nAzure Resource Manager クライアントを使用してトラフィック分析を構成するには、次の例を参照してください。\n\n**Set コマンドレットの例:**\n\n```\n#Requestbody parameters\n$TAtargetUri =\"/subscriptions/<NSG subscription id>/resourceGroups/<NSG resource group name>/providers/Microsoft.Network/networkSecurityGroups/<name of NSG>\"\n$TAstorageId = \"/subscriptions/<storage subscription id>/resourcegroups/<storage resource group name> /providers/microsoft.storage/storageaccounts/<storage account name>\"\n$networkWatcherResourceGroupName = \"<network watcher resource group name>\"\n$networkWatcherName = \"<network watcher name>\"\n\n$requestBody = \n@\"\n{\n    'targetResourceId': '${TAtargetUri}',\n    'properties': \n    {\n        'storageId': '${TAstorageId}',\n        'enabled': '<true to enable flow log or false to disable flow log>',\n        'retentionPolicy' : \n        {\n            days: <enter number of days like to retail flow logs in storage account>,\n            enabled: <true to enable retention or false to disable retention>\n        }\n    },\n    'flowAnalyticsConfiguration':\n    {\n                'networkWatcherFlowAnalyticsConfiguration':\n      {\n        'enabled':,<true to enable traffic analytics or false to disable traffic analytics>\n        'workspaceId':'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb',\n        'workspaceRegion':'<workspace region>',\n        'workspaceResourceId':'/subscriptions/<workspace subscription id>/resourcegroups/<workspace resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'\n        \n      }\n\n    }\n}\n\"@\n$apiversion = \"2016-09-01\"\n\narmclient login\narmclient post \"https://management.azure.com/subscriptions/<NSG subscription id>/resourceGroups/<network watcher resource group name>/providers/Microsoft.Network/networkWatchers/<network watcher name>/configureFlowlog?api-version=${apiversion}\" $requestBody\n```\n\n**Get コマンドレットの例:**\n\n```\n#Requestbody parameters\n$TAtargetUri =\"/subscriptions/<NSG subscription id>/resourceGroups/<NSG resource group name>/providers/Microsoft.Network/networkSecurityGroups/<NSG name>\"\n\n\n$requestBody = \n@\"\n{\n    'targetResourceId': '${TAtargetUri}'\n}\n“@\n\n\narmclient login\narmclient post \"https://management.azure.com/subscriptions/<NSG subscription id>/resourceGroups/<network watcher resource group name>/providers/Microsoft.Network/networkWatchers/<network watcher name>/queryFlowLogStatus?api-version=${apiversion}\" $requestBody\n```\n"
+  - question: >
+      Traffic Analytics はどのように課金されますか?
+    answer: "Traffic Analytics は従量制です。 測定は、サービスによるフロー ログ データの処理と、その結果として生成された拡張ログの Log Analytics ワークスペースへの格納に基づいています。 \n\nたとえば、[価格プラン](https://azure.microsoft.com/pricing/details/network-watcher/)に従い、米国中西部リージョンを考えてみます。ストレージ アカウントに格納され、Traffic Analytics によって処理されるフロー ログ データが 10 GB で、Log Analytics ワークスペースに取り込まれる拡張ログが 1 GB の場合、適用される料金は次のようになります: 10 x 2.3$ + 1 x 2.76$ = 25.76$\n"
+  - question: >
+      Traffic Analytics ではデータがどのような頻度に処理されますか?
+    answer: >
+      Traffic Analytics のスキーマとデータ集計に関するドキュメントの「[データ集計](./traffic-analytics-schema.md#data-aggregation)」セクションを参照してください。
+  - question: "Traffic Analytics では悪意のある IP であるかどうかがどのように判断されますか? \n"
+    answer: >
+      Traffic Analytics では、IP を悪意のあるものとみなす上で、Microsoft の内部的な脅威インテリジェンス システムに依存しています。 これらのシステムでは、Microsoft の製品とサービス、Microsoft デジタル犯罪対策ユニット (DCU)、Microsoft セキュリティ レスポンス センター (MSRC)、外部フィードなどのさまざまなテレメトリ ソースを活用し、その上に多くのインテリジェンスが構築されます。 このデータの一部は Mircosoft の内部的なものです。 既知の IP に悪意のあることを示すフラグが設定された場合、その詳細を知るにはサポート チケットを発行してください。
+  - question: >
+      Traffic Analytics のデータに対してアラートを設定するにはどうすればよいですか?
+    answer: "Traffic Analytics には、アラートに対する組み込みのサポートがありません。 ただし、Traffic Analytics のデータは Log Analytics に格納されるので、カスタム クエリを作成し、それらに対してアラートを設定することができます。 手順:\n- Traffic Analytics では Log Analytics への短縮リンクを使用することができます。 \n- [こちらで説明するスキーマ](traffic-analytics-schema.md)を使用して、ご自分のクエリを記述します。 \n- [新しいアラート ルール] をクリックして、アラートを作成します。\n- [ログ アラートのドキュメント](../azure-monitor/alerts/alerts-log.md)を参照して、アラートを作成します。\n"
+  - question: >
+      受信するオンプレミス トラフィックが多い VM を確認するにはどうすればよいですか?
+    answer: "```\nAzureNetworkAnalytics_CL\n| where SubType_s == \"FlowLog\" and FlowType_s == \"S2S\" \n| where <Scoping condition>\n| mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)\n| where isnotempty(vm) \n| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d \n| make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm\n| render timechart\n```\n\n  IP の場合:\n\n```\nAzureNetworkAnalytics_CL\n| where SubType_s == \"FlowLog\" and FlowType_s == \"S2S\" \n//| where <Scoping condition>\n| mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)\n| where isnotempty(IP) \n| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d \n| make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP\n| render timechart\n```\n\n時刻には、yyyy-mm-dd 00:00:00 の形式を使用します。\n"
+  - question: >
+      自分の VM がオンプレミスのマシンから受信したトラフィックの標準偏差を確認するにはどうすればよいですか?
+    answer: "```\nAzureNetworkAnalytics_CL\n| where SubType_s == \"FlowLog\" and FlowType_s == \"S2S\" \n//| where <Scoping condition>\n| mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)\n| where isnotempty(vm) \n| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + utboundBytes_d\n| summarize deviation = stdev(traffic)  by vm\n```\n\nIP の場合:\n\n```\nAzureNetworkAnalytics_CL\n| where SubType_s == \"FlowLog\" and FlowType_s == \"S2S\" \n//| where <Scoping condition>\n| mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)\n| where isnotempty(IP) \n| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d\n| summarize deviation = stdev(traffic)  by IP\n```\n"
+  - question: >
+      NSG ルールを使用して IP ペア間で到達可能な (またはブロックされた) ポートを確認するにはどうすればよいですか?
+    answer: "```\nAzureNetworkAnalytics_CL\n| where SubType_s == \"FlowLog\" and TimeGenerated between (startTime .. endTime)\n| extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, \" \") , pack_array(SrcIP_s)),\ndestIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s,\" \") , pack_array(DestIP_s))\n| mvexpand SourceIp = sourceIPs to typeof(string)\n| mvexpand DestIp = destIPs to typeof(string)\n| project SourceIp = tostring(split(SourceIp, \"|\")[0]), DestIp = tostring(split(DestIp, \"|\")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s \n| summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s\n```\n"
+  - question: >
+      geo マップ ビューでキーボードを使用して操作するにはどうすればよいですか?
+    answer: "geo マップ ページには主に次の 2 つのセクションがあります。\n    \n- **バナー**: geo マップの上部のバナーには、トラフィック分布フィルター (たとえば、デプロイ、国/地域からのトラフィック、悪意のある、など) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがマップに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブなデータセンターが強調表示されます。\n- **マップ**: バナーの下にある [マップ] セクションには、Azure のデータセンターや各国/リージョンのトラフィック分布が表示されます。\n    \n### <a name=\"keyboard-navigation-on-the-banner\"></a>バナーでのキーボード ナビゲーション\n    \n- 既定では、バナーについて geo マップ ページで選択されているのは [Azure DC] フィルターです。\n- 別のフィルターに移動するには、`Tab` または `Right arrow` キーを使用します。 戻るには、`Shift+Tab` または `Left arrow` キーを使用します。 前方の移動は、左から右、次に上から下の順になります。\n- `Enter` または `Down` 方向キーを押して、選択したフィルターを適用します。 フィルターの選択とデプロイに基づいて、[マップ] セクションの 1 つまたは複数のノードが強調表示されます。\n- バナーとマップを切り替えるには、`Ctrl+F6` を押します。\n        \n### <a name=\"keyboard-navigation-on-the-map\"></a>マップでのキーボード ナビゲーション\n    \n- バナーでフィルターを選択してから `Ctrl+F6` を押すと、マップ ビューで強調されたノードの 1 つ (**Azure データセンター** または **国/リージョン**) にフォーカスが移動します。\n- マップ内の他の強調表示されたノードに移動するには、前方移動に `Tab` キーまたは `Right arrow` キーを使用します。 後方移動には、`Shift+Tab` キーまたは `Left arrow` キーを使用します。\n- マップ内で強調表示されたノードを選択するには、`Enter` キーまたは `Down arrow` キーを使用します。\n- そのようなノードを選択すると、そのノードの **[Information Tool Box]\\(情報ツール ボックス\\)** にフォーカスが移動します。 既定では、 **[Information Tool Box]\\(情報ツール ボックス\\)** の [閉じる] ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する際は、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、 **[Information Tool Box]\\(情報ツール ボックス\\)** でフォーカスがあるボタンを選択したのと同じ効果があります。\n- **[Information Tool Box]\\(情報ツール ボックス\\)** にフォーカスがあるときに `Tab`を押すと、フォーカスは、選択したノードと同じ大陸のエンドポイントに移動します。 `Right arrow` キーと `Left arrow` キーを使用して、これらのエンドポイント間を移動できます。\n- 他のフロー エンドポイントまたは大陸クラスターに移動するには、前方移動では `Tab`、後方移動では `Shift+Tab` を使用します。\n- フォーカスが **大陸クラスター** にある場合は、`Enter` または `Down` 方向キーを使用して、大陸クラスター内のエンドポイントを強調表示します。 大陸クラスターのエンドポイントと情報ボックスの [閉じる] ボタンを移動するには、前方移動では `Right arrow` キー、後方移動では `Left arrow` キーをそれぞれ使用します。 任意のエンドポイントで、`Shift+L` を使用すると、選択したノードからエンドポイントへの接続線に切り替えることができます。 もう一度 `Shift+L` を押して、選択したエンドポイントに移動できます。\n        \n### <a name=\"keyboard-navigation-at-any-stage\"></a>任意の段階のキーボード ナビゲーション\n    \n- `Esc` を押すと、展開された選択範囲が折りたたまれます。\n- `Up-arrow` キーは `Esc` と同じ動作を実行します。 `Down arrow` キーは `Enter` と同じ動作を実行します。\n- `Shift+Plus` を使用して拡大、`Shift+Minus` を使用して縮小します。\n"
+  - question: >
+      仮想ネットワーク トポロジ ビューでキーボードを使用して操作するにはどうすればよいですか?
+    answer: "仮想ネットワーク トポロジ ページには、主に 2 つのセクションがあります。\n    \n- **バナー**: 仮想ネットワーク トポロジの上部バナーには、トラフィック分布フィルター (たとえば、接続された仮想ネットワーク、切断された仮想ネットワーク、パブリック IP など) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがトポロジに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブな仮想ネットワークが強調表示されます。\n- **トポロジ**:バナーの下の [トポロジ] セクションには、仮想ネットワーク全体でのトラフィック分布が表示されます。\n    \n### <a name=\"keyboard-navigation-on-the-banner\"></a>バナーでのキーボード ナビゲーション\n    \n- 既定では、バナーの仮想ネットワーク トポロジ ページでの選択は、[接続された VNet] フィルターです。\n- 別のフィルターに移動する場合、前方に移動するには `Tab` キーを使用します。 後方に移動するには、`Shift+Tab` キーを使用します。 前方の移動は、左から右、次に上から下の順になります。\n- 選択したフィルターを適用するには、`Enter` を押します。 フィルターの選択とデプロイに基づいて、[トポロジ] セクションの 1 つまたは複数のノード (仮想ネットワーク) が強調表示されます。\n- バナーとトポロジーを切り替えるには、`Ctrl+F6` を押します。\n        \n### <a name=\"keyboard-navigation-on-the-topology\"></a>トポロジでのキーボード ナビゲーション\n    \n- バナーでフィルターを選択してから `Ctrl+F6` を押すと、トポロジ ビューで強調されたノードの 1 つ (**VNet**) にフォーカスが移動します。\n- トポロジ ビュー内の他の強調表示されたノードに移動するには、`Shift+Right arrow` キーを使用して前方に移動します。 \n- 強調表示されたノードの **[Information Tool Box]\\(情報ツール ボックス\\)** にフォーカスが移動します。 既定では、 **[Information Tool Box]\\(情報ツール ボックス\\)** の **[詳細]** ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する場合、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、 **[Information Tool Box]\\(情報ツール ボックス\\)** でフォーカスがあるボタンを選択したのと同じ効果があります。\n- このようなノードを選択する際は、`Shift+Left arrow` キーを押して、すべての接続に 1 つずつアクセスできます。 フォーカスはその接続の **[Information Tool Box]\\(情報ツール ボックス\\)** に移動します。 いずれの時点でも、`Shift+Right arrow` を再度押して、フォーカスをノードに戻すことができます。\n    \n"
+  - question: >
+      サブネット トポロジ ビューでキーボードを使用して操作するにはどうすればよいですか?
+    answer: "仮想サブネットワーク トポロジ ページには、主に 2 つのセクションがあります。\n    \n- **バナー**: 仮想サブネット ネットワーク トポロジの上部のバナーには、トラフィック分布フィルター (たとえば、アクティブ、中、ゲートウェイのサブネットなど) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがトポロジに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブな仮想サブネットワークが強調表示されます。\n- **トポロジ**:バナーの下の [トポロジ] セクションには、仮想サブネットワーク全体でのトラフィック分布が表示されます。\n    \n### <a name=\"keyboard-navigation-on-the-banner\"></a>バナーでのキーボード ナビゲーション\n    \n- 既定では、バナーの仮想サブネットワーク トポロジ ページでの選択は、[サブネット] フィルターです。\n- 別のフィルターに移動する場合、前方に移動するには `Tab` キーを使用します。 後方に移動するには、`Shift+Tab` キーを使用します。 前方の移動は、左から右、次に上から下の順になります。\n- 選択したフィルターを適用するには、`Enter` を押します。 フィルターの選択とデプロイに基づいて、[トポロジ] セクションの 1 つまたは複数のノード (サブネット) が強調表示されます。\n- バナーとトポロジーを切り替えるには、`Ctrl+F6` を押します。\n        \n### <a name=\"keyboard-navigation-on-the-topology\"></a>トポロジでのキーボード ナビゲーション\n    \n- バナーでフィルターを選択してから `Ctrl+F6` を押すと、トポロジ ビューで強調されたノードの 1 つ (**サブネット**) にフォーカスが移動します。\n- トポロジ ビュー内の他の強調表示されたノードに移動するには、`Shift+Right arrow` キーを使用して前方に移動します。 \n- 強調表示されたノードの **[Information Tool Box]\\(情報ツール ボックス\\)** にフォーカスが移動します。 既定では、 **[Information Tool Box]\\(情報ツール ボックス\\)** の **[詳細]** ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する際は、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、 **[Information Tool Box]\\(情報ツール ボックス\\)** でフォーカスがあるボタンを選択したのと同じ効果があります。\n- このようなノードを選択する際は、`Shift+Left arrow` キーを押して、すべての接続に 1 つずつアクセスできます。 フォーカスはその接続の **[Information Tool Box]\\(情報ツール ボックス\\)** に移動します。 いずれの時点でも、`Shift+Right arrow` を再度押して、フォーカスをノードに戻すことができます。\n"
+  - question: >
+      従来の NSG はサポートされていますか?
+    answer: いいえ。Traffic Analytics は従来の NSG をサポートしていません。 従来のリソースが[非推奨](../virtual-machines/classic-vm-deprecation.md)になるため、IaaS リソースを従来のものから Azure Resource Manager に移行することをお勧めします。 [ツールの実行方法](../virtual-machines/migration-classic-resource-manager-overview.md)については、この記事を参照してください。

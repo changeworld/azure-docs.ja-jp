@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28c16e4d73fc2379806e1a2bce2fa5dbb3247fed
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 3091afbab67f65a1850bb4ffbd73487d0e0327c9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531956"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742563"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理での一般的なシナリオ
 
@@ -40,7 +40,7 @@ ms.locfileid: "107531956"
 
 ### <a name="catalog-owner-delegate-management-of-resources"></a>カタログ所有者: リソースの管理を委任する
 
-1. [カタログに共同所有者を追加する](entitlement-management-catalog-create.md#add-additional-catalog-owners)
+1. [カタログに共同所有者を追加する](entitlement-management-catalog-create.md#add-more-catalog-owners)
 1. [カタログにリソースを追加する](entitlement-management-catalog-create.md#add-resources-to-a-catalog)
 
 ### <a name="catalog-owner-delegate-management-of-access-packages"></a>カタログ所有者: アクセス パッケージの管理を委任する
@@ -154,7 +154,7 @@ ms.locfileid: "107531956"
 
 ## <a name="programmatic-administration"></a>プログラムによる管理
 
-Microsoft Graph を使用して、アクセス パッケージ、カタログ、ポリシー、要求、および割り当てを管理することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、[エンタイトルメント管理 API](/graph/tutorial-access-package-api) を呼び出すことができます。
+Microsoft Graph を使用して、アクセス パッケージ、カタログ、ポリシー、要求、および割り当てを管理することもできます。  `EntitlementManagement.Read.All` または `EntitlementManagement.ReadWrite.All` アクセス許可を委任されたアプリケーションの適切なロールのユーザーは、[エンタイトルメント管理 API](/graph/tutorial-access-package-api) を呼び出すことができます。  また、これらのアクセス許可があるアプリケーションでは、カタログおよびアクセス パッケージ内のリソースの管理を除き、これらの API 関数の多くを使用することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

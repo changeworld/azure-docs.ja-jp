@@ -1,23 +1,23 @@
 ---
-title: Azure Active Directory B2C でのユーザー フローとカスタム ポリシー | Microsoft Docs
+title: Azure Active Directory B2C でのユーザー フローとカスタム ポリシー
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C の組み込みのユーザー フローと、カスタム ポリシーで拡張可能なポリシー フレームワークの詳細について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/08/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 2e4dbc5178bec3a5b1f0931267465879f604f36f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 73d1649881428047cf0c593335d66d9d3145ec2c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226010"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021868"
 ---
 # <a name="user-flows-and-custom-policies-overview"></a>ユーザー フローとカスタム ポリシーの概要
 
@@ -82,9 +82,9 @@ Azure AD B2C では、次の 2 つの方法で ID ユーザーのエクスペリ
 |-|-------------------|-----------------|
 | 対象ユーザー | ID の専門知識を持つ、または持たないすべてのアプリケーション開発者。 | ID のプロフェッショナル、システム インテグレータ、コンサルタント、社内の ID チーム。 彼らは OpenID Connect のフローに慣れており、ID プロバイダーや要求ベースの認証を理解しています。 |
 | 構成方法 | ユーザー フレンドリなユーザー インターフェイス (UI) を備えた Azure portal。 | XML ファイルを直接編集して Azure portal にアップロードします。 |
-| UI のカスタマイズ | HTML、CSS、および [JavaScript](javascript-and-page-layout.md) を含む[完全な UI のカスタマイズ](customize-ui-with-html.md)。<br><br>カスタム文字列による[多言語サポート](language-customization.md)。 | 同じ |
-| 属性のカスタマイズ | 標準属性とカスタム属性。 | 同じ |
-| トークンおよびセッション管理 | [トークンのカスタマイズ](configure-tokens.md)と[セッションの動作](session-behavior.md)。 | 同じ |
+| UI のカスタマイズ | HTML、CSS、および [JavaScript](javascript-and-page-layout.md) を含む[完全な UI のカスタマイズ](customize-ui-with-html.md)。<br><br>カスタム文字列による[多言語サポート](language-customization.md)。 | ユーザー フローと同じ |
+| 属性のカスタマイズ | 標準属性とカスタム属性。 | ユーザー フローと同じ |
+| トークンおよびセッション管理 | [トークンのカスタマイズ](configure-tokens.md)と[セッションの動作](session-behavior.md)。 | ユーザー フローと同じ |
 | [ID プロバイダー] | [定義済みのローカル](identity-provider-local.md)または[ソーシャル プロバイダー](add-identity-provider.md) (Azure Active Directory テナントとのフェデレーションなど)。 | 標準ベースの OIDC、OAUTH、SAML。  REST API との統合を使用して認証を行うことも可能です。 |
 | ID タスク | ローカルまたはさまざまなソーシャル アカウントによる[サインアップまたはサインイン](add-sign-up-and-sign-in-policy.md)。<br><br>[セルフサービス パスワード リセット](add-password-reset-policy.md)。<br><br>[プロファイルの編集](add-profile-editing-policy.md)。<br><br>Multi-Factor Authentication。<br><br>アクセス トークンのフロー。 | カスタム ID プロバイダーを使用したユーザー フローと同じタスクの実行、またはカスタム スコープの使用。<br><br>登録時に別のシステムでユーザー アカウントをプロビジョニング。<br><br>独自の電子メール サービス プロバイダを使用して、ウェルカム メールを送信。<br><br>Azure AD B2C の外部のユーザー ストアを使用。<br><br>ユーザーが指定した情報を信頼できるシステムで検証 (API を使用)。 |
 

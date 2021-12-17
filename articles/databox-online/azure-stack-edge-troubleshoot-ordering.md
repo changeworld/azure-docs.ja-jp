@@ -1,31 +1,25 @@
 ---
-title: Azure portal を使用して Azure Stack Edge Pro の順序の問題をトラブルシューティングする | Microsoft Docs
-description: Azure Stack Edge Pro の順序の問題をトラブルシューティングする方法について説明します。
+title: Azure portal を使用した Azure Stack Edge の順序付けに関する問題のトラブルシューティング
+description: Azure Stack Edge の順序の問題をトラブルシューティングする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 02/22/2021
+ms.date: 06/21/2021
 ms.author: alkohli
-ms.openlocfilehash: e074043cb685f60027d3c09ae7ad8dc17dded0df
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 46a7d0ed41b8f10874c19c8d70ddc5d8c5d7f197
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443405"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608287"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Azure Stack Edge Pro の順序の問題をトラブルシューティングする
+# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Azure Stack Edge の順序の問題をトラブルシューティングする
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-この記事では、Azure Stack Edge Pro の順序の問題をトラブルシューティングする方法について説明します。
-
-このチュートリアルでは、以下の内容を学習します。
-
-> [!div class="checklist"]
->
-> * 順序の問題をトラブルシューティングする
+この記事では、Azure Stack Edge の順序の問題をトラブルシューティングする方法について説明します。
 
 ## <a name="unsupported-subscription-or-region"></a>サポートされていないサブスクリプションまたはリージョン
 
@@ -43,7 +37,12 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 **エラー:** EA、CSP、またはスポンサー サブスクリプションを所有しており、次のエラーが表示されます。
 
-*選択されたサブスクリプションの種類はサポートされていません。サポートされるサブスクリプションを使用していることを確認してください。[詳細については、こちらを参照してください](azure-stack-edge-deploy-prep.md#prerequisites)。サポートされるサブスクリプションの種類を使用している場合は、`Microsoft.DataBoxEdge` プロバイダーが登録されていることを確認してください。登録する方法については、「[リソース プロバイダーを登録する](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)* 」を参照してください。
+*選択されたサブスクリプションの種類はサポートされていません。 サポートされるサブスクリプションを使用していることを確認してください。 [詳細については、こちらを参照してください](azure-stack-edge-deploy-prep.md#prerequisites)。 サポートされているサブスクリプションの種類を使用する場合は、次を確認してください。
+ 
+- クラシック ポータルを使用して注文するときに、`Microsoft.DataBoxEdge` プロバイダーが登録されている。
+- Azure Edge Hardware Center (プレビュー) を使用して注文するときに、`Microsoft.EdgeOrder` プロバイダーが登録されている。
+ 
+登録する方法については、「[リソース プロバイダーを登録する](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」を参照してください。*
 
 **推奨されている解決方法:** 次の手順に従って Azure Stack Edge リソース プロバイダーを登録します。
 
@@ -59,11 +58,13 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 詳細については、「[リソース プロバイダーを登録する](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」を参照してください。
 
-## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>Microsoft.DataBoxEdge がサブスクリプションに登録されいない
+## <a name="resource-provider-not-registered-for-subscription"></a>リソース プロバイダーがサブスクリプションに登録されていない
 
-**エラー:** Azure portal で、Azure Stack Edge Pro または Data Box Gateway に使用するサブスクリプションを選択すると、次のエラーが表示されます。
+**エラー:** Azure portal で、Azure Stack Edge または Data Box Gateway を使用するサブスクリプションを選択すると、次のいずれかのエラーが表示されます。
 
 *リソース プロバイダー Microsoft.DataBoxEdge はサブスクリプション &lt;サブスクリプション名&gt; に登録されておらず、サブスクリプション &lt;サブスクリプション名&gt; のリソース プロバイダーを登録するためのアクセス許可がありません*。
+
+*リソース プロバイダー: Microsoft.EdgeOrder はサブスクリプション &lt;サブスクリプション名&gt; に登録されておらず、サブスクリプション &lt;サブスクリプション名&gt; のリソース プロバイダーを登録するためのアクセス許可がありません*。
 
 **推奨されている解決方法:** サブスクリプションのアクセスを昇格させるか、またはリソース プロバイダーを登録するための所有者または共同作成者のアクセス権を持つだれかを見つけます。
 
@@ -73,8 +74,8 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 *リソース &lt;リソース名&gt; はポリシーにより許可されませんでした。(コード:RequestDisallowedByPolicy)。イニシアティブ: 一般に不要なリソースの種類を拒否します。ポリシー:許可されていないリソースの種類。*
 
-**推奨されている解決方法:** このエラーは、リソースの作成をブロックする既存の Azure ポリシーのために発生します。 Azure ポリシーは、Azure リソースの使用または作成中のコンプライアンスを確保するために組織のシステム管理者によって設定されます。 このようなポリシーのいずれかが Azure Stack Edge リソースの作成をブロックしている場合は、システム管理者に連絡して Azure ポリシーを編集してください。
+**推奨される解決策:** このエラーは、既存の Azure Policy の割り当てによってリソースの作成がブロックされるために発生します。 Azure Policy の定義と割り当ては、Azure リソースの使用または作成中のコンプライアンスを確保するために組織のシステム管理者によって設定されます。 このようなポリシーの割り当てのいずれかが Azure Stack Edge リソースの作成をブロックしている場合は、システム管理者に連絡して Azure Policy の定義を編集してください。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Stack Edge Pro に関する問題をトラブルシューティングする](azure-stack-edge-troubleshoot.md)方法の詳細について学習します。
+* [Azure Stack Edge に関する問題をトラブルシューティングする](azure-stack-edge-gpu-troubleshoot.md)方法の詳細について学習します。

@@ -1,132 +1,220 @@
 ---
 title: Application Gateway との統合
 description: このエンド ツー エンドのチュートリアルでは、ILB App Service Environment のアプリを Application Gateway と統合する方法について説明します。
-author: ccompy
+author: madsd
 ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
 ms.topic: article
-ms.date: 03/03/2018
-ms.author: ccompy
+ms.date: 10/12/2021
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 3b73d528802a8aa33c6122eaf5edfa9d046b6753
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77e8ec3db7b66fe0c639bfd56942b171b9fc2129
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88962079"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294278"
 ---
-# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Environment を Azure Application Gateway と統合する #
+# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Environment を Azure Application Gateway と統合する
 
-[App Service Environment](./intro.md) は、ユーザーの Azure 仮想ネットワークのサブネットに Azure App Service をデプロイしたものです。 これは、アプリにアクセスするためのパブリック エンドポイントまたはプライベート エンドポイントを使用してデプロイできます。 プライベート エンドポイント (つまり、内部ロード バランサー) を使う App Service Environment の展開は、ILB App Service Environment と呼ばれます。  
+[App Service Environment][AppServiceEnvironmentoverview] は、ユーザーの Azure 仮想ネットワークのサブネットに Azure App Service をデプロイしたものです。 アプリへのアクセスには、外部エンドポイントまたは内部エンドポイントを使用してデプロイできます。 内部エンドポイントを使用した App Service 環境のデプロイは、内部ロード バランサー (ILB) App Service 環境 (ASE) と呼ばれます。
 
-Web アプリケーション ファイアウォール は、着信する Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS、およびその他の攻撃をブロックすることにより、Web アプリケーションのセキュリティを確保するのに役立ちます。 さらに、データ損失防止 (DLP) のためにバックエンド Web サーバーからの応答を検査します。 Azure Marketplace から WAF デバイスを取得することも、[Azure Application Gateway][appgw] を使用することもできます。
+Web アプリケーション ファイアウォール は、着信する Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS、およびその他の攻撃をブロックすることにより、Web アプリケーションのセキュリティを確保するのに役立ちます。 Azure Marketplace から WAF デバイスを取得することも、[Azure Application Gateway][appgw] を使用することもできます。
 
-Azure Application Gateway は、レイヤー 7 負荷分散、TLS/SSL オフロード、および Web アプリケーション ファイアウォール (WAF) 保護を提供する仮想アプライアンスです。 これは、パブリック IP アドレスでリッスンし、トラフィックをアプリケーション エンドポイントにルーティングします。 以下では、WAF で構成されたアプリケーション ゲートウェイを ILB App Service Environment のアプリと統合する方法について説明します。  
+Azure Application Gateway は、レイヤー 7 負荷分散、TLS/SSL オフロード、および Web アプリケーション ファイアウォール (WAF) 保護を提供する仮想アプライアンスです。 これは、パブリック IP アドレスでリッスンし、トラフィックをアプリケーション エンドポイントにルーティングします。 以下では、WAF で構成されたアプリケーション ゲートウェイを ILB App Service 環境のアプリと統合する方法について説明します。  
 
-アプリケーション ゲートウェイと ILB App Service Environment の統合は、アプリ レベルで行われます。 アプリケーション ゲートウェイを ILB App Service Environment で構成する場合、ILB App Service Environment の特定のアプリに対して行うことになります。 この手法を使うと、単一の ILB App Service Environment で、セキュリティ保護されたマルチテナント アプリケーションをホストできます。  
+アプリケーション ゲートウェイと ILB App Service 環境の統合は、アプリ レベルで行われます。 アプリケーション ゲートウェイを ILB App Service 環境で構成する場合、ILB App Service 環境の特定のアプリに対して行うことになります。 この手法を使うと、単一の ILB App Service 環境で、セキュリティ保護されたマルチテナント アプリケーションをホストできます。  
 
-![ILB App Service Environment 上のアプリを指すアプリケーション ゲートウェイ][1]
+:::image type="content" source="./media/integrate-with-application-gateway/appgw-highlevel.png" alt-text="高レベルの統合図のスクリーンショット":::
 
 このチュートリアルでは次を行います。
 
 * Azure Application Gateway を作成します。
-* ILB App Service Environment 上のアプリを指すように Application Gateway を構成します。
-* カスタム ドメイン名を優先するようにアプリを構成します。
+* ILB App Service 環境上のアプリを指すように Application Gateway を構成します。
 * アプリケーション ゲートウェイを指すパブリック DNS ホスト名を編集します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Application Gateway を ILB App Service Environment と統合するには、次のものが必要です。
+Application Gateway を ILB App Service 環境と統合するには、次のものが必要です。
 
-* ILB App Service Environment 。
-* ILB App Service Environment で実行するアプリ。
-* ILB App Service Environment のアプリで使うインターネット ルーティング可能なドメイン名。
-* ILB App Service Environment が使う ILB アドレス。 この情報は、 App Service Environment ポータルの **[設定]**  >  **[IP アドレス]** にあります。
+* ILB App Service 環境。
+* ILB App Service 環境のプライベート DNS ゾーン。
+* ILB App Service 環境で実行するアプリ。
+* 後でアプリケーション ゲートウェイを指すために使われるパブリック DNS 名。
+* アプリケーション ゲートウェイに TLS/SSL 暗号化を使用する必要がある場合は、アプリケーション ゲートウェイにバインドするために使用される有効な公開証明書が必要です。
 
-    ![ILB App Service Environment で使われる IP アドレスの一覧の例][9]
+### <a name="ilb-app-service-environment"></a>ILB App Service 環境
+
+ILB App Service 環境を作成する方法の詳細については、「[Azure portal で ASE を作成する][creation]」および「[ARM を使用して ASE を作成する][createfromtemplate]」を参照してください。
+
+* ILB ASE が作成されると、既定のドメインは `<YourAseName>.appserviceenvironment.net` になります。
+
+    :::image type="content" source="./media/integrate-with-application-gateway/ilb-ase.png" alt-text="ILB ASE の概要のスクリーンショット":::
+
+* 内部ロードバランサーは、受信アクセス用にプロビジョニングされます。 [ASE 設定] の IP アドレスで受信アドレスを確認できます。 この IP アドレスにマップされたプライベート DNS ゾーンは、後で作成できます。
+
+    :::image type="content" source="./media/integrate-with-application-gateway/ip-addresses.png" alt-text="ILB ASE IP アドレス設定から受信アドレスを取得するスクリーンショット。":::
+
+### <a name="a-private-dns-zone"></a>プライベート DNS ゾーン
+
+内部的な名前解決には、[プライベート DNS ゾーン][privatednszone]が必要です。 次の表に示すレコード セットを使用して ASE 名を使用して作成します (手順については、「[クイックスタート - Azure portal を使用して Azure プライベート DNS ゾーンを作成する][createprivatednszone]」を参照してください)。
+
+| 名前  | Type | 値               |
+| ----- | ---- | ------------------- |
+| *     | A    | ASE 受信アドレス |
+| @     | A    | ASE 受信アドレス |
+| @     | SOA  | ASE DNS 名        |
+| *.scm | A    | ASE 受信アドレス |
+
+### <a name="app-service-on-ilb-ase"></a>ILB ASE の App Service
+
+ILB ASE で App Service プランとアプリを作成する必要があります。 ポータルでアプリを作成するときに、**リージョン** として ILB ASE を選択します。
+
+### <a name="a-public-dns-name-to-the-application-gateway"></a>アプリケーション ゲートウェイへのパブリック DNS 名
+
+インターネットからアプリケーション ゲートウェイに接続するには、ルーティング可能なドメイン名が必要です。 この例では、ルーティング可能なドメイン名 `asabuludemo.com` を使用し、このドメイン名 `app.asabuludemo.com` を使用して App Service に接続する計画を立てました。 このアプリケーション ドメイン名にマップされた IP アドレスは、アプリケーション ゲートウェイの作成後にパブリック IP に設定する必要があります。
+アプリケーション ゲートウェイにマップされたパブリック ドメインでは、App Service でカスタム ドメインを構成する必要はありません。 [App Service ドメイン](../manage-custom-dns-buy-domain.md#buy-an-app-service-domain)を使用してカスタム ドメイン名を購入できます。 
+
+### <a name="a-valid-public-certificate"></a>有効なパブリック証明書
+
+セキュリティを強化するために、セッションの暗号化に TLS/SSL 証明書をバインドすることをお勧めします。 TLS/SSL 証明書をアプリケーション ゲートウェイにバインドするには、次の情報を含む有効な公開証明書が必要です。 [App Service 証明書](../configure-ssl-certificate.md#start-certificate-order)を使用して、TLS/SSL 証明書を購入し、.pfx 形式でエクスポートできます。
+
+| 名前  | 値               | 説明|
+| ----- | ------------------- |------------|
+| **共通名** |`<yourappname>.<yourdomainname>` (例: `app.asabuludemo.com`)  <br/> または `*.<yourdomainname>`、例: `*.asabuludemo.com` | アプリケーション ゲートウェイの標準証明書または[ワイルドカード証明書](https://wikipedia.org/wiki/Wildcard_certificate)|
+| **サブジェクトの別名** | `<yourappname>.scm.<yourdomainname>` (例: `app.scm.asabuludemo.com`)  <br/>または `*.scm.<yourdomainname>`、例: `*.scm.asabuludemo.com` |App Service kudu Service に接続することを許可する SAN。 App Service kudu サービスをインターネットに発行しない場合は、省略可能な設定です。|
+
+証明書ファイルには秘密キーがあり、.pfx 形式で保存する必要があります。後でアプリケーション ゲートウェイにインポートされます。
+
+## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
+
+基本的なアプリケーション ゲートウェイの作成については、「[チュートリアル: Azure portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する][Tutorial: Create an application gateway with a Web Application Firewall using the Azure portal]」を参照してください。
+
+このチュートリアルでは、Azure portal を使用して、ILB App Service 環境でアプリケーションゲートウェイを作成します。
+
+Azure portal で、 **[新規]**  >  **[ネットワーク]**  >  **[アプリケーション ゲートウェイ]** を選択してアプリケーション ゲートウェイを作成します。
+
+1. 基本設定
+
+    **[レベル]** ドロップダウン リストで、 **[Standard V2]** または **[WAF V2]** を選択して、アプリケーション ゲートウェイで **WAF** 機能を有効にすることができます。 
+
+2. フロントエンドの設定
+
+    フロントエンド IP アドレスの種類に **[パブリック]** 、 **[プライベート]** 、または **[両方]** を選択します。 **[プライベート]** または **[両方]** に設定する場合、アプリケーション ゲートウェイ サブネットの範囲内に静的 IP アドレスを割り当てる必要があります。 この場合、パブリック エンドポイントにのみパブリック IP を設定します。
     
-* 後で Application Gateway を指すために使われるパブリック DNS 名。 
-
-ILB App Service Environment の作成方法について詳しくは、[ILB App Service Environment の作成と使用][ilbase]に関するページをご覧ください。
-
-この記事では、 App Service Environment が展開されているのと同じ Azure 仮想ネットワークに Application Gateway を作成するものとします。 Application Gateway の作成を始める前に、ゲートウェイをホストするために使うサブネットを選択または作成します。 
-
-GatewaySubnet という名前ではないサブネットを使う必要があります。 Application Gateway を GatewaySubnet に配置した場合、後で仮想ネットワーク ゲートウェイを作成できなくなります。 
-
-また、ILB App Service Environment が使っているサブネットにゲートウェイを配置することもできません。 このサブネット内に存在できるのは App Service Environment だけです。
-
-## <a name="configuration-steps"></a>構成の手順 ##
-
-1. Azure Portal で、 **[新規]**  >  **[ネットワーク]**  >  **[アプリケーション ゲートウェイ]** に移動します。
-
-2. **[基本]** 領域で次のように設定します。
-
-   a. **[名前]** に、Application Gateway の名前を入力します。
-
-   b. **[レベル]** で、 **[WAF]** を選びます。
-
-   c. **[サブスクリプション]** で、App Service Environment の仮想ネットワークが使っているものと同じサブスクリプションを選びます。
-
-   d. **[リソース グループ]** で、リソース グループを作成または選択します。
-
-   e. **[場所]** で、App Service Environment 仮想ネットワークの場所を選びます。
-
-   ![新しい Application Gateway の作成の基礎][2]
-
-3. **[設定]** 領域で次のように設定します。
-
-   a. **[仮想ネットワーク]** で、App Service Environment の仮想ネットワークを選びます。
-
-   b. **[サブネット]** で、Application Gateway を展開する必要があるサブネットを選びます。 GatewaySubnet は使わないでください。VPN ゲートウェイを作成できなくなります。
-
-   c. **[IP アドレスの種類]** で、 **[パブリック]** を選びます。
-
-   d. **[パブリック IP アドレス]** で、パブリック IP アドレスを選びます。 パブリック IP アドレスがない場合は、ここで作成します。
-
-   e. **[プロトコル]** で、 **[HTTP]** または **[HTTPS]** を選びます。 HTTPS を構成する場合は、PFX 証明書を提供する必要があります。
-
-   f. **[Web アプリケーション ファイアウォール]** では、ファイアウォールを有効にすることができ、必要に応じて **[検出]** または **[防止]** に設定することもできます。
-
-   ![新しい Application Gateway の作成の設定][3]
+    * パブリック IP アドレス - アプリケーション ゲートウェイのパブリック アクセスにパブリック IP アドレスを関連付ける必要があります。 この IP アドレスを記録します。後で DNS サービスにレコードを追加する必要があります。
     
-4. **[概要]** セクションで設定を確認し、 **[OK]** を選びます。 Application Gateway のセットアップが完了するまでに、30 分少々かかる可能性があります。  
+        :::image type="content" source="./media/integrate-with-application-gateway/frontends.png" alt-text="アプリケーション ゲートウェイ フロントエンド設定からパブリック IP を取得する場面のスクリーンショット。":::
 
-5. Application Gateway のセットアップが完了したら、Application Gateway ポータルに移動します。 **[バックエンド プール]** を選択します。 ILB App Service Environment の ILB アドレスを追加します。
+3. バックエンド設定
 
-   ![バックエンド プールを構成する][4]
+    バックエンド プール名を入力し、 **[ターゲットの種類]** で **[App Services]** または **[IP アドレスまたは FQDN]** を選択します。 この場合、 **[App Services]** に設定し、ターゲット ドロップダウン リストから App Service 名を選択します。
 
-6. バックエンド プールの構成処理が完了した後、 **[正常性プローブ]** を選びます。 アプリに使うドメイン名の正常性プローブを作成します。 
+    :::image type="content" source="./media/integrate-with-application-gateway/add-backend-pool.png" alt-text="バックエンド設定でバックエンド プール名を追加したスクリーンショット。":::
 
-   ![正常性プローブを構成する][5]
+4. 構成設定
+
+    **[構成]** 設定で、 **[ルーティング規則の追加]** アイコンをクリックして、ルーティング規則を追加する必要があります。
+
+    :::image type="content" source="./media/integrate-with-application-gateway/configuration.png" alt-text="構成設定にルーティング規則を追加したスクリーンショット。":::
+
+    ルーティング規則は、**リスナー** と **バックエンド ターゲット** を構成する必要があります。 HTTPS リスナーは、概念実証デプロイやセキュリティ強化のために追加できます。
+
+    * HTTP プロトコルを使用してアプリケーション ゲートウェイに接続するには、次の設定を使用してリスナーを作成します。
     
-7. 正常性プローブの構成処理が完了した後、 **[HTTP 設定]** を選びます。 既存の設定を編集し、 **[カスタム プローブの使用]** を選んで、構成したプローブを選びます。
-
-   ![HTTP 設定を構成する][6]
+        | パラメーター      | 値                             | 説明                                                  |
+        | -------------- | --------------------------------- | ------------------------------------------------------------ |
+        | 規則の名前      | 例: `http-routingrule`    | ルーティング名                                                 |
+        | リスナー名  | 例: `http-listener`       | リスナー名                                                |
+        | フロントエンド IP    | パブリック                            | インターネット アクセスの場合は、[パブリック] に設定します                           |
+        | Protocol       | HTTP                             | TLS/SSL 暗号化を使用しない                                       |
+        | Port           | 80                               | 既定の HTTP ポート                                           |
+        | リスナーの種類  | マルチ サイト                        | アプリケーション ゲートウェイでマルチサイトのリッスンを許可する           |
+        | ホストの種類      | 複数またはワイルドカード                 | リスナーの種類がマルチサイトに設定されている場合は、複数、またはワイルドカード Web サイト名に設定します。 |
+        | ホスト名      | 次に例を示します。`app.asabuludemo.com` | App Service のルーティング可能なドメイン名に設定します。              |
+        
+        :::image type="content" source="./media/integrate-with-application-gateway/http-routing-rule.png" alt-text="アプリケーション ゲートウェイ ルーティング規則の HTTP リスナーのスクリーンショット。":::
     
-8. Application Gateway の **[概要]** セクションに移動し、Application Gateway が使うパブリック IP アドレスをコピーします。 その IP アドレスをアプリ ドメイン名の A レコードとして設定するか、CNAME レコードでそのアドレスの DNS 名を使用します。 パブリック IP アドレスを選んで、それをパブリック IP アドレスの UI にコピーするほうが、Application Gateway の **[概要]** セクションのリンクからコピーするより簡単です。 
+    * TLS/SSL 暗号化を使用してアプリケーション ゲートウェイに接続するには、次の設定を使用してリスナーを作成します。
+    
+        | パラメーター      | 値                             | 説明                                                  |
+        | -------------- | --------------------------------- | ------------------------------------------------------------ |
+        | 規則の名前      | 例: `https-routingrule`    | ルーティング名                                                 |
+        | リスナー名  | 例: `https-listener`       | リスナー名                                                |
+        | フロントエンド IP    | パブリック                            | インターネット アクセスの場合は、[パブリック] に設定します                           |
+        | Protocol       | HTTPS                             | TLS/SSL 暗号化を使用する                                       |
+        | Port           | 443                               | 既定の HTTPS ポート                                           |
+        | HTTPS 設定 | 証明書のアップロード              | CN と、.pfx 形式の秘密キーが含まれている証明書をアップロードします。 |
+        | リスナーの種類  | マルチ サイト                        | アプリケーション ゲートウェイでマルチサイトのリッスンを許可する           |
+        | ホストの種類      | 複数またはワイルドカード                 | リスナーの種類がマルチサイトに設定されている場合は、複数、またはワイルドカード Web サイト名に設定します。 |
+        | ホスト名      | 次に例を示します。`app.asabuludemo.com` | App Service のルーティング可能なドメイン名に設定します。              |
+        
+        :::image type="content" source="./media/integrate-with-application-gateway/https-routing-rule.png" alt-text="アプリケーション ゲートウェイ ルーティング規則の HTTPS リスナー。":::
+    
+    * **[バックエンド ターゲット]** で **[バックエンド プール]** と **[HTTP 設定]** を構成する必要があります。 バックエンド プールは、前の手順で構成されました。 **[新規追加]** リンクをクリックし、HTTP 設定を追加します。
+    
+        :::image type="content" source="./media/integrate-with-application-gateway/add-new-http-setting.png" alt-text="HTTP 設定を追加するための新しいリンクを追加する画面のスクリーンショット。":::
+    
+    * 次のような HTTP 設定が表示されます。
+    
+        | パラメーター                     | 値                                                        | 説明                                                  |
+        | ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+        | HTTP 設定名             | 例: `https-setting`                                   | HTTP 設定名                                            |
+        | バックエンド プロトコル              | HTTPS                                                        | TLS/SSL 暗号化を使用する                                       |
+        | バックエンド ポート                  | 443                                                          | 既定の HTTPS ポート                                           |
+        | 既知の CA 証明書を使用する | Yes                                                          | ILB ASE の既定のドメイン名は `.appserviceenvironment.net` です。このドメインの証明書は、信頼された公開ルート機関によって発行されます。 [信頼されたルート証明書] 設定では、**既知の CA の信頼されたルート証明書** を使用するように設定できます。 |
+        | 新しいホスト名でオーバーライドする   | Yes                                                          | ILB ASE 上のアプリに接続すると、ホスト名ヘッダーが上書きされます。 |
+        | [ホスト名の上書き]            | バックエンド ターゲットからホスト名を選択する | バックエンド プールを App Service に設定する場合は、バックエンド ターゲットからホストを選択できます。 |
+        | カスタム プローブを作成する | いいえ | 既定の正常性プローブを使用する|
+        
+        :::image type="content" source="./media/integrate-with-application-gateway/https-setting.png" alt-text="[HTTP 設定の追加] ダイアログのスクリーンショット。":::
 
-   ![Application Gateway ポータル][7]
 
-9. アプリのカスタム ドメイン名を ILB App Service Environment に設定します。 ポータルでアプリに移動し、 **[設定]** の **[カスタム ドメイン]** を選びます。
+## <a name="configure-an-application-gateway-integration-with-ilb-ase"></a>ILB ASE とアプリケーション ゲートウェイの統合を構成する
 
-   ![アプリでカスタム ドメイン名を設定する][8]
+アプリケーション ゲートウェイから ILB ASE にアクセスするには、プライベート DNS ゾーンへの仮想ネットワーク リンクがあるかどうかを確認する必要があります。 アプリケーション ゲートウェイの VNet に関連付けられた仮想ネットワークがない場合は、次の手順で仮想ネットワーク リンクを追加します。
 
-Web アプリのカスタム ドメイン名の設定について詳しくは、[Web アプリのカスタム ドメイン名の設定][custom-domain]に関するページをご覧ください。 ただし、ILB App Service Environment 内のアプリの場合は、ドメイン名についての検証は何もありません。 アプリ エンドポイントを管理する DNS を所有しているため、必要なものをすべて自由に配置できます。 ここで追加するカスタム ドメイン名は、DNS 内に配置する必要はありませんが、アプリで構成する必要はあります。 
+### <a name="configure-virtual-network-links-with-a-private-dns-zone"></a>プライベート DNS ゾーンを使用して仮想ネットワーク リンクを構成する
 
-セットアップが完了した後、DNS の変更が反映されるまでしばらく待つと、作成したカスタム ドメイン名を使ってアプリにアクセスできます。 
+* プライベート DNS ゾーンとの仮想ネットワーク リンクを構成するには、プライベート DNS ゾーンの構成プレーンにアクセスします。 **[仮想ネットワークのリンク]**  >  **[追加]** を選択します 
 
+:::image type="content" source="./media/integrate-with-application-gateway/add-vnet-link.png" alt-text="プライベート DNS ゾーンに仮想ネットワーク リンクを追加します。":::
 
-<!--IMAGES-->
-[1]: ./media/integrate-with-application-gateway/appgw-highlevel.png
-[2]: ./media/integrate-with-application-gateway/appgw-createbasics.png
-[3]: ./media/integrate-with-application-gateway/appgw-createsettings.png
-[4]: ./media/integrate-with-application-gateway/appgw-backendpool.png
-[5]: ./media/integrate-with-application-gateway/appgw-healthprobe.png
-[6]: ./media/integrate-with-application-gateway/appgw-httpsettings.png
-[7]: ./media/integrate-with-application-gateway/appgw-publicip.png
-[8]: ./media/integrate-with-application-gateway/appgw-customdomainname.png
-[9]: ./media/integrate-with-application-gateway/appgw-iplist.png
+* **[リンク名]** を入力し、アプリケーション ゲートウェイが存在する各サブスクリプションと仮想ネットワークを選択します。
+
+:::image type="content" source="./media/integrate-with-application-gateway/vnet-link.png" alt-text="プライベート DNS ゾーンの仮想ネットワーク リンク設定に対する入力リンク名の詳細のスクリーンショット。":::
+
+* バックエンドの正常性状態は、アプリケーション ゲートウェイプレーンで **バックエンドの正常性** 状態から確認できます。
+
+:::image type="content" source="./media/integrate-with-application-gateway/backend-health.png" alt-text="バックエンドの正常性状態からバックエンドの正常性状態を確認するスクリーンショット。":::
+
+### <a name="add-a-public-dns-record"></a>パブリック DNS レコードを追加する
+
+インターネットからアプリケーション ゲートウェイにアクセスする場合は、適切な DNS マッピングを構成する必要があります。
+
+* アプリケーション ゲートウェイのパブリック IP アドレスは、アプリケーション ゲートウェイ プレーンの **フロントエンド IP 構成** にあります。
+
+:::image type="content" source="./media/integrate-with-application-gateway/frontend-ip.png" alt-text="アプリケーション ゲートウェイのフロントエンド IP アドレスは、フロントエンド IP 構成にあります。":::
+
+* Azure DNS サービスを使用する例として、レコード セットを追加して、アプリケーションのドメイン名をアプリケーション ゲートウェイのパブリック IP アドレスにマップすることができます。
+
+:::image type="content" source="./media/integrate-with-application-gateway/dns-service.png" alt-text="アプリのドメイン名をアプリケーション ゲートウェイのパブリック IP アドレスにマップするためのレコード セットを追加するスクリーンショット。":::
+
+### <a name="validate-connection"></a>接続の検証
+
+* インターネットからのコンピューター アクセスで、アプリケーション ドメイン名の名前解決をアプリケーション ゲートウェイのパブリック IP アドレスに対して確認できます。
+
+:::image type="content" source="./media/integrate-with-application-gateway/name-resolution.png" alt-text="コマンド プロンプトから名前解決を検証します。":::
+
+* インターネットからのコンピューター アクセスで、ブラウザーから Web アクセスをテストします。
+
+:::image type="content" source="./media/integrate-with-application-gateway/access-web.png" alt-text="ブラウザーを開き、Web にアクセスするときのスクリーンショット。":::
 
 <!--LINKS-->
 [appgw]: ../../application-gateway/overview.md
 [custom-domain]: ../app-service-web-tutorial-custom-domain.md
-[ilbase]: ./create-ilb-ase.md
+[creation]: ./creation.md
+[createfromtemplate]: ./create-from-template.md
+[createprivatednszone]: ../../dns/private-dns-getstarted-portal.md
+[AppServiceEnvironmentoverview]: ./overview.md
+[privatednszone]: ../../dns/private-dns-overview.md
+[Tutorial: Create an application gateway with a Web Application Firewall using the Azure portal]: ../../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md

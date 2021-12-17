@@ -5,13 +5,13 @@ author: tfitzmac
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
-ms.custom: seodec18
-ms.openlocfilehash: 1146b5979d81b91c6c6894aa54b2e0ca50c896c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: eeaccd4fa186d4a415e1d573ffa933c7a5f44375
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88961620"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298333"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Web アプリのデプロイに関するガイダンス
 
@@ -53,7 +53,7 @@ Web アプリの依存関係を定義するには、Web アプリ内のリソー
 
 通常、ソリューションにはこれらのリソースとレベルの一部しか含まれていません。 ないレベルについては、下位のリソースを次に高いレベルにマップします。
 
-次の例は、テンプレートの一部を示しています。 接続文字列の構成値は、MSDeploy 拡張機能に応じて異なります。 MSDeploy 拡張機能は、Web アプリおよびデータベースに依存します。 
+次の例は、テンプレートの一部を示しています。 接続文字列の構成値は、MSDeploy 拡張機能に応じて異なります。 MSDeploy 拡張機能は、Web アプリおよびデータベースに依存します。
 
 ```json
 {
@@ -82,7 +82,7 @@ Web アプリの依存関係を定義するには、Web アプリ内のリソー
 }
 ```
 
-上記のコードを使用するすぐに実行できるサンプルについては、「[Template:Build a simple Umbraco Web App](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)」(テンプレート: 簡単な Umbraco Web アプリを作成する) をご覧ください。
+上記のコードを使用するすぐに実行できるサンプルについては、「[Template:Build a simple Umbraco Web App](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/umbraco/umbraco-webapp-simple)」(テンプレート: 簡単な Umbraco Web アプリを作成する) をご覧ください。
 
 ## <a name="find-information-about-msdeploy-errors"></a>MSDeploy エラーについての情報を見つける
 
@@ -129,7 +129,7 @@ Azure Government では、App Service サービス プリンシパルの ID は 
 
 テンプレートで、`keyVaultSecretName` に対する証明書の名前を指定します。
 
-テンプレートの例については、「[Deploy a Web App certificate from Key Vault secret and use it for creating SSL binding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)」(Key Vault シークレットから Web アプリ証明書を展開し、SSL バインディングの作成に使用する) をご覧ください。
+テンプレートの例については、「[Deploy a Web App certificate from Key Vault secret and use it for creating SSL binding](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-certificate-from-key-vault)」(Key Vault シークレットから Web アプリ証明書を展開し、SSL バインディングの作成に使用する) をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,18 +2,18 @@
 title: Azure Communication Services でのトラブルシューティング
 description: Communication Services ソリューションのトラブルシューティングに必要な情報を収集する方法について説明します。
 author: manoskow
-manager: jken
+manager: chpalm
 services: azure-communication-services
 ms.author: manoskow
-ms.date: 03/10/2021
-ms.topic: overview
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: db6aafc8c9db7a67c9ee70d524d17a642d03dfd8
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 3cd19094b876203569df83cf3bc165968d9051a2
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259066"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257982"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Communication Services でのトラブルシューティング
 
@@ -77,7 +77,28 @@ chat_client = ChatClient(
 ```
 ---
 
-## <a name="access-your-call-id"></a>通話 ID にアクセスする
+## <a name="access-your-server-call-id"></a>サーバ通話 ID にアクセスする
+通話のレコーディングや通話の管理の問題など、Call Automation SDK に関する問題のトラブルシューティングを行う場合は、サーバー通話 ID を収集する必要があります。 この ID は、```getServerCallId``` メソッドを使用して収集できます。
+
+#### <a name="javascript"></a>JavaScript
+```
+callAgent.on('callsUpdated', (e: { added: Call[]; removed: Call[] }): void => {
+    e.added.forEach((addedCall) => {
+        addedCall.on('stateChanged', (): void => {
+            if (addedCall.state === 'Connected') {
+                addedCall.info.getServerCallId().then(result => {
+                    dispatch(setServerCallId(result));
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
+        });
+    });
+});
+```
+
+
+## <a name="access-your-client-call-id"></a>クライアント通話 ID にアクセスする
 
 音声通話またはビデオ通話をトラブルシューティングする際に、`call ID` の提供を求められることがあります。 これは、`call` オブジェクトの `id` プロパティから取得できます。
 
@@ -160,8 +181,20 @@ Android 用に開発する場合、ログは `.blog` ファイルに格納され
 
 Android Studio で、シミュレーターとデバイスの両方から [View]\(表示\) > [Tool Windows]\(ツール ウィンドウ\) > [Device File Explorer]\(デバイス ファイル エクスプローラー\) を選択して、デバイス ファイル エクスプローラーに移動します。 `.blog` ファイルはアプリケーションのディレクトリ内にあり、`/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog` のように表示されるはずです。 このファイルをサポート リクエストに添付できます。
 
-
 ---
+
+## <a name="enable-and-access-call-logs-windows"></a>呼び出しログを有効にしてアクセスする (Windows)
+
+Windows 用に開発する場合、ログは `.blog` ファイルに格納されます。 ログは暗号化されているため、直接表示できないことに注意してください。
+
+これらは、アプリがどこにローカル データを保持しているかを調べることでアクセスできます。 UWP アプリがどこにローカル データを保持しているかを調べるには、さまざまな方法があり、次の手順はこれらの方法の 1 つにすぎません。
+1. Windows コマンド プロンプトを開きます (Windows キー + R キー)
+2. 「`cmd.exe`」と入力します
+3. 「`where /r %USERPROFILE%\AppData acs*.blog`」と入力します
+4. アプリケーションのアプリ ID が、前のコマンドによって返されたものと一致するかどうかを確認してください。
+5. 「`start `」の後に手順 3 で返されたパスを入力して、ログが含まれているフォルダーを開きます。 例: `start C:\Users\myuser\AppData\Local\Packages\e84000dd-df04-4bbc-bf22-64b8351a9cd9_k2q8b5fxpmbf6`
+6. `*.blog` と `*.etl` のすべてのファイルを Azure サポート リクエストに添付してください。
+
 
 ## <a name="calling-sdk-error-codes"></a>Calling SDK のエラー コード
 
@@ -180,6 +213,17 @@ Azure Communication Services の Calling SDK では、通話の問題のトラ�
 | 490、491、496、487、498 | ローカル エンドポイント ネットワークの問題。 | ネットワークを確認します。 |
 | 500、503、504 | Communication Services インフラストラクチャ エラー。 | Azure portal からサポート リクエストを提出します。 |
 | 603 | Communication Services のリモート参加者によって、通話がグローバルに拒否されました。 | 想定されている動作です。 |
+
+## <a name="chat-sdk-error-codes"></a>Chat SDK のエラー コード
+
+Azure Communication Services の Chat SDK では、チャットの問題のトラブルシューティングに役立てるために次のエラー コードを使用しています。 エラー コードは、エラー応答の `error.code` プロパティを通じて公開されます。
+
+| エラー コード | 説明 | 実行するアクション |
+| -------- | ---------------| ---------------|
+| 401 | 権限がありません | Communication Services トークンが有効であり、有効期限が切れていないことを確認します。 |
+| 403 | Forbidden | 要求のイニシエーターがリソースへのアクセス権を持っていることを確認してください。 |
+| 429 | 要求が多すぎます | クライアント側アプリケーションで、このシナリオがユーザーフレンドリな方法で処理されていることを確認してください。 エラーが解決しない場合は、サポート リクエストを提出してください。 |
+| 503 | サービス利用不可 | Azure portal からサポート リクエストを提出します。 |
 
 ## <a name="related-information"></a>関連情報
 - [ログと診断](logging-and-diagnostics.md)

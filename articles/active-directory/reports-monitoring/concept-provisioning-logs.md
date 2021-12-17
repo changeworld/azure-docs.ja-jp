@@ -1,10 +1,10 @@
 ---
-title: Azure portal のプロビジョニング ログの概要 (プレビュー) | Microsoft Docs
-description: Azure portal を通じて Azure Active Directory のプロビジョニング ログ レポートの概要を取得します。
+title: Azure Active Directory のプロビジョニング ログ | Microsoft Docs
+description: Azure Active Directory のプロビジョニング ログの概要。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,62 +13,99 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 1/29/2021
+ms.date: 4/25/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 468e885bab6aab4becb5aaaec7b4d52ce5ef5e07
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 167ba276023191abd894081e8540a83b8b4b0bee
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535984"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997193"
 ---
-# <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Azure portal のプロビジョニング ログの概要 (プレビュー)
+# <a name="provisioning-logs-in-azure-active-directory"></a>Azure Active Directory のプロビジョニング ログ
 
-Azure Active Directory (Azure AD) のレポート アーキテクチャは、次のコンポーネントで構成されます。
+IT 管理者は、IT 環境がどのように動作しているかを知る必要があります。 システムの正常性に関する情報を使用すると、潜在的な問題に対処する必要があるかどうか、およびその方法を評価できます。 
 
-- アクティビティ: 
-    - **サインイン**:マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報。
-    - [[監査ログ]](concept-audit-logs.md) :ユーザーとグループの管理、マネージド アプリケーション、ディレクトリ アクティビティに関するシステム アクティビティ情報。
-    - **プロビジョニング ログ**:Azure AD プロビジョニング サービスによってプロビジョニングされたユーザー、グループ、ロールに関するシステム アクティビティ。 
+この目標を達成するために、Azure Active Directory ポータルでは、次の 3 つのアクティビティ ログにアクセスできます。
 
-- セキュリティ: 
-    - **危険なサインイン**:[危険なサインイン](../identity-protection/overview-identity-protection.md)は、ユーザー アカウントの正当な所有者ではない人によってサインインが試行された可能性があることを示す指標です。
-    - **リスクのフラグ付きユーザー**:[リスクの高いユーザー](../identity-protection/overview-identity-protection.md)は、侵害された可能性があるユーザー アカウントを示す指標です。
+- **[サインイン](concept-sign-ins.md)** - サインインとユーザーのリソース使用状況に関する情報。
+- **[監査](concept-audit-logs.md)** - ユーザーやグループの管理、テナントのリソースに適用された更新など、テナントに適用された変更に関する情報。
+- **[プロビジョニング](concept-provisioning-logs.md)** - ServiceNow でのグループの作成や、Workday からインポートされたユーザーなど、プロビジョニング サービスによって実行されるアクティビティ。
 
-このトピックでは、プロビジョニング ログの概要を説明します。 このログでは、次のような質問に対する回答が提供されます。 
 
-* ServiceNow で正常に作成されたグループ
-* Adobe から正常に削除されたユーザー
-* Active Directory で正常に作成された Workday のユーザー 
+この記事では、プロビジョニング ログの概要を説明します。 
 
-## <a name="prerequisites"></a>前提条件
+
+## <a name="what-can-you-do-with-it"></a>できること
+
+プロビジョニング ログを使用して、次のような質問に対する回答を見つけることができます。
+
+-  ServiceNow で正常に作成されたグループ
+
+-  Adobe から正常に削除されたユーザー
+
+-  Active Directory で正常に作成された Workday のユーザー 
+
+
+## <a name="who-can-access-it"></a>だれがアクセスできるのか。
 
 これらのユーザーは、プロビジョニング ログのデータにアクセスできます。
 
-* アプリケーションの所有者 (所有するアプリケーションのログ)
-* セキュリティ管理者、セキュリティ閲覧者、レポート閲覧者、セキュリティ オペレーター、アプリケーション管理者、クラウド アプリケーション管理者のロールであるユーザー
-* [provisioningLogs アクセス許可](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)を持つカスタム ロールのユーザー
-* グローバル管理者
+- アプリケーションの所有者 (所有するアプリケーションのログ)
 
+- セキュリティ管理者、セキュリティ閲覧者、レポート閲覧者、セキュリティ オペレーター、アプリケーション管理者、クラウド アプリケーション管理者のロールであるユーザー
+
+- [provisioningLogs アクセス許可](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)を持つカスタム ロールのユーザー
+
+- グローバル管理者
+
+## <a name="what-azure-ad-license-do-you-need"></a>必要な Azure AD ライセンス
 
 プロビジョニング アクティビティ レポートを閲覧するには、ご利用のテナントに、Azure AD Premium ライセンスが関連付けられている必要があります。 Azure AD エディションをアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。 
 
 
-## <a name="ways-of-interacting-with-the-provisioning-logs"></a>プロビジョニング ログとの対話方法 
-お客様は、次の 4 つの方法を使用してプロビジョニング ログと対話できます。
+## <a name="how-can-you-access-it"></a>アクセスする方法 
 
-- 次のセクションの説明に従って、Azure portal からログにアクセスします。
+ログ データにアクセスするには、次の方法があります。
+
+- Azure portal
+
 - プロビジョニング ログを [Azure Monitor](../app-provisioning/application-provisioning-log-analytics.md) にストリーミングします。 この方法を使用すると、データ保持期間を延長でき、カスタムのダッシュボード、アラート、クエリを作成できます。
+
 - [Microsoft Graph API](/graph/api/resources/provisioningobjectsummary) のクエリを実行して、プロビジョニング ログを見つけます。
+
 - プロビジョニング ログを CSV または JSON ファイルとしてダウンロードします。
 
-## <a name="access-the-logs-from-the-azure-portal"></a>Azure portal からログにアクセスする
+
+
+## <a name="where-can-you-find-it-in-the-azure-portal"></a>Azure portal での閲覧方法
+
+Azure portal でログにアクセスする方法はいくつかあります。 たとえば、[Azure Active Directory] メニューの **[監視]** セクションでログを開けます。  
+
+![プロビジョニング ログを開く](./media/concept-sign-ins/sign-ins-logs-menu.png)
+
+[https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) から直接サインイン ログにアクセスすることもできます。
+
+
+
+
+
+
+
+
+
+
+
+
 [Azure portal](https://portal.azure.com) の **[Azure Active Directory]** ウィンドウの **[監視]** セクションで **[プロビジョニング ログ]** を選択して、プロビジョニング ログにアクセスできます。 プロビジョニング レコードによっては、ポータルに表示されるまでに最大 2 時間かかるものもあります。
 
 ![プロビジョニング ログにアクセスするための選択を示すスクリーンショット。](./media/concept-provisioning-logs/access-provisioning-logs.png "プロビジョニング ログ")
 
+
+
+## <a name="what-is-the-default-view"></a>既定の表示項目
 
 プロビジョニング ログには、次のものを示す既定のリスト ビューがあります。
 

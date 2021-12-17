@@ -7,15 +7,15 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 03/18/2021
+ms.date: 05/21/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: 0fd28262f4a4b852386fa354037e69c5097109c5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5ce85cf6a238ce3291d7e296ba74e735970c5e64
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104723537"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469872"
 ---
 # <a name="2---create-and-load-search-index-with-javascript"></a>2 - JavaScript を使用して検索インデックスを作成して読み込む
 
@@ -61,14 +61,14 @@ Visual Studio Code 拡張機能を使用して、自分の Search リソース�
 * [npm パッケージ @azure/search-documents](https://www.npmjs.com/package/@azure/search-documents)
 * [リファレンス ドキュメント](/javascript/api/overview/azure/search-documents-readme)
 
-1. Visual Studio Code で、サブディレクトリ `search-web/bulk-insert` 内の `bulk_insert_books.js` ファイルを開き、次の変数を実際の値に置き換えて、Azure Search SDK による認証を行います。
+1. Visual Studio Code で、サブディレクトリ `search-website/bulk-insert` 内の `bulk_insert_books.js` ファイルを開き、次の変数を実際の値に置き換えて、Azure Search SDK による認証を行います。
 
     * YOUR-SEARCH-RESOURCE-NAME
     * YOUR-SEARCH-ADMIN-KEY
 
     :::code language="javascript" source="~/azure-search-javascript-samples/search-website/bulk-insert/bulk_insert_books.js" highlight="16,17" :::
 
-1. プロジェクト ディレクトリのサブディレクトリ `search-web/bulk-insert` のために Visual Studio で統合ターミナルを開き、次のコマンドを実行して依存関係をインストールします。 
+1. プロジェクト ディレクトリのサブディレクトリ `search-website/bulk-insert` のために Visual Studio で統合ターミナルを開き、次のコマンドを実行して依存関係をインストールします。 
 
     ```bash
     npm install 
@@ -76,7 +76,7 @@ Visual Studio Code 拡張機能を使用して、自分の Search リソース�
 
 ## <a name="run-the-bulk-import-script-for-search"></a>Search 用の一括インポート スクリプトを実行する
 
-1. プロジェクト ディレクトリのサブディレクトリ `search-web/bulk-insert` に Visual Studio の統合ターミナルを引き続き使用し、次の bash コマンドを実行して `bulk_insert_books.js` スクリプトを実行します。
+1. プロジェクト ディレクトリのサブディレクトリ `search-website/bulk-insert` に Visual Studio の統合ターミナルを引き続き使用し、次の bash コマンドを実行して `bulk_insert_books.js` スクリプトを実行します。
 
     ```javascript
     npm start
@@ -96,6 +96,14 @@ Visual Studio Code 拡張機能を使用して、自分の Search リソース�
 1. [インデックス]、[ドキュメント]、`good-books` の順に展開してから、ドキュメントを選択して、ドキュメント固有のデータをすべて表示します。
  
     :::image type="content" source="media/tutorial-javascript-create-load-index/visual-studio-code-search-extension-view-docs.png" lightbox="media/tutorial-javascript-create-load-index/visual-studio-code-search-extension-view-docs.png" alt-text="[インデックス]、&quot;good-books&quot; の順に展開してから、ドキュメントを選択します。":::
+
+## <a name="rollback-bulk-import-file-changes"></a>一括インポート ファイルの変更をロールバックする
+
+次の git コマンドを VS Code 統合ターミナルの `bulk-insert` ディレクトリで使用して、変更をロールバックします。 これらはチュートリアルを続ける上で必要ありません。これらのシークレットをリポジトリに保存したりプッシュしたりしないでください。 
+
+```git
+git checkout .
+```
 
 ## <a name="copy-your-search-resource-name"></a>Search リソース名をコピーする
 

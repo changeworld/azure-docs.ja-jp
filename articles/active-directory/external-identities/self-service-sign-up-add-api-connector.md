@@ -5,25 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 07/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c9bbdb831df9c51c6d80e6c441ac7bdd2778428
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 456e02b5d84dfde9534a62ea909da513ff8f1c81
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044551"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746147"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API コネクタをユーザー フローに追加する
 
 [API コネクタ](api-connectors-overview.md)を使用するには、まず API コネクタを作成してから、ユーザー フローで有効にします。
 
 > [!IMPORTANT]
->**2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
+>
+> - **2021 年 7 月 12 日以降**、Azure AD の B2B のお客様が、カスタムまたは基幹業務アプリケーションのセルフサービス サインアップで使用するために新しい Google の統合をセットアップした場合、認証がシステム Web ビューに移動されるまで、Google ID を使用した認証が機能しなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
+> - **2021 年の 9 月 30 日より**、Google は[埋め込みの Web ビューのサインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 自分のアプリで埋め込みの Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B [(外部ユーザーの招待用)](google-federation.md)、または[セルフサービス サインアップ](identity-providers.md)で使用している場合、Google Gmail ユーザーが認証されなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
 
 ## <a name="create-an-api-connector"></a>API コネクタを作成する
 
@@ -32,50 +34,15 @@ ms.locfileid: "105044551"
 3. 左側のメニューで、 **[External Identities]** を選択します。
 4. **[All API connectors]\(すべての API コネクタ\)** を選択し、 **[New API connector]\(新しい API コネクタ\)** を選択します。
 
-   ![新しい API コネクタを追加する](./media/self-service-sign-up-add-api-connector/api-connector-new.png)
+    :::image type="content" source="media/self-service-sign-up-add-api-connector/api-connector-new.png" alt-text="API コネクタの作成時にターゲット URL や表示名などの基本的な構成を指定します。":::
 
 5. 呼び出しの表示名を指定します。 たとえば、「**承認状態の確認**」などです。
 6. API 呼び出しの **[エンドポイント URL]** を指定します。
-7. **[認証の種類]** を選択し、API を呼び出すための認証情報を構成します。 API のセキュリティ保護に関するオプションについては、以下のセクションを参照してください。
+7. **[認証の種類]** を選択し、API を呼び出すための認証情報を構成します。 [API コネクタのセキュリティ保護](self-service-sign-up-secure-api-connector.md)の方法を参照してください。
 
-    ![API コネクタの構成](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
+    :::image type="content" source="media/self-service-sign-up-add-api-connector/api-connector-config.png" alt-text="API コネクタの作成時に認証の構成を指定します。":::
 
 8. **[保存]** を選択します。
-
-## <a name="securing-the-api-endpoint"></a>API エンドポイントのセキュリティ保護
-API エンドポイントを保護するには、HTTP 基本認証または HTTPS クライアント証明書認証 (プレビュー) を使用します。 どちらの場合も、API エンドポイントを呼び出すときに Azure Active Directory によって使用される資格情報を指定します。 次に、API エンドポイントは資格情報を確認し、承認の決定を行います。
-
-### <a name="http-basic-authentication"></a>HTTP 基本認証
-HTTP 基本認証は [RFC 2617](https://tools.ietf.org/html/rfc2617) で定義されています。 Azure Active Directory は、`Authorization` ヘッダー内にクライアント資格情報 (`username` および `password`) を持つ HTTP 要求を送信します。 資格情報は、Base64 でエンコードされた文字列 `username:password` として書式設定されます。 API は、API 呼び出しを拒否するかどうかを判断するために、これらの値をチェックします。
-
-### <a name="https-client-certificate-authentication-preview"></a>HTTPS クライアント証明書認証 (プレビュー)
-
-> [!IMPORTANT]
-> この機能はプレビュー段階であり、サービス レベル アグリーメントなしで提供されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-クライアント証明書の認証は証明書ベースの相互認証方法であり、クライアントがクライアント証明書をサーバーに提供し、その ID を証明します。 この場合、Azure Active Directory は API コネクタ構成の一部としてアップロードした証明書を使用します。 これは、SSL ハンドシェイクの一部として発生します。 API サービスは、その後、適切な証明書を持つサービスのみにアクセスを制限できます。 クライアント証明書は、PKCS12 (PFX) X.509 デジタル証明書です。 運用環境では、証明機関によって署名されている必要があります。 
-
-証明書を作成するには、[Azure Key Vault](../../key-vault/certificates/create-certificate.md) を使用できます。これには、自己署名証明書のオプションと、署名された証明書の証明書発行者プロバイダーとの統合があります。 推奨設定には次が含まれます。
-- **サブジェクト**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
-- **コンテンツの種類**: `PKCS #12`
-- **有効期間のアクション タイプ**: `Email all contacts at a given percentage lifetime` または `Email all contacts a given number of days before expiry`
-- **キーの種類**: `RSA`
-- **キー サイズ**: `2048`
-- **エクスポート可能な秘密キー**: `Yes` (pfx ファイルをエクスポートできるようにするため)
-
-その後、[証明書をエクスポート](../../key-vault/certificates/how-to-export-certificate.md)できます。 別の選択肢として、PowerShell の [New-SelfSignedCertificate コマンドレット](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional)を使用して自己署名証明書を生成することもできます。
-
-証明書を取得したら、それを API コネクタ構成の一部としてアップロードできます。 パスワードは、パスワードで保護されている証明書ファイルにのみ必要です。
-
-API エンドポイントを保護するために、API では、送信されたクライアント証明書に基づいて承認が実装される必要があります。 Azure App Service と Azure Functions については、[TLS 相互認証の構成](../../app-service/app-service-web-configure-tls-mutual-auth.md)に関するページで、*API コードから証明書を有効化および検証* する方法をご覧ください。  また、Azure API Management を使用して API を保護し、ポリシー式を使用して、必要な値に対する [クライアント証明書のプロパティを確認](
-../../api-management/api-management-howto-mutual-certificates-for-clients.md) することもできます。
- 
-証明書の有効期限がまもなく切れることを知らせるリマインダー アラートを設定することをお勧めします。 新しい証明書を生成して、上記の手順を繰り返す必要があります。 API サービスでは、新しい証明書がデプロイされている間、一時的に古い証明書と新しい証明書の受け入れを続けることができます。 既存の API コネクタに新しい証明書をアップロードするには、**API コネクタ** ですべての API コネクタを選択し、 **[新しい証明書のアップロード]** をクリックします。 開始日は過ぎていても有効期限が切れていない、直近でアップロードされた証明書が、Azure Active Directory によって自動的に使用されます。
-
-### <a name="api-key"></a>API キー
-一部のサービスは、開発時に HTTP エンドポイントへのアクセスを難読化するために "API キー" メカニズムを使用しています。 [Azure Functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) に対しては、`code` を **エンドポイント URL** にクエリ パラメーターとして含めることで、これを実現できます。 たとえば、`https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b> です。 
-
-これは、運用環境で単独で使用する必要があるメカニズムではありません。 そのため、基本認証または証明書認証の構成は常に必要です。 開発上の目的により、いずれの認証方法も実装しない場合 (非推奨) は、基本認証を選択し、(API で承認を実装している 間は API が無視できる) `username` と `password` に一時的な値を使用します。
 
 ## <a name="the-request-sent-to-your-api"></a>API に送信される要求
 API コネクタによってユーザー属性 ("要求") が **HTTP POST** 要求として具体化され、JSON 本文のキーと値のペアとして送信されます。 属性は [Microsoft Graph](/graph/api/resources/user#properties) ユーザー プロパティと同様にシリアル化されます。 
@@ -113,13 +80,16 @@ Content-type: application/json
 
 カスタム属性は、ディレクトリ内に **extension_\<extensions-app-id>_AttributeName** の形式で存在しています。 API では、これと同じシリアル化された形式で要求を受け取ることを想定しています。 カスタム属性の詳細については、[セルフサービス サインアップ フローのカスタム属性の定義](user-flow-add-custom-attributes.md)に関するページを参照してください。
 
-また、**UI ロケール ("ui_locales")** 要求は、すべての要求で既定で送信されます。 これによって、デバイスで構成されているユーザーのロケールがわかります。API ではこれを使用して、国際化応答を返すことができます。
+さらに、通常、要求はすべての要求で送信されます。
+- **UI ロケール ('ui_locales')** - デバイスに構成されているエンドユーザーのロケール。 これを API で使用して、国際化された応答を返すことができます。
+<!-- - **Step ('step')** - The step or point on the user flow that the API connector was invoked for. Values include:
+  - `PostFederationSignup` - corresponds to "After federating with an identity provider during sign-up"
+  - `PostAttributeCollection` - corresponds to "Before creating the user"
+- **Client ID ('client_id')** - The `appId` value of the application that an end-user is authenticating to in a user flow. This is *not* the resource application's `appId` in access tokens. -->
+- **メール アドレス ('email')** または [**ID ('identities')** ](/graph/api/resources/objectidentity) - これらの要求は、アプリケーションに対して認証を行っているエンドユーザーを識別するために API で使用することができます。
 
 > [!IMPORTANT]
 > API エンドポイントが呼び出されたときに要求に値がない場合、要求は API に送信されません。 API は、要求に要求が含まれていないケースを明示的に確認して処理するように設計する必要があります。
-
-> [!TIP] 
-> [**identities ("identities")**](/graph/api/resources/objectidentity) および **Email Address ("email")** の各要求は、テナントにアカウントを作成する前にユーザーを識別するために API によって使用できます。 "identities" 要求は、ユーザーが Google または Facebook などの ID プロバイダーで認証されるときに送信されます。 "email" は常に送信されます。
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>ユーザー フローで API コネクタを有効にする
 
@@ -131,16 +101,16 @@ Content-type: application/json
 4. **[ユーザー フロー]** を選択し、API コネクタを追加するユーザー フローを選択します。
 5. **[API connectors]\(API コネクタ\)** を選択し、ユーザー フローの次の手順で呼び出す API エンドポイントを選択します。
 
-   - **ID プロバイダーを使用してサインインした後**
+   - **サインアップ時に ID プロバイダーとのフェデレーションを行った後**
    - **ユーザーを作成する前**
 
-   ![API をユーザー フローに追加する](./media/self-service-sign-up-add-api-connector/api-connectors-user-flow-select.png)
+    :::image type="content" source="media/self-service-sign-up-add-api-connector/api-connectors-user-flow-select.png" alt-text="'ユーザーを作成する前' のようなユーザー フローの手順で使用する API コネクタの選択。":::
 
 6. **[保存]** を選択します。
 
-## <a name="after-signing-in-with-an-identity-provider"></a>ID プロバイダーを使用してサインインした後
+## <a name="after-federating-with-an-identity-provider-during-sign-up"></a>サインアップ時に ID プロバイダーとのフェデレーションを行った後
 
-サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD など) でユーザーが認証された直後に呼び出されます。 このステップは、***属性コレクション ページ*** (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 ユーザーがローカル アカウントを使用して登録している場合、このステップは呼び出されません。
+サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD など) でユーザーが認証された直後に呼び出されます。 このステップは、***属性コレクション ページ*** (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>この手順で API に送信される要求の例
 ```http
@@ -271,7 +241,7 @@ Content-type: application/json
 | version                                            | String            | はい      | API のバージョン。                                                                                                                                                                                                                                                                |
 | action                                             | String            | はい      | 値は `Continue` とする必要があります。                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 値は、API コネクタの構成の **[Claim to receive]\(受信する要求\)** とユーザー フローの **[ユーザー属性]** として選択した場合にディレクトリに格納できます。 **[アプリケーション要求]** として選択されている場合、値をトークンで返すことができます。                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | 返される要求に `_<extensions-app-id>_` が含まれている必要はありません。 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 アプリケーションの一部として構成されている場合は、トークンでも返すことができます。  |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | `_<extensions-app-id>_` は "*省略可能*" であり、要求に含める必要はありません。 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。  |
 
 ### <a name="example-of-a-blocking-response"></a>ブロック応答の例
 
@@ -295,7 +265,7 @@ Content-type: application/json
 
 **ブロック応答を使用したエンド ユーザー エクスペリエンス**
 
-![ブロック ページの例](./media/api-connectors-overview/blocking-page-response.png)
+:::image type="content" source="media/api-connectors-overview/blocking-page-response.png" alt-text="API からブロック応答が返された後のエンドユーザー エクスペリエンスの画像例。":::
 
 ### <a name="example-of-a-validation-error-response"></a>検証エラー応答の例
 
@@ -315,7 +285,7 @@ Content-type: application/json
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | version     | String  | はい      | API のバージョン。                                                    |
 | action      | String  | はい      | 値は `ValidationError` とする必要があります。                                           |
-| status      | Integer | はい      | ValidationError 応答の値 `400` である必要があります。                        |
+| status      | Integer/String | はい      | ValidationError 応答の値は、`400` または `"400"` である必要があります。  |
 | userMessage | String  | はい      | ユーザーに表示するメッセージ。                                            |
 
 > [!NOTE]
@@ -323,28 +293,34 @@ Content-type: application/json
 
 **検証エラー応答を使用したエンド ユーザー エクスペリエンス**
 
-![検証ページの例](./media/api-connectors-overview/validation-error-postal-code.png)
-
+:::image type="content" source="media/api-connectors-overview/validation-error-postal-code.png" alt-text="API から検証エラーが返された後のエンドユーザー エクスペリエンスの画像例。":::
 
 ## <a name="best-practices-and-how-to-troubleshoot"></a>ベスト プラクティスとトラブルシューティングの方法
 
 ### <a name="using-serverless-cloud-functions"></a>サーバーレス クラウド機能の使用
-Azure Functions の HTTP トリガーなどのサーバーレス機能を使用すると、API コネクタで使用する API エンドポイントを簡単に作成することができます。 サーバーレス クラウド機能を使用して、[たとえば](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)、検証ロジックを実行したり、特定の電子メール ドメインへのサインアップを制限したりすることができます。 より複雑なシナリオには、サーバーレス クラウド機能を使用して、他の Web API、ユーザー ストア、および他のクラウド サービスを呼び出して起動することもできます。
+
+[Azure Functions の HTTP トリガー](../../azure-functions/functions-bindings-http-webhook-trigger.md)などのサーバーレス機能を使用すると、API コネクタで使用する API エンドポイントを作成できます。 サーバーレス クラウド機能を使用して、[たとえば](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)、検証ロジックを実行したり、特定の電子メール ドメインへのサインアップを制限したりすることができます。 複雑なシナリオには、サーバーレス クラウド機能を使用して、他の Web API、データ ストア、および他のクラウド サービスを呼び出して起動することもできます。
 
 ### <a name="best-practices"></a>ベスト プラクティス
 次のことを確認します。
 * API は、上で説明した API 要求と応答のコントラクトに従っています。 
 * API コネクタの **エンドポイント URL** によって、正確な API エンドポイントが指定されます。
-* API によって、受け取った要求の null 値が明示的に確認されます。
+* API によって、それが依存する受信済み要求の null 値が明示的に確認されます。
+* API には、[API コネクタのセキュリティ保護](self-service-sign-up-secure-api-connector.md)に関する記事で説明されている認証方法が実装されています。
 * API が可能な限り迅速に応答することで、スムーズなユーザー エクスペリエンスが保証されます。
-    * サーバーレス機能またはスケーラブルな Web サービスを使用している場合は、API を運用環境で "起動状態" または "ウォーム状態" に保つホスティング プランを 使用します。 Azure Functions の場合は、[Premium プラン](../../azure-functions/functions-scale.md)を使用することをお勧めします。
-
+    * Azure AD 側は、応答を受信するために最大 "*20 秒間*" 待機します。 何も受信しない場合は、API の呼び出しが *もう一度実行 (再試行)* されます。
+    * サーバーレス機能またはスケーラブルな Web サービスを使用している場合は、API を運用環境で "起動状態" または "ウォーム状態" に保つホスティング プランを使用します。 Azure Functions の場合は、少なくとも [Premium プラン](../../azure-functions/functions-scale.md)を使用することをお勧めします。
+* API の高可用性を保証します。
+* ダウンストリームの API、データベース、または API のその他の依存関係のパフォーマンスを監視し、最適化します。
+* エンドポイントは、Azure AD TLS と暗号のセキュリティ要件に準拠している必要があります。 詳細については、[TLS と暗号スイートの要件](../../active-directory-b2c/https-cipher-tls-requirements.md)に関するページを参照してください。 
+ 
 ### <a name="use-logging"></a>ログの使用
+
 一般に、予期しないエラー コード、例外、およびパフォーマンスの低下について API を監視するには、ご使用の Web API サービスによって有効になっているログ ツール ([Application insights](../../azure-functions/functions-monitoring.md) など) を使うと便利です。
 * HTTP 200 または 400 以外の HTTP 状態コードを監視します。
 * 401 または 403 HTTP 状態コードは、通常、認証に問題があることを示しています。 API コネクタで API の認証レイヤーとそれに対応する構成を再確認します。
 * 開発では、必要に応じて、より積極的なログ レベル ("トレース" や "デバッグ" など) を使用します。
-* 長い応答時間について API を監視します。
+* 長い応答時間について API を監視します。 
 
 ## <a name="next-steps"></a>次のステップ
 - [カスタム承認ワークフローをセルフサービス サインアップに追加する](self-service-sign-up-add-approvals.md)方法を確認する

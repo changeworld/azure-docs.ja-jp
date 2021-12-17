@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/21/2018
+ms.date: 08/17/2021
 ms.author: alkohli
-ms.openlocfilehash: d683f49cadb384ef59d3bae819156733691813cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 66c9394c446f5fa74662fb39815a4cd6d121c008
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88183498"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821573"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple Data Manager ソリューションの概要
 
@@ -27,7 +27,7 @@ ms.locfileid: "88183498"
 
 Microsoft Azure StorSimple では、クラウド ストレージがオンプレミス ソリューションの拡張として使われ、オンプレミス ストレージとクラウドをまたがってデータが自動的に階層化されます。 最大の効率性とコスト削減のため、データは重複除去および圧縮された形式でクラウドに格納されます。 データは StorSimple 形式で格納されるため、ユーザーが使う可能性のある他のクラウド アプリケーションですぐに利用することはできません。
 
-StorSimple Data Manager を使うと、クラウドの StorSimple 形式のデータにシームレスにアクセスして使うことができます。 そのために、Data Manager は StorSimple 形式をネイティブな BLOB とファイルに変換します。これらは、Azure Media Services、Azure HDInsights、Azure Machine Learning などの他のサービスで使うことができます。
+StorSimple Data Manager を使うと、クラウドの StorSimple 形式のデータにシームレスにアクセスして使うことができます。 そのために、Data Manager は StorSimple 形式をネイティブな BLOB とファイルに変換します。これらは、Azure Media Services、Azure HDInsight、Azure Machine Learning などの他のサービスで使うことができます。
 
 この記事では、StorSimple Data Manager ソリューションの概要について説明します。 また、このサービスを使用して、StorSimple データおよびその他の Azure サービスをクラウドで使用するアプリケーションを作成する方法についても説明します。
 
@@ -65,7 +65,7 @@ StorSimple Data Manager は、次の 7 つのリージョンで利用できま�
 ## <a name="choosing-a-region"></a>リージョンの選択
 
 推奨事項は次のとおりです。
- - ソース ストレージ アカウント (StorSimple デバイスに関連付けられているアカウント) とターゲット ストレージ アカウント (ネイティブ形式のデータを格納するアカウント) を、同じ Azure リージョンにします。
+ - ソース ストレージ アカウント (StorSimple デバイスに関連付けられているもの) とターゲット ストレージ アカウント (ネイティブ形式のデータを格納するところ) を、同じ Azure リージョンにします。
  - StorSimple のストレージ アカウントが含まれているリージョンで、Data Manager とジョブ定義を起動します。 それが不可能な場合は、最も近い Azure リージョンで Data Manager を起動した後、StorSimple のストレージ アカウントと同じリージョンでジョブ定義を作成します。 
 
     StorSimple のストレージ アカウントが、ジョブ定義の作成をサポートしている 26 のリージョンにない場合は、StorSimple Data Manager を実行しないことをお勧めします。待機時間が長くなり、送信料金が上がる可能性があります。
@@ -90,11 +90,19 @@ StorSimple データ マネージャーは、個人情報の収集も表示も�
 
 ## <a name="known-limitations"></a>既知の制限事項
 
-現在、このサービスには、次のような制限があります。
-- StorSimple Data Manager は現在、bitlocker で暗号化されたボリュームに対しては動作しません。 暗号化されたドライブに対してこのサービスを実行しようとすると、ジョブが失敗したというメッセージが表示されます。
+StorSimple Data Manager には、次の制限があります。
+- このサービスは、BitLocker で暗号化されたボリュームでは機能しません。 暗号化されたドライブに対してこのサービスを実行しようとすると、ジョブが失敗したというメッセージが表示されます。
+- StorSimple スナップショットが破損している場合、サービスではデータをコピーできません。
+- StorSimple バックアップが保存されているストレージ アカウントではファイアウォールを有効にできません。 ストレージ アカウントでファイアウォールを有効にすると、ジョブが失敗します。 
 - ファイル (ACL を含む) のメタデータが、変換されたデータに 保持されない場合があります。
 - このサービスは、NTFS ボリュームに対してのみ動作します。
+- StorSimple Data Manager では、仮想ハード ディスク (VHD) を移行できません。 VHD を移行するには、Azure Data Box か Azure File Sync サービスを使用できます。
 - ファイル パスの長さは、256 文字未満にする必要があります。そうしないと、ジョブが失敗します。
+- BLOB 転送の制限事項:
+  - BLOB でサポートされるファイルの最大サイズは 4.7 TiB です。
+  - 使用可能な最新のバックアップ セットが使用されます。
+  - ファイル メタデータは、ファイルの内容と一緒にアップロードされません。
+  - アップロードされる BLOB の種類はブロック BLOB です。 そのため、アップロードされた VHD を Azure Virtual Machines で使用することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

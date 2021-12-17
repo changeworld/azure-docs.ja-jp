@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2021
-ms.openlocfilehash: 83e206a5fd7b34da0b0ac8590d5271a554855d3e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 08/24/2021
+ms.openlocfilehash: 4a77ca4a3318e9ea583bd113d373815860e8d591
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580739"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767835"
 ---
 # <a name="create-an-azure-cognitive-search-service-in-the-portal"></a>ポータルで Azure Cognitive Search サービスを作成する
 
 [Azure Cognitive Search](search-what-is-azure-search.md) は、カスタム アプリにフルテキスト検索エクスペリエンスを追加する際に使用される Azure リソースです。 データや二次的な処理を提供する他の Azure サービス、ネットワーク サーバー上のアプリ、他のクラウド プラットフォーム上で実行されているソフトウェアと簡単に統合できます。
 
-検索サービスは、[Azure portal](https://portal.azure.com/) を使用して作成できます。この記事ではこれを取り上げます。 また、[Azure PowerShell](search-manage-powershell.md)、[Azure CLI](/cli/azure/search)、[Management REST API](/rest/api/searchmanagement/)、または [Azure Resource Manager サービス テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)を使用することもできます。
+検索サービスは、[Azure portal](https://portal.azure.com/) を使用して作成できます。この記事ではこれを取り上げます。 また、[Azure PowerShell](search-manage-powershell.md)、[Azure CLI](/cli/azure/search)、[Management REST API](/rest/api/searchmanagement/)、または [Azure Resource Manager サービス テンプレート](https://azure.microsoft.com/resources/templates/azure-search-create/)を使用することもできます。
 
 [![アニメーション GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -28,16 +28,20 @@ ms.locfileid: "106580739"
 次のサービス プロパティは、サービスの有効期間にわたって固定されます。これらのいずれかを変更するには、新しいサービスが必要です。 これらは固定されているため、各プロパティを入力するときに使用の影響を考慮してください。
 
 + サービス名は URL エンドポイントの一部になります (有用なサービス名については、[ヒントを再確認](#name-the-service)してください)。
-+ [サービス レベル](search-sku-tier.md)によって料金が変わり、容量の上限が設定されます。 一部の機能は、Free レベルでは使用できません。
++ [サービス レベル](search-sku-tier.md) (Basic、Standard など) によって、基になる物理ハードウェアの特性が決まります。 そのため、レベルの選択によって料金が変わり、容量の上限が設定されます。 一部の機能は、Free レベルでは使用できません。
 + サービス リージョンによって、特定のシナリオの可用性が決まる場合があります。 [高セキュリティ機能](search-security-overview.md)または [AI エンリッチメント](cognitive-search-concept-intro.md)が必要な場合は、Azure Cognitive Search を他のサービスと同じリージョンに作成するか、対象の機能が提供されているリージョンに作成する必要があります。 
 
 ## <a name="subscribe-free-or-paid"></a>サブスクリプション (無料または有料)
 
-[無料の Azure アカウントを開き](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、無料クレジットを使って有料の Azure サービスを試用できます。 このクレジットを使い切った後は、アカウントを保持したまま、Websites などの無料の Azure サービスを使用できます。 明示的に設定を変更して課金を了承しない限り、クレジット カードに課金されることはありません。
+無料で検索を試してみるには、次の 2 つのオプションがあります。
 
-[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。 MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。 
++ [無料の Azure アカウントを開き](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、無料クレジットを使って有料の Azure サービスを試用できます。 このクレジットを使い切った後は、アカウントを保持したまま、Websites などの無料の Azure サービスを使用できます。 明示的に設定を変更して課金を了承しない限り、クレジット カードに課金されることはありません。
 
-## <a name="find-azure-cognitive-search"></a>Azure Cognitive Search を検索する
++ または、[Visual Studio サブスクリプションで Azure クレジットをアクティブにします](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。 Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。 
+
+課金対象レベル (Basic 以上) を選択してリソースを作成すると、有料 (つまり課金対象) の検索が有効になります。
+
+## <a name="find-the-azure-cognitive-search-offering"></a>Azure Cognitive Search オファリングを見つける
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -83,25 +87,25 @@ ms.locfileid: "106580739"
 
 ## <a name="choose-a-location"></a>場所を選択する
 
-Azure Cognitive Search は、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」に記載されているように、ほとんどのリージョンで利用できます。 一般に、複数の Azure サービスを使用している場合は、データまたはアプリケーション サービスもホストしているリージョンを選択します。 そのようにすることで、送信データの帯域幅使用料を最小限またはゼロに抑えられます (サービスが同じリージョンにある場合、送信データには課金されません)。
+Azure Cognitive Search は、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」に記載されているように、ほとんどのリージョンで利用できます。 
 
-+ [AI エンリッチメント](cognitive-search-concept-intro.md)を使用するには、Cognitive Services が Azure Cognitive Search と同じ物理リージョンに存在する必要があります。 ごくわずかですが、どちらか一方が提供されていないリージョンがあります。 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」ページで、縦にチェック マークが 2 つ並んでいれば、両方の機能が利用できます。 どちらも利用できなければ、チェックマークは表示されません。
+原則として、複数の Azure サービスを使用している場合は、データまたはアプリケーション サービスもホストしているリージョンを選択します。 そのようにすることで、送信データの帯域幅使用料を最小限またはゼロに抑えられます (サービスが同じリージョンにある場合、送信データには課金されません)。
+
++ [AI エンリッチメント](cognitive-search-concept-intro.md)を使用するには、Cognitive Services が Azure Cognitive Search と同じ物理リージョンに存在する必要があります。 ごくわずかですが、どちらか一方が提供されて "*いない*" リージョンがあります。 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」ページで、縦にチェック マークが 2 つ並んでいれば、両方の機能が利用できます。 どちらも利用できなければ、チェックマークは表示されません。
 
   :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="リージョン別の提供状況" border="true":::
 
 + 事業継続とディザスター リカバリー (BCDR) の要件は、[リージョン ペア](../best-practices-availability-paired-regions.md#azure-regional-pairs)に複数の検索サービスを作成することによって満たすことができます。 たとえば、北米で活動している場合は、各検索サービスについて米国東部と米国西部や、米国中北部と米国中南部などを選択できます。
 
-いくつかの機能は、リージョンによっては利用が制限されています。 制限事項については、機能のドキュメントを参照してください。
-
-+ [二重暗号化](search-security-overview.md#double-encryption)
+リージョンに基づいて提供が制限されている機能を以下に示します。 サポートされているリージョンについては、機能の記事に記載されています。 
 
 + [可用性ゾーン (「パフォーマンスのためのスケール」)](search-performance-optimization.md#availability-zones)
 
 ## <a name="choose-a-pricing-tier"></a>Choose a pricing tier
 
-Azure Cognitive Search は現在、[複数の価格レベル](https://azure.microsoft.com/pricing/details/search/) (Free、Basic、Standard、ストレージ最適化) で提供されています。 レベルごとに独自の [容量と制限](search-limits-quotas-capacity.md)があります。 ガイダンスについては、[価格レベルの選択](search-sku-tier.md) に関する記事を参照してください。
+Azure Cognitive Search は現在、[複数の価格レベル](https://azure.microsoft.com/pricing/details/search/) (Free、Basic、Standard、ストレージ最適化) で提供されています。 レベルごとに独自の [容量と制限](search-limits-quotas-capacity.md)があります。 また、選択したレベルが特定の機能の使用可否に影響することもあります。 ガイダンスについては、「[階層による機能の使用の可否](search-sku-tier.md#feature-availability-by-tier)」を参照してください。
 
-運用環境のワークロードでは Basic と Standard が最も一般的な選択肢ですが、ほとんどのお客様は Free サービスから始めています。 レベルごとの主な違いは、パーティション サイズと速度、そして作成できるオブジェクトの数に対する制限です。
+運用環境では、Basic と Standard が最も一般的な選択肢ですが、評価目的で最初は無料サービスから始めるお客様も多数います。 課金対象のレベルごとの主な違いは、パーティション サイズと速度、そして作成できるオブジェクトの数に対する制限です。
 
 サービスの作成後に価格レベルを変更することはできないことに注意してください。 高いレベルまたは低いレベルが必要な場合は、サービスを作成し直す必要があります。
 
@@ -121,7 +125,7 @@ Azure Cognitive Search は現在、[複数の価格レベル](https://azure.micr
 
 1. **[概要]** ページの右側から、URL エンドポイントを探してコピーします。
 
-1. **[キー]** のページで、いずれかの管理者キー (同等) をコピーします。 ご利用のサービスのオブジェクトを作成、更新、削除するためには、管理者の API キーが必要です。 これに対し、クエリ キーはインデックス コンテンツへの読み取りアクセスを提供します。
+1. **[キー]** のページで、いずれかの管理者キー (同等) をコピーします。 サービスのオブジェクトを作成、更新、削除するには、管理者の API キーが必要です。 これに対し、クエリ キーはインデックス コンテンツへの読み取りアクセスを提供します。
 
    :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="URL エンドポイントを含むサービスの概要ページ" border="false":::
 

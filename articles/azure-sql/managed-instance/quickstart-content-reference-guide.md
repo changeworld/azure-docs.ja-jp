@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: 'Azure SQL Managed Instance の使用を開始するのに役立つコンテンツのリファレンス。 '
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: quickstart
 author: davidtrigano
 ms.author: datrigan
-ms.reviewer: vanto
+ms.reviewer: vanto, mathoma
 ms.date: 07/11/2019
-ms.openlocfilehash: ec767e5f3a88c52f9686eec8f7e458ab517ee35f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5093dc4b3e401c90e06234b33cdd996ff4a9d781
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784337"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114689696"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance の使用を開始する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -74,7 +74,7 @@ SQL Managed Instance をデプロイする VNet とサブネットが既にあ�
 - パフォーマンス テスト - ソース SQL Server インスタンスのベースライン パフォーマンス メトリックを測定し、データベースの移行先である SQL Managed Instance のパフォーマンス メトリックと比較する必要があります。 詳しくは、[best practices for performance comparison (パフォーマンス比較のベスト プラクティス)](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) に関する記事をご覧ください。
 - オンライン移行 - この記事で説明されているネイティブの `RESTORE` の場合、データベースが復元される (そして、まだ Azure Blob Storage に格納されていない場合は Azure Blob Storage にコピーされる) まで待つ必要があります。 このため、特に大規模なデータベースでは、アプリケーションに多少のダウンタイムが発生します。 運用データベースを移動するには、[データ移行サービス (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%2fazure%2fsql-database%2ftoc.json) を使用して、最小限のダウンタイムでデータベースを移行します。 DMS は、ソース データベースで行われた変更を、復元する SQL Managed Instance データベースに増分方式でプッシュすることによってこれを実現します。 この方法であれば、最小限のダウンタイムでアプリケーションをソースからターゲットのデータベースにすばやく切り替えることができます。
 
-[推奨される移行プロセス](migrate-to-instance-from-sql-server.md)の詳細を確認してください。
+[推奨される移行プロセス](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)の詳細を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

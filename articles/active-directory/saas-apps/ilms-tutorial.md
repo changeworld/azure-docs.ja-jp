@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 06/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 7289fe2ec1f39679dcec95f1f48a6efa9ed0cdfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c50aa60a67fb7f4508f17f782cdd02bff35241b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92460344"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132317471"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>チュートリアル:iLMS と Azure Active Directory の統合
 
@@ -26,62 +26,65 @@ ms.locfileid: "92460344"
 * ユーザーが自分の Azure AD アカウントを使用して iLMS に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-
 ## <a name="prerequisites"></a>前提条件
 
 開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 サブスクリプションをお持ちでない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間の無料試用版を入手できます。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * iLMS でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 iLMS では、**SP と IDP** によって開始される SSO がサポートされます
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-## <a name="adding-ilms-from-the-gallery"></a>ギャラリーからの iLMS の追加
+* iLMS では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+
+## <a name="add-ilms-from-the-gallery"></a>ギャラリーからの iLMS の追加
 
 Azure AD への iLMS の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に iLMS を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**iLMS**」と入力します。
 1. 結果のパネルから **[iLMS]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-ilms"></a>iLMS の Azure AD SSO の構成とテスト
 
-**Britta Simon** というテスト ユーザーを使用して、iLMS で Azure AD の SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと iLMS の関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、iLMS に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと iLMS の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-iLMS で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+iLMS に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-2. **[iLMS SSO の構成](#configure-ilms-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[iLMS のテスト ユーザーの作成](#create-ilms-test-user)** - iLMS で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[iLMS SSO の構成](#configure-ilms-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[iLMS のテスト ユーザーの作成](#create-ilms-test-user)** - iLMS で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **iLMS** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **iLMS** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** ページで、アプリケーションを **IDP** Initiated モードで構成する場合は、次の手順を行います。
 
     a. **[識別子]** ボックスに、iLMS 管理ポータルで [SAML settings]\(SAML 設定\) の **[Service Provider]\(サービス プロバイダー\)** セクションからコピーした **[Identifier]\(識別子\)** の値を貼り付けます。
 
-    b. **[応答 URL]** ボックスに、iLMS 管理ポータルで [SAML settings]\(SAML 設定\) の **[Service Provider]\(サービス プロバイダー\)** セクションからコピーした `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx` という形式の **[Endpoint (URL)]\(エンドポイント (URL)\)** の値を貼り付けます。
+    b. **[応答 URL]** ボックスに、iLMS 管理ポータルで [SAML settings]\(SAML 設定\) の **[Service Provider]\(サービス プロバイダー\)** セクションからコピーした次の形式の **[Endpoint (URL)]\(エンドポイント (URL)\)** の値を貼り付けます`https://www.inspiredlms.com/Login/<INSTANCE_NAME>/consumer.aspx`。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、iLMS 管理ポータルで [SAML settings]\(SAML 設定\) の **[Service Provider]\(サービス プロバイダー\)** セクションからコピーした `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx` という形式の **[Endpoint (URL)]\(エンドポイント (URL)\)** の値を貼り付けます。
+    **[サインオン URL]** ボックスに、iLMS 管理ポータルで [SAML settings]\(SAML 設定\) の **[Service Provider]\(サービス プロバイダー\)** セクションからコピーした次の形式の **[Endpoint (URL)]\(エンドポイント (URL)\)** の値を貼り付けます`https://www.inspiredlms.com/Login/<INSTANCE_NAME>/consumer.aspx`。
 
 1. iLMS アプリケーションは、JIT プロビジョニングを有効にするために特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
@@ -118,54 +121,6 @@ iLMS で Azure AD SSO を構成してテストするには、次の構成要素�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
-
-### <a name="configure-ilms-sso"></a>iLMS の SSO の構成
-
-1. 別の Web ブラウザー ウィンドウで、**iLMS 管理者ポータル** に管理者としてサインインします。
-
-2. **[Settings (設定)]** タブの **[SSO:SAML]** をクリックして SAML 設定を開き、次の手順を実行します。
-
-    ![i L M S 設定タブを示すスクリーンショット (S S O SAML を選択可能)。](./media/ilms-tutorial/1.png)
-
-3. **[Service Provider (サービス プロバイダー)]** セクションを展開し、 **[Identifier (識別子)]** と **[Endpoint (URL) (エンドポイント (URL))]** の値をコピーします。
-
-    ![値を取得できる [SAML Settings]\(SAML 設定\) を示すスクリーンショット。](./media/ilms-tutorial/2.png) 
-
-4. **[Identity Provider (ID プロバイダー)]** セクションで、 **[Import Metadata (メタデータのインポート)]** をクリックします。
-
-5. Azure portal で **[SAML 署名証明書]** セクションからダウンロードした **フェデレーション メタデータ** ファイルを選択します。
-
-    ![メタデータ ファイルを選択できる [SAML Settings]\(SAML 設定\) を示すスクリーンショット。](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
-
-6. JIT プロビジョニングを有効にして未認識のユーザーの iLMS アカウントを作成する場合は、次の手順に従います。
-
-    a. **[Create Un-recognized User Account (未認識のユーザー アカウントの作成)]** をクリックします。
-
-    ![[Create Un-recognized User Account]\(未認識のユーザー アカウントの作成\) オプションを示すスクリーンショット。](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
-
-    b. Azure AD の属性を ILMS の属性にマップします。 属性欄に、属性名または既定値を指定します。
-
-    c. **[Business Rules (ビジネス ルール)]** タブに移動し、次の手順を実行します。
-
-    ![この手順での情報を入力できる [Business Rules]\(ビジネス ルール\) 設定を示すスクリーンショット。](./media/ilms-tutorial/5.png)
-
-    d. シングル サインオンの時点で存在していないリージョン、事業部、および部署を作成するには、 **[Create Un-recognized Regions, Divisions and Departments (未認識のリージョン、事業部、および部署)]** をオンにします。
-
-    e. シングル サインオンのたびにユーザー プロファイルが更新されるように指定するには、 **[Update User Profile During Sign-in (サインイン中にユーザー プロファイルを更新する)]** をオンにします。
-
-    f. **[Update Blank Values for Non Mandatory Fields in User Profile]\(ユーザー プロファイルの必須フィールド以外の空白の値を更新する\)** オプションをオンにした場合、サインイン時に空白であるオプションのプロファイル フィールドによって、ユーザーの iLMS プロファイルのオプションのフィールドが空白の値を含むように更新されます。
-
-    g. エラー通知メールを受信する場合は、 **[Send Error Notification Email (エラー通知メールを送信する)]** をオンにし、ユーザーのメール アドレスを入力します。
-
-7. **[Save (保存)]** ボタンをクリックして、設定を保存します。
-
-    ![[Save]\(保存\) ボタンを示すスクリーンショット。](./media/ilms-tutorial/save.png)
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal で Britta Simon というテスト ユーザーを作成します。
@@ -180,21 +135,57 @@ iLMS で Azure AD SSO を構成してテストするには、次の構成要素�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に iLMS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に iLMS へのアクセスを許可することで、Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[iLMS]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-ilms-sso"></a>iLMS の SSO の構成
+
+1. 別の Web ブラウザー ウィンドウで、**iLMS 管理者ポータル** に管理者としてサインインします。
+
+2. **[Settings (設定)]** タブの **[SSO:SAML]** をクリックして SAML 設定を開き、次の手順を実行します。
+
+    ![i L M S 設定タブを示すスクリーンショット (S S O SAML を選択可能)。](./media/ilms-tutorial/settings.png)
+
+3. **[Service Provider (サービス プロバイダー)]** セクションを展開し、 **[Identifier (識別子)]** と **[Endpoint (URL) (エンドポイント (URL))]** の値をコピーします。
+
+    ![値を取得できる [SAML Settings]\(SAML 設定\) を示すスクリーンショット。](./media/ilms-tutorial/values.png) 
+
+4. **[Identity Provider (ID プロバイダー)]** セクションで、 **[Import Metadata (メタデータのインポート)]** をクリックします。
+
+5. Azure portal で **[SAML 署名証明書]** セクションからダウンロードした **フェデレーション メタデータ** ファイルを選択します。
+
+    ![メタデータ ファイルを選択できる [SAML Settings]\(SAML 設定\) を示すスクリーンショット。](./media/ilms-tutorial/certificate.png)
+
+6. JIT プロビジョニングを有効にして未認識のユーザーの iLMS アカウントを作成する場合は、次の手順に従います。
+
+    a. **[Create Un-recognized User Account (未認識のユーザー アカウントの作成)]** をクリックします。
+
+    ![[Create Un-recognized User Account]\(未認識のユーザー アカウントの作成\) オプションを示すスクリーンショット。](./media/ilms-tutorial/accounts.png)
+
+    b. Azure AD の属性を ILMS の属性にマップします。 属性欄に、属性名または既定値を指定します。
+
+    c. **[Business Rules (ビジネス ルール)]** タブに移動し、次の手順を実行します。
+
+    ![この手順での情報を入力できる [Business Rules]\(ビジネス ルール\) 設定を示すスクリーンショット。](./media/ilms-tutorial/rules.png)
+
+    d. シングル サインオンの時点で存在していないリージョン、事業部、および部署を作成するには、 **[Create Un-recognized Regions, Divisions and Departments (未認識のリージョン、事業部、および部署)]** をオンにします。
+
+    e. シングル サインオンのたびにユーザー プロファイルが更新されるように指定するには、 **[Update User Profile During Sign-in (サインイン中にユーザー プロファイルを更新する)]** をオンにします。
+
+    f. **[Update Blank Values for Non Mandatory Fields in User Profile]\(ユーザー プロファイルの必須フィールド以外の空白の値を更新する\)** オプションをオンにした場合、サインイン時に空白であるオプションのプロファイル フィールドによって、ユーザーの iLMS プロファイルのオプションのフィールドが空白の値を含むように更新されます。
+
+    g. エラー通知メールを受信する場合は、 **[Send Error Notification Email (エラー通知メールを送信する)]** をオンにし、ユーザーのメール アドレスを入力します。
+
+7. **[Save (保存)]** ボタンをクリックして、設定を保存します。
+
+    ![[Save]\(保存\) ボタンを示すスクリーンショット。](./media/ilms-tutorial/save.png)
 
 ### <a name="create-ilms-test-user"></a>iLMS のテスト ユーザーの作成
 
@@ -206,11 +197,11 @@ iLMS で Azure AD SSO を構成してテストするには、次の構成要素�
 
 2. **[Users]\(ユーザー\)** タブの **[Register User]\(ユーザーの登録\)** をクリックして **[Register User]\(ユーザーの登録\)** ページを開きます。
 
-   ![[Register User]\(ユーザーの登録\) を選択できる i L M S 設定タブを示すスクリーンショット。](./media/ilms-tutorial/3.png)
+   ![[Register User]\(ユーザーの登録\) を選択できる i L M S 設定タブを示すスクリーンショット。](./media/ilms-tutorial/user.png)
 
 3. **[Register User]\(ユーザーの登録\)** ページで次の手順を実行します。
 
-    ![指定された情報を入力できる [Register User]\(ユーザーの登録\) ページを示すスクリーンショット。](./media/ilms-tutorial/create_testuser_add.png)
+    ![指定された情報を入力できる [Register User]\(ユーザーの登録\) ページを示すスクリーンショット。](./media/ilms-tutorial/add-user.png)
 
     a. **[First Name]** ボックスに、ユーザーの名を入力します (この例では Britta)。
 
@@ -229,14 +220,22 @@ iLMS で Azure AD SSO を構成してテストするには、次の構成要素�
     > [!NOTE]
     > **[Send welcome email (ようこそメールの送信)]** チェックボックスをオンにすることで、ユーザーに登録メールを送信できます。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで iLMS タイルを選択すると、SSO を設定した iLMS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-## <a name="additional-resources"></a>その他のリソース
+#### <a name="sp-initiated"></a>SP Initiated:
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる iLMS のサインオン URL にリダイレクトされます。  
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+* iLMS のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+#### <a name="idp-initiated"></a>IDP Initiated:
+
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した iLMS に自動的にサインインされます。 
+
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [iLMS] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した iLMS に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+iLMS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

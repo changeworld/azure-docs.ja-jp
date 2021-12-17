@@ -1,16 +1,16 @@
 ---
 title: センサー パートナーの統合
 description: この記事では、センサー パートナーの統合について説明します。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.openlocfilehash: 8d1b8203fa50609daf59431c2cfecba68eba52b1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.openlocfilehash: 99b87fd0066d67d09979965bab3a67d1b549afd4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179750"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599508"
 ---
 # <a name="sensor-partner-integration"></a>センサー パートナーの統合
 
@@ -95,13 +95,13 @@ FarmBeats Datahub への API 呼び出しを行うときに指定する必要が
 
 **ヘッダー** | **説明と例**
 --- | ---
-Content-Type | 要求の形式 (Content-Type: application/<format>)。 FarmBeats Datahub API の場合、形式は JSON です。 Content-Type, application/json
-承認 | API 呼び出しを行うために必要なアクセス トークンを指定します。 Authorization:Bearer <Access-Token>
+Content-Type | 要求の形式 (Content-Type: `application/<format>`)。 FarmBeats Datahub API の場合、形式は JSON です。 Content-Type, application/json
+承認 | API 呼び出しを行うために必要なアクセス トークンを指定します。 認可: ベアラー\<Access-Token\>
 Accept | 応答形式。 FarmBeats Datahub API の場合、形式は JSON です。 Accept: application/json
 
 **API 要求**
 
-REST API 要求を行うには、HTTP (GET、POST、または PUT) メソッド、API サービスへの URL、リソース (クエリ、データ送信、更新、削除の対象となるリソース) の Uniform Resource Identifier (URI)、1 つ以上の HTTP 要求ヘッダーを組み合わせます。 API サービスの URL は、お客様が提供する API エンドポイントです。 例として、 https://\<yourdatahub-website-name>.azurewebsites.net があります。
+REST API 要求を行うには、HTTP (GET、POST、または PUT) メソッド、API サービスへの URL、リソース (クエリ、データ送信、更新、削除の対象となるリソース) の Uniform Resource Identifier (URI)、1 つ以上の HTTP 要求ヘッダーを組み合わせます。 API サービスの URL は、お客様が提供する API エンドポイントです。 サンプルを次に示します。`https://\<yourdatahub-website-name>.azurewebsites.net`
 
 必要に応じて、GET 呼び出しにクエリ パラメーターを追加して、応答のデータのフィルター処理、サイズ制限、並べ替えを行うことができます。
 

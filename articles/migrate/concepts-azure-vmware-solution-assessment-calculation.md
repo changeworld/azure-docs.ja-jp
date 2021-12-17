@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: b55f0562ae08a6e5a6b38bd0b6fc9f781b94ab64
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 5d917de831227dcfa7a9b5803f79a1cadbaf3112
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078691"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006035"
 ---
 # <a name="assessment-overview-migrate-to-azure-vmware-solution"></a>評価の概要 (Azure VMware Solution への移行)
 
@@ -119,7 +119,7 @@ AVS の評価に含まれる内容は次のとおりです。
 | - | - |
 | **ターゲットの場所** | AVS プライベート クラウド上の移行先となる場所を指定します。 |
 | **ストレージの種類** | AVS で使用するストレージ エンジンを指定します。 現在、AVS では既定のストレージの種類として vSAN のみがサポートされていますが、今後、より多くのストレージ オプションがロードマップに従って提供される予定です。 |
-| **予約インスタンス (RI)** | このプロパティを使用すると、購入した場合の AVS での予約インスタンスと、予約インスタンスの期間を指定できます。 コストを計算するために使用されます。 |
+| **予約インスタンス (RI)** | このプロパティを使用すると、購入した場合の AVS での予約インスタンスと、予約インスタンスの期間を指定できます。 コストを計算するために使用されます。 これは現在無効であり、既定では *[No Reserved Instances]\(予約インスタンスなし\)* に設定されています。 [Azure VMware Solution では、予約インスタンスがサポートされており](../azure-vmware/reserved-instance.md)、評価によって、このプロパティが間もなく有効になります。|
 | **ノードの種類** | Azure で使用される、[AVS ノードの種類](../azure-vmware/concepts-private-clouds-clusters.md)を指定します。 既定のノードの種類は AV36 です。 ノードの種類は、今後増える可能性があります。  Azure Migrate では、VM を AVS に移行するために必要な数のノードが推奨されます。 |
 | **FTT 設定、RAID レベル** | 許容エラーと RAID の有効な組み合わせを指定します。 選択した FTT オプションと、RAID レベル、およびオンプレミス VM ディスク要件の組み合わせによって、AVS で必要とされる vSAN ストレージの合計が決まります。 計算後の使用可能なストレージ合計には、a) vCenter などの管理オブジェクト用に予約された領域と、b) vSAN の操作に必要な 25% のストレージ スラックも含まれます。 |
 | **サイズ変更の設定基準** | AVS ノードのメモリ、CPU、およびストレージ要件を決定するために使用される条件を設定します。 *パフォーマンスベース* のサイズ設定にするかか、パフォーマンス履歴を考慮しない *オンプレミス* のサイズ設定にするかを選択できます。 単にリフト アンド シフトを行う場合は、[オンプレミス] を選択します。 使用量に基づいたサイズを取得する場合は、[パフォーマンスベース] を選択します。 |
@@ -164,6 +164,10 @@ AVS 評価では、サーバーのプロパティを確認することで、各�
 サーバーが AVS 対応とマークされると、AVS 評価によって、適切なオンプレミスの VM 要件が特定され、必要な AVS ノードの合計数を調べることによって、ノードのサイズ設定に関する推奨事項が作成されます。 これらの推奨サイズは、指定した評価プロパティによって異なります。
 
 - 評価で "*パフォーマンスベースのサイズ設定*" が使用された場合、Azure Migrate はサーバーのパフォーマンス履歴を考慮して AVS に適切なサイズ設定の推薦事項を作成します。 この方法は、オンプレミス VM を割り当て過ぎて使用率が低下した場合に、AVS で VM のサイズを適切に設定してコストを削減したい場合に特に役立ちます。 この方法では、移行中にサイズを最適化することができます。
+
+> [!NOTE] 
+>CSV ファイルを利用してサーバーをインポートする場合、指定するパフォーマンス値 (CPU 使用率、メモリ使用率、ディスク IOPS、スループット) は、パフォーマンスベースのサイズ設定を選択したときに使用されます。 パフォーマンス履歴とパーセンタイル情報は指定できません。
+
 - VM のサイズ設定のパフォーマンス データを考慮せずに、オンプレミスのサーバーを AVS に対してそのままの状態にしておく場合は、サイズ設定条件を [オンプレミス] に設定できます。 その場合、評価では、使用率データを考慮せずに、オンプレミスの構成に基づいて VM のサイズが設定されます。
 
 ### <a name="ftt-sizing-parameters"></a>FTT サイズ設定パラメーター
@@ -285,7 +289,7 @@ Azure VMware Solution (AVS) の料金はノードごとであるため、総コ�
 
 Azure VMware Solution (AVS) 評価の Azure 対応性レポートでは、次の推奨ツールを確認できます。
 
-- **VMware HCX または Enterprise**: VMware サーバーの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMware Hybrid Cloud Extension (HCX) ソリューションです。 [詳細については、こちらを参照してください](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
+- **VMware HCX または Enterprise**: VMware サーバーの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMware Hybrid Cloud Extension (HCX) ソリューションです。 [詳細については、こちらを参照してください](../azure-vmware/install-vmware-hcx.md)。
 - **不明**: CSV ファイルを介してインポートされたサーバーの場合、既定の移行ツールは不明です。 ただし VMware サーバーの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ

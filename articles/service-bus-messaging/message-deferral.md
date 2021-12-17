@@ -1,44 +1,44 @@
 ---
 title: Azure Service Bus - メッセージ遅延
-description: この記事では、Azure Service Bus メッセージの配信を遅延する方法について説明します。 メッセージは、キューまたはサブスクリプションに留まり、確保されます。
-ms.topic: article
-ms.date: 06/23/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 997aab36652b08864892f1171e2b8588ec5f06b4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+description: この記事では、Azure Service Bus メッセージの配信を遅延する方法について説明します。 メッセージは、キューまたはサブスクリプションに留まりますが、確保されます。
+ms.topic: conceptual
+ms.date: 04/21/2021
+ms.openlocfilehash: 71446f7989a235e79ca3ab208579edd0043dfeb2
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306111"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987256"
 ---
 # <a name="message-deferral"></a>メッセージ遅延
+キューまたはサブスクリプション クライアントが処理が必要なメッセージを受信したものの、特別な状況が原因でただちに処理を実行できない場合、メッセージの取得を後の時点に "遅延" させるオプションを使用できます。 メッセージは、キューまたはサブスクリプションに留まりますが、確保されます。
 
-キューまたはサブスクリプションのクライアントが処理すべきメッセージを受信したものの、アプリケーション内の特別な状況が原因ですぐに処理を行えない場合、メッセージを取得するタイミングを "遅延" させることができます。 メッセージは、キューまたはサブスクリプションに留まり、確保されます。
+> [!NOTE]
+> 遅延メッセージは、[有効期限が切れた後](./service-bus-dead-letter-queues.md#time-to-live)に、配信不能キューに自動的に移動されません。 この動作は仕様によるものです。
 
-遅延は、ワークフロー処理のシナリオを対象に作成された機能です。 ワークフロー フレームワークでは、一定の操作を特定の順序で処理することが必要な場合があります。また、他のメッセージで通知された、優先度の高い所定の作業が完了するまで、受信したいくつかのメッセージの処理を延期することが必要な場合があります。
+## <a name="sample-scenarios"></a>サンプル事例
+遅延は、ワークフロー処理のシナリオを対象に作成された機能です。 ワークフロー フレームワークでは、特定の操作を特定の順序で処理することが必要な場合があります。 場合によっては、受信したメッセージの処理を、他のメッセージによって通知される前の所定の作業が完了するまで延期する必要があります。
 
 簡単でわかりやすい例としては、一致する注文書が店舗からフルフィルメント システムに入力される前に、外部の支払いプロバイダーからの支払い通知がシステムに表示される注文処理シーケンスが挙げられます。 このケースでは、関連する注文が届くまで、支払い通知の処理がフルフィルメント システムによって遅延される場合があります。 異なる送信元からのメッセージによってワークフローが進行する集合シナリオでは、リアルタイムの実行順序は正しいのに、結果を反映するメッセージが到着する順序は正しくない場合があります。
 
 つまり遅延は、処理の延期が必要なメッセージをメッセージ ストアに確実に保持しながら、到着した順序から処理できる順序に並べ直すのに役立ちます。
 
-> [!NOTE]
-> 遅延メッセージは、[有効期限が切れた後](./service-bus-dead-letter-queues.md#time-to-live)に、配信不能キューに自動的に移動されません。 この動作は仕様によるものです。
+メッセージを処理する特定のリソースが一時的に使用できないためにそのメッセージを処理できない一方で、メッセージの処理をただちに中断できない場合があります。このような場合、数分間そのメッセージを確保する方法は、数分以内に投稿される[スケジュール済みメッセージ](message-sequencing.md)のシーケンス番号を記憶し、スケジュールされたメッセージが到着したときに遅延メッセージを再取得することです。 メッセージ ハンドラーですべての操作についてデータベースが使用されており、そのデータベースが一時的に使用できない場合、遅延は使用しないでください。その代わり、データベースが再び使用できるようになるまで、メッセージの受信を完全に中断してください。 
 
-## <a name="message-deferral-apis"></a>メッセージ遅延 API
+## <a name="retrieving-deferred-messages"></a>遅延メッセージの取得
+遅延メッセージは、他のすべてのアクティブなメッセージと共にメイン キューに留まります (サブキューに含まれる配達不能メッセージとは異なります)。ただし、通常の受信操作を使用してこれらを受信することはできなくなります。 アプリケーションが遅延メッセージを追跡できなくなった場合、[メッセージ参照](message-browsing.md)を使用して検出できます。
 
-API は、.NET Framework クライアントの [BrokeredMessage.Defer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) または [BrokeredMessage.DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync)、.NET Standard クライアントの [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync)、Java クライアントの [IMessageReceiver.defer](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer) または [IMessageReceiver.deferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync) です。 
-
-遅延メッセージは、すべての他のアクティブなメッセージと共にメイン キューに留まります (サブキューに含まれる配達不能メッセージとは異なります)。ただし、これらの遅延メッセージは、通常の Receive/ReceiveAsync 関数を使用して受信することができなくなります。 アプリケーションが遅延メッセージを追跡できなくなった場合、[メッセージ参照](message-browsing.md)を使用して検出できます。
-
-遅延メッセージを取得するには、所有者がそれを遅延させる際に [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) を記憶しておく必要があります。 遅延メッセージのシーケンス番号がわかっている受信者は、後ほど `Receive(sequenceNumber)` で明示的にメッセージを受信できます。
-
-メッセージを処理する特定のリソースが一時的に使用できないためにそのメッセージを処理できないものの、メッセージの処理をすぐに中断できない場合があります。このような場合、数分間そのメッセージを確保する方法は、数分以内に投稿される [スケジュール済みメッセージ](message-sequencing.md)の **SequenceNumber** を記憶しておき、スケジュールされたメッセージが到着したときに遅延メッセージを取得し直すことです。 メッセージ ハンドラーですべての操作についてデータベースが使用されており、そのデータベースが一時的に使用できない場合は、遅延を使用しないようにしてください。その代わり、データベースが再び使用できるようになるまで、メッセージの受信を完全に中断してください。
-
+遅延メッセージを取得するには、その所有者がそれを遅延させるときにシーケンス番号を記憶する必要があります。 遅延メッセージのシーケンス番号を知っている受信者は、シーケンス番号をパラメーターとして受け取る受信メソッドを使用して、後でメッセージを受信できます。 シーケンス番号の詳細については、「[メッセージのシーケンス処理とタイムスタンプ](message-sequencing.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+Azure Service Bus の機能については、使用する言語のサンプルを試してみてください。 
 
-Service Bus メッセージングの詳細については、次のトピックをご覧ください。
+- [.NET 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) - **メッセージの解決** のサンプルを参照してください。 
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Python 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-python/servicebus-samples/) - **receive_deferred_message_queue.py** サンプルを参照してください。 
+- [JavaScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/) - **advanced/deferral.js** サンプルを参照してください。 
+- [TypeScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/) - **advanced/deferral.ts** サンプルを参照してください。 
 
-* [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
-* [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
-* [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+以前の .NET および Java クライアント ライブラリのサンプルについては、以下を参照してください。
+- [.NET 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/) - **遅延** のサンプルを参照してください。 
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)

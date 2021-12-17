@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: nitinme
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea2a127ffbf966b024322ab5a908466dec1cc8a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: afedf72e1d6fa52bbcccefe5a3d15ec203251c51
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935636"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744829"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>顔データを別の Face サブスクリプションに移行する
 
@@ -236,4 +236,4 @@ await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 - [スナップショット リファレンス ドキュメント (.NET SDK)](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations)
 - [Face のスナップショット サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [顔を追加する](how-to-add-faces.md)
-- [画像内の顔を検出する](HowtoDetectFacesinImage.md)
+- [検出 API を呼び出す](HowtoDetectFacesinImage.md)

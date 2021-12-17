@@ -1,19 +1,19 @@
 ---
-title: Microsoft Storage Explorer を使用してコンテナーと BLOB の Shared Access Signature (SAS) トークンを作成する
-description: Microsoft Storage Explorer と Azure portal を使用してコンテナーと BLOB の Shared Access Token (SAS) を作成する方法
+title: Microsoft Storage Explorer を使用してコンテナーと BLOB の Shared Access Signature (SAS) トークンを生成する
+description: Microsoft Storage Explorer と Azure portal を使用してコンテナーと BLOB の Shared Access Signature トークン (SAS) を生成する方法。
 ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 03/05/2021
-ms.openlocfilehash: e40fc569ad1c8ec5894f06915422bea37cfc40ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/16/2021
+ms.openlocfilehash: ecc62d7b45bfb3b0b108057d5e3e25b189297165
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102489635"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653307"
 ---
-# <a name="create-sas-tokens-for-document-translation-processing"></a>ドキュメント翻訳処理の SAS トークンを作成する
+# <a name="generate-sas-tokens-for-your-storage-containers"></a>ストレージ コンテナーの SAS トークンを生成する
 
 この記事では、Azure Storage Explorer または Azure portal を使用して、Shared Access Signature (SAS) トークンを作成する方法について説明します。 SAS トークンを使用すると、Azure ストレージ アカウント内のリソースへの安全な委任アクセスが可能になります。
 
@@ -63,9 +63,6 @@ ms.locfileid: "102489635"
 ---
 
 ## <a name="create-sas-tokens-for-blobs-in-the-azure-portal"></a>Azure portal で BLOB の SAS トークンを作成する
-
-> [!NOTE]
-> コンテナーの SAS トークンを Azure portal で直接作成することは現在サポートされていません。 ただし、[**Azure Storage Explorer**](#create-your-sas-tokens-with-azure-storage-explorer) を使用して SAS トークンを作成するか、[プログラム](../../../storage/blobs/sas-service-create.md)でそのタスクを行うことはできます。
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="prerequisites"></a>前提条件

@@ -3,18 +3,18 @@ title: Azure Active Directory Verifiable Credentials (プレビュー) をオプ
 description: Verifiable Credentials のプレビューをオプトアウトする方法について説明します
 documentationCenter: ''
 author: barclayn
-manager: daveba
-ms.service: identity
+manager: karenh444
+ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: d6e72b6d6f566fcf3f52e1c48ab6824c0e9a968e
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: e46537a2bf0a9db08ec9baad810d5915450ee8ea
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222794"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006814"
 ---
 # <a name="opt-out-of-the-verifiable-credentials-preview"></a>Verifiable Credentials (プレビュー) をオプトアウトする
 

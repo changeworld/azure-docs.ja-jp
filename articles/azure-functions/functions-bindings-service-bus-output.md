@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: ae2be8dbcb4839c7d16b864c484c3360fdcfe324
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0df83e6e335599b4942d53962add9083a2ecce12
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425585"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130138269"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Functions における Azure Service Bus の出力バインド
 
@@ -324,10 +324,12 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |**name** | 該当なし | 関数コード内のキューまたはトピック メッセージを表す変数の名前。 "$return" に設定して、関数の戻り値を参照します。 |
 |**queueName**|**QueueName**|キューの名前。  トピックではなくキューのメッセージを送信する場合にのみ設定します。
 |**topicName**|**TopicName**|トピックの名前。 キューではなくトピックのメッセージを送信する場合にのみ設定します。|
-|**connection**|**接続**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。|
+|**connection**|**接続**|Service Bus への接続方法を指定するアプリ設定または設定コレクションの名前。 「[接続](#connections)」を参照してください。|
 |**accessRights** (v1 のみ)|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が **管理** アクセス許可を持つことを示します。 **管理** アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Service Bus SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x 以降ではこのプロパティを利用できません。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+[!INCLUDE [functions-service-bus-connections](../../includes/functions-service-bus-connections.md)]
 
 ## <a name="usage"></a>使用法
 
@@ -350,6 +352,12 @@ C# 関数を使用する場合:
 
 * セッション ID にアクセスするには、 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 型にバインドし、`sessionId` プロパティを使用します。
 
+### <a name="additional-types"></a>その他の型 
+
+5\.0.0 以降のバージョンの Service Bus 拡張機能を使用するアプリでは、[Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message) 名前空間の代わりに [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus.servicebusmessage) の `ServiceBusMessage` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Message` 型のサポートがなくなります。
+
+- [ServiceBusMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessage)
+
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 出力バインドには、次のパラメーターの型を使用します。
@@ -366,6 +374,11 @@ C# 関数を使用する場合:
 * 非同期関数には、`out` パラメーターの代わりに戻り値または `IAsyncCollector` が必要です。
 
 * セッション ID にアクセスするには、 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 型にバインドし、`sessionId` プロパティを使用します。
+
+### <a name="additional-types"></a>その他の型 
+5\.0.0 以降のバージョンの Service Bus 拡張機能を使用するアプリでは、[Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message) 名前空間の代わりに [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus.servicebusmessage) の `ServiceBusMessage` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Message` 型のサポートがなくなります。
+
+- [ServiceBusMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessage)
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -391,47 +404,6 @@ Service Bus への出力は `Push-OutputBinding` コマンドレット経由で�
 |---|---|
 | Service Bus | [Service Bus のエラー コード](../service-bus-messaging/service-bus-messaging-exceptions.md) |
 | Service Bus | [Service Bus の制限](../service-bus-messaging/service-bus-quotas.md) |
-
-<a name="host-json"></a>  
-
-## <a name="hostjson-settings"></a>host.json 設定
-
-このセクションでは、バージョン 2.x 以降でこのバインドに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインドの設定のみが含まれています。 グローバル構成設定の詳細については、[Azure Functions の host.json のリファレンス](functions-host-json.md)を参照してください。
-
-> [!NOTE]
-> Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
-
-```json
-{
-    "version": "2.0",
-    "extensions": {
-        "serviceBus": {
-            "prefetchCount": 100,
-            "messageHandlerOptions": {
-                "autoComplete": true,
-                "maxConcurrentCalls": 32,
-                "maxAutoRenewDuration": "00:05:00"
-            },
-            "sessionHandlerOptions": {
-                "autoComplete": false,
-                "messageWaitTimeout": "00:00:30",
-                "maxAutoRenewDuration": "00:55:00",
-                "maxConcurrentSessions": 16
-            }
-        }
-    }
-}
-```
-
-`isSessionsEnabled` を `true` に設定している場合は、`sessionHandlerOptions` が有効になります。  `isSessionsEnabled` を `false` に設定している場合は、`messageHandlerOptions` が有効になります。
-
-|プロパティ  |Default | 説明 |
-|---------|---------|---------|
-|prefetchCount|0|メッセージの受信者が同時に要求できるメッセージ数を取得または設定します。|
-|maxAutoRenewDuration|00:05:00|メッセージ ロックが自動的に更新される最大間隔。|
-|autoComplete|true|トリガーが処理後に自動的に complete を呼び出す必要があるか、または関数コードで complete を手動で呼び出すかどうか。<br><br>`false` に設定することは、C# でのみサポートされています。<br><br>`true` に設定した場合、関数の実行が正常に完了するとトリガーによって自動的にメッセージが完了され、それ以外の場合はメッセージが破棄されます。<br><br>`false` に設定する場合は、[MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) を呼び出し、メッセージを完了、破棄、または配信不能にする必要があります。 例外がスローされた場合 (かつ `MessageReceiver` メソッドが呼び出されなかった場合)、ロックは維持されます。 ロックが期限切れになると、メッセージはキューに再登録されて `DeliveryCount` はインクリメントされ、ロックは自動的に更新されます。<br><br>C# 以外の関数では、関数で例外が発生すると、ランタイムによってバックグラウンドで `abandonAsync` が呼び出されます。 例外が発生しなかった場合は、バックグラウンドで `completeAsync` が呼び出されます。 |
-|maxConcurrentCalls|16|スケーリングされたインスタンスごとにメッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数。 既定では、Functions ランタイムは、複数のメッセージを同時に処理します。|
-|maxConcurrentSessions|2000|スケーリングされたインスタンスごとに同時に処理できるセッションの最大数。|
 
 ## <a name="next-steps"></a>次のステップ
 

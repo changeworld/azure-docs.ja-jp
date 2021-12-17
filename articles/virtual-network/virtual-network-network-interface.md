@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: 8003bf14bcade08f36a7877fdb3a53998aff9e63
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 01efde4429ed3185111214fcf5ea9f7bab4900c7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773070"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257596"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>ネットワーク インターフェイスの作成、変更、削除
 
 ネットワーク インターフェイスの作成、設定変更、削除の方法について説明します。 ネットワーク インターフェイスは、Azure Virtual Machine がインターネット、Azure、およびオンプレミスのリソースと通信できるようにします。 Azure Portal を使用して仮想マシンを作成すると、既定の設定でネットワーク インターフェイスが 1 つ自動的に作成されます。 その代わりに、カスタム設定でネットワーク インターフェイスを作成し、仮想マシンを作成するときに 1 つ以上のネットワーク インターフェイスを追加することができます。 既存のネットワーク インターフェイスについて、既定のネットワーク インターフェイス設定を変更することもできます。 この記事では、カスタム設定を使用してネットワーク インターフェイスを作成する方法、ネットワーク フィルター (ネットワーク セキュリティ グループ) の割り当て、サブネットの割り当て、DNS サーバーの設定、IP 転送などの既存の設定を変更する方法、およびネットワーク インターフェイスを削除する方法について説明します。
 
-ネットワーク インターフェイスに対して IP アドレスの追加、変更、または削除が必要な場合は、[IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページをご覧ください。 仮想マシンのネットワーク インターフェイスを追加または削除する必要がある場合は、[ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md)に関するページをご覧ください。
+ネットワーク インターフェイスに対して IP アドレスの追加、変更、または削除が必要な場合は、[IP アドレスの管理](./ip-services/virtual-network-network-interface-addresses.md)に関するページをご覧ください。 仮想マシンのネットワーク インターフェイスを追加または削除する必要がある場合は、[ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md)に関するページをご覧ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -60,18 +60,18 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
     |Resource group|はい|既存の[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)を選択するか、新しく作成することができます。 ネットワーク インターフェイスは、アタッチ先の仮想マシンや接続先の仮想ネットワークと同じリソース グループに存在することも、違うリソース グループに存在することも可能です。|
     |場所|はい|ネットワーク インターフェイスのアタッチ先の仮想マシンと接続先の仮想ネットワークは、リージョンとも呼ばれる同じ[場所](https://azure.microsoft.com/regions)の中に存在する必要があります。|
 
-ポータルには、ネットワーク インターフェイスを作成するときに、そこにパブリック IP アドレスを割り当てるオプションは用意されていません。しかし、ポータルを使用して仮想マシンを作成するときには、確かにポータルによってパブリック IP アドレスが作成され、それがネットワーク インターフェイスに割り当てられます。 ネットワーク インターフェイスの作成後にパブリック IP アドレスを追加する方法については、[IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページをご覧ください。 パブリック IP アドレスを指定してネットワーク インターフェイスを作成する場合は、CLI または PowerShell を使用してネットワーク インターフェイスを作成する必要があります。
+ポータルには、ネットワーク インターフェイスを作成するときに、そこにパブリック IP アドレスを割り当てるオプションは用意されていません。しかし、ポータルを使用して仮想マシンを作成するときには、確かにポータルによってパブリック IP アドレスが作成され、それがネットワーク インターフェイスに割り当てられます。 ネットワーク インターフェイスの作成後にパブリック IP アドレスを追加する方法については、[IP アドレスの管理](./ip-services/virtual-network-network-interface-addresses.md)に関するページをご覧ください。 パブリック IP アドレスを指定してネットワーク インターフェイスを作成する場合は、CLI または PowerShell を使用してネットワーク インターフェイスを作成する必要があります。
 
 ネットワーク インターフェイスの作成時に、アプリケーション セキュリティ グループにネットワーク インターフェイスを割り当てるオプションはポータルにはありませんが、Azure CLI と PowerShell にはあります。 ただし、ネットワーク インターフェイスが仮想マシンに接続されている限り、ポータルを使用して、アプリケーション セキュリティ グループに既存のネットワーク インターフェイスを割り当てることはできます。 アプリケーション セキュリティ グループにネットワーク インターフェイスを割り当てる方法については、「[アプリケーション セキュリティ グループに対して追加または削除を実行する](#add-to-or-remove-from-application-security-groups)」を参照してください。
 
 >[!Note]
-> Azure では、ネットワーク インターフェイスの仮想マシンへのアタッチと、仮想マシンの初回起動の後にのみ、ネットワーク インターフェイスに MAC アドレスが割り当てられます。 Azure によってネットワーク インターフェイスに割り当てられる MAC アドレスは指定できません。 MAC アドレスがネットワーク インターフェイスに割り当てられると、そのネットワーク インターフェイスが削除されるか、プライマリ ネットワーク インターフェイスのプライマリ IP 構成に割り当てられたプライベート IP アドレスが変更されるまで、その状態は変わりません。 IP アドレスと IP 構成の詳細については、[IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページをご覧ください
+> Azure では、ネットワーク インターフェイスの仮想マシンへのアタッチと、仮想マシンの初回起動の後にのみ、ネットワーク インターフェイスに MAC アドレスが割り当てられます。 Azure によってネットワーク インターフェイスに割り当てられる MAC アドレスは指定できません。 MAC アドレスがネットワーク インターフェイスに割り当てられると、そのネットワーク インターフェイスが削除されるか、プライマリ ネットワーク インターフェイスのプライマリ IP 構成に割り当てられたプライベート IP アドレスが変更されるまで、その状態は変わりません。 IP アドレスと IP 構成の詳細については、[IP アドレスの管理](./ip-services/virtual-network-network-interface-addresses.md)に関するページをご覧ください
 
 [!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic create](/cli/azure/network/nic)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)|
@@ -86,7 +86,7 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
    - **概要:** ネットワーク インターフェイスに割り当てられている IP アドレス、ネットワーク インターフェイスの割り当て先仮想ネットワーク/サブネット、ネットワーク インターフェイスのアタッチ先仮想マシン (1 つの仮想マシンにアタッチされている場合) など、ネットワーク インターフェイスに関する情報を提供します。 次の図は、**mywebserver256** という名前のネットワーク インターフェイスの概要設定を示しています。![ネットワーク インターフェイスの概要](./media/virtual-network-network-interface/nic-overview.png)
 
      **[リソース グループ]** または **[サブスクリプション名]** の横にある **[(変更)]** を選択することにより、ネットワーク インターフェイスを別のリソース グループまたはサブスクリプションに移動できます。 ネットワーク インターフェイスを新しいサブスクリプションに移動する場合は、そのネットワーク インターフェイスに関連するすべてのリソースを、インターフェイスと共に移動する必要があります。 たとえば、ネットワーク インターフェイスが仮想マシンにアタッチされている場合は、仮想マシンと、その他の仮想マシン関連リソースも移動する必要があります。 ネットワーク インターフェイスを移動するには、[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-the-portal)に関する記事をご覧ください。 この記事には、リソースを移動するための前提条件や、Azure Portal、PowerShell、および Azure CLI を使用して移動する方法が記載されています。
-   - **IP 構成:** IP 構成に割り当てられている、パブリックおよびプライベートの IPv4 および IPv6 アドレスは、ここに一覧で示されています。 IP 構成に IPv6 アドレスが割り当てられている場合、アドレスは表示されません。 IP 構成と、IP アドレスの追加と削除の方法については、[Azure ネットワーク インターフェイスの IP アドレスの構成](virtual-network-network-interface-addresses.md)に関するページをご覧ください。 IP 転送とサブネットの割り当ても、このセクションで構成します。 これらの設定の詳細については、「[IP 転送の有効化と無効化](#enable-or-disable-ip-forwarding)」と「[サブネットの割り当ての変更](#change-subnet-assignment)」を参照してください。
+   - **IP 構成:** IP 構成に割り当てられている、パブリックおよびプライベートの IPv4 および IPv6 アドレスは、ここに一覧で示されています。 IP 構成に IPv6 アドレスが割り当てられている場合、アドレスは表示されません。 IP 構成と、IP アドレスの追加と削除の方法については、[Azure ネットワーク インターフェイスの IP アドレスの構成](./ip-services/virtual-network-network-interface-addresses.md)に関するページをご覧ください。 IP 転送とサブネットの割り当ても、このセクションで構成します。 これらの設定の詳細については、「[IP 転送の有効化と無効化](#enable-or-disable-ip-forwarding)」と「[サブネットの割り当ての変更](#change-subnet-assignment)」を参照してください。
    - **DNS サーバー:** Azure DHCP サーバーがネットワーク インターフェイスに割り当てる DNS サーバーを指定できます。 ネットワーク インターフェイスは、ネットワーク インターフェイスの割り当て先の仮想ネットワークから設定を継承できます。または、割り当て先の仮想ネットワークの設定をオーバーライドするカスタム設定を持つことができます。 表示される内容の変更については、「[DNS サーバーの変更](#change-dns-servers)」を参照してください。
    - **ネットワーク セキュリティ グループ (NSG):** ネットワーク インターフェイスに関連付けられている NSG (ある場合) が表示されます。 NSG には、ネットワーク インターフェイスのネットワーク トラフィックをフィルター処理するための送受信の規則が含まれています。 NSG がネットワーク インターフェイスに関連付けられている場合は、関連付けられている NSG の名前が表示されます。 表示内容を変更するには、「[ネットワーク セキュリティ グループを関連付けるか関連付けを解除する](#associate-or-dissociate-a-network-security-group)」を参照してください。
    - **プロパティ:** ネットワーク インターフェイスの MAC アドレスやネットワーク インターフェイスが存在するサブスクリプションなど、ネットワーク インターフェイスに関する重要な設定が表示されます (ネットワーク インターフェイスが仮想マシン接続されていない場合は空白です)。
@@ -98,7 +98,7 @@ Azure Resource Manager の一般的な設定:Azure Resource Manager の一般的
 
 IPv6 アドレスがネットワーク インターフェイスに割り当てられている場合、PowerShell の出力では、アドレスが割り当てられているという事実が返されますが、割り当てられたアドレスは返されません。 同様に、CLI では、アドレスが割り当てられているという事実が返されますが、そのアドレスの出力では *null* が返されます。
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic list](/cli/azure/network/nic) ではサブスクリプションのネットワーク インターフェイスを表示します。[az network nic show](/cli/azure/network/nic) ではネットワーク インターフェイスの設定を表示します。|
 |PowerShell|[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) では、サブスクリプションのネットワーク インターフェイスまたはネットワーク インターフェイスの設定を表示します|
@@ -119,7 +119,7 @@ DNS サーバーは Azure DHCP サーバーによって、仮想マシンのオ�
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -140,7 +140,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -156,11 +156,11 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
    - プライベート IP アドレスの **[割り当て]** 方法として **[動的]** を選択します。 静的な割り当て方法を使用して IPv6 アドレスを割り当てることはできません。
    - **[保存]** を選択します。
 4. ネットワーク インターフェイスの移動先にするサブネットを、 **[サブネット]** ドロップダウン リストから選択します。
-5. **[保存]** を選択します。 新しい動的アドレスが、新しいサブネットのサブネット アドレス範囲から割り当てられます。 ネットワーク インターフェイスを新しいサブネットに割り当てたら、必要に応じて、新しいサブネット アドレス範囲から静的 IPv4 アドレスを割り当てることができます。 ネットワーク インターフェイスの IP アドレスの追加、変更、削除の詳細については、[IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページをご覧ください。
+5. **[保存]** を選択します。 新しい動的アドレスが、新しいサブネットのサブネット アドレス範囲から割り当てられます。 ネットワーク インターフェイスを新しいサブネットに割り当てたら、必要に応じて、新しいサブネット アドレス範囲から静的 IPv4 アドレスを割り当てることができます。 ネットワーク インターフェイスの IP アドレスの追加、変更、削除の詳細については、[IP アドレスの管理](./ip-services/virtual-network-network-interface-addresses.md)に関するページをご覧ください。
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
@@ -174,7 +174,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -206,7 +206,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic delete](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface)|
@@ -272,7 +272,7 @@ Azure Network Watcher の次ホップ機能も、ルートが仮想マシンと�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使って、複数の NIC を備えた VM を作成します
-- [Azure CLI](virtual-network-multiple-ip-addresses-cli.md) または [PowerShell](virtual-network-multiple-ip-addresses-powershell.md) を使って、複数の IPv4 アドレスが割り当てられた 1 つの NIC VM を作成します
+- [Azure CLI](./ip-services/virtual-network-multiple-ip-addresses-cli.md) または [PowerShell](./ip-services/virtual-network-multiple-ip-addresses-powershell.md) を使って、複数の IPv4 アドレスが割り当てられた 1 つの NIC VM を作成します
 - [Azure CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、または [Azure Resource Manager テンプレート](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使って、プライベート IPv6 アドレスが割り当てられた 1 つの NIC VM を (Azure Load Balancer の背後に) 作成します
 - [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプト、あるいは Azure [Resource Manager テンプレート](template-samples.md)を使って、ネットワーク インターフェイスを作成します
 - 仮想ネットワーク用に [Azure Policy 定義](./policy-reference.md)を作成して割り当てる

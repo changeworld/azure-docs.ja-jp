@@ -9,14 +9,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: 7a4fad066af37217eb42060d5fc5a7ef716770c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 68941b2253e1b4655a9e0e61da3b0a4f0db27bdf
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560992"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697587"
 ---
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>Azure ディスクを Windows VM のゲスト ディスクにマップする方法
+
+**適用対象:** :heavy_check_mark: Windows VM 
+
 
 VM のゲスト ディスクをバックアップする Azure ディスクの特定が必要になる場合があります。 場合によっては、ディスクまたはボリュームのサイズを、接続されている Azure ディスクのサイズと比較することができます。 同じサイズの複数の Azure ディスクが VM に接続されているシナリオでは、データ ディスクの論理ユニット番号 (LUN) を使用する必要があります。 
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f4dfd2c7f9dbdd111f70a5dd5a648c11eacbf7b0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d4526446b657b46f97306f51b2db325feefc8eff
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038545"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166489"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API を呼び出す Web API: API を呼び出す
 
@@ -37,7 +37,7 @@ ms.locfileid: "102038545"
 
 このシナリオでは、[コード構成](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph)に関するページで説明されているように *Startup.cs* に `.AddMicrosoftGraph()` を追加し、コントローラーまたはページ コンストラクターに `GraphServiceClient` を直接挿入してアクションで使用することができます。 次の例の Razor ページには、サインインしたユーザーの写真が表示されます。
 
-```CSharp
+```csharp
  [Authorize]
  [AuthorizeForScopes(Scopes = new[] { "user.read" })]
  public class IndexModel : PageModel
@@ -73,7 +73,7 @@ ms.locfileid: "102038545"
 
 このシナリオでは、[コード構成](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)に関するページで説明されているように、*Startup.cs* に `.AddDownstreamWebApi()` を追加し、コントローラーまたはページ コンストラクターに `IDownstreamWebApi` サービスを直接挿入してアクションでそれを使用することができます。
 
-```CSharp
+```csharp
  [Authorize]
  [AuthorizeForScopes(ScopeKeySection = "TodoList:Scopes")]
  public class TodoListController : Controller
@@ -100,7 +100,7 @@ ms.locfileid: "102038545"
 
 また、`CallWebApiForUserAsync` メソッドには、オブジェクトを直接受け取ることができる、厳密に型指定されたジェネリック オーバーライドもあります。 たとえば、次のメソッドは `Todo` インスタンスを受け取ります。これは、Web API から返された JSON の厳密に型指定された表現です。
 
-```CSharp
+```csharp
  // GET: TodoList/Details/5
  public async Task<ActionResult> Details(int id)
  {
@@ -123,16 +123,16 @@ ms.locfileid: "102038545"
  トークンを取得した後、ダウンストリーム API を呼び出すベアラー トークンとしてそれを使用します。
 
 ```csharp
- private async Task CallTodoListService(string accessToken)
- {
+private async Task CallTodoListService(string accessToken)
+{
   // After the token has been returned by Microsoft.Identity.Web, add it to the HTTP authorization header before making the call to access the todolist service.
- _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
+  _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
- // Call the todolist service.
- HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + "/api/todolist");
- // ...
- }
- ```
+  // Call the todolist service.
+  HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + "/api/todolist");
+  // ...
+}
+```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -140,7 +140,7 @@ ms.locfileid: "102038545"
 
 トークンを取得した後、ダウンストリーム API を呼び出すベアラー トークンとしてそれを使用します。
 
-```Java
+```java
 private String callMicrosoftGraphMeEndpoint(String accessToken){
     RestTemplate restTemplate = new RestTemplate();
 
@@ -159,6 +159,7 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
+
 このフローを MSAL Python でデモンストレーションするサンプルは、[ms-identity-python-on-behalf-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of) で入手できます。
 
 ---

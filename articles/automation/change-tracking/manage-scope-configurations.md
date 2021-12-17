@@ -3,14 +3,14 @@ title: Azure Automation の Change Tracking とインベントリのデプロイ
 description: この記事では、スコープ構成を使用して、Change Tracking とインベントリのデプロイのスコープを制限する方法について説明します。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 05/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6eb9a20920f0a340491459f0875fc85b90dfa193
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6812a0b0688efdb75d847a36d661ba87017a8b9d
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92209170"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110653197"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Change Tracking とインベントリのデプロイのスコープを制限する
 
@@ -20,33 +20,36 @@ ms.locfileid: "92209170"
 
 スコープ構成は、Change Tracking とインベントリのスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件 (クエリ) のグループです。 スコープ構成は、有効にするコンピューターを対象として設定するために、Log Analytics ワークスペース内で使用されます。 この機能から変更にコンピューターを追加すると、ワークスペース内の保存した検索条件にも、そのコンピューターが追加されます。
 
+既定では、変更履歴とインベントリにより、マシンをどのように有効にしたかに応じて、**ChangeTracking__MicrosoftDefaultComputerGroup** という名前のコンピューター グループが作成されます。
+
+* Automation アカウントから、 **[+ Azure VM の追加]** を選択しました。
+* Automation アカウントから **[マシンの管理]** を選択し、 **[使用可能なすべてのマシンで有効にする]** オプションを選択するか、 **[選択したマシンで有効にする]** を選択しました。
+
+上記のいずれかの方法が選択されている場合は、このコンピューター グループが **MicrosoftDefaultScopeConfig-ChangeTracking** スコープ構成に追加されます。 また、管理のニーズに合わせて 1 つ以上のカスタム コンピューター グループをこのスコープに追加し、特定のコンピューターが 変更履歴とインベントリ で管理を有効にする方法を制御することもできます。
+
+**ChangeTracking__MicrosoftDefaultComputerGroup** から 1 つ以上のマシンを削除して変更履歴とインベントリ を使用して管理を停止するには、[「変更履歴とインベントリ から VM を削除する」](remove-vms-from-change-tracking.md)を参照してください。
+
 ## <a name="set-the-scope-limit"></a>スコープの制限を設定する
 
 Change Tracking とインベントリのデプロイのスコープを制限するには、次のようにします。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて一覧から候補が絞り込まれます。 **[Automation アカウント]** を選択します。
+2. Azure portal で、 **[Log Analytics ワークスペース]** に移動します。 一覧からお使いのワークスペースを選択します。
 
-3. Automation アカウントの一覧で、変更履歴とインベントリを有効にしたときに選択したアカウントを選択します。
+3. Log Analytics ワークスペースで、左側のメニューから **[スコープ構成 (プレビュー)]** を選択します。
 
-4. お使いの Automation アカウントで、 **[関連リソース]** の下にある **[リンクされたワークスペース]** を選択します。
+4. **MicrosoftDefaultScopeConfig-ChangeTracking** スコープ構成の右側にある省略記号を選択し、 **[編集]** を選択します。
 
-5. **[ワークスペースに移動]** をクリックします。
-
-6. **[Workspace Data Sources]\(ワークスペース データ ソース\)** の下の **[Scope Configurations (Preview)]\(スコープ構成 (プレビュー)\)** を選択します。
-
-7. `MicrosoftDefaultScopeConfig-ChangeTracking` スコープ構成の右側にある省略記号を選択し、 **[編集]** をクリックします。
-
-8. 編集ペインで **[コンピューター グループの選択]** を選択します。 [コンピューター グループ] ペインに、スコープ構成を作成するために使用された、保存された検索条件が表示されます。 Change Tracking とインベントリで使用される保存済みの検索条件は次のとおりです。
+5. 編集ペインで **[コンピューター グループの選択]** を展開します。 **[コンピューター グループ]** ペインに、スコープ構成に追加された、保存済み検索条件が表示されます。 Update Management によって使用される保存した検索条件は次のとおりです。
 
     |名前     |カテゴリ  |エイリアス  |
     |---------|---------|---------|
-    |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+    |MicrosoftDefaultComputerGroup     | ChangeTracking        | ChangeTracking__MicrosoftDefaultComputerGroup         |
 
-9. 保存した検索条件を選択して、グループの設定に使用されるクエリを表示および編集します。 次の図は、クエリとその結果を示しています。
+6. カスタム グループを追加した場合は、一覧に表示されます。 選択を解除するには、項目の左側にあるチェック ボックスをオフにします。 スコープにカスタム グループを追加するには、それを選択し、変更が完了したら、 **[選択]** をクリック します。
 
-    ![保存した検索条件](media/manage-scope-configurations/logsearch.png)
+7. **[スコープ構成の編集]** ページで、 **[OK]** をクリックして変更を保存します。
 
 ## <a name="next-steps"></a>次のステップ
 

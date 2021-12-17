@@ -1,23 +1,24 @@
 ---
-title: S2S VPN および VNet-to-VNet 接続用の IPsec/IKE ポリシー
+title: 'サイト間 VPN および VNet 間接続の IPsec/IKE ポリシー: PowerShell'
 titleSuffix: Azure VPN Gateway
-description: Azure Resource Manager と PowerShell を使用して、Azure VPN Gateway で S2S または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成します。
+description: PowerShell を使用して、Azure VPN Gateway で S2S または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する方法について説明します。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f990fb196311945642e918e9b38ec1a32a15fcc6
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94649264"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129270469"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する
 
-この記事では、Resource Manager デプロイ モデルと PowerShell を使用して、サイト間の VPN または VNet 間の接続の IPsec/IKE ポリシーを作成する手順について説明します。
+この記事では、PowerShell を使用して、サイト間 VPN または VNet 間接続の IPsec/IKE ポリシーを構成する手順について説明します。
 
 
 
@@ -34,7 +35,7 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 
 > [!IMPORTANT]
 > 1. IPsec/IKE ポリシーは、次のゲートウェイ SKU でのみ機能する点に注意してください。
->    * ***VpnGw1、VpnGw2、VpnGw3*** (ルート ベース)
+>    * ***VpnGw1 から 5 および VpnGw1AZ から 5AZ*** (ルート ベース)
 >    * ***Standard** _ および _ *_HighPerformance_** (ルート ベース)
 > 2. ある特定の接続に対して指定できるポリシーの組み合わせは ***1 つ*** だけです。
 > 3. IKE (メイン モード) と IPsec (クイック モード) の両方について、すべてのアルゴリズムとパラメーターを指定する必要があります。 ポリシーを部分的に指定することはできません。
@@ -62,7 +63,7 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 | IKEv2 整合性  | SHA384、SHA256、SHA1、MD5  |
 | DH グループ         | DHGroup24、ECP384、ECP256、DHGroup14、DHGroup2048、DHGroup2、DHGroup1、なし |
 | IPsec 暗号化 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、なし    |
-| IPsec 整合性  | GCMASE256、GCMAES192、GCMAES128、SHA256、SHA1、MD5 |
+| IPsec 整合性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5 |
 | PFS グループ        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、なし 
 | QM SA の有効期間   | (**オプション**: 指定されていない場合、既定値が使用されます)<br>秒 (整数: **最小 300**/既定値 27,000 秒)<br>キロバイト数 (整数: **最小 1024**/既定値 102,400,000 キロバイト)   |
 | トラフィック セレクター | UsePolicyBasedTrafficSelectors** ($True/$False； **Optional**、指定されていない場合、既定値は $False)    |

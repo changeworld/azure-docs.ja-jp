@@ -6,16 +6,16 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.subservice: billing
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: ee059bc69a671d0623d4d43990e694b87bf177ff
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7e41f50e61de324cc244d12be8b9ea70d6c38795
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690801"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648698"
 ---
 # <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>Azure の請求書の税務書類を表示してダウンロードする
 

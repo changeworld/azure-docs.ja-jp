@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: 1598d89d254e788ecf94f9a42b83cbe22b62204a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87863037cc494c70e628b4fb60790808430c7225
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67180890"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122261570"
 ---
 ## <a name="set-expiration"></a>有効期限の設定
 
-未来の特定の日付で有効期限が自動的に切れるようにアンカーを構成することもできます。 有効期限が切れたアンカーは、特定も更新もできなくなります。 有効期限は、アンカーが作成されたときにのみ設定できます。 後で有効期限を更新することはできません。 そのため、有効期限はクラウドに保存する前に設定できます。
+未来の特定の日付で有効期限が自動的に切れるようにアンカーを構成することもできます。 有効期限が切れたアンカーは、特定も更新もできなくなります。 有効期限を設定できるのはアンカーを作成しているときだけです。それをクラウドに保存する前に設定してください。 後で有効期限を更新することはできません。 アンカーの作成中に有効期限が設定されていない場合、アンカーは[手動で削除](../articles/spatial-anchors/how-tos/create-locate-anchors-unity.md#delete-anchors)されたときにのみ有効期限が切れます。

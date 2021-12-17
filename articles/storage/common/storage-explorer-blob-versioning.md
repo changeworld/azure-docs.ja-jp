@@ -2,17 +2,17 @@
 title: Azure Storage Explorer BLOB バージョン管理ガイド | Microsoft Docs
 description: Azure Storage Explorer の BLOB バージョン管理ガイダンス
 services: storage
-author: chuye
+author: JasonYeMSFT
 ms.service: storage
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: chuye
-ms.openlocfilehash: e20733cb4b93fcfac7606895746645727f12d6c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfff19eee4c852e336d0d943a9509d286d510347
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92783829"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626686"
 ---
 # <a name="azure-storage-explorer-blob-versioning-guide"></a>Azure Storage Explorer BLOB バージョン管理ガイド
 
@@ -62,7 +62,7 @@ Storage Explorer では、BLOB を表示する 4 種類のビューをサポー�
 
 - アクティブでありバージョンがない BLOB
 - 現在のバージョン
-- アクティブな以前のバージョンのうち最も新しいもの 
+- アクティブな以前のバージョンのうち最も新しいもの
 
 現在のバージョンはないがアクティブな以前のバージョンがある BLOB の場合、Storage Explorer では、アクティブな以前のバージョンのうち最も新しいものをその BLOB の表現として表示します。
 
@@ -73,13 +73,13 @@ Storage Explorer では、BLOB を表示する 4 種類のビューをサポー�
 - アクティブでありバージョンがない BLOB
 - 論理的に削除されたバージョンがない BLOB
 - 現在のバージョン
-- 以前のバージョンのうち最も新しいもの 
+- 以前のバージョンのうち最も新しいもの
 
 現在のバージョンがない BLOB の場合、Storage Explorer では、以前のバージョンのうち最も新しいものをその BLOB の表現として表示します。
 
-> [!Note]
+> [!NOTE]
 > サービスの制限により、Storage Explorer では、BLOB バージョンを一覧表示するときに仮想ディレクトリの階層ビューを取得するために、いくつかの追加処理が必要になります。 次のビューでは、BLOB の一覧表示にかかる時間が長くなります。
-> 
+>
 > - アクティブな BLOB と現在のバージョンがない BLOB
 > - すべての BLOB と現在のバージョンがない BLOB
 
@@ -117,5 +117,6 @@ BLOB バージョンごとに、独自のアクセス層があります。 BLOB 
 
 ## <a name="see-also"></a>参照
 
-* [BLOB バージョン管理](../blobs/versioning-overview.md)
-* [BLOB の論理的な削除](../blobs/soft-delete-blob-overview.md)
+- [BLOB バージョン管理](../blobs/versioning-overview.md)
+- [BLOB の論理的な削除](../blobs/soft-delete-blob-overview.md)
+- [Azure Storage Explorer の論理的な削除ガイド](./storage-explorer-soft-delete.md)

@@ -1,29 +1,25 @@
 ---
 title: Azure Germany の計算 サービス | Microsoft Docs
-description: Azure Germany の計算 サービスを比較します。
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
+description: このトピックでは、Azure Germany でのコンピューティング サービスについて詳細に比較します。
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/13/2017
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 579e5138d5bfe93fcdc1f53f28c442125b8a69b3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: e6c2e89f1ddce1bd88d3b8ce0ccf7e82364afa32
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685563"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "117029216"
 ---
 # <a name="azure-germany-compute-services"></a>Azure Germany 計算サービス
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
+
 ## <a name="virtual-machines"></a>Virtual Machines
-Azure Virtual Machines サービスとその使用方法の詳細については、「[Sizes for Windows virtual machines in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」 (Azure における Windows 仮想マシンのサイズ) を参照してください。
+Azure Virtual Machines サービスとその使用方法の詳細については、「[Sizes for Windows virtual machines in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」 (Azure における Windows 仮想マシンのサイズ) を参照してください。
 
 ### <a name="variations"></a>バリエーション
 これらの製品 (仮想マシン) は、 Azure Germany で利用できます。
@@ -55,14 +51,14 @@ Azure Virtual Machines サービスとその使用方法の詳細については
 | Standard_DS4_v2 | Y | Y |
 | Standard_DS5_v2 | Y | Y |
 |  |   |   |
-| Standard_D1 | N | N |
-| Standard_D2 | N | N |
-| Standard_D3 | N | N |
-| Standard_D4 | N | N |
-| Standard_DS1 | N | N |
-| Standard_DS2 | N | N |
-| Standard_DS3 | N | N |
-| Standard_DS4 | N | N |
+| Standard_D1 | × | × |
+| Standard_D2 | × | × |
+| Standard_D3 | × | × |
+| Standard_D4 | × | × |
+| Standard_DS1 | × | × |
+| Standard_DS2 | × | × |
+| Standard_DS3 | × | × |
+| Standard_DS4 | × | × |
 |  |   |   |
 | Standard_A0 | Y | Y |
 | Standard_A1 | Y | Y |
@@ -95,58 +91,53 @@ Azure Virtual Machines サービスとその使用方法の詳細については
 | Standard_DS14_v2 | Y | Y |
 | Standard_DS15_v2 | Y | Y |
 |  |   |   |
-| Standard_D11 | N | N |
-| Standard_D12 | N | N |
-| Standard_D13 | N | N |
-| Standard_D14 | N | N |
-| Standard_DS11 | N | N |
-| Standard_DS12 | N | N |
-| Standard_DS13 | N | N |
-| Standard_DS14 | N | N |
+| Standard_D11 | × | × |
+| Standard_D12 | × | × |
+| Standard_D13 | × | × |
+| Standard_D14 | × | × |
+| Standard_DS11 | × | × |
+| Standard_DS12 | × | × |
+| Standard_DS13 | × | × |
+| Standard_DS14 | × | × |
 |  |   |   |
-| Standard_G1 | Y | N |
-| Standard_G2 | Y | N |
-| Standard_G3 | Y | N |
-| Standard_G4 | Y | N |
-| Standard_G5 | Y | N |
-| Standard_GS1 | Y | N |
-| Standard_GS2 | Y | N |
-| Standard_GS3 | Y | N |
-| Standard_GS4 | Y | N |
-| Standard_GS5 | Y | N |
+| Standard_G1 | Y | × |
+| Standard_G2 | Y | × |
+| Standard_G3 | Y | × |
+| Standard_G4 | Y | × |
+| Standard_G5 | Y | × |
+| Standard_GS1 | Y | × |
+| Standard_GS2 | Y | × |
+| Standard_GS3 | Y | × |
+| Standard_GS4 | Y | × |
+| Standard_GS5 | Y | × |
 |  |   |   |
-| Standard_L4 | N | N |
-| Standard_L8 | N | N |
-| Standard_L16 | N | N |
-| Standard_L32 | N | N |
+| Standard_L4 | × | × |
+| Standard_L8 | × | × |
+| Standard_L16 | × | × |
+| Standard_L32 | × | × |
 |  |   |   |
-| Standard_NC6 | N | N |
-| Standard_NC12 | N | N |
-| Standard_NC24 | N | N |
-| Standard_NC24r | N | N |
+| Standard_NC6 | × | × |
+| Standard_NC12 | × | × |
+| Standard_NC24 | × | × |
+| Standard_NC24r | × | × |
 |  |   |   |
-| Standard_NV6 | N | N |
-| Standard_NV12 | N | N |
-| Standard_NV24 | N | N |
+| Standard_NV6 | × | × |
+| Standard_NV12 | × | × |
+| Standard_NV24 | × | × |
 |  |   |   |
-| Standard_H8 | N | N |
-| Standard_H16 | N | N |
-| Standard_H8m | N | N |
-| Standard_H16m | N | N |
-| Standard_H16mr | N | N |
-| Standard_H16r | N | N |
+| Standard_H8 | × | × |
+| Standard_H16 | × | × |
+| Standard_H8m | × | × |
+| Standard_H16m | × | × |
+| Standard_H16mr | × | × |
+| Standard_H16r | × | × |
 |  |   |   |
-| Standard_A8 | N | N |
-| Standard_A9 | N | N |
-| Standard_A10 | N | N |
-| Standard_A11 | N | N |
+| Standard_A8 | × | × |
+| Standard_A9 | × | × |
+| Standard_A10 | × | × |
+| Standard_A11 | × | N |
 
 
 
-## <a name="next-steps"></a>次の手順
-補足情報と更新情報については、[Azure Germany のブログ](https://blogs.msdn.microsoft.com/azuregermany/)を参照してください。
-
-
-
-
-
+## <a name="next-steps"></a>次のステップ
+補足情報と更新情報については、[Azure Germany のブログ](/archive/blogs/azuregermany/)を参照してください。

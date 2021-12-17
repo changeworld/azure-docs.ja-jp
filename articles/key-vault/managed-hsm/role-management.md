@@ -2,18 +2,18 @@
 title: Managed HSM データ プレーン ロールを管理する - Azure Key Vault | Microsoft Docs
 description: マネージド HSM のロールの割り当てを管理するには、こちらの記事をご利用ください
 services: key-vault
-author: amitbapat
+author: mbaldwin
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.author: ambapat
-ms.openlocfilehash: 4d36b2c2178c7205246cd7c59aefedef3358e473
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.author: mbaldwin
+ms.openlocfilehash: 7a4179d35faffbf04a70a63aafead120259802f3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951744"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471270"
 ---
 # <a name="managed-hsm-role-management"></a>Managed HSM のロール管理
 
@@ -33,7 +33,7 @@ Managed HSM の概要については、[Managed HSM の概要](overview.md)に�
 この記事にある Azure CLI コマンドを使用するには、以下を用意する必要があります。
 
 * Microsoft Azure サブスクリプション。 サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
-* Azure CLI バージョン 2.21.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+* Azure CLI バージョン 2.25.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 * お使いのサブスクリプション内のマネージド HSM。 「[クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする](quick-create-cli.md)」を参照して、マネージド HSM をプロビジョニングしてアクティブにします。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]

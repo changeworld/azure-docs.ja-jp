@@ -1,19 +1,15 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
-services: functions
-author: jeffhollan
+author: ggailey777
 ms.service: azure-functions
 ms.topic: include
 ms.date: 04/24/2020
-ms.author: jehollan, glenga
-ms.custom: include file
-ms.openlocfilehash: cdeba09c91bee72508632b8468126150017df7cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: glenga
+ms.openlocfilehash: 398790187fe29eb96a910765b052ad94a827051e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98186979"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265413"
 ---
 1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
 

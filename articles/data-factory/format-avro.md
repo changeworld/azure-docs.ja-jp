@@ -1,25 +1,28 @@
 ---
-title: Azure Data Factory での Avro 形式
-description: このトピックでは、Azure Data Factory で Avro 形式を処理する方法について説明します。
-author: linda33wj
+title: Avro 形式
+titleSuffix: Azure Data Factory & Azure Synapse
+description: このトピックでは、Azure Data Factory と Azure Synapse Analytics で Avro 形式を処理する方法について説明します。
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.author: jingwang
-ms.openlocfilehash: 4be499e8e304f34b1cab10aed41b5b98a5f24e9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/18/2021
+ms.author: jianleishen
+ms.openlocfilehash: d8b3d862c358ee3521980fdbfae2689c17707b1e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392597"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223709"
 ---
-# <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory での Avro 形式
+# <a name="avro-format-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory と Azure Synapse Analytics での Avro 形式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-**Avro ファイルを解析する場合や、Avro 形式にデータを書き込む場合** は、この記事に従ってください。 
+**Avro ファイルを解析したり、データを Avro 形式に書き込む** 場合は、この記事に従ってください。 
 
-Avro 形式は次のコネクタでサポートされています。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。
+Avro 形式は、[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure Files](connector-azure-file-storage.md)、[File System](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle Cloud Storage](connector-oracle-cloud-storage.md)、[SFTP](connector-sftp.md) の各コネクタでサポートされます。
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -29,7 +32,7 @@ Avro 形式は次のコネクタでサポートされています。[Amazon S3](
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | データセットの type プロパティは、**Avro** に設定する必要があります。 | はい      |
 | location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。 **詳細については、コネクタの記事でデータセットのプロパティに関するセクションを参照してください**。 | はい      |
-| avroCompressionCodec | Avro ファイルへの書き込み時に使用する圧縮コーデック。 Avro ファイルから読み取る場合、Data Factory では、ファイルのメタデータに基づいて圧縮コーデックが自動的に判別されます。<br>サポートされる型は "**none**" (既定値)、"**deflate**"、"**snappy**" です。 Avro ファイルの読み取りおよび書き込みの場合、コピー アクティビティでは現在、Snappy がサポートされていないことに注意してください。 | いいえ       |
+| avroCompressionCodec | Avro ファイルへの書き込み時に使用する圧縮コーデック。 Avro ファイルから読み取る場合、サービスでは、ファイルのメタデータに基づいて圧縮コーデックが自動的に判別されます。<br>サポートされる型は "**none**" (既定値)、"**deflate**"、"**snappy**" です。 Avro ファイルの読み取りおよび書き込みの場合、コピー アクティビティでは現在、Snappy がサポートされていないことに注意してください。 | いいえ       |
 
 > [!NOTE]
 > Avro ファイルでは、列名に空白文字はサポートされません。
@@ -91,7 +94,7 @@ Azure Blob Storage の Avro データセットの例を次に示します。
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-マッピング データ フローでは、次のデータ ストアにおいて Avro 形式での読み取りと書き込みが可能です:[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+マッピング データ フローでは、次のデータ ストアで avro 形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。また、[Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties) で avro 形式を読み取ることができます。
 
 ### <a name="source-properties"></a>ソース プロパティ
 

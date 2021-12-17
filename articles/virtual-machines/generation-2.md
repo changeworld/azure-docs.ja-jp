@@ -3,19 +3,21 @@ title: 第 2 世代 VM に対する Azure のサポート
 description: 第 2 世代 VM に対する Azure のサポートの概要
 author: ju-shim
 ms.service: virtual-machines
-ms.subservice: generation-2-vm
+ms.subservice: sizes
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: a9c832d9a5e90cb2c9ffcbe8a26cdb08ebcddfcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0a78f60f8610c4b6430cf33928ec389c0ed85ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553121"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471575"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 第 2 世代仮想マシン (VM) が Azure でサポートされるようになりました。 仮想マシンを作成した後にその世代を変更することはできないため、世代を選択する前に、このページの考慮事項を確認してください。
 
@@ -25,7 +27,7 @@ ms.locfileid: "102553121"
 
 ## <a name="generation-2-vm-sizes"></a>第 2 世代 VM のサイズ
 
-第 1 世代 VM は、Azure のすべての VM サイズでサポートされています (Mv2 シリーズ VM を除く)。 Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
+Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
 
 
 * [B シリーズ](sizes-b-series-burstable.md)
@@ -35,10 +37,20 @@ ms.locfileid: "102553121"
 * [Dsv4 シリーズ](dv4-dsv4-series.md)
 * [Dasv4 シリーズ](dav4-dasv4-series.md)
 * [Ddsv4 シリーズ](ddv4-ddsv4-series.md)
+* [Dasv5 シリーズ](dasv5-dadsv5-series.md)
+* [Dadsv5 シリーズ](dasv5-dadsv5-series.md)
+* [Dv5 シリーズ](dv5-dsv5-series.md)
+* [Dsv5 シリーズ](dv5-dsv5-series.md)
 * [Esv3 シリーズ](ev3-esv3-series.md)
 * [Esv4 シリーズ](ev4-esv4-series.md)
 * [Easv4 シリーズ](eav4-easv4-series.md)
 * [Edsv4 シリーズ](edv4-edsv4-series.md)
+* [Easv5 シリーズ](easv5-eadsv5-series.md)
+* [Eadsv5 シリーズ](easv5-eadsv5-series.md)
+* [Edv5 シリーズ](edv5-edsv5-series.md)
+* [Edsv5 シリーズ](edv5-edsv5-series.md)
+* [Ev5 シリーズ](ev5-esv5-series.md)
+* [Esv5 シリーズ](ev5-esv5-series.md)
 * [Fsv2 シリーズ](fsv2-series.md)
 * [GS シリーズ](sizes-previous-gen.md#gs-series)
 * [HB シリーズ](hb-series.md)
@@ -47,14 +59,18 @@ ms.locfileid: "102553121"
 * [Lsv2 シリーズ](lsv2-series.md)
 * [M シリーズ](m-series.md)
 * [Mv2 シリーズ](mv2-series.md)<sup>1</sup>
+* [Msv2 および Mdsv2 ミディアム メモリ シリーズ](msv2-mdsv2-series.md)<sup>1</sup>
 * [NCv2 シリーズ](ncv2-series.md) 
 * [NCv3 シリーズ](ncv3-series.md)
 * [ND シリーズ](nd-series.md)
+* [ND A100 v4-シリーズ](nda100-v4-series.md)
+* [NDv2 シリーズ](ndv2-series.md)
 * [NVv3 シリーズ](nvv3-series.md)
 * [NVv4 シリーズ](nvv4-series.md)
 * [NCasT4_v3 シリーズ](nct4-v3-series.md)
+* [NDm A100 v4 シリーズ](ndm-a100-v4-series.md)
 
-<sup>1</sup> Mv2 シリーズは、第 1 世代 VM のイメージをサポートしておらず、第 2 世代のイメージのサブセットのみをサポートしています。 詳細については、[Mv2 シリーズのドキュメント](mv2-series.md)を参照してください。
+<sup>1</sup> Mv2 シリーズ、DC シリーズ、NDv2 シリーズ、Msv2 および Mdsv2 シリーズ ミディアム メモリは、第 1 世代 VM のイメージをサポートしておらず、第 2 世代のイメージのサブセットのみをサポートしています。 詳細については、[Mv2 シリーズのドキュメント](mv2-series.md)、[DSv2 シリーズ](dv2-dsv2-series.md)、[ND A100 v4 シリーズ](nda100-v4-series.md)、[NDv2 シリーズ](ndv2-series.md)、および [Msv2 および Mdsv2 ミディアム メモリ シリーズ](msv2-mdsv2-series.md)に関するページを参照してください。
 
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace の第 2 世代 VM のイメージ
@@ -65,13 +81,13 @@ ms.locfileid: "102553121"
 * Windows 10 Pro、Windows 10 Enterprise
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04、18.04、19.04、19.10 
-* RHEL 8.1、8.0、7.7、7.6、7.5、7.4、7.0
-* Cent OS 8.1、8.0、7.7、7.6、7.5、7.4
-* Oracle Linux 7.7、7.7-CI
+* Ubuntu Server 16.04, 18.04, 19.04, 19.10, 20.04 
+* RHEL 8.2, 8.1, 8.0, 7.9, 7.7, 7.6, 7.5, 7.4, 7.0, 8.3
+* Cent OS 8.1, 8.0, 7.7, 7.6, 7.5, 7.4, 8.2, 8.3
+* Oracle Linux 7.7, 7.7-CI, 7.8
 
 > [!NOTE]
-> Mv2 シリーズのような特定の仮想マシンのサイズでは、これらのイメージのサブセットのみがサポートされている場合があります。詳細については、関連する仮想マシンのサイズに関するドキュメントを参照してください。
+> Mv2 シリーズ、DC シリーズ、ND A100 v4 シリーズ、NDv2 シリーズ、Msv2 および Mdsv2 シリーズのような特定の仮想マシンのサイズでは、これらのイメージのサブセットのみがサポートされている場合があります。詳細については、関連する仮想マシンのサイズに関するドキュメントを参照してください。
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>オンプレミスと Azure 第 2 世代 VM の比較
 
@@ -82,7 +98,7 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 | セキュア ブート                         | :heavy_check_mark:  | トラステッド起動 (プレビュー) を使用   |
 | シールドされた VM                         | :heavy_check_mark:  | :x:   |
 | vTPM                                | :heavy_check_mark:  | トラステッド起動 (プレビュー) を使用  |
-| 仮想化ベースのセキュリティ (VBS) | :heavy_check_mark:  | トラステッド起動 (プレビュー) を使用   |
+| 仮想化ベースのセキュリティ (VBS) | :heavy_check_mark:  | :heavy_check_mark:   |
 | VHDX 形式                         | :heavy_check_mark:  | :x:   |
 
 詳細については、[トラステッド起動 (プレビュー)](trusted-launch.md) に関するページを参照してください。
@@ -106,9 +122,10 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 | 仮想マシン スケール セットのサポート | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | バックアップ/復元                    | :heavy_check_mark: | :heavy_check_mark: |
-| 共有イメージ ギャラリー              | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Compute Gallery             | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :heavy_check_mark:                |
 | [サーバー側暗号化](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
+
 
 ## <a name="creating-a-generation-2-vm"></a>第 2 世代 VM の作成
 

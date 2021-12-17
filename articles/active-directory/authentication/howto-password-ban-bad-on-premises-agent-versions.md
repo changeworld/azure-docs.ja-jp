@@ -5,20 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 06/04/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32ad7199360ca0acc8674f7a4e34bd206f8b335f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2aa4c7625637c84404b5ed7074c078717127ee1f
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648767"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545361"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD パスワード保護エージェントのバージョン履歴
+
+## <a name="121760"></a>1.2.176.0
+
+リリース日: 2021 年 6 月 4 日
+
+* プロキシ エージェントと DC エージェントが特定の環境で正常に実行されるのを妨げる問題に対する軽微なバグ修正。
 
 ## <a name="121720"></a>1.2.172.0
 
@@ -41,7 +47,7 @@ ms.locfileid: "101648767"
 
 ## <a name="121250"></a>1.2.125.0
 
-リリース日: 2019 年 3 月 22 日
+リリース日: 2019 年 3 月 2 日
 
 * イベント ログ メッセージ内の軽度な誤りが修正されます
 * EULA の契約が最終的な一般提供バージョンに更新されます
@@ -51,7 +57,7 @@ ms.locfileid: "101648767"
 
 ## <a name="121160"></a>1.2.116.0
 
-リリース日: 2019 年 3 月 13 日
+リリース日: 2019 年 3 月 3 日
 
 * Get-AzureADPasswordProtectionProxy コマンドレットと Get-AzureADPasswordProtectionDCAgent コマンドレットはソフトウェアのバージョンと現在の Azure テナントを報告するようになりました。ただし、次のような制限があります。
   * ソフトウェアのバージョンおよび Azure テナントのデータは、バージョン 1.2.116.0 を実行している DC エージェントとプロキシでのみ使用可能です。

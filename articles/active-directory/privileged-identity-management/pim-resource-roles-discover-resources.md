@@ -4,22 +4,23 @@ description: Azure AD Privileged Identity Management (PIM) で管理する Azure
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/29/2020
+ms.date: 10/19/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d38990289169412f06b0c7e4bcbdf67f688da7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d9214936073106424301d8e7b85867d51cbeb22
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539011"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253697"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Privileged Identity Management で管理する Azure リソースを検出する
 
@@ -29,6 +30,10 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 - 運用リソースをセキュリティで保護しようとしている管理グループとサブスクリプションの所有者
 
 Privileged Identity Management を Azure リソース用に初めて設定するときは、Privileged Identity Management を使用して保護するリソースを検出して選択する必要があります。 Privileged Identity Management を使用して管理できるリソースの数に制限はありません。 ただし、最も重要な運用リソースから始めることをお勧めします。
+
+## <a name="required-permissions"></a>必要なアクセス許可
+
+ユーザー アクセス管理者や所有者ロールなど、Microsoft.Authorization/roleAssignments/write 権限がある管理グループまたはサブスクリプションを表示し、管理できます。 サブスクリプションの所有者ではなく、グローバル管理者であり、管理する Azure サブスクリプションまたは管理グループが表示されない場合は、[アクセス権を昇格させてリソースを管理](../../role-based-access-control/elevate-access-global-admin.md)できます。
 
 ## <a name="discover-resources"></a>リソースを探索する
 

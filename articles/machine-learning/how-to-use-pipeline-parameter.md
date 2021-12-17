@@ -1,21 +1,21 @@
 ---
-title: デザイナーでパイプライン パラメーターを使用して汎用性のあるパイプラインを作成する
+title: パイプライン パラメーターを使用して汎用性のあるパイプラインを作成する
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning デザイナーでパイプライン パラメーターを使用する方法。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: keli19
 author: likebupt
-ms.date: 03/19/2021
-ms.topic: conceptual
-ms.custom: how-to, designer
-ms.openlocfilehash: 09eabffb0e01ee6c5ea6b541378773a7d60397a3
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: designer
+ms.openlocfilehash: d600f7ad651b58f3cf194c8f5dace8f6dc4c7695
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106080724"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560342"
 ---
 # <a name="use-pipeline-parameters-in-the-designer-to-build-versatile-pipelines"></a>デザイナーでパイプライン パラメーターを使用して汎用性のあるパイプラインを作成する
 
@@ -41,8 +41,8 @@ ms.locfileid: "106080724"
 ## <a name="create-pipeline-parameter"></a>パイプライン パラメーターを作成する
 
 デザイナーでパイプライン パラメーターを作成するには、3 つの方法があります。
-- [設定] パネルでパイプライン パラメーターを作成し、それをモジュールにバインドする。
-- モジュール パラメーターをパイプライン パラメーターにレベル上げする。
+- [設定] パネルでパイプライン パラメーターを作成し、それをコンポーネントにバインドする。
+- コンポーネント パラメーターをパイプライン パラメーターにレベル上げする。
 - データセットをパイプライン パラメーターにレベル上げする
 
 > [!NOTE]
@@ -52,7 +52,7 @@ ms.locfileid: "106080724"
 
 このセクションでは、[設定] パネルでパイプライン パラメーターを作成します。
 
-この例では、**Clean missing data** モジュールを使用して、パイプラインで欠落データを埋める方法を定義するパイプライン パラメーターを作成します。
+この例では、**Clean missing data** コンポーネントを使用して、パイプラインで欠落データを埋める方法を定義するパイプライン パラメーターを作成します。
 
 1. パイプライン ドラフトの名前の横にある **歯車アイコン** を選択して、 **[設定]** パネルを開きます。
 
@@ -65,18 +65,18 @@ ms.locfileid: "106080724"
    ![パイプライン パラメーターの作成方法を示すスクリーンショット](media/how-to-use-pipeline-parameter/create-pipeline-parameter.png)
 
 
-パイプライン パラメーターを作成したら、動的に設定する[モジュール パラメーターにそれを接続する](#attach-module-parameter-to-pipeline-parameter)必要があります。
+パイプライン パラメーターを作成したら、動的に設定する[コンポーネント パラメーターにそれを接続する](#attach-component-parameter-to-pipeline-parameter)必要があります。
 
-### <a name="option-2-promote-a-module-parameter"></a>オプション 2: モジュール パラメーターをレベル上げする
+### <a name="option-2-promote-a-component-parameter"></a>オプション 2: コンポーネント パラメーターの昇格
 
-モジュール値のパイプライン パラメーターを作成する最も簡単な方法は、モジュール パラメーターをレベル上げすることです。 モジュール パラメーターをパイプライン パラメーターにレベル上げするには、次の手順を使用します。
+コンポーネント値のパイプライン パラメーターを作成する最も簡単な方法は、コンポーネント パラメーターをレベル上げすることです。 コンポーネント パラメーターをパイプライン パラメーターにレベル上げするには、次の手順を使用します。
 
-1. パイプライン パラメーターを接続するモジュールを選択します。
-1. モジュールの詳細ペインで、指定するパラメーターの上にマウスを移動します。
+1. パイプライン パラメーターを接続するコンポーネントを選択します。
+1. コンポーネントの詳細ペインで、指定するパラメーターの上にマウスを移動します。
 1. 表示される省略記号 ( **...** ) を選択します。
 1. **[Add to pipeline parameter]\(パイプライン パラメーターに追加する\)** を選択します。
 
-    ![モジュール パラメーターをパイプライン パラメーターにレベル上げする方法を示すスクリーンショット](media/how-to-use-pipeline-parameter/promote-module-para-to-pipeline-para.png)
+    ![コンポーネント パラメーターをパイプライン parameter1 にレベル上げする方法を示すスクリーンショット](media/how-to-use-pipeline-parameter/promote-module-para-to-pipeline-para.png)
 
 1. パラメーター名と既定値を入力します。
 1. **[保存]** を選びます。
@@ -95,17 +95,19 @@ ms.locfileid: "106080724"
 
 これで、次にパイプラインを実行したときに、パイプライン パラメーターを使用して、別のデータセットを指定できるようになりました。
 
-## <a name="attach-module-parameter-to-pipeline-parameter"></a>モジュール パラメーターをパイプライン パラメーターに接続する 
+## <a name="attach-and-detach-component-parameter-to-pipeline-parameter"></a>コンポーネント パラメーターをパイプライン パラメーターに対して接続およびデタッチする 
 
-このセクションでは、モジュール パラメーターをパイプライン パラメーターに接続する方法について説明します。
+このセクションでは、コンポーネント パラメーターをパイプライン パラメーターに対して接続およびデタッチする方法について説明します。
 
-パイプライン実行をトリガーするときに同時に値を変更する必要がある場合は、重複したモジュールの同じモジュール パラメーターを同じパイプライン パラメーターに接続します。
+### <a name="attach-component-parameter-to-pipeline-parameter"></a>コンポーネント パラメーターをパイプライン パラメーターにアタッチする
 
-次の例では、重複した **Clean Missing Data** モジュールがあります。 各 **Clean Missing Data** モジュールに対して、パイプライン パラメーター **replace-missing-value** に **置換値** を接続します。
+パイプライン実行をトリガーするときに同時に値を変更する必要がある場合は、重複したコンポーネントの同じコンポーネント パラメーターを同じパイプライン パラメーターに接続します。
 
-1. **[Clean Missing Data]\(見つからないデータのクリーンアップ\)** モジュールを選択します。
+次の例では、重複した **Clean Missing Data** コンポーネントがあります。 各 **Clean Missing Data** コンポーネントに対して、パイプライン パラメーター **replace-missing-value** に **置換値** を接続します。
 
-1. キャンバスの右側にあるモジュールの詳細ペインで、 **[Cleaning Mode]\(整理モード\)** を [Custom substitution value]\(カスタムの置換値\) に設定します。
+1. **[Clean Missing Data]\(見つからないデータのクリーンアップ\)** コンポーネントを選択します。
+
+1. キャンバスの右側にあるコンポーネントの詳細ペインで、 **[Cleaning Mode]\(整理モード\)** を [Custom substitution value]\(カスタムの置換値\) に設定します。
 
 1. **[Replacement value]\(置換値\)** フィールドの上にマウスを移動します。
 
@@ -115,10 +117,16 @@ ms.locfileid: "106080724"
 
    ![パイプライン パラメーターの接続方法を示すスクリーンショット](media/how-to-use-pipeline-parameter/attach-replace-value-to-pipeline-parameter.png)
 
-**[Replacement value]\(置換値\)** フィールドがパイプライン パラメーターに正常に接続されました。 モジュールの **[Replacement value]\(置換値\)** は、使用できません。
+**[Replacement value]\(置換値\)** フィールドがパイプライン パラメーターに正常に接続されました。 
+
+
+### <a name="detach-component-parameter-to-pipeline-parameter"></a>コンポーネント パラメーターをパイプライン パラメーターにデタッチする
+
+パイプライン パラメーターに接続した後の **置換値** を使用することはできません。
+
+コンポーネント パラメーターの横にある省略記号 ( **...** ) をクリックして **[Detach from pipeline parameter]\(パイプライン パラメーターからデタッチする\)** を選択すると、コンポーネント パラメーターをパイプライン パラメーターからデタッチできます。
 
  ![パイプライン パラメーターに接続した後に使用不可能であることを示すスクリーンショット](media/how-to-use-pipeline-parameter/non-actionable-module-parameter.png)
-
 
 ## <a name="update-and-delete-pipeline-parameters"></a>パイプライン パラメーターを更新および削除する
 
@@ -126,43 +134,35 @@ ms.locfileid: "106080724"
 
 ### <a name="update-pipeline-parameters"></a>パイプライン パラメーターを更新する
 
-モジュール パイプライン パラメーターを更新するには、次の手順を使用します。
+コンポーネント パイプライン パラメーターを更新するには、次の手順を使用します。
 
 1. キャンバスの上部にある歯車アイコンを選択します。
 1. **[パイプライン パラメーター]** セクションで、すべてのパイプライン パラメーターの名前と既定値を表示して更新できます。
 
 ### <a name="delete-a-dataset-pipeline-parameter"></a>データセット パイプライン パラメーターを削除する
 
-データセット パイプライン パラメーターをデタッチするには、次の手順を使用します。
+データセット パイプライン パラメーターを削除するには、次の手順を使用します。
 
-1. データセット モジュールを選択します。
+1. データセット コンポーネントを選択します。
 1. **[Set as pipeline parameter]\(パイプライン パラメーターとして設定\)** オプションをオフにします。
 
 
-### <a name="delete-module-pipeline-parameters"></a>モジュール パイプライン パラメーターを削除する
+### <a name="delete-component-pipeline-parameters"></a>コンポーネント パイプライン パラメーターの削除
 
-モジュール パイプライン パラメーターを削除するには、次の手順を使用します。
+コンポーネント パイプライン パラメーターを削除するには、次の手順を使用します。
 
 1. キャンバスの上部にある歯車アイコンを選択します。
 
 1. パイプライン パラメーターの横にある省略記号 ( **...** ) を選択します。
 
-    このビューには、パイプライン パラメーターが接続されているモジュールが表示されます。 パイプライン パラメーターを削除するには、まずすべてのモジュール パラメーターからそれをデタッチする必要があります。
+    このビューには、パイプライン パラメーターが接続されているコンポーネントが表示されます。
 
-    ![モジュールに適用されている現在のパイプライン パラメーターを示すスクリーンショット](media/how-to-use-pipeline-parameter/current-pipeline-parameter.png)
+    ![コンポーネントに適用されている現在のパイプライン パラメーターを示すスクリーンショット](media/how-to-use-pipeline-parameter/delete-pipeline-parameter2.png)
 
-1. キャンバスで、パイプライン パラメーターが依然として接続されているモジュールを選択します。
-1. 右側にあるモジュールのプロパティ ペインで、パイプライン パラメーターが接続されているフィールドを見つけます。
-1. 接続されたフィールドの上にマウスを移動します。 次に、表示される省略記号 ( **...** ) を選択します。
-1. **[Detach from pipeline parameter]\(パイプライン パラメーターからデタッチする\)** を選択します。
-
-    ![パイプライン パラメーターからのデタッチを示すスクリーンショット](media/how-to-use-pipeline-parameter/detach-from-pipeline-parameter.png)
-
-1. すべてのフィールドからパイプライン パラメーターをデタッチするまで、前の手順を繰り返します。
-1. パイプライン パラメーターの横にある省略記号 ( **...** ) を選択します。
 1. **[パラメーターの削除]** を選択して、パイプライン パラメーターを削除します。
 
-    ![パイプライン パラメーターの削除を示すスクリーンショット](media/how-to-use-pipeline-parameter/delete-pipeline-parameter.png)
+    > [!NOTE]
+    > パイプライン パラメーターを削除すると、接続されているすべてのコンポーネント パラメーターがデタッチされ、デタッチされたコンポーネント パラメーターでは現在のパイプライン パラメーターの値が保持されます。     
 
 ## <a name="trigger-a-pipeline-run-with-pipeline-parameters"></a>パイプライン パラメーターを指定してパイプライン実行をトリガーする 
 

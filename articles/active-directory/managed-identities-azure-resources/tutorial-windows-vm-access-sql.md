@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 07/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4f56ce9fa86dc27b77ad6b463479d13c8e4e7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4bb5bc57ea387695ed77193c4b642b615186a7a3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91856514"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749109"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする
 
@@ -153,6 +153,9 @@ if (accessToken != null) {
 }
 ```
 
+>[!NOTE]
+>[SDK](qs-configure-sdk-windows-vm.md) とともに他のプログラミング オプションを使用しながら、マネージド ID を使用できます。
+
 または、アプリの記述と VM へのデプロイなしでエンド ツー エンドの設定をテストする簡単な方法は、PowerShell を使用することです。
 
 1. ポータルで **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、 **[概要]** の **[接続]** をクリックします。
@@ -209,3 +212,4 @@ if (accessToken != null) {
 
 > [!div class="nextstepaction"]
 > [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)
+

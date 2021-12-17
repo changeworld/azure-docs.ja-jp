@@ -4,15 +4,16 @@ description: Azure Data Factory を使用してオンプレミスまたは Azure
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 robots: noindex
-ms.openlocfilehash: fbd1e1d652db3bbd91344ea828278d057baeb060
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73bc6efce68a49bf85d5485f4d9429e9826e7861
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368814"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235452"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory を使用した SQL Server との間のデータの移動
 
@@ -30,11 +31,11 @@ ms.locfileid: "100368814"
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 **SQL Server データベースから** 以下のデータ ストアにデータをコピーできます。
 
-[!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sink](includes/data-factory-supported-sinks.md)]
 
 以下のデータ ストアから **SQL Server データベースに** データをコピーできます。
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-sql-server-versions"></a>サポートされる SQL Server のバージョン
 この SQL Server コネクタは、SQL 認証と Windows 認証の両方を使用して、オンプレミスまたは Azure IaaS でホストされているバージョンSQL Server 2016、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008、SQL Server 2005 のインスタンスとの間で、データのコピーをサポートしています。
@@ -539,12 +540,12 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 ## <a name="troubleshooting-connection-issues"></a>接続の問題のトラブルシューティング
 1. リモート接続を許可するよう、SQL Server を構成します。 **SQL Server Management Studio** を起動し、**サーバー** を右クリックして、 **[プロパティ]** をクリックします。 一覧から **[接続]** を選択し、 **[このサーバーへのリモート接続を許可する]** をオンにします。
 
-    ![リモート接続を有効にする](./media/data-factory-sqlserver-connector/AllowRemoteConnections.png)
+    :::image type="content" source="./media/data-factory-sqlserver-connector/AllowRemoteConnections.png" alt-text="リモート接続の有効化":::
 
     詳細な手順については、「 [remote access サーバー構成オプションの構成](/sql/database-engine/configure-windows/configure-the-remote-access-server-configuration-option) 」をご覧ください。
 2. **SQL Server 構成マネージャー** を起動します。 目的のインスタンスの **[SQL Server ネットワークの構成]** を展開し、 **[MSSQLSERVER のプロトコル]** を選択します。 右側のウィンドウにプロトコルが表示されます。 **[TCP/IP]** を右クリックし、 **[有効化]** をクリックして TCP/IP を有効にします。
 
-    ![TCP/IP を有効にする](./media/data-factory-sqlserver-connector/EnableTCPProptocol.png)
+    :::image type="content" source="./media/data-factory-sqlserver-connector/EnableTCPProptocol.png" alt-text="TCP/IP を有効にする":::
 
     詳細および TCP/IP プロトコルを有効にする別の方法については、「 [サーバー ネットワーク プロトコルの有効化または無効化](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol) 」をご覧ください。
 3. 同じウィンドウで、 **[TCP/IP]** をダブルクリックして、 **[TCP/IP のプロパティ]** ウィンドウを起動します。
@@ -650,7 +651,7 @@ SQL Server との間でデータを移動するとき、SQL 型から .NET 型�
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |ブール型 |
 | char |String, Char[] |
 | date |DateTime |
 | Datetime |DateTime |
@@ -676,7 +677,7 @@ SQL Server との間でデータを移動するとき、SQL 型から .NET 型�
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
-| UNIQUEIDENTIFIER |Guid |
+| UNIQUEIDENTIFIER |GUID |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |xml |

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7ac9553660aace8242c81b41fa2cc9171d28219
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dc428a79e38f390d926f268bd8147eb7ee06a648
+ms.sourcegitcommit: 04d2dec0316576388e6e10c1558b0a0b3688d01c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594633"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112421839"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 
@@ -31,6 +31,8 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 ユーザーが Microsoft のクラウド サービスに新規登録すると、新しい Azure AD テナントが作成され、そのユーザーは全体管理者ロールに属します。 ただし、サブスクリプションの所有者が自分のサブスクリプションを既存のテナントに参加させるとき、その所有者は全体管理者ロールに割り当てられません。
 
 すべてのユーザーに、認証のための *ホーム* ディレクトリが 1 つあります。 ユーザーは、他のディレクトリのゲストになることもできます。 Azure AD では、各ユーザーのホーム ディレクトリとゲスト ディレクトリの両方を確認できます。
+
+:::image type="content" source="media/active-directory-how-subscriptions-associated-directory/trust-relationship-azure-ad.png" alt-text="Azure サブスクリプションと Azure Active Directory との間の信頼関係を示すスクリーンショット。":::
 
 > [!Important]
 > サブスクリプションを別のディレクトリに関連付けると、[Azure ロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)を使用してロールが割り当てられているユーザーはアクセスできなくなります。 サービス管理者や共同管理者などの従来のサブスクリプション管理者もアクセスできなくなります。

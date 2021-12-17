@@ -2,7 +2,6 @@
 title: 一般的なエラー - Azure IoT Edge | Microsoft Docs
 description: この記事では、IoT Edge ソリューションをデプロイするときに発生する一般的な問題を解決する方法について説明します。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/01/2021
 ms.topic: conceptual
@@ -11,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0d36a51865f3ed4a093998b16aaa174432c5308a
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 11b74530daa08112ca945edfa45595a3aa1cf1f4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275653"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491755"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -396,7 +395,68 @@ IoT Edge デバイスのモジュールを設定し、モジュールが正常�
 
 詳細については、「[1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動展開について](module-deployment-monitoring.md)」を参照してください。
 
-<!-- <1.2> -->
+## <a name="iot-edge-module-reports-connectivity-errors"></a>IoT Edge モジュールによって接続エラーが報告されます
+
+**監視された動作:**
+
+ランタイム モジュールなど、クラウド サービスに直接接続する IoT Edge モジュールは想定どおりに動作を停止し、接続またはネットワークの障害に関するエラーを返します。
+
+**根本原因:**
+
+コンテナーでは、IP パケット転送がなければインターネットに接続できず、クラウド サービスと通信できません。 Docker では IP パケット転送が既定で有効になっていますが、無効になった場合、クラウド サービスに接続するモジュールは正常に機能しません。 詳細については、Docker ドキュメントの「[コンテナ通信の理解](http://docs.docker.oeynet.com/engine/userguide/networking/default_network/container-communication/)」を参照してください。
+
+**解決策:**
+
+IP パケット転送を次の手順で有効にします。
+
+<!--1.1-->
+:::moniker range="iotedge-2018-06"
+
+Windows の場合:
+
+1. **Run** アプリケーションを起動します。
+
+1. テキスト ボックスに「`regedit`」と入力し、 **[OK]** を選択します。
+
+1. **[レジストリ エディター]** ウィンドウで **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters** を参照します。
+
+1. **IPEnableRouter** パラメーターを探します。
+
+   1. パラメーターが存在する場合、パラメーターの値を **1** に設定します。
+
+   1. パラメーターが存在しない場合、次の設定で新しいパラメーターとして追加します。
+
+      | 設定 | 値 |
+      | ------- | ----- |
+      | 名前    | IPEnableRouter |
+      | 型    | REG_DWORD |
+      | [値]   | 1 |
+
+1. [レジストリ エディター] ウィンドウを閉じます。
+
+1. システムを再起動して変更を適用します。
+
+Linux の場合:
+:::moniker-end
+<!-- end -->
+
+1. **sysctl.conf** ファイルを開きます。
+
+   ```bash
+   sudo nano /etc/sysctl.conf
+   ```
+
+1. 次の行をファイルに追加します。
+
+   ```input
+   net.ipv4.ip_forward=1
+   ```
+
+1. ファイルを保存して閉じます。
+
+1. ネットワーク サービスと docker サービスを再起動し、変更を適用します。
+
+<!-- 1.2 -->
 ::: moniker range=">=iotedge-2020-11"
 
 ## <a name="iot-edge-behind-a-gateway-cannot-perform-http-requests-and-start-edgeagent-module"></a>ゲートウェイの背後にある IoT Edge が HTTP 要求を実行して edgeAgent モジュールを起動できない

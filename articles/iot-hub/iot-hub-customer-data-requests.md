@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub デバイスの顧客データ要求
 description: Azure IoT Hub で管理されるデバイスのほとんどは個人用でありませんが、一部は個人用です。 この記事では、管理者がデバイスから個人データをエクスポートしたり、削除したりする方法について説明します。
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: df1d4f3a12c6e15e2954bb0e02454ef58b22cb73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20a8d6c39b33a60277478605e3b4855aad04b55c
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92535792"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555150"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Azure IoT Hub デバイスの顧客データ要求機能
 

@@ -4,12 +4,12 @@ description: オンプレミスまたは Microsoft Azure Web アプリケーシ�
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 124b8d3de59d1645379d50360e69a5fdbd5587e5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a2052b4b4d5822d583101d27e873bf19ceeca49c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045294"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486124"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -90,7 +90,7 @@ Web ページの場合、Application Insights JavaScript SDK によって AJAX �
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>詳細な SQL 追跡で完全な SQL クエリを取得する
 
 > [!NOTE]
-> Azure Functions には、SQL テキスト コレクションを有効にするための別の設定が必要です。詳細については、[Azure Functions の監視の構成](../../azure-functions/configure-monitoring.md)に関するページを参照してください。
+> Azure Functions には、SQL テキスト コレクションを有効にするための別の設定が必要です。[host.json](../../azure-functions/functions-host-json.md#applicationinsights) 内の `applicationInsights` で `"EnableDependencyTracking": true,` および `"DependencyTrackingOptions": { "enableSqlCommandTextInstrumentation": true }` を設定します。
 
 SQL 呼び出しの場合、サーバーとデータベースの名前が常に収集され、収集された `DependencyTelemetry` の名前として保存されます。 "データ" という名称の追加フィールドがあります。これに完全な SQL クエリ テキストを含めることができます。
 
@@ -216,7 +216,7 @@ dependencies
 Log Analytics のクエリ ビュー `timestamp` では、依存関係呼び出しの応答を受信した直後に発生する TrackDependency() 呼び出しが開始された瞬間が表されています。 依存関係の呼び出しが開始された時刻を計算するには、`timestamp` を取得して、依存関係の呼び出しの記録済み `duration` を減算します。
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
-あらゆる Application Insights SDK と同様に、依存関係収集モジュールもオープンソースです。 コードの閲覧、投稿、問題のレポートは[公式の GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet-server)で行ってください。
+あらゆる Application Insights SDK と同様に、依存関係収集モジュールもオープンソースです。 コードの閲覧、投稿、問題のレポートは[公式の GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet)で行ってください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.author: jeedes
-ms.openlocfilehash: e34664bd81023da7a50b8ff4645c670146ef2554
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9331b950a5093f94625938626d4d79d8fc6dd08b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98731938"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348561"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortiweb-web-application-firewall"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と FortiWeb Web Application Firewall の統合
 
@@ -76,13 +76,13 @@ FortiWeb Web Application Firewall に対して Azure AD SSO を構成してテ�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-   a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://www.<CUSTOMER_DOMAIN>.com`
+    1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://www.<CUSTOMER_DOMAIN>.com`
 
-    b. **[応答 URL]** ボックスに、`https://www.<CUSTOMER_DOMAIN>.com/<FORTIWEB_NAME>/saml.sso/SAML2/POST` のパターンを使用して URL を入力します
+    1. **[応答 URL]** ボックスに、`https://www.<CUSTOMER_DOMAIN>.com/<FORTIWEB_NAME>/saml.sso/SAML2/POST` のパターンを使用して URL を入力します
 
-    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://www.<CUSTOMER_DOMAIN>.com`
+    1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://www.<CUSTOMER_DOMAIN>.com`
 
-    d. **[ログアウト URL]** テキスト ボックスに、`https://www.<CUSTOMER_DOMAIN>.info/<FORTIWEB_NAME>/saml.sso/SLO/POST` のパターンを使用して URL を入力します。
+    1. **[ログアウト URL]** テキスト ボックスに、`https://www.<CUSTOMER_DOMAIN>.info/<FORTIWEB_NAME>/saml.sso/SLO/POST` のパターンを使用して URL を入力します。
  
     > [!NOTE]
     > `<FORTIWEB_NAME>` は、後で FortiWeb に対して構成を指定するときに使用される名前識別子です。
@@ -91,7 +91,6 @@ FortiWeb Web Application Firewall に対して Azure AD SSO を構成してテ�
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
-
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -243,9 +242,9 @@ FortiWeb Web Application Firewall に対して Azure AD SSO を構成してテ�
 
 * FortiWeb Web Application のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [FortiWeb Web Application] タイルをクリックすると、FortiWeb Web Application のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [FortiWeb Web Application] タイルをクリックすると、FortiWeb Web Application のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-FortiWeb Web Application Firewall を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+FortiWeb Web Application Firewall を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

@@ -3,25 +3,22 @@ title: ローカル アカウント ID プロバイダーを設定する
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C テナントでユーザー フローを設定するときに、ローカル アカウント認証に使用できる ID の種類 (メール アドレス、ユーザー名、電話番号) を定義します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/01/2021
-ms.author: mimart
+ms.date: 09/20/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: dd21c1dca0dd54331780ba98f9c53d5b99d6b4e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c63cb4f4e2ce41fa488e49201ba90bfc4b16222
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100557221"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012835"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-for-user-flows-preview"></a>ユーザー フローの電話でのサインアップとサインインを設定する (プレビュー)
-
-> [!NOTE]
-> ユーザー フローの電話でのサインアップとサインインおよび回復用メール機能は、パブリック プレビュー段階にあります。
+# <a name="set-up-phone-sign-up-and-sign-in-for-user-flows"></a>ユーザー フローの電話でのサインアップとサインインを設定する
 
 メール アドレスとユーザー名に加えて、電話でのサインアップとサインインをローカル アカウント ID プロバイダーに追加することで、電話番号をサインアップ オプションとしてテナント全体で有効にできます。 ローカル アカウントに対して電話でのサインアップとサインインを有効にすると、ユーザー フローに電話でのサインアップを追加できるようになります。
 
@@ -33,6 +30,8 @@ ms.locfileid: "100557221"
 
 - [回復用メール プロンプト (プレビュー) を有効にして](#enable-the-recovery-email-prompt-preview)、ユーザーが携帯電話を持っていないときにアカウントを回復するために使用できるメール アドレスをユーザーが指定できるようにします。
 
+- サインアップまたはサインインのフロー中にユーザーに[同意情報を表示](#enable-consent-information)します。 既定の同意情報を表示するか、独自の同意情報をカスタマイズできます。
+
 電話でのサインアップを使用したユーザー フローを構成するときは、多要素認証 (MFA) が既定で無効化されます。 電話でのサインアップを使用したユーザー フローで MFA を有効にすることはできますが、電話番号がプライマリ ID として使用されるため、2 番目の認証要素に使用できる唯一のオプションは電子メールによるワンタイム パスコードです。
 
 ## <a name="configure-phone-sign-up-and-sign-in-tenant-wide"></a>電話でのサインアップとサインインをテナント全体で構成する
@@ -40,14 +39,11 @@ ms.locfileid: "100557221"
 ローカル アカウント ID プロバイダーの設定では、メール アドレスでのサインアップが既定で有効になっています。 テナントでサポートする ID の種類を変更するには、メール アドレスでのサインアップ、ユーザー名、または電話番号を選択または選択解除します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-
-2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用の Azure AD テナントを含むディレクトリを選択します。
-
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-
-4. **[管理]** で、 **[ID プロバイダー]** を選択します。
-
-5. ID プロバイダー リストで、 **[ローカル アカウント]** を選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. **[管理]** で、 **[ID プロバイダー]** を選択します。
+1. ID プロバイダー リストで、 **[ローカル アカウント]** を選択します。
 
    ![[ID プロバイダー] で [ローカル アカウント] を選択する](media/phone-authentication-user-flows/identity-provider-local-account.png)
 
@@ -64,29 +60,27 @@ ms.locfileid: "100557221"
 新しいユーザー フローに電話でのサインアップを追加する方法を示す例を次に示します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. ポータルツールバーの **[Directory + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. **[ポリシー]** で、 **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
 
-    ![B2C テナント、ディレクトリとサブスクリプションのペイン、Azure portal](./media/phone-authentication-user-flows/directory-subscription-pane.png)
+    ![[新しいユーザー フロー] ボタンが強調表示されているポータル内の [ユーザー フロー] ページ](./media/phone-authentication-user-flows/sign-up-sign-in-user-flow.png)
 
-3. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
-4. **[ポリシー]** で、 **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
-
-    ![[新しいユーザー フロー] ボタンが強調表示されているポータル内の [ユーザー フロー] ページ](./media/phone-authentication-user-flows/signup-signin-user-flow.png)
-
-5. **[ユーザー フローを作成する]** ページで、 **[サインアップとサインイン]** ユーザー フローを選択します。
+1. **[ユーザー フローを作成する]** ページで、 **[サインアップとサインイン]** ユーザー フローを選択します。
 
     ![サインアップとサインインのフローが強調表示されている [ユーザー フローの選択] ページ](./media/phone-authentication-user-flows/select-user-flow-type.png)
 
-6. **[バージョンの選択]** で **[Recommended]\(推奨\)** を選択して、 **[作成]** を選択します。 (ユーザー フローのバージョンに関する[詳細情報](user-flow-versions.md))。
+1. **[バージョンの選択]** で **[Recommended]\(推奨\)** を選択して、 **[作成]** を選択します。 (ユーザー フローのバージョンに関する[詳細情報](user-flow-versions.md))。
 
     ![ユーザー フローの作成ボタン](./media/phone-authentication-user-flows/select-version.png)
 
-7. ユーザー フローの **[名前]** を入力します。 たとえば、「*signupsignin1*」と入力します。
-8. **[ID プロバイダー]** セクションの **[ローカル アカウント]** の下にある **[Phone signup]\(電話でのサインアップ\)** を選択します。
+1. ユーザー フローの **[名前]** (*signupsignin1* など) を入力します。
+1. **[ID プロバイダー]** セクションの **[ローカル アカウント]** の下にある **[Phone signup]\(電話でのサインアップ\)** を選択します。
 
-   ![ユーザー フローの電話でのサインアップ オプションの選択](media/phone-authentication-user-flows/user-flow-phone-signup.png)
+   ![ユーザー フロー **電話でのサインアップ** オプションの選択](media/phone-authentication-user-flows/user-flow-phone-signup.png)
 
-9. **[ソーシャル ID プロバイダー]** で、このユーザー フローに対して許可するその他の ID プロバイダーを選択します。
+1. **[ソーシャル ID プロバイダー]** で、このユーザー フローに対して許可するその他の ID プロバイダーを選択します。
 
    > [!NOTE]
    > サインアップのユーザー フローでは、多要素認証 (MFA) は既定で無効になっています。 電話でのサインアップのユーザー フローで MFA を有効にすることはできますが、電話番号がプライマリ ID として使用されるため、2 番目の認証要素に使用できる唯一のオプションは電子メールによるワンタイム パスコードです。
@@ -111,19 +105,20 @@ ms.locfileid: "100557221"
 ### <a name="to-enable-the-recovery-email-prompt"></a>回復用メール プロンプトを有効にするには
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-3. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
-4. Azure AD B2C の **[ポリシー]** で、 **[ユーザー フロー]** を選択します。
-5. 一覧からユーザー フローを選択します。
-6. **[設定]** で **[プロパティ]** を選択します。
-7. **[Enable recovery email prompt for phone number signup and sign in (preview)]\(電話番号でのサインアップとサインインの回復用メール プロンプトを有効にする (プレビュー)\)** の横で、次のように選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. Azure AD B2C の **[ポリシー]** で、 **[ユーザー フロー]** を選択します。
+1. 一覧からユーザー フローを選択します。
+1. **[設定]** で **[プロパティ]** を選択します。
+1. **[Enable recovery email prompt for phone number signup and sign in (preview)]\(電話番号でのサインアップとサインインの回復用メール プロンプトを有効にする (プレビュー)\)** の横で、次のように選択します。
 
    - **[オン]** : サインアップとサインインの両方で回復用メール プロンプトを表示する。
    - **[オフ]** : 回復用メール プロンプトを非表示にする。
 
     ![回復用メールを有効にしたユーザー フロー プロパティ](./media/phone-authentication-user-flows/recovery-email-settings.png)
 
-8. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
 ### <a name="to-test-the-recovery-email-prompt"></a>回復用メール プロンプトをテストする
 
@@ -131,14 +126,71 @@ ms.locfileid: "100557221"
 
 1. **[ポリシー]**  >  **[ユーザー フロー]** を選択して、作成したユーザー フローを選択します。 ユーザー フローの [概要] ページで、 **[ユーザー フローを実行します]** を選択します。
 
-2. **[アプリケーション]** で、手順 1. で登録した Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[アプリケーション]** で、手順 1. で登録した Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 
-3. **[ユーザー フローを実行します]** を選択し、次の動作を確認します。
+1. **[ユーザー フローを実行します]** を選択し、次の動作を確認します。
 
    - 初めてサインアップしたユーザーは、回復用メールを提供するように求められます。 
    - 既にサインアップしていても、回復用メールを提供していないユーザーについては、サインイン時にこれを提供するように求められます。
 
-4. メール アドレスを入力し、 **[確認コードの送信]** を選択します。 指定したメール アドレスの受信トレイにコードが送信されていることを確認します。 コードを取得し、 **[確認コード]** ボックスに入力します。 次に、 **[コードの確認]** を選択します。
+1. メール アドレスを入力し、 **[確認コードの送信]** を選択します。 指定したメール アドレスの受信トレイにコードが送信されていることを確認します。 コードを取得し、 **[確認コード]** ボックスに入力します。 次に、 **[コードの確認]** を選択します。
+
+## <a name="enable-consent-information"></a>同意情報を有効にする
+
+サインアップおよびサインインのフローに同意情報を含めることを強くお勧めします。 サンプル テキストが提供されています。 [CTIA Web サイト](https://www.ctia.org/programs)にある「Short Code Monitoring Handbook」(ショート コード監視に関するハンドブック) を参照し、ご自身のコンプライアンス ニーズを満たすための最終的なテキストと機能の構成に関するガイダンスについては、法務またはコンプライアンスの専門家に相談してください。
+>
+> "*電話番号を入力すると、テキスト メッセージによって送信されるワンタイム パスコードの受信に同意したことになり、 *&lt;挿入: アプリケーション名&gt; にサインインできるようになります*"。標準メッセージとデータの通信料が適用される場合があります。*
+>
+> *&lt;挿入: プライバシーに関する声明へのリンク&gt;*<br/>*&lt;挿入: サービス利用規約へのリンク&gt;*
+
+同意情報を有効にするには
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. Azure AD B2C の **[ポリシー]** で、 **[ユーザー フロー]** を選択します。
+1. 一覧からユーザー フローを選択します。
+1. **[カスタマイズ]** で、 **[言語]** を選択します。
+1. 同意テキストを表示するには、 **[言語のカスタマイズを有効化]** を選択します。
+  
+    ![言語のカスタマイズを有効化](./media/phone-authentication-user-flows/enable-language-customization.png)
+
+1. 同意情報をカスタマイズするには、一覧から言語を選択します。
+1. 言語パネルで、 **[Phone signIn page]\(電話サインイン ページ\)** を選択します。
+1. [既定値のダウンロード] を選択します。
+
+    ![既定値のダウンロード](./media/phone-authentication-user-flows/phone-sign-in-language-override.png)
+
+1. ダウンロードした JSON ファイルを開きます。 次のテキストを検索し、それをカスタマイズします。
+
+    - **disclaimer_link_1_url**: **override** を "true" に変更し、プライバシー情報の URL を追加します。
+
+    - **disclaimer_link_2_url**: **override** を "true" に変更し、使用条件の URL を追加します。  
+
+    - **disclaimer_msg_intro**: **override** を "true" に変更し、**value** を目的の免責の文字列に変更します。  
+
+1. ファイルを保存します。 **[Upload new overrides]\(新しいオーバーライドのアップロード\)** で、ファイルを参照して選択します。 "オーバーライドは正常にアップロードされました" という通知が表示されたことを確認します。
+1. **[Phone signUp page]\(電話サインアップ ページ\)** を選択し、手順 10 から 12 を繰り返します。 
+
+
+## <a name="get-a-users-phone-number-in-your-directory"></a>ディレクトリ内のユーザーの電話番号を取得する
+
+1. Graph エクスプローラーで、次の要求を実行します。
+
+   `GET https://graph.microsoft.com/v1.0/users/{object_id}?$select=identities`
+
+1. 返された応答で `issuerAssignedId` プロパティを見つけます。
+
+   ```json
+       "identities": [
+           {
+               "signInType": "phoneNumber",
+               "issuer": "contoso.onmicrosoft.com",
+               "issuerAssignedId": "+11231231234"
+           }
+       ]
+   ```
 
 ## <a name="next-steps"></a>次のステップ
 

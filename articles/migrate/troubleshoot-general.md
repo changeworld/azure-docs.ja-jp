@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 00802f53f973ad9b5a80b265006943121a0fa763
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcd031a76e911f6368206d75736e934f79135b77
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96753401"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113225680"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -24,7 +24,7 @@ ms.locfileid: "96753401"
 
 ## <a name="i-cant-get-the-appliance-working"></a>アプライアンスを動作させることができない
 
-アプライアンスの展開に関する[一般的な問題の回答](troubleshoot-appliance-discovery.md)を確認してください。
+アプライアンスの展開に関する[一般的な問題の回答](troubleshoot-appliance.md)を確認してください。
 
 ## <a name="machines-arent-discovered"></a>コンピューターが検出されない
 
@@ -32,7 +32,7 @@ ms.locfileid: "96753401"
 
 ## <a name="app-discovery-isnt-working"></a>アプリ検出が機能しない
 
-現在、オンプレミスのコンピューターで実行されているアプリ、ロール、および機能の検出は、VMware VM でのみサポートされています。 アプリ検出に関する[一般的なエラーを確認](troubleshoot-appliance-discovery.md#common-app-discovery-errors)してください。
+現在、オンプレミスのコンピューターで実行されているアプリ、ロール、および機能の検出は、VMware VM でのみサポートされています。 アプリ検出に関する[一般的なエラーを確認](troubleshoot-discovery.md#common-software-inventory-errors)してください。
 
 ## <a name="assessment-isnt-working"></a>評価が機能しない
 

@@ -13,15 +13,17 @@ ms.date: 04/23/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6139fd1b081c69f037ec9cd3313e4a6499c39543
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 054dbb46f6a13a70b5b2cebbeb1d07d29d799762
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98064625"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054830"
 ---
 # <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>MSAL.NET を使用した独自の HttpClient およびプロキシの提供
-[パブリック クライアント アプリケーションを初期化する](msal-net-initializing-client-applications.md)ときに、`.WithHttpClientFactory method` を使用して、独自の HttpClient を提供できます。  独自の HttpClient を提供すると、(たとえば、ASP.NET Core Web アプリ/API で) HTTP プロキシのきめ細やかな制御、ユーザー エージェント ヘッダーのカスタマイズ、MSAL に対する特定の HttpClient の使用の強制など、高度なシナリオを有効にします。
+[クライアント アプリケーションを初期化する](msal-net-initializing-client-applications.md)ときに、`.WithHttpClientFactory method` を使用して、独自の HttpClient を提供できます。  独自の HttpClient を提供すると、(たとえば、ASP.NET Core Web アプリ/API で) HTTP プロキシのきめ細やかな制御、ユーザー エージェント ヘッダーのカスタマイズ、MSAL に対する特定の HttpClient の使用の強制など、高度なシナリオを有効にします。
+
+`HttpClient` は、一度インスタンス化された後、アプリケーションの有効期間全体にわたって再利用することを目的としています。 「[解説](/dotnet/api/system.net.http.httpclient?view=net-5.0#remarks)」を参照してください。
 
 ## <a name="initialize-with-httpclientfactory"></a>HttpClientFactory での初期化
 次の例では、`HttpClientFactory` を作成し、続いてそれを使用してパブリック クライアント アプリケーションを初期化します。
@@ -32,6 +34,44 @@ IMsalHttpClientFactory httpClientFactory = new MyHttpClientFactory();
 var pca = PublicClientApplicationBuilder.Create(MsalTestConstants.ClientId) 
                                         .WithHttpClientFactory(httpClientFactory)
                                         .Build();
+```
+
+## <a name="example-implementation-using-a-proxy"></a>プロキシを使用する実装例
+```csharp
+public class HttpFactoryWithProxy : IMsalHttpClientFactory
+{
+    private static HttpClient _httpClient;
+
+    public HttpFactoryWithProxy()
+    {
+        // Consider using Lazy<T> 
+        if (_httpClient == null) 
+        {
+            var proxy = new WebProxy
+            {
+                Address = new Uri($"http://{proxyHost}:{proxyPort}"),
+                BypassProxyOnLocal = false,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(
+                    userName: proxyUserName,
+                    password: proxyPassword)
+            };
+
+            // Now create a client handler which uses that proxy
+            var httpClientHandler = new HttpClientHandler
+            {
+                Proxy = proxy,
+            };
+
+            _httpClient = new HttpClient(handler: httpClientHandler);
+        }
+    }
+
+    public HttpClient GetHttpClient()
+    {
+        return _httpClient;
+    }
+}
 ```
 
 ## <a name="httpclient-and-xamarin-ios"></a>HttpClient および Xamarin iOS

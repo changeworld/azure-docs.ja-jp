@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c37c672f8784052424e058837d31bc1d22fcfc57
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: f831acacfd1aaf2248e7993c3e7161cad62312b3
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552616"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733402"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory のレポートと監視のデプロイを計画する
 
@@ -55,7 +55,7 @@ Azure AD の監視では、次の場所にログをルーティングできま�
 
 Azure AD サインイン ログにアクセスするには、Azure AD プレミアム ライセンスが必要になります。
 
-機能とライセンスの詳細については、[Azure Active Directory 料金ガイド](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+機能とライセンスの詳細については、[Azure Active Directory 料金ガイド](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)を参照してください。
 
 Azure AD の監視とレポートをデプロイするには、Azure AD テナントのグローバル管理者またはセキュリティ管理者であるユーザーが必要になります。
 
@@ -155,7 +155,6 @@ Azure AD のロールを使用すると、自分のロールに応じて、Azure
 
 *アカウント侵害* のリスクを軽減するために、最小限の特権の概念を常に適用してください。 組織をさらにセキュリティで保護するために、[Privileged Identity Management](../privileged-identity-management/pim-configure.md) の実装を検討します。
 
-##  
 
 ## <a name="deploy-azure-ad-reporting-and-monitoring"></a>Azure AD のレポートと監視をデプロイする
 
@@ -175,7 +174,7 @@ Azure AD のロールを使用すると、自分のロールに応じて、Azure
 
 [Azure Monitor ログ を使用して Azure AD アクティビティ ログを分析する](./howto-analyze-activity-logs-log-analytics.md)
 
-* [Azure Monitor で監査ログのスキーマを解釈する](./reference-azure-monitor-audit-log-schema.md)
+* [Azure Monitor で監査ログのスキーマを解釈する](./overview-reports.md)
 
 * [Azure Monitor でサインイン ログのスキーマを解釈する](./reference-azure-monitor-sign-ins-log-schema.md)
 

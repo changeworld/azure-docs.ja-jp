@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/22/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 5ce9eb41755d7faa2ce00b38dfd971313443bfb7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0b993380287edd4528a26dd2d9925a2b66c54fd3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572177"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132299745"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-cloud"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Saba Cloud の統合
 
@@ -52,7 +52,6 @@ Azure AD への Saba Cloud の統合を構成するには、ギャラリーか�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Saba Cloud**」と入力します。
 1. 結果のパネルから **[Saba Cloud]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-saba-cloud"></a>Saba Cloud の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Saba Cloud に対する Azure AD SSO を構成してテストします。 SSO を機能させるには、Azure AD ユーザーと Saba Cloud の関連ユーザーとの間にリンク関係を確立する必要があります。
@@ -79,9 +78,12 @@ Saba Cloud に対する Azure AD SSO を構成してテストするには、次�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`<CUSTOMER_NAME>_SPLN_PRINCIPLE` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`<CUSTOMER_NAME>_sp` というパターンを使用して URL を入力します (この値は、「Saba Cloud の SSO の構成」セクションの手順 6. で取得しますが、通常は `<CUSTOMER_NAME>_sp` の形式になっています)。
 
-    b. **[応答 URL]** ボックスに、`https://<SIGN-ON URL>/Saba/saml/SSO/alias/<ENTITY_ID>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://<CUSTOMER_NAME>.sabacloud.com/Saba/saml/SSO/alias/<ENTITY_ID>` というパターンを使用して URL を入力します。ENTITY_ID には、前の手順で使用した値 (通常は `<CUSTOMER_NAME>_sp`) を指定してください。
+    
+    > [!NOTE]
+    > 応答 URL の指定に誤りがある場合、 **[エンタープライズ アプリケーション]** セクションではなく、Azure AD の **[アプリの登録]** セクションで調整する必要があります。 **[基本的な SAML 構成]** セクションに変更を加えても、応答 URL が更新されるとは限りません。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -90,10 +92,13 @@ Saba Cloud に対する Azure AD SSO を構成してテストするには、次�
     b. `IDP_INIT---SAML_SSO_SITE=<SITE_ID> ` というパターンを使用して URL を **[リレー状態]** ボックスに入力します。または、SAML がマイクロサイト用に構成されている場合は、`IDP_INIT---SAML_SSO_SITE=<SITE_ID>---SAML_SSO_MICRO_SITE=<MicroSiteId>` というパターンを使用して URL を入力します。
 
     > [!NOTE]
-    > RelayState の構成の詳細については、[こちら](https://help.sabacloud.com/sabacloud/help-system/topics/help-system-idp-and-sp-initiated-sso-for-a-microsite.html)のリンクを参照してください。
-
-    > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL、リレー状態でこれらの値を更新します。 これらの値を取得するには、[Saba Cloud クライアント サポート チーム](mailto:support@saba.com)にご連絡ください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > 
+    > RelayState の構成の詳細については、「[マイクロサイトの IdP Initiated SSO と SP Initiated SSO](https://help.sabacloud.com/sabacloud/help-system/topics/help-system-idp-and-sp-initiated-sso-for-a-microsite.html)」を参照してください。
+
+1. **[User Attributes & Claims]\(ユーザー属性とクレーム\)** セクションで、一意のユーザー ID を調整します。Saba ユーザーのプライマリ ユーザー名として使用する予定の ID を使用してください。
+
+   この手順が必要になるのは、ユーザー名とパスワードから SSO への変換を試みる場合のみです。 まだユーザーがいない新しい Saba Cloud デプロイである場合、この手順はスキップしてかまいません。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -129,7 +134,16 @@ Saba Cloud に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-saba-cloud-sso"></a>Saba Cloud の SSO の構成
 
-1. Saba Cloud 企業サイトに管理者としてサインインします。
+1. Saba Cloud 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[Saba Cloud のセットアップ]** をクリックすると、Saba Cloud アプリケーションに移動します。 そこから、管理者の資格情報を入力して Saba Cloud にサインインします。 ブラウザー拡張機能によって、アプリケーションが自動的に構成され、手順 3. から 9. が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+1. Saba Cloud を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Saba Cloud 企業サイトに管理者としてサインインします。
+
 1. **メニュー** アイコンをクリックし、 **[Admin]\(管理\)** をクリックして、 **[System Admin]\(システム管理\)** タブを選択します。
 
     ![システム管理のスクリーンショット](./media/saba-cloud-tutorial/system.png)
@@ -153,6 +167,8 @@ Saba Cloud に対する Azure AD SSO を構成してテストするには、次�
 1. **[Configure Properties]\(プロパティの構成\)** セクションで、事前設定されたフィールドを確認し、 **[SAVE]\(保存\)** をクリックします。 
 
     ![[Configure Properties]\(プロパティの構成\) のスクリーンショット](./media/saba-cloud-tutorial/configure-properties.png) 
+    
+    **[Max Authentication Age (in seconds)]\(最大認証期間 (秒)\)** は、Azure AD がログインに許容する既定の最大ローリング期間に合わせて、**7776000** (90 日) に設定しなければならない場合があります。 そのようにしないと、"`(109) Login failed. Please contact system administrator.` ((109) ログインに失敗しました。システム管理者に問い合わせてください)" というエラーが発生する可能性があります。
 
 ### <a name="create-saba-cloud-test-user"></a>Saba Cloud のテスト ユーザーを作成する
 
@@ -175,7 +191,7 @@ Saba Cloud に対する Azure AD SSO を構成してテストするには、次�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Saba Cloud に自動的にサインインされます 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Saba Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Saba Cloud に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Saba Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Saba Cloud に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 > [!NOTE]
 > サインオン URL が Azure AD で設定されていない場合、アプリケーションは IDP Initiated モードとして扱われます。サインオン URL が設定されている場合は、ユーザーが常に Service Provider Initiated フローのために Azure AD によって Saba Cloud アプリケーションにリダイレクトされます。
@@ -196,6 +212,4 @@ Saba Cloud に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="next-steps"></a>次のステップ
 
-Saba Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Saba Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

@@ -3,12 +3,12 @@ title: Container insights からのメトリック アラート
 description: この記事では、Container insights から利用可能なパブリック プレビュー段階の推奨メトリック アラートを確認します。
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: f19959c76d31422a0bdf898a6fa41e6b168e2e61
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 49ae1fee1961bf722489309d2d605ca7697ab218
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728894"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455133"
 ---
 # <a name="recommended-metric-alerts-preview-from-container-insights"></a>Container insights からの推奨メトリック アラート (プレビュー)
 
@@ -17,6 +17,9 @@ ms.locfileid: "101728894"
 この記事では、エクスペリエンスを確認し、これらのアラート ルールの構成と管理に関するガイダンスを提供します。
 
 Azure Monitor のアラートに詳しくない場合は、事前に「[Microsoft Azure のアラートの概要](../alerts/alerts-overview.md)」を参照してください。 メトリック アラートの詳細については、「[Azure Monitor でのメトリック アラートの機能](../alerts/alerts-metric-overview.md)」をご覧ください。
+
+> [!NOTE]
+> 2021 年 10 月 8 日から、**コンテナーの CPU %** 、**コンテナーの平均ワーキング セット メモリ %** 、**永続ボリューム使用率 %** の 3 つのアラートが更新され、アラートの条件が正しく計算されるようになりました。 これらの新しいアラートは、対応する以前に使用可能だったアラートと同じ名前ですが、新しい更新されたメトリックを使用します。 この記事の説明に従って "古い" メトリックを使用するアラートを無効にし、"新しい" メトリックを有効にすることをお勧めします。 "古い" メトリックは、無効にした後、推奨されるアラートでは使用できなくなりますが、手動で再び有効にすることができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,11 +44,12 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 
 |名前| 説明 |既定のしきい値 |
 |----|-------------|------------------|
-|Average container CPU % (コンテナーの平均 CPU %) |コンテナーあたりの使用された平均 CPU を計算します。|コンテナーあたりの平均 CPU 使用率が 95% を超えたとき。| 
-|Average container working set memory % (コンテナーの平均ワーキング セット メモリ %) |コンテナーあたりの使用された平均ワーキング セット メモリを計算します。|コンテナーあたりの平均ワーキング セット メモリ使用率が 95% を超えたとき。 |
+|**(新規) Average container CPU % (コンテナーの平均 CPU %)** |コンテナーあたりの使用された平均 CPU を計算します。|コンテナーあたりの平均 CPU 使用率が 95% を超えたとき。| 
+|**(新規) Average container working set memory % (コンテナーの平均ワーキング セット メモリ %)** |コンテナーあたりの使用された平均ワーキング セット メモリを計算します。|コンテナーあたりの平均ワーキング セット メモリ使用率が 95% を超えたとき。 |
 |Average CPU % (平均 CPU %) |ノードあたりの使用された平均 CPU を計算します。 |ノードの平均 CPU 使用率が 80% を超えたとき |
+| 日単位のデータ上限の違反 | データ上限に違反したとき| Log Analytics ワークスペースへのデータ インジェストの合計が[指定されたクォータ](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume)を超えた場合 |
 |Average Disk Usage % (平均ディスク使用率 %) |ノードの平均ディスク使用率を計算します。|ノードの平均ディスク使用率が 80% を超えたとき。 |
-|Average Persistent Volume Usage % (永続ボリュームの平均使用率 %) |ポッドあたりの平均 PV 使用量を計算します。 |ポッドあたりの平均 PV 使用率が 80% を超えたとき。|
+|**Average Persistent Volume Usage % (永続ボリュームの平均使用率 %)** |ポッドあたりの平均 PV 使用量を計算します。 |ポッドあたりの平均 PV 使用率が 80% を超えたとき。|
 |Average Working set memory % (平均ワーキング セット メモリ %) |ノードの平均ワーキング セット メモリを計算します。 |ノードの平均ワーキング セット メモリが 80% を超えたとき。 |
 |Restarting container count (コンテナーの再起動回数) |コンテナーの再起動回数を計算します。 | コンテナーの再起動回数が 0 を超えたとき。 |
 |Failed Pod Counts (失敗したポッド数) |失敗した状態のポッドがあるかどうかを計算します。|失敗した状態のポッド数が 0 を超えたとき。 |
@@ -80,16 +84,16 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 
 ## <a name="metrics-collected"></a>収集されるメトリック
 
-特に指定しない限り、次のメトリックは、この機能の一部として有効化され、収集されます。
+特に指定しない限り、次のメトリックは、この機能の一部として有効化され、収集されます。 "古い" というラベル が付いた **太字** のメトリックは、正しいアラート評価のために収集される "新規" メトリックに置き換えられるメトリックです。
 
 |メトリック名前空間 |メトリック |説明 |
 |---------|----|------------|
 |Insights.container/nodes |cpuUsageMillicores |ホスト別の CPU 使用率 (ミリコア単位)。|
-|Insights.container/nodes |cpuUsagePercentage |ノード別の CPU 使用率 (%)。|
+|Insights.container/nodes |cpuUsagePercentage、cpuUsageAllocatablePercentage (プレビュー) |ノード別の CPU 使用率とそれぞれの割り当て可能な CPU 使用率。|
 |Insights.container/nodes |memoryRssBytes |ホスト別のメモリ RSS 使用量 (バイト単位)。|
-|Insights.container/nodes |memoryRssPercentage |ホスト別のメモリ RSS 使用率 (%)。|
+|Insights.container/nodes |memoryRssPercentage、memoryRssAllocatablePercentage (プレビュー) |ホスト別のメモリ RSS 使用率とそれぞれの割り当て可能なメモリ RSS 使用率。|
 |Insights.container/nodes |memoryWorkingSetBytes |ホスト別のメモリ ワーキング セット使用量 (バイト単位)。|
-|Insights.container/nodes |memoryWorkingSetPercentage |ホスト別のメモリ ワーキング セット使用率 (%)。|
+|Insights.container/nodes |memoryWorkingSetPercentage、memoryRssAllocatablePercentage (プレビュー) |ホスト別のメモリ ワーキング セット使用率とそれぞれの割り当て可能なメモリ ワーキング セット使用率。|
 |Insights.container/nodes |nodesCount |状態別のノード数。|
 |Insights.container/nodes |diskUsedPercentage |デバイス別のノードで使用されるディスクの割合 (%)。|
 |Insights.container/pods |podCount |コントローラー、名前空間、ノード、フェーズ別のポッド数。|
@@ -97,10 +101,14 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 |Insights.container/pods |restartingContainerCount |コントローラー、Kubernetes 名前空間別のコンテナー再起動回数。|
 |Insights.container/pods |oomKilledContainerCount |OOM により中止されたコンテナーのコントローラー、Kubernetes 名前空間別の数。|
 |Insights.container/pods |podReadyPercentage |コントローラー、Kubernetes 名前空間別の準備完了状態のポッドの割合 (%)。|
-|Insights.container/containers |cpuExceededPercentage |ユーザーが構成可能なしきい値 (既定値は 95.0) を超えるコンテナーの CPU 使用率 (%)。コンテナー名、コントローラー名、Kubernetes 名前空間、ポッド名別。<br> 収集済み  |
-|Insights.container/containers |memoryRssExceededPercentage |ユーザーが構成可能なしきい値 (既定値は 95.0) を超えるコンテナーのメモリ RSS (%)。コンテナー名、コントローラー名、Kubernetes 名前空間、ポッド名別。|
-|Insights.container/containers |memoryWorkingSetExceededPercentage |ユーザーが構成可能なしきい値 (既定値は 95.0) を超えるコンテナーのメモリ ワーキング セットの割合 (%)。コンテナー名、コントローラー名、Kubernetes 名前空間、ポッド名別。|
-|Insights.container/persistentvolumes |pvUsageExceededPercentage |ユーザーが構成可能なしきい値 (既定値は 60.0) を超える永続ボリュームの PV 使用率 (%)。要求名、Kubernetes 名前空間、ボリューム名、ポッド名、ノード名別。
+|Insights.container/containers |**(古い)cpuExceededPercentage** |ユーザーが構成可能なしきい値 (既定値は 95.0) を超えるコンテナーの CPU 使用率 (%)。コンテナー名、コントローラー名、Kubernetes 名前空間、ポッド名別。<br> 収集済み  |
+|Insights.container/containers |**(新規)cpuThresholdViolated** |メトリックは、コンテナーの CPU 使用率がユーザーが構成可能なしきい値 (既定値は 95.0) をコンテナー名、コントローラー名、Kubernetes 名前空間、ポッド名別に超えた場合にトリガーされます。<br> 収集済み  |
+|Insights.container/containers |**(古い)memoryRssExceededPercentage** |ユーザーが構成可能なしきい値 (既定値は 95.0) を超えるコンテナーのメモリ RSS (%)。コンテナー名、コントローラー名、Kubernetes 名前空間、ポッド名別。|
+|Insights.container/containers |**(新規)memoryRssThresholdViolated** |メトリックは、コンテナーのメモリ RSS (%) がユーザーが構成可能なしきい値 (既定値は 95.0) をコンテナー名、コントローラー名、Kubernetes 名前空間、ポッド名別に超えた場合にトリガーされます。|
+|Insights.container/containers |**(古い)memoryWorkingSetExceededPercentage** |ユーザーが構成可能なしきい値 (既定値は 95.0) を超えるコンテナーのメモリ ワーキング セットの割合 (%)。コンテナー名、コントローラー名、Kubernetes 名前空間、ポッド名別。|
+|Insights.container/containers |**(新規)memoryWorkingSetThresholdViolated** |メトリックは、コンテナーのメモリ ワーキング セットの割合 (%) が、ユーザーが構成可能なしきい値 (既定値は 95.0) をコンテナー名、コントローラー名、Kubernetes 名前空間、ポッド名別に超えた場合にトリガーされます。|
+|Insights.container/persistentvolumes |**(古い)pvUsageExceededPercentage** |ユーザーが構成可能なしきい値 (既定値は 60.0) を超える永続ボリュームの PV 使用率 (%)。要求名、Kubernetes 名前空間、ボリューム名、ポッド名、ノード名別。|
+|Insights.container/persistentvolumes |**(新規)pvUsageThresholdViolated** |メトリックは、永続ボリュームの PV 使用率 (%) が、ユーザーが構成可能なしきい値 (既定値は 60.0) を要求名、Kubernetes 名前空間、ボリューム名、ポッド名、ノード名別に超えた場合にトリガーされます。
 
 ## <a name="enable-alert-rules"></a>アラート ルールを有効にする
 
@@ -248,6 +256,6 @@ ConfigMap 構成ファイルを構成して、使用率の既定のしきい値�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
+- [ログ クエリの例](container-insights-log-query.md)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
 
 - Azure Monitor と、Kubernetes クラスターの他のアスペクトを監視する方法の詳細については、[Kubernetes クラスターのパフォーマンスの監視](container-insights-analyze.md)に関するページをご覧ください。

@@ -11,12 +11,12 @@ ms.date: 07/28/2020
 ms.author: euang
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 1e0dfd597e7f445eeba6cef332d8ea12b27dc3a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37ebef447a5636a1e84ec662e95b38ff90558df6
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676307"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254717"
 ---
 # <a name="linux-foundation-delta-lake-overview"></a>Linux Foundation Delta Lake の概要
 
@@ -296,7 +296,7 @@ spark.sql("DESCRIBE EXTENDED ManagedDeltaTable").show(truncate=false)
 |プロバイダー                    |delta                                                                                                        |       |
 |テーブルのプロパティ            |[transient_lastDdlTime=1587774934]                                                                           |       |
 |統計                  |2407 bytes                                                                                                   |       |
-|場所                    |abfss://data@<data lake>.dfs.core.windows.net/synapse/workspaces/<workspace name>/warehouse/manageddeltatable|       |
+|場所                    |abfss://data@\<data lake\>.dfs.core.windows.net/synapse/workspaces/\<workspace name\>/warehouse/manageddeltatable|       |
 |Serde Library               |org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe                                                           |       |
 |InputFormat                 |org.apache.hadoop.mapred.SequenceFileInputFormat                                                             |       |
 |OutputFormat                |org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat                                                    |       |
@@ -342,7 +342,7 @@ spark.sql("DESCRIBE EXTENDED ExternalDeltaTable").show(truncate=false)
 |Type                        |EXTERNAL                                                              |       |
 |プロバイダー                    |DELTA                                                                 |       |
 |テーブルのプロパティ            |[transient_lastDdlTime=1587774938]                                    |       |
-|場所                    |abfss://data@<data lake>.dfs.core.windows.net/delta/delta-table-587152|       |
+|場所                    |abfss://data@\<data lake\>.dfs.core.windows.net/delta/delta-table-587152|       |
 |Serde Library               |org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe                    |       |
 |InputFormat                 |org.apache.hadoop.mapred.SequenceFileInputFormat                      |       |
 |OutputFormat                |org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat             |       |

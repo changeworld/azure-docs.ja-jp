@@ -3,13 +3,13 @@ title: Azure で API Management と Service Fabric を統合する
 description: Azure API Management をすぐに使い始め、Service Fabric のバックエンド サービスにトラフィックをルーティングする方法について説明します。
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 681a1c5241743a0164d83d73753efa0b6c446109
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 6d72db8e1baf1109c222badb83c473c4defa6038
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735592"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665084"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure で API Management と Service Fabric を統合する
 

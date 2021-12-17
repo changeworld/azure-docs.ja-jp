@@ -3,7 +3,7 @@ title: Azure API Management でセルフホステッド ゲートウェイをプ
 description: Azure API Management でセルフホステッド ゲートウェイをプロビジョニングする方法について説明します。
 services: api-management
 documentationcenter: ''
-author: miaojiang
+author: dlepow
 manager: gwallace
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/31/2020
-ms.author: apimpm
-ms.openlocfilehash: e79248e16ca21ae84022f8ac7f280d93f489c6a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 3bc2543d8051a99c5b770204d64db043bbf7dfad
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87050340"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708565"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Azure API Management でセルフホステッド ゲートウェイをプロビジョニングする
 
@@ -50,4 +50,5 @@ Azure API Management インスタンスでのゲートウェイ リソースの�
 
 * セルフホステッド ゲートウェイの詳細については、[Azure API Management のセルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md)に関する記事を参照してください
 * [Kubernetes にセルフホステッド ゲートウェイをデプロイする](how-to-deploy-self-hosted-gateway-kubernetes.md)方法について確認します
+- [Azure Arc 対応 Kubernetes クラスターにセルフホステッド ゲートウェイをデプロイする](how-to-deploy-self-hosted-gateway-azure-arc.md)方法について確認します
 * [Docker にセルフホステッド ゲートウェイをデプロイする](how-to-deploy-self-hosted-gateway-docker.md)方法について確認します

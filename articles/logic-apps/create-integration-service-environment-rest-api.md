@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: d4500229800fa5d1743779b29927637777647e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f50fecfb2675e870025d9e188d5303aacf77f7a2
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550659"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295725"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API を使用して統合サービス環境 (ISE) を作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "99550659"
 ISE を作成する他の方法の詳細については、次の記事を参照してください。
 
 * [Azure portal を使用して ISE を作成する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
-* [サンプルの Azure Resource Manager クイックスタート テンプレートを使用して ISE を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
+* [サンプルの Azure Resource Manager クイックスタート テンプレートを使用して ISE を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/integration-service-environment)
 * [保存データを暗号化するためのカスタマー マネージド キーの使用をサポートする ISE を作成する](customer-managed-keys-integration-service-environment.md)
 
 ## <a name="prerequisites"></a>前提条件
@@ -195,6 +195,8 @@ ISE を、仮想ネットワーク上またはオンプレミスのカスタム 
 カスタムの信頼されたルート証明書を使用して ISE を更新する前に、次の考慮事項を確認してください。
 
 * 必ず、ルート証明書 *および* すべての中間証明書をアップロードしてください。 証明書の最大数 は 20 です。
+
+* 証明書のサブジェクト名は、Azure Logic Apps から呼び出すターゲット エンドポイントのホスト名と一致している必要があります。 
 
 * ルート証明書のアップロードは、最新のアップロードによって前のアップロードが上書きされる置換操作です。 たとえば、ある証明書をアップロードする要求を送信した後に、別の証明書をアップロードする別の要求を送信した場合、2 番目の証明書のみが ISE によって使用されます。 両方の証明書を使用する必要がある場合は、同じ要求内に一緒に追加します。  
 

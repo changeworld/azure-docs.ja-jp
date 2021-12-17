@@ -10,14 +10,16 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: c7ca147f0a5b907ee0c5c66d53a219fe75ab2179
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95802a767521da81cc6fdd63aac8bb3db0628e68
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551710"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111530"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>プロビジョニング エージェントを使用せずに一般化されたイメージを作成する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Microsoft Azure は、Linux VM のプロビジョニング エージェントを [walinuxagent](https://github.com/Azure/WALinuxAgent) または [cloud init](https://github.com/canonical/cloud-init) の形式で提供します (推奨)。 ただし、次のようなプロビジョニング エージェントでこれらのアプリケーションを使用しない場合もあります。
 
@@ -108,13 +110,15 @@ xml_el = ElementTree.fromstring(wireserver_goalstate)
 
 container_id = xml_el.findtext('Container/ContainerId')
 instance_id = xml_el.findtext('Container/RoleInstanceList/RoleInstance/InstanceId')
+incarnation = xml_el.findtext('Incarnation')
 print(f'ContainerId: {container_id}')
 print(f'InstanceId: {instance_id}')
+print(f'Incarnation: {incarnation}')
 
 # Construct the XML response we need to send to Wireserver to report ready.
 health = ElementTree.Element('Health')
 goalstate_incarnation = ElementTree.SubElement(health, 'GoalStateIncarnation')
-goalstate_incarnation.text = '1'
+goalstate_incarnation.text = incarnation
 container = ElementTree.SubElement(health, 'Container')
 container_id_el = ElementTree.SubElement(container, 'ContainerId')
 container_id_el.text = container_id
@@ -155,12 +159,12 @@ wireserver_conn.close()
 
 VM に Python がインストールされていないか使用できない場合は、次の手順に従って、このスクリプト ロジックをプログラムで再現できます。
 
-1. WireServer: `curl -X GET -H 'x-ms-version: 2012-11-30' http://168.63.129.16/machine?comp=goalstate` からの応答を解析することによって、`ContainerId` と `InstanceId` を取得します。
+1. WireServer: `curl -X GET -H 'x-ms-version: 2012-11-30' http://168.63.129.16/machine?comp=goalstate` からの応答を解析することによって、`ContainerId`、`InstanceId`、`Incarnation` を取得します。
 
-2. 次の XML データを作成し、上記の手順で解析された `ContainerId` と `InstanceId` を挿入します。
+2. 次の XML データを作成し、上記の手順で解析された `ContainerId`、`InstanceId`、`Incarnation` を挿入します。
    ```xml
    <Health>
-     <GoalStateIncarnation>1</GoalStateIncarnation>
+     <GoalStateIncarnation>INCARNATION</GoalStateIncarnation>
      <Container>
        <ContainerId>CONTAINER_ID</ContainerId>
        <RoleInstanceList>

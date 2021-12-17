@@ -4,25 +4,25 @@ description: このクイックスタートでは、3D モデルから Object An
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 02/22/2021
+ms.date: 06/10/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 69d23b9d02eb176a2e42985ef5c3673e83d9bb7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3b67bee93a0e9a7b823d3a91d6d95e1bccbbe71
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607902"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202826"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>クイック スタート: 3D モデルから Object Anchors モデルを作成する
 
-Azure Object Anchors は、3D モデルを HoloLens の物体認識 Mixed Reality エクスペリエンスを実現する AI モデルに変換するマネージド クラウド サービスです。 このクイックスタートでは、C# と .NET Core SDK を使用して 3D モデルから Object Anchors モデルを作成する方法について説明します。
+Azure Object Anchors は、3D モデルを HoloLens の物体認識 Mixed Reality エクスペリエンスを実現する AI モデルに変換するマネージド クラウド サービスです。 このクイックスタートでは、[Azure Object Anchors の .NET 用変換 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre) を使用して 3D モデルから Object Anchors モデルを作成する方法について説明します。
 
 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Object Anchors アカウントを作成する
-> * 3D モデルを変換して Object Anchors モデルを作成する
+> * Object Anchors アカウントを作成します。
+> * [Azure Object Anchors の .NET 用変換 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre) ([NuGet](https://www.nuget.org/packages/Azure.MixedReality.ObjectAnchors.Conversion/)) を使用して、3D モデルを変換して Object Anchors モデルを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,51 +34,7 @@ Azure Object Anchors は、3D モデルを HoloLens の物体認識 Mixed Realit
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-an-object-anchors-account"></a>Object Anchors アカウントを作成する
-
-まず、Object Anchors サービスを使用してアカウントを作成する必要があります。
-
-1. [Azure portal](https://portal.azure.com/) にアクセスし、 **[リソースの作成]** を選択します。
-
-   :::image type="content" source="./media/create-aoa-resource-1.png" alt-text="新しいリソースを作成":::
-
-2. **Object Anchors** リソースを検索します。
-
-   「Object Anchors」を検索します。
-
-   :::image type="content" source="./media/create-aoa-resource-2.png" alt-text="Object Anchors リソースを選択する":::
-
-   検索結果の **Object Anchors** リソースで、 **[作成] -> [Object Anchors]** の順に選択します。
-
-   :::image type="content" source="./media/create-aoa-resource-3.png" alt-text="Object Anchors リソースを作成する":::
-
-3. **[オブジェクト アンカー アカウント]** ダイアログ ボックスで以下を行います。
-    * 一意のリソース名を入力します。
-    * リソースを接続するサブスクリプションを選択します。
-    * リソース グループを作成するか、既存のものを使用します。
-    * リソースが属するリージョンを選択します。
-
-    :::image type="content" source="./media/create-aoa-resource-4.png" alt-text="Object Anchors リソース アカウントの詳細を入力する":::
-
-    **[作成]** を選択して、リソースの作成を開始します。
-
-4. リソースが作成されたら、**[リソースに移動]** を選択します。
-
-   :::image type="content" source="./media/create-aoa-resource-5.png" alt-text="リソースに移動":::
-
-5. 概要ページで、以下を行います。
-
-   **アカウント ドメイン** をメモします。 この情報は後で必要になります。
-
-   :::image type="content" source="./media/create-aoa-resource-6.1.png" alt-text="Object Anchors リソースのアカウント ドメインをコピーする":::
-
-   **アカウント ID** をメモします。 この情報は後で必要になります。
-
-   :::image type="content" source="./media/create-aoa-resource-6.2.png" alt-text="Object Anchors リソースのアカウント ID をコピーする":::
-
-   **[アクセス キー]** ページに移動し、**主キー** をメモします。 この情報は後で必要になります。
-
-   :::image type="content" source="./media/create-aoa-resource-7.png" alt-text="Object Anchors リソースのアカウント キーをコピーする":::
+[!INCLUDE [Create Account](../../../includes/object-anchors-get-started-create-account.md)]
 
 ## <a name="get-the-sample-project"></a>サンプル プロジェクトを入手する
 
@@ -126,6 +82,9 @@ Azure Object Anchors は、3D モデルを HoloLens の物体認識 Mixed Realit
 
 4. ジョブが正常に完了すると、指定した出力場所に `<Model-Filename-Without-Extension>_<JobID>.ou` の形式のファイルが表示されます。 たとえば、3D モデルのファイル名が `chair.ply` で、ジョブ ID が `00000000-0000-0000-0000-000000000000` である場合、サービスにより出力されるファイル名は `chair_00000000-0000-0000-0000-000000000000.ou` になります。
 
+## <a name="error-codes"></a>エラー コード
+アセット変換ジョブが失敗した結果生成されるさまざまなエラー コードと、それぞれの処理方法の詳細については、[変換エラー コードに関するページ](..\model-conversion-error-codes.md)を参照してください。
+
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>次のステップ
@@ -140,3 +99,6 @@ Azure Object Anchors は、3D モデルを HoloLens の物体認識 Mixed Realit
 
 > [!div class="nextstepaction"]
 > [HoloLens DirectX](get-started-hololens-directx.md)
+
+> [!div class="nextstepaction"]
+> [変換 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre)

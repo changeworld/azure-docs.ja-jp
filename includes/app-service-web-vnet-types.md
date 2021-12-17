@@ -1,42 +1,38 @@
 ---
-author: ccompy
+author: madsd
 ms.service: app-service-web
 ms.topic: include
 ms.date: 10/01/2020
-ms.author: ccompy
-ms.openlocfilehash: 0b93111357cf0d6e57eeb5495d50bd18a15dca77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: madsd
+ms.openlocfilehash: 2a95e92ce5bb6705fa42b2885c73480a9d649050
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97812790"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892876"
 ---
-* Isolated を除くすべての価格プランをサポートするマルチテナント システム
-* VNet にデプロイされ、Isolated 価格プランのアプリをサポートする App Service Environment。
+* 専用コンピューティング価格レベル。Basic、Standard、Premium、PremiumV2、PremiumV3 が含まれます。
+* 専用のサポート インフラストラクチャを使用して仮想ネットワークに直接デプロイされ、Isolated と IsolatedV2 の価格レベルを使用している App Service Environment。
 
-VNet 統合機能はマルチテナント アプリで使用されます。 アプリが [App Service Environment][ASEintro] 内にある場合、そのアプリは既に VNet 内に存在するため、同じ VNet 内のリソースに到達するために VNet 統合機能を使用する必要はありません。 すべてのネットワーク機能の詳細については、「[App Service のネットワーク機能][Networkingfeatures]」を参照してください。
+VNet 統合機能は、Azure App Service 専用のコンピューティング価格レベルで使用されます。 アプリが [App Service Environment](../articles/app-service/environment/overview.md) 内にある場合、それは既に仮想ネットワーク内に存在するため、同じ仮想ネットワーク内のリソースにアクセスするために VNet 統合機能を使用する必要はありません。 すべてのネットワーク機能の詳細については、「[App Service のネットワーク機能](../articles/app-service/networking-features.md)」を参照してください。
 
-VNet 統合により、アプリから VNet 内のリソースにアクセスできるようになりますが、VNet からそのアプリへの受信プライベート アクセスは付与されません。 プライベート サイト アクセスとは、Azure 仮想ネットワーク内など、プライベート ネットワークのみからアプリにアクセスできるようにすることです。 VNet 統合は、アプリから VNet への送信呼び出しを行うためだけに使用されます。 VNet 統合機能は、同じリージョン内の VNet で使用する場合と、他のリージョン内の VNet で使用する場合とで、動作が異なります。 VNet 統合機能には 2 つのバリエーションがあります。
+仮想ネットワーク統合により、アプリから仮想ネットワーク内のリソースにアクセスできるようになりますが、仮想ネットワークからそのアプリへの受信プライベート アクセスが許可されるわけではありません。 プライベート サイト アクセスとは、Azure 仮想ネットワーク内など、プライベート ネットワークのみからアプリにアクセスできるようにすることです。 仮想ネットワーク統合は、アプリから仮想ネットワークへの送信呼び出しを行うためだけに使用されます。 VNet 統合機能は、同じリージョン内の仮想ネットワークで使用する場合と、他のリージョン内の仮想ネットワークで使用する場合とで、動作が異なります。 VNet 統合機能には 2 つのバリエーションがあります。
 
-* **リージョン VNet 統合**:同じリージョン内の Azure Resource Manager 仮想ネットワークに接続する場合、統合する VNet での専用のサブネットが必要になります。
-* **ゲートウェイが必要な VNet 統合**:他のリージョン内の VNet または同じリージョン内のクラシック仮想ネットワークに接続する場合、ターゲットの VNet にプロビジョニングされた Azure 仮想ネットワーク ゲートウェイが必要です。
+* **リージョン仮想ネットワーク統合**: 同じリージョン内の仮想ネットワークに接続するときは、統合する仮想ネットワークに専用のサブネットが必要です。
+* **ゲートウェイが必要な仮想ネットワーク統合**: 他のリージョン内の仮想ネットワークまたは同じリージョン内のクラシック仮想ネットワークに直接接続する場合、ターゲットの仮想ネットワークに作成された Azure Virtual Network ゲートウェイが必要です。
 
 以下は、VNet 統合機能の特徴です。
 
-* Standard、Premium、PremiumV2、PremiumV3、または Elastic Premium の価格プランが必要である。
-* TCP と UDP をサポートする。
-* Azure App Service アプリや関数アプリで動作する。
+* Standard、Premium、Premium v2、Premium v3、または Elastic Premium の App Service 価格レベルが必要です。
+* TCP と UDP をサポートします。
+* App Service アプリおよび関数アプリと連携します。
 
-以下のような一部の機能は、VNet 統合ではサポートされません。
+仮想ネットワーク統合でサポートされない機能の例を次に示します。
 
 * ドライブのマウント。
-* Active Directory 統合。
+* Windows Server の Active Directory の統合。
 * NetBIOS。
 
-ゲートウェイが必要な VNet 統合では、ターゲット VNet 内、あるいはピアリングまたは VPN を使用してターゲット VNet に接続されているネットワーク内のリソースのみにアクセスできます。 ゲートウェイが必要な VNet 統合では、Azure ExpressRoute 接続全体で利用可能なリソースへのアクセスを有効にしたり、サービス エンドポイントと連携したりすることはできません。
+ゲートウェイが必要な仮想ネットワーク統合では、ターゲット仮想ネットワーク内、あるいはピアリングまたは VPN を使用してターゲット仮想ネットワークに接続されているネットワーク内のリソースのみにアクセスできます。 ゲートウェイが必要な仮想ネットワーク統合では、Azure ExpressRoute 接続全体で利用可能なリソースへのアクセスを有効にしたり、サービス エンドポイントと連携したりすることはできません。
 
-使用されているバージョンに関係なく、VNet 統合によってアプリに VNet 内のリソースへのアクセスが付与されますが、VNet からアプリへの受信プライベート アクセスは付与されません。 プライベート サイト アクセスとは、Azure VNet 内など、プライベート ネットワークのみからアプリにアクセスできるようにすることです。 Vnet 統合は、アプリから VNet への送信呼び出しを行うためにのみ存在します。
-
-<!--Links-->
-[ASEintro]: ../articles/app-service/environment/intro.md
-[Networkingfeatures]: ../articles/app-service/networking-features.md
+使用しているバージョンにかかわらず、仮想ネットワーク統合により、アプリから仮想ネットワーク内のリソースにアクセスできるようになりますが、仮想ネットワークからそのアプリへの受信プライベート アクセスが許可されるわけではありません。 プライベート サイト アクセスとは、Azure 仮想ネットワーク内など、プライベート ネットワークのみからアプリにアクセスできるようにすることです。 仮想ネットワーク統合は、アプリから仮想ネットワークへの送信呼び出しを行うためだけのものです。

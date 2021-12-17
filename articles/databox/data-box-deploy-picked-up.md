@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 11/16/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 267094ea6a7295a65b93fb7700c97e4280da341d
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: c3dd0d64542dd9d25643fb811accde5d882af870
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539113"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556593"
 ---
 ::: zone target="docs"
 
@@ -70,315 +70,77 @@ ms.locfileid: "99539113"
 
 ::: zone-end
 
-::: zone target="docs"
 
 ## <a name="ship-data-box-back"></a>Data Box を返送する
 
-デバイスへのデータ コピーが完了し、**発送準備** が正常に実行されたことを確認します。 デバイスを発送する地域によって手順が異なります。
+デバイスへのデータ コピーが完了し、**発送準備** が正常に実行されたことを確認します。 
 
-::: zone-end
+デバイスを発送する地域によって手順が異なります。 多くの国、地域では、[Microsoft が提供している配送方法](#microsoft-managed-shipping)を利用するか、または、[自分で行うそれ以外の方法](#self-managed-shipping)で配送できます。
 
-## <a name="us-canada-europe"></a>[米国、カナダ、ヨーロッパ](#tab/in-us-canada-europe)
+### <a name="microsoft-managed-shipping"></a>Microsoft 管理の出荷
 
-米国、カナダ、またはヨーロッパでデバイスを返送する場合は、次の手順を行います。
+Microsoft 管理による出荷を使用している場合は、出荷元のリージョンのガイドラインに従います。
 
-1. 必ずデバイスの電源をオフにてケーブルを取り外します。
-2. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-3. 配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 ラベルを破損または紛失した場合、またはラベルが電子インク ディスプレイに表示されていない場合、Microsoft サポートにお問い合わせください。 サポートから指示された場合は、Azure portal の **[概要] > [出荷ラベルをダウンロード]** にアクセスしてください。 配送先住所ラベルをダウンロードして、デバイスに貼り付けます。 
-4. デバイスを返送する場合は、UPS での集荷をスケジュールします。 集荷のスケジュールを設定するには:
+## <a name="us--canada"></a>[米国およびカナダ](#tab/in-us-canada)
 
-    * 最寄りの UPS (国/地域固有のフリー ダイヤル) に連絡します。
-    * 電話で、電子インク ディスプレイまたは印刷ラベルに表示されている返送追跡番号を伝えます。 追跡番号を伝えないと、集荷時に UPS から追加料金が請求されます。
-    * 集荷のスケジュール中に問題が発生した場合や、追加料金の支払いを求められた場合は、Azure Data Box Operations にお問い合わせください。 [adbops@microsoft.com](mailto:adbops@microsoft.com) に電子メールを送信します。
+[!INCLUDE [data-box-shipping-in-us-canada](../../includes/data-box-shipping-in-us-canada.md)]
 
-    集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box を持ち込むこともできます。
-4. 運送業者によって Data Box が集荷され、スキャンされると、ポータルの注文状態は "**集荷されました**" に更新されます。 追跡 ID も表示されます。
+## <a name="eu"></a>[EU](#tab/in-europe)
 
-::: zone target="chromeless"
+[!INCLUDE [data-box-shipping-in-eu](../../includes/data-box-shipping-in-eu.md)]
 
-## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
+**ドイツまたはスイスの Azure データセンターに返送する場合** は、[自己管理型の発送を使用](#self-managed-shipping)することもできます。
 
-[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+## <a name="uk"></a>[英国](#tab/in-uk)
 
-## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
-
-Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
-
-::: zone-end
+[!INCLUDE [data-box-shipping-in-uk](../../includes/data-box-shipping-in-uk.md)]
 
 ## <a name="australia"></a>[オーストラリア](#tab/in-australia)
 
-オーストラリアの Azure データセンターには、追加のセキュリティ通知があります。 すべての国内配送には事前通知が必要です。 オーストラリアで発送するには、次の手順を行います。
-
-1. デバイスを返送する際に使用する元の箱を保管しておきます。
-2. デバイスへのデータ コピーが完了し、 **[発送準備]** の実行が正常終了することを確認します。
-3. デバイスの電源をオフにして、ケーブルを取り外します。
-4. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-5. [DHL のリンク](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference)からオンラインで集荷を予約します。
-
-::: zone target="chromeless"
-
-## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
-
-[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
-
-## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
-
-Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
-
-::: zone-end
+[!INCLUDE [data-box-shipping-in-australia](../../includes/data-box-shipping-in-australia.md)]
 
 ## <a name="japan"></a>[日本](#tab/in-japan)
 
-1. デバイスを返送する際に使用する元の箱を保管しておきます。
-2. デバイスの電源をオフにして、ケーブルを取り外します。
-3. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-4. 伝票に送信元の情報としてお客様の会社名と住所の情報を記入します。
-5. 次のメール テンプレートを使用して、Quantium Solutions にメールを送信します。
-
-    * 日本郵便の着払伝票が含まれていなかった場合、または紛失した場合は、このメールにそのことを記載します。 Quantium Solutions Japan が日本郵便に集荷を依頼し、集荷時に伝票を持って行くように伝えます。
-    * 複数の注文がある場合は、必ず個別に集荷するようにメールを送信します。
-
-    ```
-    To: Customerservice.JP@quantiumsolutions.com
-    Subject: Pickup request for Azure Data Box｜Job name： 
-    Body:
-    - Japan Post Yu-Pack tracking number (reference number)：
-    - Requested pickup date：mmdd (Select a requested time slot from below).
-    a. 08：00-13：00 
-    b. 13：00-15：00 
-    c. 15：00-17：00 
-    d. 17：00-19：00 
-    ```
-
-6. 集荷を予約したら、Quantium Solutions から確認メールが届きます。 確認のメールには、着払伝票に関する情報も含まれています。
-
-必要に応じて、次の情報で Quantium Solutions のサポート (日本語) に問い合わせることができます。
-
-* メール: Customerservice.JP@quantiumsolutions.com 
-* 電話: 03-5755-0150 
-
-::: zone target="chromeless"
-
-## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
-
-[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
-
-## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
- 
-Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
-
-::: zone-end
+[!INCLUDE [data-box-shipping-in-japan](../../includes/data-box-shipping-in-japan.md)]
 
 ## <a name="singapore"></a>[シンガポール](#tab/in-singapore)
 
-1. デバイスを返送する際に使用する元の箱を保管しておきます。
-2. 追跡番号 (Data Box のローカル Web UI の **[発送準備]** ページに参照番号として表示されます) をメモしておきます。 追跡番号は、**発送準備** の手順が正常に完了した後に提供されます。 このページから配送先住所ラベルをダウンロードし、梱包箱に貼り付けます。
-3. デバイスの電源をオフにして、ケーブルを取り外します。
-4. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。 
-5. 次の電子メール テンプレートと追跡番号を使用して、SingPost のカスタマー サービスに電子メールを送信します。
-
-    ```
-    To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pickup - OrderName 
-    Body: 
-        1. Requestor name  
-        2. Requestor contact number
-        3. Requestor collection address
-        4. Preferred collection date
-    ```
-
-   > [!NOTE]
-   > 営業日に受信した予約の取り扱い:
-   > * 午後 3 時より前に受信した場合、集荷は翌営業日の午前 9 時から午後 1 時の間になります。
-   > * 午後 3 時より後に受信した場合、集荷は翌営業日の午後 2 時から午後 6 時の間になります。  
-
-::: zone target="chromeless"
-
-## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
-
-[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
-
-## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
-
-Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
-
-::: zone-end
-
-## <a name="south-africa"></a>[南アフリカ](#tab/in-sa)
-
-1. 返送するデバイスを元の箱に梱包します。
-2. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-3. 追跡番号 (Data Box のローカル Web UI の **[発送準備]** ページに参照番号として表示されます) をメモしておきます。 追跡番号は、"発送準備" の手順が正常に完了した後に提供されます。 このページから配送先住所ラベルをダウンロードし、梱包箱に貼り付けます。
-4. Azure Data Box Operations に返送コードを要求します。 パッケージをデータセンターに返送するには、返送コードが必要です。 [adbops@microsoft.com](mailto:adbops@microsoft.com) に電子メールを送信します。 配送先住所ラベルの返送先住所の横に、はっきりと見えるようにこのコードを記載します。
-5. 次のいずれかの方法を使用して、DHL で集荷を予約します。
- 
-   * [DHL Express South Africa **の「** Schedule a Pickup (集荷をスケジュールする)](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference)」にアクセスして、オンラインで集荷を予約します。
-   * 次のテンプレートを使用して、電子メールを [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に送信します。
-
-     ```output
-     To: Priority.Support@dhl.com
-     Subject: Pickup request for Microsoft Azure
-     Body: Need pick up for the below shipment
-       *  DHL tracking number: (reference number/waybill number)
-       *  Requested pickup date: yyyy/mm/dd;time:HH MM
-       *  Shipper contact: (company name)
-       *  Contact person: 
-       *  Phone number: 
-       *  Full physical address: 
-       *  Item to be collected: Azure Dt
-     ```
-
-    * または、最寄りの DHL サービス ポイントにパッケージを持ち込みます。
-
-6. 問題が発生した場合は、問題の詳細を記載した電子メールを [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に送ります。件名には貨物運送状番号を含めます。 +27(0)119213902 に電話することもできます。
-
-::: zone target="chromeless"
-
-## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
-
-[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
-
-## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
-
-Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
-
-::: zone-end
+[!INCLUDE [data-box-shipping-in-singapore](../../includes/data-box-shipping-in-singapore.md)]
 
 ## <a name="hong-kong"></a>[香港特別行政区](#tab/in-hk)
 
-1. 返送するデバイスを元の箱に梱包します。
-2. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-3. 営業時間中 (月曜日から金曜日の午前 9 時から午後 6 時まで) に、**Quantium Solutions** ホットライン ( **(852) 2318 1213**) に電話をかけます。  
-4. "Microsoft Azure の集荷" であることと、返送ラベルの参照番号および追跡番号 (バー コードの上) を伝え、集荷を手配します。
-5. 集荷スケジュールが口頭で確認されます。 配送業者が集荷に来ない場合は、Quantium Solutions ホットラインに別の手配を依頼します。
-6. Quantium Solutions に集荷を予約したら、次のテンプレートを使用して、確定内容を [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) に伝えます。
+[!INCLUDE [data-box-shipping-in-hk](../../includes/data-box-shipping-in-hk.md)]
 
-    ```output
-    To: adbo@microsoft.com
-    Subject: Microsoft Data Box Job: [order name] has completed copy
-    Body:
-    We have confirmed the pickup details with Quantium Solutions.
+## <a name="korea"></a>[韓国](#tab/in-korea)
 
-       * Requestor name:
-       * Requestor contact number:
-       * Pickup Date:  
-       * Pickup time:
-    ```
+[!INCLUDE [data-box-shipping-in-korea](../../includes/data-box-shipping-in-korea.md)]
 
-問題が発生した場合は、問題の詳細を記載した電子メールを Data Box Operations Asia ([adbo@microsoft.com](mailto:adbo@microsoft.com)) に送ります。件名にはジョブ名を含めます。
+## <a name="s-africa"></a>[南アフリカ](#tab/in-sa)
 
-::: zone target="chromeless"
+[!INCLUDE [data-box-shipping-in-sa](../../includes/data-box-shipping-in-sa.md)]
 
-## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
+## <a name="uae"></a>[アラブ首長国連邦](#tab/in-uae)
 
-[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
-
-## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
- 
-
-::: zone-end
-
-## <a name="united-arab-emirates"></a>[アラブ首長国連邦](#tab/in-uae)
-
-1. デバイスを返送する際に使用する元の箱を保管しておきます。
-2. デバイスへのデータ コピーが完了し、 **[発送準備]** の手順が正常に完了したことを確認します。
-3. デバイスのローカル Web UI の **[発送準備]** ページにある参照番号をメモしておきます。
-4. デバイスの電源をオフにし、ケーブルを取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-6. 返送するデバイスを元の箱に梱包します。
-7. [Azure Data Box Operations](mailto:adbops@microsoft.com) にメールを送って、荷物がデータセンターに届いたときに荷物の識別に使用する ID を入手します。
-8. 印刷された配送先住所ラベルの返送先住所の横に、はっきりと見えるようにこの ID を記載します。  
-9. [DHL Express UAE](https://mydhl.express.dhl/ae/en/home.html#/schedulePickupTab) > 「**Schedule a Pickup (集荷をスケジュールする)** 」にアクセスして、オンラインで集荷を予約します。
-   - デバイスのローカル Web UI の **[発送準備]** ページで確認した参照番号を貨物運送状番号フィールドに入力します。
-   - 予約は、週 6 日 (金曜日と祝日を除く)、午前 9 時から午後 2 時まで受け付けています。
-   - 集荷依頼は、お客様の終業時間の少なくとも 90 分前に行ってください。
-10. DHL 予約ツールで問題が発生した場合は、次のいずれかの方法を使用して DHL に連絡できます。
-    - 04-2924545 に電話します。
-    - 問題の詳細を記載したメールを [ecom.ae@dhl.com](mailto:ecom.ae@dhl.com) に送ります。件名には貨物運送状番号を含めます。
-    - DHL カスタマー サポート (600 567567) に電話します。
-
-::: zone target="chromeless"
-
-## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
-
-[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
-
-## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
- 
-Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
-
-::: zone-end
-
-<!--## [In Korea](#tab/in-korea) 
-
-1. Retain the original box used to ship the device for return shipment.
-2. Note down the tracking number (shown as reference number on the **Prepare to Ship** page of the Data Box local web UI). The tracking number is available after the **Prepare to ship** step successfully completes. Download the shipping label from this page and paste on the packing box. 
-3. Power off the device and remove the cables.
-4. Spool and securely place the power cord that was provided with the device in the back of the device. 
-
-Request pickup  
-If consignment note is present:  
-
-1. Call Quantium Solutions International hotline at 070-8231-1418 during office hours (10 AM to 5 PM, Monday to Friday). Quote Microsoft Azure pickup and the service request number to arrange for a collection.
-2. If the hotline is busy, email microsoft@rocketparcel.com, with the email subject Microsoft Azure Pickup and the service request number as reference.  
-3. If the courier does not arrive for collection, call Quantium Solutions International hotline for alternate arrangements.  
-4. You will receive an email confirmation for the pickup schedule.  
-
-Exception process
-If the consignment note is not present:
-1. Call Quantium Solutions International hotline at 070-8231-1418 during office hours (10 AM to 5 PM, Monday to Friday). Quote Microsoft Azure pickup and the service request number. Specify that you need a new consignment note to arrange for a collection. Provide sender (customer), receiver information (Azure datacenter), and reference number (service request number).
-2. If the hotline is busy, email microsoft@rocketparcel.com, with the email subject Microsoft Azure Pickup and the service request number as reference.
-3. If the courier does not arrive for collection, call Quantium Solutions International hotline for alternate arrangements.
-4. You get a verbal confirmation if request is made via telephone.  
-::: zone target="chromeless"
-
-## Verify data upload to Azure
-
-[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
-
-## Erasure of data from Data Box
- 
-Once the upload to Azure is complete, the Data Box erases the data on its disks as per the [NIST SP 800-88 Revision 1 guidelines](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
--->
-
-## <a name="self-managed"></a>[自己管理型](#tab/in-selfmanaged)
-
-米国政府、日本、シンガポール、韓国、インド、南アフリカ、イギリス、西ヨーロッパ、オーストラリアで Data Box を使用しており、注文の作成時に自己管理の出荷を選択した場合は、次の手順に従います。
-
-1. この手順が正常に完了したら、Data Box のローカル Web UI の **[発送準備]** ページに表示される承認コードをメモしておきます。
-2. デバイスの電源をオフにして、ケーブルを取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-3. デバイスを返送する準備が整ったら、次のテンプレートを使用して Azure Data Box Operations チームにメールを送信します。
-
-    ```
-    To: adbops@microsoft.com
-    Subject: Request for Azure Data Box drop-off for order: 'orderName'
-    Body:
-        1. Order name  
-        2. Authorization code available after Prepare to Ship has completed [Yes/No]  
-        3. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
-    ```
-
-::: zone target="chromeless"
-
-## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
-
-[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
-
-## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
- 
-Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
-
-::: zone-end
+[!INCLUDE [data-box-shipping-in-uae](../../includes/data-box-shipping-in-uae.md)]
 
 ---
+
+### <a name="self-managed-shipping"></a>自己管理の出荷
+
+[!INCLUDE [data-box-shipping-self-managed](../../includes/data-box-shipping-self-managed.md)]
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
+ 
+Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
+
+::: zone-end
+
 
 ::: zone target="docs"
 

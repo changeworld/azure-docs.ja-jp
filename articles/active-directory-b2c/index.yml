@@ -9,15 +9,15 @@ metadata:
   ms.subservice: B2C
   ms.topic: landing-page
   ms.collection: collection
-  author: msmimart
-  ms.author: mimart
+  author: kengaderdus
+  ms.author: kengaderdus
   ms.date: 01/28/2020
-  ms.openlocfilehash: acf02fcb0d827228bf6709fd871d1248e895f9fd
-  ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+  ms.openlocfilehash: 1386ccc55a6ea455f672717da526e1d9298a3208
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100555089"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132289169"
 landingContent:
 - title: Azure AD B2C
   linkLists:
@@ -68,11 +68,11 @@ landingContent:
     - text: クイック スタート:Web アプリ
       url: quickstart-web-app-dotnet.md
     - text: ネイティブ/モバイル アプリ
-      url: code-samples.md#mobile-and-desktop-apps
+      url: integrate-with-app-code-samples.md#mobile-and-desktop-apps
     - text: シングルページ アプリ
-      url: code-samples.md#single-page-apps
+      url: integrate-with-app-code-samples.md#single-page-apps
     - text: Web アプリ
-      url: code-samples.md#web-apps-and-apis
+      url: integrate-with-app-code-samples.md#web-apps-and-apis
 - title: Authorization:API の呼出しとセキュリティ保護
   linkLists:
   - linkListType: how-to-guide
@@ -80,16 +80,16 @@ landingContent:
     - text: アクセス トークンを要求する
       url: access-tokens.md
     - text: API の登録とセキュリティ保護
-      url: tutorial-web-api-dotnet.md
+      url: enable-authentication-web-api.md
     - text: サンプル:Web アプリと API
-      url: code-samples.md#web-apps-and-apis
+      url: integrate-with-app-code-samples.md#web-apps-and-apis
     - text: API ゲートウェイとの統合
       url: secure-api-management.md?tabs=app-reg-ga
 - title: セキュリティ、プライバシー、コンプライアンス
   linkLists:
   - linkListType: concept
     links:
-    - text: 脅威の管理
+    - text: 資格情報攻撃を管理する
       url: threat-management.md
     - text: ユーザー データの格納場所について
       url: data-residency.md
@@ -105,6 +105,8 @@ landingContent:
       url: deploy-custom-policies-devops.md
     - text: 監視
       url: azure-monitor.md
+    - text: Microsoft Sentinel と Azure AD B2C
+      url: azure-sentinel.md
     - text: 管理者のロールベースのアクセス制御
       url: ../active-directory/roles/permissions-reference.md
     - text: '[ユーザー管理]'
@@ -128,7 +130,7 @@ landingContent:
     - text: サービスの更新情報
       url: https://azure.microsoft.com/updates/?product=active-directory-b2c
     - text: よく寄せられる質問
-      url: faq.md
+      url: faq.yml
     - text: Microsoft のサポート
       url: support-options.md
 - title: 一般的な統合

@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: c2af279ec7e846316a94e58977e7079305ab9b03
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 3fc896daef7e42c1574f8ba92ead76ddb1b7205e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579365"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966063"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -133,19 +133,27 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 
 アクセスが制限されたコンピューターでスクリプトを実行する場合は、次にアクセスできることを確認してください。
 
-- `download.microsoft.com` または NSG の `AzureFrontDoor.FirstParty` サービス タグ
-- Recovery Service の URL (GEO-NAME は Recovery Services コンテナーが存在するリージョンを表します)
+- ポート 443 (送信) の NSG の `download.microsoft.com` または `AzureFrontDoor.FirstParty` サービス タグ
+- ポート 3260 (送信) の Recovery Service の URL (GEO-NAME は Recovery Services コンテナーが存在するリージョンを表します)
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Azure パブリック リージョンの場合) または NSG の `AzureBackup` サービス タグ
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Azure China 21Vianet の場合) または NSG の `AzureBackup` サービス タグ
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Azure US Government の場合) または NSG の `AzureBackup` サービス タグ
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Azure Germany の場合) または NSG の `AzureBackup` サービス タグ
-- 送信ポート 53 (DNS)、443、3260
+- ポート 53 (送信) のパブリック DNS 解決
+
+> [!NOTE]
+> プロキシは iSCSI プロトコルをサポートしていない、またはポート 3260 へのアクセスを許可していない可能性があります。 このため、プロキシにリダイレクトされるコンピューターではなく、上記のように必要に応じて直接アクセスできるコンピューターでこのスクリプトを実行することを強くお勧めします。
 
 > [!NOTE]
 >
-> [上記](#step-1-generate-and-download-script-to-browse-and-recover-files)の手順 1 でダウンロードしたスクリプト ファイルには、ファイルの名前に **geo-name** が含まれています。 その **geo-name** を使用して、URL を置き換えます。 ダウンロードしたスクリプトの名前は次で始まります:\'VMname\'\_\'geoname\'_\'GUID\'。<br><br>
-> そのため、たとえば、スクリプト ファイル名が *ContosoVM_wcus_12345678* の場合、**geo-name** は *wcus* であるため、URL は次のようになります:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
+> バックアップされた VM が Windows の場合、生成されたパスワードに geo 名が示されます。<br><br>
+> たとえば、生成されたパスワードが *ContosoVM_wcus_GUID* の場合、geo 名は wcus で、URL は <https://pod01-rec2.wcus.backup.windowsazure.com> になります。<br><br>
 >
+>
+> バックアップ VM が Linux の場合、[上記](#step-1-generate-and-download-script-to-browse-and-recover-files)の手順 1 でダウンロードしたスクリプト ファイルには、ファイルの名前に **geo-name** が含まれています。 その **geo-name** を使用して、URL を置き換えます。 ダウンロードしたスクリプトの名前は次で始まります:\'VMname\'\_\'geoname\'_\'GUID\'。<br><br>
+> そのため、たとえば、スクリプト ファイル名が *ContosoVM_wcus_12345678* の場合、**geo-name** は *wcus* であるため、URL は次のようになります:<https://pod01-rec2.wcus.backup.windowsazure.com><br><br>
+>
+
 
 Linux の場合、スクリプトによって復旧ポイントに接続するには "open-iscsi" および "lshw" コンポーネントが必要です。 スクリプトを実行するコンピューターに目的のコンポーネントが存在しない場合は、コンポーネントをインストールするためのアクセス許可をスクリプトから求められます。 同意して、必要なコンポーネントをインストールします。
 
@@ -154,6 +162,12 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
 また、[ILR スクリプトを実行するための適切なマシン](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)があり、[OS の要件](#step-3-os-requirements-to-successfully-run-the-script)を満たしていることを確認します。
 
 ## <a name="step-5-running-the-script-and-identifying-volumes"></a>手順 5:スクリプトを実行してボリュームを識別する
+
+> [!NOTE]
+>
+> スクリプトは英語でのみ生成され、ローカライズされません。 そのため、スクリプトを正しく実行するには、システム ロケールが英語である必要がある場合があります
+> 
+
 
 ### <a name="for-windows"></a>Windows の場合
 
@@ -176,10 +190,10 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
     ![レジストリ キーの変更](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
-- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
-- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200 secs.
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200 secs.
 - HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\EnableNOPOut – change this from 0 to 1
-- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200 secs.
 ```
 
 ### <a name="for-linux"></a>Linux の場合

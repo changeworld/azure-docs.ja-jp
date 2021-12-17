@@ -3,9 +3,8 @@ title: Azure Public Cloud での分離 | Microsoft Docs
 description: Azure が悪意のあるユーザーと悪意のないユーザーの両方を分離し、アーキテクトにさまざまな分離の選択肢を提供する方法の概要を説明します。
 services: security
 documentationcenter: na
-author: UnifyCloud
+author: TomSh
 manager: rkarlin
-editor: TomSh
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
-ms.author: TomSh
-ms.openlocfilehash: c06fb0830ae709918b668ed60efbaaf47a63ce84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/30/2021
+ms.author: terrylan
+ms.openlocfilehash: 3ef9f5cb6e0175a501b05da6e79194da76b18dae
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94842840"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257240"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 
@@ -42,9 +41,9 @@ Azure テナント (Azure サブスクリプション) とは、"顧客/課金" 
 
 そのディレクトリに登録されたユーザー、グループ、およびアプリケーションのみが、Azure サブスクリプションでリソースを管理できます。 このためのアクセス権は、Azure ポータル、Azure コマンドライン ツール、および Azure 管理 API を使用して割り当てることができます。 Azure AD テナントはセキュリティ境界を使用して論理的に分離されるため、悪意があるか偶発的にかにかかわらず、顧客が他のテナントにアクセスしたり侵入したりすることはできません。 Azure AD は、隔離されたネットワーク セグメント上の分離された "ベア メタル" サーバーで実行します。ここでは、ホストレベルのパケット フィルタリングと Windows Firewall によって、望ましくない接続やトラフィックがブロックされます。
 
-- Azure AD 内のデータへのアクセスには、Security Token Service (STS) によるユーザー認証が要求されます。 承認システムでは、ユーザーの存在、有効状態、ロールに関する情報を使用して、ターゲット テナントへのアクセス要求を当該セッションの当該ユーザーに対して承認するかどうかを決定します。
+:::image type="content" source="media/isolation-choices/azure-isolation-fig-1.svg" alt-text="Azure テナントを示す図。" border="false":::
 
-![Azure テナント](./media/isolation-choices/azure-isolation-fig1.png)
+- Azure AD 内のデータへのアクセスには、Security Token Service (STS) によるユーザー認証が要求されます。 承認システムでは、ユーザーの存在、有効状態、ロールに関する情報を使用して、ターゲット テナントへのアクセス要求を当該セッションの当該ユーザーに対して承認するかどうかを決定します。
 
 - テナントは個別のコンテナーであり、それぞれの間に関係はありません。
 
@@ -90,7 +89,7 @@ Azure Active Directory のその他の機能を次に示します。
 
 - Azure AD は、オンプレミス ディレクトリとの [Active Directory フェデレーション サービス (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)、同期、およびレプリケーションを使用し、フェデレーションを通じて ID をサービスとして提供します。
 
-- [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) は、モバイル アプリケーション、電話、またはテキスト メッセージを使用したサインインの検証をユーザーに要求する多要素認証サービスです。 Azure AD と併用して Azure Multi-Factor Authentication サーバーでオンプレミス リソースをセキュリティで保護したり、SDK を使用するカスタム アプリケーションおよびディレクトリに使用したりすることができます。
+- [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) では、モバイル アプリ、通話、テキスト メッセージを利用してサインインを検証することをユーザーに要求します。 Azure AD と併用して Multi-Factor Authentication Server でオンプレミス リソースをセキュリティで保護したり、SDK を使用するカスタム アプリケーションおよびディレクトリに使用したりすることができます。
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/)を使用すると、ドメイン コントローラーをデプロイしなくても、Azure Virtual Machines を Active Directory ドメインに参加させることができます。 ユーザーは会社の Active Directory 資格情報を使用してこれらの仮想マシンにサインインし、グループ ポリシーによってすべての Azure 仮想マシンにセキュリティ基準を適用することで、ドメインに参加している仮想マシンを管理できます。
 
@@ -131,7 +130,7 @@ Azure のコンピューティング プラットフォームは、コンピュ�
 
 Azure プラットフォームでは、仮想化された環境を使用します。 ユーザー インスタンスは、物理ホスト サーバーへのアクセス権を持たないスタンドアロン仮想マシンとして動作します。
 
-Azure のハイパーバイザーは、マイクロ カーネルのように動作し、ゲスト仮想マシンからのすべてのハードウェア アクセス要求を、VMBus と呼ばれる共有メモリ インターフェイスを使用して処理するために、ホストに渡します。 そうすることで、ユーザーがシステムへの生の読み取り/書き込み/実行アクセスを取得できないようにし、共有システム リソースのリスクを軽減します。
+Azure のハイパーバイザーは、マイクロ カーネルのように動作し、ゲスト仮想マシンからのすべてのハードウェア アクセス要求を、VM Bus と呼ばれる共有メモリ インターフェイスを使用して処理するために、ホストに渡します。 そうすることで、ユーザーがシステムへの生の読み取り/書き込み/実行アクセスを取得できないようにし、共有システム リソースのリスクを軽減します。
 
 ### <a name="advanced-vm-placement-algorithm--protection-from-side-channel-attacks"></a>高度な VM 配置アルゴリズムとサイド チャネル攻撃に対する保護
 

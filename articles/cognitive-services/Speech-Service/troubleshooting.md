@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
-ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97e980c7d77d39a6fd4bcd33b28096a6d13303d3
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "74815418"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166687"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Speech SDK のトラブルシューティング
 
@@ -50,7 +50,7 @@ ms.locfileid: "74815418"
 
 * PowerShell
 
-    ```Powershell
+    ```powershell
     $FetchTokenHeader = @{
       'Content-type'='application/x-www-form-urlencoded'
       'Content-Length'= '0'
@@ -77,7 +77,7 @@ ms.locfileid: "74815418"
 
 * PowerShell
 
-    ```Powershell
+    ```powershell
     $SpeechServiceURI =
     'https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US'
 

@@ -4,12 +4,12 @@ description: Azure コマンド ライン インターフェイスを使用し�
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 44be66957aa745179ffe4cd00db75f1d47237dfc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: da24d64ba4615ff6d06ca2617e8e9c45a4dbff9f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771049"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080215"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -115,7 +115,7 @@ index.html           100% |*******************************|  1663   0:00:00 ETA
 
 ### <a name="example---yaml"></a>例 - YAML
 
-YAML ファイル、[Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+YAML ファイル、[Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet
 )、またはその他のプログラムによる方法 (Python SDK など) を使用して、既存の仮想ネットワークにコンテナーグループをデプロイすることもできます。 
 
 たとえば、YAML ファイルを使用する場合、Azure Container Instances に委任されたサブネットを持つ仮想ネットワークにデプロイできます。 次のプロパティを指定します。
@@ -141,7 +141,7 @@ az network profile list --resource-group myResourceGroup \
 
 ネットワーク プロファイル ID が取得できたら、*vnet-deploy-aci.yaml* という名前の新しいファイルに、次の YAML をコピーします。 `networkProfile` で、`id` の値を先ほど取得した ID に置き換え、ファイルを保存します。 この YAML は、*appcontaineryaml* という名前のコンテナー グループを仮想ネットワーク内に作成します。
 
-```YAML
+```yaml
 apiVersion: '2019-12-01'
 location: westus
 name: appcontaineryaml
@@ -224,7 +224,7 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 
 ## <a name="next-steps"></a>次のステップ
 
-新しい仮想ネットワーク、サブネット、ネットワーク プロファイル、およびコンテナー グループを Resource Manager テンプレートを使用してデプロイするには、「[Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+新しい仮想ネットワーク、サブネット、ネットワーク プロファイル、およびコンテナー グループを Resource Manager テンプレートを使用してデプロイするには、「[Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet
 )」(VNet 内に Azure コンテナー グループを作成する) を参照してください。
 
 <!-- IMAGES -->

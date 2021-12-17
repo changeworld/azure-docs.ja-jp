@@ -3,22 +3,22 @@ title: 音声翻訳のクイックスタート - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用して音声を翻訳する方法を説明します。 このクイックスタートでは、オブジェクトの構築、サポートされているオーディオ入力形式、および音声翻訳の構成オプションについて説明します。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.author: trbye
+ms.author: eur
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-two-with-js-spx
 keywords: 音声翻訳
-ms.openlocfilehash: d5da242a72a3b152924363190a2161ebc101da4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe87bd7a3425c8711a0169de2e09b09484e4571a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91819455"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506855"
 ---
 # <a name="get-started-with-speech-translation"></a>音声翻訳を使ってみる
 

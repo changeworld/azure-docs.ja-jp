@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud Service のセキュリティ コントロール
 description: Azure Spring Cloud Service に組み込まれているセキュリティ コントロールを使用します。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1447e7eec9909c8af33005aab00c267e1a251720
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: f980c67e22ca031617e9614d2e8facd2e9a9dafa
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966828"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485701"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Azure Spring Cloud Service のセキュリティ コントロール
 
@@ -20,7 +20,7 @@ ms.locfileid: "105966828"
 
 セキュリティ コントロールは、Azure Spring Cloud Service に組み込まれています。
 
-セキュリティ コントロールとは、セキュリティの脆弱性の防止、検出、および対処を行う Azure サービスの能力に寄与する、そのサービスの品質または機能です。  各コントロールについて、 *[はい]* または *[いいえ]* を使用して、サービスに現在設定されているかどうかを示します。  サービスに適用されないコントロールには *[N/A]* を使用します。 
+セキュリティ コントロールとは、セキュリティの脆弱性の防止、検出、および対処を行う Azure サービスの能力に寄与する、そのサービスの品質または機能です。  各コントロールについて、 *[はい]* または *[いいえ]* を使用して、サービスに現在設定されているかどうかを示します。  サービスに適用されないコントロールには *[N/A]* を使用します。
 
 **データ保護のセキュリティ コントロール**
 
@@ -34,8 +34,8 @@ ms.locfileid: "105966828"
 
 | セキュリティ コントロール | はい/いいえ | Notes | ドキュメント |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| サービス タグ | はい | **AzureSpringCloud** サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) で送信ネットワーク アクセスの制御を定義し、Azure Spring Cloud アプリケーションへのトラフィックを許可します。 | [サービス タグ](../virtual-network/service-tags-overview.md) |
+| サービス タグ | はい | **AzureSpringCloud** サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) で送信ネットワーク アクセスの制御を定義し、Azure Spring Cloud 内のアプリケーションへのトラフィックを許可します。 | [サービス タグ](../virtual-network/service-tags-overview.md) |
 
 ## <a name="next-steps"></a>次の手順
 
-* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)
+* [クイック スタート: 初めての Spring Boot アプリを Azure Spring Cloud にデプロイする](./quickstart.md)

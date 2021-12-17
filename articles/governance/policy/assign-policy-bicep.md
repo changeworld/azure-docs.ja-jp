@@ -1,15 +1,15 @@
 ---
 title: 'クイックスタート: Bicep (プレビュー) ファイルを使用した新しいポリシーの割り当て'
 description: このクイックスタートでは、Bicep (プレビュー) ファイルを使用して、ポリシー割り当てを作成し、準拠していないリソースを特定します。
-ms.date: 04/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: subject-bicepqs
-ms.openlocfilehash: 17460f9a06d7225d50933608645ea8aea2f5e8f6
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 116058395d556d4e5f7d8a9c67867376e703a7cc
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223867"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323753"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-bicep-file"></a>クイックスタート: Bicep ファイルを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -20,12 +20,12 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 テンプレートが Azure portal で開きます。
 
-:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure Policy を Azure に割り当てるための ARM テンプレートをデプロイするボタン。" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure Policy を Azure に割り当てるための ARM テンプレートをデプロイするボタン。" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.authorization%2Fazurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
-- Bicep バージョン `0.3` 以降がインストールされていること。 Bicep CLI をまだお持ちでない場合、または更新する必要がある場合は、「[Bicep のインストール (プレビュー)](../../azure-resource-manager/templates/bicep-install.md)」を参照してください。
+- Bicep バージョン `0.3` 以降がインストールされていること。 Bicep CLI をまだお持ちでない場合、または更新する必要がある場合は、「[Bicep のインストール (プレビュー)](../../azure-resource-manager/bicep/install.md)」を参照してください。
 
 ## <a name="review-the-bicep-file"></a>Bicep ファイルを確認する
 
@@ -37,10 +37,10 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
 param policyAssignmentName string = 'audit-vm-manageddisks'
 param policyDefinitionID string = '/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d'
 
-resource assignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
+resource assignment 'Microsoft.Authorization/policyAssignments@2021-09-01' = {
     name: policyAssignmentName
+    scope: subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)
     properties: {
-        scope: subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)
         policyDefinitionId: policyDefinitionID
     }
 }
@@ -79,7 +79,7 @@ az deployment group create \
 
 ---
 
-いくつかのその他のリソース:
+その他のリソース:
 
 - その他のサンプル テンプレートについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)」を参照してください。
 - テンプレート リファレンスを確認するには、[Azure テンプレート リファレンス](/azure/templates/microsoft.authorization/allversions)に関するページを参照してください。

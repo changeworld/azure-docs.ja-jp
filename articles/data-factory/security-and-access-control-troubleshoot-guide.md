@@ -1,23 +1,26 @@
 ---
 title: セキュリティとアクセス制御に関するイシューのトラブルシューティング
-description: Azure Data Factory でのセキュリティとアクセス制御に関するイシューのトラブルシューティングを行う方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory および Synapse Analytics でのセキュリティとアクセス制御に関するイシューのトラブルシューティングを行う方法について説明します。
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
+ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 02/24/2021
+ms.date: 09/09/2021
 ms.author: lle
-ms.openlocfilehash: 5e94ea989002d3d3c6d0e96123d5b8ddb5f078c3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 990fc37f08116aad5b576e2e207aa04913795894
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568037"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814949"
 ---
-# <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Azure Data Factory でのセキュリティとアクセス制御に関するイシューのトラブルシューティング
+# <a name="troubleshoot-azure-data-factory-and-synapse-analytics-security-and-access-control-issues"></a>Azure Data Factory および Synapse Analytics でのセキュリティとアクセス制御に関するイシューのトラブルシューティング
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory でのセキュリティとアクセス制御に対する一般的なトラブルシューティングの方法について説明します。
+この記事では、Azure Data Factory および Synapse Analytics パイプラインでのセキュリティとアクセス制御に対する一般的なトラブルシューティングの方法について説明します。
 
 ## <a name="common-errors-and-messages"></a>一般的なエラーとメッセージ
 
@@ -63,17 +66,17 @@ ms.locfileid: "105568037"
 
 #### <a name="symptoms"></a>現象
 
-Data Factory のパブリック ネットワーク アクセスを無効にした後、セルフホステッド統合ランタイムによって、"認証キーが無効または空です。" というエラーがスローされます。
+サービスのパブリック ネットワーク アクセスを無効にした後、セルフホステッド統合ランタイムによって、"認証キーが無効または空です。" というエラーがスローされます。
 
 #### <a name="cause"></a>原因
 
 パブリック接続を無効にしてプライベート エンドポイントを確立すると再接続ができないので、この問題は、ドメイン ネーム システム (DNS) の解決の問題が原因である可能性が最も高くなります。
 
-Data Factory の完全修飾ドメイン名 (FQDN) がパブリック IP アドレスに解決されるかどうかを確認するには、次の手順を実行します。
+サービスの完全修飾ドメイン名 (FQDN) がパブリック IP アドレスに解決されるかどうかを確認するには、次の手順を実行します。
 
-1. Data Factory のプライベート エンドポイントと同じ仮想ネットワーク内に Azure 仮想マシン (VM) が作成されていることを確認します。
+1. サービスのプライベート エンドポイントと同じ仮想ネットワーク内に Azure 仮想マシン (VM) が作成されていることを確認します。
 
-2. Azure VM から Data Factory FQDN に対して PsPing と Ping を実行します。
+2. Azure VM からサービスの FQDN に対して PsPing と Ping を実行します。
 
    `psping.exe <dataFactoryName>.<region>.datafactory.azure.net:443`
    `ping <dataFactoryName>.<region>.datafactory.azure.net`
@@ -87,15 +90,15 @@ Data Factory の完全修飾ドメイン名 (FQDN) がパブリック IP アド�
 
 この問題を解決するには、以下の手順を実行します。
 
-- オプションとして、Data Factory の "プライベート リンク DNS ゾーン" の下に "仮想ネットワークのリンク" を手動で追加することをお勧めします。 詳細については、「[Azure Data Factory 用の Azure Private Link](./data-factory-private-link.md#dns-changes-for-private-endpoints)」という記事を参照してください。 この手順では、プライベート DNS ゾーンまたはカスタム DNS サーバーを構成して、Data Factory の FQDN をプライベート IP アドレスに解決します。 
+- オプションとして、サービスの "プライベート リンク DNS ゾーン" の下に "仮想ネットワークのリンク" を手動で追加することをお勧めします。 詳細については、[Azure Private Link](./data-factory-private-link.md#dns-changes-for-private-endpoints) に関する記事を参照してください。 この手順では、プライベート DNS ゾーンまたはカスタム DNS サーバーを構成して、サービスの FQDN をプライベート IP アドレスに解決します。 
 
 - ただし、プライベート DNS ゾーンまたはカスタム DNS サーバーを構成したくない場合は、次の一時的なソリューションを試してください。
 
-  1. Windows で host ファイルを変更し、プライベート IP (Azure Data Factory のプライベート エンドポイント) を Azure Data Factory の FQDN にマップします。
+  1. Windows で host ファイルを変更し、プライベート IP (サービスのプライベート エンドポイント) をサービスの FQDN にマップします。
   
      Azure VM で `C:\Windows\System32\drivers\etc` にアクセスし、メモ帳で *host* ファイルを開きます。 プライベート IP を FQDN にマップする行をファイルの末尾に追加し、変更を保存します。
      
-     ![プライベート IP からホストへのマップのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/add-mapping-to-host.png)
+     :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/add-mapping-to-host.png" alt-text="プライベート IP からホストへのマップのスクリーンショット。":::
 
   1. 前の検証手順と同じコマンドを再実行して、応答を確認します。プライベート IP が含まれているはずです。
 
@@ -144,28 +147,34 @@ Data Factory の完全修飾ドメイン名 (FQDN) がパブリック IP アド�
 
 **解決策 2**
 
-この問題を解決するには、[Azure Data Factory 用の Azure Private Link](./data-factory-private-link.md) にアクセスします。
+この問題を解決するには、[Azure Private Link](./data-factory-private-link.md) にアクセスします。
 
 次のスクリーンショットに示すように、ユーザー インターフェイスでパブリック ネットワーク アクセスを有効にします。
 
-![[ネットワーク] ペイン上の [パブリック ネットワーク アクセスを許可する] に対する [有効] コントロールのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
+# <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png" alt-text="[ネットワーク] ペイン上の [パブリック ネットワーク アクセスを許可する] に対する [有効] コントロールのスクリーンショット。":::
 
-### <a name="adf-private-dns-zone-overrides-azure-resource-manager-dns-resolution-causing-not-found-error"></a>ADF プライベート DNS ゾーンで、"見つかりません" エラーが発生している Azure Resource Manager の DNS 解決が上書きされます
+# <a name="synapse-analytics"></a>[Synapse Analytics](#tab/synapse-analytics)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access-synapse.png" alt-text="[ネットワーク] ペイン上の [パブリック ネットワーク アクセスを許可する] に対する [有効] コントロールのスクリーンショット。":::
+
+---
+
+### <a name="service-private-dns-zone-overrides-azure-resource-manager-dns-resolution-causing-not-found-error"></a>サービスのプライベート DNS ゾーンで、"見つかりません" エラーが発生している Azure Resource Manager の DNS 解決が上書きされます
 
 #### <a name="cause"></a>原因
-Azure Resource Manager と ADF は両方とも同じプライベート ゾーンを使用しています。これにより、顧客のプライベート DNS で潜在的な競合が発生し、Azure Resource Manager レコードが見つからないことがあります。
+Azure Resource Manager とサービスが両方とも同じプライベート ゾーンを使用しています。これにより、顧客のプライベート DNS で潜在的な競合が発生し、Azure Resource Manager レコードが見つからないことがあります。
 
 #### <a name="solution"></a>解決策
 1. Azure portal でプライベート DNS ゾーン **privatelink.azure.com** を検索します。
-![プライベート DNS ゾーンの検索のスクリーンショット。](media/security-access-control-troubleshoot-guide/private-dns-zones.png)
+:::image type="content" source="media/security-access-control-troubleshoot-guide/private-dns-zones.png" alt-text="プライベート DNS ゾーンの検索のスクリーンショット。":::
 2. A レコード **adf** があるかどうかを確認します。
-![A レコードのスクリーンショット。](media/security-access-control-troubleshoot-guide/a-record.png)
+:::image type="content" source="media/security-access-control-troubleshoot-guide/a-record.png" alt-text="A レコードのスクリーンショット。":::
 3.  **仮想ネットワークのリンク** にアクセスし、すべてのレコードを削除します。
-![仮想ネットワークのリンクのスクリーンショット。](media/security-access-control-troubleshoot-guide/virtual-network-link.png)
-4.  Azure portal でお使いのデータ ファクトリに移動し、Azure Data Factory ポータル用のプライベート エンドポイントを再作成します。
-![プライベート エンドポイントの再作成のスクリーンショット。](media/security-access-control-troubleshoot-guide/create-private-endpoint.png)
+:::image type="content" source="media/security-access-control-troubleshoot-guide/virtual-network-link.png" alt-text="仮想ネットワークのリンクのスクリーンショット。":::
+4.  Azure portal でお使いのサービスに移動し、ポータル用のプライベート エンドポイントを再作成します。
+:::image type="content" source="media/security-access-control-troubleshoot-guide/create-private-endpoint.png" alt-text="プライベート エンドポイントの再作成のスクリーンショット。":::
 5.  プライベート DNS ゾーンに戻り、新しいプライベート DNS ゾーン **privatelink.adf.azure.com** があるかどうかを確認します。
-![新しい DNS レコードのスクリーンショット。](media/security-access-control-troubleshoot-guide/check-dns-record.png)
+:::image type="content" source="media/security-access-control-troubleshoot-guide/check-dns-record.png" alt-text="新しい DNS レコードのスクリーンショット。":::
 
 ### <a name="connection-error-in-public-endpoint"></a>パブリック エンドポイントでの接続エラー
 
@@ -182,12 +191,55 @@ Azure Blob Storage アカウントのパブリック アクセスを使用して
 
 #### <a name="cause"></a>原因
 
-ADF では引き続きマネージド VNet IR を使用できますが、[マネージド仮想ネットワークとマネージド プライベート エンドポイント](./managed-virtual-network-private-endpoint.md#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)に関する記事に説明されているように、マネージド VNet 内の Azure Blob Storage へのパブリック エンドポイントにはテスト結果に基づく信頼性がなく、ADF マネージド仮想ネットワークからパブリック エンドポイントを経由する Azure Blob Storage と Azure Data Lake Gen2 へ接続はサポートされていないため、このようなエラーが発生することがあります。
+サービスでは引き続きマネージド VNet IR を使用できますが、[マネージド仮想ネットワークとマネージド プライベート エンドポイント](./managed-virtual-network-private-endpoint.md#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)に関する記事に説明されているように、マネージド VNet 内の Azure Blob Storage へのパブリック エンドポイントにはテスト結果に基づく信頼性がなく、サービスのマネージド仮想ネットワークからパブリック エンドポイントを経由する Azure Blob Storage と Azure Data Lake Gen2 へ接続はサポートされていないため、このようなエラーが発生することがあります。
 
 #### <a name="solution"></a>解決策
 
 - マネージド VNet IR を使用する場合は、ソース側と同じようにシンク側でもプライベート エンドポイントを有効にします。
-- パブリック エンドポイントを引き続き使用する場合は、ソースとシンクに対してマネージド VNet IR を使用するのではなく、パブリック IR のみに切り替えることができます。 パブリック IR に切り替えた場合でも、マネージド VNet IR がまだ存在する場合は、ADF でマネージド VNet IR が引き続き使用される可能性があります。
+- パブリック エンドポイントを引き続き使用する場合は、ソースとシンクに対してマネージド VNet IR を使用するのではなく、パブリック IR のみに切り替えることができます。 パブリック IR に切り替えた場合でも、マネージド VNet IR がまだ存在する場合は、サービスでマネージド VNet IR が引き続き使用される可能性があります。
+
+### <a name="internal-error-while-trying-to-delete-a-data-factory-or-synapse-workspace-with-customer-managed-key-cmk-and-user-assigned-managed-identity-ua-mi"></a>カスタマー マネージド キー (CMK) とユーザー割り当てマネージド ID (UA-MI) を使用してデータ ファクトリまたは Synapse ワークスペースの削除を試みたときに発生する内部エラー
+
+#### <a name="symptoms"></a>現象
+`{\"error\":{\"code\":\"InternalError\",\"message\":\"Internal error has occurred.\"}}`
+
+#### <a name="cause"></a>原因
+
+CMK に関連する操作を実行する場合は、まずサービスに関連するすべての操作を完了してから、外部操作 (マネージド ID やキー コンテナーの操作など) を実行する必要があります。 たとえば、すべてのリソースを削除する場合は、まずサービス インスタンスを削除してから、キー コンテナーを削除する必要があります。  最初にキー コンテナーを削除すると、サービスに必要なオブジェクトが読み取れなくなるため、このエラーが発生し、削除が可能かどうかの検証ができなくなります。 
+
+#### <a name="solution"></a>解決策
+
+この問題を解決する可能性のある 3 つの方法があります。 制限事項は次のとおりです。
+
+* CMK キーが格納されたキー コンテナーへのサービスのアクセスが取り消されました。 以下の権限へのアクセス許可は、再度割り当てることができます: **取得、キーのラップ解除、キーのラップ**。 これらのアクセス許可は、カスタマー マネージド キーを有効にするために必要です。 詳細については、[カスタマー マネージド キーへのアクセス権の付与](enable-customer-managed-key.md#grant-data-factory-access-to-azure-key-vault)を参照してください。 権限が付与されれば、サービスを削除することができます。
+ 
+* サービスを削除する前に、顧客によって Key Vault/CMK が削除されました。 サービス内の CMK では、「Soft Delete」を有効にし、既定のアイテム保持ポリシーが 90 日の「Purge Protect」を有効にしなければなりません。 削除されたキーを復元することができます。  
+[削除されたキーの回復](../key-vault/general/key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates )と[削除されたキー値](../key-vault/general/key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault)に関するページをご覧ください。
+
+* サービスの前にユーザー割り当てマネージド ID (UA-MI) が削除されました。 REST API 呼び出しを使えばこの状況から回復することができます。これは選択した http クライアントにおいてどのプログラミング言語でも実行できます。 Azure 認証を使用する REST API 呼び出しのためにまだ何も設定していない場合、これを行う最も簡単な方法は POSTMAN/Fiddler を使うことです。 次の手順に従ってください。
+
+   1.  次のような Method: GET URL を使用して、GET 呼び出しを行います: `https://management.azure.com/subscriptions/YourSubscription/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourFactoryName?api-version=2018-06-01`
+
+   2. 別の名前で新しいユーザー マネージド ID を作成する必要があります (同じ名前でも機能する場合がありますが、念のため GET 応答とは異なる名前を使う方が安全です)。
+
+   3. encryption.identity プロパティと identity.userassignedidentities を変更して、新たに作成されたマネージド ID を指し示すようにします。 userAssignedIdentity オブジェクトから clientId と principalId を削除します。 
+
+   4.  同じ URL に対して PUT 呼び出しを行い新しい本文を渡します。 GET 応答で取得したすべての情報を、ID のみを変更して渡すことが非常に重要です。 これを行わなければ、他の設定に対する意図しないオーバーライドが発生してしまいます。 
+
+   5.  呼び出しが成功すると、エンティティが再び表示され、削除を再試行することができます。 
+
+## <a name="sharing-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの共有
+
+### <a name="sharing-a-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>異なるテナントからのセルフホステッド IR の共有がサポートされない 
+
+#### <a name="symptoms"></a>現象
+
+UI からセルフホステッド IR を共有しようとしているときに、(異なるテナントにある) 他のデータ ファクトリを見つけますが、異なるテナントにあるデータ ファクトリ間でそれを共有することができません。
+
+#### <a name="cause"></a>原因
+
+複数のテナントにまたがってセルフホステッド IR を共有することはできません。
+
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -195,7 +247,7 @@ ADF では引き続きマネージド VNet IR を使用できますが、[マネ
 
 *  [Data Factory 用の Azure Private Link](data-factory-private-link.md)
 *  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory の機能のリクエスト](/answers/topics/azure-data-factory.html)
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A ページ](/answers/topics/azure-data-factory.html)
 *  [Data Factory に関する Stack overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)

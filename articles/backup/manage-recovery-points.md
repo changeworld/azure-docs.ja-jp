@@ -2,13 +2,13 @@
 title: 復旧ポイントの管理
 description: Azure Backup サービスで仮想マシンの復旧ポイントを管理する方法について説明します
 ms.topic: conceptual
-ms.date: 11/08/2020
-ms.openlocfilehash: 256df693aba0f799c24bcba6defe846e5c37ccaa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/17/2021
+ms.openlocfilehash: 2dd33b430d5aa117f35f74ff92bb3655a9002803
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94428504"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300671"
 ---
 # <a name="manage-recovery-points"></a>復旧ポイントの管理
 
@@ -121,6 +121,12 @@ VM のストレージの合計が 8 TB で、チャーンが 5% であるとし�
 |バックアップ データ チャーン    |   A1 - 4 TB      | B1 - 1 TB、B2 - 1 TB <br> B3 - 1 TB、B4 - 1 TB  |   C1 - 2 TB、C4 - 2 TB      |
 
 バックアップ パフォーマンスは、VM2、VM3、VM1 の順に低くなります。 これは、チャーンされたデータが別々のディスクに分散されることが理由です。 ディスクのバックアップは並列して行われるため、VM2 が最も優れたパフォーマンスを示します。
+
+## <a name="frequently-asked-question"></a>よく寄せられる質問
+
+### <a name="how-can-i-find-the-retention-period-of-an-on-demand-backup"></a>オンデマンド バックアップの保有期間はどのように確認できますか?
+
+オンデマンド バックアップのバックアップ ジョブ内の **[回復ポイントの有効期限 (UTC)]** フィールドに、回復ポイントの保有期間が表示されます。 詳細については、「[オンデマンド バックアップを実行する](backup-azure-manage-vms.md#run-an-on-demand-backup)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

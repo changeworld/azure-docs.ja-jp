@@ -6,33 +6,35 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: be52bbe58f6c2ff6ee21703860e8d8e00ec30072
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0e7e2da03d90f4111601871db7085749f9efc75a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110153"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457356"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバーのメトリックのアラートを設定する 
+# <a name="set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーのメトリックのアラートを設定する
 
-> [!IMPORTANT] 
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 この記事では、Azure Portal を使用して Azure Database for MySQL のアラートを設定する方法について説明します。 お使いの Azure のサービスの監視メトリックに基づいてアラートを受け取ることができます。
 
 このアラートは、指定したメトリックの値が、割り当てたしきい値を超えたときにトリガーされます。 アラートは条件を最初に満たしたときと、後でその条件を満たさなくなったときの両方でトリガーされます。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
 
 アラートがトリガーされたときに実行されるように構成できるアクションは次のとおりです。
+
 * サービス管理者/共同管理者に電子メール通知を送信する
 * 指定した追加の電子メール アドレスに電子メールを送信する。
 * Webhook を呼び出す
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
+
 * [Azure Portal](../../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure 監視 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure Portal でメトリックのアラート ルールを作成する
+
 1. [Azure portal](https://portal.azure.com/) で、監視する Azure Database for MySQL フレキシブル サーバーを選択します。
 2. サイドバーの **[監視]** セクションで、 **[アラート]** を選択します。
 3. **[+ 新しいアラート ルール]** を選択します。
@@ -49,14 +51,14 @@ ms.locfileid: "105110153"
 12. アラートに関する通知を受け取るための新しいアクション グループを作成することもできます。 詳細については、[アクション グループの作成と管理](../../azure-monitor/alerts/action-groups.md)に関するページを参照してください。
 13. 新しいアクション グループを作成するには、 **[+ アクション グループの作成]** を選択します。 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[アクション グループ名]** 、 **[表示名]** を使用して、[アクション グループの作成] フォームに入力します。
 14. アクショングループの **[通知]** を構成します。
-    
+
     **[通知の種類]** で、[電子メールの Azure Resource Manager のロール] を選択して、通知を受信するサブスクリプションの所有者、共同作成者、および閲覧者を選択します。 電子メールを送信するための **Azure Resource Manager ロール** を選択します。
     また、**電子メール/SMS メッセージ/プッシュ/音声** を選択して、特定の受信者に通知を送信することもできます。
 
     通知の種類に **[名前]** を指定し、完了したら **[確認および作成]** を選択します。
 
     <!--:::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Action group":::-->
-    
+
 15. **[アラート ルール名]** 、 **[説明]** 、 **[リソース グループにアラート ルールを保存します]** 、および **[重大度]** などの **[アラート ルールの詳細]** を入力します。
 
     <!--:::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Action group":::-->

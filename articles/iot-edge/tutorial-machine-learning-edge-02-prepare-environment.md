@@ -2,18 +2,17 @@
 title: チュートリアル:環境を設定する - Azure IoT Edge での Machine Learning
 description: チュートリアル:エッジでの機械学習用のモジュールの開発とデプロイに使用する環境を準備します。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 723d7b6ae5b96cf6dc622be1b1bb98065151787f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b97634c1f7014cd0d1687e4fb523ce366bbca5f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463155"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726395"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>チュートリアル:IoT Edge 上に機械学習用の環境を設定する
 
@@ -36,7 +35,7 @@ ms.locfileid: "103463155"
 
 この手順は、通常はクラウド開発者によって実行されます。 一部のソフトウェアはデータ サイエンティストの役にも立ちます。
 
-前提条件の多くが既に構成済みになっている Azure 仮想マシンを作成するための PowerShell スクリプトを作成しました。 作成する VM では、[入れ子になった仮想化](../virtual-machines/windows/nested-virtualization.md)を処理できる必要があります。このため、マシン サイズとして [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) が選択されています。
+前提条件の多くが既に構成済みになっている Azure 仮想マシンを作成するための PowerShell スクリプトを作成しました。 作成する VM では、[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)を処理できる必要があります。このため、マシン サイズとして [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) が選択されています。
 
 開発用 VM の設定には次のものが必要です。
 

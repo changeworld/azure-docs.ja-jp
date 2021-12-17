@@ -1,35 +1,35 @@
 ---
 title: インデクサーの実行またはリセット
 titleSuffix: Azure Cognitive Search
-description: インデクサー、スキル、または個々のドキュメントをリセットして、インデックスまたはナレッジストアのすべてまたは一部を更新します。
+description: インデクサーをフルに実行します。または、インデクサー、スキル、または個々のドキュメントをリセットして、検索インデックスまたはナレッジストアのすべてまたは一部を更新します。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/09/2021
-ms.openlocfilehash: bf8a4e51e23f438265af706914a6bc73ec30f64d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+ms.openlocfilehash: e29c511a59d8b446b497a8fd4ff393c9a9c683e9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667673"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449300"
 ---
-# <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>インデクサー、スキル、またはドキュメントを実行またはリセットする方法
+# <a name="run-or-reset-indexers-skills-or-documents"></a>インデクサー、スキル、ドキュメントを実行またはリセットする
 
-インデクサーの実行は、[インデクサー](search-indexer-overview.md)を初めて作成するとき、オンデマンドでインデクサーを実行するとき、またはスケジュールに基づいてインデクサーを設定するときに発生する可能性があります。 最初の実行後、インデクサーは、内部の "高基準値" を使用してどの検索ドキュメントがインデックス付けされたかを追跡します。 マーカーは API で公開されることはありませんが、内部的には、インデクサーがインデックス付けが停止した場所を認識して、次の実行時に中断した場所から再開できます。
+インデクサーは、オンデマンド、スケジュール、[インデクサーの作成時](/rest/api/searchservice/create-indexer)という 3 とおりの方法で呼び出すことができます。 最初の実行後、インデクサーは、内部の "高基準値" を使用してどの検索ドキュメントがインデックス付けされたかを追跡します。 マーカーは API で公開されることはありませんが、内部的には、インデクサーがインデックス付けが停止した場所を認識して、次の実行時に中断した場所から再開できます。
 
 最初から再処理する場合は、インデクサーをリセットすることで高基準値をクリアできます。 リセット API は、オブジェクト階層でレベルを下げて利用できます。
 
 + 検索コーパス全体 ([インデクサーのリセット](#reset-indexers)を使用)
 + 特定のドキュメントまたはドキュメントのリスト ([ドキュメントのリセット(プレビュー)](#reset-docs) を使用)
-+ ドキュメント内の特定のスキルまたはエンリッチメント ([スキルのリセット (プレビュー)](#reset-skills) を使用)
++ 特定のスキルまたはエンリッチメント ([スキルのリセット (プレビュー)](#reset-skills) を使用)
 
 リセット API を使用して、キャッシュされたコンテンツを更新 ([AI エンリッチメント](cognitive-search-concept-intro.md)のシナリオで可能) するか、高基準値をクリアしてインデックスを再構築します。
 
 リセットした後に実行すると、既存のドキュメントと新しいドキュメントを再処理できますが、以前の実行時に作成された検索インデックス内の孤立した検索ドキュメントは削除されません。 削除の詳細については、[ドキュメントの追加、更新、削除](/rest/api/searchservice/addupdate-or-delete-documents)に関するページを参照してください。
 
-## <a name="run-indexers"></a>インデクサーの実行
+## <a name="how-to-run-indexers"></a>インデクサーを実行する方法
 
 [インデクサーの作成](/rest/api/searchservice/create-indexer)では、無効状態 ("disabled": true) で作成しない限り、インデクサーが作成され、実行されます。 最初の実行では、オブジェクトの作成も行われるため、少し時間がかかります。
 
@@ -41,15 +41,17 @@ ms.locfileid: "101667673"
 + [インデクサーを実行する (REST)](/rest/api/searchservice/run-indexer)
 + Azure .NET SDK の [RunIndexers メソッド](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexer)を使用する (または、別の SDK の同等の RunIndexer メソッドを使用する)
 
+## <a name="indexer-execution"></a>インデクサーの実行
+
 インデクサーの実行には、次の制限があります。
 
-+ インデクサー ジョブの最大数は、レプリカあたり最大 1 個です (同時実行ジョブなし)。
++ インデクサー ジョブの最大数は、レプリカあたり 1 個です。
 
-  インデクサーの実行が既にフル稼働状態の場合は、次のような通知が表示されます。"インデクサー '<インデクサー名>' の実行に失敗しました。エラー:"現在、別のインデクサー呼び出しが進行中です。同時呼び出しは許可されていません。"
+  インデクサーの実行が既にフル稼働状態の場合は、次のような通知が表示されます。"インデクサー '\<indexer-name\>' を実行できませんでした。エラー: "現在、別のインデクサー呼び出しが進行中です。同時呼び出しは許可されていません。"
 
 + スキルセットを使用している場合の最長実行時間は 2 時間、使用していない場合は 24 時間です。 
 
-  インデクサーをスケジュールすることで、処理を拡張できます。 Free レベルでは、実行時間の制限が低くなっています。 完全な一覧については、[インデクサーの制限](search-limits-quotas-capacity.md#indexer-limits)に関するページを参照してください。
+  [大きなデータセットのインデックスを作成](search-howto-large-index.md)する場合は、インデクサーをスケジュールすることで、処理を小分けにすることができます。 Free レベルでは、実行時間の制限が低くなっています。 完全な一覧については、[インデクサーの制限](search-limits-quotas-capacity.md#indexer-limits)に関するページを参照してください。
 
 <a name="reset-indexers"></a>
 
@@ -72,12 +74,9 @@ ms.locfileid: "101667673"
 
 ## <a name="reset-skills-preview"></a>スキルのリセット (プレビュー)
 
-> [!IMPORTANT] 
-> [スキルのリセット](/rest/api/searchservice/preview-api/reset-skills)はパブリック プレビュー段階にあり、プレビュー REST API を介してのみ利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。
-
 スキルセットがあるインデクサーの場合は、特定のスキルをリセットして、そのスキルと、その出力に依存するダウンストリーム スキルを強制的に処理できます。 [キャッシュされたエンリッチメント](search-howto-incremental-index.md)も更新されます。 スキルをリセットすると、キャッシュされたスキルの結果が無効になります。これは、スキルの新バージョンがデプロイされたときに、インデクサーですべてのドキュメントに対してそのスキルを再実行したい場合に便利です。 
 
-[スキルのリセット](/rest/api/searchservice/preview-api/reset-skills)は REST **`api-version=2020-06-30-Preview`** を介して実行できます。
+[スキルのリセット](/rest/api/searchservice/preview-api/reset-skills)は REST **`api-version=2020-06-30-Preview`** 以降を介して実行できます。
 
 ```http
 POST https://[service name].search.windows.net/skillsets/[skillset name]/resetskills?api-version=2020-06-30-Preview
@@ -98,9 +97,6 @@ POST https://[service name].search.windows.net/skillsets/[skillset name]/resetsk
 
 ## <a name="reset-docs-preview"></a>ドキュメントのリセット (プレビュー)
 
-> [!IMPORTANT] 
-> [ドキュメントのリセット](/rest/api/searchservice/preview-api/reset-documents)はパブリック プレビュー段階にあり、プレビュー REST API を介してのみ利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。
-
 [ドキュメントのリセット API](/rest/api/searchservice/preview-api/reset-documents) は、ドキュメント キーの一覧を受け取って、特定のドキュメントを更新できるようにします。 リセット パラメーターを指定すると、基になるデータの他の変更には関係なく、リセット パラメーターによってのみ処理対象が決定されます。 たとえば、インデクサーの最後の実行後に 20 個の BLOB が追加または更新されたが、1 つのドキュメントのみをリセットした場合、その 1 つのドキュメントだけが処理されます。
 
 ドキュメントごとに、その検索ドキュメント内のすべてのフィールドがデータ ソースの値で更新されます。 更新するフィールドを選択することはできません。 
@@ -109,8 +105,8 @@ POST https://[service name].search.windows.net/skillsets/[skillset name]/resetsk
 
 この API を初めてテストするときは、次の API を使用して動作を検証し、テストできます。
 
-+ [インデクサー状態の取得](/rest/api/searchservice/get-indexer-status) (API バージョン `2020-06-30-Preview`): リセットの状態と実行の状態を確認します。 状態応答の最後でリセット要求に関する情報を確認できます。
-+ [ドキュメントのリセット](/rest/api/searchservice/preview-api/reset-documents) (API バージョン`2020-06-30-Preview`): 処理するドキュメントを指定します。
++ [インデクサー状態の取得](/rest/api/searchservice/get-indexer-status) (API バージョン **`api-version=2020-06-30-Preview`** 以降): リセットの状態と実行の状態を確認します。 状態応答の最後でリセット要求に関する情報を確認できます。
++ [ドキュメントのリセット](/rest/api/searchservice/preview-api/reset-documents) (API バージョン **`api-version=2020-06-30-Preview`** 以降): 処理するドキュメントを指定します。
 + [インデクサー実行](/rest/api/searchservice/run-indexer) (任意の API バージョン): インデクサーを実行します。
 + [ドキュメントの検索](/rest/api/searchservice/search-documents): 更新された値を確認します。値がわからない場合は、ドキュメント キーを返します。 応答に表示するフィールドを制限する場合は、`"select": "<field names>"` を使用します。
 
@@ -145,7 +141,7 @@ POST https://[service name].search.windows.net/indexers/[indexer name]/resetdocs
 
 ## <a name="check-reset-status"></a>リセットの状態の確認
 
-リセットの状態を確認し、処理のためにキューに登録されているドキュメント キーを確認するには、[インデクサー状態の取得](/rest/api/searchservice/get-indexer-status)と **`api-version=06-30-2020-Preview`** を使用します。 プレビュー API は **`currentState`** セクションを返します。これは、インデクサー状態の取得応答の最後にあります。
+リセットの状態を確認し、処理のためにキューに登録されているドキュメント キーを確認するには、[インデクサー状態の取得](/rest/api/searchservice/get-indexer-status)と **`api-version=06-30-2020-Preview`** 以降を使用します。 プレビュー API は **`currentState`** セクションを返します。これは、インデクサー状態の取得応答の最後にあります。
 
 スキルのリセットの場合は "モード" が **`indexingAllDocs`** になります (AI エンリッチメントで設定されるフィールドについてはすべてのドキュメントが影響を受ける可能性があるため)。
 

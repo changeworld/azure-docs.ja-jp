@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: d31634809786ca4e62b156b6659289012e27a560
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 111898a8b0719129f7e35d538585dee25cb2ccab
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387011"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437412"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Azure Synapse Analytics の使用を開始する
 
@@ -25,11 +25,12 @@ ms.locfileid: "106387011"
 
 * [ステップ 1 - Synapse ワークスペースを作成する](get-started-create-workspace.md)
 * [ステップ 2 - サーバーレス SQL プールを使用して分析する](get-started-analyze-sql-on-demand.md)
-* [ステップ 3 - Apache Spark を使用して分析する](get-started-analyze-spark.md)
-* [ステップ 4 - 専用 SQL プールを使用して分析する](get-started-analyze-sql-pool.md)
-* [ステップ 5 - ストレージ アカウント内のデータを分析する](get-started-analyze-storage.md)
-* [ステップ 6 - パイプラインを使用してオーケストレーションする](get-started-pipelines.md)
-* [ステップ 7 - Power BI を使用してデータを視覚化する](get-started-visualize-power-bi.md)
-* [手順 8 - 活動を監視する](get-started-monitor.md)
-* [手順 9 - Knowledge Center を探索する](get-started-knowledge-center.md)
-* [手順 10 - 管理者を追加する](get-started-add-admin.md)
+* [ステップ 3 - Data Explorer プールを使用して分析する](get-started-analyze-data-explorer.md)
+* [ステップ 4 - Apache Spark を使用して分析する](get-started-analyze-spark.md)
+* [ステップ 5 - 専用 SQL プールを使用して分析する](get-started-analyze-sql-pool.md)
+* [ステップ 6 - ストレージ アカウント内のデータを分析する](get-started-analyze-storage.md)
+* [ステップ 7 - パイプラインを使用してオーケストレーションする](get-started-pipelines.md)
+* [ステップ 8 - Power BI を使用してデータを視覚化する](get-started-visualize-power-bi.md)
+* [ステップ 9 - 活動を監視する](get-started-monitor.md)
+* [ステップ 10 - ナレッジ センターを探索する](get-started-knowledge-center.md)
+* [ステップ 11 - 管理者を追加する](get-started-add-admin.md)

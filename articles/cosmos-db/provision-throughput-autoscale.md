@@ -5,14 +5,14 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 05/18/2021
 ms.custom: seo-nov-2020
-ms.openlocfilehash: ba0dd347c4ee2cb41b34c2fc34f1848a7295dc3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 628cba9c515b58e23c984c6dcd34fa35ff63c78a
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97368666"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123028617"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>自動スケーリングのスループットを使用して Azure Cosmos コンテナーとデータベースを作成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -59,7 +59,7 @@ Azure Cosmos DB では、データベースとコンテナーに対して標準 
 
 ## <a name="enable-autoscale-on-existing-resources"></a>既存のリソースに対して自動スケーリングを有効にする
 
-[Azure portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)、[Azure Resource Manager テンプレート](how-to-provision-autoscale-throughput.md#azure-resource-manager)、[CLI](how-to-provision-autoscale-throughput.md#azure-cli)、または [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) を使用して、既存のデータベースまたはコンテナーで自動スケーリングを有効にします。 自動スケーリングと標準 (手動) のプロビジョニング スループット間の切り替えは、いつでも行うことができます。 詳細については、こちらの[ドキュメント](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)を参照してください。
+[Azure portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)、[CLI](how-to-provision-autoscale-throughput.md#azure-cli)、または [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) を使用して、既存のデータベースまたはコンテナーで自動スケーリングを有効にできます。 自動スケーリングと標準 (手動) のプロビジョニング スループット間の切り替えは、いつでも行うことができます。 詳細については、こちらの[ドキュメント](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-)を参照してください。
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> 自動スケーリングのスループットとストレージ制限
 
@@ -67,7 +67,7 @@ Azure Cosmos DB では、データベースとコンテナーに対して標準 
 
 たとえば、50,000 RU/秒の最大 RU/秒で開始した場合 (5000 から 50,000 RU/秒の間でスケーリングされます)、最大で 500 GB のデータを格納できます。 500 GB を超えると (現在、ストレージが 600 GB になっているなど)、新しい最大 RU/秒は 60,000 RU/秒になります (6000 から 60,000 RU/秒の間でスケーリングされます)。
 
-自動スケーリングによるデータベース レベルのスループットを使用する場合は、40 GB のストレージを超えない限り、最初の 25 個のコンテナーによって、自動スケーリングの最大の 4000 RU/秒 (400 から 4000 RU/秒の間でスケーリングされます) を共有できます。 詳細については、こちらの[ドキュメント](autoscale-faq.md#can-i-change-the-max-rus-on-the-database-or-container)を参照してください。
+自動スケーリングによるデータベース レベルのスループットを使用する場合は、40 GB のストレージを超えない限り、最初の 25 個のコンテナーによって、自動スケーリングの最大の 4000 RU/秒 (400 から 4000 RU/秒の間でスケーリングされます) を共有できます。 詳細については、こちらの[ドキュメント](autoscale-faq.yml#can-i-change-the-max-ru-s-on-the-database-or-container--)を参照してください。
 
 ## <a name="comparison--containers-configured-with-manual-vs-autoscale-throughput"></a>比較 – 手動または自動スケーリングのスループットで構成されたコンテナー
 標準 (手動) および自動スケーリングのスループットから選択する方法の詳細については、こちらの[ドキュメント](how-to-choose-offer.md)を参照してください。  
@@ -82,9 +82,12 @@ Azure Cosmos DB では、データベースとコンテナーに対して標準 
 
 ## <a name="next-steps"></a>次のステップ
 
-* [自動スケーリングに関する FAQ](autoscale-faq.md) を確認する。
+* [自動スケーリングに関する FAQ](autoscale-faq.yml) を確認する。
 * [手動および自動スケーリングのスループットから選択する](how-to-choose-offer.md)方法を確認する。
 * [Azure Cosmos データベースまたはコンテナー上で自動スケーリングのスループットをプロビジョニングする](how-to-provision-autoscale-throughput.md)方法を確認する。
 * Azure Cosmos DB での[パーティション分割](partitioning-overview.md)について詳細を確認する。
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積り](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
 
 

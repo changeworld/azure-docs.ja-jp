@@ -1,60 +1,61 @@
 ---
-title: Azure Image Builder テンプレートを作成する (プレビュー)
+title: Azure Image Builder テンプレートを作成する
 description: Azure Image Builder で使用するテンプレートを作成する方法について説明します。
-author: danielsollondon
-ms.author: danis
-ms.date: 03/02/2021
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
+ms.date: 05/24/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
-ms.reviewer: cynthn
-ms.openlocfilehash: 77460d1675b806e04c72e5f46da0ec4274d99d41
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d4e8832222cb1fc0a4ec431f1eeedcdcda0c5a11
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762535"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400967"
 ---
-# <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
+# <a name="create-an-azure-image-builder-template"></a>Azure Image Builder テンプレートを作成する 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure Image Builder では、.json ファイルを使って Image Builder サービスに情報を渡します。 この記事では、独自のテンプレートを作成できるように、json ファイルの各セクションについて説明します。 完全な .json ファイルの例を確認するには、[Azure Image Builder の GitHub](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts) をご覧ください。
 
 テンプレートの基本的な形式を次に示します。
 
 ```json
- { 
+  { 
     "type": "Microsoft.VirtualMachineImages/imageTemplates", 
     "apiVersion": "2020-02-14", 
     "location": "<region>", 
     "tags": {
-        "<name": "<value>",
-        "<name>": "<value>"
-     },
-    "identity":{},           
-    "dependsOn": [], 
+      "<name>": "<value>",
+      "<name>": "<value>"
+    },
+    "identity": {},          
     "properties": { 
-        "buildTimeoutInMinutes": <minutes>, 
-        "vmProfile": 
-            {
-            "vmSize": "<vmSize>",
-            "osDiskSizeGB": <sizeInGB>,
-            "vnetConfig": {
-                "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
-                }
-            },
-        "source": {}, 
-        "customize": {}, 
-        "distribute": {} 
-      } 
- } 
+      "buildTimeoutInMinutes": <minutes>, 
+      "vmProfile": {
+        "vmSize": "<vmSize>",
+        "proxyVmSize": "<vmSize>",
+        "osDiskSizeGB": <sizeInGB>,
+        "vnetConfig": {
+          "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+        }
+      },
+      "source": {}, 
+      "customize": {}, 
+      "distribute": {} 
+    } 
+  } 
 ```
 
 
 
 ## <a name="type-and-api-version"></a>種類と API のバージョン
 
-`type` はリソースの種類であり、`"Microsoft.VirtualMachineImages/imageTemplates"` にする必要があります。 `apiVersion` は API の変化に合わせて時間と共に変わりますが、プレビューでは `"2020-02-14"` にする必要があります。
+`type` はリソースの種類であり、`"Microsoft.VirtualMachineImages/imageTemplates"` にする必要があります。 `apiVersion` は、API の変更に伴って経時的に変わりますが、現時点では `"2020-02-14"` にする必要があります。
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -63,28 +64,42 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
 
 ## <a name="location"></a>場所
 
-location は、カスタム イメージを作成するリージョンです。 Image Builder プレビューでは、次のリージョンがサポートされています。
+location は、カスタム イメージを作成するリージョンです。 次のリージョンがサポートされています。
 
 - 米国東部
 - 米国東部 2
 - 米国中西部
 - 米国西部
 - 米国西部 2
+- 米国中南部
 - 北ヨーロッパ
 - 西ヨーロッパ
-
+- 東南アジア
+- オーストラリア南東部
+- オーストラリア東部
+- 英国南部
+- 英国西部
 
 ```json
     "location": "<region>",
 ```
-## <a name="vmprofile"></a>vmProfile
-既定では Image Builder は "Standard_D1_v2" ビルド VM を使用しますが、これはオーバーライドできます。たとえば GPU VM 用にイメージをカスタマイズする場合は、GPU VM サイズが必要になります。 これは省略可能です。
 
-```json
- {
-    "vmSize": "Standard_D1_v2"
- },
-```
+### <a name="data-residency"></a>データ所在地
+Azure VM Image Builder サービスでは、顧客が単一リージョンのデータ所在地の要件が厳しいリージョンでの構築を要求した場合に、そのリージョンの外部に顧客のデータが保存されたり、外部で処理されたりすることはありません。 データ所在地の要件が設けられているリージョンでサービスが停止した場合は、別のリージョンや地域にテンプレートを作成する必要があります。
+
+### <a name="zone-redundancy"></a>ゾーン冗長
+配布ではゾーン冗長がサポートされており、VHD は既定でゾーン冗長ストレージ アカウントに配布されます。Azure Compute Gallery (旧称 Shared Image Gallery) バージョンでは、[ZRS ストレージの種類](../disks-redundancy.md#zone-redundant-storage-for-managed-disks)がサポートされます (指定されている場合)。
+ 
+## <a name="vmprofile"></a>vmProfile
+## <a name="buildvm"></a>buildVM
+既定では、"Standard_D1_v2" ビルド VM (Gen1 イメージの場合) および "Standard_D2ds_v4" ビルド VM (Gen2 イメージの場合) が使用されます。これは、`source` で指定したイメージから構築されます。 これはオーバーライド可能で、次の理由から行う場合があります:
+1. より大きなメモリや CPU、および大きなファイル (GB) の処理が必要なカスタマイズの実行。
+2. Windows ビルドの実行。"Standard_D2_v2" または同等の VM サイズを使用する必要があります。
+3. [VM の分離](../isolation.md)が必要。
+4. 特定のハードウェアを必要とするイメージのカスタマイズ (GPU VM の場合は GPU VM サイズが必要になるなど)。 
+5. ビルド VM の残りの部分でエンド ツー エンドの暗号化が必要。ローカル一時ディスクを使用しないサポート ビルド [VM](../azure-vms-no-temp-disk.yml) サイズを指定する必要があります。
+ 
+これは省略可能です。
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
@@ -109,16 +124,6 @@ VNET プロパティを指定しない場合、Image Builder によって独自�
 
 これらは、生成されるイメージに対して指定できるキー/値ペアです。
 
-## <a name="depends-on-optional"></a>依存関係 (省略可能)
-
-この省略可能なセクションを使って、先に進む前に、依存関係が揃っていることを確認できます。 
-
-```json
-    "dependsOn": [],
-```
-
-詳しくは、「[リソースの依存関係を定義する](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)」をご覧ください。
-
 ## <a name="identity"></a>ID
 
 必須 - スクリプトで Azure Storage から読み取られたイメージを読み書きするアクセスが Image Builder に許可されるようにするには、個々のリソースに対するアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Image Builder のアクセス許可のしくみと関連する手順の詳細については、[ドキュメント](image-builder-user-assigned-identity.md)を参照してください。
@@ -126,11 +131,11 @@ VNET プロパティを指定しない場合、Image Builder によって独自�
 
 ```json
     "identity": {
-    "type": "UserAssigned",
-          "userAssignedIdentities": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
             "<imgBuilderId>": {}
         }
-        },
+    },
 ```
 
 
@@ -143,28 +148,28 @@ Image Builder によるユーザー割り当て ID のサポート:
 
 ## <a name="properties-source"></a>プロパティ: source
 
-`source` セクションには、Image Builder によって使われるソース イメージについての情報が含まれます。 現在 Image Builder でネイティブにサポートされているのは、Azure Shared Image Gallery (SIG) への Hyper-V 第 1 世代 (Gen1) のイメージ、またはマネージド イメージの作成のみです。 Gen2 イメージを作成する場合は、ソース Gen2 イメージを使用し、VHD に配布する必要があります。 その後、VHD からマネージド イメージを作成し、これを Gen2 イメージとして SIG に挿入する必要があります。
+`source` セクションには、Image Builder によって使われるソース イメージについての情報が含まれます。 現在、Image Builder でネイティブにサポートされているのは、Azure Compute Gallery (SIG) の Hyper-V 第 1 世代 (Gen1) のイメージまたはマネージド イメージの作成のみです。 Gen2 イメージを作成する場合は、ソース Gen2 イメージを使用し、VHD に配布する必要があります。 その後、VHD からマネージド イメージを作成し、これを Gen2 イメージとして SIG に挿入する必要があります。
 
 API ではイメージ ビルド用のソースを定義する "SourceType" が必要であり、現在は次の 3 つの種類があります。
 - PlatformImage - ソース イメージが Marketplace イメージであることを示します。
 - ManagedImage - 標準のマネージド イメージから始めるときは、これを使います。
-- SharedImageVersion - ソースとして共有イメージ ギャラリー内のイメージのバージョンを使うときは、これを使います。
+- SharedImageVersion - ソースとして Azure Compute Gallery 内のイメージのバージョンを使うときは、これを使います。
 
 
 > [!NOTE]
-> 既存の Windows カスタム イメージを使用する場合は、単一の Windows イメージで Sysprep コマンドを最大で 8 回実行できます。詳細については、[sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) に関するドキュメントを参照してください。
+> 既存の Windows カスタム イメージを使用する場合、1 つの Windows 7 または Windows Server 2008 R2 イメージで Sysprep コマンドを最大 3 回実行できます。それ以降のバージョンでは、1 つの Windows イメージで最大 1001 回実行できます。詳細については、[sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) のドキュメントを参照してください。
 
 ### <a name="platformimage-source"></a>PlatformImage ソース 
-Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、[こちら](../image-builder-overview.md#os-support)を参照してください。 
+Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、「[Azure Image Builder の概要](../image-builder-overview.md#os-support)」を参照してください。 
 
 ```json
         "source": {
             "type": "PlatformImage",
-                "publisher": "Canonical",
-                "offer": "UbuntuServer",
-                "sku": "18.04-LTS",
-                "version": "latest"
-        },
+            "publisher": "Canonical",
+            "offer": "UbuntuServer",
+            "sku": "18.04-LTS",
+            "version": "latest"
+        },  
 ```
 
 
@@ -174,7 +179,7 @@ Azure Image Builder では、Windows Server とクライアント、および Li
 az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all 
 ```
 
-"最新" バージョンを使用できますが、バージョンは、テンプレートが送信されるときではなく、イメージのビルドが行われるときに評価されます。 Shared Image Gallery 送信先でこの機能を使用する場合、テンプレートを再送信するのは避け、間隔を置いてイメージ ビルドを再実行します。これにより、最新のイメージから、ご自身のイメージが再作成されます。
+"最新" バージョンを使用できますが、バージョンは、テンプレートが送信されるときではなく、イメージのビルドが行われるときに評価されます。 Azure Compute Gallery 送信先でこの機能を使用する場合、テンプレートを再送信するのは避け、間隔を置いてイメージ ビルドを再実行します。これにより、最新のイメージから、ご自身のイメージが再作成されます。
 
 #### <a name="support-for-market-place-plan-information"></a>マーケットプレース プラン情報のサポート
 次の例のように、プラン情報を指定することもできます。
@@ -201,7 +206,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 ```json
         "source": { 
             "type": "ManagedImage", 
-                "imageId": "/subscriptions/<subscriptionId>/resourceGroups/{destinationResourceGroupName}/providers/Microsoft.Compute/images/<imageName>"
+            "imageId": "/subscriptions/<subscriptionId>/resourceGroups/{destinationResourceGroupName}/providers/Microsoft.Compute/images/<imageName>"
         }
 ```
 
@@ -209,7 +214,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion ソース
-ソース イメージを、共有イメージ ギャラリー内の既存のイメージ バージョンに設定します。
+ソース イメージを、Azure Compute Gallery 内の既存のイメージ バージョンに設定します。
 
 > [!NOTE]
 > ソース マネージド イメージは、サポート対象の OS のものでなければならず、このイメージは Azure Image Builder テンプレートと同じリージョンに存在する必要があります。それ以外の場合は、イメージ バージョンを Image Builder テンプレート リージョンにレプリケートしてください。
@@ -219,7 +224,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
         "source": { 
             "type": "SharedImageVersion", 
             "imageVersionID": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/p  roviders/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageDefinitionName/versions/<imageVersion>" 
-   } 
+        } 
 ```
 
 `imageVersionId` は、イメージ バージョンの ResourceId にする必要があります。 イメージ バージョンの一覧を表示するには、[az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) を使います。
@@ -238,6 +243,8 @@ buildTimeoutInMinutes の値を指定しなかった場合、または 0 に設�
 
 カスタマイズを完了するためにより多くの時間が必要な場合は、オーバーヘッドが小さい必要と思われるものに設定します。 ただし、エラーが表示される前にタイムアウトするまで待機する必要があるため、設定値を大きくしすぎないでください。 
 
+> [!NOTE]
+> 値を 0 に設定しない場合、サポートされる最小値は 6 分です。 1 から 5 までの値を使用すると失敗します。
 
 ## <a name="properties-customize"></a>プロパティ: customize
 
@@ -274,11 +281,11 @@ Image Builder では、複数の "カスタマイザー" がサポートされ�
 customize セクションは配列です。 Azure Image Builder では、カスタマイザーが順番に実行されます。 いずれかのカスタマイザーでエラーが発生すると、ビルド プロセスが失敗します。 
 
 > [!NOTE]
-> インライン コマンドは、イメージ テンプレート定義に表示され、サポート ケース支援時に Microsoft サポートによって表示されることがあります。 機密情報がある場合は、アクセスに認証が必要な Azure Storage 内のスクリプトに移動する必要があります。
+> インライン コマンドは、イメージ テンプレート定義で表示できます。 機密情報 (パスワード、SAS トークン、認証トークンなど) がある場合は、アクセスに認証が必要な Azure Storage 内のスクリプトに移動する必要があります。
  
 ### <a name="shell-customizer"></a>シェル カスタマイザー
 
-シェル カスタマイザーではシェル スクリプトの実行がサポートされ、スクリプトは IB がアクセスできるようにパブリックにアクセス可能である必要があります。
+シェル カスタマイザーでは、シェル スクリプトの実行がサポートされています。 シェル スクリプトには、パブリックにアクセスできる必要があります。または、Image Builder からアクセスするには、[MSI](./image-builder-user-assigned-identity.md) が構成されている必要があります。
 
 ```json
     "customize": [ 
@@ -289,13 +296,13 @@ customize セクションは配列です。 Azure Image Builder では、カス�
             "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
-        "customize": [ 
+    "customize": [ 
         { 
             "type": "Shell", 
             "name": "<name>", 
             "inline": "<commands to run>"
-        }, 
-    ], 
+    }, 
+    ],
 ```
 
 OS のサポート: Linux 
@@ -310,7 +317,7 @@ OS のサポート: Linux
     * Mac/Linux のターミナルを使用して sha256Checksum を生成するには、`sha256sum <fileName>` を実行します。
 
 > [!NOTE]
-> インライン コマンドはイメージ テンプレート定義の一部として格納されます。イメージ定義をダンプ出力したときに、これらのコマンドを確認できます。また、トラブルシューティングのためにサポート ケースが発生した場合に、Microsoft サポートでこれらのコマンドを表示することもできます。 機密性の高いコマンドまたは値がある場合は、それらをスクリプトに移動し、ユーザー ID を使用して Azure Storage に対する認証を行うことを強くお勧めします。
+> インライン コマンドはイメージ テンプレート定義の一部として格納されます。イメージ定義をダンプ出力したときに、これらを確認できます。 機密性の高いコマンドまたは値 (パスワード、SAS トークン、認証トークンなど) がある場合は、それらをスクリプトに移動し、ユーザー ID を使用して Azure Storage に対する認証を行うことを強くお勧めします。
 
 #### <a name="super-user-privileges"></a>スーパー ユーザー特権
 先頭に `sudo` がある、スーパーユーザー特権で実行するコマンドは、スクリプトに追加したり、次の例のように inline コマンドで使用したりすることができます。
@@ -378,10 +385,10 @@ Linux 再起動カスタマイザーはありませんが、ドライバーま�
              "validExitCodes": "<exit code>",
              "runElevated": "<true or false>" 
          } 
-    ], 
+     ], 
 ```
 
-OS のサポート: Windows と Linux
+OS のサポート: Windows
 
 カスタマイズのプロパティ:
 
@@ -396,7 +403,7 @@ OS のサポート: Windows と Linux
 
 ### <a name="file-customizer"></a>ファイル カスタマイザー
 
-ファイル カスタマイザーを使うと、Image Builder で GitHub または Azure Storage からファイルをダウンロードできます。 ビルド成果物に依存するイメージ ビルド パイプラインがある場合、ファイル カスタマイザーを設定して、成果物をビルド共有からダウンロードし、イメージに移動することができます。  
+ファイル カスタマイザーを使用すると、Image Builder で GitHub リポジトリまたは Azure Storage からファイルをダウンロードできます。 ビルド成果物に依存するイメージ ビルド パイプラインがある場合は、ファイル カスタマイザーを設定して、成果物をビルド共有からダウンロードし、イメージに移動できます。  
 
 ```json
      "customize": [ 
@@ -425,31 +432,32 @@ OS のサポート: Linux、Windows
 - Linux OS – Image builder で書き込むことができる唯一のパスは /tmp です。
 - Windows – パスの制限はありませんが、パスが存在する必要があります。
  
- 
-ファイルのダウンロードまたは指定されたディレクトリへの格納を行おうとしてエラーが発生した場合、そのカスタマイズ ステップは失敗し、customization.log にそれが記録されます。
+
+ファイルのダウンロードや指定されたディレクトリへの配置を試みたときにエラーが発生した場合、カスタマイズ ステップは失敗し、customization.log にそれが記録されます。
 
 > [!NOTE]
-> ファイル カスタマイザーは、小さいファイルのダウンロード (20 MB 未満) にのみ適しています。 大きいファイルをダウンロードする場合は、スクリプトまたはインライン コマンド (ファイルをダウンロードするための使用コード) を使用します。たとえば、Linux の場合は `wget` または `curl`、Windows の場合は `Invoke-WebRequest` などがあります。
+> ファイル カスタマイザーは、小さいファイルのダウンロード (20 MB 未満) にのみ適しています。 大きいファイルをダウンロードする場合は、スクリプトまたはインライン コマンドを使用してから、ファイルをダウンロードするコード (Linux の `wget` または `curl`、Windows の `Invoke-WebRequest` など) を使用します。
 
 ### <a name="windows-update-customizer"></a>Windows Update カスタマイザー
-このカスタマイザーは、Packer の[コミュニティ Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html) に基づいて構築されたオープン ソース プロジェクトで、Packer コミュニティによって管理されています。 Microsoft では、Image Builder サービスを使ってプロビジョナーをテストおよび検証し、問題の調査を支援して、解決に取り組んでいきますが、正式にはこのオープン ソース プロジェクトをサポートしていません。 Windows Update Provisioner の詳細なドキュメントとヘルプについては、プロジェクトのリポジトリを参照してください。
+このカスタマイザーは、Packer の[コミュニティ Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html) に基づいて構築されたオープン ソース プロジェクトで、Packer コミュニティによって管理されています。 Microsoft では、Image Builder サービスを使ってプロビジョナーをテストおよび検証し、問題の調査を支援して、解決に取り組んでいきますが、正式にはこのオープン ソース プロジェクトをサポートしていません。 Windows Update Provisioner の詳細なドキュメントとヘルプについては、プロジェクト リポジトリを参照してください。
 
 ```json
      "customize": [
-            {
-                "type": "WindowsUpdate",
-                "searchCriteria": "IsInstalled=0",
-                "filters": [
+          {
+               "type": "WindowsUpdate",
+               "searchCriteria": "IsInstalled=0",
+               "filters": [
                     "exclude:$_.Title -like '*Preview*'",
                     "include:$true"
-                            ],
-                "updateLimit": 20
-            }
-               ], 
-OS support: Windows
+               ],
+               "updateLimit": 20
+          }
+     ], 
 ```
 
-カスタマイズのプロパティ:
+OS のサポート: Windows
+
+カスタマイザーのプロパティ:
 - **type**  – WindowsUpdate。
 - **searchCriteria** - 省略可能。インストールされている更新プログラムの種類を定義します (推奨、重要 など)。既定値は、BrowseOnly=0 and IsInstalled=0 (推奨) です。
 - **filters** – 省略可能。更新プログラムを含めるか除外するフィルターを指定できます。
@@ -508,7 +516,7 @@ Image Builder では、これらのコマンドが読み取られて、AIB ロ�
 Azure Image Builder では、次の 3 つの配布ターゲットがサポートされています。 
 
 - **managedImage** - マネージド イメージ。
-- **sharedImage** - 共有イメージ ギャラリー。
+- **sharedImage** - Azure Compute Gallery。
 - **VHD** - ストレージ アカウント内の VHD。
 
 すべてのターゲットの種類に同じ構成でイメージを配布できます。
@@ -516,7 +524,7 @@ Azure Image Builder では、次の 3 つの配布ターゲットがサポート
 > [!NOTE]
 > 既定の AIB sysprep コマンドには、"/mode:vm" は含まれていませんが、HyperV ロールがインストールされるイメージを作成するときに必要になる場合があります。 このコマンド引数を追加する場合は、sysprep コマンドをオーバーライドする必要があります。
 
-複数のターゲットに配布できるので、Image Builder ではすべての配布ターゲットの状態が維持されており、`runOutputName` のクエリを実行することによってアクセスできます。  配布の後で `runOutputName` オブジェクトのクエリを実行して、その配布に関する情報を取得できます。 たとえば、VHD の場所、イメージ バージョンがレプリケートされたリージョン、または作成された SIG イメージのバージョンのクエリを実行できます。 これは、すべての配布ターゲットのプロパティです。 `runOutputName` は配布ターゲットごとに一意である必要があります。 次に例を示します。これは、Shared Image Gallery の配布に対するクエリです。
+複数のターゲットに配布できるので、Image Builder ではすべての配布ターゲットの状態が維持されており、`runOutputName` のクエリを実行することによってアクセスできます。  配布の後で `runOutputName` オブジェクトのクエリを実行して、その配布に関する情報を取得できます。 たとえば、VHD の場所、イメージ バージョンがレプリケートされたリージョン、または作成された SIG イメージのバージョンのクエリを実行できます。 これは、すべての配布ターゲットのプロパティです。 `runOutputName` は配布ターゲットごとに一意である必要があります。 次に例を示します。これは、Azure Compute Gallery の配布に対するクエリです。
 
 ```bash
 subscriptionID=<subcriptionID>
@@ -560,7 +568,7 @@ az resource show \
        "location": "<region>",
        "runOutputName": "<name>",
        "artifactTags": {
-            "<name": "<value>",
+            "<name>": "<value>",
             "<name>": "<value>"
         }
 }
@@ -576,18 +584,18 @@ az resource show \
  
 > [!NOTE]
 > 配布先のリソース グループは存在している必要があります。
-> 別のリージョンにイメージを配布する場合は、デプロイ時間が長くなります。 
+> イメージが別のリージョンに配布されるようにする場合は、デプロイ時間が長くなります。 
 
 ### <a name="distribute-sharedimage"></a>配布: sharedImage 
-Azure 共有イメージ ギャラリーは新しいイメージ管理サービスであり、イメージのリージョン レプリケーションの管理、バージョン管理、カスタム イメージの共有を行うことができます。 Azure Image Builder ではこのサービスによる配布がサポートされているので、共有イメージ ギャラリーでサポートされているリージョンにイメージを配布できます。 
+Azure Compute Gallery は新しいイメージ管理サービスであり、イメージのリージョン レプリケーションの管理、バージョン管理、カスタム イメージの共有を行うことができます。 Azure Image Builder ではこのサービスによる配布がサポートされているので、Azure Compute Gallery でサポートされているリージョンにイメージを配布できます。 
  
-共有イメージ ギャラリーは次のもので構成されます。 
+Azure Compute Gallery は次のもので構成されています。 
  
-- ギャラリー - 複数の共有イメージ用のコンテナー。 ギャラリーは、1 つのリージョンにデプロイされます。
+- ギャラリー - 複数のイメージ用のコンテナー。 ギャラリーは、1 つのリージョンにデプロイされます。
 - イメージ定義 - イメージの概念的なグループ化。 
 - イメージ バージョン - VM またはスケール セットのデプロイに使われるイメージの種類。 イメージ バージョンは、VM をデプロイする必要がある他のリージョンにレプリケートできます。
  
-イメージ ギャラリーに配布するには、その前にギャラリーとイメージの定義を作成しておく必要があります。[共有イメージ](../shared-images-cli.md)に関する記事をご覧ください。 
+ギャラリーに配布するには、その前にギャラリーとイメージの定義を作成しておく必要があります。[ギャラリーの作成](../create-gallery.md)に関する記事をご覧ください。 
 
 ```json
 {
@@ -605,24 +613,24 @@ Azure 共有イメージ ギャラリーは新しいイメージ管理サービ�
 }
 ``` 
 
-共有イメージ ギャラリーの配布プロパティ:
+ギャラリーのプロパティを配布する:
 
 - **type** - sharedImage  
-- **galleryImageId** – 共有イメージ ギャラリーの ID です。これは、次の 2 つの形式で指定できます。
+- **galleryImageId** – Azure Compute Gallery の ID です。これは、次の 2 つの形式で指定できます。
     * 自動バージョン管理 - Image Builder によって、モノトニックなバージョン番号が自動的に生成されます。これは、同じテンプレートからイメージを再構築し続ける場合に便利です。形式は `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` です。
     * 明示的なバージョン管理 - Image Builder で使用するバージョン番号を渡すことができます。 形式は `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>` です。
 
 - **runOutputName** – 配布を示す一意の名前。  
 - **artifactTags** -省略可能なユーザー指定のキー値ペアのタグ。
 - **replicationRegions** -レプリケーション用のリージョンの配列。 リージョンの 1 つは、ギャラリーがデプロイされているリージョンでなければなりません。 リージョンを追加すると、ビルド時間が長くなります。これは、レプリケーションが完了するまでビルドが完了しないためです。
-- **excludeFromLatest** (省略可能) これにより、作成したイメージ バージョンを SIG 定義で最新バージョンとして使用しないように設定できます。既定値は "false" です。
+- **excludeFromLatest** (省略可能) これにより、作成したイメージ バージョンをギャラリー定義で最新バージョンとして使用しないように設定できます。既定値は "false" です。
 - **storageAccountType** (省略可能) AIB では、作成されるイメージ バージョンに対して、次の種類のストレージを指定することがサポートされています。
     * "Standard_LRS"
     * "Standard_ZRS"
 
 
 > [!NOTE]
-> イメージ テンプレートと参照されている `image definition` が同じ場所にない場合は、イメージを作成するための追加の時間が表示されます。 現在、イメージ バージョン リソースの `location` パラメーターは Image Builder にはなく、その親の `image definition` から取得されます。 たとえば、イメージ定義が westus にあり、イメージ バージョンを eastus にレプリケートする場合、BLOB が westus にコピーされます。この BLOB から westus のイメージ バージョン リソースが作成され、eastus にレプリケートされます。 追加のレプリケーション時間を回避するには、`image definition` とイメージ テンプレートが同じ場所にあるようにします。
+> イメージ テンプレートと参照されている `image definition` が同じ場所にない場合は、イメージを作成するための追加の時間が表示されます。 現在、イメージ バージョン リソースの `location` パラメーターは Image Builder にはなく、その親の `image definition` から取得されます。 たとえば、イメージ定義が westus にあり、イメージ バージョンが eastus にレプリケートされるようにする場合は、BLOB が westus にコピーされ、この BLOB から westus のイメージ バージョン リソースが作成された後、eastus にレプリケートされます。 追加のレプリケーション時間を回避するには、`image definition` とイメージ テンプレートが同じ場所にあるようにします。
 
 
 ### <a name="distribute-vhd"></a>配布: VHD  
@@ -632,8 +640,8 @@ VHD に出力することができます。 その後、VHD をコピーし、�
 { 
     "type": "VHD",
     "runOutputName": "<VHD name>",
-    "tags": {
-        "<name": "<value>",
+    "artifactTags": {
+        "<name>": "<value>",
         "<name>": "<value>"
     }
 }
@@ -678,7 +686,7 @@ az resource invoke-action \
 ### <a name="cancelling-an-image-build"></a>イメージ ビルドの取り消し
 イメージのビルドを実行しているときに、正しくないと思われる場合、ユーザーの入力を待っている場合、または正常に完了しないと考えられる場合は、ビルドを取り消すことができます。
 
-ビルドはいつでも取り消すことができます。 配布フェーズが始まっている場合でも取り消しはできますが、完了していない可能性があるイメージをクリーンアップする必要があります。 cancel コマンドで取り消しの完了は待機されません。取り消しの進行状況については、状態[コマンド](image-builder-troubleshoot.md#customization-log)を使用して `lastrunstatus.runstate` を監視してください。
+ビルドはいつでも取り消すことができます。 配布フェーズが始まっている場合でも取り消しはできますが、完了していない可能性があるイメージをクリーンアップする必要があります。 cancel コマンドでは、取り消しの完了まで待つことはしません。これらの状態[コマンド](image-builder-troubleshoot.md#customization-log)を使用して、`lastrunstatus.runstate` で取り消しの進行状況を監視してください。
 
 
 `cancel` コマンドの例を次に示します。
@@ -698,3 +706,4 @@ az resource invoke-action \
 ## <a name="next-steps"></a>次のステップ
 
 さまざまなシナリオの .json ファイルのサンプルが、[Azure Image Builder の GitHub](https://github.com/azure/azvmimagebuilder) にあります。
+

@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:同じ仮想ネットワークに Azure Database for MySQL フレキシブル サーバー (プレビュー) と Azure App Service Web アプリを作成する
-description: 仮想ネットワークに Azure Database for MySQL フレキシブル サーバー (プレビュー) と Web アプリを作成するためのクイックスタート ガイド
+title: 'チュートリアル: 同じ仮想ネットワークに Azure Database for MySQL フレキシブル サーバーと Azure App Service Web アプリを作成する'
+description: 仮想ネットワークに Azure Database for MySQL フレキシブル サーバーと Web アプリを作成するためのクイックスタート ガイド
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
@@ -8,19 +8,18 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 13baf8f033338e242610d7b8c4eec14806cd5ec5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6f415429441801455d71aa459067a9c805dddd1c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770023"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844014"
 ---
-# <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>チュートリアル:仮想ネットワークに Azure Database for MySQL - フレキシブル サーバー (プレビュー) と App Service Web アプリを作成する
+# <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-with-app-services-web-app-in-virtual-network"></a>チュートリアル: 仮想ネットワークに Azure Database for MySQL - フレキシブル サーバーと App Services Web アプリを作成する
 
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-このチュートリアルでは、MySQL フレキシブル サーバー (プレビュー) を使用して、[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)に Azure App Service Web アプリを作成する方法について説明します。
+このチュートリアルでは、MySQL フレキシブル サーバーを使用して、[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)に Azure App Service Web アプリを作成する方法について説明します。
 
 このチュートリアルで学習する内容は次のとおりです。
 >[!div class="checklist"]
@@ -28,11 +27,11 @@ ms.locfileid: "107770023"
 > * App Service に委任するサブネットを作成する
 > * Web アプリを作成する
 > * Web アプリを仮想ネットワークに追加する
-> * Web アプリから Postgres に接続する 
+> * Web アプリから Postgres に接続する
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 この記事では、Azure CLI バージョン 2.0 以降をローカルで実行している必要があります。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -52,13 +51,13 @@ az account set --subscription <subscription ID>
 
 次のコマンドを使用して、仮想ネットワーク (VNET) にプライベート フレキシブル サーバーを作成します。
 ```azurecli
-az mysql flexible-server create --resource-group myresourcegroup --location westus2
+az mysql flexible-server create --resource-group myresourcegroup --location westus2 --vnet VNETName
 ```
 新しく作成した仮想ネットワークの接続文字列と名前をコピーします。 このコマンドによって次の操作が実行されます。これには数分かかる場合があります。
 
 - リソース グループがまだ存在していない場合は作成します。
 - サーバー名が指定されていない場合は、それが生成されます。
-- 新しい MySQL サーバー用の新しい仮想ネットワークが作成されます。 Web アプリを同じ仮想ネットワークに追加する必要があるため、サーバー用に作成された仮想ネットワーク名とサブネット名をメモしておいてください。
+- 新しい MySQL サーバー用の新しい仮想ネットワーク ```VNETName``` と、この仮想ネットワーク内にデータベース サーバー用のサブネットを作成します。 名前が一意であることを確認してください。
 - サーバーの管理者のユーザー名とパスワードが指定されていない場合は、それらが作成されます。
 - **flexibleserverdb** という名前の空のデータベースが作成されます。
 
@@ -66,12 +65,12 @@ az mysql flexible-server create --resource-group myresourcegroup --location west
 > 指定されていない場合に生成されるパスワードをメモしておいてください。 パスワードを忘れた場合は、``` az mysql flexible-server update``` コマンドを使用してパスワードをリセットする必要があります。
 
 ## <a name="create-subnet-for-app-service-endpoint"></a>App Service エンドポイントのサブネットを作成する
-次に、App Service Web アプリのエンドポイントに委任されるサブネットが必要です。 次のコマンドを実行して、データベース サーバーが作成されたのと同じ仮想ネットワーク内に新しいサブネットを作成します。 
+次に、App Service Web アプリのエンドポイントに委任されるサブネットが必要です。 次のコマンドを実行して、データベース サーバーが作成されたのと同じ仮想ネットワーク内に新しいサブネットを作成します。
 
 ```azurecli
 az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
 ```
-このコマンドの後、仮想ネットワーク名とサブネット名をメモしておいてください。作成後、Web アプリの VNET 統合ルールを追加するために必要になります。 
+このコマンドの後、仮想ネットワーク名とサブネット名をメモしておいてください。作成後、Web アプリの VNET 統合ルールを追加するために必要になります。
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
@@ -85,7 +84,7 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 
 > [!NOTE]
 > - --location 引数には、前のセクションでデータベースに使用したのと同じ場所を使用します。
-> - _&lt;app-name>_ を、Azure 全体で一意の名前に置き換えます (サーバー エンドポイントは https://\<app-name>.azurewebsites.net)。 <app-name> に使用できる有効な文字は A から Z、0 から 9、および - です。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
+> - _\<app-name\>_ は、すべての Azure で一意の名前に置き換えます (サーバー エンドポイントは `https://\<app-name>.azurewebsites.net`)。 \<app-name\> に使用できる文字は A から Z、0 から 9、および - です。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
 > - App Service の Basic レベルでは、VNET 統合はサポートされていません。 Standard または Premium を使用してください。 
 
 このコマンドによって次の操作が実行されます。これには数分かかる場合があります。
@@ -116,6 +115,12 @@ az webapp config appsettings set --settings DBHOST="<mysql-server-name>.mysql.da
 - _&lt;username>_ と _&lt;password>_ を、コマンドによって生成される資格情報に置き換えます。
 - リソース グループとアプリ名は、 .azure/config ファイル内のキャッシュされた値から取得されます。
 - コマンドによって、DBHOST、DBNAME、DBUSER、および DBPASS という名前の設定が作成されます。 アプリケーション コードでデータベース情報に別の名前を使用している場合は、コードで使用されている名前をアプリ設定で使用します。
+
+
+仮想ネットワーク内からの送信接続をすべて許可するように Web アプリを構成します。
+```azurecli
+az webapp config set --name mywebapp --resource-group myresourcesourcegroup --generic-configurations '{"vnetRouteAllEnabled": true}'
+```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

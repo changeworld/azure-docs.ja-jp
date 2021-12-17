@@ -1,17 +1,15 @@
 ---
 title: クイック スタート:初めての Python クエリ
 description: このクイックスタートでは、手順に従って、Python 用の Resource Graph ライブラリを有効にし、初めてのクエリを実行します。
-ms.date: 01/27/2021
+ms.date: 10/01/2021
 ms.topic: quickstart
-ms.custom:
-- devx-track-python
-- mode-api
-ms.openlocfilehash: 0bae0639e3f9913bc47b18fbc0b1d3d9ef1ad324
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-python, mode-api
+ms.openlocfilehash: 722816052c14ce154ae69d1ec7c1df59da250d18
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533019"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070662"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>クイック スタート:Python を使用して初めての Resource Graph クエリを実行する
 
@@ -53,6 +51,9 @@ Python で Azure Resource Graph のクエリを実行できるようにするに
 
    # Add the CLI Core library for Python for authentication (development only!)
    pip install azure-cli-core
+
+   # Add the Azure identity library for Python
+   pip install azure.identity
    ```
 
    > [!NOTE]
@@ -62,48 +63,48 @@ Python で Azure Resource Graph のクエリを実行できるようにするに
 
    ```bash
    # Check each installed library
-   pip show azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core
+   pip show azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core azure.identity
    ```
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-選択した環境に Python ライブラリを追加したので、簡単な Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。
+ご自分の選択した環境に Python ライブラリが追加されたので、簡単なサブスクリプション ベースの Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。 [管理グループ](../management-groups/overview.md)でクエリを実行する場合、`QueryRequest` とともに `management_groups` パラメーターを使用します。
 
 1. インストールしたライブラリと `resources` メソッドを使用して、初めての Azure Resource Graph を実行します。
 
    ```python
    # Import Azure Resource Graph library
    import azure.mgmt.resourcegraph as arg
-   
+
    # Import specific methods and models from other libraries
-   from azure.common.credentials import get_azure_cli_credentials
-   from azure.common.client_factory import get_client_from_cli_profile
    from azure.mgmt.resource import SubscriptionClient
-   
+   from azure.identity import AzureCliCredential
+
    # Wrap all the work in a function
    def getresources( strQuery ):
        # Get your credentials from Azure CLI (development only!) and get your subscription list
-       subsClient = get_client_from_cli_profile(SubscriptionClient)
+       credential = AzureCliCredential()
+       subsClient = SubscriptionClient(credential)
        subsRaw = []
        for sub in subsClient.subscriptions.list():
            subsRaw.append(sub.as_dict())
        subsList = []
        for sub in subsRaw:
            subsList.append(sub.get('subscription_id'))
-       
+
        # Create Azure Resource Graph client and set options
-       argClient = get_client_from_cli_profile(arg.ResourceGraphClient)
+       argClient = arg.ResourceGraphClient(credential)
        argQueryOptions = arg.models.QueryRequestOptions(result_format="objectArray")
-       
+
        # Create query
        argQuery = arg.models.QueryRequest(subscriptions=subsList, query=strQuery, options=argQueryOptions)
-       
+
        # Run query
        argResults = argClient.resources(argQuery)
-   
+
        # Show Python object
        print(argResults)
-   
+
    getresources("Resources | project name, type | limit 5")
    ```
 
@@ -133,7 +134,7 @@ Python で Azure Resource Graph のクエリを実行できるようにするに
 
 ```bash
 # Remove the installed libraries from the Python environment
-pip uninstall azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core
+pip uninstall azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core azure.identity
 ```
 
 ## <a name="next-steps"></a>次のステップ

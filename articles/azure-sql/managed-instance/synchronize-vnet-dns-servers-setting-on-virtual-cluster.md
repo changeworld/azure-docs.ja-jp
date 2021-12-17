@@ -3,16 +3,18 @@ title: SQL Managed Instance 仮想クラスター上で仮想ネットワーク 
 description: SQL Managed Instance 仮想クラスター上で仮想ネットワーク DNS サーバーの設定を同期する方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
+ms.subservice: deployment-configuration
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.topic: how-to
 ms.date: 01/17/2021
-ms.openlocfilehash: b95afe513dba2f1da9556b27ec17bcccc9fe88e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 276b4033dc2a5c157245448453b72a8074b79702
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173553"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707151"
 ---
 # <a name="synchronize-virtual-network-dns-servers-setting-on-sql-managed-instance-virtual-cluster"></a>SQL Managed Instance 仮想クラスター上で仮想ネットワーク DNS サーバーの設定を同期する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,8 +36,7 @@ Managed Instance をホストする[仮想クラスター](connectivity-architec
 
 DNS サーバー構成を同期するユーザーには、次のいずれかの Azure ロールが必要です。
 
-- サブスクリプションの所有者ロール、または
-- マネージド インスタンス共同作成者ロール、または
+- サブスクリプションの共同作成者ロール、または
 - 次のアクセス許可を持つカスタム ロール:
   - `Microsoft.Sql/virtualClusters/updateManagedInstanceDnsServers/action`
 

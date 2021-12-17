@@ -3,12 +3,12 @@ title: Azure Event Grid の配信先のロールにマネージド ID を追加�
 description: この記事では、Azure Service Bus や Azure Event Hubs などの配信先の Azure ロールに、マネージド ID を追加する方法について説明します。
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 1578e4c24201614ce89351b3c3cee52a09cadc30
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c2bfc10f0019b6753e9290d20c84ba5e2bbb59fe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280481"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746510"
 ---
 # <a name="grant-managed-identity-the-access-to-event-grid-destination"></a>マネージド ID に Event Grid の配信先へのアクセスを許可する
 このセクションでは、システム トピック、カスタム トピックまたはドメインの ID を Azure ロールに追加する方法について説明します。 
@@ -28,9 +28,8 @@ ms.locfileid: "106280481"
 | ----------- | --------- | 
 | Service Bus のキューとトピック | [Azure Service Bus データ送信者](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
 | Azure Event Hubs | [Azure Event Hubs データ送信者](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
-| Azure BLOB ストレージ | [ストレージ BLOB データ共同作成者](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
-| Azure Queue Storage |[ストレージ キュー データ メッセージ送信者](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
-
+| Azure BLOB ストレージ | [ストレージ BLOB データ共同作成者](../storage/blobs/assign-azure-role-data-access.md) |
+| Azure Queue Storage |[ストレージ キュー データ メッセージ送信者](../storage/blobs/assign-azure-role-data-access.md) | 
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 カスタム トピックやドメインによってイベントを配信先に転送できるようにするために、Azure portal を使用して、カスタム トピックやドメインの ID を適切なロールに割り当てることができます。 
@@ -39,11 +38,24 @@ ms.locfileid: "106280481"
 
 1. [Azure portal](https://portal.azure.com) で、ご利用の **Service Bus 名前空間** に移動します。 
 1. 左ペインの **[アクセス制御]** を選択します。 
-1. **[ロールの割り当てを追加する]** セクションで **[追加]** を選択します。 
-1. **[ロールの割り当ての追加]** ページで、次の手順のようにします。
-    1. ロールを選択します。 この例では、**Azure Service Bus データ送信者** です。 
-    1. イベント グリッド カスタム トピックまたはドメインの **ID** を選択します。 
-    1. **[保存]** を選んで構成を保存します。
+1. **[ロールの割り当ての追加 (プレビュー)]** セクションで **[追加]** を選択します。 
+
+    :::image type="content" source="./media/add-identity-roles/add-role-assignment-menu.png" alt-text="[ロールの割り当ての追加 (プレビュー)] メニューの選択を示す画像":::
+1. **[ロールの割り当ての追加]** ページで、 **[Azure Service Bus のデータ送信者]** を選択して、 **[次へ]** を選択します。  
+    
+    :::image type="content" source="./media/add-identity-roles/select-role.png" alt-text="[Azure Service Bus のデータ送信者] ロールの選択を示す画像":::
+1. **[メンバー]** タブで、次の手順のようにします。 
+    1. **[User, group, or service principal]\(ユーザー、グループ、またはサービス プリンシパル\)** を選択して、 **[+ メンバーの選択]** をクリックします。 **[マネージド ID]** オプションでは、Event Grid の ID はまだサポートされていません。 
+    1. **[メンバーの選択]** ウィンドウで、カスタム トピックと同じ名前のサービス プリンシパルを検索して選択します。 次の例では **spcustomtopic0728** です。
+    
+        :::image type="content" source="./media/add-identity-roles/select-managed-identity-option.png" alt-text="[User, group, or service principal]\(ユーザー、グループ、またはサービス プリンシパル\) オプションの選択を示す画像":::    
+    1. **[メンバーの選択]** ウィンドウで、 **[選択]** をクリックします。 
+
+        :::image type="content" source="./media/add-identity-roles/managed-identity-selected.png" alt-text="[マネージド ID] オプションの選択を示す画像":::            
+1. 次に、 **[メンバー]** タブに戻り、 **[次へ]** を選択します。 
+
+    :::image type="content" source="./media/add-identity-roles/members-select-next.png" alt-text="[メンバー] ページでの [次へ] ボタンの選択を示す画像":::                
+1. **[Review + assign]\(確認と割り当て\)** ページで、設定を確認してから **[Review + assign]\(確認と割り当て\)** を選択します。 
 
 表に示されている他のロールへの ID の追加の手順も同様です。 
 
@@ -90,5 +102,3 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$sbust
 
 ## <a name="next-steps"></a>次の手順
 システムによって割り当てられた ID をシステム トピック、カスタム トピック、またはドメインに割り当て、配信先の適切なロールに ID を追加しました。ID を使用した配信先へのイベント配信については、「[マネージド ID を使用してイベントを配信する](managed-service-identity.md)」を参照してください。
-
-

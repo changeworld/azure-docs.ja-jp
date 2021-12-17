@@ -36,32 +36,34 @@
           href: howto-identity-protection-investigate-risk.md
         - name: リスク検出の修正とブロック解除
           href: howto-identity-protection-remediate-unblock.md
+        - name: リスク データのエクスポート
+          href: howto-export-risk-data.md
         - name: Microsoft Graph API を使用する
           href: howto-identity-protection-graph-api.md
     - name: リスク検出に関するフィードバックの提供
       href: howto-identity-protection-risk-feedback.md
     - name: FAQ
-      href: troubleshooting-identity-protection-faq.md
+      href: troubleshooting-identity-protection-faq.yml
 - name: リファレンス
   items:
     - name: Graph API
       items:
         - name: riskDetection API
-          href: /graph/api/resources/riskdetection?view=graph-rest-v1.0
+          href: /graph/api/resources/riskdetection?view=graph-rest-1.0
         - name: riskyUsers API
-          href: /graph/api/resources/riskyuser?view=graph-rest-v1.0
+          href: /graph/api/resources/riskyuser?view=graph-rest-1.0
         - name: signIn API
-          href: /graph/api/resources/signin?view=graph-rest-v1.0
+          href: /graph/api/resources/signin?view=graph-rest-1.0
     - name: 用語集
       href: reference-identity-protection-glossary.md
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム
-      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+      href: 'https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789'
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-active-directory.html
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+      href: 'https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing'
     - name: サービスの更新情報
       href: ../fundamentals/whats-new.md
     - name: Stack Overflow

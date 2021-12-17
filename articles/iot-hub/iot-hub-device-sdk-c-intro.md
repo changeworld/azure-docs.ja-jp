@@ -1,24 +1,24 @@
 ---
 title: C 用 Azure IoT device SDK | Microsoft Docs
 description: C 用 Azure IoT device SDK を使用し、IoT Hub と通信するデバイス アプリを作成する方法について説明します。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: ffb7d708921c96f57a617f82fc54d7f462fb4282
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: cfbbae0cd7fa54b3403b52d1cced5e81f4df7438
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168758"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556023"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 
@@ -48,8 +48,6 @@ C 用 Azure IoT デバイス SDK は、移植性を最大限まで高めるた�
   ![リポジトリのメイン ブランチのスクリーンショット](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
 * SDK の中心となる実装は **iothub\_client** フォルダー内にあり、このフォルダーには SDK 内の最下位の API 層の実装 (**IoTHubClient**) が格納されています。 **IoTHubClient** ライブラリには、IoT Hub とのメッセージの送受信のために、未加工メッセージングを実装する API が含まれています。 このライブラリを使用する場合、メッセージのシリアル化はユーザー自身が実装する必要がありますが、IoT Hub と通信するためのその他の詳細は自動で処理されます。
-
-* **serializer** フォルダーには、クライアント ライブラリを使用して Azure IoT Hub に送信する前にデータをシリアル化する方法を示す、ヘルパー関数とサンプルが含まれています。 シリアライザーの使用は必須ではなく、利便性のために提供されています。 **serializer** ライブラリを使用するには、IoT Hub に送信するデータと IoT Hub から受信するメッセージを指定するモデルを定義します。 いったんモデルを定義すれば、SDK が提供する API にアクセスして、シリアル化の詳細を気にすることなく、デバイスからクラウド、クラウドからデバイスへのメッセージを簡単に処理できます。 ライブラリは、MQTT や AMQP などのプロトコルを使用してトランスポートを実装するその他のオープン ソース ライブラリに依存しています。
 
 * **IoTHubClient** ライブラリは、次に示すその他のオープン ソース ライブラリに依存しています。
 
@@ -93,7 +91,7 @@ IoT ハブの管理に役立つオープン ソース ツールがいくつか�
 
 デバイス エクスプローラー ツールに慣れていない方のために、次の手順で、デバイス エクスプローラー ツールを使用してデバイスを追加し、デバイスの接続文字列を取得する方法について説明します。
 
-1. デバイス エクスプローラー ツールをインストールするには、「[How to use Device Explorer for IoT Hub devices (IoT Hub デバイス向けにデバイス エクスプローラーを使用する方法)](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/)」を参照してください。
+1. デバイス エクスプローラー ツールをインストールするには、「[How to use Device Explorer for IoT Hub devices (IoT Hub デバイス向けにデバイス エクスプローラーを使用する方法)](https://github.com/Azure/azure-iot-sdk-csharp/tree/main/tools/)」を参照してください。
 
 1. プログラムを実行すると、次のインターフェイスが表示されます。
 
@@ -335,252 +333,6 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
 この呼び出しにより、以前に割り当てられていたリソースが、**IoTHubClient\_CreateFromConnectionString** 関数によって解放されます。
 
 ご覧のように、**IoTHubClient** ライブラリを使用すると、簡単にメッセージを送受信できます。 使用するプロトコルなど (開発者の観点からは単純な構成オプションです)、IoT Hub との通信に関する詳細情報は、ライブラリで処理されます。
-
-**IoTHubClient** ライブラリでは、デバイスから IoT Hub に送信されるデータをシリアル化する方法を正確に制御することもできます。 この制御のレベルが利点になる場合もありますが、こうした実装の詳細が不要な場合もあります。 その場合は、次のセクションで説明する **serializer** ライブラリの使用を検討してください。
-
-## <a name="use-the-serializer-library"></a>serializer ライブラリを使用する
-
-概念的には、**serializer** ライブラリは、SDK の **IoTHubClient** ライブラリの上位に位置します。 IoT Hub との基礎になる通信で **IoTHubClient** ライブラリを使用しますが、モデリング機能が追加されるため、開発者がメッセージのシリアル化を処理する負担が削減されます。 このライブラリの動作のわかりやすい例を示します。
-
-[azure-iot-sdk-c リポジトリ](https://github.com/Azure/azure-iot-sdk-c)内の **serializer** フォルダー内には **samples** フォルダーがあり、**simplesample\_mqtt** というアプリケーションが格納されています。 このサンプルの Windows バージョンには、次の Visual Studio のソリューションが含まれます。
-
-  ![mqtt サンプルの Visual Studio ソリューション](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
-
-> [!NOTE]
-> Visual Studio で、プロジェクトのターゲットを最新バージョンに変更することを要求するプロンプトが表示された場合は、そのプロンプトを受け入れてください。
-
-前のサンプルと同様、このソリューションにも、いくつかの NuGet パッケージが含まれています。
-
-* Microsoft.Azure.C.SharedUtility
-* Microsoft.Azure.IoTHub.MqttTransport
-* Microsoft.Azure.IoTHub.IoTHubClient
-* Microsoft.Azure.IoTHub.Serializer
-* Microsoft.Azure.umqtt
-
-ほとんどのパッケージは前のサンプルにも含まれていましたが、**Microsoft.Azure.IoTHub.Serializer** を使うのはこれが初めてです。 このパッケージは、**serializer** ライブラリを使用するときに必要です。
-
-サンプル アプリケーションの実装は、**iothub_client\_samples\_iothub_convenience_sample** ファイル内にあります。
-
-次のセクションで、このサンプルの主要な部分について説明します。
-
-### <a name="initialize-the-library"></a>ライブラリを初期化する
-
-**serializer** ライブラリの使用を開始するには、初期化 API を呼び出します。
-
-```c
-if (serializer_init(NULL) != SERIALIZER_OK)
-{
-    (void)printf("Failed on serializer_init\r\n");
-}
-else
-{
-    IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle = IoTHubClient_LL_CreateFromConnectionString(connectionString, MQTT_Protocol);
-    srand((unsigned int)time(NULL));
-    int avgWindSpeed = 10;
-
-    if (iotHubClientHandle == NULL)
-    {
-        (void)printf("Failed on IoTHubClient_LL_Create\r\n");
-    }
-    else
-    {
-        ContosoAnemometer* myWeather = CREATE_MODEL_INSTANCE(WeatherStation, ContosoAnemometer);
-        if (myWeather == NULL)
-        {
-            (void)printf("Failed on CREATE_MODEL_INSTANCE\r\n");
-        }
-        else
-        {
-...
-```
-
-**serializer\_init** 関数の呼び出しは 1 回だけの呼び出しであり、基になるライブラリを初期化します。 次に、**IoTHubClient\_LL\_CreateFromConnectionString** 関数を呼び出します。これは、**IoTHubClient** サンプルに含まれる API と同じものです。 この呼び出しにより、デバイスの接続文字列が設定されます (この呼び出しは、使用するプロトコルを選択する場所でもあります)。 このサンプルでは、トランスポートとして MQTT を使用していますが、AMQP または HTTPS を使用することもできます。
-
-最後に、**CREATE\_MODEL\_INSTANCE** 関数を呼び出します。 **WeatherStation** はモデルの名前空間で、**ContosoAnemometer** はモデルの名前です。 モデルのインスタンスが作成されたら、そのモデルを使用して、メッセージの送受信を開始することができます。 ただし、モデルがどのようなものかを理解する必要があります。
-
-### <a name="define-the-model"></a>モデルを定義する
-
-**serializer** ライブラリ内のモデルは、デバイスから IoT Hub に送信できるメッセージと、モデリング言語で "*アクション*" と呼ばれる、デバイスで受信できるメッセージを定義します。 **iothub_client\_samples\_iothub_convenience_sample** サンプル アプリケーションと同様に、一連の C マクロを使用してモデルを定義します。
-
-```c
-BEGIN_NAMESPACE(WeatherStation);
-
-DECLARE_MODEL(ContosoAnemometer,
-WITH_DATA(ascii_char_ptr, DeviceId),
-WITH_DATA(int, WindSpeed),
-WITH_ACTION(TurnFanOn),
-WITH_ACTION(TurnFanOff),
-WITH_ACTION(SetAirResistance, int, Position)
-);
-
-END_NAMESPACE(WeatherStation);
-```
-
-**BEGIN\_NAMESPACE** と **END\_NAMESPACE** の両方のマクロは、モデルの名前空間を引数として取得します。 これらのマクロの間には、モデルの定義とモデルが使用するデータ構造があることが想定されます。
-
-この例では、 **ContosoAnemometer** という単一のモデルがあります。 このモデルは、デバイスが IoT Hub に送信できる、**DeviceId** と **WindSpeed** という 2 つのデータを定義します。 また、デバイスが受信できる、**TurnFanOn**、**TurnFanOff**、および **SetAirResistance** の 3 つのアクション (メッセージ) も定義されます。 各データ要素には型があり、各アクションには名前 (また、必要に応じて一連のパラメーター) があります。
-
-モデルで定義されたデータとアクションは、IoT Hub へのメッセージの送信とデバイスに送信されたメッセージへの応答に使用できる API へのアクセスを定義します。 このモデルの使用については、例を通じて理解するのが一番です。
-
-### <a name="send-messages"></a>メッセージを送信する
-
-このモデルは、IoT Hub に送信できるデータを定義します。 この例では、**WITH_DATA** マクロを使用して定義した 2 つのデータ項目のどちらかを意味します。 **DeviceId** 値と **WindSpeed** 値を IoT ハブに送信するのに必要な手順はいくつかあります。 最初に、送信するデータを設定します。
-
-```c
-myWeather->DeviceId = "myFirstDevice";
-myWeather->WindSpeed = avgWindSpeed + (rand() % 4 + 2);
-```
-
-前に定義したモデルでは、**struct** のメンバーを設定して値を設定できます。 次に、送信するメッセージをシリアル化します。
-
-```c
-unsigned char* destination;
-size_t destinationSize;
-if (SERIALIZE(&destination, &destinationSize, myWeather->DeviceId, myWeather->WindSpeed) != CODEFIRST_OK)
-{
-    (void)printf("Failed to serialize\r\n");
-}
-else
-{
-    sendMessage(iotHubClientHandle, destination, destinationSize);
-    free(destination);
-}
-```
-
-このコードは、デバイスからクラウドへのデータをシリアル化して、(**送信先** によって参照される) バッファーに格納します。 次に、**sendMessage** 関数を呼び出して、メッセージを IoT Hub に送信します。
-
-```c
-static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
-{
-    static unsigned int messageTrackingId;
-    IOTHUB_MESSAGE_HANDLE messageHandle = IoTHubMessage_CreateFromByteArray(buffer, size);
-    if (messageHandle == NULL)
-    {
-        printf("unable to create a new IoTHubMessage\r\n");
-    }
-    else
-    {
-        if (IoTHubClient_LL_SendEventAsync(iotHubClientHandle, messageHandle, sendCallback, (void*)(uintptr_t)messageTrackingId) != IOTHUB_CLIENT_OK)
-        {
-            printf("failed to hand over the message to IoTHubClient");
-        }
-        else
-        {
-            printf("IoTHubClient accepted the message for delivery\r\n");
-        }
-        IoTHubMessage_Destroy(messageHandle);
-    }
-    messageTrackingId++;
-}
-```
-
-**IoTHubClient\_LL\_SendEventAsync** の最後から 2 番目のパラメーターは、データが正常に送信されたときに呼び出されるコールバック関数の参照です。 サンプル内のコールバック関数は次のとおりです。
-
-```c
-void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
-{
-    unsigned int messageTrackingId = (unsigned int)(uintptr_t)userContextCallback;
-
-    (void)printf("Message Id: %u Received.\r\n", messageTrackingId);
-
-    (void)printf("Result Call Back Called! Result is: %s \r\n", MU_ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
-}
-```
-
-2 番目のパラメーターは、ユーザー コンテキストを指すポインターであり、**IoTHubClient\_LL\_SendEventAsync** に渡したポインターと同じものです。 ここでは、このコンテキストは単純なカウンターですが、任意の内容にすることができます。
-
-デバイスからクラウドへのメッセージの送信に必要なものは以上です。 残りは、メッセージを受信する方法の説明のみです。
-
-### <a name="receive-messages"></a>メッセージを受信する
-
-メッセージの受信は、 **IoTHubClient** ライブラリでメッセージが動作するしくみと同様です。 まず、メッセージのコールバック関数を登録します。
-
-```c
-if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, 
-  IoTHubMessage, myWeather) != IOTHUB_CLIENT_OK)
-{
-    printf("unable to IoTHubClient_SetMessageCallback\r\n");
-}
-else
-{
-...
-```
-
-そのうえで、メッセージを受信したときに呼び出されるコールバック関数を記述します。
-
-```c
-static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
-{
-    IOTHUBMESSAGE_DISPOSITION_RESULT result;
-    const unsigned char* buffer;
-    size_t size;
-    if (IoTHubMessage_GetByteArray(message, &buffer, &size) != IOTHUB_MESSAGE_OK)
-    {
-        printf("unable to IoTHubMessage_GetByteArray\r\n");
-        result = IOTHUBMESSAGE_ABANDONED;
-    }
-    else
-    {
-        /*buffer is not zero terminated*/
-        char* temp = malloc(size + 1);
-        if (temp == NULL)
-        {
-            printf("failed to malloc\r\n");
-            result = IOTHUBMESSAGE_ABANDONED;
-        }
-        else
-        {
-            (void)memcpy(temp, buffer, size);
-            temp[size] = '\0';
-            EXECUTE_COMMAND_RESULT executeCommandResult = EXECUTE_COMMAND(userContextCallback, temp);
-            result =
-                (executeCommandResult == EXECUTE_COMMAND_ERROR) ? IOTHUBMESSAGE_ABANDONED :
-                (executeCommandResult == EXECUTE_COMMAND_SUCCESS) ? IOTHUBMESSAGE_ACCEPTED :
-                IOTHUBMESSAGE_REJECTED;
-            free(temp);
-        }
-    }
-    return result;
-}
-```
-
-このコードは定型句であるため、すべてのソリューションで同じになります。 この関数は、メッセージを受信し、**EXECUTE\_COMMAND** を呼び出して、適切な関数へのルーティングを処理します。 この時点で呼び出す関数は、モデルのアクションの定義によって異なります。
-
-モデルのアクションを定義するとき、対応するメッセージをデバイスが受信するときに呼び出される関数を実装する必要があります。 たとえば、モデルで次のアクションが定義されているとします。
-
-```c
-WITH_ACTION(SetAirResistance, int, Position)
-```
-
-この場合、次のシグネチャを持つ関数を定義します。
-
-```c
-EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
-{
-    (void)device;
-    (void)printf("Setting Air Resistance Position to %d.\r\n", Position);
-    return EXECUTE_COMMAND_SUCCESS;
-}
-```
-
-関数の名前はモデル内のアクションの名前に一致し、関数のパラメーターはアクションに対して指定されたパラメーターに一致することに注意してください。 最初のパラメーターは常に必要であり、モデルのインスタンスへのポインターが含まれます。
-
-デバイスがこのシグネチャと一致するメッセージを受信すると、対応する関数が呼び出されます。 したがって、 **IoTHubMessage** の定型コードを含める必要があることを除けば、メッセージの受信は、モデルで定義されている各アクションに単純な関数を定義する処理のみで実行できます。
-
-### <a name="uninitialize-the-library"></a>ライブラリの初期化を解除する
-
-データの送信とメッセージの受信が完了すると、次の方法で IoT ライブラリの初期化を解除することができます。
-
-```c
-...
-        DESTROY_MODEL_INSTANCE(myWeather);
-    }
-    IoTHubClient_LL_Destroy(iotHubClientHandle);
-}
-serializer_deinit();
-```
-
-この 3 つの各関数は、前に説明した 3 つの初期化関数に対応しています。 これらの API を呼び出すと、以前に割り当てたリソースが確実に解放されます。
 
 ## <a name="next-steps"></a>次の手順
 

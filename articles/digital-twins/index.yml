@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Digital Twins のドキュメント
-summary: Azure Digital Twins を使用して資産、環境、ビジネス システムのデジタル版を作成し、現実世界を模した次世代の IoT ソリューションを構築する方法を説明します。
+summary: Azure Digital Twins を使用して資産、環境、ビジネス システムの再現として機能するデジタル ツイン アーキテクチャを作成し、現実世界を模した次世代の IoT ソリューションを構築する方法を説明します。
 metadata:
   title: Azure Digital Twins のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: Azure Digital Twins を使って、人、場所、物を繋ぎ、空間インテリジェンスにより IoT ソリューションを構築します。
@@ -9,34 +9,38 @@ metadata:
   ms.collection: collection
   author: philmea
   ms.author: philmea
-  ms.date: 02/12/2020
-  ms.openlocfilehash: 703ea98a1db6f706395ea2c5f66bac0edc2b2f01
-  ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+  ms.date: 10/5/2021
+  ms.openlocfilehash: 24253bfc9abb69ca4c1ebef3b8bb73b54fe05d0f
+  ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/14/2021
-  ms.locfileid: "107481686"
+  ms.lasthandoff: 10/18/2021
+  ms.locfileid: "130132324"
 landingContent:
 - title: Azure Digital Twins について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Digital Twins とは
+    - text: Azure Digital Twins とは (サンプル アーキテクチャを含む)
       url: overview.md
   - linkListType: concept
     links:
-    - text: カスタム モデル
+    - text: DTDL モデル
       url: concepts-models.md
     - text: デジタル ツインとツイン グラフ
       url: concepts-twins-graph.md
     - text: クエリ言語
       url: concepts-query-language.md
-- title: クイックスタートの概要
+- title: Azure Digital Twins Explorer を開始する
   linkLists:
   - linkListType: quickstart
     links:
-    - text: サンプル シナリオの探索
+    - text: Azure Digital Twins Explorer を開始する
       url: quickstart-azure-digital-twins-explorer.md
+  - linkListType: get-started
+    links:
+    - text: Azure Digital Twins Explorer
+      url: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer
 - title: チュートリアルによる掘り下げ
   linkLists:
   - linkListType: tutorial
@@ -45,7 +49,7 @@ landingContent:
       url: tutorial-code.md
   - linkListType: tutorial
     links:
-    - text: サンプル クライアント アプリを使用して基本事項を確認する
+    - text: Azure Digital Twins でグラフを作成する (クライアント アプリ)
       url: tutorial-command-line-app.md
   - linkListType: tutorial
     links:
@@ -53,10 +57,10 @@ landingContent:
       url: tutorial-end-to-end.md
 - title: 開発
   linkLists:
-  - linkListType: how-to-guide
+  - linkListType: concept
     links:
-    - text: Azure Digital Twins CLI を使用する
-      url: how-to-use-cli.md
+    - text: Azure Digital Twins CLI コマンド セット
+      url: concepts-cli.md
   - linkListType: how-to-guide
     links:
     - text: インスタンスと認証を設定する
@@ -65,34 +69,34 @@ landingContent:
     links:
     - text: アプリ認証コードを作成する
       url: how-to-authenticate-client.md
-- title: API を調べる
+- title: API と SDK を発見する
   linkLists:
   - linkListType: reference
     links:
     - text: REST API
       url: /rest/api/azure-digitaltwins/
+  - linkListType: reference
+    links:
+    - text: コントロール プレーン .NET (C#) SDK
+      url: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true
+  - linkListType: reference
+    links:
+    - text: データ プレーン .NET (C#) SDK
+      url: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true
+  - linkListType: concept
+    links:
+    - text: Azure Digital Twins API および SDK
+      url: concepts-apis-sdks.md
   - linkListType: how-to-guide
     links:
-    - text: Azure Digital Twins の API および SDK を使用する
-      url: how-to-use-apis-sdks.md
-  - linkListType: how-to-guide
-    links:
-    - text: Postman で要求を行う
+    - text: Postman で API 要求を行う
       url: how-to-use-postman.md
-  - linkListType: how-to-guide
-    links:
-    - text: AutoRest を使用してカスタム SDK を作成する
-      url: how-to-create-custom-sdks.md
 - title: コード サンプルを確認する
   linkLists:
   - linkListType: sample
     links:
     - text: エンドツーエンドのサンプル
       url: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
-  - linkListType: sample
-    links:
-    - text: Azure Digital Twins エクスプローラー (サンプル)
-      url: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer
   - linkListType: sample
     links:
     - text: DTDL 検証ツール (サンプル)

@@ -1,15 +1,15 @@
 ---
 title: 'クイックスタート: 初めての Java クエリ'
 description: このクイックスタートでは、手順に従い、Java 用の Resource Graph Maven パッケージを有効にし、初めてのクエリを実行します。
-ms.date: 03/30/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
 ms.custom: devx-track-java
-ms.openlocfilehash: 97c04cb8b8180034bdc5109446c79deb56e457c9
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 1d6d3dfb309b359e4b999d06671db7dc541d5f32
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223859"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459983"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-java"></a>クイックスタート: Java を使用して初めての Resource Graph クエリを実行する
 
@@ -26,7 +26,7 @@ ms.locfileid: "106223859"
   > [!NOTE]
   > 次の例で、Azure SDK for Java で **CLI ベースの認証** を使用できるようにするには、Azure CLI が必要です。 その他のオプションについては、「[Java 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)」を参照してください。
 
-- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン
   8.
 
 - [Apache Maven](https://maven.apache.org/)、バージョン 3.6 以降。
@@ -52,7 +52,7 @@ Java で Azure Resource Graph に対してクエリを実行できるように�
     <dependency>
         <groupId>com.azure.resourcemanager</groupId>
         <artifactId>azure-resourcemanager-resourcegraph</artifactId>
-        <version>1.0.0-beta.1</version>
+        <version>1.0.0</version>
     </dependency>
    ```
 
@@ -93,7 +93,7 @@ Java で Azure Resource Graph に対してクエリを実行できるように�
 
    ```java
    package com.Fabrikam;
-   
+
    import java.util.Arrays;
    import java.util.List;
    import com.azure.core.management.AzureEnvironment;
@@ -104,22 +104,22 @@ Java で Azure Resource Graph に対してクエリを実行できるように�
    import com.azure.resourcemanager.resourcegraph.models.QueryRequestOptions;
    import com.azure.resourcemanager.resourcegraph.models.QueryResponse;
    import com.azure.resourcemanager.resourcegraph.models.ResultFormat;
-   
+
    public class App
    {
        public static void main( String[] args )
        {
            List<String> listSubscriptionIds = Arrays.asList(args[0]);
            String strQuery = args[1];
-   
+
            ResourceGraphManager manager = ResourceGraphManager.authenticate(new DefaultAzureCredentialBuilder().build(), new AzureProfile(AzureEnvironment.AZURE));
-   
+
            QueryRequest queryRequest = new QueryRequest()
                .withSubscriptions(listSubscriptionIds)
                .withQuery(strQuery);
-           
+
            QueryResponse response = manager.resourceProviders().resources(queryRequest);
-   
+
            System.out.println("Records: " + response.totalRecords());
            System.out.println("Data:\n" + response.data());
        }

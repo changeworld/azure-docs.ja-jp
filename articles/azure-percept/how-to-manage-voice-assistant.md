@@ -1,20 +1,20 @@
 ---
-title: Azure Percept Studio 内で音声アシスタント アプリケーションを構成する
+title: Azure Percept 音声アシスタント アプリケーションを管理する
 description: Azure Percept Studio 内で音声アシスタント アプリケーションを構成する
-author: elqu20
-ms.author: v-elqu
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
-ms.custom: template-how-to
-ms.openlocfilehash: 8f22379049b74428787b738af832802081be7bf8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 7e3ab60b3f89db21c9dbc6290733b2cab365dad9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022893"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006356"
 ---
-# <a name="managing-your-voice-assistant"></a>音声アシスタントを管理する
+# <a name="manage-your-azure-percept-voice-assistant-application"></a>Azure Percept 音声アシスタント アプリケーションを管理する
 
 この記事では、音声アシスタント アプリケーションのキーワードとコマンドを [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 内で構成する方法について説明します。 ポータルではなく IoT Hub 内でキーワードを構成する方法については、こちらの[ハウツー記事](./how-to-configure-voice-assistant.md)を参照してください。
 
@@ -22,23 +22,23 @@ ms.locfileid: "105022893"
 
 ## <a name="keyword-configuration"></a>キーワードの構成
 
-キーワードは、音声アシスタントをアクティブ化するために使用される単語または短いフレーズです。 たとえば、"コルタナさん" は、Cortana アシスタントのキーワードです。 ボイス アクティベーションを使用すると、ユーザーがキーワードを話すだけで、完全にハンドフリーで製品の操作を開始することができます。 製品ではキーワードが継続的にリッスンされているため、ユーザー データを可能な限りプライベートに保つために、すべての音声は検出が行われるまで、デバイスでローカルに処理されます。
+キーワードは、音声アシスタントをアクティブ化するために使用される単語または短いフレーズです。 たとえば、"コルタナさん" は、Cortana アシスタントのキーワードです。 音声によるアクティブ化を使用すると、ユーザーがキーワードを話すことで、ハンドフリーで製品の操作を開始することができます。 製品ではキーワードが継続的にリッスンされているため、ユーザー データを可能な限りプライベートに保つために、すべての音声は検出が行われるまで、デバイスでローカルに処理されます。
 
 ### <a name="configuration-within-the-voice-assistant-demo-window"></a>音声アシスタントのデモ ウィンドウ内の構成
 
-1. デモ ページの **[Custom Keyword]\(カスタム キーワード\)** の横にある **[変更]** をクリックします。
+1. デモ ページの **[カスタム キーワード]** の横にある **[変更]** をクリックします。
 
     :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Hospitality (接客) デモ ウィンドウのスクリーンショット。":::
 
-    デモ ページを開いていない場合は、デバイス ページ (下記参照) に移動し、 **[アクション]** の **[音声アシスタントのテスト]** をクリックしてデモにアクセスします。
+    デモ ページを開いていない場合は、デバイス ページ (下記参照) に移動し、 **[アクション]** の **[音声アシスタントのテスト]** を選択してデモにアクセスします。
 
-1. 対象となるいずれかのキーワードを選択し、 **[Save]\(保存\)** をクリックして変更を適用します。
+1. 使用可能ないずれかのキーワードを選択し、 **[保存]** を選択して変更を適用します。
 
 1. 構成が完了して音声アシスタントが使用できる状態になると、Azure Percept Audio デバイスにある 3 つの LED ライトが明るい青色 (点滅なし) に変化します。
 
 ### <a name="configuration-within-the-device-page"></a>デバイス ページ内の構成
 
-1. [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) の概要ページで、左側のメニュー ペインにある **[デバイス]** をクリックします。
+1. [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) の概要ページで、左側のメニュー ペインにある **[デバイス]** を選択します。
 
     :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="デバイスが強調表示された Azure Percept Studio の概要ページのスクリーンショット。":::
 
@@ -48,11 +48,11 @@ ms.locfileid: "105022893"
 
     :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="[音声] タブが強調表示されたエッジ デバイス ページのスクリーンショット。":::
 
-1. **[キーワード]** の横にある **[変更]** をクリックします。
+1. **[キーワード]** の横にある **[変更]** を選択します。
 
     :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="使用可能な音声ソリューションのアクションのスクリーンショット。":::
 
-1. 対象となるいずれかのキーワードを選択し、 **[Save]\(保存\)** をクリックして変更を適用します。
+1. 使用可能ないずれかのキーワードを選択し、 **[保存]** を選択して変更を適用します。
 
 1. 構成が完了して音声アシスタントが使用できる状態になると、Azure Percept Audio デバイスにある 3 つの LED ライトが明るい青色 (点滅なし) に変化します。
 
@@ -68,21 +68,21 @@ ms.locfileid: "105022893"
 
 ### <a name="configuration-within-the-voice-assistant-demo-window"></a>音声アシスタントのデモ ウィンドウ内の構成
 
-1. デモ ページの **[カスタム コマンド]** の横にある **[変更]** をクリックします。 デモ ページを開いていない場合は、デバイス ページ (下記参照) に移動し、 **[アクション]** の **[音声アシスタントのテスト]** をクリックしてデモにアクセスします。
+1. デモ ページの **[カスタム コマンド]** の横にある **[変更]** を選択します。 デモ ページを開いていない場合は、デバイス ページ (下記参照) に移動し、 **[アクション]** の **[音声アシスタントのテスト]** を選択してデモにアクセスします。
 
-1. 対象となるいずれかのカスタム コマンドを選択し、 **[Save]\(保存\)** をクリックして変更を適用します。
+1. 使用可能ないずれかのカスタム コマンドを選択し、 **[保存]** を選択して変更を適用します。
 
 ### <a name="configuration-within-the-device-page"></a>デバイス ページ内の構成
 
-1. [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) の概要ページで、左側のメニュー ペインにある **[デバイス]** をクリックします。
+1. [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) の概要ページで、左側のメニュー ペインにある **[デバイス]** を選択します。
 
 1. 音声アシスタント アプリケーションのデプロイ先となったデバイスを選択します。
 
 1. **[Speech]\(音声\)** タブを開きます。
 
-1. **[コマンド]** の横にある **[変更]** をクリックします。
+1. **[コマンド]** の横にある **[変更]** を選択します。
 
-1. 対象となるいずれかのカスタム コマンドを選択し、 **[Save]\(保存\)** をクリックして変更を適用します。
+1. 使用可能ないずれかのカスタム コマンドを選択し、 **[保存]** を選択して変更を適用します。
 
 ## <a name="create-custom-commands"></a>カスタム コマンドを作成する
 

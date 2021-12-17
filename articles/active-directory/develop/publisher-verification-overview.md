@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/19/2020
+ms.date: 06/01/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d02b8cae22349412a83b35624479ef19de4697f6
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93308781"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951736"
 ---
 # <a name="publisher-verification"></a>発行者の確認
 
@@ -40,7 +40,7 @@ Azure AD の同意プロンプトや他の画面に、青い "確認済み" バ�
 - **よりスムーズなエンタープライズ導入** - 管理者は [ユーザー同意ポリシー](../manage-apps/configure-user-consent.md)を構成でき、発行者確認の状態は主要なポリシー条件の 1 つになります。
 
 > [!NOTE]
-> 2020 年 11 月以降、エンド ユーザーは、新しく登録された、発行元が確認済みでないマルチテナント アプリのほとんどに対して、同意を付与することができなくなります。 これは、2020 年 11 月 8 日以降に登録されたアプリで、OAuth2.0 を使用して基本的なサインインやユーザー プロファイルの読み取り以上の権限を要求したり、アプリが登録されているテナントとは異なるテナントのユーザーに同意を求めたりする場合に適用されます。 同意画面には、これらのアプリにはリスクが伴い、未確認の発行元からのものであることをユーザーに通知する警告が表示されます。    
+> 2020 年 11 月以降、[リスクに基づくステップアップ同意](../manage-apps/configure-user-consent.md#risk-based-step-up-consent)が有効になっている場合、エンド ユーザーは、新しく登録された、発行元が確認済みでないマルチテナント アプリのほとんどに対して、同意を付与することができなくなります。 これは、2020 年 11 月 8 日以降に登録されたアプリで、OAuth2.0 を使用して基本的なサインインやユーザー プロファイルの読み取り以上の権限を要求したり、アプリが登録されているテナントとは異なるテナントのユーザーに同意を求めたりする場合に適用されます。 同意画面には、これらのアプリにはリスクが伴い、未確認の発行元からのものであることをユーザーに通知する警告が表示されます。    
 
 ## <a name="requirements"></a>必要条件
 発行者確認にはいくつかの前提条件があり、その一部は、多くの Microsoft パートナーによって既に完了されています。 これらは次のとおりです。 

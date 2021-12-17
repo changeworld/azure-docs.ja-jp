@@ -1,35 +1,37 @@
 ---
 title: タンブリング ウィンドウ トリガーの依存関係の作成
-description: Azure Data Factory でタンブリング ウィンドウ トリガーの依存関係を作成する方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Synapse Analytics でタンブリング ウィンドウ トリガーの依存関係を作成する方法について説明します。
 ms.author: chez
 author: chez-charlie
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 09/03/2020
-ms.openlocfilehash: f969c06a3419a8017cfc5ebc0de19caa67c8dc68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: 89a6db7fcfd78ec2e1115256cc162a91cc9180da
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361470"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805935"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>タンブリング ウィンドウ トリガーの依存関係の作成
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、タンブリング ウィンドウ トリガーの依存関係を作成する手順について説明します。 タンブリング ウィンドウ トリガーに関する全般な情報については、[タンブリング ウィンドウ トリガーを作成する方法](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
 
-依存関係チェーンを構築し、データ ファクトリ内の別のトリガーの実行が成功した後でのみトリガーが実行されるようにするには、この高度な機能を使用して、タンブリング ウィンドウの依存関係を作成します。
+依存関係チェーンを構築し、トリガーがサービス内の別のトリガーの実行が成功した後でのみ実行されるようにするには、この高度な機能を使用して、タンブリング ウィンドウの依存関係を作成します。
 
-タンブリング ウィンドウ トリガーを使用して Azure Data Factory 内に依存パイプラインを作成する方法のデモについては、次のビデオをご覧ください。
+タンブリング ウィンドウ トリガーを使用して依存パイプラインを作成する方法のデモについては、次のビデオを参照してください。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
-## <a name="create-a-dependency-in-the-data-factory-ui"></a>Data Factory UI で依存関係を作成する
+## <a name="create-a-dependency-in-the-ui"></a>UI で依存関係を作成する
 
-トリガーの依存関係を作成するには、 **[トリガー]、[詳細設定]、[新規]** の順に選択した後、適切なオフセットとサイズに依存するトリガーを選択します。 **[完了]** を選択して、依存関係に対するデータ ファクトリの変更を発行して有効にします。
+トリガーの依存関係を作成するには、 **[トリガー]、[詳細設定]、[新規]** の順に選択した後、適切なオフセットとサイズに依存するトリガーを選択します。 **[完了]** を選択して、依存関係に対する変更を発行して有効にします。
 
-![依存関係の作成](media/tumbling-window-trigger-dependency/tumbling-window-dependency-01.png "依存関係の作成")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-01.png" alt-text="依存関係の作成":::
 
 ## <a name="tumbling-window-dependency-properties"></a>タンブリング ウィンドウの依存関係プロパティ
 
@@ -129,37 +131,37 @@ ms.locfileid: "100361470"
 
 ### <a name="dependency-offset"></a>依存関係のオフセット
 
-![オフセットの例](media/tumbling-window-trigger-dependency/tumbling-window-dependency-02.png "オフセットの例")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-02.png" alt-text="オフセットの例":::
 
 ### <a name="dependency-size"></a>依存関係のサイズ
 
-![サイズの例](media/tumbling-window-trigger-dependency/tumbling-window-dependency-03.png "サイズの例")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-03.png" alt-text="サイズの例":::
 
 ### <a name="self-dependency"></a>自己依存関係
 
-![自己依存関係](media/tumbling-window-trigger-dependency/tumbling-window-dependency-04.png "自己依存関係")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-04.png" alt-text="自己依存関係":::
 
 ### <a name="dependency-on-another-tumbling-window-trigger"></a>別のタンブリング ウィンドウ トリガーに対する依存関係
 
 過去 7 日間の出力を集計する別の日次ジョブに依存する日次テレメトリ処理ジョブで、7 日分のローリング ウィンドウ ストリームを生成するとします。
 
-![依存関係の例](media/tumbling-window-trigger-dependency/tumbling-window-dependency-05.png "依存関係の例")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-05.png" alt-text="依存関係の例":::
 
 ### <a name="dependency-on-itself"></a>自己に対する依存関係
 
 ジョブの出力ストリームにずれがない日次ジョブ:
 
-![自己依存関係の例](media/tumbling-window-trigger-dependency/tumbling-window-dependency-06.png "自己依存関係の例")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-06.png" alt-text="自己依存関係の例":::
 
 ## <a name="monitor-dependencies"></a>依存関係を監視する
 
 [トリガーの実行] 監視ページで、依存関係チェーンと該当するウィンドウを監視できます。 **[監視]、[トリガーの実行]** の順に移動します。 タンブリング ウィンドウ トリガーに依存関係がある場合、トリガー名には依存関係の監視ビューへのハイパーリンクが表示されます。  
 
-![トリガーの実行を監視する](media/tumbling-window-trigger-dependency/tumbling-window-dependency-07.png "トリガーの実行を監視する - タンブリング ウィンドウの依存関係ビューのエントリ")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-07.png" alt-text="トリガーの実行を監視する":::
 
 トリガーの依存関係を表示するには、トリガー名をクリックします。 右側のパネルには、RunID、ウィンドウの時間、状態など、トリガーの詳細な実行情報が表示されます。
 
-![依存関係の監視のリスト ビュー](media/tumbling-window-trigger-dependency/tumbling-window-dependency-08.png "モニターの依存関係のリスト ビュー")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-08.png" alt-text="依存関係の監視のリスト ビュー":::
 
 依存関係の状態、および各依存トリガーのウィンドウが表示されます。 依存関係トリガーのいずれかが失敗した場合は、正常に再実行して、依存するトリガーが稼働できるようにする必要があります。
 
@@ -167,7 +169,7 @@ ms.locfileid: "100361470"
 
 トリガーの依存関係のスケジュールを視覚的に表示するには、[ガント] ビューを選択します。
 
-![依存関係の監視のガント チャート](media/tumbling-window-trigger-dependency/tumbling-window-dependency-09.png "依存関係の監視のガント チャート ビュー")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-09.png" alt-text="依存関係の監視のガント チャート":::
 
 透明なボックスには、ダウン ストリームに依存する各トリガーの依存関係ウィンドウが表示されます。上にある塗られたボックスには、個々のウィンドウの実行が表示されます。 ここでは、ガント チャート ビューを解釈するためのヒントをいくつか紹介します。
 

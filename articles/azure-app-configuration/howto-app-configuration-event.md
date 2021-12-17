@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c188a4b7fe8e9223faa1cdeb52ae01ed83b94d84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc9acfdbfc88c0631a66717f8af0dd6eb7b98afc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99549781"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257216"
 ---
 # <a name="use-event-grid-for-app-configuration-data-change-notifications"></a>App Configuration のデータ変更通知に Event Grid を使用する
 
@@ -87,7 +87,7 @@ appconfigId=$(az appconfig show --name <appconfig_name> --resource-group <resour
 endpoint=https://$sitename.azurewebsites.net/api/updates
 
 az eventgrid event-subscription create \
-  --resource-id $appconfigId \
+  --source-resource-id $appconfigId \
   --name <event_subscription_name> \
   --endpoint $endpoint
 ```

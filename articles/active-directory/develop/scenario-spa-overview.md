@@ -3,25 +3,25 @@ title: JavaScript シングルページ アプリのシナリオ
 titleSuffix: Microsoft identity platform
 description: Microsoft ID プラットフォームを使用してシングルページ アプリケーションを構築する方法 (シナリオの概要) について説明します。
 services: active-directory
-author: navyasric
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
-ms.author: nacanuma
+ms.date: 10/12/2021
+ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 64dfd35d387e5907792440ec40522d976706db22
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 19692739814a4db3ef2f981461254de415c9bdcc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966862"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444176"
 ---
 # <a name="scenario-single-page-application"></a>シナリオ:シングルページ アプリ
 
-シングルページ アプリケーション (SPA) の構築に必要なすべてのことについて説明します。
+シングルページ アプリケーション (SPA) の構築に必要なすべてのことについて説明します。 Azure Static Web Apps に関する手順については、代わりに「[Azure Static Web Apps の認証と承認](../../static-web-apps/authentication-authorization.md)」を参照してください。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -35,7 +35,11 @@ ms.locfileid: "105966862"
 
 Microsoft ID プラットフォームにより、シングルページ アプリケーションでユーザーをサインインさせ、バックエンド サービスまたは Web API にアクセスするトークンを取得するための **2 つ** のオプションが提供されます。
 
-- [OAuth 2.0 認証コード フロー (PKCE あり)](./v2-oauth2-auth-code-flow.md)。 この認証コード フローでは、認証されたユーザーを表す **ID** トークンと保護されている API を呼び出すために必要な **アクセス** トークンの認証コードを交換することをアプリケーションに許可します。 また、ユーザーが操作しなくてもユーザーの代わりにリソースへの長期間アクセスを提供する **更新** トークンが返されます。 これが **推奨される** 方法です。
+- [OAuth 2.0 認証コード フロー (PKCE あり)](./v2-oauth2-auth-code-flow.md)。 この認証コード フローでは、認証されたユーザーを表す **ID** トークンと保護されている API を呼び出すために必要な **アクセス** トークンの認証コードを交換することをアプリケーションに許可します。 
+
+    コード交換の証明キー、または _PKCE_ は、承認コード インジェクション攻撃を防止するための承認コード フローの拡張機能です。 この IETF 標準は、[RFC 7636](https://datatracker.ietf.org/doc/html/rfc7636) に記載されているように、パブリック クライアントからのセキュリティで保護された OAuth 交換をインターセプトして有効にする承認コードを持つ脅威を軽減します。 また、ユーザーが操作しなくてもこれらのユーザーの代わりにリソースへの長期間アクセスを提供する **更新** トークンが返されます。 
+
+    PKCE で承認コード フローを使用することは、ネイティブおよびブラウザーベースの JavaScript アプリだけでなく、他のすべての種類の OAuth クライアントに対して、より安全で **推奨** される承認方法です。
 
 ![シングルページ アプリケーション認証](./media/scenarios/spa-app-auth.svg)
 

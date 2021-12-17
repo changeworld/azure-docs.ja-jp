@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: d99a19efcef0cae518d8d21d3371adaf37d32ff7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd6f83dbf7c9d4e0115089daddca7bddd9887bb7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625483"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307443"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>チュートリアル:Azure AD シングル サインオン (SSO) を NetSuite と統合する
 
@@ -41,6 +41,7 @@ NetSuite では、以下がサポートされます。
 
 * IDP-Initiated SSO。
 * JIT (Just-In-Time) ユーザー プロビジョニング。
+* NetSuite では、[自動化されたユーザー プロビジョニング](netsuite-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -56,11 +57,11 @@ NetSuite の Azure AD への統合を構成するには、次の手順を実行�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**NetSuite**」と入力します。
 1. 結果ペインで、 **[NetSuite]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-netsuite"></a>NetSuite の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-netsuite"></a>NetSuite の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、NetSuite に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと NetSuite の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-NetSuite での Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+NetSuite に対して Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. [Azure AD SSO を構成](#configure-azure-ad-sso)して、ユーザーがこの機能を使用できるようにします。
     * [Azure AD のテスト ユーザーを作成](#create-an-azure-ad-test-user)して、ユーザー B.Simon を使って Azure AD のシングル サインオンをテストします。  
@@ -79,23 +80,7 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに、次のいずれかの形式で URL を入力します。
-
-    ```https
-    https://<Instance ID>.NetSuite.com/saml2/acs
-    https://<Instance ID>.na1.NetSuite.com/saml2/acs
-    https://<Instance ID>.na2.NetSuite.com/saml2/acs
-    https://<Instance ID>.sandbox.NetSuite.com/saml2/acs
-    https://<Instance ID>.na1.sandbox.NetSuite.com/saml2/acs
-    https://<Instance ID>.na2.sandbox.NetSuite.com/saml2/acs
-    ```
-
-    * **<`Instance ID`>** の値は、このチュートリアルの手順 8. で後述する [Netsuite Configuration]\(Netsuite の構成\) セクションで取得します。 厳密なドメイン (このケースでは system.na0.netsuite.com など) が見つかります。
-
-        ![[SAML 設定] ページを示すスクリーンショット。ここでは、ドメインを取得できます。](./media/NetSuite-tutorial/domain-value.png)
-
-        > [!NOTE]
-        > 上記の URL の値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[NetSuite クライアント サポート チーム](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)にお問い合わせください。 また、Azure portal の **[基本的な SAML 構成]** セクションに示されている形式を参照することもできます。
+1. **[基本的な SAML 構成]** セクションの **[応答 URL]** テキスト ボックスに、URL として「`https://system.netsuite.com/saml2/acs`」と入力します。
 
 1. NetSuite アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -246,15 +231,16 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
 このセクションでは、B.Simon というユーザーを NetSuite に作成します。 NetSuite では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 NetSuite にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
+NetSuite では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./netsuite-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
 - Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した NetSuite に自動的にサインインされます
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリ上で [NetSuite] タイルをクリックすると、SSO を設定した NetSuite に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+- Microsoft マイ アプリを使用することができます。 マイ アプリ上で [NetSuite] タイルをクリックすると、SSO を設定した NetSuite に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-NetSuite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+NetSuite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

@@ -12,12 +12,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 02/03/2021
-  ms.openlocfilehash: 87584400894b97f0ef0522d8f7c421100a673cba
-  ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+  ms.openlocfilehash: c4ca7c2c295d3239a5becc255cb951ab7ad92882
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/04/2021
-  ms.locfileid: "99550304"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132718053"
 landingContent:
 - title: Azure のセキュリティについて
   linkLists:
@@ -40,12 +40,12 @@ landingContent:
     - text: セキュリティ サービスとテクノロジ
       url: services-technologies.md
     - text: 組み込みのセキュリティ制御
-      url: security-controls.md
+      url: ../benchmarks/index.yml
 - title: 脅威の軽減
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Security Center
+    - text: Microsoft Defender for Cloud
       url: ../../security-center/security-center-introduction.md
   - linkListType: concept
     links:
@@ -53,6 +53,8 @@ landingContent:
       url: management-monitoring-overview.md
     - text: 脅威の防止
       url: threat-detection.md
+    - text: ID 侵害から回復する
+      url: recover-from-identity-compromise.md
 - title: クラウド ソリューションをセキュリティで保護するためのベスト プラクティス
   linkLists:
   - linkListType: concept
@@ -98,4 +100,4 @@ landingContent:
     - text: リソース管理のセキュリティを実装する
       url: /learn/paths/implement-resource-mgmt-security
     - text: 仮想マシン ホストのセキュリティを実装する
-      url: https://docs.microsoft.com/learn/paths/implement-host-security
+      url: /learn/paths/implement-host-security

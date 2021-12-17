@@ -3,22 +3,22 @@ title: クラウド サービス (クラシック) モデルとパッケージ�
 description: Azure でのクラウド サービス モデル (.csdef、.cscfg) と パッケージ (.cspkg) について説明します。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 1cf8e966b80e005a0cb2cf7ea46f355e38cb0011
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec0588d989911bcbb0ba4fc0fc7f029a1c7ba23e
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98741538"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823005"
 ---
 # <a name="what-is-the-cloud-service-classic-model-and-how-do-i-package-it"></a>クラウド サービス (クラシック) モデルとそれをパッケージ化する方法
 
-> [!IMPORTANT]
-> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 クラウド サービスは、サービス定義 *(.csdef)*、サービスの構成 *(.cscfg)*、サービス パッケージ *(.cspkg)* の 3 つのコンポーネントから作成されます。 **ServiceDefinition.csdef** ファイルと **ServiceConfig.cscfg** ファイルはどちらも XML をベースとし、クラウド サービスの構造と構成方法について記述したファイルであり、まとめてモデルと呼ばれています。 **ServicePackage.cspkg** は、**ServiceDefinition.csdef** とその他のものから生成される zip ファイルで、必要なすべてのバイナリベースの依存関係が含まれます。 Azure では、**ServicePackage.cspkg** と **ServiceConfig.cscfg** の両方からクラウド サービスが作成されます。
 
@@ -241,7 +241,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 <p />
 
 > [!TIP]
-> **Microsoft Azure コンピューティング エミュレーター** でクラウド サービスをローカルで実行し、**/copyonly** オプションを使用します。 このオプションは、アプリケーションのバイナリ ファイルをディレクトリ レイアウトにコピーします。コンピューティング エミュレーターでは、そのディレクトリ レイアウトからファイルを実行できます。
+> **Microsoft Azure Compute Emulator** でクラウド サービスをローカルで実行し、**/copyonly** オプションを使用します。 このオプションは、アプリケーションのバイナリ ファイルをディレクトリ レイアウトにコピーします。コンピューティング エミュレーターでは、そのディレクトリ レイアウトからファイルを実行できます。
 > 
 > 
 

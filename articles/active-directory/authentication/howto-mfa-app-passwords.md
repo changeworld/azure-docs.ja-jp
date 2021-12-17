@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfb38f9fcdba6898b690d0af68b715fea07e80bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f79bca8626eca56c40f99f75daa2b8cb4da3a995
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96743107"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773780"
 ---
 # <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>アプリ パスワードを使用して、レガシ アプリケーションで Azure AD Multi-Factor Authentication を有効にして使用する
 
@@ -42,7 +42,7 @@ Microsoft Office 2013 クライアント以降向けの最新の認証がサポ�
 * ユーザーのアカウントで Azure AD Multi-Factor Authentication を有効にすると、Outlook や Microsoft Skype for Business などのほとんどの非ブラウザー クライアントでアプリ パスワードを使用できます。 ただし、Windows PowerShell などの非ブラウザー アプリケーションからアプリ パスワードを使用して、管理操作を実行することはできません。 ユーザーが管理者アカウントを持っている場合でも、操作を実行することはできません。
     * PowerShell スクリプトを実行するには、サービス アカウントを強固なパスワードで作成します。そのアカウントで 2 段階認証を有効にしないでください。
 * ユーザー アカウントが侵害された疑いがあり、アカウント パスワードを取り消すか、またはリセットした場合は、アプリ パスワードも更新する必要があります。 ユーザー アカウントのパスワードが取り消されるか、またはリセットされても、アプリ パスワードは自動的には取り消されません。 ユーザーは既存のアプリ パスワードを削除し、新しいアプリ パスワードを作成する必要があります。
-   * 詳細については、「[[追加のセキュリティ確認] ページを使用してアプリ パスワードを作成および削除する](../user-help/multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)」を参照してください。
+   * 詳細については、「[[追加のセキュリティ確認] ページを使用してアプリ パスワードを作成および削除する](https://support.microsoft.com/account-billing/manage-app-passwords-for-two-step-verification-d6dc8c6d-4bf7-4851-ad95-6d07799387e9#create-and-delete-app-passwords-from-the-additional-security-verification-page)」を参照してください。
 
 >[!WARNING]
 > クライアントがオンプレミスの自動検出エンドポイントとクラウドの自動検出エンドポイントの両方と通信するハイブリッド環境では、アプリ パスワードは機能しません。 オンプレミスでの認証にはドメイン パスワードが必要です。 クラウドでの認証にはアプリ パスワードが必要です。
@@ -81,7 +81,7 @@ Azure AD では、オンプレミスの Active Directory ドメイン サービ�
 
 ## <a name="allow-users-to-create-app-passwords"></a>ユーザーがアプリ パスワードを作成できるようにする
 
-既定では、ユーザーはアプリ パスワードを作成できません。 アプリ パスワード機能を有効にして、ユーザーがそれらを使えるようにする必要があります。 ユーザーがアプリ パスワードを作成できるようにするには、次の手順を実行します。
+既定では、ユーザーはアプリ パスワードを作成できません。 アプリ パスワード機能を有効にして、ユーザーがそれらを使えるようにする必要があります。 ユーザーがアプリ パスワードを作成できるようにするには、**管理者が次の手順を実行する必要があります**。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]** を探して選択し、次に **[ユーザー]** を選択します。
@@ -101,7 +101,9 @@ Azure AD では、オンプレミスの Active Directory ドメイン サービ�
 
 ユーザーが Azure AD Multi-Factor Authentication の初期登録を完了すると、登録プロセスの最後にアプリ パスワードを作成するオプションがあります。
 
-ユーザーによるアプリ パスワードの作成は、登録後も可能です。 ユーザー向けの情報と詳細な手順については、[Azure AD Multi-Factor Authentication でのアプリ パスワードの概要](../user-help/multi-factor-authentication-end-user-app-passwords.md)に関する記事を参照してください。
+ユーザーによるアプリ パスワードの作成は、登録後も可能です。 詳細情報とユーザー向けの詳細な手順については、次のリソースを参照してください。
+* [Azure AD Multi-Factor Authentication のアプリ パスワードとは](https://support.microsoft.com/account-billing/manage-app-passwords-for-two-step-verification-d6dc8c6d-4bf7-4851-ad95-6d07799387e9)
+* [[セキュリティ情報] ページからアプリ パスワードを作成する](https://support.microsoft.com/account-billing/create-app-passwords-from-the-security-info-preview-page-d8bc744a-ce3f-4d4d-89c9-eb38ab9d4137)
 
 ## <a name="next-steps"></a>次のステップ
 

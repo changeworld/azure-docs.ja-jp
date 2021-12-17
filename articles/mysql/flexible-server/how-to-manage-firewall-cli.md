@@ -6,26 +6,26 @@ ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0692e7e7452fef9577414e9aa5340d933f50b30e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 9/21/2020
+ms.openlocfilehash: 3617546e1319617a2a333a2c358880812d8626b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776953"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468083"
 ---
-# <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバーのファイアウォール規則を作成および管理する
+# <a name="manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Azure CLI を使用して、Azure Database for MySQL - フレキシブル サーバーのファイアウォール規則を管理します。
 
-> [!IMPORTANT]
-> Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
 
 Azure Database for MySQL フレキシブル サーバーでは、フレキシブル サーバーに接続するために、2 種類の相互に排他的なネットワーク接続方法をサポートしています。 次の 2 つのオプションがあります。
 
 - パブリック アクセス (許可された IP アドレス)
 - プライベート アクセス (VNet 統合)
 
-この記事では、Azure CLI 使用して **パブリック アクセス (許可された IP アドレス)** を使用して MySQL サーバーを作成する方法について説明します。また、サーバーの作成後にファイアウォール規則を作成、更新、削除、一覧表示、表示するために使用できる Azure CLI コマンドの概要について説明します。 *パブリック アクセス (許可された IP アドレス)* では、MySQL サーバーへの接続は、許可された IP アドレスのみに制限されます。 クライアント IP アドレスは、ファイアウォール規則で許可されている必要があります。 詳細については、「[パブリック アクセス (許可された IP アドレス)](./concepts-networking.md#public-access-allowed-ip-addresses)」をご覧ください。 ファイアウォール規則は、サーバーの作成時に定義できます (推奨) が、後で追加することもできます。
+この記事では、Azure CLI 使用して **パブリック アクセス (許可された IP アドレス)** を使用して MySQL サーバーを作成する方法について説明します。また、サーバーの作成後にファイアウォール規則を作成、更新、削除、一覧表示、表示するために使用できる Azure CLI コマンドの概要について説明します。 *パブリック アクセス (許可された IP アドレス)* では、MySQL サーバーへの接続は、許可された IP アドレスのみに制限されます。 クライアント IP アドレスは、ファイアウォール規則で許可されている必要があります。 詳細については、「[パブリック アクセス (許可された IP アドレス)](./concepts-networking-public.md#public-access-allowed-ip-addresses)」をご覧ください。 ファイアウォール規則は、サーバーの作成時に定義できます (推奨) が、後で追加することもできます。
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
@@ -56,39 +56,50 @@ az account set --subscription <subscription id>
 Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-server)で、構成可能な CLI パラメーターの完全な一覧を参照してください。 たとえば、次のコマンドでは、必要に応じてリソース グループを指定できます。
 
 - パブリック アクセスでフレキシブル サーバーを作成し、サーバーにアクセスするためのクライアント IP アドレスを追加する
+
     ```azurecli-interactive
     az mysql flexible-server create --public-access <my_client_ip>
     ```
+
 - パブリック アクセスでフレキシブル サーバーを作成し、このサーバーにアクセスするための IP アドレス範囲を追加する
 
     ```azurecli-interactive
     az mysql flexible-server create --public-access <start_ip_address-end_ip_address>
     ```
+
 - パブリック アクセスでフレキシブル サーバーを作成し、アプリケーションが Azure IP アドレスからフレキシブル サーバーに接続できるようにする
+
     ```azurecli-interactive
     az mysql flexible-server create --public-access 0.0.0.0
     ```
+
     > [!IMPORTANT]
     > このオプションによって、他のお客様のサブスクリプションからの接続を含む、Azure サービスおよび Azure 内のリソースからこのサーバーへのパブリック アクセスを許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
-    >
+
 - パブリック アクセスでフレキシブル サーバーを作成し、すべての IP アドレスを許可する
+
     ```azurecli-interactive
     az mysql flexible-server create --public-access all
     ```
-    >[!Note]
+
+    > [!Note]
     > 上記のコマンドにより、開始 IP アドレスが 0.0.0.0、終了 IP アドレスが 255.255.255.255 のファイアウォール規則が作成されます。ブロックされる IP アドレスはありません。 インターネット上にあるすべてのホストからこのサーバーにアクセスできます。 この規則は、機密データが含まれていないテスト サーバーに限定して、一時的にのみ使用することを強くお勧めします。
 
 - パブリック アクセスで IP アドレスを指定しないフレキシブル サーバーを作成する
+
     ```azurecli-interactive
     az mysql flexible-server create --public-access none
     ```
+
     >[!Note]
     > ファイアウォール規則のないサーバーを作成することはお勧めしません。 ファイアウォール規則を追加しない場合、どのクライアントからもサーバーに接続できません。
 
 ## <a name="create-and-manage-firewall-rule-after-server-create"></a>サーバーを作成した後にファイアウォール規則を作成して管理する
+
 Azure CLI の **az mysql flexible-server firewall-rule** コマンドで、ファイアウォール規則を作成、削除、一覧表示、表示、更新します。
 
 コマンド:
+
 - **create**:フレキシブル サーバーのファイアウォール規則を作成します。
 - **list**:フレキシブル サーバーのファイアウォール規則を一覧表示します。
 - **update**:フレキシブル サーバーのファイアウォール規則を更新します。
@@ -98,63 +109,80 @@ Azure CLI の **az mysql flexible-server firewall-rule** コマンドで、フ�
 Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-server)で、構成可能な CLI パラメーターの完全な一覧を参照してください。 たとえば、次のコマンドでは、必要に応じてリソース グループを指定できます。
 
 ### <a name="create-a-firewall-rule"></a>ファイアウォール規則を作成する
+
 `az mysql flexible-server firewall-rule create` コマンドを使用して、サーバーに新しいファイアウォール規則を作成します。
 IP アドレスの範囲に対するアクセスを許可するには、次の例のように、開始 IP アドレスと終了 IP アドレスの IP アドレスを指定します。
+
 ```azurecli-interactive
 az mysql flexible-server firewall-rule create --name mydemoserver --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
 ```
 
 1 つの IP アドレスに対するアクセスを許可するには、次の例のように、1 つだけ IP アドレスを指定します。
+
 ```azurecli-interactive
 az mysql flexible-server firewall-rule create --name mydemoserver --start-ip-address 1.1.1.1
 ```
 
 アプリケーションに Azure IP アドレスからフレキシブル サーバーへの接続を許可するには、次の例のように、開始 IP として IP アドレス 0.0.0.0 を指定します。
+
 ```azurecli-interactive
 az mysql flexible-server firewall-rule create --name mydemoserver --start-ip-address 0.0.0.0
 ```
 
 > [!IMPORTANT]
 > このオプションによって、他のお客様のサブスクリプションからの接続を含む、Azure サービスおよび Azure 内のリソースからこのサーバーへのパブリック アクセスを許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
-> 
 
 正常に完了すると、各コマンドの出力として、作成したファイアウォール規則の詳細が JSON 形式 (既定) で一覧表示されます。 失敗した場合は、代わりにエラー メッセージ テキストが出力されます。
 
-### <a name="list-firewall-rules"></a>ファイアウォール規則の一覧表示 
+### <a name="list-firewall-rules"></a>ファイアウォール規則の一覧表示
+
 `az mysql flexible-server firewall-rule list` コマンドを使用して、サーバー上の既存のサーバー ファイアウォール規則を一覧表示します。 サーバー名属性は、 **--name** スイッチで指定されることにご注意ください。
+
 ```azurecli-interactive
 az mysql flexible-server firewall-rule list --name mydemoserver
 ```
+
 規則がある場合は、JSON 形式 (既定) で出力として一覧表示されます。 --output table** スイッチを使用すると、結果をよりわかりやすい表形式で出力できます。
+
 ```azurecli-interactive
 az mysql flexible-server firewall-rule list --name mydemoserver --output table
 ```
 
 ### <a name="update-a-firewall-rule"></a>ファイアウォール規則の更新
+
 `az mysql flexible-server firewall-rule update` コマンドを使用して、サーバーの既存のファイアウォール規則を更新します。 入力として既存のファイアウォール規則の名前に加え、更新する開始 IP アドレスと終了 IP アドレス属性を指定します。
+
 ```azurecli-interactive
 az mysql flexible-server firewall-rule update --name mydemoserver --rule-name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
 ```
+
 正常に完了すると、コマンドの出力として、更新したファイアウォール規則の詳細が JSON 形式 (既定) で一覧表示されます。 失敗した場合は、代わりにエラー メッセージ テキストが出力されます。
 
 > [!NOTE]
 > ファイアウォール規則が存在しない場合は、更新コマンドによって規則が作成されます。
 
 ### <a name="show-firewall-rule-details"></a>ファイアウォール規則の詳細の表示
+
 `az mysql flexible-server firewall-rule show` コマンドを使用して、サーバー上にある既存のファイアウォール規則の詳細を表示します。 既存のファイアウォール規則の名前を入力します。
+
 ```azurecli-interactive
 az mysql flexible-server firewall-rule show --name mydemoserver --rule-name FirewallRule1
 ```
+
 正常に完了すると、コマンドの出力として、指定したファイアウォール規則の詳細が JSON 形式 (既定) で一覧表示されます。 失敗した場合は、代わりにエラー メッセージ テキストが出力されます。
 
 ### <a name="delete-a-firewall-rule"></a>ファイアウォール規則の削除
+
 `az mysql flexible-server firewall-rule delete` コマンドを使用して、サーバーから既存のファイアウォール規則を削除します。 既存のファイアウォール規則の名前を入力します。
+
 ```azurecli-interactive
 az mysql flexible-server firewall-rule delete --name mydemoserver --rule-name FirewallRule1
 ```
+
 正常に完了すると、出力はありません。 失敗した場合は、エラー メッセージ テキストが表示されます。
 
 ## <a name="next-steps"></a>次のステップ
+
 - [Azure Database for MySQL フレキシブル サーバーでのネットワーク](./concepts-networking.md)の詳細を確認する
-- [Azure Database for MySQL フレキシブル サーバーのファイアウォール規則](./concepts-networking.md#public-access-allowed-ip-addresses)の詳細を確認する
+- [Azure Database for MySQL フレキシブル サーバーのファイアウォール規則](./concepts-networking-public.md#public-access-allowed-ip-addresses)の詳細を確認する
 - [Azure portal を使用して Azure Database for MySQL フレキシブル サーバーのファイアウォール規則を作成および管理する](./how-to-manage-firewall-portal.md)

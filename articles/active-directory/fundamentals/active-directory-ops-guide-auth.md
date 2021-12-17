@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 26b5331aa9242978f0f097c8e90bc807fc65f745
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 45dc0c2fdfa8815c2adc1bd3fd0e8a508235c46e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531944"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308031"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -42,7 +42,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 | Azure AD Identity Protection からのリスクと脆弱性のレポートでフラグが設定されたユーザーをトリアージして調査する | InfoSec 運用チーム |
 
 > [!NOTE]
-> Azure AD Identity Protection には、Azure AD Premium P2 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、[Azure AD Free および Azure AD Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
+> Azure AD Identity Protection には、Azure AD Premium P2 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、[Azure AD Free および Azure AD Premium エディションの一般公開されている機能の比較](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)に関するページをご覧ください。
 
 リストを確認しているときに、所有者が空のタスクに所有者を割り当てたり、上記のレコメンデーションに一致しない所有者を持つタスクの所有権を調整したりする必要があることに気付く場合があります。
 
@@ -89,7 +89,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 ### <a name="strong-credential-management"></a>強力な資格情報の管理
 
-パスワード自体は、悪意のあるユーザーによる環境へのアクセスを阻止できるほど安全ではありません。 少なくとも、特権アカウントを持つすべてのユーザーが、多要素認証 (MFA) を有効にする必要があります。 理想的には、[統合された登録](../authentication/concept-registration-mfa-sspr-combined.md)を有効にし、すべてのユーザーに対して、[統合された登録エクスペリエンス](../user-help/security-info-setup-signin.md)を使用して MFA と SSPR に登録するように要求する必要があります。 最終的には、予期しない状況によるロックアウトのリスクを軽減するために、[回復性を提供する](../authentication/concept-resilient-controls.md)戦略を採用することをお勧めします。
+パスワード自体は、悪意のあるユーザーによる環境へのアクセスを阻止できるほど安全ではありません。 少なくとも、特権アカウントを持つすべてのユーザーが、多要素認証 (MFA) を有効にする必要があります。 理想的には、[統合された登録](../authentication/concept-registration-mfa-sspr-combined.md)を有効にし、すべてのユーザーに対して、[統合された登録エクスペリエンス](https://support.microsoft.com/account-billing/set-up-your-security-info-from-a-sign-in-prompt-28180870-c256-4ebf-8bd7-5335571bf9a8)を使用して MFA と SSPR に登録するように要求する必要があります。 最終的には、予期しない状況によるロックアウトのリスクを軽減するために、[回復性を提供する](../authentication/concept-resilient-controls.md)戦略を採用することをお勧めします。
 
 ![統合されたユーザー エクスペリエンスのフロー](./media/active-directory-ops-guide/active-directory-ops-img4.png)
 
@@ -153,12 +153,12 @@ Windows 10 では、[Windows Hello for Business](/windows/security/identity-prot
 
 ### <a name="single-sign-on-for-apps"></a>アプリのシングル サインオン
 
-標準化されたシングル サインオンのメカニズムを社内全体に提供することは、最良のユーザー エクスペリエンス、リスクの削減、報告する能力、およびガバナンスにとって不可欠です。 Azure AD で SSO をサポートしていても、現時点ではローカル アカウントを使用するように構成されているアプリケーションを使用している場合は、そのようなアプリケーションを Azure AD で SSO を使用するように再構成する必要があります。 同様に、Azure AD で SSO をサポートしていても、別の ID プロバイダーを使用している場合は、そのようなアプリケーションも Azure AD で SSO を使用するように再構成する必要があります。 フェデレーション プロトコルはサポートしていなくても、フォーム ベースの認証をサポートしているアプリケーションの場合は、Azure AD アプリケーション プロキシを使用して[パスワード保管](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)を使用するようにアプリケーションを構成することをお勧めします。
+標準化されたシングル サインオンのメカニズムを社内全体に提供することは、最良のユーザー エクスペリエンス、リスクの削減、報告する能力、およびガバナンスにとって不可欠です。 Azure AD で SSO をサポートしていても、現時点ではローカル アカウントを使用するように構成されているアプリケーションを使用している場合は、そのようなアプリケーションを Azure AD で SSO を使用するように再構成する必要があります。 同様に、Azure AD で SSO をサポートしていても、別の ID プロバイダーを使用している場合は、そのようなアプリケーションも Azure AD で SSO を使用するように再構成する必要があります。 フェデレーション プロトコルはサポートしていなくても、フォーム ベースの認証をサポートしているアプリケーションの場合は、Azure AD アプリケーション プロキシを使用して[パスワード保管](../app-proxy/application-proxy-configure-single-sign-on-password-vaulting.md)を使用するようにアプリケーションを構成することをお勧めします。
 
 ![AppProxy パスワードベースのサインオン](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
 > [!NOTE]
-> 組織内の管理されていないアプリケーションを検出するメカニズムがない場合は、[Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security) などのクラウド アクセス セキュリティ ブローカー ソリューション (CASB) を使用して検出プロセスを実装することをお勧めします。
+> 組織内の管理されていないアプリケーションを検出するメカニズムがない場合は、[Microsoft Defender for Cloud Apps](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security) などのクラウド アクセス セキュリティ ブローカー ソリューション (CASB) を使用して検出プロセスを実装することをお勧めします。
 
 最後に、Azure AD アプリ ギャラリーがあり、Azure AD で SSO をサポートするアプリケーションを使用している場合は、[アプリ ギャラリーでアプリケーションを一覧表示する](../develop/v2-howto-app-gallery-listing.md)ことをお勧めします。
 
@@ -196,10 +196,10 @@ Windows 10 では、[Windows Hello for Business](/windows/security/identity-prot
 
 ### <a name="named-locations"></a>ネームド ロケーション
 
-Azure AD で[ネームド ロケーション](../reports-monitoring/quickstart-configure-named-locations.md)を使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure AD では、次のためにネームド ロケーションを使用します。
+Azure AD で[ネームド ロケーション](../conditional-access/location-condition.md)を使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure AD では、次のためにネームド ロケーションを使用します。
 
 - リスク イベントの誤判定を防ぎます。 信頼できるネットワークの場所からサインインすることで、ユーザーのサインイン リスクが低下します。
-- [場所ベースの条件付きアクセス](../reports-monitoring/quickstart-configure-named-locations.md)を構成する。
+- [場所ベースの条件付きアクセス](../conditional-access/location-condition.md)を構成する。
 
 ![ネームド ロケーション](./media/active-directory-ops-guide/active-directory-ops-img10.png)
 
@@ -249,7 +249,7 @@ Microsoft Intune アプリケーション管理 (MAM) を使用すると、ス�
 - 複数のアプリケーションに適用できる重要なポリシーの小さいセットを用意します
 - 空の例外グループを定義し、それらをポリシーに追加して例外戦略を設定します
 - MFA 制御を使用しない[緊急用](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency)アカウントを計画します
-- Exchange Online や Sharepoint Online などのサービスに対して同じ一連の制御を実装することで、Microsoft 365 クライアント アプリケーション (たとえば、Teams、OneDrive、Outlook など) で一貫したエクスペリエンスを確保します
+- Exchange Online や SharePoint Online などのサービスに対して同じ一連の制御を実装することで、Microsoft 365 クライアント アプリケーション (たとえば、Teams、OneDrive、Outlook など) で一貫したエクスペリエンスを確保します
 - ポリシーへの割り当ては、個人ではなくグループを使用して実装する必要があります
 - ポリシーで使用されている例外グループを定期的にレビューして、ユーザーがセキュリティ体制外にある時間を制限します。 Azure AD P2 を所有している場合は、アクセス レビューを使用してプロセスを自動化できます
 
@@ -328,7 +328,7 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 
 #### <a name="user-settings"></a>ユーザー設定
 
-- **外部ユーザー** - 外部コラボレーションは、Teams、Power BI、Sharepoint Online、Azure Information Protection などのサービスを使用して、企業内で有機的に発生する場合があります。 ユーザーが開始した外部コラボレーションを制御するための明示的な制約がある場合は、[Azure AD エンタイトルメント管理](../governance/entitlement-management-overview.md)やヘルプ デスクの利用などの制御された運用を使用して、外部ユーザーを有効にすることをお勧めします。 サービスに対して有機的な外部コラボレーションを許可しない場合は、[外部ユーザーの招待からメンバーを完全にブロックする](../external-identities/delegate-invitations.md)ことができます。 また、外部ユーザーの招待で[特定のドメインを許可またはブロック](../external-identities/allow-deny-list.md)することもできます。
+- **外部ユーザー** - 外部コラボレーションは、Teams、Power BI、SharePoint Online、Azure Information Protection などのサービスを使用して、企業内で有機的に発生する場合があります。 ユーザーが開始した外部コラボレーションを制御するための明示的な制約がある場合は、[Azure AD エンタイトルメント管理](../governance/entitlement-management-overview.md)やヘルプ デスクの利用などの制御された運用を使用して、外部ユーザーを有効にすることをお勧めします。 サービスに対して有機的な外部コラボレーションを許可しない場合は、[外部ユーザーの招待からメンバーを完全にブロックする](../external-identities/delegate-invitations.md)ことができます。 また、外部ユーザーの招待で[特定のドメインを許可またはブロック](../external-identities/allow-deny-list.md)することもできます。
 - **アプリの登録** - アプリの登録が有効になっている場合、エンド ユーザーはアプリケーション自体をオンボードし、データへのアクセスを許可することができます。 アプリの登録の典型的な例としては、Outlook プラグインを有効にするユーザー、またはメールやカレンダーを読んだりメールを送信したりするための音声アシスタント (Alexa や Siri など) があります。 顧客がアプリの登録を無効にすると決めた場合は、アプリケーションを管理者アカウントに登録する必要があり、多くの場合はプロセスを運用化するプロセスを設計する必要があるため、InfoSec チームと IAM チームは例外 (ビジネス要件に基づいて必要なアプリの登録) の管理に関与する必要があります。
 - **管理ポータル** - 組織は Azure portal の Azure AD ブレードをロックダウンして、管理者以外が Azure portal 内の Azure AD 管理にアクセスして混乱を招くことができないようにします。 Azure AD 管理ポータルのユーザー設定にアクセスして、アクセスを制限します。
 

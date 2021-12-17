@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 06/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 8c1c0131a2771c843cbd636c4a80a8cb7e4d6c08
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b445e41ecf4eff398fc7a376c986e29d70e34ff
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649396"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285311"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibmid"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IBMid の統合
 
@@ -37,10 +37,13 @@ ms.locfileid: "101649396"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* IBMid では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* IBMid では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* IBMid では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* IBMid では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
-## <a name="adding-ibmid-from-the-gallery"></a>ギャラリーからの IBMid の追加
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+
+## <a name="add-ibmid-from-the-gallery"></a>ギャラリーから IBMid を追加する
 
 Azure AD への IBMid の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に IBMid を追加する必要があります。
 
@@ -50,7 +53,6 @@ Azure AD への IBMid の統合を構成するには、ギャラリーからマ�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**IBMid**」と入力します。
 1. 結果のパネルから **[IBMid]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-ibmid"></a>IBMid の Azure AD SSO の構成とテスト
 
@@ -75,30 +77,31 @@ IBMid に対して Azure AD SSO を構成してテストするには、次の手
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
     a. **[識別子]** ボックスに、次のいずれかの URL を入力します。
 
     | 識別子 |
     | ---------- |
-    | `https://idaas.iam.ibm.com/idaas/mtfim/sps/idaas/saml20` |
+    | 運用: |
     | `https://ibmlogin.ice.ibmcloud.com/saml/sps/saml20sp/saml20` |
+    | 運用前: |
     | `https://prepiam.ice.ibmcloud.com/saml/sps/saml20sp/saml20` |
     |
 
-    a. **[応答 URL]** ボックスに、次のいずれかの URL を入力します。
+    b. **[応答 URL]** ボックスに、次のいずれかの URL を入力します。
 
     | [応答 URL] |
     | ---------- |
-    | `https://idaas.iam.ibm.com/idaas/mtfim/sps/idaas/saml20/login` |
+    | 運用: |
     | `https://login.ibm.com/saml/sps/saml20sp/saml20/login` |
+    | 運用前: |
     | `https://prepiam.ice.ibmcloud.com/saml/sps/saml20sp/saml20/login` |
     |
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** テキスト ボックスに、URL として「`https://myibm.ibm.com/`」と入力します。
-
 
 1. **[保存]** をクリックします。
 
@@ -168,11 +171,11 @@ IBMid に対して Azure AD SSO を構成してテストするには、次の手
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した IBMid に自動的にサインインされます 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した IBMid に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [IBMid] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した IBMid に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [IBMid] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した IBMid に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-IBMid を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+IBMid を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

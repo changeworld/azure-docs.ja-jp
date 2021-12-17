@@ -8,15 +8,15 @@ metadata:
   ms.service: hdinsight
   ms.topic: landing-page
   ms.collection: collection
-  author: hrasheed-msft
-  ms.author: hrasheed
+  author: jasonwhowell
+  ms.author: jasonh
   ms.date: 02/27/2020
-  ms.openlocfilehash: b02a1a1e2f6407b2ac59735fb6f202e10c64a6c4
-  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+  ms.openlocfilehash: da1ac66d57b03ecf26503fc7234ca2f8821b6c68
+  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/26/2020
-  ms.locfileid: "92534755"
+  ms.lasthandoff: 06/17/2021
+  ms.locfileid: "112290937"
 landingContent:
 - title: HDInsight について
   linkLists:
@@ -148,14 +148,6 @@ landingContent:
       url: ./hbase/apache-hbase-accelerated-writes.md
     - text: Apache Phoenix のベスト プラクティス
       url: ./hbase/apache-hbase-phoenix-performance.md
-- title: ML サービス
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: HDInsight での ML Services とは
-      url: ./r-server/r-server-overview.md
-    - text: ML Services クラスターで R スクリプトを実行する
-      url: ./r-server/machine-learning-services-quickstart-job-rstudio.md
 - title: Apache Storm
   linkLists:
   - linkListType: get-started

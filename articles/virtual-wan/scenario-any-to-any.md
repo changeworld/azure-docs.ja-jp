@@ -1,24 +1,24 @@
 ---
 title: 'シナリオ: 任意間'
 titleSuffix: Azure Virtual WAN
-description: ルーティングのシナリオ - 任意間
+description: すべてのスポークが別のスポークに接続できる、Virtual WAN の Any-to-Any ルーティング シナリオについて説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3b5002873160490dfb7b8d3ad9790f9c6f1e8ae6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b27d1327eac8e108c462fd3c0f19a257a5385428
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99525790"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575992"
 ---
 # <a name="scenario-any-to-any"></a>シナリオ:任意の環境間
 
-Virtual WAN で仮想ハブのルーティングを使用する場合、多くのシナリオを利用できます。 任意間シナリオでは、すべてのスポークが別のスポークに接続できます。 複数のハブが存在する場合、Standard Virtual WAN では、ハブツーハブ ルーティング (ハブ間ルーティングとも呼ばれます) が既定で有効になります。 Azure portal や [Azure クイック スタート テンプレート](quickstart-any-to-any-template.md)など、さまざまな方法を使用して、この構成を作成できます。 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。 
+Virtual WAN で仮想ハブのルーティングを使用する場合、多くのシナリオを利用できます。 任意間シナリオでは、すべてのスポークが別のスポークに接続できます。 複数のハブが存在する場合、Standard Virtual WAN では、ハブツーハブ ルーティング (ハブ間ルーティングとも呼ばれます) が既定で有効になります。 Azure portal や [Azure クイックスタート テンプレート](quickstart-any-to-any-template.md)など、さまざまな方法を使用して、この構成を作成できます。 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。 
 
 ## <a name="design"></a><a name="design"></a>設計
 

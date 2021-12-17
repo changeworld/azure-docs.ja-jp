@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2cae673dd319e55670357ae468d21ff63e4f9c72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: fasttrack-edit, devx-track-azurepowershell
+ms.openlocfilehash: f1e995e558b902b9b1210b87f319748d731228b6
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104669442"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967830"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートから NSG フロー ログを構成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "104669442"
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
-[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) は、[インフラストラクチャをコードとして](/azure/devops/learn/what-is-infrastructure-as-code)管理する、強力な Azure ネイティブな方法です。
+[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) は、[インフラストラクチャをコードとして](/devops/deliver/what-is-infrastructure-as-code)管理する、強力な Azure ネイティブな方法です。
 
 この記事では、Azure Resource Manager テンプレートと Azure PowerShell を使用して、プログラムで [NSG フロー ログ](./network-watcher-nsg-flow-logging-overview.md)を有効にする方法について説明します。 まず、NSG フロー ログ オブジェクトのプロパティの概要と、いくつかのサンプル テンプレートを提供します。 次に、ローカルの PowerShell インスタンスを使用してテンプレートをデプロイします。
 
@@ -40,7 +40,7 @@ ms.locfileid: "104669442"
 ## <a name="nsg-flow-logs-object"></a>NSG フロー ログ オブジェクト
 
 すべてのパラメーターを持つ NSG フロー ログ オブジェクトを以下に示します。
-プロパティの完全な概要については、[NSG フロー ログのテンプレート リファレンス](/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)を参照してください。
+プロパティの完全な概要については、[NSG フロー ログのテンプレート リファレンス](/azure/templates/microsoft.network/networkwatchers/flowlogs#retentionpolicyparameters)を参照してください。
 
 ```json
 {
@@ -77,7 +77,7 @@ Microsoft.Network/networkWatchers/flowLogs リソースを作成するには、�
 
 Azure Resource Manager テンプレートを初めて使用する場合は、以下のリンクから詳細を確認できます。
 
-* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
+* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
 * [チュートリアル:初めての Azure Resource Manager テンプレートを作成およびデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)
 
 

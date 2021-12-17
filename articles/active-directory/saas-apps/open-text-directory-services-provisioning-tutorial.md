@@ -3,8 +3,8 @@ title: チュートリアル:Azure Active Directory を使用した自動ユー�
 description: Azure AD から OpenText Directory Services に対してユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: ad55ba5f-c56c-4ed0-bdfd-163d2883ed80
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
-ms.author: Zhchia
-ms.openlocfilehash: 2f31eddab1070d073d3fd5a4761dad597e42a2e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 2dc6d75a816ab40eb66dad46307c5f24bb2685b7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181885"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060176"
 ---
 # <a name="tutorial-configure-opentext-directory-services-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に OpenText Directory Services を構成する
 
@@ -122,8 +122,8 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
     ![[プロビジョニング] タブの [自動]](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションで、OpenText Directory Services のテナント URL を入力します。
-   * 特定でないテナント URL : {OTDS URL}/scim/{partitionName}
-   * 特定のテナント URL :  {OTDS URL}/otdstenant/{tenantID}/scim/{partitionName}
+   * 特定でないテナント URL: {OTDS URL}/scim/{partitionName}
+   * 特定のテナント URL: {OTDS URL}/otdstenant/{tenantID}/scim/{partitionName}
 
 6. 手順 2 で取得したシークレット トークンを入力します。 **[接続テスト]** をクリックして、Azure AD から OpenText Directory Services に接続できることを確認します。 接続できない場合は、OpenText Directory Services アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

@@ -3,12 +3,13 @@ title: Resource Manager デプロイとクラシック デプロイ
 description: Resource Manager デプロイ モデルとクラシック (あるいはサービス管理) デプロイ モデルの違いについて説明します。
 ms.topic: conceptual
 ms.date: 04/12/2021
-ms.openlocfilehash: c2009034c431e53d162cb0f2c1f0d9815c8d1942
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e9ea1e778db81cfaa69163d5e127d384f8c4b3f5
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306937"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298171"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 
@@ -147,8 +148,12 @@ Azure Resource Manager を使用して作成された仮想マシン、仮想ネ
 
 **Azure Resource Manager のテンプレートの例はどこで入手できますか。**
 
-[Azure Resource Manager のクイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)に関するページで、広範囲にわたるスターター テンプレートが提供されています。
+[Azure Resource Manager のクイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)に関するページで、広範囲にわたるスターター テンプレートが提供されています。
 
 ## <a name="next-steps"></a>次のステップ
 
+<<<<<<< HEAD
 * テンプレートをデプロイするためのコマンドについては、「[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイに関するページ](../templates/deploy-powershell.md)」を参照してください。
+=======
+* テンプレートをデプロイするためのコマンドについては、「 [Azure Resource Manager テンプレートを使用したアプリケーションのデプロイに関するページ](../templates/deploy-powershell.md)」を参照してください。
+>>>>>>> repo_sync_working_branch

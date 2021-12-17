@@ -4,12 +4,12 @@ description: Azure App Service が OS とランタイムを更新する方法、
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 8b876760ee2bafc855345878a28c38ec3b35daad
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 35d4bbb33aa737725668c0376bb1ffe6f7748f46
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047883"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800082"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service での OS とランタイムのパッチ適用
 
@@ -39,10 +39,6 @@ Azure では、2 つのレベルで OS のパッチ適用が管理されます�
 
 サポートされる言語ランタイムの新しい安定バージョン (メジャー、マイナー、またはパッチ) は、App Service インスタンスに定期的に追加されます。 一部の更新プログラムでは既存のインストールが上書きされますが、その他の更新プログラムは既存のバージョンとサイド バイ サイドでインストールされます。 上書きインストールでは、アプリは更新されたランタイムで自動的に実行されます。 サイドバイサイド インストールでは、新しいバージョンのランタイムを利用するにはアプリを手動で移行する必要があります。 詳細については、いずれかのサブセクションを参照してください。
 
-ランタイムの更新と廃止は以下で発表されます。
-
-- https://azure.microsoft.com/updates/?product=app-service 
-- https://github.com/Azure/app-service-announcements/issues
 
 > [!NOTE] 
 > こちらの情報は、App Service アプリに組み込まれている言語ランタイムに適用されます。 たとえば、自分で App Service にアップロードするカスタム ランタイムは、手動でアップグレードするまで変更されません。
@@ -64,10 +60,6 @@ az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=8.9.3 -
 az webapp config set --python-version 3.8 --resource-group <groupname> --name <appname>
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
-
-### <a name="deprecated-versions"></a>非推奨のバージョン  
-
-以前のバージョンが非推奨となる場合、それに応じてランタイム バージョンのアップグレードを計画できるように、削除日が発表されます。 
 
 ## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>インスタンスの OS とランタイムの更新状態を照会する方法  
 

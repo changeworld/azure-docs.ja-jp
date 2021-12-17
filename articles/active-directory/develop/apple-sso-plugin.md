@@ -9,27 +9,27 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/15/2020
+ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 05bfcc86c72d9eb393da919035ce198948b943f2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1e12b2d9512bd7c62a2657e13e74790af6556cd4
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559130"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507761"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > この機能[!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-*Apple デバイス用の Microsoft Enterprise SSO プラグイン* は、Apple の[エンタープライズ シングル サインオン](https://developer.apple.com/documentation/authenticationservices)機能をサポートするすべてのアプリケーションで、macOS、iOS、iPadOS 上の Azure Active Directory (Azure AD) アカウントに対するシングル サインオン (SSO) を提供します。 このプラグインにより、業務に必要だが、最新の ID ライブラリやプロトコルはまだサポートしていない古いアプリケーションにも SSO が提供されます。 Microsoft は Apple と密接に連携してこのプラグインを開発し、アプリケーションの使いやすさを向上させ、利用可能な最高の保護を提供しています。
+*Apple デバイス用の Microsoft Enterprise SSO プラグイン* は、Apple の [エンタープライズ シングル サインオン](https://developer.apple.com/documentation/authenticationservices)機能をサポートするすべてのアプリケーションで、macOS、iOS、iPadOS 上の Azure Active Directory (Azure AD) アカウントに対するシングル サインオン (SSO) を提供します。 このプラグインにより、業務に必要だが、最新の ID ライブラリやプロトコルはまだサポートしていない古いアプリケーションにも SSO が提供されます。 Microsoft は Apple と密接に連携してこのプラグインを開発し、アプリケーションの使いやすさを向上させ、利用可能な最高の保護を提供しています。
 
 Enterprise SSO プラグインは現在、次のアプリの組み込み機能です。
 
-* [Microsoft Authenticator](../user-help/user-help-auth-app-overview.md): iOS、iPadOS
+* [Microsoft Authenticator](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc): iOS、iPadOS
 * Microsoft Intune [ポータル サイト](/mem/intune/apps/apps-company-portal-macos): macOS
 
 ## <a name="features"></a>特徴
@@ -46,18 +46,18 @@ Apple デバイス用の Microsoft Enterprise SSO プラグインには、次の
 Apple デバイス用の Microsoft Enterprise SSO プラグインを使用するには:
 
 - Apple デバイス用の Microsoft Enterprise SSO プラグインを含むアプリが、デバイスで *サポート* およびインストールされている必要があります。
-  - iOS 13.0 以降: [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)
-  - iPadOS 13.0 以降: [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)
+  - iOS 13.0 以降: [Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)
+  - iPadOS 13.0 以降: [Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)
   - macOS 10.15 以降: [Intune ポータル サイト アプリ](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp)
 - Microsoft Intune を使用するなどして、デバイスが *MDM に登録* されている必要があります。
 - 構成を *デバイスにプッシュ* して、Enterprise SSO プラグインを有効にする必要があります。 このセキュリティ制約は Apple の要件です。
 
-### <a name="ios-requirements"></a>iOS の要件:
+### <a name="ios-requirements"></a>iOS の要件
 - iOS 13.0 以降がデバイスにインストールされている必要があります。
-- Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューでは、これらのアプリケーションは [Microsoft Authenticator アプリ](/azure/active-directory/user-help/user-help-auth-app-overview)です。
+- Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューでは、これらのアプリケーションは [Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)です。
 
 
-### <a name="macos-requirements"></a>macOS の要件:
+### <a name="macos-requirements"></a>macOS の要件
 - macOS 10.15 以降がデバイスにインストールされている必要があります。 
 - Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューでは、これらのアプリケーションには [Intune ポータル サイト アプリ](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp)が含まれます。
 
@@ -75,7 +75,7 @@ SSO プラグインを有効にするプロファイル設定は、各デバイ�
 
 ### <a name="manual-configuration-for-other-mdm-services"></a>他の MDM サービスの手動構成
 
-Intune を MDM に使用しない場合、Apple デバイス用の Microsoft Enterprise SSO プラグインを構成するには、次のパラメーターを使用します。
+MDM に Intune を使用しない場合は、Apple デバイス用に拡張可能なシングル サインオン プロファイル ペイロードを構成できます。 Microsoft Enterprise SSO プラグインとその構成オプションを構成するには、次のパラメーターを使用します。
 
 iOS の設定:
 
@@ -118,23 +118,91 @@ SSO プラグインは、次の条件を満たすデバイスによって自動�
 
 Microsoft ID プラットフォーム ライブラリを使用しないアプリ用の Microsoft Enterprise SSO プラグインを構成するには、次のパラメーターを使用します。
 
-特定のアプリの一覧を指定するには、次のパラメーターを使用します。
+#### <a name="enable-sso-for-all-managed-apps"></a>すべてのマネージド アプリに対して SSO を有効にする
+
+- **キー**: `Enable_SSO_On_All_ManagedApps`
+- **型**: `Integer`
+- **値**: 1 または 0。
+
+このフラグがオンの場合 (その値は `1` に設定されます)、`AppBlockList` に含まれていないすべての MDM マネージド アプリが SSO に参加する可能性があります。
+
+#### <a name="enable-sso-for-specific-apps"></a>SSO を特定のアプリで有効にする
 
 - **キー**: `AppAllowList`
 - **型**: `String`
 - **値**: SSO への参加が許可されているアプリケーションのアプリケーション バンドル ID のコンマ区切りの一覧。
 - **例**: `com.contoso.workapp, com.contoso.travelapp`
 
-プレフィックスの一覧を指定するには、次のパラメーターを使用します。
+>[!NOTE]
+> Safari と Safari View Service は、既定で SSO に参加できます。 AppBlockList に Safari と Safari View Service のバンドル ID を追加することで、SSO に参加"*しない*"構成を行えます。 iOS バンドル ID : [com.apple.mobilesafari, com.apple.SafariViewService] , macOS BundleID : com.apple.Safari
+
+#### <a name="enable-sso-for-all-apps-with-a-specific-bundle-id-prefix"></a>SSO を特定のバンドル ID プレフィックスを持つすべてのアプリに対して有効にする
 - **キー**: `AppPrefixAllowList`
 - **型**: `String`
 - **値**: SSO への参加が許可されているアプリケーションのアプリケーション バンドル ID プレフィックスのコンマ区切りの一覧です。 このパラメーターによって、特定のプレフィックスで始まるすべてのアプリを SSO に参加させることができます。
 - **例**: `com.contoso., com.fabrikam.`
 
-MDM 管理者が SSO への参加を許可している[同意済みアプリ](./application-consent-experience.md)は、エンド ユーザーのトークンをサイレントで取得できます。 そのため、許可リストには信頼されたアプリケーションのみを追加してください。 
+#### <a name="disable-sso-for-specific-apps"></a>SSO を特定のアプリで無効にする
 
->[!NOTE]
-> SSO に参加できるアプリの一覧に、MSAL または ASWebAuthenticationSession を使用するアプリケーションを追加する必要はありません。 これらのアプリケーションは既定で有効になっています。 
+- **キー**: `AppBlockList`
+- **型**: `String`
+- **値**: SSO への参加が許可されていないアプリケーションのアプリケーション バンドル ID のコンマ区切りの一覧。
+- **例**: `com.contoso.studyapp, com.contoso.travelapp`
+
+Safari または Safari View Service の SSO を"*無効*"にするには、バンドル ID を `AppBlockList` に追加して明示的に行う必要があります。 
+
+- iOS: `com.apple.mobilesafari`、`com.apple.SafariViewService`
+- macOS: `com.apple.Safari`
+
+#### <a name="enable-sso-through-cookies-for-a-specific-application"></a>特定のアプリケーションに対して Cookie を使用して SSO を有効にする
+
+高度なネットワーク設定を持ついくつかのアプリで SSO が有効になっていると、予期しない問題が発生する可能性があります。 たとえば、ネットワーク要求が取り消されたか、中断されたことを示すエラーが表示される場合があります。
+
+ユーザーがアプリケーションへサインインできず、他の設定からそれを有効にした後でも問題がある場合は、それを `AppCookieSSOAllowList` に追加して問題を解決してみてください。
+
+- **キー**: `AppCookieSSOAllowList`
+- **型**: `String`
+- **値**: SSO への参加が許可されているアプリケーションのアプリケーション バンドル ID プレフィックスのコンマ区切りの一覧です。 一覧に含まれるプレフィックスで始まるすべてのアプリが、SSO への参加を許可されます。
+- **例**: `com.contoso.myapp1, com.fabrikam.myapp2`
+
+**その他の要件**: `AppCookieSSOAllowList`を使用してアプリケーションの SSO を有効にするには、バンドル ID プレフィックス `AppPrefixAllowList` も追加する必要があります。
+
+この構成は、予期しないサインイン エラーが発生したアプリケーションに対してのみ試してください。 
+
+#### <a name="summary-of-keys"></a>キーの概要
+
+| キー | Type | 値 |
+|--|--|--|
+| `Enable_SSO_On_All_ManagedApps` | Integer | `1` はすべてのマネージド アプリで SSO を有効にします。`0` はすべてのマネージド アプリで SSO を無効にします。 |
+| `AppAllowList` | String<br/>*(コンマ区切りのリスト)* | SSO に参加することが許可されているアプリケーションのバンドル ID。 |
+| `AppBlockList` | String<br/>*(コンマ区切りのリスト)* | SSO に参加することが許可されていないアプリケーションのバンドル ID。 |
+| `AppPrefixAllowList` | String<br/>*(コンマ区切りのリスト)* | SSO に参加することが許可されているアプリケーションのバンドル ID プレフィックス。 |
+| `AppCookieSSOAllowList` | String<br/>*(コンマ区切りのリスト)* | SSO に参加することが許可されているが、特別なネットワーク設定を使用し、他の設定を使用した SSO に問題があるアプリケーションのバンドル ID プレフィックス。 `AppCookieSSOAllowList` に追加するアプリは、`AppPrefixAllowList` にも追加する必要があります。 |
+
+#### <a name="settings-for-common-scenarios"></a>一般的なシナリオの設定
+
+- *シナリオ*: SSO をほとんどの管理対象アプリケーションで有効にしたいが、すべてではない。
+
+    | キー | 値 |
+    | -------- | ----------------- |
+    | `Enable_SSO_On_All_ManagedApps` | `1` |
+    | `AppBlockList` | SSO に参加できないようにしたいアプリのバンドル ID (コンマ区切りリスト)。 |
+
+- *シナリオ* SSO を Safari で無効にしたい (既定では有効) が、SSO をすべてのマネージド アプリで有効にしたい。
+
+    | キー | 値 |
+    | -------- | ----------------- |
+    | `Enable_SSO_On_All_ManagedApps` | `1` |
+    | `AppBlockList` | SSO に参加できないようにしたい Safari アプリのバンドル ID (コンマ区切りリスト)。<ul><li>iOS の場合: `com.apple.mobilesafari`、`com.apple.SafariViewService`</li><li>macOS の場合: `com.apple.Safari`</li></ul> |
+
+- *シナリオ*: SSO をすべてのマネージド アプリといくつかの非マネージド アプリで有効にしたいが、SSO を他のいくつかのアプリで無効にしたい。
+
+    | キー | 値 |
+    | -------- | ----------------- |
+    | `Enable_SSO_On_All_ManagedApps` | `1` |
+    | `AppAllowList` | SSO の場合に参加できるようにしたいアプリのバンドル ID (コンマ区切りリスト)。 |
+    | `AppBlockList` | SSO に参加できないようにしたいアプリのバンドル ID (コンマ区切りリスト)。 |
+
 
 ##### <a name="find-app-bundle-identifiers-on-ios-devices"></a>iOS デバイスでのアプリ バンドル ID の確認
 
@@ -153,7 +221,7 @@ Apple では、App Store からバンドル ID を簡単に取得する方法は
 
 #### <a name="allow-users-to-sign-in-from-unknown-applications-and-the-safari-browser"></a>不明なアプリケーションおよび Safari ブラウザーからユーザーがサインインできるようにする
 
-既定では、Microsoft Enterprise SSO プラグインは、MSAL や Azure Active Directory 認証ライブラリ (ADAL) などの Microsoft ID プラットフォーム ライブラリを使用するアプリからユーザーがサインインした場合にのみ、許可されたアプリに対する SSO を提供します。 Microsoft Enterprise SSO プラグインは、新しいトークンの取得中に Microsoft ID プラットフォーム ライブラリを使用する別のアプリによって呼び出されたときに、共有資格情報を取得することもできます。
+既定では、Microsoft Enterprise SSO プラグインでは、MSAL などの Microsoft ID プラットフォーム ライブラリを使用しているアプリからユーザーがサインインしたときにのみ、認証されたアプリに対するシングル サインオンを実行します。 Microsoft Enterprise SSO プラグインは、新しいトークンの取得中に Microsoft ID プラットフォーム ライブラリを使用する別のアプリによって呼び出されたときに、共有資格情報を取得することもできます。
 
 `browser_sso_interaction_enabled` フラグを有効にすると、Microsoft ID プラットフォーム ライブラリを使用していないアプリで、初期ブートストラップを実行して共有資格情報を取得できるようになります。 Safari ブラウザーでも、初期ブートストラップを実行して共有資格情報を取得できるようになります。 
 
@@ -183,30 +251,23 @@ macOS では、すべてのアプリで一貫したエクスペリエンスを�
 
 #### <a name="disable-oauth-2-application-prompts"></a>OAuth 2 アプリケーションのプロンプトを無効にする
 
-Microsoft Enterprise SSO プラグインでは、許可されたアプリケーションからのネットワーク要求に共有資格情報を追加することで SSO を提供します。 ただし、OAuth 2 アプリケーションによっては、プロトコル レイヤーでエンドユーザーのプロンプトが誤って強制されることがあります。 この問題が発生した場合、それらのアプリに対しては共有資格情報が無視されることもわかります。 Microsoft Enterprise SSO プラグインが他のアプリケーションに対して機能する場合でも、ユーザーにはサインインのプロンプトが表示されます。  
+Microsoft Enterprise SSO プラグインがデバイス上の他のアプリケーションに対して機能している場合でも、アプリケーションからユーザーにサインインを求めるメッセージが表示される場合、アプリはプロトコル層で SSO をバイパスしている可能性があります。  このようなアプリケーションでは共有資格情報も無視されます。このプラグインでは、許可されたアプリケーションによって行われたネットワーク要求に資格情報を追加することで SSO が提供されます。
 
-`disable_explicit_app_prompt` フラグを有効にすると、ネイティブ アプリケーションと Web アプリケーションの両方の機能が制限され、プロトコル レイヤーに対するエンドユーザー プロンプトが強制され、SSO をバイパスされます。 フラグを有効にするには、次のパラメーターを使用します。
+これらのパラメーターは、ネイティブアプリケーションと Web アプリケーションがプロトコル層で SSO をバイパスし、ユーザーにサインイン プロンプトを表示するように SSO 拡張機能を使用しないかどうかを指定します。
+
+デバイス上のすべてのアプリで一貫した SSO エクスペリエンスを得る場合は、既定で無効になっているこれらの設定のいずれかを有効にすることをお勧めします。
+  
+アプリ プロンプトを無効にして、アカウント ピッカーを表示します。
 
 - **キー**: `disable_explicit_app_prompt`
 - **型**: `Integer`
 - **値**: 1 または 0
+  
+アプリ プロンプトを無効にし、一致する SSO アカウントの一覧からアカウントを自動的に選択します。
+- **キー**: `disable_explicit_app_prompt_and_autologin`
+- **型**: `Integer`
+- **値**: 1 または 0
 
-すべてのアプリで一貫したエクスペリエンスを得るには、このフラグを有効にすることをお勧めします。 既定では無効になっています。 
-
-#### <a name="enable-sso-through-cookies-for-a-specific-application"></a>特定のアプリケーションに対して Cookie を使用して SSO を有効にする
-
-いくつかのアプリは SSO 拡張機能と互換性がない場合があります。 特に、高度なネットワーク設定を持つアプリで SSO が有効になっていると、予期しない問題が発生する可能性があります。 たとえば、ネットワーク要求が取り消されたか、中断されたことを示すエラーが表示される場合があります。 
-
-「[MSAL を使用しないアプリケーション](#applications-that-dont-use-msal)」で説明されている方法を使用してのサインインで問題が発生した場合は、別の構成を試してみてください。 プラグインを構成するには、次のパラメーターを使用します。
-
-- **キー**: `AppCookieSSOAllowList`
-- **型**: `String`
-- **値**: SSO への参加が許可されているアプリケーションのアプリケーション バンドル ID プレフィックスのコンマ区切りの一覧です。 一覧に含まれるプレフィックスで始まるすべてのアプリが、SSO への参加を許可されます。
-- **例**: `com.contoso.myapp1, com.fabrikam.myapp2`
-
-この設定を使用して SSO を有効にしたアプリケーションを、`AppCookieSSOAllowList` と `AppPrefixAllowList` の両方に追加する必要があります。
-
-この構成は、予期しないサインイン エラーが発生したアプリケーションに対してのみ試してください。 
 
 #### <a name="use-intune-for-simplified-configuration"></a>Intune を使用して構成を簡略化する
 

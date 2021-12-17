@@ -1,0 +1,40 @@
+### YamlMime:Landing
+title: Azure Germany ドキュメント
+summary: Azure Germany は、ドイツのデータ プライバシー規制に不可欠となる世界的なセキュリティとコンプライアンス サービスを使用する、Microsoft Azure の物理的に分離されたインスタンスです。 2018 年 8 月以降、元の Microsoft Cloud Germany ロケーションでは、新しい顧客の受け入れや、新しい機能やサービスのデプロイはしていません。 お客様のニーズの変化に基づき、Microsoft ではドイツで最近新しいデータセンターのリージョン 2つ立ち上げ、顧客データ所在地、Microsoft のグローバル クラウド ネットワークへの完全な接続、市場競争力のある価格を提供しています。
+metadata:
+  title: Azure Germany ドキュメント
+  description: Azure Germany は、ドイツのデータ プライバシー規制に不可欠となる世界的なセキュリティとコンプライアンス サービスを使用する、Microsoft Azure の物理的に分離されたインスタンスです
+  ms.service: germany
+  ms.topic: landing-page
+  author: rolyon
+  ms.author: rolyon
+  ms.date: 03/05/2020
+landingContent:
+  - title: Azure Germany について
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Azure Germany とは
+            url: germany-welcome.md
+      - linkListType: concept
+        links:
+          - text: 利用可能なサービス
+            url: germany-services.md
+  - title: 作業の開始
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: 開発者ガイド
+            url: germany-developer-guide.md
+      - linkListType: how-to-guide
+        links:
+          - text: Azure portal を使用した接続
+            url: germany-get-started-connect-with-portal.md
+  - title: 管理と移行
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: サブスクリプションの管理とアクセス
+            url: germany-manage-subscriptions.md
+          - text: 移行ガイダンス
+            url: germany-migration-main.md

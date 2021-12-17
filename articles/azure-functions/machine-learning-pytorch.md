@@ -1,17 +1,15 @@
 ---
 title: PyTorch モデルを Azure Functions アプリケーションとしてデプロイする
 description: Azure Functions で PyTorch の事前トレーニング済みの ResNet 18 ディープ ニューラル ネットワークを使用して、1,000 個の ImageNet ラベルのうちの 1 つを画像に割り当てます。
-author: gvashishtha
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.author: gopalv
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 8891c29e5d8d06df6292d06ec06e5e57fb9880e7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 680bae6ddcd1f46a91bd1f332762a590fd9c60e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93422843"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615189"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>チュートリアル: PyTorch を使用して事前トレーニング済みの画像分類モデルを Azure Functions にデプロイする
 
@@ -104,7 +102,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     func init --worker-runtime python
     ```
 
-    初期化後、*start* フォルダーにはプロジェクト用の各種ファイルが格納されます。たとえば、[local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
+    初期化後、*start* フォルダーにはプロジェクト用の各種ファイルが格納されます。たとえば、[local.settings.json](functions-develop-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
 
     > [!TIP]
     > 関数プロジェクトは特定のランタイムに関連付けられているので、プロジェクト内の関数はすべて同じ言語で記述する必要があります。

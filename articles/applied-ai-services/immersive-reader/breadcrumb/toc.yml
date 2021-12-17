@@ -1,0 +1,14 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 適用される AI サービス
+      tocHref: /azure/applied-ai-services/
+      topicHref: /azure/applied-ai-services/index
+      items:
+        - name: イマーシブ リーダー
+          tocHref: /azure/applied-ai-services/
+          topicHref: /azure/applied-ai-services/immersive-reader/index
+        - name: イマーシブ リーダー
+          tocHref: /azure/cognitive-services/
+          topicHref: /azure/applied-ai-services/immersive-reader/index

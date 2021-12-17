@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure Site Recovery サービ�
 ms.topic: tutorial
 ms.date: 11/05/2020
 ms.custom: mvc
-ms.openlocfilehash: 99263c83d25542073d63c1cba394a147bd5b2170
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 692b6645b2446fa55233506a0479b95b0743b029
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93392780"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223160"
 ---
 # <a name="tutorial-fail-over-azure-vms-to-a-secondary-region"></a>チュートリアル:Azure VM をセカンダリ リージョンにフェールオーバーする
 
@@ -84,9 +84,6 @@ ms.locfileid: "93392780"
 8. コミットの進行状況は [通知] で監視します。
 
     ![コミットの進行状況の通知](./media/azure-to-azure-tutorial-failover-failback/notification-commit-start.png) ![コミットの成功の通知](./media/azure-to-azure-tutorial-failover-failback/notification-commit-finish.png)    
-
-9. Site Recovery では、フェールオーバー後にソース VM がクリーンアップされません。 その操作は手動で行う必要があります。
-
 
 ## <a name="reprotect-the-vm"></a>VM を再保護する
 

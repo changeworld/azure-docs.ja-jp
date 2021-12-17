@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c251634710811820ba920b72c1759938758f5d2e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0db18bf162ee91ddccc070d7250a2ee35b05f5a9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802822"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689207"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC シリーズの仮想マシンの概要
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Intel Xeon スケーラブル プロセッサで HPC アプリケーションのパフォーマンスを最大限に引き出すには、この新しいアーキテクチャにプロセスを配置する慎重なアプローチが必要です。 ここでは、HPC アプリケーション用の Azure HC シリーズ VM への実装の概要を説明します。 物理 NUMA ドメインを指して "pNUMA" という用語を、また仮想化 NUMA ドメインを指して "vNUMA" を使用します。 同様に、CPU コアを指して "pCore" という用語を、仮想化 CPU コアを指して "仮想コア" という用語を使用します。
 

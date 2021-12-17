@@ -15,22 +15,28 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 19094b6d2c10a77e5e99b698f2e7f5170677110b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 22c1658740af7ef7eccbeca02c6f98485ec11222
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061385"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378306"
 ---
-# <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub との切断に関する監視、診断、およびトラブルシューティング
+# <a name="monitor-diagnose-and-troubleshoot-azure-iot-hub-disconnects"></a>Azure IoT Hub との切断を監視、診断してトラブルシューティングを行う 
 
 IoT デバイスの接続の問題は、考えられる障害点が多数あるため、トラブルシューティングが難しい場合があります。 アプリケーション ロジック、物理ネットワーク、プロトコル、ハードウェア、IoT Hub、およびその他のクラウド サービスのすべてが、問題の原因となる可能性があります。 問題の原因を検出して特定する能力は非常に重要です。 ただし、大規模な IoT ソリューションには数千のデバイスが含まれる可能性があるため、個々のデバイスを手動でチェックするのは現実的ではありません。 IoT Hub は、ユーザーを支援する 2 つの Azure サービスと統合されています。
 
-* **Azure Monitor**: これらの問題を大規模に検出、診断、およびトラブルシューティングするために、IoT Hub によって Azure Monitor を通して提供される監視機能を使用します。 これには、切断が発生したときに通知とアクションをトリガーするアラートの設定と、切断の原因となった状態を検出するために使用できるログの構成が含まれます。
+* **Azure Monitor** Azure Monitor では、IoT Hub からの利用統計情報を収集、分析、処理することができます。 これらの問題を大規模に検出、診断、およびトラブルシューティングするために、IoT Hub によって Azure Monitor を通して提供される監視機能を使用します。 これには、切断が発生したときに通知とアクションをトリガーするアラートの設定と、切断の原因となった状態を検出するために使用できるログの構成が含まれます。
 
-* **Azure Event Grid**: 重要なインフラストラクチャとデバイスごとの切断については、Azure Event Grid を使用して、IoT Hub によって生成されるデバイスの接続および切断イベントをサブスクライブします。
+* **Azure Event Grid**: 重要なインフラストラクチャとデバイスごとの切断については、Azure Event Grid を使用して、IoT Hub によって生成されるデバイスの接続および切断イベントをサブスクライブします。 Azure Event Grid では、次のいずれかのイベント ハンドラーを使用できます。
 
-どちらの場合も、これらの機能は IoT Hub が監視できるものに限定されます。そのため、デバイスとその他の Azure サービスに対する監視のベスト プラクティスに従うこともお勧めします。
+  - Azure Functions
+  - Logic Apps
+  - Azure Automation
+  - Webhook
+  - Queue Storage
+  - ハイブリッド接続
+  - Event Hubs
 
 ## <a name="event-grid-vs-azure-monitor"></a>Event Grid と Azure Monitor
 
@@ -44,11 +50,9 @@ Event Grid は、重要なデバイスとインフラストラクチャのデバ
 
 * 簡易設定: Azure Monitor メトリック アラートは、電子メール、SMS、音声、およびその他の通知を通じて通知を配信するために他のサービスと統合する必要がない、簡易セットアップ エクスペリエンスを提供します。  Event Grid では、通知を配信するために他の Azure サービスと統合する必要があります。 どちらのサービスも他のサービスと統合して、より複雑なアクションをトリガーできます。
 
-低遅延かつデバイスごとの機能があるため、運用環境では、接続の監視には Event Grid を使用することを強くお勧めします。 もちろん、選択は排他的ではなく、Azure Monitor メトリック アラートと Event Grid の両方を使用できます。 切断を追跡するかどうかにかかわらず、Azure Monitor リソース ログを使用して、予期しないデバイス切断の理由のトラブルシューティングに役立てることができます。 次のセクションでは、これらのオプションのそれぞれについて詳しく説明します。
+## <a name="event-grid-monitor-connect-and-disconnect-events"></a>Event Grid: イベントの接続および切断イベントを監視する
 
-## <a name="event-grid-monitor-device-connect-and-disconnect-events"></a>Event Grid: デバイスの接続と切断のイベントを監視する
-
-実稼働のデバイスの接続と切断のイベントを監視するには、Event Grid で [**DeviceConnected** と **DeviceDisconnected** イベント](iot-hub-event-grid.md#event-types)をサブスクライブして、アラートをトリガーし、デバイスの接続状態を監視することをお勧めします。 Event Grid を使用すると、イベント待機時間が Azure Monitor よりもはるかに短くなり、接続されているデバイスの合計数ではなく、デバイスごとに監視できます。 これらの要因により、Event Grid は重要なデバイスとインフラストラクチャを監視するための推奨される方法となっています。
+実稼働のデバイスの接続と切断のイベントを監視するには、Event Grid で [**DeviceConnected** と **DeviceDisconnected** イベント](iot-hub-event-grid.md#event-types)をサブスクライブして、アラートをトリガーし、デバイスの接続状態を監視することをお勧めします。 Event Grid では、Azure Monitor よりもイベント待機時間がはるかに短くなり、デバイスごとの監視が可能です。 これらの要因により、Event Grid は重要なデバイスとインフラストラクチャを監視するための推奨される方法となっています。
 
 Event Grid を使用してデバイス切断の監視またはアラートのトリガーを行う場合、Azure IoT SDK を使用するデバイス上での SAS トークンの更新による定期的な切断をフィルター除外する方法が組み込まれていることを確認してください。 詳細については、「[Azure IoT SDK での MQTT デバイスの切断動作](#mqtt-device-disconnect-behavior-with-azure-iot-sdks)」を参照してください。
 
@@ -72,7 +76,7 @@ IoT ハブを作成した後は、できるだけ早く診断設定を作成す�
 
 宛先へのログのルーティングの詳細については、「[収集とルーティング](monitor-iot-hub.md#collection-and-routing)」を参照してください。 診断設定を作成する詳細な手順については、[メトリックとログの使用に関するチュートリアル](tutorial-use-metrics-and-diags.md)を参照してください。
 
-## <a name="azure-monitor-set-up-metric-alerts-for-device-disconnect-at-scale"></a>Azure Monitor:デバイスの切断に関するメトリック アラートを大規模に設定する
+## <a name="azure-monitor-set-up-metric-alerts-for-device-disconnects"></a>Azure Monitor: デバイスの切断のメトリック アラートを設定する
 
 IoT Hub によって出力されたプラットフォーム メトリックに基づいてアラートを設定できます。 メトリック アラートを使用すると、関心のある状態が発生したことをユーザーに通知したり、その状態に自動的に対応できるアクションをトリガーしたりすることができます。
 
@@ -80,13 +84,13 @@ IoT Hub によって出力されたプラットフォーム メトリックに�
 
 :::image type="content" source="media/iot-hub-troubleshoot-connectivity/configure-alert-logic.png" alt-text="接続されているデバイス メトリックに関するアラート ロジックの設定。":::
 
-メトリック アラート ルールを使用して、デバイスの切断時の異常を大規模に監視できます。 つまり、多数のデバイスが予期せず切断された場合です。 このような現象が検出された場合は、ログを確認して問題のトラブルシューティングに役立てることができます。 ただし、デバイスごとの切断および重要なデバイスの切断を監視するには、Event Grid を使用する必要があります。 また Event Grid は、Azure メトリックよりもリアルタイムのエクスペリエンスを提供します。
+メトリック アラート ルールを使用して、デバイスの切断時の異常を大規模に監視できます。 つまり、多数のデバイスが予期せず切断した場合の判断にアラートを使用できます。 これが検出された場合は、ログを確認して問題のトラブルシューティングに役立てることができます。 ただし、デバイスごとの切断および重要なデバイスの切断を準リアル タイムで監視するには、Event Grid を使用する必要があります。
 
 IoT Hub でのアラートの詳細については、[IoT Hub の監視でのアラート](monitor-iot-hub.md#alerts)に関するページを参照してください。 IoT Hub でのアラート作成のチュートリアルについては、[メトリックとログの使用に関するチュートリアル](tutorial-use-metrics-and-diags.md)を参照してください。 アラートの詳細な概要については、Azure Monitor のドキュメントの「[Microsoft Azure のアラートの概要](../azure-monitor/alerts/alerts-overview.md)」を参照してください。
 
 ## <a name="azure-monitor-use-logs-to-resolve-connectivity-errors"></a>Azure Monitor:ログを使用して接続に関するエラーを解決する
 
-デバイスの切断を検出した場合、Azure Monitor メトリック アラートでも Event Grid でも、ログを使用してその理由のトラブルシューティングを行うことができます。 このセクションでは、Azure Monitor ログで一般的な問題を探す方法について説明します。 下の手順では、IoT Hub 接続ログを Log Analytics ワークスペースに送信するように、[診断設定](#azure-monitor-route-connection-events-to-logs)が既に作成されていることを前提としています。
+Azure Monitor のメトリック アラートまたは Event Grid でデバイスの切断が検出された場合、ログを使用してその理由のトラブルシューティングを行うことができます。 このセクションでは、Azure Monitor ログで一般的な問題を探す方法について説明します。 下の手順では、IoT Hub 接続ログを Log Analytics ワークスペースに送信するように、[診断設定](#azure-monitor-route-connection-events-to-logs)が既に作成されていることを前提としています。
 
 Azure Monitor ログに IoT Hub リソース ログをルーティングする診断設定を作成したら、これらの手順に従って Azure portal でログを表示します。
 
@@ -101,11 +105,11 @@ Azure Monitor ログに IoT Hub リソース ログをルーティングする�
     | where ( ResourceType == "IOTHUBS" and Category == "Connections" and Level == "Error")
     ```
 
-1. 結果がある場合は、`OperationName`、`ResultType` (エラー コード)、および `ResultDescription` (エラー メッセージ) を探してエラーの詳細を確認します。
+1. 結果がある場合は、`OperationName`、`ResultType` (エラー コード)、および `ResultDescription` (エラー メッセージ) を探して詳細を確認します。
 
    ![エラー ログの例](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
-エラーを特定したら、最も一般的なエラーの解決に役立つ問題解決ガイドに従ってください。
+最も一般的なエラーを解決するには、次の問題解決ガイドを使用します。
 
 * [400027 ConnectionForcefullyClosedOnNewConnection](iot-hub-troubleshoot-error-400027-connectionforcefullyclosedonnewconnection.md)
 
@@ -127,10 +131,10 @@ Azure IoT デバイス SDK は、MQTT (および MQTT over WebSocket) プロト�
 
 | SDK | トークンの有効期間 | トークンの更新 | 更新の動作 |
 |-----|----------|---------------------|---------|
-| .NET | 60 分、構成可能 | 有効期間の 85 %、構成可能 | SDK は、トークンの有効期間に 10 分の猶予期間を加算した期間で接続と切断を行います。 情報イベントとエラーがログに生成されます。 |
-| Java | 60 分、構成可能 | 有効期間の 85%、構成不可 | SDK は、トークンの有効期間に 10 分の猶予期間を加算した期間で接続と切断を行います。 情報イベントとエラーがログに生成されます。 |
-| Node.js | 60 分、構成可能 | 構成可能 | SDK は、トークンの更新時に接続して切断します。 情報イベントのみがログに生成されます。 |
-| Python | 60 分、構成不可 | -- | SDK はトークンの有効期間で接続して切断します。 |
+| .NET | 60 分、構成可能 | 有効期間の 85 %、構成可能 | SDK により、トークンの有効期間に 10 分の猶予期間を加算した期間で切断と再接続が行われます。 情報イベントとエラーがログに生成されます。 |
+| Java | 60 分、構成可能 | 有効期間の 85%、構成不可 | SDK により、トークンの有効期間に 10 分の猶予期間を加算した期間で切断と再接続が行われます。 情報イベントとエラーがログに生成されます。 |
+| Node.js | 60 分、構成可能 | 構成可能 | SDK により、トークンの更新時に切断され再接続されます。 情報イベントのみがログに生成されます。 |
+| Python | 60 分、構成可能 | 有効期限の切れる 120 秒前 | SDK により、トークンの有効期間に切断され再接続されます。 |
 
 次のスクリーンショットは、さまざまな SDK についての Azure Monitor ログにおけるトークンの更新動作を示しています。 トークンの有効期間と更新のしきい値は、注記のとおり既定値から変更されています。
 
@@ -146,7 +150,7 @@ Azure IoT デバイス SDK は、MQTT (および MQTT over WebSocket) プロト�
 
     :::image type="content" source="media/iot-hub-troubleshoot-connectivity/node-mqtt.png" alt-text="Node SDK を使用した Azure Monitor ログでの MQTT 経由のトークンの更新に関するエラー動作。":::
 
-次のクエリは、結果を収集するために使用されました。 このクエリはプロパティ バッグから SDK の名前とバージョンを抽出します。詳細については、「[IoT Hub ログの SDK バージョン](monitor-iot-hub.md#sdk-version-in-iot-hub-logs)」を参照してください。
+次のクエリは、結果を収集するために使用されました。 このクエリは、プロパティ バッグから SDK 名とバージョンを抽出します。 詳細については、[IoT Hub ログの SDK バージョン](monitor-iot-hub.md#sdk-version-in-iot-hub-logs)に関するページを参照してください。
 
 ```kusto
 AzureDiagnostics
@@ -160,7 +164,7 @@ AzureDiagnostics
 
 IoT ソリューションの開発者またはオペレーターは、ログの接続または切断イベントおよび関連するエラーを解釈するためには、この動作に注意する必要があります。 デバイスのトークンの有効期間または更新の動作を変更する場合は、デバイスがデバイス ツイン設定を実装しているかどうか、またはこれを可能にするデバイス メソッドを実装しているかどうかを確認してください。
 
-Event Hub を使用してデバイスの接続を監視している場合は、SAS トークンの更新による定期的な切断をフィルターで除外する方法が組み込まれていることを確認してください。たとえば、切断イベントの後に特定の期間内に接続イベントが続く限り、切断に基づいてアクションをトリガーしないようにします。
+デバイスの接続を Event Hub を使用して監視している場合、SAS トークンの更新による一時的な切断を除外する方法を構築してください。 たとえば、特定の期間内に切断イベントの後に接続イベントがある場合は、切断に基づくアクションがトリガーされないようにします。
 
 > [!NOTE]
 > IoT Hub は、デバイスごとにアクティブな MQTT 接続を 1 つだけサポートします。 同じデバイス ID で新しい MQTT 接続が行われると、IoT Hub は既存の接続を破棄します。

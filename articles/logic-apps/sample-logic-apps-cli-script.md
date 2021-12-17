@@ -7,16 +7,16 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: b81d9b4a637965dd103d8fa89305424686a0c72c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8086ce0e5964d4e37a5ffc3082d5f2856058e4e5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789917"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875487"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI のサンプル スクリプト - ロジック アプリを作成する
 
-このスクリプトでは、[Azure CLI Logic Apps 拡張機能](/cli/azure/ext/logic/logic) (`az logic`) を使用して、サンプルのロジック アプリを作成します。 Azure CLI を使用してロジック アプリを作成および管理するための詳細なガイドについては、[Azure CLI の Logic Apps クイックスタート](quickstart-logic-apps-azure-cli.md)を参照してください。
+このスクリプトでは、[Azure CLI Logic Apps 拡張機能](/cli/azure/logic) (`az logic`) を使用して、サンプルのロジック アプリを作成します。 Azure CLI を使用してロジック アプリを作成および管理するための詳細なガイドについては、[Azure CLI の Logic Apps クイックスタート](quickstart-logic-apps-azure-cli.md)を参照してください。
 
 > [!WARNING]
 > Azure CLI Logic Apps 拡張機能は、現在、"*試験段階*" であり、"*カスタマーサポートの対象外*" です。 この CLI 拡張機能は、特に運用環境での使用を選択する場合、慎重に使用してください。
@@ -198,7 +198,7 @@ az group delete --name testResourceGroup --yes
 | command | メモ |
 | ------- | ----- |
 | [`az group create`](/cli/azure/group#az_group_create) | ロジック アプリのリソースを格納するリソース グループを作成します。 |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | パラメーター `--definition` で定義されているワークフローに基づいてロジック アプリを作成します。 |
+| [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) | パラメーター `--definition` で定義されているワークフローに基づいてロジック アプリを作成します。 |
 | [`az group delete`](/cli/azure/vm/extension) | リソース グループと、そのすべての入れ子になったリソースを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ

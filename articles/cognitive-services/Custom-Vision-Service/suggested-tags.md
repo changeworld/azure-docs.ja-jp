@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: 94ca47e6114e4f8c3485f6072facd07c25e4b96a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be1e97aead471012e6d0e92931d670306cb1ddf4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "73647761"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458306"
 ---
 # <a name="label-images-faster-with-smart-labeler"></a>Smart Labeler を使用して画像により早くラベルを付ける
 
@@ -65,7 +65,7 @@ ms.locfileid: "73647761"
 1. トレーニング プロセスを再開します。
 1. 提案の品質に満足できるまで、前の手順を繰り返します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 クイック スタートに従って、Custom Vision プロジェクトの作成とトレーニングを開始します。
 

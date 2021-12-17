@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 30579536b8051e9a045c217751871287636a3976
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae8311da88ec2598417dd248e12fb044bc9dbf38
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102454280"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223217"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift のサポート ポリシー
 
@@ -30,11 +30,11 @@ Azure Red Hat OpenShift 4 クラスターの一部の構成は、クラスター
 * Azure Red Hat OpenShift サービス ログ (mdsd ポッド) を削除または変更しないでください。
 * 'arosvc.azurecr.io' クラスターのプル シークレットを削除または変更しないでください。
 * すべてのクラスター仮想マシンには、少なくとも Azure Resource Manager (ARM) とサービス ログ (Geneva) エンドポイントへの直接送信インターネット アクセスが必要です。  HTTPS プロキシの形式はサポートされていません。
-* クラスターの仮想ネットワークの DNS 構成は変更しないでください。 既定の Azure DNS リゾルバーを使用する必要があります。
 * クラスターの MachineConfig オブジェクト (kubelet 構成など) は、どのような方法でもオーバーライドしないでください。
 * unsupportedConfigOverrides オプションを設定しないでください。 これらのオプションを設定すると、マイナー バージョンのアップグレードができなくなります。
 * Azure Red Hat OpenShift サービスからはプライベート リンク サービスを介してクラスターにアクセスします。  サービス アクセスを削除または変更しないでください。
 * 非 RHCOS コンピューティング ノードはサポートされていません。 たとえば、RHEL コンピューティング ノードを使用することはできません。
+* ポリシーをサブスクリプションまたは管理グループ内に配置しないでください。これにより、SRE が ARO クラスターに対して通常のメンテナンスを実行できなくなります (ARO RP マネージド クラスター リソース グループにタグが必要など)。
 
 ## <a name="supported-virtual-machine-sizes"></a>サポートされる仮想マシンのサイズ
 
@@ -78,3 +78,19 @@ Azure Red Hat OpenShift 4 は、次の仮想マシン サイズのワーカー �
 |Dsv3|Standard_D8s_v3|8|32|
 |Dsv3|Standard_D16s_v3|16|64|
 |Dsv3|Standard_D32s_v3|32|128|
+
+### <a name="day-2-worker-node"></a>運用段階のワーカー ノード
+次のインスタンスの種類は、MachineSet を構成することで運用段階の操作としてサポートされています。 MachineSet の作成方法の詳細については、[Azure での MachineSet の作成](https://docs.openshift.com/container-platform/4.8/machine_management/creating_machinesets/creating-machineset-azure.html)に関する記事をご覧ください。
+
+
+|系列|サイズ|vCPU|メモリ:GiB|
+|-|-|-|-|
+|L4s|Standard_L4s|4|32|
+|L8s|Standard_L8s|8|64|
+|L16s|Standard_L16s|16|128|
+|L32s|Standard_L32s|32|256|
+|L8s_v2|Standard_L8s_v2|8|64|
+|L16s_v2|Standard_L16s_v2|16|128|
+|L32s_v2|Standard_L32s_v2|32|256|
+|L48s_v2|Standard_L48s_v2|32|384|
+|L64s_v2|Standard_L48s_v2|64|512|

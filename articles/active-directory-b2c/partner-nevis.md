@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 42e244249ecb0539637918ae2439bdb4f5da4b38
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 0bbbe80a9f4c743fb658aa313641ab790e194509
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588481"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234340"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>パスワードレス認証のために Azure Active Directory B2C を使用して Nevis を構成するチュートリアル
 
@@ -220,7 +220,7 @@ ms.locfileid: "107588481"
 
 4. **[今すぐ実行]** を選択します。
 
-5. ポップアップ ウィンドウで **[今すぐサインアップ]** を選択します。
+5. ポップアップ ウィンドウで、 **[今すぐサインアップ]** を選択します。
 
 6. 自分のメール アドレスを追加します。
 

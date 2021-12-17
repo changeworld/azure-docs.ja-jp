@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/29/2021
+ms.date: 09/28/2021
 ms.author: aahi
-ms.openlocfilehash: 1cc17306265e6e8ba2e7fb3f570d0017b006b84f
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 5998ccdfa48a700ac8789954246f6b7bcec60543
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284687"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360509"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Read v3. x OCR コンテナーへの移行
 
@@ -35,7 +35,7 @@ Read v3.2 コンテナーは、Computer Vision API のバージョン 3 を使�
 * `/vision/v3.2-preview.1/read/analyze`
 * `/vision/v3.2-preview.1/read/syncAnalyze`
 
-クラウドベースの Read API のバージョン 3 を使用するようにアプリケーションを更新する方法の詳細については、[Computer Vision v3 REST API 移行ガイド](./upgrade-api-versions.md)を参照してください。 この情報は、コンテナーにも適用されます。 同期操作はコンテナーでのみサポートされていることに注意してください。
+クラウドベースの Read API のバージョン 3 を使用するようにアプリケーションを更新する方法の詳細については、[Computer Vision v3 REST API 移行ガイド](./upgrade-api-versions.md)を参照してください。 この情報は、コンテナーにも適用されます。 同期操作はコンテナーでのみサポートされています。
 
 ## <a name="memory-requirements"></a>メモリ要件
 
@@ -69,7 +69,7 @@ Read v3.2 コンテナーは、Computer Vision API のバージョン 3 を使�
 | Azure キュー | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | 実稼働 |
 | RabbitMQ    | 利用不可 | 実稼働 |
 
-冗長性を高めるために、Read v3.x コンテナーは可視性タイマーを使用して、複数コンテナーのセットアップの実行時にクラッシュが発生した場合でも要求を正常に処理できるようにします。 
+冗長性を高めるため、Read v3.x コンテナーでは、可視性タイマーを使用して、複数コンテナーのセットアップの実行時にクラッシュが発生した場合に要求を正常に処理できるようになっています。 
 
 タイマーを `Queue:Azure:QueueVisibilityTimeoutInMilliseconds` に設定します。これにより、別のワーカーが処理しているときにメッセージが非表示になる時間を設定できます。 ページが冗長的に処理されないようにするには、タイムアウト期間を 120 秒に設定することをお勧めします。 既定値は 30 秒です。
 
@@ -83,5 +83,5 @@ Read v3.2 コンテナーは、Computer Vision API のバージョン 3 を使�
 * 構成設定について、[コンテナーの構成](computer-vision-resource-container-config.md)を確認する
 * [OCR の概要](overview-ocr.md)に関するページを読み、印刷されたテキストと手書きのテキストの認識の詳細について確認する
 * コンテナーでサポートされるメソッドの詳細について、[Read API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) を参照する。
-* [よく寄せられる質問 (FAQ)](FAQ.md) を参照して、Computer Vision 機能に関連する問題を解決する。
+* [よく寄せられる質問 (FAQ)](FAQ.yml) を参照して、Computer Vision 機能に関連する問題を解決する。
 * さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

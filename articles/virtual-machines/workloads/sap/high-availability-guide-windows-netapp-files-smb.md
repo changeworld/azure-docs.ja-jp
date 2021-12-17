@@ -13,24 +13,24 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/18/2021
+ms.date: 07/29/2021
 ms.author: radeltch
-ms.openlocfilehash: a4c4631a0a1263e5a5398c44a8570f92571102e8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 59c977b94efe62489208fca0d2514a5d2e381aff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045838"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803690"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files (SMB) を使用した Windows 上の Azure VM における SAP NetWeaver の高可用性
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
+[high-availability-guide]:high-availability-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-azure-doc]:../../../azure-netapp-files/azure-netapp-files-introduction.md
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=storage&regions=all
-[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -50,9 +50,9 @@ ms.locfileid: "102045838"
 [suse-drbd-guide]:https://www.suse.com/documentation/sle-ha-12/singlehtml/book_sleha_techguides/book_sleha_techguides.html
 [suse-ha-12sp3-relnotes]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
 
-[template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
-[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
-[template-file-server]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-file-server-md%2Fazuredeploy.json
+[template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
+[template-file-server]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-file-server-md%2Fazuredeploy.json
 
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
@@ -110,17 +110,19 @@ SMB ファイル共有の前提条件:
 
 Azure NetApp Files を使用するための準備として、次のステップを実行します。  
 
-1. 「[Azure NetApp Files の登録](../../../azure-netapp-files/azure-netapp-files-register.md)」のステップに従います  
-2. 「[NetApp アカウントを作成する](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)」で説明されているステップに従って、Azure NetApp アカウントを作成します  
-3. 「[容量プールを設定する](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)」の指示に従って、容量プールを設定します
-4. Azure NetApp Files リソースは、委任されたサブネット内に存在する必要があります。 「[サブネットを Azure NetApp Files に委任する](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)」の指示に従って、委任されたサブネットを作成します。  
+1. 「[NetApp アカウントを作成する](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)」で説明されているステップに従って、Azure NetApp アカウントを作成します  
+2. 「[容量プールを設定する](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)」の指示に従って、容量プールを設定します
+3. Azure NetApp Files リソースは、委任されたサブネット内に存在する必要があります。 「[サブネットを Azure NetApp Files に委任する](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)」の指示に従って、委任されたサブネットを作成します。  
 
    > [!IMPORTANT]
    > SMB ボリュームを作成する前に Active Directory の接続を作成する必要があります。 [Active Directory コンポーネント要件](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)を確認します。  
+   >   
+   > Active Directory 接続の作成時には、SAP アプリケーションにおける 13 文字のホスト名制限を回避するために SMB サーバー (コンピューター アカウント) プレフィックスを 8 文字以内で入力してください (サフィックスが SMB コンピューター アカウント名に自動的に追加されます)。     
+   > SAP アプリケーションでのホスト名の制限については、[2718300 - 物理および仮想ホスト名の長さの制限](https://launchpad.support.sap.com/#/notes/2718300)および [611361 - SAP ABAP Platform サーバーのホスト名](https://launchpad.support.sap.com/#/notes/611361)に関するページを参照してください。  
 
-5. 「[Active Directory 接続を作成する](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection)」の説明に従って、Active Directory 接続を作成します  
-6. 「[SMB ボリュームを追加する](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)」の指示に従って、SMB Azure NetApp Files の SMB ボリュームを作成します  
-7. Windows 仮想マシンに SMB ボリュームをマウントします。
+4. 「[Active Directory 接続を作成する](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection)」の説明に従って、Active Directory 接続を作成します  
+5. 「[SMB ボリュームを追加する](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)」の指示に従って、SMB Azure NetApp Files の SMB ボリュームを作成します  
+6. Windows 仮想マシンに SMB ボリュームをマウントします。
 
 > [!TIP]
 > Azure NetApp Files ボリュームをマウントする方法の手順については、[Azure Portal](https://portal.azure.com/#home) で Azure NetApp Files オブジェクトに移動した場合は、 **[ボリューム]** ブレードをクリックし、 **[マウント手順]** をクリックします。  
@@ -163,6 +165,20 @@ SAP から、次のソフトウェアが必要です。
 
 1. SAP ASCS/SCS インスタンスを 2 番目のクラスター ノードにインストールします。 SAP SWPM インストール ツールを起動し、**製品** > **DBMS** > インストール > アプリケーション サーバー ABAP (または Java) > 高可用性システム > ASCS/SCS インスタンス > 追加のクラスター ノードに移動します。  
 
+### <a name="update-the-sap-ascsscs-instance-profile"></a>SAP ASCS/SCS インスタンス プロファイルの更新
+
+SAP ASCS/SCS インスタンス プロファイル \<SID>_ASCS/SCS\<Nr>_ \<Host> のパラメーターを更新します。
+
+
+| パラメーター名 | パラメーター値 |
+| --- | --- |
+| gw/netstat_once | **0** |
+| enque/encni/set_so_keepalive  | **true** |
+| service/ha_check_node | **1** |
+
+パラメーター `enque/encni/set_so_keepalive` は、ENSA1 を使用する場合にのみ必要です。  
+SAP ASCS/SCS インスタンスを再起動します。 [SAP ASCS/SCS インスタンスのクラスター ノードに対するレジストリ項目の設定][high-availability-guide]に関する記事に従って、両方の SAP ASCS/SCS クラスター ノードの `KeepAlive` パラメーターを設定します。 
+
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>DBMS インスタンスと SAP アプリケーション サーバーのインストール
 
 下記をインストールして、SAP のインストールを完了します。
@@ -192,6 +208,40 @@ SAP から、次のソフトウェアが必要です。
 ![図 3:ロック エントリは、フェールオーバー テスト後も保持されます](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-3.png)  
 
 詳細については、「[ERS を使用した ASCS のエンキュー フェールオーバーのトラブルシューティング](https://wiki.scn.sap.com/wiki/display/SI/Troubleshooting+for+Enqueue+Failover+in+ASCS+with+ERS)」に関する説明を参照してください
+
+## <a name="optional-configurations"></a>オプションの構成
+
+次の図は、VM の総数を減らすために Microsoft Windows フェールオーバー クラスターを実行している Azure VM 上の複数の SAP インスタンスを示しています。
+
+これは、SAP ASCS/SCS クラスター上のローカル SAP アプリケーション サーバーとすることも、Microsoft SQL Server Always On ノード上の SAP ASCS/SCS クラスター ロールとすることもできます。
+
+> [!IMPORTANT]
+> ローカル SAP アプリケーション サーバーを SQL Server Always On ノードにインストールすることはサポートされていません。
+>
+
+SAP ASCS/SCS と Microsoft SQL Server データベースは両方とも単一障害点 (SPOF) です。 Windows 環境でこれらの SPOF を保護するには、Azure NetApp Files SMB を使用します。
+
+SAP ASCS/SCS のリソース消費量はかなり小さいですが、SQL Server または SAP アプリケーション サーバーのどちらかのメモリ構成を、2 GB 削減することをお勧めします。
+
+### <a name="sap-application-servers-on-wsfc-nodes-using-netapp-files-smb"></a><a name="5121771a-7618-4f36-ae14-ccf9ee5f2031"></a>NetApp Files SMB を使用した WSFC ノード上の SAP アプリケーション サーバー
+
+![図 4: Windows NetApp Files SMB とローカルにインストールされた SAP アプリケーション サーバーを使用した Azure での Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-8007A]
+
+> [!NOTE]
+> この図では、追加のローカル ディスクの使用を示しています。 OS ドライブ (C:\)) 上にアプリケーション ソフトウェアをインストールしないお客様の場合、これは省略可能です
+>
+### <a name="sap-ascsscs-on-sql-server-always-on-nodes-using-azure-netapp-files-smb"></a><a name="01541cf2-0a03-48e3-971e-e03575fa7b4f"></a> Azure NetApp Files SMB を使用した SQL Server Always On ノードでの SAP ASCS/SCS
+
+> [!IMPORTANT]
+> SQL Server ボリュームに Azure NetApp Files SMB を使用することはサポートされていません。
+> 
+
+![図: Azure NetApp Files SMB を使用した SQL Server Always On ノード上の SAP ASCS/SCS][sap-ha-guide-figure-8007B]
+
+> [!NOTE]
+> この図では、追加のローカル ディスクの使用を示しています。 OS ドライブ (C:\)) 上にアプリケーション ソフトウェアをインストールしないお客様の場合、これは省略可能です
+>
+
 ## <a name="next-steps"></a>次のステップ
 
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
@@ -200,3 +250,6 @@ SAP から、次のソフトウェアが必要です。
 * 高可用性を確立し、SAP のディザスター リカバリーを計画する方法について学びます 
 * HANA on Azure (大規模なインスタンス)。[Azure 上での SAP HANA (大規模なインスタンス) の高可用性およびディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)に関するページを参照してください。
 * Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。
+
+[sap-ha-guide-figure-8007A]:./media/virtual-machines-shared-sap-high-availability-guide/ha-smb-as.png
+[sap-ha-guide-figure-8007B]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sql-ascs-smb.png

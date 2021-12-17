@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: ae49a8738ba711ac6c77f2e299852ad61f70be56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd2cc6d6d64f3d593c8f069a9938124a05e209c6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92912907"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454696"
 ---
 # <a name="learn-text-moderation-concepts"></a>テキスト モデレーションの概念を確認する
 
@@ -129,7 +129,7 @@ JSON の次の抽出箇所は、出力例を示しています。
 
 ## <a name="auto-correction"></a>自動修正
 
-次のような入力テキストについて考えます ('lzay' および 'f0x' は意図的です)。
+入力テキストが以下であるとします ("qu!ck"、"f0x"、および "lzay" は意図的なものです)。
 
 > The qu!ck brown f0x jumps over the lzay dog.
 

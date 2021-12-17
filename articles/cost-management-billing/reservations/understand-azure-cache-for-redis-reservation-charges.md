@@ -5,14 +5,14 @@ author: yegu-ms
 manager: maiye
 ms.service: cache
 ms.topic: conceptual
-ms.date: 01/22/2020
+ms.date: 09/15/2021
 ms.author: yegu
-ms.openlocfilehash: 5f9e0a18db0920acd35ebd7b133ed3fe5d0eaee9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 46363d3bed85c275a39fea174191fad18d95d753
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352951"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609424"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>Azure Cache for Redis インスタンスに予約割引が適用されるしくみについて
 
@@ -20,7 +20,7 @@ Azure Cache for Redis の予約容量を購入すると、予約の属性や数�
 
 ## <a name="how-reservation-discount-is-applied"></a>予約割引の適用方法
 
-予約割引は、"***使用しないと失われます** _"。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。
+予約割引は、***使用しないと失われます***。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。
 
 リソースをシャットダウンすると、予約割引は、指定されたスコープ内の別の一致するリソースに自動的に適用されます。 指定したスコープ内に一致するリソースが見つからない場合、予約済み時間は失われます。
 
@@ -30,7 +30,7 @@ Azure Cache for Redis の予約容量割引は、利用中のキャッシュに 
 
 次の例は、購入したキャッシュ数と実行する時間に応じて、Azure Cache for Redis の予約容量割引がどのように適用されるかを示しています。
 
-_ **例 1**: 6 GB キャッシュ用の Azure Cache for Redis の予約容量を購入するとします。 予約の残りの属性と一致する 13 GB のキャッシュを実行している場合、Azure Cache for Redis の計算使用量の 7 GB に対して従量課金制の料金が請求され、1 時間分の 6 GB のキャッシュの計算使用量に対して予約割引が適用されます。
+* **例 1**: 6 GB キャッシュ用の Azure Cache for Redis の予約容量を購入するとします。 予約の残りの属性と一致する 13 GB のキャッシュを実行している場合、Azure Cache for Redis の計算使用量の 7 GB に対して従量課金制の料金が請求され、1 時間分の 6 GB のキャッシュの計算使用量に対して予約割引が適用されます。
 
 以降の例では、購入する Azure Cache for Redis の予約容量は、26 GB のキャッシュ用であり、残りの予約の属性は実行中のキャッシュと一致するものとします。
 

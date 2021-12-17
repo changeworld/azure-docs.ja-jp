@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de25644e90b459991f9c2365eceba54b1cde8906
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90562521"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223426"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>テンプレートを使用して IPv6 でインターネットに接続するロード バランサー ソリューションをデプロイする
 
@@ -30,7 +30,7 @@ ms.locfileid: "90562521"
 
 
 >[!NOTE] 
->この記事で説明するのは、Basic Load Balancer で IPv4 と IPv6 の両方の接続性を提供する初歩的な IPv6 機能です。 IPv6 接続を仮想ネットワークと統合し、IPv6 ネットワーク セキュリティ グループの規則、IPv6 ユーザー定義のルーティング、IPv6 の Basic と Standard の負荷分散などの主要な機能を備えた [Azure VNET の IPv6](../virtual-network/ipv6-overview.md) で、包括的な IPv6 接続を利用できるようになりました。  Azure VNET の IPv6 は、Azure での IPv6 アプリケーションに推奨される標準です。 [Azure VNET Powershell の IPv6 のデプロイ](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)に関するページを参照してください  
+>この記事で説明するのは、Basic Load Balancer で IPv4 と IPv6 の両方の接続性を提供する初歩的な IPv6 機能です。 IPv6 接続を仮想ネットワークと統合し、IPv6 ネットワーク セキュリティ グループの規則、IPv6 ユーザー定義のルーティング、IPv6 の Basic と Standard の負荷分散などの主要な機能を備えた [Azure VNET の IPv6](../virtual-network/ip-services/ipv6-overview.md) で、包括的な IPv6 接続を利用できるようになりました。  Azure VNET の IPv6 は、Azure での IPv6 アプリケーションに推奨される標準です。 [Azure VNET Powershell の IPv6 のデプロイ](./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)に関するページを参照してください  
 
 Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
@@ -50,7 +50,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
 ## <a name="deploying-the-template-using-the-azure-portal"></a>Azure Portal を使用したテンプレートのデプロイ
 
-この記事では、[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) ギャラリーで公開されているテンプレートを参照します。 ギャラリーからテンプレートをダウンロードするか、ギャラリーから直接 Azure のデプロイメントを起動します。 この記事では、ローカル コンピューターにテンプレートをダウンロードしていることを前提としています。
+この記事では、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/load-balancer-ipv6-create/) ギャラリーで公開されているテンプレートを参照します。 ギャラリーからテンプレートをダウンロードするか、ギャラリーから直接 Azure のデプロイメントを起動します。 この記事では、ローカル コンピューターにテンプレートをダウンロードしていることを前提としています。
 
 1. Azure Portal を開き、Azure のサブスクリプション内で VM とネットワーク リソースを作成する権限を持つアカウントでサインインします。 また、既存のリソースを使用している場合を除き、アカウントにはリソース グループとストレージ アカウントを作成する権限が必要です。
 2. メニューで [+ 新規] をクリックして検索ボックス「テンプレート」と入力します。 検索結果から [テンプレートのデプロイ] を選択します。

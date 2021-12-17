@@ -5,12 +5,13 @@ services: automation
 ms.subservice: ''
 ms.date: 04/16/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: e6caf3fed708e89b55a88719ca5358f6174c2ac8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5fe977851011bdfa4f7bbf2bde24e5e4b6fd480d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896530"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457859"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Azure Automation State Configuration の問題のトラブルシューティング
 
@@ -89,7 +90,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 DSC の適切なエンドポイントへのアクセス権がご利用のマシンにあることを確認し、もう一度やり直してください。 必要なポートとアドレスの一覧については、[ネットワークの計画](../automation-dsc-overview.md#network-planning)に関するページを参照してください。
 
-## <a name="a-nameunauthorizedscenario-status-reports-return-the-response-code-unauthorized"></a><a name="unauthorized"><a/>シナリオ:状態レポートから応答コード "承認されていません" が返される
+## <a name="scenario-status-reports-return-the-response-code-unauthorized"></a><a name="unauthorized"></a>シナリオ:状態レポートから応答コード "承認されていません" が返される
 
 ### <a name="issue"></a>問題
 

@@ -3,12 +3,12 @@ title: ポータルでの Azure Functions の Premium プランの作成
 description: Azure portal を使用して、Premium プランで実行される関数アプリを作成する方法について説明します。
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: 9cab67f096665c9333fa40bcb790896fcbebd8d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e510eb85cb0e30cd6cd0fcfa1a1979dd421dd266
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98676588"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573253"
 ---
 # <a name="create-a-premium-plan-function-app-in-the-azure-portal"></a>Azure portal で Premium プランの関数アプリを作成する
 
@@ -35,4 +35,4 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [HTTP によってトリガーされる関数の追加](./functions-get-started.md
+> [HTTP によってトリガーされる関数の追加](./functions-create-function-app-portal.md#create-function)

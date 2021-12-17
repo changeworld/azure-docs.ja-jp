@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 08/27/2020
-  ms.openlocfilehash: 1ec5453abd9d33b475b732a853294933cda02117
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: f854fbb7fc6df48e3fba242b49d924b8650fd15e
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89051374"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131423035"
 landingContent:
 - title: Azure Blueprints について
   linkLists:
@@ -88,7 +88,7 @@ landingContent:
     - text: Azure のガバナンスに関する YouTube チャンネル
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: 製品機能のリクエスト
-      url: https://feedback.azure.com/forums/915958-azure-governance?category_id=345058
+      url: https://feedback.azure.com/d365community/forum/675ae472-f324-ec11-b6e6-000d3a4f0da0?c=775ae472-f324-ec11-b6e6-000d3a4f0da0
     - text: Azure のガバナンスの Tech Community
       url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
 - title: リファレンス
@@ -100,7 +100,7 @@ landingContent:
     - text: PowerShell モジュール (PSGallery)
       url: https://www.powershellgallery.com/packages/Az.Blueprint
     - text: Azure CLI
-      url: /cli/azure/ext/blueprint/blueprint
+      url: /cli/azure/blueprint
     - text: Azure PowerShell
       url: /powershell/module/az.blueprint/#blueprint
     - text: Azure SDK for .NET

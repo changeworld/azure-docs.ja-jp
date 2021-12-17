@@ -1,31 +1,27 @@
 ---
-title: PII 検出コグニティブ スキル (プレビュー)
+title: PII 検出コグニティブ スキル
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search のエンリッチメント パイプラインのテキストから個人情報を抽出してマスクします。 このスキルは現在、パブリック プレビューの段階です。
+description: Azure Cognitive Search のエンリッチメント パイプラインのテキストから個人情報を抽出してマスクします。
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: acacf617d3f1d9ab891d08b32fc2dfb14deb64a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: 71bd45fae729efed6d76ab65fc4ea45944998f45
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91540525"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862695"
 ---
 # <a name="pii-detection-cognitive-skill"></a>PII 検出コグニティブ スキル
-
-> [!IMPORTANT] 
-> このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 現時点では、ポータルと .NET SDK によるサポートはありません。
 
 **PII 検出** スキルは、入力テキストから個人情報を抽出し、それをマスクするオプションを提供します。 このスキルでは、Cognitive Services の [Text Analytics](../cognitive-services/text-analytics/overview.md) によって提供される機械学習モデルが使用されます。
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> このスキルは Cognitive Services にバインドされており、1 日にインデクサーあたり 20 ドキュメントを超えるトランザクションには[課金対象リソース](cognitive-search-attach-cognitive-services.md)が必要です。 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://azure.microsoft.com/pricing/details/search/)に関するページで説明されています。
 
 ## <a name="odatatype"></a>@odata.type
 
@@ -41,16 +37,19 @@ Microsoft.Skills.Text.PIIDetectionSkill
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| `defaultLanguageCode` |    入力テキストの言語コード。 現時点では、`en` のみがサポートされています。 |
+| `defaultLanguageCode` | (省略可能) 言語を明示的に指定しないドキュメントに適用する言語コード。  既定の言語コードが指定されていない場合、既定の言語コードとして英語 (en) が使用されます。 <br/> [サポートされる言語の完全な一覧](../cognitive-services/text-analytics/language-support.md?tabs=pii)を参照してください。 |
 | `minimumPrecision` | 0\.0 から 1.0 の値。 (`piiEntities` 出力の) 信頼度スコアが `minimumPrecision` の設定値よりも小さい場合は、エンティティは返されず、マスクもされません。 既定では、0.0 です。 |
-| `maskingMode` | 入力テキスト内で検出された個人情報をマスクするためのさまざまな方法を提供するパラメーター。 次のオプションがサポートされています。 <ul><li>`none` (既定値): マスクは行われず、`maskedText` の出力は返されません。 </li><li> `redact`:検出されたエンティティを入力テキストから削除し、削除された値は置き換えません。 この場合、`piiEntities` の出力のオフセットは、マスクされたテキストではなく元のテキストに関連します。 </li><li> `replace`:検出されたエンティティを `maskingCharacter` パラメーターで指定された文字に置き換えます。 文字は検出されたエンティティの長さに繰り返されます。これにより、オフセットが入力テキストと出力 `maskedText` の両方に正しく対応するようになります。</li></ul> |
-| `maskingCharacter` | `maskingMode` パラメーターが `replace` に設定されている場合に、テキストをマスクするために使用される文字。 `*` (規定値)、`#`、`X` のオプションがサポートされています。 このパラメーターは、`maskingMode` が `replace` に設定されていない場合にのみ `null` できます。 |
+| `maskingMode` | 入力テキスト内で検出された個人情報をマスクするためのさまざまな方法を提供するパラメーター。 次のオプションがサポートされています。 <ul><li>`none` (既定値): マスクは行われず、`maskedText` の出力は返されません。 </li><li> `replace`:検出されたエンティティを `maskingCharacter` パラメーターで指定された文字に置き換えます。 文字は検出されたエンティティの長さに繰り返されます。これにより、オフセットが入力テキストと出力 `maskedText` の両方に正しく対応するようになります。</li></ul> <br/> PIIDetectionSkill がプレビューの間は、`maskingMode` のオプション `redact` もサポートされており、これにより置換なしで検出されたエンティティを完全に削除できました。 `redact` オプションは非推奨になり、今後のスキルではサポートされなくなります。 |
+| `maskingCharacter` | `maskingMode` パラメーターが `replace` に設定されている場合に、テキストをマスクするために使用される文字。 次のオプションがサポートされています: `*` (既定値)。 このパラメーターは、`maskingMode` が `replace` に設定されていない場合にのみ `null` できます。 <br/><br/> PIIDetectionSkill がプレビューの間は、`maskingCharacter` の追加のオプション `X` と `#` がサポートされていました。 `X` および `#` オプションはその後で非推奨になっており、今後のスキルではサポートされなくなります。 |
+| `domain`   | (省略可能) 文字列値を指定すると、エンティティ カテゴリのサブセットのみが含まれるように PII ドメインが設定されます。 使用可能な値は、`phi` (機密性の高い医療情報のみを検出)、`none` です。 |
+| `piiCategories`   | (省略可能) 検出されて返されるエンティティを指定する場合は、オプションの `piiCategories` パラメーター (文字列のリストとして定義) を適切なエンティティ カテゴリと共に使用します。 このパラメーターを使用すると、ドキュメントの言語に対して既定で有効になっていないエンティティを検出することもできます。 使用できるカテゴリの一覧については、[TextAnalytics のドキュメント](../cognitive-services/text-analytics/named-entity-types.md?tabs=personal)を参照してください。  |
+| `modelVersion`   | (省略可能) Text Analytics サービスを呼び出すときに使用するモデルのバージョン。 指定しない場合、既定では直近のバージョンになります。 絶対に必要な場合以外は、この値を指定しないことをお勧めします。 詳細については、「[Text Analytics API でのモデルのバージョン管理](../cognitive-services/text-analytics/concepts/model-versioning.md)」を参照してください。 |
 
 ## <a name="skill-inputs"></a>スキルの入力
 
 | 入力名      | 説明                   |
 |---------------|-------------------------------|
-| `languageCode`    | 省略可能。 既定値は `en` です。  |
+| `languageCode`    | レコードの言語を示す文字列。 このパラメーターが指定されていない場合、既定の言語コードがレコードを分析するために使用されます。 <br/>[サポートされる言語の完全な一覧](../cognitive-services/text-analytics/language-support.md?tabs=pii)を参照  |
 | `text`          | 分析するテキスト。          |
 
 ## <a name="skill-outputs"></a>スキルの出力

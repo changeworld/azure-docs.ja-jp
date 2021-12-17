@@ -4,16 +4,16 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Linux Data Science Virtual Machine を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法について説明します。
 services: machine-learning
 ms.service: data-science-vm
-author: lobrien
-ms.author: laobri
+author: timoklimmer
+ms.author: tklimmer
 ms.topic: conceptual
-ms.date: 09/17/2020
-ms.openlocfilehash: 42136d0d58dbc318aab0e111fcef46f80751ca88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: 10695c20bc177abd084d6a3724ae3d379d4ca74a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517673"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284561"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Azure での Ubuntu Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -29,7 +29,6 @@ Linux DSVM を使用する前に、以下の前提条件を満たしている必
 
 * [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) 仮想マシンのプロビジョニングについては、[Ubuntu Data Science Virtual Machine のプロビジョニング](./release-notes.md)に関するページをご覧ください。
 * お使いのコンピューターに [**X2Go**](https://wiki.x2go.org/doku.php) がインストールされており、XFCE セッションが開かれている。 詳細については、「[X2Go クライアントをインストールして構成する](dsvm-ubuntu-intro.md#x2go)」をご覧ください。
-* スクロールをスムーズにするために、DSVM の FireFox Web ブラウザーで `about:config` の `gfx.xrender.enabled` フラグを切り替えます。 [詳細については、こちらを参照してください](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 また、`mousewheel.enable_pixel_scrolling` を `False` に設定することを検討してください。 [詳細については、こちらを参照してください](https://support.mozilla.org/questions/981140)。
 
 ## <a name="download-the-spambase-dataset"></a>spambase データセットをダウンロードする
 
@@ -70,7 +69,7 @@ mv headers spambaseHeaders.data
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>R Open を使用してデータセットを探索する
 
-R を使用して、データを確認し、基本的な機械学習を実行してみましょう。DSVM には、[Microsoft R Open](https://mran.revolutionanalytics.com/open/) がプレインストールされています。 プレインストールされているバージョンの R のマルチスレッドの数式ライブラリは、シングルスレッド バージョンよりもパフォーマンスが優れています。 また、R Open は、CRAN パッケージ リポジトリのスナップショットを使用して、再現性を提供します。
+R を使用して、データを確認し、基本的な機械学習を実行してみましょう。DSVM には、CRAN R がプレインストールされています。
 
 このチュートリアルで使用するコード サンプルのコピーを入手するには、git を使用して、 Azure-Machine-Learning-Data-Science リポジトリを複製します。 git は DSVM にプレインストールされています。 git コマンド ラインで次を実行します。
 
@@ -327,7 +326,7 @@ rattle()
 > [!NOTE]
 > DSVM に Rattle をインストールする必要はありません。 ただし、Rattle を開いたときに、追加のパッケージをインストールするように求められる場合があります。
 
-Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、 [Team Data Science Process](../team-data-science-process/index.yml) に関する記事の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 最後のタブには、Rattle で実行された R コマンドのログが含まれます。
+Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、 [Team Data Science Process](/azure/architecture/data-science-process/overview) に関する記事の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 最後のタブには、Rattle で実行された R コマンドのログが含まれます。
 
 データセットを読み込んで構成するには:
 

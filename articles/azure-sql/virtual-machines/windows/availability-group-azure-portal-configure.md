@@ -3,34 +3,40 @@ title: 可用性グループの構成 (Azure portal)
 description: Azure portal を使用して、Azure の SQL Server VM で Windows フェールオーバー クラスター、可用性グループ リスナー、および内部ロード バランサーを作成します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: hadr
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/20/2020
-ms.author: mathoma
-ms.reviewer: jroth
-ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 14760b4244d42e57aaed7f7d96f487a66147a554
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/10/2021
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.custom: seo-lt-2019, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: aeaeffec318ccf44e1557d592bd470556275ebe4
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359508"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158770"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure portal を使用し、Azure VM 上で SQL Server の可用性グループ (プレビュー) を構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-この記事では、[Azure portal](https://portal.azure.com) を使用して、Azure VM 上に SQL Server の可用性グループを構成する方法について説明します。 
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の[複数のサブネット](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)に SQL Server VM を作成することで、Always On 可用性グループ (AG) に対して Azure Load Balancer が不要になります。
+
+この記事では、[Azure portal](https://portal.azure.com) を使用して、1 つのサブネット内の Azure VM 上に SQL Server の可用性グループを構成する方法について説明します。 
 
 Azure portal を使用して新しいクラスターを作成するか、既存のクラスターをオンボードしてから、可用性グループ、リスナー、および内部ロード バランサーを作成します。 
 
 現在、この機能はプレビュー段階にあります。 
 
-この記事では Azure portal を使用して可用性グループ環境を構成しますが、[PowerShell または Azure CLI](availability-group-az-commandline-configure.md) を使用して構成するか、[Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して構成するか、[手動](availability-group-manually-configure-tutorial.md)で構成することもできます。 
+この記事では Azure portal を使用して可用性グループ環境を構成しますが、[PowerShell または Azure CLI](availability-group-az-commandline-configure.md) を使用して構成するか、[Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して構成するか、[手動](availability-group-manually-configure-tutorial-single-subnet.md)で構成することもできます。 
+
+> [!NOTE]
+> これで、Azure Migrate を使用して、可用性グループ ソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 詳細については、「[可用性グループの移行](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)」を参照してください。 
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -173,6 +179,12 @@ SQL Server Management Studio を使用して可用性グループにデータベ
 
 デプロイの状態は、上部のナビゲーション バーにあるベルのアイコンからアクセスできる **[アクティビティ ログ]** で確認できます。 
 
+## <a name="configure-quorum"></a>クォーラムを構成する
+
+ディスク監視は最も回復性の高いクォーラム オプションですが、Azure 共有ディスクが必要で、これにより可用性グループに制限がいくつか適用されます。 そのため、クラウド監視は、Azure VM 上で SQL Server 向け可用性グループをホストするクラスターに推奨されるクォーラム ソリューションです。 
+
+クラスターに多数の投票がある場合は、ビジネス ニーズに最適な[クォーラム ソリューション](hadr-cluster-quorum-configure-how-to.md)を構成します。 詳細については、[SQL Server VM でのクォーラム](hadr-windows-server-failover-cluster-overview.md#quorum)に関する記事をご覧ください。 
+
 
 ## <a name="modify-availability-group"></a>可用性グループの変更 
 
@@ -269,17 +281,11 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 
 ## <a name="next-steps"></a>次のステップ
 
+可用性グループがデプロイされたら、[Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)を最適化することを検討します。 
 
-可用性グループの詳細については、次を参照してください。
 
-- [可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
-* [可用性グループの管理](/sql/database-engine/availability-groups/windows/administration-of-an-availability-group-sql-server)   
-* [可用性グループの監視 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/monitoring-of-availability-groups-sql-server)
-* [可用性グループの Transact-SQL ステートメント](/sql/database-engine/availability-groups/windows/transact-sql-statements-for-always-on-availability-groups)   
-* [可用性グループの PowerShell コマンド](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)  
+詳細については、以下をご覧ください。
 
-SQL Server VM の詳細については、次を参照してください。 
-
-* [SQL Server VM の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [SQL Server VM のリリース ノート](../../database/doc-changes-updates-release-notes.md)
-* [SQL Server VM の FAQ](frequently-asked-questions-faq.md)
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
+- [AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

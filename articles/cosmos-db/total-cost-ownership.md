@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/26/2021
 ms.reviewer: sngun
-ms.openlocfilehash: eb06d101170685bea5ff231612e9ffbf8df467da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b594d04c05b5cb05b45bc76f9de256d97aa436a1
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93079293"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123033630"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>総保有コスト (TCO) と Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -57,8 +57,17 @@ Azure Cosmos DB のサーバーレス プロビジョニング モデルでは�
 
 * **予約容量により最大 65% のコストの節約が可能:** Azure Cosmos DB の [予約容量](cosmos-db-reserved-capacity.md)は、Azure Cosmos DB のリソース料金 1 年分または 3 年分を前払いすることで経費を節減するのに役立ちます。 1 年分または 3 年分を事前にコミットすることでコストを大幅に減らすことができ、通常価格に比べ、20% から 65% の割引になります。 ミッション クリティカルなワークロードでは、容量のプロビジョニングの観点からより良い SLA が得られます。
 
+## <a name="capacity-planning"></a>容量計画
+
+TCO の見積もりの補助として、容量計画から始めると役に立つ場合があります。 既存のデータベース クラスターから Azure Cosmos DB への移行を計画している場合は、既存のデータベース クラスターに関する情報を容量計画に利用できます。
+* 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+* 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+
 ## <a name="next-steps"></a>次のステップ
 
+* Azure Cosmos DB への移行のための容量計画を立てる場合。 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
 * [Azure Cosmos DB の価格モデルがお客様にとっていかにコスト効率がよいか](total-cost-ownership.md)について詳しく学習します
 * [開発とテストのための最適化](optimize-dev-test.md)の詳細について学習します
 * [スループット コストの最適化](optimize-cost-throughput.md)の詳細について学習します

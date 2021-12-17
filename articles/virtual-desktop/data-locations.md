@@ -1,40 +1,57 @@
 ---
-title: Windows Virtual Desktop のデータの場所 - Azure
-description: Windows Virtual Desktop のデータとメタデータが格納される場所についての簡単な概要。
+title: Azure Virtual Desktop のデータの場所 - Azure
+description: Azure Virtual Desktop のデータとメタデータが格納される場所についての簡単な概要。
 author: Heidilohr
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 02/17/2021
+ms.date: 06/30/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a4c63cc686b08d179e20e6f3e3a7aa1efa69a5f8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 709721139fa652798c5cc67b7f54e1b7452505a3
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447082"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273877"
 ---
-# <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Windows Virtual Desktop のデータとメタデータの場所
+# <a name="data-locations-for-azure-virtual-desktop"></a>Azure Virtual Desktop のデータの場所
 
->[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[この記事](./virtual-desktop-fall-2019/data-locations-2019.md)を参照してください。
-
-現在、Windows Virtual Desktop はすべての地理的な場所で使用できます。 管理者は、ホスト プールの仮想マシンと関連するサービス (ファイル サーバーなど) を作成するときに、ユーザー データを格納する場所を選択できます。 Azure の地域の詳細については、[Azure データセンターのマップ](https://azuredatacentermap.azurewebsites.net/)を参照してください。
+現在、Azure Virtual Desktop はすべての地理的な場所で使用できます。 管理者は、ホスト プールの仮想マシンと関連するサービス (ファイル サーバーなど) を作成するときに、ユーザー データを格納する場所を選択できます。 Azure の地域の詳細については、[Azure におけるデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/#overview)を参照してください。
 
 >[!NOTE]
 >Microsoft が、お客様またはお客様のユーザーがユーザーとアプリ固有のデータにアクセスできるリージョンを制御または制限することはありません。
 
 >[!IMPORTANT]
->Windows Virtual Desktop では、テナント名、ホスト プール名、アプリ グループ名、ユーザー プリンシパル名などのグローバル メタデータ情報をデータセンターに格納します。 顧客はサービス オブジェクトを作成するたびに、サービス オブジェクトの場所を入力する必要があります。 入力した場所によって、オブジェクトのメタデータが格納される場所が決まります。 顧客が Azure リージョンを選択すると、メタデータが関連する地域に格納されます。 すべての Azure リージョンと関連する地域の一覧については、「[Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)」を参照してください。
+>Azure Virtual Desktop では、ホスト プール名、アプリ グループ名、ワークスペース名、ユーザー プリンシパル名など、さまざまな種類の情報をデータセンターに格納します。 お客様は、サービス オブジェクトの作成中に、オブジェクトを作成する必要がある場所を入力する必要があります。 入力した場所によって、オブジェクトの情報が格納される場所が決まります。 お客様が Azure リージョンを選択すると、関連する情報が関連付けられた地域に格納されます。 すべての Azure リージョンと関連する地域の一覧については、[https://azure.microsoft.com/global-infrastructure/geographies/](https://azure.microsoft.com/global-infrastructure/geographies/) を参照してください。
 
-現在、以下の地域にメタデータを格納することがサポートされています。
+この記事では、Azure Virtual Desktop サービスによって格納される情報について説明します。 顧客データ定義の詳細については、「[Microsoft によるオンライン サービスのデータの分類方法](https://www.microsoft.com/trust-center/privacy/customer-data-definitions)」を参照してください。
+
+## <a name="customer-input"></a>顧客入力
+
+Azure Virtual Desktop サービスを設定するには、ホスト プールと他のサービス オブジェクトを作成する必要があります。 構成時に、お客様はホスト プール名、アプリケーション グループ名などの情報を指定する必要があります。 この情報は、顧客入力と見なされます。 顧客入力は、オブジェクトが作成されたリージョンに関連付けられている地域に格納されます。 オブジェクトへの Azure Resource Manager のパスは、組織の情報と見なされます。そのため、データ所在地はそれらに適用されません。 Azure Resource Manager のパスに関するデータは、選択した地域の外部に格納されます。
+
+## <a name="customer-data"></a>顧客データ
+
+サービスはユーザーまたはアプリ関連の情報を直接格納しませんが、オブジェクトのセットアップ プロセスに含まれるため、アプリケーション名やユーザー プリンシパル名のような顧客データを格納します。 この情報は、お客様がオブジェクトを作成したリージョンに関連付けられている地域に格納されます。
+
+## <a name="diagnostic-data"></a>診断データ
+
+Azure Virtual Desktop では、お客様またはユーザーがサービスと対話するたびに、サービスによって生成された診断データが収集されます。 このデータは集計的な形で、トラブルシューティング、サポート、サービスの正常性のチェックを行う場合にのみ使用されます。 たとえば、セッション ホスト側から、VM がサービスに登録すると、仮想マシン (VM) 名、VM が属するホスト プールなどの情報が生成されます。 この情報は、ホスト プールが作成されたリージョンに関連付けられている地域に格納されます。 また、ユーザーがサービスに接続してリモート デスクトップを起動すると、ユーザー プリンシパル名、クライアントの場所、クライアントの IP アドレス、ユーザーが接続しているホスト プールなどの診断情報が生成されます。 この情報は、次の 2 つの異なる場所に送信されます。
+
+- サービス インフラストラクチャ (クライアント トレース、ユーザー トレース、診断データ) が存在するユーザーに最も近い場所。
+- ホスト プールがある場所。
+
+## <a name="service-generated-data"></a>サービスによって生成されるデータ。
+
+Microsoft では、Azure Virtual Desktop の信頼性と拡張性を維持するために、トラフィック パターンと使用状況を集計し、インフラストラクチャ コントロール プレーンの正常性とパフォーマンスを確認します。 たとえば、サービス使用量の増加に合わせて、リージョン インフラストラクチャの容量をどれだけ増やしたら良いかを判断するために、サービス使用状況のログ データを処理します。 次に、ピーク時のログを確認し、その必要な容量を満たすために、どのデータ センターに追加すべきかを判断します。 サービス インフラストラクチャがあるすべての場所からこの情報を集計し、US リージョンに送信します。 US リージョンに送信されるデータには、スクラブされたデータが含まれ、顧客データは含れません。
+
+現在、前述のデータの格納は、次の場所でサポートされています。
 
 - 米国 (US) (一般公開)
-- ヨーロッパ (EU) (パブリック プレビュー) 
+- ヨーロッパ (EU) (一般公開)
+- イギリス (UK) (一般公開)
+- カナダ (CA) (一般公開)
 
->[!NOTE]
-> Windows Virtual Desktop サービス オブジェクトを作成するリージョンを選択する場合は、米国とヨーロッパの両方の地域に属するリージョンが表示されます。 デプロイに最適なリージョンを確認するには、[Azure グローバル インフラストラクチャ マップ](https://azure.microsoft.com/global-infrastructure/geographies/#geographies)を参照してください。
+サービスが拡大されるにつれて、より多くの地域が追加される予定です。 格納された情報は保存時に暗号化され、geo 冗長ミラーは地域内で保持されます。 アプリ設定やユーザー データなど、顧客データは、お客様が選択した場所に配置され、サービスによって管理されることはありません。
 
-格納されたメタデータは保存時に暗号化され、geo 冗長ミラーは地域内で保持されます。 アプリ設定やユーザー データなど、顧客データはすべて、顧客が選択した場所に配置され、サービスによって管理されることはありません。 サービスが拡大されるにつれて、より多くの地域で利用できるようになります。
-
-サービス メタデータは、ディザスター リカバリーのために Azure の地域内にレプリケートされます。
+概要データは、ディザスター リカバリーのために Azure 地域内にレプリケートされます。

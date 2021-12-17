@@ -1,17 +1,17 @@
 ---
-title: リモート デスクトップ クライアントの Windows Virtual Desktop のトラブルシューティング - Azure
-description: Windows Virtual Desktop テナント環境でクライアント接続を設定するときの問題を解決する方法です。
+title: リモート デスクトップ クライアントの Azure Virtual Desktop のトラブルシューティング - Azure
+description: Azure Virtual Desktop テナント環境でクライアント接続を設定するときの問題を解決する方法。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e31ff0bfdb0ead13c2636ea2f4d175c9ced34581
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 9534425344a09bb2e2e733cde5294d08d175eb96
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445433"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755341"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>リモート デスクトップ クライアントのトラブルシューティング
 
@@ -60,9 +60,9 @@ Web クライアントを使用しているときにブラウザーの動作が�
 
 ## <a name="client-doesnt-show-my-resources"></a>クライアントにリソースが表示されない
 
-最初に、使用している Azure Active Directory アカウントを確認します。 Windows Virtual Desktop に使用するアカウントとは別の Azure Active Directory アカウントで既にサインインしている場合は、サインアウトするか、プライベート ブラウザー ウィンドウを使用する必要があります。
+最初に、使用している Azure Active Directory アカウントを確認します。 Azure Virtual Desktop に使用するアカウントとは別の Azure Active Directory アカウントで既にサインインしている場合は、サインアウトするか、プライベート ブラウザー ウィンドウを使用する必要があります。
 
-Windows Virtual Desktop (クラシック) を使用している場合は、[この記事](./virtual-desktop-fall-2019/connect-web-2019.md)の Web クライアント リンクを使用して、リソースに接続します。
+Azure Virtual Desktop (クラシック) を使用している場合は、[この記事](./virtual-desktop-fall-2019/connect-web-2019.md)の Web クライアント リンクを使用して、リソースに接続します。
 
 それでもうまくいかない場合は、アプリ グループがワークスペースに関連付けられていることを確認してください。
 
@@ -79,19 +79,19 @@ Windows Virtual Desktop (クラシック) を使用している場合は、[こ�
 Web クライアントで資格情報の入力の要求が出続ける場合は、次の手順に従います。
 
 1. Web クライアントの URL が正しいことを確認します。
-2. 使用している資格情報が、URL に関連付けられた Windows Virtual Desktop 環境に対するものであることを確認します。
+2. 使用している資格情報が、URL に関連付けられた Azure Virtual Desktop 環境に対するものであることを確認します。
 3. ブラウザーの Cookie をクリアします。 詳細については、「[Internet Explorer で cookie ファイルを削除する方法](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)」を参照してください。
 4. ブラウザーのキャッシュをクリアします。 詳細については、[お使いのブラウザーのブラウザー キャッシュをクリアする方法](https://binged.it/2RKyfdU)を参照してください。
 5. プライベート モードでブラウザーを開きます。
 
-## <a name="windows-client-blocks-windows-virtual-desktop-classic-feed"></a>Windows クライアントによって Windows Virtual Desktop (クラシック) フィードがブロックされる
+## <a name="windows-client-blocks-azure-virtual-desktop-classic-feed"></a>Windows クライアントによって Azure Virtual Desktop (クラシック) フィードがブロックされる
 
-Windows クライアント フィードに Windows Virtual Desktop (クラシック) アプリが表示されない場合は、次の手順に従います。
+Windows クライアント フィードに Azure Virtual Desktop (クラシック) アプリが表示されない場合は、次の手順に従います。
 
-1. Windows Virtual Desktop (クラシック) に関連付けられているアプリ ID が、条件付きアクセス ポリシーに含まれているかどうかを確認します。
-2. 条件付きアクセス ポリシーにより、Windows Virtual Desktop (クラシック) のアプリ ID 以外のすべてのアクセスがブロックされているかどうかを確認します。 その場合、クライアントがフィードを検出できるようにするために、アプリ ID **9cdead84-a844-4324-93f2-b2e6bb768d07** をポリシーに追加する必要があります。
+1. Azure Virtual Desktop (クラシック) に関連付けられているアプリ ID が、条件付きアクセス ポリシーに含まれているかどうかを確認します。
+2. 条件付きアクセス ポリシーにより、Azure Virtual Desktop (クラシック) のアプリ ID 以外のすべてのアクセスがブロックされているかどうかを確認します。 その場合、クライアントがフィードを検出できるようにするために、アプリ ID **9cdead84-a844-4324-93f2-b2e6bb768d07** をポリシーに追加する必要があります。
 
-一覧でアプリ ID 9cdead84-a844-4324-93f2-b2e6bb768d07 が見つからない場合は、Windows Virtual Desktop リソース プロバイダーを登録する必要があります。 リソース プロバイダーを登録するには:
+一覧でアプリ ID 9cdead84-a844-4324-93f2-b2e6bb768d07 が見つからない場合は、Azure Virtual Desktop リソース プロバイダーを登録する必要があります。 リソース プロバイダーを登録するには:
 
 1. Azure portal にサインインします。
 2. **[サブスクリプション]** に移動し、ご使用のサブスクリプションを選択します。
@@ -100,9 +100,9 @@ Windows クライアント フィードに Windows Virtual Desktop (クラシッ
 
 ## <a name="next-steps"></a>次のステップ
 
-- Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
-- Windows Virtual Desktop 環境を作成しているときや、Windows Virtual Desktop 環境でホスト プールを作成しているときに発生した問題を解決するには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
-- Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
-- Windows Virtual Desktop エージェントまたはセッション接続に関連する問題のトラブルシューティングについては、「[Windows Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする](troubleshoot-agent.md)」を参照してください。
-- Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
+- Azure Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
+- Azure Virtual Desktop 環境を作成しているときや、Azure Virtual Desktop 環境でホスト プールを作成しているときに発生した問題を解決するには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
+- Azure Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md) に関する記事を参照してください。
+- Azure Virtual Desktop エージェントまたはセッション接続に関連する問題のトラブルシューティングについては、「[Azure Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする](troubleshoot-agent.md)」を参照してください。
+- Azure Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Azure Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
 - トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)」を参照してください。

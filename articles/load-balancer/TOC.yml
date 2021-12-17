@@ -27,12 +27,14 @@
   expanded: true
 - name: チュートリアル
   items:
-    - name: 可用性ゾーン間で VM の負荷分散を行う
-      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 特定の可用性ゾーン内で VM の負荷分散を行う
       href: tutorial-load-balancer-standard-public-zonal-portal.md
+    - name: 複数の可用性セットを使用して VM を負荷分散する
+      href: tutorial-multi-availability-sets-portal.md
     - name: Load Balancer でのポート転送の構成
       href: tutorial-load-balancer-port-forwarding-portal.md
+    - name: 複数の IP 構成の負荷分散
+      href: load-balancer-multiple-ip.md
     - name: リージョン間のロード バランサー
       items:
         - name: リージョン間ロード バランサーの作成 - ポータル
@@ -41,34 +43,60 @@
           href: tutorial-cross-region-powershell.md
         - name: リージョン間ロード バランサーの作成 - Azure CLI
           href: tutorial-cross-region-cli.md
+    - name: ゲートウェイ ロード バランサー
+      items:
+        - name: ゲートウェイ ロード バランサーを作成する - ポータル
+          href: tutorial-gateway-portal.md
+        - name: ゲートウェイ ロード バランサーを作成する - PowerShell
+          href: tutorial-gateway-powershell.md
+        - name: ゲートウェイ ロード バランサーを作成する - Azure CLI
+          href: tutorial-gateway-cli.md
+    - name: NAT Gateway
+      items:
+        - name: NAT ゲートウェイ パブリック ロード バランサーを統合する
+          href: ../virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+        - name: NAT ゲートウェイ内部ロード バランサーを統合する
+          href: ../virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+    - name: IP ベースのバックエンド
+      items:
+        - name: IP ベースのバックエンドを備えたパブリック ロード バランサーを作成する - ポータル
+          href: tutorial-load-balancer-ip-backend-portal.md
 - name: サンプル
   items:
     - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Python
+      href: python-samples.md
 - name: 概念
   items:
-    - name: リージョン間のロード バランサー
-      href: cross-region-overview.md
+    - name: ポータルの設定
+      href: manage.md
     - name: 新機能
       href: whats-new.md
     - name: コンポーネント
       href: components.md
     - name: 負荷分散アルゴリズム
       href: concepts.md
+    - name: 分散モード
+      href: distribution-mode-concepts.md
     - name: SKU
       href: skus.md
+    - name: フローティング IP 構成
+      href: load-balancer-floating-ip.md
     - name: 正常性の監視
       items:
+        - name: ロード バランサーを監視する
+          href: monitor-load-balancer.md
+        - name: 監視データのリファレンス
+          href: monitor-load-balancer-reference.md
         - name: 正常性プローブ
           href: load-balancer-custom-probe-overview.md
         - name: Load Balancer 用の Azure Monitor 分析情報
           href: load-balancer-insights.md
         - name: Standard Load Balancer のメトリックと診断
           href: load-balancer-standard-diagnostics.md
-        - name: Load Balancer 用の Azure Monitor のログ
-          href: load-balancer-monitor-log.md
         - name: REST を使用して Load Balancer のメトリックを取得する
           href: load-balancer-query-metrics-rest-api.md
     - name: 高可用性ポート
@@ -81,16 +109,16 @@
       href: outbound-rules.md
     - name: アイドル タイムアウトの TCP リセット
       href: load-balancer-tcp-reset.md
-    - name: Standard Load Balancer と可用性ゾーン
+    - name: 可用性ゾーン
       href: load-balancer-standard-availability-zones.md
-    - name: フローティング IP 構成
-      href: load-balancer-floating-ip.md
-    - name: 分散モード
-      href: distribution-mode-concepts.md
+    - name: リージョン間のロード バランサー
+      href: cross-region-overview.md
+    - name: ゲートウェイ ロード バランサー
+      href: gateway-overview.md
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/load-balancer-security-baseline?toc=/azure/load-balancer/TOC.json
     - name: バックエンド プールの管理
       href: backend-pool-management.md
     - name: Standard Load Balancer と Virtual Machine Scale Sets
@@ -99,8 +127,8 @@
       href: instance-metadata-service-load-balancer.md
 - name: 操作方法
   items:
-    - name: ポータルの設定
-      href: manage.md
+    - name: ロード バランサー規則を管理する
+      href: manage-rules-how-to.md
     - name: 仮想マシン スケール セット
       items:
         - name: 仮想マシン スケール セットで使用される既存の Azure Load Balancer を更新または削除する
@@ -122,11 +150,11 @@
     - name: IPv6 を使用してパブリック ロード バランサーを作成する
       items:
         - name: Azure CLI
-          href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+          href: ./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
-          href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+          href: ./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
         - name: Azure Resource Manager テンプレート
-          href: ../virtual-network/ipv6-configure-standard-load-balancer-template-json.md
+          href: ./ipv6-configure-standard-load-balancer-template-json.md
           displayName: ARM
     - name: TCP リセットとアイドル タイムアウトを構成する
       href: load-balancer-tcp-idle-timeout.md
@@ -134,8 +162,6 @@
       href: load-balancer-distribution-mode.md
     - name: 複数の IP 構成の使用
       items:
-        - name: ポータル
-          href: load-balancer-multiple-ip.md
         - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
@@ -150,10 +176,36 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部ロード バランサー - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: 送信専用のロード バランサーの構成
-      href: egress-only.md
     - name: Azure IMDS を使用したメタデータの取得
       href: howto-load-balancer-imds.md
+    - name: 送信専用のロード バランサーの構成
+      href: egress-only.md
+    - name: IPv6
+      items:
+        - name: Standard パブリック
+          items:
+            - name: IPv6 を使用する Standard パブリック ロード バランサー - PowerShell
+              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+            - name: IPv6 を使用する Standard パブリック ロード バランサー - Azure CLI
+              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+            - name: IPv6 を使用する Standard パブリック ロード バランサー - ARM テンプレート
+              href: ipv6-configure-standard-load-balancer-template-json.md
+        - name: Standard 内部
+          items:
+            - name: IPv6 を使用する Standard 内部ロード バランサー - PowerShell
+              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
+        - name: Basic パブリック
+          items:
+            - name: Basic Load Balancer を使用する IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell
+              href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
+            - name: Basic Load Balancer を使用して IPv6 デュアル スタック アプリケーションをデプロイする - Azure CLI
+              href: virtual-network-ipv4-ipv6-dual-stack-cli.md
+            - name: Basic Load Balancer を使用して IPv6 デュアル スタック アプリケーションをデプロイする - ARM テンプレート
+              href: ipv6-configure-template-json.md
+        - name: IPv4 アプリケーションに IPv6 を追加する - PowerShell
+          href: ipv6-add-to-existing-vnet-powershell.md
+        - name: IPv4 アプリケーションに IPv6 を追加する - Azure CLI
+          href: ipv6-add-to-existing-vnet-cli.md
     - name: トラブルシューティング
       items:
         - name: Azure Load Balancer のトラブルシューティング
@@ -166,6 +218,10 @@
           href: troubleshoot-outbound-connection.md
         - name: リソース正常性と受信の可用性に関する問題
           href: troubleshoot-rhc.md
+        - name: Azure Instance Metadata Service (IMDS) の一般的なエラー コード
+          href: troubleshoot-load-balancer-imds.md
+        - name: 一般的なデプロイのエラー
+          href: load-balancer-common-deployment-errors.md
 - name: リファレンス
   items:
     - name: コード サンプル
@@ -179,7 +235,7 @@
     - name: Java
       href: /java/api/com.microsoft.azure.management.network
     - name: Node.js
-      href: /javascript/api/@azure/arm-network/loadbalancers
+      href: /javascript/api/overview/azure/arm-network-readme
     - name: Ruby
       href: 'https://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2020_03_01/LoadBalancers'
     - name: Python
@@ -189,10 +245,6 @@
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
-    - name: Azure Instance Metadata Service (IMDS) の一般的なエラー コード
-      href: troubleshoot-load-balancer-imds.md
-    - name: 一般的なデプロイのエラー
-      href: load-balancer-common-deployment-errors.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける
@@ -200,7 +252,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Azure Load Balancer のフィードバック
-      href: 'https://feedback.azure.com/forums/217313-networking/category/77467-load-balancing'
+      href: 'https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789?c=e8894060-8326-ec11-b6e6-000d3a4f0789'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
     - name: 料金計算ツール
@@ -208,4 +260,4 @@
     - name: 製品の更新
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'
     - name: よく寄せられる質問
-      href: load-balancer-faqs.md
+      href: load-balancer-faqs.yml

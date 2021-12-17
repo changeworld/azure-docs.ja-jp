@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.author: sgilley
 author: sdgilley
-ms.subservice: core
+ms.subservice: mldata
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 10/21/2021
 ms.custom: data4ml
-ms.openlocfilehash: 5ab7bac635a0b670087800212727b0d2e2b96934
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b2c52022fdc3a3f71da5dd30853820ab480bbc1b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103472211"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559886"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータ処理の最適化
 
@@ -86,6 +86,9 @@ RAM 仕様については、[Dv2-Dsv2 シリーズ](../virtual-machines/dv2-dsv2
 `Spark` を希望する場合 | `PySpark`
 1 GB 未満のデータ | ローカルの `Pandas` **または** リモートの Azure Machine Learning コンピューティング インスタンス
 10 GB を超えるデータの場合| `Ray`、`Dask`、または `Spark` を使用してクラスターに移動
+
+> [!TIP]
+> 大規模なデータ処理のために、[to_dask_dataframe()](/python/api/azureml-core/azureml.data.tabulardataset#to-dask-dataframe-sample-size-10000--dtypes-none--on-error--null---out-of-range-datetime--null--) メソッドを使用して、データセットを Dask データフレームに読み込みます。 このメソッドは[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、いつでも変更される可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

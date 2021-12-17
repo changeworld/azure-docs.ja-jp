@@ -3,15 +3,15 @@ title: サービス カタログ マネージド アプリを発行する
 description: 組織のメンバーを対象とする Azure マネージド アプリケーションを作成する方法について説明します。
 author: tfitzmac
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
-ms.date: 04/14/2020
+ms.custom: subject-armqs, devx-track-azurecli, devx-track-azurepowershell, subject-rbac-steps
+ms.date: 08/16/2021
 ms.author: tomfitz
-ms.openlocfilehash: b255cafb9040f87c902fe6c094c3e0db3d461e4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7722017e2cbe9c0f195ce24ee5452674ad0fd344
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093636"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253749"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>クイック スタート:マネージド アプリケーション定義を作成して発行する
 
@@ -309,14 +309,9 @@ az managedapp definition create \
 
 ### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>ストレージ アカウントに "アプライアンス リソースプロバイダー" のロールの割り当てを設定する
 
-マネージド アプリケーション定義をストレージ アカウントにデプロイするには、ストレージ アカウントのコンテナーに定義ファイルを書き込むことができるように、事前に **アプライアンス リソースプロバイダー** ロールに共同作成者のアクセス許可を付与する必要があります。
+マネージド アプリケーション定義をストレージ アカウントにデプロイするには、**共同作成者** ロールを **アプライアンス リソース プロバイダー** ユーザーに、ストレージ アカウント スコープで付与します。 この割り当てにより、この ID で定義ファイルをストレージ アカウントのコンテナーに書き込めるようになります。
 
-1. [Azure portal](https://portal.azure.com) のストレージ アカウントに移動します。
-1. **[アクセス制御 (IAM)]** を選択して、ストレージ アカウントのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
-1. **[ロールの割り当ての追加]** ウィンドウで、 **[共同作成者]** ロールを選択します。
-1. **[アクセスの割り当て先]** フィールドで **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
-1. **[選択]** で、**アプライアンス リソースプロバイダー** ロールを検索して選択します。
-1. ロールの割り当てを保存します。
+詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>ARM テンプレートを使用してマネージド アプリケーション定義をデプロイする
 

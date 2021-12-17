@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache と Azure NetApp Files を使用する
 description: Azure HPC Cache を使用して Azure NetApp Files に格納されているデータへのアクセスを向上させる方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 10/30/2019
-ms.author: v-erkel
-ms.openlocfilehash: e955ddc14bb2b0a7abc0dc815c6955247568876b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/05/2021
+ms.author: femila
+ms.openlocfilehash: 9a4e682b03ef93e0762dd8dc8117741329064caa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86497014"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032926"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Azure HPC Cache と Azure NetApp Files を使用する
 
@@ -50,13 +50,13 @@ Azure HPC Cache で使用する Azure NetApp Files システムを作成する�
 
 最小サイズは、ネットマスク /28 で指定され、16 個の IP アドレスを提供します。 実際には、Azure NetApp Files は、使用可能な IP アドレスのうち 3 つだけをボリューム アクセスに使用します。 つまり、Azure HPC Cache に 3 つのストレージ ターゲットを作成するだけですべてのボリュームに対応できることを意味しています。
 
-委任されたサブネットが大きすぎる場合、Azure NetApp Files ボリュームは、1 つの Azure HPC Cache インスタンスが処理できるよりも多くの IP アドレスを使用する可能性があります。 1 つのキャッシュは最大 10 個のストレージ ターゲットを持つことができます。
+委任されたサブネットが大きすぎる場合、Azure NetApp Files ボリュームは、1 つの Azure HPC Cache インスタンスが処理できるよりも多くの IP アドレスを使用する可能性があります。 1 つのキャッシュには、ほとんどのキャッシュ スループットとストレージのサイズの組み合わせで [10 個のストレージ ターゲットの制限](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)、または最大の構成で 20 個のストレージ ターゲットの制限があります。
 
 Azure NetApp Files ドキュメントのクイックスタートの例では、委任されたサブネットに 10.7.0.0/16 を使用していますが、。これはサブネットが大きすぎます。
 
 ### <a name="capacity-pool-service-level"></a>容量プールのサービス レベル
 
-容量プールのサービス レベルを選択するときは、ワークフローを検討してください。 Azure NetApp Files ボリュームにデータを頻繁に書き戻す場合、書き戻し時間が遅いとキャッシュのパフォーマンスが制限される可能性があります。 書き込みが頻繁に行われるボリュームには、高いサービス レベルを選択してください。
+容量プールの[サービス レベル](../azure-netapp-files/azure-netapp-files-service-levels.md)を選択するときは、ワークフローを検討してください。 Azure NetApp Files ボリュームにデータを頻繁に書き戻す場合、書き戻し時間が遅いとキャッシュのパフォーマンスが制限される可能性があります。 書き込みが頻繁に行われるボリュームには、高いサービス レベルを選択してください。
 
 サービス レベルが低いボリュームでは、キャッシュがコンテンツを事前入力している間、タスクの開始に遅延が発生する場合があります。 正常に機能するファイル セットを使用してキャッシュを起動して実行すると、遅延は目立たなくなります。
 

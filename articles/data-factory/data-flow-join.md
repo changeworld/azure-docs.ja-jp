@@ -1,23 +1,27 @@
 ---
 title: マッピング データ フローの結合変換
-description: Azure Data Factory マッピング データ フローの結合変換を使用して 2 つのデータ ソースのデータを結合する
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Synapse Analytics のマッピング データ フローの結合変換を使用して 2 つのデータ ソースのデータを結合する
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 05/15/2020
-ms.openlocfilehash: ac84ce17f53145ffd85ffa31b6633d8b4b184962
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: 2a1efc21511fe665d4e54cf955244daf598d4f8b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93042659"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060178"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>マッピング データ フローの結合変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 マッピング データ フローで 2 つのソースまたはストリームのデータを結合するには、結合変換を使用します。 出力ストリームには、結合条件に基づいて一致と判定された、両ソースのすべての列が含まれます。 
 
@@ -61,19 +65,19 @@ ms.locfileid: "93042659"
 1. 目的の **結合の種類** を選択します
 1. 結合条件で照合に使用するキー列を選択します。 既定では、データフローは、1 つの列について各ストリームでの同等性を検索します。 計算値で比較するには、列のドロップダウン上にマウス ポインターを移動し、 **[計算列]** を選択します。
 
-![結合変換](media/data-flow/join.png "Join")
+:::image type="content" source="media/data-flow/join.png" alt-text="結合変換":::
 
 ### <a name="non-equi-joins"></a>非等結合
 
 結合条件で等しくない (!=) またはより大きい (>) などの条件演算子を使用するには、2 つの列の間の演算子ドロップダウンを変更します。 非等結合では、 **[最適化]** タブで **[固定]** ブロードキャストを使用して、2 つのストリームのうち少なくとも 1 つをブロードキャストする必要があります。
 
-![非等結合](media/data-flow/non-equi-join.png "非等結合")
+:::image type="content" source="media/data-flow/non-equi-join.png" alt-text="非等結合":::
 
 ## <a name="optimizing-join-performance"></a>結合のパフォーマンスの最適化
 
 SSIS などのツールでのマージ結合とは異なり、結合変換は強制的なマージ結合操作ではありません。 結合キーを並べ替える必要はありません。 結合操作は、Spark の最適な結合操作 (ブロードキャスト結合またはマップ側の結合) に基づいて行われます。
 
-![結合変換の最適化](media/data-flow/joinoptimize.png "結合の最適化")
+:::image type="content" source="media/data-flow/joinoptimize.png" alt-text="結合変換の最適化":::
 
 結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト** を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには **[Fixed]\(固定\)** を選択します。
 
@@ -83,7 +87,7 @@ SSIS などのツールでのマージ結合とは異なり、結合変換は強
 
 1 つのデータ ストリームを自己結合させるには、選択変換を使用して既存のストリームをエイリアス化します。 変換の横にあるプラス記号アイコンをクリックして **[新しいブランチ]** を選択し、新しいブランチを作成します。 選択変換を追加して、元のストリームをエイリアス化します。 結合変換を追加し、元のストリームを **左側ストリーム**、選択変換を **右側ストリーム** として選択します。
 
-![自己結合](media/data-flow/selfjoin.png "自己結合")
+:::image type="content" source="media/data-flow/selfjoin.png" alt-text="自己結合":::
 
 ## <a name="testing-join-conditions"></a>結合条件のテスト
 
@@ -106,9 +110,9 @@ SSIS などのツールでのマージ結合とは異なり、結合変換は強
 
 以下の例は、左側ストリーム `TripData` と右側ストリーム `TripFare` を受け取る `JoinMatchedData` という名前の結合変換です。  結合条件の式は `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` です。この式では、各ストリームの `hack_license` 列、`medallion` 列、`vendor_id` 列、および `pickup_datetime` 列が一致する場合に true が返されます。 `joinType` は `'inner'` です。 左側ストリームでのみブロードキャストを有効にするため、`broadcast` の値を `'left'` に設定しています。
 
-Data Factory UX では、この変換は次の図のようになります。
+UI では、この変換は次の図のようになります。
 
-![スクリーンショットには、[結合設定] タブが選択され、[結合の種類] が [内部] である変換が示されています。](media/data-flow/join-script1.png "結合の例")
+:::image type="content" source="media/data-flow/join-script1.png" alt-text="スクリーンショットには、[結合設定] タブが選択され、[結合の種類] が [内部] である変換が示されています。":::
 
 この変換のデータ フロー スクリプトは、次のスニペットに含まれています。
 
@@ -128,9 +132,9 @@ TripData, TripFare
 
 以下の例は、左側ストリーム `LeftStream` と右側ストリーム `RightStream` を受け取る `JoiningColumns` という名前の結合変換です。 この変換は 2 つのストリームを取り込んで、列 `leftstreamcolumn` が列 `rightstreamcolumn` よりも大きいすべての行を結合します。 `joinType` は `cross` です。 ブロードキャストが有効になっていません。`broadcast` の値は `'none'` です。
 
-Data Factory UX では、この変換は次の図のようになります。
+UI では、この変換は次の図のようになります。
 
-![スクリーンショットには、[結合設定] タブが選択され、[結合の種類] がカスタム (クロス) である変換が示されています。](media/data-flow/join-script2.png "結合の例")
+:::image type="content" source="media/data-flow/join-script2.png" alt-text="スクリーンショットには、[結合設定] タブが選択され、[結合の種類] がカスタム (クロス) である変換が示されています。":::
 
 この変換のデータ フロー スクリプトは、次のスニペットに含まれています。
 

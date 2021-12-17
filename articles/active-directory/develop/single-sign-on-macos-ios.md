@@ -13,14 +13,14 @@ ms.date: 02/03/2020
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02140728536e458c85e8c63a0fa1ca3c9663506b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80881250"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050508"
 ---
-# <a name="how-to-configure-sso-on-macos-and-ios"></a>方法: macOS と iOS で SSO を構成する
+# <a name="configure-sso-on-macos-and-ios"></a>macOS と iOS で SSO を構成する
 
 macOS および iOS 用の Microsoft Authentication Library (MSAL) は、macOS/iOS アプリとブラウザーの間でのシングル サインオン (SSO) をサポートしています。 この記事では、次の SSO シナリオを取り上げます。
 
@@ -72,7 +72,7 @@ App2 のリダイレクト URI: `msauth.com.contoso.mytestapp2://auth`
 App3 のリダイレクト URI: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
-> リダイレクト URI の形式は、MSAL がサポートする形式と互換性がある必要があります。これについては「[MSAL リダイレクト URI 形式の要件](redirect-uris-ios.md#msal-redirect-uri-format-requirements)」に記載されています。
+> リダイレクト URI の形式は、MSAL がサポートする形式と互換性がある必要があります。これは 、[MSAL リダイレクト URI](redirect-uris-ios.md#msal-redirect-uri-format-requirements)形式の要件に記載されています。
 
 ### <a name="setup-keychain-sharing-between-applications"></a>アプリケーション間のキーチェーン共有を設定する
 

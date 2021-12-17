@@ -1,22 +1,24 @@
 ---
 title: Azure Cache for Redis への移行
 description: 既存のキャッシュを Azure Cache for Redis に移行する方法について説明します
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.author: yegu
-ms.openlocfilehash: d63cafb32dc1db0a901ed3e6004446b450db10c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: cauribeg
+ms.openlocfilehash: 4d2dab8534cafee529e0467026323c5018c84d43
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102451525"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537799"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Azure Cache for Redis への移行
+
 この記事では、オンプレミスまたは別のクラウド サービスで実行されている既存の Redis キャッシュを Azure Cache for Redis に移行するためのさまざまな方法について説明します。
 
 ## <a name="migration-scenarios"></a>移行シナリオ
+
 オープンソースの Redis は、多くのコンピューティング環境で実行できます。 一般的な例は、次のとおりです。
 
 - **オンプレミス** - プライベート データセンターで実行されている Redis キャッシュです。

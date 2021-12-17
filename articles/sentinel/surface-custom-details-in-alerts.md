@@ -1,27 +1,28 @@
 ---
-title: Azure Sentinel アラートでカスタムの詳細を表示する | Microsoft Docs
-description: Azure Sentinel 分析ルールでアラートに含まれるカスタム イベントの詳細を抽出して表示し、より適切で詳細なインシデント情報を取得します
+title: Microsoft Sentinel アラートでカスタムの詳細を表示する | Microsoft Docs
+description: Microsoft Sentinel 分析ルールでアラートに含まれるカスタム イベントの詳細を抽出して表示し、より適切で詳細なインシデント情報を取得します
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 45f0ef5366d97c275c40d4d436020dbaf3501d42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0b8cf32cce618ec5298ac9494062a67b53d98d76
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456169"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132711611"
 ---
-# <a name="surface-custom-event-details-in-alerts-in-azure-sentinel"></a>Azure Sentinel でアラートに含まれるカスタム イベントの詳細を表示する 
+# <a name="surface-custom-event-details-in-alerts-in-microsoft-sentinel"></a>Microsoft Sentinel でアラートに含まれるカスタム イベントの詳細を表示する 
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >
@@ -29,7 +30,7 @@ ms.locfileid: "102456169"
 
 ## <a name="introduction"></a>はじめに
 
-[スケジュールされたクエリ分析ルール](tutorial-detect-threats-custom.md)を使用すると、Azure Sentinel に接続されたデータ ソースの **イベント** を分析し、それらのイベントの内容がセキュリティの観点から重要な場合に **アラート** を生成することができます。 これらのアラートは、Azure Sentinel のさまざまなエンジンを使用してさらに分析、グループ化、フィルター処理が行われ、SOC アナリストにとって注意が必要な **インシデント** へと抽出されます。 ただし、アナリストがインシデントを表示した場合、すぐに表示されるのはコンポーネント アラート自体のプロパティのみです。 実際の内容 (イベントに含まれる情報) を確認するには、さらに調べる必要があります。
+[スケジュールされたクエリ分析ルール](detect-threats-custom.md)を使用すると、Microsoft Sentinel に接続されたデータ ソースの **イベント** を分析し、それらのイベントの内容がセキュリティの観点から重要な場合に **アラート** を生成できます。 これらのアラートは、Microsoft Sentinel のさまざまなエンジンを使用してさらに分析、グループ化、フィルター処理が行われ、SOC アナリストにとって注意が必要な **インシデント** へと抽出されます。 ただし、アナリストがインシデントを表示した場合、すぐに表示されるのはコンポーネント アラート自体のプロパティのみです。 実際の内容 (イベントに含まれる情報) を確認するには、さらに調べる必要があります。
 
 **分析ルール ウィザード** の **カスタムの詳細** 機能を使用すると、それらのイベントから構築されたイベント データをアラートに表示し、イベント データをアラート プロパティの一部にすることができます。 事実上、これにより、インシデントのイベントの内容をすぐに可視化できるため、はるかに高速で効率的なトリアージ、調査、結論の導出、対応が可能になります。
 
@@ -37,15 +38,15 @@ ms.locfileid: "102456169"
 
 ## <a name="how-to-surface-custom-event-details"></a>カスタム イベントの詳細を表示する方法
 
-1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
-1. スケジュールされたクエリ ルールを選択し、 **[編集]** をクリックします。 または、画面の上部にある **[作成] &#10132; [スケジュール済みクエリ ルール]** をクリックして新しいルールを作成します。
+1. スケジュールされたクエリ ルールを選択し、 **[編集]** をクリックします。 または、画面の上部にある **[作成] > [スケジュール済みクエリ ルール]** をクリックして新しいルールを作成します。
 
 1. **[ルールのロジックを設定]** タブをクリックします。
 
-1. **[Alert enhancement]\(アラートの拡張\)** セクションで、 **[Custom details]\(カスタムの詳細\)** を選択します。
+1. **[Alert enhancement (Preview)]\(アラート集約 (プレビュー\))** セクションで、 **[Custom details]\(カスタムの詳細\)** を展開します。
 
-    :::image type="content" source="media/surface-custom-details-in-alerts/alert-enhancement.png" alt-text="カスタムの詳細の検索と選択":::
+    :::image type="content" source="media/surface-custom-details-in-alerts/alert-enrichment.png" alt-text="カスタムの詳細の検索と選択":::
 
 1. 展開された **[Custom details]\(カスタムの詳細\)** セクションで、表示する詳細に対応するキーと値のペアを追加します。
 
@@ -63,12 +64,12 @@ ms.locfileid: "102456169"
 
     > [!NOTE]
     > 
-    >**サービスの制限**
+    > **サービスの制限**
     > - 1 つの分析ルールで **最大 20 個のカスタムの詳細** を定義できます。
     >
     > - すべてのカスタム詳細のサイズ制限は、まとめて **2 KB** です。
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Azure Sentinel 分析ルールを使用してアラートにカスタムの詳細を表示する方法について説明します。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [スケジュールされたクエリ分析ルール](tutorial-detect-threats-custom.md)の完全な画像を取得します。
-- [Azure Sentinel のエンティティ](entities-in-azure-sentinel.md)について詳しく確認します。
+このドキュメントでは、Microsoft Sentinel 分析ルールを使用してアラートにカスタムの詳細を表示する方法について説明します。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
+- [スケジュールされたクエリ分析ルール](detect-threats-custom.md)の完全な画像を取得します。
+- [Microsoft Azure Sentinel のエンティティ](entities.md)について詳しく確認します。

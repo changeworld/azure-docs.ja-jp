@@ -8,12 +8,12 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 0ba34b298fad21656a63c813057ed0c69db6c7f1
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 708112634c6c6d25c506e5866f7f3588298991c9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064887"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738021"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door とは
 
@@ -67,7 +67,7 @@ Front Door に含まれる主な機能は次のとおりです。
 
 ## <a name="pricing"></a>価格
 
-料金情報については、[Front Door の価格](https://azure.microsoft.com/pricing/details/frontdoor/)に関するページを参照してください。 「[Azure Front Door の SLA](https://azure.microsoft.com/en-us/support/legal/sla/frontdoor/v1_0/)」を参照してください。
+料金情報については、[Front Door の価格](https://azure.microsoft.com/pricing/details/frontdoor/)に関するページを参照してください。 「[Azure Front Door の SLA](https://azure.microsoft.com/support/legal/sla/frontdoor/v1_0/)」を参照してください。
 
 ## <a name="whats-new"></a>新機能
 
@@ -75,5 +75,6 @@ RSS フィードを購読し、[Azure の更新情報](https://azure.microsoft.c
 
 ## <a name="next-steps"></a>次のステップ
 
-- [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
+- [クイックスタート: Front Door を作成する](quickstart-create-front-door.md)。
+- [Learn モジュール: Azure Front Door の概要](/learn/modules/intro-to-azure-front-door/)。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

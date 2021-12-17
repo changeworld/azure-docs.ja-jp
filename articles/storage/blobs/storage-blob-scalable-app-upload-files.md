@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: ed7020a58f3f15403108934bcc3fab644bd1b627
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 787cfde40013122c3827cddd4903ca15dfe51836
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99584467"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624939"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Azure Storage に大量のランダム データを並行でアップロードする
 
@@ -21,10 +21,10 @@ ms.locfileid: "99584467"
 シリーズの第 2 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * 接続文字列の構成
-> * アプリケーションのビルド
-> * アプリケーションの実行
-> * 接続数の検証
+> - 接続文字列の構成
+> - アプリケーションのビルド
+> - アプリケーションの実行
+> - 接続数の検証
 
 Microsoft Azure Blob Storage では、データを格納するためのスケーラブルなサービスを提供しています。 アプリケーションのパフォーマンスをできる限り高められるように、Blob ストレージの仕組みを理解することをお勧めします。 Azure BLOB の制限事項に関する知識が重要です。これらの制限事項の詳細については、[Blob ストレージのスケーラビリティおよびパフォーマンスのターゲット](../blobs/scalability-targets.md)に関する記事を参照してください。
 
@@ -66,11 +66,11 @@ dotnet run
 
 `UploadFilesAsync` メソッドを次の例に示します。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Scalable.cs" id="Snippet_UploadFilesAsync":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 多数のコンカレント接続が許可されるように、スレッドの最小数と最大数が 100 に設定されています。
 
@@ -160,6 +160,7 @@ private static async Task UploadFilesAsync()
     }
 }
 ```
+
 スレッドの設定と接続制限設定に加えて、[UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) メソッドの [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) が、並行処理を使用し MD5 ハッシュ検証が無効になるように構成されます。 ファイルは 100 MB のブロック単位でアップロードされます。この構成によってパフォーマンスは向上しますが、パフォーマンスが低いネットワークを使用している場合は、100 MB ブロック全体が再試行されるエラーが発生している場合と同然に、負荷が高くなる恐れがあります。
 
 |プロパティ|値|説明|
@@ -205,10 +206,10 @@ C:\>
 シリーズの第 2 部では、次の手順をはじめ、ストレージ アカウントに大量のランダム データを並行でアップロードする方法について学びました。
 
 > [!div class="checklist"]
-> * 接続文字列の構成
-> * アプリケーションのビルド
-> * アプリケーションの実行
-> * 接続数の検証
+> - 接続文字列の構成
+> - アプリケーションのビルド
+> - アプリケーションの実行
+> - 接続数の検証
 
 シリーズの第 3 部では、ストレージ アカウントから大量のデータをダウンロードする方法へと進みます。
 

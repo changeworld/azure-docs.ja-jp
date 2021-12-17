@@ -5,20 +5,20 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 05/25/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 3f88fa38d62778bc3c4c1e29571d1d0ae4eeb5ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 139c8336d4f40bc12cd942f27b5726a555f58605
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98179607"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372966"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Azure Logic Apps 内でインライン コードを使用してコード スニペットを追加および実行する
 
-ロジック アプリ内でコードの一部を実行するときは、組み込みのインライン コード アクションをロジック アプリのワークフロー内にステップとして追加します。 このアクションが最もうまく機能するのは、実行するコードが次のシナリオに適合しているときです。
+ロジック アプリ ワークフロー内でコードの一部を実行するときは、組み込みのインライン コード アクションをロジック アプリのワークフロー内にステップとして追加します。 このアクションが最もうまく機能するのは、実行するコードが次のシナリオに適合しているときです。
 
-* JavaScript 内で実行する。 追加の言語がまもなく提供される。
+* JavaScript 内で実行する。 多くの言語が開発中である。
 
 * 実行の完了に要する時間が 5 秒以内。
 
@@ -26,7 +26,9 @@ ms.locfileid: "98179607"
 
 * [**変数** アクション](../logic-apps/logic-apps-create-variables-store-values.md)の操作は必要なし (未サポート)。
 
-* 使用する Node.js のバージョンが 8.11.1 である。 詳細については、「[標準ビルトイン オブジェクト](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)」を参照してください。
+* [マルチテナント ベースのロジック アプリ](logic-apps-overview.md)に Node.js バージョン 8.11.1、[シングルテナント ベースのロジック アプリ](single-tenant-overview-compare.md)に [Node.js バージョン10.x.x、11.x.x、または 12.x.x](https://nodejs.org/en/download/releases/) を使用している。
+
+  詳細については、「[標準ビルトイン オブジェクト](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)」を参照してください。
 
   > [!NOTE]
   > `require()` 関数は、JavaScript を実行するインライン コード アクションではサポートされていません。
@@ -39,49 +41,38 @@ ms.locfileid: "98179607"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* コード スニペットを追加するロジック アプリ (トリガーを含む)。 ロジック アプリがない場合は、[クイック スタート:初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
+* コード スニペットを追加するロジック アプリ ワークフロー (トリガーを含む)。 このトピックの例では、Office 365 Outlook の **[新しいメールが届いたとき]** というトリガーを使用します。
 
-   このトピックの例では、Office 365 Outlook の **[新しいメールが届いたとき]** というトリガーを使用します。
+  ロジック アプリをお持ちでない場合は、次のドキュメントを確認してください。
 
-* ロジック アプリにリンクされた[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。
+  * マルチテナント: [クイックスタート: 初めてのロジック アプリを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+  * シングルテナント: [シングルテナント ベースのロジック アプリ ワークフローを作成する](create-single-tenant-workflows-azure-portal.md)
 
-  * ユース ケースまたはシナリオに適した統合アカウントを使用していることを確認します。
+* ロジック アプリがマルチテナントかシングルテナントかに基づいて、次の情報を確認します。
 
-    たとえば、[Free レベル](../logic-apps/logic-apps-pricing.md#integration-accounts)の統合アカウントは、運用環境のシナリオではなく探索的なシナリオとワークロードのみを対象としており、用途とスループットが制限されており、サービス レベル アグリーメント (SLA) ではサポートされていません。 他のレベルではコストが発生しますが、SLA のサポートが含まれ、スループットが向上し、上限も高くなります。 統合アカウントの[レベル](../logic-apps/logic-apps-pricing.md#integration-accounts)、[価格](https://azure.microsoft.com/pricing/details/logic-apps/)、および[制限](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)の詳細を確認してください。
+  * マルチテナント: Node.js バージョン 8.11.1 が必要です。 ロジック アプリにリンクされている空の[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)も必要です。 ユース ケースまたはシナリオに適した統合アカウントを使用していることを確認します。
 
-   * 統合アカウントを使用しない場合は、[Azure Logic Apps プレビュー](logic-apps-overview-preview.md)を使用し、リソースの種類 **[Logic App (プレビュー)]** からロジック アプリを作成することができます。
+    たとえば、[Free レベル](../logic-apps/logic-apps-pricing.md#integration-accounts)の統合アカウントは、運用環境のシナリオではなく探索的なシナリオとワークロードのみを対象としており、用途とスループットが制限されており、サービス レベル アグリーメント (SLA) ではサポートされていません。
 
-     Azure Logic Apps プレビューでは、**インライン コード** が **インライン コード操作** と呼ばれるようになったほか、次のような相違点もあります。
+    他の統合アカウント レベルではコストが発生しますが、SLA のサポートが含まれ、スループットが向上し、上限も高くなります。 統合アカウントの[レベル](../logic-apps/logic-apps-pricing.md#integration-accounts)、[価格](https://azure.microsoft.com/pricing/details/logic-apps/)、および[制限](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)の詳細を確認してください。
 
-     * **JavaScript コードの実行** が、**Run in-line JavaScript\(インライン JavaScript の実行\)** になりました。
-
-     * macOS または Linux を使用している場合、Visual Studio Code で Azure Logic Apps (プレビュー) 拡張機能を使用する際に、インライン コード操作アクションは現在使用できません。
-
-     * インライン コード操作アクションには[更新された制限](logic-apps-overview-preview.md#inline-code-limits)があります。
-
-     次のいずれかのオプションから開始できます。
-
-     * [Azure portal を使用](create-stateful-stateless-workflows-azure-portal.md)して、リソースの種類 **[Logic App (プレビュー)]** からロジック アプリを作成します。
-
-     * [Visual Studio Code と Azure Logic Apps (プレビュー) 拡張機能を使用](create-stateful-stateless-workflows-visual-studio-code.md)して、ロジック アプリのプロジェクトを作成します。
+  * シングルテナント: [Node.js バージョン 10.x.x、11.x.x、または 12.x.x](https://nodejs.org/en/download/releases/) が必要です。 統合アカウントは必要ありませんが、インライン コード アクションの名前が **インライン コード操作** に変更され、[制限が更新されました](logic-apps-limits-and-config.md)。
 
 ## <a name="add-inline-code"></a>インライン コードを追加する
 
-1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
+1. [Azure portal](https://portal.azure.com) のデザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-1. デザイナーを使用して、ロジック アプリのワークフローのどこにインライン コード アクションを追加するかを選択します。
+1. ワークフローで、ワークフローの最後またはステップ間の新しいステップとして、インライン コード アクションを追加する場所を選択します。
 
-   * ワークフローの最後にアクションを追加するには、 **[新しいステップ]** を選択します。
+   ステップ間にアクションを追加するには、それらのステップを接続している矢印の上にマウス ポインターを移動します。 表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
-   * ステップ間にアクションを追加するには、それらのステップを接続している矢印の上にマウス ポインターを移動します。 表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
-
-   この例では、Office 365 Outlook トリガーの下にインライン コード アクションが追加されます。
+   この例では、Office 365 Outlook トリガーの下にアクションが追加されます。
 
    ![トリガーの下に新しいステップを追加します。](./media/logic-apps-add-run-inline-code/add-new-step.png)
 
-1. **[アクションを選択してください]** で、検索ボックスに「`inline code`」と入力します。 アクションのリストで、 **[JavaScript コードの実行]** という名前のアクションを選択します。
+1. アクション検索ボックスに、「`inline code`」と入力します。 アクションのリストで、 **[JavaScript コードの実行]** という名前のアクションを選択します。
 
    ![[JavaScript コードの実行] アクションを選択します。](./media/logic-apps-add-run-inline-code/select-inline-code-action.png)
 
@@ -147,7 +138,7 @@ ms.locfileid: "98179607"
 
 これらのサブプロパティの詳細を次の表に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 |----------|------|-------|
 | `actions` | オブジェクト コレクション | コード スニペットを実行する前に実行したアクションの結果オブジェクトです。 各オブジェクトには、*key-value* ペアが含まれています。ここで、key はアクション名、value は `@actions('<action-name>')` を含む [actions() 関数](../logic-apps/workflow-definition-language-functions-reference.md#actions)の呼び出しに相当します。 アクションの名前で使用されるアクション名は、基盤となるワークフロー定義で使用されるアクション名と同じです。アクション名内のスペース (" ") がアンダー スコア (_) で置き換えられています。 このオブジェクトにより、現在実行されているワークフロー インスタンスからアクション プロパティの値にアクセスできます。 |
 | `trigger` | Object | トリガーの結果オブジェクトで、 [trigger() 関数](../logic-apps/workflow-definition-language-functions-reference.md#trigger)の呼び出しと同じです。 このオブジェクトにより、現在実行されているワークフロー インスタンスからトリガー プロパティの値にアクセスできます。 |

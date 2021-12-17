@@ -7,143 +7,139 @@ metadata:
   description: Azure Storage のドキュメントのハブ ページ。 クラウドおよびハイブリッド ストレージ ソリューションや、データの転送、共有、バックアップを行うためのサービスに関するサービス ドキュメントを指します。
   ms.service: storage
   ms.topic: hub-page
-  author: twooley
-  ms.author: twooley
-  ms.date: 05/01/2020
-  ms.openlocfilehash: 886f61206bdc87dc5283a46e50ff438041be1a2f
-  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/27/2021
-  ms.locfileid: "98878478"
+  author: tamram
+  ms.author: tamram
+  ms.date: 04/14/2021
 highlightedContent:
   items:
-  - title: コア ストレージ サービスの概要
-    itemType: concept
-    url: ./common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: ストレージ アカウントの種類の詳細
-    itemType: concept
-    url: ./common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: ストレージ アカウントの作成
-    itemType: how-to-guide
-    url: ./common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: データの冗長性の詳細
-    itemType: concept
-    url: ./common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: Azure へのデータ転送
-    itemType: concept
-    url: ./common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: コア ストレージ サービスの概要
+      itemType: concept
+      url: ./common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: ストレージ アカウントの種類の詳細
+      itemType: concept
+      url: ./common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: ストレージ アカウントの作成
+      itemType: how-to-guide
+      url: ./common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: データの冗長性の詳細
+      itemType: concept
+      url: ./common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Azure Storage にデータを移行する
+      itemType: concept
+      url: ./common/storage-migration-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 additionalContent:
   sections:
-  - title: クラウド ストレージ ソリューション
-    items:
-    - title: アプリ向けのオブジェクト ストレージ
-      links:
-      - url: ./blobs/storage-blobs-introduction.md
-        text: 非構造化データ向けのストレージ (Blob Storage) を確認する
-      - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
-        text: ブロック BLOB、追加 BLOB、ページ BLOB について
-      - url: ./blobs/index.yml
-        text: 詳細を表示 >
-    - title: ビッグ データ分析向けのストレージ
-      links:
-      - url: ./blobs/data-lake-storage-introduction.md
-        text: エンタープライズ データ レーク向けのストレージ (Data Lake Storage) を確認する
-      - url: ./blobs/data-lake-storage-data-scenarios.md
-        text: ビッグ データを処理するためのオプションとツールについて
-    - title: クラウドでホストされるファイル共有
-      links:
-      - url: ./files/storage-files-introduction.md
-        text: 核となる Azure Storage プラットフォームで提供されるファイル共有 (Azure Files) を使用する
-      - url: ../azure-netapp-files/azure-netapp-files-introduction.md
-        text: NetApp ONTAP によって提供されるボリューム (Azure NetApp Files) を使用する
-    - title: IaaS ワークロード用のディスク ストレージ
-      links:
-      - url: ../virtual-machines/managed-disks-overview.md
-        text: Azure VM のブロックレベルのストレージ ボリュームを確認する
-      - url: ../virtual-machines/disks-types.md
-        text: 使用できるディスクの種類について
-      - url: ../virtual-machines/windows/attach-managed-disk-portal.md
-        text: VM に新しいディスクを追加する - Windows
-      - url: ../virtual-machines/linux/attach-disk-portal.md
-        text: VM にデータ ディスクを接続する - Linux
-    - title: 非同期メッセージ キューのストレージ
-      links:
-      - url: ./queues/storage-queues-introduction.md
-        text: キュー用の Azure Storage ソリューション (Queue storage) を確認する
-      - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
-        text: Queue storage と Service Bus キューの比較
-      - url: ./queues/index.yml
-        text: 詳細を表示 >
-    - title: 構造化された NoSQL データ向けのストレージ
-      links:
-      - url: ./tables/table-storage-overview.md
-        text: 構造化された NoSQL データをクラウドに格納する (Table Storage と Cosmos DB)
-      - url: ../cosmos-db/table-support.md
-        text: Table Storage と Cosmos DB Table API の比較
-      - url: ./tables/index.yml
-        text: 詳細を表示 >
-  - title: ハイブリッド ストレージ ソリューション
-    items:
-    - title: オンプレミスのファイル共有をクラウドに展開する
-      links:
-      - url: ./files/storage-sync-files-planning.md
-        text: Azure ファイル共有を Windows ファイルサーバーと同期する (Azure FileSync)
-      - url: ./files/storage-sync-files-deployment-guide.md
-        text: Azure File Sync のデプロイ
-      - url: ./files/index.yml
-        text: 詳細を表示 >
-    - title: オンライン データ転送 (オンプレミスから Azure)
-      links:
-      - url: ../databox-gateway/data-box-gateway-overview.md
-        text: Azure にデータをシームレスに転送する (Data Box Gateway)
-      - url: ../databox-online/azure-stack-edge-overview.md
-        text: Azure に転送する前にデータをローカルで処理する (Azure Stack Edge)
-      - url: ../databox-online/index.yml
-        text: 詳細を表示 >
-    - title: ハイ パフォーマンス コンピューティング (HPC) ワークロード用のキャッシュ
-      links:
-      - url: ../hpc-cache/hpc-cache-overview.md
-        text: フルマネージド ファイル キャッシュ サービスを使用する (Azure HPC Cache)
-      - url: ../avere-vfxt/avere-vfxt-overview.md
-        text: Azure でオンプレミスの NAS をキャッシュする (Avere vFXT for Azure)
-      - url: ../fxt-edge-filer/fxt-overview.md
-        text: オンプレミスのキャッシュ アプライアンスをデプロイする (Azure FXT Edge Filer)
-  - title: データ操作
-    items:
-    - title: オフラインでの Azure への一括転送
-      links:
-      - url: ../databox/data-box-disk-overview.md
-        text: 40 TB 未満のデータを転送する (Data Box Disk)
-      - url: ../databox/data-box-overview.md
-        text: 40 から 500 TB のデータを転送する (Data Box)
-      - url: ../databox/data-box-heavy-overview.md
-        text: 500 TB を超えるデータを転送する (Data Box Heavy)
-      - url: ../databox/index.yml
-        text: 詳細を表示 >
-    - title: 小さいデータセットの転送 (オンライン)
-      links:
-      - url: ./common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        text: AzCopy コマンドライン ツールを使用する
-      - url: ./blobs/storage-quickstart-blobs-storage-explorer.md
-        text: Azure Storage Explorer の GUI ベースのツールを使用する
-    - title: コストの管理
-      links:
-      - url: ./blobs/storage-blob-storage-tiers.md
-        text: コスト効果の高い方法で BLOB データを階層化する (ホット、クール、アーカイブ)
-    - title: データを共有する
-      links:
-      - url: ../data-share/index.yml
-        text: 顧客やパートナーとデータを共有する (Azure Data Share)
-      - url: ../data-share/supported-data-stores.md
-        text: 共有でサポートされているデータ ストア
-      - url: ../data-share/index.yml
-        text: 詳細を表示 >
-    - title: データのバックアップ
-      links:
-      - url: ../backup/quick-backup-vm-portal.md
-        text: VM をバックアップする (Azure Backup)
-      - url: ../backup/backup-afs.md
-        text: Azure ファイル共有のバックアップ
-      - url: ../backup/index.yml
-        text: 詳細を表示 >
+    - title: クラウド ストレージ ソリューション
+      items:
+        - title: アプリ向けのオブジェクト ストレージ
+          links:
+            - url: ./blobs/storage-blobs-introduction.md
+              text: 非構造化データ向けのストレージ (Blob Storage) を確認する
+            - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
+              text: ブロック BLOB、追加 BLOB、ページ BLOB について
+            - url: ./blobs/index.yml
+              text: 詳細を表示 >
+        - title: ビッグ データ分析向けのストレージ
+          links:
+            - url: ./blobs/data-lake-storage-introduction.md
+              text: エンタープライズ データ レーク向けのストレージ (Data Lake Storage) を確認する
+            - url: ./blobs/data-lake-storage-best-practices.md
+              text: ビッグ データを処理するためのオプションとツールについて
+        - title: クラウドでホストされるファイル共有
+          links:
+            - url: ./files/storage-files-introduction.md
+              text: 核となる Azure Storage プラットフォームで提供されるファイル共有 (Azure Files) を使用する
+            - url: ../azure-netapp-files/azure-netapp-files-introduction.md
+              text: NetApp ONTAP によって提供されるボリューム (Azure NetApp Files) を使用する
+        - title: IaaS ワークロード用のディスク ストレージ
+          links:
+            - url: ../virtual-machines/managed-disks-overview.md
+              text: Azure VM のブロックレベルのストレージ ボリュームを確認する
+            - url: ../virtual-machines/disks-types.md
+              text: 使用できるディスクの種類について
+            - url: ../virtual-machines/windows/attach-managed-disk-portal.md
+              text: VM に新しいディスクを追加する - Windows
+            - url: ../virtual-machines/linux/attach-disk-portal.md
+              text: VM にデータ ディスクを接続する - Linux
+        - title: 非同期メッセージ キューのストレージ
+          links:
+            - url: ./queues/storage-queues-introduction.md
+              text: キュー用の Azure Storage ソリューション (Queue storage) を確認する
+            - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
+              text: Queue storage と Service Bus キューの比較
+            - url: ./queues/index.yml
+              text: 詳細を表示 >
+        - title: 構造化された NoSQL データ向けのストレージ
+          links:
+            - url: ./tables/table-storage-overview.md
+              text: 構造化された NoSQL データをクラウドに格納する (Table Storage と Cosmos DB)
+            - url: ../cosmos-db/table-support.md
+              text: Table Storage と Cosmos DB Table API の比較
+            - url: ./tables/index.yml
+              text: 詳細を表示 >
+    - title: ハイブリッド ストレージ ソリューション
+      items:
+        - title: オンプレミスのファイル共有をクラウドに展開する
+          links:
+            - url: ./file-sync/file-sync-introduction.md
+              text: Azure File Sync について学習する
+            - url: ./file-sync/file-sync-planning.md
+              text: Azure ファイル共有を Windows ファイルサーバーと同期する (Azure FileSync)
+            - url: ./file-sync/file-sync-deployment-guide.md
+              text: Azure File Sync のデプロイ
+            - url: ./file-sync/index.yml
+              text: 詳細を表示 >
+        - title: オンライン データ転送 (オンプレミスから Azure)
+          links:
+            - url: ../databox-gateway/data-box-gateway-overview.md
+              text: Azure にデータをシームレスに転送する (Data Box Gateway)
+            - url: ../databox-online/azure-stack-edge-overview.md
+              text: Azure に転送する前にデータをローカルで処理する (Azure Stack Edge)
+            - url: ../databox-online/index.yml
+              text: 詳細を表示 >
+        - title: ハイ パフォーマンス コンピューティング (HPC) ワークロード用のキャッシュ
+          links:
+            - url: ../hpc-cache/hpc-cache-overview.md
+              text: フルマネージド ファイル キャッシュ サービスを使用する (Azure HPC Cache)
+            - url: ../avere-vfxt/avere-vfxt-overview.md
+              text: Azure でオンプレミスの NAS をキャッシュする (Avere vFXT for Azure)
+            - url: ../fxt-edge-filer/overview.md
+              text: オンプレミスのキャッシュ アプライアンスをデプロイする (Azure FXT Edge Filer)
+    - title: データ操作
+      items:
+        - title: オフラインでの Azure への一括転送
+          links:
+            - url: ../databox/data-box-disk-overview.md
+              text: 40 TB 未満のデータを転送する (Data Box Disk)
+            - url: ../databox/data-box-overview.md
+              text: 40 から 500 TB のデータを転送する (Data Box)
+            - url: ../databox/data-box-heavy-overview.md
+              text: 500 TB を超えるデータを転送する (Data Box Heavy)
+            - url: ../databox/index.yml
+              text: 詳細を表示 >
+        - title: 小さいデータセットの転送 (オンライン)
+          links:
+            - url: ./common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              text: AzCopy コマンドライン ツールを使用する
+            - url: ./blobs/quickstart-storage-explorer.md
+              text: Azure Storage Explorer の GUI ベースのツールを使用する
+        - title: コストの管理
+          links:
+            - url: ./blobs/access-tiers-overview.md
+              text: コスト効果の高い方法で BLOB データを階層化する (ホット、クール、アーカイブ)
+        - title: データを共有する
+          links:
+            - url: ../data-share/index.yml
+              text: 顧客やパートナーとデータを共有する (Azure Data Share)
+            - url: ../data-share/supported-data-stores.md
+              text: 共有でサポートされているデータ ストア
+            - url: ../data-share/index.yml
+              text: 詳細を表示 >
+        - title: データのバックアップ
+          links:
+            - url: ../backup/quick-backup-vm-portal.md
+              text: VM をバックアップする (Azure Backup)
+            - url: ../backup/backup-afs.md
+              text: Azure ファイル共有のバックアップ
+            - url: ../backup/index.yml
+              text: 詳細を表示 >

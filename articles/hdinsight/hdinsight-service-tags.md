@@ -4,13 +4,14 @@ description: NSG に IP アドレスを追加することなく、正常性と�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 08/11/2020
-ms.openlocfilehash: 99a61d3e445bf6887db0c97e365e6e4489eb79e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/07/2021
+ms.author: guyhay
+ms.openlocfilehash: f85ad29b11e45f5e906bfbf50321c86d16670f89
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104872015"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004353"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight の NSG サービス タグ
 
@@ -18,7 +19,7 @@ ms.locfileid: "104872015"
 
 これらのサービス タグは、HDInsight サービスによって管理されます。 独自のサービス タグを作成したり、既存のタグを変更したりすることはできません。 サービス タグと一致するアドレス プレフィックスの管理は Microsoft によって行われ、アドレスが変化するとサービス タグは自動的に更新されます。
 
-特定のリージョンを使用する場合に、サービス タグがまだこのページに記載されていない場合は、[Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用してサービス タグを検索できます。 また、[サービス タグの JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードして、目的のリージョンを検索することもできます。
+特定のリージョンを使用する場合に、サービス タグがまだこのページに記載されていない場合は、[Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) を使用してサービス タグを検索できます。 また、[サービス タグの JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードして、目的のリージョンを検索することもできます。
 
 ## <a name="get-started-with-service-tags"></a>サービス タグを使ってみる
 
@@ -59,20 +60,48 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | オーストラリア | オーストラリア東部 | HDInsight.AustraliaEast |
 | &nbsp; | オーストラリア南東部 | HDInsight.AustraliaSoutheast |
 | &nbsp; | オーストラリア中部 | HDInsight.AustraliaCentral |
+| アジア | 東アジア | HDInsight.EastAsia |
+| &nbsp; | 東南アジア | HDInsight.SoutheastAsia |
+| ブラジル | ブラジル南部 | HDInsight.BrazilSouth |
+| &nbsp; | ブラジル南東部 | HDInsight.BrazilSoutheast |
 | 中国 | 中国東部 2 | HDInsight.ChinaEast2 |
 | &nbsp; | 中国北部 2 | HDInsight.ChinaNorth2 |
+<<<<<<< HEAD
 | アメリカ | 米国中北部 | HDInsight.NorthCentralUS |
 | &nbsp; | 米国西部 2 | HDInsight.WestUS2 |
 | &nbsp; | 米国中西部 | HDInsight.WestCentralUS |
 | カナダ | カナダ東部 | HDInsight.CanadaEast |
 | ブラジル | ブラジル南部 | HDInsight.BrazilSouth |
+=======
+| 日本 | 東日本 | HDInsight.JapanEast |
+| &nbsp; | 西日本 | HDInsight.JapanWest |
+>>>>>>> repo_sync_working_branch
 | 韓国 | 韓国中部 | HDInsight.KoreaCentral |
 | &nbsp; | 韓国南部 | HDInsight.KoreaSouth |
 | インド | インド中部 | HDInsight.CentralIndia |
+| &nbsp; | JIO インド西部 | HDInsight.JioIndiaWest |
 | &nbsp; | インド南部 | HDInsight.SouthIndia |
-| 日本 | 西日本 | HDInsight.JapanWest |
+| 南アフリカ | 南アフリカ北部 | HDInsight.SouthAfricaNorth |
+| UAE | アラブ首長国連邦北部 | HDInsight.UAENorth |
+| &nbsp; | アラブ首長国連邦中部 | HDInsight.UAECentral |
+| ヨーロッパ | 北ヨーロッパ | HDInsight.NorthEurope |
+| &nbsp; | 西ヨーロッパ | HDInsight.WestEurope |
 | フランス | フランス中部| HDInsight.FranceCentral |
+| ドイツ | ドイツ中西部| HDInsight.GermanyWestCentral |
+| ノルウェー | ノルウェー東部 | HDInsight.NorwayEast |
+| スウェーデン | スウェーデン中部 | HDInsight.SwedenCentral |
+| &nbsp; | スウェーデン南部 | HDInsight.SwedenSouth |
+| スイス | スイス北部 | HDInsight.SwitzerlandNorth |
+| &nbsp; | スイス西部 | HDInsight.SwitzerlandWest |
 | 英国 | 英国南部 | HDInsight.UKSouth |
+| &nbsp; | 英国西部 | HDInsight.UKWest |
+| United States | 米国中北部 | HDInsight.NorthCentralUS |
+| &nbsp; | 米国中部 | HDInsight.CentralUS |
+| &nbsp; | 米国西部 2 | HDInsight.WestUS2 |
+| &nbsp; | 米国西部 3 | HDInsight.WestUS3 |
+| &nbsp; | 米国中西部 | HDInsight.WestCentralUS |
+| Canada | カナダ東部 | HDInsight.CanadaEast |
+| &nbsp; | カナダ中部 | HDInsight.CanadaCentral |
 | Azure Government | USDoD 中部 | HDInsight.USDoDCentral |
 | &nbsp; | USGov テキサス | HDInsight.USGovTexas |
 | &nbsp; | USDoD 東部 | HDInsight.USDoDEast |

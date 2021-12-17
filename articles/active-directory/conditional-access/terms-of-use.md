@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 01/27/2020
+ms.date: 07/12/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4c8e18979ff1575e1a050244a96e7858cdce46b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 754520be35cbac4321fb7fbb65135016642a7ee1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530246"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018321"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -44,7 +44,7 @@ Azure AD 利用規約ポリシーを使用すると、以下のことができ�
 - 従業員やゲストに、Azure AD 多要素認証 (MFA) でセキュリティ情報を登録する前に利用規約ポリシーへの同意を求める。
 - 従業員やゲストに、Azure AD のセルフサービス パスワード リセット (SSPR) でセキュリティ情報を登録する前に利用規約ポリシーへの同意を求める。
 - 組織内のすべてのユーザーに一般的な利用規約ポリシーを提示する。
-- ユーザーの属性 (例: [動的グループ](../enterprise-users/groups-dynamic-membership.md)を使用して、医師と看護師や、国内従業員と国際従業員など) に基づいて特定の使用条件を提示する。
+- [ダイナミックグループ](../enterprise-users/groups-dynamic-membership.md)を使用して、ユーザー属性 (医師、看護師、国内、国際従業員など) に基づいて特定の使用条件ポリシーを提示します。
 - ビジネスへの影響が大きいアプリケーション (Salesforce など) にアクセスする場合に特定の利用規約ポリシーを提示する。
 - 利用規約ポリシーを異なる言語で提示する。
 - 利用規約ポリシーに同意したユーザーと同意していないユーザーを一覧表示する。
@@ -57,7 +57,7 @@ Azure AD 利用規約ポリシーを使用すると、以下のことができ�
 Azure AD 利用規約ポリシーを使用および構成するには、以下が必要です。
 
 - Azure AD Premium P1、P2、EMS E3、EMS E5 のいずれかのサブスクリプション。
-   - これらのサブスクリプションをお持ちでない場合は、[Azure AD Premium を入手する](../fundamentals/active-directory-get-started-premium.md)か、[Azure AD Premium 試用版を有効にする](https://azure.microsoft.com/trial/get-started-active-directory/)ことができます。
+   - これらのサブスクリプションをお持ちでない場合は、[Azure AD Premium を入手](../fundamentals/active-directory-get-started-premium.md)するか、[Azure AD Premium 試用版を有効にする](https://azure.microsoft.com/trial/get-started-active-directory/)ことができます。
 - 構成するディレクトリに対する次のいずれかの管理者アカウント。
    - グローバル管理者
    - セキュリティ管理者
@@ -201,16 +201,10 @@ ToU ポリシーを作成して適用すると、対象ユーザーにはサイ�
 
 ユーザーは、以下の手順を使用して、同意した利用規約ポリシーを確認できます。
 
-1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
-1. 右上隅に表示される自分の名前をクリックし、 **[プロファイル]** を選択します。
-
-    ![ユーザーのウィンドウが開いた状態の MyApps サイト](./media/terms-of-use/tou14.png)
-
-1. [プロファイル] ページで、 **[使用条件の確認]** をクリックします。
-
-    ![[使用条件の確認] リンクが表示されるユーザーの [プロファイル] ページ](./media/terms-of-use/tou13a.png)
-
-1. そこから同意した利用規約ポリシーを確認できます。
+1. [https://myaccount.microsoft.com/](https://myaccount.microsoft.com/) にサインインします。
+1. **[Settings & Privacy]\(設定とプライバシー\)** を選択します。
+1. **[プライバシー]** を選択します。
+1. **[Organization's notice]\(組織の通知\)** の下で、確認する利用規約の横にある **[表示]** を選択します。
 
 ## <a name="edit-terms-of-use-details"></a>利用規約の詳細を編集する
 
@@ -242,7 +236,7 @@ ToU ポリシーを作成して適用すると、対象ユーザーにはサイ�
     ![名前と拡張オプションが表示される [使用条件の編集] ウィンドウ](./media/terms-of-use/edit-terms-use.png)
 
 5.  右側のペインで、新しいバージョンの PDF をアップロードします。
-6.  また、ユーザーが次回サインインしたときにこの新しいバージョンに同意するように要求する場合、ここに **[Require reaccept]\(再同意を要求する\)** トグル オプションもあります。 ユーザーに再同意を要求する場合は、次回、条件付きアクセス ポリシーに定義されているリソースにアクセスしようとしたときに、この新しいバージョンに同意するように求めるメッセージが表示されます。 ユーザーに同意を要求しない場合は、以前の同意が最新状態となり、前に同意していない新しいユーザー、または同意の有効期限が切れたユーザーにのみ、新しいバージョンが表示されます。
+6.  また、ユーザーが次回サインインしたときにこの新しいバージョンに同意するように要求する場合、ここに **[Require reaccept]\(再同意を要求する\)** トグル オプションもあります。 ユーザーに再同意を要求する場合は、次回、条件付きアクセス ポリシーに定義されているリソースにアクセスしようとしたときに、この新しいバージョンに同意するように求めるメッセージが表示されます。 ユーザーに同意を要求しない場合は、以前の同意が最新状態となり、前に同意していない新しいユーザー、または同意の有効期限が切れたユーザーにのみ、新しいバージョンが表示されます。 セッションの有効期限が切れるまで、 **[Require reaccept]\(再同意を要求する\)** によってユーザーに新しい TOU の受け取りが要求されることはありません。 確実に再同意するには、このケースの TOU を削除して再作成するか、新規作成します。
 
     ![使用条件の再同意オプションが強調表示された編集](./media/terms-of-use/re-accept.png)
 
@@ -311,7 +305,7 @@ ToU 言語を追加する方法を次の手順で説明します。
 
 ### <a name="join-a-windows-10-device"></a>Windows 10 デバイスを参加させる
 
-ユーザーが Windows 10 と Microsoft Edge を使用している場合、[デバイスを参加させる](../user-help/user-help-join-device-on-network.md#to-join-an-already-configured-windows-10-device)ための次のようなメッセージを受信します。
+ユーザーが Windows 10 と Microsoft Edge を使用している場合、[デバイスを参加させる](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973#to-join-an-already-configured-windows-10-device)ための次のようなメッセージを受信します。
 
 ![Windows 10 および Microsoft Edge - デバイスを登録する必要があることを示すメッセージ](./media/terms-of-use/per-device-win10-edge.png)
 
@@ -402,12 +396,6 @@ A:利用規約レポートのユーザーの数および同意したユーザー
 
 **Q:利用規約レポートの同意数と Azure AD 監査ログの同意数が異なります。**<br />
 A:利用規約レポートはその利用規約ポリシーの有効期間中保存されるのに対し、Azure AD 監査ログは 30 日間保存されます。 また、利用規約レポートには、ユーザーの現在の同意状態のみが表示されます。 たとえば、あるユーザーが拒否してから同意した場合、利用規約レポートにはそのユーザーの同意のみが表示されます。 履歴を確認するには、Azure AD 監視ログを使用できます。
-
-**Q:利用規約ポリシーの詳細を編集した場合、ユーザーはもう一度同意する必要がありますか?**<br />
-A:いいえ。管理者が利用規約ポリシーの詳細 (名前、表示名、展開必須、または言語の追加) を編集しても、ユーザーが新しい条件に再同意する必要はありません。
-
-**Q:既存の利用規約ポリシーのドキュメントを更新できますか?**<br />
-A:現在、既存の利用規約ポリシーのドキュメントを更新することはできません。 利用規約ポリシーのドキュメントを変更するには、新しい利用規約ポリシーのインスタンスを作成する必要があります。
 
 **Q:ハイパーリンクが利用規約ポリシーの PDF ドキュメント内にある場合、エンド ユーザーはそれらをクリックできますか?**<br />
 A:はい。エンド ユーザーは、追加のページへのハイパーリンクを選択できますが、ドキュメント内のセクションへのリンクはサポートされていません。 また、利用規約ポリシー PDF 内のハイパーリンクは、Azure AD MyApps または MyAccount ポータルからアクセスするときは機能しません。

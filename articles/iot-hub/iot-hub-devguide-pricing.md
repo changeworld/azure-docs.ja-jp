@@ -1,9 +1,8 @@
 ---
 title: Azure IoT Hub の価格について | Microsoft Docs
 description: 開発者ガイド - 体系例を含む IoT Hub での課金および価格体系に関する情報。
-author: robinsh
-manager: philmea
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -11,12 +10,12 @@ ms.date: 03/11/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 5b67f505a71d2af7950422a86ab45ef8aebb3bf4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 53dfcfbb04f729125db580a2f4f06ae5bb272bf3
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056438"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548921"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub の価格情報
 

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5a4cc2b964bcf4fa49d90c8b6d5aa546b7148a1
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: b81bdc056bd56e96669bde7e6d0473ef3feb3402
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107947"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049845"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>デバイス ID とデスクトップ仮想化
 
@@ -35,10 +35,10 @@ ms.locfileid: "106107947"
 
 非永続的バージョンは、ユーザーが必要に応じてアクセスできる一連のデスクトップを使用します。 これらの非永続的デスクトップは、元の状態に戻されます。最新の Windows<sup>1</sup> の場合、これは仮想マシンがシャットダウン/再起動/OS リセット プロセスを経たときに発生します。ダウンレベルの Windows<sup>2</sup> の場合、これはユーザーがサインアウトしたときに発生します。
 
-リモート作業が引き続き新しい基準となっているため、非永続的な VDI デプロイが増加しています。 お客様が非永続的な VDI をデプロイするときには、デバイス チャーンを確実に管理することが重要です。これは、デバイスのライフサイクル管理を適切な戦略のもとで行うことなく頻繁にデバイスを登録すると、発生する可能性があります。
+リモート作業が引き続き新しい基準となっているため、非永続的な VDI デプロイが増加しています。 お客様が非永続的な VDI をデプロイするときには、古くなったデバイスを確実に管理することが重要です。これは、デバイスのライフサイクル管理を適切な戦略のもとで行うことなく頻繁にデバイスを登録すると結果、作成されるものです。
 
 > [!IMPORTANT]
-> デバイス チャーンの管理に失敗すると、テナント クォータの使用量に関して負荷が増加し、テナント クォータが不足した場合にはサービスが中断する潜在的リスクを負う状況に至る可能性があります。 この状況を回避するためには、非永続的な VDI 環境をデプロイするときに、以下に記載されているガイダンスに従う必要があります。
+> 古くなったデバイスの管理に失敗すると、テナント クォータの使用量に関して負荷が増加し、テナント クォータが不足した場合にはサービスが中断する潜在的リスクを負う状況に至る可能性があります。 この状況を回避するためには、非永続的な VDI 環境をデプロイするときに、以下に記載されているガイダンスに従う必要があります。
 
 この記事では、デバイス ID と VDI のサポートに関する、管理者向けの Microsoft のガイダンスについて説明します。 デバイスID の詳細については、「[デバイス ID とは](overview.md)」の記事を参照してください。
 
@@ -54,13 +54,14 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 |   | マネージド<sup>4</sup> | 最新の Windows とダウンレベルの Windows | 永続的 | はい |
 |   |   | 最新の Windows | 非永続的 | いいえ |
 |   |   | ダウンレベルの Windows | 非永続的 | はい<sup>6</sup> |
-| Azure AD 参加済み | フェデレーション | 最新の Windows | 永続的 | いいえ |
+| Azure AD 参加済み | フェデレーション | 最新の Windows | 永続的 | 制限付き<sup>7</sup> |
 |   |   |   | 非永続的 | いいえ |
-|   | マネージド | 最新の Windows | 永続的 | いいえ |
+|   | マネージド | 最新の Windows | 永続的 | 制限付き<sup>7</sup> |
 |   |   |   | 非永続的 | いいえ |
 | Azure AD 登録済み | フェデレーション/マネージド | 最新の Windows/ダウンレベルの Windows | 永続的/非永続的 | 適用外 |
 
 <sup>1</sup> **最新の Windows**  デバイスは、Windows 10、Windows Server 2016 バージョン 1803 以降、および Windows Server 2019 を表します。
+
 <sup>2</sup> **ダウンレベルの Windows** デバイスは、Windows 7、Windows 8.1、Windows Server 2008 R2、Windows Server 2012、および Windows Server 2012 R2 を表します。 Windows 7 のサポート情報については、「[Windows 7 のサポート終了が近づいています](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)」を参照してください。 Windows Server 2008 R2 のサポート情報については、「[Windows Server 2008 のサポート終了に備える](https://www.microsoft.com/cloud-platform/windows-server-2008)」を参照してください。
 
 <sup>3</sup> **フェデレーション** ID インフラストラクチャ環境は、AD FS やその他のサードパーティ IDP などの ID プロバイダーを備えた環境を表します。
@@ -71,6 +72,7 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 
 <sup>6</sup> **ダウンレベルの Windows で非永続的機能をサポートする** には、下のガイダンス セクションに記載されているように、追加の考慮事項が必要になります。
 
+<sup>7</sup> **Azure AD 参加のサポート** は、Azure Virtual Desktop および Windows 365 でのみ利用できます。
 
 ## <a name="microsofts-guidance"></a>Microsoft のガイダンス
 
@@ -89,14 +91,14 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 - ダウンレベルの Windows の場合:
    - ログオフ スクリプトの一部として **autoworkplacejoin /leave** コマンドを実装します。 このコマンドは、ユーザーのコンテキストでトリガーする必要があります。また、ユーザーが完全にログオフする前の、まだネットワーク接続がある間に実行する必要があります。
 - フェデレーション環境 (AD FS など) の最新の Windows の場合:
-   - VM ブート シーケンスの一部として **dsregcmd /join** を実装します。
+   - ユーザーがサインインする前に、VM ブート シーケンス/順序の一部として、**dsregcmd/join** を実行します。
    - VM のシャットダウン/再起動プロセスの一部として dsregcmd /leave を実行 **しない** でください。
 - [古いデバイスの管理](manage-stale-devices.md)のプロセスを定義して実装します。
    - 非永続的な Hybrid Azure AD 参加済みデバイスを識別する方法 (コンピューター表示名のプレフィックスなど) を用意したら、ディレクトリが多くの古いデバイスで占められないように、これらのデバイスのクリーンアップをより積極的に行う必要があります。
    - 最新の Windows とダウンロードレベルの Windows への非永続的 VDI のデプロイでは、**ApproximateLastLogonTimestamp** が 15 日より古いデバイスを削除する必要があります。
 
 > [!NOTE]
-> 非永続的な VDI を使用する場合、デバイスの参加状態を回避するには、次のレジストリ キーが設定されていることを確認します。  
+> 非永続的 VDI を使用する場合、職場または学校アカウントの追加を回避するには、次のレジストリ キーが設定されていることを確認します。  
 > `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin: "BlockAADWorkplaceJoin"=dword:00000001`    
 >
 > Windows 10 バージョン 1803 以降を実行していることを確認します。  
@@ -109,7 +111,9 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 > * `%localappdata%\Microsoft\TokenBroker`
 > * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL`
 > * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AAD`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\WorkplaceJoin`
 >
+> 職場アカウントのデバイス証明書のローミングはサポートされていません。 "MS 組織アクセス" によって発行された証明書は、現在のユーザーとローカル マシンの個人用 (MY) 証明書ストアに格納されます。
 
 
 ### <a name="persistent-vdi"></a>永続的 VDI

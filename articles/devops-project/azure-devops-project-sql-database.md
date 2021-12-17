@@ -1,19 +1,19 @@
 ---
 title: チュートリアル:Azure DevOps Starter を使用して ASP.NET アプリと Azure SQL Database コードをデプロイする
 description: DevOps Starter を利用すると、Azure を使い始めるのが簡単になります。 DevOps Starter を使用すると、いくつかの簡単な手順で ASP.NET アプリと Azure SQL Database コードをデプロイできます。
-ms.author: mlearned
+ms.author: gwallace
 ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
-author: mlearned
-ms.openlocfilehash: 7e85b698e1b3c3a1c3e8730ab85e8b72b7b0d9f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: georgewallace
+ms.openlocfilehash: abfd95c75ed35206d9ae5ead2e71b0a108a54a3a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548480"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058677"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>チュートリアル:Azure DevOps Starter を使用して ASP.NET アプリと Azure SQL Database コードをデプロイする
 

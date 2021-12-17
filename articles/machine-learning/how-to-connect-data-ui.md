@@ -1,22 +1,22 @@
 ---
-title: Azure のストレージ サービス内のデータに接続する
+title: スタジオ UI を使用してデータ ストレージに接続する
 titleSuffix: Azure Machine Learning
 description: データストアとデータセットを作成し、Azure Machine Learning スタジオを使用して Azure のストレージ サービス内のデータに安全に接続します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.author: nibaccam
-author: nibaccam
+ms.subservice: mldata
+ms.topic: how-to
+ms.author: yogipandey
+author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 09/22/2020
-ms.custom: how-to, data4ml
-ms.openlocfilehash: a0265984c4ae83b8869071017e2fb571a7ff548c
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 10/21/2021
+ms.custom: data4ml
+ms.openlocfilehash: 93c5cd92822ee9fdc5f9594414bf2bf1f118a310
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027654"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562544"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning スタジオを使用してデータに接続する
 
@@ -37,7 +37,7 @@ Azure Machine Learning のデータ アクセス ワークフロー全体にお�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 - [Azure Machine Learning スタジオ](https://ml.azure.com/)へのアクセス。
 
@@ -85,8 +85,11 @@ Studio でデータセットを作成するには、次の手順を実行しま�
 1. データセットの種類として **[表形式]** または **[ファイル]** を選択します。
 1. **[次へ]** を選択して、 **[データストアとファイルの選択]** フォームを開きます。 このフォームでは、作成後にデータセットを保存する場所を選択し、データセットに使用するデータ ファイルを選択します。
     1. データが仮想ネットワーク内にある場合は、検証のスキップを有効にします。 [仮想ネットワークの分離とプライバシー](how-to-enable-studio-virtual-network.md)について理解を深める。
-    1. 表形式データセットの場合は、'timeseries' 特性を指定して、データセットに対する時間に関連する操作を有効にできます。 [timeseries 特性をデータセットに追加する](how-to-monitor-datasets.md#studio-dataset)方法を確認してください。
+
 1. **[次へ]** を選択して **[Settings and preview]/(設定とプレビュー/)** および **[Schema]\(スキーマ\)** フォームを設定します。これらのフォームはファイルの種類に基づいてインテリジェントに設定され、これらのフォームで、作成前にデータセットを構成することができます。 
+    1.  [Settings and preview]/(設定とプレビュー/) フォームでは、データに複数行のデータが含まれるかどうかを指定できます。 
+    1. [スキーマ] フォームでは、日付または時刻列に **Timestamp** 型を選択することで、TabularDataset に時刻コンポーネントがあることを指定できます。 
+        1. データが時間枠などのサブセットに書式設定され、それらのサブセットをトレーニングに使用する場合は、**パーティションのタイムスタンプ** 型を選択します。 これにより、データセットに対する時系列操作が有効になります。 [データセット内のパーティションをトレーニングに活用する](how-to-monitor-datasets.md?tabs=azure-studio#create-target-dataset)方法の詳細をご確認ください。
 1. **[次へ]** を選択して、 **[詳細の確認]** フォームを確認します。 選択内容を確認し、データセットについてのオプションのデータ プロファイルを作成します。 [データ プロファイル](#profile)についてさらに理解を深める。
 1. **[作成]** を選択して、データセットの作成を完了します。
 
@@ -113,7 +116,7 @@ Studio でデータセットを作成するには、次の手順を実行しま�
 
 |統計|説明
 |------|------
-|機能| 集約されている列の名前。
+|特徴量| 集約されている列の名前。
 |プロファイル| 推論された型に基づくインライン視覚化。 たとえば、文字列、ブール値、日付には値の数が示される一方、10 進数 (数値) は近似されたヒストグラムが示されます。 これにより、データの分布を簡単に把握できます。
 |型の分布| 列内の型のインライン値カウント。 Null は独自の型であるため、この視覚化は変則値または欠損値を検出するために便利です。
 |Type|推論される列の型。 使用可能な値には、文字列、ブール値、日付、10 進数が含まれます。
@@ -156,7 +159,7 @@ Azure ストレージ サービスに安全に接続できるように、Azure M
 
 > [!IMPORTANT]
 > * Azure Storage アカウントのアクセス キー (アカウント キーまたは SAS トークン) を変更する必要がある場合は、新しい資格情報をワークスペースおよびそれに接続されているデータストアと同期してください。 [更新された資格情報を同期する](how-to-change-storage-access-key.md)方法を参照してください。 <br> <br>
-> * データストアの登録を解除し、同じ名前を使用して再登録しようとして失敗した場合は、ワークスペースの Azure キー コンテナーで、論理的な削除が有効になっていない可能性があります。 既定では、ワークスペースによって作成されたキー コンテナー インスタンスでは論理的な削除が有効になっていますが、既存のキー コンテナーを使用した場合、または 2020 年 10 月より前にワークスペースを作成した場合は、論理的な削除が有効になっていないことがあります。 論理的な削除を有効にする方法の詳細については、「[既存のキー コンテナーの論理的な削除を有効にする]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)」を参照してください。
+> * データストアの登録を解除し、同じ名前を使用して再登録しようとして失敗した場合は、ワークスペースの Azure キー コンテナーで、論理的な削除が有効になっていない可能性があります。 既定では、ワークスペースによって作成されたキー コンテナー インスタンスでは論理的な削除が有効になっていますが、既存のキー コンテナーを使用した場合、または 2020 年 10 月より前にワークスペースを作成した場合は、論理的な削除が有効になっていないことがあります。 論理的な削除を有効にする方法の詳細については、[既存のキー コンテナーの論理的な削除を有効にする](../key-vault/general/soft-delete-change.md#turn-on-soft-delete-for-an-existing-key-vault)に関するセクションを参照してください。
 
 ### <a name="permissions"></a>アクセス許可
 

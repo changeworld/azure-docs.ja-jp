@@ -2,23 +2,22 @@
 title: Azure で BareMetal インフラストラクチャ インスタンスを接続する
 description: Azure portal または Azure CLI を使用して BareMetal インスタンスを識別および操作する方法について説明します。
 ms.topic: how-to
-ms.subservice: workloads
-ms.date: 04/06/2021
-ms.openlocfilehash: a7fdc17aa4271915f7dc02aaa2d7a688016bf892
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 07/13/2021
+ms.openlocfilehash: b9f5de92ed213d987c7dfac5b3e48f9b565bfff5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579167"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767144"
 ---
 # <a name="connect-baremetal-infrastructure-instances-in-azure"></a>Azure で BareMetal インフラストラクチャ インスタンスを接続する
 
-この記事では、[Azure portal](https://portal.azure.com/) 上で [BareMetal インスタンス](concepts-baremetal-infrastructure-overview.md)がどのように表示されるかを説明します。 また、この記事では、デプロイ済みの BareMetal インフラストラクチャ インスタンスに対して Azure portal で何を実行できるかについても説明します。 
+この記事では、デプロイ済みの BareMetal インフラストラクチャ インスタンスに対して [Azure portal](https://portal.azure.com/) で何を実行できるかについて説明します。 
  
 ## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
-BareMetal インスタンス用の Azure リソース プロバイダーにより、このインスタンスの Azure portal 上での表示が実現します。 既定では、BareMetal インスタンスのデプロイに使用する Azure サブスクリプションに *BareMetalInfrastructure* リソース プロバイダーが登録されます。 デプロイ済みの BareMetal インスタンスが表示されない場合は、リソース プロバイダーをサブスクリプションに登録する必要があります。 
+BareMetal インスタンス用の Azure リソース プロバイダーにより、Azure portal でインスタンスを確認できます。 既定では、BareMetal インスタンスのデプロイに使用する Azure サブスクリプションに *BareMetalInfrastructure* リソース プロバイダーが登録されます。 デプロイ済みの BareMetal インスタンスが表示されない場合は、リソース プロバイダーをサブスクリプションに登録します。 
 
-BareMetal インスタンス リソース プロバイダーを登録するには、Azure portal または Azure CLI を使用します。
+BareMetal インスタンス リソース プロバイダーを登録するには、Azure portal または Azure コマンド ライン インターフェイス (CLI) を使用します。
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
  
@@ -35,7 +34,7 @@ Azure portal 上でサブスクリプションの一覧を表示し、BareMetal 
 1. **[リソース プロバイダー]** を選択し、検索対象として「**BareMetalInfrastructure**」と入力します。 リソース プロバイダーは、画像に示すように **[登録済み]** になっている必要があります。
  
 >[!NOTE]
->リソース プロバイダーが登録済みでない場合は、 **[登録]** を選択します。
+>リソース プロバイダーを登録していない場合は、**[登録]** を選択します。
  
 :::image type="content" source="media/connect-baremetal-infrastructure/register-resource-provider-azure-portal.png" alt-text="登録された BareMetal インスタンスを示すスクリーンショット。":::
 
@@ -61,11 +60,11 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
  
 BareMetal インスタンスのデプロイ要求を送信するときは、BareMetal インスタンスに接続している Azure サブスクリプションを指定します。 BareMetal インスタンスに対して動作するアプリケーション レイヤーのデプロイに使っているものと同じサブスクリプションを使用してください。
  
-BareMetal インスタンスのデプロイ中に、デプロイ要求で使用した Azure サブスクリプション内に新しい [Azure リソース グループ](../azure-resource-manager/management/manage-resources-portal.md)が作成されます。 この新しいリソース グループに、そのサブスクリプションでデプロイしたすべての BareMetal インスタンスが一覧表示されます。
+BareMetal インスタンスのデプロイ中に、デプロイ要求で使用した Azure サブスクリプション内に新しい [Azure リソース グループ](../azure-resource-manager/management/manage-resources-portal.md)が作成されます。 この新しいリソース グループに、そのサブスクリプションでデプロイしたすべての BareMetal インスタンスの一覧が表示されます。
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-1. BareMetal サブスクリプションの Azure portal で、 **[リソース グループ]** を選びます。
+1. Azure portal の BareMetal サブスクリプション内で、 **[リソース グループ]** を選択します。
  
    :::image type="content" source="media/connect-baremetal-infrastructure/view-baremetal-instances-azure-portal.png" alt-text="リソース グループの一覧を示すスクリーンショット。":::
 
@@ -83,7 +82,7 @@ BareMetal インスタンスのデプロイ中に、デプロイ要求で使用�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-すべての BareMetal インスタンスを表示するには、リソース グループに対して [az baremetalinstance list](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_list) コマンドを実行します。
+すべての BareMetal インスタンスを表示するには、リソース グループに対して [az baremetalinstance list](/cli/azure/baremetalinstance#az_baremetalinstance_list) コマンドを実行します。
 
 ```azurecli
 az baremetalinstance list --resource-group DSM05A-T550 –output table
@@ -104,7 +103,7 @@ BareMetal インスタンスの一覧で、表示する 1 つのインスタン�
  
 :::image type="content" source="media/connect-baremetal-infrastructure/view-attributes-single-baremetal-instance.png" alt-text="1 つのインスタンスの BareMetal インスタンスの属性を示すスクリーンショット。" lightbox="media/connect-baremetal-infrastructure/view-attributes-single-baremetal-instance.png":::
  
-画像内の属性は、Azure 仮想マシン (VM) の属性とはまったく異なります。 左側には、リソース グループ、Azure リージョン、サブスクリプションの名前と ID が表示されます。 タグが割り当てられている場合は、ここにも表示されます。 既定では、BareMetal インスタンスにはタグが割り当てられていません。
+画像内の属性は、Azure 仮想マシン (VM) の属性とはまったく異なります。 左側には、リソース グループ、Azure リージョン、サブスクリプションの名前と ID が表示されます。 タグが割り当てられている場合は、それもここに表示されます。 既定では、BareMetal インスタンスにはタグが割り当てられていません。
  
 右側には、BareMetal インスタンスの名前、オペレーティング システム (OS)、IP アドレス、および CPU スレッドの数とメモリを示す SKU が表示されます。 電源の状態と、ハードウェアのバージョン (BareMetal インスタンス スタンプのリビジョン) も表示されます。 電源の状態では、ハードウェア ユニットの電源がオンかオフかが示されます。 ただし、オペレーティング システムの詳細では、起動して実行されているかどうかは示されません。
  
@@ -120,14 +119,14 @@ BareMetal インスタンスの一覧で、表示する 1 つのインスタン�
 >Rev 4.2 は、既存の Rev 4 アーキテクチャを使用した、最新のブランド変更された BareMetal インフラストラクチャです。 Rev 4 では、Azure 仮想マシン (VM) ホストにより近接します。 Azure VM と SAP HANA インスタンス間のネットワーク待機時間が大幅に改善しています。 Azure portal を使用して BareMetal インスタンスにアクセスし、管理することができます。 詳細については、[Azure での BareMetal インフラストラクチャ](concepts-baremetal-infrastructure-overview.md)に関する記事を参照してください。
 
  
-また、右側には、[Azure 近接配置グループ](../virtual-machines/co-location.md)の名前があります。これは、デプロイされた各 BareMetal インスタンスに対して自動的に作成されます。 アプリケーション レイヤーをホストする Azure VM をデプロイするときは、この近接配置グループを参照します。 BareMetal インスタンスに関連付けられている近接配置グループを使用すると、Azure VM が確実に BareMetal インスタンスの近くにデプロイされるようになります。
+また、右側には、[Azure 近接配置グループ](../virtual-machines/co-location.md)の名前があります。 配置グループの名前は、デプロイされた各 BareMetal インスタンスに対して自動的に作成されます。 アプリケーション レイヤーをホストする Azure VM をデプロイするときは、この近接配置グループを参照します。 BareMetal インスタンスに関連付けられている近接配置グループを使用して、Azure VM がその BareMetal インスタンスの近くにデプロイされるようにします。
  
 >[!TIP]
->リビジョン 4.x と同じ Azure データセンターでアプリケーション レイヤーを検索するには、[最適なネットワーク待ち時間のための Azure 近接配置グループ](/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)に関するページを参照してください。
+>リビジョン 4.x と同じ Azure データセンターでアプリケーション レイヤーを検索するには、[最適なネットワーク待ち時間のための Azure 近接配置グループ](../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md)に関するページを参照してください。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-BareMetal インスタンスの詳細を表示するには、[az baremetalinstance show](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_show) コマンドを実行します。
+BareMetal インスタンスの詳細を表示するには、[az baremetalinstance show](/cli/azure/baremetalinstance#az_baremetalinstance_show) コマンドを実行します。
 
 ```azurecli
 az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabdsm01
@@ -143,7 +142,7 @@ az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabds
  
 :::image type="content" source="media/connect-baremetal-infrastructure/check-activities-single-baremetal-instance.png" alt-text="BareMetal インスタンスのアクティビティを示すスクリーンショット。" lightbox="media/connect-baremetal-infrastructure/check-activities-single-baremetal-instance.png":::
  
-Azure でインスタンスのメタデータに加えられた変更も、アクティビティ ログに記録されます。 開始された再起動以外に、**Write BareMetallnstances** のアクティビティを確認できます。 このアクティビティでは、BareMetal インスタンス自体に対する変更は行われませんが、Azure でユニットのメタデータに加えられた変更が記録されます。
+Azure でインスタンスのメタデータに加えられた変更も、アクティビティ ログに記録されます。 再起動に加えて、**Write BareMetallnstances** のアクティビティを確認できます。 このアクティビティでは、BareMetal インスタンス自体に対する変更は行われませんが、Azure でユニットのメタデータに加えられた変更が記録されます。
  
 記録されるもう 1 つのアクティビティは、インスタンスに対する[タグ](../azure-resource-manager/management/tag-resources.md)の追加または削除です。
  
@@ -153,13 +152,13 @@ Azure でインスタンスのメタデータに加えられた変更も、ア�
  
 BareMetal インスタンスに対して、Azure タグの追加または削除を行うことができます。 タグは、VM にタグを割り当てるときと同様に割り当てられます。 VM と同様に、タグは Azure メタデータ内に存在します。 BareMeta インスタンスでは、タグに VM の場合と同じ制限があります。
  
-タグの削除も、VM の場合と同様に機能します。 タグの適用と削除は、BareMetal インスタンスのアクティビティ ログに一覧表示されます。
+タグの削除も、VM の場合と同様に機能します。 タグの適用と削除は両方とも、BareMetal インスタンスのアクティビティ ログに一覧表示されます。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 BareMetal インスタンスへのタグの割り当ては、仮想マシンでのタグの割り当てと同様に機能します。 VM と同様に、タグは Azure メタデータ内に存在します。 BareMeta インスタンスでは、タグに VM の場合と同じ制限があります。
 
-BareMetal インスタンスにタグを追加するには、[az baremetalinstance update](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_update) コマンドを実行します。
+BareMetal インスタンスにタグを追加するには、[az baremetalinstance update](/cli/azure/baremetalinstance#az_baremetalinstance_update) コマンドを実行します。
 
 ```azurecli
 az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --set tags.Dept=Finance tags.Status=Normal
@@ -175,9 +174,16 @@ az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllab
 
 ## <a name="check-properties-of-an-instance"></a>インスタンスのプロパティを確認する
  
-インスタンスを取得すると、[プロパティ] セクションに移動して、インスタンスについて収集されたデータを表示できます。 収集されるデータには、Azure の接続性、ストレージ バックエンド、ExpressRoute 回線 ID、一意のリソース ID、サブスクリプション ID が含まれます。 この情報は、サポート要求で、またはストレージ スナップショット構成を設定するときに使用します。
+インスタンスを取得すると、[プロパティ] セクションに移動して、インスタンスについて収集されたデータを表示できます。 収集されるデータは次のとおりです。
+- Azure 接続
+- ストレージ バックエンド
+- ExpressRoute 回線 ID
+- 一意のリソース ID
+- [サブスクリプション ID] が表示されます。 
+
+この情報は、サポート要求で、またはストレージ スナップショット構成を設定するときに使用します。
  
-表示されるもう 1 つの重要な情報は、ストレージ NFS の IP アドレスです。 これにより、ストレージが BareMetal インスタンス スタック内の自分の **テナント** に分離されます。 この IP アドレスは、[ストレージ スナップショット バックアップの構成ファイル](../virtual-machines/workloads/sap/hana-backup-restore.md#set-up-storage-snapshots)を編集するときにも使用します。
+表示されるもう 1 つの重要な情報は、ストレージ NFS の IP アドレスです。 これにより、ストレージが BareMetal インスタンス スタック内の自分の **テナント** に分離されます。 この IP アドレスは、[Azure アプリケーション整合性スナップショット ツールの構成](../azure-netapp-files/azacsnap-cmd-ref-configure.md)を編集するときに使用します。
  
 :::image type="content" source="media/connect-baremetal-infrastructure/baremetal-instance-properties.png" alt-text="BareMetal インスタンスのプロパティ設定を示すスクリーンショット。" lightbox="media/connect-baremetal-infrastructure/baremetal-instance-properties.png":::
  
@@ -197,7 +203,7 @@ BareMetal インスタンスを再起動する際には、待ち時間が発生�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-BareMetal インスタンスを再起動するには、[az baremetalinstance restart](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_restart) コマンドを使用します。
+BareMetal インスタンスを再起動するには、[az baremetalinstance restart](/cli/azure/baremetalinstance#az_baremetalinstance_restart) コマンドを使用します。
 
 ```azurecli
 az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orcllabdsm01
@@ -241,6 +247,7 @@ BareMetal インスタンス専用のサポート要求を送信できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-ワークロードの詳細:
+BareMetal インフラストラクチャのワークロードの詳細を確認します。
 
-- [SAP HANA on Azure (L インスタンス) とは](../virtual-machines/workloads/sap/hana-overview-architecture.md)
+> [!div class="nextstepaction"]
+> [SAP HANA on Azure (L インスタンス) とは](../virtual-machines/workloads/sap/hana-overview-architecture.md)

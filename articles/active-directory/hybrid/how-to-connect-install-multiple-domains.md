@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53a0da5b5db21c9a543d39d1b252b0b4c64e2a56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1af2a466dc5906f752970cbc6b8898aeeea39475
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91306363"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477499"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
 ここでは、Microsoft 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
@@ -42,7 +42,7 @@ IssuerUri を表示するには、PowerShell コマンド `Get-MsolDomainFederat
 
 複数のトップレベル ドメインを追加しようとすると、問題が生じます。  たとえば、Azure AD とオンプレミス環境の間でフェデレーションを設定しているとします。  このドキュメントでは、ドメインとして bmcontoso.com が使用されています。  ここでは、2 番目のトップレベル ドメインとして bmfabrikam.com が追加されています。
 
-![複数のトップレベル ドメインのスクリーンショット。](./media/how-to-connect-install-multiple-domains/domains.png)
+![複数のトップレベル ドメインのスクリーンショット](./media/how-to-connect-install-multiple-domains/domains.png)
 
 bmfabrikam.com ドメインを変換してフェデレーションしようとすると、エラーが発生します。  その原因は、IssuerUri プロパティで複数のドメインに同じ値を設定できないという Azure AD の制約にあります。  
 
@@ -65,11 +65,11 @@ bmfabrikam.com ドメインの設定は、以下のようになっています�
 
 `-SupportMultipleDomain` は、adfs.bmcontoso.com 上のフェデレーション サービスをポイントするように構成されている他のエンドポイントを変更しません。
 
-また、 `-SupportMultipleDomain` を使用すると、AD FS システムが Azure AD 用に発行するトークンに、適切な Issuer (発行者) の値を確実に含めることができます。 この値は、ユーザーの UPN のドメイン部分を取得し、その値を IssuerUri でドメインとして設定することで設定されます (つまり、 https://{upn suffix}/adfs/services/trust)。
+`-SupportMultipleDomain` を使用すると、AD FS システムが Azure AD 用に発行するトークンに、適切な発行者の値を確実に含めることもできます。 この値は、ユーザーの UPN のドメイン部分を取得し、それを IssuerUri のドメインとして使用することによって設定されます。つまり、`https://{upn suffix}/adfs/services/trust` です。
 
 そのため、Azure AD または Microsoft 365 に対する認証中に、ユーザーのトークンに含まれる IssuerUri 要素を使用して、Azure AD 内のドメインが特定されます。 一致するものが見つからなければ、認証は失敗します。
 
-たとえば、ユーザーの UPN が bsimon@bmcontoso.com である場合、AD FS が発行するトークンの IssuerUri 要素は `http://bmcontoso.com/adfs/services/trust` に設定されます。 この要素は Azure AD の構成と一致し、認証は成功します。
+たとえば、ユーザーの UPN が bsimon@bmcontoso.com である場合、トークンの IssuerUri 要素、つまり AD FS 発行者は `http://bmcontoso.com/adfs/services/trust` に設定されます。 この要素は Azure AD の構成と一致し、認証は成功します。
 
 次の規則は、このロジックを満たすカスタマイズ済みの要求規則です。
 

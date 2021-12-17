@@ -2,19 +2,22 @@
 title: Azure にクラウド サービス (クラシック) をデプロイするときの LocationNotFoundForRoleSize のトラブルシューティング | Microsoft Docs
 description: この記事では、Azure にクラウド サービス (クラシック) をデプロイするときの LocationNotFoundForRoleSize 例外を解決する方法について説明します。
 services: cloud-services
-author: mibufo
-ms.author: v-mibufo
+author: hirenshah1
+ms.author: hirshah
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 2ed889bea715ff5a26bf8e918789429e57fa31b2
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f45e28e2c7a816f923d1af579b818e546c992717
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109664"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821493"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Azure にクラウド サービス (クラシック) をデプロイするときの LocationNotFoundForRoleSize のトラブルシューティング
+
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 この記事では、Azure クラウド サービス (クラシック) をデプロイするときに仮想マシン (VM) のサイズを使用できない場合の、割り当てエラーのトラブルシューティングを行います。
 

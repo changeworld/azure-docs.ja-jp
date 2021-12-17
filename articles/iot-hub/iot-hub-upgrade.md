@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Hub をアップグレードする | Microsoft Docs
 description: IoT Hub の価格とスケール レベルを変更して、メッセージング機能とデバイス管理機能を強化します。
-author: robinsh
-manager: philmea
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: robinsh
-ms.openlocfilehash: 96c3a7b2cfda23f173f4caeff4fb7a92b1ddc438
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: lizross
+ms.openlocfilehash: b6604dd246e4a98e58251a3de1c05365e405cfc2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "61440235"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551503"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>IoT Hub のアップグレード方法
 
@@ -37,13 +36,9 @@ IoT ソリューションの成長と共に、Azure IoT Hub をスケールア�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインし、IoT Hub に移動します。
 
-2. **[価格とスケール]** を選択します。
-
-   ![価格とスケール](./media/iot-hub-upgrade/pricing-scale.png)
+2. 左側の ナビゲーション ウィンドウから **[価格とスケール]** を選択します。
 
 3. Hub のレベルを変更するには、**[価格とスケール レベル]** を選択します。 新しいレベルを選択し、**[選択]** をクリックします。
-
-   ![価格とスケール ティア](./media/iot-hub-upgrade/select-tier.png)
 
 4. Hub のユニット数を変更するには、**[IoT Hub ユニット]** の下に新しい値を入力します。
 
@@ -53,6 +48,6 @@ IoT Hub が調整されますが、構成は変更されません。
 
 Basic レベルの IoT Hub と Standard レベルの IoT Hub のパーティションの上限は 32 です。 ほとんどの IoT Hub では、4 つのパーティションのみ必要です。 IoT Hub の作成時にパーティション制限が選択され、device-to-cloud メッセージがこれらのメッセージの同時閲覧者数に関連付けられます。 Basic レベルから Standard レベルに移行してもこの値は変わりません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [適切な IoT Hub のレベルを選択する方法](iot-hub-scaling.md)に関する記事で詳細を確認します。

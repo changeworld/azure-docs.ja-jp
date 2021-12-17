@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: 644a0d645abb186731ddb1f408cd36e5b9ba3c3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/22/2021
+ms.openlocfilehash: 8845bdf3d915b1ff94b301e820d191d7938426f2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780023"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263821"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -22,8 +23,8 @@ ms.locfileid: "104780023"
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
 > * [Hadoop Streaming アクティビティ](data-factory-hadoop-streaming-activity.md)
 > * [Spark アクティビティ](data-factory-spark.md)
-> * [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [ML Studio (クラシック) の Batch Execution アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [ML Studio (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
@@ -83,7 +84,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. データ ファクトリが作成されると、データ ファクトリの内容を表示する **[データ ファクトリ]** ページが表示されます。 **[データ ファクトリ]** ページが表示されない場合は、ダッシュボードでデータ ファクトリのタイルを選択します。
 
-    ![[Data Factory] ブレード](./media/data-factory-spark/data-factory-blade.png)
+    :::image type="content" source="./media/data-factory-spark/data-factory-blade.png" alt-text="[Data Factory] ブレード":::
 
 ### <a name="create-linked-services"></a>リンクされたサービスを作成します
 この手順では、リンクされたサービスを 2 つ作成します。 1 つは Spark クラスターをデータ ファクトリにリンクするサービスで、もう 1 つはストレージをデータ ファクトリにリンクするサービスです。
@@ -95,11 +96,11 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. **[新しいデータ ストア]** 、 **[Azure Storage]** の順に選択します。
 
-   ![新しいデータ ストア](./media/data-factory-spark/new-data-store-azure-storage-menu.png)
+   :::image type="content" source="./media/data-factory-spark/new-data-store-azure-storage-menu.png" alt-text="新しいデータ ストア":::
 
 1. Storage のリンクされたサービスを作成するときに使用する JSON スクリプトがエディターに表示されます。
 
-   ![AzureStorageLinkedService](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png" alt-text="AzureStorageLinkedService":::
 
 1. **accountname** と **accountkey** をストレージ アカウントの名前とアクセス キーで置き換えます。 ストレージ アクセス キーを取得する方法については、「[Manage storage account access keys (ストレージ アカウントのアクセス キーの管理)](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
 
@@ -110,7 +111,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. Data Factory エディターで、 **[詳細]**  >  **[新規計算]**  >  **[HDInsight クラスター]** を選択します。
 
-    ![HDInsight のリンクされたサービスを作成する](media/data-factory-spark/new-hdinsight-linked-service.png)
+    :::image type="content" source="media/data-factory-spark/new-hdinsight-linked-service.png" alt-text="HDInsight のリンクされたサービスを作成する":::
 
 1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 JSON エディターで、次の手順を実行します。
 
@@ -232,13 +233,13 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 ### <a name="monitor-a-pipeline"></a>パイプラインを監視する
 1. **[データ ファクトリ]** ブレードで、 **[監視と管理]** を選択して、別のタブで監視アプリケーションを開始します。
 
-    ![Monitor & Manage tile](media/data-factory-spark/monitor-and-manage-tile.png)
+    :::image type="content" source="media/data-factory-spark/monitor-and-manage-tile.png" alt-text="監視と管理タイル":::
 
 1. 上部にある **[開始時刻]** フィルターを **[2/1/2017]** に変更して、 **[適用]** を選択します。
 
 1. パイプラインの開始時刻 (2017-02-01) と終了時刻 (2017-02-02) の間は 1 日のみのため、1 つのアクティビティ ウィンドウのみが表示されます。 データ スライスの状態が **[準備完了]** であることを確認します。
 
-    ![パイプラインの監視](media/data-factory-spark/monitor-and-manage-app.png)
+    :::image type="content" source="media/data-factory-spark/monitor-and-manage-app.png" alt-text="パイプラインの監視":::
 
 1. **[アクティビティ ウィンドウ]** の一覧でアクティビティの実行を選択して、その詳細を確認します。 エラーが発生している場合は、右側のウィンドウでその詳細を確認してください。
 
@@ -248,7 +249,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. **[新規]**  >  **[PySpark]** を選択して、新しい Notebook を開始します。
 
-    ![Jupyter の新しい Notebook](media/data-factory-spark/jupyter-new-book.png)
+    :::image type="content" source="media/data-factory-spark/jupyter-new-book.png" alt-text="Jupyter の新しい Notebook":::
 
 1. 2 番目のステートメントの最後に次のテキストをコピーして貼り付け、Shift キーを押しながら Enter キーを押して、次のコマンドを実行します。
 
@@ -259,7 +260,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
     ```
 1. hvac テーブルのデータが表示されることを確認します。
 
-    ![Jupyter クエリの結果](media/data-factory-spark/jupyter-notebook-results.png)
+    :::image type="content" source="media/data-factory-spark/jupyter-notebook-results.png" alt-text="Jupyter クエリの結果":::
 
 <!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
 詳細な手順については、[Spark SQL クエリの実行](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)に関するページをご覧ください。
@@ -272,15 +273,15 @@ getDebugInfo を **Always** に設定しているため、BLOB コンテナー�
 
 1. `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster` にアクセスします。
 
-    ![YARN UI アプリケーション](media/data-factory-spark/yarnui-application.png)
+    :::image type="content" source="media/data-factory-spark/yarnui-application.png" alt-text="YARN UI アプリケーション":::
 
 1. 実行の試行の 1 つについて、 **[ログ]** を選択します。
 
-    ![[アプリケーション] ページ](media/data-factory-spark/yarn-applications.png)
+    :::image type="content" source="media/data-factory-spark/yarn-applications.png" alt-text="[アプリケーション] ページ":::
 
 1. ログ ページに次の追加のエラー情報が表示されます。
 
-    ![ログ エラー](media/data-factory-spark/yarnui-application-error.png)
+    :::image type="content" source="media/data-factory-spark/yarnui-application-error.png" alt-text="ログ エラー":::
 
 次のセクションでは、データ ファクトリで Spark クラスターと Spark アクティビティを使用するための、データ ファクトリ エンティティに関する情報を提供します。
 

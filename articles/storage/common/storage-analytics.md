@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: a5ccaa95c8f29395770395076f75f36019a4355c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 01283dd9607dbe3f9b5b0c2103345cb73d56e093
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737683"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579517"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -34,10 +34,10 @@ Storage Analytics や他のツールを使用した Azure Storage 関連の問�
 
 Storage Analytics によって実行される次の操作には料金が発生します。
 
-* ログの BLOB の作成要求
-* メトリックのテーブル エンティティの作成要求
+- ログの BLOB の作成要求
+- メトリックのテーブル エンティティの作成要求
 
-データ保持ポリシーを構成した場合、Storage Analytics が古いログ データやメトリック データを削除しますが、その際の削除トランザクションに対する料金は発生しません。 ただし、クライアントからの削除トランザクションは課金対象となります。 保持ポリシーの詳細については、「[Storage Analytics のデータ保持ポリシーの設定](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy)」をご覧ください。
+データ保持ポリシーを構成している場合は、古いログとメトリック データを削除することで、支出を削減できます。 保持ポリシーの詳細については、「[Storage Analytics のデータ保持ポリシーの設定](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy)」をご覧ください。
 
 ### <a name="understanding-billable-requests"></a>課金の対象となる要求について
 
@@ -46,6 +46,7 @@ Storage Analytics によって実行される次の操作には料金が発生�
 Storage Analytics のデータで課金対象の要求を調べるときには、「[Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 」の表が参考になります。 手元のログ データとメトリック データをステータス メッセージと照らし合わせながら、特定の要求が課金対象であったかどうかを確認できます。 この表は、ストレージ サービスまたは特定の API 操作の可用性を調べるときにも利用できます。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Portal でのストレージ アカウントの監視](./manage-storage-analytics-logs.md)
-* [Storage Analytics のメトリック](storage-analytics-metrics.md)
-* [Storage Analytics のログ記録](storage-analytics-logging.md)
+
+- [Azure Portal でのストレージ アカウントの監視](./manage-storage-analytics-logs.md)
+- [Storage Analytics のメトリック](storage-analytics-metrics.md)
+- [Storage Analytics のログ記録](storage-analytics-logging.md)

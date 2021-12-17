@@ -2,13 +2,13 @@
 title: MABS を使用して SharePoint ファームを Azure にバックアップする
 description: Azure Backup Server を使用して SharePoint データをバックアップおよび復元します。 この記事では、目的のデータを Azure に保存できるように SharePoint ファームを構成するための情報を提供します。 ディスクまたは Azure から保護対象の SharePoint データを復元できます。
 ms.topic: conceptual
-ms.date: 04/26/2020
-ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/30/2021
+ms.openlocfilehash: 2c52ace2515fbb1423c2ca3be75dfde837e6dd5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89375399"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734012"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS を使用して SharePoint ファームを Azure にバックアップする
 
@@ -80,7 +80,7 @@ SharePoint ファームをバックアップするには、ConfigureSharePoint.e
 
 1. **[グループ メンバーの選択]** で、WFE ロールを保持しているサーバーを展開します。 複数の WFE サーバーがある場合は、ConfigureSharePoint.exe をインストールしたサーバーを選択します。
 
-    SharePoint サーバーを展開すると、MABS は VSS を照会して MABS で保護できるデータを確認します。  SharePoint データベースがリモートである場合、MABS はそれに接続します。 SharePoint データ ソースが表示されない場合は、VSS ライターが SharePoint サーバーといずれかのリモート SQL Server で実行されていることを確認し、SharePoint サーバーとリモート SQL Server の両方で MABS エージェントがインストールされていることを確認します。 さらに、SharePoint データベースが SQL Server データベースとして他の場所で保護されていないことを確認してください。
+    SharePoint を実行しているコンピューターを展開すると、MABS によって VSS の照会が行われ、MABS によってどのデータを保護できるかの確認が行われます。 SharePoint データベースがリモートである場合、MABS はそれに接続します。 SharePoint データ ソースが表示されない場合は、SharePoint を実行しているコンピューターと SQL Server のリモート インスタンスで VSS ライターが実行されていることを確認します。 次に、MABS エージェントが SharePoint を実行しているコンピューターと SQL Server のリモート インスタンスの両方にインストールされていることを確認します。 さらに、SharePoint データベースが SQL Server データベースとして他の場所で保護されていないことを確認してください。
 
 1. **[データの保護方法の選択]** で、短期と長期のバックアップの処理方法を指定します。 短期のバックアップでは、常にまずディスクにバックアップされますが、Azure Backup を使用してディスクから Azure クラウドにバックアップするオプションがあります \(短期または 長期\)。
 
@@ -254,6 +254,25 @@ SharePoint ファームをバックアップするには、ConfigureSharePoint.e
    整合性チェックが開始します。
 
 1. 手順 6 を実行した場合は、保護グループからボリュームを削除できるようになります。
+
+## <a name="remove-a-database-from-a-sharepoint-farm"></a>SharePoint ファームからデータベースを削除する
+
+データベースが SharePoint ファームから削除されると、MABS はそのデータベースのバックアップをスキップし、SharePoint ファーム内の他のデータベースのバックアップを継続して、バックアップ管理者に警告します。
+
+### <a name="mabs-alert---farm-configuration-changed"></a>MABS アラート - ファーム構成が変更された
+
+これは、SharePoint データベースの自動保護が失敗したときに Microsoft Azure Backup Server (MABS) で生成される警告アラートです。 このアラートの原因の詳細については、アラートの **[詳細]** ウィンドウをご覧ください。
+
+このアラートを解決するには、これらの手順に従ってください。
+
+1. データベースが実際にファームから削除されているかを、SharePoint 管理者に確認してください。 データベースがファームから削除されている場合は、MABS のアクティブな保護から削除する必要があります。
+1. データベースをアクティブな保護から削除するには:
+   1. **MABS 管理者コンソール** で、ナビゲーション バーの **[保護]** をクリックします。
+   1. **[表示]** ウィンドウで、SharePoint ファームの保護グループを右クリックして、 **[メンバーの保護の停止]** をクリックします。
+   1. **[保護の停止]** ダイアログ ボックスで、 **[保護されるデータを保持する]** をクリックします。
+   1. **[保護の停止]** をクリックします。
+
+**[保護グループの変更]** ウィザードを使用して、SharePoint ファームを再び保護対象に追加することができます。 再保護中に、SharePoint フロントエンド サーバーを選択し、 **[更新]** をクリックして SharePoint データベース キャッシュを更新し、SharePoint ファームを選択して続行します。
 
 ## <a name="next-steps"></a>次のステップ
 

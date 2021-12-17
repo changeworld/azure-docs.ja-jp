@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Snowflake の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と Snowflake の統合'
 description: Azure Active Directory と Snowflake の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 09/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 1af0209265ec4945950120e80a83e19c8ab2eb4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b44d6ecbe75d688de0803e0c2bf2e942f0728bfc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98726279"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329165"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>チュートリアル: Azure Active Directory と Snowflake の統合
+# <a name="tutorial-azure-ad-sso-integration-with-snowflake"></a>チュートリアル: Azure AD SSO と Snowflake の統合
 
 このチュートリアルでは、Snowflake と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Snowflake を統合すると、次のことが可能になります。
 
@@ -30,17 +30,20 @@ ms.locfileid: "98726279"
 
 Snowflake と Azure AD の統合を構成するには、次のものが必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Snowflake でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Snowflake でのシングル サインオンが有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-- Snowflake では、**SP と IDP** によって開始される SSO がサポートされます
-- Snowflake では、[自動化されたユーザー プロビジョニングとプロビジョニング解除](snowflake-provisioning-tutorial.md) (推奨) がサポートされます
+* Snowflake では、**SP と IDP** によって開始される SSO がサポートされます。
+* Snowflake では、[自動化されたユーザー プロビジョニングとプロビジョニング解除](snowflake-provisioning-tutorial.md) (推奨) がサポートされます。
 
-## <a name="adding-snowflake-from-the-gallery"></a>ギャラリーからの Snowflake の追加
+## <a name="add-snowflake-from-the-gallery"></a>ギャラリーから Snowflake を追加する
 
 Azure AD への Snowflake の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Snowflake を追加する必要があります。
 
@@ -55,7 +58,7 @@ Azure AD への Snowflake の統合を構成するには、ギャラリーから
 
 **B.Simon** というテスト ユーザーを使用して、Snowflake に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Snowflake の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Snowflake に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Snowflake 用に Azure AD SSO を構成してテストするには、次の手順に従います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -64,7 +67,7 @@ Snowflake に対する Azure AD SSO を構成してテストするには、次�
     1. **[Snowflake のテスト ユーザーの作成](#create-snowflake-test-user)** - Snowflake で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
@@ -96,7 +99,6 @@ Snowflake に対する Azure AD SSO を構成してテストするには、次�
 6. **[Snowflake の設定]** セクションで、要件に従って適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
-
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -131,11 +133,11 @@ Snowflake に対する Azure AD SSO を構成してテストするには、次�
     > [!NOTE]
     > これは、右上の [ユーザー名] で選択したコンテキストとは別のものです。
     
-    ![Snowflake 管理者](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Snowflake 管理者](./media/snowflake-tutorial/account.png)
 
 1. **ダウンロードした Base 64 証明書** をメモ帳で開きます。 “-----BEGIN CERTIFICATE-----” と “-----END CERTIFICATE-----" の間の値をコピーし、下の **certificate** の横の引用符の間に貼り付けます。 **[ssoUrl]** に、Azure portal からコピーした **ログイン URL** の値を貼り付けます。 **[All Queries]\(すべてのクエリ\)** を選択し、 **[実行]** をクリックします。
 
-   ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
+   ![Snowflake sql](./media/snowflake-tutorial/certificate.png)
 
    ```
    use role accountadmin;
@@ -148,7 +150,6 @@ Snowflake に対する Azure AD SSO を構成してテストするには、次�
    alter account set sso_login_page = TRUE;
    ```
 
-
 ### <a name="create-snowflake-test-user"></a>Snowflake のテスト ユーザーの作成
 
 Azure AD ユーザーが Snowflake にログインできるようにするには、そのユーザーを Snowflake にプロビジョニングする必要があります。 Snowflake では、プロビジョニングは手動のタスクです。
@@ -159,18 +160,18 @@ Azure AD ユーザーが Snowflake にログインできるようにするには
 
 2. ページの右上で **[プロファイル]** をクリックして、 **[Switch Role]\(ロールの切り替え\)** で **[ACCOUNTADMIN]** を選択します。  
 
-    ![Snowflake 管理者](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Snowflake 管理者](./media/snowflake-tutorial/account.png)
 
 3. 次に示すように、"Login name" がワークシートの Azure AD ユーザー名に設定されていることを確認して、次の SQL クエリを実行してユーザーを作成します。
 
-    ![Snowflake adminsql](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+    ![Snowflake adminsql](./media/snowflake-tutorial/user.png)
 
     ```
     use role accountadmin;
     CREATE USER britta_simon PASSWORD = '' LOGIN_NAME = 'BrittaSimon@contoso.com' DISPLAY_NAME = 'Britta Simon';
     ```
 
-### <a name="test-sso"></a>SSO のテスト 
+## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
@@ -182,11 +183,10 @@ Azure AD ユーザーが Snowflake にログインできるようにするには
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Snowflake に自動的にサインインされます 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Snowflake に自動的にサインインされます。 
 
 また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Snowflake] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Snowflake に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-
 ## <a name="next-steps"></a>次のステップ
 
-Snowflake を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Snowflake を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

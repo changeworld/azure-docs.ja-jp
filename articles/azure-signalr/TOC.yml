@@ -58,18 +58,6 @@
       items:
         - name: アプリ サーバーを適切にシャットダウンします。
           href: server-graceful-shutdown.md
-    - name: Security
-      items:
-        - name: 承認
-          items:
-            - name: Azure Active Directory を使用したアクセスを承認する
-              href: authorize-access-azure-active-directory.md
-        - name: 認証
-          items:
-            - name: アプリケーションからの認証
-              href: authenticate-application.md
-            - name: マネージド ID による認証
-              href: authenticate-managed-identity.md
     - name: 高可用性
       items:
         - name: 回復性とディザスター リカバリー
@@ -80,12 +68,16 @@
       href: signalr-concept-performance.md
     - name: 認証
       href: signalr-concept-authenticate-oauth.md
+    - name: Azure AD での承認
+      items:
+        - name: Azure SignalR Service の Azure AD の概要
+          href: signalr-concept-authorize-azure-active-directory.md
     - name: イベント処理
       href: signalr-concept-event-grid-integration.md
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/signalr-security-baseline?toc=/azure/azure-signalr/TOC.json
         - name: Azure Policy によるセキュリティ制御
           href: ./security-controls-policy.md
 - name: 操作方法ガイド
@@ -106,8 +98,14 @@
           href: howto-private-endpoints.md
         - name: ネットワーク アクセス制御の管理
           href: howto-network-access-control.md
+        - name: 共有プライベート エンドポイントを経由する送信トラフィックをセキュリティで保護する
+          href: howto-shared-private-endpoints.md
         - name: マネージド ID の使用
           href: howto-use-managed-identity.md
+        - name: Azure アプリケーションからの承認
+          href: signalr-howto-authorize-application.md
+        - name: マネージド ID からの承認
+          href: signalr-howto-authorize-managed-identity.md
     - name: 統合
       items:
         - name: Azure Functions のバインド
@@ -126,14 +124,16 @@
           href: signalr-howto-troubleshoot-guide.md
         - name: トラブルシューティング方法
           href: signalr-howto-troubleshoot-method.md
+        - name: ライブ トレース ツールを使用したトラブルシューティング
+          href: signalr-howto-troubleshoot-live-trace.md
 - name: References
   items:
     - name: Azure CLI
-      href: signalr-reference-cli.md
+      href: /cli/azure/signalr
     - name: REST API
       href: 'https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md'
     - name: ASP.NET Core SignalR
-      href: /aspnet/core/signalr
+      href: /aspnet/core/signalr/introduction
     - name: Azure SignalR Service のプロトコル
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
     - name: Azure Policy の組み込み
@@ -146,13 +146,13 @@
     - name: 顧客事例
       href: 'https://customers.microsoft.com/en-us/search?sq=signalr'
     - name: SignalR のロードマップ
-      href: 'https://github.com/aspnet/Home/wiki/Roadmap'
+      href: 'https://github.com/dotnet/aspnetcore/wiki/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/'
     - name: 利用可能なリージョン
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=signalr-service'
     - name: FAQ
-      href: signalr-resource-faq.md
+      href: signalr-resource-faq.yml
     - name: SignalR Service のサブスクリプション レベルの制限
       href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits
     - name: 価格
@@ -164,4 +164,4 @@
     - name: Twitter
       href: 'https://twitter.com/SignalR'
     - name: ASP.NET フォーラム
-      href: 'https://forums.asp.net/1254.aspx'
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=aspsignalr'

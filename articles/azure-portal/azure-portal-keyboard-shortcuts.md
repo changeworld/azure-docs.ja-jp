@@ -1,20 +1,21 @@
 ---
 title: Azure Portal のキーボード ショートカット
 description: Azure Portal は、アクションの実行、操作、Azure Portal 内の場所への移動を支援するグローバル キーボード ショートカットをサポートしています。
-ms.assetid: d9f58c69-9163-458d-a339-ab0855e342c6
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 11/04/2021
 ms.custom: accessibility
-ms.openlocfilehash: de107d88fc404ead889a08f775054ce999e3233f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34d099c8e0c6e0fbab3a40d08382f0275496506c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745912"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847643"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure ポータルのキーボード ショートカット
 
-この記事では、Azure Portal 全体で機能するキーボード ショートカットの一覧を示します。 個々のサービスで専用のキーボード ショートカットが用意されている場合もあります。
+この記事では、Azure portal 全体で使用できるキーボード ショートカットの一覧を示します。 個々のサービスで、専用のキーボード ショートカットが追加で用意されている場合もあります。
+
+下に表示される文字は、キーボードの文字キーを表します。 たとえば、**G+N** を使用するには、**G** キーを押しながら **N** キーを押します。
 
 ## <a name="actions"></a>アクション
 
@@ -43,11 +44,13 @@ ms.locfileid: "96745912"
 |**[リソース グループ]** に移動|G + R |
 |この位置にある左サイド バー項目を開く |G + 数値|
 
-## <a name="keyboard-shortcuts-for-specific-pages-in-the-azure-portal"></a>Azure portal の特定のページのキーボード ショートカット
+## <a name="examples-of-additional-keyboard-shortcuts-for-specific-areas"></a>特定の領域を対象とする追加のキーボードショートカットの例
 
 - [Azure Resource Graph エクスプローラー](../governance/resource-graph/reference/keyboard-shortcuts.md)
+- [Kusto Explorer](/azure/data-explorer/kusto/tools/kusto-explorer-shortcuts)
+- [Azure Maps の描画モジュール](../azure-maps/drawing-tools-interactions-keyboard-shortcuts.md)
 
 ## <a name="next-steps"></a>次のステップ
 
 - [ハイコントラストの有効化またはテーマの変更](set-preferences.md#choose-a-theme-or-enable-high-contrast)
-- [サポートされているブラウザーとデバイス](azure-portal-supported-browsers-devices.md)
+- [サポートされているブラウザーとデバイスについて学習する](azure-portal-supported-browsers-devices.md)

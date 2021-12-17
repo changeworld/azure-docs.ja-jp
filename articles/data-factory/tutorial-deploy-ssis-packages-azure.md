@@ -2,17 +2,18 @@
 title: Azure-SSIS 統合ランタイムをプロビジョニングする
 description: Azure 上で SSIS パッケージをデプロイして実行できるように、Azure-SSIS 統合ランタイムを Azure Data Factory にプロビジョニングする方法について説明します。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/02/2021
+ms.date: 10/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 6007ce4b4c54d795ff2cc3188504db11c29219cc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: b6718ddcd4090708dd77e192832a04b4f2591751
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256366"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850320"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory に Azure-SSIS Integration Runtime をプロビジョニングする
 
@@ -53,7 +54,7 @@ Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概
 
   - クライアント マシンの IP アドレス、またはクライアント マシンの IP アドレスを含む IP アドレスの範囲を、データベース サーバーのファイアウォール設定にあるクライアント IP アドレスの一覧に追加します。 詳細については、「[Azure SQL Database のサーバーレベルとデータベースレベルのファイアウォール規則](../azure-sql/database/firewall-configure.md)」を参照してください。
 
-  - サーバー管理者の資格情報による SQL 認証またはデータ ファクトリのマネージド ID による Azure AD 認証を使用して、データベース サーバーに接続できます。 後者の場合、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリのマネージド ID を追加する必要があります。 詳細については、[Azure AD 認証を使用した Azure-SSIS IR の作成](./create-azure-ssis-integration-runtime.md)に関するページを参照してください。
+  - SQL 認証とサーバー管理者の資格情報を使用して、または Azure Active Directory (Azure AD) 認証とデータ ファクトリの指定のシステム/ユーザー割り当てマネージド ID を使用して、データベース サーバーに接続できます。 後者の場合、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリの指定のシステム/ユーザー割り当てマネージド ID を追加する必要があります。 詳細については、[Azure AD 認証を使用した Azure-SSIS IR の作成](./create-azure-ssis-integration-runtime.md)に関するページを参照してください。
 
   - データベース サーバーに SSISDB インスタンスがまだないことを確認します。 Azure-SSIS IR のプロビジョニングでは、既存の SSISDB インスタンスの使用はサポートされていません。
 
@@ -70,9 +71,9 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 ### <a name="from-the-data-factory-overview"></a>Data Factory の概要から
 
-1. **[Let's get started]\(始めましょう\)** ページで、 **[Configure SSIS Integration]\(SSIS 統合の構成\)** タイルをクリックします。 
+1. ホーム ページで、 **[Configure SSIS]\(SSIS の構成\)** タイルを選択します。 
 
-   ![[Configure SSIS Integration Runtime]\(SSIS 統合ランタイムの構成\) タイル](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Azure Data Factory ホーム ページのスクリーンショット。":::
 
 1. Azure-SSIS IR を設定する残りの手順については、「[Azure SSIS 統合ランタイムをプロビジョニングする](#provision-an-azure-ssis-integration-runtime)」セクションを参照してください。 
 
@@ -80,15 +81,15 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 1. Azure Data Factory の UI で、 **[管理]** タブに切り替え、 **[Integration runtimes]\(統合ランタイム\)** タブに切り替えて、データ ファクトリ内の既存の統合ランタイムを表示します。 
 
-   ![既存の IR を表示するための選択](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png" alt-text="既存の IR を表示するための選択":::
 
 1. **[New]\(新規\)** を選択して Azure-SSIS IR を作成し、 **[Integration runtime setup]\(統合ランタイムのセットアップ\)** ペインを開きます。 
 
-   ![メニューによる統合ランタイム](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png" alt-text="メニューによる統合ランタイム":::
 
 1. **[統合ランタイムのセットアップ]** ペインで、 **[Azure で実行するには、既存の SSIS パッケージをリフトアンドシフトします]** タイルを選択してから、 **[Continue]\(続行\)** を選択します。
 
-   ![統合ランタイムの種類を指定する](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png" alt-text="統合ランタイムの種類を指定する":::
 
 1. Azure-SSIS IR を設定する残りの手順については、「[Azure SSIS 統合ランタイムをプロビジョニングする](#provision-an-azure-ssis-integration-runtime)」セクションを参照してください。 
 
@@ -100,7 +101,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 **[統合ランタイムのセットアップ]** ペインの **[全般設定]** ページで、次の手順を行います。 
 
-   ![全般設定](./media/tutorial-create-azure-ssis-runtime-portal/general-settings.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/general-settings.png" alt-text="全般設定":::
 
    1. **[名前]** に統合ランタイムの名前を入力します。 
 
@@ -130,7 +131,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
    
 このチェック ボックスをオンにした場合は、自動的に作成および管理される SSISDB のホストとなる独自のデータベース サーバーを次の手順に従って用意してください。
 
-   ![SSISDB のデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png" alt-text="SSISDB のデプロイ設定":::
    
    1. **[サブスクリプション]** で、SSISDB をホストするデータベース サーバーを保有する Azure サブスクリプションを選択します。 
 
@@ -142,10 +143,10 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
       IP ファイアウォール規則/仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーまたはプライベート エンドポイントを備えたマネージド インスタンスを選択して SSISDB をホストする場合、またはセルフホステッド IR を構成せずにオンプレミスのデータへのアクセスを必要としている場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。 詳細については、[仮想ネットワークへの Azure-SSIS IR の作成](./create-azure-ssis-integration-runtime.md)に関するページを参照してください。
 
-   1. **[Use Azure AD authentication with the managed identity for your ADF]\(ADF のマネージド ID で Azure AD 認証を使用する\)** チェック ボックスをオンにして、SSISDB をホストするためのデータベース サーバーの認証方法を選択します。 SQL 認証を選択するか、またはデータ ファクトリのマネージド ID を使用した Azure AD 認証を選択することになります。
+   1. **[Use AAD authentication with the system managed identity for Data Factory]\(AAD 認証をデータ ファクトリのシステム マネージド ID と共に使用する\)** または **[Use AAD authentication with a user-assigned managed identity for Data Factory]\(AAD 認証をデータ ファクトリのユーザー割り当てマネージド ID と共に使用する\)** のチェック ボックスをオンにして、SSISDB をホストするデータベース サーバーにアクセスするための Azure-SSIS IR の Azure AD 認証方法を選択します。 SQL 認証方法を代わりに選択する場合、これらのチェック ボックスをオンにしないでください。
 
-      このチェック ボックスをオンにした場合は、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリのマネージド ID を追加する必要があります。 詳細については、[Azure AD 認証を使用した Azure-SSIS IR の作成](./create-azure-ssis-integration-runtime.md)に関するページを参照してください。
-   
+      このいずれかのチェック ボックスをオンにする場合は、データベース サーバーへのアクセス許可を持つ Azure AD グループに、データ ファクトリの指定のシステム/ユーザー割り当てマネージド ID を追加する必要があります。 **[Use AAD authentication with a user-assigned managed identity for Data Factory]\(AAD 認証をデータ ファクトリのユーザー割り当てマネージド ID と共に使用する\)** チェック ボックスをオンにした場合は、指定のユーザー割り当てマネージド ID を使用して作成された既存の資格情報を選択するか、新たに作成できます。 詳細については、[Azure AD 認証を使用した Azure-SSIS IR の作成](./create-azure-ssis-integration-runtime.md)に関するページを参照してください。
+
    1. **[管理者ユーザー名]** に、SSISDB をホストするデータベース サーバーの SQL 認証ユーザー名を入力します。 
 
    1. **[管理者パスワード]** に、SSISDB をホストするデータベース サーバーの SQL 認証パスワードを入力します。 
@@ -168,7 +169,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
    
 このチェック ボックスをオンにした場合、 **[新規]** を選択することで Azure-SSIS IR に複数のパッケージ ストアを追加できます。 逆に、1 つのパッケージ ストアを複数の Azure-SSIS IR で共有することもできます。
 
-![MSDB、ファイル システム、Azure Files のデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
+:::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png" alt-text="MSDB、ファイル システム、Azure Files のデプロイ設定":::
 
 **[Add package store]\(パッケージ ストアの追加\)** ペインで、次の手順を実行します。
    
@@ -179,7 +180,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
       > [!NOTE]
       > **Azure File Storage** か **File System** にリンクされているサービスを利用し、Azure Files にアクセスできます。 **Azure File Storage** にリンクされているサービスを使用する場合、Azure-SSIS IR パッケージ ストアでは現在のところ、(**アカウント キー** でも **SAS URI** でもなく) **基本** 認証方法のみがサポートされています。 
 
-      ![リンクされたサービスのデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
+      :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png" alt-text="リンクされたサービスのデプロイ設定":::
 
       1. **[名前]** に、リンクされたサービスの名前を入力します。 
          
@@ -207,13 +208,15 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
                 1. **[データベース名]** に「`msdb`」と入力します。
                
-            1. **[認証の種類]** で、 **[SQL 認証]** 、 **[マネージド ID]** 、 **[サービス プリンシパル]** のいずれかを選択します。
+            1. **[認証の種類]** で、 **[SQL 認証]** 、 **[マネージド ID]** 、 **[サービス プリンシパル]** 、 **[ユーザー割り当てマネージド ID]** のいずれかを選択します。
 
                 - **[SQL 認証]** を選択した場合は、適切な **ユーザー名** と **パスワード** を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
-                -  **[マネージド ID]** を選択した場合は、ご利用の ADF マネージド ID に Azure SQL Managed Instance へのアクセス権を付与します。
+                -  **[マネージド ID]** を選択した場合は、ADF のシステム マネージド ID に Azure SQL Managed Instance へのアクセス権を付与します。
 
                 - **[サービス プリンシパル]** を選択した場合は、適切な **サービス プリンシパル ID** と **サービス プリンシパル キー** を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
+                
+                -  **[ユーザー割り当てマネージド ID]** を選択した場合は、ADF の指定のユーザー割り当てマネージド ID に Azure SQL Managed Instance へのアクセス権を付与します。 これで、指定のユーザー割り当てマネージド ID を使用して作成された既存の資格情報を選択するか、新たに作成できます。
 
       1. **[ファイル システム]** を選択した場合は、パッケージのデプロイ先フォルダーの UNC パスを **[ホスト]** に入力すると共に、適切な **ユーザー名** と **パスワード** を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
@@ -227,7 +230,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
 **[統合ランタイムのセットアップ]** ペインの **[詳細設定]** ページで、次の手順を行います。 
 
-   ![詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png" alt-text="詳細設定":::
 
    1. **[Maximum Parallel Executions Per Node]\(ノードあたりの最大並列実行数\)** で、統合ランタイム クラスター内のノードあたりの同時に実行するパッケージの最大数を選択します。 サポートされているパッケージ数のみが表示されます。 コンピューティングやメモリを大量に使用する 1 つの大規模なパッケージを実行するために複数のコアを使用する場合は、低い数値を選択します。 1 つのコアで 1 つ以上の小規模なパッケージを実行する場合は、高い数値を選択します。 
 
@@ -254,7 +257,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
 **[管理]** ハブの **[接続]** ペインで、 **[Integration runtimes]\(統合ランタイム\)** ページに切り替え、 **[Refresh]\(更新\)** を選択します。 
 
-   ![[接続] ペイン](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png" alt-text="[接続] ペイン":::
 
    Azure-SSIS IR は、その名前を選択することで編集したり再構成したりすることができます。 該当するボタンを選択することで、Azure-SSIS IR を監視、開始、停止、削除したり、Azure-SSIS IR 上で動作する SSIS パッケージの実行アクティビティを含む ADF パイプラインを自動生成したりできます。また、Azure-SSIS IR の JSON コード (またはペイロード) を表示することもできます。  Azure-SSIS IR の編集と削除は、Azure-SSIS IR が停止しているときにしか実行できません。
 

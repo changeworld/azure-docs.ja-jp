@@ -1,21 +1,21 @@
 ---
-title: TrustFrameworkPolicy - Azure Active Directory B2C | Microsoft Docs
+title: TrustFrameworkPolicy - Azure Active Directory B2C
 description: Azure Active Directory B2C でカスタム ポリシーの TrustFrameworkPolicy 要素を指定します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/15/2021
-ms.author: mimart
+ms.date: 11/09/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 9bf1cc197a7d6977ccb6ef69e157d9f8a76a58d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1eb877215137338e2522ae9e8b215cceb469f49b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470733"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055476"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -70,6 +70,7 @@ ms.locfileid: "103470733"
 | [BuildingBlocks](buildingblocks.md) | 0:1 | ポリシーの構成要素。 |
 | [ClaimsProviders](claimsproviders.md) | 0:1 | クレーム プロバイダーのコレクション。 |
 | [UserJourneys](userjourneys.md) | 0:1 | ユーザー体験のコレクション。 |
+| [SubJourneys](subjourneys.md) | 0:1 | サブ体験のコレクション。 |
 | [RelyingParty](relyingparty.md) | 0:1 | 証明書利用者ポリシーの定義。 |
 
 別のポリシーからポリシーを継承するには、ポリシー ファイルの **TrustFrameworkPolicy** 要素の下で **BasePolicy** 要素を宣言する必要があります。 **BasePolicy** 要素は、このポリシーの派生元である base ポリシーへの参照です。

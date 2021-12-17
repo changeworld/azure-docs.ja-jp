@@ -1,19 +1,19 @@
 ---
 title: サービスの登録と検出を自動化する
 description: Spring Cloud Service Registry を使用してサービスの検出と登録を自動化する方法について説明します
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: e2ad6d8e3d81497eb7ebe612d01e60415790faea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e73fdd7c07104d791fc5259fbcd6a7edf3c9b0c5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877650"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241195"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>Spring Cloud サービスを検出して登録する
 
@@ -30,15 +30,10 @@ Steeltoe アプリのサービス登録を設定する方法については、[A
 *spring-cloud-starter-netflix-eureka-client* および *spring-cloud-starter-azure-spring-cloud-client* に対する依存関係を *pom.xml* に含めます
 
 ```xml
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0</version>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
 ```
 
 ## <a name="update-the-top-level-class"></a>最上位のクラスを更新する
@@ -49,11 +44,14 @@ Steeltoe アプリのサービス登録を設定する方法については、[A
     package foo.bar;
 
     import org.springframework.boot.SpringApplication;
-    import org.springframework.cloud.client.SpringCloudApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-    @SpringCloudApplication
+    @SpringBootApplication
+    @EnableEurekaClient
     public class DemoApplication {
-        public static void main(String... args) {
+
+        public static void main(String[] args) {
             SpringApplication.run(DemoApplication.class, args);
         }
     }

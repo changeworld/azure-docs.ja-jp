@@ -9,19 +9,17 @@ ms.custom:
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
-ms.date: 11/27/2019
-ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 08/20/2021
+ms.openlocfilehash: b4d169a46f499e83d0abf5d3145d67a3f6fdf03b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96006389"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439219"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>RuuviTag センサーを Azure IoT Central アプリケーションに接続する
 
-*この記事は、ソリューション ビルダーを対象としています。*
-
-この記事では、ソリューション ビルダーとして、RuuviTag センサーを、お使いの Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
+この記事では、RuuviTag センサーを、お使いの Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
 
 RuuviTag とは
 
@@ -35,9 +33,12 @@ Rigado Cascade 500 ゲートウェイ デバイスを設定する場合は、[�
 
 RuuviTag センサーを接続するには、次のリソースが必要です。
 
-* RuuviTag センサー。 詳細については、[RuuviTag](https://ruuvi.com/) に関するページをご覧ください。
-* Rigado Cascade 500 デバイスまたはその他の BLE ゲートウェイ。 詳細については、[Rigado](https://www.rigado.com/) に関するページをご覧ください。
-* Azure IoT Central アプリケーション。 詳細については、[新しいアプリケーションの作成](./quick-deploy-iot-central.md)に関するページをご覧ください。
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+- RuuviTag センサー。 詳細については、[RuuviTag](https://ruuvi.com/) に関するページをご覧ください。
+
+- Rigado Cascade 500 デバイスまたはその他の BLE ゲートウェイ。 詳細については、[Rigado](https://www.rigado.com/) に関するページをご覧ください。
+
 
 ## <a name="add-a-ruuvitag-device-template"></a>RuuviTag デバイス テンプレートを追加する
 
@@ -45,8 +46,8 @@ RuuviTag センサーをお使いの Azure IoT Central アプリケーション 
 
 RuuviTag デバイス テンプレートを追加するには:
 
-1. 左ウィンドウの **[デバイス テンプレート]** タブに移動し、 _[+ New] を選択します。![新しいデバイス テンプレートを作成する](./media/howto-connect-ruuvi/devicetemplate-new.png) このページでは、"***カスタム テンプレートを作成**_" するためのオプション、または "_ *_構成済みデバイス テンプレートを使用_**" するためのオプションについて説明しています
-1. 次に示すように、構成済みデバイス テンプレートの一覧から RuuviTag デバイス テンプレートを選択します。![RuuviTag デバイス テンプレートを選択する](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. 左ウィンドウの **[デバイス テンプレート]** タブに移動し、 _[+ New] を選択します。![新しいデバイス テンプレートを作成する](./media/howto-connect-ruuvi/device-template-new.png) このページでは、"***カスタム テンプレートを作成**_" するためのオプション、または "_ *_構成済みデバイス テンプレートを使用_**" するためのオプションについて説明しています
+1. 次に示すように、構成済みデバイス テンプレートの一覧から RuuviTag Multisensor デバイス テンプレートを選択します。![RuuviTag デバイス テンプレートを選択する](./media/howto-connect-ruuvi/device-template-pre-configured.png)
 1. ***カスタマイズ*** を選択して、次の手順に進みます。
 1. 次の画面で、***[作成]*** を選択して、C500 デバイス テンプレートをお使いの IoT Central アプリケーションにオンボードします。
 
@@ -58,7 +59,7 @@ RuuviTag デバイス テンプレートを追加するには:
 1. RuuviTag のカバーを外し、プラスチックのタブを引いて、バッテリーとの接続を保護します。
 1. ご自身の IoT Central アプリケーションで事前構成された Rigado Cascade 500 ゲートウェイのすぐ近くに RuuviTag を配置します。
 1. わずか数秒で、ご自身の RuuviTag が、IoT Central 内のデバイスの一覧に表示されます。  
-    ![RuuviTag デバイスの一覧](./media/howto-connect-ruuvi/ruuvi-devicelist.png)
+    ![RuuviTag デバイスの一覧](./media/howto-connect-ruuvi/ruuvi-device-list.png)
 
 これで、この RuuviTag が、ご自身の IoT Central アプリケーション内で使用できるようになりました。  
 
@@ -76,7 +77,7 @@ RuuviTag デバイス テンプレートを追加するには:
 
 ## <a name="next-steps"></a>次の手順
 
-デバイス開発者にお勧めする次の手順は以下です。
+推奨される次のステップは以下のとおりです。
 
 - [Azure IoT Central のデバイス接続](./concepts-get-connected.md)について確認する
 - [Azure CLI を使用してデバイスの接続性を監視する](./howto-monitor-devices-azure-cli.md)方法を確認する

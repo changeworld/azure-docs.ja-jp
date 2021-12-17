@@ -4,33 +4,52 @@ description: マーケットプレースのアクティビティが要約され�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/09/2020
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: c02ba12c790d745904d241f121e269aac3ed12f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 09/27/2021
+ms.openlocfilehash: ebf0a77eb4b0e79931af4f33a8adad4f6c115c22
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462975"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081542"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [Summary] (概要) ダッシュボード
 
 この記事では、パートナー センターの [Summary]\(概要\) ダッシュボードについて説明します。 このダッシュボードには、オファーに関するマーケットプレースのアクティビティがまとめられた、集計データのグラフ、傾向、値が表示されます。
 
-パートナー センターの [概要] ダッシュボードにアクセスするには、**コマーシャル マーケットプレース** で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[概要]** を選択します。
-
 >[!NOTE]
-> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。
 
 ## <a name="summary-dashboard"></a>[Summary]\(概要\) ダッシュボード
 
-[概要] ダッシュボードには、Azure Marketplace および Microsoft AppSource のオファーのビジネス パフォーマンスの概要が示されます。 ダッシュボードは、次のことについて大まかに説明しています。
+[[概要] ダッシュボード](https://go.microsoft.com/fwlink/?linkid=2165765)には、Azure Marketplace および Microsoft AppSource のオファーのビジネス パフォーマンスの概要が示されます。 ダッシュボードは、次のことについて大まかに説明しています。
 
 - 顧客の注文
 - 顧客
 - 顧客によるオファーの使用
 - Azure Marketplace および AppSource での顧客のページ アクセス
+
+## <a name="access-the-summary-dashboard"></a>概要ダッシュボードにアクセスする
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. ホーム ページで、 **[分析情報]** タイルを選択します。
+
+    [ ![パートナー センター ホーム ページの [分析情報] タイルの図。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 左側のメニューで **[概要]** を選択します。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[分析]**  >  **[概要]** の順に選択します。
+
+---
 
 ## <a name="elements-of-the-summary-dashboard"></a>[Summary]\(概要\) ダッシュボードの要素
 
@@ -38,9 +57,19 @@ ms.locfileid: "96462975"
 
 ### <a name="month-range"></a>月範囲
 
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+各ページの右上隅には、月範囲の選択が表示されます。 過去の指定した月数に基づく月範囲を選択することで、あるいは 12 か月を最大期間とするカスタムの月範囲を選択することで、 **[概要]** ページのグラフの出力をカスタマイズします。 既定の月範囲 (計算期間) は 6 か月です。
+
+[![[概要] ダッシュボードの月範囲オプションの画像。](./media/summary-dashboard/summary-dashboard-filters.png)](./media/summary-dashboard/summary-dashboard-filters.png#lightbox)
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
 各ページの右上隅には、月範囲の選択が表示されます。 過去 3 か月、6 か月、または 12 か月の月範囲を選択することで、あるいは 12 か月を最大期間とするカスタムの月範囲を選択することで、 **[概要]** ページのグラフの出力をカスタマイズします。 既定の月範囲 (計算期間) は 6 か月です。
 
 :::image type="content" source="./media/summary-dashboard/summary-dashboard.png" alt-text="[概要] ダッシュボードの月範囲オプションの画像。":::
+
+---
 
 > [!NOTE]
 > 視覚化ウィジェットおよびエクスポート レポートのすべてのメトリックでは、ユーザーが選択した計算期間が優先されます。
@@ -103,10 +132,16 @@ Marketplace の分析情報では、Azure Marketplace および AppSource のオ
 
 ## <a name="next-steps"></a>次のステップ
 
-- コマーシャル マーケットプレースで利用可能な分析レポートの概要については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](./partner-center-portal/analytics.md)」を参照してください。
+- コマーシャル マーケットプレースで利用可能な分析レポートの概要については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](analytics.md)」を参照してください。
 - グラフィカルでダウンロード可能な形式での注文の詳細については、「[コマーシャル マーケットプレース分析の注文ダッシュボード](orders-dashboard.md)」を参照してください。
 - 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](usage-dashboard.md)」を参照してください。
 - 成長傾向など、顧客の詳細については、「[コマーシャル マーケットプレース分析の顧客ダッシュボード](customer-dashboard.md)」を参照してください。
+<<<<<<< HEAD
 - 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](./partner-center-portal/downloads-dashboard.md)」を参照してください。
 - Azure Marketplace と AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[パートナー センターの評価とレビューの分析ダッシュボード](./partner-center-portal/ratings-reviews.md)」を参照してください。
 - コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+=======
+- 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](downloads-dashboard.md)」を参照してください。
+- Azure Marketplace と AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[パートナー センターの評価とレビューの分析ダッシュボード](ratings-reviews.md)」を参照してください。
+- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。
+>>>>>>> repo_sync_working_branch

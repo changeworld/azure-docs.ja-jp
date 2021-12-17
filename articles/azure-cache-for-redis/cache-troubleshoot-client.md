@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング
 description: Redis クライアントのメモリ負荷、トラフィック増加、高い CPU、限られた帯域幅、要求または応答の肥大化など、クライアント側で頻繁に発生する問題を Azure Cache for Redis で解決する方法について説明します。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd0ca3b20cc37ecf2107e03eea5d6e4a62633f16
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88008969"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807189"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング
 
@@ -21,7 +21,7 @@ ms.locfileid: "88008969"
 - [トラフィックのバースト](#traffic-burst)
 - [クライアントでの高い CPU 使用率](#high-client-cpu-usage)
 - [クライアント側の帯域幅の制限](#client-side-bandwidth-limitation)
-- [要求または応答のサイズが大きい](#large-request-or-response-size)
+<!-- [Large request or response size](#large-request-or-response-size) -->
 
 ## <a name="memory-pressure-on-redis-client"></a>Redis クライアントでのメモリ不足
 
@@ -53,7 +53,7 @@ ms.locfileid: "88008969"
 - `IOCP` セクションと `WORKER` セクションに、`Busy` 値が `Min` 値より大きいことが示されていることに注目してください。 この違いは、`ThreadPool` 設定に調整が必要なことを示します。
 - `in: 64221`にも注目してください。 この値は、64,211 バイトがクライアントのカーネル ソケット レイヤーで受信されたが、まだアプリケーションによって読み取られていないことを示します。 この違いは、通常、アプリケーション (StackExchange.Redis など) がネットワークからデータを読み取る速度がサーバーのデータ送信速度より遅いことを示します。
 
-バースト シナリオのもとでスレッド プールがすばやくスケールアップするように [`ThreadPool` 設定を構成](cache-management-faq.md#important-details-about-threadpool-growth)できます。
+バースト シナリオのもとでスレッド プールがすばやくスケールアップするように [`ThreadPool` 設定を構成](cache-management-faq.yml#important-details-about-threadpool-growth)できます。
 
 ## <a name="high-client-cpu-usage"></a>クライアントでの高い CPU 使用率
 
@@ -78,11 +78,12 @@ Azure Portal で使用可能なメトリックか、またはコンピュータ�
 
 緩和するには、ネットワーク帯域幅の消費を削減するか、またはクライアント VM サイズをネットワーク容量の多いサイズに増やします。
 
-## <a name="large-request-or-response-size"></a>要求または応答のサイズが大きい
+<!-- 
+## Large request or response Size
 
-大きい要求/応答が原因でタイムアウトが発生することがあります。 例として、クライアントで構成されているタイムアウト値が 1 秒であるとします。 アプリケーションは同時に 2 つのキー ("A" と "B" など) を (同じ物理ネットワーク接続を使用して) 要求します。 ほとんどのクライアントでは、要求 'A' と要求 'B' の両方がそれぞれの応答を待たずに次々に送信される、要求の "パイプライン処理" がサポートされます。 サーバーは同じ順序で応答を返します。 応答 'A' が大きい場合、その応答は、以降の要求のためのタイムアウトのほとんどを消費する可能性があります。
+A large request/response can cause timeouts. As an example, suppose your timeout value configured on your client is 1 second. Your application requests two keys (for example, 'A' and 'B') at the same time (using the same physical network connection). Most clients support request "pipelining", where both requests 'A' and 'B' are sent one after the other without waiting for their responses. The server sends the responses back in the same order. If response 'A' is large, it can eat up most of the timeout for later requests.
 
-次の例では、要求 'A' と 'B' がすばやくサーバーに送信されます。 サーバーは、すばやく応答 'A' と 'B' を送信し始めます。 データ転送時間のため、サーバーがすばやく応答したとしても、応答 'B' は応答 'A' が終了するまで待つ必要があります。
+In the following example, request 'A' and 'B' are sent quickly to the server. The server starts sending responses 'A' and 'B' quickly. Because of data transfer times, response 'B' must wait behind response 'A' times out even though the server responded quickly.
 
 ```console
 |-------- 1 Second Timeout (A)----------|
@@ -93,20 +94,21 @@ Azure Portal で使用可能なメトリックか、またはコンピュータ�
                                        |- Read Response B-| (**TIMEOUT**)
 ```
 
-この要求/応答を測定するのは困難です。 大きい要求や応答を追跡するように、クライアント コードをインストルメント化する必要があります。
+This request/response is a difficult one to measure. You could instrument your client code to track large requests and responses.
 
-大きい応答サイズの解決策はさまざまですが、次のものが含まれます。
+Resolutions for large response sizes are varied but include:
 
-1. アプリケーションを少数の大きい値ではなく、多数の小さい値用に最適化します。
-    - データをより小さい関連値に分割することをお勧めします。
-    - より小さい値が推奨される理由の詳細については、[Redis に最適な値のサイズ範囲は何ですか? 100 KB では大きすぎますか?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) に関する投稿を参照してください。
-1. より高い帯域幅機能を使用できるように VM のサイズを増やします。
-    - クライアントまたはサーバー VM の帯域幅を増やすと、より大きい応答のデータ転送時間が削減される可能性があります。
-    - 両方のコンピューターの現在のネットワーク使用量を現在の VM サイズの制限と比較します。 サーバーのみ、またはクライアントのみの帯域幅を増やすだけでは十分でない可能性があります。
-1. アプリケーションが使用する接続オブジェクトの数を増やします。
-    - ラウンド ロビン方式を使用して、さまざまな接続オブジェクト経由で要求を発行します。
+1. Optimize your application for a large number of small values, rather than a few large values.
+    - The preferred solution is to break up your data into related smaller values.
+    - See the post [What is the ideal value size range for redis? Is 100 KB too large?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) for details on why smaller values are recommended.
+1. Increase the size of your VM to get higher bandwidth capabilities
+    - More bandwidth on your client or server VM may reduce data transfer times for larger responses.
+    - Compare your current network usage on both machines to the limits of your current VM size. More bandwidth on only the server or only on the client may not be enough.
+1. Increase the number of connection objects your application uses.
+    - Use a round-robin approach to make requests over different connection objects.
 
+ -->
 ## <a name="additional-information"></a>関連情報
 
 - [Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング](cache-troubleshoot-server.md)
-- [キャッシュのベンチマークを実行およびテストする方法](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [キャッシュのベンチマークを実行およびテストする方法](cache-management-faq.yml#how-can-i-benchmark-and-test-the-performance-of-my-cache-)

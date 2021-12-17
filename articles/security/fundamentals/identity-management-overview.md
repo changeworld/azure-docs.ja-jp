@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/05/2021
 ms.author: terrylan
-ms.openlocfilehash: 1bb4f22c6ef114a224597ede2b053d076aba5997
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 502fb45c690baa7e6d098258c12576f0f3b31c1f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065839"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956823"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 
@@ -70,10 +70,10 @@ Azure AD アプリケーション プロキシを使用すると、[SharePoint](
 
 詳細情報:
 
-* [Azure AD アプリケーション プロキシの有効化](../../active-directory/manage-apps/application-proxy-add-on-premises-application.md)
-* [Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../../active-directory/manage-apps/application-proxy-add-on-premises-application.md)
-* [アプリケーション プロキシを使用したシングル サインオン](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
-* [条件付きアクセスの使用](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+* [Azure AD アプリケーション プロキシの有効化](../../active-directory/app-proxy/application-proxy-add-on-premises-application.md)
+* [Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../../active-directory/app-proxy/application-proxy-add-on-premises-application.md)
+* [アプリケーション プロキシを使用したシングル サインオン](../../active-directory/app-proxy/application-proxy-configure-single-sign-on-with-kcd.md)
+* [条件付きアクセスの使用](../../active-directory/app-proxy/application-proxy-integrate-with-sharepoint-server.md)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 

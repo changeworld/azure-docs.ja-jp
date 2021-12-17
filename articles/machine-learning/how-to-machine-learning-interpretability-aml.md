@@ -1,26 +1,24 @@
 ---
-title: Python で ML モデルを解釈して説明する (プレビュー)
+title: Python を使用したモデルの解釈と説明 (プレビュー)
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning SDK を使用している場合に、機械学習モデルがどのように特徴量の重要度を判定して予測を行うかに関する説明を取得する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 07/09/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: fda1bc2ef0a112a8a32ba7c4caebf29028c8cdd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python, responsible-ml, mktng-kw-nov2021
+ms.openlocfilehash: f22bee60a86d162c57313ab33811a21408eefd74
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98222753"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847453"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>解釈可能性パッケージを使用して、Python ML モデルと予測について説明する (プレビュー)
-
-
+# <a name="use-the-python-interpretability-package-to-explain-ml-models--predictions-preview"></a>Python 解釈可能性パッケージを使用して、ML モデルと予測について説明する (プレビュー)
 
 この攻略ガイドでは、Azure Machine Learning Python SDK の解釈可能性パッケージを使用して次のタスクを実行する方法について学習します。
 
@@ -31,13 +29,16 @@ ms.locfileid: "98222753"
 
 * Azure でのモデル全体と個々の予測の動作について説明します。
 
-* 視覚化ダッシュボードを使用して、モデルの説明と対話します。
+* Azure Machine Learning 実行履歴に説明をアップロードします。
+
+* Jupyter ノートブックでも Azure Machine Learning スタジオでも、視覚化ダッシュボードを使用してモデルの説明を操作します。
 
 * モデルと共にスコアリング Explainer をデプロイして、推論中の説明を観察します。
 
 
-
 サポートされている解釈可能性テクニックと機械学習モデルの詳細については、「[Azure Machine Learning でのモデルの解釈可能性](how-to-machine-learning-interpretability.md)」と「[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)」を参照してください。
+
+自動機械学習でトレーニングされたモデルの解釈可能性を有効にする方法のガイダンスについては、[解釈可能性: 自動機械学習モデルのモデルの説明 (プレビュー)](how-to-machine-learning-interpretability-automl.md) に関する記事を参照してください。 
 
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>個人用コンピューターで特徴量の重要度の値を生成する 
 次の例は、Azure サービスに接続することなく、個人用コンピューターで解釈可能性パッケージを使用する方法を示しています。
@@ -296,17 +297,17 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="visualizations"></a>視覚化
 
-ローカルの Jupyter Notebook に説明をダウンロードしたら、視覚化ダッシュボードを使用してモデルを理解および解釈できます。 Jupyter Notebook に視覚化ダッシュボード ウィジェットを読み込むには、次のコードを使用します。
+ローカルの Jupyter Notebook に説明をダウンロードしたら、説明ダッシュボード内の視覚化を使用してモデルを理解および解釈できます。 Jupyter Notebook に説明ダッシュボード ウィジェットを読み込むには、次のコードを使用します。
 
 ```python
-from interpret_community.widget import ExplanationDashboard
+from raiwidgets import ExplanationDashboard
 
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
-視覚化では、エンジニアリングされたものと未加工の特徴の両方に関する説明をサポートします。 未加工の説明は元のデータセットの特徴に基づいており、エンジニアリングされた説明は特徴エンジニアリングが適用されたデータセットの特徴に基づいています。
+視覚化では、エンジニアリングされたものと未加工の特徴の両方に関する説明がサポートされます。 未加工の説明は元のデータセットの特徴に基づいており、エンジニアリングされた説明は特徴エンジニアリングが適用されたデータセットの特徴に基づいています。
 
-元のデータセットに関してモデルを解釈しようとする場合、各特徴量の重要度は元のデータセットの列に対応するため、未加工の説明を使用することをお勧めします。 エンジニアリングされた説明が役立つ可能性がある 1 つのシナリオは、カテゴリ特徴から個々のカテゴリの影響を調べる場合です。 ワンホット エンコーディングがカテゴリ特徴に適用される場合、結果として得られるエンジニアリングされた説明には、カテゴリごとに異なる重要度の値が、ワンホット エンジニアリングされた特徴ごとに 1 つずつ含まれます。 これは、データセットのどの部分がモデルに最も有益な情報を提供するかを絞り込む場合に役立ちます。
+元のデータセットに関してモデルを解釈しようとする場合、各特徴量の重要度は元のデータセットの列に対応するため、未加工の説明を使用することをお勧めします。 エンジニアリングされた説明が役立つ可能性がある 1 つのシナリオは、カテゴリ特徴から個々のカテゴリの影響を調べる場合です。 ワンホット エンコーディングがカテゴリ特徴に適用される場合、結果として得られるエンジニアリングされた説明には、カテゴリごとに異なる重要度の値が、ワンホット エンジニアリングされた特徴ごとに 1 つずつ含まれます。 このエンコードは、データセットのどの部分がモデルに最も有益な情報を提供するかを絞り込む場合に役立ちます。
 
 > [!NOTE]
 > エンジニアリング説明と未加工の説明は、順番に計算されます。 まず、モデルと特徴量化パイプラインに基づいて、エンジニアリングされた説明が作成されます。 次に、同じ未加工の特徴から得られた、エンジニアリングされた特徴量の重要度を集計することにより、そのエンジニアリングされた説明に基づいて未加工の説明が作成されます。
@@ -353,11 +354,11 @@ X、Y、色の各軸に沿ってさまざまなフィルターを選択し、さ
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での視覚化
 
-[リモートの解釈可能性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)の手順 (生成された説明の Azure Machine Learning 実行履歴へのアップロード) を完了すると、[Azure Machine Learning Studio](https://ml.azure.com) に視覚化ダッシュボードが表示されます。 このダッシュボードは、上で説明した視覚化ダッシュボードのより単純なバージョンです。 Azure Machine Learning スタジオには、リアルタイムの計算を実行できるアクティブなコンピューティングがないため、What-If データ ポイントの生成と ICE プロットは無効になります。
+[リモートの解釈可能性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)の手順 (生成された説明の Azure Machine Learning 実行履歴へのアップロード) を完了したら、[Azure Machine Learning スタジオ](https://ml.azure.com)に説明ダッシュボードの視覚化を表示できます。 このダッシュボードは、Jupyter ノートブック内で生成されるダッシュボード ウィジェットのより単純なバージョンです。 Azure Machine Learning スタジオには、リアルタイムの計算を実行できるアクティブなコンピューティングがないため、What-If データ ポイントの生成と ICE プロットは無効になります。
 
 データ セット、グローバルおよびローカルの説明が使用可能な場合、すべてのタブにデータが入力されます。 グローバル説明のみを使用できる場合、[個々の特徴量の重要度] タブは無効になります。
 
-Azure Machine Learning Studio の視覚化ダッシュボードにアクセスするには、次のパスのいずれかに従います。
+Azure Machine Learning スタジオの説明ダッシュボードにアクセスするには、こちらのパスのいずれかに従います。
 
 * **[実験]** ウィンドウ (プレビュー)
   1. 左側のウィンドウの **[実験]** を選択して、Azure Machine Learning で実行した実験の一覧を表示します。
@@ -368,7 +369,7 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
 
 * **[モデル]** ウィンドウ
   1. 「[Azure Machine Learning を使用してモデルをデプロイする](./how-to-deploy-and-where.md)」の手順に従って元のモデルを登録している場合は、左側のウィンドウの **[モデル]** を選択してそれを表示できます。
-  1. モデルを選択してから **[説明]** タブを選択して、説明の視覚化ダッシュボードを表示します。
+  1. モデルを選択してから **[説明]** タブを選択して、説明ダッシュボードを表示します。
 
 ## <a name="interpretability-at-inference-time"></a>推論時の解釈可能性
 
@@ -564,8 +565,17 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 * **スパース データがサポートされない**: モデルの説明ダッシュボードでは、特徴の数が多いと機能が中断するか、速度が大幅に低下するため、現在、スパース データ形式はサポートされていません。 さらに、データ セットが大きい場合や特徴の数が多い場合、一般的なメモリの問題が発生します。 
+* **サポートされている説明と特徴の一覧**
 
-* **モデルの説明で予測モデルがサポートされない**: 解釈可能性、最適なモデルの説明は、最適なモデルとして TCNForecaster、AutoArima、Prophet、ExponentialSmoothing、Average、Naive、Seasonal Average、Seasonal Naive のアルゴリズムを推奨する AutoML 予測実験では利用できません。 AutoML 予測には、説明をサポートする回帰モデルが用意されています。 ただし、説明ダッシュボードでは、データ パイプラインが複雑なため、[個々の特徴量の重要度] タブは予測に対してサポートされていません。
+サポートされている説明のタブ | 未加工の特徴 (高密度) | 未加工の特徴 (スパース) | エンジニアリングされた特徴 (高密度) | エンジニアリングされた特徴 (スパース)
+:----- | :--- | :--- | :---- | :---- |
+モデル パフォーマンス   | サポート (予測なし) | サポート (予測なし)  | サポートされています | サポートされています |
+データセット エクスプローラー  | サポート (予測なし)   | サポートされていません。 スパース データはアップロードされず、UI ではスパース データを表示できません。 | サポートされています | サポートされていません。 スパース データはアップロードされず、UI ではスパース データを表示できません。 | 
+ 特徴量の重要度の集計 | サポートされています | サポートされています | サポートされています | サポートされています |
+ 個々の特徴量の重要度| サポート (予測なし)   | サポートされていません。 スパース データはアップロードされず、UI ではスパース データを表示できません。 | サポートされています | サポートされていません。 スパース データはアップロードされず、UI ではスパース データを表示できません。 | 
+
+
+* **モデルの説明で予測モデルがサポートされない**: 解釈可能性、最適なモデルの説明は、最適なモデルとして TCNForecaster、AutoArima、Prophet、ExponentialSmoothing、Average、Naive、Seasonal Average、Seasonal Naive のアルゴリズムを推奨する AutoML 予測実験では利用できません。 AutoML 予測回帰モデルでは、説明がサポートされています。 ただし、説明ダッシュボードでは、データ パイプラインが複雑なため、[Individual feature importance]\(個々の特徴量の重要度\) タブは予測についてはサポートされていません。
 
 * **データ インデックスのローカル説明**: 説明ダッシュボードでは、データをランダムにダウンサンプリングするため、そのデータ セットのデータ ポイントが 5,000 個を超える場合、ローカルの重要度値を元の検証データ セットの行識別子に関連付けることをサポートしていません。 ただし、ダッシュボードには、[個別の特徴量の重要度] タブでダッシュボードに渡された各データ ポイントについて未加工のデータ セットの特徴量値が表示されます。ユーザーは、未加工のデータ セットの特徴量値を照合することで、ローカルの重要度を元のデータ セットにマッピングできます。 検証データ セットのサイズが 5,000 サンプル未満の場合、AzureML スタジオの `index` 機能は検証データ セットのインデックスに対応します。
 
@@ -574,6 +584,6 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
 
 ## <a name="next-steps"></a>次のステップ
 
-[モデルの解釈可能性の詳細について学習する](how-to-machine-learning-interpretability.md)
+[Azure ML でのモデルの解釈可能性の手法](how-to-machine-learning-interpretability.md)
 
 [Azure Machine Learning の解釈可能性サンプル ノートブックを確認する](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)

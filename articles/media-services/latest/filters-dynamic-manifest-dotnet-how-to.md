@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 93634d8168d4870d6a97428ee538e465c6aad2cb
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: c81f6ed1517146efdd60c293d0c4840f6c61f7f5
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111144"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372591"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK を使用してフィルターを作成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "106111144"
 - [フィルターと動的マニフェスト](filters-dynamic-manifest-concept.md)を確認します。
 - [Media Services アカウントを作成する](./account-create-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。 
 - [API へのアクセス](./access-api-howto.md)に必要な情報を取得する
-- [.NET SDK の使用を始める](stream-files-tutorial-with-api.md#start-using-media-services-apis-with-net-sdk)方法については、[Azure Media Services を使用してビデオのアップロード、エンコード、ストリーム配信を行う方法](stream-files-tutorial-with-api.md)に関するページを参照してください。
+- [.NET SDK の使用を始める](stream-files-tutorial-with-api.md#start-using-media-services-apis-with-the-net-sdk)方法については、[Azure Media Services を使用してビデオのアップロード、エンコード、ストリーム配信を行う方法](stream-files-tutorial-with-api.md)に関するページを参照してください。
 
 ## <a name="define-a-filter"></a>フィルターの定義  
 

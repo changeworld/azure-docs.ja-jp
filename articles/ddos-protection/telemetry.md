@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0a04c6c58f8bfa5370a6529b81a5a85090413a2a
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 728943aa79e208eb2d6cd6dcdcfaf7876033e2f8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107535"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347410"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS 保護テレメトリの表示と構成
 
-Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、攻撃の詳細な情報および視覚化が提供されます。 DDoS 攻撃から仮想ネットワークを保護している場合、攻撃の軽減策レポートと軽減策フロー ログによって、攻撃のトラフィック、および攻撃を緩和するために行われたアクションの詳細を視覚的に確認できます。 豊富なテレメトリは、DDoS 攻撃の間に、詳細なメトリックを含む Azure Monitor を通じて公開されます。 DDoS Protection によって公開される Azure Monitor の任意のメトリックに対して、アラートを構成することができます。 Azure Monitor 診断インターフェイスを介した高度な分析用に、ログを [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md)、Splunk (Azure Event Hubs)、OMS Log Analytics、Azure Storage とさらに統合できます。
+Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、攻撃の詳細な情報および視覚化が提供されます。 DDoS 攻撃から仮想ネットワークを保護している場合、攻撃の軽減策レポートと軽減策フロー ログによって、攻撃のトラフィック、および攻撃を緩和するために行われたアクションの詳細を視覚的に確認できます。 豊富なテレメトリは、DDoS 攻撃の間に、詳細なメトリックを含む Azure Monitor を通じて公開されます。 DDoS Protection によって公開される Azure Monitor の任意のメトリックに対して、アラートを構成することができます。 Azure Monitor 診断インターフェイスを介した高度な分析用に、ログを [Microsoft Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection)、Splunk (Azure Event Hubs)、OMS Log Analytics、Azure Storage とさらに統合できます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -30,6 +30,12 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 > * DDoS 保護テレメトリを検証し、テストする
 
 ### <a name="metrics"></a>メトリック
+
+メトリック名は、異なるパケットの種類と、バイト数かパケット数かを表します。各メトリックでのタグ名の基本的な構成は、次のようになっています。
+
+- **Dropped (削除) タグ名** (例: **Inbound Packets Dropped DDoS** (DDoS 受信パケット削除数)):DDoS 保護システムによって削除/除去されたパケットの数。
+- **Forwarded (転送) タグ名** (例: **Inbound Packets Forwarded DDoS** (DDoS 受信パケット転送数)):DDoS システムによって宛先 VIP に転送されたパケットの数 (フィルター処理されなかったトラフィック)。
+- **タグ名なし** (例: **Inbound Packets DDoS** (DDoS 受信パケット数)):除去システムに入力されたパケットの総数 (削除および転送されたパケットの総数を表します)。
 
 > [!NOTE]
 > Azure portal 上では **[集計]** に複数のオプションが表示されますが、下の表に示す集計の種類のみが各メトリックに対してサポートされます。 紛らわしくて申し訳ありませんが、現在解決に向けて取り組み中です。
@@ -70,26 +76,35 @@ Azure DDoS Protection Standard では、次の[メトリック](../azure-monitor
 
 ## <a name="view-ddos-protection-telemetry"></a>DDoS 保護テレメトリを表示する
 
-攻撃のテレメトリは、Azure Monitor 経由でリアルタイムに提供されます。 テレメトリは、パブリック IP アドレスに軽減策が適用されている場合にのみ使用できます。 
+攻撃のテレメトリは、Azure Monitor 経由でリアルタイムに提供されます。 TCP SYN、TCP、および UDP の[軽減トリガー](#view-ddos-mitigation-policies)は、平時に使用できます。他のテレメトリは、パブリック IP アドレスに軽減策が適用されている場合にのみ使用できます。 
 
-1. [Azure portal](https://portal.azure.com/) にサインインし、DDoS Protection プランに移動します。
+保護されたパブリック IP アドレスの DDoS テレメトリは、DDoS 保護プラン、仮想ネットワーク、およびパブリック IP アドレスの 3 つの異なるリソースの種類を介して表示できます。
+
+### <a name="ddos-protection-plan"></a>DDoS 保護プラン
+1. [Azure portal](https://portal.azure.com/) にサインインし、対象の DDoS 保護プランに移動します。
+2. **[監視]** で **[メトリック]** を選びます。
+3. **[スコープ]** を選択します。 ログするパブリック IP アドレスを含む **サブスクリプション** を選択し、 **[リソースの種類]** で **[パブリック IP アドレス]** を選択します。メトリックをログする特定のパブリック IP アドレスを選択し、 **[適用]** を選択します。
+4. **集計** の種類として **[最大]** を選択します。 
+
+### <a name="virtual-network"></a>仮想ネットワーク
+1. [Azure portal](https://portal.azure.com/) にサインインし、DDoS 保護が有効になっている対象の仮想ネットワークに移動します。
 2. **[監視]** で **[メトリック]** を選びます。
 3. **[スコープ]** を選択します。 ログするパブリック IP アドレスを含む **サブスクリプション** を選択し、 **[リソースの種類]** で **[パブリック IP アドレス]** を選択します。メトリックをログする特定のパブリック IP アドレスを選択し、 **[適用]** を選択します。
 4. **集計** の種類として **[最大]** を選択します。
+5. **[フィルターの追加]** を選択します。 **[プロパティ]** で、 **[Protected IP Address]\(保護された IP アドレス\)** を選択します。演算子は **=** に設定する必要があります。 **[値]** の下に、仮想ネットワークに関連付けられている、有効な DDoS 保護によって保護されるパブリック IP アドレスのドロップダウンが表示されます。 
 
-メトリック名は、異なるパケットの種類と、バイト数かパケット数かを表します。各メトリックでのタグ名の基本的な構成は、次のようになっています。
+![DDoS の診断設定](./media/ddos-attack-telemetry/vnet-ddos-metrics.png)
 
-- **Dropped (削除) タグ名** (例: **Inbound Packets Dropped DDoS** (DDoS 受信パケット削除数)):DDoS 保護システムによって削除/除去されたパケットの数。
-- **Forwarded (転送) タグ名** (例: **Inbound Packets Forwarded DDoS** (DDoS 受信パケット転送数)):DDoS システムによって宛先 VIP に転送されたパケットの数 (フィルター処理されなかったトラフィック)。
-- **タグ名なし** (例: **Inbound Packets DDoS** (DDoS 受信パケット数)):除去システムに入力されたパケットの総数 (削除および転送されたパケットの総数を表します)。
+### <a name="public-ip-address"></a>パブリック IP アドレス
+1. [Azure portal](https://portal.azure.com/) にサインインし、対象のパブリック IP アドレスに移動します。
+2. **[監視]** で **[メトリック]** を選びます。
+3. **集計** の種類として **[最大]** を選択します。
 
 ## <a name="view-ddos-mitigation-policies"></a>DDoS 軽減ポリシーを表示する
 
-DDoS Protection Standard は、DDoS が有効になっている仮想ネットワーク内で、保護されたリソースのパブリック IP アドレスごとに、3 つの自動調整された軽減ポリシー (TCP SYN、TCP、UDP) を適用します。 次の図に示すように、 **[Inbound TCP packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする受信 TCP パケット数\)** と **[Inbound UDP packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする受信 UDP パケット数\)** のメトリックを選択し、**集計** の種類を [最大] にして、ポリシーのしきい値を表示することができます。
+DDoS Protection Standard では、DDoS 保護が有効になっている仮想ネットワーク内で、保護されたリソースのパブリック IP アドレスごとに、3 つの自動調整された軽減ポリシー (TCP SYN、TCP、UDP) を適用します。 次の図に示すように、 **[Inbound TCP packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする受信 TCP パケット数\)** と **[Inbound UDP packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする受信 UDP パケット数\)** のメトリックを選択し、**集計** の種類を [最大] にして、ポリシーのしきい値を表示することができます。
 
 ![軽減ポリシーを表示する](./media/manage-ddos-protection/view-mitigation-policies.png)
-
-ポリシーのしきい値は、Azure Machine Learning ベースのネットワーク トラフィック プロファイルを使用して自動的に構成されます。 ポリシーのしきい値を超過した場合にのみ、攻撃を受けている IP アドレスに対して DDoS 軽減が行われます。
 
 ## <a name="validate-and-test"></a>検証とテスト
 

@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 08/10/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: a9bfb4beea2c2bec1b819d228215cfff65e37fe4
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 66b22007636ef7ffb6452e5ce19cee7cfa15ba1f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110259"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000993"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>チュートリアル:ポータルを使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -48,6 +48,8 @@ ms.locfileid: "106110259"
 * 単一の VNet を最大 16 本の ExpressRoute 回線にリンクできます。 次のプロセスを使用して、接続先の各 ExpressRoute 回線の新しい接続オブジェクトを作成します。 ExpressRoute 回線は、同じサブスクリプション、異なるサブスクリプション、または両方の組み合わせにすることができます。
 
 * ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線の地理的リージョンの外部にある仮想ネットワークをリンクすることができます。 Premium アドオンを使用すると、選択した帯域幅に応じて、10 を超える仮想ネットワークを ExpressRoute 回線に接続することもできます。 Premium アドオンの詳細については、 [FAQ](expressroute-faqs.md) を確認してください。
+
+* ExpressRoute 回線からターゲットの ExpressRoute 仮想ネットワーク ゲートウェイへの接続を作成するために、ローカルまたはピアリングされた仮想ネットワークからアドバタイズされるアドレス空間の数は **200** 個以下である必要があります。 接続が正常に作成されたら、ローカルまたはピアリングされた仮想ネットワークに最大 1,000 個のアドレス空間をさらに追加できます。
 
 * 手順をより理解するため、開始する前に[ビデオを参照](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)できます。
 
@@ -84,6 +86,9 @@ ms.locfileid: "106110259"
 複数のサブスクリプションで ExpressRoute 回線を共有できます。 下図に、複数のサブスクリプションで ExpressRoute 回線を共有するしくみについて概略を示します。
 
 :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/cross-subscription.png" alt-text="サブスクリプション間接続":::
+
+> [!NOTE]
+> Azure ソブリン クラウドとパブリック Azure クラウドの間での仮想ネットワーク接続はサポートされていません。 仮想ネットワークのリンクは、同じクラウド内の異なるサブスクリプション間に限られます。
 
 大規模クラウド内のそれぞれの小規模クラウドは、組織内のさまざまな部門に属するサブスクリプションを表すために使用されています。 組織内の各部門は、サービスのデプロイを目的として、固有のサブスクリプションを使用できますが、1 つの ExpressRoute 回線を共有することで、オンプレミス ネットワークに接続し直すことができます。 1 つの部門 (この例では IT) で ExpressRoute 回線を所有できます。 組織内の他のサブスクリプションを使用する場合も、ExpressRoute 回線を使用できます。
 
@@ -122,6 +127,9 @@ ms.locfileid: "106110259"
 :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-authorization-key.png" alt-text="承認キーを削除する":::
 
 接続のみ削除し、承認キーは保持したい場合は、回線の [接続] ページから接続を削除することができます。
+> [!NOTE]
+  > 異なるサブスクリプションで利用された接続は、回線接続ページには表示されません。 承認が利用されたサブスクリプションに移動し、最上位の接続リソースを削除します。
+  >
 
 :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection-owning-circuit.png" alt-text="接続によって所有されている回線を削除する":::
 
@@ -152,6 +160,41 @@ ms.locfileid: "106110259"
 1. **[概要]** ページの内容を確認し、 **[OK]** を選択します。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-summary.png" alt-text="[概要] ページ":::
+
+## <a name="configure-expressroute-fastpath"></a>ExpressRoute FastPath を構成する
+
+仮想ネットワーク ゲートウェイが Ultra Performance または ErGw3AZ である場合は、[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) を有効にすることができます。 FastPath により、オンプレミス ネットワークと仮想ネットワークの間の 1 秒あたりのパケット数や 1 秒あたりの接続数などのデータ パスのパフォーマンスが向上します。
+
+**新しい接続で FastPath を構成する**
+
+ExpressRoute ゲートウェイの新しい接続を追加するときに、**FastPath** のチェックボックスをオンにします。
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/enable-fastpath-portal.png" alt-text="[接続の追加] ページの FastPath チェックボックスのスクリーンショット。":::
+
+> [!NOTE]
+> 新しい接続での FastPath の有効化は、ゲートウェイ リソースから接続を作成することによってのみ可能です。 ExpressRoute 回線から、または接続リソース ページから作成された新しい接続はサポートされていません。
+>
+**既存の接続で FastPath を構成する**
+
+1. ExpressRoute ゲートウェイ、ExpressRoute 回線、または接続リソース ページから、既存の接続リソースにアクセスします。
+
+1.  *[設定]* の下の **[構成]** を選択してから、 **[FastPath]** チェックボックスをオンにします。 **[保存]** を選択してこの機能を有効にします。
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/enable-fastpath-connection.png" alt-text="接続構成ページの FastPath チェックボックスのスクリーンショット。":::
+
+> [!NOTE]
+> [接続モニター](how-to-configure-connection-monitor.md)を使用して、FastPath を使用してトラフィックが宛先に到達していることを確認できます。
+>
+
+## <a name="enroll-in-expressroute-fastpath-features-preview"></a>ExpressRoute の FastPath 機能に登録する (プレビュー)
+
+FastPath の仮想ネットワーク ピアリングのサポートは、現在パブリック プレビュー中です。 登録は Azure PowerShell を通じてのみ可能です。 登録方法については、[FastPath プレビュー機能](expressroute-howto-linkvnet-arm.md#enroll-in-expressroute-fastpath-features-preview)に関するページを参照してください。
+
+> [!NOTE] 
+> ターゲット サブスクリプションで FastPath 用に構成されたすべての接続が、このプレビューに登録されます。 実稼働サブスクリプションでこのプレビューを有効にすることはお勧めしません。
+> FastPath が既に構成されていて、プレビュー機能への登録を希望される場合は、次の手順を実行する必要があります。
+> 1. 上の Azure PowerShell コマンドを使用して、FastPath プレビュー機能に登録します。
+> 1. ターゲット接続で FastPath を無効にしてから再度有効にします。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

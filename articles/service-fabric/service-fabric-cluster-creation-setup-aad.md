@@ -3,12 +3,13 @@ title: クライアント認証用に Azure Active Directory をセットアッ�
 description: Service Fabric クラスターのクライアントを認証するための Azure Active Directory (Azure AD) の設定方法について学習します。
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: a1f89e144f9cef12c5bff87befb00a88bad8d7d9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e960b753e7d1c76992e59cb03133f27f7e305ea1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215971"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004076"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>クライアント認証用に Azure Active Directory をセットアップする
 
@@ -136,9 +137,9 @@ FabricClient と FabricGateway では、相互認証が実行されます。 Azu
 ## <a name="next-steps"></a>次のステップ
 Azure Active Directory アプリケーションを設定し、ユーザーのロールを設定したら、[クラスターを構成してデプロイ](service-fabric-cluster-creation-via-arm.md)します。
 
-
 <!-- Links -->
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
+
+[azure-cli]: /cli/azure/get-started-with-azure-cli
 [azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]:../active-directory/develop/quickstart-create-new-tenant.md

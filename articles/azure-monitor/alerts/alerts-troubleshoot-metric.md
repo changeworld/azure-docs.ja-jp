@@ -4,13 +4,13 @@ description: Azure Monitor のメトリック警告に関する一般的な問�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 04/12/2021
-ms.openlocfilehash: 85be4100d62971ef7f69840ae3e9b117fbc3c047
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 09/30/2021
+ms.openlocfilehash: 6b093eeda754d288030e6ff3f1739a5c68c659c1
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305227"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615602"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
@@ -62,7 +62,10 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
     - メトリック グラフで選択されている **集計** が、警告ルールの **[集計の種類]** と同じであること
     - 選択されている **時間粒度** が、警告ルールの **[集約粒度 (期間)]** と同であること (および、"自動" に設定されていないこと)
 
-5. 同じ条件を監視する (まだ解決されていない) 警告がまだ生成されている間に、警告が生成される場合は、警告ルールの構成で *autoMitigate* プロパティが **false** に設定されているかどうかを確認します (このプロパティは、REST、PowerShell、CLI でのみ構成できるので、その警告ルールのデプロイに使用したスクリプトを確認します)。 そうである場合は、生成された警告は警告ルールによって自動的に解決されず、再度生成される前に、生成されている警告が解決される必要はありません。
+5. 同じ条件を監視する (まだ解決されていない) 警告が既にあるのに、警告が生成される場合は、自動的には警告を解決しないように警告ルールが構成されているかどうかを確認します。 このような構成では、警告ルールがステートレスになります。つまり、発生したアラートが警告ルールによって自動解決されず、同じ時系列で警告を再度生成する前に、発生した警告が解決されていることが要求されません。
+    次のいずれかの方法で、警告ルールが自動解決を行わないように構成されているかどうかを確認できます。
+    - Azure portal で警告ルールを編集し、[Automatically resolve alerts]\(警告を自動的に解決する\) チェック ボックス ([アラート ルールの詳細] セクションにあります) がオフになっているかどうかを確認します。
+    - 警告ルールのデプロイに使用されるスクリプトを確認するか、警告ルール定義を取得して、*autoMitigate* プロパティが **false** に設定されているかどうかを確認します。
 
 
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>警告対象のメトリックが見つからない - 仮想マシンのゲスト メトリック
@@ -107,7 +110,9 @@ Azure リソースを削除しても、関連付けられているメトリッ�
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>条件が満たされるたびにメトリック警告が発生するようにする
 
-メトリック警告は既定ではステートフルです。そのため、特定の時系列に対して既に警告が発生している場合、追加の警告は発生しません。 特定のメトリック警告ルールをステートレスにして、警告の条件が満たされるすべての評価で警告を受け取る場合は、プログラムで ([Resource Manager](./alerts-metric-create-templates.md)、[PowerShell](/powershell/module/az.monitor/)、[REST](/rest/api/monitor/metricalerts/createorupdate)、[CLI](/cli/azure/monitor/metrics/alert) を使用するなどして) 警告ルールを作成し、*autoMitigate* プロパティを "False" に設定すします。
+メトリック警告は既定ではステートフルです。そのため、特定の時系列に対して既に警告が発生している場合、追加の警告は発生しません。 特定のメトリック警告ルールをステートレスにして、警告の条件が満たされているすべての評価について警告を受け取る場合は、これらのいずれかのオプションに従います。
+- プログラムによって (たとえば、[Resource Manager](./alerts-metric-create-templates.md)、[PowerShell](/powershell/module/az.monitor/)、[REST](/rest/api/monitor/metricalerts/createorupdate)、[CLI](/cli/azure/monitor/metrics/alert) を通じて) 警告ルールを作成している場合は、*autoMitigate* プロパティを "False" に設定します。
+- Azure portal を使用して警告ルールを作成している場合は、[Automatically resolve alerts]\(警告を自動的に解決する\) オプション ([アラート ルールの詳細] セクションにあります) をオフにします。
 
 > [!NOTE] 
 > メトリック警告ルールをステートレスにすると、発生した警告は解決されません。そのため、条件が満たされなくなっても、発生した警告は 30 日の保有期間まで発生状態のままになります。
@@ -135,6 +140,8 @@ Azure リソースを削除しても、関連付けられているメトリッ�
         ]
     }
 ```
+> [!NOTE] 
+> 数日間出力されていない既存のカスタム メトリックで警告ルールを定義するときは、必要に応じて *skipMetricValidation* パラメーターも使用します。
 
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Azure portal を使用してメトリック アラート ルールの Azure Resource Manager テンプレートをエクスポートする
 
@@ -175,7 +182,7 @@ Azure リソースを削除しても、関連付けられているメトリッ�
 
 - PowerShell - [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - REST API - [サブスクリプションごとの一覧](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI - [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
+- Azure CLI - [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Resource Manager テンプレート、REST API、PowerShell、または Azure CLI を使用して警告ルールを管理する
 
@@ -239,6 +246,7 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 - メトリック警告ルール名はリソース グループ内で一意である必要があります
 - メトリック警告ルール名に次の文字を含めることはできません: * # & +: < >? @ % { } \ / 
 - メトリック警告ルール名の末尾の文字をスペースやピリオドにすることはできません
+- 結合されたリソース グループ名と警告ルール名は、252 文字を超えることはできません
 
 > [!NOTE] 
 > 警告ルール名にアルファベットまたは数字以外の文字 (スペース、句読点、記号など) が含まれている場合、これらの文字は、特定のクライアントによって取得されるときに URL エンコードされることがあります。
@@ -280,7 +288,22 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 2. 中央値が 0 に近い
 3. メトリックで、変動幅が大きい不規則な動作が示されている (データにスパイクやディップがある)
 
-下限に負の値が含まれている場合は、メトリックの不規則な動作によってメトリックがゼロ値になる可能性があることを意味します。 より高い感度またはより大きな "*集計粒度 (期間)* " を選択してモデルの感度を低くするか、 *[以前のデータを無視]* オプションを使用して、モデルを作成するために使用される履歴データから最近の不規則性を除外することを検討してください。
+下限に負の値が含まれている場合は、メトリックの不規則な動作によってメトリックがゼロ値になる可能性があることを意味します。 より高い感度またはより大きな「*集計粒度 (期間)* 」を選択してモデルの感度を低くするか、 *[以前のデータを無視]* オプションを使用して、モデルを作成するために使用される履歴データから最近の不規則性を除外することを検討してください。
+
+## <a name="the-dynamic-thresholds-alert-rule-is-too-noisy-fires-too-much"></a>動的しきい値アラート ルールがうるさい (発生しすぎる)
+動的しきい値アラート ルールの感度を低くするには、次のいずれかのオプションを使用します。
+1. しきい値の感度 - 逸脱に対する耐性を上げるために、感度を *[低]* に設定します。
+2. 違反の数 ( *[詳細設定]* の下) - 一定の時間内に逸脱が複数回発生した場合にのみトリガーするアラート ルールを構成します。 これにより、ルールは一時的な逸脱の影響を受けにくくなります。
+
+
+## <a name="the-dynamic-thresholds-alert-rule-is-too-insensitive-doesnt-fire"></a>動的しきい値アラート ルールの感度が低すぎる (発生しない)
+感度を高く構成していても、アラート ルールがトリガーされない場合があります。 これは通常、メトリックの分布が非常に不規則な場合に発生します。
+次のいずれかのオプションを考慮します。
+* シナリオに適した補完的なメトリックの監視に変更します (該当する場合)。 たとえば、失敗率ではなく成功率の変化を確認します。
+* 別の集計粒度 (期間) を選択します。 
+* 過去 10 日間に、メトリックの動作が大幅に変化したかどうかを確認します (停止)。 突然変化すると、メトリックに対して計算された上限しきい値と下限しきい値に影響を与え、それらのしきい値が広がる可能性があります。 停止によってしきい値計算をしなくなるまで数日待つか、または *[次よりも前のデータを無視します]* オプション ( *[詳細設定]* の下) を使用します。
+* データに週単位の季節性があるが、メトリックに十分な履歴がない場合、計算されたしきい値によって、上限と下限が広がる可能性があります。 たとえば、この計算では平日と週末を同じ方法で扱い、データに適合しないことがある広い境界を作成する可能性があります。 これは、十分なメトリック履歴が使用可能になると自動的に解決されるため、適切な季節性が検出されるタイミングと計算されたしきい値は適宜更新されます。
+
 
 ## <a name="next-steps"></a>次のステップ
 

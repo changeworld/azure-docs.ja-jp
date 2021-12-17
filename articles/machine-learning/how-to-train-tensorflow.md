@@ -8,14 +8,13 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.date: 09/28/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 583f588004f41fc07037e7f5e4ce75538a581c70
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.openlocfilehash: 8e53d67dacff8337d4a6832fc5febe3b83ec6126
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518332"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606828"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow モデルをトレーニングする
 
@@ -23,7 +22,7 @@ ms.locfileid: "102518332"
 
 この例では、ディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類するための TensorFlow モデルをトレーニングして登録します。
 
-TensorFlow モデルを一から開発する場合でも、[既存のモデル](how-to-deploy-existing-model.md)をクラウドに取り込む場合でも、Azure Machine Learning を使用してオープンソースのトレーニング ジョブをスケールアウトし、運用グレードのモデルの構築、デプロイ、バージョン管理、監視を行うことができます。
+TensorFlow モデルを一から開発する場合でも、[既存のモデル](how-to-deploy-and-where.md)をクラウドに取り込む場合でも、Azure Machine Learning を使用してオープンソースのトレーニング ジョブをスケールアウトし、運用グレードのモデルの構築、デプロイ、バージョン管理、監視を行うことができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,7 +30,7 @@ TensorFlow モデルを一から開発する場合でも、[既存のモデル](
 
  - Azure Machine Learning コンピューティング インスタンス - ダウンロードやインストールは必要なし
 
-     - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
+     - [クイック スタート: Azure Machine Learning の利用の開始](quickstart-create-resources.md)を完了して、SDK およびサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
     - ノートブック サーバー上のディープ ラーニングの samples フォルダーで、**how-to-use-azureml > ml-frameworks > tensorflow > train-hyperparameter-tune-deploy-with-tensorflow** とディレクトリを移動して、完成した展開済みノートブックを見つけます。 
  
  - 独自の Jupyter Notebook サーバー
@@ -266,82 +265,7 @@ Azure Machine Learning では、トレーニング ワークロードをスケ�
 
 Azure ML では、Horovod と TensorFlow の両方について、組み込みの分散トレーニング API を使用した分散 TensorFlow ジョブの実行がサポートされています。
 
-### <a name="horovod"></a>Horovod
-[Horovod](https://github.com/uber/horovod) は、Uber によって開発された、分散トレーニングのためのオープン ソースの all reduce フレームワークです。 トレーニング用の分散 TensorFlow コードを記述するための簡単なパスが用意されています。
-
-トレーニング コードは、分散トレーニングのために Horovod を使用してインストルメント化する必要があります。 TensorFlow での Horovod の使用の詳細については、Horovod のドキュメントを参照してください。
-
-TensorFlow での Horovod の使用の詳細については、Horovod のドキュメントを参照してください。
-
-* [TensorFlow での Horovod](https://github.com/horovod/horovod/blob/master/docs/tensorflow.rst)
-* [TensorFlow の Keras API での Horovod](https://github.com/horovod/horovod/blob/master/docs/keras.rst)
-
-また、トレーニング環境に **horovod** パッケージが含まれていることを確認します。 キュレーションされた TensorFlow 環境を使用している場合、horovod は既に依存関係の 1 つとして含まれています。 独自の環境を使用している場合は、horovod の依存関係が含まれていることを確認してください。次に例を示します。
-
-```yaml
-channels:
-- conda-forge
-dependencies:
-- python=3.6.2
-- pip:
-  - azureml-defaults
-  - tensorflow-gpu==2.2.0
-  - horovod==0.19.5
-```
-
-Azure ML で MPI/Horovod を使用して分散ジョブを実行するには、ScriptRunConfig コンストラクターの `distributed_job_config` パラメーターに [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration) を指定する必要があります。 下記のコードでは、ノードごとに 1 つのプロセスを実行する 2 ノードの分散ジョブを構成します。 ノードごとに複数のプロセスを実行する場合 (つまり、クラスター SKU に複数の GPU がある場合) も、MpiConfiguration にさらに `process_count_per_node` パラメーターを指定します (既定値は `1`)。
-
-```python
-from azureml.core import ScriptRunConfig
-from azureml.core.runconfig import MpiConfiguration
-
-src = ScriptRunConfig(source_directory=project_folder,
-                      script='tf_horovod_word2vec.py',
-                      arguments=['--input_data', dataset.as_mount()],
-                      compute_target=compute_target,
-                      environment=tf_env,
-                      distributed_job_config=MpiConfiguration(node_count=2))
-```
-
-Azure ML で Horovod を使用して分散 TensorFlow を実行することに関する完全なチュートリアルについては、[Horovod を使用する分散 TensorFlow](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/distributed-tensorflow-with-horovod) に関するページを参照してください。
-
-### <a name="tfdistribute"></a>tf.distribute
-
-TensorFlow 2.x の `tf.distribute.Strategy` API など、トレーニング コードで[ネイティブの TensorFlow](https://www.tensorflow.org/guide/distributed_training) を使用している場合は、Azure ML から分散ジョブを起動することもできます。 
-
-そうするには、ScriptRunConfig コンストラクターの `distributed_job_config` パラメーターに [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration) を指定します。 `tf.distribute.experimental.MultiWorkerMirroredStrategy` を使用している場合は、TensorflowConfiguration で、トレーニング ジョブのノード数に対応する `worker_count` を指定します。
-
-```python
-import os
-from azureml.core import ScriptRunConfig
-from azureml.core.runconfig import TensorflowConfiguration
-
-distr_config = TensorflowConfiguration(worker_count=2, parameter_server_count=0)
-
-model_path = os.path.join("./outputs", "keras-model")
-
-src = ScriptRunConfig(source_directory=source_dir,
-                      script='train.py',
-                      arguments=["--epochs", 30, "--model-dir", model_path],
-                      compute_target=compute_target,
-                      environment=tf_env,
-                      distributed_job_config=distr_config)
-```
-
-TensorFlow では、複数マシンでのトレーニングには、`TF_CONFIG` 環境変数が必要です。 トレーニング スクリプトの実行前に、Azure ML により、各ワーカーの `TF_CONFIG` 変数が適切に構成され、設定されます。 必要な場合は、`os.environ['TF_CONFIG']` によって、トレーニング スクリプトの `TF_CONFIG` にアクセスできます。
-
-最高ワーカー ノードに設定される `TF_CONFIG` の構造の例を示します。
-```JSON
-TF_CONFIG='{
-    "cluster": {
-        "worker": ["host0:2222", "host1:2222"]
-    },
-    "task": {"type": "worker", "index": 0},
-    "environment": "cloud"
-}'
-```
-
-トレーニング スクリプトで、レガシの TensorFlow 1.x など、分散トレーニングのためにパラメーター サーバー戦略を使用している場合は、ジョブで使用するパラメーター サーバーの数も指定する必要があります (例: `distr_config = TensorflowConfiguration(worker_count=2, parameter_server_count=1)`)。
+分散トレーニングの詳細については、「[分散 GPU トレーニング ガイド](how-to-train-distributed-gpu.md)」を参照してください。
 
 ## <a name="deploy-a-tensorflow-model"></a>TensorFlow モデルをデプロイする
 
@@ -361,6 +285,6 @@ service = Model.deploy(ws, "tensorflow-web-service", [model])
 
 この記事では、TensorFlow モデルをトレーニングして登録し、デプロイのオプションについて学習しました。 Azure Machine Learning の詳細については、以下の他の記事をご覧ください。
 
-* [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
+* [トレーニング中に実行メトリクスを追跡する](how-to-log-view-metrics.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
 * [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャ](/azure/architecture/reference-architectures/ai/training-deep-learning)

@@ -1,16 +1,15 @@
 ---
 title: クイック スタート:初めての PowerShell クエリ
 description: このクイックスタートでは、手順に従って、Azure PowerShell の Resource Graph 拡モジュールを有効にし、最初のクエリを実行します。
-ms.date: 01/27/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
-ms.custom:
-- mode-api
-ms.openlocfilehash: e5e276e3be80354eeaaeba2821eb9e3242b368ad
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mode-api
+ms.openlocfilehash: abc8e808328fadc82cc735eb1b849bcd0d6792b9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533064"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051099"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 
@@ -47,7 +46,7 @@ PowerShell の Resource Graph モジュールは、**Az.ResourceGraph** です�
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. モジュールがインポートされていて、最新のバージョン (0.7.5) であることを確認します。
+1. モジュールがインポートされていて、バージョンが `0.11.0` 以降であることを確認します。
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -56,7 +55,7 @@ PowerShell の Resource Graph モジュールは、**Az.ResourceGraph** です�
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-Azure PowerShell モジュールが選択した環境に追加されたので、簡単な Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。
+Azure PowerShell モジュールが選択した環境に追加されたので、簡単なテナント ベースの Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。 [管理グループ](../management-groups/overview.md)またはサブスクリプションでクエリするには、`-ManagementGroup` または `-Subscription` パラメーターを使用します。
 
 1. `Search-AzGraph` コマンドレットを使用して最初の Resource Graph クエリを実行します。
 
@@ -68,7 +67,7 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
    ```
 
    > [!NOTE]
-   > このクエリは`order by`などの並べ替え修飾子を示しませんので、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。
+   > このクエリ例では、`order by` などの並べ替え修飾子を指定していません。そのため、このクエリを複数回実行すると、要求ごとに、得られる一連のリソースが異なる可能性があります。
 
 1. `order by`**名前** プロパティに対するクエリを更新します。
 
@@ -91,7 +90,7 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
 
 > [!NOTE]
 > 既にアクセスできているサブスクリプションからクエリの結果が返されなかった場合、`Search-AzGraph` コマンドレットでは既定コンテキストのサブスクリプションが既定で使用されることに注意してください。 既定のコンテキストの一部であるサブスクリプション ID の一覧を表示するには、この `(Get-AzContext).Account.ExtendedProperties.Subscriptions` を実行します。アクセスできるすべてのサブスクリプション全体を検索する場合は、`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` を実行して `Search-AzGraph` コマンドレットの PSDefaultParameterValues を設定できます
-   
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Resource Graph モジュールを Azure PowerShell 環境から削除する場合は、次のコマンドを使用して行うことができます。

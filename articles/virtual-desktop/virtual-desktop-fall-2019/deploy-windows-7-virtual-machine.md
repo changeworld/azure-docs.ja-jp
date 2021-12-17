@@ -1,24 +1,24 @@
 ---
-title: Windows Virtual Desktop (クラシック) で Windows 7 仮想マシンをデプロイする - Azure
-description: Windows Virtual Desktop (クラシック) で Windows 7 仮想マシンを構成してデプロイする方法。
+title: Azure Virtual Desktop (クラシック) で Windows 7 仮想マシンをデプロイする - Azure
+description: Azure Virtual Desktop (クラシック) で Windows 7 仮想マシンを構成してデプロイする方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 2659e14490cf7d0aab32d8783a744478027f0a58
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 1b7c78ab9a518649d205bb9dc92c86d7bb71bcea
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444940"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744631"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) で Windows 7 仮想マシンをデプロイする
+# <a name="deploy-a-windows-7-virtual-machine-on-azure-virtual-desktop-classic"></a>Azure Virtual Desktop (クラシック) で Windows 7 仮想マシンをデプロイする
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Windows Virtual Desktop の現在のバージョンで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../deploy-windows-7-virtual-machine.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Virtual Desktop の現在のバージョンで導入された Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../deploy-windows-7-virtual-machine.md)を参照してください。
 
-Windows Virtual Desktop で Windows 7 仮想マシン (VM) をデプロイするプロセスは、新しいバージョンの Windows を実行している VM の場合とは若干異なります。 このガイドでは、Windows 7 をデプロイする方法について説明します。
+Azure Virtual Desktop で Windows 7 仮想マシン (VM) をデプロイするプロセスは、新しいバージョンの Windows を実行している VM の場合とは若干異なります。 このガイドでは、Windows 7 をデプロイする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,9 +26,9 @@ Windows Virtual Desktop で Windows 7 仮想マシン (VM) をデプロイする
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>Windows 7 仮想マシンを構成する
 
-前提条件を完了したら、Windows Virtual Desktop でデプロイするために Windows 7 VM を構成することができます。
+前提条件を完了したら、Azure Virtual Desktop でデプロイするために Windows 7 VM を構成することができます。
 
-Windows Virtual Desktop で Windows 7 VM を設定するには、次のようにします。
+Azure Virtual Desktop で Windows 7 VM を設定するには、次のようにします。
 
 1. Azure portal にサインインし、Windows 7 Enterprise イメージを検索するか、独自のカスタマイズした Windows 7 Enterprise (x64) イメージをアップロードします。
 2. Windows 7 Enterprise をホスト オペレーティング システムとして使用する 1 つまたは複数の仮想マシンをデプロイします。 仮想マシンでリモート デスクトップ プロトコル (RDP) (TCP/3389 ポート) が許可されていることを確認します。
@@ -47,15 +47,15 @@ Windows Virtual Desktop で Windows 7 VM を設定するには、次のように
      ```
 
 12. [こちら](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/)の指示に従って、登録トークンを取得します。
-13. [Windows 7 用 Windows Virtual Desktop エージェントをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
-14. [Windows 7 用 Windows Virtual Desktop エージェント マネージャーをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
-15. Windows Virtual Desktop エージェント インストーラーを開き、指示に従います。 メッセージが表示されたら、手順 12 で作成した登録キーを指定します。
-16. Windows Virtual Desktop エージェント マネージャーを開き、指示に従います。
+13. [Windows 7 用 Azure Virtual Desktop エージェントをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
+14. [Windows 7 用 Azure Virtual Desktop エージェント マネージャーをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
+15. Azure Virtual Desktop エージェント インストーラーを開き、指示に従います。 メッセージが表示されたら、手順 12 で作成した登録キーを指定します。
+16. Azure Virtual Desktop エージェント マネージャーを開き、指示に従います。
 17. 必要に応じて、TCP/3389 ポートをブロックし、リモート デスクトップ プロトコルで VM に直接アクセスできないようにします。
 18. 必要に応じて、.NET Framework がバージョン 4.7.2 以降であることを確認します。 これは、カスタム イメージを作成する場合に特に重要です。
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、Windows Virtual Desktop のデプロイは使用できる状態になりました。 [最新バージョンの Windows Virtual Desktop クライアントをダウンロード](https://aka.ms/wvd/clients/windows)して、使い始めてください。
+これで、Azure Virtual Desktop のデプロイが使用できる状態になりました。 開始するには、[最新バージョンの Azure Virtual Desktop クライアントをダウンロードします](https://aka.ms/wvd/clients/windows)。
 
-Windows Virtual Desktop での Windows 7 に関する既知の問題のリストとトラブルシューティングの手順については、「[Troubleshoot Windows 7 virtual machines in Windows Virtual Desktop](troubleshoot-windows-7-vm.md)」 (Windows Virtual Desktop で Windows 7 仮想マシンのトラブルシューティングを行う) のトラブルシューティングに関する記事を参照してください。
+Azure Virtual Desktop での Windows 7 に関する既知の問題のリストとトラブルシューティングの手順については、[Azure Virtual Desktop での Windows 7 仮想マシンのトラブルシューティング](troubleshoot-windows-7-vm.md)に関する記事を参照してください。

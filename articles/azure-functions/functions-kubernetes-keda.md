@@ -1,16 +1,16 @@
 ---
 title: KEDA を使用した Kubernetes での Azure Functions
 description: クラウドまたはオンプレミスで KEDA (Kubernetes ベースのイベント ドリブン自動スケーリング) を使用して Kubernetes で Azure Functions を実行する方法について説明します。
-author: jeffhollan
+author: eamonoreilly
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.author: jehollan
-ms.openlocfilehash: 525635ef40437fe308c52e2d5aba2c97ed8f20e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: eamono
+ms.openlocfilehash: 736945109cd18bd7c6f3a6b9a16b6549f7c65652
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92927534"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741394"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA を使用した Kubernetes での Azure Functions
 
@@ -24,38 +24,37 @@ Kubernetes ベースの Functions では、KEDA によるイベント ドリブ�
 
 ## <a name="managing-keda-and-functions-in-kubernetes"></a>Kubernetes での KEDA と関数の管理
 
-Kubernetes クラスター上で Functions を実行するには、KEDA コンポーネントをインストールする必要があります。 このコンポーネントは、[Azure Functions Core Tools](functions-run-local.md) を使用してインストールできます。
+Kubernetes クラスター上で Functions を実行するには、KEDA コンポーネントをインストールする必要があります。 このコンポーネントは、次のいずれかの方法でインストールできます。
 
-### <a name="installing-with-helm"></a>Helm を使用したインストール
++ Azure Functions Core Tools: [`func kubernetes install` コマンド](functions-core-tools-reference.md#func-kubernetes-install)を使用します。
 
-Kubernetes クラスターに KEDA をインストールするには、Helm を使用する方法を含め、さまざまな方法があります。  デプロイ オプションについては、[KEDA サイト](https://keda.sh/docs/1.4/deploy/)をご覧ください。
++ Helm: Kubernetes クラスターに KEDA をインストールするには、Helm を使用する方法を含め、さまざまな方法があります。  デプロイ オプションについては、[KEDA サイト](https://keda.sh/docs/deploy/)をご覧ください。
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Kubernetes への関数アプリのデプロイ
 
-KEDA を実行する Kubernetes クラスターには、あらゆる関数アプリをデプロイできます。  関数は Docker コンテナー内で実行されるため、プロジェクトには `Dockerfile` が必要です。  まだそれがない場合は、Functions プロジェクトのルートで次のコマンドを実行して、Dockerfile を追加できます。
+KEDA を実行する Kubernetes クラスターには、あらゆる関数アプリをデプロイできます。  対象の関数は Docker コンテナー内で実行されるため、プロジェクトには Dockerfile が必要です。  Dockerfile は、`func init` を呼び出してプロジェクトを作成するときに [`--docker` オプション][func init]を使用することで作成できます。 これを忘れた場合は、Functions プロジェクトのルートからいつでも `func init` を再度呼び出すことができます。ただし、その際は、次の例に示すように [`--docker-only` オプション][func init]を使用します。 
 
-> [!NOTE]
-> コア ツールを使用すると、.NET、Node、Python、または PowerShell で記述された Azure Functions 用の Dockerfile が自動的に作成されます。 Java で記述された関数アプリについては、Dockerfile を手動で作成する必要があります。 Azure Functions の[イメージ リスト](https://github.com/Azure/azure-functions-docker)を使用して、適切なイメージを見つけ、Azure 関数を基礎として使用します。
-
-```cli
+```command
 func init --docker-only
 ```
 
+Dockerfile の生成の詳細については、[`func init`][func init] のリファレンスを参照してください。 
+
 イメージをビルドして関数を Kubernetes にデプロイするには、次のコマンドを実行します。
 
-> [!NOTE]
-> Core Tools では、イメージのビルドと発行に Docker CLI が活用されます。 あらかじめ Docker がインストールされ、ご利用のアカウントに `docker login` で接続されていることを確認してください。
-
-```cli
+```command
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
 ```
 
-> `<name-of-function-deployment>` をお使いの関数アプリの名前に置き換えます。
+この例では、`<name-of-function-deployment>` をお使いの関数アプリの名前に置き換えます。
 
-deploy コマンドを使用して、次の一連のアクションを実行します。
+deploy コマンドによって、次の処理が実行されます。
+
 1. 先ほど作成した Dockerfile は、関数アプリのローカル イメージを構築するために使用されます。
-2. ローカル イメージにタグが付けられ、ユーザーがログインしたコンテナー レジストリにプッシュされます。
-3. マニフェストが作成され、Kubernetes `Deployment` リソース、`ScaledObject` リソース、`local.settings.json` からインポートされた環境変数を含む `Secrets` を定義するクラスターに適用されます。
+1. ローカル イメージにタグが付けられ、ユーザーがログインしたコンテナー レジストリにプッシュされます。
+1. マニフェストが作成され、Kubernetes `Deployment` リソース、`ScaledObject` リソース、`local.settings.json` からインポートされた環境変数を含む `Secrets` を定義するクラスターに適用されます。
+
+詳細については、[`func kubernetes deploy` コマンド](functions-core-tools-reference.md#func-kubernetes-deploy)に関するセクションを参照してください。
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>プライベート レジストリから関数アプリをデプロイする
 
@@ -65,7 +64,7 @@ deploy コマンドを使用して、次の一連のアクションを実行し�
 
 デプロイ後は、作成された関連する `Deployment`、`ScaledObject`、`Secrets` を削除することによって、関数を削除できます。
 
-```cli
+```command
 kubectl delete deploy <name-of-function-deployment>
 kubectl delete ScaledObject <name-of-function-deployment>
 kubectl delete secret <name-of-function-deployment>
@@ -73,7 +72,11 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>Kubernetes からの KEDA のアンインストール
 
-KEDA をアンインストールする手順については、[KEDA サイトに記載](https://keda.sh/docs/1.4/deploy/)されています。
+次のいずれかの方法で、対象のクラスターから KEDA を削除できます。
+
++ Azure Functions Core Tools: [`func kubernetes remove` コマンド](functions-core-tools-reference.md#func-kubernetes-remove)を使用します。
+
++ Helm: [KEDA のサイト](https://keda.sh/docs/deploy/)上のアンインストール手順を参照してください。
 
 ## <a name="supported-triggers-in-keda"></a>KEDA でサポートされているトリガー
 
@@ -95,3 +98,5 @@ HTTP トリガーを公開する Azure Functions は使用することはでき�
 * [カスタム イメージを使用して関数を作成する](functions-create-function-linux-custom-image.md)
 * [Azure Functions をローカルでコーディングしてテストする](functions-develop-local.md)
 * [Azure Functions の従量課金プランのしくみ](functions-scale.md)
+
+[func init]: functions-core-tools-reference.md#func-init

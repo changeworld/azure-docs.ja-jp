@@ -3,19 +3,19 @@ title: 音声コンテナー用のバッチ処理キット
 titleSuffix: Azure Cognitive Services
 description: バッチ処理キットを使用して、音声コンテナー要求をスケーリングします。
 services: cognitive-services
-author: aahill
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.author: aahi
-ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: eur
+ms.openlocfilehash: b7d72497cd19bddb038ac5a51f2290fae9b99103
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97631994"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509416"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>音声コンテナー用のバッチ処理キット
 
@@ -38,6 +38,8 @@ ms.locfileid: "97631994"
 ## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` によるコンテナー イメージの取得
 
 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、最新のバッチ キット コンテナーをダウンロードします。
+
+[!INCLUDE [pull-image-include](../../../includes/pull-image-include.md)]
 
 ```bash
 docker pull docker.io/batchkit/speech-batch-kit:latest

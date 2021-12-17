@@ -1,0 +1,270 @@
+- name: Azure Virtual Desktop リモート アプリ ストリーミング
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Virtual Desktop リモート アプリ ストリーミングとは
+      href: overview.md
+    - name: Azure Virtual Desktop とは
+      href: ../overview.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+- name: チュートリアル
+  items:
+    - name: 1. Azure portal を使用してホスト プールを作成する
+      href: ../create-host-pools-azure-marketplace.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: 2. アプリ グループを管理する
+      href: ../manage-app-groups.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: 3. サービスの更新プログラムを検証するためのホスト プールを作成する
+      href: ../create-validation-host-pool.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: 4. サービス アラートを設定する
+      href: ../set-up-service-alerts.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+- name: クイックスタート
+  items:
+    - name: Azure Virtual Desktop の概要
+      href: ../getting-started-feature.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+- name: 攻略ガイド
+  items:
+    - name: リモート アプリ ストリーミングの要点
+      items:
+        - name: マネージド ID を設定する
+          href: identities.md
+        - name: MSIX アプリのアタッチを使用してアプリをデプロイする
+          href: msix-app-attach.md
+        - name: カスタム アプリをホストする
+          href: custom-apps.md
+        - name: ユーザーごとのアクセス価格に登録する
+          href: per-user-access-pricing.md
+        - name: デプロイ コストの合計を見積もる
+          href: total-costs.md
+        - name: ユーザーごとのアプリ ストリーミング コストを見積もる
+          href: streaming-costs.md
+        - name: Azure Virtual Desktop リソースにタグを付ける
+          href: ../tag-virtual-desktop-resources.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Microsoft Intune を使用してアプリを展開する
+          href: /mem/intune/apps/apps-windows-10-app-deploy?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Intune マネージド エンドポイント クライアントを提供する
+          href: /mem/intune/fundamentals/windows-10-virtual-machines?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Azure Monitor の使用
+          href: ../azure-monitor.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: ディザスター リカバリーのシナリオを処理する
+          href: ../disaster-recovery.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: 配置を拡張する
+          href: ../set-up-scaling-script.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: ユニバーサル印刷を有効にする
+          href: /universal-print/fundamentals/universal-print-getting-started?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Start VM on Connect
+          items:
+            - name: Start VM on Connect を設定する
+              href: ../start-virtual-machine-connect.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: Start VM on Connect のよくあるご質問
+              href: ../start-virtual-machine-connect-faq.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: その他のトピック
+      items:
+        - name: Azure Virtual Desktop リソースに接続する
+          items:
+            - name: Windows デスクトップ クライアントを使用して接続する
+              href: ../user-documentation/connect-windows-7-10.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: Web クライアントに接続する
+              href: ../user-documentation/connect-web.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: Android クライアントに接続する
+              href: ../user-documentation/connect-android.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: macOS クライアントに接続する
+              href: ../user-documentation/connect-macos.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: iOS クライアントに接続する
+              href: ../user-documentation/connect-ios.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: Microsoft Store クライアントを使用した接続
+              href: ../user-documentation/connect-microsoft-store.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: シン クライアントを使用して接続する
+              href: ../user-documentation/linux-overview.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: ホスト プールとセッション ホストを作成する
+          items:
+            - name: PowerShell
+              href: ../create-host-pools-powershell.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: Windows 7 仮想マシンをデプロイする
+              href: ../deploy-windows-7-virtual-machine.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: GPU ベースのセッション ホストをデプロイする
+              href: ../configure-vm-gpu.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: 既存のホスト プールを展開する
+              href: ../expand-existing-host-pool.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: PowerShell を使用してアプリ グループを管理する
+              href: ../manage-app-groups-powershell.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: ホスト プールを削除する
+          href: ../delete-host-pool.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: ホスト プール設定を構成する
+          items:
+            - name: RDP のプロパティ
+              href: ../customize-rdp-properties.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: プールされたホスト プールの負荷分散
+              href: ../configure-host-pool-load-balancing.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: 個人用デスクトップの割り当ての種類
+              href: ../configure-host-pool-personal-desktop-assignment-type.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: セッション ホスト イメージをカスタマイズする
+          items:
+            - name: マスター VHD イメージを設定する
+              href: ../set-up-customize-master-image.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: マスター VHD イメージに Office をインストールする
+              href: ../install-office-on-wvd-master-image.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: セッション ホストを自動的にスケーリングする
+          href: ../set-up-scaling-script.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: フィードをカスタマイズする
+          href: ../customize-feed-for-virtual-desktop-users.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: サービスの診断を使用する
+          items:
+            - name: Log Analytics で診断を使用する
+              href: ../diagnostics-log-analytics.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: MSIX アプリのアタッチを使用する
+          items:
+            - name: Azure portal で MSIX アプリのアタッチを設定する
+              href: ../app-attach-azure-portal.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: PowerShell で MSIX アプリのアタッチを設定する
+              href: ../app-attach-powershell.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: PowerShell スクリプトを使用する
+              href: ../app-attach.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: MSIX イメージを準備する
+              href: ../app-attach-image-prep.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: ファイル共有を設定する
+              href: ../app-attach-file-share.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: MSIXMGR ツールを設定する
+              href: ../app-attach-msixmgr.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: 自動更新を構成する
+          href: ../configure-automatic-updates.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Azure Advisor を使用する
+          href: ../azure-advisor.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: 推奨事項を解決する
+          href: ../azure-advisor-recommendations.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Azure Virtual Desktop 向けの Azure Monitor を使用する
+          href: ../azure-monitor.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: ディザスター リカバリー プランを設定する
+          href: ../disaster-recovery.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: ドレイン モードを設定する
+          href: ../drain-mode.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+- name: 概念
+  items:
+    - name: リモート アプリ ストリーミングの要点
+      items:
+        - name: アーキテクチャに関する推奨事項
+          href: architecture-recs.md
+        - name: セキュリティ ガイドライン
+          href: security.md
+        - name: ライセンスとユーザーごとのアクセス価格について
+          href: licensing.md
+    - name: セキュリティ
+      items:
+        - name: Azure セキュリティ ベースライン
+          href: ../security-baseline.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: その他のトピック
+      items:
+        - name: Azure Monitor 用語集
+          href: ../azure-monitor-glossary.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: 組み込みのロール
+          href: ../rbac.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: 認証
+          href: ../authentication.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Azure Virtual Desktop 環境
+          href: ../environment-setup.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Azure Virtual Desktop エージェント
+          href: ../agent-overview.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: ネットワーク接続
+          items:
+            - name: ネットワーク接続について
+              href: ../network-connectivity.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: RDP Shortpath
+              href: ../shortpath.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: サービスの品質 (QoS) を実装する
+              href: ../rdp-quality-of-service-qos.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: 必要な URL リスト
+              href: ../safe-url-list.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: 帯域幅に関する考慮事項
+              href: ../rdp-bandwidth.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: プロキシのサポートに関するガイドライン
+              href: ../proxy-server-support.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: ユーザー接続の待ち時間の特定
+              href: ../connection-latency.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Azure Virtual Desktop における委任されたアクセス
+          href: ../delegated-access-virtual-desktop.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: ホスト プールの負荷分散方法
+          href: ../host-pool-load-balancing.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: FSLogix プロファイル コンテナーと Azure のファイル
+          href: ../fslogix-containers-azure-files.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: FSLogix プロファイル コンテナー用のストレージ オプション
+          href: ../store-fslogix-profile.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Azure Virtual Desktop に関する FAQ
+          href: ../faq.yml?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Windows 10 Enterprise マルチセッションに関する FAQ
+          href: ../windows-10-multisession-faq.yml
+        - name: MSIX アプリのアタッチ
+          items:
+            - name: MSIX アプリのアタッチとは
+              href: ../what-is-app-attach.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: 用語集
+              href: ../app-attach-glossary.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: よく寄せられる質問
+              href: ../app-attach-faq.yml?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: データの場所
+          href: ../data-locations.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+- name: トラブルシューティング
+  items:
+    - name: トラブルシューティングの概要、フィードバック、サポート
+      href: ../troubleshoot-set-up-overview.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: 問題の特定と診断
+      href: ../troubleshoot-set-up-overview.md?bc=%2fazure%2fvirtual-desktop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-desktop%2fremote-app-streaming%2ftoc.json
+    - name: 作業の開始機能
+      href: ../troubleshoot-getting-started.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: ホスト プールの作成
+      href: ../troubleshoot-set-up-issues.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: セッション ホスト仮想マシンの構成
+      href: ../troubleshoot-vm-configuration.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: リモート デスクトップ サービスの接続
+      href: ../troubleshoot-service-connection.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: Azure Virtual Desktop エージェント
+      href: ../troubleshoot-agent.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: リモート デスクトップ クライアントの問題
+      href: ../troubleshoot-client.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: Azure Virtual Desktop PowerShell
+      href: ../troubleshoot-powershell.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: グラフィックスのパフォーマンスの問題の診断
+      href: ../remotefx-graphics-performance-counters.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: Azure Monitor
+      href: ../troubleshoot-azure-monitor.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: 管理に関する問題
+      href: ../troubleshoot-management-issues.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+- name: リファレンス
+  items:
+    - name: セキュリティの運用方法
+      href: ../security-guide.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: Azure CLI
+      href: /cli/azure/desktopvirtualization
+    - name: Azure Monitor コストを見積もる
+      href: ../azure-monitor-costs.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: サポートされる RDP ファイルの設定
+      href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
+    - name: 仮想マシンのサイズ指定ガイダンス
+      href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
+    - name: Azure コマンド ライン インターフェイス (CLI)
+      href: /cli/azure/
+    - name: Azure シナリオ例
+      href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
+    - name: メール検出
+      href: /windows-server/remote/remote-desktop-services/rds-email-discovery
+- name: リソース
+  items:
+    - name: PowerShell
+      href: /powershell/module/az.desktopvirtualization/#desktopvirtualization
+    - name: REST API リファレンス
+      href: /rest/api/desktopvirtualization/
+    - name: エクスペリエンス見積もりツール
+      href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: ラーニング パス
+      href: /learn/paths/m365-wvd/
+    - name: 操作方法に関するビデオ
+      href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
+    - name: 技術コミュニティ サポート グループ
+      href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
+    - name: Microsoft 365 のロードマップ
+      href: 'https://aka.ms/wvdroadmap'
+    - name: Azure Resource Manager のテンプレート
+      href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'
+    - name: Azure コンプライアンス認証
+      href: 'https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/'
+    - name: Azure Advisor
+      href: ../../advisor/advisor-overview.md

@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 3/18/2021
 ms.author: sudbalas
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 399f55d379f99a784fed97d7e9f72c456eb1f914
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 70f4e8627f22b400ee2b890dd05fa886137ff4b2
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484814"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132369742"
 ---
-# <a name="azure-key-vault-backup"></a>Azure Key Vault のバックアップ
+# <a name="azure-key-vault-backup-and-restore"></a>Azure Key Vault のバックアップと復元
 
 このドキュメントでは、キー コンテナーに格納されているシークレット、キー、および証明書をバックアップする方法について説明します。 バックアップの目的は、キー コンテナーにアクセスできなくなるといった不測の事態が発生した場合に、すべてのシークレットのオフライン コピーを入手できることにあります。
 
@@ -131,10 +131,10 @@ Connect-AzAccount
 Set-AzContext -Subscription '{AZURE SUBSCRIPTION ID}'
 
 ## Back up a certificate in Key Vault
-Backup-AzKeyVaultCertificate -VaultName '{Certificate Name}' -Name '{Key Vault Name}'
+Backup-AzKeyVaultCertificate -VaultName '{Key Vault Name}' -Name '{Certificate Name}'
 
 ## Back up a key in Key Vault
-Backup-AzKeyVaultKey -VaultName '{Key Name}' -Name '{Key Vault Name}'
+Backup-AzKeyVaultKey -VaultName '{Key Vault Name}' -Name '{Key Name}'
 
 ## Back up a secret in Key Vault
 Backup-AzKeyVaultSecret -VaultName '{Key Vault Name}' -Name '{Secret Name}'
@@ -152,4 +152,6 @@ Restore-AzKeyVaultSecret -VaultName '{Key Vault Name}' -InputFile '{File Path}'
 
 ## <a name="next-steps"></a>次のステップ
 
-Key Vault の[ログ記録と監視](./logging.md)を有効にします。
+
+- [リージョン間で Azure キー コンテナーを移動する](move-region.md)
+- Key Vault の [Key Vault ログ記録を有効にする](howto-logging.md)

@@ -3,12 +3,13 @@ title: Azure Service Fabric クラスター テンプレートを作成する
 description: Service Fabric クラスター用の Resource Manager テンプレートの作成方法について説明します。 セキュリティ、Azure Key Vault、および Azure Active Directory (Azure AD) をクライアント認証のために構成します。
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: b028b5c1f32733146c071e50b24202e5bad945c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5a216f0863569bba0c743b086e3747f8ae1902a8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86260493"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671068"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric クラスターの Resource Manager テンプレートを作成する
 

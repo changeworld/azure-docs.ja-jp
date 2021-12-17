@@ -1,17 +1,15 @@
 ---
 title: Apache Spark ジョブを Azure Kubernetes Service (AKS) で実行する
 description: Azure Kubernetes Service (AKS) を使用して、大規模データ処理のための Apache Spark ジョブを作成、実行します。
-author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: alehall
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 74a3fe79291f3a5c7f5bbd664bf6d55a5fb77eae
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ffb204d02e27498c7cf82a9bc4d0a591c7e13964
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181195"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093765"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
@@ -340,7 +338,7 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 <!-- LINKS - external -->
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
-[java-install]: /azure/developer/java/fundamentals/java-jdk-long-term-support
+[java-install]: /azure/developer/java/fundamentals/java-support-on-azure
 [maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html

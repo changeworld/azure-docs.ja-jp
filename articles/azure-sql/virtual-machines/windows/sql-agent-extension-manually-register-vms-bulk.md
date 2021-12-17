@@ -3,7 +3,7 @@ title: Azure の複数の SQL VM を SQL IaaS Agent 拡張機能に登録する
 description: SQL Server VM を SQL IaaS Agent 拡張機能に一括登録して管理性を向上させます。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: adbadram
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: ebf835cad79f8c011be2fec91f6f4644ecd0941f
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 10/26/2021
+ms.author: adbadram
+ms.reviewer: mathoma
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8c0e4e5c0c12284bd3cc2f777f6951e04cc06926
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284126"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071859"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Azure の複数の SQL VM を SQL IaaS Agent 拡張機能に登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,17 +30,22 @@ ms.locfileid: "106284126"
 
 この記事では、SQL Server VM を手動で一括登録する方法について説明します。 また、[すべての SQL Server VM を自動的に](sql-agent-extension-automatic-registration-all-vms.md)登録したり、[個々の SQL Server VM を手動で](sql-agent-extension-manually-register-single-vm.md)登録したりすることができます。 
 
+> [!NOTE]
+> 2021 年 9 月以降、SQL IaaS 拡張機能へのフル モードでの登録時に、SQL Server サービスを再起動する必要がなくなりました。 
+
 ## <a name="overview"></a>概要
 
-`Register-SqlVMs` コマンドレットを使用すると、指定のサブスクリプションの一覧、リソース グループ、特定の仮想マシンの一覧にあるすべての仮想マシンを登録できます。 このコマンドレットは、仮想マシンを[ライトウェイト管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)で登録し、[レポートとログ ファイル](#output-description)の両方を生成します。 
+`Register-SqlVMs` コマンドレットを使用すると、指定のサブスクリプションの一覧、リソース グループ、特定の仮想マシンの一覧にあるすべての仮想マシンを登録できます。 このコマンドレットが、仮想マシンを[ライトウェイト管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)で登録し、[レポートとログ ファイル](#output-description)の両方を生成します。 
 
 登録プロセスにはリスクがなく、ダウンタイムは発生せず、SQL Server サービスも仮想マシンも再起動されません。 
+
+既定では、SQL Server 2016 以降がインストールされている Azure VM は、[CEIP サービス](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)によって検出されると自動的に SQL IaaS Agent 拡張機能に登録されます。  詳細については、「[SQL Server のプライバシーの補足情報](/sql/sql-server/sql-server-privacy#non-personal-data)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 SQL Server VM を拡張機能に登録するには、以下のものが必要になります。 
 
-- [**Microsoft.SqlVirtualMachine** プロバイダーに登録されており](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-resource-provider)、未登録の SQL Server 仮想マシンが含まれる [Azure サブスクリプション](https://azure.microsoft.com/free/)。 
+- [**Microsoft.SqlVirtualMachine** リソース プロバイダーに登録されており](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp)、未登録の SQL Server 仮想マシンが含まれる [Azure サブスクリプション](https://azure.microsoft.com/free/)。 
 - 仮想マシンの登録に使用されるクライアント資格情報は、Azure ロールの **仮想マシンの共同作成者**、**共同作成者**、または **所有者** のいずれかに存在します。 
 - 最新バージョンの [Az PowerShell (5.0 以上)](/powershell/azure/new-azureps-module-az)。 
 
@@ -243,6 +249,6 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 詳細については、次の記事を参照してください。 
 
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.md)
+* [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
-* [Windows VM 上の SQL Server のリリース ノート](../../database/doc-changes-updates-release-notes.md)
+* [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)

@@ -1,23 +1,23 @@
 ---
 title: コマーシャル マーケットプレース用に Azure アプリケーション オファーを計画する
-description: Microsoft パートナー センターのコマーシャル マーケットプレース ポータルを使用して、Azure Marketplace で、またはクラウド ソリューション プロバイダー (CSP) プログラムを通してリスト登録または販売を行うために、新しい Azure アプリケーション オファーを計画する方法について説明します。
+description: パートナー センターを利用し、Azure Marketplace の Azure アプリケーション オファーを計画します。
 author: aarathin
 ms.author: aarathin
 ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: f98f128e56810e3dd710ce454c8dc34b333690d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/11/2021
+ms.openlocfilehash: c107f3a22869c204691053662373b599489ffb4e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879294"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308259"
 ---
-# <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース用に Azure アプリケーション オファーを計画する
+# <a name="plan-an-azure-application-offer"></a>Azure アプリケーション オファーを計画する
 
-この記事では、Azure アプリケーション オファーを Microsoft コマーシャル マーケットプレースに公開するためのさまざまなオプションと要件について説明します。
+この記事では、Azure アプリケーション オファーをコマーシャル マーケットプレースに公開するためのさまざまなオプションと要件について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -33,9 +33,9 @@ Azure アプリケーション オファーを設計、構築、およびテス�
 
 コマーシャル マーケットプレース用に Azure アプリケーション オファーを計画する場合は、次のリソースを確認してください。
 
-- [Azure Resource Manager テンプレートについての理解](../azure-resource-manager/templates/template-syntax.md)
+- [Azure Resource Manager テンプレートについての理解](../azure-resource-manager/templates/syntax.md)
 - クイック スタート:
-    - [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)
+    - [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)
     - [Azure テンプレートのベスト プラクティス ガイド](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     - [アプリケーション定義の発行](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
     - [サービス カタログ アプリのデプロイ](../azure-resource-manager/managed-applications/deploy-service-catalog-quickstart.md)
@@ -95,7 +95,7 @@ CRM の接続は、オファーの作成時または作成後にいつでも追�
 
 ## <a name="categories-and-subcategories"></a>カテゴリとサブカテゴリ
 
-少なくとも 1 つで最大 2 つのカテゴリを選択して、オファーを適切なコマーシャル マーケットプレース検索領域にグループ化できます。 プライマリおよびセカンダリ カテゴリについてそれぞれ最大 2 つのサブカテゴリを選択できます。 カテゴリとサブカテゴリの完全な一覧については、「[オファーの掲載のベスト プラクティス](gtm-offer-listing-best-practices.md#categories)」を参照してください。
+少なくとも 1 つで最大 2 つのカテゴリを選択して、オファーを適切なコマーシャル マーケットプレース検索領域にグループ化できます。 プライマリおよびセカンダリ カテゴリについてそれぞれ最大 2 つのサブカテゴリを選択できます。 カテゴリとサブカテゴリの完全な一覧については、「[オファーの掲載のベスト プラクティス](marketplace-categories-industries.md#categories)」を参照してください。
 
 ## <a name="legal-contracts"></a>法的契約
 
@@ -148,16 +148,16 @@ Azure portal でのオファー情報の表示例を次のスクリーンショ�
     このテキスト ボックスには、説明をより魅力的にするために使用できるリッチ テキスト エディター コントロールが用意されています。 また、HTML タグを使用して説明の書式を設定することもできます。 このボックスには、HTML マークアップとスペースを含む最大 3,000 文字のテキストを入力できます。 その他のヒントについては、「[人の心をつかむアプリの説明を書く](/windows/uwp/publish/write-a-great-app-description)」および「[コマーシャル マーケットプレースのオファー説明でサポートされている HTML タグ](supported-html-tags.md)」を参照してください。
 
 - **検索キーワード** (省略可能): オンライン ストアで顧客がオファーを見つけることができるように使用する検索キーワードを、最大 3 つ指定します。 最良の結果を得るために、これらのキーワードを説明にも使用します。 オファーの **名前** と **説明** を含める必要はありません。 そのテキストは検索に自動的に含まれます。
-- **プライバシー ポリシーのリンク**: 会社のプライバシー ポリシーの URL。 有効なプライバシー ポリシーを提供する必要があり、アプリがプライバシーに関する法律および規制に準拠していることを保証する責任があります。
+- **プライバシー ポリシー リンク**: 会社のプライバシー ポリシーの URL。 有効なプライバシー ポリシーを提供する必要があり、アプリがプライバシーに関する法律および規制に準拠していることを保証する責任があります。
 - **役に立つリンク** (省略可能): オファーのユーザーにさまざまなリソースへのリンクを提供できます。 たとえば、フォーラム、FAQ、リリース ノートなどがあります。
 - **連絡先情報**:組織の次の連絡先を指定する必要があります。
   - **サポートの連絡先**: 顧客がチケットを開くときに使用する、Microsoft パートナーの名前、電話番号、電子メール アドレスを指定します。 サポート Web サイトの URL も含める必要があります。
   - **エンジニアリングの連絡先**: オファーに問題がある場合に直接使用する、Microsoft の名前、電話番号、電子メール アドレスを指定します。 この連絡先情報は、コマーシャル マーケットプレースには表示されません。
   - **CSP プログラムの連絡先** (省略可能): クラウド ソリューション プロバイダー (CSP) プログラムにオプトインする場合は、名前、電話番号、電子メール アドレスを指定します。これにより、これらのパートナーが質問に回答できるようになります。 マーケティング資料の URL も含めることができます。
 - **メディア - ロゴ**: **大** サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小** および **中** サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
-  - 大 (216 x 216 から 350 x 350 px、必須)
-  - 中 (90 x 90 px、省略可能)
-  - 小 (48 x 48 px、省略可能)
+  - 大 (216x216 から 350x350 ピクセル、必須)
+  - 中 (90x90 ピクセル、省略可能)
+  - 小 (48x48 ピクセル、省略可能)
 
   これらのロゴは、オンライン ストアのさまざまな場所で使用されます。
   - 小のロゴは、Azure Marketplace での検索結果に表示されます。
@@ -173,13 +173,13 @@ Azure portal でのオファー情報の表示例を次のスクリーンショ�
   - ロゴが伸縮されていないことを確認してください。
 
 - **メディア - スクリーンショット** (省略可能): オファーがどのように機能するかを示すスクリーンショットを追加することをお勧めします。 オファーがどのように機能するかを示す、次の要件を満たすスクリーンショットを最大 5 つ追加できます。
-  - 1280 x 720 ピクセル
-  - .png ファイル
+  - 1280x720 ピクセル
+  - .PNG ファイル
   - キャプションを含める必要があります
 - **メディア – ビデオ** (省略可能): オファーをデモンストレーションする、次の要件を満たすビデオを最大 5 つ追加できます。
   - 名前
   - URL:YouTube または Vimeo のみでホストされる必要があります。
-  - サムネイル: 1280 x 720 .png ファイル
+  - サムネイル: 1280x720 .PNG ファイル
 
 > [!NOTE]
 > コマーシャル マーケットプレースに公開するには、オファーが一般的な[コマーシャル マーケットプレースの認定ポリシー](/legal/marketplace/certification-policies#100-general.md)を満たしている必要があります。
@@ -195,9 +195,9 @@ Azure サブスクリプション ID GUID を使用してプレビュー対象�
 
 ## <a name="technical-configuration"></a>技術的な構成
 
-[Marketplace の測定サービス API](partner-center-portal/marketplace-metering-service-apis.md) を使用して測定イベントを生成するマネージド アプリケーションの場合は、使用状況測定イベントを生成するときにサービスで使用される ID を指定する必要があります。
+[Marketplace の測定サービス API](marketplace-metering-service-apis.md) を使用して測定イベントを生成するマネージド アプリケーションの場合は、使用状況測定イベントを生成するときにサービスで使用される ID を指定する必要があります。
 
-[Batch 使用状況イベント](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event)を使用する場合は、この構成が必要です。 [使用イベント](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)を送信する場合は、[インスタンス メタデータ サービス](../active-directory/managed-identities-azure-resources/overview.md)を使用して、[JSON Web トークン (JWT) ベアラー トークン](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)を取得することもできます。
+[Batch 使用状況イベント](marketplace-metering-service-apis.md#metered-billing-batch-usage-event)を使用する場合は、この構成が必要です。 [使用イベント](marketplace-metering-service-apis.md#metered-billing-single-usage-event)を送信する場合は、[インスタンス メタデータ サービス](../active-directory/managed-identities-azure-resources/overview.md)を使用して、[JSON Web トークン (JWT) ベアラー トークン](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)を取得することもできます。
 
 - **Azure Active Directory テナント ID** (必須): Azure portal 内では、Microsoft の 2 つのサービス間の接続が認証済みの通信の背後で行われることを Microsoft が検証できるように、[Azure Active Directory (AD) アプリを作成する](../active-directory/develop/howto-create-service-principal-portal.md)必要があります。 Azure Active Directory (Azure AD) アプリの[テナント ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列で、アプリを選択します。 次に、 **[プロパティ]** を探してから、**ディレクトリ (テナント) ID** (たとえば `50c464d3-4930-494c-963c-1e951d15360e`) を見つけます。
 - **Azure Active Directory アプリケーション ID** (必須): また、自分の [アプリケーション ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) と認証キーも必要です。 アプリケーション ID を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列でアプリを選択し、次に **アプリケーション (クライアント) ID** (たとえば `50c464d3-4930-494c-963c-1e951d15360e`) を探します。 認証キーを見つけるには、 **[設定]** に移動して **[キー]** を選択します。 説明と期間を入力する必要があります。その後、数値が提供されます。
@@ -210,7 +210,7 @@ Azure サブスクリプション ID GUID を使用してプレビュー対象�
 Microsoft がサポートするマーケティングおよびセールス チャネルのオプトインを選択できます。 パートナー センターでオファーを作成すると、プロセスの終盤で、次の 2 つのタブが表示されます。
 
 - **CSP を通して再販する**: このオプションを使用して、Microsoft クラウド ソリューションプロバイダー (CSP) パートナーがバンドルされたオファーの一部としてソリューションを再販できるようにします。 詳細については、「[クラウド ソリューション プロバイダー プログラム](./cloud-solution-providers.md)」を参照してください。
-- **Microsoft と共同販売する**: このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 評価のためにオファーを準備する方法の詳細については、「[コマーシャル マーケットプレースでの共同販売オプション](commercial-marketplace-co-sell.md)」を参照してください。 IP 共同販売の要件の詳細については、[共同販売の状態の要件](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 Microsoft CSP パートナー チャネルを通じたプランのマーケティングの詳細については、「[クラウド ソリューション プロバイダー](cloud-solution-providers.md)」を参照してください。
+- **Microsoft と共同販売する**: このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 評価のためにオファーを準備する方法の詳細については、「[コマーシャル マーケットプレースでの共同販売オプション](./co-sell-configure.md)」を参照してください。 IP 共同販売の要件の詳細については、[共同販売の状態の要件](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 Microsoft CSP パートナー チャネルを通じたプランのマーケティングの詳細については、「[クラウド ソリューション プロバイダー](cloud-solution-providers.md)」を参照してください。
 
 詳細については、[Azure Marketplace でのビジネスの拡大](https://azuremarketplace.microsoft.com/sell)に関するページを参照してください。
 

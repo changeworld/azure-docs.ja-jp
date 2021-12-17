@@ -2,17 +2,17 @@
 title: トラブルシューティング - Azure Web アプリケーション ファイアウォール
 description: この記事では、Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) に関するトラブルシューティング情報を提供します。
 services: web-application-firewall
-author: vhorne
+author: KumudD
 ms.service: web-application-firewall
 ms.date: 11/14/2019
-ms.author: ant
+ms.author: kumud
 ms.topic: conceptual
-ms.openlocfilehash: 483d261a8cc107d01cfb7a405eac43667d7efcc6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9db2e6a3c0ee90a81b4f6cb363c3513314c18944
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92131838"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550990"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) のトラブルシューティング
 

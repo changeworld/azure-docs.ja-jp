@@ -3,7 +3,7 @@ title: チュートリアル:Contentful を構成して、Azure Active Directory
 description: Azure Active Directory (Azure AD) から Contentful に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
 documentationcenter: ''
-author: zchia
+author: twimmers
 manager: beatrizd
 ms.assetid: 3b761984-a9a0-4519-b23e-563438978de5
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/11/2020
-ms.author: zhchia
-ms.openlocfilehash: c9d19624d90b1228b2a44caeff7d103af3172ed9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 60647cbceed7b7917daa18e8b8c7ed6531ebe0c9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97516334"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059121"
 ---
 # <a name="tutorial-configure-contentful-for-automatic-user-provisioning"></a>チュートリアル:Contentful を構成して自動ユーザー プロビジョニングに対応させる
 
@@ -62,7 +62,7 @@ ms.locfileid: "97516334"
 
 5. **[個人用アクセス トークンの生成]** を選択します。
 
-    ![url](media/contentful-provisioning-tutorial/generate.png)
+    ![個人用アクセス トークンを生成するための SCIM URL を示すスクリーンショット。](media/contentful-provisioning-tutorial/generate.png)
 
 6. モーダル ウィンドウで、個人用アクセス トークンの名前を入力し、 **[生成]** を選択します。
 

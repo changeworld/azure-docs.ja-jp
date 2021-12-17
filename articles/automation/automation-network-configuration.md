@@ -1,15 +1,14 @@
 ---
 title: Azure Automation でのネットワーク構成の詳細
 description: この記事では、Azure Automation State Configuration、Azure Automation Hybrid Runbook Worker、Update Management、および変更履歴とインベントリに必要なネットワーク情報の詳細について説明します
-ms.author: magoedte
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 36331e9c07926d4d3ffff136aefa2f9a77d47cb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f441f49d7f94447ab16a6a3f98b0db55dabcc1f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708885"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491452"
 ---
 # <a name="azure-automation-network-configuration-details"></a>Azure Automation でのネットワーク構成の詳細
 
@@ -26,7 +25,7 @@ ms.locfileid: "101708885"
 
 ### <a name="network-planning-for-hybrid-runbook-worker"></a>Hybrid Runbook Worker のネットワーク計画
 
-システムまたはユーザー Hybrid Runbook Worker が Azure Automation に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 worker には、Azure Monitor Log Analytics ワークスペースに接続するために、[Log Analytics エージェントに必要なポートと URL](../azure-monitor/agents/agent-windows.md) へのアクセスも必要です。
+システムまたはユーザー Hybrid Runbook Worker が Azure Automation に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 worker には、Azure Monitor Log Analytics ワークスペースに接続するために、[Log Analytics エージェントに必要なポートと URL](../azure-monitor/agents/log-analytics-agent.md) へのアクセスも必要です。
 
 特定のリージョンに対して定義された Automation アカウントがある場合は、そのリージョン データセンターへの Hybrid Runbook Worker の通信を制限できます。 必要な DNS レコードについては、[Azure Automation によって使用される DNS レコード](how-to/automation-region-dns-records.md)に関するページを参照してください。
 
@@ -36,7 +35,7 @@ ms.locfileid: "101708885"
 
 ノード間で通信する DSC リソース ([WaitFor * リソース](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)など) を使用している場合、ノード間のトラフィックを許可する必要もあります。 これらのネットワーク要件を理解するには、各 DSC リソースのドキュメントを参照してください。
 
-TLS 1.2 のクライアント要件を理解するには、「[Azure Automation に対する TLS 1.2 の強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)」のセクションを参照してください。
+TLS 1.2 のクライアント要件を理解するには、「[Azure Automation 用の TLS 1.2](automation-managing-data.md#tls-12-for-azure-automation)」を参照してください。
 
 ## <a name="update-management-and-change-tracking-and-inventory"></a>Update Management および変更履歴とインベントリ
 

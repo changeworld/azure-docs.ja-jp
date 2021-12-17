@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 7983a80da8a5ca9d900e44515b5e078cc9d70d79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a621d93bda3c3a032932a9d6349dcbce0190610c
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98684188"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740248"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure Private Link サービスとは
 
@@ -95,7 +95,11 @@ Private Link サービスでは、次のプロパティを指定します。
 
 ## <a name="control-service-exposure"></a>サービスの公開を制御する
 
-Private Link サービスには、"可視性" 設定を使用して対象のサービスの公開を制御するオプションが用意されています。 所有するさまざまな VNet (Azure RBAC アクセス許可のみ) からの使用に向けて、サービスをプライベートに設定したり、信頼するサブスクリプションの限られたセットのみに公開を制限したりできます。また、サービスをパブリックに設定して、すべての Azure サブスクリプションが Private Link サービス上で接続を要求できるようにすることもできます。 可視性の設定により、コンシューマーが対象のサービスに接続できるかどうかが決まります。 
+Private Link サービスでは、サービスの公開を制御する **可視性** の設定に 3 つのオプションが用意されています。 可視性の設定により、コンシューマーが対象のサービスに接続できるかどうかが決まります。 次に、制限の最も厳しいオプションから順に可視性の設定オプションを示します。
+ 
+- **ロールベースのアクセス制御のみ**: ご自身が所有する異なる VNet からプライベートに利用することを目的としたサービスである場合、同じ Active Directory テナントに関連付けられたサブスクリプション内のアクセスの制御メカニズムとして RBAC を使用できます。 注: テナント間の可視性は、RBAC を介して許可されます。
+- **サブスクリプションによる制限**: 複数のテナント間で横断的に利用されるサービスの場合、信頼の置ける限られたサブスクリプションに公開を制限することができます。 承認は、事前承認することができます。
+- **お客様のエイリアスを持つすべてのユーザー**: サービスをパブリックとし、Private Link サービスのエイリアスを持つユーザーであればだれでも接続を要求できるようにしたい場合は、このオプションを選択してください。 
 
 ## <a name="control-service-access"></a>サービス アクセスを制御する
 
@@ -124,9 +128,11 @@ Private Link サービスの公開対象 (可視性設定により制御) のコ
 ## <a name="limitations"></a>制限事項
 
 Private Link サービスを使用する場合の既知の制限事項は次のとおりです。
-- Standard Load Balancer でのみサポートされる 
+- Standard Load Balancer でのみサポートされる。 Basic Load Balancer ではサポートされない。  
+- VM/VMSS を使用するときに NIC によってバックエンド プールが構成されている Standard Load Balancer でのみサポートされる。
 - IPv4 トラフィックのみがサポートされる
 - TCP および UDP トラフィックのみがサポートされる
+
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure PowerShell を使用してプライベート リンク サービスを作成する](create-private-link-service-powershell.md)

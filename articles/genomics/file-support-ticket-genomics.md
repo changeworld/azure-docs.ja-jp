@@ -4,21 +4,21 @@ titleSuffix: Microsoft Genomics
 description: この記事では、トラブルシューティング ガイドまたは FAQ で問題を解決できない場合に Microsoft Genomics に連絡するためのサポート要求を申請する方法について説明します。
 keywords: トラブルシューティング, エラー, デバッグ, サポート
 services: genomics
-author: grhuynh
+author: vigunase
 manager: cgronlun
-ms.author: grhuynh
+ms.author: vigunase
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fd18dd1f8f15a99a7de32038798a925d369ed1a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "72248606"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259440"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>Microsoft Genomics サポートに問い合わせる方法
-この概要では、Microsoft Genomics に連絡してサポート リクエストを提出する方法について説明します。 この情報は、[トラブルシューティング ガイド](troubleshooting-guide-genomics.md)や [FAQ](frequently-asked-questions-genomics.md) を使用しても問題が解決できない場合に役立ちます。 
+この概要では、Microsoft Genomics に連絡してサポート リクエストを提出する方法について説明します。 この情報は、[トラブルシューティング ガイド](troubleshooting-guide-genomics.md)や [FAQ](frequently-asked-questions-genomics.yml) を使用しても問題が解決できない場合に役立ちます。 
 
 
 ## <a name="file-a-support-ticket-through-the-azure-portal"></a>Azure Portal からサポート チケットを提出する
@@ -46,4 +46,4 @@ ms.locfileid: "72248606"
 ![サポート リクエストの連絡先](./media/file-support-ticket/support-request-contact.png "サポート リクエストの連絡先")
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、サポート リクエストを提出する方法について学習しました。 また、[FAQ](frequently-asked-questions-genomics.md) や[トラブルシューティング ガイド](troubleshooting-guide-genomics.md)を使用しても、よくある問題を解決できます。 
+この記事では、サポート リクエストを提出する方法について学習しました。 また、[FAQ](frequently-asked-questions-genomics.yml) や[トラブルシューティング ガイド](troubleshooting-guide-genomics.md)を使用しても、よくある問題を解決できます。 

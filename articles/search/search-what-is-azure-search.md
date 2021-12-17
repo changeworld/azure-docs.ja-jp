@@ -7,35 +7,34 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/09/2021
+ms.date: 09/28/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e17d08d09814c135af3e0b4fc299b6e6f42326d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b61ddd82671835e96b3115816ef57ca44fca942b
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549891"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207814"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Cognitive Search とは
 
-Azure Cognitive Search ([旧称 Azure Search](whats-new.md#new-service-name)) は、Web、モバイル、エンタープライズの各アプリケーション内のプライベートな異種コンテンツに対する豊富な検索エクスペリエンスを構築するための API とツールを開発者に提供するクラウド検索サービスです。 
+Azure Cognitive Search ([旧称 Azure Search](whats-new.md#new-service-name)) は、Web、モバイル、エンタープライズ アプリケーションに、プライベートで異種のコンテンツに対するリッチな検索エクスペリエンスを組み込むためのインフラストラクチャ、API、およびツールを開発者に提供するクラウド検索サービスです。
 
-検索は、ユーザーにコンテンツを表示するすべてのアプリの基本となるものです。一般的なシナリオには、カタログやドキュメントの検索、e コマース サイトの検索、データ サイエンスのための知識マイニングなどがあります。 Cognitive Search の API とアーキテクチャにより、あらゆるソリューションに高度な情報取得を簡単に追加できます。
+検索は、ユーザーにテキスト コンテンツを表示するすべてのアプリの基本となるものです。一般的なシナリオには、カタログやドキュメントの検索、オンライン小売、データ サイエンスのための知識マイニングなどがあります。
 
-検索サービスには次のコンポーネントがあります。
+検索サービスを作成するときは、次の機能を使用して作業します。
 
-+ フルテキスト検索の検索エンジン
-+ ユーザーが所有するインデックス付けされたコンテンツの永続的ストレージ
-+ コンテンツのインデックス作成とクエリのための API
-+ (省略可能) [AI ベースのエンリッチメント](cognitive-search-concept-intro.md) (画像、生の非構造化テキスト、アプリケーション ファイルから検索可能なコンテンツを作成する)
-+ (省略可能) データ、機械学習または AI、監視、およびセキュリティを目的とした他の Azure サービスとの統合
-+ (省略可能) 関連性を向上させるための[セマンティック検索 (プレビュー)](semantic-search-overview.md) の実装
++ 検索インデックスにユーザーが所有するコンテンツを格納するフル テキスト検索用の検索エンジン
++ [テキスト分析](search-analyzers.md)、および高度なコンテンツ抽出と変換に関する[オプションの AI エンリッチメント](cognitive-search-concept-intro.md)を含むリッチ インデックス作成機能
++ 単純な構文、完全な Lucene 構文、先行入力検索を含むリッチなクエリ機能
++ .NET、Python、Java、JavaScript 用の Azure SDK の REST API とクライアント ライブラリを使用したプログラミング
++ データ レイヤー、機械学習レイヤー、AI (Cognitive Services) での Azure 統合
 
 アーキテクチャ上、検索サービスは、インデックスが設定されていないデータを含む外部データ ストアと、検索インデックスにクエリ要求を送信して応答を処理するクライアント アプリとの間に配置されます。
 
 ![Azure Cognitive Search のアーキテクチャ](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Cognitive Search のアーキテクチャ")
 
-検索は、対外的に他の Azure サービスと統合できます。これには、Azure データ ソースからのデータのインジェストと取得を自動化する "*インデクサー*" という形式があるほか、Cognitive Services で提供されている AI (画像やテキストの分析など) や、Azure Machine Learning 内で作成したり Azure Functions 内にラップしたりするカスタム AI を組み込んだ "*スキルセット*" という形式があります。
+Azure プラットフォーム全体で、Cognitive Search は、他の Azure サービスと統合できます。これには、Azure データ ソースからのデータのインジェストと取得を自動化する "*インデクサー*" という形式があるほか、Cognitive Services で提供されている AI (画像や自然言語処理など) や、Azure Machine Learning 内で作成したり Azure Functions 内にラップしたりするカスタム AI を組み込んだ "*スキルセット*" という形式があります。
 
 ## <a name="inside-a-search-service"></a>検索サービスの内部
 
@@ -55,11 +54,11 @@ Azure Cognitive Search ([旧称 Azure Search](whats-new.md#new-service-name)) �
 
 Azure Cognitive Search は、次のアプリケーション シナリオに適しています。
 
-+ ユーザー定義のプライベートな検索インデックスへの異種コンテンツの統合。
++ ユーザー定義のプライベートな検索インデックスへの異種コンテンツの統合。 インデックス作成とクエリワークロードを専用の検索サービスにオフロードします。
 
 + 関連性のチューニング、ファセット ナビゲーション、フィルター (地理空間検索)、同意語マッピング、オートコンプリートなど、検索に関連した機能を容易に実装。
 
-+ Azure Blob Storage や Cosmos DB に格納されている未区分の大きなテキストや画像ファイル、アプリケーション ファイルを検索可能な JSON ドキュメントに変換。 これは、外部処理を追加する[コグニティブ スキル](cognitive-search-concept-intro.md)を通してインデックス時に行われます。
++ Azure Blob Storage や Cosmos DB に格納されている未区分の大きなテキストまたは画像ファイル、アプリケーション ファイルを検索可能な JSON ドキュメントに変換。 これは、外部処理を追加する[コグニティブ スキル](cognitive-search-concept-intro.md)を通してインデックス時に行われます。
 
 + 言語分析またはカスタム テキスト分析を追加。 英語以外のコンテンツがある場合、Azure Cognitive Search では、Lucene アナライザーと Microsoft の自然言語プロセッサの両方がサポートされます。 また、生コンテンツの特殊な処理 (分音記号のフィルター処理や、文字列内のパターンの認識と保持など) を実行するようにアナライザーを構成することもできます。
 
@@ -89,7 +88,7 @@ Azure Cognitive Search は、次のアプリケーション シナリオに適�
 |-------------|-----------------|
 | Microsoft Search | [Microsoft Search](/microsoftsearch/overview-microsoft-search) は、SharePoint 内のコンテンツに対してクエリを実行する必要がある、Microsoft 365 の認証済みユーザーを対象としています。 すぐに使用できる検索環境として提供され、管理者によって有効にされて構成が行われます。Microsoft や他のソースから提供されているコネクタを通じて外部コンテンツを受け入れることができます。 それが目的に合致していれば、Microsoft Search と Microsoft 365 は、試す価値のある選択肢となります。<br/><br/>これに対し、Azure Cognitive Search は、所有するデータやドキュメントを、多くの場合さまざまなソースから取り込んで定義したインデックスに対してクエリを実行します。 Azure Cognitive Search は[インデクサー](search-indexer-overview.md)により複数の Azure データ ソースに対するクローラー機能を備えていますが、インデックス スキーマに準拠している任意の JSON ドキュメントを 1 つの統合された検索可能なリソースにプッシュできます。 また、機械学習と字句解析器を含むようにインデックス作成パイプラインをカスタマイズすることもできます。 Cognitive Search は、より大きなソリューションのプラグイン コンポーネントとなるように作成されているため、プラットフォームにかかわらず、ほぼすべてのアプリに検索機能を統合することができます。|
 |Bing | [Bing Web Search API](../cognitive-services/bing-web-search/index.yml) は Bing.com のインデックスで送信された語句と一致するものを検索します。 インデックスは、公開サイトの HTML、XML、および他の Web コンテンツから構築されます。 同じ基板上に構築されている [Bing Custom Search](/azure/cognitive-services/bing-custom-search/) は、個々の Web サイトに範囲指定して、各 Web コンテンツ タイプに対して同じクローラー テクノロジを提供します。<br/><br/>Cognitive Search では、インデックスを自分で定義してデータを投入することができます。 [インデクサー](search-indexer-overview.md)を使用して Azure データ ソース上のデータをクロールしたり、インデックスに適合する JSON ドキュメントを検索サービスにプッシュしたりすることができます。 |
-|データベース検索 | 多くのデータベース プラットフォームには、組み込みの検索エクスペリエンスが含まれます。 SQL Server には[フル テキスト検索](/sql/relational-databases/search/full-text-search)があります。 Cosmos DB や同種のテクノロジには、クエリ可能なインデックスがあります。 検索とストレージを結合する製品を評価するとき、採用する方法を決めるのが困難な場合があります。 多くのソリューションでは両方が採用され、ストレージには DBMS が、専用の検索機能には Azure Cognitive Search が使用されています。<br/><br/>DBMS 検索と比較すると、Azure Cognitive Search は異種ソースからのコンテンツを格納し、[56 言語](/rest/api/searchservice/language-support)で言語対応のテキスト処理 (語幹検索、レンマ化、語形) などの専用のテキスト処理機能を提供します。 また、スペルミスの単語のオート コレクト、[シノニム](/rest/api/searchservice/synonym-map-operations)、[候補](/rest/api/searchservice/suggestions)、[スコアリング コントロール](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[ファセット](./search-filters-facets.md)、および[カスタムトークン化](/rest/api/searchservice/custom-analyzers-in-azure-search)もサポートしています。 Azure Cognitive Search の[フル テキスト検索エンジン](search-lucene-query-architecture.md)は情報取得の業界標準である Apache Lucene に基づいて構築されています。 ただし、Azure Cognitive Search では逆インデックスの形式でデータを保持しますが、真のデータ ストレージの代わりにはならないため、その役割として使用することはお勧めしません。 詳しくは、こちらの[フォーラム投稿](https://stackoverflow.com/questions/40101159/can-azure-search-be-used-as-a-primary-database-for-some-data)をご覧ください。 <br/><br/>リソース使用率も、このカテゴリで別途考慮する必要があります。 インデックス付けと一部のクエリ操作は、多くの場合、計算を大量に使用します。 DBMS からクラウドの専用ソリューションに検索をオフロードすることにより、トランザクション処理用のシステム リソースを保持します。 さらに、検索を外部化することで、クエリのボリュームに合わせてスケールを簡単に調整できます。|
+|データベース検索 | 多くのデータベース プラットフォームには、組み込みの検索エクスペリエンスが含まれます。 SQL Server には[フル テキスト検索](/sql/relational-databases/search/full-text-search)があります。 Cosmos DB や同種のテクノロジには、クエリ可能なインデックスがあります。 検索とストレージを結合する製品を評価するとき、採用する方法を決めるのが困難な場合があります。 多くのソリューションでは両方が採用され、ストレージには DBMS が、専用の検索機能には Azure Cognitive Search が使用されています。<br/><br/>DBMS 検索と比較すると、Azure Cognitive Search は異種ソースからのコンテンツを格納し、[56 言語](/rest/api/searchservice/language-support)で言語対応のテキスト処理 (語幹検索、レンマ化、語形) などの専用のテキスト処理機能を提供します。 また、スペルミスの単語のオート コレクト、[シノニム](/rest/api/searchservice/synonym-map-operations)、[候補](/rest/api/searchservice/suggestions)、[スコアリング コントロール](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[ファセット](search-faceted-navigation.md)、および[カスタムトークン化](/rest/api/searchservice/custom-analyzers-in-azure-search)もサポートしています。 Azure Cognitive Search の[フル テキスト検索エンジン](search-lucene-query-architecture.md)は情報取得の業界標準である Apache Lucene に基づいて構築されています。 ただし、Azure Cognitive Search では逆インデックスの形式でデータを保持しますが、真のデータ ストレージの代わりにはならないため、その役割として使用することはお勧めしません。 詳しくは、こちらの[フォーラム投稿](https://stackoverflow.com/questions/40101159/can-azure-search-be-used-as-a-primary-database-for-some-data)をご覧ください。 <br/><br/>リソース使用率も、このカテゴリで別途考慮する必要があります。 インデックス付けと一部のクエリ操作は、多くの場合、計算を大量に使用します。 DBMS からクラウドの専用ソリューションに検索をオフロードすることにより、トランザクション処理用のシステム リソースを保持します。 さらに、検索を外部化することで、クエリのボリュームに合わせてスケールを簡単に調整できます。|
 |専用の検索ソリューション | 全機能を持つ専用の検索を使用する場合、最後の比較カテゴリはオンプレミス ソリューションかクラウド サービスかです。 多くの検索テクノロジには、インデックスの作成とクエリ パイプラインの管理、豊富なクエリとフィルター構文へのアクセス、ランクと関連性の管理、自主的な高度な検索の機能が用意されています。 <br/><br/>クラウド サービスは、オーバーヘッドとメンテナンスが最小限で済み、スケールが調整可能なターンキー ソリューションを望むお客様に最適の選択肢です。 <br/><br/>クラウドの枠組みでは、複数のプロバイダーがフルテキスト検索、地理空間検索、検索入力の程度のあいまいさを処理する機能など、同等の基本機能を備えるソリューションを提供しています。 使用環境に最も合うものを判断する場合、通常は、[特化した機能](search-features-list.md)か、API、ツール、管理の容易さと全体的な単純さが決め手になります。 |
 
 クラウド プロバイダーの中で Azure Cognitive Search は、Azure 上のコンテンツ ストアとデータベースに対するフルテキスト検索のワークロードに関して最も強力で、情報の取得とコンテンツのナビゲーションの両方を主に検索に依存するアプリに適しています。 
@@ -107,6 +106,6 @@ Microsoft のお客様は、オンライン カタログ、基幹業務プログ
 
 ## <a name="watch-this-video"></a>次の動画をご覧ください
 
-この 15 分間のビデオでは、プログラム マネージャー Luis Cabrera が Azure Cognitive Search を紹介しています。
+この 15 分間のビデオで、Azure Cognitive Search の主な機能を確認します。
 
 >[!VIDEO https://www.youtube.com/embed/kOJU0YZodVk?version=3]

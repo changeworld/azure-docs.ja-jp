@@ -6,14 +6,14 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 25ad696ad345fbf672f6bf26eb3f35a13fb03ea5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bfa3e378e9627652810eb6ac1feaeb7b74522539
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019501"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750607"
 ---
-# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Visual Studio Code のジョブ ダイアグラムを使用して Azure Stream Analytics のクエリをローカルでデバッグする
+# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code-preview"></a>Visual Studio Code のジョブ ダイアグラムを使用して Azure Stream Analytics のクエリをローカルでデバッグする (プレビュー)
 
 ストリーミング ジョブで結果が出力されないときや予期しない結果が出力されるときは、多くの場合、トラブルシューティングが必要になります。 Azure Stream Analytics の Visual Studio Code 拡張機能には、ジョブ ダイアグラム、メトリック、診断ログ、および中間結果が統合されているため、問題の原因をすばやく特定するのに役立ちます。 ジョブ ダイアグラムを使用しながらローカルでクエリをテストすることで、各ステップの中間結果セットとメトリックを調べることができます。
 

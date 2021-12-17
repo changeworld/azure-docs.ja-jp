@@ -2,17 +2,15 @@
 title: Azure Monitor ブックのリソース パラメーター
 description: リソース パラメーターを使用し、ブック内でリソースを選択できるようにする方法について説明します。 リソース パラメーターを使用し、データの取得元にするスコープを設定します。
 services: azure-monitor
-manager: carmonm
-ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: d4a6d04f88544b3a4f9f9c0c0b290d17f5ef148d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dba84320bb753fa162d1c4eced5de5ae79de6f48
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101725579"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436160"
 ---
 # <a name="workbook-resource-parameters"></a>ブックのリソース パラメーター
 
@@ -100,9 +98,9 @@ ms.locfileid: "101725579"
 ## <a name="resource-parameter-options"></a>リソース パラメーターのオプション
 | パラメーター | 説明 | 例 |
 | ------------- |:-------------|:-------------|
-| `{Applications}` | 選択されたリソース ID | _/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication_ |
+| `{Applications}` | 選択されたリソース ID | _/subscriptions/\<sub-id\>/resourceGroups/\<resource-group\>/providers/\<resource-type\>/acmeauthentication_ |
 | `{Applications:label}` | 選択されたリソースのラベル | `acmefrontend` |
-| `{Applications:value}` | 選択されたリソースの値 | _'/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication'_ |
+| `{Applications:value}` | 選択されたリソースの値 | _'/subscriptions/\<sub-id\>/resourceGroups/\<resource-group\>/providers/\<resource-type\>/acmeauthentication'_ |
 | `{Applications:name}` | 選択されたリソースの名前 | `acmefrontend` |
 | `{Applications:resourceGroup}` | 選択されたリソースのリソース グループ | `acmegroup` |
 | `{Applications:resourceType}` | 選択されたリソースの種類 | _microsoft.insights/components_ |

@@ -5,23 +5,27 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
-author: MashaMSFT
-ms.author: mathoma
+ms.topic: how-to
+author: cawrites
+ms.author: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: 32c56df5bafa9439fc559edf137c1080920cfb32
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 3b9f286796a832d075977cda2eda54f990bbb3c1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284376"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743719"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>移行ガイド: MySQL から Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
+<<<<<<< HEAD
 このガイドでは、[SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant for MySQL (SSMA for MySQL) を使用して、MySQL データベースを Azure SQL Database に[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。 
+=======
+このガイドでは、[SQL Server Migration](https://azure.microsoft.com/migration/sql-server/) Assistant for MySQL (SSMA for MySQL) を使用して、MySQL データベースを Azure SQL データベースに[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。 
+>>>>>>> repo_sync_working_branch
 
-その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。 
+その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +43,7 @@ MySQL データベースから SQL データベースへの移行を始める前
 
 SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データベース オブジェクトとデータを確認し、データベースの移行を評価できます。 
 
-評価を作成するには、以下を実行します。
+評価を作成するには、次の手順を実行します。
 
 1. [SSMA for MySQL](https://www.microsoft.com/download/details.aspx?id=54257) を開きます。 
 1. **[ファイル]** を選択してから、 **[新しいプロジェクト]** を選択します。 
@@ -78,7 +82,7 @@ SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データ�
 
 スキーマを変換するには、次の手順を実行します。 
 
-1. (省略可能) 動的または特殊なクエリを変換するには、ノードを右クリックし、 **[ステートメントの追加]** を選択します。 
+1. (省略可能) 動的クエリまたは特殊なクエリを変換するには、ノードを右クリックして **[ステートメントの追加]** を選択します。 
 
 1. **[Connect to Azure SQL Database]\(Azure SQL Database への接続\)** タブを選択し、次の操作を行います。
 
@@ -143,29 +147,30 @@ SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データ�
 
 ### <a name="perform-tests"></a>テストを実行する
 
-データベース移行に対するテスト アプローチは、次のアクティビティで構成されています。
+データベース移行に対するテスト アプローチは、次のアクティビティで構成されます。
 
-1. **検証テストを作成する**: データベースの移行をテストするには、SQL クエリを使用する必要があります。 ソースとターゲットの両方のデータベースに対して実行する検証クエリを作成する必要があります。 検証クエリには、定義したスコープが含まれている必要があります。
+1. **検証テストを作成する**: データベース移行をテストするには、SQL クエリを使用する必要があります。 ソースとターゲットの両方のデータベースに対して実行する検証クエリを作成する必要があります。 その検証クエリでは、定義されているスコープに対応する必要があります。
 
 1. **テスト環境を設定する**: このテスト環境には、ソース データベースとターゲット データベースのコピーを含める必要があります。 必ずテスト環境を分離してください。
 
-1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
+1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行した後、結果を分析します。
 
-1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
+1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行した後、結果を分析および比較します。
 
 ### <a name="optimize"></a>最適化
 
-移行後フェーズは、データの精度の問題の調整、完全性の確認、およびワークロードのパフォーマンスの問題への対処のために非常に重要です。
+移行後の段階は、発生したデータの精度の問題を調整したり、完全性を検証したり、ワークロードでのパフォーマンスの問題に対処したりするために非常に重要です。
 
 これらの問題と、それらを軽減するための具体的な手順の詳細については、「[移行後の検証および最適化ガイド](/sql/relational-databases/post-migration-validation-and-optimization-guide)」を参照してください。
 
 ## <a name="migration-assets"></a>移行資産
 
-この移行シナリオの詳細については、次のリソースを参照してください。 これは、実世界の移行プロジェクトの取り組みをサポートするために開発されたものです。
+この移行シナリオを完了するためのその他の支援については、次のリソースを参照してください。 これは、実世界の移行プロジェクトの取り組みをサポートするために開発されたものです。
 
 | タイトル | 説明 |
 | --- | --- |
-| [データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルを提供します。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価の促進に役立ちます。 |
+| [データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130) | 特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルを提供します。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価の促進に役立ちます。 |
+|[MySQL から SQL DB - データベース比較ユーティリティ](https://www.microsoft.com/download/details.aspx?id=103016)|データベース比較ユーティリティは、ソースおよびターゲット プラットフォームの両方でデータが同一であることを確認するために使用できる Windows コンソール アプリケーションです。 このツールを使用すると、すべての、または選択したテーブル、行、および列内の行または列レベルまでデータを効率的に比較できます。|
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 
@@ -180,4 +185,3 @@ SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データ�
 - 移行に関する動画については、[移行工程の概要と、移行と評価のための推奨されるツールとサービス](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)に関する記事を参照してください。
 
 - [クラウド移行リソース](https://azure.microsoft.com/migration/resources/)の詳細については、「[クラウド移行ソリューション](https://azure.microsoft.com/migration)」を参照してください。
-

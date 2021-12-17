@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: sample
 author: likebupt
 ms.author: keli19
-ms.date: 10/14/2020
+ms.date: 10/21/2021
 ms.custom: designer
-ms.openlocfilehash: 4d594115139321c8a4ad2b3aa6b065474bd426fa
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: fa10f97bdbb571c9526e9e611fb0def04ab36b53
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556173"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559639"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーのパイプラインとデータセットのサンプル
 
@@ -23,7 +23,7 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションを持っていない場合は[無料アカウント](https://aka.ms/AMLFree)を作成する
+* Azure サブスクリプション。 Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/)を作成する
 * Azure Machine Learning ワークスペース 
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
@@ -50,12 +50,12 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
    1. キャンバス上部の **[送信]** を選択して、パイプラインの実行を送信します。
 
-   サンプル パイプラインとコンピューティング設定によっては、実行が完了するまでに時間がかかることがあります。 既定のコンピューティング設定の最小ノード サイズは 0 です。これは、アイドル状態になった後に、デザイナーによってリソースが割り当てられる必要があることを意味します。 コンピューティング リソースが既に割り当てられているため、パイプラインの反復実行にかかる時間は短くなります。 さらにデザイナーでは、各モジュール用にキャッシュされた結果を使用して、効率を向上させます。
+   サンプル パイプラインとコンピューティング設定によっては、実行が完了するまでに時間がかかることがあります。 既定のコンピューティング設定の最小ノード サイズは 0 です。これは、アイドル状態になった後に、デザイナーによってリソースが割り当てられる必要があることを意味します。 コンピューティング リソースが既に割り当てられているため、パイプラインの反復実行にかかる時間は短くなります。 さらにデザイナーでは、各コンポーネント用にキャッシュされた結果を使用して、効率を向上させます。
 
 
-1. パイプラインの実行が完了したら、パイプラインをレビューし、各モジュールの出力を表示して詳細を確認できます。 モジュールの出力を表示するには、次の手順を使用します。
+1. パイプラインの実行が完了したら、パイプラインをレビューし、各コンポーネントの出力を表示して詳細を確認できます。 コンポーネントの出力を表示するには、次の手順を使用します。
 
-   1. 出力を表示するキャンバス内のモジュールを右クリックします。
+   1. 出力を表示するキャンバス内のコンポーネントを右クリックします。
    1. **[可視化]** を選択します。
 
 
@@ -72,27 +72,27 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 ## <a name="classification"></a>分類
 
-以下の組み込みの分類のサンプルを確認します。 サンプルの詳細については、デザイナーでサンプルを開いて、モジュールのコメントをご覧ください。
+以下の組み込みの分類のサンプルを確認します。 サンプルの詳細については、デザイナーでサンプルを開いて、コンポーネントのコメントをご覧ください。
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
 | [特徴の選択による二項分類 - 収入の予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-feature-selection-income-prediction.md) | 2 クラスのブースト デシジョン ツリーを使用して、収入を高または低として予測します。 ピアソンの相関関係を使用して、特徴を選択します。
-| [カスタム Python スクリプトを使用した二項分類 - 信用リスクの予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) | クレジット申込書を高リスクまたは低リスクとして分類します。 Python スクリプトの実行モジュールを使用して、データを重み付けします。
+| [カスタム Python スクリプトを使用した二項分類 - 信用リスクの予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) | クレジット申込書を高リスクまたは低リスクとして分類します。 Python スクリプトの実行コンポーネントを使用して、データを重み付けします。
 | [二項分類 - 顧客関係の予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-customer-relationship-prediction.md) | 2 クラス ブースト デシジョン ツリーを使用して、顧客離反を予測します。 偏りのあるデータをサンプリングするには、SMOTE を使用します。
 | [テキスト分類 - Wikipedia SP 500 データセット](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/text-classification-wiki.md) | 多クラス ロジスティック回帰を使用して、Wikipedia の記事から会社の種類を分類します。 |
 | 多クラス分類 - 文字認識 | 一連の二項分類器を作成して、手書きの文字を分類します。 |
 
 ## <a name="computer-vision"></a>Computer Vision
 
-以下の組み込みの Computer Vision のサンプルを確認します。 サンプルの詳細については、デザイナーでサンプルを開いて、モジュールのコメントをご覧ください。
+以下の組み込みの Computer Vision のサンプルを確認します。 サンプルの詳細については、デザイナーでサンプルを開いて、コンポーネントのコメントをご覧ください。
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
-| DenseNet を使用した画像の分類 | Computer Vision モジュールを使用して、PyTorch DenseNet を基にした画像の分類モデルを構築します。| 
+| DenseNet を使用した画像の分類 | Computer Vision コンポーネントを使用して、PyTorch DenseNet を基にした画像の分類モデルを構築します。| 
 
 ## <a name="recommender"></a>レコメンダー
 
-以下の組み込みのレコメンダーのサンプルを確認します。 サンプルの詳細については、デザイナーでサンプルを開いて、モジュールのコメントをご覧ください。
+以下の組み込みのレコメンダーのサンプルを確認します。 サンプルの詳細については、デザイナーでサンプルを開いて、コンポーネントのコメントをご覧ください。
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
@@ -101,7 +101,7 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 ## <a name="utility"></a>ユーティリティ
 
-機械学習のユーティリティと機能を示すサンプルの詳細を確認します。 サンプルの詳細については、デザイナーでサンプルを開いて、モジュールのコメントをご覧ください。
+機械学習のユーティリティと機能を示すサンプルの詳細を確認します。 サンプルの詳細については、デザイナーでサンプルを開いて、コンポーネントのコメントをご覧ください。
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
@@ -115,7 +115,7 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 Azure Machine Learning デザイナーで新しいパイプラインを作成する場合、さまざまなサンプル データセットが既定で用意されています。 これらのサンプル データセットは、デザイナーのホームページのサンプル パイプラインで使用されます。 
 
-サンプル データセットは、 **[データセット]** - **[サンプル]** カテゴリの下にあります。 これは、デザイナーのキャンバスの左側にあるモジュール パレットにあります。 これらのいずれのデータセットも、キャンバスにドラッグすることにより独自のパイプラインで使用できます。
+サンプル データセットは、 **[データセット]** - **[サンプル]** カテゴリの下にあります。 これは、デザイナーのキャンバスの左側にあるコンポーネント パレットにあります。 これらのいずれのデータセットも、キャンバスにドラッグすることにより独自のパイプラインで使用できます。
 
 | データセット名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| データセットの説明 |
 |-------------|:--------------------|
@@ -142,4 +142,3 @@ Azure Machine Learning デザイナーで新しいパイプラインを作成す
 ## <a name="next-steps"></a>次のステップ
 
 予測分析と機械学習の基本について学習する: [チュートリアル: デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)
-

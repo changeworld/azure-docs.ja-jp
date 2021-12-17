@@ -11,296 +11,290 @@ metadata:
   author: mtillman
   ms.author: mtillman
   manager: daveba
-  ms.date: 12/01/2020
-  ms.openlocfilehash: de96c1ed6828a6933102755d6c020cf01c4c9c7b
-  ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/20/2021
-  ms.locfileid: "98611153"
+  ms.date: 04/14/2021
 highlightedContent:
   items:
-  - title: Azure AD とは
-    itemType: overview
-    url: ./fundamentals/active-directory-whatis.md
-  - title: Azure AD の新着情報
-    itemType: whats-new
-    url: ./fundamentals/whats-new.md
-  - title: リモート ワーカーをセキュリティで保護する
-    itemType: get-started
-    url: /enterprise-mobility-security/remote-work/
-  - title: ユーザーにロールを割り当てる
-    itemType: how-to-guide
-    url: ./fundamentals/active-directory-users-assign-role-azure-portal.md
-  - title: Azure AD デプロイ チェックリスト
-    itemType: concept
-    url: ./fundamentals/active-directory-deployment-checklist-p2.md
-  - title: Azure AD を使用して ID およびアクセス管理の回復性を強化する
-    itemType: overview
-    url: ./fundamentals/resilience-overview.md
+    - title: Azure AD とは
+      itemType: overview
+      url: ./fundamentals/active-directory-whatis.md
+    - title: Azure AD の新着情報
+      itemType: whats-new
+      url: ./fundamentals/whats-new.md
+    - title: リモート ワーカーをセキュリティで保護する
+      itemType: get-started
+      url: /enterprise-mobility-security/remote-work/
+    - title: 検証可能な資格情報 (プレビュー) とは
+      itemType: overview
+      url: ./verifiable-credentials/decentralized-identifier-overview.md
+    - title: Azure AD デプロイ チェックリスト
+      itemType: concept
+      url: ./fundamentals/active-directory-deployment-checklist-p2.md
+    - title: Azure AD を使用して ID およびアクセス管理の回復性を強化する
+      itemType: overview
+      url: ./fundamentals/resilience-overview.md
 conceptualContent:
   items:
-  - title: アプリケーション管理
-    links:
-    - url: ./manage-apps/what-is-application-management.md
-      itemType: overview
-      text: アプリケーション管理とは
-    - url: ./manage-apps/view-applications-portal.md
-      itemType: quickstart
-      text: ID 管理にテナントを使用しているアプリを表示する
-    - url: ./manage-apps/add-application-portal-setup-sso.md
-      itemType: quickstart
-      text: SAML ベースの SSO を設定する
-    footerLink:
-      url: ./manage-apps/index.yml
-      text: 詳細情報
-  - title: アプリケーションと HR のプロビジョニング
-    links:
-    - url: ./app-provisioning/user-provisioning.md
-      itemType: overview
-      text: アプリケーションのプロビジョニングとは
-    - url: ./app-provisioning/how-provisioning-works.md
-      itemType: concept
-      text: アプリケーションのプロビジョニングのしくみ
-    - url: ./app-provisioning/plan-cloud-hr-provision.md
-      itemType: how-to-guide
-      text: クラウド HR のプロビジョニングのデプロイ計画
-    footerLink:
-      url: ./app-provisioning/index.yml
-      text: 詳細情報
-  - title: 認証
-    links:
-    - url: ./authentication/overview-authentication.md
-      itemType: concept
-      text: Azure AD Authentication の概要
-    - url: ./authentication/tutorial-enable-sspr.md
-      itemType: tutorial
-      text: セルフサービス パスワード リセットを有効にする
-    - url: ./authentication/tutorial-enable-azure-mfa.md
-      itemType: tutorial
-      text: Azure AD の Multi-Factor Authentication を有効にする
-    footerLink:
-      url: ./authentication/index.yml
-      text: 詳細情報
-  - title: クラウドの同期
-    links:
-    - url: ./cloud-sync/what-is-cloud-sync.md
-      itemType: overview
-      text: クラウド同期とは
-    - url: ./cloud-sync/tutorial-single-forest.md
-      itemType: tutorial
-      text: 単一のフォレストを単一の Azure AD テナントに統合する
-    - url: ./cloud-sync/how-to-install.md
-      itemType: how-to-guide
-      text: Azure AD Connect プロビジョニング エージェントのインストール
-    footerLink:
-      url: ./cloud-sync/index.yml
-      text: 詳細情報
-  - title: 条件付きアクセス
-    links:
-    - url: ./conditional-access/overview.md
-      itemType: overview
-      text: 条件付きアクセスとは
-    - url: ./authentication/tutorial-enable-azure-mfa.md
-      itemType: quickstart
-      text: 特定のアプリで MFA を必須にする
-    - url: ./conditional-access/location-condition.md
-      itemType: concept
-      text: 場所に基づく条件
-    footerLink:
-      url: ./conditional-access/index.yml
-      text: 詳細情報
-  - title: デバイス管理
-    links:
-    - url: ./devices/overview.md
-      itemType: overview
-      text: デバイス管理とは
-    - url: ./devices/hybrid-azuread-join-plan.md
-      itemType: how-to-guide
-      text: ハイブリッド Azure AD 参加を計画する
-    - url: ./devices/azureadjoin-plan.md
-      itemType: how-to-guide
-      text: Azure AD 参加を計画する
-    footerLink:
-      url: ./devices/index.yml
-      text: 詳細情報
-  - title: ドメイン サービス
-    links:
-    - url: ../active-directory-domain-services/overview.md
-      itemType: overview
-      text: Azure AD ドメイン サービスとは
-    - url: ../active-directory-domain-services/tutorial-create-instance.md
-      itemType: quickstart
-      text: Azure AD Domain Services を有効にする
-    - url: ../active-directory-domain-services/manage-group-policy.md
-      itemType: how-to-guide
-      text: グループ ポリシーを管理する
-    footerLink:
-      url: ../active-directory-domain-services/index.yml
-      text: 詳細情報
-  - title: エンタープライズ ユーザー
-    links:
-    - url: ./enterprise-users/groups-create-rule.md
-      itemType: how-to-guide
-      text: 動的グループの作成
-    - url: ./enterprise-users/groups-settings-v2-cmdlets.md
-      itemType: how-to-guide
-      text: Azure AD グループ用の PowerShell
-    - url: ./enterprise-users/directory-service-limits-restrictions.md
-      itemType: reference
-      text: Azure AD サービスの制限と制約
-    footerLink:
-      url: ./enterprise-users/index.yml
-      text: 詳細情報
-  - title: '[外部 ID]'
-    links:
-    - url: ./external-identities/compare-with-b2c.md
-      itemType: overview
-      text: 外部ユーザー用のソリューションを比較する
-    - url: ../active-directory-b2c/overview.md
-      itemType: overview
-      text: コンシューマー向けにアプリを拡張する (B2C)
-    - url: ./external-identities/what-is-b2b.md
-      itemType: overview
-      text: 組織外のユーザーとの共同作業 (B2B)
-    footerLink:
-      url: ./external-identities/index.yml
-      text: 詳細情報
-  - title: ハイブリッド ID
-    links:
-    - url: ./hybrid/whatis-hybrid-identity.md
-      itemType: overview
-      text: ハイブリッド ID とは
-    - url: ./hybrid/how-to-connect-sso.md
-      itemType: how-to-guide
-      text: Azure AD Connect によるシングル サインオン
-    - url: ./hybrid/how-to-connect-install-custom.md
-      itemType: how-to-guide
-      text: Azure AD Connect のカスタム インストール
-    footerLink:
-      url: ./hybrid/index.yml
-      text: 詳細情報
-  - title: Identity Governance
-    links:
-    - url: ./governance/entitlement-management-access-package-first.md
-      itemType: how-to-guide
-      text: アクセス パッケージを作成します。
-    - url: ./governance/create-access-review.md
-      itemType: how-to-guide
-      text: グループまたはアプリのアクセス レビューを作成する
-    - url: ./conditional-access/terms-of-use.md
-      itemType: how-to-guide
-      text: ユーザーに使用条件への同意を要求する
-    footerLink:
-      url: ./governance/index.yml
-      text: 詳細情報
-  - title: Identity Protection
-    links:
-    - url: ./identity-protection/overview-identity-protection.md
-      itemType: overview
-      text: ID 保護とは
-    - url: ./identity-protection/howto-identity-protection-configure-risk-policies.md
-      itemType: how-to-guide
-      text: リスク ポリシーの構成
-    - url: ./identity-protection/howto-identity-protection-remediate-unblock.md
-      itemType: how-to-guide
-      text: ユーザーのブロックを解除する方法
-    footerLink:
-      url: ./identity-protection/index.yml
-      text: 詳細情報
-  - title: Azure リソースのマネージド ID
-    links:
-    - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
-      itemType: tutorial
-      text: Windows VM を使用した Azure SQL へのアクセス
-    - url: ./managed-identities-azure-resources/how-to-use-vm-token.md
-      itemType: how-to-guide
-      text: Azure VM を使用したトークンの取得
-    - url: ./managed-identities-azure-resources/services-support-managed-identities.md
-      itemType: concept
-      text: マネージド ID をサポートするサービス
-    footerLink:
-      url: ./managed-identities-azure-resources/index.yml
-      text: 詳細情報
-  - title: Microsoft ID プラットフォーム
-    links:
-    - url: ./develop/v2-overview.md
-      itemType: overview
-      text: Microsoft ID プラットフォームについて
-    - url: ./develop/v2-oauth2-auth-code-flow.md
-      itemType: concept
-      text: OAuth 2.0 コード フロー付与
-    - url: ./develop/quickstart-register-app.md
-      itemType: quickstart
-      text: Microsoft ID プラットフォームにアプリを登録する
-    footerLink:
-      url: ./develop/index.yml
-      text: 詳細情報
-  - title: Privileged Identity Management (PIM)
-    links:
-    - url: ./privileged-identity-management/pim-getting-started.md
-      itemType: how-to-guide
-      text: PIM の使用を開始する
-    - url: ./privileged-identity-management/pim-how-to-activate-role.md
-      itemType: how-to-guide
-      text: 自分のディレクトリ ロールをアクティブ化する
-    - url: ./privileged-identity-management/pim-how-to-add-role-to-user.md
-      itemType: how-to-guide
-      text: ディレクトリ ロールを割り当てる
-    footerLink:
-      url: ./privileged-identity-management/index.yml
-      text: 詳細情報
-  - title: レポートと監視
-    links:
-    - url: ./reports-monitoring/concept-audit-logs.md
-      itemType: concept
-      text: 監査ログ
-    - url: ./reports-monitoring/concept-sign-ins.md
-      itemType: concept
-      text: サインイン ログ
-    - url: ./reports-monitoring/reference-sign-ins-error-codes.md
-      itemType: reference
-      text: サインインのエラー コード リファレンス
-    footerLink:
-      url: ./reports-monitoring/index.yml
-      text: 詳細情報
-  - title: ロール
-    links:
-    - url: ./roles/groups-assign-role.md
-      itemType: concept
-      text: Azure AD ロールについて
-    - url: ./roles/concept-understand-roles.md
-      itemType: how-to-guide
-      text: カスタム ロールを作成する
-    - url: ./roles/groups-view-assignments.md
-      itemType: reference
-      text: グループに割り当てられたロールを表示する
-    footerLink:
-      url: ./roles/index.yml
-      text: 詳細情報
-  - title: サードパーティ アプリケーション
-    links:
-    - url: ./saas-apps/amazon-web-service-tutorial.md
-      itemType: tutorial
-      text: Azure AD シングル サインオンとアマゾン ウェブ サービスとの統合
-    - url: ./saas-apps/workday-inbound-tutorial.md
-      itemType: tutorial
-      text: Workday を構成し、自動ユーザー プロビジョニングに対応させる
-    - url: ./develop/v2-howto-app-gallery-listing.md
-      itemType: get-started
-      text: ギャラリーへのアプリの追加要求
-    footerLink:
-      url: ./saas-apps/tutorial-list.md
-      text: その他のアプリを表示
+    - title: アプリケーション管理
+      links:
+        - url: ./manage-apps/what-is-application-management.md
+          itemType: overview
+          text: アプリケーション管理とは
+        - url: ./manage-apps/view-applications-portal.md
+          itemType: quickstart
+          text: ID 管理にテナントを使用しているアプリを表示する
+        - url: ./manage-apps/add-application-portal-setup-sso.md
+          itemType: quickstart
+          text: SAML ベースの SSO を設定する
+      footerLink:
+        url: ./manage-apps/index.yml
+        text: 詳細情報
+    - title: アプリケーションと HR のプロビジョニング
+      links:
+        - url: ./app-provisioning/user-provisioning.md
+          itemType: overview
+          text: アプリケーションのプロビジョニングとは
+        - url: ./app-provisioning/how-provisioning-works.md
+          itemType: concept
+          text: アプリケーションのプロビジョニングのしくみ
+        - url: ./app-provisioning/plan-cloud-hr-provision.md
+          itemType: how-to-guide
+          text: クラウド HR のプロビジョニングのデプロイ計画
+      footerLink:
+        url: ./app-provisioning/index.yml
+        text: 詳細情報
+    - title: 認証
+      links:
+        - url: ./authentication/overview-authentication.md
+          itemType: concept
+          text: Azure AD Authentication の概要
+        - url: ./authentication/tutorial-enable-sspr.md
+          itemType: tutorial
+          text: セルフサービス パスワード リセットを有効にする
+        - url: ./authentication/tutorial-enable-azure-mfa.md
+          itemType: tutorial
+          text: Azure AD の Multi-Factor Authentication を有効にする
+      footerLink:
+        url: ./authentication/index.yml
+        text: 詳細情報
+    - title: クラウドの同期
+      links:
+        - url: ./cloud-sync/what-is-cloud-sync.md
+          itemType: overview
+          text: クラウド同期とは
+        - url: ./cloud-sync/tutorial-single-forest.md
+          itemType: tutorial
+          text: 単一のフォレストを単一の Azure AD テナントに統合する
+        - url: ./cloud-sync/how-to-install.md
+          itemType: how-to-guide
+          text: Azure AD Connect プロビジョニング エージェントのインストール
+      footerLink:
+        url: ./cloud-sync/index.yml
+        text: 詳細情報
+    - title: 条件付きアクセス
+      links:
+        - url: ./conditional-access/overview.md
+          itemType: overview
+          text: 条件付きアクセスとは
+        - url: ./authentication/tutorial-enable-azure-mfa.md
+          itemType: quickstart
+          text: 特定のアプリで MFA を必須にする
+        - url: ./conditional-access/location-condition.md
+          itemType: concept
+          text: 場所に基づく条件
+      footerLink:
+        url: ./conditional-access/index.yml
+        text: 詳細情報
+    - title: デバイス管理
+      links:
+        - url: ./devices/overview.md
+          itemType: overview
+          text: デバイス管理とは
+        - url: ./devices/hybrid-azuread-join-plan.md
+          itemType: how-to-guide
+          text: ハイブリッド Azure AD 参加を計画する
+        - url: ./devices/azureadjoin-plan.md
+          itemType: how-to-guide
+          text: Azure AD 参加を計画する
+      footerLink:
+        url: ./devices/index.yml
+        text: 詳細情報
+    - title: ドメイン サービス
+      links:
+        - url: ../active-directory-domain-services/overview.md
+          itemType: overview
+          text: Azure AD ドメイン サービスとは
+        - url: ../active-directory-domain-services/tutorial-create-instance.md
+          itemType: quickstart
+          text: Azure AD Domain Services を有効にする
+        - url: ../active-directory-domain-services/manage-group-policy.md
+          itemType: how-to-guide
+          text: グループ ポリシーを管理する
+      footerLink:
+        url: ../active-directory-domain-services/index.yml
+        text: 詳細情報
+    - title: エンタープライズ ユーザー
+      links:
+        - url: ./enterprise-users/groups-create-rule.md
+          itemType: how-to-guide
+          text: 動的グループの作成
+        - url: ./enterprise-users/groups-settings-v2-cmdlets.md
+          itemType: how-to-guide
+          text: Azure AD グループ用の PowerShell
+        - url: ./enterprise-users/directory-service-limits-restrictions.md
+          itemType: reference
+          text: Azure AD サービスの制限と制約
+      footerLink:
+        url: ./enterprise-users/index.yml
+        text: 詳細情報
+    - title: '[外部 ID]'
+      links:
+        - url: ./external-identities/compare-with-b2c.md
+          itemType: overview
+          text: 外部ユーザー用のソリューションを比較する
+        - url: ../active-directory-b2c/overview.md
+          itemType: overview
+          text: コンシューマー向けにアプリを拡張する (B2C)
+        - url: ./external-identities/what-is-b2b.md
+          itemType: overview
+          text: 組織外のユーザーとの共同作業 (B2B)
+      footerLink:
+        url: ./external-identities/index.yml
+        text: 詳細情報
+    - title: ハイブリッド ID
+      links:
+        - url: ./hybrid/whatis-hybrid-identity.md
+          itemType: overview
+          text: ハイブリッド ID とは
+        - url: ./hybrid/how-to-connect-sso.md
+          itemType: how-to-guide
+          text: Azure AD Connect によるシングル サインオン
+        - url: ./hybrid/how-to-connect-install-custom.md
+          itemType: how-to-guide
+          text: Azure AD Connect のカスタム インストール
+      footerLink:
+        url: ./hybrid/index.yml
+        text: 詳細情報
+    - title: Identity Governance
+      links:
+        - url: ./governance/entitlement-management-access-package-first.md
+          itemType: how-to-guide
+          text: アクセス パッケージを作成します。
+        - url: ./governance/create-access-review.md
+          itemType: how-to-guide
+          text: グループまたはアプリのアクセス レビューを作成する
+        - url: ./conditional-access/terms-of-use.md
+          itemType: how-to-guide
+          text: ユーザーに使用条件への同意を要求する
+      footerLink:
+        url: ./governance/index.yml
+        text: 詳細情報
+    - title: Identity Protection
+      links:
+        - url: ./identity-protection/overview-identity-protection.md
+          itemType: overview
+          text: ID 保護とは
+        - url: ./identity-protection/howto-identity-protection-configure-risk-policies.md
+          itemType: how-to-guide
+          text: リスク ポリシーの構成
+        - url: ./identity-protection/howto-identity-protection-remediate-unblock.md
+          itemType: how-to-guide
+          text: ユーザーのブロックを解除する方法
+      footerLink:
+        url: ./identity-protection/index.yml
+        text: 詳細情報
+    - title: Azure リソースのマネージド ID
+      links:
+        - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
+          itemType: tutorial
+          text: Windows VM を使用した Azure SQL へのアクセス
+        - url: ./managed-identities-azure-resources/how-to-use-vm-token.md
+          itemType: how-to-guide
+          text: Azure VM を使用したトークンの取得
+        - url: ./managed-identities-azure-resources/services-support-managed-identities.md
+          itemType: concept
+          text: マネージド ID をサポートするサービス
+      footerLink:
+        url: ./managed-identities-azure-resources/index.yml
+        text: 詳細情報
+    - title: Microsoft ID プラットフォーム
+      links:
+        - url: ./develop/v2-overview.md
+          itemType: overview
+          text: Microsoft ID プラットフォームについて
+        - url: ./develop/v2-oauth2-auth-code-flow.md
+          itemType: concept
+          text: OAuth 2.0 コード フロー付与
+        - url: ./develop/quickstart-register-app.md
+          itemType: quickstart
+          text: Microsoft ID プラットフォームにアプリを登録する
+      footerLink:
+        url: ./develop/index.yml
+        text: 詳細情報
+    - title: Privileged Identity Management (PIM)
+      links:
+        - url: ./privileged-identity-management/pim-getting-started.md
+          itemType: how-to-guide
+          text: PIM の使用を開始する
+        - url: ./privileged-identity-management/pim-how-to-activate-role.md
+          itemType: how-to-guide
+          text: 自分のディレクトリ ロールをアクティブ化する
+        - url: ./privileged-identity-management/pim-how-to-add-role-to-user.md
+          itemType: how-to-guide
+          text: ディレクトリ ロールを割り当てる
+      footerLink:
+        url: ./privileged-identity-management/index.yml
+        text: 詳細情報
+    - title: レポートと監視
+      links:
+        - url: ./reports-monitoring/concept-audit-logs.md
+          itemType: concept
+          text: 監査ログ
+        - url: ./reports-monitoring/concept-sign-ins.md
+          itemType: concept
+          text: サインイン ログ
+        - url: ./reports-monitoring/concept-sign-ins.md
+          itemType: reference
+          text: サインインのエラー コード リファレンス
+      footerLink:
+        url: ./reports-monitoring/index.yml
+        text: 詳細情報
+    - title: ロール
+      links:
+        - url: ./roles/concept-understand-roles.md
+          itemType: concept
+          text: Azure AD ロールについて
+        - url: ./roles/custom-create.md
+          itemType: how-to-guide
+          text: カスタム ロールを作成する
+        - url: ./roles/groups-view-assignments.md
+          itemType: reference
+          text: グループに割り当てられたロールを表示する
+      footerLink:
+        url: ./roles/index.yml
+        text: 詳細情報
+    - title: サードパーティ アプリケーション
+      links:
+        - url: ./saas-apps/amazon-web-service-tutorial.md
+          itemType: tutorial
+          text: Azure AD シングル サインオンとアマゾン ウェブ サービスとの統合
+        - url: ./saas-apps/workday-inbound-tutorial.md
+          itemType: tutorial
+          text: Workday を構成し、自動ユーザー プロビジョニングに対応させる
+        - url: ./develop/v2-howto-app-gallery-listing.md
+          itemType: get-started
+          text: ギャラリーへのアプリの追加要求
+      footerLink:
+        url: ./saas-apps/tutorial-list.md
+        text: その他のアプリを表示
 additionalContent:
   sections:
-  - items:
-    - title: Microsoft 365
-      summary: Azure AD を含む完全なソリューション、Microsoft 365 に関する情報をご覧いただけます。
-      url: /microsoft-365/
-    - title: Azure AD PowerShell
-      summary: Azure AD PowerShell モジュールをインストールして使用する方法を確認してください。
-      url: /powershell/module/azuread/
-    - title: Azure AD 用の Azure CLI コマンド
-      summary: CLI リファレンスで Azure AD コマンドを確認してください。
-      url: /cli/azure/ad
+    - items:
+        - title: Microsoft 365
+          summary: Azure AD を含む完全なソリューション、Microsoft 365 に関する情報をご覧いただけます。
+          url: /microsoft-365/
+        - title: Azure AD PowerShell
+          summary: Azure AD PowerShell モジュールをインストールして使用する方法を確認してください。
+          url: /powershell/module/azuread/
+        - title: Azure AD 用の Azure CLI コマンド
+          summary: CLI リファレンスで Azure AD コマンドを確認してください。
+          url: /cli/azure/ad

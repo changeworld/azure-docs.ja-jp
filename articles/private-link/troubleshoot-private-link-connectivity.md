@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 45a7a146dd929408b50a0045fe2598726ee05505
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9aa0ac4334d50a7b3a55ff992fb3e5a984786384
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95544311"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155023"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Azure Private Link 接続に関する問題のトラブルシューティングを行う
 
@@ -47,7 +47,7 @@ Private Link で使用できる接続シナリオを次に示します。
 
 1. リソースを参照して Private Link の構成を確認します。
 
-    a. **[プライベート リンク センター]** に移動します。
+    a. [[プライベート リンク センター]](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/overview) に移動します。
 
       ![プライベート リンク センター](./media/private-link-tsg/private-link-center.png)
 
@@ -107,7 +107,17 @@ Private Link で使用できる接続シナリオを次に示します。
 
        ![プライベート リンク サービスのメトリックを確認する](./media/private-link-tsg/pls-metrics.png)
 
-1. 問題が解決されず、接続の問題が依然として存在する場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) チームにお問い合わせください。
+1. 分析情報に関する [Azure Monitor - Networks](../azure-monitor/insights/network-insights-overview.md#dependency-view) を使用し、以下にアクセスしてリソースの依存関係ビューを確認します。
+     - Azure Monitor
+     - ネットワーク
+     - Private Link サービス
+     - [依存関係] ビュー 
+
+![AzureMonitor](https://user-images.githubusercontent.com/20302679/135001735-56a9484b-f9b4-484b-a503-cfb9d20b264a.png)
+
+![依存関係ビュー](https://user-images.githubusercontent.com/20302679/135001741-8e848c52-d4bb-4646-b0d3-a85614ebe16c.png)
+
+4. 問題が解決されず、接続の問題が依然として存在する場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) チームにお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

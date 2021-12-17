@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: b1e4b06fcbecf11d7d5f58a583fe3bd6643d99ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 784fed6efb83e02940c6b73fb4c3aab792c4cf99
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709396"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112518234"
 ---
 # <a name="troubleshooting-apache-kafka-for-confluent-cloud-solutions"></a>Apache Kafka for Confluent Cloud ソリューションのトラブルシューティング
 
 このドキュメントには、Apache Kafka for Confluent Cloud を使用するソリューションのトラブルシューティングに関する情報が含まれています。
 
-回答が見つからない場合、または問題を解決できない場合は、[Azure portal を通じてリクエストを作成する](manage.md#get-support)か、[Confluent サポート](https://support.confluent.io)にお問い合わせください。
+回答が見つからない場合、または問題を解決できない場合は、[Azure portal を通じてリクエストを作成する](get-support.md)か、[Confluent サポート](https://support.confluent.io)にお問い合わせください。
 
 ## <a name="cant-find-offer-in-the-marketplace"></a>Marketplace でオファーが見つからない
 

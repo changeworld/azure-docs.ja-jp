@@ -2,13 +2,14 @@
 title: レジストリのロールとアクセス許可
 description: Azure のロールベースのアクセス制御 (Azure RBAC) と ID およびアクセス管理 (IAM) を使用して、Azure コンテナー レジストリ内のリソースへのきめ細かいアクセス許可を提供します。
 ms.topic: article
-ms.date: 10/14/2020
-ms.openlocfilehash: 097ccf89caf63d2a504d072cf04c2b534a57a031
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/02/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 494373a299eb0f4d2bb100e71a1e1000336d1613
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92207956"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451639"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry のロールとアクセス許可
 
@@ -16,17 +17,17 @@ Azure Container Registry サービスは、Azure コンテナー レジストリ
 
 | ロール/アクセス許可       | [Resource Manager へのアクセス](#access-resource-manager) | [レジストリの作成/削除](#create-and-delete-registry) | [イメージのプッシュ](#push-image) | [イメージのプル](#pull-image) | [イメージ データを削除する](#delete-image-data) | [ポリシーの変更](#change-policies) |   [イメージの署名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| 所有者 | X | X | X | X | X | X |  |  
-| Contributor | X | X | X |  X | X | X |  |  
+| 所有者 | X | X | X | X | X | X |  |
+| Contributor | X | X | X |  X | X | X |  |
 | Reader | X |  |  | X |  |  |  |
-| AcrPush |  |  | X | X | |  |  |  
-| AcrPull |  |  |  | X |  |  |  |  
+| AcrPush |  |  | X | X | |  |  |
+| AcrPull |  |  |  | X |  |  |  |
 | AcrDelete |  |  |  |  | X |  |  |
 | AcrImageSigner |  |  |  |  |  |  | X |
 
 ## <a name="assign-roles"></a>ロールを割り当てる
 
-既存のユーザー、グループ、サービス プリンシパル、またはマネージド ID にロールの割り当てを追加するための手順の概要については、「[ロールの割り当てを追加する手順](../role-based-access-control/role-assignments-steps.md)」を参照してください。 Azure portal、Azure CLI、またはその他の Azure ツールを使用できます。
+既存のユーザー、グループ、サービス プリンシパル、またはマネージド ID にロールの割り当てを追加するための手順の概要については、「[ロールの割り当てを追加する手順](../role-based-access-control/role-assignments-steps.md)」を参照してください。 Azure portal、Azure CLI、Azure PowerShell、またはその他の Azure ツールを使用できます。
 
 サービス プリンシパルを作成する場合は、コンテナー レジストリなどの Azure リソースへのアクセスとアクセス許可も構成します。 Azure CLI を使用したスクリプトの例については、「[ サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md#create-a-service-principal)」を参照してください。
 
@@ -44,11 +45,23 @@ CI/CD ソリューションから `docker build` コマンドを自動化する�
 
 ### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code Docker 拡張機能
 
+<<<<<<< HEAD
 Visual Studio Code [Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)などのツールでは、使用可能な Azure Container Registry の一覧を取得するために、追加のリソース プロバイダー アクセスが必要です。 この場合は、**閲覧者** または **共同作成者** ロールへのアクセスをユーザーに提供します。 これらのロールでは、`docker pull`、`docker push`、`az acr list`、`az acr build`、およびその他の機能が許可されます。 
+=======
+Visual Studio Code [Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)などのツールでは、使用可能な Azure コンテナー レジストリの一覧を取得するために、追加のリソース プロバイダー アクセスが必要です。 この場合は、**閲覧者** または **共同作成者** ロールへのアクセスをユーザーに提供します。 これらのロールでは、`docker pull`、`docker push`、`az acr list`、`az acr build`、およびその他の機能が許可されます。
+>>>>>>> repo_sync_working_branch
 
 ## <a name="access-resource-manager"></a>Resource Manager へのアクセス
 
-Azure portal と [Azure CLI](/cli/azure/) によるレジストリ管理には、Azure Resource Manager へのアクセスが必要です。 たとえば、`az acr list` コマンドを使用してレジストリの一覧を取得するには、このアクセス許可セットが必要です。 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal と [Azure CLI](/cli/azure/) によるレジストリ管理には、Azure Resource Manager へのアクセスが必要です。 たとえば、`az acr list` コマンドを使用してレジストリの一覧を取得するには、このアクセス許可セットが必要です。
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Azure portal と [Azure PowerShell](/powershell/azure/) によるレジストリ管理には、Azure Resource Manager へのアクセスが必要です。 たとえば、`Get-AzContainerRegistry` コマンドレットを使用してレジストリの一覧を取得するには、このアクセス許可セットが必要です。
+
+---
 
 ## <a name="create-and-delete-registry"></a>レジストリの作成と削除
 
@@ -56,7 +69,7 @@ Azure Container Registry を作成および削除する権限です。
 
 ## <a name="push-image"></a>イメージのプッシュ
 
-レジストリに対して、イメージの `docker push` を行う、または Helm Chart などの別の[サポートされている成果物](container-registry-image-formats.md)をプッシュする権限です。 承認された ID を使用してレジストリで[認証](container-registry-authentication.md)を行う必要があります。 
+レジストリに対して、イメージの `docker push` を行う、または Helm Chart などの別の[サポートされている成果物](container-registry-image-formats.md)をプッシュする権限です。 承認された ID を使用してレジストリで[認証](container-registry-authentication.md)を行う必要があります。
 
 ## <a name="pull-image"></a>イメージのプル
 
@@ -76,9 +89,11 @@ Azure Container Registry を作成および削除する権限です。
 
 ## <a name="custom-roles"></a>カスタム ロール
 
-他の Azure リソースと同様に、Azure Container Registry に対するきめ細かいアクセス許可を持つ[カスタムロール](../role-based-access-control/custom-roles.md)を作成できます。 次に、ユーザー、サービスプリンシパル、またはレジストリと対話する必要がある他の ID にカスタムロールを割り当てます。 
+他の Azure リソースと同様に、Azure Container Registry に対するきめ細かいアクセス許可を持つ[カスタムロール](../role-based-access-control/custom-roles.md)を作成できます。 次に、ユーザー、サービスプリンシパル、またはレジストリと対話する必要がある他の ID にカスタムロールを割り当てます。
 
 どのアクセス許可をカスタムロールに適用するか決めるには、Microsoft.containerregistry [アクション](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry) の一覧を参照し、[組み込みの ACR ロール](../role-based-access-control/built-in-roles.md) で許可されているアクションを確認するか、次のコマンドを実行します：
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az provider operation show --namespace Microsoft.ContainerRegistry
@@ -86,8 +101,21 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 カスタムロールを定義するには、 [カスタムロールを作成する手順](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) を参照してください。
 
-> [!IMPORTANT]
-> カスタムロールでは、Azure Container Registry は、現在、一致するすべてのアクションへのアクセスを許可する `Microsoft.ContainerRegistry/*` や `Microsoft.ContainerRegistry/registries/*` などのワイルドカードを、サポートしていません。 ロールに、必要なアクションを個別に指定します。
+> [!NOTE]
+> [Azure Resource Manager プライベート リンク](../azure-resource-manager/management/create-private-link-access-portal.md)を使用して構成されたテナント内の Azure Container Registry では、カスタム ロールで `Microsoft.ContainerRegistry/*/read` や `Microsoft.ContainerRegistry/registries/*/write` などのワイルドカード アクションを使用することがサポートされており、一致するすべてのアクションへのアクセスが許可されます。 ARM プライベート リンクのないテナントで、必要なすべてのレジストリ アクションをカスタム ロールで個別に指定します。
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Get-AzProviderOperation -OperationSearchString Microsoft.ContainerRegistry/*
+```
+
+カスタムロールを定義するには、 [カスタムロールを作成する手順](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) を参照してください。
+
+> [!NOTE]
+> [Azure Resource Manager プライベート リンク](../azure-resource-manager/management/create-private-link-access-portal.md)を使用して構成されたテナント内の Azure Container Registry では、カスタム ロールで `Microsoft.ContainerRegistry/*/read` や `Microsoft.ContainerRegistry/registries/*/write` などのワイルドカード アクションを使用することがサポートされており、一致するすべてのアクションへのアクセスが許可されます。 ARM プライベート リンクのないテナントで、必要なすべてのレジストリ アクションをカスタム ロールで個別に指定します。
+
+---
 
 ### <a name="example-custom-role-to-import-images"></a>例:イメージをインポートするためのカスタム ロール
 
@@ -121,7 +149,7 @@ JSON 記述を使用してカスタム ロールを作成または更新する�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure portal](../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md)、またはその他の Azure ツールを使用した Azure ID への Azure ロールの割り当てについてさらに理解します。
+* [Azure portal](../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md)、[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)、またはその他の Azure ツールを使用した Azure ID への Azure ロールの割り当ての詳細を確認します。
 
 * Azure Container Registry の[認証オプション](container-registry-authentication.md)について理解します。
 

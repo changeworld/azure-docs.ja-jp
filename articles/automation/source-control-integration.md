@@ -3,14 +3,15 @@ title: Azure Automation でソース管理の統合を使用する
 description: この記事では、Azure Automation のソース管理を他のリポジトリと同期させる方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/10/2021
+ms.date: 11/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 281da27ce95649e85dae5d0795bb743f21fdb578
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c809021f781e9aa8376b9383328a38bd1c784510
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102631746"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477119"
 ---
 # <a name="use-source-control-integration"></a>ソース管理の統合を使用する
 
@@ -29,8 +30,8 @@ Azure Automation は、次の 3 種類のソース管理をサポートしてい
 ## <a name="prerequisites"></a>前提条件
 
 * ソース管理リポジトリ (GitHub または Azure Repos)
-* [実行アカウント](automation-security-overview.md#run-as-accounts)
-* [`AzureRM.Profile` モジュール](/powershell/module/azurerm.profile/)を Automation アカウントにインポートする必要があります。 対応する Az モジュール (`Az.Accounts`) は、Automation ソース管理では動作しないことに注意してください。
+* システム割り当て[マネージド ID](automation-security-overview.md#managed-identities) が必要です。 Automation アカウントにシステム割り当てマネージド ID を構成していない場合は、[マネージド ID の有効化](enable-managed-identity-for-automation.md#enable-a-system-assigned-managed-identity-for-an-azure-automation-account)に関する記事を参照してください。
+* システム割り当てマネージド ID を Automation アカウントの[共同作成者](automation-role-based-access-control.md#contributor)ロールに割り当てます。
 
 > [!NOTE]
 > ソース管理の同期ジョブは、ユーザーの Automation アカウントのもとで実行され、その他の Automation ジョブと同じレートで課金されます。
@@ -38,6 +39,24 @@ Azure Automation は、次の 3 種類のソース管理をサポートしてい
 ## <a name="configure-source-control"></a>ソース管理を構成する
 
 このセクションでは、Automation アカウントのソース管理を構成する方法について説明します。 Azure portal または PowerShell のいずれかを使用できます。
+
+> [!NOTE]
+> Azure Automation では、ソース管理統合を使用したシステム割り当てマネージド ID のみがサポートされます。 実行アカウントとシステム割り当てマネージド ID の両方が有効になっている場合は、マネージド ID が優先されます。 代わりに実行アカウントを使用する場合は、`AUTOMATION_SC_USE_RUNAS` という名前のブール型の [Automation 変数を作成し](./shared-resources/variables.md)、値として `true` を指定できます。
+
+### <a name="assign-system-assigned-identity-to-contributor-role"></a>共同作成者ロールにシステム割り当て ID を割り当てる
+
+この例では、Azure PowerShell を使用して、サブスクリプションの共同作成者ロールを Azure Automation アカウント リソースに割り当てる方法を示します。
+
+1. 昇格された特権で PowerShell コンソールを開きます。
+1. コマンド `Connect-AzAccount` を実行して、Azure にサインインします。
+1. **共同作成者** ロールにマネージド ID を割り当てるには、次のコマンドを実行します。
+
+    ```powershell
+    New-AzRoleAssignment `
+        -ObjectId <automation-Identity-object-id> `
+        -Scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}" `
+        -RoleDefinitionName "Contributor"
+    ```
 
 ### <a name="configure-source-control-in-azure-portal"></a>Azure portal でソース管理を構成する
 
@@ -87,7 +106,6 @@ New-AzAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accoun
 
 > [!NOTE]
 > Azure Repos (Git) では、以前の形式で使用されていた **visualstudio.com** ではなく、**dev.azure.com** にアクセスする URL を使用します。 古い URL 形式の `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` は非推奨ですが、まだサポートされています。 新しい形式が推奨されています。
-
 
 ```powershell-interactive
 New-AzAutomationSourceControl -Name SCReposGit -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"

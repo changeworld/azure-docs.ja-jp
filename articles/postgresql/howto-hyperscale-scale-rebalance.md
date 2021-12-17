@@ -6,17 +6,17 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/09/2021
-ms.openlocfilehash: 63322fac4c6ad5b705deedcd8a80466ddd803814
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 07/20/2021
+ms.openlocfilehash: 19b44306185dcfcdd3675898b9066019f686dc75
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305703"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463559"
 ---
 # <a name="rebalance-shards-in-hyperscale-citus-server-group"></a>Hyperscale (Citus) サーバー グループでシャードを再調整する
 
-新しく追加したノードを利用するには、分散テーブルの[シャード](concepts-hyperscale-distributed-data.md#shards)を再調整する必要があります。これは、既存のノードから新しいノードにいくつかのシャードを移動することを意味します。
+新しく追加したノードを利用するには、分散テーブルの[シャード](concepts-hyperscale-distributed-data.md#shards)を再調整する必要があります。これは、既存のノードから新しいノードにいくつかのシャードを移動することを意味します。 Hyperscale (Citus) では、ダウンタイムなしで再調整できます。つまり、シャードの再調整を中断させることなくクエリを実行できます。
 
 ## <a name="determine-if-the-server-group-needs-a-rebalance"></a>サーバー グループの再調整が必要かどうかを判断する
 

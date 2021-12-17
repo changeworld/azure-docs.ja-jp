@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) 上で複数の同時実行ポッドで使用するための Azure Files を含むボリュームを手動で作成する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: 7f3c8ae63e908f440740277084293a011b80b9d7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/08/2021
+ms.openlocfilehash: d303e00c7f1a7ef76bb048048123b65eb42de402
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776090"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179958"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ファイル共有を含むボリュームを手動で作成して使用する
 
@@ -61,14 +61,14 @@ echo Storage account key: $STORAGE_KEY
 
 Kubernetes には、前の手順で作成されたファイル共有にアクセスするための資格情報が必要です。 これらの資格情報は [Kubernetes シークレット][kubernetes-secret]に格納され、Kubernetes ポッドを作成するときにそのシークレットが参照されます。
 
-`kubectl create secret` コマンドを使用して、シークレットを作成します。 次の例では、*azure-secret* という名前の共有を作成し、前の手順の *azurestorageaccountname* と *azurestorageaccountkey* を設定します。 既存の Azure ストレージ アカウントを使用するには、アカウント名とキーを指定します。
+`kubectl create secret` コマンドを使用して、シークレットを作成します。 次の例では、*azure-secret* という名前のシークレットを作成し、前の手順の *azurestorageaccountname* と *azurestorageaccountkey* を設定しています。 既存の Azure ストレージ アカウントを使用するには、アカウント名とキーを指定します。
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
 ## <a name="mount-file-share-as-an-inline-volume"></a>ファイル共有をインライン ボリュームとしてマウントする
-> 注: 1.18.15、1.19.7、1.20.2、1.21.0 以降、インライン `azureFile` ボリューム内のシークレット名前空間は、`default` 名前空間としてのみ設定できます。異なるシークレット名前空間を指定するには、代わりに次の永続ボリュームの例を使用してください。
+> 注: インライン `azureFile` ボリュームがアクセスできるのはポッドと同じ名前空間内のシークレットだけです。異なるシークレット名前空間を指定するには、代わりに次の永続ボリュームの例を使用してください。
 
 Azure ファイル共有をポッドにマウントするには、コンテナーの指定でボリュームを構成します。次の内容で、`azure-files-pod.yaml` という名前の新しいファイルを作成します。 ファイル共有の名前またはシークレット名を変更した場合は、*shareName* と *secretName* を更新します。 必要な場合は、`mountPath` を更新します。これはファイル共有がポッドにマウントされているパスです。 Windows Server コンテナーの場合、 *'D:'* などの Windows パス規則を使用して *mountPath* を指定します。
 
@@ -226,6 +226,14 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
   - name: azure
     persistentVolumeClaim:
       claimName: azurefile
+```
+
+ポッドの仕様はその場で更新できないため、`kubectl` コマンドを使用してポッドを削除してから、再作成してください。
+
+```console
+kubectl delete pod mypod
+
+kubectl apply -f azure-files-pod.yaml
 ```
 
 ## <a name="next-steps"></a>次のステップ

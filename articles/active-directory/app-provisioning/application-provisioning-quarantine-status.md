@@ -1,22 +1,22 @@
 ---
-title: 検疫のアプリケーション プロビジョニング状態 | Microsoft Docs
+title: Azure Active Directory アプリケーションのプロビジョニングの検疫状態
 description: 自動ユーザー プロビジョニング用にアプリケーションを構成したら、検疫のプロビジョニング状態とクリアする方法について説明します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/18/2021
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 49590c46588ad0d0f1c1b7b095679a3c3fce96eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93b00212bda4f02b6a31c151856639b1f461cac1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579503"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050833"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>検疫状態のアプリケーションのプロビジョニング
 
@@ -30,7 +30,7 @@ Azure AD プロビジョニング サービスは、構成の正常性を監視�
 ## <a name="how-do-i-know-if-my-application-is-in-quarantine"></a>アプリケーションが検疫されているかどうかを確認するにはどうすればよいですか。
 
 アプリケーションが検疫中かどうかを確認するには、次の 3 つの方法があります。
-  
+
 - Azure portal で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  > &lt;*アプリケーション名*&gt; >  **[プロビジョニング]** の順に移動し、検疫メッセージの進行状況バーを確認します。   
 
   ![検疫状態を示すプロビジョニング ステータス バー](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
@@ -88,7 +88,7 @@ Azure AD プロビジョニング サービスは、構成の正常性を監視�
 - Azure portal を使用して、プロビジョニング ジョブを再起動します。 アプリケーションの **プロビジョニング** ページで、**プロビジョニングを再開する** を選択します。 この操作により、プロビジョニング サービスが完全に再起動されます (しばらく時間がかかることがあります)。 すべての初回サイクルが再度実行されます。これにより、エスクローがクリアされ、アプリが検疫から削除され、透かしがクリアされます。 このサービスでは、ソース システム内のすべてのユーザーを再度評価し、プロビジョニングの対象になっているかどうかを判断します。 これは、この記事で説明されているように、アプリケーションが現在検査中である場合や、属性マッピングを変更する必要がある場合に便利です。 初期サイクルは、評価が必要なオブジェクトの数が多いため、通常の増分サイクルよりも完了までに時間がかかることに注意してください。 初期サイクルと増分サイクルのパフォーマンスの詳細については、[こちら](application-provisioning-when-will-provisioning-finish-specific-user.md)を参照してください。
 
 - Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)。 再起動する対象は完全に制御できます。 エスクローをクリアするか (検疫状態と判定されるためのエスクロー カウンターを再起動するため)、検疫をオフにするか (検疫からアプリケーションを削除するため)、または透かしをクリアするかを選択できます。 次の要求を使用します。
- 
+
 ```microsoft-graph
         POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
 ```

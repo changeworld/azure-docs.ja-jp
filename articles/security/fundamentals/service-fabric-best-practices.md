@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 91d7e0777cbdad459e4514a0216146e0d5739f6d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d89f2de555b17ddb5e77a85831f03be16a8a3f57
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750952"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950485"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric セキュリティに関するベスト プラクティス
 Azure では、アプリケーションをすばやく簡単に、高いコスト効率でデプロイできます。 運用環境にクラウド アプリケーションをデプロイする前に、アプリケーションに実装するクラスターのセキュリティ確保に関して推奨される重要なベスト プラクティスを確認しましょう。
@@ -144,7 +144,7 @@ HTTP は安全なプロトコルではないため、傍受される可能性が
 SSL/TLS 証明書の使用に関する詳細については、「[Azure でアプリケーションの SSL を構成する](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)」を参照してください。
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Azure Service Fabric にネットワークの分離とセキュリティを使用する
-サンプルとしての [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使って、3 ノードタイプ セキュア クラスターを設定します。 ネットワーク トラフィックは受信と送信のどちらも、テンプレートとネットワーク セキュリティ グループ (NSG) を使って制御します。
+サンプルとしての [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)を使って、3 ノードタイプ セキュア クラスターを設定します。 ネットワーク トラフィックは受信と送信のどちらも、テンプレートとネットワーク セキュリティ グループ (NSG) を使って制御します。
 
 テンプレートには、仮想マシン スケール セットごとに NSG が設定されており、セットの受信トラフィックと送信トラフィックの制御に使用されます。 ルールの既定の構成では、システム サービスとテンプレートで指定されているアプリケーション ポートで必要なすべてのトラフィックが許可されます。 既定のルールを確認し、アプリケーション用に新しいルールを追加するなど、ニーズに応じて変更します。
 
@@ -155,7 +155,7 @@ Service Fabric では認証と暗号化に証明書を使用し、クラスタ�
 
 クラスターのセキュリティを確保し、アプリケーションにセキュリティ機能を提供するうえで Service Fabric が使用するのは、X.509 証明書です。 Azure の Service Fabric クラスターの[証明書の管理](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md)には、Azure Key Vault を使用します。 クラスターを作成する Azure リソース プロバイダーは、キー コンテナーから証明書を取得します。 プロバイダーはその後、クラスターを Azure にデプロイするときにその証明書を VM にインストールします。
 
-[Azure Key Vault](../../key-vault/general/security-overview.md)、Service Fabric クラスター、証明書を使用するリソース プロバイダーの三者の間には、証明書に基づく関係が存在します。 クラスターの作成時には、この関係に関する情報がキー コンテナーに格納されます。
+[Azure Key Vault](../../key-vault/general/security-features.md)、Service Fabric クラスター、証明書を使用するリソース プロバイダーの三者の間には、証明書に基づく関係が存在します。 クラスターの作成時には、この関係に関する情報がキー コンテナーに格納されます。
 
 キー コンテナーを設定する基本的な手順は、以下の 2 段階です:
 1. キー コンテナー専用のリソース グループを作成する。

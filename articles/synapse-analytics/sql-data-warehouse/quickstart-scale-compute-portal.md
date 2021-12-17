@@ -10,16 +10,13 @@ ms.date: 04/28/2020
 ms.topic: quickstart
 ms.service: synapse-analytics
 ms.subservice: sql-dw
-ms.custom:
-- seo-lt-2019
-- azure-synapse
-- mode-portal
-ms.openlocfilehash: aa339274a1ff68764fa5573d9c031e84f290e57c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: seo-lt-2019, azure-synapse, mode-portal
+ms.openlocfilehash: de40b989f12b867974e14bf117a0dbb9f13e95ba
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534228"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013196"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プールのコンピューティングをスケーリングする
 

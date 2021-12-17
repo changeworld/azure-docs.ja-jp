@@ -2,13 +2,13 @@
 title: geo ディザスター リカバリー - Azure Event Hubs| Microsoft Docs
 description: Azure Event Hubs で地理的リージョンを使用してフェールオーバーとディザスター リカバリーを実行する方法
 ms.topic: article
-ms.date: 02/10/2021
-ms.openlocfilehash: 091c6c61b079ceb8f96f04e62fb772d91732eb2f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/21/2021
+ms.openlocfilehash: 42057f88d76fb0822207ecaf0ece340101c6ec6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311211"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733904"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
@@ -23,7 +23,8 @@ Event Hubs の geo ディザスター リカバリー機能は、容易にこの
 geo ディザスター リカバリー機能を使用すると、名前空間 (Event Hubs、コンシューマー グループ、および設定) の構成全体が、確実に、ペアリングされたプライマリ名前空間からセカンダリ名前空間に継続的にレプリケートされるようになります。また、プライマリからセカンダリへの 1 回限りのフェールオーバー移動をいつでも開始できます。 フェールオーバー移動を行うと、名前空間の選択したエイリアス名がセカンダリ名前空間に再指定されてから、ペアリングが解除されます。 フェールオーバーは、開始されるとほぼ瞬時に完了します。 
 
 > [!IMPORTANT]
-> この機能を使用すると、同じ構成で操作を瞬時に継続できますが、**イベント データはレプリケートされません**。 災害によってすべてのゾーンが失われない限り、フェールオーバー後にプライマリ イベント ハブに保持されるイベント データが復旧可能になるので、アクセスが復元されるとそこから履歴イベントを取得できるようになります。 イベント データをレプリケートし、アクティブ/アクティブ構成内の対応する名前空間を操作して停止や災害に対処するには、この geo ディザスター リカバリー機能セットを使用せずに、[レプリケーションのガイダンス](event-hubs-federation-overview.md)に従ってください。  
+> - この機能を使用すると、同じ構成で操作を瞬時に継続できますが、**イベント データはレプリケートされません**。 災害によってすべてのゾーンが失われない限り、フェールオーバー後にプライマリ イベント ハブに保持されるイベント データが復旧可能になるので、アクセスが復元されるとそこから履歴イベントを取得できるようになります。 イベント データをレプリケートし、アクティブ/アクティブ構成内の対応する名前空間を操作して停止や災害に対処するには、この geo ディザスター リカバリー機能セットを使用せずに、[レプリケーションのガイダンス](event-hubs-federation-overview.md)に従ってください。  
+> - Azure Active Directory (Azure AD) ロールベースのアクセス制御 (RBAC) によるプライマリ名前空間内のエンティティへの割り当ては、セカンダリ名前空間にレプリケートされません。 セカンダリ名前空間にロールの割り当てを手動で作成して、アクセスをセキュリティで保護します。 
 
 ## <a name="outages-and-disasters"></a>故障と災害
 
@@ -37,7 +38,7 @@ Azure Event Hubs の geo ディザスター リカバリー機能はディザス
 
 ディザスター リカバリー機能は、メタデータの災害復旧を実装しており、一次および二次障害復旧の名前空間に依存しています。 
 
-geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](https://azure.microsoft.com/pricing/details/event-hubs/) にのみ使用できます。 別名を使用して接続を確立するので、接続文字列に変更を加える必要はありません。
+geo ディザスター リカバリー機能は、[Standard SKU、Premium SKU、および専用 SKU](https://azure.microsoft.com/pricing/details/event-hubs/) にのみ使用できます。 別名を使用して接続を確立するので、接続文字列に変更を加える必要はありません。
 
 この記事では、次の用語を使用します。
 
@@ -50,12 +51,11 @@ geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](h
 ## <a name="supported-namespace-pairs"></a>サポートされている名前空間のペア
 プライマリ名前空間とセカンダリ名前空間の次の組み合わせがサポートされています。  
 
-| プライマリ名前空間 | セカンダリ名前空間 | サポートされています | 
-| ----------------- | -------------------- | ---------- |
-| Standard | Standard | はい | 
-| Standard | 専用 | はい | 
-| 専用 | 専用 | はい | 
-| 専用 | Standard | いいえ | 
+| プライマリ名前空間層 | 許可されるセカンダリ名前空間層 |
+| ----------------- | -------------------- |
+| Standard | Standard、専用 | 
+| Premium | Premium | 
+| 専用 | 専用 | 
 
 > [!NOTE]
 > 同じ専用クラスター内にある名前空間を組み合わせることはできません。 別々のクラスター内にある名前空間を組み合わせることができます。 
@@ -64,7 +64,8 @@ geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](h
 
 次のセクションでは、フェールオーバー プロセスの概要を示したうえで、最初のフェールオーバーを設定する方法について説明します。 
 
-![1][]
+:::image type="content" source="./media/event-hubs-geo-dr/geo1.png" alt-text="フェールオーバー プロセスの概要を示す画像":::
+
 
 ### <a name="setup"></a>セットアップ
 
@@ -112,19 +113,11 @@ geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](h
 > [!NOTE]
 > サポートされるのは、フェール フォワードのセマンティクスだけです。 このシナリオでは、フェールオーバー後、新しい名前空間との間で再度ペアリングを行います。 フェールバックはサポートされません (SQL クラスターでのフェールバックなど)。 
 
-![2][]
+:::image type="content" source="./media/event-hubs-geo-dr/geo2.png" alt-text="フェールオーバー フローを示す画像":::
 
 ## <a name="management"></a>管理
 
 間違ったリージョンをペアリングしたなど、初期設定にミスがあった場合、2 つの名前空間のペアリングはいつでも解除することができます。 ペアリングした名前空間を通常の名前空間として使用する必要がある場合、エイリアスは削除してください。
-
-## <a name="samples"></a>サンプル
-
-[GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)には、フェールオーバーの設定と開始の方法が紹介されています。 このサンプルで紹介されている概念は次のとおりです。
-
-- Azure Resource Manager を Event Hubs で使用するために Azure Active Directory に必要な設定。 
-- サンプル コードを実行するために必要な手順。 
-- 現在のプライマリ名前空間との間で行う送受信。 
 
 ## <a name="considerations"></a>考慮事項
 
@@ -145,17 +138,11 @@ geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](h
 5. エンティティの同期には、ある程度時間がかかる場合があります (1 分あたり約 50 ～ 100 エンティティ)。
 
 ## <a name="availability-zones"></a>可用性ゾーン 
+Event Hubs では、Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) がサポートされています。 Availability Zones サポートは、[可用性ゾーンがある Azure リージョン](../availability-zones/az-region.md#azure-regions-with-availability-zones)でのみ使用できます。 メタデータとデータ (イベント) の両方が、可用性ゾーン内のデータ センターとの間でレプリケートされます。 
 
-Event Hubs Standard SKU では、Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) がサポートされています。 
+名前空間を作成するときに、可用性ゾーンを持つリージョンを選択すると、次の強調表示されたメッセージが表示されます。 
 
-> [!NOTE]
-> Azure Event Hubs Standard に対する Availability Zones のサポートは、可用性ゾーンが存在する [Azure リージョン](../availability-zones/az-region.md)内でのみ利用できます。
-
-Azure Portal を使用して、新しい名前空間でのみ Availability Zones を有効にすることができます。 Event Hubs では、既存の名前空間の移行はサポートされていません。 名前空間でゾーン冗長を有効にした後、それを無効にすることはできません。
-
-可用性ゾーンを使用すると、メタデータとデータ (イベント) の両方が、可用性ゾーン内のデータ センターとの間でレプリケートされます。 
-
-![3][]
+:::image type="content" source="./media/event-hubs-geo-dr/eh-az.png" alt-text="可用性ゾーンを持つリージョンを含む [名前空間の作成] ページを示す画像":::
 
 ## <a name="private-endpoints"></a>プライベート エンドポイント
 このセクションでは、プライベート エンドポイントを使用する名前空間で geo ディザスター リカバリーを使用する場合のその他の考慮事項について説明します。 一般に Event Hubs でプライベート エンドポイントを使用する方法については、[プライベート エンドポイントの構成](private-link-service.md)に関するページを参照してください。
@@ -192,22 +179,21 @@ Azure Portal を使用して、新しい名前空間でのみ Availability Zones
 
 > [!NOTE]
 > 仮想ネットワークの geo ディザスター リカバリーに関するガイダンスについては、「[Virtual Network - ビジネス継続性](../virtual-network/virtual-network-disaster-recovery-guidance.md)」を参照してください。
+
+## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+Azure Active Directory (Azure AD) ロールベースのアクセス制御 (RBAC) によるプライマリ名前空間内のエンティティへの割り当ては、セカンダリ名前空間にレプリケートされません。 セカンダリ名前空間にロールの割り当てを手動で作成して、アクセスをセキュリティで保護します。
  
 ## <a name="next-steps"></a>次のステップ
+次のサンプルまたはリファレンス ドキュメントを確認してください。 
+- [.NET GeoDR サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/DotNet/GeoDRClient) 
+- [Java GeoDR サンプル](https://github.com/Azure-Samples/eventhub-java-manage-event-hub-geo-disaster-recovery)
+- [.NET - Azure.Messaging.EventHubs サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
+- [.NET - Microsoft.Azure.EventHubs サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)
+- [Java - azure-messaging-eventhubs サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
+- [Java - azure-eventhubs サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java)
+- [Python のサンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)
+- [JavaScript のサンプル](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/javascript)
+- [TypeScript のサンプル](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/typescript)
+- [REST API リファレンス](/rest/api/eventhub/)
 
-* [GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)で、geo ペアリングを作成してディザスター リカバリー シナリオのフェールオーバーを開始する簡単なワークフローの手順について説明します。
-* [REST API リファレンス](/rest/api/eventhub/)で、geo ディザスター リカバリーの構成を実行するための API について説明します。
-
-Event Hubs の詳細については、次のリンクを参照してください。
-
-- Event Hubs の使用
-    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-    - [Java](event-hubs-java-get-started-send.md)
-    - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-node-get-started-send.md)
-* [Event Hubs の FAQ](event-hubs-faq.yml)
-* [Event Hubs を使用するサンプル アプリケーション](https://github.com/Azure/azure-event-hubs/tree/master/samples)
-
-[1]: ./media/event-hubs-geo-dr/geo1.png
 [2]: ./media/event-hubs-geo-dr/geo2.png
-[3]: ./media/event-hubs-geo-dr/eh-az.png

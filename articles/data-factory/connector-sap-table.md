@@ -1,27 +1,29 @@
 ---
 title: SAP テーブルからデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SAP テーブルからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-ms.author: jingwang
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics パイプラインで Copy アクティビティを使用して、SAP テーブルからサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 author: linda33wj
+ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/12/2021
-ms.openlocfilehash: 4026d2f987ca37834231ac4d7e827ff543af9d2e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: e4d77aa3d4456154149c5ad38b9fdc769953f8ad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232394"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764053"
 ---
-# <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
+# <a name="copy-data-from-an-sap-table-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して SAP テーブルからデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP テーブルからデータをコピーする方法について説明します。 詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
+この記事では、Azure Data Factory および Azure Synapse Analytics パイプラインで Copy アクティビティを使用して、SAP テーブルからデータをコピーする方法について説明します。 詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
 
 >[!TIP]
->SAP データ統合シナリオにおける ADF の全体的なサポートについては、各 SAP コネクタの詳細な情報、比較、およびガイダンスが含まれる、[Azure Data Factory を使用した SAP データの統合に関するホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)を参照してください。
+>SAP データ統合シナリオでの全体的なサポートについては、各 SAP コネクタの詳細な説明、比較、ガイダンスが含まれた、[Azure Data Factory を使用した SAP データ統合に関するホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -51,7 +53,7 @@ SAP テーブルから、サポートされている任意のシンク データ
 1. SAP GUI を使用して SAP システムに接続します。 
 2. **[システム]**  ->  **[ステータス]** に移動します。 
 3. SAP_BASIS のリリースを調べ、701 以上であることを確認します。  
-      ![SAP_BASIS の確認](./media/connector-sap-table/sap-basis.png)
+      :::image type="content" source="./media/connector-sap-table/sap-basis.png" alt-text="SAP_BASIS の確認":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,18 +63,42 @@ SAP テーブルから、サポートされている任意のシンク データ
 
 - [Microsoft .NET 3.0 用の 64 ビット SAP コネクタ](https://support.sap.com/en/product/connectors/msnet.html)を SAP の Web サイトからダウンロードし、それをセルフホステッド統合ランタイムのコンピューターにインストールします。 インストール時に、 **[Optional setup steps]\(省略可能なセットアップ手順\)** ウィンドウで、 **[Install Assemblies to GAC]\(アセンブリを GAC にインストールする\)** オプションを必ず選択します。
 
-  ![SAP Connector for .NET をインストールする](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+  :::image type="content" source="./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png" alt-text="SAP Connector for .NET をインストールする":::
 
-- Data Factory の SAP テーブル コネクタで使用される SAP ユーザーは、以下のアクセス許可を持っている必要があります。
+- SAP テーブル コネクタで使用される SAP ユーザーには、次のアクセス許可が必要です。
 
   - Remote Function Call (RFC) の宛先を使用するための認可。
-  - S_SDSAUTH 認可オブジェクトの "実行" アクティビティに対するアクセス許可。 大半の認可オブジェクトについては、SAP Note 40089 を参照できます。 RFC_FUNCTION_SEARCH など、基礎となる NCo コネクタでは特定の RFC が要求されます。 
+  - S_SDSAUTH 認可オブジェクトの "実行" アクティビティに対するアクセス許可。 大半の認可オブジェクトについては、SAP Note 460089 を参照できます。 RFC_FUNCTION_SEARCH など、基礎となる NCo コネクタでは特定の RFC が要求されます。 
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-以降のセクションでは、SAP テーブル コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
+## <a name="create-a-linked-service-to-an-sap-table-using-ui"></a>UI を使用して SAP テーブルのリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で SAP テーブルのリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. SAP を検索し、SAP テーブル コネクタを選択します。
+
+    :::image type="content" source="media/connector-sap-table/sap-table-connector.png" alt-text="SAP テーブル コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-sap-table/configure-sap-table-linked-service.png" alt-text="SAP テーブルのリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、SAP テーブル コネクタに固有のエンティティの定義に使用されるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -90,7 +116,7 @@ SAP BW オープン ハブのリンクされたサービスでは、次のプロ
 | `clientId` | SAP システム内のクライアントの ID。<br/>許可されている値:3 桁の 10 進数の文字列として表されます。 | はい |
 | `language` | SAP システムで使用する言語。<br/>既定値は `EN` です。| いいえ |
 | `userName` | SAP サーバーにアクセスできるユーザーの名前。 | はい |
-| `password` | ユーザーのパスワードです。 このフィールドを `SecureString` 型でマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| `password` | ユーザーのパスワードです。 このフィールドを `SecureString` 型でマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照します](store-credentials-in-key-vault.md)。 | はい |
 | `sncMode` | テーブルが配置されている SAP サーバーにアクセスするための SNC アクティブ化インジケーター。<br/>SNC を使用して SAP サーバーに接続する場合に使用されます。<br/>使用できる値は、`0` (オフ、既定値) または `1` (オン) です。 | いいえ |
 | `sncMyName` | テーブルが配置されている SAP サーバーにアクセスするためのイニシエーターの SNC 名。<br/>`sncMode` がオンのときに適用されます。 | いいえ |
 | `sncPartnerName` | テーブルが配置されている SAP サーバーにアクセスするための通信パートナーの SNC 名。<br/>`sncMode` がオンのときに適用されます。 | いいえ |
@@ -224,12 +250,12 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
 | `rowCount`                         | 取得する行の数。                              | いいえ       |
 | `rfcTableFields`                 | SAP テーブルからコピーするフィールド (列)。 たとえば、「 `column0, column1` 」のように入力します。 | いいえ       |
 | `rfcTableOptions`                | SAP テーブルの行をフィルターにかけるためのオプション。 たとえば、「 `COLUMN0 EQ 'SOMEVALUE'` 」のように入力します。 この記事で後に提供する SAP クエリ演算子の表も参照してください。 | いいえ       |
-| `customRfcReadTableFunctionModule` | SAP テーブルからデータを読み取るために使用できるカスタム RFC 関数モジュール。<br>カスタム RFC 関数モジュールを使用して、SAP システムからデータを取得して Data Factory に返す方法を定義できます。 カスタム関数モジュールでは、`/SAPDS/RFC_READ_TABLE2` と同様のインターフェイスが実装されている必要があります (インポート、エクスポート、テーブル)。これは、Data Factory で使用される既定のインターフェイスです。<br>Data Factory | いいえ       |
+| `customRfcReadTableFunctionModule` | SAP テーブルからデータを読み取るために使用できるカスタム RFC 関数モジュール。<br>カスタム RFC 関数モジュールを使用して、SAP システムからデータを取得し、サービスに返す方法を定義できます。 カスタム関数モジュールには、`/SAPDS/RFC_READ_TABLE2` と同様のインターフェイスが実装されている必要があります (インポート、エクスポート、テーブル)。これは、サービスで使用される既定のインターフェイスです。| いいえ       |
 | `partitionOption`                  | SAP テーブルから読み取るパーティション メカニズム。 サポートされているオプションは次のとおりです。 <ul><li>`None`</li><li>`PartitionOnInt` (通常の整数値、または `0000012345` のように左側をゼロでパディングした整数値)</li><li>`PartitionOnCalendarYear` ("YYYY" の形式の 4 桁の数字)</li><li>`PartitionOnCalendarMonth` ("YYYYMM" の形式の 6 桁の数字)</li><li>`PartitionOnCalendarDate` ("YYYYMMDD" の形式の 8 桁の数字)</li><li>`PartitionOntime` ("HHMMSS" の形式の 6 桁の数字、`235959` など)</li></ul> | いいえ       |
 | `partitionColumnName`              | データを分割するために使用される列の名前。                | いいえ       |
 | `partitionUpperBound`              | `partitionColumnName` で指定され、パーティション分割を続行するために使用される列の最大値。 | いいえ       |
 | `partitionLowerBound`              | `partitionColumnName` で指定され、パーティション分割を続行するために使用される列の最小値。 (注: パーティション オプションが `PartitionOnInt` の場合、`partitionLowerBound` を "0" にすることはできません) | いいえ       |
-| `maxPartitionsNumber`              | データを分割するパーティションの最大数。     | いいえ       |
+| `maxPartitionsNumber`              | データを分割するパーティションの最大数。 既定値は 1 です。    | いいえ       |
 | `sapDataColumnDelimiter` | 出力データを分けるために SAP RFC に渡される、区切り記号として使用される 1 文字。 | いいえ |
 
 >[!TIP]
@@ -237,11 +263,11 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
 <br/>
 >例として `partitionOption` を `partitionOnInt` として取ると、各パーティション内の行数はこの式を使って計算されます: (`partitionUpperBound` と `partitionLowerBound` の間の合計行数)/`maxPartitionsNumber`。<br/>
 <br/>
->コピーを高速化するためにデータ パーティションを並行して読み込むために、並列度はコピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリは、SAP テーブルからデータの一部を取得します。 `maxPartitionsNumber` を `parallelCopies` プロパティの値の倍数にすることを強くお勧めします。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) こともお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
+>コピーを高速化するためにデータ パーティションを並行して読み込むために、並列度はコピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリでは、SAP テーブルからデータの一部を取得します。 `maxPartitionsNumber` を `parallelCopies` プロパティの値の倍数にすることを強くお勧めします。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) こともお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
 
 
 >[!TIP]
-> Azure Data Factory 側のこの SAP テーブル コネクタでは、`BASXML` が既定で有効になっています。
+> サービス内のこの SAP テーブル コネクタでは、`BASXML` が既定で有効になっています。
 
 `rfcTableOptions` では、次の一般的な SAP クエリ演算子を使用して行をフィルター処理できます。
 
@@ -305,7 +331,7 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
 
 次に例を示します。
 
-![SAP テーブルの結合](./media/connector-sap-table/sap-table-join.png) 
+:::image type="content" source="./media/connector-sap-table/sap-table-join.png" alt-text="SAP テーブルの結合"::: 
 
 >[!TIP]
 >また、SAP テーブル コネクタでサポートされている VIEW で、結合されたデータを集計することも検討できます。
@@ -319,13 +345,13 @@ SAP テーブルについては、現在、[customRfcReadTableFunctionModule](#c
 
 - 定義は次のとおりです。
 
-    ![定義](./media/connector-sap-table/custom-function-module-definition.png) 
+    :::image type="content" source="./media/connector-sap-table/custom-function-module-definition.png" alt-text="定義"::: 
 
 - 次のいずれかのテーブルにデータをエクスポートします。
 
-    ![エクスポート テーブル 1](./media/connector-sap-table/export-table-1.png) 
+    :::image type="content" source="./media/connector-sap-table/export-table-1.png" alt-text="エクスポート テーブル 1"::: 
 
-    ![エクスポート テーブル 2](./media/connector-sap-table/export-table-2.png)
+    :::image type="content" source="./media/connector-sap-table/export-table-2.png" alt-text="エクスポート テーブル 2":::
  
 SAP テーブル コネクタでカスタム関数モジュールがどのように使用されるのかを以下に示します。
 
@@ -333,27 +359,27 @@ SAP テーブル コネクタでカスタム関数モジュールがどのよう
 
 1. パラメーターを次のように設定して、"カスタム関数モジュール" を呼び出します。
 
-    - QUERY_TABLE: ADF SAP テーブル データセットで設定したテーブル名。 
-    - Delimiter: ADF SAP テーブル ソースで設定した区切り記号。 
-    - ROWCOUNT/Option/Fields: ADF テーブル ソースで設定した行数/集計オプション/フィールド。
+    - QUERY_TABLE: SAP テーブル データセットで設定したテーブル名。 
+    - Delimiter: SAP テーブル ソースで設定した区切り記号。 
+    - ROWCOUNT/Option/Fields: テーブル ソースで設定した行数/集計オプション/フィールド。
 
 1. 次の方法で結果を取得してデータを解析します。
 
     1. Fields テーブル内の値を解析して、スキーマを取得します。
 
-        ![Fields 内の値を解析する](./media/connector-sap-table/parse-values.png)
+        :::image type="content" source="./media/connector-sap-table/parse-values.png" alt-text="Fields 内の値を解析する":::
 
     1. 出力テーブルの値を取得して、これらの値が含まれているテーブルを確認します。
 
-        ![出力テーブル内の値を取得する](./media/connector-sap-table/get-values.png)
+        :::image type="content" source="./media/connector-sap-table/get-values.png" alt-text="出力テーブル内の値を取得する":::
 
     1. OUT_TABLE 内の値を取得し、データを解析してから、シンクに書き込みます。
 
 ## <a name="data-type-mappings-for-an-sap-table"></a>SAP テーブルのデータ型マッピング
 
-SAP テーブルからデータをコピーするとき、SAP テーブルのデータ型から Azure Data Factory の中間データ型への次のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+SAP テーブルからデータをコピーするときは、SAP テーブルのデータ型からサービス内で使用される中間データ型への次のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| SAP ABAP の型 | Data Factory の中間データ型 |
+| SAP ABAP の型 | サービスの中間データ型 |
 |:--- |:--- |
 | `C` (String) | `String` |
 | `I` (Integer) | `Int32` |
@@ -371,4 +397,4 @@ SAP テーブルからデータをコピーするとき、SAP テーブルのデ
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページを参照してください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

@@ -3,22 +3,22 @@ title: 別の Azure AD B2C テナントの Azure AD B2C アカウントを使用
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C を使用するアプリケーションで、別のテナントの Azure AD B2C アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
-ms.author: mimart
+ms.date: 09/16/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4b357213f4e552fd791fb575d8b7a287b924c7f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8aa68b99c4deaec0e20aedd663a3bfc7451d0742
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489072"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130228000"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>別の Azure AD B2C テナントの Azure AD B2C アカウントを使用したサインアップとサインインを設定する
 
@@ -41,11 +41,19 @@ ms.locfileid: "103489072"
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
+### <a name="verify-the-applications-publisher-domain"></a>アプリケーションのパブリッシャー ドメインを検証する
+2020 年 11 月現在、新しいアプリケーション登録は、[アプリケーションの発行元ドメインが検証済み](../active-directory/develop/howto-configure-publisher-domain.md)で、"***かつ***" 会社の ID が Microsoft Partner Network で検証され、アプリケーションに関連付けられている場合を除き、ユーザーの同意プロンプトで未検証として表示されます。 (この変更の詳細については[こちら](../active-directory/develop/publisher-verification-overview.md)を参照してください)。Azure AD B2C ユーザー フローの場合、発行元のドメインは、[Microsoft アカウント](../active-directory-b2c/identity-provider-microsoft-account.md)またはその他の Azure AD テナントを ID プロバイダーとして使用する場合にのみ表示されることに注意してください。 これらの新しい要件を満たすには、以下を実行します。
+
+1. [自分の Microsoft Partner Network (MPN) アカウントを使用して会社 ID を確認します](/partner-center/verification-responses)。 このプロセスにより、会社と会社の主要連絡先に関する情報が検証されます。
+1. 発行元の確認プロセスを完了し、次のいずれかのオプションを使用して、MPN アカウントをアプリ登録に関連付けます。
+   - Microsoft アカウント ID プロバイダーのアプリの登録が Azure AD テナント内にある場合は、[アプリ登録ポータルでアプリを検証](../active-directory/develop/mark-app-as-publisher-verified.md)します。
+   - Microsoft アカウント ID プロバイダーのアプリの登録が Azure AD B2C テナント内にある場合は、[Microsoft Graph API を使用して発行元により検証済みとしてアプリをマーク](../active-directory/develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls)します (たとえば、Graph Explorer を使用)。 アプリの検証済み発行元を設定するための UI は、現在、Azure AD B2C テナントでは無効になっています。
+
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C アプリケーションを作成する
 
 別の Azure AD B2C テナント (例: Fabrikam) のアカウントを持つユーザーが、Azure AD B2C (例: Contoso) にサインインできるようにするには、次のようにします。
 
-1. [ユーザー フロー](tutorial-create-user-flows.md)または[カスタム ポリシー](custom-policy-get-started.md)を作成します。
+1. [ユーザー フロー](tutorial-create-user-flows.md?pivots=b2c-user-flow)または[カスタム ポリシー](tutorial-create-user-flows.md?pivots=b2c-custom-policy)を作成します。
 1. 次に、このセクションの説明に従い、Azure AD B2C でアプリケーションを作成します。 
 
 アプリケーションを作成するには:
@@ -82,7 +90,8 @@ ms.locfileid: "103489072"
 ## <a name="configure-azure-ad-b2c-as-an-identity-provider"></a>Azure AD B2C を ID プロバイダーとして構成する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. フェデレーションを構成する Azure AD B2C テナント (例: Contoso) が含まれるディレクトリを使用していることを確認します。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、お使いの Azure AD B2C テナント (例: Contoso) を含むディレクトリを選択します。
+1. フェデレーションを構成する Azure AD B2C テナント (例: Contoso) が含まれるディレクトリを使用していることを確認します。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[ID プロバイダー]** を選択してから、 **[新しい OpenID Connect プロバイダー ]** を選択します。
 1. **[名前]** を入力します。 たとえば、「*Fabrikam*」と入力します。
@@ -130,7 +139,8 @@ ms.locfileid: "103489072"
 
 前に作成したアプリケーション キーを Azure AD B2C テナントに格納する必要があります。
 
-1. フェデレーションを構成する Azure AD B2C テナント (例: Contoso) が含まれるディレクトリを使用していることを確認します。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、お使いの Azure AD B2C テナント (例: Contoso) を含むディレクトリを選択します。
+1. フェデレーションを構成する Azure AD B2C テナント (例: Contoso) が含まれるディレクトリを使用していることを確認します。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[ポリシー]** で **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
@@ -229,7 +239,7 @@ ms.locfileid: "103489072"
 ## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
 1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
-1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 1. **[今すぐ実行]** ボタンを選択します。
 1. サインアップまたはサインイン ページで **Fabrikam** を選択して、他の Azure AD B2C テナントを使用してサインインします。
 

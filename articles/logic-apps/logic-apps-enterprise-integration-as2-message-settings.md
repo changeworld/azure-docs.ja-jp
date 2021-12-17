@@ -1,23 +1,23 @@
 ---
 title: AS2 メッセージの設定
-description: Azure Logic Apps と Enterprise Integration Pack の組み合わせにおける AS2 送受信設定のためのリファレンス ガイド
+description: Azure Logic Apps と Enterprise Integration Pack の契約における AS2 メッセージの設定に関するリファレンス ガイド。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
-ms.topic: article
-ms.date: 04/22/2019
-ms.openlocfilehash: ad047a30b901d71604c775e9882b0f242f094638
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: estfan, azla
+ms.topic: reference
+ms.date: 07/20/2021
+ms.openlocfilehash: 2bec9c598c0f08e9e114fcf5a83bfb0d238dd2b1
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "74793032"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400993"
 ---
-# <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack の組み合わせにおける AS2 メッセージ設定のためのリファレンス
+# <a name="reference-for-as2-message-settings-in-agreements-for-azure-logic-apps"></a>Azure Logic Apps の契約での AS2 メッセージの設定に関するリファレンス
 
-このリファレンスでは、取引相手間で送受信されるメッセージの AS2 契約による処理方法を指定する目的で設定できるプロパティについて説明されています。 メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを設定します。
+このリファレンスでは、[取引先](logic-apps-enterprise-integration-partners.md)間のメッセージを処理する方法を指定するために AS2 契約で設定できるプロパティについて説明します。 メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを設定します。
 
 <a name="AS2-incoming-messages"></a>
 
@@ -47,7 +47,7 @@ ms.locfileid: "74793032"
 | プロパティ | 必須 | 説明 |
 |----------|----------|-------------|
 | **メッセージの署名を有効にしてください** | いいえ | すべての送信メッセージにデジタル署名する必要があるかどうかを指定します。 署名が必要な場合、以下の値を選択します。 <p>- **[署名アルゴリズム]** の一覧から、メッセージの署名に使用するアルゴリズムを選択します。 <br>- **[証明書]** ボックスの一覧から、メッセージに署名するための既存のホスト パートナーのプライベート証明書を選択します。 証明書をお持ちではない場合、[証明書の追加](../logic-apps/logic-apps-enterprise-integration-certificates.md)に関するページで詳細をご覧ください。 |
-| **メッセージの暗号化を有効にしてください** | いいえ | すべての送信メッセージを暗号化する必要があるかどうかを指定します。 暗号化が必要な場合、以下の値を選択します。 <p>- **[暗号化アルゴリズム]** ボックスの一覧から、メッセージの暗号化に使用するゲスト パートナーの公開証明書のアルゴリズムを選択します。 <br>- **[証明書]** ボックスの一覧から、送信メッセージの暗号化するための既存のゲスト パートナーのプライベート証明書を選択します。 証明書をお持ちではない場合、[証明書の追加](../logic-apps/logic-apps-enterprise-integration-certificates.md)に関するページで詳細をご覧ください。 |
+| **メッセージの暗号化を有効にしてください** | いいえ | すべての送信メッセージを暗号化する必要があるかどうかを指定します。 暗号化が必要な場合、以下の値を選択します。 <p>- **[暗号化アルゴリズム]** ボックスの一覧から、メッセージの暗号化に使用するゲスト パートナーの公開証明書のアルゴリズムを選択します。 <br>- **[証明書]** ボックスの一覧から、送信メッセージの暗号化するための既存のゲスト パートナーのパブリック証明書を選択します。 証明書をお持ちではない場合、[証明書の追加](../logic-apps/logic-apps-enterprise-integration-certificates.md)に関するページで詳細をご覧ください。 |
 | **メッセージの圧縮を有効にしてください** | いいえ | すべての送信メッセージを圧縮する必要があるかどうかを指定します。 |
 | **HTTP のヘッダーを展開する** | いいえ | HTTP `content-type` ヘッダーを単一行に置きます。 |
 | **MIME ヘッダーのファイル名を転送する** | いいえ | MIME ヘッダーにファイル名を含めるかどうかを指定します。 |

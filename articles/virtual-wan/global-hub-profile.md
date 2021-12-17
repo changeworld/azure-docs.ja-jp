@@ -1,18 +1,18 @@
 ---
-title: Azure Virtual WAN のグローバルまたはハブベースの VPN プロファイルをダウンロードする | Microsoft Docs
+title: Azure Virtual WAN のグローバルまたはハブベースの VPN プロファイルをダウンロードする
 description: Azure Virtual WAN がリモート ユーザー用に 2 種類の接続を提供する方法と、プロファイルをダウンロードする方法について説明します。
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.author: alzam
-ms.openlocfilehash: 6d5c4ba0f1f55119d1ec38296e67ae3e90c52650
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/26/2021
+ms.author: cherylmc
+ms.openlocfilehash: 90d734b9e3ce2bd17496790d3cc4bf1961b22fe2
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91313724"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579857"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>ユーザー VPN クライアント用にグローバルまたはハブベースのプロファイルをダウンロードする
 

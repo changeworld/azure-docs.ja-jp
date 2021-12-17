@@ -1,25 +1,24 @@
 ---
-title: Azure AD プロビジョニングのしくみについて | Microsoft Docs
-description: Azure AD プロビジョニングのしくみについて
+title: Azure Active Directory でのアプリケーションのプロビジョニングのしくみについて理解する
+description: Azure Active Directory でのアプリケーションのプロビジョニングのしくみについて説明します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 06/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 19ec3ec95fbbccbaa5c646c8de16999b86349626
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5508f2e4c85de64e92a5c3b33cd774c595e0ca72
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579452"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991491"
 ---
-# <a name="how-provisioning-works"></a>プロビジョニングのしくみ
+# <a name="how-application-provisioning-works-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのプロビジョニングのしくみ
 
 自動プロビジョニングとは、ユーザーがアクセスする必要のあるクラウド アプリケーションのユーザー ID とロールを作成することです。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。 デプロイを開始する前に、この記事を参照して Azure AD プロビジョニングのしくみを学習し、構成に関する推奨事項を確認することができます。 
 
@@ -82,7 +81,10 @@ Azure AD から SaaS アプリケーションへの送信プロビジョニン�
 
 Azure AD ユーザー プロビジョニング サービスを使って、Azure AD の B2B (またはゲスト) ユーザーを SaaS アプリケーションにプロビジョニングすることは可能です。 ただし、B2B ユーザーが、Azure AD を使用して SaaS アプリケーションにサインインするには、SaaS アプリケーションで、SAML ベースのシングル サインオン機能が特定の方法で構成されている必要があります。 B2B ユーザーからのサインインをサポートするように SaaS アプリケーションを構成する方法の詳細については、「[B2B コラボレーション用の SaaS アプリの構成](../external-identities/configure-saas-apps.md)」を参照してください。
 
-ゲスト ユーザーの userPrincipalName は、多くの場合、"alias#EXT#@domain.com" として格納されることに注意してください。 userPrincipalName がソース属性として属性マッピングに含まれている場合、#EXT# は userPrincipalName から削除されます。 #EXT# が存在する必要がある場合は、ソース属性としての userPrincipalName を originalUserPrincipalName に置き換えてください。 
+> [!NOTE]
+ゲスト ユーザーの userPrincipalName は、多くの場合、"alias#EXT#@domain.com" として表示されます。 userPrincipalName がソース属性として属性マッピングに含まれている場合、#EXT# は userPrincipalName から削除されます。 #EXT# が存在する必要がある場合は、ソース属性としての userPrincipalName を originalUserPrincipalName に置き換えてください。 
+
+userPrincipalName = alias@domain.com originalUserPrincipalName = alias#EXT#@domain.com
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>プロビジョニング サイクル:初回と増分
 
@@ -144,7 +146,7 @@ ServiceNow、G Suite、Box など、アプリケーションの中には、ユ�
 
 ### <a name="errors-and-retries"></a>エラーと再試行
 
-ターゲット システムでのエラーが原因で個々のユーザーの追加、更新、または削除がターゲットシステム上で行えない場合、その操作は次の同期サイクルで再試行されます。 ユーザーの再試行が失敗し続けると、その頻度は減少し始め、1 日 1 回になるように段階的にスケール バックします。 エラーを解決するには、管理者が[プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)を確認し、根本原因を特定して、適切な対応を取る必要があります。 たとえば、次のような一般的なエラーがあります。
+ターゲット システムでのエラーが原因で個々のユーザーの追加、更新、または削除がターゲットシステム上で行えない場合、その操作は次の同期サイクルで再試行されます。 エラーは継続的に再試行され、再試行頻度は徐々に減らされます。 エラーを解決するには、管理者が[プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)を確認し、根本原因を特定して、適切な対応を取る必要があります。 たとえば、次のような一般的なエラーがあります。
 
 - ターゲット システムで必要な属性がソース システムのユーザーに設定されていない
 - ソース システムのユーザーの属性値に対して、ターゲット システムに一意の制約があり、同じ値が他のユーザー レコードに存在する

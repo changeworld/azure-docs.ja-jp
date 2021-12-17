@@ -1,0 +1,22 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 適用される AI サービス
+      tocHref: /azure/applied-ai-services/
+      topicHref: /azure/applied-ai-services/index
+      items:
+        - name: Form Recognizer
+          tocHref: /azure/cognitive-services/
+          topicHref: /azure/applied-ai-services/form-recognizer/index
+- name: Azure
+  tocHref: /legal/
+  topicHref: /azure/index
+  items:
+    - name: 適用される AI サービス
+      tocHref: /legal/cognitive-services/form-recognizer
+      topicHref: /azure/applied-ai-services/index
+      items:
+        - name: Form Recognizer
+          tocHref: /legal/cognitive-services/form-recognizer
+          topicHref: /azure/cognitive-services/form-recognizer/index

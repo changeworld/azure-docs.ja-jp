@@ -2,16 +2,16 @@
 title: Azure portal を使用した Event Hubs 専用クラスターの作成
 description: このクイックスタートでは、Azure portal を使用して Azure Event Hubs クラスターを作成する方法について説明します。
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: 596b07210d35f648af78e45b7472c620a4361e8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: 758110a0dcffc8f9ea8a802ac5cbac2c6ffb39b8
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601025"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231209"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>クイックスタート: Azure portal を使用して専用の Event Hubs クラスターを作成する 
-Event Hubs クラスターは、最も厳しいストリーミングのニーズを持つお客様にシングルテナント デプロイを提供します。 このサービスでは、99.99% の SLA が保証されており、専用の価格レベルでのみご利用いただけます。 [Event Hubs クラスター](event-hubs-dedicated-overview.md)では、1 秒あたり数百万のイベントを、保証された容量と 1 秒未満の待ち時間でイングレスすることができます。 クラスター内で作成された名前空間とイベント ハブには、標準サービスのすべての機能とそれ以外の機能が含まれますが、イングレスに関する制限はありません。 また、専用サービスには、一般的な [Event Hubs Capture](event-hubs-capture-overview.md) 機能が追加料金なしで含まれているため、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) または [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md) に対してデータ ストリームを自動的にバッチおよびログ処理することができます。
+Event Hubs クラスターは、最も厳しいストリーミングのニーズを持つお客様にシングルテナント デプロイを提供します。 このサービスでは、99.99% の SLA が保証されており、専用の価格レベルでのみご利用いただけます。 [Event Hubs クラスター](event-hubs-dedicated-overview.md)では、1 秒あたり数百万のイベントを、保証された容量と 1 秒未満の待ち時間でイングレスすることができます。 クラスター内で作成された名前空間とイベント ハブには、プレミアム サービスのすべての機能とそれ以外の機能が含まれますが、イングレスに関する制限はありません。 また、専用サービスには、一般的な [Event Hubs Capture](event-hubs-capture-overview.md) 機能が追加料金なしで含まれているため、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) または [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md) に対してデータ ストリームを自動的にバッチおよびログ処理することができます。
 
 専用クラスターは、事前に割り当てられた CPU とメモリ リソースの量である **容量ユニット (CU)** を基準にプロビジョニングおよび請求が行われます。 クラスターごとに 1、2、4、8、12、16、または 20 の CU を購入することができます。 このクイックスタートでは、Azure portal を通じて 1 CU Event Hubs クラスターを作成する方法について説明します。
 
@@ -35,29 +35,31 @@ Event Hubs クラスターは、1 つ以上の名前空間を作成できる固�
 
 Azure portal を使用してお使いのリソース グループにクラスターを作成するには、次の手順を実行してください。
 
-1. [このリンク先](https://aka.ms/eventhubsclusterquickstart)に移動して、Azure portal でクラスターを作成します。 反対に、左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、検索バーに「Event Hubs クラスター」と入力して、結果の一覧から [Event Hubs クラスター] を選択します。
-2. **[クラスターの作成]** ページで、次の設定を構成します。
+1. [このリンク先](https://aka.ms/eventhubsclusterquickstart)に移動して、Azure portal でクラスターを作成します。 反対に、左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、検索バーに「**Event Hubs クラスター**」と入力して、結果の一覧から **[Event Hubs クラスター]** を選択します。
+1. **[Event Hubs クラスター]** のページで、ツールバーの **[+ 作成]** を選択します。 
+1. **[クラスターの作成]** ページで、次の設定を構成します。
     1. **クラスターの名前** を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
     2. クラスターを作成する **サブスクリプション** を選択します。
     3. クラスターを作成する **リソース グループ** を選択します。
     4. クラスターの **場所** を選択します。 自分が希望するリージョンがグレー表示の場合、容量が一時的に不足していて、[サポート リクエスト](#submit-a-support-request)を Event Hubs チームに送信できます。
     5. ページの下部にある **[次へ: タグ]** ボタンを選択します。 システムがリソースを完全にプロビジョニングするまで、数分間待つことが必要な場合があります。
 
-        ![Event Hubs クラスターの作成 - [基本] ページ](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-basics-page.png)
+        :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-basics-page.png" alt-text="Event Hubs クラスターの作成 - [基本] ページを示す画像。":::
 3. **[タグ]** ページで、以下を構成します。
     1. 追加するタグの **名前** と **値** を入力します。 この手順は **省略可能** です。  
     2. **[確認および作成]** ボタンを選択します。
 
-        ![Event Hubs クラスターの作成ページ - [タグ] ページ](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-tags-page.png)
+        :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-tags-page.png" alt-text="Event Hubs クラスターの作成ページ - [タグ] ページを示す画像。":::
 4. **[確認および作成]** ページで詳細を確認し、 **[作成]** を選択します。 
 
-    ![Event Hubs クラスターの作成ページ - [確認および作成] ページ](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-review-create-page.png)
+    :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-review-create-page.png" alt-text="Event Hubs クラスターの作成ページ - [確認および作成] ページを示す画像。":::
+5. 作成が正常に完了したら、 **[リソースに移動]** を選択して、Event Hubs クラスターのホームページに移動します。 
 
 ## <a name="create-a-namespace-and-event-hub-within-a-cluster"></a>クラスター内に名前空間とイベント ハブを作成する
 
 1. クラスター内に名前空間を作成するには、ご自分のクラスターの **[Event Hubs クラスター]** ページの上部のメニューから **[+名前空間]** を選択します。
 
-    ![クラスターの管理ページ - 名前空間の追加ボタン](./media/event-hubs-dedicated-cluster-create-portal/cluster-management-page-add-namespace-button.png)
+    :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/cluster-management-page-add-namespace-button.png" alt-text="クラスターの管理ページ - 名前空間の追加ボタンを示す画像。":::
 2. **[名前空間を作成する]** ページで、次の手順を行います。
     1. **名前空間の名前** を入力します。  その名前が使用できるかどうかが確認されます。
     2. 名前空間は次のプロパティを継承します。
@@ -67,7 +69,7 @@ Azure portal を使用してお使いのリソース グループにクラスタ
         4. クラスター名
     3. **[作成]** をクリックして、名前空間を作成します。 これで、ご自分のクラスターを管理できるようになりました。  
 
-        ![クラスター内に名前空間を作成するページ](./media/event-hubs-dedicated-cluster-create-portal/create-namespace-cluster-page.png)
+        :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/create-namespace-cluster-page.png" alt-text="クラスター内に名前空間を作成するページを示す画像。":::
 3. 名前空間を作成したら、名前空間内に通常作成する場合と同様に[イベント ハブを作成](event-hubs-create.md#create-an-event-hub)することができます。 
 
 

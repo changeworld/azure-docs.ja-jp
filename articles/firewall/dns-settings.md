@@ -5,22 +5,23 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 11/08/2021
 ms.author: victorh
-ms.openlocfilehash: d6a79e87e9999dd520358e0722011cf4e54d8c63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 44a9da990b1f44f151ab6492cbca65d1b445ae65
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100546246"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059547"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure Firewall の DNS 設定
 
-カスタム DNS サーバーを構成して、Azure Firewall の DNS プロキシを有効にすることができます。 これらの設定は、ファイアウォールをデプロイするときに構成するか、後で **[DNS 設定]** ページから構成します。
+カスタム DNS サーバーを構成して、Azure Firewall の DNS プロキシを有効にすることができます。 これらの設定は、ファイアウォールをデプロイするときに構成するか、後で **[DNS 設定]** ページから構成します。 既定では、Azure Firewall は Azure DNS を使用し、DNS Proxy は無効になっています。
 
 ## <a name="dns-servers"></a>DNS サーバー
 
-DNS サーバーでは、ドメイン名から IP アドレスに管理と解決が行われます。 Azure Firewall では、名前解決に Azure DNS が既定で使用されます。 **DNS サーバー** 設定を使用すると、Azure Firewall の名前解決に対して独自の DNS サーバーを構成できます。 1 台のサーバーまたは複数台のサーバーを構成できます。
+DNS サーバーでは、ドメイン名から IP アドレスに管理と解決が行われます。 Azure Firewall では、名前解決に Azure DNS が既定で使用されます。 **DNS サーバー** 設定を使用すると、Azure Firewall の名前解決に対して独自の DNS サーバーを構成できます。 1 台のサーバーまたは複数台のサーバーを構成できます。 複数の DNS サーバーを構成する場合、使用されるサーバーはランダムに選択されます。
 
 > [!NOTE]
 > Azure Firewall Manager を使用して管理される Azure Firewall インスタンスの場合、DNS 設定は関連する Azure Firewall ポリシー内に構成されます。
@@ -29,7 +30,7 @@ DNS サーバーでは、ドメイン名から IP アドレスに管理と解決
 
 1. Azure Firewall の **[設定]** で、 **[DNS 設定]** を選択します。
 2. **[DNS サーバー]** では、仮想ネットワークで以前に指定した既存の DNS サーバーを入力または追加できます。
-3. **[保存]** を選択します。
+3. **[適用]** を選択します。
 
 ファイアウォールによって、名前解決のために、指定された DNS サーバーに DNS トラフィックが送信されるようになりました。
 
@@ -63,20 +64,30 @@ $azFw | Set-AzFirewall
 
 ## <a name="dns-proxy"></a>DNS プロキシ
 
-Azure Firewall が DNS プロキシとして機能するように構成できます。 DNS プロキシは、クライアント仮想マシンから DNS サーバーへの DNS 要求の仲介役です。 カスタム DNS サーバーを構成する場合は、DNS 解決の不一致を回避するために DNS プロキシを有効にして、ネットワーク ルールで FQDN (完全修飾ドメイン名) フィルタリングを有効にします。
+Azure Firewall が DNS プロキシとして機能するように構成できます。 DNS プロキシは、クライアント仮想マシンから DNS サーバーへの DNS 要求の仲介役です。
+
+ネットワーク ルールで FQDN (完全修飾ドメイン名) フィルタリングを有効にする場合は、DNS プロキシを有効にし、ファイアウォールを DNS プロキシとして使用するように仮想マシンの構成を更新します。
 
 :::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="カスタム DNS サーバーを使用した DNS プロキシ構成。":::
 
+ネットワーク ルールで FQDN フィルタリングを有効にし、ファイアウォールを DNS プロキシとして使用するようにクライアント仮想マシンを構成していない場合、これらのクライアントからの DNS 要求が、ファイアウォールとは異なる時刻に DNS サーバーに送信されたり、異なる応答が返されことがあります。 DNS プロキシでは、不整合を回避するために、クライアント要求のパスに Azure Firewall が配置されます。
 
-DNS プロキシを有効にしない場合、クライアントからの DNS 要求については、別の時刻に DNS サーバーに移動することもあれば、ファイアウォールのものとは異なる応答が返されることもあります。 DNS プロキシでは、不整合を回避するために、クライアント要求のパスに Azure Firewall が配置されます。
 
 Azure Firewall が DNS プロキシの場合、次の 2 種類のキャッシュ関数を使用できます。
 
-- **正のキャッシュ**: DNS 解決が成功しました。 ファイアウォールでは、パケットまたはオブジェクトの TTL (time to live) が使用されます。 
+- **正のキャッシュ**: DNS 解決が成功しました。 ファイアウォールは、最大 1 時間の応答で TTL (Time to Live) に従ってこれらの応答をキャッシュします。 
 
-- **負のキャッシュ**: DNS 解決が、応答なし、または解決なしという結果になります。 ファイアウォールによって、この情報は 1 時間キャッシュされます。
+- **負のキャッシュ**: DNS 解決が、応答なし、または解決なしという結果になります。 ファイアウォールは、最大 30 分の応答で TTL に従ってこれらの応答をキャッシュします。
 
-DNS プロキシによって、すべての解決済み IP アドレスが FQDN からネットワーク ルールに格納されます。 ベスト プラクティスとして、1 つの IP アドレスに解決される FQDN を使用することをお勧めします。  
+DNS プロキシによって、すべての解決済み IP アドレスが FQDN からネットワーク ルールに格納されます。 ベスト プラクティスとして、1 つの IP アドレスに解決される FQDN を使用することをお勧めします。
+
+接続に失敗した場合、Azure DNS など他の DNS サーバーに対して DNS プロキシによる再試行やフェールオーバーは実行されません。
+
+### <a name="policy-inheritance"></a>ポリシーの継承
+
+ スタンドアロン ファイアウォールに適用されるポリシー DNS 設定は、スタンドアロン ファイアウォールの DNS 設定をオーバーライドします。 子ポリシーは親ポリシーのすべての DNS 設定を継承しますが、親ポリシーをオーバーライドできます。
+
+たとえば、ネットワーク規則で FQDN を使用するには、DNS プロキシを有効にする必要があります。 ただし、親ポリシーで DNS プロキシが有効になって **いない** 場合、この設定をローカルでオーバーライドしない限り、子ポリシーはネットワーク 規則で FQDN をサポートしません。
 
 ### <a name="dns-proxy-configuration"></a>DNS プロキシの構成
 
@@ -163,4 +174,5 @@ $azFw | Set-AzFirewall
 
 ## <a name="next-steps"></a>次のステップ
 
-[ネットワーク ルールでの FQDN フィルタリング](fqdn-filtering-network-rules.md)
+- [Azure Firewall DNS プロキシの詳細](dns-details.md)
+- [ネットワーク ルールでの FQDN フィルタリング](fqdn-filtering-network-rules.md)

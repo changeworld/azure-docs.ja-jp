@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 71c69ffa91e5841ec03ed836ab2562af2ec01959
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6bc3c18f0b565fd98e72d45fd098f96c8d9e7fb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645107"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132280026"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opentext-directory-services"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と OpenText Directory Services の統合
 
@@ -39,6 +39,7 @@ ms.locfileid: "101645107"
 
 * OpenText Directory Services では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 * OpenText Directory Services では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* OpenText Directory Services では、[自動化されたユーザー プロビジョニング](open-text-directory-services-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-opentext-directory-services-from-the-gallery"></a>ギャラリーからの OpenText Directory Services の追加
 
@@ -76,13 +77,37 @@ OpenText Directory Services に対して Azure AD SSO を構成してテスト�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.opentext.com/<OTDSTENANT>/<TENANTID>/login` の形式で URL を入力します。
+    a. **[識別子]** テキスト ボックスに、次のいずれかのパターンを使用して URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.opentext.com/<OTDSTENANT>/<TENANTID>/login?authhandler=<HANDLERID>` のパターンを使用して URL を入力します
+    | 識別子 |
+    |------------|
+    | `https://<HOSTNAME.DOMAIN.com>/otdsws/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/<OTDS_TENANT>/<TENANTID>/otdsws/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/otdsws/<OTDS_TENANT>/<TENANTID>/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/<OTDS_TENANT>/<TENANTID>/login` |
+    |
+
+    b. **[応答 URL]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
+
+    | [応答 URL] |
+    |------------|
+    | `https://<HOSTNAME.DOMAIN.com>/otdsws/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/<OTDS_TENANT>/<TENANTID>/otdsws/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/otdsws/<OTDS_TENANT>/<TENANTID>/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/<OTDS_TENANT>/<TENANTID>/login` |
+    |
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.opentext.com/<OTDSTENANT>/<TENANTID>/login?authhandler=<HANDLERID>` という形式で URL を入力します。
+    **[サインオン URL]** テキスト ボックスに、次のいずれかのパターンを使用して URL を入力します。
+    
+    | [サインオン URL] |
+    |------------|
+    | `https://<HOSTNAME.DOMAIN.com>/otdsws/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/<OTDS_TENANT>/<TENANTID>/otdsws/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/otdsws/<OTDS_TENANT>/<TENANTID>/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/<OTDS_TENANT>/<TENANTID>/login` |
+    |
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[OpenText Directory Services クライアント サポート チーム](mailto:support@opentext.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -123,6 +148,9 @@ OpenText Directory Services に対して Azure AD SSO を構成してテスト�
 
 このセクションでは、B.Simon というユーザーを OpenText Directory Services に作成します。 OpenText Directory Services では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 OpenText Directory Services にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
+> [!NOTE]
+> OpenText Directory Services では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./open-text-directory-services-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -137,8 +165,8 @@ OpenText Directory Services に対して Azure AD SSO を構成してテスト�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した OpenText Directory Services に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [OpenText Directory Services] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した OpenText Directory Services に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [OpenText Directory Services] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した OpenText Directory Services に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-OpenText Directory Services を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+OpenText Directory Services を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

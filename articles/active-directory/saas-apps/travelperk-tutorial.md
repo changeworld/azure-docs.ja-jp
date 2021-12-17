@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/23/2020
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: eefc47e1308dc5b59d8b57d7481a5250a7d2af93
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b949bbd1d067508b58d06f780d37845a02cb480b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99475745"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132320319"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-travelperk"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TravelPerk の統合
 
@@ -37,11 +37,13 @@ ms.locfileid: "99475745"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* TravelPerk では、**SP** Initiated SSO がサポートされます
+* TravelPerk では、**SP** によって開始される SSO がサポートされます。
 
-* TravelPerk では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* TravelPerk では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
-## <a name="adding-travelperk-from-the-gallery"></a>ギャラリーから TravelPerk を追加する
+* TravelPerk では、[自動化されたユーザー プロビジョニング](travelperk-provisioning-tutorial.md)がサポートされます。
+
+## <a name="add-travelperk-from-the-gallery"></a>ギャラリーからの TravelPerk の追加
 
 Azure AD への TravelPerk の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に TravelPerk を追加する必要があります。
 
@@ -51,7 +53,6 @@ Azure AD への TravelPerk の統合を構成するには、ギャラリーか�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**TravelPerk**」と入力します。
 1. 結果のパネルから **[TravelPerk]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-travelperk"></a>TravelPerk の Azure AD SSO を構成してテストする
 
@@ -72,20 +73,20 @@ TravelPerk に対して Azure AD SSO を構成してテストするには、次�
 
 1. Azure portal の **TravelPerk** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<COMPANY>.travelperk.com/`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<COMPANY>.travelperk.com/accounts/saml2/metadata/<APPLICATION_ID>`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<COMPANY>.travelperk.com/accounts/saml2/metadata/<APPLICATION_ID>`
+    b. **[応答 URL]** ボックスに、`https://<COMPANY>.travelperk.com/accounts/saml2/callback/<APPLICATION_ID>/?acs` のパターンを使用して URL を入力します
 
-    c. **[応答 URL]** ボックスに、`https://<COMPANY>.travelperk.com/accounts/saml2/callback/<APPLICATION_ID>/?acs` のパターンを使用して URL を入力します
+    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<COMPANY>.travelperk.com/`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、応答 URL、識別子で更新してください。 この値は、TravelPerk アカウント内で、 **[Company Settings]\(会社の設定\)**  >  **[Integrations]\(統合\)**  >  **[Single Sign On]\(シングル サインオン\)** に移動して確認できます。 サポートについては、[TravelPerk ヘルプ センター](https://support.travelperk.com/hc/en-us/articles/360052450271-How-can-I-setup-SSO-for-Azure-SAML-)にアクセスしてください。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値は、TravelPerk アカウント内で、 **[Company Settings]\(会社の設定\)**  >  **[Integrations]\(統合\)**  >  **[Single Sign On]\(シングル サインオン\)** に移動して確認できます。 サポートについては、[TravelPerk ヘルプ センター](https://support.travelperk.com/hc/articles/360052450271-How-can-I-setup-SSO-for-Azure-SAML)にアクセスしてください。
 
 1. TravelPerk アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 既定のマッピングでは、**emailaddress** は **user. mail** にマップされます。 ただし、TravelPerk アプリケーションでは、**emailaddress** を **user.userprincipalname** にマップする必要があります。 TravelPerk の場合、属性マッピングを編集する必要があります。 **[Edit]\(編集\)** アイコンをクリックし、この属性マッピングを変更します。 属性を編集するには、属性をクリックして編集モードを開きます。
 
@@ -98,6 +99,7 @@ TravelPerk に対して Azure AD SSO を構成してテストするには、次�
 1. **[TravelPerk のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -130,16 +132,18 @@ TravelPerk に対して Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、B.Simon というユーザーを TravelPerk に作成します。 TravelPerk では、Just-In-Time プロビジョニングがサポートされており、これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ TravelPerk に存在していない場合は、TravelPerk にアクセスしようとしたときに新しいユーザーが作成されます。
 
+TravelPerk では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./travelperk-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる TravelPerk のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる TravelPerk のサインオン URL にリダイレクトされます。 
 
-2. TravelPerk のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* TravelPerk のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [TravelPerk] タイルをクリックすると、TravelPerk サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [TravelPerk] タイルをクリックすると、TravelPerk のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-TravelPerk を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+TravelPerk を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

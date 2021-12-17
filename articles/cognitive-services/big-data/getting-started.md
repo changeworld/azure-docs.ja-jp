@@ -6,14 +6,14 @@ author: mhamilton723
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 07/06/2020
+ms.date: 10/28/2021
 ms.author: marhamil
-ms.openlocfilehash: 095f2c3ed17042bb616fb091d1af52a64c913709
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f8d8e0ebbed2acc51c04a5ae83743e1fbf37ae6d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460504"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446564"
 ---
 # <a name="getting-started"></a>作業の開始
 
@@ -106,7 +106,7 @@ Spark クラスターと環境を設定した後、短いサンプルを実行�
 from mmlspark.cognitive import *
 from pyspark.sql.functions import col
 
-# Add your subscription key from Text Analytics (or a general Cognitive Service key)
+# Add your subscription key from the Language service (or a general Cognitive Service key)
 service_key = "ADD-SUBSCRIPTION-KEY-HERE"
 
 df = spark.createDataFrame([
@@ -130,7 +130,7 @@ display(results.select("text", col("sentiment")[0].getItem("score").alias("senti
 
 ```
 
-1. Azure portal の Text Analytics ダッシュボードの **[Keys and Endpoint]\(キーとエンドポイント\)** メニューからご自身のサブスクリプション キーを取得します。
+1. Azure portal の言語リソースの **[Keys and Endpoint]\(キーとエンドポイント\)** メニューから自分のサブスクリプション キーを取得します。
 1. Databricks ノートブック コード内のサブスクリプション キーのプレースホルダーを、ご自身のサブスクリプション キーで置き換えます。
 1. ノートブック セルの右上にある三角形のプレイ記号を選択して、サンプルを実行します。 必要に応じて、ノートブックの上部にある **[Run All]\(すべて実行\)** を選択して、すべてのセルを実行します。 回答はテーブル内のセルの下に表示されます。
 

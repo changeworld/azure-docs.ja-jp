@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b8e4395cd2ac46acb94abced52aa28eccf4f3d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92314854"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615987"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps でスコープを使用してグループの状態に基づいてアクションを実行する
 
@@ -111,13 +111,13 @@ ms.locfileid: "92314854"
 
    1. **[件名]** フィールドに、次のテキストを入力します。
 
-      ```Time to leave: Traffic more than 10 minutes```
+     `Time to leave: Traffic more than 10 minutes`
 
    1. **[本文]** フィールドに、次のテキストを入力し、末尾にスペースを追加します。 
 
-      ```Travel time:```
+     `Travel time:`
 
-      **[本文]** フィールドにカーソルが表示されている間は、この時点で使用できる任意のパラメーターを選択できるように、動的コンテンツ リストが開いたままになります。
+     **[本文]** フィールドにカーソルが表示されている間は、この時点で使用できる任意のパラメーターを選択できるように、動的コンテンツ リストが開いたままになります。
 
    1. 動的コンテンツ リストの **[式]** を選択します。
 

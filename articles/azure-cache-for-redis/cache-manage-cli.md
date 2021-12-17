@@ -1,40 +1,43 @@
 ---
 title: Azure クラシック CLI を使用して Azure Cache for Redis を管理する
 description: 任意のプラットフォームに Azure クラシック CLI をインストールする方法、Azure クラシック CLI を使って Azure アカウントに接続する方法、クラシック CLI で Azure Cache for Redis を作成および管理する方法。
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.author: yegu
+ms.author: cauribeg
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7643f882d5ac330046c169e0a3f2fa4920331d4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58ddd016546a6acfd799ada24fe3e2d2a55bbd78
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92537696"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538018"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して Azure Cache for Redis を作成および管理する方法
+
 > [!div class="op_single_selector"]
 > * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure クラシック CLI](cache-manage-cli.md)
 >
 
-Azure クラシック CLI は、任意のプラットフォームから Azure インフラストラクチャを管理する優れた方法です。 この記事では、Azure クラシック CLI を使用して Azure Cache for Redis インスタンスを作成および管理する方法について説明します。
+Azure クラシック CLI は、任意のプラットフォームから Azure インフラストラクチャを管理する優れた方法です。 このアーティクルでは、Azure クラシック CLI を使用して Azure Cache for Redis インスタンスを作成および管理する方法について説明します。
 
 [!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 > [!NOTE]
 > 最新の Azure CLI サンプル スクリプトについては、[Azure Cache for Redis 向けの Azure CLI のサンプル](cli-samples.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+
 Azure クラシック CLI を使用して Azure Cache for Redis インスタンスを作成および管理するには、次の手順を行う必要があります。
 
 * Azure アカウントが必要です。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) をほんの少しの時間で作成することができます。
 * [Azure クラシック CLI をインストールします](/cli/azure/install-classic-cli)。
-* Azure CLI のインストールを個人の Azure アカウントか、職場または学校 Azure アカウントに関連付けることで、`azure login` コマンドを使用してクラシック CLI からログインすることができます。
+* Azure CLI のインストールを個人の Azure アカウントか、職場または学校 Azure アカウントに関連付けることで、`azure login` コマンドを使用してクラシック CLI からサインインできます。
 * 以下のコマンドを実行する前に、`azure config mode arm` コマンドを実行して、クラシック CLI を Resource Manager モードに切り替えます。 詳細については、[Azure クラシック CLI を使用して Azure のリソースとリソース グループを管理する方法](../azure-resource-manager/management/manage-resources-cli.md)に関するページを参照してください。
 
 ## <a name="azure-cache-for-redis-properties"></a>Azure Cache for Redis のプロパティ
+
 Azure Cache for Redis インスタンスを作成および更新する場合には、次のプロパティを使用します。
 
 | プロパティ | Switch | 説明 |
@@ -56,6 +59,7 @@ Azure Cache for Redis インスタンスを作成および更新する場合に�
 | サブスクリプション |-s、--subscription |サブスクリプションの識別子です。 |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>すべての Azure Cache for Redis コマンドを表示する
+
 すべての Azure Cache for Redis コマンドとそのパラメーターを表示するには、`azure rediscache -h` コマンドを使用します。
 
 ```azurecli
@@ -90,6 +94,7 @@ help:    Current Mode: arm (Azure Resource Management)
 ```
 
 ## <a name="create-an-azure-cache-for-redis"></a>Azure Cache for Redis を作成する
+
 Azure Cache for Redis を作成するには、次のコマンドを使用します。
 
 ```azurecli
@@ -127,6 +132,7 @@ help:    Current Mode: arm (Azure Resource Management)
 ```
 
 ## <a name="delete-an-existing-azure-cache-for-redis"></a>既存の Azure Cache for Redis を削除する
+
 Azure Cache for Redis を削除するには、次のコマンドを使用します。
 
 ```azurecli
@@ -154,6 +160,7 @@ help:    Current Mode: arm (Azure Resource Management)
 ```
 
 ## <a name="list-all-azure-cache-for-redis-within-your-subscription-or-resource-group"></a>サブスクリプションまたはリソース グループ内のすべての Azure Cache for Redis を一覧表示する
+
 サブスクリプションまたはリソース グループ内のすべての Azure Cache for Redis を一覧表示するには、次のコマンドを使用します。
 
 ```azurecli
@@ -180,6 +187,7 @@ help:    Current Mode: arm (Azure Resource Management)
 ```
 
 ## <a name="show-properties-of-an-existing-azure-cache-for-redis"></a>既存の Azure Cache for Redis のプロパティを表示する
+
 既存の Azure Cache for Redis のプロパティを表示するには、次のコマンドを使用します。
 
 ```azurecli
@@ -209,6 +217,7 @@ help:    Current Mode: arm (Azure Resource Management)
 <a name="scale"></a>
 
 ## <a name="change-settings-of-an-existing-azure-cache-for-redis"></a>既存の Azure Cache for Redis の設定を変更する
+
 既存の Azure Cache for Redis の設定を変更するには、次のコマンドを使用します。
 
 ```azurecli
@@ -238,6 +247,7 @@ help:    Current Mode: arm (Azure Resource Management)
 ```
 
 ## <a name="renew-the-authentication-key-for-an-existing-azure-cache-for-redis"></a>既存の Azure Cache for Redis の認証キーを更新する
+
 既存の Azure Cache for Redis の認証キーを更新するには、次のコマンドを使用します。
 
 ```azurecli
@@ -268,6 +278,7 @@ help:    Current Mode: arm (Azure Resource Management)
 ```
 
 ## <a name="list-primary-and-secondary-keys-of-an-existing-azure-cache-for-redis"></a>既存の Azure Cache for Redis のプライマリ キーとセカンダリ キーを一覧表示する
+
 既存の Azure Cache for Redis のプライマリ キーとセカンダリ キーを一覧表示するには、次のコマンドを使用します。
 
 ```azurecli

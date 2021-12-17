@@ -3,21 +3,18 @@ title: Azure API Management サービスの IP アドレス | Microsoft Docs
 description: Azure API Management サービスの IP アドレスを取得する方法と、それらが変更されるタイミングについて学習します。
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
-manager: cfowler
-editor: ''
+author: dlepow
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 04/13/2021
 ms.author: apimpm
-ms.openlocfilehash: 45501fee9ae6ff47643a1ed197a07c4ba598e981
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: fasttrack-edit
+ms.openlocfilehash: fe5f282150aae2103d20963416f390bf159c48ea
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80047741"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856887"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API Management の IP アドレス
 
@@ -61,7 +58,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 
 API Management サービスが仮想ネットワーク内にある場合、パブリックとプライベートの 2 種類の IP アドレスがあります。
 
-パブリック IP アドレスは、ポート `3443` での内部通信に使用されます。これは、構成の管理用です (たとえば、Azure Resource Manager 経由)。 外部 VNet 構成では、ランタイム API トラフィックにも使用されます。 要求が API Management から公開されている (インターネットに接続された) バックエンドに送信されると、パブリック IP アドレスが要求の送信元として表示されます。
+パブリック IP アドレスは、ポート `3443` での内部通信に使用されます。これは、構成の管理用です (たとえば、Azure Resource Manager 経由)。 外部 VNet 構成では、ランタイム API トラフィックにも使用されます。 
 
 [内部 VNet モード](api-management-using-with-internal-vnet.md)で **のみ** 使用可能なプライベート仮想 IP (VIP) アドレス は、ネットワーク内から API Management エンドポイント (ゲートウェイ、開発者ポータル、および直接 API アクセス用の管理プレーン) に接続するために使用されます。 ネットワーク内の DNS レコードを設定するために、これらを使用できます。
 
@@ -89,7 +86,11 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 }
 ```
 
-API Management では、VNet 外部の接続にパブリック IP アドレスが使用され、VNet 内の接続にプライベート IP アドレスが使用されます。
+API Management では、VNet 外部の接続にパブリック IP アドレスが使用され、VNet 内の接続にプライベート IP アドレスが使用されます。 
+
+API Management が[内部 VNet 構成](api-management-using-with-internal-vnet.md)にデプロイされていて、API Management がプライベート (イントラネットに接続する) バックエンドに接続するときは、サブネットの内部 IP アドレスがランタイム API トラフィックに使用されます。 要求が API Management からプライベート バックエンドに送信されるときは、プライベート IP アドレスが要求の送信元として表示されます。 したがって、この構成で、API Management と内部バックエンドの間のトラフィックを制限する要件がある場合は、API Management リソースに関連付けられているプライベート IP アドレスだけではなく、API Management のサブネット プレフィックス全体を IP 規則で使用するのが良い方法です。 
+
+要求が API Management から公開されている (インターネットに接続された) バックエンドに送信されると、パブリック IP アドレスが要求の送信元として常に認識されます。
 
 ## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>従量課金レベルの API Management サービスの IP アドレス
 
@@ -106,4 +107,4 @@ API Management の Developer、Basic、Standard、Premium の各レベルで、�
 * Azure Virtual Network がサービスに追加されるか、サービスから削除された。
 * API Management サービスで、外部と内部の Vnet デプロイ モードが切り替えられた。
 
-[複数リージョンのデプロイ](api-management-howto-deploy-multi-region.md)では、リージョンが空いていて再び復元されると、そのリージョンの IP アドレスが変更されます。
+[複数リージョンのデプロイ](api-management-howto-deploy-multi-region.md)では、リージョンが空いていて再び復元されると、そのリージョンの IP アドレスが変更されます。 リージョンの IP アドレスは、[可用性ゾーン](zone-redundancy.md)の有効化、追加、または削除を行ったときにも変更されます。

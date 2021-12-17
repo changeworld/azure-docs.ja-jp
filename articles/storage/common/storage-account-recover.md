@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 07/06/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f57cd3361d7888d9d7f747955257d96282274fd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69d95ea67064ad45e60a6c38e37ab425bed27b76
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97357348"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616880"
 ---
 # <a name="recover-a-deleted-storage-account"></a>削除されたストレージ アカウントを復旧します
 
@@ -23,8 +23,9 @@ ms.locfileid: "97357348"
 - ストレージ アカウントが過去 14 日以内に削除された。
 - ストレージ アカウントは、Azure Resource Manager デプロイ モデルを使用して作成されている。
 - 元のアカウントが削除されて以来、同じ名前の新しいストレージ アカウントが作成されていない。
+- ストレージ アカウントを復旧するユーザーには、**Microsoft.Storage/storageAccounts/write** アクセス許可を備える Azure RBAC ロールが割り当てられている必要があります。 このアクセス許可を備える組み込み Azure RBAC ロールについては、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
-削除されたストレージ アカウントの復旧を試みる前に、そのアカウントのリソース グループが存在することを確認してください。 リソース グループが削除されている場合は、再作成する必要があります。 リソース グループを復旧することはできません。 詳細については、[リソース グループの管理](../../azure-resource-manager/management/manage-resource-groups-portal.md)に関する記事を参照してください。
+削除されたストレージ アカウントの復旧を試みる前に、そのアカウントのリソース グループが存在することを確認してください。 リソース グループが削除されている場合は、再作成する必要があります。 リソース グループを復旧することはできません。 詳しくは、[リソース グループの管理](../../azure-resource-manager/management/manage-resource-groups-portal.md)に関する記事をご覧ください。
 
 削除されたストレージ アカウントによって Azure Key Vault でカスタマー マネージド キーが使用しされており、キー コンテナーも削除されている場合は、ストレージ アカウントを復元する前に、キー コンテナーを復元する必要があります。 詳細については、[Azure Key Vault の復旧の概要](../../key-vault/general/key-vault-recovery.md)に関する記事を参照してください。
 

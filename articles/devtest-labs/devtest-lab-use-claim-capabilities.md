@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs の要求機能を使用する | Microsoft Docs
+title: 要求機能の使用
 description: Azure DevTest Labs の要求/解放の機能を使用するさまざまなシナリオについて説明します
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 73ed3c0b94a66f5d17b5c8e2561c65bb48579aa1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d50ab660433ac9b2616a897e1110d466eb143a9a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85476531"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559287"
 ---
 # <a name="use-claim-capabilities-in-azure-devtest-labs"></a>Azure DevTest Labs の要求機能を使用する
 Azure DevTest Labs サービスにより、開発者とテスト担当者の効果と効率が向上します。 この記事では、Azure DevTest Labs で仮想マシンを要求または解放する機能に焦点を当てています。 また、この機能によってユーザー エクスペリエンスが向上するさまざまな方法も示します。 この機能を使用できるさまざまなシナリオを確認する前に、**要求** の内容とそのしくみを確認しましょう。
@@ -40,5 +40,5 @@ Azure DevTest Labs サービスにより、開発者とテスト担当者の効�
 
 要求可能なマシンの使用に関する注意事項がいくつかあり、それらは一般的にマシンへのアクセス取得に関するものです。 マシンがドメインに参加している場合、マシンを要求するユーザーには既にアクセス権が付与されている必要があり、これは通常、VM の作成時にラボ内のすべてのユーザーを含むグループにアクセス権を付与することによって行います。 マシンがドメインに参加していない場合、ユーザーを管理者として追加するには、パブリック リポジトリ内の **VM パスワードのリセット** アーティファクトを実行する必要があります。  アーティファクトは、マシンが起動または要求された後でも適用できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次の記事を参照してください: [Azure DevTest Labs でのクレーム可能 VM の作成と管理](devtest-lab-add-claimable-vm.md)

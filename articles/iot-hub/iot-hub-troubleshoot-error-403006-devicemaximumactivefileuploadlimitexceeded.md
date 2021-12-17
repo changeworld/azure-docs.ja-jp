@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 3a70c11fd4f2a0549370933c300f431a03ffcf1d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 5b90593c44fbab0342def8b85a1a71e8ef15d6ad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061300"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011070"
 ---
 # <a name="403006-devicemaximumactivefileuploadlimitexceeded"></a>403006 DeviceMaximumActiveFileUploadLimitExceeded
 
@@ -31,7 +31,7 @@ ms.locfileid: "106061300"
 
 ## <a name="solution"></a>解決策
 
-デバイスからすぐに [IoT Hub ファイルのアップロードの完了を通知](./iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload)できることを確認します。 次に、[ファイル アップロードの構成に関する SAS トークンの TTL を減らす](iot-hub-configure-file-upload.md)ようにします。
+デバイスからすぐに [IoT Hub ファイルのアップロードの完了を通知](./iot-hub-devguide-file-upload.md#device-notify-iot-hub-of-a-completed-file-upload)できることを確認します。 次に、[ファイル アップロードの構成に関する SAS トークンの TTL を減らす](iot-hub-configure-file-upload.md)ようにします。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.custom: devx-track-js
-ms.openlocfilehash: a655199d854462285ca98a2d8f454c483c061f99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfcfe5eb29923de02c07a34a5bd6d70d0b002116
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92316672"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286072"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code 用の Service Fabric
 
@@ -42,13 +42,13 @@ ms.locfileid: "92316672"
 
 Java 開発の場合は、以下の前提条件をインストールする必要があります。
 
-* [Java SDK](/azure/developer/java/fundamentals/java-jdk-long-term-support) (バージョン 1.8)
+* [Java SDK](/azure/developer/java/fundamentals/java-support-on-azure) (バージョン 1.8)
 * [Gradle](https://gradle.org/install/)
 * [Debugger for Java VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) Java サービスのデバッグに必要です。 Java のデバッグ サービスは Linux 上でのみサポートされています。 VS Code の **アクティビティ バー** にある [拡張機能] アイコンをクリックし、拡張機能を検索してインストールするか、VS Code Marketplace からインストールすることができます。
 
 .NET Core/C# 開発の場合は、以下の前提条件をインストールする必要があります。
 
-* [.NET Core](https://www.microsoft.com/net/learn/get-started) (バージョン 2.0.0 以降)
+* [.NET Core](https://dotnet.microsoft.com/download) (バージョン 2.0.0 以降)
 * [C# for Visual Studio Code (OmniSharp 搭載) VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) C# サービスのデバッグに必要です。 VS Code の **アクティビティ バー** にある [拡張機能] アイコンをクリックし、拡張機能を検索してインストールするか、VS Code Marketplace からインストールすることができます。
 
 ## <a name="setup"></a>セットアップ

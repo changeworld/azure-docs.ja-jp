@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 07/29/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 112ad0714c84cd3be08788b3277f52372f6d0373
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52e50aa4097dbb405b0c37a96426440fdf002810
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98938473"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763141"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory での統合されたセキュリティ情報の登録の概要
 
-統合された登録の前、ユーザーは Azure AD Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) の認証方法を別々に登録しました。 ユーザーは Multi-Factor Authentication と SSPR に同様の方法が使用されることに困惑しましたが、どちらの機能も登録する必要がありました。 現在では、統合された登録を使用することで、ユーザーは 1 回登録して Multi-Factor Authentication と SSPR の両方の利点を得ることができます。
+統合された登録の前、ユーザーは Azure AD Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) の認証方法を別々に登録しました。 ユーザーは Multi-Factor Authentication と SSPR に同様の方法が使用されることに困惑しましたが、どちらの機能も登録する必要がありました。 現在では、統合された登録を使用することで、ユーザーは 1 回登録して Multi-Factor Authentication と SSPR の両方の利点を得ることができます。 「[Azure AD の SSPR を有効にして構成する方法](https://www.youtube.com/watch?v=rA8TvhNcCvQ)」の動画をぜひご覧ください
 
 > [!NOTE]
 > 2020 年 8 月 15 日以降は、すべての新しい Azure AD テナントで、統合された登録が自動的に有効になります。 
@@ -32,9 +32,9 @@ ms.locfileid: "98938473"
 
 ![ユーザーの登録済みのセキュリティ情報を示しているマイ アカウント](media/concept-registration-mfa-sspr-combined/combined-security-info-defaults-registered.png)
 
-新しいエクスペリエンスを有効にする前に、この管理者対象のドキュメントとユーザー対象のドキュメントを確認して、この機能とその影響を確実に理解するようにしてください。 [ユーザー ドキュメント](../user-help/security-info-setup-signin.md)に基づいたトレーニングによってユーザーが新しいエクスペリエンスに対して準備できるようにし、ロールアウトの成功に役立ててください。
+新しいエクスペリエンスを有効にする前に、この管理者対象のドキュメントとユーザー対象のドキュメントを確認して、この機能とその影響を確実に理解するようにしてください。 [ユーザー ドキュメント](https://support.microsoft.com/account-billing/set-up-your-security-info-from-a-sign-in-prompt-28180870-c256-4ebf-8bd7-5335571bf9a8)に基づいたトレーニングによってユーザーが新しいエクスペリエンスに対して準備できるようにし、ロールアウトの成功に役立ててください。
 
-Azure AD の結合されたセキュリティ情報の登録は、Azure Germany や Azure China 21Vianet などの各国のクラウドでは現在利用できません。 Azure US Government では使用できます。
+Azure AD での統合されたセキュリティ情報の登録は、Azure US Government では使用できますが、Azure Germany や Azure China 21Vianet では使用できません。
 
 > [!IMPORTANT]
 > 元のプレビューと拡張版の両方の統合された登録エクスペリエンスが有効になっているユーザーには、新しい動作が示されます。 両方のエクスペリエンスが有効になっているユーザーには [マイ アカウント] エクスペリエンスのみが表示されます。 *[マイ アカウント]* は統合された登録の外観と統一されており、ユーザーにシームレスなエクスペリエンスを提供します。 ユーザーは、[https://myaccount.microsoft.com](https://myaccount.microsoft.com) に移動することによって [マイ アカウント] を表示できます。
@@ -69,12 +69,12 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure Germany 
 
 ユーザーは、既定の Multi-Factor Authentication 方法として、次のオプションのいずれかを設定できます。
 
-- Microsoft Authenticator – 通知。
-- 認証アプリまたはハードウェア トークン – コード。
-- 音声通話。
-- テキスト メッセージ。
+- Microsoft Authenticator – プッシュ通知
+- 認証アプリまたはハードウェア トークン – コード
+- 音声通話
+- テキスト メッセージ
 
-今後も引き続き Azure AD にさらに多くの認証方法を追加していくため、統合された登録でこれらの方法を使用できるようになります。
+サード パーティの認証アプリでは、プッシュ通知は提供されません。 Microsoft では引き続き Azure AD により多くの認証方法を追加していくので、統合された登録で、それらの方法を使用できるようになります。
 
 ## <a name="combined-registration-modes"></a>統合された登録のモード
 
@@ -85,9 +85,11 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure Germany 
 
 どちらのモードでも、Multi-Factor Authentication に使用できる方法を既に登録しているユーザーが自分のセキュリティ情報にアクセスするには、Multi-Factor Authentication を実行する必要があります。 ユーザーは、以前に登録したメソッドの使用を続ける前に、自分の情報を確認する必要があります。 
 
+
+
 ### <a name="interrupt-mode"></a>中断モード
 
-統合された登録は、Multi-Factor Authentication と SSPR の両方のポリシーに従います (テナントで両方が有効になっている場合)。 これらのポリシーは、ユーザーがサインイン中に登録を中断されるかどうか、および登録にどの方法を使用できるかを制御します。
+統合された登録は、Multi-Factor Authentication と SSPR の両方のポリシーに準拠します (テナントで両方が有効になっている場合)。 これらのポリシーは、ユーザーがサインイン中に登録を中断されるかどうか、および登録にどの方法を使用できるかを制御します。 SSPR ポリシーのみが有効になっている場合、ユーザーは登録の中断をスキップして、それを後で完了できるようになります。
 
 ユーザーが自分のセキュリティ情報を登録または更新するよう求められる可能性があるサンプル シナリオを次に示します。
 
@@ -101,10 +103,10 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure Germany 
 
 次のシナリオ例について考えてみます。
 
-- ユーザーが SSPR に対して有効になっています。 SSPR ポリシーはリセットするための 2 つの方法を必要とし、モバイル アプリ コード、電子メール、および電話を有効にしています。
-- このユーザーは 2 つの方法を登録する必要があります。
-   - 既定では、ユーザーには認証アプリと電話が表示されます。
-   - ユーザーは、認証アプリまたは電話の代わりに電子メールを登録することを選択できます。
+- ユーザーが SSPR に対して有効になっています。 SSPR ポリシーでは 2 つの方法の再設定が求められていて、Authenticator のアプリ、メール、電話が有効になっています。
+- ユーザーが登録することを選択する場合、次の 2 つの方法が必要とされます。
+   - ユーザーには既定で、Authenticator アプリと電話が表示されます。
+   - ユーザーは、Authenticator アプリや電話の代わりに、メールを登録することを選択できます。
 
 次のフローチャートは、サインイン中に登録を中断されたときにユーザーにどの方法が表示されるかを示しています。
 
@@ -139,6 +141,16 @@ SSPR ポリシーでユーザーが定期的に自分のセキュリティ情報
 ### <a name="change-the-default-method-from-my-account"></a>[マイ アカウント] から既定の方法を変更する
 
 Multi-Factor Authentication に使用できる少なくとも 1 つの方法を以前に設定しているユーザーが [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) に移動します。 ユーザーは、現在の既定の方法を別の既定の方法に変更します。 完了すると、新しい既定の方法が [セキュリティ情報] ページに表示されます。
+
+### <a name="switch-directory"></a>ディレクトリを切り替える
+
+B2B ユーザーなどの外部 ID は、サードパーティ テナントのセキュリティ登録情報を変更するために、ディレクトリを切り替える必要がある場合があります。 さらに、リソース テナントにアクセスするユーザーは、ホーム テナントの設定を変更したときに混乱する可能性がありますが、リソース テナントの表示には変更が反映されません。 
+
+たとえば、ユーザーが Microsoft Authenticator アプリのプッシュ通知を、ホーム テナントにサインインするためのプライマリ認証として設定し、別のオプションとして SMS/テキスト オプションも使用しているとします。 このユーザーが、リソース テナントでも SMS/テキスト オプションを使用するよう構成しています。 このユーザーがホーム テナントで、認証オプションの 1 つとしての SMS/テキストを削除した場合、リソース テナントにアクセスすると SMS/テキスト メッセージに応答するよう求められて混乱します。 
+
+Azure portal でディレクトリを切り替えるには、右上隅にあるユーザー アカウント名をクリックし、 **[ディレクトリの切り替え]** をクリックします。
+
+![外部ユーザーはディレクトリを切り替えることができます。](media/concept-registration-mfa-sspr-combined/switch-directory.png)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,14 +1,14 @@
 ---
 title: SWIFT CSP-CSCF v2020 ブループリント サンプルのコントロール
 description: SWIFT CSP-CSCF v2020 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 04/02/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 9d385cfddae11b026cd93f49c1bc41ca48265a87
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: ea2de882c9f4a9925599fb2482762419ab4ed8d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386178"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633281"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 ブループリント サンプルのコントロール マッピング
 
@@ -37,7 +37,7 @@ ms.locfileid: "106386178"
 - マネージド ディスクを使用していない VM の監査
 - Service Fabric クラスターは、クライアント認証に Azure Active Directory だけを使用する必要がある
 
-## <a name="29a--account-management--account-monitoring--atypical-usage"></a>2.9A アカウント管理 | アカウントの監視および特殊な使用方法
+## <a name="29a-account-management--account-monitoring--atypical-usage"></a>2.9A アカウント管理 | アカウントの監視および特殊な使用方法
 
 Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシンへのインバウンド トラフィックがロックダウンされるので、必要な場合に VM に簡単に接続できる状態を保ちつつ、攻撃に対する露出を減らすことができます。 仮想マシンにアクセスするための JIT 要求はいずれもアクティビティ ログに記録されるので、特殊な利用を監視できます。 このブループリントは、Just-In-Time のアクセスをサポートできるものの、その構成がまだ済んでいない仮想マシンを監視するうえで役立つ [Azure Policy](../../../policy/overview.md) 定義を 1 件割り当てるものです。
 
@@ -188,7 +188,7 @@ Azure Security Center では、デプロイされた Azure リソースのセキ
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server の監査を有効にする必要があります
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
-- SQL データベースの脆弱性を修復する必要がある 
+- SQL データベースの脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
 
 ## <a name="13-denial-of-service-protection"></a>1.3 サービス拒否の防止
@@ -280,7 +280,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - SQL Server の高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
 - Azure Stream Analytics で診断ログを有効にする必要がある
 - SQL サーバーに対する Advanced Data Security のデプロイ
-- SQL Server での監査のデプロイ
+- SQL サーバーでの監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
 - SQL サーバーでの脅威検出のデプロイ
 

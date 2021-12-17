@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: seo-azure-migrate
-  ms.openlocfilehash: a154a3a6579ff3414502b16dcfe6d60748840a6c
-  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+  ms.openlocfilehash: 4793cc6e8dba6e8091b6039e1f7085d7024319d8
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102183302"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129363884"
 landingContent:
 - title: Azure Database Migration Service について
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
       url: dms-overview.md
   - linkListType: get-started
     links:
+    - text: Azure Data Studio を使用して移行する
+      url: migration-using-azure-data-studio.md
     - text: データベース移行シナリオの状態
       url: resource-scenario-status.md
     - text: 前提条件の概要
@@ -59,14 +61,12 @@ landingContent:
     links:
     - text: Azure SQL Database への移行
       url: tutorial-sql-server-to-azure-sql.md
-    - text: Azure SQL Managed Instance への移行 (オンライン)
-      url: tutorial-sql-server-managed-instance-online.md
-    - text: SQL Managed Instance への移行 (オフライン)
-      url: tutorial-sql-server-to-managed-instance.md
+    - text: Azure Data Studio を使用して Azure SQL Managed Instance (オンライン) に移行する
+      url: tutorial-sql-server-managed-instance-online-ads.md
+    - text: Azure Data Studio を使用して SQL Managed Instance (オフライン) に移行する
+      url: tutorial-sql-server-managed-instance-offline-ads.md
   - linkListType: reference
     links:
-    - text: 既知の問題 - SQL Database へのオンライン移行
-      url: known-issues-azure-sql-online.md
     - text: 既知の問題 - SQL Managed Instance へのオンライン移行
       url: known-issues-azure-sql-db-managed-instance-online.md
     - text: SQL Managed Instance の移行のためのネットワーク トポロジ
@@ -89,10 +89,10 @@ landingContent:
       url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - text: ポータルを使用してオンラインで Azure DB for PostgreSQL インスタンスの間で移行する
       url: tutorial-azure-postgresql-to-azure-postgresql-online-portal.md
-    - text: Azure DB for MySQL に移行する - オンライン
-      url: tutorial-mysql-azure-mysql-online.md
-    - text: RDS MySQL を Azure DB for MySQL に移行する - オンライン
-      url: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
+    - text: Azure DB for MySQL に移行する - オフライン
+      url: tutorial-mysql-azure-mysql-offline-portal.md
+    - text: RDS MySQL を Azure DB for MySQL に移行する - オフライン
+      url: tutorial-mysql-azure-mysql-offline-portal.md
     - text: Azure Cosmos DB Mongo API に移行する - オンライン
       url: tutorial-mongodb-cosmos-db-online.md
     - text: Azure Cosmos DB Mongo API に移行する - オフライン
@@ -101,8 +101,6 @@ landingContent:
     links:
     - text: 既知の問題 - Azure DB for PostgreSQL へのオンライン移行
       url: known-issues-azure-postgresql-online.md
-    - text: 既知の問題 - Azure DB for MySQL へのオンライン移行
-      url: known-issues-azure-mysql-online.md
     - text: 既知の問題 - MongoDB から Azure Cosmos DB への移行
       url: known-issues-mongo-cosmos-db.md
   - linkListType: video
@@ -120,24 +118,16 @@ landingContent:
     - text: データベース移行ガイド
       url: https://datamigration.microsoft.com/
     - text: Data Migration Assistant
-      url: /sql/dma/dma-overview?view=sql-server-2017
+      url: /sql/dma/dma-overview
     - text: SQL Server Migration Assistant
-      url: /sql/ssma/sql-server-migration-assistant?view=sql-server-2017
+      url: /sql/ssma/sql-server-migration-assistant
     - text: Database Experimentation Assistant
-      url: /sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
+      url: /sql/dea/database-experimentation-assistant-overview
     - text: データ アクセス移行ツールキット
       url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
 - title: Oracle を Azure に移行する
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Azure Database for PostgreSQL に移行する - 単一サーバー - オンライン
-      url: tutorial-oracle-azure-postgresql-online.md
-  - linkListType: reference
-    links:
-    - text: 既知の問題 - Azure Database for PostgreSQL へのオンライン移行 - 単一サーバー
-      url: known-issues-oracle-azure-postgresql-online.md
   - linkListType: video
     links:
     - text: SQL Database 単一データベースに移行する
-      url: https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/
+      url: /azure/postgresql/howto-migrate-from-oracle

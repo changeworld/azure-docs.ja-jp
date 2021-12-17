@@ -1,8 +1,6 @@
 ---
 title: AD FS 証明書の緊急ローテーション |Microsoft Docs
 description: この記事では、AD FS 証明書をただちに失効させて、更新する方法について説明します。
-services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9035c0a91bbbd7493437c692540fcbb3136a094e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3b03dc507a76254f8568989af27f76aa75ad4e20
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612954"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222440"
 ---
 # <a name="emergency-rotation-of-the-ad-fs-certificates"></a>AD FS 証明書の緊急ローテーション
 AD FS 証明書をただちにローテーションする必要がある場合は、このセクションで後述する手順に従うことができます。
@@ -26,13 +24,13 @@ AD FS 証明書をただちにローテーションする必要がある場合�
 
 > [!NOTE]
 > Microsoft では、証明書を保護し、セキュリティで保護するために、ハードウェア セキュリティ モジュール (HSM) を使用することを強く推奨します。
-> 詳細については、AD FS をセキュリティ保護するためのベスト プラクティスの「[ハードウェア セキュリティ モジュール](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm)」を参照してください。
+> 詳細については、AD FS をセキュリティ保護するためのベスト プラクティスの「[ハードウェア セキュリティ モジュール](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm)」を参照してください。
 
 ## <a name="determine-your-token-signing-certificate-thumbprint"></a>トークン署名証明書の拇印を特定する
-現在 AD FS で使用している古いトークン署名証明書を失効させるには、トークン署名証明書の拇印を特定する必要があります。  これを行うには、次の手順を使用します。
+現在 AD FS で使用している古いトークン署名証明書を取り消すには、トークン署名証明書の拇印を特定する必要があります。  これを行うには、次の手順を使用します。
 
- 1. Microsoft オンライン サービスに接続します。`PS C:\>Connect-MsolService`
- 2. オンプレミスとクラウドの両方のトークン署名証明書の拇印と有効期限を文書化します。
+ 1.    Microsoft オンライン サービスに接続します。`PS C:\>Connect-MsolService`
+ 2.    オンプレミスとクラウドの両方のトークン署名証明書の拇印と有効期限を文書化します。
 `PS C:\>Get-MsolFederationProperty -DomainName <domain>` 
  3.  拇印をコピーします。  これは後で既存の証明書を削除するために使用します。
 
@@ -43,7 +41,7 @@ AD FS 証明書をただちにローテーションする必要がある場合�
 
 Windows PowerShell コマンド `PS C:\>Get-AdfsProperties | FL AutoCert*, Certificate*` を実行できます。
 
-AutoCertificateRollover プロパティは、AD FS がトークン署名証明書とトークン暗号化解除証明書を自動的に更新するように構成されているかどうかを示します。  AutoCertificateRollover が TRUE に設定されている場合は、下の「AutoCertificateRollover が TRUE に設定されている場合の新しい自己署名証明書の生成」に説明されている手順に従います。  AutoCertificateRollover が FALSE に設定されている場合は、下の「AutoCertificateRollover が FALSE に設定されている場合の新しい証明書の手動での生成」に説明されている手順に従います
+AutoCertificateRollover プロパティは、AD FS がトークン署名証明書とトークン暗号化解除証明書を自動的に更新するように構成されているかどうかを示します。  AutoCertificateRollover が TRUE に設定されている場合は、下の「[AutoCertificateRollover が TRUE に設定されている場合の新しい自己署名証明書の生成](#generating-new-self-signed-certificate-if-autocertificaterollover-is-set-to-true)」に説明されている手順に従います。  AutoCertificateRollover が FALSE に設定されている場合は、下の「[AutoCertificateRollover が FALSE に設定されている場合の新しい証明書の手動での生成](#generating-new-certificates-manually-if-autocertificaterollover-is-set-to-false)」に説明されている手順に従います。
 
 
 ## <a name="generating-new-self-signed-certificate-if-autocertificaterollover-is-set-to-true"></a>AutoCertificateRollover が TRUE に設定されている場合の新しい自己署名証明書の生成
@@ -69,7 +67,7 @@ AutoCertificateRollover プロパティは、AD FS がトークン署名証明�
 ## <a name="generating-new-certificates-manually-if-autocertificaterollover-is-set-to-false"></a>AutoCertificateRollover が FALSE に設定されている場合の新しい証明書の手動による生成
 自動的に生成された既定の自己署名トークン署名証明書とトークン暗号化解除証明書を使用していない場合は、これらの証明書を手動で更新して構成する必要があります。  これには、2 つの新しいトークン署名証明書の作成とそれらのインポートが含まれます。  次に、一方をプライマリに昇格させ、古い証明書を失効させて、2 つ目の証明書をセカンダリ証明書として構成します。
 
-まず、証明機関から 2 つの新しい証明書を取得し、各フェデレーション サーバー上のローカル コンピューターの個人証明書ストアにそれらをインポートする必要があります。 手順については、「[証明書のインポート](https://technet.microsoft.com/library/cc754489.aspx)」の記事を参照してください。
+まず、証明機関から 2 つの新しい証明書を取得し、各フェデレーション サーバー上のローカル コンピューターの個人証明書ストアにそれらをインポートする必要があります。 手順については、「[証明書のインポート](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754489(v=ws.11))」の記事を参照してください。
 
 >[!IMPORTANT]
 >2 つの証明書を作成する理由は、Azure で前の証明書に関する情報が保持されるためです。  2 つ目の証明書を作成することで、Azure に古い証明書に関する情報を除去させ、2 つ目の証明書に関する情報に置き換えさせることができます。
@@ -106,7 +104,7 @@ Windows PowerShell 用 Microsoft Azure Active Directory モジュールを開き
 コマンド `Connect-MsolService` を実行して Azure AD に接続し、次に全体管理者の資格情報を入力します。
 
 >[!Note]
-> プライマリ フェデレーション サーバーでないコンピューターでこれらのコマンドを実行する場合は、まずコマンド `Set-MsolADFSContext –Computer <servername>` を入力します。 <servername> を AD FS サーバーの名前に置き換えます。 入力を求められたら、AD FS サーバーの管理者資格情報を入力します。
+> プライマリ フェデレーション サーバーでないコンピューターでこれらのコマンドを実行する場合は、まずコマンド `Set-MsolADFSContext –Computer <servername>` を入力します。 \<servername\> を AD FS サーバーの名前に置き換えます。 入力を求められたら、AD FS サーバーの管理者資格情報を入力します。
 
 オプションで、Azure AD の現在の証明書情報を確認して、更新が必要であるかどうかを確認します。 これを行うには、コマンド `Get-MsolFederationProperty` を実行します。 入力が求められたら、フェデレーション ドメインの名前を入力します。
 
@@ -118,13 +116,12 @@ Azure AD の証明書情報を更新するには、コマンド`Update-MsolFeder
 ## <a name="replace-ssl-certificates"></a>SSL 証明書の置き換え
 セキュリティ侵害のためにトークン署名証明書を置き換える必要がある場合は、AD FS と WAP サーバーの SSL 証明書も失効させて置き換える必要があります。  
 
-SSL 証明書の失効は、証明書を発行した証明機関 (CA) で行う必要があります。  これらの証明書は、多くの場合、GoDaddy などのサード パーティ プロバイダーによって発行されます。  例については、GoDaddy の SSL 証明書ヘルプの証明書の失効に関するページを参照してください。  詳細については、「[証明書の失効のしくみ](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee619754(v=ws.10)?redirectedfrom=MSDN)」を参照してください。
+SSL 証明書の失効は、証明書を発行した証明機関 (CA) で行う必要があります。  これらの証明書は、多くの場合、GoDaddy などのサード パーティ プロバイダーによって発行されます。  例については、GoDaddy の SSL 証明書ヘルプの証明書の失効に関するページを参照してください。  詳細については、「[証明書の失効のしくみ](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee619754(v=ws.10))」を参照してください。
 
-古い SSL 証明書が失効し、新しいものが発行されたら、SSL 証明書を置き換えることができます。 詳細については、「[AD FS の SSL 証明書の置き換え](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs)」を参照してください。
-
+古い SSL 証明書が失効し、新しいものが発行されたら、SSL 証明書を置き換えることができます。 詳細については、「[AD FS の SSL 証明書の置き換え](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs)」を参照してください。
 
 ## <a name="remove-your-old-certificates"></a>古い証明書の削除
-古い証明書を置き換えたら、古い証明書はまだ使用できるため、削除する必要があります。 . これを行うには、次の手順に従います。  これを行うには、次の手順に従います。
+古い証明書を置き換えたら、古い証明書はまだ使用できるため、削除する必要があります。 これを行うには、次の手順に従います。
 
 1. プライマリ AD FS サーバーにログオンしていることを確認します。
 2. Windows PowerShell を管理者として開きます。 
@@ -139,29 +136,10 @@ SSL 証明書の失効は、証明書を発行した証明機関 (CA) で行う�
 
 
 ## <a name="revoke-refresh-tokens-via-powershell"></a>PowerShell による更新トークンの失効
-ここで、更新トークンを持っている可能性のあるユーザーの更新トークンを失効させ、そのユーザーに再ログオンと新しいトークンの取得を強制する必要があります。  これにより、電話、現在の Web メールセッション、およびトークンと更新トークンを使用しているその他の項目から、ユーザーがログアウトされます。  詳細については、[こちら](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0&preserve-view=true)を参照してください。さらに、[Azure Active Directory でユーザー アクセスを取り消す](../../active-directory/enterprise-users/users-revoke-access.md)方法を参照することもできます。
+ここで、更新トークンを持っている可能性のあるユーザーの更新トークンを失効させ、そのユーザーに再ログオンと新しいトークンの取得を強制する必要があります。  これにより、電話、現在の Web メールセッション、およびトークンと更新トークンを使用しているその他の項目から、ユーザーがログアウトされます。  詳細については、[こちら](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?preserve-view=true&view=azureadps-2.0)を参照してください。さらに、[Azure Active Directory でユーザー アクセスを取り消す](../../active-directory/enterprise-users/users-revoke-access.md)方法を参照することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Windows Server 2016 の AD FS と WAP で SSL 証明書を管理する](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs)
-- [AD FS のトークン署名証明書とトークン暗号化解除証明書の取得と構成](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn781426(v=ws.11)#updating-federation-partners)
+- [Windows Server 2016 の AD FS と WAP で SSL 証明書を管理する](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs)
+- [AD FS のトークン署名証明書とトークン暗号化解除証明書の取得と構成](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn781426(v=ws.11)#updating-federation-partners)
 - [Microsoft 365 および Azure Active Directory 用のフェデレーション証明書の更新](how-to-connect-fed-o365-certs.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

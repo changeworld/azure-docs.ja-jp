@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 04/07/2021
+ms.date: 09/08/2021
 ms.author: alkohli
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: b6984f27ae0ae81c3bf8d98efcce5fb23909c36d
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: b79f878b7149bb41732f924c657f711f9bdf3128
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226092"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033116"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Azure Stack Edge Pro と GPU のシステム要件 
 
@@ -86,6 +86,17 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 詳細は、[IoT Edge デプロイのファイアウォール規則とポート構成規則](../iot-edge/troubleshoot.md)を参照してください。
 
+
+### <a name="port-requirements-for-kubernetes-on-azure-stack-edge"></a>Azure Stack Edge での Kubernetes のポート要件
+
+| ポート番号 | インまたはアウト | ポート範囲 | 必須 | ガイダンス |
+|----------|-----------|------------|----------|----------|
+| TCP 31000 (HTTPS)| /       | LAN        | 場合によっては。 <br> 「ノート」を参照してください。      |このポートは、Kubernetes ダッシュボードに接続してデバイスを監視する場合にのみ必要です。 |
+| TCP 6443 (HTTPS)| /       | LAN        | 場合によっては。 <br> 「ノート」を参照してください。       |このポートは、Kubernetes APIサーバーがデバイスへのアクセスに使用する場合のみ必要となります。 |
+
+> [!IMPORTANT]
+> データセンターのファイアウォールが、発信元 IPアドレスまたは MAC アドレスに基づいてトラフィックを制限またはフィルター処理している場合は、コンピューティングIP (Kubernetes node Ip) と MAC アドレスが許可リストに含まれていることを確認してください。 MAC アドレスを指定するには、 `Set-HcsMacAddressPool` デバイスの PowerShell インターフェイスでコマンドレットを実行します。
+
 ## <a name="url-patterns-for-firewall-rules"></a>ファイアウォール ルールの URL パターン
 
 多くの場合、ネットワーク管理者は、受信トラフィックと送信トラフィックをフィルターする URL パターンに基づいて、高度なファイアウォール ルールを構成できます。 Azure Stack Edge Pro デバイスとサービスは、Azure Service Bus、Azure Active Directory Access Control、ストレージ アカウント、Microsoft Update サーバーなど、他の Microsoft アプリケーションに依存しています。 その Microsoft アプリケーションと関連付けられた URL パターンを使用してファイアウォール ルールを構成できます。 Microsoft アプリケーションに関連付けられた URL パターンは変化する可能性がある点を理解することが重要です。 この変更のため、ネットワーク管理者は必要に応じて Azure Stack Edge Pro のファイアウォール ルールを監視し更新する必要があります。
@@ -107,6 +118,7 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 | https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft コンテナー レジストリ (必須)               |
 | https://\*.azurecr.io                     | 個人やサード パーティのコンテナー レジストリ (任意) | 
 | https://\*.azure-devices.net              | IoT Hub アクセス (必須)                             | 
+| https://\*.docker.com              | StorageClass (必須)                             | 
 
 ### <a name="url-patterns-for-monitoring"></a>監視用の URL パターン
 
@@ -114,9 +126,9 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 | URL パターン | Port | コンポーネントまたは機能 |
 |-------------|-------------|----------------------------|
-| http://\*ods.opinsights.azure.com | 443 | データ インジェスト |
-| http://\*.oms.opinsights.azure.com | 443 | Operations Management Suite (OMS) のオンボード |
-| http://\*.dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用するエージェント テレメトリ |
+| https://\*ods.opinsights.azure.com | 443 | データ インジェスト |
+| https://\*.oms.opinsights.azure.com | 443 | Operations Management Suite (OMS) のオンボード |
+| https://\*.dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用するエージェント テレメトリ |
 
 詳細については、「[Container insights の監視に関するネットワーク ファイアウォールの要件](../azure-monitor/containers/container-insights-onboard.md#network-firewall-requirements)」を参照してください。
 
@@ -138,9 +150,9 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 | URL パターン | Port | コンポーネントまたは機能 |
 |-------------|-------------|----------------------------|
-| http://\*ods.opinsights.azure.us | 443 | データ インジェスト |
-| http://\*.oms.opinsights.azure.us | 443 | Operations Management Suite (OMS) のオンボード |
-| http://\*.dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用するエージェント テレメトリ |
+| https://\*ods.opinsights.azure.us | 443 | データ インジェスト |
+| https://\*.oms.opinsights.azure.us | 443 | Operations Management Suite (OMS) のオンボード |
+| https://\*.dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用するエージェント テレメトリ |
 
 
 ## <a name="internet-bandwidth"></a>インターネット帯域幅

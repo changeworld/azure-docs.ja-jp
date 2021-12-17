@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
-ms.openlocfilehash: 5a1548cdf1d05a1f9d42f5c64b7fdc18f514518e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f9f02c0daf3af99faf61d33997bc59fe124297d5
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939194"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287424"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>チュートリアル: Azure HDInsight で Apache Kafka Streams API を使用する
 
@@ -36,7 +36,7 @@ Kafka Streams の詳細については、Apache.org の「[Intro to Streams](htt
 
 * [Apache Kafka Consumer および Producer API](apache-kafka-producer-consumer-api.md) に関するドキュメントの手順を完了します。 このドキュメントの手順では、このチュートリアルで作成したアプリケーションとトピックの例を使用します。
 
-* [Java Developer Kit (JDK) バージョン 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) または同等の JDK (OpenJDK など)。
+* [Java Developer Kit (JDK) バージョン 8](/azure/developer/java/fundamentals/java-support-on-azure) または同等の JDK (OpenJDK など)。
 
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 

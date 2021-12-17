@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Purview のドキュメント
-summary: 組織がデータ ソースを検索、把握、活用できるように Azure Purview を使用する方法について説明します。
+summary: 組織がデータ ソースを検索、把握、管理、活用できるように Azure Purview を使用する方法について説明します。 チュートリアルや REST API リファレンスなどのドキュメントで、使用可能なデータ ソースを検出し、適切な使用方法を管理できるデータ リポジトリの計画と構成の方法を紹介します。
 metadata:
   title: Azure Purview のドキュメント
   description: 組織がデータ ソースを検索、把握、活用できるように Azure Purview を使用する方法について説明します。 チュートリアルや REST API リファレンスなどのドキュメントで、登録されたデータ ソースをデータ コンシューマーが検索し、領域の専門家によって提供される知識を取得できるデータ リポジトリの計画と構成の方法を紹介します。
   ms.service: purview
   ms.topic: landing-page
-  author: JasonWHowell
-  ms.author: jasonh
-  ms.date: 11/29/2020
-  ms.openlocfilehash: c9e9a32ca5c77082186f15a0eae3f3430347a02b
-  ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+  author: whhender
+  ms.author: whhender
+  ms.date: 09/27/2021
+  ms.openlocfilehash: 52e7f0fd5eb50e211bf35097c2b57ed31972740b
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/28/2021
-  ms.locfileid: "98926917"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131023730"
 landingContent:
 - title: Azure Purview について
   linkLists:
@@ -26,22 +26,34 @@ landingContent:
     links:
     - text: デプロイのベスト プラクティス
       url: deployment-best-practices.md
-    - text: Data Catalog のアクセス許可
+    - text: Purview Studio の使用
+      url: use-purview-studio.md
+    - text: Purview のアクセス制御について
       url: catalog-permissions.md
-    - text: サポートされているデータ ソースとファイルの種類
-      url: sources-and-scans.md
+    - text: エラスティック データ マップについて
+      url: catalog-permissions.md
+    - text: ソースのスキャンと取り込み
+      url: concept-scans-and-ingestion.md
+  - linkListType: learn
+    links:
+    - text: Azure Purview の概要
+      url: /learn/modules/intro-to-azure-purview/
 - title: 開始
   linkLists:
   - linkListType: quickstart
     links:
     - text: Purview アカウントの作成 - ポータル
       url: create-catalog-portal.md
-    - text: Purview アカウントの作成 - PowerShell/CLI
-      url: create-catalog-powershell.md
+    - text: コレクションの作成 - ポータル
+      url: quickstart-create-collection.md
+  - linkListType: how-to-guide
+    links:
+    - text: アクセスとコレクションを管理する
+      url: how-to-create-and-manage-collections.md
+    - text: ソースに接続する
+      url: manage-credentials.md
   - linkListType: tutorial
     links:
-    - text: スタート キットのダウンロード
-      url: https://download.microsoft.com/download/9/7/9/979db3b1-0916-4997-a7fb-24e3d8f83174/PurviewStarterKitV4.zip
     - text: スタート キットの実行とデータのスキャン
       url: tutorial-scan-data.md
     - text: Purview ホーム ページのナビゲーションと検索
@@ -52,43 +64,31 @@ landingContent:
       url: tutorial-schemas-and-classifications.md
     - text: 用語集の用語を作成する
       url: tutorial-import-create-glossary-terms.md
-- title: Azure データ ソースのスキャン
+    - text: REST API を使用する
+      url: tutorial-using-rest-apis.md
+- title: Azure データ ソースの登録とスキャン
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: スタート キットの実行とデータのスキャン
-      url: tutorial-scan-data.md
   - linkListType: how-to-guide
     links:
+    - text: 複数の Azure ソースをスキャンする
+      url: register-scan-azure-multiple-sources.md
     - text: Azure SQL Database のスキャン
       url: register-scan-azure-sql-database.md
     - text: Azure Data Lake Storage Gen 2 のスキャン
       url: register-scan-adls-gen2.md
-    - text: Azure Cosmos DB のスキャン
-      url: register-scan-azure-cosmos-database.md
-    - text: Power BI のテナント
+    - text: Azure Synapse ワークスペースのスキャン
+      url: register-scan-synapse-workspace.md
+    - text: Power BI テナントのスキャン
       url: register-scan-power-bi-tenant.md
-    - text: Azure Blob Storage の登録とスキャン
+    - text: Azure Blob Storage のスキャン
       url: register-scan-azure-blob-storage-source.md
-- title: Azure 以外のデータ ソースのスキャン
-  linkLists:
-  - linkListType: how-to-guide
+    - text: 接続のトラブルシューティング
+      url: troubleshoot-connections.md
+  - linkListType: tutorial
     links:
-    - text: オンプレミスの SQL Server のスキャン
-      url: register-scan-on-premises-sql-server.md
-- title: データ資産を把握する
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: アセットの分析情報を表示する
-      url: asset-insights.md
-    - text: 用語集の分析情報を表示する
-      url: glossary-insights.md
-    - text: スキャンの分析情報を表示する
-      url: scan-insights.md
-    - text: 分類の分析情報を表示する
-      url: classification-insights.md
-- title: データのキュレーション
+    - text: Azure ソースを大規模にオンボードする
+      url: tutorial-data-sources-readiness.md
+- title: データの分類
   linkLists:
   - linkListType: tutorial
     links:
@@ -98,10 +98,14 @@ landingContent:
       url: tutorial-import-create-glossary-terms.md
   - linkListType: how-to-guide
     links:
+    - text: 機密ラベルの適用
+      url: create-sensitivity-label.md
     - text: カスタム分類とルールの作成、編集、削除
       url: create-a-custom-classification-and-classification-rule.md
     - text: 用語集の作成、インポート、エクスポート
       url: how-to-create-import-export-glossary.md
+    - text: アセットの一括編集
+      url: how-to-bulk-edit-assets.md
 - title: データの検出
   linkLists:
   - linkListType: tutorial
@@ -110,7 +114,49 @@ landingContent:
       url: tutorial-browse-and-view-lineage.md
   - linkListType: how-to-guide
     links:
+    - text: Azure Data Factory に接続する
+      url: how-to-link-azure-data-factory.md
+    - text: データ系列機能を使用する
+      url: catalog-lineage-user-guide.md
     - text: アセットの種類で参照
       url: how-to-browse-catalog.md
     - text: アセット、用語、注釈、連絡先の検索
       url: how-to-search-catalog.md
+- title: Azure 以外のデータ ソースのスキャン
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: オンプレミスの SQL Server のスキャン
+      url: register-scan-on-premises-sql-server.md
+    - text: Google BigQuery のスキャン
+      url: register-scan-google-bigquery-source.md
+    - text: Amazon S3 のスキャン
+      url: register-scan-amazon-s3.md
+    - text: Amazon RDS のスキャン
+      url: register-scan-amazon-rds.md
+    - text: Oracle のスキャン
+      url: register-scan-oracle-source.md
+    - text: Hive メタストア データベースのスキャン
+      url: register-scan-hive-metastore-source.md
+- title: データを理解する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 秘密度ラベルの分析情報を表示する
+      url: sensitivity-insights.md
+    - text: アセットの分析情報を表示する
+      url: asset-insights.md
+    - text: 分類の分析情報を表示する
+      url: classification-insights.md
+    - text: 用語集の分析情報を表示する
+      url: glossary-insights.md
+- title: ネットワークをセキュリティで保護する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Purview でプライベート エンドポイントを使用する
+      url: catalog-private-link.md
+    - text: ネットワーク構成
+      url: catalog-private-link-name-resolution.md
+    - text: プライベート ネットワークに接続する
+      url: manage-integration-runtimes.md

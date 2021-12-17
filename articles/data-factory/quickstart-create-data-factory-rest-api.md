@@ -3,16 +3,18 @@ title: REST API を使用して Azure データ ファクトリを作成する
 description: Azure データ ファクトリ パイプラインを作成して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: data-movement
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 01/18/2021
+ms.date: 05/31/2021
 ms.author: jingwang
-ms.openlocfilehash: b1950fa5269460bd3daeb671a37a072dc4f5f050
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1fb0686d975c2342bcd562e75f739d83ee0a51f6
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385260"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681537"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>クイック スタート:REST API を使用して Azure データ ファクトリとパイプラインを作成する
 
@@ -36,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * **Azure Storage アカウント**。 BLOB ストレージを、**ソース** と **シンク** のデータ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。
 * Blob Storage に **BLOB コンテナー** を作成し、コンテナーに入力 **フォルダー** を作成して、フォルダーにいくつかのファイルをアップロードします。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、Azure Blob Storage への接続、BLOB コンテナーの作成、入力ファイルのアップロード、出力ファイルの検証を行うことができます。
 * **Azure PowerShell** をインストールします。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページに記載されている手順に従います。 このクイックスタートでは、PowerShell を使用して、REST API 呼び出しを実行します。
-* [この手順](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)に従って、**Azure Active Directory にアプリケーションを作成します**。 **アプリケーション ID**、**clientSecrets**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 アプリケーションを "**共同作成者**" ロールに割り当てます。
+* [この手順](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)に従って、**Azure Active Directory にアプリケーションを作成します**。 **アプリケーション ID**、**clientSecrets**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 サブスクリプションまたはリソース グループのいずれかのレベルで、アプリケーションを "**共同作成者**" ロールに割り当てます。
 >[!NOTE]
 >   ソブリン クラウドの場合は、ActiveDirectoryAuthority と ResourceManagerUrl (BaseUri) に適したクラウド固有のエンドポイントを使用する必要があります。 PowerShell を使用して、各クラウド環境のエンドポイントの一覧を返す "Get-AzEnvironment | Format-List" を実行することで、さまざまなクラウドのエンドポイント URL を簡単に取得できます。  
 >    
@@ -76,14 +78,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure Active Directory (AAD) で認証するには、次のコマンドを実行します。
 
 ```powershell
-$AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]"https://login.microsoftonline.com/${tenantId}"
-$cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($appId, $clientSecrets)
-$result = $AuthContext.AcquireTokenAsync("https://management.core.windows.net/", $cred).GetAwaiter().GetResult()
-$authHeader = @{
-'Content-Type'='application/json'
-'Accept'='application/json'
-'Authorization'=$result.CreateAuthorizationHeader()
-}
+$credentials = Get-Credential -UserName $appId
+Connect-AzAccount -ServicePrincipal  -Credential $credentials -Tenant $tenantID
+```
+パスワードの入力を求められます。clientSecrets 変数の値を使用します。
+
+アクセス トークンを取得する必要がある場合は、次のようにします 
+
+```powershell
+
+GetToken
+
 ```
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
@@ -91,10 +96,8 @@ $authHeader = @{
 次のコマンドを実行して、データ ファクトリを作成します。
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}?api-version=${apiVersion}"
 $body = @"
 {
-    "name": "$factoryName",
     "location": "East US",
     "properties": {},
     "identity": {
@@ -102,8 +105,10 @@ $body = @"
     }
 }
 "@
-$response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Body $body
-$response | ConvertTo-Json
+
+$response =   Invoke-AzRestMethod -SubscriptionId ${subscriptionId}  -ResourceGroupName ${resourceGroupName} -ResourceProviderName  Microsoft.DataFactory -ResourceType "factories" -Name  ${factoryName} -ApiVersion ${apiVersion} -Method PUT -Payload ${body}
+$response.Content  
+
 ```
 
 以下の点に注意してください。
@@ -115,9 +120,10 @@ $response | ConvertTo-Json
     ```
 * 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
-応答例を次に示します。
+応答コンテンツの例を次に示します。
 
 ```json
+
 {  
     "name":"<dataFactoryName>",
     "identity":{  
@@ -148,7 +154,8 @@ $response | ConvertTo-Json
 コマンドを実行する前に、&lt;accountName&gt; と &lt;accountKey&gt; を Azure ストレージ アカウントの名前とキーに置き換えます。
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/linkedservices/AzureStorageLinkedService?api-version=${apiVersion}"
+$path = "/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/linkedservices/AzureStorageLinkedService?api-version=${apiVersion}"
+
 $body = @"
 {  
     "name":"AzureStorageLinkedService",
@@ -164,7 +171,7 @@ $body = @"
 }
 "@
 $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Body $body
-$response | ConvertTo-Json
+$response.content
 ```
 
 出力例を次に示します。
@@ -193,7 +200,9 @@ $response | ConvertTo-Json
 **InputDataset を作成する**
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/InputDataset?api-version=${apiVersion}"
+
+$path = "/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/InputDataset?api-version=${apiVersion}"
+
 $body = @"
 {  
     "name":"InputDataset",
@@ -217,8 +226,10 @@ $body = @"
     }
 }
 "@
-$response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Body $body
-$response | ConvertTo-Json
+
+$response =  Invoke-AzRestMethod  -Path ${path}  -Method PUT -Payload $body
+$response  
+
 ```
 
 出力例を次に示します。
@@ -247,7 +258,8 @@ $response | ConvertTo-Json
 **OutputDataset を作成する**
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/OutputDataset?api-version=${apiVersion}"
+$path = "/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/OutputDataset?api-version=${apiVersion}"
+
 $body = @"
 {  
     "name":"OutputDataset",
@@ -270,8 +282,9 @@ $body = @"
     }
 }
 "@
-$response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Body $body
-$response | ConvertTo-Json
+
+$response =  Invoke-AzRestMethod  -Path ${path}  -Method PUT -Payload $body
+$response.content
 ```
 
 出力例を次に示します。
@@ -297,12 +310,13 @@ $response | ConvertTo-Json
     "etag":"07013257-0000-0100-0000-5d6e18920000"
 }
 ```
-## <a name="create-pipeline"></a>パイプラインの作成
+## <a name="create-a-pipeline"></a>パイプラインを作成する
 
 この例では、このパイプラインに Copy アクティビティが 1 つ含まれています。 Copy アクティビティは、入力と出力として、前の手順で作成された "InputDataset" と "OutputDataset" を参照します。
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
+$path = "/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
+
 $body = @"
 {
     "name": "Adfv2QuickStartPipeline",
@@ -354,8 +368,8 @@ $body = @"
     }
 }
 "@
-$response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Body $body
-$response | ConvertTo-Json
+$response =  Invoke-AzRestMethod  -Path ${path}  -Method PUT -Payload $body
+$response.content
 ```
 
 出力例を次に示します。
@@ -382,10 +396,10 @@ $response | ConvertTo-Json
 この手順では、パイプラインの実行をトリガーします。 応答本文で返されたパイプライン実行 ID は、後で API を監視する際に使用されます。
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline/createRun?api-version=${apiVersion}"
-$response = Invoke-RestMethod -Method POST -Uri $request -Header $authHeader -Body $body
-$response | ConvertTo-Json
-$runId = $response.runId
+$path = "/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline/createRun?api-version=${apiVersion}"
+
+$response =  Invoke-AzRestMethod  -Path ${path}  -Method POST 
+$response.content 
 ```
 
 出力例を次に示します。
@@ -396,93 +410,522 @@ $runId = $response.runId
 }
 ```
 
+runId は、次のコマンドを使用して取得することもできます。 
+```powershell
+
+($response.content | ConvertFrom-Json).runId
+
+```
+
+## <a name="parameterize-your-pipeline"></a>パイプラインをパラメーター化する 
+
+パラメーターを使用してパイプラインを作成できます。 次の例では、入力データセットと出力データセットを作成します。これらは、パイプラインに渡されるパラメーターとして入力および出力ファイル名を受け取ることができます。 
+
+
+## <a name="create-parameterized-input-dataset"></a>パラメーター化された入力データセットを作成する 
+
+strInputFileName という名前のパラメーターを定義し、これをデータセットのファイル名として使用します。 
+
+```powershell
+
+$path = "/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/ParamInputDataset?api-version=${apiVersion}"
+
+$body = @"
+{
+    "name": "ParamInputDataset",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "strInputFileName": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": {
+                    "value": "@dataset().strInputFileName",
+                    "type": "Expression"
+                },
+                "folderPath": "input",
+                "container": "adftutorial"
+            }
+        }
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}
+"@
+
+$response =  Invoke-AzRestMethod  -Path ${path}  -Method PUT -Payload $body
+$response.content
+
+```
+
+出力例を次に示します。 
+
+```json
+{
+    "id": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<factoryName>/datasets/ParamInputDataset",
+    "name": "ParamInputDataset",
+    "type": "Microsoft.DataFactory/factories/datasets",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "strInputFileName": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": {
+                    "value": "@dataset().strInputFileName",
+                    "type": "Expression"
+                },
+                "folderPath": "input",
+                "container": "adftutorial"
+            }
+        }
+    },
+    "etag": "00000000-0000-0000-0000-000000000000"
+}
+
+```
+
+
+## <a name="create-parameterized-output-dataset"></a>パラメーター化された出力データセットを作成する 
+
+
+strOutputFileName という名前のパラメーターを定義し、これをデータセットのファイル名として使用します。 
+
+```powershell
+
+
+$path = "/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/ParamOutputDataset?api-version=${apiVersion}"
+$body = @"
+{
+    "name": "ParamOutputDataset",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "strOutPutFileName": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": {
+                    "value": "@dataset().strOutPutFileName",
+                    "type": "Expression"
+                },
+                "folderPath": "output",
+                "container": "adftutorial"
+            }
+        }
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}
+
+"@
+
+$response =  Invoke-AzRestMethod  -Path ${path}  -Method PUT -Payload $body
+$response.content
+
+```
+
+出力例を次に示します。 
+
+```json
+{
+    "id": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<factoryName>/datasets/ParamOutputDataset",
+    "name": "ParamOutputDataset",
+    "type": "Microsoft.DataFactory/factories/datasets",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "strOutPutFileName": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": {
+                    "value": "@dataset().strOutPutFileName",
+                    "type": "Expression"
+                },
+                "folderPath": "output",
+                "container": "adftutorial"
+            }
+        }
+    },
+    "etag": "00000000-0000-0000-0000-000000000000"
+}
+```
+
+## <a name="create-parameterized-pipeline"></a>パラメーター化されたパイプラインを作成する 
+
+2 つのパイプライン レベル パラメーター strParamInputFileName および strParamOutputFileName を使用して、パイプラインを定義します。 次に、これら 2 つのパラメーターをデータセットの strInputFileName および strOutputFileName パラメーターにリンクします。 
+
+```powershell
+
+$path = "/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartParamPipeline?api-version=${apiVersion}"
+
+$body = @"
+{
+    "name": "Adfv2QuickStartParamPipeline",
+    "properties": {
+        "activities": [
+            {
+                "name": "CopyFromBlobToBlob",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "BinarySource",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageReadSettings",
+                            "recursive": true
+                        }
+                    },
+                    "sink": {
+                        "type": "BinarySink",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageWriteSettings"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "ParamInputDataset",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "strInputFileName": {
+                                "value": "@pipeline().parameters.strParamInputFileName",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "ParamOutputDataset",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "strOutPutFileName": {
+                                "value": "@pipeline().parameters.strParamOutputFileName",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ]
+            }
+        ],   
+
+        "parameters": {
+            "strParamInputFileName": {
+              "type": "String"
+            },
+            "strParamOutputFileName": {
+              "type": "String"
+            }
+          }
+    }
+}
+"@
+
+$response =  Invoke-AzRestMethod  -Path ${path}  -Method PUT -Payload $body
+$response.content
+
+
+```
+
+出力例を次に示します。 
+
+```json
+
+{
+    "id": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<factoryName>/pipelines/Adfv2QuickStartParamPipeline",
+    "name": "Adfv2QuickStartParamPipeline",
+    "type": "Microsoft.DataFactory/factories/pipelines",
+    "properties": {
+        "activities": [
+            {
+                "name": "CopyFromBlobToBlob",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "BinarySource",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageReadSettings",
+                            "recursive": true
+                        }
+                    },
+                    "sink": {
+                        "type": "BinarySink",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageWriteSettings"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "ParamInputDataset",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "strInputFileName": {
+                                "value": "@pipeline().parameters.strParamInputFileName",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "ParamOutputDataset",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "strOutPutFileName": {
+                                "value": "@pipeline().parameters.strParamOutputFileName",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ]
+            }
+        ],
+        "parameters": {
+            "strParamInputFileName": {
+                "type": "String"
+            },
+            "strParamOutputFileName": {
+                "type": "String"
+            }
+        }
+    },
+    "etag": "5e01918d-0000-0100-0000-60d569a90000"
+}
+
+```
+
+## <a name="create-pipeline-run-with-parameters"></a>パラメーターを使用してパイプライン実行を作成する 
+
+これで、パイプライン実行の作成時にパラメーターの値を指定できます。 
+
+```powershell
+
+$path = "/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartParamPipeline/createRun?api-version=${apiVersion}"
+
+$body = @"
+{  
+        "strParamInputFileName": "emp2.txt",
+        "strParamOutputFileName": "aloha.txt"
+}
+"@
+
+$response =  Invoke-AzRestMethod  -Path ${path}  -Method POST -Payload $body
+$response.content
+$runId  = ($response.content | ConvertFrom-Json).runId
+
+```
+出力例を次に示します。 
+
+```json
+{"runId":"ffc9c2a8-d86a-46d5-9208-28b3551007d8"}
+```
+
+
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
 
 1. 次のスクリプトを実行し、データのコピーが完了するまで、パイプラインの実行の状態を継続的にチェックします。
 
     ```powershell
-    $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelineruns/${runId}?api-version=${apiVersion}"
-    while ($True) {
-        $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
-        Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
-
-        if ( ($response.Status -eq "InProgress") -or ($response.Status -eq "Queued") ) {
-            Start-Sleep -Seconds 15
+        $path = "/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelineruns/${runId}?api-version=${apiVersion}"
+        
+        
+        while ($True) {
+        
+            $response =  Invoke-AzRestMethod  -Path ${path}  -Method GET 
+            $response = $response.content | ConvertFrom-Json
+        
+            Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
+        
+            if ( ($response.Status -eq "InProgress") -or ($response.Status -eq "Queued") -or ($response.Status -eq "In Progress") ) {
+                Start-Sleep -Seconds 10
+            }
+            else {
+                $response | ConvertTo-Json
+                break
+            }
         }
-        else {
-            $response | ConvertTo-Json
-            break
-        }
-    }
     ```
 
     出力例を次に示します。
 
     ```json
-    {  
-        "runId":"04a2bb9a-71ea-4c31-b46e-75276b61bafc",
-        "debugRunId":null,
-        "runGroupId":"04a2bb9a-71ea-4c31-b46e-75276b61bafc",
-        "pipelineName":"Adfv2QuickStartPipeline",
-        "parameters":{  
-
-        },
-        "invokedBy":{  
-            "id":"2bb3938176ee43439752475aa12b2251",
-            "name":"Manual",
-            "invokedByType":"Manual"
-        },
-        "runStart":"2019-09-03T07:22:47.0075159Z",
-        "runEnd":"2019-09-03T07:22:57.8862692Z",
-        "durationInMs":10878,
-        "status":"Succeeded",
-        "message":"",
-        "lastUpdated":"2019-09-03T07:22:57.8862692Z",
-        "annotations":[  
-
-        ],
-        "runDimension":{  
-
-        },
-        "isLatest":true
-    }
+        {
+          "id": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<factoryName>/pipelineruns/ffc9c2a8-d86a-46d5-9208-28b3551007d8",
+          "runId": "ffc9c2a8-d86a-46d5-9208-28b3551007d8",
+          "debugRunId": null,
+          "runGroupId": "ffc9c2a8-d86a-46d5-9208-28b3551007d8",
+          "pipelineName": "Adfv2QuickStartParamPipeline",
+          "parameters": {
+            "strParamInputFileName": "emp2.txt",
+            "strParamOutputFileName": "aloha.txt"
+          },
+          "invokedBy": {
+            "id": "9c0275ed99994c18932317a325276544",
+            "name": "Manual",
+            "invokedByType": "Manual"
+          },
+          "runStart": "2021-06-25T05:34:06.8424413Z",
+          "runEnd": "2021-06-25T05:34:13.2936585Z",
+          "durationInMs": 6451,
+          "status": "Succeeded",
+          "message": "",
+          "lastUpdated": "2021-06-25T05:34:13.2936585Z",
+          "annotations": [],
+          "runDimension": {},
+          "isLatest": true
+        }
     ```
 
 2. 次のスクリプトを実行し、コピー アクティビティの実行の詳細 (たとえば、読み書きされたデータのサイズ) を取得します。
 
     ```powershell
-    $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelineruns/${runId}/queryActivityruns?api-version=${apiVersion}&startTime="+(Get-Date).ToString('yyyy-MM-dd')+"&endTime="+(Get-Date).AddDays(1).ToString('yyyy-MM-dd')+"&pipelineName=Adfv2QuickStartPipeline"
-    $response = Invoke-RestMethod -Method POST -Uri $request -Header $authHeader
-    $response | ConvertTo-Json
+         $path = "/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelineruns/${runId}/queryActivityruns?api-version=${apiVersion}"
+        
+        
+        while ($True) {
+        
+            $response =  Invoke-AzRestMethod  -Path ${path}  -Method POST 
+            $responseContent = $response.content | ConvertFrom-Json
+            $responseContentValue = $responseContent.value
+        
+            Write-Host  "Activity run status: " $responseContentValue.Status -foregroundcolor "Yellow"
+        
+            if ( ($responseContentValue.Status -eq "InProgress") -or ($responseContentValue.Status -eq "Queued") -or ($responseContentValue.Status -eq "In Progress") ) {
+                Start-Sleep -Seconds 10
+            }
+            else {
+                $responseContentValue | ConvertTo-Json
+                break
+            }
+        }
     ```
     出力例を次に示します。
 
     ```json
-    {  
-        "value":[  
-            {  
-                "activityRunEnd":"2019-09-03T07:22:56.6498704Z",
-                "activityName":"CopyFromBlobToBlob",
-                "activityRunStart":"2019-09-03T07:22:49.0719311Z",
-                "activityType":"Copy",
-                "durationInMs":7577,
-                "retryAttempt":null,
-                "error":"@{errorCode=; message=; failureType=; target=CopyFromBlobToBlob}",
-                "activityRunId":"32951886-814a-4d6b-b82b-505936e227cc",
-                "iterationHash":"",
-                "input":"@{source=; sink=; enableStaging=False}",
-                "linkedServiceName":"",
-                "output":"@{dataRead=20; dataWritten=20; filesRead=1; filesWritten=1; sourcePeakConnections=1; sinkPeakConnections=1; copyDuration=4; throughput=0.01; errors=System.Object[]; effectiveIntegrationRuntime=DefaultIntegrationRuntime (Central US); usedDataIntegrationUnits=4; usedParallelCopies=1; executionDetails=System.Object[]}",
-                "userProperties":"",
-                "pipelineName":"Adfv2QuickStartPipeline",
-                "pipelineRunId":"04a2bb9a-71ea-4c31-b46e-75276b61bafc",
-                "status":"Succeeded",
-                "recoveryStatus":"None",
-                "integrationRuntimeNames":"defaultintegrationruntime",
-                "executionDetails":"@{integrationRuntime=System.Object[]}"
+        {
+          "activityRunEnd": "2021-06-25T05:34:11.9536764Z",
+          "activityName": "CopyFromBlobToBlob",
+          "activityRunStart": "2021-06-25T05:34:07.5161151Z",
+          "activityType": "Copy",
+          "durationInMs": 4437,
+          "retryAttempt": null,
+          "error": {
+            "errorCode": "",
+            "message": "",
+            "failureType": "",
+            "target": "CopyFromBlobToBlob",
+            "details": ""
+          },
+          "activityRunId": "40bab243-9bbf-4538-9336-b797a2f98e2b",
+          "iterationHash": "",
+          "input": {
+            "source": {
+              "type": "BinarySource",
+              "storeSettings": "@{type=AzureBlobStorageReadSettings; recursive=True}"
+            },
+            "sink": {
+              "type": "BinarySink",
+              "storeSettings": "@{type=AzureBlobStorageWriteSettings}"
+            },
+            "enableStaging": false
+          },
+          "linkedServiceName": "",
+          "output": {
+            "dataRead": 134,
+            "dataWritten": 134,
+            "filesRead": 1,
+            "filesWritten": 1,
+            "sourcePeakConnections": 1,
+            "sinkPeakConnections": 1,
+            "copyDuration": 3,
+            "throughput": 0.044,
+            "errors": [],
+            "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US)",
+            "usedDataIntegrationUnits": 4,
+            "billingReference": {
+              "activityType": "DataMovement",
+              "billableDuration": ""
+            },
+            "usedParallelCopies": 1,
+            "executionDetails": [
+              "@{source=; sink=; status=Succeeded; start=06/25/2021 05:34:07; duration=3; usedDataIntegrationUnits=4; usedParallelCopies=1; profile=; detailedDurations=}"
+            ],
+            "dataConsistencyVerification": {
+              "VerificationResult": "NotVerified"
+            },
+            "durationInQueue": {
+              "integrationRuntimeQueue": 0
             }
-        ]
-    }
+          },
+          "userProperties": {},
+          "pipelineName": "Adfv2QuickStartParamPipeline",
+          "pipelineRunId": "ffc9c2a8-d86a-46d5-9208-28b3551007d8",
+          "status": "Succeeded",
+          "recoveryStatus": "None",
+          "integrationRuntimeNames": [
+            "defaultintegrationruntime"
+          ],
+          "executionDetails": {
+            "integrationRuntime": [
+              "@{name=DefaultIntegrationRuntime; type=Managed; location=East US; nodes=}"
+            ]
+          },
+          "id": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<factoryName>/pipelineruns/ffc9c2a8-d86a-46d5-9208-28b3551007d8/activityruns/40bab243-9bbf-4538-9336-b797a2f98e2b"
+        }
     ```
 ## <a name="verify-the-output"></a>出力を検証する
 

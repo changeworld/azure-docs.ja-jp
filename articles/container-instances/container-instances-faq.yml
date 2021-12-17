@@ -1,0 +1,101 @@
+### YamlMime:FAQ
+metadata:
+  title: よく寄せられる質問
+  description: Azure Container Instances サービスに関連するよく寄せられる質問の回答
+  author: macolso
+  ms.author: macolso
+  ms.topic: article
+  ms.date: 06/02/2020
+  ms.openlocfilehash: b8006be22b45c64599ef94e4a2450458e31c9669
+  ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 07/02/2021
+  ms.locfileid: "113220986"
+title: Azure Container Instances についてよく寄せられる質問
+summary: この記事では、Azure Container Instances についてよく寄せられる質問に回答します。
+sections:
+- name: デプロイ
+  questions:
+  - question: >
+      コンテナー イメージのサイズはどのくらいになる可能性がありますか。
+    answer: >
+      Azure Container Instances のデプロイ可能なコンテナー イメージの最大サイズは 15 GB です。 デプロイ時の可用性によっては、より大きなイメージをデプロイできる場合がありますが、これは保証されません。
+
+
+      コンテナー イメージのサイズはデプロイにかかる時間に影響するため、一般的にはコンテナー イメージをできるだけ小さくすることをお勧めします。
+  - question: >
+      コンテナーのデプロイを高速にするにはどうすればよいですか。
+    answer: "デプロイ時間の主な決定要因の 1 つはイメージのサイズなので、サイズを小さくする方法を探します。 不要なレイヤーを削除したり、イメージ内のレイヤーのサイズを小さくします (より軽いベース OS イメージを選択します)。 たとえば、Linux コンテナーを実行している場合は、完全な Ubuntu Server ではなく Alpine をベース イメージとして使用することを検討します。 同様に、Windows コンテナーの場合は、可能であれば Nano Server のベース イメージを使用します。 \n\nまた、[List Cached Images](/rest/api/container-instances/location/listcachedimages) API から入手できる Azure Container Images の事前にキャッシュされたイメージの一覧も確認することもお勧めします。 事前にキャッシュされたいずれかのイメージのためにイメージ レイヤーを切り替えることもできます。 \n\nコンテナーの起動時間の短縮に関する[詳細なガイダンス](container-instances-troubleshooting.md#container-takes-a-long-time-to-start)を参照してください。\n"
+  - question: >
+      どの Windows ベース OS イメージがサポートされていますか。
+    answer: "> [!NOTE]\n> 2020 年の Windows 更新プログラム以降の下位互換性の問題により、次のイメージ バージョンには、ベース イメージでの使用が推奨されている最小バージョン番号が含まれています。 以前のバージョンのイメージを使用した現在の展開は影響を受けませんが、新しい展開は次のベース イメージに従う必要があります。 2021 年 6 月 14 日以降、ACI は古いバージョン番号を使用したデプロイをサポートしなくなります。 \n"
+  - question: >
+      Windows Server 2016 ベース イメージ
+    answer: >
+      * [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016`、`10.0.14393.3568` 以降
+
+      * [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`、`10.0.14393.3568` 以降
+
+
+      > [!NOTE]
+
+      > Semi-Annual Channel 1709 または 1803 に基づく Windows イメージはサポートされていません。
+  - question: >
+      Windows Server 2019 とクライアント ベース イメージ
+    answer: >
+      * [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`、`10.0.17763.1040` 以降
+
+      * [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`、`1809`、`10.0.17763.1040` 以降
+
+      * [Windows](https://hub.docker.com/_/microsoft-windows): `1809`、`10.0.17763.1040` 以降
+  - question: "どの .NET または .NET Core イメージ レイヤーをコンテナーに使用すればよいですか。 \n"
+    answer: >
+      お客様の要件を満たす最小のイメージを使用します。 Linux の場合は、.NET Core 2.1 のリリース以降のサポートされている *runtime-alpine* .NET Core イメージを使用できます。 Windows で、完全な .NET Framework を使用している場合は、Windows Server Core イメージ (*4.7.2-windowsservercore-ltsc2016* などのランタイム専用イメージ) を使用する必要があります。 ランタイム専用イメージの方が小さいのですが、.NET SDK を必要とするワークロードをサポートしていません。
+
+
+      > [!NOTE]
+
+      > ACI は、OCI に準拠していないレジストリからイメージをプルすることはできません。
+  - question: >
+      ACI と互換性があるのは、どの種類のコンテナー レジストリですか。
+    answer: >
+      ACI では、ACR や、DockerHub などの他のサードパーティ製コンテナー レジストリからのイメージのプルがサポートされています。 ACI では、ACR や、OCI と互換性のあるその他のサードパーティ製コンテナー レジストリ (DockerHub など) からの、インターネットに公開されているエンドポイントを使用したイメージ プルがサポートされています。
+- name: 可用性とクォータ
+  questions:
+  - question: >
+      コンテナーまたはコンテナー グループに割り当てる必要があるコアとメモリはどのくらいですか。
+    answer: "実際のところ、これはワークロードによって異なります。 小規模から始めてパフォーマンスをテストし、コンテナーの動作を確認します。 [CPU およびメモリ リソースの使用状況を監視します](container-instances-monitor.md)。次に、コンテナーにデプロイするプロセスの種類に基づいてコアまたはメモリを追加します。\n\nコンテナー グループごとに使用できる CPU コアとメモリの上限について、デプロイしているリージョンの[リソースの可用性](container-instances-region-availability.md)も必ず確認します。 \n\n> [!NOTE]\n> コンテナー グループの少量のリソースは、サービスの基になるインフラストラクチャによって使用されます。 コンテナーでは、グループに割り当てられているほとんどのリソースにアクセスできますが、すべてのリソースにアクセスできるわけではありません。 このため、グループ内のコンテナーのリソースを要求するときは、小さいリソース バッファーを計画してください。\n"
+  - question: >
+      ACI はどのような基盤インフラストラクチャ上で動作しますか。
+    answer: "Azure Container Instances は、サーバーレスのコンテナー オンデマンド サービスであることを目的としているため、コンテナーの開発に集中してください。インフラストラクチャについて心配する必要はありません。 パフォーマンスの比較に関心がある場合、または比較する場合、ACI は主に F シリーズと D シリーズのさまざまな SKU の Azure VM セット上で動作します。 サービスの開発と最適化に伴い、今後これは変わると予想されます。 \n"
+  - question: >
+      ACI に数千個のコアをデプロイしたいのですが、クォータを増やすことはできますか。
+    answer: >
+      はい (場合によります)。 現在のクォータと、要求によって上げることができる上限については、[クォータと制限](container-instances-quotas.md)に関する記事を参照してください。
+  - question: >
+      4 コア、16 GB を超える RAM は展開できますか。
+    answer: "まだありません。 現在、これらはコンテナー グループの最大値です。 具体的な要件や要求については Azure サポートにお問い合わせください。 \n"
+  - question: >
+      特定のリージョンで、ACI はいつ使用できるようになりますか。
+    answer: >
+      現在の利用可能なリージョンについては、[こちら](container-instances-region-availability.md)で公開されています。 特定のリージョンの要件がある場合は、Azure サポートにお問い合わせください。
+- name: 機能とシナリオ
+  questions:
+  - question: >
+      コンテナー グループをスケールするにはどうすればよいですか。
+    answer: "現在、スケールはコンテナーまたはコンテナー グループには使用できません。 より多くのインスタンスを実行する必要がある場合は、API を使用して、サービスへのコンテナー グループ作成のより多くの要求を自動化および作成します。 \n"
+  - question: >
+      カスタム VNet で実行されているインスタンスにはどのような機能を使用できますか。
+    answer: >
+      選択した [Azure 仮想ネットワークにコンテナー グループをデプロイ](container-instances-vnet.md)し、プライベート IP をコンテナー グループに委任して、Azure リソース全体で VNet 内のトラフィックをルーティングすることができます。 Azure Container Instances でのネットワークのシナリオと制限事項については、「[仮想ネットワークのシナリオとリソース](container-instances-virtual-network-concepts.md)」を参照してください。
+- name: 価格
+  questions:
+  - question: >
+      測定の実行はいつ開始されますか。
+    answer: >
+      コンテナー グループの期間は、最初のコンテナーのイメージのプルを開始した時点 (新しいデプロイの場合)、またはコンテナー グループが再開された時点 (既にデプロイされている場合) から、コンテナー グループが停止するまでの時間です。 詳細については、「[Container Instances の価格](https://azure.microsoft.com/pricing/details/container-instances/)」を参照してください。
+  - question: >
+      コンテナーを停止するときに課金を停止することはできますか。
+    answer: "コンテナー グループ全体が停止すると、測定は停止します。 コンテナー グループのコンテナーが実行されている限り、コンテナーを再起動する場合に備えてリソースは保持されます。 \n"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n* Azure Container Service の[詳細情報](container-instances-overview.md)。\n* Azure Container Instances の[一般的な問題のトラブルシューティング](container-instances-troubleshooting.md)。"

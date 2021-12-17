@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 8a1eb1c21663e0294cd384daa0ba644adf78007a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5be1a70ecd9a5eefdd1df29a5305747cee09ddaa
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673210"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523754"
 ---
 # <a name="oracle-database-in-azure-linux-vm-backup-strategies"></a>Azure Linux VM での Oracle Database のバックアップ戦略
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 データベースのバックアップによって、ストレージ コンポーネント障害やデータセンター障害が原因のデータ損失からデータベースが保護されます。 また、人的エラーから復旧する手段として、あるいは開発やテスト目的でデータベースを複製する方法としても使用できます。 
 
@@ -57,11 +59,11 @@ Azure Storage プラットフォームには、Oracle データベースのバ�
 
 #### <a name="blob-storage-and-file-storage"></a>BLOB ストレージとファイル ストレージ
 
-SMB または NFS 4.1 (プレビュー) プロトコルと共に Azure Files を使用してバックアップ ストレージとしてマウントする場合、Azure Files では読み取りアクセス geo 冗長ストレージ (RA-GRS) と読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) がサポートされないことに注意してください。 
+SMB または NFS 4.1 プロトコルと共に Azure Files を使用してバックアップ ストレージとしてマウントする場合、Azure Files では読み取りアクセス geo 冗長ストレージ (RA-GRS) と読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) がサポートされないことに注意してください。 
 
 また、バックアップ ストレージ要件が 5 TiB を超える場合、Azure Files では、[大きなファイル共有機能](../../../storage/files/storage-files-planning.md)を有効にする必要がありますが、この場合 GRS または GZRS の冗長性はサポートされず、LRS のみがサポートされます。 
 
-NFS 3.0 (プレビュー) プロトコルを使用してマウントされた Azure Blob では、現在、LRS と ZRS の冗長性のみがサポートされています。  
+NFS 3.0 プロトコルを使用してマウントされた Azure Blob では、現在、LRS と ZRS の冗長性のみがサポートされています。  
 
 任意の冗長性オプションを使用して構成された Azure Blob は、Blobfuse を使用してマウントできます。
 
@@ -79,17 +81,17 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 #### <a name="azure-blob-blobfuse"></a>Azure Blob Blobfuse
 
 [Blobfuse](../../../storage/blobs/storage-how-to-mount-container-linux.md) は、Azure Blob Storage によってサポートされる仮想ファイルシステムを提供するために開発されたオープンソース プロジェクトです。 libfuse オープンソース ライブラリを使用して Linux FUSE カーネル モジュールと通信し、Azure Storage Blob REST API を使用してファイルシステム操作を実装します。 Blobfuse は現在、Ubuntu および Centos/RedHat ディストリビューションで使用できます。 [CSI ドライバー](https://github.com/kubernetes-sigs/blob-csi-driver)を使用して Kubernetes で使用することもできます。 
+<<<<<<< HEAD
+
+すべての Azure リージョンで広く普及しており、汎用の v1 および v2 や Azure Data Lake Store Gen2 を含むすべての種類のストレージ アカウントで動作しますが、Blobfuse で提供されるパフォーマンスは、SMB や NFS などの代替プロトコルよりも低いことが明らかになっています。 データベース バックアップ メディアとしての適合性を確保するには、SMB または [NFS](../../../storage/blobs/storage-how-to-mount-container-linux.md) プロトコルを使用して Azure Blob Storage をマウントすることをお勧めします。 
+=======
+>>>>>>> repo_sync_working_branch
 
 すべての Azure リージョンで広く普及しており、汎用の v1 および v2 や Azure Data Lake Store Gen2 を含むすべての種類のストレージ アカウントで動作しますが、Blobfuse で提供されるパフォーマンスは、SMB や NFS などの代替プロトコルよりも低いことが明らかになっています。 データベース バックアップ メディアとしての適合性を確保するには、SMB または [NFS](../../../storage/blobs/storage-how-to-mount-container-linux.md) プロトコルを使用して Azure Blob Storage をマウントすることをお勧めします。 
 
-#### <a name="azure-blob-nfs-v30-preview"></a>Azure Blob NFS v3.0 (プレビュー)
+#### <a name="azure-blob-nfs-v30"></a>Azure Blob NFS v3.0
 
-ネットワーク ファイル システム (NFS) v3.0 プロトコルの Azure サポートがプレビュー段階になりました。 [NFS](../../../storage/blobs/network-file-system-protocol-support.md) サポートにより、Windows および Linux クライアントは Blob ストレージ コンテナーを Azure VM にマウントできるようになります。 
-
-NFS 3.0 パブリック プレビューでは、Standard パフォーマンス レベルを持つ GPV2 ストレージ アカウントが次のリージョンでサポートされています。 
-- オーストラリア東部
-- 韓国中部
-- 米国中南部。 
+ネットワーク ファイル システム (NFS) v3.0 プロトコルの Azure サポートが利用できるようになりました。 [NFS](../../../storage/blobs/network-file-system-protocol-support.md) サポートにより、Windows および Linux クライアントは Blob ストレージ コンテナーを Azure VM にマウントできるようになります。 
 
 ネットワーク セキュリティを確保するには、NFS マウントに使用されるストレージ アカウントが VNet 内に含まれている必要があります。 Azure Active Directory (AD) セキュリティおよびアクセス制御リスト (ACL) は、NFS 3.0 プロトコルのサポートが有効にされているアカウントではまだサポートされていません。
 
@@ -97,22 +99,15 @@ NFS 3.0 パブリック プレビューでは、Standard パフォーマンス �
 
 [Azure Files](../../../storage/files/storage-files-introduction.md) は、オンプレミスまたはクラウドベースの Windows、Linux、または macOS クライアントにマウントできる、クラウドベースのフル マネージド分散ファイルシステムです。
 
-Azure Files では、サーバー メッセージ ブロック (SMB) プロトコルおよびネットワーク ファイル システム (NFS) プロトコル (プレビュー) を介してアクセスできる、フル マネージドのクロスプラットフォームのファイル共有がクラウド上で提供されます。 現在、Azure Files ではマルチプロトコル アクセスがサポートされていないため、共有は NFS 共有または SMB 共有のどちらかに限られます。 Azure ファイル共有を作成する前に、自分のニーズに最も適したプロトコルを特定することをお勧めします。
+Azure Files では、サーバー メッセージ ブロック (SMB) プロトコルおよびネットワーク ファイル システム (NFS) プロトコルを介してアクセスできる、フル マネージドのクロスプラットフォームのファイル共有がクラウド上で提供されます。 現在、Azure Files ではマルチプロトコル アクセスがサポートされていないため、共有は NFS 共有または SMB 共有のどちらかに限られます。 Azure ファイル共有を作成する前に、自分のニーズに最も適したプロトコルを特定することをお勧めします。
 
 Azure ファイル共有は、Recovery Services コンテナーに対する Azure Backup によって保護することもでき、これにより Oracle RMAN バックアップに追加の保護レイヤーが提供されます。
 
-#### <a name="azure-files-nfs-v41-preview"></a>Azure Files NFS v4.1 (プレビュー)
+#### <a name="azure-files-nfs-v41"></a>Azure Files NFS v4.1
 
-Azure ファイル共有は、ネットワーク ファイル システム (NFS) v4.1 プロトコルを使用して Linux ディストリビューションにマウントできます。 プレビュー段階では、サポートされる機能にはいくつかの制限があり、これらは[こちら](../../../storage/files/storage-files-how-to-mount-nfs-shares.md)に記載されています。 
+Azure ファイル共有は、ネットワーク ファイル システム (NFS) v4.1 プロトコルを使用して Linux ディストリビューションにマウントできます。 サポートされる機能にはいくつかの制限があります。 詳細については、「[Azure Storage 機能のサポート](../../../storage/files/files-nfs-protocol.md#support-for-azure-storage-features)」のセクションを参照してください。 
 
-プレビュー段階では、Azure Files NFS v4.1 はまた、次の[リージョン](../../../storage/files/storage-files-how-to-mount-nfs-shares.md)に制限されています。
-- 米国東部 (LRS および ZRS)
-- 米国東部 2
-- 米国西部 2
-- 西ヨーロッパ
-- 東南アジア
-- 英国南部
-- オーストラリア東部
+[!INCLUDE [files-nfs-regional-availability](../../../../includes/files-nfs-regional-availability.md)]
 
 #### <a name="azure-files-smb-30"></a>Azure Files SMB 3.0
 
@@ -120,7 +115,7 @@ Azure ファイル共有は、SMB カーネル クライアントを使用して
 
 Azure Files SMB は、すべての Azure リージョンで一般提供されており、NFS v3.0 と v4.1 のプロトコルと同じパフォーマンス特性を示しているため、現時点では、Azure Linux VM へのバックアップ ストレージ メディアを提供するための推奨される方法となっています。  
 
-SMB 2.1 と SMB 3.0 という 2 つのバージョンの SMB がサポートされており、後者は転送中の暗号化をサポートしているため後者が推奨されます。 ただし、Linux カーネルのバージョンによって SMB 2.1 と 3.0 のサポートが異なるため、[こちら](../../../storage/files/storage-how-to-use-files-linux.md)の表を確認してご使用のアプリケーションで SMB 3.0 がサポートされていることを確認する必要があります。 
+SMB 2.1 と SMB 3.0 という 2 つのバージョンの SMB がサポートされており、後者は転送中の暗号化をサポートしているため後者が推奨されます。 ただし、Linux カーネルのバージョンによって、SMB 2.1 と 3.0 のサポートに違いがあります。 詳細については、「[SMB Azure ファイル共有を Linux でマウントする](../../../storage/files/storage-how-to-use-files-linux.md)」を参照し、アプリケーションが SMB 3.0 をサポートしていることを確認してください。 
 
 Azure Files はマルチユーザー ファイル共有サービスとして設計されているため、バックアップ ストレージ メディアとしてより適したものにするために調整する必要があるいくつかの特性があります。 キャッシュをオフにすることと、作成されたファイルのユーザーとグループの ID を設定することをお勧めします。
 
@@ -152,5 +147,3 @@ Azure Backup は、[拡張された事前スクリプトと事後スクリプト
 - [Oracle Database の作成のクイックスタート](oracle-database-quick-create.md)
 - [Azure Files への Oracle Database のバックアップ](oracle-database-backup-azure-storage.md)
 - [Azure Backup サービスを使用した Oracle Database のバックアップ](oracle-database-backup-azure-backup.md)
-
-

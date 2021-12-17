@@ -2,16 +2,14 @@
 title: JavaScript アプリケーションのソース マップのサポート - Azure Monitor Application Insights
 description: Application Insights を使用して、独自のストレージ アカウントの BLOB コンテナーにソース マップをアップロードする方法について説明します。
 ms.topic: conceptual
-author: DavidCBerry13
-ms.author: daberry
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 79462dcb503e5835254b89f7ebaa7a9ee34946d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81ca8de41c4d68ddc5ff3fc0355def975e6df30d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933935"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732024"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript アプリケーションに対するソース マップのサポート
 
@@ -50,7 +48,7 @@ Azure Pipelines を使用してアプリケーションの継続的なビルド�
 エンドツーエンド トランザクションの詳細タブで *[Unminify]\(アンミニファイ\)* をクリックすると、リソースが未構成の場合、構成するよう求めるプロンプトが表示されます。
 
 1. ポータルで、ミニファイされた例外の詳細を表示します。
-2. *[Unminify]\(アンミニファイ\)* をクリックします
+2. *[Unminify]\(アンミニファイ処理する\)* を選択します。
 3. リソースが構成されていない場合は、構成を求めるメッセージが表示されます。
 
 ### <a name="from-the-properties-page"></a>プロパティ ページから
@@ -58,9 +56,9 @@ Azure Pipelines を使用してアプリケーションの継続的なビルド�
 Application Insights リソースにリンクされているストレージ アカウントまたは BLOB コンテナーを構成または変更する場合は、Application Insights リソースの *[プロパティ]* タブを表示します。
 
 1. Application Insights リソースの *[プロパティ]* タブに移動します。
-2. *[ソース マップ BLOB コンテナーの変更]* をクリックします。
+2. *[ソース マップ BLOB コンテナーの変更]* を選択します。
 3. ソース マップ コンテナーとして別の BLOB コンテナーを選択します。
-4. [`Apply`] をクリックします。
+4. [`Apply`] を選択します。
 
 > [!div class="mx-imgBorder"]
 > ![[プロパティ] ブレードに移動して、選択した Azure BLOB コンテナーを再構成する](./media/source-map-support/reconfigure.png)

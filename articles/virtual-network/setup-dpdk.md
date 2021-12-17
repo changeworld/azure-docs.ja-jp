@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 3b4d66525ec52ef2382dfbe97bc09278e35b31fb
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 10639653c00fc5e781a9edd2b49c60f659d00966
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124671"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746168"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Linux 仮想マシンでの DPDK の設定
 
@@ -36,17 +36,19 @@ DPDK は、複数のオペレーティング システムの配布をサポー�
 **1 秒あたりのパケット数 (PPS) の向上**: カーネルをバイパスしてユーザー空間でパケットを制御すると、コンテキスト切り替えが無くなることでサイクル数が減少します。 また、Azure Linux 仮想マシンで毎秒処理されるパケットのレートも向上します。
 
 
-## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
+## <a name="supported-operating-systems-minimum-versions"></a>サポートされているオペレーティング システムの最小バージョン
 
 Azure Marketplace の次のディストリビューションがサポートされています。
 
 | Linux OS     | カーネル バージョン               | 
 |--------------|---------------------------   |
-| Ubuntu 16.04 | 4.15.0-1014-azure+           | 
 | Ubuntu 18.04 | 4.15.0-1014-azure+           |
 | SLES 15 SP1  | 4.12.14-8.19-azure+          | 
 | RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
 | CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
+| Debian 10    | 4.19.0-1-cloud+              |
+
+記載されているバージョンは最小要件です。 より新しいバージョンもサポートされています。
 
 **カスタムのカーネル サポート**
 
@@ -60,33 +62,61 @@ Azure Marketplace の次のディストリビューションがサポートさ�
 
 Linux 仮想マシン上で高速ネットワークを有効にする必要があります。 仮想マシンは、管理用の 1 つのインターフェイスに加えて、少なくとも 2 つのネットワーク インターフェイスを保持している必要があります。 管理インターフェイスで高速ネットワークを有効にすることは推奨されません。 [高速ネットワークを有効にした Linux 仮想マシンを作成する](create-vm-accelerated-networking-cli.md)方法について説明します。
 
-## <a name="install-dpdk-dependencies"></a>DPDK 依存関係をインストールする
-
-### <a name="ubuntu-1604"></a>Ubuntu 16.04
-
-```bash
-sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
-sudo apt-get update
-sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
-```
+## <a name="install-dpdk-via-system-package-recommended"></a>システム パッケージを使用して DPDK をインストールする (推奨)
 
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
 ```bash
-sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
+sudo add-apt-repository ppa:canonical-server/server-backports -y
 sudo apt-get update
-sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
+sudo apt-get install -y dpdk
 ```
 
-### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
+### <a name="ubuntu-2004-and-newer"></a>Ubuntu 20.04 以降
+
+```bash
+sudo apt-get install -y dpdk
+```
+
+### <a name="debian-10-and-newer"></a>Debian 10 以降
+
+```bash
+sudo apt-get install -y dpdk
+```
+
+## <a name="install-dpdk-manually-not-recommended"></a>手動で DPDK をインストールする (非推奨)
+
+### <a name="install-build-dependencies"></a>ビルドの依存関係をインストールする
+
+#### <a name="ubuntu-1804"></a>Ubuntu 18.04
+
+```bash
+sudo add-apt-repository ppa:canonical-server/server-backports -y
+sudo apt-get update
+sudo apt-get install -y build-essential librdmacm-dev libnuma-dev libmnl-dev meson
+```
+
+#### <a name="ubuntu-2004-and-newer"></a>Ubuntu 20.04 以降
+
+```bash
+sudo apt-get install -y build-essential librdmacm-dev libnuma-dev libmnl-dev meson
+```
+
+#### <a name="debian-10-and-newer"></a>Debian 10 以降
+
+```bash
+sudo apt-get install -y build-essential librdmacm-dev libnuma-dev libmnl-dev meson
+```
+
+#### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
 
 ```bash
 yum -y groupinstall "Infiniband Support"
 sudo dracut --add-drivers "mlx4_en mlx4_ib mlx5_ib" -f
-yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel libmnl-devel
+yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel libmnl-devel meson
 ```
 
-### <a name="sles-15-sp1"></a>SLES 15 SP1
+#### <a name="sles-15-sp1"></a>SLES 15 SP1
 
 **Azure のカーネル**
 
@@ -94,7 +124,7 @@ yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel 
 zypper  \
   --no-gpg-checks \
   --non-interactive \
-  --gpg-auto-import-keys install kernel-azure kernel-devel-azure gcc make libnuma-devel numactl librdmacm1 rdma-core-devel
+  --gpg-auto-import-keys install kernel-azure kernel-devel-azure gcc make libnuma-devel numactl librdmacm1 rdma-core-devel meson
 ```
 
 **既定のカーネル**
@@ -103,16 +133,15 @@ zypper  \
 zypper \
   --no-gpg-checks \
   --non-interactive \
-  --gpg-auto-import-keys install kernel-default-devel gcc make libnuma-devel numactl librdmacm1 rdma-core-devel
+  --gpg-auto-import-keys install kernel-default-devel gcc make libnuma-devel numactl librdmacm1 rdma-core-devel meson
 ```
 
-## <a name="set-up-the-virtual-machine-environment-once"></a>仮想マシン環境のセットアップ (1 回のみ)
+### <a name="compile-and-install-dpdk-manually"></a>手動で DPDK をコンパイルしてインストールする
 
-1. [最新 DPDK をダウンロードします](https://core.dpdk.org/download)。 Azure には、バージョン 18.11 LTS または 19.11 LTS が必要です。
-2. `make config T=x86_64-native-linuxapp-gcc` を使って既定の構成を構築します。
-3. `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config` を使って、生成された構成で Mellanox PMD を有効にします。
-4. `make` を使ってコンパイルします。
-5. `make install DESTDIR=<output folder>` を使ってインストールします。
+1. [最新 DPDK をダウンロードします](https://core.dpdk.org/download)。 Azure には、バージョン 19.11 LTS 以降が必要です。
+2. `meson builddir` を使って既定の構成を構築します。
+3. `ninja -C builddir` を使ってコンパイルします。
+4. `DESTDIR=<output folder> ninja -C builddir install` を使ってインストールします。
 
 ## <a name="configure-the-runtime-environment"></a>ランタイム環境を構成する
 
@@ -255,3 +284,4 @@ testpmd をルート モードで実行するには、*testpmd* コマンドの�
 
 * [EAL オプション](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
 * [Testpmd コマンド](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options)
+* [パケット ダンプ コマンド](https://doc.dpdk.org/guides/tools/pdump.html#pdump-tool)

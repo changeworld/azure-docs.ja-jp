@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Hub モジュール ID とモジュール ツイン (Python)
 description: モジュール ID を作成し、IoT SDKs for Python を使用してモジュール ツインを更新する方法を説明します。
-author: chrissie926
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.author: menchi
+ms.author: lizross
 ms.custom: devx-track-python
-ms.openlocfilehash: 665281adc892e6b3655c0b1d0533cb3148e62940
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47570d0e3557cda3c5781edd046e69d04ba4cb9d
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92139404"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553422"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT Hub モジュール ID とモジュール ツイン (Python) の概要
 
@@ -203,39 +203,34 @@ ms.locfileid: "92139404"
 
     ```python
     import time
-    import threading
     from azure.iot.device import IoTHubModuleClient
 
-    CONNECTION_STRING = "YourModuleConnectionString"
+    def twin_patch_handler(twin_patch):
+        print("")
+        print("Twin desired properties patch received:")
+        print(twin_patch)
 
 
-    def twin_update_listener(client):
-        while True:
-            patch = client.receive_twin_desired_properties_patch()  # blocking call
-            print("")
-            print("Twin desired properties patch received:")
-            print(patch)
+    def main():
+        print ("Starting the IoT Hub Python sample...")
+        client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
 
-    def iothub_client_sample_run():
+        print ("Waiting for commands, press Ctrl-C to exit")
         try:
-            module_client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
-
-            twin_update_listener_thread = threading.Thread(target=twin_update_listener, args=(module_client,))
-            twin_update_listener_thread.daemon = True
-            twin_update_listener_thread.start()
+            # Attach the handler to the client
+            client.on_twin_desired_properties_patch_received = twin_patch_handler
 
             while True:
-                time.sleep(1000000)
-
+                time.sleep(1000)
         except KeyboardInterrupt:
             print("IoTHubModuleClient sample stopped")
-
+        finally:
+            # Graceful exit
+            print("Shutting down IoT Hub Client")
+            client.shutdown()
 
     if __name__ == '__main__':
-        print ( "Starting the IoT Hub Python sample..." )
-        print ( "IoTHubModuleClient waiting for commands, press Ctrl-C to exit" )
-
-        iothub_client_sample_run()
+        main()
     ```
 
 ## <a name="run-the-apps"></a>アプリの実行

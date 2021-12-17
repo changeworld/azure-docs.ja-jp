@@ -3,22 +3,22 @@ title: カスタム ポリシーによるマルチテナント Azure AD のサ�
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure AD ID プロバイダーを追加します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 10/21/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9d9ba7e3e898da8d5b7d1bb4fbc69554ee205147
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 553608a5574edaf904e9c9ac0986a3d0f8af9278
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028335"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227968"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure Active Directory を設定する
 
@@ -38,13 +38,16 @@ ms.locfileid: "107028335"
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
-## <a name="register-an-application"></a>アプリケーションを登録する
+> [!NOTE]
+> この記事では、前提条件で述べる前のステップで **SocialAndLocalAccounts** スターター パックを使用することを想定しています。  
+
+## <a name="register-an-azure-ad-app"></a>Azure AD アプリの登録
 
 Azure Active Directory B2C (Azure AD B2C) で Azure AD アカウントを持つユーザーのサインインを有効にするには、[Azure portal](https://portal.azure.com) でアプリケーションを作成する必要があります。 詳細については、[Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)方法に関するページを参照してください。
 
-
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 組織の Azure AD テナント (contoso.com など) が含まれているディレクトリを使用していることを確認します。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
+1. 組織の Azure AD テナント (Contoso など) が含まれているディレクトリを使用していることを確認します。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[新規登録]** を選択します。
 1. アプリケーションの **[名前]** を入力します。 たとえば、「 `Azure AD B2C App` 」のように入力します。
@@ -63,7 +66,7 @@ Azure Active Directory B2C (Azure AD B2C) で Azure AD アカウントを持つ�
 1. **[Certificates & secrets]\(証明書とシークレット\)** を選択してから、 **[New client secret]\(新しいクライアント シークレット\)** を選択します。
 1. シークレットの **説明** を入力し、有効期限を選択して、 **[追加]** を選択します。 後の手順で使用するために、シークレットの **値** を記録しておきます。
 
-## <a name="configuring-optional-claims"></a>省略可能な要求の構成
+### <a name="configuring-optional-claims"></a>省略可能な要求の構成
 
 Azure AD から `family_name` および `given_name` 要求を取得する場合は、Azure portal UI またはアプリケーション マニフェストでアプリケーションの省略可能な要求を構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](../active-directory/develop/active-directory-optional-claims.md)に関するページを参照してください。
 
@@ -74,13 +77,18 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **[省略可能な要求を追加]** を選択します。
 1. **[トークンの種類]** で、 **[ID]** を選択します。
 1. 追加する省略可能な要求 (`family_name` と `given_name`) を選択します。
-1. **[追加]** をクリックします。
+1. **[追加]** を選択します。 **“Turn on the Microsoft Graph email permission (required for claims to appear in token)”** (Microsoft Graph の電子メール権限を有効にしてください (トークンにクレームを組み込むのに必要です)) というメッセージが表示される場合は、それを有効にしてから、もう一度 **[Add]\(追加\)** をクリックしてください。
+
+## <a name="optional-verify-your-app-authenticity"></a>[省略可能] アプリの信頼性を確認する
+
+[発行元の確認](../active-directory/develop/publisher-verification-overview.md)により、ユーザーは、[登録](#register-an-azure-ad-app)したアプリの信頼性を把握できます。 検証済みアプリは、アプリの発行元が、Microsoft Partner Network (MPN) を使用して ID を[検証](/partner-center/verification-responses)したことを意味します。 [アプリを発行者確認済みとしてマークする](../active-directory/develop/mark-app-as-publisher-verified.md)方法についてご確認ください。 
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
 作成したアプリケーション キーを Azure AD B2C テナントに格納する必要があります。
 
-1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション] フィルター** を選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[ポリシー]** で **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
@@ -96,7 +104,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 ポリシーの拡張ファイル内で Azure AD を **ClaimsProvider** 要素に追加することで、Azure AD をクレーム プロバイダーとして定義できます。
 
-1. *TrustFrameworkExtensions.xml* ファイルを開きます。
+1. *SocialAndLocalAccounts/**TrustFrameworkExtensions.xml*** ファイルを開きます。
 1. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
 1. 新しい **ClaimsProvider** を次のように追加します。
 
@@ -149,7 +157,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
     ```
 
 1. **ClaimsProvider** 要素の下で、**Domain** の値を、他の ID プロバイダーと区別するために使用できる一意の値に更新します。
-1. **TechnicalProfile** 要素の下で、**DisplayName** の値を更新します (例: `Contoso Employee`)。 この値は、サインイン ページのサインイン ボタン上に表示されます。
+1. **TechnicalProfile** 要素の下で、**DisplayName** の値を更新します (例: `Multi-Tenant AAD`)。 この値は、サインイン ページのサインイン ボタン上に表示されます。
 1. **client_id** は、前に登録した Azure AD マルチテナント アプリケーションのアプリケーション ID に設定します。
 1. **CryptographicKeys** で、**StorageReferenceId** の値を、前に作成したポリシー キーの名前に更新します。 たとえば、「 `B2C_1A_AADAppSecret` 」のように入力します。
 
@@ -163,7 +171,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 サインインに使用する Azure AD テナントごとに次の手順を実行します。
 
-1. ブラウザーを開き、そのテナントに対応する OpenID Connect のメタデータ URL に移動します。 **発行者** オブジェクトを探し、その値を記録します。 `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/` のようになっていると思います。
+1. ブラウザーを開き、そのテナントに対応する OpenID Connect のメタデータ URL に移動します。 **発行者** オブジェクトを探し、その値を記録します。 `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/.well-known/openid-configuration` のようになっていると思います。
 1. その値をコピーして **ValidTokenIssuerPrefixes** キーに貼り付けます。 複数の発行者は、コンマで区切ります。 前出の `ClaimsProvider` XML サンプルでは、発行者が 2 つ存在する例を確認できます。
 
 [!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
@@ -201,8 +209,6 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 ## <a name="next-steps"></a>次のステップ
 
-カスタム ポリシーを操作する場合、開発過程でポリシーのトラブルシューティングを行っているときに、追加情報が必要になることがあります。
-
-問題の診断に役立てるために、ポリシーを一時的に "開発者モード" にして、Azure Application Insights を使用してログを収集できます。 その方法については、[Azure Active Directory B2C: ログの収集](troubleshoot-with-application-insights.md)に関するページを参照してください。
+[Azure AD トークンをアプリケーションに渡す](idp-pass-through-user-flow.md)方法について学習する。
 
 ::: zone-end

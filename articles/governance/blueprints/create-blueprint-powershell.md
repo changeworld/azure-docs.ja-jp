@@ -1,16 +1,15 @@
 ---
 title: クイック スタート:PowerShell を使用してブループリントを作成する
 description: このクイックスタートでは、Azure Blueprints と PowerShell を使用して、成果物を作成、定義、デプロイします。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.custom:
-- mode-api
-ms.openlocfilehash: 29c43da0c1467c74ddc85a447a0cf9addb574c7e
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mode-api
+ms.openlocfilehash: 2891c46929dde7509950f86b35840e36d175fee9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538905"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131081260"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>クイック スタート:PowerShell で Azure Blueprint を定義して割り当てる
 

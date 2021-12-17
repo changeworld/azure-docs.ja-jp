@@ -1,14 +1,14 @@
 ---
 title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
-ms.date: 01/14/2021
+ms.date: 07/27/2021
 ms.topic: overview
-ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aff8dc3aa4ff97438a4ebc457a6946f30dccb142
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98220730"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660858"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -61,7 +61,7 @@ Azure Policy では、[効果](./concepts/effects.md)を適用して、これら
 
 ### <a name="azure-policy-and-azure-rbac"></a>Azure Policy と Azure RBAC
 
-Azure Policy と Azure ロールベースのアクセス制御 (Azure RBAC) には、いくつかの主要な違いがあります。 Azure Policy では、Resource Manager で表されるリソースのプロパティと一部のリソースプロバイダーのプロパティを調査することによって状態を評価します。 Azure Policy によってアクション ("_操作_" とも呼ばれる) が制限されることはありません。 Azure Policy では、だれが変更を行ったかや、だれが変更を行うアクセス許可を持っているかに関係なく、リソースがお客様のビジネス ルールに準拠した状態になります。
+Azure Policy と Azure ロールベースのアクセス制御 (Azure RBAC) には、いくつかの主要な違いがあります。 Azure Policy では、Resource Manager で表されるリソースのプロパティと一部のリソースプロバイダーのプロパティを調査することによって状態を評価します。 Azure Policy によってアクション ("_操作_" とも呼ばれる) が制限されることはありません。 Azure Policy では、だれが変更を行ったかや、だれが変更を行うアクセス許可を持っているかに関係なく、リソースがお客様のビジネス ルールに準拠した状態になります。 [ポリシー定義](#policy-definition)、[イニシアチブ定義](#initiative-definition)、[割り当て](#assignments)などの一部の Azure Policy リソースは、すべてのユーザーに表示されます。 この設計により、すべてのユーザーとサービスに対して、その環境でどのようなポリシー ルールが設定されているかの透明性が実現されます。
 
 Azure RBAC の焦点は、さまざまなスコープでのユーザー[操作](../../role-based-access-control/resource-provider-operations.md)の管理にあります。 アクションの制御が必要な場合は、Azure RBAC が使用に適したツールになります。 あるユーザーがアクションを実行するためのアクセス権を持っていても、結果としてリソースが準拠していない場合、その作成や更新は Azure Policy によってブロックされます。
 
@@ -74,7 +74,7 @@ Azure Policy は、次の 2 つのリソース プロバイダーにおいて、
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者** ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者** は完全な権限を持っています。 **共同作成者** と **閲覧者** はどちらも、Azure Policy のすべての "_読み取り_" 操作にアクセスできます。 **共同作成者** はリソースの修復をトリガーできますが、定義や割り当てを "_作成_" することはできません。 **deployIfNotExists** や **modify** 割り当てのマネージド ID に対して必要なアクセス許可を与えるには、**ユーザー アクセス管理者** が必要です。
+Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者** ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者** は完全な権限を持っています。 **共同作成者** と **閲覧者** はどちらも、Azure Policy のすべての "_読み取り_" 操作にアクセスできます。 **共同作成者** はリソースの修復をトリガーできますが、定義や割り当てを "_作成_" することはできません。 **deployIfNotExists** や **modify** 割り当てのマネージド ID に対して必要なアクセス許可を与えるには、**ユーザー アクセス管理者** が必要です。 すべてのポリシー オブジェクトは、スコープのすべてのロールから読み取ることができるようになります。
 
 いずれの組み込みロールにも必要なアクセス許可がない場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成してください。
 
@@ -137,9 +137,9 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 このイニシアチブでは、次のようなポリシー定義を作成します。
 
-- **暗号化されていない SQL Database を Security Center で監視する** – 暗号化されていない SQL データベースとサーバーを監視します。
-- **OS の脆弱性を Security Center で監視する** – 構成されているベースラインを満たしていないサーバーを監視します。
-- **不足している Endpoint Protection を Security Center で監視する** – Endpoint Protection エージェントがインストールされていないサーバーを監視します。
+- **暗号化されていない SQL Database を Security Center で監視する** - 暗号化されていない SQL データベースとサーバーを監視します。
+- **OS の脆弱性を Security Center で監視する** - 構成されているベースラインを満たしていないサーバーを監視します。
+- **不足している Endpoint Protection を Security Center で監視する** - Endpoint Protection エージェントがインストールされていないサーバーを監視します。
 
 ポリシー パラメーターと同様に、イニシアチブ パラメーターは冗長性を減らすことでイニシアチブの管理を簡素化できます。 イニシアチブ パラメーターは、イニシアチブ内のポリシー定義によって使われるパラメーターです。
 
@@ -153,7 +153,7 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 このシナリオで **initiativeC** のイニシアチブ パラメーターを定義する場合、3 つのオプションがあります。
 
 - このイニシアチブ内でポリシー定義のパラメーターを使用します。この例では、_allowedLocations_ と _allowedSingleLocation_ が **initiativeC** のイニシアチブ パラメーターになります。
-- このイニシアチブ定義内でポリシー定義のパラメーターに値を指定します。 この例では、**policyA** のパラメーター – **allowedLocations** および **policyB** のパラメーター – **allowedSingleLocation** に場所のリストを提供できます。 このイニシアチブを割り当てるときに値を指定することもできます。
+- このイニシアチブ定義内でポリシー定義のパラメーターに値を指定します。 この例では、**policyA** のパラメーター - **allowedLocations** および **policyB** のパラメーター - **allowedSingleLocation** に場所のリストを提供できます。 このイニシアチブを割り当てるときに値を指定することもできます。
 - このイニシアチブを割り当てるときに使うことができる "_値_" オプションのリストを指定します。 このイニシアチブを割り当てるときは、イニシアチブ内のポリシー定義から継承したパラメーターは、この指定されたリストの値だけを持つことができます。
 
 イニシアチブ定義で値のオプションを作成すると、イニシアチブの割り当てで別の値を入力することは、リストの一部ではないためできません。

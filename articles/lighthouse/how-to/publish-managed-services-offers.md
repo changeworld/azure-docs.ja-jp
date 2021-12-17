@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure Lighthouse に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-ms.date: 03/31/2021
+ms.date: 08/10/2021
 ms.topic: how-to
-ms.openlocfilehash: f59d9708925b52bcf9432663fe6d3137a54b37ad
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: af5ca37d312f5bdfcfae179997b920a466f01462
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107450"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742188"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
@@ -53,7 +53,7 @@ ms.locfileid: "107107450"
 
 すべてのセクションの指定が済んだら、Azure Marketplace にオファーを発行します。 **[発行]** ボタンを選択して、お客様のオファーを一般公開するプロセスを始めます。 このプロセスの詳細については、[こちら](../../marketplace/review-publish-offer.md)を参照してください。
 
-いつでも[更新済みバージョンのオファー](../..//marketplace/partner-center-portal/update-existing-offer.md)を公開できます。 たとえば、以前に公開されたオファーに新しいロールの定義を追加したい場合があります。 そうすると、オファーを既に追加している顧客には、Azure portal の [ **[サービス プロバイダー]**](view-manage-service-providers.md) ページに、更新が利用可能であることを知らせるアイコンが表示されます。 各顧客は、[変更を確認](view-manage-service-providers.md#update-service-provider-offers)して、新しいバージョンに更新するかどうかを決定できます。 
+いつでも[更新済みバージョンのオファー](../../marketplace/update-existing-offer.md)を公開できます。 たとえば、以前に公開されたオファーに新しいロールの定義を追加したい場合があります。 そうすると、オファーを既に追加している顧客には、Azure portal の [ **[サービス プロバイダー]**](view-manage-service-providers.md) ページに、更新が利用可能であることを知らせるアイコンが表示されます。 各顧客は、[変更を確認](view-manage-service-providers.md#update-service-provider-offers)して、新しいバージョンに更新するかどうかを決定できます。 
 
 ## <a name="the-customer-onboarding-process"></a>顧客オンボーディング プロセス
 
@@ -63,6 +63,9 @@ ms.locfileid: "107107450"
 > 委任は、オンボード対象の (またはオンボード対象のリソース グループを含む) サブスクリプションに対して、`Microsoft.Authorization/roleAssignments/write` のアクセス許可を持つ[所有者](../../role-based-access-control/built-in-roles.md#owner)などのロールが割り当てられている、顧客のテナント内のゲスト以外のアカウントで実行する必要があります。 サブスクリプションを委任できるユーザーを見つけるには、顧客のテナント内のユーザーが Azure portal 上でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。
 
 顧客がサブスクリプション (またはサブスクリプション内の 1 つまたは複数のリソース グループ) を委任した後、そのサブスクリプションに **Microsoft.ManagedServices** リソース プロバイダーが登録され、テナント内のユーザーは、オファー内の承認に従って、委任されたリソースにアクセスできるようになります。
+
+> [!NOTE]
+> 後で追加のサブスクリプションまたはリソース グループを同じオファーに委任する場合、お客様は委任する前に、各サブスクリプションに [**Microsoft.ManagedServices** リソース プロバイダーを手動で登録する](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)必要があります。
 
 更新されたバージョンのオファーを発行する場合、お客様は [Azure portal で変更を確認し、新しいバージョンを受け入れる](view-manage-service-providers.md#update-service-provider-offers)ことができます。
 

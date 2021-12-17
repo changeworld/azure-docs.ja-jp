@@ -192,7 +192,7 @@
                   href: storsimple-8000-manage-volumes-u2.md
                   items:
                     - name: 'よくあるご質問: ローカル固定ボリューム'
-                      href: storsimple-8000-local-volume-faq.md
+                      href: storsimple-8000-local-volume-faq.yml
                 - name: Azure ロールベースのアクセス制御
                   href: storsimple-8000-role-based-access-control.md
                 - name: ACR を管理する
@@ -401,7 +401,7 @@
         - name: CSP のリリース ノート
           href: 'https://partner.microsoft.com/Support/whats-new'
         - name: 'CSP 向け StorSimple: よく寄せられる質問'
-          href: storsimple-partner-csp-faq.md
+          href: storsimple-partner-csp-faq.yml
 - name: 関連項目
   items:
     - name: StorSimple 5000/7000 シリーズ

@@ -3,18 +3,17 @@ title: チュートリアル - Azure IoT Edge を使用して Linux 用の C# �
 description: このチュートリアルでは、C# コードを使って IoT Edge モジュールを作成し、Linux IoT Edge デバイスにデプロイする方法について説明します。
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b7695c825dbdd2c207c87799ea801026f7506bcb
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 27bfa2400715b568fc99411235a21e1a87d17cbb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219452"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740625"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>チュートリアル: Linux コンテナーを使用して C# の IoT Edge モジュールを開発する
 
@@ -60,7 +59,7 @@ Linux コンテナーを使用して C# モジュールを開発してデプロ�
 これらのチュートリアルを完了するには、開発マシンでさらに次の前提条件を整えます。
 
 * [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
+* [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)。
 
 ## <a name="create-a-module-project"></a>モジュール プロジェクトを作成する
 
@@ -96,6 +95,9 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 2. 自分の Azure コンテナー レジストリの **ユーザー名** と **パスワード** の値を使用して、フィールドを更新します。
 3. このファイルを保存します。
 
+>[!NOTE]
+>このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、[[コンテナー レジストリへのアクセスを管理する]](production-checklist.md#manage-access-to-your-container-registry) を参照してください。
+
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 
 現在、Visual Studio Code では、Linux AMD64 および Linux ARM32v7 デバイス用の C# モジュールを開発できます。 ソリューションごとにターゲットとするアーキテクチャを選択する必要があります。これは、アーキテクチャの種類によって、コンテナーのビルド方法と実行方法が異なるためです。 既定値は Linux AMD64 です。
@@ -108,7 +110,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
 1. VS Code エクスプローラーで、 **[モジュール]**  >  **[CSharpModule]**  >  **[Program.cs]** の順に開きます。
 
-2. **[CSharpModule]** 名前空間の上部で、後で使用する型として 3 つの **using** ステートメントを追加します。
+1. **[CSharpModule]** 名前空間の上部で、後で使用する型として 3 つの **using** ステートメントを追加します。
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>
@@ -116,13 +118,13 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
     using Newtonsoft.Json;                // For JsonConvert
     ```
 
-3. **temperatureThreshold** 変数を **Program** クラスに追加します。 この変数により、データが IoT Hub に送信される基準値が設定されます。データは、測定温度がこの値を超えると送信されます。
+1. **temperatureThreshold** 変数を **Program** クラスに追加します。 この変数により、データが IoT Hub に送信される基準値が設定されます。データは、測定温度がこの値を超えると送信されます。
 
     ```csharp
     static int temperatureThreshold { get; set; } = 25;
     ```
 
-4. **MessageBody**、**Machine**、**Ambient** の各クラスを **Program** クラスに追加します。 これらのクラスは、受信メッセージの本文に対して予期されるスキーマを定義します。
+1. **MessageBody**、**Machine**、**Ambient** の各クラスを **Program** クラスに追加します。 これらのクラスは、受信メッセージの本文に対して予期されるスキーマを定義します。
 
     ```csharp
     class MessageBody
@@ -143,24 +145,26 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
     }
     ```
 
-5. **Init** 関数を探します。 この関数では、**ModuleClient** オブジェクトを作成して構成します。これにより、モジュールはローカルの Azure IoT Edge ランタイムに接続して、メッセージを送受信できます。 **ModuleClient** の作成後、コードによって、モジュール ツインの目的のプロパティから **temperatureThreshold** が読み取られ、 IoT Edge ハブから **input1** エンドポイントを介してメッセージを受信するためのコールバックが登録されます。 **SetInputMessageHandlerAsync** メソッドを新しいメソッドで置き換え、対象プロパティの更新のために **SetDesiredPropertyUpdateCallbackAsync** メソッドを追加します。 この変更を行うには、**Init** メソッドの最後の行を次のコードに置き換えます。
+1. **Init** 関数を探します。 この関数では、**ModuleClient** オブジェクトを作成して構成します。これにより、モジュールはローカルの Azure IoT Edge ランタイムに接続して、メッセージを送受信できます。 **ModuleClient** の作成後、コードによって、モジュール ツインの目的のプロパティから **temperatureThreshold** が読み取られ、 このコードによって、**input1** と呼ばれるエンドポイントを介して IoT Edge ハブからメッセージを受信するためのコールバックが登録されます。
 
-    ```csharp
-    // Register a callback for messages that are received by the module.
-    // await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", PipeMessage, iotHubModuleClient);
+   **SetInputMessageHandlerAsync** メソッドを、エンドポイントの名前と入力の到着時に呼び出されるメソッドを更新する新しいものに置き換えます。 また、必要なプロパティを更新するために **SetDesiredPropertyUpdateCallbackAsync** メソッドも追加します。 この変更を行うには、**Init** メソッドの最後の行を次のコードに置き換えます。
 
-    // Read the TemperatureThreshold value from the module twin's desired properties
-    var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
-    await OnDesiredPropertiesUpdate(moduleTwin.Properties.Desired, ioTHubModuleClient);
+   ```csharp
+   // Register a callback for messages that are received by the module.
+   // await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", PipeMessage, iotHubModuleClient);
 
-    // Attach a callback for updates to the module twin's desired properties.
-    await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertiesUpdate, null);
+   // Read the TemperatureThreshold value from the module twin's desired properties
+   var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
+   await OnDesiredPropertiesUpdate(moduleTwin.Properties.Desired, ioTHubModuleClient);
 
-    // Register a callback for messages that are received by the module.
-    await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessages, ioTHubModuleClient);
-    ```
+   // Attach a callback for updates to the module twin's desired properties.
+   await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertiesUpdate, null);
 
-6. **onDesiredPropertiesUpdate** メソッドを **Program** クラスに追加します。 このメソッドは、モジュール ツインから対象プロパティの更新を受け取り、それに合わせて **temperatureThreshold** 変数を更新します。 すべてのモジュールに独自のモジュール ツインがあり、これにより、モジュール内で実行されているコードをクラウドから直接構成できます。
+   // Register a callback for messages that are received by the module. Messages received on the inputFromSensor endpoint are sent to the FilterMessages method.
+   await ioTHubModuleClient.SetInputMessageHandlerAsync("inputFromSensor", FilterMessages, ioTHubModuleClient);
+   ```
+
+1. **onDesiredPropertiesUpdate** メソッドを **Program** クラスに追加します。 このメソッドは、モジュール ツインから対象プロパティの更新を受け取り、それに合わせて **temperatureThreshold** 変数を更新します。 すべてのモジュールに独自のモジュール ツインがあり、これにより、モジュール内で実行されているコードをクラウドから直接構成できます。
 
     ```csharp
     static Task OnDesiredPropertiesUpdate(TwinCollection desiredProperties, object userContext)
@@ -191,7 +195,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
     }
     ```
 
-7. **PipeMessage** メソッドを **FilterMessages** メソッドに置き換えます。 このメソッドは、モジュールが IoT Edge ハブからメッセージを受け取るたびに呼び出されます。 これにより、モジュール ツインで設定されているしきい値を下回る温度を報告するメッセージは除外されます。 また、**MessageType** プロパティを、値が **Alert** に設定されたメッセージに追加します。
+1. **PipeMessage** メソッドを **FilterMessages** メソッドに置き換えます。 このメソッドは、モジュールが IoT Edge ハブからメッセージを受け取るたびに呼び出されます。 これにより、モジュール ツインで設定されているしきい値を下回る温度を報告するメッセージは除外されます。 また、**MessageType** プロパティを、値が **Alert** に設定されたメッセージに追加します。
 
     ```csharp
     static async Task<MessageResponse> FilterMessages(Message message, object userContext)
@@ -248,11 +252,19 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
     }
     ```
 
-8. Program.cs ファイルを保存します。
+1. Program.cs ファイルを保存します。
 
-9. VS Code のエクスプローラーで、ご自身の IoT Edge ソリューション ワークスペースの **deployment.template.json** ファイルを開きます。
+1. VS Code のエクスプローラーで、ご自身の IoT Edge ソリューション ワークスペースの **deployment.template.json** ファイルを開きます。
 
-10. **CSharpModule** モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを **modulesContent** セクションの下部、 **$edgeHub** モジュール ツインの後に挿入します。
+1. モジュールがリッスンするエンドポイントの名前を変更したので、edgeHub が新しいエンドポイントにメッセージを送信するために、配置マニフェスト内のルートも更新する必要があります。
+
+    **$edgeHub** モジュール ツインで **routes** セクションを見つけます。 **sensorToCSharpModule** ルートを更新して、`input1` を `inputFromSensor` に置き換えます。
+
+    ```json
+    "sensorToCSharpModule": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/CSharpModule/inputs/inputFromSensor\")"
+    ```
+
+1. **CSharpModule** モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを **modulesContent** セクションの下部、 **$edgeHub** モジュール ツインの後に挿入します。
 
     ```json
        "CSharpModule": {
@@ -264,7 +276,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
     ![モジュール ツインをデプロイ テンプレートに追加する](./media/tutorial-csharp-module/module-twin.png)
 
-11. deployment.template.json ファイルを保存します。
+1. deployment.template.json ファイルを保存します。
 
 ## <a name="build-and-push-your-module"></a>モジュールをビルドしてプッシュする
 

@@ -2,13 +2,14 @@
 title: Azure Service Bus での Azure リソースのマネージド ID
 description: この記事では、Azure Service Bus エンティティ (キュー、トピック、サブスクリプション) にアクセスするためにマネージド ID を使用する方法について説明します。
 ms.topic: article
-ms.date: 01/21/2021
-ms.openlocfilehash: 0558e00ac7e8ce67d2e5194b02d2de06f2d38ff1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/14/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: dad610902514849db33ca00b2da3f328d233260e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785435"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358069"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus リソースにアクセスするために Azure Active Directory を使用してマネージド ID を認証する
 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、デプロイに関連付けられ、その下でアプリケーション コードが実行されるセキュリティ保護された ID を作成できる Azure 間機能です。 この ID は、アプリケーションに必要な特定の Azure リソースにアクセスするためのカスタム アクセス許可を付与するアクセス制御ロールに関連付けることができます。
@@ -60,7 +61,7 @@ Azure Service Bus の場合、名前空間およびそれに関連するすべ�
 > [!NOTE]
 > Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。 
 
-組み込みのロールの定義方法の詳細については、[ロール定義](../role-based-access-control/role-definitions.md#management-and-data-operations)に関するページを参照してください。 Azure カスタム ロールの作成については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
+組み込みのロールの定義方法の詳細については、[ロール定義](../role-based-access-control/role-definitions.md#control-and-data-actions)に関するページを参照してください。 Azure カスタム ロールの作成については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
 ## <a name="enable-managed-identities-on-a-vm"></a>VM 上のマネージド ID を有効にする
 Azure リソースのマネージド ID を使用して、ご利用の VM から Service Bus リソースを承認するには、最初に VM 上で Azure リソースのマネージド ID を有効にする必要があります。 Azure リソースのマネージド ID を有効にする方法については、次の記事のいずれかを参照してください。
@@ -91,43 +92,18 @@ Azure ロールの割り当ての詳細については、[Azure Active Directory
 
 この設定を有効にすると、ご利用の Azure Active Directory (Azure AD) に新しいサービス ID が作成され、App Service ホストに構成されます。
 
-> [!NOTE]
-> マネージド ID を使用する場合、接続文字列は `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=ManagedIdentity` の形式にする必要があります。
-
-ここで、このサービス ID をご利用の Service Bus リソースの必要なスコープ内のロールに割り当てます。
-
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てるには
-Service Bus 名前空間にロールを割り当てるには、Azure portal で名前空間に移動します。 リソースの [アクセス制御 (IAM)] 設定を表示し、次の手順に従ってロールの割り当てを管理します。
+目的のスコープ (Service Bus 名前空間、リソース グループ、サブスクリプション) で、いずれかの [Service Bus ロール](#azure-built-in-roles-for-azure-service-bus)をマネージド サービス ID に割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。 
 
 > [!NOTE]
-> 次の手順では、Service Bus 名前空間にサービス ID のロールを割り当てます。 同じ手順に従って、他のサポートされているスコープ (リソース グループとサブスクリプション) でロールを割り当てることができます。 
-> 
-> 存在しない場合は、[Service Bus Messaging 名前空間を作成](service-bus-create-namespace-portal.md)します。 
-
-1. Azure portal で、ご利用の Service Bus 名前空間に移動し、その名前空間の **[概要]** を表示します。 
-1. 左側のメニューの **[アクセス制御 (IAM)]** を選択して、Service Bus 名前空間のアクセス制御設定を表示します。
-1.  **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
-3.  **[追加]** を選択し、 **[ロール割り当ての追加]** を選択します。
-4.  **[ロールの割り当ての追加]** ページで、これらの手順に従います。
-    1. **[ロール]** で、割り当てる Service Bus ロールを選択します。 この例では、**Azure Service Bus データ所有者** です。
-    1. **[アクセスの割り当て先]** フィールドで、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。 
-    1. Web アプリのマネージド ID が作成された **サブスクリプション** を選択します。
-    1. 作成した Web アプリの **マネージド ID** を選択します。 ID の既定の名前は、Web アプリの名前と同じです。 
-    1. 次に、 **[保存]** を選択します。
-        
-        ![[ロールの割り当ての追加] ページ](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-
-    ロールを割り当てると、Web アプリケーションには、定義されたスコープの下で Service Bus リソースへのアクセス権が付与されます。 
-
-    > [!NOTE]
-    > マネージド ID をサポートするサービスの一覧については、「[Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
+> マネージド ID をサポートするサービスの一覧については、「[Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
 
 ### <a name="run-the-app"></a>アプリを実行する
 次に、作成した ASP.NET アプリケーションの既定のページを変更します。 [こちらの GitHub リポジトリ](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)の Web アプリケーション コードを使用します。  
 
 Default.aspx ページはランディング ページです。 コードは Default.aspx.cs ファイルにあります。 いくつかの入力フィールドと、Service Bus に接続してメッセージを送受信するための **send** ボタンおよび **receive** ボタンを備えた最小限の Web アプリケーションが作成されます。
 
-[MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) オブジェクトを初期化する方法に注意してください。 共有アクセス トークン (SAS) トークン プロバイダーを使用するのではなく、コードで `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` を呼び出してマネージド ID のトークン プロバイダーを作成します。 そのため、保持および使用するシークレットはありません。 マネージド ID コンテキストから Service Bus へのフローと承認ハンドシェイクは、トークン プロバイダーによって自動的に処理されます。 これは SAS を使用するよりも単純なモデルです。
+TokenCredential を受け取るコンストラクターを使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトを初期化する方法に注意してください。 DefaultAzureCredential は TokenCredential から派生したもので、ここで渡すことができます。 そのため、保持および使用するシークレットはありません。 マネージド ID コンテキストから Service Bus へのフローと承認ハンドシェイクは、トークン資格情報によって自動的に処理されます。 これは SAS を使用するよりも単純なモデルです。
 
 これらの変更を行ったら、アプリケーションを発行して実行します。 適切な発行データを簡単に取得するには、Visual Studio で発行プロファイルをダウンロードしてインポートします。
 

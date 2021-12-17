@@ -1,44 +1,43 @@
 ---
-title: Azure Blob Storage リファレンス
+title: Azure Blob Storage API リファレンス
 description: Azure Blob Storage API リファレンス、readme ファイル、クライアント ライブラリ パッケージを示します。
-author: twooley
-ms.author: twooley
-ms.date: 09/10/2020
+author: normesta
+ms.author: normesta
+ms.date: 08/04/2021
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.reviewer: ripohane
-ms.openlocfilehash: 0f5faa22e18f22ac5324885c404b98e7116e4e32
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.topic: reference
+ms.openlocfilehash: 998c8ae6424d170fb0b7cf1b4556ba35da990db5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277166"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622476"
 ---
-# <a name="azure-blob-storage-reference"></a>Azure Blob Storage リファレンス
+# <a name="azure-blob-storage-api-reference"></a>Azure Blob Storage API リファレンス
 
-Azure Blob Storage API リファレンス、ライブラリ パッケージ、readme ファイル、概要記事を示します。
+Blob Storage API リファレンス、ライブラリ パッケージ、readme ファイル、概要記事を示します。
 
 ## <a name="net-client-libraries"></a>.NET クライアント ライブラリ
 
-次の表は、Azure Blob Storage .NET API のリファレンスとサンプル ドキュメントの一覧です。
+次の表は、Blob Storage .NET API のリファレンス情報をまとめたものです。
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [.NET 用 Azure Blob Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage.blobs-readme) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [クイックスタート:.NET 用 Azure Blob Storage クライアント ライブラリ v12](./storage-quickstart-blobs-dotnet.md) |
 | 11.x | [Microsoft.Azure.Storage.Blob 名前空間](/dotnet/api/microsoft.azure.storage.blob) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [クイックスタート:.NET 用 Azure Blob Storage クライアント ライブラリ v11](./storage-quickstart-blobs-dotnet-legacy.md) |
 
-### <a name="storage-management"></a>記憶域の管理
+### <a name="storage-management-net-apis"></a>Storage 管理 .NET API
 
-次の表は、Azure Storage 管理 .NET API のリファレンス ドキュメントをまとめたものです。
+次の表は、Azure Storage 管理 .NET API のリファレンス情報をまとめたものです。
 
 |  Version  | リファレンス ドキュメント | Package |
 | :-------: | ----------------------- | ------- |
 | 16.x | [Microsoft.Azure.Management.Storage](/dotnet/api/microsoft.azure.management.storage) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) |
 
-### <a name="data-movement"></a>データの移動
+### <a name="data-movement-net-apis"></a>データ移動 .NET API
 
-次の表は、Azure Storage データ移動 .NET API のリファレンス ドキュメントをまとめたものです。
+次の表は、Azure Storage データ移動 .NET API のリファレンス情報をまとめたものです。
 
 |  Version  | リファレンス ドキュメント | Package |
 | :-------: | ----------------------- | ------- |
@@ -46,16 +45,16 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 ## <a name="java-client-libraries"></a>Java クライアント ライブラリ
 
-次の表は、Azure Blob Storage Java API のリファレンスとサンプル ドキュメントの一覧です。
+次の表は、Blob Storage Java API のリファレンス情報をまとめたものです。
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Azure Storage - Blob](/java/api/overview/azure/storage-blob-readme) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [クイック スタート: Java v12 SDK で BLOB を管理する](./storage-quickstart-blobs-java.md) |
 | 8.x | [com.microsoft.azure.storage.blob](/java/api/com.microsoft.azure.storage.blob) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [クイック スタート: Java v8 SDK で BLOB を管理する](./storage-quickstart-blobs-java-legacy.md) |
 
-### <a name="storage-management"></a>記憶域の管理
+### <a name="storage-management-java-apis"></a>Storage 管理 Java API
 
-次の表は、Azure Storage 管理 Java API のリファレンス ドキュメントをまとめたものです。
+次の表は、Azure Storage 管理 Java API のリファレンス情報をまとめたものです。
 
 |  Version  | リファレンス ドキュメント | Package |
 | :-------: | ----------------------- | ------- |
@@ -63,7 +62,7 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 ## <a name="python-client-libraries"></a>Python クライアント ライブラリ
 
-次の表は、Azure Blob Storage Python API のリファレンスとサンプル ドキュメントの一覧です。
+次の表は、Blob Storage Python API のリファレンス情報をまとめたものです。
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -72,16 +71,24 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 ## <a name="javascript-client-libraries"></a>JavaScript クライアント ライブラリ
 
-次の表は、Azure Blob Storage JavaScript API のリファレンスとサンプル ドキュメントの一覧です。
+次の表は、Blob Storage JavaScript API のリファレンス情報をまとめたものです。
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [JavaScript 用 Azure Storage Blob クライアント ライブラリ](/javascript/api/overview/azure/storage-blob-readme) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-blob) | [クイック スタート: Node.js の JavaScript v12 SDK を使用して BLOB を管理する](./storage-quickstart-blobs-nodejs.md) <br/> [クイック スタート: ブラウザーで JavaScript v12 SDK を使用して BLOB を管理する](./quickstart-blobs-javascript-browser.md) |
 | 10.x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy&preserve-view=true) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [クイック スタート: Node.js で JavaScript v10 SDK を使用して BLOB を管理する](./storage-quickstart-blobs-nodejs-legacy.md) <br/> [クイック スタート: ブラウザーで JavaScript v10 SDK を使用して BLOB を管理する](./storage-quickstart-blobs-javascript-client-libraries-legacy.md)|
 
+## <a name="c-client-libraries"></a>C++ クライアント ライブラリ
+
+次の表は、Blob Storage C++ API のリファレンス情報をまとめたものです。
+
+|  Version  | リファレンス ドキュメント | ソース コード/Readme | クイック スタート |
+| :-------: | ----------------------- | ------- | ---------- |
+| 12.x | [Azure SDK for C++ API](https://azure.github.io/azure-sdk-for-cpp/index.html) | [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-cpp/tree/main/sdk/storage) | [クイックスタート: C++ 用 Azure Blob Storage クライアント ライブラリ v12](./quickstart-blobs-c-plus-plus.md) |
+
 ## <a name="rest-apis"></a>REST API
 
-次の表は、Azure Blob Storage REST API のリファレンスとサンプル ドキュメントの一覧です。
+次の表は、Blob Storage REST API のリファレンス情報をまとめたものです。
 
 | リファレンス ドキュメント | 概要 |
 | ----------------------- | -------- |
@@ -89,13 +96,12 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 ### <a name="other-rest-reference"></a>その他の REST リファレンス
 
-- [Azure Storage import-export REST API ](/rest/api/storageimportexport/) は、BLOB ストレージとの間でデータを転送するインポートまたはエクスポート ジョブの管理に役立ちます。
+[Azure Storage import-export REST API](/rest/api/storageimportexport/) は、BLOB ストレージとの間でデータを転送するインポートまたはエクスポート ジョブの管理に役立ちます。
 
 ## <a name="other-languages-and-platforms"></a>その他の言語とプラットフォーム
 
 次の一覧には、その他のプログラミング言語とプラットフォームのライブラリのリンクをまとめています。
 
-- [C++](https://azure.github.io/azure-storage-cpp)
 - [Ruby](https://azure.github.io/azure-storage-ruby)
 - [PHP](https://azure.github.io/azure-storage-php/)
 - [iOS](https://azure.github.io/azure-storage-ios/)
@@ -103,14 +109,8 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 ## <a name="powershell"></a>PowerShell
 
-次の表には、リファレンス コンテンツの最新版のリンクをまとめています。
-
-| Version | プラットフォーム |
-| ------- | -------- |
-|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.8.0&preserve-view=true) |
-|  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
-|  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
+[Azure PowerShell リファレンス](/powershell/module/az.storage/)
 
 ## <a name="azure-cli"></a>Azure CLI
 
-- [Azure CLI](/cli/azure/storage)
+[Azure CLI リファレンス](/cli/azure/azure-cli-reference-for-storage)

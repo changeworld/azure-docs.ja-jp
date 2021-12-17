@@ -1,14 +1,14 @@
 ---
 title: YAML リファレンス - ACR タスク
 description: YAML で ACR タスク用のタスクを定義するための参照 (タスクのプロパティ、ステップの種類、ステップのプロパティ、およびビルトイン変数など)。
-ms.topic: article
+ms.topic: reference
 ms.date: 07/08/2020
-ms.openlocfilehash: 126fcbce0569b2be6d9302cbbb718fa11e3e8046
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 31e96c64ef8209e5e18add9508fe379f1eb0f414
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780949"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302665"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML
 
@@ -63,12 +63,12 @@ YAML は、ACR タスクで現在サポートされている唯一のファイ�
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-サンプル コマンドの書式設定では、Azure CLI で既定のレジストリが構成されていることを前提としているため、`--registry` パラメーターが省略されています。 既定のレジストリを構成するには、`acr=REGISTRY_NAME` 値を受け入れる `--defaults` パラメーターを使用して、[az configure][az-configure] コマンドを使用します。
+サンプル コマンドの書式設定では、Azure CLI で既定のレジストリが構成されていることを前提としているため、`--registry` パラメーターが省略されています。 既定のレジストリを構成するには、キーと値のペア `defaults.acr=REGISTRY_NAME` を受け入れる `set` コマンドを使用して、[az config][az-config] コマンドを使用します。
 
 たとえば、Azure CLI を "myregistry" という名前の既定のレジストリで構成するには、次のようにします。
 
 ```azurecli
-az configure --defaults acr=myregistry
+az config set defaults.acr=myregistry
 ```
 
 ## <a name="task-properties"></a>タスク プロパティ
@@ -78,7 +78,7 @@ az configure --defaults acr=myregistry
 | プロパティ | Type | 省略可能 | 説明 | オーバーライドのサポート | 既定値 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | string | はい | ACR タスク サービスによって解析される `acr-task.yaml` ファイルのバージョン。 ACR タスクは、下位互換性の維持に努めていますが、この値により ACR タスクが定義されたバージョン内で互換性を維持することが可能になります。 指定しない場合は、既定値の最新バージョンになります。 | いいえ | なし |
-| `stepTimeout` | int (秒) | はい | ステップが実行できる最大秒数。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `timeout` プロパティが設定されます。 `timeout` プロパティがステップで指定されている場合は、タスクによって提供されたプロパティがオーバーライドされます。 | はい | 600 (10 分) |
+| `stepTimeout` | int (秒) | はい | ステップが実行できる最大秒数。 `stepTimeout` プロパティがタスクで指定されている場合は、すべてのステップの既定の `timeout` プロパティが設定されます。 `timeout` プロパティがステップで指定されている場合は、タスクによって提供された `stepTimeout` プロパティがオーバーライドされます。<br/><br/>タスクのステップ タイムアウト値の合計は、タスクの実行の (たとえば、`--timeout` を `az acr task create` コマンドに渡して設定された) `timeout` プロパティと等しくなければなりません。 タスクの実行の `timeout` 値の方が小さい場合、そちらの方が優先されます。  | はい | 600 (10 分) |
 | `workingDirectory` | string | はい | 実行時のコンテナーの作業ディレクトリ。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `workingDirectory` プロパティが設定されます。 ステップで指定されている場合は、タスクによって提供されたプロパティがオーバーライドされます。 | はい | Windows では `c:\workspace`、Linux では `/workspace` |
 | `env` | [string, string, ...] | はい |  タスクの環境変数を定義する `key=value` 形式での文字列の配列。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `env` プロパティが設定されます。 ステップに指定した場合は、タスクから継承されたすべての環境変数がオーバーライドされます。 | はい | なし |
 | `secrets` | [secret, secret, ...] | はい | [secret](#secret) オブジェクトの配列。 | いいえ | なし |
@@ -631,4 +631,4 @@ alias:
 <!-- LINKS - Internal -->
 [az-acr-run]: /cli/azure/acr#az_acr_run
 [az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
-[az-configure]: /cli/azure/reference-index#az_configure
+[az-config]: /cli/azure/reference-index#az_config

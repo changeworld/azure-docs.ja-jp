@@ -1,36 +1,37 @@
 ---
-title: SSTP から OpenVPN または IKEv2 に移行する | Azure VPN Gateway
-description: この記事は、SSTP の 128 というコンカレント接続制限を克服する方法を理解するのに役立ちます。
+title: SSTP から OpenVPN または IKEv2 に移行する方法
+titleSuffix: Azure VPN Gateway
+description: SSTP から OpenVPN プロトコルまたは IKEv2 に移行して、128 のコンカレント接続という SSTP の制限を克服する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 06/04/2021
 ms.author: alzam
-ms.openlocfilehash: e2fa265e580bc0e752498284ed50e398b59423fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af136cab65034be5cd0f3ec18d22492a826678d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97657143"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749213"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP から OpenVPN プロトコルまたは IKEv2 に移行する
 
-ポイント対サイト (P2S) VPN ゲートウェイ接続では、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 P2S 接続は、クライアント コンピューターから接続を開始することによって確立されます。 この記事は、Resource Manager デプロイ モデルに適用され、OpenVPN プロトコルまたは IKEv2 に移行することによって、SSTP の 128 というコンカレント接続制限を克服する方法について説明します。
+ポイント対サイト (P2S) VPN ゲートウェイ接続では、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 P2S 接続は、クライアント コンピューターから接続を開始することによって確立されます。 この記事は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に適用され、OpenVPN プロトコルまたは IKEv2 に移行することによって、SSTP の 128 というコンカレント接続制限を克服する方法について説明します。
 
 ## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S で使用されるプロトコル
 
 ポイント対サイト VPN では、次のいずれかのプロトコルを使用できます。
 
-* **OpenVPN&reg; プロトコル**。これは、SSL/TLS ベースの VPN プロトコルです。 SSL VPN ソリューションはファイアウォールを通過できます。これは、ほとんどのファイアウォールで開かれている TCP ポート 443 アウトバウンドが SSL で使用されるためです。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (OSX バージョン 10.13 以上) から接続する際に使用できます。
+* **OpenVPN&reg; プロトコル**。これは、SSL/TLS ベースの VPN プロトコルです。 SSL VPN ソリューションはファイアウォールを通過できます。これは、ほとんどのファイアウォールで開かれている TCP ポート 443 アウトバウンドが SSL で使用されるためです。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (macOS バージョン 10.13 以上) から接続する際に使用できます。
 
 * **Secure Socket トンネリング プロトコル (SSTP)** 。これは、SSL ベースの独自の VPN プロトコルです。 SSL VPN ソリューションはファイアウォールを通過できます。これは、ほとんどのファイアウォールで開かれている TCP ポート 443 アウトバウンドが SSL で使用されるためです。 SSTP は、Windows デバイスでのみサポートされます。 Azure では、SSTP を備えたすべてのバージョンの Windows (Windows 7 以降) がサポートされています。 **SSTP は、ゲートウェイ SKU に関係なく、最大 128 のコンカレント接続をサポートします**。
 
-* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (OSX バージョン 10.11 以上) から接続する際に使用できます。
+* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (macOS バージョン 10.11 以上) から接続する際に使用できます。
 
 
 >[!NOTE]
->P2S 用 IKEv2 および OpenVPN は、Resource Manager デプロイ モデルでのみ使用できます。 これらは、クラシック デプロイ モデルでは使用できません。 Basic ゲートウェイ SKU では、IKEv2 と OpenVPN プロトコルはサポートされません。 Basic SKU を使用している場合は、運用 SKU 仮想ネットワーク ゲートウェイを削除して再作成する必要があります。
+>P2S 用 IKEv2 および OpenVPN は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)でのみ使用できます。 これらは、クラシック デプロイ モデルでは使用できません。 Basic ゲートウェイ SKU では、IKEv2 と OpenVPN プロトコルはサポートされません。 Basic SKU を使用している場合は、運用 SKU 仮想ネットワーク ゲートウェイを削除して再作成する必要があります。
 >
 
 ## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>SSTP から IKEv2 または OpenVPN に移行する

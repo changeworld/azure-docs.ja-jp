@@ -3,20 +3,20 @@ title: itsme OpenID Connect と Azure Active Directory B2C
 titleSuffix: Azure AD B2C
 description: client_secret ユーザー フロー ポリシーを使用して Azure AD B2C 認証を itsme OIDC と統合する方法について説明します。 itsme はデジタル ID アプリです。 これを使用すると、カードリーダー、パスワード、2 要素認証、および複数の PIN コードを使用せずに、安全にログインできます。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
-ms.author: mimart
+ms.date: 09/20/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 2560c294b63d0554708eda1f804bf279d16d7d74
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 73802a0d429d2eb71ec24be8b18d635eb5c2f003
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257961"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044572"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して itsme OpenID Connect を構成する
 
@@ -52,18 +52,18 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 |8     |  itsme 環境が、Azure AD B2C に OAuth 承認コードを返します。 |
 |9     |  Azure AD B2C が、承認コードを使用して、トークン要求を行います。 |
 | 10 | itsme 環境が、トークン要求を確認し、まだ有効である場合は、OAuth アクセス トークンと、要求されたユーザー情報を含む ID トークンを返します。 |
-| 11 | 最後に、ユーザーが認証済みユーザーとしてリダイレクト URL にリダイレクトされます。  |
+| 11 | 最後に、ユーザーは、認証済みユーザーとしてリダイレクト URL にリダイレクトされます。  |
 |   |   |
 
 ## <a name="onboard-with-itsme"></a>itsme を使用してオンボードする
 
 1. itsme でアカウントを作成するには、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) で itsme にアクセスします。
 
-2. onboarding@itsme.be に電子メールを送信して、itsme アカウントをアクティブ化します。 B2C のセットアップに必要な **パートナー コード** と **サービス コード** が送信されます。
+1. onboarding@itsme.be に電子メールを送信して、itsme アカウントをアクティブ化します。 B2C のセットアップに必要な **パートナー コード** と **サービス コード** が送信されます。
 
-3. itsme パートナー アカウントをアクティブ化すると、**クライアント シークレット** へのワンタイム リンクを含む電子メールが送信されます。
+1. itsme パートナー アカウントをアクティブ化すると、**クライアント シークレット** へのワンタイム リンクを含む電子メールが送信されます。
 
-4. [itsme](https://business.itsme.be/en) の指示に従って、構成を完了します。
+1. [itsme](https://business.itsme.be/en) の指示に従って、構成を完了します。
 
 ## <a name="integrate-with-azure-ad-b2c"></a>Azure AD B2C との統合
 
@@ -72,13 +72,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 > [!NOTE]
 > まだ持っていない場合は、[お使いの Azure サブスクリプションにリンクされている Azure AD B2C テナント](tutorial-create-tenant.md)を作成します。
 
-1. Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
-
-2. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します (または **[その他のサービス]** を選択し、 **[すべてのサービス]** 検索ボックスを使用して *Azure AD B2C* を検索します)。
-
-3. **[ID プロバイダー]** を選択してから、 **[新しい OpenID Connect プロバイダー ]** を選択します。
-
-4. フォームに次の情報を入力します。
+1. Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します (または **[その他のサービス]** を選択し、 **[すべてのサービス]** 検索ボックスを使用して *Azure AD B2C* を検索します)。
+1. **[ID プロバイダー]** を選択してから、 **[新しい OpenID Connect プロバイダー ]** を選択します。
+1. フォームに次の情報を入力します。
 
    |プロパティ | 値 |
    |------------ |------- |
@@ -96,25 +94,25 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    |Surname | family_name |
    |Email | email|
 
-5. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
 ### <a name="configure-a-user-flow"></a>ユーザー フローを構成する
 
 1. Azure AD B2C テナントの **[ポリシー]** で、 **[ユーザー フロー]** を選択します。
 
-2. **[新しいユーザー フロー]** を選択します。
+1. **[新しいユーザー フロー]** を選択します。
 
-3. **[サインアップとサインイン]** を選択してバージョンを選択し、 **[作成]** を選択します。
+1. **[サインアップとサインイン]** を選択してバージョンを選択し、 **[作成]** を選択します。
 
-4. **[名前]** を入力します。
+1. **[名前]** を入力します。
 
-5. **[ID プロバイダー]** セクションで、 **[itsme]** を選択します。
+1. **[ID プロバイダー]** セクションで、 **[itsme]** を選択します。
 
-6. **［作成］** を選択します
+1. **［作成］** を選択します
 
-7. ユーザー フロー名を選択して、新しく作成したユーザー フローを開きます。
+1. ユーザー フロー名を選択して、新しく作成したユーザー フローを開きます。
 
-8. **[プロパティ]** を選択し、次の値を調整します。
+1. **[プロパティ]** を選択し、次の値を調整します。
 
    * **[アクセスと ID トークンの有効期間 (分)]** を **[5]** に変更します。
    * **[更新トークンのスライディング ウィンドウの有効期間]** を **[期限なし]** に変更します。
@@ -123,11 +121,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. B2C テナントの **[管理]** で、 **[アプリの登録]**  >  **[新しい登録]** の順に選択します。
 
-2. アプリケーションの **[名前]** を指定し、 **[リダイレクト URI]** を入力します。 テスト目的の場合は、「`https://jwt.ms`」と入力します。
+1. アプリケーションの **[名前]** を指定し、 **[リダイレクト URI]** を入力します。 テスト目的の場合は、「`https://jwt.ms`」と入力します。
 
-3. 多要素認証が **[無効]** になっていることを確認します。
+1. 多要素認証が **[無効]** になっていることを確認します。
 
-4. **[登録]** を選択します。
+1. **[登録]** を選択します。
 
    a. テスト目的の場合は、 **[認証]** を選択し、 **[暗黙的な許可]** で、 **[アクセス トークン]** と **[ID トークン]** の両方のチェック ボックスをオンにします。  
 
@@ -137,19 +135,19 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. B2C テナントの **[ポリシー]** で、 **[ユーザー フロー]** を選択します。
 
-2. 以前に作成したユーザー フローを選択します。
+1. 以前に作成したユーザー フローを選択します。
 
-3. **[ユーザー フローを実行します]** を選択します。
+1. **[ユーザー フローを実行します]** を選択します。
 
    a. **[アプリケーション]** : *登録済みのアプリを選択します*
 
    b. **[応答 URL]** : *リダイレクト URL を選択します*
 
-4. itsme の **[Identify yourself] (自分自身を識別)** ページが表示されます。  
+1. itsme の **[Identify yourself] (自分自身を識別)** ページが表示されます。  
 
-5. 携帯電話番号を入力し、 **[送信]** を選択します。
+1. 携帯電話番号を入力し、 **[送信]** を選択します。
 
-6. itsme アプリでアクションを確認します。
+1. itsme アプリでアクションを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

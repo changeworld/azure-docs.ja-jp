@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 52b9bee1d43c0f136889a6a54277d4bb45dd4a45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c06903720db4315bad04e88dfdb9c7cad604697
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101751117"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122820857"
 ---
 ユーザー独自のキーを使用して、各マネージド ディスクのレベルで暗号化を管理できます。 カスタマー マネージド キーを使用したサーバー側でのマネージド ディスクの暗号化により、Azure Key Vault との統合されたエクスペリエンスが提供されます。 [ご使用の RSA キー](../articles/key-vault/keys/hsm-protected-keys.md)を Key Vault にインポートするか、Azure Key Vault で新しい RSA キーを生成することができます。 
 
@@ -23,9 +23,7 @@ Azure マネージド ディスクは[エンベロープ暗号化](../articles/s
 
 DEK の暗号化と暗号化解除にキーを使用するための、Key Vault 内のマネージド ディスクへのアクセス権の付与を行う必要があります。 これにより、データとキーを完全に制御できます。 任意の時点で、キーを無効にしたり、マネージド ディスクへのアクセスを取り消したりすることができます。 また、Azure Key Vault 監視で暗号化キーの使用状況を監査して、マネージド ディスクまたは他の信頼された Azure サービスのみがキーにアクセスしていることを確認することもできます。
 
-Premium SSD、Standard SSD、Standard HDD の場合:キーを無効にするか削除すると、そのキーを使用しているディスクを持つ VM はすべて自動的にシャットダウンされます。 この後、キーが再度有効になるか、新しいキーを割り当てない限り、VM は使用できません。    
-
-Ultra Disk の場合: キーを無効にしたり削除したりしても、そのキーを使用している Ultra Disk を持つ VM は自動的にシャットダウンされません。 VM の割り当てを解除して再起動すると、ディスクはキーの使用を停止し、VM はオンラインに戻らなくなります。 VM をオンラインに戻すには、新しいキーを割り当てるか、既存のキーを有効にする必要があります。    
+キーを無効にするか削除すると、そのキーを使用しているディスクを持つ VM はすべて自動的にシャットダウンされます。 この後、キーが再度有効になるか、新しいキーを割り当てない限り、VM は使用できません。    
 
 次の図は、マネージド ディスクで Azure Active Directory と Azure Key Vault を使用して、カスタマー マネージド キーを使って要求を行う方法を示しています。
 
@@ -44,6 +42,6 @@ Ultra Disk の場合: キーを無効にしたり削除したりしても、そ�
 
 カスタマー マネージド キーへのアクセスを取り消すには、[Azure Key Vault PowerShell](/powershell/module/azurerm.keyvault/) および [Azure Key Vault CLI](/cli/azure/keyvault) に関する記事をご覧ください。 アクセスを取り消すと、Azure Storage が暗号化キーにアクセスできなくなるため、ストレージ アカウント内の全データへのアクセスが事実上ブロックされます。
 
-#### <a name="automatic-key-rotation-of-customer-managed-keys-preview"></a>カスタマー マネージド キーの自動キー ローテーション (プレビュー)
+#### <a name="automatic-key-rotation-of-customer-managed-keys"></a>カスタマー マネージド キーの自動キー ローテーション
 
-最新のキー バージョンへの自動キー ローテーションを有効にすることを選択できます。 ディスクから、ディスク暗号化セットを介してキーが参照されます。 ディスク暗号化セットの自動ローテーションを有効にすると、ディスク暗号化セットを参照するすべてのマネージド ディスク、スナップショット、およびイメージがシステムによって自動的に更新され、1 時間以内に新しいバージョンのキーが使用されます。 現在、この機能は、プレビュー段階では限られたリージョンで利用できます。 リージョン別の提供状況については、「[サポートされているリージョン](#supported-regions)」セクションを参照してください。
+最新のキー バージョンへの自動キー ローテーションを有効にすることを選択できます。 ディスクから、ディスク暗号化セットを介してキーが参照されます。 ディスク暗号化セットの自動ローテーションを有効にすると、ディスク暗号化セットを参照するすべてのマネージド ディスク、スナップショット、およびイメージがシステムによって自動的に更新され、1 時間以内に新しいバージョンのキーが使用されます。 自動キー ローテーションを使用してカスタマー マネージド キーを有効にする方法は、「[自動キー ローテーションを使用して Azure Key Vault と DiskEncryptionSet を設定する](../articles/virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-optionally-with-automatic-key-rotation)」を参照してください。

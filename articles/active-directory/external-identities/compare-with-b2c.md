@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 07/13/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78fd91e2ba7badb1936b8603c8ed089130b29ffb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56fd9449e3954f7fe7cf3ab43a62df05869e2112
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644067"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729598"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Azure Active Directory の外部 ID とは
 
@@ -39,12 +39,12 @@ Azure AD External Identities は、ユーザーと組織の関係はあまり重
 | ---- | --- | --- |
 | **主要なシナリオ** | Microsoft アプリケーション (Microsoft 365、Teams など) または独自のアプリケーション (SaaS アプリ、独自に開発したアプリなど) を使用したコラボレーション。  | 最新の SaaS または独自に開発したアプリケーション (ファーストパーティの Microsoft アプリ以外) の ID とアクセスの管理。   |
 | **対象者**    | サプライヤー、パートナー、ベンダーなどの外部組織のビジネス パートナーとの共同作業。 ユーザーはディレクトリ内でゲスト ユーザーとして表示されます。 これらのユーザーは、IT を管理している場合もあれば、管理していない場合もあります。  | 製品の顧客。 これらのユーザーは、別の Azure AD ディレクトリで管理されています。  |
-| **サポートされる ID プロバイダー** | 外部ユーザーは、職場アカウント、学校アカウント、任意のメール アドレス、SAML および WS-Fed ベースの ID プロバイダー、Gmail、Facebook を使用して共同作業を行うことができます。  | ローカル アプリケーションのアカウント (任意のメール アドレスまたはユーザー名) を持つコンシューマー ユーザー、サポートされているさまざまなソーシャル ID、直接フェデレーションを介して企業や政府が発行した ID を所有するユーザー。       |
+| **サポートされる ID プロバイダー** | 外部ユーザーは、職場アカウント、学校アカウント、任意のメール アドレス、SAML および WS-Fed ベースの ID プロバイダー、Gmail、Facebook を使用して共同作業を行うことができます。  | ローカル アプリケーションのアカウント (任意のメール アドレスまたはユーザー名) を持つコンシューマー ユーザー、サポートされているさまざまなソーシャル ID、SAML または WS-Fed ベースの ID プロバイダーのフェデレーションを介して企業や政府が発行した ID を所有するユーザー。       |
 | **外部ユーザーの管理**   | 外部ユーザーは、従業員と同じディレクトリで管理されますが、通常はゲスト ユーザーとして注釈が付けられます。 ゲスト ユーザーは、従業員と同じように管理したり、同じグループに追加したりできます。    | 外部ユーザーは Azure AD B2C ディレクトリで管理されます。 組織の従業員やパートナーのディレクトリ (存在する場合) とは別に管理されます。  |
 | **シングル サインオン (SSO)**      | あらゆる Azure AD 接続アプリへの SSO がサポートされています。 たとえば、Microsoft 365 またはオンプレミスのアプリケーションや、Salesforce、Workday などの SaaS アプリへのアクセスを提供できます。    | Azure AD B2C テナント内のお客様所有のアプリへの SSO をサポートします。 Microsoft 365 やその他の Microsoft SaaS アプリへの SSO はサポートされていません。    |
 | **セキュリティ ポリシーとコンプライアンス**        | ホストまたは招待元の組織によって管理されます ([条件付きアクセス ポリシー](conditional-access.md)を使用するなど)。 | 条件付きアクセスと ID 保護を使用して組織によって管理されます。        |
 | **ブランド化**  | ホスト/招待元の組織のブランドが使用されます。    | アプリケーションまたは組織ごとの完全にカスタマイズ可能なブランド。   |
-| **課金モデル** | 月間アクティブ ユーザー (MAU) に基づいた [External Identities の価格](https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/)。 <br>(参照: [B2B の設定の詳細](external-identities-pricing.md)) | 月間アクティブ ユーザー (MAU) に基づいた [External Identities の価格](https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/)。 <br>(参照: [B2C の設定の詳細](../../active-directory-b2c/billing.md)) |
+| **課金モデル** | 月間アクティブ ユーザー (MAU) に基づいた [External Identities の価格](https://azure.microsoft.com/pricing/details/active-directory/external-identities/)。 <br>(参照: [B2B の設定の詳細](external-identities-pricing.md)) | 月間アクティブ ユーザー (MAU) に基づいた [External Identities の価格](https://azure.microsoft.com/pricing/details/active-directory/external-identities/)。 <br>(参照: [B2C の設定の詳細](../../active-directory-b2c/billing.md)) |
 | **詳細情報** | [ブログ記事](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/)、[ドキュメント](what-is-b2b.md)                   | [製品ページ](https://azure.microsoft.com/services/active-directory-b2c/)、[ドキュメント](../../active-directory-b2c/index.yml)       |
 
 Azure AD External Identities を使用して、組織の境界を越えて、顧客とパートナーを保護および管理します。

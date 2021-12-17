@@ -2,18 +2,18 @@
 title: Azure の予約の購入
 description: Azure の予約を購入するうえで役立つ重要なポイントについて説明します。
 author: bandersmsft
-ms.reviewer: yashar
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 10/21/2021
 ms.author: banders
-ms.openlocfilehash: a70d434b06fd19071f3576f9333579e0bd2b85e7
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f7c9551b3edee5c4e491cd4218e7b7973f01f287
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574976"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244155"
 ---
 # <a name="buy-a-reservation"></a>予約の購入
 
@@ -23,7 +23,9 @@ Azure の予約には、多数の Azure リソースに対する計画を 1 年�
 
 予約を購入するには、Enterprise (MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (MS-AZR-0003P または MS-AZR-0023P) または Microsoft 顧客契約型の Azure サブスクリプションに対する所有者ロールまたは予約購入者ロールを保持している必要があります。 クラウド ソリューション プロバイダーは、Azure portal または [パートナー センター](/partner-center/azure-reservations) を使用して Azure の予約を購入できます。
 
-Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約インスタンスを追加します]** オプションを無効にして、購入を EA 管理者に限定することができます。 EA 管理者は、予約を購入するために、少なくとも 1 つの EA サブスクリプションの所有者または予約購入者のアクセス権を保持している必要があります。 このオプションは、一元化されたチームが予約を購入する必要がある企業に役立ちます。
+Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約インスタンスを追加します]** オプションを無効にして、購入を EA 管理者に限定することができます。 ダイレクト EA のお客様は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts) で予約インスタンスの設定を無効にできるようになりました。 [ポリシー] メニューに移動して、設定を変更します。
+
+EA 管理者は、予約を購入するために、少なくとも 1 つの EA サブスクリプションの所有者または予約購入者のアクセス権を保持している必要があります。 このオプションは、一元化されたチームが予約を購入する必要がある企業に役立ちます。
 
 予約割引が適用されるのは、エンタープライズ、クラウド ソリューション プロバイダー (CSP)、Microsoft 顧客契約、および従量課金制の個人プランを通じて購入したサブスクリプションに関連付けられたリソースのみです。
 
@@ -37,20 +39,22 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 
 - **単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
 - **単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
-- **共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。
+- **共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 あるサブスクリプションが別の課金コンテキストに移動された場合、特典はそのサブスクリプションには適用されなくなります。課金コンテキストの他のサブスクリプションには引き続き適用されます。
     - マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 予約の共有スコープには、登録内の複数の Active Directory テナントが含まれます。
     - Microsoft 顧客契約のお客様の場合、課金スコープは課金プロファイルです。
     - 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。
+- **管理グループ** - 管理グループと課金スコープの両方の一部であるサブスクリプションの一覧にある一致するリソースに予約割引を適用します。 管理グループの予約を購入するには、その管理グループに対する少なくとも読み取りアクセス許可を持っており、課金サブスクリプション上の予約所有者または予約購入者である必要があります。
 
 使用量に予約割引を適用しつつ、Azure では次の順序で予約が処理されます。
 
-1. リソース グループにスコープが設定されている予約
-2. 単一スコープの予約
-3. 共有スコープの予約
+1. 単一リソース グループをスコープとする予約
+2. 単一サブスクリプションをスコープとする予約
+3. 管理グループにスコープ指定された予約
+4. 前述の共有スコープ (複数のサブスクリプション) をスコープとする予約
 
 スコープは、予約の購入後にいつでも更新できます。 これを行うには、予約にアクセスし、 **[構成]** をクリックして予約のスコープを再設定します。 予約のスコープの再設定は、商用トランザクションではありません。 予約期間は変更されません。 スコープの更新の詳細については、[予約購入後にスコープを更新する](manage-reserved-vm-instance.md#change-the-reservation-scope)方法に関するセクションを参照してください。
 
-![予約のスコープの変更を示す例](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
+:::image type="content" source="./media/prepare-buy-reservation/rescope-reservation-management-group.png" alt-text="予約のスコープの変更を示す例" lightbox="./media/prepare-buy-reservation/rescope-reservation-management-group.png" :::
 
 ## <a name="discounted-subscription-and-offer-types"></a>割引サブスクリプションとオファーの種類
 
@@ -81,6 +85,7 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 - [Azure Database for MySQL](../../mysql/concept-reserved-pricing.md)
 - [Azure Database for MariaDB](../../mariadb/concept-reserved-pricing.md)
 - [Azure Synapse Analytics](prepay-sql-data-warehouse-charges.md)
+- [Azure VMware Solution](../../azure-vmware/reserved-instance.md)
 - [仮想マシン](../../virtual-machines/prepay-reserved-vm-instances.md)
 
 ## <a name="buy-reservations-with-monthly-payments"></a>月払いで予約を購入する
@@ -133,4 +138,8 @@ EA サブスクリプションをお持ちのお客様の場合:
 
 ## <a name="next-steps"></a>次のステップ
 
+- [予約のアクセス許可の詳細を確認する](view-reservations.md)
 - [Azure リソースに対する予約を管理する](manage-reserved-vm-instance.md)
+- [REST API シリーズを使用して自動化する](/rest/api/reserved-vm-instances/reservationorder)
+- [Azure PowerShell を使用して自動化する](/powershell/module/az.reservations)
+- [CLI を使用して自動化する](/cli/azure/reservations)

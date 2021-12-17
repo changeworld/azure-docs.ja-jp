@@ -4,27 +4,36 @@ description: ネットワーク ファイル システム プロトコルを使�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 11/16/2021
 ms.author: rogarana
 ms.subservice: files
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: b085b9991175d8cd43e2dac0db80c5af4e703c34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 77a8a7d3a210441cea406241ee1f4f776878c826
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521239"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519434"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS 共有を作成する方法
-Azure ファイル共有は、クラウド内に存在するフル マネージドのファイル共有です。 この記事では、NFS プロトコルを使用するファイル共有の作成について説明します。 両方のプロトコルの詳細については、[Azure ファイル共有のプロトコル](storage-files-compare-protocols.md)に関するページを参照してください。
+Azure ファイル共有は、クラウド内に存在するフル マネージドのファイル共有です。 この記事では、NFS プロトコルを使用するファイル共有の作成について説明します。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![いいえ](../media/icons/no-icon.png) | ![はい](../media/icons/yes-icon.png) |
 
 ## <a name="limitations"></a>制限事項
 [!INCLUDE [files-nfs-limitations](../../../includes/files-nfs-limitations.md)]
+
 
 ### <a name="regional-availability"></a>リージョン別の提供状況
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
 ## <a name="prerequisites"></a>前提条件
+- NFS 共有は、数値 UID/GID のみを受け入れます。 クライアントが英数字の UID/GID を送信しないようにするには、ID マッピングを無効にします。
 - NFS 共有には、信頼されたネットワークからしかアクセスできません。 NFS 共有への接続は、次のいずれかのソースから行う必要があります。
     - [プライベート エンドポイントを作成する](storage-files-networking-endpoints.md#create-a-private-endpoint) (推奨) か、または[パブリック エンドポイントへのアクセスを制限](storage-files-networking-endpoints.md#restrict-public-endpoint-access)します。
     - [Azure Files で使用する Linux 上のポイント対サイト (P2S) VPN を構成](storage-files-configure-p2s-vpn-linux.md)します。
@@ -33,99 +42,32 @@ Azure ファイル共有は、クラウド内に存在するフル マネージ�
 
 - Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli)。
 
-## <a name="register-the-nfs-41-protocol"></a>NFS 4.1 プロトコルを登録する
-Azure PowerShell モジュールまたは Azure CLI を使用している場合は、次のコマンドを使用して機能を登録します。
-
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
-Azure PowerShell または Azure CLI を使用して、Azure Files に NFS 4.1 機能を登録します。
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-```azurepowershell
-# Connect your PowerShell session to your Azure account, if you have not already done so.
-Connect-AzAccount
-
-# Set the actively selected subscription, if you have not already done so.
-$subscriptionId = "<yourSubscriptionIDHere>"
-$context = Get-AzSubscription -SubscriptionId $subscriptionId
-Set-AzContext $context
-
-# Register the NFS 4.1 feature with Azure Files to enable the preview.
-Register-AzProviderFeature `
-    -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowNfsFileShares 
-    
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-```azurecli
-# Connect your Azure CLI to your Azure account, if you have not already done so.
-az login
-
-# Provide the subscription ID for the subscription where you would like to 
-# register the feature
-subscriptionId="<yourSubscriptionIDHere>"
-
-az feature register \
-    --name AllowNfsFileShares \
-    --namespace Microsoft.Storage \
-    --subscription $subscriptionId
-
-az provider register \
-    --namespace Microsoft.Storage
-```
-
----
-
-登録の承認には、最大 1 時間かかります。 登録が完了したことを確認するには、次のコマンドを使用します。
-
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
-Azure PowerShell または Azure CLI を使用して、Azure Files への NFS 4.1 機能の登録を確認します。 
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-```azurepowershell
-Get-AzProviderFeature `
-    -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowNfsFileShares
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-```azurecli
-az feature show \
-    --name AllowNfsFileShares \
-    --namespace Microsoft.Storage \
-    --subscription $subscriptionId
-```
-
----
-
 ## <a name="create-a-filestorage-storage-account"></a>FileStorage ストレージ アカウントを作成する
 現時点では、NFS 4.1 共有は Premium ファイル共有としてのみ使用できます。 NFS 4.1 プロトコル サポートを使用して Premium ファイル共有をデプロイするには、最初に FileStorage ストレージ アカウントを作成する必要があります。 ストレージ アカウントは、Azure の最上位レベルのオブジェクトで、複数の Azure ファイル共有のデプロイに使用できるストレージの共有プールを表します。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 FileStorage ストレージ アカウントを作成するには、Azure portal に移動します。
 
-1. Azure portal の左側のメニューで **[ストレージ アカウント]** を選択します。
+1. [アカウント] [Azure portal](https://portal.azure.com/)左側の **Storage [アカウント]** を選択します。
 
-    ![Azure portal のメイン ページでストレージ アカウントを選択する](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
+    ![Azure portal のメイン ページでストレージ アカウントを選択します。](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
-2. 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
-3. ストレージ アカウントを作成するサブスクリプションを選択します。
-4. ストレージ アカウントを作成するリソース グループを選択します。
+1. 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
+1. ストレージ アカウントを作成するサブスクリプションを選択します。
+1. ストレージ アカウントを作成するリソース グループを選択します。
+1. 次に、ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。
+1. ストレージ アカウントの場所を選択するか、または既定の場所を使います。
+1. **[パフォーマンス]** では **[Premium]** を選択します。
 
-5. 次に、ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。
-6. ストレージ アカウントの場所を選択するか、または既定の場所を使います。
-7. **[パフォーマンス]** では **[Premium]** を選択します。
+    **[アカウントの種類]** ドロップダウンにオプションとして **[ファイル共有]** を表示するには、 **[Premium]** を選択する必要があります。
 
-    **[アカウントの種類]** ドロップダウンにオプションとして **[FileStorage]** を表示するには、 **[Premium]** を選択する必要があります。
+1. **[Premium account type]\(Premium アカウントの種類\)** で **[ファイル共有]** を選択します。
 
-8. **[アカウントの種類]** を選択し、 **[FileStorage]** を選択します。
-9. **[レプリケーション]** の設定は、既定値の **[ローカル冗長ストレージ (LRS)]** のままにします。
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="選択された Premium パフォーマンスのスクリーンショット。":::
 
-    ![Premium ファイル共有にストレージ アカウントを作成する方法](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
-
-10. **[確認および作成]** を選択して、ストレージ アカウントの設定を確認し、アカウントを作成します。
-11. **［作成］** を選択します
+1. **[レプリケーション]** の設定は、既定値の **[ローカル冗長ストレージ (LRS)]** のままにします。
+1. **[確認および作成]** を選択して、ストレージ アカウントの設定を確認し、アカウントを作成します。
+1. **［作成］** を選択します
 
 ストレージ アカウント リソースが作成されたら、そこに移動します。
 
@@ -162,6 +104,32 @@ az storage account create \
 ```
 ---
 
+## <a name="disable-secure-transfer"></a>セキュリティで保護された転送を無効にする
+
+安全な転送を無効にしない限り、NFS ファイル共有をマウントできない。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. 作成したストレージ アカウントに移動します。
+1. **[構成]** を選択します。
+1. **[安全な転送が必須]** には **[無効]** を選択します。
+1. **[保存]** を選択します。
+
+    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="安全な転送が無効になっているストレージ アカウントの構成画面のスクリーンショット。" lightbox="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png":::
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $False
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only false
+```
+---
+
 ## <a name="create-an-nfs-share"></a>NFS 共有を作成する
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
@@ -171,7 +139,7 @@ az storage account create \
 1. ストレージ アカウントに移動し、 **[ファイル共有]** を選択します。
 1. **[+ ファイル共有]** を選択して、新しいファイル共有を作成します。
 1. ファイル共有に名前を付け、プロビジョニングされた容量を選択します。
-1. **[プロトコル]** で **[NFS (プレビュー)]** を選択します。
+1. **[プロトコル]** では、 **[SSL]** を選択します。
 1. **[ルート スカッシュ]** で選択を行います。
 
     - [ルート スカッシュ] (既定値) - リモート スーパーユーザー (ルート) へのアクセスが UID (65534) と GID (65534) にマップされます。
@@ -180,36 +148,10 @@ az storage account create \
     
 1. **［作成］** を選択します
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="ファイル共有の作成ブレードのスクリーンショット":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/files-nfs-create-share.png" alt-text="ファイル共有の作成ブレードのスクリーンショット。":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. .NET Framework がインストールされていることを確認します。 「[.NET Framework のダウンロード](https://dotnet.microsoft.com/download/dotnet-framework)」を参照してください。
- 
-1. 次のコマンドを使用して、インストールされている PowerShell のバージョンが `5.1` 以降であることを確認します。    
-
-   ```powershell
-   echo $PSVersionTable.PSVersion.ToString() 
-   ```
-    
-   お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)」を参照してください。
-    
-1. PowerShellGet モジュールの最新バージョンをインストールします。
-
-   ```powershell
-   install-Module PowerShellGet –Repository PSGallery –Force  
-   ```
-
-1. PowerShell コンソールを閉じてから、再度開きます。
-
-1. **Az.Storage** プレビュー モジュール バージョン **2.5.2-preview** をインストールします。
-
-   ```powershell
-   Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
-   ```
-
-   PowerShell モジュールのインストール方法の詳細については、「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)」を参照してください。
-   
 1. Azure PowerShell モジュールを使用して Premium ファイル共有を作成するには、[New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) コマンドレットを使用します。
 
     > [!NOTE]

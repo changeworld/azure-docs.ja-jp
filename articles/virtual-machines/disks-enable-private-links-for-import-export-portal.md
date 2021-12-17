@@ -1,95 +1,97 @@
 ---
-title: Azure portal - プライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
-description: Azure portal を使用して、マネージド ディスクのプライベート リンクを有効にします。 これにより、仮想ネットワーク内でディスクを安全にエクスポートおよびインポートできます。
+title: Azure portal - マネージド ディスクに対するインポートおよびエクスポートのアクセスを制限する
+description: Azure portal を使用して、マネージド ディスクの Private Link を有効にします。 これにより、仮想ネットワーク内でディスクを安全にエクスポートおよびインポートできます。
 author: roygara
-ms.service: virtual-machines
-ms.topic: overview
-ms.date: 08/24/2020
+ms.service: storage
+ms.topic: how-to
+ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: b80100216003e91fde54b5e555bafb755c942810
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57eef48a188f07847efcda31b4cd6a6043f2ae2a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98682921"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491015"
 ---
-# <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure portal からプライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
+# <a name="restrict-importexport-access-for-managed-disks-using-azure-private-link"></a>Azure Private Link を使用してマネージド ディスクに対するインポートおよびエクスポートのアクセスを制限する
 
-マネージド ディスクでのプライベート リンクのサポートにより、マネージド ディスクのエクスポートとインポートを制限して、Azure 仮想ネットワーク内でのみ実行されるようにすることができます。 接続されていないマネージド ディスクおよびスナップショットに対して期限付きの Shared Access Signature (SAS) URI を生成して、リージョン拡張のための他のリージョンへのデータのエクスポート、ディザスター リカバリー、フォレンジック分析のためのデータの読み取りに使用することができます。 SAS URI は、オンプレミスから空のディスクに VHD を直接アップロードするために使用することもできます。 仮想ネットワーク上のクライアントとマネージド ディスク間のネットワーク トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベート リンク経由でのみ送信され、パブリック インターネットに公開されることはなくなります。
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
-プライベート エンドポイントを作成することによって、ディスク アクセス リソースを作成した後で、それを同じサブスクリプション内の仮想ネットワークにリンクできます。 プライベート リンクを介してデータをエクスポートおよびインポートするには、ディスクまたはスナップショットをディスク アクセスに関連付ける必要があります。 また、ディスクまたはスナップショットの NetworkAccessPolicy プロパティを `AllowPrivate` に設定する必要があります。 
+[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用すると、マネージド ディスクのエクスポートとインポートを制限し、Azure 仮想ネットワーク上のクライアントから[プライベート リンク](../private-link/private-link-overview.md)を介してデータにより安全にアクセスできます。 プライベート エンドポイントでは、対象のマネージド ディスクのために仮想ネットワークのアドレス空間の IP アドレスが使用されます。 仮想ネットワーク上のクライアントとマネージド ディスク間のネットワーク トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベート リンク経由でのみ送信され、パブリック インターネットから公開されることはなくなります。
 
-NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディスクまたはスナップショットの SAS URI をだれも生成できないようにすることができます。 NetworkAccessPolicy プロパティの既定値は `AllowAll` です。
+Private Link を使用してマネージド ディスクをエクスポートおよびインポートするには、ディスク アクセス リソースを作成した後、プライベート エンドポイントを作成することによってこれを同じサブスクリプション内の仮想ネットワークにリンクします。 次に、ディスクまたはスナップショットをディスク アクセスのインスタンスに関連付けます。
 
 ## <a name="limitations"></a>制限事項
 
 [!INCLUDE [virtual-machines-disks-private-links-limitations](../../includes/virtual-machines-disks-private-links-limitations.md)]
 
-
 ## <a name="create-a-disk-access-resource"></a>ディスク アクセス リソースを作成する
 
-1. Azure portal にサインインし、[このリンク](https://aka.ms/disksprivatelinks)から **[Disk Access]\(ディスク アクセス\)** に移動します。
+1. Azure portal にサインインし、[このリンク](https://aka.ms/disksprivatelinks)から **[ディスク アクセス]** に移動します。
 
     > [!IMPORTANT]
-    > [Disk Access]\(ディスク アクセス\) ブレードに移動するには、[提供されているリンク](https://aka.ms/disksprivatelinks)を使用する必要があります。 現時点では、このリンクを使用しないと、パブリック ポータルに表示されません。
+    > [ディスク アクセス\] ペインに移動するには、[提供されているリンク](https://aka.ms/disksprivatelinks)を使用する必要があります。 現時点では、このリンクを使用しないと、パブリック ポータルに表示されません。
 
-1. **[+ 追加]** を選択して、新しいディスク アクセス リソースを作成します。
-1. 作成ブレードで、ご自分のサブスクリプションとリソース グループを選択したうえで、名前を入力し、リージョンを選択します。
-1. **[Review + create]\(レビュー + 作成\)** を選択します。
+1. **[+ 作成]** を選択して、新しいディスク アクセス リソースを作成します。
+1. **[ディスク アクセスの作成]** ウィンドウ、サブスクリプションとリソース グループを選択します。 **[インスタンスの詳細]** で、名前を入力し、リージョンを選択します。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-create-basics.png" alt-text="ディスク アクセスの作成ブレードのスクリーンショット。目的の名前を入力し、リージョンを選択してから、リソース グループを選択して続行します":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-create-basics.png" alt-text="ディスク アクセス作成ウィンドウのスクリーンショット。目的の名前を入力し、リージョンを選択し、リソース グループを選択して続行します":::
 
-リソースが作成されたら、直接そのリソースに移動します。
+1. **[確認および作成]** を選択します。
+1. リソースが作成されたら、直接そのリソースに移動します。
 
-:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="ポータルの [リソースに移動] ボタンのスクリーンショット":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="ポータルの [リソースに移動] ボタンのスクリーンショット":::
 
 ## <a name="create-a-private-endpoint"></a>プライベート エンドポイントの作成
 
-ディスク アクセス リソースが用意できたので、それを使用してディスクのエクスポートまたはインポートへのアクセスを処理できます。これは、プライベート エンドポイントを介して行われます。 したがって、プライベート エンドポイントを作成してディスク アクセス用に構成する必要があります。
+次に、プライベート エンドポイントを作成してディスク アクセス用に構成する必要があります。
 
-1. ディスク アクセス リソースから、 **[プライベート エンドポイント接続]** を選択します。
+1. ディスク アクセス リソースの **[設定]** で、 **[プライベート エンドポイントの接続]** を選択します。
 1. **[+ プライベート エンドポイント]** を選択します。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="ディスク アクセス リソースの [概要] ブレードのスクリーンショット。[プライベート エンドポイント接続] が強調表示されています。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="ディスク アクセス リソースの概要ウィンドウのスクリーンショット。[プライベート エンドポイントの接続] が強調表示されています。":::
 
-1. リソース グループの選択
-1. 名前を入力し、ディスク アクセス リソースが作成されたリージョンと同じリージョンを選択します。
-1. **[Next:リソース >]** を選択します
+1. **[プライベート エンドポイントの作成]** ウィンドウで、リソース グループを選択します。
+1. 名前を入力し、ディスク アクセス リソースが作成されたのと同じリージョンを選択します。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="プライベート エンドポイント作成ワークフローの最初のブレードのスクリーンショット。適切なリージョンを選択しないと、後で問題が発生する可能性があります。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="プライベート エンドポイント作成ワークフローの最初のウィンドウのスクリーンショット。適切なリージョンを選択しない場合は、後で問題が発生する可能性があります。":::
 
-1. **[リソース]** ブレードで、 **[マイ ディレクトリ内の Azure リソースに接続します]** を選択します。
-1. **[リソースの種類]** で、 **[Microsoft.Compute/diskAccesses]** を選択します
-1. **[リソース]** で、前の手順で作成したディスク アクセス リソースを選択します
-1. **[対象サブリソース]** は **[ディスク]** のままにします
-1. **次へ :構成 >** をクリックします。
+1. **[Next:リソース]** を選択します。
+1. **[リソース]** ペインで、 **[マイ ディレクトリ内の Azure リソースに接続します]** を選択します。
+1. **[リソースの種類]** で、 **[Microsoft.Compute/diskAccesses]** を選択します。
+1. **[リソース]** で、前の手順で作成したディスク アクセス リソースを選択します。
+1. **[対象サブリソース]** は **[ディスク]** のままにします。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="プライベート エンドポイント作成ワークフローの 2 番目のブレードのスクリーンショット。すべての値が強調表示されています ([リソースの種類]、[リソース]、[対象サブリソース])":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="プライベート エンドポイント作成ワークフローの 2 番目のペインのスクリーンショット。すべての値が強調表示されています ([リソースの種類]、[リソース]、[対象サブリソース])":::
 
-1. ディスクのエクスポートを制限する仮想ネットワークを選択します。他の仮想ネットワークではディスクをエクスポートできなくなります。
+1. **[次へ: 構成]** を選択します。
+1. ディスクのインポートとエクスポートを制限する仮想ネットワークを選択します。 これにより、他の仮想ネットワークへのディスクのインポートとエクスポートが防止されます。
 
     > [!NOTE]
-    > 選択したサブネットで有効なネットワーク セキュリティ グループ (NSG) がある場合、それはこのサブネットのプライベート エンドポイントに対してのみ無効になります。 このサブネット上の他のリソースには引き続き NSG が強制的に適用されます。
+    > 選択したサブネットで有効なネットワーク セキュリティ グループがある場合、それはこのサブネットのプライベート エンドポイントに対してのみ無効になります。 このサブネット上の他のリソースでは、ネットワーク セキュリティ グループの適用が維持されます。
 
-1. 適切なサブネットを選択します
-1. **[Review + create]\(レビュー + 作成\)** を選択します。
+1. 適切なサブネットを選択します。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="プライベート エンドポイント作成ワークフローの 3 番目のブレードのスクリーンショット。仮想ネットワークとサブネットが強調されています。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="プライベート エンドポイント作成ワークフローの 3 番目のペインのスクリーンショット。仮想ネットワークとサブネットが強調されています。":::
+
+1. **[確認および作成]** を選択します。
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>ディスク上でプライベート エンドポイントを有効にする
 
-1. 構成するディスクに移動します
-1. **[ネットワーク]** を選択します。
+1. 構成するディスクに移動します。
+1. **[設定]** で **[ネットワーク]** を選択します。
 1. **[Private endpoint (through disk access)]\(プライベート エンドポイント (ディスク アクセス経由)\)** を選択し、前の手順で作成したディスク アクセスを選択します。
+
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="マネージド ディスクの [ネットワーク] ペインのスクリーンショット。プライベート エンドポイントの選択と、選択したディスク アクセスが強調表示されています。これを保存すると、このアクセス用にディスクが構成されます。":::
+
 1. **[保存]** を選択します。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="マネージド ディスクの [ネットワーク] ブレードのスクリーンショット。プライベート エンドポイントの選択と、選択したディスク アクセスが強調表示されています。これを保存すると、このアクセス用にディスクが構成されます。":::
-
-これで、マネージド ディスクをインポートまたはエクスポートするときに使用できるプライベート リンクの構成が完了しました。
+これで、マネージド ディスクのインポートとエクスポートに使用できるプライベート リンクが構成されました。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [プライベート リンクに関する FAQ](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
+- VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - [Azure CLI](linux/disks-upload-vhd-to-managed-disk-cli.md) または [Azure PowerShell モジュール](windows/disks-upload-vhd-to-managed-disk-powershell.md)
+- VHD をダウンロードする - [Windows](windows/download-vhd.md) または [Linux](linux/download-vhd.md)
+- [プライベート リンクとマネージド ディスクに関する FAQ](./faq-for-disks.yml)
 - [PowerShell を使用して別のリージョンのストレージ アカウントにマネージド スナップショットを VHD としてエクスポートまたはコピーする](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account)

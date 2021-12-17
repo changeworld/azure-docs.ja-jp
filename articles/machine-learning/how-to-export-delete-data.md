@@ -4,18 +4,17 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning Studio、CLI、SDK、および認証済み REST API を使用してワークスペースをエクスポートまたは削除する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 author: lobrien
 ms.author: laobri
-ms.date: 04/24/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 030e09f0bb1514e8d3828da52604d751a2a8a11a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.openlocfilehash: 6f4a09153702e98068034fa5b5866a4baa18de03
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520084"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561520"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning service のワークスペース データをエクスポートまたは削除する
 
@@ -33,7 +32,7 @@ Azure Machine Learning では、個人データは実行履歴ドキュメント
 
 ## <a name="delete-high-level-resources-using-the-portal"></a>ポータルを使用して高レベル リソースを削除する
 
-ワークスペースを作成すると、Azure によってリソース グループ内に次の多数のリソースが作成されます。
+ワークスペースを作成すると、Azure によってリソース グループ内にいくつかのリソースが作成されます。
 
 - ワークスペース自体
 - ストレージ アカウント
@@ -53,11 +52,14 @@ Azure Machine Learning では、個人データは実行履歴ドキュメント
 
 Azure Machine Learning Studio は、ノートブック、データセット、モデル、実験などの機械学習リソースの統合ビューを提供します。 Azure Machine Learning Studio では、データと実験の記録を保持することに注力しています。 パイプラインやコンピューティング リソースなどの計算リソースは、ブラウザーを使用して削除できます。 これらのリソースについては、問題のリソースに移動し、 **[削除]** を選択します。 
 
-データセットの登録は解除でき、実験はアーカイブできますが、これらの操作によってデータが削除されることはありません。 データを完全に削除するには、データセットと実行データをストレージ レベルで削除する必要があります。 ストレージ レベルでの削除は、前に説明したように、ポータルを使用して行います。
+データセットの登録は解除でき、実験はアーカイブできますが、これらの操作によってデータが削除されることはありません。 データを完全に削除するには、データセットと実験データをストレージ レベルで削除する必要があります。 ストレージ レベルでの削除は、前に説明したように、ポータルを使用して行います。 個々の実行は、スタジオで直接削除できます。 実行を削除すると、実行のデータが削除されます。 
+
+> [!NOTE]
+> データセットを登録解除する前に、その **データ ソース** リンクを使用して、削除する特定のデータの URL を見つけます。 
 
 Studio を使用して、実験の実行からトレーニング アーティファクトをダウンロードできます。 目的の **[実験]** と **[実行]** を選択します。 **[Output + logs]\(出力とログ\)** を選択し、ダウンロードする特定のアーティファクトに移動します。 **...** 、 **[ダウンロード]** の順に選択します。
 
-登録済みのモデルをダウンロードするには、目的の **[モデル]** に移動し、 **[ダウンロード]** を選択します。 
+**[モデル]** に移動して **[ダウンロード]** を選択することにより、登録されているモデルをダウンロードできます。 
 
 :::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="[ダウンロード] オプションが強調表示されている Studio モデル ページのスクリーンショット":::
 

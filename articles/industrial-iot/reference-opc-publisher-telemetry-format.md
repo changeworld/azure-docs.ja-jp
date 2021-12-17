@@ -6,16 +6,16 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: reference
 ms.date: 3/22/2021
-ms.openlocfilehash: d4aea455a33f45973c2329fb44fdda6c2a508f53
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 77469a9232361cf680eca69f4a2e9d131581d14d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104787468"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677946"
 ---
 # <a name="opc-publisher-telemetry-format"></a>OPC Publisher のテレメトリ形式
 
-OPC Publisher バージョン 2.6 以上では、[OPC UA 仕様書の第 14 部](https://opcfoundation.org/developer-tools/specifications-unified-architecture/part-14-pubsub/)で指定されているように、標準化された OPC UA PubSub JSON 形式をサポートしています。これは次のようになります。
+OPC Publisher バージョン 2.6 以上では、[OPC UA 仕様書の第 14 部](https://opcfoundation.org/developer-tools/specifications-unified-architecture/part-14-pubsub/)で規定されている標準的な OPC UA PubSub JSON 形式をサポートしています。
 ```
 {
   "MessageId": "18",
@@ -82,10 +82,15 @@ OPC Publisher バージョン 2.6 以上では、[OPC UA 仕様書の第 14 部]
 ```
 
 ## <a name="opc-publisher-telemetry-configuration-file-format"></a>OPC Publisher のテレメトリ構成ファイルの形式
+
+> [!NOTE]
+> テレメトリ構成形式は非推奨となりました。 これはバージョン 2.5 以降でのみ使用できます。
+
+
 ```
     // The configuration settings file consists of two objects:
     // 1) The 'Defaults' object, which defines defaults for the telemetry configuration
-    // 2) An array 'EndpointSpecific' of endpoint specific configuration
+    // 2) An array 'EndpointSpecific' of endpoint-specific configuration
     // Both objects are optional and if they are not specified, then OPC Publisher uses
     // its internal default configuration:
     //  {
@@ -215,7 +220,7 @@ OPC Publisher バージョン 2.6 以上では、[OPC UA 仕様書の第 14 部]
         // or the defaults used by publisher.
         // It is not allowed to specify 'Name' and 'Flat' properties in this object.
         "EndpointSpecific": [
-            // The following shows how a endpoint specific configuration can look like:
+            // The following shows how an endpoint-specific configuration can look like:
             {
                 // 'ForEndpointUrl' allows to configure for which OPC UA server this
                 // object applies and is a required property for all objects in the

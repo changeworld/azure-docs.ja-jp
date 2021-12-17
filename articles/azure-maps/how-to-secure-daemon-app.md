@@ -1,176 +1,247 @@
 ---
-title: デーモン アプリケーションをセキュリティで保護する方法
+title: Microsoft Azure Maps でデーモン アプリケーションをセキュリティで保護する方法
 titleSuffix: Azure Maps
-description: Azure portal を使用して、信頼されたデーモン アプリケーションを構成するための認証を管理します。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 06/12/2020
+description: この記事では、バックグラウンド プロセス、タイマー、ジョブなどのデーモン アプリケーションを Microsoft Azure Maps の信頼でき、セキュリティで保護された環境でホストする方法について説明します。
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 2dd04f404330a6c86e2df09da610e16ba9b721f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: eriklind
+custom.ms: subject-rbac-steps
+ms.openlocfilehash: e64645f7bdcbfb40cbee0fd29d1df2464a5d4f3e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92895649"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450858"
 ---
 # <a name="secure-a-daemon-application"></a>デーモン アプリケーションをセキュリティで保護する
 
-以下のガイドは、信頼されており、セキュリティで保護されている環境でホストされるバックグラウンド プロセス、タイマー、ジョブを対象としています。 例としては、Azure Web Jobs、Azure Function App、Windows サービス、およびその他の信頼性の高いバックグラウンド サービスなどがあります。
+この記事では、デーモン アプリケーションを Microsoft Azure Maps の信頼でき、セキュリティで保護された環境でホストする方法について説明します。
 
-> [!Tip]
-> Microsoft では、運用アプリケーション用に Azure Active Directory (Azure AD) および Azure ロールベースのアクセス制御 (Azure RBAC) を実装することをお勧めします。 概念の概要については、[Azure Maps 認証](./azure-maps-authentication.md)に関するページを参照してください。
+デーモン アプリケーションの例を次に示します。
+
+- Azure Web ジョブ
+- Azure Function App
+- Windows サービス
+- 実行中の信頼できるバックグラウンド サービス
+
+## <a name="view-azure-maps-authentication-details"></a>Azure Maps の認証の詳細を表示する
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
-## <a name="scenario-shared-key-authentication"></a>シナリオ:共有キー認証
+>[!IMPORTANT]
+>運用アプリケーションの場合、Azure AD と Azure ロールベースのアクセス制御 (Azure RBAC) を実装することをお勧めします。 Azure AD の概念の概要については、「[Azure Maps による認証](azure-maps-authentication.md)」を参照してください。
 
-Azure Maps アカウントの作成後、主キーと 2 次キーが生成されます。 [共有キー認証を使用して Azure Maps を呼び出す](./azure-maps-authentication.md#shared-key-authentication)場合は、サブスクリプション キーとして主キーを使用することをお勧めします。 2 次キーは、キー変更のローリングなどのシナリオで使用できます。 詳細については、「[Azure Maps による認証](./azure-maps-authentication.md)」をご覧ください。
+## <a name="scenario-shared-key-authentication-with-azure-key-vault"></a>シナリオ: Azure Key Vault を使用する共有キー認証
 
-### <a name="securely-store-shared-key"></a>共有キーを安全に格納する
+共有キー認証を使用するアプリケーションでは、キーを安全なストアに保管する必要があります。 このシナリオでは、アプリケーション キーをシークレットとして Azure Key Vault に安全に保管する方法について説明します。 アプリケーションでは、共有キーをアプリケーション構成に格納しないで、Azure Key Vault のシークレットとして取得できます。 キーの再生成を簡略化するために、アプリケーションでは一度に 1 つのキーを使用することをお勧めします。 アプリケーションでは、未使用のキーを再生成し、再生成されたキーを Azure Key Vault にデプロイして、引き続き 1 つのキーで現在の接続を維持することができます。 Azure Key Vault を構成する方法については、「[Azure Key Vault 開発者ガイド](../key-vault/general/developers-guide.md)」を参照してください。
 
-主および 2 次キーを使用すると、Maps アカウントのすべての API に対して認証を行うことができます。 アプリケーションでは、キーを Azure Key Vault などのセキュリティで保護されたストアに格納する必要があります。 アプリケーションの構成で共有キーをプレーン テキストで格納しないようにするには、アプリケーションで共有キーを Azure Key Vault シークレットとして取得する必要があります。 Azure Key Vault の構成方法については、[Azure Key Vault 開発者ガイド](../key-vault/general/developers-guide.md)に関するページを参照してください。
+>[!IMPORTANT]
+>このシナリオでは、Azure Key Vault を介して Azure Active Directory に間接的にアクセスします。 ただし、Azure AD 認証を直接使用することをお勧めします。 Azure AD を直接使用すると、共有キー認証の使用と Key Vault の設定に伴う複雑さの増大と運用上の要件を回避できます。
 
 以下の手順では、このプロセスの概要を示します。
 
-1. Azure Key Vault を作成します。
-2. アプリの登録またはマネージド ID を作成して、Azure AD サービス プリンシパルを作成します。作成されたプリンシパルでは、Azure Key Vault へのアクセスを担当します。
-3. サービス プリンシパルに、Azure キー シークレット `Get` アクセス許可へのアクセス権を割り当てます。
-4. 開発者に対して、シークレット `Set` アクセス許可へのアクセス権を一時的に割り当てます。
-5. Key Vault シークレットに共有キーを設定し、デーモン アプリケーション用の構成としてシークレット ID を参照し、シークレット `Set` アクセス許可を削除します。
-6. デーモン アプリケーションで Azure AD 認証を実装し、Azure Key Vault から共有キー シークレットを取得します。
-7. 共有キーを使用して、Azure Maps REST API 要求を作成します。
+1. [Azure Key Vault を作成します](../key-vault/general/quick-create-portal.md)。
+2. アプリの登録またはマネージド ID を作成して、[Azure AD サービス プリンシパル](../active-directory/fundamentals/service-accounts-principal.md)を作成します。 作成されたプリンシパルは、Azure Key Vault へのアクセスを担当します。
+3. サービス プリンシパルに、Azure キー シークレット `get` アクセス許可へのアクセス権を割り当てます。 アクセス許可を設定する方法の詳細については、「[Azure portal を使用して Key Vault アクセス ポリシーを割り当てる](../key-vault/general/assign-access-policy-portal.md)」を参照してください。
+4. 開発者に対して、シークレット `set` アクセス許可へのアクセス権を一時的に割り当てます。
+5. Key Vault シークレットに共有キーを設定し、デーモン アプリケーション用の構成としてシークレット ID を参照します。
+6. シークレットの `set` アクセス許可を削除します。
+7. Azure Key Vault から共有キー シークレットを取得するには、デーモン アプリケーションで Azure Active Directory 認証を実装します。
+8. 共有キーを使用して、Azure Maps REST API 要求を作成します。
+以上で、デーモン アプリケーションで Key Vault から共有キーを取得することができます。
 
-> [!Tip]
-> アプリが Azure 環境でホストされている場合、マネージド ID を実装し、Azure Key Vault に対して認証するためのシークレットの管理のコストと複雑さを軽減する必要があります。 Azure Key Vault の[マネージド ID を使用して接続するためのチュートリアル](../key-vault/general/tutorial-net-create-vault-azure-web-app.md)に関するページを参照してください。
-
-デーモン アプリケーションでは、セキュリティで保護されたストレージからの共有キーの取得を担当します。 Azure Key Vault を使用する実装では、シークレットにアクセスするために Azure AD による認証が必要です。 代わりに、共有キー認証を使用する場合に増す複雑さと運用要件の結果として、Azure Maps に対する直接の Azure AD 認証をお勧めします。
-
-> [!IMPORTANT]
-> キーの再生成を簡素化するために、アプリケーションでは一度に 1 つのキーを使用することをお勧めします。 その後、アプリケーションでは使用されていないキーを再生成し、Azure Key Vault などのセキュリティで保護されたシークレット ストアに再生成された新しいキーをデプロイできます。
+> [!TIP]
+> アプリが Azure 環境でホストされている場合、マネージド ID を使用して、認証用のシークレットを管理するコストと複雑さを軽減することをお勧めします。 マネージド ID を設定する方法については、「[チュートリアル: マネージド ID を使用して Key Vault を .NET の Azure Web アプリに接続する](../key-vault/general/tutorial-net-create-vault-azure-web-app.md)」を参照してください。
 
 ## <a name="scenario-azure-ad-role-based-access-control"></a>シナリオ:Azure AD ロールベースのアクセス制御
 
-Azure Maps アカウントが作成されると、Azure portal の認証の詳細ページに Azure Maps の `x-ms-client-id` 値が示されます。 この値は、REST API 要求に使用されるアカウントを表します。 この値は、アプリケーション構成に格納し、HTTP 要求を行う前に取得する必要があります。 このシナリオの目的は、デーモン アプリケーションで Azure AD に対して認証し、Azure Maps REST API を呼び出せるようにすることです。
+Azure Maps アカウントが作成されると、Azure Maps の `Client ID` の値が Azure portal の [認証の詳細] ページに表示されます。 この値は、REST API 要求に使用されるアカウントを表します。 この値をアプリケーション構成に格納し、HTTP 要求を行う前に取得する必要があります。 このシナリオの目的は、デーモン アプリケーションで Azure AD に対して認証し、Azure Maps REST API を呼び出せるようにすることです。
 
-> [!Tip]
-> マネージド ID コンポーネントの利点が得られるように、Azure Virtual Machines、Virtual Machine Scale Sets、または App Services でホストすることをお勧めします。
+> [!TIP]
+>マネージド ID コンポーネントのベネフィットが得られるように、Azure Virtual Machines、Virtual Machine Scale Sets、または App Services でホストすることをお勧めします。
 
-### <a name="daemon-hosted-on-azure-resources"></a>Azure リソースでホストされているデーモン
+### <a name="host-a-daemon-on-azure-resources"></a>Azure リソースでデーモンをホストする
 
-Azure リソースで実行する場合は、低コストで最小限の資格情報管理作業を可能にするために Azure マネージド ID を構成します。 
+Azure リソースで実行する場合、Azure マネージド ID を構成して、資格情報管理作業を低コストで最小限に抑えることができます。
 
-マネージド ID へのアプリケーション アクセスを有効にする場合は、[マネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
+アプリケーションによるマネージド ID へのアクセスを有効にするには、[マネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
 
-マネージド ID の利点:
+マネージド ID のベネフィットの一部は、次のとおりです。
 
-* Azure システムで管理される X509 証明書の公開キー暗号化認証。
-* クライアント シークレットではなく、X509 証明書を使用する Azure AD セキュリティ。
-* Azure によって、マネージド ID リソースに関するすべての証明書が管理および更新される。
-* Azure Key Vault のようなセキュリティで保護されたシークレット ストア サービスの必要性をなくすことで簡素化された資格情報の運用管理。 
+- Azure システムで管理される X509 証明書の公開キー暗号化認証。
+- クライアント シークレットではなく、X509 証明書を使用する Azure AD セキュリティ。
+- Azure によって、マネージド ID リソースに関するすべての証明書が管理および更新される。
+- マネージド ID を使用すると、Azure Key Vault などのセキュリティで保護されたシークレット ストア サービスが不要になるため、資格情報の運用管理が簡略化される。
 
-### <a name="daemon-hosted-on-non-azure-resources"></a>Azure 以外のリソースでホストされているデーモン
+### <a name="host-a-daemon-on-non-azure-resources"></a>Azure 以外のリソースでデーモンをホストする
 
 Azure 以外の環境で実行する場合、マネージド ID は使用できません。 そのため、デーモン アプリケーションの Azure AD アプリケーション登録を使用して、サービス プリンシパルを構成する必要があります。
 
-1. Azure portal の Azure サービスの一覧で、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** の順に選択します。  
+#### <a name="create-new-application-registration"></a>新しいアプリケーションの登録を作成する
 
-    > [!div class="mx-imgBorder"]
-    > ![アプリの登録](./media/how-to-manage-authentication/app-registration.png)
+アプリケーションの登録を既に作成している場合は、「[委任された API アクセス許可を割り当てる](#assign-delegated-api-permissions)」に進みます。
 
-2. アプリを既に登録している場合は、次の手順に進みます。 アプリを登録していない場合は、 **[名前]** を入力し、 **[Support account type] (サポートされているアカウントの種類)** を選択して、 **[登録]** を選択します。  
+新しいアプリケーションの登録を作成するには、次の手順に従います。
 
-    > [!div class="mx-imgBorder"]
-    > ![アプリの登録の詳細](./media/how-to-manage-authentication/app-create.png)
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
-3. 委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 次に、 **[アプリの登録]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「**Azure Maps**」を検索して選択します。
+2. **[Azure Active Directory]** を選択します。
 
-    > [!div class="mx-imgBorder"]
-    > ![アプリの API アクセス許可を追加する](./media/how-to-manage-authentication/app-permissions.png)
+3. 左側のウィンドウの **[管理]** で、 **[アプリの登録]** を選択します。
 
-4. **[Access Azure Maps] (Azure Maps へのアクセス)** の横にあるチェック ボックスをオンにしてから、 **[アクセス許可の追加]** を選択します。
+4. **[+ 新規登録]** タブを選択します。
 
-    > [!div class="mx-imgBorder"]
-    > ![アプリの API アクセス許可を選択する](./media/how-to-manage-authentication/select-app-permissions.png)
+      :::image type="content" border="true" source="./media/how-to-manage-authentication/app-registration.png" alt-text="[アプリの登録] を表示する。":::
 
-5. 次の手順を完了し、クライアント シークレットを作成するか、証明書を構成します。
+5. **[名前]** を入力し、 **[サポートされているアカウントの種類]** を選択します。
 
-    * お使いのアプリケーション上でサーバー認証またはアプリケーション認証を使用する場合は、アプリの登録ページで、 **[証明書とシークレット]** に移動します。 次に、公開キー証明書をアップロードするか、 **[新しいクライアント シークレット]** を選択してパスワードを作成します。
+    :::image type="content" border="true" source="./media/how-to-manage-authentication/app-create.png" alt-text="アプリの登録を作成する。":::
 
-        > [!div class="mx-imgBorder"]
-        > ![クライアント シークレットを作成する](./media/how-to-manage-authentication/app-keys.png)
+6. **[登録]** を選択します。  
 
-    * **[追加]** を選択した後、シークレットをコピーし、Azure Key Vault などのサービスに安全に格納します。 証明書またはシークレットを安全に格納する場合は、[Azure Key Vault 開発者ガイド](../key-vault/general/developers-guide.md) に関するページをご確認ください。 Azure AD からトークンを取得するには、このシークレットを使用します。
+#### <a name="assign-delegated-api-permissions"></a>委任された API アクセス許可を割り当てる
 
-        > [!div class="mx-imgBorder"]
-        > ![クライアント シークレットを追加する](./media/how-to-manage-authentication/add-key.png)
+委任された API アクセス許可を Azure Maps に割り当てるには、次の手順に従います。
 
-### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>デーモン アプリケーションのロールベースのアクセス権を Azure Maps に付与する
+1. まだサインインしていない場合は、[Azure portal](https://portal.azure.com)にサインインします。
 
-"*Azure ロールベースのアクセス制御 (Azure RBAC)* " を付与するには、作成されたマネージ ID またはサービス プリンシパルを、1 つまたは複数の Azure Maps ロールの定義に割り当てます。 Azure Maps に使用できる Azure ロールの定義を表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「*Azure Maps*」で始まるロールを検索します。 これらの Azure Maps ロールが、アクセス権を付与できるロールです。
+2. **[Azure Active Directory]** を選択します。
 
-> [!div class="mx-imgBorder"]
-> ![使用可能なロールを表示する](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
+3. 左側のウィンドウの **[管理]** で、 **[アプリの登録]** を選択します。
 
-1. **[Azure Maps アカウント]** にアクセスします。 **[アクセス制御 (IAM)]**  >  **[ロールの割り当て]** の順に選択します。
+4. アプリケーションを選択します。
 
-    > [!div class="mx-imgBorder"]
-    > ![Azure RBAC を使用してアクセス権を付与する](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    :::image type="content" border="true" source="./media/how-to-manage-authentication/app-select.png" alt-text="[アプリの登録] を選択する。":::
 
-2. **[ロールの割り当て]** タブで、ロールの割り当てを **追加** します。 
+5. 左側のメニューの **[管理]** で、 **[API のアクセス許可]** を選択します。
 
-    > [!div class="mx-imgBorder"]
-    > ![[追加] が選択されているロールの割り当てを示すスクリーンショット。](./media/how-to-manage-authentication/add-role-assignment.png)
+6. **[アクセス許可の追加]** を選択します。
 
-3. **[Azure Maps データ閲覧者]** や **[Azure Maps データ共同作成者]** などの組み込みの Azure Maps ロールの定義を選択します。 **[アクセスの割り当て先]** で、 **[Azure AD のユーザー、グループ、またはサービス プリンシパル]** 、または **[ユーザー割り当てマネージド ID]**  /  **[システム割り当てマネージド ID]** のマネージド ID を選択します。 プリンシパルを選択します。 次に、 **[保存]** を選択します。
+    :::image type="content" border="true" source="./media/how-to-manage-authentication/app-add-permissions.png" alt-text="アプリのアクセス許可を追加する。":::
 
-    > [!div class="mx-imgBorder"]
-    > ![ロールの割り当てを追加する方法](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
+7. **[所属する組織で使用している API]** タブを選択します。
 
-4. ロールの割り当てタブで、ロールの割り当てが適用されたことを確認できます。
+8. 検索ボックスに「**Azure Maps**」と入力します。
 
-## <a name="request-token-with-managed-identity"></a>マネージド ID を使用してトークンを要求する
+9. **[Azure Maps]** を選択します。
 
-ホスト リソース用にマネージド ID が構成されたら、Azure SDK または REST API を使用して Azure Maps のトークンを取得します。詳細については、[アクセス トークンの取得](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)に関するページを参照してください。 このガイドに従って、REST API 要求で使用できるアクセス トークンが返されることが想定されます。
+   :::image type="content" border="true" source="./media/how-to-manage-authentication/app-permissions.png" alt-text="アプリのアクセス許可を要求する。":::
 
-## <a name="request-token-with-application-registration"></a>アプリケーションの登録を使用してトークンを要求する
+10. **[Access Azure Maps]\(Azure Maps へのアクセス\)** チェック ボックスをオンにします。
 
-アプリを登録して Azure Maps と関連付けると、アクセス トークンを要求することができます。
+11. **[アクセス許可の追加]** を選択します.
 
-* Azure リソース ID `https://atlas.microsoft.com/`
-* Azure AD App ID (Azure AD アプリ ID)
-* Azure AD Tenant ID (Azure AD テナント ID)
-* Azure AD アプリの登録クライアント シークレット
+    :::image type="content" border="true" source="./media/how-to-manage-authentication/select-app-permissions.png" alt-text="アプリの [API のアクセス許可] を選択する。":::
 
-要求:
+#### <a name="create-a-client-secret-or-configure-certificate"></a>クライアント シークレットの作成または証明書の構成
 
-```http
-POST /<Azure AD Tenant ID>/oauth2/token HTTP/1.1
-Host: login.microsoftonline.com
-Content-Type: application/x-www-form-urlencoded
+サーバーまたはアプリケーションベースの認証をアプリケーションに実装するには、次の 2 つのオプションのいずれかを選択できます。
 
-client_id=<Azure AD App ID>&resource=https://atlas.microsoft.com/&client_secret=<client secret>&grant_type=client_credentials
-```
+- 公開キー証明書をアップロードします。
+- クライアント シークレットを作成します。
 
-応答:
+##### <a name="upload-a-public-key-certificate"></a>公開キー証明書のアップロード
+
+公開キー証明書をアップロードするには、次の手順に従います。
+
+1. 左側のウィンドウの **[管理]** で、 **[証明書とシークレット]** を選択します。
+
+2. **[証明書のアップロード]** を選択します。
+   :::image type="content" border="true" source="./media/how-to-manage-authentication/upload-certificate.png" alt-text="証明書をアップロードする。":::
+
+3. テキスト ボックスの右側にあるファイル アイコンを選択します。
+
+4. *.crt*、 *.cer*、または *.pem* ファイルを選択し、 **[追加]** を選択します。
+
+    :::image type="content" border="true" source="./media/how-to-manage-authentication/upload-certificate-file.png" alt-text="証明書ファイルをアップロードする。":::
+
+##### <a name="create-a-client-secret"></a>クライアント シークレットの作成
+
+クライアント シークレットを作成するには、次の手順に従います。
+
+1. 左側のウィンドウの **[管理]** で、 **[証明書とシークレット]** を選択します。
+
+2. **[+ 新しいクライアント シークレット]** を選択します。
+
+   :::image type="content" border="true" source="./media/how-to-manage-authentication/new-client-secret.png" alt-text="新しいクライアント シークレット。":::
+
+3. クライアント シークレットの説明を入力します。
+
+4. **[追加]** を選択します。
+
+   :::image type="content" border="true" source="./media/how-to-manage-authentication/new-client-secret-add.png" alt-text="新しいクライアント シークレットを追加する。":::
+
+5. シークレットをコピーして、Azure Key Vault などのサービスに安全に保管します。 シークレットは、この記事の「[マネージド ID を使用してトークンを要求する](#request-a-token-with-managed-identity)」セクションでも使用します。
+
+      :::image type="content" border="true" source="./media/how-to-manage-authentication/copy-client-secret.png" alt-text="クライアント シークレットをコピーする。":::
+
+     >[!IMPORTANT]
+     >証明書またはシークレットを安全に保管するには、「[Azure Key Vault 開発者ガイド](../key-vault/general/developers-guide.md)」を参照してください。 Azure AD からトークンを取得するには、このシークレットを使用します。
+
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
+
+### <a name="request-a-token-with-managed-identity"></a>マネージド ID を使用してトークンを要求する
+
+ホスト リソース用にマネージド ID を構成したら、Azure SDK または REST API を使用して Azure Maps のトークンを取得します。 アクセス トークンを取得する方法については、[アクセス トークンの取得](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)に関するページを参照してください。
+
+### <a name="request-token-with-application-registration"></a>アプリケーションの登録を使用してトークンを要求する
+
+アプリを登録して Azure Maps と関連付けた後、アクセス トークンを要求する必要があります。
+
+アクセス トークンを要求するには、次の手順に従います。
+
+1. まだサインインしていない場合は、[Azure portal](https://portal.azure.com)にサインインします。
+
+2. **[Azure Active Directory]** を選択します。
+
+3. 左側のウィンドウの **[管理]** で、 **[アプリの登録]** を選択します。
+
+4. アプリケーションを選択します。
+
+5. [概要] ページが表示されます。 [アプリケーション (クライアント) ID] と [ディレクトリ (テナント) ID] をコピーします。
+
+      :::image type="content" border="true" source="./media/how-to-manage-authentication/get-token-params.png" alt-text="トークン パラメーターをコピーする。":::
+
+ここでは、[Postman](https://www.postman.com/) アプリケーションを使用してトークン要求を作成しますが、別の API 開発環境も使用できます。
+
+1. Postman アプリ内で **[新規]** を選択します。
+
+2. **[Create New]** ウィンドウで、 **[HTTP Request]** を選択します。
+
+3. 要求の **[Request name]** (例: *POST Token Request*) を入力します。
+
+4. HTTP メソッドの **[POST]** を選択します。
+
+5. 次の URL をアドレス バーに入力し (`{Tenant-ID}` をディレクトリ (テナント) ID に、`{Client-ID}` をアプリケーション (クライアント) ID に置き換えます)、`{Client-Secret}` をお使いのクライアント シークレットに置き換えます。
+
+    ```http
+    https://login.microsoftonline.com/{Tenant-ID}/oauth2/v2.0/token?response_type=token&grant_type=client_credentials&client_id={Client-ID}&client_secret={Client-Secret}%3D&scope=api%3A%2F%2Fazmaps.fundamentals%2F.default
+    ```
+
+6. **[送信]** を選択します。
+
+7. 次の JSON 応答が表示されます。
 
 ```json
 {
     "token_type": "Bearer",
-    "expires_in": "...",
-    "ext_expires_in": "...",
-    "expires_on": "...",
-    "not_before": "...",
-    "resource": "https://atlas.microsoft.com/",
-    "access_token": "ey...gw"
+    "expires_in": 86399,
+    "ext_expires_in": 86399,
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFq..."
 }
 ```
 
-詳細な例については、[Azure AD の認証シナリオ](../active-directory/develop/authentication-vs-authorization.md)に関するページを参照してください。
+認証フローの詳細については、[Microsoft ID プラットフォーム上の OAuth 2.0 クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret)に関するページを参照してください
 
 ## <a name="next-steps"></a>次のステップ
+
+詳細な例については、以下をご覧ください。
+> [!div class="nextstepaction"]
+> [Azure AD の認証シナリオ](../active-directory/develop/authentication-vs-authorization.md)
 
 Azure Maps アカウントにおける API 使用状況メトリックを確認します。
 > [!div class="nextstepaction"]

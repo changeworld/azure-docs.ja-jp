@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2910ea3f896ba3920126737965ca9c9dbabcfeb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c75848cf173254a43e294a01b9b81f1122d85b36
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709106"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112678732"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Traffic Manager 統合を使用して Azure App Service 内のカスタム ドメイン名を構成する
 
@@ -77,7 +77,7 @@ App Service アプリがサポートされている価格レベルになると�
 
 Traffic Manager では CNAME レコードを使用したカスタム ドメイン マッピングのみがサポートされており、DNS 標準では CNAME レコードがルート ドメインのマッピング (**contoso.com** など) にサポートされていないため、Traffic Manager はルート ドメインへのマッピングをサポートしていません。 この問題を回避するには、アプリ レベルで URL リダイレクトを使用します。 たとえば ASP.NET Core では、[URL の書き換え](/aspnet/core/fundamentals/url-rewriting)を使用できます。 次に、Traffic Manager を使用してサブドメインを負荷分散します (**www.contoso.com**)。 別の方法として、[Azure Traffic Manager プロファイルを参照するためのドメイン名の頂点に対するエイリアス レコードを作成する](../dns/tutorial-alias-tm.md)ことができます。 一例として contoso.com があります。 サービスのリダイレクトを使用する代わりに、ゾーンから直接 Traffic Manager プロファイルを参照するように Azure DNS を構成できます。 
 
-高可用性シナリオでは、ルート ドメインから各アプリのコピーの IP アドレスにポイントする複数の *A レコード* を作成することによって、Traffic Manager を使用せずに負荷分散 DNS セットアップを実装できます。 次に、[同じルート ドメインをすべてのアプリのコピーにマップします](app-service-web-tutorial-custom-domain.md#map-an-a-record)。 同じドメイン名を同じリージョン内の 2 つの異なるアプリにマップすることはできないため、このセットアップは、アプリのコピーが異なるリージョンにある場合にのみ機能します。
+高可用性シナリオでは、ルート ドメインから各アプリのコピーの IP アドレスにポイントする複数の *A レコード* を作成することによって、Traffic Manager を使用せずに負荷分散 DNS セットアップを実装できます。 次に、[同じルート ドメインをすべてのアプリのコピーにマップします](app-service-web-tutorial-custom-domain.md#4-create-the-dns-records)。 同じドメイン名を同じリージョン内の 2 つの異なるアプリにマップすることはできないため、このセットアップは、アプリのコピーが異なるリージョンにある場合にのみ機能します。
 
 ## <a name="enable-custom-domain"></a>カスタム ドメインを有効にする
 ドメイン名のレコードが反映されたら、ブラウザーを使用して、カスタム ドメイン名が App Service アプリに解決することを確認します。
@@ -87,7 +87,7 @@ Traffic Manager では CNAME レコードを使用したカスタム ドメイ�
 > 
 > 
 
-1. ドメイン解決が成功したら、[Azure Portal](https://portal.azure.com) のアプリページに戻ります
+1. ドメイン解決が成功したら、[Azure portal](https://portal.azure.com) のアプリ ページに戻ります
 2. 左のナビゲーションで、 **[カスタム ドメイン]**  >  **[ホスト名の追加]** を選択します。
 4. 以前にマップしたカスタム ドメイン名を入力し、 **[検証]** を選択します。
 5. **[ホスト名レコード タイプ]** が **[CNAME (www\.example.com または任意のサブドメイン)]** に設定されていることを確認します。
@@ -99,4 +99,4 @@ Traffic Manager では CNAME レコードを使用したカスタム ドメイ�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)
+> [Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)

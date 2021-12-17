@@ -59,7 +59,7 @@
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/container-instances-security-baseline?toc=/azure/container-instances/TOC.json
         - name: セキュリティに関する考慮事項
           href: container-instances-image-security.md
     - name: 仮想ネットワーク
@@ -78,6 +78,8 @@
           href: container-instances-encrypt-data.md
         - name: 専用ホストへのデプロイ
           href: container-instances-dedicated-hosts.md
+        - name: Availability Zones (プレビュー) でデプロイする
+          href: availability-zones.md
         - name: Logic Apps コネクタの使用
           href: ../connectors/connectors-create-api-container-instances.md?toc=/azure/container-instances/toc.json&bc=/azure/container-instances/breadcrumb/toc.json
     - name: コンテナーのシナリオ
@@ -130,6 +132,8 @@
           href: container-instances-get-logs.md
         - name: Azure Monitor ログでのログ記録
           href: container-instances-log-analytics.md
+        - name: インスタンスの状態を表示する
+          href: container-state.md
     - name: トラブルシューティング
       items:
         - name: 一般的な問題のトラブルシューティング
@@ -156,6 +160,9 @@
       href: container-instances-reference-yaml.md
     - name: コネクタ
       href: /connectors/aci
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける
@@ -167,10 +174,12 @@
     - name: ロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 製品フィードバックの提供
-      href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
+      href: 'https://feedback.azure.com/d365community/forum/1e5d6956-0c25-ec11-b6e6-000d3a4f0858'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
     - name: よく寄せられる質問
-      href: container-instances-faq.md
+      href: container-instances-faq.yml
+- name: サポートとトラブルシューティング
+  href: container-instances-support-help.md

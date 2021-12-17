@@ -2,13 +2,13 @@
 title: Batch プールの構成を Cloud Services から Virtual Machines に移行する
 description: プールの構成を最新の推奨構成に更新する方法について説明します
 ms.topic: how-to
-ms.date: 03/11/2021
-ms.openlocfilehash: a176c4df1737a340a546b4ab7926447cd821350d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/03/2021
+ms.openlocfilehash: 9d4ce46c5291333f161f260c3b4706ea9dcf9a24
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200556"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538887"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machine"></a>Batch プールの構成を Cloud Services から仮想マシンに移行する
 
@@ -36,7 +36,7 @@ Cloud Services 構成プールは、現在の Batch 機能の一部をサポー�
 - "virtualMachineConfiguration" プール ノードでは、マネージド OS ディスクが使用されます。 各ノードに使用される[マネージド ディスクの種類](../virtual-machines/disks-types.md)は、プールに対して選択されている VM サイズによって決まります。 "Standard_D2s_v3" など、プールに "s バージョン" の VM サイズが指定されている場合は、Premium SSD が使用されます。 "Standard_D2_v3" など、"s バージョン以外" の VM サイズが指定されている場合は、標準の HDD が使用されます。
 
    > [!IMPORTANT]
-   > Virtual Machines や Virtual Machine Scale Sets と同様に、各ノードで使用される OS マネージド ディスクにはコストがかかります。これは、VM のコストに追加されます。 'cloudServiceConfiguration' ノードでは、ノードのローカル SSD に OS ディスクが作成されるため、OS ディスクのコストは発生しません。
+   > Virtual Machines や Virtual Machine Scale Sets と同様に、各ノードで使用される OS マネージド ディスクにはコストがかかります。これは、VM のコストに追加されます。 "virtualMachineConfiguration" プールでは、[エフェメラル OS ディスク](create-pool-ephemeral-os-disk.md)を使用して、VM のキャッシュまたは一時的な SSD に OS ディスクを作成することで、マネージド ディスクに関する余分なコストを避けることができます。"cloudServiceConfiguration" ノードでは、ノードのローカル SSD に OS ディスクが作成されるため、OS ディスクのコストは発生しません。
 
 ## <a name="azure-data-factory-custom-activity-pools"></a>Azure Data Factory カスタム アクティビティ プール
 

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein
-ms.date: 04/20/2020
-ms.openlocfilehash: e08fe67dece02b936aa3a22e9cac58d809f19f46
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.reviewer: mathoma
+ms.date: 05/10/2020
+ms.openlocfilehash: 7ba5da1b452f411966e40d4ff991bbda9fdb88f7
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285685"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867419"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL Managed Instance (プレビュー) でのトランザクション レプリケーション
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,13 +37,13 @@ ms.locfileid: "107285685"
   > [!NOTE]
   > Azure SQL Managed Instance のすべての機能を使用するには、最新バージョンの [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) および [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) を使用している必要があります。
 
-### <a name="components"></a>Components
+### <a name="components"></a>コンポーネント
 
 トランザクション レプリケーションの主要なコンポーネントは、次の図の **パブリッシャー**、**ディストリビューター**、**サブスクライバー** です。  
 
 ![SQL Database を使用したレプリケーション](./media/replication-transactional-overview/replication-to-sql-database.png)
 
-| Role | Azure SQL Database | Azure SQL Managed Instance |
+| Role | Azure SQL データベース | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
 | **発行元** | いいえ | はい |
 | **ディストリビューター** | いいえ | はい|
@@ -61,7 +61,7 @@ Azure SQL Managed Instance では、次のバージョンの SQL Server をサ�
 
 - SQL Server 2016 以降
 - SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) または [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
-- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) または [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
+- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) または [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996) または [SP4 (11.0.7001.0)](https://www.microsoft.com/download/details.aspx?id=56040)
 
    > [!NOTE]
    >
@@ -72,7 +72,7 @@ Azure SQL Managed Instance では、次のバージョンの SQL Server をサ�
 
 さまざまな[レプリケーションの種類](/sql/relational-databases/replication/types-of-replication)があります。
 
-| レプリケーション | Azure SQL Database | Azure SQL Managed Instance |
+| レプリケーション | Azure SQL データベース | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
 | [**標準トランザクション**](/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | はい |
 | [**スナップショット**](/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | はい|
@@ -152,9 +152,7 @@ Azure SQL Managed Instance では、次のバージョンの SQL Server をサ�
 
 ## <a name="with-failover-groups"></a>フェイルオーバーグループを使う
 
-[アクティブ geo レプリケーション](../database/active-geo-replication-overview.md)は、トランザクション レプリケーションを使用している SQL Managed Instance ではサポートされていません。 アクティブ geo レプリケーションの代わりに、[自動フェールオーバー グループ](../database/auto-failover-group-overview.md)を使用します。ただし、パブリケーションをプライマリ マネージド インスタンスから[手動で削除](transact-sql-tsql-differences-sql-server.md#replication)し、フェールオーバー後にセカンダリ SQL Managed Instance 上で再作成する必要があることにご注意ください。
-
-**パブリッシャー** または **ディストリビューター** の SQL Managed Instance が[フェールオーバー グループ](../database/auto-failover-group-overview.md)に存在する場合、フェールオーバーが発生した後に、SQL Managed Instance 管理者が、古いプライマリ上のすべてのパブリケーションをクリーンアップして、新しいプライマリ上でそれらを再構成する必要があります。 このシナリオでは、次のアクティビティが必要です。
+**パブリッシャー** または **ディストリビューター** の SQL Managed Instance が [フェールオーバー グループ](../database/auto-failover-group-overview.md)に存在する場合、フェールオーバーが発生した後に、SQL Managed Instance 管理者が、古いプライマリ上のすべてのパブリケーションをクリーンアップして、新しいプライマリ上でそれらを再構成する必要があります。 このシナリオでは、次のアクティビティが必要です。
 
 1. データベース上で実行されているレプリケーション ジョブがある場合は、すべて停止します。
 1. パブリッシャーからサブスクリプションのメタデータを削除するには、パブリッシャー データベース上で次のスクリプトを実行します。
@@ -184,7 +182,7 @@ Azure SQL Managed Instance では、次のバージョンの SQL Server をサ�
    EXEC sp_dropdistributor 1,1
    ```
 
-Geo レプリケーションが、フェイルオーバーの **サブスクライバー** インスタンスで有効になっている場合、パブリケーションは、サブスクライバーマネージド インスタンスのフェールオーバーグループのリスナーエンドポイントに接続するように構成されている必要があります。 フェールオーバーが発生した場合、マネージド インスタンス管理者による以降のアクションは、発生したフェールオーバーの種類によって異なります：
+**サブスクライバー** の SQL Managed Instance がインスタンスで有効になっている場合、パブリケーションは、サブスクライバーマネージド インスタンスのフェールオーバーグループのリスナーエンドポイントに接続するように構成されている必要があります。 フェールオーバーが発生した場合、マネージド インスタンス管理者による以降のアクションは、発生したフェールオーバーの種類によって異なります：
 
 - データ損失のないフェールオーバーの場合、フェールオーバー後もレプリケーションは機能し続けます。
 - データ損失を伴うフェイルオーバーの場合、レプリケーションも機能します。 失われた変更を再度レプリケートします。

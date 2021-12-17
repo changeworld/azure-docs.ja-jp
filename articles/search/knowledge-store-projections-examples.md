@@ -1,678 +1,294 @@
 ---
-title: ナレッジ ストアでのプロジェクションを定義する
+title: プロジェクションを定義する
 titleSuffix: Azure Cognitive Search
-description: Power BI または Azure ML で使用するために、ナレッジ ストアにエンリッチされたドキュメントを射影する方法について、一般的なパターンの例を示します。
+description: 構文と例を確認して、ナレッジ ストアでテーブル、オブジェクト、およびファイルのプロジェクションを定義する方法について説明します。
 manager: nitinme
-author: vkurpad
-ms.author: vikurpad
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 3985564d49ce8a5c62b15f9537364418c0a8f5da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/15/2021
+ms.openlocfilehash: 0aa980d2268f6d055f3aa05a8e30d57712c022df
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97509922"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563627"
 ---
-# <a name="how-to-shape-and-export-enrichments"></a>エンリッチメントを整形してエクスポートする方法
+# <a name="define-projections-in-a-knowledge-store"></a>ナレッジ ストアでのプロジェクションを定義する
 
-プロジェクションとは、ナレッジ ストア内のエンリッチされたドキュメントの物理表現です。 エンリッチされたドキュメントを効果的に使用するには、構造が必要になります。 この記事では、構造とリレーションシップの両方について取り上げ、プロジェクションのプロパティを構築する方法と、作成したプロジェクションの種類間でデータを関連付ける方法について説明します。 
+[プロジェクション](knowledge-store-projection-overview.md)は、AI で強化されたコンテンツを Azure Storage にどのように保存するかを決定する、[ナレッジ ストアの定義](knowledge-store-concept-intro.md)のコンポーネントです。 プロジェクションによって、コンテンツを含むデータ構造の種類、数量、および構成が決まります。
 
-プロジェクションを作成するには、[Shaper スキル](cognitive-search-skill-shaper.md)を使用してカスタム オブジェクトを作成するか、またはプロジェクション定義内でインライン整形の構文を使用して、データを整形します。 
+この記事では、各プロジェクションの種類の構文について説明します。
 
-1 つのデータ シェイプは、射影する対象データをすべて含み、ノードの階層として形成されます。 この記事では、レポート、分析、ダウンストリーム処理に役立つ物理構造に射影できるようデータを整形するための手法をいくつか説明します。 
++ [テーブル プロジェクション](#define-a-table-projection)
++ [オブジェクト プロジェクション](#define-an-object-projection)
++ [ファイル プロジェクション](#define-a-file-projection)
 
-この記事で取り上げる例は、こちらの [REST API サンプル](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/projections/Projections%20Docs.postman_collection.json)にあります。ダウンロードして、HTTP クライアントで実行することができます。
-
-## <a name="introduction-to-projection-examples"></a>プロジェクションの例の概要
-
-[プロジェクション](knowledge-store-projection-overview.md)には、次の 3 つの種類があります。
-
-+ テーブル
-+ Objects
-+ ファイル
-
-テーブル プロジェクションは、Azure Table Storage に格納されます。 オブジェクトおよびファイル プロジェクションは Blob Storage に書き込まれます。オブジェクト プロジェクションは JSON ファイルとして保存され、ソース ドキュメントの内容のほか、あらゆるスキル出力やエンリッチメントを含むことができます。 エンリッチメント パイプラインでは、画像などのバイナリを抽出することもできます。これらのバイナリは、ファイル プロジェクションとして射影されます。 バイナリ オブジェクトがオブジェクト プロジェクションとして射影された場合、関連付けられているメタデータのみが JSON BLOB として保存されます。 
-
-データ シェイプとプロジェクションの共通部分を理解するために、基礎として次のスキルセットを使用して、各種の構成を確認します。 このスキルセットでは、未加工の画像とテキスト コンテンツが処理されます。 プロジェクションは、目的のシナリオに対して、ドキュメントのコンテンツとスキルの出力から定義されます。
-
-> [!IMPORTANT] 
-> プロジェクションを試すときは、確実にコスト管理できるように、[インデクサー キャッシュ プロパティを設定](search-howto-incremental-index.md)すると便利です。 インデクサー キャッシュが設定されていない場合、プロジェクションを編集すると、ドキュメント全体が再度エンリッチされます。 キャッシュが設定されていて、そのプロジェクションだけが更新された場合、以前にエンリッチされたドキュメントに対してスキルセットが実行されて新しい Cognitive Services の料金が発生することはありません。
-
-```json
-{
-    "name": "azureblob-skillset",
-    "description": "Skillset created from the portal. skillsetName: azureblob-skillset; contentField: merged_content; enrichmentGranularity: document; knowledgeStoreStorageAccount: confdemo;",
-    "skills": [
-        {
-            "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-            "name": "#1",
-            "description": null,
-            "context": "/document/merged_content",
-            "categories": [
-                "Person",
-                "Quantity",
-                "Organization",
-                "URL",
-                "Email",
-                "Location",
-                "DateTime"
-            ],
-            "defaultLanguageCode": "en",
-            "minimumPrecision": null,
-            "includeTypelessEntities": null,
-            "inputs": [
-                {
-                    "name": "text",
-                    "source": "/document/merged_content"
-                },
-                {
-                    "name": "languageCode",
-                    "source": "/document/language"
-                }
-            ],
-            "outputs": [
-                {
-                    "name": "persons",
-                    "targetName": "people"
-                },
-                {
-                    "name": "organizations",
-                    "targetName": "organizations"
-                },
-                {
-                    "name": "locations",
-                    "targetName": "locations"
-                },
-                {
-                    "name": "entities",
-                    "targetName": "entities"
-                }
-            ]
-        },
-        {
-            "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
-            "name": "#2",
-            "description": null,
-            "context": "/document/merged_content",
-            "defaultLanguageCode": "en",
-            "maxKeyPhraseCount": null,
-            "inputs": [
-                {
-                    "name": "text",
-                    "source": "/document/merged_content"
-                },
-                {
-                    "name": "languageCode",
-                    "source": "/document/language"
-                }
-            ],
-            "outputs": [
-                {
-                    "name": "keyPhrases",
-                    "targetName": "keyphrases"
-                }
-            ]
-        },
-        {
-            "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
-            "name": "#3",
-            "description": null,
-            "context": "/document",
-            "inputs": [
-                {
-                    "name": "text",
-                    "source": "/document/merged_content"
-                }
-            ],
-            "outputs": [
-                {
-                    "name": "languageCode",
-                    "targetName": "language"
-                }
-            ]
-        },
-        {
-            "@odata.type": "#Microsoft.Skills.Text.MergeSkill",
-            "name": "#4",
-            "description": null,
-            "context": "/document",
-            "insertPreTag": " ",
-            "insertPostTag": " ",
-            "inputs": [
-                {
-                    "name": "text",
-                    "source": "/document/content"
-                },
-                {
-                    "name": "itemsToInsert",
-                    "source": "/document/normalized_images/*/text"
-                },
-                {
-                    "name": "offsets",
-                    "source": "/document/normalized_images/*/contentOffset"
-                }
-            ],
-            "outputs": [
-                {
-                    "name": "mergedText",
-                    "targetName": "merged_content"
-                }
-            ]
-        },
-        {
-            "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
-            "name": "#5",
-            "description": null,
-            "context": "/document/normalized_images/*",
-            "textExtractionAlgorithm": "printed",
-            "lineEnding": "Space",
-            "defaultLanguageCode": "en",
-            "detectOrientation": true,
-            "inputs": [
-                {
-                    "name": "image",
-                    "source": "/document/normalized_images/*"
-                }
-            ],
-            "outputs": [
-                {
-                    "name": "text",
-                    "targetName": "text"
-                },
-                {
-                    "name": "layoutText",
-                    "targetName": "layoutText"
-                }
-            ]
-        }
-    ],
-    "cognitiveServices": {
-        "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-        "description": "DemosCS",
-        "key": "<COGNITIVE SERVICES KEY>"
-    },
-    "knowledgeStore": null
-}
-```
-
-このスキルセットを使用した場合、null に設定された `knowledgeStore` を基に、最初の例では、`knowledgeStore` オブジェクトの内容を設定します。これは、他のシナリオで使用できる表形式データ構造を作成するプロジェクションを使って構成します。 
-
-## <a name="projecting-to-tables"></a>テーブルへの射影
-
-Azure Storage 内のテーブルへの射影は、Power BI などのツールを使ったレポート作成や分析に役立ちます。 Power BI は、テーブルからの読み取りを行い、プロジェクション時に生成されたキーに基づくリレーションシップを検出できます。 ダッシュボードを作成する場合、関連したデータがあれば、そのタスクが簡単になります。 
-
-ドキュメントから抽出したキー フレーズをワード クラウドとして視覚化するダッシュボードを作成してみましょう。 適切なデータ構造を作成するには、Shaper スキルをスキルセットに追加して、ドキュメントに固有の詳細やキー フレーズを含むカスタム シェイプを作成します。 このカスタム シェイプは `pbiShape` という名前で、`document` ルート ノードに存在します。
-
-> [!NOTE] 
-> テーブル プロジェクションは Azure Storage テーブルであり、Azure Storage によって課せられた容量の制限で制御されています。 詳細については、[Table Storage の制限](/rest/api/storageservices/understanding-the-table-service-data-model)に関するページを参照してください。 エンティティ サイズは 1 MB を超えることはできず、また、単一のプロパティは 64 KB を超えられないことを知っておくと便利です。 これらの制約によって、テーブルは、多数の小さなエンティティの格納に適したソリューションになっています。
-
-### <a name="using-a-shaper-skill-to-create-a-custom-shape"></a>Shaper スキルを使用してカスタム シェイプを作成する
-
-テーブル ストレージに射影できるカスタム シェイプを作成します。 カスタム シェイプがない場合、1 つのプロジェクションでは単一のノード (出力ごとに 1 つのプロジェクション) しか参照できません。 カスタム シェイプを作成することで、さまざまな要素を新しい論理的なまとまりに集約して、それを単一のテーブルとして射影したり、テーブルのコレクション全体にスライスおよび分散したりできます。 
-
-この例では、カスタム シェイプによって、メタデータと識別されたエンティティおよびキー フレーズが結合されています。 オブジェクトは `pbiShape` と呼ばれ、`/document` の下に作成されます。 
-
-> [!IMPORTANT] 
-> 整形の目的は、すべてのエンリッチメント ノードが適切な形式の JSON で表されるようにすることです。これは、ナレッジ ストアへの射影に必要です。 これは特に、エンリッチメント ツリーに含まれるノードが適切な形式の JSON ではないときに当てはまります (たとえば、エンリッチメントが、文字列などのプリミティブ型の親である場合)。
->
-> 最後の 2 つのノード (`KeyPhrases` および `Entities`) に注目してください。 これらは、`sourceContext` を使用して、有効な JSON オブジェクトにラップされています。 これが必要なのは、`keyphrases` と `entities` がプリミティブ型に対するエンリッチメントであり、射影できるようにするには、事前に有効な JSON に変換しておく必要があるためです。
->
-
-
-```json
-{
-    "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
-    "name": "ShaperForTables",
-    "description": null,
-    "context": "/document",
-    "inputs": [
-        {
-            "name": "metadata_storage_content_type",
-            "source": "/document/metadata_storage_content_type",
-            "sourceContext": null,
-            "inputs": []
-        },
-        {
-            "name": "metadata_storage_name",
-            "source": "/document/metadata_storage_name",
-            "sourceContext": null,
-            "inputs": []
-        },
-        {
-            "name": "metadata_storage_path",
-            "source": "/document/metadata_storage_path",
-            "sourceContext": null,
-            "inputs": []
-        },
-        {
-            "name": "metadata_content_type",
-            "source": "/document/metadata_content_type",
-            "sourceContext": null,
-            "inputs": []
-        },
-        {
-            "name": "keyPhrases",
-            "source": null,
-            "sourceContext": "/document/merged_content/keyphrases/*",
-            "inputs": [
-                {
-                    "name": "KeyPhrases",
-                    "source": "/document/merged_content/keyphrases/*"
-                }
-
-            ]
-        },
-        {
-            "name": "Entities",
-            "source": null,
-            "sourceContext": "/document/merged_content/entities/*",
-            "inputs": [
-                {
-                    "name": "Entities",
-                    "source": "/document/merged_content/entities/*/name"
-                }
-
-            ]
-        }
-    ],
-    "outputs": [
-        {
-            "name": "output",
-            "targetName": "pbiShape"
-        }
-    ]
-}
-```
-
-前出の Shaper スキルをスキルセットに追加します。 
-
-```json
-    "name": "azureblob-skillset",
-    "description": "A friendly description of the skillset goes here.",
-    "skills": [
-        {
-            Shaper skill goes here
-            }
-        ],
-    "cognitiveServices":  "A key goes here",
-    "knowledgeStore": []
-}  
-```
-
-テーブルに射影するために必要なすべてのデータを用意できたので、テーブル定義によって knowledgeStore オブジェクトを更新します。 この例では、`tableName`、`source`、`generatedKeyName` の各プロパティを設定することによって定義された 3 つのテーブルがあります。
+プロジェクションは、スキルセットの "knowledgeStore" プロパティで指定されることを思い出してください。
 
 ```json
 "knowledgeStore" : {
     "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<Acct Name>;AccountKey=<Acct Key>;",
     "projections": [
-        {
-            "tables": [
-                {
-                    "tableName": "pbiDocument",
-                    "generatedKeyName": "Documentid",
-                    "source": "/document/pbiShape"
-                },
-                {
-                    "tableName": "pbiKeyPhrases",
-                    "generatedKeyName": "KeyPhraseid",
-                    "source": "/document/pbiShape/keyPhrases/*"
-                },
-                {
-                    "tableName": "pbiEntities",
-                    "generatedKeyName": "Entityid",
-                    "source": "/document/pbiShape/Entities/*"
-                }
-            ],
-            "objects": [],
-            "files": []
-        }
+      {
+        "tables": [ ],
+        "objects": [ ],
+        "files": [ ]
+      }
     ]
-}
 ```
 
-次の手順に従って作業を進めることができます。
+始める前に背景情報をさらに確認したい場合は、[こちらのチェック リスト](knowledge-store-projection-overview.md#checklist-for-getting-started)でヒントやワークフローを確認してください。
 
-1. ```storageConnectionString``` プロパティに有効な V2 汎用ストレージ アカウント接続文字列を設定します。  
+> [!TIP]
+> プロジェクションを開発するときは、[エンリッチメント キャッシュを有効](search-howto-incremental-index.md)にして、プロジェクション定義の編集時に既存のエンリッチメントを再利用できるようにします。  これはプレビュー機能であるため、インデクサー要求では必ずプレビュー REST API (api-version=2020-06-30-preview 以降) を使用するようにしてください。 キャッシュがないと、プロジェクションを少し編集するだけで、エンリッチメントされたコンテンツの再処理がフルで行われてしまいます。 エンリッチメントをキャッシュすれば、スキルセットの処理にかかる料金を発生させることなく、プロジェクションを反復処理することができます。
 
-1. PUT 要求を発行してスキルセットを更新します。
+## <a name="requirements"></a>必要条件
 
-1. スキルセットの更新後、インデクサーを実行します。 
+すべてのプロジェクションには、ソースと宛先のプロパティがあります。 ソースは常に、スキルセットの実行中に作成されたエンリッチメント ツリーのコンテンツです。 宛先は、Azure Storage に作成されて読み込まれるオブジェクトの名前と種類です。
 
-これで、3 つのテーブルを含む有効なプロジェクションができました。 これらのテーブルを Power BI にインポートすると、Power BI ではリレーションシップが自動的に検出されます。
+バイナリ イメージのみを受け入れるファイル プロジェクションの場合を除き、ソースは次である必要があります。
 
-次の例に進む前に、データのスライスと関連付けのメカニズムを理解するために、テーブル プロジェクションの特徴を振り返ってみましょう。
++ 有効な JSON
++ エンリッチメント ツリー内のノードへのパス (たとえば、`"source": "/document/objectprojection"`)
 
-### <a name="slicing"></a>スライス 
+ノードは 1 つのフィールドに解決することもありますが、より一般的な表現は複雑なシェイプへの参照です。 複雑なシェイプは整形手法によって作成され、これは [Shaper スキル](cognitive-search-skill-shaper.md)または[インラインの整形定義](knowledge-store-projection-shape.md#inline-shape)のいずれかですが、通常は Shaper スキルを使用します。
 
-スライスは、統合されたシェイプ全体を細かな構成要素に分割する手法です。 その結果、互いに独立しながら関連するテーブルが作成されます。これらのテーブルは個別に編集することができます。
+ほとんどのスキルは単体では有効な JSON を出力しないため、Shaper スキルが好まれます。 多くの場合、Shaper スキルによって作成された同じデータ シェイプは、テーブルとオブジェクトの両方のプロジェクションで同じように使用できます。
 
-この例では、`pbiShape`が統合されたシェイプ (エンリッチメント ノード) です。 プロジェクションの定義では、`pbiShape` が追加のテーブルにスライスされます。これによって、シェイプの構成要素である ```keyPhrases``` と ```Entities``` を取り出すことができます。 これは Power BI に適した形と言えます。それぞれのドキュメントには複数のエンティティとキーフレーズが関連付けられており、分類されたデータとしてエンティティとキーフレーズを見ることができれば、得られる分析情報も多くなるからです。
+ソース入力要件によっては、[データを整形する](knowledge-store-projection-shape.md)方法を知っておくと、特にテーブルを扱っている場合、プロジェクション定義の実用的な要件になります。
 
-スライスの際には、親テーブル内の ```generatedKeyName``` を使用して子テーブル内に同じ名前の列を作成することで、親テーブルと子テーブルの間のリレーションシップが暗黙的に生成されます。 
+## <a name="define-a-table-projection"></a>テーブル プロジェクションの定義
 
-### <a name="naming-relationships"></a>リレーションシップの名前付け
+テーブル プロジェクションは、データ探索が必要なシナリオ (データ フレームを使用する Power BI またはワークロードを使用した分析など) で推奨されます。 プロジェクション配列の tables セクションは、プロジェクションするテーブルのリストです。
 
-テーブル間で、またはプロジェクションの種類間であっても、データを関連付けるためには ```generatedKeyName``` および ```referenceKeyName``` プロパティが使用されます。 子テーブル/プロジェクション内の各行には、親を参照し返すプロパティが含まれています。 子での列またはプロパティの名前は、親からの ```referenceKeyName``` です。 ```referenceKeyName``` が指定されていない場合、サービスでは、親からの ```generatedKeyName``` を既定値とします。 
+テーブル プロジェクションを定義するには、プロジェクション プロパティ内で `tables` 配列を使用します。 テーブル プロジェクションには、次の 3 つの必須プロパティがあります。
 
-Power BI では、これらの生成されたキーを利用して、テーブル内のリレーションシップを検出します。 子テーブル内の列に別の名前を付ける必要がある場合は、親テーブル上に ```referenceKeyName``` プロパティを設定します。 例として、pbiDocument テーブル上で ```generatedKeyName``` を ID として設定し、```referenceKeyName``` を DocumentID として設定します。 これにより、pbiEntities テーブルと pbiKeyPhrases テーブルに、ドキュメント ID を含む DocumentID という名前の列が生成されます。
+| プロパティ | 説明 |
+|----------|-------------|
+| tableName | Azure Table Storage で作成された新しいテーブルの名前を決定します。  |
+| generatedKeyName | 各行を一意に識別するキーの列名。 この値はシステムによって生成されます。 このプロパティを省略すると、名前付け規則としてテーブル名と "キー" を使用する列が自動的に作成されます。 |
+| ソース | エンリッチメント ツリー内のノードへのパス。 このノードは、テーブルにどの列を作成するかを決定する複雑なシェイプへの参照である必要があります。|
 
-## <a name="projecting-to-objects"></a>オブジェクトへの射影
+テーブル プロジェクションにおいて、"source" は、テーブルの形状を定義する [Shaper スキル](cognitive-search-skill-shaper.md)の出力です。 テーブルには行と列があります。整形とは、行と列を指定するメカニズムのことです。 [Shaper スキルまたはインライン シェイプ](knowledge-store-projection-shape.md)を使用できます。 Shaper スキルは有効な JSON を生成しますが、有効な JSON であれば、ソースは任意のスキルからの出力とすることができます。
 
-オブジェクト プロジェクションにはテーブル プロジェクションと同じ制限事項はなく、大きなドキュメントを射影する場合により適しています。 この例では、ドキュメント全体がオブジェクト プロジェクションとして送信されます。 オブジェクト プロジェクションは、1 つのコンテナー内では単一のプロジェクションに限定され、スライスすることはできません。
+> [!NOTE]
+> テーブル プロジェクションは、Azure Storage によって課せられた[ストレージ制限](/rest/api/storageservices/understanding-the-table-service-data-model)で制御されています。 エンティティ サイズは 1 MB を超えることはできず、また、単一のプロパティは 64 KB を超えられません。 これらの制約によって、テーブルは、多数の小さなエンティティの格納に適したソリューションになっています。
 
-オブジェクト プロジェクションを定義するには、プロジェクション内で ```objects``` 配列を使用します。 Shaper スキルを使用して新しいシェイプを生成するか、またはオブジェクト プロジェクションのインライン整形を使用することができます。 テーブルの例ではシェイプの作成とスライスの手法を示しましたが、この例ではインライン整形の使用を例示します。 
+### <a name="single-table-example"></a>1 つのテーブルの例
 
-インライン整形とは、プロジェクションへの入力の定義内で新しいシェイプを作成する機能です。 インライン整形では、Shaper スキルによって生成されるもの (この場合は `pbiShape`) と同じ匿名のオブジェクトが作成されます。 再利用する予定がないシェイプを定義する場合は、インライン整形が便利です。
-
-projections プロパティは配列です。 この例では、新しいプロジェクション インスタンスを配列に追加しています。そこでは、インライン プロジェクションが knowledgeStore の定義に含まれています。 インライン プロジェクションを使用するときは、Shaper スキルを省略することができます。
+テーブルのスキーマは、プロジェクション (テーブル名とキー)、およびテーブル (列) のシェイプを指定するソースによってその一部が指定されます。 この例では、定義の詳細に注目できるように、1 つのテーブルだけを示しています。
 
 ```json
-"knowledgeStore" : {
-        "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<Acct Name>;AccountKey=<Acct Key>;",
-        "projections": [
-             {
-                "tables": [ ],
-                "objects": [
-                    {
-                        "storageContainer": "sampleobject",
-                        "source": null,
-                        "generatedKeyName": "myobject",
-                        "sourceContext": "/document",
-                        "inputs": [
-                            {
-                                "name": "metadata_storage_name",
-                                "source": "/document/metadata_storage_name"
-                            },
-                            {
-                                "name": "metadata_storage_path",
-                                "source": "/document/metadata_storage_path"
-                            },
-                            {
-                                "name": "content",
-                                "source": "/document/content"
-                            },
-                            {
-                                "name": "keyPhrases",
-                                "source": "/document/merged_content/keyphrases/*"
-                            },
-                            {
-                                "name": "entities",
-                                "source": "/document/merged_content/entities/*/name"
-                            },
-                            {
-                                "name": "ocrText",
-                                "source": "/document/normalized_images/*/text"
-                            },
-                            {
-                                "name": "ocrLayoutText",
-                                "source": "/document/normalized_images/*/layoutText"
-                            }
-                        ]
-
-                    }
-                ],
-                "files": []
-            }
-        ]
-    }
+"projections" : [
+  {
+    "tables": [
+      { "tableName": "Hotels", "generatedKeyName": "HotelId", "source": "/document/tableprojection" }
+    ]
+  }
+]
 ```
 
-## <a name="projecting-to-file"></a>ファイルへの射影
-
-ファイル プロジェクションは、ソース ドキュメントから抽出された画像か、エンリッチメント プロセスから射影できるエンリッチメントの出力となる画像です。 オブジェクト プロジェクションと同様に、ファイル プロジェクションは Azure Storage の BLOB として実装され、画像を格納します。 
-
-ファイル プロジェクションを生成するには、プロジェクション オブジェクト内で `files` 配列を使用します。 この例では、ドキュメントから抽出されたすべての画像を `samplefile` というコンテナーに射影します。
-
-```json
-"knowledgeStore" : {
-        "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<Acct Name>;AccountKey=<Acct Key>;",
-        "projections": [
-            {
-                "tables": [ ],
-                "objects": [ ],
-                "files": [
-                    {
-                        "storageContainer": "samplefile",
-                        "source": "/document/normalized_images/*"
-                    }
-                ]
-            }
-        ]
-    }
-```
-
-## <a name="projecting-to-multiple-types"></a>複数の種類への射影
-
-シナリオが複雑になると、プロジェクションの種類間でコンテンツを射影する必要が生じる場合があります。 たとえば、キー フレーズやエンティティなどのデータをテーブルに射影する必要がある場合は、テキストとレイアウト テキストの OCR 結果をオブジェクトとして保存して、画像をファイルとして射影します。 
-
-この例では、次のように変更してスキルセットを更新します。
-
-1. ドキュメントごとに、1 行を含む 1 つのテーブルが作成されます。
-1. ドキュメント テーブルに関連付けられた 1 つのテーブルが作成され、各キー フレーズがこのテーブル内の 1 行として識別されます。
-1. ドキュメント テーブルに関連付けられた 1 つのテーブルが作成され、各エンティティがこのテーブル内の 1 行として識別されます。
-1. 画像ごとにレイアウト テキストを含むオブジェクト プロジェクションが作成されます。
-1. ファイル プロジェクションが作成され、抽出された各画像が射影されます。
-1. ドキュメント テーブル、レイアウト テキストを含むオブジェクト プロジェクション、およびファイル プロジェクションへの参照を含む相互参照テーブルが作成されます。
-
-これらの変更は、knowledgeStore の定義にも反映されます。 
-
-### <a name="shape-data-for-cross-projection"></a>クロスプロジェクション用のデータの整形
-
-これらのプロジェクションに必要なシェイプを取得するには、まず、`crossProjection` という整形されたオブジェクトを作成する新しい Shaper スキルを追加します。 
+列は、"source" から派生しています。 HotelId、HotelName、Category、Description を含む以下のデータ シェイプは、これらの列がテーブルに作成されます。
 
 ```json
 {
     "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
-    "name": "ShaperForCross",
+    "name": "#3",
     "description": null,
     "context": "/document",
     "inputs": [
-        {
-            "name": "metadata_storage_name",
-            "source": "/document/metadata_storage_name",
-            "sourceContext": null,
-            "inputs": []
-        },
-        {
-            "name": "keyPhrases",
-            "source": null,
-            "sourceContext": "/document/merged_content/keyphrases/*",
-            "inputs": [
-                {
-                    "name": "KeyPhrases",
-                    "source": "/document/merged_content/keyphrases/*"
-                }
-
-            ]
-        },
-        {
-            "name": "entities",
-            "source": null,
-            "sourceContext": "/document/merged_content/entities/*",
-            "inputs": [
-                {
-                    "name": "Entities",
-                    "source": "/document/merged_content/entities/*/name"
-                }
-
-            ]
-        },
-        {
-            "name": "images",
-            "source": null,
-            "sourceContext": "/document/normalized_images/*",
-            "inputs": [
-                {
-                    "name": "image",
-                    "source": "/document/normalized_images/*"
-                },
-                {
-                    "name": "layoutText",
-                    "source": "/document/normalized_images/*/layoutText"
-                },
-                {
-                    "name": "ocrText",
-                    "source": "/document/normalized_images/*/text"
-                }
-                ]
-        }
- 
+    {
+        "name": "HotelId",
+        "source": "/document/HotelId"
+    },
+    {
+        "name": "HotelName",
+        "source": "/document/HotelName"
+    },
+    {
+        "name": "Category",
+        "source": "/document/Category"
+    },
+    {
+        "name": "Description",
+        "source": "/document/Description"
+    },
     ],
     "outputs": [
-        {
-            "name": "output",
-            "targetName": "crossProjection"
-        }
+    {
+        "name": "output",
+        "targetName": "tableprojection"
+    }
     ]
 }
 ```
 
-### <a name="define-table-object-and-file-projections"></a>テーブル、オブジェクト、およびファイル プロジェクションの定義
+### <a name="multiple-table-slicing-example"></a>複数のテーブル (スライス) の例
 
-統合された crossProjection オブジェクトから、オブジェクトを複数のテーブルにスライスし、OCR 出力を BLOB としてキャプチャした後、その画像を (Blob Storage 内にも) ファイルとして保存することができます。
+テーブル プロジェクションの一般的なパターンでは、複数の関連テーブルを使用します。ここでは、システムによって生成された partitionKey および rowKey の列が作成され、同じプロジェクション グループの下にあるすべてのテーブルのテーブル間リレーションシップをサポートします。 
+
+複数のテーブルを作成することは、関連データの集計方法を制御する場合に便利です。 エンリッチメントされたコンテンツに無関係または独立したコンポーネントがある場合 (たとえば、ドキュメントから抽出されたキーワードが、同じドキュメントで認識されたエンティティとは無関係であるなど)、これらのフィールドを隣接するテーブルに分割することができます。
+
+複数のテーブルに射影する場合、子ノードが同じグループ内の別のテーブルのソースでない限り、完全な形状が各テーブルに射影されます。 既存のプロジェクションの子であるソース パスを含むプロジェクションを追加すると、子ノードが親ノードからスライスされ、関連する新しいテーブルに射影されます。 この手法により、すべてのプロジェクションのソースとして使用できる 1 つのノードを Shaper スキルで定義できます。
+
+複数のテーブルのパターンは、次の要素で構成されます。
+
++ 親またはメイン テーブルとして 1 つのテーブル
++ エンリッチされたコンテンツのスライスを含む追加のテーブル
+
+たとえば、ある Shaper スキルが、ホテルの情報を含む "EnrichedShape" と、キー フレーズ、場所、組織などのエンリッチされたコンテンツを出力するとします。 メイン テーブルには、ホテル (ID、名前、説明、住所、カテゴリ) を説明するフィールドが含まれます。 キー フレーズには、キー フレーズの列があります。 エンティティには、エンティティ列があります。
 
 ```json
-"knowledgeStore" : {
-        "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<Acct Name>;AccountKey=<Acct Key>;",
-        "projections": [
-             {
-                "tables": [
-                    {
-                        "tableName": "crossDocument",
-                        "generatedKeyName": "Id",
-                        "source": "/document/crossProjection"
-                    },
-                    {
-                        "tableName": "crossEntities",
-                        "generatedKeyName": "EntityId",
-                        "source": "/document/crossProjection/entities/*"
-                    },
-                    {
-                        "tableName": "crossKeyPhrases",
-                        "generatedKeyName": "KeyPhraseId",
-                        "source": "/document/crossProjection/keyPhrases/*"
-                    },
-                    {
-                        "tableName": "crossReference",
-                        "generatedKeyName": "CrossId",
-                        "source": "/document/crossProjection/images/*"
-                    }
-                     
-                ],
-                "objects": [
-                    {
-                        "storageContainer": "crossobject",
-                        "generatedKeyName": "crosslayout",
-                        "source": null,
-                        "sourceContext": "/document/crossProjection/images/*/layoutText",
-                        "inputs": [
-                            {
-                                "name": "OcrLayoutText",
-                                "source": "/document/crossProjection/images/*/layoutText"
-                            }
-                        ]
-                    }
-                ],
-                "files": [
-                    {
-                        "storageContainer": "crossimages",
-                        "generatedKeyName": "crossimages",
-                        "source": "/document/crossProjection/images/*/image"
-                    }
-                ]
-            }
-        ]
+"projections" : [
+  {
+    "tables": [
+    { "tableName": "MainTable", "generatedKeyName": "HotelId", "source": "/document/EnrichedShape" },
+    { "tableName": "KeyPhrases", "generatedKeyName": "KeyPhraseId", "source": "/document/EnrichedShape/*/KeyPhrases/*" },
+    { "tableName": "Entities", "generatedKeyName": "EntityId", "source": "/document/EnrichedShape/*/Entities/*" }
+    ]
+  }
+]
+```
+
+### <a name="naming-relationships"></a>リレーションシップの名前付け
+
+テーブル間で、またはプロジェクションの種類間であっても、データを関連付けるためには `generatedKeyName` および `referenceKeyName` プロパティが使用されます。 子テーブル内の各行には、親を参照し返すプロパティが含まれています。 子での列またはプロパティの名前は、親からの `referenceKeyName` です。 `referenceKeyName` が指定されていない場合、サービスでは、親からの `generatedKeyName` を既定値とします。 
+
+Power BI では、これらの生成されたキーを利用して、テーブル内のリレーションシップを検出します。 子テーブル内の列に別の名前を付ける必要がある場合は、親テーブル上に `referenceKeyName` プロパティを設定します。 例として、tblDocument テーブル上で `generatedKeyName` を ID として設定し、`referenceKeyName` を DocumentID として設定します。 これにより、tblEntities および tblKeyPhrases テーブルに、ドキュメント ID を含む DocumentID という名前の列が生成されます。
+
+## <a name="define-an-object-projection"></a>オブジェクト プロジェクションを定義する
+
+オブジェクト プロジェクションは、任意のノードをソースにすることができる強化ツリーの JSON 表現です。 テーブル プロジェクションと比較すると、オブジェクト プロジェクションはより簡単に定義でき、ドキュメント全体のプロジェクションを行うときに使用されます。 オブジェクト プロジェクションは、1 つのコンテナー内では単一のプロジェクションに限定され、スライスすることはできません。
+
+オブジェクト プロジェクションを定義するには、プロジェクション プロパティ内で `objects` 配列を使用します。 オブジェクト プロジェクションには、次の 3 つの必須プロパティがあります。
+
+| プロパティ | 説明 |
+|----------|-------------|
+| storageContainer | Azure Storage で作成された新しいコンテナーの名前を決定します。  |
+| generatedKeyName | 各行を一意に識別するキーの列名。 この値はシステムによって生成されます。 このプロパティを省略すると、名前付け規則としてテーブル名と "キー" を使用する列が自動的に作成されます。 |
+| ソース | プロジェクションのルートとなるエンリッチメント ツリーのノードへのパス。 このノードは通常、BLOB の構造を決定する複雑なデータ シェイプへの参照です。|
+
+次の例では、個々のホテル ドキュメントを、`hotels` というコンテナーに射影しています (BLOB ごとに 1 つのホテル ドキュメント)。
+
+```json
+"knowledgeStore": {
+  "storageConnectionString": "an Azure storage connection string",
+  "projections" : [
+    {
+      "tables": [ ]
+    },
+    {
+      "objects": [
+        {
+        "storageContainer": "hotels",
+        "source": "/document/objectprojection",
+        }
+      ]
+    },
+    {
+        "files": [ ]
+    }
+  ]
+}
+```
+
+ソースは、"objectprojection" という名前の Shaper スキルの出力です。 各 BLOB は、各フィールドの入力を JSON で表現したものになります。
+
+```json
+    {
+      "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
+      "name": "#3",
+      "description": null,
+      "context": "/document",
+      "inputs": [
+        {
+          "name": "HotelId",
+          "source": "/document/HotelId"
+        },
+        {
+          "name": "HotelName",
+          "source": "/document/HotelName"
+        },
+        {
+          "name": "Category",
+          "source": "/document/Category"
+        },
+        {
+          "name": "keyPhrases",
+          "source": "/document/HotelId/keyphrases/*"
+        },
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "targetName": "objectprojection"
+        }
+      ]
     }
 ```
 
-オブジェクト プロジェクションでは、プロジェクションごとにコンテナー名が必要になります。オブジェクト プロジェクションまたはファイル プロジェクションでは、コンテナーを共有することはできません。 
+## <a name="define-a-file-projection"></a>ファイル プロジェクションを定義する
 
-### <a name="relationships-among-table-object-and-file-projections"></a>テーブル、オブジェクト、およびファイル プロジェクションの間のリレーションシップ
+ファイル プロジェクションは、常にバイナリで正規化されたイメージです。正規化とは、スキルセットの実行に使用するための潜在的なサイズ変更やローテーションを指します。 オブジェクト プロジェクションと同様に、ファイル プロジェクションは Azure Storage で BLOB として作成され、(JSON ではなく) バイナリ データが含まれます。
 
-この例では、プロジェクションの別の機能についても取り上げます。 同じプロジェクション オブジェクト内に複数の種類のプロジェクションを定義することにより、さまざまな種類 (テーブル、オブジェクト、ファイル) の間のリレーションシップが表現されます。 これにより、ドキュメントのテーブル行から開始して、オブジェクト プロジェクションのそのドキュメント内の画像のすべての OCR テキストを検索できます。 
+ファイル プロジェクションを定義するには、プロジェクション プロパティ内で `files` 配列を使用します。 ファイル プロジェクションには、次の 3 つの必須プロパティがあります。
 
-データを関連付けたくない場合は、別のプロジェクション オブジェクト内でプロジェクションを定義します。 たとえば、次のスニペットでは、テーブルどうしは関連付けられますが、テーブルとオブジェクト (OCR テキスト) プロジェクションの間にリレーションシップはありません。 
+| プロパティ | 説明 |
+|----------|-------------|
+| storageContainer | Azure Storage で作成された新しいコンテナーの名前を決定します。  |
+| generatedKeyName | 各行を一意に識別するキーの列名。 この値はシステムによって生成されます。 このプロパティを省略すると、名前付け規則としてテーブル名と "キー" を使用する列が自動的に作成されます。 |
+| ソース | プロジェクションのルートとなるエンリッチメント ツリーのノードへのパス。 イメージ ファイルの場合、ソースは常に `/document/normalized_images/*` です。  ファイル プロジェクションは、`normalized_images` コレクションに対してのみ機能します。 インデクサーもスキルセットも、元の正規化されていないイメージを通過しません。|
 
-異なるニーズに対応するために、異なるシェイプ内に同じデータを射影したい場合は、プロジェクション グループが便利です。 たとえば、1 つは Power BI ダッシュボードのためのプロジェクション グループ、もう 1 つはカスタム スキルにラップされた機械学習モデルのトレーニング用データをキャプチャするためのプロジェクション グループとします。
+宛先は常に BLOB コンテナーで、ドキュメント ID の base64 でエンコードされた値のフォルダー プレフィックスが付きます。 複数のイメージがある場合は、同じフォルダーにまとめて配置されます。 ファイル プロジェクションとオブジェクト プロジェクションのコンテナーを同じにすることはできないため、両者は別々のコンテナーに射影する必要があります。 
 
-異なる種類のプロジェクションを構築する場合、ファイル プロジェクションとオブジェクト プロジェクションが最初に生成されてから、テーブルに対してパスが追加されます。
+次の例では、エンリッチされたドキュメントのドキュメント ノードから抽出したすべての正規化されたイメージを、`myImages` というコンテナーにプロジェクションしています。
 
 ```json
-"knowledgeStore" : {
-        "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<Acct Name>;AccountKey=<Acct Key>;",
-        "projections": [
+"projections": [
+    {
+        "tables": [ ],
+        "objects": [ ],
+        "files": [
             {
-                "tables": [
-                    {
-                        "tableName": "unrelatedDocument",
-                        "generatedKeyName": "Documentid",
-                        "source": "/document/pbiShape"
-                    },
-                    {
-                        "tableName": "unrelatedKeyPhrases",
-                        "generatedKeyName": "KeyPhraseid",
-                        "source": "/document/pbiShape/keyPhrases"
-                    }
-                ],
-                "objects": [
-                    
-                ],
-                "files": []
-            }, 
-            {
-                "tables": [],
-                "objects": [
-                    {
-                        "storageContainer": "unrelatedocrtext",
-                        "source": null,
-                        "sourceContext": "/document/normalized_images/*/text",
-                        "inputs": [
-                            {
-                                "name": "ocrText",
-                                "source": "/document/normalized_images/*/text"
-                            }
-                        ]
-                    },
-                    {
-                        "storageContainer": "unrelatedocrlayout",
-                        "source": null,
-                        "sourceContext": "/document/normalized_images/*/layoutText",
-                        "inputs": [
-                            {
-                                "name": "ocrLayoutText",
-                                "source": "/document/normalized_images/*/layoutText"
-                            }
-                        ]
-                    }
-                ],
-                "files": []
+                "storageContainer": "myImages",
+                "source": "/document/normalized_images/*"
             }
         ]
     }
+]
 ```
+
+## <a name="test-projections"></a>プロジェクションのテスト
+
+次の手順に従って、プロジェクションの処理を行うことができます。
+
+1. ナレッジ ストアの `storageConnectionString` プロパティに有効な V2 汎用ストレージ アカウント接続文字列を設定します。  
+
+1. プロジェクション定義をスキルセットのボディに入れた PUT 要求を発行して、[スキルセットを更新](/rest/api/searchservice/update-skillset)します。
+
+1. [インデクサーを実行](/rest/api/searchservice/run-indexer)してスキルセットを実行します。 
+
+1. [インデクサーの実行を監視](search-howto-monitor-indexers.md)して進行状況を確認し、エラーを検出します。
+
+1. [ストレージ ブラウザーを使用](knowledge-store-view-storage-explorer.md)して、Azure Storage でオブジェクトが作成されたことを確認します。
+
+1. テーブルを投影する場合は、テーブルの操作と可視化を行うために [Power BI にインポート](knowledge-store-connect-power-bi.md)します。 ほとんどの場合、Power BI によってテーブル間のリレーションシップが自動的に検出されます。
 
 ## <a name="common-issues"></a>一般的な問題
 
-プロジェクションを定義するときには、予期しない結果が生じる可能性がある一般的な問題がいくつかあります。 ナレッジ ストアの出力が想定と異なる場合は、これらの問題をチェックしてください。
+以下の手順のいずれかを省略すると、予期しない結果になることがあります。 出力が正しくない場合は、以下の条件を確認してください。
 
-+ 文字列のエンリッチメントが有効な JSON に整形されていない。 たとえば、キー フレーズによって `merged_content` がエンリッチされるなど、文字列がエンリッチされた場合、エンリッチされたプロパティはエンリッチメント ツリー内で `merged_content` の子として表されます。 既定の表現は、適切な形式の JSON ではありません。 そのため射影時には必ず、名前と値を含む有効な JSON オブジェクトにエンリッチメントを変換してください。
++ 文字列のエンリッチメントが有効な JSON に整形されていない。 たとえば、キー フレーズによって `merged_content` がエンリッチされるなど、文字列がエンリッチされた場合、エンリッチされたプロパティはエンリッチメント ツリー内で `merged_content` の子として表されます。 既定の表現は、適切な形式の JSON ではありません。 射影時には必ず、エンリッチメントを名前と値を含む有効な JSON オブジェクトに変換してください。 Shaper スキルを使用するか、インライン シェイプを定義すると、この問題を解決できます。
 
-+ ソース パスの末尾にある ```/*``` が省略される。 プロジェクションのソースが `/document/pbiShape/keyPhrases` の場合、キー フレーズの配列は単一のオブジェクトまたは行として射影されます。 ソース パスを `/document/pbiShape/keyPhrases/*` に設定した場合は、キー フレーズごとに単一の行またはオブジェクトが生成されます。
++ ソース パスの末尾にある `/*` を省略する。 プロジェクションのソースが `/document/projectionShape/keyPhrases` の場合、キー フレーズの配列は単一のオブジェクトまたは行として射影されます。 ソース パスを `/document/projectionShape/keyPhrases/*` に設定した場合は、キー フレーズごとに単一の行またはオブジェクトが生成されます。
 
-+ パス構文エラー。 パス セレクターでは大文字と小文字が区別されるため、セレクターに対して大文字と小文字を正しく使用していないと、入力が見つからないという警告が表示される場合があります。
++ パス構文エラー。 [パス セレクター](cognitive-search-concept-annotations-syntax.md)では大文字と小文字が区別されるため、セレクターに対して大文字と小文字を正しく使用していないと、入力が見つからないという警告が表示される場合があります。 
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事の例では、プロジェクションの作成方法に関する一般的なパターンを紹介しました。 その概念を十分に理解したら、特定のシナリオを視野に入れて、いつでもプロジェクションを作成することができます。
-
-新しい機能を調べる際には、次の手順としてインクリメンタル エンリッチメントを検討します。 インクリメンタル エンリッチメントはキャッシュに基づいており、スキルセットに対する変更の影響を受けないエンリッチメントを再利用することができます。 OCR や画像分析を含んだパイプラインでは、特に有益な手段となります。
+次の手順では、豊富なスキルセットからの出力の整形とプロジェクションについて説明します。 スキルセットが複雑な場合は、次の記事でシェイプとプロジェクションの両方の例を示します。
 
 > [!div class="nextstepaction"]
-> [インクリメンタル エンリッチメントとキャッシュの概要](cognitive-search-incremental-indexing-conceptual.md)
-
-プロジェクションの概要については、グループやスライシングなどの機能と、[スキルセットでそれらを定義する方法](knowledge-store-projection-overview.md)の詳細を参照してください
-
-> [!div class="nextstepaction"]
-> [ナレッジ ストアでのプロジェクション](knowledge-store-projection-overview.md)
+> [シェイプとプロジェクションの詳細な例](knowledge-store-projection-example-long.md)

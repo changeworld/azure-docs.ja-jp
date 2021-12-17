@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: e1b50675bef0f883ff617b3098a742d3491b3c13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fac7f204b682f474dfc9d29ba09ee28bf79f9de
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89484302"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663930"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Azure App Service へのアクティブな DNS 名の移行
 
@@ -40,7 +40,7 @@ DNS 解決のダウンタイムの心配がない場合は、[Azure App Service 
 
 ### <a name="get-domain-verification-id"></a>ドメイン検証 ID を取得する
 
-「[ドメイン検証 ID を取得する](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)」の手順に従って、アプリのドメイン検証 ID を取得します。
+「[ドメイン検証 ID を取得する](app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id)」の手順に従って、アプリのドメイン検証 ID を取得します。
 
 ### <a name="create-domain-verification-record"></a>ドメイン確認レコードを作成する
 
@@ -48,9 +48,9 @@ DNS 解決のダウンタイムの心配がない場合は、[Azure App Service 
 
 | DNS レコードの例 | TXT ホスト | TXT 値 |
 | - | - | - |
-| \@ (ルート) | _asuid_ | [アプリのドメイン検証 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
-| www (サブ) | _asuid.www_ | [アプリのドメイン検証 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
-| \* (ワイルドカード) | _asuid_ | [アプリのドメイン検証 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| \@ (ルート) | _asuid_ | [アプリのドメイン検証 ID](app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id) |
+| www (サブ) | _asuid.www_ | [アプリのドメイン検証 ID](app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id) |
+| \* (ワイルドカード) | _asuid_ | [アプリのドメイン検証 ID](app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id) |
 
 DNS レコードのページで、移行する DNS 名のレコード タイプを書き留めておきます。 App Service では、CNAME レコードおよび A レコードからのマッピングをサポートしています。
 

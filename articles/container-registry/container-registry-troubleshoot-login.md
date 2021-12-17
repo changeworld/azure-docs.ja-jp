@@ -3,12 +3,12 @@ title: レジストリ ログインのトラブルシューティング
 description: Azure Container Registry にログインするときの一般的な問題の現象、原因、対処法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 47186cc8256836e5367ecee520787b67662eb42f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 48b3069911b16fce23017d562d0b99fbd8f0268c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780733"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733014"
 ---
 # <a name="troubleshoot-registry-login"></a>レジストリ ログインのトラブルシューティング
 
@@ -54,7 +54,7 @@ Azure Kubernetes Service でレジストリを使用しているときに問題�
 関連リンク:
 
 * [認証の概要](container-registry-authentication.md#authentication-options)
-* [Container Registry に関する FAQ](container-registry-faq.md)
+* [Container Registry に関する FAQ](container-registry-faq.yml)
 
 ### <a name="specify-correct-registry-name"></a>正しいレジストリ名を指定する
 
@@ -72,7 +72,7 @@ az acr login --name myregistry
 
 関連リンク:
 
-* [az acr ログインは成功するが、Docker が "権限がありません: 認証が必要です" というエラーで失敗する](container-registry-faq.md#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
+* [az acr ログインは成功するが、Docker が "権限がありません: 認証が必要です" というエラーで失敗する](container-registry-faq.yml#az-acr-login-succeeds-but-docker-fails-with-error--unauthorized--authentication-required)
 
 ### <a name="confirm-credentials-to-access-registry"></a>レジストリにアクセスするための資格情報を確認する
 
@@ -83,7 +83,7 @@ az acr login --name myregistry
   * パスワード - サービス プリンシパルのパスワード (*クライアント シークレット* とも呼ばれます)
 * Azure Kubernetes Service や Azure DevOps などの Azure サービスを使用してレジストリにアクセスする場合は、サービスのレジストリ構成を確認します。 
 * `--expose-token` オプションを指定して `az acr login` を実行し、Docker デーモンを使用せずにレジストリをログインできるようにする場合は、確実にユーザー名 `00000000-0000-0000-0000-000000000000` で認証します。
-* レジストリが[匿名プル アクセス](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)用に構成されている場合、以前の Docker ログインから格納されている既存の Docker 資格情報により匿名アクセスを防ぐことができます。 レジストリに対して匿名のプル操作を実行する前に、 `docker logout` を実行してください。
+* レジストリが[匿名プル アクセス](container-registry-faq.yml#how-do-i-enable-anonymous-pull-access-)用に構成されている場合、以前の Docker ログインから格納されている既存の Docker 資格情報により匿名アクセスを防ぐことができます。 レジストリに対して匿名のプル操作を実行する前に、 `docker logout` を実行してください。
 
 関連リンク:
 
@@ -131,12 +131,12 @@ Azure CLI を使用してポータルまたはレジストリ管理でレジス�
 
 ## <a name="advanced-troubleshooting"></a>高度なトラブルシューティング
 
-レジストリで[リソース ログの収集](container-registry-diagnostics-audit-logs.md)が有効になっている場合は、ContainterRegistryLoginEvents ログを確認します。 このログには、受信 ID や IP アドレスを含む、認証イベントと状態が格納されています。 ログで[レジストリ認証エラー](container-registry-diagnostics-audit-logs.md#registry-authentication-failures)のクエリを実行します。 
+レジストリで[リソース ログの収集](monitor-service.md)が有効になっている場合は、ContainerRegistryLoginEvents ログを確認します。 このログには、受信 ID や IP アドレスを含む、認証イベントと状態が格納されています。 ログで[レジストリ認証エラー](monitor-service.md#registry-authentication-failures)のクエリを実行します。 
 
 関連リンク:
 
-* [診断の評価と監査のためのログ](container-registry-diagnostics-audit-logs.md)
-* [Container Registry に関する FAQ](container-registry-faq.md)
+* [診断の評価と監査のためのログ](./monitor-service.md)
+* [Container Registry に関する FAQ](container-registry-faq.yml)
 * [Azure Container Registry のベスト プラクティス](container-registry-best-practices.md)
 
 ## <a name="next-steps"></a>次のステップ

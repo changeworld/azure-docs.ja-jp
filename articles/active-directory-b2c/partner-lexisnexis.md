@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 362704368958d2600d16cd907421917b824a59cb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 18dd0fef7cc4a2d344abaf392bcc2ca3331bd828
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256601"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021906"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して LexisNexis を構成するためのチュートリアル
 
@@ -84,10 +84,10 @@ ThreatMetrix 統合には、次のコンポーネントが含まれています�
 
 | アプリケーションの設定 | source | Notes |
 | :-------- | :------------| :-----------|
-|ThreatMetrix:url | ThreatMetrix アカウントの構成 |     |
+|ThreatMetrix:Url | ThreatMetrix アカウントの構成 |     |
 |ThreatMetrix:OrgId | ThreatMetrix アカウントの構成 |     |
 |ThreatMetrix:ApiKey |ThreatMetrix アカウントの構成|  |
-|ThreatMetrix:ポリシー | ThreatMetrix で作成されたポリシーの名前 | |
+|ThreatMetrix:Policy | ThreatMetrix で作成されたポリシーの名前 | |
 | BasicAuth:ApiUsername |API のユーザー名を定義します| ユーザー名は、Azure AD B2C 構成で使用されます
 | BasicAuth:ApiPassword | API のパスワードを定義します | パスワードは、Azure AD B2C 構成で使用されます
 

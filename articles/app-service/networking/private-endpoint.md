@@ -4,22 +4,22 @@ description: Azure プライベート エンドポイントを使用して非公
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 03/16/2021
+ms.date: 07/01/2021
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4de405e07a9ae9d1efb33f2cee3630a1eefdef33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bd454d7f49b0dce46ba827c8cc5c133c56ad0d3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104655905"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227247"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Azure Web アプリでプライベート エンドポイントを使用する
 
 > [!IMPORTANT]
-> プライベート エンドポイントは、次の App Service プランでホストされている Windows および Linux の Web アプリ (コンテナー化されているかどうかにかかわらず) で使用できます:**Isolated**、**PremiumV2**、**PremiumV3**、**Functions Premium** (Elastic Premium プランとも呼ばれます)。 
+> プライベート エンドポイントは、App Service プランである **PremiumV2**、**PremiumV3**、**Functions Premium** (別名: Elastic Premium プラン) でホストされている Windows および Linux の Web アプリ (コンテナー化されているかどうかにかかわらず) で使用できます。 
 
 Azure Web アプリにプライベート エンドポイントを使用すると、プライベート ネットワーク内のクライアントが Private Link 経由で安全にアプリにアクセスできるようになります。 プライベート エンドポイントは、Azure VNet アドレス空間からの IP アドレスを使用します。 プライベート ネットワーク上のクライアントと Web アプリ間のネットワーク トラフィックは、VNet および Microsoft バックボーン ネットワーク上の Private Link を経由することで、パブリック インターネットにさらされないようにします。
 
@@ -38,6 +38,8 @@ Web アプリにプライベート エンドポイントを使用することで
 プライベート エンドポイントは、仮想ネットワーク (VNet) 内のサブネットにある Azure Web アプリ用の特別なネットワーク インターフェイス (NIC) です。
 Web アプリのプライベート エンドポイントを作成すると、プライベート ネットワーク上のクライアントと Web アプリ間の安全な接続が提供されます。 プライベート エンドポイントには、VNet の IP アドレス範囲から IP アドレスが割り当てられます。
 プライベート エンドポイントと Web アプリ間の接続には、セキュリティで保護された [Private Link][privatelink] が使用されます。 プライベート エンドポイントは、Web アプリへの受信フローにのみ使用されます。 送信フローではこのプライベート エンドポイントは使用されませんが、[VNet 統合機能][vnetintegrationfeature]を使用して、別のサブネット内のネットワークに送信フローを挿入できます。
+
+アプリの各スロットは別々に構成されます。 スロットあたり最大 100 個のプライベート エンドポイントを接続できます。 スロット間でプライベート エンドポイントを共有することはできません。
 
 プライベート エンドポイントを接続するサブネットには他のリソースを含めることができます。専用の空のサブネットは必要ありません。
 また、プライベート エンドポイントを Web アプリとは別のリージョンにデプロイすることもできます。 
@@ -60,6 +62,7 @@ Web アプリの Web HTTP ログには、クライアントのソース IP が�
 
   > [!div class="mx-imgBorder"]
   > ![Web アプリのプライベート エンドポイントの全体像](media/private-endpoint/global-schema-web-app.png)
+
 
 ## <a name="dns"></a>DNS
 
@@ -137,7 +140,7 @@ FTP アクセスは、受信パブリック IP アドレスを介して提供さ
 <!--Links-->
 [serviceendpoint]: ../../virtual-network/virtual-network-service-endpoints-overview.md
 [privatelink]: ../../private-link/private-link-overview.md
-[vnetintegrationfeature]: ../web-sites-integrate-with-vnet.md
+[vnetintegrationfeature]: ../overview-vnet-integration.md
 [disablesecuritype]: ../../private-link/disable-private-endpoint-network-policy.md
 [accessrestrictions]: ../app-service-ip-restrictions.md
 [tcpproxy]: ../../private-link/private-link-service-overview.md#getting-connection-information-using-tcp-proxy-v2
@@ -148,5 +151,6 @@ FTP アクセスは、受信パブリック IP アドレスを介して提供さ
 [howtoguide2]: ../scripts/cli-deploy-privateendpoint.md
 [howtoguide3]: ../scripts/powershell-deploy-private-endpoint.md
 [howtoguide4]: ../scripts/template-deploy-private-endpoint.md
-[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
+[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-privateendpoint-vnet-injection
 [howtoguide6]: ../scripts/terraform-secure-backend-frontend.md
+[TiP]: ../deploy-staging-slots.md#route-traffic

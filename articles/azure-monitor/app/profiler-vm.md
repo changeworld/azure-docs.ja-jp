@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: f514dd7b54ac091535aeab43a8a7d2a645b50a09
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1317bc86b2f4283475b1cc819d24c1ac6475a486
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87315837"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045684"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで実行されている Web アプリをプロファイルする
 
@@ -67,20 +67,22 @@ Azure Application Insights Profiler を次のサービスにデプロイする�
 
 1. [IIS](https://www.microsoft.com/web/downloads/platform.aspx) 経由で目的のアプリケーションが実行されている場合は、`IIS Http Tracing` Windows 機能を有効にします。
 
-   a. この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]](/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか、 (管理者として) PowerShell で次のコマンドを実行します。  
+   1. この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]](/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか、 (管理者として) PowerShell で次のコマンドを実行します。  
 
-    ```powershell
-    Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
-    ```  
-   b. リモート アクセスの確立に問題がある場合は、[Azure CLI](/cli/azure/get-started-with-azure-cli) を使用して次のコマンドを実行できます。  
+      ```powershell
+      Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
+      ```
+  
+   1. リモート アクセスの確立に問題がある場合は、[Azure CLI](/cli/azure/get-started-with-azure-cli) を使用して次のコマンドを実行できます。  
 
-    ```powershell
-    az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
-    ```
+      ```azurecli
+      az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
+      ```
 
 1. アプリケーションをデプロイします。
 
 ## <a name="set-profiler-sink-using-azure-resource-explorer"></a>Azure Resource Explorer を使用して Profiler シンクを設定する
+
 portal から Application Insights Profiler シンクを設定する方法はまだありません。 前述のように PowerShell を使用する代わりに、Azure Resource Explorer を使用してシンクを設定することができます。 ただし、VM を再びデプロイするとシンクは失われますので注意してください。 この設定を保存するために VM をデプロイするときに、使用する構成を更新する必要があります。
 
 1. ご使用の仮想マシン用にインストールされている拡張機能を表示して、Windows Azure Diagnostics 拡張機能がインストールされていることを確認します。  

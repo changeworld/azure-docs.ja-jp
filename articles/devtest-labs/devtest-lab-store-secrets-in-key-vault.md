@@ -1,21 +1,21 @@
 ---
-title: Azure DevTest Labs でキー コンテナーにシークレットを格納する | Microsoft Docs
+title: キー コンテナーにシークレットを格納する
 description: Azure Key Vault にシークレットを格納し、仮想マシン、数式、または環境の作成時にそれらを使用する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 5714279ef183cb930d643575466dae3d6cb69bba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c1849b6bf2ab5876fcbe0960df9bb8a7004bb78
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481648"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398100"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Azure DevTest Labs でキー コンテナーにシークレットを格納する
-Azure DevTest Labs の使用時には複雑なシークレット (Windows 仮想マシンのパスワード、Linux 仮想マシンの SSH 公開キー、または成果物を使用して Git リポジトリを複製するための個人用アクセス トークン) の入力が必要な場合があります。 通常、シークレットは長いランダムな文字列です。 そのため、シークレットの入力は面倒で、特に同じシークレットを複数回使用する場合は注意が必要です。
+Azure DevTest Labs を使用するときに、複雑なシークレットを入力しなければならない場合があります。 シークレットの例としては、Windows VM のパスワード、Linux VM のパブリック SSH キー、成果物を通じて Git リポジトリをクローンするための個人用アクセス トークンがあります。 通常、シークレットは長いランダムな文字列です。 シークレットの入力は面倒で、特に同じシークレットを複数回使用する場合は注意が必要です。
 
-この問題を解決してシークレットを安全な場所に保管するために、DevTest Labs では [Azure Key Vault](../key-vault/general/overview.md) へのシークレットの格納をサポートしています。 ユーザーが初めてシークレットを保存する際に、DevTest Labs サービスは、ラボが格納されているのと同じリソース グループ内にキー コンテナーを自動的に作成してシークレットを保存します。 DevTest Labs では、ユーザーごとに個別のキー コンテナーが作成されます。 
+この問題を解決してシークレットを安全な場所に保管するために、DevTest Labs では [Azure Key Vault](../key-vault/general/overview.md) へのシークレットの格納をサポートしています。 ユーザーが初めてシークレットを保存するとき、DevTest Labs がラボと同じリソース グループに自動的にキー コンテナーを作成して、そこにシークレットを格納します。 DevTest Labs では、ユーザーごとに個別のキー コンテナーが作成されます。 
 
-ラボ ユーザーは、キー コンテナーでシークレットを作成する前に、まずラボ仮想マシンを作成する必要があることに注意してください。 これは、DevTest Lab サービスでは、キー コンテナーにシークレットを作成および保存する操作を許可する前に、ラボ ユーザーを有効なユーザー ドキュメントに関連付ける必要があるためです。 
+キー コンテナーにシークレットを作成するには、ラボ ユーザーが事前にラボ仮想マシンを作成しておく必要があります。 この要件は、DevTest Labs がラボ ユーザーを有効なユーザー ドキュメントに関連付ける必要があるためです。 その後、ユーザーが各自のキー コンテナーにシークレットを作成して格納できるようになります。
 
 
 ## <a name="save-a-secret-in-azure-key-vault"></a>Azure Key Vault にシークレットを保存する
@@ -25,20 +25,20 @@ Azure Key Vault にシークレットを保存するには、次の手順を実�
 2. シークレットの **名前** を入力します。 仮想マシン、数式、または環境の作成時に、この名前がドロップダウン リストに表示されます。 
 3. **値** としてシークレットを入力します。
 
-    ![シークレットの格納](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
+    ![シークレットの格納を示すスクリーンショット。](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
 
 ## <a name="use-a-secret-from-azure-key-vault"></a>Azure Key Vault からシークレットを使用する
-仮想マシン、数式、または環境を作成するためにシークレットの入力が必要な場合は、シークレットを手動で入力するか、保存したシークレットをキー コンテナーから選択できます。 キー コンテナーに格納されたシークレットを使用するには、次の操作を実行します。
+仮想マシン、数式、または環境を作成するためにシークレットを入力する際は、シークレットを手動で入力するか、保存したシークレットをキー コンテナーから選択できます。 キー コンテナーに格納されたシークレットを使用するには、次の操作を実行します。
 
 1. **[保存されているシークレットを使用する]** を選択します。 
 2. **[シークレットの選択]** のドロップダウン リストからシークレットを選択します。 
 
-    ![仮想マシンでのシークレットの使用](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
+    ![VM の作成時におけるシークレットの使用を示すスクリーンショット。](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
 
 ## <a name="use-a-secret-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートでシークレットを使用する
 次の例に示すように、仮想マシンの作成に使用する Azure Resource Manager テンプレートでシークレット名を指定できます。
 
-![数式または環境でのシークレットの使用](media/devtest-lab-store-secrets-in-key-vault/secret-store-arm-template.png)
+![数式または環境におけるシークレットの使用を示すスクリーンショット。](media/devtest-lab-store-secrets-in-key-vault/secret-store-arm-template.png)
 
 ## <a name="next-steps"></a>次のステップ
 

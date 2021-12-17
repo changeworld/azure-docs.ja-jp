@@ -1,18 +1,18 @@
 ---
 title: Azure VPN Gateway に関する FAQ
-description: VPN Gateway に関する FAQ です。 Microsoft Azure Virtual Network のクロスプレミス接続、ハイブリッド構成接続、および VPN Gateway の FAQ。
+description: VPN Gateway のクロスプレミス接続、ハイブリッド構成接続、および仮想ネットワーク ゲートウェイに関してよく寄せられる質問について説明します。 この FAQ には、ポイント対サイト、サイト間、VNet 間の構成設定に関する包括的な情報が含まれています。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 07/26/2021
 ms.author: yushwang
-ms.openlocfilehash: 3d29e99f3b539fdbea2a19df7ffc25d4e41a5376
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b3619ba68338e40773cdd962298b01806bde5b2b
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731260"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660630"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -58,6 +58,12 @@ VPN Gateway の接続の詳細については、「[VPN Gateway について](vp
 
 VPN の種類がルート ベースのゲートウェイを使用してサイト間接続を作成すれば、サイト間接続とポイント対サイト接続の両方を同時に使用するように仮想ネットワークを構成できます。 VPN の種類がルート ベースのゲートウェイは、クラシック デプロイ モデルでは動的ゲートウェイと呼ばれます。
 
+## <a name="privacy"></a><a name="privacy"></a>プライバシー
+
+### <a name="does-the-vpn-service-store-or-process-customer-data"></a>VPN サービスによって顧客データは保存または処理されますか?
+
+いいえ。
+
 ## <a name="virtual-network-gateways"></a><a name="gateways"></a>仮想ネットワーク ゲートウェイ
 
 ### <a name="is-a-vpn-gateway-a-virtual-network-gateway"></a>VPN ゲートウェイは仮想ネットワーク ゲートウェイですか。
@@ -71,6 +77,10 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 ### <a name="what-is-a-route-based-dynamic-routing-gateway"></a>ルートベース (動的ルーティング) ゲートウェイとは何ですか。
 
 ルート ベースのゲートウェイは、ルート ベースの VPN を実装したものです。 ルート ベースの VPN は、「ルート」を使用して、IP 転送やルーティング テーブルを使用してパケットを対応するトンネル インターフェイスに直接送信します。 その後、トンネル インターフェイスではトンネルの内部または外部でパケットを暗号化または復号します。 ルート ベースの VPN に向けたポリシーまたはトラフィック セレクターは任意の環境間 (またはワイルドカード) として構成されます。
+
+### <a name="can-i-specify-my-own-policy-based-traffic-selectors"></a>独自のポリシー ベースのトラフィック セレクターを指定できますか?
+
+はい。トラフィック セレクターは、[New-AzIpsecTrafficSelectorPolicy](/powershell/module/az.network/new-azipsectrafficselectorpolicy) PowerShell コマンドを使用して、接続の *trafficSelectorPolicies* 属性で定義できます。 指定したトラフィック セレクターを有効にする場合は、[ポリシー ベースのトラフィック セレクターを使用する](vpn-gateway-connect-multiple-policybased-rm-ps.md#enablepolicybased)オプションが有効になっている必要があります。
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>ポリシー ベースの VPN ゲートウェイをルート ベースに更新できますか。
 
@@ -176,17 +186,17 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 その他のソフトウェア VPN ソリューションについては、業界標準の IPsec の実装に準拠していればマイクロソフトのゲートウェイで動作します。 構成とサポートの手順については、ソフトウェアのベンダーにお問い合わせください。
 
-## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>ポイント対サイト接続の認証の種類を変更するにはどうすればよいですか?
+### <a name="can-i-connect-to-azure-gateway-via-point-to-site-when-located-at-a-site-that-has-an-active-site-to-site-connection"></a>サイト間接続がアクティブなサイトにあるとき、ポイント対サイトを利用して Azure ゲートウェイに接続できますか。
 
-ポイント対サイト接続の認証方法を変更するには、VPN ゲートウェイの下にある **[ポイント対サイト構成]** セクションに移動し、目的のオプション ボタンをオンにします。 現在のオプションは、 **[Azure 証明書]、[RADIUS 認証]、[Azure Active Directory]** です。 現在のクライアントは、変更後、新しいプロファイルがダウンロードされ、クライアント上で構成されるまで **接続できない場合がある** ことに注意してください。
+はい。ただし、ポイント対サイト クライアントのパブリック IP アドレスと、サイト間 VPN デバイスで使用されるパブリック IP アドレスが異なる必要があります。同じ場合、ポイント対サイト接続は機能しません。 IKEv2 によるポイント対サイト接続は、同じ Azure VPN ゲートウェイでサイト間 VPN 接続が構成されている同じパブリック IP アドレスから開始できません。 
 
-## <a name="point-to-site-using-native-azure-certificate-authentication"></a><a name="P2S"></a>ネイティブ Azure 証明書認証を使用したポイント対サイト
+## <a name="point-to-site---certificate-authentication"></a><a name="P2S"></a>ポイント対サイト - 証明書認証
 
 このセクションは、Resource Manager デプロイ モデルに適用されます。
 
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="point-to-site-using-radius-authentication"></a><a name="P2SRADIUS"></a>RADIUS 認証を使用したポイント対サイト
+## <a name="point-to-site---radius-authentication"></a><a name="P2SRADIUS"></a>ポイント対サイト - RADIUS 認証
 
 このセクションは、Resource Manager デプロイ モデルに適用されます。
 
@@ -220,6 +230,10 @@ ExpressRoute に接続されているブランチと、サイト間 VPN 接続�
 
 はい。ただし、両方のトンネルの BGP を同じ場所に構成する必要があります。
 
+### <a name="does-azure-vpn-gateway-honor-as-path-prepending-to-influence-routing-decisions-between-multiple-connections-to-my-on-premises-sites"></a>Azure VPN Gateway では、AS パス プリペンドが優先され、これがオンプレミス サイトへの複数の接続間でのルーティング決定に影響しますか。
+
+はい。Azure VPN Gateway では、BGP が有効になっているとき、ルーティングの決定を支援するために AS パス プリペンドが優先されます。 BGP パスの選択では、より短い AS パスが優先されます。
+
 ### <a name="can-i-use-point-to-site-vpns-with-my-virtual-network-with-multiple-vpn-tunnels"></a>仮想ネットワークを持つポイント対サイト VPN を複数の VPN トンネルで使用できますか。
 
 はい、ポイント対サイト (P2S) VPN は複数のオンプレミス サイトおよび他の仮想ネットワークに接続されている VPN ゲートウェイで使用できます。
@@ -240,6 +254,10 @@ ExpressRoute に接続されているブランチと、サイト間 VPN 接続�
 
 はい。 [強制トンネリングについて](vpn-gateway-about-forced-tunneling.md)を参照してください。
 
+## <a name="nat"></a><a name="nat"></a>NAT
+
+[!INCLUDE [vpn-gateway-faq-nat-include](../../includes/vpn-gateway-faq-nat-include.md)]
+
 ## <a name="cross-premises-connectivity-and-vms"></a><a name="vms"></a>クロスプレミス接続と VM
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-and-i-have-a-cross-premises-connection-how-should-i-connect-to-the-vm"></a>仮想ネットワーク内に仮想マシンが存在し、クロスプレミス接続が使用できる場合、その VM にはどのように接続できますか。
@@ -258,7 +276,7 @@ ExpressRoute に接続されているブランチと、サイト間 VPN 接続�
 
 ## <a name="virtual-network-faq"></a><a name="faq"></a>Virtual Network FAQ
 
-「 [Virtual Network FAQ](../virtual-network/virtual-networks-faq.md)」で、仮想ネットワークの情報をさらに詳しく参照できます。
+「[Virtual Network FAQ](../virtual-network/virtual-networks-faq.md)」で、仮想ネットワークの情報をさらに詳しく参照できます。
 
 ## <a name="next-steps"></a>次の手順
 

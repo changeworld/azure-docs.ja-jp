@@ -11,16 +11,16 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f90edd5729ff5229be09bc3798082c33bdeead2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2595acf25b63f89f6e0e29e996548b58767e9fde
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632103"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786155"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>FIDO2 パスワードレス認証のブラウザー サポート
 
-Azure Active Directory では、[FIDO2 セキュリティ キー](./concept-authentication-passwordless.md#fido2-security-keys)をパスワードレス デバイスとして使用できます。 Microsoft アカウントでの FIDO2 認証のサポートは、[2018 年に発表されました](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910)。 この発表で説明されているように、Microsoft および Azure Active Directory の各アカウントでのセキュリティで保護された認証をサポートするためには、特定のオプション機能と、FIDO2 CTAP 仕様への拡張機能を実装する必要があります。 次の図は、Azure Active Directory で FIDO2 認証キーを使用したパスワードレス認証をサポートしているブラウザーとオペレーティング システムの組み合わせを示しています。
+Azure Active Directory では、[FIDO2 セキュリティ キー](./concept-authentication-passwordless.md#fido2-security-keys)をパスワードレス デバイスとして使用できます。 Microsoft アカウントでの FIDO2 認証のサポートは、[2018 年に発表](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910)され、2021 年 3 月に[一般提供](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/passwordless-authentication-is-now-generally-available/ba-p/1994700)されました。 次の図は、Azure Active Directory で FIDO2 認証キーを使用したパスワードレス認証をサポートしているブラウザーとオペレーティング システムの組み合わせを示しています。
 
 ## <a name="supported-browsers"></a>サポートされているブラウザー
 
@@ -59,7 +59,7 @@ Azure Active Directory では、[FIDO2 セキュリティ キー](./concept-auth
 <sup>1</sup>Chromium ベースの新しい Microsoft Edge では、すべてのバージョンが FIDO2 をサポートしています。 Microsoft Edge レガシでのサポートは 1903 で追加されました。
 
 ## <a name="next-steps"></a>次のステップ
-[パスワードなしのセキュリティ キー サインインを有効にする (プレビュー)](./howto-authentication-passwordless-security-key.md)
+[パスワードなしのセキュリティ キー サインインを有効にする](./howto-authentication-passwordless-security-key.md)
 
 <!--Image references-->
 [y]: ./media/fido2-compatibility/yes.png

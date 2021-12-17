@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: ed8007c81479c73e4503d74af4c4043e503baf2b
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 0492055262ccd627d2e3400f78e5c26db0b2acb2
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120148"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730048"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -36,7 +36,7 @@ Azure AD のアプリをビルドしている開発者のために、この記�
 [シングル](quickstart-register-app.md)および[マルチテナント](howto-convert-app-to-be-multi-tenant.md) アプリおよび[一般的な認証パターン](./authentication-vs-authorization.md)の知識を持っているユーザーを対象とします。
 
 > [!NOTE]
-> この機能を使用するには、Azure AD Premium P1 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+> この機能を使用するには、Azure AD Premium P1 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)」をご覧ください。
 > [Microsoft 365 Business ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。
 
 ## <a name="how-does-conditional-access-impact-an-app"></a>条件付きアクセスはどのようにアプリに影響を与えますか?
@@ -152,15 +152,14 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ## <a name="scenario-single-page-app-spa-using-msaljs"></a>シナリオ:MSAL.js を使用するシングルページ アプリ (SPA)
 
-このシナリオでは、条件付きアクセスで保護されている Web API を呼び出すための MSAL.js がシングルページ アプリ (SPA) において使用される場合について説明します。 これは、シンプルなアーキテクチャですが、条件付きアクセスの周辺を開発するときに考慮する必要がある点がいくつかあります。
+このシナリオでは、シングルページ アプリ (SPA) が存在し、条件付きアクセスで保護されている Web API を、このアプリから MSAL.js を使用して呼び出す場合について説明します。 これは、シンプルなアーキテクチャですが、条件付きアクセスの周辺を開発するときに考慮する必要がある点がいくつかあります。
 
-MSAL.js では、`loginPopup()`、`acquireTokenSilent(...)`、`acquireTokenPopup(…)`、および `acquireTokenRedirect(…)` トークンを取得する関数があります。
+MSAL.js では、`acquireTokenSilent()`、`acquireTokenPopup()`、および `acquireTokenRedirect()` トークンを取得する関数があります。
 
-* `loginPopup()` では対話型サインイン要求を通じて ID トークンを取得しますが、(条件付きアクセスで保護されている Web API を含む) サービスへのアクセス トークンは取得しません。
-* その後、アクセス トークンのサイレント取得に `acquireTokenSilent(…)` が使用されます。この場合、どのような状況でも UI は表示されません。
-* `acquireTokenPopup(…)` と `acquireTokenRedirect(…)` の両方を対話形式でリソースのトークンを要求するために使用され、この場合、常にサインイン UI が表示されます。
+* アクセス トークンのサイレント取得に `acquireTokenSilent()` が使用されます。この場合、どのような状況でも UI は表示されません。
+* `acquireTokenPopup()` と `acquireTokenRedirect()` の両方を対話形式でリソースのトークンを要求するために使用され、この場合、常にサインイン UI が表示されます。
 
-Web API を呼び出すためにアクセス トークンが必要な場合は、アプリは `acquireTokenSilent(…)` を試行します。 トークンのセッションが期限切れか、あるいは条件付きアクセス ポリシーに準拠する必要がある場合は、*acquireToken* 関数が失敗して、アプリでは `acquireTokenPopup()` または `acquireTokenRedirect()` が使用されます。
+Web API を呼び出すためにアクセス トークンが必要な場合は、アプリは `acquireTokenSilent()` を試行します。 トークンの期限が切れているか、条件付きアクセス ポリシーに準拠する必要がある場合は、*acquireToken* 関数が失敗して、アプリでは `acquireTokenPopup()` または `acquireTokenRedirect()` が使用されます。
 
 ![MSAL を使用するシングルページ アプリケーションのフロー ダイアグラム](./media/v2-conditional-access-dev-guide/spa-using-msal-scenario.png)
 
@@ -176,7 +175,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 アプリは `error=interaction_required` をキャッチする必要があります。 アプリは、同じソースの `acquireTokenPopup()` または `acquireTokenRedirect()` を使用できます。 ユーザーは多要素認証の実行を求められます。 ユーザーが多要素認証を完了すると、アプリに、要求されたリソースの新しいアクセス トークンが発行されます。
 
-このシナリオを試すには、[JS SPA On-Behalf- コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/a2b257381b410c765ee01ecb611aa6f98c099eb1/2.%20Web%20API%20now%20calls%20Microsoft%20Graph/README.md)を参照してください。 このコード サンプルでは、条件付きアクセス ポリシーと、このシナリオを説明するために、上記で JS SPA に登録された Web API が使用されます。 クレーム チャレンジを正しく処理し、Web API で使用できるアクセス トークンを取得する方法を示します。 または、Angular SPA については、一般的な [Angular.js コード サンプル](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2)を参照してください。
+このシナリオを試すには、[On-Behalf-Of フローを使用して Node.js Web API を呼び出す JavaScript SPA](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/2-call-api-api-ca) のコード サンプルを参照してください。 このコード サンプルでは、条件付きアクセス ポリシーと、このシナリオを説明するために、上記で JavaScript SPA に登録された Web API が使用されます。 クレーム チャレンジを正しく処理し、Web API で使用できるアクセス トークンを取得する方法を示します。
 
 ## <a name="see-also"></a>関連項目
 

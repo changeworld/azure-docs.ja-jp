@@ -1,33 +1,41 @@
 ### YamlMime:Landing
 title: Translator のドキュメント
-summary: Translator はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってほぼリアルタイムでテキストを翻訳することができます。 このサービスでは、最新のニューラル機械翻訳テクノロジが使用され、統計的機械翻訳テクノロジが提供されます。 カスタム翻訳ツールは Translator の拡張機能で、使用するとニューラル翻訳システムを構築できます。 カスタマイズした翻訳システムを使用すると、Translator または Microsoft 音声サービスを使ってテキストを翻訳できます。
+summary: Translator はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってテキストを翻訳することができます。 このサービスでは、最新のニューラル機械翻訳テクノロジが使用され、統計的機械翻訳テクノロジが提供されます。 カスタム翻訳ツールは Translator の拡張機能で、使用するとニューラル翻訳システムを構築できます。 カスタマイズした翻訳システムを使用すると、Translator または Microsoft 音声サービスを使ってテキストを翻訳できます。
 metadata:
   title: Translator のドキュメント - クイックスタート、チュートリアル、API リファレンス
   titleSuffix: Azure Cognitive Services
-  description: Translator はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってほぼリアルタイムでテキストを翻訳することができます。 このサービスでは、最新のニューラル機械翻訳テクノロジが使用され、統計的機械翻訳テクノロジが提供されます。 カスタム翻訳ツールは Translator の拡張機能で、使用するとニューラル翻訳システムを構築できます。 カスタマイズした翻訳システムを使用すると、Translator または Microsoft 音声サービスを使ってテキストを翻訳できます。
+  description: Translator はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってテキストを翻訳することができます。 このサービスでは、最新のニューラル機械翻訳テクノロジが使用され、統計的機械翻訳テクノロジが提供されます。 カスタム翻訳ツールは Translator の拡張機能で、使用するとニューラル翻訳システムを構築できます。 カスタマイズした翻訳システムを使用すると、Translator または Microsoft 音声サービスを使ってテキストを翻訳できます。
   services: cognitive-services
-  author: erhopf
+  author: laujan
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: translator-text
   ms.topic: landing-page
   ms.date: 10/14/2019
-  ms.author: erhopf
+  ms.author: lajanuar
   ms.custom: contperf-fy21q2
-  ms.openlocfilehash: c8e74f83085054d7fc4e0892d371d644a06b060a
-  ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+  ms.openlocfilehash: feea685e567c9a5d4867b3d4a47a200cc7a02117
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "104656279"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131073436"
 landingContent:
 - title: Translator
   linkLists:
   - linkListType: overview
     links:
+<<<<<<< HEAD
     - text: Translator
       url: translator-info-overview.md
     - text: Document Translation
+=======
+    - text: Translator とは
+      url: translator-overview.md
+    - text: 言語のサポート
+      url: language-support.md
+    - text: ドキュメント翻訳
+>>>>>>> repo_sync_working_branch
       url: document-translation/overview.md
     - text: Custom Translator
       url: custom-translator/overview.md
@@ -39,26 +47,47 @@ landingContent:
       url: ./translator-how-to-signup.md
     - text: よく寄せられる質問
       url: https://www.microsoft.com/translator/faq.aspx
-- title: はじめに
+- title: Text Translation
   linkLists:
   - linkListType: quickstart
     links:
-    - text: クイック スタート
+    - text: クイックスタート
       url: quickstart-translator.md
-  - linkListType: tutorial
+  - linkListType: how-to-guide
     links:
-    - text: WPF 翻訳アプリを作成する (C#)
-      url: tutorial-wpf-translation-csharp.md
-    - text: Flask 翻訳アプリを作成する (REST)
-      url: tutorial-build-flask-app-translation-synthesis.md
+    - text: リソースの作成
+      url: translator-how-to-signup.md
+    - text: コンテンツの翻訳を防止する
+      url: prevent-translation.md
+    - text: 動的ディクショナリを使用する
+      url: dynamic-dictionary.md
   - linkListType: reference
     links:
     - text: Translator リファレンス (v3)
       url: reference/v3-0-reference.md
     - text: 要求の制限
       url: request-limits.md
+<<<<<<< HEAD
     - text: 言語のサポート
       url: language-support.md
+=======
+- title: ドキュメント変換
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ドキュメント変換とは
+      url: document-translation/overview.md
+  - linkListType: quickstart
+    links:
+    - text: クイックスタート
+      url: document-translation/get-started-with-document-translation.md
+  - linkListType: reference
+    links:
+    - text: ドキュメント変換リファレンス
+      url: document-translation/reference/get-supported-document-formats.md
+    - text: 翻訳の開始
+      url: document-translation/reference/start-translation.md
+>>>>>>> repo_sync_working_branch
 - title: Custom Translator
   linkLists:
   - linkListType: quickstart
@@ -89,7 +118,7 @@ landingContent:
     links:
     - text: 言語のサポート
       url: language-support.md
-    - text: 用語集
+    - text: 用語
       url: custom-translator/terminology.md
 - title: リソース
   linkLists:
@@ -97,6 +126,8 @@ landingContent:
     links:
     - text: GitHub のサンプル
       url: https://aka.ms/TranslatorGitHub
+    - text: コンプライアンスと認定資格
+      url: https://www.microsoft.com/translator/business/notrace/
     - text: Stack Overflow
       url: https://stackoverflow.com/questions/tagged/microsoft-translator
 - title: ヘルプとフィードバック

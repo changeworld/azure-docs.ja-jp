@@ -1,19 +1,19 @@
 ---
-title: Virtual WAN と SD-WAN の接続とアーキテクチャ
+title: 'アーキテクチャ: Virtual WAN と SD-WAN の接続'
 titleSuffix: Azure Virtual WAN
-description: プライベート SD-WAN と Azure Virtual WAN の相互接続について説明します
+description: プライベート SD-WAN と Azure Virtual WAN の相互接続について説明します。
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: ea9ddd05fe6fc745a3eefc29ab4f1d6aababc936
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ef4695b4655841d7cdfb5b40c56d4c21f4f979f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94564703"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004912"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Azure Virtual WAN を使用した SD-WAN 接続アーキテクチャ
 
@@ -32,7 +32,7 @@ Azure Virtual WAN 自体はソフトウェア定義 WAN (SD-WAN) ですが、プ
 
 :::image type="content" source="./media/sd-wan-connectivity-architecture/direct.png" alt-text="直接相互接続モデル":::
 
-このアーキテクチャ モデルでは、SD-WAN ブランチの顧客構内機器 (CPE) は、IPsec 接続を介して Virtual WAN ハブに直接接続されます。 ブランチ CPE は、プライベート SD-WAN 経由で他のブランチに接続することも、ブランチ間の接続に Virtual WAN を利用することもできます。 Azure のワークロードにアクセスする必要があるブランチは、Virtual WAN ハブで終端する IPsec トンネルを介して Azure に直接、安全にアクセスできます。
+このアーキテクチャ モデルでは、SD-WAN ブランチの顧客構内機器 (CPE) は、IPsec 接続を介して Virtual WAN ハブに直接接続されます。 ブランチ CPE は、プライベート SD-WAN 経由で他のブランチに接続することも、ブランチ間の接続に Virtual WAN を使用することもできます。 Azure のワークロードにアクセスする必要があるブランチは、Virtual WAN ハブで終端する IPsec トンネルを介して Azure に直接、安全にアクセスできます。
 
 SD-WAN CPE パートナーは、それぞれの CPE デバイスからの、通常は面倒でエラーが発生しやすい IPsec 接続を自動化するために自動化を有効にすることができます。 自動化により、SD-WAN コントローラーは、Virtual WAN API を介して Azure と通信して Virtual WAN サイトを構成し、必要な IPsec トンネル構成をブランチ CPE にプッシュできます。 さまざまな SD-WAN パートナーによる Virtual WAN 相互接続の自動化については、[自動化のガイドライン](virtual-wan-configure-automation-providers.md)に関する記事をご覧ください。
 
@@ -42,7 +42,7 @@ SD-WAN CPE パートナーは、それぞれの CPE デバイスからの、通�
 
 Virtual WAN では、ユーザーは Azure パス選択を利用できます。これは、ブランチ CPE から Virtual WAN VPN ゲートウェイへの複数の ISP リンクでのポリシーベースのパス選択です。 Virtual WAN では、同じ SD-WAN ブランチ CPE から複数のリンク (パス) を設定できます。各リンクは、SD-WAN CPE の一意のパブリック IP から Azure Virtual WAN VPN ゲートウェイの 2 つの異なるインスタンスへのデュアル トンネル接続を表します。 SD-WAN ベンダーは、CPE リンク上のポリシー エンジンによって設定されたトラフィック ポリシーに基づいて、Azure への最適なパスを実装できます。 Azure エンドでは、すべての受信接続が同等に扱われます。
 
-## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>NVA-in-VWAN-hub による直接相互接続モデル
+## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct-nva"></a>NVA-in-VWAN-hub による直接相互接続モデル
 
 :::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="NVA-in-VWAN-hub による直接相互接続モデル":::
 
@@ -71,5 +71,5 @@ Azure への接続は v-CPE ゲートウェイ (NVA) 経由であるため、Azu
 
 ## <a name="additional-information"></a>追加情報
 
-* [FAQ](virtual-wan-faq.md)
+* [Azure Virtual WAN に関する FAQ](virtual-wan-faq.md)
 * [リモート接続の解決](work-remotely-support.md)

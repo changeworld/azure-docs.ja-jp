@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 9fdcd8a82b901e00e28f0ddd89ba53d9a2e3fbae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa34cdfe0cf9f9f69a7d4699b5b107f4e4562722
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952686"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132320220"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と uniFLOW Online の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "104952686"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* uniFLOW Online では、**SP** Initiated SSO がサポートされます
+* uniFLOW Online では、**SP** Initiated SSO がサポートされます。
 
 ## <a name="add-uniflow-online-from-the-gallery"></a>ギャラリーからの uniFLOW Online の追加
 
@@ -73,30 +73,34 @@ uniFLOW Online に対して Azure AD SSO を構成してテストするには、
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** テキスト ボックスに、次のいずれかのパターンを使用して URL を入力します。
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
 
-    - `https://<tenant_domain_name>.eu.uniflowonline.com`
-    - `https://<tenant_domain_name>.us.uniflowonline.com`
-    - `https://<tenant_domain_name>.sg.uniflowonline.com`
-    - `https://<tenant_domain_name>.jp.uniflowonline.com`
-    - `https://<tenant_domain_name>.au.uniflowonline.com`
+    | **Identifier** |
+    |---------|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com` |
+    | `https://<tenant_domain_name>.us.uniflowonline.com` |
+    | `https://<tenant_domain_name>.sg.uniflowonline.com` |
+    | `https://<tenant_domain_name>.jp.uniflowonline.com` |
+    | `https://<tenant_domain_name>.au.uniflowonline.com` |
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
+    b. **[サインオン URL]** テキスト ボックスに、次のいずれかのパターンを使用して URL を入力します。
 
-    - `https://<tenant_domain_name>.eu.uniflowonline.com`
-    - `https://<tenant_domain_name>.us.uniflowonline.com`
-    - `https://<tenant_domain_name>.sg.uniflowonline.com`
-    - `https://<tenant_domain_name>.jp.uniflowonline.com`
-    - `https://<tenant_domain_name>.au.uniflowonline.com`
+    | **サインオン URL** |
+    |---------|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com` |
+    | `https://<tenant_domain_name>.us.uniflowonline.com` |
+    | `https://<tenant_domain_name>.sg.uniflowonline.com` |
+    | `https://<tenant_domain_name>.jp.uniflowonline.com` |
+    | `https://<tenant_domain_name>.au.uniflowonline.com` |
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[uniFLOW Online クライアント サポート チーム](mailto:support@nt-ware.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照したり、uniFLOW Online テナントに表示されている応答 URL を参照したりすることもできます。
+    > これらは実際の値ではありません。 これらの値を実際の識別子とサインオン URL で更新してください。 これらの値を取得するには、[uniFLOW Online クライアント サポート チーム](mailto:support@nt-ware.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照したり、uniFLOW Online テナントに表示されている応答 URL を参照したりすることもできます。
 
-1. uniFLOW Online アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+1. uniFLOW Online アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 uniFLOW Online アプリケーションでは、**nameidentifier** が **user.objectid** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
-    ![image](common/default-attributes.png)
+    ![このスクリーンショットは、[編集] アイコンが強調表示された状態の [ユーザー属性] ペインを示しています。](common/edit-attribute.png)
 
 1. その他に、uniFLOW Online アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
@@ -145,21 +149,21 @@ uniFLOW Online に対して Azure AD SSO を構成してテストするには、
 
 1. 左側のナビゲーション パネルで **[User]\(ユーザー\)** タブを選択します。
 
-    ![uniFLOW Online サイトで [User]\(ユーザー\) が選択されていることを示すスクリーンショット。](./media/uniflow-online-tutorial/configure-1.png)
+    ![uniFLOW Online サイトで [User]\(ユーザー\) が選択されていることを示すスクリーンショット。](./media/uniflow-online-tutorial/user.png)
 
 1. **[ID プロバイダー]** をクリックします。
 
-    ![[Identity Provider]\(ID プロバイダー\) が選択されていることを示すスクリーンショット。](./media/uniflow-online-tutorial/configure-2.png)
+    ![[Identity Provider]\(ID プロバイダー\) が選択されていることを示すスクリーンショット。](./media/uniflow-online-tutorial/profile.png)
 
 1. **[Add identity provider]\(ID プロバイダーの追加\)** をクリックします。
 
-    ![[Add identity provider]\(ID プロバイダーの追加\) が選択されていることを示すスクリーンショット。](./media/uniflow-online-tutorial/configure-3.png)
+    ![[Add identity provider]\(ID プロバイダーの追加\) が選択されていることを示すスクリーンショット。](./media/uniflow-online-tutorial/add-profile.png)
 
 1. **[ADD IDENTITY PROVIDER]\(ID プロバイダーの追加\)** セクションで、次の手順を実行します。
 
-    ![[ADD IDENTITY PROVIDER]\(ID プロバイダーの追加\) セクションを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/uniflow-online-tutorial/configure-4.png)
+    ![[ADD IDENTITY PROVIDER]\(ID プロバイダーの追加\) セクションを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/uniflow-online-tutorial/configuration.png)
 
-    a. 表示名を入力します (例: *AzureAD SSO*)。
+    a. 表示名を入力します (例: **AzureAD SSO**)。
 
     b. **[Provider type]\(プロバイダーの種類\)** で、ドロップダウンの **[WS-Fed]** オプションを選択します。
 
@@ -169,13 +173,13 @@ uniFLOW Online に対して Azure AD SSO を構成してテストするには、
 
 1. **[General]\(全般\)** タブで、次の手順を実行します。
 
-    ![[General]\(全般\) タブを示すスクリーンショット。ここで説明されている値を入力できます。](./media/uniflow-online-tutorial/configure-5.png)
+    ![[General]\(全般\) タブを示すスクリーンショット。ここで説明されている値を入力できます。](./media/uniflow-online-tutorial/general-tab.png)
 
-    a. 表示名を入力します (例: *AzureAD SSO*)。
+    a. 表示名を入力します (例: **AzureAD SSO**)。
 
     b. **[ADFS Federation Metadata]\(ADFS フェデレーション メタデータ\)** で **[From URL]\(URL から\)** オプションを選択します。
 
-    c. **[Federation Metadata URl]\(フェデレーション メタデータ URI\)** ボックスに、Azure portal からコピーした **アプリのフェデレーション メタデータ URL** の値を貼り付けます。
+    c. **Federation Metadata URL\(フェデレーション メタデータ URL\)** テキスト ボックスに、Azure portal からコピーした **アプリのフェデレーション メタデータ URL** の値を貼り付けます。
 
     d. **[Identity provider]\(ID プロバイダー\)** で **[Enabled]\(有効化\)** を選択します。
 
@@ -199,8 +203,8 @@ uniFLOW Online に対して Azure AD SSO を構成してテストするには、
 
 * uniFLOW Online のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [uniFLOW Online] タイルをクリックすると、uniFLOW Online のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [uniFLOW Online] タイルをクリックすると、uniFLOW Online のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-uniFLOW Online を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+uniFLOW Online を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

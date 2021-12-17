@@ -2,18 +2,17 @@
 title: Shaper コグニティブ スキル
 titleSuffix: Azure Cognitive Search
 description: 非構造化データからメタデータと構造化された情報を抽出し、Azure Cognitive Search の AI エンリッチメント パイプライン内で複合型としてシェイプします。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 81eb0e60befc544a6c3bee8f04e901b6a5e472bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: 9395f0446680135bde99193609bde82385f64b0b
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85560818"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038783"
 ---
 # <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
 
@@ -24,7 +23,7 @@ ms.locfileid: "85560818"
 出力の名前は常に "output" です。 内部的には、パイプラインでは別の名前をマップできます (下の例では "analyzedText") が、**Shaper** スキル自体は、応答内で "output" を返します。 これは、エンリッチメントしたドキュメントのデバッグ中に名前付けの不一致に気付いた場合や、カスタム スキルを構築し、応答を自身で作成している場合に重要なことがあります。
 
 > [!NOTE]
-> **Shaper** スキルは Cognitive Services API にバインドされていないため、使用に対しては課金されません。 ただし、1 日あたりの毎日のエンリッチメントの数を少数に制限する **無料** リソースのオプションをオーバーライドするには、引き続き [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。
+> このスキルは Cognitive Services にバインドされていません。 これは課金対象外で、Cognitive Services の重要な要件はありません。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
@@ -36,7 +35,6 @@ Microsoft.Skills.Util.ShaperSkill
 ただし、複合型を作成するための別の方法として、**Shaper** スキルを利用することもできます。 このスキルをスキルセットに含めることで、スキルセット処理中のメモリ内操作において、入れ子になった構造を持つデータ シェイプを出力できます。その後、それをインデックス内の複合型にマップできます。 
 
 次の例のスキル定義では、入力としてメンバー名を提供します。 
-
 
 ```json
 {
@@ -66,26 +64,26 @@ Microsoft.Skills.Util.ShaperSkill
 スキルセットはインデクサーによって呼び出され、インデクサーはインデックスを必要とします。 インデックス内の複合フィールドの表現は、次の例のようになります。 
 
 ```json
-
-    "name": "my-index",
-    "fields": [
-        {   "name": "myId", "type": "Edm.String", "key": true, "filterable": true   },
-        {   "name": "analyzedText", "type": "Edm.ComplexType",
-            "fields": [{
-                    "name": "text",
-                    "type": "Edm.String",
-                    "filterable": false,
-                    "sortable": false,
-                    "facetable": false,
-                    "searchable": true  },
-          {
-                    "name": "sentiment",
-                    "type": "Edm.Double",
-                    "searchable": true,
-                    "filterable": true,
-                    "sortable": true,
-                    "facetable": true
-                },
+"name":"my-index",
+"fields":[
+   { "name":"myId", "type":"Edm.String", "key":true, "filterable":true  },
+   { "name":"analyzedText", "type":"Edm.ComplexType",
+      "fields":[
+         {
+            "name":"text",
+            "type":"Edm.String",
+            "facetable":false,
+            "filterable":false,
+            "searchable":true,
+            "sortable":false  },
+         {
+            "name":"sentiment",
+            "type":"Edm.Double",
+            "facetable":true,
+            "filterable":true,
+            "searchable":true,
+            "sortable":true }
+      }
 ```
 
 ### <a name="skill-input"></a>スキルの入力

@@ -4,13 +4,13 @@ description: 用語集では、LUIS API サービスの使用中に目にする�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 05/08/2020
-ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/28/2021
+ms.openlocfilehash: 25bdf291d7d836523655b131f485721e3a29593b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98786946"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434581"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS サービスの使用中に目にする可能性のある用語について説明します。
@@ -44,7 +44,7 @@ HR ボットを構築している場合は、"休暇の予定を立てる"、"�
 
 ### <a name="authoring-resource"></a>作成リソース
 
-LUIS の[作成リソース](luis-how-to-azure-subscription.md#azure-resources-for-luis)は、Azure を通じて利用できる管理可能な項目です。 リソースは、Azure サービスの関連する作成、トレーニング、および公開機能に対するアクセスです。 リソースには、関連する Azure サービスにアクセスするために必要な認証、承認、セキュリティ情報が含まれています。
+LUIS の[作成リソース](luis-how-to-azure-subscription.md)は、Azure を通じて利用できる管理可能な項目です。 リソースは、Azure サービスの関連する作成、トレーニング、および公開機能に対するアクセスです。 リソースには、関連する Azure サービスにアクセスするために必要な認証、承認、セキュリティ情報が含まれています。
 
 作成 リソースには、`LUIS-Authoring` という Azure の "種類" があります。
 
@@ -270,7 +270,7 @@ LUIS クォータとは、Azure サブスクリプション レベルの制限�
 スキーマには、意図とエンティティがサブエンティティと共に含まれています。 スキーマは最初に計画され、その後、長期にわたって反復処理されます。 スキーマには、アプリの設定、特徴、発話の例は含まれていません。
 
 ## <a name="sentiment-analysis"></a>感情分析
-感情分析では、[Text Analytics](../text-analytics/overview.md) によって得られる発話の正または負の値が提供されます。
+感情分析では、[Language service](../language-service/sentiment-opinion-mining/overview.md) によって得られる発話の正または負の値が提供されます。
 
 ## <a name="speech-priming"></a>音声認識の準備
 
@@ -295,7 +295,7 @@ LUIS の[リスト エンティティ](reference-entity-list.md)では、それ�
 
 ## <a name="test"></a>テスト
 
-LUIS アプリの[テスト](luis-concept-test.md)とは、モデル予測を表示することを意味します。
+LUIS アプリの[テスト](./luis-interactive-test.md)とは、モデル予測を表示することを意味します。
 
 ## <a name="timezone-offset"></a>タイムゾーン オフセット
 

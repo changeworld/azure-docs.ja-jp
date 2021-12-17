@@ -3,19 +3,18 @@ title: 'クイックスタート: JavaScript で検索インデックスを作�
 titleSuffix: Azure Cognitive Search
 description: この JavaScript クイックスタートでは、JavaScript を使用して、Azure Cognitive Search でインデックスの作成、データの読み込み、クエリの実行を行う方法について説明します。
 author: dereklegenzoff
-manager: luisca
 ms.author: delegenz
 ms.devlang: javascript
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/02/2021
+ms.date: 07/08/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 7d31201f9d1a4519538aba3ac57ddfd340d936d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38a901535f044e98fb274871accd779d0118eec9
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99509403"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179417"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>クイックスタート: JavaScript SDK を使用して Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -109,7 +108,7 @@ VS Code およびその[統合ターミナル](https://code.visualstudio.com/doc
       "author": "Your Name",
       "license": "MIT",
       "dependencies": {
-        "@azure/search-documents": "^11.0.3",
+        "@azure/search-documents": "^11.2.0",
         "dotenv": "^8.2.0"
       }
     }
@@ -198,7 +197,7 @@ main().catch((err) => {
             "filterable": false,
             "sortable": false,
             "facetable": false,
-            "analyzer": "en.lucene"
+            "analyzerName": "en.lucene"
         },
         {
             "name": "Description_fr",
@@ -207,7 +206,7 @@ main().catch((err) => {
             "filterable": false,
             "sortable": false,
             "facetable": false,
-            "analyzer": "fr.lucene"
+            "analyzerName": "fr.lucene"
         },
         {
             "name": "Category",
@@ -601,15 +600,14 @@ console.log(`HotelId: ${documentResult.HotelId}; HotelName: ${documentResult.Hot
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
+ポータルの左側のナビゲーション ウィンドウにある **[All resources]\(すべてのリソース\)** または **[Resource groups]\(リソース グループ\)** リンクを使って、リソースを検索および管理できます。
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 
 ## <a name="next-steps"></a>次のステップ
 
-この JavaScript クイックスタートでは、インデックスの作成、そこへのドキュメントの読み込み、およびクエリの実行を行う一連のタスクに取り組みました。 
+この JavaScript クイックスタートでは、インデックスの作成、そこへのドキュメントの読み込み、およびクエリの実行を行う一連のタスクに取り組みました。 学習を続けるために、suggester (先行入力またはオートコンプリート クエリ)、フィルター、ファセット ナビゲーションを試すためのきっかけとして、次のチュートリアルとサンプルを試してください。 
 
-Azure Cognitive Search についての知識が既にある場合は、このサンプルを基にして、サジェスター (先行入力またはオートコンプリート クエリ)、フィルター、ファセット ナビゲーションなどを試すことができます。 Azure Cognitive Search を初めて使用する場合は、他のチュートリアルも試して、作成できる内容について理解を深めることをお勧めします。 他のリソースについては、[ドキュメントのページ](https://azure.microsoft.com/documentation/services/search/)を参照してください。 
++ [チュートリアル: Web アプリに検索を追加する](tutorial-csharp-overview.md)
 
-> [!div class="nextstepaction"]
-> [Azure Cognitive Search の React フロントエンドを構築する](https://github.com/dereklegenzoff/azure-search-react-template)
++ [サンプル: Azure Cognitive Search の React フロントエンドを構築する](https://github.com/dereklegenzoff/azure-search-react-template)

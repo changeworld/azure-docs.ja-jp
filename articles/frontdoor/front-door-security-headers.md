@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: e8462b98aee1d34b6c7a2ed671667223eca45a25
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 48f70bd0cd71ffc517d7955f645c579f1ffa2b48
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551919"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714862"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>チュートリアル:ルール エンジンを使用してセキュリティ ヘッダーを追加する
 
@@ -43,7 +43,7 @@ ms.locfileid: "106551919"
 1. ヘッダー名として「**Content-Security-Policy**」を追加し、このヘッダーで受け入れる値を定義します。 このシナリオでは、 *"script-src 'self' https://apiphany.portal.azure-api.net"* を選択します。
 
    > [!NOTE]
-   > ヘッダー値は 128 文字までに制限されています。
+   > ヘッダー値は 640 文字までに制限されています。
 
 1. 構成に追加するルールをすべて追加したら、必ず優先ルートに移動し、ルール エンジン構成をルート ルールに関連付けてください。 この手順は、ルールを機能させるために必須です。 
 

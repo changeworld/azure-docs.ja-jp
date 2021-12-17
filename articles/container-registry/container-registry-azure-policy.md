@@ -1,22 +1,26 @@
 ---
 title: Azure Policy を使用したコンプライアンス
+<<<<<<< HEAD
 description: Azure Policy で組み込みポリシーを割り当て、Azure Container Registry のコンプライアンスを監査します
+=======
+description: Azure Policy で組み込みのポリシー定義を割り当て、Azure コンテナー レジストリのコンプライアンスを監査します
+>>>>>>> repo_sync_working_branch
 ms.topic: article
-ms.date: 03/01/2021
-ms.openlocfilehash: 62a1fd8d3c996fd3a0bac3cadf77fc7e7ace0ce3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 08/10/2021
+ms.openlocfilehash: d8f986a3a857f622248daa75d0402f1abfbf8a7b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784175"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722487"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Azure Policy を使用した Azure Container Registry のコンプライアンスの監査
 
-[Azure Policy](../governance/policy/overview.md) は、ポリシーの作成、割り当て、管理に使用する Azure のサービスです。 これらのポリシーは、リソースにさまざまなルールと効果を適用して、それらのリソースが会社の標準とサービス レベル アグリーメントに準拠した状態に保たれるようにします。
+[Azure Policy](../governance/policy/overview.md) は Azure のサービスであり、ポリシー定義の作成、割り当て、管理に使うことができます。 これらのポリシー定義により、リソースにさまざまなルールと効果が適用され、会社の標準とサービス レベル アグリーメントへのリソースの準拠が維持されます。
 
-この記事では、Azure Container Registry の組み込みポリシーについて説明します。 これらのポリシーを使用し、新しいレジストリと既存のレジストリのコンプライアンスを監査します。
+この記事では、Azure Container Registry の組み込みポリシー定義について説明します。 これらの定義を使用して、新しいレジストリと既存のレジストリのコンプライアンスを監査します。
 
-Azure Policy を使用するのに料金は一切かかりません。
+Azure Policy は無料で利用できます。
 
 ## <a name="built-in-policy-definitions"></a>組み込みのポリシー定義
 
@@ -24,14 +28,14 @@ Azure Policy を使用するのに料金は一切かかりません。
 
 [!INCLUDE [azure-policy-reference-rp-containerreg](../../includes/policy/reference/byrp/microsoft.containerregistry.md)]
 
-## <a name="assign-policies"></a>ポリシーの割り当て
+## <a name="create-policy-assignments"></a>ポリシーの割り当てを作成する
 
-* [Azure portal](../governance/policy/assign-policy-portal.md)、[Azure CLI](../governance/policy/assign-policy-azurecli.md)、[Resource Manager テンプレート](../governance/policy/assign-policy-template.md)または Azure Policy SDK を使用してポリシーを割り当てます。
+* [Azure portal](../governance/policy/assign-policy-portal.md)、[Azure CLI](../governance/policy/assign-policy-azurecli.md)、[Resource Manager テンプレート](../governance/policy/assign-policy-template.md)、または Azure Policy SDK を使用して、ポリシーの割り当てを作成します。
 * ポリシーの割り当て範囲をリソース グループ、サブスクリプション、または [Azure 管理グループ](../governance/management-groups/overview.md)に設定します。 コンテナー レジストリのポリシー割り当ては、範囲内の既存のコンテナー レジストリと新しいコンテナー レジストリに適用されます。
 * [ポリシー適用](../governance/policy/concepts/assignment-structure.md#enforcement-mode)の有効と無効はいつでも切り替えられます。
 
 > [!NOTE]
-> ポリシーを割り当てるか、更新した後、定義されている範囲内のリソースに割り当てが適用されるまで少し時間がかかります。 詳細は、[ポリシー評価トリガー](../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)を参照してください。
+> ポリシーの割り当てを作成または更新した後、定義されている範囲内のリソースが割り当てによって評価されるまで少し時間がかかります。 詳細は、[ポリシー評価トリガー](../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)を参照してください。
 
 ## <a name="review-policy-compliance"></a>ポリシーのコンプライアンスを確認する
 

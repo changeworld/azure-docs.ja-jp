@@ -3,19 +3,20 @@ title: Custom Speech モデルのトレーニングとデプロイ - 音声サ�
 titleSuffix: Azure Cognitive Services
 description: Custom Speech モデルをトレーニングおよびデプロイする方法について説明します。 音声テキスト変換モデルをトレーニングすると、Microsoft のベースライン モデルまたはカスタム モデルの認識精度を向上できます。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: trbye
-ms.openlocfilehash: 4ba046b5461c3b734d54ad3694f0ceea2e5127c6
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.author: eur
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a7f0e4f45659d77400f21d6ff056c1b8d5131fca
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387045"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509178"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Custom Speech モデルのトレーニングとデプロイ
 
@@ -27,8 +28,8 @@ ms.locfileid: "106387045"
 
 | 使用事例 | データ型 |
 | -------- | --------- |
-| 医療用語や IT 用語のような業界固有の語彙や文法に対する認識精度を向上させる。 | 関連テキスト (文/発話) |
-| 製品名や頭字語のような、発音が標準ではない単語または用語の表音および表示形式を定義する。 | 関連テキスト (発音) |
+| 医療用語や IT 用語のような業界固有の語彙や文法に対する認識精度を向上させる。 | プレーンテキストまたは構造化テキスト データ |
+| 製品名や頭字語のような、発音が標準ではない単語または用語の表音および表示形式を定義する。 | 構造化テキスト内の発音データまたは音声発音 |
 | 読み上げのスタイル、アクセント、または特定の背景ノイズの認識精度を向上させる | "オーディオ + 人間" とラベルが付いたトランスクリプト |
 
 ## <a name="train-and-evaluate-a-model"></a>モデルのトレーニングと評価

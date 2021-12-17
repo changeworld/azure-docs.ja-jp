@@ -7,12 +7,13 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cbc415411e05d6fdecee1acf2fbc02b3c170b9d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c7acaadefc3e249971f69bc833831bf14246ba88
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501126"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044575"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Attestation を設定する
 
@@ -74,7 +75,7 @@ Update-Module -Name Az.Attestation
 構成証明の操作をサポートするうえで必要な Az モジュールの最小バージョン:
 - Az 4.5.0
 - Az.Accounts 1.9.2
-- Az.Attestation 0.1.8
+- Az.Attestation 1.0.0
 
 すべての Az モジュールについてインストールされているバージョンを確認するには、次のコマンドを実行します。 
 
@@ -119,6 +120,10 @@ $location = "uksouth"
 $attestationResourceGroup = "<attestation provider resource group name>"
 New-AzResourceGroup -Name $attestationResourceGroup -Location $location 
 ```
+
+ > [!NOTE]
+   > このリソース グループに構成証明プロバイダーが作成された場合、Azure AD ユーザーがポリシーの構成、ポリシー署名者証明書の管理などの操作を実行するには、そのプロバイダーに対して **構成証明共同作成者** ロールを持っている必要があります。 これらのアクセス許可は、サブスクリプションまたはリソース グループに対する **所有者** (ワイルドカード アクセス許可)、**共同作成者** (ワイルドカード アクセス許可) などのロールで継承させることもできます。  
+
 
 ## <a name="create-and-manage-an-attestation-provider"></a>構成証明プロバイダーを作成して管理する
 
@@ -170,12 +175,12 @@ Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationR
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
-これらのアクセス許可は、"所有者" (ワイルドカードのアクセス許可)、"共同作成者" (ワイルドカードのアクセス許可)、"構成証明の共同作成者" (Azure Attestation 専用のアクセス許可) などのロールを経由して AD ユーザーに割り当てることができます。  
+ これらの操作を実行するには、Azure AD ユーザーが構成証明プロバイダーに対して **構成証明の共同作成者** ロールを持っている必要があります。 これらのアクセス許可は、サブスクリプションまたはリソース グループに対する **所有者** (ワイルドカード アクセス許可)、**共同作成者** (ワイルドカード アクセス許可) などのロールで継承させることもできます。  
 
 ポリシーを読み込むには、Azure AD ユーザーに "Actions" の次のアクセス許可が必要になります。
 - Microsoft.Attestation/attestationProviders/attestation/read
 
-このアクセス許可は、"閲覧者" (ワイルドカードのアクセス許可) や "構成証明リーダー" (Azure Attestation 専用のアクセス許可) などのロールを経由して AD ユーザーに割り当てることができます。
+ この操作を実行するには、Azure AD ユーザーが構成証明プロバイダーに対して **構成証明の閲覧者** ロールを持っている必要があります。 読み取りアクセス許可は、サブスクリプションまたはリソース グループに対する **閲覧者** (ワイルドカード アクセス許可) などのロールで継承させることもできます。  
 
 構成証明プロバイダー用のポリシーの管理は、以下の PowerShell コマンドレットで行うことができます (一度に 1 TEE)。
 

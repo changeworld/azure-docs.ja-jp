@@ -3,7 +3,7 @@ title: レポート用の Azure Monitor ブック | Microsoft Docs
 description: Azure Active Directory レポートに Azure Monitor ブックを使用する方法について説明します。
 services: active-directory
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 ms.assetid: 4066725c-c430-42b8-a75b-fe2360699b82
 ms.service: active-directory
 ms.devlang: ''
@@ -11,15 +11,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/30/2019
+ms.date: 5/19/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b84c38b28b51f867160272883465242fc81ff2bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe9639049573f62dbd403ab39c3c2067355a60f6
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588060"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995884"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory レポートに Azure Monitor ブックを使用する方法
 
@@ -32,17 +32,19 @@ ms.locfileid: "100588060"
 
 - サインイン エラーのトラブルシューティングを行って、組織のサインインの正常性をより理解し、問題をすばやく解決したい。
 
+- テナント内の危険なユーザーとリスク検出の傾向を理解していますか?
+
 - レガシ認証を使用して環境にサインインしているユーザーを知りたい。 [レガシ認証をブロック](../conditional-access/block-legacy-authentication.md)することで、テナントの保護を向上させることができます。
 
 - テナント内の条件付きアクセス ポリシーの影響を理解する必要がありますか。
 
 - サインイン ログのクエリ、アクセスを付与または拒否されたユーザーの数や、リソースへのアクセス時に条件付きアクセス ポリシーをバイパスしたユーザーの数についてのブック レポートを確認する機能が必要ですか。
 
-- ポリシーの影響をデバイスのプラットフォーム、デバイスの状態、クライアント アプリ、サインイン リスク、場所、アプリケーションなどの条件ごとにコンテキスト化できるように、条件ごとのブックの詳細をより深く理解することに関心がありますか。
+- ポリシーの影響をデバイスのプラットフォーム、デバイスの状態、クライアント アプリ、サインイン リスク、場所、アプリケーションなどの条件ごとにコンテキスト化できるように、条件ごとにブックで詳細を確認しながら、条件付きアクセスの理解を深めることに関心がありますか。
 
-- サインイン ログのクエリ、アクセスを付与または拒否されたユーザーの数や、リソースへのアクセス時に条件付きアクセス ポリシーをバイパスしたユーザーの数についてのブック レポートに関するより深い分析情報を取得したいですか。
+- アプリケーション ロールや[アクセス パッケージの割り当てアクティビティ](../governance/entitlement-management-logs-and-reporting.md)に関する 1 年以上の履歴をアーカイブし、レポートを作成したいですか。
 
-- こうした疑問の解決を支援するために、Azure Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](../../azure-monitor/visualize/workbooks-overview.md)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。
+こうした疑問の解決を支援するために、Azure Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](../../azure-monitor/visualize/workbooks-overview.md)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。
 
 
 
@@ -292,10 +294,27 @@ Workbooks には、IT 管理者がそのテナント内の条件付きアクセ�
     ![ユーザー アクションを待機しているサインインの概要](./media/howto-use-azure-monitor-workbooks/54.png)
 
 
+## <a name="identity-protection-risk-analysis"></a>Identity Protection リスク分析
 
+**[使用法]** セクションの **Identity Protection リスク分析** ブックを使用して、次の情報を確認します。
 
+- リスクの高いユーザーの分布と、レベルと種類別のリスク検出
+- リスクをより良く修復する機会
+- 世界のリスクが検出されている場所
 
+危険な検出の傾向は、次の方法でフィルター処理できます。
+- 検出のタイミングの種類
+- リスク レベル
+
+リアルタイムのリスク検出は、認証の時点で検出できるリスク検出です。 これらの検出は、条件付きアクセスを使用して多要素認証を要求する危険なサインイン ポリシーによって困難になる可能性があります。 
+
+危険なユーザーの傾向は、次の方法でフィルター処理できます。
+- リスクの詳細
+- リスク レベル
+
+"アクションなし" が実行されている危険なユーザーが多い場合は、ユーザーのリスクが高いときに、セキュリティで保護されたパスワード変更を要求する条件付きアクセス ポリシーを有効にしてください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/visualize/workbooks-overview.md)
+* [Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/visualize/workbooks-overview.md)
+* [Azure PowerShell を使用してカスタム Azure Monitor クエリを作成する](../governance/entitlement-management-logs-and-reporting.md)。

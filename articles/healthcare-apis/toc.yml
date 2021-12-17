@@ -1,0 +1,60 @@
+items:
+  - name: FHIR 用 Azure API のドキュメント
+    href: ./azure-api-for-fhir/index.yml
+  - name: Azure の医療 Api (プレビュー) のドキュメント
+    href: index.yml
+  - name: 概要
+    expanded: true
+    items:
+      - name: 医療 Api について
+        href: healthcare-apis-overview.md
+      - name: ワークスペースの概要
+        href: workspace-overview.md
+      - name: FHIR サービス
+        href: ./fhir/index.yml
+      - name: DICOM サービス
+        href: ./dicom/index.yml
+      - name: IoT コネクタ
+        href: ./iot/index.yml
+      - name: データの転送と変換
+        href: ./data-transformation/index.yml
+  - name: クイックスタート
+    expanded: true
+    items:
+      - name: 医療 Api のデプロイ
+        href: healthcare-apis-quickstart.md
+  - name: 操作方法ガイド
+    expanded: true
+    items:
+      - name: ユーザーアクセスとアクセス許可を管理する
+        expanded: true
+        items:
+          - name: 認証と承認
+            href: authentication-authorization.md
+          - name: クライアントアプリケーションを登録する
+            href: register-application.md
+          - name: Azure RBAC を構成する
+            href: configure-azure-rbac.md
+          - name: アクセストークンを取得する
+            href: get-access-token.md
+      - name: Postman を使用したアクセス
+        href: use-postman.md
+      - name: CURL を使用したアクセス
+        href: using-curl.md
+      - name: REST クライアントを使用したアクセス
+        href: using-rest-client.md
+      - name: ログ記録
+        href: logging.md
+  - name: 概念
+    items:
+      - name: Azure Policy によるセキュリティ制御
+        href: security-controls-policy.md
+  - name: リソース
+    expanded: true
+    items:
+      - name: リリース ノート
+        href: release-notes.md
+      - name: FAQ
+        href: healthcare-apis-faqs.md
+      - name: GitHub プロジェクト
+        href: github-projects.md

@@ -5,21 +5,22 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 6b495e8e700f146f5e6c117413456311ac0cdd5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: aafd6f2e0d5c10b1e3e1698176734a83083ef72d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037882"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744502"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor のログ アラートのトラブルシューティング  
 
 この記事では、Azure Monitor 内のログ アラートに関する一般的な問題の解決方法について説明します。 また、ログ アラートの機能や構成でよく発生する問題の解決策も紹介しています。
 
-ログ アラートを使用すると、ユーザーは [Log Analytics](../logs/log-analytics-tutorial.md) クエリを使用して、設定した頻度で毎回リソース ログを評価し、結果に基づいてアラートを発生させることができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](alerts-unified-log.md)。
+ログ アラートにより、ユーザーは [Log Analytics](../logs/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。 ログ アラートの機能と用語の詳細については、「[Azure Monitor でのログ アラート](alerts-unified-log.md)」を参照してください。
 
 > [!NOTE]
-> この記事では、トリガーされ Azure portal に表示されたアラート ルールの通知が、関連付けられているアクション グループで対処されなかった場合については考慮していません。 そのような場合は、[ここ](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)でトラブルシューティングに関する詳細を参照してください。
+> この記事では、Azure portal にアラート ルールがトリガーされたことが表示されていても、通知が受信されていないケースは考慮していません。 このようなケースについては、「[アラートのアクションまたは通知が想定どおりに機能しなかった](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)」を参照してください。
 
 ## <a name="log-alert-didnt-fire"></a>ログ アラートが作動しない
 
@@ -29,29 +30,33 @@ Azure Monitor では、世界中にわたる顧客のテラバイト単位のロ
 
 ログは半構造化されたデータであり、本質的にメトリックよりも潜在的な状態で存在します。 発せられたアラートの遅延が 4 分以上発生している場合は、[メトリック アラート](alerts-metric-overview.md)の使用を検討してください。 [ログのメトリック アラート](alerts-metric-logs.md)を使用して、ログからメトリック ストアにデータを送信できます。
 
-システムでは、待機時間を軽減するため、アラートの評価が複数回再試行されます。 データが到着するとアラートが発生します。ほとんどの場合、ログ レコードの時刻とは等しくありません。
+待機時間を軽減するため、システムではアラートの評価が複数回再試行されます。 データが到着するとアラートが発生します。ほとんどの場合、ログ レコードの時刻とは等しくありません。
 
 ### <a name="incorrect-query-time-range-configured"></a>クエリの時間の範囲が正しく構成されない
 
-クエリの時間の範囲は、ルール条件の定義で設定されます。 このフィールドは、ワークスペースと Application Insights の場合は **[期間]** という名前で、他の種類のリソースの場合はすべて、 **[クエリの時間の範囲のオーバーライド]** という名前です。 Log Analytics の場合と同様に、時間の範囲によって、クエリ データは指定された期間に制限されます。 クエリで **ago** コマンドが使用されていても、時間の範囲が適用されます。 
+クエリの時間の範囲は、ルール条件の定義で設定されます。 ワークスペースと Application Insights では、このフィールドは **期間** と呼ばれます。 他のすべてのリソースの種類では、**クエリの時間の範囲のオーバーライド** と呼ばれます。 Log Analytics の場合と同様に、時間の範囲によって、クエリ データは指定された期間に制限されます。 クエリで **ago** コマンドが使用されていても、時間の範囲が適用されます。 
 
-たとえば、時間範囲が 60 分のときは、テキストに **ago(1d)** が含まれていたとしても、クエリでスキャンされるのは 60 分です。 時間範囲とクエリ時間のフィルター処理は、一致している必要があります。 この例の場合、 **[期間]**  /  **[クエリの時間の範囲のオーバーライド]** を 1 日に変更すると、予期した通り機能します。時間の範囲
+たとえば、時間の範囲が 60 分のときは、テキストに **ago(1d)** が含まれていても、クエリでスキャンされるのは 60 分です。 時間範囲とクエリ時間のフィルター処理は、一致している必要があります。 この例の場合、 **[期間]**  /  **[クエリの時間の範囲のオーバーライド]** を 1 日に変更すると、予期した通り機能します。
 
 ![期間](media/alerts-troubleshoot-log/LogAlertTimePeriod.png)
 
 ### <a name="actions-are-muted-in-the-alert-rule"></a>アラート ルールのアクションがミュートされる
 
-ログ アラートには、発生したアラート アクションを一定時間ミュートするオプションがあります。 このフィールドは、ワークスペースと Application Insights では **[アラートを表示しない]** という名前です。 他のすべてのリソースの種類では、 **[アクションのミュート]** という名前です。 
+ログ アラートには、発生したアラート アクションを一定時間ミュートするオプションがあります。 ワークスペースと Application Insights では、このフィールドは **[アラートを表示しない]** という名前です。 他のすべてのリソースの種類では、 **[アクションのミュート]** という名前です。 
 
-サービスの問題が原因でアラートによってアクションが起きなかったと思うことが、よくある問題です。 実際には、ルールの構成によってミュートされたのです。
+よくある問題として、ルールの構成によってミュートされているにもかかわらず、サービスの問題が原因でアラートがアクションを起動しなかったと思ってしまうことがあります。
 
 ![Suppress alerts (アラートの抑制)](media/alerts-troubleshoot-log/LogAlertSuppress.png)
 
+### <a name="alert-scope-resource-has-been-moved-renamed-or-deleted"></a>アラート スコープ リソースが移動、名前変更、または削除される
+
+アラート ルールを作成すると、Log Analytics によってユーザー ID のアクセス許可スナップショットが作成されます。 このスナップショットはルールに保存され、ルール スコープ リソースである Azure Resource Manager ID が含まれています。 このルール スコープ リソースが移動、名前変更、または削除された場合、そのリソースを参照しているすべてのログ アラート ルールが機能しなくなります。 正しく機能させるには、新しい Azure Resource Manager ID を使用してアラート ルールを再作成する必要があります。
+
 ### <a name="metric-measurement-alert-rule-with-splitting-using-the-legacy-log-analytics-api"></a>レガシ Log Analytics API を使用したメトリック測定アラート ルールの分割
 
-[メトリック測定](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)は、まとめられた時系列の結果に基づく種類のログ アラートです。 これらのルールを使用すると、列単位でグループ化して[アラートを分割](alerts-unified-log.md#split-by-alert-dimensions)できます。 レガシ Log Analytics API を使用している場合は、予期したとおりに分割が機能しません。 レガシ API でグループ化を選択することはサポートされていません。
+[メトリック測定](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)は、集計された時系列の結果に基づくログ アラートの一種です。 これらのルールを使用して、列でグループ化して[アラートを分割](alerts-unified-log.md#split-by-alert-dimensions)できます。 レガシ Log Analytics API を使用している場合、分割は期待通りに機能しませんが、これはグループ化がサポートされないためです。
 
-現在の ScheduledQueryRules API では、[[メトリック測定]](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) ルールに **[集約]** を設定できます。これは、予期したとおりに機能します。 [現在の ScheduledQueryRules API への切り替えの詳細について確認してください](../alerts/alerts-log-api-switch.md)。
+現在の ScheduledQueryRules API を使用して、[[メトリック測定]](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) ルールに **[集約]** を設定することで、期待通りに機能します。 現在の ScheduledQueryRules API への切り替えの詳細については、「レガシ Log Analytics Alert API から現在の Log Alerts API にアップグレードする」(../alerts/alerts-log-api-switch.md) を参照してください。
 
 ## <a name="log-alert-fired-unnecessarily"></a>ログ アラートが不必要に作動する
 
@@ -63,7 +68,7 @@ Azure Monitor では、世界中にわたる顧客のテラバイト単位のロ
 
 ログは半構造化されたデータであり、本質的にメトリックよりも潜在的な状態で存在します。 発せられたアラートで、誤発生が多数起きている場合は、[メトリック アラート](alerts-metric-overview.md)の使用を検討してください。 [ログのメトリック アラート](alerts-metric-logs.md)を使用して、ログからメトリック ストアにデータを送信できます。
 
-ログ アラートが最適に機能するのは、ログ内でデータの検出を試みるときです。 ログ内にデータがないことを検出しようとするときの効果は低下します。 たとえば、仮想マシンのハートビートに関するアラートです。 
+ログ アラートが最適に機能するのは、ログ内でデータの検出を試みるときです。 仮想マシンのハートビートに関するアラートなど、ログ内にデータがないことを検出しようとするときの効果は低下します。 
 
 誤ったアラートを防止する機能は組み込まれていますが、それでも、非常に潜在性の高いデータ (約 30 分以上) や待機時間が急増することがあるデータで発生する可能性があります。
 
@@ -84,23 +89,23 @@ SecurityEvent
 | count
 ```
 
-クエリにアラート ロジックを追加する必要はなく、それを行うと問題を引き起こす可能性さえあります。 上の例では、クエリに `count` を含めると、アラート サービスによって `count` の `count` が行われるため、常に値 1 が返されます。
+クエリにアラート ロジックを追加する必要はなく、それを行うと問題を引き起こす可能性さえあります。 前の例では、クエリに `count` を含めると、常に **1** の値になります。これは、アラート サービスが `count` の `count` を実行するためです。
 
-最適化されたクエリは、ログ アラート サービスによって実行されるものです。 変更されたクエリは、Log Analytics の[ポータル](../logs/log-query-overview.md)または [API](/rest/api/loganalytics/) で実行できます。
+ログ アラート サービスでは、最適化されたクエリが実行されます。 変更されたクエリは、Log Analytics の[ポータル](../logs/log-query-overview.md)または [API](/rest/api/loganalytics/) で実行できます。
 
-ワークスペースと Application Insights の場合は **[実行するクエリ]** という名前で、条件ペインにあります。 他のリソースの種類ではすべて、条件タブで **[最終的なアラート クエリを表示]** を選択します。
+ワークスペースと Application Insights の場合は **[実行するクエリ]** という名前で、条件ペインにあります。 他のリソースの種類ではすべて、 **[条件]** タブで **[最終的なアラート クエリを表示]** を選択します。
 
 ![実行するクエリ](media/alerts-troubleshoot-log/LogAlertPreview.png)
 
 ## <a name="log-alert-was-disabled"></a>ログ アラートが無効になった
 
-以降のセクションで、Azure Monitor によってログ アラート ルールが無効にされた可能性があるいくつかの理由を挙げます。 [ルールが無効にされたときに送信されるアクティビティ ログの例](#activity-log-example-when-rule-is-disabled)も含めてあります。
+以降のセクションで、Azure Monitor によってログ アラート ルールが無効にされた可能性があるいくつかの理由を挙げます。 これらのセクションの後には、[ルールが無効にされたときに送信されるアクティビティ ログの例](#activity-log-example-when-rule-is-disabled)があります。
 
 ### <a name="alert-scope-no-longer-exists-or-was-moved"></a>アラート スコープが存在しなくなったか移動された
 
-アラート ルールのスコープ リソースが有効でなくなると、ルールの実行は失敗します。 この場合は課金も停止します。
+アラート ルールのスコープ リソースが有効でなくなると、ルールの実行は失敗し、課金が停止します。
 
-Azure Monitor では、連続して失敗する場合は 1 週間後にログ アラートが無効にされます。
+ログ アラートが 1 週間継続的に失敗した場合、Azure Monitor によって無効化されます。
 
 ### <a name="query-used-in-a-log-alert-isnt-valid"></a>ログ アラートで使用されているクエリが有効でない
 
@@ -112,38 +117,37 @@ Azure Monitor では、連続して失敗する場合は 1 週間後にログ �
     - ログ記録ソリューションが[ワークスペースにデプロイ](../insights/solutions.md#install-a-monitoring-solution)されなかったために、テーブルが作成されていません。
     - クエリのテーブルへのデータ フローが 30 日より長く停止しました。
     - データ フローが開始されていないため、[カスタム ログ テーブル](../agents/data-sources-custom-logs.md)がまだ作成されていません。
-- [クエリ言語](/azure/kusto/query/)が変更され、コマンドと関数の形式が変更されています。 そのため以前指定したクエリが有効ではなくなっています。
+- [クエリ言語](/azure/kusto/query/)が変更されて、コマンドと関数の形式が変更されたため、前に指定したクエリが無効になります。
 
 この動作は、[Azure Advisor](../../advisor/advisor-overview.md) で警告されています。 影響を受けるログ アラート ルールに関する推奨事項が追加されます。 使用されるカテゴリは "高可用性" で、影響は中程度です。また、"確実に監視するためログ アラート ルールを修復します" という説明が含まれています。
 
 ## <a name="alert-rule-quota-was-reached"></a>アラート ルール クォータへの到達
 
-サブスクリプションおよびリソースあたりのログ検索アラート ルールの数には、[こちら](../service-limits.md)に記載されているクォータ制限が適用されます。
+サブスクリプションごとのログ検索アラート ルールの数とリソースの上限の詳細については、「[Azure Monitor サービスの制限](../service-limits.md)」を参照してください。
 
 ### <a name="recommended-steps"></a>推奨される手順
     
 クォータ制限に達した場合は、次の手順が問題の解決に役立つ場合があります。
 
 1. 今後使用しないログ検索アラート ルールを削除または無効にします。
-1. ルール数を減らすため、[ディメンション別のアラートの分割](alerts-unified-log.md#split-by-alert-dimensions)を使用してみます。 これらのルールでは、多くのリソースと検出ケースを監視できます。
+1. [ディメンション別のアラートの分割](alerts-unified-log.md#split-by-alert-dimensions)を使用して、ルール数を減らします。 これらのルールでは、多くのリソースと検出ケースを監視できます。
 1. クォータ制限を増やす必要がある場合は、引き続きサポート リクエストを開き、以下の情報を提供します。
 
-    - クォータ制限を増やす必要があるサブスクリプション ID とリソース ID。
-    - クォータの引き上げの理由。
-    - クォータを引き上げるリソースの種類:**Log Analytics**、**Application Insights** など。
-    - 要求されるクォータ制限。
-
+    - クォータ制限を引き上げる必要があるサブスクリプション ID とリソース ID
+    - クォータの引き上げの理由
+    - クォータを引き上げるリソースの種類 (**Log Analytics**、**Application Insights** など)
+    - 要求されるクォータ制限
 
 ### <a name="to-check-the-current-usage-of-new-log-alert-rules"></a>新しいログ アラート ルールの現在の使用状況を確認するには
     
 #### <a name="from-the-azure-portal"></a>Azure portal から
 
-1. *[アラート]* 画面を開き、 *[アラート ルールの管理]* を選択します
-2. *[サブスクリプション]* ドロップダウン コントロールを使用して、関連するサブスクリプションをフィルター処理します
-3. 特定のリソース グループ、リソースの種類、またはリソースをフィルター処理しないようにしてください
-4. *[シグナルの種類]* ドロップダウン コントロールで、[ログ検索] を選択します。
-5. *[状態]* ドロップダウン コントロールが [有効] に設定されていることを確認します
-6. ログ検索アラート ルールの合計数がルールの一覧の上に表示されます
+1. [アラート] 画面で、 **[アラート ルールの管理]** を選択します。
+1. **[サブスクリプション]** ドロップダウン コントロールで、目的のサブスクリプションをフィルター処理します。 (特定のリソース グループ、リソースの種類、またはリソースをフィルター処理しないようにしてください。)
+1. **[シグナルの種類]** ドロップダウン コントロールで、 **[ログ検索]** を選択します。
+1. **[状態]** ドロップダウン コントロールが **[有効]** に設定されていることを確認します。
+
+ログ検索アラート ルールの合計数がルールの一覧の上に表示されます。
 
 #### <a name="from-api"></a>API から
 
@@ -152,7 +156,9 @@ Azure Monitor では、連続して失敗する場合は 1 週間後にログ �
 
 ## <a name="activity-log-example-when-rule-is-disabled"></a>ルールが無効になっているときのアクティビティ ログの例
 
-クエリが 7 日間続けて失敗した場合、Azure Monitor によってログ アラートが無効にされ、ルールの課金が停止されます。 Azure Monitor がログ アラートを無効にした正確な時間は、[Azure アクティビティ ログ](../../azure-resource-manager/management/view-activity-logs.md)で調べることができます。 こちらの例を参照してください。
+クエリが 7 日間続けて失敗した場合、Azure Monitor によってログ アラートが無効にされ、ルールの課金が停止されます。 Azure Monitor がログ アラートを無効にした正確な時間は、[Azure アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)で確認できます。 
+
+こちらの例を参照してください。
 
 ```json
 {

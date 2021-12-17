@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/26/2021
 ms.author: justinha
-ms.openlocfilehash: f1f2499c49c4adf16b632bc75c246a28330ad27b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07ce4db1e3cca141ccbddde61f9dc196da801698
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619387"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044457"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services のマネージド ドメインのグループ ポリシーを管理する
 
@@ -24,6 +24,8 @@ Azure Active Directory Domain Services (Azure AD DS) のユーザー オブジ�
 ハイブリッド環境では、オンプレミスの AD DS 環境内で構成されているグループ ポリシーは、Azure AD DS に同期されません。 Azure AD DS のユーザーまたはコンピューターの構成設定を定義するには、既定のいずれかの Gpo を編集するか、カスタム GPO を作成します。
 
 この記事では、グループ ポリシーの管理ツールをインストールし、組み込みの GPO を編集して、カスタム GPO を作成する方法について説明します。
+
+Azure のマシンやハイブリッド接続を含むサーバー[管理](../governance/policy/how-to/guest-configuration-create-group-policy.md)戦略に関心がある場合は、[グループ ポリシー コンテンツを](../azure-arc/servers/overview.md) Azure Policy [のゲスト構成](../governance/policy/concepts/guest-configuration.md)機能に変換する方法を参照[してください](../governance/policy/overview.md)。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -43,8 +45,6 @@ Azure Active Directory Domain Services (Azure AD DS) のユーザー オブジ�
 > グループ ポリシー管理用テンプレートを使用するには、新しいテンプレートを管理ワークステーションにコピーします。 *.admx* ファイルを `%SYSTEMROOT%\PolicyDefinitions` にコピーし、ロケール固有の *.adml* ファイルを `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]` にコピーします。この `Language-CountryRegion` は *.adml* の言語とリージョンに一致します。
 >
 > たとえば、英国、米国バージョンの *.adml* ファイルを `\en-us` フォルダーにコピーします。
->
-> また、マネージド ドメインの一部であるドメイン コントローラーに、グループ ポリシー管理用テンプレートを一元的に格納することもできます。 詳細については、「[Windows でグループ ポリシー管理用テンプレート用のセントラル ストアを作成および管理する方法](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)」を参照してください。
 
 ## <a name="install-group-policy-management-tools"></a>グループ ポリシーの管理ツールをインストールする
 

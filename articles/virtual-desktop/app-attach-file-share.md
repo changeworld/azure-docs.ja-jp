@@ -1,27 +1,27 @@
 ---
-title: Windows Virtual Desktop での MSIX アプリのアタッチのファイル共有の設定 - Azure
-description: Windows Virtual Desktop の MSIX アプリのアタッチ用にファイル共有を設定する方法。
+title: Azure Virtual Desktop での MSIX アプリのアタッチのファイル共有の設定 - Azure
+description: Azure Virtual Desktop の MSIX アプリのアタッチ用にファイル共有を設定する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a2d4ebee02d85d10d5db8ec2de0bb1be334770dc
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: b568b11b7e0e630dcceef53e4c0f513dc0a7732c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717659"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547559"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach"></a>MSIX アプリのアタッチ用にファイル共有を設定する
 
 すべての MSIX イメージは、読み取り専用アクセス許可を持つホスト プール内のユーザーがアクセスできるネットワーク共有上に格納する必要があります。
 
-MSIX アプリのアタッチは、ファイル共有が使用する記憶域ファブリックの種類には依存していません。 MSIX アプリのアタッチ共有に関する考慮事項は、FSLogix 共有のものと同じです。 ストレージの要件の詳細については、「[Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション](store-fslogix-profile.md)」をご覧ください。
+MSIX アプリのアタッチは、ファイル共有が使用する記憶域ファブリックの種類には依存していません。 MSIX アプリのアタッチ共有に関する考慮事項は、FSLogix 共有のものと同じです。 ストレージの要件の詳細については、「[Azure Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション](store-fslogix-profile.md)」をご覧ください。
 
 ## <a name="performance-requirements"></a>パフォーマンス要件
 
-システムに応じた MSIX アプリのアタッチ イメージ サイズの限度は、VHD または VHDx ファイルの格納に使用しているストレージの種類と、VHD、VHSD または CIM ファイルとファイル システムのサイズ限度によって異なります。
+システムに応じた MSIX アプリのアタッチ イメージ サイズの限度は、VHD または VHDx ファイルの格納に使用しているストレージの種類と、VHD、VHDX、CIM のいずれかのファイルとファイル システムのサイズ限度によって異なります。
 
 次の表に、内部に 1 つの MSIX アプリを含む単一の 1 GB MSIX イメージが VM ごとに必要とするリソース数に関する例を示します。
 
@@ -35,7 +35,7 @@ MSIX アプリのアタッチは、ファイル共有が使用する記憶域フ
 
 ### <a name="storage-recommendations"></a>記憶域の推奨事項
 
-Azure には、MSIX アプリのアタッチに使用できる複数のストレージ オプションが用意されています。 Azure Files または Azure NetApp Files を使用することをお勧めします。これらのオプションは、コストと管理のオーバーヘッドの間で最適な価値をもたらすためです。 記事「[Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション](store-fslogix-profile.md)」では、Windows Virtual Desktop のコンテキストで Azure で提供されているさまざまなマネージド ストレージ ソリューションが比較されています。
+Azure には、MSIX アプリのアタッチに使用できる複数のストレージ オプションが用意されています。 Azure Files または Azure NetApp Files を使用することをお勧めします。これらのオプションは、コストと管理のオーバーヘッドの間で最適な価値をもたらすためです。 記事「[Azure Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション](store-fslogix-profile.md)」では、Azure Virtual Desktop のコンテキストで Azure で提供されているさまざまなマネージド ストレージ ソリューションが比較されています。
 
 ### <a name="optimize-msix-app-attach-performance"></a>MSIX アプリのアタッチのパフォーマンスを最適化する
 
@@ -44,16 +44,16 @@ MSIX アプリのアタッチのパフォーマンスを最適化するために
 - MSIX アプリのアタッチに使用するストレージ ソリューションは、セッション ホストと同じデータセンターの場所に存在する必要があります。
 - パフォーマンスのボトルネックを回避するには、次の VHD、VHDX、および CIM ファイルをウイルス対策スキャンから除外します。
    
-    - <MSIXAppAttachFileShare\>\*.VHD
-    - <MSIXAppAttachFileShare\>\*.VHDX
-    - \\\\storageaccount.file.core.windows.net\\share\*\*.VHD
-    - \\\\storageaccount.file.core.windows.net\\share\*\*.VHDX
-    - <MSIXAppAttachFileShare>.CIM
-    - \\\\storageaccount.file.core.windows.net\\share\*\*.CIM
+    - `<MSIXAppAttachFileShare\>\*.VHD`
+    - `<MSIXAppAttachFileShare\>\*.VHDX`
+    - `\\storageaccount.file.core.windows.net\share*.VHD`
+    - `\\storageaccount.file.core.windows.net\share*.VHDX`
+    - `<MSIXAppAttachFileShare>.CIM`
+    - `\\storageaccount.file.core.windows.net\share**.CIM`
 
 - MSIX アプリのアタッチ用の記憶域ファブリックを FSLogix プロファイル コンテナーから分離します。
 - ファイル共有にアクセスするには、すべての VM システム アカウントとユーザー アカウントに読み取り専用アクセス許可が必要です。
-- Windows Virtual Desktop のどのディザスター リカバリー プランにも、セカンダリ フェールオーバーの場所での MSIX アプリのアタッチ ファイル共有のレプリケートが含まれている必要があります。 ディザスター リカバリーの詳細については、「[事業継続とディザスター リカバリー プランを設定する](disaster-recovery.md)」をご覧ください。
+- Azure Virtual Desktop のどのディザスター リカバリー プランにも、セカンダリ フェールオーバーの場所での MSIX アプリのアタッチ ファイル共有のレプリケートが含まれている必要があります。 ディザスター リカバリーの詳細については、「[事業継続とディザスター リカバリー プランを設定する](disaster-recovery.md)」をご覧ください。
 
 ## <a name="how-to-set-up-the-file-share"></a>ファイル共有を設定する方法
 
@@ -104,7 +104,7 @@ ID をストレージに割り当てたら、[次の手順](#next-steps)の記�
 
 完了すると、次のような他のリソースが役に立つことがあります。
 
-- [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスして、コミュニティにこの機能に関する質問をします。
-- また、Windows Virtual Desktop についてのフィードバックは、[Windows Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。
+- [Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) で、コミュニティにこの機能に関する質問を行うことができます。
+- また、Azure Virtual Desktop についてのフィードバックは、[Azure Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。
 - [MSIX アプリのアタッチの用語集](app-attach-glossary.md)
-- [MSIX アプリ アタッチに関するごよくある質問](app-attach-faq.md)
+- [MSIX アプリ アタッチに関するごよくある質問](app-attach-faq.yml)

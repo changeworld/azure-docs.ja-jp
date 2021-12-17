@@ -2,13 +2,13 @@
 title: プライベート リンク サービスを使用してイベントを配信する
 description: この記事では、プライベート リンク サービスを使用してイベントを配信できないという制限に対処する方法について説明します。
 ms.topic: how-to
-ms.date: 02/12/2021
-ms.openlocfilehash: 75ae8ff2c341048c39156e43da3615788e9d0f0a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 07/01/2021
+ms.openlocfilehash: 0672b2b93cf7413ac9a3d46e8d824354276ba89f
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309433"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286119"
 ---
 # <a name="deliver-events-using-private-link-service"></a>プライベート リンク サービスを使用してイベントを配信する
 現時点では、[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用してイベントを配信することはできません。 つまり、配信されたイベント トラフィックがプライベート IP 空間から外に出てはならないという、ネットワークの分離の厳格な要件がある場合はサポートされません。 
@@ -44,9 +44,9 @@ ms.locfileid: "107309433"
 マネージド ID を使用して Storage キューにイベントを配信するには、これらの手順を実行します。
 
 1. システム割り当て ID ([システム トピック](enable-identity-system-topics.md)、[カスタム トピック、ドメイン](enable-identity-custom-topics-domains.md)) を有効にします。 
-1. [Azure Storage キューの **ストレージ キュー データ メッセージ送信者**](../storage/common/storage-auth-aad-rbac-portal.md)ロールに ID を追加します。
-1. システム割り当て ID を使用するように、Service Bus のキューまたはトピックをエンドポイントとして使用する[イベント サブスクリプションを構成します](managed-service-identity.md#create-event-subscriptions-that-use-an-identity)。
+1. [Azure Storage キューの **ストレージ キュー データ メッセージ送信者**](../storage/blobs/assign-azure-role-data-access.md)ロールに ID を追加します。
+1. Storage キューをエンドポイントとして使用する[イベント サブスクリプションを構成し](managed-service-identity.md#create-event-subscriptions-that-use-an-identity)、システムで割り当てられた ID を使用します。
 
 
 ## <a name="next-steps"></a>次のステップ
-マネージド ID を使用したイベント配信の詳細については、「[マネージ ID を使用したイベント配信](managed-service-identity.md)」を参照してください。 
+マネージド ID を使用したイベント配信の詳細については、「[マネージ ID を使用したイベント配信](managed-service-identity.md)」を参照してください。

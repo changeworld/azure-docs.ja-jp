@@ -11,21 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 7f8e3df927b74cff7e4dc8bf1456600740c07088
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a867ab015dedcbe5c8053b4ff26a98f406cbd6af
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567680"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286935"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS 診断ログの表示と構成
 
-Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、攻撃の詳細な情報および視覚化が提供されます。 DDoS 攻撃から仮想ネットワークを保護している場合、攻撃の軽減策レポートと軽減策フロー ログによって、攻撃のトラフィック、および攻撃を緩和するために行われたアクションの詳細を視覚的に確認できます。 豊富なテレメトリは、DDoS 攻撃の間に、詳細なメトリックを含む Azure Monitor を通じて公開されます。 DDoS Protection によって公開される Azure Monitor の任意のメトリックに対して、アラートを構成することができます。 Azure Monitor 診断インターフェイスを介した高度な分析用に、ログを [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md)、Splunk (Azure Event Hubs)、OMS Log Analytics、Azure Storage とさらに統合できます。
+Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、攻撃の詳細な情報および視覚化が提供されます。 DDoS 攻撃から仮想ネットワークを保護している場合、攻撃の軽減策レポートと軽減策フロー ログによって、攻撃のトラフィック、および攻撃を緩和するために行われたアクションの詳細を視覚的に確認できます。 豊富なテレメトリは、DDoS 攻撃の間に、詳細なメトリックを含む Azure Monitor を通じて公開されます。 DDoS Protection によって公開される Azure Monitor の任意のメトリックに対して、アラートを構成することができます。 Azure Monitor 診断インターフェイスを介した高度な分析用に、ログを [Microsoft Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection)、Splunk (Azure Event Hubs)、OMS Log Analytics、Azure Storage とさらに統合できます。
 
 Azure DDoS Protection Standard には、次の診断ログを使用できます。 
 
 - **DDoSProtectionNotifications**:パブリック IP リソースが攻撃を受けているとき、および攻撃の軽減が終了したときに、通知を受け取ります。
-- **DDoSMitigationFlowLogs**:攻撃の軽減フロー ログを使用すると、アクティブな DDoS 攻撃中に、削除されたトラフィック、転送されたトラフィック、およびその他の有用なデータ ポイントをほぼリアルタイムで確認できます。 この一定のデータ ストリームをほぼリアルタイムに監視するために、イベント ハブを使用して Azure Sentinel またはサードパーティの SIEM システム内に取り込み、可能なアクションを実行して、防御操作の必要性に対処することができます。
+- **DDoSMitigationFlowLogs**:攻撃の軽減フロー ログを使用すると、アクティブな DDoS 攻撃中に、削除されたトラフィック、転送されたトラフィック、およびその他の有用なデータ ポイントをほぼリアルタイムで確認できます。 この一定のデータ ストリームをほぼリアルタイムに監視するために、イベント ハブを使用して Microsoft Sentinel またはサードパーティの SIEM システム内に取り込み、可能なアクションを実行して、防御操作の必要性に対処することができます。
 - **DDoSMitigationReports**:攻撃の軽減策レポートでは、リソースへの攻撃に関する詳細情報を提供するために集計される、Netflow プロトコル データが使用されます。 パブリック IP リソースが攻撃を受けるたびに、軽減策が開始されるとすぐにレポートの生成が開始されます。 5 分ごとに増分レポートが生成され、軽減策の期間全体に対して軽減策後のレポートが生成されます。 これにより、DDoS 攻撃が長時間継続する場合に、確実に 5 分ごとに軽減策レポートの最新のスナップショットを表示し、攻撃の軽減策が完了したら完全な概要を表示することができます。 
 - **AllMetrics**:DDoS 攻撃が行われている間に使用できる可能性があるすべてのメトリックが表示されます。 
 
@@ -60,6 +60,39 @@ Azure DDoS Protection Standard には、次の診断ログを使用できます�
     - **[ストレージ アカウントへのアーカイブ]** :データは Azure Storage アカウントに書き込まれます。 このオプションについて詳しくは、[リソース ログのアーカイブ](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)に関する記事をご覧ください。
     - **[イベント ハブへのストリーム]** :ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへのリソース ログのストリーミング](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)に関する記事をご覧ください。
     - **[Log Analytics への送信]** :Azure Monitor サービスにログを書き込みます。 このオプションについて詳しくは、[Azure Monitor ログで使用するログの収集](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace)に関する記事をご覧ください。
+
+### <a name="query-ddos-protection-logs-in-log-analytics-workspace"></a>Log Analytics ワークスペースで DDoS Protection のログを照会する
+
+#### <a name="ddosprotectionnotifications-logs"></a>DDoSProtectionNotifications ログ
+
+1. **[Log Analytics ワークスペース]** ブレードで、お使いの Log Analytics ワークスペースを選択します。
+
+4. **[全般]** で **[ログ]** をクリックします
+
+5. クエリ エクスプローラーで、次の Kusto クエリを入力して、時間範囲をカスタムに変更し、時間範囲を過去 3 か月間に変更します。 次に、[実行] をクリックします。
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == "DDoSProtectionNotifications"
+    ```
+
+#### <a name="ddosmitigationflowlogs"></a>DDoSMitigationFlowLogs
+
+1. ここで、クエリを次のように変更し、時間範囲を同じままにして、[実行] をクリックします。
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == "DDoSMitigationFlowLogs"
+    ```
+
+#### <a name="ddosmitigationreports"></a>DDoSMitigationReports
+
+1. ここで、クエリを次のように変更し、時間範囲を同じままにして、[実行] をクリックします。
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == "DDoSMitigationReports"
+    ```
 
 ### <a name="log-schemas"></a>ログ スキーマ
 
@@ -106,7 +139,7 @@ Azure DDoS Protection Standard には、次の診断ログを使用できます�
 | --- | --- |
 | **TimeGenerated** | レポートが作成された日時 (UTC)。 |
 | **ResourceId** | パブリック IP アドレスのリソース ID。 |
-| **カテゴリ** | 通知の場合、これは `DDoSProtectionNotifications` になります。|
+| **カテゴリ** | 通知の場合、これは `DDoSMitigationReports` になります。|
 | **ResourceGroup** | パブリック IP アドレスと仮想ネットワークを含むリソース グループ。 |
 | **SubscriptionId** | DDoS 保護プランのサブスクリプション ID。 |
 | **リソース** | パブリック IP アドレスの名前。 |
@@ -128,17 +161,15 @@ Azure DDoS Protection Standard には、次の診断ログを使用できます�
 
 ## <a name="enable-diagnostic-logging-on-all-public-ips"></a>すべてのパブリック IP で診断ログを有効にする
 
-この[テンプレート](https://aka.ms/ddosdiaglogs)を使用すると、定義されたスコープ内のすべてのパブリック IP ログに対して診断ログを自動的に有効にする Azure Policy 定義を作成できます。
-
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FPolicy%20-%20DDOS%20Enable%20Diagnostic%20Logging%2FAzure%20Policy%2FDDoSLogs.json)
+この[組み込みポリシー](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F752154a7-1e0f-45c6-a880-ac75a7e4f648)は、定義されたスコープ内のすべてのパブリック IP ログに対して診断ログを自動的に有効にします。 組み込みポリシーの完全な一覧については、「[Azure DDoS Protection Standard 用 Azure Policy 組み込みポリシー定義](policy-reference.md)」を参照してください。
 
 ## <a name="view-log-data-in-workbooks"></a>ブック内のログ データを表示する
 
-### <a name="azure-sentinel-data-connector"></a>Azure Sentinel のデータ コネクタ
+### <a name="microsoft-sentinel-data-connector"></a>Microsoft Sentinel データ コネクタ
 
-ログを Azure Sentinel に接続し、ブック内のデータを表示および分析して、カスタムアラートを作成し、それを調査プロセスに組み込むことができます。 Azure Sentinel に接続するには、[Azure Sentinel への接続に関するページ](../sentinel/connect-azure-ddos-protection.md)を参照してください。 
+ログを Microsoft Sentinel に接続し、ブック内のデータを表示および分析して、カスタムアラートを作成し、それを調査プロセスに組み込むことができます。 Microsoft Sentinel に接続するには、[Microsoft Sentinel への接続](../sentinel/data-connectors-reference.md#azure-ddos-protection)に関する記事を参照してください。 
 
-![Azure Sentinel の DDoS コネクタ](./media/ddos-attack-telemetry/azure-sentinel-ddos.png)
+![Microsoft Sentinel の DDoS コネクタ](./media/ddos-attack-telemetry/azure-sentinel-ddos.png)
 
 ### <a name="azure-ddos-protection-workbook"></a>Azure DDoS Protection のブック
 

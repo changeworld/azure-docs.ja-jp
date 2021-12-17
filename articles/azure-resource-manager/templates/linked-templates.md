@@ -2,13 +2,14 @@
 title: デプロイ用のテンプレートをリンクする
 description: Azure Resource Manager テンプレート (ARM テンプレート) でリンクされたテンプレートを使用して、モジュール式のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。
 ms.topic: conceptual
-ms.date: 03/25/2021
-ms.openlocfilehash: 981e9f10e118012911108d634fbb8bdb9524cb88
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/10/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: b8be710611d892913c43e9d500a051a3d3b55ca5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543977"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820498"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
@@ -37,7 +38,7 @@ ms.locfileid: "105543977"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
@@ -66,7 +67,7 @@ ms.locfileid: "105543977"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
@@ -76,7 +77,7 @@ ms.locfileid: "105543977"
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2019-04-01",
+              "apiVersion": "2021-04-01",
               "name": "[parameters('storageAccountName')]",
               "location": "West US",
               "sku": {
@@ -103,7 +104,7 @@ ms.locfileid: "105543977"
 ```json
 {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2020-10-01",
+  "apiVersion": "2021-04-01",
   "name": "nestedTemplate1",
   "properties": {
     "expressionEvaluationOptions": {
@@ -130,7 +131,7 @@ ms.locfileid: "105543977"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "nestedTemplate1",
       "properties": {
         "expressionEvaluationOptions": {
@@ -214,7 +215,7 @@ ms.locfileid: "105543977"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "dynamicSecret",
       "properties": {
         "mode": "Incremental",
@@ -257,7 +258,7 @@ ms.locfileid: "105543977"
           "resources": [
             {
               "type": "Microsoft.Sql/servers",
-              "apiVersion": "2018-06-01-preview",
+              "apiVersion": "2021-02-01-preview",
               "name": "[variables('sqlServerName')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -307,7 +308,7 @@ ms.locfileid: "105543977"
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2021-04-01",
       "name": "mainTemplate",
       "properties": {
         ...
@@ -321,7 +322,7 @@ ms.locfileid: "105543977"
     {
       "name": "outer",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "outer"
@@ -333,7 +334,7 @@ ms.locfileid: "105543977"
           "resources": [
             {
               "type": "Microsoft.Compute/virtualMachines",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-04-01",
               "name": "outer",
               "properties": {
                 ...
@@ -351,7 +352,7 @@ ms.locfileid: "105543977"
     {
       "name": "inner",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "inner"
@@ -385,7 +386,7 @@ ms.locfileid: "105543977"
           "resources": [
             {
               "type": "Microsoft.Compute/virtualMachines",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-04-01",
               "name": "inner",
               "properties": {
                 ...
@@ -417,7 +418,7 @@ ms.locfileid: "105543977"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -455,7 +456,7 @@ GitHub のテンプレートにリンクしている場合は、生の URL を�
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2020-10-01",
+    "apiVersion": "2021-04-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -478,7 +479,7 @@ GitHub のテンプレートにリンクしている場合は、生の URL を�
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2020-10-01",
+    "apiVersion": "2021-04-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -521,7 +522,7 @@ GitHub のテンプレートにリンクしている場合は、生の URL を�
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "childLinked",
       "properties": {
         "mode": "Incremental",
@@ -610,7 +611,7 @@ QueryString の先頭に "?" がないことを確認してください。 デ�
 
 ```json
 "variables": {
-  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
+  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/postgre/postgresql-on-ubuntu/",
   "sharedTemplateUrl": "[uri(variables('templateBaseUrl'), 'shared-resources.json')]",
   "vmTemplateUrl": "[uri(variables('templateBaseUrl'), 'database-2disk-resources.json')]"
 }
@@ -643,7 +644,7 @@ QueryString の先頭に "?" がないことを確認してください。 デ�
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2020-10-01",
+    "apiVersion": "2021-04-01",
     "name": "[concat('nestedTemplate', copyIndex())]",
     // yes, copy works here
     "copy": {
@@ -661,7 +662,7 @@ QueryString の先頭に "?" がないことを確認してください。 デ�
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-04-01",
+            "apiVersion": "2021-04-01",
             "name": "[concat(variables('storageName'), copyIndex())]",
             "location": "West US",
             "sku": {
@@ -725,7 +726,7 @@ Resource Manager では、各テンプレートはデプロイ履歴内で個別
   "resources": [
     {
       "type": "Microsoft.Network/publicIPAddresses",
-      "apiVersion": "2018-11-01",
+      "apiVersion": "2021-02-01",
       "name": "[parameters('publicIPAddresses_name')]",
       "location": "southcentralus",
       "properties": {
@@ -760,7 +761,7 @@ Resource Manager では、各テンプレートはデプロイ履歴内で個別
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "[concat('linkedTemplate', copyIndex())]",
       "copy": {
         "count": 3,
@@ -830,7 +831,7 @@ done
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -892,7 +893,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 ## <a name="next-steps"></a>次のステップ
 
-* チュートリアルについては、「[チュートリアル:リンク済みテンプレートをデプロイする](./deployment-tutorial-linked-template.md)」を参照してください。
-* リソースのデプロイの順序の定義については、「[ARM テンプレートでのリソース デプロイ順序の定義](define-resource-dependency.md)」を参照してください。
-* 定義するリソースは 1 つですが、そこに多数のインスタンスを作成する方法については、「[ARM テンプレートでのリソースの反復処理](copy-resources.md)」を参照してください。
-* ストレージ アカウントにテンプレートを設定し、SAS トークンを生成する手順については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」または「[ARM テンプレートと Azure CLI でリソースをデプロイする](deploy-cli.md)」を参照してください。
+- チュートリアルについては、「[チュートリアル:リンク済みテンプレートをデプロイする](./deployment-tutorial-linked-template.md)」を参照してください。
+- リソースのデプロイの順序の定義については、「[ARM テンプレートでのリソース デプロイ順序の定義](./resource-dependency.md)」を参照してください。
+- 定義するリソースは 1 つですが、そこに多数のインスタンスを作成する方法については、「[ARM テンプレートでのリソースの反復処理](copy-resources.md)」を参照してください。
+- ストレージ アカウントにテンプレートを設定し、SAS トークンを生成する手順については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」または「[ARM テンプレートと Azure CLI でリソースをデプロイする](deploy-cli.md)」を参照してください。

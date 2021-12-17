@@ -1,18 +1,18 @@
 ---
 title: チュートリアル - Azure API Management での最初の API のインポートと発行
 description: このチュートリアルでは、OpenAPI 仕様の API を Azure API Management にインポートして、その API を Azure portal でテストする方法について説明します。
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.author: apimpm
-ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 8ac58d354c5a92482f2cd47c59316fca9ba32025
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91626967"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627104"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>チュートリアル:最初の API のインポートと発行
 
@@ -51,9 +51,9 @@ ms.locfileid: "91626967"
    :::image type="content" source="media/import-and-publish/create-api.png" alt-text="API の作成":::
 
 
-   |設定|[値]|説明|
+   |設定|値|説明|
    |-------|-----|-----------|
-   |**OpenAPI の仕様**|*https:\//conferenceapi.azurewebsites.net?format=json*|API を実装するサービス。 要求は、API Management によってこのアドレスに転送されます。|
+   |**OpenAPI の仕様**|*https:\//conferenceapi.azurewebsites.net?format=json*|API を実装するサービス。 要求は、API Management によってこのアドレスに転送されます。 サービスは、パブリックにアクセス可能なインターネット アドレスでホストされている必要があります。 |
    |**表示名**|前述のサービス URL を入力すると、JSON に基づく値が API Management によってこのフィールドに入力されます。|[開発者ポータル](api-management-howto-developer-portal.md)に表示される名前。|
    |**名前**|前述のサービス URL を入力すると、JSON に基づく値が API Management によってこのフィールドに入力されます。|API の一意の名前。|
    |**説明**|前述のサービス URL を入力すると、JSON に基づく値が API Management によってこのフィールドに入力されます。|API の説明 (省略可)。|

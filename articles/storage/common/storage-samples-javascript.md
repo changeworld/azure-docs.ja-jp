@@ -1,19 +1,19 @@
 ---
 title: JavaScript を使用した Azure Storage サンプル | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 JavaScript/Node.js のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-js
-ms.openlocfilehash: c071c1be4a0020788060f3e23b61a155dc6d85d1
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: d2a098a68c086e658ed697f0eb40176526bf6115
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277370"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549397"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>v12 JavaScript クライアント ライブラリを使用した Azure Storage サンプル
 
@@ -149,7 +149,6 @@ ms.locfileid: "106277370"
       [コンテナー クライアントを使用して回復可能なエラーをトリガーする](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/errorsAndResponses.js#L33)
    :::column-end:::
 :::row-end:::
-
 
 ## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage Gen2 のサンプル
 
@@ -406,10 +405,10 @@ ms.locfileid: "106277370"
 
 完全な JavaScript サンプル ライブラリをご覧いただくには、次のページにアクセスしてください。
 
-* [Azure BLOB のコード サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
-* [Azure Data Lake のコード サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
-* [Azure Files のコード サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
-* [Azure Queue のコード サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
+- [Azure BLOB のコード サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
+- [Azure Data Lake のコード サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
+- [Azure Files のコード サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
+- [Azure Queue のコード サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
 
 各ライブラリの GitHub リポジトリを参照してクローンすることができます。
 
@@ -417,16 +416,16 @@ ms.locfileid: "106277370"
 
 Azure Storage ライブラリのインストール方法と概要については、以下のガイドをご覧ください。
 
-* [JavaScript での Azure Blob service の概要](../blobs/storage-quickstart-blobs-nodejs.md)
-* [JavaScript での Azure Queue サービスの概要](../queues/storage-quickstart-queues-nodejs.md)
-* [JavaScript での Azure Table service の概要](../../cosmos-db/table-storage-how-to-use-nodejs.md)
+- [JavaScript での Azure Blob service の概要](../blobs/storage-quickstart-blobs-nodejs.md)
+- [JavaScript での Azure Queue サービスの概要](../queues/storage-quickstart-queues-nodejs.md)
+- [JavaScript での Azure Table service の概要](../../cosmos-db/table-storage-how-to-use-nodejs.md)
 
 ## <a name="next-steps"></a>次のステップ
 
 他の言語のサンプルについては、以下のページをご覧ください。
 
-* .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
-* Java:[Java を使用した Azure Storage サンプル](storage-samples-java.md)
-* Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
-* C++: [C++ を使用した Azure Storage サンプル](storage-samples-c-plus-plus.md)
-* その他すべての言語: [Azure Storage のサンプル](storage-samples.md)
+- .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
+- Java:[Java を使用した Azure Storage サンプル](storage-samples-java.md)
+- Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
+- C++: [C++ を使用した Azure Storage サンプル](storage-samples-c-plus-plus.md)
+- その他すべての言語: [Azure Storage のサンプル](storage-samples.md)

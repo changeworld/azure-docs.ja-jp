@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs の共有イメージを使って VM を追加する | Microsoft Docs
+title: 共有イメージを使用して VM を追加する
 description: Azure DevTest Labs 内の接続されている共有イメージ ギャラリーのイメージを使って仮想マシン (VM) を追加する方法について説明します
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 9421a1e21be9446b0e59328bd9a3730b57655274
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7107fd22142f00e422e0f302520962537d65b10e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85483858"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621813"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>接続されている共有イメージ ギャラリーのイメージを使って VM を追加する
 Azure DevTest Labs では、共有イメージ ギャラリーをラボに接続し、ラボで作成する VM のベースとしてギャラリー内のイメージを使用することができます。 共有イメージ ギャラリーをラボに接続する方法については、[共有イメージ ギャラリーの構成](configure-shared-image-gallery.md)に関する記事を参照してください。 この記事では、接続されている共有イメージ ギャラリーのイメージをベースとして使用してラボに VM を追加する方法について説明します。 
@@ -27,7 +27,7 @@ Azure DevTest Labs では、共有イメージ ギャラリーをラボに接続
 VM の作成後に、別のバージョンのイメージを使用するように切り替えることができます。 
 
 ## <a name="resource-manager-template"></a>Resource Manager テンプレート
-Azure Resource Manager テンプレートを使用して、共有イメージ ギャラリーのイメージで仮想マシンを作成する場合は、**[プロパティ]** セクションで **[sharedImageId]** の値を指定します。 次の例を参照してください。 
+Azure Resource Manager テンプレートを使用して、共有イメージ ギャラリーのイメージで仮想マシンを作成する場合は、**[プロパティ]** セクションで **[sharedImageId]** の値を指定します。 次の例を参照してください: 
 
 ```json
 "resources": [

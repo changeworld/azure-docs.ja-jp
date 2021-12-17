@@ -6,20 +6,23 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 3f9c22a690859b459b6bb748c3b1001c4aa7660d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0666cce0668d315c34a9d6cade1f8d6e087f20dc
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93241754"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674403"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>Azure Database for MySQL のインフラストラクチャの二重暗号化
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL のインフラストラクチャの二重暗号化を設定し、管理する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションがあり、そのサブスクリプションの管理者である必要があります。
+* Azure Database for MySQL - 単一サーバーは、汎用またはメモリ最適化の価格レベルと、汎用ストレージ v2 である必要があります。 処理を進める前に、「[インフラストラクチャの二重暗号化](concepts-infrastructure-double-encryption.md#limitations)」を参照してください。
 
 ## <a name="create-an-azure-database-for-mysql-server-with-infrastructure-double-encryption---portal"></a>インフラストラクチャの二重暗号化を使用して Azure Database for MySQL サーバーを作成する - ポータル
 

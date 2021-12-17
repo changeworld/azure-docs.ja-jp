@@ -3,16 +3,16 @@ title: Azure Data Box を使用したオフライン バックアップ
 description: Azure Data Box を使用して、MARS エージェントから Recovery Services コンテナーに、大規模な初期バックアップ データをオフラインでシード処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 78adc479ce5733e208d2334d30d7b88e4edf8d6b
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 40fb046506238c5f02c7e36d6ce12b31ed44fcaa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576093"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020542"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box を使用した Azure Backup のオフライン バックアップ
 
-[Azure Data Box](../databox/data-box-overview.md) を使うと、Microsoft Azure Recovery Services (MARS) の大規模な初期バックアップをオフラインで (ネットワークを使用せずに) Recovery Services コンテナーにシードできます。 このプロセスにより、待機時間の長いネットワークを介して大量のバックアップ データをオンラインで移動する場合に消費される時間とネットワーク帯域幅の両方を節約することができます。 この拡張機能は、現在プレビュー段階です。 Azure Data Box に基づくオフライン バックアップには、[Azure Import/Export サービスに基づくオフライン バックアップ](./backup-azure-backup-import-export.md)に比べて、次の 2 つの利点があります。
+[Azure Data Box](../databox/data-box-overview.md) を使うと、Microsoft Azure Recovery Services (MARS) の大規模な初期バックアップをオフラインで (ネットワークを使用せずに) Recovery Services コンテナーにシードできます。 このプロセスにより、待機時間の長いネットワークを介して大量のバックアップ データをオンラインで移動する場合に消費される時間とネットワーク帯域幅の両方を節約することができます。  Azure Data Box に基づくオフライン バックアップには、[Azure Import/Export サービスに基づくオフライン バックアップ](./backup-azure-backup-import-export.md)に比べて、次の 2 つの利点があります。
 
 - Azure と互換性のある独自のディスクとコネクタを用意する必要がありません。 Azure Data Box では、選択された [Data Box SKU](https://azure.microsoft.com/services/databox/data/) に関連するディスクを発送します。
 - Azure Backup (MARS エージェント) は、Azure Data Box のサポートされている SKU に直接バックアップ データを書き込むことができます。 この機能を使うと、初期バックアップ データのステージング場所をプロビジョニングする必要がなくなります。 また、そのデータをフォーマットしてディスクにコピーするためのユーティリティも必要ありません。
@@ -109,7 +109,7 @@ AzureRM モジュールが存在しないことを確認したら、次のいず
     Install-Module -Name AzureRM -RequiredVersion 3.7.0
     ```
 
-Azure PowerShell は、msi ファイルを使用してインストールされている可能性もあります。 それを削除するには、コントロール パネルの **[プログラムのアンインストール]** オプションを使用してアンインストールします。
+Azure PowerShell は、MSI ファイルを使用してインストールされている可能性もあります。 それを削除するには、コントロール パネルの **[プログラムのアンインストール]** オプションを使用してアンインストールします。
 
 ### <a name="order-and-receive-the-data-box-device"></a>Data Box デバイスを注文して受け取る
 

@@ -8,18 +8,21 @@ author: bobbytreed
 ms.author: robreed
 ms.collection: windows
 ms.date: 03/26/2018
-ms.openlocfilehash: 72f66aeee64133a13ce0e49155c4b2a90240a3fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9bd77230e742f4874fde81fa0ab1e4c1a83ba6d5
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559989"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488793"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 拡張機能
 
 ## <a name="overview"></a>概要
 
 Windows 用の PowerShell DSC 拡張機能は､Microsoft から公開､サポートされています｡ この拡張機能は Azure VM に PowerShell DSC 構成をアップロード､適用します｡ DSC 拡張機能は、PowerShell DSC を呼び出して、受け取った DSC 構成を VM に適用します。 このドキュメントでは、Windows 用の DSC 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
+
+> [!NOTE]
+> DSC 拡張機能を有効にする前に、[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)という名前の Azure Policy の機能によって管理された、新しいバージョンの DSC が現在プレビューで利用可能になっていることに注意してください。 ゲスト構成機能では、Desired State Configuration (DSC) 拡張機能ハンドラーや Azure Automation State Configuration の機能のほか、顧客のフィードバックで最も一般的に要求されている機能が組み合わされています。 ゲスト構成にはまた、[Arc 対応サーバー](../../azure-arc/servers/overview.md)によるハイブリッド マシンのサポートも含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,11 +34,11 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
-Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azure と通信できることが必要になります。また、構成パッケージ (.zip ファイル) が Azure の外部の場所に格納されている場合は、その場所と通信できる必要があります。 
+Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azure と通信できることが必要になります。また、構成パッケージ (.zip ファイル) が Azure の外部の場所に格納されている場合は、その場所と通信できる必要があります。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、Azure Resource Manager テンプレートの DSC 拡張機能の settings 部分のスキーマを示しています｡ 
+次の JSON は、Azure Resource Manager テンプレートの DSC 拡張機能の settings 部分のスキーマを示しています｡
 
 ```json
 {
@@ -70,7 +73,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
             "downloadMappings": {
              "specificDependencyKey": "https://myCustomDependencyLocation"
             }
-        } 
+        }
     },
     "protectedSettings": {
         "configurationArguments": {
@@ -121,12 +124,11 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
 | protectedSettings.configurationUrlSasToken | string | configuration.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
 | protectedSettings.configurationDataUrlSasToken | string | ConfigurationData.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
 
-
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。
 テンプレートは、デプロイ後の構成が必要な仮想マシンを 1 つ以上デプロイするときに最適です。
-Windows 用の DSC 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91)にあります。
+Windows 用の DSC 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.automation/automation-configuration/nested/provisionServer.json#L91)にあります。
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 

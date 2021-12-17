@@ -2,31 +2,32 @@
 title: 組み込みのメトリックにアクセスする - Azure IoT Edge
 description: IoT Edge ランタイム コンポーネントから組み込みメトリックへのリモート アクセス
 author: v-tcassi
-manager: philmea
 ms.author: v-tcassi
-ms.date: 10/05/2020
+ms.date: 06/25/2021
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1a78db821c0fab01ad5d6752216a8f7682fb2c46
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ee4c39b7dfc4097480588620465eedd40eba53f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200499"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743324"
 ---
 # <a name="access-built-in-metrics"></a>組み込みのメトリックにアクセスする
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-IoT Edge ランタイム コンポーネント (IoT Edge ハブと IoT Edge エージェント) を使用すると、[Prometheus の出力フォーマット](https://prometheus.io/docs/instrumenting/exposition_formats/)で組み込みのメトリックが生成されます。 これらのメトリックにリモートでアクセスして、IoT Edge デバイスの正常性を監視および把握します。
+IoT Edge ランタイム コンポーネント (IoT Edge ハブと IoT Edge エージェント) を使用すると、[Prometheus 公開形式](https://prometheus.io/docs/instrumenting/exposition_formats/)で組み込みのメトリックが生成されます。 これらのメトリックにリモートでアクセスして、IoT Edge デバイスの正常性を監視および把握します。
+
+独自のソリューションを使用して、これらのメトリックにアクセスできます。 または、[metrics-collector モジュール](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.metrics-collector)を使用して、組み込みのメトリックの収集を処理し、Azure Monitor または Azure IoT Hub に送信することもできます。 詳細については、「[メトリックの収集と転送](how-to-collect-and-transport-metrics.md)」を参照してください。
 
 リリース 1.0.10 からは、メトリックは既定で、**edgeHub** および **edgeAgent** のモジュール (`http://edgeHub:9600/metrics` および `http://edgeAgent:9600/metrics`) の **ポート 9600** で自動的に公開されます。 既定では、これらのポートはホストにマップされません。
 
 モジュールの `createOptions` からメトリック ポートを公開およびマップすることによって、ホストからメトリックにアクセスします。 次の例では、既定のメトリック ポートをホスト上のポート 9601 にマップしています。
 
-```
+```json
 {
   "ExposedPorts": {
     "9600/tcp": {}
@@ -116,5 +117,6 @@ Prometheus の出力フォーマットには、カウンター、ゲージ、ヒ
 
 ## <a name="next-steps"></a>次のステップ
 
+* [メトリックの収集と転送](how-to-collect-and-transport-metrics.md)
 * [Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)
 * [IoT Edge エージェントと IoT Edge ハブのモジュール ツインのプロパティ](module-edgeagent-edgehub.md)

@@ -4,19 +4,19 @@ description: Azure SQL Database で監査と Advanced Threat Protection を構�
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: security, sqldbrb=1
+ms.custom: security, sqldbrb=1, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
 author: DavidTrigano
 ms.author: datrigan
-ms.reviewer: sstein, vanto
+ms.reviewer: mathoma, vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 1dc4630e429641fad1ef9efa96bbfa920c6d8963
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cee0c010101c132cb8c4f105ccfd46a5cb8afcf6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91321529"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "131465309"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>PowerShell を使用して SQL Database の監査と Advanced Threat Protection を構成する
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -51,8 +51,8 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | サーバーを作成します。 |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | データベースまたはエラスティック プールを作成します。 |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | ストレージ アカウントを作成します。 |
-| [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing) | データベースの監査ポリシーを設定します。 |
-| [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | データベースに Advanced Threat Protection ポリシーを設定します。 |
+| [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseaudit) | データベースの監査ポリシーを設定します。 |
+| Set-AzSqlDatabaseThreatDetectionPolicy | データベースに Advanced Threat Protection ポリシーを設定します。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 

@@ -2,13 +2,13 @@
 title: テンプレート内の子リソース
 description: Azure Resource Manager テンプレート (ARM テンプレート ) で子リソースの名前と種類を設定する方法について説明します。
 ms.topic: conceptual
-ms.date: 12/21/2020
-ms.openlocfilehash: a950d72751b829c0a2aa3ba5ca27316a0544d9cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/07/2021
+ms.openlocfilehash: 48b44cad1fef7f09fe07fbb1c0e416ce947e586a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963914"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969559"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>子リソースの名前と種類の設定
 
@@ -16,7 +16,11 @@ ms.locfileid: "97963914"
 
 各親リソースは、子リソースとして特定のリソースの種類のみを受け取ります。 子リソースのリソースの種類には、親リソースのリソースの種類が含まれます。 たとえば、`Microsoft.Web/sites/config` と `Microsoft.Web/sites/extensions` は、どちらも `Microsoft.Web/sites` の子リソースです。 許容されるリソースの種類は、親リソースの[テンプレート スキーマ](https://github.com/Azure/azure-resource-manager-schemas)で指定されます。
 
-Azure Resource Manager テンプレート (ARM テンプレート) では、親リソースの内側または外側に子リソースを指定できます。 次の例は、親リソースの resources プロパティ内に追加された子リソースを示しています。
+Azure Resource Manager テンプレート (ARM テンプレート) では、親リソースの内側または外側に子リソースを指定できます。 リソースの名前とリソースの種類に指定する値は、子リソースが親リソースの内側で定義されているか、外側で定義されているかによって変わります。
+
+## <a name="within-parent-resource"></a>親リソースの内側
+
+次の例は、親リソースの resources プロパティ内に追加された子リソースを示しています。
 
 ```json
 "resources": [
@@ -31,24 +35,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) では、親�
 
 子リソースの定義の深さは 5 レベルまでです。
 
-次の例は、親リソースの外側の子リソースを示しています。 親リソースが同じテンプレート内にデプロイされていない場合、または複数の子リソースを作成するために [copy](copy-resources.md) を使う場合は、このアプローチを使用することがあります。
-
-```json
-"resources": [
-  {
-    <parent-resource>
-  },
-  {
-    <child-resource>
-  }
-]
-```
-
-リソースの名前と種類に指定する値は、子リソースが親リソースの内側で定義されているか、親リソースの外側で定義されているかによって変わります。
-
-## <a name="within-parent-resource"></a>親リソースの内側
-
-親リソースの type 内に type と name の値を定義するときは、スラッシュを使わず 1 つの単語として書式設定します。
+親リソースの type 内に type と name の値を定義するときは、スラッシュを使わず 1 つのセグメントとして書式設定します。
 
 ```json
 "type": "{child-resource-type}",
@@ -76,7 +63,6 @@ Azure Resource Manager テンプレート (ARM テンプレート) では、親�
         "type": "subnets",
         "apiVersion": "2018-10-01",
         "name": "Subnet1",
-        "location": "[parameters('location')]",
         "dependsOn": [
           "VNet1"
         ],
@@ -94,6 +80,19 @@ Azure Resource Manager テンプレート (ARM テンプレート) では、親�
 子リソースの名前は **Subnet1** に設定されていますが、完全名には親の名前が含まれます。 **VNet1** は、親リソースから引き継がれるので指定する必要はありません。
 
 ## <a name="outside-parent-resource"></a>親リソースの外側
+
+次の例は、親リソースの外側の子リソースを示しています。 親リソースが同じテンプレート内にデプロイされていない場合、または複数の子リソースを作成するために [copy](copy-resources.md) を使う場合は、このアプローチを使用することがあります。
+
+```json
+"resources": [
+  {
+    <parent-resource>
+  },
+  {
+    <child-resource>
+  }
+]
+```
 
 親リソースの外側に type と name を定義するときは、スラッシュを使って親の種類と名前を含めるように書式設定します。
 
@@ -122,7 +121,6 @@ Azure Resource Manager テンプレート (ARM テンプレート) では、親�
   {
     "type": "Microsoft.Network/virtualNetworks/subnets",
     "apiVersion": "2018-10-01",
-    "location": "[parameters('location')]",
     "name": "VNet1/Subnet1",
     "dependsOn": [
       "VNet1"
@@ -136,5 +134,5 @@ Azure Resource Manager テンプレート (ARM テンプレート) では、親�
 
 ## <a name="next-steps"></a>次のステップ
 
-* ARM テンプレート作成の詳細については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+* ARM テンプレート作成の詳細については、「[ARM テンプレートの構造と構文の詳細](./syntax.md)」を参照してください。
 * リソースを参照する際のリソース名の形式については、[reference 関数](template-functions-resource.md#reference)の説明を参照してください。

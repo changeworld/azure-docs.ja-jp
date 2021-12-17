@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 のディザスター リカバリーのガイダンス | Microsoft Docs
 description: Azure Data Lake Storage Gen1 のローカル冗長ストレージを超える範囲で、ローカル全体の障害や偶発的な削除からデータを保護する方法について説明します。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: twooley
-ms.openlocfilehash: 48136f8d9172c3674e849e24efca4ae5070f83ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 59c2ff76f62e64e193b51ea479c04f8897c27717
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92109121"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599565"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Data Lake Storage Gen1 の高可用性とディザスター リカバリーのガイダンス
 
@@ -22,7 +22,7 @@ Data Lake Storage Gen1 によって、ローカル冗長ストレージ (LRS) �
 ディザスター リカバリー プランを準備することは重要です。 この記事の情報と以下の追加リソースを確認して、独自のプランの作成に役立ててください。
 
 * [Azure アプリケーションのディザスター リカバリーと高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)
-* [Azure の回復性技術ガイダンス](/azure/architecture/framework/resiliency/overview)
+* [Azure の回復性技術ガイダンス](/azure/architecture/framework/resiliency/app-design)
 
 ### <a name="best-practice-recommendations"></a>ベスト プラクティスの推奨事項
 

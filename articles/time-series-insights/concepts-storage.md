@@ -1,8 +1,8 @@
 ---
 title: ストレージの概要 - Azure Time Series Insights Gen2 | Microsoft Docs
 description: Azure Time Series Insights Gen2 のデータ ストレージについて説明します。
-author: deepakpalled
-ms.author: dpalled
+author: tedvilutis
+ms.author: tvilutis
 manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 67ab4c8cf079adaf3b38cdcc30abeec43cd4612f
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 9c0bbf9224f8864428d46e38487f614e0c3f61f0
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505197"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715234"
 ---
 # <a name="data-storage"></a>データ ストレージ
 
@@ -43,7 +43,9 @@ Azure Time Series Insights Gen2 環境を作成するときには、次のオプ
 Azure Time Series Insights Gen2 では、最適なクエリ パフォーマンスのために、データのパーティション分割とインデックス付けが行われます。 データは、インデックスが付けられた後、ウォーム ストア (有効な場合) とコールド ストアの両方からクエリを実行できるようになります。 取り込まれるデータの量とパーティションごとのスループット レートは、可用性に影響を与える可能性があります。 最適なパフォーマンスを得るには、イベント ソースの[スループットの制限](./concepts-streaming-ingress-throughput-limits.md)と[ベスト プラクティス](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices)を確認してください。 環境でデータ処理の問題が発生した場合に通知されるように、遅延の[警告](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)を構成することもできます。
 
 > [!IMPORTANT]
-> データが利用可能になるまでに最大 60 秒の時間が発生することがあります。 待機時間が 60 秒を大きく上回る場合は、Azure portal を通じてサポート チケットを送信してください。
+> [Time Series Query API](./concepts-query-overview.md) 経由でデータが利用可能になるまでに最大 60 秒の時間が発生することがあります。 待機時間が 60 秒を大きく上回る場合は、Azure portal を通じてサポート チケットを送信してください。
+> 
+> Azure Time Series Insights Gen2 の外部で Parquet ファイルに直接アクセスした場合、データが使用可能になるまでに最大 5 分間かかる可能性があります。 詳細については、「[Parquet ファイル形式](#parquet-file-format-and-folder-structure)」セクションを参照してください。
 
 ## <a name="warm-store"></a>ウォーム ストア
 
@@ -71,6 +73,9 @@ Azure Time Series Insights Gen2 では、Azure Storage アカウント内の各�
 
 すべてのデータは、Azure Storage アカウントに無期限に格納されます。
 
+> [!WARNING]
+> Time Series Insights によって使用されるストレージ アカウントへのパブリック インターネット アクセスを制限しないでください。そうしないと、必要な接続が切断されます。
+
 #### <a name="writing-and-editing-blobs"></a>BLOB の作成と編集
 
 クエリのパフォーマンスとデータの可用性を確保するため、Azure Time Series Insights Gen2 によって作成された BLOB の編集および削除は行わないでください。
@@ -93,32 +98,26 @@ Parquet ファイルの種類の詳細については、[Parquet のドキュメ
 
 Azure Time Series Insights Gen2 では、次のようにデータのコピーが格納されます。
 
-* 1 つ目の初期コピーは、インジェスト時間によって分割され、データは到着順にほぼ格納されます。 データは次のような `PT=Time` フォルダーにあります。
+* `PT=Time` フォルダーは、インジェスト時間によって分割され、データは到着順にほぼ格納されます。 このデータは時間の経過と共に保存され、Azure Time Series insights Gen2 の外部 (Spark notebook など) から直接アクセスできます。 タイムスタンプ `<YYYYMMDDHHMMSSfff>` は、データのインジェスト時間に相当します。 `<MinEventTimeStamp>` と `<MaxEventTimeStamp>` はファイルに含まれるイベントのタイムスタンプの範囲に対応します。 パスとファイル名は次のように書式設定されます。
 
-  `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+  `V=1/PT=Time/Y=<YYYY>/M=<MM>/<BlobCreationTimestamp>_<MinEventTimestamp>_<MaxEventTimestamp>_<TsiInternalSuffix>.parquet`
 
-* 2 つ目の再パーティション分割されるコピーは、時系列 ID に応じてグループ化され、`PT=TsId` フォルダーに格納されます。
-
-  `V=1/PT=TsId/<TSI_INTERNAL_NAME>.parquet`
-
-`PT=Time` フォルダー内の BLOB 名のタイムスタンプは、イベントのタイムスタンプではなく、Azure Time Series Insights Gen2 へのデータの到着時間に対応します。
-
-`PT=TsId` フォルダー内のデータは、時間の経過と共にクエリに合わせて最適化され、静的ではありません。 パーティションの再分割中は、いくつかのイベントが複数の BLOB に存在する可能性があります。 このフォルダー内の BLOB の名前付けは、同じままであることは保証されていません。
-
-一般に、Parquet ファイルを介してデータに直接アクセスする必要がある場合は、`PT=Time` フォルダーを使用します。  今後提供される機能により、`PT=TsId` フォルダーに効率的にアクセスできるようになります。
+* `PT=Live` フォルダーと `PT=Tsid` フォルダーには、データの 2 番目のコピーが含まれています。再パーティション分割では、時系列クエリのパフォーマンスが大規模になります。 このデータは時間の経過と共に最適化され、静的ではありません。 再分割中に、いくつかのイベントが複数の BLOB に存在し、BLOB 名が変更される可能性があります。  これらのフォルダーは Azure Time Series Insights Gen2 によって使用され、直接アクセスすることはできません。この目的の場合は、`PT=Time` のみを使用してください。
 
 > [!NOTE]
 >
+> 2021 年 6 月より前からの `PT=Time` フォルダーのデータには、イベント時間範囲のないファイル名形式を使用できます: `V=1/PT=Time/Y=<YYYY>/M=<MM>/<BlobCreationTimestamp>_<TsiInternalSuffix>.parquet`。  内部のファイル形式は同じであり、両方の名前付けスキームを持つファイルを一緒に使用することができます。 
+>
 > * `<YYYY>` は、4 桁の年表記に対応します。
 > * `<MM>` は、2 桁の月表記に対応します。
-> * `<YYYYMMDDHHMMSSfff>` は、4 桁の年 (`YYYY`)、2 桁の月 (`MM`)、2 桁の日 (`DD`)、2 桁の時 (`HH`)、2 桁の分 (`MM`)、2 桁の秒 (`SS`)、3 桁のミリ秒 (`fff`) のタイムスタンプ表現に対応します。
+> * timestamp の `<YYYYMMDDHHMMSSfff>` 形式は、4 桁の年 (`YYYY`)、2 桁の月 (`MM`)、2 桁の日 (`DD`)、2 桁の時 (`HH`)、2 桁の分 (`MM`)、2 桁の秒 (`SS`)、3 桁のミリ秒 (`fff`) になります。
 
 Azure Time Series Insights Gen2 のイベントは、次のように、Parquet ファイル コンテンツにマップされます。
 
 * 各イベントは、1 行にマップされます。
 * すべての行には、イベントのタイムスタンプの **timestamp** 列が含まれています。 タイムスタンプ プロパティが null になることはありません。 イベント ソースでタイム スタンプ プロパティが指定されていない場合の既定値は、**イベント ソース エンキュー時刻** になります。 格納されているタイムスタンプは、常に UTC 形式です。
 * すべての行には、Azure Time Series Insights Gen2 環境の作成時に定義される時系列 ID (TSID) 列が含まれます。 TSID プロパティ名には、サフィックス `_string` が含まれます。
-* テレメトリ データとして送信される他のすべてのプロパティは、プロパティの型に応じて、`_bool` (ブール値)、`_datetime` (タイム スタンプ)、`_long` (long)、`_double` (倍精度浮動小数点数型)、`_string` (文字列)、または `dynamic` (動的) で終わる列名にマップされます。  詳細については、「[サポートされるデータ型](./concepts-supported-data-types.md)」を参照してください。
+* テレメトリ データとして送信される他のすべてのプロパティは、プロパティの型に応じて、`_bool` (ブール値)、`_datetime` (タイム スタンプ)、`_long` (long)、`_double` (倍精度浮動小数点数型)、`_string` (文字列)、または `_dynamic` (動的) で終わる列名にマップされます。  詳細については、「[サポートされるデータ型](./concepts-supported-data-types.md)」を参照してください。
 * このマッピング スキーマは、ファイル形式の最初のバージョンに適用され、**V = 1** として参照され、同じ名前のベース フォルダーに格納されます。 この機能が進化するにつれて、このマッピング スキーマが変更され、参照名が増える可能性があります。
 
 ## <a name="next-steps"></a>次のステップ

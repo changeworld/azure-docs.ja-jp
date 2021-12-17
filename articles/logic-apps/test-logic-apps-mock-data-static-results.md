@@ -1,145 +1,275 @@
 ---
-title: モック データを使用してロジック アプリをテストする
-description: 運用環境に影響を与えずにモック データでロジック アプリをテストするための静的な結果を設定する
+title: モック テストのワークフロー
+description: 運用環境に影響を与えずに Azure Logic Apps でワークフローをテストするためのモック データを設定します。
 services: logic-apps
 ms.suite: integration
-author: kevinlam1
-ms.author: klam
-ms.reviewer: estfan, logicappspm
-ms.topic: article
-ms.date: 05/13/2019
-ms.openlocfilehash: 711d753203aeaeba50cea692053a37fcab2e9c7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 10/08/2021
+ms.openlocfilehash: 4167dcffe0a1b4db50f6d1580ad6284f2cf9321d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93027705"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712570"
 ---
-# <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>静的な結果を設定してモック データでロジック アプリをテストする
+# <a name="test-workflows-with-mock-data-in-azure-logic-apps-preview"></a>Azure Logic Apps でモック データを使用してワークフローをテストする (プレビュー)
 
-ロジック アプリをテストするときに、さまざまな理由からアプリ、サービス、およびシステムを実際に呼び出したり、それらにアクセスする準備ができていないことがあります。 通常、これらのシナリオでは、別の条件パスを実行したり、エラーを強制したり、特定のメッセージ応答本文を提供したり、いくつかの手順をスキップしてみることも必要になる場合があります。 ロジック アプリでアクションの静的な結果を設定することにより、そのアクションからの出力データをモックできます。 アクションで静的な結果を有効にしてもアクションは実行されませんが、代わりにモック データが返されます。
+> [!NOTE]
+> この機能はプレビュー段階にあり、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」が適用されます。
 
-たとえば、Outlook 365 メール送信アクションの静的な結果を設定した場合、Logic Apps エンジンは、Outlook を呼び出して電子メールを送信するのではなく、静的な結果として指定したモック データを返すだけです。
+稼働中のアプリ、データ、サービス、またはシステムを実際に呼び出したりアクセスしたりせずにワークフローをテストするには、アクションからモック値を設定して返すことができます。 たとえば、さまざまな条件に基づいて異なるアクション パスをテストしたり、強制的にエラーを発生させたり、特定のメッセージ応答本文を指定したり、一部のステップをスキップしたりすることができます。 アクションでモック データのテストを設定してもアクションは実行されず、代わりにモック データが返されます。
+
+たとえば、Outlook 365 のメール送信アクションにモック データを設定した場合、Azure Logic Apps は、Outlook を呼び出してメールを送信するのではなく、提供したモック データだけを返します。
+
+この記事では、[**Logic App (従量課金プラン)** および **Logic App (Standard)** リソース タイプ](logic-apps-overview.md#resource-environment-differences)において、ワークフロー内のアクションでモック データを設定する方法について説明します。 これらのモック データを使用した過去のワークフロー実行を検索し、既存のアクション出力をモック データとして再利用することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* Azure アカウントとサブスクリプション。 サブスクリプションをお持ちでない場合には、<a href="https://azure.microsoft.com/free/?WT.mc_id=A261C142F" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
 
-* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
+* モック データを設定するロジック アプリのリソースとワークフロー。 この記事では、**Recurrence** トリガーと **HTTP** アクションをワークフローの例として使用しています。
 
-* 静的な結果を設定するロジック アプリ
+  ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](quickstart-create-first-logic-app-workflow.md)」を参照してください。
 
-<a name="set-up-static-results"></a>
+<a name="enable-mock-data"></a>
 
-## <a name="set-up-static-results"></a>静的な結果を設定する
+## <a name="enable-mock-data-output"></a>モック データの出力を有効にする
 
-1. まだ開いていない場合は、[Azure portal](https://portal.azure.com) で Logic Apps デザイナーのロジック アプリを開きます。
+### <a name="consumption"></a>[従量課金プラン](#tab/consumption)
 
-1. 静的な結果を設定するアクションで、次の手順に従います。 
+1. [Azure portal](https://portal.azure.com) で、ロジック アプリ ワークフローをデザイナーで開きます。
 
-   1. アクションの右上隅で、省略記号 ( *...* ) ボタンを選択し、たとえば次のように **設定な結果** を選択します。
+1. モック データを返す先となるアクションで、以下の手順を実行します。
 
-      ![「静的な結果」>「静的な結果を有効にする」の順に選択する](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
+   1. アクションの右上隅にある省略記号 ( *...* ) ボタンを選択してから、 **[Testing]\(テスト\)** を選択します。例は以下のとおりです。
 
-   1. **[静的な結果を有効にする]** を選択します。 必須 (*) プロパティには、アクションの応答として返す必要のあるモック出力値を指定します。
+      ![Azure portal のワークフロー デザイナーを示すスクリーンショット。アクションのショートカット メニューと "テスト" が選択されています。](./media/test-logic-apps-mock-data-static-results/select-testing.png)
 
-      たとえば、HTTP アクションの必須プロパティは次のとおりです。
+   1. **[Testing]\(テスト\)** ペインで、 **[静的な結果の有効化 (プレビュー)]** を選択します。 アクションの必須 (*) プロパティが表示されたら、アクションの応答として返すモック出力値を指定します。
+
+      プロパティは、選択したアクションの種類によって異なります。 たとえば、HTTP アクションに必須なプロパティは以下のとおりです。
 
       | プロパティ | 説明 |
       |----------|-------------|
       | **状態** | 返されるアクションの状態 |
-      | **状態コード** | 返される特定の状態コード |
+      | **状態コード** | 出力として返される特定の状態コード |
       | **ヘッダー** | 返されるヘッダーの内容 |
       |||
 
-      ![[静的な結果を有効にする] を選択する](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
+      !["静的な結果の有効化" を選択した後の "テスト" ウィンドウを示すスクリーンショット。](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
 
-      JavaScript Object Notation (JSON) 形式でモック データを入力するには、 **[JSON モードに切り替える]** (![[JSON モードに切り替える]を選択](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)) を選択します。
+      > [!TIP]
+      > JavaScript Object Notation (JSON) 形式で値を入力するには、 **[JSON モードに切り替える]** (![[JSON モードに切り替える] アイコン](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)) を選択します。
 
    1. 省略可能なプロパティについては、 **[省略可能なフィールドを選択する]** の一覧を開いて、モックするプロパティを選択します。
 
-      ![省略可能なプロパティを選択する](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
+      !["省略可能なフィールドを選択する" リストが表示されている "テスト" ペインのスクリーンショット。](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
 
-1. 保存する準備ができたら、 **[完了]** を選択します。
+1. 準備ができたら、 **[完了]** を選択します。
 
-   アクションの右上隅では、キャプション バーにテスト ビーカー アイコン (![静的な結果のアイコン](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)) が表示されるようになり、静的な結果が有効になっていることを示します。
+   アクションの右上隅では、キャプション バーにテスト ビーカー アイコン (![静的な結果のアイコン](./media/test-logic-apps-mock-data-static-results/static-result-test-beaker-icon.png)) が表示されるようになり、静的な結果が有効になっていることを示します。
 
-   ![有効になった静的な結果を示すアイコン](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
+   ![静的な結果アイコンが付いたアクションを示すスクリーンショット。](./media/test-logic-apps-mock-data-static-results/static-result-enabled.png)
 
-   モック データを使用する以前の実行を検索するには、このトピックで後述する「[静的な結果を使用した実行を見つける](#find-runs-mock-data)」を参照してください。
+   モック データを使用するワークフローの実行を検索するには、このトピックで後述する[静的な結果を使用した実行を見つける](#find-runs-mock-data)方法に関するセクションを参照してください。
 
-<a name="reuse-sample-outputs"></a>
+### <a name="standard"></a>[Standard](#tab/standard)
 
-## <a name="reuse-previous-outputs"></a>以前の出力を再利用する
+1. [Azure portal](https://portal.azure.com) で、ロジック アプリ ワークフローをデザイナーで開きます。
 
-モック出力として再利用できる出力を持つ以前の実行がロジック アプリにある場合、その実行の出力をコピーして貼り付けることができます。
+1. デザイナーで、アクションの詳細ペインが表示されるよう、モック データを返したいアクションを選択します。
 
-1. まだ開いていない場合は、[Azure portal](https://portal.azure.com) で Logic Apps デザイナーのロジック アプリを開きます。
+1. アクションの詳細ペインが右側に表示されたら、 **[Testing]\(テスト\)** を選択します。
 
-1. ロジック アプリのメイン メニューで、 **[概要]** を選択します。
+   ![Azure portal のワークフロー デザイナーを示すスクリーンショット。アクションの詳細ペインと "テスト" が選択されています。](./media/test-logic-apps-mock-data-static-results/select-testing-standard.png)
 
-1. **[実行の履歴]** セクションで、目的のロジック アプリの実行を選択します。
+1. **[Testing]\(テスト\)** タブで、 **[静的な結果の有効化 (プレビュー)]** を選択します。 アクションの必須 (*) プロパティが表示されたら、アクションの応答として返すモック出力値を指定します。
 
-1. ロジック アプリのワークフローで、目的の出力を持つアクションを見つけて展開します。
+   プロパティは、選択したアクションの種類によって異なります。 たとえば、HTTP アクションに必須なプロパティは以下のとおりです。
 
-1. **[未加工出力の表示]** リンクを選択します。
+   | プロパティ | 説明 |
+   |----------|-------------|
+   | **状態** | 返されるアクションの状態 |
+   | **状態コード** | 出力として返される特定の状態コード |
+   | **ヘッダー** | 返されるヘッダーの内容 |
+   |||
 
-1. 完全な JavaScript Object Notation (JSON) オブジェクトか、出力セクションやヘッダー セクションなどの使用する特定のサブセクションのどちらかをコピーします。
+   !["静的な結果の有効化" を選択した後の "テスト" タブを示すスクリーンショット。](./media/test-logic-apps-mock-data-static-results/enable-static-result-standard.png)
 
-1. [[静的な結果を設定する]](#set-up-static-results) でアクションに応じた **[静的な結果]** ボックスを開く手順に従います。
+   > [!TIP]
+   > JavaScript Object Notation (JSON) 形式で値を入力するには、 **[JSON モードに切り替える]** (![[JSON モードに切り替える] アイコン](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)) を選択します。
 
-1. **[静的な結果]** ボックスが開いたら、次のどちらかの手順を選択します。
+1. 省略可能なプロパティについては、 **[省略可能なフィールドを選択する]** の一覧を開いて、モックするプロパティを選択します。
 
-   * 完全な JSON オブジェクトを貼り付けるには、 **[JSON モードに切り替える]** (![[JSON モードに切り替える] を選択](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)) を選択します。
+   !["省略可能なフィールドを選択する" リストが表示されている "テスト" ペインのスクリーンショット。](./media/test-logic-apps-mock-data-static-results/optional-properties-standard.png)
 
-     ![完全なオブジェクトに対して [JSON モードに切り替える] を選択する](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
+1. 準備ができたら、 **[完了]** を選択します。
 
-   * JSON セクションだけを貼り付けるには、たとえば次のように、そのセクションのラベルの横にある、そのセクションに応じた **[JSON モードに切り替える]** を選択します。
+   アクションの右下隅には、テスト ビーカー アイコン (![静的な結果のアイコン](./media/test-logic-apps-mock-data-static-results/static-result-test-beaker-icon.png)) が表示されるようになり、静的な結果が有効になっていることを示します。
 
-     ![出力に対して [JSON モードに切り替える] を選択する](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-outputs.png)
+   ![デザイナー上の静的な結果アイコンが付いたアクションを示すスクリーンショット。](./media/test-logic-apps-mock-data-static-results/static-result-enabled-standard.png)
 
-1. JSON エディターで、以前にコピーした JSON を貼り付けます。
+   モック データを使用するワークフローの実行を検索するには、このトピックで後述する[静的な結果を使用した実行を見つける](#find-runs-mock-data)方法に関するセクションを参照してください。
 
-   ![JSON モード](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
-
-1. 完了したら、 **[完了]** を選択します。 または、デザイナーに戻るには、 **[エディター モードを切り替える]** (![[エディター モードを切り替える] を選択](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)) を選択します。
+---
 
 <a name="find-runs-mock-data"></a>
 
-## <a name="find-runs-that-use-static-results"></a>静的な結果を使用した実行を見つける
+## <a name="find-runs-that-use-mock-data"></a>モック データを使用する実行を検索する
 
-ロジック アプリの実行履歴から、アクションが静的な結果を使用した実行を特定します。 これらの実行を見つけるには、以下の手順に従います。
+### <a name="consumption"></a>[従量課金プラン](#tab/consumption)
 
-1. ロジック アプリのメイン メニューで、 **[概要]** を選択します。 
+アクションでモック データが使用されている以前のワークフローの実行を見つけるには、そのワークフローの実行履歴を確認します。
 
-1. 右ウィンドウの **[実行の履歴]** の下で **[静的な結果]** 列を見つけます。 
+1. [Azure portal](https://portal.azure.com) で、ロジック アプリ ワークフローをデザイナーで開きます。
 
-   結果を伴ったアクションを含むどの実行でも、たとえば次のように、 **[静的な結果]** 列が **[有効]** に設定されています。
+1. ロジック アプリのリソース メニューで、 **[概要]** を選択します。
 
-   ![[実行の履歴] - [静的な結果] 列](./media/test-logic-apps-mock-data-static-results/run-history.png)
+1. まだ選択されていない場合は、 **[Essentials]\(要点\)** セクションの **[実行の履歴]** を選択します。
 
-1. 静的な結果を使用したアクションを表示するには、 **[静的な結果]** 列が **[有効]** に設定されている目的の実行を選択します。
+1. **[実行の履歴]** テーブルの下で **[静的な結果]** 列を見つけます。
 
-   静的な結果を使用したアクションには、たとえば次のように、テスト ビーカー (![静的な結果のアイコン](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)) アイコンが表示されます。
+   モック データの出力を伴ったアクションを含むどの実行でも、たとえば次のように、 **[静的な結果]** 列が **[有効]** に設定されています。
 
-   ![[実行の履歴] - 静的な結果を使用したアクション](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
+   !["静的な結果" 列を含むワークフローの実行履歴を示すスクリーンショット。](./media/test-logic-apps-mock-data-static-results/run-history.png)
 
-## <a name="disable-static-results"></a>静的な結果を無効にする
+1. モック データを使用したアクションを実行内で表示するには、 **[静的な結果]** 列が **[有効]** に設定されている目的の実行を選択します。
 
-静的な結果をオフにすると、前回の設定の値は破棄されなくなります。 そのため、次回静的な結果をオンにしたときに、以前の値を使用し続けることができます。
+   静的な結果を使用したアクションには、たとえば次のように、テスト ビーカー (![静的な結果のアイコン](./media/test-logic-apps-mock-data-static-results/static-result-test-beaker-icon.png)) が表示されます。
 
-1. 静的な出力を無効にするアクションを探します。 アクションの右上隅で、テスト ビーカー アイコン (![静的な結果のアイコン](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)) を選択します。
+   ![静的な結果を使用するアクションが含まれているワークフローの実行履歴を示すスクリーンショット。](./media/test-logic-apps-mock-data-static-results/static-result-enabled-run-details.png)
 
-   ![テスト ビーカー アイコンを選択できる HTTP アクションを示しているスクリーンショット。](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
+### <a name="standard"></a>[Standard](#tab/standard)
+
+アクションでモック データが使用されている他のワークフローの実行を検索するには、各実行を確認する必要があります。
+
+1. [Azure portal](https://portal.azure.com) で、ロジック アプリ ワークフローをデザイナーで開きます。
+
+1. ワークフロー メニューで、 **[概要]** を選択します。
+
+1. まだ選択されていない場合は、 **[Essentials]\(要点\)** セクションの **[実行履歴]** を選択します。
+
+1. **[実行履歴]** テーブルで、確認する実行を選択します。
+
+   ![ワークフローの実行履歴を示すスクリーンショット。](./media/test-logic-apps-mock-data-static-results/select-run-standard.png)
+
+1. [実行の詳細] ペインで、テスト ビーカー (![静的な結果のアイコン](./media/test-logic-apps-mock-data-static-results/static-result-test-beaker-icon.png)) が表示されているアクションがあるかどうかを確認します。
+
+   ![静的な結果を使用するアクションが含まれているワークフローの実行履歴を示すスクリーンショット。](./media/test-logic-apps-mock-data-static-results/run-history-static-result-standard.png)
+
+---
+
+<a name="reuse-sample-outputs"></a>
+
+## <a name="reuse-previous-outputs-as-mock-data"></a>前の出力をモック データとして再利用する
+
+以前に実行したワークフローに出力がある場合、その実行から出力をコピーして貼り付けることで、その出力をモック データとして再利用することができます。
+
+### <a name="consumption"></a>[従量課金プラン](#tab/consumption)
+
+1. [Azure portal](https://portal.azure.com) で、ロジック アプリ ワークフローをデザイナーで開きます。
+
+1. ロジック アプリのリソース メニューで、 **[概要]** を選択します。
+
+1. まだ選択されていない場合は、 **[Essentials]\(要点\)** セクションの **[実行の履歴]** を選択します。 表示されるリストから、目的のワークフローの実行を選択します。
+
+   ![ワークフローの実行履歴を示すスクリーンショット。](./media/test-logic-apps-mock-data-static-results/select-run.png)
+
+1. 実行の結果ペインが開いたら、目的の出力を含むアクションを展開します。
+
+1. **[出力]** セクションで、 **[未加工出力の表示]** を選択します。
+
+1. **[出力]** ペインに、完全な JavaScript Object Notation (JSON) オブジェクトか、出力セクションやヘッダー セクションなどの使用する特定のサブセクションのどちらかをコピーします。
+
+1. アクションで [モック アップ データを設定する](#enable-mock-data)方法に関する前述のセクションを確認し、手順に従ってアクションの **[Testing]\(テスト\)** ペインを開きます。
+
+1. **[Testing]\(テスト\)** ペインが開いたら、次のどちらかの手順を選択します。
+
+   * 完全な JSON オブジェクトを貼り付けるには、 **[Testing]\(テスト\)** ラベルの横にある **[JSON モードに切り替える]** (![[JSON モードに切り替える] のアイコン](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)) を選択します。
+
+     ![完全な JSON オブジェクトを貼り付ける [JSON モードに切り替える] アイコンが選択されているスクリーンショット。](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
+
+   * JSON のセクションだけを貼り付けるには、そのセクションのラベル (**出力** や **ヘッダー** など) の横にある、**JSON モードに切り替える** を選択します。たとえば、以下のとおりです。
+
+     ![JSON オブジェクトのセクションを貼り付けるための [JSON モードに切り替える] アイコンが選択されているスクリーンショット。](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-output.png)
+
+1. JSON エディターで、以前にコピーした JSON を貼り付けます。
+
+   ![エディターに貼り付けられた JSON を示すスクリーンショット。](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
+
+1. 完了したら、 **[完了]** をクリックします。 または、デザイナーに戻るには、 **[エディター モードを切り替える]** (![[エディター モードを切り替える] アイコン](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)) を選択します。
+
+### <a name="standard"></a>[Standard](#tab/standard)
+
+1. [Azure portal](https://portal.azure.com) で、ロジック アプリ ワークフローをデザイナーで開きます。
+
+1. ワークフロー メニューで、 **[概要]** を選択します。
+
+1. まだ選択されていない場合は、 **[Essentials]\(要点\)** セクションの **[実行履歴]** を選択します。
+
+1. **[実行履歴]** テーブルで、確認する実行を選択します。
+
+   ![ワークフローの実行履歴を示すスクリーンショット。](./media/test-logic-apps-mock-data-static-results/select-run-standard.png)
+
+1. 実行の結果ペインが開いたら、目的の出力を含むアクションを選択します。
+
+1. **[出力]** セクションで、 **[未加工出力の表示]** を選択します。
+
+1. **[出力]** ペインに、完全な JavaScript Object Notation (JSON) オブジェクトか、出力セクションやヘッダー セクションなどの使用する特定のサブセクションのどちらかをコピーします。
+
+1. アクションで [モック アップ データを設定する](#enable-mock-data)方法に関する前述のセクションを確認し、手順に従ってアクションの **[Testing]\(テスト\)** タブを開きます。
+
+1. **[Testing]\(テスト\)** タブが開いたら、次のどちらかの手順を選択します。
+
+   * 完全な JSON オブジェクトを貼り付けるには、 **[Testing]\(テスト\)** ラベルの横にある **[JSON モードに切り替える]** (![[JSON モードに切り替える] のアイコン](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)) を選択します。
+
+     ![完全な JSON オブジェクトを貼り付ける [JSON モードに切り替える] アイコンが選択されているスクリーンショット。](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete-standard.png)
+
+   * JSON のセクションだけを貼り付けるには、そのセクションのラベル (**出力** や **ヘッダー** など) の横にある、**JSON モードに切り替える** を選択します。たとえば、以下のとおりです。
+
+     ![JSON オブジェクトのセクションを貼り付けるための [JSON モードに切り替える] アイコンが選択されているスクリーンショット。](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-output-standard.png)
+
+1. JSON エディターで、以前にコピーした JSON を貼り付けます。
+
+   ![エディターに貼り付けられた JSON を示すスクリーンショット。](./media/test-logic-apps-mock-data-static-results/json-editing-mode-standard.png)
+
+1. 完了したら、 **[完了]** をクリックします。 または、デザイナーに戻るには、 **[エディター モードを切り替える]** (![[エディター モードを切り替える] アイコン](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)) を選択します。
+
+---
+
+## <a name="disable-mock-data"></a>モック データを無効にする
+
+アクションで静的な結果をオフにしても、前回の設定の値は削除されません。 そのため、同じアクションで静的な結果を再度有効にした場合は、前の値を引き続き使用することができます。
+
+### <a name="consumption"></a>[従量課金プラン](#tab/consumption)
+
+1. [Azure portal](https://portal.azure.com) で、ロジック アプリ ワークフローをデザイナーで開きます。 モック データを無効にするアクションを探します。
+
+1. アクションの右上隅から、テスト ビーカー アイコンを探します: (![静的な結果のアイコン](./media/test-logic-apps-mock-data-static-results/static-result-test-beaker-icon.png)).
+
+   ![アクションを示すスクリーンショット。テスト ビーカー アイコンが選択されています。](./media/test-logic-apps-mock-data-static-results/disable-static-result.png)
 
 1. **[静的な結果の無効化]**  >  **[完了]** の順に選択します。
 
-   ![選択できる [静的な結果の無効化] オプションを示しているスクリーンショット。](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
+   ![[静的な結果の無効化] が選択されているスクリーンショット。](./media/test-logic-apps-mock-data-static-results/disable-static-result-button.png)
+
+### <a name="standard"></a>[Standard](#tab/standard)
+
+1. [Azure portal](https://portal.azure.com) で、ロジック アプリ ワークフローをデザイナーで開きます。 モック データを無効にするアクションを選択します。
+
+1. アクションの詳細ペインで、 **[Testing]\(テスト\)** タブを選択します。
+
+1. **[静的な結果の無効化]**  >  **[完了]** の順に選択します。
+
+   ![Standard に対して [静的な結果の無効化] が選択されているスクリーンショット。](./media/test-logic-apps-mock-data-static-results/disable-static-result-button-standard.png)
+
+---
 
 ## <a name="reference"></a>リファレンス
 
-基になるワークフロー定義でのこの設定の詳細については、「[Static results - Schema reference for Workflow Definition Language (静的結果 - ワークフロー定義言語のスキーマ参照)](../logic-apps/logic-apps-workflow-definition-language.md#static-results)」と「[runtimeConfiguration.staticResult - Runtime configuration settings (runtimeConfiguration.staticResult - ランタイム構成設定)](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)」を参照してください
+基になるワークフロー定義でのこの設定の詳細については、「[Static results - Schema reference for Workflow Definition Language (静的結果 - ワークフロー定義言語のスキーマ参照)](logic-apps-workflow-definition-language.md#static-results)」と「[runtimeConfiguration.staticResult - Runtime configuration settings (runtimeConfiguration.staticResult - ランタイム構成設定)](logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)」を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Logic Apps](../logic-apps/logic-apps-overview.md) について学習します
+* [Azure Logic Apps](logic-apps-overview.md) について学習します

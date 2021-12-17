@@ -9,44 +9,42 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fad9356d3379e76aa259d67711d18f14a4e266f
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 34a6a353593d733cf50325049cd88034fb16c9ca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505277"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723120"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Azure Active Directory で管理単位を管理する
 
 Azure Active Directory (Azure AD) では、きめ細かい管理制御を行うために、1 つ以上の管理単位に制限されたスコープでユーザーを Azure AD ロールに割り当てることができます。
 
-## <a name="get-started"></a>はじめに
 
-1. [Graph Explorer](https://aka.ms/ge) を使用して以降の手順からクエリを実行するには、以下を実行してください。
+## <a name="prerequisites"></a>前提条件
 
-    a. Azure Portal で、Azure AD に移動します。 
-    
-    b. アプリケーションの一覧で、 **[Graph エクスプローラー]** を選択します。
-    
-    c. **[アクセス許可]** ウィンドウで、 **[Graph エクスプローラーに管理者の同意を与えます]** を選択します。
+- 管理単位の各管理者に対する Azure AD Premium P1 または P2 ライセンス
+- 管理単位のメンバーに対する Azure AD Free ライセンス
+- 特権ロール管理者または全体管理者
+- PowerShell を使用する場合は、AzureAD モジュール
+- Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
-    ![[Graph エクスプローラーに管理者の同意を与えます] リンクを示すスクリーンショット。](./media/admin-units-manage/select-graph-explorer.png)
-
-
-1. [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) を使用します。
+詳細については、「[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)」をご覧ください。
 
 ## <a name="add-an-administrative-unit"></a>管理単位を追加する
 
 管理単位は、Azure portal または PowerShell を使用して追加できます。
 
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+### <a name="azure-portal"></a>Azure portal
 
-1. Azure Portal で、Azure AD に移動します。 次に、左側のウィンドウで、 **[管理単位]** を選択します。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[管理単位]** の順に選択します。
 
     ![Azure AD の [管理単位] リンクのスクリーンショット。](./media/admin-units-manage/nav-to-admin-units.png)
 
@@ -56,9 +54,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理制御を行う�
 
 1. 青い **[追加]** ボタンを選択して、管理単位を確定します。
 
-### <a name="use-powershell"></a>PowerShell の使用
-
-次のコマンドを実行する前に [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) をインストールします。
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 Connect-AzureAD
@@ -67,7 +63,7 @@ New-AzureADMSAdministrativeUnit -Description "West Coast region" -DisplayName "W
 
 必要に応じて、引用符で囲まれた値を変更できます。
 
-### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 要求
 
@@ -88,15 +84,19 @@ POST /administrativeUnits
 
 Azure AD では、管理ロールのスコープの単位として不要になった管理単位を削除できます。
 
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+### <a name="azure-portal"></a>Azure portal
 
-1. Azure portal で、**Azure AD** に移動し、 **[管理単位]** を選択します。 
-1. 削除する管理単位を選択してから、 **[削除]** を選択します。 
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[管理単位]** の順に選択します。
+ 
+1. 削除する管理単位を選択してから、 **[削除]** を選択します。
+
 1. 管理単位の削除を確認するには、 **[はい]** を選択します。 管理単位が削除されます。
 
-![管理単位の [削除] ボタンと確認ウィンドウのスクリーンショット。](./media/admin-units-manage/select-admin-unit-to-delete.png)
+    ![管理単位の [削除] ボタンと確認ウィンドウのスクリーンショット。](./media/admin-units-manage/select-admin-unit-to-delete.png)
 
-### <a name="use-powershell"></a>PowerShell の使用
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 $adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
@@ -105,7 +105,7 @@ Remove-AzureADMSAdministrativeUnit -Id $adminUnitObj.Id
 
 特定の環境で必要に応じて、引用符で囲まれた値を変更できます。
 
-### <a name="use-the-graph-api"></a>Graph API の使用
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 要求
 

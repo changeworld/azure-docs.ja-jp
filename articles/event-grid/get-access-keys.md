@@ -3,12 +3,13 @@ title: Event Grid リソースのアクセス キーを取得する
 description: この記事では、Event Grid トピックまたはドメインのアクセス キーを取得する方法を説明します
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: cd60777b2e28b82d72f8f2bf93fe0be301e9e280
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6052c93dc91403fccaed62719b163c24486557c5
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775225"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110702535"
 ---
 # <a name="get-access-keys-for-event-grid-resources-topics-or-domains"></a>Event Grid リソース (トピックまたはドメイン) のアクセス キーを取得する
 アクセス キーは、Azure Event Grid リソース (トピックおよびドメイン) に対してイベントを発行するアプリケーションを認証するために使用されます。 キーを定期的に再生成し、安全に格納することをお勧めします。 アクセス キーは 2 つ提供されるため、1 つのキーを使用して接続を保ったまま、もう 1 つのキーを再生成できます。

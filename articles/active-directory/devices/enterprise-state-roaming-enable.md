@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ed5291ee08d990d563d1ac3e2c3648d6a975280
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89268606"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458512"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 
 Enterprise State Roaming は、Azure AD Premium または Enterprise Mobility + Security (EMS) ライセンスを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法の詳細について、[Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory)を参照してください。
 
-Enterprise State Roaming を有効にすると、組織には、Azure Information Protection の Azure Rights Management 保護を制限付きで無料使用できるライセンスが自動的に付与されます。 この無料サブスクリプションは、Enterprise State Roaming サービスで同期されたエンタープライズ設定データおよびアプリケーション データの暗号化と暗号化の解除に限定されます。 Azure Rights Management サービスのすべての機能を使用するには、[有料サブスクリプション](https://azure.microsoft.com/pricing/details/information-protection/)が必要です。
+Enterprise State Roaming を有効にすると、組織には、Azure Information Protection の Azure Rights Management 保護を制限付きで無料使用できるライセンスが自動的に付与されます。 この無料サブスクリプションは、Enterprise State Roaming サービスで同期されたエンタープライズ設定データおよびアプリケーション データの暗号化と暗号化の解除に限定されます。 Azure Rights Management サービスのすべての機能を使用するには、[有料サブスクリプション](https://azure.microsoft.com/services/information-protection/)が必要です。
 
 > [!NOTE]
 > この記事は、2015 年 7 月に Windows 10 で提供が開始された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge の同期](/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
@@ -58,13 +58,8 @@ Enterprise State Roaming のデータは、Azure Active Directory のインス�
 1. [Azure AD 管理センター](https://aad.portal.azure.com/)にサインインします。
 1. **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
 1. ユーザーを選択し、 **[デバイス]** を選択します。
-1. **[表示]** で、 **[Devices syncing settings and app data]\(設定やアプリ データを同期しているデバイス)** を選択して、同期状態を表示します。
-  
-   ![デバイス同期データ設定のイメージ](./media/enterprise-state-roaming-enable/sync-status.png)
-  
-1. このユーザーに対して同期しているデバイスがある場合は、そのデバイスは次のように表示されます。
-  
-   ![デバイス同期列指向データのイメージ](./media/enterprise-state-roaming-enable/device-status-row.png)
+1. **[設定やアプリ データを同期しているデバイス]** を選択して、同期状態を表示します。
+1. ユーザーの同期しているデバイスが表示され、ダウンロードできます。
 
 ## <a name="data-retention"></a>データの保持
 
@@ -93,7 +88,7 @@ Enterprise State Roaming を使用して Microsoft クラウドと同期され�
 ## <a name="next-steps"></a>次のステップ
 
 * [Enterprise State Roaming の概要](enterprise-state-roaming-overview.md)
-* [設定とデータのローミングに関する FAQ](enterprise-state-roaming-faqs.md)
+* [設定とデータのローミングに関する FAQ](enterprise-state-roaming-faqs.yml)
 * [設定を同期させるためのグループ ポリシーと MDM の設定](enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 ローミング設定リファレンス](enterprise-state-roaming-windows-settings-reference.md)
 * [トラブルシューティング](enterprise-state-roaming-troubleshooting.md)

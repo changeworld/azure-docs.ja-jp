@@ -4,13 +4,13 @@ description: この記事では、Update Management を使用して Azure およ
 services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: c86c9049bc0afc81f5dfd8553d2aa98cfd4b1a46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/25/2021
+ms.openlocfilehash: 932f5d93c5fa67de486ddb9cabaafd68384f0db8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98915984"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357471"
 ---
 # <a name="manage-updates-and-patches-for-your-vms"></a>VM の更新プログラムとパッチを管理する
 
@@ -49,6 +49,22 @@ Linux マシンでは、コンプライアンス スキャンは既定で 1 時�
 コンプライアンスの結果を確認した後のソフトウェア更新プログラムの展開フェーズは、ソフトウェア更新プログラムを展開するプロセスです。 更新プログラムをインストールするには、リリース スケジュールとサービス期間と合致する展開をスケジュールします。 デプロイに含める更新の種類を選択できます。 たとえば、緊急更新プログラムやセキュリティ更新プログラムを追加し、更新プログラムのロールアップを除外できます。
 
 更新プログラムの展開をスケジュールする方法については、[ソフトウェア更新プログラムの展開](deploy-updates.md)に関する記事を参照してください。
+
+## <a name="exclude-updates"></a>更新の除外
+
+Red Hat Enterprise Linux など、Linux バリエーションの中には、パッケージを使用して OS レベルのアップグレードが発生することがあります。 これにより、OS バージョン番号の変更を伴う Update Management が実行される可能性があります。 Update Management でパッケージを更新するときに使用される方法は、管理者がローカルで Linux マシンに使用するものと同じであるため、この動作は意図的なものです。
+
+Update Management のデプロイによる OS バージョンの更新を回避するには、**除外** 機能を使用します。
+
+Red Hat Enterprise Linux で、除外するパッケージ名は `redhat-release-server.x86_64` です。
+
+## <a name="linux-update-classifications"></a>Linux 更新プログラムの分類
+
+更新プログラムを Linux マシンにデプロイする場合、更新プログラムの分類を選択できます。 このオプションにより、更新プログラムがフィルター処理され、指定した条件を満たすものに絞られます。 このフィルターは、更新プログラムが展開されるときに、マシンに対してローカルに適用されます。
+
+Update Management では更新プログラムの強化がクラウドで実行されるため、Update Management で一部の更新プログラムに対して、セキュリティへの影響ありというフラグを設定できますが、ローカル マシンにはその情報がありません。 重大な更新プログラムを Linux マシンに適用する場合、そのマシンにセキュリティへの影響ありとマークされていない更新プログラムが存在する可能性があり、そのため、これらの更新プログラムは適用されません。 ただし、Update Management には関連する更新プログラムに関する追加情報があるため、そのマシンは引き続き非対応として報告されることがあります。
+
+更新プログラムの分類ごとの更新プログラムのデプロイは、RTM バージョンの CentOS では動作しません。 CentOS に更新プログラムを正しくデプロイするには、更新プログラムが確実に適用されるように、すべての分類を選択します。 SUSE では、分類として **[他の更新プログラム]** のみを選択すると、その他のセキュリティ更新プログラムが zypper (パッケージ マネージャー) に関連している場合、またはその依存関係がまず必要になる場合に、それらの更新プログラムがインストールされる可能性があります。 この動作は、zypper の制限です。 場合によっては、更新プログラムのデプロイを再実行してから、更新プログラムのログでデプロイを確認する必要があります。
 
 ## <a name="review-update-deployments"></a>更新プログラムの展開を確認する
 

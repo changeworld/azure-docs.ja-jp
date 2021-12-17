@@ -3,18 +3,20 @@ title: VM ディスクのスケーラビリティおよびパフォーマンス�
 description: VM に接続された仮想マシン ディスクのスケーラビリティおよびパフォーマンスの目標について説明します。
 author: roygara
 ms.author: rogarana
-ms.date: 01/15/2021
+ms.date: 09/27/2021
 ms.topic: conceptual
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: eec11ce53177ce7ecd10d1ce06cc60217293cb8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 869f2e4153a0ffe900ad34776f0e8493eae92bb7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98574288"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130214854"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks"></a>VM ディスクのスケーラビリティおよびパフォーマンスの目標
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../includes/azure-storage-limits-vm-disks.md)]
 
@@ -22,7 +24,7 @@ ms.locfileid: "98574288"
 
 ## <a name="managed-virtual-machine-disks"></a>管理対象の仮想マシン ディスク
 
-アスタリスクで示されるサイズはプレビュー中です。 使用できるリージョンについては、[FAQ](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) を参照してください。
+アスタリスクで示されるサイズはプレビュー中です。 使用できるリージョンについては、[FAQ](./faq-for-disks.yml) を参照してください。
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../includes/azure-storage-limits-vm-disks-managed.md)]
 

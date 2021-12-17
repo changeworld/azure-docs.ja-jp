@@ -4,15 +4,14 @@ description: Azure Monitor を使用して Azure Purview のメトリック、�
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 4cb3965d359980856c238cd563ed8b761754660b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5b625bfb72e12169162e16f2fbb349d36885600
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667746"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552236"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure Monitor での Azure Purview メトリック
 
@@ -64,6 +63,8 @@ Azure portal のメトリック セクションの使用方法を理解するに
 
 | メトリックの名前 | メトリック名前空間 | 集計の種類 | 説明 |
 | ------------------- | ------------------- | ------------------- | ----------------- |
+| データ マップの容量ユニット | エラスティック データ マップ | SUM <br> Count | エラスティック データマップの容量ユニットを一定期間にわたって集計する |
+| データ マップ ストレージ サイズ | エラスティック データ マップ | SUM <br> Avg | エラスティック データマップのストレージ サイズを一定期間にわたって集計する |
 | Scan Cancelled (キャンセルされたスキャン) | Automated scan (自動スキャン) | SUM <br> Count | 一定期間におけるキャンセルされたデータ ソースのスキャンを集計します |
 | Scan Completed (完了したスキャン) | Automated scan (自動スキャン) | SUM <br> Count | 一定期間に完了したデータ ソースのスキャンを集計します |
 | Scan Failed (失敗したスキャン) | Automated scan (自動スキャン) | SUM <br> Count | 一定期間における失敗したデータ ソースのスキャンを集計します |

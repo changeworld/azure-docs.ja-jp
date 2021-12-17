@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 08/31/2021
 ms.author: duau
-ms.openlocfilehash: 56d6a76991c4386be45b2c18f4edb3d363e58fa5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 01de2c75cbb6c1f8b2e153e18add612608e75ac7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027144"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433983"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct について
 
@@ -37,7 +37,7 @@ ExpressRoute Direct を利用する前に、まず、サブスクリプション
     ```
 
 1. 次のコマンドを使用して、サブスクリプションをパブリック プレビューに登録します。
-1. 
+
     ```azurepowershell-interactive
     Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
     ```
@@ -48,7 +48,7 @@ ExpressRoute Direct を利用する前に、まず、サブスクリプション
 
 1. サブスクリプションで、**リソース プロバイダー** に関して、**Microsoft.Network** プロバイダーに **登録** 状態が表示されていることを確認します。 登録されているプロバイダーの一覧に、Microsoft.Network リソース プロバイダーが存在しない場合は、それを追加します。
 
-ExpressRoute Direct の使用開始後、選択したピアリングの場所に利用可能なポートが見つからない場合は、ExpressRouteDirect@microsoft.com にメールを送信してインベントリの追加を依頼してください。
+ExpressRoute Direct の使用開始後、選択したピアリングの場所に利用可能なポートが見つからない場合は、サポート リクエストを記録してインベントリの追加を依頼してください。
 
 ## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>サービス プロバイダーを使用する ExpressRoute と ExpressRoute Direct
 
@@ -69,7 +69,7 @@ Microsoft Azure ExpressRoute を使用すると、接続プロバイダーによ
 
 ## <a name="circuit-skus"></a>回線 SKU
 
-ExpressRoute Direct では、Azure Storage やその他のビッグ データ サービスへの大量のデータ インジェスト シナリオがサポートされます。 また、100 Gbps ExpressRoute Direct の ExpressRoute 回線でも、**40 Gbps** および **100 Gbps の回線 SKU がサポートされるようになりました。 物理ポート ペアは、**100 Gbps または 10 Gbps** のみであり、複数の仮想回線を備えることができます。 回線のサイズ:
+ExpressRoute Direct では、Azure Storage やその他のビッグ データ サービスへの大量のデータ インジェスト シナリオがサポートされます。 また、100 Gbps ExpressRoute Direct の ExpressRoute 回線でも、**40 Gbps** および **100 Gbps** の回線 SKU がサポートされるようになりました。 物理ポート ペアは、**100 Gbps または 10 Gbps** のみであり、複数の仮想回線を備えることができます。 回線のサイズ:
 
 | **100 Gbps ExpressRoute Direct** | **10 Gbps ExpressRoute Direct** | 
 | --- | --- |
@@ -100,14 +100,24 @@ ExpressRoute Direct では、QinQ と Dot1Q の両方の VLAN タグ付けがサ
 
 * **Dot1Q VLAN タグ付け** では、ExpressRoute Direct ポート ペアごとに 1 つの VLAN タグ付けが可能です。 ピアリングで使用される C-Tag は、ExpressRoute Direct ポート ペアのすべての回線とピアリング全体で一意である必要があります。
 
-## <a name="workflow"></a>ワークフロー
+## <a name="workflows"></a>Workflows
 
-[![ワークフロー](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+### <a name="set-up-expressroute-direct"></a>ExpressRoute Direct をセットアップする
+
+:::image type="content" source="./media/expressroute-erdirect-about/set-up-workflow.png" alt-text="ExpressRoute Direct セットアップ ワークフローの図。" lightbox="./media/expressroute-erdirect-about/set-up-workflow-expanded.png":::
+
+### <a name="delete-expressroute-direct"></a>ExpressRoute Direct を削除する
+
+:::image type="content" source="./media/expressroute-erdirect-about/delete-workflow.png" alt-text="ExpressRoute Direct 削除ワークフローの図。" lightbox="./media/expressroute-erdirect-about/delete-workflow-expanded.png":::
 
 ## <a name="sla"></a>SLA
 
-ExpressRoute Direct では、Microsoft グローバル ネットワークへのアクティブ/アクティブ冗長接続でも同じエンタープライズ レベルの SLA が提供されます。 ExpressRoute インフラストラクチャは冗長です。Microsoft グローバル ネットワークへの接続は冗長かつ多様であり、顧客要件のとおりにスケーリングされます。 
+ExpressRoute Direct では、Microsoft グローバル ネットワークへのアクティブ/アクティブ冗長接続でも同じエンタープライズ レベルの SLA が提供されます。 ExpressRoute インフラストラクチャは冗長です。Microsoft グローバル ネットワークへの接続は冗長かつ多様であり、顧客要件のとおりにスケーリングされます。
+
+## <a name="pricing"></a>価格
+
+ExpressRoute Direct の課金方法については、「[ExpressRoute の FAQ](expressroute-faqs.md#when-does-billing-start-and-stop-for-the-expressroute-direct-port-pairs)」を参照してください。 価格の詳細については、[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)ページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[ExpressRoute Direct を構成する](expressroute-howto-erdirect.md)
+[ExpressRoute Direct を構成する](expressroute-howto-erdirect.md)方法について学習します。

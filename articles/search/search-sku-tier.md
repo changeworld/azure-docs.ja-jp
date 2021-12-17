@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 06/26/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: df218c2a4c066343ef571c6f24554ecaa806b639
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 084768eec7863e7983fa4c552586deba8fb1b23b
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99987875"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578032"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
 
-[検索サービスの作成](search-create-service-portal.md)の部分は、サービスの有効期間にわたって固定される価格レベル (SKU) を選択することを意味 価格 (サービスの実行にかかる推定月間コスト) は、サービスの作成時にポータルの **[Select Pricing Tier]\(価格レベルの選択\)** ページに表示されます。 PowerShell または Azure CLI を使用してプロビジョニングする場合、レベルは **`-Sku`** パラメーターを使用して指定され、推定コストの詳細については、[サービスの価格](https://azure.microsoft.com/pricing/details/search/)に関するページを確認する必要があります。
+[検索サービスの作成](search-create-service-portal.md)の部分は、サービスの有効期間にわたって固定される価格レベル (SKU) を選択することを意味 レベルは、サービスの作成時に、ポータルの **[価格レベルの選択]** ページで指定します。 PowerShell または Azure CLI でプロビジョニングを行う場合は、 **`-Sku`** パラメーターを使用してレベルを指定します。
 
 選択したレベルによって以下が決まります。
 
@@ -27,6 +27,8 @@ ms.locfileid: "99987875"
 + 月単位の固定コストとしての課金対象のレート (ただし、容量を追加した場合は増分のコスト)
 
 いくつかのインスタンスでは、選択したレベルによって[プレミアム機能](#premium-features)の使用の可否が決まります。
+
+価格 (サービスの実行にかかる推定月間コスト) は、ポータルの **[Select Pricing Tier]\(価格レベルの選択\)** ページに表示されます。 推定コストについては、[サービスの価格](https://azure.microsoft.com/pricing/details/search/)に関するページを参照してください。
 
 > [!NOTE]
 > "Azure SKU" に関する情報をお探しですか? [[Azure の価格]](https://azure.microsoft.com/pricing/) から開始し、下にスクロールしてサービスごとの価格ページへのリンクを表示します。
@@ -56,12 +58,13 @@ ms.locfileid: "99987875"
 | 機能 | 制限事項 |
 |---------|-------------|
 | [インデクサー](search-indexer-overview.md) | インデクサーは S3 HD では使用できません。  |
-| [AI エンリッチメント](search-security-manage-encryption-keys.md) | Free レベルで実行されますが、推奨されていません。 |
+| [AI エンリッチメント](cognitive-search-concept-intro.md) | Free レベルで実行されますが、推奨されていません。 |
 | [送信 (インデクサー) アクセス用のマネージド (信頼できる) ID](search-howto-managed-identities-data-sources.md) | Free レベルでは使用できません。|
 | [顧客が管理する暗号化キー](search-security-manage-encryption-keys.md) | Free レベルでは使用できません。 |
 | [IP ファイアウォール アクセス](service-configure-firewall.md) | Free レベルでは使用できません。 |
 | [プライベート エンドポイント (Azure Private Link との統合)](service-create-private-endpoint.md) | 検索サービスへの受信接続の場合、Free レベルでは利用できません。 インデクサーによる他の Azure リソースへの送信接続の場合は、Free または S3 HD では使用できません。 スキルセットを使用するインデクサーの場合、Free、Basic、S1、S3 HD では使用できません。| 
 | [可用性ゾーン](search-performance-optimization.md) | Free レベルと Basic レベルでは使用できません。 |
+| [セマンティック検索 (プレビュー)](semantic-search-overview.md) | Free レベルと Basic レベルでは使用できません。 |
 
 リソース集中型の機能は、十分な容量を与えない限り、うまくいかない場合があります。 たとえば、[AI エンリッチメント](cognitive-search-concept-intro.md)には、データセットのサイズが小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
 

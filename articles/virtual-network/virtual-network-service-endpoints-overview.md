@@ -13,18 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 8926e99db926fc8182e98509c3deff0ccc3d1612
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbd27f7457b01386ddb1b207c10dcab87ffd4cd6
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99576669"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180365"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
 仮想ネットワーク (VNet) サービス エンドポイントでは、Azure のバックボーン ネットワーク上で最適化されたルートを介して、Azure サービスに安全に直接接続できます。 エンドポイントを使用することで、重要な Azure サービス リソースへのアクセスを仮想ネットワークのみに限定することができます。 サービス エンドポイントを使用すると、VNet 内のプライベート IP アドレスは、VNet 上のパブリック IP アドレスを必要とせずに、Azure サービスのエンドポイントに接続できます。
 
-この機能は、次の Azure サービスとリージョンで提供されています。 *Microsoft.\** リソースはかっこ内に示されています。 お使いのサービスに対してサービス エンドポイントを構成する際に、サブネット側でこのリソースを有効にしてください。
+   >[!NOTE]
+   > Azure プラットフォームでホストされるサービスに対して、セキュリティで保護されたプライベートなアクセスを行うには、Azure Private Link の使用をお薦めします。 詳細については、[Azure Private Link](../private-link/private-link-overview.md) に関するページを参照してください。  
+
+サービス エンドポイントは、次の Azure サービスとリージョンで提供されています。 *Microsoft.\** リソースはかっこ内に示されています。 お使いのサービスに対してサービス エンドポイントを構成する際に、サブネット側でこのリソースを有効にしてください。
 
 **一般公開**
 
@@ -150,6 +153,6 @@ FAQ については、[仮想ネットワーク サービス エンドポイン�
 - [Azure Storage アカウントを仮想ネットワークに限定する](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure SQL Database を仮想ネットワークに限定する](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure Synapse Analytics を仮想ネットワークに限定する](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
-- [仮想ネットワーク内の Azure サービス統合](virtual-network-for-azure-services.md)
+- [プライベート エンドポイントとサービス エンドポイントの比較](./vnet-integration-for-azure-services.md#compare-private-endpoints-and-service-endpoints)
 - [仮想ネットワーク サービス エンドポイント ポリシー](./virtual-network-service-endpoint-policies-overview.md)
-- [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/vnet-2subnets-service-endpoints-storage-integration)

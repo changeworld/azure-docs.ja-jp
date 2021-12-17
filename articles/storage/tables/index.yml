@@ -11,12 +11,12 @@ metadata:
   author: tamram
   ms.author: tamram
   ms.date: 12/23/2019
-  ms.openlocfilehash: e6abd9bdcff495ffc040f6e84e70d885765ded77
-  ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+  ms.openlocfilehash: 7139c0395c13db0f4ee95418db2529c77a6161ad
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94991827"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124818763"
 landingContent:
 - title: Table Storage について
   linkLists:
@@ -50,9 +50,11 @@ landingContent:
     links:
     - text: Table Storage のスケーラビリティ ターゲット
       url: scalability-targets.md
-- title: はじめに
+- title: 作業開始
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Azure portal でテーブルを作成する
+    - text: Azure テーブル SDK のダウンロード
+      url: https://azure.github.io/azure-sdk/
+    - text: Azure portal でのテーブルの作成
       url: table-storage-quickstart-portal.md

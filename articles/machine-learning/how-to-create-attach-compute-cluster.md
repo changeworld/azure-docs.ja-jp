@@ -5,18 +5,18 @@ description: Azure Machine Learning ワークスペースでコンピューテ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 10/02/2020
-ms.openlocfilehash: 1e3549a6f5f4f9d7f6a6da574378c90c20e42dcf
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 07/09/2021
+ms.openlocfilehash: e658a8ed30b15327a68ce1671c19e55253ad6b06
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169574"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026712"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning コンピューティング クラスターの作成
 
@@ -34,11 +34,19 @@ Azure Machine Learning コンピューティング クラスターを使用し�
 
 * Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 
-* [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
+* [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-setup-vs-code.md)。
+
+* Python SDK を使用する場合、[ワークスペースを使用して開発環境を設定](how-to-configure-environment.md)します。  環境の設定後、Python スクリプトでワークスペースにアタッチします。
+
+    ```python
+    from azureml.core import Workspace
+    
+    ws = Workspace.from_config() 
+    ```
 
 ## <a name="what-is-a-compute-cluster"></a>コンピューティング クラスターとは
 
-Azure Machine Learning コンピューティング クラスターは、シングルノードまたはマルチノードのコンピューティングを簡単に作成できるマネージド コンピューティング インフラストラクチャです。 コンピューティングは、リソースとしてワークスペース リージョン内に作成され、ワークスペース内の他のユーザーと共有できます。 コンピューティングはジョブが送信されると自動的にスケールアップされ、Azure 仮想ネットワークに配置できます。 コンピューティングはコンテナー化環境で実行され、モデルの依存関係が [Docker コンテナー](https://www.docker.com/why-docker)にパッケージ化されます。
+Azure Machine Learning コンピューティング クラスターは、シングルノードまたはマルチノードのコンピューティングを簡単に作成できるマネージド コンピューティング インフラストラクチャです。 コンピューティング クラスターは、ワークスペース内の他のユーザーと共有できるリソースです。 コンピューティングはジョブが送信されると自動的にスケールアップされ、Azure 仮想ネットワークに配置できます。 コンピューティング クラスターでは、仮想ネットワークでも **パブリック IP なし (プレビュー)** のデプロイはサポートされません。 コンピューティングはコンテナー化環境で実行され、モデルの依存関係が [Docker コンテナー](https://www.docker.com/why-docker)にパッケージ化されます。
 
 コンピューティング クラスターを使用することで、企業で SSH ポートを開かなくても、[仮想ネットワーク環境](how-to-secure-training-vnet.md)でジョブを安全に実行できます。 ジョブはコンテナー化された環境で実行され、モデルの依存関係が Docker コンテナーにパッケージ化されます。 
 
@@ -46,14 +54,19 @@ Azure Machine Learning コンピューティング クラスターは、シン�
 
 * このドキュメントに記載されている一部のシナリオは __プレビュー__ としてマークされています。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-* 現在、ARM テンプレート [https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces/computes?tabs=json ] を使用してクラスターの作成 (更新ではなく) のみがサポートされています。 コンピューティングを更新する場合は、現時点では SDK、CLI、または UX を使用することをお勧めします。
+* コンピューティング クラスターは、ワークスペースとは別のリージョンに作成できます。 この機能は __プレビュー__ 段階であり、__コンピューティング クラスター__ でのみ利用できます。コンピューティング インスタンスでは利用できません。 このプレビューは、プライベート エンドポイントが有効になっているワークスペースを使用している場合には使用できません。 
+
+    > [!WARNING]
+    > ワークスペースやデータストアと異なるリージョンでコンピューティング クラスターを使用すると、ネットワークの待機時間とデータ転送コストが増大する可能性があります。 待機時間とコストは、クラスターの作成時や、クラスターでのジョブの実行時に発生する可能性があります。
+
+* 現在、[ARM テンプレート](/azure/templates/microsoft.machinelearningservices/workspaces/computes) を使用したクラスターの作成 (更新ではなく) のみがサポートされています。 コンピューティングを更新する場合は、現時点では SDK、Azure CLI、または UX を使用することをお勧めします。
 
 * Azure Machine Learning コンピューティングには、割り当て可能なコア数などの既定の制限があります。 詳細については、「[Azure リソースのクォータの管理と要求](how-to-manage-quotas.md)」を参照してください。
 
 * Azure では、リソースに "_ロック_" を設定して、削除できないようにしたり、読み取り専用にしたりすることができます。 __ワークスペースが含まれているリソース グループにリソース ロックを適用しないでください。__ ワークスペースが含まれているリソース グループにロックを適用すると、Azure ML コンピューティング クラスターのスケーリング操作ができなくなります。 リソースのロックの詳細については、「[リソースのロックによる予期せぬ変更の防止](../azure-resource-manager/management/lock-resources.md)」を参照してください。
 
 > [!TIP]
-> 必要なコア数に十分に対応するクォータを備えている限り、クラスターは一般に、最大で 100 ノードまでスケールアップすることができます。 既定では、たとえば、MPI ジョブをサポートするために、クラスターは、そのノード間でノード間通信を有効にした状態でセットアップされます。 ただし、[サポート チケットを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)し、ご利用のサブスクリプション、ワークスペース、またはノード間通信を無効にする特定のクラスターをリストに登録することを要求するだけで、ご利用のクラスターを数千のノードにスケーリングすることができます。 
+> 必要なコア数に十分に対応するクォータを備えている限り、クラスターは一般に、最大で 100 ノードまでスケールアップすることができます。 既定では、たとえば、MPI ジョブをサポートするために、クラスターは、そのノード間でノード間通信を有効にした状態でセットアップされます。 ただし、[サポート チケットを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)し、ご利用のサブスクリプション、ワークスペース、またはノード間通信を無効にする特定のクラスターをリストに登録することを要求するだけで、ご利用のクラスターを数千のノードにスケーリングすることができます。
 
 
 ## <a name="create"></a>作成
@@ -70,25 +83,30 @@ Azure Machine Learning コンピューティングは、複数回の実行で再
     
 # <a name="python"></a>[Python](#tab/python)
 
-Python で永続的な Azure Machine Learning コンピューティング リソースを作成するには、**vm_size** および **max_nodes** プロパティを指定します。 その後、Azure Machine Learning では他のプロパティに対してスマート既定値が使用されます。 
+
+Python で永続的な Azure Machine Learning コンピューティング リソースを作成するには、**vm_size** および **max_nodes** プロパティを指定します。 その後、Azure Machine Learning では他のプロパティに対してスマート既定値が使用されます。
     
 * **vm_size**:Azure Machine Learning コンピューティングによって作成されるノードの VM ファミリ。
 * **max_nodes**:Azure Machine Learning コンピューティングでジョブを実行中に自動スケールアップする最大ノード数。
-
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
 Azure Machine Learning コンピューティングを作成するときに、いくつかの詳細プロパティも設定できます。 これらのプロパティを使用すると、永続的なクラスターを固定サイズで、またはサブスクリプションの既存の Azure 仮想ネットワーク内に作成できます。  詳しくは、「[AmlCompute クラス](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute)」をご覧ください。
 
+> [!WARNING]
+> ワークスペースやデータストアと異なるリージョンで `location` パラメーターを設定すると、ネットワークの待機時間とデータ転送コストが増大する可能性があります。 待機時間とコストは、クラスターの作成時や、クラスターでのジョブの実行時に発生する可能性があります。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 
 ```azurecli-interactive
-az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
+az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2 --location westus2
 ```
 
-詳しくは、「[az ml computetarget create amlcompute](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)」をご覧ください。
+> [!WARNING]
+> ワークスペースやデータストアと異なるリージョンでコンピューティング クラスターを使用すると、ネットワークの待機時間とデータ転送コストが増大する可能性があります。 待機時間とコストは、クラスターの作成時や、クラスターでのジョブの実行時に発生する可能性があります。
+
+詳しくは、「[az ml computetarget create amlcompute](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_amlcompute)」をご覧ください。
 
 # <a name="studio"></a>[スタジオ](#tab/azure-studio)
 
@@ -98,7 +116,7 @@ az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STAN
 
  ## <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a>コンピューティング クラスターのコストを削減する
 
-[優先順位の低い VM](concept-plan-manage-cost.md#low-pri-vm) を使用して、一部または全部のワークロードを実行することもできます。 これらの VM では、可用性が保証されず、使用中に割り込まれる可能性があります。 割り込まれたジョブを再開する必要があります。 
+[優先順位の低い VM](how-to-manage-optimize-cost.md#low-pri-vm) を使用して、一部または全部のワークロードを実行することもできます。 これらの VM では、可用性が保証されず、使用中に割り込まれる可能性があります。 割り込まれたジョブを再開する必要があります。 
 
 優先順位の低い VM を指定するには、次のいずれかの方法を使用します。
     
@@ -132,16 +150,18 @@ VM を作成するときに、スタジオで **[低優先度]** を選択しま
 
 * プロビジョニング構成でマネージド ID を構成します。  
 
-    * システム割り当てマネージド ID:
+    * `ws` という名前のワークスペースで作成された、システム割り当てマネージド ID
         ```python
         # configure cluster with a system-assigned managed identity
         compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
                                                                 max_nodes=5,
                                                                 identity_type="SystemAssigned",
                                                                 )
+        cpu_cluster_name = "cpu-cluster"
+        cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
         ```
     
-    * ユーザー割り当てマネージド ID:
+    * `ws` という名前のワークスペースで作成された、ユーザー割り当てマネージド ID
     
         ```python
         # configure cluster with a user-assigned managed identity
@@ -154,7 +174,7 @@ VM を作成するときに、スタジオで **[低優先度]** を選択しま
         cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
         ```
 
-* 既存のコンピューティング クラスターにマネージド ID を追加します 
+* `cpu_cluster` という名前の既存のコンピューティング クラスターにマネージド ID を追加します
     
     * システム割り当てマネージド ID:
     

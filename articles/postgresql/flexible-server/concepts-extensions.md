@@ -5,18 +5,17 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: e8f71eb120b86f35672c9123b52f7f19c9fee662
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 07/30/2021
+ms.openlocfilehash: bc176567721b3c023afcb82e920b33fca7ca0a53
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608461"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061232"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの PostgreSQL 拡張機能
 
-> [!IMPORTANT]
-> Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
+
 
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを単一のパッケージにまとめて、単一のコマンドでデータベースに対する読み込みや削除を行うことができます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。
 
@@ -25,6 +24,58 @@ PostgreSQL 拡張機能を使用するには、その拡張機能がデータベ
 
 Azure Database for PostgreSQL でサポートされる主要な拡張機能のサブセットを次に示します。 この情報は、`SHOW azure.extensions;`を実行して確認することもできます。 このドキュメントに記載されていない拡張機能は、Azure Database for PostgreSQL - フレキシブル サーバーではサポートされていません。 Azure Database for PostgreSQL には、独自の拡張機能を作成することも読み込むこともできません。
 
+## <a name="postgres-13-extensions"></a>Postgres 13 の拡張機能
+
+Postgres バージョン 13 を搭載した Azure Database for PostgreSQL - フレキシブル サーバーでは、次の拡張機能を使用できます。 
+
+> [!div class="mx-tableFixed"]
+> | **拡張子**| **拡張機能のバージョン** | **説明** |
+> |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 3.1.1           | 構成要素へのアドレスの解析に使用されます。 |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 3.1.1           | Address Standardizer US データセットの例|
+> |[amcheck](https://www.postgresql.org/docs/13/amcheck.html)                    | 1.2             | 関係の整合性を検証するための関数|
+> |[bloom](https://www.postgresql.org/docs/13/bloom.html)                    | 1.0             | bloom アクセス メソッド - シグネチャ ファイルに基づくインデックス|
+> |[btree_gin](https://www.postgresql.org/docs/13/btree-gin.html)                    | 1.3             | GIN で一般的なデータ型のインデックスを作成するためのサポート|
+> |[btree_gist](https://www.postgresql.org/docs/13/btree-gist.html)                   | 1.5             | GiST で一般的なデータ型のインデックスを作成するためのサポート|
+> |[citext](https://www.postgresql.org/docs/13/citext.html)                       | 1.6             | 大文字と小文字を区別しない文字列のデータ型|
+> |[cube](https://www.postgresql.org/docs/13/cube.html)                         | 1.4             | 多次元キューブのデータ型|
+> |[dblink](https://www.postgresql.org/docs/13/dblink.html)                       | 1.2             | データベース内から他の PostgreSQL データベースに接続する|
+> |[dict_int](https://www.postgresql.org/docs/13/dict-int.html)                     | 1.0             | 整数のテキスト検索辞書テンプレート|
+> |[dict_xsyn](https://www.postgresql.org/docs/13/dict-xsyn.html)                     | 1.0             | 拡張されたシノニム処理のためのテキスト検索ディクショナリのテンプレート|
+> |[earthdistance](https://www.postgresql.org/docs/13/earthdistance.html)                | 1.1             | 地表面上の大圏距離を計算する|
+> |[fuzzystrmatch](https://www.postgresql.org/docs/13/fuzzystrmatch.html)                | 1.1             | 文字列間の類似点と相違点を特定する|
+> |[hstore](https://www.postgresql.org/docs/13/hstore.html)                       | 1.7             | (キー、値) ペアのセットを格納するためのデータ型|
+> |[intagg](https://www.postgresql.org/docs/13/intagg.html)                     | 1.1             | 整数のアグリゲーターと列挙子 (廃止)|
+> |[intarray](https://www.postgresql.org/docs/13/intarray.html)                     | 1.3             | 整数の 1 次元配列に対する関数、演算子、およびインデックスのサポート|
+> |[isn](https://www.postgresql.org/docs/13/isn.html)                          | 1.2             | 国際対応の製品番号規格のデータ型|
+> |[lo](https://www.postgresql.org/docs/13/lo.html)                            | 1.1             | ラージ オブジェクトのメンテナンス |
+> |[ltree](https://www.postgresql.org/docs/13/ltree.html)                        | 1.2             | 階層ツリー状の構造体のデータ型|
+> |[pageinspect](https://www.postgresql.org/docs/13/pageinspect.html)                        | 1.8             | 低レベルでデータベース ページの内容を検査する|
+> |[pg_buffercache](https://www.postgresql.org/docs/13/pgbuffercache.html)               | 1.3             | 共有バッファー キャッシュを確認する|
+> |[pg_cron](https://github.com/citusdata/pg_cron)                        | 1.3             | PostgreSQL のジョブ スケジューラ|
+> |[pg_freespacemap](https://www.postgresql.org/docs/13/pgfreespacemap.html)               | 1.2             | 空き領域マップ (FSM) を確認する|
+> |[pg_partman](https://github.com/pgpartman/pg_partman)         | 4.5.0           | 時刻または ID によってパーティション テーブルを管理するための拡張機能 |
+> |[pg_prewarm](https://www.postgresql.org/docs/13/pgprewarm.html)                   | 1.2             | 関係データをプレウォームする|
+> |[pg_stat_statements](https://www.postgresql.org/docs/13/pgstatstatements.html)           | 1.8             | 実行されたすべての SQL ステートメントの実行統計情報を追跡する|
+> |[pg_trgm](https://www.postgresql.org/docs/13/pgtrgm.html)                      | 1.5             | trigram に基づくテキストの類似性の測定とインデックス検索|
+> |[pg_visibility](https://www.postgresql.org/docs/13/pgvisibility.html)                      | 1.2             | 可視性マップ (VM) とページ レベルの可視性情報を調べる|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.5             | 監査機能を提供する|
+> |[pgcrypto](https://www.postgresql.org/docs/13/pgcrypto.html)                     | 1.3             | 暗号化関数| 
+> |[pglogical](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | 論理ストリーミング レプリケーション |
+> |[pgrowlocks](https://www.postgresql.org/docs/13/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
+> |[pgstattuple](https://www.postgresql.org/docs/13/pgstattuple.html)                  | 1.5             | タプルレベルの統計情報を表示する|
+> |[plpgsql](https://www.postgresql.org/docs/13/plpgsql.html)                      | 1.0             | PL/pgSQL 手続き型言語|
+> |[postgis](https://www.postgis.net/)                      | 3.1.1           | PostGIS ジオメトリ、地理 |
+> |[postgis_raster](https://www.postgis.net/)               | 3.1.1           | PostGIS ラスター型と関数| 
+> |[postgis_sfcgal](https://www.postgis.net/)               | 3.1.1           | PostGIS SFCGAL 関数|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 3.1.1           | PostGIS Tiger ジオコーダとリバース ジオコーダ|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 3.1.1           | PostGIS トポロジの空間型と関数|
+> |[postgres_fdw](https://www.postgresql.org/docs/13/postgres-fdw.html)                 | 1.0             | リモート PostgreSQL サーバー用の外部データ ラッパー|
+> |[sslinfo](https://www.postgresql.org/docs/13/sslinfo.html)                    | 1.2             | SSL 証明書に関する情報|
+> |[tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html)                    | 1.0             |  行数を制限として受け取る TABLESAMPLE メソッド|
+> |[tsm_system_time](https://www.postgresql.org/docs/13/tsm-system-time.html)                    | 1.0             |  ミリ秒単位の時間を制限として受け取る TABLESAMPLE メソッド|
+> |[unaccent](https://www.postgresql.org/docs/13/unaccent.html)                     | 1.1             | アクセントを削除するテキスト検索辞書|
+> |[uuid-ossp](https://www.postgresql.org/docs/13/uuid-ossp.html)                    | 1.1             | 汎用一意識別子 (UUID) を生成する|
 
 ## <a name="postgres-12-extensions"></a>Postgres 12 の拡張機能
 
@@ -47,19 +98,24 @@ Postgres バージョン 12 を搭載した Azure Database for PostgreSQL - フ�
 > |[earthdistance](https://www.postgresql.org/docs/12/earthdistance.html)                | 1.1             | 地表面上の大圏距離を計算する|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/12/fuzzystrmatch.html)                | 1.1             | 文字列間の類似点と相違点を特定する|
 > |[hstore](https://www.postgresql.org/docs/12/hstore.html)                       | 1.6             | (キー、値) ペアのセットを格納するためのデータ型|
+> |[hypopg](https://github.com/HypoPG/hypopg)                                   |  1.2             | 仮定のインデックスのサポートを追加する拡張機能 |
 > |[intagg](https://www.postgresql.org/docs/12/intagg.html)                     | 1.1             | 整数のアグリゲーターと列挙子 (廃止)|
 > |[intarray](https://www.postgresql.org/docs/12/intarray.html)                     | 1.2             | 整数の 1 次元配列に対する関数、演算子、およびインデックスのサポート|
 > |[isn](https://www.postgresql.org/docs/12/isn.html)                          | 1.2             | 国際対応の製品番号規格のデータ型|
+> |[lo](https://www.postgresql.org/docs/12/lo.html)                            | 1.1             | ラージ オブジェクトのメンテナンス |
 > |[ltree](https://www.postgresql.org/docs/12/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
 > |[pageinspect](https://www.postgresql.org/docs/12/pageinspect.html)                        | 1.7             | 低レベルでデータベース ページの内容を検査する|
 > |[pg_buffercache](https://www.postgresql.org/docs/12/pgbuffercache.html)               | 1.3             | 共有バッファー キャッシュを確認する|
+> |[pg_cron](https://github.com/citusdata/pg_cron)                        | 1.3             | PostgreSQL のジョブ スケジューラ|
 > |[pg_freespacemap](https://www.postgresql.org/docs/12/pgfreespacemap.html)               | 1.2             | 空き領域マップ (FSM) を確認する|
+> |[pg_partman](https://github.com/pgpartman/pg_partman)         | 4.5.0           | 時刻または ID によってパーティション テーブルを管理するための拡張機能 |
 > |[pg_prewarm](https://www.postgresql.org/docs/12/pgprewarm.html)                   | 1.2             | 関係データをプレウォームする|
 > |[pg_stat_statements](https://www.postgresql.org/docs/12/pgstatstatements.html)           | 1.7             | 実行されたすべての SQL ステートメントの実行統計情報を追跡する|
 > |[pg_trgm](https://www.postgresql.org/docs/12/pgtrgm.html)                      | 1.4             | trigram に基づくテキストの類似性の測定とインデックス検索|
 > |[pg_visibility](https://www.postgresql.org/docs/12/pgvisibility.html)                      | 1.2             | 可視性マップ (VM) とページ レベルの可視性情報を調べる|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.4             | 監査機能を提供する|
 > |[pgcrypto](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | 暗号化関数|
+>|[pglogical](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | 論理ストリーミング レプリケーション |
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | タプルレベルの統計情報を表示する|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL 手続き型言語|
@@ -96,19 +152,24 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL - フ�
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | 地表面上の大圏距離を計算する|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/11/fuzzystrmatch.html)                | 1.1             | 文字列間の類似点と相違点を特定する|
 > |[hstore](https://www.postgresql.org/docs/11/hstore.html)                       | 1.5             | (キー、値) ペアのセットを格納するためのデータ型|
+> |[hypopg](https://github.com/HypoPG/hypopg)                                   |  1.1.2            | 仮定のインデックスのサポートを追加する拡張機能 |
 > |[intagg](https://www.postgresql.org/docs/11/intagg.html)                     | 1.1             | 整数のアグリゲーターと列挙子 (廃止)|
 > |[intarray](https://www.postgresql.org/docs/11/intarray.html)                     | 1.2             | 整数の 1 次元配列に対する関数、演算子、およびインデックスのサポート|
 > |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | 国際対応の製品番号規格のデータ型|
+> |[lo](https://www.postgresql.org/docs/11/lo.html)                            | 1.1             | ラージ オブジェクトのメンテナンス |
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
 > |[pageinspect](https://www.postgresql.org/docs/11/pageinspect.html)                        | 1.7             | 低レベルでデータベース ページの内容を検査する|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | 共有バッファー キャッシュを確認する|
+> |[pg_cron](https://github.com/citusdata/pg_cron)                        | 1.3             | PostgreSQL のジョブ スケジューラ|
 > |[pg_freespacemap](https://www.postgresql.org/docs/11/pgfreespacemap.html)               | 1.2             | 空き領域マップ (FSM) を確認する|
+> |[pg_partman](https://github.com/pgpartman/pg_partman)         | 4.5.0           | 時刻または ID によってパーティション テーブルを管理するための拡張機能 |
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | 関係データをプレウォームする|
 > |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | 実行されたすべての SQL ステートメントの実行統計情報を追跡する|
 > |[pg_trgm](https://www.postgresql.org/docs/11/pgtrgm.html)                      | 1.4             | trigram に基づくテキストの類似性の測定とインデックス検索|
 > |[pg_visibility](https://www.postgresql.org/docs/11/pgvisibility.html)                      | 1.2             | 可視性マップ (VM) とページ レベルの可視性情報を調べる|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | 監査機能を提供する|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | 暗号化関数|
+>|[pglogical](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | 論理ストリーミング レプリケーション |
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | タプルレベルの統計情報を表示する|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL 手続き型言語|
@@ -134,7 +195,32 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL - フ�
 
 pg_prewarm 拡張機能により、リレーショナル データがキャッシュに読み込まれます。 キャッシュをプレウォームすると、再起動後に最初に実行したときのクエリの応答時間が向上します。 自動 prewarm 機能は、Azure Database for PostgreSQL - フレキシブル サーバーでは現在、使用できません。
 
+## <a name="pg_cron"></a>pg_cron
+
+[pg_cron](https://github.com/citusdata/pg_cron/) は、PostgreSQL のための cron ベースの簡単なジョブ スケジューラであり、拡張機能としてデータベース内で実行されます。 PostgreSQL データベース内でメンテナンス作業を定期的に実行する目的で pg_cron 拡張機能を使用できます。 たとえば、テーブルを定期的に消去したり、古いデータ ジョブを削除したりできます。
+
+`pg_cron` では、複数のジョブを並行して実行できますが、一度に実行できるジョブのインスタンスは 1 つだけです。 2 回目の実行が初回の完了前になった場合、2 回目の実行がキューに入り、初回実行の完了直後に開始されます。 それによってジョブ実行が厳密に予定と同じ回数になり、同時に実行されることがありません。
+
+次に例をいくつか示します。
+
+土曜日午前 3:30 (GMT) に古いデータを削除するには
+```
+SELECT cron.schedule('30 3 * * 6', $$DELETE FROM events WHERE event_time < now() - interval '1 week'$$);
+```
+毎日午前 10:00 (GMT) にバキュームを実行するには
+```
+SELECT cron.schedule('0 10 * * *', 'VACUUM');
+```
+
+pg_cron からの全タスクのスケジュールを解除するには
+```
+SELECT cron.unschedule(jobid) FROM cron.job;
+```
+> [!NOTE]
+> pg_cron 拡張機能は、すべての Azure Database for PostgreSQL フレキシブル サーバーの Postgres データベース内に事前に読み込まれており、セキュリティを損なうことなく、PostgreSQL DB インスタンス内の他のデータベースで実行するようにジョブをスケジュールできます。
+
 ## <a name="pg_stat_statements"></a>pg_stat_statements
+
 [pg_stat_statements 拡張機能](https://www.postgresql.org/docs/current/pgstatstatements.html)は、すべての Azure Database for PostgreSQL フレキシブル サーバーにプリロードされます。これにより、SQL ステートメントの実行統計情報を追跡する手段が提供されます。
 ステートメントをコントロールする設定`pg_stat_statements.track`は、拡張機能と既定値によって`top`にカウントされ、クライアントが直接発行したすべてのステートメントがすべて追跡されます。 その他の 2 つの追跡レベルは`none`と`all`です。 この設定は、サーバー パラメーターとして構成できます。
 
@@ -143,4 +229,4 @@ pg_prewarm 拡張機能により、リレーショナル データがキャッ�
 
 ## <a name="next-steps"></a>次のステップ
 
-使用する拡張機能が見つからない場合は、お知らせください。 [フィードバック フォーラム](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)で、既存のリクエストに投票することや、新しいフィードバック リクエストを作成することができます。
+使用する拡張機能が見つからない場合は、お知らせください。 [フィードバック フォーラム](https://feedback.azure.com/d365community/forum/c5e32b97-ee24-ec11-b6e6-000d3a4f0da0)で、既存のリクエストに投票することや、新しいフィードバック リクエストを作成することができます。

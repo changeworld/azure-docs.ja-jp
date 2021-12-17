@@ -1,0 +1,11 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: ネットワーク
+      tocHref: /azure/developer/terraform
+      topicHref: /azure/networking/index
+      items:
+        - name: ファイアウォール
+          tocHref: /azure/developer/terraform
+          topicHref: /azure/firewall/index

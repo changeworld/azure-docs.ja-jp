@@ -10,9 +10,17 @@
       href: iot-services-and-technologies.md
     - name: サポート オプションとヘルプ オプション
       href: iot-support-help.md
-- name: Security
+    - name: IoT 用語集
+      href: iot-glossary.md
+- name: 操作方法ガイド
   items:
-    - name: Recommendations
+    - name: スマートフォンのデバイス アプリを使用する
+      href: iot-phone-app-how-to.md
+    - name: IoT Explorer を使用する
+      href: howto-use-iot-explorer.md
+- name: セキュリティ
+  items:
+    - name: 推奨事項
       href: security-recommendations.md
     - name: 徹底的なセキュリティ
       href: iot-security-ground-up.md
@@ -22,3 +30,51 @@
       href: iot-security-architecture.md
     - name: セキュリティで保護されたデプロイ
       href: iot-security-deployment.md
+- name: リソース
+  items:
+    - name: Azure IoT のサービス
+      items:
+        - name: IoT Hub
+          href: ../iot-hub/index.yml
+        - name: IoT Hub Device Provisioning Service
+          href: ../iot-dps/index.yml
+        - name: IoT Central
+          href: /microsoft-iot-central/
+        - name: IoT Edge
+          href: ./index.yml
+        - name: IoT プラグ アンド プレイ
+          href: ../iot-develop/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml
+    - name: Azure IoT SDK
+      items:
+        - name: IoT サービスの SDK
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
+        - name: IoT デバイス SDK
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
+    - name: Azure IoT サンプル
+      items:
+        - name: C# (.NET)
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS プラットフォーム
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: IoT デバイス カタログ向けの Azure 認定
+      href: 'https://catalog.azureiotsolutions.com/'
+    - name: Azure IoT デベロッパー センター
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: VS Code 用の Azure IoT Tools
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools'
+    - name: Azure IoT エクスプローラー ツール
+      href: 'https://github.com/Azure/azure-iot-explorer'
+    - name: iothub-diagnostics ツール
+      href: 'https://github.com/Azure/iothub-diagnostics'

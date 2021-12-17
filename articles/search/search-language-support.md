@@ -7,21 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: 627ec77af4e492b4f22404972729cecdb1c40f06
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/08/2021
+ms.openlocfilehash: 6511764697adcd6c8743efe41d276ccef3ff1bb0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801606"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823906"
 ---
-# <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Azure Cognitive Search で複数の言語のインデックスを作成する方法
+# <a name="create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Azure Cognitive Search で複数の言語のインデックスを作成する
 
 多言語対応の検索アプリケーションで重要な要件は、ユーザーが使用する言語で検索し、結果を取得できる機能です。 Azure Cognitive Search での多言語対応アプリの言語要件の対応には、特定言語の文字列のみを格納する専用のフィールドを作成し、クエリ時にそれらのフィールドに対してのみフルテキスト検索をして制限する方法があります。
 
-+ フィールド定義で、対象言語の言語規則を呼び出す言語アナライザーを設定します。 サポートされているアナライザーの詳細な一覧を参照するには、[言語アナライザーの追加](index-add-language-analyzers.md)に関するページを参照してください。
++ フィールド定義で、対象言語の言語規則を呼び出す[言語アナライザーを指定](index-add-language-analyzers.md)します。 
 
-+ クエリの要求でフルテキスト検索の範囲を特定のフィールドに設定するパラメーターを設定し、提供する検索機能と互換性がある内容を含まないフィールドの結果をトリミングします。
++ クエリ要求で、`searchFields` パラメーターを設定してフルテキスト検索のスコープを特定のフィールドに指定し、`select` を使用して互換性のあるコンテンツが含まれるフィールドだけが返されるようにします。
 
 フィールドの内容の整合性によって、この手法が成功するかどうかが決まります。 Azure Cognitive Search では、クエリ実行の一部として文字列の変換や言語の検出は行いません。 フィールドに目的の文字列が含まれているかどうかは、ユーザーが判断する必要があります。
 
@@ -141,7 +141,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 
 ## <a name="next-steps"></a>次の手順
 
-+ [言語アナライザー](index-add-language-analyzers.md)
++ [言語アナライザーの追加](index-add-language-analyzers.md)
 + [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
 + [Search Documents REST API](/rest/api/searchservice/search-documents)
 + [AI エンリッチメントの概要](cognitive-search-concept-intro.md)

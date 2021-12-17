@@ -3,20 +3,20 @@ title: カスタム ポリシーの文字列要求変換の例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの文字列要求変換の例
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/08/2021
-ms.author: mimart
+ms.date: 07/20/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 85574b7d33af6d9abfe25f5af4d811255f08ce4b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2327cb0bd2760492858c8a2a3105c5a5ee55368b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452239"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131032280"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -34,7 +34,7 @@ ms.locfileid: "102452239"
 | InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
 | InputParameter | stringComparison | string | 文字列比較で、次のいずれかの値です。序数、OrdinalIgnoreCase。 |
 
-**AssertStringClaimsAreEqual** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される [検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `UserMessageIfClaimsTransformationStringsAreNotEqual` メタデータによって制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
+**AssertStringClaimsAreEqual** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される [検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayControl](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `UserMessageIfClaimsTransformationStringsAreNotEqual` メタデータによって制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
 
 
 ![AssertStringClaimsAreEqual の実行](./media/string-transformations/assert-execution.png)
@@ -719,6 +719,44 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 - 出力要求:
     - **domain**: outlook.com
 
+## <a name="setclaimifbooleansmatch"></a>SetClaimIfBooleansMatch
+
+ブール型の要求が `true` または `false` であることを確認します。 「はい」の場合は、`outputClaimIfMatched` 入力パラメーターに存在する値を使用して出力要求を設定します。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | claimToMatch | string | チェックする要求の種類。 Null 値の場合は例外がスローされます。 |
+| InputParameter | matchTo | string | `claimToMatch` 入力要求と比較する値。 指定できる値: `true` または `false`。  |
+| InputParameter | outputClaimIfMatched | string | 入力要求が `matchTo` 入力パラメーターと等しい場合に設定する値。 |
+| OutputClaim | outputClaim | string | `claimToMatch` 入力要求が `matchTo` 入力パラメーターと等しい場合、この出力要求には `outputClaimIfMatched` 入力パラメーターの値が含まれます。 |
+
+たとえば、以下の要求変換では **hasPromotionCode** 要求の値が `true` と等しいかどうかがチェックされます。 「はい」の場合は、値を *Promotion code not found* に戻します。
+
+```xml
+<ClaimsTransformation Id="GeneratePromotionCodeError" TransformationMethod="SetClaimIfBooleansMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="hasPromotionCode" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="true" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="Promotion code not found." />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="promotionCode" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+    - **claimToMatch**: true
+- 入力パラメーター:
+    - **matchTo**: true
+    - **outputClaimIfMatched**: "Promotion code not found."
+- 出力要求:
+    - **outputClaim**: "Promotion code not found."
+
 ## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
 
 文字列の要求の `claimToMatch` と `matchTo` の入力パラメーターが等しいことをチェックし、出力要求を `outputClaimIfMatched` 入力パラメーターにある値で設定します。同時に結果の出力要求を比較します。これは比較の結果に基づいて `true` または `false` として設定されます。
@@ -885,8 +923,8 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
     - **stringComparison**: ordinalIgnoreCase
     - **outputClaimIfMatched**:B2C_V1_90001
 - 出力要求:
-    - **isMinorResponseCode**:B2C_V1_90001
-    - **isMinor**: true
+    - **isMinorResponseCode**: true
+    - **isMinor**: B2C_V1_90001
 
 
 ## <a name="stringcontains"></a>StringContains

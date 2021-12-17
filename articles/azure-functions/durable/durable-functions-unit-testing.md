@@ -3,12 +3,12 @@ title: Azure Durable Functions の単体テスト
 description: Durable Functions の単体テストを行う方法について説明します。
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: fe5a25e0296eb183ef2426e12f7bdee35633ec78
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 3d3b89337d4643b59d37ebe0aaeaf6f207bf053e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076634"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165445"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions の単体テスト
 
@@ -38,7 +38,7 @@ ms.locfileid: "106076634"
 * [IDurableOrchestrationContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext)
 
 * [IDurableActivityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableactivitycontext)
-  
+
 * [IDurableEntityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableentitycontext)
 
 これらのインターフェイスは、Durable Functions でサポートされているさまざまなトリガーおよびバインドで使用できます。 Azure Functions を実行しているとき、Functions ランタイムは、これらのインターフェイスの具象実装を使用して関数コードを実行します。 単体テストでは、これらのインターフェイスのモック バージョンを渡してビジネス ロジックをテストすることができます。
@@ -95,7 +95,7 @@ durableClientMock
 ```csharp
 // Mock ILogger
 var loggerMock = new Mock<ILogger>();
-```  
+```
 
 ここで、`Run` メソッドが、以下のように単体テストから呼び出されます。
 
@@ -110,7 +110,7 @@ var result = await HttpStart.Run(
     durableClientMock.Object,
     functionName,
     loggerMock.Object);
- ```
+```
 
  最後のステップでは、予期される値と出力を比較します。
 
@@ -183,5 +183,5 @@ Assert.Equal("Hello London!", result[2]);
 
 > [!div class="nextstepaction"]
 > [xUnit の詳細を確認する](https://xunit.net/docs/getting-started/netcore/cmdline)
-> 
+>
 > [moq の詳細を確認する](https://github.com/Moq/moq4/wiki/Quickstart)

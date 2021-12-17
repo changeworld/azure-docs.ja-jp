@@ -1,24 +1,31 @@
 ---
-title: Windows VM で Azure Files 共有を作成して使用する
-description: Azure portal で Azure Files 共有を作成して使用します。 それを Windows VM に接続し、Files 共有に接続して、Files 共有にファイルをアップロードします。
+title: Windows VM で Azure のファイル共有を作成して使用する
+description: Azure portal で Azure のファイル共有を作成して使用します。 それを Windows VM に接続し、Files 共有に接続して、Files 共有にファイルをアップロードします。
 author: roygara
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4c5629f80c37c9f79dc9a39c4d8304acbee9679d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3cb97d40008a103d9de6d76018f7881764813e3c
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92489576"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727188"
 ---
-# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>クイック スタート:Windows Virtual Machines で Azure Files 共有を作成して管理する
+# <a name="quickstart-create-and-manage-azure-file-shares-with-windows-virtual-machines"></a>クイックスタート: Windows Virtual Machines で Azure のファイル共有を作成して管理する
 
 この記事では、Azure Files 共有を作成して使用する基本的な手順について説明します。 このクイック スタートでは、Azure Files 共有サービスを体験できるよう、Azure ファイル共有をすばやく設定することに重点を置いています。 ご利用の環境に Azure ファイル共有を作成して使用するさらに詳しい手順については、「[Windows で Azure ファイル共有を使用する](storage-how-to-use-files-windows.md)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -42,19 +49,19 @@ Azure ファイル共有を使用するためには、あらかじめ Azure ス�
 次に、ファイル共有を作成します。
 
 1. Azure ストレージ アカウントのデプロイが完了したら、**[リソースに移動]** を選択します。
-1. ストレージ アカウントのウィンドウで **[ファイル]** を選択します。
+1. ストレージ アカウント ペインで **[ファイル共有]** を選択します。
 
-    ![[ファイル] を選択する](./media/storage-files-quick-create-use-windows/click-files.png)
+    ![[ファイル共有] を選択します。](./media/storage-files-quick-create-use-windows/click-files.png)
 
-1. **[ファイル共有]** を選択します。
+1. **+ [ファイル共有]** を選択します。
 
-    ![ファイル共有の追加ボタンを選択する](./media/storage-files-quick-create-use-windows/create-file-share.png)
+    ![[+ ファイル共有] を選択して、新しいファイル共有を作成します。](./media/storage-files-quick-create-use-windows/create-file-share.png)
 
-1. 新しいファイル共有に *qsfileshare* という名前を付け、**[クォータ]** に「1」と入力してから、**[作成]** をクリックします。 クォータは最大で 5 TiB にすることができますが、このクイック スタートでは 1 GiB しか必要ありません。
+1. 新しいファイル共有に *qsfileshare* という名前を付け、 **[クォータ]** に「1」と入力します。 **[トランザクションが最適化されました]** を選択したままにして、 **[作成]** を選択します。 クォータは最大で 5 TiB (大きいファイルの共有を有効にした場合は 100 TiB) にすることができますが、このクイックスタートでは 1 GiB しか必要ありません。
 1. ローカル コンピューター上に、*qsTestFile* という新しいテキスト ファイルを作成します。
 1. 新しいファイル共有を選択し、ファイル共有上の場所に対して **[アップロード]** を選択します。
 
-    ![ファイルをアップロードする](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
+    ![ファイルをアップロードします。](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
 
 1. .txt ファイルを作成した場所に移動して *qsTestFile.txt* を選択し、**[アップロード]** を選択します。
 
@@ -63,14 +70,15 @@ Azure ファイル共有を使用するためには、あらかじめ Azure ス�
 ### <a name="deploy-a-vm"></a>VM をデプロイする
 
 1. 次に、ポータルの左側にあるメニューを展開して、Azure portal の左上隅にある **[リソースの作成]** を選択します。
-1. **Azure Marketplace** リソースの一覧の上にある検索ボックスで **Windows Server 2016 Datacenter** を検索して選択し、**[作成]** を選択します。
+1. **[人気のあるサービス]** で、 **[仮想マシン]** を選択します。
 1. **[基本]** タブの **[プロジェクトの詳細]** で、このクイック スタートのために作成したリソース グループを選択します。
 
-   ![ポータルのブレードで VM に関する基本情報を入力する](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
+   ![ポータルのブレードで VM に関する基本情報を入力します。](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
 
 1. **[インスタンスの詳細]** で、VM に *qsVM* という名前を付けます。
-1. **[リージョン]**、**[可用性オプション]**、**[イメージ]**、**[サイズ]** は、既定の設定のままにしておきます。
-1. **[管理者アカウント]** で、**[ユーザー名]** として *VMadmin* を追加し、VM の **パスワード** を入力します。
+1. **[イメージ]** に **[Windows Server 2016 Datacenter - Gen2]** を選択します。
+1. **[リージョン]** 、 **[可用性オプション]** 、 **[サイズ]** は、既定の設定のままにしておきます。
+1. **[管理者アカウント]** で、**ユーザー名** を追加し、VM の **パスワード** を入力します。
 1. **[受信ポートの規則]** で、**[Allow selected ports] (選択されたポートを許可する)** を選択してから、ドロップダウンから **[RDP (3389)]** と **[HTTP]** を選択します。
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 1. **［作成］** を選択します 新しい VM の作成が完了するまでに数分かかります。
@@ -96,60 +104,50 @@ Azure ファイル共有を使用するためには、あらかじめ Azure ス�
 ## <a name="map-the-azure-file-share-to-a-windows-drive"></a>Azure ファイル共有を Windows ドライブにマップする
 
 1. Azure portal で *qsfileshare* ファイル共有に移動し、**[接続]** を選択します。
-1. 2 つ目のボックスの内容をコピーして **メモ帳** に貼り付けます。
+1. ドライブ文字を選択し、2 つ目のボックスの内容をコピーして **メモ帳** に貼り付けます。
 
-   ![メモ帳にコピーして貼り付ける 2 つ目のボックスの内容を示すスクリーンショット。](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
+   :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="コピーしてメモ帳に貼り付けるボックスの内容を示すスクリーンショット。" lightbox="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png":::
 
-1. VM で **エクスプローラー** を開き、そのウィンドウで **[この PC]** を選択します。 この選択により、リボンで使用できるメニューが変更されます。 **[コンピューター]** メニューの **[ネットワーク ドライブの割り当て]** を選択します。
-1. ドライブ文字を選択し、UNC パスを入力します。 このクイック スタートの名前付けの候補に従った場合は、**メモ帳** から *\\qsstorageacct.file.core.windows.net\qsfileshare* をコピーします。
-
-   両方のチェック ボックスがオンになっていることを確認します。
-
-   ![[ネットワーク ドライブの割り当て] ダイアログのスクリーンショット](./media/storage-files-quick-create-use-windows/mountonwindows10.png)
-
-1. **[完了]** を選択します。
-1. **[Windows セキュリティ]** ダイアログ ボックスで次の操作を行います。
-
-   - メモ帳から AZURE\ で始まるストレージ アカウント名をコピーし、**[Windows セキュリティ]** ダイアログ ボックスにユーザー名として貼り付けます。 このクイック スタートの名前付けの候補に従った場合は、*AZURE\qsstorageacct* をコピーします。
-   - メモ帳からストレージ アカウント キーをコピーし、**[Windows セキュリティ]** ダイアログ ボックスにパスワードとして貼り付けます。
-
-      ![Azure Files の [接続] ウィンドウの UNC パス](./media/storage-files-quick-create-use-windows/portal_netuse_connect3.png)
+1. VM で **PowerShell** を開きます。**メモ帳** の内容を貼り付け、Enter キーを押してコマンドを実行します。 これで、ドライブがマップされます。
 
 ## <a name="create-a-share-snapshot"></a>共有スナップショットを作成する
 
 ドライブをマップしたら、スナップショットを作成できます。
 
-1. ポータルでファイル共有に移動し、**[スナップショットの作成]** を選択します。
+1. ポータルで、対象のファイル共有に移動します。 **[スナップショット]** を選択し、 **[+ スナップショットの追加]** を選択します。
 
-   ![スナップショットの作成](./media/storage-files-quick-create-use-windows/create-snapshot.png)
+   ![[operations]\(操作\) セクションで [スナップショット] を選択し、[スナップショットの追加] を選択します。](./media/storage-files-quick-create-use-windows/create-snapshot.png)
 
 1. VM で *qstestfile.txt* を開き、「this file has been modified」と入力した後、ファイルを保存して閉じます。
 1. 別のスナップショットを作成します。
 
 ## <a name="browse-a-share-snapshot"></a>共有スナップショットを参照する
 
-1. ファイル共有で **[スナップショットの表示]** を選択します。
-1. **[ファイル共有のスナップショット]** ウィンドウで、一覧にある最初のスナップショットを選択します。
+1. 対象のファイル共有で **[スナップショット]** を選択します。
+1. **[スナップショット]** ブレードで、一覧にある最初のスナップショットを選択します。
 
    ![タイムスタンプの一覧で選択されたスナップショット](./media/storage-files-quick-create-use-windows/snapshot-list.png)
 
-1. そのスナップショットのウィンドウで、*[qsTestFile.txt]* を選択します。
+1. そのスナップショットを開き、*qsTestFile.txt* を選択します。
 
 ## <a name="restore-from-a-snapshot"></a>スナップショットから復元する
 
 1. [ファイル共有のスナップショット] ブレードで、*[qsTestFile]* を右クリックし、**[復元]** をクリックします。
+
+    :::image type="content" source="media/storage-files-quick-create-use-windows/restore-share-snapshot.png" alt-text="[スナップショット] ブレードのスクリーンショット。qstestfile が選択され、[復元] が強調表示されています。":::
+
 1. **[元のファイルを上書きする]** を選択します。
 
-   ![[ダウンロード] ボタンと [復元] ボタン](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
+   ![[復元] ポップアップのスクリーンショット。[元のファイルを上書きする] が選択されています。](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
 
 1. VM でそのファイルを開きます。 未変更のバージョンが復元されています。
 
 ## <a name="delete-a-share-snapshot"></a>共有スナップショットの削除
 
-1. ファイル共有で **[スナップショットの表示]** を選択します。
-1. **[ファイル共有のスナップショット]** ウィンドウで、一覧にある最後のスナップショットを選択し、**[削除]** をクリックします。
+1. 対象のファイル共有で **[スナップショット]** を選択します。
+1. **[スナップショット]** ブレードで、一覧にある最後のスナップショットを選択し、 **[削除]** を選択します。
 
-   ![[削除] ボタン](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
+   ![[スナップショット] ブレードのスクリーンショット。最後のスナップショットが選択され、[削除] ボタンが強調表示されています。](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
 
 ## <a name="use-a-share-snapshot-in-windows"></a>Windows で共有スナップショットを使用する
 
@@ -173,7 +171,10 @@ Azure ファイル共有を使用するためには、あらかじめ Azure ス�
 
 1. **[復元]** を選択します。 この操作により、ディレクトリ全体の内容が、共有スナップショットを作成したときの元の場所に再帰的にコピーされます。
 
-   ![警告メッセージ内の [復元] ボタン](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) メモ: ファイルが変更されていない場合、そのファイルはスナップショットと同じバージョンであるため、そのファイルの以前のバージョンは表示されません。 これは、Windows ファイル サーバーでの動作と一致しています。
+   ![警告メッセージ内の [復元] ボタン](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png)
+    
+    > [!NOTE]
+    > ファイルが変更されていない場合、そのファイルはスナップショットと同じバージョンであるため、そのファイルの以前のバージョンは表示されません。 これは、Windows ファイル サーバーでの動作と一致しています。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

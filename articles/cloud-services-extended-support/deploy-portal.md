@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 306294cc654e46dbe8af80b25cb9c709071fad20
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 4e35814e898e35a7ba9251d3eb36f6bde4d086e1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166328"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339993"
 ---
 # <a name="deploy-a-azure-cloud-services-extended-support-using-the-azure-portal"></a>Azure portal を使用して Azure クラウド サービス (延長サポート) をデプロイする
 この記事では、Azure portal を使ってクラウド サービス (延長サポート) のデプロイを作成する方法を説明します。 
@@ -63,6 +63,6 @@ ms.locfileid: "106166328"
 7. すべてのフィールドに入力を終えたら、 **[確認と作成]** タブに移動し、デプロイ構成を検証して、クラウド サービス (延長サポート) を作成します。
 
 ## <a name="next-steps"></a>次のステップ 
-- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
+- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.yml)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。
 - [Cloud Services (延長サポート) のサンプル リポジトリ](https://github.com/Azure-Samples/cloud-services-extended-support)を確認します。

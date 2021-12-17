@@ -2,18 +2,19 @@
 title: '機能: アクションとコンテキスト - Personalizer'
 titleSuffix: Azure Cognitive Services
 description: Personalizer では、ランキングでより良い提案を行う目的で、フィーチャー、つまり、アクションとコンテキストに関する情報が利用されます。 フィーチャーは非常に包括的になることがあれば、ある項目に固有となることもあります。
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: f49abd4ca1cc1ccdcb7ba2b0fab3bad953dede5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8faae773e2ca3e1da51c23967ad6d9ba3fa2c1b7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100380544"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426071"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>フィーチャーはアクションとコンテキストに関する情報です。
 
@@ -67,10 +68,10 @@ Personalizer では、フィーチャーが名前空間で整理されます。 
 有効な JSON キーである限り、自分の命名規則でフィーチャーの名前空間に名前を付けることができます。 名前空間は、フィーチャーを個別のセットに整理したり、類似した名前のフィーチャーを明確にしたりするために使用されます。 名前空間は、フィーチャー名に追加される "接頭辞" と考えることができます。 名前空間を入れ子にすることはできません。
 
 
-次の JSON では、`user`、`state`、`device` がフィーチャーの名前空間です。 
+次の JSON では、`user`、`environment`、`device`、および `activity` がフィーチャーの名前空間です。 
 
 > [!Note]
-> 現在のところ、フィーチャー名前空間には、UTF-8 ベースであり、異なる文字で始まる名前の使用を強くお勧めします。 たとえば、`user`、`state`、`device` はそれぞれ、`u`、`s`、`d` で始まります。 現在のところ、名前空間の最初の文字が同じ場合、機械学習に使用されるインデックスで競合が発生することがあります。
+> 現在のところ、フィーチャー名前空間には、UTF-8 ベースであり、異なる文字で始まる名前の使用を強くお勧めします。 たとえば、`user`、`environment`、`device`、および `activity` はそれぞれ、`u`、`e`、`d`、および `a` で始まります。 現在のところ、名前空間の最初の文字が同じ場合、機械学習に使用されるインデックスで競合が発生することがあります。
 
 JSON オブジェクトには、入れ子にした JSON オブジェクトと単純なプロパティ/値を含めることができます。 配列は、配列の項目が数値の場合にのみ含めることができます。 
 
@@ -98,7 +99,7 @@ JSON オブジェクトには、入れ子にした JSON オブジェクトと単
             }
         },
         {
-            "userActivity" : {
+            "activity" : {
                 "itemsInCart": 3,
                 "cartValue": 250,
                 "appliedCoupon": true
@@ -164,7 +165,7 @@ Artificial Intelligence や、すぐに実行できる Cognitive Services は Pe
 他にも次のような [Azure Cognitive Services](https://www.microsoft.com/cognitive-services) を利用できます。
 
 * [Entity Linking](../text-analytics/index.yml)
-* [Text Analytics](../text-analytics/overview.md)
+* [言語サービス](../language-service/index.yml)
 * [感情](../face/overview.md)
 * [Computer Vision](../computer-vision/overview.md)
 

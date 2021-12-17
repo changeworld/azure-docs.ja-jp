@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse のサンプルとテンプレート
-description: これらのサンプルと Azure Resource Manager テンプレートでは、Azure の委任されたリソース管理に顧客をオンボードする方法を示し、Azure Lighthouse のシナリオをサポートしています。
+description: これらのサンプルと Azure Resource Manager テンプレートは、顧客をオンボードし、Azure Lighthouse のシナリオをサポートするのに役立ちます。
 ms.topic: sample
-ms.date: 12/11/2020
-ms.openlocfilehash: c91f79f50b03142a4be935eac6409e0a07371a54
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.date: 08/26/2021
+ms.openlocfilehash: 5e1370fd553c16d980a1650df6102641a34c104c
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356270"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035738"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse サンプル
 
@@ -32,5 +32,5 @@ ms.locfileid: "97356270"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)について学習してください。
+- [Azure Lighthouse のアーキテクチャと技術的概念](../concepts/architecture.md)について参照してください。
 - [Azure Lighthouse のサンプル リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/)に関するページを参照してください。

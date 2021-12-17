@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69b24272d2a04d19eb8fc419a6a2cbda744f24ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87070330"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588582"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple ソリューションのサポート
 
@@ -111,16 +111,9 @@ StorSimple 8000 シリーズ ストレージ アレイのサポートは、StorS
 
 
 
-*<text> * Premium の範囲は、すべての場所で使用可能なわけではありません。StorSimple Premium サポートを購入する前に、地理的範囲について、Microsoft (SSSupOps\@microsoft.com) にお問い合わせください。*
+\* Premium の範囲は、すべての場所で使用可能なわけではありません。 StorSimple Premium サポートを購入する前に、地理的範囲について、Microsoft (SSSupOps\@microsoft.com) にお問い合わせください。
 
-***お客様が Premium StorSimple サポートに無料アップグレードできるようにするには、StorSimple アプライアンスを、お客様が Premier サポートの対象である地域にデプロイする必要があります。*
+\** お客様が Premium StorSimple サポートに無料アップグレードできるようにするには、StorSimple アプライアンスを、お客様が Premier サポートの対象であるリージョンにデプロイする必要があります。
 
 
 ASAP+ のお客様は、Standard サポートが含まれるサブスクリプション モデルに切り替えることができます。 サブスクリプションの価格を確認するには、StorSimple 料金計算ツールを使用してください。何かご質問がありましたら、SSSupOps@microsoft.com までお問い合わせください。 切り替えは、ASAP+ からサブスクリプションへの 1 方向のみです。
-
-
-
-
-
-
- 

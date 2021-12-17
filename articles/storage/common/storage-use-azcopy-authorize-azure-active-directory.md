@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: dd3aeaf133c02ef54eceaff776ead34cc2318260
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: d5aced875863f892ec9dda0022f4571ce15349c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220479"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638237"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>AzCopy と Azure Active Directory (Azure AD) を使用して BLOB へのアクセスを承認する
 
-Azure AD を使用して、AzCopy に承認資格情報を提供できます。 そうすれば、各コマンドに Shared Access Signature (SAS) トークンを追加する必要がなくなります。 
+Azure AD を使用して、AzCopy に承認資格情報を提供できます。 そうすれば、各コマンドに Shared Access Signature (SAS) トークンを追加する必要がなくなります。
 
-まず、ロールの割り当てを確認します。 次に、承認する "_セキュリティ プリンシパル_" の種類を選択します。 [ユーザー ID](../../active-directory/fundamentals/add-users-azure-active-directory.md)、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)、および [サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)は、それぞれセキュリティ プリンシパルの種類です。
+まず、ロールの割り当てを確認します。 次に、承認する "*セキュリティ プリンシパル*" の種類を選択します。 [ユーザー ID](../../active-directory/fundamentals/add-users-azure-active-directory.md)、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)、および [サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)は、それぞれセキュリティ プリンシパルの種類です。
 
-ユーザー ID は、Azure AD に ID を持つすべてのユーザーです。 これは、承認するのが最も簡単なセキュリティ プリンシパルです。 ユーザーの介入なしで実行されるスクリプト内で AzCopy を使用することを計画している場合、マネージド ID とサービス プリンシパルが最適なオプションです。 Azure 仮想マシン (VM) から実行されるスクリプトには、マネージド ID の方が適しており、オンプレミスで実行されるスクリプトには、サービス プリンシパルの方が適しています。 
+ユーザー ID は、Azure AD に ID を持つすべてのユーザーです。 これは、承認するのが最も簡単なセキュリティ プリンシパルです。 ユーザーの介入なしで実行されるスクリプト内で AzCopy を使用することを計画している場合、マネージド ID とサービス プリンシパルが最適なオプションです。 Azure 仮想マシン (VM) から実行されるスクリプトには、マネージド ID の方が適しており、オンプレミスで実行されるスクリプトには、サービス プリンシパルの方が適しています。
 
 AzCopy についての詳細は、「[AzCopy を使ってみる](storage-use-azcopy-v10.md)」を参照してください。
 
@@ -42,7 +42,7 @@ AzCopy についての詳細は、「[AzCopy を使ってみる](storage-use-azc
 - Resource group
 - サブスクリプション
 
-ロールを確認して割り当てる方法については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](./storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+ロールを確認して割り当てる方法については、「[BLOB データにアクセスするための Azure ロールを割り当てる](../blobs/assign-azure-role-data-access.md)」を参照してください。
 
 > [!NOTE]
 > Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。
@@ -145,7 +145,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 ```
 
 > [!NOTE]
-> この例で示すように、プロンプトを使用することを検討してください。 そうすると、ご自分のパスワードがご使用のコンソールのコマンド履歴に表示されません。  
+> この例で示すように、プロンプトを使用することを検討してください。 そうすると、ご自分のパスワードがご使用のコンソールのコマンド履歴に表示されません。
 
 次に、以下のコマンドを入力し、Enter キーを押します。
 
@@ -153,13 +153,13 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 azcopy login --service-principal  --application-id application-id --tenant-id=tenant-id
 ```
 
-`<application-id>` プレースホルダーを、ご自分のサービス プリンシパルのアプリ登録のアプリケーション ID に置き換えます。 `<tenant-id>` プレースホルダーを、ストレージ アカウントが属する組織のテナント ID に置き換えます。 テナント ID を確認するには、Azure portal 内で **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します。 
+`<application-id>` プレースホルダーを、ご自分のサービス プリンシパルのアプリ登録のアプリケーション ID に置き換えます。 `<tenant-id>` プレースホルダーを、ストレージ アカウントが属する組織のテナント ID に置き換えます。 テナント ID を確認するには、Azure portal 内で **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します。
 
 #### <a name="authorize-a-service-principal-by-using-a-certificate"></a>証明書を使用してサービス プリンシパルを承認する
 
 承認にご自分の資格情報を使用する場合は、ご自分のアプリ登録に証明書をアップロードした後、その証明書を使用してログインできます。
 
-ご自分のアプリ登録にご使用の証明書をアップロードするだけでなく、AzCopy が実行されるマシンまたは VM 上に証明書のコピーを保存する必要もあります。 この証明書のコピーは、.PFX または .PEM 形式で、秘密キーが含まれている必要があります。 秘密キーはパスワードで保護する必要があります。 Windows を使用していて、ご使用の証明書が証明書ストア内にのみ存在する場合は、必ず、その証明書 (秘密キーを含む) を PFX ファイルにエクスポートしてください。 ガイダンスについては、「[Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate)」を参照してください。
+ご自分のアプリ登録にご使用の証明書をアップロードするだけでなく、AzCopy が実行されるマシンまたは VM 上に証明書のコピーを保存する必要もあります。 この証明書のコピーは、.PFX または .PEM 形式で、秘密キーが含まれている必要があります。 秘密キーはパスワードで保護する必要があります。 Windows を使用していて、ご使用の証明書が証明書ストア内にのみ存在する場合は、必ず、その証明書 (秘密キーを含む) を PFX ファイルにエクスポートしてください。 ガイダンスについては、「[Export-PfxCertificate](/powershell/module/pki/export-pfxcertificate)」を参照してください。
 
 次に、`AZCOPY_SPA_CERT_PASSWORD` 環境変数を、証明書のパスワードに設定します。
 
@@ -181,13 +181,13 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 `<path-to-certificate-file>` プレースホルダーを、証明書ファイルの相対または完全修飾パスに置き換えます。 AzCopy は、この証明書のパスを保存しますが、証明書のコピーは保存しません。そのため、必ず所定の場所にその証明書を保持してください。 `<tenant-id>` プレースホルダーを、ストレージ アカウントが属する組織のテナント ID に置き換えます。 テナント ID を確認するには、Azure portal 内で **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します。
 
 > [!NOTE]
-> この例で示すように、プロンプトを使用することを検討してください。 そうすると、ご自分のパスワードがご使用のコンソールのコマンド履歴に表示されません。 
+> この例で示すように、プロンプトを使用することを検討してください。 そうすると、ご自分のパスワードがご使用のコンソールのコマンド履歴に表示されません。
 
 ## <a name="authorize-without-a-secret-store"></a>シークレット ストアなしで承認する
 
-`azcopy login` コマンドによって OAuth トークンが取得され、そのトークンがシステムのシークレット ストアに配置されます。 オペレーティング システムに Linux "*キーリング*" などのシークレット ストアがない場合、トークンを配置する場所がないため、`azcopy login` コマンドは機能しません。 
+`azcopy login` コマンドによって OAuth トークンが取得され、そのトークンがシステムのシークレット ストアに配置されます。 オペレーティング システムに Linux "*キーリング*" などのシークレット ストアがない場合、トークンを配置する場所がないため、`azcopy login` コマンドは機能しません。
 
-`azcopy login` コマンドを使用する代わりに、メモリ内環境変数を設定できます。 次に、任意の AzCopy コマンドを実行します。 AzCopy によって、操作を完了するために必要な認証トークンが取得されます。 操作が完了すると、トークンがメモリから消えます。 
+`azcopy login` コマンドを使用する代わりに、メモリ内環境変数を設定できます。 次に、任意の AzCopy コマンドを実行します。 AzCopy によって、操作を完了するために必要な認証トークンが取得されます。 操作が完了すると、トークンがメモリから消えます。
 
 ### <a name="authorize-a-user-identity"></a>ユーザー ID を承認する
 
@@ -264,10 +264,10 @@ export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
 export AZCOPY_TENANT_ID=<tenant-id>
 ```
 
-`<application-id>` プレースホルダーを、ご自分のサービス プリンシパルのアプリ登録のアプリケーション ID に置き換えます。 `<client-secret>` プレースホルダーをクライアント シークレットに置き換えます。 `<tenant-id>` プレースホルダーを、ストレージ アカウントが属する組織のテナント ID に置き換えます。 テナント ID を確認するには、Azure portal 内で **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します。 
+`<application-id>` プレースホルダーを、ご自分のサービス プリンシパルのアプリ登録のアプリケーション ID に置き換えます。 `<client-secret>` プレースホルダーをクライアント シークレットに置き換えます。 `<tenant-id>` プレースホルダーを、ストレージ アカウントが属する組織のテナント ID に置き換えます。 テナント ID を確認するには、Azure portal 内で **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します。
 
 > [!NOTE]
-> プロンプトを使用して、ユーザーからパスワードを収集することを検討してください。 そうすることで、お使いのパスワードがコマンドの履歴に表示されなくなります。 
+> プロンプトを使用して、ユーザーからパスワードを収集することを検討してください。 そうすることで、お使いのパスワードがコマンドの履歴に表示されなくなります。
 
 次に、azcopy コマンド (`azcopy list https://contoso.blob.core.windows.net` など) を実行します。
 
@@ -275,7 +275,7 @@ export AZCOPY_TENANT_ID=<tenant-id>
 
 承認にご自分の資格情報を使用する場合は、ご自分のアプリ登録に証明書をアップロードした後、その証明書を使用してログインできます。
 
-ご自分のアプリ登録にご使用の証明書をアップロードするだけでなく、AzCopy が実行されるマシンまたは VM 上に証明書のコピーを保存する必要もあります。 この証明書のコピーは、.PFX または .PEM 形式で、秘密キーが含まれている必要があります。 秘密キーはパスワードで保護する必要があります。 
+ご自分のアプリ登録にご使用の証明書をアップロードするだけでなく、AzCopy が実行されるマシンまたは VM 上に証明書のコピーを保存する必要もあります。 この証明書のコピーは、.PFX または .PEM 形式で、秘密キーが含まれている必要があります。 秘密キーはパスワードで保護する必要があります。
 
 次のコマンドを入力して、ENTER キーを押します。
 
@@ -286,10 +286,10 @@ export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
 export AZCOPY_TENANT_ID=<tenant-id>
 ```
 
-`<path-to-certificate-file>` プレースホルダーを、証明書ファイルの相対または完全修飾パスに置き換えます。 AzCopy は、この証明書のパスを保存しますが、証明書のコピーは保存しません。そのため、必ず所定の場所にその証明書を保持してください。 `<certificate-password>` プレースホルダーを証明書のパスワードに置き換えます。 `<tenant-id>` プレースホルダーを、ストレージ アカウントが属する組織のテナント ID に置き換えます。 テナント ID を確認するには、Azure portal 内で **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します。 
+`<path-to-certificate-file>` プレースホルダーを、証明書ファイルの相対または完全修飾パスに置き換えます。 AzCopy は、この証明書のパスを保存しますが、証明書のコピーは保存しません。そのため、必ず所定の場所にその証明書を保持してください。 `<certificate-password>` プレースホルダーを証明書のパスワードに置き換えます。 `<tenant-id>` プレースホルダーを、ストレージ アカウントが属する組織のテナント ID に置き換えます。 テナント ID を確認するには、Azure portal 内で **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します。
 
 > [!NOTE]
-> プロンプトを使用して、ユーザーからパスワードを収集することを検討してください。 そうすることで、お使いのパスワードがコマンドの履歴に表示されなくなります。 
+> プロンプトを使用して、ユーザーからパスワードを収集することを検討してください。 そうすることで、お使いのパスワードがコマンドの履歴に表示されなくなります。
 
 次に、azcopy コマンド (`azcopy list https://contoso.blob.core.windows.net` など) を実行します。
 

@@ -4,37 +4,30 @@ titleSuffix: Azure Machine Learning
 description: オープンソースの Python 機械学習フレームワークを使用して、Azure Machine Learning でエンドツーエンドの機械学習ソリューションをトレーニング、デプロイ、管理する方法について学習します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/14/2020
-ms.openlocfilehash: 983e037376be48f497118b06cce8b23c430b1501
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mktng-kw-nov2021
+ms.date: 11/04/2021
+ms.openlocfilehash: 9809169a8da6965c8d1fdbb741ddd4817f8d2af7
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98223076"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850187"
 ---
-# <a name="open-source-integration-with-azure-machine-learning-projects"></a>オープンソースと Azure Machine Learning プロジェクトとの統合
+# <a name="use-open-source-machine-learning-libraries-and-platforms-with-azure-machine-learning"></a>Azure Machine Learning でオープンソースの機械学習ライブラリとプラットフォームを使用する
 
-オープンソースの Python 機械学習ライブラリとプラットフォームを使用して、Azure Machine Learning でエンドツーエンドの機械学習プロセスをトレーニング、デプロイ、管理できます。  Jupyter Notebooks や Visual Studio Code などの開発ツールを使用して、Azure Machine Learning の既存のモデルとスクリプトを活用できます。  
-
-この記事では、これらのオープンソース ライブラリとプラットフォームについて詳しく説明します。
+この記事では、Azure Machine Learning で使用できるオープンソースの Python 機会学習ライブラリとプラットフォームについて説明します。 任意のオープンソース プロジェクトを使用して、エンドツーエンドの機械学習プロセスをトレーニング、デプロイ、管理します。  Jupyter Notebooks や Visual Studio Code などの開発ツールを使用して、Azure Machine Learning の既存のモデルとスクリプトを活用できます。  
 
 ## <a name="train-open-source-machine-learning-models"></a>オープンソースの機械学習モデルをトレーニングする
 
-機械学習のトレーニング プロセスには、タスクを実現したり問題を解決したりするためのデータに対するアルゴリズムの適用が伴います。 問題に応じて、タスクとデータに最適なさまざまなアルゴリズムを選択できます。 機械学習のさまざまな部門の詳細については、[ディープ ラーニングと機械学習に関する記事](./concept-deep-learning-vs-machine-learning.md)と[機械学習アルゴリズム チート シート](algorithm-cheat-sheet.md)を参照してください。
-
-### <a name="preserve-data-privacy-using-differential-privacy"></a>差分プライバシーを使用してデータのプライバシーを維持する
-
-機械学習モデルをトレーニングするには、データが必要です。 それは機微なデータである場合があり、データが確実にセキュリティで保護され、公開されないようにすることが重要です。 差分プライバシーは、データセット内の情報の機密性を維持する手法です。 詳細については、[データのプライバシーの維持](concept-differential-privacy.md)に関する記事を参照してください。 
-
-[SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core-python) のようなオープンソースの差分プライバシー ツールキットは、Azure Machine Learning ソリューションの中で[データのプライバシーを維持する](how-to-differential-privacy.md)ために役立ちます。
+機械学習のトレーニング プロセスには、タスクを実現したり問題を解決したりするためのデータに対するアルゴリズムの適用が伴います。 問題に応じて、タスクとデータに最適なさまざまなアルゴリズムを選択できます。 機械学習で解決できる対象について詳しくは、[ディープ ラーニングと機械学習](./concept-deep-learning-vs-machine-learning.md)に関する記事と「[機械学習アルゴリズム チート シート](algorithm-cheat-sheet.md)」を参照してください。
 
 ### <a name="classical-machine-learning-scikit-learn"></a>クラシックな機械学習: scikit-learn
 
-分類、クラスタリング、回帰などのクラシックな機械学習アルゴリズムのタスク を含むトレーニング タスクでは、Scikit-learn のようなものを使用することがあります。 花分類モデルをトレーニングする方法については、[Scikit-learn を使用してトレーニングする方法に関する記事](how-to-train-scikit-learn.md)を参照してください。
+分類、クラスタリング、回帰などの古典的機械学習アルゴリズムのタスクを含むトレーニング タスクでは、scikit-learn のようなものを使用することがあります。 花分類モデルをトレーニングする方法については、[scikit-learn を使用してトレーニングする方法](how-to-train-scikit-learn.md)に関する記事を参照してください。
 
 ### <a name="neural-networks-pytorch-tensorflow-keras"></a>ニューラル ネットワーク: PyTorch、TensorFlow、Keras
 
@@ -45,6 +38,8 @@ ms.locfileid: "98223076"
  *  [PyTorch](https://github.com/pytorch/pytorch): [転移学習を使用してディープ ラーニングの画像分類モデルをトレーニングする](how-to-train-pytorch.md) 
  *  [TensorFlow](https://github.com/tensorflow/tensorflow): [TensorFlow を使用して手書きの数字を認識する](how-to-train-tensorflow.md)
  *  [Keras](https://github.com/keras-team/keras): [Keras を使用して画像を分析するニューラル ネットワークを構築する](how-to-train-keras.md)
+
+### <a name="transfer-learning"></a>転移学習
 
 ディープ ラーニング モデルのゼロからのトレーニングには、しばしば、多くの時間、データ、およびコンピューティング リソースが必要です。 転移学習を使用することで、トレーニング プロセスをショートカットできます。 転移学習は、ある問題を解決することで得られた知識を、異なるが関連している問題に適用する手法です。 つまり、既存のモデルを別の目的で使用できます。 転移学習の詳細については、[ディープ ラーニングと機械学習に関する記事](concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning)を参照してください。
 
@@ -59,6 +54,14 @@ Azure Machine Learning での Ray RLLib の使用方法については、[強化
 ### <a name="monitor-model-performance-tensorboard"></a>モデルのパフォーマンスを監視する: TensorBoard
 
 1 つまたは複数のモデルのトレーニングでは、モデルが想定どおりに動作していることを確認するために、目的のメトリックを視覚化して検査する必要があります。 [Azure Machine Learning で TensorBoard を使用して実験メトリックを追跡して視覚化する](./how-to-monitor-tensorboard.md)ことができます。
+
+## <a name="responsible-ml-privacy-and-fairness"></a>信頼できる ML: プライバシーと公平性
+
+### <a name="preserve-data-privacy-with-differential-privacy"></a>差分プライバシーを使用してデータのプライバシーを維持する
+
+機械学習モデルをトレーニングするには、データが必要です。 それは機微なデータである場合があり、データが確実にセキュリティで保護され、公開されないようにすることが重要です。 差分プライバシーは、データセット内の情報の機密性を維持する手法です。 詳細については、[データのプライバシーの維持](concept-differential-privacy.md)に関する記事を参照してください。 
+
+[SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core-python) のようなオープンソースの差分プライバシー ツールキットは、Azure Machine Learning ソリューションの中で[データのプライバシーを維持する](how-to-differential-privacy.md)ために役立ちます。
 
 ### <a name="frameworks-for-interpretable-and-fair-models"></a>解釈可能で公正なモデルのためのフレームワーク
 
@@ -89,7 +92,7 @@ ONNX と ONNX モデルの使用方法の詳細については、次の記事を
 
 ### <a name="package-and-deploy-models-as-containers"></a>モデルをコンテナーとしてパッケージ化してデプロイする
 
-Docker などのコンテナー テクノロジは、モデルを Web サービスとしてデプロイするための 1 つの方法です。 コンテナーによって、再現性のあるソフトウェア環境を構築して調整するためのプラットフォームとリソースに依存しない方法が提供されます。 これらのコア テクノロジで、[事前構成済みの環境](./how-to-use-environments.md)、[事前構成済みのコンテナー イメージ](./how-to-deploy-custom-docker-image.md)、またはカスタム設定を使用して、機械学習モデルを [Kubernetes クラスター](./how-to-deploy-azure-kubernetes-service.md?tabs=python)などにデプロイできます。 GPU の負荷が高いワークフローでは、NVIDIA Triton 推論サーバーなどのツールを使用して、[GPU の使用予測を行う](how-to-deploy-with-triton.md?tabs=python)ことができます。
+Docker などのコンテナー テクノロジは、モデルを Web サービスとしてデプロイするための 1 つの方法です。 コンテナーによって、再現性のあるソフトウェア環境を構築して調整するためのプラットフォームとリソースに依存しない方法が提供されます。 これらのコア テクノロジで、[事前構成済みの環境](./how-to-use-environments.md)、[事前構成済みのコンテナー イメージ](./how-to-deploy-custom-container.md)、またはカスタム設定を使用して、機械学習モデルを [Kubernetes クラスター](./how-to-deploy-azure-kubernetes-service.md?tabs=python)などにデプロイできます。 GPU の負荷が高いワークフローでは、NVIDIA Triton 推論サーバーなどのツールを使用して、[GPU の使用予測を行う](how-to-deploy-with-triton.md?tabs=python)ことができます。
 
 ### <a name="secure-deployments-with-homomorphic-encryption"></a>準同型暗号を使用したセキュリティで保護されたデプロイ
 
@@ -101,4 +104,4 @@ Docker などのコンテナー テクノロジは、モデルを Web サービ�
 
 継続的インテグレーション (CI) や継続的デプロイ (CD) などの DevOps プラクティスを使用することで、エンドツーエンドの機械学習ライフサイクルを自動化し、その周囲のガバナンス データを把握できます。 [機械学習の CI/CD パイプラインを GitHub アクション](./how-to-github-actions-machine-learning.md)で定義して、Azure Machine Learning のトレーニングとデプロイのタスクを実行できます。 
 
-ソフトウェアの依存関係、メトリック、メタデータ、データ、およびモデルのバージョンを把握することは、透明性、再現可能性、および監査可能性を備えたパイプラインを構築するための MLOps プロセスの重要な部分です。 このタスクのために、[Azure Machine Learning の MLFlow](how-to-use-mlflow.md) を使用できます。[Azure Databricks で機械学習モデルをトレーニングする](./how-to-use-mlflow-azure-databricks.md)ときにも、それを使用できます。 また、[MLflow モデルを Azure Web サービスとしてデプロイ](how-to-deploy-mlflow-models.md)することもできます。 
+ソフトウェアの依存関係、メトリック、メタデータ、データ、およびモデルのバージョンを把握することは、透明性、再現可能性、および監査可能性を備えたパイプラインを構築するための MLOps プロセスの重要な部分です。 このタスクのために、[Azure Machine Learning の MLFlow](how-to-use-mlflow.md) を使用できます。[Azure Databricks で機械学習モデルをトレーニングする](./how-to-use-mlflow-azure-databricks.md)ときにも、それを使用できます。 また、[MLflow モデルを Azure Web サービスとしてデプロイ](how-to-deploy-mlflow-models.md)することもできます。

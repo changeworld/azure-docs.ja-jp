@@ -2,21 +2,21 @@
 title: チュートリアル:Azure Active Directory での自動ユーザー プロビジョニング用に RingCentral を構成する | Microsoft Docs
 description: Azure AD から RingCentral に対してユーザー アカウントを自動的にプロビジョニング、またはプロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
-ms.author: Zhchia
-ms.openlocfilehash: 1891af9acae2b976a18f68983693a7df559b6476
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: thwimmer
+ms.openlocfilehash: 4999669aee35b9e0d7303ae1156f10318c775562
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800771"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989776"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に RingCentral を構成する
 
@@ -39,6 +39,10 @@ ms.locfileid: "104800771"
 * [RingCentral テナント](https://www.ringcentral.com/office/plansandpricing.html)
 * 管理者アクセス許可がある RingCentral のユーザー アカウント。
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
+
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
 1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
 2. [プロビジョニングの対象](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)となるユーザーを決定します。
@@ -47,6 +51,10 @@ ms.locfileid: "104800771"
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように RingCentral を構成する
 
 手順 5. の [管理者資格情報] セクションで承認を行うためには、[RingCentral](https://www.ringcentral.com/office/plansandpricing.html) 管理者アカウントが必要です。
+
+RingCentral の管理ポータルの [Account Settings]\(アカウント設定\) -> [Directory Integrations]\(ディレクトリの統合\) で、 *[Directory Provider]* \(ディレクトリ プロバイダー\) 設定を *[SCIM]* 
+![画像](https://user-images.githubusercontent.com/49566142/134523440-20320d8e-3c25-4358-9ace-d4888ce8e4ea.png) に設定します。
+
 
 > [!NOTE]
 > ユーザーにライセンスを割り当てる方法については、[こちら](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)のビデオ リンクをご覧ください。
@@ -148,6 +156,8 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 * 2020 年 9 月 10 日 - "displayName" および "manager" 属性のサポートを削除しました。
 * 03/15/2021 - 承認方法を永続的なベアラー トークンから OAuth コード付与フローに更新しました。
+* 10/28/2021 - 既定のマッピングを **mail-> emails[type eq “work”].value** に更新しました。
+* 10/28/2021 - レート制限が読み取りで毎分 300、書き込みで毎分 1000 に更新されました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

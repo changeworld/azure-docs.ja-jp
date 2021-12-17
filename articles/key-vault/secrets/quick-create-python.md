@@ -7,13 +7,13 @@ ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: e06881d078b4e881174c3e931f7898cb622ad7f9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-python, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 059e4a412aee2707670715e4e8ed2bc7a0b0b93c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766355"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996154"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>クイックスタート: Python 用 Azure Key Vault シークレット クライアント ライブラリ
 
@@ -92,7 +92,6 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ```python
 import os
-import cmd
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
@@ -133,15 +132,15 @@ python kv_secrets.py
 ```
 
 - アクセス許可エラーが発生した場合は、[`az keyvault set-policy` コマンド](#grant-access-to-your-key-vault)を実行したことを確認してください。
-- 同じシークレット名を使用してコードを再実行すると、"(競合) シークレット <name> は現在削除されているが、回復可能な状態です" というエラーが生成されることがあります。 別のシークレット名を使用してください。
+- 同じシークレット名を使用してコードを再実行すると、"(競合) シークレット \<name\> は現在削除されているが、回復可能な状態です" というエラーが生成されることがあります。 別のシークレット名を使用してください。
 
 ## <a name="code-details"></a>コードの詳細
 
 ### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
 
-このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
 
-以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、["DefaultAzureCredential()"](https://docs.microsoft.com/python/api/azure-identity/azure.identity.defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 詳細については、[DefaultAzureCredential 認証](https://docs.microsoft.com/python/api/overview/azure/identity-readme)に関するセクションを参照してください。 
+以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、["DefaultAzureCredential()"](/python/api/azure-identity/azure.identity.defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 詳細については、[DefaultAzureCredential 認証](/python/api/overview/azure/identity-readme)に関するセクションを参照してください。 
 
 ```python
 credential = DefaultAzureCredential()
@@ -200,7 +199,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Key Vault の概要](../general/overview.md)
-- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-features.md)
 - [Azure Key Vault 開発者ガイド](../general/developers-guide.md)
-- [Key Vault のセキュリティの概要](../general/security-overview.md)
+- [Key Vault のセキュリティの概要](../general/security-features.md)
 - [Key Vault を使用した認証](../general/authentication.md)

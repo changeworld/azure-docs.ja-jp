@@ -9,12 +9,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: ebf04531f29e18f9d120ca2efa17244c4282084c
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: b678b2830ede076169f82c4a3280845edd7db90b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503271"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624920"
 ---
 # <a name="azcopy-load-clfs"></a>azcopy load clfs
 
@@ -26,17 +26,22 @@ ms.locfileid: "107503271"
 
 このコマンドを利用するには、pip3 install clfsload~=1.0.23 を使用して必要な拡張機能をインストールします。 パスに CLFSLoad.py が含まれていることを確認します。 この手順の詳細については、[https://aka.ms/azcopy/clfs](https://aka.ms/azcopy/clfs) をご覧ください。
 
-このコマンドは、特定の Microsoft ハイパフォーマンス コンピューティング キャッシュ製品で使用するために、既存のデータをクラウド ストレージに移動するための単純なオプションです。 
+このコマンドは、特定の Microsoft ハイパフォーマンス コンピューティング キャッシュ製品で使用するために、既存のデータをクラウド ストレージに移動するための単純なオプションです。
 
-これらの製品では、データを管理するために独自のクラウド ファイルシステム形式が使用されるため、ネイティブ コピー コマンドを使用してデータを読み込むことはできません。 
+これらの製品では、データを管理するために独自のクラウド ファイルシステム形式が使用されるため、ネイティブ コピー コマンドを使用してデータを読み込むことはできません。
 
 代わりに、キャッシュ製品自体を使用するか、この load コマンドを使用して、適切な独自形式でデータを読み込む必要があります。
 このコマンドでは、キャッシュを使用せずにデータを転送できます。 たとえば、キャッシュの負荷を増加させずに、ストレージに事前入力したり、ワーキング セットにファイルを追加したりできます。
 
 ターゲットは、空の Azure Storage コンテナーです。 転送が完了したら、Azure HPC Cache インスタンスまたは Avere vFXT for Azure クラスターでターゲット コンテナーを使用できます。
 
+<<<<<<< HEAD
 > [!NOTE] 
 > これは、この load コマンドのプレビュー リリースです。 問題がありましたら、AzCopy GitHub リポジトリに報告してください。
+=======
+> [!NOTE]
+> これは、この load コマンドのプレビュー リリースです。 問題がありましたら、AzCopy GitHub リポジトリにレポートしてください。
+>>>>>>> repo_sync_working_branch
 
 ```
 azcopy load clfs [local dir] [container URL] [flags]

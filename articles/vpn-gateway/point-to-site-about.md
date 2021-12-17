@@ -1,36 +1,37 @@
 ---
-title: Azure ポイント対サイト VPN 接続について | VPN Gateway
-description: この記事は、ポイント対サイト接続を理解するうえで役に立つほか、どの種類の P2S VPN ゲートウェイ認証を使用するかを決定するうえで役立ちます。
+title: Azure ポイント対サイト VPN 接続について
+titleSuffix: Azure VPN Gateway
+description: ポイント対サイト VPN について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 07/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 6caf72884ce2566ad25b7dd6d80b15d737bbe664
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ddcb49b1ce2bd882590b1d85cb634846ef3b4d40
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543586"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729632"
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 
-ポイント対サイト (P2S) VPN ゲートウェイ接続では、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 P2S 接続は、クライアント コンピューターから接続を開始することによって確立されます。 このソリューションは、在宅勤務者が自宅や会議室など、遠隔地から Azure VNet に接続する場合に便利です。 P2S VPN は、VNet への接続を必要とするクライアントが数台である場合に、S2S VPN の代わりに使用するソリューションとしても便利です。 この記事は、Resource Manager デプロイ モデルに適用されます。
+ポイント対サイト (P2S) VPN ゲートウェイ接続では、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 P2S 接続は、クライアント コンピューターから接続を開始することによって確立されます。 このソリューションは、在宅勤務者が自宅や会議室など、遠隔地から Azure VNet に接続する場合に便利です。 P2S VPN は、VNet への接続を必要とするクライアントが数台である場合に、S2S VPN の代わりに使用するソリューションとしても便利です。 この記事は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に適用されます。
 
 ## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S で使用されるプロトコル
 
 ポイント対サイト VPN では、次のいずれかのプロトコルを使用できます。
 
-* SSL/TLS ベースの VPN プロトコルである **OpenVPN® プロトコル**。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (OSX バージョン 10.13 以上) から接続する際に使用できます。
+* SSL/TLS ベースの VPN プロトコルである **OpenVPN® プロトコル**。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (macOS バージョン 10.13 以上) から接続する際に使用できます。
 
-* Secure Socket トンネリング プロトコル (SSTP)。これは、TLS ベースの独自の VPN プロトコルです。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 SSTP は、Windows デバイスでのみサポートされます。 Azure では、SSTP を備えたすべてのバージョンの Windows (Windows 7 以降) がサポートされています。
+* Secure Socket トンネリング プロトコル (SSTP)。これは、TLS ベースの独自の VPN プロトコルです。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 SSTP は、Windows デバイスでのみサポートされます。 Azure では、SSTP を備え、TLS 1.2 をサポートするすべてのバージョンの Windows (Windows 8.1 以降) がサポートされています。
 
-* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (OSX バージョン 10.11 以上) から接続する際に使用できます。
+* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (macOS バージョン 10.11 以上) から接続する際に使用できます。
 
 
 >[!NOTE]
->P2S 用 IKEv2 および OpenVPN は、Resource Manager デプロイ モデルでのみ使用できます。 これらは、クラシック デプロイ モデルでは使用できません。
+>P2S 用 IKEv2 および OpenVPN は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)でのみ使用できます。 これらは、クラシック デプロイ モデルでは使用できません。
 >
 
 ## <a name="how-are-p2s-vpn-clients-authenticated"></a><a name="authentication"></a>P2S VPN クライアントの認証方法
@@ -168,20 +169,28 @@ P2S 構成で必要な手順には、特有のものが非常に多くありま�
 
 ### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>P2S 接続の構成を削除するには
 
-手順については、以下の [FAQ](#removeconfig) を参照してください。
+PowerShell または CLI を使用して、接続の構成を削除できます。 例については、「[FAQ](vpn-gateway-vpn-faq.md#removeconfig)」を参照してください。
+
+## <a name="how-does-p2s-routing-work"></a>P2S ルーティングのしくみ
+
+次の記事をご覧ください。
+
+* [ポイント対サイト VPN ルーティングについて](vpn-gateway-about-point-to-site-routing.md)
+
+* [カスタム ルートを公開するには](vpn-gateway-p2s-advertise-custom-routes.md)
+
+## <a name="faqs"></a>FAQ
+
+認証に基づく P2S の FAQ セクションが複数あります。
+
+* [FAQ - 証明書の認証](vpn-gateway-vpn-faq.md#P2S)
+
+* [FAQ - RADIUS の認証](vpn-gateway-vpn-faq.md#P2SRADIUS)
  
-## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>ネイティブ Azure 証明書認証に関する FAQ
-
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
-
-## <a name="faq-for-radius-authentication"></a><a name="faqradius"></a>RADIUS 認証に関する FAQ
-
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
-
 ## <a name="next-steps"></a>次の手順
 
 * [P2S 接続の構成 - RADIUS 認証](point-to-site-how-to-radius-ps.md)
 
-* [P2S 接続の構成 - Azure ネイティブ証明書認証](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [P2S 接続の構成 - Azure 証明書認証](vpn-gateway-howto-point-to-site-rm-ps.md)
 
 **"OpenVPN" は OpenVPN Inc. の商標です。**

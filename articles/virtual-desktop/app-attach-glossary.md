@@ -1,5 +1,5 @@
 ---
-title: Windows Virtual Desktop の MSIX アプリのアタッチの用語集 - Azure
+title: Azure Virtual Desktop の MSIX アプリのアタッチの用語集 - Azure
 description: MSIX アプリのアタッチの用語と概念の用語集。
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: deb02c161dfe41bf79b7905fde23678425aaf55f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 9972a7bcff534f49f0c656dd1a9c3f66389c44b5
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448374"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708786"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX アプリのアタッチの用語集
 
@@ -33,7 +33,7 @@ MSIX パッケージは、MSIX ファイルまたはアプリケーションで�
 
 ## <a name="msix-share"></a>MSIX 共有
 
-MSIX 共有は、拡張された MSIX パッケージを保持するネットワーク共有です。 MSIX 共有では SMB 3 以降がサポートされています。 アプリケーション ファイルをシステム ドライブに移動することなく、この MSIX 共有からアプリケーションがステージングされます。
+MSIX 共有は、拡張された MSIX パッケージを保持するネットワーク共有です。 MSIX 共有では、SMB 3 以降がサポートされている必要があります。 また、この共有は、ホスト プール システム アカウントの仮想マシン (VM) からアクセス可能である必要があります。 アプリケーション ファイルをシステム ドライブに移動することなく、この MSIX 共有から MSIX パッケージがステージングされます。 
 
 ## <a name="msix-image"></a>MSIX イメージ
 
@@ -65,15 +65,15 @@ MSIX パッケージを展開するには、次のようにします。
 
 MSIX パッケージをアップロードには、拡張された MSIX パッケージを含む VHD(x) または [CIM](#cim) を MSIX 共有にアップロードすることが含まれます。
 
-Windows Virtual Desktop では、アップロードは MSIX 共有ごとに 1 回行われます。 パッケージをアップロードすると、同じサブスクリプション内のすべてのホスト プールから参照できるようになります。
+Azure Virtual Desktop では、アップロードは MSIX 共有ごとに 1 回行われます。 パッケージをアップロードすると、同じサブスクリプション内のすべてのホスト プールから参照できるようになります。
 
 ## <a name="add-an-msix-package"></a>MSIX パッケージを追加する
 
-Windows Virtual Desktop で、MSIX パッケージは、追加されるとホスト プールにリンクされます。
+Azure Virtual Desktop で、MSIX パッケージは、追加されるとホスト プールにリンクされます。
 
 ## <a name="publish-an-msix-package"></a>MSIX パッケージを公開する 
 
-Windows Virtual Desktop では、公開された MSIX パッケージは、Active Directory Domain Services (AD DS) または Azure Active Directory (Azure AD) のユーザーまたはユーザー グループに割り当てられる必要があります。
+Azure Virtual Desktop では、公開された MSIX パッケージは、Active Directory Domain Services (AD DS) または Azure Active Directory (Azure AD) のユーザーまたはユーザー グループに割り当てられる必要があります。
 
 ## <a name="staging"></a>ステージング
 
@@ -90,11 +90,11 @@ Windows Virtual Desktop では、公開された MSIX パッケージは、Activ
 
 ### <a name="regular-registration"></a>通常登録
 
-通常登録では、ユーザーに割り当てられた各アプリケーションは完全に登録されます。 登録は、ユーザーがセッションにサインインするときに行われます。これは、Windows Virtual Desktop の使用を開始するのにかかる時間に影響を与える可能性があります。
+通常登録では、ユーザーに割り当てられた各アプリケーションは完全に登録されます。 登録は、ユーザーがセッションにサインインするときに行われます。これは、Azure Virtual Desktop の使用を開始するのにかかる時間に影響を与える可能性があります。
 
 ### <a name="delayed-registration"></a>遅延登録
 
-遅延登録では、ユーザーに割り当てられた各アプリケーションは部分的にのみ登録されます。 部分的な登録とは、[スタート] メニューのタイルとファイルのダブルクリックの関連付けが登録されることを意味します。 登録は、ユーザーがセッションにサインインする間に行われます。そのため、Windows Virtual Desktop の使用を開始するのにかかる時間への影響は最小限に抑えられます。 登録が完了するのは、ユーザーが MSIX パッケージ内のアプリケーションを実行した場合のみです。
+遅延登録では、ユーザーに割り当てられた各アプリケーションは部分的にのみ登録されます。 部分的な登録とは、[スタート] メニューのタイルとファイルのダブルクリックの関連付けが登録されることを意味します。 登録は、ユーザーがセッションにサインインする間に行われます。そのため、Azure Virtual Desktop の使用を開始するのにかかる時間への影響は最小限に抑えられます。 登録が完了するのは、ユーザーが MSIX パッケージ内のアプリケーションを実行した場合のみです。
 
 遅延登録は現在、MSIX アプリのアタッチの既定の構成です。
 
@@ -110,7 +110,7 @@ Windows Virtual Desktop では、公開された MSIX パッケージは、Activ
 
 .CIM は、複合イメージ ファイル システム (CimFS) に関連付けられた新しいファイル拡張子です。 CIM ファイルのマウントとマウント解除は、VHD ファイルよりも高速です。 また、CIM の場合、CPU とメモリの消費量が VHD よりも少なくなります。
 
-CIM ファイルは .CIM という拡張子を持ち、メタデータと、実際のデータが含まれた 6 つ以上の追加ファイルを含むファイルです。 CIM ファイル内のファイルには拡張子がありません。 次の表は、CIM 内で見つかるファイルの例を示しています。
+CIM ファイルは .CIM という拡張子を持ち、メタデータと、実際のデータが含まれた 2 つ以上の追加ファイルを含むファイルです。 CIM ファイル内のファイルには拡張子がありません。 次の表は、CIM 内で見つかるファイルの例を示しています。
 
 | ファイル名 | 拡張機能 | サイズ |
 |-----------|-----------|------|
@@ -133,4 +133,4 @@ CIM ファイルは .CIM という拡張子を持ち、メタデータと、実�
 
 ## <a name="next-steps"></a>次のステップ
 
-MSIX アプリ アタッチの詳細については、[概要](what-is-app-attach.md)と[よくあるご質問](app-attach-faq.md)に関するページを参照してください。 それ以外の場合、[アプリのアタッチの設定](app-attach.md)を開始してください。
+MSIX アプリ アタッチの詳細については、[概要](what-is-app-attach.md)と[よくあるご質問](app-attach-faq.yml)に関するページを参照してください。 それ以外の場合、[アプリのアタッチの設定](app-attach.md)を開始してください。

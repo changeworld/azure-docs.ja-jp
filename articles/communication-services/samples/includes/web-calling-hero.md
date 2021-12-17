@@ -2,20 +2,20 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: azure-communication-services
-author: mikben
+author: probableprime
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: 0504467e387c0875a8e00bd1cf638ec437232092
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.author: rifox
+ms.openlocfilehash: 767fe99e7648b5f35995530f0404e0ceab8208f2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554220"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287429"
 ---
 Azure Communication Services の **グループ通話のヒーロー サンプル** は、Communication Services Calling Web SDK を使用して、グループ通話エクスペリエンスを構築する方法を示しています。
 
@@ -23,7 +23,7 @@ Azure Communication Services の **グループ通話のヒーロー サンプ�
 
 ## <a name="download-code"></a>コードをダウンロードする
 
-[GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero) でこのサンプルのプロジェクトを見つけてください。 [Teams の相互運用機能](../../concepts/teams-interop.md)を使用したサンプルのバージョンは、別の[ブランチ](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/teams-interop)にあります。
+[GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero) でこのサンプルのプロジェクトを見つけてください。 [Teams の相互運用機能](../../concepts/teams-interop.md)および[通話レコーディング](../../concepts/voice-video-calling/call-recording.md)など、現在パブリック プレビュー中の機能を含むサンプルのバージョンは、別の[ブランチ](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/public-preview)にあります。
 
 ## <a name="overview"></a>概要
 
@@ -48,7 +48,7 @@ Azure Communication Services の **グループ通話のヒーロー サンプ�
 - **サイド バー**: ヘッダーのコントロールを使用して、参加者と設定情報の表示を切り替えます。 このコンポーネントは、右上隅にある 'X' を使用して閉じることができます。 参加者のサイド バーには参加者の一覧と、チャットするユーザーをさらに招待するためのリンクが表示されます。 [設定] サイドバーでは、マイクとカメラの設定を構成できます。
 
 > [!NOTE]
-> Web Calling SDK の制限に基づいて、1 つのリモート ビデオ ストリームのみがレンダリングされます。 詳細については、[Calling SDK でのストリームのサポート](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features#calling-sdk-streaming-support)に関するページを参照してください。
+> Web Calling SDK の制限に基づいて、1 つのリモート ビデオ ストリームのみがレンダリングされます。 詳細については、[Calling SDK でのストリームのサポート](../../concepts/voice-video-calling/calling-sdk-features.md#calling-sdk-streaming-support)に関するページを参照してください。
 
 以下で、サンプルを設定するための前提条件と手順について詳しく説明します。
 
@@ -58,7 +58,7 @@ Azure Communication Services の **グループ通話のヒーロー サンプ�
 - [Node.js (12.18.4 以上)](https://nodejs.org/en/download/)
 - [Visual Studio (2019 以上)](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (使用する Visual Studio インスタンス (32 または 64 ビット) に対応するバージョンを必ずインストールしてください)
-- Azure Communication Services リソース。 詳細については、[Azure Communication リソースの作成](../../quickstarts/create-communication-resource.md)に関するページを参照してください。 このクイックスタートで使用するリソースの **接続文字列** を記録する必要があります。
+- Azure Communication Services リソース。 詳細については、[Azure Communication Services リソースの作成](../../quickstarts/create-communication-resource.md)に関するページを参照してください。 このクイックスタートで使用するリソースの **接続文字列** を記録する必要があります。
 
 ## <a name="locally-deploy-the-service--client-applications"></a>サービスおよびクライアント アプリケーションをローカルにデプロイする
 
@@ -72,7 +72,7 @@ Azure Communication Services の **グループ通話のヒーロー サンプ�
 
 1. PowerShell、Windows Terminal、コマンド プロンプト、またはそれと同等のインスタンスを開き、サンプルの複製先のディレクトリに移動します。
 2. `git clone https://github.com/Azure-Samples/communication-services-web-calling-hero.git`
-3. Azure portal から `Connection String` を取得します。 接続文字列の詳細については、[Azure Communication リソースの作成](../../quickstarts/create-communication-resource.md)に関するページをご覧ください。
+3. Azure portal から `Connection String` を取得します。 接続文字列の詳細については、[Azure Communication Services リソースの作成](../../quickstarts/create-communication-resource.md)に関するページをご覧ください。
 4. `Connection String` を取得したら、Service .NET フォルダーの下で **Calling/appsetting.json** ファイルに接続文字列を追加します。 変数 `ResourceConnectionString` に接続文字列を入力します。
 
 ### <a name="local-run"></a>ローカルの実行
@@ -97,7 +97,7 @@ Communication Services サブスクリプションをクリーンアップして
 
 詳細については、次の記事を参照してください。
 
-- [Calling SDK の使用法](../../quickstarts/voice-video-calling/calling-client-samples.md)について理解する
+- [Calling SDK の使用法](../../quickstarts/voice-video-calling/getting-started-with-calling.md)について理解する
 - [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する
 
 ### <a name="additional-reading"></a>その他の情報

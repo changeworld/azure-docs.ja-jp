@@ -1,0 +1,141 @@
+### YamlMime:FAQ
+metadata:
+  title: Cloud パートナー ポータル移行に関する FAQ - Microsoft 商業マーケットプレース - Azure"
+  description: Cloud パートナー ポータルからパートナー センターへのオファーの切り替えに関してよく寄せられる質問に対する回答。
+  ms.service: marketplace
+  ms.subservice: partnercenter-marketplace-publisher
+  ms.topic: article
+  author: keferna
+  ms.author: keferna
+  ms.date: 09/27/2021
+  ms.openlocfilehash: 0a74c3e25e7c6c9341950160afef1edfc98460ba
+  ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/27/2021
+  ms.locfileid: "129080790"
+title: Cloud パートナー ポータル移行に関する FAQ
+summary: >
+  Cloud パートナー ポータルはパートナー センターに切り替えられました。 パートナー センターでは、[Microsoft AppSource](https://appsource.microsoft.com/) または [Azure Marketplace](https://azuremarketplace.microsoft.com/) への新しいオファーの公開、および Cloud パートナー ポータルから移行された既存のオファーの管理のために、合理化されて統合されたエクスペリエンスが提供されています。 Cloud パートナー ポータルのすべての機能を、パートナー センターで利用できます。 この記事では、Cloud パートナー ポータルからパートナー センターへの移行に関してよく寄せられる質問について説明します。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      パートナー センターへの切り替えはパートナーにとってどのような意味がありますか?
+    answer: >
+      パートナー センターでは、次のようにビジネスを続けることができます。
+
+
+      | 領域 | [変更点] |
+
+      | --- | --- |
+
+      | Account | 新しいパートナー センター アカウントを作成する必要はありません。Cloud パートナーポータルの既存の資格情報を使用してパートナー センターにサインインし、アカウント、ユーザー、アクセス許可、請求を管理できるようになります。 公開への同意と会社のプロファイル情報は、支払いプロファイル情報、ユーザー アカウントとアクセス許可、アクティブなオファーと共に、新しいパートナー センター アカウントに移行されます。 詳細については、「[パートナー センターで商業マーケットプレース アカウントを管理する](manage-account.md)」を参照してください。 |
+
+      | オファーの公開とオファーの管理のエクスペリエンス | オファーのデータは Cloud パートナー ポータルからパートナー センターに移行されました。 オファーにはパートナー センターでアクセスするようになり、向上したユーザー エクスペリエンスと直感的なインターフェイスが提供されます。 方法については、「[コマーシャル マーケットプレースで既存のオファーを更新する](update-existing-offer.md)」を参照してください。 |
+
+      | コマーシャル マーケットプレースでのオファーの利用可能性 | 変更はありません。 オファーがコマーシャル マーケットプレースで公開されている場合は、引き続き公開されます。 |
+
+      | 新しい購入とデプロイ | 変更はありません。 顧客は、中断なしでオファーの購入とデプロイを続けることができます。 |
+
+      | 支払い | すべての購入とデプロイは、引き続き通常どおり支払われ続けます。 「[パートナーセンターでの支払いの受け取り](/partner-center/marketplace-get-paid?context=/azure/marketplace/context/context)」で詳細をご覧ください。 |
+
+      | 既存の [Cloud パートナー ポータル API](cloud-partner-portal-api-overview.md) との API の統合 | 既存の Cloud パートナー ポータル API は引き続きサポートされており、既存の統合は引き続き機能します。 「[Cloud パートナー ポータル REST API はまだサポートされていますか?](#are-the-cloud-partner-portal-rest-apis-still-supported-)」で詳細をご覧ください。 |
+
+      | Analytics | パートナー センターで分析を表示することにより、引き続き売上を監視し、パフォーマンスを評価し、コマーシャル マーケットプレースのオファーを最適化することができます。 CPP とパートナー センターで分析レポートを表示する方法には違いがあります。 たとえば、CPP の **[販売者分析情報]** には、使用量ベースのプランと使用量ベースではないプランのデータを表示する **[注文と使用状況]** タブがありますが、パートナー センターには、 **[注文]** ページに SaaS オファー用の別のタブがあります。 詳細については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](analytics.md)」を参照してください。 |
+
+      |||
+  - question: >
+      パートナー センターでオファーを管理するには、新しいアカウントを作成する必要がありますか?
+    answer: >
+      いいえ。アカウントは保持されます。 つまり、既存のパートナーの場合は、既存の Cloud パートナー ポータル アカウント資格情報を使用して、パートナー センターにサインインできます。 新しいアカウントを作成しないでください。Cloud パートナー ポータルで作成されてパートナー センターに移動されたオファーは、それには関連付けられません。
+  - question: >
+      Cloud パートナー ポータルで使用していたページに対応するパートナーセンターのページは何ですか?
+    answer: >
+      Cloud パートナー ポータルでよく使用されるページに対するパートナー センターでのリンクを次に示します。 Cloud パートナー ポータルのリンクをブックマークとして保存した場合は、それらを更新する必要があります。
+
+
+      | クラウド パートナー ポータル ページ | Cloud パートナー ポータルのページのリンク | パートナー センターのページのリンク |
+
+      | --- | --- | --- |
+
+      | [すべてのプラン] ページ | [https://cloudpartner.azure.com/#alloffers](https://cloudpartner.azure.com/#alloffers) | [https://partner.microsoft.com/dashboard/marketplace-offers/overview](https://partner.microsoft.com/dashboard/marketplace-offers/overview) |
+
+      | [すべての発行元] ページ | [https://cloudpartner.azure.com/#publishers](https://cloudpartner.azure.com/#publishers) | [https://partner.microsoft.com/dashboard/account/v3/organization/identity](https://partner.microsoft.com/dashboard/account/v3/organization/identity) |
+
+      | 発行元プロファイル | [https://cloudpartner.azure.com/#profile](https://cloudpartner.azure.com/#profile) | [https://partner.microsoft.com/dashboard/account/v3/organization/legalinfo#developer](https://partner.microsoft.com/dashboard/account/v3/organization/legalinfo#developer) |
+
+      | [ユーザー] ページ | [https://cloudpartner.azure.com/#users](https://cloudpartner.azure.com/#users) | [https://partner.microsoft.com/dashboard/account/v3/usermanagement#users](https://partner.microsoft.com/dashboard/account/v3/usermanagement#users) |
+
+      | [履歴] ページ | [https://cloudpartner.azure.com/#history](https://cloudpartner.azure.com/#history) | [履歴] 機能には、各オファーからアクセスできます。 |
+
+      | [分析情報] ダッシュボード | [https://cloudpartner.azure.com/#insights](https://cloudpartner.azure.com/#insights) | [https://partner.microsoft.com/dashboard/insights/analytics/overview](https://partner.microsoft.com/dashboard/insights/analytics/overview) |
+
+      | 支払いレポート | [https://cloudpartner.azure.com/#insights/payout](https://cloudpartner.azure.com/#insights/payout) | [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
+
+      |||
+  - question: >
+      Cloud パートナー ポータルで公開したオファーはどうなりますか?
+    answer: >
+      オファーはパートナー センターに移動され、パートナー センターにサインインした後でアクセスできます。ただし、Dynamics Nav Managed Service オファーと Cortana Intelligence オファーは除きます。 オファーがコマーシャル マーケットプレースで公開されていた場合、そのオファーは引き続き公開されており、顧客は引き続き中断なしで購入してデプロイすることができます。 詳細については、次の質問「**パートナー センターにはどのようなオファーが移動されましたか?**」を参照してください。
+  - question: >
+      パートナー センターにはどのようなオファーが移動されましたか?
+    answer: >
+      Dynamics Nav Managed Service オファーと Cortana Intelligence オファーを除き、Cloud パートナー ポータルで以前にサポートされていたすべてのオファーの種類が、パートナー センターでもサポートされています。
+
+
+      パートナー センターでサポートされているオファーの種類については、すべてのオファーがその状態に関係なく移動されました。ドラフト、除外、プレビュー専用のオファーも移動されています。
+
+
+      | プランの種類 | パートナー センターに移動されたか? | 次のステップ |
+
+      | --- | --- | --- |
+
+      | SaaS | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、[コマーシャル マーケットプレースの SaaS オファーの計画](plan-saas-offer.md)に関する記事を参照してください。 |
+
+      | 仮想マシン | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、[仮想マシン オファーの計画](marketplace-virtual-machines.md)に関する記事を参照してください。 |
+
+      | Azure アプリケーション | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Azure アプリケーション オファーを作成する](azure-app-offer-setup.md)」を参照してください。 |
+
+      | Dynamics 365 Business Central | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、[Dynamics 365 for Business Central オファーの作成](dynamics-365-business-central-offer-setup.md)に関するページを参照してください。 |
+
+      | Dynamics 365 for Customer Engagement & Power Apps | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Dynamics 365 for Customer Engagement & Power Apps オファーの作成](dynamics-365-customer-engage-offer-setup.md)」を参照してください。 |
+
+      | Dynamics 365 for Operations | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Dynamics 365 for Operations オファーの作成](./dynamics-365-operations-offer-setup.md)」を参照してください。 |
+
+      | Power BI アプリ | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 「[Power BI アプリ オファーの作成](./power-bi-app-offer-setup.md)」を参照してください。 |
+
+      | IoT Edge モジュール | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 「[IoT Edge モジュール オファーの作成](iot-edge-offer-setup.md)」を参照してください。 |
+
+      | コンテナー | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Azure Container オファーを作成する](./azure-container-offer-setup.md)」を参照してください。 |
+
+      | コンサルティング サービス | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[コンサルティング サービス オファーを作成する](./create-consulting-service-offer.md)」を参照してください。 |
+
+      | マネージド サービス | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 [Microsoft コマーシャル マーケットプレース向けのマネージド サービス オファーを計画する](./plan-managed-service-offer.md)方法に関するページで詳細をご覧ください。 |
+
+      | Dynamics Nav Managed Service | いいえ | Dynamics NAV Managed Service は [Dynamics 365 Business Central](/dynamics365/business-central/) に発展したため、Dynamics NAV Managed Service のライブ オファーは AppSource から除外されました。 これらのオファーは、顧客が検出できなくなり、パートナー センターには移動されていません。 自分のオファーを AppSource で利用できるようにするには、それらを Dynamics 365 Business Central オファーに適合させた後、[パートナー センター](https://partner.microsoft.com/dashboard/marketplace-offers/overview)に提出してください。 詳細については、[Dynamics 365 for Business Central オファーの作成](dynamics-365-business-central-offer-setup.md)に関するページを参照してください。 |
+
+      | Cortana Intelligence | いいえ | Cortana Intelligence の製品ロード マップが発展したため、Cortana Intelligence のライブ オファーは AppSource から除外されました。 これらのオファーは、顧客が検出できなくなり、パートナー センターには移動されていません。 自分のオファーをコマーシャル マーケットプレースで利用できるようにするには、オファーをサービスとしてのソフトウェア (SaaS) オファーに適合させた後、[パートナー センター](https://partner.microsoft.com/)に提出してください。 「[コマーシャル マーケットプレースの SaaS オファーを計画する方法](./plan-saas-offer.md)」を参照してください。 |
+  - question: >
+      サインインできず、サポート チケットを開く必要があります
+    answer: >
+      アカウントにサインインできない場合は、こちらで[サポート チケット](https://go.microsoft.com/fwlink/?linkid=2165533)を開くことができます。
+  - question: >
+      パートナー センターの使い方はどこでわかりますか?
+    answer: >
+      [[コマーシャル マーケットプレースのドキュメント]](index.yml) に移動してください。 パートナー センターでオファーを作成するためのヘルプ記事を表示するには、「**オファーの作成と管理**」を展開します。
+  - question: >
+      Cloud パートナー ポータル REST API はまだサポートされていますか?
+    answer: >-
+      Cloud パートナー ポータル API はパートナー センターと統合されており、引き続き機能します。 パートナー センターへの切り替えでは、小さな変更が行われています。 次の表で、自分のコードがパートナー センターへの移行後も引き続き機能することを確認してください。
+
+
+      | API | 変更の説明 | 影響 |
+
+      | --- | --- | --- |
+
+      | 公開、GoLive、キャンセル後 | 移行されたオファーの場合、応答ヘッダーは異なる形式になりますが、操作状態を取得する相対パスを示して、引き続き同じように動作します。 | オファーに対応する POST 要求のいずれかを送信する場合、オファーの移行状態に応じて Location ヘッダーは次の 2 つの形式のいずれかになります。 <ul><li>移行されていないオファー: `/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>移行されたオファー: `/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
+
+      | GET 操作 | 以前に応答の "notification-email" フィールドをサポートしていたオファーの場合、このフィールドは非推奨になり、移行されたオファーでは返されなくなります。 | 移行されたオファーの場合、要求で指定されたメール アドレスのリストに通知が送信されなくなります。 その代わりに、API サービスとパートナー センターの通知メール プロセスが連携され、メールが送信されます。 具体的には、パートナー センターのアカウント設定の [販売元の連絡先情報] セクションで設定したメール アドレスに、操作の進行状況の通知が送信されます。<br><br>パートナー センターの [[アカウント設定]](https://partner.microsoft.com/dashboard/account/v3/organization/legalinfo#developer) の [連絡先情報] セクションで設定されているメール アドレスが、通知を受け取る正しいものであることを確認します。 |
+
+      |||

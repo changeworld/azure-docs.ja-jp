@@ -1,65 +1,132 @@
 ---
-title: Azure Files をスキャンする方法
-description: このハウツーガイドでは、Azure Files をスキャンする方法の詳細について説明します。
-author: SunetraVirdi
-ms.author: suvirdi
+title: Azure Filesに接続して管理する
+description: このガイドでは、Azure 管理範囲の Azure Files に接続し、管理範囲の機能を使用して、Azure Files ソースをスキャンおよび管理する方法について説明します。
+author: viseshag
+ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 10/01/2020
-ms.openlocfilehash: a0bd7a4cd8afafc16f05b4a37cd5723304ad931e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 95abf27060748255f24b089cfc4fb9229f33bfa5
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96550901"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848061"
 ---
-# <a name="register-and-scan-azure-files"></a>Azure Files の登録とスキャン
+# <a name="connect-to-and-manage-azure-files-in-azure-purview"></a>Azure 管理範囲での Azure Files の接続と管理
+
+この記事では、Azure Files を登録する方法と、Azure 管理範囲で Azure Files を認証および操作する方法について説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Azure Files では、フル スキャンと増分スキャンがサポートされ、システムとお客様の分類に基づいて、メタデータがキャプチャされ、メタデータに分類が適用されます。
+|**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
+|---|---|---|---|---|---|---|
+| [あり](#register) | [あり](#scan) | [あり](#scan) | [あり](#scan) | [あり](#scan) | いいえ | 制限あり** |
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
+
+Azure Files では、システム既定とカスタムの分類ルールに基づいて、メタデータと分類をキャプチャするために、フル スキャンと増分スキャンがサポートされます。
+
+csv、tsv、psv、ssv などのファイルの種類では、次のロジックが適用されている場合にスキーマが抽出されます。
+
+1. 最初の行の値が空ではない
+2. 最初の行の値が一意である
+3. 最初の行の値が日付でも数値でもありません
 
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[Azure Purview アカウントの作成](create-catalog-portal.md)に関するクイックスタートを参照してください。
-- スキャンを設定してスケジュールするには、データ ソース管理者である必要があります。詳細については、[カタログのアクセス許可](catalog-permissions.md)に関する記事を参照してください。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="register-an-azure-files-storage-account"></a>Azure Files ストレージ アカウントを登録する
+* アクティブな [Purview リソース](create-catalog-portal.md)。
 
-新しい Azure Files アカウントをデータ カタログに登録するには、次の手順を実行します。
+* Purview Studio でソースを登録して管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細については、[Azure Purview のアクセス許可](catalog-permissions.md)に関するページを参照してください。
 
-1. Purview Data Catalog に移動します。
-1. 左側のナビゲーションで **[管理センター]** を選択します。
-1. **[ソースとスキャン]** の **[データ ソース]** を選択し ます。
-1. **[+新規]** を選択します。
-1. **[ソースの登録]** で、 **[Azure Files]** を選択します。 **[続行]** をクリックします。
+## <a name="register"></a>登録
 
-:::image type="content" source="media/register-scan-azure-files/register-new-data-source.png" alt-text="新しいデータ ソースの登録" border="true":::
+このセクションでは、 [管理範囲 Studio](https://web.purview.azure.com/)を使用して Azure 管理範囲に Azure Files を登録する方法について説明します。
 
-**[ソースの登録 (Azure Files)]** 画面で、次の手順を実行します。
+### <a name="authentication-for-registration"></a>登録の認証
+
+現在、Azure ファイル共有の認証を設定する方法は 1 つだけです。
+
+- アカウント キー
+
+#### <a name="account-key-to-register"></a>登録するアカウントキー
+
+選択した認証方法が **アカウント キー** の場合は、アクセス キーを取得して、キー コンテナーに格納する必要があります。
+
+1. ストレージ アカウントに移動します
+1. **[設定] > [アクセス キー]** を選択します
+1. "*キー*" をコピーし、次の手順のためにどこかに保存します
+1. お使いのキー コンテナーに移動する
+1. **[設定] > [シークレット]** の順に選択します。
+1. **[+ 生成/インポート]** を選択し、 **[名前]** と *[値]* にストレージ アカウントの **キー** を入力します
+1. **[作成]** を選択して完了します。
+1. 自分のキー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
+1. 最後に、キーを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
+
+### <a name="steps-to-register"></a>登録する手順
+
+新しい Azure Files アカウントをデータ カタログに登録するには、次の手順のようにします。
+
+1. Purview Data Studio に移動します。
+1. 左側のナビゲーションで **[Data Map]** を選択します。
+1. **[登録]** を選択します
+1. **[ソースの登録]** で、 **[Azure Files]** を選択します
+1. **[続行]** を選択します
+
+:::image type="content" source="media/register-scan-azure-files/register-sources.png" alt-text="新しいデータ ソースの登録" border="true":::
+
+**[ソースの登録 (Azure Files)]** 画面で、次の手順のようにします。
 
 1. データ ソースがカタログに表示される際の **[名前]** を入力します。
-1. 目的のストレージ アカウントを指し示す方法を選択します。
-   1. **[Azure サブスクリプションから]** を選択して、 **[Azure サブスクリプション]** ドロップ ダウン ボックスから適切なサブスクリプションを選択し、 **[ストレージ アカウント名]** ドロップ ダウン ボックスから適切なストレージ アカウントを選択します。
-   1. または、 **[手動で入力]** を選択して、サービス エンドポイント (URL) を入力することもできます。
-1. **[完了]** を選択して、データ ソースを登録します。
+2. Azure サブスクリプションを選択して、Azure Storage アカウントの検索結果を絞り込みます。
+3. Azure Storage アカウントを選択します。
+4. コレクションを選択するか、新しいものを作成します (省略可能)。
+5. **[登録]** を選択してデータ ソースを登録します。
 
-:::image type="content" source="media/register-scan-azure-files/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
+:::image type="content" source="media/register-scan-azure-files/azure-file-register-source.png" alt-text="ソースの登録のオプション" border="true":::
 
-## <a name="set-up-authentication-for-a-scan"></a>スキャンの認証を設定する
+## <a name="scan"></a>スキャン
 
-アカウント キーを使用して Azure Files ストレージの認証を設定するには、次の手順を実行します。
+次の手順に従って、アセットを自動的に識別し、データを分類するために Azure Files をスキャンします。 スキャン全般の詳細については、[スキャンとインジェストの概要](concept-scans-and-ingestion.md)に関するページを参照してください。
 
-1. 認証方法として **[アカウント キー]** を選択します。
-2. **[Azure サブスクリプションから]** オプションを選択します。
-3. Azure Files アカウントが存在する Azure サブスクリプションを選択します。
-4. 一覧からストレージ アカウント名を選択します。
-5. **[完了]** をクリックします。
+### <a name="create-and-run-scan"></a>スキャンの作成と実行
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+新しいスキャンを作成して実行するには、次の手順のようにします。
+
+1. [Purview Studio](https://web.purview.azure.com/resource/) の左側のペインで **[Data Map]** タブを選択します。
+
+1. 登録した Azure Files ソースを選択します。
+
+1. **[新しいスキャン]** を選択します。
+
+1. データ ソースに接続するためのアカウント キー資格情報を選択します。
+
+   :::image type="content" source="media/register-scan-azure-files/set-up-scan-azure-file.png" alt-text="スキャンを設定する":::
+
+1. リストから適切な項目を選択することによって、特定のデータベースに対するスキャンの範囲を指定することができます。
+
+   :::image type="content" source="media/register-scan-azure-files/azure-file-scope-your-scan.png" alt-text="スキャンの範囲を指定する":::
+
+1. 次に、スキャン ルール セットを選択します。 システムの既定のものを選択するか、既存のカスタム ルール セットを使用するか、新しいルール セットをインラインで作成することができます。
+
+   :::image type="content" source="media/register-scan-azure-files/azure-file-scan-rule-set.png" alt-text="スキャン ルール セット":::
+
+1. スキャン トリガーを選択します。 スケジュールを設定して実行することも、1 回限りのスキャンを実行することもできます。
+
+   :::image type="content" source="media/register-scan-azure-files/trigger-scan.png" alt-text="trigger":::
+
+1. スキャンを確認し、 **[保存および実行]** を選択します。
+
+[!INCLUDE [create and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
-- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)
+ソースの登録が完了したので、以下のガイドに従って Azure Purview とご利用のデータの詳細について学習します。
+
+- [Azure Purview のデータ分析情報](concept-insights.md)
+- [Azure Purview のデータ系列](catalog-lineage-user-guide.md)
+- [Data Catalog の検索](how-to-search-catalog.md)

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターをアップグレー
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: d6a5ed468541090d433dba732707a59841e6ff41
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8c5a395833cb19e4f5ce78f08ee37c2eb022169b
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779617"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397340"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード
 
@@ -22,7 +22,7 @@ AKS クラスター ライフサイクルの一部には、最新の Kubernetes 
 この記事では、Azure CLI バージョン 2.0.65 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 > [!WARNING]
-> AKS クラスターのアップグレードで、ノードの切断とドレインがトリガーされます。 使用可能なコンピューティング クォータが少ない場合は、アップグレードが失敗する可能性があります。 詳しくは、「[クォータの増加](../azure-portal/supportability/resource-manager-core-quotas-request.md)」をご覧ください。
+> AKS クラスターのアップグレードで、ノードの切断とドレインがトリガーされます。 使用可能なコンピューティング クォータが少ない場合は、アップグレードが失敗する可能性があります。 詳しくは、「[クォータの増加](../azure-portal/supportability/regional-quota-requests.md)」をご覧ください。
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>利用できる AKS クラスターのアップグレードを確認する
 
@@ -126,33 +126,12 @@ myAKSCluster  eastus      myResourceGroup  1.18.10              Succeeded       
 | `patch`| サポートされる最新版のパッチが利用できるようになったとき、それにクラスターを自動アップグレードします。マイナー バージョンはそのまま維持されます。| たとえば、クラスターでバージョン *1.17.7* を実行しているとき、バージョン *1.17.9*、*1.18.4*、*1.18.6*、*1.19.1* が利用できる場合、クラスターは *1.17.9* にアップグレードされます。|
 | `stable`| マイナー バージョン *N-1* でサポートされる最新のパッチ リリースにクラスターが自動アップグレードされます。*N* はサポートされる最新のマイナー バージョンです。| たとえば、クラスターでバージョン *1.17.7* を実行しているとき、バージョン *1.17.9*、*1.18.4*、*1.18.6*、*1.19.1* が利用できる場合、クラスターは *1.18.6* にアップグレードされます。
 | `rapid`| サポートされる最新のマイナー バージョンでサポートされる最新のパッチ リリースにクラスターが自動アップグレードされます。| クラスターの Kubernetes バージョンが *N-2* マイナー バージョンの位置にある場合 (*N* はサポートされる最新のマイナー バージョン)、クラスターはまず、*N-1* マイナー バージョンでサポートされる最新のパッチ バージョンにアップグレードされます。 たとえば、クラスターでバージョン *1.17.7* を実行しているとき、バージョン *1.17.9*、*1.18.4*、*1.18.6*、*1.19.1* が利用できる場合、クラスターはまず *1.18.6* にアップグレードされ、その後、*1.19.1* にアップグレードされます。
+| `node-image`| ノード イメージを利用可能な最新バージョンに自動的にアップグレードします。| Microsoft では、イメージ ノードのパッチと新しいイメージを頻繁に (通常は毎週) 提供していますが、ノード イメージのアップグレードを実行しない限り、実行中のノードは新しいイメージを取得しません。 ノード イメージ チャネルをオンにした場合、新しいバージョンが使用可能な場合は常にノード イメージが自動的に更新されます。 |
 
 > [!NOTE]
 > クラスターの自動アップグレードは Kubernetes の GA バージョンにのみアップグレードされ、プレビュー バージョンに更新されることはありません。
 
 クラスターの自動アップグレードは、クラスターの手動アップグレードを同じプロセスに従います。 詳細については、「[AKS クラスターのアップグレード][upgrade-cluster]」を参照してください。
-
-AKS クラスターのクラスター自動アップグレードはプレビュー機能です。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-`AutoUpgradePreview` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録の状態は、[az feature list][az-feature-list] コマンドで確認できます。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AutoUpgradePreview')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 クラスターの作成時に自動アップグレード チャネルを設定するには、次の例のように、*auto-upgrade-channel* パラメーターを使用します。
 
@@ -165,6 +144,17 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --auto-upgrad
 ```azurecli-interactive
 az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable
 ```
+
+## <a name="using-cluster-auto-upgrade-with-planned-maintenance"></a>計画メンテナンスでのクラスター自動アップグレードの使用
+
+計画メンテナンスと自動アップグレードを使用している場合は、指定したメンテナンス期間中にアップグレードが開始されます。 計画メンテナンスの詳細については、「[計画メンテナンスを使用して Azure Kubernetes Service (AKS) クラスターのメンテナンス期間をスケジュールする (プレビュー)][planned-maintenance]」を参照してください。
+
+## <a name="special-considerations-for-node-pools-that-span-multiple-availability-zones"></a>複数の Availability Zones にまたがるノード プールに関する特別な考慮事項
+
+AKS では、ノード グループでのベストエフォート ゾーン バランシングが使用されます。 アップグレード中は、仮想マシン スケール セット内のサージ ノードのゾーンは事前にはわかりません。 これにより、アップグレード中に一時的に不均衡なゾーン構成が発生する可能性があります。 ただし、アップグレードが完了し、元のゾーン バランスが維持されると、AKS によりサージ ノードが削除されます。 アップグレード中にゾーン バランスを維持する場合は、サージをノード数の 3 の倍数に増やします。 すると、仮想マシンのスケールセットは、ベストエフォート ゾーン バランシングによって Availability Zones 間でノードのバランスを取ります。
+
+Azure LRS ディスクで PVC を使用している場合、それらは特定のゾーンにバインドされ、サージ ノードが PVC のゾーンと一致しない場合はすぐに復旧できない可能性があります。 このため、アップグレード操作によってノードのドレインが続行されても、PV がゾーンにバインドされていると、アプリケーションのダウンタイムが発生する可能性があります。 このケースを処理し、高可用性を維持するには、アプリケーションで[ポッド中断バジェット](https://kubernetes.io/docs/tasks/run-application/configure-pdb/)を構成します。 これにより、アップグレードのドレイン操作中に Kubernetes で可用性の要件を遵守するようにできます。 
+
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -189,3 +179,4 @@ az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrad
 [az-provider-register]: /cli/azure/provider#az_provider_register
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [upgrade-cluster]:  #upgrade-an-aks-cluster
+[planned-maintenance]: planned-maintenance.md

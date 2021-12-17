@@ -1,20 +1,20 @@
 ---
 title: Android マップへの多角形レイヤーの追加 | Microsoft Azure Maps
 description: マップに多角形または円を追加する方法について説明します。 Azure Maps Android SDK を使用して幾何学図形をカスタマイズし、それらの更新や維持を容易にする方法について説明します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 68d68424e71bcf60bf504ae174b84b9c361b8637
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 5659e366fd5c949ea374768bf848313d747896d2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097263"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425853"
 ---
 # <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>マップに多角形レイヤーを追加する (Android SDK)
 

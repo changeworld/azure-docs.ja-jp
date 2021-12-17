@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 301d6eb0867604a6e780eb1d059eef0c153f246f
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: c8e22a1e81792145c468aeecd347f38426f73613
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574511"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412099"
 ---
 # <a name="tutorial-manipulating-models"></a>チュートリアル:モデルの操作
 
@@ -316,7 +316,7 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
     }
     ```
 
-2. 前に作成した **TestModel** GameObject で、**RemoteRayCastPointerHandler** コンポーネントと **RemoteEntityHelper** コンポーネントの両方を追加します。
+1. 前に作成した **TestModel** GameObject で、**RemoteRayCastPointerHandler** コンポーネントと **RemoteEntityHelper** コンポーネントの両方を追加します。
 1. `OnRemoteEntityClicked` イベントに `EntityToDebugLog` メソッドを割り当てます。 イベントの出力の型とメソッドの入力の型が一致すると、Unity の動的イベント フックアップを使用できます。これにより、イベントの値が自動的にメソッドに渡されます。
     1. 新しいコールバック フィールドを作成します ![コールバックを追加する](./media/add-callback-remote-entity-clicked.png)
     1. 親 GameObject を参照するために、**Remote Entity Helper** コンポーネントを Object フィールドにドラッグします ![オブジェクトを割り当てる](./media/assign-object.png)

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Akamai の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Akamai の統合'
 description: Azure Active Directory と Akamai の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 10/26/2021
 ms.author: jeedes
-ms.openlocfilehash: a22a214104357b9ad99238a8db157839a1c9fd46
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4d5046f3d783a3e9c7d6035b221c9a55109db179
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591947"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331188"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Akamai の統合
+# <a name="tutorial-azure-ad-sso-integration-with-akamai"></a>チュートリアル: Azure AD SSO と Akamai の統合
 
 このチュートリアルでは、Akamai と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Akamai を統合すると、次のことができます。
 
@@ -519,7 +519,7 @@ ID プロバイダーを割り当てます。
 
 1. EAADelegation アカウントについては、[委任] タブをクリックします。
 
-    ![管理者コマンド プロンプトのスクリーンショット。SPN を構成するためのコマンドが表示されている。](./media/header-akamai-tutorial/spn.png)
+    ![管理者コマンド プロンプトのスクリーンショット。SPN を構成するためのコマンドが表示されている。](./media/header-akamai-tutorial/delegation.png)
 
     * [任意の認証プロトコルを使う] を選択します。
     * [追加] をクリックし、Kerberos Web サイトのアプリケーション プール アカウントを追加します。 正しく構成されていれば、自動的に正しい SPN に解決されます。
@@ -583,8 +583,8 @@ ID プロバイダーを割り当てます。
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Akamai に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Akamai] タイルをクリックすると、SSO を設定した Akamai に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Akamai] タイルをクリックすると、SSO を設定した Akamai に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Akamai を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Akamai を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

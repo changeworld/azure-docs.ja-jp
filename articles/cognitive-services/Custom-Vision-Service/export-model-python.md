@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 7422b88aa2f9c4894d550ee2bf7e397cd163f870
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 3b72f65ad5cf025533e844478deb84433b019c18
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105046030"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853714"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル: Python での TensorFlow モデルの実行
 
 Custom Vision Service から [TensorFlow モデルをエクスポート](./export-your-model.md)したら、このクイックスタートが、このモデルをローカルで使用して画像を分類する方法を示します。
 
 > [!NOTE]
-> このチュートリアルは、イメージ分類のプロジェクトからエクスポートされたモデルにのみ適用されます。
+> このチュートリアルは、"汎用（コンパクト）" イメージ分類のプロジェクトからエクスポートされたモデルにのみ適用されます。 他のモデルをエクスポートした場合は、Microsoft の[サンプル コード リポジトリ](https://github.com/Azure-Samples/customvision-export-samples)にアクセスしてください。
 
 ## <a name="prerequisites"></a>前提条件
 

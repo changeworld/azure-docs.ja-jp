@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: ecfan
   ms.author: estfan; logicappspm
-  ms.date: 09/18/2019
-  ms.openlocfilehash: c801c46424f7128577e1426ae5f15a8623359d6a
-  ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+  ms.date: 03/24/2021
+  ms.openlocfilehash: ef306e152bf0bd123944a32b16e7148113d10f72
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/08/2020
-  ms.locfileid: "96852763"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131040437"
 landingContent:
 - title: Azure Logic Apps について
   linkLists:
@@ -23,11 +23,15 @@ landingContent:
     links:
     - text: Azure Logic Apps とは
       url: logic-apps-overview.md
+    - text: シングルテナントとマルチテナント、および統合サービス環境
+      url: single-tenant-overview-compare.md
+    - text: Azure Arc 対応 Logic Apps とは
+      url: azure-arc-enabled-logic-apps-overview.md
   - linkListType: concept
     links:
-    - text: Azure Logic Apps のコネクタ
+    - text: Azure Logic Apps のコネクタの概要
       url: ../connectors/apis-list.md
-    - text: 定期的なワークフローをスケジュール設定する
+    - text: ワークフローの繰り返しスケジュール
       url: concepts-schedule-automated-recurring-tasks-workflows.md
     - text: B2B エンタープライズ統合
       url: logic-apps-enterprise-integration-overview.md
@@ -40,7 +44,9 @@ landingContent:
   - linkListType: video
     links:
     - text: Azure Logic Apps の概要
-      url: https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Go-serverless-Enterprise-integration-with-Azure-Logic-Apps/
+    - text: Logic Apps を使用して、メインフレームをクラウドに接続および拡張する
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Connect-and-extend-your-mainframe-to-the-cloud-with-Logic-Apps
     - text: Azure Logic Apps - コードと API の自由な統合
       url: https://www.youtube.com/watch?v=Z3qaBQS0w20
 - title: はじめに
@@ -54,7 +60,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: テンプレート:スケジュールに基づいてタイマー ジョブを実行する
-      url: https://azure.microsoft.com/resources/templates/301-logicapps-jobscheduler/
+      url: https://azure.microsoft.com/resources/templates/logicapps-jobscheduler/
   - linkListType: learn
     links:
     - text: データを自動的にルーティングして処理する
@@ -104,7 +110,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: サンプル:統合アカウントに接続し、Azure DevOps を使用してデプロイする
-      url: /samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/
+      url: https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/storage-account-connections
   - linkListType: architecture
     links:
     - text: 基本的なエンタープライズ統合
@@ -139,10 +145,8 @@ landingContent:
     links:
     - text: Resource Manager テンプレートを使って作成およびデプロイする
       url: /learn/modules/create-deploy-logic-apps-using-arm-templates/
-    - text: サンプル:Azure Storage に接続して Azure DevOps でデプロイする
-      url: /samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
-    - text: サンプル:Azure Service Bus に接続して Azure DevOps でデプロイする
-      url: /samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
+    - text: サンプル:Azure Logic Apps を使用した Azure Pipelines の調整
+      url: https://github.com/Azure-Samples/azure-logic-apps-pipeline-orchestration
 - title: 詳細情報
   linkLists:
   - linkListType: reference
@@ -151,6 +155,8 @@ landingContent:
       url: logic-apps-limits-and-config.md
     - text: 価格モデル
       url: logic-apps-pricing.md
+    - text: Azure Logic Apps の使用可能なコネクタ リファレンス
+      url: /connectors/connector-reference/connector-reference-logicapps-connectors
     - text: ワークフロー定義言語スキーマ
       url: logic-apps-workflow-definition-language.md
     - text: Azure PowerShell

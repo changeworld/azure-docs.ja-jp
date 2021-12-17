@@ -7,13 +7,13 @@ ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 10/19/2020
-ms.openlocfilehash: a3137d779908bf2791ca396068a8c9edf5d56739
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.date: 09/15/2021
+ms.openlocfilehash: 9ab8626a10e729e5bdf070f355fcc480d6dc4f16
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92492239"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646817"
 ---
 # <a name="troubleshoot-azure-reservation-recommendations"></a>Azure の予約のレコメンデーションに関するトラブルシューティング
 
@@ -35,7 +35,7 @@ ms.locfileid: "92492239"
 
 認識されるコスト節約効果に基づいて、契約期間によって予約の購入が推奨されたりされなかったりすることもあります。 具体的には、3 年契約の方が 1 年契約よりも割引額は大きくなります。 高い確率で、3 年契約の方が 1 年契約よりも節約効果が高いと見なされます。
 
-特定のリソース サイズや数量が Azure によって推奨される理由を知りたい場合は、[ **&lt;数量&gt; 詳細の表示** ] を選択してください。一定期間にわたるコスト削減効果が詳しく視覚化されて表示されます。
+特定のリソース サイズや数量が Azure によって推奨される理由を知りたい場合は、[ **&lt;数量&gt; 詳細の表示**] を選択してください。一定期間にわたるコスト削減効果が詳しく視覚化されて表示されます。
 
 :::image type="content" source="./media/troubleshoot-reservation-recommendation/see-details-link.png" alt-text="予約のレコメンデーションの [詳細の表示] リンクを示す例" lightbox="./media/troubleshoot-reservation-recommendation/see-details-link.png" :::
 

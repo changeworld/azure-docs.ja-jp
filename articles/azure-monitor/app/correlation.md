@@ -2,17 +2,15 @@
 title: Azure Application Insights におけるテレメトリの関連付け | Microsoft Docs
 description: Application Insights におけるテレメトリの相関付け
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: beaeb0131a2c9b326d663f6fcbb8273a9b52b412
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 88472c8f0915d721da3b7fe5af4a4cfc86729a8f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100969"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045579"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -89,7 +87,7 @@ W3C TraceContext ベースの分散トレースは、最近のすべての .NET 
 
 #### <a name="java-30-agent"></a>Java 3.0 エージェント
 
-  Java 3.0 エージェントでは、既定で W3C がサポートされ、追加構成をする必要がありません。 
+  Java 3.0 エージェントでは、既定で W3C がサポートされ、追加構成をする必要がありません。
 
 #### <a name="java-sdk"></a>Java SDK
 - **受信の構成**
@@ -145,7 +143,7 @@ W3C TraceContext ベースの分散トレースは、最近のすべての .NET 
   ```
       distributedTracingMode: 2 // DistributedTracingModes.W3C
   ```
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 相関付けを有効にするために必要なすべての構成を表示するには、[JavaScript の相関付けに関するドキュメント](./javascript.md#enable-correlation)を参照してください。
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python におけるテレメトリの相関付け
@@ -256,7 +254,6 @@ with tracer.span(name='hello'):
    function_1(tracer)
 logger.warning('After the span')
 
-
 # module2.py
 
 import logging
@@ -291,13 +288,13 @@ Application Insights .NET SDK は、`DiagnosticSource` と `Activity` を使用�
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Java におけるテレメトリの相関付け
 
-[Java エージェント](./java-in-process-agent.md)および [Java SDK](../../azure-monitor/app/java-get-started.md) バージョン 2.0.0 以降では、テレメトリの自動関連付けがサポートされています。 要求のスコープ内で発行されたすべてのテレメトリ (トレース、例外、カスタム イベントなど) に対して `operation_id` が自動的に設定されます。 また、[Java SDK エージェント](../../azure-monitor/app/java-agent.md)が構成されている場合は、HTTP 経由でのサービス間呼び出しのための関連付けヘッダー (前述) が伝達されます。
+[Java エージェント](./java-in-process-agent.md)では、テレメトリの自動関連付けがサポートされています。 要求のスコープ内で発行されたすべてのテレメトリ (トレース、例外、カスタム イベントなど) に対して `operation_id` が自動的に設定されます。 また、[Java SDK エージェント](java-2x-agent.md)が構成されている場合は、HTTP 経由でのサービス間呼び出しのための関連付けヘッダー (前述) が伝達されます。
 
 > [!NOTE]
-> Application Insights Java エージェントでは、JMS、Kafka、Netty/Webflux などの要求と依存関係が自動収集されます。 Java SDK については、関連付け機能では、Apache HttpClient を使用して行われた呼び出しのみがサポートされます。 SDK では、メッセージング テクノロジ (Kafka、RabbitMQ、Azure Service Bus など) 間でのコンテキストの自動伝達はサポートされていません。 
+> Application Insights Java エージェントでは、JMS、Kafka、Netty/Webflux などの要求と依存関係が自動収集されます。 Java SDK については、関連付け機能では、Apache HttpClient を使用して行われた呼び出しのみがサポートされます。 SDK では、メッセージング テクノロジ (Kafka、RabbitMQ、Azure Service Bus など) 間でのコンテキストの自動伝達はサポートされていません。
 
 > [!NOTE]
-> カスタム テレメトリを収集するには、Java 2.6 SDK を使用してアプリケーションをインストルメント化する必要があります。 
+> カスタム テレメトリを収集するには、Java 2.6 SDK を使用してアプリケーションをインストルメント化する必要があります。
 
 ### <a name="role-names"></a>ロール名
 
@@ -316,7 +313,7 @@ Application Insights .NET SDK は、`DiagnosticSource` と `Activity` を使用�
 
 - Application Insights Java SDK 2.5.0 以降では、`<RoleName>` を ApplicationInsights.xml ファイルに追加することで、`cloud_RoleName` を指定できます。
 
-  ```XML
+  ```xml
   <?xml version="1.0" encoding="utf-8"?>
   <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
      <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>

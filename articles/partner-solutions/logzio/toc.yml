@@ -1,0 +1,27 @@
+- name: Logz.io Azure 統合のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Logz.io とは
+      href: overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: Logz.io リソースの作成
+      href: create.md
+- name: 方法
+  items:
+    - name: 管理する
+      href: manage.md
+    - name: シングル サインオンを設定する
+      href: setup-sso.md
+    - name: トラブルシューティング
+      href: troubleshoot.md
+- name: リファレンス
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.logz/get-azlogzmonitor
+    - name: Java
+      href: /java/api/overview/azure/resourcemanager-logz-readme
+    - name: Python
+      href: /python/api/overview/azure/mgmt-logz-readme

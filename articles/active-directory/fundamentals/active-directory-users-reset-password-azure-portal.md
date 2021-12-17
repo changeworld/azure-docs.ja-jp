@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8809f8c168e7095f05587c7a572e08287637dc5a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7efa458ebcae7e837be4bb574f4a2707e9cb9e30
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034593"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732612"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのパスワードをリセットする
 
@@ -29,7 +29,7 @@ ms.locfileid: "102034593"
 >ご利用の Azure AD テナントがユーザーのホーム ディレクトリでない場合、管理者はユーザーのパスワードをリセットすることができません。 つまり、ユーザーが別の組織からのアカウント、Microsoft アカウント、または Google アカウントを使用して組織にサインインしている場合、管理者はそれらのパスワードをリセットすることはできません。<br><br>ユーザーが権限ソースを Windows Server Active Directory としている場合、管理者はパスワード ライトバックを有効にした場合にのみパスワードをリセットすることができます。<br><br>ユーザーが権限ソースを外部の Azure AD としている場合、管理者はパスワードをリセットすることができません。 パスワードをリセットできるのは、該当するユーザーまたは外部の Azure AD の管理者のみとなります。
 
 >[!Note]
->管理者ではないユーザーが、自分の職場または学校のパスワードをリセットする方法については、「[職場または学校のパスワードをリセットする](../user-help/active-directory-passwords-update-your-own-password.md)」をご覧ください。
+>管理者ではないユーザーが、自分の職場または学校のパスワードをリセットする方法については、「[職場または学校のパスワードをリセットする](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)」をご覧ください。
 
 ## <a name="to-reset-a-password"></a>パスワードをリセットするには
 

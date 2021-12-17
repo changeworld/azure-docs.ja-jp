@@ -10,16 +10,16 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/15/2021
+ms.date: 11/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c1b4b3d57bdce4a66adb35717f46d8989ee2453
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c327fda0c88b5c976d59e50321ee4dedf561dd1
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648817"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715133"
 ---
-# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
+# <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
 Azure Active Directory (Azure AD) を使用して、アプリを承認した後に受信する応答トークン内のロール要求の要求の種類をカスタマイズできます。
 
@@ -93,6 +93,9 @@ Azure AD から返される SAML 応答でカスタム ロールを想定する�
         ![appRoles プロパティの詳細](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
         カスタム アプリ (Azure Marketplace 以外のアプリ) を使用している場合は、2 つの既定のロール (user と msiam_access) が表示されます。 Marketplace アプリの場合、既定のロールは msiam_access のみとなります。 既定のロールに変更を加える必要はありません。
+
+        > [!NOTE]
+        > 複数のロールを作成する場合は、既定のロールの内容を変更しないでください。新しいロールには、コードの新しい msiam_access ブロックを追加するだけにしてください。
 
     1. アプリケーションの新しいロールを生成します。
 

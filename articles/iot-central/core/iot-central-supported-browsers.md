@@ -1,23 +1,21 @@
 ---
 title: Azure IoT Central 用にサポートされているブラウザー | Microsoft Docs
 description: Azure IoT Central は、最新のデスクトップ、タブレット、ブラウザー間でアクセスできます。 この記事では、サポートされているブラウザーの一覧を示しています。
-author: lmasieri
-ms.author: lmasieri
-ms.date: 04/24/2019
+author: dominicbetts
+ms.author: dobett
+ms.date: 08/17/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7d9429507e39d975c5534e33052c56d77eeb3eb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 824d1dd74eb5235fd6f7e309950e64ed3d490341
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "72941276"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995789"
 ---
 # <a name="supported-browsers-for-azure-iot-central"></a>Azure IoT Central 用にサポートされているブラウザー
-
-*この記事は、オペレーター、ビルダー、および管理者に適用されます。*
 
 Azure IoT Central は、最新のデスクトップ、タブレット、ブラウザー間でアクセスできます。 次の記事では、サポートされているブラウザーと必要な接続の一覧を示しています。  
 

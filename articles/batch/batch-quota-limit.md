@@ -2,14 +2,14 @@
 title: サービスのクォータと制限
 description: 既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法について説明します
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 07/20/2021
 ms.custom: seodec18
-ms.openlocfilehash: 6e17a90cc573205bcb964a0428e0b7320323b8a6
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 799258258e1215977aea5b176d133bd121624bd6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553551"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239117"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -63,7 +63,7 @@ Batch によってサポートされる各 VM シリーズに対してコア ク
 | **リソース** | **上限** |
 | --- | --- |
 | [同時実行タスク数](batch-parallel-node-tasks.md) | ノードのコア数 x 4 |
-| [アプリケーション](batch-application-packages.md) 数 | 20 |
+| [アプリケーション](batch-application-packages.md) 数 | 200 |
 | アプリケーションあたりのアプリケーション パッケージ数 | 40 |
 | プールあたりのアプリケーション パッケージ数 | 10 |
 | タスクの最長有効期間 | 180 日<sup>1</sup> |
@@ -138,7 +138,7 @@ Azure クォータ REST API を使用して、サブスクリプション レベ
 仮想ネットワークでは、100 プール ノードごとに次のリソースが作成されます。
 
 - 1 つの[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#network-security-groups)
-- 1 つの[パブリック IP アドレス](../virtual-network/public-ip-addresses.md)
+- 1 つの[パブリック IP アドレス](../virtual-network/ip-services/public-ip-addresses.md)
 - 1 つの[ロード バランサー](../load-balancer/load-balancer-overview.md)
 
 これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 仮想ネットワークで大規模なプールのデプロイを計画している場合は、これらのリソースの 1 つ以上のクォータの増加を要求することが必要になる場合があります。

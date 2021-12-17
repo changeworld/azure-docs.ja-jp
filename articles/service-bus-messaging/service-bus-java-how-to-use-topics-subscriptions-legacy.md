@@ -1,32 +1,27 @@
 ---
 title: Java で Azure Service Bus のトピックとサブスクリプションを使用する
-description: このクイックスタートでは、Azure Service Bus トピックにメッセージを送信し、サブスクリプションからそのトピックにメッセージを受信する Java コードを記述します。
-ms.date: 06/23/2020
-ms.topic: quickstart
+description: この記事では、Azure Service Bus のトピックにメッセージを送信し、そのトピックへのサブスクリプションからメッセージを受信する Java コードを記述します。
+ms.date: 07/27/2021
+ms.topic: how-to
 ms.devlang: Java
-ms.custom:
-- seo-java-july2019
-- seo-java-august2019
-- seo-java-september2019
-- devx-track-java
-- mode-api
-ms.openlocfilehash: c20a9372ddc951b7d4184a7abeda9537006c4865
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
+ms.openlocfilehash: 4cc0321c8d54e0ce354cc49406e4c35484f7f97a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533374"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058508"
 ---
-# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>クイックスタート: Java で Service Bus のトピックとサブスクリプションを使用する
-このクイックスタートでは、Azure Service Bus トピックにメッセージを送信し、サブスクリプションからそのトピックにメッセージを受信する Java コードを記述します。 
+# <a name="use-service-bus-topics-and-subscriptions-with-java-old-package"></a>Java (古いパッケージ) で Service Bus のトピックとサブスクリプションを使用する
+この記事では、Azure Service Bus のトピックにメッセージを送信し、そのトピックへのサブスクリプションからメッセージを受信する Java コードを記述します。 
 
 > [!WARNING]
->  このクイックスタートでは、以前の azure-servicebus パッケージを使用します。 最新の azure-messaging-servicebus パッケージを使用するクイックスタートについては、[azure-messaging-servicebus を使用したメッセージの送受信](service-bus-java-how-to-use-topics-subscriptions.md)に関するページを参照してください。
+>  この記事では、古い azure-servicebus パッケージを使用します。 最新の azure-messaging-servicebus パッケージを使用する記事については、[azure-messaging-servicebus を使用したメッセージの送受信](service-bus-java-how-to-use-topics-subscriptions.md)に関するページを参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
 
-1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+1. Azure サブスクリプション。 この記事の手順を完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
 2. 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認し、次のタスクを実行します:
     1. Service Bus **名前空間** を作成します。
     2. **接続文字列** を取得します。
@@ -119,7 +114,7 @@ public class MyServiceBusTopicClient {
 }
 ```
 
-Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。
+Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 100 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 3 つのサブスクリプションのために **SubscriptionClient** オブジェクトを 3 つ作成し、Service Bus トピックからのメッセージを非同期的に送信するヘルパー メソッドを呼び出すように、**main** メソッドを更新します。 サンプル コードは、**BasicTopic** という名前のトピックと、**Subscription1**、**Subscription2**、および **Subscription3** という名前の 3 つのサブスクリプションを作成する前提になっています。 それらに異なる名前を使用した場合は、テストする前にコードを更新します。 

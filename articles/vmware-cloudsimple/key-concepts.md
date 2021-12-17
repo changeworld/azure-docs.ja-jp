@@ -2,19 +2,19 @@
 title: Azure VMware Solution by CloudSimple を管理するための重要な概念
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Azure VMware Solution by CloudSimple を管理するための重要な概念について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 04/24/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5544ef7725855d28e20d39ff345db6bb07671a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e48df490137357a376f0d546b7d3c16165205d09
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895327"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620110"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Azure VMware Solution by CloudSimple を管理するための重要な概念
 

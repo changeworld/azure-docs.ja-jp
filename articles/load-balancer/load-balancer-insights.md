@@ -3,20 +3,20 @@ title: Azure Load Balancer に関する分析情報
 description: ロード バランサーの分析情報を使用して、迅速な障害発生箇所の特定と情報に基づく設計上の決定を実現します
 services: load-balancer
 documentationcenter: na
-author: erichrt
+author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
-ms.author: errobin
-ms.openlocfilehash: 190a9e431dedfb0f0fe6077e903174f253f5c773
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: kumud
+ms.openlocfilehash: 7f87862cd922451113403b382930379f63e471e4
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589099"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357897"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Azure Load Balancer を監視および構成するための分析情報の使用
 

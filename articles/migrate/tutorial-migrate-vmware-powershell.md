@@ -5,13 +5,14 @@ author: rahulg1190
 ms.author: rahugup
 manager: bsiva
 ms.topic: tutorial
-ms.date: 03/02/2021
-ms.openlocfilehash: 24dd33495915a9f4d47a00fbbfe9e894df839d4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/20/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0f8b01e54fbb7173a6d9dfba8a99a9f9ffb1aeb9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715073"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292891"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>VMware VM を Azure に移行する (エージェントレス) - PowerShell
 
@@ -70,10 +71,12 @@ Azure Migrate のプロジェクトは、評価または移行しようとして
 ```azurepowershell-interactive
 # Get resource group of the Azure Migrate project
 $ResourceGroup = Get-AzResourceGroup -Name MyResourceGroup
-
+```
+```azurepowershell-interactive
 # Get details of the Azure Migrate project
 $MigrateProject = Get-AzMigrateProject -Name MyMigrateProject -ResourceGroupName $ResourceGroup.ResourceGroupName
-
+```
+```azurepowershell-interactive
 # View Azure Migrate project details
 Write-Output $MigrateProject
 ```
@@ -139,22 +142,21 @@ Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName $ResourceGroup.
 
 レプリケーションのプロパティは、次のように指定できます。
 
-- **ターゲット サブスクリプションとリソース グループ** - (`TargetResourceGroupId`) パラメーターを使用してリソース グループ ID を指定することにより、VM の移行先となるサブスクリプションとリソース グループを指定します。
-- **ターゲット仮想ネットワークとサブネット** - (`TargetNetworkId`) および (`TargetSubnetName`) パラメーターを使用して、VM の移行先となる Azure 仮想ネットワークの ID とサブネットの名前を指定します。
-- **ターゲット VM 名** - (`TargetVMName`) パラメーターを使用して、作成する Azure VM の名前を指定します。
-- **ターゲット VM サイズ** - (`TargetVMSize`) パラメーターを使用して、レプリケートする VM に使用する Azure VM のサイズを指定します。 たとえば、VM を Azure の D2_v2 VM に移行するには、(`TargetVMSize`) の値を "Standard_D2_v2" と指定します。
-- **ライセンス** - アクティブなソフトウェア アシュアランスまたは Windows Server サブスクリプションの対象となっている Windows Server マシンの Azure ハイブリッド特典を使用するには、(`LicenseType`) パラメーターの値として **WindowsServer** を指定します。 それ以外の場合は、(`LicenseType`) パラメーターの値を "NoLicenseType" と指定します。
-- **OS ディスク** - オペレーティング システムのブートローダーとインストーラーがあるディスクの一意識別子を指定します。 使用するディスク ID は、[Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) コマンドレットを使用して取得したディスクの一意識別子 (UUID) プロパティです。
-- **ディスクの種類** - (`DiskType`) パラメーターの値を次のように指定します。
-    - Premium マネージド ディスクを使用するには、(`DiskType`) パラメーターの値として "Premium_LRS" を指定します。
-    - Standard SSD ディスクを使用するには、(`DiskType`) パラメーターの値として "StandardSSD_LRS" を指定します。
-    - Standard HDD ディスクを使用するには、(`DiskType`) パラメーターの値として "Standard_LRS" を指定します。
-- **インフラストラクチャの冗長性** - 次のようにインフラストラクチャ冗長オプションを指定します。
-    - 可用性ゾーン。移行されたマシンをリージョン内の特定の可用性ゾーンにピン留めします。 このオプションを使用して、複数ノードのアプリケーション層を形成するサーバーを可用性ゾーン間で分散させます。 このオプションは、移行用に選択したターゲット リージョンで Availability Zones がサポートされている場合にのみ使用できます。 可用性ゾーンを使用するには、(`TargetAvailabilityZone`) パラメーターの可用性ゾーンの値を指定します。
-    - 可用性セット。移行されたマシンを可用性セットに配置します。 このオプションを使用するには、選択したターゲット リソース グループに 1 つ以上の可用性セットが必要です。 可用性セットを使用するには、(`TargetAvailabilitySet`) パラメーターの可用性セット ID を指定します。
- - **ブート診断ストレージ アカウント** - ブート診断ストレージ アカウントを使用するには、(`TargetBootDiagnosticStorageAccount`) パラメーターの ID を指定します。
-    -  ブート診断に使用されるストレージ アカウントは、VM の移行先と同じサブスクリプションにある必要があります。  
-    - 既定では、このパラメーターに値は設定されません。 
+**パラメーター** | **Type** | **説明**
+--- | --- | ---
+ ターゲットのサブスクリプションとリソース グループ |  Mandatory | (`TargetResourceGroupId`) パラメーターを使用してリソース グループ ID を指定することにより、VM の移行先となるサブスクリプションとリソース グループを指定します。
+ ターゲットの仮想ネットワークとサブネット | Mandatory | (`TargetNetworkId`) および (`TargetSubnetName`) パラメーターを使用して、VM の移行先となる Azure 仮想ネットワークの ID とサブネットの名前をそれぞれ指定します。
+ マシン ID | Mandatory | レプリケートして移行する必要がある検出済みマシンの ID を指定します。 (`InputObject`) を使用して、レプリケーション用に検出された VM オブジェクトを指定します。  
+ ターゲット VM 名 | Mandatory | (`TargetVMName`) パラメーターを使用して、作成される Azure VM の名前を指定します。 
+ ターゲット VM サイズ | Mandatory | (`TargetVMSize`) パラメーターを使用して、レプリケートする VM に使用する Azure VM のサイズを指定します。 たとえば、VM を Azure の D2_v2 VM に移行するには、(`TargetVMSize`) の値を "Standard_D2_v2" と指定します。 
+ ライセンス | Mandatory | アクティブなソフトウェア アシュアランスまたは Windows Server サブスクリプションの対象となっている Windows Server マシンについて Azure ハイブリッド特典を使用するには、(`LicenseType`) パラメーターの値として **WindowsServer** を指定します。 それ以外の場合は、値を **NoLicenseType** と指定します。 
+ OS ディスク | Mandatory | オペレーティング システムのブートローダーとインストーラーがあるディスクの一意識別子を指定します。 使用するディスク ID は、[Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) コマンドレットを使用して取得したディスクの一意識別子 (UUID) プロパティです。
+ ディスクの種類 | Mandatory | 作成するロード バランサーの名前を指定します。 
+ インフラストラクチャの冗長性 | オプション | 次のようにインフラストラクチャ冗長オプションを指定します。 <br/><br/> - **可用性ゾーン**。移行したマシンをリージョン内の特定の可用性ゾーンに固定します。 このオプションを使用して、複数ノードのアプリケーション層を形成するサーバーを可用性ゾーン間で分散させます。 このオプションは、移行用に選択したターゲット リージョンで Availability Zones がサポートされている場合にのみ使用できます。 可用性ゾーンを使用するには、(`TargetAvailabilityZone`) パラメーターの可用性ゾーンの値を指定します。 <br/> - **可用性セット**。移行したマシンを可用性セットに配置します。 このオプションを使用するには、選択したターゲット リソース グループに 1 つ以上の可用性セットが必要です。 可用性セットを使用するには、(`TargetAvailabilitySet`) パラメーターの可用性セット ID を指定します。 
+ ブート診断ストレージ アカウント | オプション | ブート診断ストレージ アカウントを使用するには、(`TargetBootDiagnosticStorageAccount`) パラメーターに ID を指定します。 <br/> - ブート診断に使用するストレージ アカウントは、VM の移行先と同じサブスクリプションにある必要があります。 <br/> - 既定では、このパラメーターに値は設定されません。 
+ Tags | 省略可能 | 移行した仮想マシン、ディスク、NIC にタグを追加します。 <br/>  仮想マシン、ディスク、NIC にタグを追加するには、(`Tag`) を使用します。 <br/> or <br/> 移行した仮想マシンにタグを追加するには、(`VMTag`) を使用します。<br/> ディスクにタグを追加するには、(`DiskTag`) を使用します。 <br/> ネットワーク インターフェイスにタグを追加するには、(`NicTag`) を使用します。 <br/> たとえば、必要なタグを変数 $tags に追加し、その変数を必要なパラメーターに渡します。  $tags = @{Organization=”Contoso”}
+
+
 
 ### <a name="replicate-vms-with-all-disks"></a>すべてのディスクを使用して VM をレプリケートする
 
@@ -163,13 +165,17 @@ Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName $ResourceGroup.
 ```azurepowershell-interactive
 # Retrieve the resource group that you want to migrate to
 $TargetResourceGroup = Get-AzResourceGroup -Name MyTargetResourceGroup
+```
 
+```azurepowershell-interactive
 # Retrieve the Azure virtual network and subnet that you want to migrate to
 $TargetVirtualNetwork = Get-AzVirtualNetwork -Name MyVirtualNetwork
-
+```
+```azurepowershell-interactive
 # Start replication for a discovered VM in an Azure Migrate project
 $MigrateJob =  New-AzMigrateServerReplication -InputObject $DiscoveredServer -TargetResourceGroupId $TargetResourceGroup.ResourceId -TargetNetworkId $TargetVirtualNetwork.Id -LicenseType NoLicenseType -OSDiskID $DiscoveredServer.Disk[0].Uuid -TargetSubnetName $TargetVirtualNetwork.Subnets[0].Name -DiskType Standard_LRS -TargetVMName MyMigratedTestVM -TargetVMSize Standard_DS2_v2
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -195,7 +201,9 @@ Write-Output $MigrateJob.State
 ```azurepowershell-interactive
 # View disk details of the discovered server
 Write-Output $DiscoveredServer.Disk
+```
 
+```azurepowershell-interactive
 # Create a new disk mapping for the disks to be replicated
 $DisksToReplicate = @()
 $OSDisk = New-AzMigrateDiskMapping -DiskID $DiscoveredServer.Disk[0].Uuid -DiskType StandardSSD_LRS -IsOSDisk true
@@ -203,16 +211,24 @@ $DataDisk = New-AzMigrateDiskMapping -DiskID $DiscoveredServer.Disk[1].Uuid -Dis
 
 $DisksToReplicate += $OSDisk
 $DisksToReplicate += $DataDisk
+```
 
+```azurepowershell-interactive
 # Retrieve the resource group that you want to migrate to
 $TargetResourceGroup = Get-AzResourceGroup -Name MyTargetResourceGroup
+```
 
+```azurepowershell-interactive
 # Retrieve the Azure virtual network and subnet that you want to migrate to
 $TargetVirtualNetwork = Get-AzVirtualNetwork -Name MyVirtualNetwork
+```
 
+```azurepowershell-interactive
 # Start replication for the VM
 $MigrateJob =  New-AzMigrateServerReplication -InputObject $DiscoveredServer -TargetResourceGroupId $TargetResourceGroup.ResourceId -TargetNetworkId $TargetVirtualNetwork.Id -LicenseType NoLicenseType -DiskToInclude $DisksToReplicate -TargetSubnetName $TargetVirtualNetwork.Subnets[0].Name -TargetVMName MyMigratedTestVM -TargetVMSize Standard_DS2_v2
+```
 
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -238,7 +254,8 @@ Write-Output $MigrateJob.State
 ```azurepowershell-interactive
 # List replicating VMs and filter the result for selecting a replicating VM. This cmdlet will not return all properties of the replicating VM.
 $ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -MachineName MyTestVM
-
+```
+```azurepowershell-interactive
 # Retrieve all properties of a replicating VM 
 $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 ```
@@ -320,26 +337,28 @@ $job = Get-AzMigrateJob -InputObject $job
 
 VM に関する次のプロパティを更新できます。
 
-- **VM 名** - [`TargetVMName`] パラメーターを使用して、作成される Azure VM の名前を指定します。
-- **VM サイズ** - [`TargetVMSize`] パラメーターを使用して、レプリケートする VM に使用する Azure VM のサイズを指定します。 たとえば、VM を Azure の D2_v2 VM に移行するには、[`TargetVMSize`] の値として `Standard_D2_v2` を指定します。
-- **仮想ネットワーク** - [`TargetNetworkId`] パラメーターを使用して、VM の移行先となる Azure 仮想ネットワークの ID を指定します。
-- **リソース グループ** - [`TargetResourceGroupId`] パラメーターを使用してリソース グループ ID を指定することにより、VM の移行先となるリソース グループの ID を指定します。
-- **ネットワーク インターフェイス** - [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) コマンドレットを使用して NIC 構成を指定できます。 このオブジェクトは、[Set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) コマンドレットの [`NicToUpdate`] パラメーターへの入力として渡されます。
 
-    - **IP 割り当ての変更** - NIC の静的 IP を指定するには、[`TargetNicIP`] パラメーターを使用して、VM の静的 IP として使用する IPv4 アドレスを指定します。 NIC の IP を動的に割り当てるには、**TargetNicIP** パラメーターの値として `auto` を指定します。
-    - [`TargetNicSelectionType`] パラメーターに、`Primary`、`Secondary`、または `DoNotCreate` を使用して、移行された VM 上で NIC をプライマリにするか、セカンダリにするか、または作成されないようにするかを指定します。 VM のプライマリ NIC として指定できる NIC は 1 つだけです。
-    - NIC をプライマリにするには、移行された VM 上でセカンダリにする、または作成されないようにする他の NIC も指定する必要があります。
-    - NIC のサブネットを変更するには、[`TargetNicSubnet`] パラメーターを使用してサブネットの名前を指定します。
-
- - **可用性ゾーン** - 可用性ゾーンを使用するには、[`TargetAvailabilityZone`] パラメーターの可用性ゾーン値を指定します。
- - **可用性セット** - 可用性セットを使用するには、[`TargetAvailabilitySet`] パラメーターの可用性セット ID を指定します。
+**パラメーター** | **Type** | **説明**
+--- | --- | ---
+VM 名 | オプション | [`TargetVMName`] パラメーターを使用して、作成する Azure VM の名前を指定します。 
+VM サイズ | オプション | [`TargetVMSize`] パラメーターを使用して、レプリケートする VM に使用する Azure VM のサイズを指定します。 たとえば、VM を Azure の D2_v2 VM に移行するには、[`TargetVMSize`] の値として `Standard_D2_v2` を指定します。
+Virtual Network | オプション | [`TargetNetworkId`] パラメーターを使用して、VM の移行先となる Azure 仮想ネットワークの ID を指定します。 
+リソース グループ | オプション | [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) コマンドレットを使用して NIC 構成を指定できます。 このオブジェクトは、[Set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) コマンドレットの [`NicToUpdate`] パラメーターへの入力として渡されます。 <br/><br/> - **IP 割り当ての変更** - NIC の静的 IP を指定するには、[`TargetNicIP`] パラメーターを使用して、VM の静的 IP として使用する IPv4 アドレスを指定します。 NIC の IP を動的に割り当てるには、**TargetNicIP** パラメーターの値として `auto` を指定します。 <br/> - [`TargetNicSelectionType`] パラメーターに、`Primary`、`Secondary`、または `DoNotCreate` の値を使用して、移行した VM 上で NIC をプライマリにするか、セカンダリにするか、または作成されないようにするかを指定します。 VM のプライマリ NIC として指定できる NIC は 1 つだけです。 <br/> - NIC をプライマリにするには、移行された VM 上でセカンダリにする、または作成されないようにする他の NIC も指定する必要があります。 <br/> - NIC のサブネットを変更するには、[`TargetNicSubnet`] パラメーターを使用してサブネットの名前を指定します。
+ネットワーク インターフェイス | オプション | [`TargetVMName`] パラメーターを使用して、作成する Azure VM の名前を指定します。 
+可用性ゾーン | オプション | 可用性ゾーンを使用するには、[`TargetAvailabilityZone`] パラメーターに可用性ゾーンの値を指定します。 
+可用性セット | オプション | 可用性セットを使用するには、[`TargetAvailabilitySet`] パラメーターに可用性セット ID を指定します。 
+Tags | 省略可能 | タグの更新については、次のパラメーター [`UpdateTag`] または [`UpdateVMTag`]、[`UpdateDiskTag`]、[`UpdateNicTag`] と、タグの更新操作の種類 [`UpdateTagOperation`] または [`UpdateVMTagOperation`]、[`UpdateDiskTagOperation`]、[`UpdateNicTagOperation`] を使用します。   タグの更新操作は、Merge、Delete、Replace の値を受け取ります。 <br/> 仮想マシン、ディスク、NIC にわたってすべてのタグを更新するには、[`UpdateTag`] を使用します。 <br/> 仮想マシンのタグを更新するには、[`UpdateVMTag`] を使用します。 <br/> ディスクのタグを更新するには、[`UpdateDiskTag`] を使用します。 <br/> NIC のタグを更新するには、[`UpdateNicTag`] を使用します。 <br/> 仮想マシン、ディスク、NIC にわたってすべてのタグの操作を更新するには、[`UpdateTagOperation`] を使用します。 <br/>  仮想マシンのタグを更新するには、[`UpdateVMTagOperation`] を使用します。 <br/> ディスクのタグを更新するには、[`UpdateDiskTagOperation`] を使用します。 <br/> NIC のタグを更新するには、[`UpdateNicTagOperation`] を使用します。 <br/> <br/> *replace* オプションを使用すると、既存のタグのセット全体が新しいセットに置き換えられます。 <br/> *merge* オプションを使用すると、新しい名前でタグを追加したり、既存の名前を使用してタグの値を更新したりできます。 <br/> *delete* オプションを使用すると、指定した名前、または名前と値のペアに基づいてタグを選択的に削除できます。 
+ディスク | 省略可能 | OS ディスクの場合: <br/> [`TargetDiskName`] パラメーターを使用して OS ディスクの名前を更新します。  <br/><br/> 複数のディスクを更新する場合: <br/>  [Set-AzMigrateDiskMapping](/powershell/module/az.migrate/set-azmigratediskmapping) を使用してディスク名を変数 *$DiskMapping* に設定し、次に [`DiskToUpdate`] パラメーターを使用して変数を渡します。 <br/> <br/> **注:** [Set-AzMigrateDiskMapping](/powershell/module/az.migrate/set-azmigratediskmapping) で使用するディスク ID は、 [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) コマンドレットを使用して取得したディスクの一意識別子 (UUID) です。 
+NIC 名 | 省略可能 | [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) を使用して変数 *$NICMapping* に NIC 名を設定し、次に [`NICToUpdate`] パラメーターを使用して変数を渡します。
 
 [Get-AzMigrateServerReplication](/powershell/module/az.migrate/get-azmigrateserverreplication) コマンドレットにより、操作の状態を監視するために追跡できるジョブが返されます。
 
 ```azurepowershell-interactive
 # List replicating VMs and filter the result for selecting a replicating VM. This cmdlet will not return all properties of the replicating VM.
 $ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -MachineName MyTestVM
+```
 
+```azurepowershell-interactive
 # Retrieve all properties of a replicating VM 
 $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 
@@ -347,20 +366,48 @@ $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $Replicating
 Write-Output $ReplicatingServer.ProviderSpecificDetail.VMNic
 ```
 
-次の例では、最初の NIC をプライマリにして、それに静的 IP を割り当てることによって、NIC 構成を更新します。 移行対象の 2 番目の NIC を破棄し、ターゲット VM の名前とサイズを更新します。
+次の例では、最初の NIC をプライマリにして、それに静的 IP を割り当てることによって、NIC 構成を更新します。 移行対象の 2 番目の NIC を破棄し、ターゲット VM の名前とサイズを更新し、NIC 名をカスタマイズします。
 
 ```azurepowershell-interactive
 # Specify the NIC properties to be updated for a replicating VM.
 $NicMapping = @()
-$NicMapping1 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[0].NicId -TargetNicIP ###.###.###.### -TargetNicSelectionType Primary
-$NicMapping2 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[1].NicId -TargetNicSelectionType DoNotCreate
+$NicMapping1 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[0].NicId -TargetNicIP ###.###.###.### -TargetNicSelectionType Primary TargetNicName "ContosoNic_1"
+$NicMapping2 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[1].NicId -TargetNicSelectionType DoNotCreate - TargetNicName "ContosoNic_2"
 
 $NicMapping += $NicMapping1
 $NicMapping += $NicMapping2
-
+```
+```azurepowershell-interactive
 # Update the name, size and NIC configuration of a replicating server
 $UpdateJob = Set-AzMigrateServerReplication -InputObject $ReplicatingServer -TargetVMSize Standard_DS13_v2 -TargetVMName MyMigratedVM -NicToUpdate $NicMapping
+```
 
+次の例では、ディスク名をカスタマイズします。
+
+```azurepowershell-interactive
+# Customize the Disk names for a replicating VM
+$OSDisk = Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1" 
+$DataDisk1= Set-AzMigrateDiskMapping -DiskID "6000C292-79b9-bbdc-fb8a-f1fa8dbeff84" -DiskName "ContosoDisk_2" 
+$DiskMapping = $OSDisk, $DataDisk1 
+```
+
+```azurepowershell-interactive
+# Update the disk names for a replicating server
+$UpdateJob = Set-AzMigrateServerReplication InputObject $ReplicatingServer DiskToUpdate $DiskMapping 
+ ```
+
+次の例では、レプリケートする VM にタグを追加します。
+
+```azurepowershell-interactive
+# Update all tags across virtual machines, disks, and NICs.
+Set-azmigrateserverreplication UpdateTag $UpdateTag UpdateTagOperation Merge/Replace/Delete
+
+# Update virtual machines tags
+Set-azmigrateserverreplication UpdateVMTag $UpdateVMTag UpdateVMTagOperation Merge/Replace/Delete 
+```
+次の例を使用して、ジョブの状態を追跡します。
+
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($UpdateJob.State -eq 'InProgress') -or ($UpdateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -370,8 +417,6 @@ while (($UpdateJob.State -eq 'InProgress') -or ($UpdateJob.State -eq 'NotStarted
 # Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $UpdateJob.State
 ```
-
-
 
 ## <a name="11-run-a-test-migration"></a>11.テスト移行を実行する
 
@@ -386,10 +431,12 @@ Write-Output $UpdateJob.State
 ```azurepowershell-interactive
 # Retrieve the Azure virtual network created for testing
 $TestVirtualNetwork = Get-AzVirtualNetwork -Name MyTestVirtualNetwork
-
+```
+```azurepowershell-interactive
 # Start test migration for a replicating server
 $TestMigrationJob = Start-AzMigrateTestMigration -InputObject $ReplicatingServer -TestNetworkID $TestVirtualNetwork.Id
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($TestMigrationJob.State -eq 'InProgress') -or ($TestMigrationJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -405,7 +452,8 @@ Write-Output $TestMigrationJob.State
 ```azurepowershell-interactive
 # Clean-up test migration for a replicating server
 $CleanupTestMigrationJob = Start-AzMigrateTestMigrationCleanup -InputObject $ReplicatingServer
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($CleanupTestMigrationJob.State -eq "InProgress") -or ($CleanupTestMigrationJob.State -eq "NotStarted")){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -425,7 +473,8 @@ Write-Output $CleanupTestMigrationJob.State
 ```azurepowershell-interactive
 # Start migration for a replicating server and turn off source server as part of migration
 $MigrateJob = Start-AzMigrateServerMigration -InputObject $ReplicatingServer -TurnOffSourceServer
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -443,7 +492,8 @@ Write-Output $MigrateJob.State
    ```azurepowershell-interactive
    # Stop replication for a migrated server
    $StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $ReplicatingServer
-
+   ```
+   ```azurepowershell-interactive
    # Track job status to check for completion
    while (($StopReplicationJob.State -eq 'InProgress') -or ($StopReplicationJob.State -eq 'NotStarted')){
            #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -468,9 +518,9 @@ Write-Output $MigrateJob.State
     - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細については、こちらを参照してください](../backup/quick-backup-vm-portal.md)。
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
-    - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
+    - [Microsoft Defender for Cloud のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用し、インバウンド トラフィック アクセスをロックダウンし、制限します。
     - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
-    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
+    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
--  [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) をデプロイして、リソースの使用率と消費量を監視します。
+-  [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) をデプロイして、リソースの使用率と消費量を監視します。

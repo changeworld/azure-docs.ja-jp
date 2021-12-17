@@ -1,17 +1,17 @@
 ---
 title: カスタマー マネージド キーを使用して Azure HPC Cache 内のデータを暗号化する
 description: 既定の Microsoft のマネージド暗号化キーを使用する代わりに、Azure Key Vault と Azure HPC Cache を使用して暗号化キーへのアクセスを制御する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/20/2020
-ms.author: v-erkel
-ms.openlocfilehash: 36ce494c7fd51a1341834d5c231e32e60c5a32b9
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.date: 07/15/2021
+ms.author: femila
+ms.openlocfilehash: 87f80d77f1b2768291532c216ff99b892ba8f12a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751996"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019953"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache にカスタマー マネージド暗号化キーを使用する
 
@@ -25,10 +25,17 @@ Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを�
 Azure HPC Cache にカスタマー マネージド キーの暗号化を有効にするには、次の 3 つの手順を行います。
 
 1. キーを格納する Azure Key Vault を設定します。
-1. Azure HPC Cache を作成するときに、カスタマー マネージド キーの暗号化を選択し、使用するキー コンテナーとキーを指定します。
-1. キャッシュが作成されたら、それに対してキー コンテナーへのアクセスを承認します。
+1. Azure HPC Cache を作成するときに、カスタマー マネージド キーの暗号化を選択し、使用するキー コンテナーとキーを指定します。 必要に応じて、Key Vault へのアクセスに使用するキャッシュのマネージド ID を指定します。
 
-暗号化は、新しく作成したキャッシュから認証してからでないと完全には設定されません (手順 3)。 これは、キー コンテナーにキャッシュの ID を渡して、認証されたユーザーにする必要があるためです。 キャッシュが作成されるまで ID は存在しないため、キャッシュを作成する前にこれを行うことはできません。
+   この手順で行った選択によっては、手順 3 を省略できる場合があります。 詳細については、「[キャッシュのマネージド ID オプションを選択する](#choose-a-managed-identity-option-for-the-cache)」を参照してください。
+
+1. Key Vault アクセスで構成されていない **システム割り当てマネージド ID** または **ユーザー割り当て ID** を使用する場合: 新しく作成されたキャッシュにアクセスして、Key Vault へのアクセスを承認します。
+
+   マネージド ID がまだ Azure Key Vault へのアクセス権を持っていない場合、新しく作成されたキャッシュからこれを承認する (手順 3) までは、暗号化は完全には設定されません。
+
+   システム マネージド ID を使用する場合は、キャッシュの作成時に ID が作成されます。 これは、キー コンテナーにキャッシュの ID を渡して、キャッシュの作成後、許可されているユーザーにする必要があるためです。
+
+   既にキー コンテナーへのアクセス権を持っているユーザー マネージド ID を割り当てる場合は、この手順を省略できます。
 
 キャッシュを作成したら、カスタマー マネージド キーと Microsoft のマネージド キーを切り換えることはできません。 ただし、キャッシュでカスタマー マネージド キーを使用している場合は、必要に応じて暗号化キー、キーのバージョン、キー コンテナーを[変更](#update-key-settings)することができます。
 
@@ -56,7 +63,26 @@ Azure HPC Cache を使用するには、キー コンテナーとキーがこれ
 
 * Azure HPC Cache を作成するユーザーは、[Key Vault の共同作成者ロール](../role-based-access-control/built-in-roles.md#key-vault-contributor)と同等のアクセス許可を持っている必要があります。 Azure Key Vault を設定および管理するには、同じアクセス許可が必要です。
 
-  詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/general/security-overview.md)」を参照してください。
+  詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/general/security-features.md)」を参照してください。
+
+## <a name="choose-a-managed-identity-option-for-the-cache"></a>キャッシュのマネージド ID オプションを選択する
+<!-- check for cross-references from here and create -->
+
+Azure HPC Cache では、そのマネージド ID 資格情報を使用してキー コンテナーに接続します。
+
+Azure HPC Cache では、次の 2 種類のマネージド ID を使用できます。
+
+* **システム割り当て** マネージド ID - 自動的に作成されるキャッシュの一意の ID。 このマネージド ID は、Azure HPC Cache が存在している場合にのみ存在し、直接管理または変更することはできません。
+
+* **ユーザー割り当て** マネージド ID - キャッシュとは別に管理するスタンドアロン ID 資格情報。 必要なアクセス権を持つユーザー割り当てマネージド ID を構成して、複数の Azure HPC Cache で使用できます。
+
+作成時にキャッシュにマネージド ID を割り当てないと、Azure によって、キャッシュにシステム割り当てマネージド ID が自動的に作成されます。
+
+ユーザー割り当てマネージド ID を使用すると、既にキー コンテナーへのアクセス権を持っている ID を指定できます。 (たとえば、Key Vault アクセス ポリシーに追加されているか、アクセスを許可する Azure RBAC ロールがある場合です)。システム割り当て ID を使用する場合、またはアクセスが許可されていないマネージド ID を指定する場合は、作成後にキャッシュからアクセスを要求する必要があります。 これは、[手順 3](#3-authorize-azure-key-vault-encryption-from-the-cache-if-needed) で以下に説明されている手動の手順です。
+
+* [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の詳細を確認してください。
+
+* [Azure Key Vault の基礎](../key-vault/general/basic-concepts.md)の学習
 
 ## <a name="1-set-up-azure-key-vault"></a>1.Azure Key Vault を設定する
 
@@ -76,6 +102,8 @@ Azure HPC Cache を作成する際には、暗号化キーのソースを指定�
 > [!TIP]
 > **[ディスク暗号化キー]** ページが表示されない場合は、[サポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault)のいずれかにキャッシュがあることを確認します。
 
+![完了したディスク暗号化キー画面のスクリーンショット (ポータルのキャッシュ作成インターフェイスの一部)。](media/customer-keys-populated.png)
+
 キャッシュを作成するユーザーは、[Key Vault の共同作成者ロール](../role-based-access-control/built-in-roles.md#key-vault-contributor)以上の権限を持っている必要があります。
 
 1. ボタンをクリックして、マネージド キーをプライベートに有効にします。 この設定を変更すると、キー コンテナーの設定が表示されます。
@@ -92,28 +120,40 @@ Azure HPC Cache を作成する際には、暗号化キーのソースを指定�
 
 1. 選択したキーのバージョンを指定します。 バージョン管理の詳細については、[Azure Key Vault のドキュメント](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)を参照してください。
 
+これらの設定は省略可能です。
+
+* [自動キー ローテーション](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys)を使用する場合は、 **[Always use current key version]\(常に現在のキーバージョンを使用する\)** チェックボックスをオンにします。
+
+* このキャッシュに特定のマネージド ID を使用する場合は、 **[マネージド ID]** セクションで **[ユーザー割り当て]** を選択し、使用する ID を選択します。 ヘルプを確認するには、[マネージド ID に関するドキュメント](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)を参照してください。
+
+  > [!TIP]
+  > キー コンテナーにアクセスするように既に構成されている ID を渡した場合、ユーザー割り当てマネージド ID を使用すると、キャッシュの作成を簡単に行うことができます。 システム割り当てマネージド ID を使用する場合は、キャッシュを作成した後に、キー コンテナーを使用するために新しく作成されたシステム割り当て ID を承認するように、追加の手順を実行する必要があります。
+
+  > [!NOTE]
+  > キャッシュを作成した後は、割り当てられた ID は変更できません。
+
 残りの仕様に進み、「[Azure HPC Cache を作成する](hpc-cache-create.md)」の説明に従ってキャッシュを作成します。
 
-## <a name="3-authorize-azure-key-vault-encryption-from-the-cache"></a>3.キャッシュから Azure Key Vault の暗号化を承認する
+## <a name="3-authorize-azure-key-vault-encryption-from-the-cache-if-needed"></a>3. キャッシュから Azure Key Vault の暗号化を承認する (必要に応じて)
 <!-- header is linked from create article, update if changed -->
+
+> [!NOTE]
+> キャッシュを作成したときに Key Vault アクセスを使用してユーザー割り当てマネージド ID を指定した場合、この手順は必要ありません。
 
 数分後に、Azure portal に新しい Azure HPC Cache が表示されます。 **[概要]** ページにアクセスして、Azure Key Vault へのアクセスを承認し、カスタマー マネージド キーの暗号化を有効にします
 
 > [!TIP]
 > キャッシュは、"デプロイが進行中です" のメッセージがクリアされる前に、リソースの一覧に表示される場合があります。 1 - 2 分経過したら、成功の通知を待たずに、ご自分のリソース一覧を確認してください。
-
-この 2 段階のプロセスが必要な理由は、Azure HPC Cache インスタンスでは承認のために Azure Key Vault に渡す ID が必要だからです。 キャッシュ ID は、最初の作成手順が完了するまで存在しません。
-
-> [!NOTE]
+>
 > キャッシュを作成してから 90 分以内に暗号化を承認する必要があります。 この手順を完了しないと、キャッシュがタイムアウトになって失敗します。 失敗したキャッシュは、修正できないため、再作成する必要があります。
 
 キャッシュには、状態 **[Waiting for key]\(キーの待機中\)** が表示されます。 ページの上部にある **[暗号化を有効にする]** ボタンをクリックして、キャッシュに指定したキー コンテナーへのアクセスを承認します。
 
-![[暗号化を有効にする] ボタン (一番上の行) と [状態]: [キーの待機中] が強調表示されている、ポータルのキャッシュの概要ページのスクリーンショット](media/waiting-for-key.png)
+![[暗号化を有効にする] ボタン (一番上の行) と [状態]: [キーの待機中] が強調表示されている、ポータルのキャッシュの概要ページのスクリーンショット。](media/waiting-for-key.png)
 
 暗号化キーの使用をキャッシュに承認するには、 **[暗号化を有効にする]** をクリックして、 **[はい]** ボタンをクリックします。 また、この操作により、キー コンテナーで論理的な削除と消去保護が有効になります (まだ有効になっていない場合)。
 
-![上部に、ユーザーに [はい] をクリックして暗号化を有効にするように求めるバナー メッセージが表示されたポータルのキャッシュの概要ページのスクリーンショット](media/enable-keyvault.png)
+![上部に、ユーザーに [はい] をクリックして暗号化を有効にするように求めるバナー メッセージが表示されたポータルのキャッシュの概要ページのスクリーンショット。](media/enable-keyvault.png)
 
 キャッシュによりキー コンテナーへのアクセスが要求されると、キャッシュ データを格納するディスクを作成および暗号化できるようになります。
 
@@ -125,17 +165,17 @@ Azure HPC Cache を作成する際には、暗号化キーのソースを指定�
 
 カスタマー マネージド キーとシステム マネージド キーの間でキャッシュを変更することはできません。
 
-![Azure portal の [キャッシュ] ページで [設定] > [暗号化] をクリックすると表示される、[カスタマー キーの設定] ページのスクリーンショット](media/change-key-click.png)
+![Azure portal の [キャッシュ] ページで [設定] > [暗号化] をクリックすると表示される、[カスタマー キーの設定] ページのスクリーンショット。](media/change-key-click.png)
 
 **[キーの変更]** リンクをクリックし、 **[Change the key vault, key, or version]\(キー コンテナー、キー、またはバージョンの変更\)** をクリックしてキー セレクターを開きます。
 
-![キー コンテナー、キー、バージョンを選択する 3 つのドロップダウン セレクターがある [Azure Key Vault からのキーの選択] ページのスクリーンショット](media/select-new-key.png)
+![キー コンテナー、キー、バージョンを選択する 3 つのドロップダウン セレクターがある [Azure Key Vault からのキーの選択] ページのスクリーンショット。](media/select-new-key.png)
 
 このキャッシュと同じサブスクリプションと同じリージョンのキー コンテナーがリストに表示されます。
 
 新しい暗号化キーの値を選択したら、 **[選択]** をクリックします。 新しい値を含む確認ページが表示されます。 **[保存]** をクリックして、選択を確定します。
 
-![左上に [保存] ボタンがある確認ページのスクリーンショット](media/save-key-settings.png)
+![左上に [保存] ボタンがある確認ページのスクリーンショット。](media/save-key-settings.png)
 
 ## <a name="read-more-about-customer-managed-keys-in-azure"></a>Azure のカスタマー マネージド キーについて確認する
 

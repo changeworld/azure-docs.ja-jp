@@ -3,16 +3,17 @@ title: Azure Data Factory のデータ管理ゲートウェイによる高可用
 description: この記事では、ノードを追加することでデータ管理ゲートウェイをスケールアウトしたり、1 つのノードで実行できる同時実行ジョブ数を増やすことでスケールアップしたりできる方法について説明します。
 author: nabhishek
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: ad34ed14682d729157f45e67eb3e0d3bb3eb39b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f2be1ca924ede9b6f252b8c1d6bc4cfedfd6daf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391730"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262206"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - 高可用性とスケーラビリティ (プレビュー)
 > [!NOTE]
@@ -40,7 +41,7 @@ ms.locfileid: "100391730"
 ## <a name="architecture"></a>Architecture 
 次の図は、Data Management Gateway のスケーラビリティと可用性の機能について、アーキテクチャの概要を示しています。 
 
-![Data Management Gateway - 高可用性とスケーラビリティ](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png" alt-text="Data Management Gateway - 高可用性とスケーラビリティ":::
 
 **論理ゲートウェイ** は、Azure Portal でデータ ファクトリに追加するゲートウェイです。 以前は、Data Management Gateway がインストールされているオンプレミスの Windows コンピューター を1 つだけ、論理ゲートウェイと関連付けることができました。 このオンプレミスのゲートウェイ コンピューターは、ノードと呼ばれます。 現在は、最大で **4 つの物理ノード** を論理ゲートウェイと関連付けできます。 複数のノードを備えた論理ゲートウェイは、**マルチノード ゲートウェイ** と呼ばれます。  
 
@@ -61,31 +62,31 @@ ms.locfileid: "100391730"
 
 1. [チュートリアル](data-factory-move-data-between-onprem-and-cloud.md#create-gateway)では、論理ゲートウェイの作成時に、**高可用性とスケーラビリティ** の機能を有効にしてください。 
 
-    ![Data Management Gateway - 高可用性とスケーラビリティの有効化](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-enable-high-availability-scalability.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-enable-high-availability-scalability.png" alt-text="Data Management Gateway - 高可用性とスケーラビリティの有効化":::
 2. **[構成]** ページで、**高速セットアップ** または **手動セットアップ** のいずれかのリンクを使用して、最初のノード (オンプレミスの Windows コンピューター) にゲートウェイをインストールします。
 
-    ![Data Management Gateway - 高速または手動セットアップ](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-express-manual-setup.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-express-manual-setup.png" alt-text="Data Management Gateway - 高速または手動セットアップ":::
 
     > [!NOTE]
     > 高速セットアップ オプションを使用する場合、ノード間の通信は暗号化せずに行われます。 ノード名は、コンピューター名と同じです。 ノード間通信を暗号化する必要がある場合、またはノード名を自分で指定したい場合は、手動セットアップを使用してください。 後からノード名を編集することはできません。
 3. **高速セットアップ** を選択した場合 :
     1. ゲートウェイが正常にインストールされると、次のメッセージが表示されます。
 
-        ![Data Management Gateway - 高速セットアップに成功](media/data-factory-data-management-gateway-high-availability-scalability/express-setup-success.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/express-setup-success.png" alt-text="Data Management Gateway - 高速セットアップに成功":::
     2. [こちらの手順](data-factory-data-management-gateway.md#configuration-manager)に従って、ゲートウェイのデータ管理構成マネージャーを起動します。 ゲートウェイの名前、ノード名、状態などを確認します。
 
-        ![ゲートウェイ名、ノード名、および状態を確認できる場所を示すスクリーンショット。](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png" alt-text="ゲートウェイ名、ノード名、および状態を確認できる場所を示すスクリーンショット。":::
 4. **手動セットアップ** を選択した場合 :
     1. Microsoft ダウンロード センターからインストール パッケージをダウンロードして実行し、お使いのコンピューターにゲートウェイをインストールします。
     2. **[構成]** ページから、**認証キー** を使用してゲートウェイを登録します。
     
-        ![認証キーを使用する場所を示すスクリーンショット。](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-authentication-key.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-authentication-key.png" alt-text="認証キーを使用する場所を示すスクリーンショット。":::
     3. **[新しいゲートウェイ ノード**] ページで、ゲートウェイ ノードに対してカスタムの **名前** を指定できます。 既定では、ノード名はコンピューター名と同じです。    
 
-        ![Data Management Gateway - 名前の指定](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-name.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-name.png" alt-text="Data Management Gateway - 名前の指定":::
     4. 次のページで、**ノード間通信の暗号化を有効にする** かどうかを選択できます。 暗号化を無効にする (既定値) 場合は、 **[スキップ]** をクリックします。
 
-        ![Data Management Gateway - 暗号の有効化](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-node-encryption.png)  
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-node-encryption.png" alt-text="Data Management Gateway - 暗号の有効化":::  
     
         > [!NOTE]
         > 暗号化モードの変更は、論理ゲートウェイにあるゲートウェイ ノードが単一の場合にのみ、サポートされます。 ゲートウェイに複数のノードがある場合に暗号化モードを変更するには、1 つのノード以外のすべてのノードを削除し、暗号化モードを変更してからノードを再追加するという手順になります。
@@ -93,35 +94,35 @@ ms.locfileid: "100391730"
         > TLS/SSL 証明書を使用するための要件一覧については、「[TLS/SSL 証明書の要件](#tlsssl-certificate-requirements)」セクションをご覧ください。 
     5. ゲートウェイが正常にインストールされたら、[構成マネージャーの起動] をクリックします。
     
-        ![手動セットアップ - 構成マネージャーの起動](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)     
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png" alt-text="手動セットアップ - 構成マネージャーの起動":::     
     6. ノード (オンプレミス Windows コンピューター) の Data Management Gateway 構成マネージャーを確認します。接続状態、**ゲートウェイ名**、および **ノード名** が表示されます。  
 
-        ![Data Management Gateway - インストール成功](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png" alt-text="Data Management Gateway - インストール成功":::
 
         > [!NOTE]
-        > Azure VM でゲートウェイをプロビジョニングしている場合は、[こちらの Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-mutiple-vms-with-data-management-gateway)を使用できます。 このスクリプトは、論理ゲートウェイを作成し、Data Management Gateway ソフトウェアがインストールされている VM を設定し、論理ゲートウェイと共に VM を登録します。 
+        > Azure VM でゲートウェイをプロビジョニングしている場合は、[こちらの Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/mutiple-vms-with-data-management-gateway)を使用できます。 このスクリプトは、論理ゲートウェイを作成し、Data Management Gateway ソフトウェアがインストールされている VM を設定し、論理ゲートウェイと共に VM を登録します。 
 6. Azure Portal で、 **[ゲートウェイ]** ページを起動します。 
     1. ポータルにあるデータ ファクトリ ホーム ページで、 **[リンクされたサービス]** をクリックします。
     
-        ![[リンクされたサービス] タイルが強調表示されたスクリーンショット。](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png" alt-text="[リンクされたサービス] タイルが強調表示されたスクリーンショット。":::
     2. **ゲートウェイ** を選択して、 **[ゲートウェイ]** ページを表示します。
     
-        ![データ ファクトリのホーム ページ](media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png" alt-text="データ ファクトリのホーム ページ":::
     4. 次のような **[ゲートウェイ]** ページが表示されます。   
 
-        ![単一のノードを備えたゲートウェイのビュー](media/data-factory-data-management-gateway-high-availability-scalability/gateway-first-node-portal-view.png) 
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/gateway-first-node-portal-view.png" alt-text="単一のノードを備えたゲートウェイのビュー"::: 
 7. ツール バーの **[ノードの追加]** をクリックして、論理ゲートウェイにノードを追加します。 高速セットアップを使用する計画の場合は、ゲートウェイにノードとして追加されるオンプレミス コンピューターから、この手順を実行します。 
 
-    ![Data Management Gateway - ノードの追加メニュー](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png" alt-text="Data Management Gateway - ノードの追加メニュー":::
 8. 手順は、最初のノードの設定とほぼ同じです。 手動インストール オプションを選択した場合は、構成マネージャーの UI を使用してノード名を設定できます。 
 
-    ![構成マネージャー - 2 番目のゲートウェイのインストール](media/data-factory-data-management-gateway-high-availability-scalability/install-second-gateway.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/install-second-gateway.png" alt-text="構成マネージャー - 2 番目のゲートウェイのインストール":::
 9. ゲートウェイがノードに正常にインストールされると、構成マネージャー ツールに次の画面が表示されます。  
 
-    ![構成マネージャー - 2 番目のゲートウェイを正常にインストール](media/data-factory-data-management-gateway-high-availability-scalability/second-gateway-installation-successful.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/second-gateway-installation-successful.png" alt-text="構成マネージャー - 2 番目のゲートウェイを正常にインストール":::
 10. ポータルで **[ゲートウェイ]** ページを開くと、現時点では 2 つのゲートウェイ ノードが表示されます。 
 
-    ![ポータルで表示されるノードが 2 つのゲートウェイ](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png" alt-text="ポータルで表示されるノードが 2 つのゲートウェイ":::
 11. ゲートウェイ ノードを削除するには、ツールバーで **[ノードの削除]** をクリックして、削除するノードを選択し、ツールバーから **[削除]** をクリックします。 この操作によって、選択したノードがグループから削除されます。 この操作によって、データ管理ゲートウェイ ソフトウェアはノード (オンプレミス Windows コンピューター) からアンインストールされないことに注意してください。 ゲートウェイをアンインストールするには、オンプレミスのコントロール パネルで **[プログラムの追加と削除]** を使用します。 ノードからゲートウェイをアンインストールすると、ポータルでは自動的に削除されます。   
 
 ## <a name="upgrade-an-existing-gateway"></a>既存のゲートウェイのアップグレード
@@ -130,18 +131,18 @@ ms.locfileid: "100391730"
 1. 手順に従い、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から MSI セットアップ パッケージをダウンロードして実行することで、オンプレミス コンピューターのゲートウェイを最新バージョンに更新します。 詳細については、[インストール](data-factory-data-management-gateway.md#installation)のセクションをご覧ください。  
 2. Azure Portal に移動します。 お使いのデータ ファクトリの **[データ ファクトリ] ページ** を起動します。 リンクされたサービス タイルをクリックして、 **[リンクされたサービス] ページ** を起動します。 ゲートウェイを選択して、 **[ゲートウェイ] ページ** を起動します。 次の画像に示すように、 **[プレビュー機能]** を有効にします。 
 
-    ![Data Management Gateway - プレビュー機能の有効化](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png)   
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png" alt-text="Data Management Gateway - プレビュー機能の有効化":::   
 2. ポータルでプレビュー機能を有効にしたら、すべてのページを閉じます。 **[ゲートウェイ] ページ** をもう一度開き、新しいプレビューのユーザー インターフェイス (UI) を表示します。
  
-    ![Data Management Gateway - プレビュー機能の有効化に成功](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview-success.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview-success.png" alt-text="Data Management Gateway - プレビュー機能の有効化に成功":::
 
-    ![Data Management Gateway - UI のプレビュー](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview.png" alt-text="Data Management Gateway - UI のプレビュー":::
 
     > [!NOTE]
     > アップグレード時は、最初のノード名はコンピューターの名前です。 
 3. ノードを 1 つ追加します。 **[ゲートウェイ]** ページで **[ノードの追加]** をクリックします。  
 
-    ![Data Management Gateway - ノードの追加メニュー](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png" alt-text="Data Management Gateway - ノードの追加メニュー":::
 
     前のセクションの手順に従って、ノードを設定します。 
 
@@ -174,7 +175,7 @@ ms.locfileid: "100391730"
 ### <a name="multi-node-gateway-monitoring"></a>マルチノード ゲートウェイを監視する
 Azure Portal では、ゲートウェイ ノードの状態と共に、各ノードでのリソース使用率 (CPU、メモリ、ネットワーク(入力/出力) など) のほぼリアルタイムのスナップショットを表示できます。 
 
-![Data Management Gateway - マルチノードの監視](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png" alt-text="Data Management Gateway - マルチノードの監視":::
 
 **[ゲートウェイ]** ページの **[高度な設定]** を有効にすると、 **[ネットワーク]** (入力/出力)、 **[ロールと資格情報のステータス]** (ゲートウェイの問題のデバッグに役立ちます)、および **[同時実行ジョブ]** (実行中/制限) (パフォーマンス調整時に、状況に応じて変更できます) などの高度なメトリックを確認できます。 次の表に、**ゲートウェイ ノード** 一覧の列の説明を示します。  
 
@@ -189,7 +190,7 @@ CPU 使用率 | ゲートウェイ ノードの CPU 使用率。 この値は、
 同時実行ジョブ (実行中/制限) | 各ノードで実行されるタスクまたはジョブの数。 この値は、ほぼリアルタイムのスナップショットです。 上限は、各ノードの最大の同時実行ジョブ数を表します。 この値は、マシンのサイズに基づいて定義されます。 CPU/ メモリ/ ネットワークは使用率を超えておらず、アクティビティがタイムアウトになっている高度なシナリオでは、上限を引き上げて、同時実行ジョブの実行回数をスケールアップできます。この機能は、単一ノードのゲートウェイでも利用できます (スケーラビリティおよび可用性の機能が無効になっている場合でも、利用できます)。 詳細については、「[スケールに関する考慮事項](#scale-considerations)」セクションをご覧ください。 
 Role | ディスパッチャーとワーカーという 2 つのタイプの役割があります。 ノードはすべてワーカーであり、全部がジョブの実行に使用できることを意味します。 ディスパッチャー ノードは 1 つだけです。このノードは、クラウド サービスからタスク/ジョブをプルし、異なるワーカー ノード (自身を含む) にディスパッチするために使用されます。 
 
-![Data Management Gateway - 高度なマルチノード監視](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-advanced.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-advanced.png" alt-text="Data Management Gateway - 高度なマルチノード監視":::
 
 ### <a name="gateway-status"></a>ゲートウェイの状態
 
@@ -216,9 +217,9 @@ Needs Registration\(登録が必要\) | この論理ゲートウェイには、�
 ### <a name="pipeline-activities-monitoring"></a>パイプライン/ アクティビティの監視
 Azure Portal では、パイプライン監視のエクスペリエンスにより細かなノード レベルの詳細を提供しています。 たとえば、どのアクティビティがどのノードで実行されたかを示します。 この情報は、ネットワーク調整に起因すると言われる、特定のノードでのパフォーマンスの問題を把握するうえで役立つ場合があります。 
 
-![Data Management Gateway - パイプラインのマルチノード監視](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-pipelines.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-pipelines.png" alt-text="Data Management Gateway - パイプラインのマルチノード監視":::
 
-![Data Management Gateway - パイプラインの詳細](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-pipeline-details.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-pipeline-details.png" alt-text="Data Management Gateway - パイプラインの詳細":::
 
 ## <a name="scale-considerations"></a>スケールに関する考慮事項
 
@@ -228,7 +229,7 @@ Azure Portal では、パイプライン監視のエクスペリエンスによ�
 ### <a name="scale-up"></a>スケールアップ
 使用可能なメモリと CPU が効果的に活用されていないが、アイドル容量は 0 になっている場合は、ノードで実行できる同時実行ジョブの数を増やすことで、スケールアップを行うことができます。 また、ゲートウェイが過負荷になっているために、アクティビティがタイムアウトしている場合も、スケールアップを検討します。 次の画像に示すように、ノードの最大容量を増やすことができます。 最初は容量を 2 倍にすることをお勧めします。  
 
-![Data Management Gateway - スケールに関する考慮事項](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-scale-considerations.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-scale-considerations.png" alt-text="Data Management Gateway - スケールに関する考慮事項":::
 
 
 ## <a name="known-issuesbreaking-changes"></a>既知の問題/重大な変更点

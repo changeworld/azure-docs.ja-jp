@@ -4,12 +4,12 @@ description: Azure HDInsight 上で Apache Kafka のワークロードを最適�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/19/2019
-ms.openlocfilehash: d24527efe6adce6f16b7c890f23c755545f5d5a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5c149499fe21940e58c795dbed2407c046ac43d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98935880"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044423"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight クラスターのパフォーマンスの最適化
 
@@ -43,7 +43,7 @@ Apache Kafka のプロデューサーは、単一のストレージ パーティ
 
 プロデューサーが必要な `acks` 構成では、書き込み要求が完了したと見なされる前に、パーティション リーダーによって要求される確認の数を判別します。 この設定はデータの信頼性に影響し、`0`、`1`、または`-1` の値を取ります。 値 `-1` は、書き込みが完了する前に、確認をすべてのレプリカから受け取る必要があることを意味します。 `acks = -1` を設定すると、データ損失に対する保証は高くなりますが、待ち時間が長くなりスループットが低下することにもなります。 アプリケーションの要件によりさらに高いスループットが求められる場合は、`acks = 0` または `acks = 1` の設定を試みてください。 一部のレプリカを確認しないと、データの信頼性が低くなる可能性があることに留意してください。
 
-### <a name="compression"></a>圧縮
+### <a name="compression"></a>[圧縮]
 
 Kafka プロデューサーは、メッセージをブローカーに送信する前に圧縮するように構成できます。 `compression.type` 設定は、使用する圧縮コーデックを指定します。 サポートされている圧縮コーデックは、「gzip」、「snappy」、「lz4」です。 圧縮には利点があり、ディスク容量の制限がある場合には考慮する必要があります。
 
@@ -53,7 +53,7 @@ Kafka プロデューサーは、メッセージをブローカーに送信す�
 
 ## <a name="broker-settings"></a>ブローカー設定
 
-次のセクションでは、Kafka ブローカーのパフォーマンスを最適化するための、いくつかの最も重要な設定を強調表示します。 すべてのブローカーの設定の詳細な説明については、「[Apache Kafka documentation on producer configurations](https://kafka.apache.org/documentation/#producerconfigs)」(プロデューサー構成に関する Apache Kafka ドキュメント) を参照してください。
+次のセクションでは、Kafka ブローカーのパフォーマンスを最適化するための、いくつかの最も重要な設定を強調表示します。 すべてのブローカーの設定の詳細な説明については、[Apache Kafka ドキュメントのブローカー構成](https://kafka.apache.org/documentation/#brokerconfigs)に関するページを参照してください。
 
 ### <a name="number-of-disks"></a>ディスクの数
 

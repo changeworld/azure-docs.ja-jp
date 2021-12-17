@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - ExpressRoute を使用した Azure ネットワークへのプライベート クラウドの接続
 description: ExpressRoute を使用して CloudSimple プライベート クラウド環境を Azure 仮想ネットワークに接続する方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 98eec6b48d2b02c6eb7f6faea38994a9176bcf87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76f1a861ff33f852a275e38c83e9320576551b31
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895990"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322685"
 ---
 # <a name="connect-your-cloudsimple-private-cloud-environment-to-the-azure-virtual-network-using-expressroute"></a>ExpressRoute を使用して CloudSimple プライベート クラウド環境を Azure 仮想ネットワークに接続する
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Portal を使用して IoT Hub を作成する | Microsoft Docs
 description: Azure Portal で Azure IoT Hub を作成、管理、および削除する方法。 価格レベル、スケーリング、セキュリティ、およびメッセージングの構成に関する情報が含まれています。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 0a54d0c85902915d2ee62acd8a1d38b8db8b221c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8a605d5ef8bcb44d03e8464400ba96378cc7f8e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92536047"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555321"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub を作成する
 
@@ -30,11 +30,7 @@ ms.locfileid: "92536047"
 
 ## <a name="change-the-settings-of-the-iot-hub"></a>IoT Hub の設定変更
 
-IoT Hub ウィンドウから IoT Hub を作成したら、既存の IoT Hub の設定を変更できます。
-
-![IoT Hub の設定を示すスクリーンショット](./media/iot-hub-create-through-portal/iot-hub-settings-panel.png)
-
-IoT Hub に対して設定できるプロパティをいくつか以下に示します。
+IoT Hub ウィンドウから IoT Hub を作成したら、既存の IoT Hub の設定を変更できます。 IoT Hub に対して設定できるプロパティをいくつか以下に示します。
 
 **価格とスケール**:このプロパティを使用して、別のレベルに移行したり、IoT Hub ユニットの数を設定したりすることができます。 
 
@@ -60,7 +56,7 @@ IoT Hub に対して設定できるプロパティをいくつか以下に示し
 
 **[作成]** をクリックして、この新しく作成されたポリシーを既存のリストに追加します。
 
-特定のアクセス許可によって付与されるアクセスの詳細については、[IoT Hub のアクセス許可に関するセクション](./iot-hub-devguide-security.md#iot-hub-permissions)を参照してください。
+特定のアクセス許可によって付与されるアクセスの詳細については、[IoT Hub のアクセス許可に関するセクション](./iot-hub-dev-guide-sas.md#access-control-and-permissions)を参照してください。
 
 ## <a name="register-a-new-device-in-the-iot-hub"></a>IoT ハブに新しいデバイスを登録する
 

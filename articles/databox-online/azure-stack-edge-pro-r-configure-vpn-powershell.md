@@ -8,12 +8,13 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 66edd4cad5b2f38696ef1df2030687bf4c7d9956
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 750fd8e64c1c42b6b6452ef20041c2b34d5ef287
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102634177"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701200"
 ---
 # <a name="configure-vpn-on-your-azure-stack-edge-pro-r-device-via-azure-powershell"></a>Azure PowerShell を使用して Azure Stack Edge Pro R デバイスで VPM を構成する
 

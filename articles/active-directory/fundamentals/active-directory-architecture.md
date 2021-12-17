@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fcbf6cd22b67f2e3776c78b166da5733e606542
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95996714"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078350"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Azure Active Directory のアーキテクチャの概要
 
@@ -105,11 +105,11 @@ Azure AD の Microsoft Graph API を使ったアプリケーションの書き�
  >[!NOTE]
  >書き込みは直ちに、論理セッションの読み取りが実行されたセカンダリ レプリカにレプリケートされます。
 
-#### <a name="backup-protection"></a>バックアップの保護
+#### <a name="service-level-backup"></a>サービスレベルのバックアップ
 
-Azure AD ディレクトリではユーザーとテナントに関して、利用者の過失で削除された場合でも復元しやすいよう、物理的な削除ではなく論理削除が導入されています。 テナントの管理者は、誤ってユーザーを削除してしまった場合でも、簡単に操作を取り消して、削除したユーザーを復元することができます。
-
-Azure AD では、すべてのデータが毎日バックアップされるので、万一論理的な削除や破損が生じた場合でもデータを確実に復元することができます。 データ層には、エラー訂正コードが採用されています。誤りがないかチェックし、特定のタイプのディスク エラーであれば自動的に修正することが可能です。
+Azure AD にはディレクトリ データの毎日のバックアップが実装されており、サービス全体の問題が発生した場合、これらのバックアップを使用してデータを復元できます。
+ 
+また、ディレクトリには、選択されたオブジェクト型の物理的な削除ではなく、論理的な削除も実装されています。 テナント管理者は、誤って削除したこれらのオブジェクトを、30 日以内であれば元に戻すことができます。 詳細については、[削除されたオブジェクトを復元するための API](/graph/api/directory-deleteditems-restore) に関する記事を参照してください。
 
 #### <a name="metrics-and-monitors"></a>メトリックと監視
 

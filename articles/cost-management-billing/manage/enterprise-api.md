@@ -1,19 +1,20 @@
 ---
 title: Azure Billing Enterprise API
 description: Enterprise Azure の顧客がプログラムで消費データを取り出せるようにする Reporting API について説明します。
-author: mumami
+author: bandersmsft
+ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: reference
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: a1c420eed89b7b45ea6c50345737b8615f39ad8c
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5f5842f264236015d9ecf50906af62505d8677e0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602094"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454126"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>企業ユーザー向けの Reporting API の概要
 

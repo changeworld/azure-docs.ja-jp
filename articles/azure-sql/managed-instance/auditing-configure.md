@@ -12,13 +12,13 @@ f1_keywords:
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 05/26/2020
-ms.openlocfilehash: ae0d9696d869b2a260de643482a9f86c34bcc824
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/21/2021
+ms.openlocfilehash: 5505350cffbda3b84e800b34be7094818fdb125c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575464"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230591"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,6 +27,9 @@ ms.locfileid: "100575464"
 
 - 規定コンプライアンスの維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
 - コンプライアンスを保証するものではありませんが、標準へのコンプライアンスを強化します。 標準コンプライアンスをサポートする Azure プログラムの詳細については、[Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)をご覧ください。ここから最新のコンプライアンス証明書の一覧を入手できます。
+
+> [!IMPORTANT]
+> Azure SQL Database、Azure Synapse、Azure SQL Managed Instance の監査は、可用性とパフォーマンスのために最適化されています。 アクティビティ量が非常に多いか、またはネットワークの負荷が高いときに、Azure SQL Database、Azure Synapse、Azure SQL Managed Instance では、操作の続行を可能にするために、一部の監査イベントが記録されない場合があります。
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Azure Storage に対するサーバー監査の設定
 
@@ -55,7 +58,7 @@ ms.locfileid: "100575464"
       ![BLOB コンテナー構成の作成アイコン](./media/auditing-configure/3_create_container_config.png)
 
     > [!IMPORTANT]
-    > サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成する顧客は、[Azure Storage で提供される手順](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)に従う必要があります。 (不変 BLOB ストレージを構成するときに、 **[さらに追加を許可する]** を選択していることを確認してください)。
+    > サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成する顧客は、[Azure Storage で提供される手順](../../storage/blobs/immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)に従う必要があります。 (不変 BLOB ストレージを構成するときに、 **[さらに追加を許可する]** を選択していることを確認してください)。
   
 3. 監査ログ用のコンテナーを作成した後、それを監査ログ用のターゲットとして構成するには、[T-SQL を使用する](#blobtsql)方法と [SQL Server Management Studio (SSMS) UI を使用する](#blobssms)方法の 2 つがあります。
 
@@ -144,7 +147,10 @@ ms.locfileid: "100575464"
 
      1. **[監査の作成]** ダイアログで **[OK]** をクリックします。
      
-     1. <a id="createspec"></a>BLOB コンテナーを監査ログのターゲットとして構成した後、SQL Server の場合と同様に、サーバー監査仕様またはデータベース監査仕様を作成して有効にします。
+        > [!NOTE]
+        > SQL Server Management Studio の UI を使用して監査を作成すると、SAS キーを含むコンテナーの資格情報が自動的に作成されます。 
+     
+     1.  <a id="createspec"></a>BLOB コンテナーを監査ログのターゲットとして構成した後、SQL Server の場合と同様に、サーバー監査仕様またはデータベース監査仕様を作成して有効にします。
 
    - [サーバー監査仕様の作成 T-SQL ガイド](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [データベース監査仕様の作成 T-SQL ガイド](/sql/t-sql/statements/create-database-audit-specification-transact-sql)
@@ -232,9 +238,9 @@ Azure Monitor ログにより、統合された検索とカスタム ダッシ�
 Azure SQL Managed Instance のデータベースと SQL Server のデータベースにおける監査の主な相違点は、次のとおりです。
 
 - Azure SQL Managed Instance では、監査はサーバー レベルで機能し、Azure BLOB Storage に `.xel` ログ ファイルが保存されます。
-- SQL Server では、監査はサーバー レベルで機能しますが、イベントはファイル システム/Windows イベント ログに保存されます。
+- SQL Server では、監査はサーバー レベルで機能しますが、イベントはファイル システムと Windows イベント ログに保存されます。
 
-マネージド インスタンスの XEvent 監査では、Azure Blob Storage のターゲットがサポートされます。 ファイル ログと Windows ログは **サポートされていません**。
+マネージド インスタンスの XEvent 監査では、Azure Blob Storage のターゲットがサポートされます。 ファイル ログと Windows ログは **サポートされません**。
 
 Azure Blob Storage を監査するための `CREATE AUDIT` 構文の主な相違点は次のとおりです。
 

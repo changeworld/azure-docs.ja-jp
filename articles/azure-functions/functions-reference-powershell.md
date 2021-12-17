@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: a7951543d548696c8de403d7980e1a41b678c6cd
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 297d8af86f22cc588060cb90f327ad6dd335437d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078670"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741387"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -122,7 +122,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 * 出力バインディングがシングルトン値しか受け入れない場合は、2 回目に `Push-OutputBinding` を呼び出した時点でエラーが発生します。
 
-#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` の構文
+#### <a name="push-outputbinding-syntax"></a>Push-OutputBinding の構文
 
 `Push-OutputBinding` の呼び出しに使用できる有効なパラメーターを次に示します。
 
@@ -196,7 +196,7 @@ PS >Push-OutputBinding -Name outQueue -Value @("output #3", "output #4")
 
 キューへの書き込み時には、メッセージに "output #1"、"output #2"、"output #3"、"output #4" という 4 つの値が格納されます。
 
-#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding` コマンドレット
+#### <a name="get-outputbinding-cmdlet"></a>Get-OutputBinding コマンドレット
 
 出力バインディングに現在設定されている値を取得するには、`Get-OutputBinding` コマンドレットを使用できます。 このコマンドレットは、出力バインディングの名前とそれぞれに対応する値を含んだハッシュテーブルを取得します。 
 
@@ -393,6 +393,8 @@ Visual Studio Code や Azure Functions Core Tools などのツールを使用し
 
 現在のバージョンを確認するには、任意の関数から `$PSVersionTable` を出力します。
 
+Azure Functions のランタイム サポート ポリシーの詳細については、こちらの[記事](./language-support-policy.md)を参照してください。
+
 ### <a name="running-local-on-a-specific-version"></a>特定のバージョンでのローカルな実行
 
 ローカルで実行する場合、Azure Functions ランタイムは既定で PowerShell Core 6 を使用します。 代わりに PowerShell 7 を使用してローカルで実行するには、プロジェクト ルートの local.setting.json ファイルの `Values` 配列に設定 `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"` を追加する必要があります。 PowerShell 7 でローカルに実行する場合、local.settings.json ファイルは次の例のようになります。 
@@ -411,6 +413,7 @@ Visual Studio Code や Azure Functions Core Tools などのツールを使用し
 ### <a name="changing-the-powershell-version"></a>PowerShell のバージョンの変更
 
 PowerShell Core 6 から PowerShell 7 にアップグレードできるようにするには、関数アプリがバージョン 3.x で実行されている必要があります。 これを行う方法については、「[現在のランタイム バージョンの表示と更新](set-runtime-version.md#view-and-update-the-current-runtime-version)」を参照してください。
+
 
 関数アプリで使用される PowerShell のバージョンを変更するには、次のステップに従います。 これは、Azure portal または PowerShell を使用して行うことができます。
 
@@ -462,21 +465,47 @@ Functions では、依存関係の管理に [PowerShell ギャラリー](https:/
 
 requirements.psd1 ファイルを更新すると、更新されたモジュールは、再起動後にインストールされます。
 
-> [!NOTE]
-> 管理対象の依存関係では、モジュールをダウンロードするときに、 www.powershellgallery.com にアクセスする必要があります。 ローカルで実行する場合は、必要なファイアウォール規則を追加して、ランタイムがこの URL にアクセスできることを確認してください。
+### <a name="target-specific-versions"></a>特定のバージョンをターゲットにする
 
-> [!NOTE]
-> 現在、管理対象の依存関係では、対話形式、または `Install-Module` を呼び出すときに `-AcceptLicense` スイッチを指定する方法でライセンスを受け入れるモジュールをサポートしていません。
+requirements.psd1 ファイルで、モジュールの特定のバージョンをターゲットにすることが必要な場合があります。 たとえば、含まれている Az モジュールのものよりも古いバージョンの Az.Accounts を使用したい場合は、次の例に示すように、特定のバージョンをターゲットにする必要があります。 
 
-次のアプリケーション設定を使用して、管理対象の依存関係をダウンロードしてインストールする方法を変更できます。 アプリのアップグレードは `MDMaxBackgroundUpgradePeriod` 以内に開始され、アップグレード プロセスはほぼ `MDNewSnapshotCheckPeriod` 以内に完了します。
+```powershell
+@{
+    'Az.Accounts' = '1.9.5'
+}
+```
+
+この場合、次の例のように、profile.ps1 ファイルの先頭に import ステートメントを追加する必要もあります。
+
+```powershell
+Import-Module Az.Accounts -RequiredVersion '1.9.5'
+```
+
+このようにすると、関数の開始時に、古いほうのバージョンの Az.Account モジュールが最初に読み込まれます。
+
+### <a name="dependency-management-considerations"></a>依存関係の管理に関する考慮事項
+
+依存関係の管理を使用するときは、次の点を考慮してください。
+
++ 管理対象の依存関係では、モジュールをダウンロードするときに <https://www.powershellgallery.com> にアクセスする必要があります。 ローカルで実行する場合は、必要なファイアウォール規則を追加して、ランタイムがこの URL にアクセスできることを確認してください。
+
++ 現在、管理対象の依存関係では、対話形式、または `Install-Module` を呼び出すときに `-AcceptLicense` スイッチを指定する方法でライセンスを受け入れるモジュールをサポートしていません。
+
+### <a name="dependency-management-app-settings"></a>依存関係管理アプリの設定
+
+次のアプリケーション設定を使用して、管理対象の依存関係をダウンロードしてインストールする方法を変更できます。 
 
 | 関数アプリ設定              | 既定値             | 説明                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 日)     | 各 PowerShell ワーカー プロセスは、そのプロセスの開始時に PowerShell ギャラリーでモジュールのアップグレードのチェックを開始し、その後は `MDMaxBackgroundUpgradePeriod` ごとにチェックします。 PowerShell ギャラリーで利用可能になった新しいモジュール バージョンは、ファイル システムにインストールされ、PowerShell ワーカーが使用できるになります。 この値を小さくすると、関数アプリは新しいモジュール バージョンを早く取得できますが、アプリ リソースの使用量 (ネットワーク I/O、CPU、ストレージ) も増加します。 この値を大きくすると、アプリ リソースの使用量は減少しますが、アプリへの新しいモジュール バージョンの配信が遅れる可能性があります。 | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 時間)       | 新しいモジュール バージョンがファイル システムにインストールされたら、すべての PowerShell ワーカー プロセスを再起動する必要があります。 PowerShell ワーカーを再起動すると、現在の関数の実行が中断される可能性があるため、アプリの可用性がその影響を受けます。 すべての PowerShell ワーカー プロセスが再起動されるまで、関数呼び出しでは、前のモジュール バージョンまたは新しいモジュール バージョンのいずれかが使用される可能性があります。 すべての PowerShell ワーカーの再起動は `MDNewSnapshotCheckPeriod` 以内に完了します。 この値を大きくすると、中断の頻度は低くなりますが、関数呼び出しで、前のモジュール バージョンまたは新しいモジュール バージョンのいずれかが非決定的に使用される期間が長くなることもあります。 |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 日)     | ワーカーの頻繁な再起動によってモジュールのアップグレードが過剰にならないように、任意のワーカーで直近 `MDMinBackgroundUpgradePeriod` 以内にモジュールのアップグレード確認が開始されているときは、その確認は行われません。 |
+| **MDMaxBackgroundUpgradePeriod**      | `7.00:00:00` (7 日)     | PowerShell 関数アプリのバックグラウンド更新期間を制御します。 詳細については、[MDMaxBackgroundUpgradePeriod](functions-app-settings.md#mdmaxbackgroundupgradeperiod) を参照してください。 | 
+| **MDNewSnapshotCheckPeriod**         | `01:00:00` (1 時間)       | 管理対象の依存関係のアップグレードがインストールされているかどうかを各 PowerShell ワーカーが確認する頻度を指定します。 詳細については、[MDNewSnapshotCheckPeriod](functions-app-settings.md#mdnewsnapshotcheckperiod) を参照してください。|
+| **MDMinBackgroundUpgradePeriod**      | `1.00:00:00` (1 日)     | 前回のアップグレード チェック後に次のアップグレード チェックが開始されるまでの期間。 詳細については、[MDMinBackgroundUpgradePeriod](functions-app-settings.md#mdminbackgroundupgradeperiod) を参照してください。|
 
-独自のカスタム モジュールを利用する方法が、通常の方法とは若干異なります。
+基本的に、アプリのアップグレードは `MDMaxBackgroundUpgradePeriod` 以内に開始され、アップグレード プロセスはほぼ `MDNewSnapshotCheckPeriod` 以内に完了します。
+
+## <a name="custom-modules"></a>カスタム モジュール
+
+Azure Functions で独自のカスタム モジュールを利用する方法は、PowerShell で利用する場合の通常の方法とは異なります。
 
 ローカル コンピューターでは、モジュールは、`$env:PSModulePath` にあるグローバルに利用できるフォルダーのいずれかにインストールされます。 Azure で実行されているときは、お使いのマシンにインストールされたモジュールにアクセスできません。 つまり、PowerShell 関数アプリの `$env:PSModulePath` は、通常の PowerShell スクリプトの `$env:PSModulePath` とは異なります。
 
@@ -485,13 +514,12 @@ Functions では、`PSModulePath` に次の 2 つのパスが存在します。
 * 関数アプリのルートに存在する `Modules` フォルダー。
 * PowerShell 言語ワーカーによって制御される `Modules` フォルダーのパス。
 
-
-### <a name="function-app-level-modules-folder"></a>関数アプリレベルの `Modules` フォルダー
+### <a name="function-app-level-modules-folder"></a>関数アプリレベルの modules フォルダー
 
 カスタム モジュールを使用するには、関数が依存しているモジュールを `Modules` フォルダーに置きます。 このフォルダーにあるモジュールは、自動的に Functions Runtime から利用できる状態になります。 関数アプリ内のどの関数でもこれらのモジュールを使用できます。 
 
 > [!NOTE]
-> requirements.psd1 ファイルで指定されているモジュールは、自動的にダウンロードされてパスに組み込まれるため、modules フォルダーに含める必要はありません。 これらは、ローカルでは `$env:LOCALAPPDATA/AzureFunctions` フォルダーに、クラウドで実行されるときは `/data/ManagedDependencies` フォルダーに格納されます。
+> [requirements.psd1](#dependency-management) ファイルで指定されているモジュールは、自動的にダウンロードされてパスに組み込まれるため、modules フォルダーに含める必要はありません。 これらは、ローカルでは `$env:LOCALAPPDATA/AzureFunctions` フォルダーに、クラウドで実行されるときは `/data/ManagedDependencies` フォルダーに格納されます。
 
 カスタム モジュール機能を利用するには、関数アプリのルートに `Modules` フォルダーを作成します。 関数で使用したいモジュールをこの場所にコピーします。
 
@@ -518,7 +546,7 @@ PSFunctionApp
 
 関数アプリを起動すると、PowerShell 言語ワーカーによりこの `Modules` フォルダーが `$env:PSModulePath` に追加されるため、通常の PowerShell スクリプトと同様に、モジュールの自動読み込みを利用できます。
 
-### <a name="language-worker-level-modules-folder"></a>言語ワーカー レベルの `Modules` フォルダー
+### <a name="language-worker-level-modules-folder"></a>言語ワーカー レベルの modules フォルダー
 
 いくつかのモジュールは、PowerShell 言語ワーカーによってよく使用されます。 これらのモジュールは、`PSModulePath` の最後の位置で定義されます。 
 
@@ -543,7 +571,7 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-ローカルで実行する場合、アプリ設定は [local.settings.json](functions-run-local.md#local-settings-file) プロジェクト ファイルから読み取られます。
+ローカルで実行する場合、アプリ設定は [local.settings.json](functions-develop-local.md#local-settings-file) プロジェクト ファイルから読み取られます。
 
 ## <a name="concurrency"></a>コンカレンシー
 
@@ -573,7 +601,7 @@ PowerShell は、既定では "_シングル スレッド_" のスクリプト�
 
 一部の操作にはかなりの時間がかかる可能性があるため、Azure PowerShell のコンカレンシーには非常に大きな価値があります。 しかし、実際に使用する場合には注意が必要です。 競合状態が発生していると思われる場合は、PSWorkerInProcConcurrencyUpperBound アプリ設定を `1` に設定し、代わりに、コンカレンシーに対して[言語ワーカー プロセス レベルの分離](functions-app-settings.md#functions_worker_process_count)を使用します。
 
-## <a name="configure-function-scriptfile"></a>関数の `scriptFile` を構成する
+## <a name="configure-function-scriptfile"></a>関数の scriptFile を構成する
 
 既定では、PowerShell 関数は `run.ps1` から実行されます。これは、対応する `function.json` と同じ親ディレクトリを共有するファイルです。
 
@@ -651,7 +679,7 @@ PowerShell 関数を使用するときは、以下のセクションに記載さ
 
 [サーバーレス ホスティング モデル](consumption-plan.md)で Azure Functions を開発する際は、コールド スタートを避けて通ることはできません。 "*コールド スタート*" とは、関数アプリの実行が開始されて要求が処理されるまでにかかる時間のことを指します。 従量課金プランでは、非アクティブな期間中に関数アプリがシャットダウンされるため、コールド スタートの発生頻度が高くなります。
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>`Install-Module` を使用せずにモジュールをバンドルする
+### <a name="bundle-modules-instead-of-using-install-module"></a>Install-Module を使用せずにモジュールをバンドルする
 
 スクリプトは、呼び出しのたびに実行されます。 スクリプト内で `Install-Module` を使用することは避けてください。 その代わり、発行前に `Save-Module` を使用します。そうすれば、関数がモジュールをダウンロードする際に生じる無駄な時間をなくすことができます。 コールド スタートが関数に影響を及ぼす場合は、"*常にオン*" に設定された [App Service プラン](dedicated-plan.md)、または [Premium プラン](functions-premium-plan.md)に関数アプリをデプロイすることを検討してください。
 

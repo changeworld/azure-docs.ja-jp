@@ -5,29 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 06/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccd53294598be8103b7ce9774e65aef802e79205
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85554922"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618079"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイス
 
-10 年以上にわたって、多くの組織は、オンプレミスの Active Directory へのドメインの参加を使用して、次の操作を実行できるようにしてきました。
+既存の Active Directory 実装がある組織は、Hybrid Azure AD Join を使用したデバイスを実装することで、Azure Active Directory (Azure AD) によって提供される機能の一部を活用できます。 これらのデバイスは、オンプレミスの Active Directory に参加し、Azure Active Directory に登録されます。
 
-- IT 部門が一元化された場所から職場所有のデバイスを管理する。
-- ユーザーが Active Directory の職場または学校アカウントを使用して自分のデバイスにサインインする。
-
-通常、オンプレミスのフットプリントを持つ組織は、イメージ作成方法を利用してデバイスをプロビジョニングし、多くの場合、**Configuration Manager** または **グループ ポリシー(GP)** を使用してそれらを管理します。
-
-環境にオンプレミスの AD フットプリントがあるときに、Azure Active Directory が提供する機能も活用したい場合は、ハイブリッド Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory に参加し、Azure Active Directory に登録されているデバイスです。
+Hybrid Azure AD Join を使用したデバイスには、オンプレミスのドメイン コントローラーへのネットワーク接続が定期的に必要になります。 この接続がない場合、デバイスは使用できなくなります。 この要件に不安がある場合は、デバイスへの [Azure AD 参加](concept-azure-ad-join.md)を検討してください。
 
 | Hybrid Azure AD Join | 説明 |
 | --- | --- |
@@ -57,10 +52,10 @@ ms.locfileid: "85554922"
 
 以下に該当する場合は、ハイブリッド Azure AD 参加済みデバイスを使用します。
 
-- Active Directory コンピューター認証に依存しているこれらのデバイスに展開される Win32 アプリがあります。
+- Windows 7 および 8.1 を実行しているダウンレベルのデバイスをサポートします。
 - 引き続き、グループ ポリシーを使用して、デバイス構成を管理したいと思っています。
 - 引き続き、既存のイメージング ソリューションを使用して、デバイスをデプロイして構成したいと思っています。
-- Windows 10 に加え、ダウンレベルの Windows 7 および 8.1 デバイスをサポートする必要があります
+- Active Directory コンピューター認証に依存しているこれらのデバイスに展開される Win32 アプリがあります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,13 +3,13 @@ title: Visual Studio を使用する Azure Functions の開発
 description: Azure Functions Tools for Visual Studio 2019 を使用して、Azure Functions を開発およびテストする方法を説明します。
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: 2cba0a9ad63e319af0a5eaa1c1c018c3b285c28a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 12/10/2020
+ms.openlocfilehash: a8be86708f2f3a8394b1e6e17d70a9d9038dc6e2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765577"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039280"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -73,7 +73,7 @@ Azure Functions プロジェクトを作成した後、プロジェクト テン
 
 * **host.json**:Functions のホストを構成できます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
 
-* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 Azure で実行している場合、これらの設定は使用されません。 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
+* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 Azure で実行している場合、これらの設定は使用されません。 詳細については、「[ローカル設定ファイル](#local-settings)」を参照してください。
 
     >[!IMPORTANT]
     >local.settings.json ファイルにはシークレットを含めることができるため、それをプロジェクト ソース管理から除外する必要があります。 このファイルの **[出力ディレクトリにコピー]** 設定が **[新しい場合はコピーする]** に設定されていることを確認します。 
@@ -124,7 +124,7 @@ C# クラス ライブラリ関数では、関数で使用されるバインド�
 
     ![Queue storage トリガー関数を作成する](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
-    このトリガーの例では、`QueueStorage` という名前のキーと共に接続文字列を使用します。 この接続文字列の設定は、[local.settings.json ファイル](functions-run-local.md#local-settings-file)で定義します。
+    このトリガーの例では、`QueueStorage` という名前のキーと共に接続文字列を使用します。 この接続文字列の設定は、[local.settings.json ファイル](functions-develop-local.md#local-settings-file)で定義します。
 
 4. 新しく追加されたクラスを確認します。 `FunctionName` 属性で属性が指定された静的 `Run()` メソッドを確認します。 この属性は、メソッドが関数のエントリ ポイントであることを示します。
 
@@ -164,7 +164,7 @@ C# クラス ライブラリ関数では、関数で使用されるバインド�
 
    詳細については、「[Visual Studio を使用する C# クラス ライブラリ](./functions-bindings-register.md#local-csharp)」を参照してください。 バインド固有の NuGet パッケージの要件については、バインドの参照記事で確認します。 たとえば、Event Hubs トリガーのパッケージ要件については、[Event Hubs のバインドの参照記事](functions-bindings-event-hubs.md)を参照してください。
 
-3. バインドが必要なアプリ設定がある場合は、[ローカル設定ファイル](functions-run-local.md#local-settings-file)の `Values` コレクションに追加します。 
+3. バインドが必要なアプリ設定がある場合は、[ローカル設定ファイル](functions-develop-local.md#local-settings-file)の `Values` コレクションに追加します。 
 
    この関数では、ローカルで実行するときにこれらの値を使用します。 関数が Azure の Function App で実行される場合は、[Function App の設定](#function-app-settings)が使用されます。
 
@@ -184,6 +184,7 @@ C# クラス ライブラリ関数では、関数で使用されるバインド�
         }
     }
     ```
+
    Queue Storage への接続は、`AzureWebJobsStorage` 設定から取得されます。 詳しくは、特定のバインドの参照記事をご覧ください。 
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]

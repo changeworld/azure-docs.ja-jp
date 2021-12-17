@@ -4,14 +4,14 @@ description: Azure App Service で Linux コンテナーに初めての Ruby ア
 keywords: Azure App Service、Linux、OSS、Ruby、Rails
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
-ms.date: 07/11/2019
+ms.date: 04/27/2021
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: dc64dfa277e97fe7487ce91a140e73b9ec44e086
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: dffb2634b59c54632364d8469244edb6840d7b9d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483539"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435422"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>App Service で Ruby on Rails アプリを作成する
 
@@ -31,31 +31,39 @@ ms.locfileid: "107483539"
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
-ターミナル ウィンドウで、次のコマンドを実行して、サンプル アプリのリポジトリをローカル コンピューターに複製します。
+1. ターミナル ウィンドウで、お使いのローカル コンピューターにサンプル アプリケーションを複製し、サンプル コードを含むディレクトリに移動します。 
 
-```bash
-git clone https://github.com/Azure-Samples/ruby-docs-hello-world
-```
+    ```bash
+    git clone https://github.com/Azure-Samples/ruby-docs-hello-world
+    cd ruby-docs-hello-world
+    ```
+
+1. 既定のブランチが `main` であることを確認します。
+
+    ```bash
+    git branch -m main
+    ```
+    
+    > [!TIP]
+    > App Service では、ブランチ名の変更は必要ありません。 ただし、多くのリポジトリで既定のブランチが `main` に変更されているため、このチュートリアルでは、`main` からリポジトリをデプロイする方法も示します。 詳細については、「[デプロイ ブランチを変更する](deploy-local-git.md#change-deployment-branch)」を参照してください。
 
 ## <a name="run-the-application-locally"></a>ローカルでアプリケーションを実行する
 
-アプリケーションをローカルで実行すると、アプリケーションを Azure にデプロイするとどう表示されるかを把握できます。 ターミナル ウィンドウを開き、`hello-world` ディレクトリに変更し、`rails server` コマンドを使用してサーバーを起動します。
+1. 必要な gem をインストールします。 このサンプルには `Gemfile` が含まれているので、次のコマンドを実行するだけです。
 
-最初の手順では、必要な gem をインストールします。 このサンプルには `Gemfile` が含まれているので、次のコマンドを実行するだけです。
+    ```bash
+    bundle install
+    ```
 
-```bash
-bundle install
-```
+1. gem がインストールされたら、アプリを起動します。
 
-gem がインストールされたら、bundler を使用してアプリを起動します。
+    ```bash
+    bundle exec rails server
+    ```
 
-```bash
-bundle exec rails server
-```
+1. Web ブラウザーで `http://localhost:3000` に移動して、ローカルでアプリケーションをテストします。
 
-Web ブラウザーで `http://localhost:3000` に移動して、ローカルでアプリケーションをテストします。
-
-![構成された Hello World](./media/quickstart-ruby/hello-world-updated.png)
+    ![構成された Hello World](./media/quickstart-ruby/hello-world-updated.png)
 
 [!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
@@ -67,45 +75,70 @@ Web ブラウザーで `http://localhost:3000` に移動して、ローカルで
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
+1. `myAppServicePlan` App Service プランで [Web アプリ](overview.md#app-service-on-linux)を作成します。 
 
-アプリを参照して、新たに作成された、組み込みイメージを使用する Web アプリを確認します。 _&lt;app_name>_ は、Web アプリの名前に置き換えます。
+    Cloud Shell で、[`az webapp create`](/cli/azure/webapp) コマンドを使用することができます。 次の例では、`<app-name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `RUBY|2.6` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes --linux`](/cli/azure/webapp) を実行します。 
 
-```bash
-http://<app_name>.azurewebsites.net
-```
+    ```azurecli-interactive
+    az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime 'RUBY|2.6' --deployment-local-git
+    ```
 
-新しい Web アプリは次のようになります。
+    Web アプリが作成されると、Azure CLI によって次の例のような出力が表示されます。
 
-![スプラッシュ ページ](./media/quickstart-ruby/splash-page.png)
+    <pre>
+    Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git'
+    {
+      "availabilityState": "Normal",
+      "clientAffinityEnabled": true,
+      "clientCertEnabled": false,
+      "cloningInfo": null,
+      "containerSize": 0,
+      "dailyMemoryTimeQuota": 0,
+      "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
+      "deploymentLocalGitUrl": "https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git",
+      "enabled": true,
+      &lt; JSON data removed for brevity. &gt;
+    }
+    </pre>
+    
+    Git デプロイが有効な、空の新しい Web アプリが作成されました。
+
+    > [!NOTE]
+    > Git リモートの URL は `deploymentLocalGitUrl` プロパティに `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git` 形式で出力されます。 この URL は後で必要になるので保存しておいてください。
+    >
+
+1. アプリを参照して、新たに作成された、組み込みイメージを使用する Web アプリを確認します。 _&lt;app_name>_ は、実際の Web アプリの名前に置き換えます。
+
+    ```bash
+    http://<app_name>.azurewebsites.net
+    ```
+
+    新しい Web アプリは次のようになります。
+
+    ![スプラッシュ ページ](./media/quickstart-ruby/splash-page.png)
 
 ## <a name="deploy-your-application"></a>アプリケーションをデプロイする
 
-次のコマンドを実行して、ローカル アプリケーションを Azure Web アプリにデプロイします。
+[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure-no-h.md)] 
 
-```bash
-git remote add azure <Git deployment URL from above>
-git push azure main
-```
+   <pre>
+   remote: Using turbolinks 5.2.0
+   remote: Using uglifier 4.1.20
+   remote: Using web-console 3.7.0
+   remote: Bundle complete! 18 Gemfile dependencies, 78 gems now installed.
+   remote: Bundled gems are installed into `/tmp/bundle`
+   remote: Zipping up bundle contents
+   remote: .......
+   remote: ~/site/repository
+   remote: Finished successfully.
+   remote: Running post deployment command(s)...
+   remote: Deployment successful.
+   remote: App container will begin restart within 10 seconds.
+   To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
+      a6e73a2..ae34be9  main -> main
+   </pre>
 
-リモート デプロイ操作が正しく報告されていることを確認します。 これらのコマンドは、次のテキストに似た出力を生成します。
-
-```bash
-remote: Using turbolinks 5.2.0
-remote: Using uglifier 4.1.20
-remote: Using web-console 3.7.0
-remote: Bundle complete! 18 Gemfile dependencies, 78 gems now installed.
-remote: Bundled gems are installed into `/tmp/bundle`
-remote: Zipping up bundle contents
-remote: .......
-remote: ~/site/repository
-remote: Finished successfully.
-remote: Running post deployment command(s)...
-remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
-To https://<app-name>.scm.azurewebsites.net/<app-name>.git
-   a6e73a2..ae34be9  main -> main
-```
+## <a name="browse-to-the-app"></a>アプリの参照
 
 デプロイが完了したら、Web アプリが再起動するまで約 10 秒待ってから、Web アプリに移動して結果を確認します。
 

@@ -8,25 +8,29 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67e77c2dd08386279beeb06ff9081fa2669afa73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5ec368b0bc53cb70dd948669d855670ee603b12
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102487836"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057402"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Azure Active Directory で Microsoft Graph API を使用してカスタム管理者ロールを割り当てる 
 
 Microsoft Graph API を使って、ユーザー アカウントにロールを割り当てる方法を自動化することができます。 この記事では、roleAssignments に対する POST、GET、DELETE の各操作について説明します。
 
-## <a name="required-permissions"></a>必要なアクセス許可
+## <a name="prerequisites"></a>前提条件
 
-全体管理者または特権ロール管理者アカウントを使用して Azure AD 組織に接続し、ロールの割り当てまたは削除を行います。
+- Azure AD Premium P1 または P2 ライセンス
+- 特権ロール管理者またはグローバル管理者
+- 管理者の同意 (Microsoft Graph API の Graph エクスプローラーを使用する場合)
+
+詳細については、「[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)」をご覧ください。
 
 ## <a name="post-operations-on-roleassignment"></a>RoleAssignment での POST 操作
 
@@ -304,6 +308,7 @@ HTTP/1.1 400 Bad Request
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure AD 管理ロール フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)でご意見をお寄せください
-* ロールと管理者ロールの割り当ての詳細については、[管理者ロールの割り当て](permissions-reference.md)に関するページを参照してください
-* 既定のユーザー アクセス許可については、[既定のゲストとメンバー ユーザーのアクセス許可の比較](../fundamentals/users-default-permissions.md)を参照してください
+* [Azure AD 管理ロール フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)でご意見をお寄せください
+* ロールのアクセス許可の詳細については、「[Azure AD の組み込みロール](permissions-reference.md)」を参照してください
+* 既定のユーザー アクセス許可については、[アクセス許可に関する既定のゲストとメンバー ユーザーの比較](../fundamentals/users-default-permissions.md)に関する記事を参照してください。
+

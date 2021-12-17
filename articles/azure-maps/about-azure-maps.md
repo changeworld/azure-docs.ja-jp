@@ -7,27 +7,25 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 55955f883425651749809da951832484f098aeaf
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 339e6059ae1dd55e55dfe143d8ea4dd5dcbb2236
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256125"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003308"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
 Azure Maps は、最新のマッピング データを使用して、地理的なコンテキストを Web とモバイル アプリケーションに提供する一連の地理空間サービスおよび SDK です。 Azure Maps は以下を提供します。
 
 * 複数のスタイルと衛星画像でベクター マップおよびラスター マップをレンダリングするための REST API。
-* プライベートな屋内マップ データに基づいてマップを作成およびレンダリングするための Creator サービス (プレビュー)。
+* プライベートな屋内マップ データに基づいてマップを作成およびレンダリングするためのクリエーター サービス。
 * 世界中の住所、場所、および目的地を見つけるための検索サービス。
 * ポイント間、マルチポイント、マルチポイント最適化、等時線、電気自動車、商用車、影響を受ける交通、マトリックス ルーティングなど、さまざまなルーティングのオプション。
 * リアルタイムの交通情報を必要とするアプリケーション向けのトラフィック フロー ビューとインシデント ビュー。
-* 公共の輸送情報を要求する Mobility Service (プレビュー)。さまざまな移動手段とリアルタイムの到着を組み合わせて、ルートを計画します。
-* タイム ゾーンおよび位置情報 (プレビュー) サービス。
-* デジタル海抜モデルを使用した Elevation Service (プレビュー)
+* タイム ゾーンと位置情報サービス。
+* 数値標高モデルを使用した Elevation Service
 * Azure 内でホストされている位置情報を使用した、ジオフェンシング サービスとマッピング データ ストレージ。
 * 地理空間分析による位置情報インテリジェンス。
 
@@ -59,25 +57,19 @@ Azure Maps Android SDK は、モバイル マッピング アプリケーショ�
 
 Azure Maps は、Azure アプリケーションに地理的なコンテキストを提供できる以下のサービスで構成されます。
 
-### <a name="data-service-preview"></a>Data Service (プレビュー)
+### <a name="data-service"></a>データ サービス
 
-データはマップに不可欠です。 Data Service は、空間演算や画像合成で使用する地理空間データをアップロードおよび格納するために使用します。  お客様のデータを Azure Maps サービスに近づけると、待ち時間が減少し、生産性が上がり、ご自分のアプリケーションで新しいシナリオが作成されます。 このサービスの詳細については、[Data Service のドキュメント](/rest/api/maps/data)を参照してください。
+データはマップに不可欠です。 Data Service は、空間演算や画像合成で使用する地理空間データをアップロードおよび格納するために使用します。  お客様のデータを Azure Maps サービスに近づけると、待ち時間が減少し、生産性が上がり、ご自分のアプリケーションで新しいシナリオが作成されます。 このサービスの詳細については、[Data Service のドキュメント](/rest/api/maps/data-v2)を参照してください。
 
-### <a name="geolocation-service-preview"></a>Geolocation Service (プレビュー)
+### <a name="geolocation-service"></a>位置情報サービス
 
-Geolocation Service は、IP アドレスに関して取得した 2 文字の国および地域コードをプレビューするために使用します。 このサービスは、地理的な場所に基づいてカスタマイズされたアプリケーション コンテンツを提供することで、ユーザー エクスペリエンスを強化するのに役立てることができます。
+Geolocation Service は、IP アドレスの 2 文字の国および地域コードを取得するために使用します。 このサービスは、地理的な場所に基づいてカスタマイズされたアプリケーション コンテンツを提供することで、ユーザー エクスペリエンスを強化するのに役立てることができます。
 
 詳細については、[Geolocation Service のドキュメント](/rest/api/maps/geolocation)を参照してください。
 
-### <a name="mobility-services-preview"></a>Mobility Service (プレビュー) 
-
-Azure Maps Mobility Service では、輸送経路を指定したり、公共輸送機関の最寄りの停留所を検索したりするなど、公共輸送機関機能を利用できるため、アプリケーションの開発時間が短縮されます。 ユーザーは、輸送の停留所、路線、スケジュールに関する詳細情報を取得できます。 Mobility Service では、ユーザーは停留所や路線の配置、停留所、路線、サービス エリアのアラート、公共輸送機関のリアルタイム到着アラートやサービス アラートを取得することもできます。 さらに、Mobility Service は、マルチモーダルな旅行計画オプションでルーティング機能を提供します。 マルチモードの旅行計画では、徒歩、自転車、公共輸送機関の選択肢がすべて 1 つの旅行に組み込まれます。 ユーザーはまた、段階式で詳しいマルチモードの旅程にアクセスできます。
-
-このサービスの詳細については、[Mobility Service のドキュメント](/rest/api/maps/mobility)を参照してください。
-
 ### <a name="render-service"></a>Render Service
 
-[Render Service V2 (プレビュー)](/rest/api/maps/renderv2) では、新しいバージョンの [Get Map Tile V2 API](/rest/api/maps/renderv2/getmaptilepreview) が導入されています。 Get Map Tile V2 API では、Azure Maps Creator を使用して作成された Azure Maps の道路タイル、気象タイル、またはマップ タイルを要求できるようになりました。 新しい Get Map Tile V2 API を使用することをお勧めします。  
+[Render Service V2](/rest/api/maps/renderv2) では、新しいバージョンの [Get Map Tile V2 API](/rest/api/maps/render-v2/get-map-tile) が導入されています。 Get Map Tile V2 API では、Azure Maps Creator を使用して作成された Azure Maps の道路タイル、気象タイル、またはマップ タイルを要求できるようになりました。 新しい Get Map Tile V2 API を使用することをお勧めします。  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Render Service V2 からのマップの例":::
 
@@ -175,48 +167,43 @@ Weather Service では、開発者が特定の場所の気象情報を取得す�
 
 開発者は[ルートに沿った気象の取得 API](/rest/api/maps/weather/getweatheralongroute) を使用して、特定のルートに沿った気象情報を取得できます。 また、このサービスでは、洪水や大雨など、気象災害の影響を受ける通過地点に関する気象通知の生成もサポートされています。
 
-[Get Map Tile V2 API](/rest/api/maps/renderv2/getmaptilepreview) を使用すると、過去、現在、および未来のレーダー タイルおよび衛星タイルを要求できます。
+[Get Map Tile V2 API](/rest/api/maps/render-v2/get-map-tile) を使用すると、過去、現在、および未来のレーダー タイルおよび衛星タイルを要求できます。
 
 ![リアルタイムの気象レーダー タイルを使用したマップの例](media/about-azure-maps/intro_weather.png)
 
-### <a name="maps-creator-service-preview"></a>Maps Creator サービス (プレビュー) 
+### <a name="maps-creator-service"></a>Maps Creator サービス
 
 Maps Creator サービスは、屋内マップ データに基づくマップ機能があるアプリケーションを作成するために開発者が使用できる Web サービスのスイートです。
 
 Maps Creator では、次の 3 つの主要なサービスが提供されています。
 
-* [Dataset サービス](/rest/api/maps/dataset)。 変換された Drawing パッケージ データからデータセットを作成するには、Dataset サービスを使用します。 Drawing パッケージの要件については、「Drawing パッケージの要件」を参照してください。
+* [Dataset サービス](/rest/api/maps/v2/dataset)。 変換された Drawing パッケージ データからデータセットを作成するには、Dataset サービスを使用します。 Drawing パッケージの要件については、Drawing パッケージの要件を参照してください。
 
-* [変換サービス](/rest/api/maps/dataset)。 変換サービスを使用すると、DWG 設計ファイルを屋内マップ用の Drawing パッケージ データに変換できます。
+* [変換サービス](/rest/api/maps/v2/dataset)。 変換サービスを使用すると、DWG 設計ファイルを屋内マップ用の Drawing パッケージ データに変換できます。
 
-* [Tileset サービス](/rest/api/maps/tileset)。 データセットのベクター ベースの表現を作成するには、Tileset サービスを使用します。 アプリケーションでは、タイルセットを使用して、データセットの視覚的なタイルベースのビューを提供できます。
+* [Tileset サービス](/rest/api/maps/v2/tileset)。 データセットのベクター ベースの表現を作成するには、Tileset サービスを使用します。 アプリケーションでは、タイルセットを使用して、データセットの視覚的なタイルベースのビューを提供できます。
 
-* [地物状態サービス](/rest/api/maps/featurestate)。 動的なマップ スタイル設定をサポートするには、地物状態サービスを使用します。 動的なマップ スタイル設定を使用すると、アプリケーションは、IoT システムによって提供される空間にリアルタイムのイベントを反映できます。
+* [地物状態サービス](/rest/api/maps/v2/feature-state)。 動的なマップ スタイル設定をサポートするには、地物状態サービスを使用します。 動的なマップ スタイル設定を使用すると、アプリケーションは、IoT システムによって提供される空間にリアルタイムのイベントを反映できます。
 
-* [WFS サービス](/rest/api/maps/featurestate)。 WFS サービスを使用すると、屋内マップ データに対するクエリを実行できます。 WFS サービスは、1 つのデータセットに対してクエリを行う [Open Geospatial Consortium API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) 標準に準拠しています。
+* [WFS サービス](/rest/api/maps/v2/feature-state)。 WFS サービスを使用すると、屋内マップ データに対するクエリを実行できます。 WFS サービスは、1 つのデータセットに対してクエリを行う [Open Geospatial Consortium API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) 標準に準拠しています。
 
-### <a name="elevation-service-preview"></a>Elevation Service (プレビュー)
+### <a name="elevation-service"></a>標高サービス
 
 Azure Maps Elevation Service は、開発者が地球の表面のどこからでも海抜データを取得するために使用できる Web サービスです。
 
 Elevation Service を使用すると、海抜データを次の 2 つの形式で取得できます。
 
-* **GeoTIFF ラスター形式**。 [Render V2 - Get Map Tile API](/rest/api/maps/renderv2) を使用して、タイル形式で海抜データを取得します。
+* **GeoTIFF ラスター形式**。 [Render V2-Get Map Tile API](/rest/api/maps/renderv2) を使用して、タイル形式で海抜データを取得します。
 
 * **GeoJSON 形式**。 [海抜 API](/rest/api/maps/elevation) シリーズを使用して、パス沿い、定義された境界ボックス内、または特定の座標にあるサンプリングされた海抜データを要求します。 
 
 :::image type="content" source="./media/about-azure-maps/elevation.png" alt-text="海抜データを含む地図の例":::
-
 
 ## <a name="programming-model"></a>プログラミング モデル
 
 Azure Maps は、モビリティ向けに構築されており、クロスプラットフォーム アプリケーションの開発に役立てることができます。 言語に依存せず、[REST API シリーズ](/rest/api/maps/)を介して JSON 出力をサポートするプログラミング モデルを使用します。
 
 さらに、Azure Maps は、便利な [JavaScript マップ コントロール](/javascript/api/azure-maps-control)を単純なプログラミング モデルで提供します。 Web アプリケーションであれ、モバイル アプリケーションであれ、すばやく簡単に開発することができます。
-
-
-
-
 
 ## <a name="power-bi-visual"></a>Power BI 視覚エフェクト
 
@@ -232,7 +219,8 @@ Azure Maps サービスにアクセスするには、[Azure portal](https://port
 
 Azure Maps では、キーベースの認証スキームが使用されます。 アカウントを作成すると、2 つのキーが生成されます。 Azure Maps サービスに対して認証するには、いずれかのキーを使用します。
 
-注: Azure Maps では、顧客が入力した住所や場所のクエリ ("クエリ") を、マッピング機能の向上のためにサードパーティの TomTom と共有します。 クエリが TomTom と共有される際、クエリはどの顧客やエンド ユーザーにもリンクされないため、個人を識別するために使用されることはありません。 Moovit および AccuWeather との統合を含むモビリティおよび気象サービスは、現在[プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の段階です。
+> [!NOTE]
+> Azure Maps では、顧客が入力した住所や場所のクエリを、マッピング機能の目的でサードパーティの TomTom と共有します。 これらのクエリは、TomTom と共有される際、顧客にもエンド ユーザーにもリンクされず、個人の識別に使用できません。
 
 Microsoft は現在、オンライン サービスの下請業者の一覧に TomTom、Moovit、および AccuWeather を追加するプロセスを実行中です。
 

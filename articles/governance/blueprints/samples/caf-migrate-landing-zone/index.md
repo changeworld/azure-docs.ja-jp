@@ -1,14 +1,14 @@
 ---
 title: CAF 移行ランディング ゾーン ブループリント サンプルの概要
 description: Cloud Adoption Framework for Azure (CAF) 移行ランディング ゾーン ブループリント サンプルの概要とアーキテクチャ。
-ms.date: 09/14/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: 6b8e3484690d263a43d3824c054b28344ea07fb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98978215c711a41fa281880aa93cb028b896d0d5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531680"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757801"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 移行ランディング ゾーン ブループリント サンプルの概要
 
@@ -21,7 +21,7 @@ Microsoft Cloud Adoption Framework for Azure (CAF) 移行ランディング ゾ�
 CAF 移行ランディング ゾーン ブループリント サンプルは、仮想マシンを移行するためのサブスクリプションを準備する際に組織で使用できる基本インフラストラクチャ リソースを Azure にデプロイします。 また、クラウド資産を管理するために必要なガバナンス コントロールの導入にも役立ちます。 このサンプルは、組織が自信を持って Azure を使い始めるために役立つリソース、ポリシー、テンプレートをデプロイして適用します。
 
 :::image type="complex" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="CAF 移行ランディング ゾーン、インストール内容の説明図 (初期のランディング ゾーンに関する CAF ガイダンスの一部)。" border="false":::
-   CAF 移行ブループリントをデプロイすることによって達成される Azure アーキテクチャを説明しています。  これは、Azure 仮想ネットワーク、ログを格納するためのストレージ アカウント、ストレージ アカウントに格納するように構成されたログ分析で構成されるリソース グループを使用するサブスクリプションに適用可能です。  また、構成済みの Azure Key Vault と初期セットアップが作成された Azure Migrate も示されています。  これらのすべてのコア インフラストラクチャは、Azure Active Directory を使用してアクセスされます。     
+   CAF 移行ブループリントをデプロイすることによって達成される Azure アーキテクチャを説明しています。 これは、Azure 仮想ネットワーク、ログを格納するためのストレージ アカウント、ストレージ アカウントに格納するように構成された Log Analytics で構成されるリソース グループを使用するサブスクリプションに適用可能です。 また、構成済みの Azure Key Vault と初期セットアップが作成された Azure Migrate も示されています。 これらのすべてのコア インフラストラクチャは、Azure Active Directory を使用してアクセスされます。
 :::image-end:::
 
 この環境は、セキュリティで保護され、完全に監視されたエンタープライズ対応のガバナンスを提供するために使用される複数の Azure サービスで構成されます。 この環境は、以下で構成されます。
@@ -29,8 +29,7 @@ CAF 移行ランディング ゾーン ブループリント サンプルは、�
 - [Azure Key Vault](../../../../key-vault/general/overview.md) インスタンス。共有サービス環境にデプロイされた証明書、キー、シークレット用に使用されるシークレットをホストします。
 - [Log Analytics](../../../../azure-monitor/overview.md)。移行の開始以降、すべてのアクションとサービス ログが中心的な場所に確保されるようにデプロイされます。
 - [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md)。仮想マシン用の分離されたネットワークとサブネットを提供します。
-- [Azure Migrate プロジェクト](../../../../migrate/migrate-services-overview.md)。検出と評価のために使用されます。 サーバーの評価、サーバーの移行、データベースの評価、データベースの移行のためのツールが今後追加される予定です。  
-
+- [Azure Migrate プロジェクト](../../../../migrate/migrate-services-overview.md)。検出と評価のために使用されます。 サーバーの評価、サーバーの移行、データベースの評価、データベースの移行のためのツールが今後追加される予定です。
 
 これらの要素はすべて、「[Azure アーキテクチャ センター - 参照アーキテクチャ](/azure/architecture/reference-architectures/)」で公開されている実証済みのプラクティスに従っています。
 

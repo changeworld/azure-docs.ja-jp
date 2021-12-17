@@ -1,20 +1,23 @@
 ---
 title: App Service Environment の使用および管理
 description: App Service Environment でアプリを作成、発行、スケーリングする方法について説明します。 この記事では、すべての一般的なタスクを紹介します。
-author: ccompy
+author: madsd
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 9/22/2020
-ms.author: ccompy
+ms.date: 8/5/2021
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: a7fa9ece3728214fad31f0bae769e1e50206df7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab273ab277b91cf76962eff97e5cf3dd10a9b897
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594047"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520353"
 ---
-# <a name="use-an-app-service-environment"></a>App Service Environment の使用
+# <a name="use-an-app-service-environment"></a>App Service 環境の使用
+> [!NOTE]
+> これは、Isolated App Service プランで使用される App Service Environment v2 に関する記事です。
+> 
 
 App Service Environment (ASE) は、ユーザーの Azure Virtual Network インスタンス内のサブネットに Azure App Service をデプロイしたものです。 ASE は次の要素で構成されます。
 
@@ -71,7 +74,7 @@ ASE 内にアプリを作成するには:
     ![[分離] 価格レベル][2]
 
     > [!NOTE]
-    > Linux アプリと Windows アプリを同じ App Service プランに追加することはできませんが、同じ App Service Environment に追加することはできます。
+    > Linux アプリと Windows アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。
     >
 
 1. **[確認および作成]** を選択し、情報が正しいことを確認して、 **[作成]** を選択します。
@@ -88,9 +91,9 @@ ASE では、App Service プランを最大 100 インスタンスまでスケ�
 
 ## <a name="ip-addresses"></a>IP アドレス
 
-App Service では、アプリに専用の IP アドレスを割り当てることができます。 「[Azure App Service の TLS/SSL 証明書を購入して構成する][ConfigureSSL]」で説明されているように、この機能は IP ベースの SSL を構成した後に利用できます。 ILB ASE では、IP ベースの SSL に使用する IP アドレスをさらに追加することはできません。
+App Service では、アプリに専用の IP アドレスを割り当てることができます。 [既存のカスタム TLS/SSL 証明書を Azure App Service にバインドする][ConfigureSSL]方法に関するページで説明されているように、この機能は IP ベースの TLS/SSL バインディングを構成した後に利用できます。 ILB ASE では、IP ベースの TLS/SSL バインディングに使用する IP アドレスをさらに追加することはできません。
 
-外部 ASE では、マルチテナントの App Service の場合と同じ方法で、アプリに IP ベースの SSL を構成できます。 ASE には、IP アドレスが 30 個を上限として、常に予備のアドレスが 1 つ存在します。 すぐに使用できるアドレスを常時確保するために、アドレスを 1 つ使用すると、そのたびに、別のアドレスが追加されます。 別の IP アドレスを割り当てるには、時間の遅延が必要です。 この遅延により、IP アドレスが続けざまに追加されることを回避できます。
+外部 ASE では、マルチテナントの App Service の場合と同じ方法で、アプリに IP ベースの TLS/SSL バインディングを構成できます。 ASE には、IP アドレスが 30 個を上限として、常に予備のアドレスが 1 つ存在します。 すぐに使用できるアドレスを常時確保するために、アドレスを 1 つ使用すると、そのたびに、別のアドレスが追加されます。 別の IP アドレスを割り当てるには、時間の遅延が必要です。 この遅延により、IP アドレスが続けざまに追加されることを回避できます。
 
 ## <a name="front-end-scaling"></a>フロント エンドのスケーリング
 
@@ -141,7 +144,7 @@ Azure DNS プライベート ゾーンで DNS を構成するには、次の操�
 
 ASE の既定のドメイン サフィックスの DNS 設定では、アプリがこれらの名前によってのみアクセスできるように制限されていません。 ILB ASE では、アプリの検証なしでカスタム ドメイン名を設定できます。 その後、*contoso.net* という名前のゾーンを作成する場合は、ILB IP アドレスを指すようにすることができます。 カスタム ドメイン名はアプリ要求に対して機能しますが、scm サイトでは使用できません。 scm サイトは、 *&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net* でのみ使用できます。 
 
-*.&lt;asename&gt;.appserviceenvironment.net* という名前のゾーンはグローバルに一意です。 2019 年 5 月より前のユーザーは、ILB ASE のドメイン サフィックスを指定できました。 ドメイン サフィックスで *.contoso.com* を使用した場合は、scm サイトが含まれていることになります。 このモデルには、既定の SSL 証明書の管理、scm サイトでのシングル サインオンの欠如、ワイルドカード証明書の使用要件といった課題がありました。 ILB ASE の既定の証明書アップグレード プロセスも中断され、アプリケーションが再起動されました。 これらの問題を解決するため、ILB ASE の動作が、ASE の名前と Microsoft の所有するサフィックスに基づくドメイン サフィックスを使用するように変更されました。 ILB ASE の動作の変更は、2019 年 5 月以降に作成された ILB ASE にのみ影響します。 既存の ILB ASE では、引き続き ASE の既定の証明書とその DNS 構成を管理する必要があります。
+*.&lt;asename&gt;.appserviceenvironment.net* という名前のゾーンはグローバルに一意です。 2019 年 5 月より前のユーザーは、ILB ASE のドメイン サフィックスを指定できました。 ドメイン サフィックスで *.contoso.com* を使用した場合は、scm サイトが含まれていることになります。 このモデルには、既定の TLS/SSL 証明書の管理、scm サイトでのシングル サインオンの欠如、ワイルドカード証明書の使用要件といった課題がありました。 ILB ASE の既定の証明書アップグレード プロセスも中断され、アプリケーションが再起動されました。 これらの問題を解決するため、ILB ASE の動作が、ASE の名前と Microsoft の所有するサフィックスに基づくドメイン サフィックスを使用するように変更されました。 ILB ASE の動作の変更は、2019 年 5 月以降に作成された ILB ASE にのみ影響します。 既存の ILB ASE では、引き続き ASE の既定の証明書とその DNS 構成を管理する必要があります。
 
 ## <a name="publishing"></a>発行
 
@@ -171,10 +174,10 @@ ASE を Azure Monitor と統合して、ASE に関するログを Azure Storage�
 
 | 状況 | Message |
 |---------|----------|
-| ASE is unhealthy (ASE が異常です) | The specified ASE is unhealthy due to an invalid virtual network configuration. (無効な仮想ネットワーク構成が原因で、指定された ASE が異常です。) The ASE will be suspended if the unhealthy state continues. (異常な状態が続くと、ASE は中断されます。) Ensure the guidelines defined here are followed (ここで定義されているガイドラインに従っていることを確認してください): https://docs.microsoft.com/azure/app-service/environment/network-info |
+| ASE is unhealthy (ASE が異常です) | The specified ASE is unhealthy due to an invalid virtual network configuration. (無効な仮想ネットワーク構成が原因で、指定された ASE が異常です。) The ASE will be suspended if the unhealthy state continues. (異常な状態が続くと、ASE は中断されます。) Ensure the guidelines defined here are followed: [Networking considerations for an App Service Environment](network-info.md) (ここで定義されているガイドラインに従っていることを確認してください: 「App Service Environment のネットワークの考慮事項」)。 |
 | ASE subnet is almost out of space (ASE サブネットの領域が不足しています) | The specified ASE is in a subnet that is almost out of space. (指定された ASE は、空き領域がほとんどないサブネット内にあります。) There are {0} remaining addresses. (残りのアドレスは {0} 個です。) Once these addresses are exhausted, the ASE will not be able to scale (これらのアドレスが枯渇すると、ASE はスケーリングできなくなります)  |
 | ASE is approaching total instance limit (ASE で、インスタンスの合計数の上限に近づいています) | The specified ASE is approaching the total instance limit of the ASE. (指定された ASE で、ASE のインスタンスの合計数の上限に近づいています) It currently contains {0} App Service Plan instances of a maximum 201 instances. (現在、最大インスタンス数 201 のうち、{0} 個の App Service プラン インスタンスが含まれています。) |
-| ASE is unable to reach a dependency (ASE は依存関係に到達できません) | The specified ASE is not able to reach {0}. (指定された ASE は {0} に到達できません。)  Ensure the guidelines defined here are followed (ここで定義されているガイドラインに従っていることを確認してください): https://docs.microsoft.com/azure/app-service/environment/network-info |
+| ASE is unable to reach a dependency (ASE は依存関係に到達できません) | The specified ASE is not able to reach {0}. (指定された ASE は {0} に到達できません。)  Ensure the guidelines defined here are followed: [Networking considerations for an App Service Environment](network-info.md) (ここで定義されているガイドラインに従っていることを確認してください: 「App Service Environment のネットワークの考慮事項」)。 |
 | ASE is suspended (ASE は中断されています) | The specified ASE is suspended. (指定された ASE は中断されています。) The ASE suspension may be due to an account shortfall or an invalid virtual network configuration. (ASE の中断は、アカウントの不足または無効な仮想ネットワーク構成が原因である可能性があります。) Resolve the root cause and resume the ASE to continue serving traffic (根本原因を解決し、ASE を再開してトラフィックの処理を続行してください) |
 | ASE upgrade has started (ASE のアップグレードが開始されました) | A platform upgrade to the specified ASE has begun. (指定された ASE へのプラットフォームのアップグレードが開始されました。) Expect delays in scaling operations (スケーリング操作で遅延が発生することが予想されます) |
 | ASE upgrade has completed (ASE のアップグレードが完了しました) | A platform upgrade to the specified ASE has finished (指定された ASE へのプラットフォームのアップグレードが完了しました) |
@@ -207,22 +210,15 @@ Log Analytics と統合している場合は、ASE ポータルから **[ログ]
 
 ## <a name="upgrade-preference"></a>アップグレードの優先順位
 
-複数の ASE を使用している場合は、一部の ASE を他のものよりも先にアップグレードする必要が生じることがあります。 ASE **HostingEnvironment Resource Manager** オブジェクト内で、**upgradePreference** の値を設定できます。 **upgradePreference** の設定は、テンプレート、ARMClient、または https://resources.azure.com を使用して構成できます。 指定可能な 3 つの値は次のとおりです。
+複数の ASE を使用している場合は、一部の ASE を他のものよりも先にアップグレードする必要が生じることがあります。 この動作は、ASE ポータルを使用して有効にできます。  **構成** の下に、**アップグレードの優先順位** を設定するオプションがあります。 指定可能な 3 つの値は次のとおりです。
 
 - **なし**: Azure では、特定のバッチなしに ASE がアップグレードされます。 この値は既定値です。
 - **Early**:ASE は App Service アップグレードの前半でアップグレードされます。
 - **Late**:ASE は App Service アップグレードの後半でアップグレードされます。
 
-https://resources.azure.com を使用している場合は、次の手順に従って **upgradePreferences** 値を設定します。
+目的の値を選択し、 **[保存]** を選択します。  あらゆる ASE の既定値は **[なし]** です。
 
-1. resources.azure.com にアクセスし、お使いの Azure アカウントでサインインします。
-1. サブスクリプション\/\[サブスクリプション名\]\/resourceGroups\/\[リソースグループ名\]\/プロバイダー\/Microsoft.Web\/hostingEnvironments\/\[ASE 名\]とリソースを移動します。
-1. 上部にある **[読み取り/書き込み]** を選択します。
-1. **[編集]** を選択します。
-1. **upgradePreference** を 3 つの値のいずれかに設定します。
-1. **[Patch]\(パッチ\)** を選択します。
-
-![リソース azure com の表示][5]
+![ASE 構成ポータル][5]
 
 **upgradePreferences** 機能は、複数の ASE がある場合に非常に便利です。"Early" の ASE が "Late" の ASE よりも先にアップグレードされるためです。 複数の ASE がある場合は、開発およびテストの ASE を "Early" に、実稼働の ASE を "Late" に設定します。
 
@@ -301,6 +297,6 @@ For more specific examples, use: az find "az appservice ase"
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
-[ASEWAF]: app-service-app-service-environment-web-application-firewall.md
+[ASEWAF]: ./integrate-with-application-gateway.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/alerts/alerts-log.md

@@ -4,14 +4,15 @@ description: これらのホワイトペーパーでは、Azure Data Factory の
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: f3e631dafd7281b601230755514eab831ad1bb6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 644cd811664c3d5dda2896cfb87f42e1aa399bd3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100369494"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731432"
 ---
 # <a name="azure-data-factory-whitepapers"></a>Azure Data Factory のホワイトペーパー 
 

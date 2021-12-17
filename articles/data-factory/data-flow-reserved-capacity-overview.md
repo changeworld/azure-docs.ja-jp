@@ -5,13 +5,14 @@ ms.topic: conceptual
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.date: 02/05/2021
-ms.openlocfilehash: 26a4692603d8e8a80a52ea77bdd56617131cea5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a46a84b9dfc1b167f41d15b4e9e5fa0e91fd1b69
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593902"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740987"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>予約容量を使用してリソースのコストを節約する - Azure Data Factory データ フロー
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7cdd812347450a8798ed4fb8e6e69f71c725449f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87543454"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225399"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
 
@@ -130,6 +130,10 @@ Cloud Shell は対話型のユース ケースを想定しています。 その
 
 権限は、sudo アクセスのない、通常のユーザーとして設定されます。 `$Home` ディレクトリ外のインストールはすべて失われます。
 
+### <a name="supported-entry-point-limitations"></a>サポートされているエントリ ポイントの制限事項
+
+Visual Studio Code や Windows ターミナルなど、Azure portal 付近にある Cloud Shell のエントリ ポイントは、Cloud Shell で UX コンポーネントに変更を加えるコマンド (`Code` など) の使用をサポートしません。
+
 ## <a name="bash-limitations"></a>Bash の制限事項
 
 ### <a name="editing-bashrc"></a>.bashrc の編集
@@ -151,7 +155,7 @@ Azure Cloud Shell は、ユーザーの個人データを慎重に取り扱い�
 ### <a name="export"></a>エクスポート
 選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を **エクスポート** するには、次のコマンドを実行します。
 
-1. [![[Azure Cloud Shell の起動] というラベルが付いたボタンを示すイメージ。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+1. Cloud Shell を起動します。
 
 2. Bash または PowerShell で次のコマンドを実行します。
 
@@ -175,21 +179,21 @@ PowerShell:
 >[!Note]
 > ユーザー設定を削除しても、実際の Azure Files 共有は削除されません。 Azure Files に移動して、そのアクションを完了します。
 
-1. [![[Azure Cloud Shell の起動] というラベルが付いたボタンを示すイメージ。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+1. Cloud Shell、または Azure PowerShell か Azure CLI がインストールされているローカル シェルを起動します。
 
 2. Bash または PowerShell で次のコマンドを実行します。
 
 Bash:
 
   ```
-  token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
+  token=(az account get-access-token --resource "https://management.azure.com/" | jq -r ".access_token")
   curl -X DELETE https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token"
   ```
 
 PowerShell:
 
   ```powershell
-  $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token
+  $token= (Get-AzAccessToken -Resource  https://management.azure.com/).Token
   Invoke-WebRequest -Method Delete -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
   ```
 ## <a name="azure-government-limitations"></a>Azure Government の制限事項

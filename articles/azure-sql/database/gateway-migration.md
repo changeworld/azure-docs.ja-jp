@@ -3,19 +3,19 @@ title: ゲートウェイ トラフィックの移行に関する注意事項
 description: Azure SQL Database ゲートウェイの IP アドレスの移行についてユーザーにお知らせする記事です
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
-ms.reviewer: vanto
+ms.reviewer: vanto, mathoma
 ms.date: 07/01/2019
-ms.openlocfilehash: 62e2306abc2d3132651fb40aab8c2f5b4d5043f4
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: c6afb13902282e1e89acb6fe7929e97994883589
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960879"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463418"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,10 +29,39 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 ## <a name="status-updates"></a>ステータスの更新
 
 # <a name="in-progress"></a>[[実行中]](#tab/in-progress-ip)
+## <a name="august-2021"></a>2021 年 8 月
+新しい SQL ゲートウェイが、次のリージョンに追加されます。
+
+- ノルウェー東部: 51.120.104.32、51.120.208.32
+- 東日本: 40.79.184.32
+- インド中部: 40.80.48.32、20.192.96.32
+
+これらの SQL ゲートウェイは、2021 年 8 月 2 日にお客様のトラフィックの受け入れを開始します。
+
+## <a name="june-2021"></a>2021 年 6 月
+新しい SQL ゲートウェイが、次のリージョンに追加されます。
+
+- 英国西部: 51.140.208.96、51.140.208.97
+- 韓国中部: 20.44.24.32、20.194.64.33
+- 東日本: 13.78.104.32
+
+これらの SQL ゲートウェイでは、2021 年 6 月 1 日にお客様のトラフィックの受け入れを開始します。
+
+# <a name="completed"></a>[完了](#tab/completed-ip)
+次のゲートウェイの移行が完了しました。 
+
+## <a name="may-2021"></a>2021 年 5 月
+新しい SQL ゲートウェイが、次のリージョンに追加されます。
+- 英国南部:  51.140.144.36、51.105.72.32  
+- 米国中西部: 13.71.193.32、13.71.193.33 
+
+この SQL ゲートウェイでは、2021 年 5 月 17 日にお客様のトラフィックの受け入れを開始します。
 
 ## <a name="april-2021"></a>2021 年 4 月
 新しい SQL ゲートウェイが、次のリージョンに追加されます。
-- 米国東部 2: 40.70.144.193 この SQL ゲートウェイは、2021 年 4 月 30 日にお客様のトラフィックの受け入れを開始します。
+- 米国東部 2:  40.70.144.193
+
+この SQL ゲートウェイでは、2021 年 4 月 30 日にお客様のトラフィックの受け入れを開始します。
 
 新しい SQL ゲートウェイが、次のリージョンに追加されます。
 - ノルウェー東部: 51.120.96.33
@@ -46,7 +75,6 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 
 ## <a name="march-2021"></a>2021 年 3 月
 複数のリージョンにある次の SQL ゲートウェイは、非アクティブ化の処理中です。
-
 - ブラジル南部:104.41.11.5
 - 東アジア: 191.234.2.139
 - 米国東部: 191.238.6.43
@@ -83,8 +111,7 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 
 2021 年 1 月 31 日に、これらの SQL ゲートウェイによって、お客様のトラフィックの受け入れが開始されます。
 
-# <a name="completed"></a>[完了](#tab/completed-ip)
-次のゲートウェイの移行が完了しました。 
+
 
 ### <a name="october-2020"></a>2020 年 10 月
 
@@ -175,7 +202,7 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>影響を受ける場合の対処方法
 
-リージョンの TCP ポート 1433 上のすべての[ゲートウェイ IP アドレス](connectivity-architecture.md#gateway-ip-addresses)、およびポート範囲 11000-11999 の IP アドレスへの送信トラフィックを許可することをお勧めします。 この推奨事項は、オンプレミスから接続しているクライアントと、サービス エンドポイント経由で接続しているクライアントに適用されます。 ポート範囲の詳細については、「[接続ポリシー](connectivity-architecture.md#connection-policy)」を参照してください。
+リージョンのすべての[ゲートウェイ IP アドレス](connectivity-architecture.md#gateway-ip-addresses)の IP アドレスへの TCP ポート 1433 上の送信トラフィックを許可することをお勧めします。 また、Azure 内にあるクライアント (Azure VM など) から接続する場合や、接続ポリシーをリダイレクトに設定する場合は、ポート範囲 11000 から 11999 を許可します。 この推奨事項は、オンプレミスから接続しているクライアントと、サービス エンドポイント経由で接続しているクライアントに適用されます。 ポート範囲の詳細については、「[接続ポリシー](connectivity-architecture.md#connection-policy)」を参照してください。
 
 バージョン 4.0 より前の Microsoft JDBC ドライバーを使用しているアプリケーションからの接続は、証明書の検証に失敗する可能性があります。 以前のバージョンの Microsoft JDBC は、証明書のサブジェクト フィールドにある共通名 (CN) に依存しています。 軽減策は、hostNameInCertificate プロパティを *.database.windows.net に設定することです。 hostNameInCertificate プロパティを設定する方法の詳細については、「[暗号化を使用した接続](/sql/connect/jdbc/connecting-with-ssl-encryption)」を参照してください。
 

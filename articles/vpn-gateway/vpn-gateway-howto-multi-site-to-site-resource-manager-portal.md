@@ -1,19 +1,19 @@
 ---
-title: 複数の VPN Gateway サイト間接続を VNet に追加するAzure portal
-description: マルチサイトのサイト間接続を、既存の接続がある VPN Gateway に追加する
+title: '複数の VPN Gateway サイト間接続を VNet に追加する: Azure portal'
+description: VPN ゲートウェイに追加のサイト間接続を追加する方法について説明します。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 04/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 304d96e9f7566ab80ac71d176fc52ccf3c852b49
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92890150"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729529"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>サイト間接続を VNet に追加します。Azure portal
 
@@ -31,7 +31,7 @@ ms.locfileid: "92890150"
 次の項目についてご確認ください。
 
 * ExpressRoute と VPN Gateway の共存構成を新しく構成しているのではない。
-* 既存の接続のある Resource Manager デプロイ モデルを使用して作成した仮想ネットワークがある。
+* 既存の接続のある [Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)を使用して作成した仮想ネットワークがある。
 * VNet の仮想ネットワーク ゲートウェイがルートベースである。 VPN ゲートウェイがポリシーベースの場合は、仮想ネットワーク ゲートウェイを削除して、ルートベースとして新しい VPN ゲートウェイを作成する必要があります。
 * この VNet が接続する VNet のアドレスの範囲のいずれも重複していないこと。
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいる。 「 [VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。 VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 866eb9feb152c0094cd5281fe4820ccc4589386f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ff4b23ffaf366ac9c1583b6fb9eb87f87b7db0e0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778321"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428940"
 ---
 # <a name="azure-private-link-availability"></a>Azure Private Link の可用性
 
@@ -39,12 +39,13 @@ Azure Private Link を使用すると、お使いの仮想ネットワーク内�
 |Azure Event Hub | すべてのパブリック リージョン<br/>すべての Government リージョン      |   | GA   <br/> [Azure Event Hub のプライベート エンドポイントを作成する方法を確認します。](../event-hubs/private-link-service.md)  |
 | Azure Monitor <br/>(ログ分析と Application Insights) | すべてのパブリック リージョン      |  | GA   <br/> [Azure Monitor のプライベート エンドポイントを作成する方法を確認します。](../azure-monitor/logs/private-link-security.md)   |
 |Azure Data Factory | すべてのパブリック リージョン<br/> すべての Government リージョン<br/>すべての中国リージョン    | 資格情報は Azure Key Vault に格納する必要があります| GA   <br/> [Azure Data Factory のプライベート エンドポイントを作成する方法を確認します。](../data-factory/data-factory-private-link.md)   |
+|Azure HDInsight | すべてのパブリック リージョン<br/>すべての Government リージョン      |   | GA   <br/> [Azure HDInsight のプライベート エンドポイントを作成する方法を確認します。](../hdinsight/hdinsight-private-link.md)  |
 
 ### <a name="compute"></a>Compute
 
 |サポートされているサービス  |対応リージョン | その他の考慮事項 | Status  |
 |:-------------------|:-----------------|:----------------|:--------|
-|Azure App Configuration | すべてのパブリック リージョン      |  | プレビュー  </br> [Azure App Configuration のプライベート エンドポイントを作成する方法を確認します](../azure-app-configuration/concept-private-endpoint.md) |
+|Azure App Configuration | すべてのパブリック リージョン      |  | GA  </br> [Azure App Configuration のプライベート エンドポイントを作成する方法を確認します](../azure-app-configuration/concept-private-endpoint.md) |
 |Azure マネージド ディスク | すべてのパブリック リージョン<br/> すべての Government リージョン<br/>すべての中国リージョン    | [既知の制限についてはこちらを選択してください](../virtual-machines/disks-enable-private-links-for-import-export-portal.md#limitations) | GA   <br/> [Azure Managed Disks のプライベート エンドポイントを作成する方法を確認します。](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)   |
 
 ### <a name="containers"></a>Containers
@@ -58,7 +59,7 @@ Azure Private Link を使用すると、お使いの仮想ネットワーク内�
 
 |サポートされているサービス  |対応リージョン | その他の考慮事項 | Status  |
 |:-------------------|:-----------------|:----------------|:--------|
-|  Azure SQL データベース         | すべてのパブリック リージョン <br/> すべての Government リージョン<br/>すべての中国リージョン      |  プロキシの[接続ポリシー](../azure-sql/database/connectivity-architecture.md#connection-policy)についてサポートされます | GA <br/> [Azure SQL のプライベート エンドポイントを作成する方法を確認します](create-private-endpoint-portal.md)      |
+|  Azure SQL データベース         | すべてのパブリック リージョン <br/> すべての Government リージョン<br/>すべての中国リージョン      |  プロキシの[接続ポリシー](../azure-sql/database/connectivity-architecture.md#connection-policy)についてサポートされます | GA <br/> [Azure SQL のプライベート エンドポイントを作成する方法を確認します](./tutorial-private-endpoint-sql-portal.md)      |
 |Azure Cosmos DB|  すべてのパブリック リージョン<br/> すべての Government リージョン</br> すべての中国リージョン | |GA <br/> [Cosmos DB のプライベート エンドポイントを作成する方法を確認します。](./tutorial-private-endpoint-cosmosdb-portal.md)|
 |  Azure Database for PostgreSQL - 単一サーバー         | すべてのパブリック リージョン <br/> すべての Government リージョン<br/>すべての中国リージョン     | General Purpose とメモリ最適化の価格レベルでサポートされます | GA <br/> [Azure Database for PostgreSQL のプライベート エンドポイントを作成する方法を確認します。](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | すべてのパブリック リージョン<br/> すべての Government リージョン<br/>すべての中国リージョン      |  | GA <br/> [Azure Database for MySQL のプライベート エンドポイントを作成する方法を確認します。](../mysql/concepts-data-access-security-private-link.md)     |
@@ -82,8 +83,9 @@ Azure Private Link を使用すると、お使いの仮想ネットワーク内�
 
 | サポートされているサービス | 対応リージョン | その他の考慮事項 | Status  |
 | ------------ | ----------------| ------------| ----------------|
-| Azure Automation  | すべてのパブリック リージョン<br/> すべての Government リージョン |  | プレビュー </br> [Azure Automation のプライベート エンドポイントを作成する方法を確認します。](../automation/how-to/private-link-security.md)|
+| Azure Automation  | すべてのパブリック リージョン<br/> すべての Government リージョン |  | GA </br> [Azure Automation のプライベート エンドポイントを作成する方法を確認します。](../automation/how-to/private-link-security.md)|
 |Azure Backup | すべてのパブリック リージョン<br/> すべての Government リージョン   |  | GA <br/> [Azure Backup のプライベート エンドポイントを作成する方法を確認します。](../backup/private-endpoints.md)   |
+|Azure Purview | 東南アジア、オーストラリア東部、ブラジル南部、北ヨーロッパ、西ヨーロッパ、カナダ中部、米国東部、米国東部 2、米国東部 2 EUAP、米国中南部、米国中西部、米国西部 2、インド中部、英国南部   | [既知の制限についてはこちらを選択してください](../purview/catalog-private-link-troubleshoot.md#known-limitations) | GA <br/> [Azure Purview のプライベート エンドポイントを作成する方法を確認します。](../purview/catalog-private-link.md)   |
 
 ### <a name="security"></a>セキュリティ
 
@@ -94,11 +96,11 @@ Azure Private Link を使用すると、お使いの仮想ネットワーク内�
 ### <a name="storage"></a>ストレージ
 |サポートされているサービス  |対応リージョン | その他の考慮事項 | Status  |
 |:-------------------|:-----------------|:----------------|:--------|
-| Azure Blob storage (Data Lake Storage Gen2 を含む)       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [Blob Storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md)  |
+| Azure Blob storage (Data Lake Storage Gen2 を含む)       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 のみでサポートされます | GA <br/> [Blob Storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Files | すべてのパブリック リージョン<br/> すべての Government リージョン      | |   GA <br/> [Azure Files ネットワーク エンドポイントを作成する方法を確認します。](../storage/files/storage-files-networking-endpoints.md)   |
 | Azure File Sync | すべてのパブリック リージョン      | |   GA <br/> [Azure Files ネットワーク エンドポイントを作成する方法を確認します。](../storage/file-sync/file-sync-networking-endpoints.md)   |
-| Azure Queue Storage       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [Queue storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md) |
-| Azure Table Storage       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [Table Storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md)  |
+| Azure Queue Storage       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 のみでサポートされます | GA <br/> [Queue storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md) |
+| Azure Table Storage       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 のみでサポートされます | GA <br/> [Table Storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Batch | 以下を除くすべてのパブリック リージョン:ドイツ中部、ドイツ北東部 <br/> すべての Government リージョン  | | GA <br/> [Azure Batch のプライベート エンドポイントを作成する方法を確認します。](../batch/private-connectivity.md) |
 
 ### <a name="web"></a>Web

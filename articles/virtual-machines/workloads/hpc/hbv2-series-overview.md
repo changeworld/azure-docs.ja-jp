@@ -11,16 +11,17 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 59dd953b2116bc1ec7bd0a581cc181df64fbf49e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 436a4ab3de748b19bd2cad5ae171a754bf9dc955
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721162"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312003"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>HBv2 シリーズの仮想マシンの概要 
 
- 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+
 AMD EPYC でハイパフォーマンス コンピューティング (HPC) アプリケーションのパフォーマンスを最大化するには、綿密なアプローチによるメモリの局所性とプロセスの配置が必要です。 以下、AMD EPYC アーキテクチャと、Azure での HPC アプリケーション向けのその実装について概説します。 物理 NUMA ドメインを指して **pNUMA** という用語を、また仮想化 NUMA ドメインを指して **vNUMA** を使用します。 
 
 物理的には、[HBv2 シリーズ](../../hbv2-series.md) サーバーは 2 * 64 コアの EPYC 7742 CPU であり、物理コアは合計 128 個です。 これらの 128 コアは 32 の pNUMA ドメイン (ソケットあたり 16) に分割されます。それぞれは 4 コアであり、AMD によって **コア コンプレックス** (または **CCX**) という名前が付けられています。 各 CCX には独自の L 3 キャッシュがあり、OS はこれによって pNUMA/vNUMA 境界を認識します。 4 つの隣接する CCX によって、2 チャンネルの物理的な DRAM へのアクセスが共有されます。 
@@ -59,7 +60,7 @@ VM 自体に、pNUMA 0 と 16 が予約されているという認識はあり�
 | Orchestrator のサポート        | CycleCloud、Batch、AKS。[クラスター構成オプション](../../sizes-hpc.md#cluster-configuration-options)  |
 
 > [!NOTE] 
-> Windows Server 2012 R2 は、64 個を超える (仮想または物理) コアを備えた HBv2 およびその他の VM ではサポートされていません。 詳細については、[こちら](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)を参照してください。
+> Windows Server 2012 R2 は、64 個を超える (仮想または物理) コアを備えた HBv2 およびその他の VM ではサポートされていません。 詳細については、[Windows Server 上の Hyper-V でサポートされている Windows ゲスト オペレーティング システム](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

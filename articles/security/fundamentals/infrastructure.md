@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 2a9e61ec850d20ab9b630036cd265fbb7f3801ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb05fcd0e13aded505ee3fd9d1095338622b949c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87543930"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339411"
 ---
 # <a name="azure-infrastructure-security"></a>Azure インフラストラクチャのセキュリティ
 Microsoft Azure は、Microsoft によって管理および運用されているデータセンター内で実行されます。 これらの地理的に分散したデータセンターは、セキュリティおよび信頼性のための、ISO/IEC 27001:2013 や NIST SP 800-53 などの主要な業界標準に準拠しています。 これらのデータセンターは、Microsoft の運用担当者によって管理および監視されます。 これらの運用担当者には、世界最大のオンライン サービスを週 7 日 24 時間体制の継続性で提供することについての数年にわたる経験があります。
@@ -43,4 +43,4 @@ Microsoft Azure は、Microsoft によって管理および運用されている
 
 - [クラウドにおける共同責任](shared-responsibility.md)について理解します。
 
-- [Azure Security Center](https://azure.microsoft.com/services/security-center/) で、Azure リソースのセキュリティを高度に視覚化して制御することで、脅威の回避、検出、対応を支援する方法について確認します。
+- [Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) を使用して、Azure リソースのセキュリティを可視化して制御することで、脅威の防止、検出、対応を行う方法について学習します。

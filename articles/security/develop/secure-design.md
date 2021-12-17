@@ -10,12 +10,12 @@ ms.service: security
 ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
-ms.openlocfilehash: 9e5246edd2d6490e823bacbdfff0f60ef553878b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6f99ce0f0229de5423a6dde4472b5b11b992f7e8
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729135"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422716"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する
 この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -86,7 +86,7 @@ OWASP の上位 10 件は、Web アプリケーションに対する重大なセ
 これらのセキュリティ リスクを認識することが、アプリケーションでこれらのリスクを最小限に抑える要件と設計についての決定を下す際に役立ちます。
 
 侵害防止のためのセキュリティ制御について検討することは重要です。
-ただし、[侵害を当然](/azure/devops/learn/devops-at-microsoft/security-in-devops)発生するものと考えることもできます。 侵害を想定することで、セキュリティに関する重要な質問に事前に答えを出すことができるため、次のような質問の答えを緊急時に出さなくても済みます。
+ただし、[侵害を当然](/devops/operate/security-in-devops)発生するものと考えることもできます。 侵害を想定することで、セキュリティに関する重要な質問に事前に答えを出すことができるため、次のような質問の答えを緊急時に出さなくても済みます。
 
   - どのように攻撃を検出するのか?
 
@@ -223,7 +223,7 @@ Web アプリケーションの開発のための ID 中心のアプローチを
 
 #### <a name="implement-just-in-time-access"></a>Just-In-Time アクセスを実装する
 
-*Just-In-Time* (JIT) アクセスを実装して、権限が公開される時間をさらに短縮します。 以下のことを実行するには、[Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md#stage-3-take-control-of-admin-activity) を使用します。
+*Just-In-Time* (JIT) アクセスを実装して、権限が公開される時間をさらに短縮します。 以下のことを実行するには、[Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md#stage-3-take-control-of-administrator-activity) を使用します。
 
 - ユーザーに JIT のみを必要とするアクセス許可を付与します。
 - 権限が自動的に取り消される、短縮された期間のロールを割り当てます。

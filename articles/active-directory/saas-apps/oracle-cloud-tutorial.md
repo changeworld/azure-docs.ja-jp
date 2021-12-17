@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 914858471432979e5516a1f075ed4fcbb8061a5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88d15232e054bf53c90cff32adc16897579a335e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181854"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344524"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>チュートリアル:Oracle Cloud Infrastructure Console と Azure Active Directory を統合する
 
@@ -38,6 +38,7 @@ ms.locfileid: "96181854"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Oracle Cloud Infrastructure Console では、**SP** Initiated SSO がサポートされます。
+* Oracle Cloud Infrastructure Console では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](oracle-cloud-infrastructure-console-provisioning-tutorial.md) (推奨) がサポートされます。
 
 ## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>ギャラリーからの Oracle Cloud Infrastructure Console の追加
 
@@ -196,10 +197,10 @@ Oracle Cloud Infrastructure Console に対して Azure AD SSO を構成してテ
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [Oracle Cloud Infrastructure Console] タイルを選択すると、Oracle Cloud Infrastructure Console のサインイン ページにリダイレクトされます。 次のようにドロップダウン メニューから **[IDENTITY PROVIDER]\(ID プロバイダー\)** を選択し、 **[Continue]\(続行\)** をクリックしてサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Oracle Cloud Infrastructure Console] タイルを選択すると、Oracle Cloud Infrastructure Console のサインイン ページにリダイレクトされます。 次のようにドロップダウン メニューから **[IDENTITY PROVIDER]\(ID プロバイダー\)** を選択し、 **[Continue]\(続行\)** をクリックしてサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ![構成](./media/oracle-cloud-tutorial/config10.png)
 
 ## <a name="next-steps"></a>次の手順
 
-Oracle Cloud Infrastructure Console を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Oracle Cloud Infrastructure Console を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

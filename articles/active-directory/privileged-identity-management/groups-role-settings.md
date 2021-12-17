@@ -4,23 +4,23 @@ description: Azure AD Privileged Identity Management (PIM) で、ロールを割
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2020
+ms.date: 11/12/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cfb09f383d8425a644d3e2e87d190b350f5f41a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 97798fdfc680d2cc644a47acc814a8fbe7e44654
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564638"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490044"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループの設定 (プレビュー) を構成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "105564638"
 
 Azure 特権アクセス グループ ロールの設定を開くには、次の手順に従います。
 
-1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)ロールのユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [グローバル管理者](../roles/permissions-reference.md#global-administrator)のロール、特権ロール管理者のロール、またはグループの所有者のロールであるユーザーを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -64,10 +64,10 @@ Azure 特権アクセス グループ ロールの設定を開くには、次の
 
 [ロールの設定] ページの **[通知]** タブで、Privileged Identity Management によって、通知を受信するユーザーとユーザーが受信する通知をきめ細かく制御できます。
 
-- **メールをオフにする**<br>特定のメールをオフにするには、既定の受信者のチェック ボックスをオフにし、追加の受信者をすべて削除します。  
-- **指定したメール アドレスへのメールを制限する**<br>既定の受信者に送信されるメールをオフにするには、既定の受信者のチェック ボックスをオフにします。 その後に、追加の受信者として追加のメール アドレスを追加できます。 複数のメール アドレスを追加する場合は、セミコロン (;) で区切ります。
-- **既定の受信者と追加の受信者の両方にメールを送信する**<br>既定の受信者と追加の受信者の両方にメールを送信するには、既定の受信者のチェック ボックスをオンにし、追加の受信者のメール アドレスを追加します。
-- **重要なメールのみ**<br>メールの種類ごとに、重要なメールのみを受信するためのチェック ボックスをオンにすることができます。 つまり、Privileged Identity Management では、メールに即時の操作が必要な場合にのみ、構成された受信者に引き続きメールが送信されます。 たとえば、ユーザーにロールの割り当てを拡張するように求めるメールはトリガーされませんが、管理者に拡張の要求を承認するように求めるメールはトリガーされます。
+- **メールをオフにする**<br>既定の受信者のチェック ボックスをオフにして、他の受信者をすべて削除すると、特定のメールをオフにできます。  
+- **指定したメール アドレスへのメールを制限する**<br>既定の受信者のチェック ボックスをオフにすると、既定の受信者に送信されるメールをオフにできます。 その後で、受信者として他のメール アドレスを追加できます。 複数のメール アドレスを追加する場合は、セミコロン (;) で区切ります。
+- **既定の受信者と、いっそう多くの受信者の両方にメールを送信する**<br>既定の受信者のチェック ボックスをオンにして、他の受信者のメール アドレスを追加すると、既定の受信者と他の受信者の両方にメールを送信できます。
+- **重要なメールのみ**<br>メールの種類ごとにチェック ボックスをオンにすると、重要なメールのみを受信できます。 つまり、メールで即時のアクションが求められている場合にのみ、指定された受信者に、Privileged Identity Management によって引き続きメールが送信されます。 たとえば、ユーザーにロールの割り当てを拡張するように求めるメールはトリガーされませんが、管理者に拡張の要求を承認するように求めるメールはトリガーされます。
 
 ## <a name="assignment-duration"></a>割り当て期間
 
@@ -90,27 +90,27 @@ Azure 特権アクセス グループ ロールの設定を開くには、次の
 > [!NOTE]
 > リソース管理者は､終了日時が指定されている割り当てのどれでも更新することができます｡ これに対し､ユーザーは[ロールの割り当てを延長または更新する](pim-resource-roles-renew-extend.md)セルフサービス要求を開始することができます｡
 
-## <a name="require-multi-factor-authentication"></a>多要素認証が必要です
+## <a name="require-multifactor-authentication"></a>多要素認証を要求する
 
 Privileged Identity Management では、2 つの異なるシナリオで、Azure AD Multi-factor Authentication の強制を選択できます。
 
-### <a name="require-multi-factor-authentication-on-active-assignment"></a>アクティブな割り当てに多要素認証が必要
+### <a name="require-multifactor-authentication-on-active-assignment"></a>アクティブな割り当てに多要素認証を要求する
 
-場合によっては、ユーザーまたはグループをロールに短期間 (たとえば 1 日) 割り当てる必要があります。 この場合、割り当てられたユーザーがアクティブ化を要求する必要はありません。 このシナリオでは、ユーザーは割り当てられた時点からそのロールでアクティブになるため、各自がそのロールの割り当てを使用するときに、Privileged Identity Management で Multi-Factor Authentication を強制することができません。
+このオプションを選択すると、管理者は、アクティブなロールの割り当て (資格のあるロールの割り当てではありません) を作成する前に、多要素認証を完了する必要があります。 ユーザーがロール割り当てを使用するときに、Privileged Identity Management で多要素認証を強制することができません。ロールが割り当てられた時点で、ロール内で既にアクティブになっているためです。
 
-割り当てを実行するリソース管理者が、確かに本人が言うような人物であることを保証するために、 **[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに Multi-Factor Authentication を強制することができます。
+アクティブなロールの割り当てを作成するときに多要素認証を要求するには、 **[Require Multi-Factor Authentication on active assignment]\(JP\)[アクティブな割り当てに多要素認証を要求する]** チェックボックスをオンにします。
 
-### <a name="require-multi-factor-authentication-on-activation"></a>アクティブ化に Multi-Factor Authentication を要求する
+### <a name="require-multifactor-authentication-on-activation"></a>アクティブ化に多要素認証を要求する
 
-ロールの資格を持つユーザーに対して、アクティブ化する前に Azure AD Multi-Factor Authentication を使用していることを証明するように要求することができます。 Multi-Factor Authentication により、ユーザーが、確かに本人が言うような人物であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
+ロールの資格を持つユーザーに対して、アクティブ化する前に Azure AD Multi-Factor Authentication を使用していることを証明するように要求することができます。 多要素認証により、ユーザーが本人であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
 
 アクティブ化には多要素認証の実行を必須にするには、 **[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
 
-詳細については、[Multi-Factor Authentication と Privileged Identity Management](pim-how-to-require-mfa.md) に関するページを参照してください。
+詳細については、「[多要素認証と Privileged Identity Management](pim-how-to-require-mfa.md)」を参照してください。
 
 ## <a name="activation-maximum-duration"></a>アクティブ化の最大期間
 
-**[アクティブ化の最大期間]** スライダーを使用して、ロールの有効期限が切れるまでの最大時間 (時間単位) を設定します。 1 から 24 時間の範囲の値を指定できます。
+**[アクティブ化の最大期間]** スライダーを使用して、ロールの割り当てのアクティブ化要求が、有効期限が切れるまでアクティブなままである最大時間 (時間単位) を設定します。 1 から 24 時間の範囲の値を指定できます。
 
 ## <a name="require-justification"></a>理由を必須にする
 

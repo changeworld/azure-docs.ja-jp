@@ -10,13 +10,13 @@ metadata:
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 09/05/2019
-  ms.openlocfilehash: e357fff89758f7a57e839e7dcfb94854a2e51676
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.date: 10/27/2021
+  ms.openlocfilehash: f504f71124248e9946abde9ab164af4fb5a9a42b
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102509457"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131426280"
 landingContent:
 - title: Custom Vision について
   linkLists:
@@ -76,6 +76,8 @@ landingContent:
     links:
     - text: モデルをモバイルにエクスポートする
       url: export-your-model.md
+    - text: プログラムを使用してモデルをエクスポートする
+      url: export-programmatically.md
     - text: Windows ML での ONNX モデルの使用
       url: custom-vision-onnx-windows-ml.md
     - text: Python での TensorFlow モデルの実行

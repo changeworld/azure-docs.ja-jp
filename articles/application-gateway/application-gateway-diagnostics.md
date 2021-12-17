@@ -6,14 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 10/18/2021
 ms.author: victorh
-ms.openlocfilehash: 32d96ce79844cd89e06035036bfa68703a738ed1
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a2ed550d36dca7e9a7043dfca91e468527982164
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950486"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138088"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
@@ -95,7 +96,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 Azure の各種ログを使用して、アプリケーション ゲートウェイの管理とトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 どのログも Azure Blob Storage から抽出し、[Azure Monitor ログ](../azure-monitor/insights/azure-networking-analytics.md)、Excel、Power BI などのさまざまなツールで表示できます。 各種ログの詳細については、以下の一覧を参照してください。
 
-* **アクティビティ ログ**:[Azure アクティビティ ログ](../azure-resource-manager/management/view-activity-logs.md) (以前の操作ログと監査ログ) を使用すると、Azure サブスクリプションに送信されるすべての操作とその操作の状態を表示できます。 アクティビティ ログ エントリは既定で収集され、Azure Portal で表示できます。
+* **アクティビティ ログ**:[Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md) (以前の操作ログと監査ログ) を使用すると、Azure サブスクリプションに送信されるすべての操作とその操作の状態を表示できます。 アクティビティ ログ エントリは既定で収集され、Azure Portal で表示できます。
 * **アクセス ログ**:このログを使用して Application Gateway のアクセス パターンを表示し、重要な情報を分析できます。 これには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。アクセス ログは 60 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。 Application Gateway のインスタンスは、instanceId プロパティで識別されます。
 * **パフォーマンス ログ**:このログを使用すると、Application Gateway のインスタンスの実行状況を確認できます。 このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。 パフォーマンス ログは 60 秒ごとに収集されます。 パフォーマンス ログは v1 SKU でのみ使用できます。 v2 SKU の場合は、パフォーマンス データに[メトリック](application-gateway-metrics.md)を使用します。
 * **ファイアウォール ログ**:このログを使用すると、Web アプリケーション ファイアウォールが構成された Application Gateway の、検出モードまたは防止モードでログに記録された要求を表示することができます。 ファイアウォール ログは 60 秒ごとに収集されます。 
@@ -152,7 +153,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 ### <a name="activity-log"></a>アクティビティ ログ
 
-アクティビティ ログは、既定では Azure によって生成されます。 ログは、Azure のイベント ログ ストアに 90 日間保存されます。 これらのログの詳細については、「[イベントとアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
+アクティビティ ログは、既定では Azure によって生成されます。 ログは、Azure のイベント ログ ストアに 90 日間保存されます。 これらのログの詳細については、「[イベントとアクティビティ ログの表示](../azure-monitor/essentials/activity-log.md)」を参照してください。
 
 ### <a name="access-log"></a>アクセス ログ
 
@@ -177,6 +178,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |sslEnabled| バックエンド プールへの通信に TLS または SSL を使用するかどうか。 有効な値は on と off です。|
 |host| 要求がバックエンド サーバーに送信されたときに使用されたホスト名。 バックエンドのホスト名が上書きされている場合、この名前にそのことが反映されます。|
 |originalHost| Application Gateway がクライアントから要求を受信したときに使用されたホスト名。|
+
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -221,35 +223,47 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |sslProtocol| 使用されている SSL または TLS プロトコル (TLS が有効な場合)。|
 |serverRouted| アプリケーション ゲートウェイから要求がルーティングされる先のバックエンド サーバー。|
 |serverStatus| バックエンド サーバーの HTTP 状態コード。|
-|serverResponseLatency| バックエンド サーバーからの応答の待機時間。|
+|serverResponseLatency| バックエンド サーバーからの応答の待機時間 (**秒** 単位)。|
 |host| 要求のホスト ヘッダーに表示されているアドレス。 ヘッダーの書き換えによって書き換えられた場合、このフィールドには更新されたホスト名が含まれます|
 |originalRequestUriWithArgs| このフィールドには元の要求 URL が含まれています |
 |requestUri| このフィールドには、Application Gateway での書き換え操作後の URL が含まれています |
 |originalHost| このフィールドには、元の要求ホスト名が含まれています
 ```json
 {
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "timeStamp": "2021-10-14T22:17:11+00:00",
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "listenerName": "HTTP-Listener",
+    "ruleName": "Storage-Static-Rule",
+    "backendPoolName": "StaticStorageAccount",
+    "backendSettingName": "StorageStatic-HTTPS-Setting",
     "operationName": "ApplicationGatewayAccess",
-    "time": "2017-04-26T19:27:38Z",
     "category": "ApplicationGatewayAccessLog",
     "properties": {
-        "instanceId": "appgw_1",
-        "clientIP": "191.96.249.97",
+        "instanceId": "appgw_2",
+        "clientIP": "185.42.129.24",
+        "clientPort": 45057,
         "httpMethod": "GET",
-        "requestUri": "/phpmyadmin/scripts/setup.php",
-        "userAgent": "-",
-        "httpStatus": 404,
-        "httpVersion": "HTTP/1.0",
-        "receivedBytes": 65,
-        "sentBytes": 553,
-        "timeTaken": 205,
-        "sslEnabled": "off",
-        "sslCipher": "",
-        "sslProtocol": "",
-        "serverRouted": "104.41.114.59:80",
+        "originalRequestUriWithArgs": "\/",
+        "requestUri": "\/",
+        "requestQuery": "",
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/52.0.2743.116 Safari\/537.36",
+        "httpStatus": 200,
+        "httpVersion": "HTTP\/1.1",
+        "receivedBytes": 184,
+        "sentBytes": 466,
+        "timeTaken": 0.034,
+        "transactionId": "592d1649f75a8d480a3c4dc6a975309d",
+        "sslEnabled": "on",
+        "sslCipher": "ECDHE-RSA-AES256-GCM-SHA384",
+        "sslProtocol": "TLSv1.2",
+        "sslClientVerify": "NONE",
+        "sslClientCertificateFingerprint": "",
+        "sslClientCertificateIssuerName": "",
+        "serverRouted": "52.239.221.65:443",
         "serverStatus": "200",
-        "serverResponseLatency": "0.023",
-        "host": "www.contoso.com",
+        "serverResponseLatency": "0.028",
+        "originalHost": "20.110.30.194",
+        "host": "20.110.30.194"
     }
 }
 ```
@@ -318,39 +332,41 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 ```json
 {
-  "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
-  "operationName": "ApplicationGatewayFirewall",
-  "time": "2017-03-20T15:52:09.1494499Z",
-  "category": "ApplicationGatewayFirewallLog",
-  "properties": {
-    "instanceId": "ApplicationGatewayRole_IN_0",
-    "clientIp": "104.210.252.3",
-    "clientPort": "4835",
-    "requestUri": "/?a=%3Cscript%3Ealert(%22Hello%22);%3C/script%3E",
-    "ruleSetType": "OWASP",
-    "ruleSetVersion": "3.0",
-    "ruleId": "941320",
-    "message": "Possible XSS Attack Detected - HTML Tag Handler",
-    "action": "Blocked",
-    "site": "Global",
-    "details": {
-      "message": "Warning. Pattern match \"<(a|abbr|acronym|address|applet|area|audioscope|b|base|basefront|bdo|bgsound|big|blackface|blink|blockquote|body|bq|br|button|caption|center|cite|code|col|colgroup|comment|dd|del|dfn|dir|div|dl|dt|em|embed|fieldset|fn|font|form|frame|frameset|h1|head|h ...\" at ARGS:a.",
-      "data": "Matched Data: <script> found within ARGS:a: <script>alert(\\x22hello\\x22);</script>",
-      "file": "rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf",
-      "line": "865"
+    "timeStamp": "2021-10-14T22:17:11+00:00",
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "operationName": "ApplicationGatewayFirewall",
+    "category": "ApplicationGatewayFirewallLog",
+    "properties": {
+        "instanceId": "appgw_2",
+        "clientIp": "185.42.129.24",
+        "clientPort": "",
+        "requestUri": "\/",
+        "ruleSetType": "OWASP_CRS",
+        "ruleSetVersion": "3.0.0",
+        "ruleId": "920350",
+        "message": "Host header is a numeric IP address",
+        "action": "Matched",
+        "site": "Global",
+        "details": {
+            "message": "Warning. Pattern match \\\"^[\\\\d.:]+$\\\" at REQUEST_HEADERS:Host .... ",
+            "data": "20.110.30.194:80",
+            "file": "rules\/REQUEST-920-PROTOCOL-ENFORCEMENT.conf",
+            "line": "791"
+        },
+        "hostname": "20.110.30.194:80",
+        "transactionId": "592d1649f75a8d480a3c4dc6a975309d",
+        "policyId": "default",
+        "policyScope": "Global",
+        "policyScopeName": "Global"
     }
-    "hostname": "40.90.218.100",
-    "transactionId": "AYAcUqAcAcAcAcAcASAcAcAc"
-  }
 }
-
 ```
 
 ### <a name="view-and-analyze-the-activity-log"></a>アクティビティ ログの表示と分析
 
 次のいずれかの方法を使用して、アクティビティ ログのデータを表示および分析できます。
 
-* **Azure Tools**:Azure PowerShell、Azure CLI、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
+* **Azure Tools**:Azure PowerShell、Azure CLI、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-monitor/essentials/activity-log.md)」を参照してください。
 * **Power BI**: [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI テンプレート アプリ](/power-bi/service-template-apps-overview)を使用して、データを分析できます。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>アクセス ログ、パフォーマンス ログ、ファイアウォール ログの表示と分析
@@ -366,7 +382,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 #### <a name="analyzing-access-logs-through-goaccess"></a>GoAccess を介してアクセス ログを分析する
 
-Microsoft は、人気のある [GoAccess](https://goaccess.io/) ログ アナライザーをインストールし、Application Gateway アクセス ログに対して実行する、Resource Manager テンプレートを発行しています。 GoAccess では、ユニーク ビジター、要求されたファイル、ホスト、オペレーティング システム、ブラウザー、HTTP 状態コードなど、重要な HTTP トラフィック統計情報が提供されます。 詳細については、[GitHub の Resource Manager テンプレート フォルダーにある Readme ファイル](https://aka.ms/appgwgoaccessreadme)を参照してください。
+Microsoft は、人気のある [GoAccess](https://goaccess.io/) ログ アナライザーをインストールし、Application Gateway アクセス ログに対して実行する、Resource Manager テンプレートを発行しています。 GoAccess では、ユニーク ビジター、要求されたファイル、ホスト、オペレーティング システム、ブラウザー、HTTP 状態コードなど、重要な HTTP トラフィック統計情報が提供されます。 詳細については、[GitHub の Resource Manager テンプレート フォルダーにある Readme ファイル](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/application-gateway-logviewer-goaccess)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

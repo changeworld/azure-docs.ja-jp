@@ -4,13 +4,13 @@ description: Azure Monitor で実行されるログ クエリに関するテレ�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/03/2020
-ms.openlocfilehash: 28dfac7de8e73adf577b0a13e5fbd8740b1e3b06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 10/20/2021
+ms.openlocfilehash: f08137c49b9f84fd50f7481f698956a70e5e3b45
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047419"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233333"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Azure Monitor ログでの監査クエリ (プレビュー)
 ログ クエリの監査ログには、Azure Monitor で実行されるログ クエリに関するテレメトリが用意されています。 これには、クエリがいつ実行されたか、誰が実行したか、どのツールが使用されたか、クエリ テキスト、クエリの実行を説明するパフォーマンス統計などの情報が含まれています。

@@ -1,25 +1,25 @@
 ---
-title: Azure portal または Azure アカウント センターで新しいアカウントをサインアップするときの問題をトラブルシューティングする
-description: Microsoft Azure portal アカウント センターで新しいアカウントにサインアップしようとしたときに発生する問題を解決します。
+title: Azure portal で新しいアカウントをサインアップするときの問題をトラブルシューティングする
+description: Microsoft Azure portal で新しいアカウントにサインアップしようとしたときに発生する問題を解決します。
 services: cost-management-billing
-author: v-miegge
-manager: dcscontentpm
+author: bandersmsft
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 01/28/2021
-ms.author: v-miegge
-ms.openlocfilehash: 015e6058236190a04df152573621f0e57030d23b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 10/07/2021
+ms.author: banders
+ms.openlocfilehash: ae47b3e96dcb8bd7e7e07297313892dcb24405d0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054163"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464739"
 ---
-# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターで新しいアカウントをサインアップするときの問題をトラブルシューティングする
+# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-the-azure-portal"></a>Azure portal で新しいアカウントをサインアップするときの問題をトラブルシューティングする
 
-Microsoft Azure portal または Azure アカウント センターで新しいアカウントにサインアップしようとすると、問題が発生する場合があります。 この短いガイドでは、サインアップ プロセスの手順と、各ステップでの一般的な問題について説明します。
+Microsoft Azure portal で新しいアカウントにサインアップしようとすると、問題が発生する場合があります。 この短いガイドでは、サインアップ プロセスの手順と、各ステップでの一般的な問題について説明します。
 
 > [!NOTE]
 > 既にアカウントがあって、サインインの問題をトラブルシューティングするためのガイダンスをお探しの場合は、「[Azure サブスクリプションのサインインに関する問題のトラブルシューティング](./troubleshoot-sign-in-issue.md)」を参照してください。
@@ -28,7 +28,7 @@ Microsoft Azure portal または Azure アカウント センターで新しい�
 
 サインアップを始める前に、次の項目を確認します。
 
-- Azure アカウント プロファイルの情報 (連絡先のメール アドレス、住所、電話番号など) が正しいこと。
+- Azure プロファイルの情報 (連絡先のメール アドレス、住所、電話番号など) が正しいこと。
 - クレジット カード情報が正しいこと。
 - 同じ情報を持つ既存の Microsoft アカウントをがないこと。
 
@@ -45,7 +45,14 @@ Azure のサインアップ エクスペリエンスは、次の 4 つのセク�
 
 ## <a name="about-you"></a>自分の情報
 
-![自分の情報](./media/troubleshoot-azure-sign-up/1.png)
+最初に Azure にサインアップするときは、次のような自分に関する情報を提供する必要があります。
+
+- お住まいの国または地域
+- 名
+- 姓
+- 電子メール アドレス
+- 電話番号
+- クレジット カード情報
  
 ### <a name="common-issues-and-solutions"></a>一般的な問題と解決方法
 
@@ -53,9 +60,9 @@ Azure のサインアップ エクスペリエンスは、次の 4 つのセク�
 
 このエラーを解決するには、次の手順のようにします。
 
-1.  アカウント管理者の資格情報を使用して、アカウント管理者として [Azure アカウント センター](https://account.azure.com/Profile)にログインします。
-1.  **[詳細の編集]** を選択します。
-1.  すべてのアドレス フィールドが完成し、有効になっていることを確認します。
+1. [Microsoft アカウント センター](https://account.microsoft.com/)にサインインします。
+1. ページの上部で **[ユーザー情報]** を選択します。
+1. 請求および出荷の詳細が入力されていて、有効であることを確認します。
 1.  Azure サブスクリプションにサインアップするときに、クレジット カード登録の請求先住所が銀行の登録情報と一致していることを確認します。
 
 それでもメッセージが表示される場合は、別のブラウザーを使用してサインアップを試してください。
@@ -169,6 +176,6 @@ Azure の請求とサブスクリプションに関するその他のトラブ�
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
 
-## <a name="find-out-more-about-azure-cost-management"></a>Azure Cost Management の詳細を探す
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Cost Management および Billing のドキュメント](../index.yml)
+- [Cost Management と Billing のドキュメント](../index.yml)を参照してください

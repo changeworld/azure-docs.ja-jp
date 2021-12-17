@@ -4,7 +4,7 @@ description: Azure Monitor での Azure Active Directory アクティビティ �
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -17,19 +17,19 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73130c906d4d9f0da51db1b666e8562570cce40f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 110170868ba477060c5cd8ba1fbf28428160e29e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571275"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305581"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor の Azure AD アクティビティ ログ
 
 Azure Active Directory (Azure AD) のアクティビティ ログを複数のエンドポイントにルーティングして、長期の保持期間とデータの分析情報を得ることができます。 この機能では次のことができます。
 
 * データを長期間保持するには、Azure AD アクティビティ ログを Azure ストレージ アカウントにアーカイブします。
-* Azure AD アクティビティ ログを Azure イベント ハブにストリーム配信して、Splunk や QRadar などの一般的なセキュリティ情報およびイベント管理 (SIEM) ツールを使用して分析することができます。
+* Azure AD アクティビティ ログを Azure イベント ハブにストリーム配信して、Splunk、QRadar、Microsoft Sentinel などの一般的なセキュリティ情報およびイベント管理 (SIEM) ツールを使用して分析することができます。
 * Azure AD アクティビティ ログをイベント ハブにストリーミングすることで、独自のカスタム ログ ソリューションと統合することができます。
 * Azure AD アクティビティ ログを Azure Monitor ログに送信して、接続データに対する高度な視覚化、監視、およびアラートを有効にします。
 
@@ -39,9 +39,9 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 ## <a name="supported-reports"></a>サポートされるレポート
 
-この機能を使用して、Azure AD 監査ログとサインイン ログを Azure ストレージ アカウント、イベント ハブ、Azure Monitor ログ、またはカスタム ソリューションにルーティングすることができます。 
+この機能を使用して、Azure AD 監査ログとサインイン ログを Azure Storage アカウント、イベント ハブ、Azure Monitor ログ、またはカスタム ソリューションにルーティングすることができます。
 
-* **[監査ログ]** :テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
+* **監査ログ**: ユーザーとグループの管理や、テナントのリソースに適用される更新プログラムなど、テナントに適用される変更に関する情報は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
 * **サインイン ログ**:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
 
 > [!NOTE]
@@ -53,10 +53,10 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 この機能を使用するには、次が必要です。
 
 * Azure サブスクリプション。 Azure サブスクリプションを持っていない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/free/)できます。
-* Azure portal で Azure AD の監査ログにアクセスするための Azure AD Free、Basic、Premium 1 または Premium 2 の[ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)。 
+* Azure portal で Azure AD の監査ログにアクセスするための Azure AD Free、Basic、Premium 1 または Premium 2 の[ライセンス](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。 
 * Azure AD テナント。
 * Azure AD テナントの "**グローバル管理者**" または "**セキュリティ管理者**" であるユーザー。
-* Azure portal で Azure AD のサインイン ログにアクセスするための Azure AD Premium 1 または Premium 2 の[ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)。 
+* Azure portal で Azure AD のサインイン ログにアクセスするための Azure AD Premium 1 または Premium 2 の[ライセンス](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。 
 
 監査ログのデータをルーティングする場所によっては、次のいずれかが必要です。
 
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 ## <a name="cost-considerations"></a>コストに関する考慮事項
 
-既に Azure AD のライセンスをお持ちの場合は、ストレージ アカウントとイベント ハブの設定に Azure サブスクリプションが必要です。 Azure サブスクリプションは無料で利用できますが、アーカイブに使用するストレージ アカウントや、ストリーミングに使用するイベント ハブなどの Azure リソースの利用には料金が発生します。 データ量とそれにより発生するコストは、テナントのサイズによって大幅に変わる場合があります。 
+既に Azure AD のライセンスをお持ちの場合、ストレージ アカウントとイベント ハブを設定するために Azure サブスクリプションが必要です。 Azure サブスクリプションは無料で利用できますが、アーカイブに使用するストレージ アカウントや、ストリーミングに使用するイベント ハブなどの Azure リソースの利用には料金が発生します。 データ量とそれにより発生するコストは、テナントのサイズによって大幅に変わる場合があります。 
 
 ### <a name="storage-size-for-activity-logs"></a>アクティビティ ログのストレージ サイズ
 
@@ -92,13 +92,13 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 
 
-### <a name="event-hub-messages-for-activity-logs"></a>アクティビティ ログのイベント ハブのメッセージ
+### <a name="event-hub-messages-for-activity-logs"></a>アクティビティ ログのためのイベント ハブのメッセージ
 
-イベントは約 5 分間隔でバッチ処理され、その期間のすべてのイベントが含まれる単一のメッセージとして送信されます。 イベント ハブ内のメッセージの最大サイズは 256 KB で、その期間内のすべてのメッセージの合計サイズがそれを超える場合、複数のメッセージが送信されます。 
+イベントは約 5 分間隔でバッチ処理され、その期間のすべてのイベントが含まれる単一のメッセージとして送信されます。 イベント ハブ内の 1 つのメッセージの最大サイズは 256 KB で、その期間内のすべてのメッセージの合計サイズがそれを超える場合は、複数のメッセージが送信されます。 
 
-たとえば、ユーザーが 100,000 人を超える大規模なテナントでは、通常は 1 秒で約 18 のイベントが発生します。これは、5 分間で 5,400 のイベントに相当します。 監査ログはイベントごとに約 2 KB なので、これは 10.8 MB のデータに相当します。 そのため、その 5 分の間隔で 43 のメッセージがイベント ハブに送信されます。 
+たとえば、ユーザーが 100,000 人を超える大規模なテナントでは、通常は 1 秒で約 18 のイベントが発生します。これは、5 分間で 5,400 のイベントに相当します。 監査ログはイベントごとに約 2 KB なので、これは 10.8 MB のデータに相当します。 そのため、その 5 分の間隔では、43 のメッセージがイベント ハブに送信されます。 
 
-次の表は、米国西部の基本的なイベント ハブの 1 か月あたりの推定コストを示しています。これは、ユーザーのサインイン動作などのさまざまな要因によってテナントごとに異なる可能性があるイベント データの量によって変わります。アプリケーションで予測されるデータ量の正確な見積りを作成するには、[Event Hubs の料金計算ツール](https://azure.microsoft.com/pricing/details/event-hubs/)を使用します。
+次の表は、ユーザーのサインイン動作などの多くの要因によってテナントごとに異なる可能性があるイベント データの量に基づいた、米国西部の基本的なイベント ハブの 1 か月のコストの見積もりを示しています。お使いのアプリケーションで予測されるデータ量の正確な見積もりを計算するには、[Event Hubs の料金計算ツール](https://azure.microsoft.com/pricing/details/event-hubs/)を使用してください。
 
 | ログのカテゴリ | ユーザーの数 | 1 秒あたりのイベント数 | 5 分間隔あたりのイベント数 | 間隔あたりの量 | 間隔あたりのメッセージ数 | 1 か月あたりのメッセージ数 | 1 か月あたりのコスト (概算) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
@@ -134,7 +134,7 @@ Azure Monitor ログの管理に関連するコストをレビューするには
 
 **Q:どのようなログが含まれますか。**
 
-**A**: この機能を使用してサインイン アクティビティ ログと監査のログの両方をルーティングすることができます。ただし、現時点では B2C に関連する監査イベントは含まれません。 現在サポートされているログの種類や機能ベースのログについて調べるには、[監査ログ スキーマ](reference-azure-monitor-audit-log-schema.md)と[サインイン ログ スキーマ](reference-azure-monitor-sign-ins-log-schema.md)に関するページを参照してください。 
+**A**: この機能を使用してサインイン アクティビティ ログと監査のログの両方をルーティングすることができます。ただし、現時点では B2C に関連する監査イベントは含まれません。 現在サポートされているログの種類や機能ベースのログについて調べるには、[監査ログ スキーマ](./overview-reports.md)と[サインイン ログ スキーマ](reference-azure-monitor-sign-ins-log-schema.md)に関するページを参照してください。 
 
 ---
 

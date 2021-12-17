@@ -1,0 +1,50 @@
+- name: Azure Fluid Relay のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Fluid Relay の概要
+      href: overview/overview.md
+- name: クイックスタート
+  items:
+    - name: 'クイック スタート: ダイス ローラー'
+      href: quickstarts/quickstart-dice-roll.md
+- name: 概念
+  items:
+    - name: アーキテクチャ
+      href: concepts/architecture.md
+    - name: コンテナー管理
+      href: concepts/container-management.md
+    - name: 分散データ構造
+      href: concepts/data-structures.md
+    - name: Azure Fluid Relay でのデータの暗号化
+      href: concepts/data-encryption.md
+    - name: アプリの認証と承認
+      href: concepts/authentication-authorization.md
+    - name: バージョンの互換性
+      href: concepts/version-compatibility.md
+- name: 操作方法ガイド
+  items:
+    - name: '方法: Azure Fluid Relay サービスをプロビジョニングする'
+      href: how-tos/provision-fluid-azure-portal.md
+    - name: '方法: Azure Fluid Relay サービスに接続する'
+      href: how-tos/connect-fluid-azure-service.md
+    - name: '方法: ローカル テストに AzureClient を使用する'
+      href: how-tos/local-mode-with-azure-client.md
+    - name: '方法: Azure 関数を使用して TokenProvider を記述する'
+      href: how-tos/azure-function-token-provider.md
+    - name: '方法: Azure Static Web Apps を使用して流動的なアプリケーションをデプロイする'
+      href: how-tos/deploy-fluid-static-web-apps.md
+    - name: '方法: JWT トークンを使用する'
+      href: how-tos/fluid-json-web-token.md
+    - name: '方法: Azure Fluid Relay でテスト自動化を使用する'
+      href: how-tos/test-automation.md
+    - name: '方法: Fluid コンテナーを削除する'
+      href: how-tos/container-deletion.md
+- name: リファレンス
+  items:
+    - name: API のドキュメント
+      href: 'https://fluidframework.com/docs/apis/'
+- name: リソース
+  items:
+    - name: Fluid Framework ホーム ページ
+      href: 'https://fluidframework.com'

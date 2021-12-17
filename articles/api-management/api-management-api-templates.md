@@ -3,7 +3,7 @@ title: Azure API Management の API テンプレート | Microsoft Docs
 description: Azure API Management で開発者ポータルの API ページの内容をカスタマイズする方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.assetid: 3642fd09-ba98-4358-93a6-c48ab0500431
@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: apimpm
+ms.author: danlep
 ms.custom: devx-track-python
-ms.openlocfilehash: b63f38609b4b61130e515dd118e8ced9f201defd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1572843dfdff0f19a5c997781d1b3e5f223fad11
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87851716"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629827"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
 
@@ -90,7 +90,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`apis`|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティのコレクション。|現在のユーザーに表示される API。|  
   
@@ -345,7 +345,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`apiId`|string|現在の API の ID。|  
 |`apiName`|string|API の名前。|  

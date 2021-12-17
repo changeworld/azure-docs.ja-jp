@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - オンプレミスのレイヤー 2 ネットワークをプライベート クラウドに拡張する
 description: CloudSimple プライベート クラウドの NSX-T とオンプレミスのスタンドアロン NSX Edge クライアントの間にレイヤー 2 VPN を設定する方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 06446b6c36e36466fe891d7327d8151603cdecd2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b70f282b1429b2233914a239e68a655f1958dd33
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899373"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283394"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>レイヤー 2 拡張済みネットワークを使用したワークロードの移行
 
@@ -261,7 +261,7 @@ POST  https://192.168.110.201/api/v1/vpn/ipsec/tunnel-profiles
 
 ### <a name="create-a-local-endpoint"></a>ローカル エンドポイントを作成する
 
-``` 
+```
 POST https://192.168.110.201/api/v1/vpn/ipsec/local-endpoints
  
 {
@@ -356,7 +356,7 @@ POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
 
 次の POST コマンドで、L2VPN サービス ID はたった今取得した ID であり、IPsec VPN セッション ID は前のセクションで取得した ID です。
 
-```    
+```
 POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
 
 {
@@ -414,7 +414,7 @@ ENCAP       : GENEVE
 
 ## <a name="obtain-the-peer-code-for-l2vpn-on-the-nsx-t-side"></a>NSX-T 側で L2VPN のピア コードを取得する
 
-NSX-T エンドポイントのピア コードを取得します。 ピア コードは、リモート エンドポイントを構成するときに必要です。 L2VPN <session-id> は、前のセクションから取得できます。 詳細については、[NSX-T 2.3 の API ガイド](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html)を参照してください。
+NSX-T エンドポイントのピア コードを取得します。 ピア コードは、リモート エンドポイントを構成するときに必要です。 L2VPN \<session-id\> は、前のセクションから取得できます。 詳細については、[NSX-T 2.3 の API ガイド](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html)を参照してください。
 
 ```
 GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes

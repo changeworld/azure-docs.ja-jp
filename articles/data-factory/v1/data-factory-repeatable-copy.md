@@ -3,16 +3,17 @@ title: Azure Data Factory での反復可能なコピー
 description: データをコピーするスライスが複数回実行されたときに重複を回避する方法について説明します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c427cd90412121e896738ca43f4c66dd24b096dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efa0df274a02e53d7b9d30b0b215f0082c6bcf90
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387089"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218338"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory での反復可能なコピー
 

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2918b845430a6fc6dc59eca7041c114fc9d06515
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e08962c0cff2e9aa04601f89e677334878e2f53
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97092212"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461864"
 ---
 # <a name="create-an-account-sas-with-net"></a>.NET を使用してアカウント SAS を作成する
 
@@ -26,13 +26,13 @@ ms.locfileid: "97092212"
 
 ## <a name="create-an-account-sas"></a>アカウント SAS を作成する
 
-### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 アカウント SAS は、アカウント アクセス キーを使用して署名されます。 SAS の署名に使用される資格情報を作成するには、[StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) クラスを使用します。 次に、新しい [AccountSasBuilder](/dotnet/api/azure.storage.sas.accountsasbuilder) オブジェクトを作成し、[ToSasQueryParameters](/dotnet/api/azure.storage.sas.accountsasbuilder.tosasqueryparameters) を呼び出して SAS トークン文字列を取得します。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetAccountSASToken":::
 
-### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 コンテナーのアカウント SAS を作成するには、[CloudStorageAccount.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) メソッドを呼び出します。
 
@@ -66,11 +66,11 @@ static string GetAccountSASToken()
 
 Blob service 用にサービスレベルの API にアクセスするためにアカウント SAS を使用するには、SAS を使って Blob service クライアント オブジェクトを構築し、ストレージ アカウント用に BLOB ストレージ エンドポイントを構築します。
 
-### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_UseAccountSAS":::
 
-### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 このスニペットでは、`<storage-account>` プレースホルダーを実際のストレージ アカウントの名前に置き換えます。
 

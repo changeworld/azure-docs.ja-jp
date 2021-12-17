@@ -1,23 +1,26 @@
 ---
 title: コピー アクティビティでのデータ整合性の検証
-description: Azure Data Factory のコピー アクティビティでデータ整合性の検証を有効にする方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory および Azure Synapse パイプラインの Copy アクティビティでデータ整合性の検証を有効にする方法について説明します。
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 3/27/2020
+ms.date: 09/09/2021
 ms.author: yexu
-ms.openlocfilehash: b71657f67c1b9c623d6d48f33b986ac43533cca6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a79ec65dd9826db51042a8dfde74de6b563355be
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373018"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798790"
 ---
 #  <a name="data-consistency-verification-in-copy-activity"></a>コピー アクティビティでのデータ整合性の検証
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-ソース ストアからコピー先ストアにデータを移動するとき、Azure Data Factory コピー アクティビティでは、データがソース ストアからコピー先ストアに正常にコピーされただけでなく、ソース ストアとコピー先ストアの間の整合性も確保されていることを確認するための、追加のデータ整合性検証を行うことができます。 データの移動中に整合性のないファイルが検出されたら、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないファイルをスキップすることで、その他のデータをコピーし続けることができます。 スキップされたファイル名を取得するには、コピー アクティビティでセッション ログ設定を有効にします。 詳細については、「[コピー アクティビティのセッション ログ](copy-activity-log.md)」を参照してください。
+ソースからコピー先ストアにデータを移動するとき、Copy アクティビティでは、データがソースからコピー先ストアに正常にコピーされただけでなく、ソースとコピー先ストアの間の整合性も確保されていることを確認するための、追加のデータ整合性検証を行うこともできます。 データの移動中に整合性のないファイルが検出されたら、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないファイルをスキップすることで、その他のデータをコピーし続けることができます。 スキップされたファイル名を取得するには、コピー アクティビティでセッション ログ設定を有効にします。 詳細については、「[コピー アクティビティのセッション ログ](copy-activity-log.md)」を参照してください。
 
 ## <a name="supported-data-stores-and-scenarios"></a>サポートされているデータ ストアおよびシナリオ
 
@@ -76,8 +79,8 @@ linkedServiceName | セッション ログ ファイルを格納するための�
 path | ログ ファイルのパス。 | ログ ファイルを格納するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ
 
 >[!NOTE]
->- Azure Blob または Azure Data Lake Storage Gen2 との間でバイナリ ファイルをコピーするとき、ADF では、[Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) と [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) を活用し、ブロック レベル MD5 チェックサム検証が行われます。 ファイル上の ContentMD5 がデータ ソースとして Azure Blob または Azure Data Lake Storage Gen2 に存在する場合、ADF では、ファイルも読み取った後に、レベル MD5 チェックサム検証がファイリングされます。 データのコピー先として Azure Blob または Azure Data Lake Storage Gen2 にファイルをコピーした後、ADF では、Azure Blob または Azure Data Lake Storage Gen2 に ContentMD5 が書き込まれ、データの一貫性検証のために下流のアプリケーションでさらに利用できます。
->- ADF では、ストレージ ストア間でバイナリ ファイルをコピーするとき、ファイル サイズ検証が行われます。
+>- Azure Blob または Azure Data Lake Storage Gen2 との間でバイナリ ファイルをコピーするとき、サービスでは、[Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) と [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) を活用し、ブロック レベル MD5 チェックサム検証が行われます。 ファイル上の ContentMD5 がデータ ソースとして Azure Blob または Azure Data Lake Storage Gen2 に存在する場合、サービスでは、ファイルも読み取った後に、レベル MD5 チェックサム検証がファイリングされます。 データのコピー先として Azure Blob または Azure Data Lake Storage Gen2 にファイルをコピーした後、サービスでは、Azure Blob または Azure Data Lake Storage Gen2 に ContentMD5 が書き込まれ、データの一貫性検証のために下流のアプリケーションでさらに利用できます。
+>- サービスでは、ストレージ ストア間でバイナリ ファイルをコピーするとき、ファイル サイズ検証が行われます。
 
 ## <a name="monitoring"></a>監視
 
@@ -109,9 +112,9 @@ path | ログ ファイルのパス。 | ログ ファイルを格納するパ�
 -   **Unsupported**:この特定のコピー ペアでは、データの整合性の確認がサポートされていないため、コピーしたデータの整合性が検証されていません。 
 
 **InconsistentData** の値: 
--   **Found**:ADF のコピー アクティビティで、整合性のないデータが検出されました。 
--   **Skipped**:ADF のコピー アクティビティで、整合性のないデータが検出され、スキップされました。 
--   **None**:ADF のコピー アクティビティで、整合性のないデータは検出されませんでした。 ソース ストアとコピー先ストアの間でデータの整合性があることが確認されたか、またはコピー アクティビティで validateDataConsistency を無効にしたためである可能性があります。 
+-   **Found**: Copy アクティビティで、整合性のないデータが検出されました。 
+-   **Skipped**: Copy アクティビティで、整合性のないデータが検出され、スキップされました。 
+-   **None**: Copy アクティビティで、整合性のないデータは検出されませんでした。 ソース ストアとコピー先ストアの間でデータの整合性があることが確認されたか、またはコピー アクティビティで validateDataConsistency を無効にしたためである可能性があります。 
 
 ### <a name="session-log-from-copy-activity"></a>コピー アクティビティからのセッション ログ
 
@@ -121,9 +124,9 @@ path | ログ ファイルのパス。 | ログ ファイルを格納するパ�
 
 列 | 説明 
 -------- | -----------  
-Timestamp | ADF が整合性のないファイルをスキップしたときのタイムスタンプ。
+Timestamp | サービス整合性のないファイルをスキップしたときのタイムスタンプ。
 Level | この項目のログ レベル。 ファイルのスキップを示す項目は、'Warning' レベルになります。
-OperationName | 各ファイルでの ADF コピー アクティビティの実行動作。 スキップされるファイルを指定する場合は 'FileSkip' になります。
+OperationName | 各ファイルでの Copy アクティビティの実行動作。 スキップされるファイルを指定する場合は 'FileSkip' になります。
 OperationItem | スキップされるファイル名。
 Message | ファイルがスキップされた理由を示す詳細情報。
 
@@ -132,7 +135,7 @@ Message | ファイルがスキップされた理由を示す詳細情報。
 Timestamp, Level, OperationName, OperationItem, Message
 2020-02-26 06:22:56.3190846, Warning, FileSkip, "sample1.csv", "File is skipped after read 548000000 bytes: ErrorCode=DataConsistencySourceDataChanged,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Source file 'sample1.csv' is changed by other clients during the copy activity run.,Source=,'." 
 ```
-上記のログ ファイルから、sample1.csv がスキップされたことを確認できます。これは、ソース ストアとコピー先ストアの間で、整合性があることを確認できなかったためです。 sample1.csv が不整合になった詳しい理由として、ADF のコピー アクティビティによってファイルがコピーされていたのと同時に、他のアプリケーションによってそれが変更されていたためであることがわかります。 
+上記のログ ファイルから、sample1.csv がスキップされたことを確認できます。これは、ソース ストアとコピー先ストアの間で、整合性があることを確認できなかったためです。 sample1.csv が不整合になった詳しい理由として、Copy アクティビティによってファイルがコピーされていたのと同時に、他のアプリケーションによってそれが変更されていたためであることがわかります。 
 
 
 

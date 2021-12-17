@@ -1,17 +1,18 @@
 ---
 title: Power BI を使用してログとメトリックを視覚化する
 description: Power BI を使用して Azure Cognitive Search のログとメトリックを視覚化します。
-author: MarkHeff
-ms.author: maheff
+author: gmndrg
+ms.author: gimondra
+manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: fbbeb861e50abfd393b416ddc46ff147fffb7b8e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 57dd31643560b54f6f54b8352966a4c05cb6a35b
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581628"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892895"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Power BI を使用して Azure Cognitive Search のログとメトリックを視覚化する
 

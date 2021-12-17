@@ -11,12 +11,12 @@ ms.date: 03/02/2021
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a199c207e8ea35f1471df9bfd0c4134551b9995f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf645226de725d19af859118c43c336e5f542804
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653492"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067103"
 ---
 # <a name="language-customization-in-azure-active-directory"></a>Azure Active Directory での言語のカスタマイズ
 
@@ -131,7 +131,7 @@ Microsoft は、最新の翻訳を提供するよう努めています。 継続
 
 ### <a name="support-for-right-to-left-languages"></a>右から左へ記述する言語のサポート
 
-現在、右から左に書く言語はサポートしていません。 これには、カスタム ロケールと CSS を使用して、文字列の表示方法を変更することで対応できます。 この機能が必要な場合は、[Azure フィードバック](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag)で投票してください。
+現在、右から左に書く言語はサポートしていません。 これには、カスタム ロケールと CSS を使用して、文字列の表示方法を変更することで対応できます。 この機能が必要な場合は、[Azure フィードバック](https://feedback.azure.com/d365community/idea/10a7e89c-c325-ec11-b6e6-000d3a4f0789)で投票してください。
 
 ### <a name="social-identity-provider-translations"></a>ソーシャル ID プロバイダーの翻訳
 

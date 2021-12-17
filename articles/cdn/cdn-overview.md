@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 54ee903b490e10f7ea4ca3bca91f742b5811404d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3420acbccf8066b6a40669103f253a4fc6f06fa
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563304"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595300"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Azure 上のコンテンツ配信ネットワークとは
 コンテンツ配信ネットワーク (CDN) は、ユーザーに Web コンテンツを効率的に配信できるサーバーの分散ネットワークです。 CDN では、待ち時間を最小限に抑えるために、エンド ユーザーに近いポイントオブプレゼンス (POP) の場所のエッジ サーバーに、キャッシュされたコンテンツを格納します。 
@@ -69,7 +69,7 @@ Azure CDN が提供する主要な機能は、次のとおりです。
 - [HTTPS カスタム ドメインのサポート](cdn-custom-ssl.md)
 - [Azure Diagnostics ログ](cdn-azure-diagnostic-logs.md)
 - [ファイル圧縮](cdn-improve-performance.md)
-- [Geo-filtering](cdn-restrict-access-by-country.md)
+- [Geo-filtering](cdn-restrict-access-by-country-region.md)
 
 各 Azure CDN 製品でサポートされる機能の完全な一覧については、「[Azure CDN 製品の機能](cdn-features.md)」をご覧ください。
 

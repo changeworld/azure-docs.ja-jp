@@ -2,13 +2,14 @@
 title: 配信不能と再試行に関する方針 - Azure Event Grid
 description: Event Grid のイベント配信オプションをカスタマイズする方法について説明します。 配信不能メッセージの送信先を設定し、配信の再試行時間を指定します。
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 7d8cd74ccfb77bcec45d06071a4f46fb2a640cf8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/27/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 48fa27a1fe69481dda294f32bfc88af0e1718f25
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92460939"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731961"
 ---
 # <a name="set-dead-letter-location-and-retry-policy"></a>配信不能な場所の設定と再試行ポリシー
 
@@ -72,7 +73,7 @@ New-AzEventGridSubscription `
 
 Event Grid サブスクリプションの作成時には、Event Grid がイベント配信を試行する期間の値を設定できます。 既定では、Event Grid は、24 時間 (1440 分)、または 30 回の試行を行います。 Event Grid サブスクリプションには、これらの値のいずれかを設定できます。 イベントの有効期限の値は 1 から 1440 までの整数にする必要があります。 最大再試行回数は 1 から 30 までの整数にする必要があります。
 
-[再試行のスケジュール](delivery-and-retry.md#retry-schedule-and-duration)を構成することはできません。
+[再試行のスケジュール](delivery-and-retry.md#retry-schedule)を構成することはできません。
 
 ### <a name="azure-cli"></a>Azure CLI
 

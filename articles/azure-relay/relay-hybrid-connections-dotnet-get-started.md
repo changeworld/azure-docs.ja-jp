@@ -3,16 +3,16 @@ title: Azure Relay ハイブリッド接続 - .NET での WebSocket
 description: Azure Relay ハイブリッド接続 WebSocket 用の C# コンソール アプリケーションを作成します。
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
-ms.date: 06/23/2020
-ms.openlocfilehash: bf22b8b11dc386644803b43ee4e3a51d04b70419
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: bbe84c706aa97a98d35ee0c2e9ea4a04c5f94524
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90527430"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668330"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>.NET での Relay ハイブリッド接続 WebSocket の概要
-[!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
+[!INCLUDE [relay-selector-hybrid-connections](./includes/relay-selector-hybrid-connections.md)]
 
 このクイック スタートでは、Azure Relay のハイブリッド接続 WebSocket を使用してメッセージを送受信する .NET のセンダー アプリケーションとレシーバー アプリケーションを作成します。 Azure Relay 全般については、[Azure Relay](relay-what-is-it.md) に関するページを参照してください。 
 
@@ -32,20 +32,20 @@ ms.locfileid: "90527430"
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="create-a-namespace"></a>名前空間の作成
-[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
+[!INCLUDE [relay-create-namespace-portal](./includes/relay-create-namespace-portal.md)]
 
 ## <a name="create-a-hybrid-connection"></a>ハイブリッド接続の追加
-[!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
+[!INCLUDE [relay-create-hybrid-connection-portal](./includes/relay-create-hybrid-connection-portal.md)]
 
 ## <a name="create-a-server-application-listener"></a>サーバー アプリケーション (リスナー) の作成
 Visual Studio で C# コンソール アプリケーションを作成して、Relay からのメッセージをリッスンおよび受信します。
 
-[!INCLUDE [relay-hybrid-connections-dotnet-get-started-server](../../includes/relay-hybrid-connections-dotnet-get-started-server.md)]
+[!INCLUDE [relay-hybrid-connections-dotnet-get-started-server](./includes/relay-hybrid-connections-dotnet-get-started-server.md)]
 
 ## <a name="create-a-client-application-sender"></a>クライアント アプリケーション (センダー) の作成
 Visual Studio で C# コンソール アプリケーションを作成して、Relay にメッセージを送信します。
 
-[!INCLUDE [relay-hybrid-connections-dotnet-get-started-client](../../includes/relay-hybrid-connections-dotnet-get-started-client.md)]
+[!INCLUDE [relay-hybrid-connections-dotnet-get-started-client](./includes/relay-hybrid-connections-dotnet-get-started-client.md)]
 
 ## <a name="run-the-applications"></a>アプリケーションの実行
 1. サーバー アプリケーションを実行します。

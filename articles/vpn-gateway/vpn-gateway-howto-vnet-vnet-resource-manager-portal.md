@@ -1,26 +1,27 @@
 ---
-title: 'VNet 対 VNet の VPN Gateway 接続を構成する: Azure portal'
-description: Resource Manager と Azure Portal を使用して VNet 間の VPN ゲートウェイ接続を作成します。
+title: 'VNet 間 VPN ゲートウェイ接続の構成: Azure portal'
+titleSuffix: Azure VPN Gateway
+description: Vnet 間で VPN ゲートウェイ接続を作成する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 09/23/2021
 ms.author: cherylmc
-ms.openlocfilehash: 465d877da48e0d7027dbba6615302af32c6bb154
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92ec3349f5e2e2f06fdbe7f56468a7145452276d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98872402"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667067"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する
 
-この記事は、VNet 間という接続の種類を使用して、仮想ネットワーク (VNets) を接続する際に役立ちます。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 
+この記事は、Azure portal を使用して VNet 間接続の種類を使用して、仮想ネットワーク (VNets) を接続する際に役立ちます。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 この種類の構成では、2 つの仮想ネットワーク ゲートウェイ間の接続が作成されます。 この記事の内容は、VNet ピアリングには当てはまりません。 VNet ピアリングについては、「[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)」記事を参照してください。 
 
 :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet-vnet-diagram.png" alt-text="VNet 間の図":::
 
-この記事の手順は、Azure Resource Manager デプロイ モデルに適用されます。また、この手順では Azure ポータルを使用します。 以下の記事で説明されているオプションを使用して、別のデプロイ ツールやモデルでこの構成を作成することができます。
+この構成は、VNet のデプロイ モデルに応じて、さまざまなツールを使用して作成できます。 この記事の手順は、[Azure Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md) と Azure portal に適用されます。 別のデプロイ モデルまたはデプロイ方法の記事に切り替えるには、ドロップダウンを使用します。 
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -40,7 +41,9 @@ ms.locfileid: "98872402"
 
 VNet 間接続の構成は、VNet を接続するためのシンプルな方法です。 VNet 間接続 (VNet2VNet) の種類を使用して仮想ネットワークどうしを接続する場合、それはオンプレミスの場所へのサイト間 IPsec 接続を作成することに似ています。 どちらの接続の種類でも、VPN ゲートウェイを使用して IPsec/IKE を使った安全なトンネルが提供され、通信時には同じように機能します。 しかし、ローカル ネットワーク ゲートウェイの構成方法は異なります。 
 
-VNet 間接続を作成するときに、ローカル ネットワーク ゲートウェイのアドレス空間は自動的に作成され、設定されます。 一方の VNet のアドレス空間を更新すると、更新されたアドレス空間へのルーティングがもう一方の VNet で自動的に行われます。 VNet 間接続の作成は、通常、サイト間接続の場合よりも高速で簡単です。
+VNet 間接続を作成するときに、ローカル ネットワーク ゲートウェイのアドレス空間は自動的に作成され、設定されます。 一方の VNet のアドレス空間を更新すると、更新されたアドレス空間へのルーティングがもう一方の VNet で自動的に行われます。 VNet 間接続の作成は、通常、サイト間接続の場合よりも高速で簡単です。 ただし、この構成では、ローカル ネットワーク ゲートウェイは表示されません。 
+* ローカル ネットワーク ゲートウェイに追加のアドレス空間を指定する場合、または後で接続を追加する予定でローカル ネットワーク ゲートウェイを調整する必要がある場合は、サイト間の手順を使用して構成を作成する必要があります。 
+* VNet 間接続には、ポイント対サイト クライアント プールのアドレス空間は含まれません。 ポイント対サイト クライアントの推移的ルーティングが必要な場合は、仮想ネットワーク ゲートウェイ間にサイト間接続を作成するか、VNet ピアリングを使用します。
 
 ### <a name="site-to-site-ipsec"></a>サイト間 (IPsec)
 
@@ -48,7 +51,10 @@ VNet 間接続を作成するときに、ローカル ネットワーク ゲー�
 
 ### <a name="vnet-peering"></a>VNET ピアリング
 
-VNet ピアリングを使用して VNet を接続することもできます。 VNet ピアリングは VPN ゲートウェイを使用せず、さまざまな制約があります。 さらに、[VNET ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は、[VNet 間 VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway)と計算方法が異なります。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
+VNet ピアリングを使用して VNet を接続することもできます。
+* VNet ピアリングは VPN ゲートウェイを使用せず、さまざまな制約があります。
+* [VNet ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は、[VNet 間 VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway)とは計算方法が異なります。
+* VNet ピアリングの詳細については、「[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)」記事を参照してください。
 
 ## <a name="why-create-a-vnet-to-vnet-connection"></a>VNet 間接続を作成する理由
 
@@ -65,7 +71,7 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
 
 マルチサイト構成と VNet 間通信を組み合わせることができます。 これらの構成では、クロスプレミス接続と仮想ネットワーク間接続を組み合わせたネットワーク トポロジを確立することができます (下図参照)。
 
-:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections-diagram.png" alt-text="VNet 接続の図":::
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections-diagram.png" alt-text="VNet 接続の図。":::
 
 この記事では、VNet 間という接続の種類を使用して、VNet を接続する方法を示します。 演習として以下の手順に従う場合は、次の例の設定値を使用できます。 この例では、仮想ネットワークは同じサブスクリプション内にありながら、異なるリソース グループに含まれます。 対象となる VNet がそれぞれ異なるサブスクリプションに存在する場合、ポータルで接続を作成することはできません。 代わりに、[PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) または [CLI](vpn-gateway-howto-vnet-vnet-cli.md) を使用します。 VNet 間接続の詳細については、「[VNet 間接続に関してよく寄せられる質問](#vnet-to-vnet-faq)」を参照してください。
 
@@ -86,10 +92,10 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
 * **仮想ネットワーク ゲートウェイの設定**
   * **Name**:VNet1GW
   * **[リソース グループ]** :米国東部
-  * **世代**: 第 1 世代
+  * **世代:** 第 2 世代
   * **[ゲートウェイの種類]** : **[VPN]** を選択します。
-  * **VPN の種類**: **[ルート*ベース]** を選択します。
-  * **SKU**: VpnGw1
+  * **[VPN の種類]** : **[ルート ベース]** を選択します。
+  * **SKU**: VpnGw2
   * **仮想ネットワーク**:VNet1
   * **[ゲートウェイ サブネットのアドレス範囲]** : 10.1.255.0/27
   * **[パブリック IP アドレス]** : 新規作成
@@ -114,10 +120,10 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
 * **仮想ネットワーク ゲートウェイの設定**
   * **Name**:VNet4GW
   * **[リソース グループ]** :米国西部
-  * **世代**: 第 1 世代
+  * **世代:** 第 2 世代
   * **[ゲートウェイの種類]** : **[VPN]** を選択します。
-  * **VPN の種類**: **[ルート ベース]** を選択します。
-  * **SKU**: VpnGw1
+  * **[VPN の種類]** : **[ルート ベース]** を選択します。
+  * **SKU**: VpnGw2
   * **仮想ネットワーク**:VNet4
   * **[ゲートウェイ サブネットのアドレス範囲]** : 10.41.255.0/27
   * **[パブリック IP アドレス]** : 新規作成
@@ -145,7 +151,10 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
 
 ### <a name="to-create-a-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成するには
 
-[!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+デプロイの状態は、ゲートウェイの [概要] ページで確認できます。 ゲートウェイの作成とデプロイが完了するまでに 45 分以上かかることがあります。 ゲートウェイの作成後は、ポータルの仮想ネットワークを調べることで、ゲートウェイに割り当てられている IP アドレスを確認できます。 ゲートウェイは、接続されたデバイスとして表示されます。
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -160,10 +169,10 @@ VNet1 と VNet4 の仮想ネットワーク ゲートウェイの作成が両方
 1. Azure ポータルで、 **[すべてのリソース]** を選択し、検索ボックスに *仮想ネットワーク ゲートウェイ* を入力してから、VNet の仮想ネットワーク ゲートウェイに移動します。 たとえば、 **[VNet1GW]** に移動します。 ゲートウェイを選択して、**仮想ネットワーク ゲートウェイ** のページを開きます。
 1. [ゲートウェイ] ページで、 **[設定] > [接続]** の順にアクセスします。 次に、 **[+ 追加]** を選択します。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="[接続] ページ":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="[接続] ページを示すスクリーンショット。" border="false":::
 1. **[接続の追加]** ページが開きます。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="[接続の追加]":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="[接続の追加] ページを示すスクリーンショット。":::
 
    **[接続の追加]** ページで、接続の値を入力します。
 
@@ -175,7 +184,7 @@ VNet1 と VNet4 の仮想ネットワーク ゲートウェイの作成が両方
 
    * **2 番目の仮想ネットワーク ゲートウェイ**:このフィールドでは、接続先として作成する VNet の仮想ネットワーク ゲートウェイを設定します。 **[別の仮想ネットワーク ゲートウェイを選択する]** を選び、 **[仮想ネットワーク ゲートウェイの選択]** ページを開きます。
 
-      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="ゲートウェイを選択":::
+      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="別のゲートウェイが選択されている [仮想ネットワーク ゲートウェイの選択] ページを示すスクリーンショット。":::
 
      * このページに一覧表示されている仮想ネットワーク ゲートウェイを確認します。 自分のサブスクリプションに属している仮想ネットワーク ゲートウェイのみが表示されていることがわかります。 自分のサブスクリプションに属していない仮想ネットワーク ゲートウェイに接続する場合は、[PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) を使用します。
 
@@ -193,10 +202,10 @@ VNet1 と VNet4 の仮想ネットワーク ゲートウェイの作成が両方
 1. Azure ポータルで仮想ネットワーク ゲートウェイを探します。 
 1. **仮想ネットワーク ゲートウェイ** のページで、 **[接続]** を選択して仮想ネットワーク ゲートウェイの **[接続]** ページを表示します。 接続が確立された後、 **[状態]** の値が **[接続済み]** に変わります。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="接続を確認する":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="接続を確認する [接続] ページを示すスクリーンショット。" border="false":::
 1. **[名前]** 列で、いずれかの接続を選択して詳細を表示します。 データのフローが開始されると、 **[データ入力]** と **[データ出力]** に値が表示されます。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="リソース グループを示すスクリーンショット。[データ入力] と [データ出力] に値が含まれています。":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="リソース グループを示すスクリーンショット。[データ入力] と [データ出力] に値が含まれています。" border="false":::
 
 ## <a name="add-additional-connections"></a>さらに接続を追加する
 

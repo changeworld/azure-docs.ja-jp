@@ -4,12 +4,12 @@ ms.service: container-registry
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
-ms.openlocfilehash: 79e2ca71d6b8178be63c3429edba89cf3bb523e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 929bcb52f724162454fc7c65939a4cec2ffd7ca6
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96029993"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112254996"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "96029993"
 
 ### <a name="create-a-github-personal-access-token"></a>GitHub 個人用アクセス トークンを作成する
 
-Git リポジトリへのコミットでタスクをトリガーするには、リポジトリにアクセスするための個人用アクセス トークン (PAT) が ACR タスクに必要です。 まだ PAT がない場合は、次の手順に従って GitHub に PAT を生成してください。
+Git リポジトリへのコミットでタスクをトリガーするには、リポジトリにアクセスするための[個人用アクセス トークン (PAT)](../articles/container-registry/container-registry-tasks-overview.md#personal-access-token) が ACR タスクに必要です。 まだ PAT がない場合は、次の手順に従って GitHub に PAT を生成してください。
 
 1. GitHub で PAT 作成ページ (https://github.com/settings/tokens/new) に移動します
 1. トークンの短い **説明** を入力します (例: "ACR タスクのデモ")

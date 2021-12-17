@@ -3,14 +3,14 @@ title: Durable Functions の HTTP 機能 - Azure Functions
 description: Azure Functions 用の Durable Functions 拡張機能の統合 HTTP 機能について説明します。
 author: cgillum
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 64d40de50f21811a56318971de1836abc8fbf8c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f661ea1462ad00cdf0ddc5caa802b53d5d8fc20
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93027263"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480446"
 ---
 # <a name="http-features"></a>HTTP 機能
 
@@ -106,6 +106,48 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 }
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+**run.ps1**
+
+```powershell
+$FunctionName = $Request.Params.FunctionName
+$InstanceId = Start-NewOrchestration -FunctionName $FunctionName
+Write-Host "Started orchestration with ID = '$InstanceId'"
+
+$Response = New-OrchestrationCheckStatusResponse -Request $Request -InstanceId $InstanceId
+Push-OutputBinding -Name Response -Value $Response
+```
+
+**function.json**
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "Request",
+      "type": "httpTrigger",
+      "direction": "in",
+      "route": "orchestrators/{FunctionName}",
+      "methods": [
+        "post",
+        "get"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    },
+    {
+      "name": "starter",
+      "type": "orchestrationClient",
+      "direction": "in"
+    }
+  ]
+}
+```
 ---
 
 前述の HTTP トリガー関数を使用したオーケストレーター関数の開始は、任意の HTTP クライアントを使用して実行できます。 次の cURL コマンドでは、`DoWork` という名前のオーケストレーター関数を開始します。
@@ -216,6 +258,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+現在、この機能は PowerShell でサポートされています。
+
 ---
 
 "call HTTP" アクションを使用して、オーケストレーター関数で次のアクションを実行できます。
@@ -231,7 +277,8 @@ main = df.Orchestrator.create(orchestrator_function)
 "call HTTP" API では、ポーリング コンシューマー パターンのクライアント側を自動的に実装できます。 呼び出された API から Location ヘッダーを含む HTTP 202 応答が返される場合、202 以外の応答が返されるまで、オーケストレーター関数では Location リソースが自動的にポーリングされます。 この応答は、オーケストレーター関数コードに返される応答です。
 
 > [!NOTE]
-> オーケストレーター関数は、「[非同期操作の追跡](#async-operation-tracking)」で説明されているように、サーバー側のポーリング コンシューマー パターンもネイティブでサポートします。 このサポートにより、1 つの関数アプリ内のオーケストレーションで、他の関数アプリのオーケストレーター関数を簡単に調整できます。 これは、[サブオーケストレーション](durable-functions-sub-orchestrations.md)の概念と似ていますが、アプリ間通信がサポートされています。 このサポートは、マイクロサービススタイルのアプリ開発に特に役立ちます。
+> 1. オーケストレーター関数は、「[非同期操作の追跡](#async-operation-tracking)」で説明されているように、サーバー側のポーリング コンシューマー パターンもネイティブでサポートします。 このサポートにより、1 つの関数アプリ内のオーケストレーションで、他の関数アプリのオーケストレーター関数を簡単に調整できます。 これは、[サブオーケストレーション](durable-functions-sub-orchestrations.md)の概念と似ていますが、アプリ間通信がサポートされています。 このサポートは、マイクロサービススタイルのアプリ開発に特に役立ちます。
+> 2. JavaScript (TypeScript) および Python では、一時的な制限により、組み込みの HTTP ポーリング パターンは現在利用できません。
 
 ### <a name="managed-identities"></a>マネージド ID
 
@@ -313,6 +360,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell) 
+
+現在、この機能は PowerShell でサポートされています。
+
 ---
 
 前の例で、`tokenSource` パラメーターは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) の Azure AD トークンを取得するように構成されています。 このトークンは、リソース URI `https://management.core.windows.net/.default`によって識別されます。 この例では、現在の関数アプリがローカルで実行されているか、マネージド ID を使用する関数アプリとしてデプロイ済みであることを前提としています。 ローカル ID またはマネージド ID は、指定されたリソース グループ `myRG` 内の VM を管理できるアクセス許可を持っていると見なされます。
@@ -331,10 +382,10 @@ main = df.Orchestrator.create(orchestrator_function)
 
 HTTP API を呼び出す組み込みのサポートは便利な機能です。 これは、すべてのシナリオに適しているわけではありません。
 
-オーケストレーター関数で送信される HTTP 要求とその応答はキュー メッセージとしてシリアル化され、永続的です。 このキュー動作によって、HTTP 呼び出しで[信頼性が高く、安全にオーケストレーションを再生する](durable-functions-orchestrations.md#reliability)ことが保証されます。 ただし、キュー動作にも制限事項があります。
+オーケストレーター関数で送信される HTTP 要求とその応答は、Durable Functions 記憶域プロバイダーのメッセージとして[シリアル化および永続化されます](durable-functions-serialization-and-persistence.md)。 この永続キュー動作によって、HTTP 呼び出しで[信頼性が高く、安全にオーケストレーションを再生する](durable-functions-orchestrations.md#reliability)ことが保証されます。 ただし、永続キュー動作にも制限事項があります。
 
 * 各 HTTP 要求では、ネイティブの HTTP クライアントと比較すると、追加の待機時間が発生します。
-* キュー メッセージに収まりきらない大きな要求または応答メッセージがあると、オーケストレーションのパフォーマンスが大幅に低下する可能性があります。 BLOB ストレージへのメッセージ ペイロードのオフロードのオーバーヘッドにより、パフォーマンスが低下する可能性があります。
+* [構成された記憶域プロバイダー](durable-functions-storage-providers.md)によっては、大規模な要求または応答メッセージによって、オーケストレーションのパフォーマンスが大幅に低下する可能性があります。 たとえば、Azure Storage を使用する場合、大きすぎて Azure キューメッセージに入らない HTTP ペイロードは圧縮され、Azure Blob Storage に格納されます。
 * ストリーミング、チャンク、およびバイナリのペイロードはサポートされません。
 * HTTP クライアントの動作をカスタマイズする機能は制限されています。
 

@@ -2,14 +2,14 @@
 title: Azure Backup での暗号化
 description: Azure Backup の暗号化機能が、バックアップ データを保護し、ビジネスのセキュリティ ニーズを満たすためにどのように役立つかについて説明します。
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 05/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: 28d165ccc8a966091a96fc433660899d8eef1595
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 2e32bb880e42aad72a526e7515ba9156de75de9a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518475"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233058"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure Backup での暗号化
 
@@ -26,10 +26,7 @@ Azure Backup には、次の 2 つのレベルの暗号化が含まれていま�
 - **バックアップされているワークロードに固有の暗号化**  
   - **Azure 仮想マシンのバックアップ**: Azure Backup では、[プラットフォーム マネージド キー](../virtual-machines/disk-encryption.md#platform-managed-keys)だけでなく、自分が所有および管理している [カスタマー マネージド キー](../virtual-machines/disk-encryption.md#customer-managed-keys)を使用して暗号化されたディスクでの VM のバックアップがサポートされます。 さらに、その OS またはデータ ディスクが [Azure Disk Encryption](backup-azure-vms-encryption.md#encryption-support-using-ade) を使用して暗号化されている Azure 仮想マシンをバックアップすることもできます。 ADE は、Windows VM では BitLocker、Linux VM では DM-Crypt を使用してゲスト内暗号化を実行します。
 
->[!NOTE]
->現在、インフラストラクチャの暗号化は限定プレビュー段階であり、米国東部、米国西部 2、米国中南部、US Gov アリゾナ、および US GOV バージニア リージョンでのみご利用いただけます。 これらのリージョンのいずれかでこの機能を使用する場合は、[こちらのフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u)に記入し、メールで [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) にお問い合わせください。
-
 ## <a name="next-steps"></a>次のステップ
 
 - [保存データに対する Azure Storage 暗号化](../storage/common/storage-service-encryption.md)
-- 暗号化について質問がある場合は [Azure Backup の FAQ](/backup-azure-backup-faq.yml#encryption)
+- 暗号化について質問がある場合は [Azure Backup の FAQ](./backup-azure-backup-faq.yml)

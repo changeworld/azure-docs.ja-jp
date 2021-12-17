@@ -1,16 +1,16 @@
 ---
 title: Azure Arc 対応サーバーを計画およびデプロイする方法
 description: 多数のマシンを Azure Arc 対応サーバーに対して有効にして、Azure で、重要なセキュリティ、管理、監視の機能の構成を簡略化する方法について説明します。
-ms.date: 03/18/2021
+ms.date: 08/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5aa7022dba943fa3de247404522408f4660e80e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b32090caf8167874e61bbca0c5f3782557abd620
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023284"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340289"
 ---
-# <a name="plan-and-deploy-arc-enabled-servers"></a>Arc 対応サーバーの計画およびデプロイ
+# <a name="plan-and-deploy-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを計画およびデプロイする
 
 IT インフラストラクチャ サービスまたはビジネス アプリケーションのデプロイは、どの企業にとっても難題です。 適切に実行し、うれしくない驚きや計画外のコストを回避するには、徹底的に計画を立てて可能な限り準備しておく必要があります。 Azure Arc 対応サーバーのデプロイを計画するには、その規模を問わず、タスクを適切に完了するために満たす必要がある、設計とデプロイの条件を網羅する必要があります。
 
@@ -27,11 +27,15 @@ IT インフラストラクチャ サービスまたはビジネス アプリケ
 
 この記事の目的は、環境内の複数の運用物理サーバーまたは仮想マシンの全体にわたって Azure Arc 対応サーバーのデプロイを成功させるための準備を、確実に行うことです。
 
+また、Microsoft の大規模なデプロイに関する推奨事項の詳細については、こちらのビデオも参照してください。
+
+> [!VIDEO https://www.youtube.com/embed/Cf1jUPOB_vs]
+
 ## <a name="prerequisites"></a>前提条件
 
 * お使いのマシンで、Connected Machine エージェントで[サポートされているオペレーティング システム](agent-overview.md#supported-operating-systems)が実行されていること。
 * お使いのマシンが、オンプレミスのネットワークまたはその他のクラウド環境から、直接またはプロキシ サーバーを介して Azure 内のリソースに接続できること。
-* Arc 対応サーバーの Connected Machine エージェントをインストールして構成するための、マシンでの昇格された (つまり、管理者またはルートとしての) 特権を持つアカウント。
+* Azure Arc 対応サーバーの Connected Machine エージェントをインストールして構成するための、マシンでの昇格された (つまり、管理者またはルートとしての) 特権を持つアカウント。
 * マシンをオンボードするには、**Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
 * マシンの読み取り、変更、および削除を行うには、**Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。
 
@@ -52,22 +56,22 @@ IT インフラストラクチャ サービスまたはビジネス アプリケ
 
 ## <a name="phase-1-build-a-foundation"></a>フェーズ 1: 基盤を構築する
 
-このフェーズでは、システム エンジニアまたは管理者が、組織の Azure サブスクリプションでコア機能を有効にして、お使いのマシンで Arc 対応サーバーおよびその他の Azure サービスによる管理を有効にする前に、基盤の構築を開始します。
+このフェーズでは、システム エンジニアまたは管理者が、組織の Azure サブスクリプションでコア機能を有効にして、お使いのマシンで Azure Arc 対応サーバーおよびその他の Azure サービスによる管理を有効にする前に、基盤の構築を開始します。
 
 |タスク |Detail |Duration |
 |-----|-------|---------|
-| [リソース グループの作成](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | Arc 対応サーバーだけを含み、これらのリソースの管理と監視を一元化する専用リソース グループ。 | 1 時間 |
-| マシンの整理に役立つ[タグ](../../azure-resource-manager/management/tag-resources.md)を適用する。 | Arc 対応サーバーの管理の複雑さを軽減し、管理上の意思決定を簡略化するのに役立つ、IT 面で調整された[タグ付け戦略](/azure/cloud-adoption-framework/decision-guides/resource-tagging/)の評価と作成を行います。 | 1 日 |
+| [リソース グループの作成](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | Azure Arc 対応サーバーだけを含み、これらのリソースの管理と監視を一元化する専用リソース グループ。 | 1 時間 |
+| マシンの整理に役立つ[タグ](../../azure-resource-manager/management/tag-resources.md)を適用する。 | Azure Arc 対応サーバーの管理の複雑さを軽減し、管理上の意思決定を簡略化するのに役立つ、IT 面で調整された[タグ付け戦略](/azure/cloud-adoption-framework/decision-guides/resource-tagging/)の評価と作成を行います。 | 1 日 |
 | [Azure Monitor ログ](../../azure-monitor/logs/data-platform-logs.md)を設計してデプロイする | [設計とデプロイに関する考慮事項](../../azure-monitor/logs/design-logs-deployment.md)を評価して、ハイブリッド サーバーとマシンから収集したログ データを格納するために、組織が既存の Log Analytics ワークスペースを使用するか、別の Log Analytics ワークスペースを実装するかを決定します。<sup>1</sup> | 1 日 |
 | [Azure Policy](../../governance/policy/overview.md) ガバナンス計画を作成する | Azure Policy を使用して、サブスクリプションまたはリソース グループのスコープでハイブリッド サーバーとマシンのガバナンスを実装する方法を決定します。 | 1 日 |
-| [ロールベースのアクセス制御](../../role-based-access-control/overview.md) (RBAC) を構成する | Arc 対応サーバーを管理するためのアクセスと、他の Azure サービスやソリューションからのデータを表示する機能を、誰が持つかを制御するアクセス計画を作成します。 | 1 日 |
+| [ロールベースのアクセス制御](../../role-based-access-control/overview.md) (RBAC) を構成する | Azure Arc 対応サーバーを管理するためのアクセスと、他の Azure サービスやソリューションからのデータを表示する機能を、誰が持つかを制御するアクセス計画を作成します。 | 1 日 |
 | Log Analytics エージェントが既にインストールされているマシンを特定する | 既存の Log Analytics エージェントのデプロイから、拡張機能で管理されるエージェントへの変換をサポートするため、[Log Analytics](../../azure-monitor/logs/log-analytics-overview.md) で次のログクエリを実行します。<br> Heartbeat <br> &#124; where TimeGenerated > ago(30d) <br> &#124; where ResourceType == "machines" and (ComputerEnvironment == "Non-Azure") <br> &#124; summarize by Computer, ResourceProvider, ResourceType, ComputerEnvironment | 1 時間 |
 
-<sup>1</sup> Log Analytics ワークスペースの設計評価の一部としての重要な考慮事項は、Update Management、変更履歴とインベントリ機能のほか、Azure Security Center と Azure Sentinel をサポートする Azure Automation との統合です。 組織に既に Automation アカウントがあり、Log Analytics ワークスペースにリンクされる管理機能が有効になっている場合は、重複するアカウントやワークスペースなどを作成する代わりにそれらの既存のリソースを使用することによって、管理操作を一元化して合理化できるかどうかを評価し、コストを最小限に抑えることができます。
+<sup>1</sup> Log Analytics ワークスペースの設計評価の一部としての重要な考慮事項は、Update Management、変更履歴とインベントリ機能のほか、Microsoft Defender for Cloud と Microsoft Sentinel をサポートする Azure Automation との統合です。 組織に既に Automation アカウントがあり、Log Analytics ワークスペースにリンクされる管理機能が有効になっている場合は、重複するアカウントやワークスペースなどを作成する代わりにそれらの既存のリソースを使用することによって、管理操作を一元化して合理化できるかどうかを評価し、コストを最小限に抑えることができます。
 
-## <a name="phase-2-deploy-arc-enabled-servers"></a>フェーズ 2: Arc 対応サーバーをデプロイする
+## <a name="phase-2-deploy-azure-arc-enabled-servers"></a>フェーズ 2: Azure Arc 対応サーバーをデプロイする
 
-次に、Arc 対応サーバーの Connected Machine エージェントを準備してデプロイすることで、フェーズ 1 で準備した基盤に追加します。
+次に、Azure Arc 対応サーバーの Connected Machine エージェントを準備してデプロイすることで、フェーズ 1 で準備した基盤に追加します。
 
 |タスク |Detail |Duration |
 |-----|-------|---------|
@@ -83,8 +87,8 @@ IT インフラストラクチャ サービスまたはビジネス アプリケ
 |-----|-------|---------|
 |Resource Health アラートを作成する |サーバーが Azure へのハートビートの送信を 15 分より長く停止する場合は、それがオフラインであるか、ネットワーク接続がブロックされているか、エージェントが実行されていないことを意味する可能性があります。 これらのインシデントに対応して調査し、[Resource Health アラート](../..//service-health/resource-health-alert-monitor-guide.md)を使用してその開始時に通知を受け取る方法の計画を作成します。<br><br> アラートの構成時には以下のように指定します。<br> **リソースの種類** = **Azure Arc 対応サーバー**<br> **現在のリソースの状態** = **使用不可**<br> **以前のリソースの状態** = **使用可能** | 1 時間 |
 |Azure Advisor アラートを作成する | 優れたエクスペリエンスと最新のセキュリティおよびバグの修正プログラムについては、Azure Arc 対応サーバー エージェントを最新の状態に保つことをお勧めします。 古くなったエージェントは、[Azure Advisor アラート](../../advisor/advisor-alerts-portal.md)で識別されます。<br><br> アラートの構成時には以下のように指定します。<br> **推奨の種類** = **最新バージョンの Azure Connected Machine Agent にアップグレードする** | 1 時間 |
-|サブスクリプションまたはリソース グループのスコープに [Azure ポリシーを割り当てる](../../governance/policy/assign-policy-portal.md) |**Azure Monitor for VMs の有効化** [ポリシー](../../azure-monitor/vm/vminsights-enable-policy.md) (およびニーズに合ったその他のポリシー) をサブスクリプションまたはリソース グループ スコープに割り当てます。 Azure Policy により、お使いの環境全体で Azure Monitor for VMs に必要なエージェントをインストールするポリシーの定義を割り当てることができます。| 場合により異なる |
-|[Arc 対応サーバーに対して Update Management を有効にする](../../automation/update-management/enable-from-automation-account.md) |Azure Automation で Update Management を構成して、Arc 対応サーバーに登録されている Windows と Linux の仮想マシンのオペレーティング システム更新プログラムを管理します。 | 約 15 分 |
+|サブスクリプションまたはリソース グループのスコープに [Azure ポリシーを割り当てる](../../governance/policy/assign-policy-portal.md) |**Azure Monitor for VMs の有効化** [ポリシー](../../azure-monitor/vm/vminsights-enable-policy.md) (およびニーズに合ったその他のポリシー) をサブスクリプションまたはリソース グループ スコープに割り当てます。 Azure Policy により、お使いの環境全体で VM インサイトに必要なエージェントをインストールするポリシーの定義を割り当てることができます。| 場合により異なる |
+|[Azure Arc 対応サーバーに対して Update Management を有効にする](../../automation/update-management/enable-from-automation-account.md) |Azure Automation で Update Management を構成して、Azure Arc 対応サーバーに登録されている Windows と Linux の仮想マシンのオペレーティング システム更新プログラムを管理します。 | 約 15 分 |
 
 ## <a name="next-steps"></a>次のステップ
 

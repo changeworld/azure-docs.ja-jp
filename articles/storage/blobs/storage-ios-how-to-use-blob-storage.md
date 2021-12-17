@@ -1,22 +1,22 @@
 ---
 title: iOS - Azure からオブジェクト (BLOB) ストレージを使用する方法 | Microsoft Docs
-description: Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。
-author: twooley
-ms.author: twooley
+description: Azure Blob Storage (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。
+author: normesta
+ms.author: normesta
 ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 1b0653c997930c60950da335e79b0388edd43897
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 03375a954155aff94d581f04ccde109b6559acb2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278356"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444859"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>iOS から BLOB ストレージを使用する方法
 
-この記事では、Microsoft Azure BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Objective-C で記述され、 [iOS 用 Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-ios)を使用しています。 紹介するシナリオは、BLOB のアップロード、一覧の取得、ダウンロード、および削除です。 BLOB の詳細については、「 [次のステップ](#next-steps) 」のセクションを参照してください。 また、 [サンプル アプリ](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) をダウンロードし、iOS アプリケーションでの Azure Storage の使用例をすぐに確認することもできます。
+この記事では、Microsoft Azure Blob Storage を使用して一般的なシナリオを実行する方法について説明します。 サンプルは Objective-C で記述され、 [iOS 用 Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-ios)を使用しています。 紹介するシナリオは、BLOB のアップロード、一覧の取得、ダウンロード、および削除です。 BLOB の詳細については、「 [次のステップ](#next-steps) 」のセクションを参照してください。 また、 [サンプル アプリ](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) をダウンロードし、iOS アプリケーションでの Azure Storage の使用例をすぐに確認することもできます。
 
 Blob Storage の詳細については、「[Azure Blob Storage の概要](storage-blobs-introduction.md)」をご覧ください。
 
@@ -39,7 +39,7 @@ Blob Storage の詳細については、「[Azure Blob Storage の概要](storag
     sudo gem install cocoapods
     ```
 
-2. 次に、プロジェクト ディレクトリ (.xcodeproj ファイルが含まれるディレクトリ) に、_Podfile_ という新しいファイル (ファイル拡張子なし) を作成します。 _Podfile_ に次のコードを追加して保存します。
+2. 次に、プロジェクト ディレクトリ (.xcodeproj ファイルが含まれるディレクトリ) に、*Podfile* という新しいファイル (ファイル拡張子なし) を作成します。 *Podfile* に次のコードを追加して保存します。
 
     ```ruby
     platform :ios, '8.0'
@@ -224,12 +224,12 @@ NSString からのブロック BLOB のアップロードばかりでなく、NS
 - **prefix** - BLOB の一覧表示に使用するプレフィックスを指定できます。 このプレフィックスで始まる名前の BLOB のみが一覧表示されます。
 - **useFlatBlobListing** - 「[コンテナーおよび BLOB の名前付けと参照](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)」セクションで説明したように、Blob service はフラット ストレージ スキームですが、パス情報を使用して BLOB に名前を付けることで、仮想階層を作成できます。 ただし、フラットでない一覧表示は現在サポートされておらず､ まもなく公開されます｡ 現時点では、この値は **YES** にする必要があります。
 - **blobListingDetails** - BLOB を一覧表示するときに含める項目を指定できます。
-  - _AZSBlobListingDetailsNone_:コミット済みの BLOB のみを一覧表示し、BLOB メタデータは返しません。
-  - _AZSBlobListingDetailsSnapshots_:コミット済みの BLOB と BLOB スナップショットを一覧表示します。
-  - _AZSBlobListingDetailsMetadata_:一覧に返された BLOB ごとに BLOB メタデータを取得します。
-  - _AZSBlobListingDetailsUncommittedBlobs_:コミット済みおよびコミット前の BLOB を一覧表示します。
-  - _AZSBlobListingDetailsCopy_:コピー プロパティを一覧に含めます。
-  - _AZSBlobListingDetailsAll_:使用可能なコミット済みの BLOB、コミット前の BLOB、スナップショットをすべて一覧表示し、それらの BLOB に関するすべてのメタデータとコピーの状態を返します。
+  - *AZSBlobListingDetailsNone*:コミット済みの BLOB のみを一覧表示し、BLOB メタデータは返しません。
+  - *AZSBlobListingDetailsSnapshots*:コミット済みの BLOB と BLOB スナップショットを一覧表示します。
+  - *AZSBlobListingDetailsMetadata*:一覧に返された BLOB ごとに BLOB メタデータを取得します。
+  - *AZSBlobListingDetailsUncommittedBlobs*:コミット済みおよびコミット前の BLOB を一覧表示します。
+  - *AZSBlobListingDetailsCopy*:コピー プロパティを一覧に含めます。
+  - *AZSBlobListingDetailsAll*:使用可能なコミット済みの BLOB、コミット前の BLOB、スナップショットをすべて一覧表示し、それらの BLOB に関するすべてのメタデータとコピーの状態を返します。
 - **maxResults** - この操作に対して返される結果の最大数。 制限を設けない場合は -1 を使用します。
 - **completionHandler** - 一覧表示操作の結果を使用して実行するコードのブロック。
 
@@ -395,4 +395,4 @@ NSString からのブロック BLOB のアップロードばかりでなく、NS
 - [Azure のストレージ チーム ブログ](/archive/blogs/windowsazurestorage/)
 
 このライブラリに関してご質問がある場合は、お気軽に [Microsoft Q&A 質問ページ](/answers/topics/azure-blob-storage.html) または [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) に投稿してください。
-Azure Storage の機能についてご提案がある場合は、 [Azure Storage のフィードバック](https://feedback.azure.com/forums/217298-storage/)に投稿してください。
+Azure Storage の機能についてご提案がある場合は、 [Azure Storage のフィードバック](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84)に投稿してください。

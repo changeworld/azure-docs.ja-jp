@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 6cce37a7c719c6a0c183e166fa28967ea926a221
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 7a0ac8a344bc48a9d1ce14b326724236c229d096
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581648"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734963"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサー
 
@@ -38,13 +38,21 @@ Azure Cognitive Search の "*インデクサー*" は、検索可能なテキス
 
 ## <a name="supported-data-sources"></a>サポートされるデータ ソース
 
-インデクサーは、Azure 上のデータ ストアをクロールします。
+インデクサーは、Azure および Azure 外部でデータ ストアをクロールします。
 
++ [Amazon Redshift](search-how-to-index-power-query-data-sources.md) (プレビュー段階)
 + [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-+ [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (プレビュー段階)
-+ [Azure Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)
++ [Azure MySQL](search-howto-index-mysql.md) (プレビュー段階)
 + [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure Table Storage](search-howto-indexing-azure-tables.md)
++ [Elasticsearch](search-how-to-index-power-query-data-sources.md) (プレビュー段階)
++ [PostgreSQL](search-how-to-index-power-query-data-sources.md) (プレビュー段階)
++ [Salesforce オブジェクト](search-how-to-index-power-query-data-sources.md) (プレビュー段階)
++ [Salesforce レポート](search-how-to-index-power-query-data-sources.md) (プレビュー段階)
++ [Smartsheet](search-how-to-index-power-query-data-sources.md) (プレビュー段階)
++ [Snowflake](search-how-to-index-power-query-data-sources.md) (プレビュー段階)
 + [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 + [Azure Virtual Machines における SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
@@ -54,19 +62,23 @@ Azure Cognitive Search の "*インデクサー*" は、検索可能なテキス
 
 最初の実行時に、インデックスが空の場合、テーブルまたはコンテナーで提供されるすべてのデータがインデクサーによって読み取られます。 その後の実行では、通常、変更されたデータのみがインデクサーによって検出され取得されます。 BLOB データの場合、変更の検出は自動で行われます。 Azure SQL や Cosmos DB などの他のデータ ソースで、変更の検出を有効にする必要があります。
 
-受信したドキュメントごとに、インデクサーによって、ドキュメントの取得からインデックス付けのための最終的な検索エンジンの "ハンドオフ" までの、複数のステップが実装または調整されます。 必要に応じて、インデクサーは、スキルセットが定義されていると想定して、スキルセットの実行と出力を促進するのにも役立ちます。
+受信したドキュメントごとに、インデクサーによって、ドキュメントの取得からインデックス付けのための最終的な検索エンジンの "ハンドオフ" までの、複数のステップが実装または調整されます。 また、インデクサーを使用すると、スキルセットが定義されている場合に、[スキルセットの実行と出力](cognitive-search-concept-intro.md)も促進されます。
 
 :::image type="content" source="media/search-indexer-overview/indexer-stages.png" alt-text="インデクサーのステージ" border="false":::
 
+<a name="document-cracking"></a>
+
 ### <a name="stage-1-document-cracking"></a>ステージ 1:ドキュメントの解読
 
-ドキュメント解析は、ファイルを開いてコンテンツを抽出するプロセスです。 データ ソースの種類に応じて、インデックス付けが可能なコンテンツを抽出するために、インデクサーによってさまざまな操作の実行が試行されます。  
+ドキュメント解析は、ファイルを開いてコンテンツを抽出するプロセスです。 テキスト ベースのコンテンツは、サービスのファイル、テーブルの行、またはコンテナーやコレクションの項目から抽出できます。 スキルセットと[画像スキル](cognitive-search-concept-image-scenarios.md)をインデクサーに追加した場合、ドキュメント解析で画像を抽出し、処理のためにキューに登録することもできます。
 
-例 :  
+データ ソースに応じて、インデックス付けが可能なコンテンツを抽出するために、インデクサーによってさまざまな操作が試行されます。
 
-+ ドキュメントが [Azure SQL データ ソース](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)内のレコードの場合、インデクサーによってレコードの各フィールドが抽出されます。
-+ ドキュメントが [Azure Blob Storage データ ソース](search-howto-indexing-azure-blob-storage.md)内の PDF ファイルの場合、テキスト、イメージ、メタデータがインデクサーによって抽出されます。
-+ ドキュメントが [Cosmos DB データ ソース](search-howto-index-cosmosdb.md)内のレコードの場合、インデクサーによって Cosmos DB ドキュメントからフィールドとサブフィールドが抽出されます。
++ ドキュメントがファイルのときは (PDF や、[Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#supported-document-formats) 内の他のサポートされるファイル形式など)、インデクサーによってファイルが開かれ、テキスト、画像、メタデータが抽出されます。 インデクサーでは、[SharePoint](search-howto-index-sharepoint-online.md#supported-document-formats) や [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md#supported-document-formats) のファイルを開くこともできます。
+
++ ドキュメントが [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) のレコードの場合は、インデクサーによって各レコードの各フィールドからバイナリ以外のコンテンツが抽出されます。
+
++ ドキュメントが [Cosmos DB](search-howto-index-cosmosdb.md) 内のレコードの場合は、インデクサーによって Cosmos DB ドキュメントのフィールドとサブフィールドからバイナリ以外のコンテンツが抽出されます。
 
 ### <a name="stage-2-field-mappings"></a>ステージ 2:フィールド マッピング 
 

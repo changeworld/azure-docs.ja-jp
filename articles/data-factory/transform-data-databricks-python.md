@@ -1,23 +1,25 @@
 ---
 title: Databricks Python でデータを変換する
-description: Azure Data Factory パイプラインで Databricks Python アクティビティを実行して、データを処理または変換する方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Synapse Analytics パイプラインで Databricks Python アクティビティを実行して、データを処理または変換する方法について説明します。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
-ms.date: 03/15/2018
-author: dcstwh
-ms.author: weetok
-ms.custom: devx-track-python
-ms.openlocfilehash: 49dfe11ceb01471e3b5afadd30259dcd63e7b82a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+author: nabhishek
+ms.author: abnarain
+ms.custom: devx-track-python, synapse
+ms.openlocfilehash: b178a54d71d7f004f66e15f455c0b618842d765e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373948"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806341"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Azure Databricks で Python アクティビティを実行してデータを変換する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Data Factory パイプライン](concepts-pipelines-activities.md) の Azure Databricks Python アクティビティは、Azure Databricks クラスターで Python ファイルを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。  Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
+[パイプライン](concepts-pipelines-activities.md)の Azure Databricks Python アクティビティは、Azure Databricks クラスターで Python ファイルを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。  Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
 
 この機能の概要とデモンストレーションについては、以下の 11 分間の動画を視聴してください。
 
@@ -34,7 +36,7 @@ Databricks Python アクティビティのサンプルの JSON 定義を次に�
         "description": "MyActivity description",
         "type": "DatabricksSparkPython",
         "linkedServiceName": {
-            "referenceName": "MyDatabricksLinkedservice",
+            "referenceName": "MyDatabricksLinkedService",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {

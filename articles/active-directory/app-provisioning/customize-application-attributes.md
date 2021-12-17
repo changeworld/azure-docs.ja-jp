@@ -1,21 +1,22 @@
 ---
-title: チュートリアル - Azure Active Directory 属性マッピングをカスタマイズする
-description: Azure Active Directory における SaaS アプリの属性マッピングとは何かと、この属性マッピングをビジネス ニーズに合わせて変更する方法について説明します。
+title: チュートリアル - アプリケーションのプロビジョニングで Azure Active Directory 属性マッピングをカスタマイズする
+description: Azure Active Directory アプリケーション プロビジョニングにおける SaaS (サービスとしてのソフトウェア) アプリの属性マッピングとは何か、また、この属性マッピングをビジネス ニーズに合わせて変更するにはどうすればよいかについて説明します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/17/2021
+ms.date: 11/15/2021
 ms.author: kenwith
-ms.openlocfilehash: 738b89ee9347a25e2d24369a48e966f0bec6daf0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.reviewer: arvinh
+ms.openlocfilehash: d4e86f2dc3df62b90c45d27d9034e1b97d9b4870
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579469"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522044"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
@@ -79,7 +80,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
   - **作成中のみ** - このマッピングをユーザーの作成アクションのみに適用します。
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>ソース システムとターゲット システムで一致するユーザー
-Azure AD プロビジョニング サービスは、"未開発" シナリオ(ユーザーがターゲット システムに存在しない) シナリオと "再開発" シナリオ (ユーザーが既にターゲット システムに存在する) のどちらでもデプロイできます。 両方のシナリオをサポートするために、プロビジョニング サービスでは、一致する属性の概念を使用します。 一致する属性を利用すると、ソースのユーザーを一意に識別してターゲットのユーザーとの一致を判定する方法を任意に決定できます。 デプロイの計画の一環として、ソース システムとターゲット システムのユーザーを一意に識別するために使用できる属性を特定します。 注意する点:
+Azure AD プロビジョニング サービスは、"未開発" シナリオ (ユーザーがターゲット システムに存在しない) シナリオと "再開発" シナリオ (ユーザーが既にターゲット システムに存在する) のどちらでもデプロイできます。 両方のシナリオをサポートするために、プロビジョニング サービスでは、一致する属性の概念を使用します。 一致する属性を利用すると、ソースのユーザーを一意に識別してターゲットのユーザーとの一致を判定する方法を任意に決定できます。 デプロイの計画の一環として、ソース システムとターゲット システムのユーザーを一意に識別するために使用できる属性を特定します。 注意する点:
 
 - **一致する属性は一意であることが望ましい:** 顧客は多くの場合、userPrincipalName、mail、オブジェクト ID などの属性を一致する属性として使用します。
 - **複数の属性を一致する属性として使用できる:** ユーザーを一致するときに評価される複数の属性と、それらの属性が評価される順序 (UI では一致の優先順位として定義されます) を定義することができます。 たとえば、一致する属性として 3 つの属性を定義し、最初の 2 つの属性を評価した後にユーザーが一意に一致する場合、サービスは 3 番目の属性を評価しません。 サービスは、指定された順序で一致する属性を評価し、一致が見つかったら評価を停止します。  
@@ -113,13 +114,13 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - ServiceNow
 - Workday から Active Directory / Workday から Azure Active Directory へ
 - SuccessFactors から Active Directory へ / SuccessFactors から Azure Active Directory へ
-- Azure Active Directory ([Azure AD Graph API の既定の属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)。 [拡張機能の作成](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning-sync-attributes-for-mapping#create-an-extension-attribute-on-a-cloud-only-user)と[既知の制限](https://docs.microsoft.com/azure/active-directory/app-provisioning/known-issues)の詳細を参照してください。 
+- Azure Active Directory ([Azure AD Graph API の既定の属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)。 [拡張機能の作成](./user-provisioning-sync-attributes-for-mapping.md#create-an-extension-attribute-on-a-cloud-only-user)と[既知の制限](./known-issues.md)の詳細を参照してください。 
 - [SCIM 2.0](https://tools.ietf.org/html/rfc7643) をサポートするアプリ
 - Workday または SuccessFactors への Azure Active Directory の書き戻しについては、サポートされている属性 (XPATH と JSONPath) の関連メタデータを更新することはサポートされていますが、既定のスキーマに含まれているもの以外の新しい Workday または SuccessFactors の属性を追加することはサポートされていません
 
 
 > [!NOTE]
-> サポートされている属性一覧の編集は、ソース属性が Azure portal の UI に自動的に表示されない場合、またはアプリケーションとシステムのスキーマをカスタマイズし、カスタム属性がどのように定義されたかを直接知っている管理者のみにお勧めします。 場合によっては、アプリケーションやシステムで提供される API および開発者ツールに慣れている必要があります。 サポートされている属性の一覧を編集する機能は既定ではロックダウンされていますが、 https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true という URL に移動して機能を有効にできます。 その後、アプリケーションに移動して、[上記](#editing-the-list-of-supported-attributes)の属性の一覧を表示できます。 
+> サポートされている属性一覧の編集は、ソース属性が Azure portal の UI に自動的に表示されない場合、またはアプリケーションとシステムのスキーマをカスタマイズし、カスタム属性がどのように定義されたかを直接知っている管理者のみにお勧めします。 場合によっては、アプリケーションやシステムで提供される API および開発者ツールに慣れている必要があります。 サポートされている属性の一覧を編集する機能は既定ではロックダウンされていますが、 https://portal.azure.com/?Microsoft_AAD_Connect_Provisioning_forceSchemaEditorEnabled=true という URL に移動して機能を有効にできます。 その後、アプリケーションに移動して、[上記](#editing-the-list-of-supported-attributes)の属性の一覧を表示できます。 
 
 サポートされている属性の一覧を編集するときは、次のプロパティが表示されます。
 
@@ -150,15 +151,14 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
 
 これらの手順は、SCIM 対応アプリケーションにのみ適用されます。 ServiceNow や Salesforce などのアプリケーションは、SCIM を使用する Azure AD と統合されていないため、カスタム属性を追加するときにこの特定の名前空間は必要ありません。
 
-カスタム属性は、参照属性、複数値の属性、または複合型の属性にすることはできません。 現在、カスタムの複数値または複合型の拡張属性は、ギャラリー内のアプリケーションに対してのみサポートされています。  
+カスタム属性は、参照属性、複数値の属性、または複合型の属性にすることはできません。 現在、カスタムの複数値または複合型の拡張属性は、ギャラリー内のアプリケーションに対してのみサポートされています。 カスタム拡張スキーマ ヘッダーは、Azure AD SCIM クライアントからの要求で送信されないため、次の例では省略されています。 この問題は今後修正される予定であり、ヘッダーは要求で送信されるようになります。  
  
 **拡張属性を持つユーザーの表記を次に示します。**
 
 ```json
    {
      "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
-      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
-      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"],
      "userName":"bjensen",
      "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",
@@ -233,16 +233,16 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
   
   - **出力例 (PATCH)** 
     
-   ```
+   ```json
    "Operations": [
-   {
-   "op": "Add",
-   "path": "roles",
-   "value": [
-   {
-   "value": "{\"id\":\"06b07648-ecfe-589f-9d2f-6325724a46ee\",\"value\":\"25\",\"displayName\":\"Role1234\"}"
-   }
-   ]
+     {
+       "op": "Add",
+       "path": "roles",
+       "value": [
+         {
+           "value": "{\"id\":\"06b07648-ecfe-589f-9d2f-6325724a46ee\",\"value\":\"25\",\"displayName\":\"Role1234\"}"
+         }
+       ]
    ```  
 PATCH と POST の要求形式は異なります。 POST と PATCH が同じ形式で送信されるようにするには、[ここ](./application-provisioning-config-problem-scim-compatibility.md#flags-to-alter-the-scim-behavior)で説明されている機能フラグを使用できます。 
 
@@ -258,6 +258,7 @@ PATCH と POST の要求形式は異なります。 POST と PATCH が同じ形�
   - **考慮事項**
     - すべてのロールは primary = false としてプロビジョニングされます。
     - POST にはロールの種類が含まれます。 PATCH 要求には種類は含まれません。 POST 要求と PATCH 要求の両方で種類を送信できるよう、作業を進めています。
+    - AppRoleAssignmentsComplex は、スコープを [すべてのユーザーとグループを同期する] に設定した場合と互換性がありません。 
     
   - **出力例** 
   
@@ -331,7 +332,7 @@ phoneNumbers や emails のように、一部の属性は複数の値を持ち�
 - Microsoft Azure AD では、同期プロセスの効率的な実装を提供します。 初期化された環境では、更新が必要なオブジェクトのみが同期サイクル中に処理されます。
 - 属性マッピングの更新は、同期サイクルのパフォーマンスに影響を与えます。 属性マッピングの構成を更新するには、すべての管理オブジェクトを再評価する必要があります。
 - 推奨されるベスト プラクティスとして、属性マッピングに対する連続的な変更の回数は最小限に抑えてください。
-- 写真を同期する形式は指定できないので、プロビジョニングする写真属性のアプリへの追加は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory)に関するページで機能の要求をお送りください
+- 写真を同期する形式は指定できないので、プロビジョニングする写真属性のアプリへの追加は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)に関するページで機能の要求をお送りください
 - IsSoftDeleted 属性は、多くの場合、アプリケーションの既定のマッピングに含まれます。 IsSoftDeleted は 4 つのシナリオ (アプリケーションから割り当てられていないためユーザーがスコープ外になっている、スコープ フィルターを満たしていないためユーザーがスコープ外になっている、Azure AD でユーザーが論理的に削除されている、AccountEnabled プロパティがユーザーに対して false に設定されている) のいずれかで true にすることができます。 IsSoftDeleted 属性を属性マッピングから削除することはお勧めしません。
 - Azure AD プロビジョニング サービスでは、null 値のプロビジョニングがサポートされていません。
 - これらの主キー (通常は "ID") は、属性マッピングのターゲット属性として含めないでください。 

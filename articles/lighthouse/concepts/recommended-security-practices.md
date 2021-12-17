@@ -1,14 +1,14 @@
 ---
 title: 推奨セキュリティ プラクティス
 description: Azure Lighthouse を使用する場合、セキュリティとアクセス制御を考慮することが重要です。
-ms.date: 03/12/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3aa50833b547882506bfad125992bb1c2f4e85bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52bc5301633f8e9d92aeaeee22ecf34b6458fccb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419305"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782368"
 ---
 # <a name="recommended-security-practices"></a>推奨セキュリティ プラクティス
 
@@ -19,7 +19,7 @@ ms.locfileid: "103419305"
 
 ## <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication を必須とする
 
-[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (2 段階認証) には、複数の認証ステップを要求することで、攻撃者によるアカウントへのアクセスを阻止する効果があります。 管理テナント内のすべてのユーザー (委任された顧客のリソースにアクセスできるユーザーを含む) について、Multi-Factor Authentication を必須としてください。
+[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (2 段階認証) には、複数の認証ステップを要求することで、攻撃者によるアカウントへのアクセスを阻止する効果があります。 管理テナント内のすべてのユーザー (委任された顧客のリソースにアクセスできるユーザーを含む) について、Azure AD Multi-Factor Authentication を必須としてください。
 
 顧客にも、そのテナントに Azure AD Multi-Factor Authentication の導入を求めることをお勧めします。
 
@@ -44,6 +44,9 @@ ms.locfileid: "103419305"
 これらのグループを作成したら、必要に応じてユーザーを割り当てることができます。 追加するのは、本当にアクセスを必要とするユーザーに限定します。 グループ メンバーシップを定期的に見直し、メンバーに含めることへの妥当性や必要性を失ったユーザーがいれば削除してください。
 
 [パブリック マネージド サービス オファーを通じて顧客をオンボード](../how-to/publish-managed-services-offers.md)すると、追加したすべてのグループ (またはユーザーあるいはサービス プリンシパル) は、そのプランを購入したすべての顧客に対して同じアクセス許可を持つことに注意してください。 顧客ごとに異なる担当グループを割り当てるには、各顧客に限定された個別のプライベート プランを公開するか、Azure Resource Manager テンプレートを使用して顧客を個別にオンボードする必要があります。 たとえば、アクセスがごく限られたパブリック プランを公開しておき、追加のアクセス権については、顧客と直接連携しながら、カスタマイズされた Azure リソーステンプレートを使用して、そのリソースをオンボードし、必要に応じて別途アクセス権を付与していくことが考えられます。
+
+> [!TIP]
+> *適格認可* を作成して、管理中のテナントのユーザーが一時的にロールを昇格できるようにすることもできます。 適格認可を使用することで、特権ロールへのユーザーの永続的な割り当ての数を最小限に抑え、テナント内のユーザーによる特権アクセスに関連するセキュリティ リスクを軽減するのに役立ちます。 この機能は現在パブリック プレビュー中であり、特定のライセンス要件があります。 詳細については、「[適格認可を作成する](../how-to/create-eligible-authorizations.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

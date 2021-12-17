@@ -1,19 +1,22 @@
 ---
-title: Azure Data Factory を使用して HDFS からデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、クラウドまたはオンプレミスの HDFS ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-author: linda33wj
+title: HDFS からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Synapse Analytics パイプラインで Copy アクティビティを使用して、クラウドまたはオンプレミスの HDFS ソースからサポートされているシンク データ ストアにデータをコピーする方法について説明します。
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.author: jingwang
-ms.openlocfilehash: 9c274bdfb5854529dbb82bd2d8b7cefdf07390b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 09/09/2021
+ms.author: jianleishen
+ms.openlocfilehash: 8bf95b8f237cbaaa81f520c150154d93fbc0c173
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588904"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831788"
 ---
-# <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS サーバーからデータをコピーする
+# <a name="copy-data-from-the-hdfs-server-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して HDFS サーバーからデータをコピーする
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-hdfs-connector.md)
@@ -21,7 +24,7 @@ ms.locfileid: "104588904"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Hadoop 分散ファイル システム (HDFS) サーバーからデータをコピーする方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Hadoop 分散ファイル システム (HDFS) サーバーからデータをコピーする方法について説明します。 詳細については、[Azure Data Factory](introduction.md) および [Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -39,14 +42,38 @@ HDFS コネクタは、次のアクティビティでサポートされます。
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 > [!NOTE]
 > 統合ランタイムが、Hadoop クラスターの "*すべて*" の [name node server]:[name node port] および [data node servers]:[data node port] にアクセスできることを確認します。 既定の [name node port] は 50070、既定の [data node port] は 50075 です。
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-hdfs-using-ui"></a>UI を使用して HDFS のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で HDFS のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用して新しいリンク サービスを作成します。":::
+
+2. HDFS を検索し、HDFS コネクタを選択します。
+
+    :::image type="content" source="media/connector-hdfs/hdfs-connector.png" alt-text="HDFS コネクタを選択します。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-hdfs/configure-hdfs-linked-service.png" alt-text="HDFS のリンク サービスを構成します。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 次のセクションでは、HDFS に固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -60,7 +87,7 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 | url |HDFS への URL |はい |
 | authenticationType | 使用可能な値: *Anonymous* または *Windows*。 <br><br> オンプレミス環境を設定するには、「[HDFS コネクタでの Kerberos 認証の使用](#use-kerberos-authentication-for-the-hdfs-connector)」セクションを参照してください。 |はい |
 | userName |Windows 認証のユーザー名。 Kerberos 認証の場合は **\<username>@\<domain>.com** を指定します。 |はい (Windows 認証用) |
-| password |Windows 認証のパスワード。 このフィールドを SecureString としてマークしてデータ ファクトリに安全に保存するか、[Azure キー コンテナーに格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |あり (Windows 認証用) |
+| password |Windows 認証のパスワード。 このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照します](store-credentials-in-key-vault.md)。 |あり (Windows 認証用) |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 統合ランタイムが指定されていない場合は、サービスでは既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 **例: 匿名認証の使用**
@@ -109,9 +136,9 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、「[Azure Data Factory のデータセット](concepts-datasets-linked-services.md)」を参照してください。 
+データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関するページをご覧ください。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 HDFS では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
@@ -149,11 +176,11 @@ HDFS では、形式ベースのデータセットの `location` 設定におい
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[Azure Data Factory のパイプラインとアクティビティ](concepts-pipelines-activities.md)」を参照してください。 このセクションでは、HDFS ソースでサポートされるプロパティの一覧を示します。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインとアクティビティ](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、HDFS ソースでサポートされるプロパティの一覧を示します。
 
 ### <a name="hdfs-as-source"></a>ソースとしての HDFS
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 HDFS では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
@@ -172,11 +199,11 @@ HDFS では、形式ベースのコピー ソースの `storeSettings` 設定に
 | modifiedDatetimeEnd      | 上記と同じです。  
 | enablePartitionDiscovery | パーティション分割されているファイルの場合は、ファイル パスのパーティションを解析し、それを追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
 | partitionRootPath | パーティション検出が有効になっている場合は、パーティション分割されたフォルダーをデータ列として読み取るための絶対ルート パスを指定します。<br/><br/>これが指定されていない場合は、既定で次のようになります。<br/>- ソース上のデータセットまたはファイルの一覧内のファイル パスを使用する場合、パーティションのルート パスはそのデータセットで構成されているパスです。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティションのルート パスを "root/folder/year=2020" として指定した場合は、コピー アクティビティによって、ファイル内の列とは別に、それぞれ "08" と "27" の値を持つ `month` と `day` という 2 つの追加の列が生成されます。<br/>- パーティションのルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
-| maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続数を制限する場合にのみ、値を指定します。| いいえ                                            |
+| maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ                                            |
 | "***DistCp 設定***" |  | |
 | distcpSettings | HDFS DistCp を使用する場合に使用するプロパティ グループ。 | いいえ |
 | resourceManagerEndpoint | YARN (Yet Another Resource Negotiator) エンドポイント | はい (DistCp を使用する場合) |
-| tempScriptPath | 一時 DistCp コマンド スクリプトを格納するために使用するフォルダー パス。 このスクリプト ファイルは Data Factory によって生成され、コピー ジョブ完了後に削除されます。 | はい (DistCp を使用する場合) |
+| tempScriptPath | 一時 DistCp コマンド スクリプトを格納するために使用するフォルダー パス。 スクリプト ファイルが生成され、コピー ジョブの完了後に削除されます。 | はい (DistCp を使用する場合) |
 | distcpOptions | DistCp コマンドに指定する追加オプション。 | いいえ |
 
 **例:**
@@ -238,7 +265,7 @@ HDFS では、形式ベースのコピー ソースの `storeSettings` 設定に
 
 このセクションでは、コピー アクティビティのソースでファイル リスト パスを使用した結果の動作について説明します。 次のソース フォルダー構造があり、太字のファイルをコピーするものとします。
 
-| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | Azure Data Factory の構成                                            |
+| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | 構成 |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | root<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadata<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **データセット内:**<br>- フォルダー パス: `root/FolderA`<br><br>**コピー アクティビティ ソース内:**<br>- ファイル リストのパス: `root/Metadata/FileListToCopy.txt` <br><br>ファイル リストのパスは、コピーするファイルの一覧を含む同じデータ ストア内のテキスト ファイルをポイントします (データセットで構成されているパスへの相対パスを使用して、1 行につき 1 つのファイルを指定します)。 |
 
@@ -246,7 +273,7 @@ HDFS では、形式ベースのコピー ソースの `storeSettings` 設定に
 
 [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) は、Hadoop クラスターにコピーを配布するための Hadoop のネイティブ コマンドライン ツールです。 DistCp でコマンドを実行すると、コピーされるファイルが最初にすべてリストされ、その後 Hadoop クラスターでいくつかの Map ジョブが作成されます。 それぞれの Map ジョブは、ソースからシンクへのバイナリ コピーを実行します。
 
-コピー アクティビティでは、DistCp を使用した、Azure BLOB ストレージ ([ステージング コピー](copy-activity-performance.md)を含む) または Azure データ レイク ストアへのファイルのそのままのコピーがサポートされています。 この場合、DistCp はセルフホステッド統合ランタイムを実行せず、ご使用のクラスターの機能を活用することができます。 特にクラスターが非常に強力な場合は、DistCp を使用することでコピーのスループットが向上します。 データ ファクトリの構成に基づいて、コピー アクティビティは、DistCp コマンドを自動的に作成し、Hadoop クラスターに送信し、コピー状態を監視します。
+コピー アクティビティでは、DistCp を使用した、Azure BLOB ストレージ ([ステージング コピー](copy-activity-performance.md)を含む) または Azure データ レイク ストアへのファイルのそのままのコピーがサポートされています。 この場合、DistCp はセルフホステッド統合ランタイムを実行せず、ご使用のクラスターの機能を活用することができます。 特にクラスターが非常に強力な場合は、DistCp を使用することでコピーのスループットが向上します。 構成に基づき、Copy アクティビティによって DistCp コマンドが自動的に作成され、Hadoop クラスターに送信されて、コピー状態が監視されます。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -312,7 +339,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 **KDC サーバーで:**
 
-使用する Azure Data Factory のプリンシパルを作成して、パスワードを指定します。
+プリンシパルを作成し、パスワードを指定します。
 
 > [!IMPORTANT]
 > ユーザー名にホスト名を含めることはできません。
@@ -343,7 +370,7 @@ Kadmin> addprinc <username>@<REALM.COM>
         kdc = <your_kdc_server_address>
     ```
 
-**ご使用のデータ ファクトリで:**
+**データ ファクトリまたは Synapse ワークスペースで:**
 
 * Kerberos プリンシパル名とパスワードによる Windows 認証を行って HDFS データ ソースに接続するように HDFS コネクタを構成します。 構成の詳細については、[HDFS のリンクされたサービスのプロパティ](#linked-service-properties)のセクションを参照してください。
 
@@ -432,7 +459,7 @@ Kadmin> addprinc <username>@<REALM.COM>
 
     c. KDC サーバーに接続する際に使用する暗号化アルゴリズムを選択します。 すべてのオプションを選択できます。
 
-    ![スクリーンショット: [ネットワーク セキュリティ:Kerberos で許可する暗号化の種類を構成する] ペイン](media/connector-hdfs/config-encryption-types-for-kerberos.png)
+    :::image type="content" source="media/connector-hdfs/config-encryption-types-for-kerberos.png" alt-text="&quot;[ネットワーク セキュリティ: Kerberos で許可する暗号化の種類を構成する]&quot; ペインのスクリーンショット":::
 
     d. `Ksetup` コマンドを使用して、指定された領域で使用される暗号化アルゴリズムを指定します。
 
@@ -450,7 +477,7 @@ Kadmin> addprinc <username>@<REALM.COM>
 
     d. 領域からプリンシパルを追加します。
 
-       ![[セキュリティ ID マッピング] ペイン](media/connector-hdfs/map-security-identity.png)
+       :::image type="content" source="media/connector-hdfs/map-security-identity.png" alt-text="&quot;[セキュリティ ID マッピング]&quot; ペインのスクリーンショット":::
 
 **セルフホステッド統合ランタイム コンピューターで:**
 
@@ -461,22 +488,22 @@ Kadmin> addprinc <username>@<REALM.COM>
    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
    ```
 
-**ご使用のデータ ファクトリで:**
+**データ ファクトリまたは Synapse ワークスペースで:**
 
 * ドメイン アカウントまたは Kerberos プリンシパルのいずれかを使用して Windows 認証を行って HDFS データ ソースに接続するように HDFS コネクタを構成します。 構成の詳細については、[HDFS にリンクされたサービスのプロパティ](#linked-service-properties)のセクションを参照してください。
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-Lookup アクティビティのプロパティの詳細については、「[Azure Data Factory でのルックアップ アクティビティ](control-flow-lookup-activity.md)」を参照してください。
+Lookup アクティビティのプロパティについては、[Lookup アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
 
 ## <a name="delete-activity-properties"></a>Delete アクティビティのプロパティ
 
-Delete アクティビティのプロパティの詳細については、「[Azure Data Factory の Delete アクティビティ](delete-activity.md)」を参照してください。
+Delete アクティビティのプロパティについては、[Delete アクティビティ](delete-activity.md)に関する記事を参照してください。
 
 ## <a name="legacy-models"></a>レガシ モデル
 
 >[!NOTE]
->次のモデルは、下位互換性のために引き続きそのままサポートされます。 Azure Data Factory の作成用 UI は新しいモデルを生成するように切り替えられているため、前に説明した新しいモデルを使用することをお勧めします。
+>次のモデルは、下位互換性のために引き続きそのままサポートされます。 作成 UI は新しいモデルを生成するように切り替えられているため、前に説明した新しいモデルを使用することをお勧めします。
 
 ### <a name="legacy-dataset-model"></a>レガシ データセット モデル
 
@@ -531,9 +558,9 @@ Delete アクティビティのプロパティの詳細については、「[Azu
 | recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が *true* に設定されていて、シンクがファイル ベースのストアである場合、空のフォルダーまたはサブフォルダーはシンクでコピーも作成もされません。<br/>使用可能な値: *true* (既定値) および *false*。 | いいえ |
 | distcpSettings | HDFS DistCp を使用する場合のプロパティ グループ。 | いいえ |
 | resourceManagerEndpoint | YARN リソース マネージャー エンドポイント | はい (DistCp を使用する場合) |
-| tempScriptPath | 一時 DistCp コマンド スクリプトを格納するために使用するフォルダー パス。 このスクリプト ファイルは Data Factory によって生成され、コピー ジョブ完了後に削除されます。 | はい (DistCp を使用する場合) |
+| tempScriptPath | 一時 DistCp コマンド スクリプトを格納するために使用するフォルダー パス。 スクリプト ファイルが生成され、コピー ジョブの完了後に削除されます。 | はい (DistCp を使用する場合) |
 | distcpOptions | 追加のオプションが DistCp コマンドに指定されます。 | いいえ |
-| maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続数を制限する場合にのみ、値を指定します。| いいえ |
+| maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ |
 
 **例:DistCp を使用したコピー アクティビティでの HDFS ソース**
 
@@ -549,4 +576,4 @@ Delete アクティビティのプロパティの詳細については、「[Azu
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページを参照してください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

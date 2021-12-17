@@ -1,14 +1,14 @@
 ---
-title: 開発者のための Azure DevTest Labs の使用 | Microsoft Docs
+title: 開発者のための Azure DevTest Labs の使用
 description: 開発者の要件を満たすために使うことができる Azure DevTest Labs 機能のほか、ラボをセットアップするための詳細な手順について説明します。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: b4f195f843e30ad1a56bad7d5b9ca9e73888783b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7299272864a04c3eaaecbd7fd844841912e373d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89296245"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235129"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>開発者のための Azure DevTest Labs の使用
 Azure DevTest Labs を使うと多くの重要なシナリオを実装できますが、主要なシナリオの 1 つは、DevTest Labs を使って開発者のために開発用コンピューターをホストすることです。 このシナリオでは、DevTest Labs には次のような利点があります。
@@ -45,7 +45,7 @@ Azure DevTest Labs を使うと多くの重要なシナリオを実装できま�
    | --- | --- |
    | [Azure Marketplace イメージの構成](devtest-lab-configure-marketplace-images.md) |Azure Marketplace イメージで、開発者に必要なイメージのみを選択できるようにする方法について説明します。|
    | [カスタム イメージの作成](devtest-lab-create-template.md) |必要なソフトウェアを事前にインストールしてカスタム イメージを作成し、開発者がそのカスタム イメージを使って VM を迅速に作成できるようにします。|
-   | [イメージ ファクトリについて](./devtest-lab-faq.md#blog-post) |イメージ ファクトリを設定して使う方法を説明するビデオをご覧ください。|
+   | [イメージ ファクトリについて](./devtest-lab-faq.yml#blog-post) |イメージ ファクトリを設定して使う方法を説明するビデオをご覧ください。|
 
 3. **開発者のコンピューター用に再利用可能なテンプレートを作成する** 
    
@@ -87,7 +87,7 @@ Azure DevTest Labs を使うと多くの重要なシナリオを実装できま�
    | タスク | 学習内容 |
    | --- | --- |
    | [ラボのポリシーの定義](devtest-lab-set-lab-policy.md) |ラボでポリシーを設定してコストを管理します。 |
-   | [PowerShell スクリプトを使用したすべてのラボ VM の削除](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |開発が完了したときに、1 回の操作ですべてのラボを削除します。|
+   | [PowerShell スクリプトを使用したすべてのラボ VM の削除](./devtest-lab-faq.yml) |開発が完了したときに、1 回の操作ですべてのラボを削除します。|
 
 1. **仮想ネットワークを VM に追加する** 
    
@@ -103,7 +103,7 @@ Azure DevTest Labs を使うと多くの重要なシナリオを実装できま�
 
 6. **各開発者とラボを共有する**
    
-    開発者と共有したリンクを使用すれば、ラボに直接アクセスできます。 開発者は [Microsoft アカウント](devtest-lab-faq.md#what-is-a-microsoft-account)さえ持っていれば、Azure アカウントすら必要ありません。 開発者は、他の開発者によって作成された VM を見るこはできません。  
+    開発者と共有したリンクを使用すれば、ラボに直接アクセスできます。 開発者は [Microsoft アカウント](./devtest-lab-faq.yml)さえ持っていれば、Azure アカウントすら必要ありません。 開発者は、他の開発者によって作成された VM を見るこはできません。  
    
     次の表のリンクをクリックして詳細を確認してください。
    
@@ -111,7 +111,7 @@ Azure DevTest Labs を使うと多くの重要なシナリオを実装できま�
    | --- | --- |
    | [Azure DevTest Labs でラボに開発者を追加する](devtest-lab-add-devtest-user.md) |Azure Portal を使って、ラボに開発者を追加します。|
    | [PowerShell スクリプトを使ってラボに開発者を追加する](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |PowerShell を使って、ラボへの開発者の追加を自動化します。 |
-   | [ラボへのリンクの取得](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |ハイパーリンクを使って開発者がラボに直接アクセスできるようにする方法を説明します。|
+   | [ラボへのリンクの取得](./devtest-lab-faq.yml) |ハイパーリンクを使って開発者がラボに直接アクセスできるようにする方法を説明します。|
 
 7. **他のチームのためにラボの作成を自動化する** 
    
@@ -121,6 +121,6 @@ Azure DevTest Labs を使うと多くの重要なシナリオを実装できま�
    
    | タスク | 学習内容 |
    | --- | --- |
-   | [Resource Manager テンプレートを使用したラボの作成](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Resource Manager テンプレートを使用して Azure DevTest Labs でラボを作成します。 |
+   | [Resource Manager テンプレートを使用したラボの作成](./devtest-lab-faq.yml) |Resource Manager テンプレートを使用して Azure DevTest Labs でラボを作成します。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/03/2021
+ms.date: 11/15/2021
 ms.author: alkohli
-ms.openlocfilehash: e58473f5c3bc4bc6314fb0dc5c532e24daa225d6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8d06a49431b4b2cfea80a30c05d45374cc135285
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065703"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716767"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro の配置を準備する 
 
@@ -63,18 +63,20 @@ Azure Stack Edge Pro の配置では、最初に環境を準備する必要が�
 
 ### <a name="for-the-azure-stack-edge-resource"></a>Azure Stack Edge リソースの前提条件
 
+<!--Why isn't the include file used, as for the Pro R and Mini R SKUs? Check for differences. Also, the presentation of requirements is organized a bit differently; standard presentation would be more usable, even if the GPU requirements are different.-->
+
 開始する前に次の点を確認します。
 
 - ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制サブスクリプションはサポートされていません。 所有している Azure サブスクリプションの種類を特定するには、「[Azure プランとは](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)」を参照してください。
-- Azure Stack Edge Pro/Data Box Gateway、IoT Hub、および Azure Storage の各リソースに対して、リソース グループ レベルで所有者または共同作成者のアクセス許可を持っていること。
+- Azure Stack Edge Pro、IoT Hub、Azure Storage のリソースに対してリソース グループ レベルで所有者または共同作成者のアクセス許可を持っていること。
 
-    - Azure Stack Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 
-    - また、`Microsoft.DataBoxEdge` および `MicrosoftKeyVault` リソース プロバイダーが登録されていることを確認する必要もあります。 どのような IoT Hub リソースを作成する場合でも、`Microsoft.Devices` プロバイダーを登録する必要があります。 
+    - Azure Stack Edge のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 
+    - また、`Microsoft.DataBoxEdge` および `Microsoft.KeyVault` リソース プロバイダーが登録されていることを確認する必要もあります。 どのような IoT Hub リソースを作成する場合でも、`Microsoft.Devices` プロバイダーを登録する必要があります。 
         - リソース プロバイダーを登録するには、Azure portal で、 **[ホーム] > [サブスクリプション] > お使いのサブスクリプション > [リソース プロバイダー]** と移動します。 
         - 特定のリソース プロバイダー (`Microsoft.DataBoxEdge` など) を検索し、そのリソース プロバイダーを登録します。 
     - Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
+- Azure Edge Hardware Center で注文を作成するには、`Microsoft.EdgeOrder` プロバイダーが登録されている必要があります。 登録方法の詳細については、「[リソース プロバイダーの登録](azure-stack-edge-gpu-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
 - アクティブ化キーの生成や、ストレージ アカウントを使用する共有の作成などの資格情報の操作のために、Azure Active Directory Graph API に対する管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
-
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの前提条件
 
@@ -102,67 +104,94 @@ Azure Stack Edge Pro の配置では、最初に環境を準備する必要が�
 
 物理デバイスを管理する既存の Azure Stack Edge リソースがある場合は、この手順をスキップして、「[アクティブ化キーの取得](#get-the-activation-key)」に進みます。
 
-### <a name="portal"></a>[ポータル](#tab/azure-portal)
+---
 
-Azure Stack Edge リソースを作成するには、Azure portal で次の手順を実行します。
+### <a name="azure-edge-hardware-center-preview"></a>[Azure Edge Hardware Center (プレビュー)](#tab/azure-edge-hardware-center)
+
+Azure Edge Hardware Center (プレビュー) は、Azure ハイブリッド ポートフォリオから Azure Stack Edge Pro デバイスなど、さまざまなハードウェアを探索して注文できる新しいサービスです。
+
+Azure Edge Hardware Center を通じて注文を行う場合、複数のデバイスを注文して複数の住所に出荷することができ、他の注文の配送先住所を再利用することもできます。
+
+Azure Edge Hardware Center を通じて注文すると、注文関連のすべての情報を含む Azure リソースが作成されます。 注文されたユニットごとにリソースが 1 つずつ作成されます。 デバイスを受け取ったら、それをアクティブにして管理するために Azure Stack Edge リソースを作成する必要があります。
+
+[!INCLUDE [Create order in Azure Edge Hardware Center](../../includes/azure-edge-hardware-center-new-order.md)]
+
+#### <a name="create-a-management-resource-for-each-device"></a>各デバイスの管理リソースを作成する
+
+[!INCLUDE [Create management resource](../../includes/azure-edge-hardware-center-create-management-resource.md)]
+
+### <a name="portal-classic"></a>[ポータル (クラシック)](#tab/azure-portal)
+
+Azure Stack Edge サービスを使用して Azure Stack Edge リソースを作成するには、Azure portal で次の手順を実行します。
 
 1. Microsoft Azure 資格情報を使用し、Azure portal にサインインします。URL は [https://portal.azure.com](https://portal.azure.com) です。
 
-2. 左側のウィンドウで、 **[+ リソースの作成]** を選択します。 **[Azure Stack Edge/Data Box Gateway]** を検索して選択します。 **［作成］** を選択します 
+2. **[Azure サービス]** で、 **[Azure Stack Edge]** を検索して選択します。 次に、 **[+ 作成]** を選択します。 
 
-3. Azure Stack Edge Pro デバイスに使用するサブスクリプションを選択します。 この物理デバイスを発送する先の国を選択します。 **[デバイスの表示]** を選択します。
+3. **[Manage Azure Stack Edge devices]\(Azure Stack Edge デバイスの管理\)** で、 **[Try Azure Hardware Center]\(Azure Hardware Center を試す\)** リンクを選択します。
 
-    ![リソースを作成する 1](media/azure-stack-edge-gpu-deploy-prep/create-resource-1.png)
+    ![[+ 作成] ボタンによって開かれた [Manage Azure Stack Edge devices]\(Azure Stack Edge デバイスの管理\) 画面のスクリーンショット。 [Try Azure Edge Hardware Center]\(Azure Edge Hardware Center を試す\) リンクが強調表示されています。](media/azure-stack-edge-gpu-deploy-prep/classic-order-experience-1.png)
 
-4. デバイスの種類を選択します。 **[Azure Stack Edge Pro]** で、 **[GPU 搭載の Azure Stack Edge Pro]** を選択し、 **[選択]** を選択します。 問題が発生した場合、またはデバイスの種類を選択できない場合は、[注文の問題のトラブルシューティング](azure-stack-edge-troubleshoot-ordering.md)に関する記事を参照してください。
+4. Hardware Center で注文しない場合は、**Get started\(作業の開始\)** 画面で **Order using classic ordering experience\(従来の注文エクスペリエンスを使用して注文する\)** を選択します。
 
-    ![リソースを作成する 3](media/azure-stack-edge-gpu-deploy-prep/create-resource-3.png)
+   ![Azure Stack Edge の [Get started]\(作業の開始\) 画面のスクリーンショット。 [Order using classic ordering experience]\(従来の注文エクスペリエンスを使用して注文する\) リンクが強調表示されています。](media/azure-stack-edge-gpu-deploy-prep/classic-order-experience-2.png)
 
-5. ビジネス ニーズに基づいて、Nvidia 製の 1 個または 2 個のグラフィカル プロセシング ユニット (GPU) を使用する Azure Stack Edge Pro を選択できます。 
+5. Azure Stack Edge Pro GPU デバイスに使用するサブスクリプションを選択します。 物理デバイスの配送先の国または地域を選択します。 次に、 **[デバイスの表示]** を選択します。
 
-    ![リソースを作成する 4](media/azure-stack-edge-gpu-deploy-prep/create-resource-4.png)
+    >[!NOTE] 
+    > クラシック エクスペリエンスはまもなく削除されます。 2021 年 12 月以降、注文は Azure Edge Hardware Center を使用してのみ作成できます。
 
-6. **[基本]** タブで、次の **プロジェクト情報** を入力または選択します。
+    ![Azure Stack Edge リソースのサブスクリプションと配送先地域を選択するための [デバイスの種類の選択] 画面のスクリーンショット。 [デバイスの表示] ボタンが強調表示されています。](media/azure-stack-edge-gpu-deploy-prep/create-resource-1.png)
+
+6. デバイスの種類を選択します。 **[Azure Stack Edge Pro]** で、 **[GPU 搭載の Azure Stack Edge Pro]** を選択し、 **[選択]** を選択します。 問題が発生した場合、またはデバイスの種類を選択できない場合は、[注文の問題のトラブルシューティング](azure-stack-edge-troubleshoot-ordering.md)に関する記事を参照してください。
+
+    ![Azure Stack Edge リソースのデバイスの種類を選択するための [デバイスの種類の選択] 画面のスクリーンショット。 デバイスの種類の [選択] ボタンが強調表示されています。](media/azure-stack-edge-gpu-deploy-prep/create-resource-3.png)
+
+7. ビジネス ニーズに基づいて、Nvidia 製の 1 個または 2 個のグラフィカル プロセシング ユニット (GPU) を使用する Azure Stack Edge Pro を選択できます。 
+
+    ![Azure Stack Edge リソースの Azure Stack Edge Pro GPU デバイスの構成を選択するための画面のスクリーンショット。 ハードウェア構成と [選択] ボタンが強調表示されています。](media/azure-stack-edge-gpu-deploy-prep/create-resource-4.png)
+
+8. **[基本]** タブで、次の **プロジェクト情報** を入力または選択します。
     
     |設定  |値  |
     |---------|---------|
     |サブスクリプション    |サブスクリプションは、前の選択に基づいて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
     |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
-7. 次の **インスタンス情報** を入力または選択します。
+9. 次の **インスタンス情報** を入力または選択します。
 
     |設定  |値  |
     |---------|---------|
     |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 から 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
     |リージョン     |Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
 
-    ![リソースを作成する 5](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
+    ![Azure Stack Edge の [リソースの作成とデバイスの注文] ウィザードの [基本情報] タブのスクリーンショット。 [基本情報] タブと [次へ: 配送先住所] ボタンが強調表示されています。](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
 
-8. **配送先住所** を選択します。
+10. **配送先住所** を選択します。
 
     - 既にデバイスがある場合は、 **[I already have a device]\(既にデバイスを持っています\)** のコンボ ボックスを選択します。
 
-        ![リソースを作成する 6](media/azure-stack-edge-gpu-deploy-prep/create-resource-6.png)
+        ![Azure Stack Edge の [リソースの作成とデバイスの注文] ウィザードで [I already have a device]\(既にデバイスを持っています\) オプションが選択された [配送先住所] タブのスクリーンショット。](media/azure-stack-edge-gpu-deploy-prep/create-resource-6.png)
 
     - 新しいデバイスを注文する場合は、連絡先名、会社、デバイスの配送先住所、連絡先情報を入力します。
 
-        ![リソースを作成する 7](media/azure-stack-edge-gpu-deploy-prep/create-resource-7.png)
+        ![新しい Azure Stack Edge リソースを作成する場合の [リソースの作成とデバイスの注文] ウィザードの [配送先住所] タブのスクリーンショット。](media/azure-stack-edge-gpu-deploy-prep/create-resource-7.png)
 
-9. **タグ** を選択します。 必要に応じて、リソースを分類し、請求を統合するためのタグを指定します。 **確認と作成** をクリックします。
+11. **タグ** を選択します。 必要に応じて、リソースを分類し、請求を統合するためのタグを指定します。 **確認と作成** をクリックします。
 
-10. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **[I have reviewed the privacy terms]\(プライバシー条件を確認しました\)** のコンボ ボックスを選択します。
+12. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **[I have reviewed the privacy terms]\(プライバシー条件を確認しました\)** のコンボ ボックスを選択します。
 
-    ![リソースを作成する 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
+    ![Azure Stack Edge の注文の [確認と作成] タブのスクリーンショット。](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
 
-    また、リソースの作成時に、クラウド サービスに対して認証できるようにするマネージド サービス ID (MSI) が有効になっていることも通知されます。 この ID は、リソースが存在する限り存在します。
+    また、リソースの作成時に、クラウド サービスに対して認証できるようにするマネージド ID が有効になっていることも通知されます。 この ID は、リソースが存在する限り存在します。
 
-11. **［作成］** を選択します
+13. **［作成］** を選択します
 
-    リソースの作成には数分かかります。 また、Azure Stack Edge デバイスが Azure のリソースプロバイダーと通信できるようにする MSI も作成されます。
+    リソースの作成には数分かかります。 また、Azure Stack Edge デバイスが Azure のリソースプロバイダーと通信できるようにするマネージド ID も作成されます。
 
     リソースが正常に作成されてデプロイされると通知が表示されます。 **[リソースに移動]** を選択します。
 
-    ![Azure Stack Edge Pro リソースに移動する](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
+    ![新しい Azure Stack Edge リソースのデプロイが完了したことを示す表示のスクリーンショット。 [リソースに移動] ボタンが強調表示されています。](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
 
 Microsoft は受け取った注文を確認し、発送の詳細と共にお客様に (メールで) 連絡します。
 
@@ -230,7 +259,7 @@ Azure Stack Edge リソースが起動して実行中になったら、アクテ
 
    キー コンテナーの名前を指定したら、 **[キーの生成]** を選択して、アクティブ化キーを作成します。 
 
-   ![アクティブ化キーの取得](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
+   ![新しく作成された Azure Stack Edge リソースの [概要] ペインのスクリーンショット。 [アクティブ化キーの生成] ボタンが強調表示されています。](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
 
    キー コンテナーとアクティブ化キーが作成されるまで数分待ちます。 コピー アイコンを選択してキーをコピーし、後で使用できるように保存します。<!--Verify that the new screen has a copy icon.-->
 

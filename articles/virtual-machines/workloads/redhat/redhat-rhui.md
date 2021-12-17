@@ -1,27 +1,30 @@
 ---
 title: Red Hat Update Infrastructure | Microsoft Docs
 description: Microsoft Azure のオンデマンド Red Hat Enterprise Linux インスタンス用の Red Hat Update Infrastructure について説明します
-author: asinn826
+author: mamccrea
 ms.service: virtual-machines
 ms.subservice: redhat
 ms.collection: linux
 ms.topic: article
 ms.date: 02/10/2020
-ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 968377ed09996b9a717e0739a3de8355d1c8d88d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mamccrea
+ms.openlocfilehash: 46e13297938cc9a291cd68d020d26a143f94191c
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677135"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458323"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
+
+**適用対象:** :heavy_check_mark: Linux VM 
+
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
 
 Red Hat Enterprise Linux (RHEL) 従量課金制 (PAYG) イメージには、Azure RHUI にアクセスするための構成が事前に設定されています。 追加の構成は必要ありません。 最新の更新プログラムを取得するには、RHEL インスタンスの準備ができてから `sudo yum update` を実行します。 このサービスは、RHEL PAYG ソフトウェア料金の一部として含まれています。
 
-Azure での RHEL イメージに関する追加情報 (公開および保持ポリシーを含む) は[ここ](./redhat-images.md)で入手できます。
+Azure での RHEL イメージに関する追加情報 (公開およびアイテム保持ポリシーを含む) は [Azure の Red Hat Enterprise Linux イメージの概要](./redhat-images.md)ページにあります。
 
 すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
 
@@ -79,7 +82,7 @@ RedHat:RHEL:7.6:7.6.2019062116
 Extended Update Support (EUS) リポジトリは、VM をプロビジョニングした後に RHEL VM を特定の RHEL マイナー リリースに固定したいお客様が利用できます。 リポジトリを Extended Update Support リポジトリを指すように更新することによって、RHEL VM を特定のマイナー バージョンに固定できます。 また、EUS バージョン ロック操作を取り消すこともできます。
 
 >[!NOTE]
-> EUS は、RHEL Extras ではサポートされていません。 つまり、通常 RHEL Extras チャネルから利用できるパッケージをインストールする場合、EUS を使用している間はそれを実行できないことになります。 Red Hat Extras の製品ライフサイクルの詳細については、[こちら](https://access.redhat.com/support/policy/updates/extras/)をご覧ください。
+> EUS は、RHEL Extras ではサポートされていません。 つまり、通常 RHEL Extras チャネルから利用できるパッケージをインストールする場合、EUS を使用している間はそれを実行できないことになります。 Red Hat Extras Product Life Cycle の詳細は、[Red Hat Customer Portal の Red Hat Enterprise Linux Extras Product Life Cycle](https://access.redhat.com/support/policy/updates/extras/) ページにあります。
 
 本書の執筆時点では、RHEL <= 7.4 の EUS サポートは終了しています。 詳細については、[Red Hat ドキュメント](https://access.redhat.com/support/policy/updates/errata/#Long_Support)の「Red Hat Enterprise Linux の延長メンテナンス」セクションを参照してください。
 * RHEL 7.4 EUS サポートは、2019 年 8 月 31 日に終了します
@@ -231,7 +234,7 @@ RHUI は、RHEL のオンデマンド イメージが提供されているすべ
 >新しい Azure US Government のイメージでは、2020 年 1 月現在、上記の「Azure Global」ヘッダーの下に記載されているパブリック IP を使用します。
 
 >[!NOTE]
->また、Azure Germany はパブリックなドイツ リージョンを優先した結果廃止されたことにも注意してください。 Azure Germany のお客様向けの推奨事項は、[こちら](#manual-update-procedure-to-use-the-azure-rhui-servers)の手順を使用してパブリック RHUI をポイントすることです。
+>また、Azure Germany はパブリックなドイツ リージョンを優先した結果廃止されたことにも注意してください。 Azure Germany のお客様にはまず、[Red Hat Update Infrastructure](#manual-update-procedure-to-use-the-azure-rhui-servers) ページにある手順でパブリック RHUI をポイントすることをお勧めしています。
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUI インフラストラクチャ
 
@@ -287,16 +290,14 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
 - RHEL 8 の場合:
     1. config ファイルを作成します。
         ```bash
-        vi rhel8.config
-        ```
-    1. 次の内容を構成ファイルに追加します。
-        ```bash
+        cat <<EOF > rhel8.config
         [rhui-microsoft-azure-rhel8]
         name=Microsoft Azure RPMs for Red Hat Enterprise Linux 8
         baseurl=https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-2.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-3.microsoft.com/pulp/repos/microsoft-azure-rhel8
         enabled=1
         gpgcheck=1
         gpgkey=https://rhelimage.blob.core.windows.net/repositories/RPM-GPG-KEY-microsoft-azure-release sslverify=1
+        EOF
         ```
     1. ファイルを保存し、次のコマンドを実行します。
         ```bash

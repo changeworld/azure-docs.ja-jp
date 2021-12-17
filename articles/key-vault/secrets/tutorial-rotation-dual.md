@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 1f656a41b0f447b90f58ec14173e418a2defb72e
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 60d99ea9b1add522701a82bbd461e4ef064286aa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484831"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070453"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>2 セットの認証資格情報があるリソースを対象にシークレットのローテーションを自動化する
 
@@ -160,7 +160,7 @@ Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotat
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$tomorrowDate = (get-date).AddDays(+1).ToString("yyyy-MM-ddTHH:mm:ssZ")
 az keyvault secret set --name storageKey --vault-name vaultrotation-kv --value <key1Value> --tags "CredentialId=key1" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
@@ -195,7 +195,7 @@ Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey -AsPlainText
 
 `CredentialId` が代替の `keyName` に更新され、`value` が再生成されたことがわかります。
 
-![1 つ目のストレージ アカウントに対する a z keyvault secret show コマンドの出力を示すスクリーンショット。](../media/secrets/rotation-dual/dual-rotation-4.png)
+![1 つ目のストレージ アカウントに対する A Z keyvault secret show コマンドの出力を示すスクリーンショット。](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 アクセス キーを取得して値を比較します。
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -211,7 +211,7 @@ Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotat
 
 キーの `value` がキー コンテナー内のシークレットと同じであることに注意してください。
 
-![1 つ目のストレージ アカウントに対する a z storage account keys list コマンドの出力を示すスクリーンショット。](../media/secrets/rotation-dual/dual-rotation-5.png)
+![1 つ目のストレージ アカウントに対する A Z storage account keys list コマンドの出力を示すスクリーンショット。](../media/secrets/rotation-dual/dual-rotation-5.png)
 
 ## <a name="add-storage-accounts-for-rotation"></a>ローテーションの対象となるストレージ アカウントを追加する
 
@@ -267,13 +267,13 @@ Get-AzStorageAccountKey -Name vaultrotationstorage2 -ResourceGroupName vaultrota
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyy-MM-ddTHH:mm:ssZ')
+$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyyy-MM-ddTHH:mm:ssZ')
 az keyvault secret set --name storageKey2 --vault-name vaultrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
 
 ```azurepowershell
-$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$tomorrowDate = (get-date).AddDays(+1).ToString("yyyy-MM-ddTHH:mm:ssZ")
 $secretVaule = ConvertTo-SecureString -String '<key1Value>' -AsPlainText -Force
 $tags = @{
     CredentialId='key2';
@@ -298,7 +298,7 @@ Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey2 -AsPlainText
 
 `CredentialId` が代替の `keyName` に更新され、`value` が再生成されたことがわかります。
 
-![2 つ目のストレージ アカウントに対する a z keyvault secret show コマンドの出力を示すスクリーンショット。](../media/secrets/rotation-dual/dual-rotation-8.png)
+![2 つ目のストレージ アカウントに対する A Z keyvault secret show コマンドの出力を示すスクリーンショット。](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 アクセス キーを取得して値を比較します。
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -314,7 +314,7 @@ Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotat
 
 キーの `value` がキー コンテナー内のシークレットと同じであることに注意してください。
 
-![2 つ目のストレージ アカウントに対する a z storage account keys list コマンドの出力を示すスクリーンショット。](../media/secrets/rotation-dual/dual-rotation-9.png)
+![2 つ目のストレージ アカウントに対する A Z storage account keys list コマンドの出力を示すスクリーンショット。](../media/secrets/rotation-dual/dual-rotation-9.png)
 
 ## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>2 組の資格情報を使用する Key Vault ローテーション関数
 

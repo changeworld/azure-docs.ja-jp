@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 355d36d58935372e9d8a92599e8f810fec9ebf19
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 78e0973cd4e187f819332e23ead056f57d4cd378
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785344"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653061"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Azure Data Factory (バージョン 1) のデータセット
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -38,7 +39,7 @@ ms.locfileid: "104785344"
 
 次の図は、Data Factory でのパイプライン、アクティビティ、データセット、リンクされたサービスの関係を示しています。
 
-![パイプライン、アクティビティ、データセット、リンクされたサービスの関係](media/data-factory-create-datasets/relationship-between-data-factory-entities.png)
+:::image type="content" source="media/data-factory-create-datasets/relationship-between-data-factory-entities.png" alt-text="パイプライン、アクティビティ、データセット、リンクされたサービスの関係":::
 
 ## <a name="dataset-json"></a>データセットの JSON
 Data Factory のデータセットは JSON 形式では次のように定義されます。
@@ -140,7 +141,7 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 ## <a name="dataset-type"></a><a name="Type"></a> データセットの型
 データセットの型は、使用するデータ ストアに依存します。 Data Factory でサポートされているデータ ストアの一覧については、次の表を参照してください。 データ ストアをクリックすると、そのデータ ストアに対応するリンクされたサービスとデータセットの作成方法を確認できます。
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
 > \* が付いているデータ ストアは、オンプレミスと Azure IaaS (サービスとしてのインフラストラクチャ) のどちらにある場合もサポートされています。 これらのデータ ストアでは、[Data Management Gateway](data-factory-data-management-gateway.md) のインストールが必要になります。

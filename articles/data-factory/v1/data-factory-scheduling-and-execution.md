@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: f613a14f84999fced888ae72de11328bc7c90811
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/22/2021
+ms.openlocfilehash: b47c9da5eb79899812a2deda1e0b314c27150563
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780006"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250105"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory のスケジュール設定と実行
 > [!NOTE]
@@ -48,7 +49,7 @@ ms.locfileid: "104780006"
 
 次の図に示すように、アクティビティのスケジュールを指定すると、パイプラインの開始時刻と終了時刻を含む一連のタンブリング ウィンドウが作成されます。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。 アクティビティに対するこれらの論理的なタンブリング ウィンドウは、**アクティビティ ウィンドウ** と呼ばれます。
 
-![アクティビティ スケジューラの例](media/data-factory-scheduling-and-execution/scheduler-example.png)
+:::image type="content" source="media/data-factory-scheduling-and-execution/scheduler-example.png" alt-text="アクティビティ スケジューラの例":::
 
 アクティビティの **scheduler** プロパティはオプションです。 このプロパティを指定する場合は、アクティビティの出力データセットの定義で指定するパターンと一致させる必要があります。 現在、スケジュールは出力データセットによって開始されます。 そのため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 
 
@@ -162,7 +163,7 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力 
 
 アクティビティ実行で使用および生成されるデータの各ユニットは、**データ スライス** と呼ばれます。 次の図は、入力データセットと出力データセットが 1 つずつ含まれているアクティビティの例です。 
 
-![可用性スケジューラ](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/availability-scheduler.png" alt-text="可用性スケジューラ":::
 
 図には、入力データセットと出力データセットの 1 時間ごとのデータ スライスが示されています。 この図には、処理可能な入力スライスが 3 つあります。 10-11 AM のアクティビティが実行中であり、10-11 AM 出力スライスが生成されます。 
 
@@ -284,7 +285,7 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力 
 
 2 つのアクティビティがある次の例について考えてみます。 Activity1 と Activity2 です。 Activity1 は Dataset1 のスライスを使用し、Dataset2 のスライスを生成します。そのスライスを Activity2 が入力として使用して、最終的なデータセットのスライスを生成します。
 
-![失敗したスライス](./media/data-factory-scheduling-and-execution/failed-slice.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/failed-slice.png" alt-text="失敗したスライス":::
 
 この図は、最近の 3 つのスライスのうち、Dataset2 の 9-10 AM スライスの生成時にエラーが発生したことを示しています。 Data Factory では、時系列データセットの依存関係が自動的に追跡されます。 このため、9-10 AM のダウンストリーム スライスのアクティビティ実行は開始されません。
 
@@ -292,7 +293,7 @@ Data Factory の監視および管理ツールを使用すると、失敗した�
 
 **Dataset2** の 9-10 AM スライスを再実行すると、Data Factory では最終データセットに対して 9-10 AM 依存スライスの実行が開始されます。
 
-![失敗したスライスの再実行](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/rerun-failed-slice.png" alt-text="失敗したスライスの再実行":::
 
 ## <a name="multiple-activities-in-a-pipeline"></a>パイプライン内の複数アクティビティ
 パイプラインに複数のアクティビティを含めることができます。 パイプラインに複数のアクティビティがあり、アクティビティの出力が別のアクティビティの入力ではない場合は、アクティビティの入力データ スライスの準備ができれば、アクティビティが並列実行される可能性があります。
@@ -308,11 +309,11 @@ Data Factory の監視および管理ツールを使用すると、失敗した�
 
 同じパイプラインに両方のアクティビティがあるダイアグラム ビューは、次の図のようになります。
 
-![同じパイプラインでのアクティビティの連鎖](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png" alt-text="同じパイプラインでのアクティビティの連鎖":::
 
 既に説明したように、アクティビティは異なるパイプラインに指定できます。 そうしたシナリオでは、ダイアグラム ビューは次の図のようになります。
 
-![2 つのパイプラインでのアクティビティの連鎖](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png" alt-text="2 つのパイプラインでのアクティビティの連鎖":::
 
 例については、付録の順次コピーに関するセクションを参照してください。
 
@@ -435,7 +436,7 @@ Data Factory を使用して、このシナリオをモデル化する方法を�
 
 次の図は、データ依存関係の観点からこのシナリオを示しています。
 
-![データ依存関係](./media/data-factory-scheduling-and-execution/data-dependency.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/data-dependency.png" alt-text="データ依存関係":::
 
 毎日の出力スライスは、入力データセットの 24 時間のスライスに依存しています。 Data Factory では、生成する出力スライスと同じ期間に属する入力データ スライスを特定して、これらの依存関係を自動的に計算します。 24 個の入力スライスのいずれかを使用できない場合、Data Factory では入力スライスの準備が完了するまで待機してから、毎日のアクティビティ実行を開始します。
 

@@ -26,7 +26,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/data-lake-analytics-security-baseline?toc=/azure/data-lake-analytics/TOC.json
 - name: 操作方法ガイド
   items:
     - name: Data Lake Analytics の管理
@@ -165,6 +165,8 @@
           href: runtime-troubleshoot.md
         - name: .NET アップグレードのトラブルシューティング
           href: dotnet-upgrade-troubleshoot.md
+    - name: Azure Synapse Analytics 上の Spark に移行する
+      href: migrate-azure-data-lake-analytics-to-synapse.md
 - name: リファレンス
   items:
     - name: Azure PowerShell
@@ -191,7 +193,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: 変更の要求
-      href: 'https://feedback.azure.com/forums/327234-data-lake'
+      href: 'https://feedback.azure.com/d365community/forum/7fd97106-7326-ec11-b6e6-000d3a4f032c'
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-data-lake-analytics.html
     - name: 価格

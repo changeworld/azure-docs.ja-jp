@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 3509185baa3a9d7be90c1fa4bd8000da4a8a6fe5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c33ad42eeb710edbffdf6448fc138eb6d6aae86
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95557929"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123078354"
 ---
 ## <a name="prepare-for-akv-integration"></a>AKV 統合の準備
 Azure Key Vault 統合を使用し、SQL Server VM を構成するには、いくつかの前提条件があります。 
@@ -60,7 +60,7 @@ Azure Key Vault を使用して VM の暗号化に使用する鍵を保存する
 New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 ```
 
-"Key Vault を作成する" 手順に入ったら、返された **vaultUri** プロパティをメモします。これは Key Vault の URL です。 この手順の例では、下のように、Key Vault の名前は ContosoKeyVault であり、Key Vault URL は https://contosokeyvault.vault.azure.net/ になります。
+"Key Vault を作成する" 手順に入ったら、返された **vaultUri** プロパティをメモします。これは Key Vault の URL です。 この手順の例では、下のように、Key Vault の名前は ContosoKeyVault であり、Key Vault URL は `https://contosokeyvault.vault.azure.net/` になります。
 
 Key Vault ID は後に PowerShell スクリプトの **$akvURL** パラメーターに割り当てられ、Azure Key Vault 統合を有効にします。
 

@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53cdbfb3ba531330c37f86233cbed990da4efaf4
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: c570a7f646f9fc76fcb858748c59f438b46bf033
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258386"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572142"
 ---
 # <a name="resilient-end-user-experience"></a>回復性があるエンドユーザー エクスペリエンス
 
@@ -46,7 +46,7 @@ ms.locfileid: "107258386"
 
 ## <a name="choose-multiple-idps"></a>複数の IDP を選択する
 
-Facebook などの[外部 ID プロバイダー](../../active-directory-b2c/technical-overview.md#external-identity-providers)を使用する場合は、外部プロバイダーが使用できなくなった場合に備えて、代替の計画を準備しておく必要があります。
+Facebook などの[外部 ID プロバイダー](../../active-directory-b2c/add-identity-provider.md)を使用する場合は、外部プロバイダーが使用できなくなった場合に備えて、代替の計画を準備しておく必要があります。
 
 ### <a name="how-to-set-up-multiple-idps"></a>複数の IDP を設定する方法
 

@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: baselden
 author: BarbaraSelden
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa18b619c785ad23e1da037621597684b1c5c63
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 5f64ce0313bf985dfb4ce84253e7d83ab2a03e96
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551783"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234264"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory デバイスのデプロイを計画する
 
@@ -48,13 +48,13 @@ Azure Active Directory (Azure AD) を使用すると、組織では、デバイ�
 
 * ユーザー エクスペリエンスの向上 – Azure AD のデバイス ID を使用すると、ユーザーが個人のデバイスと会社のデバイスの両方から組織のクラウドベースのリソースに簡単にアクセスできます。 管理者は、すべての Windows デバイスで統一されたエクスペリエンスを実現するために [Enterprise State Roaming](enterprise-state-roaming-overview.md) を有効にすることができます。
 
-* デプロイと管理の簡素化 – デバイス ID 管理により、[Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot)、[一括プロビジョニング](/mem/intune/enrollment/windows-bulk-enroll)、および[セルフサービス: Out-of-box experience (OOBE)](../user-help/user-help-join-device-on-network.md) を使用して、デバイスを Azure AD に取り込むプロセスを簡素化できます。 これらのデバイスは、[Microsoft Intune](/mem/intune/fundamentals/what-is-intune) などのモバイル デバイス管理 (MDM) ツールとそれらの ID を使用して、[Azure portal](https://portal.azure.com/) で管理できます。
+* デプロイと管理の簡素化 – デバイス ID 管理により、[Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot)、[一括プロビジョニング](/mem/intune/enrollment/windows-bulk-enroll)、および[セルフサービス: Out-of-box experience (OOBE)](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973) を使用して、デバイスを Azure AD に取り込むプロセスを簡素化できます。 これらのデバイスは、[Microsoft Intune](/mem/intune/fundamentals/what-is-intune) などのモバイル デバイス管理 (MDM) ツールとそれらの ID を使用して、[Azure portal](https://portal.azure.com/) で管理できます。
 
 ### <a name="training-resources"></a>トレーニング リソース
 
 ビデオ:[デバイス コントロールを使用した条件付きアクセス](https://youtu.be/NcONUf-jeS4)
 
-FAQ:「[Azure AD デバイス管理の FAQ](faq.yml)」および「[設定とデータのローミングに関する FAQ](enterprise-state-roaming-faqs.md)」 
+FAQ:「[Azure AD デバイス管理の FAQ](faq.yml)」および「[設定とデータのローミングに関する FAQ](enterprise-state-roaming-faqs.yml)」 
 
 ## <a name="plan-the-deployment-project"></a>デプロイ プロジェクトを計画する
 
@@ -143,11 +143,13 @@ BYOD と企業所有のモバイル デバイスは、ポータル サイト ア
 
 * [Windows 10](/mem/intune/user-help/enroll-windows-10-device)
 
+* [macOS](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp)
+
 組織に最適なオプションがデバイスの登録である場合は、次のリソースを参照してください。
 
 * この [Azure AD 登録済みデバイス](concept-azure-ad-register.md)の概要。
 
-* このエンドユーザー向けの、[組織のネットワークへの個人のデバイスの登録](../user-help/user-help-register-device-on-network.md)に関するドキュメント。
+* このエンドユーザー向けの、[組織のネットワークへの個人のデバイスの登録](https://support.microsoft.com/account-billing/register-your-personal-device-on-your-work-or-school-network-8803dd61-a613-45e3-ae6c-bd1ab25bf8a8)に関するドキュメント。
 
 ## <a name="azure-ad-join"></a>Azure AD 参加
 
@@ -169,7 +171,7 @@ Azure AD Join をプロビジョニングするには、次の方法がありま
 
 Windows 10 Professional または Windows 10 Enterprise のいずれかがデバイスにインストールされている場合、既定のエクスペリエンスは、会社所有のデバイスのセットアップ プロセスになります。
 
-* [Windows の Out of Box Experience (OOBE) または Windows の設定から](../user-help/user-help-join-device-on-network.md)
+* [Windows の Out of Box Experience (OOBE) または Windows の設定から](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973)
 
 * [Windows Auto pilot](/windows/deployment/windows-autopilot/windows-autopilot)
 

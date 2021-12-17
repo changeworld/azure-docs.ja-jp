@@ -3,20 +3,24 @@ title: Windows Server 向け Azure Hybrid Benefit
 description: Windows ソフトウェア アシュアランスの特典を最大限利用してオンプレミスのライセンスを Azure で使用する方法について説明します。
 author: xujing-ms
 ms.service: virtual-machines
-ms.subservice: azure-hybrid-benefit
+ms.subservice: billing
 ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: c5a9386540f418c8f490ca146e250e780737e478
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d634d1affd74d8a6c8be229d689bbcb6c63bd0db
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668062"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216025"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
+
 ソフトウェア アシュアランスを取得したお客様は、Windows Server 向け Azure Hybrid Benefit により、オンプレミスの Windows Server ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure ハイブリッド特典を使用して、Windows OS 搭載の新しい仮想マシンをデプロイすることができます。 この記事では、Windows Server 向け Azure ハイブリッド特典での新しい VM のデプロイ方法と、既存の稼働中 VM を更新する方法について説明します。 Windows Server 向け Azure Hybrid Benefit のライセンスとコスト削減について詳しくは、[Windows Server 向け Azure Hybrid Benefit のライセンス ページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)をご覧ください。
 
 各 2 プロセッサ ライセンスまたは 16 コア ライセンスの各セットでは、最大 8 コアのインスタンスを 2 つ、または最大 16 コアのインスタンスを 1 つ利用できます。 Standard Edition のハイブリッド特典ライセンスは、オンプレミスまたは Azure 内のどちらかで 1 度のみ使用できます。 Datacenter Edition エディションの特典は、オンプレミスと Azure 内の両方で同時に使用することができます。
@@ -67,13 +71,15 @@ az vm create \
 ```
 
 ### <a name="template"></a>Template
-Resource Manager テンプレート内に、追加パラメーター `licenseType` を指定する必要があります。 [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)で詳細を確認できます
+Resource Manager テンプレート内に、追加パラメーター `licenseType` を指定する必要があります。 [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/syntax.md)で詳細を確認できます。
+
 ```json
 "properties": {
     "licenseType": "Windows_Server",
     "hardwareProfile": {
         "vmSize": "[variables('vmSize')]"
     }
+}    
 ```
 
 ## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>既存の VM を Windows Server 向け Azure ハイブリッド特典を使用するように変換する
@@ -145,27 +151,39 @@ az vm get-instance-view -g MyResourceGroup -n MyVM --query "[?licenseType=='Wind
 > VM 上のライセンスの種類を変更しても、システムが再起動したり、サービスが中断したりすることはありません。 これはメタデータのライセンス フラグのみです。
 >
 
-## <a name="list-all-vms-with-azure-hybrid-benefit-for-windows-server-in-a-subscription"></a>サブスクリプションのすべての Windows Server 向け Azure ハイブリッド特典付き VM の一覧表示
-Windows Server 向け Azure Hybrid Benefit でデプロイされたすべての仮想マシンを参照し、カウントするには、自分のサブスクリプションから次のコマンドを実行します。
+## <a name="list-all-vms-and-vmss-with-azure-hybrid-benefit-for-windows-server-in-a-subscription"></a>サブスクリプションのすべての Windows Server 向け Azure ハイブリッド特典付き VM および VMSS の一覧表示
+Windows Server 向け Azure Hybrid Benefit でデプロイされたすべての仮想マシンと仮想マシン スケール セットを参照し、カウントするには、自分のサブスクリプションから次のコマンドを実行します。
 
 ### <a name="portal"></a>ポータル
 仮想マシンまたは仮想マシン スケール セットのリソース ブレードから、[Azure Hybrid Benefit]\(Azure ハイブリッド特典) を含むようテーブル列を構成することで、すべての VM と ライセンスの種類の一覧を表示することができます。 VM の設定は、[Enabled]\(有効)、[Not enabled]\(無効)、または [Not supported]\(未サポート) の状態にできます。
 
 ### <a name="powershell"></a>PowerShell
+仮想マシンの場合:
 ```powershell
-$vms = Get-AzVM
-$vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name, LicenseType
+Get-AzVM | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name, LicenseType
+```
+
+仮想マシン スケール セットの場合:
+```powershell
+Get-AzVmss | Select * -ExpandProperty VirtualMachineProfile | ? LicenseType -eq 'Windows_Server' | select ResourceGroupName, Name, LicenseType
 ```
 
 ### <a name="cli"></a>CLI
+仮想マシンの場合:
 ```azurecli
 az vm list --query "[?licenseType=='Windows_Server']" -o table
+```
+
+仮想マシン スケール セットの場合:
+```azurecli
+az vmss list --query "[?virtualMachineProfile.licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure ハイブリッド特典で仮想マシン スケール セットをデプロイする
 仮想マシン スケール セットの Resource Manager テンプレート内の VirtualMachineProfile プロパティ内に、追加パラメーター `licenseType` を指定する必要があります。 これは、ARM テンプレート、PowerShell、Azure CLI、または REST を使用してご自分のスケール セットの作成時または更新時に行うことができます。
 
 次の例では、Windows Server 2016 Datacenter イメージで ARM テンプレートを作成します。
+
 ```json
 "virtualMachineProfile": {
     "storageProfile": {
@@ -185,6 +203,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
             "adminUsername": "[parameters('adminUsername')]",
             "adminPassword": "[parameters('adminPassword')]"
     }
+}    
 ```
 [仮想マシン スケール セットの変更](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md)方法の詳細を確認し、スケール セットの更新方法をさらに調べることもできます。
 

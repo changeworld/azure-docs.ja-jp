@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Virtual WAN のドキュメント
-summary: Azure 仮想 WAN を構成、作成、管理する方法について説明します。 グローバルなスケールで支社の安全な接続を作成します。
+summary: Azure 仮想 WAN を構成、作成、管理する方法について説明します。 Azure Virtual WAN は、ネットワーク、セキュリティ、ルーティングのさまざまな機能をまとめて、1 つの運用インターフェイスを提供するネットワーク サービスです。
 metadata:
   title: Virtual WAN のドキュメント
   description: Virtual WAN の説明
@@ -9,13 +9,14 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 01/15/2020
-  ms.openlocfilehash: 3aaf42935e292bda64d9227d01f498c83f4c9f7a
-  ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+  ms.date: 06/29/2021
+  ms.custom: e2e-hybrid
+  ms.openlocfilehash: 8f6766607d498e86ed12b67d8b118e67e6f69800
+  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/16/2021
-  ms.locfileid: "98250776"
+  ms.lasthandoff: 07/07/2021
+  ms.locfileid: "113431908"
 landingContent:
 - title: Virtual WAN について
   linkLists:
@@ -31,6 +32,16 @@ landingContent:
       url: virtual-wan-locations-partners.md
     - text: よく寄せられる質問
       url: virtual-wan-faq.md
+  - linkListType: learn
+    links:
+    - text: Azure Virtual WAN の概要
+      url: /learn/modules/introduction-azure-virtual-wan/
+  - linkListType: video
+    links:
+    - text: Azure Virtual WAN を使用したリモート ユーザー接続
+      url: https://www.youtube.com/watch?v=nP5XntjA7OQ
+    - text: Azure Virtual WAN と SD-WAN を使用してハイブリッド ネットワークを設計する
+      url: https://www.youtube.com/watch?v=2g-_empU0GU&list=PLLasX02E8BPA5V-waZPcelhg9l3IkeUQo&index=6
 - title: はじめに
   linkLists:
   - linkListType: tutorial
@@ -89,20 +100,18 @@ landingContent:
       url: how-to-virtual-hub-routing.md
 - title: 監視
   linkLists:
-  - linkListType: concept
-    links:
-    - text: Azure Monitor の分析情報を使用して監視する
-      url: azure-monitor-insights.md
   - linkListType: how-to-guide
     links:
-    - text: Azure Monitor のログとメトリックを構成する
+    - text: Azure Monitor を使用した Virtual WAN の監視
+      url: monitor-virtual-wan.md
+    - text: Azure Monitor の分析情報を使用して監視する
       url: azure-monitor-insights.md
 - title: リファレンス
   linkLists:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: /cli/azure/ext/virtual-wan/network
+      url: /cli/azure/
     - text: Azure PowerShell
       url: /powershell/module/az.network#networking
     - text: REST

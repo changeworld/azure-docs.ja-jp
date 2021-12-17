@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
-ms.custom: subject-armqs
-ms.date: 08/28/2020
+ms.custom: subject-armqs, devx-track-azurepowershell
+ms.date: 05/10/2021
 ms.author: victorh
-ms.openlocfilehash: 478f3454a728871040cdbbf9f817394cffe6b82f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0aa88ef44f1d63593a22c657b781720622465d6
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660255"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033565"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>クイック スタート:可用性ゾーンを使用して Azure Firewall をデプロイする - ARM テンプレート
 
@@ -31,7 +31,7 @@ Azure Firewall の詳細については、[Azure portal を使用した Azure Fi
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazurefirewall-with-zones-sandbox%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,9 +41,9 @@ Azure Firewall の詳細については、[Azure portal を使用した Azure Fi
 
 このテンプレートは、可用性ゾーンを使用して Azure Firewall を作成すると共に、Azure Firewall をサポートするために必要なリソースも作成します。
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/azurefirewall-with-zones-sandbox)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/azurefirewall-with-zones-sandbox/azuredeploy.json":::
 
 このテンプレートには、次の複数の Azure リソースが定義されています。
 
@@ -62,10 +62,10 @@ ARM テンプレートを Azure にデプロイします。
 
 1. **[Azure に配置する]** を選択して Azure にサインインし、テンプレートを開きます。 このテンプレートは、Azure Firewall、ネットワーク インフラストラクチャ、2 つの仮想マシンを作成します。
 
-   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
+   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazurefirewall-with-zones-sandbox%2Fazuredeploy.json)
 
 2. ポータルの **[Create a sandbox setup of Azure Firewall with Zones]\(ゾーンを使用した Azure Firewall のサンドボックス設定の作成\)** ページで、次の値を入力または選択します。
-   - **[リソース グループ]** : **[新規作成]** を選択して、リソース グループの名前を入力し、 **[OK]** を選択します。 
+   - **[リソース グループ]** : **[新規作成]** を選択して、リソース グループの名前を入力し、 **[OK]** を選択します。
    - **仮想ネットワーク名**: 新しい VNet の名前を入力します。
    - **管理ユーザー名**: 管理者ユーザー アカウントのユーザー名を入力します。
    - **管理パスワード**: 管理者パスワードを入力します。
@@ -86,7 +86,7 @@ ARM テンプレートを Azure にデプロイします。
 Remove-AzResourceGroup -Name MyResourceGroup
 ```
 
-引き続きファイアウォール監視チュートリアルに進む場合は、リソース グループとファイアウォールを削除しないでください。 
+引き続きファイアウォール監視チュートリアルに進む場合は、リソース グループとファイアウォールを削除しないでください。
 
 ## <a name="next-steps"></a>次のステップ
 

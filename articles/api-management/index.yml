@@ -7,15 +7,15 @@ metadata:
   services: api-management
   ms.service: api-management
   ms.topic: landing-page
-  author: georgewallace
-  ms.author: gwallace
-  ms.date: 03/08/2020
-  ms.openlocfilehash: 5a3b09c3835e09d734c1083f84893224c3fe8cfd
-  ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+  author: dlepow
+  ms.author: danlep
+  ms.date: 05/13/2021
+  ms.openlocfilehash: 996bd32a932d866978267ae19f1811f76036517c
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/14/2020
-  ms.locfileid: "97399096"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110368804"
 landingContent:
 - title: API Management について
   linkLists:
@@ -23,8 +23,12 @@ landingContent:
     links:
     - text: API Management とは
       url: api-management-key-concepts.md
-    - text: 機能の利用可能性
+    - text: サービス レベルと機能
       url: api-management-features.md
+  - linkListType: architecture
+    links:
+    - text: 基本的なエンタープライズ統合
+      url: /azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration
 - title: インスタンスを作成する
   linkLists:
   - linkListType: quickstart
@@ -73,9 +77,15 @@ landingContent:
       url: powershell-samples.md
     - text: Azure Policy の組み込み
       url: ./policy-reference.md
-- title: アーキテクチャ
+- title: ハイブリッドおよびマルチクラウドの管理を有効にする
   linkLists:
-  - linkListType: architecture
+  - linkListType: overview
     links:
-    - text: 基本的なエンタープライズ統合
-      url: /azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration
+    - text: セルフホステッド ゲートウェイの概要
+      url: self-hosted-gateway-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Arc でのホスト ゲートウェイ
+      url: how-to-deploy-self-hosted-gateway-azure-arc.md
+    - text: Kubernetes でのホスト ゲートウェイ
+      url: how-to-deploy-self-hosted-gateway-kubernetes.md

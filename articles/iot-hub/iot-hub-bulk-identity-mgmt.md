@@ -1,20 +1,19 @@
 ---
 title: Azure IoT Hub デバイス ID のインポートとエクスポート | Microsoft Docs
 description: Azure IoT service SDK を使用して ID ジストリに対して一括操作を実行し、デバイス ID のインポートとエクスポートを行う方法について説明します。 インポート操作を実行すると、デバイス ID を一括で作成、更新、および削除できます。
-author: robinsh
-manager: philmea
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 27a84f85f32eaf5fe77ff637d80eb4b3c9587930
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92536081"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556156"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID の一括でのインポートおよびエクスポート
 
@@ -87,7 +86,7 @@ while(true)
 ```
 
 > [!NOTE]
-> ストレージアカウントに IoT Hub の接続性を制限するファイアウォール構成がある場合には、[Microsoft が信頼を置くファーストパーティーのエクセプション](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) の使用を検討してください (限られたリージョンで、管理サービス ID を持つ IoT hub を対象に利用可能)。
+> ストレージアカウントに IoT Hub の接続性を制限するファイアウォール構成がある場合には、[Microsoft が信頼を置くファーストパーティーのエクセプション](./virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources) の使用を検討してください (限られたリージョンで、管理サービス ID を持つ IoT hub を対象に利用可能)。
 
 
 ## <a name="device-importexport-job-limits"></a>デバイスのインポート ジョブまたはエクスポート ジョブの制限

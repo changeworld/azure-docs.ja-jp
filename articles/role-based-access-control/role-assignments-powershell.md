@@ -7,14 +7,15 @@ manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/15/2021
+ms.date: 08/31/2021
 ms.author: rolyon
-ms.openlocfilehash: 00f663b90f34f3b557329692f844bbbc1bf3207d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c0138a36c976a9c7c273d61fdd19a50ffbe31354
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556801"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305949"
 ---
 # <a name="assign-azure-roles-using-azure-powershell"></a>Azure PowerShell を使用して Azure ロールを割り当てる
 
@@ -28,7 +29,7 @@ ms.locfileid: "100556801"
 
 - `Microsoft.Authorization/roleAssignments/write` アクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
 - [Azure Cloud Shell の PowerShell](../cloud-shell/overview.md) または [Azure PowerShell](/powershell/azure/install-az-ps)
-- PowerShell コマンドの実行に使用するアカウントには、Microsoft Graph の `Directory.Read.All` のアクセス許可が必要です。
+- PowerShell コマンドの実行に使用するアカウントには、Azure Active Directory Graph の `Directory.Read.All` と Microsoft Graph の `Directory.Read.All` のアクセス許可が必要です。
 
 ## <a name="steps-to-assign-an-azure-role"></a>Azure ロールを割り当てる手順
 

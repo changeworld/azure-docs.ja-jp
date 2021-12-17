@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 072db1d47abd95844075aeedfeddc4f8cf6bf936
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d2bfaef8f00f6246dfef17145666c817ed26d9d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94835868"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747852"
 ---
 # <a name="how-to-configure-the-azure-ad-multi-factor-authentication-registration-policy"></a>方法:Azure AD Multi-Factor Authentication 登録ポリシーを構成する
 
@@ -40,14 +40,12 @@ Azure AD Multi-Factor Authentication の詳細については、[Azure AD Multi-
    1. **[割り当て]** で:
       1. **[ユーザー]** - **[すべてのユーザー]** を選択します。ロールアウトを制限する場合は **[個人と グループの選択]** を選択します。
          1. 必要に応じて、ポリシーからユーザーを除外できます。
-   1. **[コントロール]** で:
-      1. **[Azure AD MFA への登録を必須とする]** チェックボックスがオンであることを確認し、 **[選択]** を選択します。
    1. **[ポリシーの適用]**  -  **[オン]**
    1. **および**
 
 ## <a name="user-experience"></a>ユーザー エクスペリエンス
 
-Azure Active Directory Identity Protection によって、次回対話形式でサインインするときに、ユーザーに登録を求めるプロンプトが表示されます。ユーザーは、14 日の間に登録を完了します。 この 14 日間は登録をパイバスできますが、この期間の最後に、サインイン プロセスを完了するには登録することが要求されされます。
+Azure Active Directory Identity Protection によって、次回対話形式でサインインするときに、ユーザーに登録を求めるプロンプトが表示されます。ユーザーは、14 日の間に登録を完了します。 この 14 日間は、条件として MFA が要求されていない場合は登録をパイバスできますが、この期間の最後にサインイン プロセスを完了するには、登録が必要になります。
 
 関連するユーザー エクスペリエンスの概要については、以下を参照してください。
 

@@ -4,12 +4,12 @@ description: ランタイム、SDK、およびツールをインストールし�
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d08046c8f29901dd9650a1edc886efa2ff226e00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71fd869ad68164faf883fe148a47c2da4fd133b0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93086779"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088431"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -20,15 +20,15 @@ ms.locfileid: "93086779"
 Linux クラスターで実行される Azure Service Fabric アプリケーションを Mac OS X を使用して構築できます。このドキュメントでは、開発用に Mac をセットアップする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-Azure Service Fabric は、Mac OS X ではネイティブに実行されません。ローカルの Service Fabric クラスターを実行できるように、事前に構成済みの Docker コンテナー イメージが用意されています。 作業を開始する前に、以下を行う必要があります。
+Azure Service Fabric は、Mac OS X ではネイティブに実行されません。ローカルの Service Fabric クラスターを実行できるように、事前に構成済みの Docker コンテナー イメージが用意されています。 以降の手順を開始する前に次の要件を満たしておく必要があります。
 
-* 少なくとも 4 GB の RAM。
-* 最新バージョンの [Docker](https://www.docker.com/)。
+* [Mac に Docker Desktop](https://docs.docker.com/docker-for-mac/install/) をインストールする場合のシステム要件
+
+* [Mac に Docker Desktop をインストールして実行する](https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-desktop-on-mac)
 
 >[!TIP]
 >
->Mac に Docker をインストールには、[Docker のドキュメント](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install)の手順に従ってください。 インストールの完了後、[インストールを確認](https://docs.docker.com/docker-for-mac/#check-versions-of-docker-engine-compose-and-machine)します。
->
+>Mac に Docker をインストールには、[Docker のドキュメント](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install)の手順に従ってください。 インストール後、Docker Desktop を使用して、[リソースの制限](https://docs.docker.com/docker-for-mac)や[ディスク使用率](https://docs.docker.com/docker-for-mac/space/)などの環境設定を設定できます。
 
 ## <a name="create-a-local-container-and-set-up-service-fabric"></a>ローカル コンテナーを作成し、Service Fabric をセットアップする
 ローカル Docker コンテナーをセットアップし、そこで Service Fabric クラスターを実行するには、次の手順を実行します。
@@ -195,7 +195,7 @@ Service Fabric アプリケーションを作成して構築したら、[Service
 
 ## <a name="set-up-net-core-31-development"></a>.NET Core 3.1 開発環境を設定する
 
-[.NET Core 3.1 SDK for Mac](https://www.microsoft.com/net/core#macos) をインストールして、[C# Service Fabric アプリケーションの作成](service-fabric-create-your-first-linux-application-with-csharp.md)を開始します。 .NET Core Service Fabric アプリケーション用のパッケージは、NuGet.org でホストされています。
+[.NET Core 3.1 SDK for Mac](https://dotnet.microsoft.com/download?initial-os=macos) をインストールして、[C# Service Fabric アプリケーションの作成](service-fabric-create-your-first-linux-application-with-csharp.md)を開始します。 .NET Core Service Fabric アプリケーション用のパッケージは、NuGet.org でホストされています。
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Eclipse 用の Service Fabric プラグインを Mac にインストールする
 

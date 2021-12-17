@@ -1,18 +1,18 @@
 ---
 title: Azure Service Bus Messaging 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Service Bus Messaging に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 04/14/2021
+ms.date: 09/17/2021
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: d141eb9a04f058eaf9405919cc1d7eccac1469fe
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 274d7a025041bf4d9fba88598d2414f652e314b8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505576"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585738"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-bus-messaging"></a>Azure Service Bus Messaging 用の Azure Policy 規制コンプライアンス コントロール
 

@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cdf4277c1177f0a963e7b7bb05813d47d2c1f57
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670689"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814336"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>拡張された Apache Spark History Server を使用して Apache Spark アプリケーションのデバッグと診断を行う
 
@@ -44,7 +44,7 @@ Apache Spark History Server は、完了および実行中の Spark アプリケ
 
 ### <a name="open-the-spark-history-server-web-ui-from-data-node&quot;></a>Spark History Server Web UI をデータ ノードから開く
 
-1. Azure Synapse Studio ノートブックで、ジョブ実行出力セルから、または ノートブック ドキュメントの下部にある状態パネルから、 **[Spark History Server]** を選択します。 **[セッション詳細]** を選択します。
+1. Synapse Studio ノートブックで、ジョブ実行出力セルから、またはノートブック ドキュメントの下部にある状態パネルから、 **[Spark History Server]** を選択します。 **[セッション詳細]** を選択します。
 
    ![Spark History Server の起動 1](./media/apache-spark-history-server/launch-history-server2.png &quot;Spark History Server の起動")
 

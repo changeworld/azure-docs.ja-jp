@@ -2,21 +2,21 @@
 title: チュートリアル:BitaBIZ を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: BitaBIZ に対するユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行するように Azure Active Directory を構成する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 8eccc3be7da201ee1e2af046c6b515871ef05adc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 23d3249c598c63d36fcc5f06ecca3e0051f863b6
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96350774"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764894"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>チュートリアル:BitaBIZ を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2db8cfe652c0fca4b68b00d846e345c1b60cd05d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21274636a38cb37ac62f2b73112d9346482fe573
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880238"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739962"
 ---
 # <a name="azure-active-directory-identity-protection-and-the-microsoft-graph-powershell-sdk"></a>Azure Active Directory Identity Protection と Microsoft Graph PowerShell SDK
 

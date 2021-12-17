@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: ae5887657e7657e60348217c21aa0ed17f9f4b07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ff26289962aa06f9638644e28da23b646554281
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97606302"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865317"
 ---
 # <a name="what-is-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 とは
 
@@ -86,6 +86,21 @@ Azure Time Series Insights Gen2 には、データ処理、ストレージ (デ�
 | ほぼリアルタイムのデータ探索 | [Azure Time Series Insights Gen2 エクスプローラー](./concepts-ux-panels.md)のユーザー エクスペリエンスは、取り込みのパイプライン経由ですべてのデータ ストリーミングの視覚化を提供しています。 イベント ソースを接続すると、イベント データの表示、調査、クエリを行うことができるようになります。 これにより、デバイスが想定どおりにデータを出力しているかどうかを検証できます。 IoT アセットの正常性、生産性、全体的な有効性を監視することもできます。 |
 | 拡張性と統合 | Power BI Connector の統合は、Time Series Explorer のユーザー エクスペリエンスで **エクスポート** オプションを介して使用でき、ユーザー エクスペリエンスで作成した時系列クエリを Power BI デスクトップに直接エクスポートし、その時系列グラフを他の BI 分析と共に表示できます。 これにより、IoT の時系列などのさまざまなデータ ソースからの分析が 1 つのウィンドウに表示されるので、Power BI に投資した産業用 IoT 企業が新しいクラスのシナリオを実現できるようになります。 |
 | Azure Time Series Insights Gen2 プラットフォーム上に構築されたカスタム アプリケーション | Azure Time Series Insights Gen2 では、[JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) がサポートされています。 SDK では、豊富なコントロールとクエリへの簡単なアクセスが提供されます。 SDK を使用し、ビジネス ニーズに合わせて、Azure Time Series Insights Gen2 上にカスタム IoT アプリケーションを構築します。 また、Azure Time Series Insights Gen2 の [Query API](./concepts-query-overview.md) を直接使用して、カスタム IoT アプリケーションへのデータを生成できます。 |
+
+## <a name="region-availability"></a>利用可能なリージョン
+
+Azure Time Series Insights を使用できる場所については、[リージョン別の Azure グローバル インフラストラクチャ製品](https://azure.microsoft.com/global-infrastructure/services/?products=time-series-insights)に関するページを参照してください。
+
+Azure Time Series Insights は、1 つのリージョンに配置されます。 一方、顧客データは、顧客がサービス インスタンスをデプロイしたリージョンの外部で格納または処理されます。ただし、次のリージョンは例外で、データはリージョンの外部に複製されません。
+
+* 東アジア
+* 東南アジア
+*   オーストラリア南東部
+*   西ヨーロッパ
+*   英国南部
+*   米国西部
+*   フランス中部
+*   カナダ中部
 
 ## <a name="next-steps"></a>次のステップ
 

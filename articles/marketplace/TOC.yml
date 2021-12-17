@@ -3,24 +3,46 @@
   items: null
 - name: コマーシャル マーケットプレースの概要
   href: overview.md
+- name: 新機能
+  href: what-is-new.md
 - name: アカウント管理
   items:
-    - name: 新しいパートナー センター アカウントを作成する
-      href: partner-center-portal/create-account.md
-    - name: アカウントの管理
-      href: partner-center-portal/manage-account.md
-    - name: 会社の職場アカウントを検索または作成する
-      href: partner-center-portal/company-work-accounts.md
-    - name: CPP からパートナー センターへのアカウントの移行
-      href: partner-center-portal/account-migration-from-cpp-to-pc.md
+    - name: 全般アカウントを管理する
+      items:
+        - name: 新しいパートナー センター アカウントを作成する
+          href: create-account.md
+        - name: 新しい発行元の追加
+          href: add-publishers.md
+        - name: アカウントの管理
+          href: manage-account.md
+        - name: アカウントを切り替える
+          href: switch-accounts.md
+        - name: テナントを管理する
+          href: manage-tenants.md
+        - name: 会社の職場アカウントを検索または作成する
+          href: company-work-accounts.md
+        - name: Microsoft への通知
+          href: submit-legal-notice.md
+    - name: ユーザーの管理
+      items:
+        - name: ユーザーの追加と管理
+          href: add-manage-users.md
+        - name: ユーザーにロールを割り当てる
+          href: user-roles.md
+        - name: グループの管理
+          href: manage-groups.md
+        - name: Azure AD アプリケーションを追加して管理する
+          href: manage-aad-apps.md
 - name: 概念
   items:
     - name: リスト オプション
       href: determine-your-listing-type.md
     - name: コマーシャル マーケットプレースでの取引
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
-    - name: プライベート オファー
-      href: private-offers.md
+    - name: ライセンスの管理
+      href: isv-app-license.md
+    - name: プライベート プラン
+      href: private-plans.md
     - name: プランと価格
       href: plans-pricing.md
     - name: 標準契約
@@ -29,6 +51,12 @@
       href: marketplace-criteria-content-validation.md
     - name: リードの管理
       href: partner-center-portal/commercial-marketplace-get-customer-leads.md
+    - name: プライベート オファー
+      items:
+        - name: クラウド リセラー向け
+          href: isv-csp-reseller.md
+        - name: FAQ
+          href: isv-csp-faq.yml
     - name: 体験版
       items:
         - name: 体験版とは
@@ -47,31 +75,28 @@
       items:
         - name: Marketplace のベネフィット
           href: gtm-your-marketplace-benefits.md
-          items: null
-        - name: Microsoft と共同販売する
-          items:
-            - name: 共同販売の概要
-              href: marketplace-co-sell.md
-            - name: 共同販売の要件
-              href: co-sell-requirements.md
-            - name: 共同販売を構成する
-              href: commercial-marketplace-co-sell.md
-            - name: 共同販売の状態を確認する
-              href: co-sell-status.md
-            - name: OCP GTM からの共同販売ソリューションの移行
-              href: co-sell-solution-migration.md
+        - name: Microsoft との共同販売の概要
+          href: co-sell-overview.md
+        - name: 共同販売を構成する
+          href: co-sell-configure.md
+        - name: 共同販売の要件
+          href: co-sell-requirements.md
+        - name: 共同販売の状態を確認する
+          href: co-sell-status.md
+        - name: OCP GTM からの共同販売ソリューションの移行
+          href: co-sell-solution-migration.md
         - name: CSP パートナーによる再販
           href: cloud-solution-providers.md
         - name: コネクト プログラムのオンボード ガイド
           href: business-applications-isv-program.md
-        - name: Azure の消費コミットメントのベネフィット
-          href: azure-consumption-commitment-benefit.md
+        - name: Azure の消費コミットメントの登録
+          href: azure-consumption-commitment-enrollment.md
         - name: 推奨されるソリューション
-          href: preferred-solutions.md
+          href: preferred-solution.md
         - name: 統合されたソリューション
           href: integrated-solutions-for-publishers.md
     - name: マーケットプレースの報酬のアクティブ化
-      href: partner-center-portal/marketplace-rewards.md
+      href: marketplace-rewards.md
     - name: 支払いを受ける
       items:
         - name: 支払いを受ける
@@ -92,147 +117,263 @@
   items:
     - name: プランの種類別の公開ガイド
       href: publisher-guide-by-offer-type.md
+    - name: Marketplace のカテゴリと業界
+      href: marketplace-categories-industries.md
     - name: Azure アプリケーション プラン
       items:
-        - name: Azure アプリケーション オファーを計画する
+        - name: オファーを計画する
           items:
-            - name: Azure アプリケーション オファーを計画する
+            - name: オファーを計画する
               href: plan-azure-application-offer.md
             - name: ソリューション テンプレートを計画する
               href: plan-azure-app-solution-template.md
             - name: マネージド アプリケーションを計画する
               href: plan-azure-app-managed-app.md
-        - name: Azure アプリケーション オファーの作成と発行
+        - name: オファーを作成する
           items:
-            - name: Azure アプリケーション オファーを作成する
-              href: create-new-azure-apps-offer.md
-            - name: Azure アプリケーション オファーのプロパティを構成する
-              href: create-new-azure-apps-offer-properties.md
-            - name: Azure アプリケーション オファーのリストを構成する
-              href: create-new-azure-apps-offer-listing.md
-            - name: プレビュー対象ユーザーの追加
-              href: create-new-azure-apps-offer-preview.md
-            - name: 技術的な詳細の追加
-              href: create-new-azure-apps-offer-technical.md
-            - name: プランを作成する
-              href: create-new-azure-apps-offer-plans.md
-            - name: ソリューション テンプレート プランを作成する
-              href: create-new-azure-apps-offer-solution.md
-            - name: マネージド アプリケーション プランを作成する
-              href: create-new-azure-apps-offer-managed.md
-            - name: Azure アプリケーション オファーのテストと発行
-              href: create-new-azure-apps-offer-test-publish.md
-        - name: Azure アプリケーション オファーを市場に投入する
-          href: create-new-azure-apps-offer-marketing.md
-        - name: Azure アプリケーションの従量制課金
-          href: partner-center-portal/azure-app-metered-billing.md
+            - name: オファーを作成する
+              href: azure-app-offer-setup.md
+            - name: Properties
+              href: azure-app-properties.md
+            - name: オファーのリスト登録
+              href: azure-app-offer-listing.md
+            - name: プレビュー対象ユーザー
+              href: azure-app-preview.md
+            - name: 技術的な詳細
+              href: azure-app-technical-configuration.md
+            - name: Plans
+              items:
+                - name: プランの作成
+                  href: azure-app-plans.md
+                - name: ソリューション テンプレート プラン
+                  href: azure-app-solution.md
+                - name: マネージド アプリケーション プラン
+                  href: azure-app-managed.md
+        - name: テストして公開する
+          href: azure-app-test-publish.md
+        - name: オファーを販売する
+          href: azure-app-marketing.md
+        - name: マネージド アプリの従量制課金
+          href: azure-app-metered-billing.md
+        - name: 従量制課金
+          href: marketplace-metering-service-apis.md
+        - name: 使用量ベースの月次請求の価格を構成する
+          href: azure-vm-pricing.md
         - name: レビュー フィードバックの処理
-          href: partner-center-portal/azure-apps-review-feedback.md
-        - name: Azure アプリケーションの API
-          href: partner-center-portal/azure-app-apis.md
-    - name: Azure Container オファー
+          href: azure-app-review-feedback.md
+        - name: アプリケーションの API
+          href: azure-app-apis.md
+    - name: Azure Container プラン
       items:
-        - name: Azure Container オファーの計画
-          href: marketplace-containers.md
-        - name: 技術資産を準備する
-          href: create-azure-container-technical-assets.md
-        - name: Azure Container オファーの作成と発行
+        - name: オファーを計画する
           items:
-            - name: Azure Container オファーを作成する
-              href: create-azure-container-offer.md
+            - name: オファーを計画する
+              href: marketplace-containers.md
+            - name: 技術資産を準備する
+              href: azure-container-technical-assets.md
+        - name: オファーを作成する
+          items:
+            - name: オファーを作成する
+              href: azure-container-offer-setup.md
+            - name: Properties
+              href: azure-container-properties.md
+            - name: オファーのリスト登録
+              href: azure-container-offer-listing.md
+            - name: プレビュー対象ユーザー
+              href: azure-container-preview-audience.md
+            - name: Plans
+              items:
+                - name: プランの概要
+                  href: azure-container-plan-overview.md
+                - name: プランのセットアップ
+                  href: azure-container-plan-setup.md
+                - name: プランのリスト登録
+                  href: azure-container-plan-listing.md
+                - name: プランの可用性
+                  href: azure-container-plan-availability.md
+                - name: プランの技術的な構成
+                  href: azure-container-plan-technical-configuration.md
     - name: Azure 仮想マシン オファー
       items:
-        - name: VM オファーを計画する
+        - name: オファーを計画する
           href: marketplace-virtual-machines.md
-        - name: VM オファーを作成して発行する
+        - name: オファーを作成する
           items:
-            - name: VM オファーを作成する
-              href: azure-vm-create.md
-            - name: VM オファーのプロパティを構成する
-              href: azure-vm-create-properties.md
-            - name: VM オファーのリストを構成する
-              href: azure-vm-create-listing.md
-            - name: プレビュー対象ユーザーの追加
-              href: azure-vm-create-preview.md
-            - name: VM プランを作成する
-              href: azure-vm-create-plans.md
+            - name: オファーを作成する
+              href: azure-vm-offer-setup.md
+            - name: Properties
+              href: azure-vm-properties.md
+            - name: オファーのリスト登録
+              href: azure-vm-offer-listing.md
+            - name: プレビュー対象ユーザー
+              href: azure-vm-preview-audience.md
+            - name: Plans
+              href: azure-vm-plan-overview.md
             - name: CSP を通して再販する
-              href: azure-vm-create-resell-csp.md
-            - name: VM の技術資産の作成
-              items:
-                - name: 承認済みのベースから VM を作成する
-                  href: azure-vm-create-using-approved-base.md
-                - name: 独自のイメージを使用して VM を作成する
-                  href: azure-vm-create-using-own-image.md
-                - name: VM イメージをテストする
-                  href: azure-vm-image-test.md
-                - name: SAS URI の取得
-                  href: azure-vm-get-sas-uri.md
-                - name: SAS の失敗メッセージ
-                  href: azure-vm-sas-failure-messages.md
-                - name: VM の作成に関する FAQ
-                  href: azure-vm-create-faq.md
-                - name: VM 認定のトラブルシューティング
-                  href: azure-vm-create-certification-faq.md
-    - name: コンサルティング サービス
+              href: azure-vm-resell-csp.md
+            - name: 体験版を構成する
+              href: azure-vm-test-drive.md
+        - name: 技術資産の作成
+          items:
+            - name: 承認済みのベースから VM を作成する
+              href: azure-vm-use-approved-base.md
+            - name: 独自のイメージを使用して VM を作成する
+              href: azure-vm-use-own-image.md
+            - name: VM イメージをテストする
+              href: azure-vm-image-test.md
+            - name: SAS URI の取得
+              href: azure-vm-get-sas-uri.md
+            - name: VM の作成に関する FAQ
+              href: azure-vm-faq.yml
+            - name: VM 認定のトラブルシューティング
+              href: azure-vm-certification-faq.yml
+    - name: コンサルティング サービス オファー
       items:
-        - name: コンサルティング サービス オファーの計画
+        - name: オファーを計画する
           href: plan-consulting-service-offer.md
-        - name: コンサルティング サービス オファーの作成
+        - name: オファーを作成する
           href: create-consulting-service-offer.md
-        - name: コンサルティング サービス プロパティの構成
+        - name: Properties
           href: create-consulting-service-offer-properties.md
-        - name: コンサルティング サービス掲載の構成
+        - name: オファーのリスト登録
           href: create-consulting-service-offer-listing.md
-        - name: 価格と提供状況の構成
+        - name: 価格と可用性
           href: create-consulting-service-pricing-availability.md
     - name: Dynamics 365 のオファー
       items:
-        - name: Dynamics 365 オファーの計画
-          href: appsource-offer-publishing-guide.md
-        - name: Dynamics 365 オファーの作成と発行
+        - name: オファーを計画する
+          href: marketplace-dynamics-365.md
+        - name: Customer Engagement と PowerApps のオファーを作成する
           items:
-            - name: Dynamics 365 Customer Engagement & Power Apps オファーの作成
-              href: partner-center-portal/create-new-customer-engagement-offer.md
-            - name: Dynamics 365 for Operations オファーの作成
-              items:
-                - name: Dynamics 365 for Operations オファーの作成
-                  href: partner-center-portal/create-new-operations-offer.md
-                - name: 機能検証
-                  href: dynamics-365-finance-operations-functional-validation.md
-            - name: Dynamics 365 Business Central オファーの作成
-              href: partner-center-portal/create-new-business-central-offer.md
+            - name: オファーを作成する
+              href: dynamics-365-customer-engage-offer-setup.md
+            - name: Properties
+              href: dynamics-365-customer-engage-properties.md
+            - name: オファーのリスト登録
+              href: dynamics-365-customer-engage-offer-listing.md
+            - name: 可用性
+              href: dynamics-365-customer-engage-availability.md
+            - name: Plans
+              href: dynamics-365-customer-engage-plans.md
+            - name: 技術的な構成
+              href: dynamics-365-customer-engage-technical-configuration.md
+            - name: 補足コンテンツ
+              href: dynamics-365-customer-engage-supplemental-content.md
+        - name: Operations オファーを作成する
+          items:
+            - name: オファーを作成する
+              href: dynamics-365-operations-offer-setup.md
+            - name: Properties
+              href: dynamics-365-operations-properties.md
+            - name: オファーのリスト登録
+              href: dynamics-365-operations-offer-listing.md
+            - name: 可用性
+              href: dynamics-365-operations-availability.md
+            - name: 技術的な構成
+              href: dynamics-365-operations-technical-configuration.md
+            - name: 補足コンテンツ
+              href: dynamics-365-operations-supplemental-content.md
+            - name: 機能検証
+              href: dynamics-365-operations-validation.md
+        - name: Business Central オファーを作成する
+          items:
+            - name: オファーを作成する
+              href: dynamics-365-business-central-offer-setup.md
+            - name: Properties
+              href: dynamics-365-business-central-properties.md
+            - name: オファーのリスト登録
+              href: dynamics-365-business-central-offer-listing.md
+            - name: 可用性
+              href: dynamics-365-business-central-availability.md
+            - name: 技術的な構成
+              href: dynamics-365-business-central-technical-configuration.md
+            - name: 補足コンテンツ
+              href: dynamics-365-business-central-supplemental-content.md
+        - name: レビューと公開
+          href: dynamics-365-review-publish.md
     - name: IoT Edge モジュール オファー
       items:
-        - name: IoT Edge モジュール オファーの計画
-          href: iot-edge-module.md
-        - name: IoT Edge モジュール オファーの作成
-          href: partner-center-portal/azure-iot-edge-module-creation.md
-        - name: IoT Edge モジュールの技術資産の準備
-          href: partner-center-portal/create-iot-edge-module-asset.md
-        - name: 事前認定のチェックリスト
-          href: iot-edge-checklist.md
-    - name: 管理サービス オファー
+        - name: オファーを計画する
+          items:
+            - name: オファーを計画する
+              href: marketplace-iot-edge.md
+            - name: 技術資産を準備する
+              href: iot-edge-technical-asset.md
+        - name: オファーを作成する
+          items:
+            - name: オファーを作成する
+              href: iot-edge-offer-setup.md
+            - name: Properties
+              href: iot-edge-properties.md
+            - name: オファーのリスト登録
+              href: iot-edge-offer-listing.md
+            - name: プレビュー対象ユーザー
+              href: iot-edge-preview-audience.md
+            - name: プランを作成する
+              items:
+                - name: プランの概要
+                  href: iot-edge-plan-overview.md
+                - name: プランのセットアップ
+                  href: iot-edge-plan-setup.md
+                - name: プランのリスト登録
+                  href: iot-edge-plan-listing.md
+                - name: プランの可用性
+                  href: iot-edge-plan-availability.md
+                - name: プランの技術的な構成
+                  href: iot-edge-plan-technical-configuration.md
+    - name: マネージド サービス オファー
       items:
-        - name: 管理サービス オファーの計画
+        - name: オファーを計画する
           href: plan-managed-service-offer.md
-        - name: 管理サービス オファーの作成
+        - name: オファーを作成する
           href: create-managed-service-offer.md
-        - name: 管理サービスの構成の一覧
+        - name: Properties
+          href: create-managed-service-offer-properties.md
+        - name: オファーのリスト登録
           href: create-managed-service-offer-listing.md
-        - name: プレビュー対象ユーザーの追加
+        - name: プレビュー対象ユーザー
           href: create-managed-service-offer-preview.md
         - name: プランを作成する
           href: create-managed-service-offer-plans.md
     - name: Power BI アプリ オファー
       items:
-        - name: Power BI アプリ オファーの計画
-          href: partner-center-portal/create-power-bi-app-overview.md
-        - name: Power BI アプリ オファーを作成する
-          href: partner-center-portal/create-power-bi-app-offer.md
-    - name: SaaS オファー
+        - name: オファーを計画する
+          href: marketplace-power-bi.md
+        - name: オファーを作成する
+          items:
+            - name: オファーのセットアップ
+              href: power-bi-app-offer-setup.md
+            - name: Properties
+              href: power-bi-app-properties.md
+            - name: オファーのリスト登録
+              href: power-bi-app-offer-listing.md
+            - name: 技術的な構成
+              href: power-bi-app-technical-configuration.md
+            - name: 補足コンテンツ
+              href: power-bi-app-supplemental-content.md
+    - name: Power BI ビジュアル オファー
       items:
-        - name: SaaS オファーの計画
+        - name: オファーを計画する
+          href: marketplace-power-bi-visual.md
+        - name: オファーを作成する
+          items:
+            - name: オファーのセットアップ
+              href: power-bi-visual-offer-setup.md
+            - name: Properties
+              href: power-bi-visual-properties.md
+            - name: オファーのリスト登録
+              href: power-bi-visual-offer-listing.md
+            - name: 可用性
+              href: power-bi-visual-availability.md
+            - name: 技術的な構成
+              href: power-bi-visual-technical-configuration.md
+            - name: オファー名の管理
+              href: power-bi-visual-manage-names.md
+        - name: コマーシャル マーケットプレースへの移行に関する FAQ
+          href: power-bi-visual-faq.yml
+    - name: SaaS プラン
+      items:
+        - name: オファーを計画する
           href: plan-saas-offer.md
         - name: SaaS 用 Azure AD 認証
           items:
@@ -244,28 +385,30 @@
               href: azure-ad-free-or-trial-landing-page.md
         - name: SaaS の従量制課金
           href: partner-center-portal/saas-metered-billing.md
-        - name: SaaS オファーの作成と発行
+        - name: オファーを作成する
           items:
-            - name: SaaS オファーを作成する
+            - name: オファーを作成する
               href: create-new-saas-offer.md
-            - name: SaaS オファーのプロパティの構成
+            - name: Properties
               href: create-new-saas-offer-properties.md
-            - name: SaaS オファーの登録情報の構成
+            - name: オファーのリスト登録
               href: create-new-saas-offer-listing.md
-            - name: プレビュー対象ユーザーの追加
+            - name: プレビュー対象ユーザー
               href: create-new-saas-offer-preview.md
-            - name: 技術的な詳細の追加
+            - name: 技術的な詳細
               href: create-new-saas-offer-technical.md
-            - name: プランを作成する
+            - name: Plans
               href: create-new-saas-offer-plans.md
-            - name: SaaS オファーのテストと発行
+            - name: テスト SaaS オファーを作成する
+              href: create-saas-dev-test-offer.md
+            - name: テストして公開する
               href: test-publish-saas-offer.md
-        - name: SaaS オファーを市場に投入する
+        - name: オファーを販売する
           href: create-new-saas-offer-marketing.md
     - name: オファーのレビューと発行
       href: review-publish-offer.md
     - name: 既存のオファーを更新する
-      href: partner-center-portal/update-existing-offer.md
+      href: update-existing-offer.md
 - name: オファーの販売とマーケティング
   items:
     - name: マーケティングのベスト プラクティス
@@ -289,11 +432,11 @@
         - name: Salesforce
           href: partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: リード管理に関する FAQ
-          href: lead-management-faq.md
+          href: lead-management-faq.yml
 - name: データと分析
   items:
     - name: コマーシャル マーケットプレースの分析
-      href: partner-center-portal/analytics.md
+      href: analytics.md
     - name: '[Summary]\(概要\) ダッシュボード'
       href: summary-dashboard.md
     - name: '[注文] ダッシュボード'
@@ -304,15 +447,19 @@
       href: customer-dashboard.md
     - name: '[Marketplace の分析情報] ダッシュボード'
       href: insights-dashboard.md
+    - name: '[ライセンス] ダッシュボード'
+      href: license-dashboard.md
+    - name: '[サービスの品質] ダッシュボード'
+      href: quality-of-service-dashboard.md
     - name: '[ダウンロード] ダッシュボード'
-      href: partner-center-portal/downloads-dashboard.md
+      href: downloads-dashboard.md
     - name: '[評価とレビュー] ダッシュボード'
-      href: partner-center-portal/ratings-reviews.md
+      href: ratings-reviews.md
     - name: プログラムによる分析へのアクセス
       items:
         - name: 作業開始
           href: analytics-get-started.md
-        - name: プログラムによるアクセスの前提条件
+        - name: プログラムによる分析の前提条件
           href: analytics-prerequisites.md
         - name: プログラムによるアクセスのパラダイム
           href: analytics-programmatic-access.md
@@ -324,36 +471,36 @@
           href: analytics-sample-queries.md
         - name: サンプル アプリケーション
           href: analytics-sample-application.md
+        - name: よく寄せられる質問
+          href: analytics-programmatic-faq.md
         - name: カスタム クエリの仕様
           href: analytics-custom-query-specification.md
-        - name: プログラムによる分析に関する FAQ
-          href: analytics-programmatic-faq.md
-        - name: Analytics API リファレンス
+        - name: Analytics の API
           items:
-            - name: API の一覧
+            - name: 利用可能な API
               href: analytics-available-apis.md
             - name: すべてのデータセットを取得する
               href: analytics-api-get-all-datasets.md
-            - name: レポート クエリの取得 API
+            - name: レポート クエリを取得する
               href: analytics-api-get-report-queries.md
-            - name: レポート クエリの削除 API
+            - name: レポート クエリを削除する
               href: analytics-api-delete-report-queries.md
-            - name: レポート クエリの試行 API
+            - name: レポート クエリを試す
               href: analytics-api-try-report-queries.md
-            - name: レポートの取得 API
+            - name: レポートの取得
               href: analytics-api-get-report.md
-            - name: レポートの更新 API
+            - name: レポートを更新する
               href: analytics-api-update-report.md
-            - name: レポートの削除 API
+            - name: レポートの削除
               href: analytics-api-delete-report.md
-            - name: レポート実行の一時停止 API
+            - name: レポート実行を一時停止する
               href: analytics-api-pause-report-executions.md
-            - name: レポート実行の再開 API
+            - name: レポート実行を再開する
               href: analytics-api-resume-report-executions.md
     - name: 従量制課金の異常を管理する
       href: anomaly-detection.md
     - name: Analytics の一般的な質問
-      href: analytics-faq.md
+      href: analytics-faq.yml
 - name: ポリシーと利用規約
   items:
     - name: ポリシーと利用規約について
@@ -362,50 +509,66 @@
       href: /legal/marketplace/certification-policies?context=/azure/marketplace/context/context
     - name: コマーシャル マーケットプレースのレビュー ポリシー
       href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
-    - name: Azure Marketplace の使用条件
-      href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+    - name: コマーシャル マーケットプレースの使用条件
+      href: /legal/marketplace/marketplace-terms
+    - name: Microsoft Publisher Agreement
+      href: /legal/marketplace/msft-publisher-agreement
+    - name: Microsoft Publisher Agreement の変更履歴
+      href: /legal/marketplace/mpa-change-history
 - name: リファレンス
   items:
-    - name: CPP API リファレンス
+    - name: Marketplace API のガイド
+      href: marketplace-apis-guide.md
+    - name: Marketplace 申請 API
       items:
-        - name: CPP API の概要
-          href: cloud-partner-portal-api-overview.md
-        - name: API 前提条件
-          href: cloud-partner-portal-api-prerequisites.md
-        - name: API の考慮事項
-          href: cloud-partner-portal-api-considerations.md
-        - name: コンカレンシー制御
-          href: cloud-partner-portal-api-concurrency-control.md
-        - name: オファーを取得する
-          href: cloud-partner-portal-api-retrieve-offers.md
-        - name: 特定のオファーの取得
-          href: cloud-partner-portal-api-retrieve-specific-offer.md
-        - name: オファーの追加または変更
-          href: cloud-partner-portal-api-creating-offer.md
-        - name: プランの状態の取得
-          href: cloud-partner-portal-api-retrieve-offer-status.md
-        - name: プランの発行
-          href: cloud-partner-portal-api-publish-offer.md
-        - name: 操作の取得
-          href: cloud-partner-portal-api-retrieve-operations.md
-        - name: 操作のキャンセル
-          href: cloud-partner-portal-api-cancel-operations.md
-        - name: 公開
-          href: cloud-partner-portal-api-go-live.md
-        - name: 仮想マシン プランの価格
-          href: cloud-partner-portal-api-setting-price.md
-        - name: 認証エラーのトラブルシューティング
-          href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
+        - name: Marketplace 申請 API の概要
+          href: submission-api-overview.md
+        - name: パートナー センター申請 API
+          items:
+            - name: API 前提条件
+              href: submission-api-onboard.md
+            - name: パートナー センター申請 API
+              href: 'https://apidocs.microsoft.com/services/partneringestion/'
+        - name: レガシ申請 API
+          items:
+            - name: レガシ API の概要
+              href: cloud-partner-portal-api-overview.md
+            - name: API 前提条件
+              href: cloud-partner-portal-api-prerequisites.md
+            - name: API の考慮事項
+              href: cloud-partner-portal-api-considerations.md
+            - name: コンカレンシー制御
+              href: cloud-partner-portal-api-concurrency-control.md
+            - name: オファーを取得する
+              href: cloud-partner-portal-api-retrieve-offers.md
+            - name: 特定のオファーの取得
+              href: cloud-partner-portal-api-retrieve-specific-offer.md
+            - name: オファーの追加または変更
+              href: cloud-partner-portal-api-creating-offer.md
+            - name: プランの状態の取得
+              href: cloud-partner-portal-api-retrieve-offer-status.md
+            - name: プランの発行
+              href: cloud-partner-portal-api-publish-offer.md
+            - name: 操作の取得
+              href: cloud-partner-portal-api-retrieve-operations.md
+            - name: 操作のキャンセル
+              href: cloud-partner-portal-api-cancel-operations.md
+            - name: 公開
+              href: cloud-partner-portal-api-go-live.md
+            - name: 仮想マシン プランの価格
+              href: cloud-partner-portal-api-setting-price.md
+            - name: 認証エラーのトラブルシューティング
+              href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Marketplace の測定サービス
       items:
         - name: 異常検出サービス
           href: partner-center-portal/anomaly-detection-service-for-metered-billing.md
         - name: 認証の戦略
-          href: partner-center-portal/marketplace-metering-service-authentication.md
+          href: marketplace-metering-service-authentication.md
         - name: Marketplace の測定サービス API
-          href: partner-center-portal/marketplace-metering-service-apis.md
+          href: marketplace-metering-service-apis.md
         - name: Marketplace の測定サービス API - FAQ
-          href: partner-center-portal/marketplace-metering-service-apis-faq.md
+          href: marketplace-metering-service-apis-faq.yml
     - name: SaaS Fulfillment API
       items:
         - name: SaaS Fulfillment API の概要
@@ -413,17 +576,25 @@
         - name: SaaS アプリケーションを登録する
           href: partner-center-portal/pc-saas-registration.md
         - name: SaaS Fulfillment API v2
-          href: partner-center-portal/pc-saas-fulfillment-api-v2.md
+          items:
+            - name: SaaS サブスクリプション ライフサイクル
+              href: partner-center-portal/pc-saas-fulfillment-life-cycle.md
+            - name: Subscription API
+              href: partner-center-portal/pc-saas-fulfillment-subscription-api.md
+            - name: Operations API
+              href: partner-center-portal/pc-saas-fulfillment-operations-api.md
+        - name: Webhook を実装する
+          href: partner-center-portal/pc-saas-fulfillment-webhook.md
+        - name: SaaS Fulfillment API - FAQ
+          href: partner-center-portal/saas-fulfillment-apis-faq.yml
         - name: SaaS Fulfillment API v1 (非推奨)
           href: partner-center-portal/pc-saas-fulfillment-api-v1.md
-        - name: SaaS Fulfillment API - FAQ
-          href: partner-center-portal/saas-fulfillment-apis-faq.md
 - name: リソース
   items:
     - name: コマーシャル マーケットプレースの FAQ
-      href: marketplace-faq-publisher-guide.md
+      href: marketplace-faq-publisher-guide.yml
     - name: Cloud パートナー ポータル移行に関する FAQ
-      href: cloud-partner-portal-migration-faq.md
+      href: cloud-partner-portal-migration-faq.yml
     - name: ビジネス機会に関する営業時間
       href: 'https://aka.ms/marketplaceofficehours'
     - name: 技術および発行に関する営業時間
@@ -446,9 +617,11 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: 共同販売の州コード
       href: commercial-marketplace-co-sell-states.md
-    - name: 参照アーキテクチャ図
-      href: reference-architecture-diagram.md
     - name: カテゴリとサブカテゴリ
       href: categories.md
     - name: サポートされる HTML タグ
       href: supported-html-tags.md
+    - name: 参照アーキテクチャ図
+      href: reference-architecture-diagram.md
+    - name: 顧客ドキュメント
+      href: /marketplace/

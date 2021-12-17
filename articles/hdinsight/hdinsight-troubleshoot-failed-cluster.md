@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 660c80a471739f7dc0163e915f45e3a067e1e4b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec01461246496a7471a061f81d629f5e060a5eb0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871964"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824462"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight クラスターでジョブが遅いか失敗する場合のトラブルシューティング
 
@@ -88,7 +88,7 @@ HDInsight は複数の Azure サービスに依存しています。 Azure HDIns
 #### <a name="check-azure-service-usage-limits"></a>Azure サービスの使用制限を確認する
 
 大きなクラスターを起動している場合、または同時に多数のクラスターを起動した場合、Azure サービスの制限を超えるとクラスターが失敗します。 サービスの制限は、Azure サブスクリプションによって異なります。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
-[Resource Manager のコア クォータ増加要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)を使って、利用可能な HDInsight リソース (VM コアや VM インスタンスなど) の数を増やすことを Microsoft に要求できます。
+[Resource Manager のコア クォータ増加要求](../azure-portal/supportability/regional-quota-requests.md)を使って、利用可能な HDInsight リソース (VM コアや VM インスタンスなど) の数を増やすことを Microsoft に要求できます。
 
 #### <a name="check-the-release-version"></a>リリース バージョンを確認する
 

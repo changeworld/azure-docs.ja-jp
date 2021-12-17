@@ -1,23 +1,23 @@
 ---
 title: Azure Automation によるセッション ホストのスケーリング - Azure
-description: Azure Automation を使用して Windows Virtual Desktop のセッション ホストを自動的にスケーリングする方法。
+description: Azure Automation を使用して Azure Virtual Desktop のセッション ホストを自動的にスケーリングする方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 80bcf647ee63242bfe60b63ed400b8d3b3dc1d9e
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: ac3caf51337b87125f10cc7a6cd1378d7bfdb923
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445671"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113005314"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Automation を使用してセッション ホストをスケーリングする
 
-仮想マシン (VM) をスケーリングすると、Windows Virtual Desktop の総デプロイ コストを削減できます。 これは、ピーク時以外の使用時間帯にセッション ホスト VM をシャットダウンして割り当て解除し、ピーク時間帯に再びオンにして再割り当てすることを意味します。
+仮想マシン (VM) をスケーリングすると、Azure Virtual Desktop の総デプロイ コストを削減できます。 これは、ピーク時以外の使用時間帯にセッション ホスト VM をシャットダウンして割り当て解除し、ピーク時間帯に再びオンにして再割り当てすることを意味します。
 
-この記事では、Azure Automation アカウントで構築されたスケーリング ツールと、Windows Virtual Desktop 環境でセッション ホスト VM を自動的にスケーリングする Azure Logic Appsについて説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
+この記事では、Azure Automation アカウントで構築されたスケーリング ツールと、Azure Virtual Desktop 環境でセッション ホスト VM を自動的にスケーリングする Azure ロジック アプリについて説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
 
 ## <a name="how-the-scaling-tool-works"></a>スケーリング ツールのしくみ
 
@@ -45,7 +45,7 @@ ms.locfileid: "106445671"
 
 常に、ジョブではホスト プールの *MaxSessionLimit* を考慮に入れて、現在のセッション数が最大容量の 90% を超えているかの判断も行われます。 超えている場合、ジョブによって追加のセッション ホスト VM が起動されます。
 
-ジョブは、設定された繰り返し間隔に基づいて定期的に実行されます。 Windows Virtual Desktop 環境のサイズに基づいてこの間隔を変更できますが、VM の起動とシャットダウンには時間がかかることがあるため、延期期間を考慮してください。 繰り返し間隔を 15 分に設定することをお勧めします。
+ジョブは、設定された繰り返し間隔に基づいて定期的に実行されます。 Azure Virtual Desktop 環境のサイズに基づいてこの間隔を変更できますが、VM の起動とシャットダウンには時間がかかることがあるため、延期期間を考慮してください。 繰り返し間隔を 15 分に設定することをお勧めします。
 
 ただし、このツールには次の制限事項もあります。
 
@@ -63,8 +63,8 @@ ms.locfileid: "106445671"
 
 スケーリング ツールの設定を開始する前に、次の準備ができていることを確認してください。
 
-- [Windows Virtual Desktop のホスト プール](create-host-pools-azure-marketplace.md)
-- 構成されて Windows Virtual Desktop サービスに登録されたセッション ホスト プール VM
+- [Azure Virtual Desktop ホスト プール](create-host-pools-azure-marketplace.md)
+- 構成されて Azure Virtual Desktop サービスに登録されたセッション ホスト プール VM
 - Azure サブスクリプション対する[共同作成者のアクセス権](../role-based-access-control/role-assignments-portal.md)を持っているユーザー
 
 ツールのデプロイに使用するマシンには、次のものが必要です。

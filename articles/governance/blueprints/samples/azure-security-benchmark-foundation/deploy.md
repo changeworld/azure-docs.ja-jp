@@ -1,14 +1,14 @@
 ---
 title: Azure セキュリティ ベンチマーク基盤ブループリント サンプルのデプロイ
 description: ブループリント アーティファクト パラメーターの詳細を含む Azure セキュリティ ベンチマーク基盤ブループリント サンプルのデプロイ手順です。
-ms.date: 03/12/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: af41dd50c976ac6c0570b8a089211fa310ef4ef1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51765db4a07ffe9399a09aa75c0b282c3fbc94ff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232615"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599489"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Azure セキュリティ ベンチマーク基盤ブループリント サンプルのデプロイ
 
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - ブループリントのパラメーター
 
      このセクションで定義するパラメーターは、一貫性を維持するために、ブループリント定義のアーティファクトの多くで使用されます。
-    
+
      - **Prefix for resources and resource groups (リソースとリソース グループのプレフィックス)** : この文字列は、すべてのリソースおよびリソース グループの名前のプレフィックスとして使用されます
      - **ハブ名**: ハブの名前
      - **ログの保有期間 (日数)** : ログを保有する日数。"0" を入力すると、ログが無期限に保有されます
@@ -92,9 +92,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      - **Network Watcher 名**: Network Watcher リソースの名前
      - **Network Watcher リソース グループ名**: Network Watcher リソース グループの名前
      - **DDoS Protection の有効化**: "true" または "false" を入力して、仮想ネットワークで DDoS Protection を有効にするかどうかを指定します
-     
-    > [!NOTE] 
-    > Network Watcher が既に有効になっている場合は、既存の Network Watcher リソース グループを使用することをお勧めします。 また、アーティファクト パラメーター **[Network Watcher リソース グループの場所]** に、既存の Network Watcher リソース グループの場所を指定する必要もあります。
+
+     > [!NOTE]
+     > Network Watcher が既に有効になっている場合は、既存の Network Watcher リソース グループを使用することをお勧めします。 また、アーティファクト パラメーター **[Network Watcher リソース グループの場所]** に、既存の Network Watcher リソース グループの場所を指定する必要もあります。
 
    - アーティファクトのパラメーター
 
@@ -115,7 +115,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |ハブ リソース グループ|Resource group|リソース グループの場所|ロック済み - ハブの場所を使用します|
 |Azure Firewall テンプレート|Resource Manager テンプレート|Azure Firewall のプライベート IP アドレス||
 |Azure Log Analytics および Diagnostics テンプレート|Resource Manager テンプレート|Log Analytics ワークスペースの場所|Log Analytics ワークスペースが作成される場所。Azure PowersShell で `Get-AzLocation | Where-Object Providers -like 'Microsoft.OperationalInsights' | Select DisplayName` を実行して、使用可能なリージョンを確認します|
-|Azure Log Analytics および Diagnostics テンプレート|Resource Manager テンプレート|Azure Automation アカウント ID (省略可能)|Automation アカウント リソース ID。Log Analytics と Automation アカウントの間でリンクされたサービスを作成するために使用します|
+|Azure Log Analytics および Diagnostics テンプレート|Resource Manager テンプレート|Azure Automation アカウント ID (省略可能) |Automation アカウント リソース ID。Log Analytics と Automation アカウントの間でリンクされたサービスを作成するために使用します|
 |Azure ネットワーク セキュリティ グループ テンプレート|Resource Manager テンプレート|NSG フロー ログの有効化|NSG フロー ログを有効または無効にするには、"true" または "false" を入力します|
 |Azure Virtual Network ハブ テンプレート|Resource Manager テンプレート|仮想ネットワーク アドレス プレフィックス|ハブ仮想ネットワークの仮想ネットワーク アドレス プレフィックス|
 |Azure Virtual Network ハブ テンプレート|Resource Manager テンプレート|ファイアウォール サブネット アドレス プレフィックス|ハブ仮想ネットワークのファイアウォール サブネット アドレス プレフィックス|

@@ -2,19 +2,19 @@
 title: Azure Managed HSM のアクセス制御
 description: Azure Managed HSM およびキーのアクセス許可を管理します。 Managed HSM の認証と認可モデル、および HSM をセキュリティで保護する方法について説明します。
 services: key-vault
-author: amitbapat
+author: mbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.author: ambapat
-ms.openlocfilehash: 0c0a0c5f62f92aaf195e207dfd505ffb017d924e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mbaldwin
+ms.openlocfilehash: 453e6ba2d7bb8cd4021c1b5a47faf60ef7ac1b37
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653902"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471291"
 ---
 # <a name="managed-hsm-access-control"></a>Managed HSM のアクセス制御
 
@@ -65,6 +65,7 @@ Azure サブスクリプション内でマネージド HSM を作成すると、
 | 管理プレーン | **グローバル:**<br> management.azure.com:443<br> | マネージド HSM の作成、読み取り、更新、削除、および移動<br>マネージド HSM タグの設定 | Azure RBAC |
 | データ プレーン | **グローバル:**<br> &lt;hsm-name&gt;.managedhsm.azure.net:443<br> | **キー**: 暗号化の解除、暗号化、<br> ラップ解除、ラップ、検証、署名、取得、一覧表示、更新、作成、インポート、削除、バックアップ、復元、消去<br/><br/> **データ プレーンのロール管理 (Managed HSM ローカル RBAC)** _: ロールの定義の一覧表示、ロールの割り当て、ロールの割り当ての削除、カスタム ロールの定義<br/><br/>_ *バックアップ/復元 **: バックアップ、復元、バックアップ/復元操作の状態チェック<br/><br/>** セキュリティ ドメイン**: セキュリティ ドメインのダウンロードおよびアップロード | Managed HSM ローカル RBAC |
 |||||
+
 ## <a name="management-plane-and-azure-rbac"></a>管理プレーンと Azure RBAC
 
 管理プレーンでは、Azure RBAC を使用して、呼び出し元が実行できる操作を承認します。 Azure RBAC モデルでは、各 Azure サブスクリプションに Azure Active Directory のインスタンスが用意されています。 このディレクトリからユーザー、グループ、アプリケーションにアクセス権を付与します。 Azure サブスクリプションに含まれていて Azure Resource Manager デプロイ モデルを使用しているリソースを管理するためのアクセス権が付与されます。 アクセス権を付与するには、[Azure portal](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-classic-cli)、[Azure PowerShell](/powershell/azureps-cmdlets-docs)、または [Azure Resource Manager REST API](/rest/api/authorization/roleassignments) を使用します。
@@ -87,6 +88,6 @@ Azure サブスクリプション内でマネージド HSM を作成すると、
 
 ## <a name="next-steps"></a>次のステップ
 
-- 管理者用の概要チュートリアルについては、[Managed HSM の概要](overview.md)に関するページを参照してください。
+- 管理者用の概要チュートリアルについては、[Managed HSM の概要](overview.md)に関するページをご覧ください
 - ロール管理のチュートリアルについては、[Managed HSM ローカル RBAC](role-management.md) に関するページを参照してください。
-- Managed HSM ログに関する使用状況ログの記録の詳細については、「[Managed HSM のログ記録](logging.md)」を参照してください。
+- Managed HSM ログに関する使用状況ログの記録の詳細については、「[Managed HSM のログ](logging.md)」を参照してください

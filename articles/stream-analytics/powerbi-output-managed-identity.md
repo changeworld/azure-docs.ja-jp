@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: enkrumah
 ms.author: ebnkruma
 ms.topic: how-to
-ms.date: 3/10/2020
-ms.openlocfilehash: 7c1ddbbbd8198cf769e89cfa824de370184a992c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/30/2021
+ms.openlocfilehash: ad8142bf5ab65bb6ae4ff49aeb7b4e661d2761a8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589686"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045864"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する
 
@@ -148,7 +148,7 @@ Azure Resource Manager を使用すると、Stream Analytics ジョブのデプ�
     }
     ```
 
-    Power BI の REST API を使用して Stream Analytics ジョブを Power BI ワークスペースに追加する予定がある場合は、返された "principalId" を書き留めておきます。
+    Power BI REST API を使用して Stream Analytics ジョブを Power BI ワークスペースに追加する予定がある場合は、返された "principalId" を書き留めておきます。
 
 3. ジョブが作成されたので、この記事の「[Stream Analytics ジョブに Power BI ワークスペースへのアクセス権を付与する](#give-the-stream-analytics-job-access-to-your-power-bi-workspace)」セクションを参照してください。
 
@@ -210,7 +210,16 @@ POST https://api.powerbi.com/v1.0/myorg/groups/{groupId}/users
 }
 ```
 
-## <a name="remove-managed-identity"></a>マネージド ID の削除
+### <a name="use-a-service-principal-to-grant-permission-for-an-asa-jobs-managed-identity"></a>サービス プリンシパルを使用して ASA ジョブのマネージド Id にアクセス許可を付与する
+
+自動化されたデプロイでは、対話型ログインを使用して、ASA ジョブに Power BI ワークスペースへのアクセス権を付与することはできません。 サービス プリンシパルを使用して ASA ジョブのマネージド Id にアクセス許可を付与する これは PowerShell を使用して行うことができます。
+
+```powershell
+Connect-PowerBIServiceAccount -ServicePrincipal -TenantId "<tenant-id>" -CertificateThumbprint "<thumbprint>" -ApplicationId "<app-id>"
+Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
+```
+
+## <a name="remove-managed-identity"></a>マネージド ID を削除する
 
 Stream Analytics ジョブに対して作成されたマネージド ID は、ジョブが削除されたときにのみ削除されます。 ジョブを削除せずにマネージド ID を削除することはできません。 マネージド ID を使用する必要がなくなった場合は、出力の認証方法を変更できます。 マネージド ID は、ジョブが削除されるまで存在し続け、マネージド ID の認証を再度使用する場合に使用されます。
 

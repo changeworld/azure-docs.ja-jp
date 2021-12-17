@@ -1,19 +1,19 @@
 ---
 title: Synapse ロールベースのアクセス制御
 description: Azure Synapse Analytics のロールベースのアクセス制御について説明する記事
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9e96d6decba679c7a4764a77f1e9720000faf78c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2a49fb9de3c4f63edc483724769c5c726d3a63c
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100105149"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081854"
 ---
 # <a name="what-is-synapse-role-based-access-control-rbac"></a>Synapse ロールベースのアクセス制御 (RBAC) とは
 
@@ -28,7 +28,7 @@ Synapse RBAC は、以下を実行できるユーザーを管理するために�
 - ジョブの実行を監視またはキャンセルし、ジョブの出力や実行ログを確認する  
 
 >[!Note]
->Synapse RBAC は、発行された SQL スクリプトへのアクセスを管理するために使用されますが、サーバーレス SQL プールへの制限付きアクセス制御のみを提供し、専用 SQL プールへのアクセス制御には使用 _されません_。  SQL プールへのアクセスは、主に SQL のセキュリティを使用して制御されます。
+>Synapse RBAC は、発行された SQL スクリプトへのアクセスを管理するために使用されますが、サーバーレスで専用の SQL プールへの制限付きアクセス制御のみを提供します。 SQL プールへのアクセスは、主に SQL のセキュリティを使用して制御されます。
 
 ## <a name="what-can-i-do-with-synapse-rbac"></a>Synapse RBAC でできること
 

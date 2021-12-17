@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
-ms.openlocfilehash: 2ccff72be66a88b9bf0a5e9eb9c29ade8397804b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7000b403146f3468807582bb01ccaf05f8a70d0b
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96356195"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894621"
 ---
 Azure Functions で発生するエラーは、次のいずれかが元になっています。
 
@@ -127,6 +127,23 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
         "delayInterval": "00:00:10"
     }
 }
+```
+
+関数で再試行コンテキストを利用する python のサンプルを次に示します。
+
+```Python
+import azure.functions
+import logging
+
+
+def main(req: azure.functions.HttpRequest, context: azure.functions.Context) -> None:
+    logging.log(f'Current retry count: {context.retry_context.retry_count}')
+    
+    if context.retry_context.retry_count == context.retry_context.max_retry_count:
+        logging.log(
+            f"Max retries of {context.retry_context.max_retry_count} for "
+            f"function {context.function_name} has been reached")
+   
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -250,6 +267,23 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
 }
 ```
 
+関数で再試行コンテキストを利用する python のサンプルを次に示します。
+
+```Python
+import azure.functions
+import logging
+
+
+def main(req: azure.functions.HttpRequest, context: azure.functions.Context) -> None:
+    logging.log(f'Current retry count: {context.retry_context.retry_count}')
+    
+    if context.retry_context.retry_count == context.retry_context.max_retry_count:
+        logging.log(
+            f"Max retries of {context.retry_context.max_retry_count} for "
+            f"function {context.function_name} has been reached") 
+            
+```
+
 # <a name="java"></a>[Java](#tab/java)
 
 *function.json* ファイルの再試行ポリシーを次に示します。
@@ -297,9 +331,9 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
 |---------|---------|---------| 
 |strategy|該当なし|必須。 使用する再試行戦略。 有効な値は `fixedDelay` または `exponentialBackoff`です。|
 |maxRetryCount|該当なし|必須。 関数の実行ごとに許可される再試行の最大回数。 `-1` は、無制限に再試行することを意味します。|
-|delayInterval|該当なし|`fixedDelay` 戦略を使用するときに、再試行の間に使用される遅延。|
-|minimumInterval|該当なし|`exponentialBackoff` 戦略を使用する場合の最小再試行遅延。|
-|maximumInterval|該当なし|`exponentialBackoff` 戦略を使用する場合の最大再試行遅延。| 
+|delayInterval|該当なし|`fixedDelay` 戦略を使用するときに、再試行の間に使用される遅延。 `HH:mm:ss` 形式の文字列として指定します。|
+|minimumInterval|該当なし|`exponentialBackoff` 戦略を使用する場合の最小再試行遅延。 `HH:mm:ss` 形式の文字列として指定します。|
+|maximumInterval|該当なし|`exponentialBackoff` 戦略を使用する場合の最大再試行遅延。 `HH:mm:ss` 形式の文字列として指定します。| 
 
 ### <a name="retry-limitations-during-preview"></a>プレビュー期間中の再試行の制限事項
 

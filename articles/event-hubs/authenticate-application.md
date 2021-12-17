@@ -2,13 +2,14 @@
 title: Azure Event Hubs リソースにアクセスするためのアプリケーションを認証する
 description: この記事では、Azure Active Directory を使用して Azure Event Hubs リソースにアクセスするためのアプリケーションを認証する方法について説明します
 ms.topic: conceptual
-ms.date: 10/21/2020
-ms.openlocfilehash: 25ec5f11ca7b5e801e18155f1a3da6474c8e66e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/14/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: f87866ece2699a457e00a4afba6855933118cf19
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92913315"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112123085"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs リソースにアクセスするために Azure Active Directory でアプリケーションを認証する
 Microsoft Azure では、Azure Active Directory (Azure AD) を利用して、リソースとアプリケーションの統合されたアクセス制御管理が提供されています。 Azure Event Hubs で Azure AD を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 代わりに、Microsoft ID プラットフォームから OAuth 2.0 アクセス トークンを要求することができます。 トークンを要求するリソース名は `https://eventhubs.azure.net/` であり、すべてのクラウド/テナントで同じです (Kafka クライアントの場合、トークンを要求するリソースは `https://<namespace>.servicebus.windows.net` です)。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Event Hubs リソースへの要求を承認できます。
@@ -68,27 +69,9 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 
 
 ## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てる  
-アプリケーションを登録した後、アプリケーションのサービス プリンシパルを Event Hubs の Azure AD ロールに割り当てます。これについては、「[Azure Event Hubs の組み込みのロール](#built-in-roles-for-azure-event-hubs)」セクションで説明しています。 
+目的のスコープ (Event Hubs 名前空間、リソース グループ、サブスクリプション) で、いずれかの [Event Hubs ロール](#built-in-roles-for-azure-event-hubs)をアプリケーションのサービス プリンシパルに割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-1. [Azure portal](https://portal.azure.com/) で Event Hubs 名前空間に移動します。
-2. **[概要]** ページで、ロールを割り当てるイベント ハブを選択します。
-
-    ![自分のイベント ハブを選択する](./media/authenticate-application/select-event-hub.png)
-1. **[アクセス制御 (IAM)]** を選択して、イベント ハブのアクセス制御設定を表示します。 
-1. **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。 ツールバーの **[追加]** ボタンを選択し、 **[ロールの割り当ての追加]** を選択します。 
-
-    ![ツール バーの [追加] ボタン](./media/authenticate-application/role-assignments-add-button.png)
-1. **[ロールの割り当ての追加]** ページで、次の手順を実行します。
-    1. 割り当てる **Event Hubs ロール** を選択します。 
-    1. ロールの割り当て先となる **セキュリティ プリンシパル** (ユーザー、グループ、サービス プリンシパル) を検索して見つけます。 一覧から **登録されたアプリケーション** を選択します。 
-    1. **[保存]** を選択して、ロールの割り当てを保存します。 
-
-        ![ユーザーにロールを割り当てる](./media/authenticate-application/assign-role-to-user.png)
-    4. **[ロールの割り当て]** タブに切り替えて、ロールの割り当てを確認します。 たとえば、次の画像は、**mywebapp** が **[Azure Event Hubs のデータ送信者]** ロールに含まれていることを示しています。 
-        
-        ![リスト内のユーザー](./media/authenticate-application/user-in-list.png)
-
-同様の手順を行って、Event Hubs 名前空間、リソース グループ、またはサブスクリプションに対してスコープが指定されたロールを割り当てることができます。 ロールとそのスコープを定義したら、[GitHub のこちらの場所](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)にあるサンプルを使用してこの動作をテストできます。 Azure RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する方法の詳細については、[こちらの記事](..//role-based-access-control/role-assignments-portal.md)を参照してください。 
+ロールとそのスコープを定義したら、[GitHub のこちらの場所](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)にあるサンプルを使用してこの動作をテストできます。 Azure RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する方法の詳細については、[こちらの記事](..//role-based-access-control/role-assignments-portal.md)を参照してください。 
 
 
 ### <a name="client-libraries-for-token-acquisition"></a>トークン取得のためのクライアント ライブラリ  

@@ -2,14 +2,14 @@
 title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 05/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: f13d7a33ce1dc04700932072fe0af80a901c681f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f21a7189eee020be7599188bb1791373e8c233e5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783199"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294259"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -50,6 +50,12 @@ Azure では、セキュリティ更新プログラムが夜間スケジュー�
 
 Windows Server ノードでは、Windows Update が自動的に実行され、最新の更新プログラムが適用されることはありません。 Windows Update のリリース サイクルと独自の検証プロセス前後の定期的スケジュールで、AKS クラスター内のクラスターと Windows Server ノード プールでアップグレードを実行する必要があります。 このアップグレード プロセスでは、最新の Windows Server イメージと修正プログラムを実行するノードが作成されて、古いノードが削除されます。 このプロセスの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
 
+### <a name="are-there-additional-security-threats-relevant-to-aks-that-customers-should-be-aware-of"></a>顧客が知っておく必要がある、AKS に関連するセキュリティ上の新たな脅威はありますか?
+
+Microsoft では、[Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) などのサービスを通じて、ワークロードをセキュリティで保護するために実行できる追加のアクションに関するガイダンスを提供しています。 お客様が知っておく必要がある、AKS と Kubernetes に関連するセキュリティ上の新たな脅威の一覧については、次の記事を参照してください。
+
+* [Kubeflow を標的とした新たな大規模キャンペーン](https://techcommunity.microsoft.com/t5/azure-security-center/new-large-scale-campaign-targets-kubeflow/ba-p/2425750) - 2021 年 6 月 8 日
+
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?
 
 AKS は、仮想マシン スケール セット、仮想ネットワーク、マネージド ディスクなど、さまざまな Azure インフラストラクチャ リソースに基づいて構築されています。 これにより、AKS によって提供されるマネージド Kubernetes 環境内で、Azure プラットフォームのコア機能の多くを活用できます。 たとえば、ほとんどの種類の Azure 仮想マシンは AKS で直接使用できます。また Azure Reservations を使用して、それらのリソースに対する割引を自動的に受け取ることができます。
@@ -57,7 +63,7 @@ AKS は、仮想マシン スケール セット、仮想ネットワーク、�
 このアーキテクチャを有効にするため、各 AKS デプロイは、2 つのリソース グループにまたがっています。
 
 1. 最初のリソース グループを作成します。 このグループには、Kubernetes サービスのリソースのみが含まれます。 AKS リソース プロバイダーにより、デプロイの間に 2 番目のリソース グループが自動的に作成されます。 2 番目のリソース グループの例は、*MC_myResourceGroup_myAKSCluster_eastus* です。 この 2 つ目のリソース グループの名前を指定する方法については、次のセクションをご覧ください。
-1. *ノード リソース グループ* と呼ばれる 2 つ目のリソース グループには、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これらのリソースには、Kubernetes ノードの VM、仮想ネットワー キング、およびストレージが含まれます。 既定では、ノード リソース グループには *MC_myResourceGroup_myAKSCluster_eastus* のような名前が付いています。 AKS は、クラスターが削除されるたびにノード リソースを自動的に削除するため、クラスターのライフサイクルを共有するリソースにのみ使用する必要があります。
+1. *ノード リソース グループ* と呼ばれる 2 つ目のリソース グループには、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これらのリソースには、Kubernetes ノードの VM、仮想ネットワー キング、およびストレージが含まれます。 既定では、ノード リソース グループには *MC_myResourceGroup_myAKSCluster_eastus* のような名前が付いています。 AKS では、クラスターが削除されるたびにノード リソース グループが自動的に削除されるため、クラスターのライフサイクルを共有するリソースにのみ使用するようにします。
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>AKS ノード リソース グループに独自の名前を指定できますか?
 
@@ -199,7 +205,7 @@ AKS には、このような構成に耐え、そこから復旧するための�
 
 ## <a name="can-i-use-custom-vm-extensions"></a>カスタム VM 拡張機能を使用できますか?
 
-Log Analytics エージェントは、Microsoft によって管理される拡張機能であるため、サポートされています。 それ以外は、いいえです。AKS はマネージド サービスであり、IaaS リソースの操作はサポートされていません。 カスタム コンポーネントをインストールするには、Kubernetes API とメカニズムを使用します。 たとえば、必要なコンポーネントをインストールするには、デーモンセットを使用します。
+いいえ。AKS はマネージド サービスであり、IaaS リソースの操作はサポートされていません。 カスタム コンポーネントをインストールするには、Kubernetes API とメカニズムを使用します。 たとえば、必要なコンポーネントをインストールするには、デーモンセットを使用します。
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS によって、クラスターのリージョン外に格納される顧客データはありますか?
 
@@ -277,6 +283,13 @@ spec:
 
 この問題は Kubernetes v1.20 で解決されました。詳細については、[Kubernetes 1.20:ボリュームの権限変更の詳細制御](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/)に関するページを参照してください。
 
+## <a name="can-i-use-fips-cryptographic-libraries-with-deployments-on-aks"></a>AKS へのデプロイで FIPS 暗号化ライブラリを使用できますか?
+
+現在、FIPS 対応ノードは、Linux ベースのノード プールでプレビューで利用できます。 詳細については、「[FIPS 対応ノード プール (プレビュー) を追加する](use-multiple-node-pools.md#add-a-fips-enabled-node-pool-preview)」を参照してください。
+
+## <a name="can-i-configure-nsgs-with-aks"></a>AKS で NSG を構成できますか?
+
+AKS では Network Security Groups (NSG) をそのサブネットに適用せず、そのサブネットに関連付けられている NSG が変更されることはありません。 AKS では NIC レベルでのみ NSG が変更されます。 CNI を使用している場合は、NSG のセキュリティ規則でノードとポッド CIDR 範囲の間のトラフィックが確実に許可されるようにする必要もあります。 kubenet を使用している場合は、NSG のセキュリティ規則でノードとポッド CIDR の間のトラフィックが確実に許可されるようにする必要もあります。 詳しくは、「[ネットワーク セキュリティ グループ](concepts-network.md#network-security-groups)」をご覧ください。
 
 <!-- LINKS - internal -->
 
@@ -285,7 +298,7 @@ spec:
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration-cli.md
 [node-updates-kured]: node-updates-kured.md
-[aks-preview-cli]: /cli/azure/ext/aks-preview/aks
+[aks-preview-cli]: /cli/azure/aks
 [az-aks-create]: /cli/azure/aks#az_aks_create
 [aks-rm-template]: /azure/templates/microsoft.containerservice/2019-06-01/managedclusters
 [aks-cluster-autoscaler]: cluster-autoscaler.md

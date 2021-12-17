@@ -11,12 +11,12 @@ metadata:
   author: KumudD
   ms.author: kumud
   ms.date: 01/28/2021
-  ms.openlocfilehash: 11e3de57bdf2853e94ec61a21ab54ae085f4f6b1
-  ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+  ms.openlocfilehash: 12e03cad862d3ef1f9704639f2e386312369fd10
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/29/2021
-  ms.locfileid: "99062148"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130257767"
 landingContent:
 - title: Virtual Network について
   linkLists:
@@ -52,6 +52,8 @@ landingContent:
       url: virtual-network-service-endpoints-overview.md
     - text: 仮想ネットワークのセキュリティに関する FAQ
       url: virtual-networks-faq.md#security
+    - text: 既定のアウトバウンド アクセス
+      url: ./ip-services/default-outbound-access.md
   - linkListType: tutorial
     links:
     - text: ネットワーク セキュリティ グループを使用してネットワーク トラフィックをフィルター処理する
@@ -64,10 +66,6 @@ landingContent:
     links:
     - text: Azure リソースへのアクセスをセキュリティで保護して分離する
       url: /learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
-  - linkListType: video
-    links:
-    - text: Azure Private Link を使用して Azure PaaS リソースに安全にアクセスする
-      url: https://www.youtube.com/watch?v=PWKM5KXjWno
 - title: 仮想ネットワークの接続
   linkLists:
   - linkListType: concept
@@ -104,36 +102,40 @@ landingContent:
     links:
     - text: ネットワーク トラフィックのルーティング - ポータル
       url: tutorial-create-route-table-portal.md
+  - linkListType: learn
+    links:
+    - text: ルートを使用して Azure デプロイでのトラフィック フローを管理および制御する
+      url: /learn/modules/control-network-traffic-flow-with-routes/
 - title: IP アドレスの作成
   linkLists:
   - linkListType: concept
     links:
     - text: IP アドレスの種類と割り当て方法
-      url: ./public-ip-addresses.md
+      url: ./ip-services/public-ip-addresses.md
   - linkListType: how-to-guide
     links:
     - text: パブリック IP アドレスの作成、変更、削除
-      url: virtual-network-public-ip-address.md
+      url: ./ip-services/virtual-network-public-ip-address.md
     - text: VM に対するパブリック IP アドレスの追加
-      url: associate-public-ip-address-vm.md
+      url: ./ip-services/associate-public-ip-address-vm.md
     - text: 静的 IP アドレスを備えた VM の作成
-      url: virtual-network-deploy-static-pip-arm-portal.md
+      url: ./ip-services/virtual-network-deploy-static-pip-arm-portal.md
     - text: VM の静的プライベート IP アドレスの構成
-      url: virtual-networks-static-private-ip-arm-pportal.md
+      url: ./ip-services/virtual-networks-static-private-ip-arm-pportal.md
     - text: VM に対する複数の IP アドレスの割り当て
-      url: virtual-network-multiple-ip-addresses-powershell.md
+      url: ./ip-services/virtual-network-multiple-ip-addresses-powershell.md
 - title: 仮想ネットワークの IPv6 の作成
   linkLists:
   - linkListType: concept
     links:
     - text: Azure 仮想ネットワークの IPv6 とは
-      url: ipv6-overview.md
+      url: ./ip-services/ipv6-overview.md
   - linkListType: deploy
     links:
     - text: IPv6 デュアル スタック アプリケーションのデプロイ - Standard Load Balancer
-      url: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+      url: ../load-balancer/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
     - text: IPv6 デュアル スタック アプリケーションのデプロイ - Basic Load Balancer
-      url: virtual-network-ipv4-ipv6-dual-stack-powershell.md
+      url: ../load-balancer/virtual-network-ipv4-ipv6-dual-stack-powershell.md
 - title: 仮想ネットワークの監視
   linkLists:
   - linkListType: concept
@@ -151,19 +153,19 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP アドレスの種類と割り当て方法
-      url: ./public-ip-addresses.md
+      url: ./ip-services/public-ip-addresses.md
     - text: Azure 仮想ネットワークの IPv6 とは
-      url: ipv6-overview.md
+      url: ./ip-services/ipv6-overview.md
     - text: パブリック IP アドレス プレフィックス
-      url: public-ip-address-prefix.md
+      url: ./ip-services/public-ip-address-prefix.md
   - linkListType: how-to-guide
     links:
     - text: パブリック IP アドレスの作成、変更、削除
-      url: virtual-network-public-ip-address.md
+      url: ./ip-services/virtual-network-public-ip-address.md
     - text: IPv6 デュアル スタック アプリケーションのデプロイ
-      url: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+      url: ../load-balancer/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
     - text: パブリック IP アドレス プレフィックスの作成、変更、削除
-      url: manage-public-ip-address-prefix.md
+      url: ./ip-services/manage-public-ip-address-prefix.md
 - title: リファレンス
   linkLists:
   - linkListType: reference

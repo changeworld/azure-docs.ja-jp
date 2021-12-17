@@ -2,7 +2,6 @@
 title: ソリューションを運用環境にデプロイするための準備を行う - Azure IoT Edge
 description: Azure IoT Edge ソリューションを開発環境から運用環境に移行する方法について説明します。これには、適切な証明書でのデバイスの設定と、今後のコード更新のためのデプロイ計画が含まれます。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/01/2021
 ms.topic: conceptual
@@ -11,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 711b4f6577b17e84a5d30774fa7be4c9033d4340
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: b131d20122ca2440698fed301768d1fe961ac286
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031135"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390351"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -144,33 +143,9 @@ timeToLiveSecs パラメーターの既定値は 7,200 秒 (2 時間) です。
 ## <a name="container-management"></a>コンテナー管理
 
 * **重要**
-  * コンテナー レジストリへのアクセスを管理する
   * タグを使用してバージョンを管理する
 * **有用**
   * プライベート レジストリにランタイム コンテナーを格納する
-
-### <a name="manage-access-to-your-container-registry"></a>コンテナー レジストリへのアクセスを管理する
-
-運用環境の IoT Edge デバイスにモジュールをデプロイする前に、部外者がコンテナー イメージにアクセスしたり、変更を加えたりできないように、コンテナー レジストリへのアクセスを制御していることを確認してください。 コンテナー イメージを管理するには、パブリックではなく、プライベート コンテナー レジストリを使用します。
-
-チュートリアルやその他のドキュメントでは、開発コンピューターで使用するものと同じコンテナー レジストリの資格情報を IoT Edge デバイスでも使用するように指示しています。 これらの指示は、単にテストおよび開発環境をより簡単に設定できるようにするためのものです。運用環境シナリオではこれらの指示に従わないでください。
-
-レジストリへのセキュリティで保護されたアクセスのために、[認証オプション](../container-registry/container-registry-authentication.md)を選択できます。 一般的で推奨される認証は、Active Directory サービス プリンシパルを使用することです。これは、IoT Edge デバイスと同様に、自動的にまたは無人方式でコンテナー イメージをプルするアプリケーションやサービスによく適しています。
-
-サービス プリンシパルを作成するには、「[サービス プリンシパルの作成](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)」の説明に従って、2 つのスクリプトを実行します。 これらのスクリプトは次のタスクを実行します。
-
-* 最初のスクリプトでは、サービス プリンシパルが作成されます。 ここでは、サービス プリンシパル ID とサービス プリンシパル パスワードが出力されます。 これらの値は、安全に書き留めておきます。
-
-* 2 番目のスクリプトは、サービス プリンシパルに付与するロールの割り当てを作成します。これは、必要に応じて後で実行できます。 `role` パラメーターに **acrPull** ユーザー ロールを適用することをお勧めします。 ロールの一覧については、「[Azure Container Registry のロールとアクセス許可](../container-registry/container-registry-roles.md)」をご覧ください。
-
-サービス プリンシパルを使用して認証するには、最初のスクリプトで取得したサービス プリンシパル ID とパスワードを指定します。 デプロイ マニフェストにこれらの資格情報を指定します。
-
-* ユーザー名またはクライアント ID には、サービス プリンシパル ID を指定します。
-
-* パスワードまたはクライアント シークレットには、サービス プリンシパルのパスワードを指定します。
-
-> [!NOTE]
-> 強化されたセキュリティ認証を実装した後、**管理者ユーザー** 設定を無効にして、既定のユーザー名とパスワードにアクセスできないようにします。 Azure portal のコンテナー レジストリで、左側のウィンドウ メニューの **[設定]** の下にある **[アクセスキー]** を選択します。
 
 ### <a name="use-tags-to-manage-versions"></a>タグを使用してバージョンを管理する
 
@@ -190,12 +165,12 @@ IoT Edge エージェントおよび IoT Edge ハブ イメージには、関連
 
 あなたはカスタム コード モジュールのコンテナー イメージをプライベート Azure レジストリに格納する方法は理解していますが、それを使用して、edgeAgent や edgHub ランタイム モジュールなどのパブリック コンテナー イメージを格納することもできます。 このような処理が必要になるのは、これらのランタイム コンテナーが Microsoft Container Registry (MCR) に格納されているため、ファイアウォールの制限が非常に厳しい場合です。
 
-docker pull コマンドを使用してイメージを取得し、プライベート レジストリに配置します。 IoT Edge ランタイムの新しいリリースごとにイメージを更新する必要があることに注意してください。
+docker pull コマンドを使用してイメージを取得し、プライベート レジストリに配置します。 プル操作中にコンテナーのバージョンを指定し、下記のようにコンテナーの説明ページで最新のコンテナー バージョンを見つけて、必要に応じて pull コマンドでバージョンを置換する必要があります。 IoT Edge ランタイムの新しいリリースごとにイメージを更新する必要があることに注意してください。
 
 | IoT Edge ランタイム コンテナー | docker pull コマンド |
 | --- | --- |
-| [Azure IoT Edge エージェント](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
-| [Azure IoT Edge ハブ](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+| [Azure IoT Edge エージェント](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent:<VERSION_TAG>` |
+| [Azure IoT Edge ハブ](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub:<VERSION_TAG>` |
 
 次に、edgeAgent および edgeHub システム モジュールの deployment.template.json ファイル内のイメージ参照を必ず更新します。 `mcr.microsoft.com` を、両方のモジュールのレジストリ名とサーバーに置き換えます。
 
@@ -257,6 +232,7 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
 
 * **有用**
   * ログと診断を設定する
+  * ログ サイズを制限する
   * テストおよび CI/CD パイプラインを検討する
 
 ### <a name="set-up-logs-and-diagnostics"></a>ログと診断を設定する
@@ -373,6 +349,53 @@ IoT Edge のデプロイをテストする場合、通常はデバイスにア�
 ### <a name="consider-tests-and-cicd-pipelines"></a>テストおよび CI/CD パイプラインを検討する
 
 最も効率的な IoT Edge のデプロイ シナリオの場合は、運用環境のデプロイをテストおよび CI/CD パイプラインに統合することを検討してください。 Azure IoT Edge では、Azure DevOps を含む、複数の CI/CD プラットフォームがサポートされます。 詳細については、「[Azure IoT Edge に対する継続的インテグレーションと継続的配置](how-to-continuous-integration-continuous-deployment.md)」を参照してください。
+
+## <a name="security-considerations"></a>セキュリティに関する考慮事項
+
+* **重要**
+  * コンテナー レジストリへのアクセスを管理する
+  * ホスト リソースへのコンテナー アクセスを制限する
+
+### <a name="manage-access-to-your-container-registry"></a>コンテナー レジストリへのアクセスを管理する
+
+運用環境の IoT Edge デバイスにモジュールをデプロイする前に、部外者がコンテナー イメージにアクセスしたり、変更を加えたりできないように、コンテナー レジストリへのアクセスを制御していることを確認してください。 コンテナー イメージを管理するには、プライベート コンテナー レジストリを使用します。
+
+チュートリアルやその他のドキュメントでは、開発コンピューターで使用するものと同じコンテナー レジストリの資格情報を IoT Edge デバイスでも使用するように指示しています。 これらの指示は、単にテストおよび開発環境をより簡単に設定できるようにするためのものです。運用環境シナリオではこれらの指示に従わないでください。
+
+レジストリへのセキュリティで保護されたアクセスのために、[認証オプション](../container-registry/container-registry-authentication.md)を選択できます。 一般的で推奨される認証は、Active Directory サービス プリンシパルを使用することです。これは、IoT Edge デバイスと同様に、自動的にまたは無人方式でコンテナー イメージをプルするアプリケーションやサービスによく適しています。 もう 1 つのオプションは、リポジトリをスコープとしたトークンの使用です。これにより、それらが作成された Azure Container Registry にのみ存在する長期または短期の ID を作成し、リポジトリ レベルへのアクセスのスコープを設定することができます。
+
+サービス プリンシパルを作成するには、「[サービス プリンシパルの作成](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)」の説明に従って、2 つのスクリプトを実行します。 これらのスクリプトは次のタスクを実行します。
+
+* 最初のスクリプトでは、サービス プリンシパルが作成されます。 ここでは、サービス プリンシパル ID とサービス プリンシパル パスワードが出力されます。 これらの値は、安全に書き留めておきます。
+
+* 2 番目のスクリプトは、サービス プリンシパルに付与するロールの割り当てを作成します。これは、必要に応じて後で実行できます。 `role` パラメーターに **acrPull** ユーザー ロールを適用することをお勧めします。 ロールの一覧については、「[Azure Container Registry のロールとアクセス許可](../container-registry/container-registry-roles.md)」をご覧ください。
+
+サービス プリンシパルを使用して認証するには、最初のスクリプトで取得したサービス プリンシパル ID とパスワードを指定します。 デプロイ マニフェストにこれらの資格情報を指定します。
+
+* ユーザー名またはクライアント ID には、サービス プリンシパル ID を指定します。
+
+* パスワードまたはクライアント シークレットには、サービス プリンシパルのパスワードを指定します。
+
+<br>
+
+リポジトリをスコープとしたトークンを作成するには、[リポジトリをスコープとしたトークンの作成](../container-registry/container-registry-repository-scoped-permissions.md)に関するページに従ってください。
+
+リポジトリをスコープとしたトークンを使用して認証するには、リポジトリをスコープとしたトークンを作成した後に取得したトークン名とパスワードを指定します。 デプロイ マニフェストにこれらの資格情報を指定します。
+
+* ユーザー名には、トークンのユーザー名を指定します。
+
+* パスワードには、トークンのパスワードのいずれかを指定します。
+
+> [!NOTE]
+> 強化されたセキュリティ認証を実装した後、**管理者ユーザー** 設定を無効にして、既定のユーザー名とパスワードにアクセスできないようにします。 Azure portal のコンテナー レジストリで、左側のウィンドウ メニューの **[設定]** の下にある **[アクセスキー]** を選択します。
+
+### <a name="limit-container-access-to-host-resources"></a>ホスト リソースへのコンテナー アクセスを制限する
+
+モジュール間で共有ホスト リソースのバランスを取るには、モジュールごとのリソース消費量に制限を設けることをお勧めします。 この制限は、1 つのモジュールが大量のメモリまたは CPU を消費できないようにして、そのデバイスで他のプロセスが実行できなくなるのを防ぐのに役立ちます。 特定のモジュールの最適な実行に必要なリソースの量を知るにはテストが必要になるため、IoT Edge プラットフォームでは、モジュールのリソースは既定では制限されません。
+
+Docker によって提供されるいくつかの制約を使用して、メモリや CPU などのリソースの使用量を制限できます。 詳細については、「[Runtime options with memory, CPUs, and GPUs (メモリ、CPU、GPU に関する実行時オプション)](https://docs.docker.com/config/containers/resource_constraints/)」を参照してください。
+
+これらの制約は、配置マニフェストの作成オプションを使用して、個々のモジュールに適用できます。 詳細については、「[IoT Edge モジュールのコンテナー作成オプションを構成する方法](how-to-use-create-options.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -30,6 +30,8 @@
   items:
     - name: 接続モニター
       href: connection-monitor-overview.md
+    - name: 接続モニター スキーマ
+      href: connection-monitor-schema.md
     - name: VM ネットワーク トラフィック フィルターに関する問題を診断する
       href: network-watcher-ip-flow-verify-overview.md
     - name: NSG ルールとトラフィックのフィルター処理を診断する
@@ -51,7 +53,7 @@
     - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/network-watcher-security-baseline?toc=/azure/network-watcher/toc.json
     - name: データの保存場所
       href: data-residency.md
 - name: 操作方法ガイド
@@ -139,10 +141,13 @@
             - name: NSG フロー ログの読み取り
               href: network-watcher-read-nsg-flow-logs.md
             - name: トラフィック分析を使用する
-              href: traffic-analytics.md
               items:
+                - name: Traffic Analytics の概要
+                  href: traffic-analytics.md
                 - name: よく寄せられる質問
-                  href: traffic-analytics-faq.md
+                  href: traffic-analytics-faq.yml
+                - name: ビルトイン ポリシー
+                  href: traffic-analytics-policy-portal.md
                 - name: スキーマとデータ収集
                   href: traffic-analytics-schema.md
                 - name: スキーマ更新 (2019 年 8 月)
@@ -204,13 +209,13 @@
     - name: .NET
       href: /dotnet/api/overview/azure/virtual-network
     - name: Node.js
-      href: /javascript/api/@azure/arm-network
+      href: /javascript/api/overview/azure/arm-network-readme
     - name: REST
       href: /rest/api/network-watcher/
 - name: リソース
   items:
     - name: Network Watcher の FAQ
-      href: frequently-asked-questions.md
+      href: frequently-asked-questions.yml
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A 質問ページ

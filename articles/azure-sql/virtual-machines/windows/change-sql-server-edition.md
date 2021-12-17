@@ -3,7 +3,7 @@ title: SQL Server エディションのインプレース変更
 description: Azure 内の SQL Server 仮想マシンのエディションを、コスト削減のためにダウングレードしたり、より多くの機能を有効にするためにアップグレードしたりする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -11,15 +11,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/14/2020
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b6ea6f947b2cd8d7d9c38a0e5e440ce5fd273bb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4f80718d33a298aed44595019dd456411c5381a
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358828"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164038"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM での SQL Server エディションのインプレース変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -52,8 +52,9 @@ SQL Server のエディションをアップグレードするには、SQL Serve
    ![SQL Server のエディションをアップグレードするための選択](./media/change-sql-server-edition/edition-upgrade.png)
 
 1. **[次へ]** を何回か選択して **[エディションのアップグレードの準備完了]** ページまで進み、 **[アップグレード]** を選択します。 変更が有効になるまで数分間、セットアップ ウィンドウの応答が停止することがあります。 **[完了]** ページで、エディションのアップグレードが完了したことが確認されます。 
+1. SQL Server のエディションをアップグレードした後、Azure portal で SQL Server 仮想マシンのエディション プロパティを変更します。 これにより、この VM に関連付けられているメタデータと課金が更新されます。
 
-SQL Server のエディションをアップグレードした後、Azure portal で SQL Server 仮想マシンのエディション プロパティを変更します。 これにより、この VM に関連付けられているメタデータと課金が更新されます。
+
 
 ## <a name="downgrade-an-edition"></a>エディションをダウングレードする
 
@@ -71,8 +72,9 @@ SQL Server のエディションをダウングレードするには、SQL Serve
 1. SQL Server の目的のエディションが収められたメディアを使って、SQL Server をインストールします。
 1. 最新のサービス パックと累積的な更新プログラムをインストールします。  
 1. インストールの間に作成された新しいシステム データベースを、前に別の場所に移動したシステム データベースに置き換えます。 
+1. SQL Server のエディションをダウングレードした後、Azure portal で SQL Server 仮想マシンのエディション プロパティを変更します。 これにより、この VM に関連付けられているメタデータと課金が更新されます。 
 
-SQL Server のエディションをダウングレードした後、Azure portal で SQL Server 仮想マシンのエディション プロパティを変更します。 これにより、この VM に関連付けられているメタデータと課金が更新されます。
+
 
 ## <a name="change-edition-in-portal"></a>ポータルでエディションを変更する 
 
@@ -100,6 +102,6 @@ SQL Server のエディションをダウングレードした後、Azure portal
 詳細については、次の記事を参照してください。 
 
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.md)
+* [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
-* [Windows VM 上の SQL Server のリリース ノート](doc-changes-updates-release-notes.md)
+* [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)

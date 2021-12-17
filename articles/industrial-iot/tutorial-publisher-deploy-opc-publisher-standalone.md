@@ -6,18 +6,18 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: c82d15541459b5b482e427fc707b92755aa02c6c
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 80d4ef5fc474ff40807e01b6ecb9014db1ae8f51
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104787231"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677875"
 ---
 # <a name="tutorial-deploy-the-opc-publisher"></a>チュートリアル: OPC Publisher をデプロイする
 
 OPC Publisher は、オープンで開発された完全にサポートされている Microsoft 製品であり、産業用資産と Microsoft Azure クラウドの間のギャップを埋めます。 このために、OPC UA 対応の資産または産業用接続ソフトウェアに接続し、IEC62541 OPC UA PubSub 標準形式 (バージョン 2.6 以降) など、さまざまな形式でテレメトリ データを [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) に発行します。
 
-これは、[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) でモジュールとして、またはプレーン Docker でコンテナーとして実行されます。 [.NET クロスプラットフォーム ランタイム](https://docs.microsoft.com/dotnet/core/introduction)を利用するので、Linux と Windows 10 でもネイティブに実行されます。
+これは、[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) でモジュールとして、またはプレーン Docker でコンテナーとして実行されます。 [.NET クロスプラットフォーム ランタイム](/dotnet/core/introduction)を利用するので、Linux と Windows 10 でもネイティブに実行されます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -32,6 +32,7 @@ Azure サブスクリプションを持っていない場合は、無料試用�
 
 - IoT ハブが作成されている必要があります
 - IoT Edge デバイスが作成されている必要があります
+- IoT Edge デバイスが登録されている必要があります
 
 ## <a name="deploy-the-opc-publisher-from-the-azure-marketplace"></a>Azure Marketplace から OPC Publisher をデプロイする
 
@@ -42,16 +43,7 @@ Azure サブスクリプションを持っていない場合は、無料試用�
 5. [OPCPublisher] をクリックして OPC Publisher の [IoT Edge モジュールの更新] ページを開き、[コンテナーの作成オプション] を選択します。
 6. OPC Publisher の使用状況に基づいてコンテナーの作成オプションを追加で指定します。次のセクションを参照してください。
 
-
-### <a name="accessing-the-microsoft-container-registry-docker-containers-for-opc-publisher-manually"></a>OPC Publisher の Microsoft Container Registry Docker コンテナーに手動でアクセスする
-
-OPC Publisher の最新リリース バージョンは、次の方法を利用して手動で実行できます。
-
-```
-docker run mcr.microsoft.com/iotedge/opc-publisher:latest <name>
-```
-
-ここでは、"name" はコンテナーの名前です。
+Docker OPC Publisher でサポートされている Docker イメージはすべて、[こちら](https://mcr.microsoft.com/v2/iotedge/opc-publisher/tags/list)に一覧表示されています。 OPC UA が有効になっていない資産については、業界をリードする産業用接続プロバイダーとの提携により、Azure IoT Edge への OPC UA アダプター ソフトウェアの移植を支援しました。 これらのアダプターは、Azure [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1) で入手できます。
 
 ## <a name="specifying-container-create-options-in-the-azure-portal"></a>Azure portal でコンテナーの作成オプションを指定する
 Azure portal を使用して OPC Publisher をデプロイする際、OPC Publisher の [IoT Edge モジュールの更新] ページでコンテナーの作成オプションを指定できます。 これらの作成オプションは JSON 形式にする必要があります。 OPC Publisher のコマンド ライン引数は、次の例のように、Cmd キーを使用して指定できます。

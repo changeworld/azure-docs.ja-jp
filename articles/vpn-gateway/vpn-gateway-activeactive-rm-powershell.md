@@ -1,6 +1,7 @@
 ---
-title: アクティブ/アクティブ S2S Azure VPN Gateway 接続を構成する
-description: この記事では、Azure Resource Manager と PowerShell を使用して Azure VPN ゲートウェイでアクティブ/アクティブ接続を構成する方法を説明します。
+title: アクティブ/アクティブ S2S VPN 接続を構成する
+titleSuffix: Azure VPN Gateway
+description: PowerShell を使用して、VPN ゲートウェイでアクティブ/アクティブ接続を構成する方法について説明します。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
@@ -8,16 +9,17 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: 022ccaab0b210cd2d656b69f505791d1a2aa963f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ee5213adf10ddc7ea17c93011989e52fe570b3ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89440781"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729556"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Azure VPN ゲートウェイで、アクティブ/アクティブ S2S VPN 接続を構成する
 
-この記事では、Resource Manager デプロイ モデルと PowerShell を使用して、アクティブ/アクティブのクロスプレミス接続と VNet 間接続を作成にする手順について説明します。 Azure portal でアクティブ/アクティブ ゲートウェイを構成することもできます。
+この記事では、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)と PowerShell を使用して、アクティブ/アクティブのクロスプレミス接続と VNet 対 VNet 接続を作成にする手順について説明します。 Azure portal でアクティブ/アクティブ ゲートウェイを構成することもできます。
 
 ## <a name="about-highly-available-cross-premises-connections"></a>高可用性のクロスプレミス接続について
 クロスプレミスと VNet 間接続で高可用性を実現するには、複数の VPN ゲートウェイをデプロイし、ネットワークと Azure 間に複数の並列接続を確立する必要があります。 接続オプションとトロポジの概要については、「[高可用性のクロスプレミス接続および VNet 間接続](vpn-gateway-highlyavailable.md)」をご覧ください。
@@ -120,7 +122,7 @@ $gw1ipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf2 -Subnet $sub
 ```
 
 #### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2.アクティブ/アクティブ構成で VPN ゲートウェイを作成する
-TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。 GatewayIpConfig エントリが 2 つあり、EnableActiveActiveFeature フラグが設定されている点にご注意ください。 ゲートウェイの作成には時間がかかります (完了まで 45 分以上)。
+TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。 GatewayIpConfig エントリが 2 つあり、EnableActiveActiveFeature フラグが設定されている点にご注意ください。 ゲートウェイの作成には時間がかかることがあります (選択した SKU によっては、完了するまでに 45 分以上かかります)。
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN -EnableActiveActiveFeature -Debug

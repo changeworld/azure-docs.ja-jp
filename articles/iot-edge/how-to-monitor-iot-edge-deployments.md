@@ -2,20 +2,18 @@
 title: IoT Edge デプロイの監視 - Azure IoT Edge
 description: edgeHub および edgeAgent に報告されたプロパティと自動デプロイ メトリックを含む高レベルの監視。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 04/21/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
-ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: f4f2f8522f6d3d1039673803d946323deb485db9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 834208d1499e83b1de5cd276a5de65c00f25e4f7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200264"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722009"
 ---
 # <a name="monitor-iot-edge-deployments"></a>IoT Edge デプロイの監視
 
@@ -69,7 +67,7 @@ IoT Hub サービスでは、このデータを Azure portal と Azure CLI で�
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>Azure CLI でデプロイを監視する
 
-単一のデプロイの詳細を表示するには、[az IoT edge deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) コマンドを使用します。
+単一のデプロイの詳細を表示するには、[az iot edge deployment show](/cli/azure/iot/edge/deployment) コマンドを使用します。
 
 ```azurecli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -87,7 +85,7 @@ deployment show コマンドは、次のパラメーターを受け取ります�
 * **reportedSuccessfulCount** - IoT Edge クライアント ランタイムから成功をレポートしているデプロイ内の IoT Edge デバイスの数を指定するデバイス メトリックです。
 * **reportedFailedCount** - IoT Edge クライアント ランタイムから失敗をレポートしているデプロイ内の IoT Edge デバイスの数を指定するデバイス メトリックです。
 
-[az IoT Edge deployment show-metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) コマンドを使用して、各メトリックのデバイス ID またはオブジェクトの一覧を表示できます。
+[az iot edge deployment show-metric](/cli/azure/iot/edge/deployment) コマンドを使用して、各メトリックのデバイス ID またはオブジェクトの一覧を表示できます。
 
 ```azurecli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]

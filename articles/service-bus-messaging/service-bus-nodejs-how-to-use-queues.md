@@ -6,15 +6,13 @@ ms.author: spelluru
 ms.date: 11/09/2020
 ms.topic: quickstart
 ms.devlang: nodejs
-ms.custom:
-- devx-track-js
-- mode-api
-ms.openlocfilehash: aee67becf7519f03839eafbd897838f938871307
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-js, mode-api
+ms.openlocfilehash: 176ed204227d1bedcb0977d35149f36c792e10ff
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537224"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009075"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Azure Service Bus キューとの間でメッセージを送受信する (JavaScript)
 このチュートリアルでは、JavaScript プログラムの [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用して、Service Bus キューとの間でメッセージを送受信する方法について説明します。
@@ -37,7 +35,7 @@ npm install @azure/service-bus
 次のサンプル コードは、キューにメッセージを送信する方法を示しています。
 
 1. [Visual Studio Code](https://code.visualstudio.com/) など、お好みのエディターを開きます。
-2. `send.js` というファイルを作成し、そこに以下のコードを貼り付けます。 このコードによって、キューにメッセージが送信されます。 メッセージには、ラベル (Scientist) と本文 (Einstein) が含まれています。
+2. `send.js` というファイルを作成し、そこに以下のコードを貼り付けます。 このコードは、科学者の名前をメッセージとしてキューに送信します。
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus");
@@ -164,7 +162,7 @@ npm install @azure/service-bus
         });
     
         // Waiting long enough before closing the sender to send messages
-        await delay(5000);
+        await delay(20000);
     
         await receiver.close(); 
         await sbClient.close();
@@ -208,6 +206,6 @@ Azure portal の Service Bus 名前空間の **[概要]** ページで、**受�
 次のドキュメントおよびサンプルを参照してください。 
 
 - [JavaScript 用の Azure Service Bus クライアント ライブラリ](https://www.npmjs.com/package/@azure/service-bus)
-- [JavaScript のサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
-- [TypeScript のサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [JavaScript のサンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/v7/javascript)
+- [TypeScript のサンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/v7/typescript)
 - [API リファレンス ドキュメント](/javascript/api/overview/azure/service-bus)

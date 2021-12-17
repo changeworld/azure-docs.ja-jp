@@ -5,13 +5,13 @@ ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
-ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: 6d2f4d8fc7a2a7011a2417467f7131c4cfb26edc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18, devx-track-azurecli
+ms.openlocfilehash: 43eaa0db5530483cae58ade96bb8ff65408790f1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788225"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730716"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>チュートリアル:Azure App Service で CORS を使用して RESTful API をホストする
 
@@ -41,35 +41,44 @@ ms.locfileid: "107788225"
 
 ### <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-ターミナル ウィンドウから、`cd` コマンドで作業ディレクトリに移動します。  
+1. ターミナル ウィンドウから、`cd` コマンドで作業ディレクトリに移動します。  
 
-次のコマンドを実行して、サンプル レポジトリを複製します。 
+1. サンプル リポジトリを複製し、リポジトリ ルートに変更します。 
 
-```bash
-git clone https://github.com/Azure-Samples/dotnet-core-api
-```
+    ```bash
+    git clone https://github.com/Azure-Samples/dotnet-core-api
+    cd dotnet-core-api
+    ```
 
-このリポジトリには、「[Swagger を使用する ASP.NET Core Web API のヘルプ ページ](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio)」というチュートリアルに基づいて作成されたアプリが含まれています。 ここでは、Swagger ジェネレーターを使用して [Swagger UI](https://swagger.io/swagger-ui/) と Swagger JSON エンドポイントが提供されます。
+    このリポジトリには、「[Swagger を使用する ASP.NET Core Web API のヘルプ ページ](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio)」というチュートリアルに基づいて作成されたアプリが含まれています。 ここでは、Swagger ジェネレーターを使用して [Swagger UI](https://swagger.io/swagger-ui/) と Swagger JSON エンドポイントが提供されます。
+
+1. 既定のブランチが `main` であることを確認します。
+
+    ```bash
+    git branch -m main
+    ```
+    
+    > [!TIP]
+    > App Service では、ブランチ名の変更は必要ありません。 ただし、多くのリポジトリで既定のブランチが `main` に変更されているため (「[デプロイ ブランチを変更する](deploy-local-git.md#change-deployment-branch)」を参照)、このチュートリアルでは、`main` からリポジトリをデプロイする方法も示します。
 
 ### <a name="run-the-application"></a>アプリケーションの実行
 
-次のコマンドを実行して、必要なパッケージをインストールし、データベースの移行を実行し、アプリケーションを起動します。
+1. 次のコマンドを実行して、必要なパッケージをインストールし、データベースの移行を実行し、アプリケーションを起動します。
 
-```bash
-cd dotnet-core-api
-dotnet restore
-dotnet run
-```
+    ```bash
+    dotnet restore
+    dotnet run
+    ```
 
-ブラウザーで `http://localhost:5000/swagger` に移動して、Swagger UI を起動します。
+1. ブラウザーで `http://localhost:5000/swagger` に移動して、Swagger UI を起動します。
 
-![ローカルで実行される ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-local-swagger-ui.png)
+    ![ローカルで実行される ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-local-swagger-ui.png)
 
-`http://localhost:5000/api/todo` に移動して、ToDo JSON 項目の一覧を確認します。
+1. `http://localhost:5000/api/todo` に移動して、ToDo JSON 項目の一覧を確認します。
 
-`http://localhost:5000` に移動して、ブラウザー アプリを起動します。 後で、ブラウザー アプリで App Service のリモート API を参照して、CORS 機能をテストします。 ブラウザー アプリのコードは、リポジトリの _wwwroot_ ディレクトリにあります。
+1. `http://localhost:5000` に移動して、ブラウザー アプリを起動します。 後で、ブラウザー アプリで App Service のリモート API を参照して、CORS 機能をテストします。 ブラウザー アプリのコードは、リポジトリの _wwwroot_ ディレクトリにあります。
 
-任意のタイミングで ASP.NET Core を停止するには、ターミナルで `Ctrl+C` キーを押します。
+1. 任意のタイミングで ASP.NET Core を停止するには、ターミナルで `Ctrl+C` キーを押します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -97,42 +106,42 @@ dotnet run
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-<pre>
-Enumerating objects: 83, done.
-Counting objects: 100% (83/83), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (78/78), done.
-Writing objects: 100% (83/83), 22.15 KiB | 3.69 MiB/s, done.
-Total 83 (delta 26), reused 0 (delta 0)
-remote: Updating branch 'master'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id '509236e13d'.
-remote: Generating deployment script.
-remote: Project file path: .\TodoApi.csproj
-remote: Generating deployment script for ASP.NET MSBuild16 App
-remote: Generated deployment script files
-remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment with MSBuild16.
-remote: .
-remote: .
-remote: .
-remote: Finished successfully.
-remote: Running post deployment command(s)...
-remote: Triggering recycle (preview mode disabled).
-remote: Deployment successful.
-To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
- * [new branch]      master -> master
-</pre>
+   <pre>
+   Enumerating objects: 83, done.
+   Counting objects: 100% (83/83), done.
+   Delta compression using up to 8 threads
+   Compressing objects: 100% (78/78), done.
+   Writing objects: 100% (83/83), 22.15 KiB | 3.69 MiB/s, done.
+   Total 83 (delta 26), reused 0 (delta 0)
+   remote: Updating branch 'master'.
+   remote: Updating submodules.
+   remote: Preparing deployment for commit id '509236e13d'.
+   remote: Generating deployment script.
+   remote: Project file path: .\TodoApi.csproj
+   remote: Generating deployment script for ASP.NET MSBuild16 App
+   remote: Generated deployment script files
+   remote: Running deployment command...
+   remote: Handling ASP.NET Core Web Application deployment with MSBuild16.
+   remote: .
+   remote: .
+   remote: .
+   remote: Finished successfully.
+   remote: Running post deployment command(s)...
+   remote: Triggering recycle (preview mode disabled).
+   remote: Deployment successful.
+   To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
+   * [new branch]      master -> master
+   </pre>
 
 ### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
 
-ブラウザーで `http://<app_name>.azurewebsites.net/swagger` に移動して、Swagger UI を起動します。
+1. ブラウザーで `http://<app_name>.azurewebsites.net/swagger` に移動して、Swagger UI を起動します。
 
-![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
+    ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
 
-`http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` に移動して、デプロイされた API の _swagger.json_ を確認します。
+1. `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` に移動して、デプロイされた API の _swagger.json_ を確認します。
 
-`http://<app_name>.azurewebsites.net/api/todo` に移動して、デプロイされた API が機能していることを確認します。
+1. `http://<app_name>.azurewebsites.net/api/todo` に移動して、デプロイされた API が機能していることを確認します。
 
 ## <a name="add-cors-functionality"></a>CORS 機能の追加
 
@@ -140,23 +149,23 @@ To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
 
 ### <a name="test-cors-in-sample-app"></a>サンプル アプリで CORS をテストする
 
-ローカル リポジトリで、_wwwroot/index.html_ を開きます。
+1. ローカル リポジトリで、_wwwroot/index.html_ を開きます。
 
-行 51 で `apiEndpoint` 変数を、デプロイされた API の URL (`http://<app_name>.azurewebsites.net`) に設定します。 _\<appname>_ は、App Service のアプリ名で置き換えます。
+1. 行 51 で `apiEndpoint` 変数を、デプロイされた API の URL (`http://<app_name>.azurewebsites.net`) に設定します。 _\<appname>_ は、App Service のアプリ名で置き換えます。
 
-ローカル ターミナル ウィンドウでサンプル アプリをもう一度実行します。
+1. ローカル ターミナル ウィンドウでサンプル アプリをもう一度実行します。
 
-```bash
-dotnet run
-```
+    ```bash
+    dotnet run
+    ```
 
-`http://localhost:5000` でブラウザー アプリに移動します。 ブラウザーで開発者ツール ウィンドウを開き (Windows 用の Chrome では `Ctrl`+`Shift`+`i`)、 **[Console]\(コンソール\)** タブを確認します。`No 'Access-Control-Allow-Origin' header is present on the requested resource` というエラー メッセージが表示されています。
+1. `http://localhost:5000` でブラウザー アプリに移動します。 ブラウザーで開発者ツール ウィンドウを開き (Windows 用の Chrome では `Ctrl`+`Shift`+`i`)、 **[Console]\(コンソール\)** タブを確認します。`No 'Access-Control-Allow-Origin' header is present on the requested resource` というエラー メッセージが表示されています。
 
-![ブラウザー クライアントでの CORS エラー](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
+    ![ブラウザー クライアントでの CORS エラー](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
-ブラウザー アプリ (`http://localhost:5000`) とリモート リソース (`http://<app_name>.azurewebsites.net`) の間でドメインが一致しておらず、App Service の API が `Access-Control-Allow-Origin` ヘッダーを送信していないため、ブラウザー アプリでのクロスドメイン コンテンツの読み込みが、ブラウザーによって妨げられています。
+    ブラウザー アプリ (`http://localhost:5000`) とリモート リソース (`http://<app_name>.azurewebsites.net`) の間でドメインが一致しておらず、App Service の API が `Access-Control-Allow-Origin` ヘッダーを送信していないため、ブラウザー アプリでのクロスドメイン コンテンツの読み込みが、ブラウザーによって妨げられています。
 
-運用環境のブラウザー アプリでは localhost URL ではなくパブリック URL が使用されます。しかし、localhost URL に対して CORS を有効にする方法は、パブリック URL の場合と同じです。
+    運用環境のブラウザー アプリでは localhost URL ではなくパブリック URL が使用されます。しかし、localhost URL に対して CORS を有効にする方法は、パブリック URL の場合と同じです。
 
 ### <a name="enable-cors"></a>CORS を有効にする 
 
@@ -170,6 +179,9 @@ az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-
 
 > [!NOTE]
 > Cookie や認証トークンなどの資格情報をアプリで送信する必要がある場合、ブラウザーは、応答に `ACCESS-CONTROL-ALLOW-CREDENTIALS` ヘッダーを必要とします。 App Service でこれを有効にする場合は、CORS の構成で `properties.cors.supportCredentials` を `true` に設定してください。`allowedOrigins` に `'*'` が含まれているときに、これを有効にすることはできません。
+
+> [!NOTE]
+> `AllowAnyOrigin` と `AllowCredentials` を指定する構成は安全ではなく、クロスサイト リクエスト フォージェリが発生する可能性があります。 アプリが両方の方法で構成されている場合、CORS サービスは無効な CORS 応答を返します。
 
 ### <a name="test-cors-again"></a>CORS をもう一度テストする
 

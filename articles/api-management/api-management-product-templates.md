@@ -3,7 +3,7 @@ title: Azure API Management の製品テンプレート | Microsoft Docs
 description: Azure API Management で開発者ポータルの製品ページの内容をカスタマイズする方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 49f9254c-4c5f-4ed4-9c8d-798f44e805ee
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: apimpm
-ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 08b14104339be5a05bc7db25088536f2d0be51de
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86249905"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639092"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API Management の製品テンプレート
 
@@ -79,7 +79,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |Paging|[Paging](api-management-template-data-model-reference.md#Paging) エンティティ。|製品コレクションのページング情報。|  
 |フィルター処理|[フィルター処理](api-management-template-data-model-reference.md#Filtering)エンティティ。|製品リスト ページのフィルター処理情報。|  
@@ -204,7 +204,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |Product|[Product](api-management-template-data-model-reference.md#Product)|指定された製品。|  
 |IsDeveloperSubscribed|boolean|現在のユーザーがこの製品をサブスクライブしているかどうか。|  

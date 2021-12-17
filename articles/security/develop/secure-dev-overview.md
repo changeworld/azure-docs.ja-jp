@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: baaa311620f5c10948aa3494002ce359cc5dab28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b0ebb1989e350962317adce64c0542b4a296924
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94517174"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000766"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Azure での安全な開発のベスト プラクティス
 この一連の記事では、クラウド向けのアプリケーションを開発するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft セキュリティ開発ライフサイクル (SDL) と、ライフサイクルの各フェーズで考慮すべきセキュリティの質問と概念について説明します。 目標は、ライフサイクルの各フェーズでより安全なアプリケーションの設計、開発、デプロイに使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -67,7 +67,7 @@ SDL フェーズは次のとおりです。
 
 [Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page) – OWASP は、自由に利用できる Web アプリケーションのセキュリティの分野の記事、方法論、ドキュメント、ツール、およびテクノロジを作り出しているオンライン コミュニティです。
 
-[Pushing Left, Like a Boss](https://code.likeagirl.io/pushing-left-like-a-boss-part-1-80f1f007da95?WT.mc_id=docs-blog-tajanca) – 開発者がより安全なコードを作成するために実行する必要のあるさまざまな種類のアプリケーションのセキュリティ アクティビティの概要を説明する、一連のオンライン記事です。
+[Pushing Left, Like a Boss](https://wehackpurple.com/pushing-left-like-a-boss-part-1/) – 開発者がより安全なコードを作成するために実行する必要のあるさまざまな種類のアプリケーションのセキュリティ アクティビティの概要を説明する、一連のオンライン記事です。
 
 [Microsoft ID プラットフォーム](../../active-directory/develop/index.yml) – Microsoft ID プラットフォームは、Azure ADD サービスおよび開発者プラットフォームの進化版です。 これは多彩な機能を備えたプラットフォームであり、認証サービス、オープン ソース ライブラリ、アプリケーションの登録と構成、完全な開発者向けドキュメント、サンプル コード、およびその他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
 

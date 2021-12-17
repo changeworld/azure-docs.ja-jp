@@ -1,19 +1,23 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: 097886e5e1942dd957b8fa3d9b8599177c229747
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 941c5cd7bdc789bffea364e47917be0b79fdb461
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491204"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114408224"
 ---
+[![コードを参照](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp)
+
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順を実行するには、**カスタム アプリケーション** テンプレートを使用して作成された Azure IoT Central アプリケーションが必要です。 詳細については、[アプリケーションの作成のクイック スタート](../articles/iot-central/core/quick-deploy-iot-central.md)に関するページをご覧ください。 アプリケーションは、2020 年 7 月 14 日以降に作成されている必要があります。
+このチュートリアルを完了するには、以下が必要になります。
+
+[!INCLUDE [iot-central-prerequisites-basic](iot-central-prerequisites-basic.md)]
 
 このチュートリアルは Linux または Windows で実行できます。 このチュートリアルのシェル コマンドは、パス区切り記号を "`/`" とする Linux 規則に従っています。Windows 方式に従う場合は、必ずこれらの区切り記号を "`\`" に置き換えてください。
 
@@ -98,7 +102,7 @@ int main(void)
 
     int numberOfIterations = 0;
 
-    // During startup, send the non-"writeable" properties.
+    // During startup, send the non-"writable" properties.
     PnP_TempControlComponent_ReportSerialNumber_Property(deviceClient);
     PnP_DeviceInfoComponent_Report_All_Properties(g_deviceInfoComponentName, deviceClient);
     PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(g_thermostatHandle1, deviceClient);

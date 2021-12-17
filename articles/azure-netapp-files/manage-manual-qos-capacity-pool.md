@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 1c20190ba1a997ef85f4023a54ecea3c2a77ae53
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dd92472ff810a46743ffa08b1ea2fdd8f9e01da7
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183830"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407591"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>手動 QoS 容量プールを管理する
 
@@ -27,30 +27,11 @@ ms.locfileid: "102183830"
 
 QoS の種類に関する考慮事項を理解するためには、「[Azure NetApp Files のストレージ階層](azure-netapp-files-understand-storage-hierarchy.md)」と「[Azure NetApp Files のパフォーマンスに関する考慮事項](azure-netapp-files-performance-considerations.md)」を参照してください。  
 
-## <a name="register-the-feature"></a>機能を登録する
-現在、手動 QoS の種類の機能はプレビュー段階にあります。 この機能を初めて使用する場合は、まず機能を登録する必要があります。
-  
-1.  機能を登録します。
-
-    ```azurepowershell-interactive
-    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
-    ```
-
-2. 機能の登録の状態を確認します。 
-
-    > [!NOTE]
-    > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が **Registered** になってから続行してください。
-
-    ```azurepowershell-interactive
-    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
-    ```
-また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
-
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>手動 QoS 容量プールを設定する 
 
 手動 QoS の種類を使用する新しい容量プールを作成するには:
 
-1. 「[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)」の手順に従います。  
+1. 「[容量プールを作成する](azure-netapp-files-set-up-capacity-pool.md)」の手順に従います。  
 
 2. [新しい容量プール] ウィンドウで、種類として **[手動 QoS]** を選択します。  
 
@@ -87,7 +68,7 @@ QoS の種類に関する考慮事項を理解するためには、「[Azure Net
 
 ## <a name="next-steps"></a>次のステップ  
 
-* [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+* [容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)
 * [Azure NetApp Files のメトリック](azure-netapp-files-metrics.md)
 * [Azure NetApp Files のパフォーマンスに関する考慮事項](azure-netapp-files-performance-considerations.md)
 * [容量プールに関する問題のトラブルシューティング](troubleshoot-capacity-pools.md)

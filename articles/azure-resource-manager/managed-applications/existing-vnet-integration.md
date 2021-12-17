@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: tomfitz
-ms.openlocfilehash: fa5e59b96aada06c2dd486094d9be6a52c79e43e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f35e12b62b0efd9f79f83a1832c317d7eabe99b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84260685"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648337"
 ---
 # <a name="use-existing-virtual-network-with-azure-managed-applications"></a>Azure Managed Applications で既存の仮想ネットワークを使用する
 
@@ -18,7 +18,7 @@ ms.locfileid: "84260685"
 
 ## <a name="main-template"></a>Main template
 
-まず、**mainTemplate.json** ファイルを見てみましょう。 仮想マシンとそれに関連付けられているリソースをデプロイするためのテンプレート全体を次に示します。 後で、既存の仮想ネットワークの使用に関連するテンプレートの部分について詳しく調べます。
+まず、_mainTemplate.json_ ファイルを見てみましょう。 仮想マシンとそれに関連付けられているリソースをデプロイするためのテンプレート全体を次に示します。 後で、既存の仮想ネットワークの使用に関連するテンプレートの部分について詳しく調べます。
 
 :::code language="json" source="~/resourcemanager-templates/managed-app-existing-vnet/mainTemplate.json":::
 
@@ -38,7 +38,7 @@ ms.locfileid: "84260685"
 
 ## <a name="ui-definition"></a>UI 定義
 
-次に、**createUiDefinition.json** ファイルを見てみましょう。 ファイル全体は次のとおりです。
+次に、_createUiDefinition.json_ ファイルを見てみましょう。 ファイル全体は次のとおりです。
 
 :::code language="json" source="~/resourcemanager-templates/managed-app-existing-vnet/createUiDefinition.json":::
 

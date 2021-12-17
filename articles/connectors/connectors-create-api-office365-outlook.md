@@ -1,20 +1,20 @@
 ---
-title: Office 365 Outlook と統合する
+title: Office 365 Outlook に接続する
 description: Azure Logic Apps を使用して、Office 365 Outlook のメール、連絡先、カレンダーを管理するタスクとワークフローを自動化します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: estfan, azla
 ms.topic: article
-ms.date: 11/13/2020
+ms.date: 08/11/2021
 tags: connectors
-ms.openlocfilehash: 87a9c8a38ede7008d658068329c8c72e7e3c4117
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b60565cec180242535402daee27ed5018505727a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095454"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744700"
 ---
-# <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して、Office 365 Outlook のメール、連絡先、カレンダーを管理する
+# <a name="connect-to-office-365-outlook-using-azure-logic-apps"></a>Azure Logic Apps を使用して Office 365 Outlook に接続する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Office 365 Outlook コネクタ](/connectors/office365connector/)を使用すると、ロジック アプリを構築することで職場または学校アカウントを管理する自動化されたタスクとワークフローを作成できます。 たとえば、次のタスクを自動化することができます。
 
@@ -26,20 +26,31 @@ ms.locfileid: "101095454"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [職場または学校アカウント](https://www.office.com/)を使用してサインインする Outlook アカウント。 @outlook.com または @hotmail.com アカウントを持っている場合は、代わりに [Outlook.com コネクタ](../connectors/connectors-create-api-outlook.md)を使用します。 別のユーザー アカウント (サービス アカウントなど) を使用して Outlook に接続する方法については、[他のアカウントを使用して接続する](#connect-using-other-accounts)方法に関するページをご覧ください。
+* [職場または学校アカウント](https://support.microsoft.com/office/what-account-to-use-with-office-and-you-need-one-914e6610-2763-47ac-ab36-602a81068235#bkmk_msavsworkschool)を使用してサインインする Outlook 用の Microsoft Office 365 アカウント。
+
+  ワークフローを承認して Outlook アカウントにアクセスできるようにするには、これらの資格情報が必要です。
+
+  > [!NOTE]
+  > @outlook.com または @hotmail.com アカウントを持っている場合は、[Outlook.com コネクタ](../connectors/connectors-create-api-outlook.md)を使用します。 別のユーザー アカウント (サービス アカウントなど) を使用して Outlook に接続する方法については、[他のアカウントを使用して接続する](#connect-using-other-accounts)方法に関するページをご覧ください。
+  >
+  > [21Vianet によって運用されている Microsoft Azure](https://portal.azure.cn) を使用している場合、Azure Active Directory (Azure AD) 認証は、.com アカウントではなく、21vianet によって運用されている Microsoft Office 365 のアカウント (.cn) でのみ機能します。
 
 * Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
-* Outlook アカウントにアクセスするロジック アプリ。 Office 365 Outlook トリガーを使用してワークフローを開始するには、[空のロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)が必要です。 Office 365 Outlook アクションをワークフローに追加するには、ロジック アプリにトリガーが既に存在している必要があります。
+* Outlook アカウントにアクセスするロジック アプリ。 Office 365 Outlook トリガーを使用してワークフローを開始するには、[空のロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)が必要です。 Office 365 Outlook アクションをワークフローに追加するには、ロジック アプリ ワークフローにトリガーが既に存在している必要があります。
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](/connectors/office365/)を参照してください。
 
 ## <a name="add-a-trigger"></a>トリガーの追加
 
 [トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)は、ロジック アプリのワークフローを開始するイベントです。 この例のロジック アプリでは、指定された間隔と頻度に基づいて、メール アカウントの更新されたカレンダー イベントを確認する "ポーリング" トリガーを使用します。
 
-1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーで空のロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) のビジュアル デザイナーで空のロジック アプリを開きます。
 
 1. 検索ボックスに、フィルターとして「`office 365 outlook`」と入力します。 この例では、 **[予定しているイベントがすぐに開始されるとき]** を選択します。
-   
+
    ![ロジック アプリを開始するトリガーの選択](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
 1. Outlook アカウントへのアクティブな接続がない場合は、サインインして、その接続を作成するように求めるプロンプトが表示されます。 別のユーザー アカウント (サービス アカウントなど) を使用して Outlook に接続する方法については、[他のアカウントを使用して接続する](#connect-using-other-accounts)方法に関するページをご覧ください。 それ以外の場合は、トリガーのプロパティに関する情報を指定します。
@@ -53,7 +64,7 @@ ms.locfileid: "101095454"
 
 1. トリガーに、**[頻度]** と **[間隔]** の値を設定します。 **タイム ゾーン** など、使用可能なその他のトリガーのプロパティを追加するには、**[新しいパラメーターの追加]** リストからそれらプロパティを選択します。
 
-   たとえば、トリガーを使用して 15 分ごとにカレンダーをチェックするには、**[頻度]** を **[分]** に設定し、**[間隔]** を `15` に設定します。 
+   たとえば、トリガーを使用して 15 分ごとにカレンダーをチェックするには、**[頻度]** を **[分]** に設定し、**[間隔]** を `15` に設定します。
 
    ![トリガーの頻度と間隔を設定する](./media/connectors-create-api-office365-outlook/calendar-settings.png)
 
@@ -63,11 +74,11 @@ ms.locfileid: "101095454"
 
 ## <a name="add-an-action"></a>アクションを追加する
 
-[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)とは、ロジック アプリのワークフローによって実行される操作です。 この例のロジック アプリでは、Office 365 Outlook に新しい連絡先が作成されます。 別のトリガーまたはアクションからの出力を使用して、連絡先を作成できます。 たとえば、ロジック アプリで Dynamics 365 トリガー **[レコードが作成されたとき]** を使用します。 Office 365 Outlook の **[連絡先の作成]** アクションを追加し、SalesForce トリガーからの出力を使用して新しい連絡先を追加できます。
+[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)とは、ロジック アプリのワークフローによって実行される操作です。 この例のロジック アプリでは、Office 365 Outlook に新しい連絡先が作成されます。 別のトリガーまたはアクションからの出力を使用して、連絡先を作成できます。 たとえば、ロジック アプリで Salesforce トリガー **[レコードが作成されたとき]** を使用するとします。 Office 365 Outlook の **[連絡先の作成]** アクションを追加し、トリガーからの出力を使用して新しい連絡先を作成できます。
 
-1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) のビジュアル デザイナーでロジック アプリを開きます。
 
-1. ワークフローの最後のステップとしてアクションを追加するには、**[新しいステップ]** を選択します。 
+1. ワークフローの最後のステップとしてアクションを追加するには、**[新しいステップ]** を選択します。
 
    ステップの間にアクションを追加するには、該当するステップ間の矢印の上にポインターを移動します。 表示されるプラス記号 ( **+** ) を選択してから、 **[アクションの追加]** を選択します。
 
@@ -111,10 +122,6 @@ Azure に現在サインインしているものとは別のアカウントを�
    1. **[電子メールの送信]** アクションで、 **[パラメーターの追加]** リストを開き、 **[送信者 (メールボックス所有者として送信する)]** パラメーターを選択します。
 
    1. アクションでパラメーターが表示されたら、サービス アカウントのメール アドレスを入力します。
-
-## <a name="connector-reference"></a>コネクタのレファレンス
-
-コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](/connectors/office365/)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

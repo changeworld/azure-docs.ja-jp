@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
-ms.custom: seodec18
-ms.openlocfilehash: 120bfe2eefae3c1721073060231c6c2a1962b7c8
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: b69ed57ec67b7f08ef7beec8df73f1da20c06a0b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110276"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254883"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>チュートリアル:PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -52,11 +52,6 @@ ms.locfileid: "106110276"
 | ゲートウェイ IP 構成名 | *gwipconf* |
 | 型 | *ExpressRoute* |
 | ゲートウェイのパブリック IP 名  | *gwpip* |
-
-> [!IMPORTANT]
-> 現在、プライベート ピアリングの IPv6 サポートは **パブリック プレビュー** の段階にあります。 IPv6 ベースのプライベート ピアリングを構成して仮想ネットワークを ExpressRoute 回線に接続したい場合は、仮想ネットワークをデュアル スタックにし、[こちら](../virtual-network/ipv6-overview.md)で説明されているガイドラインに従ってください。
-> 
-> 
 
 ## <a name="add-a-gateway"></a>ゲートウェイを追加する
 
@@ -102,6 +97,12 @@ ms.locfileid: "106110276"
    ```azurepowershell-interactive
    $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
    ```
+      
+   ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、IP SKU を Standard に設定し、AllocationMethod を Static に設定してください。
+   ```azurepowershell-interactive
+   $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Static -SKU Standard
+   ```
+   
 1. ゲートウェイの構成を作成します。 ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。 この手順では、ゲートウェイを作成するときに使用する構成を指定します。 次のサンプルを使用して、ゲートウェイの構成を作成します。
 
    ```azurepowershell-interactive
@@ -113,7 +114,7 @@ ms.locfileid: "106110276"
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
    ```
 > [!IMPORTANT]
-> ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、 **-GatewaySku** に対して AZ SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ) を選択してください。
+> ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、 **-GatewaySku** に対して AZ SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ) を選択するか、Standard および Static のパブリック IP で -GatewaySKU に非 AZ SKU (Standard、HighPerformance、UltraPerformance) を使用します。
 > 
 > 
 

@@ -9,12 +9,12 @@ ms.date: 07/06/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: acebc75b579b13ebb2cfad0e18057245781165ad
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: b7669cf9e5a27157d220cc7ac97ab09d02f15588
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175279"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272644"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-cli"></a>Azure CLI を使用した App Service アプリの作成とプライベート エンドポイントのデプロイ
 
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location francecentral
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
 Web アプリをホストするための App Service プランを作成する必要があります。
-[az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) を使用して App Service プランを作成します。
+[az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) を使用して App Service プランを作成します。
 この例では、*P1V2* SKU で 1 つのワーカーのみを持つ *myAppServicePlan* という名前の App Service プランを *francecentral* の場所に作成します。 
 
 ```azurecli-interactive
@@ -52,7 +52,7 @@ az appservice plan create \
 ## <a name="create-a-web-app"></a>Web アプリの作成
 
 これで App Service プランが作成されたので、Web アプリをデプロイできます。
-[az appservice plan create](/cli/azure/webapp#az-webapp-create) を使用して Web アプリを作成します。
+[az appservice plan create](/cli/azure/webapp#az_webapp_create) を使用して Web アプリを作成します。
 この例では、*myAppServicePlan* という名前のプランに *mySiteName* という名前の Web アプリを作成します
 
 ```azurecli-interactive
@@ -78,7 +78,7 @@ az network vnet create \
 
 ## <a name="configure-the-subnet"></a>サブネットを構成する 
 
-サブネットを更新して、プライベート エンドポイント ネットワーク ポリシーを無効にする必要があります。 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使用して  *mySubnet*  という名前のサブネット構成を更新します。
+サブネットを更新して、プライベート エンドポイント ネットワーク ポリシーを無効にする必要があります。 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) を使用して  *mySubnet*  という名前のサブネット構成を更新します。
 
 ```azurecli-interactive
 az network vnet subnet update \

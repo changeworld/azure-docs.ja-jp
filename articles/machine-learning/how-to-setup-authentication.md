@@ -7,32 +7,37 @@ author: cjgronlund
 ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
-ms.subservice: core
-ms.date: 04/02/2021
-ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: ee767cbeafcce604ecb4a79ce0fdf21c70bbb47c
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.subservice: enterprise-readiness
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2, subject-rbac-steps
+ms.openlocfilehash: c83d578c364257ad8ecd229e49fdd0d35ec7a9c6
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219639"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560779"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
 
 
-お使いの Azure Machine Learning のワークスペースに認証を設定する方法について説明します。 お使いの Azure Machine Learning ワークスペースには、多くの場合、__Azure Active Directory__ (Azure AD) を使用して認証されます。 ワークスペースに接続するときに使用できる認証ワークフローには、一般に次の 3 つがあります。
+お使いの Azure Machine Learning のワークスペースに認証を設定する方法について説明します。 お使いの Azure Machine Learning ワークスペースには、多くの場合、__Azure Active Directory__ (Azure AD) を使用して認証されます。 ワークスペースに接続するときに使用できる認証ワークフローには、一般に次の 4 つがあります。
 
 * __対話型__:Azure Active Directory でアカウントを使用して、直接認証するか、認証に使用されるトークンを取得します。 対話型認証は、"_実験および反復開発_" 時に使用します。 対話型認証では、(Web サービスなどの) リソースへのアクセスを、ユーザーごとに制御できます。
 
 * __サービス プリンシパル__: Azure Active Directory でサービス プリンシパル アカウントを作成し、それを使用して認証を行うか、トークンを取得します。 サービス プリンシパルは、ユーザーが操作をせず、サービスに "_自動認証されるプロセス_" が必要な場合に使用します。 たとえば、トレーニング コードが変更されるたびにモデルをトレーニングおよびテストする継続的インテグレーションとデプロイ スクリプトです。
 
+* __Azure CLIセッション:__ アクティブな Azure CLI セッションを使用して認証します。 Azure CLI 認証は、_実験および反復開発_ 中に使用されます。または、事前に認証されたセッションを使用してサービスに対する _認証を自動化するプロセス_ が必要な場合に使用されます。 Python コードに資格情報を格納したり、ユーザーに認証を求めることなく、ローカル ワークステーションの Azure CLI を使用して Azure にログインできます。 同様に、継続的インテグレーションとデプロイ パイプラインの一部として同じスクリプトを再利用しながら、サービス プリンシパル ID で Azure CLI を認証できます。
+
 * __マネージド ID__:Azure Machine Learning SDK を "_Azure 仮想マシンで_" 使用する場合は Azure のマネージド ID を使用できます。 このワークフローでは、Python コードに資格情報を保存したり、ユーザーに認証を求めずに、マネージド ID を使用して VM をワークスペースに接続したりすることが許可されます。 "_モデルのトレーニング時_" に、Azure Machine Learning コンピューティング クラスターをマネージド ID を使用してワークスペースにアクセスするように構成することもできます。
 
-> [!IMPORTANT]
-> Azure ロールベースのアクセス制御 (Azure RBAC) は、使用する認証のワークフローに関係なく、リソースに対して許可するアクセス レベル (認証) の範囲の設定に使用します。 たとえば、管理者または自動化プロセスには、コンピューティング インスタンスを作成するアクセス権は持っていても、それを使用できない場合があり、それを使用できるデータ サイエンティストが、それを削除または作成できない場合があります。 詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」を参照してください。
+Azure ロールベースのアクセス制御 (Azure RBAC) は、使用する認証のワークフローに関係なく、リソースに対して許可するアクセス レベル (認証) の範囲の設定に使用します。 たとえば、管理者または自動化プロセスには、コンピューティング インスタンスを作成するアクセス権は持っていても、それを使用できない場合があり、それを使用できるデータ サイエンティストが、それを削除または作成できない場合があります。 詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」を参照してください。
+
+Azure AD 条件付きアクセスを使用して、各認証ワークフローのワークスペースへのアクセスをさらに制御または制限できます。 たとえば、管理者はマネージド デバイスからのワークスペース アクセスのみを許可できます。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
 
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)を作成します。
 * [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning コンピューティング インスタンス](concept-azure-machine-learning-architecture.md#compute-instance)を使用します。
@@ -135,9 +140,17 @@ SP を作成し、ワークスペースへのアクセス権を付与する最�
 
 1. [VM 上の Azure リソースに対して、システムで割り当てられたマネージド ID を有効にしてください](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。
 
-1. [Azure portal](https://portal.azure.com) からお使いのワークスペースを選択し、 __[アクセス制御 (IAM)]__ 、 __[ロールの割り当ての追加]__ を順に選択し、 __[アクセスの割り当て先]__ ドロップダウンから __[仮想マシン]__ を選択します。 最後にお使いの VM の ID を選択します。
+1. [Azure portal](https://portal.azure.com) でワークスペースを選択し、 __[Access Control (IAM)]\(アクセス制御 \(IAM\)\)__ をクリックします。
+1. __[Add]\(追加\)__ 、 __[Add Role Assignment]\(ロールの割り当ての追加\)__ を順にクリックし、 __[Add role assignmen]\(ロールの割り当ての追加\) ページ__ を開きます。
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-1. この ID に割り当てるロールを選択します。 たとえば、共同作成者やカスタム ロールです。 詳細については、[リソースへのアクセスの制御](how-to-assign-roles.md)に関するページを参照してください。
+    | 設定 | 値 |
+    | ----- | ----- |
+    | Role | 割り当てるロール。 |
+    | アクセスの割り当て先 | マネージド ID |
+    | メンバー | 作成済みのマネージド ID |
+
+    ![Azure portal でロール割り当てページを追加します。](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ### <a name="managed-identity-with-compute-cluster"></a>コンピューティング クラスターでのマネージド ID
 
@@ -224,7 +237,8 @@ from azureml.core import Workspace
 
 ws = Workspace.get(name="ml-example",
                    auth=sp,
-                   subscription_id="your-sub-id")
+                   subscription_id="your-sub-id",
+                   resource_group="your-rg-name")
 ws.get_details()
 ```
 
@@ -392,6 +406,10 @@ ws = Workspace(subscription_id="your-sub-id",
                 auth=msi_auth
                 )
 ```
+
+## <a name="use-conditional-access"></a>条件付きアクセスを使用する
+
+管理者は、ワークスペースにユーザーがサインインするための [サインイン Azure AD 条件付きアクセス ポリシー](../active-directory/conditional-access/overview.md)を適用できます。 たとえば、2 要素認証を要求したり、マネージド デバイスからのサインインのみを許可したりできます。 Azure Machine Learning ワークスペースに条件付きアクセスを具体的に使用するには、機械学習クラウド アプリに[条件付きアクセス ポリシーを割り当てる](../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

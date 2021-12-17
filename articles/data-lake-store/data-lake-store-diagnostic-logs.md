@@ -1,23 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 の診断ログの表示 | Microsoft Docs
 description: 'Azure Data Lake Storage Gen1 の診断ログを設定し、それにアクセスする方法について説明します。 '
-services: data-lake-store
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: f6e75eb1-d0ae-47cf-bdb8-06684b7c0a94
+author: normesta
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
-ms.author: twooley
-ms.openlocfilehash: 0b84e26962b00ee5b9d4c34cab7efbcc9aa0bf01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 325bca316aaf4add854ea473f71c9f9883fa42eb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100582802"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602937"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の診断ログへのアクセス
 Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方法、およびそのアカウント用に収集されたログを表示する方法について説明します。
@@ -115,7 +109,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 ```
 
 #### <a name="request-log-schema"></a>要求ログのスキーマ
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
@@ -128,7 +122,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | properties |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="request-log-properties-schema"></a>要求ログのプロパティのスキーマ
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 | --- | --- | --- |
 | HttpMethod |String |操作に使用される HTTP メソッド。 GET など。 |
 | Path |String |操作が実行されたパス |
@@ -167,7 +161,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 ```
 
 #### <a name="audit-log-schema"></a>監査ログのスキーマ
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
@@ -180,7 +174,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | properties |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="audit-log-properties-schema"></a>監査ログのプロパティのスキーマ
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 | --- | --- | --- |
 | StreamName |String |操作が実行されたパス |
 

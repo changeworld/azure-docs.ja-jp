@@ -2,14 +2,14 @@
 title: 仮想ネットワークでプールをプロビジョニングする
 description: コンピューティング ノードがネットワーク内の他の VM (ファイル サーバーなど) と安全に通信できるように、Azure 仮想ネットワークで Batch プールを作成する方法。
 ms.topic: how-to
-ms.date: 03/26/2021
+ms.date: 08/20/2021
 ms.custom: seodec18
-ms.openlocfilehash: 7213637e89cfccd1352861002c47a696d942d30f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bc8f63af713b3b56d85426ce9be86214572506be
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629310"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635132"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>仮想ネットワーク内に Azure Batch プールを作成する
 
@@ -38,14 +38,16 @@ Azure Batch プールを作成すると、指定した [Azure 仮想ネットワ
 VNet を作成し、それにサブネットを割り当てたら、その VNet で Batch プールを作成できます。 次の手順に従って、Azure Portal でプールを作成します。 
 
 1. Azure Portal の Batch アカウントに移動します。 このアカウントは、使用する予定の VNet を含むリソース グループと同じサブスクリプションおよびリージョン内にある必要があります。
-2. 左側の **[設定]** ウィンドウで、 **[プール]** メニュー項目を選択します。
-3. **[プール]** ウィンドウで、 **[追加]** を選択します。
-4. **[プールの追加]** ウィンドウで、 **[イメージの種類]** ドロップダウンから、使用する予定のオプションを選択します。
-5. **[Publisher]\(パブリッシャー\)、[Offer]\(プラン\)、[SKU]** で、カスタム イメージに対して適切な値を選択します。
-6. **[ノード サイズ]** 、 **[ターゲットの専用ノード数]** 、 **[低優先度ノード]** など、残りの必須の設定ほか、オプションの設定も必要に応じて指定します。
-7. **[仮想ネットワーク]** で、使用する予定の仮想ネットワークとサブネットを選択します。
+1. 左側の **[設定]** ウィンドウで、 **[プール]** メニュー項目を選択します。
+1. **[プール]** ウィンドウで、 **[追加]** を選択します。
+1. **[プールの追加]** ウィンドウで、 **[イメージの種類]** ドロップダウンから、使用する予定のオプションを選択します。
+1. **[Publisher]\(パブリッシャー\)、[Offer]\(プラン\)、[SKU]** で、カスタム イメージに対して適切な値を選択します。
+1. **[ノード サイズ]** 、 **[ターゲットの専用ノード数]** 、 **[低優先度ノード]** など、残りの必須の設定ほか、オプションの設定も必要に応じて指定します。
+1. **[仮想ネットワーク]** で、使用する予定の仮想ネットワークとサブネットを選択します。
+1. **[OK]** を選択してプールを作成します。
 
-   ![仮想ネットワークを含むプールを追加する](./media/batch-virtual-network/add-vnet-pool.png)
+> [!IMPORTANT]
+> プールで使用されているサブネットを削除しようとすると、エラー メッセージが表示されます。 サブネットを使用しているすべてのプールは、そのサブネットを削除する前に削除する必要があります。
 
 ## <a name="user-defined-routes-for-forced-tunneling"></a>強制トンネリングのユーザー定義ルート
 
@@ -53,15 +55,15 @@ VNet を作成し、それにサブネットを割り当てたら、その VNet 
 
 強制トンネリングが有効になっている VNet でプールのノードが機能することを確認するには、そのサブネットに次の[ユーザー定義ルート](../virtual-network/virtual-networks-udr-overview.md) (UDR) を追加する必要があります。
 
-- Batch サービスは、タスクをスケジュールする目的でノードと通信する必要があります。 この通信を有効にするには、Batch アカウントが存在するリージョンで Batch サービスによって利用される IP アドレスごとに UDR を追加します。 Batch サービスの IP アドレスの一覧を取得するには、「[オンプレミスのサービス タグ](../virtual-network/service-tags-overview.md)」を参照してください。
+- Batch サービスは、タスクをスケジュールする目的でノードと通信する必要があります。 この通信を有効にするには、Batch アカウントが存在するリージョンで Batch サービスによって利用される IP アドレスごとに UDR を追加します。 Batch サービスの IP アドレスは `BatchNodeManagement.<region>` サービス タグにあります。 IP アドレスの一覧を取得するには、「[オンプレミスのサービス タグ](../virtual-network/service-tags-overview.md)」を参照してください。
 
-- Azure Storage への送信トラフィック (具体的には、フォーム `<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、`<account>.blob.core.windows.net` の URL) がオンプレミス ネットワークによってブロックされていないことを確認します。
+- 宛先ポート 443 での Azure Batch サービスへの送信 TCP トラフィックが、オンプレミス ネットワークによってブロックされていないことを確認します。 これらの Azure Batch サービスの宛先 IP アドレスは、上記でルートに対して使用した、`BatchNodeManagement.<region>` サービス タグにあるものと同じです。
+
+- 宛先ポート 443 での Azure Storage への送信 TCP トラフィック (具体的には、`*.table.core.windows.net`、`*.queue.core.windows.net`、`*.blob.core.windows.net` の形式の URL) が、オンプレミス ネットワークによってブロックされていないことを確認します。
 
 - 仮想ファイル マウントを使用する場合は、[ネットワーク要件](virtual-file-mount.md#networking-requirements)を調べ、必要なトラフィックがブロックされていないことを確認します。
 
 UDR を追加するときに、関連する各 Batch の IP アドレス プレフィックスのルートを定義し、 **[次ホップの種類]** を **[インターネット]** に設定します。
-
-![ユーザー定義のルート](./media/batch-virtual-network/user-defined-route.png)
 
 > [!WARNING]
 > Batch サービスの IP アドレスは、時間の経過と共に変化することがあります。 IP アドレスの変更による停止を防ぐために、Batch サービスの IP アドレスを自動的に更新し、ルート テーブルで最新の状態に保つプロセスを作成します。

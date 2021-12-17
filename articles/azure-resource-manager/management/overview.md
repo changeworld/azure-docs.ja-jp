@@ -2,14 +2,14 @@
 title: Azure Resource Manager の概要
 description: Azure Resource Manager を使用して、Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。
 ms.topic: overview
-ms.date: 03/25/2021
+ms.date: 08/27/2021
 ms.custom: contperf-fy21q1,contperf-fy21q3-portal
-ms.openlocfilehash: 6cd9aa82ad2f8a821ae82a361b3f11b72ca25f7a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f83021f35b76dc96c7ae841c2dd636de5b73c107
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608546"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134521"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
@@ -63,6 +63,8 @@ Azure には、[管理グループ](../../governance/management-groups/overview.
 
 これらのスコープ レベルのいずれかに管理設定を適用します。 選択するレベルで、設定の適用範囲が決まります。 上位レベルの設定が下位レベルに継承されます。 たとえば、サブスクリプションに[ポリシー](../../governance/policy/overview.md)を適用すると、そのポリシーはサブスクリプション内のすべてのリソース グループとリソースに適用されます。 リソース グループにポリシーを適用すると、そのポリシーはリソース グループとそのすべてのリソースに適用されます。 ただし、別のリソース グループにそのポリシー割り当てはありません。
 
+ID とアクセスの管理の詳細については、[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) に関するページを参照してください。
+
 テンプレートは、テナント、管理グループ、サブスクリプション、またはリソース グループにデプロイすることができます。
 
 ## <a name="resource-groups"></a>リソース グループ
@@ -79,9 +81,15 @@ Azure には、[管理グループ](../../governance/management-groups/overview.
 
 * リソース グループのリソースは、リソース グループとは別のリージョンに配置できます。
 
-* リソース グループを作成するとき、そのリソース グループの場所を指定する必要があります。 "なぜリソース グループに場所が必要なのか。 リソースがリソース グループとは異なる場所に存在してよいとしたら、いったいなぜリソース グループの場所が問題になるのか" と、疑問に思われるかもしれません。 リソース グループには、リソースについてのメタデータが格納されます。 リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。
+* リソース グループを作成するとき、その場所を指定する必要があります。 
 
-   リソース グループのリージョンが一時的に使用できない場合は、メタデータが使用できないため、リソース グループ内のリソースを更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 信頼性の高いアプリケーションの設計の詳細については、「[信頼性の高い Azure アプリケーションの設計](/azure/architecture/checklist/resiliency-per-service)」を参照してください。
+  "なぜリソース グループに場所が必要なのか。 リソースがリソース グループとは異なる場所に存在してよいとしたら、いったいなぜリソース グループの場所が問題になるのか" と、疑問に思われるかもしれません。 
+
+  リソース グループには、リソースについてのメタデータが格納されます。 リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。 
+  
+  Azure Content Delivery Network、Azure Traffic Manager、Azure Front Door などのグローバル リソースを除き、リソース グループのリージョンが 一時的に利用できなくなった場合、メタデータが利用できなくなるため、そのリソース グループ内のリソースは更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 
+   
+  信頼性の高いアプリケーションの設計の詳細については、「[信頼性の高い Azure アプリケーションの設計](/azure/architecture/checklist/resiliency-per-service)」を参照してください。
 
 * リソース グループを使用すると、管理操作のアクセス制御のスコープを設定できる。 リソース グループを管理するために、[Azure ポリシー](../../governance/policy/overview.md)、[Azure のロール](../../role-based-access-control/role-assignments-portal.md)、または[リソース ロック](lock-resources.md)を割り当てることができます。
 

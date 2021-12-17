@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: 8f5a8aa2b949ddd07208cac054147596512f783f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 9af5bf37e007422b38da371b95c9b86d4341ce95
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99213898"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520541"
 ---
 ## <a name="prerequisites"></a>前提条件
 

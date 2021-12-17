@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 50f08ffc304962cc66f6eed07adcb5b7e4aa6692
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c386714fbc24c5e5f2f7e71234e2838aa2e5f216
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98011154"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112542240"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>ネットワーク セキュリティ グループのフロー ログを Power BI で視覚化する
 
@@ -52,7 +52,7 @@ ms.locfileid: "98011154"
 
 ### <a name="steps"></a>手順
 
-1. Power BI テンプレート ([Network Watcher PowerBI フロー ログ テンプレート](https://aka.ms/networkwatcherpowerbiflowlogstemplate)) をダウンロードして Power BI Desktop アプリケーションで開きます。
+1. Power BI テンプレート ([Network Watcher PowerBI フロー ログ テンプレート](https://aka.ms/networkwatcherflowlogspowerbitemplate)) をダウンロードして Power BI Desktop アプリケーションで開きます。
 1. 必要なクエリ パラメーターを入力します。
    1. **StorageAccountName**: 読み込んで視覚化する NSG フロー ログの保存先となっているストレージ アカウントの名前を指定します。
    1. **NumberOfLogFiles**: Power BI にダウンロードして視覚化するログ ファイルの数を指定します。 たとえば「50」と入力した場合、直近 50 件のログ ファイルがダウンロードされます。 2 つの NSG を有効にして、このアカウントに NSG フロー ログを送信するように構成した場合、過去 25 時間分のログを表示することができます。

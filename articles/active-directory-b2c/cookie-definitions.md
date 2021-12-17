@@ -3,20 +3,20 @@ title: Cookie の定義
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C で使われる Cookie の定義を提供します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/23/2020
-ms.author: mimart
+ms.date: 08/12/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e970b7981531418748c91fed2d62b3b3e13d9590
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85389345"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130037572"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Azure AD B2C での Cookie の定義
 
@@ -44,7 +44,7 @@ Microsoft Azure AD B2C サービスは、SameSite ブラウザー構成と互換
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | [ブラウザー セッション](session-behavior.md)の終了 | テナント間でユーザーのメンバーシップ データを保持します。 ユーザーがメンバーになっているテナントと、メンバーシップのレベル (管理者またはユーザー) です。 |
 | `x-ms-cpim-slice` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | 適切な運用インスタンスに要求をルーティングするために使われます。 |
 | `x-ms-cpim-trans` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | トランザクション (Azure AD B2C に対する認証要求の数) と現在のトランザクションを追跡するために使われます。 |
-| `x-ms-cpim-sso:{Id}` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | SSO セッションを維持するために使われます。 |
+| `x-ms-cpim-sso:{Id}` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | SSO セッションを維持するために使われます。 [[サインインしたままにする]](session-behavior.md#enable-keep-me-signed-in-kmsi) が有効な場合、この cookie は `persistent` として設定されます。|
 | `x-ms-cpim-cache:{id}_n` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了、認証の成功 | 要求の状態を維持するために使われます。 |
 | `x-ms-cpim-csrf` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | クロスサイト リクエスト フォージェリの保護に使われる CRSF トークン。 |
 | `x-ms-cpim-dc` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | Azure AD B2C のネットワーク ルーティングに使われます。 |

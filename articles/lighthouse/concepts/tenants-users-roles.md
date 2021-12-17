@@ -1,20 +1,20 @@
 ---
 title: Azure Lighthouse のシナリオにおけるテナント、ユーザー、ロール
-description: Azure Active Directory のテナント、ユーザー、およびロールの概念と、それらを Azure Lighthouse のシナリオで使用する方法について説明します。
-ms.date: 01/14/2021
+description: Azure Active Directory のテナント、ユーザー、ロールを、Azure Lighthouse のシナリオでどのように使用できるかを説明します。
+ms.date: 06/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdf8c10d52e0add4513d42a99d2054e1af0ed796
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98233918"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112542258"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure Lighthouse のシナリオにおけるテナント、ユーザー、ロール
 
 顧客を [Azure Lighthouse](../overview.md) にオンボードする前に、Azure Active Directory (Azure AD) のテナント、ユーザー、およびロールがどのように機能するか、およびそれらを Azure Lighthouse シナリオでどのように使用するかを理解しておくことが重要です。
 
-*テナント* とは、Azure AD の信頼された専用インスタンスです。 通常、各 Azure テナントは 1 つの組織を表します。 [Azure の委任されたリソース管理](azure-delegated-resource-management.md)を使用すると、あるテナントから別のテナントにリソースを論理的に投影できます。 これにより、(サービス プロバイダーに属するユーザーなどの) 管理テナントのユーザーは、顧客のテナント内の委任されたリソースにアクセスできるようになります。また、[複数のテナントを持つ企業が、管理操作を一元的に実行できるようになります。](enterprise.md)
+*テナント* とは、Azure AD の信頼された専用インスタンスです。 通常、各 Azure テナントは 1 つの組織を表します。 Azure Lighthouse を使用すると、あるテナントから別のテナントにリソースを[論理的に投影](architecture.md#logical-projection)できます。 これにより、(サービス プロバイダーに属するユーザーなどの) 管理テナントのユーザーは、顧客のテナント内の委任されたリソースにアクセスできるようになります。また、[複数のテナントを持つ企業が、管理操作を一元的に実行できるようになります。](enterprise.md)
 
 この論理的な投影を実現するには、顧客テナントのサブスクリプション (またはサブスクリプション内の 1 つ以上のリソース グループ) を、Azure Lighthouse に "*オンボード*" する必要があります。 オンボードは、[Azure Resource Manager のテンプレート](../how-to/onboard-customer.md)を使用して行うか、[Azure Marketplace にパブリックまたはプライベート サービスを発行して行います](../how-to/publish-managed-services-offers.md)。
 
@@ -47,6 +47,12 @@ ms.locfileid: "98233918"
 
 > [!NOTE]
 > 適用可能な新しい組み込みロールが Azure に追加されると、[Azure Resource Manager テンプレートを使用して顧客のオンボードをする](../how-to/onboard-customer.md)際に割り当てることができます。 [マネージド サービス オファーを発行する](../how-to/publish-managed-services-offers.md)際に、新しく追加したロールがパートナー センターで使用できるようになるまでに時間がかかる場合があります。
+
+## <a name="transferring-delegated-subscriptions-between-azure-ad-tenants"></a>Azure AD テナント間での委任サブスクリプションの移転
+
+サブスクリプションを[他の Azure AD テナント アカウントに移転](../../cost-management-billing/manage/billing-subscription-transfer.md#transfer-a-subscription-to-another-azure-ad-tenant-account)しても、[Azure Lighthouse オンボーディング](../how-to/onboard-customer.md)で作成された[登録内容と登録割り当てリソース](architecture.md#delegation-resources-created-in-the-customer-tenant)は保持されます。 つまり、Azure Lighthouse で付与した管理テナントに対するアクセス権は、そのサブスクリプションで (あるいは、そのサブスクリプション内の委任リソース グループで) 引き続き有効です。
+
+唯一の例外は、 サブスクリプションを 委任したことがある Azure AD テナントに、同じサブスクリプションを移転する場合です。 この場合、そのサブスクリプションは (Azure Lighthouse を通じて委任するのではなく) 直接そのテナントに属することになるため、テナントへの委任リソースは削除され、Azure Lighthouse で付与したアクセス権は適用されなくなります。 ただし、そのサブスクリプションを他の管理テナントに委任したことがある場合は、それらの管理１テナントに、そのサブスクリプションに対するアクセス権がそのまま残ります。
 
 ## <a name="next-steps"></a>次のステップ
 

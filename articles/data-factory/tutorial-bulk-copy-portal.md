@@ -1,19 +1,19 @@
 ---
 title: Azure portal を使用してデータを一括コピーする
 description: Azure Data Factory とコピー アクティビティを使用して、ソース データ ストアからコピー先データ ストアにデータを一括コピーする方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
+ms.subservice: tutorials
 ms.workload: data-services
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: bca2158f448f74ba596114fce5d1631249124a92
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 07/06/2021
+ms.openlocfilehash: 30b7bdc80de2b6623d7eb2c285c477cc35bc7b5a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606737"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737042"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal で Azure Data Factory を使用して複数のテーブルを一括コピーする
 
@@ -39,7 +39,7 @@ ms.locfileid: "104606737"
 ## <a name="end-to-end-workflow"></a>エンド ツー エンド ワークフロー
 このシナリオでは、Azure Synapse Analytics にコピーする必要のあるテーブルが Azure SQL Database に多数存在します。 以下の図は、パイプラインのワークフロー ステップを論理的な発生順に並べたものです。
 
-![ワークフロー](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
+:::image type="content" source="media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png" alt-text="Workflow":::
 
 * 1 つ目のパイプラインでは、シンク データ ストアにコピーするテーブルの一覧が検索されます。  代わりに、シンク データ ストアにコピーするすべてのテーブルが列挙されたメタデータ テーブルを用意する方法もあります。 次に、1 つ目のパイプラインによって 2 つ目のパイプラインがトリガーされ、データベース内の各テーブルを反復処理しながらデータのコピー操作が実行されます。
 * 実際のコピーは 2 つ目のパイプラインによって実行されます。 このパイプラインは、テーブルの一覧をパラメーターとして受け取ります。 その一覧の各テーブルについて、Azure SQL Database 内の特定のテーブルを Azure Synapse Analytics 内の該当するテーブルにコピーします。この処理には、パフォーマンスを最大限に高めるために、[Blob Storage と PolyBase によるステージング コピー](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)が使用されます。 この例では、1 つ目のパイプラインからパラメーターの値としてテーブルの一覧が渡されます。 
@@ -63,7 +63,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。 
 1. Azure portal の左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** の順に選択します。 
 
-   ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="&quot;[新規]&quot; ペインでの Data Factory の選択":::
 1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialBulkCopyDF**」と入力します。 
  
    Azure データ ファクトリの名前は **グローバルに一意** にする必要があります。 [名前] フィールドで次のエラーが発生した場合は、データ ファクトリの名前を変更してください (yournameADFTutorialBulkCopyDF など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
@@ -83,7 +83,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 1. **Create** をクリックしてください。
 1. 作成後、 **[リソースに移動]** を選択して、 **[Data factory]** ページに移動します。 
    
-1. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Data Factory UI アプリケーションを起動します。
+1. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブで Data Factory UI アプリケーションを起動します。
 
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
@@ -164,7 +164,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 
 1. 左側のペインにある **[+]** (プラス) を選択し、 **[データセット]** を選択します。 
 
-    ![New dataset menu](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/new-dataset-menu.png" alt-text="New dataset menu":::
 1. **[新しいデータセット]** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** を選択します。 
     
 1. **[Set properties]** \(プロパティの設定\) ウィンドウの **[名前]** の下に、「**AzureSqlDatabaseDataset**」と入力します。 **[リンクされたサービス]** の下で **[AzureSqlDatabaseLinkedService]** を選択します。 次に、 **[OK]** をクリックします
@@ -182,7 +182,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 
     1. **[テーブル]** で、 **[編集]** オプションをオンにします。 最初の入力ボックスを選択し、下の **[動的なコンテンツの追加]** リンクをクリックします。 **[動的なコンテンツの追加]** ページの **[パラメーター]** の下の **[DWSchema]** をクリックします。これで、自動的に上部の式テキストボックスに `@dataset().DWSchema` が入力されます。次に、 **[完了]** をクリックします。  
     
-        ![データセット接続のテーブル名](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
+        :::image type="content" source="./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png" alt-text="データセット接続のテーブル名":::
 
     1. 2 つ目の入力ボックスを選択し、下の **[動的なコンテンツの追加]** リンクをクリックします。 **[動的なコンテンツの追加]** ページの **[パラメーター]** の下の **[DWTAbleName]** をクリックします。これで、自動的に上部の式テキストボックスに `@dataset().DWTableName` が入力されます。次に、 **[完了]** をクリックします。 
     
@@ -203,7 +203,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
 
-    ![新しいパイプライン メニュー](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/new-pipeline-menu.png" alt-text="新しいパイプライン メニュー":::
  
 1. [全般] パネルの **[プロパティ]** の下で、 **[名前]** に「**IterateAndCopySQLTables**」と指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 
@@ -223,15 +223,15 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 
     c. **[動的なコンテンツの追加]** ページで、 **[システム変数]** と **[関数]** のセクションを折りたたんで、 **[パラメーター]** の **tableList** をクリックします。これで、自動的に上部の式テキスト ボックスに `@pipeline().parameter.tableList` が入力されます。 **[完了]** をクリックします。 
 
-    ![ForEach パラメーター ビルダー](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png" alt-text="ForEach パラメーター ビルダー":::
     
     d. **[アクティビティ]** タブに切り替えて **鉛筆アイコン** をクリックし、子アクティビティを **ForEach** アクティビティに追加します。
     
-    ![ForEach アクティビティ ビルダー](./media/tutorial-bulk-copy-portal/for-each-activity-builder.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/for-each-activity-builder.png" alt-text="ForEach アクティビティ ビルダー":::
 
 1. **[アクティビティ]** ツールボックスで **[Move & Transfer]\(移動および転送\)** を展開し、 **[データのコピー]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 ウィンドウの上部に階層リンク メニューがあります。 **IterateAndCopySQLTable** はパイプライン名で、**IterateSQLTables** は ForEach アクティビティ名です。 現在のデザイナー画面には、アクティビティの範囲が表示されています。 ForEach エディターからパイプライン エディターにデザイナー画面を切り替えるには、階層リンク メニューのリンクをクリックできます。 
 
-    ![ForEach アクティビティ内のコピー](./media/tutorial-bulk-copy-portal/copy-in-for-each.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/copy-in-for-each.png" alt-text="ForEach アクティビティ内のコピー":::
 
 1. **[ソース]** タブに切り替えて、次の手順を実行します。
 
@@ -254,10 +254,10 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
     1. **[Pre-copy Script]\(コピー前スクリプト\)** 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、以下の式をスクリプトとして入力し、 **[完了]** を選択します。 
 
         ```sql
-        TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
+        IF EXISTS (SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]) TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ```
 
-        ![コピー シンクの設定](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
+        :::image type="content" source="./media/tutorial-bulk-copy-portal/copy-sink-settings.png" alt-text="コピー シンクの設定":::
 
 1. **[設定]** タブに切り替えて、次の手順を実行します。 
 
@@ -294,12 +294,12 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
         ```
     1. **[First row only]\(先頭行のみ\)** フィールドのチェック ボックスをオフにします。
 
-        ![検索アクティビティ - [設定] ページ](./media/tutorial-bulk-copy-portal/lookup-settings-page.png)
+        :::image type="content" source="./media/tutorial-bulk-copy-portal/lookup-settings-page.png" alt-text="検索アクティビティ - [設定] ページ":::
 1. [アクティビティ] ツール ボックスからパイプライン デザイナー画面に **[パイプラインの実行]** アクティビティをドラッグ アンド ドロップし、名前を「**TriggerCopy**」に設定します。
 
 1. **[検索]** アクティビティを **[パイプラインの実行]** アクティビティに **接続** するために、[検索] アクティビティの横に付いている **緑の四角** を [パイプラインの実行] アクティビティの左へドラッグします。
 
-    ![検索アクティビティとパイプラインの実行アクティビティの接続](./media/tutorial-bulk-copy-portal/connect-lookup-execute-pipeline.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/connect-lookup-execute-pipeline.png" alt-text="検索アクティビティとパイプラインの実行アクティビティの接続":::
 
 1. **[Execute Pipeline]\(パイプラインの実行\)** アクティビティの **[設定]** タブに切り替え、以下の手順を実行します。 
 
@@ -307,7 +307,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
     1. **[Wait on completion]\(完了時に待機\)** チェック ボックスをオフにします。
     1. **[パラメーター]** セクションで、[値] の入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、「`@activity('LookupTableList').output.value`」をテーブル名の値として入力して、 **[完了]** を選択します。 これで、2 つ目のパイプラインへの入力として検索アクティビティの結果一覧が設定されます。 結果一覧には、コピー先にコピーする必要があるデータが格納されたテーブルの一覧が含まれています。 
 
-        ![パイプラインの実行アクティビティ - [設定] ページ](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
+        :::image type="content" source="./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png" alt-text="パイプラインの実行アクティビティ - [設定] ページ":::
 
 1. パイプラインを検証するために、ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、 **[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
 
@@ -324,7 +324,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 1. **[監視]** タブに切り替えます。ソリューションの両方のパイプラインが実行されるまで、 **[最新の情報に更新]** をクリックします。 状態が **[成功]** になるまで一覧を更新します。 
 
 1. **GetTableListAndTriggerCopyData** パイプラインに関連付けられているアクティビティの実行を表示するには、対応するパイプライン名のリンクをクリックします。 このパイプラインの実行の 2 つのアクティビティの実行が表示されます。 
-    ![パイプラインの実行の監視](./media/tutorial-bulk-copy-portal/monitor-pipeline.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/monitor-pipeline.png" alt-text="パイプラインの実行の監視":::
 1. **[検索]** アクティビティの出力を表示するには、 **[アクティビティ名]** 列で、そのアクティビティの横にある **[出力]** リンクをクリックします。 **[出力]** ウィンドウは最大化したり元のサイズに戻したりできます。 確認したら、 **[X]** をクリックして **[出力]** ウィンドウを閉じます。
 
     ```json

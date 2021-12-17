@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 09264f9f20411e7536eb4a1dbf12ac297e7e3ef9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8c35abc680a37c3226872698d85be8853dd892d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675719"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456406"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure と Oracle Cloud Infrastructure 間の直接相互接続をセットアップする  
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 [統合されたマルチクラウド エクスペリエンス](oracle-oci-overview.md)を作成するために、Microsoft と Oracle では、[ExpressRoute](../../../expressroute/expressroute-introduction.md) と [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) を介して、Azure と Oracle Cloud Infrastructure (OCI) 間の直接相互接続を提供しています。 ExpressRoute と FastConnect の相互接続により、お客様は、短い待機時間、高いスループット、2 つのクラウド間の専用直接接続を体験することができます。
 
@@ -29,7 +31,11 @@ ms.locfileid: "101675719"
 
 次の図は、相互接続の概要を示しています。
 
-![クロスクラウド ネットワーク接続](media/configure-azure-oci-networking/azure-oci-connect.png)
+![クロスクラウド ネットワーク接続](https://user-images.githubusercontent.com/37556655/115093592-bced0180-9ecf-11eb-976d-9d4c7a1be2a8.png)
+
+> [!NOTE]
+> 図に示されている ExpressRoute 接続は、通常の [ExpressRoute 回線](../../../expressroute/expressroute-introduction.md)であり、Global Reach などのすべての機能がサポートされます。
+> 
 
 ## <a name="prerequisites"></a>前提条件
 

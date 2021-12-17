@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 59b4f38efde2416687702647031d2b37553ff8ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7bcce4d18f6bcfe299a31dae3eb036bef12da9b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103555159"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729283"
 ---
 # <a name="troubleshoot-vm-insights"></a>VM insights のトラブルシューティング
 この記事では、VM insights の有効化または使用に関する問題が発生した場合のトラブルシューティング情報を提供します。
@@ -39,12 +39,12 @@ Azure portal から Azure 仮想マシンをオンボードすると、次の手
 | オペレーティング システム | エージェント | 
 |:---|:---|
 | Windows | MicrosoftMonitoringAgent<br>Microsoft.Azure.Monitoring.DependencyAgent |
-| Linux | OMSAgentForLinux<br>DependencyAgentForLinux |
+| Linux | OMSAgentForLinux<br>DependencyAgentLinux |
 
 インストールされている拡張機能の一覧に、ご使用のオペレーティング システム用の両方の拡張機能が表示されていない場合は、これらをインストールする必要があります。 拡張機能が一覧に表示されていても、 *[プロビジョニング成功]* の状態が表示されていない場合、拡張機能を削除して再インストールする必要があります。
 
 ### <a name="do-you-have-connectivity-issues"></a>接続の問題が発生していますか?
-Windows マシンの場合、*TestCloudConnectivity* ツールを使用すると、接続に関する問題を識別できます。 このツールは、既定でエージェントと共にフォルダー *%SystemRoot%\Program Files\Microsoft Monitoring Agent\Agent* にインストールされています。 管理者特権のコマンド プロンプトから、このツールを実行します。 結果が返され、テストが失敗した場所が強調表示されます。 
+Windows マシンの場合、*TestCloudConnectivity* ツールを使用すると、接続に関する問題を識別できます。 このツールは、既定ではエージェントと共にフォルダー *%SystemDrive%\Program Files\Microsoft Monitoring Agent\Agent* にインストールされています。 管理者特権のコマンド プロンプトから、このツールを実行します。 結果が返され、テストが失敗した場所が強調表示されます。 
 
 ![TestCloudConnectivity ツール](media/vminsights-troubleshoot/test-cloud-connectivity.png)
 
@@ -61,17 +61,17 @@ Log Analytics エージェントに関する問題のトラブルシューティ
 ### <a name="has-your-log-analytics-workspace-reached-its-data-limit"></a>Log Analytics ワークスペースがデータの上限に達していませんか?
 [データ インジェストの容量予約と価格](https://azure.microsoft.com/pricing/details/monitor/)を確認してください。
 
-### <a name="is-your-virtual-machine-sending-log-and-performance-data-to-azure-monitor-logs"></a>仮想マシンはログおよびパフォーマンス データを Azure Monitor Logs に送信していますか?
+### <a name="is-your-virtual-machine-agent-connected-to-azure-monitor-logs"></a>仮想マシン エージェントは Azure Monitor Logs に接続されていますか?
 
 Azure portal で、[Azure Monitor] メニューの **[ログ]** から Log Analytics を開きます。 コンピューターに対して次のクエリを実行します。
 
 ```kuso
-Usage 
-| where Computer == "my-computer" 
-| summarize sum(Quantity), any(QuantityUnit) by DataType
+Heartbeat
+| where Computer == "my-computer"
+| sort by TimeGenerated desc 
 ```
 
-データが表示されない場合は、エージェントに問題がある可能性があります。 エージェントのトラブルシューティング情報については、上記のセクションを参照してください。
+データが表示されない場合、またはコンピューターから最近ハートビートが送信されていない場合は、エージェントに問題がある可能性があります。 エージェントのトラブルシューティング情報については、上記のセクションを参照してください。
 
 ## <a name="virtual-machine-doesnt-appear-in-map-view"></a>仮想マシンがマップ ビューに表示されない
 

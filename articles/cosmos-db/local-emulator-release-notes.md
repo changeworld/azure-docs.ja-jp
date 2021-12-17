@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 442fa1c76d4667a54f1c13b411b1c052c9a5b134
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b87f9cef973be22397773ed11701362662f34793
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566644"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070985"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB Emulator - リリース ノートとダウンロード情報
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,30 @@ ms.locfileid: "105566644"
 |**開始するには**|[Azure Cosmos DB Emulator を使用してローカルで開発する](local-emulator.md)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2144-25-october-2021"></a>2.14.4 (2021 年10月25日)
+
+ - このリリースでは、Azure Cosmos DB サービスの最新のオンライン機能に一致するように Cosmos Emulator バックグラウンドサービスが更新されます。
+
+### <a name="2143-8-september-2021"></a>2.14.3 (2021 年 9 月 8 日)
+
+ - このリリースでは、Azure Cosmos DB の最新のオンライン機能に一致するように Cosmos Emulator バックグラウンド サービスが更新され、収集されるテレメトリ データに関するいくつかの問題が修正され、Linux Cosmos エミュレーターの Docker イメージの基本イメージがリセットされます。
+
+### <a name="2142-12-august-2021"></a>2.14.2 (2021 年 8 月 12 日)
+
+ - このリリースでは、ローカルの Data Explorer コンテンツが最新 Azure Portal バージョンに更新され、Linux Cosmos エミュレーターの Docker イメージのベースがリセットされます。
+
+### <a name="2141-18-june-2021"></a>2.14.1 (2021 年 6 月 18 日)
+
+ - このリリースでは、エミュレーターの起動時間が短縮され、ディスク上のデータのフットプリントが削減されます。 この新しい最適化は、"/EnablePreview" 引数によってアクティブ化されます。
+
+### <a name="2140-15-june-2021"></a>2.14.0 (2021 年 6 月 15 日)
+
+ - このリリースでは、ローカルの Data Explorer コンテンツが最新 Azure Portal バージョンに更新されます。このリリースでは、JSON ファイルのアップロード機能を使用して、複数のドキュメント項目をインポートする際の既知の問題に対処しています。
+
+### <a name="21113-21-april-2021"></a>2.11.13 (2021 年 4 月 21 日)
+
+ - このリリースでは、ローカルの Data Explorer の内容が最新の Azure portal のバージョンに合わせて更新され、新しい MongoDB エンドポイント構成 "4.0" が追加されています。
 
 ### <a name="21111-22-february-2021"></a>2.11.11 (2021 年 2 月 22 日)
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 50ed473d61dff19f41f77a79513c0ddab521e56f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82b3db8d65093f6cbb4d4a3013c396e5b6caf795
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91325744"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038156"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions のシングルトン オーケストレーター (Azure Functions)
 
@@ -162,7 +162,7 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
     existing_instance = await client.get_status(instance_id)
 
-    if existing_instance != None or existing_instance.runtime_status in ["Completed", "Failed", "Terminated"]:
+    if existing_instance.runtime_status in [df.OrchestrationRuntimeStatus.Completed, df.OrchestrationRuntimeStatus.Failed, df.OrchestrationRuntimeStatus.Terminated, None]:
         event_data = req.get_body()
         instance_id = await client.start_new(function_name, instance_id, event_data)
         logging.info(f"Started orchestration with ID = '{instance_id}'.")
@@ -170,7 +170,7 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
     else:
         return {
             'status': 409,
-            'body': f"An instance with ID '${instance_id}' already exists"
+            'body': f"An instance with ID '${existing_instance.instance_id}' already exists"
         }
 
 ```

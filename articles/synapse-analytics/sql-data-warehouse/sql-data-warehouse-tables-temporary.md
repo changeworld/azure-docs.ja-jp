@@ -2,22 +2,22 @@
 title: 一時テーブル
 description: セッション レベルの一時テーブルの原則を中心に、専用 SQL プールでの一時テーブルの基本的な利用方法について説明します。
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/01/2019
-ms.author: xiaoyul
-ms.reviewer: igorstan
-ms.openlocfilehash: 077782099d6d61982052dc1690d545e58e928d8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
+ms.openlocfilehash: b63b6f017771325dd752905502bd8feb6479f5c4
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93310673"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500718"
 ---
-# <a name="temporary-tables-in-dedicated-sql-pool"></a>専用 SQL プール内の一時テーブル
+# <a name="temporary-tables-in-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール内の一時テーブル
 
 この記事では、セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。 
 
@@ -27,11 +27,9 @@ ms.locfileid: "93310673"
 
 特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 専用 SQL プールでは、一時テーブルはセッション レベルで存在します。  
 
-一時テーブルは、作成されたセッションのみで参照でき、セッションをログオフすると自動的に削除されます。  
+一時テーブルは、作成されたセッションのみで参照でき、セッションが終了すると自動的に削除されます。  
 
 一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。
-
-特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 専用 SQL プールでは、一時テーブルはセッション レベルで存在します。  それが作成されたセッションにのみ表示されます。 そのため、そのセッションがログオフされたときに自動的に削除されます。 
 
 ## <a name="temporary-tables-in-dedicated-sql-pool"></a>専用 SQL プール内の一時テーブル
 
@@ -101,10 +99,8 @@ GROUP BY
 
 > [!NOTE]
 > `CTAS` は強力なコマンドであり、トランザクション ログ領域を効率的に利用するという長所があります。 
-> 
-> 
 
-## <a name="dropping-temporary-tables"></a>一時テーブルを削除する
+## <a name="drop-temporary-tables"></a>一時テーブルを削除する
 新しいセッションが作成されたとき、一時テーブルは存在しません。  
 
 同じストアド プロシージャを呼び出している場合、同じ名前で一時テーブルが作成されるため、`CREATE TABLE` ステートメントを正常に実行するには、次の例のように `DROP` を使用した簡単な既存チェックを使用できます。
@@ -124,7 +120,7 @@ END
 DROP TABLE #stats_ddl
 ```
 
-## <a name="modularizing-code"></a>コードのモジュール化
+## <a name="modularize-code"></a>コードをモジュール化する
 一時テーブルはユーザー セッションのどこでも表示できるため、この機能を利用して、アプリケーション コードをモジュール化できます。  
 
 たとえば、次のストアド プロシージャは、統計の名前でデータベース内のすべての統計を更新する DDL を生成します。
@@ -201,9 +197,9 @@ FROM    #stats_ddl
 GO
 ```
 
-この段階で、発生した唯一のアクションが、DDL ステートメントで一時テーブル #stats_ddl を生成するストアド プロシージャの作成です。  
+この段階で、発生した唯一のアクションが、DDL ステートメントで一時テーブル `#stats_ddl` を生成するストアド プロシージャの作成です。  
 
-セッション内で複数回実行された場合に失敗しないように、このストアド プロシージャでは 既存の #stats_ddl を削除しています。  
+セッション内で複数回実行された場合に失敗しないように、このストアド プロシージャでは既存の `#stats_ddl` を削除しています。  
 
 ただし、ストアド プロシージャの最後に `DROP TABLE` がないため、ストアド プロシージャが実行されると、ストアド プロシージャの外から読み取れるように、作成されたテーブルはそのままになります。  
 

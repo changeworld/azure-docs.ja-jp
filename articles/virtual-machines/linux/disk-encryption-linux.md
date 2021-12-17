@@ -8,15 +8,17 @@ ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f014c07a319cbb07497cba01699b93d092255b93
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: ee1adc5b6964b8583c33b68a9e02bb77cb050f4a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771510"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698550"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 Linux 仮想マシン (VM) に対する Azure Disk Encryption では、Linux の DM-Crypt 機能を使用して、OS ディスクとデータ ディスクの完全なディスク暗号化を提供します。 また、EncryptFormatAll 機能を使用すると、一時的なディスクの暗号化を行うことができます。
 
@@ -81,26 +83,29 @@ Connect-AzAccount
 複数のサブスクリプションがあり、1 つを指定する場合は、[Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) コマンドレットを使用してそれらを一覧表示し、次に [Set-AzContext](/powershell/module/az.accounts/set-azcontext) コマンドレットを使用します。
 
 ```powershell
-Set-AzContext -Subscription -Subscription <SubscriptionId>
+Set-AzContext -Subscription <SubscriptionId>
 ```
 
 [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) コマンドレットを実行すると、正しいサブスクリプションが選択されていることが確認されます。
 
 Azure Disk Encryption コマンドレットがインストールされていることを確認するには、[Get-command](/powershell/module/microsoft.powershell.core/get-command) コマンドレットを使用します。
-     
+
 ```powershell
 Get-command *diskencryption*
 ```
+
 詳細については、「[Azure PowerShell の使用に関するページ](/powershell/azure/get-started-azureps)」を参照してください。 
 
 ## <a name="enable-encryption-on-an-existing-or-running-linux-vm"></a>既存または実行中の Linux VM に対して暗号化を有効にする
+
 このシナリオでは、Resource Manager テンプレート、PowerShell コマンドレット、または CLI コマンドを使用して、暗号化を有効にすることができます。 仮想マシンを拡張するためのスキーマの情報が必要な場合は、[Linux 用 Azure Disk Encryption 拡張機能](../extensions/azure-disk-enc-linux.md)に関する記事を参照してください。
 
 >[!IMPORTANT]
  >Azure Disk Encryption を有効にする前に、Azure Disk Encryption 以外を使用して、マネージド ディスク ベースの VM インスタンスのスナップショットまたはバックアップ (またはその両方) を作成する必要があります。 マネージド ディスクのスナップショットは、ポータルから作成することも、[Azure Backup](../../backup/backup-azure-vms-encryption.md) を使用して作成することもできます。 バックアップがあると、暗号化中に予期しないエラーが発生した場合に、回復オプションを使用できるようになります。 バックアップを作成したら、Set-AzVMDiskEncryptionExtension コマンドレットを使用し、-skipVmBackup パラメーターを指定してマネージド ディスクを暗号化できます。 バックアップが作成されておらず、このパラメーターを指定していない場合、マネージド ディスク ベースの VM に対して、Set-AzVMDiskEncryptionExtension コマンドを実行するとエラーが発生します。 
 >
->暗号化を有効または無効にすると、VM が再起動する場合があります。 
->
+> 暗号化を有効または無効にすると、VM が再起動する場合があります。
+
+暗号化を無効にするには、「[暗号化を無効にし、暗号化拡張機能を削除する](#disable-encryption-and-remove-the-encryption-extension)」を参照してください。
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-using-azure-cli"></a>Azure CLI を使用して既存または実行中の Linux VM で暗号化を有効にする 
 
@@ -129,14 +134,10 @@ key-encryption-key パラメーターの値の構文は、 https://[keyvault-nam
      ```azurecli-interactive
      az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
      ```
-
-- **暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable) コマンドを使用します。 Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
-
-     ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type "data"
-     ```
+暗号化を無効にするには、「[暗号化を無効にし、暗号化拡張機能を削除する](#disable-encryption-and-remove-the-encryption-extension)」を参照してください。
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-using-powershell"></a>PowerShell を使用して既存または実行中の Linux VM で暗号化を有効にする
+
 [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) コマンドレットを使用して、Azure で実行中の仮想マシンで暗号化を有効にします。 ディスクを暗号化する前に、[スナップショット](snapshot-copy-managed-disk.md)の作成または [Azure Backup](../../backup/backup-azure-vms-encryption.md) で VM のバックアップの作成、あるいはその両方を行います。 実行中の Linux VM を暗号化するために、PowerShell スクリプトで -skipVmBackup パラメーターが既に指定されています。
 
 -  **実行中の VM を暗号化する:** 以下のスクリプトでは変数を初期化し、Set-AzVMDiskEncryptionExtension コマンドレットを実行します。 前提条件として、リソース グループ、VM、およびキー コンテナーが作成されている必要があります。 MyVirtualMachineResourceGroup、MySecureVM、MySecureVault を実際の値に置き換えます。 -VolumeType parameter を変更し、暗号化するディスクを指定します。
@@ -178,16 +179,13 @@ key-encryption-key パラメーターの値の構文は、 https://[keyvault-nam
      ```azurepowershell-interactive 
      Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
-    
-- **ディスク暗号化を無効にする:** 暗号化を無効にするには、[Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) コマンドレットを使用します。 Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
-     
-     ```azurepowershell-interactive 
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
-     ```
+
+暗号化を無効にするには、「[暗号化を無効にし、暗号化拡張機能を削除する](#disable-encryption-and-remove-the-encryption-extension)」を参照してください。
+
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-with-a-template"></a>テンプレートを使用して既存または実行中の Linux VM で暗号化を有効にする
 
-Azure 内にある既存または実行中の Linux VM でのディスク暗号化は、[Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)を使用して有効化できます。
+Azure 内にある既存または実行中の Linux VM でのディスク暗号化は、[Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm-without-aad)を使用して有効化できます。
 
 1. Azure クイックスタート テンプレートで、 **[Azure に配置する]** をクリックします。
 
@@ -206,6 +204,8 @@ Azure 内にある既存または実行中の Linux VM でのディスク暗号�
 | location | すべてのリソースの場所。 |
 
 Linux VM ディスク暗号化テンプレートの構成の詳細については、「[Linux 用 Azure Disk Encryption](../extensions/azure-disk-enc-linux.md)」を参照してください。
+
+暗号化を無効にするには、「[暗号化を無効にし、暗号化拡張機能を削除する](#disable-encryption-and-remove-the-encryption-extension)」を参照してください。
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>Linux VM 上のデータ ディスクに対して EncryptFormatAll 機能を使用する
 
@@ -311,14 +311,14 @@ Azure で使用できる事前に暗号化されたイメージを準備する�
 * [事前に暗号化された Linux VHD を準備する](disk-encryption-sample-scripts.md#prepare-a-pre-encrypted-linux-vhd)
 
 >[!IMPORTANT]
- >Azure Disk Encryption を有効にする前に、Azure Disk Encryption 以外を使用して、マネージド ディスク ベースの VM インスタンスのスナップショットまたはバックアップ (またはその両方) を作成する必要があります。 マネージド ディスクのスナップショットは、ポータルから作成できます。[Azure Backup](../../backup/backup-azure-vms-encryption.md) を使用することもできます。 バックアップがあると、暗号化中に予期しないエラーが発生した場合に、回復オプションを使用できるようになります。 バックアップを作成したら、Set-AzVMDiskEncryptionExtension コマンドレットを使用し、-skipVmBackup パラメーターを指定してマネージド ディスクを暗号化できます。 バックアップが作成されておらず、このパラメーターを指定していない場合、マネージド ディスク ベースの VM に対して、Set-AzVMDiskEncryptionExtension コマンドを実行するとエラーが発生します。 
+ >Azure Disk Encryption を有効にする前に、Azure Disk Encryption 以外を使用して、マネージド ディスク ベースの VM インスタンスのスナップショットまたはバックアップ (またはその両方) を作成する必要があります。 マネージド ディスクのスナップショットは、ポータルから作成できます。[Azure Backup](../../backup/backup-azure-vms-encryption.md) を使用することもできます。 バックアップがあると、暗号化中に予期しないエラーが発生した場合に、回復オプションを使用できるようになります。 バックアップを作成したら、Set-AzVMDiskEncryptionExtension コマンドレットを使用し、-skipVmBackup パラメーターを指定してマネージド ディスクを暗号化できます。 バックアップが作成されておらず、このパラメーターを指定していない場合、マネージド ディスク ベースの VM に対して、Set-AzVMDiskEncryptionExtension コマンドを実行するとエラーが発生します。
 >
-> 暗号化を有効または無効にすると、VM が再起動する場合があります。 
+> 暗号化を有効または無効にすると、VM が再起動する場合があります。
 
 
 
 ### <a name="use-azure-powershell-to-encrypt-vms-with-pre-encrypted-vhds"></a>Azure PowerShell を使用して事前に暗号化された VHD で VM を暗号化する 
-PowerShell コマンドレット [Set-AzVMOSDisk](/powershell/module/Az.Compute/Set-AzVMOSDisk#examples) を使用して、暗号化された VHD でディスク暗号化を有効にすることができます。 次の例では、一般的ないくつかのパラメーターを示します。 
+PowerShell コマンドレット [Set-AzVMOSDisk](/powershell/module/Az.Compute/Set-AzVMOSDisk#examples) を使用して、暗号化された VHD でディスク暗号化を有効にすることができます。 次の例では、一般的ないくつかのパラメーターを示します。
 
 ```azurepowershell
 $VirtualMachine = New-AzVMConfig -VMName "MySecureVM" -VMSize "Standard_A1"
@@ -386,9 +386,58 @@ PowerShell 構文とは異なり、CLI では暗号化を有効にする際に�
     >[!NOTE]
     > disk-encryption-keyvault パラメーターの値の構文は、/subscriptions/[subscription-id-guid]/resourceGroups/[KVresource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] という完全な識別子の文字列です。</br> key-encryption-key パラメーターの値の構文は、 https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] という KEK への完全な URI です。 
 
+## <a name="disable-encryption-and-remove-the-encryption-extension"></a>暗号化を無効にし、暗号化拡張機能を削除する
 
-## <a name="disable-encryption-for-linux-vms"></a>Linux VM に対して暗号化を無効にする
-[!INCLUDE [disk-encryption-disable-encryption-cli](../../../includes/disk-encryption-disable-cli.md)]
+
+Azure Disk Encryption 拡張機能を無効にしたり、Azure Disk Encryption 拡張機能を削除したりできます。 これらは 2 つの異なる操作です。
+
+ADE を削除するには、まず暗号化を無効にしてから拡張機能を削除することをお勧めします。 暗号化拡張機能を無効にせずに削除すると、ディスクは暗号化されたままになります。 拡張機能を削除した **後** に暗号化を無効にした場合、(暗号化解除操作を実行するために) 拡張機能は再インストールされ、もう一度削除する必要が生じます。
+
+> [!WARNING]
+> OS ディスクが暗号化されている場合、暗号化を解除することは **できません**。 (元の暗号化操作で volumeType=ALL または volumeType=OS が指定されている場合、OS ディスクは暗号化されています。) 
+>
+> 暗号化を無効にできるのは、データ ディスクが暗号化されていて、OS ディスクが暗号化されていない場合のみです。
+
+### <a name="disable-encryption"></a>暗号化を無効にする
+
+Azure PowerShell、Azure CLI、または Resource Manager テンプレートを使用して暗号化を無効にすることができます。 暗号化を無効にしても、拡張機能は削除 **されません** (「[暗号化拡張機能を削除する](#remove-the-encryption-extension)」を参照してください)。
+
+- **Azure PowerShell を使用してディスク暗号化を無効にする:** 暗号化を無効にするには、[Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) コマンドレットを使用します。
+
+     ```azurepowershell-interactive
+     Disable-AzVMDiskEncryption -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "MySecureVM" -VolumeType "all"
+     ```
+
+- **Azure CLI を使用して暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable) コマンドを使用します。 
+
+     ```azurecli-interactive
+     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type "all"
+     ```
+
+- **Resource Manager テンプレートを使用して暗号化を無効にする:** 
+
+    1. [実行中の Linux VM でディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-linux-vm-without-aad)ためのテンプレートで **[Azure に配置する]** をクリックします。
+    2. サブスクリプション、リソース グループ、場所、VM、ボリュームの種類、法律条項、および契約を選択します。
+    3.  **[購入]** をクリックして、実行中の Linux VM でディスク暗号化を無効にします。
+
+### <a name="remove-the-encryption-extension"></a>暗号化拡張機能を削除する
+
+ディスクの暗号化を解除し、暗号化拡張機能を削除したい場合、拡張機能を削除する **前** に、暗号化を無効にする必要があります。「[暗号化を無効にする](#disable-encryption)」を参照してください。
+
+Azure PowerShell または Azure CLI を使用して、暗号化拡張機能を削除できます。 
+
+- **Azure PowerShell を使用してディスク暗号化を無効にする:** 暗号化を削除するには、[Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) コマンドレットを使用します。
+
+     ```azurepowershell-interactive
+     Remove-AzVMDiskEncryptionExtension -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "MySecureVM"
+     ```
+
+- **Azure CLI を使用して暗号化を無効にする:** 暗号化を削除するには、[az vm extension delete](/cli/azure/vm/extension#az_vm_extension_delete) コマンドを使用します。
+
+     ```azurecli-interactive
+     az vm extension delete -g "MyVirtualMachineResourceGroup" --vm-name "MySecureVM" -n "AzureDiskEncryptionForLinux"
+     ```
+
 
 ## <a name="unsupported-scenarios"></a>サポートされていないシナリオ
 

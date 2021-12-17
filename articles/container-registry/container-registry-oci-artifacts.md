@@ -6,12 +6,12 @@ manager: gwallace
 ms.topic: article
 ms.date: 02/03/2021
 ms.author: stevelas
-ms.openlocfilehash: 399bb001432759556cd0ba8bf15f7738dd4edb7c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dbd64d939f823e8dc7b0cd6d76233b07fce462d9
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781489"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537404"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Azure Container Registry を使用して OCI 成果物をプッシュおよびプルする
 
@@ -183,7 +183,7 @@ az acr build --registry myregistry --image builds/hello-world:v1 \
 
 ## <a name="next-steps"></a>次の手順
 
-* 成果物のマニフェストを構成する方法など、[ORAS ライブラリ](https://github.com/deislabs/oras/tree/master/docs)の詳細について確認する
+* 成果物のマニフェストを構成する方法など、[ORAS ライブラリ](https://github.com/deislabs/oras)の詳細について確認する
 * [OCI 成果物](https://github.com/opencontainers/artifacts)リポジトリを参照して、新しい成果物の型に関するリファレンス情報を確認する
 
 

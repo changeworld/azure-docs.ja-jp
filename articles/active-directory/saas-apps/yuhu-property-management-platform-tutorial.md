@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 51e84e7e3a1e8a800769985e37374abf6d601f5c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 05591a72da0df39e9fad043d3d77b6e30eb97ddb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077399"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789163"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-yuhu-property-management-platform"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Yuhu Property Management Platform の統合
 
@@ -146,7 +146,7 @@ Yuhu Property Management Platform で Azure AD SSO を構成してテストす�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Yuhu Property Management Platform] タイルをクリックすると、SSO を設定した Yuhu Property Management Platform に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Yuhu Property Management Platform] タイルをクリックすると、SSO を設定した Yuhu Property Management Platform に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

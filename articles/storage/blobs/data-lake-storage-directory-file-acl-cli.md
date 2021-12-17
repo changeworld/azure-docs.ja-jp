@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3e9afd4617eb7445ba83948d46eef0890832e2be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8dec2e939c6f39169d4c8fbbdfbcdf08d4d42599
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100650356"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651581"
 ---
 # <a name="use-azure-cli-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Azure CLI を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する
 
@@ -27,7 +27,7 @@ ms.locfileid: "100650356"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- Azure サブスクリプション。 詳細については、[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 - 階層型名前空間が有効になっているストレージ アカウント。 作成するには、[こちら](create-data-lake-storage-account.md)の手順に従います。
 
@@ -43,7 +43,7 @@ ms.locfileid: "100650356"
     az --version
    ```
 
-   Azure CLI のバージョンが `2.6.0` より低い場合は、新しいバージョンをインストールします。 「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
+   Azure CLI のバージョンが `2.6.0` より低い場合は、新しいバージョンをインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する
 
@@ -72,7 +72,7 @@ ms.locfileid: "100650356"
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-コンテナーは、ファイルのファイル システムとして機能します。 `az storage fs create` コマンドを使用して、ファイル システムを作成できます。 
+コンテナーは、ファイルのファイル システムとして機能します。 `az storage fs create` コマンドを使用して、ファイル システムを作成できます。
 
 この例では、`my-file-system` という名前のコンテナーを作成します。
 
@@ -102,7 +102,7 @@ az storage fs file list -f my-file-system --account-name mystorageaccount --auth
 
 `az storage fs delete` コマンドを使用してコンテナーを削除します。
 
-この例では、`my-file-system` という名前のコンテナーを削除します。 
+この例では、`my-file-system` という名前のコンテナーを削除します。
 
 ```azurecli
 az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -110,7 +110,7 @@ az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mo
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
 
-`az storage fs directory create` コマンドを使用して、ディレクトリ参照を作成します。 
+`az storage fs directory create` コマンドを使用して、ディレクトリ参照を作成します。
 
 この例では、`mystorageaccount` という名前のアカウントにある `my-file-system` という名前のコンテナーに `my-directory` という名前のディレクトリを追加します。
 
@@ -146,27 +146,27 @@ az storage fs directory move -n my-directory -f my-file-system --new-directory "
 
 `az storage fs directory delete` コマンドを使用してディレクトリを削除します。
 
-この例では、`my-directory` という名前のディレクトリを削除します。 
+この例では、`my-directory` という名前のディレクトリを削除します。
 
 ```azurecli
-az storage fs directory delete -n my-directory -f my-file-system  --account-name mystorageaccount --auth-mode login 
+az storage fs directory delete -n my-directory -f my-file-system  --account-name mystorageaccount --auth-mode login
 ```
 
 ## <a name="check-if-a-directory-exists"></a>ディレクトリが存在するかどうか確認する
 
 `az storage fs directory exists` コマンドを使用して、コンテナーに特定のディレクトリが存在するかどうかを確認します。
 
-この例では、`my-file-system` コンテナーに、`my-directory` という名前のディレクトリが存在するかどうかを確認します。 
+この例では、`my-file-system` コンテナーに、`my-directory` という名前のディレクトリが存在するかどうかを確認します。
 
 ```azurecli
-az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login 
+az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
 ## <a name="download-from-a-directory"></a>ディレクトリからダウンロードする
 
 `az storage fs file download` コマンドを使用して、ディレクトリからファイルをダウンロードします。
 
-この例では、`my-directory` という名前のディレクトリから `upload.txt` という名前のファイルをダウンロードします。 
+この例では、`my-directory` という名前のディレクトリから `upload.txt` という名前のファイルをダウンロードします。
 
 ```azurecli
 az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\myFolder\download.txt" --account-name mystorageaccount --auth-mode login
@@ -176,7 +176,7 @@ az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\
 
 `az storage fs file list` コマンドを使用して、ディレクトリの内容を一覧表示します。
 
-この例では、`mystorageaccount` という名前のストレージ アカウントの `my-file-system` コンテナーにある `my-directory` という名前のディレクトリの内容を一覧表示します。 
+この例では、`mystorageaccount` という名前のストレージ アカウントの `my-file-system` コンテナーにある `my-directory` という名前のディレクトリの内容を一覧表示します。
 
 ```azurecli
 az storage fs file list -f my-file-system --path my-directory --account-name mystorageaccount --auth-mode login
@@ -184,9 +184,9 @@ az storage fs file list -f my-file-system --path my-directory --account-name mys
 
 ## <a name="upload-a-file-to-a-directory"></a>ファイルをディレクトリにアップロードする
 
-`az storage fs directory upload` コマンドを使用して、ファイルをディレクトリにアップロードします。
+`az storage fs file upload` コマンドを使用して、ファイルをディレクトリにアップロードします。
 
-この例では、`upload.txt` という名前のファイルを `my-directory` という名前のディレクトリにアップロードします。 
+この例では、`upload.txt` という名前のファイルを `my-directory` という名前のディレクトリにアップロードします。
 
 ```azurecli
 az storage fs file upload -s "C:\myFolder\upload.txt" -p my-directory/upload.txt  -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -217,7 +217,7 @@ az storage fs file move -p my-file.txt -f my-file-system --new-path my-file-syst
 この例では、`my-file.txt` という名前のファイルを削除します。
 
 ```azurecli
-az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
+az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login
 ```
 
 ## <a name="see-also"></a>関連項目

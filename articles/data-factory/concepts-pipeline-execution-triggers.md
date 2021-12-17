@@ -1,27 +1,30 @@
 ---
-title: Azure Data Factory でのパイプラインの実行とトリガー
-description: この記事では、オンデマンドで、またはトリガーを作成して、Azure Data Factory でパイプラインを実行する方法に関する情報を提供します。
+title: パイプラインの実行とトリガー
+titleSuffix: Azure Data Factory & Azure Synapse
+description: この記事では、オンデマンドで、またはトリガーを作成して、Azure Data Factory または Azure Synapse Analytics 内でパイプラインを実行する方法に関する情報を提供します。
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 07/05/2018
-ms.openlocfilehash: 271dbd87950018cebbd23841d32324afa42511e7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/09/2021
+ms.custom: devx-track-azurepowershell, synapse
+ms.openlocfilehash: c4aa95ad6f2bf44602b18f875626fa93b1248e13
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785803"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787871"
 ---
-# <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
+# <a name="pipeline-execution-and-triggers-in-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics でのパイプライン実行とトリガー
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-scheduling-and-execution.md)
 > * [現在のバージョン](concepts-pipeline-execution-triggers.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory の "_パイプライン実行_" により、パイプラインの実行のインスタンスが定義されます。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 この場合、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。 実行 ID は、特定のパイプライン実行を一意に定義する GUID です。
+Azure Data Factory および Azure Synapse Analytics の "_パイプライン実行_" により、パイプラインの実行のインスタンスが定義されます。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 この場合、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。 実行 ID は、特定のパイプライン実行を一意に定義する GUID です。
 
 パイプライン実行は、通常、パイプラインで定義したパラメーターに引数を渡してインスタンス化されます。 パイプラインを実行するには、手動で行う方法と "_トリガー_" を使用する方法があります。 この記事では、パイプラインを実行する両方の方法の詳細について説明します。
 
@@ -132,11 +135,11 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 サンプルの詳細については、[.NET SDK を使用してデータ ファクトリを作成する方法のクイック スタート](quickstart-create-data-factory-dot-net.md)に関する記事を参照してください。
 
 > [!NOTE]
-> .NET SDK を使用すると、Azure Functions や Web サービスなどから Data Factory パイプラインを呼び出すことができます。
+> .NET SDK を使用すると、Azure Functions や Web サービスなどからパイプラインを呼び出すことができます。
 
 ## <a name="trigger-execution"></a>トリガー実行
 
-トリガーは、パイプラインの実行を開始するためのもう 1 つの方法です。 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 現時点で、Data Factory では次の 3 種類のトリガーがサポートされています。
+トリガーは、パイプラインの実行を開始するためのもう 1 つの方法です。 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 現時点で、このサービスでは次の 3 種類のトリガーがサポートされています。
 
 - スケジュール トリガー:実時間のスケジュールによってパイプラインを起動するトリガー。
 

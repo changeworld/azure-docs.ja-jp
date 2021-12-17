@@ -1,27 +1,29 @@
 ---
-title: Azure portal でコグニティブ スキルセットを作成する
+title: 'クイック スタート: テキスト翻訳とエンティティ認識'
 titleSuffix: Azure Cognitive Search
-description: このポータル クイックスタートでは、データ インポート ウィザードを使用して、コグニティブ スキルを Azure Cognitive Search のインデックス作成パイプラインに追加する方法について説明します。 スキルには、光学式文字認識 (OCR) と自然言語処理が含まれます。
+description: データのインポート ウィザードと AI コグニティブ スキルを使用して、言語の検出、テキストの翻訳、エンティティの認識を行います。 AI を使用して作成された新しいフィールドは、Azure Cognitive Search インデックス内の検索可能テキストになります。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/21/2021
-ms.openlocfilehash: d3e1b73789d6bd4df3dfe9a0e05048f9bbbb25bb
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.date: 10/07/2021
+ms.openlocfilehash: 01024a829c4e4447cfa7dc642469384170bc99f4
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104770973"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708197"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>クイック スタート:Azure Cognitive Search コグニティブ スキルセットを Azure portal で作成する
+# <a name="quickstart-translate-text-and-recognize-entities-using-the-import-data-wizard"></a>クイック スタート: データのインポート ウィザードを使用してテキストを翻訳し、エンティティを認識する
 
-このクイックスタートでは、ポータルでのスキルセットのサポートについて説明します。ここでは、光学式文字認識 (OCR) とエンティティ認識を使用して、画像やアプリケーション ファイルから検索可能なテキスト コンテンツを作成する方法を示します。
+検索インデックスで検索可能なコンテンツを作成するために、Azure Cognitive Search の AI エンリッチメントによって言語検出、テキスト翻訳、エンティティ認識がどのように追加されるのかについて説明します。 
 
-準備として、いくつかのリソースを作成し、サンプル画像とアプリケーション コンテンツ ファイルをアップロードします。 すべての準備が整ったら、Azure portal の **[データ インポート]** ウィザードを実行して、それをすべてまとめてプルします。 最終的な成果物は、AI 処理によって作成されたデータを投入した検索可能なインデックスで、ポータル ([Search エクスプローラー](search-explorer.md)) から照会することができます。
+このクイックスタートでは、**データのインポート** ウィザードを実行して、スペインにあるいくつかの国立博物館のフランス語とスペイン語の説明を分析します。 出力は、翻訳されたテキストとエンティティを含む検索可能なインデックスであり、[Search エクスプローラー](search-explorer.md)を使用してポータルでクエリを実行できます。 
 
-コードから始める場合は、次のようにします。 「[チュートリアル: REST と AI を使用して Azure BLOB から検索可能なコンテンツを生成する](cognitive-search-tutorial-blob.md)」または「[チュートリアル: .NET と AI を使用して Azure BLOB から検索可能なコンテンツを生成する](cognitive-search-tutorial-blob-dotnet.md)」を参照してください。
+準備として、ウィザードを実行する前に、いくつかのリソースを作成してサンプル ファイルをアップロードします。
+
+コードから始める場合は、次のようにします。 [.NET チュートリアル](cognitive-search-tutorial-blob-dotnet.md)、[Python チュートリアル](cognitive-search-tutorial-blob-python.md)、または [REST チュートリアル](cognitive-search-tutorial-blob-dotnet.md)をお試しください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,28 +33,31 @@ ms.locfileid: "104770973"
 
 + Azure Cognitive Search サービス。 [サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 このクイック スタート用には、無料のサービスを使用できます。 
 
-+ [Blob Storage](../storage/blobs/index.yml) を持つ Azure ストレージ アカウント。
++ Blob Storage を持つ Azure Storage アカウント。 [ストレージ アカウントを作成する](../storage/common/storage-account-create.md?tabs=azure-portal)か、[既存のアカウントを検索します](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 
+
+  + ウィザードでストレージ アカウントを検索して接続を設定する場合は、同じサブスクリプションを選択します。
+  + 帯域幅の料金を避けるため、リージョンは、Azure Cognitive Search と同じものを選択してください。
+  + StorageV2 (汎用 V2) を選択します。
 
 > [!NOTE]
-> また、このクイックスタートでは [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を AI に使用します。 ワークロードは非常に小さいので、最大 20 トランザクションの処理を無料で使用するために Cognitive Services を内部で利用しています。 つまり、追加の Cognitive Services リソースを作成しなくても、この演習を完了できるということです。
+> また、このクイックスタートでは [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を AI に使用します。 ワークロードは非常に小さいので、最大 20 トランザクションの処理を無料で使用するために Cognitive Services を内部で利用しています。 つまり、追加の Cognitive Services リソースを作成しなくても、この演習を完了できるということです。
 
 ## <a name="set-up-your-data"></a>自分のデータを設定する
 
 次の手順では、異種コンテンツ ファイルを格納するために Azure Storage で BLOB コンテナーを設定します。
 
-1. さまざまなタイプの小さいファイル セットで構成されている[サンプル データをダウンロード](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)します。 .zip ファイルを解凍します
+1. GitHub から[サンプル データをダウンロードします](https://github.com/Azure-Samples/azure-search-sample-data)。 データセットは複数存在します。 このクイックスタートでは、**spanish-museums** フォルダー内のファイルを使用します。
 
-1. [Azure Storage アカウントを作成](../storage/common/storage-account-create.md?tabs=azure-portal)するか、[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 
+1. サンプル データを BLOB コンテナーにアップロードします。
 
-   + 帯域幅の料金を避けるため、リージョンは、Azure Cognitive Search と同じものを選択してください。 
+   1. [Azure portal](https://portal.azure.com/) にサインインして、目的のストレージ アカウントを見つけます。
+   1. 左側のナビゲーション ウィンドウで **[コンテナー]** を選択します。
+   1. "spanish-museums" という名前の[コンテナーを作成します](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。 既定のパブリック アクセス レベルを使用します。
+   1. "spanish-museums" コンテナーで、 **[アップロード]** を選択して、ローカルの **spanish-museums** フォルダーからファイルをアップロードします。
 
-   + StorageV2 (汎用 V2) を選択します。
+スペインにある国立博物館のフランス語とスペイン語の説明を含む 10 個のファイルが得られます。
 
-1. Blob service ページを開き、コンテナーを作成します。 既定のパブリック アクセス レベルを使用できます。 
-
-1. コンテナーで **[アップロード]** をクリックして、最初の手順でダウンロードしたサンプル ファイルをアップロードします。 ネイティブ形式ではフルテキスト検索ができない画像やアプリケーション ファイルなど、さまざまな種類のコンテンツがあることがわかります。
-
-   :::image type="content" source="media/cognitive-search-quickstart-blob/sample-data.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/museums-container.png" alt-text="BLOB コンテナー内の docx ファイルの一覧" border="true":::
 
 これでデータ インポート ウィザードに進む準備が整いました。
 
@@ -62,39 +67,35 @@ ms.locfileid: "104770973"
 
 1. [使用する検索サービスを探し](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)、[概要] ページにあるコマンド バーの **[データのインポート]** をクリックして、4 つの手順でコグニティブ エンリッチメントを設定します。
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="[データのインポート] コマンド" border="false":::
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd.png" alt-text="[データのインポート] コマンドのスクリーンショット" border="true":::
 
 ### <a name="step-1---create-a-data-source"></a>手順 1 - データ ソースを作成する
 
-1. **[データへの接続]** で、 **[Azure Blob Storage]** を選択し、作成したストレージ アカウントとコンテナーを選択します。 データ ソースの名前を指定し、残りの部分には既定値を使用します。 
+1. **[データへの接続]** で、 **[Azure Blob Storage]** を選択します。 ストレージ アカウントと作成したコンテナーへの既存の接続を選択します。 データ ソースの名前を指定し、残りの部分には既定値を使用します。 
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Azure BLOB の構成" border="false":::
-
-    次のページに進みます。
+   :::image type="content" source="media/cognitive-search-quickstart-blob/connect-to-spanish-museums.png" alt-text="Azure BLOB の構成" border="true":::
 
 ### <a name="step-2---add-cognitive-skills"></a>手順 2 - コグニティブ スキルを追加する
 
-次に、OCR、画像分析、自然言語処理を呼び出すための AI エンリッチメントを構成します。 
+次に、言語検出、テキスト翻訳、エンティティ認識を呼び出す AI エンリッチメントを構成します。 
 
-1. このクイックスタートでは、**無料** の Cognitive Services リソースを使用します。 サンプル データは 14 個のファイルで構成されているため、このクイックスタートでは、Cognitive Services の無料枠である 20 トランザクションで十分間に合います。 
+1. このクイックスタートでは、**無料** の Cognitive Services リソースを使用します。 サンプル データは 10 個のファイルで構成されているため、このクイックスタートでは、Cognitive Services でのインデクサーあたり 1 日に 20 件の無料トランザクションの割り当てで十分間に合います。 
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="[Cognitive Services をアタッチする] でのベース サービスのアタッチ" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/free-enrichments.png" alt-text="無料の Cognitive Services 処理をアタッチする" border="true":::
 
-1. **[エンリッチメントの追加]** を展開して、選択項目 4 か所について設定を行います。 
+1. 同じページで、 **[エンリッチメントの追加]** を展開し、5 つの選択を行います。
 
-   画像分析スキルをウィザード ページに追加するために OCR を有効にします。
+   エンティティの認識 (人物、組織、場所) を選択する
 
-   テキストをより小さなチャンクに分割するために、粒度を "ページ" に設定します。 いくつかのテキスト スキルは、入力が 5 KB に制限されます。
+   言語検出とテキスト翻訳を選択する
 
-   エンティティの認識 (人物、組織、場所) と画像分析スキルを選択します。
+   :::image type="content" source="media/cognitive-search-quickstart-blob/select-entity-lang-enrichments.png" alt-text="[Cognitive Services をアタッチする] でのスキルセットのサービスの選択" border="true":::
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="[Cognitive Services をアタッチする] でのスキルセットのサービスの選択" border="false":::
-
-   次のページに進みます。
+   BLOB では、[Content]\(コンテンツ\) フィールドにファイルの内容が含まれています。 サンプル データでは、コンテンツは特定の博物館に関するフランス語またはスペイン語の複数の段落です。 "粒度" はフィールド自体です。 一部のスキルはテキストの小さなチャンクの方がうまく機能しますが、このクイックスタートのスキルでは、フィールドの粒度で十分です。
 
 ### <a name="step-3---configure-the-index"></a>手順 3 - インデックスを構成する
 
-検索可能なコンテンツがインデックスに格納され、**データ インポート** ウィザードでは通常、データ ソースをサンプリングすることによってスキーマを自動的に作成することができます。 この手順では、生成されたスキーマを確認し、必要であれば設定に変更を加えます。 以下は、デモの BLOB データ セット用に作成された既定のスキーマです。
+検索可能なコンテンツがインデックスに格納され、**データ インポート** ウィザードでは通常、データをサンプリングすることによってスキーマを自動的に推論することができます。 この手順では、生成されたスキーマを確認し、必要であれば設定に変更を加えます。 以下は、デモのデータ セット用に作成された既定のスキーマです。
 
 このクイックスタートでは、ウィザードによって妥当な既定値が適切に設定されます。  
 
@@ -104,15 +105,11 @@ ms.locfileid: "104770973"
 
 + これらのフィールドの既定の属性は **[取得可能]** と **[検索可能]** です。 **[検索可能]** は、フィールドのフルテキスト検索を許可します。 **[取得可能]** は、フィールド値を結果で取得できることを意味します。 これらのフィールドはスキルセットを介して作成されていることから、取得可能かつ検索可能にするのがユーザーの意図であると見なされます。
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="インデックスのフィールド" border="false":::
++ [言語] に対してフィルター可能なチェック ボックスをオンにします。 ウィザードではフォルダーが自動的に設定されませんが、このデモでは複数の言語があるため、言語によるフィルター機能が役立ちます。
 
-`content` フィールドの近くにある **[取得可能]** 属性の取り消し線と疑問符に注目してください。 テキスト量の多い BLOB ドキュメントでは、`content` フィールドにファイルの大部分が格納され、それは数千行にも及ぶ可能性があります。 このようなフィールドは、検索結果では扱いにくく、このデモでは除外する必要があります。 
+  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields-lang-entities.png" alt-text="インデックスのフィールド" border="true":::
 
-ただし、ファイルの内容をクライアント コードに渡す必要がある場合は必ず、 **[取得可能]** をオンにしておいてください。 それ以外の場合、抽出された要素 (`people`、`organizations`、`locations` など) だけで問題がなければ、この `content` の属性はオフにすることを検討してください。
-
-フィールドを **[取得可能]** としてマークしたからといって、このフィールドが検索結果に "*必ず*" 存在するという意味ではありません。 検索結果の構成は、対象となるフィールドを **$select** クエリ パラメーターを使用して指定することにより、厳密に制御することができます。 テキスト量の多いフィールド (`content` など) には、 **$select** パラメーターが役立ちます。アプリケーションのユーザーには扱いやすい検索結果を提供しつつ、クライアント コードからは必要なすべての情報にアクセスできる状態を **[取得可能]** 属性で確保できます。
-  
-次のページに進みます。
+フィールドを **[取得可能]** としてマークしたからといって、このフィールドが検索結果に "*必ず*" 存在するという意味ではありません。 検索結果の構成は、対象となるフィールドを **$select** クエリ パラメーターを使用して指定することにより、厳密に制御することができます。 テキスト量の多いフィールド (`content` など) には、 **$select** パラメーターが役立ちます。アプリケーションのユーザーには扱いやすい検索結果を提供しつつ、クライアント コードでは必要なすべての情報に **[取得可能]** 属性からアクセスできます。
 
 ### <a name="step-4---configure-the-indexer"></a>手順 4 - インデクサーを構成する
 
@@ -120,27 +117,17 @@ ms.locfileid: "104770973"
 
 1. **[インデクサー]** ページで、既定の名前を受け入れ、**一度だけ** 実行するスケジュール オプションをクリックすれば、即時にこれを実行できます。 
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="インデクサーの定義" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-spanish-museum.png" alt-text="インデクサーの定義" border="true":::
 
 1. **[送信]** をクリックして、インデクサーを作成し、同時に実行します。
 
 ## <a name="monitor-status"></a>状態を監視する
 
-コグニティブ スキル、特に OCR と画像分析のインデックス作成は、一般的なテキストベースのインデックス作成よりも完了までに時間がかかります。 進行状況を監視するには、概要ページに移動して、ページの中央にある **[インデクサー]** をクリックします。
+コグニティブ スキルのインデックス作成は、一般的なテキストベースのインデックス作成よりも完了までに時間がかかります。 進行状況を監視するには、概要ページに移動して、ページの中央にある **[インデクサー]** タブを選択します。
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Azure Cognitive Search による通知" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-status-spanish-museums.png" alt-text="インデクサーの状態" border="true":::
 
-多様なコンテンツ タイプを考えると、警告は正常です。 一部のコンテンツ タイプは特定のスキルでは無効であり、低いレベルでは[インデクサーの制限](search-limits-quotas-capacity.md#indexer-limits)に遭遇することがよくあります。 たとえば、Free レベルでは、インデクサーの制限として 32,000 文字の切り捨てが通知されます。 それよりも高いレベルでこのデモを実行した場合、切り捨てに関する警告の多くは消えます。
-
-警告またはエラーを確認するには、インデクサー一覧で警告状態をクリックし、[実行履歴] ページを開いてください。
-
-そのページで警告状態をもう一度クリックすると、以下に示したような警告が一覧表示されます。 
-
-  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="インデクサーの警告一覧" border="false":::
-
-特定の状態の行をクリックすると、詳細が表示されます。 PDF が大きいために、最大しきい値に達してマージが停止したことがこの警告からわかります。
-
-  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="警告の詳細" border="false":::
+実行状態の詳細を確認するには、一覧からインデクサーを選択します。
 
 ## <a name="query-in-search-explorer"></a>Search エクスプローラーでクエリを実行する
 
@@ -150,43 +137,30 @@ ms.locfileid: "104770973"
 
 1. 一番上にある **[インデックスの変更]** を選択して、作成したインデックスを選択します。
 
-1. インデックスのクエリを実行する検索文字列 (`search=Microsoft&$select=people,organizations,locations,imageTags` など) を入力します。
+1. [クエリ文字列] に、インデックスのクエリを実行する検索文字列 (例: `search="picasso museum" &$select=people,organizations,locations,language,translated_text &$count=true &$filter=language eq 'fr'`) を入力し、 **[検索]** を選択します。
+
+   :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer-query-string-spanish-museums.png" alt-text="検索エクスプローラーのクエリ文字列" border="true":::
 
 結果は JSON として返されます。これは、Azure BLOB から送信された大きいドキュメントでは特に、詳細で読み取りにくい場合があります。 このツールで検索するためのいくつかのヒントを次に示します。
 
 + `$select` を追加して、結果に含めるフィールドを指定します。 
 + JSON 内で特定のプロパティまたは用語を検索するには、Ctrl + F キーを押します。
 
+  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer-results-spanish-museums.png" alt-text="Search エクスプローラーの例" border="true":::
+
 クエリ文字列は大文字と小文字が区別されます。"不明なフィールド" というメッセージが返された場合は、 **[フィールド]** または **[インデックス定義 (JSON)]** をチェックして名前と大文字と小文字の区別を確認してください。 
-
-  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Search エクスプローラーの例" border="false":::
-
-## <a name="takeaways"></a>重要なポイント
-
-初めてのスキルセットの作成を通じて、独自のデータを使って、エンリッチメントされた検索ソリューションのプロトタイプを作成するために役立つ重要な概念を見てきました。
-
-習得していただきたい主な概念には、Azure データ ソースの依存関係が含まれます。 スキルセットはインデクサーにバインドされ、インデクサーは Azure とソースに固有です。 このクイックスタートでは Azure Blob Storage を使用していますが、他の Azure データ ソースも使用可能です。 詳細については、[Azure Cognitive Search のインデクサー](search-indexer-overview.md)に関するページを参照してください。 
-
-もう 1 つの重要な概念は、スキルがさまざまな種類のコンテンツにわたって動作するため、異種コンテンツで使用すると、いくつかの入力がスキップされるということです。 また、ファイルまたはフィールドが大きいと、ご利用のサービス レベルのインデクサーの制限を超過してしまう可能性があります。 そうした状況で警告が発生するのは異常ではありません。 
-
-出力は、検索インデックスに送られます。また、インデックス作成時に作成される名前と値の組と、インデックス内の個々のフィールドとの間にはマッピングが存在します。 内部的には、Portal が[注釈](cognitive-search-concept-annotations-syntax.md)を設定し、[スキルセット](cognitive-search-defining-skillset.md)を定義して、操作と一般的なフローの順序を確立します。 これらの手順は Portal には表示されませんが、コードの記述を開始するときは、これらの概念が重要になります。
-
-最後に、インデックスに対してクエリを実行することで内容を確認できることを学習しました。 最終的に、Azure Cognitive Search が提供するものは、[単純](/rest/api/searchservice/simple-query-syntax-in-azure-search)または[完全に拡張されたクエリ構文](/rest/api/searchservice/lucene-query-syntax-in-azure-search)のいずれかを使用してクエリを実行できる、検索可能なインデックスです。 エンリッチされたフィールドを含むインデックスは、他のフィールドと同様です。 標準または[カスタム アナライザー](search-analyzers.md)、[スコアリング プロファイル](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[シノニム](search-synonyms.md)、[ファセット フィルター](search-filters-facets.md)、地理空間検索、またはその他の Azure Cognitive Search 機能を組み込みたい場合は、確実に実行できます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
+ポータルの左側のナビゲーション ウィンドウにある **[All resources]\(すべてのリソース\)** または **[Resource groups]\(リソース グループ\)** リンクを使って、リソースを検索および管理できます。
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 
 ## <a name="next-steps"></a>次のステップ
 
-スキルセットは、ポータル、.NET SDK、または REST API を使用して作成できます。 さらに知識を深めたければ、Postman と他のサンプル データを使って REST API を試してみてください。
+Cognitive Search には、データのインポート ウィザードで実行できるその他の組み込みのスキルがあります。 次の手順では、OCR とイメージ分析のスキルを使用して、画像ファイルからテキスト検索可能なコンテンツを作成してみてください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:REST API を使用して JSON BLOB からテキストと構造を抽出する](cognitive-search-tutorial-blob.md)
-
-> [!Tip]
-> ここに示した手順をもう一度やってみたい場合や、別の AI エンリッチメントに関するチュートリアルに挑戦してみたい場合には、ポータルからインデクサーを削除してください。 インデクサーを削除すると、Cognitive Services の処理に関する 1 日あたりの無料トランザクションのカウンターがリセットされ、ゼロに戻ります。
+> [クイックスタート: OCR とイメージ分析を使用して検索可能なコンテンツを作成する](cognitive-search-quickstart-ocr.md)

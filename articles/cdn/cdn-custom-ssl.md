@@ -2,18 +2,18 @@
 title: チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 description: このチュートリアルでは、Azure CDN エンドポイント カスタム ドメインで HTTPS を有効および無効にする方法について説明します。
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: tutorial
 ms.date: 03/26/2021
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 6f77bac93b7bb5e3319409c01e328c73cd08a9a0
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: d6a56aecaf8110118081e8c79e86bae5c277d992
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058954"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458686"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -104,13 +104,16 @@ Azure CDN は、調達や更新などの証明書管理タスクを処理しま�
 > このオプションは、**Azure CDN from Microsoft** および **Azure CDN from Verizon** プロファイルでのみ利用できます。 
 >
  
-独自の証明書を使用して、HTTPS 機能を有効にできます。 このプロセスは、Azure Key Vault との統合を通じて行われます。これにより、お使いの証明書を安全に格納できます。 Azure CDN では、お使いの証明書の取得に、セキュリティで保護されたこのメカニズムが使用されます。それには、追加の手順がいくつか必要です。 TLS/SSL 証明書を作成するときには、許可された証明機関 (CA) を使用して作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。 許可された CA の一覧については、「[Allowed certificate authorities for enabling custom HTTPS on Azure CDN](cdn-troubleshoot-allowed-ca.md)」(Azure CDN でカスタム HTTPS を有効にするために許可された認証機関) を参照してください。 **Azure CDN from Verizon** の場合には、有効な CA であればどれでも利用できます。 
+独自の証明書を使用して、HTTPS 機能を有効にできます。 このプロセスは、Azure Key Vault との統合を通じて行われます。これにより、お使いの証明書を安全に格納できます。 Azure Front Door では、お使いの証明書の取得に、セキュリティで保護されたこのメカニズムが使用されます。それには、追加の手順がいくつか必要です。 TLS/SSL 証明書を作成する場合は、[Microsoft の信頼された CA リスト](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)の一部である許可された証明機関 (CA) を使用した完全な証明書チェーンを作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。  完全なチェーンを持たない証明書が提示された場合、その証明書が関係する要求は、期待通り動作することが保証されません。 Azure CDN from Verizon の場合には、有効な CA であればどれでも利用できます。
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Azure Key Vault のアカウントと証明書を準備する
  
 1. Azure Key Vault: カスタム HTTPS を有効にする Azure CDN プロファイルおよび CDN エンドポイントと同じサブスクリプションで、Azure Key Vault アカウントを実行している必要があります。 Azure Key Vault アカウントがない場合は作成します。
  
 2. Azure Key Vault 証明書: 証明書を既にお持ちの場合には、Azure Key Vault アカウントに直接アップロードします。 証明書をまだお持ちでない場合には、Azure Key Vault から直接新しい証明書を作成します。
+
+> [!NOTE]
+> 証明書にはリーフと中間の証明書を含む完全な証明書チェーンが必要であり、ルート CA は [Microsoft の信頼された CA リスト](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)の一部である必要があります。
 
 ### <a name="register-azure-cdn"></a>Azure CDN を登録する
 
@@ -146,21 +149,20 @@ Azure Key Vault アカウント内の証明書 (シークレット) にアクセ
 
 2. **[アクセス ポリシーの追加]** ページで、 **[プリンシパルの選択]** の隣にある **[選択されていません]** を選択します。 **[プリンシパル]** ページで「**205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**」と入力します。 **[Microsoft.AzureFrontdoor-Cdn]** を選択します。  **[選択]** を選択します。
 
-2. **[プリンシパルの選択]** で、**205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** を検索し、 **[Microsoft.AzureFrontDoor-Cdn]** を選択します。 **[選択]** を選択します。
+3. **[プリンシパルの選択]** で、**205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** を検索し、 **[Microsoft.AzureFrontDoor-Cdn]** を選択します。 **[選択]** を選択します。
 
     :::image type="content" source="./media/cdn-custom-ssl/cdn-access-policy-settings.png" alt-text="Azure CDN のサービス プリンシパルを選択する" border="true":::
     
-3. **[証明書のアクセス許可]** を選択します。 **[取得]** と **[一覧]** のチェック ボックスをオンにします。これにより、CDN に証明書の取得および一覧表示のためのアクセス許可が付与されます。
+4. **[証明書のアクセス許可]** を選択します。 **[取得]** と **[一覧]** のチェック ボックスをオンにします。これにより、CDN に証明書の取得および一覧表示のためのアクセス許可が付与されます。
 
-4. **[シークレットのアクセス許可]** を選択します。 **[取得]** と **[一覧]** のチェック ボックスをオンにします。これにより、CDN にシークレットの取得および一覧表示のためのアクセス許可が付与されます。
+5. **[シークレットのアクセス許可]** を選択します。 **[取得]** と **[一覧]** のチェック ボックスをオンにします。これにより、CDN にシークレットの取得および一覧表示のためのアクセス許可が付与されます。
 
     :::image type="content" source="./media/cdn-custom-ssl/cdn-vault-permissions.png" alt-text="キーコンテナーに対する CDN のアクセス許可を選択する" border="true":::
 
-5. **[追加]** を選択します。 
+6. **[追加]** を選択します。 
 
 > [!NOTE]
-> Azure CDN は、このキー コンテナーと、このキー コンテナーに格納されている証明書 (シークレット) にアクセスできるようになりました。 このサブスクリプションに作成されたすべての CDN インスタンスは、このキー コンテナー内の証明書にアクセスできます。 
-
+> Azure CDN は、このキー コンテナーと、このキー コンテナーに格納されている証明書 (シークレット) にアクセスできるようになりました。 このサブスクリプションに作成されたすべての CDN インスタンスは、このキー コンテナー内の証明書にアクセスできます。
  
 ### <a name="select-the-certificate-for-azure-cdn-to-deploy"></a>デプロイする Azure CDN の証明書を選択する
  
@@ -209,7 +211,7 @@ CNAME レコードは、次の形式にする必要があります。
 * "*名前*" はカスタム ドメイン名です。
 * "*値*" は CDN エンドポイントのホスト名です。
 
-| 名前            | 種類  | 値                 |
+| 名前            | Type  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - Azure CLI を使用して BLOB を作成する
+title: 'クイック スタート: BLOB のアップロード、ダウンロード、一覧表示 - Azure CLI'
 titleSuffix: Azure Storage
 description: このクイックスタートでは、Azure CLI を使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行う方法を説明します。
 services: storage
@@ -10,18 +10,16 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 04f793f78cef938c31e7a30aad5569a54eb461a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f4726088a49bfe5da7fdea088df76da3356162e
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104613109"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616552"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する
 
 Azure CLI は、Azure リソースを管理するための、Azure のコマンド ライン エクスペリエンスです。 ブラウザーで、Azure Cloud Shell を使用して操作することができます。 また、macOS、Linux、または Windows 上にインストールし、コマンド ラインから実行することもできます。 このクイック スタートでは、Azure CLI を使用して、Azure Blob Storage との間でデータをアップロードおよびダウンロードする方法を説明します。
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -70,7 +68,7 @@ az storage account create \
 
 BLOB は常にコンテナーにアップロードされます。 コンピューター上のファイルをフォルダーで整理するように、コンテナー内の BLOB のグループを整理できます。 BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container) コマンドで作成します。
 
-次の例では、Azure AD アカウントを使用して、コンテナーの作成操作を承認します。 コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、[Azure CLI を使用したアクセス用の Azure ロールの割り当て](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json)に関するページを参照してください。  
+次の例では、Azure AD アカウントを使用して、コンテナーの作成操作を承認します。 コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、「[BLOB データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)」を参照してください。
 
 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 

@@ -1,19 +1,19 @@
 ---
 title: 'P2S を使用してコンピューターを仮想ネットワークに接続する: 証明書認証:Azure portal (クラシック)'
 titleSuffix: Azure VPN Gateway
-description: Azure portal を使用してクラシックのポイント対サイト VPN Gateway 接続を作成します。
+description: Azure portal を使用してクラシックのポイント対サイト VPN Gateway 接続を作成する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 42b0945de55775f55f20cefdeb547cb5d6492c06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb69f075aa78f84999751f20a10f3eed8d56ced0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94657076"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818098"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>証明書認証 (クラシック) を使用してポイント対サイト接続を構成する
 
@@ -219,6 +219,6 @@ Azure は、ポイント対サイト VPN の VPN クライアントを認証す�
 
 * 接続が完了したら、仮想ネットワークに仮想マシンを追加できます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。
 
-* ネットワークと Linux 仮想マシンに関する詳細を理解するには、[Azure と Linux の VM ネットワークの概要](../virtual-machines/network-overview.md)に関するページを参照してください。
+* ネットワークと Linux 仮想マシンに関する詳細を理解するには、[Azure と Linux の VM ネットワークの概要](../virtual-network/network-overview.md)に関するページを参照してください。
 
 * P2S のトラブルシューティング情報については、[Azure ポイント対サイト接続のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)に関するページを参照してください。

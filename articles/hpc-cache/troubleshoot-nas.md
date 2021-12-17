@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache NFS ストレージ ターゲットのトラブルシューティング
 description: NFS ストレージ ターゲットの作成時にエラーを引き起こす可能性がある、構成エラーやその他の問題を回避および修正するためのヒント
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
-ms.author: v-erkel
-ms.openlocfilehash: ed31a2202a0eacbdc257e127e111d21215c27de4
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.author: femila
+ms.openlocfilehash: 4c2cf6995395e44819a6a63f26609e72d81456e5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258199"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077366"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS 構成および NFS ストレージ ターゲットに関する問題のトラブルシューティング
 
@@ -146,4 +146,4 @@ ACL が使用されたシステムの場合、Azure HPC Cache では、ファイ
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事で説明されていない問題が発生した場合は、[サポート チケットを開いて](hpc-cache-support-ticket.md)、専門家の支援を受けてください。
+この記事で説明されていない問題が発生した場合は、[サポートに問い合わせ](hpc-cache-support-ticket.md)、専門家の支援を受けてください。

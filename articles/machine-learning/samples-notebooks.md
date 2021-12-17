@@ -11,20 +11,19 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 38d0c350718480506e1267c161a85505ece4b69d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: dd8be8174d8834ccad88cd512cefcf4d761a5e2c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452256"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487053"
 ---
-
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter Notebook を使用した Azure Machine Learning について調べます
 
 > [!NOTE] 
 > コミュニティ主導の例のリポジトリについては、 https://github.com/Azure/azureml-examples を参照してください。
 
-[サンプルの Azure Machine Learning Notebooks のリポジトリ](https://github.com/azure/machinelearningnotebooks)には、最新の Azure Machine Learning Python SDK のサンプルが含まれています。 これらの Juypter Notebook は、SDK の探索を支援し、独自の機械学習プロジェクトのモデルとして機能するように設計されています。
+[サンプルの Azure Machine Learning Notebooks のリポジトリ](https://github.com/azure/machinelearningnotebooks)には、最新の Azure Machine Learning Python SDK のサンプルが含まれています。 これらの Jupyter Notebook は、SDK の探索を支援し、独自の機械学習プロジェクトのモデルとして機能するように設計されています。
 
 この記事では、次の環境からこのリポジトリにアクセスする方法を示します。
 
@@ -38,13 +37,13 @@ ms.locfileid: "96452256"
 <a name="notebookvm"></a>
 ## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスでサンプルを取得する
 
-サンプルを開始する最も簡単な方法は、「[チュートリアル:環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了することです。 完了すると、SDK とサンプル リポジトリが事前に読み込まれた専用の Notebook サーバーが用意されます。 ダウンロードやインストールは必要ありません。
+サンプルを体験するには、[Azure Machine Learning の利用開始に関するクイックスタート](quickstart-create-resources.md)に取り組むのが最も簡単です。 完了すると、SDK とサンプル リポジトリが事前に読み込まれた専用の Notebook サーバーが用意されます。 ダウンロードやインストールは必要ありません。
 
 <a name="byo"></a>
 
 ## <a name="get-samples-on-your-notebook-server"></a>ノートブック サーバー上でサンプルを入手する
 
-ローカル開発に独自の Notebook サーバーを使用するには、次の手順に従ってください。
+ローカル開発に独自の Notebook サーバーを使用するには、コンピューターで次の手順に従ってください。
 
 [!INCLUDE [aml-your-server](../../includes/aml-your-server.md)]
 

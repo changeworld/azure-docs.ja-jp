@@ -9,14 +9,17 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 6d803d1a66c069f5eb42deead453a8526577f76b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e883bccf5ed57f1cc300d4000c9bfb9cac91b39b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102615212"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690326"
 ---
 # <a name="errors-that-commonly-occur-during-classic-to-azure-resource-manager-migration"></a>クラシックから Azure Resource Manager への移行中によく発生するエラー
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM
 
 > [!IMPORTANT]
 > 現在、IaaS VM の約 90% で [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) が使用されています。 2020 年 2 月 28 日の時点で、クラシック VM は非推奨とされており、2023 年 3 月 1 日に完全に廃止されます。 この非推奨の[詳細]( https://aka.ms/classicvmretirement)および[それが与える影響](classic-vm-deprecation.md#how-does-this-affect-me)について確認してください。
@@ -35,14 +38,14 @@ ms.locfileid: "102615212"
 | HostedService {hosted-service-name} 内の VM {vm-name} に、Azure Resource Manager でサポートされない拡張機能 {extension-name} が含まれています。 移行を続行する前に、この拡張機能を VM からアンインストールすることをお勧めします。 |Azure Resource Manager では、BGInfo 1.\* などの XML 拡張機能はサポートされていません。 そのため、これらの拡張機能を移行することはできません。 これらの拡張機能が仮想マシンにインストールされている場合は、移行を完了する前に自動的にアンインストールされます。 |
 | HostedService {hosted-service-name} 内の VM {vm-name} に、移行用に現在サポートされていない拡張機能 VMSnapshot/VMSnapshotLinux が含まれています。 この機能を一度 VM からアンインストールし、移行が完了したら Azure Resource Manager を使って再インストールしてください。 |これは、仮想マシンが Azure Backup 用に構成されるシナリオです。 これは、現時点ではサポートされていないシナリオであるため、 https://aka.ms/vmbackupmigration の回避策に従ってください。 |
 | HostedService {hosted-service-name} の VM {vm-name} には、拡張機能 {extension-name} が含まれています。この拡張機能のステータスについて VM から報告がないため、 この VM を移行できません。 この拡張機能のステータスが報告されるようにするか、VM からこの拡張機能をアンインストールしたうえで、移行をやり直してください。 <br><br> HostedService {hosted-service-name} の VM {vm-name} には、拡張機能 {extension-name} が含まれています。この拡張機能のハンドラー ステータスとして {handler-status} が報告されているため、 この VM を移行できません。 この拡張機能のハンドラー ステータスとして {handler-status} が報告されるようにするか、VM からこの拡張機能をアンインストールしたうえで、移行をやり直してください。 <br><br> HostedService {hosted-service-name} 内の VM {vm-name} 用の VM エージェントが、エージェントの全体的なステータスとして [準備不完了] を報告しています。 そのため、VM に移行可能な拡張機能があっても、VM を移行できません。 VM エージェントがエージェントの全体的なステータスとして [準備完了] を報告していることを確認してください。 [https://aka.ms/classiciaasmigrationfaqs](https://aka.ms/classiciaasmigrationfaqs ) を参照してください。 |Azure ゲスト エージェントと VM 拡張機能では、各自の状態を設定するために VM ストレージ アカウントへの発信インターネット アクセスが必要です。 状態エラーの一般的な原因には、以下が考えられます。 <li> ネットワーク セキュリティ グループがインターネットへの発信アクセスがブロックしている <li> VNET にオンプレミスの DNS サーバーがあるときに DNS 接続が失われている <br><br> サポートされていない状態が解決しない場合は、拡張機能をアンインストールしてこのチェックをスキップし、移行を進めることができます。 |
-| HostedService {hosted-service-name} 内の配置 {deployment-name} には複数の可用性セットがあるため、移行がサポートされません。 |現時点では、1 つ以下の可用性セットを持つホストされるサービスのみを移行できます。 この問題を回避するには、余分な可用性セットと可用性セット内の Virtual Machines を別のホストされるサービスに移動してください。 |
+| 複数の Availabilities Set が存在するため、HostedService {hosted-service-name} の Deployment {deployment-name} は移行できません。 |現時点では、1 つ以下の可用性セットを持つホストされるサービスのみを移行できます。 この問題を回避するには、余分な可用性セットと可用性セット内の Virtual Machines を別のホストされるサービスに移動してください。 |
 | HostedService {hosted-service-name} 内の配置 {deployment-name} に含まれている VM が可用性セットの一部ではないため、HostedService に可用性セットが含まれているとしても、この配置の移行はサポートされません。 |このシナリオの回避策は、すべての仮想マシンを 1 つの可用性セット内に移動するか、ホストされるサービスの可用性セットからすべての仮想マシンを削除することです。 |
 | ストレージ アカウント/HostedService/Virtual Network {virtual-network-name} は移行中のため、変更できません。 |このエラーは、リソースの "準備" 移行処理が完了し、リソースに変更を加える可能性がある操作がトリガーされた場合に発生します。 "準備" 操作の後、管理プレーンはロックされるため、リソースの変更はすべてブロックされます。 管理プレーンのロックを解除するには、"コミット" 移行操作を実行して移行を完了するか、"中止" 移行操作で "準備" 操作をロールバックします。 |
 | 次の状態の VM {vm-name} が存在するため、HostedService {hosted-service-name} の移行は許可されていません:RoleStateUnknown。 VM が [実行中]、[停止済み]、[停止済み (割り当て解除)] のいずれかの状態の場合にのみ、移行が許可されます。 |VM が状態遷移中である可能性があります。通常、この状態は、再起動や拡張機能のインストールなどの HostedService の更新操作を実行しているときに発生します。移行を試行する前に、HostedService の更新操作が完了するまで待つことをお勧めします。 |
 | HostedService {hosted-service-name} のデプロイ {deployment-name} には、物理 BLOB サイズ ({size-of-the-vhd-blob-backing-the-data-disk} バイト) が VM データ ディスクの論理サイズ ({size-of-the-data-disk-specified-in-the-vm-api} バイト) と一致しないデータ ディスク {data-disk-name} を持つ VM {vm-name} が含まれています。 移行は、Azure Resource Manager VM のデータ ディスクのサイズを指定せずに続行されます。 | このエラーは、VM API モデルのサイズを更新せずに VHD の BLOB サイズを変更した場合に発生します。 対応策の詳細な手順を[以下](#vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes)に示します。|
 | クラウド サービス {クラウド サービス名} 内の VM {VM 名} のメディア リンク {データ ディスク URI} を使用してデータ ディスク {データ ディスク名} を検証中にストレージ例外が発生しました。 この仮想マシンが VHD メディア リンクにアクセスできることを確認してください。 | このエラーは、VM のディスクが削除された場合、またはディスクにアクセスできなくなった場合に発生します。 VM のディスクが存在することを確認してください。|
 | HostedService {cloud-service-name} 内の VM {vm-name} に、Azure Resource Manager でサポートされない BLOB 名 {vhd-blob-name} の MediaLink {vhd-uri} があるディスクが含まれています。 | このエラーは、BLOB の名前に "/" が含まれている場合に発生します。この記号は現在、コンピューティング リソース プロバイダーでサポートされていません。 |
-| HostedService {cloud-service-name} 内のデプロイ {deployment-name} はリージョン範囲に含まれていないため、移行することができません。 このデプロイをリージョン範囲に移動する方法については、https:\//aka.ms/regionalscope を参照してください。 | 2014 年、Azure は、ネットワーク リソースをクラスター レベル スコープからリージョン スコープに移動すると発表しました。 詳細については、「[https://aka.ms/regionalscope](https://aka.ms/regionalscope)」を参照してください。 移行中のデプロイで更新操作が行われていない場合に、このエラーが発生します。その場合は、自動的にリージョン スコープに移動されます。 このエラーを回避するには、エンドポイントを VM に追加するか、データ ディスクを VM に追加してから、移行を再試行してください。 <br> [Azure 上でクラシック仮想マシンにエンドポイントをセットアップする方法](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint)または[クラシック デプロイ モデルを使用して作成された仮想マシンにデータ ディスクをアタッチする](./linux/attach-disk-portal.md)に関するページを参照してください。|
+| HostedService {cloud-service-name} 内のデプロイ {deployment-name} はリージョン範囲に含まれていないため、移行することができません。 このデプロイをリージョン範囲に移動する方法については、https:\//aka.ms/regionalscope を参照してください。 | 2014 年、Azure は、ネットワーク リソースをクラスター レベル スコープからリージョン スコープに移動すると発表しました。 詳細については、「[https://aka.ms/regionalscope](https://aka.ms/regionalscope)」を参照してください。 移行中のデプロイで更新操作が行われていない場合に、このエラーが発生します。その場合は、自動的にリージョン スコープに移動されます。 この問題を回避する最も良い方法は、VM にエンドポイントかデータ ディスクを追加してから、もう一度移行を試みることです。 <br> [Azure 上でクラシック仮想マシンにエンドポイントをセットアップする方法](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint)または[クラシック デプロイ モデルを使用して作成された仮想マシンにデータ ディスクをアタッチする](./linux/attach-disk-portal.md)に関するページを参照してください。|
 | Virtual Network {vnet-name} の移行はサポートされていません。この Virtual Network にはゲートウェイ以外の PaaS 展開が含まれいるためです。 | このエラーは、Virtual Network に接続されている Application Gateway サービスや API Management サービスなどのゲートウェイ以外の PaaS デプロイがある場合に発生します。|
 
 
@@ -195,4 +198,4 @@ az vm update -g "myrg" -n "myvm" --set osProfile.Secrets=[]
 * [PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](migration-classic-resource-manager-ps.md)
 * [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](migration-classic-resource-manager-cli.md)
 * [クラシックから Azure Resource Manager への IaaS リソースの移行を支援するコミュニティ ツール](migration-classic-resource-manager-community-tools.md)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行に関してよく寄せられる質問を確認する](migration-classic-resource-manager-faq.md)
+* [クラシックから Azure Resource Manager への IaaS リソースの移行に関してよく寄せられる質問を確認する](migration-classic-resource-manager-faq.yml)

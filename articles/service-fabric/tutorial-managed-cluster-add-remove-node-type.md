@@ -1,16 +1,17 @@
 ---
-title: Service Fabric マネージド クラスターのノード タイプを追加および削除する (プレビュー)
+title: Service Fabric マネージド クラスターのノード タイプを追加および削除する
 description: このチュートリアルでは、Service Fabric マネージド クラスターのノード タイプを追加および削除する方法について説明します。
 ms.topic: tutorial
-ms.date: 09/28/2020
-ms.openlocfilehash: bb33512652677fc4e46d8ba3668dca985bbcfe01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0ce797c5f206378abe3691d895c58afa26282b0c
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791242"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677285"
 ---
-# <a name="tutorial-add-and-remove-node-types-from-a-service-fabric-managed-cluster-preview"></a>チュートリアル:Service Fabric マネージド クラスターのノード タイプを追加および削除する (プレビュー)
+# <a name="tutorial-add-and-remove-node-types-from-a-service-fabric-managed-cluster"></a>チュートリアル: Service Fabric マネージド クラスターのノード タイプを追加および削除する
 
 このチュートリアル シリーズでは、次のことについて説明します。
 

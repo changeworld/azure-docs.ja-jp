@@ -3,19 +3,19 @@ title: Custom Speech のデータ品質を検査する - Speech Services
 titleSuffix: Azure Cognitive Services
 description: Custom Speech には、オーディオ データを対応する認識結果と比較することによって、モデルの認識品質を視覚的に検査するツールがあります。 アップロードされたオーディオを再生し、提供された認識結果が正しいかどうかを判断できます。
 services: cognitive-services
-author: erhopf
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: erhopf
-ms.openlocfilehash: 9ce0d3a06846cbc3aa37ab836564150e6f2c34ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: eur
+ms.openlocfilehash: 98e61fc77077a532c4a49842deba60ba56da82fc
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100362813"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509038"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech データを検査する
 

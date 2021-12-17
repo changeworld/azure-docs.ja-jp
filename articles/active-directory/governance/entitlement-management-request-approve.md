@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fddb3b171e5a26273cb2e0045f11e3a4dbb48c5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f44390d042f12336c6556d05c4fe1332e822e068
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97655103"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963764"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス要求を承認または拒否する
 
@@ -49,7 +49,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 1. **[保留中]** タブで、要求を見つけます。
 
-## <a name="view-requestors-answers-to-questions-preview"></a>質問に対する要求元の回答を表示する (プレビュー)
+## <a name="view-requestors-answers-to-questions"></a>質問に対する要求元の回答を表示する
 
 1. マイ アクセスの **[承認]** タブに移動します。
 
@@ -85,9 +85,9 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 1. **[送信]** をクリックして、決定を送信します。
 
-    ポリシーが複数の承認者によって構成されている場合は、1 人の承認者のみが承認待ちに関する決定を行う必要があります。 承認者がアクセス要求に対する決定を送信した後、要求は完了し、他の承認者は要求を承認することも拒否することもできなくなります。 他の承認者は、マイ アクセス ポータルで要求に関する決定と決定者を確認することができます。 現時点では、1 段階の承認のみがサポートされています。
+    ポリシーがステージ内の複数の承認者によって構成されている場合は、1 人の承認者のみが承認待ちに関する決定を行う必要があります。 承認者がアクセス要求に対する決定を送信した後、要求は完了し、他の承認者は要求を承認することも拒否することもできなくなります。 他の承認者は、マイ アクセス ポータルで要求に関する決定と決定者を確認することができます。
 
-    アクセス要求を承認または拒否できる構成された承認者がいない場合、要求は構成された要求期間後に期限切れとなります。 ユーザーには、アクセス要求の有効期限が切れたことと、アクセス要求を再送信する必要があることが通知されます。
+    ステージで構成されたステージ内の承認者がアクセス要求を承認または拒否できない場合、要求は、構成された要求期間の後に期限切れになります。 ユーザーには、アクセス要求の有効期限が切れたことと、アクセス要求を再送信する必要があることが通知されます。
 
 ## <a name="next-steps"></a>次のステップ
 

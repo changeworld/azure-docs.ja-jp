@@ -4,14 +4,14 @@ description: この記事では、Azure Stream Analytics ジョブをローカ�
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.date: 05/15/2019
+ms.date: 07/21/2021
 ms.topic: how-to
-ms.openlocfilehash: 4f1c0650820a419275ade6095344033b6d81a568
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85b6dece608f47818f2115d0462dd4a56752581f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98013874"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750601"
 ---
 # <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Visual Studio Code で使用する Azure Stream Analytics の詳細 (プレビュー)
 
@@ -20,6 +20,7 @@ Visual Studio Code 用 Azure Stream Analytics 拡張機能は、Stream Analytics
 - ジョブの[作成](quick-create-visual-studio-code.md)、開始、停止
 - 既存のジョブのローカル プロジェクトへのエクスポート
 - ジョブを一覧表示してジョブ エンティティを表示する
+- ジョブ モニターでのジョブ ダイアグラムの表示とデバッグ
 
 ## <a name="export-a-job-to-a-local-project"></a>ジョブのローカル プロジェクトへのエクスポート
 
@@ -41,6 +42,49 @@ Visual Studio Code 用 Azure Stream Analytics 拡張機能は、Stream Analytics
 3. ジョブ ノードを右クリックし、 **[Open Job View in Portal]\(ポータルでジョブ ビューを開く\)** ノードを選択して、Azure portal でジョブ ビューを開きます。
 
    ![[Open Job View in Portal]\(ポータルでジョブ ビューを開く\)](./media/vscode-explore-jobs/open-job-view.png)
+
+## <a name="view-job-diagram-and-debug-in-job-monitor"></a>ジョブ モニターでのジョブ ダイアグラムの表示とデバッグ
+
+Visual Studio Code のジョブ モニターを使用して、Azure Stream Analytics ジョブの表示とトラブルシューティングを行うことができます。
+
+### <a name="view-job-diagram-and-job-summary"></a>ジョブ ダイアグラムとジョブの概要の表示
+1. **[Job Monitor]\(ジョブ モニター\)** を選択します。 ジョブ モニターが表示され、ジョブ ダイアグラムが自動的に読み込まれます。
+   
+   ![ジョブ モニターを開く](./media/vscode-explore-jobs/open-job-monitor.png)
+
+2.  ジョブ ダイアグラムを表示し、 **[ジョブの概要]** をクリックすると、対象のジョブのプロパティと情報が表示されます。 
+
+      ![ジョブの概要を表示する](./media/vscode-explore-jobs/view-jobs-summary.png)
+
+3.  **[接続テスト]** ボタンをクリックすると、対象の入力と出力への接続をテストできます。
+
+      ![接続をテスト](./media/vscode-explore-jobs/test-connection.png)
+
+4.  また、 **[Locate Script]\(スクリプトの検索\)** ボタンをクリックすると、対象のクエリを表示できます。
+   
+      ![クエリを表示する](./media/vscode-explore-jobs/view-query.png)
+
+### <a name="monitor-and-debug-with-metrics"></a>メトリックを使用した監視とデバッグ
+
+1.  矢印ボタンをクリックすると、[メトリック] パネルが開きます。
+
+      ![[メトリック] パネルを開く](./media/vscode-explore-jobs/open-metrics-panel.png)
+
+2.  これを操作し、グラフに示されている主要なメトリックを使用して、対象のジョブを分析できます。 ジョブレベルのメトリックまたはノード レベルのメトリックを表示できます。 また、グラフに表示するメトリックを選択することもできます。
+
+      ![メトリックを表示する](./media/vscode-explore-jobs/view-metrics.png)
+
+### <a name="debug-with-diagnostic-logs-and-activity-logs"></a>診断ログとアクティビティ ログを使用したデバッグ
+
+トラブルシューティングのために、ジョブの診断ログとアクティビティ ログを表示できます。
+
+1. **[診断ログ]** タブを選択します。
+
+   ![診断ログを表示する](./media/vscode-explore-jobs/view-diagnostic-log.png)
+
+2. **[アクティビティ ログ]** タブを選択します 
+
+   ![アクティビティ ログを表示する](./media/vscode-explore-jobs/view-activity-logs.png)
 
 ## <a name="next-steps"></a>次のステップ
 

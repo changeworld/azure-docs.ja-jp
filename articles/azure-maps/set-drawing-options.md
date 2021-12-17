@@ -6,19 +6,17 @@ ms.author: v-stharr
 ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 95a04d763fa5982181cc1c797bce969d9857ae4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd861e4ab92235ec4f2b3ec8051e854a08effd3c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92890634"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072372"
 ---
 # <a name="use-the-drawing-tools-module"></a>描画ツール モジュールを使用する
 
-Azure Maps の Web SDK は、*描画ツール モジュール* を提供しています。 このモジュールを使用すると、マウスやタッチ スクリーンなどの入力デバイスを使用して、マップ上で簡単に図形の描画や編集ができます。 このモジュールのコア クラスは、[描画マネージャー](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)です。 描画マネージャーにより、マップ上で図形を描画したり編集したりするために必要なすべての機能が提供されます。 これは直接使用することができ、カスタム ツール バーの UI に統合されています。 組み込みの[描画ツール バー](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) クラスを使用することもできます。 
+Azure Maps の Web SDK は、*描画ツール モジュール* を提供しています。 このモジュールを使用すると、マウスやタッチ スクリーンなどの入力デバイスを使用して、マップ上で簡単に図形の描画や編集ができます。 このモジュールのコア クラスは、[描画マネージャー](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)です。 描画マネージャーにより、マップ上で図形を描画したり編集したりするために必要なすべての機能が提供されます。 これは直接使用することができ、カスタム ツール バーの UI に統合されています。 組み込みの[描画ツール バー](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) クラスを使用することもできます。
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>Web ページへの描画ツール モジュールの読み込み
 
@@ -27,20 +25,20 @@ Azure Maps の Web SDK は、*描画ツール モジュール* を提供して�
     - グローバルにホストされている Azure Maps サービス モジュールの Azure Content Delivery Network のバージョンを使用します。 ファイルの `<head>` 要素に JavaScript および CSS スタイルシートへの参照を追加します。
 
         ```html
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.css" type="text/css" />
-        <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/1/atlas-drawing.min.css" type="text/css" />
+        <script src="https://atlas.microsoft.com/sdk/javascript/drawing/1/atlas-drawing.min.js"></script>
         ```
 
     - または、[azure-maps-drawing-tools](https://www.npmjs.com/package/azure-maps-drawing-tools) npm パッケージを使用して、Azure Maps Web SDK ソース コード用の描画ツール モジュールをローカルに読み込み、アプリを使用してそれをホストできます。 このパッケージには TypeScript 定義も含まれています。 次のコマンドを実行します。
-    
-        > **npm install azure-maps-drawing-tools**
-    
-        次に、ファイルの `<head>` 要素に JavaScript および CSS スタイルシートへの参照を追加します。
 
-         ```html
-        <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.css" type="text/css" />
-        <script src="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.js"></script>
-         ```
+      `npm install azure-maps-drawing-tools`
+
+      次に、ファイルの `<head>` 要素に JavaScript および CSS スタイルシートへの参照を追加します。
+
+      ```html
+      <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.css" type="text/css" />
+      <script src="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.js"></script>
+      ```
 
 ## <a name="use-the-drawing-manager-directly"></a>描画マネージャーを直接使用する
 
@@ -61,7 +59,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="多角形を描画する" src="//codepen.io/azuremaps/embed/YzKVKRa/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="多角形を描画する" src="//codepen.io/azuremaps/embed/YzKVKRa/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>Draw a polygon</a>」Pen を参照してください。
 </iframe>
 
@@ -88,7 +86,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="フリーハンドの描画" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="フリーハンドの描画" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>Free-hand drawing</a>」Pen を参照してください。
 </iframe>
 
@@ -99,9 +97,67 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 
 <br/>
 
-<iframe height="685" title="描画マネージャーをカスタマイズする" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>Get shape data</a>」Pen を参照してください。
+<iframe height="685" title="描画マネージャーをカスタマイズする" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>Get shape data</a>」Pen を参照してください。
 </iframe>
 
+
+### <a name="put-a-shape-into-edit-mode"></a>シェイプを編集モードにする
+
+既存のシェイプを描画マネージャーの `edit` 関数に渡すことにより、プログラムでそれを編集モードにします。 シェイプが GeoJSON の機能の場合は、渡す前に `atls.Shape` クラスでラップします。
+
+プログラムでシェイプの編集モードを解除するには、描画マネージャーのモードを `idle` に設定します。
+
+```javascript
+//If you are starting with a GeoJSON feature, wrap it with the atlas.Shape class.
+var feature = { 
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0,0]
+        },
+    "properties":  {}
+};
+
+var shape = new atlas.Shape(feature);
+
+//Pass the shape into the edit function of the drawing manager.
+drawingManager.edit(shape);
+
+//Later, to programmatically take shape out of edit mode, set mode to idle. 
+drawingManager.setOptions({ mode: 'idle' });
+```
+
+> [!NOTE]
+> 描画マネージャーの `edit` 関数に渡されたシェイプは、描画マネージャーによって保持されているデータ ソースに追加されます。 シェイプが以前は別のデータ ソースにあった場合は、そのデータ ソースから削除されます。
+
+シェイプを描画マネージャーに追加して、エンド ユーザーにはその表示と編集を許可し、プログラムではそれを編集モードにできないようにするには、描画マネージャーからデータ ソースを取得して、シェイプをそれに追加します。
+
+```javascript
+//The shape(s) you want to add to the drawing manager so 
+var shape = new atlas.Shape(feature);
+
+//Retrieve the data source from the drawing manager.
+var source = drawingManager.getSource();
+
+//Add your shape.
+source.add(shape);
+
+//Alternatively, load in a GeoJSON feed using the sources importDataFromUrl function.
+source.importDataFromUrl('yourFeatures.json');
+```
+
+次の表では、さまざまな種類のシェイプ機能でサポートされる編集の種類を示します。
+
+| シェイプの機能 | 点の編集 | Rotate | シェイプの削除 |
+|---------------|:-----------:|:------:|:------------:|
+| ポイント         | ✓           |        | ✓           |
+| LineString    | ✓           | ✓      | ✓           |
+| 多角形       | ✓           | ✓      | ✓           |
+| MultiPoint    |             | ✓      | ✓           |
+| MultiLineString |           | ✓      | ✓           |
+| MultiPolygon  |             | ✓      | ✓           |
+| Circle        | ✓           |        | ✓           |
+| Rectangle     | ✓           | ✓      | ✓           |
 
 ## <a name="next-steps"></a>次のステップ
 

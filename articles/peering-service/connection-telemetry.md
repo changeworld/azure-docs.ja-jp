@@ -1,42 +1,63 @@
 ---
-title: Azure Peering Service 接続テレメトリ
-description: Microsoft Azure Peering Service 接続テレメトリの詳細
+title: 'Azure Peering Service: 接続テレメトリにアクセスする方法 '
+description: このチュートリアルでは、接続テレメトリにアクセスする方法について説明します。
 services: peering-service
-author: derekolo
+author: gthareja
 ms.service: peering-service
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 05/18/2020
-ms.author: derekol
-ms.openlocfilehash: 0e54b20cc6aefa69226c24f557ae02166dc4b4b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: tutorial
+ms.date: 04/06/2021
+ms.author: gatharej
+ms.openlocfilehash: 2b019596c87ef3beca1ff26a9366250d188bdfbc
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84871302"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202679"
 ---
-# <a name="peering-service-connection-telemetry"></a>Peering Service 接続テレメトリ
+# <a name="tutorial-accessing-peering-service-connection-telemetry"></a>チュートリアル: Peering Service 接続テレメトリにアクセスする
 
-接続テレメトリは、お客様の場所と Microsoft ネットワークの間の接続に関して収集された分析情報を提供します。 お客様は、Azure portal で接続を登録することで、Azure Peering Service 接続のテレメトリを取得できます。 この機能により、ネットワーク パフォーマンスのプレフィックスのセキュリティと分析情報が得られます。
+ このチュートリアルでは、Peering Service 接続のテレメトリにアクセスする方法について説明します。
+ 
+ 接続テレメトリは、お客様の場所と Microsoft ネットワークの間の接続に関して収集された分析情報を提供します。 この記事では、特定の Azure Peering Service 接続の待ち時間レポートとプレフィックスの状態を表示する方法について説明します。 
+
+Peering Service 接続テレメトリにアクセスするには、Azure portal で Peering Service 接続を作成する必要があります。 接続を作成する方法については、[Azure portal を使用して Peering Service 接続を作成する](azure-portal.md)方法に関するページを参照してください。
 
 
-接続テレメトリは、次のスコープで構成されます。
+## <a name="view-a-latency-report"></a>待ち時間レポートを表示する
 
-### <a name="latency-measurement"></a>待ち時間の測定
+特定の Peering Service 接続の待ち時間レポートを表示するには、次の手順を実行します。
 
- Peering Service 内の登録済みのプレフィックスについて、クライアントから Microsoft Edge PoP までの待ち時間が測定されます。
+1. 左側のペインで **[すべてのリソース]** を選択し、Peering Service 接続を選択します。 次に、 **[プレフィックス]** の下にある **[開く]** を選択します。 
 
-### <a name="route-prefix-monitoring-and-protection"></a>ルート プレフィックスの監視と保護
+   ![Peering Service 接続を選択する](./media/peering-service-measure/peering-service-measure-menu.png)
 
-イベント ログに記録される疑わしいアクティビティのルーティング パスが監視されます。 たとえば、イベント ログは次のような要因の一部に対して作成されます。
+2. この Peering Service 接続に関連付けられているすべてのプレフィックスの待ち時間レポート ページが表示されます。 **Peering Service 接続では、/24 以上のプレフィックスについてのみ、待ち時間データがサポートされます。**
 
-- プレフィックスのハイジャック
-- プレフィックスの取り消し
-- ルート リーク
+      ![待ち時間レポート ページ](./media/peering-service-measure/peering-service-latency-report.png)
+
+3. このページに表示されるレポートは、既定では 1 時間ごとに更新されます。 さまざまなタイムラインのレポートを表示するには、 **[次に指定する直近の期間のデータを表示する]** から適切なオプションを選択します。 
+
+## <a name="view-prefix-state-report"></a>プレフィックス状態レポートを表示する
+
+1. 特定のプレフィックスのイベントを表示するには、プレフィックス名を選択し、左側のペインで **[Prefix Events]\(プレフィックス イベント\)** を選択します。 キャプチャされたイベントが表示されます。
+
+
+   ![プレフィックス イベント](./media/peering-service-measure/peering-service-prefix-event.png)
+
+ **[Prefix Events]\(プレフィックス イベント\)** の一覧にキャプチャされる可能性のあるイベントの一部を、次に示します。
+
+| **プレフィックス イベント** | **イベントの種類**|**理由**|
+|-----------|---------|---------|
+| PrefixAnnouncementEvent |Information|プレフィックスのアナウンスを受信した|
+| PrefixWithdrawalEvent|警告| プレフィックスの取り消しを受信した |
+| PrefixBackupRouteAnnouncementEvent |Information|プレフィックス バックアップ ルートのアナウンスを受信した |
+| PrefixBackupRouteWithdrawalEvent|警告|プレフィックス バックアップ ルートの取り消しを受信した |
+| PrefixActivePath |Information| 現在のプレフィックスのアクティブ ルート   |
+| PrefixBackupPath | Information|現在のプレフィックスのバックアップ ルート   |
+| PrefixOriginAsChangeEvent|Critical| 異なる配信元自律システム番号 (アクティブ ルート用) で、正確なプレフィックスを受信した| 
+| PrefixBackupRouteOriginAsChangeEvent  | エラー|異なる配信元自律システム番号 (バックアップ ルート用) で、プレフィックスを受信した  |
 
 ## <a name="next-steps"></a>次のステップ
 
 - Peering Service 接続の詳細については、「[Peering Service 接続](connection.md)」を参照してください。
-- Peering Service 接続をオンボードする場合は、[Peering Service モデルのオンボード](onboarding-model.md)に関するページを参照してください。
-- テレメトリを測定する方法については、[接続のテレメトリの測定](measure-connection-telemetry.md)に関するページを参照してください。
+- Peering Service 接続のテレメトリの詳細については、「[Peering Service 接続のテレメトリ](connection-telemetry.md)」を参照してください。

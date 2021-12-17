@@ -1,30 +1,31 @@
 ---
-title: Azure Monitor リソース ログでサポートされているサービスとカテゴリ
-description: Azure Monitor のリファレンス - Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
+title: Azure Monitor リソース ログでサポートされているカテゴリ
+description: Azure Monitor リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
-ms.date: 03/30/2021
-ms.openlocfilehash: a4ab4a2e425b752198223da5efd1b07466ab83d1
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 10/05/2021
+ms.openlocfilehash: 11233e33d7dc5dffbdfc65acec9eac9223a96f2b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166940"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231534"
 ---
-# <a name="supported-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているカテゴリ
+# <a name="supported-categories-for-azure-monitor-resource-logs"></a>Azure Monitor リソース ログでサポートされているカテゴリ
 
 > [!NOTE]
-> リソース ログは、以前は診断ログと呼ばれていました。 この名前は、Azure Monitor によって収集されたログの種類が、Azure リソースだけでなくそれ以外のものも含むように移行したため、2019 年 10 月に変更されました。
+> この一覧は、主に自動生成されています。 GitHub でこの一覧に対して行われた変更は、警告なしで上書きされる可能性があります。 永続的な更新を行う方法の詳細については、この記事の作成者にお問い合わせください。
 
-[Azure Monitor リソース ログ](../essentials/platform-logs-overview.md)は、Azure サービスによって出力されるログであり、そのサービスやリソースの操作が記述されます。 Azure Monitor を通じて使用できるすべてのリソース ログには、共通の上位スキーマが共有されます。各サービスが、独自のイベントに固有のプロパティを出力するための柔軟性も備わっています。
+[Azure Monitor リソース ログ](../essentials/platform-logs-overview.md)は、Azure サービスによって出力されるログであり、そのサービスやリソースの操作が記述されます。 Azure Monitor によって使用可能なすべてのリソース ログは、共通の最上位レベルのスキーマを共有します。 各サービスには、独自のイベントに対して一意のプロパティを生成する柔軟性があります。
 
-(`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 サービス固有のフィールドを含むすべてのリソース ログに共通のスキーマがあり、それぞれのログ カテゴリに対して追加されています。 詳細については、[Azure リソース ログの共通のスキーマとサービス固有のスキーマ]()に関するページを参照してください
+リソース ログは、以前は診断ログと呼ばれていました。 この名前は、Azure Monitor によって収集されたログの種類が、Azure リソースだけでなくそれ以外のものも含むように移行したため、2019 年 10 月に変更されました。
 
+リソースの種類 (`resourceId` プロパティで使用可能) とカテゴリの組み合わせにより、スキーマが一意に識別されます。 サービス固有のフィールドを含むすべてのリソース ログに共通のスキーマがあり、それぞれのログ カテゴリに対して追加されています。 詳細については、「[Azure リソース ログの共通およびサービス固有のスキーマ](./resource-logs-schema.md)」を参照してください。
 
 ## <a name="costs"></a>コスト
 
-Log Analytics、Azure Storage、またはイベント ハブにデータを送信し、格納することでコストが発生します。 これらの場所にデータを送り、そこに保管するために、場合によってはコストを支払う必要があります。  リソース ログは、これらの場所に送信できるデータの一種です。 
+[Azure Monitor Log Analytics](https://azure.microsoft.com/pricing/details/monitor/)、[Azure Storage](https://azure.microsoft.com/product-categories/storage/)、[Azure Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/)、Azure Monitor に直接統合しているパートナー ([Datadog など](../../partner-solutions/datadog/overview.md)) は、データの取り込みと保存に関連するコストがかかります。 前の文でリンクされている価格ページを調べて、それらのサービスのコストを確認してください。 リソース ログは、それらの場所に送信できるデータの 1 つの種類に過ぎません。 
 
-これらの場所に一部のカテゴリのリソース ログをエクスポートするとコストが追加で発生します。 そのようなログとエクスポート コストを下の表に示します。 この価格の詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページの「プラットフォーム ログ」セクションを参照してください。
+また、リソース ログの一部のカテゴリをこれらの場所にエクスポートするコストが発生する場合もあります。 ログと考え得るエクスポート コストを、次のセクションで示します。 エクスポートの価格の詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページの「**プラットフォーム ログ**」セクションを参照してください。
 
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
 
@@ -32,7 +33,8 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 一部のカテゴリは、特定の種類のリソースに対してのみサポートされています。 リソースが不足していると思われる場合は、リソース固有のドキュメントを参照してください。 たとえば、Microsoft.Sql/servers/databases カテゴリは、すべての種類のデータベースで使用できるわけではありません。 詳細については、[SQL Database の診断ログに関する情報](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)を参照してください。 
 
-何かが不足していると考えられる場合は、この記事の下部にある GitHub コメントを開くことができます。
+不足しているものがあると考えられる場合は、この記事の下部にある GitHub コメントを開くことができます。
+
 
 ## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/DomainServices
 
@@ -56,6 +58,21 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |サインイン|サインイン|はい|
 
 
+## <a name="microsoftagfoodplatformfarmbeats"></a>Microsoft.AgFoodPlatform/farmBeats
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ApplicationAuditLogs|アプリケーションの監査ログ|はい|
+|FarmManagementLogs|ファーム管理のログ|はい|
+|FarmOperationLogs|ファーム操作のログ|はい|
+|InsightLogs|分析情報ログ|はい|
+|JobProcessedLogs|ジョブ処理ログ|はい|
+|ModelInferenceLogs|モデル推論ログ|はい|
+|ProviderAuthLogs|プロバイダー認証のログ|はい|
+|SatelliteLogs|衛星のログ|はい|
+|WeatherLogs|気象のログ|はい|
+
+
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
@@ -69,12 +86,14 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |GatewayLogs|ApiManagement Gateway に関連するログ|いいえ|
+|WebSocketConnectionLogs|Websocket 接続に関連するログ|はい|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
+|Audit|Audit|はい|
 |HttpRequest|HTTP 要求|Yes|
 
 
@@ -83,6 +102,8 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |ApplicationConsole|アプリケーション コンソール|いいえ|
+|BuildLogs|ビルド ログ|はい|
+|IngressLogs|イングレスのログ|はい|
 |SystemLogs|システム ログ|いいえ|
 
 
@@ -100,9 +121,10 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
-|DscNodeStatus|DSC ノードの状態|いいえ|
-|JobLogs|ジョブ ログ|いいえ|
-|JobStreams|ジョブ ストリーム|いいえ|
+|AuditEvent|AuditEvent|はい|
+|DscNodeStatus|DscNodeStatus|いいえ|
+|JobLogs|JobLogs|いいえ|
+|JobStreams|JobStreams|いいえ|
 
 
 ## <a name="microsoftautonomousdevelopmentplatformaccounts"></a>Microsoft.AutonomousDevelopmentPlatform/accounts
@@ -111,6 +133,14 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |---|---|---|
 |Audit|Audit|はい|
 |運用時|運用時|はい|
+|要求|要求|はい|
+
+
+## <a name="microsoftavsprivateclouds"></a>microsoft.avs/privateClouds
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|vmwaresyslog|VMware VCenter Syslog|はい|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
@@ -121,7 +151,6 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
-
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |BaiClusterEvent|BaiClusterEvent|いいえ|
@@ -151,6 +180,13 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |BotRequest|チャネルからボットへの要求|いいえ|
+
+
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ConnectedClientList|接続済みクライアントの一覧|はい|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
@@ -198,9 +234,19 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |AuthOperational|操作認証ログ|はい|
+|CallDiagnostics|通話診断ログ|はい|
+|CallSummary|通話概要ログ|はい|
 |ChatOperational|運用チャット ログ|いいえ|
 |SMSOperational|運用 SMS ログ|いいえ|
 |使用法|使用法レコード|いいえ|
+
+
+## <a name="microsoftconnectedvehicleplatformaccounts"></a>Microsoft.ConnectedVehicle/platformAccounts
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Audit|MCVP 監査ログ|はい|
+|ログ|MCVP ログ|はい|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
@@ -246,10 +292,18 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |accounts|Databricks アカウント|いいえ|
 |clusters|Databricks クラスター|いいえ|
 |dbfs|Databricks ファイル システム|いいえ|
+|featureStore|Databricks Feature Store|はい|
+|genie|Databricks Genie|はい|
+|globalInitScripts|Databricks グローバル Init スクリプト|はい|
+|iamRole|Databricks IAM ロール|はい|
 |instancePools|インスタンス プール|いいえ|
 |jobs|Databricks ジョブ|いいえ|
+|mlflowAcledArtifact|Databricks MLFlow Acled 成果物|はい|
+|mlflowExperiment|Databricks MLFlow 実験|はい|
 |ノートブック|Databricks Notebook|いいえ|
+|RemoteHistoryService|Databricks リモート履歴サービス|はい|
 |secrets|Databricks シークレット|いいえ|
+|sqlanalytics|Databricks SQL Analytics|はい|
 |sqlPermissions|Databricks SQLPermissions|いいえ|
 |ssh|Databricks SSH|いいえ|
 |ワークスペース|Databricks ワークスペース|いいえ|
@@ -384,6 +438,13 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |管理|管理|いいえ|
 
 
+## <a name="microsoftdesktopvirtualizationscalingplans"></a>Microsoft.DesktopVirtualization/scalingplans
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|自動スケール|自動スケーリングのログ|はい|
+
+
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft.DesktopVirtualization/workspaces
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
@@ -450,9 +511,10 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |EventRoutesOperation|EventRoutesOperation|いいえ|
 |ModelsOperation|ModelsOperation|いいえ|
 |QueryOperation|QueryOperation|いいえ|
+|ResourceProviderOperation|ResourceProviderOperation|はい|
 
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/DatabaseAccounts
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
@@ -464,6 +526,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |PartitionKeyRUConsumption|PartitionKeyRUConsumption|いいえ|
 |PartitionKeyStatistics|PartitionKeyStatistics|いいえ|
 |QueryRuntimeStatistics|QueryRuntimeStatistics|いいえ|
+|TableApiRequests|TableApiRequests|はい|
 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
@@ -521,6 +584,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
+|ExPCompute|ExPCompute|はい|
 |要求|要求|いいえ|
 
 
@@ -529,6 +593,21 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |AuditLogs|監査ログ|いいえ|
+|DiagnosticLogs|診断ログ|はい|
+
+
+## <a name="microsofthealthcareapisworkspacesdicomservices"></a>Microsoft.HealthcareApis/workspaces/dicomservices
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AuditLogs|監査ログ|はい|
+
+
+## <a name="microsofthealthcareapisworkspacesfhirservices"></a>Microsoft.HealthcareApis/workspaces/fhirservices
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AuditLogs|FHIR 監査ログ|はい|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>microsoft.insights/autoscalesettings
@@ -568,6 +647,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |AuditEvent|[監査ログ]|いいえ|
+|AzurePolicyEvaluationDetails|Azure Policy の評価の詳細|はい|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
@@ -577,20 +657,21 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |コマンド|コマンド|いいえ|
 |FailedIngestion|失敗した取り込み操作|いいえ|
 |IngestionBatching|インジェスト バッチ処理|いいえ|
+|定期刊行物|定期刊行物|はい|
 |クエリ|クエリ|いいえ|
 |SucceededIngestion|成功した取り込み操作|いいえ|
 |TableDetails|テーブル詳細|いいえ|
 |TableUsageStatistics|テーブルの使用状況に関する統計情報|いいえ|
 
 
-## <a name="microsoftlogicintegrationaccounts"></a>Microsoft.Logic/integrationAccounts
+## <a name="microsoftlogicintegrationaccounts"></a>Microsoft.Logic/IntegrationAccounts
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |IntegrationAccountTrackingEvents|統合アカウント追跡イベント|いいえ|
 
 
-## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
+## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/Workflows
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
@@ -606,6 +687,27 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|いいえ|
 |AmlComputeJobEvent|AmlComputeJobEvent|いいえ|
 |AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|いいえ|
+|ComputeInstanceEvent|ComputeInstanceEvent|はい|
+|DataLabelChangeEvent|DataLabelChangeEvent|はい|
+|DataLabelReadEvent|DataLabelReadEvent|はい|
+|DataSetChangeEvent|DataSetChangeEvent|はい|
+|DataSetReadEvent|DataSetReadEvent|はい|
+|DataStoreChangeEvent|DataStoreChangeEvent|はい|
+|DataStoreReadEvent|DataStoreReadEvent|はい|
+|DeploymentEventACI|DeploymentEventACI|はい|
+|DeploymentEventAKS|DeploymentEventAKS|はい|
+|DeploymentReadEvent|DeploymentReadEvent|はい|
+|EnvironmentChangeEvent|EnvironmentChangeEvent|はい|
+|EnvironmentReadEvent|EnvironmentReadEvent|はい|
+|InferencingOperationACI|InferencingOperationACI|はい|
+|InferencingOperationAKS|InferencingOperationAKS|はい|
+|ModelsActionEvent|ModelsActionEvent|はい|
+|ModelsChangeEvent|ModelsChangeEvent|はい|
+|ModelsReadEvent|ModelsReadEvent|はい|
+|PipelineChangeEvent|PipelineChangeEvent|はい|
+|PipelineReadEvent|PipelineReadEvent|はい|
+|RunEvent|RunEvent|はい|
+|RunReadEvent|RunReadEvent|はい|
 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
@@ -613,9 +715,19 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |KeyDeliveryRequests|キー配信要求|いいえ|
+|MediaAccount|メディア アカウントの正常性状態|はい|
 
 
-## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
+## <a name="microsoftmediavideoanalyzers"></a>Microsoft.Media/videoanalyzers
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Audit|[監査ログ]|はい|
+|診断|診断ログ|はい|
+|運用時|操作ログ|はい|
+
+
+## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationgateways
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
@@ -633,7 +745,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |AzureFirewallNetworkRule|Azure Firewall ネットワーク ルール|いいえ|
 
 
-## <a name="microsoftnetworkbastionhosts"></a>Microsoft.Network/bastionHosts
+## <a name="microsoftnetworkbastionhosts"></a>microsoft.network/bastionHosts
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
@@ -672,7 +784,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |NetworkSecurityGroupRuleCounter|ネットワーク セキュリティ グループの規則数|いいえ|
 
 
-## <a name="microsoftnetworkp2svpngateways"></a>Microsoft.Network/p2sVpnGateways
+## <a name="microsoftnetworkp2svpngateways"></a>microsoft.network/p2svpngateways
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
@@ -697,7 +809,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |ProbeHealthStatusEvents|Traffic Manager プローブの正常性結果イベント|いいえ|
 
 
-## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
+## <a name="microsoftnetworkvirtualnetworkgateways"></a>microsoft.network/virtualnetworkgateways
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
@@ -715,7 +827,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |VMProtectionAlerts|VM 保護アラート|いいえ|
 
 
-## <a name="microsoftnetworkvpngateways"></a>Microsoft.Network/vpnGateways
+## <a name="microsoftnetworkvpngateways"></a>microsoft.network/vpngateways
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
@@ -723,6 +835,13 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |IKEDiagnosticLog|IKE 診断ログ|いいえ|
 |RouteDiagnosticLog|ルート診断ログ|いいえ|
 |TunnelDiagnosticLog|トンネル診断ログ|いいえ|
+
+
+## <a name="microsoftnetworkfunctionazuretrafficcollectors"></a>Microsoft.NetworkFunction/azureTrafficCollectors
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ExpressRouteCircuitIpfix|Express Route 回線の IPFIX フロー レコード|はい|
 
 
 ## <a name="microsoftnotificationhubsnamespaces"></a>Microsoft.NotificationHubs/namespaces
@@ -736,7 +855,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
-|Audit|[監査ログ]|いいえ|
+|Audit|Audit|はい|
 
 
 ## <a name="microsoftpowerbitenants"></a>Microsoft.PowerBI/tenants
@@ -764,7 +883,9 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
+|DataSensitivityLogEvent|DataSensitivity|はい|
 |ScanStatusLogEvent|ScanStatus|いいえ|
+|セキュリティ|PurviewAccountAuditEvents|はい|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/Vaults
@@ -802,6 +923,14 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |OperationLogs|[操作ログ]|いいえ|
 
 
+## <a name="microsoftsecurityinsightssettings"></a>microsoft.securityinsights/settings
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Analytics|Analytics|はい|
+|DataConnectors|データ コレクション – コネクタ|はい|
+
+
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
@@ -820,7 +949,16 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
-|AllLogs|Azure Web PubSub Service ログ。|はい|
+|ConnectivityLogs|Azure Web PubSub サービスの接続性のログ。|はい|
+|HttpRequestLogs|Azure Web PubSub サービスの Http 要求のログ。|はい|
+|MessagingLogs|Azure Web PubSub サービスのメッセージング ログ。|はい|
+
+
+## <a name="microsoftsingularityaccounts"></a>microsoft.singularity/accounts
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|実行|実行ログ|はい|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
@@ -956,14 +1094,14 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |管理|管理|いいえ|
 
 
-## <a name="microsoftwebhostingenvironments"></a>microsoft.web/hostingenvironments
+## <a name="microsoftwebhostingenvironments"></a>Microsoft.Web/hostingEnvironments
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |AppServiceEnvironmentPlatformLogs|Azure App Service Environment のプラットフォーム ログ|いいえ|
 
 
-## <a name="microsoftwebsites"></a>microsoft.web/sites
+## <a name="microsoftwebsites"></a>Microsoft.Web/sites
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
@@ -999,4 +1137,3 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 * [リソースのリソース ログを **Event Hubs** にストリーミングする](./resource-logs.md#send-to-azure-event-hubs)
 * [Azure Monitor REST API を使用してリソース ログの診断設定を変更する](/rest/api/monitor/diagnosticsettings)
 * [Log Analytics を使用した、Azure ストレージからのログの分析](./resource-logs.md#send-to-log-analytics-workspace)
-

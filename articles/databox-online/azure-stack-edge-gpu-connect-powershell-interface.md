@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 08/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 580e5aab7b7ac1edcfee58345291afcb9eb0e977
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: a2a6b7b514cb95eb327235c59bb569ac66f4a5d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103562163"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670502"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Windows PowerShell を使用して Azure Stack Edge Pro GPU デバイスを管理する
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Azure Stack Edge Pro ソリューションにより、データを処理してネットワーク経由で Azure に送信できます。 この記事では、Azure Stack Edge Pro デバイスの構成と管理のタスクをいくつか説明します。 Azure portal、ローカル Web UI、または Windows PowerShell インターフェイスを使用してデバイスを管理できます。
+Azure Stack Edge Pro GPU ソリューションを使用すると、データを処理してネットワーク経由で Azure に送信できます。 この記事では、Azure Stack Edge Pro GPU デバイスの構成と管理のタスクについて、いくつか説明します。 Azure portal、ローカル Web UI、または Windows PowerShell インターフェイスを使用してデバイスを管理できます。
 
 この記事では、デバイスの PowerShell インターフェイスに接続する方法と、このインターフェイスを使用して実行できるタスクに重点を置いて説明します。 
 
@@ -72,6 +72,8 @@ Nvidia GPU 上のマルチプロセス サービス (MPS) は、GPU を複数の
 
 [!INCLUDE [Enable MPS](../../includes/azure-stack-edge-gateway-enable-mps.md)]
 
+> [!NOTE]
+> デバイス ソフトウェアと Kubernetes クラスターが更新されても、ワークロードの MPS 設定は保持されません。 MPS を再度有効にする必要があります。
 
 ## <a name="reset-your-device"></a>デバイスをリセットする
 
@@ -107,7 +109,7 @@ Nvidia GPU 上のマルチプロセス サービス (MPS) は、GPU を複数の
 
     `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
 
-    <subnet details> を、使用するサブネットの範囲に置き換えます。 
+    \<subnet details\> を、使用するサブネットの範囲に置き換えます。 
 
 1. このコマンドの実行が完了したら、`Get-HcsKubeClusterNetworkInfo` コマンドを使用して、ポッドおよびサービスのサブネットが変更されたことを確認できます。
 
@@ -130,7 +132,7 @@ Id                                   PodSubnet    ServiceSubnet
 - コンピューティング ネットワークが構成済みである。 「[チュートリアル: GPU 搭載の Azure Stack Edge Pro 用のネットワークを構成する](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)」を参照してください。
 - デバイスでコンピューティング ロールが構成済みである。
     
-コンピューティング ロールが構成されている Azure Stack Edge Pro デバイスでは、2 つの異なるコマンド セットを利用してデバイスをトラブルシューティングしたり、監視したりできます。
+コンピューティング ロールが構成されている Azure Stack Edge Pro GPU デバイスでは、2 つの異なるコマンド セットを利用してデバイスをトラブルシューティングすることや、監視することができます。
 
 - `iotedge` コマンドの使用。 これらのコマンドはデバイスの基本操作に利用できます。
 - `kubectl` コマンドの使用。 これらのコマンドはデバイスのさまざまな操作に利用できます。
@@ -239,10 +241,13 @@ cuda-sample1 Running Up 4 minutes nvidia/samples:nbody
 <6> 2021-02-25 00:53:05.412 +00:00 [INF] - Plan execution ended for deployment 11
 [10.100.10.10]: PS>
 ```
-
+> [!NOTE]
+> GetModuleLogs や UploadModuleLogs などのダイレクト メソッドは、Azure Stack Edge 上の Kubernetes の IoT Edge ではサポートされていません。
+ 
+ 
 ### <a name="use-kubectl-commands"></a>kubectl コマンドを使用する
 
-コンピューティング ロールが構成されている Azure Stack Edge Pro デバイスでは、すべての `kubectl` コマンドをモジュールの監視やトラブルシューティングに利用できます。 使用可能なコマンドの一覧を表示するには、コマンド ウィンドウから `kubectl --help` を実行します。
+コンピューティング ロールが構成されている Azure Stack Edge Pro GPU デバイスでは、すべての `kubectl` コマンドをモジュールの監視やトラブルシューティングに利用できます。 使用可能なコマンドの一覧を表示するには、コマンド ウィンドウから `kubectl --help` を実行します。
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
@@ -480,9 +485,11 @@ Kubernetes ワーカー ノードのメモリまたはプロセッサの制限�
     
 1. ワーカー ノードのメモリおよびプロセッサの値を変更するには、次のコマンドを実行します。
 
-    Set-AzureDataBoxEdgeRoleCompute -Name <Name value from the output of Get-AzureDataBoxEdgeRole> -Memory <Value in Bytes> -ProcessorCount < コア数 >
+   ```powershell
+   Set-AzureDataBoxEdgeRoleCompute -Name <Name value from the output of Get-AzureDataBoxEdgeRole> -Memory <Value in Bytes> -ProcessorCount <No. of cores>
+   ```
 
-    出力例を次に示します。 
+   出力例を次に示します。 
     
     ```powershell
     [10.100.10.10]: PS>Set-AzureDataBoxEdgeRoleCompute -Name IotRole -MemoryInBytes 32GB -ProcessorCount 16
@@ -573,7 +580,7 @@ Kubernetes ワーカー ノードのメモリまたはプロセッサの制限�
     - このコマンドレットを使用して、BMC の静的構成を構成します。 `IPv4Address`、`IPv4Gateway`、および `IPv4SubnetMask` の値を指定できます。 
     
         ```powershell
-        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>" -IPv4Gateway "<IPv4 address of the gateway>" -IPv4SubnetMask "<IPv4 address for the subnet mask>"
+        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>&quot; -IPv4Gateway &quot;<IPv4 address of the gateway>&quot; -IPv4SubnetMask &quot;<IPv4 address for the subnet mask>"
         ```        
         
         出力例を次に示します。 
@@ -602,4 +609,4 @@ Kubernetes ワーカー ノードのメモリまたはプロセッサの制限�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure portal に [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) をデプロイします。
+- Azure portal で [Azure Stack Edge Pro GPU](azure-stack-edge-gpu-deploy-prep.md) をデプロイします。

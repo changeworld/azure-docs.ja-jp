@@ -4,12 +4,12 @@ description: Azure ファイル共有をバックアップする際のサポー�
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 38c066c20399b39d676fb0c25aa158993258b979
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94c5a7da0ab05750f63b9af26fa25d9b5cf00fca
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370990"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345492"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure ファイル共有のバックアップのサポート マトリックス
 
@@ -56,7 +56,7 @@ Azure ファイル共有のバックアップは、以下を **除く** すべ�
 | 設定                                      | 制限 |
 | -------------------------------------------- | ----- |
 | 1 日あたりのオンデマンド バックアップの最大数 | 10   |
-| 1 日あたりのスケジュールされたバックアップの最大数 | 1     |
+| 1 日あたりのスケジュールされたバックアップの最大数 | 6    |
 
 ## <a name="restore-limits"></a>復元の制限
 

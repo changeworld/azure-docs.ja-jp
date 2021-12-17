@@ -3,12 +3,12 @@ title: Azure Service Fabric の監視と診断の概要
 description: Azure Service Fabric のクラスター、アプリケーション、およびサービスの監視と診断について説明します。
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.openlocfilehash: 71ec86f26de1e94b4e17e0990d2eafd1fff954e2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d3a7060b7a12cb9a57a78c1bbb3fc0b58656ef6d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627746"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112455160"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric での監視と診断
 
@@ -52,7 +52,7 @@ Service Fabric プラットフォームには正常性モデルが組み込ま�
 
 
 ### <a name="watchdogs"></a>ウォッチドッグ
-一般に、ウォッチドッグとは、複数のサービスにわたって正常性と負荷を監視し、エンドポイントに ping を送信し、クラスター内のあらゆるものの正常性を報告することができる個別のサービスを指します。 これは、単一サービスのビューに基づいて検出されないエラーを防ぐのに役立ちます。 またウォッチドッグは、ユーザー操作なしで修復アクションを実行するコードをホストする場所としても適しています。たとえば、特定の時間間隔でストレージ内のログ ファイル クリーンアップを行うなどです。 ウォッチドッグ サービスの実装サンプルは、[ここ](https://github.com/Azure-Samples/service-fabric-watchdog-service)で見つけることができます。
+一般的に、ウォッチドッグとは、複数のサービスにわたって正常性と負荷を監視し、エンドポイントに ping を送信し、クラスター内の予期しない正常性イベントを報告する個別のサービスを指します。 これは、1 つのサービスのパフォーマンスのみに基づくと検出されない可能性があるエラーを防ぐために役立ちます。 またウォッチドッグは、ユーザー操作を必要としない修復アクションを実行するコードをホストする場所としても適しています。たとえば、特定の時間間隔でのストレージ内のログ ファイル クリーンアップなどです。 使いやすいウォッチドッグ拡張モデルを含み、Windows と Linux の両方のクラスターで動作する、完全に実装されたオープン ソースの SF ウォッチドッグ サービスが必要な場合は、[FabricObserver](https://github.com/Azure-Samples/service-fabric-watchdog-service) プロジェクトを参照してください。 FabricObserver は、実稼働可能なソフトウェアです。 テストおよび運用クラスターに FabricObserver をデプロイし、そのプラグイン モデルを使用してニーズに合わせて拡張するか、またはフォークして独自の組み込みのオブザーバーを作成することをお勧めします。 前者 (プラグイン) が推奨される方法です。
 
 ## <a name="infrastructure-performance-monitoring"></a>インフラストラクチャ (パフォーマンス) の監視
 これまではアプリケーションとプラットフォームでの診断について説明してきましたが、ハードウェアが期待どおりに機能していることを知るにはどうすればよいでしょう。 基盤となるインフラストラクチャを監視することは、クラスターやリソース使用率の状態を把握する上で重要です。 システム パフォーマンスの測定は、ワークロードに応じて影響を受ける可能性がある多くの要因に依存します。 これらの要因は通常、パフォーマンス カウンターによって測定されます。 これらのパフォーマンス カウンターは、オペレーティング システム、.NET フレームワーク、Service Fabric プラットフォーム自体など、さまざまなソースから送られてきます。 次のようなシナリオで役に立ちます

@@ -2,19 +2,21 @@
 title: 'Azure Premium Storage: 高パフォーマンス用の設計'
 description: Azure Premium SSD マネージド ディスクを使用する高パフォーマンスのアプリケーションを設計します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e0f99f4400b07791f65e8525894278ae9f9b9f5
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98882384"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133526"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 この記事では、Azure Premium Storage を使用する高パフォーマンスのアプリケーションを構築するためのガイドラインを示します。 このドキュメントで説明する手順は、アプリケーションで使用されているテクノロジに適用できるパフォーマンスのベスト プラクティスと組み合わせて使用できます。 ガイドラインを示すために、このドキュメント全体を通じて、Premium Storage で実行されている SQL Server を例として使用しています。
 
@@ -206,7 +208,7 @@ IO サイズがアプリケーションのパフォーマンスに及ぼす影�
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> ローカル SSD = 224 GB |32 |576 GB |50,000 IOPS <br> 512 MB/秒 |4,000 IOPS、33 MB/秒 |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> ローカル SSD = 896 GB |64 |4224 GB |80,000 IOPS <br> 2,000 MB/秒 |5,000 IOPS、50 MB/秒 |
 
-利用可能なすべての Azure VM サイズの一覧については、「[Azure の仮想マシンのサイズ](sizes.md)」を参照してください。 アプリケーションの目的のパフォーマンス要件を満たし、拡張できる VM サイズを選択します。 これに加え、VM サイズを選択するときは、次の重要な考慮事項に注意してください。
+利用可能なすべての Azure VM サイズの完全な一覧については、「[Azure の仮想マシンのサイズ](sizes.md)」を参照してください。 アプリケーションの目的のパフォーマンス要件を満たし、拡張できる VM サイズを選択します。 これに加え、VM サイズを選択するときは、次の重要な考慮事項に注意してください。
 
 *スケールの上限*  
 IOPS の上限は、VM あたりとディスクあたりで異なり、互いに独立しています。 アプリケーションが、VM と VM に接続された Premium ディスクの制限の範囲内で IOPS を引き上げていることを確認します。 制限を超えると、アプリケーションのパフォーマンスが調整されます。
@@ -230,7 +232,7 @@ IOPS の上限は、VM あたりとディスクあたりで異なり、互いに
 
 *Linux ディストリビューション*  
 
-Azure Premium Storage を使用すると、Windows を実行する VM と Linux を実行する VM で同レベルのパフォーマンスが得られます。 さまざまな Linux ディストリビューションがサポートされています。リストについては、[こちら](linux/endorsed-distros.md)をご覧ください。 ワークロードの種類によって、適しているディストリビューションが異なることに注意してください。 パフォーマンスのレベルは、ワークロードが実行されるディストリビューションによって異なります。 アプリケーションで Linux ディストリビューションをテストし、最適なディストリビューションを選択します。
+Azure Premium Storage を使用すると、Windows を実行する VM と Linux を実行する VM で同レベルのパフォーマンスが得られます。 さまざまな Linux ディストリビューションがサポートされています。 詳細については、「[Azure で動作保証済みの Linux ディストリビューション](linux/endorsed-distros.md)」を参照してください。 ワークロードの種類によって、適しているディストリビューションが異なることに注意してください。 パフォーマンスのレベルは、ワークロードが実行されるディストリビューションによって異なります。 アプリケーションで Linux ディストリビューションをテストし、最適なディストリビューションを選択します。
 
 Premium Storage で Linux を実行するときは、高パフォーマンスを確保するために、必要なドライバーについて最新の更新プログラムを確認してください。
 
@@ -309,7 +311,7 @@ Premium Storage データ ディスクの ReadOnly キャッシュを構成す�
 
 * **reiserFS** の場合、barrier=none マウント オプションを使用してバリアを無効にします。  バリアを明示的に有効にするには、barrier=flush を使用します。
 * **ext3/ext4** の場合、barrier=0 マウント オプションを使用してバリアを無効にします。  バリアを明示的に有効にするには、barrier=1 を使用します。
-* **XFS** の場合、nobarrier マウント オプションを使用してバリアを無効にします。  バリアを明示的に有効にするには、barrier を使用します。  新しいバージョンの Linux カーネルでは、XFS ファイル システムの設計によって耐久性が常に確保されているため、バリアを無効にしても効果がないことに注意してください。  
+* **XFS** の場合、nobarrier マウント オプションを使用してバリアを無効にします。  バリアを明示的に有効にするには、barrier を使用します。 メインの Linux カーネルのバージョン 4.10 では、XFS ファイル システムの設計により、常に持続性が保証されます。 バリアを無効にしても効果はなく、"nobarrier" オプションは非推奨とされます。 ただし、一部の Linux ディストリビューションでは、以前のバージョンのカーネルでディストリビューション リリースへの変更が移植されている場合があります。ディストリビューション ベンダに、自分が実行中のディストリビューションとバージョンの状態を確認してください。
 
 ## <a name="disk-striping"></a>ディスク ストライピング
 
@@ -326,7 +328,7 @@ Linux では、MDADM ユーティリティを使用してディスクをスト�
 
 たとえば、アプリケーションによって生成された IO 要求がディスクのストライプ サイズよりも大きい場合、ストレージ システムは、複数のディスクのストライプ ユニット境界にまたがって要求を書き込みます。 該当のデータにアクセスするときが来ると、要求を完了するために複数のストライプ ユニットにわたってシークしなければなりません。 このような動作の累積的影響により、パフォーマンスが大幅に低下する可能性があります。 一方、IO 要求サイズがストライプ サイズよりも小さい場合や、要求の特性がランダムの場合、IO 要求が同じディスクに追加されていく可能性があり、これがボトルネックとなって、最終的に IO パフォーマンスが低下することがあります。
 
-アプリケーションが実行するワークロードの種類に応じて、適切なストライプ サイズを選択します。 小さなランダム IO 要求には、小さいストライプ サイズを使用します。 一方、大きな順次 IO 要求には、大きいストライプ サイズを使用します。 Premium Storage で実行するアプリケーションについて、ストライプ サイズの推奨事項を確認します。 SQL Server の場合、OLTP ワークロードには 64 KB、データ ウェアハウス ワークロードには 256 KB のストライプ サイズを構成します。 詳細については、「 [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) 」をご覧ください。
+アプリケーションが実行するワークロードの種類に応じて、適切なストライプ サイズを選択します。 小さなランダム IO 要求には、小さいストライプ サイズを使用します。 一方、大きな順次 IO 要求には、大きいストライプ サイズを使用します。 Premium Storage で実行するアプリケーションについて、ストライプ サイズの推奨事項を確認します。 SQL Server の場合、OLTP ワークロードには 64 KB、データ ウェアハウス ワークロードには 256 KB のストライプ サイズを構成します。 詳細については、「 [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md) 」をご覧ください。
 
 > [!NOTE]
 > ストライピングできる Premium Storage ディスクの最大数は、DS シリーズ VM では 32 個、GS シリーズ VM では 64 個です。
@@ -390,5 +392,5 @@ Azure Premium Storage では、選択された VM サイズとディスク サ�
 
 SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プラクティスに関する次の記事をご覧ください。
 
-* [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
+* [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)
 * [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)

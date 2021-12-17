@@ -6,20 +6,20 @@ metadata:
   description: Azure SQL は、クラウド内の SQL Server データベース エンジン製品のファミリで、Azure SQL Database のフルマネージド データベース、Azure SQL Managed Instance のフルマネージド インスタンス、または Azure の仮想マシンにインストールされた SQL Server です。ここでは、移行に役立つドキュメントを紹介します。
   services: sql-database
   ms.service: sql-database
-  ms.subservice: service
+  ms.subservice: migration-guide
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: landing-page
-  author: MashaMSFT
-  ms.author: mathoma
-  ms.reviewer: sstein
+  author: mokabiru
+  ms.author: mokabiru
+  ms.reviewer: cawrites
   ms.date: 11/06/2020
-  ms.openlocfilehash: ad10f236ed042d0935e01d056ef1a56de1054835
-  ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+  ms.openlocfilehash: 9d1bab61cac83088421f6e782cb9abaa868f5e67
+  ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/30/2020
-  ms.locfileid: "96327442"
+  ms.lasthandoff: 06/02/2021
+  ms.locfileid: "110790490"
 landingContent:
 - title: Azure SQL Database
   linkLists:
@@ -29,8 +29,16 @@ landingContent:
       url: database/sql-server-to-sql-database-overview.md
     - text: SQL Server から
       url: database/sql-server-to-sql-database-guide.md
+    - text: Access から
+      url: database/access-to-sql-database-guide.md
     - text: DB2 から
       url: database/db2-to-sql-database-guide.md
+    - text: Oracle から
+      url: database/oracle-to-sql-database-guide.md
+    - text: MySQL から
+      url: database/mysql-to-sql-database-guide.md
+    - text: SAP ASE から
+      url: database/sap-ase-to-sql-database.md
 - title: Azure SQL Managed Instance
   linkLists:
   - linkListType: get-started
@@ -41,6 +49,8 @@ landingContent:
       url: managed-instance/sql-server-to-managed-instance-guide.md
     - text: DB2 から
       url: managed-instance/db2-to-managed-instance-guide.md
+    - text: Oracle から
+      url: managed-instance/oracle-to-managed-instance-guide.md
 - title: Azure VM 上の SQL Server
   linkLists:
   - linkListType: get-started
@@ -51,6 +61,8 @@ landingContent:
       url: virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
     - text: DB2 から
       url: virtual-machines/db2-to-sql-on-azure-vm-guide.md
+    - text: Oracle から
+      url: virtual-machines/oracle-to-sql-on-azure-vm-guide.md
 - title: 移行ツール
   linkLists:
   - linkListType: deploy

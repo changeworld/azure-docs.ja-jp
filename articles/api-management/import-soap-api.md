@@ -3,7 +3,7 @@ title: Azure Portal を使用して SOAP API をインポートする | Microsof
 description: SOAP API の標準的な XML 表現をインポートし、この API を Azure portal と開発者ポータルでテストする方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/22/2020
-ms.author: apimpm
-ms.openlocfilehash: 81ded79ee72fb7c2d89898595602cb3e6d7ae5e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: effb8b3820359539045a25244ced9f0dddc83c86
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96011066"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629694"
 ---
 # <a name="import-soap-api"></a>SOAP API のインポート
 
@@ -32,7 +32,7 @@ ms.locfileid: "96011066"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します
+次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

@@ -6,18 +6,22 @@ ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 12/06/2019
+ms.date: 09/10/2021
 ms.author: cynthn
-ms.openlocfilehash: c5e683e1f5af42a69fac45c20f52169834967649
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 2478f6f092cde4d180b8de60bacb5e411a842242
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788135"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130160867"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する
 
-Secure Shell (SSH) キーの組を使用すると、認証に SSH キーを使う仮想マシン (VM) を Azure に作成できます。 この記事では、Linux VM 用の SSH 公開キー ファイルと秘密キー ファイルのペアを短時間で生成して使用する方法について説明します。 この手順は、Azure Cloud Shell の macOS または Linux ホストで実行できます。 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: 柔軟なスケール セット 
+
+Secure Shell (SSH) キーの組を使用すると、認証に SSH キーを使う仮想マシン (VM) を Azure に作成できます。 この記事では、Linux VM 用の SSH 公開キー ファイルと秘密キー ファイルのペアを短時間で生成して使用する方法について説明します。 この手順は、Azure Cloud Shell、macOS、または Linux ホストで実行できます。 
+
+問題のトラブルシューティングに役立つ情報については、「[Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)」を参照してください。
 
 > [!NOTE]
 > 既定では、SSH キーを使用して作成された VM は、パスワードが無効にされます。そのため、推測によるブルート フォース攻撃が大幅に困難になります。 
@@ -89,7 +93,13 @@ VM で複数の SSH キーを使用する場合は、この `--ssh-key-values ss
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-キー ペアを作成するときにパスフレーズを指定した場合は、ログイン プロセス中に入力を求められたら、そのパスフレーズを入力します。 VM は ~/.ssh/known_hosts ファイルに追加されます。Azure VM にある公開キーが変更されるか、サーバー名が ~/.ssh/known_hosts から削除されるまで、再度接続を求められることはありません。
+この VM に初めて接続しようとしている場合は、ホストのフィンガープリントを確認するよう求められます。 表示されたフィンガープリントをそのまま受け入れたくなりますが、そのようにすると、中間者攻撃にさらされる危険性があります。 ホストのフィンガープリントは必ず検証してください。 これは、クライアントから初めて接続するときにのみ行う必要があります。 ポータルからホストのフィンガープリントを取得するには、実行コマンド機能を使用して `ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub | awk '{print $2}'` コマンドを実行します。
+
+:::image type="content" source="media/ssh-from-windows/run-command-validate-host-fingerprint.png" alt-text="実行コマンドを使用したホストのフィンガープリントの検証を示しているスクリーンショット。":::
+
+CLI を使用してコマンドを実行するには、[`az vm run-command invoke`](/cli/azure/vm/run-command) を使用します。
+
+キー ペアを作成するときにパスフレーズを指定した場合は、サインイン プロセス中に入力を求められたときにそのパスフレーズを入力します。 VM は ~/.ssh/known_hosts ファイルに追加されます。Azure VM にある公開キーが変更されるか、サーバー名が ~/.ssh/known_hosts から削除されるまで、再度接続を求められることはありません。
 
 VM が Just-In-Time アクセス ポリシーを使用している場合、VM に接続するにはアクセス権を要求する必要があります。 Just-In-Time ポリシーの詳細については、[Just in Time ポリシーを使用した仮想マシン アクセスの管理](../../security-center/security-center-just-in-time.md)に関するページを参照してください。
 

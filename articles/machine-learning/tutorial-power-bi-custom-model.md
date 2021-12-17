@@ -10,12 +10,12 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 00d5fa43245fb25b8ee99a0523d680bef891b71e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6e71116d79496340c306628a29504aa140e9d5f5
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387004"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429910"
 ---
 # <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>チュートリアル:Power BI 統合 - Jupyter Notebook を使用して予測モデルを作成する (パート 1/2)
 
@@ -40,7 +40,7 @@ Power BI で使用するモデルは、3 とおりの方法で作成してデプ
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 まだサブスクリプションをお持ちでない場合は、[無料試用版](https://aka.ms/AMLFree)を使用できます。 
+- Azure サブスクリプション。 まだサブスクリプションをお持ちでない場合は、[無料試用版](https://azure.microsoft.com/free/)を使用できます。 
 - Azure Machine Learning ワークスペース。 ワークスペースがまだない場合は、「[Azure Machine Learning ワークスペースを作成して管理する](./how-to-manage-workspace.md#create-a-workspace)」を参照してください。
 - Python 言語と機械学習ワークフローの基礎知識。
 

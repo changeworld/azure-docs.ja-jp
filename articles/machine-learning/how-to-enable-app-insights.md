@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Azure Kubernetes Service (AKS) または Azure Container Instances (ACI) で Web サービス エンドポイントにデプロイされたモデルからデータを収集する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: larryfr
 author: blackmist
-ms.date: 09/15/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 2740a86c5ff68e851d592533b48dc8ee60d817ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python, data4ml
+ms.openlocfilehash: dc5e2b8c4c2e677322a16c4aaf24a104d0d920f5
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98070814"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556428"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web サービス エンドポイントからのデータを監視および収集する
 
@@ -33,7 +33,7 @@ ms.locfileid: "98070814"
  
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* Azure サブスクリプション - [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 * Azure Machine Learning ワークスペース、スクリプトを保存するローカル ディレクトリ、および Azure Machine Learning SDK for Python のインストール。 詳細については、[開発環境の構成方法](how-to-configure-environment.md)に関するページを参照してください。
 

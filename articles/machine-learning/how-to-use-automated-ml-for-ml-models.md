@@ -1,37 +1,36 @@
 ---
-title: AutoML を使用して、モデルとデプロイを作成する
+title: スタジオ UI を使用して自動 ML を設定する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning スタジオを使用して自動機械学習モデルを作成、確認、デプロイする。
+description: Azure Machine Learning スタジオで Azure Machine Learning の自動 ML を使用して、コードを 1 行も記述せずに自動 ML トレーニングの実行を設定する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.author: nibaccam
-author: aniththa
+author: cartacioS
 ms.reviewer: nibaccam
-ms.date: 12/20/2020
-ms.topic: conceptual
-ms.custom: how-to, automl
-ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 11/15/2021
+ms.topic: how-to
+ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 145a87800ee1f6f72e629f9e8e6ceace06889316
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562724"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717863"
 ---
-# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
+# <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>スタジオ UI を使用してコード不要の自動 ML トレーニングを設定する 
 
+この記事では、[ Azure Machine Learning スタジオ](overview-what-is-machine-learning-studio.md)で Azure Machine Learning の自動 ML を使用して、コードを 1 行も記述せずに自動 ML トレーニングの実行を設定する方法について説明します。
 
-この記事では、Azure Machine Learning Studio で 1 行のコードも使わずに、自動化された機械学習モデルを作成、確認、およびデプロイする方法について説明します。
-
-自動機械学習は、特定のデータに使用する最適な機械学習アルゴリズムを選択するプロセスです。 このプロセスにより、機械学習モデルを迅速に生成できます。 [自動化された機械学習の詳細については、こちらを参照してください](concept-automated-ml.md)。
+自動機械学習 (自動 ML) は、特定のデータに使用する最適な機械学習アルゴリズムが自動的に選択されるプロセスです。 このプロセスにより、機械学習モデルを迅速に生成できます。 [Azure Machine Learning での自動機械学習の実装の詳細を参照してください](concept-automated-ml.md)。
  
-エンド ツー エンドの例については、[Azure Machine Learning の自動 ML インターフェイスでの分類モデルの作成に関するチュートリアル](tutorial-first-experiment-automated-ml.md)をお試しください。 
+エンド ツー エンドの例については、[自動 ML によるコードなし分類モデルのトレーニングに関するチュートリアル](tutorial-first-experiment-automated-ml.md)を試してください。 
 
 Python コードベースのエクスペリエンスでは、Azure Machine Learning SDK を使用して、[自動化された機械学習の実験を構成する](how-to-configure-auto-train.md)こともできます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
 * Azure Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。 
 
@@ -47,7 +46,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
  これが初めて実行する実験である場合、空のリストとドキュメントへのリンクが表示されます。 
 
-そうではない場合、SDK で作成された実験を含む最近の自動機械学習の実験のリストが表示されます。 
+それ以外の場合は、SDK で作成されたものも含め、最近の自動 ML 実験の一覧が表示されます。 
 
 ## <a name="create-and-run-experiment"></a>実験を作成して実行する
 
@@ -95,7 +94,9 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
 1. ターゲット列を選択します。これは、予測を実行する列です。
 
-1. データ プロファイルとトレーニング ジョブのコンピューティングを選択します。 既存のコンピューティングの一覧は、ドロップダウン リストにあります。 新しいコンピューティングを作成するには、ステップ 7 の手順に従います。
+1. データ プロファイルとトレーニング ジョブのコンピューティング タイプを選択します。 [コンピューティング クラスター](concept-compute-target.md#azure-machine-learning-compute-managed)または[コンピューティング インスタンス](concept-compute-instance.md)を選択できます。 
+    
+1. 既存のコンピューティングのドロップダウン リストからコンピューティングを選択します。  新しいコンピューティングを作成するには、ステップ 7 の手順に従います。
 
 1. **[Create a new compute]\(新しいコンピューティングの作成\)** を選択して、この実験のコンピューティング コンテキストを構成します。
 
@@ -115,12 +116,11 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
     **[次へ]** を選択します。
 
-1. **[Task type and settings]\(タスクの種類と設定\)** フォームで、[classification]\(分類\)、[regression]\(回帰\)、または [forecasting]\(予測\) のタスクの種類を選択します。 [サポートされるタスクの種類](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)に関する記事を参照してください。
+1. **[Task type and settings]\(タスクの種類と設定\)** フォームで、[classification]\(分類\)、[regression]\(回帰\)、または [forecasting]\(予測\) のタスクの種類を選択します。 [サポートされるタスクの種類](concept-automated-ml.md#when-to-use-automl-classification-regression-forecasting--computer-vision)に関する記事を参照してください。
 
     1. **[分類]** については、ディープ ラーニングを有効にすることもできます。
     
         ディープ ラーニングが有効になっている場合、検証は _train_validation split_ に制限されます。 [検証オプションの詳細を確認してください](how-to-configure-cross-validation-data-splits.md)。
-
 
     1. **予測** のためには、以下が可能です。 
     
@@ -138,13 +138,32 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
     最適なモデルの説明 | 推奨される最適なモデルの説明を表示するために、選択して有効または無効にします。 <br> この機能は、[特定の予測アルゴリズム](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model)では現在使用できません。 
     Blocked algorithm (ブロックするアルゴリズム)| トレーニング ジョブから除外するアルゴリズムを選択します。 <br><br> 許可するアルゴリズムは、[SDK 実験](how-to-configure-auto-train.md#supported-models)でのみ使用できます。 <br> [各タスクの種類でサポートされているモデル](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels)を参照してください。
     終了条件| これらの基準のどれかが満たされると、トレーニング ジョブが終了します。 <br> *トレーニング ジョブ時間 (時間単位)* :トレーニング ジョブを実行できる時間の長さ。 <br> *Metric score threshold* (メトリック スコアのしきい値): すべてのパイプラインの最小メトリック スコアです。 これにより、達成目標のターゲット メトリックを定義した場合には、必要以上にトレーニング ジョブに時間を費やすことはなくなります。
-    検証| トレーニング ジョブで使用するクロス検証オプションをどれか選択します。 <br> [クロス検証の詳細については、こちらを参照してください](how-to-configure-cross-validation-data-splits.md#prerequisites)。<br> <br>予測では、k 分割交差検証のみがサポートされます。
     コンカレンシー| *コンカレント イテレーションの最大数*:トレーニング ジョブでテストするパイプライン (イテレーション) の最大数。 ジョブは、指定したイテレーションの数より多く実行されることはありません。 自動 ML による[クラスターでの複数回の子実行](how-to-configure-auto-train.md#multiple-child-runs-on-clusters)の方法に関する詳細を説明します。
 
 1. (任意) 特徴量化の設定を表示する: **追加の構成設定** フォームで **自動を特徴量化** を有効にすることを選択した場合、既定の特徴量化手法が適用されます。 **特徴量化の表示設定** でこれらの既定値を変更し、それに応じてカスタマイズすることができます。 [特徴量化をカスタマイズする](#customize-featurization)方法をご覧ください。 
 
     ![[特徴量化設定の表示] が強調表示された [タスクの種類を選択] ダイアログ ボックスを示すスクリーンショット。](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
+
+1. **[[Optional] Validate and test]\([省略可能] 検証とテスト\)** フォームで、次の操作を行うことができます。 
+
+    1. トレーニング ジョブに使用する検証の種類を指定します。 [クロス検証の詳細については、こちらを参照してください](how-to-configure-cross-validation-data-splits.md#prerequisites)。 
+    
+        1. 予測タスクでは、k 分割交差検証のみがサポートされます。
+    
+    1. テスト データセット (プレビュー) を指定して、実験の最後に自動 ML によって生成される推奨モデルを評価します。 テスト データを指定すると、実験の最後にテストの実行が自動的にトリガーされます。 このテストの実行は、自動 ML によって推奨された最適なモデルでのみ実行されます。 [リモート テスト実行の結果](#view-remote-test-run-results-preview)を取得する方法について学習します。
+    
+        >[!IMPORTANT]
+        > 生成されたモデルを評価するためのテスト データセットの提供は、プレビュー機能です。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
+        
+        * テスト データは、推奨モデルのテストの実行結果に偏りが出ないように、トレーニングと検証とは別のものと見なされます。 [モデル検証中のバイアスの詳細について確認してください](concept-automated-ml.md#training-validation-and-test-data)。
+        * 独自のテスト データセットを指定するか、トレーニング データセットの割合を使用することを選択できます。 テスト データは [Azure Machine Learning TabularDataset](how-to-create-register-datasets.md#tabulardataset) 形式にする必要があります。         
+        * テスト データセットのスキーマは、トレーニング データセットと一致する必要があります。 ターゲット列は省略可能ですが、ターゲット列が示されていない場合、テスト メトリックは計算されません。
+        * テスト データセットは、トレーニング データセットまたは検証データセットと同じにすべきではありません。
+        * 予測実行では、トレーニングとテスト分割はサポートされていません。
+        
+        ![検証データとテスト データを選択するフォームを示すスクリーンショット](media/how-to-use-automated-ml-for-ml-models/validate-test-form.png)
+        
 ## <a name="customize-featurization"></a>特徴量化をカスタマイズする
 
 **特徴量化** フォームでは、自動特徴量化を有効または無効にしたり、実験の自動特徴量化設定をカスタマイズしたりできます。 このフォームを開くには、「[実験を作成して実行する](#create-and-run-experiment)」セクションのステップ 10 を参照してください。 
@@ -176,19 +195,86 @@ Included | トレーニングに含める列を指定します。
 
 ### <a name="view-training-run-details"></a>トレーニング実行の詳細の表示
 
-完成したモデルのいずれかをドリルダウンして、 **[モデル]** タブのモデルの概要や、 **[視覚化]** タブのパフォーマンス メトリック グラフなど、トレーニングの実行の詳細を表示します。[グラフの詳細については、こちらを参照してください](how-to-understand-automated-ml.md)。
+完成したモデルのいずれかをドリル ダウンして、トレーニング実行の詳細を表示します。 **[モデル]** タブでは、モデルの概要や、選択したモデルに使用されるハイパー パラメーターなどの詳細が表示されます。 
 
-[![イテレーションの詳細](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
+[![ハイパーパラメーターの詳細](media/how-to-use-automated-ml-for-ml-models/hyperparameter-button.png)](media/how-to-use-automated-ml-for-ml-models/hyperparameter-details.png)
 
-## <a name="model-explanations"></a>モデルの説明
+ **[メトリック]** タブには、モデル固有のパフォーマンス メトリック グラフも表示されます。[グラフの詳細を確認](how-to-understand-automated-ml.md)してください。
 
-モデルについて理解を深めるには、モデルの説明ダッシュボードを使用して、モデルの予測に影響を与えたデータ機能 (未加工または処理適用) を確認します。 
+![イテレーションの詳細](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
-モデルの説明ダッシュボードには、トレーニングされたモデルの全体的な分析と共にその予測と説明が表示されます。 また、個々のデータ ポイントと個々の特徴量の重要度にドリル ダウンすることもできます。 [説明ダッシュボードの視覚化と特定のプロットについて学習してください](how-to-machine-learning-interpretability-aml.md#visualizations)。
+[データ変換] タブには、このモデルを生成するために適用されたデータ前処理、特徴エンジニアリング、スケーリング手法、機械学習アルゴリズムの図が表示されます。
+
+>[!IMPORTANT]
+> [データ変換] タブはプレビュー段階にあります。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)と見なされ、随時変更される可能性があります。
+
+![データの変換](./media/how-to-use-automated-ml-for-ml-models/data-transformation.png)
+
+## <a name="view-remote-test-run-results-preview"></a>リモート テストの実行結果を表示する (プレビュー)
+
+テスト データセットを指定した場合、または実験のセットアップ中にトレーニングまたはテスト分割を選択した場合、 **[Validate and test]\(検証とテスト\)** フォームで、自動 ML では、既定で推奨されるモデルを自動的にテストします。 その結果、自動 ML によりテスト メトリックが計算され、推奨されるモデルの品質とその予測が決定されます。 
+
+>[!IMPORTANT]
+> 生成されたモデルを評価するためにテスト データセットを使ってモデルをテストする機能はプレビュー段階です。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
+
+> [!WARNING]
+> この機能は、次の自動 ML シナリオでは使用できません
+>  * [Computer Vision タスク (プレビュー)](how-to-auto-train-image-models.md)
+>  * [多数モデルおよび階層型時系列予測トレーニング (プレビュー)](how-to-auto-train-forecast.md)
+>  * [ディープ ラーニング ニューラル ネットワーク (DNN) が有効になっている予測タスク](how-to-auto-train-forecast.md#enable-deep-learning)
+>  * [ローカル コンピューティングまたは Azure Databricks クラスターからの自動 ML 実行](how-to-configure-auto-train.md#compute-to-run-experiment)
+
+推奨されるモデルのテストの実行メトリックを表示するには、次のようにします。
+ 
+1. **[モデル]** ページに移動し、最適なモデルを選択します。 
+1. **[テスト結果 (プレビュー)]** タブを選択します。 
+1. 目的の実行を選択し、 **[メトリック]** タブを表示します。![自動的にテストされる、推奨モデルの [テスト結果] タブ](./media/how-to-use-automated-ml-for-ml-models/test-best-model-results.png)
+    
+テスト メトリックの計算に使用されるテスト予測を表示するには、次のようにします。 
+
+1. ページの下部に移動し、 **[出力データセット]** の下にあるリンクを選択して、データセットを開きます。 
+1. **[データセット]** ページで、 **[探索]** タブを選択して、テストの実行からの予測を表示します。
+    1. または、予測ファイルを **[出力とログ]** タブから表示またはダウンロードすることもできます。**Predictions** フォルダーを展開して、`predicted.csv` ファイルを見つけます。
+
+または、予測ファイルを [出力とログ] タブから表示またはダウンロードすることもできます。Predictions フォルダーを展開して、predictions.csv ファイルを見つけます。
+
+モデル テストの実行では、predictions.csv ファイルが生成され、ワークスペースで作成された既定のデータストアに格納されます。 このデータストアは、同じサブスクリプションを持つすべてのユーザーに表示されます。 テストの実行は、テストの実行で使用または作成された情報を非公開にする必要があるシナリオにはお勧めできません。
+
+## <a name="test-an-existing-automated-ml-model-preview"></a>既存の自動 ML モデルをテストする (プレビュー)
+
+>[!IMPORTANT]
+> 生成されたモデルを評価するためにテスト データセットを使ってモデルをテストする機能はプレビュー段階です。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
+
+> [!WARNING]
+> この機能は、次の自動 ML シナリオでは使用できません
+>  * [Computer Vision タスク (プレビュー)](how-to-auto-train-image-models.md)
+>  * [多数モデルおよび階層型時系列予測トレーニング (プレビュー)](how-to-auto-train-forecast.md)
+>  * [ディープ ラーニング ニューラル ネットワーク (DNN) が有効になっている予測タスク](how-to-auto-train-forecast.md#enable-deep-learning)
+>  * [ローカル コンピューティングまたは Azure Databricks クラスターからの自動 ML 実行](how-to-configure-auto-train.md#compute-to-run-experiment)
+
+実験が完了したら、自動 ML によって自動的に生成されるモデルをテストできます。 推奨されるモデルではなく、別の 自動 ML 生成モデルをテストする場合は、次の手順を行います。 
+
+1. 既存の 自動 ML 実験実行を選択します。  
+1. 実行の **[モデル]** タブに移動し、テストする完成モデルを選択します。
+1. モデルの **[詳細]** ページで、 **[Test model (preview)]\(モデルのテスト (プレビュー)\)** ボタンを選択して、 **[Test model]\(モデルのテスト\)** ペインを開きます。
+1. **[Test model]\(モデルのテスト\)** ペインで、テストの実行に使用するコンピューティング クラスターとテスト データセットを選択します。 
+1. **[テスト]** ボタンを選択します。 テスト データセットのスキーマは、トレーニング データセットと一致する必要がありますが、**ターゲット列** は省略可能です。
+1. モデル テストの実行が正常に作成されると、 **[詳細]** ページに成功メッセージが表示されます。 **[テスト結果]** タブを選択して、実行の進行状況を確認します。
+
+1. テストの実行の結果を表示するには、 **[詳細]** ページを開き、「[リモート テストの実行結果を表示する](#view-remote-test-run-results-preview)」セクションの手順に従います。 
+
+    ![[Test model]\(モデルのテスト\) フォーム](./media/how-to-use-automated-ml-for-ml-models/test-model-form.png)
+    
+
+## <a name="model-explanations-preview"></a>モデルの説明 (プレビュー)
+
+モデルについて理解を深めるために、モデルの説明ダッシュボードを使用して、モデルの予測に影響を与えたデータ機能 (未加工または処理適用) を確認できます。 
+
+モデルの説明ダッシュボードには、トレーニングされたモデルの全体的な分析と共にその予測と説明が表示されます。 また、個々のデータ ポイントと個々の特徴量の重要度にドリル ダウンすることもできます。 [説明ダッシュボードの視覚化について詳細を確認してください](how-to-machine-learning-interpretability-aml.md#visualizations)。
 
 特定のモデルの説明を取得するには、次の手順を実行します。 
 
-1. **[モデル]** タブで、使用するモデルを選択します。 
+1. **[モデル]** タブで、理解を深めるモデルを選択します。 
 1. **[モデルの説明]** ボタンを選択し、説明の生成に使用できるコンピューティングを提供します。
 1. **[子の実行]** タブで状態を確認します。 
 1. 完了したら、説明ダッシュボードが含まれている **[説明 (プレビュー)]** タブに移動します。 
@@ -223,10 +309,10 @@ Included | トレーニングに含める列を指定します。
     ----|----
     名前| デプロイの一意の名前を入力します。
     説明| このデプロイの目的を識別しやすくするための説明を入力します。
-    コンピューティングの種類| デプロイするエンドポイントの種類を選択します。*Azure Kubernetes Service (AKS)* または *Azure Container Instance (ACI)* です。
+    コンピューティングの種類| デプロイするエンドポイントの種類 ([*Azure Kubernetes Service (AKS)*](../aks/intro-kubernetes.md) または [*Azure Container Instance (ACI)* ](../container-instances/container-instances-overview.md)) を選択します。
     コンピューティング名| *AKS にのみ適用されます。* デプロイする AKS クラスターの名前を選択します。
     認証を有効にする | トークンベースまたはキーベースの認証を許可する場合に選択します。
-    カスタム デプロイ アセットを使用する| 独自のスコアリング スクリプトと環境ファイルをアップロードする場合は、この特徴量を有効にします。 [スコアリング スクリプトの詳細を確認](how-to-deploy-and-where.md)してください。
+    カスタム デプロイ アセットを使用する| 独自のスコアリング スクリプトと環境ファイルをアップロードする場合は、この特徴量を有効にします。 それ以外の場合、既定で、これらのアセットが自動 ML によって提供されます。 [スコアリング スクリプトの詳細を確認](how-to-deploy-and-where.md)してください。
 
     >[!Important]
     > ファイル名の文字数は 32 文字未満にする必要があります。先頭と末尾には英数字を使用してください。 先頭と末尾以外では、ダッシュ、アンダースコア、ピリオド、および英数字を使用できます。 スペースは使用できません。

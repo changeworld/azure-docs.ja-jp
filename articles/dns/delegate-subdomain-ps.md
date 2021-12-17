@@ -5,20 +5,21 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: how-to
-ms.date: 2/7/2019
+ms.date: 05/03/2021
 ms.author: rohink
-ms.openlocfilehash: 9b37d313aa5d8c2255b4e3be69831dfcb50238ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0030eccff0885c2cf2e1e0eef386b8907aa0df29
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84712549"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689356"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS サブドメインを委任する
 
 Azure PowerShell を使用して DNS サブドメインを委任することができます。 たとえば、contoso.com ドメインを所有している場合は、*engineering* というサブドメインを contoso.com ゾーンとは別に管理できる別のゾーンに委任できます。
 
-必要に応じて、[Azure portal](delegate-subdomain.md) を使用して、サブドメインを委任できます。
+必要に応じて、[Azure portal](delegate-subdomain.md) を使用して、サブドメインを委任することもできます。
 
 > [!NOTE]
 > この記事では、contoso.com を例として使用します。 contoso.com を独自のドメイン名に置き換えてください。
@@ -35,25 +36,31 @@ Azure DNS サブドメインを委任するには、まずパブリック ドメ
 
 まず **engineering** サブドメインのゾーンを作成します。
 
-`New-AzDnsZone -ResourceGroupName <resource group name> -Name engineering.contoso.com`
+```azurepowershell-interactive
+New-AzDnsZone -ResourceGroupName <resource group name> -Name engineering.contoso.com
+```
 
 ## <a name="note-the-name-servers"></a>ネーム サーバーをメモする
 
 次に、engineering サブドメインの 4 つのネーム サーバーをメモします。
 
-`Get-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -RecordType NS`
+```azurepowershell-interactive
+Get-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -RecordType NS
+```
 
 ## <a name="create-a-test-record"></a>テスト レコードを作成する
 
 engineering ゾーンに、テストに使用する **A** レコードを作成します。
 
-   `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)`.
+```azurepowershell-interactive
+New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)
+```
 
 ## <a name="create-an-ns-record"></a>NS レコードの作成
 
 次に、contoso.com ゾーンに、**engineering** ゾーンのネーム サーバー (NS) レコードを作成します。
 
-```azurepowershell
+```azurepowershell-interactive
 $Records = @()
 $Records += New-AzDnsRecordConfig -Nsdname <name server 1 noted previously>
 $Records += New-AzDnsRecordConfig -Nsdname <name server 2 noted previously>
@@ -67,8 +74,10 @@ $RecordSet = New-AzDnsRecordSet -Name engineering -RecordType NS -ResourceGroupN
 nslookup を使用して委任をテストします。
 
 1. PowerShell ウィンドウを開きます。
-2. コマンド プロンプトに「`nslookup www.engineering.contoso.com.`」と入力します。
-3. アドレス **10.10.10.10** を示す権限のない回答を受け取ります。
+
+1. コマンド プロンプトに「`nslookup www.engineering.contoso.com.`」と入力します。
+
+1. アドレス **10.10.10.10** を示す権限のない回答を受け取ります。
 
 ## <a name="next-steps"></a>次のステップ
 

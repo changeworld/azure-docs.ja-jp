@@ -4,7 +4,7 @@ description: Azure Monitor ログを使用して Azure Active Directory アク�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 08/19/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 905261058c2de0afae18cbc5572c64962bef8834
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 453c2815f2f4243a7101ba5ce8dd1076d088133c
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580015"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514998"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Monitor ログを使用して Azure AD アクティビティ ログを分析する
 
@@ -61,7 +61,6 @@ ms.locfileid: "100580015"
 1. 以前のセクションの既定のクエリ ビューから、 **[スキーマ]** を選択し、ワークスペースを展開します。 
 
 2. **[ログ管理]** セクションを展開し、続いて **[AuditLogs]** または **[SignInLogs]** のどちらかを展開してログ スキーマを表示します。
-    ![監査ログ](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![サインイン ログ](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>Azure AD アクティビティ ログのクエリを実行する
 

@@ -1,5 +1,5 @@
 ---
-title: Msv2 シリーズ (プレビュー) - Azure Virtual Machines
+title: Msv2/Mdsv2 ミディアム メモリ シリーズ - Azure Virtual Machines
 description: Msv2 シリーズ VM の仕様。
 author: ayshakeen
 ms.service: virtual-machines
@@ -7,41 +7,32 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: a7f4757467523837423d52998eb6b8204090e627
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd97273c37f4707827f5706889152811745199ab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562573"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063645"
 ---
-# <a name="msv2-and-mdsv2-series-medium-memory-preview"></a>Msv2 および Mdsv2 シリーズのミディアム メモリ (プレビュー)
+# <a name="msv2-and-mdsv2-series-medium-memory"></a>Msv2 および Mdsv2 シリーズのミディアム メモリ
 
-
-> [!IMPORTANT]
-> プレビューに参加するには、 **https://aka.ms/Mv2MedMemoryPreview** でフォームに入力してください。  
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
 
 Msv2 および Mdsv2 ミディアム メモリ VM シリーズには、全コア ベース周波数 2.7 GHz、シングル コア ターボ周波数 4.0 GHz の、Intel® Xeon® Platinum 8280 (Cascade Lake) プロセッサが搭載されています。 これらの VM により、ローカル ディスクありとディスクなしのオプションで柔軟性が向上します。 また、最大で 192 の vCPU、4 TiB のメモリにまで拡張できる、より多くの CPU とメモリを備えた、新しい一連の分離された VM サイズにアクセスできます。 
 
-
-Msv2 および Mdsv2 シリーズの VM は第 2 世代のみであり、第 2 世代でサポートされているイメージのサブセットがサポートされます。 Msv2 および Mdsv2 シリーズでサポートされているイメージの完全な一覧については、以下を参照してください。  
-
-- Windows Server 2019 以降
-- SUSE Linux Enterprise Server 12 SP4 以降または SUSE Linux Enterprise Server 15 SP1 以降
-- Red Hat Enterprise Linux 7.6、7.7、8.1 以降 
-- Oracle Enterprise Linux 7.7 以降
-
-第 2 世代仮想マシンの詳細については、「[Azure での第 2 世代 VM のサポート](./generation-2.md)」を参照してください。
+> [!NOTE]
+> Msv2 および Mdsv2 ミディアム メモリ VM は第 2 世代のみです。 第 2 世代仮想マシンの詳細については、「[Azure での第 2 世代 VM のサポート](./generation-2.md)」を参照してください。
 
 
 
-[Premium Storage](premium-storage-performance.md):サポートされています<br>
+[Premium Storage](premium-storage-performance.md): サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 2 世代<br>
 [書き込みアクセラレータ](./how-to-enable-write-accelerator.md): サポートされています<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md): Mdsv2 でサポートされています <br>
 <br>
  
 ## <a name="msv2-medium-memory-diskless"></a>Msv2 ミディアム メモリ (ディスクなし) 

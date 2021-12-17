@@ -4,19 +4,19 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/17/2020
 ms.author: msangapu
-ms.openlocfilehash: dad7799cb5a7579b28847e3968b6b38f1f98298a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 8e787aab95da883f5a448ee250eb542fb10e45f6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327017"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287278"
 ---
 | リソース | Free | 共有 | Basic | Standard | Premium (v1 から v3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Azure App Service プラン](../articles/app-service/overview-hosting-plans.md)あたりの [Web、モバイル、または API アプリ数](https://azure.microsoft.com/services/app-service/)<sup>1</sup> |10 |100 |無制限<sup>2</sup> |無制限<sup>2</sup> |無制限<sup>2</sup> |無制限<sup>2</sup>|
 | [App Service プラン](../articles/app-service/overview-hosting-plans.md) |リージョンあたり 10 件 |リソース グループあたり 10 |リソース グループあたり 100 |リソース グループあたり 100 |リソース グループあたり 100 |リソース グループあたり 100|
 | コンピューティング インスタンスの種類 |共有 |共有 |専用<sup>3</sup> |専用<sup>3</sup> |専用<sup>3</sup></p> |専用<sup>3</sup>|
-| [スケール アウト](../articles/app-service/manage-scale-up.md) (最大インスタンス) |1 Shared インスタンス |1 Shared インスタンス |3 専用インスタンス<sup>3</sup> |10 専用インスタンス<sup>3</sup> | 20 専用インスタンス (v1 および v2)、30 専用インスタンス (v3)。<sup>3</sup>|100 専用インスタンス<sup>4</sup>|
+| [スケール アウト](../articles/app-service/manage-scale-up.md) (最大インスタンス) |1 Shared インスタンス |1 Shared インスタンス |3 専用インスタンス<sup>3</sup> |10 専用インスタンス<sup>3</sup> | 20 専用インスタンス (v1)、30 専用インスタンス (v2 および v3)。<sup>3</sup>|100 専用インスタンス<sup>4</sup>|
 | ストレージ<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> |1 TB<sup>5</sup> <br/><br/> 使用可能なストレージ クォータは 999 GB です。 |
 | CPU 時間 (5 分)<sup>6</sup> |3 分 |3 分 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金|
 | CPU 時間 (1 日)<sup>6</sup> |約 60 分 |約 240 分 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |
@@ -29,8 +29,8 @@ ms.locfileid: "107327017"
 | サブスクリプションあたりの App Service 証明書数<sup>9</sup>| サポートされていません | サポートされていません |10 |10 |10 |10 |
 | アプリケーションごとのカスタム ドメイン数</a> |0 (azurewebsites.net サブドメインのみ)|500 |500 |500 |500 |500 |
 | カスタム ドメインの [SSL サポート](../articles/app-service/configure-ssl-certificate.md) |サポートされない、デフォルトで使用可能な \*.azurewebsites.net のワイルドカード証明書|サポートされない、デフォルトで使用可能な \*.azurewebsites.net のワイルドカード証明書|SNI SSL 接続は無制限 |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる|
-| Hybrid Connections (ハイブリッド接続) | | | プランあたり 5 | プランあたり 25 | アプリあたり 200 | アプリあたり 200 |
-| [Virtual Network 統合](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
+| [Hybrid Connections (ハイブリッド接続)](../articles/app-service/app-service-hybrid-connections.md) | | | プランあたり 5 | プランあたり 25 | アプリあたり 220 | アプリあたり 220 |
+| [Virtual Network 統合](../articles/app-service/overview-vnet-integration.md) | | |   |  X |  X  |  X  |
 | [プライベート エンドポイント](../articles/app-service/networking/private-endpoint.md) | | |   |   |  アプリあたり 100  |    |
 | 統合 Load Balancer | |X |X |X |X |X<sup>10</sup> |
 | [アクセス制限](../articles/app-service/networking-features.md#access-restrictions) | アプリあたり 512 個のルール | アプリあたり 512 個のルール | アプリあたり 512 個のルール | アプリあたり 512 個のルール | アプリあたり 512 個のルール | アプリあたり 512 個のルール |

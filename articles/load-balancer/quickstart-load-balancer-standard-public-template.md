@@ -14,16 +14,16 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 7067d7d76815103541fa4654da2bf977ba03a4ef
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a5cb80924daf3328da6a3a9fd7fc1c7c7212bed6
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056251"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129090934"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して VM の負荷を分散するパブリック ロード バランサーを作成する
 
-負荷分散では、着信要求を複数の仮想マシン (VM) に分散させることで、より高いレベルの可用性とスケールを実現します。 
+負荷分散では、着信要求を複数の仮想マシン (VM) に分散させることで、より高いレベルの可用性とスケールを実現します。
 
 このクイックスタートでは、仮想マシンを負荷分散するために標準のロード バランサーをデプロイする方法を説明します。
 
@@ -33,7 +33,7 @@ ARM テンプレートを使用すると、他のデプロイ方法より手順�
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-load-balancer-standard-create%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fload-balancer-standard-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,11 +41,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-load-balancer-standard-create/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/load-balancer-standard-create/)からのものです。
 
-ロード バランサーとパブリック IP の SKU は一致している必要があります。 標準のロード バランサーを作成するときに、標準のロード バランサーのフロントエンドとして構成されている新しい標準パブリック IP アドレスも作成する必要があります。 標準のロード バランサーを作成する場合は、[このテンプレート](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)を使用します。 運用環境のワークロードには標準 SKU の使用をお勧めします。
+ロード バランサーとパブリック IP の SKU は一致している必要があります。 標準のロード バランサーを作成するときに、標準のロード バランサーのフロントエンドとして構成されている新しい標準パブリック IP アドレスも作成する必要があります。 標準のロード バランサーを作成する場合は、[このテンプレート](https://azure.microsoft.com/resources/templates/2-vms-loadbalancer-natrules/)を使用します。 運用環境のワークロードには標準 SKU の使用をお勧めします。
 
-:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/load-balancer-standard-create/azuredeploy.json":::
 
 テンプレートでは、複数の Azure リソースが定義されています。
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - [**Microsoft.Network/bastionHosts**](/azure/templates/microsoft.network/bastionhosts)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3)。
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) (3)。
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3)。
 - [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3): Internet Information Server (IIS) と Web ページの構成に使用。
 
@@ -71,7 +71,7 @@ Azure Load Balancer に関連するテンプレートをさらに探すには、
    $adminPassword = Read-Host -Prompt "Enter the virtual machine administrator password" -AsSecureString
 
    $resourceGroupName = "${projectName}rg"
-   $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json"
+   $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/load-balancer-standard-create/azuredeploy.json"
 
    New-AzResourceGroup -Name $resourceGroupName -Location $location
    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -location $location -adminUsername $adminUsername -adminPassword $adminPassword
@@ -119,7 +119,7 @@ Azure Load Balancer に関連するテンプレートをさらに探すには、
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-それらが不要になったら、以下を削除します。 
+それらが不要になったら、以下を削除します。
 
 * Resource group
 * Load Balancer
@@ -140,4 +140,4 @@ Azure portal に移動し、ロード バランサーを含むリソース グ�
 さらに学習するには、Azure Load Balancer に関するチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [Azure Load Balancer のチュートリアル](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [Azure Load Balancer のチュートリアル](./quickstart-load-balancer-standard-public-portal.md)

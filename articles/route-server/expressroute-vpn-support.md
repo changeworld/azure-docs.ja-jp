@@ -1,27 +1,23 @@
 ---
-title: ExpressRoute と Azure VPN に対する Azure Route Server (プレビュー) のサポートについて
+title: ExpressRoute と Azure VPN に対する Azure Route Server のサポートについて
 description: Azure Route Server が ExpressRoute ゲートウェイと Azure VPN ゲートウェイとどのように連携しているかについて説明します。
 services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 10/01/2021
 ms.author: duau
-ms.openlocfilehash: 6e588c7c0381c6825bcf75cbbe28a1dd6b865940
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61a712fa747252b07a513cfa6e18e3f3b4a67e6c
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101678812"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400726"
 ---
-# <a name="about-azure-route-server-preview-support-for-expressroute-and-azure-vpn"></a>ExpressRoute と Azure VPN に対する Azure Route Server (プレビュー) のサポートについて
+# <a name="about-azure-route-server-support-for-expressroute-and-azure-vpn"></a>ExpressRoute と Azure VPN に対する Azure Route Server のサポートについて
 
 Azure Route Server は、Azure で実行されているサードパーティ製のネットワーク仮想アプライアンス (NVA) をサポートするのみならず、ExpressRoute および Azure VPN ゲートウェイとのシームレスな統合も行います。 ゲートウェイと Azure Route Server の間で、BGP ピアリングを構成したり、管理したりする必要はありません。 ゲートウェイと Azure Route Server の間でのルート交換は、簡単な[構成変更](quickstart-configure-route-server-powershell.md#route-exchange)によって有効にすることができます。
 
-> [!IMPORTANT]
-> Azure Route Server (プレビュー) は現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
@@ -38,7 +34,7 @@ Azure Route Server は、Azure で実行されているサードパーティ製�
 SDWAN アプライアンスを Azure VPN ゲートウェイに置き換えることもできます。 Azure VPN ゲートウェイと ExpressRoute はフル マネージドされているため、ルート交換を有効にするだけで、2 つのオンプレミス ネットワークが相互に通信できるようになります。
 
 > [!IMPORTANT] 
-> Azure VPN ゲートウェイは、[**アクティブ/アクティブ**](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md) モードで構成する必要があります。
+> Azure VPN ゲートウェイは、[**アクティブ/アクティブ**](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md) モードで構成し、ASN が 65515 に設定されている必要があります。
 >
 
 ![ルート サーバーで構成された ExpressRoute と VPN ゲートウェイを示す図。](./media/expressroute-vpn-support/expressroute-and-vpn-with-route-server.png)

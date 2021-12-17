@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: ac4e8d93e2e729db387b0f9cf81017b6c58b6750
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06728431db78d14be1a67f1dde753a0992b5dbba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951336"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471119"
 ---
 # <a name="deployment-best-practices"></a>デプロイのベスト プラクティス
 
@@ -43,7 +43,7 @@ Azure Pipelines、Jenkins、エディター プラグインなどのデプロイ
 
 ### <a name="continuously-deploy-code"></a>コードを継続的にデプロイする
 
-テスト、QA、ステージング用に指定されたブランチがプロジェクトにある場合は、それらの各ブランチをステージング スロットに継続的にデプロイする必要があります。 (これは、[Gitflow 設計](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)と呼ばれています。)これにより、関係者は、デプロイされたブランチを簡単に評価してテストすることができます。 
+テスト、QA、ステージング用に指定されたブランチがプロジェクトにある場合は、それらの各ブランチをステージング スロットに継続的にデプロイする必要があります。 これは [Gitflow 設計](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)と呼ばれます。これにより、関係者は、デプロイされたブランチを簡単に評価してテストすることができます。 
 
 運用スロットに対しては継続的デプロイを有効にしないでください。 代わりに、運用ブランチ (多くの場合、メイン) を非運用スロットにデプロイします。 ベース ブランチをリリースする準備ができたら、それを運用スロットにスワップします。 運用環境にデプロイするのではなく、運用環境にスワップすると、ダウンタイムの発生が抑えられ、もう一度スワップすることで変更をロールバックすることができます。 
 
@@ -127,7 +127,7 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
 
 ### <a name="java"></a>Java
 
-JAR アプリケーションのデプロイには Kudu [zipdeploy/](deploy-zip.md) API を使用し、WAR アプリには [wardeploy/](deploy-zip.md#deploy-war-file) を使用してください。 Jenkins を使用している場合は、デプロイ フェーズでこれらの API を直接使用できます。 詳細については、 [こちらの記事](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli)を参照してください。
+JAR アプリケーションのデプロイには Kudu [zipdeploy/](deploy-zip.md) API を使用し、WAR アプリには [wardeploy/](deploy-zip.md#deploy-warjarear-packages) を使用してください。 Jenkins を使用している場合は、デプロイ フェーズでこれらの API を直接使用できます。 詳細については、 [こちらの記事](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli)を参照してください。
 
 ### <a name="node"></a>Node
 
@@ -157,3 +157,7 @@ App Service プランで、使用可能な CPU またはメモリの 90% 以上�
 - **[Best Practices for Availability & Performance]\(可用性 & パフォーマンスのベスト プラクティス\)** または **[Best Practices for Optimal Configuration]\(最適な構成のベスト プラクティス\)** をクリックして、これらのベスト プラクティスに関するアプリの現在の状態を表示します。
 
 また、こちらのリンクを使用して、リソースの App Service 診断を直接開くこともできます: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`。
+
+## <a name="more-resources"></a>その他のリソース
+
+[環境変数とアプリ設定のリファレンス](reference-app-settings.md)

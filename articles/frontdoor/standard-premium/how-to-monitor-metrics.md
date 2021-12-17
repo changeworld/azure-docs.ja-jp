@@ -2,18 +2,18 @@
 title: Azure Front Door Standard または Premium の監視メトリック
 description: この記事では、Azure Front Door Standard または Premium の監視メトリックについて説明します。
 services: frontdoor
-author: duau
+author: duongau
 manager: KumudD
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: 72388eb8006ff1b9628db5066dc63e6a0811f3d5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a22e3825764f8b727802a1d78f2e02011cf7660a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557328"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793527"
 ---
 # <a name="real-time-monitoring-in-azure-front-door-standardpremium"></a>Azure Front Door Standard または Premium でのリアルタイム監視
 
@@ -39,7 +39,7 @@ Azure Front Door Standard または Premium では、メトリックが 60 秒�
 | ------------- | ------------- | ------------- |
 | バイト ヒット率 | 総エグレスに対して計算される、AFD キャッシュからのエグレスの割合。 </br> **バイト ヒット率** = (エッジからのエグレス - オリジンからのエグレス)/エッジからのエグレス。 </br> **バイト ヒット率の計算で除外されるシナリオ**:</br> 1. ルール エンジンまたはクエリ文字列キャッシュ動作を使用して、キャッシュなしを明示的に構成します。 </br> 2. ストアなしまたはプライベート キャッシュを使用して、キャッシュ制御ディレクティブを明示的に構成します。 </br>3. ほとんどのトラフィックが構成またはシナリオに基づいてキャッシュから提供されるのではなく、配信元に転送される場合、バイト ヒット率は低くなる可能性があります。 | エンドポイント |
 | RequestCount | CDN によって処理されたクライアント要求の数。 | エンドポイント、クライアントの国、クライアントのリージョン、HTTP 状態、HTTP 状態グループ |
-| ResponseSize | AFD によって処理されたクライアント要求の数。 |エンドポイント、クライアントの国、クライアントのリージョン、HTTP 状態、HTTP 状態グループ |
+| ResponseSize | クライアントに Front Door からの応答として送信されたバイト数。 |エンドポイント、クライアントの国、クライアントのリージョン、HTTP 状態、HTTP 状態グループ |
 | TotalLatency | クライアント要求が CDN によって受信されてから、**最後の応答バイトが CDN からクライアントに送信されるまで** の合計時間。 |エンドポイント、クライアントの国、クライアントのリージョン、HTTP 状態、HTTP 状態グループ |
 | RequestSize | AFD にクライアントからの要求として送信されたバイト数。 | エンドポイント、クライアントの国、クライアントのリージョン、HTTP 状態、HTTP 状態グループ |
 | 4XX % ErrorRate | 応答の状態コードが 4XX であるすべてのクライアント要求の割合。 | エンドポイント、クライアントの国、クライアントのリージョン |

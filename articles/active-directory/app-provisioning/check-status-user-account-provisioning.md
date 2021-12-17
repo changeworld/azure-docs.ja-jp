@@ -1,22 +1,22 @@
 ---
-title: SaaS アプリケーションへの自動ユーザー アカウント プロビジョニングについてのレポート
+title: Azure Active Directory からサービスとしてのソフトウェア (SaaS) アプリケーションに自動ユーザー アカウント プロビジョニングを報告する
 description: 自動ユーザー アカウント プロビジョニング ジョブの状態を確認する方法と、個々のユーザーのプロビジョニングをトラブルシューティングする方法について説明します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/09/2018
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 5d93cec201feeb43700fe849f2fddc8eaf22488a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c4605372964012f67ff269d6bd9ebaa9a4030b67
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579486"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991567"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル: 自動ユーザー アカウント プロビジョニングについてのレポート
 

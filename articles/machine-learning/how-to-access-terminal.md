@@ -8,15 +8,14 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to
+ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: 6f6c8e309fde92b0c2cf6fabac3489557b0b6b93
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: b4b953c527010cb4ec15f0adf52df6bb3b0d7db0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062388"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674948"
 ---
 # <a name="access-a-compute-instance-terminal-in-your-workspace"></a>ワークスペースでコンピューティング インスタンスのターミナルにアクセスする
 
@@ -28,7 +27,7 @@ ms.locfileid: "106062388"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://aka.ms/AMLFree) を作成してください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。
 
 ## <a name="access-a-terminal"></a>ターミナルにアクセスする
@@ -69,7 +68,7 @@ ms.locfileid: "106062388"
 
 ## <a name="install-packages"></a>パッケージをインストールする
 
- ターミナル ウィンドウからパッケージをインストールします。 Python パッケージを **Python 3.6 - AzureML** 環境にインストールします。  R パッケージを **R** 環境にインストールします。
+ ターミナル ウィンドウからパッケージをインストールします。 Python パッケージを **Python 3.8 - AzureML** 環境にインストールします。  R パッケージを **R** 環境にインストールします。
 
 または、パッケージを Jupyter Notebook または RStudio に直接インストールできます。
 
@@ -82,7 +81,7 @@ ms.locfileid: "106062388"
 ## <a name="add-new-kernels"></a>新しいカーネルを追加する
 
 > [!WARNING]
->  コンピューティング インスタンスをカスタマイズするときは、**azureml_py36** conda 環境も **Python 3.6 - AzureML** カーネルも決して削除しないようにしてください。 Jupyter/JupyterLab 機能に必要です
+>  コンピューティング インスタンスをカスタマイズしている間は、**azureml_py36** または **azureml_py38** Conda 環境を削除しないでください。  また、**Python 3.6 - AzureML** または **Python 3.8 - AzureML** カーネルも削除しないでください。 これらは、Jupyter/JupyterLab の機能に必要です。
 
 新しい Jupyter カーネルをコンピューティング インスタンスに追加するには、次のようにします。
 

@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
-  ms.date: 09/02/2020
-  ms.openlocfilehash: 31896c34c8bfc265dd16b5b6d317e211b310260f
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 06/30/2021
+  ms.openlocfilehash: 947a6c78abf3b52a2b9e7e78c025e86e13191b8a
+  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89396745"
+  ms.lasthandoff: 07/07/2021
+  ms.locfileid: "113432448"
 landingContent:
 - title: Web アプリケーション ファイアウォールについて
   linkLists:
@@ -32,11 +32,15 @@ landingContent:
   - linkListType: concept
     links:
     - text: よく寄せられる質問 - Application Gateway
-      url: ./ag/application-gateway-waf-faq.md
+      url: ./ag/application-gateway-waf-faq.yml
     - text: よく寄せられる質問 - Front Door
-      url: ./afds/waf-faq.md
+      url: ./afds/waf-faq.yml
     - text: 新機能
       url: https://azure.microsoft.com/updates/?category=networking&query=Web%20Application%20Firewall
+  - linkListType: learn
+    links:
+    - text: Azure Web アプリケーション ファイアウォールの概要
+      url: /learn/modules/introduction-azure-web-application-firewall/
 - title: はじめに
   linkLists:
   - linkListType: tutorial

@@ -7,16 +7,16 @@ ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: scoriani
+ms.author: scoriani
+ms.reviewer: mathoma
 ms.date: 12/04/2018
-ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99d620847c12d194fbd8cd51b53d8820c32dd0c0
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792074"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438230"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>split-merge サービスをデプロイして、シャード化されたデータベース間でデータを移動する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -185,7 +185,7 @@ Split-Merge サービスの Web エンドポイントを決定します。 こ�
 4. *ShardManagement.psm1* – ShardManagement API をラップするヘルパー スクリプトです
 5. *SqlDatabaseHelpers.psm1* – SQL Database のデータベースを作成および管理するためのヘルパー スクリプトです
 
-   <table style="width:100%">
+   <table width="100%">
      <tr>
        <th>PowerShell ファイル</th>
        <th>手順</th>
@@ -207,7 +207,7 @@ Split-Merge サービスの Web エンドポイントを決定します。 こ�
        <td>5. シャード化したテーブルの SchemaInfo を宣言します。</td>
      </tr>
    </table>
-   <table style="width:100%">
+   <table width="100%">
      <tr>
        <th>PowerShell ファイル</th>
        <th>手順</th>
@@ -270,7 +270,7 @@ Split-Merge サービスの Web エンドポイントを決定します。 こ�
     -CertificateThumbprint '0123456789abcdef0123456789abcdef01234567'
     ```
 
-    下記のエラーが表示された場合に最も考えられるのは、Web エンドポイントの証明書に問題があることす。 任意の Web ブラウザーを使用して Web エンドポイントに接続を試み、証明書エラーになるかご確認ください。
+    下記のエラーが表示された場合、Web エンドポイントの証明書に問題がある可能性が高いです。 任意の Web ブラウザーを使用して Web エンドポイントに接続を試み、証明書エラーになるかご確認ください。
 
     `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLSsecure channel.`
 
@@ -321,8 +321,8 @@ Split-Merge サービスの Web エンドポイントを決定します。 こ�
 
 分割やマージの操作を実行するには、移動の対象となるシャード化したテーブルと参照テーブルを宣言する必要があります。 これは **SchemaInfo** API で行います。 この API は、 **Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema** 名前空間にあります。
 
-1. シャード テーブルごとに、テーブルの親のスキーマ名 (オプション、既定値は "dbo")、テーブル名、およびシャード キーが含まれているテーブル内の列名を記述する **ShardedTableInfo** オブジェクトを作成します。
-2. 参照テーブルごとに、テーブルの親のスキーマ名 (オプション、既定値は "dbo") とテーブル名を記述する **ReferenceTableInfo** オブジェクトを作成します。
+1. シャード化されたテーブルごとに、テーブルの親のスキーマ名 (オプション、既定値は "dbo")、テーブル名、シャーディング キーを含むテーブル内の列名が記述された、**ShardedTableInfo** オブジェクトを作成します。
+2. 参照テーブルごとに、テーブルの親のスキーマ名 (オプション、既定値は "dbo") とテーブル名が記述された **ReferenceTableInfo** オブジェクトを作成します。
 3. 新しい **SchemaInfo** オブジェクトに、前の TableInfo オブジェクトを追加します。
 4. **ShardMapManager** オブジェクトへの参照を取得し、**GetSchemaInfoCollection** を呼び出します。
 5. **SchemaInfoCollection** に **SchemaInfo** を追加し、シャード マップ名を入力します。

@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: 3c68159f20873aeff5938ab21f348be4a922041c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/22/2021
+ms.openlocfilehash: e8420bbe9ece67ab8be9b9cf3a3357e9d44cde3e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779479"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264144"
 ---
 # <a name="rules-for-naming-azure-data-factory-entities"></a>Azure Data Factory エンティティの名前付け規則
 > [!NOTE]

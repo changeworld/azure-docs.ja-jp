@@ -7,18 +7,18 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 08/18/2021
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6385f03556d155941139b77333d6f4a25081fe67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dba6dcf0dded3db4c1cf1ddc26071e9803b55cd6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103160"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232919"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Web API を呼び出すモバイル アプリを登録する
 
@@ -34,7 +34,7 @@ ms.locfileid: "100103160"
 
 ### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>統合 Windows 認証の対象ユーザー、ユーザー名とパスワード、B2C
 
-ユニバーサル Windows プラットフォーム (UWP) アプリがある場合は、統合 Windows 認証を使用してユーザーにサインインできます。 統合 Windows 認証またはユーザー名とパスワード認証を使用するには、アプリケーションでは自分の基幹業務 (LOB) 開発者テナントにユーザーをサインインする必要があります。 独立系ソフトウェア ベンダー (ISV) のシナリオでは、アプリケーションは Azure Active Directory 組織内のユーザーにサインインできます。 これらの認証フローは、Microsoft の個人用アカウントではサポートされていません。
+ユニバーサル Windows プラットフォーム (UWP) アプリがある場合は、統合 Windows 認証 (IWA) を使用してユーザーにサインインできます。 IWA またはユーザー名とパスワード認証を使用するには、アプリケーションでは自分の基幹業務 (LOB) 開発者テナントにユーザーをサインインする必要があります。 独立系ソフトウェア ベンダー (ISV) のシナリオでは、アプリケーションは Azure Active Directory 組織内のユーザーにサインインできます。 これらの認証フローは、Microsoft の個人用アカウントではサポートされていません。
 
 B2C の機関およびポリシーを渡すソーシャル ID を使用してユーザーにサインインすることもできます。 この方法を使用するには、対話型認証およびユーザー名とパスワード認証のみを使用できます。 ユーザー名とパスワード認証は現在、Xamarin.iOS、Xamarin.Android、および UWP でのみサポートされています。
 
@@ -90,7 +90,7 @@ B2C の機関およびポリシーを渡すソーシャル ID を使用してユ
 
 ## <a name="api-permissions"></a>API のアクセス許可
 
-モバイル アプリケーションでは、サインインしたユーザーの代わりに API を呼び出せます。 アプリは、委任されたアクセス許可を要求する必要があります。 これらのアクセス許可は、スコープとも呼ばれます。 必要なエクスペリエンスに応じて、Azure portal を使用して、委任されたアクセス許可を静的に要求できます。 または、これらを実行時に動的に要求することができます。
+モバイル アプリケーションは、サインインしたユーザーのために API を呼び出します。 アプリは、委任されたアクセス許可を要求する必要があります。 これらのアクセス許可は、スコープとも呼ばれます。 必要なエクスペリエンスに応じて、Azure portal を使用して、委任されたアクセス許可を静的に要求できます。 または、これらを実行時に動的に要求することができます。
 
 アクセス許可を静的に登録すれば、管理者は簡単にアプリを承認できます。 静的な登録をお勧めします。
 

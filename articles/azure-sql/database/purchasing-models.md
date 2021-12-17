@@ -1,23 +1,23 @@
 ---
 title: モデルの購入
-titleSuffix: Azure SQL Database & Azure SQL Managed Instance
+titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure SQL Database と Azure SQL Managed Instance で利用できる購入モデルについて説明します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30039e687750cbe7f21cea62b117608e41ee4f93
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92788827"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553213"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>仮想コアと DTU のどちらかの購入モデルを選択する - Azure SQL Database と SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,6 +26,11 @@ Azure SQL Database と Azure SQL Managed Instance を利用すると、パフォ
 
 - [仮想コア (vCore) ベースの購入モデル](service-tiers-vcore.md) (推奨)。 この購入モデルでは、プロビジョニングされたコンピューティング レベルとサーバーレス コンピューティング レベルのいずれかを選択できます。 プロビジョニングされたコンピューティング レベルでは、お使いのワークロードに対して常にプロビジョニングされる正確なコンピューティング リソース量を選択します。 サーバーレス コンピューティング レベルでは、構成可能なコンピューティングの範囲で、コンピューティング リソースの自動スケーリングを指定します。 このコンピューティング レベルでは、ワークロード アクティビティに基づいてデータベースを自動的に一時停止および再開することもできます。 時間単位あたりの仮想コアの単価は、プロビジョニングされたコンピューティング レベルの方がサーバーレス コンピューティング レベルよりも低くなります。
 - [データベース トランザクション ユニット (DTU) ベースの購入モデル](service-tiers-dtu.md)。 この購入モデルでは、一般的なワークロード向けに配分されたコンピューティングとストレージのバンドル パッケージが提供されます。
+
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021) 
+
 
 次の 2 つの購入モデルがあります。
 
@@ -156,7 +161,7 @@ DTU ベースの購入モデルでは、お客様は自分のデータベース�
 
 たとえば、ネットワークの待機時間が重要となるアプリケーションの場合、Gen5 と Gen4 を比較したとき、高速ネットワークを使用しているため Gen5 の方がパフォーマンスの面で優れています。一方、集中的な読み取り IO を扱うアプリケーションの場合、Gen4 ではコアあたりのメモリ比率が高いため、Gen4 ハードウェアのパフォーマンスが Gen5 と比べて 優れている可能性があります。
 
-ワークロードがハードウェア変更の影響を受けやすい場合、あるいはデータベースのハードウェア世代の選択を制御する必要がある場合は、[仮想コア](service-tiers-vcore.md) モデルを使用して、データベースの作成およびスケーリング時、好みのハードウェア世代を選択できます。 仮想コア モデルでは、[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)の両方に対して、ハードウェア世代ごとに各サービス目標のリソース上限が記録されます。 仮想コア モデルのハードウェア世代の詳細については、「[ハードウェアの世代](./service-tiers-vcore.md#hardware-generations)」を参照してください。
+ワークロードがハードウェア変更の影響を受けやすい場合、あるいはデータベースのハードウェア世代の選択を制御する必要がある場合は、[仮想コア](service-tiers-vcore.md) モデルを使用して、データベースの作成およびスケーリング時、好みのハードウェア世代を選択できます。 仮想コア モデルでは、[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)の両方に対して、ハードウェア世代ごとに各サービス目標のリソース上限が記録されます。 仮想コア モデルでのハードウェアの世代の詳細については、[SQL Database のハードウェアの世代](./service-tiers-sql-database-vcore.md#hardware-generations)または [SQL Managed Instance のハードウェアの世代](../managed-instance/service-tiers-managed-instance-vcore.md#hardware-generations)に関するセクションを参照してください。
 
 ## <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
 

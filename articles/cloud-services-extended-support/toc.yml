@@ -1,4 +1,4 @@
-- name: Cloud Services (延長サポート) のドキュメント
+- name: Azure Cloud Services (延長サポート) のドキュメント
   href: index.yml
 - name: 概要
   items:
@@ -51,52 +51,82 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration スキーマ
           href: schema-cscfg-networkconfiguration.md
-    - name: よく寄せられる質問
-      href: faq.md
 - name: 操作方法
   items:
-    - name: リモート デスクトップ拡張機能を適用する
-      href: enable-rdp.md
-    - name: WAD 拡張機能を適用する
-      href: enable-wad.md
+    - name: Azure Cloud Services (延長サポート) への移行
+      items:
+        - name: 移行の概要
+          href: in-place-migration-overview.md
+        - name: 移行の技術的な詳細
+          href: in-place-migration-technical-details.md
+        - name: Azure portal を使用して移行する
+          href: in-place-migration-portal.md
+        - name: PowerShell を使用して移行する
+          href: in-place-migration-powershell.md
+        - name: 移行後の変更
+          href: post-migration-changes.md
+        - name: 一般的なエラーと既知の問題
+          href: in-place-migration-common-errors.md
+    - name: 拡張機能を適用する
+      items:
+        - name: リモート デスクトップ拡張機能を適用する
+          href: enable-rdp.md
+        - name: WAD 拡張機能を適用する
+          href: enable-wad.md
+        - name: Key Vault 拡張機能を適用する
+          href: enable-key-vault-virtual-machine.md
     - name: アラートを有効にする
       href: enable-alerts.md
     - name: スケーリングを構成する
       href: configure-scaling.md
     - name: 証明書
       href: certificates-and-key-vault.md
+    - name: ポータルを使用して ARM テンプレートを生成する
+      href: generate-template-portal.md
+    - name: クラウド サービスのデプロイを入れ替える
+      href: swap-cloud-service.md
+    - name: SKU の詳細をオーバーライドする
+      href: override-sku.md
+    - name: トラブルシューティング
+      items:
+        - name: ロールのスタートアップ エラー
+          href: role-startup-failure.md
+        - name: よく寄せられる質問
+          href: faq.yml
 - name: サンプル
   items:
     - name: サンプル テンプレート
       href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
-    - name: 新しいクラウド サービスを作成します。
+    - name: '[新しいクラウド サービスの作成]'
       href: sample-create-cloud-service.md
     - name: クラウド サービスの詳細を取得する
       href: sample-get-cloud-service.md
     - name: クラウド サービスをリセットする
       href: sample-reset-cloud-service.md
-- name: 関連項目
+- name: リファレンス
   items:
     - name: サンプル デプロイ ファイル
       href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
     - name: Az.CloudService モジュール
-      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
+      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.5.0'
     - name: PowerShell コマンドレット
       href: /powershell/module/az.cloudservice/#cloudservice
-    - name: ARM テンプレート リファレンス
+    - name: Resource Manager テンプレート リファレンス
       href: /azure/templates/microsoft.compute/cloudservices
     - name: REST
-      href: /rest/api/compute/cloudservices
+      href: /rest/api/compute/cloud-services
     - name: .NET
-      href: /dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet-preview
+      href: /dotnet/api/overview/azure/virtualmachines/management
     - name: SDK
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
+    - name: CLI
+      href: /cli/azure/cloud-service?view=azure-cli-latest
 - name: リソース
   items:
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: ラーニング パス
-      href: /learn/paths/azure-fundamentals/
+      href: /learn/paths/az-900-describe-cloud-concepts/
     - name: Microsoft Q&A
       href: /answers/topics/azure-cloud-services.html
     - name: 価格
@@ -105,3 +135,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
+- name: サポートとトラブルシューティング
+  href: support-help.md

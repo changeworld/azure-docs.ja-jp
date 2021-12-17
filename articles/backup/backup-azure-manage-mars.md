@@ -3,13 +3,13 @@ title: MARS エージェントのバックアップを管理および監視す�
 description: Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理および監視する方法について説明します。
 ms.reviewer: srinathv
 ms.topic: conceptual
-ms.date: 10/07/2019
-ms.openlocfilehash: 4306f01d608542f7453b32b32a1a6894c2379159
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 10/05/2021
+ms.openlocfilehash: db7bd057cc2f781b1a55b62f28170fe462b11f39
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515024"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233565"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -94,9 +94,8 @@ ms.locfileid: "107515024"
   - 有効期限になっていない復旧ポイントのバックアップ データを復元することができます。
   - 保護を再開する場合は、*バックアップ スケジュールを再有効化する* オプションを使用できます。 その後は、新しいアイテム保持ポリシーに基づいてデータが保持されます。
 - **保護を停止してバックアップ データを削除します**。
-  - このオプションでは、今後、バックアップ ジョブによるデータの保護がすべて停止され、すべての復旧ポイントが削除されます。
-  - ユーザーは、バックアップ データの削除に関するアラート メールを受信します。このメールには、"*Your data for this Backup item has been deleted. (このバックアップ項目のデータは削除されました。)This data will be temporarily available for 14 days, after which it will be permanently deleted (このデータは 14 日間一時的に使用できるようになり、その後、完全に削除されます)* " というメッセージと、"*Reprotect the Backup item within 14 days to recover your data. (データを復旧するには、14 日以内にバックアップ項目を再保護してください。)* という推奨される操作が記載されています。
-  - 保護を再開するには、削除操作から 14 日以内に再保護します。
+  - このオプションを選択すると、今後のすべてのバックアップ ジョブでデータが保護されなくなります。 コンテナーのセキュリティ機能が有効になっていない場合は、すべての復旧ポイントが直ちに削除されます。<br>セキュリティ機能が有効になっている場合、削除は 14 日後に行われ、アラート メールが届きます。このメールには、 *"Your data for this Backup item has been deleted. This data will be temporarily available for 14 days, after which it will be permanently deleted" (このバックアップ項目のデータは削除されました。このデータは 14 日間一時的に使用できるようになり、その後、完全に削除されます)* というメッセージと、 *"Reprotect the Backup item within 14 days to recover your data" (データを復旧するには、14 日以内にバックアップ項目を再保護してください)* という推奨される操作が記載されています。<br>この状態でアイテム保持ポリシーは引き続き適用され、バックアップ データは課金対象のままになります。 コンテナーのセキュリティ機能を有効にする方法の詳細については、[こちらを](backup-azure-security-feature.md#enable-security-features)参照してください。
+  - 保護を再開するには、削除操作から 14 日以内にサーバーを再保護します。 この期間中、別のサーバーにデータを復元することもできます。
 
 ### <a name="stop-protection-and-retain-backup-data"></a>保護を停止してバックアップ データを保持する
 
@@ -169,6 +168,62 @@ ms.locfileid: "107515024"
     ![セキュリティ PIN の貼り付け](./media/backup-azure-manage-mars/passphrase2.png)
 1. パスフレーズは、(ソース マシンではない) 別の場所、できれば Azure Key Vault に安全に保存するようにします。 複数のマシンが MARS エージェントでバックアップされている場合は、すべてのパスフレーズを追跡します。
 
+## <a name="validate-passphrase"></a>パスフレーズを検証する
+
+MARS エージェント バージョン 2.0.9190.0 以降では、[更新された要件](./backup-azure-file-folder-backup-faq.yml#what-characters-are-allowed-for-the-passphrase-)を満たしていることを確認するために、パスフレーズを検証する必要があります。
+
+パスフレーズを検証するには、次の手順に従います。
+
+1. MARS コンソールを開きます。
+
+   パスフレーズの検証を求めるメッセージが上部に表示されます。 
+
+1. **[検証]** をクリックします。
+
+   :::image type="content" source="./media/backup-azure-manage-mars/validate-passphrase-prompt-inline.png" alt-text="パスフレーズの検証のプロンプトを示すスクリーンショット。" lightbox="./media/backup-azure-manage-mars/validate-passphrase-prompt-expanded.png":::
+
+   パスフレーズ検証コントロールが開き、現在のパスフレーズの入力が求められます。 パスフレーズが更新された要件を満たしていない場合は、パスフレーズを再生成するオプションが表示されます。
+
+1. 次の詳細情報を使用してパスフレーズを生成します。
+
+   - 要件を満たす新しいパスフレーズ。
+   - セキュリティ PIN ([セキュリティ PIN を生成する手順](#generate-security-pin)を参照してください)。
+   - 新しく生成されたパスフレーズを保存するサーバー上の安全な場所。
+
+   :::image type="content" source="./media/backup-azure-manage-mars/generate-passphrase.png" alt-text="必要な詳細情報を含むパスフレーズを生成するプロセスを示すスクリーンショット。":::
+
+### <a name="validate-passphrase-for-dpmmabs-agent"></a>DPM/MABS エージェントのパスフレーズを検証する
+
+DPM/MABS の場合は、管理者特権のコマンド プロンプトからパスフレーズ検証ツールを実行します。
+   
+このツールは、次のいずれかの場所にあります。
+
+- **System Center Data Protection Manager**
+     
+  %ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\PassphraseValidator.exe
+
+- **Microsoft Azure Backup サーバー**
+      
+  %ProgramFiles%\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\PassphraseValidator.exe
+
+パスフレーズ検証コントロールが開き、現在のパスフレーズの入力が求められます。 パスフレーズが更新された要件を満たしていない場合は、パスフレーズを再生成します。
+   
+:::image type="content" source="./media/backup-azure-manage-mars/passphrase-validator-prompts-for-current-passphrase.png" alt-text="現在のパスフレーズを求めるパスフレーズ検証コントロールのプロンプトを示すスクリーンショット。":::
+
+次の手順に従います。
+
+1. 管理コンソールから **[管理]** タブに移動し、 **[オンライン]**  ->  **[構成]** を選択します。
+1. **サブスクリプション設定の構成ウィザード** に従い、 **[暗号化の設定]** 手順で、更新したパスフレーズを指定します。
+
+:::image type="content" source="./media/backup-azure-manage-mars/configure-subscription-settings-wizard.png" alt-text="サブスクリプション設定の構成ウィザードに従ってパスフレーズを指定するプロセスを示すスクリーンショット。":::
+
+## <a name="generate-security-pin"></a>セキュリティ PIN を生成する
+
+1. **[Recovery Services コンテナー]**  ->  **[設定]**  ->  **[プロパティ]** の順に移動します。
+1. **[セキュリティ PIN]** の下にある **[生成]** を選択します。
+ 
+PIN をコピーします。 この PIN は 5 分間だけ有効です。
+
 ## <a name="managing-backup-data-for-unavailable-machines"></a>使用できないマシンのバックアップ データを管理する
 
 このセクションでは、MARS で保護されていたソース マシンが、削除、破損、マルウェア/ランサムウェアの感染、または使用停止になったことにより、使用できなくなったシナリオについて説明します。
@@ -202,6 +257,34 @@ MARS エージェントの動作との競合を避けるために、ウイルス
 
 >[!NOTE]
 >ほとんどのウイルス対策ソフトウェアでは、これらのパスを除外するだけで十分ですが、一部では MARS エージェントの操作が引き続き妨げられる場合があります。 予期しないエラーが発生する場合は、一時的にウイルス対策ソフトウェアをアンインストールして、問題が解決しないかどうかを監視します。 これによって問題が解決される場合は、製品の適切な構成について、ウイルス対策ソフトウェア ベンダーにお問い合わせください。
+
+## <a name="monitor-using-backup-reports"></a>バックアップ レポートを使用して監視
+
+Azure Backup では、Azure Monitor ログと Azure ブックを使用するレポート ソリューションが提供されます。 開始するには、コンテナーに対して [バックアップ レポートが構成されている](configure-reports.md)必要があります。 構成が完了すると、データはワークスペースに流れ始め、バックアップ レポートを使用してクエリを実行できます。
+
+バックアップ データの使用状況と毎日のチャーンを監視するには、次の手順に従います。
+
+1. コンテナーの **[概要]** ウィンドウに移動し、 **[バックアップ レポート ]** をクリックします。
+
+1. **[バックアップ レポート]** ブレード の **[概要]** セクションで、構成済みのログ分析ワークスペースを選択します。 
+
+1. レポート フィルターの **[バックアップ ソリューション]** を **[Azure Backupエージェント]** に設定して、MARS エージェントのバックアップのみを表示します。 
+
+   **[サブスクリプション名]** 、 **[コンテナーの場所]** 、 **[コンテナー名]** を必要に応じ設定します。
+ 
+    ![レポート フィルターのバックアップ ソリューションを設定します。](./media/backup-azure-manage-mars/set-report-filter-backup-solution.png)
+
+1. 請求されるエンティティ別の使用状況を表示するには、 **[使用状況]** タブ に移動します。 
+
+   請求される保護されたインスタンスの合計。 および、ストレージ使用状況データが表示されます。 傾向情報も確認できます。
+ 
+    ![請求されるエンティティ別の使用状況を表示します。](./media/backup-azure-manage-mars/view-usage-by-billed-entity.png)
+
+1. 保護されたサーバー内の各ボリュームのバックアップ ジョブによって追加された平均バックアップ データを表示するには、 **[ジョブ]** タブに 移動します。 
+ 
+    ![平均バックアップ データを表示します。](./media/backup-azure-manage-mars/view-average-backup-data.png)
+
+[その他のレポート タブ](configure-reports.md)の詳細と、 電子メール を使用したレポート [の受信に関するページを参照してください](backup-reports-email.md)。
 
 ## <a name="next-steps"></a>次のステップ
 

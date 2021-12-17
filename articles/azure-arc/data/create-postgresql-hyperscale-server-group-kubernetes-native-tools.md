@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: fd1b74d33793c06e586a92cc8b2e8d2d36f4827a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20214832a79dcf22bd14f6c6594f37a7036669fe
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519964"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558860"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Kubernetes ツールを使用して PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -30,13 +30,13 @@ Kubernetes ツールを使用して PostgreSQL Hyperscale サーバー グルー
 
 ## <a name="overview"></a>概要
 
-PostgreSQL Hyperscale サーバー グループを作成するには、postgres 管理者のログインとパスワードを安全に格納する Kubernetes シークレットを作成し、postgresql-12 または postgresql-11 カスタム リソース定義に基づいて、PostgreSQL Hyperscale サーバー グループのカスタム リソースを作成する必要があります。
+PostgreSQL Hyperscale サーバー グループを作成するには、postgres 管理者のログインとパスワードを安全に格納する Kubernetes シークレットを作成し、_postgresqls_ カスタム リソース定義に基づいて、PostgreSQL Hyperscale サーバー グループのカスタム リソースを作成する必要があります。
 
 ## <a name="create-a-yaml-file"></a>yaml ファイルを作成する
 
 [テンプレート yaml](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/postgresql.yaml) ファイルを出発点として使用して、PostgreSQL Hyperscale サーバー グループのカスタム yaml ファイルを独自に作成することができます。  このファイルをローカル コンピューターにダウンロードし、テキスト エディターで開きます。  yaml ファイルの構文の強調表示とリンティングがサポートされている [VS Code](https://code.visualstudio.com/download) などのテキスト エディターを使用すると便利です。
 
-次に、yaml ファイルの例を示します。
+**yaml ファイルの例**:
 
 ```yaml
 apiVersion: v1
@@ -47,17 +47,17 @@ metadata:
   name: pg1-login-secret
 type: Opaque
 ---
-apiVersion: arcdata.microsoft.com/v1alpha1
-kind: postgresql-12
+apiVersion: arcdata.microsoft.com/v1beta1
+kind: postgresql
 metadata:
-  generation: 1
   name: pg1
 spec:
   engine:
+    version: 12
     extensions:
     - name: citus
   scale:
-    shards: 3
+    workers: 3
   scheduling:
     default:
       resources:
@@ -67,18 +67,22 @@ spec:
         requests:
           cpu: "1"
           memory: 2Gi
-  service:
-    type: LoadBalancer
+  services:
+    primary:
+      type: LoadBalancer # Modify service type based on your Kubernetes environment
   storage:
     backups:
-      className: default
-      size: 5Gi
+      volumes:
+      - className: default # Use default configured storage class or modify storage class based on your Kubernetes environment
+        size: 5Gi
     data:
-      className: default
-      size: 5Gi
+      volumes:
+      - className: default # Use default configured storage class or modify storage class based on your Kubernetes environment
+        size: 5Gi
     logs:
-      className: default
-      size: 1Gi
+      volumes:
+      - className: default # Use default configured storage class or modify storage class based on your Kubernetes environment
+        size: 5Gi
 ```
 
 ### <a name="customizing-the-login-and-password"></a>ログインとパスワードのカスタマイズ。
@@ -107,7 +111,7 @@ echo -n '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>名前のカスタマイズ
 
-このテンプレートには、name 属性の値として "pg1" が指定されています。  これを変更できますが、DNS 名前付け標準に従う文字を使用する必要があります。  また、シークレットの名前も一致するように変更する必要があります。  たとえば、PostgreSQL Hyperscale サーバー グループの名前を "pg2" に変更した場合は、シークレットの名前を "pg1-login-secret" から "pg2-login-secret" に変更する必要があります。
+このテンプレートには、name 属性の値として `pg1` が指定されています。  この値は変更できますが、DNS 名前付け標準に従う文字を使用する必要があります。 名前を変更する場合は、一致するようにシークレットの名前も変更します。  たとえば、PostgreSQL Hyperscale サーバー グループの名前を `pg2` に変更した場合は、シークレットの名前を `pg1-login-secret` から `pg2-login-secret` に変更する必要があります
 
 ### <a name="customizing-the-engine-version"></a>エンジン バージョンのカスタマイズ
 
@@ -133,7 +137,7 @@ echo -n '<your string to encode here>' | base64
 
 ### <a name="customizing-storage"></a>ストレージのカスタマイズ
 
-ストレージのストレージ クラスを環境に合わせてカスタマイズできます。  使用可能なストレージ クラスがわからない場合は、コマンド `kubectl get storageclass` を実行して表示できます。  テンプレートの既定値は "default" です。  これは、既定値 "_として設定された_" ストレージ クラスがあるということではなく、"default" という "_名前が付けられた_" ストレージ クラスがあることを意味します。  必要に応じて、ストレージのサイズを変更することもできます。  詳細については、「[ストレージの構成](./storage-configuration.md)」を参照してください。
+ストレージのストレージ クラスを環境に合わせてカスタマイズできます。  使用可能なストレージ クラスがわからない場合は、コマンド `kubectl get storageclass` を実行して表示できます。  テンプレートの既定値は `default` です。  この値は、既定値 "_として設定された_" ストレージ クラスがあるということではなく、`default` という "_名前が付けられた_" ストレージ クラスがあることを意味します。  必要に応じて、ストレージのサイズを変更することもできます。  詳細については、「[ストレージの構成](./storage-configuration.md)」を参照してください。
 
 ## <a name="creating-the-postgresql-hyperscale-server-group"></a>PostgreSQL Hyperscale サーバー グループの作成
 
@@ -152,23 +156,23 @@ kubectl create -n <your target namespace> -f <path to your yaml file>
 PostgreSQL Hyperscale サーバー グループの作成が完了するまで数分間かかります。 次のコマンドを使用して、別のターミナル ウィンドウで進行状況を監視できます。
 
 > [!NOTE]
->  下のコマンド例では、"pg1" という名前の PostgreSQL Hyperscale サーバー グループと、"arc" という名前の Kubernetes 名前空間を作成していることを前提としています。  異なる名前空間や PostgreSQL Hyperscale サーバー グループ名を使用した場合は、"arc" と "pg1" を実際の名前に置き換えることができます。
+>  下のコマンド例では、`pg1` という名前の PostgreSQL Hyperscale サーバー グループと、`arc` という名前の Kubernetes 名前空間を作成していることを前提としています。  異なる名前空間や PostgreSQL Hyperscale サーバー グループ名を使用した場合は、`arc` と `pg1` を実際の名前に置き換えることができます。
 
 ```console
-kubectl get postgresql-12/pg1 --namespace arc
+kubectl get postgresqls/pg1 --namespace arc
 ```
 
 ```console
 kubectl get pods --namespace arc
 ```
 
-次のようなコマンドを実行して、特定のポッドの作成状態を確認することもできます。  これは特に、何らの問題をトラブルシューティングするのに役立ちます。
+`kubectl describe` コマンドを実行して、特定のポッドの作成状態を確認することもできます。  `describe` コマンドは、何らの問題をトラブルシューティングするのに役立ちます。 次に例を示します。
 
 ```console
-kubectl describe po/<pod name> --namespace arc
+kubectl describe pod/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/pg1-0 --namespace arc
+#kubectl describe pod/pg1-0 --namespace arc
 ```
 
 ## <a name="troubleshooting-creation-problems"></a>作成の問題のトラブルシューティング

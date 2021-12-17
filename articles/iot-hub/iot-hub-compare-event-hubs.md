@@ -2,7 +2,6 @@
 title: Azure IoT Hub と Azure Event Hubs の比較 | Microsoft Docs
 description: 機能の相違点とユース ケースを中心とした、Azure の IoT Hub サービスと Event Hubs サービスの比較です。 比較には、サポートされているプロトコル、デバイス管理、監視、およびファイルのアップロードが含まれます。
 author: kgremban
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 56bb179c50862f09f1b789c359db97976017bbb5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cd46416690ba5482686f6f4b9caa1f4424d3c20
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92142758"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725306"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT デバイスを Azure に接続する: IoT Hub と Event Hubs
 
@@ -40,10 +39,10 @@ Azure IoT Hub は、IoT デバイスを接続してデータを収集し、ビ�
 | デバイスごとの ID | ![○][checkmark] | ![○][checkmark] |  |
 | 複数デバイスからのファイルのアップロード | ![○][checkmark] | ![○][checkmark] |  |
 | デバイス プロビジョニング サービス | ![○][checkmark] | ![○][checkmark] |  |
-| クラウドからデバイスへのメッセージ | ![○][checkmark] |  |  |
-| デバイス ツインとデバイス管理 | ![○][checkmark] |  |  |
-| デバイス ストリーム (プレビュー) | ![○][checkmark] |  |  |
-| IoT Edge | ![○][checkmark] |  |  |
+| クラウドからデバイスへのメッセージ | ![チェック][checkmark] |  |  |
+| デバイス ツインとデバイス管理 | ![チェック][checkmark] |  |  |
+| デバイス ストリーム (プレビュー) | ![チェック][checkmark] |  |  |
+| IoT Edge | ![チェック][checkmark] |  |  |
 
 唯一のユース ケースがデバイスからクラウドへのデータ インジェストである場合でも、IoT Hub は IoT デバイス接続用に設計されたサービスを提供するので、IoT Hub を使うことを強くお勧めします。 
 

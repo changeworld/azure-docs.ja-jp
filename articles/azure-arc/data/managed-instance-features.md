@@ -4,17 +4,17 @@ description: Azure Arc 対応 SQL Managed Instance の機能
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: dnethi
+ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 9c3f973da688a20fa60f2fb649b2c8d689bc2a98
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: ef855102f4877d26c1b6d16d73e99719e3e97ed1
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076651"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861611"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance の機能
 
@@ -26,38 +26,32 @@ Azure Arc 対応 SQL Managed Instance では、SQL Server の最新の安定し�
 - マルチモデル機能 - [グラフの処理](/sql/relational-databases/graphs/sql-graph-overview)、[JSON データ](/sql/relational-databases/json/json-data-sql-server)、[OPENXML](/sql/t-sql/functions/openxml-transact-sql)、[空間](/sql/relational-databases/spatial/spatial-data-sql-server)、[OPENJSON](/sql/t-sql/functions/openjson-transact-sql)、[XML インデックス](/sql/t-sql/statements/create-xml-index-transact-sql)。
 
 
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
-
-## <a name="features-of-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance の機能
-
-###  <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS High Availability  
+## <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS High Availability  
   
 |機能|Azure Arc 対応 SQL Managed Instance|
 |-------------|----------------|
-|ログ配布|はい| 
-|バックアップ圧縮|はい|
-|データベース スナップショット|はい|
-|Always On フェールオーバー クラスター インスタンス<sup>1</sup>| 適用外。 同様の機能を使用可能 |
-|Always On 可用性グループ<sup>2</sup>|HA 機能が計画されています。|
-|基本的な可用性グループ <sup>2</sup>|HA 機能が計画されています。|
-|最小レプリカ コミット可用性グループ <sup>2</sup>|HA 機能が計画されています。|
+|Always On フェールオーバー クラスター インスタンス<sup>1</sup>| 適用外。 同様の機能を使用可能。|
+|Always On 可用性グループ<sup>2</sup>|Business Critical サービス レベル。 プレビュー段階です。|
+|基本的な可用性グループ <sup>2</sup>|適用外。 同様の機能を使用可能。|
+|最小レプリカ コミット可用性グループ <sup>2</sup>|Business Critical サービス レベル。 プレビュー段階です。|
 |クラスターを使用しない可用性グループ|はい|
+|データベースのバックアップ | はい - `COPY_ONLY` 「[BACKUP - (Transact-SQL)](/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current&preserve-view=true)」を参照|
+|バックアップ圧縮|はい|
+|バックアップ ミラー |Yes|
+|バックアップの暗号化|Yes|
+|Azure へのバックアップ (URL へのバックアップ)|はい|
+|データベース スナップショット|はい|
+|高速復旧|はい|
+|ホット アド メモリと CPU|はい|
+|ログ配布|現在使用できません。|
 |オンライン ページおよびファイルの復元|はい|
 |オンラインのインデックス構築|はい|
-|再開可能なオンライン インデックス再構築|はい|
 |オンラインのスキーマ変更|はい|
-|高速復旧|はい|
-|ミラー化バックアップ|はい|
-|ホット アド メモリと CPU|はい|
-|暗号化されたバックアップ|はい|
-|Azure へのハイブリッド バックアップ (URL へのバックアップ)|はい|
+|再開可能なオンライン インデックス再構築|はい|
 
 <sup>1</sup> ポッドで障害が発生した場合は、新しい SQL Managed Instance が開始され、データが含まれる永続ボリュームに再アタッチされます。 [Kubernetes の永続ボリュームの詳細については、こちらを参照してください](https://kubernetes.io/docs/concepts/storage/persistent-volumes)。
 
-<sup>2</sup> 今後のリリースで AG 機能が提供されます 
-
-###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS Scalability and Performance  
+## <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS Scalability and Performance  
 
 | 機能 | Azure Arc 対応 SQL Managed Instance |
 |--|--|
@@ -79,7 +73,7 @@ Azure Arc 対応 SQL Managed Instance では、SQL Server の最新の安定し�
 | 複数ステートメントのテーブル値関数のインターリーブ実行 | はい |
 | 一括挿入の機能強化 | はい |
 
-###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS Security
+## <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS Security
 
 | 機能 | Azure Arc 対応 SQL Managed Instance |
 |--|--|
@@ -93,8 +87,11 @@ Azure Arc 対応 SQL Managed Instance では、SQL Server の最新の安定し�
 | ユーザー定義ロール | はい |
 | 包含データベース | はい |
 | バックアップの暗号化 | はい |
+| SQL Server 認証 | はい |
+| Azure Active Directory 認証 | いいえ |
+| Windows 認証 | いいえ |
 
-###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS Manageability  
+## <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS Manageability  
 
 | 機能 | Azure Arc 対応 SQL Managed Instance |
 |--|--|
@@ -140,9 +137,9 @@ Azure Arc 対応 SQL Managed Instance では、データの管理に役立つさ
 | **ツール** | Azure Arc 対応 SQL Managed Instance|
 | --- | --- | --- |
 | Azure portal <sup>1</sup> | いいえ |
-| Azure CLI | いいえ |
+| Azure CLI | はい |
 | [Azure Data Studio](/sql/azure-data-studio/what-is) | はい |
-| Azure PowerShell | はい |
+| Azure PowerShell | いいえ |
 | [BACPAC ファイル (エクスポート)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | はい |
 | [BACPAC ファイル (インポート)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | はい |
 | [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | はい |
@@ -150,8 +147,9 @@ Azure Arc 対応 SQL Managed Instance では、データの管理に役立つさ
 | [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | はい |
 | [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | はい |
 
-<sup>1</sup> プレビュー期間中、Azure portal は、Azure Arc 対応 SQL Managed Instance を読み取り専用モードで表示するためにのみ使用されます。
+<sup>1</sup> Azure portal は、Azure Arc 対応 SQL Managed Instance を作成、表示、および削除するために使用できます。  現在、Azure portal で更新を行うことはできません。
 
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
 
 ### <a name="unsupported-features--services"></a><a name="Unsupported"></a> サポートされていない機能とサービス
 

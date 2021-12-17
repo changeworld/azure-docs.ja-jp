@@ -2,21 +2,21 @@
 title: チュートリアル:Looop を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Looop に対してユーザー アカウントの自動的なプロビジョニングとプロビジョニング解除を実行するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
-ms.author: Zhchia
-ms.openlocfilehash: 528003ac482da6f254bf437321c70c389d23844b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: c17c56651dda65d5bd151f0f274af6ed377fb7df
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94835036"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114229796"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>チュートリアル:Looop を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -45,7 +45,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="important-tips-for-assigning-users-to-looop"></a>ユーザーを Looop に割り当てる際の重要なヒント
 
-* 1 名の Azure AD ユーザーを Looop に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+* 1 名の Azure AD ユーザーを Looop に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 さらに多くのユーザーやグループは、後で割り当てることができます。
 
 * Looop にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
 
@@ -55,11 +55,11 @@ Azure AD での自動ユーザー プロビジョニング用に Looop を構成
 
 1. [Looop 管理コンソール](https://app.looop.co/#/login) にサインインし、 **[アカウント]** を選択します。 **[アカウントの設定]** で **[認証]** を選択します。
 
-    :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Looop 管理コンソールのスクリーンショット。[アカウント] タブが強調表示され、開いています。[アカウント設定] の [認証] が強調表示されています。" border="false":::
+    ![Looop 管理者](media/looop-provisioning-tutorial/admin.png)
 
 2. **[SCIM integration]\(SCIM 統合\)** の下にある **[Reset Token]\(トークンのリセット\)** をクリックして、新しいトークンを生成します。
 
-    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Looop 管理コンソールのページの [SCIM 統合] セクションのスクリーンショット。[トークンのリセット] ボタンが強調表示されています。" border="false":::
+    ![Looop トークン](media/looop-provisioning-tutorial/resettoken.png)
 
 3. **SCIM エンドポイント** と **トークン** をコピーします。 これらの値は、Azure portal の Looop アプリケーションの [プロビジョニング] タブの **[テナント URL]** および **[シークレット トークン]** フィールドに入力されます。 
 
@@ -143,12 +143,13 @@ Azure AD で自動ユーザー プロビジョニング用に Looop を構成す
    |name.givenName|String|
    |name.familyName|String|
    |externalId|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:area|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_1|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_2|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_3|String|
-   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:department|String|
-   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:employee_id|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:location|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:position|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:startAt|String|
@@ -184,7 +185,12 @@ Azure AD で自動ユーザー プロビジョニング用に Looop を構成す
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="change-log"></a>ログの変更
+
+* 07/15/2021-Enterprise 拡張機能のユーザー属性 **urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department**, **urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber** and **urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager** が追加されました。
+* 07/15/2021-カスタムの拡張機能のユーザー属性 **urn:ietf:params:scim:schemas:extension:Looop:2.0:User:department** and **urn:ietf:params:scim:schemas:extension:Looop:2.0:User:employee_id** が削除されました。
+
+## <a name="more-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)

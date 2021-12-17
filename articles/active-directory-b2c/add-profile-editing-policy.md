@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 06/07/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d84756a2ae4f8897c42e1846e3a91dbb9f7ad7e1
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: f019fdc64ca30954017afc34267dcef998cf5fb8
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257043"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112198838"
 ---
 # <a name="set-up-a-profile-editing-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でプロファイル編集フローを設定する
 
@@ -48,9 +48,14 @@ ms.locfileid: "107257043"
 1. **[ユーザー フローを作成する]** ページで、 **[プロファイル編集]** ユーザー フローを選択します。 
 1. **[バージョンの選択]** で **[Recommended]\(推奨\)** を選択して、 **[作成]** を選択します。
 1. ユーザー フローの **[名前]** を入力します。 たとえば、「*profileediting1*」と入力します。
-1. **[ID プロバイダー]** で、 **[電子メールのサインイン]** を選択します。
-1. **[ユーザー属性]** で、ユーザーが自分のプロファイルで編集できる属性を選択します。 たとえば、 **[Show more]\(さらに表示\)** を選択し、 **[表示名]** と **[役職]** の属性と要求を選択します。 **[OK]** をクリックします。
-1. **[作成]** をクリックして、ユーザー フローを追加します。 *B2C_1* というプレフィックスが自動的に名前に追加されます。
+1. **[ID プロバイダー]** で、少なくとも 1 つの ID プロバイダーを選択します。
+
+   * **[ローカル アカウント]** で、 **[Email signin]\(メールでのサインイン\)** 、 **[User ID signin]\(ユーザー ID でのサインイン\)** 、 **[Phone signin]\(電話でのサインイン\)** 、 **[Phone/Email signin]\(電話とメールでのサインイン\)** 、 **[User ID/Email signin]\(ユーザー ID とメールでのサインイン\)** 、 **[None]\(なし\)** のいずれかを選択します。 [詳細については、こちらを参照してください](sign-in-options.md)。
+   * **[ソーシャル ID プロバイダ]** で、既に設定してある外部のソーシャル ID プロバイダまたはエンタープライズ ID プロバイダーをどれか選択します。 [詳細については、こちらを参照してください](add-identity-provider.md)。
+1. 第 2 の認証方法で ID を証明することをユーザーに要求したい場合は、 **[多要素認証]** で、認証方法の種類を選択し、さらに、いつ多要素認証 (MFA) を適用するかを選択します。 [詳細については、こちらを参照してください](multi-factor-authentication.md)。
+1. Azure AD B2C テナントに対して条件付きアクセス ポリシーを構成してある場合で、なおかつ、このユーザー フローでそれらを有効にしたい場合は、 **[条件付きアクセス]** の **[Enforce conditional access policies]\(条件付きアクセス ポリシーを強制\)** チェック ボックスをオンにします。 ポリシー名を指定する必要はありません。 [詳細については、こちらを参照してください](conditional-access-user-flow.md?pivots=b2c-user-flow)。
+1. **[ユーザー属性]** で、ユーザーが自分のプロファイルで編集できる属性を選択します。 すべての値を表示するために **[Show more]\(詳細表示\)** を選択して値を選び、 **[OK]** を選択します。
+1. **[作成]** を選択して、ユーザー フローを追加します。 *B2C_1* というプレフィックスが自動的に名前に追加されます。
 
 ### <a name="test-the-user-flow"></a>ユーザー フローをテストする
 

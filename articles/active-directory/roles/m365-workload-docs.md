@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae5761c4a31662f447a107e6b5eb89bcf02f70c8
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: b3fa2fbceba39ee6044c252703236c85545e46db
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055537"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349169"
 ---
 # <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>Azure Active Directory の Microsoft 365 サービスのロール
 
@@ -27,25 +27,26 @@ Microsoft 365 のすべての製品は、Azure Active Directory (Azure AD) の�
 
 ## <a name="where-to-find-content"></a>コンテンツの参照先
 
-Microsoft 365 サービス | ロール コンテンツ | API コンテンツ
----------------------- | ------------------ | -----------------
-Office 365 と Microsoft 365 のビジネス プランでの管理者ロール | [Microsoft 365 管理者ロール](/office365/admin/add-users/about-admin-roles) | 使用不可
-Azure Active Directory (Azure AD) および Azure AD Identity Protection| [Azure AD 管理者ロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list)
-Exchange Online| [Exchange のロール ベースのアクセス制御](/exchange/understanding-role-based-access-control-exchange-2013-help) |  [PowerShell for Exchange](/powershell/module/exchange/role-based-access-control/add-managementroleentry)<br>[ロールの割り当てのフェッチ](/powershell/module/exchange/role-based-access-control/get-rolegroup)
-SharePoint Online | [Azure AD 管理者ロール](permissions-reference.md)<br>[Microsoft 365 での SharePoint 管理者ロール](/sharepoint/sharepoint-admin-role)について | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list)
-チーム/Skype for Business | [Azure AD 管理者ロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list)
-セキュリティ/コンプライアンス センター (Office 365 の Advanced Threat Protection、Exchange Online Protection、Information Protection) | [Office 365 の管理者ロール](/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange PowerShell](/powershell/module/exchange/role-based-access-control/add-managementroleentry)<br>[ロールの割り当てのフェッチ](/powershell/module/exchange/role-based-access-control/get-rolegroup)
-セキュリティ スコア | [Azure AD 管理者ロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list)
-Compliance Manager | [Compliance Manager ロール](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | 使用不可
-Azure Information Protection | [Azure AD 管理者ロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list)
-Microsoft Cloud App Security | [ロールベースのアクセス制御](/cloud-app-security/manage-admins) | [API リファレンス](/cloud-app-security/api-tokens) 
-Azure Advanced Threat Protection | [Azure ATP ロール グループ](/azure-advanced-threat-protection/atp-role-groups) | 使用不可
-Windows Defender Advanced Threat Protection | [Windows Defender ATP のロール ベースのアクセス制御](/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | 使用不可
-Privileged Identity Management | [Azure AD 管理者ロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list)
-Intune | [Intune のロール ベースのアクセス制御](/intune/role-based-access-control) | [Graph API](/graph/api/resources/intune-rbac-conceptual?view=graph-rest-beta&preserve-view=true)<br>[ロールの割り当てのフェッチ](/graph/api/intune-rbac-roledefinition-list?view=graph-rest-beta&preserve-view=true)
-管理対象デスクトップ | [Azure AD 管理者ロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list)
+> [!div class="mx-tableFixed"]
+> | Microsoft 365 サービス | ロール コンテンツ | API コンテンツ |
+> | ---------------------- | ------------------ | ----------------- |
+> | Office 365 と Microsoft 365 のビジネス プランでの管理者ロール | [Microsoft 365 管理者ロール](/office365/admin/add-users/about-admin-roles) | 使用不可 |
+> | Azure Active Directory (Azure AD) および Azure AD Identity Protection| [Azure AD の組み込みロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list) |
+> | Exchange Online| [Exchange のロール ベースのアクセス制御](/exchange/understanding-role-based-access-control-exchange-2013-help) |  [PowerShell for Exchange](/powershell/module/exchange/role-based-access-control/add-managementroleentry)<br>[ロールの割り当てのフェッチ](/powershell/module/exchange/role-based-access-control/get-rolegroup) |
+> | SharePoint Online | [Azure AD の組み込みロール](permissions-reference.md)<br>[Microsoft 365 での SharePoint 管理者ロール](/sharepoint/sharepoint-admin-role)について | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list) |
+> | チーム/Skype for Business | [Azure AD の組み込みロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list) |
+> | セキュリティ/コンプライアンス センター (Office 365 の Advanced Threat Protection、Exchange Online Protection、Information Protection) | [Office 365 の管理者ロール](/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange PowerShell](/powershell/module/exchange/role-based-access-control/add-managementroleentry)<br>[ロールの割り当てのフェッチ](/powershell/module/exchange/role-based-access-control/get-rolegroup) |
+> | セキュリティ スコア | [Azure AD の組み込みロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list) |
+> | Compliance Manager | [Compliance Manager ロール](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | 使用不可 |
+> | Azure Information Protection | [Azure AD の組み込みロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list) |
+> | Microsoft Defender for Cloud Apps | [ロールベースのアクセス制御](/cloud-app-security/manage-admins) | [API リファレンス](/cloud-app-security/api-tokens)  |
+> | Azure Advanced Threat Protection | [Azure ATP ロール グループ](/azure-advanced-threat-protection/atp-role-groups) | 使用不可 |
+> | Windows Defender Advanced Threat Protection | [Windows Defender ATP のロール ベースのアクセス制御](/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | 使用不可 |
+> | Privileged Identity Management | [Azure AD の組み込みロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list) |
+> | Intune | [Intune のロール ベースのアクセス制御](/intune/role-based-access-control) | [Graph API](/graph/api/resources/intune-rbac-conceptual?view=graph-rest-beta&preserve-view=true)<br>[ロールの割り当てのフェッチ](/graph/api/intune-rbac-roledefinition-list?view=graph-rest-beta&preserve-view=true) |
+> | 管理対象デスクトップ | [Azure AD の組み込みロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list) |
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure AD 管理者ロールの割り当てと削除の方法](manage-roles-portal.md)
-* [Azure AD 管理者ロールのリファレンス](permissions-reference.md)
+* [Azure AD の組み込みロール](permissions-reference.md)

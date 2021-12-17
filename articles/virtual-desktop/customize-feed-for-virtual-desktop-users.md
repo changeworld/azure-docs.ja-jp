@@ -1,28 +1,29 @@
 ---
-title: Windows Virtual Desktop ユーザー用のフィードをカスタマイズする - Azure
-description: PowerShell コマンドレットで Windows Virtual Desktop ユーザー用のフィードをカスタマイズする方法。
+title: Azure Virtual Desktop ユーザー用のフィードをカスタマイズする - Azure
+description: PowerShell コマンドレットで Azure Virtual Desktop ユーザー用のフィードをカスタマイズする方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 09/14/2019
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: a2d5a870ee8953a4388e58d21cf941f23434382b
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d2a1e8df23bca2e57f2d26bd83fc06ad93847903
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447116"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113032941"
 ---
-# <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>Windows Virtual Desktop ユーザー用のフィードをカスタマイズする
+# <a name="customize-the-feed-for-azure-virtual-desktop-users"></a>Azure Virtual Desktop ユーザー用のフィードをカスタマイズする
 
 >[!IMPORTANT]
->これは、Azure Resource Manager Windows Virtual Desktop オブジェクトを使用する Windows Virtual Desktop を対象としたコンテンツです。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[この記事](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)を参照してください。
 
 フィードは、RemoteApp とリモート デスクトップのリソースがユーザーの認識可能な方法で表示されるようにカスタマイズすることができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、Windows Virtual Desktop PowerShell モジュールを既にダウンロードしてインストールしていることを前提としています。 まだ行っていない場合は、[PowerShell モジュールのセットアップ](powershell-module.md)に関する記事の手順に従ってください。
+この記事では、Azure Virtual Desktop PowerShell モジュールを既にダウンロードしてインストールしていることを前提としています。 まだ行っていない場合は、[PowerShell モジュールのセットアップ](powershell-module.md)に関する記事の手順に従ってください。
 
 ## <a name="customize-the-display-name-for-a-remoteapp"></a>RemoteApp の表示名をカスタマイズする
 
@@ -103,11 +104,11 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 1. Azure Portal ( <https://portal.azure.com> ) にサインインします。
 
-2. 「**Windows Virtual Desktop**」を検索します。
+2. **Azure Virtual Desktop** を検索します。
 
-3. サービスの下で **[Windows Virtual Desktop]** を選択します。
+3. [サービス] の下にある **[Azure Virtual Desktop]** を選択します。
 
-4. Windows Virtual Desktop のページで、画面の左側にある **[アプリケーション グループ]** を選択し、編集するアプリ グループの名前を選択します。 (たとえば、デスクトップ アプリ グループの表示名を編集する場合、**デスクトップ** という名前のアプリ グループを選択します)。
+4. Azure Virtual Desktop のページで、画面の左側にある **[アプリケーション グループ]** を選択し、編集するアプリ グループの名前を選択します。 (たとえば、デスクトップ アプリ グループの表示名を編集する場合、**デスクトップ** という名前のアプリ グループを選択します)。
 
 5. 画面の左側にあるメニューで **[アプリケーション]** を選択します。
 
@@ -117,10 +118,10 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 ## <a name="next-steps"></a>次のステップ
 
-これでフィードをユーザーに合わせてカスタマイズしたので、Windows Virtual Desktop クライアントにサインインして、それを試すことができます。これを行うには、Windows Virtual Desktop への接続方法に関するページに進みます。
+ユーザーに合わせてフィードをカスタマイズしたので、Azure Virtual Desktop クライアントにサインインしてそれを試すことができます。これを行うには、Azure Virtual Desktop への接続方法に関する記事に進みます。
 
- * [Windows 10 または Windows 7 を使用して接続する](connect-windows-7-10.md)
- * [Web クライアントに接続する](connect-web.md)
- * [Android クライアントに接続する](connect-android.md)
- * [iOS クライアントに接続する](connect-ios.md)
- * [macOS クライアントに接続する](connect-macos.md)
+ * [Windows 10 または Windows 7 を使用して接続する](./user-documentation/connect-windows-7-10.md)
+ * [Web クライアントに接続する](./user-documentation/connect-web.md)
+ * [Android クライアントに接続する](./user-documentation/connect-android.md)
+ * [iOS クライアントに接続する](./user-documentation/connect-ios.md)
+ * [macOS クライアントに接続する](./user-documentation/connect-macos.md)

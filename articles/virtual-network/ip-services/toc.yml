@@ -1,0 +1,189 @@
+items:
+  - name: Virtual Network IP サービスのドキュメント
+    href: index.yml
+  - name: 概要
+    items:
+      - name: Azure Virtual Network IP サービスとは
+        href: ip-services-overview.md
+  - name: クイックスタート
+    items:
+      - name: パブリック IP アドレスを作成する - Portal
+        href: create-public-ip-portal.md
+      - name: パブリック IP アドレスを作成する - PowerShell
+        href: create-public-ip-powershell.md
+      - name: パブリック IP アドレスを作成する - Azure CLI
+        href: create-public-ip-cli.md
+      - name: パブリック IP アドレスを作成する - ARM テンプレート
+        href: create-public-ip-template.md
+      - name: パブリック IP プレフィックスを作成する - Portal
+        href: create-public-ip-prefix-portal.md
+      - name: パブリック IP プレフィックスを作成する - PowerShell
+        href: create-public-ip-prefix-powershell.md
+      - name: パブリック IP プレフィックスを作成する - Azure CLI
+        href: create-public-ip-prefix-cli.md
+    expanded: true
+  - name: チュートリアル
+    items:
+      - name: インターネット ルーティング設定を使用して VM を構成する
+        items:
+          - name: Azure portal
+            href: tutorial-routing-preference-virtual-machine-portal.md
+          - name: Azure PowerShell
+            href: configure-routing-preference-virtual-machine-powershell.md
+          - name: Azure CLI
+            href: configure-routing-preference-virtual-machine-cli.md
+      - name: VM の混合ルーティング設定を構成する
+        href: routing-preference-mixed-network-adapter-portal.md
+      - name: AKS クラスターのルーティング設定を構成する
+        href: routing-preference-azure-kubernetes-service-cli.md
+  - name: 概念
+    items:
+      - name: パブリック IP
+        href: public-ip-addresses.md
+      - name: プライベート IP
+        href: private-ip-addresses.md
+      - name: パブリック IP プレフィックス
+        href: public-ip-address-prefix.md
+      - name: パブリック IP アドレスの管理
+        href: virtual-network-public-ip-address.md
+      - name: パブリック IP プレフィックスの管理
+        href: manage-public-ip-address-prefix.md
+      - name: Azure VNet の IPv6
+        href: ipv6-overview.md
+      - name: 既定のアウトバウンド アクセス
+        href: default-outbound-access.md
+      - name: ルーティング設定
+        href: routing-preference-overview.md
+      - name: 従量制課金なしのルーティング優先設定
+        href: routing-preference-unmetered.md
+      - name: セキュリティ
+        items:
+          - name: パブリック IP のセキュリティ ベースライン
+            href: /security/benchmark/azure/baselines/public-ip-security-baseline?toc=/azure/virtual-network/ip-services/toc.json
+  - name: 操作方法
+    items:
+      - name: Azure ネットワーク インターフェイスの IP アドレスの構成
+        href: virtual-network-network-interface-addresses.md
+      - name: リソース管理
+        items:
+          - name: Load Balancer
+            href: configure-public-ip-load-balancer.md
+          - name: NAT Gateway
+            href: configure-public-ip-nat-gateway.md
+          - name: 仮想マシン
+            href: configure-public-ip-vm.md
+          - name: ファイアウォール
+            href: configure-public-ip-firewall.md
+          - name: VPN Gateway
+            href: configure-public-ip-vpn-gateway.md
+          - name: Application gateway
+            href: configure-public-ip-application-gateway.md
+          - name: Bastion
+            href: configure-public-ip-bastion.md
+      - name: パブリック IP アドレスをアップグレードする
+        items:
+          - name: パブリック IP アドレスをアップグレードする - Portal
+            href: public-ip-upgrade-portal.md
+          - name: パブリック IP アドレスをアップグレードする - PowerShell
+            href: public-ip-upgrade-powershell.md
+          - name: パブリック IP アドレスをアップグレードする - Azure CLI
+            href: public-ip-upgrade-cli.md
+          - name: 従来の予約済み IP を移行する
+            href: public-ip-upgrade-classic.md
+      - name: 仮想マシン
+        items:
+          - name: 既存の VM へのパブリック IP アドレスの追加
+            href: associate-public-ip-address-vm.md
+          - name: VM からのパブリック IP アドレスの切り離し
+            href: remove-public-ip-address-vm.md
+          - name: VM の作成 - デュアルスタック ネットワーク
+            items:
+              - name: Azure CLI
+                href: create-vm-dual-stack-ipv6-cli.md
+          - name: VM の作成 - 静的パブリック IP
+            items:
+              - name: Azure portal
+                href: virtual-network-deploy-static-pip-arm-portal.md
+              - name: Azure PowerShell
+                href: virtual-network-deploy-static-pip-arm-ps.md
+              - name: Azure CLI
+                href: virtual-network-deploy-static-pip-arm-cli.md
+          - name: VM の作成 - 静的プライベート IP
+            items:
+              - name: Azure portal
+                href: virtual-networks-static-private-ip-arm-pportal.md
+              - name: Azure PowerShell
+                href: virtual-networks-static-private-ip-arm-ps.md
+              - name: Azure CLI
+                href: virtual-networks-static-private-ip-arm-cli.md
+          - name: VM の作成 - 複数の IP
+            items:
+              - name: Azure portal
+                href: virtual-network-multiple-ip-addresses-portal.md
+              - name: Azure PowerShell
+                href: virtual-network-multiple-ip-addresses-powershell.md
+              - name: Azure CLI
+                href: virtual-network-multiple-ip-addresses-cli.md
+          - name: VM の作成 - 静的プライベート IP (クラシック)
+            items:
+              - name: Azure portal
+                href: virtual-networks-static-private-ip-classic-pportal.md
+              - name: Azure PowerShell
+                href: virtual-networks-static-private-ip-classic-ps.md
+          - name: 仮想マシン スケール セットと IPv6
+            href: ipv6-virtual-machine-scale-set.md
+      - name: ルーティング設定
+        items:
+          - name: パブリック IP アドレスの作成
+            items:
+              - name: Azure portal
+                href: routing-preference-portal.md
+              - name: Azure PowerShell
+                href: routing-preference-powershell.md
+              - name: Azure CLI
+                href: routing-preference-cli.md
+      - name: リージョン間で移動する
+        items:
+          - name: パブリック IP
+            href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=%2fazure%2fvirtual-network%2fip-services%2ftoc.json
+  - name: リファレンス
+    items:
+      - name: Azure CLI
+        href: /cli/azure/azure-cli-reference-for-network
+      - name: Azure PowerShell
+        href: /powershell/module/az.network
+      - name: .NET
+        href: /dotnet/api/overview/azure/virtual-network
+      - name: Java
+        href: /java/api/
+      - name: Node.js
+        href: /javascript/azure#azure-sdk
+      - name: Python
+        href: 'https://azure.microsoft.com/develop/python/'
+      - name: REST
+        href: /rest/api/virtual-network
+      - name: Resource Manager テンプレート
+        href: /azure/templates/microsoft.network/allversions
+      - name: コード サンプル
+        href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+      - name: Azure Policy の組み込み
+        displayName: 'samples, policies, definitions'
+        href: ../policy-reference.md
+  - name: リソース
+    items:
+      - name: Microsoft Learn でスキルを身に付ける
+        href: /learn/browse/
+      - name: Azure のロードマップ
+        href: 'https://azure.microsoft.com/roadmap/?category=networking'
+      - name: ネットワークのブログ
+        href: 'https://azure.microsoft.com/blog/topics/networking'
+      - name: ネットワークに関する Microsoft Q&A 質問ページ
+        href: /answers/topics/azure-virtual-network.html
+      - name: ネットワークに関するフィードバック
+        href: 'https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789'
+      - name: 価格
+        href: 'https://azure.microsoft.com/pricing/details/virtual-network'
+      - name: 料金計算ツール
+        href: 'https://azure.microsoft.com/pricing/calculator/'
+      - name: Stack Overflow
+        href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'

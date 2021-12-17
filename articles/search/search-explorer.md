@@ -1,25 +1,25 @@
 ---
-title: Azure portal の Search エクスプローラー クエリ ツール
+title: 'クイック スタート: Search エクスプローラー クエリ ツール'
 titleSuffix: Azure Cognitive Search
-description: この Azure portal クイックスタートでは、Search エクスプローラーを使用して、クエリ構文を学習したり、クエリ式をテストしたり、検索ドキュメントを検査したりします。 Search エクスプローラーは、Azure Cognitive Search のインデックスにクエリを実行します。
+description: Search エクスプローラーは、クエリ要求を Azure Cognitive Search 内の検索インデックスに送信する Azure portal のクエリ ツールです。 これを使用して、構文を学習したり、クエリ式をテストしたり、検索ドキュメントを検査したりします。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: e9607a71ed6b045ac704c43bf4ea54c9f181bbf4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/24/2021
+ms.openlocfilehash: d246c9aad024b1086a531c31a2a9559dfa798642
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98179777"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772832"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>クイック スタート:Search エクスプローラーを使用してポータルでクエリを実行する
 
-**Search エクスプローラー** は、Azure Cognitive Search の検索インデックスに対してクエリを実行するために使用される組み込みのクエリ ツールです。 このツールを使用すると、クエリ構文の学習、クエリまたはフィルター式のテスト、あるいはインデックス内の新しいコンテンツの有無を確認することによるデータ更新の確認が簡単になります。
+**Search エクスプローラー** は、Azure Cognitive Search の検索インデックスに対してクエリを実行するために使用される、Azure portal の組み込みのクエリ ツールです。 このツールを使用すると、クエリ構文の学習、クエリまたはフィルター式のテスト、あるいはインデックス内の新しいコンテンツの有無を確認することによるデータ更新の確認が簡単になります。
 
-このクイックスタートでは、既存のインデックスを使用して Search エクスプローラーをデモンストレーションします。 要求は [Search REST API](/rest/api/searchservice/search-documents) を使用して作成され、応答は詳細 JSON ドキュメントとして返されます。
+このクイックスタートでは、既存のインデックスを使用して Search エクスプローラーをデモンストレーションします。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,6 +44,8 @@ ms.locfileid: "98179777"
    :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="[Search エクスプローラー] タブ" border="true":::
 
 ## <a name="unspecified-query"></a>指定されていないクエリ
+
+Search エクスプローラーでは、要求は [Search REST API](/rest/api/searchservice/search-documents) を使用して作成され、応答は詳細 JSON ドキュメントとして返されます。
 
 最初に内容を見るために、用語を指定せずに **[検索]** をクリックすることによって空の検索を実行します。 空の検索は最初のクエリとして役に立ちます。ドキュメント全体が返されるので、ドキュメントの構成を確認できるからです。 空の検索では検索順位がなく、ドキュメントが任意の順序で返されます (すべてのドキュメントで `"@search.score": 1`)。 既定では、50 個のドキュメントが検索要求で返されます。
 
@@ -155,7 +157,7 @@ Azure Cognitive Search は、検索順位に基づいた上位 50 の一致を�
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
+ポータルの左側のナビゲーション ウィンドウにある **[All resources]\(すべてのリソース\)** または **[Resource groups]\(リソース グループ\)** リンクを使って、リソースを検索および管理できます。
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 

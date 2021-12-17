@@ -1,46 +1,33 @@
 ---
-title: Azure Stack Edge Pro デバイスを監視する | Microsoft Docs
-description: Azure portal とローカル Web UI を使用して Azure Stack Edge Pro を監視する方法について説明します。
+title: Azure Stack Edge デバイスを監視する | Microsoft Docs
+description: Azure portal とローカル Web UI を使用して Azure Stack Edge デバイスを監視する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 10/11/2021
 ms.author: alkohli
-ms.openlocfilehash: aae64cad3603725a4062d5afb42df974bbf8ac40
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 84ffadea8e8b6980b7bf311db9d2b7a2a36748b6
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438790"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047883"
 ---
-# <a name="monitor-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro を監視する
+# <a name="monitor-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスを監視する
 
 [!INCLUDE [applies-to-GPU-and-pro-r-mini-r-and-fpga-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-fpga-sku.md)]
 
-この記事では、Azure Stack Edge Pro を監視する方法について説明します。 このデバイスは Azure portal またはローカル Web UI を使用して監視できます。 デバイスのイベントを確認したり、アラートを構成して管理したり、メトリックを確認したりするには、Azure portal を使用します。 さまざまなデバイス コンポーネントのハードウェアの状態を確認するには、物理デバイスのローカル Web UI を使用します。
+この記事では、Azure Stack Edge デバイスを監視する方法について説明します。 このデバイスは Azure portal またはローカル Web UI を使用して監視できます。 メトリックを表示したり、デバイス イベントを確認したり、アラートを構成して管理したりするには、Azure portal を使用します。 さまざまなデバイス コンポーネントのハードウェアの状態を確認するには、物理デバイスのローカル Web UI を使用します。
 
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 >
-> * デバイス イベントとそれに対応するアラートを確認する
-> * デバイス コンポーネントのハードウェアの状態を確認する
 > * デバイスの容量とトランザクションのメトリックを確認する
+> * デバイス コンポーネントのハードウェアの状態を確認する
 
-## <a name="view-device-events"></a>デバイスのイベントを確認する
-
-[!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-view-device-events.md)]
-
-## <a name="view-hardware-status"></a>ハードウェアの状態を確認する
-
-デバイス コンポーネントのハードウェアの状態を確認するには、ローカル Web UI から次の手順を実行します。
-
-1. お使いのデバイスのローカル Web UI に接続します。
-2. **[メンテナンス] > [ハードウェアの状態]** に移動します。 さまざまなデバイス コンポーネントの正常性を確認できます。
-
-    ![ハードウェアの状態を確認する](media/azure-stack-edge-monitor/view-hardware-status.png)
 
 ## <a name="view-metrics"></a>メトリックを表示する
 
@@ -79,7 +66,23 @@ ms.locfileid: "102438790"
 |**Edge コンピューティング - メモリ使用量**      |           |
 |**Edge コンピューティング - CPU 使用率**    |         |
 
+
+### <a name="view-device-events"></a>デバイスのイベントを確認する
+
+[!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-view-device-events.md)]
+
+
+## <a name="view-hardware-status"></a>ハードウェアの状態を確認する
+
+デバイス コンポーネントのハードウェアの状態を確認するには、ローカル Web UI から次の手順を実行します。
+
+1. お使いのデバイスのローカル Web UI に接続します。
+2. **[メンテナンス] > [ハードウェアの状態]** に移動します。 さまざまなデバイス コンポーネントの正常性を確認できます。
+
+    ![ハードウェアの状態を確認する](media/azure-stack-edge-monitor/view-hardware-status.png)
+
+
 ## <a name="next-steps"></a>次のステップ
 
-[帯域幅を管理する](azure-stack-edge-manage-bandwidth-schedules.md)方法について学習します。
-[デバイス イベントのアラート通知を管理する](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)方法について説明します。
+- [帯域幅を管理する](azure-stack-edge-manage-bandwidth-schedules.md)方法について学習します。
+- [アラート通知を管理する](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)方法について学習します。

@@ -7,16 +7,16 @@ ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: ''
-ms.date: 04/19/2020
-ms.openlocfilehash: 4258c60335a13a6c0f27588aac1c6cdb185fcf6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: uc-msft
+ms.author: umajay
+ms.reviewer: mathoma
+ms.date: 10/18/2021
+ms.openlocfilehash: ed70bb517478fb931ac402a7b528118b3d76d148
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92782802"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239399"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance の JSON 機能の概要
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ Azure SQL Database と Azure SQL Managed Instance では、JavaScript Object Not
 
 データベース層からデータを取得し、JSON 形式で応答を提供する Web サービスがある場合、またはクライアント側の JavaScript フレームワークまたはライブラリが JSON 形式のデータを受け入れる場合、SQL クエリに直接 JSON としてデータベースの内容を書式設定することができます。 Azure SQL Database または Azure SQL Managed Instance からの結果を JSON 形式にするように、アプリケーション コードを書き込んだり、表形式のクエリの結果に変換して、オブジェクトを JSON 形式にシリアル化するために JSON シリアル化ライブラリを含めたりする必要がなくなりました。 代わりに、FOR JSON 句を使用して、SQL クエリの結果を JSON として書式設定し、アプリケーションで直接これを使用できます。
 
-次の例では、FOR JSON 句を使用して、Sales.Customer テーブルの行を JSON 形式にしています。
+次の例では、FOR JSON 句を使用して、`Sales.Customer` テーブルの行が JSON として書式設定されます。
 
 ```sql
 select CustomerName, PhoneNumber, FaxNumber
@@ -191,9 +191,3 @@ END
 ```
 
 JSON 配列として書式設定され、ストアド プロシージャにパラメーターとして指定される orders のコレクションは、解析され、Orders テーブルに挿入することができます。
-
-## <a name="next-steps"></a>次のステップ
-
-アプリケーションに JSON を統合する方法については、次のリソースを確認してください。
-
-JSON をアプリケーションに統合するためのさまざまなシナリオの詳細については、この [Channel 9 のビデオ](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)のデモを参照するか、[JSON のブログの投稿](/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases)でお客様のユース ケースに一致するシナリオを見つけてください。

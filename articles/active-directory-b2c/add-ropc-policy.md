@@ -3,31 +3,28 @@ title: リソース所有者パスワード資格情報フローを設定する
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C でリソース所有者パスワード資格情報 (ROPC) フローを設定する方法を説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 09/12/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3a7c93bb0e0dcc51e35bc27fa0799d8410e66df6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0acca4a87ea72157a11862ec448483008af87526
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581883"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008232"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でリソース所有者パスワード資格情報フローを設定する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パスワード資格情報 (ROPC) フローが OAuth の標準的な認証フローです。 このフローでは、アプリケーション (証明書利用者とも呼ばれます) によって有効な資格情報がトークンと交換されます。 資格情報には、ユーザー ID とパスワードが含まれます。 返されるトークンは、ID トークン、アクセス トークン、および更新トークンです。
-
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
 
 ## <a name="ropc-flow-notes"></a>ROPC フローの説明
 
@@ -44,7 +41,7 @@ Azure Active Directory B2C (Azure AD B2C) では、次のオプションがサ�
 
 ROPC フローを使用する場合は、次の点を考慮してください。
 
-- ユーザーの操作が必要な認証フローが中断されている場合、ROPC は動作しません。 たとえば、パスワードの有効期限が切れた場合、パスワードを変更する必要がある場合、[多要素認証](multi-factor-authentication.md)が必要な場合、サインイン時に詳細情報を収集する必要がある (ユーザーの同意など) 場合です。
+- ユーザーの操作が必要な認証フローが中断されている場合、ROPC は動作しません。 これは、パスワードの有効期限が切れたり変更が必要な場合、[多要素認証](multi-factor-authentication.md)が必要な場合、サインイン時に詳細情報を収集する必要がある場合 (ユーザーの同意など) などです。
 - ROPC ではローカル アカウントのみがサポートされています。 ユーザーは、Microsoft、Google +、Twitter、AD FS、Facebook などの[フェデレーション ID プロバイダー](add-identity-provider.md)を使用してサインインすることはできません。
 - [[サインインしたままにする] (KMSI)](session-behavior.md#enable-keep-me-signed-in-kmsi) を含む[セッション管理](session-behavior.md) は適用されません。
 
@@ -57,19 +54,25 @@ ROPC フローを使用する場合は、次の点を考慮してください。
 
 ##  <a name="create-a-resource-owner-user-flow"></a>リソース所有者のユーザー フローを作成する
 
-1. Azure AD B2C テナントの全体管理者として、Azure portal にサインインします。
-2. Azure AD B2C テナントに切り替えるには、ポータルの右上隅で B2C ディレクトリを選択します。
-3. **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
-4. **[リソース所有者のパスワード資格情報 (ROPC) を使用してサインインする]** を選択します。
-5. **[バージョン]** で **[プレビュー]** が選択されていることを確認してから、 **[作成]** を選択します。
-7. *ROPC_Auth* など、ユーザー フローの名前を入力します。
-8. **[アプリケーション要求]** の **[さらに表示する]** をクリックします。
-9. [表示名]、[メール アドレス]、[ID プロバイダー] など、アプリケーションに必要なアプリケーション要求を選択します。
-10. **[OK]** を選択し、 **[作成]** を選択します。
+1. ご利用の Azure AD B2C テナントの [グローバル管理者](https://portal.azure.com)として **Azure portal** にサインインします。
+2. ご利用の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。
+    1. ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+    1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
+1. **[リソース所有者のパスワード資格情報 (ROPC) を使用してサインインする]** を選択します。
+1. **[バージョン]** で **[プレビュー]** が選択されていることを確認してから、 **[作成]** を選択します。
+1. *ROPC_Auth* など、ユーザー フローの名前を入力します。
+1. **[アプリケーション要求]** の **[さらに表示する]** をクリックします。
+1. [表示名]、[メール アドレス]、[ID プロバイダー] など、アプリケーションに必要なアプリケーション要求を選択します。
+1. **[OK]** を選択し、 **[作成]** を選択します。
 
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="pre-requisite"></a>前提条件 
+まだ行っていない場合は、[Active Directory B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md)に関する記事で、カスタム ポリシー スターター パックの詳細を確認してください。
 
 ##  <a name="create-a-resource-owner-policy"></a>リソース所有者のポリシーを作成する
 
@@ -365,6 +368,14 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
     "refresh_token_expires_in": 1209600
 }
 ```
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="the-provided-application-is-not-configured-to-allow-the-oauth-implicit-flow"></a>指定されたアプリケーションは、OAuth 暗黙的フローを許可するように構成されていません
+
+* **現象** - ROPC フローを実行すると、次のメッセージが表示されます: *AADB2C90057: 指定されたアプリケーションは、OAuth 暗黙的フローを許可するように構成されていません*。
+* **考えられる原因** - アプリケーションで暗黙のフローが許可されていません。
+* **解決方法**: Azure AD B2C で [アプリケーションの登録](#register-an-application)を作成するときは、アプリケーションマニフェストを手動で編集し、`oauth2AllowImplicitFlow` プロパティの値を `true` に設定する必要があります。 `oauth2AllowImplicitFlow` プロパティを構成した後、変更が有効になるまで数分間かかる場合があります (通常は 5 分以下)。 
 
 ## <a name="use-a-native-sdk-or-app-auth"></a>ネイティブ SDK または App-Auth を使用する
 

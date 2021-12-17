@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1256eb3be414679a84701c6ea96ac9a72d9caa2
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010702"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236364"
 ---
 この記事では、Azure の IoT インフラストラクチャを保護する詳細事項の次のレベルを説明します。 各コンポーネントを設定し、デプロイする実装レベルの詳細へリンクします。 また、さまざまな方法の比較や選択肢についても説明しています。
 
@@ -29,7 +29,7 @@ Azure IoT デプロイの保護は、次の 3 つのセキュリティ領域に�
 
 ## <a name="secure-device-provisioning-and-authentication"></a>安全なデバイス プロビジョニングと認証
 
-IoT ソリューション アクセラレータでは、次の 2 つの方法を使って IoT デバイスをセキュリティで保護します。
+IoT ソリューションでは、次の 2 つの方法を使用して IoT デバイスをセキュリティで保護します。
 
 * デバイスで IoT Hub と通信するために使用される各デバイスの一意の id キー (セキュリティ トークン) の提供。
 
@@ -43,13 +43,13 @@ IoT Hub では、デバイスとサービスの認証にセキュリティ ト�
 
 セキュリティ トークンとその使用状況の構造の詳細については、次の記事で説明します。
 
-* [セキュリティ トークンの構造](../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure)
+* [セキュリティ トークンの構造](../articles/iot-hub/iot-hub-dev-guide-sas.md#security-token-structure)
 
-* [デバイスとして SAS トークンを使用する](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)
+* [デバイスとして SAS トークンを使用する](../articles/iot-hub/iot-hub-dev-guide-sas.md#use-sas-tokens-as-a-device)
 
-各 IoT Hub には、転送中の C2D メッセージを含むキューなど、サービスでデバイスごとのリソースを作成するのに使用し、デバイス向けのエンドポイントにアクセスできる [ID レジストリ](../articles/iot-hub/iot-hub-devguide-identity-registry.md)があります。 IoT Hub ID レジストリでは、ソリューションのデバイス ID とセキュリティ キーのセキュリティで保護されたストレージが提供されます。 デバイス ID は個別に、またはまとめて許可リストあるいはブロック リストに追加できるため、デバイスへのアクセスを完全に制御できます。 次の記事では、ID レジストリの構造とサポートされている操作について詳しく説明します。
+各 IoT Hub には、転送中の C2D メッセージを含むキューなど、サービスでデバイスごとのリソースを作成するのに使用し、デバイス向けのエンドポイントにアクセスできる [ID レジストリ](../articles/iot-hub/iot-hub-devguide-identity-registry.md)があります。 IoT Hub ID レジストリでは、ソリューションのデバイス ID とセキュリティ キーのセキュリティで保護されたストレージが提供されます。 デバイス ID は個別に、またはまとめて許可リストあるいはブロックリストに追加できるため、デバイスへのアクセスを完全に制御できます。 次の記事では、ID レジストリの構造とサポートされている操作について詳しく説明します。
 
-[IoT Hub は、MQTT、AMQP、HTTP などのプロトコルをサポートします](../articles//iot-hub/iot-hub-devguide-security.md)。 各プロトコルは、IoT デバイスから IoT Hub まで異なる方法でセキュリティ トークンを使用します。
+[IoT Hub は、MQTT、AMQP、HTTP などのプロトコルをサポートします](../articles//iot-hub/iot-hub-dev-guide-sas.md)。 各プロトコルは、IoT デバイスから IoT Hub まで異なる方法でセキュリティ トークンを使用します。
 
 * AMQP: SASL PLAIN および AMQP 要求ベースのセキュリティ (IoT Hub レベルのトークンの場合、`{policyName}@sas.root.{iothubName}`。デバイス スコープのトークンの場合、`{deviceId}`)。
 
@@ -57,11 +57,11 @@ IoT Hub では、デバイスとサービスの認証にセキュリティ ト�
 
 * HTTP: 有効なトークンは、承認要求ヘッダーにあります。
 
-IoT Hub ID レジストリを使用して、デバイスごとのセキュリティ資格情報とアクセス制御を構成できます。 ただし、IoT ソリューションで既に[カスタム デバイス ID レジストリや認証スキーム](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)にかなり投資している場合、トークン サービスを作成すると、この既存のインフラストラクチャに IoT Hub を統合できます。
+IoT Hub ID レジストリを使用して、デバイスごとのセキュリティ資格情報とアクセス制御を構成できます。 ただし、IoT ソリューションで既に[カスタム デバイス ID レジストリや認証スキーム](../articles/iot-hub/iot-hub-dev-guide-sas.md#create-a-token-service-to-integrate-existing-devices)にかなり投資している場合、トークン サービスを作成すると、この既存のインフラストラクチャに IoT Hub を統合できます。
 
 ### <a name="x509-certificate-based-device-authentication"></a>X.509 証明書ベースのデバイスの認証
 
-[デバイス ベースのX.509 証明書](../articles/iot-hub/iot-hub-devguide-security.md)とその関連付けられた秘密キーおよびパブリック キーの組み合わせを使用することにより、物理層で追加の認証ができます。 秘密キーは、デバイスに安全に格納され、デバイスの外側では検出されません。 X.509 証明書には、デバイス ID など、デバイスとその他の組織の詳細に関する情報が含まれています。 証明書の署名は、秘密キーを使用して生成されます。
+[デバイス ベースのX.509 証明書](../articles/iot-hub/iot-hub-dev-guide-sas.md)とその関連付けられた秘密キーおよびパブリック キーの組み合わせを使用することにより、物理層で追加の認証ができます。 秘密キーは、デバイスに安全に格納され、デバイスの外側では検出されません。 X.509 証明書には、デバイス ID など、デバイスとその他の組織の詳細に関する情報が含まれています。 証明書の署名は、秘密キーを使用して生成されます。
 
 高度なデバイスのプロビジョニング フロー:
 
@@ -81,7 +81,7 @@ IoT デバイスと IoT Hub の間でのインターネット接続は、トラ�
 
 ## <a name="securing-the-cloud"></a>クラウドを保護する
 
-Azure IoT Hub はセキュリティ キーごとに[アクセス制御ポリシー](../articles/iot-hub/iot-hub-devguide-security.md)の定義付けを行います。 それは次の一連のアクセス許可を使用して、各 IoT Hub のエンドポイントへのアクセスを許可します。 アクセス許可により、機能に応じて IoT Hub へのアクセスが制限されます。
+Azure IoT Hub はセキュリティ キーごとに[アクセス制御ポリシー](../articles/iot-hub/iot-hub-dev-guide-sas.md)の定義付けを行います。 それは次の一連のアクセス許可を使用して、各 IoT Hub のエンドポイントへのアクセスを許可します。 アクセス許可により、機能に応じて IoT Hub へのアクセスが制限されます。
 
 * **RegistryRead**。 ID レジストリへの読み取りアクセスを許可します。 詳細については、[ID レジストリ](../articles/iot-hub/iot-hub-devguide-identity-registry.md)に関するページを参照してください。
 
@@ -91,9 +91,9 @@ Azure IoT Hub はセキュリティ キーごとに[アクセス制御ポリシ�
 
 * **DeviceConnect**。 デバイス向けのエンドポイントへのアクセスを許可します。 たとえば、D2C メッセージの送信と、C2D メッセージの受信のアクセス許可を付与します。 このアクセス許可はデバイスによって使用されます。
 
-[セキュリティ トークン](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)を使用して IoT Hub で **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス キーを使用する方法の 2 通りがあります。 さらに、デバイスからアクセスできるすべての機能は、仕様により、 `/devices/{deviceId}`というプレフィックスを持つエンドポイントで公開されることに注意することが重要です。
+[セキュリティ トークン](../articles/iot-hub/iot-hub-dev-guide-sas.md#use-sas-tokens-as-a-device)を使用して IoT Hub で **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス キーを使用する方法の 2 通りがあります。 さらに、デバイスからアクセスできるすべての機能は、仕様により、 `/devices/{deviceId}`というプレフィックスを持つエンドポイントで公開されることに注意することが重要です。
 
-[サービス コンポーネントでは、適切なアクセス許可を付与する共有アクセス ポリシーを使用した場合にのみセキュリティ トークンを生成できます](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components)。
+[サービス コンポーネントでは、適切なアクセス許可を付与する共有アクセス ポリシーを使用した場合にのみセキュリティ トークンを生成できます](../articles/iot-hub/iot-hub-dev-guide-sas.md#use-security-tokens-from-service-components)。
 
 Azure IoT Hub とソリューションの一部として使用するその他のサービスは、Azure Active Directory を使用してユーザーを管理できます。
 

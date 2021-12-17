@@ -1,0 +1,35 @@
+- name: 標準に関するドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: ID 標準の概要
+      href: standards-overview.md
+- name: NIST ALS を達成する
+  expanded: true
+  items:
+    - name: NIST の概要
+      href: nist-overview.md
+    - name: Authenticator Assurance Level について
+      href: nist-about-authenticator-assurance-levels.md
+    - name: Authenticator の基本
+      href: nist-authentication-basics.md
+    - name: Authenticator の種類と Microsoft メソッド
+      href: nist-authenticator-types.md
+    - name: AAL 1 を達成する
+      href: nist-authenticator-assurance-level-1.md
+    - name: AAL 2 を達成する
+      href: nist-authenticator-assurance-level-2.md
+    - name: AAL 3 を達成する
+      href: nist-authenticator-assurance-level-3.md
+- name: FedRAMP High コンプライアンスを達成する
+  expanded: true
+  items:
+    - name: FedRAMP High インパクト用に Azure Active Directory を構成する
+      href: configure-azure-active-directory-for-fedramp-high-impact.md
+    - name: FedRAMP アクセス コントロールを構成する
+      href: fedramp-access-controls.md
+    - name: ID および認証のコントロールを構成する
+      href: fedramp-identification-and-authentication-controls.md
+    - name: 追加のコントロールを構成する
+      href: fedramp-other-controls.md

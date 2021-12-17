@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: a674f5f653ad420ab8f28ff73c6b86f9c18b154e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b107b14b32417ea6f3da8c7e198a7d6b25497460
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92517754"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298869"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Trelica の統合
 
@@ -43,7 +43,7 @@ ms.locfileid: "92517754"
 
 * Trelica では、IDP initiated SSO がサポートされます。
 * Trelica では、Just-In-Time ユーザー プロビジョニングがサポートされます。
-* Trelica を構成した後、セッション制御を適用できます。 この制御により、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Trelica を構成した後、セッション制御を適用できます。 この制御により、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-trelica-from-the-gallery"></a>ギャラリーからの Trelica の追加
 
@@ -138,7 +138,7 @@ Trelica では、Just-In-Time ユーザー プロビジョニングがサポー�
 
 このセクションでは、マイ アプリ ポータルを使用して自分の Azure AD のシングル サインオン構成をテストします。
 
-マイ アプリ ポータルで [Trelica] タイルを選択すると、SSO を設定した Trelica に自動的にサインインします。 マイ アプリ ポータルの詳細については、[マイ アプリ ポータルの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+マイ アプリ ポータルで [Trelica] タイルを選択すると、SSO を設定した Trelica に自動的にサインインします。 マイ アプリ ポータルの詳細については、[マイ アプリ ポータルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -150,6 +150,6 @@ Trelica では、Just-In-Time ユーザー プロビジョニングがサポー�
 
 - [Azure AD で Trelica を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Trelica を保護する方法](/cloud-app-security/proxy-intro-aad)

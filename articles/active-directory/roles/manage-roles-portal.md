@@ -8,59 +8,257 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 03/07/2021
+ms.date: 07/15/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ced586db1b4e417e623431c137c43dac8ba56f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 311478f52de547a99354a6effad376145166704b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466646"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724817"
 ---
 # <a name="assign-azure-ad-roles-to-users"></a>Azure AD ロールをユーザーに割り当てる
 
-Azure AD 管理者センターで、管理者ロールのすべてのメンバーを表示して管理できるようになりました。 ロールの割り当てを頻繁に管理する場合は、このエクスペリエンスが望ましいでしょう。 この記事では、Azure AD 管理センターを使用して Azure AD ロールを割り当てる方法について説明します。
+Azure Active Directory (Azure AD) のユーザーにアクセス権を付与するには、Azure AD ロールを割り当てます。 ロールは、アクセス許可のコレクションです。 この記事では、Azure portal と PowerShell を使用して Azure AD ロールを割り当てる方法について説明します。
 
-## <a name="assign-a-role"></a>ロールの割り当て
+## <a name="prerequisites"></a>前提条件
 
-1. グローバル管理者または特権ロール管理者のアクセス許可を使用して、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+- 特権ロール管理者または全体管理者
+- Azure AD Premium P2 ライセンス (Privileged Identity Management (PIM) を使用する場合)
+- PowerShell を使用する場合の AzureADPreview モジュール
+- Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
-1. **[Azure Active Directory]** を選択します。
+詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
 
-1. **[ロールと管理者]** を選択して、利用可能なすべてのロールの一覧を表示します。
+## <a name="azure-portal"></a>Azure portal
 
-    ![[ロールと管理者] ページのスクリーンショット](./media/manage-roles-portal/roles-and-administrators.png)
+Azure portal を使用して Azure AD ロールを割り当てるには、これらの手順に従います。 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) が有効になっているかどうかによって、エクスペリエンスは異なります。
+
+### <a name="assign-a-role"></a>ロールの割り当て
+
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[ロールと管理者]** の順に選択して、利用可能なすべてのロールの一覧を表示します。
+
+    ![Azure Active Directory の [ロールと管理者] ページ。](./media/manage-roles-portal/roles-and-administrators.png)
 
 1. ロールを選択して、その割り当てを表示します。
 
-    必要なロールを見つけるために、ロール カテゴリに基づいてロールのサブセットを Azure AD に表示することができます。 選択した種類のロールだけが表示される **[種類]** フィルターを確認してください。
+    必要なロールをすばやく見つけるには、 **[フィルターの追加]** を使用してロールをフィルター処理します。
 
 1. **[割り当ての追加]** を選択し、このロールに割り当てるユーザーを選択します。
 
-    次の図と異なるものが表示された場合は、「[Privileged Identity Management (PIM)](#privileged-identity-management-pim)」の注記を参照して、PIM を使用しているかどうかを確認してください。
+    次の図とは異なる内容が表示される場合は、PIM が有効になっている可能性があります。 次のセクションを参照してください。
 
-    ![管理者ロールのアクセス許可の一覧](./media/manage-roles-portal/add-assignments.png)
+    ![選択したロールの [割り当ての追加] ペイン。](./media/manage-roles-portal/add-assignments.png)
 
 1. **[追加]** を選択してロールを割り当てます。
 
-## <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PIM)
+### <a name="assign-a-role-using-pim"></a>PIM を使用してロールを割り当てる
 
-[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) を使用して追加の管理機能を追加するには、 **[PIM で管理]** を選択します。 特権ロール管理者は、割り当てを "永続的" (ロールで常にアクティブ) から "有資格" (昇格された場合にのみ、ロールに存在) に変更することができます。 Privileged Identity Management を備えていない場合でも、 **[PIM で管理]** を選択して、引き続き試用版にサインアップできます。 Privileged Identity Management には、[Azure AD Premium P2 ライセンス プラン](../privileged-identity-management/subscription-requirements.md)が必要です。
+[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) が有効になっている場合は、追加のロールの割り当て機能が提供されます。 たとえば、ユーザーをロールの対象にしたり、期間を設定したりできます。 PIM が有効な場合、Azure portal を使用してロールを割り当てる方法は 2 つあります。 [ロールと管理者] ページまたは PIM エクスペリエンスを使用できます。 どちらの方法でも同じ PIM サービスが使用されます。
 
-![[ユーザー管理者 - 割り当て] ページで選択された "PIM で管理" アクションを示すスクリーンショット](./media/manage-roles-portal/member-list-pim.png)
+[[ロールと管理者]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) ページを使用してロールを割り当てるには、これらの手順に従います。 [[Privileged Identity Management]](https://portal.azure.com/#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) ページを使用してロールを割り当てる場合は、「[Privileged Identity Management で Azure AD ロールを割り当てる](../privileged-identity-management/pim-how-to-add-role-to-user.md)」を参照してください。
 
-全体管理者または特権ロール管理者の場合は、簡単にメンバーを追加または削除したり、一覧をフィルター処理したり、メンバーを選択してそのユーザーが割り当てられているアクティブ ロールを表示したりすることができます。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 
-> [!Note]
-> Azure AD Premium P2 ライセンスがあり、Privileged Identity Management ユーザーに既に使用している場合、ロール管理タスクはすべて、Azure AD ではなく、Privileged Identity Management で実行されます。
->
-> ![既に PIM を使用していて Premium P2 ライセンスを所有しているユーザーの PIM で管理される Azure AD ロール](./media/manage-roles-portal/pim-manages-roles-for-p2.png)
+1. **[Azure Active Directory]**  >  **[ロールと管理者]** の順に選択して、利用可能なすべてのロールの一覧を表示します。
+
+    ![PIM が有効な場合の Azure Active Directory の [ロールと管理者] ページ。](./media/manage-roles-portal/roles-and-administrators.png)
+
+1. ロールを選択して、ロールの割り当ての状態 (対象、アクティブ、期限切れ) を確認します。
+
+    必要なロールをすばやく見つけるには、 **[フィルターの追加]** を使用してロールをフィルター処理します。
+
+1. **[割り当ての追加]** を選択します。
+
+1. **[メンバーが選択されていない]** を選択し、このロールに割り当てるユーザーを選択します。
+
+    ![PIM が有効な場合の [割り当ての追加] ページと [メンバーの選択] ペイン。](./media/manage-roles-portal/add-assignments-pim.png)
+
+1. **[次へ]** を選択します。
+
+1. **[設定]** タブで、このロールの割り当てを **[対象]** にするか **[アクティブ]** にするかを選択します。
+
+    "対象" のロールの割り当ては、ユーザーがロールを使用するために 1 つ以上のアクションを実行する必要があることを意味します。 "アクティブ" なロールの割り当ては、ユーザーがロールを使用するためにアクションを実行する必要がないことを意味します。 これらの設定の意味の詳細については、[PIM の用語](../privileged-identity-management/pim-configure.md#terminology)に関するセクションを参照してください。
+
+    ![PIM が有効な場合の [割り当ての追加] ページと [設定] タブ。](./media/manage-roles-portal/add-assignments-pim-setting.png)
+
+1. 残りのオプションを使用して、割り当ての期間を設定します。
+
+1. **[割り当てる]** を選択してロールを割り当てます。
+
+## <a name="powershell"></a>PowerShell
+
+PowerShell を使用して Azure AD ロールを割り当てるには、これらの手順に従います。
+
+### <a name="setup"></a>セットアップ
+
+1. PowerShell ウィンドウを開き、[Import-Module](/powershell/module/microsoft.powershell.core/import-module) を使用して AzureADPreview モジュールをインポートします。 詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
+
+    ```powershell
+    Import-Module -Name AzureADPreview -Force
+    ```
+
+1. PowerShell ウィンドウで [Connect-AzureAD](/powershell/module/azuread/connect-azuread) を使用して、テナントにサインインします。
+
+    ```powershell
+    Connect-AzureAD
+    ```
+
+1. [Get-AzureADUser](/powershell/module/azuread/get-azureaduser) を使用して、ロールを割り当てるユーザーを取得します。
+
+    ```powershell
+    $user = Get-AzureADUser -Filter "userPrincipalName eq 'user@contoso.com'"
+    ```
+
+### <a name="assign-a-role"></a>ロールの割り当て
+
+1. [Get-AzureADMSRoleDefinition](/powershell/module/azuread/get-azureadmsroledefinition) を使用して、割り当てるロールを取得します。
+
+    ```powershell
+    $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Billing Administrator'"
+    ```
+
+1. [New-AzureADMSRoleAssignment](/powershell/module/azuread/new-azureadmsroleassignment) を使用して、ロールを割り当てます。
+
+    ```powershell
+    $roleAssignment = New-AzureADMSRoleAssignment -DirectoryScopeId '/' -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
+    ```
+
+### <a name="assign-a-role-as-eligible-using-pim"></a>PIM を使用してロールを "対象" として割り当てる
+
+PIM が有効な場合は、ユーザーをロールの割り当ての対象にする機能や、ロールの割り当ての開始時刻と終了時刻を定義する機能などの追加機能が提供されます。 これらの機能では、PowerShell コマンドの異なるセットを使用します。 PowerShell と PIM の使用の詳細については、「[Privileged Identity Management の Azure AD ロールのための PowerShell](../privileged-identity-management/powershell-for-azure-ad-roles.md)」を参照してください。
+
+
+1. [Get-AzureADMSRoleDefinition](/powershell/module/azuread/get-azureadmsroledefinition) を使用して、割り当てるロールを取得します。
+
+    ```powershell
+    $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Billing Administrator'"
+    ```
+
+1. [Get-AzureADMSPrivilegedResource](/powershell/module/azuread/get-azureadmsprivilegedresource) を使用して、特権付きリソースを取得します。 この場合は、テナントです。
+
+    ```powershell
+    $aadTenant = Get-AzureADMSPrivilegedResource -ProviderId aadRoles
+    ```
+
+1. [New-Object](/powershell/module/microsoft.powershell.utility/new-object) を使用して、新しい `AzureADMSPrivilegedSchedule` オブジェクトを作成し、ロールの割り当ての開始時刻と終了時刻を定義します。
+
+    ```powershell
+    $schedule = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedSchedule
+    $schedule.Type = "Once"
+    $schedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+    $schedule.EndDateTime = "2021-07-25T20:00:00.000Z"
+    ```
+
+1. [Open-AzureADMSPrivilegedRoleAssignmentRequest](/powershell/module/azuread/open-azureadmsprivilegedroleassignmentrequest) を使用して、ロールを "対象" として割り当てます。
+
+    ```powershell
+    $roleAssignmentEligible = Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId $aadTenant.Id -RoleDefinitionId $roleDefinition.Id -SubjectId $user.objectId -Type 'AdminAdd' -AssignmentState 'Eligible' -schedule $schedule -reason "Review billing info"
+    ```
+
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
+
+[Graph エクスプローラー](https://aka.ms/ge)の Microsoft Graph API を使用してロールを割り当てるには、これらの手順に従います。
+
+### <a name="assign-a-role"></a>ロールの割り当て
+
+この例では、objectID `f8ca5a85-489a-49a0-b555-0a6d81e56f0d` のセキュリティ プリンシパルに、テナント スコープで課金管理者ロール (ロール定義 ID `b0f54661-2d74-4c50-afa3-1ec803f12efe`) が割り当てられます。 すべての組み込みロールの不変のロール テンプレート ID の一覧については、「[Azure AD の組み込みロール](permissions-reference.md)」を参照してください。
+
+1. [Graph エクスプローラー](https://aka.ms/ge)にサインインします。
+2. ドロップダウンから HTTP メソッドとして **[POST]** を選択します。 
+3. API バージョンとして **[ベータ]** を選択します。
+4. [roleAssignments](/graph/api/rbacapplication-post-roleassignments) API を使用してロールを割り当てます。 次の詳細を URL と要求本文に追加し、 **[クエリの実行]** を選択します。
+
+```HTTP
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+Content-type: application/json
+
+{ 
+    "@odata.type": "#microsoft.graph.unifiedRoleAssignment",
+    "roleDefinitionId": "b0f54661-2d74-4c50-afa3-1ec803f12efe",
+    "principalId": "f8ca5a85-489a-49a0-b555-0a6d81e56f0d",
+    "directoryScopeId": "/"
+}
+```
+
+### <a name="assign-a-role-using-pim"></a>PIM を使用してロールを割り当てる
+
+この例では、objectID `f8ca5a85-489a-49a0-b555-0a6d81e56f0d` のセキュリティ プリンシパルに、課金管理者 (ロール定義 ID `b0f54661-2d74-4c50-afa3-1ec803f12efe`) に対する 180 日間の期限付きの対象のロールの割り当てが割り当てられています。
+
+1. [Graph エクスプローラー](https://aka.ms/ge)にサインインします。
+2. ドロップダウンから HTTP メソッドとして **[POST]** を選択します。 
+3. API バージョンとして **[ベータ]** を選択します。
+4. 次の詳細を URL と要求本文に追加し、 **[クエリの実行]** を選択します。
+
+```HTTP
+POST https://graph.microsoft.com/beta/rolemanagement/directory/roleEligibilityScheduleRequests
+
+Content-type: application/json
+
+{
+    "action": "AdminAssign",
+    "justification": "for managing admin tasks",
+    "directoryScopeId": "/",
+    "principalId": "f8ca5a85-489a-49a0-b555-0a6d81e56f0d",
+    "roleDefinitionId": "b0f54661-2d74-4c50-afa3-1ec803f12efe",
+    "scheduleInfo": {
+        "startDateTime": "2021-07-15T19:15:08.941Z",
+        "expiration": {
+            "type": "AfterDuration",
+            "duration": "PT180D"
+        }
+    }
+}
+
+```
+
+次の例では、セキュリティ プリンシパルに、課金管理者に対する永続的な対象のロールの割り当てが割り当てられています。
+
+```HTTP
+POST https://graph.microsoft.com/beta/rolemanagement/directory/roleEligibilityScheduleRequests
+
+Content-type: application/json
+
+{
+    "action": "AdminAssign",
+    "justification": "for managing admin tasks",
+    "directoryScopeId": "/",
+    "principalId": "f8ca5a85-489a-49a0-b555-0a6d81e56f0d",
+    "roleDefinitionId": "b0f54661-2d74-4c50-afa3-1ec803f12efe",
+    "scheduleInfo": {
+        "startDateTime": "2021-07-15T19:15:08.941Z",
+        "expiration": {
+            "type": "NoExpiration"
+        }
+    }
+}
+
+```
+
+ロールの割り当てをアクティブにするには、次の API を使用します。
+
+```HTTP
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignmentScheduleRequests
+
+Content-type: application/json
+
+{
+    "action": "SelfActivate",
+    "justification": "activating role assignment for admin privileges",
+    "roleDefinitionId": "b0f54661-2d74-4c50-afa3-1ec803f12efe",
+    "directoryScopeId": "/",
+    "principalId": "f8ca5a85-489a-49a0-b555-0a6d81e56f0d"
+}
+
+```
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure AD 管理ロール フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)でご意見をお寄せください。
-* ロールの詳細については、「[Azure の組み込みロール](permissions-reference.md)」を参照してください。
-* 既定のユーザー アクセス許可については、[既定のゲストとメンバー ユーザーのアクセス許可の比較](../fundamentals/users-default-permissions.md)を参照してください。
+- [Azure AD ロールの割り当てを一覧表示する](view-assignments.md)
+- [PowerShell を使用してリソース スコープのカスタム ロールを割り当てる](custom-assign-powershell.md)
+- [Azure AD の組み込みロール](permissions-reference.md)

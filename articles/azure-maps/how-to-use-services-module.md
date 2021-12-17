@@ -1,20 +1,20 @@
 ---
 title: Azure Maps サービス モジュールの使用 | Microsoft Azure Maps
 description: Azure Maps サービス モジュールについて学習します。 Web または Node.js アプリケーションで Azure Maps REST サービスにアクセスするには、このヘルパー ライブラリを読み込んで使用する方法を参照してください。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/25/2019
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: devx-track-js
-ms.openlocfilehash: 2e07b614e87ed5dad94cf9bc5994e78071187839
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 512eff61d6195ad0ff21a4d22bc4a9e633f7d109
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008601"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006717"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Azure Maps サービス モジュールの使用
 
@@ -26,19 +26,19 @@ Azure Maps の Web SDK は、*サービス モジュール* を提供します�
 1. Azure Maps サービス モジュールの読み込み 次の 2 つの方法のいずれかで読み込みます。
     - グローバルにホストされている Azure Maps サービス モジュールの Azure Content Delivery Network のバージョンを使用します。 次に、ファイルの `<head>` 要素にスクリプト参照を追加します。
 
-        ```html
-        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
-        ```
+    ```html
+    <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
+    ```
 
     - または、[azure-maps-rest](https://www.npmjs.com/package/azure-maps-rest) NPM パッケージを使用して、Azure Maps Web SDK ソース コード用のサービス モジュールをローカルに読み込み、アプリを使用してそれをホストします。 このパッケージには TypeScript 定義も含まれています。 次のコマンドを実行します。
-    
-        > **npm install azure-maps-rest**
-    
-        次に、ファイルの `<head>` 要素にスクリプト参照を追加します。
 
-         ```html
-        <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
-         ```
+      `npm install azure-maps-rest`
+
+      次に、ファイルの `<head>` 要素にスクリプト参照を追加します。
+
+      ```html
+      <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
+      ```
 
 1. 認証パイプラインを作成します。 サービス URL のクライアント エンドポイントを初期化するには、事前にパイプラインを作成しておく必要があります。 Azure Maps 検索サービス クライアントを認証するには、自身の Azure Maps アカウント キーまたは Azure Active Directory (Azure AD) 資格情報を使用します。 この例では、検索サービス URL クライアントが作成されます。 
 
@@ -160,7 +160,7 @@ Azure Maps の Web SDK は、*サービス モジュール* を提供します�
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="サービス モジュールを使用する" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="サービス モジュールを使用する" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上で、Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>サービス モジュールを使用する</a>ペンを表示します。
 </iframe>
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 32757fef131c5e443350f032c0ac987d7f491396
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86fa4eb83592d5c9927139c096a60c2ebc4efbc0
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864314"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113552084"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
@@ -124,12 +124,11 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 スクリプト アクションを再実行しても、キーは **更新されません**。スクリプトで、ストレージ アカウントのエントリが既に存在するかどうかが確認されます。 エントリが既に存在する場合、いかなる変更もしません。
 
-この問題を回避するには、次のようにします。  
-1. ストレージ アカウントを削除します。
-1. ストレージ アカウントを追加します。
+この問題を回避するには、次のようにします。
 
-> [!IMPORTANT]  
-> クラスターに接続されているプライマリ ストレージ アカウントのストレージ キーのローテーションはサポートされていません。
+* アクセス キーをローテーションする方法については、「[ストレージ アカウントのアクセス キーを更新する](hdinsight-rotate-storage-keys.md)」をご覧ください。
+
+* また、いったんストレージ アカウントを削除してから、ストレージ アカウントを再度追加することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

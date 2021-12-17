@@ -3,22 +3,22 @@ title: サインイン フローの設定
 titleSuffix: Azure Active Directory B2C
 description: Azure Active Directory B2C でサインイン フローを設定する方法を学習します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 08/24/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2310bd39c39036b6d6ac919517fa5539d7b70779
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5177d06ce6507f23dfbc31b9825ce38d85422bb6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581866"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008173"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でサインイン フローを設定する
 
@@ -26,7 +26,7 @@ ms.locfileid: "104581866"
 
 ## <a name="sign-in-flow-overview"></a>サインイン フローの概要
 
-サインイン ポリシーによって、ユーザーは以下を実行できます。 
+サインイン ポリシーによって、ユーザーは以下を実行できます。
 
 * ユーザーは Azure AD B2C ローカルアカウントでサインインできる
 * ソーシャル アカウントでサインアップまたはサインインする
@@ -37,7 +37,8 @@ ms.locfileid: "104581866"
 
 ## <a name="prerequisites"></a>[前提条件]
 
-まだそうしていない場合は、[Azure Active Directory B2C に Web アプリケーションを登録](tutorial-register-applications.md)します。
+- まだそうしていない場合は、[Azure Active Directory B2C に Web アプリケーションを登録](tutorial-register-applications.md)します。
+- [Azure Active Directory B2C でユーザー フローとカスタム ポリシーを作成する方法](tutorial-create-user-flows.md)に関するページの手順を完了します。
 
 ::: zone pivot="b2c-user-flow"
 
@@ -46,14 +47,22 @@ ms.locfileid: "104581866"
 サインイン ポリシーを追加するには:
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ポータルのツール バーで **[Directories + Subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[ポリシー]** で、 **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
 1. **[ユーザー フローを作成する]** ページで、 **[サインイン]** ユーザー フローを選択します。
 1. **[バージョンの選択]** で **[Recommended]\(推奨\)** を選択して、 **[作成]** を選択します。 (ユーザー フローのバージョンに関する[詳細情報](user-flow-versions.md))。
 1. ユーザー フローの **[名前]** を入力します。 たとえば、「*signupsignin1*」と入力します。
-1. **[ID プロバイダー]** で、 **[電子メールのサインイン]** を選択します。
-1. **[アプリケーション要求]** には、アプリケーションに返信する要求と属性を選択します。 たとえば、 **[Show more]\(さらに表示\)** を選択し、 **[表示名]** 、 **[名]** 、 **[姓]** 、 **[ユーザーのオブジェクト ID]** の属性と要求を選択します。 **[OK]** をクリックします。
+1. **[ID プロバイダー]** で、少なくとも 1 つの ID プロバイダーを選択します。
+
+   * **[ローカル アカウント]** で、 **[Email signin]\(メールでのサインイン\)** 、 **[User ID signin]\(ユーザー ID でのサインイン\)** 、 **[Phone signin]\(電話でのサインイン\)** 、 **[Phone/Email signin]\(電話とメールでのサインイン\)** 、 **[User ID/Email signin]\(ユーザー ID とメールでのサインイン\)** 、 **[None]\(なし\)** のいずれかを選択します。 [詳細については、こちらを参照してください](sign-in-options.md)。
+   * **[ソーシャル ID プロバイダ]** で、既に設定してある外部のソーシャル ID プロバイダまたはエンタープライズ ID プロバイダーをどれか選択します。 [詳細については、こちらを参照してください](add-identity-provider.md)。
+1. 第 2 の認証方法で ID を証明することをユーザーに要求したい場合は、 **[多要素認証]** で、認証方法の種類を選択し、さらに、いつ多要素認証 (MFA) を適用するかを選択します。 [詳細については、こちらを参照してください](multi-factor-authentication.md)。
+1. Azure AD B2C テナントに条件付きアクセス ポリシーを設定していて、それをこのユーザー フローで有効にする場合は、 **[Conditional access]\(条件付きアクセス\)** の **[Enforce conditional access policies]\(条件付きアクセス ポリシーを有効にする\)** チェック ボックスに印を入れます。 ポリシー名を指定する必要はありません。 [詳細については、こちらを参照してください](conditional-access-user-flow.md?pivots=b2c-user-flow)。
+1. アプリケーションにトークンで返す要求を **[アプリケーション要求]** で選択します。 すべての値を表示するために **[Show more]\(詳細表示\)** を選択して値を選び、 **[OK]** を選択します。
+   > [!NOTE]
+   > Azure AD B2C テナントで使用するための[カスタム属性を作成](user-flow-custom-attributes.md?pivots=b2c-user-flow)することもできます。
 1. **[作成]** をクリックして、ユーザー フローを追加します。 *B2C_1* というプレフィックスが自動的に名前に追加されます。
 
 ### <a name="test-the-user-flow"></a>ユーザー フローをテストする
@@ -69,7 +78,7 @@ ms.locfileid: "104581866"
 
 ## <a name="remove-the-sign-up-link"></a>サインアップ リンクを削除する
 
-**SelfAsserted-LocalAccountSignin-Email** 技術プロファイルは [セルフアサート](self-asserted-technical-profile.md)であり、サインアップまたはサインイン フローの間に呼び出されます。 サインアップ リンクを削除するには、`setting.showSignupLink` メタデータを `false` に設定します。 拡張ファイルで SelfAsserted-LocalAccountSignin-Email 技術プロファイルを上書きします。 
+**SelfAsserted-LocalAccountSignin-Email** 技術プロファイルは [セルフアサート](self-asserted-technical-profile.md)であり、サインアップまたはサインイン フローの間に呼び出されます。 サインアップ リンクを削除するには、`setting.showSignupLink` メタデータを `false` に設定します。 拡張ファイルで SelfAsserted-LocalAccountSignin-Email 技術プロファイルを上書きします。
 
 1. お使いのポリシーの拡張ファイルを開きます。 たとえば、_`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`**_ です。
 1. `ClaimsProviders` 要素を見つけます。 要素が存在しない場合は追加します。
@@ -94,7 +103,7 @@ ms.locfileid: "104581866"
 
 1. `<BuildingBlocks>` 要素内で、1.2.0 以降のデータ URI を参照するように次の [ContentDefinition](contentdefinitions.md) を追加します。
 
-    ```XML
+    ```xml
     <!-- 
     <BuildingBlocks> 
       <ContentDefinitions>-->
@@ -109,7 +118,8 @@ ms.locfileid: "104581866"
 ## <a name="update-and-test-your-policy"></a>ポリシーを更新してテストする
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
+1. ポータルのツールバーにある **[ディレクトリ + サブスクリプション]** アイコンを選択して、Azure AD テナントを含むディレクトリを使っていることを確認します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[Identity Experience Framework]** を選択します。
 1. **[カスタム ポリシーのアップロード]** を選択し、変更したポリシー ファイルである *TrustFrameworkExtensions.xml* をアップロードします。

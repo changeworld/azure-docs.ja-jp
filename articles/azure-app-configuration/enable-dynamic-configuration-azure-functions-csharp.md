@@ -15,12 +15,12 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: devx-track-csharp, azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: add4b54adb02db09536f4e56a7f039c46245c182
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffa2b1a4537093f9a612f0e57b7f416ee7ed0012
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963564"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301914"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>チュートリアル:Azure Functions アプリで動的な構成を使用する
 
@@ -55,7 +55,7 @@ App Configuration .NET 構成プロバイダーは、アプリケーションの
             options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
                    // Load all keys that start with `TestApp:`
                    .Select("TestApp:*")
-                   // Configure to reload configuration if the registered 'Sentinel' key is modified
+                   // Configure to reload configuration if the registered sentinel key is modified
                    .ConfigureRefresh(refreshOptions =>
                       refreshOptions.Register("TestApp:Settings:Sentinel", refreshAll: true));
         });
@@ -63,7 +63,7 @@ App Configuration .NET 構成プロバイダーは、アプリケーションの
     ```
 
    > [!TIP]
-   > App Configuration にあるキーと値の複数のペアを更新する際、すべての変更が済むまでは、アプリケーションに構成をリロードさせたくないのが普通でしょう。 **Sentinel** キーを登録し、その他の構成変更がすべて完了したときにだけ、そのキーを更新してください。 そうすることで、アプリケーション内の構成の一貫性を確保しやすくなります。
+   > App Configuration にあるキーと値の複数のペアを更新する際、すべての変更が済むまでは、アプリケーションに構成をリロードさせたくないのが普通でしょう。 *Sentinel* キーを登録し、その他の構成変更がすべて完了したときにだけ、そのキーを更新してください。 そうすることで、アプリケーション内の構成の一貫性を確保しやすくなります。
 
 2. 依存関係の挿入を通じて Azure App Configuration サービスを利用できるように `Configure` メソッドを更新します。
 

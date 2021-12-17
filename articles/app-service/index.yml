@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: 60e96d9d7f930a733f107f4fee2d1d7ca0348223
-  ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+  ms.openlocfilehash: 388a2a9766b5079b263556f52b29c551e03b34f4
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102122240"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131435664"
 landingContent:
 - title: App Service について
   linkLists:
@@ -20,9 +20,11 @@ landingContent:
     links:
     - text: App Service とは
       url: overview.md
+    - text: App Service プランとは
+      url: overview-hosting-plans.md
     - text: App Service Environment
       url: environment/intro.md
-    - text: ホスティング オプションの比較
+    - text: Web アプリに対する Azure のホスティング オプションを比較する
       url: /azure/architecture/guide/technology-choices/compute-decision-tree
   - linkListType: whats-new
     links:
@@ -32,10 +34,8 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 初めての ASP.NET Core アプリ
+    - text: 初めての ASP.NET Web アプリ
       url: quickstart-dotnetcore.md
-    - text: 初めての ASP.NET アプリ (Windows のみ)
-      url: quickstart-dotnet-framework.md
     - text: 初めての Node.js アプリ
       url: quickstart-nodejs.md
     - text: 初めての PHP アプリ
@@ -52,12 +52,10 @@ landingContent:
     links:
     - text: カスタム ドメインをアプリにマップする
       url: app-service-web-tutorial-custom-domain.md
-    - text: SSL バインディングを使用してカスタム ドメインをセキュリティで保護する
+    - text: TLS/SSL バインディングを使用してカスタム ドメインをセキュリティで保護する
       url: configure-ssl-bindings.md
     - text: ステージング環境でアプリを実行する
       url: deploy-staging-slots.md
-    - text: ストレージと Microsoft Graph に安全にアクセスする
-      url: scenario-secure-app-overview.md
   - linkListType: how-to-guide
     links:
     - text: SSH 経由で Linux コンテナーに接続する
@@ -82,6 +80,8 @@ landingContent:
       url: deploy-ci-cd-custom-container.md
     - text: コンテナーをストレージ ファイルに接続する
       url: configure-connect-to-azure-storage.md
+    - text: GitHub Actions を使用したデプロイ
+      url: deploy-container-github-action.md
 - title: データベースを使用した CRUD アプリ
   linkLists:
   - linkListType: tutorial
@@ -100,18 +100,32 @@ landingContent:
       url: tutorial-python-postgresql-app.md
     - text: PostgreSQL を使用する Ruby (Rails) アプリ
       url: tutorial-ruby-postgres-app.md
+- title: セキュリティで保護
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure App Service のセキュリティ
+      url: overview-security.md
+  - linkListType: tutorial
+    links:
+    - text: シークレットを使用せずマネージド ID を使用した SQL Database へのアクセス
+      url: tutorial-connect-msi-sql-database.md
+    - text: シークレットを使用せずマネージド ID を使用したストレージと Microsoft Graph へのアクセス
+      url: scenario-secure-app-overview.md
+    - text: Key Vault のシークレットを使用して安全にサービスに接続する
+      url: tutorial-connect-msi-key-vault.md
+    - text: ネットワーク トラフィックを分離してバック エンド接続を行う
+      url: tutorial-networking-isolate-vnet.md
+    - text: ユーザーを認証する
+      url: tutorial-auth-aad.md
 - title: 管理と統合
   linkLists:
   - linkListType: concept
     links:
     - text: App Service プランの管理
-      url: overview-hosting-plans.md
+      url: app-service-plan-manage.md
   - linkListType: tutorial
     links:
-    - text: マネージド ID を利用してリソースへのアクセスを保護する
-      url: app-service-web-tutorial-connect-msi.md
-    - text: ユーザーを認証する
-      url: tutorial-auth-aad.md
     - text: CORS を使用して RESTful API をホストする
       url: app-service-web-tutorial-rest-api.md
     - text: CDN をアプリケーションに追加する
@@ -119,7 +133,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Virtual Network との統合
-      url: web-sites-integrate-with-vnet.md
+      url: ./overview-vnet-integration.md
     - text: オンプレミスへのハイブリッド接続を作成する
       url: app-service-hybrid-connections.md
     - text: Traffic Manager を使用する負荷分散
@@ -146,13 +160,13 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
-    - text: App Service と Azure Monitor の統合 (プレビュー)
+    - text: App Service と Azure Monitor の統合
       url: https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html
-    - text: Azure Monitor の統合のログの種類 (プレビュー)
+    - text: Azure Monitor 統合のログの種類
       url: https://azure.github.io/AppService/2020/06/25/New-Logs-Available-for-Azure-Monitor-Integration.html
   - linkListType: tutorial
     links:
-    - text: Azure Monitor を使用したエラーのトラブルシューティング (プレビュー)
+    - text: Azure Monitor を使用したエラーのトラブルシューティング
       url: tutorial-troubleshoot-monitor.md
   - linkListType: how-to-guide
     links:
@@ -190,3 +204,17 @@ landingContent:
       url: /rest/api/appservice/
     - text: リソース マネージャー
       url: /azure/templates/microsoft.web/allversions
+- title: Azure Arc の App Service (プレビュー)
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Arc の App Service、Functions、および Logic Apps (プレビュー)
+      url: overview-arc-integration.md
+  - linkListType: quickstart
+    links:
+    - text: Azure Arc で App Service アプリを作成する (プレビュー)
+      url: quickstart-arc.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Arc 対応の Kubernetes クラスターを設定して、App Service、Functions、Logic Apps を実行します (プレビュー)
+      url: manage-create-arc-environment.md

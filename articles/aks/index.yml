@@ -9,12 +9,12 @@ metadata:
   author: laurenhughes
   ms.author: lahugh
   ms.date: 07/21/2020
-  ms.openlocfilehash: 84d02dba9bc1d45205bc610dc1d155a80179e93e
-  ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+  ms.openlocfilehash: 213e8336eb40a56c6f8bb4d1ce0e2f20e02d1fd4
+  ms.sourcegitcommit: b00a2d931b0d6f1d4ea5d4127f74fc831fb0bca9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/10/2020
-  ms.locfileid: "97007655"
+  ms.lasthandoff: 11/20/2021
+  ms.locfileid: "132869214"
 landingContent:
 - title: Azure Kubernetes Service (AKS) について
   linkLists:
@@ -38,6 +38,14 @@ landingContent:
       url: concepts-storage.md
     - text: スケール
       url: concepts-scale.md
+  - linkListType: learn
+    links:
+    - text: Azure Kubernetes Service の概要
+      url: /learn/modules/intro-to-azure-kubernetes-service/
+    - text: Azure 上のコンテナーの概要
+      url: /learn/modules/intro-to-containers/
+    - text: Azure Container Registry を使用してコンテナー イメージをビルドして格納する
+      url: /learn/modules/build-and-store-container-images/
 - title: AKS クラスターを 5 分でデプロイする
   linkLists:
   - linkListType: quickstart
@@ -48,14 +56,38 @@ landingContent:
       url: kubernetes-walkthrough-portal.md
     - text: Resource Manager テンプレート
       url: kubernetes-walkthrough-rm-template.md
-- title: Bridge to Kubernetes を使用してアプリケーションを開発、デバッグする
+- title: アプリケーションの開発とデバッグ
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Helm を使用した開発
+      url: quickstart-helm.md
+    - text: Dapr を使用した開発
+      url: quickstart-dapr.md
   - linkListType: how-to-guide
     links:
     - text: Visual Studio Code で Bridge to Kubernetes を使用する
       url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
     - text: Visual Studio で Bridge to Kubernetes を使用する
       url: /visualstudio/containers/bridge-to-kubernetes
+- title: アーキテクチャのガイダンス
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: ベースライン アーキテクチャ
+      url: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks?WT.mc_id=AKSDOCSPAGE
+    - text: マイクロサービスのベースライン
+      url: /azure/architecture/reference-architectures/containers/aks-microservices/aks-microservices-advanced?WT.mc_id=AKSDOCSPAGE
+    - text: PCI-DSS 3.2.1 のベースライン
+      url: /azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro?WT.mc_id=AKSDOCSPAGE
+    - text: マルチリージョンのベースライン
+      url: /azure/architecture/reference-architectures/containers/aks-multi-region/aks-multi-cluster?WT.mc_id=AKSDOCSPAGE
+    - text: Day-2 operations ガイド
+      url: /azure/architecture/operator-guides/aks/day-2-operations-guide?WT.mc_id=AKSDOCSPAGE
+    - text: クラスターのオペレーターと開発者向けのベスト プラクティス
+      url: best-practices.md
+    - text: その他の AKS ソリューション
+      url: /azure/architecture/reference-architectures/containers/aks-start-here?WT.mc_id=AKSDOCSPAGE
 - title: アプリケーションのデプロイ、管理、更新
   linkLists:
   - linkListType: tutorial
@@ -74,27 +106,13 @@ landingContent:
       url: tutorial-kubernetes-app-update.md
     - text: 7. AKS で Kubernetes をアップグレードする
       url: tutorial-kubernetes-upgrade-cluster.md
-- title: アーキテクチャのガイダンス
+- title: クラスターの機能を拡張する
   linkLists:
-  - linkListType: architecture
+  - linkListType: concept
     links:
-    - text: AKS クラスターのベースライン アーキテクチャ
-      url: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks?WT.mc_id=AKSDOCSPAGE
-    - text: AKS ソリューション
-      url: /azure/architecture/reference-architectures/containers/aks-start-here?WT.mc_id=AKSDOCSPAGE
-    - text: Day-2 operations ガイド
-      url: /azure/architecture/operator-guides/aks/aks-triage-practices?WT.mc_id=AKSDOCSPAGE
-    - text: クラスターのオペレーターと開発者向けのベスト プラクティス
-      url: best-practices.md
-    - text: ベスト プラクティスの確認
-      url: kube-advisor-tool.md
-- title: Microsoft Learn でスキルを身に付ける
-  linkLists:
-  - linkListType: learn
-    links:
-    - text: Azure Kubernetes Service の概要
-      url: /learn/modules/intro-to-azure-kubernetes-service/
-    - text: Azure 上のコンテナーの概要
-      url: /learn/modules/intro-to-containers/
-    - text: Azure Container Registry を使用してコンテナー イメージをビルドして格納する
-      url: /learn/modules/build-and-store-container-images/
+    - text: Open Service Mesh アドオン
+      url: open-service-mesh-about.md
+    - text: Dapr クラスターの拡張機能
+      url: dapr.md
+    - text: クラスター拡張機能
+      url: cluster-extensions.md

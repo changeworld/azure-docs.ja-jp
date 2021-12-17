@@ -1,19 +1,19 @@
 ---
 title: カスタマー マネージド キーを使用した Azure Device Provisioning Service 保存データの暗号化 |Microsoft Docs
 description: Device Provisioning Service でのカスタマー マネージド キーを使用した保存データの暗号化
-author: chrissie926
+author: wesmc7777
 manager: nberdy
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.author: menchi
-ms.openlocfilehash: d22a01bab81fc330484e7715a65c89a1cfd7802c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: wesmc
+ms.openlocfilehash: 1cc8afadb61d1684b16893d0eff23af227828eb1
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94967178"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727085"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-device-provisioning-service"></a>Device Provisioning Service でのカスタマー マネージド キーを使用した保存データの暗号化
 

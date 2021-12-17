@@ -3,13 +3,13 @@ title: 受信/送信 IP アドレス
 description: Azure App Service で受信および送信 IP アドレスがどのように使用されるか、いつ変更されるかについて、およびアプリのアドレスを見つける方法について説明します。
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18
-ms.openlocfilehash: 4237e51251a7ece05800aa7efa328a9c6cf65e76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: b637157def16a3d540e918890cbc24730797cde6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104591369"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224519"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 
@@ -29,7 +29,7 @@ App Service プランをデプロイ単位間で移動することは許可さ�
 
 - アプリを削除した後、別のリソース グループ内に再作成する (デプロイ単位が変更される場合があります)。
 - リソース グループ _と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する (デプロイ単位が変更される場合があります)。
-- 証明書の更新中などに既存の IP ベースの TLS/SSL バインドを削除する ([証明書の更新](configure-ssl-certificate.md#renew-certificate)に関する記事を参照してください)。
+- 証明書の更新中などに既存の IP ベースの TLS/SSL バインドを削除する ([証明書の更新](configure-ssl-certificate.md#renew-an-expiring-certificate)に関する記事を参照してください)。
 
 ## <a name="find-the-inbound-ip"></a>受信 IP を検索する
 
@@ -51,7 +51,7 @@ nslookup <app-name>.azurewebsites.net
 
 - アプリを削除した後、別のリソース グループ内に再作成する (デプロイ単位が変更される場合があります)。
 - リソース グループ _と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する (デプロイ単位が変更される場合があります)。
-- アプリを下位レベル (**Basic**、**Standard**、および **Premium**) と **Premium V2** レベルの間でスケーリングする (IP アドレスはセットに追加するか、削除することができます)。
+- アプリを下位レベル (**Basic**、**Standard**、および **Premium**)、**Premium V2**、**PremiumV3** レベルの間でスケーリングする (IP アドレスはセットに追加するか、削除することができます)。
 
 アプリが使用できるすべての可能な送信 IP アドレスは、価格レベルに関係なく、`possibleOutboundIpAddresses` プロパティを調べるか、Azure portal の **[プロパティ]** ブレードの **[追加の送信 IP アドレス]** で確認できます。 「[IP アドレスを見つける](#find-outbound-ips)」を参照してください。
 
@@ -80,6 +80,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```azurepowershell
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).PossibleOutboundIpAddresses
 ```
+
+## <a name="get-a-static-outbound-ip"></a>静的送信 IP を取得する
+仮想ネットワーク NAT ゲートウェイを使用して、静的パブリック IP アドレス経由でトラフィックを送信すると、アプリからの送信トラフィックの IP アドレスを制御できます。 [リージョン VNet 統合](./overview-vnet-integration.md)は、**Standard**、**Premium**、**PremiumV2** および **PremiumV3** App Service プランのみで使用できます。 このセットアップの詳細については、[NAT ゲートウェイの統合](./networking/nat-gateway-integration.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

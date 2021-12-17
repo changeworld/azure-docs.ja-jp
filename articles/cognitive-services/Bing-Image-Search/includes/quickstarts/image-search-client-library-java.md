@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: f155868483a0b00ed5ecb6f02ad3ee5440e6e45a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a07d6c6b397f8461202ffebe081b2fde91b53547
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625282"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113289693"
 ---
 このクイックスタートでは、Bing Image Search クライアント ライブラリを使用して最初の画像検索を行います。このクライアント ライブラリは、API のラッパーであり、同じ機能を含んでいます。 このシンプルな Java アプリケーションは、画像検索クエリを送信し、JSON 応答を解析して、返された最初のイメージの URL を表示します。
 
@@ -22,7 +22,7 @@ ms.locfileid: "94625282"
 
 ## <a name="prerequisites"></a>前提条件
 
-最新バージョンの [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK)
+最新バージョンの [Java Development Kit](/azure/developer/java/fundamentals/java-support-on-azure) (JDK)
 
 Maven、Gradle、または別の依存関係管理システムを使用して Bing Image Search クライアント ライブラリの依存関係をインストールします。 Maven POM ファイルには、次の宣言が必要です。
 

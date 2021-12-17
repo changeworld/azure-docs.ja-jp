@@ -1,19 +1,19 @@
 ---
 title: 複数の ISP リンクにわたる Azure パスの選択
 titleSuffix: Azure Virtual WAN
-description: Azure パスの選択と Virtual WAN について説明します
+description: Azure パスの選択を使用してさまざまなリンク間でトラフィックを誘導するために、Azure Virtual WAN でリンク情報を取り込むことができるしくみについて説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: f24696c0db3155a59106e1361b01454b9ac16a20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9938f9da91f42c8f22b1abca5f85b332321dc486
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91267756"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579089"
 ---
 # <a name="azure-path-selection-across-multiple-isp-links"></a>複数の ISP リンクにわたる Azure パスの選択
 

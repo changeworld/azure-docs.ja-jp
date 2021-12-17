@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: 3749a7080bf17c020b48ae3ebc3cff3aa998eeef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ade5e44e7b43e30447a31dcc138a2514771fe21
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382295"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443679"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Azure Logic Apps で繰り返しトリガーを使用して繰り返しタスクおよびワークフローを作成、スケジュール設定、および実行する
 
@@ -52,7 +52,7 @@ ms.locfileid: "100382295"
 
    ![間隔と頻度の設定](./media/connectors-native-recurrence/recurrence-trigger-details.png)
 
-   | プロパティ | JSON での名前 | 必須 | Type | 説明 |
+   | プロパティ | JSON での名前 | 必須 | 型 | 説明 |
    |----------|-----------|----------|------|-------------|
    | **間隔** | `interval` | はい | Integer | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 <br>- Week:1 から 71 週 <br>- Day: 1 から 500 日 <br>- Hour: 1 から 12,000 時間 <br>- Minute: 1 から 72,000 分 <br>- Second: 1 から 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 |
    | **頻度** | `frequency` | はい | String | 繰り返しの時間の単位: **[秒]** 、 **[分]** 、 **[時間]** 、 **[日]** 、 **[週]** 、または **[月]** |
@@ -72,7 +72,7 @@ ms.locfileid: "100382295"
 
    ![詳細スケジュール オプション](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
 
-   | プロパティ | JSON での名前 | 必須 | Type | 説明 |
+   | プロパティ | JSON での名前 | 必須 | 型 | 説明 |
    |----------|-----------|----------|------|-------------|
    | **タイム ゾーン** | `timeZone` | いいえ | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを選択してください。 |
    | **[開始時刻]** | `startTime` | いいえ | String | 開始日と時刻を指定します。これには、最大で 49 年先の時刻を指定でき、また [UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 <p><p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2020 年 9 月 18 日午後 2:00 にする場合は、"2020-09-18T14:00:00" と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2020-09-18T14:00:00Z」と指定します。 <p><p>**重要:** タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 タイム ゾーンの値を選択した場合は、**開始時刻** の値の末尾に "Z" を追加する必要はありません。 行った場合、"Z" は UTC 時刻形式を示すため、Logic Apps ではタイム ゾーンの値が無視されます。 <p><p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 "[*開始日時の使用方法を具体的に教えてください*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)" |
@@ -122,6 +122,23 @@ ms.locfileid: "100382295"
          "timeZone": "Pacific Standard Time"
       }
    }
+}
+```
+
+次の例は、各月の最終日にトリガーが 1 回だけ実行されるようにトリガー定義を更新する方法を示しています。
+
+```json
+"triggers": {
+    "Recurrence": {
+        "recurrence": {
+            "frequency": "Month",
+            "interval": 1,
+            "schedule": {
+                "monthDays": [-1]
+            }
+        },
+        "type": "Recurrence"
+    }
 }
 ```
 

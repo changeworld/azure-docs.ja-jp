@@ -7,15 +7,15 @@ metadata:
   ms.service: site-recovery
   ms.topic: landing-page
   ms.collection: collection
-  author: rayne-wiselman
-  ms.author: raynew
+  author: JYOTHIRMAISURI
+  ms.author: v-jysur
   ms.date: 11/19/2019
-  ms.openlocfilehash: 35dc762e7114664bb39182107e78d0c3778458b3
-  ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+  ms.openlocfilehash: a1f020d9bebfbebfccce887b03da801698be4ce1
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/15/2021
-  ms.locfileid: "100521579"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131452587"
 landingContent:
 - title: Site Recovery について
   linkLists:
@@ -61,6 +61,8 @@ landingContent:
     links:
     - text: VMware VM のディザスター リカバリー
       url: ./tutorial-prepare-azure.md
+    - text: VMware VM のディザスター リカバリーを試す (プレビュー)
+      url: ./vmware-azure-set-up-replication-tutorial-preview.md
     - text: Hyper-V VM のディザスター リカバリー
       url: ./tutorial-prepare-azure-for-hyperv.md
     - text: 物理サーバーのディザスター リカバリー
@@ -104,7 +106,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: サービス機能のリクエスト
-      url: https://feedback.azure.com/forums/256299-site-recovery
+      url: https://feedback.azure.com/d365community/forum/3ccca344-2d25-ec11-b6e6-000d3a4f0f84
     - text: Microsoft Q&A に質問をする
       url: /answers/topics/azure-site-recovery.html
     - text: Azure Tech Community

@@ -5,6 +5,8 @@
   items:
     - name: Azure RBAC とは
       href: overview.md
+    - name: Azure ABAC とは
+      href: conditions-overview.md
     - name: 各種ロールについて
       href: rbac-and-directory-admin-roles.md
 - name: クイックスタート
@@ -34,13 +36,25 @@
       href: scope-overview.md
     - name: ベスト プラクティス
       href: best-practices.md
-    - name: Azure 管理の条件付きアクセス
-      href: conditional-access-azure-management.md
+    - name: 条件
+      items:
+        - name: 条件の形式
+          href: conditions-format.md
+        - name: 条件の例
+          href: ../storage/common/storage-auth-abac-examples.md?toc=%2fazure%2frole-based-access-control%2ftoc.json
+        - name: 条件の前提条件
+          href: conditions-prerequisites.md
+        - name: 条件に関する FAQ
+          href: conditions-faq.md
+        - name: カスタム セキュリティ属性の例
+          href: conditions-custom-security-attributes-example.md
     - name: セキュリティ
       items:
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+    - name: Azure 管理の条件付きアクセス
+      href: conditional-access-azure-management.md
 - name: 操作方法ガイド
   items:
     - name: ロール定義の一覧表示
@@ -71,13 +85,29 @@
               href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
-        - name: Azure CLI
+        - name: CLI
           href: role-assignments-cli.md
         - name: REST API
           href: role-assignments-rest.md
         - name: ARM テンプレート
           displayName: Resource Manager
           href: role-assignments-template.md
+    - name: 条件を追加または編集する
+      items:
+        - name: ポータル
+          href: conditions-role-assignments-portal.md
+        - name: PowerShell
+          href: conditions-role-assignments-powershell.md
+        - name: CLI
+          href: conditions-role-assignments-cli.md
+        - name: REST API
+          href: conditions-role-assignments-rest.md
+        - name: ARM テンプレート
+          href: conditions-role-assignments-template.md
+        - name: 条件のトラブルシューティング
+          href: conditions-troubleshoot.md
+        - name: 条件とカスタム セキュリティ属性
+          href: conditions-custom-security-attributes.md
     - name: ロールの割り当てを削除する
       href: role-assignments-remove.md
     - name: 拒否割り当てを一覧表示する
@@ -98,7 +128,7 @@
           href: custom-roles-portal.md
         - name: PowerShell
           href: custom-roles-powershell.md
-        - name: Azure CLI
+        - name: CLI
           href: custom-roles-cli.md
         - name: REST API
           href: custom-roles-rest.md
@@ -122,10 +152,10 @@
     - name: リソース プロバイダー操作
       href: resource-provider-operations.md
     - name: Azure RBAC の制限
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-role-based-access-control-limits
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-rbac-limits
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure CLI
+    - name: CLI
       href: /cli/azure/role
     - name: REST API
       href: /rest/api/authorization/

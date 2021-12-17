@@ -3,19 +3,17 @@ title: Bing Entity Search API とは
 titleSuffix: Azure Cognitive Services
 description: Bing Entity Search API の詳細と、検索クエリからエンティティと場所を抽出して検索する方法について説明します。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 12/18/2019
-ms.author: scottwhi
-ms.openlocfilehash: 2a3d971ce9a4f89555eb3ffa489f8b19172a4b83
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7cf29bd4c20d6acd2a5a69cf9f8bbfb705413a0a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351471"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631155"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Bing Entity Search API とは
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: cd37175bd85e31ddc18c8267cdf01f7dc6249a0b
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: a1f0fe56af1faaf9b743bf752f75c6dcb6aad881
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491918"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351272"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Media Services を使用したビデオとオーディオのエンコード
 
@@ -31,7 +31,7 @@ Media Services では、エンコードという用語は、デジタル ビデ�
 > Media Services では、取り消されたジョブまたはエラーのあるジョブに対する課金は行われません。 たとえば、進行状況が 50% で取り消されたジョブが、ジョブの分数の 50% に対して課金されることはありません。 完了したジョブに対してのみ課金されます。
 
 * プログレッシブ ダウンロードによって配信する場合、Azure Media Services を使用してデジタル メディア ファイル (中間ファイル) を [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) ファイルに変換できます。MP4 には、[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) コーデックでエンコードされているビデオと、[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) コーデックでエンコードされているオーディオが含まれています。 この MP4 ファイルは、ご使用のストレージ アカウントの資産に書き込まれます。 Azure Storage API または SDK ([Storage REST API](../../storage/common/storage-rest-api-auth.md)、[.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md) など) を使用して、ファイルを直接ダウンロードできます。 ストレージで特定のコンテナー名を使用して出力資産を作成した場合は、その場所を使用してください。 それ以外の場合は、Media Services を使用して、[資産コンテナーの URL を一覧表示](/rest/api/media/assets/listcontainersas)できます。 
-* アダプティブ ビットレート ストリーミングによって配信するコンテンツを準備するには、中間ファイルを複数のビット レート (高から低) でエンコードする必要があります。 品質を適切に推移させるために、ビットレートが低下するとビデオの解像度が低下します。 これにより、解像度とビットレートの表である、いわゆるエンコード ラダーが生成されます ([自動生成されたアダプティブ ビットレート ラダー](encode-autogen-bitrate-ladder.md)に関するページを参照)。 Media Services を使用して、中間ファイルを複数のビットレートでエンコードできます。 これにより、一連の MP4 ファイルと、それらに関連付けられたストリーミング構成ファイルが得られ、ご利用のストレージ アカウント内のアセットに書き込まれます。 次に、Media Services の[ダイナミック パッケージ](encode-dynamic-packaging-concept.md)機能を使用して、[MPEG DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) や [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) などのストリーミング プロトコルを介して動画を配信します。 そのためには、[ストリーミング ロケーター](stream-streaming-locators-concept.md)を作成し、サポートされているプロトコルに対応するストリーミング URL を構築します。次に、これらは機能に基づいてデバイスやアプリに渡すことができます。
+* アダプティブ ビットレート ストリーミングによって配信するコンテンツを準備するには、中間ファイルを複数のビット レート (高から低) でエンコードする必要があります。 品質を適切に推移させるために、ビットレートが低下するとビデオの解像度が低下します。 これにより、解像度とビットレートの表である、いわゆるエンコード ラダーが生成されます ([自動生成されたアダプティブ ビットレート ラダー](encode-autogen-bitrate-ladder.md)に関するページを参照するか、コンテンツに対応したエンコード プリセットを使用してください)。 Media Services を使用して、中間ファイルを複数のビットレートでエンコードできます。 これにより、一連の MP4 ファイルと、それらに関連付けられたストリーミング構成ファイルが得られ、ご利用のストレージ アカウント内のアセットに書き込まれます。 次に、Media Services の[ダイナミック パッケージ](encode-dynamic-packaging-concept.md)機能を使用して、[MPEG DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) や [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) などのストリーミング プロトコルを介して動画を配信します。 そのためには、[ストリーミング ロケーター](stream-streaming-locators-concept.md)を作成し、サポートされているプロトコルに対応するストリーミング URL を構築します。次に、これらは機能に基づいてデバイスやアプリに渡すことができます。
 
 次の図は、ダイナミック パッケージを使用した、オンデマンド エンコードのワークフローを示しています。
 
@@ -100,8 +100,8 @@ Media Services は、次の組み込みのエンコード プリセットをサ�
 - **EncoderNamedPreset.AACGoodQualityAudio**: 192 kbps でエンコードされたステレオ オーディオのみを含む単一の MP4 ファイルを生成します。
 - **EncoderNamedPreset.AdaptiveStreaming** (推奨): これは、H.264 アダプティブ ビットレート エンコーディングをサポートしています。 詳細については、[ビットレート ラダーの自動生成](encode-autogen-bitrate-ladder.md)に関するページを参照してください。
 - **EncoderNamerPreset.H265AdaptiveStreaming**: AdaptiveStreaming プリセットに似ていますが、HEVC (H.265) コーデックを使用します。 H.265 ビデオとステレオ AAC オーディオを使用して、GOP 調整された MP4 ファイルのセットを作成します。 入力解像度、ビットレート、フレーム レートに基づいてビットレート ラダーを自動生成します。 自動生成されたプリセットが、入力解像度を超えることはありません。 たとえば、入力が 720p の場合、出力は最大で 720p のままになります。
-- **EncoderNamedPreset.ContentAwareEncoding**: H.264 のコンテンツに対応したエンコードのプリセットを公開します。 入力コンテンツを指定すると、サービスにより、アダプティブ ストリーミングによる配信に最適なレイヤーの数と、適切なビットレートおよび解像度の設定の決定が、自動的に試みられます。 基になるアルゴリズムは、時間と共に進化を続けています。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります。 詳細については、[コンテンツに対応したエンコード](encode-content-aware-concept.md)に関する記事を参照してください。
-- **EncoderNamedPreset.H265ContentAwareEncoding**: HEVC (H.265) のコンテンツに対応したエンコードのプリセットを公開します。コンテンツ対応のエンコードを使用して、GOP 調整された MP4 のセットを作成します。 入力コンテンツを指定すると、サービスによって入力コンテンツに対する最初の簡単な分析が実行され、その結果を使用して、アダプティブ ストリーミングによる配信に最適なレイヤーの数、適切なビット レートと解像度の設定が決定されます。 このプリセットは、複雑さが低から中程度のビデオに特に有効です。つまり、ビット レートは低くなりますが、視聴者には快適なエクスペリエンスを提供できる品質を備えた出力ファイルということになります。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります。
+- **EncoderNamedPreset.ContentAwareEncoding**: H.264 のコンテンツに対応したエンコードのプリセットを公開します。 コンテンツに対応したエンコードを使用して、GOP がアラインメントされた MP4 セットを生成します。 入力コンテンツを指定すると、サービスによって入力コンテンツに対する最初の簡単な分析が実行され、その結果を使用して、アダプティブ ストリーミングによる配信に最適なレイヤーの数、適切なビット レートと解像度の設定が決定されます。 このプリセットは、複雑さが低から中程度のビデオに特に有効です。つまり、ビット レートは低くなりますが、視聴者には快適なエクスペリエンスを提供できる品質を備えた出力ファイルということになります。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります。 このプリセットでは、1080P HD までの出力のみが生成されます。 4K 出力が必要な場合は、"maxBitrateBps" プロパティを使用することにより、[PresetConfigurations](https://github.com/Azure/azure-rest-api-specs/blob/7026463801584950d4ccbaa6b05b15d29555dd3a/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01/Encoding.json#L2397) でプリセットを構成できます。 詳細については、[コンテンツに対応したエンコード](encode-content-aware-concept.md)に関する記事を参照してください。
+- **EncoderNamedPreset.H265ContentAwareEncoding**: HEVC (H.265) コンテンツに対応したエンコードのプリセットを公開します。 コンテンツに対応したエンコードを使用して、GOP がアラインメントされた MP4 セットを生成します。 入力コンテンツを指定すると、サービスによって入力コンテンツに対する最初の簡単な分析が実行され、その結果を使用して、アダプティブ ストリーミングによる配信に最適なレイヤーの数、適切なビット レートと解像度の設定が決定されます。 このプリセットは、複雑さが低から中程度のビデオに特に有効です。つまり、ビット レートは低くなりますが、視聴者には快適なエクスペリエンスを提供できる品質を備えた出力ファイルということになります。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります。 このプリセットでは、4K HD までの出力が生成されます。 8K 出力が必要な場合は、"maxBitrateBps" プロパティを使用することにより、[PresetConfigurations](https://github.com/Azure/azure-rest-api-specs/blob/7026463801584950d4ccbaa6b05b15d29555dd3a/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01/Encoding.json#L2397) でプリセットを構成できます。
   > [!NOTE]
   > 現在非推奨の ContentAwareEncodingExperimental ではなく、必ず **ContentAwareEncoding** を使用してください。
 
@@ -148,7 +148,7 @@ Media Services v3 では、プリセットは API 自体で厳密に型指定さ
 ## <a name="scaling-encoding-in-v3"></a>v3 でのエンコードのスケーリング
 
 メディア処理のスケール設定を行うには、[CLI を使用したスケーリング](media-reserved-units-cli-how-to.md)に関するトピックをご覧ください。
-**2020-05-01** バージョンの API または Azure portal を使用して作成されたアカウントの場合、スケーリングとメディア占有ユニットは不要になりました。 スケーリングは自動で行われ、サービスによって内部的に処理されます。
+**2020-05-01** 以降のバージョンの API または Azure portal を使用して作成されたアカウントの場合、スケーリングとメディア占有ユニットは必要なくなりました。 スケーリングは自動で行われ、サービスによって内部的に処理されます。
 
 ## <a name="billing"></a>課金
 

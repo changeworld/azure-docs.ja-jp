@@ -4,14 +4,15 @@ description: マッピング データ フローの概念を説明するビデ�
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: tutorial
-ms.date: 12/14/2020
-ms.openlocfilehash: f1171bdd087d6ca72a09a2e3efb7f4767a575d21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/27/2021
+ms.openlocfilehash: ebc0b5e3bc73bed000d5a30935a670f3e2e2b024
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100517792"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464625"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
@@ -38,6 +39,8 @@ ms.locfileid: "100517792"
 [Benchmark timings (ベンチマークのタイミング)](http://youtu.be/6CSbWm4lRhw?hd=1)
 
 [データ フローのワークフローのデバッグ](https://youtu.be/y3suL7UsWVw)
+
+[更新された監視ビュー](https://www.youtube.com/watch?v=FWCBslsk6KE)
 
 ## <a name="transformation-overviews"></a>変換の概要
 
@@ -93,6 +96,10 @@ ms.locfileid: "100517792"
 
 [解析変換](https://www.youtube.com/watch?v=r7O7AJcuqoY)
 
+[複合データ型を変換する](https://youtu.be/Wk0C76wnSDE)
+
+[次のアクティビティに出力](http://youtu.be/r1m3Ya14qpE?hd=1)
+
 ## <a name="source-and-sink"></a>ソースとシンク
 
 [Reading and writing JSONs (JSON の読み取りと書き込み)](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
@@ -131,6 +138,8 @@ ms.locfileid: "100517792"
 
 [データ フロー用の Azure Integration Runtime](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
+[Azure IR でクラスターの起動時間を短縮する](https://www.youtube.com/watch?v=mxzsOZX6WVY)
+
 ## <a name="mapping-data-flow-scenarios"></a>マッピング データ フローのシナリオ
 
 [Fuzzy lookups (あいまい参照)](http://youtu.be/7gdwExjHBbw)
@@ -167,6 +176,8 @@ ms.locfileid: "100517792"
 
 [ジェネリック型 2 緩やかに変化するディメンション](http://youtu.be/tc283k8CWh8)
 
+[ソースに存在しない場合にターゲット内の行を削除する](https://www.youtube.com/watch?v=9i7qf1vczUw)
+
 ## <a name="data-flow-expressions"></a>データ フローの式
 
 [日付と時刻の式](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
@@ -180,6 +191,8 @@ ms.locfileid: "100517792"
 [データ品質の式](https://www.youtube.com/watch?v=O8gmv5-lXhs)
 
 [収集の集計関数](https://www.youtube.com/watch?v=zneE18EHJSE)
+
+[パラメーターとしての動的な式](https://www.youtube.com/watch?v=q7W6J-DUuJY)
 
 ## <a name="metadata"></a>Metadata
 

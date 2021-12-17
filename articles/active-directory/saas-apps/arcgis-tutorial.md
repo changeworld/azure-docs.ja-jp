@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/08/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 7a445eefa31e741562105e89fa105d404ccc0c7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8231c27e88590698da2dfbb4b410a56ef4cb3701
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646352"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132288818"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>チュートリアル: Azure Active Directory と ArcGIS Online の統合
 
@@ -123,29 +123,29 @@ ArcGIS Online で Azure AD SSO を構成してテストするには、次の手�
 
 1. ArcGIS Online を手動でセットアップしたい場合は、新しい Web ブラウザー ウィンドウを開き、管理者として ArcGIS Online 企業サイトにログインして、次の手順を実行します。
 
-2. **[EDIT SETTINGS] \(設定の編集)** をクリックします。
+2. **[Organization]\(組織\)**  ->  **[Settings]\(設定\)** に移動します。 
 
     ![設定の編集](./media/arcgis-tutorial/settings.png "[Edit Settings]")
 
-3. **[セキュリティ]** をクリックします。
+3. 左側のメニューで、 **[Security]\(セキュリティ\)** をクリックし、[Logins]\(ログイン\) タブで **[New SAML login]\(新しい SAML ログイン\)** を選択します。
 
-    ![Security](./media/arcgis-tutorial/secure.png "セキュリティ")
+    ![[Security]\(セキュリティ\) のスクリーンショット](./media/arcgis-tutorial/security.png)
 
-4. **[Enterprise Logins] [エンタープライズ ログイン]** で、 **[SET IDENTITY PROVIDER] \(ID プロバイダーの設定)** をクリックします。
+4. **[Set SAML login]\(SAML ログインの設定\)** ウィンドウで、 **[One identity provider]\(1 つの ID プロバイダー\)** の構成を選択し、 **[Next]\(次へ\)** をクリックします。
 
-    ![エンタープライズ ログイン](./media/arcgis-tutorial/enterprise.png "Enterprise Logins")
+    ![エンタープライズ ログイン](./media/arcgis-tutorial/identity-provider.png "Enterprise Logins")
 
-5. **[Set Identity Provider]** 構成ページで、次の手順に従います。
+5. **[Specify properties]\(プロパティの設定\)** タブで、次の手順を実行します。
 
-    ![ID プロバイダーの設定](./media/arcgis-tutorial/identity-provider.png "[Set Identity Provider]")
+    ![ID プロバイダーの設定](./media/arcgis-tutorial/set-saml-login.png "[Set Identity Provider]")
 
     a. **[名前]** テキスト ボックスに組織の名前を入力します。
 
-    b. **[Metadata for the Enterprise Identity Provider will be supplied using]** で、 **[A File]** を選択します。
+    b. **[Metadata source for Enterprise Identity Provider]\(エンタープライズ ID プロバイダーのメタデータ ソース\)** で、 **[File]\(ファイル\)** を選択します。
 
-    c. ダウンロードしたメタデータ ファイルをアップロードするには、 **[Choose file]** をクリックします。
+    c. **[Choose File]\(ファイルの選択\)** をクリックして、Azure portal からダウンロードした **フェデレーション メタデータ XML** ファイルをアップロードします。
 
-    d. **[SET IDENTITY PROVIDER] \(ID プロバイダーの設定)** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-arcgis-online-test-user"></a>ArcGIS Online のテスト ユーザーの作成
 
@@ -156,22 +156,25 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
 
 1. **ArcGIS** テナントにログインします。
 
-2. **[INVITE MEMBERS] \(メンバーの招待)** をクリックします。
+2. **[Organization]\(組織\)**  ->  **[Members]\(メンバー\)** に移動して、 **[Invite members]\(メンバーの招待\)** をクリックします。
 
     ![メンバーの招待](./media/arcgis-tutorial/invite.png "[Invite Members]")
 
-3. **[Add members automatically without sending an email] \(電子メールを送信せずにメンバーを自動的に追加する)** を選択し、 **[NEXT] \(次へ)** をクリックします。
+3. **[Add members without sending invitations]\(招待メールを送信せずにメンバーを自動的に追加\)** を選択し、 **[Next]\(次へ\)** をクリックします。
 
-    ![メンバーを自動的に追加する](./media/arcgis-tutorial/members.png "Add Members Automatically")
+    ![メンバーを自動的に追加する](./media/arcgis-tutorial/add-members.png "Add Members Automatically")
 
-4. **[Members]** ダイアログ ページで、次の手順に従います。
+1. **[Compile member list]\(メンバー リストの編集\)** ボックスの一覧で **[New member]\(新規メンバー\)** を選択し、 **[Next]\(次へ\)** をクリックします。
+
+4. 次のページで必要なフィールドに入力し、 **[Next]\(次へ\)** をクリックします。
 
     ![追加とレビュー](./media/arcgis-tutorial/review.png "[Add And Review]")
 
-     a. プロビジョニングする有効な Azure AD アカウントの **メール**、**名**、**姓** を入力します。
+5. 次のページで、追加するメンバーを選択し、 **[Next]\(次へ\)** をクリックします。 
 
-     b. **[ADD AND REVIEW] \(追加とレビュー)** をクリックします。
-5. 入力したデータを確認してから、 **[ADD MEMBERS] \(メンバーの追加)** をクリックします。
+1. 次のページで必要なメンバー プロパティを設定し、 **[Next]\(次へ\)** をクリックします。
+
+1. **[Confirm and complete]\(確認と完了\)** タブで、 **[Add members]\(メンバーの追加\)** をクリックします。
 
     ![メンバーの追加](./media/arcgis-tutorial/add.png "Add member")
 
@@ -186,8 +189,8 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
 
 * ArcGIS Online のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [ArcGIS Online] タイルをクリックすると、ArcGIS Online のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [ArcGIS Online] タイルをクリックすると、ArcGIS Online のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-ArcGIS Online を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+ArcGIS Online を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

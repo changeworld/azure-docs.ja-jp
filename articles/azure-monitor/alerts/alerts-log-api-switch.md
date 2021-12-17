@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 101a575d9acac5da4a8c0399f60e8f32e591d2cf
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: f3d55bfe93ec3bcaa713e77db6326488851994d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285360"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026224"
 ---
 # <a name="upgrade-to-the-current-log-alerts-api-from-legacy-log-analytics-alert-api"></a>現在のログ アラート API にレガシ Log Analytics アラート API からアップグレードする
 
@@ -25,11 +25,12 @@ ms.locfileid: "107285360"
 ## <a name="benefits"></a>メリット
 
 - アラート ルールを作成するための単一のテンプレート (以前は 3 つの個別のテンプレートが必要)。
-- Log Analytics ワークスペースまたは Application Insights リソースの両方に対する単一の API。
+- すべての Azure リソース ログ アラート用の単一 API。
+- ステートフルおよび 1 分間のログ アラートのプレビューをサポート。
 - [PowerShell コマンドレット サポート](./alerts-log.md#managing-log-alerts-using-powershell)。
 - 他のすべてのアラートの種類に対する重大度の調整。
 - Log Analytics ワークスペースや Application Insights リソースなどの複数の外部リソースにまたがる[クロス ワークスペース ログ アラート](../logs/cross-workspace-query.md)の作成機能。
-- ユーザーは、[集計] パラメーターを使用して、アラートを分割するディメンションを指定できます。
+- ユーザーはディメンションを指定して警告を分割できる。
 - ログ アラートの期間は、最大 2 日間のデータに拡張されました (以前は 1 日に制限)。
 
 ## <a name="impact"></a>影響

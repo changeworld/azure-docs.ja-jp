@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: af001ddd8dc468d06706e63eaf092d1179fe3fdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ad86601abf86c11e899d481b9e981f810c9a6d1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181375"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132328668"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workday の統合
 
@@ -74,7 +74,7 @@ Workday に対して Azure AD SSO を構成してテストするには、次の�
 
 1. Azure portal の **Workday** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -97,9 +97,9 @@ Workday に対して Azure AD SSO を構成してテストするには、次の�
     > [!NOTE]
     > ここでは、既定値として UPN (user.userprincipalname) を使用して名前 ID をマップしています。 SSO を正常に動作させるには、Workday アカウント (メール、UPN など) の実際のユーザー ID を使用して名前 ID をマップする必要があります。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードしてコンピューターに保存します。
 
-   ![証明書のダウンロードのリンク](common/certificatebase64.png)
+   ![証明書のダウンロードのリンク](common/metadataxml.png)
 
 1. **[署名]** オプションを要件に応じて変更するには、**[編集]** ボタンをクリックして **[SAML 署名証明書]** ダイアログを開きます。
 
@@ -145,53 +145,42 @@ Workday に対して Azure AD SSO を構成してテストするには、次の�
 
 1. ホーム ページの左上にある **[Search]\(検索\)** ボックスで、「**Edit Tenant Setup – Security**」(テナントのセットアップの編集 - セキュリティ) という名前を検索します。
 
-    ![テナントのセキュリティの編集](./media/workday-tutorial/IC782925.png "テナントのセキュリティの編集")
+    ![テナントのセキュリティの編集](./media/workday-tutorial/search-box.png "テナントのセキュリティの編集")
 
 
-1. [**SAML Setup**] セクションで、以下の手順を実行します。
+1. **[SAML Setup]\(SAML のセットアップ\)** セクションの **[Import Identity Provider]\(ID プロバイダーのインポート\)** をクリックします。
 
-    ![[SAML 設定]](./media/workday-tutorial/IC782926.png "[SAML 設定]")
+    ![[SAML 設定]](./media/workday-tutorial/saml-setup.png "[SAML 設定]")
 
-    a.  **[SAML 認証を有効にする]** を選択します。
+1. **[Import Identity Provider]\(ID プロバイダーのインポート\)** セクションで、次の手順を実行します。
 
-    b.  **[行の追加]** をクリックします。
+    ![ID プロバイダーのインポート](./media/workday-tutorial/import-identity-provider.png)
 
-1. **[SAML Identity Providers]\(SAML ID プロバイダー\)** セクションで、新しく作成した行に対して次の操作を実行します。
+    a. **ID プロバイダー名** (`AzureAD` など) をテキスト ボックスに入力します。
 
-    a. 以下に示されているフィールドで、次の操作を実行します。
+    b. **[Used for Environments]\(環境に使用\)** テキストボックスで、ドロップダウンから適切な環境名を選択します。
 
-    ![SAML Identity Providers\(SAML ID プロバイダー\) 1](./media/workday-tutorial/IC7829271.png "SAML ID プロバイダー")
+    c. **[Select files]\(ファイルの選択\)** をクリックして、ダウンロードした **フェデレーション メタデータ XML** ファイルをアップロードします。
 
-    * **[Identity Provider Name]\(ID プロバイダー名\)** テキスト ボックスに、プロバイダー名を入力します (例:*SPInitiatedSSO*)。
+    d. **[OK]** 、 **[Done]\(完了\)** の順にクリックします。
 
-    * Azure portal の **[Workday の構成]** セクションで **Azure AD 識別子** の値をコピーし、**[Issuer]\(発行者\)** ボックスに貼り付けます。
+1. **[Done]\(完了\)** をクリックすると、 **[SAML Identity Providers]\(SAML ID プロバイダー\)** に新しい行が追加されます。その後、新しく作成された行について、以下の手順を追加できます。
 
-    * Azure portal からダウンロードした **証明書** をメモ帳で開き、その内容を **[x.509 Certificate]\(x.509 証明書\)** テキストボックスに貼り付けます。
+    ![SAML ID プロバイダー。](./media/workday-tutorial/saml-identity-providers.png "SAML ID プロバイダー")
 
-    b. 以下に示されているフィールドで、次の操作を実行します。
+    a. **[Enable IDP Initiated Logout]\(IDP によって開始されたログアウトを有効にする\)** チェックボックスをオンにします。
 
-    ![SAML Identity Providers\(SAML ID プロバイダー\) 2](./media/workday-tutorial/saml-identity-provider-2.png "SAML ID プロバイダー")
+    b. **[Logout Response URL]\(ログアウト応答 URL\)** テキストボックスに、「 **http://www.workday.com** 」と入力します。
 
-    * **[Enable IDP Initiated Logout]\(IDP によって開始されたログアウトを有効にする\)** チェックボックスをオンにします。
+    c. **[Enable Workday Initiated Logout]\(Workday によって開始されたログアウトを有効にする\)** チェック ボックスをオンにします。
 
-    * **[Logout Response URL]\(ログアウト応答 URL\)** テキストボックスに、「 **http://www.workday.com** 」と入力します。
+    d. **[Logout Request URL]\(ログアウト要求 URL\)** テキストボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
-    * **[Logout Request URL]\(ログアウト要求 URL\)** テキストボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
+    e. **[SP Initiated]\(SP によって開始\)** チェックボックスをオンにします。
 
-    * **[SP Initiated]\(SP によって開始\)** チェックボックスをオンにします。
+    f. **[サービス プロバイダー ID]** ボックスに、「**http://www.workday.com**」と入力します。
 
-    * **[サービス プロバイダー ID]** ボックスに、「**http://www.workday.com**」と入力します。
-
-
-    * [**Do Not Deflate SP-initiated Authentication Request**] を選択します。
-
-    c. 以下に示されているフィールドで、次の操作を実行します。
-
-    ![SAML Identity Providers\(SAML ID プロバイダー\) 3](./media/workday-tutorial/saml-identity-provider-3.png "SAML ID プロバイダー")
-
-    * Azure portal の **[Workday の構成]** セクションで **ログイン URL** の値をコピーし、**[IdP SSO Service URL]\(IDP SSP サービス URL\)** ボックスに貼り付けます。
-
-    * **[Used for Environments]\(環境に使用\)** テキストボックスで、ドロップダウンから適切な環境名を選択します。
+    g. **[SP によって開始された認証要求を圧縮しない]** を選択します。
 
 1. 下図の場所で次の手順を行います。
 
@@ -208,7 +197,7 @@ Workday に対して Azure AD SSO を構成してテストするには、次の�
     e. **[OK]** をクリックします。
 
     > [!NOTE]
-    > シングル サインオンが正しく設定されていることを確認してください。 誤った設定のシングル サインオンを有効にした場合、資格情報を使用してアプリケーションに入ることができず、ロックアウトされてしまいます。このような状況に備えて、Workday には、ユーザーが [Workday URL]/login.flex?redirect=n 形式で通常のユーザー名とパスワードを使用してサインインできる、バックアップ用ログイン URL が用意されています
+    > シングル サインオンが正しく設定されていることを確認してください。 セットアップが正しくないシングル サインオンを有効にした場合、資格情報を使用してアプリケーションに入ることができず、ロックアウトされることがあります。このような場合、Workday では、ユーザーが通常のユーザー名とパスワードを使用して、[ご使用の Workday URL]/login.flex?redirect=n という形式でサインインできるバックアップ ログイン URL を提供します
 
 ### <a name="create-workday-test-user"></a>Workday テスト ユーザーの作成
 
@@ -233,12 +222,12 @@ Workday に対して Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始する Workday のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始する Workday のサインオン URL にリダイレクトされます。 
 
-2. Workday のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Workday のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [Workday] タイルをクリックすると、SSO を設定した Workday に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Workday] タイルをクリックすると、SSO を設定した Workday に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Workday を構成したら、自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Workday を構成したら、自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

@@ -1,0 +1,58 @@
+### YamlMime:FAQ
+metadata:
+  title: よく寄せられる質問 - Computer Vision
+  titleSuffix: Azure Cognitive Services
+  description: Azure Cognitive Services の Computer Vision API についてよく寄せられる質問とその回答を紹介します。
+  services: cognitive-services
+  author: KellyDF
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.subservice: computer-vision
+  ms.topic: conceptual
+  ms.date: 04/17/2019
+  ms.author: kefre
+  ms.custom: seodec18
+  ms.openlocfilehash: 416ded296fa1ba7454ca0e4bf4a5d2b462abe975
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131005976"
+title: Computer Vision API についてよく寄せられる質問
+summary: >
+  > [!TIP]
+
+  > この FAQ で質問に対する回答が見つからない場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) の Computer Vision API コミュニティに質問するか、[UserVoice](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858) のヘルプとサポートにご連絡ください。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      サービスで許可されている 1 秒あたりのトランザクション数 (TPS) を増やすにはどうすればよいですか?
+    answer: >
+      Free (S0) レベルで許可されているのは、1 分あたり 20 トランザクションまでです。 S1 レベルにアップグレードすると、1 秒あたりのトランザクション数が最大 30 になります。 エラー コード 429 と "要求が多すぎます" というエラー メッセージが表示されている場合は、[Azure サポート チケットを送信](https://azure.microsoft.com/support/create-ticket/)して、簡単な業務上の正当な理由により TPS を 50 以上に引き上げてください。 [Computer Vision 料金](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/#pricing)。
+  - question: "画像ファイルが大きすぎるため、サービスはエラーをスローしています。 これを回避する方法はありますか? \n"
+    answer: >
+      ほとんどの Computer Vision 機能のファイル サイズの上限は 4 MB ですが、クライアント ライブラリ SDK は最大 6 MB のファイルを処理できます。 複数ページ ドキュメントを処理する光学式文字認識 (OCR) の場合、最大ファイル サイズは 50 MB です。 詳細については、画像の[分析入力の制限](overview-image-analysis.md#image-requirements)と [OCR 入力の制限](overview-ocr.md#input-requirements)に関するページを参照してください。
+  - question: >
+      OCR で複数ページ ドキュメントを 1 回の呼び出しで処理するにはどうすればよいですか?
+    answer: >
+      光学式文字認識 (特に読み取り操作) は、複数ページ ドキュメントを API 入力としてサポートします。 10 ページのドキュメントで API を呼び出すと、10 ページ分の料金が発生し、各ページが課金対象トランザクションとしてカウントされます。 なお、Free (S0) レベルの場合は、一度に 2 ページしか処理できません。
+  - question: >
+      1 つの API 呼び出しで複数の画像を Computer Vision サービスに送信できますか?
+    answer: >
+      この機能は、現在使用できません。
+  - question: >
+      画像分析と OCR でサポートされている言語の数はいくつですか?
+    answer: >
+      画像分析と OCR でサポートされている言語の一覧については、[言語サポート](language-support.md)に関するページを参照してください。
+  - question: >
+      カスタム タグを使用するように Computer Vision API をトレーニングできますか?  たとえば、ネコの品種の写真をフィードして AI を "トレーニング" し、AI 要求に対して品種値を受け取りたいと思います。
+    answer: >
+      この機能は、現在使用できません。 [Custom Vision](../custom-vision-service/overview.md) を使用すると、ユーザー定義の視覚的特徴を検出するモデルをトレーニングできます。
+  - question: >
+      OCR (Read) 機能をオンプレミスにデプロイすることはできますか?
+    answer: >
+      はい。OCR (Read) Cloud API は、オンプレミスでの展開を行うための Docker コンテナーとしても使用できます。 [OCR コンテナーのデプロイ方法](./computer-vision-how-to-install-containers.md)を確認してください。
+  - question: >
+      Computer Vision をナンバー プレートの読み取りに使用できますか?
+    answer: Vision API には、最新の読み取り機能が搭載された、ディープ ラーニングを活用する OCR 機能が含まれています。 Microsoft では、あらゆるシナリオで動作するようにサービスの継続的改善を行っています。

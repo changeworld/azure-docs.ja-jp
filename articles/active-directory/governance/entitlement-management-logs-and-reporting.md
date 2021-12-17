@@ -3,7 +3,7 @@ title: Azure Monitor を使用したアーカイブとレポート - Azure AD �
 description: Azure Active Directory のエンタイトルメント管理で、Azure Monitor を使用してログをアーカイブし、レポートを作成する方法について説明します。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/23/2020
-ms.author: barclayn
+ms.date: 5/19/2021
+ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 354805b3e2b538c92ba2345df2bcd93968640068
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4970ef21be1e5c440acc871f5ca5583da1916f52
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764389"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114728526"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Monitor での Azure AD のエンタイトルメント管理に関するアーカイブ ログとレポート
 
@@ -76,12 +76,15 @@ Azure AD 監査ログをアーカイブするには、Azure サブスクリプ�
 
 1. 「*Access Package Activity*」という名前のブックを選択します。 
 
-1. そのブックで、時間範囲を選択し (不明な場合は **[すべて]** に変更)、その時間範囲にアクティビティがあったアクセス パッケージすべてのドロップダウン リストからアクセス パッケージ ID を選択します。 選択した時間範囲内に発生したアクセスパッケージに関連のあるイベントが表示されます。  
+1. そのブックで、時間範囲を選択し (不明な場合は **[すべて]** に変更)、その時間範囲にアクティビティがあったすべてのアクセス パッケージのドロップダウン リストからアクセス パッケージ ID を選択します。 選択した時間範囲内に発生したアクセスパッケージに関連のあるイベントが表示されます。
 
     ![アクセス パッケージ イベントを表示する](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
 
-    各行には、時刻、アクセス パッケージ ID、操作の名前、オブジェクト ID、UPN、操作を開始したユーザーの表示名が含まれます。  さらなる詳細は JSON に含まれています。   
+    各行には、時刻、アクセス パッケージ ID、操作の名前、オブジェクト ID、UPN、操作を開始したユーザーの表示名が含まれます。  さらなる詳細は JSON に含まれています。
 
+1. アプリケーションのアプリケーション ロールの割り当てに対して、アクセス パッケージの割り当てによるものではない変更 (全体管理者がアプリケーション ロールにユーザーを直接割り当てた場合など) が行われたかどうかを確認する場合は、 *[Application role assignment activity]\(アプリケーション ロールの割り当てアクティビティ\)* という名前のブックを選択できます。
+
+    ![アプリ ロールの割り当てを表示する](./media/entitlement-management-access-package-incompatible/workbook-ara.png)
 
 ## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>Azure portal を使用してカスタム Azure Monitor クエリを作成する
 エンタイトルメント管理イベントを含め、Azure AD 監査イベントに対する独自のクエリを作成できます。  
@@ -108,7 +111,7 @@ Azure Monitor で保持されている最も古い監査イベントと最新の
 AuditLogs | where TimeGenerated > ago(3653d) | summarize OldestAuditEvent=min(TimeGenerated), NewestAuditEvent=max(TimeGenerated) by Type
 ```
 
-Azure Monitor の監査イベント用に格納される列の詳細については、「[Azure Monitor の Azure AD 監査ログ スキーマを解釈する](../reports-monitoring/reference-azure-monitor-audit-log-schema.md)」を参照してください。
+Azure Monitor の監査イベント用に格納される列の詳細については、「[Azure Monitor の Azure AD 監査ログ スキーマを解釈する](../reports-monitoring/overview-reports.md)」を参照してください。
 
 ## <a name="create-custom-azure-monitor-queries-using-azure-powershell"></a>Azure PowerShell を使用してカスタム Azure Monitor クエリを作成する
 
@@ -161,7 +164,7 @@ $subs | ft
  
 `Connect-AzAccount –Subscription $subs[0].id` などのコマンドを使用して、そのサブスクリプションに PowerShell セッションを再認証し、関連付けることができます。 非対話式など、PowerShell から Azure への認証方法の詳細については、「[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps)」を参照してください。
 
-そのサブスクリプションに複数の Log Analytics ワークスペースがある場合、コマンドレット [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) を実行すると、ワークスペースの一覧が返されます。 これで、Azure AD ログがあるものを見つけることができます。 このコマンドレットから返される `CustomerId` フィールドは、Azure portal の Log Analytics ワークスペースの概要に表示される「ワークスペース ID」の値と同じです。
+そのサブスクリプションに複数の Log Analytics ワークスペースがある場合、コマンドレット [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) を実行すると、ワークスペースの一覧が返されます。 これで、Azure AD ログがあるものを見つけることができます。 このコマンドレットから返される `CustomerId` フィールドは、Azure portal の Log Analytics ワークスペースの概要に表示される "ワークスペース ID" の値と同じです。
  
 ```powershell
 $wks = Get-AzOperationalInsightsWorkspace

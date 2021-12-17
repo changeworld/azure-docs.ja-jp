@@ -3,21 +3,21 @@ title: Mailjet を使用するカスタム メール確認
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 対応アプリケーションを使用する目的で新規登録した顧客に送信される確認メールをカスタマイズするために、Mailjet と統合する方法について学習します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/09/2021
-ms.author: mimart
+ms.date: 11/10/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a40f3286b4e832f5c73e650859fa9a1d4fe4b6cb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 93b4487d2bf4d4af1638917f5d88f906dc3b758a
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256958"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179497"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet を使用するカスタム メール確認
 
@@ -35,22 +35,24 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 カスタム メール確認では、[Mailjet](https://Mailjet.com)、[SendGrid](./custom-email-sendgrid.md)、または [SparkPost](https://sparkpost.com) といったサードパーティの電子メール プロバイダー、カスタム REST API、あるいは任意の HTTP ベースの電子メール プロバイダー (独自のものも含む) を使用する必要があります。 この記事では、Mailjet を使用するソリューションの設定について説明します。
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="create-a-mailjet-account"></a>Mailjet アカウントを作成する
 
-まだお持ちでない場合は、まず、Mailjet アカウントを設定してください (Azure のお客様は、電子メールの上限が 200/日である 6,000 の電子メールを使用できます)。 
+まだお持ちでない場合は、まず、Mailjet アカウントを設定してください (Azure のお客様は、電子メールの上限が 200/日である 6,000 の電子メールを使用できます)。
 
 1. [Mailjet アカウントの作成](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/)に関するページの設定手順に従います。
 1. 電子メールを送信できるようにするには、送信者のメール アドレスまたはドメインを[登録して確認](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use)します。
-2. [API キーの管理ページ](https://app.mailjet.com/account/api_keys)に移動します。 後の手順で使用するために、**API キー** と **シークレット キー** を記録しておきます。 どちらのキーも、アカウントの作成時に自動的に生成されます。  
+2. [API キーの管理ページ](https://app.mailjet.com/account/api_keys)に移動します。 後の手順で使用するために、**API キー** と **シークレット キー** を記録しておきます。 どちらのキーも、アカウントの作成時に自動的に生成されます。
+
+> [!IMPORTANT]
+> Mailjet によって、共有 IP アドレスと[専用 IP アドレス](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP)から電子メールを送信する機能が顧客に提供されます。 専用 IP アドレスを使用する場合は、IP アドレスのウォームアップを使用して、独自の評判を適切に築く必要があります。 詳細については、「[IP をウォームアップする方法](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-)」を参照してください。
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C ポリシー キーの作成
 
 次に、Mailjet API キーを Azure AD B2C ポリシー キーに格納し、ポリシーで参照されるようにします。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C ディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[概要]** ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
@@ -153,7 +155,6 @@ Mailjet アカウントを作成し、Mailjet API キーを Azure AD B2C ポリ�
                        <td width="24" style="border-bottom:1px solid #e3e3e3;">&nbsp;</td>
                        <td id="PageFooterContainer" width="585" valign="top" colspan="6" style="border-bottom:1px solid #e3e3e3;padding:0px;">
 
-
                        </td>
 
                        <td width="29" style="border-bottom:1px solid #e3e3e3;">&nbsp;</td>
@@ -177,6 +178,7 @@ Mailjet アカウントを作成し、Mailjet API キーを Azure AD B2C ポリ�
 1. 右上の **[Save & Publish]\(保存して発行\)** を選択してから、 **[Yes, publish changes]\(はい、変更を発行します\)** を選びます
 1. 後の手順で使用するために、作成したテンプレートの **テンプレート ID** を記録します。 [要求変換を追加する](#add-the-claims-transformation)ときにこの ID を指定します。
 
+[!INCLUDE [active-directory-b2c-important-for-custom-email-provider](../../includes/active-directory-b2c-important-for-custom-email-provider.md)]
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Azure AD B2C の要求の種類を追加する
 
@@ -184,7 +186,7 @@ Mailjet アカウントを作成し、Mailjet API キーを Azure AD B2C ポリ�
 
 これらの要求の種類は、ワンタイム パスワード (OTP) コードを利用してメール アドレスを生成し、検証するために必要です。
 
-```XML
+```xml
 <!--
 <BuildingBlocks>
   <ClaimsSchema> -->
@@ -219,7 +221,7 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 * `Messages.0.From.Email` アドレス値を更新します。 確認メールがスパムに指定されないように有効なメール アドレスを使用します。
 * `Messages.0.Subject` 件名入力パラメーターの値を組織に適切な件名で更新します。
 
-```XML
+```xml
 <!-- 
 <BuildingBlocks>
   <ClaimsTransformations> -->
@@ -253,7 +255,7 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 `<BuildingBlocks>` 内の要求変換の下で、バージョン 2.1.2 データ URI を参照するように次の [ContentDefinition](contentdefinitions.md) を追加します。
 
-```XML
+```xml
 <!--
 <BuildingBlocks> -->
   <ContentDefinitions>
@@ -283,7 +285,7 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 引き続きコンテンツ定義の下の `<BuildingBlocks>` 内で、種類が [VerificationControl](display-control-verification.md) の次の [DisplayControl](display-controls.md) をポリシーに追加します。
 
-```XML
+```xml
 <!--
 <BuildingBlocks> -->
   <DisplayControls>
@@ -318,9 +320,12 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 `GenerateOtp` 技術プロファイルによってメール アドレスのコードが生成されます。 `VerifyOtp` 技術プロファイルによって、メール アドレスに関連付けられているコードが検証されます。 ワンタイム パスワードの形式と有効期間の構成を変更できます。 OTP 技術プロファイルの詳細については、[ワンタイム パスワード技術プロファイルの定義](one-time-password-technical-profile.md)に関するページを参照してください。
 
+> [!NOTE]
+> Web.TPEngine.Providers.OneTimePasswordProtocolProvider プロトコルによって生成される OTP コードは、ブラウザー セッションに関連付けられています。 つまり、ユーザーはさまざまなブラウザー セッションで、それぞれ対応するセッションに対して有効な一意の OTP コードを生成できます。 一方、組み込みの電子メール プロバイダーで生成される OTP コードはブラウザーのセッションとは独立しているため、ブラウザーの新しいセッションで新たに OTP コードを生成すると、前の OTP コードが置き換えられます。
+
 次の技術プロファイルを `<ClaimsProviders>` 要素に追加します。
 
-```XML
+```xml
 <!--
 <ClaimsProviders> -->
   <ClaimsProvider>
@@ -368,7 +373,7 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 OTP 技術プロファイルの場合と同様に、次の技術プロファイルを `<ClaimsProviders>` 要素に追加します。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>RestfulProvider</DisplayName>
   <TechnicalProfiles>
@@ -398,22 +403,15 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>DisplayControl への参照を付ける
 
-最後の手順では、作成した DisplayControl への参照を追加します。 既存の `LocalAccountSignUpWithLogonEmail` と `LocalAccountDiscoveryUsingEmailAddress` セルフアサート技術プロファイルを次のように置き換えます。 以前のバージョンの Azure AD B2C ポリシーを使用していた場合、 これらの技術プロファイルでは、DisplayControl への参照を含む `DisplayClaims` が使用されます。
+最後の手順では、作成した DisplayControl への参照を追加します。 基本ポリシーで構成されている既存のセルフアサート技術プロファイルである `LocalAccountSignUpWithLogonEmail` と `LocalAccountDiscoveryUsingEmailAddress` を、次の XML スニペットでオーバーライドします。 以前のバージョンの Azure AD B2C ポリシーを使用していた場合、これらの技術プロファイルでは、`DisplayControl` を参照する `DisplayClaims` が使用されています。
 
 詳細については、[セルフアサート技術プロファイル](restful-technical-profile.md)に関するページと「[DisplayControl](display-controls.md)」を参照してください。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-      <Metadata>
-        <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
-        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
-        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
-      </Metadata>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
         <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
@@ -424,13 +422,6 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
       </DisplayClaims>
     </TechnicalProfile>
     <TechnicalProfile Id="LocalAccountDiscoveryUsingEmailAddress">
-      <Metadata>
-        <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
-        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
-        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
-      </Metadata>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
       </DisplayClaims>
@@ -448,7 +439,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
 1. 次の XML スニペットの入力要求を使用するように `GenerateEmailRequestBody` 要求変換を変更します。
 1. Azure AD B2C によってローカライズされるすべての文字列の代わりに、動的パラメーターが使用されるように、お使いの Mailjet テンプレートを更新します。
 
-    ```XML
+    ```xml
     <ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
@@ -487,7 +478,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
     <!--
     <BuildingBlocks> -->
       <Localization Enabled="true">
-        <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+        <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
           <SupportedLanguage>en</SupportedLanguage>
           <SupportedLanguage>es</SupportedLanguage>
         </SupportedLanguages>
@@ -497,7 +488,6 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
             <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for validating the account</LocalizedString>
             <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Your code is</LocalizedString>
             <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
-          </LocalizedStrings>
           </LocalizedStrings>
         </LocalizedResources>
         <LocalizedResources Id="api.custom-email.es">
@@ -545,12 +535,12 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
       <InputClaimsTransformation ReferenceId="GetLocalizedStringsForEmail" />
     </InputClaimsTransformations>
     ```
-    
+
 ## <a name="optional-localize-the-ui"></a>[オプション] UI をローカライズする
 
-Localization 要素を使用すると、ユーザー体験に関するポリシーで複数のロケールや言語をサポートすることができます。 ポリシーでのローカライズのサポートにより、[検証表示コントロールのユーザー インターフェイス要素](localization-string-ids.md#verification-display-control-user-interface-elements)と[ワンタイム パスワードのエラー メッセージ](localization-string-ids.md#one-time-password-error-messages)の両方に言語固有の文字列を使用できます。 次の LocalizedString を LocalizedResources に追加します。 
+Localization 要素を使用すると、ユーザー体験に関するポリシーで複数のロケールや言語をサポートすることができます。 ポリシーでのローカライズのサポートにより、[検証表示コントロールのユーザー インターフェイス要素](localization-string-ids.md#verification-display-control-user-interface-elements)と[ワンタイム パスワードのエラー メッセージ](localization-string-ids.md#one-time-password-error-messages)の両方に言語固有の文字列を使用できます。 次の LocalizedString を LocalizedResources に追加します。
 
-```XML
+```xml
 <LocalizedResources Id="api.custom-email.en">
   <LocalizedStrings>
     ...
@@ -568,10 +558,11 @@ Localization 要素を使用すると、ユーザー体験に関するポリシ�
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="DisplayName">Verification Code</LocalizedString>
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="UserHelpText">Verification code received in the email.</LocalizedString>
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="AdminHelpText">Verification code received in the email.</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Eamil</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
     <!-- Email validation error messages-->
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxNumberOfCodeGenerated">You have exceeded the number of code generation attempts allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">The verification has failed, please try again.</LocalizedString>
@@ -579,13 +570,10 @@ Localization 要素を使用すると、ユーザー体験に関するポリシ�
 </LocalizedResources>
 ```
 
-ローカライズされた文字列を追加した後に、LocalAccountSignUpWithLogonEmail と LocalAccountDiscoveryUsingEmailAddress の技術プロファイルから OTP 検証エラー メッセージのメタデータを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 
-カスタム メール確認ポリシーの例は GitHub で確認できます。
-
-- [カスタム メール確認 - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
+- [カスタム メール確認 - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol/policy/Mailjet) カスタム ポリシーの例は、GitHub で確認できます。
 - カスタム REST API や任意の HTTP ベース SMTP メール プロバイダーの使用方法については、「[Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する](restful-technical-profile.md)」を参照してください。
 
 ::: zone-end

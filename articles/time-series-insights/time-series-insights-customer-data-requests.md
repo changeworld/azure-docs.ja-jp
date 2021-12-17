@@ -1,20 +1,21 @@
 ---
 title: 顧客データ要求機能 - Azure Time Series Insights | Microsoft Docs
 description: Azure Time Series Insights の顧客データ要求機能について説明します。
-author: deepakpalled
-ms.author: dpalled
-manager: cshankar
+author: esung22
+ms.author: elsung
+manager: cnovak
+ms.reviewer: orspodek
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: b5ecbabe4a5c3458c77d145fbce1281550470e00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87e58fee25372d65c0c9998c5608220c37452f9d
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019074"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061094"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 

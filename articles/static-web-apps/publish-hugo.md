@@ -5,16 +5,16 @@ services: static-web-apps
 author: aaronpowell
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 05/08/2020
+ms.date: 05/11/2021
 ms.author: aapowell
-ms.openlocfilehash: 4539c32a367bb0974212d989176a96b530da21a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 243caef4a1f2cd1d543e7bbb9f3bc127d703296e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652340"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774806"
 ---
-# <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>チュートリアル:Hugo サイトを Azure Static Web Apps プレビューに発行する
+# <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps"></a>チュートリアル:Hugo サイトを Azure Static Web Apps に発行する
 
 この記事では、[Hugo](https://gohugo.io/) Web アプリケーションを作成して [Azure Static Web Apps](overview.md) にデプロイする方法を説明します。 最終結果は、アプリのビルドと発行の方法を制御できる GitHub Actions が関連付けられた新しい Azure Static Web App になります。
 
@@ -56,7 +56,13 @@ Hugo コマンド ライン インターフェイス (CLI) を使用して Hugo 
 1. Git リポジトリを初期化します。
 
    ```bash
-    git init
+   git init
+   ```
+
+1. ブランチ名が `main` であることを確認します。
+
+   ```bash
+   git branch -M main
    ```
 
 1. 次に、git サブモジュールとしてテーマをインストールしてから、Hugo 構成ファイルでそれを指定することにより、サイトにテーマを追加します。
@@ -98,62 +104,48 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 ### <a name="create-the-application"></a>アプリケーションを作成する
 
 1. [Azure Portal](https://portal.azure.com) に移動します
-1. **[リソースの作成]** をクリックします
+1. **[リソースの作成]** を選択します
 1. **[Static Web Apps]** を探します
-1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
+1. **[Static Web Apps]** を選択します。
 1. **[作成]**
+1. _[基本]_ タブで、次の値を入力します。
 
-   :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する":::
+    | プロパティ | 値 |
+    | --- | --- |
+    | _サブスクリプション_ | Azure サブスクリプション名。 |
+    | _リソース グループ_ | **my-hugo-group**  |
+    | _名前_ | **hugo-static-app** |
+    | _[プランの種類]_ | **Free** |
+    | _Azure Functions API のリージョンとステージング環境_ | 最も近いリージョンを選択します。 |
+    | _ソース_ | **GitHub** |
 
-1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
+1. **[GitHub でサインイン]** を選択し、GitHub で認証します。
 
-1. _[リソース グループ]_ で、 **[新規]** を選択します。 "_新しいリソース グループ名_" として「**hugo-static-app**」と入力し、 **[OK]** を選択します。
+1. 次の GitHub 値を入力します。
 
-1. 次に、 **[名前]** ボックスに対象のアプリの名前を入力します。 有効な文字には、`a-z`、`A-Z`、`0-9`、および `-` があります。
+    | プロパティ | 値 |
+    | --- | --- |
+    | _組織_ | ご自分の希望する GitHub 組織を選択します。 |
+    | _リポジトリ_ | **hugo-static-app** を選択します。 |
+    | _ブランチ_ | **[main]\(メイン\)** を選択します。 |
 
-1. _[リージョン]_ で、近くの使用可能なリージョンを選択します。
-
-1. _[SKU]_ で、 **[Free]** を選択します。
-
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="詳細情報の入力":::
-
-1. **[GitHub でサインイン]** ボタンをクリックします。
-
-1. リポジトリを作成した **[組織]** を選択します。
-
-1. _[リポジトリ]_ として **hugo-static-app** を選択します。
-
-1. _[ブランチ]_ では、**main** を選択します。
-
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="入力済みの GitHub 情報":::
-
-### <a name="build"></a>Build
-
-次に、ビルド プロセスがアプリのビルドに使用する構成設定を追加します。 次の設定では、GitHub アクション ワークフロー ファイルが構成されます。
-
-1. **[次へ:ビルド >]** ボタンをクリックして、ビルド構成を編集します。
-
-1. _[App location]\(アプリの場所\)_ を「 **/** 」に設定します。
-
-1. _[App artifact location]\(アプリ成果物の場所\)_ を「**public**」に設定します。
-
-   この時点では API をデプロイしていないため _[API location]\(アプリの場所\)_ の値は必要ありません。
+1. _[Build Details]\(ビルドの詳細\)_ セクションで、 _[Build Presets]\(ビルドのプリセット\)_ ドロップダウンから **[Hugo]** を選択し、既定値をそのままにします。
 
 ### <a name="review-and-create"></a>[Review and create] (確認および作成)
 
-1. **[確認および作成]** ボタンをクリックして、詳細がすべて正しいことを確認します。
+1. **[確認および作成]** ボタンを選択して、詳細がすべて正しいことを確認します。
 
-1. **[作成]** をクリックして、Azure Static Web Apps の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
+1. **[作成]** を選択して、App Service Static Web App の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
 
-1. GitHub アクションが完了するのを待ちます。
+1. デプロイが完了したら、 **[リソースに移動]** をクリックします。
 
-1. Azure portal で新しく作成された Azure Static Web Apps リソースの _[概要]_ ウィンドウに移動し、 _[URL]_ リンクをクリックして、デプロイしたアプリケーションを開きます。
+1. リソース画面で、 _[URL]_ リンクをクリックして、デプロイしたアプリケーションを開きます。 GitHub アクションが完了するまで 1 - 2 分かかることがあります。
 
    :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="デプロイされたアプリケーション":::
 
 #### <a name="custom-hugo-version"></a>カスタム Hugo バージョン
 
-静的 Web アプリを生成すると、アプリケーションの発行構成設定を含む[ワークフロー ファイル](./github-actions-workflow.md)が生成されます。 `env` セクション内に `HUGO_VERSION` の値を指定することにより、ワークフロー ファイル内に特定の Hugo バージョンを指定できます。 次の構成例は、Hugo を特定のバージョンに設定する方法を示しています。
+静的 Web アプリを生成すると、アプリケーションの発行構成設定を含む[ワークフロー ファイル](./build-configuration.md)が生成されます。 `env` セクション内に `HUGO_VERSION` の値を指定することにより、ワークフロー ファイル内に特定の Hugo バージョンを指定できます。 次の構成例は、Hugo を特定のバージョンに設定する方法を示しています。
 
 ```yaml
 jobs:
@@ -167,10 +159,10 @@ jobs:
           submodules: true
       - name: Build And Deploy
         id: builddeploy
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig

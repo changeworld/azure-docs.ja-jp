@@ -3,20 +3,21 @@ title: イベントを環境に送信する - Azure Time Series Insights | Micro
 description: イベント ハブを構成し、サンプル アプリケーションを実行して、Azure Time Series Insights 環境にイベントを送信する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8ee2cc5473d83eafc2443f3aea7cab6a2e77727c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b603539f3b4b7178d5929bcf61ee5dec9fe0d25b
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463563"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112371272"
 ---
 # <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>イベント ハブを使用して Azure Time Series Insights Gen1 環境にイベントを送信する
 

@@ -8,16 +8,16 @@ ms.service: dns
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, devx-track-azurepowershell
 ms.workload: infrastructure-services
-ms.date: 12/21/2016
+ms.date: 04/28/2021
 ms.author: rohink
-ms.openlocfilehash: f4e713f54ab4702b21763dc9fc6c7b606f94a945
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2aaa8ff93d0e334bf8b9104b4f82b0e35ccf36c1
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96011593"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705044"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS のレコードおよびレコード セットを管理する
 
@@ -44,29 +44,29 @@ Azure DNS における DNS レコードの詳細については、「[DNS ゾー
 
 ## <a name="create-a-new-dns-record"></a>新しい DNS レコードの作成
 
-新しいレコードの名前と種類が既存のレコードと同じである場合は、[そのレコードを既存のレコード セットに追加する](#add-a-record-to-an-existing-record-set)必要があります。 新しいレコードの名前と種類が既存のすべてのレコードと異なる場合は、新しいレコード セットを作成する必要があります。 
+新しいレコード セットを作成するには、既存のレコードとは異なる名前と型を使用する必要があります。 新しいレコードの名前と種類が既存のレコードと同じである場合は、それを[既存のレコード セット](#add-a-record-to-an-existing-record-set)に追加する必要があります。
 
 ### <a name="create-a-records-in-a-new-record-set"></a>新しいレコード セットの "A" レコードの作成
 
 レコード セットは、`New-AzDnsRecordSet` コマンドレットを使用して作成します。 レコード セットを作成する際には、レコード セット名、ゾーン、Time to Live (TTL)、レコードの種類、作成するレコードを指定する必要があります。
 
-レコード セットにレコードを追加するためのパラメーターは、レコード セットの種類によって異なります。 たとえば、"A" という種類のレコード セットを使う場合、`-IPv4Address` パラメーターを使って IP アドレスを指定する必要があります。 他のレコードの種類には他のパラメーターを使用します。 詳細については、その他のレコードの種類の例に関するセクションを参照してください。
+レコード セットにレコードを追加するためのパラメーターは、レコード セットの種類によって異なります。 たとえば、"A" という種類のレコード セットを使う場合、`-IPv4Address` パラメーターを使って IP アドレスを指定する必要があります。 レコードの種類によっては、別のパラメーターがあります。
 
-下の例では、DNS ゾーン "contoso.com" に相対名 "www" を持つレコード セットを作成します。 レコード セットの完全修飾名は、"www.contoso.com" になります。 レコードの種類は "A" で、TTL は 3,600 秒です。 レコード セットには、"1.2.3.4" という IP アドレスの 1 つのレコードが含まれています。
+下の例では、DNS ゾーン `contoso.com` に相対名 `www` を持つレコード セットを作成します。 レコード セットの完全修飾名は `www.contoso.com` です。 レコードの種類は "A" で、TTL は 3,600 秒です。 レコード セットには、"1.2.3.4" という IP アドレスの 1 つのレコードが含まれています。
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
 ゾーンの "頂点" (この例では "contoso.com") にレコード セットを作成するには、レコード セット名 '\@' (引用符を除く) を使います。
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
 複数のレコードを含むレコード セットを作成する必要がある場合は、まず、ローカル配列を作成してレコードを追加し、次のようにその配列を `New-AzDnsRecordSet` に渡す必要があります。
 
-```powershell
+```azurepowershell-interactive
 $aRecords = @()
 $aRecords += New-AzDnsRecordConfig -IPv4Address "1.2.3.4"
 $aRecords += New-AzDnsRecordConfig -IPv4Address "2.3.4.5"
@@ -75,13 +75,13 @@ New-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName MyReso
 
 [レコード セット メタデータ](dns-zones-records.md#tags-and-metadata)を使用すると、アプリケーション固有のデータを、キーと値のペアとして各レコード セットに関連付けることができます。 次の例は、"dept=finance" と "environment=production" という 2 つのメタデータ エントリを含むレコード セットを作成する方法を示しています。
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") -Metadata @{ dept="finance"; environment="production" } 
 ```
 
 Azure DNS では、DNS レコードの作成前に DNS 名を予約するためのプレースホルダーとして機能する "空" のレコード セットもサポートされています。 空のレコード セットは、Azure DNS コントロール プレーンには表示されるものの、Azure DNS ネーム サーバーには表示されません。 次の例では、空のレコード セットが作成されます。
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords @()
 ```
 
@@ -91,17 +91,17 @@ New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGr
 
 各ケースで、1 つのレコードを含むレコード セットの作成方法を説明します。 "A" レコードに関する前の例は、メタデータを使って複数のレコードを含むその他の種類のレコード セットを作成したり、空のレコード セットを作成したりする場合に応用できます。
 
-SOA レコード セットを作成する例は示しません。SOA は各 DNS ゾーンと共に作成および削除されるため、単独で作成または削除することはできません。 ただし、[後の例に示すとおり、SOA を変更することはできます](#to-modify-an-soa-record)。
+SOA は DNS ゾーンごとに作成および削除されるため、SOA レコード セットの作成例はありません。 SOA レコードを個別に作成または削除することはできません。 ただし、後の例に示すとおり、SOA を[変更する](#to-modify-an-soa-record)ことはできます。
 
 ### <a name="create-an-aaaa-record-set-with-a-single-record"></a>1 つのレコードを含む AAAA レコード セットの作成
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "test-aaaa" -RecordType AAAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ipv6Address "2607:f8b0:4009:1803::1005") 
 ```
 
 ### <a name="create-a-caa-record-set-with-a-single-record"></a>1 つのレコードを含む CAA レコード セットの作成
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Caaflags 0 -CaaTag "issue" -CaaValue "ca1.contoso.com") 
 ```
 
@@ -113,7 +113,7 @@ New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -Res
 > 詳細については、「[CNAME レコード](dns-zones-records.md#cname-records)」を参照してください。
 
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Cname "www.contoso.com") 
 ```
 
@@ -122,13 +122,13 @@ New-AzDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.com" 
 この例では、レコード セット名 '\@' を使ってゾーンの頂点 (この場合は "contoso.com") に MX レコードを作成します。
 
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "@" -RecordType MX -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Exchange "mail.contoso.com" -Preference 5) 
 ```
 
 ### <a name="create-an-ns-record-set-with-a-single-record"></a>1 つのレコードを含む NS レコード セットの作成
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Nsdname "ns1.contoso.com") 
 ```
 
@@ -136,7 +136,7 @@ New-AzDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName "contoso.com" -Resou
 
 ここで "my-arpa-zone.com" は IP 範囲を表す ARPA 逆引き参照ゾーンを表します。 このゾーンの各 PTR レコード セットは、この IP の範囲内の IP アドレスに対応します。 レコード名「10」は、このレコードによって表されるこの IP 範囲内の IP アドレスの最後のオクテットです。
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "myservice.contoso.com") 
 ```
 
@@ -144,7 +144,7 @@ New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -Resour
 
 [SRV レコード セット](dns-zones-records.md#srv-records)を作成するときは、レコード セット名に *\_service* と *\_protocol* を指定します。 ゾーンの頂点で SRV レコード セットを作成するときは、レコード セット名に '\@' を含める必要はありません。
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 
 ```
 
@@ -153,7 +153,7 @@ New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -Re
 
 次の例は、TXT レコードを作成する方法を示しています。 TXT レコードでサポートされている文字列の最大長の詳細については、[TXT レコード](dns-zones-records.md#txt-records)に関するセクションを参照してください。
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Value "This is a TXT record") 
 ```
 
@@ -166,42 +166,42 @@ New-AzDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -Res
 
 次の例は、レコード セットを取得する方法を示しています。 この例では、ゾーンは `-ZoneName` および `-ResourceGroupName` パラメーターを使用して指定されています。
 
-```powershell
+```azurepowershell-interactive
 $rs = Get-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-このほか、`-Zone` パラメーターを使って渡されるゾーン オブジェクトを使ってゾーンを指定する方法もあります。
+そうではなく、`-Zone` パラメーターを使って渡されるゾーン オブジェクトを使ってゾーンを指定する方法もあります。
 
-```powershell
+```azurepowershell-interactive
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 $rs = Get-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
 ## <a name="list-record-sets"></a>レコード セットの一覧を表示する
 
-`Get-AzDnsZone` を使用すると、`-Name` パラメーターまたは `-RecordType` パラメーターを省略してゾーン内のレコード セットを一覧表示することもできます。
+`-Name` または `-RecordType` パラメーターのいずれかまたは両方を省略することにより、`Get-AzDnsZone` を使用してゾーン内のレコード セットを一覧表示することもできます。
 
 次の例は、ゾーン内のすべてのレコード セットを返します。
 
-```powershell
+```azurepowershell-interactive
 $recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 次の例は、レコードの種類を指定し、レコード セット名は省略して、特定の種類のレコード セットをすべて取得する方法を示しています。
 
-```powershell
+```azurepowershell-interactive
 $recordsets = Get-AzDnsRecordSet -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 レコードの種類を問わず、特定の名前のレコード セットをすべて取得するには、すべてのレコード セットを取得したうえで、結果をフィルター処理する必要があります。
 
-```powershell
+```azurepowershell-interactive
 $recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | where {$_.Name.Equals("www")}
 ```
 
 上記のどの例でも、ゾーンを指定するには、例に示した `-ZoneName` パラメーターと `-ResourceGroupName` パラメーターを使用するか、ゾーン オブジェクトを指定します。
 
-```powershell
+```azurepowershell-interactive
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 $recordsets = Get-AzDnsRecordSet -Zone $zone
 ```
@@ -212,19 +212,19 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
 
 1. 既存のレコード セットの取得
 
-    ```powershell
+    ```azurepowershell-interactive
     $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. ローカル レコード セットに新しいレコードを追加します。 これはオフライン操作です。
+1. ローカル レコード セットに新しいレコードを追加します。
 
-    ```powershell
+    ```azurepowershell-interactive
     Add-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. Azure DNS サービスに変更をコミットバックします。 
+3. Azure DNS サービスに反映されるように変更を更新します。 
 
-    ```powershell
+    ```azurepowershell-interactive
     Set-AzDnsRecordSet -RecordSet $rs
     ```
 
@@ -232,7 +232,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
 
 一連の操作は "*パイプ*" することもできます。つまり、レコード セット オブジェクトをパラメーターとして渡すのではなく、パイプを使用して渡すことができます。
 
-```powershell
+```azurepowershell-interactive
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
@@ -246,19 +246,19 @@ Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyR
 
 1. 既存のレコード セットの取得
 
-    ```powershell
+    ```azurepowershell-interactive
     $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. ローカル レコード セット オブジェクトからレコードを削除します。 これはオフライン操作です。 削除するレコードは、すべてのパラメーターにおいて既存のレコードと正確に一致する必要があります。
+2. ローカル レコード セット オブジェクトからレコードを削除します。 削除するレコードは、すべてのパラメーターにおいて既存のレコードと正確に一致する必要があります。
 
-    ```powershell
+    ```azurepowershell-interactive
     Remove-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
 3. Azure DNS サービスに変更をコミットバックします。 同時変更の [ETag チェック](dns-zones-records.md#etags)を抑制するには、オプションの `-Overwrite` スイッチを使用します。
 
-    ```powershell
+    ```azurepowershell-interactive
     Set-AzDnsRecordSet -RecordSet $Rs
     ```
 
@@ -266,7 +266,7 @@ Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyR
 
 レコードをレコード セットに追加する操作と同様に、レコード セットを削除する一連の操作もパイプすることがことができます。
 
-```powershell
+```azurepowershell-interactive
 Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
@@ -290,7 +290,7 @@ Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyRes
 
 この例では、既存の "A" レコードの IP アドレスを変更します。
 
-```powershell
+```azurepowershell-interactive
 $rs = Get-AzDnsRecordSet -name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 $rs.Records[0].Ipv4Address = "9.8.7.6"
 Set-AzDnsRecordSet -RecordSet $rs
@@ -302,7 +302,7 @@ Set-AzDnsRecordSet -RecordSet $rs
 
 次の例では、SOA レコードの *Email* プロパティを変更する方法を示します。
 
-```powershell
+```azurepowershell-interactive
 $rs = Get-AzDnsRecordSet -Name "@" -RecordType SOA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 $rs.Records[0].Email = "admin.contoso.com"
 Set-AzDnsRecordSet -RecordSet $rs
@@ -314,11 +314,11 @@ Set-AzDnsRecordSet -RecordSet $rs
 
 複数の DNS プロバイダーによる共同ホスト ドメインをサポートする目的で、この NS レコード セットにネーム サーバーを追加できます。 このレコード セットの TTL とメタデータを変更することもできます。 ただし、あらかじめ入力されている Azure DNS ネーム サーバーを削除または変更することはできません。
 
-これは、ゾーンの頂点にある NS レコード セットにのみ適用されます。 (子ゾーンの委任に使用される) ゾーンの他の NS レコード セットは制約なしで変更できます。
+この制限は、ゾーンの頂点にある NS レコード セットにのみ適用されます。 (子ゾーンの委任に使用される) ゾーンの他の NS レコード セットは制約なしで変更できます。
 
-次の例は、ゾーンの頂点にある NS レコード セットにネーム サーバーを追加する方法を示しています。
+次の例は、ゾーンの頂点にある NS レコード セットに別のネーム サーバーを追加する方法を示しています。
 
-```powershell
+```azurepowershell-interactive
 $rs = Get-AzDnsRecordSet -Name "@" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 Add-AzDnsRecordConfig -RecordSet $rs -Nsdname ns1.myotherdnsprovider.com
 Set-AzDnsRecordSet -RecordSet $rs
@@ -330,7 +330,7 @@ Set-AzDnsRecordSet -RecordSet $rs
 
 次の例は、既存のレコード セットのメタデータを変更する方法を示しています。
 
-```powershell
+```azurepowershell-interactive
 # Get the record set
 $rs = Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 
@@ -344,7 +344,6 @@ $rs.Metadata.Remove('environment')
 Set-AzDnsRecordSet -RecordSet $rs
 ```
 
-
 ## <a name="delete-a-record-set"></a>レコード セットの削除
 
 レコード セットは `Remove-AzDnsRecordSet` コマンドレットで削除できます。 レコード セットを削除すると、そのレコード セット内のレコードもすべて削除されます。
@@ -354,20 +353,20 @@ Set-AzDnsRecordSet -RecordSet $rs
 
 次の例は、レコード セットを削除する方法を示しています。 この例では、レコード セット名、レコード セットの種類、ゾーン名、およびリソース グループはそれぞれ明示的に指定しています。
 
-```powershell
+```azurepowershell-interactive
 Remove-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-このほかレコード セットは、オブジェクトを使用して指定したゾーンのほか、名前と種類によって指定することもできます。
+そうではなく、レコード セットは、オブジェクトを使用して指定したゾーンのほか、名前と種類によって指定することもできます。
 
-```powershell
+```azurepowershell-interactive
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
 3 つ目の方法として、レコード セット オブジェクトを使用してレコード セット自体を指定することもできます。
 
-```powershell
+```azurepowershell-interactive
 $rs = Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzDnsRecordSet -RecordSet $rs
 ```
@@ -376,7 +375,7 @@ Remove-AzDnsRecordSet -RecordSet $rs
 
 レコード セット オブジェクトは、パラメーターとして渡す代わりに、パイプすることもできます。
 
-```powershell
+```azurepowershell-interactive
 Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | Remove-AzDnsRecordSet
 ```
 

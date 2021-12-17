@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/13/2019
+ms.date: 09/10/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 547c27b8faf9f282c836bdda2d57bf9d13603423
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87907448"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780701"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>ゲスト ユーザーとして組織を脱退する
 
@@ -29,21 +29,19 @@ ms.locfileid: "87907448"
 
 組織を脱退するには、以下の手順を実行します。
 
-1. 次のいずれかの手順を実行して、[アクセス パネル プロファイル] ページに移動します。
-   
-   - [Azure portal](https://portal.azure.com) で右上の自分の名前をクリックし、**[View account]\(アカウントの表示\)** を選択します。
-   - [アクセス パネル](https://myapps.microsoft.com)を開き、右上の自分の名前をクリックし、**[組織]** の横にある設定アイコン (歯車) を選択します。
- 
-   ![アクセス パネルのユーザー設定のスクリーンショット](media/leave-the-organization/UserSettings.png) 
-
+1. 次のいずれかを実行して、 **[マイ アカウント]** ページに移動します。
+- 職場または学校アカウントを使用している場合は、 https://myaccount.microsoft.com にアクセスしてサインインします。
+- 個人アカウントを使用している場合は、 https://myapps.microsoft.com にアクセスしてサインインし、右上にあるアカウント アイコンをクリックして、 **[アカウントの表示]** を選択します。 または、テナント情報を含むマイ アカウントの URL を使用して、[マイ アカウント] ページに直接アクセスします (例については、以下の注意を参照してください)。  
    > [!NOTE]
-   > 脱退する組織にまだサインインしていない場合、**[組織]** の下で、組織名の横にある **[サインインして組織から脱退する]** リンクをクリックします。 サインインしたら、右上の **[組織]** の横にある自分の名前をもう一度クリックし、設定アイコン (歯車) を選択します。
+   > サインイン時に電子メールのワンタイム パスコード機能を使用する場合は、テナント名またはテナント ID を含むマイ アカウントの URL (`https://myaccount.microsoft.com?tenantId=wingtiptoys.onmicrosoft.com` や `https://myaccount.microsoft.com?tenantId=ab123456-cd12-ef12-gh12-ijk123456789`など) を使用する必要があります。
 
-3. **Organizations** のところで脱退する組織を確認し、**Leave organization** を選択します。
+2. **Organizations** のところで脱退する組織を確認し、**Leave organization** を選択します。
 
-   ![ユーザー インタフェースにある組織を脱退するオプションのスクリーンショット](media/leave-the-organization/LeaveOrg.png)
+   ![ユーザー インタフェースにある組織を脱退するオプションのスクリーンショット](media/leave-the-organization/leave-org.png)
+3. 確認を求められたら、**Leave** を選択します。
 
-4. 確認を求められたら、**Leave** を選択します。 
+> [!NOTE]
+   > ホーム組織から脱退することはできません。
 
 ## <a name="account-removal"></a>アカウントの削除
 

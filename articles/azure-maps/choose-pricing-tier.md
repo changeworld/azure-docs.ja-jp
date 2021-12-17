@@ -1,68 +1,37 @@
 ---
 title: Microsoft Azure Maps の適切な価格レベルの選択
 description: Azure Maps の価格レベルについて説明します。 どの機能がどのレベルで提供されているかを確かめ、価格レベルの選択に関する重要な考慮事項を確認します。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 12/07/2020
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 11/11/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: b5157716058833e2cd9ae8c9ce7b1eb36bb0f82f
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ef61b0c8a52e37b5eb73f38ab63cc97e66bf7e4e
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256056"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398917"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure Maps での適切な価格レベルの選択
 
-Azure Maps では 2 つの価格レベルが提供されています。S0 と S1 です。 この記事は、ニーズにあった適切な価格レベルを選択するのに役立ちます。 適切な価格レベルを選択するには、次の 2 つの質問を自分に尋ねてください。
+Azure Maps では、Gen 1 と Gen 2 の 2 つの価格レベルが提供されるようになりました。 新しい Gen 2 の価格レベルには、すべての Azure Maps 機能が含まれており、Gen 1 より QPS (1 秒あたりのクエリ数) 制限が増加しています。これを使用すると、Azure Maps トランザクションの増加に伴うコストを削減できます。 この記事は、ニーズにあった適切な価格レベルを選択するのに役立ちます。
 
-## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>サポートする同時実行ユーザーの数はどれくらいですか
+## <a name="pricing-tier-targeted-customers"></a>価格レベルの対象のお客様
 
-S0 価格レベルと S1 価格レベルでは、処理されるデータ スループットの量が異なります。 S0 価格レベルでは、**1 秒あたり最大 50 個のクエリ** が処理されます。 一方、S1 レベルでは、**1 秒あたり 50 個を超えるクエリ** が処理されます。
+Gen 1 と Gen 2 の価格レベルについて理解を深めるには、次の **価格レベルの対象のお客様** に関する表を参照してください。  詳細については、「[Azure Maps の価格](https://aka.ms/CreatorPricing)」をご覧ください。 現在 Azure Maps をご利用の場合は、[価格レベルの管理](how-to-manage-pricing-tier.md)に関する記事で、Gen 1 から Gen 2 価格に変更する方法を確認できます。
 
-## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>どのような地理空間機能を使用する予定ですか
+| Pricing tier  | SKU | 対象となるお客様|
+|---------------|:---:| ------------------|
+|**Gen 1**|S0| S0 価格レベルは、概念実証開発や早い段階のテストからアプリケーションの運用やデプロイまで、すべての運用ステージのアプリケーションで利用できます。 ただし、このレベルは、小規模開発、同時ユーザー数の少ないお客様、またはその両方向けに設計されています。 S0 には、すべてのサービスを組み合わせて 50 QPS という制限があります。
+|         |S1| S1 価格レベルは、大規模なエンタープライズ アプリケーション、ミッションクリティカルなアプリケーション、または多数の同時実行ユーザーが含まれているお客様に適しています。 また、高度な地理空間サービスを必要とするお客様にも適しています。
+| **Gen 2** | Maps/Location Insights | Gen 2 の価格は、新規および既存の Azure Maps のお客様向けです。 Gen 2 には、Azure Maps のテストおよび構築に使用できる、無料レベルのトランザクションが 1 か月分付属しています。 Maps と Location Insights SKU には、Azure Maps の機能がすべて含まれています。 これにより、Azure Maps トランザクションが増加したときにコストの削減を実現できます。 さらに、Gen 1 よりも QPS 制限が高くなります。 「[フロアガイド用 Creator](creator-indoor-maps.md)」を使用する場合は、Gen 2 価格レベルが必要となります。
+|     |  |
 
-コア地理空間 API で、自分のサービス要件が満たされる場合は、S0 価格レベルを選択してください。 アプリケーションでより高度な機能が必要な場合は、S1 価格レベルを選択することを検討してください。 高度な機能は次のとおりです。航空写真とハイブリッド画像、ルート範囲の取得、バッチ ジオコーディング。 アプリケーションに最適な価格レベルを選択するには、下の「**価格レベルの機能**」の表を確認してください。
+QPS 制限の詳細については、[Azure Maps のQPS レート制限](azure-maps-qps-rate-limits.md)に関するページを参照してください。
 
-### <a name="pricing-tier-capabilities"></a>価格レベルの機能
-
-| 機能                              |        S0           |  S1      |
-|-----------------------------------------|:-------------------:|:--------:|
-| マップの表示                              | ✓                   | ✓       |
-| 衛星映像                       |                     | ✓        |
-| 検索                                  | ✓                    | ✓        |
-| バッチ検索                            |                     | ✓        |
-| ルート                                   | ✓                    |✓        |
-| バッチ ルーティング                            |                    | ✓        |
-| マトリックス ルーティング                          |                     | ✓        |
-| ルート範囲 (等時線)                |                     | ✓        |
-| トラフィック                                |✓                    |✓        |
-| タイム ゾーン                               |✓                    |✓        |
-| 位置情報 (プレビュー)                    |✓                   |✓        |
-| Spatial Operations                        |                    |✓        |
-| ジオフェンシング                                |                    |✓        |
-| Azure Maps Data (Preview)                |                     | ✓        |
-| Mobility (プレビュー)                       |                     | ✓        |
-| Weather                       |✓                    |✓        |
-|  Creator (プレビュー)                         |                   |✓        |
-|  Elevation (プレビュー)                        |                   |✓        |
-
-さらに次の点も考慮してください。
-
-* どのような種類の企業か。
-* アプリケーションはどのくらい重要か。
-
-### <a name="pricing-tier-targeted-customers"></a>価格レベルの対象のお客様
-
-S0 および S1 の価格レベルをさらによく理解するには、「**価格レベルの対象のお客様**」の表をご覧ください。 詳細については、「[Azure Maps の価格](https://azure.microsoft.com/pricing/details/azure-maps/)」をご覧ください。 
-
-| Pricing tier  |     対象となるお客様                                                                |
-|-----------------|:-----------------------------------------------------------------------------------------|
-| S0            |    S0 価格レベルは、概念実証開発や早い段階のテストからアプリケーションの運用やデプロイまで、すべての運用ステージのアプリケーションで利用できます。 ただし、このレベルは、小規模開発、同時ユーザー数の少ないお客様、またはその両方向けに設計されています。 
-| S1            |    S1 価格レベルは、大規模なエンタープライズ アプリケーション、ミッションクリティカルなアプリケーション、または多数の同時実行ユーザーが含まれているお客様に適しています。 また、高度な地理空間サービスを必要とするお客様にも適しています。
+「[フロアガイド用 Creator](creator-indoor-maps.md)」の価格に関するその他の情報については、「[Azure Maps の価格](https://aka.ms/CreatorPricing)」の *Creator* セクションをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,16 +4,18 @@ description: GitHub Actions ワークフローから Azure SQL を使用しま�
 author: juliakm
 services: sql-database
 ms.service: sql-database
+ms.subservice: connect
 ms.topic: quickstart
 ms.author: jukullam
-ms.date: 10/12/2020
+ms.date: 05/05/2021
 ms.custom: github-actions-azure
-ms.openlocfilehash: ceb9f0f9ef2a88532d5af16a03fcfd0282da84f8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.reviewer: mathoma
+ms.openlocfilehash: 5da39e966165dea12934d0e2da6077a135feb554
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787289"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087288"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>GitHub Actions を使用して Azure SQL Database に接続する
 
@@ -46,8 +48,8 @@ GitHub Actions ワークフローは、お使いのリポジトリの `/.github/
 プレースホルダー `server-name` を、Azure でホストされている SQL サーバーの名前で置き換えます。 `subscription-id` と `resource-group` を、サブスクリプション ID と、SQL サーバーに接続されているリソース グループで置き換えます。  
 
 ```azurecli-interactive
-   az ad sp create-for-rbac --name {server-name} --role contributor \
-                            --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} \
+   az ad sp create-for-rbac --name {server-name} --role contributor 
+                            --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} 
                             --sdk-auth
 ```
 
@@ -143,13 +145,13 @@ Azure portal でご自分の Azure SQL データベースにアクセスし、 *
       with:
         server-name: SQL_SERVER_NAME
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-        sql-file: './Database.dacpac'
+        dacpac-package: './Database.dacpac'
     ``` 
 
 1. Azure のログアウトにアクションを追加して、ワークフローを完成させます。 完成したワークフローを次に示します。 このファイルは、リポジトリの `.github/workflows` フォルダー内に表示されます。
 
     ```yaml
-   name: SQL for GitHub Actions
+    name: SQL for GitHub Actions
 
     on:
     push:
@@ -171,7 +173,7 @@ Azure portal でご自分の Azure SQL データベースにアクセスし、 *
       with:
         server-name: SQL_SERVER_NAME
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-        sql-file: './Database.dacpac'
+        dacpac-package: './Database.dacpac'
 
         # Azure logout 
     - name: logout

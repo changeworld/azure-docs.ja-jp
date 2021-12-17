@@ -1,23 +1,23 @@
 ---
-title: Windows Virtual Desktop を Azure Advisor と統合する - Azure
-description: Windows Virtual Desktop の展開で Azure Advisor を使用する方法について説明します。
+title: Azure Virtual Desktop を Azure Advisor と統合する - Azure
+description: Azure Virtual Desktop の展開で Azure Advisor を使用する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b141d3829e9d98cb793d2038e93331804d2e6b8f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 25bdeb3db8872550a4f1f03e7165cd24653272c1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448289"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745351"
 ---
-# <a name="use-azure-advisor-with-windows-virtual-desktop"></a>Windows Virtual Desktop で Azure Advisor を使用する
+# <a name="use-azure-advisor-with-azure-virtual-desktop"></a>Azure Virtual Desktop で Azure Advisor を使用する
 
 Azure Advisor は、サポート ケースを提出しなくても、ユーザーが一般的な問題を自分で解決するのに役立ちます。 推奨事項により、ヘルプ要求を送信する必要性が減り、時間とコストを節約できます。
 
-この記事では、ユーザーを支援するために Windows Virtual Desktop の展開で Azure Advisor を設定する方法について説明します。
+この記事では、ユーザーを支援するために Azure Virtual Desktop の展開で Azure Advisor を設定する方法について説明します。
 
 ## <a name="what-is-azure-advisor"></a>Azure Advisor とは
 
@@ -56,7 +56,7 @@ Azure Advisor を開くと、次の 5 つのカテゴリが表示されます。
 
 - 推奨事項は、それが表示されている理由がわかるまで、およびユーザーに悪影響が及ばないことが確認できるまで、無視しないでください。 必ず **[詳細]** を選択して、問題が何かを確認してください。 Azure Advisor の指示に従って問題を解決すると、その問題はリストに表示されなくなります。 問題を解決する方が、繰り返し延期するよりも得策です。
 
-- Windows Virtual Desktop で問題が発生した場合は、必ず Azure Advisor を最初に確認してください。 Azure Advisor では、問題を解決する方法の指示が提供されるか、少なくとも役立つリソースが示されます。
+- Azure Virtual Desktop で問題が発生した場合は、必ず Azure Advisor を最初に確認してください。 Azure Advisor では、問題を解決する方法の指示が提供されるか、少なくとも役立つリソースが示されます。
 
 ## <a name="next-steps"></a>次のステップ
 

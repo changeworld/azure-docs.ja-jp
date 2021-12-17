@@ -1,23 +1,26 @@
 ---
-title: Azure Data Factory のメタデータの取得アクティビティ
-description: Data Factory パイプライン内でメタデータの取得アクティビティを使用する方法を説明します。
-author: linda33wj
+title: Get Metadata アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics パイプラインでメタデータの取得アクティビティを使用する方法について説明します。
+author: jianleishen
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 02/25/2021
-ms.author: jingwang
-ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 09/22/2021
+ms.author: jianleishen
+ms.openlocfilehash: 24b303cc93940ee7884a4766ce542aa543ea285e
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178543"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083982"
 ---
-# <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory のメタデータの取得アクティビティ
+# <a name="get-metadata-activity-in-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics でメタデータ アクティビティを取得する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-メタデータの取得アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。 条件式でメタデータの取得アクティビティからの出力を使用して検証を実行することや、後続のアクティビティでメタデータを使用することができます。
+メタデータの取得アクティビティを使用すると、Azure Data Factory または Azure Synapse Analytics パイプライン内で任意のデータのメタデータを取得できます。 条件式でメタデータの取得アクティビティからの出力を使用して検証を実行することや、後続のアクティビティでメタデータを使用することができます。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -30,7 +33,9 @@ ms.locfileid: "102178543"
 | コネクタ/メタデータ | itemName<br>(ファイル/フォルダー) | itemType<br>(ファイル/フォルダー) | size<br>(ファイル) | created<br>(ファイル/フォルダー) | lastModified<sup>1</sup><br>(ファイル/フォルダー) |childItems<br>(フォルダー) |contentMD5<br>(ファイル) | structure<sup>2</sup><br/>(ファイル) | columnCount<sup>2</sup><br>(ファイル) | exists<sup>3</sup><br>(ファイル/フォルダー) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Amazon S3 互換ストレージ](connector-amazon-s3-compatible-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Oracle Cloud Storage](connector-oracle-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure BLOB Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
@@ -40,12 +45,12 @@ ms.locfileid: "102178543"
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
 <sup>1</sup> メタデータ `lastModified`:
-- Amazon S3 および Google Cloud Storage の場合、`lastModified` はバケットとキーに適用されますが、仮想フォルダーには適用されません。また、`exists` はバケットとキーに適用されますが、プレフィックスまたは仮想フォルダーには適用されません。 
+- Amazon S3、Amazon S3 Compatible Storage、Google Cloud Storage、および Oracle Cloud Storage の場合、`lastModified` はバケットとキーに適用されますが、仮想フォルダーには適用されません。また、`exists` はバケットとキーに適用されますが、プレフィックスまたは仮想フォルダーには適用されません。 
 - Azure Blob Storage の場合、`lastModified` はコンテナーと BLOB に適用されますが、仮想フォルダーには適用されません。
 
 <sup>2</sup> バイナリ ファイル、JSON ファイル、または XML ファイルからメタデータを取得する場合、メタ データ `structure` および `columnCount` はサポートされません。
 
-<sup>3</sup> メタデータ `exists`: Amazon S3 と Google Cloud Storage の場合、`exists` はバケットとキーには適用されますが、プレフィックスや仮想フォルダーには適用されません。
+<sup>3</sup> メタデータ `exists`: Amazon S3、Amazon S3 Compatible Storage、Google Cloud Storage、および Oracle Cloud Storage の場合、`exists` はバケットとキーには適用されますが、プレフィックスや仮想フォルダーには適用されません。
 
 次のことを考慮してください。
 
@@ -61,6 +66,7 @@ ms.locfileid: "102178543"
 
 | コネクタ/メタデータ | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
+| [Amazon RDS for SQL Server](connector-amazon-rds-for-sql-server.md) | √ | √ | √ |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
 | [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) | √ | √ | √ |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
@@ -222,7 +228,7 @@ storeSettings | 書式の種類のデータセットを使用するときに適�
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory でサポートされている他の制御フロー アクティビティについて学習します。
+サポートされている他の制御フロー アクティビティについて学習します。
 
 - [パイプラインの実行アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)

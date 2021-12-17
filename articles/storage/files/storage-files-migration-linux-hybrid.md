@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: ff26318cafdf493579961fc718643f831ae9efeb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18438400054a8f7aa4d718efdff4ef2e116b3bf3
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564256"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462426"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用して Linux からハイブリッド クラウド デプロイに移行する
 
@@ -28,6 +28,13 @@ ms.locfileid: "102564256"
 Azure File Sync は、Windows Server インスタンスでは直接接続記憶域 (DAS) を使用して機能します。 Linux クライアント、リモート Server Message Block (SMB) 共有、Network File System (NFS) 共有との間の同期はサポートされていません。
 
 そのため、ファイル サービスをハイブリッド デプロイに変換するには、Windows Server に移行する必要があります。 この記事では、そのような移行の計画と実行について説明します。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="migration-goals"></a>移行の目標
 
@@ -48,9 +55,9 @@ Linux サーバー上で Samba を実行しておらず、フォルダーを Win
 * 仮想マシンまたは物理サーバーとして、Windows Server 2019 インスタンスを作成します。 Windows Server 2012 R2 が最小要件です。 また、Windows Server フェールオーバー クラスターもサポートされています。
 * 直接接続ストレージ (DAS) をプロビジョニングまたは追加します。 ネットワーク接続ストレージ (NAS) はサポートされていません。
 
-  Azure File Syncs の[クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)機能を使用する場合、プロビジョニングするストレージの容量は、現在 Linux Samba サーバー上で使用している量より少なくてもかまいません。 
+  Azure File Syncs の[クラウドを使った階層化](../file-sync/file-sync-cloud-tiering-overview.md)機能を使用する場合、プロビジョニングするストレージの容量は、現在 Linux Samba サーバー上で使用している量より少なくてもかまいません。 
 
-プロビジョニングするストレージの容量は、現在 Linux Samba サーバーで使用している量より小さくてもかまいません。 この構成を選択する場合、Azure File Sync の[クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)機能も使用する必要があります。 ただし、後のフェーズで、大きい Linux Samba サーバー領域から小さい Windows Server ボリュームにファイルをコピーする場合は、バッチ処理を行う必要があります。
+プロビジョニングするストレージの容量は、現在 Linux Samba サーバーで使用している量より小さくてもかまいません。 この構成を選択する場合、Azure File Sync の[クラウドを使った階層化](../file-sync/file-sync-cloud-tiering-overview.md)機能も使用する必要があります。 ただし、後のフェーズで、大きい Linux Samba サーバー領域から小さい Windows Server ボリュームにファイルをコピーする場合は、バッチ処理を行う必要があります。
 
   1. ディスクに収まるファイルのセットを移動します。
   2. ファイル同期とクラウドを使った階層化が連携するようにします。
@@ -60,7 +67,7 @@ Linux サーバー上で Samba を実行しておらず、フォルダーを Win
 
 デプロイする Windows Server インスタンスのリソース構成 (コンピューティングと RAM) は、主に同期する項目 (ファイルとフォルダー) の数によって変わります。 ご心配な場合は、より高いパフォーマンス構成を使用することをお勧めします。
 
-[同期する必要がある項目 (ファイルとフォルダー) の数に基づいて Windows Server インスタンスをサイズ指定する方法を参照してください。](storage-sync-files-planning.md#recommended-system-resources)
+[同期する必要がある項目 (ファイルとフォルダー) の数に基づいて Windows Server インスタンスをサイズ指定する方法を参照してください。](../file-sync/file-sync-planning.md#recommended-system-resources)
 
 > [!NOTE]
 > 前記のリンク先の記事では、サーバー メモリ (RAM) の範囲に関する表が示されています。 サーバーの数を少なくすることはできますが、初期同期にはかなり長い時間かかることが予想されます。
@@ -109,7 +116,7 @@ Windows Server ターゲット フォルダーへの最初のローカル コピ
 
 次の Robocopy コマンドを実行すると、Linux Samba サーバーのストレージから Windows Server ターゲット フォルダーにファイルがコピーされます。 Windows Server によって、それが Azure ファイル共有に同期されます。 
 
-Linux Samba サーバー上でファイルが占める量より少ないストレージを Windows Server インスタンスにプロビジョニングした場合は、クラウドを使った階層化を構成済みです。 ローカルの Windows Server ボリュームがいっぱいになると、[クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)により、既に正常に同期されているファイルの階層化が開始されます。 クラウドを使った階層化により、Linux Samba サーバーからのコピーを続けるのに十分な領域が生成されます。 クラウドを使った階層化では、1 時間に 1 回、同期されたものが確認されて、ボリュームの空き領域が 99% のポリシーに達するようにディスク領域が解放されます。
+Linux Samba サーバー上でファイルが占める量より少ないストレージを Windows Server インスタンスにプロビジョニングした場合は、クラウドを使った階層化を構成済みです。 ローカルの Windows Server ボリュームがいっぱいになると、[クラウドを使った階層化](../file-sync/file-sync-cloud-tiering-overview.md)により、既に正常に同期されているファイルの階層化が開始されます。 クラウドを使った階層化により、Linux Samba サーバーからのコピーを続けるのに十分な領域が生成されます。 クラウドを使った階層化では、1 時間に 1 回、同期されたものが確認されて、ボリュームの空き領域が 99% のポリシーに達するようにディスク領域が解放されます。
 
 Robocopy によるファイルの移動が速すぎて、クラウドへの同期とローカルでの階層化が追いつかず、ローカル ディスク領域の不足が引き起こされる可能性があります。 そうなると、Robocopy は失敗します。 問題が回避される順序で共有を処理することをお勧めします。 たとえば、すべての共有に対して Robocopy ジョブを同時に開始しないことを検討してください。 または、Windows Server インスタンス上の現在の空き領域に合った共有を移動することを検討してください。 Robocopy ジョブが失敗した場合、次のミラー/パージ オプションを使用すれば、いつでもコマンドを再実行できます。
 
@@ -161,6 +168,6 @@ Azure File Sync の問題のトラブルシューティングについては、�
 
 Azure ファイル共有と Azure File Sync については、さらに知るべきことがあります。以下の記事には、詳細なオプション、ベスト プラクティス、およびトラブルシューティングのヘルプが含まれています。 これらの記事は、それぞれに対応する [Azure ファイル共有のドキュメント](storage-files-introduction.md)にリンクしています。
 
-* [Azure File Sync の概要](./storage-sync-files-planning.md)
-* [Azure File Sync デプロイ ガイド](./storage-how-to-create-file-share.md)
-* [Azure File Sync に関するトラブルシューティング](storage-sync-files-troubleshoot.md)
+* [Azure File Sync の概要](../file-sync/file-sync-planning.md)
+* [Azure File Sync をデプロイする](../file-sync/file-sync-deployment-guide.md)
+* [Azure File Sync に関するトラブルシューティング](../file-sync/file-sync-troubleshoot.md)

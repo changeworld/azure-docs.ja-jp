@@ -2,20 +2,20 @@
 title: 'クイックスタート: .NET API で最初の Azure Batch ジョブを実行する'
 description: このクイックスタートでは、Batch .NET クライアント ライブラリを使用して C# アプリケーションから Azure Batch のサンプル ジョブとタスクを実行します。
 ms.topic: quickstart
-ms.date: 08/17/2020
+ms.date: 05/25/2021
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 48166faa016defb719d8b48c2fff84de32f6c2e4
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 3f6bca64e3241c5ee3aa5940a7556bc545932e87
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168248"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467728"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート:.NET API で最初の Azure Batch ジョブを実行する
 
 Azure Batch .NET API に基づいて構築された C# アプリケーションから Azure Batch ジョブを実行することによって、Azure Batch の使用を開始します。 このアプリでは、複数の入力データ ファイルを Azure Storage にアップロードしてから、Batch コンピューティング ノード (仮想マシン) の "プール" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "タスク" を実行するサンプル "ジョブ" を作成します。
 
-このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
+このクイックスタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 
 ![Azure Batch アプリのワークフローの概要を示す図。](./media/quick-run-dotnet/sampleapp.png)
 
@@ -25,7 +25,7 @@ Azure Batch .NET API に基づいて構築された C# アプリケーション�
 
 - Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
-- [Visual Studio 2017 以降](https://www.visualstudio.com/vs)、あるいは Linux、macOS、または Windows 用の [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。 
+- [Visual Studio 2017 以降](https://www.visualstudio.com/vs)、あるいは Linux、macOS、または Windows 用の [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -145,7 +145,7 @@ using (BatchClient batchClient = BatchClient.Open(cred))
 
 Batch プールを作成するために、このアプリでは [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) メソッドを使用してノードの数、VM のサイズ、プールの構成を設定します。 ここで、[VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) オブジェクトでは、[ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) に、Azure Marketplace で公開されている Windows Server イメージを指定します。 Batch は、Azure Marketplace の Linux および Windows Server のさまざまなイメージだけでなく、カスタム VM イメージもサポートしています。
 
-ノードの数 (`PoolNodeCount`) と VM のサイズ (`PoolVMSize`) は、定義済みの定数です。 このサンプルでは、既定で、サイズ *Standard_A1_v2* の 2 つのノードで構成されるプールが作成されます。 推奨されるサイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
+ノードの数 (`PoolNodeCount`) と VM のサイズ (`PoolVMSize`) は、定義済みの定数です。 このサンプルでは、既定で、2 つの *Standard_A1_v2* ノードで構成されるプールが作成されます。 推奨されるサイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
 
 [Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) メソッドは、プールを Batch サービスに送信します。
 
@@ -203,7 +203,7 @@ try
 
 ### <a name="create-tasks"></a>タスクの作成
 
-このアプリでは、[CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) オブジェクトの一覧を作成します。 各タスクは、[CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) プロパティを使用して入力の `ResourceFile` オブジェクトを処理します。 このサンプルのコマンド ラインでは、Windows の `type` コマンドを実行して入力ファイルを表示します。 このコマンドは、デモンストレーション用の簡単な例です。 Batch を使用する場合、コマンド ラインは、アプリまたはスクリプトを指定する場所です。 Batch には、アプリやスクリプトをコンピューティング ノードにデプロイする方法が多数用意されています。
+このアプリでは、[CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) オブジェクトの一覧を作成します。 各タスクは、[CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) プロパティを使用して入力の `ResourceFile` オブジェクトを処理します。 このサンプルのコマンド ラインでは、Windows の `type` コマンドを実行して入力ファイルを表示します。 このコマンドは、デモンストレーション用の簡単な例です。 Batch を使用する場合、コマンド ラインは、アプリまたはスクリプトを指定する場所です。 Batch には、アプリやスクリプトを計算ノードにデプロイする複数の方法が用意されています。
 
 その後、このアプリは、[AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。
 
@@ -245,7 +245,7 @@ foreach (CloudTask task in completedtasks)
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Batch .NET API を使用して構築された小さいアプリを実行し、Batch プールと Batch ジョブを作成しました。 このジョブによってサンプル タスクが実行され、作成された出力がノードにダウンロードされました。 Batch サービスの主要な概念を理解できたので、より大規模でより現実的なワークロードを使用して Batch を試す準備が整いました。 Azure Batch の詳細を確認し、実際のアプリケーションで並列ワークロードを詳しく見てみるには、Batch .NET のチュートリアルに進んでください。
+このクイック スタートでは、Batch .NET API を使用して構築された小さいアプリを実行し、Batch プールと Batch ジョブを作成しました。 このジョブによってサンプル タスクが実行され、作成された出力がノードにダウンロードされました。 Batch サービスの主要な概念を理解できたので、より大規模でより現実的なワークロードを使用して Batch を試すことができます。 Azure Batch の詳細を確認し、実際のアプリケーションで並列ワークロードを詳しく見てみるには、Batch .NET のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [.NET で並列ワークロードを処理する](tutorial-parallel-dotnet.md)

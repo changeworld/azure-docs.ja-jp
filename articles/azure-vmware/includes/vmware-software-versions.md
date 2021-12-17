@@ -2,28 +2,31 @@
 title: VMware ソフトウェアのバージョン
 description: Azure VMware Solution でサポートされている VMware ソフトウェアのバージョン。
 ms.topic: include
-ms.date: 03/31/2021
-ms.openlocfilehash: a6441b55bbc6a8f694c50bbf022a6a2ae52d60bf
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.date: 07/20/2021
+author: suzizuber
+ms.author: v-szuber
+ms.service: azure-vmware
+ms.openlocfilehash: 1c773d723e9d43ee8a4ad0335c569dbf2e1f6388
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106098082"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855006"
 ---
-<!-- Used in faq.md and concepts-private-clouds-clusters.md -->
+<!-- Used in faq.md and concepts-private-clouds-clusters#host-maintenance-and-lifecycle-management -->
 
 
 Azure VMware Solution のプライベート クラウドのクラスターの新しいデプロイで使用される VMware ソフトウェアのバージョンは次のとおりです。
 
 | ソフトウェア              |    Version   |
 | :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6.7 U3l    | 
-| ESXi                  |    6.7 U3l    | 
-| vSAN                  |    6.7 U3l    |
-| NSX-T <br />**注意:** NSX-T が NSX のサポートされている唯一のバージョンです。               |      3.1.1     |
+| vCenter               |    6.7 U3o   | 
+| ESXi                  |    6.7 P05   | 
+| vSAN                  |    6.7 P05   |
+| HCX                   |    4.1       |
+| NSX-T <br />**注意:** NSX-T が NSX のサポートされている唯一のバージョンです。               |      [[!INCLUDE [nsxt-version](nsxt-version.md)]](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.1/rn/VMware-NSX-T-Data-Center-312-Release-Notes.html)     |
 
 
-新しいクラスターが既存のプライベート クラウドに追加され、現在実行中のソフトウェア バージョンが適用されます。 詳細については、[VMware ソフトウェアの要件](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)に関するページを参照してください。
+既存のプライベート クラウドに追加された新しいクラスターに、現在実行中のソフトウェア バージョンが適用されます。 詳細については、[VMware ソフトウェアの要件](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)に関するページを参照してください。
 
-プライベート クラウド ソフトウェア バンドルのアップグレードは、VMware のソフトウェア バンドルの最新リリースの単一バージョン内でソフトウェアを保持します。 プライベート クラウド ソフトウェアのバージョンは、個々のソフトウェア コンポーネント (ESXi、NSX-T、vCenter、vSAN) の最新バージョンとは異なる場合があります。 Azure VMware Solution プラットフォーム ソフトウェアの一般的なアップグレード ポリシーおよびプロセスについては、[プライベート クラウドの更新とアップグレード](../concepts-upgrades.md)に関する記事に記載されています。
 

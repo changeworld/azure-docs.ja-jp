@@ -10,14 +10,16 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 6edaed1011b867cac9920a19be6bb5fb7157e16f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 81ac751ca209c7741e3bf55082f7b041ff13022d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721224"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318163"
 ---
 # <a name="hbv2-series-virtual-machine-sizes"></a>HBv2 シリーズの仮想マシンのサイズ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 [HBv2 シリーズ](../../hbv2-series.md)のサイズの VM については、いくつかのパフォーマンス テストが実行されています。 このパフォーマンス テストの結果の一部を次に示します。
 
@@ -35,25 +37,21 @@ ms.locfileid: "104721224"
 
 OSU マイクロベンチマーク スイートからの MPI 待機時間テストが実行されます。 サンプル スクリプトは [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh) にあります。
 
-
-```bash 
+```bash
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency
-``` 
- 
-:::image type="content" source="./media/latency-hbv2.png" alt-text="Azure HB の MPI 待機時間。":::
+```
 
+:::image type="content" source="./media/latency-hbv2.png" alt-text="Azure HB の MPI 待機時間。":::
 
 ## <a name="mpi-bandwidth"></a>MPI 帯域幅
 
 OSU マイクロベンチマーク スイートからの MPI 帯域幅テストが実行されます。 サンプル スクリプトは [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh) にあります。
 
-
 ```bash
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
-``` 
+```
 
 :::image type="content" source="./media/bandwidth-hbv2.png" alt-text="Azure HB の MPI 帯域幅。":::
-
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest
 
@@ -65,7 +63,7 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
 - アーキテクチャの面から見た HPC ワークロードの実行の概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」を参照してください。

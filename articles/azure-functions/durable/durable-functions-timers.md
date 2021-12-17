@@ -4,25 +4,25 @@ description: Azure Functions の Durable Functions 拡張機能で持続的タ�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: bb91f205a9b83b0b4b410644ef6c0fcbbf60876a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aac9e0b562f765a1b0e3d6b0f04bc609dc230492
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91876449"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259710"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions のタイマー (Azure Functions)
 
 [Durable Functions](durable-functions-overview.md) には、遅延を実装したり、非同期アクションでタイムアウトを設定したりできるように、オーケストレーター関数で使用する "*持続的タイマー*" が用意されています。 持続的タイマーは、`Thread.Sleep` および `Task.Delay` (C#)、または `setTimeout()` および `setInterval()` (JavaScript)、または `time.sleep()` (Python) の代わりに、オーケストレーター関数で使用されます。
 
-[オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)の `CreateTimer` (.NET) メソッドまたは `createTimer` (JavaScript) メソッドを呼び出すことによって、持続的タイマーを作成します。 メソッドは、指定した日時に完了するタスクを返します。
+[オーケストレーション トリガー バインディング](durable-functions-bindings.md#orchestration-trigger)の [`CreateTimer`(.NET)](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.createtimer)、[`createTimer`(JavaScript)](/javascript/api/durable-functions/durableorchestrationcontext#createTimer_Date_) や [`create_timer` (Python)](/python/api/azure-functions-durable/azure.durable_functions.durableorchestrationcontext#create-timer-fire-at--datetime-datetime-----azure-durable-functions-models-task-task) メソッドを呼び出して、持続的タイマーを作成します。 メソッドは、指定した日時に完了するタスクを返します。
 
 ## <a name="timer-limitations"></a>タイマーの制限事項
 
 午後 4 時 30 分に期限切れになるタイマーを作成すると、基になる Durable Task Framework は、午後 4 時 30 分にのみ表示されるメッセージをエンキューします。 Azure Functions 従量課金プランで実行されている場合、新しく表示されるタイマー メッセージにより、適切な VM で関数アプリが確実にアクティブになります。
 
 > [!NOTE]
-> * Durable 拡張機能の[バージョン 2.3.0](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) 以降、持続的タイマーは無制限です。 それ以前のバージョンの拡張機能では、持続的タイマーは 7 日間に制限されています。 以前のバージョンを使用していて、7 日より長い遅延が必要な場合は、`while` ループ内でタイマー API を使用して、この遅延をシミュレートできます。
+> * Durable 拡張機能の[バージョン 2.3.0](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) 以降、.NET アプリで持続的タイマーは無制限です。 JavaScript、Python、PowerShell アプリ、以前のバージョンの拡張機能を使用する .NET アプリの場合、持続的タイマー は 7 日間に制限されます。 古い拡張バージョンまたは非 .NET 言語ランタイムを使用し、7 日を超える遅延が必要な場合は、`while` ループ内のタイマー API を使用して、より長い遅延をシミュレートします。
 > * 持続的タイマーの起動時間を計算するときは、.NET では `DateTime.UtcNow` ではなく `CurrentUtcDateTime` を、JavaScript では `Date.now` または `Date.UTC` ではなく `currentUtcDateTime` を常に使用します。 詳細については、「[オーケストレーター関数コードの制約](durable-functions-code-constraints.md)」の記事を参照してください。
 
 ## <a name="usage-for-delay"></a>遅延の使用
@@ -52,12 +52,12 @@ public static async Task Run(
 
 ```js
 const df = require("durable-functions");
-const moment = require("moment");
+const { DateTime } = require("luxon");
 
 module.exports = df.orchestrator(function*(context) {
     for (let i = 0; i < 10; i++) {
-        const deadline = moment.utc(context.df.currentUtcDateTime).add(1, 'd');
-        yield context.df.createTimer(deadline.toDate());
+        const deadline = DateTime.fromJSDate(context.df.currentUtcDateTime, {zone: 'utc'}).plus({ days: 1 });
+        yield context.df.createTimer(deadline.toJSDate());
         yield context.df.callActivity("SendBillingEvent");
     }
 });
@@ -76,6 +76,18 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
         yield context.call_activity("SendBillingEvent")
 
 main = df.Orchestrator.create(orchestrator_function)
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+for ($num = 0 ; $num -le 9 ; $num++){    
+    $expiryTime =  New-TimeSpan -Days 1
+    $timerTask = Start-DurableTimer -Duration $expiryTime
+    Invoke-DurableActivity -FunctionName 'SendBillingEvent'
+}
 ```
 ---
 
@@ -124,13 +136,13 @@ public static async Task<bool> Run(
 
 ```js
 const df = require("durable-functions");
-const moment = require("moment");
+const { DateTime } = require("luxon");
 
 module.exports = df.orchestrator(function*(context) {
-    const deadline = moment.utc(context.df.currentUtcDateTime).add(30, "s");
+    const deadline = DateTime.fromJSDate(context.df.currentUtcDateTime, {zone: 'utc'}).plus({ seconds: 30 });
 
     const activityTask = context.df.callActivity("GetQuote");
-    const timeoutTask = context.df.createTimer(deadline.toDate());
+    const timeoutTask = context.df.createTimer(deadline.toJSDate());
 
     const winner = yield context.df.Task.any([activityTask, timeoutTask]);
     if (winner === activityTask) {
@@ -166,6 +178,26 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
         return False
 
 main = df.Orchestrator.create(orchestrator_function)
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+```powershell
+param($Context)
+
+$expiryTime =  New-TimeSpan -Seconds 30
+
+$activityTask = Invoke-DurableActivity -FunctionName 'GetQuote'-NoWait
+$timerTask = Start-DurableTimer -Duration $expiryTime -NoWait
+
+$winner = Wait-DurableTask -Task @($activityTask, $timerTask) -Any
+
+if ($winner -eq $activityTask) {
+    Stop-DurableTimerTask -Task $timerTask
+    return $True
+}
+else {
+    return $False
+}
 ```
 
 ---

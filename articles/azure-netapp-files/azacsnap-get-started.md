@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 25f555038c1ce0d960266eacc673a62a1ffd5ac0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 754a4540bc7164e672abd4fc81d8ecb86e2359a9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736364"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737354"
 ---
-# <a name="get-started-with-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールの使用を開始する (プレビュー)
+# <a name="get-started-with-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールの使用を開始する
 
 この記事では、Azure NetApp Files で使用できる Azure アプリケーション整合スナップショット ツールをインストールするためのガイドを提供します。
 
@@ -164,7 +164,7 @@ GPG の使用方法の詳細については、「[The GNU Privacy Handbook](http
 
 - [ストレージ スナップショットの前提条件](azacsnap-installation.md#prerequisites-for-installation)
   - [ストレージとの通信を有効にする](azacsnap-installation.md#enable-communication-with-storage)
-  - [SAP HANA との通信を有効にする](azacsnap-installation.md#enable-communication-with-sap-hana)
+  - [データベースとの通信を有効にする](azacsnap-installation.md#enable-communication-with-database)
 - [スナップショットを手動で取得する方法](azacsnap-tips.md#take-snapshots-manually)
 - [スナップショットの自動バックアップを設定する方法](azacsnap-tips.md#setup-automatic-snapshot-backup)
 - [スナップショットを監視する方法](azacsnap-tips.md#monitor-the-snapshots)

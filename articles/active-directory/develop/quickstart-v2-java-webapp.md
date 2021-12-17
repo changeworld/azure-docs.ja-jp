@@ -3,21 +3,21 @@ title: 'クイックスタート: Java Web アプリに "Microsoft でサイン�
 titleSuffix: Microsoft identity platform
 description: このクイックスタートでは、OpenID Connect を使用して、Java Web アプリケーションに "Microsoft でサインイン" を追加する方法について説明します。
 services: active-directory
-author: sangonzal
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/09/2019
-ms.author: sagonzal
+ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: a7337175241834cef862b4af07c7bcf7c8b845d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b965d54eab6f979b67382c91e09b23732278732
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103772"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040211"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
@@ -29,7 +29,7 @@ ms.locfileid: "100103772"
 
 このサンプルを実行するには、以下が必要です。
 
-- [Java Development Kit (JDK)](https://openjdk.java.net/) 8 以降。 
+- [Java Development Kit (JDK)](https://openjdk.java.net/) 8 以降。
 - [Maven](https://maven.apache.org/)。
 
 > [!div renderon="docs"]
@@ -49,7 +49,7 @@ ms.locfileid: "100103772"
 > アプリケーションを登録し、それにアプリの登録情報を手動で追加するには、次の手順を実行します。
 >
 > 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントを選択します。
+> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** の **[アプリの登録]** を選択します。
 > 1. **[新規登録]** を選択します。
@@ -138,7 +138,6 @@ ms.locfileid: "100103772"
 >      ```
 >   1. 生成されたキーストア ファイルを *resources* フォルダーに配置します。
 
-
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-run-the-code-sample"></a>手順 3:コード サンプルの実行
 > [!div renderon="docs"]
@@ -146,7 +145,7 @@ ms.locfileid: "100103772"
 
 プロジェクトを実行するには、次のいずれかの手順を実行します。
 
-- 埋め込みの Spring Boot サーバーを使用して IDE から直接実行する。 
+- 埋め込みの Spring Boot サーバーを使用して IDE から直接実行する。
 - [Maven](https://maven.apache.org/plugins/maven-war-plugin/usage.html) を使用して WAR ファイルにパッケージ化したうえで、[Apache Tomcat](http://tomcat.apache.org/) などの J2EE コンテナー ソリューションにデプロイする。
 
 ##### <a name="running-the-project-from-an-ide"></a>IDE からのプロジェクトの実行
@@ -163,10 +162,7 @@ IDE から Web アプリケーションを実行するには、[実行] を選�
 
 Web サンプルを Tomcat にデプロイする場合は、ソース コードにいくつかの変更を加えます。
 
-1. *ms-identity-java-webapp/pom.xml* を開きます。
-    - `<name>msal-web-sample</name>` の下に `<packaging>war</packaging>` を追加します。
-
-2. *ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication* を開きます。
+1. *ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication* を開きます。
 
     - すべてのソース コードを削除し、こちらのコードで置き換えます。
 
@@ -192,7 +188,7 @@ Web サンプルを Tomcat にデプロイする場合は、ソース コード�
        }
       ```
 
-3.   Tomcat の既定の HTTP ポートは 8080 ですが、ポート 8443 経由の HTTPS 接続が必要です。 この設定を構成するには:
+2.   Tomcat の既定の HTTP ポートは 8080 ですが、ポート 8443 経由の HTTPS 接続が必要です。 この設定を構成するには:
         - *tomcat/conf/system.xml* にアクセスします。
         - `<connector>` タグを検索し、既存のコネクタをこのコネクタで置き換えます。
 
@@ -205,14 +201,13 @@ Web サンプルを Tomcat にデプロイする場合は、ソース コード�
                    clientAuth="false" sslProtocol="TLS"/>
           ```
 
-4. コマンド プロンプト ウィンドウを開きます。 このサンプルのルート フォルダー (pom.xml ファイルが配置されている場所) に移動し、`mvn package` を実行してプロジェクトをビルドします。
+3. コマンド プロンプト ウィンドウを開きます。 このサンプルのルート フォルダー (pom.xml ファイルが配置されている場所) に移動し、`mvn package` を実行してプロジェクトをビルドします。
     - このコマンドを実行すると、 */targets* ディレクトリに *msal-web-sample-0.1.0.war* ファイルが生成されます。
     - このファイルの名前を *msal4jsample.war* に変更します。
     - Tomcat またはその他の J2EE コンテナー ソリューションを使用して、WAR ファイルをデプロイします。
         - msal4jsample.war ファイルをデプロイするには、これを Tomcat インストールの下にある */webapps/* ディレクトリにコピーしてから、Tomcat サーバーを起動します。
 
-5. ファイルがデプロイされたら、ブラウザーを使用して https://localhost:8443/msal4jsample に移動します。
-
+4. ファイルがデプロイされたら、ブラウザーを使用して https://localhost:8443/msal4jsample に移動します。
 
 > [!IMPORTANT]
 > このクイックスタート アプリケーションでは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプレーンテキストとしてプロジェクト ファイルに追加されるため、セキュリティ上の理由から、アプリケーションを運用環境で使用する前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、「[アプリケーションを認証するための証明書資格情報](./active-directory-certificate-credentials.md)」を参照してください。
@@ -230,7 +225,7 @@ Maven または Gradle を使用して、アプリケーションに MSAL4J を�
 
 pom.xml 内:
 
-```XML
+```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>

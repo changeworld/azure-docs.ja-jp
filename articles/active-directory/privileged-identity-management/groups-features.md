@@ -1,10 +1,10 @@
 ---
-title: Privileged Identity Management (PIM) での特権 Azure AD グループの管理 | Microsoft Docs
+title: Privileged Identity Management (PIM) での特権アクセス グループの管理 | Microsoft Docs
 description: Privileged Identity Management (PIM) で特権アクセス グループのメンバーと所有者を管理する方法
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: KarenH444
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
@@ -12,23 +12,26 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2020
+ms.date: 10/07/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759781fd61cd42d05f2823d390e99d128dd2fcac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8a36c1837273fc3fa173994e2ec3b3465ed4cb6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96512394"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520258"
 ---
-# <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>特権アクセス Azure AD グループの管理機能 (プレビュー)
+# <a name="management-capabilities-for-privileged-access-groups-preview"></a>特権アクセス グループの管理機能 (プレビュー)
 
-Privileged Identity Management (PIM) では、特権アクセス グループのメンバーシップまたは所有権の資格を割り当てることができるようになりました。 このプレビュー以降、Azure Active Directory (Azure AD) の組み込みロールをクラウド グループに割り当て、PIM を使用してグループのメンバーと所有者の資格とアクティブ化を管理できます。 Azure AD でのロール割り当て可能グループの詳細については、「[Azure Active Directory でクラウド グループを使用してロールの割り当てを管理する (プレビュー)](../roles/groups-concept.md)」を参照してください。
+Privileged Identity Management (PIM) では、特権アクセス グループのメンバーシップまたは所有権の資格を割り当てることができるようになりました。 このプレビュー以降、Azure Active Directory (Azure AD) の組み込みロールをクラウド グループに割り当て、PIM を使用してグループのメンバーと所有者の資格とアクティブ化を管理できます。 Azure AD でのロール割り当て可能グループの詳細については、「[Azure AD グループを使用してロールの割り当てを管理する](../roles/groups-concept.md)」を参照してください。
 
 >[!Important]
 > Exchange、セキュリティ/コンプライアンス センター、または SharePoint への管理アクセス用のロールに特権アクセス グループを割り当てるには、[特権アクセス グループ] エクスペリエンスではなく、Azure AD ポータルの **[ロールと管理者]** エクスペリエンスを使用して、そのグループに、アクティブ化の候補となるユーザーまたはグループを含めるようにします。
+
+> [!NOTE]
+> Azure AD ロールへの昇格に使用される特権アクセス グループについては、対象となるメンバーの割り当てに承認プロセスを求めることをお勧めします。 承認なしで有効化できる割り当てでは、より低いレベルのアクセス許可を持つ管理者によるセキュリティ リスクが発生する場合があります。 たとえば、ヘルプデスク管理者には、対象となるユーザーのパスワードをリセットするアクセス許可があります。
 
 ## <a name="require-different-policies-for-each-role-assignable-group"></a>ロール割り当て可能グループごとに異なるポリシーを要求する
 
@@ -36,7 +39,7 @@ Privileged Identity Management (PIM) では、特権アクセス グループの
 
 ## <a name="activate-multiple-role-assignments-in-a-single-request"></a>1 つの要求で複数のロール割り当てをアクティブ化する
 
-特権アクセス グループ (プレビュー) を使用すると、ワークロード固有の管理者に対して、単一の Just-In-Time 要求で複数のロールへのクイック アクセスを付与できます。 たとえば、階層 3 の Office 管理者が、毎日インシデントを徹底的に調査するために、Exchange 管理者、Office アプリ管理者、Teams 管理者、および Search 管理者のロールに対する Just-In-Time アクセスを必要とするものとします。 これまでであれば、4 つの連続した要求が必要であり、これは時間がかかるプロセスです。 代わりに、"Tier 3 Office Admins" という名前のロール割り当て可能グループを作成し、前述の 4 つのロール (または任意の Azure AD 組み込みロール) にそれを割り当てて、グループの [アクティビティ] セクションで特権アクセスを有効にすることができます。 特権アクセスを有効にすると、グループのメンバーに対して Just-In-Time の設定を構成し、管理者と所有者を適格として割り当てることができます。 管理者がグループに昇格すると、4 つの Azure AD ロールすべてのメンバーになります。
+特権アクセス グループ (プレビュー) を使用すると、ワークロード固有の管理者に対して、単一の Just-In-Time 要求で複数のロールへのクイック アクセスを付与できます。 たとえば、階層 0 の Office 管理者が、毎日インシデントを徹底的に調査するために、Exchange 管理者、Office アプリ管理者、Teams 管理者、および Search 管理者のロールに対する Just-In-Time アクセスを必要とするものとします。 これまでであれば、4 つの連続した要求が必要であり、これは時間がかかるプロセスです。 代わりに、"Tier 0 Office Admins" という名前のロール割り当て可能グループを作成し、前述の 4 つのロール (または任意の Azure AD 組み込みロール) にそれを割り当てて、グループの [アクティビティ] セクションで特権アクセスを有効にすることができます。 特権アクセスを有効にすると、グループのメンバーに対して Just-In-Time の設定を構成し、管理者と所有者を適格として割り当てることができます。 管理者がグループに昇格すると、4 つの Azure AD ロールすべてのメンバーになります。
 
 ## <a name="extend-and-renew-group-assignments"></a>グループの割り当てを延長および更新する
 

@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 7a702fbf405011a9df3e7e77936a9a37f0fdfad7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9605f6a6240fcaad29b30c03138f31e1472ba3f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98730640"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734876"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
 
@@ -116,7 +118,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 具体的には、次の方法を学習します。
 
-- [PowerShell Runbook を作成する](../automation/learn/automation-tutorial-runbook-textual-powershell.md)。
+- [PowerShell Runbook を作成する](../automation/learn/powershell-runbook-managed-identity.md)。
 - [Hybrid Runbook Worker を使用して、オンプレミスのリソースを管理する](../automation/automation-hybrid-runbook-worker.md)。
 - [Azure Automation DSC を使用する](../automation/automation-dsc-getting-started.md)。
 

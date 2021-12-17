@@ -2,21 +2,21 @@
 title: 'チュートリアル: Promapp を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Promapp に対してユーザー アカウントの自動的なプロビジョニングとプロビジョニング解除を実行するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
-ms.author: Zhchia
-ms.openlocfilehash: 5ba9adbc8553e92eb76a4d3327681f798db19218
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: thwimmer
+ms.openlocfilehash: 65f78c17d6cd54053f8898f1750d5c86d9cb92e9
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94359104"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766329"
 ---
 # <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>チュートリアル: Promapp を構成し、自動ユーザー プロビジョニングに対応させる
 

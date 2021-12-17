@@ -8,13 +8,13 @@ ms.service: api-management
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: jodowns
-ms.custom: fasttrack-new
-ms.openlocfilehash: 9a20a7966daff372cf5c0abc9b7b1dbbfd459838
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: fasttrack-new, devx-track-azurepowershell
+ms.openlocfilehash: 16a5dc58a8fddca2cef2c393aaecca61fef61a3c
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91403240"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187723"
 ---
 # <a name="revisions-in-azure-api-management"></a>Azure API Management のリビジョン
 
@@ -56,6 +56,9 @@ Azure portal を使用して、リビジョンを現在のリビジョンとし�
 リビジョンを作成するときに、独自の追跡の目的で、説明を設定できます。 API ユーザーが説明を目にすることはありません。
 
 リビジョンを現在のリビジョンとして設定する際に、必要に応じて、パブリックな変更ログのメモを指定することもできます。 変更ログは、API ユーザーが確認できるように、開発者ポータルに含まれています。 `Update-AzApiManagementApiRelease` PowerShell コマンドレットを使用して、変更ログのメモを変更できます。
+
+> [!NOTE]
+> **表示名** や **API サフィックス** など特定の API プロパティは、現在のリビジョンでしか更新できません。
 
 ## <a name="versions-and-revisions"></a>バージョンとリビジョン
 

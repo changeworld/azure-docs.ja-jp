@@ -1,30 +1,28 @@
 ---
-title: Azure Monitor for Key Vault でキー コンテナーを監視する | Microsoft Docs
-description: この記事では、Azure Monitor for Key Vault について説明します。
+title: Key Vault 分析情報でキー コンテナーを監視する | Microsoft Docs
+description: この記事では、Key Vault 分析情報について説明します。
 services: azure-monitor
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: 91aed191e3bb165d6690759426a596df39f8c10f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ad400ffcb892c09d6f746c482c9cb78c5627075
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100582296"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131868"
 ---
-# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Azure Monitor for Key Vault によるキー コンテナー サービスの監視
-Azure Monitor for Key Vault では、Key Vault の要求、パフォーマンス、エラー、および待ち時間の統合ビューが用意され、キー コンテナーを包括的に監視できます。
-この記事では、Azure Monitor for Key Vault のエクスペリエンスをオンボードおよびカスタマイズする方法について説明します。
+# <a name="monitoring-your-key-vault-service-with-key-vault-insights"></a>Key Vault 分析情報を使用したキー コンテナー サービスの監視
+Key Vault 分析情報ではキー コンテナーの要求、パフォーマンス、エラー、待機時間の統合ビューにより、キー コンテナーの包括的な監視が提供されます。
+この記事では、Key Vault 分析情報のエクスペリエンスをオンボードおよびカスタマイズする方法について説明します。
 
-## <a name="introduction-to-azure-monitor-for-key-vault"></a>Azure Monitor for Key Vault の概要
+## <a name="introduction-to-key-vault-insights"></a>Key Vault 分析情報の概要
 
 エクスペリエンスについて見ていく前に、情報が提供および視覚化される方法を理解する必要があります。
 -    **大規模な分析観点**: 要求、エラーの内訳、および操作と待機時間の概要に基づいて、パフォーマンスのスナップショット ビューを表示します。
 -   **ドリルダウン分析**: 特定のキー コンテナーの詳細な分析を実行します。
 -    **カスタマイズ可能**: 表示するメトリックの変更したり、制限に合わせたしきい値の変更または設定、独自のブックとして保存することができます。 ブック内のグラフは、Azure ダッシュボードにピン留めできます。
 
-Azure Monitor for Key Vault では、ログとメトリックの組み合わせによる、グローバルな監視ソリューションが用意されています。 すべてのユーザーがメトリックベースの監視データにアクセスできますが、ログベースの視覚化を含めた場合、ユーザーは [Azure Key Vault のログ記録を有効](../../key-vault/general/logging.md)にする必要があります。
+Key Vault 分析情報では、ログとメトリックを組み合わせて、グローバルな監視ソリューションを提供します。 すべてのユーザーがメトリックベースの監視データにアクセスできますが、ログベースの視覚化を含めた場合、ユーザーは [Azure Key Vault のログ記録を有効](../../key-vault/general/logging.md)にする必要があります。
 
 ## <a name="view-from-azure-monitor"></a>Azure Monitor から表示する
 
@@ -64,7 +62,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 
 ## <a name="view-from-a-key-vault-resource"></a>Key Vault リソースからのビュー
 
-キー コンテナーから直接 Azure Monitor for Key Vault にアクセスするには、次の操作を実行します。
+キー コンテナーから直接 Key Vault 分析情報にアクセスするには、次の操作を実行します。
 
 1. Azure portal で [キー コンテナー] を選択します。
 
@@ -105,7 +103,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 
 ![ピン留めアイコンが選択されているスクリーンショット](./media/key-vaults-insights-overview/pin.png)
 
-## <a name="customize-azure-monitor-for-key-vault"></a>Azure Monitor for Key Vault をカスタマイズする
+## <a name="customize-key-vault-insights"></a>Key Vault 分析情報をカスタマイズする
 
 このセクションでは、データ分析のニーズに合わせてブックを編集してカスタマイズする一般的なシナリオについて説明します。
 *  特定のサブスクリプションまたはキー コンテナーが常に選択されるようにブックのスコープを設定する
@@ -135,11 +133,11 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 
 一般的なトラブルシューティングのガイダンスについては、専用のブックベースの分析情報の[トラブルシューティングに関する記事](troubleshoot-workbooks.md)を参照してください。
 
-このセクションは、Azure Monitor for Key Vault を使用するときに発生する可能性があるいくつかの一般的な問題の診断とトラブルシューティングに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
+このセクションは、Key Vault 分析情報を使用するときに発生する可能性があるいくつかの一般的な問題を診断し、トラブルシューティングするのに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
 
 ### <a name="resolving-performance-issues-or-failures"></a>パフォーマンスの問題またはエラーの解決
 
-Azure Monitor for Key Vault で特定されたキー コンテナー関連の問題のトラブルシューティングについては、[Azure Key Vault のドキュメント](../../key-vault/index.yml)を参照してください。
+Key Vault 分析情報で特定されたキー コンテナー関連の問題のトラブルシューティングについては、[Azure Key Vault のドキュメント](../../key-vault/index.yml)を参照してください。
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>200 個のキー コンテナーしか表示できないのはなぜですか
 

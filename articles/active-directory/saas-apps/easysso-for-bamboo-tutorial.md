@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 06/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 3d784979876857e94c1e09ffc5b7bef11c0a0d04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d5f60ec140ac40fa01be1e27d48455c481b708e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735971"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132321584"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EasySSO for Bamboo の統合
 
@@ -37,10 +37,10 @@ ms.locfileid: "98735971"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* EasySSO for Bamboo では、**SP および IDP** Initiated SSO がサポートされます
-* EasySSO for Bamboo では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* EasySSO for Bamboo では、**SP および IDP** Initiated SSO がサポートされます。
+* EasySSO for Bamboo では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
-## <a name="adding-easysso-for-bamboo-from-the-gallery"></a>ギャラリーからの EasySSO for Bamboo の追加
+## <a name="add-easysso-for-bamboo-from-the-gallery"></a>ギャラリーからの EasySSO for Bamboo の追加
 
 Azure AD への EasySSO for Bamboo の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に EasySSO for Bamboo を追加する必要があります。
 
@@ -50,7 +50,6 @@ Azure AD への EasySSO for Bamboo の統合を構成するには、ギャラリ
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**EasySSO for Bamboo**」と入力します。
 1. 結果のパネルから **[EasySSO for Bamboo]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-easysso-for-bamboo"></a>EasySSO for Bamboo の Azure AD SSO の構成とテスト
 
@@ -71,19 +70,19 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
 
 1. Azure portal の **EasySSO for Bamboo** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    a. **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/easysso/saml` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<SERVER_BASE_URL>/plugins/servlet/easysso/saml` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<server-base-url>/plugins/servlet/easysso/saml` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://<SERVER_BASE_URL>/plugins/servlet/easysso/saml` のパターンを使用して URL を入力します
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://<server-base-url>/login.jsp` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`https://<SERVER_BASE_URL>/login.jsp` という形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値の取得方法がわからない場合には、[EasySSO サポート チーム](mailto:support@techtime.co.nz)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -129,9 +128,7 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で、 **[EasySSO for Bamboo]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
@@ -166,7 +163,7 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
 
 5. **Azure AD SSO** の構成手順で保存した **証明書 (Base64)** または **メタデータ ファイル** を探します。 続行する方法として、次の選択肢があります。
 
-    a. 自分のコンピューター上のローカル ファイルとしてダウンロードした、アプリのフェデレーション **メタデータ ファイル** を使用します。 **[Upload]\(アップロード\)** をクリックし、ご使用のオペレーティング システムに固有のファイルのアップロード ダイアログに従います
+    a. 自分のコンピューター上のローカル ファイルとしてダウンロードした、アプリのフェデレーション **メタデータ ファイル** を使用します。 **[Upload]\(アップロード\)** をクリックし、ご使用のオペレーティング システムに固有のファイルのアップロード ダイアログに従います。
 
     **OR**
 
@@ -191,7 +188,7 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
 
 ただし、ユーザーが初めてログインした時点での自動ユーザー プロビジョニングを有効にしない場合は、Bamboo インスタンスで使用するバックエンド ユーザー ディレクトリ (LDAP や Atlassian Crowd など) にユーザーが存在する必要があります。
 
-![ユーザー プロビジョニング](./media/easysso-for-bamboo-tutorial/bamboo-admin-6.png)
+![ユーザー プロビジョニング](./media/easysso-for-bamboo-tutorial/admin.png)
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -199,7 +196,7 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、マイ アプリを使用して Azure AD のシングル サインオン構成をテストします。
 
-マイ アプリで [EasySSO for Bamboo] タイルをクリックすると、SSO を設定した Bamboo インスタンスに自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+マイ アプリで [EasySSO for Bamboo] タイルをクリックすると、SSO を設定した Bamboo インスタンスに自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ### <a name="sp-initiated-workflow"></a>SP-Initiated ワークフロー
 
@@ -219,4 +216,4 @@ Azure AD からのリダイレクト後に、次の画面が表示される可�
 
 ## <a name="next-steps"></a>次のステップ
 
-EasySSO for Bamboo を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+EasySSO for Bamboo を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

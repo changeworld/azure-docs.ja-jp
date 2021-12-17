@@ -6,19 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 618862e12bd62fbe37ef5e621c89babd7942c04b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 107d210cb046f87e9afcb112b1dd482f7dc0221a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106957"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429624"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバーのサーバー パラメータを構成する
 
-> [!IMPORTANT] 
-> Azure Database for MySQL - フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-サーバー パラメーターを使用して Azure Database for MySQL フレキシブル サーバー構成を管理できます。 このサーバー パラメーターは、サーバーの作成時に既定値と推奨値を使用して構成されます。  
+
+サーバー パラメーターを使用して Azure Database for MySQL フレキシブル サーバー構成を管理できます。 このサーバー パラメーターは、サーバーの作成時に既定値と推奨値を使用して構成されます。
 
 この記事では、Azure portal を使用してサーバー パラメーターを表示および構成する方法について説明します。 Azure portal の [サーバー パラメーター] ブレードには、変更可能および変更不可のサーバー パラメーターの両方が表示されます。 変更不可のサーバー パラメーターはグレーで表示されます。
 
@@ -41,7 +41,7 @@ ms.locfileid: "105106957"
 
 ## <a name="setting-non-modifiable-server-parameters"></a>変更不可のサーバー パラメーターの設定
 
-更新するサーバー パラメーターが変更不可である場合は、必要に応じて `init_connect` を使用して、接続レベルでパラメーターを設定できます。 これにより、サーバーに接続する各クライアントのサーバー パラメーターが設定されます。 
+更新するサーバー パラメーターが変更不可である場合は、必要に応じて `init_connect` を使用して、接続レベルでパラメーターを設定できます。 これにより、サーバーに接続する各クライアントのサーバー パラメーターが設定されます。
 
 1. **[設定]** セクションの **[サーバー パラメーター]** をクリックして、Azure Database for MySQL サーバーの [サーバー パラメーター] ページを開きます。
 2. `init_connect` を検索します
@@ -67,7 +67,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> タイム ゾーン テーブルにデータが正しく入力されるようにするには、サーバーを再起動する必要があります。<!-- FIX ME To restart the server, use the [Azure portal](how-to-restart-server-portal.md) or [CLI](how-to-restart-server-cli.md).-->
+>タイム ゾーン テーブルにデータが正しく入力されるようにするには、サーバーを再起動する必要があります。<!-- FIX ME To restart the server, use the [Azure portal](how-to-restart-server-portal.md) or [CLI](how-to-restart-server-cli.md).-->
 
 利用可能なタイム ゾーン値を表示するには、次のコマンドを実行します。
 

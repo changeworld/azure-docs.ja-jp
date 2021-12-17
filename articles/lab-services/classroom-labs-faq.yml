@@ -1,0 +1,85 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Lab Services のラボ — FAQ | Microsoft Docs
+  description: この記事では、Azure Lab Services のラボについてよく寄せられる質問 (FAQ) への回答を示します。
+  ms.topic: how-to
+  ms.service: lab-services
+  ms.date: 06/26/2020
+  ms.openlocfilehash: 2558c36e145dd0a2d1ae526bf3cadf5ad06136a2
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130232700"
+title: Azure Lab Services のラボ — よく寄せられる質問 (FAQ)
+summary: Azure Lab Services のラボについて特に多く寄せられる質問にお答えします。
+sections:
+- name: Quotas (クォータ)
+  questions:
+  - question: "クォータは、ユーザーごと、1 週間ごと、またはラボの全期間のいずれに対して指定されますか。 \n"
+    answer: >
+      ラボに設定するクォータは、ラボの全期間について、各学生を対象としています。 また、[スケジュールされている VM の実行時間](how-to-create-schedules.md)は、ユーザーに割り当てられるクォータにカウントされません。 クォータは、学生が VM で消費することをスケジュールされている時間以外の時間です。  クォータの詳細については、「[ユーザーのクォータを設定する](how-to-configure-student-usage.md#set-quotas-for-users)」を参照してください。
+  - question: "教師が学生の VM をオンにすると、学生のクォータに影響しますか？ \n"
+    answer: >
+      いいえ。 影響しません。 教師が学生の VM をオンにしても、学生に割り当てられたクォータには影響しません。
+- name: スケジュール
+  questions:
+  - question: "スケジュールを設定すると、ラボ内のすべての VM が自動的に開始されますか。 \n"
+    answer: "いいえ。 すべての VM ではありません。 スケジュールに基づいてユーザーに割り当てられている VM のみです。 ユーザーに割り当てられていない VM は自動的に開始されません。 これは仕様です。 \n"
+- name: ラボ アカウント
+  questions:
+  - question: "アドレス範囲が利用できないためにラボを作成できないのはなぜですか。 \n"
+    answer: "ラボでは、Azure portal でラボ アカウントを作成するときに指定する IP アドレス範囲内にラボ VM を作成できます。 アドレス範囲が指定されている場合、各ラボは、ラボ VM 用に 512 個の IP アドレスが割り当てられた後に作成されます。 ラボ アカウントのアドレス範囲は、ラボ アカウントで作成するすべてのラボを格納するのに十分な大きさである必要があります。 \n\nたとえば、/19 - 10.0.0.0/19 のブロックがある場合、このアドレス範囲は、8192 個の IP アドレスと 16 個のラボ (8192/512 = 16 個のラボ) に対応します。 この場合、ラボの作成は 17 個目のラボの作成で失敗します。\n"
+  - question: >
+      RDP/SSH 経由でラボ仮想マシンに接続するために組織のファイアウォール設定で開く必要があるのは、どのポート範囲ですか。
+    answer: "ポートは、49152 ～ 65535 です。 ラボは、ロード バランサーの背後にあります。 各ラボには 1 つのパブリック IP アドレスがあり、ラボ内の各仮想マシンには一意のポートがあります。 \n\n各仮想マシンのプライベート IP アドレスは、Azure portal のラボのホームページの **[仮想マシンプール]** タブにも表示されます。 ラボを再発行しても、ラボのパブリック IP アドレスは変更されませんが、ラボ内の各仮想マシンのプライベート IP とポート番号は変更される可能性があります。 詳細については、次の記事を参照してください。[Azure Lab Services のファイアウォール設定](how-to-configure-firewall-settings.md)。\n"
+  - question: >
+      RDP/SSH 経由でラボ仮想マシンに接続するために組織のファイアウォール設定で開く必要があるのは、どのパブリック IP アドレス範囲ですか。
+    answer: >
+      「[Azure IP Ranges and Service Tags — Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519)」を参照してください。Azure のデータセンターのパブリック IP アドレス範囲が記載されています。 ラボ アカウントが存在するリージョンの IP アドレスを開くことができます。
+- name: 仮想マシン イメージ
+  questions:
+  - question: >
+      ラボの作成者として、新しいラボの作成時に仮想マシンイメージのドロップダウンで追加のイメージオプションを有効にできないのはなぜですか？
+    answer: >
+      管理者がラボ アカウントにラボ作成者として追加すると、ラボを作成するためのアクセス許可が付与されます。 ただし、有効な仮想マシンイメージの一覧を含む、ラボ アカウント内の任意の設定を編集するアクセス許可がありません。 追加のイメージを有効にするには、ラボ アカウント管理者に連絡して追加のイメージを有効にしてもらうか、ラボ アカウントに共同作成者ロールとして追加するよう管理者に依頼してください。 共同作成者ロールによって、ラボ アカウントの仮想マシンイメージの一覧を編集するためのアクセス許可が付与されます。
+  - question: >
+      仮想マシンに追加のディスクを接続することはできますか。
+    answer: "いいえ。 クラスルーム ラボで VM に追加のディスクを接続することはできません。 \n"
+- name: ユーザー
+  questions:
+  - question: >
+      クラスルーム ラボには、何人のユーザーを追加できますか。
+    answer: "クラスルーム ラボには、最大 400 ユーザーを追加できます。\n\n## <a name=\"blog-post\"></a>ブログ記事\n\n[Azure Lab Services ブログ](https://aka.ms/azlabs-blog)に登録してください。\n\n## <a name=\"update-notifications\"></a>更新通知\n\nLab Services の新機能について最新情報を入手するには、[Lab Services の更新情報](https://azure.microsoft.com/updates/?product=lab-services)に登録してください。          \n"
+- name: Linux
+  questions:
+  - question: >
+      ラボの自動シャットダウン設定を選択したときに、このページが空白になっているのはなぜですか。また、VM がアイドル状態のときにユーザーを自動的に切断する設定が表示されないのはなぜですか。
+    answer: >
+      通常、Linux ラボでは、ユーザーが切断したときと、VM が起動されたがユーザーが接続していないときにのみ、自動シャットダウン機能がサポートされます。  ただし、これらの設定のサポートは、[Linux の特定のディストリビューションとバージョン](../virtual-machines/extensions/diagnostics-linux.md#supported-linux-distributions)によっても異なります。  [Data Science Virtual Machine - Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) イメージでは、シャットダウン設定はサポートされていません。
+
+      シャットダウン設定の詳細については、以下の記事を参照してください。
+        - [シャットダウン設定を有効にする方法](./how-to-enable-shutdown-disconnect.md)
+        - [コスト管理のための自動シャットダウン設定](./cost-management-guide.md#automatic-shutdown-settings-for-cost-control)
+  - question: >
+      Ubuntu 18.04 Server LTS を使用して、GNOME または MATE グラフィカル デスクトップのいずれかをインストールする方法はありますか。
+    answer: >
+      Ubuntu 18.04 LTS を使用する場合、GNOME または MATE グラフィカル デスクトップと Azure Linux VM エージェントの間には[既知のネットワークの競合](./how-to-enable-remote-desktop-linux.md)があります。  そのため、次のことをお勧めします。
+        - GNOME または MATE の代わりに、この問題のない XFCE グラフィカル デスクトップを使用することを検討してください。  たとえば、[Data Science VM イメージは、既定で XFCE を使用するように構成されています](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#x2go)。
+        - GNOME または MATE をインストールするときに、Ubuntu 18.04 LTS の代わりに、エージェントとのネットワーク競合がない Ubuntu 20.04 または 21.04 LTS を使用することを検討してください。
+        - それ以外の場合、18.04 LTS と GNOME または MATE を使用するには、回避策を適用して、エージェントとのネットワーク競合を修正する必要があります。
+      Ubuntu Server 18.04\20.04\21.04 と GNOME または MATE を設定する [ReadMe とスクリプト](https://github.com/Azure/azure-devtestlab/blob/master/samples/ClassroomLabs/Scripts/LinuxGraphicalDesktopSetup/GNOME_MATE/ReadMe.md)をご覧ください。  これらのスクリプトを使用して、GNOME または MATE で 18.04 を設定すると、ネットワークの競合に対する回避策が適用されます。
+- name: 全般
+  questions:
+  - question: >
+      サブスクリプションで容量の制約と Azure コンピューティング容量の制限を回避するにはどうすればよいですか。
+    answer: >
+      初めて Azure Lab Services の使用を開始するときは、サブスクリプションに存在する Azure コンピューティング容量の制限を引き上げるために要求を送信する必要があります。  ラボの使用量が増加し、必要な VM コアの数が増えるにつれて、このプロセスを繰り返してクォータ制限を増やす必要がある場合があります。
+
+      新しいラボをデプロイするたびに、事前の計画の一環として、デプロイを計画しているリージョンに十分な VM コア容量があることを確認する必要もあります。  これは、GPU では特に重要です。
+
+      容量と Azure コンピューティング容量の制限を計画する方法の詳細については、次の記事を参照してください。
+        - [Azure Lab Services における容量制限](./capacity-limits.md)
+  - question: >
+      ここに質問の答えがない場合はどうすればいいですか。
+    answer: "ご自分の質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。\n\n- この FAQ の末尾で質問を投稿してください。 \n- さらに多くの人々と交流するには、[Azure Lab Services — Tech Community フォーラム](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices)に質問を投稿してください。"

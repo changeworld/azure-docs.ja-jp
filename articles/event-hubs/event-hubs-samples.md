@@ -2,42 +2,41 @@
 title: サンプル - Azure Event Hubs | Microsoft Docs
 description: この記事では、GitHub にある Azure Event Hubs のサンプルの一覧を示します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0b7cd4a1ca08f359a2328d7a92239516c39d7e62
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 09/15/2021
+ms.openlocfilehash: df698037af1617f4a6da7c2d898abb7bff876fd6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311602"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668699"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Azure Event Hubs のサンプルが含まれる Git リポジトリ 
 Event Hubs サンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) で見つけることができます。 これらのサンプルは [Azure Event Hubs](./index.yml) の主な機能を示しています。 この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。
 
 ## <a name="net-samples"></a>.NET のサンプル
 
-| バージョン | サンプルの場所 |
+| Version | サンプルの場所 |
 | ------- | ---------------- | 
 | Azure.Messaging.EventHubs バージョン 5 (最新) | [GitHub にある Event Hubs のサンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[GitHub にある Event Hubs プロセッサのサンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
 | Microsoft.Azure.EventHubs バージョン 4 (レガシ) | [GitHub の場所](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
 
 ## <a name="java-samples"></a>Java のサンプル
 
-| バージョン | サンプルの場所 |
+| Version | サンプルの場所 |
 | ------- | ---------------- | 
 | azure-messaging-eventhubs バージョン 5 (最新) | [GitHub の場所](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) | 
 | azure-eventhubs バージョン 3 (レガシ) | [GitHub の場所](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/) |
 
 ## <a name="python-samples"></a>Python のサンプル
 
-| バージョン | サンプルの場所 |
+| Version | サンプルの場所 |
 | ------- | ---------------- | 
 | azure-eventhub バージョン 5 (最新) | [GitHub の場所](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
 | azure-eventhub バージョン 1 (レガシ) | [GitHub の場所](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
 
 ## <a name="javascript-samples"></a>JavaScript のサンプル
 
-| バージョン | サンプルの場所 |
+| Version | サンプルの場所 |
 | ------- | ---------------- | 
 | azure/event-hubs バージョン 5 (最新) | [GitHub の場所](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) | 
 | azure/event-hubs バージョン 2 (レガシ) | [GitHub の場所](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/event-hubs_2.1.0/sdk/eventhub/event-hubs/samples) |

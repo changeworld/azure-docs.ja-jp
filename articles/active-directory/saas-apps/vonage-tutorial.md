@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/24/2020
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: e42dc6036d7ad44f1bbb15fc3af28c487ee67640
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77481ad0383c659a08e9dd0a0f3e19a8b382b701
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98733505"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316700"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vonage"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と vonage の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "98733505"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-
-* vonage では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* vonage では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* vonage では、[自動化されたユーザー プロビジョニング](vonage-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-vonage-from-the-gallery"></a>ギャラリーからの vonage の追加
 
@@ -50,7 +50,6 @@ Azure AD への vonage の統合を構成するには、ギャラリーからマ
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**vonage**」と入力します。
 1. 結果パネルから **[vonage]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-vonage"></a>vonage の Azure AD SSO の構成とテスト
 
@@ -71,13 +70,13 @@ vonage に対して Azure AD SSO を構成してテストするには、次の�
 
 1. Azure portal の **vonage** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`wso2is-<ENVIRONMENT>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`wso2is-<ENVIRONMENT>` の形式で値を入力します。
 
     b. **[応答 URL]** ボックスに、`https://login.auth-<ENVIRONMENT>.vonage.com/accountrecoveryendpoint/saml-translator.jsp?id=<ID>&env=<ENVIRONMENT>&client=Web` のパターンを使用して URL を入力します
 
@@ -95,6 +94,7 @@ vonage に対して Azure AD SSO を構成してテストするには、次の�
 1. **[vonage のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -143,11 +143,14 @@ vonage に対して Azure AD SSO を構成してテストするには、次の�
 
 1. **[Phone System]\(電話システム\) > [Users]\(ユーザー\) > [Add New]\(新規追加\)** の順に移動します。
 
-    ![ユーザーの追加ページ](./media/vonage-tutorial/add-user.png)
+    ![ユーザー ページを追加](./media/vonage-tutorial/add-user.png)
 
-1. 次のページで必要なフィールドを追加し、 **[Save]\(保存\)** をクリックします。
+1. 次のページで必要なフィールドを追加して、 **[保存]** をクリックします。
 
     ![ユーザーの追加フォーム ページ](./media/vonage-tutorial/add-user-2.png)
+
+> [!NOTE]
+> vonage では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./vonage-provisioning-tutorial.md)をご覧ください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -163,8 +166,8 @@ vonage に対して Azure AD SSO を構成してテストするには、次の�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した vonage に自動的にサインインされます 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [vonage] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した vonage に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [vonage] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した vonage に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-vonage を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+vonage を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

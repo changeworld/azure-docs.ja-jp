@@ -3,7 +3,7 @@ title: Azure API Management を使用した高度な要求スロットル
 description: Azure API management で柔軟なクォータとレートの制限ポリシーを作成して適用する方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: fc813a65-7793-4c17-8bb9-e387838193ae
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
-ms.author: apimpm
-ms.openlocfilehash: 3f91ed2238a7a23b967cd3e3556c8ade88af0044
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: danlep
+ms.openlocfilehash: 177d393041b397e504c1c8c155fe9b2b1f99b451
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449734"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653687"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Azure API Management を使用した高度な要求スロットル
 受信要求のスロットルは、Azure API Management の重要な役割の 1 つです。 要求のレートや転送される要求/データの合計を制御できるため、API プロバイダーは API Management を使用して、さまざまな API 成果物階層に対する値の不正使用や作成から API を保護できます。

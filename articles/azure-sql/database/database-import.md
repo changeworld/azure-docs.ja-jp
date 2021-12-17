@@ -3,20 +3,20 @@ title: Azure SQL Database でデータベースを作成するために BACPAC �
 description: Azure SQL Database または Azure SQL Managed Instance で、BACPAC ファイルから新しいデータベースを作成します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: migrate
+ms.subservice: backup-restore
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: SQLSourabh
+ms.author: sourabha
+ms.reviewer: cawrites, mathoma
 ms.date: 10/29/2020
-ms.openlocfilehash: eddcab2c0a34ef437e4f2f1e2203fee9065133a4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f6e7e1b8d1fcd5e0f8fa8072982c4c0cf1681517
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781885"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739703"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Azure SQL Database または Azure SQL Managed Instance 内のデータベースに BACPAC ファイルをインポートする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

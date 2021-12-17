@@ -1,23 +1,24 @@
 ---
-title: Azure AD を使用してエンド ユーザーがアプリケーションに同意する方法を構成する
+title: エンド ユーザーがアプリケーションに同意する方法を構成する
+titleSuffix: Azure AD
 description: 組織のデータにアクセスするアプリケーションにユーザーがいつどのように同意できるかについて管理する方法を説明します。
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/01/2020
-ms.author: iangithinji
+ms.date: 06/01/2021
+ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 95a651f6201c9f60500c9191821edb7eb76b8535
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.custom: contperf-fy21q2, contperf-fy22q2
+ms.openlocfilehash: 65cae86cd6183932df20a1642661bc277254fed3
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374439"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552035"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>エンド ユーザーがアプリケーションに同意する方法を構成する
 
@@ -57,27 +58,25 @@ Azure portal を使用してユーザーの同意設定を構成するには:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-最新の Azure AD PowerShell プレビュー モジュールである [AzureADPreview](/powershell/azure/active-directory/install-adv2?preserve-view=true&view=azureadps-2.0-preview) を使用して、アプリケーションに対するユーザーの同意を制御するアプリの同意ポリシーを選択できます。
+最新の [Azure AD PowerShell](/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) モジュールを使用して、アプリケーションに対するユーザーの同意を制御するアプリの同意ポリシーを選択できます。
 
 #### <a name="disable-user-consent"></a>ユーザーの同意を無効にする
 
 ユーザーの同意を無効にするには、ユーザーの同意を制御する同意ポリシーを空に設定します。
 
-  ```powershell
-  Set-AzureADMSAuthorizationPolicy `
-     -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @()
-  ```
+```powershell
+Set-AzureADMSAuthorizationPolicy -DefaultUserRolePermissions @{
+    "PermissionGrantPoliciesAssigned" = @() }
+```
 
 #### <a name="allow-user-consent-subject-to-an-app-consent-policy"></a>アプリの同意ポリシーに従ってユーザーの同意を許可する
 
 ユーザーの同意を許可するには、アプリに同意するユーザーの承認を管理するアプリの同意ポリシーを選択します。
 
-  ```powershell
-  Set-AzureADMSAuthorizationPolicy `
-     -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.{consent-policy-id}")
-  ```
+```powershell
+Set-AzureADMSAuthorizationPolicy -DefaultUserRolePermissions @{
+    "PermissionGrantPoliciesAssigned" = @("managePermissionGrantsForSelf.{consent-policy-id}") }
+```
 
 `{consent-policy-id}` を、適用するポリシーの ID に置き換えます。 作成した[カスタム アプリの同意ポリシー](manage-app-consent-policies.md#create-a-custom-app-consent-policy)を選択することも、次の組み込みポリシーから選択することもできます。
 
@@ -89,9 +88,8 @@ Azure portal を使用してユーザーの同意設定を構成するには:
 たとえば、組み込みのポリシー `microsoft-user-default-low` に従ってユーザーの同意を有効にするには、次のようにします。
 
 ```powershell
-Set-AzureADMSAuthorizationPolicy `
-   -Id "authorizationPolicy" `
-   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.microsoft-user-default-low")
+Set-AzureADMSAuthorizationPolicy -DefaultUserRolePermissions @{
+    "PermissionGrantPoliciesAssigned" = @("managePermissionGrantsForSelf.microsoft-user-default-low") }
 ```
 
 ---
@@ -101,7 +99,7 @@ Set-AzureADMSAuthorizationPolicy `
 
 ## <a name="risk-based-step-up-consent"></a>リスクに基づくステップアップ同意
 
-リスクに基づくステップアップ同意を使用すると、[違法な同意要求](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)を行う悪質なアプリへのユーザーの露出を減らすことができます。 危険なエンドユーザー同意要求が Microsoft によって検出されると、管理者の同意への "ステップアップ" が求められます。 この機能は既定で有効になりますが、動作変更が生じるのは、エンドユーザーの同意が有効な場合だけです。
+リスクに基づくステップアップ同意を使用すると、[違法な同意要求](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)を行う悪質なアプリへのユーザーの露出を減らすことができます。 たとえば、基本以外のアクセス許可を必要とする、[発行元が確認](../develop/publisher-verification-overview.md)されていない新しく登録されたマルチテナント アプリの場合、その同意要求は危険であると見なされます。 危険なエンドユーザー同意要求が Microsoft によって検出されると、管理者の同意への "ステップアップ" が求められます。 この機能は既定で有効になりますが、動作変更が生じるのは、エンドユーザーの同意が有効な場合だけです。
 
 危険な同意要求が検出されると、管理者の承認が必要であることを示すメッセージが同意プロンプトに表示されます。 [管理者の同意要求ワークフロー](configure-admin-consent-workflow.md)が有効になっている場合、ユーザーは同意プロンプトから直接その要求を管理者に送信してさらなる確認を求めることができます。 有効になっていない場合は、次のメッセージが表示されます。
 
@@ -185,4 +183,5 @@ Microsoft によってリスクが検出された場合に必要となる管理�
 * [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
+
 * [Microsoft Q&A の Azure AD。](/answers/topics/azure-active-directory.html)

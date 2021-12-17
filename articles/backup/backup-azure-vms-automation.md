@@ -3,12 +3,13 @@ title: PowerShell を使用して Azure VM をバックアップおよび復元�
 description: PowerShell を使用して Azure Backup によって Azure VM をバックアップおよび復旧する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f59c18aecf577bc7f7d0b1360dd36504305af893
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6f669a7382cfe7dad4c1a58186ce3c6a30f49063
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100633191"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533972"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -398,12 +399,23 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -Workl
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
+### <a name="resume-backup"></a>バックアップの再開
+
+保護が停止された場合、バックアップ データが保持されていれば、もう一度保護を再開できます。 更新された保護のポリシーを割り当てる必要があります。 コマンドレットは、[バックアップ項目の変更ポリシー](#change-policy-for-backup-items)と同じです。
+
+````powershell
+$TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName> -VaultId $targetVault.ID
+$anotherBkpItem = Get-AzRecoveryServicesBackupItem -WorkloadType AzureVM -BackupManagementType AzureVM -Name "<BackupItemName>" -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $anotherBkpItem -Policy $TargetPol1 -VaultId $targetVault.ID
+````
+
 #### <a name="delete-backup-data"></a>バックアップ データの削除
 
 コンテナーに格納されたバックアップ データを完全に削除するには、[保護を無効にするコマンド](#retain-data)に -RemoveRecoveryPoints フラグまたはスイッチを付加します。
 
 ````powershell
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
+
 ````
 
 ## <a name="restore-an-azure-vm"></a>Azure VM の復元
@@ -511,12 +523,18 @@ V2VM              Restore           InProgress           4/23/2016 5:00:30 PM   
 Wait-AzRecoveryServicesBackupJob -Job $restorejob -Timeout 43200
 ```
 
-復元ジョブが完了したら、[Get-AzRecoveryServicesBackupJobDetails](/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) コマンドレットを使用して復元操作の詳細を取得します。 JobDetails プロパティには、VM を再構築するために必要な情報が含まれています。
+復元ジョブが完了したら、[Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) コマンドレットを使用して復元操作の詳細を取得します。 JobDetails プロパティには、VM を再構築するために必要な情報が含まれています。
 
 ```powershell
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
-$details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $targetVault.ID
+$details = Get-AzRecoveryServicesBackupJobDetail -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="using-managed-identity-to-restore-disks"></a>マネージド ID を使用したディスクの復元
+
+Azure Backup では、復元操作中にマネージド ID (MSI) を使用して、ディスクを復元する必要があるストレージ アカウントにアクセスすることもできます。 このオプションは現在、マネージド ディスクの復元でのみサポートされています。
+
+ディスクの復元にコンテナーのシステムによって割り当てられたマネージド ID を使用するには、Restore-AzRecoveryServicesBackupItem コマンドに追加のフラグ * **-UseSystemAssignedIdentity** _ を渡します。 ユーザー割り当てマネージド ID を使用する場合は、コンテナーのマネージド ID の ARM ID をパラメーターの値として使用して、パラメーター _*_ -UserAssignedIdentityId_** を渡します。 コンテナーのマネージド ID を有効にする方法については、[この記事](encryption-at-rest-with-cmk.md#enable-managed-identity-for-your-recovery-services-vault)を参照してください。 
 
 #### <a name="restore-selective-disks"></a>選択的なディスクの復元
 

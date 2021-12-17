@@ -6,14 +6,14 @@ author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/06/2021
+ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: eae4d00cd7b1a0ff90648086320135505a0d900a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: cbea7a93d80a0d8f68b23cbcfde92d34d5a0d1d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318765"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121802289"
 ---
 Java 用 Anomaly Detector (多変量) クライアント ライブラリを使ってみましょう。 サービスによって提供されるアルゴリズムを使用してパッケージをインストールするには、次の手順に従います。 新しい多変量異常検出 API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出できる高度な AI を開発者が容易に統合することができます。 異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されます。 これにより、複雑なシステムを障害から予防的に保護することができます。
 
@@ -22,6 +22,8 @@ Java 用 Anomaly Detector (多変量) クライアント ライブラリは、�
 * 時系列のグループからシステム レベルの異常を検出する。
 * 個々の時系列では得られる情報が少なく、すべての信号に着目して問題を検出する必要がある。
 * システム正常性をさまざまな側面から測定する数十個から数百個にのぼる各種センサーを使用して高価な物理資産の予測メンテナンスを行う。
+
+[ライブラリのリファレンス ドキュメント](/java/api/com.azure.ai.anomalydetector) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [パッケージ (Maven)](https://repo1.maven.org/maven2/com/azure/azure-ai-anomalydetector/3.0.0-beta.2/) | [サンプル コード](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/src/samples/java/com/azure/ai/anomalydetector/MultivariateSample.java)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -103,12 +105,26 @@ import java.util.stream.Collectors;
 
 自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 サンプル データ ファイル用にもう 1 つの変数を作成します。
 
+> [!NOTE]
+> 常に、2 つのキーのいずれかを使用できます。 これは、セキュリティ保護されたキーのローテーションを可能にするためです。 このクイックスタートでは、1 番目のキーを使用します。 
+
 ```java
 String key = "YOUR_API_KEY";
 String endpoint = "YOUR_ENDPOINT";
 ```
 
- Anomaly Detector (多変量) API を使用するには、検出を使用する前に独自のモデルをトレーニングする必要があります。 トレーニングに使用するデータは時系列のバッチであり、各時系列は、timestamp と value の 2 つの列を含む CSV 形式である必要があります。 すべての時系列を 1 つの ZIP ファイルに圧縮し、[Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md) にアップロードする必要があります。 既定では、時系列の変数を表すためにこのファイル名が使用されます。 あるいは、変数の名前を .zip ファイル名とは異なるものにしたい場合は、追加の meta.json ファイルを ZIP ファイルに含めることもできます。 [BLOB の SAS (Shared Access Signature) URL](../../../../storage/common/storage-sas-overview.md) を生成したら、ZIP ファイルの URL をトレーニングに使用できます。
+Anomaly Detector 多変量 API シリーズを使用するには、最初に独自のモデルをトレーニングする必要があります。 トレーニング データは、次の要件を満たす複数の時系列のセットです。
+
+各時系列は、ヘッダー行として "timestamp" と "value" (すべて小文字) の 2 つの列のみを含む CSV ファイルである必要があります。 "timestamp" の値は、ISO 8601 に準拠している必要があります。"value" は、整数または小数点以下の桁数が任意の小数にすることができます。 次に例を示します。
+
+|timestamp | value|
+|-------|-------|
+|2019-04-01T00:00:00Z| 5|
+|2019-04-01T00:01:00Z| 3.6|
+|2019-04-01T00:02:00Z| 4|
+|`...`| `...` |
+
+各 CSV ファイルには、モデルのトレーニングに使用する異なる変数に基づいて名前を付ける必要があります。 たとえば、"temperature.csv" や "humidity.csv" などです。 すべての CSV ファイルは、サブフォルダーを使用しないで 1 つの ZIP ファイルに圧縮する必要があります。 ZIP ファイルには任意の名前を付けることができます。 ZIP ファイルは Azure Blob Storage にアップロードする必要があります。 その ZIP ファイルの BLOB SAS (Shared Access Signature) URL を生成したら、それをトレーニングに使用できます。 Azure Blob Storage から SAS URL を生成する方法については、このドキュメントを参照してください。
 
 ## <a name="code-examples"></a>コード例
 
@@ -151,7 +167,7 @@ AnomalyDetectorClient anomalyDetectorClient = new AnomalyDetectorClientBuilder()
 
 まず、モデル要求を構築する必要があります。 開始時刻と終了時刻は、必ずデータソースに合わせて調整してください。
 
- Anomaly Detector (多変量) API を使用するには、検出を使用する前に独自のモデルをトレーニングする必要があります。 トレーニングに使用するデータは時系列のバッチであり、各時系列は、timestamp と value の 2 つの列を含む CSV 形式である必要があります。 すべての時系列を 1 つの ZIP ファイルに圧縮し、[Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs) にアップロードする必要があります。 既定では、時系列の変数を表すためにこのファイル名が使用されます。 あるいは、変数の名前を .zip ファイル名とは異なるものにしたい場合は、追加の meta.json ファイルを ZIP ファイルに含めることもできます。 [BLOB の SAS (Shared Access Signature) URL](../../../../storage/common/storage-sas-overview.md) を生成したら、ZIP ファイルの URL をトレーニングに使用できます。
+Anomaly Detector (多変量) API を使用するには、検出を使用する前に独自のモデルをトレーニングする必要があります。 トレーニングに使用するデータは、時系列のバッチです。各時系列は、 **"timestamp"** と **"value"** の 2 つの列だけを含む CSV ファイルに含まれている必要があります (列名はまったく同じである必要があります)。 各 CSV ファイルには、時系列の各変数にちなんで名前を付ける必要があります。 すべての時系列を 1 つの ZIP ファイルに圧縮し、[Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs) にアップロードします。ZIP ファイル名の要件はありません。 あるいは、変数の名前を .zip ファイル名とは異なるものにしたい場合は、追加の meta.json ファイルを ZIP ファイルに含めることもできます。 [BLOB の SAS (Shared Access Signature) URL](../../../../storage/common/storage-sas-overview.md) を生成したら、ZIP ファイルの URL をトレーニングに使用できます。
 
 ```java
 Path path = Paths.get("test-data.csv");
@@ -173,34 +189,45 @@ Integer window = 28;
 AlignMode alignMode = AlignMode.OUTER;
 FillNAMethod fillNAMethod = FillNAMethod.LINEAR;
 Integer paddingValue = 0;
-AlignPolicy alignPolicy = new AlignPolicy().setAlignMode(alignMode).setFillNAMethod(fillNAMethod).setPaddingValue(paddingValue);
+AlignPolicy alignPolicy = new AlignPolicy()
+                                .setAlignMode(alignMode)
+                                .setFillNAMethod(fillNAMethod)
+                                .setPaddingValue(paddingValue);
 String source = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS";
 OffsetDateTime startTime = OffsetDateTime.of(2021, 1, 2, 0, 0, 0, 0, ZoneOffset.UTC);
-;
 OffsetDateTime endTime = OffsetDateTime.of(2021, 1, 3, 0, 0, 0, 0, ZoneOffset.UTC);
-;
 String displayName = "Devops-MultiAD";
 
-ModelInfo request = new ModelInfo().setSlidingWindow(window).setAlignPolicy(alignPolicy).setSource(source).setStartTime(startTime).setEndTime(endTime).setDisplayName(displayName);
+ModelInfo request = new ModelInfo()
+                        .setSlidingWindow(window)
+                        .setAlignPolicy(alignPolicy)
+                        .setSource(source)
+                        .setStartTime(startTime)
+                        .setEndTime(endTime)
+                        .setDisplayName(displayName);
 TrainMultivariateModelResponse trainMultivariateModelResponse = anomalyDetectorClient.trainMultivariateModelWithResponse(request, Context.NONE);
 String header = trainMultivariateModelResponse.getDeserializedHeaders().getLocation();
-String[] model_ids = header.split("/");
-UUID model_id = UUID.fromString(model_ids[model_ids.length - 1]);
-System.out.println(model_id);
+String[] substring = header.split("/");
+UUID modelId = UUID.fromString(substring[substring.length - 1]);
+System.out.println(modelId);
 
-Integer skip = 0;
-Integer top = 5;
-PagedIterable<ModelSnapshot> response = anomalyDetectorClient.listMultivariateModel(skip, top);
-Iterator<PagedResponse<ModelSnapshot>> ite = response.iterableByPage().iterator();
-
+//Check model status until the model is ready
+Response<Model> trainResponse;
 while (true) {
-    Response<Model> response_model = anomalyDetectorClient.getMultivariateModelWithResponse(model_id, Context.NONE);
-    UUID model = response_model.getValue().getModelId();
-    System.out.println(response_model.getStatusCode());
-    System.out.println(response_model.getValue().getModelInfo().getStatus());
-    System.out.println(model);
-    if (response_model.getValue().getModelInfo().getStatus() == ModelStatus.READY) {
+    trainResponse = anomalyDetectorClient.getMultivariateModelWithResponse(modelId, Context.NONE);
+    ModelStatus modelStatus = trainResponse.getValue().getModelInfo().getStatus();
+    if (modelStatus == ModelStatus.READY || modelStatus == ModelStatus.FAILED) {
         break;
+    }
+    TimeUnit.SECONDS.sleep(10);
+}
+
+if (trainResponse.getValue().getModelInfo().getStatus() != ModelStatus.READY){
+    System.out.println("Training failed.");
+    List<ErrorResponse> errorMessages = trainResponse.getValue().getModelInfo().getErrors();
+    for (ErrorResponse errorMessage : errorMessages) {
+        System.out.println("Error code:  " + errorMessage.getCode());
+        System.out.println("Error message:  " + errorMessage.getMessage());
     }
 }
 ```
@@ -209,24 +236,35 @@ while (true) {
 
 ```java
 DetectionRequest detectionRequest = new DetectionRequest().setSource(source).setStartTime(startTime).setEndTime(endTime);
-DetectAnomalyResponse detectAnomalyResponse = anomalyDetectorClient.detectAnomalyWithResponse(model_id, detectionRequest, Context.NONE);
-String result = detectAnomalyResponse.getDeserializedHeaders().getLocation();
+DetectAnomalyResponse detectAnomalyResponse = anomalyDetectorClient.detectAnomalyWithResponse(modelId, detectionRequest, Context.NONE);
+String location = detectAnomalyResponse.getDeserializedHeaders().getLocation();
+String[] substring = location.split("/");
+UUID resultId = UUID.fromString(substring[substring.length - 1]);
 
-String[] result_list = result.split("/");
-UUID result_id = UUID.fromString(result_list[result_list.length - 1]);
-
+DetectionResult detectionResult;
 while (true) {
-    DetectionResult response_result = anomalyDetectorClient.getDetectionResult(result_id);
-    if (response_result.getSummary().getStatus() == DetectionStatus.READY) {
+    detectionResult = anomalyDetectorClient.getDetectionResult(resultId);
+    DetectionStatus detectionStatus = detectionResult.getSummary().getStatus();;
+    if (detectionStatus == DetectionStatus.READY || detectionStatus == DetectionStatus.FAILED) {
         break;
     }
-    else if(response_result.getSummary().getStatus() == DetectionStatus.FAILED){
+    TimeUnit.SECONDS.sleep(10);
+}
 
+if (detectionResult.getSummary().getStatus() != DetectionStatus.READY){
+    System.out.println("Inference failed");
+    List<ErrorResponse> detectErrorMessages = detectionResult.getSummary().getErrors();
+    for (ErrorResponse errorMessage : detectErrorMessages) {
+        System.out.println("Error code:  " + errorMessage.getCode());
+        System.out.println("Error message:  " + errorMessage.getMessage());
     }
 }
 ```
 
 ## <a name="export-model"></a>モデルをエクスポートする
+
+> [!NOTE]
+> エクスポート コマンドは、コンテナー化された環境で Anomaly Detector 多変量モデルを実行できるようにするために使用することを目的としています。 現在、これは多変量ではサポートされていませんが、今後サポートが追加される予定です。
 
 トレーニング済みのモデルをエクスポートするには、`exportModelWithResponse` を使用します。
 
@@ -254,12 +292,22 @@ gradle build
 ```
 ### <a name="run-the-application"></a>アプリケーションの実行
 
+実行する前に、実際のコードを[完全なサンプル コード](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/src/samples/java/com/azure/ai/anomalydetector/MultivariateSample.java)に照らして確認することをお勧めします。
+
 `run` ゴールを使用してアプリケーションを実行します。
 
 ```console
 gradle run
 ```
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのリソース グループに関連付けられている他のリソースも削除されます。
+
+* [ポータル](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
 ## <a name="next-steps"></a>次のステップ
 
-* [Anomaly Detector (多変量) のベスト プラクティス](../../concepts/best-practices-multivariate.md)
+* [Anomaly Detector API とは](../../overview-multivariate.md)
+* [Anomaly Detector API を使用する場合のベスト プラクティス](../../concepts/best-practices-multivariate.md)

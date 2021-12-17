@@ -1,19 +1,19 @@
 ---
 title: Azure Synapse ワークスペースからセキュリティで保護されたストレージ アカウントに接続する
 description: この記事では、Azure Synapse ワークスペースからセキュリティで保護されたストレージ アカウントに接続する方法を説明します
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 02/10/2021
-ms.author: ronytho
+ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5d43d6f56b48a34fa34baf727508ad8f1c151aa7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 103aaa913511c8d61e8e2a28ede81973fca98d1a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674316"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774646"
 ---
 # <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>Synapse ワークスペースからセキュリティで保護された Azure ストレージ アカウントに接続する
 
@@ -29,7 +29,13 @@ Synapse ワークスペースを作成するときに、マネージド仮想ネ
 ## <a name="access-a-secured-storage-account"></a>セキュリティで保護されたストレージ アカウントにアクセスする
 Synapse は、ネットワーク規則に含めることのできないネットワークから動作します。 ワークスペースからセキュリティで保護されたストレージ アカウントへのアクセスを有効にするには、以下のことを行う必要があります。
 
-* マネージド仮想ネットワークが関連付けられた Azure Synapse ワークスペースを作成し、そこからセキュリティで保護されたストレージ アカウントへのマネージド プライベート エンドポイントを作成します
+* マネージド仮想ネットワークが関連付けられた Azure Synapse ワークスペースを作成し、そこからセキュリティで保護されたストレージ アカウントへのマネージド プライベート エンドポイントを作成します。 
+
+    Azure portal を使用してワークスペースを作成する場合は、次に示すように、 **[ネットワーク]** タブでマネージド仮想ネットワークを有効にすることができます。 マネージド仮想ネットワークを有効にした場合、またはプライマリ ストレージ アカウントがセキュリティで保護されたストレージ アカウントであると Synapse で判断した場合は、次に示すように、セキュリティで保護されたストレージ アカウントに対して、マネージド プライベート エンドポイント接続要求を作成することもできます。 ストレージ アカウントの所有者は、接続要求を承認してプライベート リンクを確立する必要があります。 または、ワークスペースで Apache Spark プールを作成しているユーザーに、接続要求を承認するための十分な特権がある場合は、Synapse によってこの接続要求が承認されます。
+![マネージド VNet とマネージド プライベート エンドポイントを有効にする](./media/connect-to-a-secure-storage-account/enable-managed-virtual-network-managed-private-endpoint.png) 
+    
+
+
 * Azure Synapse ワークスペースに、セキュリティで保護されたストレージ アカウントへの、信頼された Azure サービスとしてのアクセスを許可します。 その後、Azure Synapse は、信頼されたサービスとして、強力な認証を使用してストレージ アカウントに安全に接続します。   
 
 ### <a name="create-a-synapse-workspace-with-a-managed-virtual-network-and-create-managed-private-endpoints-to-your-storage-account"></a>マネージド仮想ネットワークで Synapse ワークスペースを作成し、ストレージ アカウントへのマネージド プライベート エンドポイントを作成します

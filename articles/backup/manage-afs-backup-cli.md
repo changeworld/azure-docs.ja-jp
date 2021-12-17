@@ -2,13 +2,13 @@
 title: Azure CLI を使用して Azure ファイル共有のバックアップを管理する
 description: Azure CLI を使用して、Azure Backup によってバックアップされた Azure ファイル共有を管理および監視する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: e389f5cde12734ef4bf0be4ecfba69ba33f5e030
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/10/2021
+ms.openlocfilehash: 9ddee7e0e7595d4606d077f33362344fe582d9a8
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773605"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902972"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Azure CLI を使用して Azure ファイル共有のバックアップを管理する
 
@@ -88,6 +88,98 @@ az backup job list --resource-group azurefiles --vault-name azurefilesvault
     "type": "Microsoft.RecoveryServices/vaults/backupJobs"
   }
 ]
+```
+## <a name="create-policy"></a>ポリシーを作成する
+
+バックアップ ポリシーを作成するには、次のパラメーターを指定して、[az backup policy create](/cli/azure/backup/policy?view=azure-cli-latest&preserve-view=true#az_backup_policy_create) コマンドを実行します。
+
+- --backup-management-type – Azure Storage
+- --workload-type - AzureFileShare
+- --name - ポリシーの名前
+- --policy - スケジュールと保有期間に関する適切な詳細を含む JSON ファイル
+- --resource-group - コンテナーのリソース グループ
+- --vault-name - コンテナーの名前
+
+**例**
+
+```azurecli-interactive
+az backup policy create --resource-group azurefiles --vault-name azurefilesvault --name schedule20 --backup-management-type AzureStorage --policy samplepolicy.json --workload-type AzureFileShare
+
+```
+
+**サンプル JSON (samplepolicy.json)**
+
+```json
+{
+  "eTag": null,
+  "id": "/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupPolicies/schedule20",
+  "location": null,
+  "name": "schedule20",
+  "properties": {
+    "backupManagementType": "AzureStorage",
+    "protectedItemsCount": 0,
+    "retentionPolicy": {
+      "dailySchedule": {
+        "retentionDuration": {
+          "count": 30,
+          "durationType": "Days"
+        },
+        "retentionTimes": [
+          "2020-01-05T08:00:00+00:00"
+        ]
+      },
+      "monthlySchedule": null,
+      "retentionPolicyType": "LongTermRetentionPolicy",
+      "weeklySchedule": null,
+      "yearlySchedule": null
+    },
+    "schedulePolicy": {
+      "schedulePolicyType": "SimpleSchedulePolicy",
+      "scheduleRunDays": null,
+      "scheduleRunFrequency": "Daily",
+      "scheduleRunTimes": [
+        "2020-01-05T08:00:00+00:00"
+      ],
+      "scheduleWeeklyFrequency": 0
+    },
+    "timeZone": "UTC",
+    "workLoadType": “AzureFileShare”
+  },
+  "resourceGroup": "azurefiles",
+  "tags": null,
+  "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
+}
+```
+
+ポリシーが正常に作成されると、コマンドの実行中にパラメーターとして渡したポリシーの JSON が、その出力に表示されます。
+
+必要に応じて、ポリシーのスケジュールとリテンション期間を変更できます。
+
+**例**
+
+毎月の最初の日曜日のバックアップを 2 か月間保持する場合は、月単位のスケジュールを次のように更新します。
+
+```json
+"monthlySchedule": {
+        "retentionDuration": {
+          "count": 2,
+          "durationType": "Months"
+        },
+        "retentionScheduleDaily": null,
+        "retentionScheduleFormatType": "Weekly",
+        "retentionScheduleWeekly": {
+          "daysOfTheWeek": [
+            "Sunday"
+          ],
+          "weeksOfTheMonth": [
+            "First"
+          ]
+        },
+        "retentionTimes": [
+          "2020-01-05T08:00:00+00:00"
+        ]
+      }
+
 ```
 
 ## <a name="modify-policy"></a>ポリシーを変更する

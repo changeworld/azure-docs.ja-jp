@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2021
-ms.openlocfilehash: e2369e8f4349a3b4a83c1729c6414d319dd8419e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2459966b364e2f69b0c0dded6ef5dc1de941dd3
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589669"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039108"
 ---
 # <a name="social-media-analysis-with-azure-stream-analytics"></a>Azure Stream Analytics でのソーシャル メディア分析
 
@@ -125,7 +125,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
 ### <a name="configure-the-client-application"></a>クライアント アプリケーションを構成する
 
-特定のトピックに関するツイート イベントを収集するために、[Twitter のストリーミング API](https://dev.twitter.com/streaming/overview) を使用して Twitter データに接続するクライアント アプリケーションを作成しました。
+特定のトピック セットに関するツイート イベントを収集するために、[Twitter Streaming API](https://dev.twitter.com/streaming/overview) を使用して Twitter データに接続するクライアント アプリケーションを作成しました。
 
 アプリケーションを実行するには、Twitter のキーやイベント ハブの接続文字列などの特定の情報が必要となります。
 

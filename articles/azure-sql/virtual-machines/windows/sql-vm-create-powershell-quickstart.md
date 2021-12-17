@@ -3,7 +3,7 @@ title: Azure PowerShell を使用して Windows 仮想マシンに SQL Server �
 description: このチュートリアルでは、Azure PowerShell を使用して、SQL Server 2017 を実行する Windows 仮想マシンを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: deployment
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 350df1aede076120fd14dc46da351835c894c5b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b063badd26207b7bda9f959476c2e93f71a16b9e
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97356839"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165979"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Windows 仮想マシンに SQL Server を作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "97356839"
 
 > [!TIP]
 > - このクイック スタートでは、SQL VM を迅速にプロビジョニングしてそこに接続する方法について説明します。 SQL VM を作成するためのその他の Azure PowerShell オプションについては、[Azure PowerShell を使用した SQL Server VM のプロビジョニング ガイド](create-sql-vm-powershell.md)を参照してください。
-> - SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
+> - SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.yml)に関するページをご覧ください。
 
 ## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Azure サブスクリプションを取得する
 
@@ -153,29 +153,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ポータル統合および SQL VM の機能を利用するには、[SQL IaaS Agent 拡張機能](sql-agent-extension-manually-register-single-vm.md)に登録する必要があります。
 
-すべての機能を利用するには、フル モードで拡張機能に登録する必要があります。 ただし、そのようにすると SQL Server サービスが再起動されるので、最初は軽量モードで登録しておき、メンテナンス期間中にフル モードにアップグレードする方法が推奨されます。 
-
-まず、SQL Server VM を軽量モードで登録します。 
-
-```powershell-interactive
-# Get the existing compute VM
-$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-        
-# Register SQL VM with 'Lightweight' SQL IaaS agent
-New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-  -LicenseType PAYG -SqlManagementType LightWeight
-```
-
-その後、メンテナンス期間中にフル モードにアップグレードします。 
-
-```powershell-interactive
-# Get the existing Compute VM
-$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-      
-# Register with SQL IaaS Agent extension in full mode
-Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
-```
-
+すべての機能を利用するには、[フル モード](sql-agent-extension-manually-register-single-vm.md#full-mode)で拡張機能に登録する必要があります。 それ以外の場合は、軽量モードで登録します。 
 
 
 ## <a name="remote-desktop-into-the-vm"></a>VM へのリモート デスクトップ接続

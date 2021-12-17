@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
-ms.openlocfilehash: c5f536295bce07e70606f1ff286b08f8465d59f9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3a42de2ac948a583f9d2de130626f37658dfc9e
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048951"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732256"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Azure Resource Manager テンプレートを使用して Windows 仮想マシン スケール セットのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -35,7 +35,7 @@ Resource Manager テンプレートを初めて利用する場合は、[テン�
 Azure Diagnostics 拡張機能では、**データ シンク** と呼ばれる機能を使って、メトリックとログをさまざまな場所にルーティングします。 次の手順では、Resource Manager テンプレートと PowerShell を使用して、新しい Azure Monitor データ シンクを使って VM をデプロイする方法を説明します。 
 
 ## <a name="author-a-resource-manager-template"></a>Resource Manager テンプレートを作成する 
-この例では、公開されている[サンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale)を使用できます。  
+この例では、公開されている[サンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-windows-autoscale)を使用できます。  
 
 - **Azuredeploy.json** は、仮想マシン スケール セットのデプロイ用に事前構成された Resource Manager テンプレートです。
 

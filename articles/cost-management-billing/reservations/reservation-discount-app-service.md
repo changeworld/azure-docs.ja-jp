@@ -1,23 +1,23 @@
 ---
 title: Azure App Service の予約割引
-description: Azure App Service の Premium v3 インスタンスと Isolated スタンプに予約割引を適用する方法について説明します。
-author: yashesvi
-ms.reviewer: yashar
+description: Azure App Service の Premium v3 および Premium v2 インスタンスと Isolated スタンプに予約割引を適用する方法について説明します。
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 05/13/2021
 ms.author: banders
-ms.openlocfilehash: c599c64ce4b22bbf7bece77602b22fef6629d07c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2158a99d12b39891c9e52220fd2b84821b742c58
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369732"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446317"
 ---
-# <a name="how-reservation-discounts-apply-to-azure-app-service-premium-v3-instances-and-isolated-stamps"></a>Azure App Service の Premium v3 インスタンスと Isolated スタンプに予約割引を適用する方法
+# <a name="how-reservation-discounts-apply-to-azure-app-service"></a>Azure App Service に予約割引を適用する方法
 
-この記事では、Azure App Service の Premium v3 インスタンスと Isolated スタンプに割引を適用する方法について説明します。
+この記事では、Azure App Service の Premium v3 および Premium v2 インスタンスと Isolated スタンプに割引を適用する方法について説明します。
 
 ## <a name="how-reservation-discounts-apply-to-premium-v3-instances"></a>Premium v3 インスタンスに予約割引を適用する方法
 
@@ -38,6 +38,20 @@ Azure 予約割引は、実行中の Premium v3 インスタンスに 1 時間�
 2.  Hour 1 では、インスタンス 1 の実行時間が 0.75 時間、インスタンス 2 の実行時間が 0.5 時間です。 Hour 1 の合計使用量は 1.25 時間となります。 残りの 0.25 時間については従量課金制の料金が発生します。
 3.  Hour 2 と Hour 3 では、どちらのインスタンスも実行時間はそれぞれ 1 時間です。 一方のインスタンスには予約購入分が充当されますが、もう一方には従量課金制の料金が発生します。
 4.  Hour 4 では、インスタンス 1 の実行時間が 0.5 時間、インスタンス 2 の実行時間が 1 時間です。 インスタンス 1 は予約購入分で全額充当されます。またインスタンス 2 の 0.5 時間も充当されます。 残りの 0.5 時間については従量課金制の料金が発生します。
+
+Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[予約の使用状況](understand-reserved-instance-usage-ea.md)に関するページを参照してください。
+
+## <a name="how-reservation-discounts-apply-to-isolated-v2-instances"></a>Isolated v2 インスタンスに予約割引を適用する方法
+
+Azure App Service Isolated v2 予約インスタンスを購入すると、予約の属性や数量に合致する App Service インスタンスに対して予約割引が自動的に適用されます。 予約は、Isolated v2 インスタンスのコストを対象にしています。
+
+### <a name="how-the-discount-is-applied-to-azure-app-service"></a>Azure App Service に割引を適用する方法
+
+予約割引は、_使用しないと失われます_。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。 リソースをシャットダウンすると、予約割引は、指定されたスコープ内の別の一致するリソースに自動的に適用されます。 指定したスコープ内に一致するリソースが見つからない場合、予約済み時間は失われます。
+
+### <a name="reservation-discount-for-isolated-v2-instances"></a>Isolated v2 インスタンスの予約割引
+
+Azure 予約割引は、実行中の Isolated v2 インスタンスに 1 時間単位で適用されます。 購入済みの予約は、実行中の Isolated v2 インスタンスによって生成された使用量と照合され、予約割引が適用されます。 実行時間が 1 時間に満たない可能性のある Isolated v2 インスタンスの場合、予約は、同時に実行されているインスタンスを含め、予約を使用していない他のインスタンスから満たされます。 1 時間の最後には、その時間のインスタンスの予約の適用がロックされます。 インスタンスの実行が 1 時間に満たない場合、またはその時間内のコンカレント インスタンスが予約の時間を満たさない場合、その時間の予約は十分に活用されていません。
 
 Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[予約の使用状況](understand-reserved-instance-usage-ea.md)に関するページを参照してください。
 

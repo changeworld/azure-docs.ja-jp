@@ -5,19 +5,19 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: a7d65d7c65dabde3834458a36b50216878f7cf8d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 82f40d33d0465a7981105472ccd0487e7e24da80
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031295"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635130"
 ---
 # <a name="optimizing-log-alert-queries"></a>ログ アラート クエリの最適化
 この記事では、最適なパフォーマンスを実現するために[ログ アラート](./alerts-unified-log.md) クエリを記述して変換する方法について説明します。 最適化されたクエリを使用すると、頻繁に実行されるアラートの待機時間と負荷が軽減されます。
 
 ## <a name="how-to-start-writing-an-alert-log-query"></a>アラート ログ クエリの記述を開始する方法
 
-アラート クエリは、問題を示す[ログ分析のログ データを照会](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)することから開始します。 何が検出できるかを理解するには、[アラートのクエリ例に関するトピック](../logs/example-queries.md)を使用できます。 また、[独自のクエリの記述を記述する](../logs/log-analytics-tutorial.md)ことから開始することもできます。 
+アラート クエリは、問題を示す[ログ分析のログ データを照会](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)することから開始します。 何が検出できるかを理解するには、[アラートのクエリ例に関するトピック](../logs/queries.md)を使用できます。 また、[独自のクエリの記述を記述する](../logs/log-analytics-tutorial.md)ことから開始することもできます。 
 
 ### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>アラートでなく問題を示すクエリ
 
@@ -47,7 +47,7 @@ SecurityEvent
 
 ログ アラート ルールのクエリは、常に明確な範囲を定義するテーブルで始める必要があります。これにより、クエリのパフォーマンスと結果の関連性の両方が向上します。 アラート ルール内のクエリは頻繁に実行されるので、`search` と `union` を使用すると、複数のテーブルにわたるスキャンが必要になるため、アラートの待機時間が増加するオーバーヘッドが過剰に生じる可能性があります。 また、これらの演算子は、アラート サービスがクエリを最適化する機能を低下させます。
 
-リソース間のクエリが想定される `search` 演算子または `union` 演算子を使用するログ アラート ルールの作成または変更は、サポートされていません。
+リソース間のクエリを除き、`search` 演算子または `union` 演算子を使用するログ アラート ルールの作成または変更は、サポートされていません。
 
 たとえば、次のアラート クエリは _SecurityEvent_ テーブルが対象であり、特定のイベント ID を検索します。 これは、このクエリが処理する必要のある唯一のテーブルです。
 

@@ -2,7 +2,6 @@
 title: ダウンストリーム デバイスのゲートウェイ - Azure IoT Edge | Microsoft Docs
 description: Azure IoT Edge を使って、複数のダウンストリーム デバイスからクラウドにデータを送信する、またはデータをローカルに処理する、透過的デバイス、非透過的デバイス、またはプロキシ ゲートウェイ デバイスを作成します。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/23/2021
 ms.topic: conceptual
@@ -11,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: aa8b7372af91fc7cb194dfc3a6212cb4ce1fa0a2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 478bf78549e15c3c0989ae4850d515bdcce5217d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027348"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706741"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge デバイスをゲートウェイとして使用する方法
 
@@ -79,7 +78,7 @@ IoT Hub で透過的ゲートウェイ リレーションシップを宣言す�
 >
 >環境変数 **AuthenticationMode** を値 **CloudAndScope** に設定することで、以前の動作に戻るように IoT Edge ハブを構成できます。
 
-子デバイスは 1 つの親のみを持つことができます。 各親は、最大 100 の子を持つことができます。
+子デバイスは 1 つの親のみを持つことができます。 既定では、親は最大 100 の子を持つことができます。 この制限を変更するには、親デバイスの edgeHub モジュールで **Maxconnectedclients** 環境変数を設定します。
 
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"

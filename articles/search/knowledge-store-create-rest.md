@@ -1,79 +1,78 @@
 ---
 title: REST を使用してナレッジ ストアを作成する
 titleSuffix: Azure Cognitive Search
-description: REST API と Postman を使用して Azure Cognitive Search のナレッジ ストアを作成し、AI エンリッチメント パイプラインのエンリッチメントを永続化します。
+description: REST API と Postman を使用して、スキルセットから AI エンリッチメントを永続化するための Azure Cognitive Search のナレッジ ストアを作成します。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/18/2020
-ms.openlocfilehash: 6af9b8f97d622ae10cfdbcaa8ca50abb42ec7332
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/03/2021
+ms.openlocfilehash: ad30dc4f59816f286f6ffe40909b76410e963c16
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94889056"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555781"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST と Postman を使用してナレッジ ストアを作成する
 
-ナレッジ ストアには、Azure Cognitive Search のエンリッチメント パイプラインからの出力が、後から下流で行われる分析などの処理に使用できるよう格納されます。 AI エンリッチ パイプラインは、画像ファイルや構造化されていないテキスト ファイルを受け取って、Azure Cognitive Search を使用してそのインデックスを作成し、Cognitive Services の AI エンリッチメント (画像分析、自然言語処理など) を適用したうえで、Azure Storage 内のナレッジ ストアにその結果を保存します。 Azure portal で Power BI や Storage Explorer などのツールを使用して、ナレッジ ストアを調べることができます。
+ナレッジ ストアは、Azure Cognitive Search の機能です。[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)からのスキルセット出力を、その後のナレッジ マイニング、データ分析、またはダウンストリーム処理のために Azure Storage に送信するものです。 ナレッジ ストアにデータが取り込まれた後は、[ストレージ ブラウザー](knowledge-store-view-storage-explorer.md)や [Power BI](knowledge-store-connect-power-bi.md) などのツールを使用してコンテンツを探索できます。
 
-この記事では、REST API インターフェイスを使用して AI エンリッチメントを取り込み、インデックスを作成して、一連のホテルのレビューに適用します。 ホテルのレビューは、Azure Blob Storage にインポートされます。 結果は、Azure Table Storage にナレッジ ストアとして保存されます。
+この記事では、REST API を使用して、Azure Storage でナレッジ ストアにホテル宿泊の一連の顧客レビューを取り込み、エンリッチし、探索します。 最終的には、ソースから取得された元のテキスト コンテンツと AI によって生成されたコンテンツ (センチメント スコア、キー フレーズ抽出、言語検出、および非英語圏の顧客によるコメントのテキスト翻訳が含まれている) を含むナレッジ ストアが作成されます。
 
-ナレッジ ストアを作成したら、[Storage Explorer](knowledge-store-view-storage-explorer.md) または [Power BI](knowledge-store-connect-power-bi.md) を使用してそのナレッジ ストアにアクセスする方法を学習します。
+初期データ セットを使用できるようにするため、最初にホテルのレビューが Azure Blob Storage にインポートされます。 後処理で、結果が Azure Table Storage にナレッジ ストアとして保存されます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-> [!TIP]
-> この記事では、[Postman デスクトップ アプリ](https://www.getpostman.com/)をお勧めします。 この記事の[ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store)には、すべての要求が収められた Postman コレクションが含まれています。 
+> [!NOTE]
+> この記事では、この記事の [Postman デスクトップ アプリ](https://www.getpostman.com/)が想定されています。 この記事の[ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store)には、すべての要求が収められた Postman コレクションが含まれています。 
 
 ## <a name="create-services-and-load-data"></a>サービスを作成してデータを読み込む
 
-このクイックスタートでは、Azure Cognitive Search、Azure Blob Storage、[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を AI に使用します。 
+この演習では、Azure Cognitive Search、Azure Blob Storage、[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を AI に使用します。 
 
-ワークロードは非常に小さいので、1 日に最大 20 トランザクションの処理を無料で使うことができる Cognitive Services を内部で利用しています。 データ セットはごく小さいものなので、Cognitive Services リソースの作成またはアタッチはスキップしてかまいません。
+ワークロードは非常に小さいので、1 日に最大 20 トランザクションの処理を無料で使うことができる Cognitive Services を内部で利用しています。 ワークロードが小さいということは、Cognitive Services リソースの作成またはアタッチをスキップできることを意味します。
 
 1. [HotelReviews_Free.csv をダウンロードします](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)。 このデータは CSV ファイルに保存されたホテル レビュー データ (ソースは Kaggle.com) であり、1 つのホテルに関する 19 個の顧客フィードバックが含まれています。 
 
-1. [Azure Storage アカウントを作成](../storage/common/storage-account-create.md?tabs=azure-portal)するか、ご自分の現在のサブスクリプションから[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 インポートされる生のコンテンツと最終的な結果であるナレッジ ストアの両方に Azure ストレージを使用します。
+1. [Azure Storage アカウントを作成](../storage/common/storage-account-create.md?tabs=azure-portal)するか、[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 インポートされる生コンテンツと最終的な結果であるナレッジ ストアの両方に Azure Storage を使用します。
 
    **[StorageV2 (general purpose V2)]\(StorageV2 (汎用 V2)\)** のアカウントの種類を選択します。
 
-1. Blob service ページを開き、*hotel-reviews* という名前のコンテナーを作成します。
+1. Azure Storage リソースで、**ストレージ ブラウザー** を使用して **hotel-reviews** という名前の BLOB コンテナーを作成します。
 
-1. **[アップロード]** をクリックします。
+1. ページの上部にある **[アップロード]** を選択して、前の手順でダウンロードした **HotelReviews-Free.csv** ファイルを読み込みます。
 
-    ![データをアップロードする](media/knowledge-store-create-portal/upload-command-bar.png "ホテルのレビューをアップロードする")
+   :::image type="content" source="media/knowledge-store-create-portal/blob-container-storage-explorer.png" alt-text="アップロードしたファイルと左側のナビゲーション ペインが示されたストレージ ブラウザーのスクリーンショット" border="true":::
 
-1. 最初の手順でダウンロードした **HotelReviews-Free.csv** ファイルを選択します。
+1. このリソースでの作業はほぼ完了ですが、これらのページを離れる前に、インデクサーを使用してこのデータを取得できるように、左側のナビゲーション ペインで **[アクセス キー]** を選択して接続文字列を取得します。
 
-    ![Azure Blob コンテナーを作成する](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Azure Blob コンテナーを作成する")
+1. **[アクセス キー]** で、ページの上部にある **[Show Keys]\(キーの表示\)** を選択して接続文字列を再表示し、key1 または key2 のいずれかの接続文字列をコピーします。
 
-1. このリソースはほぼ完成ですが、これらのページから離れる前に、左側のナビゲーション ウィンドウのリンクを使用して **[アクセス キー]** ページを開きます。 Blob ストレージからデータを取得するために接続文字列を取得します。 接続文字列は次の例のようになります。`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+   接続文字列は次のような形式です: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. 引き続きポータルで、Azure Cognitive Search に切り替えます。 [新しいサービスを作成](search-create-service-portal.md)するか、[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 この演習では、無料のサービスを使用できます。
+## <a name="configure-requests"></a>要求を構成する
 
-## <a name="configure-postman"></a>Postman を構成する
+1. GitHub から [azure-search-postman-samples](https://github.com/Azure-Samples/azure-search-postman-samples) をダウンロードし、ファイルを解凍します。 リポジトリには複数のコレクションが複数あります。 knowledge-store フォルダー内のコレクションを使用します。
 
-Postman をインストールして設定します。
+1. Postman で **[ファイル]**  >  **[インポート]** を選択して、KnowledgeStore.postman_collection.json ファイルをインポートします。
 
-### <a name="download-and-install-postman"></a>Postman をダウンロードしてインストールする
-
-1. [Postman コレクション ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json)をダウンロードします。
-1. **[File]\(ファイル\)**  >  **[Import]\(インポート\)** を選択して、ソース コードを Postman にインポートします。
 1. **[Collections]\(コレクション\)** タブを選択し、 **[...]** (省略記号) ボタンを選択します。
-1. **[編集]** を選択します。 
-   
+
+1. **[編集]** を選択します。
+
    ![ナビゲーションを示す Postman アプリ](media/knowledge-store-create-rest/postman-edit-menu.png "Postman の [Edit]\(編集\) メニューに移動する")
+
 1. **[Edit]\(編集\)** ダイアログ ボックスで、 **[Variables]\(変数\)** タブを選択します。 
 
 **[Variables]\(変数\)** タブには、二重中かっこ内で特定の変数が出現するたびに、Postman でスワップされる値を追加できます。 たとえば、Postman によって、記号 `{{admin-key}}` は `admin-key` に設定した現在の値に置き換えられます。 Postman では、URL、ヘッダー、要求本文などの置き換えが行われます。 
 
-`admin-key` の値を取得するには、Azure Cognitive Search サービスに移動し、 **[キー]** タブを選択します。`search-service-name` および `storage-account-name` を「[サービスを作成する](#create-services-and-load-data)」で選択した値に変更します。 ストレージ アカウントの **[アクセス キー]** タブの値を使用して `storage-connection-string` を設定します。その他の値は既定値のままにしておくことができます。
+変数は、Azure サービス、サービス接続、およびオブジェクト名に対して定義されています。 サービスと接続のプレースホルダーの値を、検索サービスとストレージ アカウントの実際の値に置き換えます。 これらの値は Azure portal で見つけることができます。
+
++ `search-service-name` と `search-service-admin-key` の値を取得するには、ポータルで Azure Cognitive Search サービスに移動し、 **[概要]** と **[キー]** ページの値をコピーします。
+
++ `storage-account-name` と `storage-account-connection-string` の値を取得するには、 **[アクセス キー]** ページを確認します。
 
 ![Postman アプリの [variables]\(変数\) タブ](media/knowledge-store-create-rest/postman-variables-window.png "Postman の [variables]\(変数\) ウィンドウ")
-
 
 | 変数    | 情報の入手元 |
 |-------------|-----------------|
@@ -82,75 +81,70 @@ Postman をインストールして設定します。
 | `datasource-name` | **hotel-reviews-ds** のままにします。 | 
 | `indexer-name` | **hotel-reviews-ixr** のままにします。 | 
 | `index-name` | **hotel-reviews-ix** のままにします。 | 
-| `search-service-name` | Azure Cognitive Search サービスの名前。 URL は `https://{{search-service-name}}.search.windows.net` です。 | 
+| `search-service-name` | Azure Cognitive Search サービスの名前。 URL が `https://mySearchService.search.windows.net` の場合、入力する値は `mySearchService` です。 | 
 | `skillset-name` | **hotel-reviews-ss** のままにします。 | 
 | `storage-account-name` | Azure ストレージ アカウント名。 | 
-| `storage-connection-string` | ストレージ アカウントの **[アクセス キー]** タブで、 **[key1]**  >  **[接続文字列]** を選択します。 | 
+| `storage-connection-string` | ストレージ アカウントの **[アクセス キー]** タブで、ページ上部の **[キーの表示]** を選択し、次に **[key1]**  >  **[接続文字列]** をコピーします。 | 
 | `storage-container-name` | **hotel-reviews** のままにします。 | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Postman の要求コレクションの確認
 
-ナレッジ ストアを作成する場合は、次の 4 つの HTTP 要求を発行する必要があります。 
+ナレッジ ストアはスキルセットで定義され、その後インデクサーにアタッチされます。 ナレッジストアを作成するには、インデックス、データ ソース、スキルセット、インデクサーなど、すべてのアップストリーム オブジェクトを作成する必要があります。 インデックスはナレッジ ストアに関連付けられていませんが、インデクサーでは実行にインデックスを必要とするため、インデクサーの前提条件として作成します。
 
-- **インデックスを作成するための PUT 要求**:このインデックスでは、Azure Cognitive Search で使用され、返されるデータが保持されます。
-- **データソースを作成するための POST 要求**:このデータソースによって、Azure Cognitive Search の動作がデータとナレッジ ストアのストレージ アカウントに接続されます。 
-- **スキルセットを作成するための PUT 要求**:スキルセットでは、自分のデータとナレッジ ストアの構造に適用されるエンリッチメントを指定します。
-- **インデクサーを作成するための PUT 要求**:インデクサーを実行すると、データの読み取り、スキルセットの適用、結果の格納が行われます。 この要求は最後に実行する必要があります。
+ナレッジ ストアを作成する場合は、次の 4 つの HTTP 要求を発行します。 
 
-[ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json)には、4 つの要求を持つ Postman コレクションが含まれています。 要求を発行するには、Postman で要求のタブを選択します。 次に、`api-key` と `Content-Type` の要求ヘッダーを追加します。 `api-key` の値を `{{admin-key}}` に設定します。 `Content-type` の値を `application/json` に設定します。 
++ **インデックスを作成するための PUT 要求**: このインデックスには、検索サービスに対して発行されたクエリ要求で返された検索可能なデータが含まれます。
+
++ **データ ソースを作成するための POST 要求**: このデータ ソースは、インデクサーに接続情報を提供します。 インデクサーは、Azure Storageアカウントに接続してサンプル データを取得します。
+
++ **スキルセットを作成するための PUT 要求**: スキルセットでは、データに適用されるエンリッチメントが指定されます。 また、ナレッジ ストアの構造も指定されます。
+
++ **インデクサーを作成するための PUT 要求**: インデクサーを実行すると、データが読み取られ、スキルセットが適用され、Azure Storage にナレッジ ストアが作成され、結果が保存されます。 この要求は最後に実行する必要があります。
+
+前に設定した変数は、ヘッダーと URL で使用されます。 次に示すインデックスの作成要求のスクリーンショットは、これらの変数が要求内で現れる場所を示しています。
 
 ![Postman のヘッダーのインターフェイスを示すスクリーンショット](media/knowledge-store-create-rest/postman-headers-ui.png)
 
 > [!Note]
-> すべての要求で `api-key` および `Content-type` ヘッダーを設定する必要があります。 Postman で変数が認識されている場合、前のスクリーンショットの `{{admin-key}}` のように、変数はオレンジ色のテキストで表示されます。 変数のスペルが間違っている場合は、赤いテキストで表示されます。
+> コレクション セット `api-key` と `Content-type` ヘッダー内のすべての要求。これは必須です。 Postman で変数が認識されている場合、前のスクリーンショットの `{{admin-key}}` のように、変数はオレンジ色のテキストで表示されます。 変数のスペルが間違っている場合は、赤いテキストで表示されます。
 >
 
-## <a name="create-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスを作成する
+## <a name="create-an-index"></a>インデックスを作成する
 
-強化の検索、フィルター処理、および適用時に関心のあるデータを表すために、Azure Cognitive Search インデックスを作成します。 PUT 要求を `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` に発行して、インデックスを作成します。 Postman では、二重中かっこで囲まれた記号 (`{{search-service-name}}`、`{{index-name}}`、`{{api-version}}` など) は「[Postman を構成する](#configure-postman)」で設定した値に置き換えられます。 別のツールを使用して REST コマンドを発行する場合は、これらの変数を自分で置き換える必要があります。
+[インデックスの作成 (REST API)](/rest/api/searchservice/create-index) を使用して、検索サービスの検索インデックスを作成します。 検索インデックスはナレッジ ストアとは無関係ですが、インデクサーにより、それを作成することが要求されます。 検索インデックスには、ナレッジ ストアと同じコンテンツが含まれます。 コンテンツを探索するための別の方法が必要な場合は、検索サービスにクエリ要求を送信することで、このインデックスに対してクエリを実行できます。 
 
-要求の本文で自分の Azure Cognitive Search インデックスの構造を設定します。 Postman で、`api-key` および `Content-type` ヘッダーを設定した後、要求の **[本文]** ウィンドウに移動します。 次の JSON が表示されます。 そうでない場合は、 **[未加工]**  >  **[JSON (application/json)]** を選択し、本文として次のコードを貼り付けます。
+PUT 要求を `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` に発行して、インデックスを作成します。 インデックス スキーマは、要求の本文で提供されます。
 
 ```JSON
 {
     "name": "{{index-name}}",
     "fields": [
-        { "name": "address", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
-        { "name": "categories", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
-        { "name": "city", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false },
-        { "name": "country", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
-        { "name": "latitude", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
-        { "name": "longitude", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
         { "name": "name", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false },
-        { "name": "postalCode", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
-        { "name": "province", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
         { "name": "reviews_date", "type": "Edm.DateTimeOffset", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
-        { "name": "reviews_dateAdded", "type": "Edm.DateTimeOffset", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
         { "name": "reviews_rating", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
         { "name": "reviews_text", "type": "Edm.String", "filterable": false,  "sortable": false, "facetable": false },
         { "name": "reviews_title", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
         { "name": "reviews_username", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
         { "name": "AzureSearch_DocumentKey", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false, "key": true },
-        { "name": "metadata_storage_content_type", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
-        { "name": "metadata_storage_size", "type": "Edm.Int64", "searchable": false, "filterable": false, "sortable": false, "facetable": false},
-        { "name": "metadata_storage_last_modified", "type": "Edm.DateTimeOffset", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
-        { "name": "metadata_storage_name", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
-        { "name": "metadata_storage_path", "type": "Edm.String", "searchable": false, "filterable": false, "sortable": false, "facetable": false },
-        { "name": "Sentiment", "type": "Collection(Edm.Double)", "searchable": false, "filterable": true, "retrievable": true, "sortable": false, "facetable": true },
-        { "name": "Language", "type": "Edm.String", "filterable": true, "sortable": false, "facetable": true },
-        { "name": "Keyphrases", "type": "Collection(Edm.String)", "filterable": true, "sortable": false, "facetable": true }
+        { "name": "language", "type": "Edm.String", "filterable": true, "sortable": false, "facetable": true },
+        { "name": "translated_text", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false },
+        { "name": "sentiment", "type": "Collection(Edm.String)", "searchable": false, "filterable": true, "retrievable": true, "sortable": false, "facetable": true },
+        { "name": "keyphrases", "type": "Collection(Edm.String)", "filterable": true, "sortable": false, "facetable": true }
     ]
 }
-
 ```
 
-このインデックス定義は、ユーザーに提示したいデータ (ホテルの名前、レビューの内容、日付)、検索メタデータ、AI 強化データ (センチメント、キーフレーズ、言語) の組み合わせです。
+このインデックス定義は、ユーザーに表示するデータの組み合わせです。 これには、CSV に直接マップされるフィールド (ホテルの名前、レビューの日付など) と、スキルセットによって作成されるフィールド (センチメント、キー フレーズ、言語、翻訳されたテキスト) が含まれます。
 
-**[送信]** を選択して PUT 要求を発行します。 状態 `201 - Created` が表示されます。 別の状態が表示される場合は、 **[本文]** ウィンドウでエラー メッセージを含む JSON 応答を探します。 
+**[送信]** を選択して PUT 要求を発行します。
 
-## <a name="create-the-datasource"></a>データソースを作成する
+状態 `201 - Created` が表示されます。 別の状態が表示される場合は、 **[Body]\(本文\)** ウィンドウでエラー メッセージを含む JSON 応答を探します。 無料の検索サービスを使用している場合は、新しいオブジェクト (無料サービスでは最大 3 つ) 用のスペースがあることを確認してください。
 
-次に、Blob Storage に格納したホテル データに Azure Cognitive Search を接続します。 データソースを作成するには、POST 要求を `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` に送信します。 前述のように、`api-key` および `Content-Type` ヘッダーを設定する必要があります。 
+この時点では、インデックスは作成されますが、読み込まれません。 ドキュメントのインポートは、後でインデクサーを実行するときに行われます。 
+
+## <a name="create-a-data-source"></a>データ ソースを作成する
+
+次に、Blob Storage に格納したホテル データに Azure Cognitive Search を接続します。 データ ソースを作成するには、[データ ソースの作成](/rest/api/searchservice/create-data-source) POST 要求を `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` に送信します。 
 
 Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 **[Body]\(本文\)** ウィンドウの順に移動します。 次のコードが表示されます。
 
@@ -166,41 +160,44 @@ Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 
 
 **[Send]\(送信\)** を選択して POST 要求を発行します。 
 
-## <a name="create-the-skillset"></a>スキルセットを作成する 
+## <a name="create-a-skillset"></a>スキルセットを作成する 
 
-次の手順ではスキルセットを指定します。これにより、適用される強化と、結果が格納されるナレッジ ストアの両方が指定されます。 Postman で、 **[Create the Skillset]\(スキルセットの作成\)** タブを選択します。この要求では、PUT が `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}` に送信されます。 前と同じように、`api-key` および `Content-type` ヘッダーを設定します。 
+次の手順では、適用される機能強化と、結果が格納されるナレッジ ストアの両方を指定するスキルセットを作成します。 この要求では、[スキルセットの作成](/rest/api/searchservice/create-skillset) PUT 要求が `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}` に送信されます。
 
-最上位レベルに大きなオブジェクトが 2 つあります (`skills` と `knowledgeStore`)。 `skills` オブジェクト内の各オブジェクトはエンリッチメント サービスです。 各エンリッチメント サービスには、`inputs` と `outputs` があります。 `LanguageDetectionSkill` には `Language` の出力 `targetName` があります。 このノードの値は、他のほとんどのスキルで入力として使用されます。 ソースは `document/Language` です。 あるノードの出力を別のノードの入力として使用するこの機能は、`ShaperSkill` でより顕著です。ここでは、ナレッジ ストアのテーブルに向かうデータの流れを指定します。
+2 つの大きな最上位オブジェクト `skills` と `knowledgeStore` があります。
 
-`knowledge_store` オブジェクトは、`{{storage-connection-string}}` Postman 変数を介してストレージ アカウントに接続します。 `knowledge_store` には、強化されたドキュメントと、ナレッジ ストア内のテーブルおよび列との間のマッピングのセットが格納されています。 
++ "skills" はスキル セットです。 `skills` オブジェクト内の各オブジェクトはエンリッチメント サービスです。 各エンリッチメント サービスには、`inputs` と `outputs` があります。 `LanguageDetectionSkill` には `Language` の出力 `targetName` があります。 このノードの値は、他のほとんどのスキルで入力として使用されます。 ソースは `document/Language` です。 あるノードの出力を別のノードの入力として使用するこの機能は、`ShaperSkill` でより顕著です。ここでは、ナレッジ ストアのテーブルに向かうデータの流れを指定します。
+
++ "knowledgeStore" には、ストレージ アカウントへの接続文字列と一連のプロジェクションが含まれています。 プロジェクション配列内の各プロジェクション項目は Azure Storage のテーブルになります。 テーブル内の列には、クロスリンク用に生成された列とコンテンツ フィールドが含まれます。 また、エンリッチメント中に作成されたコンテンツ フィールドも含まれます。
+
+  プロジェクションでは、データ シェイプを入力として受け入れます。 スキルの出力をプロジェクションにマップすることで Shaper スキルを使用してシェイプを指定したり、各プロジェクション項目にインライン シェイプを定義したりできます。 
 
 スキルセットを生成するには、Postman の **[Send]\(送信\)** ボタンを選択して要求を PUT します。
 
 ```json
 {
     "name": "{{skillset-name}}",
-    "description": "Skillset to detect language, extract key phrases, and detect sentiment",
+    "description": "Skillset to detect language, translate text, extract key phrases, and score sentiment",
     "skills": [ 
         {
             "@odata.type": "#Microsoft.Skills.Text.SplitSkill", 
             "context": "/document/reviews_text", "textSplitMode": "pages", "maximumPageLength": 5000,
             "inputs": [ 
-                { "name": "text", "source": "/document/reviews_text" },
-                { "name": "languageCode", "source": "/document/Language" }
+                { "name": "text", "source": "/document/reviews_text" }
             ],
             "outputs": [
                 { "name": "textItems", "targetName": "pages" }
             ]
         },
         {
-            "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
+            "@odata.type": "#Microsoft.Skills.Text.V3.SentimentSkill",
             "context": "/document/reviews_text/pages/*",
             "inputs": [
                 { "name": "text", "source": "/document/reviews_text/pages/*" },
-                { "name": "languageCode", "source": "/document/Language" }
+                { "name": "languageCode", "source": "/document/language" }
             ],
             "outputs": [
-                { "name": "score", "targetName": "Sentiment" }
+                { "name": "sentiment", "targetName": "sentiment" }
             ]
         },
         {
@@ -210,7 +207,19 @@ Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 
                 { "name": "text", "source": "/document/reviews_text" }
             ],
             "outputs": [
-                { "name": "languageCode", "targetName": "Language" }
+                { "name": "languageCode", "targetName": "language" }
+            ]
+        },
+        {
+            "@odata.type": "#Microsoft.Skills.Text.TranslationSkill",
+            "context": "/document/reviews_text/pages/*",
+            "defaultFromLanguageCode": null,
+            "defaultToLanguageCode": "en",
+            "inputs": [
+                { "name": "text", "source": "/document/reviews_text/pages/*" }
+            ],
+            "outputs": [
+                { "name": "translatedText", "targetName": "translated_text" }
             ]
         },
         {
@@ -218,10 +227,10 @@ Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 
             "context": "/document/reviews_text/pages/*",
             "inputs": [
                 { "name": "text",  "source": "/document/reviews_text/pages/*" },
-                { "name": "languageCode",  "source": "/document/Language" }
+                { "name": "languageCode",  "source": "/document/language" }
             ],
             "outputs": [
-                { "name": "keyPhrases" , "targetName": "Keyphrases" }
+                { "name": "keyPhrases" , "targetName": "keyphrases" }
             ]
         },
         {
@@ -233,21 +242,33 @@ Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 
                 { "name": "reviews_rating",  "source": "/document/reviews_rating" },
                 { "name": "reviews_text",  "source": "/document/reviews_text" },
                 { "name": "reviews_title",  "source": "/document/reviews_title" },
+                { "name": "reviews_username",  "source": "/document/reviews_username" },
                 { "name": "AzureSearch_DocumentKey",  "source": "/document/AzureSearch_DocumentKey" },
-                { 
-                    "name": "pages",
-                    "sourceContext": "/document/reviews_text/pages/*",
-                    "inputs": [
-                        { "name": "SentimentScore", "source": "/document/reviews_text/pages/*/Sentiment" },
-                        { "name": "LanguageCode", "source": "/document/Language" },
-                        { "name": "Page", "source": "/document/reviews_text/pages/*" },
-                        { 
-                            "name": "keyphrase", "sourceContext": "/document/reviews_text/pages/*/Keyphrases/*",
-                            "inputs": [
-                                { "name": "Keyphrases", "source": "/document/reviews_text/pages/*/Keyphrases/*" }
-                            ]
-                        }
-                    ]
+                {
+                "name": "pages",
+                "sourceContext": "/document/reviews_text/pages/*",
+                "inputs": [
+                    {
+                    "name": "languageCode",
+                    "source": "/document/language"
+                    },
+                    {
+                    "name": "translatedText",
+                    "source": "/document/reviews_text/pages/*/translated_text"
+                    },
+                    { 
+                    "name": "sentiment",
+                    "source": "/document/reviews_text/pages/*/sentiment"
+                    },
+                    {
+                    "name": "keyPhrases",
+                    "source": "/document/reviews_text/pages/*/keyphrases/*"
+                    },
+                    {
+                    "name": "Page",
+                    "source": "/document/reviews_text/pages/*"
+                    }
+                ]
                 }
             ],
             "outputs": [
@@ -260,38 +281,40 @@ Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 
         "projections": [
             {
                 "tables": [
-                    { "tableName": "hotelReviewsDocument", "generatedKeyName": "Documentid", "source": "/document/tableprojection" },
-                    { "tableName": "hotelReviewsPages", "generatedKeyName": "Pagesid", "source": "/document/tableprojection/pages/*" },
-                    { "tableName": "hotelReviewsKeyPhrases", "generatedKeyName": "KeyPhrasesid", "source": "/document/tableprojection/pages/*/keyphrase/*" },
-                    { "tableName": "hotelReviewsSentiment", "generatedKeyName": "Sentimentid", "source": "/document/tableprojection/pages/*/sentiment/*" }
+                    { "tableName": "hotelReviews1Document", "generatedKeyName": "Documentid", "source": "/document/tableprojection" },
+                    { "tableName": "hotelReviews2Pages", "generatedKeyName": "Pagesid", "source": "/document/tableprojection/pages/*" },
+                    { "tableName": "hotelReviews3KeyPhrases", "generatedKeyName": "KeyPhrasesid", "source": "/document/tableprojection/pages/*/keyPhrases/*" }
                 ],
                 "objects": []
             },
             {
                 "tables": [
                     { 
-                        "tableName": "hotelReviewsInlineDocument", "generatedKeyName": "Documentid", "sourceContext": "/document",
+                        "tableName": "hotelReviews4InlineProjectionDocument", "generatedKeyName": "Documentid", "sourceContext": "/document",
                         "inputs": [
                             { "name": "name", "source": "/document/name"},
                             { "name": "reviews_date", "source": "/document/reviews_date"},
                             { "name": "reviews_rating", "source": "/document/reviews_rating"},
-                            { "name": "reviews_text", "source": "/document/reviews_text"},
+                            { "name": "reviews_username", "source": "/document/reviews_username"},
                             { "name": "reviews_title", "source": "/document/reviews_title"},
+                            { "name": "reviews_text", "source": "/document/reviews_text"},
                             { "name": "AzureSearch_DocumentKey", "source": "/document/AzureSearch_DocumentKey" }
                         ]
                     },
                     { 
-                        "tableName": "hotelReviewsInlinePages", "generatedKeyName": "Pagesid", "sourceContext": "/document/reviews_text/pages/*",
+                        "tableName": "hotelReviews5InlineProjectionPages", "generatedKeyName": "Pagesid", "sourceContext": "/document/reviews_text/pages/*",
                         "inputs": [
-                            { "name": "SentimentScore", "source": "/document/reviews_text/pages/*/Sentiment"},
-                            { "name": "LanguageCode", "source": "/document/Language"},
+                            { "name": "Sentiment", "source": "/document/reviews_text/pages/*/sentiment"},
+                            { "name": "LanguageCode", "source": "/document/language"},
+                            { "name": "Keyphrases", "source": "/document/reviews_text/pages/*/keyphrases"},
+                            { "name": "TranslatedText", "source": "/document/reviews_text/pages/*/translated_text"},
                             { "name": "Page", "source": "/document/reviews_text/pages/*" }
                         ]
                     },
                     { 
-                        "tableName": "hotelReviewsInlineKeyPhrases", "generatedKeyName": "kpidv2", "sourceContext": "/document/reviews_text/pages/*/Keyphrases/*",
+                        "tableName": "hotelReviews6InlineProjectionKeyPhrases", "generatedKeyName": "kpidv2", "sourceContext": "/document/reviews_text/pages/*/keyphrases/*",
                         "inputs": [
-                            { "name": "Keyphrases", "source": "/document/reviews_text/pages/*/Keyphrases/*" }
+                            { "name": "Keyphrases", "source": "/document/reviews_text/pages/*/keyphrases/*" }
                         ]
                     }
                 ],
@@ -302,13 +325,17 @@ Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 
 }
 ```
 
-## <a name="create-the-indexer"></a>インデクサーを作成する
+## <a name="create-an-indexer"></a>インデクサーの作成
 
-最後の手順では、インデクサーを作成します。 インデクサーによってデータが読み取られ、スキルセットがアクティブ化されます。 Postman で **[Create Indexer]\(インデクサーの作成\)** 要求を選択し、本文を確認します。 これまでに作成したいくつかの他のリソース (データソース、インデックス、スキルセット) がインデクサーの定義によって参照されます。 
+最後の手順は、[インデクサーの作成](/rest/api/searchservice/create-indexer)要求です。 インデクサーによってデータが読み取られ、スキルセットがアクティブ化されます。 これまでに作成したいくつかの他のリソース (データソース、インデックス、スキルセット) がインデクサーの定義によって参照されます。 
 
-`parameters/configuration` オブジェクトでは、インデクサーがデータを取り込む方法を制御します。 ここでは、入力データは、ヘッダー行とコンマ区切り値がある単一のドキュメントに含まれています。 ドキュメント キーは、ドキュメントの一意の識別子です。 エンコード前のドキュメント キーはソース ドキュメントの URL です。 最後に、スキルセットの出力値 (言語コード、センチメント、キー フレーズなど) は、ドキュメント内の場所にマップされます。 `Language` には 1 つの値がありますが、`Sentiment` は `pages` の配列の各要素に適用されます。 `Keyphrases` は、`pages` 配列の各要素にも適用される配列です。
++ `parameters/configuration` オブジェクトでは、インデクサーがデータを取り込む方法を制御します。 ここでは、入力データは、ヘッダー行とコンマ区切り値がある単一の CSV ファイルに含まれています。 
 
-`api-key` および `Content-type` ヘッダーを設定し、要求の本文が次のソース コードのようになっていることを確認したら、Postman で **[Send]\(送信\)** を選択します。 Postman から `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` に PUT 要求が送信されます。 Azure Cognitive Search によってインデクサーが作成され、実行されます。 
++ "AzureSearch_DocumentKey" は、(メタデータ ストレージ パスに基づいて) BLOB インデクサーによって生成される各ドキュメントの一意の識別子です。 
+
++ 出力フィールド マッピングでは、エンリッチされたフィールドが、検索インデックス内のフィールドにマップされる方法を指定します。 出力フィールド マッピングは、ナレッジ ストアでは使用されません (ナレッジ ストアでは、物理的なデータ構造を表すためにシェイプとプロジェクションが使用されます)。
+
+インデクサーを作成して実行するには、Postman で **[送信]** を選択します。 この手順で、データのインポート、スキルセットの実行、ナレッジ ストアの作成が行われます。
 
 ```json
 {
@@ -339,22 +366,47 @@ Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 
 }
 ```
 
-## <a name="run-the-indexer"></a>インデクサーを実行する 
+## <a name="check-status"></a>状態の確認
 
-Azure portal で、Azure Cognitive Search サービスの **[概要]** ページに移動します。 **[インデクサー]** タブを選択し、 **[hotels-reviews-ixr]** を選択します。 インデクサーがまだ実行されていない場合は、 **[実行]** を選択します。 インデックス作成タスクによって、言語認識に関連する警告が発生する場合があります。 このデータには、コグニティブ スキルでまだサポートされていない言語で記述されたレビューがいくつか含まれています。 
+各要求を送信すると、検索サービスは 201 成功メッセージで応答します。 エラーを受け取った場合は、変数を再確認し、検索サービスに新しいインデックス、インデクサー、データ ソース、スキルセット用のスペースがあることを確認してください (Free レベルでは、それぞれ 3 つずつに制限されています)。
+
+Azure portal で、Azure Cognitive Search サービスの **[Overview]\(概要\)** ページに移動します。 **[Indexers]\(インデクサー\)** タブを選択し、 **[hotels-reviews-ixr]** を選択します。 1、2 分以内に、状態が "進行中" から "成功" になり、エラーと警告数がゼロになります。
+
+## <a name="check-tables-in-storage-browser"></a>ストレージ ブラウザーでテーブルを確認する
+
+Azure portal で Azure Storage アカウントに切り替え、**ストレージ ブラウザー** を使用して新しいテーブルを表示します。 スキルセットに定義されているプロジェクションごとに 1 つずつ、6 つのテーブルが表示されます。
+
+各テーブルは、クエリ内のテーブルをクロスリンクするために必要な ID を使用して生成されます。 テーブルを開いたときに、これらのフィールドの下までスクロールして、パイプラインによって追加されたコンテンツ フィールドを表示します。
+
+   :::image type="content" source="media/knowledge-store-create-portal/azure-table-hotel-reviews.png" alt-text="ストレージ ブラウザーのナレッジ ストア テーブルのスクリーンショット" border="true":::
+
+このチュートリアルでは、ナレッジ ストアは、テーブルのさまざまな整形と構造化方法を示すさまざまなテーブルで構成されています。 テーブル 1 から 3 は、Shaper スキルの出力を使用して列と行を決定します。 テーブル 4 から 6 は、プロジェクション自体に埋め込まれたインライン整形命令から作成されます。 どちらの方法を使用しても、同じ結果を得られます。
+
+| テーブル | 説明 |
+|-------|-------------|
+| hotelReviews1Document | CSV から引き継がれたフィールド (reviews_date や reviews_text など) が含まれます。 |
+| hotelReviews2Pages | スキルセットによって作成された、エンリッチされたフィールド (センチメント スコアや翻訳されたテキストなど) が含まれます。 |
+| hotelReviews3KeyPhrases | キー フレーズのみの長い一覧が含まれます。 |
+| hotelReviews4InlineProjectionDocument | 最初のテーブルの代わりに、Shaper スキルではなくインライン整形を使用して、プロジェクションのデータを整形します。 |
+| hotelReviews5InlineProjectionPages | 2 番目のテーブルの代わりに、インライン整形を使用します。 |
+| hotelreviews6InlineProjectionKeyPhrases | 3 番目のテーブルの代わりに、インライン整形を使用します。 |
+
+## <a name="clean-up"></a>クリーンアップ
+
+独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
+
+ポータルの左側のナビゲーション ウィンドウにある **[All resources]\(すべてのリソース\)** または **[Resource groups]\(リソース グループ\)** リンクを使って、リソースを検索および管理できます。
+
+無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。
+
+> [!TIP]
+> この演習を繰り返したい場合や、別の AI エンリッチメントのチュートリアルを試したい場合は、**hotel-reviews-idxr** インデクサーと関連オブジェクトを削除し、再作成してください。 インデクサーを削除すると、1 日あたりの無料トランザクションのカウンターがリセットされ、ゼロに戻ります。
 
 ## <a name="next-steps"></a>次のステップ
 
-Cognitive Services を使用してデータをエンリッチし、その結果をナレッジ ストアに投影したら、エンリッチ済みのデータ セットを Storage Explorer または Power BI を使用して探索することができます。
+Cognitive Services を使用してデータをエンリッチし、その結果をナレッジ ストアに投影したので、ストレージ ブラウザーや他のアプリを使用して、エンリッチしたデータ セットを探索できます。
 
-Storage Explorer を使用してこのナレッジ ストアを調べる方法については、次のチュートリアルを参照してください。
-
-> [!div class="nextstepaction"]
-> [Storage Explorer を使用した表示](knowledge-store-view-storage-explorer.md)
-
-このナレッジ ストアを Power BI に接続する方法については、次のチュートリアルを参照してください。
+ストレージ ブラウザーを使用してこのナレッジ ストアを調べる方法については、次のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [Power BI を使用した接続](knowledge-store-connect-power-bi.md)
-
-ここに示した手順をもう一度やってみたい場合や、別の AI エンリッチメントに関するチュートリアルに挑戦してみたい場合には、**hotel-reviews-idxr** インデクサーを削除してください。 インデクサーを削除すると、1 日あたりの無料トランザクションのカウンターがリセットされ、ゼロに戻ります。
+> [ストレージ ブラウザーを使用して表示する](knowledge-store-view-storage-explorer.md)

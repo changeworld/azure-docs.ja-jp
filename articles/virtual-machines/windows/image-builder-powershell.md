@@ -1,40 +1,34 @@
 ---
 title: PowerShell から Azure Image Builder を使用して Windows VM を作成する
 description: Azure Image Builder PowerShell モジュールを使用して Windows VM を作成します。
-author: cynthn
-ms.author: cynthn
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 90d09763f2c9e167d6a0a34adbbc444ebad14c46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb061e152e34cc83b210907cc2e43017d85e1c97
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101693460"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449129"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>プレビュー:PowerShell から Azure Image Builder を使用して Windows VM を作成する
+# <a name="create-a-windows-vm-with-azure-image-builder-using-powershell"></a>PowerShell から Azure Image Builder を使用して Windows VM を作成する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 この記事では、Azure VM Image Builder PowerShell モジュールを使用して、カスタマイズした Windows イメージを作成する方法について説明します。
 
-> [!CAUTION]
-> 現在、Azure Image Builder はパブリック プレビュー段階にあります。 このプレビュー バージョンは、サービス レベル アグリーメントなしに提供されます。 運用環境のワークロードにはお勧めしません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール](/powershell/azure/install-az-ps)」を参照してください。
-
-> [!IMPORTANT]
-> PowerShell モジュール **Az.ImageBuilder** と **Az.ManagedServiceIdentity** は、プレビュー段階にある間は、`Install-Module` コマンドレットに `AllowPrerelease` パラメーターを指定して別々にインストールする必要があります。 これらの PowerShell モジュールは、一般提供された段階で将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
-
-```azurepowershell-interactive
-'Az.ImageBuilder', 'Az.ManagedServiceIdentity' | ForEach-Object {Install-Module -Name $_ -AllowPrerelease}
-```
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -45,21 +39,6 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 ```
 
 ### <a name="register-features"></a>機能の登録
-
-プレビュー期間中に Azure Image Builder を初めて使用する場合は、新しい **VirtualMachineTemplatePreview** 機能を登録する必要があります。
-
-```azurepowershell-interactive
-Register-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -FeatureName VirtualMachineTemplatePreview
-```
-
-機能の登録の状態を確認します。
-
-> [!NOTE]
-> **RegistrationState** が `Registering` 状態から `Registered` 状態に変化するまでに数分かかる場合があります。 この状態が **Registered** になってから続行してください。
-
-```azurepowershell-interactive
-Get-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -FeatureName VirtualMachineTemplatePreview
-```
 
 Azure サブスクリプションで使用する次のリソースプロバイダーを登録します (まだ登録していない場合)。
 
@@ -173,7 +152,7 @@ New-AzRoleAssignment @RoleAssignParams
 > [!NOTE]
 > エラー "_New-AzRoleDefinition: ロールの定義の制限を超えました。ロールの定義をこれ以上作成することはできません_" が表示された場合は、「[Azure RBAC のトラブルシューティング](../../role-based-access-control/troubleshooting.md)」を参照してください。
 
-## <a name="create-a-shared-image-gallery"></a>Shared Image Gallery を作成する
+## <a name="create-an-azure-compute-gallery-formerly-known-as-shared-image-gallery"></a>Azure Compute Gallery (旧称 Shared Image Gallery) を作成する
 
 ギャラリーを作成します。
 

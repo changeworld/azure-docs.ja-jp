@@ -1,18 +1,19 @@
 ---
-title: 'VPN Gateway: ゲートウェイの IP アドレスの設定を変更する: Azure CLI'
-description: この記事では、Azure CLI を使用してローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスを変更する手順について説明します。
+title: 'ゲートウェイの IP アドレスの設定を変更する: Azure CLI'
+titleSuffix: Azure VPN Gateway
+description: Azure CLI を使用してローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスを変更する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 10/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: aadb2107cd009ac58cf8edb12853b10a5a0e3677
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a11221cc11e99cf989f1fa50f851b51754c7071
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660000"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474271"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Azure CLI を使用したローカル ネットワーク ゲートウェイの設定の変更
 
@@ -23,6 +24,10 @@ ms.locfileid: "94660000"
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 > * [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >
+>
+
+>[!NOTE]
+> 接続があるローカル ネットワーク ゲートウェイを変更すると、トンネルの切断とダウンタイムが発生する可能性があります。
 >
 
 ## <a name="before-you-begin"></a><a name="before"></a>開始する前に

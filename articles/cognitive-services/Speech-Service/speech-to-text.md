@@ -3,21 +3,21 @@ title: 音声テキスト変換の概要 - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声テキスト変換ソフトウェアを使用すると、オーディオ ストリームをテキストにリアルタイムで文字起こしできます。 アプリケーション、ツール、またはデバイスで、このテキスト入力を使用、表示することや、このテキスト入力に基づきアクションを実行することができます。 この記事は、音声テキスト変換サービスの利点と機能の概要になっています。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.author: trbye
+ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: 音声テキスト変換、音声テキスト変換ソフトウェア
-ms.openlocfilehash: 3450d39729096bfc3077f51e2069f8f102e571a5
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: bf0d8c7ffdff3c936804583f03b42dbe1c5e2392
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449394"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488394"
 ---
 # <a name="what-is-speech-to-text"></a>音声変換の概要
 
@@ -37,15 +37,13 @@ ms.locfileid: "106449394"
 > Bing Speech は、2019 年 10 月 15 日に使用が停止されました。 アプリケーション、ツール、または製品で Bing Speech API を使用している場合、Speech サービスへの移行に役立つガイドが作成されています。
 > - [Bing Speech から Speech Service に移行する](how-to-migrate-from-bing-speech.md)
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
-
 ## <a name="get-started"></a>作業開始
 
 音声テキスト変換の使用を開始するには、[クイックスタート](get-started-speech-to-text.md)を参照してください。 サービスは、[Speech SDK](speech-sdk.md)、[REST API](rest-speech-to-text.md#pronunciation-assessment-parameters)、および [Speech CLI](spx-overview.md) を介して利用できます。
 
 ## <a name="sample-code"></a>サンプル コード
 
-Speech SDK のサンプル コードは、GitHub 上で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、連続的な認識と単発の認識、カスタム モデルの使用など、一般的なシナリオについて説明されています。
+Speech SDK のサンプル コードは、GitHub 上で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、継続的な認識と開始時の認識、カスタム モデルの使用など、一般的なシナリオについて説明されています。
 
 - [音声変換のサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [バッチ文字起こしのサンプル (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)

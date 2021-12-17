@@ -1,26 +1,25 @@
 ---
 title: AdventureWorks サンプル データベースを Azure Arc 対応 PostgreSQL Hyperscale にインポートする
 description: AdventureWorks サンプル データベースを Azure Arc 対応 PostgreSQL Hyperscale に復元する
-services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: a9efa17fb782d5a913493907b66973272e4e0356
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f3174e0980470f9ad23a53810767d75ba375bd9e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102441790"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650175"
 ---
 # <a name="import-the-adventureworks-sample-database-to-azure-arc-enabled-postgresql-hyperscale"></a>AdventureWorks サンプル データベースを Azure Arc 対応 PostgreSQL Hyperscale にインポートする
 
 [AdventureWorks](/sql/samples/adventureworks-install-configure) は、チュートリアルで使用される OLTP データベースと例を含むサンプル データベースです。 [SQL Server サンプル GitHub リポジトリ](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases)の一部として、Microsoft によって提供および管理されています。
 
-オープンソース プロジェクトによって、AdventureWorks データベースが Azure Arc 対応 PostgreSQL Hyperscale と互換性を持つように変換されました。
+オープンソース プロジェクトによって、AdventureWorks データベースが Azure Arc 対応 PostgreSQL Hyperscale と互換性を備えるように変換されました。
 - [元のプロジェクト](https://github.com/lorint/AdventureWorks-for-Postgres)
 - [CSV ファイルが PostgreSQL と互換性を持つように事前に変換するプロジェクトに従う](https://github.com/NorfolkDataSci/adventure-works-postgres)
 
@@ -38,7 +37,7 @@ AdventureWorks の .sql ファイルを PostgreSQL Hyperscale サーバー グ�
 >  GitHub からファイルをダウンロードするには、コンテナーが 443 経由でインターネットに接続されている必要があります。
 
 > [!NOTE]
->  Postgres Hyperscale サーバー グループのコーディネーター ノードのポッド名を使用します。 その名前は <server group name>c-0 です (たとえば、postgres01c-0 の場合、c は Coordinator ノードを表します)。  ポッド名がわからない場合は、`kubectl get pod` コマンドを実行します。
+>  Postgres Hyperscale サーバー グループのコーディネーター ノードのポッド名を使用します。 その名前は \<server group name\>c-0 です (たとえば、postgres01c-0 の場合、c は Coordinator ノードを表します)。  ポッド名がわからない場合は、`kubectl get pod` コマンドを実行します。
 
 ```console
 kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres  -- /bin/bash -c "cd /tmp && curl -k -O https://raw.githubusercontent.com/microsoft/azure_arc/main/azure_arc_data_jumpstart/aks/arm_template/postgres_hs/AdventureWorks.sql"
@@ -70,7 +69,7 @@ kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres -- psql --use
 ```
 
 
-> **注意事項: Azure Arc 対応 PostgreSQL Hyperscale をスケールアウトして、PostgreSQL Hyperscale サーバー グループのワーカー ノード全体にデータ/テーブルをシャード/分散することによるパフォーマンス上の利点はあまりありません。[推奨される次の手順](#suggested-next-steps)を参照してください。**
+> **注: スケールアウトして、データやテーブルを PostgreSQL Hyperscale サーバー グループのワーカー ノード全体にシャードまたは分散しない限り、Azure Arc 対応 PostgreSQL Hyperscale 上で実行しても、パフォーマンス上の利点はあまりありません。[「推奨される次の手順」](#suggested-next-steps)を参照してください。**
 
 ## <a name="suggested-next-steps"></a>推奨される次の手順
 - 複数の PostgreSQL Hyperscale ノードにデータを分散し、Azure Database for PostgreSQL Hyperscale のすべての利点を活用するために、Azure Database for PostgreSQL Hyperscale の概念と使い方に関するガイドを参照してください。 :
@@ -84,4 +83,4 @@ kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres -- psql --use
 
    > \*上記のドキュメントの「**Azure portal にサインインする**」と「**Azure Database for PostgreSQL - Hyperscale (Citus) を作成する**」セクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
 
-- [Azure Database for PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-postgresql-hyperscale-server-group.md)
+- [Azure Database for PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-in-postgresql-hyperscale-server-group.md)

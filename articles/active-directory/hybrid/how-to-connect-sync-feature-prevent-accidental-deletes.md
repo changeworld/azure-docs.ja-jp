@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16d48cda87b8226ebc3bbab179c1034abf0a486f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f12b4c977126f15a6a7d8210212830caac9712c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90084611"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717584"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect Sync: 誤って削除されないように保護する
 このトピックでは、Azure AD Connect の "誤って削除されないように保護する" 機能について説明します。
@@ -63,11 +63,10 @@ Azure AD にエクスポートするようにステージングされた削除�
 ## <a name="if-all-deletes-are-desired"></a>すべて削除したい場合
 すべての削除が望まれる場合、次のように操作します。
 
-1. 現在の削除のしきい値を取得するには、PowerShell コマンドレット `Get-ADSyncExportDeletionThreshold` を実行します。 Azure AD グローバル管理者のアカウントとパスワードを入力します。 既定値は 500 です。
-2. この保護を一時的に無効にし、それらの削除を行うには、PowerShell コマンドレットの `Disable-ADSyncExportDeletionThreshold`を実行します。 Azure AD グローバル管理者のアカウントとパスワードを入力します。
-   ![Azure AD グローバル管理者のユーザー名とパスワードを入力するためのダイアログ ボックスを示すスクリーンショット。](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
+1. 現在の削除のしきい値を取得するには、PowerShell コマンドレット `Get-ADSyncExportDeletionThreshold` を実行します。 既定値は 500 です。
+2. この保護を一時的に無効にし、それらの削除を行うには、PowerShell コマンドレットの `Disable-ADSyncExportDeletionThreshold`を実行します。
 3. Azure Active Directory Connector が選択されている状態で、 **[実行]** アクションを選択し、 **[エクスポート]** を選択します。
-4. 保護を再度有効にするには、PowerShell コマンドレットの `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`を実行します。 現在の削除のしきい値を取得する場合、500 を通知する値に置き換えます。 Azure AD グローバル管理者のアカウントとパスワードを入力します。
+4. 保護を再度有効にするには、PowerShell コマンドレットの `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`を実行します。 現在の削除のしきい値を取得する場合、500 を通知する値に置き換えます。
 
 ## <a name="next-steps"></a>次のステップ
 **概要トピック**

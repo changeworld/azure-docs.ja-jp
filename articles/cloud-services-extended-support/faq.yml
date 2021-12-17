@@ -1,0 +1,164 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Cloud Services (延長サポート) に関してよく寄せられる質問
+  description: Azure Cloud Services (延長サポート) に関してよく寄せられる質問
+  ms.topic: conceptual
+  ms.service: cloud-services-extended-support
+  author: gachandw
+  ms.author: gachandw
+  ms.reviewer: mimckitt
+  ms.date: 10/13/2020
+  ms.custom: references_regions
+  ms.openlocfilehash: bf35360b41fe136ec0ea3af8c846e398465d1a81
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130235774"
+title: Azure Cloud Services (延長サポート) に関してよく寄せられる質問
+summary: この記事では、Azure Cloud Services (延長サポート) に関してよく寄せられる質問について説明します。
+sections:
+- name: 全般
+  questions:
+  - question: >
+      Cloud Services (クラシック) と Cloud Services (延長サポート) のリソース名は何ですか?
+    answer: >
+      - Cloud Services (クラシック): `microsoft.classiccompute/domainnames`
+
+      - Cloud Services (延長サポート): `microsoft.compute/cloudservices`
+  - question: >
+      Cloud Services (延長サポート) をデプロイできる場所はどこですか?
+    answer: >
+      Cloud Services (延長サポート) は、すべてのパブリックおよびソブリン クラウド リージョンで使用できます。
+  - question: "クォータはどのように変更しますか? \n"
+    answer: >
+      お客様は、他の Azure Resource Manager 製品と同じプロセスを使用してクォータをリクエストする必要があります。Azure Resource Manager のクォータはリージョン別であり、リージョンごとに個別のクォータ リクエストが必要になります。
+  - question: >
+      運用およびステージング スロットが表示されなくなったのはなぜですか?
+    answer: >
+      Cloud Services (延長サポート) では、2 つのスロット (運用とステージング) が含まれていたホステッド サービスの論理的な概念はサポートされません。 各デプロイが、独立した Cloud Service (延長サポート) のデプロイです。 Cloud Service の新しいリリースをテストしてステージングするには、Cloud Service (延長サポート) をデプロイし、別の Cloud Service (延長サポート) との間で VIP スワップ可能としてタグ付けします。
+  - question: >
+      空の Cloud Service を作成できなくなったのはなぜですか?
+    answer: >
+      ホステッド サービス名の概念が存在しなくなったため、空の Cloud Service (延長サポート) を作成することはできません。
+  - question: >
+      Cloud Services (延長サポート) では、リソース正常性チェック (RHC) はサポートされていますか?
+    answer: >
+      いいえ。Cloud Services (延長サポート) では、リソース正常性チェック (RHC) はサポートされていません。
+  - question: >
+      ロール インスタンスのメトリックはどのように変更されますか?
+    answer: "ロール インスタンスのメトリックに変更はありません。 \n"
+  - question: >
+      Web および worker ロールはどのように変更されますか?
+    answer: "Web および worker ロールの設計、アーキテクチャ、コンポーネントに変更はありません。 \n"
+  - question: >
+      ロール インスタンスのスケーリングが失敗し続けています。これを軽減する方法はありますか?
+    answer: >
+      同じクラウドサービスで (異なるロールについて) 複数のスケール呼び出しがほぼ同時に発生した場合、競合状態が原因で、Microsoft プラットフォームのコンポーネントが非同期状態になり、エラーにつながることがあります。 Microsoft はこの問題の解決に積極的に取り組んでいます。 一時的な回避策として、すべてのロールを同時に自動スケールしないことをお勧めします。
+  - question: >
+      ロール インスタンスはどのように変更されますか?
+    answer: "ロール インスタンスの設計、アーキテクチャ、コンポーネントに変更はありません。 \n"
+  - question: >
+      ゲスト OS 更新プログラムはどのように変更されますか?
+    answer: ロールアウト方法に変更はありません。 Cloud Services (クラシック) と Cloud Services (延長サポート) では、同じ更新プログラムが取得されます。
+  - question: >
+      Cloud Services (延長サポート) では、停止済み、割り当て済みと停止済み、割り当て解除済みの各状態はサポートされますか?
+    answer: "Cloud Services (延長サポート) のデプロイでは、停止済み、割り当て済み状態のみサポートされます。これは、Azure portal では \"停止済み\" と表示されます。 停止済み、割り当て解除済み状態はサポートされていません。 \n"
+  - question: >
+      Cloud Services (延長サポート) のデプロイでは、クラスター、可用性ゾーン、リージョン間のスケーリングはサポートされますか?
+    answer: "Cloud Services (延長サポート) のデプロイでは、複数のクラスター、可用性ゾーン、リージョン間のスケーリングはできません。 \n"
+  - question: >
+      Cloud Service (延長サポート) のデプロイ ID を取得する方法
+    answer: >
+      プライベート ID とも呼ばれるデプロイ ID には、[CloudServiceInstanceView](/rest/api/compute/cloudservices/getinstanceview#cloudserviceinstanceview) API を使用してアクセスできます。 また、Azure portal 内、Cloud Service (延長サポート) の [ロールとインスタンス] ブレードからもアクセスできます。
+  - question: >
+      Cloud Services (クラシック) と Cloud Services (延長サポート) の間に価格の違いはありますか?
+    answer: "Cloud Services (延長サポート) では、Azure Key Vault と基本 (ARM) パブリック IP アドレスが使用されます。 証明書を必要とするお客様は、証明書の管理に Azure Key Vault を使用する必要があります (Azure Key Vault の価格の[詳細をご確認ください](https://azure.microsoft.com/pricing/details/key-vault/))。 Cloud Services (延長サポート) の各パブリック IP アドレスは個別に課金されます (パブリック IP アドレスの価格の[詳細をご確認ください](https://azure.microsoft.com/pricing/details/ip-addresses/))。 \n"
+- name: リソース
+  questions:
+  - question: >
+      Cloud Services (延長サポート) のデプロイにリンクされているリソースの中で、同じリソース グループに配置する必要があるのはどれですか?
+    answer: "ロード バランサー、ネットワーク セキュリティ グループ、ルート テーブルは、同じリージョンおよびリソース グループに配置する必要があります。 \n"
+  - question: >
+      Cloud Services (延長サポート) のデプロイにリンクされているリソースの中で、同じリージョンに配置する必要があるのはどれですか?
+    answer: >
+      Key Vault、仮想ネットワーク、パブリック IP アドレス、ネットワーク セキュリティ グループ、ルート テーブルは、同じリージョンに配置する必要があります。
+  - question: >
+      Cloud Services (延長サポート) のデプロイにリンクされているリソースの中で、同じ仮想ネットワークに配置する必要があるのはどれですか?
+    answer: "パブリック IP アドレス、ロード バランサー、ネットワーク セキュリティ グループ、ルート テーブルは、同じ仮想ネットワークに配置する必要があります。 \n"
+- name: デプロイ ファイル
+  questions:
+  - question: >
+      テンプレートを使用してデプロイを実行または管理するには、どのようにすればよいですか?
+    answer: "REST、PowerShell、CLI を使用して、テンプレートとパラメーターのファイルをパラメーターとして渡すことができます。 また、Azure portal を使用して、これらをアップロードすることもできます。  \n"
+  - question: >
+      現在、4 つのファイル (テンプレート、パラメーター、csdef、cscfg) を管理する必要がありますか? (テンプレート、パラメーター、csdef、cscfg)
+    answer: >
+      テンプレートとパラメーターのファイルは、デプロイの自動化にのみ使用されます。 Cloud Services (クラシック) と同様に、最初に依存リソースを手動で作成し、次に PowerShell、CLI コマンドを使用して、またはポータルで既存の csdef、cscfg を使用して、Cloud Services (延長サポート) のデプロイを作成できます。
+  - question: >
+      Cloud Services (延長サポート) では、アプリケーション コードはどのように変更されますか?
+    answer: "cspkg にパッケージされているアプリケーション コードに必要な変更はありません。 既存のアプリケーションは、以前と同じように引き続き動作します。 \n"
+  - question: >
+      Cloud Services (延長サポート) では CTP パッケージ形式が許可されますか?
+    answer: >
+      CTP パッケージ形式は Cloud Services (延長サポート) ではサポートされていません。 ただし、800 MB の拡張パッケージ サイズ制限は許可されています。
+- name: 移行
+  questions:
+  - question: >
+      Cloud Services (延長サポート) では、割り当ての失敗による障害は軽減されますか?
+    answer: "いいえ。Cloud Service (延長サポート) のデプロイは、Cloud Services (クラシック) と同様にクラスターに関連付けられています。 そのため、クラスターがいっぱいになった場合、割り当ての失敗は引き続き発生します。 \n"
+  - question: "いつ移行する必要がありますか? \n"
+    answer: >
+      移行に必要な時間と複雑さの見積もりは、さまざまな不確定要素によって異なります。 移行の作業範囲、阻害要因、複雑さを理解するためには、計画を立てることが最も効果的な手順です。
+- name: ネットワーク
+  questions:
+  - question: >
+      仮想ネットワークを使用せずにデプロイを作成できないのはなぜですか?
+    answer: "仮想ネットワークは、Azure Resource Manager でのすべてのデプロイに必要なリソースです。 Cloud Services (延長サポート) のデプロイは、仮想ネットワーク内に配置する必要があります。 \n"
+  - question: "多くのネットワーク リソースが表示されるようになったのはなぜですか? \n"
+    answer: >
+      Azure Resource Manager では、可視性と制御を向上させるために、お使いの Cloud Services (延長サポート) のデプロイのコンポーネントがリソースとして公開されます。 同じ種類のリソースが Cloud Services (クラシック) で使用されていましたが、非表示になっていました。 このようなリソースの 1 つの例として、パブリック ロード バランサーがあります。これは、現在、プラットフォームによって自動的に作成される明示的な "読み取り専用" リソースです。
+  - question: >
+      Cloud Services (延長サポート) に対するサブネットにはどのような制限が適用されますか?
+    answer: >
+      Cloud Services (延長サポート) のデプロイを含むサブネットは、Virtual Machines、Virtual Machine Scale Sets、Service Fabric など、他のコンピューティング製品のデプロイとは共有できません。
+  - question: >
+      Cloud Services (延長サポート) では、どのような IP 割り当て方法がサポートされていますか?
+    answer: >
+      Cloud Services (延長サポート) では、動的および静的 IP 割り当て方法がサポートされています。 静的 IP アドレスは、cscfg ファイルで予約済み IP として参照されます。
+  - question: >
+      IP アドレスに対して課金されるのはなぜですか?
+    answer: "お客様は、ユーザーが仮想マシンに関連する IP アドレスについて課金されるのと同じように、Cloud Services (延長サポート) での IP アドレスの使用について課金されます。 \n"
+  - question: >
+      デプロイが正常に完了した後で、予約済み IP を更新できますか?
+    answer: >
+      デプロイの更新中またはアップグレード中に、予約済み IP を追加、削除、または変更することはできません。 IP アドレスを変更する必要がある場合は、スワップ可能なクラウドサービスを使用するか、Azure DNS \ Traffic Manager に CName を使用して2つのクラウド サービスをデプロイして、IP がいずれかをポイントするようにしてください。
+  - question: "Cloud Services (延長サポート) で DNS 名を使用できますか? \n"
+    answer: >
+      はい。 Cloud Services (延長サポート) に DNS 名を付けることもできます。 Azure Resource Manager では、DNS ラベルは、Cloud Service に割り当てられるパブリック IP アドレスのオプション プロパティです。 Azure Resource Manager ベースのデプロイの DNS 名の形式は、`<userlabel>.<region>.cloudapp.azure.com` です。
+  - question: "既存のクラウドサービス (延長サポート) の仮想ネットワーク参照を更新または変更することはできますか? \n"
+    answer: "いいえ。 仮想ネットワークの参照は、クラウド サービスの作成時に必須です。 既存のクラウド サービスについて、仮想ネットワークの参照を変更することはできません。 仮想ネットワークのアドレス空間自体は、VNet API を使用して変更できます。 \n"
+- name: 証明書と Key Vault
+  questions:
+  - question: >
+      Cloud Services (延長サポート) で証明書を管理する必要があるのはなぜですか?
+    answer: "Cloud Services (延長サポート) では、カスタマー マネージド Key Vault 内に証明書が格納される他のコンピューティング オファリングと同じプロセスが採用されています。 これにより、お客様はシークレットと証明書を完全に制御できます。 \n"
+  - question: >
+      すべてのリージョンのすべてのデプロイに対して 1 つの Key Vault を使用できますか?
+    answer: >
+      いいえ。 Key Vault はリージョン別のリソースであるため、お客様は、リージョンごとに 1 つの Key Vault を使用する必要があります。 ただし、1 つの Key Vault を、特定のリージョン内のすべてのデプロイに使用することは可能です。
+  - question: >
+      クラウド サービスにインストールするシークレット/証明書を指定する場合、KeyVault リソースはクラウドサービス リソースと同じ Azure サブスクリプションにある必要がありますか?
+    answer: >
+      はい。 クラウド サービスでのクロス サブスクリプションのキーコンテナー参照は許可されません。これにより、CS-ES による特権攻撃のエスカレーションを防ぐことができます。 このサブスクリプションは、CS-ES がシークレットを参照するために使用する境界ではありません。  クロス サブスクリプション参照を許可しない理由は、悪意のあるユーザーが他のユーザーのシークレットにアクセスするための特権エスカレーション メカニズムとして CS-ES を使用できないようにするための最後の重要な手順です。 サブスクリプションはセキュリティの境界ではありませんが、多層防御が必要です。 ただし、Key Vault 拡張機能を使用して、証明書のクロス サブスクリプションとリージョン間サポートを取得することができます。 [こちら](./enable-key-vault-virtual-machine.md) のドキュメントをご覧ください
+  - question: >
+      クラウド サービスにインストールするシークレット/証明書を指定する場合、KeyVault リソースはクラウドサービス リソースと同じリージョンにある必要がありますか?
+    answer: >
+      はい。 領域の境界を適用する理由は、ユーザーがリージョン間の依存関係を持つアーキテクチャを作成できないようにするためです。 リージョン分離は、クラウドベースのアプリケーションの主要な設計原則です。 ただし、Key Vault 拡張機能を使用して、証明書のクロス サブスクリプションとリージョン間サポートを取得することができます。 [こちら](./enable-key-vault-virtual-machine.md) のドキュメントをご覧ください
+- name: 既知の問題
+  questions:
+  - question: >
+      ロール インスタンスのスケーリングが失敗し続けています。これを軽減する方法はありますか?
+    answer: >
+      同じクラウドサービスで (異なるロールについて) 複数のスケール呼び出しがほぼ同時に発生した場合、競合状態が原因で、Microsoft プラットフォームのコンポーネントが非同期状態になり、エラーにつながることがあります。 Microsoft はこの問題の解決に積極的に取り組んでいます。 一時的な回避策として、すべてのロールを同時に自動スケールしないことをお勧めします。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nCloud Services (延長サポート) の使用を開始するには、[PowerShell を使用した Cloud Service (延長サポート) のデプロイ](deploy-powershell.md)に関する記事を参照してください。"

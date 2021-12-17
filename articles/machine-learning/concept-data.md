@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning のデータストアおよびデータセットを使用して、Azure 上のデータ ストレージに安全に接続する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 08/31/2020
+ms.date: 10/21/2021
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 601be8409db22162a410d481e6609d378718a7b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5623567cb35f6222d660b9e02de5d2fa125dd826
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503591"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867154"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 
@@ -67,7 +67,7 @@ Azure Machine Learning データストアでは、Azure のデータ ストレ�
 + Azure Database for MySQL
 
 >[!TIP]
-> データストア作成のために一般提供されている機能では、ストレージ サービスにアクセスするために、サービス プリンシパルや Shared Access Signature (SAS) トークンなどの資格情報ベースの認証が必要です。 これらの資格情報には、ワークスペースへの "*閲覧者*" アクセス権を持つユーザーがアクセスできます。 <br><br>これに問題がある場合は、[ストレージ サービスへの ID ベースのデータ アクセス (プレビュー) を使用するデータストアを作成](how-to-identity-based-data-access.md)します。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
+> データストア作成のために一般提供されている機能では、ストレージ サービスにアクセスするために、サービス プリンシパルや Shared Access Signature (SAS) トークンなどの資格情報ベースの認証が必要です。 これらの資格情報には、ワークスペースへの "*閲覧者*" アクセス権を持つユーザーがアクセスできます。 <br><br>これに問題がある場合は、[ストレージ サービスへの ID ベースのデータ アクセスを使用するデータストアを作成](how-to-identity-based-data-access.md)します。
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>データセットを使用してストレージ内のデータを参照する
@@ -116,7 +116,7 @@ Azure Machine Learning のデータセットは、データのコピーではあ
 
 Azure Machine Learning を使用すると、ラベル付けプロジェクトの作成、管理、監視を一元的に行うことができます。 ラベル付けプロジェクトは、データ、ラベル、チーム メンバーの間の調整に役立ち、ラベル付けタスクをより効率的に管理できるようになります。 現在サポートされているタスクは、複数ラベルまたは多クラスでの画像分類と、境界ボックスを使用したオブジェクト識別です。
 
-[データラベル付けプロジェクト](how-to-create-labeling-projects.md)を作成し、機械学習の実験で使用するためのデータセットを出力します。
+[画像ラベル付けプロジェクト](how-to-create-image-labeling-projects.md)または[テキスト ラベル付けプロジェクト](how-to-create-text-labeling-projects.md)を作成し、機械学習の実験で使用するためのデータセットを出力します。
 
 <a name="drift"></a>
 

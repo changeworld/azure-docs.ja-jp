@@ -4,18 +4,21 @@ description: ポータルを利用し、新しいデータ ディスクまたは
 author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 08/13/2021
 ms.author: cynthn
 ms.subservice: disks
 ms.collection: linux
-ms.openlocfilehash: 0fe584ea8559c285ee7e25caca958ff56aa9454d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db041e396c323d667fc2125f760dd899515c9a34
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601834"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696227"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>ポータルを利用し、データ ディスクを Linux VM に接続する 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
+
 この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md)こともできます。 
 
 VM にディスクを接続する前に、次のヒントを確認してください。

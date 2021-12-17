@@ -3,17 +3,18 @@ title: ストアド プロシージャ アクティビティを使用した SSIS
 description: この記事では、ストアド プロシージャ アクティビティを使用して、SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインで実行する方法を説明します。
 author: swinarko
 ms.service: data-factory
+ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 10/22/2021
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6260606fe56d4dfc6bac93e04e726b5fd3298777
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf82d0e69e5f9060a67ae6a85c8f9767c89fa525
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391509"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842304"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを実行する
 
@@ -39,14 +40,14 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 2. [Azure Portal](https://portal.azure.com) に移動します。 
 3. 左側のメニューで **[新規]** をクリックし、 **[データ + 分析]** 、 **[Data Factory]** の順にクリックします。 
    
-   ![New->DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png" alt-text="[新規] -> [Data Factory]":::
 2. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
-     ![[新しいデータ ファクトリ] ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
+     :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png" alt-text="[新しいデータ ファクトリ] ページ":::
  
    Azure データ ファクトリの名前は **グローバルに一意** にする必要があります。 名前フィールドで次のエラーが発生した場合は、データ ファクトリの名前を変更してください (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
   
-     ![名前は使用できません - エラー](./media/how-to-invoke-ssis-package-stored-procedure-activity/name-not-available-error.png)
+     :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/name-not-available-error.png" alt-text="名前は使用できません - エラー":::
 3. データ ファクトリを作成する Azure **サブスクリプション** を選択します。 
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
      
@@ -60,24 +61,25 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 7. **Create** をクリックしてください。
 8. ダッシュボードに、 **[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
 
-     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
+     :::image type="content" source="media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png" alt-text="[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル":::
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
    
-     ![データ ファクトリのホーム ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+     :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png" alt-text="データ ファクトリのホーム ページ":::
 10. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。 
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>ストアド プロシージャ アクティビティを含むパイプラインを作成する
 この手順では、データ ファクトリ UI を使用してパイプラインを作成します。 ストアド プロシージャ アクティビティをパイプラインに追加し、sp_executesql ストアド プロシージャを使用して、SSIS パッケージを実行するように構成します。 
 
-1. 開始ページで **[Create Pipeline]\(パイプラインの作成\)** をクリックします。 
+1. ホーム ページで、 **[調整]** をクリックします。 
 
-    ![開始ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
+    :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="ADF のホーム ページを示すスクリーンショット。":::
+
 2. **[アクティビティ]** ツールボックスで **[全般]** を展開し、パイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 
 
-    ![ストアド プロシージャ アクティビティのドラッグ アンド ドロップ](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png" alt-text="ストアド プロシージャ アクティビティのドラッグ アンド ドロップ":::
 3. ストアド プロシージャ アクティビティのプロパティ ウィンドウで **[SQL アカウント]** タブに切り替えて、 **[+ 新規]** をクリックします。 SSIS カタログ (SSIDB データベース) をホストする Azure SQL Database 内のデータベースへの接続を作成します。 
    
-    ![新しいリンクされたサービスのボタン](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png" alt-text="新しいリンクされたサービスのボタン":::
 4. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
 
     1. **[種類]** で **[Azure SQL Database]** を選択します。
@@ -89,7 +91,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
     7. **[テスト接続]** ボタンをクリックして、データベースへの接続をテストします。
     8. **[保存]** ボタンをクリックして、リンクされたサービスを保存します。 
 
-        ![新しいリンクされたサービスを追加するためのプロセスを示すスクリーンショット。](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
+        :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png" alt-text="新しいリンクされたサービスを追加するためのプロセスを示すスクリーンショット。":::
 5. プロパティ ウィンドウで **[SQL アカウント]** タブから **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。 
 
     1. **[編集]** を選択します。 
@@ -105,29 +107,29 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
         DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END
         ```
 
-        ![Azure SQL Database のリンクされたサービス](./media/how-to-invoke-ssis-package-stored-procedure-activity/stored-procedure-settings.png)
+        :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/stored-procedure-settings.png" alt-text="Azure SQL Database のリンクされたサービス":::
 6. パイプラインの構成を検証するために、ツール バーの **[検証]** をクリックします。 **[>>]** をクリックして、 **[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
 
-    ![パイプラインの検証](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png" alt-text="パイプラインの検証":::
 7. **[Publish All]\(すべて発行\)** ボタンをクリックして、データ ファクトリにパイプラインを発行します。 
 
-    ![発行](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png" alt-text="発行":::    
 
 ### <a name="run-and-monitor-the-pipeline"></a>パイプラインを実行して監視する
 このセクションでは、パイプラインの実行をトリガーして監視します。 
 
 1. パイプラインの実行をトリガーするために、ツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。 
 
-    ![[Trigger Now]\(今すぐトリガー\)](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
+    :::image type="content" source="media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png" alt-text="[Trigger Now]\(今すぐトリガー\)":::
 
 2. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで **[完了]** を選択します。 
 3. 左側で **[監視]** タブに切り替えます。 パイプラインの実行とその状態が、その他の情報 (実行開始時刻など) と共に表示されます。 ビューを更新するには、 **[Refresh]\(最新の情報に更新\)** をクリックします。
 
-    ![パイプライン実行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png" alt-text="パイプライン実行":::
 
 3. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 パイプラインに 1 つしかアクティビティ (ストアド プロシージャ アクティビティ) がないので、アクティビティの実行が 1 つだけ表示されます。
 
-    ![アクティビティの実行](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png" alt-text="アクティビティの実行":::
 
 4. 次の **クエリ** を SQL データベースの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
 
@@ -135,7 +137,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
     select * from catalog.executions
     ```
 
-    ![パッケージの実行を確認する](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png" alt-text="パッケージの実行を確認する":::
 
 
 > [!NOTE]
@@ -152,9 +154,9 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 ### <a name="create-a-data-factory"></a>Data Factory の作成
 Azure-SSIS IR と同じデータ ファクトリを使用することも、別のデータ ファクトリを作成することもできます。 次の手順では、データ ファクトリを作成する方法を説明します。 このデータ ファクトリにストアド プロシージャ アクティビティを含むパイプラインを作成します。 ストアド プロシージャ アクティビティが SSISDB データベース内でストアド プロシージャを実行して、SSIS パッケージを実行します。 
 
-1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
+1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。
    
-     ```powershell
+    ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 

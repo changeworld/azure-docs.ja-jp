@@ -1,21 +1,24 @@
 ---
 title: Azure で利用可能な Red Hat Enterprise Linux イメージ
 description: Microsoft Azure の Red Hat Enterprise Linux イメージについて説明します
-author: asinn826
+author: mamccrea
 ms.service: virtual-machines
 ms.subservice: redhat
 ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
-ms.author: alsin
-ms.openlocfilehash: 0a4d2ef5b7f367130151fabda3f1d97b65605931
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mamccrea
+ms.openlocfilehash: f349e525d8fa16e7c218a248cb8e2c1fb4e21762
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676036"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455116"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure で利用可能な Red Hat Enterprise Linux (RHEL) イメージ
+
+**適用対象:** :heavy_check_mark: Linux VM 
+
 Azure では、さまざまなユース ケースに対応する多様な RHEL イメージを提供しています。
 
 > [!NOTE]
@@ -70,9 +73,9 @@ RHEL-SAP      | 7.4      | LVM    | Linux エージェント | RHEL 7.4 for SAP 
 |             | 7.6       | LVM    | Linux エージェント | RHEL 7.6 for SAP HANA および Business Apps。 E4S リポジトリに接続されており、SAP および RHEL の割増料金と基本コンピューティング料金が請求されます。
 |             | 76sap-gen2| LVM    | Linux エージェント | RHEL 7.6 for SAP HANA および Business Apps。 第 2 世代イメージ。 E4S リポジトリに接続されており、SAP および RHEL の割増料金と基本コンピューティング料金が請求されます。
 |             | 7.7       | LVM    | Linux エージェント | RHEL 7.7 for SAP HANA および Business Apps。 E4S リポジトリに接続されており、SAP および RHEL の割増料金と基本コンピューティング料金が請求されます。
-RHEL-SAP-HANA (2020 年 11 月に削除されます) | 6.7       | RAW    | Linux エージェント | RHEL 6.7 for SAP HANA。 RHEL-SAP イメージを優先して古くなりました。 このイメージは 2020 年 11 月に削除されます。 Red Hat の SAP クラウド サービスの詳細については[こちら](https://access.redhat.com/articles/3751271)を参照してください。
-|             | 7.2       | LVM    | Linux エージェント | RHEL 7.2 for SAP HANA。 RHEL-SAP イメージを優先して古くなりました。 このイメージは 2020 年 11 月に削除されます。 Red Hat の SAP クラウド サービスの詳細については[こちら](https://access.redhat.com/articles/3751271)を参照してください。
-|             | 7.3       | LVM    | Linux エージェント | RHEL 7.3 for SAP HANA。 RHEL-SAP イメージを優先して古くなりました。 このイメージは 2020 年 11 月に削除されます。 Red Hat の SAP クラウド サービスの詳細については[こちら](https://access.redhat.com/articles/3751271)を参照してください。
+RHEL-SAP-HANA (2020 年 11 月に削除されます) | 6.7       | RAW    | Linux エージェント | RHEL 6.7 for SAP HANA。 RHEL-SAP イメージを優先して古くなりました。 このイメージは 2020 年 11 月に削除されます。 Red Hat の SAP クラウド サービスの詳細については、「[認定クラウド プロバイダー上の SAP サービス](https://access.redhat.com/articles/3751271)」を参照してください。
+|             | 7.2       | LVM    | Linux エージェント | RHEL 7.2 for SAP HANA。 RHEL-SAP イメージを優先して古くなりました。 このイメージは 2020 年 11 月に削除されます。 Red Hat の SAP クラウド サービスの詳細については、「[認定クラウド プロバイダー上の SAP サービス](https://access.redhat.com/articles/3751271)」を参照してください。
+|             | 7.3       | LVM    | Linux エージェント | RHEL 7.3 for SAP HANA。 RHEL-SAP イメージを優先して古くなりました。 このイメージは 2020 年 11 月に削除されます。 Red Hat の SAP クラウド サービスの詳細については、「[認定クラウド プロバイダー上の SAP サービス](https://access.redhat.com/articles/3751271)」を参照してください。
 RHEL-SAP-APPS | 6.8       | RAW    | Linux エージェント | RHEL 6.8 for SAP Business Applications。 RHEL-SAP イメージを優先して古くなりました。
 |             | 7.3       | LVM    | Linux エージェント | RHEL 7.3 for SAP Business Applications。 RHEL-SAP イメージを優先して古くなりました。
 |             | 7.4       | LVM    | Linux エージェント | RHEL 7.4 for SAP Business Applications。
@@ -113,7 +116,7 @@ rhel-byos     |rhel-lvm74| LVM    | Linux エージェント | RHEL 7.4 BYOS イ
 |             |rhel-lvm82-gen2 | LVM    | Linux エージェント | RHEL 8.2 第 2 世代 BYOS イメージ。どの更新ソースにも接続されておらず、RHEL の割増料金は請求されません。
 
 > [!NOTE]
-> RHEL-SAP-HANA 製品は、Red Hat では有効期限が終了したものと見なされています。 既存のデプロイは引き続き正常に動作しますが、Red Hat ではお客様が RHEL-SAP-HANA イメージから、SAP HANA リポジトリと HA アドオンを含む RHEL-SAP-HA イメージに移行することを推奨しています。 Red Hat の SAP クラウド サービスの詳細については[こちら](https://access.redhat.com/articles/3751271)を参照してください。
+> RHEL-SAP-HANA 製品は、Red Hat では有効期限が終了したものと見なされています。 既存のデプロイは引き続き正常に動作しますが、Red Hat ではお客様が RHEL-SAP-HANA イメージから、SAP HANA リポジトリと HA アドオンを含む RHEL-SAP-HA イメージに移行することを推奨しています。 Red Hat の SAP クラウド サービスの詳細については、「[認定クラウド プロバイダー上の SAP サービス](https://access.redhat.com/articles/3751271)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure の Red Hat イメージ](./redhat-images.md)の詳細を確認します。

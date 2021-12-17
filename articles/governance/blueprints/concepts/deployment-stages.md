@@ -1,14 +1,14 @@
 ---
 title: ブループリント デプロイのステージ
 description: ブループリント割り当ての作成時に Azure Blueprints サービスで行われるセキュリティとアーティファクト関連の手順について説明します。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 473f8c7957994401ea6000ecc0d8023a89f8c349
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7aeaa6fec08293ac52fea488b500b2c9e291f9e5
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560150"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323653"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>ブループリント デプロイのステージ
 

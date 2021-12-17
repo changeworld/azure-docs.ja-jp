@@ -1,90 +1,93 @@
 ---
-title: ファイアウォールを使用する
+title: ネットワークの着信トラフィックおよび送信トラフィックを構成する
 titleSuffix: Azure Machine Learning
-description: Azure Firewall を使用して Azure Machine Learning ワークスペースへのアクセスを制御します。 ファイアウォールの通過を許可する必要があるホストについて説明します。
+description: セキュリティで保護された Azure Machine Learning ワークスペースを使用するときに必要な受信および送信ネットワーク トラフィックを構成する方法。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.author: aashishb
-author: aashishb
+ms.subservice: enterprise-readiness
+ms.topic: how-to
+ms.author: jhirono
+author: jhirono
 ms.reviewer: larryfr
-ms.date: 11/18/2020
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 295228e9eaa3529b05055869bd46f9aefc938a6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/05/2021
+ms.custom: devx-track-python, ignite-fall-2021
+ms.openlocfilehash: d566f40bfeef4e49e85cacb8183509b512d52715
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102212775"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132725016"
 ---
-# <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>ファイアウォールの内側で Azure Machine Learning のワークスペースを使用する
+# <a name="configure-inbound-and-outbound-network-traffic"></a>ネットワークの着信トラフィックおよび送信トラフィックを構成する
 
-この記事では、Azure Firewall を構成して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御する方法について説明します。 Azure Machine Learning のセキュリティ保護の詳細については、[Azure Machine Learning のエンタープライズ セキュリティ](concept-enterprise-security.md)に関するページを参照してください。
+この記事では、仮想ネットワーク (VNet) の Azure Machine Learning ワークスペースをセキュリティで保護する場合のネットワーク通信の要件について説明します。 これには、Azure Firewall を構成して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御する方法が含まれます。 Azure Machine Learning のセキュリティ保護の詳細については、[Azure Machine Learning のエンタープライズ セキュリティ](concept-enterprise-security.md)に関するページを参照してください。
 
-> [!WARNING]
-> ファイアウォールの背後にあるデータ ストレージへのアクセスは、コード ファースト エクスペリエンスでのみサポートされます。 [Azure Machine Learning スタジオ](overview-what-is-machine-learning-studio.md)を使用してファイアウォールの背後にあるデータにアクセスすることはサポートされていません。 スタジオを使用してプライベート ネットワーク上のデータ ストレージを操作するには、まず[仮想ネットワークを設定し](../virtual-network/quick-create-portal.md)、[仮想ネットワーク内に格納されているデータへのアクセス権をスタジオに付与する](how-to-enable-studio-virtual-network.md)必要があります。
+> [!NOTE]
+> この記事の情報は、プライベート エンドポイントで構成される Azure Machine Learning ワークスペースに適用されます。
+
+> [!TIP]
+> この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
+>
+> * [Virtual Network の概要](how-to-network-security-overview.md)
+> * [ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
+> * [トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
+> * [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
+> * [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+> * [カスタム DNS を使用する](how-to-custom-dns.md)
+
+## <a name="well-known-ports"></a>既知のポート
+
+この記事に記載されているサービスで使用される既知のポートを次に示します。 この記事で使用されているポート範囲がこのセクションに記載されていない場合、それはサービスに固有のものであり、使用されている内容についての情報が公開されていない可能性があります。
+
+
+| Port | 説明 |
+| ----- | ----- | 
+| 80 | セキュリティで保護されていない Web トラフィック (HTTP) |
+| 443 | セキュリティで保護されている Web トラフィック (HTTPS) |
+| 445 | Azure File Storage のファイル共有へのアクセスに使用される SMB トラフィック |
+| 8787 | コンピューティング インスタンスで RStudio に接続するときに使用されます |
+
+## <a name="required-public-internet-access"></a>必要なパブリック インターネット アクセス
+
+[!INCLUDE [machine-learning-required-public-internet-access](../../includes/machine-learning-public-internet-access.md)]
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
-Azure Firewall を使用する場合は、__宛先ネットワーク アドレス変換 (DNAT)__ を使用して受信トラフィックの NAT 規則を作成します。 送信トラフィックの場合は、__ネットワーク__ や __アプリケーション__ の規則を作成します。 これらの規則コレクションの詳細については、「[Azure Firewall の概念をいくつか教えてください](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)」を参照してください。
+> [!IMPORTANT]
+> Azure Firewall では、"_Azure Virtual Network リソース_" にセキュリティが提供されます。 Azure Storage アカウントなど、一部の Azure サービスには、"_その特定のサービス インスタンスのパブリック エンドポイントに適用される_" 独自のファイアウォール設定があります。 このドキュメントの情報は、Azure Firewall に固有のものです。
+> 
+> サービス インスタンスのファイアウォール設定については、[仮想ネットワークでのスタジオの使用](how-to-enable-studio-virtual-network.md#firewall-settings)に関する記事を参照してください。
+
+* Azure Machine Learning コンピューティング クラスターとコンピューティング インスタンスへの __受信__ トラフィックでは、[ユーザー定義のルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を使用してファイアウォールをスキップします。
+
+* __送信__ トラフィックの場合は、__ネットワーク__ や __アプリケーション__ の規則を作成します。 
+
+これらの規則コレクションの詳細については、「[Azure Firewall の概念をいくつか教えてください](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)」を参照してください。
 
 ### <a name="inbound-configuration"></a>受信の構成
 
-Azure Machine Learning __コンピューティング インスタンス__ または __コンピューティング クラスター__ を使用する場合は、Azure Machine Learning リソースを含むサブネットの [ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を追加します。 このルートによって、`BatchNodeManagement` と `AzureMachineLearning` リソースの IP アドレス __から__ コンピューティング インスタンスとコンピューティング クラスターのパブリック IP にトラフィックが強制的に送信されます。
-
-これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため、Azure Machine Learning service の IP アドレスも追加します。 Azure Machine Learning service の IP アドレスを追加する場合は、__プライマリとセカンダリ__ の両方の Azure リージョンに IP を追加する必要があります。 プライマリ リージョンは、ワークスペースが配置されているところです。
-
-セカンダリ リージョンを見つけるには、[Azure のペアになっているリージョンを使用したビジネス継続性とディザスター リカバリー](../best-practices-availability-paired-regions.md#azure-regional-pairs)に関するページを参照してください。 たとえば、Azure Machine Learning service が米国東部 2 にある場合、セカンダリ リージョンは米国中部です。 
-
-Batch サービスと Azure Machine Learning service の IP アドレスの一覧を取得するには、次のいずれかの方法を使用します。
-
-* [Azure の IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードし、`BatchNodeManagement.<region>` と `AzureMachineLearning.<region>` のファイルを検索する。ここで、`<region>` は Azure リージョンです。
-
-* [Azure CLI](/cli/azure/install-azure-cli) を使用して情報をダウンロードする。 次の例では、IP アドレス情報をダウンロードし、米国東部 2 リージョン (プライマリ) と米国中部リージョン (セカンダリ) の情報を除外します。
-
-    ```azurecli-interactive
-    az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
-    # Get primary region IPs
-    az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
-    # Get secondary region IPs
-    az network list-service-tags -l "Central US" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='centralus']"
-    ```
-
-    > [!TIP]
-    > 米国バージニア、米国アリゾナ、または中国東部 2 のリージョンを使用している場合、これらのコマンドは IP アドレスを返しません。 代わりに、次のいずれかのリンクを使用して IP アドレスの一覧をダウンロードします。
-    >
-    > * [Azure Government の Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=57063)
-    > * [Azure China の Azure IP 範囲とサービス タグ](https://www.microsoft.com//download/details.aspx?id=57062)
-
-UDR を追加するときに、関連する各 Batch の IP アドレス プレフィックスのルートを定義し、 __[次ホップの種類]__ を __[インターネット]__ に設定します。 次の図に、Azure portal でのこの UDR の例を示します。
-
-![アドレス プレフィックスの UDR の例](./media/how-to-enable-virtual-network/user-defined-route.png)
-
-> [!IMPORTANT]
-> IP アドレスは、時間の経過と共に変化する可能性があります。
-
-詳細については、「[仮想ネットワーク内に Azure Batch プールを作成する](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling)」を参照してください。
+[!INCLUDE [udr info for computes](../../includes/machine-learning-compute-user-defined-routes.md)]
 
 ### <a name="outbound-configuration"></a>送信の構成
 
 1. 次のサービス タグ __への__、またサービス タグ __からの__ トラフィックを許可する __ネットワーク規則__ を追加します。
 
-    * AzureActiveDirectory
-    * AzureMachineLearning
-    * AzureResourceManager
-    * Storage.region
-    * KeyVault.region
-    * ContainerRegistry.region
+    | サービス タグ | プロトコル | Port |
+    | ----- |:-----:|:-----:|
+    | AzureActiveDirectory | TCP | 80、443 |
+    | AzureMachineLearning | TCP | 443 |
+    | AzureResourceManager | TCP | 443 |
+    | Storage.region       | TCP | 443 |
+    | AzureFrontDoor.FrontEnd</br>* Azure China では不要です。 | TCP | 443 | 
+    | ContainerRegistry.region  | TCP | 443 |
+    | MicrosoftContainerRegistry.region | TCP | 443 |
+    | Keyvault.region | TCP | 443 |
 
-    Microsoft から提供される既定の Docker イメージを使用し、ユーザー マネージドの依存関係を有効にする場合は、次のサービス タグも使用する必要があります。
-
-    * MicrosoftContainerRegistry.region
-    * AzureFrontDoor.FirstParty
-
-    `region` が含まれているエントリの場合は、使用している Azure リージョンに置き換えます。 たとえば、「 `keyvault.westus` 」のように入力します。
-
-    __プロトコル__ には、`TCP` を選択します。 送信元と送信先の __ポート__ には、`*` を選択します。
+    > [!TIP]
+    > * ContainerRegistry.region は、カスタム Docker イメージにのみ必要です。 これには、Microsoft が提供する基本イメージへの小さな変更 (追加のパッケージなど) が含まれます。
+    > * MicrosoftContainerRegistry.region は、"_Microsoft が提供する既定の Docker イメージ_" を使用し、"_ユーザー マネージドの依存関係を有効にする_" 計画がある場合にのみ必要です。
+    > * Keyvault.region は、[hbi_workspace](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) フラグを有効にしてワークスペースが作成された場合にのみ必要です。
+    > * `region` が含まれているエントリの場合は、使用している Azure リージョンに置き換えます。 たとえば、「 `ContainerRegistry.westus` 」のように入力します。
 
 1. 以下のホストに __アプリケーション規則__ を追加します。
 
@@ -100,77 +103,197 @@ UDR を追加するときに、関連する各 Batch の IP アドレス プレ�
     | **cloud.r-project.org** | R 開発用の CRAN パッケージをインストールするときに使用されます。 |
     | **\*pytorch.org** | PyTorch に基づくいくつかのサンプルによって使用されます。 |
     | **\*.tensorflow.org** | Tensorflow に基づくいくつかのサンプルによって使用されます。 |
+    | **update.code.visualstudio.com**</br></br>**\*.vo.msecnd.net** | セットアップ スクリプトを通じてコンピューティング インスタンスにインストールされている VS Code サーバー ビットを取得するために使用されます。|
+    | **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\*** | コンピューティング インスタンスにインストールされている Websocket サーバー ビットを取得するために使用されます。 Websocket サーバーは、Visual Studio Code クライアント (デスクトップ アプリケーション) から、コンピューティング インスタンスで実行されている Visual Studio Code サーバーに要求を送信するために使用されます。|
+    | **dc.applicationinsights.azure.com** | Microsoft サポートとの連携時にメトリックおよび診断情報を収集するために使用されます。 |
+    | **dc.applicationinsights.microsoft.com** | Microsoft サポートとの連携時にメトリックおよび診断情報を収集するために使用されます。 |
+    | **dc.services.visualstudio.com** | Microsoft サポートとの連携時にメトリックおよび診断情報を収集するために使用されます。 | 
+    
 
     __プロトコル/ポート__ には、__http、https__ の使用を選択します。
 
     アプリケーション規則の構成について詳しくは、[Azure Firewall のデプロイと構成](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)に関する記事をご覧ください。
 
-1. Azure Kubernetes Service (AKS) にデプロイされたモデルへのアクセスを制限するには、[Azure Kubernetes Service でのエグレス トラフィックの制限](../aks/limit-egress-traffic.md)に関する記事を参照してください。
+1. Azure Kubernetes Service (AKS) にデプロイされたモデルへの送信トラフィックを制限するには、[Azure Kubernetes Service でのエグレス トラフィックの制限](../aks/limit-egress-traffic.md)に関するページおよび [Azure Kubernetes Service への ML モデルのデプロイ](how-to-deploy-azure-kubernetes-service.md#connectivity)に関するページを参照してください。
+
+### <a name="azure-kubernetes-services"></a>Azure Kubernetes Services
+
+Azure Machine Learning で Azure Kubernetes Service を使用する場合は、次のトラフィックを許可する必要があります。
+
+* 「[Azure Kubernetes Service (AKS) でエグレス トラフィックを制限する](../aks/limit-egress-traffic.md)」で説明されている AKS の受信または送信の一般的な要件。
+* mcr.microsoft.com への __送信__。
+* AKS クラスターにモデルをデプロイする場合は、「[ML モデルを Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md#connectivity)」記事のガイダンスを使用してください。
 
 ## <a name="other-firewalls"></a>その他のファイアウォール
 
-このセクションのガイダンスは一般的なもので、各ファイアウォールには独自の用語や特定の構成があります。 ファイアウォール経由の通信を許可する方法について不明な点がある場合は、使用しているファイアウォールのドキュメントを参照してください。
+このセクションのガイダンスは一般的なもので、各ファイアウォールには独自の用語や特定の構成があります。 ご質問がある場合は、使用しているファイアウォールのドキュメントを確認してください。
 
 正しく構成しないと、ワークスペースを使用したときにファイアウォールが原因で問題が発生する可能性があります。 いずれも Azure Machine Learning ワークスペースで使用されるさまざまなホスト名があります。 次のセクションでは、Azure Machine Learning に必要なホストの一覧を示します。
 
 ### <a name="microsoft-hosts"></a>Microsoft のホスト
 
-このセクションのホストは Microsoft によって所有されており、ホストではワークスペースが適切に機能するために必要なサービスが提供されます。 次の表は、Azure Public、Azure Government、Azure China 21Vianet リージョンのホスト名を一覧表示しています。
+次の表のホストは Microsoft によって所有されており、ワークスペースが適切に機能するために必要なサービスが提供されます。 表には、Azure Public、Azure Government、Azure China 21Vianet リージョンのホストが一覧表示されています。
+
+> [!IMPORTANT]
+> Azure Machine Learning では、サブスクリプションと Microsoft が管理するサブスクリプションで Azure Storage アカウントが使用されます。 該当する場合、このセクションでは、区別するために次の用語が使用されます。
+>
+> * __ご使用のストレージ__: サブスクリプションの Azure Storage アカウントを使用して、データと成果物 (モデル、トレーニング データ、トレーニング ログ、Python スクリプトなど) を格納します。>
+> * __Microsoft ストレージ__: Azure Machine Learning コンピューティング インスタンスとコンピューティング クラスターは、Azure Batch に依存し、Microsoft サブスクリプションにあるストレージにアクセスする必要があります。 このストレージは、コンピューティング インスタンスの管理にのみ使用されます。 ここにはデータが格納されていません。
 
 **一般的な Azure ホスト**
 
-| **次のために必須:** | **Azure Public** | **Azure Government** | **Azure China 21Vianet** |
+# <a name="azure-public"></a>[Azure Public](#tab/public)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ---- | 
+| Azure Active Directory | login.microsoftonline.com | TCP | 80、443 |
+| Azure portal | management.azure.com | TCP | 443 |
+| Azure Resource Manager | management.azure.com | TCP | 443 |
+
+# <a name="azure-government"></a>[Azure Government](#tab/gov)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ---- |
+| Azure Active Directory | login.microsoftonline.us | TCP | 80、443 |
+| Azure portal | management.azure.us | TCP | 443 |
+| Azure Resource Manager | management.usgovcloudapi.net | TCP | 443 |
+
+# <a name="azure-china-21vianet"></a>[Azure China 21Vianet](#tab/china)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
 | ----- | ----- | ----- | ----- |
-| Azure Active Directory | login.microsoftonline.com | login.microsoftonline.us | login.chinacloudapi.cn |
-| Azure portal | management.azure.com | management.azure.us | management.azure.cn |
-| Azure Resource Manager | management.azure.com | management.usgovcloudapi.net | management.chinacloudapi.cn |
+| Azure Active Directory | login.chinacloudapi.cn | TCP | 80、443 |
+| Azure portal | management.azure.cn | TCP | 443 |
+| Azure Resource Manager | management.chinacloudapi.cn | TCP | 443 |
+
+---
 
 **Azure Machine Learning ホスト**
 
-| **次のために必須:** | **Azure Public** | **Azure Government** | **Azure China 21Vianet** |
+> [!IMPORTANT]
+> 次の表では、`<storage>` を、使用している Azure Machine Learning ワークスペースの既定のストレージ アカウント名に置き換えてください。
+
+# <a name="azure-public"></a>[Azure Public](#tab/public)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
 | ----- | ----- | ----- | ----- |
-| Azure Machine Learning Studio | ml.azure.com | ml.azure.us | studio.ml.azure.cn |
-| API |\*.azureml.ms | \*.ml.azure.us | \*.ml.azure.cn |
-| 実験、履歴、Hyperdrive、ラベル付け | \*.experiments.azureml.net | \*.ml.azure.us | \*.ml.azure.cn |
-| モデル管理 | \*.modelmanagement.azureml.net | \*.ml.azure.us | \*.ml.azure.cn |
-| パイプライン | \*.aether.ms | \*.ml.azure.us | \*.ml.azure.cn |
-| デザイナー (スタジオ サービス) | \*.studioservice.azureml.com | \*.ml.azure.us | \*.ml.azure.cn |
-| 統合されたノートブック | \*.notebooks.azure.net | \*.notebooks.usgovcloudapi.net |\*.notebooks.chinacloudapi.cn |
-| 統合されたノートブック | \*.file.core.windows.net | \*.file.core.usgovcloudapi.net | \*.file.core.chinacloudapi.cn |
-| 統合されたノートブック | \*.dfs.core.windows.net | \*.dfs.core.usgovcloudapi.net | \*.dfs.core.chinacloudapi.cn |
-| 統合されたノートブック | \*.blob.core.windows.net | \*.blob.core.usgovcloudapi.net | \*.blob.core.chinacloudapi.cn |
-| 統合されたノートブック | graph.microsoft.com | graph.microsoft.us | graph.chinacloudapi.cn |
-| 統合されたノートブック | \*.aznbcontent.net |  | |
+| Azure Machine Learning Studio | ml.azure.com | TCP | 443 |
+| API |\*.azureml.ms | TCP | 443 |
+| 統合されたノートブック | \*.notebooks.azure.net | TCP | 443 |
+| 統合されたノートブック | \<storage\>.file.core.windows.net | TCP | 443、445 |
+| 統合されたノートブック | \<storage\>.dfs.core.windows.net | TCP | 443 |
+| 統合されたノートブック | \<storage\>.blob.core.windows.net | TCP | 443 |
+| 統合されたノートブック | graph.microsoft.com | TCP | 443 |
+| 統合されたノートブック | \*.aznbcontent.net | TCP | 443 |
+
+# <a name="azure-government"></a>[Azure Government](#tab/gov)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ----- |
+| Azure Machine Learning Studio | ml.azure.us | TCP | 443 |
+| API | \*.ml.azure.us | TCP | 443 |
+| 統合されたノートブック | \*.notebooks.usgovcloudapi.net | TCP | 443 |
+| 統合されたノートブック | \<storage\>.file.core.usgovcloudapi.net | TCP | 443、445 |
+| 統合されたノートブック | \<storage\>.dfs.core.usgovcloudapi.net | TCP | 443 |
+| 統合されたノートブック  | \<storage\>.blob.core.usgovcloudapi.net | TCP | 443 |
+| 統合されたノートブック | graph.microsoft.us | TCP | 443 |
+| 統合されたノートブック | \*.aznbcontent.net | TCP | 443 |
+
+# <a name="azure-china-21vianet"></a>[Azure China 21Vianet](#tab/china)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ----- |
+| Azure Machine Learning Studio | studio.ml.azure.cn | TCP | 443 |
+| API | \*.ml.azure.cn | TCP | 443 |
+| 統合されたノートブック | \*.notebooks.chinacloudapi.cn | TCP | 443 |
+| 統合されたノートブック | \<storage\>.file.core.chinacloudapi.cn | TCP | 443、445 |
+| 統合されたノートブック | \<storage\>.dfs.core.chinacloudapi.cn | TCP | 443 |
+| 統合されたノートブック | \<storage\>.blob.core.chinacloudapi.cn | TCP | 443 |
+| 統合されたノートブック | graph.chinacloudapi.cn | TCP | 443 |
+| 統合されたノートブック | \*.aznbcontent.net | TCP | 443 |
+
+---
 
 **Azure Machine Learning コンピューティング インスタンスおよびコンピューティング クラスターのホスト**
 
-| **次のために必須:** | **Azure Public** | **Azure Government** | **Azure China 21Vianet** |
+> [!TIP]
+> * __Azure Key Vault__ のホストは、[hbi_workspace](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) フラグを有効にしてワークスペースが作成された場合にのみ必要です。
+> * __コンピューティング インスタンス__ のポート 8787 と 18881 は、Azure Machine ワークスペースにプライベート エンドポイントがある場合にのみ必要です。
+> * 次の表では、`<storage>` を、使用している Azure Machine Learning ワークスペースの既定のストレージ アカウント名に置き換えてください。
+
+# <a name="azure-public"></a>[Azure Public](#tab/public)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
 | ----- | ----- | ----- | ----- |
-| コンピューティング クラスター/インスタンス | \*.batchai.core.windows.net | \*.batchai.core.usgovcloudapi.net |\*.batchai.ml.azure.cn |
-| コンピューティング クラスター/インスタンス | graph.windows.net | graph.windows.net | graph.chinacloudapi.cn |
-| コンピューティング インスタンス | \*.instances.azureml.net | \*.instances.azureml.us | \*.instances.azureml.cn |
-| コンピューティング インスタンス | \*.instances.azureml.ms |  |  |
+| コンピューティング クラスター/インスタンス | graph.windows.net | TCP | 443 |
+| コンピューティング インスタンス | \*.instances.azureml.net | TCP | 443 |
+| コンピューティング インスタンス | \*.instances.azureml.ms | TCP | 443、8787、18881 |
+| Microsoft ストレージ アクセス | \*.blob.core.windows.net | TCP | 443 |
+| Microsoft ストレージ アクセス | \*.table.core.windows.net | TCP | 443 |
+| Microsoft ストレージ アクセス | \*.queue.core.windows.net | TCP | 443 |
+| ストレージ アカウント | \<storage\>.file.core.windows.net | TCP | 443、445 |
+| ストレージ アカウント | \<storage\>.blob.core.windows.net | TCP | 443 |
+| Azure Key Vault | \*.vault.azure.net | TCP | 443 |
 
-**Azure Machine Learning によって使用される関連リソース**
+# <a name="azure-government"></a>[Azure Government](#tab/gov)
 
-| **次のために必須:** | **Azure Public** | **Azure Government** | **Azure China 21Vianet** |
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
 | ----- | ----- | ----- | ----- |
-| Azure Storage アカウント | core.windows.net | core.usgovcloudapi.net | core.chinacloudapi.cn |
-| Azure Key Vault | vault.azure.net | vault.usgovcloudapi.net | vault.azure.cn |
-| Azure Container Registry | azurecr.io | azurecr.us | azurecr.cn |
-| Microsoft Container Registry | mcr.microsoft.com | mcr.microsoft.com | mcr.microsoft.com |
+| コンピューティング クラスター/インスタンス | graph.windows.net | TCP | 443 |
+| コンピューティング インスタンス | \*.instances.azureml.us | TCP | 443 |
+| コンピューティング インスタンス | \*.instances.azureml.ms | TCP | 443、8787、18881 |
+| Microsoft ストレージ アクセス | \*.blob.core.usgovcloudapi.net | TCP | 443 |
+| Microsoft ストレージ アクセス | \*.table.core.usgovcloudapi.net | TCP | 443 |
+| Microsoft ストレージ アクセス | \*.queue.core.usgovcloudapi.net | TCP | 443 |
+| ストレージ アカウント | \<storage\>.file.core.usgovcloudapi.net | TCP | 443、445 |
+| ストレージ アカウント | \<storage\>.blob.core.usgovcloudapi.net | TCP | 443 |
+| Azure Key Vault | \*.vault.usgovcloudapi.net | TCP | 443 |
 
+# <a name="azure-china-21vianet"></a>[Azure China 21Vianet](#tab/china)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ----- |
+| コンピューティング クラスター/インスタンス | graph.chinacloudapi.cn | TCP | 443 |
+| コンピューティング インスタンス |  \*.instances.azureml.cn | TCP | 443 |
+| コンピューティング インスタンス | \*.instances.azureml.ms | TCP | 443、8787、18881 |
+| Microsoft ストレージ アクセス | \*blob.core.chinacloudapi.cn | TCP | 443 |
+| Microsoft ストレージ アクセス | \*.table.core.chinacloudapi.cn | TCP | 443 |
+| Microsoft ストレージ アクセス | \*.queue.core.chinacloudapi.cn | TCP | 443 |
+| ストレージ アカウント | \<storage\>.file.core.chinacloudapi.cn | TCP | 443、445 |
+| ストレージ アカウント | \<storage\>.blob.core.chinacloudapi.cn | TCP | 443 |
+| Azure Key Vault | \*.vault.azure.cn | TCP | 443 |
+
+---
+
+**Azure Machine Learning によって管理される Docker イメージ**
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ----- |
+| Microsoft Container Registry | mcr.microsoft.com | TCP | 443 |
+| Azure Machine Learning の事前構築済みイメージ | azurearctest.azurecr.io | TCP | 443 |
 
 > [!TIP]
-> フェデレーション ID を使用する予定の場合は、「[Active Directory フェデレーション サービス (AD FS) をセキュリティで保護するためのベスト プラクティス](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs)」の記事に従ってください。
+> * カスタム Docker イメージには __Azure Container Registry__ が必要です。 これには、Microsoft が提供する基本イメージへの小さな変更 (追加のパッケージなど) が含まれます。
+> * __Microsoft Container Registry__ は、"_Microsoft が提供する既定の Docker イメージ_" を使用し、"_ユーザー マネージドの依存関係を有効にする_" 計画がある場合にのみ必要です。
+> * フェデレーション ID を使用する予定の場合は、「[Active Directory フェデレーション サービス (AD FS) をセキュリティで保護するためのベスト プラクティス](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs)」の記事に従ってください。
 
-また、[強制トンネリング](how-to-secure-training-vnet.md#forced-tunneling)の情報を使用して、`BatchNodeManagement` と `AzureMachineLearning` の IP アドレスを追加します。
+また、「[受信の構成](#inbound-configuration)」のセクションの情報を使用して、`BatchNodeManagement` と `AzureMachineLearning` の IP アドレスを追加します。
 
-Azure Kubernetes Service (AKS) にデプロイされたモデルへのアクセスの制限については、[Azure Kubernetes Service でのエグレス トラフィックの制限](../aks/limit-egress-traffic.md)に関する記事を参照してください。
+AKS にデプロイされたモデルへのアクセスの制限については、[Azure Kubernetes Service でのエグレス トラフィックの制限](../aks/limit-egress-traffic.md)に関するページを参照してください。
+
+**診断のサポート**
+
+ワークスペースで発生した問題を Microsoft サポートで診断できるように、次のホストへの送信トラフィックを許可する必要があります。
+
+* **dc.applicationinsights.azure.com**
+* **dc.applicationinsights.microsoft.com**
+* **dc.services.visualstudio.com**
+
+これらのホストの IP アドレスの一覧については、「[Azure Monitor で使用される IP アドレス](../azure-monitor/app/ip-addresses.md)」を参照してください。
 
 ### <a name="python-hosts"></a>Python のホスト
 
-このセクションのホストは、Python パッケージをインストールするために使用されます。 開発、トレーニング、デプロイ時に必要になります。 
+このセクションのホストは、Python パッケージをインストールするために使用され、開発、トレーニング、デプロイ時に必要になります。 
 
 > [!NOTE]
 > これは、インターネット上のすべての Python リソースに必要なホストの完全な一覧ではなく、最も一般的に使用されているもののみを取り上げています。 たとえば、GitHub リポジトリまたはその他のホストにアクセスする必要がある場合は、そのシナリオに必要なホストを特定して追加する必要があります。
@@ -185,7 +308,7 @@ Azure Kubernetes Service (AKS) にデプロイされたモデルへのアクセ�
 
 ### <a name="r-hosts"></a>R のホスト
 
-このセクションのホストは、R パッケージをインストールするために使用されます。 開発、トレーニング、デプロイ時に必要になります。
+このセクションのホストは、R パッケージをインストールするために使用され、開発、トレーニング、デプロイ時に必要になります。
 
 > [!NOTE]
 > これは、インターネット上のすべての R リソースに必要なホストの完全な一覧ではなく、最も一般的に使用されているもののみを取り上げています。 たとえば、GitHub リポジトリまたはその他のホストにアクセスする必要がある場合は、そのシナリオに必要なホストを特定して追加する必要があります。
@@ -194,9 +317,74 @@ Azure Kubernetes Service (AKS) にデプロイされたモデルへのアクセ�
 | ---- | ---- |
 | **cloud.r-project.org** | CRAN パッケージをインストールするときに使用されます。 |
 
-> [!IMPORTANT]
-> 内部的には、Azure Machine Learning 用の R SDK では Python パッケージが使用されます。 そのため、Python ホストにもファイアウォールの通過を許可する必要があります。
+### <a name="azure-kubernetes-services"></a>Azure Kubernetes Services
+
+Azure Machine Learning で Azure Kubernetes Service を使用する場合は、次のトラフィックを許可する必要があります。
+
+* 「[Azure Kubernetes Service (AKS) でエグレス トラフィックを制限する](../aks/limit-egress-traffic.md)」で説明されている AKS の受信または送信の一般的な要件。
+* mcr.microsoft.com への __送信__。
+* AKS クラスターにモデルをデプロイする場合は、「[ML モデルを Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md#connectivity)」記事のガイダンスを使用してください。
+
+### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes <a id="arc-kubernetes"></a>
+
+Azure Arc 対応 Kubernetes クラスターは、Azure Arc の接続に依存します。 [Azure Arc ネットワークの要件](../azure-arc/kubernetes/quickstart-connect-cluster.md?tabs=azure-cli#meet-network-requirements)を満たしていることを確認してください。
+
+このセクションのホストは、Azure Machine Learning 拡張機能を Kubernetes クラスターにデプロイし、トレーニングと推論のワークロードをクラスターに送信するために使われます。
+
+**Azure Machine Learning 拡張機能のデプロイ**
+
+Azure Machine Learning 拡張機能をクラスターにデプロイするときは、次のエンドポイントへの送信アクセスを有効にします。
+
+| 送信先エンドポイント| Port | 用途 |
+|--|--|--|
+|  *.data.mcr.microsoft.com| https:443 | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
+| quay.io、*.quay.io | https:443 | Quay.io レジストリ。AML 拡張コンポーネントのコンテナー イメージをプルするために必要です |
+| gcr.io| https:443 | Google クラウド リポジトリ。AML 拡張コンポーネントのコンテナー イメージをプルするために必要です |
+| storage.googleapis.com | https:443 | Google クラウド ストレージ。gcr イメージがにホストされています |
+| registry-1.docker.io、production.cloudflare.docker.com  | https:443 | Docker Hub レジストリ。AML 拡張コンポーネントのコンテナー イメージをプルするために必要です |
+| auth.docker.io| https:443 | Docker リポジトリ認証。Docker Hub レジストリにアクセスするために必要です |
+| *.kusto.windows.net、*.table.core.windows.net、*.queue.core.windows.net | https:443 | Kusto でシステム ログをアップロードして分析するために必要です |
+
+**トレーニング ワークロードのみ**
+
+トレーニング ワークロードをクラスターに送信するには、次のエンドポイントへの送信アクセスを有効にします。
+
+| 送信先エンドポイント| Port | 用途 |
+|--|--|--|
+| pypi.org | https:443 | Python パッケージ インデックス。ジョブ環境の初期化に使用する pip パッケージをインストールするため |
+| archive.ubuntu.com、security.ubuntu.com、ppa.launchpad.net | http:80 | このアドレスを使うと、init コンテナーで必要なセキュリティ パッチと更新プログラムをダウンロードできます |
+
+**トレーニングと推論ワークロード**
+
+トレーニング ワークロード用のエンドポイントに加えて、トレーニングと推論のワークロードを送信するため、次のエンドポイントへの送信アクセスを有効にします。
+
+| 送信先エンドポイント| Port | 用途 |
+|--|--|--|
+| *.azurecr.io | https:443 | Azure コンテナー レジストリ。トレーニングまたは推論のジョブをホストするためのコンテナー イメージをプルするために必要です|
+| *.blob.core.windows.net | https:443 | Azure Blob Storage。機械学習プロジェクト スクリプト、コンテナー イメージ、ジョブのログとメトリックをフェッチするために必要です |
+| *.workspace.\<region\>.api.azureml.ms、\<region\>.experiments.azureml.net、\<region\>.api.azureml.ms | https:443 | Azure Machine Learning Service API。AML との通信に必要です |
+
+### <a name="visual-studio-code-hosts"></a>Visual Studio Code のホスト
+
+このセクションのホストは、Visual Studio Code のパッケージをインストールして、Visual Studio Code と Azure Machine Learning ワークスペースのコンピューティング インスタンス間のリモート通信を確立するために使用されます。
+
+> [!NOTE]
+> これは、インターネット上のすべての Visual Studio Code リソースに必要なホストの完全な一覧ではなく、最も一般的に使用されているもののみを取り上げています。 たとえば、GitHub リポジトリまたはその他のホストにアクセスする必要がある場合は、そのシナリオに必要なホストを特定して追加する必要があります。
+
+| **ホスト名** | **目的** |
+| ---- | ---- |
+|  **update.code.visualstudio.com**</br></br>**\*.vo.msecnd.net** | セットアップ スクリプトを通じてコンピューティング インスタンスにインストールされている VS Code サーバー ビットを取得するために使用されます。|
+| **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\*** |コンピューティング インスタンスにインストールされている Websocket サーバー ビットを取得するために使用されます。 Websocket サーバーは、Visual Studio Code クライアント (デスクトップ アプリケーション) から、コンピューティング インスタンスで実行されている Visual Studio Code サーバーに要求を送信するために使用されます。 |
+
 ## <a name="next-steps"></a>次のステップ
 
-* [チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する](../firewall/tutorial-firewall-deploy-portal.md)
-* [Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する](how-to-network-security-overview.md)
+この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
+
+* [Virtual Network の概要](how-to-network-security-overview.md)
+* [ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
+* [トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
+* [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
+* [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+* [カスタム DNS を使用する](how-to-custom-dns.md)
+
+Azure Firewall の構成の詳細については、[Azure portal を使用した Azure Firewall のデプロイと構成に関するチュートリアル](../firewall/tutorial-firewall-deploy-portal.md)を参照してください。

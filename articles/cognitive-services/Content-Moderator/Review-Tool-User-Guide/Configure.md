@@ -8,16 +8,19 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 03/15/2019
+ms.date: 10/28/2021
 ms.author: pafarley
-ms.openlocfilehash: 8812fd1e6c1efb2aa44c77573bc4b8f1c099834d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 374957c8175f320b5152abcb661516cad5324304
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92912023"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426394"
 ---
 # <a name="configure-the-review-tool"></a>レビュー ツールの構成
+
+[!INCLUDE [deprecation notice](../includes/tool-deprecation.md)]
+
 
 [レビュー ツール](https://contentmoderator.cognitive.microsoft.com)には、ダッシュボードの **[設定]** メニュー経由でアクセスできるいくつかの重要な機能があります。
 
@@ -97,7 +100,7 @@ ms.locfileid: "92912023"
 - Emotion
 - Face
 - PhotoDNA Cloud Service
-- Text Analytics
+- 言語サービス
 
 ### <a name="add-a-connector"></a>コネクタを追加する
 

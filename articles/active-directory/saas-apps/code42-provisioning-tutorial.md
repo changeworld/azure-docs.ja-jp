@@ -3,8 +3,8 @@ title: チュートリアル:Code42 を構成し、Azure Active Directory を使
 description: Azure AD から Code42 に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: ddcb950b-3f9a-4ebb-bf78-4ec42d16d52d
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/23/2020
-ms.author: Zhchia
-ms.openlocfilehash: ffae286437a476d5ebe08c3ee442d0d52af84eb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: c9af2f7123d37823e0acb0a2e244cc0ce40dbc68
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96179343"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988409"
 ---
 # <a name="tutorial-configure-code42-for-automatic-user-provisioning"></a>チュートリアル:Code42 を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -43,6 +43,9 @@ ms.locfileid: "96179343"
 * プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
 * ID 管理が有効になっている Code42 テナント。
 * [Customer Cloud Admin](https://support.code42.com/Administrator/Cloud/Monitoring_and_managing/Roles_reference#Customer_Cloud_Admin) アクセス許可を持つ Code42 のユーザー アカウント。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
 1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。

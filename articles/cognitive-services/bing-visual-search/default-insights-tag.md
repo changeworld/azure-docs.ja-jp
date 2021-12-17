@@ -3,19 +3,17 @@ title: 既定の分析情報タグ - Bing Visual Search
 titleSuffix: Azure Cognitive Services
 description: 画像に関して Bing Visual Search が返す既定の分析情報の詳細について説明します。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: scottwhi
-ms.openlocfilehash: b44b77445192aec68e2be803978ab3aad64906d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9090925785fb32da4934f98b6efd7b249053112
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96486999"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669571"
 ---
 # <a name="default-insights-tag"></a>既定の分析情報タグ
 

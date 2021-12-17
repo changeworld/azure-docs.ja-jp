@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 00768f363d08bc476350e57a8eac69eafd9c3589
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: 590c070617e20a3e8efda38619393d701dcfbfc5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99580940"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036240"
 ---
 # <a name="application-configuration-options"></a>アプリケーション構成オプション
 
@@ -114,7 +114,7 @@ Azure AD 機関の対象ユーザーとテナント ID の両方を指定した�
 
 MSAL を使用してパブリック クライアント アプリを開発している場合:
 
-- デスクトップまたは UWP アプリケーションで `.WithDefaultRedirectUri()` を使用することがあります (MSAL.NET 4.1 以上)。 このメソッドは、パブリック クライアント アプリケーションのリダイレクト URI プロパティを、パブリック クライアント アプリケーションの既定の推奨リダイレクト URI に設定します。
+- デスクトップまたは UWP アプリケーションで `.WithDefaultRedirectUri()` を使用することがあります (MSAL.NET 4.1 以上)。 このメソッドは、パブリッククライアントアプリケーションのリダイレクト URI プロパティを、パブリッククライアントアプリケーションの既定の推奨リダイレクト URI に設定します。
 
   | プラットフォーム | リダイレクト URI |
   |--|--|

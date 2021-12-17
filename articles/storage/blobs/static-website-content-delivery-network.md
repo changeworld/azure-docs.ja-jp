@@ -7,16 +7,16 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: e458f98d82c910ec845ebf951b7f6470b6aba10d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcc79c6b1828d4feb33a73f04e98f92abbf7384e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95527328"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597020"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>静的な Web サイトを Azure CDN と統合する
 
-[Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md) を有効にして、Azure ストレージアカウントでホストされている[静的な Web サイト](storage-blob-static-website.md)のコンテンツをキャッシュすることができます。 Azure CDN を使用すると、静的な Web サイトのカスタム ドメイン エンドポイントの構成、カスタム TLS/SSL 証明書のプロビジョニング、およびカスタム書き換え規則の構成を行うことができます。 Azure CDN を構成すると追加料金が発生しますが、世界中のあらゆる場所から Web サイトへの一貫した低待機時間が提供されます。 また、Azure CDN では、独自の証明書での TLS 暗号化が提供されます。 
+[Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md) を有効にして、Azure ストレージアカウントでホストされている[静的な Web サイト](storage-blob-static-website.md)のコンテンツをキャッシュすることができます。 Azure CDN を使用すると、静的な Web サイトのカスタム ドメイン エンドポイントの構成、カスタム TLS/SSL 証明書のプロビジョニング、およびカスタム書き換え規則の構成を行うことができます。 Azure CDN を構成すると追加料金が発生しますが、世界中のあらゆる場所から Web サイトへの一貫した低待機時間が提供されます。 また、Azure CDN では、独自の証明書での TLS 暗号化が提供されます。
 
 Azure CDN の価格については、[Azure CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
 
@@ -26,7 +26,7 @@ Azure CDN の価格については、[Azure CDN の価格](https://azure.microso
 
 1. Azure portal で自分のストレージ アカウントを探して、アカウントの概要を表示します。
 
-1. **[Blob Service]** メニューで **[Azure CDN]** を選択して、 **[Azure CDN]** ページを開きます。
+1. **[セキュリティとネットワーク]** メニューで **[Azure CDN]** を選択して、 **[Azure CDN]** ページを開きます。
 
     ![CDN エンドポイントを作成する](media/storage-blob-static-website-custom-domain/cdn-storage-new.png)
 
@@ -36,7 +36,7 @@ Azure CDN の価格については、[Azure CDN の価格](https://azure.microso
 
 1. **[CDN エンドポイント名]** フィールドに、CDN エンドポイントの名前を指定します。 CDN エンドポイントは、Azure 全体で一意である必要があり、エンドポイント URL の最初の部分となります。 フォームは、エンドポイント名が一意であることを検証します。
 
-1. **[配信元のホスト名]** フィールドに、静的な Web サイト エンドポイントを指定します。 
+1. **[配信元のホスト名]** フィールドに、静的な Web サイト エンドポイントを指定します。
 
    静的な Web サイト エンドポイントを見つけるには、ストレージ アカウントの **[静的な Web サイト]** 設定に移動します。  プライマリ エンドポイントをコピーし、CDN 構成に貼り付けます。
 
@@ -63,9 +63,9 @@ Azure CDN の価格については、[Azure CDN の価格](https://azure.microso
 
 Azure CDN にオブジェクトをキャッシュする必要がなくなった場合は、次のいずれかの手順を実行できます。
 
-* コンテナーをパブリックではなくプライベートにします。 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](./anonymous-read-access-configure.md)」を参照してください。
-* Azure Portal を使って、CDN エンドポイントを無効にするか削除します。
-* オブジェクトの要求に応答しなくなるように、ホストされるサービスを変更します。
+- コンテナーをパブリックではなくプライベートにします。 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](./anonymous-read-access-configure.md)」を参照してください。
+- Azure Portal を使って、CDN エンドポイントを無効にするか削除します。
+- オブジェクトの要求に応答しなくなるように、ホストされるサービスを変更します。
 
 Azure CDN に既にキャッシュされているオブジェクトは、オブジェクトの有効期限が切れるまで、またはエンドポイントが[消去](../../cdn/cdn-purge-endpoint.md)されるまで、キャッシュに残ったままとなります。 有効期限が切れると、Azure CDN は、CDN エンドポイントがまだ有効で、オブジェクトがまだ匿名アクセス可能かどうかを確認します。 そうではない場合、オブジェクトはキャッシュされなくなります。
 

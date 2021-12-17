@@ -10,19 +10,21 @@ ms.devlang: ''
 ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
-ms.reviewer: sstein, emlisa
-ms.date: 10/28/2020
-ms.openlocfilehash: 21ac73b461ebcb171f48621aa27a16dfc0e8c936
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.reviewer: mathoma, emlisa
+ms.date: 09/24/2021
+ms.openlocfilehash: 251a00fb5b64645cad5ec8bbdbed17fa229e61e4
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781741"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554923"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL Database と SQL Managed Instance での高可用性アーキテクチャの目的は、メンテナンス操作や障害の影響を心配せずに、データベースの稼働および実行の時間が 99.99% 以上になるように保証することです (さまざまなレベルに固有の SLA の詳細については、[Azure SQL Database と SQL Managed Instance の SLA](https://azure.microsoft.com/support/legal/sla/sql-database/) に関するページを参照してください)。 Azure では、パッチ適用、バックアップ、Windows および Azure SQL のアップグレードなどの重要なサービス タスクに加えて、基本となるハードウェア、ソフトウェア、またはネットワークのエラーなどの計画外のイベントを自動的に処理します。  Azure SQL Database の基本となるデータベースがパッチを適用されるか、またはフェールオーバーした場合、お使いのアプリで[再試行ロジックを使用](develop-overview.md#resiliency)していれば、ダウンタイムは認識されません。 SQL Database と SQL Managed Instance は、クリティカルな状況であっても迅速な復旧が可能であるため、データが常に使用可能であることが保証されます。
+Azure SQL Database と SQL Managed Instance での高可用性アーキテクチャの目的は、メンテナンス操作や障害の影響を心配せずに、データベースの稼働および実行の時間が 99.99% 以上になるように保証することです。 さまざまな層の特定の SLA に関する詳細については、「[Azure SQL Database の SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-database)」と「[Azure SQL Managed Instance の SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance/)」を参照してください。 
+
+Azure では、パッチ適用、バックアップ、Windows および Azure SQL のアップグレードなどの重要なサービス タスクに加えて、基本となるハードウェア、ソフトウェア、またはネットワークのエラーなどの計画外のイベントを自動的に処理します。  Azure SQL Database の基本となるデータベースがパッチを適用されるか、またはフェールオーバーした場合、お使いのアプリで[再試行ロジックを使用](develop-overview.md#resiliency)していれば、ダウンタイムは認識されません。 SQL Database と SQL Managed Instance は、クリティカルな状況であっても迅速な復旧が可能であるため、データが常に使用可能であることが保証されます。
 
 高可用性ソリューションは、コミットされたデータが障害によって失われないこと、メンテナンス操作がワークロードに影響を及ぼさないこと、また、データベースがソフトウェア アーキテクチャでの単一障害点にならないことを保証するように設計されています。 データベースのアップグレードやメンテナンスを行うときでも、ワークロードの停止が必要なメンテナンス期間やダウンタイムは発生しません。
 
@@ -32,6 +34,9 @@ Azure SQL Database と SQL Managed Instance での高可用性アーキテクチ
 - データベース エンジン プロセスのクラスターに基づく **Premium 可用性モデル**。 利用可能なデータベース エンジン ノードのクォーラムが常にあるという事実に依存します。 このアーキテクチャでは、高い IO パフォーマンス、高いトランザクション レートを備えたミッション クリティカル なアプリケーションを対象とし、メンテナンス作業中のワークロードに対するパフォーマンスの影響を最小限に抑えることを保証します。
 
 SQL Database と SQL Managed Instance は、どちらも最新の安定したバージョンの SQL Server データベース エンジンおよび Windows オペレーティング システム上で実行されています。また、ほとんどのユーザーが認識することなく、アップグレードが継続的に実行されています。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="basic-standard-and-general-purpose-service-tier-locally-redundant-availability"></a>Basic、Standard、および General Purpose サービス レベルのローカル冗長可用性
 

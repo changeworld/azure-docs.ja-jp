@@ -1,16 +1,16 @@
 ---
 title: マップの生成
 description: この記事では、Azure FarmBeats でマップを生成する方法について説明します。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.openlocfilehash: d0176fd337abd37f97a6dbe5cf7c68ccf94114d0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.author: riyazp
+ms.openlocfilehash: 0183e56d9bdf0c995dbbcf273914790eb0909e7d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102173866"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297547"
 ---
 # <a name="generate-maps"></a>マップの生成
 
@@ -43,7 +43,7 @@ FarmBeats のセンサー配置マップは、土壌水分センサーの配置�
 
 - 衛星画像のダウンロードは、Sentinel のパフォーマンスに依存します。 Sentinel のパフォーマンスの状態とメンテナンス [アクティビティ](https://scihub.copernicus.eu/twiki/do/view/SciHubNews/WebHome)を確認してください。
 - Sentinel で許容されるコンカレント [ダウンロード スレッド数](https://sentinels.copernicus.eu/web/sentinel/sentinel-data-access/typologies-and-services)は、1 ユーザーにつき 2 スレッドまでです。
-- プレシジョン マップの生成は、[Sentinel のカバレッジと再通過頻度]( https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage)によって左右されます。
+- プレシジョン マップの生成は、[Sentinel のカバレッジと再通過頻度](https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage)によって左右されます。
 
 ## <a name="create-a-sensor-placement-map"></a>センサー配置マップを作成する
 このセクションでは、センサー配置マップの作成手順を詳しく説明します。

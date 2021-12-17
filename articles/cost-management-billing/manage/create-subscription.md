@@ -1,24 +1,25 @@
 ---
 title: 追加 Azure サブスクリプションの作成
 description: Azure portal で新しい Azure サブスクリプションを作成する方法を説明します。 課金アカウントのフォームに関する情報を参照して、使用可能なその他のリソースを確認してください。
-author: amberbhargava
+author: bandersmsft
+ms.reviewer: amberb
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/11/2021
 ms.author: banders
-ms.openlocfilehash: 27594ff4d7673038e9de38c5969a615be60aeadf
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4632cd70192387da98f62a3ee96fcf0a3650aad1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844695"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284381"
 ---
 # <a name="create-an-additional-azure-subscription"></a>追加 Azure サブスクリプションの作成
 
 [マイクロソフト エンタープライズ契約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)、[Microsoft 顧客契約](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)、[Microsoft Partner Agreement](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement) の各課金アカウントには、Azure portal から追加でサブスクリプションを作成できます。 サブスクリプションの制限に達するのを回避したり、セキュリティを目的として独立した環境を作成したり、コンプライアンス上の理由からデータを分離したりするために、サブスクリプションを追加したい場合があります。
 
-Microsoft Online Services プログラム (MOSP) の課金アカウントをお持ちの場合、[Azure のサインアップ ポータル](https://account.azure.com/signup?offer=ms-azr-0003p)から追加でサブスクリプションを作成できます。
+Microsoft Online Services プログラム (MOSP) の課金アカウントをお持ちの場合は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) で追加のサブスクリプションを作成できます。
 
 課金アカウントの詳細および課金アカウントの種類の確認については、「[Azure portal での課金アカウントの表示](view-all-accounts.md)」を参照してください。
 
@@ -70,6 +71,21 @@ Microsoft Online Services プログラム (MOSP) の課金アカウントをお�
 |Customer    | サブスクリプションは、選択した顧客に対して作成されます。 顧客が 1 件しか存在しなければ、この選択項目はグレー表示されます。  |
 |Reseller    | 顧客にサービスを提供するリセラー。 これはオプション フィールドです。CSP の2 層モデルの間接プロバイダーにのみ関係します。 |
 |名前     | Azure portal でサブスクリプションを識別しやすくするための表示名。  |
+
+## <a name="create-a-subscription-as-a-partner-for-a-customer"></a>顧客のパートナーとしてサブスクリプションを作成する
+
+Microsoft Partner Agreement を締結しているパートナーは、次の手順を使用して、顧客向けの新しい Microsoft Azure プラン サブスクリプションを作成します。 サブスクリプションは、パートナーの課金アカウントと課金プロファイルの下に作成されます。
+
+1.  パートナー センター アカウントを使用して Azure portal にサインインします。
+顧客のテナントではなくパートナー センター ディレクトリ (テナント) にいることを確認してください。
+1.  **[コストの管理と請求]** に移動します。
+1.  顧客アカウントが存在する課金アカウントの [課金スコープ] を選択します。
+1.  左側のメニューで、 **[課金]** の **[顧客]** を選択します。
+1.  [顧客] ページで、顧客を選択します。
+1.  左側のメニューの **[製品とサービス]** の下にある **[Azure サブスクリプション]** を選択します。
+1.  [Azure サブスクリプション] ページで、 **[+ 追加 ]** を選択してサブスクリプションを作成します。
+1.  サブスクリプションの詳細を入力し、完了したら、 **[確認と作成]** を選択します。
+
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>追加の Azure サブスクリプションをプログラムから作成する
 

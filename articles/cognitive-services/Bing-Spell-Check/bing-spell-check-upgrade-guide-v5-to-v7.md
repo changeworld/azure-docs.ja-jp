@@ -3,19 +3,17 @@ title: Bing Spell Check API v5 を v7 にアップグレードする
 titleSuffix: Azure Cognitive Services
 description: バージョン 7 を使用するために更新する必要のある Bing Spell Check アプリケーションの部分を識別します。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: scottwhi
-ms.openlocfilehash: 77910c964ed45c012163e27ca58b092e1972d114
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a1df73cdcbf7b9578c205bda9b5a1804b1b882eb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96349590"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128556377"
 ---
 # <a name="spell-check-api-upgrade-guide"></a>Spell Check API のアップグレード ガイド
 

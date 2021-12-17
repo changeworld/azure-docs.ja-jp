@@ -4,15 +4,16 @@ description: Azure Files の DNS 転送を構成する方法について説明�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 3/19/2020
+ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e8923b578f22f15dbf84b6e2ca33dfe14df38d4b
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94630194"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687139"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Azure Files の DNS 転送の構成
 Azure Files では、ファイル共有を含むストレージ アカウントのプライベート エンドポイントを作成することができます。 プライベート エンドポイントは、多くの異なるアプリケーションで役立ちますが、プライベート ピアリングを使用する VPN または ExpressRoute 接続を使って、オンプレミス ネットワークから Azure ファイル共有に接続する場合に特に便利です。 
@@ -21,6 +22,13 @@ Azure Files では、ファイル共有を含むストレージ アカウント�
 
 この記事で説明されている手順を行う前に、「[Azure Files のデプロイの計画](storage-files-planning.md)」および「[Azure Files のネットワークに関する考慮事項](storage-files-networking-overview.md)」をお読みいただくよう強くお勧めします。
 
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
+
 ## <a name="overview"></a>概要
 Azure Files では、Azure ファイル共有にアクセスするための次の主な 2 種類のエンドポイントが提供されます。 
 - パブリック エンドポイント。パブリック IP アドレスを持ち、世界中のどこからでもアクセスできます。
@@ -28,7 +36,7 @@ Azure Files では、Azure ファイル共有にアクセスするための次�
 
 パブリックおよびプライベート エンドポイントは、Azure ストレージ アカウントに存在します。 ストレージ アカウントは、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。
 
-すべてのストレージ アカウントに、完全修飾ドメイン名 (FQDN) があります。 パブリック クラウド リージョンの場合、この FQDN では `storageaccount.file.core.windows.net` パターンに従います。ここで、`storageaccount` はストレージ アカウントの名前です。 SMB を使用してワークステーションに共有をマウントするなど、この名前に対して要求を行うと、オペレーティング システムでは DNS 参照を実行し、完全修飾ドメイン名を、(SMB 要求を送信するために使用できる) IP アドレスに解決させます。
+すべてのストレージ アカウントに、完全修飾ドメイン名 (FQDN) があります。 パブリック クラウド リージョンの場合、この FQDN では `storageaccount.file.core.windows.net` パターンに従います。ここで、`storageaccount` はストレージ アカウントの名前です。 ワークステーションに共有をマウントするなど、この名前に対して要求を行うと、オペレーティング システムでは DNS 参照を実行し、完全修飾ドメイン名を、IP アドレスに解決させます。
 
 既定では、`storageaccount.file.core.windows.net` はパブリック エンドポイントの IP アドレスに解決されます。 ストレージ アカウントのパブリック エンドポイントは、他の多くのストレージ アカウントのパブリック エンドポイントをホストする Azure ストレージ クラスターでホストされます。 プライベート エンドポイントを作成すると、プライベート DNS ゾーンは、追加された仮想ネットワークにリンクされます。その場合、ストレージ アカウントのプライベート エンドポイントのプライベート IP アドレス用の A レコード エントリに `storageaccount.file.core.windows.net` をマップする CNAME レコードを使用します。 これにより、仮想ネットワーク内で `storageaccount.file.core.windows.net` FQDN を使用して、プライベート エンドポイントの IP アドレスに解決させることができます。
 
@@ -48,8 +56,8 @@ Azure Files への DNS 転送を設定する前に、次の手順を完了して
 > [!Important]  
 > このガイドでは、オンプレミス環境の Windows Server 内で DNS サーバーを使用することを前提としています。 このガイドで説明されているすべての手順は、Windows DNS Server だけでなく、どの DNS サーバーでも使用できます。
 
-## <a name="manually-configuring-dns-forwarding"></a>DNS 転送の手動構成
-Azure 仮想ネットワーク内に DNS サーバーが既に配置されている場合、または組織で使用される任意の方法で独自の仮想マシンを DNS サーバーに単にデプロイする場合は、組み込みの DNS サーバーの PowerShell コマンドレットを使用して、DNS を手動で構成することができます。
+## <a name="configuring-dns-forwarding"></a>DNS 転送の構成
+Azure 仮想ネットワーク内に DNS サーバーが既に配置されている場合、または組織で使用される任意の方法で独自の仮想マシンを DNS サーバーに単にデプロイする場合、組み込みの DNS サーバーの PowerShell コマンドレットを使用して、DNS を構成できます。
 
 オンプレミスの DNS サーバーで、`Add-DnsServerConditionalForwarderZone` を使用して条件付きフォワーダーを作成します。 この条件付きフォワーダーは、トラフィックを効果的に正しく Azure に転送するために、オンプレミスのすべての DNS サーバーにデプロイする必要があります。 `<azure-dns-server-ip>` は、必ず、実際の環境に適した IP アドレスに置き換えてください。
 
@@ -73,60 +81,12 @@ Add-DnsServerConditionalForwarderZone `
         -MasterServers "168.63.129.16"
 ```
 
-## <a name="using-the-azure-files-hybrid-module-to-configure-dns-forwarding"></a>Azure Files ハイブリッド モジュールを使用する DNS 転送の構成
-DNS 転送の構成を可能な限り簡単にするために、Azure Files ハイブリッド モジュールでは自動化が提供されています。 このモジュールで DNS を操作するために提供されているコマンドレットは、Azure 仮想ネットワークに DNS サーバーをデプロイし、オンプレミスの DNS サーバーを更新して転送するのに役立ちます。 
-
-Azure Files ハイブリッド モジュールを使用したことがない場合は、まず、ワークステーションにインストールする必要があります。 [最新バージョン](https://github.com/Azure-Samples/azure-files-samples/releases)の Azure Files ハイブリッド PowerShell モジュールをダウンロードします。
-
-```PowerShell
-# Unzip the downloaded file
-Expand-Archive -Path AzFilesHybrid.zip
-
-# Change the execution policy to unblock importing AzFilesHybrid.psm1 module
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted
-
-# Navigate to where AzFilesHybrid is unzipped and stored and run to copy the files into your path
-.\AzFilesHybrid\CopyToPSPath.ps1 
-
-# Import AzFilesHybrid module
-Import-Module -Name AzFilesHybrid
-```
-
-DNS 転送ソリューションのデプロイには、2 つの手順があります。要求の転送先となる Azure サービスを定義する DNS 転送ルール セットの作成と、DNS フォワーダーの実際のデプロイです。 
-
-次の例では、要求をストレージ アカウントに転送します。これには、Azure Files、Azure Blob storage、Azure Table storage、および Azure Queue storage への要求が含まれます。 必要に応じて、`New-AzDnsForwardingRuleSet` コマンドレットの `-AzureEndpoints` パラメーターを使用して、ルールに追加の Azure サービスの転送を追加できます。 忘れずに、`<virtual-network-resource-group>`、`<virtual-network-name>`、および `<subnet-name>` を実際の環境の適切な値に置き換えてください。
-
-```PowerShell
-# Create a rule set, which defines the forwarding rules
-$ruleSet = New-AzDnsForwardingRuleSet -AzureEndpoints StorageAccountEndpoint
-
-# Deploy and configure DNS forwarders
-New-AzDnsForwarder `
-        -DnsForwardingRuleSet $ruleSet `
-        -VirtualNetworkResourceGroupName "<virtual-network-resource-group>" `
-        -VirtualNetworkName "<virtual-network-name>" `
-        -VirtualNetworkSubnetName "<subnet-name>"
-```
-
-さらに、いくつかの追加パラメーターの指定が役立つ、あるいは必要な場合もあります。
-
-| パラメーター名 | Type | 説明 |
-|----------------|------|-------------|
-| `DnsServerResourceGroupName` | `string` | 既定では、DNS サーバーは、仮想ネットワークと同じリソース グループにデプロイされます。 これが望ましくない場合は、このパラメーターを使用して、デプロイ先の代替リソース グループを選択できます。 |
-| `DnsForwarderRootName` | `string` | 既定では、Azure にデプロイされる DNS サーバーの名前は `DnsFwder-*` となります。このアスタリスクは、反復子によって設定されます。 このパラメーターでは、その名前のルート (つまり、`DnsFwder`) を変更します。 |
-| `VmTemporaryPassword` | `SecureString` | 既定では、ドメインに参加する前に VM の一時的な既定のアカウントに対して、ランダム パスワードが選択されます。 ドメインに参加した後、既定のアカウントは無効になります。 |
-| `DomainToJoin` | `string` | 参加する DNS VM を参加させるドメイン。 既定では、このドメインは、コマンドレットを実行するコンピューターのドメインに基づいて選択されます。 |
-| `DnsForwarderRedundancyCount` | `int` | 仮想ネットワーク用にデプロイする DNS VM の数。 既定では、`New-AzDnsForwarder` によって、Azure 仮想ネットワーク内の 2 つの DNS サーバーを、可用性セットにデプロイして冗長性を確保します。 この数値は、必要に応じて変更できます。 |
-| `OnPremDnsHostNames` | `HashSet<string>` | フォワーダーを作成するために手動で指定されたオンプレミスの DNS ホスト名の一覧。 このパラメーターは、DNS 名が手動で指定されたさまざまなクライアントがある場合など、すべてのオンプレミス DNS サーバーにフォワーダーを適用しない場合に役立ちます。 |
-| `Credential` | `PSCredential` | DNS サーバーを更新するときに使用する資格情報。 これは、ログインに使用したユーザー アカウントに、DNS 設定を変更するアクセス許可がない場合に役立ちます。 |
-| `SkipParentDomain` | `SwitchParameter` | 既定では、DNS フォワーダーは、ご利用の環境内に存在する最上位レベルのドメインに適用されます。 たとえば、`northamerica.corp.contoso.com` が `corp.contoso.com` の子ドメインである場合、`corp.contoso.com` に関連付けられている DNS サーバーに対してフォワーダーが作成されます。 このパラメーターを指定すると、`northamerica.corp.contoso.com` にフォワーダーが作成されます。 |
-
 ## <a name="confirm-dns-forwarders"></a>DNS フォワーダーを確認する
 DNS フォワーダーが正しく適用されているかどうかをテストする前に、`Clear-DnsClientCache` を使用して、ローカル ワークステーションの DNS キャッシュをクリアすることをお勧めします。 ストレージ アカウントの完全修飾ドメイン名を正しく解決できるかどうかをテストするには、`Resolve-DnsName` または `nslookup` を使用します。
 
 ```powershell
 # Replace storageaccount.file.core.windows.net with the appropriate FQDN for your storage account.
-# Note the proper suffix (core.windows.net) depends on the cloud your deployed in.
+# Note the proper suffix (core.windows.net) depends on the cloud you're deployed in.
 Resolve-DnsName -Name storageaccount.file.core.windows.net
 ```
 
@@ -145,7 +105,7 @@ Section    : Answer
 IP4Address : 192.168.0.4
 ```
 
-VPN または ExpressRoute 接続を既に設定している場合は、`Test-NetConnection` を使用して、ストレージ アカウントに正しく TCP 接続できることを確認することもできます。
+SMB ファイル共有をマウントする場合、次の `Test-NetConnection` コマンドを使用して、ストレージ アカウントへの TCP 接続が正常に確立されたことを確認することもできます。
 
 ```PowerShell
 Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCPPort SMB

@@ -7,20 +7,19 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: fa90099a6da79135ae53eecc4996a26649ffa7cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83354dd53d36dee93af943e0238ac6393d20b1cf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90931314"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741446"
 ---
 # <a name="troubleshooting-resources"></a>トラブルシューティングのリソース
 
 この記事では、Azure Arc 対応データ サービスのトラブルシューティングのリソースについて説明します。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="resources-by-type"></a>リソース (種類別)
 

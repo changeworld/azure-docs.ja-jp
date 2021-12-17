@@ -4,19 +4,19 @@ description: Azure SQL Database の自動クエリ チューニングに対す�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: performance
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: danimir
-ms.author: danil
-ms.reviewer: wiassaf, sstein
+author: NikaKinska
+ms.author: nnikolic
+ms.reviewer: mathoma, wiassaf
 ms.date: 06/03/2019
-ms.openlocfilehash: a373a28a180b2a6c72f6a291b9d1437a2e88d9ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e1c8288317ee5d0424ee633a14431d87a78175f
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96500956"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866357"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自動チューニングの電子メール通知
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ Azure SQL Database 自動チューニングの推奨情報は、[REST API](/rest
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>自動チューニング推奨情報の電子メール通知を自動化する
 
-この後のソリューションにより、自動チューニング推奨情報の電子メール通知の送信を自動化します。 説明するソリューションには、チューニング推奨情報を取得するための PowerShell スクリプトの実行の自動化 ([Azure Automation](../../automation/automation-intro.md) を使用) と、電子メール配信ジョブの自動化 ([Microsoft Flow](https://flow.microsoft.com) を使用) が含まれます。
+この後のソリューションにより、自動チューニング推奨情報の電子メール通知の送信を自動化します。 説明するソリューションには、チューニング レコメンデーション情報を取得するための PowerShell スクリプトの実行の自動化 ([Azure Automation](../../automation/automation-intro.md) を使用) と、電子メール配信ジョブの自動化 ([Microsoft Power Automate](https://flow.microsoft.com) を使用) が含まれます。
 
 ## <a name="create-azure-automation-account"></a>Azure Automation アカウントを作成する
 
@@ -181,17 +181,17 @@ PowerShell スクリプトをニーズに合わせてカスタマイズして、
 
 上記の手順では、自動チューニング推奨情報を取得する PowerShell スクリプトが Azure Automation に読み込まれます。 次の手順では、電子メール配信ジョブを自動化してスケジュール設定します。
 
-## <a name="automate-the-email-jobs-with-microsoft-flow"></a>Microsoft Flow で電子メール・ジョブを自動化する
+## <a name="automate-the-email-jobs-with-microsoft-power-automate"></a>Microsoft Power Automate で電子メール・ジョブを自動化する
 
-ソリューションを完成させるには、最後の手順として、3 つのアクション (ジョブ) で構成される自動フローを Microsoft Flow で作成します。
+ソリューションを完成させるには、最後の手順として、3 つのアクション (ジョブ) で構成される自動フローを Microsoft Power Automate で作成します。
 
 - **[Azure Automation - ジョブの作成]** – PowerShell スクリプトを実行して Azure Automation Runbook 内の自動チューニング推奨情報を取得するために使用します。
 - **[Azure Automation - ジョブ出力の取得]** – 実行した PowerShell スクリプトの出力を取得するために使用します。
 - **[Office 365 Outlook – 電子メールの送信]** – 電子メールを送信します。 電子メールは、フロー作成者の職場または学校アカウントを使用して送信されます。
 
-Microsoft Flow の機能について詳しくは、「[Microsoft Flow を使ってみる](/flow/getting-started)」をご覧ください。
+Microsoft Power Automate の機能について詳しくは、「[Microsoft Power Automate を使ってみる](/power-automate/getting-started)」をご覧ください。
 
-この手順の前提条件として、[Microsoft Flow](https://flow.microsoft.com) アカウントを新規登録してログインします。 ソリューションにログインしたら、次の手順に従って **新しいフロー** を設定します。
+この手順の前提条件として、[Microsoft Power Automate](https://flow.microsoft.com) アカウントを新規登録してログインします。 ソリューションにログインしたら、次の手順に従って **新しいフロー** を設定します。
 
 1. **[マイ フロー]** メニュー項目にアクセスします。
 1. [マイ フロー] で、ページの一番上の **[+ 一から作成]** リンクを選択します。

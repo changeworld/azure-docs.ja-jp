@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ロード バランサーで静的 I
 services: container-service
 ms.topic: article
 ms.date: 11/14/2020
-ms.openlocfilehash: bb1e5691027a4bd86b57390e12259ac165ca9ed8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9d49aeb39d4325957591474901496b9424ac0434
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769519"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240511"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) ロード バランサーで静的パブリック IP アドレスと DNS ラベルを使用する
 
@@ -174,4 +174,4 @@ Events:
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
-[ip-sku]: ../virtual-network/public-ip-addresses.md#sku
+[ip-sku]: ../virtual-network/ip-services/public-ip-addresses.md#sku

@@ -4,20 +4,20 @@ description: Node.js を使用して、Azure SQL Database または Azure SQL Ma
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: development
+ms.subservice: connect
 ms.devlang: nodejs
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: v-masebo
-ms.date: 05/29/2020
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma, v-masebo
+ms.date: 05/19/2021
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-js
-ms.openlocfilehash: 44530577972839aacb803d1722fa97716088fa0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9d6ea8cd3ef13fe38ca67caffb01beb64fbb982
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91325438"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012285"
 ---
 # <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Node.js を使用して Azure SQL Database または Azure SQL Managed Instance 内のデータベースに対してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -114,6 +114,35 @@ Azure SQL Database のデータベースに接続するために必要な接続�
         encrypt: true
       }
     };
+    
+    /* 
+        //Use Azure VM Managed Identity to connect to the SQL database
+        const config = {
+            server: process.env["db_server"],
+            authentication: {
+                type: 'azure-active-directory-msi-vm',
+            },
+            options: {
+                database: process.env["db_database"],
+                encrypt: true,
+                port: 1433
+            }
+        };
+        
+        //Use Azure App Service Managed Identity to connect to the SQL database
+        const config = {
+            server: process.env["db_server"],
+            authentication: {
+                type: 'azure-active-directory-msi-app-service',
+            },
+            options: {
+                database: process.env["db_database"],
+                encrypt: true,
+                port: 1433
+            }
+        });
+
+    */
 
     const connection = new Connection(config);
 
@@ -125,6 +154,8 @@ Azure SQL Database のデータベースに接続するために必要な接続�
         queryDatabase();
       }
     });
+    
+    connection.connect();
 
     function queryDatabase() {
       console.log("Reading rows from the Table...");
@@ -153,6 +184,9 @@ Azure SQL Database のデータベースに接続するために必要な接続�
       connection.execSql(request);
     }
     ```
+
+> [!NOTE]
+> 認証にマネージド ID を使用する方法の詳細については、[マネージド ID を使用してデータにアクセスする](../../app-service/tutorial-connect-msi-sql-database.md)ためのチュートリアルを参照してください。
 
 > [!NOTE]
 > このコード例では、Azure SQL Database で **AdventureWorksLT** サンプル データベースを使用します。

@@ -1,18 +1,18 @@
 ---
 title: Azure Bastion リソース ログを有効にして使用する
-description: この記事では、Azure Bastion 診断ログを有効にして使用する方法について説明します。
+description: Azure Bastion 診断ログを有効にして使用する方法について説明します。
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4803ddf4c3d570e9bd52832ec4120c42972003eb
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91445390"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458209"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>Bastion リソース ログを有効にして使用する
 
@@ -48,7 +48,7 @@ ms.locfileid: "91445390"
    ![ストレージの場所を選択する](./media/diagnostic-logs/3-resource-location.png)
 4. 移動した期間の診断ログ データが含まれる、Azure Bastion によって作成された JSON ファイルを探します。
 
-5. ストレージ BLOB コンテナーから JSON ファイルをダウンロードします。 JSON ファイルのエントリの例を次に示します。
+5. ストレージ BLOB コンテナーから JSON ファイルをダウンロードします。 JSON ファイルのログイン成功のエントリの例を次に示します。
 
    ```json
    { 
@@ -69,6 +69,7 @@ ms.locfileid: "91445390"
       "message":"Successfully Connected.",
       "resourceType":"VM",
       "targetVMIPAddress":"172.16.1.5",
+      "userEmail":"<userAzureAccountEmailAddress>"
       "tunnelId":"<tunnelID>"
    },
    "FluentdIngestTimestamp":"2019-10-03T16:03:34.0000000Z",
@@ -76,7 +77,37 @@ ms.locfileid: "91445390"
    "CustomerSubscriptionId":"<subscripionID>"
    }
    ```
-
+   
+   次に示すのは、JSON ファイルのログイン失敗のエントリの例です (ユーザー名とパスワードが正しくない場合など)。
+   
+   ```json
+   { 
+   "time":"2019-10-03T16:03:34.776Z",
+   "resourceId":"/SUBSCRIPTIONS/<subscripionID>/RESOURCEGROUPS/MYBASTION/PROVIDERS/MICROSOFT.NETWORK/BASTIONHOSTS/MYBASTION-BASTION",
+   "operationName":"Microsoft.Network/BastionHost/connect",
+   "category":"BastionAuditLogs",
+   "level":"Informational",
+   "location":"eastus",
+   "properties":{ 
+      "userName":"<username>",
+      "userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
+      "clientIpAddress":"131.107.159.86",
+      "clientPort":24039,
+      "protocol":"ssh",
+      "targetResourceId":"/SUBSCRIPTIONS/<subscripionID>/RESOURCEGROUPS/MYBASTION/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/LINUX-KEY",
+      "subscriptionId":"<subscripionID>",
+      "message":"Login Failed",
+      "resourceType":"VM",
+      "targetVMIPAddress":"172.16.1.5",
+      "userEmail":"<userAzureAccountEmailAddress>"
+      "tunnelId":"<tunnelID>"
+   },
+   "FluentdIngestTimestamp":"2019-10-03T16:03:34.0000000Z",
+   "Region":"eastus",
+   "CustomerSubscriptionId":"<subscripionID>"
+   }
+   ```
+   
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Bastion に関する FAQ](bastion-faq.md) を読む。

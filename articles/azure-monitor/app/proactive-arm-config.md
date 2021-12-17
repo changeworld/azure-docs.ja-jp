@@ -6,16 +6,22 @@ author: harelbr
 ms.author: harelbr
 ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: e3a7b71cd8975957754ba014ecc700484c27a6d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f13bc07ce5ae6a11b59b6d18a609ca2ee259964
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726123"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949404"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Application Insights スマート検出ルールを管理する
 
-Application Insights のスマート検出ルールは、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して管理および構成できます。
+>[!NOTE]
+>Application Insight リソースをアラートベースのスマート検出 (プレビュー) に移行できます。 移行によって、さまざまなスマート検出モジュールのアラート ルールが作成されます。 作成されたこれらのルールは、他の Azure Monitor アラート ルールと同じように管理および構成できます。 これらのルールのアクション グループを構成して、新たな検出時のアクションの実行や通知のトリガーを行うための複数の方法を有効にすることもできます。
+>
+> 移行プロセスと移行後のスマート検出の動作の詳細については、「[スマート検出アラートの移行](../alerts/alerts-smart-detections-migration.md)」を参照してください。
+> 
+
+Application Insights のスマート検出ルールは、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)を使用して管理および構成できます。
 この手法は、Azure Resource Manager オートメーションで新しい Application Insights リソースをデプロイするとき、または既存のリソースの設定を変更するときに使用できます。
 
 ## <a name="smart-detection-rule-configuration"></a>スマート検出ルールの構成
@@ -195,4 +201,3 @@ Azure Resource Manager テンプレートで使用する必要がある、ポー
 - [失敗の異常](./proactive-failure-diagnostics.md)
 - [メモリ リーク](./proactive-potential-memory-leak.md)
 - [パフォーマンスの異常](./proactive-performance-diagnostics.md)
-

@@ -5,18 +5,18 @@ metadata:
   title: 音声アシスタントのドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: trevorbye
+  author: eric-urban
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
-  ms.author: trbye
-  ms.openlocfilehash: f9f5a2934a012ba93accc050ebebee7c844312fc
-  ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+  ms.author: eur
+  ms.openlocfilehash: e7d7de8c3a16b21834b43c868ff982ebbf3c3e6a
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/30/2021
-  ms.locfileid: "98786237"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131508855"
 landingContent:
 - title: 音声アシスタントについて
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: 音声アシスタントの FAQ
-      url: faq-voice-assistants.md
+      url: faq-voice-assistants.yml
     - text: 音声アシスタントの価格
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
   - linkListType: get-started
@@ -78,8 +78,8 @@ landingContent:
       url: ./custom-keyword-basics.md
   - linkListType: reference
     links:
-    - text: カスタム キーワードの名前付けのガイドライン
-      url: ./custom-keyword-overview.md
+    - text: 有効なキーワードの選択
+      url: ./keyword-recognition-guidelines.md
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

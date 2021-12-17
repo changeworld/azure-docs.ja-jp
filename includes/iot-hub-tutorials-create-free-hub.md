@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 9151a84aa03e9b87b02278672622d458fbc5281e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 406893018da40f10f764f44a13d13bd420492519
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99538713"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132353899"
 ---
 Azure portal を使用して IoT ハブを作成するには:
 
@@ -54,7 +54,7 @@ Azure portal を使用して IoT ハブを作成するには:
    - **[IoT Hub ユニット]** : ユニットごとに許可される 1 日あたりのメッセージの数は、ハブの価格レベルによって決まります。 たとえば、ハブで 700,000 件のイングレス メッセージをサポートする場合は、S1 レベルのユニットを 2 つ選択します。
    Azure サブスクリプションごとに、Free レベルの IoT ハブを 1 つ作成できます。 他のレベルのオプションについて詳しくは、[適切な IoT Hub レベルの選択](../articles/iot-hub/iot-hub-scaling.md)に関するページをご覧ください。
 
-   - **[Defender for IoT]** : IoT およびお使いのデバイスに、脅威に対する保護のレイヤーを別途追加するには、これをオンにします。 このオプションは、Free レベルのハブでは使用できません。 この機能の詳細については、[Azure Security Center for IoT](/azure/asc-for-iot/) に関するページを参照してください。
+   - **[Defender for IoT]** : IoT およびお使いのデバイスに、脅威に対する保護のレイヤーを別途追加するには、これをオンにします。 このオプションは、Free レベルのハブでは使用できません。 この機能の詳細については、[Microsoft Defender for IoT](/azure/asc-for-iot/) に関するページを参照してください。
 
    - **[詳細設定]**  >  **[Device-to-cloud パーティション]** : このプロパティでは、device-to-cloud メッセージがそのメッセージの同時閲覧者数に関連付けられます。 ほとんどのハブでは、4 つのパーティションのみが必要となります。 Free レベルのハブは、2 つのパーティションに制限されています。
 

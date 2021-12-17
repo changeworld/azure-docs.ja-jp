@@ -2,16 +2,16 @@
 title: VM insights の Log Analytics ワークスペースの構成
 description: VM insights によって使用される Log Analytics ワークスペースを作成して構成する方法について説明します。
 ms.topic: conceptual
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
-ms.openlocfilehash: 5a0e04772cfc1c9be77c0ad8b32b0e93be8b9f54
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a5a65f99fec0bb0db245450ead9747776e194b46
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046722"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614431"
 ---
 # <a name="configure-log-analytics-workspace-for-vm-insights"></a>VM insights の Log Analytics ワークスペースの構成
 VM insights では、Azure Monitor 内の 1 つ以上の Log Analytics ワークスペースからデータを収集します。 エージェントをオンボードする前に、ワークスペースを作成して構成する必要があります。 この記事では、ワークスペースの要件と、それを VM insights 用に構成するための要件について説明します。
@@ -38,15 +38,13 @@ Azure portal で、 **[Log Analytics ワークスペース]** メニューから
 
 
 * [Azure Portal](../logs/quick-create-workspace.md)
-* [Azure CLI](../logs/quick-create-workspace-cli.md)
+* [Azure CLI](../logs/resource-manager-workspace.md)
 * [PowerShell](../logs/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../logs/resource-manager-workspace.md)
 
 ## <a name="supported-regions"></a>サポートされているリージョン
-VM insights では、[Log Analytics でサポートされているすべてのリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) (以下を除く) で Log Analytics ワークスペースをサポートしています。
+VM insights では、[Log Analytics でサポートされているすべてのリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)で Log Analytics ワークスペースをサポートしています。
 
-- ドイツ中西部
-- 韓国中部
 
 >[!NOTE]
 >Azure VM は任意のリージョンで監視できます。 VM 自体は、Log Analytics ワークスペースでサポートされているリージョンに限定されません。

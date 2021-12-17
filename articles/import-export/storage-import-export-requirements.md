@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 04/28/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 0bfc09a372584a25c23060cef33d1f698e6d5ff3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e766b2aba1aef47b16b4351c7852bb2f457475fa
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712608"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887602"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
 
@@ -62,8 +62,13 @@ Azure Import/Export サービスでは、次の一覧のストレージの種類
 
 |ジョブ  |ストレージ サービス |サポートされています  |サポートされていません  |
 |---------|---------|---------|---------|
+<<<<<<< HEAD
 |[インポート]     |  Azure Blob Storage <br><br> Azure File Storage       | ブロック BLOB と ページ BLOB をサポート <br><br> Files をサポート          |
 |エクスポート     |   Azure Blob Storage       | ブロック BLOB、ページ BLOB、および追加 BLOB をサポート         | Azure Files はサポートされない
+=======
+|インポート     |  Azure Blob Storage <br><br> Azure Files Storage       | ブロック BLOB と ページ BLOB をサポート <br><br> Files をサポート          |
+|エクスポート     |   Azure Blob Storage       | ブロック BLOB、ページ BLOB、および追加 BLOB をサポート         | Azure Files はサポートされない<br>アーカイブ アクセス層からのエクスポートはサポートされない|
+>>>>>>> repo_sync_working_branch
 
 
 ## <a name="supported-hardware"></a>サポートされるハードウェア

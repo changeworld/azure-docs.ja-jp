@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/12/2020
-ms.openlocfilehash: eaafb9536a8667417c0abf4ab570609f2db290bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/16/2021
+ms.openlocfilehash: acf4d6fa3057dca4d1b7ccf0c08ee8c8ca5ef31a
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88935349"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555528"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search の AI エンリッチメントのドキュメント リソース
 
@@ -34,7 +34,8 @@ AI エンリッチメントは、インデクサーベースのインデクス�
 
 ## <a name="hands-on-walkthroughs"></a>ハンズオン チュートリアル
 
-+ [クイック スタート: Azure portal でコグニティブ スキルセットを作成する](cognitive-search-quickstart-blob.md)
++ [クイックスタート: テキスト翻訳とエンティティ スキルセットを作成する](cognitive-search-quickstart-blob.md)
++ [クイックスタート: OCR イメージ スキルセットを作成する](cognitive-search-quickstart-ocr.md)
 + [チュートリアル:AI によるインデックスのエンリッチ](cognitive-search-tutorial-blob.md)
 + [チュートリアル:デバッグ セッションを使用してスキルセットに対する診断、修復、および変更のコミットを行う](cognitive-search-tutorial-debug-sessions.md)
 
@@ -42,9 +43,9 @@ AI エンリッチメントは、インデクサーベースのインデクス�
 
 + [クイック スタート: Azure portal でナレッジ ストアを作成する](knowledge-store-create-portal.md)
 + [REST と Postman を使用してナレッジ ストアを作成する](knowledge-store-create-rest.md)
-+ [Storage Explorer でナレッジ ストアを表示する](knowledge-store-view-storage-explorer.md)
++ [ストレージ ブラウザーでナレッジ ストアを表示する](knowledge-store-view-storage-explorer.md)
 + [Power BI を使用してナレッジ ストアに接続する](knowledge-store-connect-power-bi.md)
-+ [プロジェクションの例 (エンリッチメントを整形してエクスポートする方法)](knowledge-store-projections-examples.md)
++ [ナレッジ ストアでのプロジェクションを定義する](knowledge-store-projections-examples.md)
 
 ## <a name="custom-skills-advanced"></a>カスタム スキル (上級)
 
@@ -71,11 +72,12 @@ AI エンリッチメントは、インデクサーベースのインデクス�
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
   + [Microsoft.Skills.Text.KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
   + [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
-  + [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)
+  + [Microsoft.Skills.Text.V3.EntityLinkingSkill](cognitive-search-skill-entity-linking-v3.md)
+  + [Microsoft.Skills.Text.V3.EntityRecognitionSkill](cognitive-search-skill-entity-recognition-v3.md)
   + [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md)
   + [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)
   + [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md)
-  + [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)
+  + [Microsoft.Skills.Text.V3.SentimentSkill](cognitive-search-skill-sentiment-v3.md)
   + [Microsoft.Skills.Text.TranslationSkill](cognitive-search-skill-text-translation.md)
   + [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md)
@@ -89,6 +91,8 @@ AI エンリッチメントは、インデクサーベースのインデクス�
 
 + [非推奨のスキル](cognitive-search-skill-deprecated.md)
   + [Microsoft.Skills.Text.NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
+  + [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)
+  + [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)
 
 ## <a name="apis"></a>API
 

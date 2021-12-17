@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と ITRP の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と ITRP の統合'
 description: このチュートリアルでは、Azure Active Directory と ITRP の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,27 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 10/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b972c3c6779d3ca288685d1a8921bceac7d001dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459681"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346384"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-itrp"></a>チュートリアル:Azure Active Directory と ITRP の統合
+# <a name="tutorial-azure-ad-sso-integration-with-itrp"></a>チュートリアル: Azure AD SSO と ITRP の統合
 
-このチュートリアルでは、ITRP と Azure Active Directory (Azure AD) を統合する方法について説明します。
-この統合には、次の利点があります。
+このチュートリアルでは、ITRP と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と ITRP を統合すると、次のことができます。
 
-* Azure AD を使用して、ITRP にアクセスできるユーザーを管理できます。
-* ユーザーが自分の Azure AD アカウントを使用して ITRP に自動的にサインイン (シングル サインオン) するように設定できます。
-* 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+* ITRP にアクセスできる Azure AD ユーザーを制御する。
+* ユーザーが自分の Azure AD アカウントを使用して ITRP に自動的にサインインできるようにする。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,70 +41,50 @@ ITRP と Azure AD の統合を構成するには、以下が必要です。
 
 ## <a name="add-itrp-from-the-gallery"></a>ギャラリーからの ITRP の追加
 
-Azure AD への ITRP の統合を設定するには、ギャラリーからマネージド SaaS アプリの一覧に ITRP を追加する必要があります。
+Azure AD への ITRP の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に ITRP を追加する必要があります。
 
-1. [Azure portal](https://portal.azure.com) の左側のウィンドウで、 **[Azure Active Directory]** を選択します。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**ITRP**」と入力します。
+1. 結果パネルから **[ITRP]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-    ![[Azure Active Directory] を選択します。](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-itrp"></a>ITRP の Azure AD SSO の構成とテスト
 
-2. **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に移動します。
+**B.Simon** というテスト ユーザーを使用して、ITRP に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと ITRP の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+ITRP に対する Azure AD SSO を構成してテストするには、次の手順を行います。
 
-3. アプリケーションを追加するには、ウィンドウの上部の **[新しいアプリケーション]** を選択します。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[ITRP SSO の構成](#configure-itrp-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[ITRP のテスト ユーザーの作成](#create-an-itrp-test-user)** - ITRP で B.Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-    ![[新しいアプリケーション] を選択する](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-4. 検索ボックスに「**ITRP**」と入力します。 検索結果で **[ITRP]** を選択し、 **[追加]** を選択します。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-     ![[検索結果]](common/search-new-app.png)
+1. Azure portal の **ITRP** アプリケーション統合ページで、 **[管理]** セクションを見つけ、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、Britta Simon という名前のテスト ユーザーを使用して、ITRP に対する Azure AD シングル サインオンを構成およびテストします。
-シングル サインオンを有効にするには、Azure AD ユーザーと ITRP の対応するユーザーの間で、関係を確立する必要があります。
-
-ITRP に対する Azure AD シングル サインオンを構成およびテストするには、以下の手順を完了する必要があります。
-
-1. **[Azure AD のシングル サインオンを構成](#configure-azure-ad-single-sign-on)** して、この機能をユーザーに対して有効にします。
-2. アプリケーション側で **[ITRP シングル サインオンを構成](#configure-itrp-single-sign-on)** します。
-3. Azure AD のシングル サインオンをテストするための **[Azure AD テスト ユーザーを作成](#create-an-azure-ad-test-user)** します。
-4. **[Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)** て、Azure AD のシングル サインオンをそのユーザーに対して有効にします。
-5. **[ITRP テスト ユーザーを作成](#create-an-itrp-test-user)** して、Azure AD の対応するユーザーにリンクさせます。
-6. **[シングル サインオンをテスト](#test-single-sign-on)** して、この構成が機能することを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal で Azure AD のシングル サインオンを有効にします。
-
-ITRP に対する Azure AD シングル サインオンを構成するには、次の手順を実行します。
-
-1. [Azure portal](https://portal.azure.com/) の ITRP アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![[シングル サインオン] の選択](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログ ボックスで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン方式の選択](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
-
-    ![[SAML でシングル サインオンをセットアップします] ページを示すスクリーンショット。[編集] アイコンが選択されています。](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** ダイアログ ボックスで、次の手順を実行します。
 
-    ![[基本的な SAML 構成] ダイアログ ボックス](common/sp-identifier.png)
+    1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。
 
-    1. **[サイン オン URL]** ボックスに、次のパターンの URL を入力します。
+       `https://<tenant-name>.itrp.com`
+
+    1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
     
-       `https://<tenant-name>.itrp.com`
-
-    1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンの URL を入力します。
-
-       `https://<tenant-name>.itrp.com`
+       `https://<tenant-name>.itrp.com`   
 
     > [!NOTE]
-    > これらの値はプレースホルダーです。 実際のサインオン URL と識別子を使用する必要があります。 この値を取得するには、[ITRP サポート チーム](https://www.4me.com/support/)に問い合わせてください。 また、Azure portal の **[基本的な SAML 構成]** ダイアログ ボックスに示されているパターンを参照することもできます。
+    > これらの値はプレースホルダーです。 実際の識別子とサインオン URL を使用する必要があります。 この値を取得するには、[ITRP サポート チーム](https://www.4me.com/support/)に問い合わせてください。 また、Azure portal の **[基本的な SAML 構成]** ダイアログ ボックスに示されているパターンを参照することもできます。
 
 5. **[SAML 署名証明書]** セクションで **[編集]** アイコンを選択して、 **[SAML 署名証明書]** ダイアログ ボックスを開きます。
 
@@ -123,29 +98,47 @@ ITRP に対する Azure AD シングル サインオンを構成するには、�
 
     ![構成 URL をコピーする](common/copy-configuration-urls.png)
 
-    1. **[ログイン URL]** 。
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-    1. **[Azure AD 識別子]** 。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-    1. **[ログアウト URL]** 。
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
-### <a name="configure-itrp-single-sign-on"></a>ITRP シングル サインオンの構成
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、B.Simon に ITRP へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[ITRP]\(ITRP\)** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-itrp-sso"></a>ITRP SSO の構成
 
 1. 新しい Web ブラウザー ウィンドウで、ITRP 企業サイトに管理者としてサインインします。
 
 1. ウィンドウの上部にある **[Settings]\(設定\)** アイコンを選択します。
 
-    ![[設定] アイコン](./media/itrp-tutorial/ic775570.png "Settings icon")
+    ![[設定] アイコン](./media/itrp-tutorial/profile.png "Settings icon")
 
 1. 左側のウィンドウで、 **[Single Sign-On]\(シングル サインオン\)** を選択します。
 
-    ![[Single Sign-On]\(シングル サインオン\) を選択します](./media/itrp-tutorial/ic775571.png "[シングル サインオン] の選択")
+    ![[Single Sign-On]\(シングル サインオン\) を選択します](./media/itrp-tutorial/setting.png "[シングル サインオン] の選択")
 
 1. **[Single Sign-On]\(シングル サインオン\)** 構成セクションで、次の手順を実行します。
 
-    ![[Enabled]\(有効\) が選択されている [Single Sign-On]\(シングル サインオン\) セクションを示すスクリーンショット。](./media/itrp-tutorial/ic775572.png "[Single Sign-On]\(シングル サインオン\) セクション")
+    ![[Enabled]\(有効\) が選択されている [Single Sign-On]\(シングル サインオン\) セクションを示すスクリーンショット。](./media/itrp-tutorial/configuration.png "[Single Sign-On]\(シングル サインオン\) セクション")
 
-    ![この手順で説明されている情報を追加できる [Single Sign-On]\(シングル サインオン\) セクションを示すスクリーンショット。](./media/itrp-tutorial/ic775573.png "[Single Sign-On]\(シングル サインオン\) セクション")
+    ![この手順で説明されている情報を追加できる [Single Sign-On]\(シングル サインオン\) セクションを示すスクリーンショット。](./media/itrp-tutorial/certificate.png "[Single Sign-On]\(シングル サインオン\) セクション")
 
     1. **[Enabled]** を選択します。
 
@@ -157,56 +150,6 @@ ITRP に対する Azure AD シングル サインオンを構成するには、�
 
     1. **[保存]** を選択します。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-
-このセクションでは、Azure portal で Britta Simon という名前のテスト ユーザーを作成します。
-
-1. Azure portal で、左側のウィンドウの **[Azure Active Directory]** を選択し、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[すべてのユーザー] を選択する](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] を選択する](common/new-user.png)
-
-3. **[ユーザー]** ダイアログ ボックスで、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-  
-    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
-
-    1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
-
-    1. **［作成］** を選択します
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に ITRP へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[ITRP]** の順に選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で、 **[ITRP]** を選択します。
-
-    ![アプリケーションの一覧](common/all-applications.png)
-
-3. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーとグループ] の選択](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] を選択する](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧で **[Britta Simon]** を選択し、ウィンドウの下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 ウィンドウの下部にある **[選択]** ボタンをクリックします。
-
-7. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
-
 ### <a name="create-an-itrp-test-user"></a>ITRP のテスト ユーザーの作成
 
 Azure AD ユーザーが ITRP にサインインできるようにするには、そのユーザーを ITRP に追加する必要があります。 手動で追加する必要があります。
@@ -217,19 +160,19 @@ Azure AD ユーザーが ITRP にサインインできるようにするには�
 
 1. ウィンドウの上部にある **[Records]\(記録\)** アイコンを選択します。
 
-    ![[Records]\(記録\) アイコン](./media/itrp-tutorial/ic775575.png "[Records]\(記録\) アイコン")
+    ![[Records]\(記録\) アイコン](./media/itrp-tutorial/account.png "[Records]\(記録\) アイコン")
 
 1. メニューで **[People]\(ユーザー\)** を選択します。
 
-    ![[People]\(ユーザー\) を選択します](./media/itrp-tutorial/ic775587.png "[People]\(ユーザー\) を選択します")
+    ![[People]\(ユーザー\) を選択します](./media/itrp-tutorial/user.png "[People]\(ユーザー\) を選択します")
 
 1. プラス記号 ( **+** ) を選択して、新しいユーザーを追加します。
 
-    ![プラス記号を選択します](./media/itrp-tutorial/ic775576.png "プラス記号を選択します")
+    ![プラス記号を選択します](./media/itrp-tutorial/people.png "プラス記号を選択します")
 
 1. **[Add New Person]\(新しいユーザーの追加\)** ダイアログ ボックスで、次の手順を実行します。
 
-    ![[Add New Person]\(新しいユーザーの追加\) ダイアログ ボックス](./media/itrp-tutorial/ic775577.png "[Add New Person]\(新しいユーザーの追加\) ダイアログ ボックス")
+    ![[Add New Person]\(新しいユーザーの追加\) ダイアログ ボックス](./media/itrp-tutorial/details.png "[Add New Person]\(新しいユーザーの追加\) ダイアログ ボックス")
 
     1. 追加する有効な Azure AD アカウントの名前とメール アドレスを入力します。
 
@@ -238,16 +181,16 @@ Azure AD ユーザーが ITRP にサインインできるようにするには�
 > [!NOTE]
 > ITRP から提供されているユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+## <a name="test-sso"></a>SSO のテスト
 
-ここで、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストする必要があります。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [ITRP] タイルを選択すると、SSO を設定した ITRP インスタンスに自動的にサインインします。 アクセス パネルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる ITRP のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+* ITRP のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](./tutorial-list.md)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [ITRP] タイルをクリックすると、ITRP のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+ITRP を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

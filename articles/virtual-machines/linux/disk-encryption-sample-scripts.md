@@ -9,24 +9,26 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: f11677d9ebc31f1c1f7cc6332b07b69f8e35ad52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41b449e9d4216d591a76815ba7c930b5c23fdfc6
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561179"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695668"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Linux VM 用の Azure Disk Encryption のサンプル スクリプト
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 この記事では、事前に暗号化された VHD の準備およびその他のタスクのためのサンプル スクリプトを提供します。  
 
 > [!NOTE]
 > すべてのスクリプトでは、特に明記されている場合を除き、非 AAD の最新バージョンの ADE が参照されます。
 
-## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Azure Disk Encryption 用の PowerShell スクリプトのサンプル 
+## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Azure Disk Encryption 用の PowerShell スクリプトのサンプル
 
 - **サブスクリプション内の暗号化された VM をすべて一覧表示する**
-  
+
   [この PowerShell スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1)を使用して、サブスクリプションに存在するすべてのリソース グループの ADE で暗号化されたすべての VM と拡張バージョンを見つけることができます。
 
   また、これらのコマンドレットを使用すると、ADE で暗号化されたすべての VM が表示されます (拡張機能のバージョンは表示されません)。
@@ -38,19 +40,19 @@ ms.locfileid: "102561179"
    ```
 
 - **サブスクリプション内のすべての暗号化された VMSS インスタンスを一覧表示する**
-    
+
     [この PowerShell スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1)を使用して、サブスクリプションに存在するすべてのリソース グループの ADE で暗号化されたすべての VMSS インスタンスと拡張バージョンを見つけることができます。
 
-- **キー コンテナー内の VM を暗号化するために使用されるディスクの暗号化シークレットをすべて一覧表示する** 
+- **キー コンテナー内の VM を暗号化するために使用されるディスクの暗号化シークレットをすべて一覧表示する**
 
    ```azurepowershell-interactive
    Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
    ```
 
 ### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>Azure Disk Encryption の前提条件となる PowerShell スクリプトの使用
-Azure Disk Encryption の前提条件に既に精通している場合は、[Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )を使用できます。 この PowerShell スクリプトの使用例については、[VM の暗号化のクイック スタート](disk-encryption-powershell-quickstart.md)に関するページを参照してください。 既存のリソース グループ内の既存の VM のすべてのディスクを暗号化するために、スクリプトの 211 行目から始まるセクションのコメントを削除することができます。 
+Azure Disk Encryption の前提条件に既に精通している場合は、[Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )を使用できます。 この PowerShell スクリプトの使用例については、[VM の暗号化のクイック スタート](disk-encryption-powershell-quickstart.md)に関するページを参照してください。 既存のリソース グループ内の既存の VM のすべてのディスクを暗号化するために、スクリプトの 211 行目から始まるセクションのコメントを削除することができます。
 
-次の表は、PowerShell スクリプトでどのパラメーターを使用することができるかを示しています。 
+次の表は、PowerShell スクリプトでどのパラメーターを使用することができるかを示しています。
 
 
 |パラメーター|説明|必須|
@@ -65,30 +67,30 @@ Azure Disk Encryption の前提条件に既に精通している場合は、[Azu
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Azure AD アプリを使用せずに VM を暗号化また暗号化解除する
 
-- [既存または実行中の Linux VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
-- [実行中の Linux VM で暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
-    - Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。  
+- [既存または実行中の Linux VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm-without-aad)
+- [実行中の Linux VM で暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm)
+    - Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
 
 ### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Azure AD アプリを使用して VM を暗号化また暗号化解除する (以前のリリース)
- 
-- [既存または実行中の Linux VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
+
+- [既存または実行中の Linux VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm)
 
 
--  [実行中の Linux VM で暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm) 
-    - Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。 
+-  [実行中の Linux VM で暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-linux-vm)
+    - Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
 
 
-- [事前に暗号化された VHD/ストレージ BLOB から、新しい暗号化されたマネージド ディスクを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
+- [事前に暗号化された VHD/ストレージ BLOB から、新しい暗号化されたマネージド ディスクを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/create-encrypted-managed-disk)
     - 事前に暗号化された VHD とその対応する暗号化設定がある場合、新しい暗号化されたマネージド ディスクが作成されます
 
 ## <a name="encrypting-an-os-drive-on-a-running-linux-vm"></a>実行中の Linux VM での OS ドライブの暗号化
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>OS ディスクを暗号化するための前提条件
 
-* VM では、[Azure Disk Encryption でサポートされているオペレーティング システム](disk-encryption-overview.md#supported-vms)に関する記事で示されている OS ディスクの暗号化と互換性のあるディストリビューションが使用されている必要があります 
+* VM では、[Azure Disk Encryption でサポートされているオペレーティング システム](disk-encryption-overview.md#supported-vms)に関する記事で示されている OS ディスクの暗号化と互換性のあるディストリビューションが使用されている必要があります
 * VM は、Azure Resource Manager で Marketplace イメージから作成する必要があります。
 * 少なくとも 4 GB の RAM を持つAzure VM (推奨するサイズは 7 GB)。
-* (RHEL と CentOS については) SELinux を無効にします。 SELinux を無効にする方法については、 VM で「[SELinux User's and Administrator's Guide (SELinux ユーザーおよび管理者用ガイド)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)」の「4.4.2. Disabling SELinux (SELinux の無効化)」をご覧ください。
+* (RHEL と CentOS については) SELinux を無効にします。 SELinux を無効にする方法については、 VM で「[SELinux User's and Administrator's Guide (SELinux ユーザーおよび管理者用ガイド)](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/selinux_users_and_administrators_guide/sect-security-enhanced_linux-working_with_selinux-changing_selinux_modes#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)」の「4.4.2. Disabling SELinux (SELinux の無効化)」をご覧ください。
 * SELinux を無効にしたら、少なくとも 1 回、VM を再起動してください。
 
 ### <a name="steps"></a>手順
@@ -151,7 +153,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
                               |-- virtualMachines
                                    |-- [Your virtual machine]
                                         |-- InstanceView
-  ```                
+  ```
 
   InstanceView で、画面を下にスクロールして、ドライブの暗号化の状態を表示します。
 
@@ -166,7 +168,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
   OS 暗号化の進行中は、VM にサインインしないでください。 ログのコピーは、他の 2 つの方法が失敗した場合にのみ行ってください。
 
 ## <a name="prepare-a-pre-encrypted-linux-vhd"></a>事前に暗号化された Linux VHD を準備する
-事前に暗号化された VHD の準備は、ディストリビューションによって異なる場合があります。 Ubuntu 16、openSUSE 13.2、および CentOS 7 の準備に関する例を利用できます。 
+事前に暗号化された VHD の準備は、ディストリビューションによって異なる場合があります。 Ubuntu 16、openSUSE 13.2、および CentOS 7 の準備に関する例を利用できます。
 
 ### <a name="ubuntu-16"></a>Ubuntu 16
 次の手順に従って、ディストリビューションのインストール時に暗号化を構成します。
@@ -267,7 +269,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
    ![openSUSE 13.2 のセットアップ - ブート時のパスフレーズ指定](./media/disk-encryption/opensuse-encrypt-fig2.png)
 
-3. 「[Azure 用の SLES または openSUSE 仮想マシンの準備](./suse-create-upload-vhd.md?toc=/azure/virtual-machines/linux/toc.json#prepare-opensuse-131)」の手順に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
+3. 「[Azure 用の SLES または openSUSE 仮想マシンの準備](./suse-create-upload-vhd.md?toc=/azure/virtual-machines/linux/toc.json#prepare-opensuse-152)」の手順に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
 Azure で使用する暗号化を構成するには、次の手順を行います。
 1. /etc/dracut.conf を編集し、次の行を追加します。
@@ -400,7 +402,7 @@ Azure で使用する暗号化を構成するには、次の手順を行いま�
         break
     fi
     done
-    ```    
+    ```
 5. “/usr/sbin/dracut -f -v” を実行して initrd を更新します。
 
     ![CentOS 7 のセットアップ - /usr/sbin/dracut -f -v の実行](./media/disk-encryption/centos-encrypt-fig5.png)
@@ -413,7 +415,7 @@ DM-Crypt 暗号化を有効にした後、ローカル環境で暗号化され�
 ## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>事前に暗号化された VM 用のシークレットをご自分のキー コンテナーにアップロードする
 Azure AD アプリ (以前のリリース) を使用して暗号化する場合、前に取得したディスク暗号化シークレットを、キー コンテナーにシークレットとしてアップロードする必要があります。 Key Vault では、ディスク暗号化だけではなく、Azure AD クライアントに対するアクセス許可も有効になっている必要があります。
 
-```powershell 
+```powershell
  $AadClientId = "My-AAD-Client-Id"
  $AadClientSecret = "My-AAD-Client-Secret"
 
@@ -421,7 +423,7 @@ Azure AD アプリ (以前のリリース) を使用して暗号化する場合�
 
  Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ServicePrincipalName $AadClientId -PermissionsToKeys all -PermissionsToSecrets all
  Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -EnabledForDiskEncryption
-``` 
+```
 
 ### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>KEK で暗号化されないディスク暗号化シークレット
 キー コンテナーでシークレットを設定するには、[Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret) を使用します。 パスフレーズが base64 文字列としてエンコードされた後、キー コンテナーにアップロードされます。 また、Key Vault でシークレットを作成する際には、以下のタグが設定されます。

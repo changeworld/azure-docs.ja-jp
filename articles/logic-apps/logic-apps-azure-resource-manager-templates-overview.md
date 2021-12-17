@@ -3,15 +3,15 @@ title: 概要 - Azure Logic Apps のデプロイを自動化する
 description: Azure Logic Apps のデプロイを自動化するための Azure Resource Manager テンプレートについて説明します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: estfan, azla
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: 44131ecf6fd3d8d2f07f0fe567fb924ac8621682
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 538ee3d5dec64e2558297005a600cfd1662a322a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110004"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223879"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
@@ -30,16 +30,16 @@ ms.locfileid: "106110004"
 
 Resource Manager テンプレートの詳細については、次のトピックをご覧ください。
 
-* [Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/templates/template-syntax.md)
-* [Azure Resource Manager テンプレートのベスト プラクティス](../azure-resource-manager/templates/template-best-practices.md)
-* [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates/templates-cloud-consistency.md)
+* [Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/templates/syntax.md)
+* [Azure Resource Manager テンプレートのベスト プラクティス](../azure-resource-manager/templates/best-practices.md)
+* [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates/template-cloud-consistency.md)
 
 ロジック アプリ、統合アカウント、統合アカウントの成果物に固有のテンプレート リソースの情報については、「[Microsoft.Logic resource types](/azure/templates/microsoft.logic/allversions)」(Microsoft.Logic リソースの種類) を参照してください。
 
 サンプルのロジック アプリ テンプレートについては、次の例をご覧ください。
 
 * このトピックのサンプルで使用されている[完全なテンプレート](#full-example-template)
-* GitHub にある[サンプルのクイックスタート ロジック アプリ テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create)
+* GitHub にある[サンプルのクイックスタート ロジック アプリ テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json)
 
 Logic Apps REST API については、最初に [Azure Logic Apps REST API の概要](/rest/api/logic)をご覧ください。
 
@@ -47,7 +47,7 @@ Logic Apps REST API については、最初に [Azure Logic Apps REST API の�
 
 ## <a name="template-structure"></a>テンプレートの構造
 
-最上位レベルでは、Resource Manager テンプレートの構造は次のようになっています。詳しくは、[Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/templates/template-syntax.md)に関するトピックをご覧ください。
+最上位レベルでは、Resource Manager テンプレートの構造は次のようになっています。詳しくは、[Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/templates/syntax.md)に関するトピックをご覧ください。
 
 ```json
 {
@@ -65,8 +65,8 @@ Logic Apps REST API については、最初に [Azure Logic Apps REST API の�
 
 | 属性 | 説明 |
 |-----------|-------------|
-| `parameters` | Azure でデプロイするリソースを作成およびカスタマイズするときに使用する値を受け取る[テンプレート パラメーター](../azure-resource-manager/templates/template-syntax.md#parameters)を宣言します。 たとえば、これらのパラメーターは、ロジック アプリの名前と場所、接続、およびデプロイに必要なその他のリソースの値を受け取ります。 これらのパラメーターの値は、このトピックで後述する[パラメーター ファイル](#template-parameter-files)に格納することができます。 一般的な詳細については、[Resource Manager テンプレートの構造と構文のパラメーター](../azure-resource-manager/templates/template-syntax.md#parameters)に関する記事をご覧ください。 |
-| `resources` | ロジック アプリ、接続、Azure ストレージ アカウントなど、作成または更新して Azure リソース グループにデプロイする[リソース](../azure-resource-manager/templates/template-syntax.md#resources)を定義します。 一般的な詳細については、[Resource Manager テンプレートの構造と構文のリソース](../azure-resource-manager/templates/template-syntax.md#resources)に関する記事をご覧ください。 |
+| `parameters` | Azure でデプロイするリソースを作成およびカスタマイズするときに使用する値を受け取る[テンプレート パラメーター](../azure-resource-manager/templates/syntax.md#parameters)を宣言します。 たとえば、これらのパラメーターは、ロジック アプリの名前と場所、接続、およびデプロイに必要なその他のリソースの値を受け取ります。 これらのパラメーターの値は、このトピックで後述する[パラメーター ファイル](#template-parameter-files)に格納することができます。 一般的な詳細については、[Resource Manager テンプレートの構造と構文のパラメーター](../azure-resource-manager/templates/syntax.md#parameters)に関する記事をご覧ください。 |
+| `resources` | ロジック アプリ、接続、Azure ストレージ アカウントなど、作成または更新して Azure リソース グループにデプロイする[リソース](../azure-resource-manager/templates/syntax.md#resources)を定義します。 一般的な詳細については、[Resource Manager テンプレートの構造と構文のリソース](../azure-resource-manager/templates/syntax.md#resources)に関する記事をご覧ください。 |
 |||
 
 ロジック アプリ テンプレートのファイル名には、次の形式を使用します。
@@ -80,7 +80,7 @@ Logic Apps REST API については、最初に [Azure Logic Apps REST API の�
 
 ## <a name="template-parameters"></a>Template parameters
 
-ロジック アプリ テンプレートには、さまざまなレベルに存在し、さまざまな機能を実行する複数の `parameters` オブジェクトがあります。 たとえば、最上位レベルでは、Azure でリソースを作成およびデプロイするときに受け取って使用する値の[テンプレート パラメーター](../azure-resource-manager/templates/template-syntax.md#parameters)を宣言できます。次に例を示します。
+ロジック アプリ テンプレートには、さまざまなレベルに存在し、さまざまな機能を実行する複数の `parameters` オブジェクトがあります。 たとえば、最上位レベルでは、Azure でリソースを作成およびデプロイするときに受け取って使用する値の[テンプレート パラメーター](../azure-resource-manager/templates/syntax.md#parameters)を宣言できます。次に例を示します。
 
 * ロジック アプリ
 * [マネージド コネクタ](../connectors/apis-list.md)を介して他のサービスやシステムにアクセスするためにロジック アプリが使用する接続
@@ -88,7 +88,7 @@ Logic Apps REST API については、最初に [Azure Logic Apps REST API の�
 
   たとえば、ロジック アプリで企業間 (B2B) のシナリオに[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)を使用している場合、テンプレートの最上位レベルの `parameters` オブジェクトによって、その統合アカウントのリソース ID を受け取るパラメーターが宣言されます。
 
-パラメーター定義の一般的な構造と構文を次に示します。詳しくは、[Resource Manager テンプレートの構造と構文のパラメーター](../azure-resource-manager/templates/template-syntax.md#parameters)に関する記事をご覧ください。
+パラメーター定義の一般的な構造と構文を次に示します。詳しくは、[Resource Manager テンプレートの構造と構文のパラメーター](../azure-resource-manager/templates/syntax.md#parameters)に関する記事をご覧ください。
 
 ```json
 "<parameter-name>": {
@@ -149,7 +149,7 @@ Logic Apps REST API については、最初に [Azure Logic Apps REST API の�
 
 テンプレート パラメーターのセキュリティ保護の詳細については、次のトピックを参照してください。
 
-* [テンプレート パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/template-best-practices.md#parameters)
+* [テンプレート パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/best-practices.md#parameters)
 * [テンプレート パラメーターのセキュリティを強化する](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 * [Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -171,7 +171,7 @@ Logic Apps REST API については、最初に [Azure Logic Apps REST API の�
 
 * 機密性の高い値やセキュリティ保護が必要な値を除き、すべてのパラメーターに `defaultValue` 属性を含めます。これには空の値を指定できます。 ユーザー名、パスワード、およびシークレットには、常にセキュリティで保護されたパラメーターを使用してください。 機密性の高いパラメーター値を非表示にしたり保護したりするには、次のトピックのガイダンスに従ってください。
 
-  * [テンプレート パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/template-best-practices.md#parameters)
+  * [テンプレート パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/best-practices.md#parameters)
 
   * [テンプレート パラメーターのセキュリティを強化する](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
@@ -179,7 +179,7 @@ Logic Apps REST API については、最初に [Azure Logic Apps REST API の�
 
 * テンプレート パラメーター名をワークフロー定義パラメーター名と区別するために、テンプレート パラメーターには `TemplateFabrikamPassword` のようなわかりやすい名を使用できます。
 
-テンプレートに関するその他のベスト プラクティスについては、[テンプレート パラメーターのベスト プラクティス](../azure-resource-manager/templates/template-best-practices.md#parameters)に関する記事をご覧ください。
+テンプレートに関するその他のベスト プラクティスについては、[テンプレート パラメーターのベスト プラクティス](../azure-resource-manager/templates/best-practices.md#parameters)に関する記事をご覧ください。
 
 <a name="template-parameter-files"></a>
 
@@ -275,8 +275,8 @@ Azure リソース グループ内のすべてのリソースのリソース定�
 
 テンプレート リソースとその属性に関する一般的な情報については、次のトピックをご覧ください。
 
-* [Azure Resource Manager テンプレートの構造と構文のリソース](../azure-resource-manager/templates/template-syntax.md#resources)
-* [テンプレート リソースのベスト プラクティス](../azure-resource-manager/templates/template-best-practices.md#resources)
+* [Azure Resource Manager テンプレートの構造と構文のリソース](../azure-resource-manager/templates/syntax.md#resources)
+* [テンプレート リソースのベスト プラクティス](../azure-resource-manager/templates/best-practices.md#resources)
 
 <a name="logic-app-resource-definition"></a>
 
@@ -534,9 +534,15 @@ Azure リソース グループ内のすべてのリソースのリソース定�
             // End workflow definition
             // Start workflow definition parameter values
             "parameters": {
-               "authenticationType": "[parameters('TemplateAuthenticationType')]", // Template parameter reference
-               "fabrikamPassword": "[parameters('TemplateFabrikamPassword')]", // Template parameter reference
-               "fabrikamUserName": "[parameters('TemplateFabrikamUserName')]" // Template parameter reference
+               "authenticationType": {
+                  "value": "[parameters('TemplateAuthenticationType')]" // Template parameter reference
+               },
+               "fabrikamPassword": {                  
+                  "value": "[parameters('TemplateFabrikamPassword')]" // Template parameter reference
+               },
+               "fabrikamUserName": {
+                  "value": "[parameters('TemplateFabrikamUserName')]" // Template parameter reference
+               }
             },
             "accessControl": {}
          },
@@ -1121,7 +1127,7 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
          "defaultValue": "",
          "metadata": {
             "description": "Name of the storage account the connector should use."
-         },
+         }
 
       },
       "azureblob_1_accountName": {
@@ -1164,7 +1170,7 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
                            "connection": {
                               "name": "@parameters('$connections')['azureblob']['connectionId']"
                            }
-                        },
+                        }
                      },
                      "method": "post",
                      "body": "@triggerBody()?['Body']",

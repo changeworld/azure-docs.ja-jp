@@ -1,21 +1,23 @@
 ---
 title: Azure Image Builder サービスのネットワーク オプション
 description: Azure VM Image Builder サービスをデプロイするときのネットワーク オプションについて理解します
-author: danielsollondon
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
-ms.openlocfilehash: cd5027ca6e0ce3dc02da14b7dd6afd6e00e3f92d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1285f3673851e5784a5bc35b606e2dc30d7cfd09
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669437"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691871"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Azure Image Builder サービスのネットワーク オプション
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 既存の VNET を使用するかどうかにかかわらず、Azure Image Builder をデプロイすることを選択する必要があります。
 

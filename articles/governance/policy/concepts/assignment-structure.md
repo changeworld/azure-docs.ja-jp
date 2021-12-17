@@ -1,14 +1,14 @@
 ---
 title: ポリシー割り当て構造の詳細
 description: ポリシーの定義とパラメーターを評価のためにリソースに関連付けるために Azure Policy によって使用されるポリシー割り当ての定義について説明します。
-ms.date: 03/17/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b29becc3324c0d174db2102c4ae7ac15206e567
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604867"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323442"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy の割り当ての構造
 
@@ -60,6 +60,30 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 ## <a name="display-name-and-description"></a>表示名と説明
 
 **displayName** と **description** は、ポリシーの割り当てを識別し、リソースの特定のセットで使用するためのコンテキストを提供するために使用します。 **displayName** の最大長は _128_ 文字で、**description** の最大長は _512_ 文字です。
+
+## <a name="metadata"></a>Metadata
+
+省略可能な `metadata` プロパティには、ポリシー割り当てに関する情報が格納されています。 お客様は `metadata` で組織にとって有用なすべてのプロパティと値を定義できます。 ただし、Azure Policy で使用される "_一般的_" なプロパティがいくつかあります。 各 `metadata` プロパティには 1024 文字の制限があります。
+
+### <a name="common-metadata-properties"></a>一般的なメタデータのプロパティ
+
+- `assignedBy` (文字列): 割り当てを作成したセキュリティ プリンシパルのフレンドリ名。
+- `createdBy` (文字列): 割り当てを作成したセキュリティ プリンシパルの GUID。
+- `createdOn` (文字列): ユニバーサル ISO 8601 日時形式の割り当て作成時刻。
+- `parameterScopes` (オブジェクト): キーと値のペアのコレクション。ここで、キーは [strongType](./definition-structure.md#strongtype) 構成済みパラメーター名と一致し、値は、_strongType_ を照合して使用可能なリソースの一覧を提供するためにポータルで使用されるリソース スコープを定義します。 スコープが割り当てスコープと異なる場合、ポータルによりこの値が設定されます。 設定されると、ポータルでのポリシー割り当ての編集により、パラメーターのスコープがこの値に自動的に設定されます。 ただし、スコープはその値にロックされず、別のスコープに変更できます。
+
+  次の `parameterScopes` の例は、**backupPolicyId** という名前の _strongType_ パラメーターについてです。これは、ポータルで割り当てが編集されたときにリソース選択のスコープを設定します。
+
+  ```json
+  "metadata": {
+      "parameterScopes": {
+          "backupPolicyId": "/subscriptions/{SubscriptionID}/resourcegroups/{ResourceGroupName}"
+      }
+  }
+  ```
+
+- `updatedBy` (文字列): 割り当てを更新したセキュリティ プリンシパルのフレンドリ名 (存在する場合)。
+- `updatedOn` (文字列): ユニバーサル ISO 8601 日時形式の割り当て更新時刻 (存在する場合)。
 
 ## <a name="enforcement-mode"></a>適用モード
 

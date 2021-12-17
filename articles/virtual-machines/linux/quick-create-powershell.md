@@ -8,15 +8,17 @@ ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 07/31/2020
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 2cef611fe79ca04303840076b09b4cf6344b7e7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 89803665171fce60bdb46f95dd56fa0535fabeb8
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102616232"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063819"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>クイック スタート:PowerShell を使用して Azure に Linux 仮想マシンを作成する
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 Azure PowerShell モジュールは、PowerShell コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure PowerShell モジュールを使って、Linux 仮想マシン (VM) を Azure に展開する方法を示します。 このクイック スタートでは、Canonical の Ubuntu 18.04 LTS マーケットプレース イメージを使用します。 また、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
 
@@ -140,7 +142,7 @@ $cred = New-Object System.Management.Automation.PSCredential ("azureuser", $secu
 # Create a virtual machine configuration
 $vmConfig = New-AzVMConfig `
   -VMName "myVM" `
-  -VMSize "Standard_D1" | `
+  -VMSize "Standard_D1_v2" | `
 Set-AzVMOperatingSystem `
   -Linux `
   -ComputerName "myVM" `
@@ -171,6 +173,8 @@ New-AzVM `
 ```
 
 VM がデプロイされるまでに数分かかります。 デプロイが完了したら、次のセクションに移動してください。
+
+[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="connect-to-the-vm"></a>VM に接続します
 

@@ -8,12 +8,13 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: a77a870304e20c179e22b4a4ffe404315894d8a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2a565f075bfc69cd4e925459d75cd3b58b58cf78
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91743694"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672082"
 ---
 # <a name="create-and-set-custom-ipsec-policies-for-point-to-site-preview"></a>ポイント対サイトのカスタム IPsec ポリシーの作成と設定 (プレビュー)
 

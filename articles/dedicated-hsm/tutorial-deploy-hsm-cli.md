@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: fa1c01c2d9da19ec1f60878de83a509b7cf561e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2ffb38d334aa5b0abefa3398a5c2a7608f448025
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606829"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965311"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>チュートリアル:Azure CLI を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -34,7 +34,7 @@ Azure Dedicated HSM では、完全な管理制御と完全な管理責任が備
 
 ![複数リージョン デプロイ](media/tutorial-deploy-hsm-cli/high-availability-architecture.png)
 
-このチュートリアルでは、既存の仮想ネットワーク (上の VNET 1 を参照) に対する、HSM のペアと必須の ExpressRoute ゲートウェイ (上の Subnet 1 を参照) の統合を中心に説明しています。  他のすべてのリソースは、標準の Azure リソースです。 同じ統合プロセスを、上の VNET 3 における Subnet 4 の HSM に使用できます。
+このチュートリアルでは、既存の仮想ネットワーク (上の VNET 1 を参照) に対する、HSM のペアと必須の [ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) (上の Subnet 1 を参照) の統合を中心に説明しています。  他のすべてのリソースは、標準の Azure リソースです。 同じ統合プロセスを、上の VNET 3 における Subnet 4 の HSM に使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +51,7 @@ Azure Dedicated HSM は現在、Azure portal では使用できません。 サ�
 
 ## <a name="provisioning-a-dedicated-hsm"></a>専用 HSM のプロビジョニング
 
-HSM のプロビジョニングと、ExpressRoute ゲートウェイを介した既存の仮想ネットワークへの統合は、SSH を使用して検証されます。 この検証は、追加の構成アクティビティに備えて、HSM デバイスの到達可能性と基本的な可用性を確保するために役立ちます。
+HSM のプロビジョニングと、[ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)を介した既存の仮想ネットワークへの統合は、SSH を使用して検証されます。 この検証は、追加の構成アクティビティに備えて、HSM デバイスの到達可能性と基本的な可用性を確保するために役立ちます。
 
 ### <a name="validating-feature-registration"></a>機能登録の検証
 
@@ -102,7 +102,7 @@ az network vnet subnet create \
 
 ネットワークを構成したら、次の Azure CLI コマンドを使用して HSM をプロビジョニングします。
 
-1. [az dedicated-hsm create](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_create) コマンドを使用して、最初の HSM をプロビジョニングします。 HSM には hsm1 という名前が付けられます。 ご自分のサブスクリプションに置き換えます。
+1. [az dedicated-hsm create](/cli/azure/dedicated-hsm#az_dedicated_hsm_create) コマンドを使用して、最初の HSM をプロビジョニングします。 HSM には hsm1 という名前が付けられます。 ご自分のサブスクリプションに置き換えます。
 
    ```azurecli
    az dedicated-hsm create --location westus --name hsm1 --resource-group myRG --network-profile-network-interfaces \
@@ -111,7 +111,7 @@ az network vnet subnet create \
 
    このデプロイには、完了までに 25 - 30 分ほどかかります。その時間の多くは、HSM デバイスに費やされます。
 
-1. 現在の HSM を表示するには、[az dedicated-hsm show](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_show) コマンドを実行します。
+1. 現在の HSM を表示するには、[az dedicated-hsm show](/cli/azure/dedicated-hsm#az_dedicated_hsm_show) コマンドを実行します。
 
    ```azurecli
    az dedicated-hsm show --resource group myRG --name hsm1
@@ -124,19 +124,19 @@ az network vnet subnet create \
         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/MyHSM-vnet/subnets/MyHSM-vnet
    ```
 
-1. [az dedicated-hsm list](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_list) コマンドを実行して、現在の HSM に関する詳細を表示します。
+1. [az dedicated-hsm list](/cli/azure/dedicated-hsm#az_dedicated_hsm_list) コマンドを実行して、現在の HSM に関する詳細を表示します。
 
    ```azurecli
    az dedicated-hsm list --resource-group myRG
    ```
 
-他にも便利なコマンドがいくつかあります。 HSM を更新するには、[az dedicated-hsm update](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_update) コマンドを使用します。
+他にも便利なコマンドがいくつかあります。 HSM を更新するには、[az dedicated-hsm update](/cli/azure/dedicated-hsm#az_dedicated_hsm_update) コマンドを使用します。
 
 ```azurecli
 az dedicated-hsm update --resource-group myRG –name hsm1
 ```
 
-HSM を削除するには、[az dedicated-hsm delete](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_delete) コマンドを使用します。
+HSM を削除するには、[az dedicated-hsm delete](/cli/azure/dedicated-hsm#az_dedicated_hsm_delete) コマンドを使用します。
 
 ```azurecli
 az dedicated-hsm delete --resource-group myRG –name hsm1

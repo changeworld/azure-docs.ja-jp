@@ -15,13 +15,13 @@ ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: damendo
-ms.custom: ''
-ms.openlocfilehash: 3486da98206ee74341d45247b59cf79769105093
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 97871bb33ae1b52bd85b639295b9e232b8b466c4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065992"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662387"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>仮想マシンのネットワーク ルーティングに関する問題を診断する - Azure PowerShell
 

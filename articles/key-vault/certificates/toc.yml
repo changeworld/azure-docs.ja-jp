@@ -1,97 +1,98 @@
-- name: 証明書
-  href: index.yml
-- name: 概要
-  items:
-    - name: 証明書について
-      href: about-certificates.md
-    - name: 証明書の更新について
-      href: overview-renew-certificate.md
-- name: クイックスタート
-  expanded: true
-  items:
-    - name: CLI
-      href: quick-create-cli.md
-    - name: PowerShell
-      href: quick-create-powershell.md
-    - name: ポータル
-      href: quick-create-portal.md
-    - name: .NET
-      href: quick-create-net.md
-    - name: Node.js
-      href: quick-create-node.md
-    - name: Python
-      href: quick-create-python.md
-    - name: Java
-      href: quick-create-java.md
-- name: サンプル
-  items:
-    - name: Key Vault のコード サンプル
-      href: /samples/browse/?expanded=azure&products=azure-key-vault
-- name: チュートリアル
-  items:
-    - name: 証明書のインポート
-      href: tutorial-import-certificate.md
-    - name: 証明書のローテーションの構成
-      href: tutorial-rotate-certificates.md
-- name: 概念
-  items:
-    - name: Key Vault 証明書の概要
-      href: certificate-scenarios.md
-    - name: 証明書作成の監視と管理
-      href: create-certificate-scenarios.md
-    - name: 証明書の作成方法
-      href: create-certificate.md
-    - name: 証明書署名要求の作成
-      href: create-certificate-signing-request.md
-    - name: 証明書のアクセスの制御
-      href: certificate-access-control.md
-- name: 操作方法ガイド
-  items:
-    - name: Key Vault と DigiCert CA の統合
-      href: how-to-integrate-certificate-authority.md
-    - name: トラブルシューティング - 証明書のインポート
-      href: import-cert-faqs.md
-    - name: キー コンテナーからの証明書のエクスポート
-      href: how-to-export-certificate.md
-- name: リファレンス
-  items:
-    - name: Azure PowerShell
-      href: /powershell/module/az.keyvault/#key_vault
-    - name: Azure CLI
-      href: /cli/azure/keyvault
-    - name: .NET
-      href: /dotnet/api/overview/azure/security.keyvault.certificates-readme
-    - name: Java
-      href: /java/api/overview/azure/keyvault
-    - name: Node.js
-      href: /javascript/api/overview/azure/key-vault-index
-    - name: Python
-      href: /python/api/overview/azure/keyvault-certificates-readme
-    - name: REST
-      href: /rest/api/keyvault
-    - name: Resource Manager テンプレート
-      href: /azure/templates/microsoft.keyvault/allversions
-      displayName: ARM
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ../policy-reference.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
-- name: リソース
-  items:
-    - name: Microsoft Learn でスキルを身に付ける
-      href: /learn/browse/?products=azure-key-vault
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
-    - name: 利用可能なリージョン
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
-    - name: サービス レベル アグリーメント (SLA)
-      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
-    - name: サービスの制限
-      href: ../general/service-limits.md
-    - name: サービスの状態
-      href: 'https://azure.microsoft.com/status/'
-    - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?product=key-vault'
-    - name: ブログ
-      href: /archive/blogs/kv/
-    - name: 製品フィードバック
-      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'
+items:
+  - name: 証明書
+    href: index.yml
+  - name: 概要
+    items:
+      - name: 証明書について
+        href: about-certificates.md
+      - name: 証明書の更新について
+        href: overview-renew-certificate.md
+  - name: クイックスタート
+    expanded: true
+    items:
+      - name: CLI
+        href: quick-create-cli.md
+      - name: PowerShell
+        href: quick-create-powershell.md
+      - name: ポータル
+        href: quick-create-portal.md
+      - name: .NET
+        href: quick-create-net.md
+      - name: Node.js
+        href: quick-create-node.md
+      - name: Python
+        href: quick-create-python.md
+      - name: Java
+        href: quick-create-java.md
+  - name: サンプル
+    items:
+      - name: Key Vault のコード サンプル
+        href: /samples/browse/?expanded=azure&products=azure-key-vault
+  - name: チュートリアル
+    items:
+      - name: 証明書のインポート
+        href: tutorial-import-certificate.md
+      - name: 証明書のローテーションの構成
+        href: tutorial-rotate-certificates.md
+  - name: 概念
+    items:
+      - name: Key Vault 証明書の概要
+        href: certificate-scenarios.md
+      - name: 証明書作成の監視と管理
+        href: create-certificate-scenarios.md
+      - name: 証明書の作成方法
+        href: create-certificate.md
+      - name: 証明書署名要求の作成
+        href: create-certificate-signing-request.md
+      - name: 証明書のアクセスの制御
+        href: certificate-access-control.md
+  - name: 操作方法ガイド
+    items:
+      - name: Key Vault と DigiCert CA の統合
+        href: how-to-integrate-certificate-authority.md
+      - name: トラブルシューティング - 証明書のインポート
+        href: import-cert-faqs.yml
+      - name: キー コンテナーからの証明書のエクスポート
+        href: how-to-export-certificate.md
+  - name: リファレンス
+    items:
+      - name: Azure PowerShell
+        href: /powershell/module/az.keyvault/#key_vault
+      - name: Azure CLI
+        href: /cli/azure/keyvault
+      - name: .NET
+        href: /dotnet/api/overview/azure/security.keyvault.certificates-readme
+      - name: Java
+        href: /java/api/overview/azure/keyvault
+      - name: Node.js
+        href: /javascript/api/overview/azure/key-vault-index
+      - name: Python
+        href: /python/api/overview/azure/keyvault-certificates-readme
+      - name: REST
+        href: /rest/api/keyvault
+      - name: Resource Manager テンプレート
+        href: /azure/templates/microsoft.keyvault/allversions
+        displayName: ARM
+      - name: Azure Policy の組み込み
+        displayName: 'samples, policies, definitions'
+        href: ../policy-reference.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+  - name: リソース
+    items:
+      - name: Microsoft Learn でスキルを身に付ける
+        href: /learn/browse/?products=azure-key-vault
+      - name: 価格
+        href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+      - name: 利用可能なリージョン
+        href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+      - name: サービス レベル アグリーメント (SLA)
+        href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+      - name: サービスの制限
+        href: ../general/service-limits.md
+      - name: サービスの状態
+        href: 'https://azure.microsoft.com/status/'
+      - name: サービスの更新情報
+        href: 'https://azure.microsoft.com/updates/?product=key-vault'
+      - name: ブログ
+        href: /archive/blogs/kv/
+      - name: 製品フィードバック
+        href: 'https://feedback.azure.com/d365community/forum/285c5ae0-f524-ec11-b6e6-000d3a4f0da0'

@@ -6,13 +6,13 @@ ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
-ms.date: 10/20/2019
-ms.openlocfilehash: 7c6c50b6fd8200726aa11f120d9748cc1b40aa22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/17/2021
+ms.openlocfilehash: d53960419c7db43d96f3409961c5fe33bacb7325
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831622"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433640"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>チュートリアル:コネクテッド ロジスティクス アプリケーション テンプレートをデプロイして調べる
 
@@ -41,7 +41,7 @@ ms.locfileid: "99831622"
 
     :::image type="content" source="media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png" alt-text="コネクテッド ロジスティクス テンプレート":::
 
-1. **[Connected Logistics Application]\(コネクテッド ロジスティクス アプリケーション\)** の **[アプリの作成]** を選択します。
+1. **[コネクテッド ロジスティクス]** の **[アプリの作成]** を選択します。
 
 1. **[アプリの作成]** を選択すると、 **[新しいアプリケーション]** フォームが開きます。 次の詳細を入力します。
 
@@ -57,37 +57,26 @@ ms.locfileid: "99831622"
 
 ## <a name="walk-through-the-application"></a>アプリケーションを調べる
 
-以下に示したのは、コネクテッド ロジスティクス アプリケーション テンプレートの選択方法を示すスクリーンショットです。
-
-> [!div class="mx-imgBorder"]
-> ![コネクテッド ロジスティクス アプリケーション テンプレートの選択方法を示すスクリーンショット](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
-
 以降のセクションでは、アプリケーションの主な機能について見ていきます。
 
 ### <a name="dashboard"></a>ダッシュボード
 
 アプリケーション テンプレートがデプロイされると、既定のダッシュボードが、コネクテッド ロジスティクスのオペレーターを対象とするポータルになります。 Northwind Traders 社は、海上と陸上の貨物を管理する架空のロジスティクス プロバイダーです。 このダッシュボードには、出荷からのテレメトリを提供する 2 つの異なるゲートウェイと、関連コマンド、ジョブ、アクションが表示されます。
 
-> [!div class="mx-imgBorder"]
-> ![コネクテッド ロジスティクス アプリケーション テンプレートからのアプリの作成方法を示すスクリーンショット](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
-
-> [!div class="mx-imgBorder"]
-> ![アプリケーション作成時の課金オプションを示す画面のスクリーンショット](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
-
 このダッシュボードは、重要なロジスティクス デバイス操作アクティビティが表示されるように事前に構成されています。
 
 ダッシュボードでは、2 つの異なるゲートウェイ デバイス管理操作を行えます。
 
-* トラック輸送の物流経路と海上輸送の場所の詳細を表示します。
+* トラック輸送の物流経路と海上輸送の[場所](../core/howto-use-location-data.md)の詳細を表示します。
 * ゲートウェイの状態やその他の関連情報を表示します。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="コネクテッド ロジスティクスのダッシュボード":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard-1.png" alt-text="コネクテッド ロジスティクスのダッシュボード":::
 
 * ゲートウェイ、アクティブなタグ、不明なタグの合計数を追跡できます。
 * ファームウェアの更新、センサーの無効化、センサーの有効化、センサーしきい値の更新、テレメトリ間隔の更新、デバイス サービス コントラクトの更新などのデバイス管理操作を実行できます。
 * デバイスのバッテリ消費量を表示します。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="コネクテッド ロジスティクスのダッシュボードの状態":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard-2.png" alt-text="コネクテッド ロジスティクスのダッシュボードの状態":::
 
 #### <a name="device-template"></a>デバイス テンプレート
 
@@ -95,11 +84,11 @@ ms.locfileid: "99831622"
 
 **[ゲートウェイのテレメトリとプロパティ]** - このインターフェイスでは、センサーに関連するすべてのテレメトリ、場所、デバイス情報が定義されます。 また、センサーのしきい値や更新間隔など、デバイス ツインのプロパティ機能もこのインターフェイスで定義されます。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="テレメトリとプロパティのインターフェイス":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-device-template-1.png" alt-text="テレメトリとプロパティのインターフェイス":::
 
 **[Gateway Commands]\(ゲートウェイ コマンド\)** - このインターフェイスには、すべてのゲートウェイ コマンド機能が整理されています。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="ゲートウェイ コマンド インターフェイス":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-device-template-2.png" alt-text="ゲートウェイ コマンド インターフェイス":::
 
 ### <a name="rules"></a>ルール
 
@@ -107,13 +96,13 @@ ms.locfileid: "99831622"
 
 **[Gateway theft alert]\(ゲートウェイ盗難アラート\)** : このルールは、輸送中にセンサーによって予期しない光が検出された場合にトリガーされます。 オペレーターは、盗難の可能性を調査するためにすぐに通知を受け取る必要があります。
 
-**[Unresponsive Gateway]\(応答しないゲートウェイ\)** : このルールは、長期間にわたってゲートウェイからクラウドへのレポートがない場合にトリガーされます。 バッテリ低下、接続喪失、デバイスの破損といった原因により、ゲートウェイが応答しないことがあります。
+**[Lost gateway alert]\(失われたゲートウェイ アラート\)** : このルールは、長期間にわたってゲートウェイからクラウドへのレポートがない場合にトリガーされます。 バッテリ低下、接続喪失、デバイスの破損といった原因により、ゲートウェイが応答しないことがあります。
 
 :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="ルールの定義":::
 
 ### <a name="jobs"></a>ジョブ
 
-**[ジョブ]** タブを選択すると、このアプリケーションに含まれるジョブが表示されます。
+**[ジョブ]** タブを選択すると、このアプリケーションに含まれるジョブが作成されます。 次のスクリーンショットは、作成されたジョブの例を示しています。
 
 :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="実行するジョブ":::
 

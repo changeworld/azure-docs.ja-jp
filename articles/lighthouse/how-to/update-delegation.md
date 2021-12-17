@@ -1,14 +1,14 @@
 ---
 title: 委任を更新する
 description: Azure Lighthouse に以前オンボードされた顧客の委任を更新する方法について説明します。
-ms.date: 02/16/2021
+ms.date: 09/08/2021
 ms.topic: how-to
-ms.openlocfilehash: f0ed5222cdbac3d0e4d193941c2a6f233d15938c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41ba14433f1af7abb60034e4034f0585ed9968f4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555770"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736676"
 ---
 # <a name="update-a-delegation"></a>委任を更新する
 
@@ -45,27 +45,28 @@ ms.locfileid: "100555770"
 
 :::image type="content" source="../media/update-delegation.jpg" alt-text="mspOfferName を変更し、前の委任を削除するタイミングを示す図。":::
 
-委任へのアクセスの削除は、元の委任で[マネージド サービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)を付与された管理テナントのすべてのユーザーが実行できます。 管理テナントにこのロールを所有しているユーザーがいない場合は、[Azure portal でオファーへのアクセスを削除する](view-manage-service-providers.md#add-or-remove-service-provider-offers)ことを顧客に依頼できます。
+委任へのアクセスの削除は、元の委任で[マネージド サービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)を付与された管理テナントのすべてのユーザーが実行できます。 管理テナントにこのロールを所有しているユーザーがいない場合は、[Azure portal でオファーへのアクセスを削除する](view-manage-service-providers.md#remove-service-provider-offers)ことを顧客に依頼できます。
 
 > [!TIP]
 > 上記の手順に従って前の委任を削除しても、新しい ARM テンプレートをデプロイできない場合は、[登録定義を完全に削除する](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition)必要がある場合があります。 これは、`Microsoft.Authorization/roleAssignments/write` のアクセス許可を持つ[所有者](../../role-based-access-control/built-in-roles.md#owner)などのロールが割り当てられている、顧客テナント内のすべてのユーザーが実行できます。  
 
 ## <a name="deploy-the-arm-template"></a>ARM テンプレートをデプロイする
 
-顧客は、Azure portal、PowerShell、または Azure CLI を使用して、前と同じ方法で[更新されたテンプレートをデプロイ](onboard-customer.md#deploy-the-azure-resource-manager-templates)できます。
+顧客は、Azure portal、PowerShell、または Azure CLI を使用して、前と同じ方法で[更新されたテンプレートをデプロイ](onboard-customer.md#deploy-the-azure-resource-manager-template)できます。
 
 デプロイが完了した後、[それが成功したことを確認](onboard-customer.md#confirm-successful-onboarding)します。 更新された認可が、顧客が委任したサブスクリプションまたはリソース グループに対して有効になります。
 
 ## <a name="updating-managed-service-offers"></a>マネージド サービス オファーを更新する
 
-Azure Marketplace に発行されたマネージド サービス オファーを通じて顧客をオンボードし、認可を更新する場合は、その顧客のプランで更新された使用する[認可](../../marketplace/plan-managed-service-offer.md)と共に、[オファーの新しいバージョンを発行する](../../marketplace/partner-center-portal/update-existing-offer.md)ことで、委任を更新できます。 その後、顧客は Azure portal で最新バージョンに更新できます。
+Azure Marketplace に公開されたマネージド サービス オファーを通じて顧客をオンボードし、承認を更新する場合は、その顧客のプランで更新された使用する[承認](../../marketplace/create-managed-service-offer-plans.md#authorizations)と共に、[オファーの新しいバージョンを公開する](../../marketplace/update-existing-offer.md)ことでそれを実行できます。 その後、顧客は、[Azure portal で変更を確認し、新しいバージョンを受け入れる](view-manage-service-providers.md#update-service-provider-offers)ことができます。
 
-管理テナントを変更する場合は、顧客が受け入れられるように、[新しいマネージド サービス オファーを作成して発行する](../../marketplace/plan-managed-service-offer.md)必要があります。
+管理テナントを変更する場合は、顧客が受け入れられるように、[新しいマネージド サービス オファーを作成して発行する](publish-managed-services-offers.md)必要があります。
 
-> [!TIP]
-> 前述のように、同じ顧客と管理テナントの間で、複数の異なるオファーを使用しないことをお勧めします。 同じ管理テナントを使用する同じ顧客に対して新しいオファーを発行する場合は、顧客が新しいオファーを受け入れる前に、前のオファーを必ず削除してください。
+> [!IMPORTANT]
+> 前述のように、同じ顧客と管理テナントに対して、複数の異なるオファーを使用しないことをお勧めします。 同じ管理テナントを使用する同じ顧客に対して新しいオファーを発行する場合は、顧客が新しいオファーを受け入れる前に、前のオファーを必ず削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](view-manage-customers.md)します。
 - 以前にオンボードした[委任へのアクセスを削除する](remove-delegation.md)方法について学習します。
+- Azure Lighthouse のアーキテクチャの詳細は[こちら](../concepts/architecture.md)をご覧ください。

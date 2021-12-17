@@ -7,18 +7,25 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 698b4ebedfc9b41e8c5732a0a81226a971d65585
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efa2ec8873374604e252677e436e6883867f982a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470763"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255489"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>パート 3: SMB 経由でディレクトリとファイル レベルのアクセス許可を構成する 
 
 この記事を開始する前に、前の記事「[ID に共有レベルのアクセス許可を割り当てる](storage-files-identity-ad-ds-assign-permissions.md)」を完了し、共有レベルのアクセス許可が確実に設定されているようにしてください。
 
 Azure RBAC によって共有レベルのアクセス許可を割り当てたら、詳細なアクセス制御を活用するために、ルート、ディレクトリ、またはファイル レベルで適切な Windows ACL を構成する必要があります。 Azure RBAC 共有レベルのアクセス許可は、ユーザーが共有にアクセスできるかどうかを決定する高レベルのゲートキーパーと考えてください。 一方、Windows ACL は、さらに細かなレベルで機能し、ディレクトリまたはファイル レベルでユーザーが実行できる操作を決定します。 ユーザーがファイルまたはディレクトリにアクセスしようとしたときに、共有レベルとファイル/ディレクトリ レベルの両方のアクセス許可が適用されます。したがって、両方に違いがある場合は、最も制限の厳しい方だけが適用されます。 たとえば、ユーザーがファイル レベルで読み取り/書き込みアクセス権を持っているが、共有レベルでは読み取りアクセス権しかない場合は、そのファイルは読み取ることしかできません。 同じことはこの逆にも当てはまります。ユーザーが共有レベルで読み取り/書き込みアクセス権を持っていても、ファイル レベルでは読み取りアクセス権しか持っていない場合は、やはりファイルを読み取ることしかできません。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="azure-rbac-permissions"></a>Azure RBAC アクセス許可
 
@@ -32,9 +39,15 @@ Azure RBAC によって共有レベルのアクセス許可を割り当てたら
 |記憶域ファイル データの SMB 共有の共同作成者  |  フル コントロール    |  変更、読み取り、書き込み、実行 |
 |     |  変更         |  変更    |
 |     |  読み取り & 実行 |  読み取り & 実行 |
+<<<<<<< HEAD
 |     |  読み取り           |  読み取り    |
 |     |  書き込み          |  書き込み   |
 |記憶域ファイル データの SMB 共有の管理者特権共同作成者 | フル コントロール  |  変更、読み取り、書き込み、編集、実行 |
+=======
+|     |  Read           |  Read    |
+|     |  Write          |  Write   |
+|記憶域ファイル データの SMB 共有の管理者特権共同作成者 | フル コントロール  |  変更、読み取り、書き込み、編集 (変更アクセス許可)、実行 |
+>>>>>>> repo_sync_working_branch
 |     |  変更          |  変更 |
 |     |  読み取り & 実行  |  読み取り & 実行 |
 |     |  読み取り            |  読み取り   |

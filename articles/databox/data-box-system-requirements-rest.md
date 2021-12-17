@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 10/05/2020
 ms.author: alkohli
-ms.openlocfilehash: ac5f2de383066d6ee399dac3b0ad8c365b2e72bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c62c1e854e55b8817724c78bc325badc703bc27
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91744104"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250667"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box BLOB ストレージの要件
 
@@ -26,13 +26,17 @@ Data Box BLOB ストレージに接続する前にこの情報をよく確認し
 
 |     機能                                             |     Azure Storage                                     |     Data Box BLOB ストレージ |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
+<<<<<<< HEAD
 |    Azure File Storage                                   |    クラウド ベースの SMB ファイル共有のサポート              |    サポートされていません      |
+=======
+|    Azure Files                                   |    クラウド ベースの SMB および NFS ファイル共有がサポートされています               |    サポートされていません      |
+>>>>>>> repo_sync_working_branch
 |    サービスによる保存データの暗号化                  |    256 ビット AES 暗号化                             |    256 ビット AES 暗号化 |
 |    ストレージ アカウントの種類                                 |    汎用アカウントと Azure Blob Storage アカウント    |    汎用 v1 のみ|
 |    BLOB 名                                            |    1,024 文字 (2,048 バイト)                     |    880 文字 (1,760 バイト)|
-|    ブロック BLOB の最大サイズ                              |    4.75 TB (100 MB X 50,000 ブロック)                   |    Azure Data Box v 3.0 以降の場合に 4.75 TB (100 MB x 50,000 ブロック)。|
-|    ページ BLOB の最大サイズ                               |    8 TB                                               |    1 TB (テラバイト)                   |
-|    ページ BLOB のページ サイズ                                  |    512 バイト                                          |    4 KB                   |
+|    ブロック BLOB の最大サイズ                              |    4.75 TiB (100 MB X 50,000 ブロック)                   |    Azure Data Box v 3.0 以降の場合に 4.75 TiB (100 MB x 50,000 ブロック)。|
+|    ページ BLOB の最大サイズ                               |    8 TiB                                               |    1 TiB                   |
+|    ページ BLOB のページ サイズ                                  |    512 バイト                                          |    4 KiB                   |
 
 ## <a name="supported-api-versions"></a>サポートされる API バージョン
 

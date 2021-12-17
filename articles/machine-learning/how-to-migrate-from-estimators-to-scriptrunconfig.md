@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/14/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: ae0623a11b940a4d142f6bfae02d4b20727a6f55
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: devx-track-python, contperf-fy21q1
+ms.openlocfilehash: daf142f6e49a09556d05faf4eea23b31a2cab995
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518874"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888838"
 ---
 # <a name="migrating-from-estimators-to-scriptrunconfig"></a>Estimator から ScriptRunConfig への移行
 

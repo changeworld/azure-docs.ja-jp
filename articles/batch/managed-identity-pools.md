@@ -2,14 +2,13 @@
 title: Batch プールでマネージド ID を構成する
 description: Batch プールでユーザー割り当てマネージド ID を有効にする方法と、ノード内でマネージド ID を使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 03/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: d69e983a4b17298150942c924a3c694e2cceaf72
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.date: 08/18/2021
+ms.openlocfilehash: 903e173a6028e6bb574dfba618661da802702c2d
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967253"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444805"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>Batch プールでマネージド ID を構成する
 
@@ -18,9 +17,9 @@ ms.locfileid: "105967253"
 このトピックでは、Batch プールでユーザー割り当てマネージド ID を有効にする方法と、ノード内でマネージド ID を使用する方法について説明します。
 
 > [!IMPORTANT]
-> ユーザー割り当てマネージド ID を使用する Azure Batch プールに対するサポートは、現在、次のリージョンを対象にパブリック プレビュー段階にあります。米国西部 2、米国中南部、米国東部、US Gov アリゾナ、US Gov バージニア。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> マネージド ID を使用するには、[仮想マシンの構成](nodes-and-pools.md#virtual-machine-configuration)を使用してプールを構成する必要があります。
+>
+> マネージド ID を使用したプールの作成は、[Batch .NET 管理ライブラリ](/dotnet/api/overview/azure/batch#management-library)を使って実行できますが、現在、[Batch .NET クライアント ライブラリ](/dotnet/api/overview/azure/batch#client-library)ではサポートされていません。
 
 ## <a name="create-a-user-assigned-identity"></a>ユーザー割り当て ID を作成する
 
@@ -29,9 +28,6 @@ ms.locfileid: "105967253"
 ## <a name="create-a-batch-pool-with-user-assigned-managed-identities"></a>ユーザー割り当てマネージド ID を使用して Batch プールを作成する
 
 1 つ以上のユーザー割り当てマネージド ID を作成したら、[Batch .NET 管理ライブラリ](/dotnet/api/overview/azure/batch#management-library)を使用して、そのマネージド ID で Batch プールを作成できます。
-
-> [!IMPORTANT]
-> マネージド ID を使用するには、[仮想マシンの構成](nodes-and-pools.md#virtual-machine-configuration)を使用してプールを構成する必要があります。
 
 ```csharp
 var poolParameters = new Pool(name: "yourPoolName")
@@ -57,10 +53,10 @@ var poolParameters = new Pool(name: "yourPoolName")
         Identity = new BatchPoolIdentity
         {
             Type = PoolIdentityType.UserAssigned,
-            UserAssignedIdentities = new Dictionary<string, BatchPoolIdentityUserAssignedIdentitiesValue>
+            UserAssignedIdentities = new Dictionary<string, UserAssignedIdentities>
             {
                 ["Your Identity Resource Id"] =
-                    new BatchPoolIdentityUserAssignedIdentitiesValue()
+                    new UserAssignedIdentities()
             }
         }
     };
@@ -73,12 +69,16 @@ var pool = await managementClient.Pool.CreateWithHttpMessagesAsync(
     cancellationToken: default(CancellationToken)).ConfigureAwait(false);    
 ```
 
-> [!NOTE]
-> マネージド ID を使用したプールの作成は、現在、[Batch .NET クライアント ライブラリ](/dotnet/api/overview/azure/batch#client-library)ではサポートされていません。
-
 ## <a name="use-user-assigned-managed-identities-in-batch-nodes"></a>Batch ノードでユーザー割り当てマネージド ID を使用する
 
-プールを作成すると、ユーザー割り当てマネージド ID は、Secure Shell (SSH) またはリモート デスクトップ (RDP) 経由でプール ノードにアクセスできるようになります。 そのマネージド ID で、[マネージド ID がサポートされている Azure リソース](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)に直接アクセスできるように、タスクを構成することもできます。
+Azure Storage や Azure Container Registry など、他の Azure リソースにアクセスする多くの Azure Batch テクノロジでは、マネージド ID がサポートされています。 Azure Batch でのマネージド ID の使用の詳細については、次のリンクを参照してください。
+
+- [リソース ファイル](resource-files.md)
+- [出力ファイル](batch-task-output-files.md#specify-output-files-using-managed-identity)
+- [Azure Container Registry](batch-docker-container-workloads.md#managed-identity-support-for-acr)
+- [Azure BLOB コンテナー ファイル システム](virtual-file-mount.md#azure-blob-container)
+
+また、マネージド ID が、[マネージド ID をサポートしている Azure リソース](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)に直接アクセスできるように、タスクを手動で構成することもできます。
 
 Batch ノード内では、[Azure Instance Metadata Service](../virtual-machines/windows/instance-metadata-service.md) を介してマネージド ID トークンを取得し、それらを使用して Azure AD 認証によって認証を行うことができます。
 

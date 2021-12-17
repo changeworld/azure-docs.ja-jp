@@ -2,20 +2,20 @@
 title: Azure サブスクリプションの状態
 description: この記事では、Azure サブスクリプションのさまざまな状態について説明します。
 keywords: Azure サブスクリプションの状態
-author: anuragdalmia
-ms.reviewer: banders
+author: bandersmsft
+ms.reviewer: andalmia
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
-ms.author: andalmia
-ms.openlocfilehash: 5267b333e66a0ae7b2ad05399406fecc32af74b0
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.date: 09/15/2021
+ms.author: banders
+ms.openlocfilehash: 9902bfc0e1214ee59ce2c0c6fc01b9620529d9ca
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430128"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438704"
 ---
 # <a name="azure-subscription-states"></a>Azure サブスクリプションの状態
 
@@ -28,4 +28,4 @@ ms.locfileid: "99430128"
 | **Disabled** | ご利用の Azure サブスクリプションは無効化され、Azure リソースの作成や管理に使用することはできなくなりました。 この状態では、仮想マシンの割り当てが解除されて、一時 IP アドレスが解放され、ストレージが読み取り専用になって、他のサービスが無効化されます。 サブスクリプションは、クレジットの有効期限が切れている、使用制限に達している、 請求の支払期限が過ぎている、 クレジット カードの限度額を超えている、 明示的に無効化 (キャンセル) された などの理由で無効にされることがあります。 サブスクリプションは、その種類によって 1 日から 90 日、無効状態で維持されます。 その期間が経過した後、完全に削除されます。 詳細については、「[無効な Azure サブスクリプションを再度有効にする](subscription-disabled.md)」を参照してください。<br><br>リソースを作成したり更新したりする操作 (PUT、PATCH) は無効です。 アクションを実行する操作 (POST) も無効となります。 リソースを取得または削除することはできます (GET、DELETE)。 リソースは引き続きご利用いただけます。 |
 | **Expired** | キャンセルされた Azure サブスクリプションは期限切れとなります。 期限切れのサブスクリプションは再度有効にすることができます。 詳細については、「[無効な Azure サブスクリプションを再度有効にする](subscription-disabled.md)」を参照してください。<br><br>リソースを作成したり更新したりする操作 (PUT、PATCH) は無効です。 アクションを実行する操作 (POST) も無効となります。 リソースを取得または削除することはできます (GET、DELETE)。|
 | **期限経過** | Azure サブスクリプションの支払いが未払いのまま保留状態になっています。 サブスクリプションは引き続きアクティブ状態ですが、支払い義務を怠ると、サブスクリプションが無効化されることがあります。 詳細については、「[支払期限を過ぎた Azure サブスクリプション未払い額の支払い](resolve-past-due-balance.md)」を参照してください。<br><br>すべての操作を利用できます。 |
-| **警告あり** | ご自分の Azure サブスクリプションは警告ありの状態で、警告理由が解決されない場合は、すぐに無効になります。 期限切れになった場合、ユーザーによって取り消された場合、サブスクリプションが期限切れになった場合は、サブスクリプションは警告ありの状態になることがあります。<br><br>リソースを取得または削除することはできます (GET、DELETE) が、リソースを作成 (PUT、PATCH、POST) することはできません。 |
+| **警告あり** | ご自分の Azure サブスクリプションは警告ありの状態で、警告理由が解決されない場合は、すぐに無効になります。 期限切れになった場合、ユーザーによって取り消された場合、またはサブスクリプションが期限切れになった場合は、サブスクリプションは警告ありの状態になることがあります。<br><br>リソースを取得または削除することはできます (GET、DELETE) が、リソースを作成 (PUT、PATCH、POST) することはできません。 |

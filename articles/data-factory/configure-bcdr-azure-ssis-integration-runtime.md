@@ -3,6 +3,7 @@ title: 事業継続とディザスター リカバリー (BCDR) のために Azu
 description: この記事では、事業継続とディザスター リカバリー (BCDR) のために、Azure Data Factory で Azure SQL Database または Managed Instance フェールオーバー グループを使用して Azure-SSIS 統合ランタイムを構成する方法について説明します。
 services: data-factory
 ms.service: data-factory
+ms.subservice: integration-services
 ms.workload: data-services
 ms.devlang: powershell
 author: swinarko
@@ -11,13 +12,13 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/05/2021
-ms.openlocfilehash: a426ee39ba3c0f50b9a6c1fb9c7de1ef8e7291b2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/22/2021
+ms.openlocfilehash: 4ed454ae92fff2a0a5bfd6437b0ee1ef10d194c0
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566355"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846237"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>事業継続とディザスター リカバリー (BCDR) のために Azure-SSIS 統合ランタイムを構成する 
 
@@ -61,25 +62,13 @@ Azure SQL Managed Instance フェールオーバー グループと同期して�
 
 1. Azure portal または ADF UI を使用して、プライマリ Azure SQL マネージド インスタンスで新しい Azure-SSIS IR を作成し、プライマリ リージョンで SSISDB をホストできます。 プライマリ Azure SQL マネージド インスタンスによってホストされている SSIDB に既にアタッチされている既存の Azure-SSIS IR があり、それがまだ実行中の場合は、最初に停止して再構成する必要があります。 これがプライマリ Azure-SSIS IR になります。
 
-   **[Integration runtime setup]\(統合ランタイムの設定\)** ペインの **[デプロイの設定]** ページで [SSISDB の使用を選択する](./create-azure-ssis-integration-runtime.md#creating-ssisdb)場合は、 **[Use dual standby Azure-SSIS Integration Runtime pair with SSISDB failover]\(SSISDB フェールオーバーと共にデュアル スタンバイ Azure-SSIS 統合ランタイム ペアを使用する\)** チェック ボックスもオンにします。 **[Dual standby pair name]\(デュアル スタンバイ ペア名\)** に、プライマリとセカンダリの Azure SSIS IR のペアを識別する名前を入力します。 プライマリ Azure-SSIS IR の作成が完了すると、Azure-SSIS IR が開始され、読み取りおよび書き込みアクセス権を使用してユーザーに代わって作成されるプライマリ SSISDB にアタッチされます。 再構成したばかりの場合は、再起動する必要があります。 セカンダリ Azure SQL マネージド インスタンスの **[概要]** ページで、プライマリ SSISDB が読み取り専用アクセス権を持つセカンダリ SSISDB にレプリケートされているかどうかを確認することもできます。
+   **[Integration runtime setup]\(統合ランタイムの設定\)** ペインの **[デプロイの設定]** ページで [SSISDB の使用を選択する](./create-azure-ssis-integration-runtime-portal.md#creating-ssisdb)場合は、 **[Use dual standby Azure-SSIS Integration Runtime pair with SSISDB failover]\(SSISDB フェールオーバーと共にデュアル スタンバイ Azure-SSIS 統合ランタイム ペアを使用する\)** チェック ボックスもオンにします。 **[Dual standby pair name]\(デュアル スタンバイ ペア名\)** に、プライマリとセカンダリの Azure SSIS IR のペアを識別する名前を入力します。 プライマリ Azure-SSIS IR の作成が完了すると、Azure-SSIS IR が開始され、読み取りおよび書き込みアクセス権を使用してユーザーに代わって作成されるプライマリ SSISDB にアタッチされます。 再構成したばかりの場合は、再起動する必要があります。 セカンダリ Azure SQL マネージド インスタンスの **[概要]** ページで、プライマリ SSISDB が読み取り専用アクセス権を持つセカンダリ SSISDB にレプリケートされているかどうかを確認することもできます。
 
 1. Azure portal または ADF UI を使用して、セカンダリ Azure SQL マネージド インスタンスで別の Azure-SSIS IR を作成し、セカンダリ リージョンで SSISDB をホストできます。 これがセカンダリ Azure-SSIS IR になります。 完全な BCDR を実現するには、依存するすべてのリソースがセカンダリ リージョンにも作成されていることを確認します。たとえば、カスタム設定スクリプトやファイルを格納するための Azure Storage、オーケストレーションやパッケージ実行のスケジュールを設定するための ADF などです。
 
-   **[Integration runtime setup]\(統合ランタイムの設定\)** ペインの **[デプロイの設定]** ページで [SSISDB の使用を選択する](./create-azure-ssis-integration-runtime.md#creating-ssisdb)場合は、 **[Use dual standby Azure-SSIS Integration Runtime pair with SSISDB failover]\(SSISDB フェールオーバーと共にデュアル スタンバイ Azure-SSIS 統合ランタイム ペアを使用する\)** チェック ボックスもオンにします。 **[Dual standby pair name]\(デュアル スタンバイ ペア名\)** に、プライマリとセカンダリの Azure SSIS IR のペアを識別する同じ名前を入力します。 セカンダリ Azure-SSIS IR の作成が完了すると、起動され、セカンダリ SSISDB にアタッチされます。
+   **[Integration runtime setup]\(統合ランタイムの設定\)** ペインの **[デプロイの設定]** ページで [SSISDB の使用を選択する](./create-azure-ssis-integration-runtime-portal.md#creating-ssisdb)場合は、 **[Use dual standby Azure-SSIS Integration Runtime pair with SSISDB failover]\(SSISDB フェールオーバーと共にデュアル スタンバイ Azure-SSIS 統合ランタイム ペアを使用する\)** チェック ボックスもオンにします。 **[Dual standby pair name]\(デュアル スタンバイ ペア名\)** に、プライマリとセカンダリの Azure SSIS IR のペアを識別する同じ名前を入力します。 セカンダリ Azure-SSIS IR の作成が完了すると、起動され、セカンダリ SSISDB にアタッチされます。
 
-1. Azure SQL Managed Instance を使用して、データベース マスター キー (DMK) を使用して暗号化することにより、SSISDB などのデータベース内の機密データを保護できます。 DMK 自体は、既定でサービス マスター キー (SMK) を使用して暗号化されます。 このドキュメントの作成時点で、Azure SQL Managed Instance フェールオーバー グループによってプライマリ Azure SQL マネージド インスタンスから SMK がレプリケートされないため、フェールオーバーが発生した後、セカンダリ Azure SQL マネージド インスタンスで DMK と SSISDB を復号化できません。 この問題を回避するには、セカンダリ Azure SQL マネージド インスタンスで復号化する DMK のパスワード暗号化を追加します。 SSMS を使用して、次の手順を実行します。
-
-   1. プライマリ Azure SQL マネージド インスタンスの SSISDB に対して次のコマンドを実行して、DMK を暗号化するためのパスワードを追加します。
-
-      ```sql
-      ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'YourPassword'
-      ```
-   
-   1. プライマリとセカンダリの両方の Azure SQL マネージド インスタンスで SSISDB に対して次のコマンドを実行し、DMK を復号化するための新しいパスワードを追加します。
-
-      ```sql
-      EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'YourPassword', @action = N'add'
-      ```
+1. Azure SQL Managed Instance を使用して、データベース マスター キー (DMK) を使用して暗号化することにより、SSISDB などのデータベース内の機密データを保護できます。 DMK 自体は、既定でサービス マスター キー (SMK) を使用して暗号化されます。 2021 年 9 月以降、フェールオーバーグループの作成時に、Azure SQL Managed Instance のプライマリからセカンダリに SMK がレプリケートされます。 その前にフェールオーバー グループが作成された場合は、SSISDB を含むすべてのユーザー データベースをセカンダリ Azure SQL Managed Instance から削除して、フェールオーバー グループを再作成してください。
 
 1. SSISDB のフェールオーバーが発生したときにダウンタイムをほぼゼロにしたい場合は、両方の Azure-SSIS IR を実行したままにします。 プライマリ SSISDB にアクセスしてパッケージをフェッチおよび実行し、パッケージ実行ログを書き込むことができるのはプライマリ Azure-SSIS IR のみです。一方、セカンダリ Azure-SSIS IR では、別の場所 (たとえば Azure Files) にデプロイされたパッケージに対してのみ同じ処理を実行できます。
 
@@ -89,7 +78,7 @@ Azure SQL Managed Instance フェールオーバー グループと同期して�
 
    1. SSIS ジョブごとに、右クリックして **[ジョブをスクリプト化]** 、 **[新規作成]** 、および **[新しいクエリ エディター ウィンドウ]** ドロップダウン メニュー項目を選択して、スクリプトを生成します。
 
-      ![SSIS ジョブ スクリプトを生成する](media/configure-bcdr-azure-ssis-integration-runtime/generate-ssis-job-script.png)
+      :::image type="content" source="media/configure-bcdr-azure-ssis-integration-runtime/generate-ssis-job-script.png" alt-text="SSIS ジョブ スクリプトを生成する":::
 
    1. 生成された SSIS ジョブ スクリプトごとに、`sp_add_job` ストアド プロシージャを実行するコマンドを見つけ、必要に応じて `@owner_login_name` 引数への値の割り当てを変更または削除します。
 
@@ -126,13 +115,13 @@ Azure SQL Managed Instance フェールオーバー グループと同期して�
    EXEC [catalog].[failover_integration_runtime] @data_factory_name = 'YourNewADF', @integration_runtime_name = 'YourNewAzureSSISIR'
    ```
 
-1. [Azure portal、ADF UI](./create-azure-ssis-integration-runtime.md#use-the-azure-portal-to-create-an-integration-runtime)、または [Azure PowerShell](./create-azure-ssis-integration-runtime.md#use-azure-powershell-to-create-an-integration-runtime) を使用して、 *<新しい ADF>* / *<新しい Azure SSIS IR>* という名前の新しい ADF または Azure-SSIS IR をそれぞれ別のリージョンに作成します。 Azure portal または ADF UI を使用する場合は、 **[Integration runtime setup]\(統合ランタイムの設定\)** ペインの **[デプロイの設定]** ページのテスト接続エラーを無視できます。
+1. [Azure portal、ADF UI](./create-azure-ssis-integration-runtime-portal.md)、または [Azure PowerShell](./create-azure-ssis-integration-runtime-powershell.md) を使用して、 *<新しい ADF>* / *<新しい Azure SSIS IR>* という名前の新しい ADF または Azure-SSIS IR をそれぞれ別のリージョンに作成します。 Azure portal または ADF UI を使用する場合は、 **[Integration runtime setup]\(統合ランタイムの設定\)** ペインの **[デプロイの設定]** ページのテスト接続エラーを無視できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure-SSIS IR の以下のその他の構成オプションを検討できます。
 
-- [Azure-SSIS IR のパッケージ ストアを構成する](./create-azure-ssis-integration-runtime.md#creating-azure-ssis-ir-package-stores)
+- [Azure-SSIS IR のパッケージ ストアを構成する](./create-azure-ssis-integration-runtime-portal.md#creating-azure-ssis-ir-package-stores)
 
 - [Azure-SSIS IR のカスタム設定を構成する](./how-to-configure-azure-ssis-ir-custom-setup.md)
 

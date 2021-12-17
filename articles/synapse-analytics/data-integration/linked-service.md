@@ -2,19 +2,19 @@
 title: リンクされたサービスをセキュリティで保護する
 description: マネージド VNet を使用して、リンクされたサービスをプロビジョニングしてセキュリティで保護する方法について説明します
 services: synapse-analytics
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 04/15/2020
-ms.author: ronytho
+ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6be76878a9a07c5f4a1e2a9348bb7b09cb1b10eb
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: ea5be6fc0594d679e7b8dcbd2037e7b47bce993f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567589"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734715"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Private Link を使用してリンクされたサービスをセキュリティで保護する
 
@@ -31,7 +31,7 @@ ms.locfileid: "107567589"
 
 Azure Synapse Analytics で、リンクされたサービスとは、他のサービスへの接続情報を定義した場所です。 このセクションでは、リンクされたサービスとして Azure Synapse Analytics と Azure Data Lake Gen 2 を追加します。
 
-1. Azure Synapse Studio を開き、 **[管理]** タブに移動します。
+1. Synapse Studio を開き、 **[管理]** タブに移動します。
 1. **[外部接続]** で、 **[リンクされたサービス]** を選択します。
 1. リンクされたサービスを追加するには、 **[新規]** を選択します。
 1. リストから [Azure Data Lake Storage Gen2] タイルを選択し、 **[続行]** を選択します。

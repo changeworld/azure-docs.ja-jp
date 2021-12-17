@@ -1,20 +1,20 @@
 ---
 title: Azure Percept DK の RTSP ビデオ ストリームを表示する
 description: Azure Percept DK からの RTSP ビデオ ストリームを表示する方法を調べる
-author: elqu20
-ms.author: v-elqu
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.custom: template-how-to
-ms.openlocfilehash: 5f77e99dc5c34867fef2b0ac47c709824fa4477d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 19b47b0971ee59d7b029a7b6b0dde77a83d1447b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096005"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006242"
 ---
-# <a name="view-your-azure-percept-dks-rtsp-video-stream"></a>Azure Percept DK の RTSP ビデオ ストリームを表示する
+# <a name="view-your-azure-percept-dk-rtsp-video-stream"></a>Azure Percept DK の RTSP ビデオ ストリームを表示する
 
 Azure Percept Studio 内で Azure Percept DK からの RTSP ビデオ ストリームを表示するには、このガイドに従ってください。 デバイスにデプロイされたビジョン AI モデルからの推論が Web ストリームで表示できるようになります。
 

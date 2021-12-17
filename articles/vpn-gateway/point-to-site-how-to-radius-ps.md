@@ -1,22 +1,24 @@
 ---
-title: ポイント対サイトと RADIUS 認証を使用してコンピューターを仮想ネットワークに接続する:PowerShell | Azure
-description: P2S および RADIUS 認証を使って、Windows クライアントと OS X クライアントを仮想ネットワークに安全に接続します。
+title: 'ポイント対サイトと RADIUS 認証を使用してコンピューターを仮想ネットワークに接続する: PowerShell'
+titleSuffix: Azure VPN Gateway
+description: P2S および RADIUS 認証を使って、Windows クライアントと OS X クライアントを仮想ネットワークに安全に接続する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 07/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9d962d3a4757b4c7b2d217f91aaf73d6ad4164d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d700a74b0e5be6511cbaf356da2d1cd85af8ff66
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94964849"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766295"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する:PowerShell
 
-この記事では、RADIUS 認証を使用するポイント対サイト接続を備えた VNet を作成する方法について説明します。 この構成は、Resource Manager デプロイ モデルについてのみ使用できます。
+この記事では、RADIUS 認証を使用するポイント対サイト接続を備えた VNet を作成する方法について説明します。 この構成は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)についてのみ使用できます。
 
 ポイント対サイト (P2S) VPN ゲートウェイでは、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 ポイント対サイト VPN 接続は、自宅や会議室でのテレワークなど、リモートの場所から VNet に接続する場合に便利です。 P2S VPN は、VNet への接続が必要なクライアントがごく少ない場合に、サイト対サイト VPN の代わりに使用するソリューションとしても便利です。
 
@@ -32,11 +34,11 @@ P2S VPN 接続は、Windows デバイスと Mac デバイスから開始され�
 
 ポイント対サイト接続に、VPN デバイスや公開 IP アドレスは必要ありません。 P2S では、SSTP (Secure Socket トンネリング プロトコル)、OpenVPN、または IKEv2 経由の VPN 接続が作成されます。
 
-* SSTP は、Windows クライアント プラットフォームでのみサポートされる TLS ベースの VPN トンネルです。 ファイアウォールを通過できるため、接続元の場所を問わず Azure に接続する際の理想的なオプションとなっています。 サーバー側でのサポート対象の SSTP バージョンは、1.0、1.1、1.2 です。 使用するバージョンはクライアントによって決まります。 Windows 8.1 以降の場合、SSTP では既定で 1.2 が使用されます。
+* SSTP は、Windows クライアント プラットフォームでのみサポートされる TLS ベースの VPN トンネルです。 ファイアウォールを通過できるため、接続元の場所を問わず Windows デバイスを Azure に接続する際の理想的なオプションとなっています。 サーバー側では、TLS バージョン 1.2 のみをサポートしています。 パフォーマンス、スケーラビリティ、セキュリティを向上させるには、代わりに OpenVPN プロトコルの使用を検討してください。
 
-* SSL/TLS ベースの VPN プロトコルである OpenVPN® プロトコル。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (OSX バージョン 10.13 以上) から接続する際に使用できます。
+* SSL/TLS ベースの VPN プロトコルである OpenVPN® プロトコル。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (macOS バージョン 10.13 以上) から接続する際に使用できます。
 
-* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (OSX バージョン 10.11 以上) から接続する際に使用できます。
+* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (macOS バージョン 10.11 以上) から接続する際に使用できます。
 
 P2S 接続には、以下のものが必要です。
 
@@ -159,7 +161,7 @@ Azure サブスクリプションを持っていることを確認します。 A
 VPN ゲートウェイを VNet 用に構成して作成します。
 
 * -GatewayType は "Vpn"、-VpnType は "RouteBased" にする必要があります。
-* 選択する [ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)  によっては、VPN ゲートウェイの作成が完了するまでに最大で 45 分かかる場合があります。
+* 選択する [ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)  によっては、VPN ゲートウェイの作成が完了するまでに 45 分以上かかる場合があります。
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -292,4 +294,4 @@ P2S 接続のトラブルシューティングについては、「[トラブル
 
 ## <a name="next-steps"></a>次のステップ
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/network-overview.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-network/network-overview.md)」を参照してください。

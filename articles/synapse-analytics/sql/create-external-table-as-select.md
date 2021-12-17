@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12841c747116cc9e14f348dfcf81acaa5da5e8c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba93588dc686a57c05371b86d8f9e058f2bd2cf2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98165367"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460035"
 ---
 # <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してクエリの結果をストレージに格納する
 
@@ -100,10 +100,12 @@ ORDER BY
 ## <a name="remarks"></a>Remarks
 
 結果を格納したら、外部テーブルのデータを変更することはできません。 CETAS は前回の実行で作成された基になるデータを上書きしないため、このスクリプトを繰り返すことはできません。 実際のシナリオでこれらが必要な場合は、次のフィードバック項目に投票するか、Azure フィードバック サイトで新しいものを提案してください。
-- [外部テーブルへの新しいデータの挿入を有効にする](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/32981347-polybase-allow-insert-new-data-to-existing-exteran)
-- [外部テーブルからのデータの削除を有効にする](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/15158034-polybase-delete-from-external-tables)
-- [CETAS でパーティションを指定する](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/19520860-polybase-partitioned-by-functionality-when-creati)
-- [ファイルのサイズと数を指定する](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/42263617-cetas-specify-number-of-parquet-files-file-size)
+- [外部テーブルへの新しいデータの挿入を有効にする](https://feedback.azure.com/d365community/forum/9b9ba8e4-0825-ec11-b6e6-000d3a4f07b8)
+- [外部テーブルからのデータの削除を有効にする](https://feedback.azure.com/d365community/idea/fb5a00c9-0a25-ec11-b6e6-000d3a4f07b8)
+- [CETAS でパーティションを指定する](https://feedback.azure.com/d365community/idea/e28278db-0a25-ec11-b6e6-000d3a4f07b8)
+- [ファイルのサイズと数を指定する](https://feedback.azure.com/d365community/idea/262048b9-0925-ec11-b6e6-000d3a4f07b8)
+
+サポートされている出力の種類は、Parquet と CSV だけです。 その他の種類については、[Azure フィードバック サイト](https://feedback.azure.com/d365community/forum/9b9ba8e4-0825-ec11-b6e6-000d3a4f07b8)で投票することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

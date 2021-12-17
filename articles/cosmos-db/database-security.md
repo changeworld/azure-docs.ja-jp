@@ -4,14 +4,14 @@ description: Azure Cosmos DB がデータベースの保護とデータのセキ
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/21/2020
+ms.date: 11/03/2021
 ms.author: mjbrown
-ms.openlocfilehash: 19b4c8466e88159839ce1f43a5ba282b1bb3ec9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b789ff99ce38df897df752609240dfa0d1d4f558
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94636930"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510183"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のセキュリティ - 概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -20,11 +20,11 @@ ms.locfileid: "94636930"
 
 ## <a name="whats-new-in-azure-cosmos-db-security"></a>Azure Cosmos DB のセキュリティの新機能
 
-保存時の暗号化が、すべての Azure リージョンの Azure Cosmos DB に保存されたドキュメントとバックアップに利用できるようになりました。 保存時の暗号化は、これらのリージョンの新規顧客と既存の顧客の両方に自動的に適用されます。 何も構成する必要はありません。従来通り、保存時の暗号化によってデータが安全にセキュリティで保護されるメリットと同様に素晴らしい待機時間、スループット、可用性、および機能を手に入れることができます。
+保存時の暗号化が、すべての Azure リージョンの Azure Cosmos DB に保存されたドキュメントとバックアップに利用できるようになりました。 保存時の暗号化は、これらのリージョンの新規顧客と既存の顧客の両方に自動的に適用されます。 何も構成する必要はありません。従来通り、保存時の暗号化によってデータが安全にセキュリティで保護されるメリットと同様に素晴らしい待機時間、スループット、可用性、および機能を手に入れることができます。  Azure Cosmos アカウントに保存しているデータは、Microsoft がサービスマネージド キーを使用して管理しているキーにより、自動でシームレスに暗号化されます。 必要であれば、[カスタマー マネージド キー (CMK)](how-to-setup-cmk.md) を使用して自分で管理しているキーにより、2 層目の暗号化を追加することもできます。
 
 ## <a name="how-do-i-secure-my-database"></a>データベースをセキュリティ保護する方法
 
-データのセキュリティは、顧客自身とデータベース プロバイダーの共同責任です。 顧客として選択したデータベース プロバイダーによって、引き受ける責任の範囲は変化する可能性があります。 オンプレミス ソリューションを選択した場合、エンドポイントの保護からハードウェアの物理的なセキュリティに至るまでのすべてを顧客自身が提供する必要がありますが、これは簡単な仕事ではありません。 Azure Cosmos DB などの PaaS クラウド データベース プロバイダーを選択した場合、顧客が関与する範囲は大幅に縮小されます。 マイクロソフトの「[Shared Responsibilities for Cloud Computing (クラウドコンピューティングの共同責任)](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)」ホワイト ペーパーから借用した次の図は、Azure Cosmos DB のような PaaS プロバイダーを使用すると、顧客の責任がどのように減少するかを示しています。
+データのセキュリティは、顧客自身とデータベース プロバイダーの共同責任です。 顧客として選択したデータベース プロバイダーによって、引き受ける責任の範囲は変化する可能性があります。 オンプレミス ソリューションを選択した場合、エンドポイントの保護からハードウェアの物理的なセキュリティに至るまでのすべてを顧客自身が提供する必要がありますが、これは簡単な仕事ではありません。 Azure Cosmos DB などの PaaS クラウド データベース プロバイダーを選択した場合、顧客が関与する範囲は大幅に縮小されます。 マイクロソフトの「[Shared Responsibilities for Cloud Computing (クラウドコンピューティングの共同責任)](https://azure.microsoft.com/resources/shared-responsibilities-for-cloud-computing/)」ホワイト ペーパーから借用した次の図は、Azure Cosmos DB のような PaaS プロバイダーを使用すると、顧客の責任がどのように減少するかを示しています。
 
 :::image type="content" source="./media/database-security/nosql-database-security-responsibilities.png" alt-text="顧客とデータベース プロバイダーの責任":::
 
@@ -71,35 +71,222 @@ ms.locfileid: "94636930"
 |削除されたデータの復元|自動化されたオンライン バックアップを使用して、誤って削除したデータを最大 30 日以内に回復することができます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」を参照してください。|
 |機密データの保護と分離|「新機能」に示されているリージョンのすべてのデータが保存時に暗号化されます。<br><br>個人データと他の機密データを特定のコンテナーと読み取り/書き込みに分離するか、読み取り専用アクセスを特定のユーザーに限定することができます。|
 |攻撃の監視|[監査ログとアクティビティ ログ](./monitor-cosmos-db.md)を使用すると、アカウントの正常なアクティビティと異常なアクティビティを監視できます。 この表の後のスクリーンショットに示すように、リソースに対して実行された操作、操作を開始した人物、操作の発生日時、操作の状態などを確認できます。|
-|攻撃への対応|Azure のサポートに連絡して攻撃の可能性を報告すると、5 段階のインシデント対応プロセスが開始されます。 この 5 段階のプロセスの目標は、問題が検出され、調査が開始された後、通常のサービスのセキュリティと操作を可能な限り早急に復元することです。<br><br>詳細については、「[Microsoft Azure Security Response in the Cloud (クラウドでの Microsoft Azure のセキュリティへの対応)](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)」を参照してください。|
+|攻撃への対応|Azure のサポートに連絡して攻撃の可能性を報告すると、5 段階のインシデント対応プロセスが開始されます。 この 5 段階のプロセスの目標は、問題が検出され、調査が開始された後、通常のサービスのセキュリティと操作を可能な限り早急に復元することです。<br><br>詳細については、「[Microsoft Azure Security Response in the Cloud (クラウドでの Microsoft Azure のセキュリティへの対応)](https://azure.microsoft.com/resources/shared-responsibilities-for-cloud-computing/)」を参照してください。|
 |ジオフェンス|Azure Cosmos DB は、主権地域 (ドイツ、中国、US Gov など) に対するデータ ガバナンスを保証します。|
 |施設の保護|Azure Cosmos DB のデータは、Azure の保護されたデータセンター内の SSD に格納されます。<br><br>詳細については、[Microsoft グローバルデータセンター](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)に関するページを参照してください。|
-|HTTPS/SSL/TLS の暗号化|Azure Cosmos DB へのすべての接続で HTTPS がサポートされます。 Azure Cosmos DB では TLS 1.2 もサポートされます。<br>サーバー側で最低限の TLS バージョンを強制できます。 それを行うには、[azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com) にお問い合わせください。|
+|HTTPS/SSL/TLS の暗号化|Azure Cosmos DB へのすべての接続で HTTPS がサポートされます。 Azure Cosmos DB では TLS 1.2 もサポートされます。<br>サーバー側で最低限の TLS バージョンを強制できます。 これを行うには、 [Azure サポートチケット](https://azure.microsoft.com/support/options/)を開きます。|
 |保存時の暗号化|Azure Cosmos DB に格納されるすべてのデータは、保存時に暗号化されます。 詳細については、[Azure Cosmos DB の保存時の暗号化](./database-encryption-at-rest.md)に関するページを参照してください。|
 |サーバーへの修正プログラムの適用|管理されたデータベースとして、Azure Cosmos DB は、サーバーの管理と修正プログラムの適用を行う必要性を排除します。顧客に代わって Azure Cosmos DB が自動的に実行します。|
 |強力なパスワードを持つ管理者アカウント|今でもこの要件について言及する必要があることは信じ難いことですが、一部の競合他社とは異なり、Azure Cosmos DB では、パスワードを持たない管理アカウントは存在できません。<br><br> TLS と HMAC のシークレット ベースの認証によるセキュリティは、既定で組み込まれています。|
-|セキュリティとデータ保護の認証| 最新の認定の一覧については、全体的な [Azure コンプライアンス サイト](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings)のほか、すべての認定を含む最新の [Azure コンプライアンス ドキュメント](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (Cosmos を検索) を参照してください。 より焦点を絞った記事については、2018 年 4 月 25 日の投稿「Azure #CosmosDB:Secure, private, compliant」(Azure #CosmosDB: セキュリティ保護、プライベート、準拠) を確認してください。これには、SOCS 1/2 Type 2、HITRUST、PCI DSS Level 1、ISO 27001、HIPAA、FedRAMP High のほか多数が含まれています。
+|セキュリティとデータ保護の認証| 最新の認定の一覧については、全体的な [Azure コンプライアンス サイト](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings)のほか、すべての認定を含む最新の [Azure コンプライアンス ドキュメント](https://azure.microsoft.com/mediahandler/files/resourcefiles/microsoft-azure-compliance-offerings/Microsoft%20Azure%20Compliance%20Offerings.pdf) (Cosmos を検索) を参照してください。
 
 次のスクリーン ショットは、監査ログとアクティビティ ログを使用して自分のアカウントを監視する方法を示しています。:::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="Azure Cosmos DB のアクティビティ ログ":::
 
 <a id="primary-keys"></a>
 
-## <a name="primary-keys"></a>主キー
+## <a name="primarysecondary-keys"></a>主/セカンダリ キー
 
-主キーは、データベース アカウントのすべての管理リソースへのアクセスを提供します。 主キー:
+主/セカンダリ キーにより、データベース アカウントのすべての管理リソースへのアクセスが提供されます。 主/セカンダリ キー:
 
 - アカウント、データベース、ユーザー、およびアクセス許可へのアクセスを提供します。 
 - コンテナーとドキュメントへのきめ細かいアクセスを提供するために使用することはできません。
 - アカウントの作成時に作成されます。
 - いつでも再生成することができます。
 
-各アカウントは、主キーとセカンダリ キーという 2 つの主キーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにするためです。
+各アカウントは、主キーとセカンダリ キーという 2 つのキーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにするためです。
 
-Cosmos DB アカウント用の 2 つの主キーに加えて、2 つの読み取り専用キーがあります。 これらの読み取り専用キーは、アカウントの読み取り操作のみを許可します。 読み取り専用キーは、アクセス許可リソースを読み取るためのアクセスを提供しません。
+主/セカンダリ キーには、読み取り/書き込みと読み取り専用の 2 つのバージョンがあります。 読み取り専用キーでは、アカウントに対する読み取り操作のみが許可されますが、読み取りアクセス許可のリソースへのアクセスは提供されません。
 
-主、セカンダリ、読み取り専用、および読み取り書き込みの主キーは、Azure portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#regenerate-account-key)」を参照してください。
+### <a name="key-rotation-and-regeneration"></a><a id="key-rotation"></a> キーのローテーションと再生成
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティのデモ":::
+キーのローテーションと再生成のプロセスは単純です。 まず、Azure Cosmos DB アカウントにアクセスするために、**アプリケーションが主キーかセカンダリ キーのどちらかを一貫して使用している** ことを確認します。 次に、以下に示す手順に従います。 キーの更新とキーの再生成についてアカウントを監視するには、[メトリックとアラートを使用したキーの更新の監視](monitor-account-key-updates.md)に関する記事を参照してください。
+
+# <a name="sql-api"></a>[SQL API](#tab/sql-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>アプリケーションで現在主キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[キー]** を選択し、セカンダリ キーの右側にある省略記号から **[セカンダリ キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="セカンダリ キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
+
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
+
+1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
+
+1. Azure portal に戻り、主キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>アプリケーションで現在セカンダリ キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[キー]** を選択し、主キーの右側にある省略記号から **[主キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="主キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
+
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
+
+1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
+
+1. Azure portal に戻り、セカンダリ キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+# <a name="azure-cosmos-db-api-for-mongodb"></a>[MongoDB 用 Azure Cosmos DB API](#tab/mongo-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>アプリケーションで現在主キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[接続文字列]** を選択したら、セカンダリ パスワードの右側にある省略記号から **[パスワードの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-mongo.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
+
+1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
+
+1. Azure portal に戻り、主キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-mongo.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>アプリケーションで現在セカンダリ キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[接続文字列]** を選択したら、プライマリ パスワードの右側にある省略記号から **[パスワードの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-mongo.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
+
+1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
+
+1. Azure portal に戻り、セカンダリ キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-mongo.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+# <a name="cassandra-api"></a>[Cassandra API](#tab/cassandra-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>アプリケーションで現在主キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[接続文字列]** を選択したら、セカンダリ パスワードの右側にある省略記号から **[読み取り/書き込みのセカンダリ パスワードの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-cassandra.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
+
+1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
+
+1. Azure portal に戻り、主キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-cassandra.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>アプリケーションで現在セカンダリ キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[接続文字列]** を選択したら、プライマリ パスワードの右側にある省略記号から **[読み取り/書き込みのプライマリ パスワードの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-cassandra.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
+
+1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
+
+1. Azure portal に戻り、セカンダリ キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-cassandra.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+# <a name="gremlin-api"></a>[Gremlin API](#tab/gremlin-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>アプリケーションで現在主キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[キー]** を選択し、セカンダリ キーの右側にある省略記号から **[セカンダリ キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-gremlin.png" alt-text="セカンダリ キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
+
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
+
+1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
+
+1. Azure portal に戻り、主キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-gremlin.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>アプリケーションで現在セカンダリ キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[キー]** を選択し、主キーの右側にある省略記号から **[主キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-gremlin.png" alt-text="主キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
+
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
+
+1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
+
+1. Azure portal に戻り、セカンダリ キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-gremlin.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+# <a name="table-api"></a>[テーブル API](#tab/table-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>アプリケーションで現在主キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[接続文字列]** を選択したら、セカンダリ キーの右側にある省略記号から **[セカンダリ キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
+
+1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
+
+1. Azure portal に戻り、主キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-table.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>アプリケーションで現在セカンダリ キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[接続文字列]** を選択したら、主キーの右側にある省略記号から **[主キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-table.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
+
+1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
+
+1. Azure portal に戻り、セカンダリ キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="セカンダリ キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
+
+---
+
+## <a name="track-the-status-of-key-regeneration"></a>キーの再生成の状態を追跡する
+
+キーを回転させたり再生成したりしたら、アクティビティ ログからその状態を追跡できます。 状態を追跡するには、次の手順を使用します。
+
+1. [Azure portal](https://portal.azure.com/) にサインインし、Azure Cosmos DB アカウントに移動します。
+
+1. **[アクティビティ ログ]** ウィンドウを開き、次のフィルターを設定します。
+
+   * **[リソースの種類]** を **[Azure Cosmos DB アカウント]** に設定します。
+   * **[操作]** を **[キーの回転]** に設定します。
+
+   :::image type="content" source="./media/database-security/track-key-regeneration-status.png" alt-text="アクティビティ ログからのキーの再生成の状態" border="true":::
+
+1. キーの再生成イベントと、その状態、操作が実行された時刻、キーの再生成を開始したユーザーの詳細が表示されます。 キーの生成操作は **[受け入れ済み]** 状態で開始され、次に **[開始済み]** に変わり、操作が完了すると **[成功]** に変わります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/30/2019
+ms.date: 06/23/2021
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: da4be6f4bc8335e0976a0a4a87c4d232b2a2285f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddaa7656b5d926b3bf7fdb34548eafe99e9bcf89
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98676308"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092061"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (以前の SQL DW) の Transparent Data Encryption (TDE) の概要
 
@@ -26,6 +26,9 @@ ms.locfileid: "98676308"
 > * [認証](sql-data-warehouse-authentication.md)
 > * [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
 > * [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+
+> [!NOTE]
+> この記事は、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics (専用 SQL プール (以前の SQL DW)) に適用されます。 Synapse ワークスペース内の専用 SQL プールの Transparent Data Encryption に関するドキュメントについては、「[Azure Synapse Analytics の暗号化](../security/workspaces-encryption.md)」を参照してください。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 

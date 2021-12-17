@@ -1,21 +1,19 @@
 ---
 title: 'クイックスタート: Azure Queue Storage クライアント ライブラリ v12 - Java'
 description: Java 用 Azure Queue Storage クライアント ライブラリ v12 を使用して、キューを作成し、そこにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って削除する方法について説明します。 キューを削除する方法についても説明します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 12/01/2020
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.custom:
-- devx-track-java
-- mode-api
-ms.openlocfilehash: f4e33cac6ba00be56b0f63cf5a10b2dce32e1be7
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-java, mode-api
+ms.openlocfilehash: 68ae380756a9de651b8c238e091fe426e417bd96
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534460"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036810"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>クイックスタート: Java 用 Azure Queue Storage クライアント ライブラリ v12
 

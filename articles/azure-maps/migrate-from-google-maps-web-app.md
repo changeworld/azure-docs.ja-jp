@@ -1,20 +1,19 @@
 ---
 title: チュートリアル - Google マップから Web アプリを移行する | Microsoft Azure Maps
 description: Google Maps から Microsoft Azure Maps に Web アプリを移行する方法についてのチュートリアルです。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
-services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: fcb8090427530271600a6699fafa5c488c426784
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92d879f0ed4d7252624f0d825fc50892d3d5851e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680877"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474157"
 ---
 # <a name="tutorial-migrate-a-web-app-from-google-maps"></a>チュートリアル:Google Maps から Web アプリを移行する
 
@@ -40,7 +39,7 @@ Google マップを使用するほとんどの Web アプリでは、Google Maps
 
 既存の Web アプリケーションを移行する場合は、オープンソースのマップ コントロール ライブラリが使用されているかどうかを確認します。 オープンソースのマップ コントロール ライブラリの例としては、Cesium、Leaflet、OpenLayers があります。 オープンソースのマップ コントロール ライブラリがご自分のアプリケーションで使用されていて、Azure Maps Web SDK を使用したくない場合でも、移行することはできます。 その場合は、ご自分のアプリケーションを Azure Maps タイル サービス ([道路タイル](/rest/api/maps/render/getmaptile) \| [衛星タイル](/rest/api/maps/render/getmapimagerytile)) に接続してください。 一般的に使用されるいくつかのオープンソースのマップ コントロール ライブラリで Azure Maps を使用する方法の詳細を以下に示します。
 
-* Cesium - Web 用の 3D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [ドキュメント](https://cesiumjs.org/)
+* Cesium - Web 用の 3D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [ドキュメント](https://www.cesium.com/)
 * Leaflet – Web 用の軽量な 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [ドキュメント](https://leafletjs.com/)
 * OpenLayers - プロジェクションをサポートする Web 用の 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [ドキュメント](https://openlayers.org/)
 
@@ -159,7 +158,7 @@ JavaScript フレームワークを開発に使用している場合は、次の
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
@@ -246,16 +245,16 @@ Web アプリで Azure Maps マップ コントロールを設定して使用す
 Google マップをローカライズするには、言語と地域のパラメーターを追加します。
 
 ```html
-<script type="text/javascript" src=" https://maps.googleapis.com/maps/api/js?callback=initMap&key=[api_key]& language=[language_code]&region=[region_code]" async defer></script>
+<script type="text/javascript" src=" https://maps.googleapis.com/maps/api/js?callback=initMap&key={api-Key}& language={language-code}&region={region-code}" async defer></script>
 ```
 
 以下に、言語が "fr-fr" に設定されている Google Maps の例を示します。
 
 ![Google Maps のローカライズ](media/migrate-google-maps-web-app/google-maps-localization.png)
 
-#### <a name="after-azure-maps"></a>後: Azure Maps
+#### <a name="after-azure-maps&quot;></a>後: Azure Maps
 
-Azure Maps には、マップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバル *atlas* 名前空間に追加します。 これにより、アプリ内のすべてのマップ コントロール インスタンスが、既定でこれらの設定になります。 以下では、言語をフランス語 ("fr-FR") に、地域ビューを "auto" に設定します。
+Azure Maps には、マップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバル *atlas* 名前空間に追加します。 これにより、アプリ内のすべてのマップ コントロール インスタンスが、既定でこれらの設定になります。 以下では、言語をフランス語 (&quot;fr-FR") に、地域ビューを "auto" に設定します。
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -855,7 +854,7 @@ Google Maps では、`google.maps.Data` クラスを使用した GeoJSON デー�
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
@@ -1009,7 +1008,7 @@ GeoJSON は、Azure Maps の基本データ型です。 `datasource.importFromUr
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
@@ -1215,7 +1214,7 @@ GeoJSON データは、`DataSource` クラスの `importDataFromUrl` 関数を�
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]&libraries=visualization" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}&libraries=visualization" async defer></script>
 </head>
 <body>
     <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
@@ -1390,7 +1389,7 @@ Azure と Google のどちらのマップも、ジオリファレンスされた
 
 #### <a name="before-google-maps"></a>前: Google Maps
 
-オーバーレイする画像の URL と、マップ上の画像をバインドするための境界ボックスを指定します。 この例では、マップ上に [1922 年のニュージャージー州のニューアーク](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)のマップ イメージをオーバーレイします。
+オーバーレイする画像の URL と、マップ上の画像をバインドするための境界ボックスを指定します。 この例では、マップ上に 1922 年のニュージャージー州のニューアークのマップ イメージをオーバーレイします。
 
 ```html
 <!DOCTYPE html>
@@ -1425,7 +1424,7 @@ Azure と Google のどちらのマップも、ジオリファレンスされた
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
@@ -1535,7 +1534,7 @@ Azure と Google のどちらのマップも、KML、KMZ、GeoRSS のデータ�
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
@@ -1675,7 +1674,7 @@ Google Maps の移行に関連するその他のコード サンプルを以下�
 |---------------|-------------|
 | `google.maps.Map` | [atlas.Map](/javascript/api/azure-maps-control/atlas.map)  |
 | `google.maps.InfoWindow` | [atlas.Popup](/javascript/api/azure-maps-control/atlas.popup)  |
-| `google.maps.InfoWindowOptions` | [atlas.PopupOptions](https://docs.microsoft.com/) |
+| `google.maps.InfoWindowOptions` | [atlas.PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions) |
 | `google.maps.LatLng`  | [atlas.data.Position](/javascript/api/azure-maps-control/atlas.data.position)  |
 | `google.maps.LatLngBounds` | [atlas.data.BoundingBox](/javascript/api/azure-maps-control/atlas.data.boundingbox) |
 | `google.maps.MapOptions`  | [atlas.CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)<br/>[atlas.CameraBoundsOptions](/javascript/api/azure-maps-control/atlas.cameraboundsoptions)<br/>[atlas.ServiceOptions](/javascript/api/azure-maps-control/atlas.serviceoptions)<br/>[atlas.StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions)<br/>[atlas.UserInteractionOptions](/javascript/api/azure-maps-control/atlas.userinteractionoptions) |

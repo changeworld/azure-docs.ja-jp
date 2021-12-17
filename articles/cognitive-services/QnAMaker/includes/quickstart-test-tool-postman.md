@@ -6,30 +6,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: include
-ms.custom: include file
-ms.date: 11/09/2020
-ms.openlocfilehash: fa497b69b067d5556f11effdb52505895ecc3bdd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, ignite-fall-2021
+ms.date: 09/13/2021
+ms.openlocfilehash: cc9b4dc8d6471699c72a24017ef855caf3470971
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94386666"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043739"
 ---
 この Postman ベースのクイック スタートでは、ナレッジ ベースから回答を取得する手順を紹介しています。
 
 ## <a name="prerequisites"></a>前提条件
 
-* 最新の [**Postman**](https://www.getpostman.com/)。
 * 以下が必要です。
-    * [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)
-    * クイックスタートから作成される、トレーニングおよび発行済みの[質問と回答を含むナレッジ ベース](../Quickstarts/add-question-metadata-portal.md)がメタデータとおしゃべりで構成されている。
+    * 最新の [**Postman**](https://www.getpostman.com/)。
+    * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください。
+
+> * Azure portal で作成された [QnA Maker リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
+
+   * メタデータとおしゃべりで構成され、質問と回答を持つトレーニングおよび発行済みのナレッジ ベース (前の[クイックスタート](../Quickstarts/add-question-metadata-portal.md)で作成)。
+
 
 > [!NOTE]
 > ナレッジ ベースからの質問への回答を生成する準備ができたら、ナレッジ ベースを[トレーニング](../Quickstarts/create-publish-knowledge-base.md#save-and-train)して[発行](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)する必要があります。 ナレッジ ベースが発行されると、 **[発行]** ページに、回答を生成するための HTTP 要求の設定が表示されます。 **[Postman]** タブには、回答の生成に必要な設定が表示されます。
 
 ## <a name="set-up-postman-for-requests"></a>要求に対して Postman を設定する
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 このクイックスタートでは、Postman の **POST** 要求と同じ設定を使用し、照会する内容に基づいて、サービスに送信される本文の JSON を POST するように構成します。
 
@@ -46,25 +48,6 @@ ms.locfileid: "94386666"
     ||`{"question":"<Your question>"}`|JSON オブジェクトとしての POST 要求の本文。 この値は、クエリ実行の目的に応じて、次の各セクションで異なります。|
 
 1. Postman を開き、発行済みのナレッジ ベース設定を使用して、新しい基本的な **POST** 要求を作成します。 以降のセクションでは、POST 本文の JSON を変更して、ナレッジ ベースに対するクエリを変更します。
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
-
-このクイックスタートでは、Postman の **POST** 要求と同じ設定を使用し、照会する内容に基づいて、サービスに送信される本文の JSON を POST するように構成します。
-
-この手順を使用して Postman を構成し、次に、後続の各セクションを読んで POST 本文の JSON を構成します。
-
-1. ナレッジ ベースの **[Settings]\(設定\)** ページで **[Postman]** タブを選択し、ナレッジ ベースからの回答を生成するために使用される構成を表示します。 Postman で使用する次の情報をコピーします。
-
-    |名前|設定|目的と値|
-    |--|--|--|
-    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|これは、URL の HTTP メソッドとルートです。|
-    |`Host`|`https://YOUR-RESOURCE_NAME.cognitiveservices.azure.com/qnamaker`|これは URL のホストです。 Host と Post の値を連結して、完全な generateAnswer URL を取得します。|
-    |`Ocp-Apim-Subscription-Key`|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|要求を承認するためのヘッダー値。 |
-    |`Content-type`|`application/json`|コンテンツのヘッダー値。|
-    ||`{"question":"<Your question>"}`|JSON オブジェクトとしての POST 要求の本文。 この値は、クエリ実行の目的に応じて、次の各セクションで異なります。|
-
-1. Postman を開き、発行済みのナレッジ ベース設定を使用して、新しい基本的な **POST** 要求を作成します。 以降のセクションでは、POST 本文の JSON を変更して、ナレッジ ベースに対するクエリを変更します。
----
 
 ## <a name="use-metadata-to-filter-answer"></a>メタデータを使用して回答をフィルター処理する
 
@@ -98,7 +81,7 @@ ms.locfileid: "94386666"
                     "What is the max size of a knowledge base?",
                     "How many GB of data can a knowledge base hold?"
                 ],
-                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.",
+                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](../Concepts/azure-resources.md) for more details.",
                 "score": 68.76,
                 "id": 3,
                 "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
@@ -152,7 +135,7 @@ ms.locfileid: "94386666"
                 "questions": [
                     "How do I share a knowledge base with others?"
                 ],
-                "answer": "Sharing works at the level of a QnA Maker service, that is, all knowledge bases in the service will be shared. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/collaborate-knowledge-base) how to collaborate on a knowledge base.",
+                "answer": "Sharing works at the level of a QnA Maker service, that is, all knowledge bases in the service will be shared.",
                 "score": 56.07,
                 "id": 5,
                 "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
@@ -343,7 +326,7 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
     }
     ```
 
-    `Thank you` という質問はおしゃべりの質問に完全に一致したため、QnA Maker は 100 というスコアにより完全に信頼できます。 また、QnA Maker からは、関連するすべての質問のほか、おしゃべりのメタデータ タグ情報を含むメタデータ プロパティも返されました。
+    `Thank you` という質問はおしゃべりの質問に完全に一致したため、QnA Maker は 100 というスコアにより完全に信頼できます。 QnA Maker からは、関連するすべての質問のほか、おしゃべりのメタデータ タグ情報を含むメタデータ プロパティも返されました。
 
 ## <a name="use-threshold-and-default-answer"></a>しきい値と既定の回答を使用する
 
@@ -401,7 +384,7 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
                     "What is the max size of a knowledge base?",
                     "How many GB of data can a knowledge base hold?"
                 ],
-                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.",
+                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](../Concepts/azure-resources.md) for more details.",
                 "score": 71.1,
                 "id": 3,
                 "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
@@ -425,3 +408,6 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
         "activeLearningEnabled": true
     }
     ```
+## <a name="use-unstructured-data-sources"></a>非構造化データ ソースを使用します。
+    
+QnA の抽出に使用できない非構造化ドキュメントを追加する機能がサポートされるようになりました。 クエリへの応答をフェッチするときに、GenerateAnswer API に非構造化データ セットを含めるか除外するかを選択できます。 GA サービスでは非構造化データ セットをサポートしていません。 これは、カスタムの質問と回答でのみサポートされます。

@@ -1,14 +1,15 @@
 ---
 title: トピックとイベント サブスクリプションの監視 - Azure Event Grid IoT Edge | Microsoft Docs
 description: トピックとイベント サブスクリプションを監視する
-ms.date: 07/08/2020
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: d230be4f74abd61ad7b7f0fdb3facb32ee63da73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: iot-edge
+ms.openlocfilehash: 02fa0daa54d7b5a079ee1d8dff5a104ca23cc56e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171535"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367799"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>トピックとイベント サブスクリプションを監視する
 
@@ -43,7 +44,7 @@ Edge の Event Grid では、トピックおよびイベント サブスクリ�
 
 ### <a name="topic-metrics"></a>トピックのメトリック
 
-| メトリック | 説明 |
+| メトリック | Description |
 | ------ | ----------- |
 | EventsReceived | トピックに発行されたイベントの数
 | UnmatchedEvents | トピックに発行されたイベントのうち、イベント サブスクリプションと一致せずにドロップされた数
@@ -55,7 +56,7 @@ Edge の Event Grid では、トピックおよびイベント サブスクリ�
 
 ### <a name="event-subscription-metrics"></a>イベント サブスクリプションのメトリック
 
-| メトリック | 説明 |
+| メトリック | Description |
 | ------ | ----------- |
 | DeliverySuccessCounts | 構成されたエンドポイントに正常に配信されたイベントの数
 | DeliveryFailureCounts | 構成されたエンドポイントへの配信に失敗したイベントの数

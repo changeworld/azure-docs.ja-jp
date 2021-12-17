@@ -7,15 +7,15 @@ tags: azure-key-vault
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: how-to
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurepowershell
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 0efe0164d8e1a4e5bc3b9d6d7313855740afd316
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a2d5ca2d6f0b96327ca4a11c3cf4ef88a99083b5
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767909"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665143"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Azure Key Vault から証明書をエクスポートする
 

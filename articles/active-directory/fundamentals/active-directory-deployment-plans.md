@@ -1,6 +1,6 @@
 ---
 title: デプロイ計画 - Azure Active Directory | Microsoft Docs
-description: Azure Active Directory の機能を多数デプロイする方法に関するエンド ツー エンドのガイダンスです。
+description: Azure Active Directory の機能を多数デプロイする方法に関するガイダンスです。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -12,15 +12,15 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4185ffd644d54c419f42c78326ca10bf100443c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d2a64ec05fb3f6d353374684c14733dda9b302d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99051432"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443052"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory のデプロイ計画
-ここでは、Azure Active Directory (Azure AD) の機能のデプロイについてのエンド ツー エンドのガイダンスを紹介しています。 Azure AD のデプロイ計画では、Azure AD の代表的な機能について、そのビジネス上の価値や計画の考慮事項、正しくデプロイするうえで必要な運用手順をひととおり説明しています。
+ここでは、Azure Active Directory (Azure AD) の機能のデプロイについてのガイダンスを紹介しています。 Azure AD のデプロイ計画では、Azure AD の代表的な機能について、そのビジネス上の価値や計画の考慮事項、正しくデプロイするうえで必要な運用手順をひととおり説明しています。
 
 任意の計画ページから、ブラウザーの PDF への出力機能を使用して、最新のオフライン バージョンのドキュメントを作成します。
 
@@ -29,10 +29,10 @@ ms.locfileid: "99051432"
 
 | 機能 | 説明|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 管理者が承認した認証方式を使用することにより、Azure AD MFA では、シンプルなサインイン プロセスへの要求に応えながら、データやアプリケーションへのアクセスを保護することができます。 [多要素認証を構成してテナントに適用する方法](https://www.youtube.com/watch?v=qNndxl7gqVM)に関するこちらのビデオをご覧ください。|
+| [Azure Active Directory Multifactor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 管理者が承認した認証方式を使用することにより、Azure AD MFA では、シンプルなサインイン プロセスへの要求に応えながら、データやアプリケーションへのアクセスを保護することができます。 [多要素認証を構成してテナントに適用する方法](https://www.youtube.com/watch?v=qNndxl7gqVM)に関するこちらのビデオをご覧ください。|
 | [条件付きアクセス](../conditional-access/plan-conditional-access.md)| 条件付きアクセスを使用すると、クラウド アプリへのアクセスをだれに許可するかを各種の条件に基づいて自動的に判断するアクセスの制御を実装できます。 |
 | [セルフサービス パスワード リセット](../authentication/howto-sspr-deployment.md)| セルフサービス パスワード リセット により、ユーザーは、必要に応じていつでも、どこでも、管理者の介入なしでパスワードをリセットできます。 |
-| [パスワードレス](../authentication/howto-authentication-passwordless-deployment.md) | 組織内の Microsoft Authenticator アプリまたは FIDO2 セキュリティ キーを使用してパスワードレス認証を実装します。 |
+| [パスワードレス](../authentication/howto-authentication-passwordless-deployment.md) | 組織内の Microsoft Authenticator アプリまたは FIDO2 セキュリティ キーを使用してパスワードレス認証を実装します |
 
 ## <a name="deploy-application-and-device-management"></a>アプリケーションおよびデバイス管理のデプロイ
 
@@ -43,13 +43,12 @@ ms.locfileid: "99051432"
 | [デバイス](../devices/plan-device-deployment.md) | この記事は、デバイスを Azure AD と統合する方法を評価し、実装計画を選択するのに役立ちます。また、サポートされているデバイス管理ツールへの主要なリンクを提供します。 |
 
 
-## <a name="deploy-hybrid-scenarios"></a>ハイブリッド シナリオのデプロイ
+## <a name="deploy-hybrid-scenarios"></a>ハイブリッド シナリオのデプロイ  
 
 | 機能 | 説明|
 | -| -|
-| [ADFS からパスワード ハッシュ同期への移行](../hybrid/plan-migrate-adfs-password-hash-sync.md)| パスワード ハッシュ同期では、ユーザー パスワードのハッシュがオンプレミスの Active Directory から Azure AD に同期されます。これにより Azure AD では、オンプレミスの Active Directory とやり取りすることなくユーザーを認証することができます |
-| [ADFS からパススルー認証への移行](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Azure AD パススルー認証を使用すると、ユーザーは同じパスワードを使用して、オンプレミスのアプリケーションとクラウドベースのアプリケーションの両方にサインインできます。 この機能により、ユーザー エクスペリエンスが向上します。ユーザーは、覚えておくパスワードが 1 つ少なくなり、ユーザーがサインイン方法を忘れる可能性が低くなるため IT ヘルプデスクのコストが削減されます。 この機能により、ユーザーが Azure AD を使用してサインインするとき、ユーザーのパスワードがオンプレミスの Active Directory に対して直接検証されます。 |
-| [Azure AD アプリケーション プロキシ](../manage-apps/application-proxy-deployment-plan.md) |現在、従業員は、どこでも、いつでも、どんなデバイスからでも生産的であることを望んでいます。 クラウド内の SaaS アプリとオンプレミスの企業アプリにアクセスする必要があります。 Azure AD アプリケーション プロキシを使用すると、コストが高く複雑な仮想プライベート ネットワーク (VPN) や非武装地帯 (DMZ) を使用することなく、この堅牢なアクセスが可能になります。 |
+| [AD FS とクラウド間のユーザー認証](../hybrid/migrate-from-federation-to-cloud-authentication.md)| パス スルー認証またはパスワード ハッシュ同期を使用して、フェデレーションからクラウド認証にユーザー認証を移行する方法について説明します。
+| [Azure AD アプリケーション プロキシ](../app-proxy/application-proxy-deployment-plan.md) |現在、従業員は、どこでも、いつでも、どんなデバイスからでも生産的であることを望んでいます。 クラウド内の SaaS アプリとオンプレミスの企業アプリにアクセスする必要があります。 Azure AD アプリケーション プロキシを使用すると、コストが高く複雑な仮想プライベート ネットワーク (VPN) や非武装地帯 (DMZ) を使用することなく、この堅牢なアクセスが可能になります。 |
 | [シームレス SSO](../hybrid/how-to-connect-sso-quick-start.md)| Azure Active Directory シームレス シングル サインオン (Azure AD シームレス SSO) では、ユーザーが企業ネットワークに接続される会社のデバイスを使用するときに、自動的にサインインを行います。 この機能を使用すると、ユーザーは Azure AD にサインインするためにパスワードを入力する必要がなくなり、通常はユーザー名の入力も不要です。 この機能により、追加のオンプレミス コンポーネントを必要とせずに、認可されたユーザーはクラウドベースのアプリケーションに簡単にアクセスできるようになります。 |
 
 ## <a name="deploy-user-provisioning"></a>ユーザー プロビジョニングのデプロイ
@@ -78,8 +77,8 @@ ms.locfileid: "99051432"
 |エンドユーザー|機能を実装する対象となるユーザーの代表的なグループ。 多くの場合、パイロット プログラムの変更をプレビューします。
 |IT サポート マネージャー|ヘルプデスクの観点から、この変更のサポート可能性に関する情報を提供できる、IT サポート組織の代表。  
 |ID アーキテクトまたは Azure グローバル管理者|この変更をどのように組織内の主要な ID 管理インフラストラクチャに合わせるかを定義する責任がある、ID 管理チームの代表。|
-|アプリケーション ビジネス所有者 |影響を受けるアプリケーションの全体的なビジネス所有者。アクセスの管理を含む場合があります。  また、エンドユーザーの観点から、この変更のユーザー エクスペリエンスと有用性に関する入力も提供される可能性があります。
-|セキュリティ所有者|計画が組織のセキュリティ要件を満たしていることをサインオフできるセキュリティ チームの代表。|
+|アプリケーション ビジネス所有者 |影響を受けるアプリケーションの全体的なビジネス所有者。アクセスの管理を含む場合があります。また、エンドユーザーの観点から、この変更のユーザー エクスペリエンスと有用性に関する入力も提供される可能性があります。
+|セキュリティ所有者|計画が組織のセキュリティ要件を満たしていることをサインアウトできるセキュリティ チームの代表。|
 |Compliance Manager|企業、業界、または政府の要件に確実に準拠する責任を負う組織内の個人。|
 
 **次のような関与のレベルがあります。**
@@ -92,10 +91,9 @@ ms.locfileid: "99051432"
 
 - **I** プロジェクト計画と成果を知らされる
 
-
 ## <a name="best-practices-for-a-pilot"></a>パイロットのベスト プラクティス
-すべてのユーザーに対して機能を有効にする前に、パイロットを使用して、小規模なグループでテストすることができます。 テストの一部として、組織内の各ユース ケースが十分にテストされていることを確認します。 これを組織全体にロールアウトする前に、パイロット ユーザーの特定のグループを対象にすることをお勧めします。
+すべてのユーザーに対して機能を有効にする前に、パイロットを使用して、小規模なグループでテストすることができます。 テストの一部として、組織内の各ユース ケースが十分にテストされていることを確認します。 このデプロイを組織全体にロールアウトする前に、パイロット ユーザーの特定のグループを対象にすることをお勧めします。
 
-最初の段階では、テストを受けてフィードバックを提供できる IT、ユーザビリティ、およびその他の適切なユーザーを対象にします。 このフィードバックを使用して、ユーザーに伝える情報と指示をさらに開発し、サポート スタッフが確認する可能性がある問題の種類に関する分析情報を提供します。 
+最初の段階では、テストを受けてフィードバックを提供できる IT、ユーザビリティ、およびその他の適切なユーザーを対象にします。 このフィードバックを使用して、ユーザーに伝える情報と指示をさらに発展させ、サポート スタッフが直面する可能性がある問題の種類に関する分析情報を提供します。 
 
 大規模なユーザー グループへのロールアウトの拡大は、対象とするグループのスコープを広げることで実行する必要があります。 これは、[動的グループ メンバーシップ](../enterprise-users/groups-dynamic-membership.md)を使用するか、対象グループにユーザーを手動で追加することで実行できます。

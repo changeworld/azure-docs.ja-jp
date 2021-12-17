@@ -2,21 +2,20 @@
 title: モデルのハイパーパラメーター調整
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning を使用して、ディープ ラーニングおよび機械学習モデルのハイパーパラメーター調整を自動化します。
-ms.author: anumamah
-author: Aniththa
-ms.reviewer: sgilley
+ms.author: sgilley
+author: sdgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 02/26/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 34adcf2218e29572ec9a86583addc7c021313085
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: devx-track-python, contperf-fy21q1
+ms.openlocfilehash: 5621b4d96023da61bb21451bcb23b21c19b812eb
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519641"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093972"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Azure Machine Learning を使用したモデルのハイパーパラメーター調整
 
@@ -183,7 +182,7 @@ run_logger.log("accuracy", float(val_accuracy))
 
 トレーニング スクリプトでは `val_accuracy` が計算され、主要メトリック "accuracy" としてログされます。 メトリックがログされるたびに、これをハイパーパラメーター調整サービスが受信します。 レポートの頻度は、ご自身で決定してください。
 
-モデル トレーニング実行の値のログに関する詳細については、「[Azure ML のトレーニングの実行でログ記録を有効にする](how-to-track-experiments.md)」をご覧ください。
+モデル トレーニング実行の値のログに関する詳細については、「[Azure ML のトレーニングの実行でログ記録を有効にする](how-to-log-view-metrics.md)」をご覧ください。
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> 早期終了ポリシーを指定する
 
@@ -424,13 +423,13 @@ Azure Machine Learning スタジオでハイパーパラメーター調整の実
 
 ### <a name="studio"></a>スタジオ
 
-[Azure Machine Learning スタジオ](https://ml.azure.com)では、すべてのハイパーパラメーター調整の実行を視覚化できます。 ポータルで実験を表示する方法について詳しくは、「[Studio で実行レコードを表示する](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)」をご覧ください。
+[Azure Machine Learning スタジオ](https://ml.azure.com)では、すべてのハイパーパラメーター調整の実行を視覚化できます。 ポータルで実験を表示する方法について詳しくは、「[Studio で実行レコードを表示する](how-to-log-view-metrics.md#view-the-experiment-in-the-web-portal)」をご覧ください。
 
 - **メトリック グラフ**:この視覚化を使用すると、ハイパーパラメーター調整の期間中に実行された各ハイパードライブの子実行についてログに記録されたメトリックが追跡されます。 各行は 1 つの子実行を表し、各ポイントはランタイムのイテレーションで主要メトリックの値を測定します。  
 
     :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-metrics.png" alt-text="ハイパーパラメーター調整のメトリック グラフ":::
 
-- **並列座標グラフ**:この視覚化を使用すると、主要メトリックのパフォーマンスと個々のハイパーパラメーター値の相関関係が示されます。 グラフは、軸を移動する (軸ラベルをクリックしてドラッグする)、および 1 つの軸全体の値を強調表示する (1 つの軸をクリックし、軸に沿って垂直方向にドラッグして、目的の値の範囲を強調表示する) ことで、インタラクティブになります。
+- **並列座標グラフ**:この視覚化を使用すると、主要メトリックのパフォーマンスと個々のハイパーパラメーター値の相関関係が示されます。 グラフは、軸を移動する (軸ラベルをクリックしてドラッグする)、および 1 つの軸全体の値を強調表示する (1 つの軸をクリックし、軸に沿って垂直方向にドラッグして、目的の値の範囲を強調表示する) ことで、インタラクティブになります。 並列座標グラフには、グラフの一番右にある軸が含まれ、その実行インスタンスに設定されているハイパーパラメーターに対応する最適なメトリック値がプロットされます。 この軸は、グラフのグラデーションの凡例を、より読みやすい形式でデータに射影するために用意されています。
 
     :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png" alt-text="ハイパーパラメーター調整の並行座標グラフ":::
 
@@ -464,7 +463,7 @@ RunDetails(hyperdrive_run).show()
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()
 best_run_metrics = best_run.get_metrics()
-parameter_values = best_run.get_details()['runDefinition']['Arguments']
+parameter_values = best_run.get_details()['runDefinition']['arguments']
 
 print('Best Run Id: ', best_run.id)
 print('\n Accuracy:', best_run_metrics['accuracy'])
@@ -481,5 +480,5 @@ print('\n batch size:',parameter_values[7])
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>次のステップ
-* [実験を追跡する](how-to-track-experiments.md)
+* [実験を追跡する](how-to-log-view-metrics.md)
 * [トレーニング済みモデルをデプロイする](how-to-deploy-and-where.md)

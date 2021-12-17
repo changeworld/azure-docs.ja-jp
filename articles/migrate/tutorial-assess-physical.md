@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: b1026f718c7c59e88dbf3b041c4b07cd1cfc641c
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 44d92bbf5c3767a15e600836acd23cf3055f842e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780594"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464989"
 ---
 # <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>チュートリアル:Azure への移行のために物理サーバーを評価する
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 - このチュートリアルに従って Azure VM への移行についてサーバーを評価する前に、必ず評価対象のサーバーを検出しておきます。
-    - Azure Migrate アプライアンスを使用してサーバーを検出する場合は、[こちら](tutorial-discover-physical.md)のチュートリアルに従ってください。 
+    - Azure Migrate アプライアンスを使用してサーバーを検出する場合は、[こちらのチュートリアルに従います](tutorial-discover-physical.md)。 
     - インポートした CSV ファイルを使用してサーバーを検出する場合は、[こちら](tutorial-discover-import.md)のチュートリアルに従ってください。
 - 評価対象の物理サーバーで Windows Server 2003 も SUSE Linux も実行されていないことを確認します。 これらのサーバーの評価はサポートされていません。
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[概要]** ページの **[Windows, Linux and SQL Server]\(Windows、Linux、SQL Server\)** で、 **[サーバーの評価と移行]** をクリックします。
 
-   ![[サーバーの評価と移行] ボタンの場所](./media/tutorial-assess-vmware-azure-vm/assess.png)
+   ![[サーバーの評価と移行] ボタンの場所。](./media/tutorial-assess-vmware-azure-vm/assess.png)
 
 2. **[Azure Migrate: Discovery and assessment]\(Azure Migrate: 検出および評価\)** で、 **[Assess]\(評価\)** をクリックします。
 
@@ -97,7 +97,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         メモリ | 8 GB | 16 GB
    
 1. **[価格]** では:
-    - [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)に登録している場合、 **[プラン]** にそれを指定します。 評価では、そのプランのコストが見積もられます。
+    - [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)に登録している場合、 **[プラン]** にそれを指定します。 評価によって、そのプランのコストが見積もられます。
     - 自分のアカウントの請求通貨を **[通貨]** で選択します。
     - Azure プランとは別に適用されるサブスクリプション固有の割引を **[割引 (%)]** に追加します。 既定の設定は 0% です。
     - **[VM のアップタイム]** に、VM が実行される期間 (1 か月あたりの日数、1 日あたりの時間数など) を指定します。

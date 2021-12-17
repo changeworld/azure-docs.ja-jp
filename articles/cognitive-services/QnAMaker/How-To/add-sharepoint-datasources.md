@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 0832b54e02cabecb0b1f0e7af600b8adc621a8b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c15bac8417fdba5f87551dc13311b5272c0926ee
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99584772"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743851"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加する
 
@@ -52,7 +52,7 @@ QnA Maker ポータルのインタラクティブ テスト パネルで QnA ペ
 
 ## <a name="permissions"></a>アクセス許可
 
-SharePoint サーバーからセキュリティで保護されたファイルがサポート情報に追加されると、アクセス許可が付与されます。 SharePoint の設定方法およびファイルを追加するユーザーのアクセス許可に応じ、以下が必要になる場合があります。
+SharePoint を運用しているサーバーからご自分のサポート情報にセキュリティで保護されたファイルを追加する際、この操作に必要な権限の付与が行われます。 SharePoint の設定方法およびファイルを追加するユーザーのアクセス許可に応じ、以下が必要になる場合があります。
 
 * 追加の手順は不要です。そのファイルを追加するユーザーに必要なすべての権限があります。
 * [サポート情報マネージャー](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal)と [Active Directory マネージャー](#active-directory-manager-grant-file-read-access-to-qna-maker)の両者による手順。

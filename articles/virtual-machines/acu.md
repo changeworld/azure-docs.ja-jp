@@ -3,20 +3,22 @@ title: Azure コンピューティング ユニットの概要
 description: Azure コンピューティング ユニットの概念の概要。 ACU は、Azure SKU 間の CPU パフォーマンスを比較する方法を提供します。
 author: mimckitt
 ms.service: virtual-machines
-ms.subservice: azure-compute-unit
+ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
-ms.openlocfilehash: 3233695f8a8cc14d70f0c482458e77094dde7622
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 1eb356243fcc0a5bfc2e005703391edc308c222c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969072"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437317"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure コンピューティング ユニット (ACU)
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure コンピューティング ユニット (ACU) の概念は、Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供します。 これは、パフォーマンス ニーズを満たす可能性が最も高い SKU を簡単に見つけるのに役立ちます。 現在、ACU は小さい (Standard_A1) VM を 100 として標準化されており、他のすべての SKU についてはその SKU が標準ベンチマークをそれよりどれくらい速く実行できるかが表されます。
 
@@ -64,6 +66,7 @@ Azure コンピューティング ユニット (ACU) の概念は、Azure SKU �
 | [F2s_v2 - F72s_v2](fsv2-series.md) |195 から 210* | 2:1\*\*\* |
 | [F1 - F16](sizes-previous-gen.md) |210 - 250* | 1:1 |
 | [F1s - F16s](sizes-previous-gen.md) |210 - 250* | 1:1 |
+| [FX4 - FX48](fx-series.md) | 310 - 340* | 2:1\*\*\* | 
 | [G1 - G5](sizes-previous-gen.md) |180 ～ 240* | 1:1 |
 | [GS1 - GS5](sizes-previous-gen.md) |180 ～ 240* | 1:1 |
 | [H](h-series.md) |290 ～ 300* | 1:1 |

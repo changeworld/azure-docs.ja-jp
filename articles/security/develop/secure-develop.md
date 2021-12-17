@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8edceb31a0cdde36c987076e91350116a4f81255
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afe4ce82b779a6f8913ed61a44f3cf15992ba7e1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782403"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335520"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 
@@ -31,12 +31,11 @@ ms.locfileid: "104782403"
 
 ## <a name="implementation"></a>実装
 
-実装フェーズの対象は、早期防止のためのベスト プラクティスを確立し、コードからセキュリティの問題を検出して削除することです。
-アプリケーションが意図していない方法で使用されることを想定します。 これは、アプリケーションの偶発的または意図的な誤用を防ぐのに役立ちます。
+実装フェーズの対象は、早期防止のためのベスト プラクティスを確立し、コードからセキュリティの問題を検出して削除することです。 アプリケーションが意図していない方法で使用されることを想定します。 これは、アプリケーションの偶発的または意図的な誤用を防ぐのに役立ちます。
 
 ### <a name="perform-code-reviews"></a>コード レビューを実行する
 
-コードをチェックインする前に、[コード レビュー](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs)を実施して、コードの全体的な品質を高め、バグが発生するリスクを小さくします。 [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) を使用して、コード レビュー プロセスを管理できます。
+コードをチェックインする前に、コード レビューを実施して、コードの全体的な品質を高め、バグが発生するリスクを小さくします。 [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) を使用して、コード レビュー プロセスを管理できます。
 
 ### <a name="perform-static-code-analysis"></a>静的コード分析を実行する
 
@@ -55,10 +54,10 @@ Azure Marketplace では、静的コード分析を実行してコード レビ�
   - ブロックリストでは、特定のユーザー入力に "既知の悪意のある" コンテンツが含まれていないことの確認が試みられます。
 
   - 許可リストでは、特定のユーザー入力が "既知の適切な" 入力のセットと一致することの確認が試みられます。 文字ベースの許可リストは、ユーザー入力に "既知の適切な" 文字のみが含まれていること、または入力が既知の形式と一致することをアプリケーションで確認する、許可リストの形式です。
+
     たとえば、これには、ユーザー名に英数字のみが含まれていることや、正確に 2 つの数値が含まれていることの確認が含まれる可能性があります。
 
-許可リストは、セキュリティで保護されたソフトウェアを構築するための推奨されるアプローチです。
-ブロックリストでは、不適切かもしれない入力の完全な一覧を考えることは不可能であるため、エラーが発生しやすくなります。
+許可リストは、セキュリティで保護されたソフトウェアを構築するための推奨されるアプローチです。 ブロックリストでは、不適切かもしれない入力の完全な一覧を考えることは不可能であるため、エラーが発生しやすくなります。
 
 この処理は、クライアント側ではなくサーバー側で行います (または、サーバー側とクライアント側)。
 
@@ -103,7 +102,7 @@ Azure Active Directory B2C では、[セルフサービス パスワード リ�
 
 マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](../fundamentals/antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Broadcom](https://www.broadcom.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) をインストールできます。
 
-[Microsoft Antimalware](../fundamentals/antimalware.md) には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](../../security-center/security-center-partner-integration.md) と統合できます。
+[Microsoft Antimalware](../fundamentals/antimalware.md) には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 デプロイと組み込みの検出 (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Microsoft Defender for Cloud](../../security-center/security-center-partner-integration.md) と統合できます。
 
 ### <a name="dont-cache-sensitive-content"></a>機密性の高いコンテンツをキャッシュしない
 

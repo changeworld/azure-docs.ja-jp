@@ -2,13 +2,13 @@
 title: Container insights からのログ アラート | Microsoft Docs
 description: この記事では、Container insights からのメモリおよび CPU の使用率に対するカスタム ログ アラートを作成する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/05/2021
-ms.openlocfilehash: 64d499d69194ac338d367ae094e42f4c8af23bef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/29/2021
+ms.openlocfilehash: 82d6629ba903b656db9932b3c6bd6f5a2b92ea6a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711197"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738487"
 ---
 # <a name="how-to-create-log-alerts-from-container-insights"></a>Container insights からログ アラートを作成する方法
 
@@ -22,13 +22,27 @@ Container insights により、マネージド Kubernetes クラスターまた�
 
 クラスター ノードで CPU またはメモリの使用率が高いこと、またはクラスター ノードで空きディスク領域が少ないことを警告するには、メトリック アラートまたはメトリック測定アラートを作成するために提供されているクエリを使用します。 メトリック アラートはログ アラートよりも待ち時間が少ない一方で、ログ アラートは高度なクエリと、より洗練された機能に対応しています。 ログ アラートのクエリは、*now* 演算子を使用して 1 時間戻ることで、日時を現在と比較します。 (Container insights により、すべての日付は協定世界時 (UTC) 形式で保存されます)。
 
+> [!IMPORTANT]
+> ほとんどのアラート ルールには、ルールの種類、含まれるディメンションの数、実行頻度に応じてかかるコストが含まれます。 アラート ルールを作成する前に、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」内の「**アラート ルール**」を参照してください。
+
 Azure Monitor のアラートに詳しくない場合は、事前に「[Microsoft Azure のアラートの概要](../alerts/alerts-overview.md)」を参照してください。 ログ クエリを使用したアラートの詳細については、「[Azure Monitor でのログ アラート](../alerts/alerts-unified-log.md)」を参照してください。 メトリック アラートの詳細については、[Azure Monitor でのメトリック アラート](../alerts/alerts-metric-overview.md)に関するページを参照してください。
 
-## <a name="resource-utilization-log-search-queries"></a>リソース使用率のログ検索クエリ
+## <a name="log-query-measurements"></a>ログ クエリの測定
+ログ クエリ アラートでは、ログ クエリの結果について 2 つの異なる測定を実行できます。それぞれで、仮想マシンを監視するための個別のシナリオがサポートされます。
 
-このセクションのクエリでは、各アラート シナリオがサポートされています。 それらは、この記事の[アラートの作成](#create-an-alert-rule)のセクションの手順 7 で使用します。
+[メトリック測定](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)では、アラート ルールで定義されているしきい値を超える数値が含まれるクエリ結果内の各レコードに対して個別のアラートを作成します。 これらは、CPU などの数値データに最適です。
 
-次のクエリでは、平均 CPU 使用率を、メンバー ノードの 1 分ごとの CPU 使用率の平均として算出します。  
+[結果の数](../alerts/alerts-unified-log.md#count-of-the-results-table-rows)では、少なくとも指定された数のレコードがクエリから返された場合に、単一のアラートを作成します。 これらは、複数のコンピューター間のパフォーマンスの傾向を分析する場合など、数値以外のデータに適しています。 また、アラートの数を最小限に抑える必要がある場合や、複数のコンポーネントで同じエラー状態が発生したときにのみアラートを作成する場合にも、この方法を選択できます。
+
+> [!NOTE]
+> 現在パブリック プレビュー中のリソース中心のログ アラート ルールを使用すると、ログ クエリ アラートを簡素化し、メトリック測定クエリによって現在提供されている機能を置き換えることができます。 AKS クラスターをルールのターゲットとして使用すると、影響を受けるリソースとしてそれをより適切に識別できます。 リソース中心のログ クエリ アラートが一般公開されると、このシナリオのガイダンスが更新されます。
+
+## <a name="create-a-log-query-alert-rule"></a>ログ クエリ アラート ルールを作成する
+[ログ クエリ アラート測定の比較](../vm/monitor-virtual-machine-alerts.md#comparison-of-log-query-alert-measures)では、測定の種類ごとにログ クエリ アラート ルールの詳細を提供します。これには、それぞれをサポートするログ クエリの比較が含まれます。 これらの同じプロセスを使用することで、この記事に示すクエリと同様のものを使用して AKS クラスターに対するアラート ルールを作成できます。
+
+## <a name="resource-utilization"></a>リソース使用率 
+
+**平均 CPU 使用率: メンバー ノードの 1 分ごとの CPU 使用率の平均 (メトリック測定)**
 
 ```kusto
 let endDateTime = now();
@@ -63,7 +77,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 
-次のクエリでは、平均メモリ使用率を、メンバー ノードの 1 分ごとのメモリ使用率の平均として算出します。
+**平均メモリ使用率: メンバー ノードの 1 分ごとのメモリ使用率の平均 (メトリック測定)**
 
 ```kusto
 let endDateTime = now();
@@ -97,10 +111,12 @@ KubeNodeInventory
 | project ClusterName, Computer, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
+
+
 >[!IMPORTANT]
 >次のクエリでは、プレースホルダー値 \<your-cluster-name> と \<your-controller-name> を使用して、クラスターとコントローラーを表しています。 アラートを設定するときに、プレースホルダーを環境に固有の値に置き換えてください。
 
-次のクエリでは、コントローラー内のすべてのコンテナーの平均 CPU 使用率を、コントローラー内の全コンテナー インスタンスの 1 分ごとの CPU 使用率の平均として計算します。 測定値は、コンテナーに設定された上限に対する割合です。
+**コントローラー内のすべてのコンテナーの平均 CPU 使用率: コントローラー内の全コンテナー インスタンスの 1 分ごとの CPU 使用率の平均 (メトリック測定)**
 
 ```kusto
 let endDateTime = now();
@@ -140,7 +156,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-次のクエリでは、コントローラー内のすべてのコンテナーの平均メモリ使用率を、コントローラー内の全コンテナー インスタンスの 1 分ごとのメモリ使用率の平均として計算します。 測定値は、コンテナーに設定された上限に対する割合です。
+**コントローラー内のすべてのコンテナーの平均メモリ使用率: コントローラー内の全コンテナー インスタンスの 1 分ごとのメモリ使用率の平均 (メトリック測定)**
 
 ```kusto
 let endDateTime = now();
@@ -180,7 +196,9 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-次のクエリでは、*Ready* および *NotReady* 状態のすべてのノードと数が返されます。
+## <a name="resource-availability"></a>リソースの可用性 
+
+**状態が Ready および NotReady であるノードとカウント (メトリック測定)**
 
 ```kusto
 let endDateTime = now();
@@ -273,38 +291,29 @@ InsightsMetrics
 | where AggregatedValue >= 90
 ```
 
-## <a name="create-an-alert-rule"></a>アラート ルールを作成する
 
-このセクションでは、Container insights からのパフォーマンス データを使用する、メトリック測定アラート ルールの作成について見ていきます。 さまざまなログ クエリでこの基本プロセスを使用して、さまざまなパフォーマンス カウンターに対してアラートを生成することができます。 最初は、前に示したログ検索クエリのいずれかを使用します。 ARM テンプレートを使用して作成するには、[Azure リソース テンプレートを使用したサンプル ログ アラートの作成](../alerts/alerts-log-create-templates.md)に関するページを参照してください。
 
->[!NOTE]
->コンテナー リソースの使用率に関するアラート ルールを作成する次の手順では、「[ログ アラートの API の基本設定を切り替える](../alerts/alerts-log-api-switch.md)」の説明に従って、新しいログ アラート API に切り替える必要があります。
->
+**個々のコンテナーの再起動 (結果数)**<br>
+個々のシステム コンテナーの再起動回数が過去 10 分間でしきい値を超えた場合にアラートを生成します。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
-2. Azure portal で、 **[Log Analytics ワークスペース]** を検索して選択します。
-3. Log Analytics ワークスペースの一覧で、Container insights をサポートしているワークスペースを選択します。 
-4. 左側のウィンドウで、 **[ログ]** を選択し、Azure Monitor ログの ページを開きます。 このページを使用して、Azure ログ クエリを記述し、実行することができます。
-5. **[ログ]** ページで、前述の [クエリ](#resource-utilization-log-search-queries)の1つを **[検索クエリ]** のフィールドに貼り付け、 **[実行]** を選択して結果を検証します。 この手順を実行しない場合、 **[+ 新しいアラート]** オプションを選択することはできません。
-6. **[+ 新しいアラート]** を選択してログアラートを作成します。
-7. **[条件]** セクションで、事前定義済みのカスタム ログ条件の **[Whenever the Custom log search is \<logic undefined>]\(カスタム ログ検索が <ロジックが定義されていません> であるときは常に\)** を選択します。 シグナルの種類として **[custom log search]\(カスタム ログ検索\)** が自動的に選択されます。これは、Azure Monitor のログ ページで直接アラート ルールを作成しているためです。  
-8. 前述の [クエリ](#resource-utilization-log-search-queries)のいずれかを **[検索クエリ]** フィールドに貼り付けます。
-9. 次のようにアラートを構成します。
-
-    1. **[基準]** ドロップダウン リストで **[メトリック測定]** を選択します。 メトリック測定では、クエリの対象となったオブジェクトのうち、指定したしきい値を上回っている値の各オブジェクトについて、アラートが生成されます。
-    1. **[条件]** で **[より大きい]** を選択し、CPU およびメモリ使用率のアラートの最初の基準となる **[しきい値]** として「**75**」と入力します。 ディスク領域不足のアラートについては、「**90**」と入力します。 または、独自の条件を満たす別の値を入力します。
-    1. **[アラートをトリガーする基準]** セクションで、 **[連続する違反]** を選択します。 ドロップダウン リストで **[より大きい]** を選択し、「**2**」と入力します。
-    1. コンテナーの CPU またはメモリの使用率に関するアラートを構成するには、 **[集計]** で **[ContainerName]** を選択します。 クラスター ノードのディスク領域不足のアラートを構成するには、 **[ClusterId]** を選択します。
-    1. **[評価基準]** セクションで、 **[期間]** の値を **[60 分]** に設定します。 ルールは 5 分ごとに実行され、現在の時刻から過去 1 時間以内に作成されたレコードが返されます。 期間の枠を広く設定すると、データ待ち時間が発生する原因になります。 また、クエリが必ずデータを返すため、検知漏れによってアラートが発生しない事態を回避することができます。
-
-10. **[完了]** を選択して、アラート ルールを完成させます。
-11. **[アラート ルール名]** フィールドに名前を入力します。 アラートの詳細情報を提供する **[説明]** を指定します。 提供されるオプションの中から、適切な重大度レベルを選択します。
-12. アラート ルールをすぐにアクティブにするには、 **[ルールの作成時に有効にする]** の既定値をそのまま使用します。
-13. 既存の **アクション グループ** を選択するか、新しいグループを作成します。 この手順により、アラートがトリガーされるたびに同じアクションが実行されます。 お客様の IT または DevOps オペレーション チームでのインシデントの管理方法に基づいて構成してください。
-14. **[アラート ルールの作成]** を選択してアラート ルールを完成させます。 すぐに実行が開始されます。
+ 
+```kusto
+let _threshold = 10m; 
+let _alertThreshold = 2;
+let Timenow = (datetime(now) - _threshold); 
+let starttime = ago(5m); 
+KubePodInventory
+| where TimeGenerated >= starttime
+| where Namespace in ('default', 'kube-system') // the namespace filter goes here
+| where ContainerRestartCount > _alertThreshold
+| extend Tags = todynamic(ContainerLastStatus)
+| extend startedAt = todynamic(Tags.startedAt)
+| where startedAt >= Timenow
+| summarize arg_max(TimeGenerated, *) by Name
+```
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
+- [ログ クエリの例](container-insights-log-query.md)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
 
 - Azure Monitor と、Kubernetes クラスターの他の側面を監視する方法の詳細については、[Kubernetes クラスターのパフォーマンスの表示](container-insights-analyze.md)および [Kubernetes クラスターの正常性の表示](./container-insights-overview.md)に関するページをご覧ください。

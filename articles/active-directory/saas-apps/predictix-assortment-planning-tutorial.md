@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: adf00d24c05deab149edb95b8087b8522dbda99a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93b3305a08f7440a7ac79f349caea192a637af3e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92515391"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789885"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>チュートリアル:Azure Active Directory と Predictix Assortment Planning の統合
 
@@ -196,7 +196,7 @@ Predictix Assortment Planning 側でシングル サインオンを構成する�
 
 ここで、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストする必要があります。
 
-アクセス パネルで [Predictix Assortment Planning] タイルを選択すると、SSO を設定した Predictix Assortment Planning インスタンスに自動的にサインインされます。 詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+アクセス パネルで [Predictix Assortment Planning] タイルを選択すると、SSO を設定した Predictix Assortment Planning インスタンスに自動的にサインインされます。 詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

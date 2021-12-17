@@ -1,31 +1,30 @@
 ---
-title: Azure 内の Windows VM で PowerShell スクリプトを実行する
+title: アクション実行コマンドを使用して Azure Windows VM でスクリプトを実行する
 description: このトピックでは、実行コマンド機能を使用して Azure Windows 仮想マシン内で PowerShell スクリプトを実行する方法について説明します
 services: automation
 ms.service: virtual-machines
 ms.collection: windows
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/26/2019
+author: cynthn
+ms.author: cynthn
+ms.date: 10/28/2021
 ms.topic: how-to
-ms.custom: devx-track-azurecli
-manager: carmonm
-ms.openlocfilehash: 3271f5461447439772b656b8927a54057c8b0c7e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.reviewer: jushiman
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b9501004578068f2c7841fd5f52091f50e97924b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786407"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441098"
 ---
-# <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
+# <a name="run-scripts-in-your-windows-vm-by-using-action-run-commands"></a>アクション実行コマンドを使用して、Windows VM でスクリプトを実行する
 
 実行コマンド機能は、仮想マシン (VM) エージェントを使用して Azure Windows VM 内で PowerShell スクリプトを実行します。 これらのスクリプトは、マシンやアプリケーションの一般的な管理に使用できます。 これらを使用すれば、VM のアクセスおよびネットワークの問題を迅速に診断して修正し、VM を良好な状態に戻すことができます。
 
 
-
 ## <a name="benefits"></a>メリット
 
-仮想マシンには複数の方法でアクセスできます。 実行コマンドは、VM エージェントを使用して、仮想マシン上でスクリプトをリモートで実行できます。 実行コマンドは、Azure portal、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、または Windows VM 用の [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) から使用します。
+仮想マシンには複数の方法でアクセスできます。 実行コマンドは、VM エージェントを使用して、仮想マシン上でスクリプトをリモートで実行できます。 実行コマンドは、Azure portal、[REST API](/rest/api/compute/virtual-machines-run-commands/run-command)、または Windows VM 用の [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) から使用します。
 
 この機能は、仮想マシン内でスクリプトを実行するすべてのシナリオで役立ちます。 これは、ネットワークまたは管理ユーザーの構成が正しくないために RDP または SSH ポートが開かれていない仮想マシンをトラブルシューティングして修正する、限られた方法の 1 つです。
 
@@ -45,6 +44,8 @@ ms.locfileid: "107786407"
 
 > [!NOTE]
 > 正常に機能するには、実行コマンドに Azure のパブリック IP アドレスへの接続 (ポート 443) が必要です。 この拡張機能にこれらのエンドポイントへのアクセス権がない場合、スクリプトが正常に実行されても結果が返されないことがあります。 仮想マシン上のトラフィックをブロックしている場合、[サービス タグ](../../virtual-network/network-security-groups-overview.md#service-tags)を使用し、`AzureCloud` タグを使用して Azure パブリック IP アドレスへのトラフィックを許可できます。
+> 
+> VM エージェントが NOT READY (準備中) 状態の場合、実行コマンド機能は動作しません。 Azure portal から、VM のプロパティでエージェントの状態を確認してください。
 
 ## <a name="available-commands"></a>使用可能なコマンド
 
@@ -53,16 +54,21 @@ ms.locfileid: "107786407"
 ```error
 The entity was not found in this Azure location
 ```
+<br>
 
-|**名前**|**説明**|
+| **名前** | **説明** |
 |---|---|
-|**RunPowerShellScript**|PowerShell スクリプトを実行します。|
-|**EnableRemotePS**|コンピューターを構成してリモート PowerShell を有効にします。|
-|**EnableAdminAccount**|ローカル管理者アカウントが無効になっているかどうかを確認し、無効になっている場合は有効にします。|
-|**IPConfig**| TCP/IP にバインドされているアダプターごとに、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイの詳細な情報を表示します。|
-|**RDPSettings**|レジストリ設定およびドメインのポリシー設定を確認します。 マシンがドメインの一部である場合はポリシー アクションを提案します。または、設定を既定値に変更します。|
-|**ResetRDPCert**|RDP リスナーに関連付けられている TLS または SSL 証明書を削除し、RDP リスナーのセキュリティを既定値に戻します。 証明書に問題がある場合は、このスクリプトを使用します。|
-|**SetRDPPort**|リモート デスクトップ接続用の既定またはユーザー指定のポート番号を設定します。 ポートへの受信アクセスに対するファイアウォール規則を有効にします。|
+| **RunPowerShellScript** | PowerShell スクリプトを実行します |
+| **DisableNLA** | ネットワーク レベル認証を無効にします |
+| **DisableWindowsUpdate** | Windows Update の自動更新を無効にします |
+| **EnableAdminAccount** | ローカル管理者アカウントが無効になっているかどうかを確認し、無効になっている場合は有効にします。 |
+| **EnableEMS** | EMS を有効にします |
+| **EnableRemotePS** | コンピューターを構成してリモート PowerShell を有効にします。 |
+| **EnableWindowsUpdate** | Windows Update の自動更新を有効にします |
+| **IPConfig** | TCP/IP にバインドされているアダプターごとに、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイの詳細な情報を表示します。 |
+| **RDPSetting** | レジストリ設定およびドメインのポリシー設定を確認します。 マシンがドメインの一部である場合はポリシー アクションを提案します。または、設定を既定値に変更します。 |
+| **ResetRDPCert** | RDP リスナーに関連付けられている TLS または SSL 証明書を削除し、RDP リスナーのセキュリティを既定値に戻します。 証明書に問題がある場合は、このスクリプトを使用します。 |
+| **SetRDPPort** | リモート デスクトップ接続用の既定またはユーザー指定のポート番号を設定します。 ポートへの受信アクセスに対するファイアウォール規則を有効にします。 |
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -82,7 +88,7 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
 
 ## <a name="azure-portal"></a>Azure portal
 
-[Azure portal](https://portal.azure.com) 内の VM に移動し、 **[操作]** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
+[Azure portal](https://portal.azure.com) で VM に移動し、左側のメニューの **[Operations]\(操作\)** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
 
 ![コマンドの一覧](./media/run-command/run-command-list.png)
 

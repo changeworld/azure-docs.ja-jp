@@ -4,12 +4,12 @@ description: テレメトリが Application Insights ポータルに送信され
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cb9159b98b219c6fb04beb7bbbaade64fc72a30b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 293de0f963829516e3fdb119e3bcbf592f9ad113
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98927754"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063414"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK におけるフィルター処理および前処理
 
@@ -312,42 +312,21 @@ ASP.NET **Core または Worker サービス アプリ:初期化子を読み込�
 ### <a name="javascript-telemetry-initializers"></a>JavaScript テレメトリ初期化子
 *JavaScript*
 
-ポータルから取得した初期化コードの直後にテレメトリ初期化子を挿入します。
+スニペットの onInit コールバックを使用してテレメトリ初期化子を挿入します。
 
-```JS
+```html
 <script type="text/javascript">
-    // ... initialization code
-    ...({
-        instrumentationKey: "your instrumentation key"
-    });
-    window.appInsights = appInsights;
-
-
-    // Adding telemetry initializer.
-    // This is called whenever a new telemetry item
-    // is created.
-
-    appInsights.addTelemetryInitializer(function (envelope) {
-        var telemetryItem = envelope.data.baseData;
-
-        // To check the telemetry items type - for example PageView:
-        if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
-            // this statement removes url from all page view documents
-            telemetryItem.url = "URL CENSORED";
-        }
-
-        // To set custom properties:
-        telemetryItem.properties = telemetryItem.properties || {};
-        telemetryItem.properties["globalProperty"] = "boo";
-        
-        // To set cloud role name / instance
-        envelope.tags["ai.cloud.role"] = "your role name";
-        envelope.tags["ai.cloud.roleInstance"] = "your role instance";
-    });
-
-    // End of inserted code.
-
-    appInsights.trackPageView();
+!function(T,l,y){<!-- Removed the Snippet code for brevity -->}(window,document,{
+src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js",
+crossOrigin: "anonymous",
+onInit: function (sdk) {
+  sdk.addTelemetryInitializer(function (envelope) {
+    envelope.data.someField = 'This item passed through my telemetry initializer';
+  });
+}, // Once the application insights instance has loaded and initialized this method will be called
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY"
+}});
 </script>
 ```
 
@@ -534,6 +513,9 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 * 登録されているテレメトリ初期化子はすべて、テレメトリ項目ごとに呼び出されることが保証されます。 テレメトリ プロセッサの場合、SDK で呼び出しが保証されるのは、最初のテレメトリ プロセッサのみです。 その他のプロセッサが呼び出されるかどうかは、先行するテレメトリ プロセッサによって決まります。
 * 追加のプロパティでテレメトリをエンリッチしたり、既存のプロパティをオーバーライドしたりするには、TelemetryInitializers を使用します。 テレメトリ プロセッサを使用してテレメトリを除外します。
 
+> [!NOTE]
+> JavaScript には、[ITelemetryInitializer を使用してイベントをフィルター処理できる](#javascript-web-applications)テレメトリー初期化子のみがあります。
+
 ## <a name="troubleshoot-applicationinsightsconfig"></a>ApplicationInsights.config のトラブルシューティング
 
 * 完全修飾された型名とアセンブリ名が正しいことを確認します。
@@ -553,5 +535,5 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 ## <a name="next-steps"></a><a name="next"></a>次のステップ
 * [イベントおよびログを検索する](./diagnostic-search.md)
 * [サンプリング](./sampling.md)
-* [トラブルシューティング](../faq.md)
+* [トラブルシューティング](../faq.yml)
 

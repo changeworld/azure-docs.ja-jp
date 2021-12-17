@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 2fa362a56eb1246381fcc944e82ea85d31ff3d39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17a32881cdfc8e5152d3004a841416e7f0dd3778
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599903"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071171"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Azure 仮想マシンのサイズの名前付け規則
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 このページでは、Azure VM に使用される名前付け規則の概要について説明します。 VM では、これらの名前付け規則を使用して、さまざまな機能と仕様が示されます。
 
@@ -29,7 +31,7 @@ ms.locfileid: "104599903"
 | \* サブファミリ | 特殊化された VM を区別するためにのみ使用されます|
 | vCPU の数| VM の vCPU の数を示します |
 | *制約付き vCPU| 特定の VM サイズにのみ使用されます。 [制約付き vCPU 対応のサイズ](./constrained-vcpu.md)に対する vCPU の数を示します |
-| 追加機能 | 1 つ以上の小文字により、次のような追加機能が示されます。 <br> a = AMD ベースのプロセッサ <br> d = ディスク (ローカル一時ディスクが存在します)。これは、新しい Azure VM 用です。「[Ddv4 および Ddsv4 シリーズ](./ddv4-ddsv4-series.md)」を参照してください <br> h = 休止状態対応 <br> i = 分離サイズ <br> l = 低メモリ。メモリ集中型のサイズよりも少ないメモリ量 <br> m = メモリ集中型。特定のサイズの最大メモリ容量 <br> t = 最少メモリ。特定のサイズの最小メモリ容量 <br> r = RDMA 対応 <br> s = Premium Storage 対応。[Ultra SSD](./disks-types.md#ultra-disk) を使用できる可能性が含まれます (注: M128、M64 などの一部の新しいサイズでは、s 属性がなくても、Premium Storage がサポートされます)<br> |
+| 追加機能 | 1 つ以上の小文字により、次のような追加機能が示されます。 <br> a = AMD ベースのプロセッサ <br> d = ディスクフル (ローカル一時ディスクが存在します)。これは、新しい Azure VM 用です。「[Ddv4 および Ddsv4 シリーズ](./ddv4-ddsv4-series.md)」を参照してください <br> i = 分離サイズ <br> l = 低メモリ。メモリ集中型のサイズよりも少ないメモリ量 <br> m = メモリ集中型。特定のサイズの最大メモリ容量 <br> t = 最少メモリ。特定のサイズの最小メモリ容量 <br> s = Premium Storage 対応。[Ultra SSD](./disks-types.md#ultra-disks) を使用できる可能性が含まれます (注: M128、M64 などの一部の新しいサイズでは、s 属性がなくても、Premium Storage がサポートされます)<br> |
 | \* アクセラレータの種類 | 特殊化された SKU および GPU SKU でハードウェア アクセラレータの種類を示します。 名前にハードウェア アクセラレータが含まれるのは、2020 年第 3 四半期以降に公開された新しい特殊化された SKU および GPU SKU だけです。 |
 | Version | VM ファミリ シリーズのバージョンを示します |
 

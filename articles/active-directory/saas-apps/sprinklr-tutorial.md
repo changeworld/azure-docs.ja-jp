@@ -9,101 +9,75 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/07/2019
+ms.date: 05/18/2021
 ms.author: jeedes
-ms.openlocfilehash: e76386c8c276c6c8c07751474b3718f98af18f4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7dc7215f812938584438d3f212ce31ddcea23df
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92519454"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329067"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>チュートリアル:Azure Active Directory と Sprinklr の統合
 
-このチュートリアルでは、Sprinklr と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Sprinklr と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Sprinklr と Azure Active Directory (Azure AD) を統合する方法について説明します。 Sprinklr と Azure AD を統合すると、次のことが可能になります。
 
-* Sprinklr にアクセスできるユーザーを Azure AD で管理できます。
-* ユーザーが自分の Azure AD アカウントで Sprinklr に自動的にサインイン (シングル サインオン) するように設定できます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+* Sprinklr にアクセスするユーザーを Azure AD で制御します。
+* ユーザーが自分の Azure AD アカウントを使用して Sprinklr に自動的にサインインできるようにします。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と Sprinklr の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Sprinklr でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Sprinklr でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Sprinklr では、**SP** Initiated SSO がサポートされます
+* Sprinklr では、**SP** Initiated SSO がサポートされます。
 
-## <a name="adding-sprinklr-from-the-gallery"></a>ギャラリーからの Sprinklr の追加
+## <a name="add-sprinklr-from-the-gallery"></a>ギャラリーからの Sprinklr の追加
 
 Azure AD への Sprinklr の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Sprinklr を追加する必要があります。
 
-**ギャラリーから Sprinklr を追加するには、次の手順を実行します。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Sprinklr**」と入力します。
+1. 結果のパネルから **[Sprinklr]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
+## <a name="configure-and-test-azure-ad-sso-for-sprinklr"></a>Sprinklr の Azure AD SSO の構成とテスト
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+**B.Simon** というテスト ユーザーを使用して、Sprinklr に対する Azure AD SSO を構成してテストします。 SSO を機能させるには、Azure AD ユーザーと Sprinklr の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+Sprinklr に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[Sprinklr の SSO の構成](#configure-sprinklr-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[Sprinklr のテスト ユーザーの作成](#create-sprinklr-test-user)** - Sprinklr で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-4. 検索ボックスに「**Sprinklr**」と入力して、結果パネルで **[Sprinklr]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+1. Azure portal の **Sprinklr** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
-     ![結果一覧の Sprinklr](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Sprinklr で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Sprinklr 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
-
-Sprinklr で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Sprinklr のシングル サインオンの構成](#configure-sprinklr-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Sprinklr のテスト ユーザーの作成](#create-sprinklr-test-user)** - Sprinklr で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
-
-Sprinklr で Azure AD シングル サインオンを構成するには、次の手順に従います。
-
-1. [Azure portal](https://portal.azure.com/) の **Sprinklr** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![[Sprinklr のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.sprinklr.com`
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.sprinklr.com`
-
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.sprinklr.com`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.sprinklr.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Sprinklr クライアント サポート チーム](https://www.sprinklr.com/contact-us/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -116,33 +90,51 @@ Sprinklr で Azure AD シングル サインオンを構成するには、次の
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    a. ログイン URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-    b. Azure AD 識別子
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-    c. ログアウト URL
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
-### <a name="configure-sprinklr-single-sign-on"></a>Sprinklr のシングル サインオンの構成
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、B.Simon に Sprinklr へのアクセスを許可することで、Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Sprinklr]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-sprinklr-sso"></a>Sprinklr SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Sprinklr 企業サイトに管理者としてログインします。
 
 1. **[管理] \> [設定]** の順に選択します。
 
-    ![管理](./media/sprinklr-tutorial/ic782907.png "管理")
+    ![管理](./media/sprinklr-tutorial/settings.png "管理")
 
 1. 左側のパネルで、 **[Manage Partner] \> [Single Sign on]** の順に選択します。
 
-    ![[Manage Partner]\(パートナーの管理\)](./media/sprinklr-tutorial/ic782908.png "パートナーの管理")
+    ![[Manage Partner]\(パートナーの管理\)](./media/sprinklr-tutorial/users.png "パートナーの管理")
 
 1. **[+Add Single Sign Ons]** をクリックします。
 
-    ![[Add Single Sign Ons]\(シングル サインオンの追加\) ボタンのスクリーンショット。](./media/sprinklr-tutorial/ic782909.png "シングル サインオン")
+    ![[Add Single Sign Ons]\(シングル サインオンの追加\) ボタンのスクリーンショット。](./media/sprinklr-tutorial/add-user.png "シングル サインオン")
 
 1. **[Single Sign on]** ページで、次の手順に従います。
 
-    ![[Single Sign on]\(シングル サインオン\) ページのスクリーンショット。ここで、説明されている値を入力できます。](./media/sprinklr-tutorial/ic782910.png "シングル サインオン")
+    ![[Single Sign on]\(シングル サインオン\) ページのスクリーンショット。ここで、説明されている値を入力できます。](./media/sprinklr-tutorial/configuration.png "シングル サインオン")
 
-    a. **[Name]\(名前\)** ボックスに、構成の名前を入力します (例:*WAADSSOTest*)。
+    a. **[Name]\(名前\)** ボックスに、構成の名前を入力します (例:**WAADSSOTest**)。
 
     b. **[Enabled]** を選択します。
 
@@ -162,58 +154,7 @@ Sprinklr で Azure AD シングル サインオンを構成するには、次の
 
     j. **[保存]** をクリックします。
 
-    ![SAML](./media/sprinklr-tutorial/ic782911.png "SAML")
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
-
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に Sprinklr へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Sprinklr]** を選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で **[Sprinklr]** を選択します。
-
-    ![アプリケーションの一覧の Sprinklr のリンク](common/all-applications.png)
-
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
+    ![SAML](./media/sprinklr-tutorial/save-configuration.png "SAML")
 
 ### <a name="create-sprinklr-test-user"></a>Sprinklr テスト ユーザーの作成
 
@@ -221,19 +162,19 @@ Sprinklr で Azure AD シングル サインオンを構成するには、次の
 
 1. **[管理] \> [設定]** の順に選択します。
 
-    ![管理](./media/sprinklr-tutorial/ic782907.png "管理")
+    ![管理](./media/sprinklr-tutorial/settings.png "管理")
 
 1. 左側のパネルで、 **[クライアントの管理] \> [ユーザー]** の順に選択します。
 
-    ![[設定] の [ユーザー] にある [ユーザーの追加] ボタンのスクリーンショット。](./media/sprinklr-tutorial/ic782914.png "設定")
+    ![[設定] の [ユーザー] にある [ユーザーの追加] ボタンのスクリーンショット。](./media/sprinklr-tutorial/client.png "設定")
 
 1. **[ユーザーの追加]** をクリックします。
 
-    ![[Edit user]\(ユーザーの編集\) ダイアログ ボックスを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/sprinklr-tutorial/ic782915.png "設定")
+    ![[Edit user]\(ユーザーの編集\) ダイアログ ボックスを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/sprinklr-tutorial/search-users.png "設定")
 
 1. **[Edit user]** ダイアログで、次の手順に従います。
 
-    ![[Edit user]\(ユーザーの編集\)](./media/sprinklr-tutorial/ic782916.png "[Edit user]")
+    ![[Edit user]\(ユーザーの編集\)](./media/sprinklr-tutorial/update-users.png "[Edit user]")
 
     a. **[Email]** 、 **[First Name]** 、および **[Last Name]** テキスト ボックスに、プロビジョニングする Azure AD のユーザー アカウントの情報を入力します。
 
@@ -250,7 +191,7 @@ Sprinklr で Azure AD シングル サインオンを構成するには、次の
 
 1. **[Role]** に移動して、次の手順に従います。
 
-    ![パートナーのロール](./media/sprinklr-tutorial/ic782917.png "パートナーのロール")
+    ![パートナーのロール](./media/sprinklr-tutorial/role.png "パートナーのロール")
 
     a. **[Global]** ボックスの一覧から、 **[ALL_Permissions]** を選択します。  
 
@@ -259,16 +200,16 @@ Sprinklr で Azure AD シングル サインオンを構成するには、次の
 > [!NOTE]
 > Sprinklr から提供されている他の Sprinklr ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [Sprinklr] タイルをクリックすると、SSO を設定した Sprinklr に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、Sprinklr のサインオン URL にリダイレクトされ、そこでログイン フローを開始できます。 
 
-## <a name="additional-resources"></a>その他のリソース
+* Sprinklr のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Sprinklr] タイルをクリックすると、Sprinklr のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+Sprinklr を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

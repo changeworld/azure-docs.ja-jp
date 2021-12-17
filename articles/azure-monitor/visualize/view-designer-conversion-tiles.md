@@ -1,16 +1,16 @@
 ---
 title: Azure Monitor ビュー デザイナーからブック タイルへの変換
 description: Azure Monitor のビューからの移行時に、タイルをブックに変換する方法について詳しく説明します。
-author: austonli
-ms.author: aul
+author: shijatsu
+ms.author: shijain
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 9b8d1840c0b1cea4c03312d38ed892fde94faa4c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b73aa0569fb9889de687e7b3eacba5a0fcd54cc1
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043339"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318011"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Monitor ビュー デザイナーでのタイル変換
 [ビュー デザイナー](view-designer.md)は Azure Monitor の機能で、Log Analytics ワークスペース内のデータを、グラフ、リスト、タイムラインを使用して視覚化するのに役立つカスタム ビューを作成できます。 これらは段階的に廃止中であり、追加の機能を提供するブックに置き換えられています。 この記事では、さまざまなタイルをブックに変換することの詳細を説明します。

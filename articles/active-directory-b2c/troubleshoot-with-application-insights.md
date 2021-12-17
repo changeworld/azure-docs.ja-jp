@@ -8,18 +8,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/05/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 074bffb8614be1f71ba1956fd5a238bc19354c58
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 06745d9a3ba5cb1e50e1adf23e88f442bcc31ab0
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028745"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658502"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights を使用して Azure Active Directory B2C のログを収集する
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 この記事では、カスタム ポリシーの問題を診断できるよう、Active Directory B2C (Azure AD B2C) からログを収集する手順を説明します。 Application Insights は、例外を診断したり、アプリケーションのパフォーマンスの問題を視覚化したりするための手段を提供します。 Azure AD B2C には、Application Insights にデータを送信するための機能が含まれます。
 
@@ -37,15 +48,17 @@ ms.locfileid: "107028745"
 
 サブスクリプションで Application Insights の終了インスタンスを使用するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
-1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、(Azure AD B2C のディレクトリではなく) お使いの Azure サブスクリプションが含まれるディレクトリを選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 自分の Azure サブスクリプションが含まれる Azure AD ディレクトリを使用し、Azure AD B2C ディレクトリを使用しているのでないことを確認してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 1. 先ほど作成した Application Insights リソースを開きます。
 1. **[概要]** ページで、 **[インストルメンテーション キー]** を記録します。
 
 サブスクリプションに Application Insights のインスタンスを作成するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) にサインインする
-1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、(Azure AD B2C のディレクトリではなく) お使いの Azure サブスクリプションが含まれるディレクトリを選択します。
+1. 自分の Azure サブスクリプションが含まれる Azure AD ディレクトリを使用し、Azure AD B2C ディレクトリを使用しているのでないことを確認してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 1. 左のナビゲーション メニューで **[リソースの作成]** を選択します。
 1. **Application Insights** を探して選択し、 **[作成]** を選択します。
 1. フォームに漏れなく入力し、 **[確認および作成]** を選択してから、 **[作成]** を選択します。
@@ -164,7 +177,7 @@ Azure Application insights API の ID と キーが作成されたため、ロ�
 
 ## <a name="configure-application-insights-in-production"></a>運用環境で Application Insights を構成する
 
-運用環境のパフォーマンスとユーザー エクスペリエンスを向上させるには、重要ではないメッセージを無視するようにポリシーを構成することが重要です。 重大なエラー メッセージのみを Application Insights に送信するには、次の構成を使用します。 
+運用環境のパフォーマンスとユーザー エクスペリエンスを向上させるには、重要ではないメッセージを無視するようにポリシーを構成することが重要です。 運用環境では、次の構成を使用します。 
 
 1. [TrustFrameworkPolicy](trustframeworkpolicy.md) の `DeploymentMode` 属性を `Production` に設定します。 
 
@@ -191,4 +204,6 @@ Azure Application insights API の ID と キーが作成されたため、ロ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure AD B2C カスタム ポリシーのトラブルシューティング](troubleshoot-custom-policies.md)を行う方法について確認してください。
+- [Azure AD B2C カスタム ポリシーのトラブルシューティング](troubleshoot.md)を行う方法について確認してください。
+
+::: zone-end

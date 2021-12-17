@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 633f01d813fe4e6c56d88052cbc7440c43f350dc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5c62b183d55023b0b8a25dcde03aef21e0364a3e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104870502"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261902"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
 
@@ -136,11 +136,14 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
     詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-1. プライマリ クラスターの Apache Zookeeper ホストを格納した変数を作成するには、次のコマンドを使用します。 `ZOOKEEPER_IP_ADDRESS1` などの文字列は、`10.23.0.11` や `10.23.0.7` など、先ほど記録した実際の IP アドレスに置き換える必要があります。 カスタム DNS サーバーで FQDN 解決を使用している場合は、[こちらの手順](apache-kafka-get-started.md#getkafkainfo)に従ってブローカーと Zookeeper の名前を取得します。
+1. 次のコマンドを使用して、プライマリ クラスターの Apache Zookeeper ホストと Broker ホストを格納した 2 つの環境変数を作成します。 `ZOOKEEPER_IP_ADDRESS1` などの文字列は、`10.23.0.11` や `10.23.0.7` など、先ほど記録した実際の IP アドレスに置き換える必要があります。 同じことが `BROKER_IP_ADDRESS1` にも当てはまります。 カスタム DNS サーバーで FQDN 解決を使用している場合は、[こちらの手順](apache-kafka-get-started.md#getkafkainfo)に従ってブローカーと Zookeeper の名前を取得します。
 
     ```bash
     # get the zookeeper hosts for the primary cluster
     export PRIMARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181, ZOOKEEPER_IP_ADDRESS2:2181, ZOOKEEPER_IP_ADDRESS3:2181'
+    
+    # get the broker hosts for the primary cluster
+    export PRIMARY_BROKERHOSTS='BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092'
     ```
 
 1. `testtopic` という名前のトピックを作成するには、次のコマンドを使います。
@@ -157,15 +160,15 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
     応答には `testtopic` が含まれます。
 
-1. 次を使用して、この (**プライマリ**) クラスターの Zookeeper ホスト情報を表示します。
+1. 次を使用して、この (**プライマリ**) クラスターの Broker ホスト情報を表示します。
 
     ```bash
-    echo $PRIMARY_ZKHOSTS
+    echo $PRIMARY_BROKERHOSTS
     ```
 
     次のテキストのような情報が返されます。
 
-    `10.23.0.11:2181,10.23.0.7:2181,10.23.0.9:2181`
+    `10.23.0.11:9092,10.23.0.7:9092,10.23.0.9:9092`
 
     この情報は保存してください。 これは、次のセクションで使用されます。
 
@@ -190,11 +193,11 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
     `consumer.properties` ファイルの内容として、次のテキストを使用します。
 
     ```yaml
-    zookeeper.connect=PRIMARY_ZKHOSTS
+    bootstrap.servers=PRIMARY_BROKERHOSTS
     group.id=mirrorgroup
     ```
 
-    **PRIMARY_ZKHOSTS** は、**プライマリ** クラスターの Zookeeper の IP アドレスで置き換えます。
+    **PRIMARY_BROKERHOSTS** は、**プライマリ** クラスターの Broker の IP アドレスで置き換えます。
 
     このファイルには、プライマリ Kafka クラスターからの読み取りに使用するコンシューマー情報を記述します。 コンシューマーの構成の詳細については、「[Consumer Configs (コンシューマーの構成)](https://kafka.apache.org/documentation#consumerconfigs)」(kafka.apache.org) を参照してください。
 
@@ -280,8 +283,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 2. **プライマリ** クラスターに SSH で接続してから、次のコマンドを使用して、プロデューサーを起動し、トピックにメッセージを送信します。
 
     ```bash
-    export PRIMARY_BROKERHOSTS=BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092
-    /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $SOURCE_BROKERHOSTS --topic testtopic
+    /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $PRIMARY_BROKERHOSTS --topic testtopic
     ```
 
      カーソル付きの空白行が表示されたら、テキスト メッセージを数個入力します。 これらのメッセージは、**プライマリ** クラスター上のトピックに送信されます。 操作が完了したら、**Ctrl + C** キーを使用してプロデューサーのプロセスを終了します。
@@ -289,14 +291,14 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 3. **セカンダリ** クラスターに SSH で接続してから、**Ctrl + C** キーを使用して MirrorMaker プロセスを終了します。 このプロセスは、終了までに数秒かかる場合があります。 メッセージがセカンダリにレプリケートされたことを確認するには、次のコマンドを使います。
 
     ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $SECONDARY_ZKHOSTS --topic testtopic --from-beginning
+    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $SECONDARY_BROKERHOSTS --topic testtopic --from-beginning
     ```
 
     これで、MirrorMaster がトピックをプライマリ クラスターからセカンダリにミラーリングしたときに作成された `testtopic` が、トピックの一覧に含まれるようになりました。 このトピックから取得するメッセージは、プライマリ クラスターで入力したものと同じです。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
+[!INCLUDE [delete-cluster-warning](../includes/hdinsight-delete-cluster-warning.md)]
 
 このドキュメントの手順では、別の Azure リソース グループにクラスターを作成しました。 作成されたすべてのリソースを削除するには、作成した 2 つのリソース グループ **kafka-primary-rg** および **kafka-secondary_rg** を削除します。 リソース グループを削除すると、このドキュメントに従って作成したすべてのリソースが削除されます。これには、クラスター、仮想ネットワーク、ストレージ アカウントなどが含まれます。
 

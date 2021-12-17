@@ -1,28 +1,28 @@
 ---
-title: Windows Virtual Desktop (クラシック) テナントのホスト プールの作成 - Azure
-description: Windows Virtual Desktop (クラシック) テナント環境設定時のテナントおよびホスト プールの問題をトラブルシューティングし、解決する方法。
+title: Azure Virtual Desktop (クラシック) テナントのホスト プールの作成 - Azure
+description: Azure Virtual Desktop (クラシック) テナント環境設定時のテナントおよびホスト プールの問題をトラブルシューティングし、解決する方法。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 12be4611f0583c6da630b9e5a0e4b5a82ebfa650
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 61aea8002faa92c88081c78bc9ff05ec7e053094
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444277"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818507"
 ---
-# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) でのテナントとホスト プールの作成
+# <a name="tenant-and-host-pool-creation-in-azure-virtual-desktop-classic"></a>Azure Virtual Desktop (クラシック)でのテナントとホスト プールの作成
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-set-up-issues.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-set-up-issues.md)を参照してください。
 
-この記事では、Windows Virtual Desktop テナントと、関連するセッション ホスト プール インフラストラクチャの初期セットアップ中の問題について説明します。
+この記事では、Azure Virtual Desktop テナントと、関連するセッション ホスト プール インフラストラクチャの初期セットアップ中の問題について説明します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 
-Windows Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Windows Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)にアクセスしてください。
+Azure Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Azure Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)にアクセスしてください。
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise マルチセッションのイメージの入手
 
@@ -31,9 +31,9 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 > [!div class="mx-imgBorder"]
 > ![Windows 10 Enterprise for Virtual Desktops, Version 1809 を選択するスクリーンショット。](../media/AzureMarketPlace.png)
 
-## <a name="creating-windows-virtual-desktop-tenant&quot;></a>Windows Virtual Desktop テナントの作成
+## <a name="creating-azure-virtual-desktop-tenant&quot;></a>Azure Virtual Desktop テナントを作成する
 
-このセクションでは、Windows Virtual Desktop テナントを作成するときの潜在的な問題について説明します。
+このセクションでは、Azure Virtual Desktop テナントを作成するときの潜在的な問題について説明します。
 
 ### <a name=&quot;error-aadsts650052-the-app-needs-access-to-a-service&quot;></a>エラー:AADSTS650052 アプリにはサービスへのアクセスが必要です。
 
@@ -47,9 +47,9 @@ configuration of your service subscriptions.650052 Message The app needs access 
 Contact your IT Admin to review the configuration of your service subscriptions.
 ```
 
-**原因:** Azure Active Directory インスタンスで、Windows Virtual Desktop への同意が付与されていません。
+**原因:** Azure Active ディレクトリ インスタンスで、Azure Virtual Desktop への同意が付与されていません。
 
-**解決策:** [こちらのガイドに従って](./tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop)、同意を付与してください。
+**解決策:** [こちらのガイドに従って](./tenant-setup-azure-active-directory.md#grant-permissions-to-azure-virtual-desktop)、同意を付与してください。
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>エラー:管理サービスに問い合わせる許可がユーザーに与えられていません
 
@@ -78,13 +78,13 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 > [!div class="mx-imgBorder"]
 > ![TenantCreator ロールを割り当てたスクリーンショット。](../media/TenantCreatorRoleAssigned.png)
 
-## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Windows Virtual Desktop セッション ホスト VM の作成
+## <a name="creating-azure-virtual-desktop-session-host-vms"></a>Azure Virtual Desktop セッション ホスト VM を作成する
 
-セッションホスト VM はいくつかの方法で作成できますが、Windows Virtual Desktop チームでサポートするのは、[Azure Marketplace](https://azuremarketplace.microsoft.com/) オファリングに関連する VM プロビジョニングの問題のみです。 詳細については、「[Azure Marketplace の "Windows Virtual Desktop – Provision a host pool" オファリング使用時の問題](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering)」 を参照してください。
+セッションホスト VM はいくつかの方法で作成できますが、Azure Virtual Desktop チームでサポートするのは、[Azure Marketplace](https://azuremarketplace.microsoft.com/) オファリングに関連する VM プロビジョニングの問題のみです。 詳細については、「[Azure Virtual Desktop を使用する際の問題– ホスト プール Azure Marketplace のオファリングをプロビジョニングする](#issues-using-azure-virtual-desktop--provision-a-host-pool-azure-marketplace-offering)」を参照してください。
 
-## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Azure Marketplace の "Windows Virtual Desktop – Provision a host pool" オファリング使用時の問題
+## <a name="issues-using-azure-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Azure Virtual Desktop を使用する際の問題– ホスト プール Azure Marketplace のオファリングをプロビジョニングする
 
-"Windows Virtual Desktop – Provision a host pool" テンプレートは、Azure Marketplace から入手できます。
+Azure Virtual Desktop – ホスト プールのプロビジョニング テンプレートは、Azure Marketplace から入手できます。
 
 ### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>エラー:GitHub からのリンクを使用すると "無料アカウントの作成" メッセージが表示される
 
@@ -141,7 +141,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失敗をトラブルシューティングするには、次の手順に従います。
 
 1. 「[Azure Resource Manager でのデプロイ操作の表示](../../azure-resource-manager/templates/deployment-history.md)」を使用して、デプロイのエラーを確認します。
-2. デプロイにエラーがない場合、「[リソースのアクションを監査するアクティビティ ログの表示](../../azure-resource-manager/management/view-activity-logs.md)」を使用して、アクティビティ ログのエラーを確認します。
+2. デプロイにエラーがない場合、「[リソースのアクションを監査するアクティビティ ログの表示](../../azure-monitor/essentials/activity-log.md)」を使用して、アクティビティ ログのエラーを確認します。
 3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../../azure-resource-manager/templates/common-deployment-errors.md)」のリソースを使用して問題に対処します。
 4. 以前のデプロイ中に作成されたすべてのリソースを削除し、テンプレートのデプロイを再試行します。
 
@@ -192,11 +192,11 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 > [!div class="mx-imgBorder"]
 > ![ターミナルのプロビジョニングの状態 (失敗) を示しているデプロイ失敗のスクリーンショット。](../media/7aaf15615309c18a984673be73ac969a.png)
 
-**原因 1:** Windows Virtual Desktop 環境の一時的なエラーです。
+**原因 1:** Azure Virtual Desktop 環境の一時的なエラーです。
 
 **原因 2:** 一時的な接続エラーです。
 
-**解決策:** PowerShell を使用してサインインすることによって、Windows Virtual Desktop 環境が正常であることを確認します。 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell-2019.md)」で、VM の登録を手動で終了します。
+**解決:** PowerShell を使用してサインインすることによって、Azure Virtual Desktop 環境が正常であることを確認します。 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell-2019.md)」で、VM の登録を手動で終了します。
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>エラー:指定した管理者のユーザー名は許可されません
 
@@ -366,13 +366,13 @@ Following are the first few: PowerShell DSC resource MSFT_ScriptResource failed 
 The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d25b-47e5-8d70-a7493e9dc473" } } }}
 ```
 
-**原因:** 指定された Windows Virtual Desktop テナント管理者に、有効なロールの割り当てがありません。
+**原因:** 指定された Azure Virtual Desktop テナント管理者に、有効なロールの割り当てがありません。
 
-**解決策:** Windows Virtual Desktop テナントを作成したユーザーが、Windows Virtual Desktop PowerShell にサインインして、試行されたユーザーにロールの割り当てを割り当てる必要があります。 GitHub の Azure Resource Manager テンプレートのパラメーターを実行している場合、PowerShell コマンドを使用して次の手順に従います。
+**解決策:** Azure Virtual Desktop テナントを作成したユーザーが、Azure Virtual Desktop PowerShell にサインインして、試行されたユーザーにロールの割り当てを割り当てる必要があります。 GitHub の Azure Resource Manager テンプレートのパラメーターを実行している場合、PowerShell コマンドを使用して次の手順に従います。
 
 ```PowerShell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
+New-RdsRoleAssignment -TenantName <Azure Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
 ### <a name="error-user-requires-azure-ad-multi-factor-authentication-mfa"></a>エラー:ユーザーが Azure AD Multi-Factor Authentication (MFA) を要求する
@@ -386,18 +386,18 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-**原因:** 指定された Windows Virtual Desktop テナント管理者が、サインインするために Azure AD Multi-Factor Authentication (MFA) を必要としています。
+**原因:** 指定された Azure Virtual Desktop テナント管理者が、サインインするために Azure AD 多要素認証 (MFA) を必要としています。
 
-**解決策:** 次の手順に従って、サービス プリンシパルを作成し、それに Windows Virtual Desktop のロールを割り当てます: [チュートリアル: PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する](create-service-principal-role-powershell.md)。 サービス プリンシパルを使用して Windows Virtual Desktop にサインインできることを確認した後、使用している方法に応じて、Azure Marketplace オファリングまたは GitHub の Azure Resource Manager テンプレートを再実行します。 次の指示に従って、方法に応じた正しいパラメーターを入力します。
+**修正:** [「チュートリアル: PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する](create-service-principal-role-powershell.md)」の手順に従って、サービス プリンシパルを作成し、Azure 仮想デスクトップ テナントのロールを割り当てます。 サービス プリンシパルを使用して Azure Virtual Desktop にサインインできることを確認した後、使用している方法に応じて、Azure Marketplace オファリングまたは GitHub の Azure Resource Manager テンプレートを再実行します。 次の指示に従って、方法に応じた正しいパラメーターを入力します。
 
-Azure Marketplace オファリングを実行している場合、Windows Virtual Desktop に正しく認証されるよう、次のパラメーターの値を指定します。
+Azure Marketplace オファリングを実行している場合、Azure Virtual Desktop に正しく認証されるよう、次のパラメーターの値を指定します。
 
-- Windows Virtual Desktop テナント RDS 所有者:サービス プリンシパル
+- Azure Virtual Desktop テナント RDS 所有者:サービス プリンシパル
 - アプリケーション ID:作成した新しいサービス プリンシパルのアプリケーション ID
 - パスワード/パスワードの確認:サービス プリンシパル用に生成したパスワードのシークレット
 - Azure AD テナント ID:作成したサービス プリンシパルの Azure AD テナント ID
 
-GitHub の Azure Resource Manager テンプレートを実行している場合、Windows Virtual Desktop に正しく認証されるように、次のパラメーターの値を指定します。
+GitHub の Azure Resource Manager テンプレートを実行している場合、Azure Virtual Desktop に正しく認証されるように、次のパラメーターの値を指定します。
 
 - テナント管理者のユーザー プリンシパル名 (UPN) またはアプリケーション ID:作成した新しいサービス プリンシパルのアプリケーション ID
 - テナント管理パスワード:サービス プリンシパル用に生成したパスワードのシークレット
@@ -406,18 +406,18 @@ GitHub の Azure Resource Manager テンプレートを実行している場合�
 
 ### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>エラー: 仮想ネットワークを構成するときに vmSubnet を使用できません
 
-**原因:** Windows Virtual Desktop Marketplace テンプレートでは、テンプレートに指定されている VM の合計数と同じ数以上の IP アドレスが含まれるサブネットのみが UI に表示されます。 サブネットで使用できる IP アドレスの実際の数は、デプロイされている新しい VM の数と同じであれば十分ですが、現在の UI ではこの数を計算できません。
+**原因:** Azure Virtual Desktop Marketplace テンプレートでは、テンプレートに指定されている VM の合計数と同じ数以上の IP アドレスが含まれるサブネットのみが UI に表示されます。 サブネットで使用できる IP アドレスの実際の数は、デプロイされている新しい VM の数と同じであれば十分ですが、現在の UI ではこの数を計算できません。
 
 **解決策:** Marketplace UI を使用しないで、追加されている VM の数と同じ数以上の IP アドレスを持つサブネットを指定できます。これは、[既存のデプロイを再デプロイする](expand-existing-host-pool-2019.md#redeploy-from-azure)か、[GitHub から基になる ARM テンプレートを使用してデプロイする](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool)ときに、"**existingSubnetName**" パラメーターでサブネット名を指定して実行できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview-2019.md)」を参照してください。
-- Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration-2019.md) に関する記事を参照してください。
-- Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection-2019.md)に関するページを参照してください。
+- Azure Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview-2019.md)」を参照してください。
+- Azure Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration-2019.md) に関する記事を参照してください。
+- Azure Virtual Desktop クライアント接続の問題のトラブルシューティングを行う場合は、「[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection-2019.md)」を参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](../troubleshoot-client.md) に関するページを参照してください
-- Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell-2019.md)」を参照してください。
-- サービスの詳細については、[Windows Virtual Desktop 環境](environment-setup-2019.md)に関するページを参照してください。
+- Azure Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Azure Virtual Desktop PowerShell](troubleshoot-powershell-2019.md)」を参照してください。
+- サービスの詳細については、[Azure Virtual Desktop 環境](environment-setup-2019.md)に関するページを参照してください。
 - トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../../azure-resource-manager/templates/template-tutorial-troubleshoot.md)」を参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](../../azure-resource-manager/management/view-activity-logs.md)」をご覧ください。
+- 監査アクションについては、「 [リソース マネージャーの監査操作](../../azure-monitor/essentials/activity-log.md)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../../azure-resource-manager/templates/deployment-history.md)に関するページを参照してください。

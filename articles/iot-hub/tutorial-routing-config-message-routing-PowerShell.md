@@ -1,20 +1,19 @@
 ---
 title: チュートリアル - Azure PowerShell を使用して Azure IoT Hub のメッセージ ルーティングを構成する
 description: チュートリアル - Azure PowerShell を使用して Azure IoT Hub のメッセージ ルーティングを構成します。 メッセージ内のプロパティに応じて、ストレージ アカウントまたは Service Bus キューのどちらかにルーティングします。
-author: robinsh
-manager: philmea
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 03/25/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: be1560bcc03ec7a26f4bc374392c746243cd731a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ae8c8a6f8c9be606a95a046eb14149bcfa8a2fb
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624074"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547319"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure PowerShell を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -26,7 +25,7 @@ ms.locfileid: "98624074"
 
 このチュートリアルのパート 2 では、IoT ハブにメッセージを送信する Visual Studio アプリケーションをダウンロードして実行します。 ダウンロード内のフォルダーには、Azure Resource Manager テンプレートとパラメーター ファイルのほか、Azure CLI と PowerShell のスクリプトが含まれています。 
 
-完成したスクリプトを確認したい場合は、[Azure IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)をダウンロードしてください。 master.zip ファイルを解凍します。 Azure CLI スクリプトは、**iothub_routing_psh.ps1** という名前で /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ にあります。
+完成したスクリプトを確認したい場合は、[Azure IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)をダウンロードしてください。 main.zip ファイルを解凍します。 Azure CLI スクリプトは、**iothub_routing_psh.ps1** という名前で /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ にあります。
 
 ## <a name="create-your-resources"></a>リソースの作成
 
@@ -74,11 +73,10 @@ New-AzIotHub -ResourceGroupName $resourceGroup `
     -Location $location `
     -Units 1 
 
-# Add a consumer group to the IoT hub for the 'events' endpoint.
+# Add a consumer group to the IoT hub.
 Add-AzIotHubEventHubConsumerGroup -ResourceGroupName $resourceGroup `
   -Name $iotHubName `
-  -EventHubConsumerGroupName $iotHubConsumerGroup `
-  -EventHubEndpointName "events"
+  -EventHubConsumerGroupName $iotHubConsumerGroup
 
 # The storage account name must be globally unique, so add a random value to the end.
 $storageAccountName = "contosostorage" + $randomValue
@@ -250,7 +248,24 @@ $endpointType = "servicebusqueue"
 $routeName = "ContosoSBQueueRoute"
 $condition = 'level="critical"'
 
-# Add the routing endpoint, using the connection string property from the key.
+# If this script fails on the next statement (Add-AzIotHubRoutingEndpoint),
+# put the pause in and run it again. Note that if you're running it
+# interactively, you can just stop it and then run the rest, because
+# you have already set the variables before you get to this point.
+#
+# Pause for 90 seconds to allow previous steps to complete.
+# Then report it to the IoT team here: 
+# https://github.com/Azure/azure-powershell/issues
+#   pause for 90 seconds and then start again. 
+# This way, it if didn't get to finish before it tried to move on, 
+#   now it will have time to finish first.
+   Start-Sleep -Seconds 90
+
+# This command is the one that sometimes doesn't work. It's as if it doesn't have time to
+#   finish before it moves to the next line.
+# The error from Add-AzIotHubRoutingEndpoint is "Operation returned an invalid status code 'BadRequest'".
+# This command adds the routing endpoint, using the connection string property from the key. 
+# This will definitely work if you execute the Sleep command first (it's in the line above).
 Add-AzIotHubRoutingEndpoint `
   -ResourceGroupName $resourceGroup `
   -Name $iotHubName `

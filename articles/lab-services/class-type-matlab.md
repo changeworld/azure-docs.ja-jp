@@ -2,15 +2,15 @@
 title: Azure Lab Services を使用して MATLAB を教えるためのラボを設定する | Microsoft Docs
 description: Azure Lab Services を使用して MATLAB を教えるためのラボを設定する方法について説明します。
 author: emaher
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 137959f51b08dceee150962f77110ee2ac1dc193
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8df8963f705fa8314ae3314af194f834deb69bdc
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85445000"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176797"
 ---
 # <a name="setup-a-lab-to-teach-matlab"></a>MATLAB を教えるためのラボを設定する
 

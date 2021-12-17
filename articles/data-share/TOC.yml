@@ -30,7 +30,7 @@
         - name: セキュリティの概要
           href: security.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/data-share-security-baseline?toc=/azure/data-share/TOC.json
     - name: Azure Data Share の用語
       href: terminology.md
     - name: ロールと要件
@@ -89,7 +89,7 @@
     - name: Microsoft Tech Community
       href: 'https://techcommunity.microsoft.com/'
     - name: 製品フィードバック
-      href: 'https://feedback.azure.com/forums/922759-azure-data-share-public-preview'
+      href: 'https://feedback.azure.com/d365community/forum/4444c9d4-ed24-ec11-b6e6-000d3a4f0da0'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/data-share/'
     - name: サービスの更新情報

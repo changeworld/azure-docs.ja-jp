@@ -1,21 +1,21 @@
 ---
 title: ISE を使用して Azure 仮想ネットワークに接続する
-description: Azure Logic Apps から Azure 仮想ネットワーク (VNET) にアクセスできる統合サービス環境 (ISE) を作成します。
+description: Azure Logic Apps から Azure 仮想ネットワーク (VNET) にアクセスするための統合サービス環境 (ISE) を作成します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 03/30/2021
-ms.openlocfilehash: a56a41b704b12da08cf86b450ac1c734409c8032
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 08/11/2021
+ms.openlocfilehash: 318c4ba47caab7ce7f84f8bc43522d04c3eb40da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219316"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644868"
 ---
-# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
+# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure 仮想ネットワークに接続する
 
-ロジック アプリと統合アカウントが [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオでは、"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成します。 ISE は、専用のストレージと、"グローバル" なマルチテナント Logic Apps サービスとは別に確保されている他のリソースを使用する専用環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 ISE には、独自の静的 IP アドレスも用意されています。 これらの IP アドレスは、パブリックのマルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは別のものです。
+ロジック アプリと統合アカウントが [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオでは、"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成します。 ISE は、"グローバル" なマルチテナント Logic Apps サービスから分離されている専用のストレージや他のリソースを使用する環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 ISE には、独自の静的 IP アドレスも用意されています。 これらの IP アドレスは、パブリックのマルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは別のものです。
 
 ISE を作成すると、Azure によってその ISE が Azure 仮想ネットワークに "*挿入*" され、その仮想ネットワークに Logic Apps サービスがデプロイされます。 ロジック アプリまたは統合アカウントを作成するときに、お使いの ISE を場所として選択します。 ロジック アプリまたは統合アカウントは、仮想ネットワーク内の仮想マシン (VM)、サーバー、システム、サービスなどのリソースに直接アクセスできます。
 
@@ -24,7 +24,16 @@ ISE を作成すると、Azure によってその ISE が Azure 仮想ネット�
 > [!IMPORTANT]
 > ISE でロジック アプリと統合アカウントを連携させるには、両方とも "*同じ ISE*" を場所として使用する必要があります。
 
-ISE では、実行継続時間、ストレージのリテンション期間、スループット、HTTP の要求と応答のタイムアウト、メッセージのサイズ、およびカスタム コネクタの要求の上限が引き上げられました。 詳細については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。 ISE の詳細については、[Azure Logic Apps から Azure Virtual Network リソースへのアクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)に関する記事を参照してください。
+ISE では、次の制限が引き上げられています。
+
+* 実行継続時間
+* ストレージのリテンション期間
+* スループット
+* HTTP 要求と応答のタイムアウト
+* メッセージ サイズ
+* カスタム コネクタ要求
+
+詳細については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。 ISE の詳細については、[Azure Logic Apps から Azure Virtual Network リソースへのアクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)に関する記事を参照してください。
 
 この記事では、Azure Portal を使ってこれらのタスクを完了する方法について説明します。
 
@@ -32,7 +41,7 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
 * ISE を作成します。
 * ISE に容量を追加します。
 
-カスタマー マネージド キーの設定も含め、ISE は、[サンプル Azure Resource Manager クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)を使用するか、Logic Apps REST API を使用して作成することもできます。
+カスタマー マネージド キーの設定も含め、ISE は、[サンプル Azure Resource Manager クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/integration-service-environment)を使用するか、Logic Apps REST API を使用して作成することもできます。
 
 * [Logic Apps REST API を使用して統合サービス環境 (ISE) を作成する](../logic-apps/create-integration-service-environment-rest-api.md)
 * [ISE の保存データを暗号化するためにカスタマー マネージド キーを設定する](../logic-apps/customer-managed-keys-integration-service-environment.md)
@@ -42,7 +51,7 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
 * Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
   > [!IMPORTANT]
-  > ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクターでは、使用量ベースの価格プランとは異なる価格プランが使用されます。 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)に関する記事を参照してください。
+  > ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクターでは、使用量ベースの価格プランとは異なる価格プランが使用されます。 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#ise-pricing)」を参照してください。 価格については、[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)に関する記事を参照してください。
 
 * 4 つの "*空の*" サブネットがある [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。これらは、ISE 内にリソースを作成してデプロイするために必要であり、これらの内部または非表示のコンポーネントで使用されます。
 
@@ -55,19 +64,9 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
 
   * ISE が正常に動作し、アクセス可能な状態を維持できるように、仮想ネットワークで [ISE アクセスが有効になっている](#enable-access)ことを確認します。
 
-  * [ExpressRoute](../expressroute/expressroute-introduction.md) を[強制トンネリング](../firewall/forced-tunneling.md)と共に使用する場合は、次の特定のルートを使用して[ルート テーブルを作成](../virtual-network/manage-route-table.md)し、ISE で使用される各サブネットにそのルート テーブルをリンクする必要があります。
-
-    **名前**: <*route-name*><br>
-    **アドレス プレフィックス**:0.0.0.0/0<br>
-    **次ホップ**:インターネット
-    
-    この特定のルート テーブルは、Logic Apps コンポーネントが、Azure Storage や Azure SQL DB などの他に依存している Azure サービスと通信するために必要です。 このルートの詳細については、「[アドレス プレフィックス 0.0.0.0/0](../virtual-network/virtual-networks-udr-overview.md#default-route)」を参照してください。 ExpressRoute と共に強制トンネリングを使用しない場合、この特定のルート テーブルは必要ありません。
-    
-    ExpressRoute を使用すると、オンプレミスのネットワークを Microsoft クラウドに拡張し、接続プロバイダーが提供するプライベート接続を介して Microsoft クラウド サービスに接続できます。 具体的には、ExpressRoute は、パブリック インターネットを通じてではなくプライベート ネットワーク経由でトラフィックをルーティングする仮想プライベート ネットワークです。 ロジック アプリを ExpressRoute または仮想プライベート ネットワーク経由で接続するときに、同じ仮想ネットワーク内にあるオンプレミスのリソースに接続できます。
-   
   * [ネットワーク仮想アプライアンス (NVA)](../virtual-network/virtual-networks-udr-overview.md#user-defined) を使用する場合は、TLS/SSL 終端を有効にすることも、TLS/SSL の送信トラフィックを変更することもしないでください。 また、ISE のサブネットから発信されたトラフィックの検査を有効にしないようにしてください。 詳細については、「[仮想ネットワーク トラフィックのルーティング](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
 
-  * Azure 仮想ネットワークでカスタム DNS サーバーを使用する場合は、ISE を仮想ネットワークにデプロイする前に、[次の手順に従ってそのようなサーバーを設定します](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。 DNS サーバー設定の管理方法に関する詳細については、「[仮想ネットワークの作成、変更、削除](../virtual-network/manage-virtual-network.md#change-dns-servers)」を参照してください。
+  * Azure 仮想ネットワークでカスタム ドメイン ネーム システム (DNS) サーバーを使用する場合は、ISE を仮想ネットワークにデプロイする前に、[次の手順に従ってそれらのサーバーを設定します](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。 DNS サーバー設定の管理方法に関する詳細については、「[仮想ネットワークの作成、変更、削除](../virtual-network/manage-virtual-network.md#change-dns-servers)」を参照してください。
 
     > [!NOTE]
     > DNS サーバーまたはその設定に変更を加えた場合は、それらの変更を ISE が取得できるよう、ISE を再起動する必要があります。 詳細については、「[ISE を再起動する](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE)」を参照してください。
@@ -122,7 +121,8 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 | 目的 | ソース サービス タグまたは IP アドレス | ソース ポート | 宛先サービス タグまたは IP アドレス | 宛先ポート | Notes |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | 仮想ネットワーク内のサブネット間通信 | 仮想ネットワークと ISE サブネットのアドレス空間 | * | 仮想ネットワークと ISE サブネットのアドレス空間 | * | トラフィックが仮想ネットワーク内のサブネットの "*間*" を通過するために必要です。 <p><p>**重要**:トラフィックが各サブネット内の "*コンポーネント*" 間を通過するには、各サブネット内のすべてのポートを開いていることを確認します。 |
-| ロジック アプリからの通信 | **VirtualNetwork** | * | 宛先によって異なる | 80、443 | 宛先は、ロジック アプリが通信する必要がある外部サービスのエンドポイントによって異なります。 |
+| ロジック アプリからの通信 | **VirtualNetwork** | * | インターネット | 443、80 | この規則は、Secure Socket Layer (SSL) 証明書の検証に必要です。 このチェックは、内外のさまざまなサイトに対して行われるため、宛先としてインターネットが必要です。 |
+| ロジック アプリからの通信 | **VirtualNetwork** | * | 宛先によって異なる | 宛先によって異なる | 使用するポートは、ロジック アプリでの通信に必要な外部サービスのエンドポイントによって異なります。 <p><p>たとえば、宛先ポートは、SMTP サービスでは 25 番ポート、SFTP サービスでは 22 番ポートというようになります。 |
 | Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80、443 ||
 | Azure Storage の依存関係 | **VirtualNetwork** | * | **Storage** | 80、443、445 ||
 | 接続管理 | **VirtualNetwork** | * | **AppService** | 443 ||
@@ -151,12 +151,12 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 * ユーザー定義のルート
 
   非対称ルーティングを回避するには、以下に一覧表示されているすべての IP アドレスそれぞれに対して **インターネット** で次ホップとしてルートを定義する必要があります。
-  
-  * [App Service Environment の管理アドレス](../app-service/environment/management-addresses.md)
+
+  * [ISE 領域における Logic Apps の受信および送信アドレス](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)  
   * [ISE リージョンのコネクタの Azure IP アドレス。このダウンロード ファイルで入手できます](https://www.microsoft.com/download/details.aspx?id=56519)
+  * [App Service Environment の管理アドレス](../app-service/environment/management-addresses.md)  
   * [Azure Traffic Manager の管理アドレス](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
-  * [ISE 領域における Logic Apps の受信および送信アドレス](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
-  * [ISE リージョンのコネクタの Azure IP アドレス。このダウンロード ファイルにあります](https://www.microsoft.com/download/details.aspx?id=56519)
+  * [Azure API Management コントロール プレーンの IP アドレス](../api-management/api-management-using-with-vnet.md#control-plane-ip-addresses)
 
 * サービス エンドポイント
 
@@ -168,7 +168,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
    
    * [Azure App Service の依存関係](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
    * [Azure キャッシュ サービスの依存関係](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
-   * [Azure API Management の依存関係](../api-management/api-management-using-with-vnet.md#-common-network-configuration-issues)
+   * [Azure API Management の依存関係](../api-management/api-management-using-with-vnet.md#network-configuration-issues)
 
 <a name="create-environment"></a>
 
@@ -276,7 +276,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 1. デプロイの完了後に Azure で環境が自動的に表示されない場合は、環境を表示するために **[リソースに移動]** を選択します。
 
-1. エンドポイント アクセスが "*外部*" の ISE については、ネットワーク セキュリティ グループをまだ用意していない場合、それを作成し、受信セキュリティ規則を追加し、管理されているコネクタ送信 IP アドレスからのトラフィックを許可する必要があります。 このルールを設定するには、次の手順に従います。
+1. "*外部*" エンドポイント アクセス権を持つ ISE の場合は、ネットワーク セキュリティ グループ (NSG) を作成する必要があります (まだない場合)。 マネージド コネクタの送信 IP アドレスからのトラフィックを許可するには、NSG に受信セキュリティ規則を追加する必要があります。 このルールを設定するには、次の手順に従います。
 
    1. ISE メニューの **[設定]** で、 **[プロパティ]** を選択します。
 

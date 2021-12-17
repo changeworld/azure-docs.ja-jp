@@ -3,24 +3,28 @@ title: ユーザーの移行方法
 titleSuffix: Azure AD B2C
 description: 事前移行またはシームレスな移行の方法を使用して、別の ID プロバイダーのユーザー アカウントを Azure AD B2C に移行します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/11/2021
-ms.author: mimart
+ms.date: 04/27/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 3e60b80a4ebeaef7d31d4c0c1d9d4bfc41ec3a56
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 0cd0b976ec511070432538e99b7a8e20001a0156
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256210"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058152"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>ユーザーを Azure AD B2C に移行する
 
 別の ID プロバイダーから Azure Active Directory B2C (Azure AD B2C) に移行する場合、既存のユーザー アカウントの移行も必要になることがあります。 ここでは *事前移行* と *シームレスな移行* という 2 つの移行方法について説明します。 どちらの方法でも、[Microsoft Graph API](microsoft-graph-operations.md) を使用して Azure AD B2C にユーザー アカウントを作成するアプリケーションまたはスクリプトを記述する必要があります。
+
+考慮すべき Azure AD B2C のユーザー移行戦略および手順については、このビデオをご覧ください。
+
+>[!Video https://www.youtube.com/embed/lCWR6PGUgz0]
 
 ## <a name="pre-migration"></a>事前移行
 
@@ -43,9 +47,9 @@ ms.locfileid: "107256210"
 - パスワードが (ハッシュ関数を使用した場合のように) 一方向の暗号化形式で格納されている。
 - パスワードがレガシの ID プロバイダーによって、ユーザーがアクセスできない方法で格納されている。 たとえば、ID プロバイダーが Web サービスを呼び出して資格情報を検証している場合。
 
-シームレスな移行フローではユーザー アカウントの事前移行がやはり必要ですが、その後、[カスタム ポリシー](user-flow-overview.md)を使用して [REST API](custom-policy-rest-api-intro.md) (ユーザーが作成したもの) へのクエリを実行し、最初のサインイン時に各ユーザーのパスワードを設定します。
+シームレスな移行フローではユーザー アカウントの事前移行がやはり必要ですが、その後、[カスタム ポリシー](user-flow-overview.md)を使用して [REST API](api-connectors-overview.md) (ユーザーが作成したもの) へのクエリを実行し、最初のサインイン時に各ユーザーのパスワードを設定します。
 
-このため、シームレスな移行フローには、*事前移行* と *資格情報の設定* の 2 つのフェーズがあります。
+シームレスな移行フローは、"*事前移行*" と "*資格情報の設定*" という 2 つのフェーズで構成されます。
 
 ### <a name="phase-1-pre-migration"></a>フェーズ 1:事前移行
 
@@ -67,15 +71,13 @@ ms.locfileid: "107256210"
 
 ![ユーザー移行に対するシームレスな移行アプローチのフローチャート図](./media/user-migration/diagram-01-seamless-migration.png)<br />*図:シームレスな移行フロー*
 
-## <a name="best-practices"></a>ベスト プラクティス
-
-### <a name="security"></a>セキュリティ
+## <a name="security"></a>セキュリティ
 
 シームレスな移行方法では、独自のカスタム REST API を使用して、レガシ ID プロバイダーに対してユーザーの資格情報を検証します。
 
 **REST API をブルート フォース攻撃から保護する必要があります。** 攻撃者は、ユーザーの資格情報を最終的に当てるために、複数のパスワードを送信することがあります。 このような攻撃を防ぐには、サインイン試行回数が特定のしきい値に達したときに、REST API への要求の送信を停止します。 また、Azure AD B2C と REST API 間の通信もセキュリティで保護します。 お使いの RESTful API を実稼働用にセキュリティで保護する方法については、[RESTful API のセキュリティ保護](secure-rest-api.md)に関するページを参照してください。
 
-### <a name="user-attributes"></a>ユーザー属性
+## <a name="user-attributes"></a>ユーザー属性
 
 レガシ ID プロバイダーのすべての情報を Azure AD B2C ディレクトリに移行する必要はありません。 移行する前に、Azure AD B2C に格納する適切なユーザー属性のセットを特定します。
 
@@ -86,16 +88,16 @@ ms.locfileid: "107256210"
   - クレジット カード番号、社会保障番号 (SSN)、医療記録、あるいは政府機関または業界のコンプライアンス対応団体によって規制されているその他のデータなどの機密データ。
   - マーケティングまたはコミュニケーション設定、ユーザーの行動、および分析情報。
 
-### <a name="directory-clean-up"></a>ディレクトリのクリーンアップ
+### <a name="directory-cleanup"></a>ディレクトリのクリーンアップ
 
 移行プロセスを開始する前に、この機会を利用してディレクトリをクリーンアップしてください。
 
 - Azure AD B2C に格納されるユーザー属性のセットを特定し、必要なものだけを移行します。 必要に応じて、ユーザーに関するより多くのデータを格納するための[カスタム属性](user-flow-custom-attributes.md)を作成できます。
 - 複数の認証ソースを持つ環境 (たとえば、各アプリケーションが独自のユーザー ディレクトリを持つ) から移行する場合は、Azure AD B2C の 1 つの統合アカウントに移行します。
 - 複数のアプリケーションのユーザー名が異なる場合は、ID コレクションを使用して、これらすべてを Azure AD B2C のユーザー アカウントに格納できます。 パスワードについては、ユーザーにパスワードを選択させてディレクトリに設定させます。 たとえば、シームレスな移行では、選択したパスワードだけを Azure AD B2C アカウントに格納する必要があります。
-- 使用されていないユーザー アカウントを移行前に削除するか、古いアカウントを移行しないでください。
+- 使用されていないユーザー アカウントを削除するか、古いアカウントを移行しないでください。
 
-### <a name="password-policy"></a>パスワード ポリシー
+## <a name="password-policy"></a>パスワード ポリシー
 
 移行するアカウントのパスワード強度が Azure AD B2C によって適用される[強力なパスワード強度](../active-directory/authentication/concept-sspr-policy.md)より弱い場合は、強力なパスワードという要件を無効にすることができます。 詳細については、「[パスワード ポリシー プロパティ](user-profile-attributes.md#password-policy-attribute)」をご参照ください。
 

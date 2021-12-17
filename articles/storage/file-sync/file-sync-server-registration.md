@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a85fb653636333beec5f53912a646b3e5619e37b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d3b85de94c0e323cf33bd3cc2cd7fdf11bf654b2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796381"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022476"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Azure File Sync に登録されたサーバーの管理
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -34,7 +35,7 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 
 * Azure PowerShell モジュールがサーバーにインストールされていること。 サーバーがフェールオーバー クラスターのメンバーである場合、そのクラスター内のすべてのノードには Az モジュールが必要になります。 Az モジュールをインストールする方法の詳細については、[Azure PowerShell のインストールと構成](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
-    > [!Note]  
+    > [!NOTE]
     > サーバーの登録と登録解除には、最新バージョンの Az PowerShell モジュールを使用することをお勧めします。 Az パッケージがこのサーバーにインストールされていたことがあり、そのサーバー上の PowerShell バージョンが 5.* 以降の場合、`Update-Module` コマンドレットを使用してそのパッケージを更新することができます。 
 * お使いの環境でネットワーク プロキシ サーバーを使用する場合、同期エージェントが使用するサーバー上のプロキシ設定を構成します。
     1. プロキシ IP アドレスとポート番号を決定します。
@@ -48,7 +49,7 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
         * プロキシをリセットする:   netsh winhttp show proxy
         * エージェントのインストール後にこれが設定された場合に、同期エージェントを再起動する:   net stop filesyncsvc
     
-```XML
+```xml
     Figure 1:
     <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
@@ -60,7 +61,11 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 ### <a name="register-a-server-with-storage-sync-service"></a>サーバーをストレージ同期サービスに登録する
 Azure File Sync の "*同期グループ*" で、サーバーを "*サーバー エンドポイント*" として使用するには、"*ストレージ同期サービス*" にサーバーを登録しておく必要があります。 サーバーを登録できるストレージ同期サービスは、一度に 1 つに限られます。
 
+<<<<<<< HEAD
 #### <a name="install-the-azure-file-sync-agent"></a>Azure File Sync Agent をインストールする
+=======
+#### <a name="install-the-azure-file-sync-agent"></a>Azure File Sync エージェントをインストールする
+>>>>>>> repo_sync_working_branch
 1. [Azure File Sync Agent をダウンロード](https://go.microsoft.com/fwlink/?linkid=858257)します。
 2. Azure File Sync Agent のインストーラーを起動します。
     
@@ -72,7 +77,11 @@ Azure File Sync の "*同期グループ*" で、サーバーを "*サーバー 
 
 4. サーバーがまだ登録されていない場合、インストールの完了すぐにサーバーの登録 UI が表示されます。
 
+<<<<<<< HEAD
 > [!Important]  
+=======
+> [!IMPORTANT]  
+>>>>>>> repo_sync_working_branch
 > サーバーがフェールオーバー クラスターのメンバーである場合、クラスターのすべてのノードに Azure File Sync Agent をインストールする必要があります。
 
 #### <a name="register-the-server-using-the-server-registration-ui"></a>サーバーの登録 UI を使用してサーバーを登録する
@@ -89,7 +98,7 @@ Azure File Sync の "*同期グループ*" で、サーバーを "*サーバー 
 
     ![[サインイン] ダイアログ](media/storage-sync-files-server-registration/server-registration-ui-3.png)
 
-> [!Important]  
+> [!IMPORTANT]  
 > サービスがフェールオーバー クラスターのメンバーである場合、各サーバーで [サーバーの登録] を実行する必要があります。 Azure Portal で登録済みサーバーを表示すると、Azure File Sync は、各ノードを同じフェールオーバー クラスターのメンバーとして自動的に認識し、適宜、各メンバーをグループ化します。
 
 #### <a name="register-the-server-with-powershell"></a>PowerShell でサーバーを登録する
@@ -102,7 +111,7 @@ Register-AzStorageSyncServer -ResourceGroupName "<your-resource-group-name>" -St
 ### <a name="unregister-the-server-with-storage-sync-service"></a>ストレージ同期サービスからサーバーの登録を解除する
 ストレージ同期サービスからサービスの登録を解除するために必要な手順がいくつかあります。 サーバーの登録を適切に解除する方法を見てみましょう。
 
-> [!Warning]  
+> [!WARNING]  
 > Microsoft のエンジニアによってはっきりと指示された場合を除き、サーバーを登録解除してから再登録することにより、またはサーバー エンドポイントを削除してから再作成することにより、同期、クラウドの階層化、または Azure File Sync のその他の側面に関する問題のトラブルシューティングを試みないでください。 サーバーの登録解除およびサーバー エンドポイントの削除は破壊的な操作であり、登録されたサーバーやサーバー エンドポイントが再作成された後で、サーバー エンドポイントがあるボリューム上の階層化されたファイルは Azure ファイル共有上の場所に "再接続" されず、同期エラーが発生します。 また、サーバー エンドポイントの名前空間の外部に存在する階層化されたファイルは完全に失われる可能性があることにも注意してください。 クラウドの階層化が有効にされていなくても、階層化されたファイルがサーバー エンドポイント内に存在することがあります。
 
 #### <a name="optional-recall-all-tiered-data"></a>(省略可能) すべての階層型データを回収する
@@ -113,7 +122,7 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
 
-> [!Warning]  
+> [!WARNING]  
 > サーバー エンドポイントをホストするローカル ボリュームに、階層化されたデータをすべて回収できるだけの空き領域がない場合、`Invoke-StorageSyncFileRecall` コマンドレットは失敗します。  
 
 #### <a name="remove-the-server-from-all-sync-groups"></a>すべての同期グループからサーバーを削除する
@@ -151,13 +160,13 @@ Get-AzStorageSyncGroup -ResourceGroupName $resourceGroup -StorageSyncServiceName
 ## <a name="ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter"></a>データセンターで Azure File Sync が良好なネイバーであることを確認する 
 Azure File Sync がデータセンターで実行されている唯一のサービスであることはほとんどないため、Azure File Sync のネットワークとストレージの使用を制限できます。
 
-> [!Important]  
+> [!IMPORTANT]  
 > 制限の設定が低すぎると、Azure File Sync の同期と回収のパフォーマンスに影響を及ぼします。
 
 ### <a name="set-azure-file-sync-network-limits"></a>Azure File Sync のネットワークの制限を設定する
 Azure File Sync のネットワーク使用率は、`StorageSyncNetworkLimit` コマンドレットを使用して調整できます。
 
-> [!Note]  
+> [!NOTE]  
 > 階層型されたファイルにアクセスする場合、ネットワークの制限は適用されません。
 
 たとえば、営業日の午前 9 時～午後 5 時 (17 時) に、Azure File Sync が 10 Mbps 以上使用しないようにするためのスロットルの新しい制限を作成できます。 

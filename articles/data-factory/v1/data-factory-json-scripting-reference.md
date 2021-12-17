@@ -5,14 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: 91228b7f3243299f47c101e59d0c652749ff963d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/22/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 11b9009dbf8f308a78ef0bc88588196052dd8e74
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779734"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218695"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -86,7 +88,7 @@ ms.locfileid: "104779734"
 | type |アクティビティの種類を指定します。 アクティビティの種類については、「[データ ストア](#data-stores)」および「[データ変換アクティビティ](#data-transformation-activities)」をご覧ください。 |はい |
 | inputs |アクティビティで使用される入力テーブル<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |HDInsightStreaming および SqlServerStoredProcedure アクティビティの場合は "いいえ" <br/> <br/> それ以外の場合は "はい" |
 | outputs |アクティビティで使用される出力テーブル。<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |はい |
-| linkedServiceName |アクティビティで使用される、リンクされたサービスの名前。 <br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 |HDInsight アクティビティ、Azure Machine Learning スタジオ (クラシック) アクティビティ、ストアド プロシージャ アクティビティの場合は "はい"。 <br/><br/>それ以外の場合は "いいえ" |
+| linkedServiceName |アクティビティで使用される、リンクされたサービスの名前。 <br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 |HDInsight アクティビティ、ML スタジオ (クラシック) アクティビティ、ストアド プロシージャ アクティビティの場合は "はい"。 <br/><br/>それ以外の場合は "いいえ" |
 | typeProperties |TypeProperties セクションのプロパティは、アクティビティの種類によって異なります。 |いいえ |
 | policy |アクティビティの実行時の動作に影響するポリシーです。 指定されていない場合は、既定のポリシーが使用されます。 |いいえ |
 | scheduler |"scheduler" プロパティは、アクティビティのスケジュールを定義するために使用します。 サブプロパティは、 [データセットの availability](data-factory-create-datasets.md#dataset-availability)プロパティにあるサブプロパティと同じです。 |いいえ |
@@ -4820,7 +4822,7 @@ Web テーブルからデータをコピーする場合は、コピー アクテ
 | --- | --- |
 | [On-demand HDInsight クラスター](#on-demand-azure-hdinsight-cluster)または[独自の HDInsight クラスター](#existing-azure-hdinsight-cluster) |[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、Hadoop ストリーミング アクティビティ、[Spark アクティビティ](#hdinsight-spark-activity) |
 | [Azure Batch](#azure-batch) |[.NET カスタム アクティビティ](#net-custom-activity) |
-| [Azure Machine Learning Studio (クラシック)](#azure-machine-learning-studio-classic) | [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](#azure-machine-learning-studio-classic-batch-execution-activity)、[Azure Machine Learning スタジオ (クラシック) 更新リソース アクティビティ](#azure-machine-learning-studio-classic-update-resource-activity) |
+| [Machine Learning Studio (クラシック)](#ml-studio-classic) | [ML スタジオ (クラシック) バッチ実行アクティビティ](#ml-studio-classic-batch-execution-activity)、[ML スタジオ (クラシック) リソース更新アクティビティ](#ml-studio-classic-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
 | [Azure SQL Database](#azure-sql-database)、[Azure Synapse Analytics](#azure-synapse-analytics)、[SQL Server](#sql-server-stored-procedure) |[ストアド プロシージャ](#stored-procedure-activity) |
 
@@ -4927,8 +4929,8 @@ Azure Batch のリンクされたサービスを作成し、仮想マシン (VM)
 }
 ```
 
-## <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック)
-Azure Machine Learning スタジオ (クラシック) のリンクされたサービスを作成し、スタジオ (クラシック) のバッチ スコアリング エンドポイントをデータ ファクトリに登録します。 このリンクされたサービスで実行できる 2 つのデータ変換アクティビティ: [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](#azure-machine-learning-studio-classic-batch-execution-activity)、[Azure Machine Learning スタジオ (クラシック) 更新リソース アクティビティ](#azure-machine-learning-studio-classic-update-resource-activity)。
+## <a name="ml-studio-classic"></a>ML Studio (クラシック)
+ML スタジオ (クラシック) のリンクされたサービスを作成し、スタジオ (クラシック) のバッチ スコアリング エンドポイントをデータ ファクトリに登録します。 このリンク サービスで実行できる 2 つのデータ変換アクティビティは、[ML スタジオ (クラシック) バッチ実行アクティビティ](#ml-studio-classic-batch-execution-activity)と [ML スタジオ (クラシック) リソース更新アクティビティ](#ml-studio-classic-update-resource-activity)です。
 
 ### <a name="linked-service"></a>リンクされたサービス
 次の表は、スタジオ (クラシック) のリンクされたサービスの Azure JSON 定義内で使用されるプロパティの説明です。
@@ -5060,8 +5062,8 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 [HDInsight MapReduce アクティビティ](#hdinsight-mapreduce-activity) | Data Factory パイプラインの HDInsight MapReduce アクティビティは、独自の、またはオンデマンドの Windows/Linux ベースの HDInsight クラスターで MapReduce プログラムを実行します。
 [HDInsight Streaming アクティビティ](#hdinsight-streaming-activity) | Data Factory パイプラインの HDInsight Streaming アクティビティは、独自の、またはオンデマンドの Windows/Linux ベースの HDInsight クラスターで Hadoop Streaming プログラムを実行します。
 [HDInsight Spark アクティビティ](#hdinsight-spark-activity) | Data Factory パイプラインの HDInsight Spark アクティビティでは、独自の HDInsight クラスターで Spark プログラムを実行します。
-[Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](#azure-machine-learning-studio-classic-batch-execution-activity) | Azure Data Factory を使用すると、公開されたスタジオ (クラシック) Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプライン内でバッチ実行アクティビティを使用すると、スタジオ (クラシック) Web サービスを呼び出して、データの予測を一括で行うことができます。
-[Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](#azure-machine-learning-studio-classic-update-resource-activity) | 時間の経過と共に、Azure Machine Learning Studio (クラシック) スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの機械学習モデルでスコア付け Web サービスを更新する必要があります。 更新リソース アクティビティを使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。
+[ML スタジオ (クラシック) バッチ実行アクティビティ](#ml-studio-classic-batch-execution-activity) | Azure Data Factory を使用すると、公開されたスタジオ (クラシック) Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプライン内でバッチ実行アクティビティを使用すると、スタジオ (クラシック) Web サービスを呼び出して、データの予測を一括で行うことができます。
+[ML スタジオ (クラシック) リソース更新アクティビティ](#ml-studio-classic-update-resource-activity) | 時間の経過と共に、ML スタジオ (クラシック) スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの機械学習モデルでスコア付け Web サービスを更新する必要があります。 更新リソース アクティビティを使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。
 [ストアド プロシージャ アクティビティ](#stored-procedure-activity) | Data Factory パイプラインでストアド プロシージャ アクティビティを使用して、次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。企業または Azure VM 内の Azure SQL Database、Azure Synapse Analytics、SQL Server データベース。
 [Data Lake Analytics U-SQL アクティビティ](#data-lake-analytics-u-sql-activity) | Data Lake Analytics U-SQL アクティビティは、Azure Data Lake Analytics クラスターで U-SQL スクリプトを実行します。
 [.NET カスタム アクティビティ](#net-custom-activity) | Data Factory でサポートされていない方法でデータを変換する必要がある場合は、独自のデータ処理ロジックを使用するカスタム アクティビティを作成し、パイプラインでそのアクティビティを使用できます。 Azure Batch サービスまたは Azure HDInsight クラスターを使用して実行するようにカスタム .NET アクティビティを構成できます。
@@ -5342,8 +5344,8 @@ Spark アクティビティの JSON 定義では、以下のプロパティを�
 
 このアクティビティの詳細については、[Spark アクティビティ](data-factory-spark.md)に関する記事を参照してください。
 
-## <a name="azure-machine-learning-studio-classic-batch-execution-activity"></a>Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ
-Azure Machine Learning スタジオ (クラシック) バッチ実行アクティビティの JSON 定義内で、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLBatchExecution** である必要があります。 スタジオ (クラシック) のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLBatchExecution に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
+## <a name="ml-studio-classic-batch-execution-activity"></a>ML スタジオ (クラシック) バッチ実行アクティビティ
+Azure ML スタジオ (クラシック) バッチ実行アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLBatchExecution** である必要があります。 スタジオ (クラシック) のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLBatchExecution に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
@@ -5398,8 +5400,8 @@ globalParameters | このセクションの Web サービス パラメーター�
 > [!NOTE]
 > AzureMLBatchExecution アクティビティの入力および出力だけを、パラメーターとして Web サービスに渡すことができます。 たとえば、上の JSON スニペットでは、MLSqlInput は AzureMLBatchExecution アクティビティへの入力であり、webServiceInput パラメーターを使用して Web サービスに入力として渡されます。
 
-## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ
-Azure Machine Learning スタジオ (クラシック) 更新リソース アクティビティの JSON 定義内で、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLUpdateResource** である必要があります。 スタジオ (クラシック) のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLUpdateResource に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
+## <a name="ml-studio-classic-update-resource-activity"></a>ML スタジオ (クラシック) リソース更新アクティビティ
+Azure ML スタジオ (クラシック) リソース更新アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLUpdateResource** である必要があります。 スタジオ (クラシック) のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLUpdateResource に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------

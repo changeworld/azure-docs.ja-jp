@@ -1,19 +1,19 @@
 ---
 title: Azure Site Recovery を使用して Linux VM のフェールバック用にマスター ターゲット サーバーをインストールする
 description: Azure Site Recovery を使用して、VMware VM の Azure へのディザスター リカバリー中に、オンプレミス サイトへのフェールバック用に Linux マスター ターゲット サーバーを設定する方法について説明します。
-author: mayurigupta13
 services: site-recovery
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.author: mayg
-ms.openlocfilehash: 9e1008f7acbfe0685b7a171176c7dc54592d1491
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: d766903d6de975a10dfd29bdf367ac2831321e50
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019244"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777433"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -21,7 +21,6 @@ ms.locfileid: "96019244"
 保護された仮想マシンが Windows 仮想マシンである場合、Windows マスター ターゲットが必要です。 Linux 仮想マシンには、Linux マスター ターゲットが必要になります。 ここでは、Linux のマスター ターゲットを作成してインストールする方法について説明しています。
 
 > [!IMPORTANT]
-> マスター ターゲット サーバー リリース 9.10.0 以降、最新のマスター ターゲット サーバーは Ubuntu 16.04 サーバーにのみインストールできます。 CentOS6.6 に新規インストールすることはできません。 ただし、9.10.0 バージョンを使って古いマスター ターゲット サーバーのアップグレードを続けることはできます。
 > LVM 上のマスター ターゲット サーバーはサポートされません。
 
 ## <a name="overview"></a>概要
@@ -58,6 +57,9 @@ ms.locfileid: "96019244"
 
 1.   [ダウンロード リンク](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)に移動し、最も近いミラーを選択して、Ubuntu 16.04.2 最小構成 64 ビット ISO をダウンロードします。
 Ubuntu 16.04.2 最小構成 64-bit ISO を DVD ドライブに保存し、システムを起動します。
+
+>[!NOTE]
+> バージョン [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) 以降、Linux マスター ターゲット サーバーで Ubuntu 20.04 オペレーティング システムがサポートされています。最新の OS を使用する場合は、Ubuntu 20.04 iso イメージでコンピューターのセットアップを続行します。
 
 1.  優先する言語として **[English]\(英語\)** を選択し、**Enter** キーを押します。
     
@@ -183,13 +185,22 @@ Azure Site Recovery マスター ターゲット サーバーには特定バー�
 
  `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
 
+>[!NOTE]
+> バージョン [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) 以降、Linux マスター ターゲット サーバーで Ubuntu 20.04 オペレーティング システムがサポートされています。
+> 最新の OS を使用する場合は、続行する前にオペレーティング システムを Ubuntu 20.04 にアップグレードしてください。 後でオペレーティング システムをアップグレードするには、 [こちら](#upgrade-os-of-master-target-server-from-ubuntu-1604-to-ubuntu-2004)に記載されている手順に従ってください。
+
 ### <a name="get-the-installer-for-setup"></a>セットアップに使用するインストーラーの入手
 
 マスター ターゲットからインターネットに接続できる場合は、以下の手順でインストーラーをダウンロードできます。 インターネットに接続できない場合は、プロセス サーバーからインストーラーをコピーしてインストールできます。
 
 #### <a name="download-the-master-target-installation-packages"></a>マスター ターゲットのインストール パッケージをダウンロードする
 
-[最新の Linux マスター ターゲット インストール ビットをダウンロードします](https://aka.ms/latestlinuxmobsvc)。
+Ubuntu 20.04 用の最新の Linux マスター ターゲット インストール ビットを[ダウンロードします](https://aka.ms/latestlinuxmobsvc)。
+
+Ubuntu 16.04 用の以前の Linux マスター ターゲット インストール ビットを[ダウンロードします](https://aka.ms/oldlinuxmobsvc)。
+
+> [!NOTE]
+> マスター ターゲット サーバーの設定には、Ubuntu オペレーティング システムの最新バージョンを使用することをお勧めします。
 
 Linux を使用してこれをダウンロードするには、次のように入力します。
 
@@ -329,12 +340,32 @@ VMware ツールまたは open-vm-tools は、データストアを検出でき�
 
 ### <a name="upgrade-the-master-target-server"></a>マスター ターゲット サーバーをアップグレードする
 
-インストーラーを実行します。 マスター ターゲットにエージェントがインストールされていることが自動的に検出されます。 アップグレードするには、 **[Y]** を選択します。セットアップが完了した後、次のコマンドを使用して、インストールされているマスター ターゲットのバージョンを確認します。
+インストーラーを実行すると、エージェントがマスター ターゲットにインストールされていることが自動的に検出されます。 次の手順に従って、アップグレードを完了してください。
+1. 構成サーバーから linux マスター ターゲットに tar.gz をコピーします
+2. 次のコマンドを実行して、実行しているバージョンを検証します: cat /usr/local/.vx_version
+3. tar を抽出します: tar -xvf latestlinuxmobsvc.tar.gz
+4. 変更を実行するためのアクセス許可を付与します: chmod 755 ./install
+5. アップグレード スクリプトを実行します: sudo ./install
+6. インストーラーによって、エージェントがマスター ターゲットにインストールされていることが検出されます。 アップグレードするには、**[Y]** を選択します。
+7. 新しいバージョンのエージェントが実行されていることを検証します: cat /usr/local/.vx_version
+
+セットアップが完了した後、次のコマンドを使用して、インストールされているマスター ターゲットのバージョンを確認します。
 
 `cat /usr/local/.vx_version`
 
 
 **[Version]\(バージョン\)** フィールドにマスター ターゲットのバージョン番号が表示されます。
+
+## <a name="upgrade-os-of-master-target-server-from-ubuntu-1604-to-ubuntu-2004"></a>マスター ターゲット サーバーの OS を Ubuntu 16.04 から Ubuntu 20.04 にアップグレードする
+
+9\.42 バージョンから、ASR では Ubuntu 20.04 上の Linux マスター ターゲット サーバーがサポートされています。 既存のマスター ターゲット サーバーの OS をアップグレードするには、
+
+1. Linux のスケールアウト マスター ターゲット サーバーが、保護されている VM の再保護操作に使用されていないことを確認します。
+2. コンピューターからマスター ターゲット サーバー インストーラーをアンインストールします
+3. ここで、オペレーティング システムを Ubuntu 16.04 から 20.04 にアップグレードします
+4. OS のアップグレードが正常に完了したら、コンピューターを再起動します。
+5. ここで、[最新のインストーラーをダウンロード](#download-the-master-target-installation-packages) し、[前述](#install-the-master-target)の手順に従って、マスター ターゲット サーバーのインストールを完了します。
+
 
 ## <a name="common-issues"></a>一般的な問題
 

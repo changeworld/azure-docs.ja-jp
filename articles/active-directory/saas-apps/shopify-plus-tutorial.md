@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 65f4963f23d97ca2e3af34febb0d5dbea652fc12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 66428ef449617f70178d18e2eb7e185b377354cc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646982"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304860"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Shopify Plus の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "101646982"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Shopify Plus では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* Shopify Plus では、[自動化されたユーザー プロビジョニング](shopify-plus-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-shopify-plus-from-the-gallery"></a>ギャラリーからの Shopify Plus の追加
 
@@ -133,6 +134,9 @@ Shopify Plus に対して Azure AD SSO を構成してテストするには、�
 
 このセクションでは、Shopify Plus で B.Simon というユーザーを作成します。 **[Users]\(ユーザー\)** セクションに戻り、電子メールとアクセス許可を入力してユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
+> [!NOTE]
+> Shopify Plus では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./shopify-plus-provisioning-tutorial.md)をご覧ください。
+
 ### <a name="enforce-saml-authentication"></a>SAML 認証の適用
 
 > [!NOTE]
@@ -165,8 +169,8 @@ Shopify Plus に対して Azure AD SSO を構成してテストするには、�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Shopify Plus に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Shopify Plus] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Shopify Plus に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Shopify Plus] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Shopify Plus に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Shopify Plus を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Shopify Plus を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

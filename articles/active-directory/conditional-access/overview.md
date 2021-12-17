@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 01/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4, azuread-video-2020
-ms.openlocfilehash: 7b43cf23b3f01e64c0be31ed013aa990ff80d3db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c3549ec7dbbba8e45e8b359177460841bec68fd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98938344"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283280"
 ---
 # <a name="what-is-conditional-access"></a>条件付きアクセスとは
 
@@ -58,7 +58,7 @@ ms.locfileid: "98938344"
    - 特定のアプリケーションにアクセスしようとするユーザーは、さまざまな条件付きアクセス ポリシーをトリガーできます。 
 - リアルタイムでの計算されたリスクの検出
    - シグナルと Azure AD Identity Protection の統合により、条件付きアクセス ポリシーで危険なサインイン動作を特定できます。 その上で、ポリシーでユーザーにパスワード変更や多要素認証の実行を強制してリスク レベルを下げることや、管理者が手動で対処するまでユーザーのアクセスをブロックすることができます。
-- Microsoft Cloud App Security (MCAS)
+- Microsoft Defender for Cloud Apps
    - ユーザーのアプリケーションへのアクセスとセッションをリアルタイムで監視および制御できるようにします。クラウド環境へのアクセスと、クラウド環境で実行されるアクティビティの可視性を高めて制御を強化できます。
 
 ## <a name="common-decisions"></a>一般的な決定
@@ -98,5 +98,5 @@ ms.locfileid: "98938344"
 - [条件付きアクセス ポリシーを 1 つずつ作成する](concept-conditional-access-policies.md)
 - [条件付きアクセスのデプロイを計画する](plan-conditional-access.md)
 - [Identity Protection について学ぶ](../identity-protection/overview-identity-protection.md)
-- [Microsoft Cloud App Security について学ぶ](/cloud-app-security/what-is-cloud-app-security)
+- [Microsoft Defender for Cloud Apps の詳細を確認する](/cloud-app-security/what-is-cloud-app-security)
 - [Microsoft Intune について学ぶ](/intune/index)

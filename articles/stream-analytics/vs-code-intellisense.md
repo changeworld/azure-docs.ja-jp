@@ -6,16 +6,16 @@ author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 988b9d364f09a4c88bcaab1fe81ae80c8de5d4d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e022023ba9ceefd8426280b07d62b78a79d83e5
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96491572"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913677"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>Visual Studio Code 用の Azure Stream Analytics ツールでの IntelliSense
 
-IntelliSense は、[VS Code 用 Azure Stream Analytics ツール](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview)の [Stream Analytics クエリ言語](/stream-analytics-query/stream-analytics-query-language-reference?bc=https%253a%2f%2fdocs.microsoft.com%2fazure%2fbread%2ftoc.json&toc=https%253a%2f%2fdocs.microsoft.com%2fazure%2fstream-analytics%2ftoc.json)で使用できます。 IntelliSense は、次のような多くの機能を備えたコード補完支援機能です: メンバーの一覧表示、パラメーター ヒント、クイック ヒント、入力候補。 IntelliSense 機能は、"コード補完"、"コンテンツ アシスト"、"コード ヒント" といった他の名前で呼ばれることがあります。
+IntelliSense は、[VS Code 用 Azure Stream Analytics ツール](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview)の [Stream Analytics クエリ言語](/stream-analytics-query/stream-analytics-query-language-reference?toc=/azure/stream-analytics/toc.json)で使用できます。 IntelliSense は、次のような多くの機能を備えたコード補完支援機能です: メンバーの一覧表示、パラメーター ヒント、クイック ヒント、入力候補。 IntelliSense 機能は、"コード補完"、"コンテンツ アシスト"、"コード ヒント" といった他の名前で呼ばれることがあります。
 
 ![IntelliSense のデモ](./media/vs-code-intellisense/intellisense.gif)
 

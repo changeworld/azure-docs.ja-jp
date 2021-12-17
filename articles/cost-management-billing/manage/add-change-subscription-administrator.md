@@ -1,20 +1,20 @@
 ---
 title: Azure サブスクリプション管理者を追加または変更する
 description: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して Azure サブスクリプション管理者を追加または変更する方法について説明します。
-author: genlin
-ms.reviewer: dcscontentpm
+author: bandersmsft
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: 10956953f9ab3a9e32b9da4ab8a3501d38b0e2c3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ae4a48e62f3e61e6c3d56cfa9083a2a95b4b1a69
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369660"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473302"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 
@@ -30,43 +30,37 @@ Microsoft では、Azure RBAC を使用してリソースへのアクセスを�
 
 詳細については、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](../../azure-resource-manager/management/deployment-models.md)」および「[Azure classic subscription administrators (Azure の従来のサブスクリプション管理者)](../../role-based-access-control/classic-administrators.md)」を参照してください。
 
-<a name="add-an-admin-for-a-subscription"></a>
+## <a name="determine-account-billing-administrator"></a>アカウントの課金管理者を判断する
+
+<a name="whoisaa"></a>
+
+課金管理者とは、アカウントに対する課金を管理する権限が付与されているユーザーのことです。 [Azure portal](https://portal.azure.com) で課金情報にアクセスする権限のほか、サブスクリプションの作成、請求書の表示と支払い、支払い方法の更新など、さまざまな課金関連の作業を行う権限が付与されています。
+
+課金管理者であるアカウントを特定するには、[Azure portal で [コストの管理と請求]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview) に移動します。 次に、左側のペインの **[すべての課金スコープ]** を選択します。 [サブスクリプション] ページに、自分が課金管理者となっているサブスクリプションがすべて一覧表示されます。
+
+サブスクリプションのアカウント管理者が誰かわからない場合は、[Azure portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動します。 次に、確認するサブスクリプションを選択し、 **[設定]** を調べます。 **[プロパティ]** を選択すると、サブスクリプションのアカウント管理者が **[アカウント管理者]** ボックスに表示されます。
+
 
 ## <a name="assign-a-subscription-administrator"></a>サブスクリプション管理者を割り当てる
 
-ユーザーを Azure サブスクリプションの管理者にするには、既存の管理者が、サブスクリプションのスコープで[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール (Azure ロール) を割り当てます。 これにより、他のユーザーへアクセス権を委任する権限を含め、サブスクリプションにあるすべてのリソースへのフル アクセスがユーザーに付与されます。 次の手順は、他のロールの割り当てと同じです。
+<a name="add-an-admin-for-a-subscription"></a>
 
-サブスクリプションのアカウント管理者が不明な場合は、次の手順で確認します。
+ユーザーを Azure サブスクリプションの管理者にするには、既存の課金管理者が、サブスクリプションのスコープで[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール (Azure ロール) を割り当てます。 これにより、他のユーザーへアクセス権を委任する権限を含め、サブスクリプションにあるすべてのリソースへのフル アクセスがユーザーに付与されます。 次の手順は、他のロールの割り当てと同じです。
+
+サブスクリプションのアカウントの課金管理者が不明な場合は、次の手順で確認します。
 
 1. [Azure portal で [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)を開きます。
 1. 確認するサブスクリプションを選択し、 **[設定]** を調べます。
-1. **[プロパティ]** を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。
+1. **[プロパティ]** を選択します。 サブスクリプションのアカウントの課金管理者が、**[アカウント管理者]** ボックスに表示されます。
 
 ### <a name="to-assign-a-user-as-an-administrator"></a>ユーザーを管理者に割り当てるには
 
-1. サブスクリプション所有者として Azure portal にサインインし、[[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開きます。
+- 所有者ロールをサブスクリプション スコープでユーザーに割り当てます。  
+     詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-1. アクセス権を付与するサブスクリプションをクリックします。
+## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 
-1. **[アクセス制御 (IAM)]** をクリックします。
-
-1. **[ロールの割り当て]** タブをクリックして、このサブスクリプションのすべてのロールの割り当てを表示します。
-
-    ![ロールの割り当てを示すスクリーンショット](./media/add-change-subscription-administrator/role-assignments.png)
-
-1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、 **[ロールの割り当ての追加]** ウィンドウを開きます。
-
-    ロールを割り当てるためのアクセス許可がない場合、このオプションは無効になります。
-
-1. **[ロール]**  ドロップダウン リストで、 **[所有者]**  ロールを選択します。
-
-1. **[選択]** 一覧で、ユーザーを選択します。 一覧にユーザーが表示されない場合には、 **[選択]**  ボックスに表示名とメール アドレスを入力して、ディレクトリを検索します。
-
-    ![選択された所有者ロールを示すスクリーンショット](./media/add-change-subscription-administrator/add-role.png)
-
-1. **[保存]** をクリックしてロールを割り当てます。
-
-    しばらくすると、サブスクリプション スコープで、ユーザーに所有者のロールが割り当てられます。
+お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -74,7 +68,3 @@ Microsoft では、Azure RBAC を使用してリソースへのアクセスを�
 * [Azure での各種ロールについて](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Azure Active Directory での管理者ロールのアクセス許可](../../active-directory/roles/permissions-reference.md)
-
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
-
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

@@ -6,22 +6,24 @@ author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/06/2021
+ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 1318a8c410f14f4a1dc91072d66f18e39f7ca7e7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c4048c3795f2e7925f70783b5c5b763d4796b9a3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318771"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128908324"
 ---
-.NET 用 Anomaly Detector (多変量) クライアント ライブラリを使ってみましょう。 これらの手順に従ってパッケージをインストールすれば、サービスによって提供されるアルゴリズムが使用できるようになります。 新しい多変量異常検出 API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出できる高度な AI を開発者が容易に統合することができます。 異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されます。 これにより、複雑なシステムを障害から予防的に保護することができます。
+C# 用 Anomaly Detector (多変量) クライアント ライブラリを使ってみましょう。 これらの手順に従ってパッケージをインストールすれば、サービスによって提供されるアルゴリズムが使用できるようになります。 新しい多変量異常検出 API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出できる高度な AI を開発者が容易に統合することができます。 異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されます。 これにより、複雑なシステムを障害から予防的に保護することができます。
 
-.NET 用 Anomaly Detector (多変量) クライアント ライブラリは、次の目的に使用します。
+C# 用 Anomaly Detector (多変量) クライアント ライブラリは、次の目的に使用します。
 
 * 時系列のグループからシステム レベルの異常を検出する。
 * 個々の時系列では得られる情報が少なく、すべての信号に着目して問題を検出する必要がある。
 * システム正常性をさまざまな側面から測定する数十個から数百個にのぼる各種センサーを使用して高価な物理資産の予測メンテナンスを行う。
+
+[ライブラリのリファレンス ドキュメント](/dotnet/api/azure.ai.anomalydetector) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/anomalydetector) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.3)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -86,13 +88,27 @@ using NUnit.Framework;
 
 アプリケーションの `main()` メソッドで、対象のリソースの Azure エンドポイント、API キー、カスタム データソースに使用する変数を作成します。
 
+> [!NOTE]
+> 常に、2 つのキーのいずれかを使用できます。 これは、セキュリティ保護されたキーのローテーションを可能にするためです。 このクイックスタートでは、1 番目のキーを使用します。 
+
 ```csharp
 string endpoint = "YOUR_API_KEY";
 string apiKey =  "YOUR_ENDPOINT";
 string datasource = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS";
 ```
 
- Anomaly Detector (多変量) API を使用するには、検出を使用する前に独自のモデルをトレーニングする必要があります。 トレーニングに使用するデータは時系列のバッチであり、各時系列は、timestamp と value の 2 つの列を含む CSV 形式である必要があります。 すべての時系列を 1 つの ZIP ファイルに圧縮し、[Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs) にアップロードする必要があります。 既定では、時系列の変数を表すためにこのファイル名が使用されます。 あるいは、変数の名前を .zip ファイル名とは異なるものにしたい場合は、追加の meta.json ファイルを ZIP ファイルに含めることもできます。 [BLOB の SAS (Shared Access Signature) URL](../../../../storage/common/storage-sas-overview.md) を生成したら、ZIP ファイルの URL をトレーニングに使用できます。
+Anomaly Detector 多変量 API シリーズを使用するには、最初に独自のモデルをトレーニングする必要があります。 トレーニング データは、次の要件を満たす複数の時系列のセットです。
+
+各時系列は、ヘッダー行として "timestamp" と "value" (すべて小文字) の 2 つの列のみを含む CSV ファイルである必要があります。 "timestamp" の値は、ISO 8601 に準拠している必要があります。"value" は、整数または小数点以下の桁数が任意の小数にすることができます。 次に例を示します。
+
+|timestamp | value|
+|-------|-------|
+|2019-04-01T00:00:00Z| 5|
+|2019-04-01T00:01:00Z| 3.6|
+|2019-04-01T00:02:00Z| 4|
+|`...`| `...` |
+
+各 CSV ファイルには、モデルのトレーニングに使用する異なる変数に基づいて名前を付ける必要があります。 たとえば、"temperature.csv" や "humidity.csv" などです。 すべての CSV ファイルは、サブフォルダーを使用しないで 1 つの ZIP ファイルに圧縮する必要があります。 ZIP ファイルには任意の名前を付けることができます。 ZIP ファイルは Azure Blob Storage にアップロードする必要があります。 その ZIP ファイルの BLOB SAS (Shared Access Signature) URL を生成したら、それをトレーニングに使用できます。 Azure Blob Storage から SAS URL を生成する方法については、このドキュメントを参照してください。
 
 ## <a name="code-examples"></a>コード例
 
@@ -120,7 +136,7 @@ AnomalyDetectorClient client = new AnomalyDetectorClient(endpointUri, credential
 モデルのトレーニングを処理するには、次のように新しいプライベート非同期タスクを作成します。 `TrainMultivariateModel` を使用してモデルをトレーニングし、`GetMultivariateModelAysnc` を使用してトレーニングの完了を監視します。
 
 ```csharp
-private async Task trainAsync(AnomalyDetectorClient client, string datasource, DateTimeOffset start_time, DateTimeOffset end_time, int max_tryout = 500)
+private async Task<Guid?> trainAsync(AnomalyDetectorClient client, string datasource, DateTimeOffset start_time, DateTimeOffset end_time)
 {
     try
     {
@@ -137,27 +153,23 @@ private async Task trainAsync(AnomalyDetectorClient client, string datasource, D
 
         // Wait until the model is ready. It usually takes several minutes
         Response<Model> get_response = await client.GetMultivariateModelAsync(trained_model_id).ConfigureAwait(false);
-        ModelStatus? model_status = null;
-        int tryout_count = 0;
-        TimeSpan create_limit = new TimeSpan(0, 3, 0);
-        while (tryout_count < max_tryout & model_status != ModelStatus.Ready)
+        while (get_response.Value.ModelInfo.Status != ModelStatus.Ready & get_response.Value.ModelInfo.Status != ModelStatus.Failed)
         {
             System.Threading.Thread.Sleep(10000);
             get_response = await client.GetMultivariateModelAsync(trained_model_id).ConfigureAwait(false);
-            ModelInfo model_info = get_response.Value.ModelInfo;
-            Console.WriteLine(String.Format("model_id: {0}, createdTime: {1}, lastUpdateTime: {2}, status: {3}.", get_response.Value.ModelId, get_response.Value.CreatedTime, get_response.Value.LastUpdatedTime, model_info.Status));
+            Console.WriteLine(String.Format("model_id: {0}, createdTime: {1}, lastUpdateTime: {2}, status: {3}.", get_response.Value.ModelId, get_response.Value.CreatedTime, get_response.Value.LastUpdatedTime, get_response.Value.ModelInfo.Status));
+        }
 
-            if (model_info != null)
-            {
-                model_status = model_info.Status;
-            }
-            tryout_count += 1;
-        };
-        get_response = await client.GetMultivariateModelAsync(trained_model_id).ConfigureAwait(false);
-
-        if (model_status != ModelStatus.Ready)
+        if (get_response.Value.ModelInfo.Status != ModelStatus.Ready)
         {
-            Console.WriteLine(String.Format("Request timeout after {0} tryouts", max_tryout));
+            Console.WriteLine(String.Format("Trainig failed."));
+            IReadOnlyList<ErrorResponse> errors = get_response.Value.ModelInfo.Errors;
+            foreach (ErrorResponse error in errors)
+            {
+                Console.WriteLine(String.Format("Error code: {0}.", error.Code));
+                Console.WriteLine(String.Format("Error message: {0}.", error.Message));
+            }
+            throw new Exception("Training failed.");
         }
 
         model_number = await getModelNumberAsync(client).ConfigureAwait(false);
@@ -177,7 +189,7 @@ private async Task trainAsync(AnomalyDetectorClient client, string datasource, D
 トレーニング済みの新しいモデルを使用して異常を検出するために、`detectAsync` という名前の `private async Task` を作成します。 新しい `DetectionRequest` を作成し、それをパラメーターとして `DetectAnomalyAsync` に渡します。
 
 ```csharp
-private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, string datasource, Guid model_id, DateTimeOffset start_time, DateTimeOffset end_time, int max_tryout = 500)
+private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, string datasource, Guid model_id,DateTimeOffset start_time, DateTimeOffset end_time)
 {
     try
     {
@@ -190,17 +202,21 @@ private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, st
         Guid result_id = Guid.Parse(result_id_path.Split('/').LastOrDefault());
         // get detection result
         Response<DetectionResult> result = await client.GetDetectionResultAsync(result_id).ConfigureAwait(false);
-        int tryout_count = 0;
-        while (result.Value.Summary.Status != DetectionStatus.Ready & tryout_count < max_tryout)
+        while (result.Value.Summary.Status != DetectionStatus.Ready & result.Value.Summary.Status != DetectionStatus.Failed)
         {
             System.Threading.Thread.Sleep(2000);
             result = await client.GetDetectionResultAsync(result_id).ConfigureAwait(false);
-            tryout_count += 1;
         }
 
         if (result.Value.Summary.Status != DetectionStatus.Ready)
         {
-            Console.WriteLine(String.Format("Request timeout after {0} tryouts", max_tryout));
+            Console.WriteLine(String.Format("Inference failed."));
+            IReadOnlyList<ErrorResponse> errors = result.Value.Summary.Errors;
+            foreach (ErrorResponse error in errors)
+            {
+                Console.WriteLine(String.Format("Error code: {0}.", error.Code));
+                Console.WriteLine(String.Format("Error message: {0}.", error.Message));
+            }
             return null;
         }
 
@@ -216,6 +232,9 @@ private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, st
 
 ## <a name="export-model"></a>モデルをエクスポートする
 
+> [!NOTE]
+> エクスポート コマンドは、コンテナー化された環境で Anomaly Detector 多変量モデルを実行できるようにするために使用することを目的としています。 現在、これは多変量ではサポートされていませんが、今後サポートが追加される予定です。
+
 以前にトレーニングしたモデルをエクスポートするには、`exportAysnc` という名前の `private async Task` を作成します。 `ExportModelAsync` を使用し、エクスポートするモデルの ID を渡します。
 
 ```csharp
@@ -223,11 +242,9 @@ private async Task exportAsync(AnomalyDetectorClient client, Guid model_id, stri
 {
     try
     {
-        Response model_response = await client.ExportModelAsync(model_id).ConfigureAwait(false);
-        Stream model;
-        if (model_response.ContentStream != null)
+        Stream model = await client.ExportModelAsync(model_id).ConfigureAwait(false);
+        if (model != null)
         {
-            model = model_response.ContentStream;
             var fileStream = File.Create(model_path);
             model.Seek(0, SeekOrigin.Begin);
             model.CopyTo(fileStream);
@@ -337,7 +354,14 @@ private async Task<int> getModelNumberAsync(AnomalyDetectorClient client, bool d
 ```dotnetcli
 dotnet run
 ```
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのリソース グループに関連付けられている他のリソースも削除されます。
+
+* [ポータル](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Anomaly Detector (多変量) のベスト プラクティス](../../concepts/best-practices-multivariate.md)
+* [Anomaly Detector API とは](../../overview-multivariate.md)
+* [Anomaly Detector API を使用する場合のベスト プラクティス](../../concepts/best-practices-multivariate.md)

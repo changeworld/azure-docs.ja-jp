@@ -1,9 +1,8 @@
 ---
 title: Azure IoT SDK を使用せずに開発する | Microsoft Docs
 description: 開発者ガイド - Azure IoT SDK を使用しないでデバイス アプリやバックエンド アプリを構築するために使用できるトピックに関する情報とリンク。
-author: robinsh
-manager: philmea
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -13,18 +12,18 @@ ms.custom:
 - amqp
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: ae8b01522a248b8b1dbdd255a9fcd55f16cf2369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7da7d19debdf8068004473316985370900f0c7b2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96461713"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555094"
 ---
 # <a name="develop-without-using-an-azure-iot-hub-sdk"></a>Azure IoT Hub SDK を使用しないで開発する
 
 このトピックでは、Azure IoT Sdk を使用しないでデバイスやバックエンドのアプリを開発したい開発者に役立つ情報とリンクを提供します。
 
-Microsoft は、Azure IoT SDK を使用することを強くお勧めします。 Azure IoT デバイスとサービス SDK は、多くの一般的なプラットフォームで公開されています。 SDK には、デバイスの接続と再接続や、再試行ポリシーなど、基になる通信プロトコルの複雑な部分の多くが処理される便利なレイヤーが用意されています。 SDK は、IoT Hub によって公開される最新機能とセキュリティ更新プログラムを提供するために、定期的に更新されます。 SDK を使用すると、開発に要する時間と、コードのメンテナンスに必要な時間を、短縮することができます。 Azure IoT SDK の詳細については、[Azure IoT デバイスとサービス SDK](iot-hub-devguide-sdks.md) に関する記事を参照してください。 Azure IoT SDK を使用する利点の詳細については、ブログ記事「[Azure IoT SDK を使用する利点と、避けるべき落とし穴](https://azure.microsoft.com/en-us/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)」を参照してください。
+Microsoft は、Azure IoT SDK を使用することを強くお勧めします。 Azure IoT デバイスとサービス SDK は、多くの一般的なプラットフォームで公開されています。 SDK には、デバイスの接続と再接続や、再試行ポリシーなど、基になる通信プロトコルの複雑な部分の多くが処理される便利なレイヤーが用意されています。 SDK は、IoT Hub によって公開される最新機能とセキュリティ更新プログラムを提供するために、定期的に更新されます。 SDK を使用すると、開発に要する時間と、コードのメンテナンスに必要な時間を、短縮することができます。 Azure IoT SDK の詳細については、[Azure IoT デバイスとサービス SDK](iot-hub-devguide-sdks.md) に関する記事を参照してください。 Azure IoT SDK を使用する利点の詳細については、ブログ記事「[Azure IoT SDK を使用する利点と、避けるべき落とし穴](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)」を参照してください。
 
 IoT Hub によって、デバイスとの通信用に、AMQP、AMQP over WebSockets、HTTPS、MQTT、MQTT over WebSockets がサポートされていますが、デバイスでサポートされている場合は、MQTT を使用することをお勧めします。
 

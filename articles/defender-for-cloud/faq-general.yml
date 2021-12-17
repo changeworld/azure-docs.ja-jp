@@ -1,0 +1,107 @@
+### YamlMime:FAQ
+metadata:
+  title: Microsoft Defender for Cloud に関する FAQ - 一般的な質問
+  description: Microsoft Defender for Cloud に関してよく寄せられる一般的な質問(脅威の防止、検出、対応に役立つ製品)
+  services: security-center
+  documentationcenter: na
+  author: memildin
+  manager: rkarlin
+  ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
+  ms.service: defender-for-cloud
+  ms.devlang: na
+  ms.topic: conceptual
+  ms.tgt_pltfrm: na
+  ms.workload: na
+  ms.date: 11/09/2021
+  ms.author: memildin
+  ms.openlocfilehash: 37ba61efbecdad80ab57dca2f535edbdb8681a14
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132487178"
+title: FAQ - Microsoft Defender for Cloud に関する一般的な質問
+summary: ''
+sections:
+- name: 無視
+  questions:
+  - question: >
+      Microsoft Defender for Cloud とは
+    answer: >
+      Microsoft Defender for Cloud は、リソースのセキュリティを可視化して制御することで、脅威の防止、検出、対応を行うのに役立ちます。 これにより、サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+
+
+      Defender for Cloud では、Log Analytics エージェントを使用してデータを収集して格納します。 詳細については [、「Microsoft Defender for Cloud でのデータ収集」を参照してください](enable-data-collection.md)。
+  - question: >
+      操作方法 Microsoft Defender for Cloud を取得しますか?
+    answer: >
+      Microsoft Defender for Cloud は、Microsoft Azure サブスクリプションで有効にされ、 からアクセス[Azure portal。](https://azure.microsoft.com/features/azure-portal/) アクセスするには、ポータル [にサインインし、[](https://portal.azure.com)参照] **を選択** し **、[Defender for Cloud] までスクロールします**。
+  - question: >
+      Microsoft Defender for Cloud によって監視される Azure リソースは何ですか?
+    answer: >
+      Microsoft Defender for Cloud では、次の Azure リソースが監視されます。
+
+
+      * 仮想マシン (VM) ( [Cloud Services](../cloud-services/cloud-services-choose-me.md)を含む)
+
+      * 仮想マシン スケール セット
+
+      * Azure サブスクリプションに統合済みのパートナー ソリューション (VM 上および App Service Environment 上の Web アプリケーション ファイアウォールなど)
+
+      * [製品概要に記載されているさまざまな Azure PaaS サービス](features-paas.md)
+  - question: >
+      Azure リソースの現在のセキュリティ状態を確認する方法を教えてください。
+    answer: >
+      [Defender **for Cloud の** 概要] ページには、コンピューティング、ネットワーク、クラウド データ、およびアプリケーション別に、環境Storage &全体的なセキュリティ態勢が表示されます。 リソースの種類にはそれぞれ、確認されたセキュリティの脆弱性を示すインジケーターがあります。 各タイルをクリックすると、Defender for Cloud によって特定されたセキュリティの問題の一覧と、サブスクリプション内のリソースのインベントリが表示されます。
+  - question: >
+      セキュリティ イニシアチブとは
+    answer: >
+      セキュリティ イニシアチブは、指定されたサブスクリプション内のリソースに対して推奨されるコントロール (ポリシー) のセットを定義します。 Microsoft Defender for Cloud では、会社のセキュリティ要件と、各サブスクリプションのアプリケーションの種類またはデータの感度に従って、Azure サブスクリプションのイニシアチブを割り当てる必要があります。
+
+
+      Microsoft Defender for Cloud ドライブのセキュリティに関する推奨事項と監視で有効になっているセキュリティ ポリシー。 詳細については、「[セキュリティ ポリシー、イニシアチブ、および推奨事項とは](security-policy-concept.md)」を参照してください。
+  - question: >
+      セキュリティ ポリシーを変更できるのは誰ですか。
+    answer: >
+      セキュリティ ポリシーを変更するには、**セキュリティ管理者** であるか、そのサブスクリプションの **所有者** である必要があります。
+
+
+      セキュリティポリシーを構成する方法については、「 [Microsoft Defender For Cloud でのセキュリティポリシーの設定](tutorial-security-policy.md)」を参照してください。
+  - question: >
+      セキュリティに関する推奨事項とは
+    answer: >
+      Microsoft Defender for Cloud では、Azure リソースのセキュリティ状態が分析されます。 潜在的なセキュリティの脆弱性が識別されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成する手順を説明します。 次に例をいくつか示します。
+
+
+      * 悪意のあるソフトウェアを識別して削除するためのマルウェア対策をプロビジョニングする
+
+      * 仮想マシンへのトラフィックを制御するための[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)とルール
+
+      * Web アプリケーションを対象とする攻撃から保護するための Web アプリケーション ファイアウォールをプロビジョニングする
+
+      * 不足しているシステムの更新をデプロイする
+
+      * 推奨基準と一致しない OS 構成に対処する
+
+
+      ここにはセキュリティ ポリシーで有効な推奨事項のみが表示されています。
+  - question: >
+      セキュリティの警告をトリガーするものは何ですか。
+    answer: >
+      Microsoft Defender for Cloud は、Azure リソース、ネットワーク、マルウェア対策やファイアウォールのようなパートナー ソリューションからログ データを自動的に収集、分析、および融合します。 脅威が検出されると、セキュリティの警告が作成されます。 例には次の検出が含まれます。
+
+
+      * 既知の悪意のある IP アドレスと通信する、セキュリティ侵害された仮想マシン
+
+      * Windows エラー報告を使用して検出された高度なマルウェア
+
+      * 仮想マシンに対するブルート フォース攻撃
+
+      * マルウェア対策や Web アプリケーション ファイアウォールなどのセキュリティ ソリューションの統合パートナーからのセキュリティの警告
+  - question: >
+      Microsoft Defender for Cloud と比較して、Microsoft Security Response Center検出され、アラートが生成される脅威の違いは何ですか?
+    answer: >-
+      Microsoft Security Response Center (MSRC) では、Azure のネットワークとインフラストラクチャの選択的なセキュリティ監視を行い、第三者から脅威インテリジェンスと不正使用の報告を受け取ります。 不正利用者や許可されていない利用者が顧客データにアクセスしたことや、顧客による Azure の利用方法が利用規約の条件に従っていないことを MSRC が検出すると、セキュリティ インシデント マネージャーが顧客に通知します。 通知は通常、Microsoft Defender for Cloud で指定されたセキュリティ連絡先に電子メールを送信するか、セキュリティ連絡先が指定されていない場合は Azure サブスクリプション所有者に電子メールを送信することで発生します。
+
+
+      Defender for Cloudは、お客様のAzure環境を継続的に監視し、分析を適用することで、悪意のある可能性のあるさまざまなアクティビティを自動的に検出するAzureサービスです。 検出されたアクティビティは、ワークロード保護ダッシュボードにセキュリティの警告として表示されます。

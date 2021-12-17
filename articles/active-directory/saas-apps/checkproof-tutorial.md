@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: b0afcf00a95b46472c902b24c6d4b287c1c6a482
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9de6373c186bce7624403d68ca8e7b846470e8b2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181019"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324101"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-checkproof"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CheckProof の統合
 
@@ -37,9 +37,10 @@ ms.locfileid: "96181019"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* CheckProof では、**IDP** Initiated SSO がサポートされます
+* CheckProof では、**IDP** によって開始される SSO がサポートされます。
+* CheckProof では、[自動化されたユーザー プロビジョニング](checkproof-provisioning-tutorial.md)がサポートされます。
 
-## <a name="adding-checkproof-from-the-gallery"></a>ギャラリーからの CheckProof の追加
+## <a name="add-checkproof-from-the-gallery"></a>ギャラリーからの CheckProof の追加
 
 Azure AD への CheckProof の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に CheckProof を追加する必要があります。
 
@@ -49,7 +50,6 @@ Azure AD への CheckProof の統合を構成するには、ギャラリーか�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**CheckProof**」と入力します。
 1. 結果のパネルから **[CheckProof]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-checkproof"></a>CheckProof の Azure AD SSO の構成とテスト
 
@@ -70,11 +70,11 @@ CheckProof で Azure AD SSO を構成してテストするには、次の手順�
 
 1. Azure portal の **CheckProof** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ページで、次のフィールドの値を入力します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、次の手順を実行します。
 
     a. **[識別子]** ボックスに、`https://api.checkproof.com/api/v1/saml/<ID>/metadata` の形式で URL を入力します。
 
@@ -120,7 +120,7 @@ CheckProof で Azure AD SSO を構成してテストするには、次の手順�
 
 1. **[Settings]\(設定\) > [Company Settings]\(会社の設定\) > [SAML SETTINGS]\(SAML 設定\)** ページで、 **[Federation XML]\(フェデレーション XML\)** テキストボックスに **フェデレーション メタデータ XML** をアップロードします。
 
-    ![[saml settings]\(saml 設定\) ページ](./media/checkproof-tutorial/saml-settings.png)
+    ![[SAML settings]\(SAML 設定\) ページ。](./media/checkproof-tutorial/settings.png)
 
 ### <a name="create-checkproof-test-user"></a>CheckProof テスト ユーザーの作成
 
@@ -128,23 +128,25 @@ CheckProof で Azure AD SSO を構成してテストするには、次の手順�
 
 1. **[Profile]\(プロファイル\)** をクリックし、 **[My profile]\(マイ プロファイル\)** を選択します。
 
-    ![CheckProof テスト ユーザー ページ](./media/checkproof-tutorial/create-user.png)
+    ![CheckProof テスト ユーザー ページ。](./media/checkproof-tutorial/create-user.png)
 
 1. **[CREATE USER]\(ユーザーの作成\)** をクリックします。
 
 1. **[CREATE USER]\(ユーザーの作成\)** ページで、必須フィールドに入力し、 **[SAVE]\(保存\)** をクリックします。
 
-    ![CheckProof テスト user1 ページ](./media/checkproof-tutorial/create-user-2.png)
+    ![CheckProof の [CREATE USER]\(ユーザーの作成\) ページ。](./media/checkproof-tutorial/user.png)
+
+> [!NOTE]
+>CheckProof では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./checkproof-provisioning-tutorial.md)をご覧ください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-1. Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した CheckProof に自動的にサインインします
+* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した CheckProof に自動的にサインインされます。
 
-1. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [CheckProof] タイルをクリックすると、SSO を設定した CheckProof に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [CheckProof] タイルをクリックすると、SSO を設定した CheckProof に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-CheckProof を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+CheckProof を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

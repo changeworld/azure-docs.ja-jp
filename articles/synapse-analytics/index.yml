@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Synapse Analytics
-summary: Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。
+summary: Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスまたは専用のリソースを大規模に使用しながら、各自の条件で自由にデータに対してクエリを実行できます。
 metadata:
   title: Azure Synapse Analytics
   description: Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。
@@ -12,12 +12,12 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 12/01/2020
-  ms.openlocfilehash: 4fe151be6bf542b387b7b8dea915918fd59f34f8
-  ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+  ms.openlocfilehash: d1cecd0ae685e7a55b4b9069ed4c3afb2aa80c40
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/04/2020
-  ms.locfileid: "96606888"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131502675"
 landingContent:
 - title: Azure Synapse Analytics について
   linkLists:
@@ -25,10 +25,12 @@ landingContent:
     links:
     - text: Azure Synapse とは
       url: overview-what-is.md
+    - text: 新機能
+      url: whats-new.md
     - text: 用語
       url: overview-terminology.md
     - text: よく寄せられる質問
-      url: overview-faq.md
+      url: overview-faq.yml
 - title: Synapse SQL
   linkLists:
   - linkListType: overview
@@ -65,6 +67,26 @@ landingContent:
       url: get-started-monitor.md
     - text: 手順 9 - Knowledge Center を探索する
       url: get-started-knowledge-center.md
+- title: Data Explorer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse Analytics の Data Explorer
+      url: data-explorer/data-explorer-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Synapse Studio を使用して Data Explorer プールを作成する
+      url: data-explorer/data-explorer-create-pool-studio.md
+- title: データベース テンプレート
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse Analytics のデータベース テンプレート
+      url: database-designer/overview-database-templates.md
+  - linkListType: quickstart
+    links:
+    - text: データベース テンプレートを利用して新しい Lake データベースを作成する
+      url: database-designer/quick-start-create-lake-database.md
 - title: Apache Spark
   linkLists:
   - linkListType: overview
@@ -80,7 +102,7 @@ landingContent:
   - linkListType: overview
     links:
     - text: Azure Synapse Link for Azure Cosmos DB
-      url: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+      url: ../cosmos-db/synapse-link.md?context=/azure/synapse-analytics/context/context
   - linkListType: quickstart
     links:
     - text: Azure Cosmos DB 用の Azure Synapse Link に接続する
@@ -104,7 +126,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: パイプラインとアクティビティ
-      url: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+      url: ../data-factory/concepts-pipelines-activities.md?context=/azure/synapse-analytics/context/context
   - linkListType: quickstart
     links:
     - text: データを変換する

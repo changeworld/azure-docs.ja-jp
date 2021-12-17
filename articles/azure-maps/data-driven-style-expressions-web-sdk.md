@@ -1,20 +1,20 @@
 ---
 title: Azure Maps Web SDK でのデータ ドリブンのスタイルの式 | Microsoft Azure Maps
 description: データドリブンのスタイルの式について説明します。 Azure Maps Web SDK でこれらの式を使用し、マップ内のスタイルを調整する方法を確認してください。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 4/4/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 41a117c9ea8b47afcedaa1714abc2031d3be6c21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7875184456d03e08abb6168793fc9021bd953a0d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680055"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438518"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
@@ -28,7 +28,7 @@ ms.locfileid: "97680055"
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player?format=ny]
 
-式は JSON 配列として表されます。 配列内の式の最初の要素は、式の演算子の名前を指定する文字列です。 たとえば、"+" や "case" です。 次の要素 (存在する場合) は、式に対する引数です。 各引数は、リテラル値 (文字列、数値、ブール値、`null`)、または別の式の配列です。 次の疑似コードでは、式の基本構造を定義します。 
+式は JSON 配列として表されます。 配列内の式の最初の要素は、式の演算子の名前を指定する文字列です。 たとえば、"+" や "case" です。 次の要素 (存在する場合) は、式に対する引数です。 各引数は、リテラル値 (文字列、数値、ブール値、`null`)、または別の式の配列です。 次の疑似コードでは、式の基本構造を定義します。
 
 ```javascript
 [ 
@@ -56,7 +56,7 @@ Azure Maps Web SDK では、さまざまな種類の式がサポートされて�
 | [変数バインド式](#variable-binding-expressions) | 変数バインド式では、計算結果を変数に格納して、格納された値を再計算することなく、式内の別の場所で繰り返し参照することができます。 |
 | [ズーム式](#zoom-expression) | レンダリング時に、マップの現在のズーム レベルを取得します。 |
 
-このドキュメントのすべての例では、次の機能を使用して、各種の式を使用できるさまざまな方法を示します。 
+このドキュメントのすべての例では、次の機能を使用して、各種の式を使用できるさまざまな方法を示します。
 
 ```json
 {
@@ -65,7 +65,7 @@ Azure Maps Web SDK では、さまざまな種類の式がサポートされて�
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": { 
+    "properties": {
         "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
@@ -84,7 +84,7 @@ Azure Maps Web SDK では、さまざまな種類の式がサポートされて�
 
 ## <a name="data-expressions"></a>データ式
 
-データ式では、機能内のプロパティ データへのアクセスを提供します。 
+データ式では、機能内のプロパティ データへのアクセスを提供します。
 
 | 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
@@ -103,7 +103,7 @@ Azure Maps Web SDK では、さまざまな種類の式がサポートされて�
 
 **使用例**
 
-機能のプロパティには、`get` 式を使用して式内で直接アクセスできます。 この例では、機能の `zoneColor` 値を使用して、バブル レイヤーの色のプロパティを指定します。 
+機能のプロパティには、`get` 式を使用して式内で直接アクセスできます。 この例では、機能の `zoneColor` 値を使用して、バブル レイヤーの色のプロパティを指定します。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -134,7 +134,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-次の例では、`Point` 機能と `MultiPoint` 機能の両方をレンダリングできます。 
+次の例では、`Point` 機能と `MultiPoint` 機能の両方をレンダリングできます。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -210,7 +210,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ## <a name="aggregate-expression"></a>集計式
 
-集計式では、データのセットに対して処理され、`DataSource` の `clusterProperties` オプションと共に使用できる計算を定義します。 これらの式の出力は、数値またはブール値である必要があります。 
+集計式では、データのセットに対して処理され、`DataSource` の `clusterProperties` オプションと共に使用できる計算を定義します。 これらの式の出力は、数値またはブール値である必要があります。
 
 集計式には 3 つの値があります。演算子の値と初期値、そして集計操作を適用するためにデータ内の各機能からプロパティを取得する式です。 この式の書式は次のとおりです。
 
@@ -218,9 +218,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 [operator: string, initialValue: boolean | number, mapExpression: Expression]
 ```
 
-- 演算子:クラスター内の各ポイントについて `mapExpression` によって計算されるすべての値に適用される式関数。 サポートされている演算子は次のとおりです。 
-    - 数値の場合: `+`、`*`、`max`、`min`
-    - ブール値の場合: `all`、`any`
+- 演算子:クラスター内の各ポイントについて `mapExpression` によって計算されるすべての値に適用される式関数。 サポートされている演算子は次のとおりです。
+  - 数値の場合: `+`、`*`、`max`、`min`
+  - ブール値の場合: `all`、`any`
 - initialValue:最初の計算値が集計される初期値。
 - mapExpression:データ セット内の各ポイントに適用される式。
 
@@ -242,7 +242,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ブール式により、ブール値の比較を評価するためにブール演算子式のセットが提供されます。
 
-値を比較する際に、比較は厳密に型指定されます。 異なる型の値は、常に等しくないと見なされます。 解析時に型が異なるとがわかった場合は、無効と見なされ、解析エラーが生成されます。 
+値を比較する際に、比較は厳密に型指定されます。 異なる型の値は、常に等しくないと見なされます。 解析時に型が異なるとがわかった場合は、無効と見なされ、解析エラーが生成されます。
 
 | 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
@@ -261,13 +261,13 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 条件式では、if ステートメントのようなロジック操作が提供されます。
 
-次の式では、入力データに対して条件付きロジック操作を実行します。 たとえば、`case` 式では "if/then/else" ロジックを提供する一方、`match` 式は "switch ステートメント" に似ています。 
+次の式では、入力データに対して条件付きロジック操作を実行します。 たとえば、`case` 式では "if/then/else" ロジックを提供する一方、`match` 式は "switch ステートメント" に似ています。
 
 ### <a name="case-expression"></a>case 式
 
 `case` 式は、"if/then/else" ロジックを提供する一種の条件式です。 この種類の式は、ブール条件のリストを通過します。 True に評価される最初のブール条件の出力値を返します。
 
-次の疑似コードでは、`case` 式の構造が定義されます。 
+次の疑似コードでは、`case` 式の構造が定義されます。
 
 ```javascript
 [
@@ -283,7 +283,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **例**
 
-次の例では、さまざまなブール条件を通過し、`true` に評価されるものが見つかったら、その関連値が返されます。 `true` に評価されるブール条件がない場合は、フォールバック値が返されます。 
+次の例では、さまざまなブール条件を通過し、`true` に評価されるものが見つかったら、その関連値が返されます。 `true` に評価されるブール条件がない場合は、フォールバック値が返されます。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -308,7 +308,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 `match` 式は、ロジックなどの switch ステートメントを提供する一種の条件式です。 入力には、文字列または数値を返す `['get', 'entityType']` などの任意の式を使用できます。 各ラベルは、1 つのリテラル値、または値がすべて文字列またはすべて数値であるリテラル値の配列である必要があります。 配列内のいずれかの値が一致する場合、入力は一致します。 各ラベルは一意である必要があります。 入力の型がラベルの型と一致しない場合、結果はフォールバック値になります。
 
-次の疑似コードでは、`match` 式の構造が定義されます。 
+次の疑似コードでは、`match` 式の構造が定義されます。
 
 ```javascript
 [
@@ -368,9 +368,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ### <a name="coalesce-expression"></a>coalesce 式
 
-`coalesce` 式では、一連の式を通過し、最初の null 以外の値を取得したら、その値が返されます。 
+`coalesce` 式では、一連の式を通過し、最初の null 以外の値を取得したら、その値が返されます。
 
-次の疑似コードでは、`coalesce` 式の構造が定義されます。 
+次の疑似コードでは、`coalesce` 式の構造が定義されます。
 
 ```javascript
 [
@@ -383,7 +383,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **例**
 
-次の例では、`coalesce` 式を使用して、シンボル レイヤーの `textField` オプションを設定します。 `title` プロパティが機能内にないか、`null` に設定されている場合は、式で `subTitle` プロパティの検索が試行されます。このプロパティがないか `null` である場合は、空の文字列にフォールバックされます。 
+次の例では、`coalesce` 式を使用して、シンボル レイヤーの `textField` オプションを設定します。 `title` プロパティが機能内にないか、`null` に設定されている場合は、式で `subTitle` プロパティの検索が試行されます。このプロパティがないか `null` である場合は、空の文字列にフォールバックされます。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -523,9 +523,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 上記の式では、次の図に示すように、テキスト "64°F" が上にオーバーレイされたピンをマップ上にレンダリングします。
 
-<center>
-
-![文字列演算子式の例](media/how-to-expressions/string-operator-expression.png) </center>
+![文字列演算子式の例](media/how-to-expressions/string-operator-expression.png)
 
 ## <a name="interpolate-and-step-expressions"></a>補間式とステップ式
 
@@ -536,18 +534,18 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 `interpolate` 式を使用すると、分岐点値間を補間することで、継続的で滑らかな値のセットを計算できます。 色の値を返す `interpolate` 式により、結果値の選択元となる色のグラデーションが生成されます。
 
 `interpolate` 式で使用できる補間メソッドには、次の 3 種類があります。
- 
-* `['linear']` - 分岐点のペア間を直線的に補間します。
-* `['exponential', base]` - 分岐点間を指数関数的に補間します。 `base` 値により、出力の増加率が制御されます。 この値が大きくなるほど、出力は範囲の上限値に偏るように増加します。 `base` 値が 1 に近づくと、より直線的に増加する出力が生成されます。
-* `['cubic-bezier', x1, y1, x2, y2]` - 指定された制御点により定義された [3 次ベジエ曲線](https://developer.mozilla.org/docs/Web/CSS/timing-function)を使用して補間します。
 
-これらの異なる種類の補間の外観の例を次に示します。 
+- `['linear']` - 分岐点のペア間を直線的に補間します。
+- `['exponential', base]` - 分岐点間を指数関数的に補間します。 `base` 値により、出力の増加率が制御されます。 この値が大きくなるほど、出力は範囲の上限値に偏るように増加します。 `base` 値が 1 に近づくと、より直線的に増加する出力が生成されます。
+- `['cubic-bezier', x1, y1, x2, y2]` - 指定された制御点により定義された [3 次ベジエ曲線](https://developer.mozilla.org/docs/Web/CSS/timing-function)を使用して補間します。
+
+これらの異なる種類の補間の外観の例を次に示します。
 
 | Linear  | 指数 | 3 次ベジエ |
 |---------|-------------|--------------|
 | ![線形補間グラフ](media/how-to-expressions/linear-interpolation.png) | ![指数補間グラフ](media/how-to-expressions/exponential-interpolation.png) | ![3 次ベジエ補間グラフ](media/how-to-expressions/bezier-curve-interpolation.png) |
 
-次の疑似コードでは、`interpolate` 式の構造が定義されます。 
+次の疑似コードでは、`interpolate` 式の構造が定義されます。
 
 ```javascript
 [
@@ -582,15 +580,13 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 次の図では、上記の式に対して色を選択する方法を示します。
  
-<center>
-
-![補間式の例](media/how-to-expressions/interpolate-expression-example.png) </center>
+![補間式の例](media/how-to-expressions/interpolate-expression-example.png)
 
 ### <a name="step-expression"></a>ステップ式
 
-`step` 式を使用すると、分岐点により定義された[区分定数関数](http://mathworld.wolfram.com/PiecewiseConstantFunction.html)を評価することで、非連続的な階段状の結果値を計算できます。 
+`step` 式を使用すると、分岐点により定義された[区分定数関数](http://mathworld.wolfram.com/PiecewiseConstantFunction.html)を評価することで、非連続的な階段状の結果値を計算できます。
 
-次の疑似コードでは、`step` 式の構造が定義されます。 
+次の疑似コードでは、`step` 式の構造が定義されます。
 
 ```javascript
 [
@@ -605,7 +601,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 ]
 ```
 
-ステップ式では、入力値の直前の分岐点の出力値が返されます。または、入力値が最初の分岐点より小さい場合、最初の入力値が返されます。 
+ステップ式では、入力値の直前の分岐点の出力値が返されます。または、入力値が最初の分岐点より小さい場合、最初の入力値が返されます。
 
 **例**
 
@@ -625,11 +621,8 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 ```
 
 次の図では、上記の式に対して色を選択する方法を示します。
- 
-<center>
 
 ![ステップ式の例](media/how-to-expressions/step-expression-example.png)
-</center>
 
 ## <a name="layer-specific-expressions"></a>レイヤー固有の式
 
@@ -644,9 +637,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **例**
 
-この例では、線形補間式を使用して、ヒート マップをレンダリングするための滑らかな色のグラデーションを作成します。 
+この例では、線形補間式を使用して、ヒート マップをレンダリングするための滑らかな色のグラデーションを作成します。
 
-```javascript 
+```javascript
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
     color: [
         'interpolate',
@@ -662,7 +655,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 滑らかなグラデーションを使用してヒート マップを色分けするのに加えて、`step` 式を使用して、範囲のセット内で色を指定することができます。 ヒート マップの色分けに `step` 式を使用すると、密度は、等高線またはレーダー スタイル マップのような範囲に視覚的に分割されます。  
 
-```javascript 
+```javascript
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
     color: [
         'step',
@@ -681,7 +674,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 ### <a name="line-progress-expression"></a>線形進行状況の式
 
-線形進行状況の式では、線レイヤー内のグラデーション線に沿って進行状況を取得します。この式は `['line-progress']` として定義されます。 この値は 0 から 1 までの数値です。 これは `interpolation` 式または `step` 式と組み合わせて使用されます。 この式は、線レイヤーの [strokeGradient オプション]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions#strokegradient)でのみ使用できます。 
+線形進行状況の式では、線レイヤー内のグラデーション線に沿って進行状況を取得します。この式は `['line-progress']` として定義されます。 この値は 0 から 1 までの数値です。 これは `interpolation` 式または `step` 式と組み合わせて使用されます。 この式は、線レイヤーの [strokeGradient オプション](/javascript/api/azure-maps-control/atlas.linelayeroptions#strokegradient)でのみ使用できます。
 
 > [!NOTE]
 > 線レイヤーの `strokeGradient` オプションでは、データ ソースの `lineMetrics` オプションが `true` に設定される必要があります。
@@ -712,10 +705,10 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 シンボル レイヤーの `textOptions` プロパティの `textField` オプションでテキスト フィールドの書式指定式を使用すると、混合のテキスト書式設定を提供できます。 この式では、入力文字列と書式設定オプションのセットを指定できます。 この式の各入力文字列には、次のオプションを指定できます。
 
- * `'font-scale'` - フォント サイズのスケール ファクターを指定します。 指定されている場合、この値は、個々の文字列に対して `textOptions` の `size` プロパティをオーバーライドします。
- * `'text-font'` - この文字列に使用する 1 つまたは複数のフォント ファミリを指定します。 指定されている場合、この値は、個々の文字列に対して `textOptions` の `font` プロパティをオーバーライドします。
+- `'font-scale'` - フォント サイズのスケール ファクターを指定します。 指定されている場合、この値は、個々の文字列に対して `textOptions` の `size` プロパティをオーバーライドします。
+- `'text-font'` - この文字列に使用する 1 つまたは複数のフォント ファミリを指定します。 指定されている場合、この値は、個々の文字列に対して `textOptions` の `font` プロパティをオーバーライドします。
 
-次の疑似コードでは、テキスト フィールドの書式指定式の構造が定義されます。 
+次の疑似コードでは、テキスト フィールドの書式指定式の構造が定義されます。
 
 ```javascript
 [
@@ -764,21 +757,19 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 ```
 
 次の図に示すように、このレイヤーではポイント機能がレンダリングされます。
- 
-<center>
 
-![書式設定されたテキスト フィールドを含むポイント機能の図](media/how-to-expressions/text-field-format-expression.png) </center>
+![書式設定されたテキスト フィールドを含むポイント機能の図](media/how-to-expressions/text-field-format-expression.png)
 
 ### <a name="number-format-expression"></a>数値の書式指定式
 
 `number-format` 式は、シンボル レイヤーの `textField` オプションでのみ使用できます。 この式では、指定された数値が書式設定された文字列に変換されます。 この式では、JavaScript の [Number.toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) 関数がラップされ、次のオプションのセットがサポートされています。
 
- * `locale` - 指定された言語に適した方法で数値を文字列に変換するには、このオプションを指定します。 このオプションに [BCP 47 言語タグ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)を渡します。
- * `currency` - 数値を、通貨を表す文字列に変換します。 指定できる値は、米ドルを表す "USD"、ユーロを表す "EUR"、中国人民元を表す "CNY" などの [ISO 4217 通貨コード](https://en.wikipedia.org/wiki/ISO_4217)です。
- * `'min-fraction-digits'` - 数値の文字列バージョンに含める小数点以下桁数の最小数が指定されます。
- * `'max-fraction-digits'` - 数値の文字列バージョンに含める小数点以下桁数の最大数が指定されます。
+- `locale` - 指定された言語に適した方法で数値を文字列に変換するには、このオプションを指定します。 このオプションに [BCP 47 言語タグ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)を渡します。
+- `currency` - 数値を、通貨を表す文字列に変換します。 指定できる値は、米ドルを表す "USD"、ユーロを表す "EUR"、中国人民元を表す "CNY" などの [ISO 4217 通貨コード](https://en.wikipedia.org/wiki/ISO_4217)です。
+- `'min-fraction-digits'` - 数値の文字列バージョンに含める小数点以下桁数の最小数が指定されます。
+- `'max-fraction-digits'` - 数値の文字列バージョンに含める小数点以下桁数の最大数が指定されます。
 
-次の疑似コードでは、テキスト フィールドの書式指定式の構造が定義されます。 
+次の疑似コードでは、テキスト フィールドの書式指定式の構造が定義されます。
 
 ```javascript
 [
@@ -813,9 +804,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 次の図に示すように、このレイヤーではポイント機能がレンダリングされます。
 
-<center>
-
-![数値形式の式の例](media/how-to-expressions/number-format-expression.png) </center>
+![数値形式の式の例](media/how-to-expressions/number-format-expression.png)
 
 ### <a name="image-expression"></a>イメージ式
 
@@ -823,7 +812,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 **例**
 
-次の例では、`image` 式を使用して、シンボル レイヤーのテキストの行内にアイコンを追加します。 
+次の例では、`image` 式を使用して、シンボル レイヤーのテキストの行内にアイコンを追加します。
 
 ```javascript
  //Load the custom image icon into the map resources.
@@ -832,10 +821,10 @@ map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
     //Create a data source and add it to the map.
     datasource = new atlas.source.DataSource();
     map.sources.add(datasource);
-
+    
     //Create a point feature and add it to the data source.
     datasource.add(new atlas.data.Point(map.getCamera().center));
-
+    
     //Add a layer for rendering point data as symbols.
     map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
         iconOptions: {
@@ -851,9 +840,7 @@ map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
 
 このレイヤーでは、次の図に示すように、シンボル レイヤーのテキスト フィールドがレンダリングされます。
 
-<center>
-
-![イメージ式の例](media/how-to-expressions/image-expression.png)</center>
+![イメージ式の例](media/how-to-expressions/image-expression.png)
 
 ## <a name="zoom-expression"></a>ズーム式
 
@@ -922,10 +909,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 式を実装するその他のコード サンプルについては、次の記事を参照してください。
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [シンボル レイヤーを追加する](map-add-pin.md)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [バブル レイヤーを追加する](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
@@ -934,22 +921,22 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 > [!div class="nextstepaction"]
 > [多角形レイヤーを追加する](map-add-shape.md)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [ヒート マップ レイヤーを追加する](map-add-heat-map-layer.md)
 
 式をサポートする次のレイヤー オプションの詳細を参照してください。
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [HeatMapLayerOptions](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions)

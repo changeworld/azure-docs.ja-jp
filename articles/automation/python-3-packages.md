@@ -3,32 +3,55 @@ title: Azure Automation で Python 3 パッケージを管理する
 description: この記事では、Azure Automation での Python 3 パッケージ (プレビュー) の管理方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/19/2021
+ms.date: 11/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: fd4d8ee92b670bc2544619a0dce16a26d9342c13
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.custom: has-adal-ref
+ms.openlocfilehash: a33f4f9b6403d1f4aff88cadb57ae0f78f02038b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122036"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443753"
 ---
 # <a name="manage-python-3-packages-preview-in-azure-automation"></a>Azure Automation で Python 3 パッケージ (プレビュー) を管理する
 
-Azure Automation を使用すると、Azure および Linux Hybrid Runbook Worker で Python 3 Runbook (プレビュー) を実行することができます。 Runbook の簡略化のために、Python パッケージを使用して必要なモジュールをインポートすることができます。 1 つのパッケージをインポートするには、「[パッケージのインポート](#import-a-package)」を参照してください。 複数のパッケージを含むパッケージをインポートするには、「[依存関係を含むパッケージのインポート](#import-a-package-with-dependencies)」を参照してください。 この記事では、Azure Automation での Python 3 パッケージ (プレビュー) の管理および使用方法について説明します。
+この記事では、Azure サンドボックス環境と Hybrid Runbook Workers で実行されている Azure Automation で Python 3 (プレビュー) パッケージをインポート、管理、使用する方法について説明します。Runbook を簡略化するために、Python パッケージを使用して必要なモジュールをインポートすることができます。 
+
+Automation サービスで Python 3 Runbook をサポートするために、Automation アカウントには既定で Azure パッケージ 4.0.0 がインストールされています。 お使いの Automation アカウントに Python パッケージをインポートすることで、その既定のバージョンをオーバーライドできます。 お使いの Automation アカウントにインポートされたバージョンが優先されます。 1 つのパッケージをインポートするには、「[パッケージのインポート](#import-a-package)」を参照してください。 複数のパッケージを含むパッケージをインポートするには、「[依存関係を含むパッケージのインポート](#import-a-package-with-dependencies)」を参照してください。 
+
+Python 2 パッケージの管理については、「[Azure Automation で Python 2 パッケージを管理する](./python-packages.md)」をご覧ください。
+
+## <a name="packages-as-source-files"></a>ソース ファイルとしてのパッケージ
+
+Azure Automation では、Python コードのみを含み、他の言語拡張や他の言語のコードを含まない Python パッケージのみがサポートされます。 ただし、Azure Sandbox 環境には C/C++ バイナリに必要なコンパイラがない場合があるため、代わりに[ホイール ファイル](https://pythonwheels.com/)を使用することが推奨されます。 [Python Package Index](https://pypi.org/) (PyPI) は、Python プログラミング言語用のソフトウェアのリポジトリです。 PyPI から Automation アカウントにインポートするために Python 3 パッケージを選択する場合は、次のファイル名の部分に注意してください。
+
+| ファイル名の部分 | 説明 |
+|---|---|
+|cp38|Automation では、クラウド ジョブ用に、**Python 3.8** がサポートされています。|
+|amd64|Azure サンドボックス プロセスは **Windows 64 ビット** アーキテクチャです。|
+
+たとえば、pandas をインポートする場合は、`pandas-1.2.3-cp38-win_amd64.whl` のような名前のホイール ファイルを選択できます。
+
+PyPI で使用できる一部の Python パッケージでは、ホイール ファイルが提供されていないものもあります。 この場合は、ソース (.zip または .tar.gz ファイル) をダウンロードし、`pip` を使用してホイール ファイルを生成します。 たとえば、Python 3.8. x とホイール パッケージがインストールされている 64 ビット コンピューターを使用して、次の手順を実行します。
+
+1. ソースファイル `pandas-1.2.4.tar.gz` をダウンロードします。
+1. pip を実行して、`pip wheel --no-deps pandas-1.2.4.tar.gz` コマンドでホイール ファイルを取得します。
 
 ## <a name="import-a-package"></a>パッケージのインポート
 
-Automation アカウントの **[共有リソース]** で **[Python パッケージ]** を選択します。 **[+ Python パッケージの追加]** を選択します。
+1. Automation アカウントの **[共有リソース]** で **[Python パッケージ]** を選択します。 次に **[+ Python パッケージの追加]** を選択します。
 
-:::image type="content" source="media/python-3-packages/add-python-3-package.png" alt-text="左側のメニューに Python 3 パッケージが表示され、[Python 2 パッケージを追加する] が強調表示されている [Python 3 パッケージ] ページのスクリーンショット。":::
+   :::image type="content" source="media/python-3-packages/add-python-3-package.png" alt-text="[Python パッケージ] ページのスクリーンショット。左側のメニューに [Python パッケージ] が表示され、[Python パッケージの追加] が強調表示されています。":::
 
-**[Python パッケージの追加]** ページで、**バージョン** として **Python 3** を選択し、アップロードするローカル パッケージを選択します。 パッケージは、 **.whl** または **.tar.gz** ファイルの場合があります。 パッケージを選択したら、 **[OK]** を選択してアップロードします。
+1. **[Python パッケージの追加]** ページで、アップロードするローカル パッケージを選択します。 パッケージは、 **.whl** または **.tar.gz** ファイルの場合があります。 
+1. 名前を入力し、 **[ランタイム バージョン]** として Python 3.8.x (プレビュー) を選択します
+1. **[インポート]** を選択します
 
-:::image type="content" source="media/python-3-packages/upload-package.png" alt-text="アップロードされた tar.gz ファイルが選択されている [Python 3 パッケージの追加] ページを示すスクリーンショット。":::
+   :::image type="content" source="media/python-3-packages/upload-package.png" alt-text="アップロードされた tar.gz ファイルが選択されている [Python 3.8.x パッケージの追加] ページを示すスクリーンショット。":::
 
-パッケージがインポートされると、Automation アカウントの [Python パッケージ] ページの **[Python 3 パッケージ (プレビュー)]** タブの下に一覧表示されます。パッケージを削除する必要がある場合は、パッケージを選択し、 **[削除]** をクリックします。
+パッケージがインポートされた後、そのパッケージはお使いの Automation アカウントの [Python パッケージ] ページに一覧表示されます。 パッケージを削除するには、パッケージを選択し、 **[削除]** をクリックします。
 
-:::image type="content" source="media/python-3-packages/python-3-packages-list.png" alt-text="パッケージがインポートされた後の [Python 3 パッケージ] ページを示すスクリーンショット。":::
+:::image type="content" source="media/python-3-packages/python-3-packages-list.png" alt-text="パッケージがインポートされた後の [Python 3.8.x パッケージ] ページを示すスクリーンショット。":::
 
 ### <a name="import-a-package-with-dependencies"></a>依存関係を含むパッケージのインポート
 
@@ -110,6 +133,25 @@ resource_client = azure.mgmt.resource.ResourceManagementClient(
 groups = resource_client.resource_groups.list()  
 for group in groups:  
     print(group.name) 
+```
+
+> [!NOTE]
+> Python `automationassets` パッケージは、pypi.org で使用できないので、Windows コンピューターにインポートできません。
+
+## <a name="identify-available-packages-in-sandbox"></a>サンドボックスで使用可能なパッケージを特定する
+
+次のコードを使用して、既定のインストール済みモジュールのリストを表示します。
+
+```python
+#!/usr/bin/env python3
+
+import pkg_resources
+installed_packages = pkg_resources.working_set
+installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
+   for i in installed_packages])
+
+for package in installed_packages_list:
+    print(package)
 ```
 
 ## <a name="next-steps"></a>次のステップ

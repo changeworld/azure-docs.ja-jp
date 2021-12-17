@@ -4,17 +4,17 @@ description: V3 作成では、新しいエンティティ型である機械学�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/08/2020
-ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/28/2021
+ms.openlocfilehash: 6808c5d84a1be6a2e9b262eab00010d4a962c259
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91324690"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701155"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>V3 作成エンティティに移行する
 
-V3 作成では、新しいエンティティ型である機械学習エンティティが用意されているほか、アプリケーションの機械学習エンティティやその他のエンティティ、または特徴にリレーションシップを追加することができます。
+V3 作成では、新しいエンティティ型である機械学習エンティティが用意されているほか、アプリケーションの機械学習エンティティやその他のエンティティ、または特徴にリレーションシップを追加することができます。 現在、移行を完了する期限はありません。
 
 ## <a name="entities-are-decomposable-in-v3"></a>V3 ではエンティティが分解可能
 

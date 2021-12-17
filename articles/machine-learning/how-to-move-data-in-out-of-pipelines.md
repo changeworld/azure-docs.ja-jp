@@ -4,22 +4,22 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning パイプラインでのデータの取り込み方法と、データの管理とパイプラインのステップ間移動の方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.author: laobri
 author: lobrien
-ms.date: 02/26/2021
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 3f6071813a8189605d632231a5f9b8942068a48a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: contperf-fy20q4, devx-track-python, data4ml
+ms.openlocfilehash: f3098bcc4d26d06af53bdb7ffa1bcc01e9fef7e3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067437"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558594"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
 
-この記事では、Azure Machine Learning パイプラインのステップ間でデータをインポート、変換、および移動するためのコードを示します。 Azure Machine Learning でデータがどのように動作するかの概要については、[Azure ストレージ サービスのデータへのアクセス](how-to-access-data.md)に関する記事を参照してください。 Azure Machine Learning パイプラインの利点と構造については、「[Azure Machine Learning パイプラインとは](concept-ml-pipelines.md)」を参照してください。
+この記事では、Azure Machine Learning パイプラインのステップ間でデータをインポート、変換、および移動するためのコードを示します。 Azure Machine Learning でデータがどのように動作するかの概要については、[Azure ストレージ サービスのデータへのアクセス](how-to-access-data.md)に関する記事を参照してください。 Azure Machine Learning パイプラインの利点と構造については、「[Azure Machine Learning パイプラインとは](concept-ml-pipelines.md)」を参照してください
 
 この記事では、次の操作方法について説明します。
 
@@ -34,7 +34,7 @@ ms.locfileid: "106067437"
 
 必要なものは次のとおりです。
 
-- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 - [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
 
@@ -171,16 +171,8 @@ dataprep_step = PythonScriptStep(
     )
 ```
 
-実行の終わりに `OutputFileDatasetConfig` オブジェクトのコンテンツをアップロードすることを選択できます。 その場合、`OutputFileDatasetConfig` オブジェクトと共に `as_upload()` 関数を使用し、アップロード先で既存のファイルを上書きするかどうかを指定します。 
-
-```python
-#get blob datastore already registered with the workspace
-blob_store= ws.datastores['my_blob_store']
-OutputFileDatasetConfig(name="clean_data", destination=(blob_store, 'outputdataset')).as_upload(overwrite=False)
-```
-
 > [!NOTE]
-> `OutputFileDatasetConfig` への同時書き込みは失敗します。 1 つの `OutputFileDatasetConfig` を同時に使用しないようにしてください。 分散トレーニングを使用する場合など、マルチプロセッシングの状況では、1 つの `OutputFileDatasetConfig` を共有しないでください。 
+> `OutputFileDatasetConfig` への同時書き込みは失敗します。 1 つの `OutputFileDatasetConfig` を同時に使用しないようにしてください。 [分散トレーニング](how-to-train-distributed-gpu.md)を使用する場合など、マルチプロセッシングの状況では、1 つの `OutputFileDatasetConfig` を共有しないでください。 
 
 ### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>トレーニング ステップの出力として `OutputFileDatasetConfig` を使用する
 
@@ -245,7 +237,7 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 `OutputFileDatasetConfig` で書き込まれた中間データは、Azure によって自動的に削除されません。 大量の不要なデータに対するストレージの課金を回避するには、次のいずれかを行う必要があります。
 
 * パイプライン実行の終了時に中間データをプログラムで削除する (不要になった場合)
-* 中間データの短期的な記憶域ポリシーを設定して BLOB ストレージを使用する (「[Azure Blob Storage アクセス層の自動化によるコストの最適化](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)」を参照してください) 
+* 中間データの短期的な記憶域ポリシーを設定して BLOB ストレージを使用する (「[Azure Blob Storage アクセス層の自動化によるコストの最適化](../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal)」を参照してください) 
 * 不要になったデータを定期的に確認して削除する
 
 詳細については、「[Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)」を参照してください。

@@ -4,14 +4,15 @@ description: この記事では、さまざまな構成シナリオで Automatio
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-ms.date: 03/18/2021
+ms.date: 06/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: c3a514aa507fcf069671f987e175b7ae5be59d10
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 00401c7afd4fff1fcea7c5097d31ccf440e09049
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105734918"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572509"
 ---
 # <a name="how-to-delete-your-azure-automation-account"></a>Azure Automation アカウントを削除する方法
 
@@ -22,13 +23,19 @@ Automation アカウントを削除するには、サポートされているデ
 * Automation アカウントが含まれているリソース グループを削除します。
 * 次の場合には、Automation アカウントとリンクされた Azure Monitor Log Analytics ワークスペースが含まれているリソースグループを削除します。
 
-    * アカウントとワークスペースは、Update Management、変更履歴とインベントリ、Start/Stop VMs during off-hours のサポート専用である。
+    * アカウントとワークスペースは、Update Management、Change Tracking とインベントリ、Start/Stop VMs during off-hours のサポート専用である。
     * アカウントはプロセスの自動化のプロセス専用であり、Runbook ジョブの状態とジョブ ストリームを送信するワークスペースと統合されている。
 
 * Log Analytics ワークスペースを Automation アカウントからリンク解除して、Automation アカウントを削除します。
 * リンクされたワークスペースから機能を削除し、ワークスペースからアカウントをリンク解除した後に、Automation アカウントを削除します。
 
-この記事では、Azure portal、PowerShell、Azure CLI、または REST API を使用して Automation アカウントを完全に削除する方法について説明します。
+この記事では、Microsoft Azure PowerShell、Azure CLI、または REST API を使用して、Azure portal を介して Automation アカウントを完全に削除する方法について説明します。
+
+## <a name="prerequisite"></a>前提条件
+不注意による、重要なリソースの削除や変更を防止する [Resource Manager ロック](../azure-resource-manager/management/lock-resources.md)がサブスクリプション、リソース グループ、リソースで適用されていないことを確認してください。 Start/Stop VMs during off-hours ソリューションをデプロイしている場合は、Automation アカウントの複数の依存リソース (具体的には、その Runbook と変数) に対して、ロック レベルが **CanNotDelete** に設定されます。 Automation アカウントを削除する前に、ロックを削除します。
+
+> [!NOTE]
+> `The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions` のようなエラー メッセージが表示された場合、Automation アカウントは、Update Management または Change Tracking、Inventory のいずれかの機能が有効になっている Log Analytics ワークスペースにリンクされます。 詳細は、以下の「[共有機能の Automation アカウントの削除](#delete-a-shared-capability-automation-account)」を参照してください。
 
 ## <a name="delete-the-dedicated-resource-group"></a>専用のリソース グループを削除する
 
@@ -102,7 +109,7 @@ Update Management、変更履歴とインベントリ、Start/Stop VMs during of
 
 3. **[ワークスペースに移動]** を選択します。
 
-4. **[全般]** の下にある **[ソリューション]** をクリックします。
+4. **[全般]** で **[ソリューション]** を選択します。
 
 5. [ソリューション] ページで、アカウントにデプロイされた機能に基づいて、次のいずれかを選択します。
 

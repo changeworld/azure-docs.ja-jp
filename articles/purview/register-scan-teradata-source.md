@@ -1,56 +1,67 @@
 ---
-title: Azure Purview に Teradata ソースを登録してスキャン (プレビュー) を設定する
-description: この記事では、Azure Purview に Teradata ソースを登録し、スキャンを設定する方法について、概要を説明します。
-author: chandrakavya
-ms.author: kchandra
+title: Teradata への接続と管理
+description: このガイドでは、Azure Purview で Teradata に接続する方法と、Purview の機能を使用して Teradata ソースをスキャンおよび管理する方法について説明します。
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
-ms.subservice: purview-data-catalog
-ms.topic: overview
-ms.date: 2/25/2021
-ms.openlocfilehash: 8f300f214ed36b7a5257b7276364027b91edc746
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.subservice: purview-data-map
+ms.topic: how-to
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: ebaad16ff413b33f175815a1ddadb2fa1d5b63ae
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048104"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841925"
 ---
-# <a name="register-and-scan-teradata-source-preview"></a>Teradata ソースを登録し、スキャンする (プレビュー)
+# <a name="connect-to-and-manage-teradata-in-azure-purview"></a>Azure Purview での Teradata への接続と管理
 
-この記事では、Purview に Teradata ソースを登録し、スキャンを設定する方法について、概要を説明します。
+この記事では、Azure Purview で、Teradata を登録する方法、および Teradata を認証して操作する方法について説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Teradata ソースでは **フル スキャン** がサポートされており、Teradata データベースからメタデータを抽出し、データ資産間の **系列** をフェッチできます。
+|**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
+|---|---|---|---|---|---|---|
+| [あり](#register)| [あり](#scan)| いいえ | いいえ | いいえ | いいえ| [はい**](how-to-lineage-teradata.md)|
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
+
+サポートされている Teradata データベースのバージョンは 12.x から 16.x です。
 
 ## <a name="prerequisites"></a>前提条件
 
-1.  最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。
-    詳細については、「[セルフホステッド統合ランタイムを作成して共有する](../data-factory/create-self-hosted-integration-runtime.md)」を参照してください。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-2.  セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
+* アクティブな [Purview リソース](create-catalog-portal.md)。
 
-3.  セルフホステッド統合ランタイム コンピューターに \"Visual C++ 再頒布可能パッケージ 2012 Update 4\" がインストールされていることを確認します。 まだインストールしていない場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=30679)からダウンロードしてください。
+* Purview Studio でソースを登録して管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細については、[Azure Purview のアクセス許可](catalog-permissions.md)に関するページを参照してください。
 
-4.  セルフホステッド統合ランタイムが実行されている仮想マシンで Teradata の JDBC Driver を手動でダウンロードする必要があります。
-    実行可能 JAR ファイルは、Teradata の [Web サイト](https://downloads.teradata.com/)からダウンロードできます。
+* 最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。 詳細については、[セルフホステッド統合ランタイムの作成および構成ガイド](../data-factory/create-self-hosted-integration-runtime.md)に関する記事を参照してください。
+
+* セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
+
+* セルフホステッド統合ランタイム マシンに Visual Studio 2012 Update 4 の Visual C++ 再頒布可能パッケージがインストールされていることを確認します。 この更新プログラムがインストールされていない場合は、[ここからダウンロードできます](https://www.microsoft.com/download/details.aspx?id=30679)。
+
+* セルフホステッド統合ランタイムが実行されている仮想マシンで Teradata の JDBC Driver を手動でダウンロードする必要があります。 実行可能 JAR ファイルは、Teradata の [Web サイト](https://downloads.teradata.com/)からダウンロードできます。
 
     > [!Note]
     > このドライバーは、VM 内のすべてのアカウントからアクセスできる必要があります。 これをユーザー アカウントにインストールしないようにしてください。
 
-5.  サポートされている Teradata データベースのバージョンは 12.x から 16.x です。 スキャン対象の Teradata ソースに対する読み取りアクセス権があることを確認します。
+## <a name="register"></a>登録
 
-## <a name="setting-up-authentication-for-a-scan"></a>スキャンの認証の設定
+このセクションでは、[Purview Studio](https://web.purview.azure.com/) を使用して Azure Purview に Teradata を登録する方法について説明します。
 
-Teradata ソースでサポートされている認証は **基本認証** のみです。
+### <a name="authentication-for-registration"></a>登録の認証
 
-## <a name="register-a-teradata-source"></a>Teradata ソースを登録する
+Teradata ソースでサポートされている認証は **基本認証** のみです。 スキャン対象の Teradata ソースに対する読み取りアクセス権があることを確認します。
 
-新しい Teradata ソースをデータ カタログに登録するには、次の手順を実行します。
+### <a name="steps-to-register"></a>登録の手順
 
 1.  ご自分の Purview アカウントに移動します。
-2.  左側のナビゲーションで **[ソース]** を選択します。
-3.  **[登録]** を選択します
-4.  [Register sources]\(ソースの登録\) で、 **[Teradata]** を選択します **[続行]** を選択します。
+1.  左側のナビゲーションで **[Data Map]** を選択します。
+1.  **[登録]** を選択します
+1.  [Register sources]\(ソースの登録\) で、 **[Teradata]** を選択します **[続行]** を選択します。
 
     :::image type="content" source="media/register-scan-teradata-source/register-sources.png" alt-text="Teradata オプションの登録" border="true":::
 
@@ -58,86 +69,72 @@ Teradata ソースでサポートされている認証は **基本認証** の�
 
 1.  データ ソースがカタログに表示される際の **名前** を入力します。
 
-2.  Teradata ソースに接続するための **ホスト** 名を入力します。 サーバーの IP アドレスまたは完全修飾接続文字列を指定することもできます。
+1.  Teradata ソースに接続するための **ホスト** 名を入力します。 サーバーの IP アドレスまたは完全修飾接続文字列を指定することもできます。
 
-3.  コレクションを選択するか、新しいものを作成します (省略可能)
+1.  コレクションを選択するか、新しいものを作成します (省略可能)
 
-4.  データ ソースの登録を終了します。
+1.  データ ソースの登録を終了します。
 
     :::image type="content" source="media/register-scan-teradata-source/register-sources-2.png" alt-text="Teradata の登録" border="true":::
 
-## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+## <a name="scan"></a>スキャン
 
-新しいスキャンを作成して実行するには、次の操作を行います。
+次の手順に従って Teradata をスキャンし、自動的に資産を識別してデータを分類します。 スキャン全般の詳細については、[スキャンとインジェストの概要](concept-scans-and-ingestion.md)に関するページを参照してください。
 
-1.  管理センターで、 **[統合ランタイム]** をクリックします。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
+### <a name="create-and-run-scan"></a>スキャンの作成と実行
 
-2.  **[ソース]** に移動します
+1. 管理センターで、 **[統合ランタイム]** を選択します。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順に従って、セルフホステッド統合ランタイムを設定します
 
-3.  登録されている Teradata ソースを選択します。
+1. [Purview Studio](https://web.purview.azure.com/resource/) の左側のペインで **[Data Map]** タブを選択します。
 
-4.  **[+ 新しいスキャン]** を選択します
+1. 登録されている Teradata ソースを選択します。
 
-5.  次の詳細を指定します。
+1. **[新しいスキャン]** を選択します。
 
-    a.  **[名前]** : スキャンの名前
+1. 次の詳細を指定します。
 
-    b.  **[Connect via integration runtime]\(統合ランタイム経由で接続\)** : 構成済みのセルフホステッド統合ランタイムを選択します。
+    1. **[名前]** : スキャンの名前
 
-    c.  **[資格情報]** : 対象のデータ ソースに接続するための資格情報を選択します。 次のことを確認します。
+    1. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** : 構成済みのセルフホステッド統合ランタイムを選択します。
 
-    -   資格情報を作成するときに [基本認証] を選択します。
-    -   ユーザー名入力フィールドで、データベース サーバーに接続するためのユーザー名を指定します。
-    -   秘密鍵にデータベース サーバーのパスワードを格納します。
+    1. **[資格情報]** : 対象のデータ ソースに接続するための資格情報を選択します。 次のことを確認します。
+        * 資格情報を作成するときに [基本認証] を選択します。
+        * ユーザー名入力フィールドで、データベース サーバーに接続するためのユーザー名を指定します。
+        * 秘密鍵にデータベース サーバーのパスワードを格納します。
 
         資格情報の詳細については、[こちら](./manage-credentials.md)のリンクを参照してください。
 
-6.  **[スキーマ]** : インポートするスキーマのサブセットをセミコロン区切りのリストとして指定します。 例: schema1;schema2。 リストが空の場合は、すべてのユーザー スキーマがインポートされます。 既定では、すべてのシステム スキーマ (SysAdmin など) とオブジェクトが無視されます。 リストが空の場合は、使用可能なすべてのスキーマがインポートされます。
+    1. **[スキーマ]** : インポートするスキーマのサブセットをセミコロン区切りのリストとして指定します。 たとえば、「`schema1; schema2`」のように入力します。 リストが空の場合は、すべてのユーザー スキーマがインポートされます。 既定では、すべてのシステム スキーマ (SysAdmin など) とオブジェクトが無視されます。 リストが空の場合は、使用可能なすべてのスキーマがインポートされます。
 
-    SQL LIKE 式の構文を使用したスキーマ名のパターンとして、% の使用も許容されます (例: A%; %B; %C%; D)
-    - A で始まる、または    
-    - B で終わる、または    
-    - C を含む、または    
-    - D と等しい
+        SQL LIKE 式の構文を使用したスキーマ名のパターンとして、% の使用も許容されます。 たとえば: `A%; %B; %C%; D`
+        * A で始まる、または
+        * B で終わる、または
+        * C を含む、または
+        * D と等しい
 
-    NOT および特殊文字の使用は許容されません
+        NOT および特殊文字の使用は許容されません
 
-7.  **[Driver location]\(ドライバーの場所\)** : セルフホステッド統合ランタイムが実行されている VM 内の JDBC ドライバーの場所へのパスを指定します。 これは、有効な JAR フォルダーの場所へのパスである必要があります。
+    1. **[Driver location]\(ドライバーの場所\)** : セルフホステッド統合ランタイムが実行されている VM 内の JDBC ドライバーの場所へのパスを指定します。 これは、有効な JAR フォルダーの場所へのパスである必要があります。
 
-8.  **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする Teradata ソースのサイズによって異なります。
+    1. **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする Teradata ソースのサイズによって異なります。
 
-    > [!Note] 
-    > 経験則として、テーブル 1,000 個ごとに 2 GB のメモリを用意してください
+        > [!Note]
+        > 経験則として、テーブル 1,000 個ごとに 2 GB のメモリを用意してください
 
-    :::image type="content" source="media/register-scan-teradata-source/setup-scan.png" alt-text="スキャンを設定する" border="true":::
+        :::image type="content" source="media/register-scan-teradata-source/setup-scan.png" alt-text="スキャンを設定する" border="true":::
 
-6.  **[続行]** をクリックします。
+1. **[続行]** を選択します。
 
-7.  **スキャン トリガー** を選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
+1. **スキャン トリガー** を選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
 
-8.  スキャンを確認し、 **[保存および実行]** をクリックします。
+1. 自分のスキャンを確認し、 **[保存および実行]** を選択します。
 
-## <a name="viewing-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を確認する
-
-1. 管理センターに移動します。 **[Sources and scanning]\(ソースとスキャン\)** セクションの **[データ ソース]** を選択します。
-
-2. 目的のデータ ソースを選択します。 そのデータ ソースに対する既存のスキャンの一覧が表示されます。
-
-3. 結果を表示するスキャンを選択します。
-
-4. このページには、前回のすべてのスキャン実行と、各スキャン実行のメトリックと状態が表示されます。 また、そのスキャンがスケジュールされたスキャンと手動スキャンのどちらかであるか、分類が適用された資産の数、検出された資産の合計数、スキャンの開始時刻と終了時刻、スキャンの実行時間の合計も表示されます。
-
-## <a name="manage-your-scans"></a>スキャンを管理する
-
-スキャンを管理または削除するには、次の操作を行います。
-
-1. 管理センターに移動します。 **[Sources and scanning]\(ソースとスキャン\)** セクションの **[データ ソース]** を選択し、目的のデータ ソースを選択します。
-
-2. 管理するスキャンを選択します。 スキャンを編集するには、 **[編集]** を選択します。
-
-3. スキャンを削除するには、 **[削除]** を選択します。
+[!INCLUDE [create and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
-- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)
+ソースの登録が完了したので、以下のガイドに従って Azure Purview とご利用のデータの詳細について学習します。
+
+- [Azure Purview のデータ分析情報](concept-insights.md)
+- [Azure Purview のデータ系列](catalog-lineage-user-guide.md)
+- [Data Catalog の検索](how-to-search-catalog.md)

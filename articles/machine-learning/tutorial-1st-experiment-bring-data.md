@@ -1,7 +1,7 @@
 ---
-title: チュートリアル:独自のデータを使用する
+title: 'チュートリアル: データをアップロードしてモデルをトレーニングする'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning 入門シリーズの第 4 部では、リモート トレーニングの実行で独自のデータを使用する方法について説明します。
+description: リモート トレーニングの実行で独自のデータをアップロードして使用する方法。 これは、3 部構成の入門シリーズのパート 3 です。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,28 +9,24 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 02/11/2021
-ms.custom: tracking-python, contperf-fy21q3
-ms.openlocfilehash: 503d1d1220cd4704a6e70d0b7e575a70275e5e4d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/29/2021
+ms.custom: tracking-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 43684ffe7287aa8cd227f471b878450de39b72d6
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936837"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704316"
 ---
-# <a name="tutorial-use-your-own-data-part-4-of-4"></a>チュートリアル:独自のデータを使用する (4 部構成中の第 4 部)
+# <a name="tutorial-upload-data-and-train-a-model-part-3-of-3"></a>チュートリアル: データをアップロードしてモデルをトレーニングする (3/3)
 
-このチュートリアルでは、独自のデータをアップロードし、それを使用することで、Azure Machine Learning で機械学習モデルをトレーニングする方法について説明します。
+このチュートリアルでは、独自のデータをアップロードし、それを使用することで、Azure Machine Learning で機械学習モデルをトレーニングする方法について説明します。 このチュートリアルは、"*3 部構成のチュートリアル シリーズのパート 3*" です。  
 
-このチュートリアルは、"*4 部構成のチュートリアル シリーズのパート 4*" であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを実行します。 このチュートリアルは次のパートで完了した作業を基にしています。このシリーズの[第 1 部: 設定](tutorial-1st-experiment-sdk-setup-local.md)、[第 2 部:"Hello World" の実行](tutorial-1st-experiment-hello-world.md)、[第 3 部: モデルのトレーニング](tutorial-1st-experiment-sdk-train.md)に関するページを参照してください。
+「[パート 2: モデルをトレーニングする](tutorial-1st-experiment-sdk-train.md)」では、`PyTorch` のサンプル データを使用して、クラウドでモデルをトレーニングしました。  また、PyTorch API の `torchvision.datasets.CIFAR10` メソッドを使用してデータをダウンロードしました。 このチュートリアルでは、ダウンロードしたデータを使用して、Azure Machine Learning で独自のデータを処理するワークフローについて説明します。
 
-[第 3 部: モデルのトレーニング](tutorial-1st-experiment-sdk-train.md)では、PyTorch API 内の組み込みの `torchvision.datasets.CIFAR10` メソッドを使用してデータをダウンロードしました。 ただし、多くの場合、リモート トレーニングの実行では独自のデータを使用することになります。 この記事では、Azure Machine Learning で独自のデータを操作するのに使用できるワークフローについて説明します。
-
-このチュートリアルでは、次のことを行いました。
+このチュートリアルでは、次の作業を行いました。
 
 > [!div class="checklist"]
-> * ローカル ディレクトリ内のデータを使用するようにトレーニング スクリプトを構成する。
-> * トレーニング スクリプトをローカルでテストする。
 > * Azure にデータをアップロードする。
 > * コントロール スクリプトを作成する。
 > * 新しい Azure Machine Learning の概念を理解する (パラメーター、データセット、データストアの受け渡し)。
@@ -39,23 +35,107 @@ ms.locfileid: "105936837"
 
 ## <a name="prerequisites"></a>前提条件
 
-前のチュートリアルで作成した PyTorch 環境の更新バージョンとデータが必要となります。  これらの手順が完了していることを確認します。
+前のチュートリアルでダウンロードしたデータが必要です。  これらの手順が完了していることを確認します。
 
-1. [トレーニング スクリプトの作成](tutorial-1st-experiment-sdk-train.md#create-training-scripts)
-1. [新しい Python 環境を作成する](tutorial-1st-experiment-sdk-train.md#environment)
-1. [ローカルでテストする](tutorial-1st-experiment-sdk-train.md#test-local)
-1. [Conda 環境ファイルを更新する](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
+1. [トレーニング スクリプトを作成する](tutorial-1st-experiment-sdk-train.md#create-training-scripts)。  
+1. [ローカルでテストする](tutorial-1st-experiment-sdk-train.md#test-local)。
 
 ## <a name="adjust-the-training-script"></a>トレーニング スクリプトを調整する
 
-既に、Azure Machine Learning で実行するトレーニング スクリプト (tutorial/src/train.py) が用意され、モデルのパフォーマンスを監視できるようになっています。 引数を導入してトレーニング スクリプトをパラメーター化しましょう。 引数を使用すると、さまざまなハイパーパラメーターを簡単に比較できます。
+既に、Azure Machine Learning で実行するトレーニング スクリプト (get-started/src/train.py) が用意され、モデルのパフォーマンスを監視できるようになっています。 引数を導入してトレーニング スクリプトをパラメーター化しましょう。 引数を使用すると、さまざまなハイパーパラメーターを簡単に比較できます。
 
-現在、トレーニング スクリプトは実行のたびに CIFAR10 データセットをダウンロードするように設定されています。 次の Python コードは、ディレクトリからデータを読み取るように調整されています。
+トレーニング スクリプトは現在、実行のたびに CIFAR10 データセットをダウンロードするように設定されています。 次の Python コードは、ディレクトリからデータを読み取るように調整されています。
 
 >[!NOTE] 
 > `argparse` を使用すると、スクリプトがパラメーター化されます。
 
-:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/code/pytorch-cifar10-your-data/train.py":::
+1. *train.py* を開いて、このコードに置き換えます。
+
+    ```python
+    import os
+    import argparse
+    import torch
+    import torch.optim as optim
+    import torchvision
+    import torchvision.transforms as transforms
+    from model import Net
+    from azureml.core import Run
+    run = Run.get_context()
+    if __name__ == "__main__":
+        parser = argparse.ArgumentParser()
+        parser.add_argument(
+            '--data_path',
+            type=str,
+            help='Path to the training data'
+        )
+        parser.add_argument(
+            '--learning_rate',
+            type=float,
+            default=0.001,
+            help='Learning rate for SGD'
+        )
+        parser.add_argument(
+            '--momentum',
+            type=float,
+            default=0.9,
+            help='Momentum for SGD'
+        )
+        args = parser.parse_args()
+        print("===== DATA =====")
+        print("DATA PATH: " + args.data_path)
+        print("LIST FILES IN DATA PATH...")
+        print(os.listdir(args.data_path))
+        print("================")
+        # prepare DataLoader for CIFAR10 data
+        transform = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+        ])
+        trainset = torchvision.datasets.CIFAR10(
+            root=args.data_path,
+            train=True,
+            download=False,
+            transform=transform,
+        )
+        trainloader = torch.utils.data.DataLoader(
+            trainset,
+            batch_size=4,
+            shuffle=True,
+            num_workers=2
+        )
+        # define convolutional network
+        net = Net()
+        # set up pytorch loss /  optimizer
+        criterion = torch.nn.CrossEntropyLoss()
+        optimizer = optim.SGD(
+            net.parameters(),
+            lr=args.learning_rate,
+            momentum=args.momentum,
+        )
+        # train the network
+        for epoch in range(2):
+            running_loss = 0.0
+            for i, data in enumerate(trainloader, 0):
+                # unpack the data
+                inputs, labels = data
+                # zero the parameter gradients
+                optimizer.zero_grad()
+                # forward + backward + optimize
+                outputs = net(inputs)
+                loss = criterion(outputs, labels)
+                loss.backward()
+                optimizer.step()
+                # print statistics
+                running_loss += loss.item()
+                if i % 2000 == 1999:
+                    loss = running_loss / 2000
+                    run.log('loss', loss)  # log loss metric to AML
+                    print(f'epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}')
+                    running_loss = 0.0
+        print('Finished Training')
+    ```
+
+1. ファイルを **保存** します。  必要に応じてタブを閉じます。
 
 ### <a name="understanding-the-code-changes"></a>コードの変更について
 
@@ -81,41 +161,6 @@ optimizer = optim.SGD(
 )
 ```
 
-> [!div class="nextstepaction"]
-> [トレーニング スクリプトを調整しました](?success=adjust-training-script#test-locally) [問題が発生しました](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script)
-
-## <a name="test-the-script-locally"></a><a name="test-locally"></a> スクリプトのローカル テスト
-
-これで、スクリプトは _データ パス_ を引数として受け付けるようになりました。 まず、それをローカルでテストします。 チュートリアル ディレクトリ構造に、`data` という名前のフォルダーを追加します。 ディレクトリ構造は次のようになります。
-
-:::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text=".azureml、data、src の各サブディレクトリを示すディレクトリ構造":::
-
-1. 現在の環境を終了します。
-
-    ```bash
-    conda deactivate
-
-1. Now create and activate the new environment.  This will rebuild the pytorch-aml-env with the [updated environment file](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
-
-
-    ```bash
-    conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
-    ```
-
-    ```bash
-    conda activate pytorch-aml-env          # activate new conda environment
-    ```
-
-1. 最後に、変更したトレーニング スクリプトをローカルで実行します。
-
-    ```bash
-    python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
-    ```
-
-データへのローカル パスを渡すことによって、CIFAR10 データセットをダウンロードする必要はなくなります。 また、トレーニング スクリプト内にハードコーディングしなくても、_学習率_ および _モーメンタム_ ハイパーパラメーターのさまざまな値を試してみることができます。
-
-> [!div class="nextstepaction"]
-> [スクリプトをローカルでテストしました](?success=test-locally#upload) [問題が発生しました](https://www.research.net/r/7C6W7BQ?issue=test-locally)
 
 ## <a name="upload-the-data-to-azure"></a><a name="upload"></a> データを Azure にアップロードする
 
@@ -124,42 +169,44 @@ optimizer = optim.SGD(
 >[!NOTE] 
 > Azure Machine Learning を使用すると、自分のデータが格納される他のクラウドベースのデータストアに接続できます。 詳細については、[データストアに関するドキュメント](./concept-data.md)を参照してください。  
 
-`tutorial` ディレクトリに `05-upload-data.py` という名前の新しい Python コントロール スクリプトを作成します。
+1. **get-started** フォルダー内に新しい Python 制御スクリプトを作成します ( **/src** フォルダー "*ではなく*"、**get-started** フォルダーです。注意してください)。  スクリプトに *upload-data.py* という名前を付け、このコードをファイルにコピーします。
+    
+    ```python
+    # upload-data.py
+    from azureml.core import Workspace
+    ws = Workspace.from_config()
+    datastore = ws.get_default_datastore()
+    datastore.upload(src_dir='./data',
+                     target_path='datasets/cifar10',
+                     overwrite=True)
+    
+    ```
 
-:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/05-upload-data.py":::
+    `target_path` の値には、CIFAR10 データがアップロードされるデータストア上のパスを指定します。
 
-`target_path` の値には、CIFAR10 データがアップロードされるデータストア上のパスを指定します。
+    >[!TIP] 
+    > Azure Machine Learning を使用してデータをアップロードしながら、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用してアドホック ファイルをアップロードできます。 ETL ツールが必要な場合は、[Azure Data Factory](../data-factory/introduction.md) を使用して、データを Azure に取り込むことができます。
 
->[!TIP] 
-> Azure Machine Learning を使用してデータをアップロードしながら、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用してアドホック ファイルをアップロードできます。 ETL ツールが必要な場合は、[Azure Data Factory](../data-factory/introduction.md) を使用して、データを Azure に取り込むことができます。
+2. **[Save and run script in terminal]\(スクリプトを保存してターミナルで実行する\)** を選択して *upload-data.py* スクリプトを実行します。
 
-アクティブになった *tutorial1* Conda 環境が表示されているウィンドウで、次の Python ファイルを実行して、データをアップロードします。 (アップロードは 60 秒未満で迅速に行われます)。
+    次の標準的な出力が表示されます。
 
-```bash
-python 05-upload-data.py
-```
-
-次の標準的な出力が表示されます。
-
-```txt
-Uploading ./data\cifar-10-batches-py\data_batch_2
-Uploaded ./data\cifar-10-batches-py\data_batch_2, 4 files out of an estimated total of 9
-.
-.
-Uploading ./data\cifar-10-batches-py\data_batch_5
-Uploaded ./data\cifar-10-batches-py\data_batch_5, 9 files out of an estimated total of 9
-Uploaded 9 files
-```
-
-> [!div class="nextstepaction"]
-> [データをアップロードしました](?success=upload-data#control-script) [問題が発生しました](https://www.research.net/r/7C6W7BQ?issue=upload-data)
+    ```txt
+    Uploading ./data\cifar-10-batches-py\data_batch_2
+    Uploaded ./data\cifar-10-batches-py\data_batch_2, 4 files out of an estimated total of 9
+    .
+    .
+    Uploading ./data\cifar-10-batches-py\data_batch_5
+    Uploaded ./data\cifar-10-batches-py\data_batch_5, 9 files out of an estimated total of 9
+    Uploaded 9 files
+    ```
 
 ## <a name="create-a-control-script"></a><a name="control-script"></a> コントロール スクリプトを作成する
 
-前に行ったように、`06-run-pytorch-data.py` という名前の新しい Python コントロール スクリプトを作成します。
+先ほどと同様、*run-pytorch-data.py* という新しい Python コントロール スクリプトを **get-started** フォルダーに作成します。
 
 ```python
-# 06-run-pytorch-data.py
+# run-pytorch-data.py
 from azureml.core import Workspace
 from azureml.core import Experiment
 from azureml.core import Environment
@@ -182,11 +229,9 @@ if __name__ == "__main__":
             '--learning_rate', 0.003,
             '--momentum', 0.92],
     )
-    # set up pytorch environment
-    env = Environment.from_conda_specification(
-        name='pytorch-env',
-        file_path='./.azureml/pytorch-env.yml'
-    )
+
+    # use curated pytorch environment 
+    env = ws.environments['AzureML-PyTorch-1.3-CPU']
     config.run_config.environment = env
 
     run = experiment.submit(config)
@@ -195,6 +240,9 @@ if __name__ == "__main__":
     print("")
     print(aml_url)
 ```
+
+> [!TIP]
+> コンピューティング クラスターの作成時に別の名前を使用した場合は、`compute_target='cpu-cluster'` コード内の名前も調整してください。
 
 ### <a name="understand-the-code-changes"></a>コードの変更を理解する
 
@@ -217,25 +265,18 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-> [!div class="nextstepaction"]
-> [コントロール スクリプトを作成しました](?success=control-script#submit-to-cloud) [問題が発生しました](https://www.research.net/r/7C6W7BQ?issue=control-script)
-
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-to-cloud"></a> Azure Machine Learning に実行を送信する
 
-ここで、新しい構成を使用するために実行を再送信します。
-
-```bash
-python 06-run-pytorch-data.py
-```
+**[Save and run script in terminal]\(スクリプトを保存してターミナルで実行する\)** を選択して *run-pytorch-data.py* スクリプトを実行します。  この実行では、コンピューティング クラスターで、アップロードしたデータを使用してモデルをトレーニングします。
 
 このコードにより Azure Machine Learning スタジオの実験に URL が出力されます。 そのリンクに移動すると、実行中の自分のコードを確認できます。
 
-> [!div class="nextstepaction"]
-> [実行を再送信しました](?success=submit-to-cloud#inspect-log) [問題が発生しました](https://www.research.net/r/7C6W7BQ?issue=submit-to-cloud)
+[!INCLUDE [amlinclude-info](../../includes/machine-learning-py38-ignore.md)]
+
 
 ### <a name="inspect-the-log-file"></a><a name="inspect-log"></a> ログ ファイルの確認
 
-スタジオで、前の URL 出力を選択することによって実験の実行に移動し、 **[出力 + ログ]** を選択します。 `70_driver_log.txt` ファイルを選択します。 次の出力が表示されます。
+スタジオで、前の URL 出力を選択することによって実験の実行に移動し、 **[出力 + ログ]** を選択します。 `70_driver_log.txt` ファイルを選択します。 次の出力が見えるまでログ ファイルを下へスクロールします。
 
 ```txt
 Processing 'input'.
@@ -274,10 +315,22 @@ LIST FILES IN DATA PATH...
 - Azure Machine Learning によって Blob Storage が自動的にコンピューティング クラスターにマウントされました。
 - コントロール スクリプトで使用されている ``dataset.as_named_input('input').as_mount()`` は、マウント ポイントに解決されます。
 
-> [!div class="nextstepaction"]
-> [ログ ファイルを確認しました](?success=inspect-log#clean-up-resources) [問題が発生しました](https://www.research.net/r/7C6W7BQ?issue=inspect-log)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+引き続き別のチュートリアルに取り組む場合や、独自のトレーニングの実行に着手する場合は、「[次のステップ](#next-steps)」に進んでください。
+
+### <a name="stop-compute-instance"></a>コンピューティング インスタンスを停止する
+
+コンピューティング インスタンスをすぐに使用しない場合は、停止してください。
+
+1. スタジオの左側にある **[コンピューティング]** を選択します。
+1. 上部のタブで、 **[コンピューティング インスタンス]** を選択します
+1. 一覧からコンピューティング インスタンスを選択します。
+1. 上部のツールバーで、 **[停止]** を選択します。
+
+
+### <a name="delete-all-resources"></a>すべてのリソースの削除
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
@@ -287,8 +340,9 @@ LIST FILES IN DATA PATH...
 
 このチュートリアルでは、`Datastore` を使用して Azure にデータをアップロードする方法について説明しました。 データストアはワークスペース用のクラウド ストレージとして機能し、データを保持するための永続的で柔軟な場所を提供しました。
 
-コマンドラインを介してデータ パスを受け付けるようにトレーニング スクリプトを変更する方法を説明しました。 `Dataset` を使用することで、ディレクトリをリモート実行にマウントできました。 
+コマンドラインを介してデータ パスを受け付けるようにトレーニング スクリプトを変更する方法を説明しました。 `Dataset` を使用することで、ディレクトリをリモート実行にマウントできました。
 
 モデルを用意できましたので、今度は次のことを学習します。
 
-* [Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)方法。
+> [!div class="nextstepaction"]
+> [Azure Machine Learning を使用してモデルをデプロイする方法](how-to-deploy-and-where.md)。

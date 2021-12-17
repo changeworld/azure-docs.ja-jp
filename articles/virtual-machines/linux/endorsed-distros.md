@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: guybo
-ms.openlocfilehash: e602909467ca155beb010c5bdd61e6f6408dd12a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: e8694e218bdab1085a35ed65f7a8b1d09d7b0fc4
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553789"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455628"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure で動作保証済みの Linux ディストリビューション
+
+**適用対象:** :heavy_check_mark: Linuｘ VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一のスケール セット 
 
 パートナーが Azure Marketplace で Linux イメージを提供しています。 Microsoft では、さまざまな Linux コミュニティと連携して動作保証済みディストリビューション リストを拡充しています。 Marketplace から入手できないディストリビューションについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](./create-upload-generic.md)」のガイドラインに従って、お使いの Linux をいつでも持ち込んで使用できます。
 
@@ -73,7 +75,7 @@ Microsoft では、CoreOS ユーザー向けに 2 つの移行チャネルを用
 credativ は、無償のソフトウェアを使用したプロフェッショナルなソリューションの開発および実装を専門とする、独立したコンサルティングおよびサービス企業です。 大手のオープン ソース スペシャリストとして、credativ のサポートを利用している多くの IT 部門から国際的に認知されています。 Microsoft との業務提携で credativ は Debian イメージを準備しています。 イメージは、Azure で実行するために特別に設計され、プラットフォーム経由で簡単に管理できます。 credativ では、自社のオープン ソース サポート センターを通じて、Azure 用の Debian イメージの長期にわたる保守および更新もサポートします。
 
 ### <a name="kinvolk"></a>Kinvolk
-[https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
+[https://www.flatcar-linux.org/](https://www.flatcar-linux.org/)
 
 Kinvolk は、Flatcar Container Linux を提供する企業です。コンテナー化されたアプリケーション用の、最小限で、変更不可の、自動更新の基盤のために、元の CoreOS ビジョンを引き続き使用しています。 最小限のディストリビューションである Flatcar には、コンテナーのデプロイに必要なパッケージのみが含まれています。 そのファイル システムは変更不可であり、一貫性とセキュリティを保証します。また、最新のセキュリティ修正プログラムを使用して、自動更新機能が常に最新の状態を保ちます。 
 

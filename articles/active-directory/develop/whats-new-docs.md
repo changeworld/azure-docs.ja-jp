@@ -5,92 +5,77 @@ description: Microsoft ID プラットフォームの新規および更新され
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 12/15/2020
+ms.date: 11/01/2021
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 68136cc259e0be4a2f9449aa9ec15f4a14a63890
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.custom: has-adal-ref
+ms.openlocfilehash: 94518bf41dc449b4b5b240d12c5da1bab9dfc614
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074983"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440889"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft ID プラットフォームに関するドキュメント:新機能
 
 Microsoft ID プラットフォームに関するドキュメントの新着情報へようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。
 
-## <a name="march-2021"></a>2021 年 3 月
+## <a name="october-2021"></a>2021 年 10 月
 
 ### <a name="new-articles"></a>新しい記事
 
-- [Microsoft ID プラットフォームで最近削除されたアプリケーションを復元または削除する](quickstart-restore-app.md)
+- [GitHub リポジトリを信頼するようにアプリを構成する (プレビュー)](workload-identity-federation-create-trust-github.md)
+- [外部 ID プロバイダーを信頼するようにアプリを構成する (プレビュー)](workload-identity-federation-create-trust.md)
+- [アプリケーションの Azure AD テスト環境を設定する](test-setup-environment.md)
+- [テストのために考慮すべき調整とサービスの制限](test-throttle-service-limits.md)
+- [ワークロード ID フェデレーション (プレビュー)](workload-identity-federation.md)
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Microsoft ID プラットフォームの管理者の同意](v2-admin-consent.md)
-- [MSAL.NET を使用した Xamarin Android の構成要件とトラブルシューティングのヒント](msal-net-xamarin-android-considerations.md)
-- [Web API を呼び出すデーモン アプリ - トークンを取得する](scenario-daemon-acquire-token.md)
-- [Web API を呼び出すデーモン アプリ - コードの構成](scenario-daemon-app-configuration.md)
-- [Web API を呼び出すデーモン アプリ - アプリからの Web API 呼び出し](scenario-daemon-call-api.md)
-- [Web API を呼び出すデーモン アプリ - 運用環境への移行](scenario-daemon-production.md)
-- [Web API を呼び出すデスクトップ アプリ:トークンを取得する](scenario-desktop-acquire-token.md)
-- [Web API を呼び出すデスクトップ アプリ:コード構成](scenario-desktop-app-configuration.md)
-- [Web API を呼び出すデスクトップ アプリ:Web API を呼び出す](scenario-desktop-call-api.md)
-- [方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)](active-directory-claims-mapping.md)
-- [Python 用の MSAL でのログ記録](msal-logging-python.md)
-- [Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)](apple-sso-plugin.md)
-- [クイック スタート:ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する](quickstart-v2-aspnet-webapp.md)
-- [クイック スタート:Microsoft でのサインインを ASP.NET Core Web アプリに追加する](quickstart-v2-aspnet-core-webapp.md)
-- [クイックスタート: コンソール アプリの ID を使用してトークンを取得し、Microsoft Graph API を呼び出す](quickstart-v2-netcore-daemon.md)
-- [クイックスタート:Microsoft ID プラットフォームを使用して ASP.NET Core Web API を保護する](quickstart-v2-aspnet-core-web-api.md)
-- [クイック スタート:Angular シングルページ アプリケーションでユーザーをサインインさせてアクセス トークンを取得する](quickstart-v2-angular.md)
-- [開発者向けのサポート オプションとヘルプ オプション](developer-support-help-options.md)
-- [ユーザーをサインインさせる Web アプリ:コード構成](scenario-web-app-sign-user-app-configuration.md)
-- [ユーザーをサインインさせる Web アプリ:サインインとサインアウト](scenario-web-app-sign-user-sign-in.md)
-
-## <a name="february-2021"></a>2021 年 2 月
-
-### <a name="new-articles"></a>新しい記事
-
-- [クイックスタート: Electron デスクトップ アプリケーションからアクセス トークンを取得して Microsoft Graph API を呼び出す](quickstart-v2-nodejs-desktop.md)
-- [チュートリアル: Electron デスクトップ アプリでユーザーのサインインと Microsoft Graph API の呼び出しを行う](tutorial-v2-nodejs-desktop.md)
-- [クイックスタート: トークンを取得し、Node.js コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-nodejs-console.md)
-- [チュートリアル:Node.js コンソール アプリで Microsoft Graph API を呼び出す](tutorial-v2-nodejs-console.md)
-- [チュートリアル: Node.js + Express Web アプリにユーザーをサインインさせる](tutorial-v2-nodejs-webapp-msal.md)
-- [開発するアプリで FIDO2 キーを使用してパスワードレス認証をサポートする](support-fido2-authentication.md)
-
-### <a name="updated-articles"></a>更新された記事
-
+- [MSAL.NET と共に Xamarin iOS を使用する際の考慮事項](msal-net-xamarin-ios-considerations.md)
+- [サードパーティの Cookie がブロックされている Safari やその他のブラウザーで ITP を扱う](reference-third-party-cookies-spas.md)
+- [MSAL.js を使用してクライアント アプリケーションを初期化する](msal-js-initializing-client-applications.md)
+- [Microsoft Graph API](microsoft-graph-intro.md)
+- [Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](v2-oauth2-client-creds-grant-flow.md)
 - [認証の新機能](reference-breaking-changes.md)
-- [MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる](msal-net-aad-b2c-considerations.md)
-- [Microsoft ID プラットフォームのコード サンプル (v2.0 エンドポイント)](sample-v2-code.md)
-- [Microsoft ID プラットフォームのビデオ](identity-videos.md)
-- [クイックスタート: テナントを設定する](quickstart-create-new-tenant.md)
-- [クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)
-- [クイックスタート: トークンを取得し、Java コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-java-daemon.md)
 
-## <a name="january-2021"></a>2021 年 1 月
+## <a name="september-2021"></a>2021 年 9 月
 
 ### <a name="new-articles"></a>新しい記事
 
-- [Android 用の MSAL でのログ記録](msal-logging-android.md)
-- [MSAL.NET でのログ](msal-logging-dotnet.md)
-- [iOS および macOS 用の MSAL でのログ記録](msal-logging-ios.md)
-- [MSAL for Java でのログ記録](msal-logging-java.md)
-- [MSAL.js でのログ記録](msal-logging-js.md)
-- [Python 用の MSAL でのログ記録](msal-logging-python.md)
+- [Web API を呼び出すデスクトップ アプリ: 対話式でトークンを取得する](scenario-desktop-acquire-token-interactive.md)
+- [Web API を呼び出すデスクトップ アプリ: デバイス コード フローでトークンを取得する](scenario-desktop-acquire-token-device-code-flow.md)
+- [Web API を呼び出すデスクトップ アプリ: 統合 Windows 認証でトークンを取得する](scenario-desktop-acquire-token-integrated-windows-authentication.md)
+- [Web API を呼び出すデスクトップ アプリ: ユーザー名とパスワードでトークンを取得する](scenario-desktop-acquire-token-username-password.md)
+- [Web API を呼び出すデスクトップ アプリ: WAM を使用してトークンを取得する](scenario-desktop-acquire-token-wam.md)
+- [アプリでロールベースのアクセス制御を実装する](howto-implement-rbac-for-apps.md)
+- [パブリック クライアント アプリケーションを ADAL.NET から MSAL.NET に移行する](msal-net-migration-public-client.md)
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [発行者の確認のトラブルシューティング](troubleshoot-publisher-verification.md)
-- [アプリケーション モデル](application-model.md)
-- [認証と承認](authentication-vs-authorization.md)
-- [方法:Azure AD アプリを Azure AD テナントの一連のユーザーに制限する](howto-restrict-your-app-to-a-set-of-users.md)
-- [Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](v2-permissions-and-consent.md)
-- [Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)](active-directory-configurable-token-lifetimes.md)
-- [トークンの有効期間ポリシーを構成する (プレビュー)](configure-token-lifetimes.md)
-- [Microsoft ID プラットフォームの認証ライブラリ](reference-v2-libraries.md)
-- [Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)
+- [最小限の特権の原則でセキュリティを高める](secure-least-privileged-access.md)
+- [機密クライアント アプリケーションを ADAL.NET から MSAL.NET に移行する](msal-net-migration-confidential-client.md)
+- [Microsoft ID プラットフォームのビデオ](identity-videos.md)
+- [各国のクラウド](authentication-national-cloud.md)
+- [Android デバイスの共有デバイス モード](msal-android-shared-devices.md)
+- [MSAL.NET でのトークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)
+- [サポートされているアカウントの種類別の検証の相違点 (signInAudience)](supported-accounts-validation.md)
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [承認の基本](authorization-basics.md)
+- [自己署名公開証明書を作成してアプリケーションを認証する](howto-create-self-signed-certificate.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [テナントで ADAL を使用しているアプリの一覧を取得する](howto-get-list-of-all-active-directory-auth-library-apps.md)
+- [Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)](apple-sso-plugin.md)
+- [Microsoft ID プラットフォームのコード サンプル](sample-v2-code.md)
+- [Microsoft Authentication Library (MSAL) へのアプリケーションの移行](msal-migration.md)
+- [リダイレクト URI (応答 URL) に関する制約と制限](reply-url.md)
+- [MSAL.NET でのトークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)

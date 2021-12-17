@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 38846bbe717912092ccfe2b236b717770b79302f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 47a6649c154ed3fed5ba444a58bae93ac0398bbc
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867255"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112676836"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>トラブルシューティング: サイト間 VPN 接続が断続的に切断される
 
@@ -56,7 +56,7 @@ Azure 仮想ネットワーク ゲートウェイの種類を確認します。
 
 ### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>手順 6 オンプレミス VPN デバイスの外部インターフェイスのアドレスを確認する
 
-VPN デバイスのインターネット接続 IP アドレスが Azure の **[ローカル ネットワーク ゲートウェイ]** の定義に含まれていると、散発的に接続が途切れることがあります。
+VPN デバイスのインターネット接続 IP アドレスが Azure の **[ローカル ネットワーク ゲートウェイ] のアドレス空間** の定義に含まれていると、散発的に接続が途切れることがあります。
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>手順 7 オンプレミス VPN デバイスで Perfect Forward Secrecy が有効になっているかどうかを確認する
 

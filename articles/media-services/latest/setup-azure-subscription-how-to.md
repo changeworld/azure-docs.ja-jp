@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: cli,portal, devx-track-azurecli
-ms.openlocfilehash: f16cc83257dbf6419fc794f34e4cd6df033d3f8b
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.custom: portal
+ms.openlocfilehash: f29df5902e7faf8da823fd4f90c33520bb0c9d47
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281417"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076835"
 ---
 # <a name="find-your-azure-subscription"></a>Azure サブスクリプションを検索する
 

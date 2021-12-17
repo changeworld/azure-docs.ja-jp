@@ -6,15 +6,13 @@ ms.author: v-stharr
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 133674e6764e12742f5b238946e943d9b5011cd2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfd5da016732d0424935e72e00b38cf597dd5a6e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92891331"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430398"
 ---
 # <a name="read-and-write-spatial-data"></a>空間データの読み取りと書き込み
 
@@ -57,14 +55,14 @@ read 関数の結果は `SpatialDataSet` オブジェクトです。 このオ�
 
 <br/>
 
-<iframe height='500' scrolling='no' title='単純な空間データの読み込み' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>単純な空間データの読み込み</a>」を参照してください。
+<iframe height='500' scrolling='no' title='単純な空間データの読み込み' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>単純な空間データの読み込み</a>」を参照してください。
 </iframe>
 
 次のコード デモでは、KML (KMZ) を読み取って、マップに読み込む方法を示します。 KML には、グラウンド オーバーレイを `ImageLyaer` または `OgcMapLayer` の形式で含めることができます。 これらのオーバーレイは、フィーチャーとは別にマップに追加する必要があります。 さらに、データ セットにカスタム アイコンが含まれている場合は、それらのアイコンをマップ リソースに読み込んでから、フィーチャーを読み込む必要があります。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='マップに KML を読み込む' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>マップに KML を読み込む</a>」を参照してください。
+<iframe height='500' scrolling='no' title='マップに KML を読み込む' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>マップに KML を読み込む</a>」を参照してください。
 </iframe>
 
 必要に応じて、CORS が有効になっていない可能性のあるクロス ドメイン アセットにアクセスするためのプロキシ サービスを提供することができます。 read 関数は、最初に CORS を使用して別のドメイン上のファイルにアクセスしようとします。 別のドメイン上のいずれかのリソースへの CORS を使用したアクセスが最初に失敗した後、プロキシ サービスが提供されている場合に限り、追加のファイルを要求します。 read 関数は、提供されたプロキシ URL の末尾にファイル URL を追加します。 次のコード スニペットは、read 関数にプロキシ サービスを渡す方法を示しています。
@@ -86,7 +84,7 @@ atlas.io.read('https://nonCorsDomain.example.com/mySuperCoolData.xml', {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='区切りファイルの追加' src='//codepen.io/azuremaps/embed/ExjXBEb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/ExjXBEb/'>区切りファイルの追加</a>」を参照してください。
+<iframe height='500' scrolling='no' title='区切りファイルの追加' src='//codepen.io/azuremaps/embed/ExjXBEb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/ExjXBEb/'>区切りファイルの追加</a>」を参照してください。
 </iframe>
 
 ## <a name="write-spatial-data"></a>空間データの書き込み
@@ -97,7 +95,7 @@ atlas.io.read('https://nonCorsDomain.example.com/mySuperCoolData.xml', {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='空間データ書き込みオプション' src='//codepen.io/azuremaps/embed/YzXxXPG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/YzXxXPG/'>空間データ書き込みオプション</a>」を参照してください。
+<iframe height='700' scrolling='no' title='空間データ書き込みオプション' src='//codepen.io/azuremaps/embed/YzXxXPG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/YzXxXPG/'>空間データ書き込みオプション</a>」を参照してください。
 </iframe>
 
 ## <a name="example-of-writing-spatial-data"></a>空間データの書き込みの例
@@ -106,7 +104,7 @@ atlas.io.read('https://nonCorsDomain.example.com/mySuperCoolData.xml', {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='マップ上に空間ファイルをドラッグ アンド ドロップする' src='//codepen.io/azuremaps/embed/zYGdGoO/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/zYGdGoO/'>マップ上に空間ファイルをドラッグ アンド ドロップする</a>」を参照してください。
+<iframe height='700' scrolling='no' title='マップ上に空間ファイルをドラッグ アンド ドロップする' src='//codepen.io/azuremaps/embed/zYGdGoO/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/zYGdGoO/'>マップ上に空間ファイルをドラッグ アンド ドロップする</a>」を参照してください。
 </iframe>
 
 必要に応じて、CORS が有効になっていない可能性のあるクロス ドメイン アセットにアクセスするためのプロキシ サービスを提供することができます。 次のコード スニペットは、プロキシ サービスを組み込むことができることを示しています。
@@ -135,14 +133,14 @@ Well Known Text は、`atlas.io.ogc.WKT.read` 関数を使用して読み取る�
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Well-Known Text の読み取り' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Well-Known Text の読み取り</a>」を参照してください。
+<iframe height='500' scrolling='no' title='Well-Known Text の読み取り' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Well-Known Text の読み取り</a>」を参照してください。
 </iframe>
 
 次のコードは、Well Known Text の読み取りと書き込みを行ったり来たりしてデモを行えます。
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Well-Known Text の読み取りと書き込み' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/JjdyYav/'>Well-Known Text の読み取りと書き込み</a>」を参照してください。
+<iframe height='700' scrolling='no' title='Well-Known Text の読み取りと書き込み' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/JjdyYav/'>Well-Known Text の読み取りと書き込み</a>」を参照してください。
 </iframe>
 
 ## <a name="read-and-write-gml"></a>GML の読み取りと書き込み

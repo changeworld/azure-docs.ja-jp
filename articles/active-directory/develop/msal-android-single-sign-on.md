@@ -3,7 +3,7 @@ title: Android で MSAL を使用してクロスアプリ SSO を有効にする
 titleSuffix: Microsoft identity platform
 description: Android 用の Microsoft Authentication Library (MSAL) を使用して、アプリケーション間のシングル サインオンを有効にする方法について説明します。
 services: active-directory
-author: hamiltonha
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.author: hahamil
+ms.author: marsma
 ms.reviewer: marsma
-ms.openlocfilehash: f3d4ec8db89e9bebfdcd594e842a6c19d3d66d54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 877ebb2ab58af978896e4cb61989e12bb5731a7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104095"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628916"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>方法:Android で MSAL を使用してクロスアプリ SSO を有効にする
+# <a name="enable-cross-app-sso-on-android-using-msal"></a>Android で MSAL を使用してクロス アプリ SSO を有効にする
 
 シングル サインオン (SSO) を使用すると、ユーザーは資格情報を一度入力するだけで、その資格情報をアプリケーション間で自動的に機能させることができます。
 

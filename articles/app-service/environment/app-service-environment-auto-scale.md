@@ -1,23 +1,23 @@
 ---
 title: 自動スケール v1
 description: 自動スケールと App Service Environment v1 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
-author: btardif
+author: madsd
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: ccompy
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85a0c0021de9ea1dabf37d756125e8ff58b4fdba
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021658"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997366"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>自動スケールと App Service Environment v1
 
 > [!NOTE]
-> この記事は、App Service Environment v1 に関するものです。  より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](intro.md)」を参照してください。
+> この記事は、App Service Environment v1 に関するものです。 より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](intro.md)」を参照してください。
 > 
 
 Azure App Service Environment は " *自動スケール*" をサポートしています。 メトリックまたはスケジュールに基づいて個々のワーカー プールの規模を自動調整することができます。
@@ -84,7 +84,7 @@ Frank は、アプリケーションに関する知識がきわめて豊富で�
 | **タイム ゾーン:** UTC-08 |**タイム ゾーン:** UTC-08 |
 |  | |
 | **自動スケール ルール (スケールアップ)** |**自動スケール ルール (スケールアップ)** |
-| **リソース:** 運用環境 (App Service Environment) |**リソース:** 運用環境 (App Service Environment) |
+| **リソース:** 運用環境 (App Service 環境) |**リソース:** 運用環境 (App Service 環境) |
 | **メトリック:** CPU % |**メトリック:** CPU % |
 | **操作:** 60% 超過 |**操作:** 80% 超過 |
 | **期間:** 5 分 |**期間:** 10 分 |
@@ -93,7 +93,7 @@ Frank は、アプリケーションに関する知識がきわめて豊富で�
 | **クールダウン (分):** 15 |**クールダウン (分):** 20 |
 |  | |
 | **自動スケール ルール (スケールダウン)** |**自動スケール ルール (スケールダウン)** |
-| **リソース:** 運用環境 (App Service Environment) |**リソース:** 運用環境 (App Service Environment) |
+| **リソース:** 運用環境 (App Service 環境) |**リソース:** 運用環境 (App Service 環境) |
 | **メトリック:** CPU % |**メトリック:** CPU % |
 | **操作:** 30% 未満 |**操作:** 20% 未満 |
 | **期間:** 10 分 |**期間:** 約 15 分 |

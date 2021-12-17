@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のサポート ポリシー、共�
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 759d2714f755c39e0b189d7578e90cd268cd53c5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91892712"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222459"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -18,7 +18,7 @@ ms.locfileid: "91892712"
 ## <a name="service-updates-and-releases"></a>サービスの更新とリリース
 
 * リリース情報については、[AKS のリリース ノート](https://github.com/Azure/AKS/releases)を参照してください。
-* プレビュー段階の機能については、「[AKS Preview Features and Related Projects](https://awesomeopensource.com/projects/aks?categoryPage=11)」(AKS のプレビュー機能と関連プロジェクト) を参照してください。
+* プレビューの機能については [AKS ロードマップ](https://github.com/Azure/AKS/projects/1)を参照してください。
 
 ## <a name="managed-features-in-aks"></a>AKS のマネージド機能
 
@@ -62,6 +62,7 @@ Microsoft は、以下の例に関するテクニカル サポートを提供し
   * その他の Azure サービスおよびアプリケーションへの接続
   * イングレス コントローラーとイングレスまたはロード バランサーの構成
   * ネットワーク パフォーマンスと待機時間
+  * [ネットワーク ポリシー](use-network-policies.md#differences-between-azure-and-calico-policies-and-their-capabilities)
 
 
 > [!NOTE]
@@ -91,7 +92,7 @@ Microsoft とユーザーは、次の場合に、Kubernetes エージェント �
   * `Kube-proxy`
   * Kubernetes マスター コンポーネントへの通信パスを提供するネットワーク トンネル
   * `Kubelet`
-  * `Moby` または `ContainerD`
+  * Docker または `containerd`
 
 > [!NOTE]
 > エージェント ノードが動作していない場合、AKS は個々のコンポーネントまたはエージェント ノード全体を再起動する可能性があります。 こうした再起動操作は自動化されており、これにより一般的な問題の自動修復機能が提供されます。 自動修復メカニズムの詳細については、「[ノードの自動修復](node-auto-repair.md)」を参照してください
@@ -126,7 +127,7 @@ AKS の 1 つまたは複数のマネージド コンポーネントでセキュ
 
 ## <a name="network-ports-access-and-nsgs"></a>ネットワーク ポート、アクセス、NSG
 
-NSG のカスタマイズは、カスタム サブネット上でのみ行うことができます。 マネージド サブネット上またはエージェント ノードの NIC レベルで NSG をカスタマイズすることはできません。 AKS では、エグレスを制御し必要な接続を確保するために、特定のエンドポイントへのエグレス要件があります。[エグレス トラフィックの制限](limit-egress-traffic.md)に関する記事を参照してください。
+NSG のカスタマイズは、カスタム サブネット上でのみ行うことができます。 マネージド サブネット上またはエージェント ノードの NIC レベルで NSG をカスタマイズすることはできません。 AKS では、エグレスを制御し必要な接続を確保するために、特定のエンドポイントへのエグレス要件があります。[エグレス トラフィックの制限](limit-egress-traffic.md)に関する記事を参照してください。 イングレスの場合、要件は、クラスターにデプロイしたアプリケーションに基づきます。
 
 ## <a name="stopped-or-de-allocated-clusters"></a>停止または割り当て解除されたクラスター
 

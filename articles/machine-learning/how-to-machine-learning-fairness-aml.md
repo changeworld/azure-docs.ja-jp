@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Fairlearn と Azure Machine Learning Python SDK を使用して、機械学習モデルの公平性を評価し、軽減する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.author: mesameki
 author: mesameki
 ms.reviewer: luquinta
-ms.date: 11/16/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: 70ad5d6d88dabb51e022a1fc5c011341b06f02fd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: devx-track-python, responsible-ml
+ms.openlocfilehash: 635bde6c0d932ed0c77abb27d55770f52b59a1b9
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640682"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562449"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Azure Machine Learning と Fairlearn オープンソース パッケージを使用して ML モデルの公平性を評価する (プレビュー)
 
@@ -31,7 +31,7 @@ ms.locfileid: "105640682"
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Azure Machine Learning の公平性 SDK 
 
-Azure Machine Learning の公平性 SDK `azureml-contrib-fairness` では、オープンソースの Python パッケージ [Fairlearn](http://fairlearn.github.io) が Azure Machine Learning 内に統合されます。 Azure Machine Learning 内での Fairlearn の統合について詳しくは、これらの[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)をご覧ください。 Fairlearn の詳細については、[サンプル ガイド](https://fairlearn.org/v0.6.0/auto_examples/)と[サンプル ノートブック](https://github.com/fairlearn/fairlearn/tree/master/notebooks)を参照してください。 
+Azure Machine Learning の公平性 SDK `azureml-contrib-fairness` では、オープンソースの Python パッケージ [Fairlearn](http://fairlearn.github.io) が Azure Machine Learning 内に統合されます。 Azure Machine Learning 内での Fairlearn の統合について詳しくは、これらの[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)をご覧ください。 Fairlearn の詳細については、[サンプル ガイド](https://fairlearn.org/main/auto_examples/)と[サンプル ノートブック](https://github.com/fairlearn/fairlearn/tree/master/notebooks)を参照してください。 
 
 次のコマンドを使用して、`azureml-contrib-fairness` および `fairlearn` パッケージをインストールします。
 ```bash
@@ -64,7 +64,7 @@ pip install fairlearn==0.4.6
     from sklearn.compose import make_column_selector as selector
     from sklearn.pipeline import Pipeline
     
-    from fairlearn.widget import FairlearnDashboard
+    from raiwidgets import FairnessDashboard
 
     # Load the census dataset
     data = fetch_openml(data_id=1590, as_frame=True)
@@ -126,12 +126,11 @@ pip install fairlearn==0.4.6
     # Train the model on the test data
     lr_predictor.fit(X_train, y_train)
 
-    # (Optional) View this model in Fairlearn's fairness dashboard, and see the disparities which appear:
-    from fairlearn.widget import FairlearnDashboard
-    FairlearnDashboard(sensitive_features=A_test, 
-                       sensitive_feature_names=['Race', 'Sex'],
-                       y_true=y_test,
-                       y_pred={"lr_model": lr_predictor.predict(X_test)})
+    # (Optional) View this model in the fairness dashboard, and see the disparities which appear:
+    from raiwidgets import FairnessDashboard
+    FairnessDashboard(sensitive_features=A_test,
+                      y_true=y_test,
+                      y_pred={"lr_model": lr_predictor.predict(X_test)})
     ```
 
 2. Azure Machine Learning にログインして、モデルを登録します。
@@ -227,7 +226,7 @@ pip install fairlearn==0.4.6
     1. 前の手順に従って元のモデルを登録した場合は、左側のペインの **[モデル]** を選択してそれを表示できます。
     1. モデルを選択してから **[Fairness]\(公平性\)** タブを選択して、説明の視覚化ダッシュボードを表示します。
 
-    視覚化ダッシュボードとその内容の詳細については、Fairlearn の[ユーザー ガイド](https://fairlearn.org/v0.6.0/user_guide/assessment.html#fairlearn-dashboard)を参照してください。
+    視覚化ダッシュボードとその内容の詳細については、Fairlearn の[ユーザー ガイド](https://fairlearn.org/main/user_guide/assessment.html#fairlearn-dashboard)を参照してください。
 
 ## <a name="upload-fairness-insights-for-multiple-models"></a>複数のモデルの公平性に関する分析情報をアップロードする
 
@@ -269,9 +268,9 @@ pip install fairlearn==0.4.6
     model_dict[svm_reg_id] = svm_predictor
     ```
 
-3. Fairlearn ダッシュボードをローカルに読み込みます
+3. 公平性ダッシュボードをローカルに読み込みます
 
-    公平性に関する分析情報を Azure Machine Learning にアップロードする前に、ローカルに呼び出した Fairlearn ダッシュボードでこれらの予測を調べることができます。 
+    公平性に関する分析情報を Azure Machine Learning にアップロードする前に、ローカルに呼び出した公平性ダッシュボードでこれらの予測を調べることができます。 
 
 
 
@@ -281,12 +280,11 @@ pip install fairlearn==0.4.6
     for n, p in model_dict.items():
         ys_pred[n] = p.predict(X_test)
 
-    from fairlearn.widget import FairlearnDashboard
+    from raiwidgets import FairnessDashboard
 
-    FairlearnDashboard(sensitive_features=A_test, 
-                    sensitive_feature_names=['Race', 'Sex'],
-                    y_true=y_test.tolist(),
-                    y_pred=ys_pred)
+    FairnessDashboard(sensitive_features=A_test,
+                      y_true=y_test.tolist(),
+                      y_pred=ys_pred)
     ```
 
 3. 公平性のメトリックを事前計算します。
@@ -338,14 +336,14 @@ pip install fairlearn==0.4.6
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>軽減されていない公平性と軽減された公平性に関する分析情報をアップロードする
 
-Fairlearn の[軽減アルゴリズム](https://fairlearn.org/v0.6.0/user_guide/mitigation.html)を使用して、生成された軽減済みモデルを元の軽減されていないモデルと比較し、比較したモデル間でのパフォーマンスと公平性のトレードオフをナビゲートできます。
+Fairlearn の[軽減アルゴリズム](https://fairlearn.org/main/user_guide/mitigation.html)を使用して、生成された軽減済みモデルを元の軽減されていないモデルと比較し、比較したモデル間でのパフォーマンスと公平性のトレードオフをナビゲートできます。
 
-[グリッド サーチ](https://fairlearn.org/v0.6.0/user_guide/mitigation.html#grid-search)軽減アルゴリズムの使用方法が示された例 (異なる公平性とパフォーマンスのトレードオフを持つ軽減されたモデルのコレクションが作成されます) を確認するには、こちらの[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)を参照してください。 
+[グリッド サーチ](https://fairlearn.org/main/user_guide/mitigation.html#grid-search)軽減アルゴリズムの使用方法が示された例 (異なる公平性とパフォーマンスのトレードオフを持つ軽減されたモデルのコレクションが作成されます) を確認するには、こちらの[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)を参照してください。 
 
 複数のモデルの公平性に関する分析情報を 1 回の Run でアップロードすると、公平性とパフォーマンスに関してモデルを比較できます。 モデルの比較グラフに表示されるいずれかのモデルをクリックすると、特定のモデルの公平性に関する詳細な分析情報を確認できます。
 
 
-[![モデルの比較 Fairlearn ダッシュボード](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)
+[![モデル比較の公平性ダッシュボード](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)
     
 
 ## <a name="next-steps"></a>次のステップ

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5847fcb2cf553e1fcc744877e52dbbdf1f24d992
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 11df80fc8c418c76750f4fedb8a4116999800ecf
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751834"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058512"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
@@ -176,8 +176,8 @@ Key Vault の概要については、「[Azure Key Vault とは](overview.md)」
 | **CertificateEnroll** |証明書を登録します |
 | **CertificateRenew** |証明書を更新する |
 | **CertificatePendingGet** |保留中の証明書を取得します |
-| **CertificatePendingMerge** |証明書のマージを保留しています |
-| **CertificatePendingUpdate** |証明書の更新を保留しています |
+| **CertificatePendingMerge** | 証明書のマージが保留されています |
+| **CertificatePendingUpdate** | 証明書の更新が保留されています |
 | **CertificatePendingDelete** |保留中の証明書を削除します |
 | **CertificateNearExpiryEventGridNotification** |有効期限が近づいている証明書イベントが公開されました |
 | **CertificateExpiredEventGridNotification** |期限切れの証明書イベントが公開されました |

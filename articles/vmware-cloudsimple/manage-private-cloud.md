@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple プライベート クラウドの管理
 description: CloudSimple プライベート クラウドのリソースとアクティビティを管理するために使用できる機能について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 06/10/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4f2f66c2e1e2e8aa596393d4c69a757138ab5a91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d140b8cdf8bf88fac3c26199f66050f07e028d3d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895208"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336527"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>プライベート クラウドのリソースとアクティビティを管理する
 

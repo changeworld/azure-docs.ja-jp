@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 9ed060c1f3fc47aa7050c0f9b25c757953fa22fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fff105eadfffb8b38ebe5e95b3cfb0c79df0929b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98220339"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248946"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する
 
@@ -49,7 +49,7 @@ Azure のすべてのリソースには名前があります。 名前はスコ�
 
 - 組織にはトラフィックを異なる仮想ネットワークに分離するセキュリティ要件がありますか? 仮想ネットワークを接続するかどうかを選択できます。 仮想ネットワークを接続する場合は、ファイアウォールなどのネットワーク仮想アプライアンスを実装して、仮想ネットワーク間のトラフィックのフローを制御できます。 詳しくは、「[セキュリティ](#security)」および「[接続](#connectivity)」をご覧ください。
 - 組織には、仮想ネットワークを異なる[サブスクリプション](#subscriptions)または[リージョン](#regions)に分離する要件がありますか?
-- [ネットワーク インターフェイス](virtual-network-network-interface.md)を介して、VM と他のリソースの通信ができます。 各ネットワーク インターフェイスには、1 つ以上のプライベート IP アドレスが割り当てられています。 仮想ネットワークでは、ネットワーク インターフェイスと[プライベート IP アドレス](./private-ip-addresses.md)がいくつ必要ですか? 1 つの仮想ネットワークに設定できるネットワーク インターフェイスとプライベート IP アドレスの数には[制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)があります。
+- [ネットワーク インターフェイス](virtual-network-network-interface.md)を介して、VM と他のリソースの通信ができます。 各ネットワーク インターフェイスには、1 つ以上のプライベート IP アドレスが割り当てられています。 仮想ネットワークでは、ネットワーク インターフェイスと[プライベート IP アドレス](./ip-services/private-ip-addresses.md)がいくつ必要ですか? 1 つの仮想ネットワークに設定できるネットワーク インターフェイスとプライベート IP アドレスの数には[制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)があります。
 - 仮想ネットワークを別の仮想ネットワークまたはオンプレミス ネットワークに接続しますか? 仮想ネットワークを相互に、またはオンプレミスのネットワークに接続することはできますが、それ以外には接続できません。 詳しくは、「[接続](#connectivity)」をご覧ください。 別の仮想ネットワークまたはオンプレミスのネットワークに接続する各仮想ネットワークは、一意のアドレス空間を持っている必要があります。 各仮想ネットワークのアドレス空間には、1 つまたは複数のパブリック アドレス範囲またはプライベート アドレス範囲が割り当てられます。 アドレス範囲は、クラスレス ドメイン間ルーティング (CIDR) 形式 (10.0.0.0/16 など) で指定されます。 詳しくは、仮想ネットワークの[アドレス範囲](manage-virtual-network.md#add-or-remove-an-address-range)に関するページをご覧ください。
 - 組織には、異なる仮想ネットワークのリソースに対する管理要件がありますか? ある場合は、異なる仮想ネットワークにリソースを分離することによって、組織内のユーザーに対する[アクセス許可の割り当て](#permissions)を簡素化したり、異なる仮想ネットワークに異なるポリシーを割り当てたりすることができます。
 - Azure サービス リソースを仮想ネットワークにデプロイすると、独自の仮想ネットワークが作成されます。 Azure サービスが独自の仮想ネットワークを作成するかどうかを確認するには、「[仮想ネットワークにデプロイできるサービス](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)」をご覧ください。
@@ -64,7 +64,7 @@ Azure のすべてのリソースには名前があります。 名前はスコ�
 - Azure ストレージ アカウントや Azure SQL Database などの Azure リソースへのアクセスを、仮想ネットワーク サービス エンドポイントのある特定のサブネットに制限することができます。 さらに、インターネットからのリソースへのアクセスを拒否することができます。 複数のサブネットを作成し、一部のサブネットではサービス エンドポイントを有効にして、それ以外では無効にすることができます。 詳しくは、[サービス エンドポイント](virtual-network-service-endpoints-overview.md)およびサービス エンドポイントを有効にできる Azure リソースに関するページをご覧ください。
 - 仮想ネットワーク内の各サブネットには、0 個または 1 個のネットワーク セキュリティ グループを関連付けることができます。 各サブネットに関連付けるネットワーク セキュリティ グループは、同じでも、異なっていてもかまいません。 各ネットワーク セキュリティ グループには規則が含まれ、送信元と送信先の間でやり取りされるトラフィックを許可または拒否できます。 [ネットワーク セキュリティ グループ](#traffic-filtering)の詳細を確認する。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 仮想ネットワーク内のリソースが送受信するネットワーク トラフィックを、ネットワーク セキュリティ グループおよびネットワーク仮想アプライアンスを使ってフィルター処理できます。 サブネットからのトラフィックを Azure がルーティングする方法を制御できます。 また、仮想ネットワーク内のリソースを使用できる組織内のユーザーを制限することもできます。
 

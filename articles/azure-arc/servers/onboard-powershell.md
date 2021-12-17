@@ -1,14 +1,15 @@
 ---
 title: PowerShell を使用してハイブリッド マシンを Azure に接続する
 description: この記事では、Azure Arc 対応サーバーを使用して、エージェントをインストールし、マシンを Azure に接続する方法について説明します。 これは PowerShell で行うことができます。
-ms.date: 10/28/2020
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 07a00de9077378ce3e3f7a7578b66e93d1b04f2b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e1ca9528af5b529dd844e566905b6aa7f92429d2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584932"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324566"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>PowerShell を使用してハイブリッド マシンを Azure に接続する
 
@@ -54,6 +55,8 @@ Install-Module -Name Az.ConnectedMachine
         Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -Proxy http://<proxyURL>:<proxyport>
         ```
 
+      この構成を利用して、エージェントは HTTP プロトコルを使用してプロキシ サーバー経由で通信します。
+
 セットアップの完了後にエージェントが起動しない場合は、詳細なエラー情報のログを確認します。 Windows で、次のファイルをチェックします: *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log*。 Linux の場合は、次のファイルを確認します: */var/opt/azcmagent/log/himds.log*。
 
 ## <a name="install-and-connect-by-using-powershell-remoting"></a>PowerShell リモート処理を使用したインストールと接続
@@ -95,7 +98,7 @@ Azure Arc 対応サーバーで 1 つ以上の Windows サーバーを構成す�
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Azure Arc との接続を検証する
 
-エージェントをインストールし、そのエージェントを Azure Arc 対応サーバーに登録するように構成したら、Azure portal に移動して、サーバーが正常に接続されたことを確認します。 対象のマシンが [Azure portal](https://portal.azure.com) に表示されます。
+エージェントをインストールし、Azure Arc 対応サーバーに登録するように構成したら、Azure portal に移動して、サーバーが正常に接続したことを確認します。 対象のマシンが [Azure portal](https://portal.azure.com) に表示されます。
 
 ![サーバー ダッシュボードのスクリーンショット。サーバー接続が成功したことが示されています。](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
@@ -103,6 +106,6 @@ Azure Arc 対応サーバーで 1 つ以上の Windows サーバーを構成す�
 
 * 必要に応じて、[Connected Machine エージェントのトラブルシューティング ガイド](troubleshoot-agent-onboard.md)を参照してください。
 
-* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法について説明します。 VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)を使用したり、マシンの報告先が想定されている Log Analytics ワークスペースであることを確認したり、[VM での Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) を使用した監視を有効化したりできます。
+* [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。
 
-* [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)の詳細を確認します。 オペレーティング システムとワークロードの監視データを収集したい場合、またはそれを Azure Automation Runbook や Update Management などの機能を使用して管理したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。 このエージェントは、[Azure Security Center](../../security-center/security-center-introduction.md) など、他の Azure サービスを使用するためにも必要です。
+* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法について説明します。 VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)を使用したり、マシンの報告先が想定されている Log Analytics ワークスペースであることを確認したり、[VM 分析情報](../../azure-monitor/vm/vminsights-enable-policy.md) を使用した監視を有効化したりできます。

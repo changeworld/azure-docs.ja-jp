@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ca093294cb1782da5adeb02888696b38f57de4c
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93313632"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400112"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Azure Synapse Analytics Apache Spark プールの自動スケーリング
 
@@ -26,8 +26,8 @@ Apache Spark for Azure Synapse Analytics プールの自動スケーリング機
 
 |メトリック|説明|
 |---|---|
-|保留中の CPU の合計|すべての保留中のノードの実行を開始するために必要なコアの総数。|
-|保留中のメモリの合計|すべての保留中のノードの実行を開始するために必要なメモリの合計 (MB 単位)。|
+|保留中の CPU の合計|保留中の全ジョブを実行するために必要なコアの総数。|
+|保留中のメモリの合計|保留中の全ジョブを実行するために必要なメモリの合計 (MB 単位)。|
 |空き CPU の合計|アクティブなノード上のすべての未使用のコアの合計。|
 |空きメモリの合計|アクティブなノード上の未使用のメモリの合計 (MB 単位)。|
 |ノードごとの使用済みメモリ|ノードに対する負荷。 10 GB のメモリが使用されているノードは、使用済みメモリが 2 GB のワーカーより多くの負荷がかかっていると見なされます。|
@@ -45,7 +45,7 @@ Apache Spark for Azure Synapse Analytics プールの自動スケーリング機
 
 スケールアップの場合、Azure Synapse Autoscale サービスによって、現在の CPU とメモリの要件を満たすために必要な新しいノードの数が計算された後、必要な数のノードを追加するスケールアップ要求が発行されます。
 
-スケールダウンの場合、ノードごとの Executor の数、アプリケーション マスターの数、および現在の CPU とメモリの要件に基づき、自動スケーリングにより、特定の数のノードを削除する要求が発行されます。 また、サービスでは、現在のジョブの実行に基づいて、削除候補のノードも検出されます。 スケールダウン操作では、最初にノードの使用が停止された後、クラスターから削除されます。
+スケールダウンの場合、Executor の数、ノードごとのアプリケーション マスター数、現在の CPU とメモリの要件に基づき、自動スケーリングにより、特定の数のノードを削除する要求が発行されます。 また、サービスでは、現在のジョブの実行に基づいて、削除候補のノードも検出されます。 スケールダウン操作では、最初にノードの使用が停止された後、クラスターから削除されます。
 
 ## <a name="get-started"></a>はじめに
 
@@ -60,6 +60,26 @@ Apache Spark for Azure Synapse Analytics プールの自動スケーリング機
     * ノードの **最大** 数。
 
 ノードの初期数は最小値になります。 この値によって、インスタンスが作成されるときのその初期サイズが定義されます。 ノードの最小数を 3 より小さくすることはできません。
+
+Spark ジョブのステージ間で Executor の要件が大きく異なるシナリオや、処理されるデータ量が時間と共に変動するシナリオでは、必要に応じて、Executor の動的割り当てを有効にできます。 Executor の動的割り当てを有効にすることで、必要に応じてキャパシティを活用することができます。
+
+Spark プールの作成中、Executor の動的割り当てを有効にする際に、使用可能なノード数の上限を前提に、最小ノード数と最大ノード数を設定できます。 プール内に作成される新しいセッションごとに、これらの値が既定で設定されます。
+
+Apache Spark では、次のコードを使用して、Executor の動的割り当てを構成できます。
+
+```
+    %%configure -f
+    {
+        "conf" : {
+            "spark.dynamicAllocation.maxExecutors" : "6",
+            "spark.dynamicAllocation.enable": "true",
+            "spark.dynamicAllocation.minExecutors": "2"
+     }
+    }
+```
+コードで指定した既定値の方が、ユーザー インターフェイスで設定した値よりも優先されます。
+
+動的割り当てを有効にすると、Executor が、その使用率に応じてスケールアップまたはスケールダウンされます。 実行中のジョブのニーズに従って Executor を確実にプロビジョニングすることができます。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

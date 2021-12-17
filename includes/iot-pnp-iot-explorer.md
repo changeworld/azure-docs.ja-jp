@@ -1,15 +1,15 @@
 ---
 author: ericmitt
 ms.author: ericmitt
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 07/13/2020
-ms.openlocfilehash: 3ab9161c006a88a254b247a921512698ed46fa95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5dc023b8af9d5c7b8d972f905dd96458ae04b19b
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87351821"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400081"
 ---
 1. Azure IoT エクスプローラーを開きます。
 

@@ -1,20 +1,21 @@
 ---
-title: Azure Blob Storage の変更フィードを処理する | Microsoft Docs
+title: Azure Blob Storage の変更フィードを処理する
+titleSuffix: Azure Storage
 description: .NET クライアント アプリケーションで変更フィード ログを処理する方法を学習します
-author: normesta
-ms.author: normesta
-ms.date: 09/08/2020
+author: tamram
+ms.author: tamram
+ms.date: 10/01/2021
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cbd15bdc337bdb4a7221f634e6f9a66d4d503fe6
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89568253"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400802"
 ---
 # <a name="process-change-feed-in-azure-blob-storage"></a>Azure Blob Storage の変更フィードを処理する
 
@@ -31,13 +32,14 @@ ms.locfileid: "89568253"
 dotnet add package Azure.Storage.Blobs --version 12.5.1
 dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
+
 ## <a name="read-records"></a>レコードの読み取り
 
 > [!NOTE]
 > 変更フィードは、ストレージ アカウントの不変および読み取り専用のエンティティです。 任意の数のアプリケーションで、変更フィードの読み取りと処理を都合のよいときに同時に個別に行うことができます。 アプリケーションでの読み取り時に、変更フィードからレコードが削除されることはありません。 使用する各リーダーの読み取りまたは反復処理の状態は独立しており、アプリケーションによってのみ維持されます。
 
 この例では、変更フィードですべてのレコードを反復処理し、それらをリストに追加してから、そのリストを呼び出し元に返します。
- 
+
 ```csharp
 public async Task<List<BlobChangeFeedEvent>> ChangeFeedAsync(string connectionString)
 {
@@ -59,7 +61,7 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedAsync(string connectionSt
 }
 ```
 
-この例では、リスト内の各レコードからのいくつかの値をコンソールに出力します。 
+この例では、リスト内の各レコードからのいくつかの値をコンソールに出力します。
 
 ```csharp
 public void showEventData(List<BlobChangeFeedEvent> changeFeedEvents)
@@ -81,7 +83,7 @@ public void showEventData(List<BlobChangeFeedEvent> changeFeedEvents)
 
 変更フィードに自分の読み取り位置を保存してから、後でレコードの反復処理を再開するように選択できます。 読み取り位置を保存するには、変更フィード カーソルを取得します。 カーソルは **文字列** であり、アプリケーションでは、アプリケーションの設計に適した方法でその文字列を保存できます (たとえば、ファイルまたはデータベースへ)。
 
-この例では、変更フィード内のすべてのレコードを反復処理し、それらをリストに追加し、カーソルを保存します。 リストとカーソルは呼び出し元に返されます。 
+この例では、変更フィード内のすべてのレコードを反復処理し、それらをリストに追加し、カーソルを保存します。 リストとカーソルは呼び出し元に返されます。
 
 ```csharp
 public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCursorAsync
@@ -103,10 +105,10 @@ public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCurso
 
     foreach (BlobChangeFeedEvent changeFeedEvent in enumerator.Current.Values)
     {
-    
+
         changeFeedEvents.Add(changeFeedEvent);             
     }
-    
+
     // Update the change feed cursor.  The cursor is not required to get each page of events,
     // it is intended to be saved and used to resume iterating at a later date.
     cursor = enumerator.Current.ContinuationToken;
@@ -118,7 +120,7 @@ public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCurso
 
 変更フィード レコードが変更フィードにコミットされたときにそれらを処理するように選択できます。 「[仕様](storage-blob-change-feed.md#specifications)」を参照してください。 変更イベントは、平均 60 秒の期間に変更フィードに発行されます。 ポーリング間隔を指定する場合は、この期間を考慮して新しい変更をポーリングすることをお勧めします。
 
-この例では、変更を定期的にポーリングします。  変更レコードが存在する場合、このコードではそれらのレコードが処理され、変更フィード カーソルが保存されます。 このようにすると、プロセスがいったん停止されてから再び開始される場合、アプリケーションでカーソルが使用され、最後に中断した箇所のレコードの処理が再開されます。 この例では、ローカル アプリケーション構成ファイルにカーソルが保存されますが、自分のアプリケーションでは、自分のシナリオに最も適した形式で保存することができます。 
+この例では、変更を定期的にポーリングします。  変更レコードが存在する場合、このコードではそれらのレコードが処理され、変更フィード カーソルが保存されます。 このようにすると、プロセスがいったん停止されてから再び開始される場合、アプリケーションでカーソルが使用され、最後に中断した箇所のレコードの処理が再開されます。 この例では、ローカル アプリケーション構成ファイルにカーソルが保存されますが、自分のアプリケーションでは、自分のシナリオに最も適した形式で保存することができます。
 
 ```csharp
 public async Task ChangeFeedStreamAsync
@@ -151,7 +153,7 @@ public async Task ChangeFeedStreamAsync
                         "Event Type: " + eventType + "\n" +
                         "Api: " + api);
                 }
-            
+
                 // helper method to save cursor. 
                 SaveCursor(enumerator.Current.ContinuationToken);
             }
@@ -216,4 +218,5 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
 
 ## <a name="next-steps"></a>次のステップ
 
-変更フィード ログについて、さらに学習します。 [Azure Blob Storage の変更フィード](storage-blob-change-feed.md) に関するページを参照してください。
+- [データ保護の概要](data-protection-overview.md)
+- [Azure Blob Storage での変更フィード](storage-blob-change-feed.md)

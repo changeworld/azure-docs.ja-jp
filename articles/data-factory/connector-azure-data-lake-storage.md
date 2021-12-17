@@ -1,29 +1,31 @@
 ---
 title: Azure Data Lake Storage Gen2 でのデータのコピーと変換
-description: Azure Data Factory を使用して、Azure Data Lake Storage Gen2 との間でデータをコピーしたり、Azure Data Lake Storage Gen2 でデータを変換したりする方法について説明します。
-ms.author: jingwang
-author: linda33wj
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics パイプラインを使用して、Azure Data Lake Storage Gen2 との間でデータをコピーしたり、Azure Data Lake Storage Gen2 でデータを変換したりする方法について説明します。
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: 7a501a86f979bb508052c8957627ebfa7950fd63
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: 6db84461df49a335ce8a3c427fe1408b00034dcd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597594"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058219"
 ---
-# <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換
+# <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Lake Storage Gen2 (ADLS Gen2) は、ビッグ データ分析専用の機能セットであり、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) に組み込まれています。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Data Lake Storage Gen2 との間でデータをコピーし、Data Flow を使用して Azure Data Lake Storage Gen2 でデータを変換する方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、コピー アクティビティを使用して、Azure Data Lake Storage Gen2 との間でデータをコピーし、Data Flow を使用して Azure Data Lake Storage Gen2 でデータを変換する方法について説明します。 詳細については、[Azure Data Factory](introduction.md) または [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
 
 >[!TIP]
->データ レイクまたはデータ ウェアハウスの移行シナリオの詳細については、「[Azure Data Factory を使用してデータ レイクまたはデータ ウェアハウスから Azure にデータを移行する](data-migration-guidance-overview.md)」を参照してください。
+>データ レイクまたはデータ ウェアハウスの移行シナリオの詳細については、[データ レイクまたはデータ ウェアハウスから Azure にデータを移行する](data-migration-guidance-overview.md)方法に関する記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -47,9 +49,33 @@ Azure Data Lake Storage Gen2 (ADLS Gen2) は、ビッグ データ分析専用�
 >[!TIP]
 >Data Lake Storage Gen2 コネクタの使用方法のチュートリアルについては、[Azure Data Lake Storage Gen2 へのデータの読み込み](load-azure-data-lake-storage-gen2.md)に関する記事をご覧ください。
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-以下のセクションでは、Data Lake Storage Gen2 に固有の Data Factory エンティティの定義に使用されるプロパティについて説明します。
+## <a name="create-an-azure-data-lake-storage-gen2-linked-service-using-ui"></a>UI を使用して Azure Data Lake Storage Gen2 のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Azure Data Lake Storage Gen2 のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+2. Data Lake を検索し、Azure Data Lake Storage Gen2 コネクタを選択します。
+
+    :::image type="content" source="media/connector-azure-data-lake-storage/azure-data-lake-storage-connector.png" alt-text="Azure Data Lake Storage Gen2 コネクタを選択する。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-azure-data-lake-storage/configure-data-lake-storage-linked-service.png" alt-text="Azure Data Lake Storage Gen2 リンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、Data Lake Storage Gen2 に固有の Data Factory および Synapse パイプライン エンティティの定義に使用されるプロパティについて説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -57,11 +83,12 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
 
 - [アカウント キー認証](#account-key-authentication)
 - [サービス プリンシパルの認証](#service-principal-authentication)
-- [Azure リソースのマネージド ID 認証](#managed-identity)
-
+- [システム割り当てマネージド ID 認証](#managed-identity)
+- [ユーザー割り当てマネージド ID 認証](#user-assigned-managed-identity-authentication)
+- 
 >[!NOTE]
 >- Azure Storage ファイアウォールで有効にした **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** オプションを利用することで、パブリック Azure 統合ランタイムを使用して Data Lake Storage Gen2 に接続する場合は、[マネージド ID 認証](#managed-identity)を使用する必要があります。
->- PolyBase または COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込むときに、ソースまたはステージング Data Lake Storage Gen2 が Azure Virtual Network エンドポイントで構成されている場合は、Synapse の要求に従ってマネージド ID 認証を使用する必要があります。 構成の前提条件の詳細については、[マネージド ID 認証](#managed-identity)セクションを参照してください。
+>- PolyBase または COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込むときに、ソースまたはステージング Data Lake Storage Gen2 が Azure Virtual Network エンドポイントで構成されている場合は、Azure Synapse の要求に従ってマネージド ID 認証を使用する必要があります。 構成の前提条件の詳細については、[マネージド ID 認証](#managed-identity)セクションを参照してください。
 
 ### <a name="account-key-authentication"></a>アカウント キー認証
 
@@ -71,7 +98,7 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
 |:--- |:--- |:--- |
 | type | type プロパティは **AzureBlobFS** に設定する必要があります。 |はい |
 | url | Data Lake Storage Gen2 のエンドポイントのパターンは `https://<accountname>.dfs.core.windows.net` です。 | はい |
-| accountKey | Data Lake Storage Gen2 のアカウント キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
+| accountKey | Data Lake Storage Gen2 のアカウント キー。 このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 >[!NOTE]
@@ -115,7 +142,7 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
     - **シンクとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも **実行** アクセス許可を与えると共に、シンク フォルダーに対する **書き込み** アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも **ストレージ BLOB データ共同作成者** ロールを付与します。
 
 >[!NOTE]
->Data Factory の UI を使用して作成する場合で、なおかつ IAM でサービス プリンシパルに "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、**読み取りおよび実行** アクセス許可のあるパスを指定して続行してください。
+>UI を使用して作成する場合で、なおかつ IAM でサービス プリンシパルに "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、**読み取りおよび実行** アクセス許可のあるパスを指定して続行してください。
 
 リンクされたサービスでは、次のプロパティがサポートされています。
 
@@ -125,10 +152,10 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
 | url | Data Lake Storage Gen2 のエンドポイントのパターンは `https://<accountname>.dfs.core.windows.net` です。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
 | servicePrincipalCredentialType | サービス プリンシパル認証に使用する資格情報の種類。 使用できる値は **ServicePrincipalKey** と **ServicePrincipalCert** です。 | Yes |
-| servicePrincipalCredential | サービス プリンシパルの資格情報。 <br/> 資格情報の種類として **ServicePrincipalKey** を使用する場合は、アプリケーションのキーを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 <br/> 資格情報として **ServicePrincipalCert** を使用する場合、Azure Key Vault 内の証明書を参照します。 | はい |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 <br/> このプロパティは `servicePrincipalId` + `servicePrincipalKey` でもそのままサポートされています。 ADF により、新しいサービス プリンシパル証明書認証が追加されると、サービス プリンシパル認証の新しいモデルは `servicePrincipalId` + `servicePrincipalCredentialType` + `servicePrincipalCredential` になります。 | いいえ |
+| servicePrincipalCredential | サービス プリンシパルの資格情報。 <br/> 資格情報の種類として **ServicePrincipalKey** を使用する場合は、アプリケーションのキーを指定します。 このフィールドを **SecureString** とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 <br/> 資格情報として **ServicePrincipalCert** を使用する場合、Azure Key Vault 内の証明書を参照します。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 <br/> このプロパティは `servicePrincipalId` + `servicePrincipalKey` でもそのままサポートされています。 ADF により、新しいサービス プリンシパル証明書認証が追加されると、サービス プリンシパル認証の新しいモデルは `servicePrincipalId` + `servicePrincipalCredentialType` + `servicePrincipalCredential` になります。 | いいえ |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、Azure portal の右上隅をマウスでポイントすることで取得できます。 | はい |
-| azureCloudType | サービス プリンシパル認証の場合は、Azure Active Directory アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
+| azureCloudType | サービス プリンシパル認証の場合は、Azure Active Directory アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリまたは Synapse パイプラインのクラウド環境が使用されます。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 **例: サービス プリンシパル キー認証の使用**
@@ -186,24 +213,18 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
 }
 ```
 
-### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure リソースのマネージド ID 認証
+### <a name="system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> システム割り当てマネージド ID 認証
 
-データ ファクトリは、特定のデータ ファクトリを表す、[Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用する場合と同様に、Data Lake Storage Gen2 の認証にこのマネージド ID を直接使用できます。 これにより、この指定されたファクトリは、Data Lake Storage Gen2 にアクセスしてデータをコピーできます。
+データ ファクトリまたは Synapse ワークスペースは、[システム割り当てマネージド ID](data-factory-service-identity.md) に関連付けることができます。  独自のサービス プリンシパルを使用する場合と同様に、Data Lake Storage Gen2 の認証にこのシステム割り当てマネージド ID を直接使用できます。 これにより、この指定されたファクトリまたはワークスペースは、Data Lake Storage Gen2 にアクセスしてデータをコピーできます。
 
-Azure リソースのマネージド ID 認証を使用するには、次の手順に従います。
+システム割り当てマネージド ID 認証を使用するには、次の手順に従います。
 
-1. ファクトリと共に生成された **マネージド ID オブジェクト ID** の値をコピーして、[Data Factory のマネージド ID 情報を取得します](data-factory-service-identity.md#retrieve-managed-identity)。
+1. データ ファクトリまたは Synapse ワークスペースと共に生成された **マネージド ID オブジェクト ID** の値をコピーして、[システム割り当てマネージド ID 情報を取得](data-factory-service-identity.md#retrieve-managed-identity)します。
 
-2. マネージド ID に適切なアクセス許可を付与します。 Data Lake Storage Gen2 におけるアクセス許可の動作例については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
+2. システム割り当てマネージド ID に適切なアクセス許可を付与します。 Data Lake Storage Gen2 におけるアクセス許可の動作例については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
 
     - **ソースとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも **実行** アクセス許可を与えると共に、コピーするファイルの **読み取り** アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも **ストレージ BLOB データ閲覧者** ロールを付与します。
     - **シンクとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも **実行** アクセス許可を与えると共に、シンク フォルダーに対する **書き込み** アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも **ストレージ BLOB データ共同作成者** ロールを付与します。
-
->[!NOTE]
->Data Factory の UI を使用して作成する場合で、なおかつ IAM でマネージド ID に "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、**読み取りおよび実行** アクセス許可のあるパスを指定して続行してください。
-
->[!IMPORTANT]
->PolyBase または COPY ステートメントを使用して Data Lake Storage Gen2 から Azure Synapse Analytics にデータを読み込む場合に、Data Lake Storage Gen2 に対してマネージド ID 認証を使用するときは、必ず[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)の手順 1 から 3 にも従ってください。 これらの手順により、サーバーが Azure AD に登録され、ストレージ BLOB データ共同作成者のロールがサーバーに割り当てられます。 残りの処理は Data Factory によって行われます。 Azure Virtual Network エンドポイントを使用して Blob Storage を構成する場合は、さらに Synapse の要求に従って、Azure Storage アカウントで、 **[ファイアウォールと仮想ネットワーク]** 設定メニューの **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** をオンにする必要があります。
 
 リンクされたサービスでは、次のプロパティがサポートされています。
 
@@ -231,11 +252,61 @@ Azure リソースのマネージド ID 認証を使用するには、次の手�
 }
 ```
 
+### <a name="user-assigned-managed-identity-authentication"></a>ユーザー割り当てマネージド ID 認証
+
+データ ファクトリは、1 つ以上の[ユーザー割り当てマネージド ID](data-factory-service-identity.md#user-assigned-managed-identity) に割り当てることができます。 このユーザー割り当てマネージド ID を BLOB ストレージ認証に使用できます。これにより、Data Lake Storage Gen2 にアクセスしてデータをコピーできます。 Azure リソース用マネージド ID の詳細については、[Azure リソース用マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
+
+ユーザー割り当てマネージド ID 認証を使用するには、次の手順に従います。
+
+1. [1 つ以上のユーザー割り当てマネージド ID を作成](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)して、Azure Data Lake Storage Gen2 に対するアクセスを許可します。 Data Lake Storage Gen2 におけるアクセス許可の動作例については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
+
+    - **ソースとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも **実行** アクセス許可を与えると共に、コピーするファイルの **読み取り** アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも **ストレージ BLOB データ閲覧者** ロールを付与します。
+    - **シンクとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも **実行** アクセス許可を与えると共に、シンク フォルダーに対する **書き込み** アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも **ストレージ BLOB データ共同作成者** ロールを付与します。
+    
+2. 1 つ以上のユーザー割り当てマネージド ID をデータ ファクトリに割り当てて、ユーザー割り当てマネージド ID ごとに[資格情報を作成](credentials.md)します。 
+
+リンクされたサービスでは、次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | type プロパティは **AzureBlobFS** に設定する必要があります。 |はい |
+| url | Data Lake Storage Gen2 のエンドポイントのパターンは `https://<accountname>.dfs.core.windows.net` です。 | はい |
+| 資格情報 | ユーザー割り当てマネージド ID を資格情報オブジェクトとして指定します。 | はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
+
+**例:**
+
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+                },
+            },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+>[!NOTE]
+>Data Factory の UI を使用して作成する場合で、なおかつ IAM でマネージド ID に "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、**読み取りおよび実行** アクセス許可のあるパスを指定して続行してください。
+
+>[!IMPORTANT]
+>PolyBase または COPY ステートメントを使用して Data Lake Storage Gen2 から Azure Synapse Analytics にデータを読み込む場合に、Data Lake Storage Gen2 に対してマネージド ID 認証を使用するときは、必ず[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)の手順 1 から 3 にも従ってください。 これらの手順により、サーバーが Azure AD に登録され、ストレージ BLOB データ共同作成者のロールがサーバーに割り当てられます。 残りの処理は Data Factory によって行われます。 Azure Virtual Network エンドポイントを使用して BLOB ストレージを構成する場合は、さらに Azure Synapse の要求に従って、Azure Storage アカウントで、 **[ファイアウォールと仮想ネットワーク]** 設定メニューの **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** をオンにする必要があります。
+
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
 データセットの定義に使用できるセクションとプロパティの一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Data Lake Storage Gen2 では、形式ベースのデータセットの `location` 設定で次のプロパティがサポートされています。
 
@@ -279,7 +350,7 @@ Data Lake Storage Gen2 では、形式ベースのデータセットの `locatio
 
 ### <a name="azure-data-lake-storage-gen2-as-a-source-type"></a>ソースの種類としての Azure Data Lake Storage Gen2
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 ADLS Gen2 からデータをコピーするには、いくつかのオプションがあります。
 
@@ -349,7 +420,7 @@ Data Lake Storage Gen2 では、形式ベースのコピー ソースの `storeS
 
 ### <a name="azure-data-lake-storage-gen2-as-a-sink-type"></a>シンクの種類としての Azure Data Lake Storage Gen2
 
-[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
+[!INCLUDE [data-factory-v2-file-sink-formats](includes/data-factory-v2-file-sink-formats.md)]
 
 Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeSettings` 設定で次のプロパティがサポートされます。
 
@@ -359,6 +430,7 @@ Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeS
 | copyBehavior             | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ       |
 | blockSizeInMB | ADLS Gen2 にデータを書き込むために使用するブロック サイズを MB 単位で指定します。 詳細は、[ブロック BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) に関するページを参照してください。 <br/>指定できる値は、**4 MB から 100 MB** です。 <br/>既定では、ソース ストアの種類とデータに基づいて、ADF によってブロック サイズが自動的に決定されます。 ADLS Gen2 への非バイナリ コピーの場合、既定のブロック サイズは 100 MB なので、最大 4.95 TB のデータに収まります。 データが大きくない場合、特に、ネットワークが不十分な状態でセルフホステッド統合ランタイムを使用し、操作のタイムアウトやパフォーマンスの問題が発生する場合は、最適ではない可能性があります。 ブロック サイズは明示的に指定できますが、blockSizeInMB*50000 が確実にデータを格納するのに十分な大きさであるようにします。そうしないと、コピー アクティビティの実行は失敗します。 | いいえ |
 | maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ       |
+| metadata |シンクにコピーするときにカスタム メタデータを設定します。 `metadata` 配列の各オブジェクトは追加列を表します。 `name` ではメタデータ キー名を定義し、`value` では、そのキーのデータ値を指定します。 [属性の保持機能](./copy-activity-preserve-metadata.md#preserve-metadata)が使用されている場合は、ソース ファイルのメタデータを使用して、指定されたメタデータの和集合の作成や上書きが行われます。<br/><br/>使用できるデータ値:<br/>- `$$LASTMODIFIED`: 予約済みの変数によって、ソース ファイルの最終更新時刻を格納することを指定します。 バイナリ形式のファイルベースのソースにのみ適用されます。<br/><b>- 式<b><br/>- <b>静的な値<b>| いいえ       |
 
 **例:**
 
@@ -387,7 +459,21 @@ Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeS
                 "type": "ParquetSink",
                 "storeSettings":{
                     "type": "AzureBlobFSWriteSettings",
-                    "copyBehavior": "PreserveHierarchy"
+                    "copyBehavior": "PreserveHierarchy",
+                    "metadata": [
+                        {
+                            "name": "testKey1",
+                            "value": "value1"
+                        },
+                        {
+                            "name": "testKey2",
+                            "value": "value2"
+                        },
+                        {
+                            "name": "lastModifiedKey",
+                            "value": "$$LASTMODIFIED"
+                        }
+                    ]
                 }
             }
         }
@@ -439,7 +525,7 @@ Amazon S3、Azure Blob、Azure Data Lake Storage Gen2 から Azure Data Lake Sto
 Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーするときに、データと共に POSIX アクセス制御リスト (ACL) を保持することもできます。 詳細については、[Data Lake Storage Gen1/Gen2 から Gen2 への ACL の保持](copy-activity-preserve-metadata.md#preserve-acls)に関するページをご覧ください。
 
 >[!TIP]
->Azure Data Lake Storage Gen1 から Gen2 への一般的なデータ コピーを実行する場合、チュートリアルとベスト プラクティスについては、「[Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする](load-azure-data-lake-storage-gen2-from-gen1.md)」をご覧ください。
+>Azure Data Lake Storage Gen1 から Gen2 への一般的なデータ コピーに関するチュートリアルとベスト プラクティスについては、[Azure Data Lake Storage Gen1 から Gen2 へのデータのコピー](load-azure-data-lake-storage-gen2-from-gen1.md)に関する記事を参照してください。
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
@@ -458,7 +544,7 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 
 ソース変換では、Azure Data Lake Storage Gen2 内のコンテナー、フォルダー、または個々のファイルから読み取ることができます。 **[Source options]\(ソース オプション\)** タブで、ファイルの読み取り方法を管理できます。 
 
-![ソース オプション](media/data-flow/sourceOptions1.png "ソース オプション")
+:::image type="content" source="media/data-flow/sourceOptions1.png" alt-text="ソース オプション":::
 
 **[Wildcard path]\(ワイルドカード パス\)** : ワイルドカード パターンを使用すると、ADF は、単一のソース変換で一致する各フォルダーとファイルをループ処理するよう指示されます。 これは、単一のフロー内の複数のファイルを処理するのに効果的な方法です。 既存のワイルドカード パターンをポイントしたときに表示される + 記号を使って複数のワイルドカード一致パターンを追加します。
 
@@ -480,11 +566,11 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 
 最初に、ワイルドカードを設定して、パーティション分割されたフォルダーと読み取るリーフ ファイルのすべてのパスを含めます。
 
-![パーティション ソース ファイルの設定](media/data-flow/partfile2.png "パーティション ファイルの設定")
+:::image type="content" source="media/data-flow/partfile2.png" alt-text="パーティション ソース ファイルの設定":::
 
 パーティションのルート パス設定を使用して、フォルダー構造の最上位レベルを定義します。 データ プレビューを使用してデータの内容を表示すると、ADF によって、各フォルダー レベルで見つかった解決済みのパーティションが追加されることがわかります。
 
-![パーティションのルート パス](media/data-flow/partfile1.png "パーティション ルート パスのプレビュー")
+:::image type="content" source="media/data-flow/partfile1.png" alt-text="パーティションのルート パス":::
 
 **[List of files]:** これはファイル セットです。 処理する相対パス ファイルの一覧を含むテキスト ファイルを作成します。 このテキスト ファイルをポイントします。
 
@@ -496,15 +582,15 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 
 ワイルドカードを含むソース パスがある場合、構文は次のようになります。
 
-```/data/sales/20??/**/*.csv```
+`/data/sales/20??/**/*.csv`
 
 "移動元" は次のように指定できます。
 
-```/data/sales```
+`/data/sales`
 
 "移動先" は次のように指定できます。
 
-```/backup/priorSales```
+`/backup/priorSales`
 
 この場合、ソースとして指定された /data/sales の下のすべてのファイルは /backup/priorSales に移動されます。
 
@@ -517,7 +603,7 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 
 シンク変換では、Azure Data Lake Storage Gen2 内のコンテナーまたはフォルダーに書き込むことができます。 **[設定]** タブで、ファイルへの書き込み方法を管理できます。
 
-![シンクのオプション](media/data-flow/file-sink-settings.png "シンク オプション")
+:::image type="content" source="media/data-flow/file-sink-settings.png" alt-text="シンクのオプション":::
 
 **Clear the folder**\(フォルダーのクリア\):データが書き込まれる前に、書き込み先のフォルダーをクリアするかどうかを決定します。
 
@@ -529,6 +615,34 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
    * **Output to a single file**(1 つのファイルに出力する):パーティション分割された出力ファイルを単一の名前付きファイルに結合します。 パスは、データセット フォルダーからの相対パスです。 このマージ操作は、ノード サイズによっては失敗する可能性があることに注意してください。 このオプションは、大規模なデータセットに対しては推奨されません。
 
 **Quote all**\(すべてを引用符で囲む\):すべての値を引用符で囲むかどうかを決定します
+    
+### ```umask```
+
+必要に応じて、所有者、ユーザー、グループに POSIX の read、write、execute フラグを使用して、ファイルの ```umask``` を設定できます。
+    
+### <a name="pre-processing-and-post-processing-commands"></a>前処理および後処理コマンド
+    
+必要に応じて、ADLS Gen2 シンクへの書き込み前または書き込み後に、Hadoop ファイルシステム コマンドを実行できます。 次のコマンドがサポートされています。
+    
+* ```cp```
+* ```mv```
+* ```rm```
+* ```mkdir```
+
+例:
+
+* ```mkdir /folder1```
+* ```mkdir -p folder1```
+* ```mv /folder1/*.* /folder2/```
+* ```cp /folder1/file1.txt /folder2```
+* ```rm -r /folder1```
+
+式ビルダーを介して、パラメーターもサポートされています。次に例を示します。
+
+`mkdir -p {$tempPath}/commands/c1/c2`
+`mv {$tempPath}/commands/*.* {$tempPath}/commands/c1/c2`
+
+既定では、フォルダーは user/root として作成されます。 "/" を使用して最上位のコンテナーを参照します。
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
@@ -557,7 +671,7 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 | modifiedDatetimeStart | 最終変更日時属性に基づくファイル フィルター。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> 大量のファイルでファイル フィルターを実行する場合、この設定を有効にすることで、データ移動の全体的なパフォーマンスが影響を受けます。 <br/><br/> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。 `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。 `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。| いいえ |
 | modifiedDatetimeEnd | 最終変更日時属性に基づくファイル フィルター。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> 大量のファイルでファイル フィルターを実行する場合、この設定を有効にすることで、データ移動の全体的なパフォーマンスが影響を受けます。 <br/><br/> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。 `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。 `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。| いいえ |
 | format | ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>特定の形式のファイルを解析または生成する場合、サポートされるファイル形式の種類は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、「[テキスト形式](supported-file-formats-and-compression-codecs-legacy.md#text-format)」、「[JSON 形式](supported-file-formats-and-compression-codecs-legacy.md#json-format)」、「[AVRO 形式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)」、「[ORC 形式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)」、[Parquet 形式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)」の各セクションをご覧ください。 |いいえ (バイナリ コピー シナリオのみ) |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs-legacy.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs-legacy.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、```**GZip**, **Deflate**, **BZip2**, and **ZipDeflate**``` です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
 
 >[!TIP]
 >フォルダーの下のすべてのファイルをコピーするには、**folderPath** のみを指定します。<br>特定の名前の単一のファイルをコピーするには、フォルダー部分で **folderPath**、ファイル名で **fileName** を指定します。<br>フォルダーの下のファイルのサブセットをコピーするには、フォルダー部分で **folderPath**、ワイルドカード フィルターで **fileName** を指定します。 
@@ -674,4 +788,4 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 
 ## <a name="next-steps"></a>次のステップ
 
-Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+コピー アクティビティによってソース、シンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

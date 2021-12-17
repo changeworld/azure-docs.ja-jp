@@ -9,16 +9,16 @@ zone_pivot_groups: programming-languages-set-face
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 01/15/2021
+ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: devx-track-python, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 画像による顔検索, 顔認識検索, 顔認識, 顔認識アプリ
-ms.openlocfilehash: ae3a5571019fedce4c255b942b1a5139c2f9795b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0abde121ab87a1bf35f784a3a9635de1515978a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555161"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356585"
 ---
 # <a name="quickstart-use-the-face-client-library"></a>クイック スタート:Face クライアント ライブラリを使用する
 

@@ -7,22 +7,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.custom: seodec18
-ms.openlocfilehash: 1208d95a282ca6e236d9d6be8013f51dead90d13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/25/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9e03531f7db88d082b6ffa36d39173d2f5481d00
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94376656"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069313"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>ナレッジ ベースにおしゃべりを追加する
 
 ボットにおしゃべりを追加すると、ボットがより会話的で魅力的なものになります。 QnA Maker のおしゃべり機能を使用すると、定義済みのおしゃべりのセットを、ナレッジ ベース (KB) に簡単に追加することができます。 これを使ってボットのパーソナリティの作成を始めることができ、それにより最初から作成するよりもコストと時間が節約されます。
 
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
+
 このデータセットには、複数のペルソナ (Professional、Friendly、Witty など) の音声の約 100 のシナリオのおしゃべりが含まれています。 ボットの音声に最も近いペルソナを選択します。 ユーザー クエリを指定すると、QnA Maker がそれを、最も近い既知のおしゃべり QnA と一致させようとします。
 
-さまざまなパーソナリティのいくつかの例を、次に示します。 すべてのパーソナリティの[データセット](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)とパーソナリティの詳細を確認できます。
+さまざまなパーソナリティのいくつかの例を、次に示します。 すべてのパーソナリティの[データセット](https://github.com/microsoft/botframework-cli/blob/main/packages/qnamaker/docs/chit-chat-dataset.md)とパーソナリティの詳細を確認できます。
 
 `When is your birthday?` のユーザー クエリでは、パーソナリティごとに定型の応答が用意されています。
 
@@ -60,15 +62,7 @@ ms.locfileid: "94376656"
 ## <a name="add-chit-chat-to-an-existing-kb"></a>既存の KB におしゃべりを追加する
 KB を選択し、 **[設定]** ページに移動します。 適切な **.tsv** 形式のすべてのおしゃべりデータセットへのリンクがあります。 目的のパーソナリティをダウンロードして、ファイル ソースとしてアップロードします。 ファイルをダウンロードおよびアップロードするときは、形式またはメタデータを編集しないでください。
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 ![既存の KB におしゃべりを追加する](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
-
-![既存の KB プレビュー リリースにおしゃべりを追加する](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset-v2.png)
-
----
 
 ## <a name="edit-your-chit-chat-questions-and-answers"></a>おしゃべりの質問や返答を編集する
 KB を編集するときは、選択したパーソナリティに基づいて、おしゃべりの新しいソースが表示されます。 ここで、他のソースと同様に、変更した質問を追加したり返答を編集したりできます。

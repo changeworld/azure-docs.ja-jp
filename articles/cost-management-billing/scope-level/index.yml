@@ -1,0 +1,52 @@
+### YamlMime:Landing
+title: 一元管理された Azure ハイブリッド特典
+summary: Azure ハイブリッド特典は、オンプレミスのコア ベースの Windows Server と SQL Server のライセンスを、アクティブなソフトウェア アシュアランス (またはサブスクリプション) と一緒に Azure に移行できるようにするライセンス特典です。 これにより、クラウドでワークロードを実行するコストを大幅に削減できます。 Azure portal で、Azure サブスクリプション全体または全体的な課金アカウントのスコープにライセンスを割り当てることで、SQL Server の Azure ハイブリッド特典を一元管理できるようになりました。
+metadata:
+  title: Azure ハイブリッド特典のドキュメント
+  description: Azure ハイブリッド特典は、オンプレミスのコア ベースの Windows Server と SQL Server のライセンスを、アクティブなソフトウェア アシュアランス (またはサブスクリプション) と一緒に Azure に移行できるようにするライセンス特典です。 これにより、クラウドでワークロードを実行するコストを大幅に削減できます。 Azure portal で、Azure サブスクリプション全体または全体的な課金アカウントのスコープにライセンスを割り当てることで、SQL Server の Azure ハイブリッド特典を一元管理できるようになりました。
+  ms.service: cost-management-billing
+  ms.subservice: ahb
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.date: 09/30/2021
+  ms.openlocfilehash: f9383ccbda8bedef23435b2b909a5025529f28c3
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130226604"
+landingContent:
+- title: はじめに
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 一元管理とは
+      url: overview-azure-hybrid-benefit-scope.md?toc=/azure/cost-management-billing/scope-level/toc.json
+  - linkListType: tutorial
+    links:
+    - text: 一元管理された Azure ハイブリッド特典を最適化する
+      url: tutorial-azure-hybrid-benefits-sql.md?toc=/azure/cost-management-billing/scope-level/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: SQL Server ライセンスの割り当てを作成する
+      url: create-sql-license-assignments.md?toc=/azure/cost-management-billing/scope-level/toc.json
+- title: 管理する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 一元管理された Azure ハイブリッド特典への移行
+      url: transition-existing.md?toc=/azure/cost-management-billing/scope-level/toc.json
+  - linkListType: reference
+    links:
+    - text: よく寄せられる質問
+      url: faq-azure-hybrid-benefit-scope.yml?toc=/azure/cost-management-billing/scope-level/toc.json
+- title: 詳細情報
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure で割り当てられたライセンスが適用される方法
+      url: manage-licenses-centrally.md?toc=/azure/cost-management-billing/scope-level/toc.json
+    - text: SQL Server HADR と Azure ハイブリッド特典
+      url: sql-server-hadr-licenses.md?toc=/azure/cost-management-billing/scope-level/toc.json

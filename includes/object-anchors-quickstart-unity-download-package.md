@@ -2,20 +2,20 @@
 author: craigktreasure
 ms.service: azure-object-anchors
 ms.topic: include
-ms.date: 02/18/2021
+ms.date: 06/10/2021
 ms.author: crtreasu
-ms.openlocfilehash: ada83d6263ef033208200d810c53c5f045acc9a7
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f358fc0d82fe28dd06a0102afcfde7ff29fd9ffe
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104316"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796996"
 ---
 次の手順は、Unity 用 Azure Object Anchors パッケージのダウンロードです。
 
 # <a name="download-with-web-browser"></a>[Web ブラウザーを使用してダウンロードする](#tab/unity-package-web-ui)
 
-[ここ](https://aka.ms/aoa/unity-sdk/package)で Unity 用 Azure Object Anchors パッケージを見つけます。 目的のバージョンを選択し、 **[Download]\(ダウンロード\)** ボタンを使用してパッケージをダウンロードします。
+[ここで](https://aka.ms/aoa/unity-sdk/package) Unity 用 Azure Object Anchors パッケージ (`com.microsoft.azure.object-anchors.runtime`) を見つけます。 目的のバージョンを選択し、 **[Download]\(ダウンロード\)** ボタンを使用してパッケージをダウンロードします。
 
 # <a name="download-with-npm"></a>[NPM を使用してダウンロードする](#tab/unity-package-npm)
 
@@ -38,6 +38,6 @@ npm pack com.microsoft.azure.object-anchors.runtime@<version_number> --registry 
 
 # <a name="install-with-mixed-reality-feature-tool-beta"></a>[Mixed Reality Feature Tool (ベータ) を使用してインストールする](#tab/unity-package-mixed-reality-feature-tool)
 
-次の手順に進みます。 後の手順で、<a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Mixed Reality Feature Tool</a> を使用します。
+次の手順に進みます。 後の手順で、<a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Mixed Reality Feature Tool</a> を使用します。
 
 ---

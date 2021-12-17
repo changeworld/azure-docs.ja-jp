@@ -7,20 +7,19 @@ ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4be775d8a6a8c476bcc659a902c7f43c12a6d6d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0533ebb6a771329731590007f24426eec2e4398f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96905334"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727289"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Azure Maps にデータのフィードバックを提供する
 
 Azure Maps は 2018 年 5 月から使用できるようになりました。 さまざまな種類のビジネス ユース ケースを持つ企業のお客様をサポートするために、Azure Maps では新しいマップ データ、使いやすい REST API、強力な SDK を提供しています。 現実の世界は刻々と変化しており、事実に基づいたデジタル表現をお客様に提供することが重要です。 お客様が施設のオープンまたはクローズを計画している場合は、マップを迅速に更新する必要があります。 そうすれば、適切な施設で配送、保守、またはカスタマー サービスを効率的に計画できます。 Microsoft では、お客様がデータのフィードバックを直接提供できるように Azure Maps データのフィードバック サイトを作成しました。 お客様のデータ フィードバックは、データ プロバイダーとそのマップ エディターに直接送信されます。 そこでは、フィードバックを迅速に評価し、マッピング製品に組み込むことができます。  
 
-[Azure Maps Data (プレビュー) フィードバック サイト](https://feedback.azuremaps.com)を使用すると、お客様は、特にビジネスの目的地と居住地の住所に関するマップ データのフィードバックを簡単に提供できます。 この記事では、Azure Maps フィードバック ツールを使用してさまざまなフィードバックを提供する方法について説明します。
+[Azure Maps データ フィードバック サイト](https://feedback.azuremaps.com)を使用すると、お客様は、特にビジネスの目的地と居住地の住所に関するマップ データのフィードバックを簡単に提供できます。 この記事では、Azure Maps フィードバック ツールを使用してさまざまなフィードバックを提供する方法について説明します。
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>事業所または居住地の住所を追加する 
 

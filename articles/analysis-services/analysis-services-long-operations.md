@@ -4,21 +4,21 @@ description: この記事では、実行時間の長い操作に関するベス�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 04/27/2021
 ms.author: owend
-ms.openlocfilehash: 4e069effae0cb7f834b2c3dac696d05304d841a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65d1b6cbee1040846fec2d8e1dd8153eedf9eabc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92014836"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580967"
 ---
 # <a name="best-practices-for-long-running-operations"></a>実行時間の長い操作に関するベスト プラクティス
 
 Azure Analysis Services では、*ノード* は、サーバー リソースが実行されているホスト仮想マシンを表します。 サーバー リソースが別のノードに移動した場合、実行時間の長いクエリ、更新操作、クエリのスケールアウト同期など、一部の操作が失敗する可能性があります。 このシナリオでの一般的なエラー メッセージには、次のようなものがあります。
 
 - "An error has occurred while trying to locate a long running XMLA request. (実行時間の長い XMLA 要求の特定中にエラーが発生しました。) The request might have been interrupted by service upgrade or server restart. (サービスのアップグレードまたはサーバーの再起動によって要求が中断された可能性があります。)"
-- "Job with ID '<guid>for model '<database>' was canceled due to service error (inactivity) with message 'Cancelling the refresh request since it was stuck without any updates. (ID 'for model' のジョブはサービス エラーのためキャンセルされました。メッセージは次のとおりです。処理が停止して更新を実行できないため更新要求をキャンセルしています。) This is an internal service issue. (これは内部サービスの問題です。) Please resubmit the job or file a ticket to get help if this issue happens repeatedly. (この問題が解決しない場合は、ジョブを再送信するか、サポートを受けるためのチケットを送信してください。)"
+- "Job with ID '\<guid\>for model '\<database\>' was canceled due to service error (inactivity) with message 'Cancelling the refresh request since it was stuck without any updates. (ID 'for model' のジョブはサービス エラーのためキャンセルされました。メッセージは次のとおりです。処理が停止して更新を実行できないため更新要求をキャンセルしています。) This is an internal service issue. (これは内部サービスの問題です。) Please resubmit the job or file a ticket to get help if this issue happens repeatedly. (この問題が解決しない場合は、ジョブを再送信するか、サポートを受けるためのチケットを送信してください。)"
 
 実行時間の長い操作が中断される理由は多数あります。 たとえば、次のような Azure の更新プログラムがあります。 
 - オペレーティング システムの修正プログラム 

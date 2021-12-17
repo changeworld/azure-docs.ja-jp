@@ -1,16 +1,16 @@
 ---
-author: msmimart
+author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 06/02/2020
-ms.author: mimart
-ms.openlocfilehash: 2ad6b90616077a6d18550e86692b109bda622af7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/26/2021
+ms.author: kengaderdus
+ms.openlocfilehash: f1fc26d6e07df49fb0fd44af5dbe5e099a1daf7b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96026432"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039956"
 ---
 アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスか以前の **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](../articles/active-directory-b2c/app-registrations-training-guide.md)。
 
@@ -24,7 +24,7 @@ ms.locfileid: "96026432"
 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory or any identity provider]\(任意の組織のディレクトリまたは任意の ID プロバイダー内のアカウント\)** を選択します。
 1. **[リダイレクト URI]** で、ドロップダウンを使用して **[パブリック クライアント/ネイティブ (モバイルとデスクトップ)]** を選択します。
 1. 一意のスキームを含めたリダイレクト URI を入力します。 たとえば、「 `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 」のように入力します。 リダイレクト URI を選択する際には、重要な考慮事項があります。
-    * **開発**: 開発用途では、リダイレクト URI を `http://localhost` に設定することができます。要求に含まれるすべてのポートが Azure AD B2C によって考慮されます。 登録された URI にポートが含まれている場合、そのポートのみが Azure AD B2C によって使用されます。 たとえば、登録されたリダイレクト URI が `http://localhost` である場合、要求におけるリダイレクト URI を `http://localhost:<randomport>` とすることができます。 登録されたリダイレクト URI が `http://localhost:8080` である場合、要求におけるリダイレクト URI は `http://localhost:8080` とする必要があります。
+    * **開発**: 開発用途と **デスクトップ アプリ** では、リダイレクト URI を `http://localhost` に設定することができます。要求に含まれるすべてのポートが Azure AD B2C によって考慮されます。 登録された URI にポートが含まれている場合、そのポートのみが Azure AD B2C によって使用されます。 たとえば、登録されたリダイレクト URI が `http://localhost` である場合、要求におけるリダイレクト URI を `http://localhost:<randomport>` とすることができます。 登録されたリダイレクト URI が `http://localhost:8080` である場合、要求におけるリダイレクト URI は `http://localhost:8080` とする必要があります。
     * **一意**:リダイレクト URI のスキームは、すべてのアプリケーションで一意である必要があります。 `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` の例では、`com.onmicrosoft.contosob2c.exampleapp` はスキームです。 このパターンに従う必要があります。 2 つのアプリケーションで同じスキームを共有している場合、ユーザーにはアプリケーションを選択する選択肢が与えられます。 ユーザーが正しく選択しなかった場合、サインインは失敗します。
     * **完全**:リダイレクト URI には、スキームとパスの両方が必要です。 パスには、ドメインの後に少なくとも 1 つのスラッシュを含める必要があります。 たとえば、`//oauth/` は機能し、`//oauth` は失敗します。 アンダースコアなどの特殊文字は URI に含めないでください。
 1. **[アクセス許可]** で、 *[openid と offline_access アクセス許可に対して管理者の同意を付与します]* チェック ボックスをオンにします。

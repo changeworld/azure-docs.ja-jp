@@ -3,12 +3,12 @@ title: Container insights を使用してハイブリッド Kubernetes クラス
 description: この記事では、Azure Stack またはその他の環境でホストされている Kubernetes クラスターを監視するように Container insights を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 90a4c14397df8e70fc8f3d88bc339f826bb1ccc9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f9fe3e20ec7486d9c6f18d1494ec3bedbdc17e86
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767025"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231553"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-container-insights"></a>Container insights を使用してハイブリッド Kubernetes クラスターを構成する
 
@@ -38,7 +38,7 @@ Container insights は、Azure Kubernetes Service (AKS) と、Azure でホスト
 
 - [Log Analytics ワークスペース。](../logs/design-logs-deployment.md)
 
-    Container insights では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../logs/quick-create-workspace.md) のいずれかを使用して作成できます。
+    Container insights では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-workspace-configuration.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../logs/quick-create-workspace.md) のいずれかを使用して作成できます。
 
     >[!NOTE]
     >同一の Log Analytics ワークスペースに名称が同じクラスターが複数ある場合には、そのワークスペースに対してクラスターの監視を有効にすることはできません。 クラスター名は一意になっている必要があります。

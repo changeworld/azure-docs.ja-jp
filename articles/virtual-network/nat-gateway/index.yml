@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Virtual Network NAT のドキュメント
+summary: Azure Virtual Network NAT の使用方法について説明します。 クイックスタート、チュートリアル、サンプルなどを使用して、NAT ゲートウェイをデプロイする方法を説明します。
+metadata:
+  title: Azure Virtual Network NAT のドキュメント - チュートリアル、クイックスタート、API リファレンス
+  description: Azure Virtual Network NAT の使用方法について説明します。 クイックスタート、チュートリアル、サンプルなどを使用して、NAT ゲートウェイをデプロイする方法を説明します。
+  services: virtual-network
+  ms.service: virtual-network
+  ms.subservice: nat
+  ms.topic: landing-page
+  ms.collection: collection
+  author: asudbring
+  ms.author: allensu
+  ms.date: 04/05/2021
+  ms.openlocfilehash: 86a8371d5adbb377aeea7c0748f0ba787be27a95
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131466452"
+landingContent:
+- title: Azure Virtual Network NAT について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Virtual Network NAT とは
+      url: nat-overview.md
+  - linkListType: concept
+    links:
+    - text: NAT ゲートウェイ リソースを使用した仮想ネットワークの設計
+      url: nat-gateway-resource.md
+- title: 開始
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: NAT ゲートウェイの作成と検証
+      url: tutorial-create-nat-gateway-portal.md
+  - linkListType: tutorial
+    links:
+    - text: NAT ゲートウェイをパブリック ロード バランサーと統合する
+      url: tutorial-nat-gateway-load-balancer-public-portal.md
+    - text: NAT ゲートウェイを内部ロード バランサーを統合する
+      url: tutorial-nat-gateway-load-balancer-internal-portal.md
+  - linkListType: video
+    links:
+    - text: Azure NAT Gateway を使用してよりよいアウトバウンド接続を実現する方法
+      url: https://www.youtube.com/watch?v=2Ng_uM0ZaB4

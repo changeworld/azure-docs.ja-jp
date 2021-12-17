@@ -1,27 +1,29 @@
 ---
 title: オープン ハブを介して SAP Business Warehouse からデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、オープン ハブを介して SAP Business Warehouse (BW) から、サポートされているシンク データ ストアへデータをコピーする方法について説明します。
-ms.author: jingwang
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、オープン ハブを介して SAP Business Warehouse (BW) から、サポートされているシンク データ ストアへデータをコピーする方法について説明します。
 author: linda33wj
+ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 04/02/2021
-ms.openlocfilehash: 5efc27a1ad1a26c1ae50b6aecf250afef052e3de
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: 9e4bc92687c098709de5298d7ea22ed81b1e3783
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220540"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836122"
 ---
-# <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
+# <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、オープン ハブを介して SAP Business Warehouse (BW) からデータをコピーする方法の概要を説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory および Synapse Analytics パイプラインでコピー アクティビティを使用して、オープン ハブを介して SAP Business Warehouse (BW) からデータをコピーする方法の概要を説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 >[!TIP]
->SAP データ統合シナリオにおける ADF の全体的なサポートについては、各 SAP コネクタの詳細な情報、比較、およびガイダンスが含まれる、[Azure Data Factory を使用した SAP データの統合に関するホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)を参照してください。
+>SAP データ統合シナリオの全体的なサポートについては、各 SAP コネクタの詳細な説明、比較、ガイダンスが含まれた、[SAP データ統合に関するホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -46,28 +48,28 @@ SAP Business Warehouse のデータは、オープン ハブを介して、サ�
 
 SAP BW オープン ハブ宛先 (OHD) は、SAP データの中継先のターゲットを定義します。 SAP データ転送プロセス (DTP) によってサポートされているすべてのオブジェクトは、たとえば DSO、InfoCube、DataSource などのオープン ハブ データ ソースとして使用できます。中継されたデータが保存されるオープン ハブ宛先の種類は、データベース テーブル (ローカルまたはリモート) またはフラット ファイルである場合があります。 この SAP BW オープン ハブ コネクタは、BW の OHD ローカル テーブルからのデータ コピーをサポートしています。 その他の種類を使用している場合は、その他のコネクタを使用してデータベースまたはファイル システムに直接接続できます。
 
-![SAP BW オープン ハブ](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
+:::image type="content" source="./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png" alt-text="SAP BW オープン ハブ":::
 
 ## <a name="delta-extraction-flow"></a>差分抽出フロー
 
-ADF SAP BW オープン ハブ コネクタでは、次の 2 つの省略可能なプロパティが提供されます。オープン ハブからの差分読み込みを処理するために使用できる `excludeLastRequest` と `baseRequestId` です。 
+SAP BW オープン ハブ コネクタでは、次の 2 つの省略可能なプロパティが提供されます。オープン ハブからの差分読み込みを処理するために使用できる `excludeLastRequest` と `baseRequestId` です。 
 
 - **excludeLastRequestId**: 最後の要求のレコードを除外するかどうか。 既定値は true です。 
 - **baseRequestId**: 差分読み込み要求の ID。 設定されると、requestId がこのプロパティの値より大きいデータのみが取得されます。 
 
-全体として、SAP InfoProviders から Azure Data Factory (ADF) への実行は、次の 2 つの手順で構成されます。 
+全体として、SAP InfoProviders からの抽出は、次の 2 つの手順で構成されます。 
 
 1. **SAP BW データ転送プロセス (DTP)** この手順では、SAP BW InfoProvider から SAP BW オープン ハブ テーブルにデータがコピーされます 
 
-1. **ADF データのコピー** この手順では、オープン ハブ テーブルが ADF コネクタによって読み取られます 
+1. **データのコピー** この手順では、オープン ハブ テーブルがコネクタによって読み取られます 
 
-![差分抽出フロー](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
+:::image type="content" source="media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png" alt-text="差分抽出フロー":::
 
-最初の手順では、DTP が実行されます。 実行ごとに新しい SAP 要求 ID が作成されます。 要求 ID はオープン ハブ テーブルに保存され、差分を識別するために ADF コネクタによって使用されます。 2 つ目の手順は非同期で実行されます。DTP は SAP によってトリガーされ、ADF データのコピーは ADF を介してトリガーされます。 
+最初の手順では、DTP が実行されます。 実行ごとに新しい SAP 要求 ID が作成されます。 要求 ID はオープン ハブ テーブルに保存され、差分を識別するためにコネクタによって使用されます。 2 つ目の手順は非同期で実行されます。DTP は SAP によってトリガーされ、データのコピーはサービスを介してトリガーされます。 
 
-既定では、ADF でオープン ハブ テーブルから最後の差分を読み取ることはありません ("最後の要求を除外する" オプションは true です)。 これによって、ADF のデータはオープン ハブ テーブルのデータに関して 100% 最新ではありません (最後の差分はありません)。 代わりに、このプロシージャによって、非同期の抽出で行を失わないようにすることができます。 ADF でオープン ハブ テーブルを読み取るときでも問題なく動作し、DTP は引き続き同じテーブルに書き込まれます。 
+既定では、サービスでオープン ハブ テーブルから最新の差分を読み取ることはありません ("最後の要求を除外する" オプションは true です)。 このため、サービスのデータはオープン ハブ テーブルのデータに関して 100% 最新というわけではありません (最後の差分はありません)。 代わりに、このプロシージャによって、非同期の抽出で行を失わないようにすることができます。 サービスでオープン ハブ テーブルを読み取るときでも問題なく動作し、DTP は引き続き同じテーブルに書き込みます。 
 
-通常、ADF によって最後の実行のコピーされた最大の要求 ID をステージング データ ストア (上述のダイアグラムの Azure BLOB など) に保存します。 そのため、後続の実行で ADF による 2 回目の同じ要求が読み取られることはありません。 その間、データはオープン ハブ テーブルから自動的に削除されないことに注意してください。
+通常、サービスによる最後の実行でコピーされた最大の要求 ID をステージング データ ストア (上図の Azure BLOB など) に保存します。 そのため、後続の実行でサービスによって同じ要求が 2 回読み取られることはありません。 その間、データはオープン ハブ テーブルから自動的に削除されないことに注意してください。
 
 適切は差分処理では、同じオープン ハブ テーブルの異なる DTP からの要求 ID を持つことは許可されません。 そのため、オープン ハブ宛先 (OHD) ごとに複数の DTP を作成する必要はありません。 同じ InfoProvider から完全抽出と差分抽出が必要な場合、同じ InfoProvider に OHD を 2 つ作成する必要があります。 
 
@@ -79,9 +81,9 @@ ADF SAP BW オープン ハブ コネクタでは、次の 2 つの省略可能�
 
 - SAP の Web サイトから **64 ビットの [SAP .NET Connector 3.0](https://support.sap.com/en/product/connectors/msnet.html)** をダウンロードし、それをセルフホステッド IR マシンにインストールします。 インストール時には、省略可能なセットアップ手順のウィンドウで、次の図のように **[Install Assemblies to GAC] (アセンブリを GAC にインストールする)** オプションを選択したことを確認します。 
 
-    ![SAP .NET Connector をインストールする](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+    :::image type="content" source="./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png" alt-text="SAP .NET Connector をインストールする":::
 
-- Data Factory の BW コネクタで使用する予定の SAP ユーザーは、以下のアクセス許可を持っている必要があります。 
+- BW コネクタで使用する予定の SAP ユーザーは、以下のアクセス許可を持っている必要があります。 
 
     - RFC と SAP BW の認可。 
     - 認可オブジェクト "S_SDSAUTH" の "実行" アクティビティに対するアクセス許可。
@@ -92,11 +94,11 @@ ADF SAP BW オープン ハブ コネクタでは、次の 2 つの省略可能�
 
 > [!TIP]
 >
-> SAP BW オープン ハブ コネクタの使用に関するチュートリアルについては、「[Load data from SAP Business Warehouse (BW) by using Azure Data Factory](load-sap-bw-data.md)」 (Azure Data Factory を使用して SAP Business Warehouse (BW) からデータを読み込む) を参照してください。
+> SAP BW オープン ハブ コネクタの使用に関するチュートリアルについては、「[SAP Business Warehouse (BW) からデータを読み込む](load-sap-bw-data.md)」を参照してください。
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-以下のセクションでは、SAP Business Warehouse オープン ハブ コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティの詳細を説明します。
+以下のセクションでは、SAP Business Warehouse オープン ハブ コネクタに固有のエンティティを定義するために使用されるプロパティの詳細を説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -114,7 +116,7 @@ SAP Business Warehouse オープン ハブのリンクされたサービスで�
 | clientId | SAP BW システム内のクライアントのクライアント ID。<br/>使用できる値: 文字列として表される 3 桁の 10 進数。 | はい |
 | language | SAP システムで使用する言語。 | いいえ (既定値は **EN**)|
 | userName | SAP サーバーにアクセスできるユーザーの名前。 | はい |
-| password | ユーザーのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| password | ユーザーのパスワード。 このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
 **例:**
@@ -187,12 +189,13 @@ SAP BW Open Hub からデータをコピーするために、コピー アクテ
 | type | コピー アクティビティのソースの **type** プロパティは **SapOpenHubSource** に設定する必要があります | はい |
 | excludeLastRequest | 最後の要求のレコードを除外するかどうか。 | いいえ (既定値は **true**)。 |
 | baseRequestId | 差分読み込み要求の ID。 設定されると、requestId がこのプロパティの値 **より大きい** データのみが取得されます。  | いいえ |
-| customRfcReadTableFunctionModule | SAP テーブルからデータを読み取るために使用できるカスタム RFC 関数モジュール。 <br/> カスタム RFC 関数モジュールを使用して、SAP システムからデータを取得して Data Factory に返す方法を定義できます。 カスタム関数モジュールでは、`/SAPDS/RFC_READ_TABLE2` と同様のインターフェイスが実装されている必要があります (インポート、エクスポート、テーブル)。これは、Data Factory で使用される既定のインターフェイスです。 | いいえ |
+| customRfcReadTableFunctionModule | SAP テーブルからデータを読み取るために使用できるカスタム RFC 関数モジュール。 <br/> カスタム RFC 関数モジュールを使用して、SAP システムからデータを取得し、サービスに返す方法を定義できます。 カスタム関数モジュールには、`/SAPDS/RFC_READ_TABLE2` と同様のインターフェイスが実装されている必要があります (インポート、エクスポート、テーブル)。これは、サービスで使用される既定のインターフェイスです。 | いいえ |
+| sapDataColumnDelimiter | 出力データを分けるために SAP RFC に渡される、区切り記号として使用される 1 文字。 | いいえ |
 
 >[!TIP]
 >オープン ハブ テーブルには、1 つの要求 ID によって生成されたデータのみが含まれています。たとえば、常に完全な読み込みを行い、テーブル内の既存のデータを上書きする場合や、DTP はテストのために 1 回のみ実行する場合は、データを外へコピーするため、忘れずに "excludeLastRequest" オプションをオフにします。
 
-データ読み込みを高速化するために、コピー アクティビティに [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) を設定して、SAP BW オープン ハブから並行してデータを読み込むことができます。 たとえば、`parallelCopies` を 4 に設定すると、Data Factory では同時に 4 つの RFC 呼び出しが実行され、各 RFC 呼び出しは、DTP 要求 ID とパッケージ ID でパーティション分割された SAP BW オープン ハブ テーブルからデータの一部を取得します。 これは、一意の DTP 要求 ID + パッケージ ID の数値が `parallelCopies` の値よりも大きい場合に適用されます。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) こともお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
+データ読み込みを高速化するために、コピー アクティビティに [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) を設定して、SAP BW オープン ハブから並行してデータを読み込むことができます。 たとえば、`parallelCopies` を 4 に設定すると、サービスでは同時に 4 つの RFC 呼び出しが実行され、各 RFC 呼び出しは、DTP 要求 ID とパッケージ ID でパーティション分割された SAP BW オープン ハブ テーブルからデータの一部を取得します。 これは、一意の DTP 要求 ID + パッケージ ID の数値が `parallelCopies` の値よりも大きい場合に適用されます。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) こともお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
 
 **例:**
 
@@ -229,9 +232,9 @@ SAP BW Open Hub からデータをコピーするために、コピー アクテ
 
 ## <a name="data-type-mapping-for-sap-bw-open-hub"></a>SAP BW オープン ハブのデータ型マッピング
 
-SAP BW オープン ハブからデータをコピーするときには、以下に示す、SAP BW のデータ型から Azure Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+SAP BW オープン ハブからデータをコピーするとき、SAP BW のデータ型からサービス内で内部的に使用される中間データ型への、以下のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| SAP ABAP の型 | Data Factory の中間データ型 |
+| SAP ABAP の型 | 中間サービス データ型 |
 |:--- |:--- |
 | C (String) | String |
 | I (integer) | Int32 |
@@ -248,9 +251,9 @@ SAP BW オープン ハブからデータをコピーするときには、以下
 
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 
-**現象:** SAP BW on HANA を実行しているとき、ADF コピー アクティビティ (100万行) を使用してもデータのサブセットしかコピーされない場合、考えられる原因は、DTP で [SAP HANA Execution]\(SAP HANA 実行\) オプションを有効にしていることです。この場合、ADF ではデータの最初のバッチだけを取得できます。
+**現象:** SAP BW on HANA を実行しているとき、コピー アクティビティ (100万行) を使用してもデータのサブセットしかコピーされない場合、考えられる原因は、DTP で [SAP HANA Execution]\(SAP HANA 実行\) オプションを有効にしていることです。この場合、サービスではデータの最初のバッチだけを取得できます。
 
 **解決策:** DTP で [SAP HANA Execution]\(SAP HANA 実行\) オプションを無効にして、データを再処理してから、コピー アクティビティをもう一度実行してみてください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

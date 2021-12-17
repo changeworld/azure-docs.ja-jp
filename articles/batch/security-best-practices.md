@@ -1,14 +1,14 @@
 ---
 title: Batch のセキュリティとコンプライアンスのベスト プラクティス
 description: Azure Batch ソリューションを使用したセキュリティ強化のためのベスト プラクティスと役立つヒントについて説明します。
-ms.date: 12/18/2020
+ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6ec4a1d89ebaa9318986fc0d51e832652ba51683
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9bfbeb7a89e3ca1bc71001b173926302548a988
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98723814"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435548"
 ---
 # <a name="batch-security-and-compliance-best-practices"></a>Batch のセキュリティとコンプライアンスのベスト プラクティス
 
@@ -32,13 +32,13 @@ ms.locfileid: "98723814"
 
 Batch アカウントへのアクセスでは、次の 2 つの認証方法がサポートされます。共有キーと [Azure Active Directory (Azure AD)](batch-aad-auth.md) です。
 
-Batch アカウント認証には Azure AD を使用することを強くお勧めします。 一部の Batch 機能では、この認証方法が必要になります。これには、ここで説明するセキュリティ関連の機能の多くが含まれます。
+Batch アカウント認証には Azure AD を使用することを強くお勧めします。 一部の Batch 機能では、この認証方法が必要になります。これには、ここで説明するセキュリティ関連の機能の多くが含まれます。 Batch アカウントのサービス API 認証メカニズムは、[allowedAuthenticationModes](/rest/api/batchmanagement/batch-account/create) プロパティを使用した Azure AD のみに制限できます。 このプロパティが設定されている場合、共有キー認証を使用した API 呼び出しは拒否されます。
 
 ### <a name="batch-account-pool-allocation-mode"></a>Batch アカウントのプール割り当てモード
 
 Batch アカウントの作成時には、次の 2 つの[プール割り当てモード](accounts.md#batch-accounts)を選択できます。
 
-- **Batch サービス**: 既定のオプションでは、プール ノードの割り当てと管理に使用される、基になるクラウド サービスまたは仮想マシン スケール セットのリソースが内部サブスクリプションに作成され、Azure portal に直接表示されません。 表示されるのは、Batch のプールとノードだけです。 
+- **Batch サービス**: 既定のオプションでは、プール ノードの割り当てと管理に使用される、基になるクラウド サービスまたは仮想マシン スケール セットのリソースが内部サブスクリプションに作成され、Azure portal に直接表示されません。 表示されるのは、Batch のプールとノードだけです。
 - **ユーザー サブスクリプション**: 基になるクラウド サービスまたは仮想マシン スケール セットのリソースは、Batch アカウントと同じサブスクリプションに作成されます。 そのため、これらのリソースは、対応する Batch リソースに加えて、サブスクリプションに表示されます。
 
 ユーザー サブスクリプション モードでは、プールの作成時に Batch VM などのリソースがサブスクリプションに直接作成されます。 Azure Reserved VM Instances を使用して Batch プールを作成する場合、仮想マシン スケール セットのリソースで Azure Policy を使用する場合、またはサブスクリプションのコア クォータを管理する場合は、ユーザー サブスクリプション モードが必要です (サブスクリプションのすべての Batch アカウントで共有されます)。 また、ユーザー サブスクリプション モードで Batch アカウントを作成するには、ご利用のサブスクリプションを Azure Batch に登録し、アカウントを Azure Key Vault に関連付ける必要があります。
@@ -143,13 +143,13 @@ Batch の既定の計算ノードには、OS ディスクとローカル一時 S
 
 ## <a name="securely-access-services-from-compute-nodes"></a>計算ノードからサービスに安全にアクセスする
 
-Batch ノードは、タスク アプリケーションが他のサービスにアクセスするために使用できる [Azure Key Vault](../key-vault/general/overview.md) に格納されている、[資格情報とシークレットに安全にアクセスする](credential-access-key-vault.md)ことができます。 証明書は、プール ノードに Key Vault へのアクセスを許可するために使用されます。
+Batch ノードは、タスク アプリケーションが他のサービスにアクセスするために使用できる、[Azure Key Vault](../key-vault/general/overview.md) に格納されている資格情報に安全にアクセスできます。 証明書は、プール ノードに Key Vault へのアクセスを許可するために使用されます。 [Batch プールでの自動証明書ローテーションを有効にする](automatic-certificate-rotation.md)ことによって、資格情報は自動的に更新されます。 これは、Batch ノードが Azure Key Vault に格納されている資格情報にアクセスするための推奨されるオプションですが、自動証明書ローテーションなしで、[証明書を使用して資格情報やシークレットに安全にアクセスするように Batch ノードを設定する](credential-access-key-vault.md)こともできます。
 
 ## <a name="governance-and-compliance"></a>ガバナンスとコンプライアンス
 
 ### <a name="compliance"></a>コンプライアンス
 
-世界中の規制されている業界や市場において、お客様が各自のコンプライアンスの義務を満たすことができるように、Azure は、[コンプライアンス認証の大規模なポートフォリオを](https://azure.microsoft.com/overview/trusted-cloud/compliance)管理しています。 
+世界中の規制されている業界や市場において、お客様が各自のコンプライアンスの義務を満たすことができるように、Azure は、[コンプライアンス認証の大規模なポートフォリオを](https://azure.microsoft.com/overview/trusted-cloud/compliance)管理しています。
 
 これらの認証は、独立したサードパーティの監査企業による正式な認証、証明、検証、認可、および評価の他に、Microsoft による契約の修正、自己評価、顧客向けのガイダンス ドキュメントを含むさまざまな種類の保証に基づいています。 [コンプライアンス認証の包括的な概要](https://aka.ms/AzureCompliance)に関する記事を参照して、どれがご利用の Batch ソリューションに関連するかをご確認ください。
 

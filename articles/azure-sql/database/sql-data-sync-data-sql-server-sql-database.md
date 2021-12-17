@@ -3,20 +3,20 @@ title: Azure の SQL データ同期とは
 description: この概要では、クラウドおよびオンプレミスの複数のデータベース間でデータを同期できる、Azure の SQL データ同期について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: data sync, sqldbrb=1, fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
-ms.date: 08/20/2019
-ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
+ms.date: 09/09/2021
+ms.openlocfilehash: de90958966fed08b33cf7236384c082e332719fd
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562061"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059494"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -61,7 +61,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | シナリオ | 推奨されるソリューション例 |
 |----------|----------------------------|
 | ディザスター リカバリー | [Azure 地理冗長のバックアップ](automated-backups-overview.md) |
-| 読み取りスケール | [読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する (プレビュー)](read-scale-out.md) |
+| 読み取りスケール | [読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する](read-scale-out.md) |
 | ETL (OLTP から OLAP へ) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) または [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
 | SQL Server から Azure SQL Database への移行。 ただし、移行の完了後に SQL データ同期を使用して、ソースとターゲットの同期を確実に維持することができます。  | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
@@ -81,8 +81,8 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | **長所** | - アクティブ/アクティブのサポート<br/>- オンプレミスと Azure SQL Database 間で双方向 | - 待ち時間の短縮<br/>- トランザクションの整合性<br/>- 移行後に既存のトポロジの再利用 <br/>\- Azure SQL Managed Instance のサポート |
 | **短所** | - トランザクションの整合性なし<br/>- パフォーマンスへの影響が大きい | - Azure SQL Database からは発行できない <br/>- 高いメンテナンス コスト |
 
-## <a name="private-link-for-data-sync-preview"></a>データ同期用のプライベート リンク (プレビュー)
-新しいプライベート リンク (プレビュー) 機能を使用すると、サービス マネージド プライベート エンドポイントを選択して、データの同期処理中に同期サービスとメンバー/ハブ データベースの間にセキュリティで保護された接続を確立できます。 サービス マネージド プライベート エンドポイントは、特定の仮想ネットワークおよびサブネット内のプライベート IP アドレスです。 データ同期では、サービス マネージド プライベート エンドポイントが Microsoft によって作成され、特定の同期操作でデータ同期サービスによって排他的に使用されます。 プライベート リンクを設定する前に、この機能の[一般的な要件](sql-data-sync-data-sql-server-sql-database.md#general-requirements)を確認してください。 
+## <a name="private-link-for-data-sync"></a>データ同期用のプライベート リンク
+新しいプライベート リンク機能を使用すると、サービス マネージド プライベート エンドポイントを選択して、データの同期処理中に同期サービスとメンバー/ハブ データベースの間にセキュリティで保護された接続を確立できます。 サービス マネージド プライベート エンドポイントは、特定の仮想ネットワークおよびサブネット内のプライベート IP アドレスです。 データ同期では、サービス マネージド プライベート エンドポイントが Microsoft によって作成され、特定の同期操作でデータ同期サービスによって排他的に使用されます。 プライベート リンクを設定する前に、この機能の[一般的な要件](sql-data-sync-data-sql-server-sql-database.md#general-requirements)を確認してください。 
 
 ![データ同期用のプライベート リンク](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
 
@@ -142,7 +142,6 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 ### <a name="general-limitations"></a>一般的な制限事項
 
 - テーブルに、主キー以外の ID 列を設けることはできません。
-- データ同期を使用するには、テーブルにクラスター化インデックスが必要です。
 - 主キーに、次のデータ型を含めることはできません。sql_variant、binary、varbinary、image、xml。
 - サポートされている精度は秒に対してのみであるため、次のデータの種類を主キーとして使用するときは注意してください。time、datetime、datetime2、datetimeoffset。
 - オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
@@ -151,6 +150,10 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 - 名前が同じでスキーマが異なるテーブル (たとえば dbo.customers と sales.customers) がある場合は、一方のテーブルのみを同期に追加できます。
 - ユーザー定義データ型の列はサポートされていません
 - 異なるサブスクリプション間でのサーバーの移動はサポートされていません。 
+- 2 つの主キーでケースだけが違っている (例: Foo と foo) 場合、データ同期ではこのシナリオがサポートされません。
+- テーブルの切り捨ては、データ同期でサポートされている操作ではありません (変更は追跡されません)。
+- ハイパースケール データベースはサポートされていません。 
+- メモリ最適化テーブルはサポートされません。
 
 #### <a name="unsupported-data-types"></a>サポートされていないデータ型
 
@@ -184,7 +187,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 ### <a name="network-requirements"></a>ネットワークの要件
 
 > [!NOTE]
-> プライベート リンクを使用する場合、これらのネットワーク要件は適用されません。 
+> 同期プライベート リンクを使用する場合、これらのネットワーク要件は適用されません。 
 
 同期グループが確立されるときに、データ同期サービスはハブ データベースに接続する必要があります。 同期グループを確立する時点で、Azure SQL サーバーの `Firewalls and virtual networks` 設定は次のように構成されている必要があります。
 
@@ -196,11 +199,15 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 > [!NOTE]
 > 同期グループのスキーマ設定を変更する場合は、ハブ データベースを再プロビジョニングできるように、データ同期サービスがサーバーに再度アクセスすることを許可する必要があります。
 
+### <a name="region-data-residency"></a>リージョンのデータ所在地 
+
+同じリージョン内のデータを同期する場合、SQL データ同期では、サービス インスタンスがデプロイされているリージョン外部での顧客データの格納または処理は行われません。 異なるリージョン間でデータを同期すると、SQL データ同期によって、ペアになっているリージョンに顧客データがレプリケートされます。
+
 ## <a name="faq-about-sql-data-sync"></a>SQL データ同期に関する FAQ
 
 ### <a name="how-much-does-the-sql-data-sync-service-cost"></a>SQL データ同期サービスのコストはどのくらいですか?
 
-SQL データ同期サービスそのものに対しては課金されません。 ただし、SQL データベース インスタンスへの、またはインスタンスからのデータ移動には、データ転送の料金がかかります。 詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+SQL データ同期サービスそのものに対しては課金されません。 ただし、SQL データベース インスタンスへの、またはインスタンスからのデータ移動には、データ転送の料金がかかります。 詳細については、[データ転送の料金](https://azure.microsoft.com/pricing/details/bandwidth/)に関するページを参照してください。
 
 ### <a name="what-regions-support-data-sync"></a>データ同期はどのリージョンでサポートされていますか?
 
@@ -216,10 +223,10 @@ SQL データ同期はすべてのリージョンでご利用いただけます�
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>データ同期を使用して、異なるサブスクリプションに属している SQL Database のデータベース間で同期できますか?
 
-はい。 異なるサブスクリプションが所有するリソース グループに属しているデータベース間で同期できます。
+はい。 サブスクリプションが異なるテナントに属している場合でも、異なるサブスクリプションによって所有されているリソース グループに属するデータベース間で同期できます。
 
 - サブスクリプションが同じテナントに属していて、すべてのサブスクリプションへのアクセス許可がある場合、Azure Portal 上で同期グループを構成できます。
-- それ以外の場合、PowerShell を使用して、異なるサブスクリプションに属している同期メンバーを追加する必要があります。
+- それ以外の場合、PowerShell を使用して、同期メンバーを追加する必要があります。
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>データ同期を使用して、異なるクラウド (Azure パブリック クラウドと Azure China 21Vianet など) に属している SQL Database のデータベース間で同期できますか?
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 3ad9d7963da3719773afb4a39fc882ba0dddbf85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c174bfa0cc88f37f055a16ed7fad473187c7ed89
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92520253"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124745844"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>チュートリアル: Azure Active Directory と Wingspan eTMF の統合
 
@@ -108,7 +108,7 @@ Wingspan eTMF で Azure AD シングル サインオンを構成するには、�
     c. **[応答 URL]** ボックスに、`https://<customer name>.<instance name>.mywingspan.com/` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Wingspan eTMF クライアント サポート チーム](https://www.wingspan.com/contact-us/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、Wingspan eTMF クライアント サポート チームに問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -126,7 +126,7 @@ Wingspan eTMF で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="configure-wingspan-etmf-single-sign-on"></a>Wingspan eTMF シングル サインオンの構成
 
-**Wingspan eTMF** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Wingspan eTMF サポート チーム](https://www.wingspan.com/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Wingspan eTMF** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を Wingspan eTMF サポート チームに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -180,13 +180,13 @@ Wingspan eTMF で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="create-wingspan-etmf-test-user"></a>Wingspan eTMF のテスト ユーザーの作成
 
-このセクションでは、Wingspan eTMF の Britta Simon という名前のユーザーを作成します。 [Wingspan eTMF サポート チーム](https://www.wingspan.com/contact-us/)と連携して、Wingspan eTMF プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Wingspan eTMF の Britta Simon という名前のユーザーを作成します。 Wingspan eTMF サポート チームと連携して、Wingspan eTMF プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Wingspan eTMF] タイルをクリックすると、SSO を設定した Wingspan eTMF に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Wingspan eTMF] タイルをクリックすると、SSO を設定した Wingspan eTMF に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

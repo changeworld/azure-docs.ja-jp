@@ -1,22 +1,24 @@
 ---
 title: Azure Data Factory の Delete アクティビティ
-description: Azure Data Factory の Delete アクティビティを使用して、さまざまなファイル ストア内のファイルを削除する方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory および Azure Synapse Analytics の Delete アクティビティを使用して、さまざまなファイル ストア内のファイルを削除する方法について説明します。
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 3021d29f472dbbf43ae53981287b1f4676e8f932
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.openlocfilehash: 30aa69b414770a1d787767f0be4b1e27b50d86d7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392716"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084920"
 ---
-# <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory の Delete アクティビティ
+# <a name="delete-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics の Delete アクティビティ
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
 
 Azure Data Factory の Delete アクティビティを使用して、オンプレミス ストレージ ストアやクラウド ストレージ ストアからファイルやフォルダーを削除することができます。 このアクティビティを使用して、必要なくなったときにファイルをクリーンアップしたりアーカイブしたりします。
 
@@ -29,7 +31,7 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 
 -   将来復元する必要が生じた場合に備えて、Delete アクティビティを使用して削除する前に、ファイルをバックアップする。
 
--   Data Factory が、ストレージ ストアからフォルダーまたはファイルを削除するための書き込み権限を持っていることを確認する。
+-   そのサービスが、ストレージ ストアからフォルダーまたはファイルを削除するための書き込み権限を持っていることを確認する。
 
 -   同時に書き込まれているファイルを削除していないことを確認する。 
 
@@ -40,12 +42,14 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 -   [Azure BLOB Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
--   [Azure File Storage](connector-azure-file-storage.md)
+-   [Azure Files](connector-azure-file-storage.md)
 -   [ファイル システム](connector-file-system.md)
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
+-   [Amazon S3 互換ストレージ](connector-amazon-s3-compatible-storage.md)
 -   [Google Cloud Storage](connector-google-cloud-storage.md)
+-   [Oracle Cloud Storage](connector-oracle-cloud-storage.md)
 -   [HDFS](connector-hdfs.md)
 
 ## <a name="syntax"></a>構文
@@ -140,7 +144,7 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>時間でパーティション分割されたフォルダーまたはファイルを定期的にクリーンアップする
 
-時間でパーティション分割されたフォルダーまたはファイルを定期的にクリーンアップするためのパイプラインを作成することができます。  たとえば、フォルダー構造は `/mycontainer/2018/12/14/*.csv` のようになります。  スケジュール トリガーから ADF システム変数を利用して、それぞれのパイプライン実行でどのフォルダーまたはファイルを削除すべきかを識別できます。 
+時間でパーティション分割されたフォルダーまたはファイルを定期的にクリーンアップするためのパイプラインを作成することができます。  たとえば、フォルダー構造は `/mycontainer/2018/12/14/*.csv` のようになります。  スケジュール トリガーからサービス システム変数を利用すると、それぞれのパイプライン実行でどのフォルダーまたはファイルを削除すべきかを識別できます。 
 
 #### <a name="sample-pipeline"></a>サンプル パイプライン
 
@@ -361,10 +365,10 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Copy アクティビティと Delete アクティビティを連鎖させてファイルを移動する
 
-パイプラインでコピー アクティビティを使用してファイルをコピーし、次に削除アクティビティを使用してファイルを削除することにより、ファイルを移動することができます。  複数のファイルを移動する場合は、次の例に示すように、GetMetadata アクティビティ、Filter アクティビティ、Foreach アクティビティ、Copy アクティビティ、および Delete アクティビティを使用できます。
+ファイルを移動するには、Copy アクティビティを使用してファイルをコピーし、Delete アクティビティを使用してパイプライン内のファイルを削除します。  複数のファイルを移動する場合は、次の例のように、GetMetadata アクティビティ + フィルター アクティビティ + Foreach アクティビティ + Copy アクティビティ + Delete アクティビティを使用できます。
 
 > [!NOTE]
-> フォルダー パスのみを含むデータセットを定義し、次に Copy アクティビティと Delete アクティビティを使用して、フォルダーを表す同じデータセットを参照することによりフォルダー全体を移動する場合は、十分注意する必要があります。 その理由は、コピー操作と削除操作の間にそのフォルダーに新しいファイルが到着しないようにする必要があるからです。  Copy アクティビティがコピー ジョブを完了したが、Delete アクティビティがまだ開始されていないときにフォルダーに新しいファイルが到着すると、Delete アクティビティがフォルダー全体を削除することにより、まだ宛先にコピーされていない新しく到着したファイルを削除する可能性があります。 
+> フォルダー パスのみを含むデータセットを定義し、Copy アクティビティ と Delete アクティビティを使用してフォルダーを表す同じデータセットを参照することで、フォルダー全体を移動する場合は、十分に注意する必要があります。 コピー操作と削除操作の間にフォルダーに到着する新しいファイルが **ない** ことを確認する必要があります。 コピーアクティビティがコピージョブを完了した直後に、削除アクティビティが開始されていないときに新しいファイルがフォルダーに到達した場合、削除アクティビティは、フォルダー全体を削除しても、コピー先にコピーされていない新しく到着したファイルを削除する可能性があります。 
 
 #### <a name="sample-pipeline"></a>サンプル パイプライン
 
@@ -763,6 +767,6 @@ Copy アクティビティによって使用されるデータ宛先のデータ
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Data Factory でのファイルの移動方法の詳細について説明します。
+Azure Data Factory および Synapse パイプラインでのファイルの移動の詳細について確認する。
 
--   [Azure Data Factory のデータのコピー ツール](copy-data-tool.md)
+-   [データのコピー ツール](copy-data-tool.md)

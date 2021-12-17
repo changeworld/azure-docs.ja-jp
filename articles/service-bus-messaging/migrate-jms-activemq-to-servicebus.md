@@ -3,7 +3,7 @@ title: Java Message Service (JMS) アプリケーションを Apache ActiveMQ �
 description: この記事では、Apache ActiveMQ を操作する既存の JMS アプリケーションを移行して、Azure Service Bus を操作する方法について説明します。
 services: service-bus-messaging
 documentationcenter: ''
-author: axisc
+author: spelluru
 manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/07/2020
-ms.author: aschhab
+ms.date: 09/27/2021
+ms.author: spelluru
 ms.custom: devx-track-java
-ms.openlocfilehash: 4160a9ab4edbac8584eab2d4e5b9bf1ba11a9aec
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6009d3ee7ce1ea55e9ccd3191e4d1bb2eef09ea4
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568785"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063498"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>既存の Java Message Service (JMS) 2.0 アプリケーションを Apache ActiveMQ から Azure Service Bus に移行する
 
@@ -40,13 +40,13 @@ Azure Service Bus と Apache ActiveMQ は両方とも、クライアント ア�
 | アプリケーションの階層化 | クラスター化モノリス | 2 層 <br> (ゲートウェイ + バックエンド) |
 | プロトコルのサポート | <ul> <li>AMQP</li> <li> STOMP </li> <li> OpenWire </li> </ul> | AMQP |
 | プロビジョニング モード | <ul> <li> サービスとしてのインフラストラクチャ (IaaS)、オンプレミス </li> <li> Amazon MQ (マネージド PaaS) </li> | マネージド PaaS (サービスとしてのプラットフォーム) |
-| メッセージ サイズ | ユーザーが構成可能 | 1 MB (Premium レベル) |
+| メッセージ サイズ | ユーザーが構成可能 | 100 MB (Premium レベル) |
 | 高可用性 | お客様による管理 | プラットフォーム管理 |
 | 障害復旧 | お客様による管理 | プラットフォーム管理 | 
 
 ### <a name="current-supported-and-unsupported-features"></a>現在サポートされている機能とサポートされていない機能
 
-[!INCLUDE [service-bus-jms-features-list](../../includes/service-bus-jms-feature-list.md)]
+[!INCLUDE [service-bus-jms-features-list](./includes/service-bus-jms-feature-list.md)]
 
 ### <a name="considerations"></a>考慮事項
 
@@ -96,7 +96,7 @@ Service Bus によって、さまざまなエンタープライズ セキュリ�
 
 Service Bus 名前空間ごとに、Azure Monitor にメトリックを発行します。 これらのメトリックを使用して、名前空間に割り当てられたリソースのアラートと動的スケーリングを行うことができます。
 
-さまざまなメトリックの詳細と、それらに対するアラートの設定方法については、「[Azure Monitor での Service Bus メトリック](service-bus-metrics-azure-monitor.md)」をご覧ください。 また、データ操作のクライアント側のトレースについては[こちら](service-bus-end-to-end-tracing.md)を、管理操作の操作/診断ログについては[こちら](service-bus-diagnostic-logs.md)をご覧ください。
+さまざまなメトリックの詳細と、それらに対するアラートの設定方法については、「[Azure Monitor での Service Bus メトリック](monitor-service-bus-reference.md)」をご覧ください。 また、データ操作のクライアント側のトレースについては[こちら](service-bus-end-to-end-tracing.md)を、管理操作の操作/診断ログについては[こちら](monitor-service-bus-reference.md#resource-logs)をご覧ください。
 
 ### <a name="metrics---new-relic"></a>メトリック - New Relic
 

@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.custom: devx-track-js
-ms.openlocfilehash: 48316d571eac835dd5d4ec7d225048f4fdcdf237
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-js, ignite-fall-2021
+ms.openlocfilehash: 433d391d3707248d71d8340185da86814cab7e4f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95026609"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024545"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>方法: Speech SDK を使用してオーディオ入力デバイスを選択する
 
@@ -383,7 +383,7 @@ iOS では、Speech SDK を使用したオーディオ デバイスの選択は�
 
 ## <a name="audio-device-ids-in-javascript"></a>JavaScript でのオーディオ デバイス ID
 
-JavaScript では、[MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) メソッドを使用してメディア デバイスを列挙することにより、`fromMicrophone(...)` に渡すデバイス ID を検索できます。
+JavaScript では、[MediaDevices.enumerateDevices()](https://developer.mozilla.org/docs/Web/API/MediaDevices/enumerateDevices) メソッドを使用してメディア デバイスを列挙することにより、`fromMicrophone(...)` に渡すデバイス ID を検索できます。
 
 ## <a name="next-steps"></a>次のステップ
 

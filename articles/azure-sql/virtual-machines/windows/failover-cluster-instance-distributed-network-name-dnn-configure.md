@@ -3,7 +3,7 @@ title: フェールオーバー クラスター インスタンス用に DNN を
 description: 分散ネットワーク名 (DNN) を構成して、Azure VM フェールオーバー クラスター インスタンス (FCI) 上の SQL Server にトラフィックをルーティングする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -12,24 +12,26 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/07/2020
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 8549592ace00e712929ebc76045a32531b9db659
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/10/2021
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: bc88b1dcebede150ca912244d482a2e926f13e2b
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358318"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158156"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>フェールオーバー クラスター インスタンス用に DNN を構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の複数のサブネットに SQL Server VM を作成することで、フェールオーバー クラスター インスタンスに対して分散ネットワーク名 (DNN) が不要になります。
 
 Azure Virtual Machines では、分散ネットワーク名 (DNN) によって、クラスター化された適切なリソースにトラフィックがルーティングされます。 これにより、仮想ネットワーク名 (VNN) よりも簡単に SQL Server フェールオーバー クラスター インスタンス (FCI) に接続することができます。Azure Load Balancer は必要ありません。 
 
 この記事では、DNN リソースを構成して、高可用性とディザスター リカバリー (HADR) のために Azure VM 上の SQL Server を使用するフェールオーバー クラスター インスタンスにトラフィックをルーティングする方法について説明します。 
 
-現時点では、DNN 機能は Windows Server 2016 以降で実行される SQL Server 2019 CU2 以降でのみ使用できます。 
 
 代替の接続オプションとしては、代わりに[仮想ネットワーク名と Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) を検討してください。 
 
@@ -43,7 +45,7 @@ FCI デプロイでは、VNN は引き続き存在しますが、クライアン
 
 この記事の手順を完了するには、次のものが必要です。
 
-- Windows Server 2016 以降で実行される SQL Server 2019 CU2 以降
+- SQL Server ([SQL Server 2019 CU8](https://support.microsoft.com/topic/cumulative-update-8-for-sql-server-2019-ed7f79d9-a3f0-a5c2-0bef-d0b7961d2d72) 以降、[SQL Server 2017 CU25](https://support.microsoft.com/topic/kb5003830-cumulative-update-25-for-sql-server-2017-357b80dc-43b5-447c-b544-7503eee189e9) 以降、または Windows Server 2016 以降の [SQL Server 2016 SP3](https://support.microsoft.com/topic/kb5003279-sql-server-2016-service-pack-3-release-information-46ab9543-5cf9-464d-bd63-796279591c31) 以降)。
 - 分散ネットワーク名が[お客様の HADR ソリューションに適切な接続オプション](hadr-cluster-best-practices.md#connectivity)であると判断済みであること。
 - [フェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)を構成済みであること。 
 - 最新バージョンの [PowerShell](/powershell/azure/install-az-ps) をインストール済みであること。 
@@ -147,7 +149,11 @@ Start-ClusterResource -Name dnn-demo
 
 ## <a name="update-connection-string"></a>接続文字列を更新する
 
-フェールオーバー後の速やかな接続を確保するために、SQL クライアントのバージョンが 4.6.1 よりも前の場合は接続文字列に `MultiSubnetFailover=True` を追加します。 
+SQL Server FCI DNN に接続しているアプリケーションの接続文字列を更新し、接続文字列に `MultiSubnetFailover=True` を含めます。 クライアントで MultiSubnetFailover パラメーターがサポートされていない場合は、DNN と互換性がありません。 
+
+次に示すのは、DNS 名が **FCIDNN** の SQL FCI DNN の接続文字列例です。 
+
+`Data Source=FCIDNN, MultiSubnetFailover=True`
 
 また、DNN で元の VNN が使用されていない場合、SQL Server FCI に接続する SQL クライアントでは、その接続文字列を DNN の DNS 名に更新する必要があります。 この要件を回避するために、DNS 名の値を VNN の名前に更新することができます。 ただし、最初に[既存の VNN をプレースホルダーに置き換える](#rename-the-vnn)必要があります。 
 
@@ -198,11 +204,16 @@ Get-ClusterResource "virtual IP address" | Set-ClusterParameter
 
 ## <a name="limitations"></a>制限事項
 
-- 現在、FCI を含む DNN は Windows Server 2016 以降上の SQL Server 2019 CU2 以降に対してのみサポートされています。 
+
+- DNN リスナーに接続するクライアントは、接続文字列の `MultiSubnetFailover=True` パラメーターをサポートする必要があります。 
 - DNN を使用してその他の SQL Server 機能と FCI を操作する場合は、さらなる考慮事項が存在する場合があります。 詳細については、[FCI と DNN の相互運用性](failover-cluster-instance-dnn-interoperability.md)に関する記事をご覧ください。 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure での SQL Server の HADR 機能について詳しくは、[可用性グループ](availability-group-overview.md)と[フェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)に関する記事をご覧ください。 また、高可用性とディザスター リカバリー用に環境を構成するための[ベスト プラクティス](hadr-cluster-best-practices.md)を学習することもできます。 
+詳細については、以下をご覧ください。
 
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)
+- [フェールオーバー クラスター インスタンスの概要](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)
 

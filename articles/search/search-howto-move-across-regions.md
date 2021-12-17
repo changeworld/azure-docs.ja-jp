@@ -8,17 +8,17 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 09/10/2020
-ms.openlocfilehash: a5050958f01743ff3c6fdcdecfee3067b1d2073e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/06/2021
+ms.openlocfilehash: 6dddc7e5a2492aeaf0c15c954f685e10ce475fa7
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98934264"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612942"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Cognitive Search サービスを別の Azure リージョンに移動する
 
-まれに、検索サービスを別のリージョンに移動できないかとお客様から問い合わせをいただくことがあります。 現時点では、そのような作業を支援する組み込みのメカニズムやツールはありませんが、この記事では、同じ結果を手動で実現するための手順をわかりやすく説明しています。
+まれに、検索サービスを別のリージョンに移動できないかとお客様から問い合わせをいただくことがあります。 現在のところ、その作業に役立つメカニズムもツールも組み込まれていませんが、異なるリージョンの新しい検索サービスでインデックスやその他のオブジェクトを再作成するための手動手順を理解する上でこの記事は役立つことがあります。
 
 > [!NOTE]
 > Azure portal では、すべてのサービスに **Export template** コマンドがあります。 Azure Cognitive Search の場合、このコマンドを実行すると、サービスの基本定義 (名前、場所、レベル、レプリカ、およびパーティション数) が生成されますが、サービスのコンテンツは認識されず、キー、ロール、またはログにも引き継がれません。 コマンドは存在しますが、検索サービスの移動には使用しないことをお勧めします。

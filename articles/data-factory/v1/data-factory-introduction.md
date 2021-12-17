@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 220c1969055ffaa5d1bea41ab547efd4596f8a20
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 78ed8c774bc44c7a2756019287cd4364db1fe4d4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786466"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644507"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -34,7 +35,7 @@ ms.locfileid: "104786466"
 
 そこで、オンプレミスとクラウド両方のデータ ストアからデータを取り込むことが可能なワークフローを作成できるプラットフォームが必要になります。 また、既存のコンピューティング サービス (Hadoop など) を使用してデータを変換または処理したうえで、その結果を BI アプリケーションで利用できるようオンプレミスまたはクラウドのデータ ストアに公開できるようにする必要もあります。 
 
-![Data Factory の概要](media/data-factory-introduction/what-is-azure-data-factory.png) 
+:::image type="content" source="media/data-factory-introduction/what-is-azure-data-factory.png" alt-text="Data Factory の概要"::: 
 
 Azure Data Factory は、このようなシナリオに対応するプラットフォームです。 "*そのクラウドベースのデータ統合サービスを通じて、データの移動と変換を調整および自動化するデータ主導型のワークフローをクラウドに作成することができます*"。 Azure Data Factory を使用すると、次のタスクを実行できます。 
 
@@ -52,7 +53,7 @@ Azure Data Factory は、このようなシナリオに対応するプラット�
 ## <a name="how-does-it-work"></a>それはどのように機能しますか? 
 通常、Azure Data Factory のパイプライン (データ 主導型のワークフロー) では次の 3 つのステップが実行されます。
 
-![Azure Data Factory の 3 つのステージ](media/data-factory-introduction/three-information-production-stages.png)
+:::image type="content" source="media/data-factory-introduction/three-information-production-stages.png" alt-text="Azure Data Factory の 3 つのステージ":::
 
 ### <a name="connect-and-collect"></a>接続と収集
 企業が所有するデータは多種多様で、ソースもさまざまです。 情報生成システム構築の最初のステップは、必要なすべてのデータ ソースと処理の機能に接続することです。 これらのソースには、SaaS サービス、ファイル共有、FTP、Web サービスが含まれます。 その後、必要に応じて後続の処理機能にデータを移動します。
@@ -83,12 +84,12 @@ Data Factory を使用すれば、データ パイプラインのコピー ア�
 ### <a name="data-movement-activities"></a>データ移動アクティビティ
 Data Factory のコピー アクティビティは、ソース データ ストアからシンク データ ストアにデータをコピーします。 また、任意のソースのデータを任意のシンクに書き込むことができます。 データ ストアを選択すると、そのストアとの間でデータをコピーする方法がわかります。 Data Factory は次のデータ ストアをサポートしています。
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」を参照してください。
 
 ### <a name="data-transformation-activities"></a>データ変換アクティビティ
-[!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
+[!INCLUDE [data-factory-transformation-activities](includes/data-factory-transformation-activities.md)]
 
 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-transformation-activities.md)」を参照してください。
 
@@ -113,7 +114,7 @@ Data Factory ではリンクされたサービスは 2 つの理由で使用さ�
 
 ### <a name="relationship-between-data-factory-entities"></a>Data Factory エンティティ間の関係
 
-![図:クラウド データ統合サービスである Data Factory - 主要な概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+:::image type="content" source="./media/data-factory-introduction/data-integration-service-key-concepts.png" alt-text="図:クラウド データ統合サービスである Data Factory - 主要な概念":::
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 現時点では、データ ファクトリは、米国西部、米国東部、北ヨーロッパ リージョンで作成できます。 ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。

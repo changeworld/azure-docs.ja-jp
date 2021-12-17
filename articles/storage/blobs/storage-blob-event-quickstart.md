@@ -4,17 +4,17 @@ description: Blob Storage のイベントをサブスクライブするには、
 author: normesta
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 03/05/2020
+ms.date: 08/11/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: be726ea6722dca1e44d6e33883a5bb22e6783431
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61235eccc5584ed7676433e24f8018c8af6a5b97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889316"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668511"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>クイック スタート:Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする
 
@@ -36,7 +36,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。
 
 次の例では、`<resource_group_name>` という名前のリソース グループを場所 *westcentralus* に作成します。  `<resource_group_name>` を、リソース グループの一意の名前に置き換えます。
 
@@ -117,7 +117,6 @@ az storage blob upload --file testfile.txt --container-name testcontainer --name
 
 以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 Web アプリを表示して、送信したイベント確認します。
 
-
 ```json
 [{
   "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Storage/storageAccounts/myblobstorageaccount",
@@ -146,6 +145,7 @@ az storage blob upload --file testfile.txt --container-name testcontainer --name
 ```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
 引き続きこのストレージ アカウントとイベント サブスクリプションを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 引き続き使用する予定がない場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
 `<resource_group_name>` は、先ほど作成したリソース グループに置き換えます。
@@ -160,3 +160,4 @@ az group delete --name <resource_group_name>
 
 - [Blob Storage のイベント処理](storage-blob-event-overview.md)
 - [Event Grid について](../../event-grid/overview.md)
+- [BLOB リハイドレート イベントに応答して Azure 関数を実行する](archive-rehydrate-handle-event.md)

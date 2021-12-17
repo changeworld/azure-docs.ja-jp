@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: 928b1a6dcff7ad186bf5fe9ce07d1a886d429867
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a2cb97ce2ddc8e2d8b5921909346f943d955c87d
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933340"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370766"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -39,13 +39,13 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 このチュートリアルを完了するには、以下のリソースと特権が必要です。
 
 * 有効な Azure サブスクリプション
-    * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
+  * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
-    * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
+  * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
-    * 必要に応じて、[Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance]します。
+  * 必要に応じて、[Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance]します。
 * ご利用のコンピューターにインストールされた *LDP.exe* ツール。
-    * 必要に応じて、*Active Directory Domain Services と LDAP* 用に [リモート サーバー管理ツール (RSAT)][rsat] をインストールしてください。
+  * 必要に応じて、*Active Directory Domain Services と LDAP* 用に [リモート サーバー管理ツール (RSAT)][rsat] をインストールしてください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -56,17 +56,17 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 Secure LDAP を使用するには、デジタル証明書を使用して通信を暗号化します。 このデジタル証明書はマネージド ドメインに適用されます。*LDP.exe* などのツールがデータを照会する際には、このデジタル証明書によって、暗号化された安全な通信を使用することができます。 マネージド ドメインへの Secure LDAP アクセスに使用する証明書は 2 とおりの方法で作成できます。
 
 * 公的証明機関 (CA) またはエンタープライズ CA からの証明書。
-    * 公的 CA から証明書を取得している組織は、その公的 CA から Secure LDAP 証明書を取得します。 組織内でエンタープライズ CA を使用している場合は、そのエンタープライズ CA から Secure LDAP 証明書を取得します。
-    * 公的 CA が正しく機能するのは、マネージド ドメインでカスタム DNS 名を使用している場合だけです。 マネージド ドメインの DNS ドメイン名の末尾が *.onmicrosoft.com* である場合、この既定のドメインに対する接続をセキュリティで保護するためのデジタル証明書は作成できません。 *.onmicrosoft.com* ドメインを所有するのは Microsoft であるため、公的 CA からは証明書が発行されません。 このシナリオでは、自己署名証明書を作成し、その証明書を使用して Secure LDAP を構成します。
+  * 公的 CA から証明書を取得している組織は、その公的 CA から Secure LDAP 証明書を取得します。 組織内でエンタープライズ CA を使用している場合は、そのエンタープライズ CA から Secure LDAP 証明書を取得します。
+  * 公的 CA が正しく機能するのは、マネージド ドメインでカスタム DNS 名を使用している場合だけです。 マネージド ドメインの DNS ドメイン名の末尾が *.onmicrosoft.com* である場合、この既定のドメインに対する接続をセキュリティで保護するためのデジタル証明書は作成できません。 *.onmicrosoft.com* ドメインを所有するのは Microsoft であるため、公的 CA からは証明書が発行されません。 このシナリオでは、自己署名証明書を作成し、その証明書を使用して Secure LDAP を構成します。
 * 自分で作成する自己署名証明書。
-    * この方法はテスト目的に適しています。このチュートリアルでも、この方法を紹介しています。
+  * この方法はテスト目的に適しています。このチュートリアルでも、この方法を紹介しています。
 
 要求または作成する証明書は、次の要件を満たしている必要があります。 無効な証明書で Secure LDAP を有効にした場合、マネージド ドメインで問題が発生します。
 
 * **信頼された発行者** - 証明書は、セキュリティで保護された LDAP を使用してマネージド ドメインに接続するコンピューターによって信頼された機関から発行される必要があります。 この機関は、これらのコンピューターによって信頼された公的 CA またはエンタープライズ CA が該当します。
 * **有効期間** - 証明書は少なくとも、今後 3 ～ 6 か月間有効である必要があります。 証明書の有効期限が切れると、マネージド ドメインへのセキュリティで保護された LDAP のアクセスが切断されます。
 * **サブジェクト名** - 証明書のサブジェクト名は、マネージド ドメインである必要があります。 たとえば、ドメインが *aaddscontoso.com* という名前である場合、証明書のサブジェクト名は * *.aaddscontoso.com* である必要があります。
-    * Secure LDAP が Azure AD Domain Services で正常に動作するように、証明書の DNS 名またはサブジェクト代替名がワイルドカード証明書であることが必要です。 ドメイン コントローラーにはランダムな名前が使用されます。サービスの可用性を確保するために、ドメイン コントローラーは追加したり削除したりすることができます。
+  * Secure LDAP が Azure AD Domain Services で正常に動作するように、証明書の DNS 名またはサブジェクト代替名がワイルドカード証明書であることが必要です。 ドメイン コントローラーにはランダムな名前が使用されます。サービスの可用性を確保するために、ドメイン コントローラーは追加したり削除したりすることができます。
 * **キー使用法** - 証明書は、"*デジタル署名*" および "*キーの暗号化*" に対して構成される必要があります。
 * **証明書の目的** - 証明書は、TLS サーバー認証に対して有効である必要があります。
 
@@ -108,12 +108,12 @@ Thumbprint                                Subject
 Secure LDAP を使用するために、ネットワーク トラフィックは、公開鍵基盤 (PKI) を使用して暗号化されます。
 
 * マネージド ドメインには **秘密** キーが適用されます。
-    * Secure LDAP トラフィックの "*暗号化を解除する*" には、この秘密キーが使用されます。 秘密キーの適用先はマネージド ドメインに限定する必要があります。クライアント コンピューターに広く秘密キーを配布しないでください。
-    * 秘密キーを含んだ証明書では、 *.PFX* ファイル形式が使用されます。
-    * 証明書をエクスポートするときは、*TripleDES-SHA1* 暗号化アルゴリズムを指定する必要があります。 これは .pfx ファイルにのみ適用され、証明書自体で使用されるアルゴリズムには影響しません。 *TripleDES-SHA1* オプションは、Windows Server 2016 以降でのみ使用できます。
+  * Secure LDAP トラフィックの "*暗号化を解除する*" には、この秘密キーが使用されます。 秘密キーの適用先はマネージド ドメインに限定する必要があります。クライアント コンピューターに広く秘密キーを配布しないでください。
+  * 秘密キーを含んだ証明書では、 *.PFX* ファイル形式が使用されます。
+  * 証明書をエクスポートするときは、*TripleDES-SHA1* 暗号化アルゴリズムを指定する必要があります。 これは .pfx ファイルにのみ適用され、証明書自体で使用されるアルゴリズムには影響しません。 *TripleDES-SHA1* オプションは、Windows Server 2016 以降でのみ使用できます。
 * クライアント コンピューターには **公開** キーが適用されます。
-    * この公開キーは、Secure LDAP トラフィックの "*暗号化*" に使用されます。 公開キーは、クライアント コンピューターに配布することができます。
-    * 秘密キーを含まない証明書には、 *.CER* ファイル形式が使用されます。
+  * この公開キーは、Secure LDAP トラフィックの "*暗号化*" に使用されます。 公開キーは、クライアント コンピューターに配布することができます。
+  * 秘密キーを含まない証明書には、 *.CER* ファイル形式が使用されます。
 
 これら 2 つのキー ("*秘密*" キーと "*公開*" キー) によって、適切なコンピューター間に相互通信が確実に限定されます。 公的 CA またはエンタープライズ CA を使用した場合は、秘密キーを含んだ証明書が発行され、その秘密キーをマネージド ドメインに適用することができます。 クライアント コンピューターはあらかじめ公開キーを把握し、信頼しておく必要があります。
 
@@ -152,7 +152,7 @@ Secure LDAP を使用するために、ネットワーク トラフィックは�
 
     *.PFX* 証明書ファイルを保護するには、 **[セキュリティ]** ページで **[パスワード]** のオプションを選択します。 暗号化アルゴリズムは、*TripleDES-SHA1* である必要があります。 パスワードの入力と確認入力を行って、 **[次へ]** を選択します。 このパスワードは、次のセクションでマネージド ドメインに対して Secure LDAP を有効にする際に使用します。
 
-    [PowerShell の export-pfxcertificate コマンドレット](/powershell/module/pkiclient/export-pfxcertificate)を使用してエクスポートする場合は、TripleDES_SHA1 を使用して *-CryptoAlgorithmOption* フラグを渡す必要があります。
+    [PowerShell の export-pfxcertificate コマンドレット](/powershell/module/pki/export-pfxcertificate)を使用してエクスポートする場合は、TripleDES_SHA1 を使用して *-CryptoAlgorithmOption* フラグを渡す必要があります。
 
     ![パスワードを暗号化する方法を示すスクリーンショット](./media/tutorial-configure-ldaps/encrypt.png)
 
@@ -222,7 +222,7 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
 
 1. 交換用の Secure LDAP 証明書を作成するには、「[Secure LDAP 用の証明書を作成する](#create-a-certificate-for-secure-ldap)」の手順を実行してください。
 1. 交換用の証明書を Azure AD DS に適用するには、Azure portal の Azure AD DS の左側にあるメニューで、 **[Secure LDAP]** を選択し、 **[証明書の変更]** を選択します。
-1. Secure LDAP を使用して接続するすべてのクライアントに証明書を配布します。 
+1. Secure LDAP を使用して接続するすべてのクライアントに証明書を配布します。
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>インターネット経由での Secure LDAP アクセスをロック ダウンする
 
@@ -291,6 +291,9 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
 
 特定のコンテナーに対して直接クエリを実行するには、 **[表示] > [ツリー]** メニューから、*OU=AADDC Users,DC=AADDSCONTOSO,DC=COM* や *OU=AADDC Computers,DC=AADDSCONTOSO,DC=COM* などの **BaseDN** を指定します。 クエリの書式設定と作成の方法の詳細については、[LDAP クエリの基礎][ldap-query-basics]に関するページを参照してください。
 
+> [!NOTE]
+> 自己署名証明書を使用する場合は、LDAPS 用に信頼されたルート証明機関に追加した自己署名証明書が LDP.exe で機能することを確認します。
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで、接続をテストするために、お使いのコンピューターのローカル hosts ファイルに DNS エントリを追加した場合、そのエントリを削除して、実際の DNS ゾーンの正規のレコードを追加してください。 ローカル hosts ファイルのエントリを削除するには、次の手順を実行します。
@@ -301,18 +304,18 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-LDAP.exe が接続できないというエラーが表示される場合は、接続を確立するためのさまざまな側面に対処してみてください。 
+LDAP.exe が接続できないというエラーが表示される場合は、接続を確立するためのさまざまな側面に対処してみてください。
 
 1. ドメイン コントローラーの構成
 1. クライアントの構成
 1. ネットワーク
 1. TLS セッションの確立
 
-証明書のサブジェクト名を照合するために、DC は (Azure AD ドメイン名ではなく) Azure AD DS ドメイン名を使用して、証明書ストアで証明書を検索します。 たとえばスペルミスなどがあると、DC は適切な証明書を選択できなくなります。 
+証明書のサブジェクト名を照合するために、DC は (Azure AD ドメイン名ではなく) Azure AD DS ドメイン名を使用して、証明書ストアで証明書を検索します。 たとえばスペルミスなどがあると、DC は適切な証明書を選択できなくなります。
 
 クライアントは、指定された名前を使用して TLS 接続の確立を試みます。 トラフィックは、経路の端から端まで通過する必要があります。 DC は、サーバー認証証明書の公開キーを送信します。証明書には、正しい使用法が記載されている必要があります。また、サブジェクト名で署名されている名前は、そのサーバーが接続先の DNS 名であることをクライアントから信頼されるように矛盾のない (つまり、ワイルドカードが機能し、スペルミスがない) ものである必要があります。この場合、クライアントは発行者を信頼する必要があります。 イベント ビューアーのシステム ログで、そのチェーンに問題があるかどうかを確認し、ソースが Schannel であるイベントをフィルター処理できます。 これらの要素が整うと、セッション キーが形成されます。  
 
-詳細については、[TLS ハンドシェイク](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol)に関する記事をご覧ください。
+詳細については、[TLS ハンドシェイク](/windows/win32/secauthn/tls-handshake-protocol)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -336,4 +339,4 @@ LDAP.exe が接続できないというエラーが表示される場合は、�
 <!-- EXTERNAL LINKS -->
 [rsat]: /windows-server/remote/remote-server-administration-tools
 [ldap-query-basics]: /windows/desktop/ad/creating-a-query-filter
-[New-SelfSignedCertificate]: /powershell/module/pkiclient/new-selfsignedcertificate
+[New-SelfSignedCertificate]: /powershell/module/pki/new-selfsignedcertificate

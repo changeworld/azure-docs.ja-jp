@@ -1,35 +1,35 @@
 ---
-title: Windows Virtual Desktop の環境 - Azure
-description: Windows Virtual Desktop 環境のホスト プールやアプリ グループなどの基本的な要素について説明します。
+title: Azure Virtual Desktop 環境 - Azure
+description: Azure Virtual Desktop 環境のホスト プールやアプリ グループなどの基本的な要素について説明します。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 2c598be641ee09773e4d56ebc485e6a2fbe49191
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b6162657520f91168f46c43c1d6d7f5cbfbe6d38
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446877"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031737"
 ---
-# <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop の環境
+# <a name="azure-virtual-desktop-environment"></a>Azure Virtual Desktop 環境
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/environment-setup-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/environment-setup-2019.md)を参照してください。
 
-Windows Virtual Desktop は、仮想デスクトップと RemoteApp への簡単で安全なアクセスをユーザーに提供するサービスです。 このトピックでは、Windows Virtual Desktop 環境の一般構造について少し詳しく説明します。
+Azure Virtual Desktop は、仮想デスクトップと RemoteApp への簡単で安全なアクセスをユーザーに提供するサービスです。 このトピックでは、Azure Virtual Desktop 環境の一般構造について少し詳しく説明します。
 
 ## <a name="host-pools"></a>ホスト プール
 
-ホスト プールとは、Windows Virtual Desktop エージェントを実行するときに Windows Virtual Desktop にセッション ホストとして登録する Azure 仮想マシンのコレクションです。 ホスト プール内のすべてのセッション ホスト仮想マシンは、一貫したユーザー エクスペリエンスを実現するために同じイメージから供給される必要があります。
+ホスト プールとは、Azure Virtual Desktop エージェントを実行するときに Azure Virtual Desktop にセッション ホストとして登録する Azure 仮想マシンのコレクションです。 ホスト プール内のすべてのセッション ホスト仮想マシンは、一貫したユーザー エクスペリエンスを実現するために同じイメージから供給される必要があります。
 
 ホスト プールには以下の 2 種類があります。
 
 - 個人用。各セッション ホストが個々のユーザーに割り当てられています。
 - プール。セッション ホストは、ホスト プール内のアプリ グループに承認されたユーザーからの接続を受け入れることができます。
 
-ホスト プールに追加のプロパティを設定して、負荷分散の動作、各セッション ホストが取得できるセッション数、およびユーザーが Windows Virtual Desktop セッションへのサインイン時にホスト プール内のセッション ホストに対して実行できる操作を変更できます。 ユーザーに公開されるリソースは、アプリ グループを通じて制御します。
+ホスト プールに追加のプロパティを設定して、負荷分散の動作、各セッション ホストが取得できるセッション数、およびユーザーが Azure Virtual Desktop セッションへのサインイン時にホスト プール内のセッション ホストに対して実行できる操作を変更できます。 ユーザーに公開されるリソースは、アプリ グループを通じて制御します。
 
 ## <a name="app-groups"></a>アプリ グループ
 
@@ -47,22 +47,22 @@ Windows Virtual Desktop は、仮想デスクトップと RemoteApp への簡単
 
 ## <a name="workspaces"></a>Workspaces
 
-ワークスペースは、Windows Virtual Desktop 内のアプリケーション グループを論理的にグループ化したものです。 ユーザーに公開されたリモート アプリとデスクトップがそのユーザーに表示されるようにするには、各 Windows Virtual Desktop アプリケーション グループがワークスペースに関連付けられている必要があります。
+ワークスペースは、Azure Virtual Desktop 内のアプリケーション グループを論理的にグループ化したものです。 ユーザーに公開されたリモート アプリとデスクトップがそのユーザーに表示されるようにするには、各 Azure Virtual Desktop アプリケーション グループがワークスペースに関連付けられている必要があります。
 
 ## <a name="end-users"></a>エンド ユーザー
 
-アプリ グループにユーザーを割り当てた後、いずれかの Windows Virtual Desktop クライアントを使用して Windows Virtual Desktop 展開に接続できます。
+アプリ グループにユーザーを割り当てた後、いずれかの Azure Virtual Desktop クライアントを使用して Azure Virtual Desktop のデプロイに接続できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-委任されたアクセスとユーザーにロールを割り当てる方法について詳しくは、「[Delegated Access in Windows Virtual Desktop Preview (Windows Virtual Desktop での委任されたアクセス)](delegated-access-virtual-desktop.md)」をご覧ください。
+委任されたアクセスとユーザーにロールを割り当てる方法について詳しくは、「[Windows Virtual Desktop での委任されたアクセス](delegated-access-virtual-desktop.md)」をご覧ください。
 
-Windows Virtual Desktop ホスト プールを設定する方法については、「[Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」を参照してください。
+Azure Virtual Desktop ホスト プールを設定する方法については、「[Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」を参照してください。
 
-Windows Virtual Desktop に接続する方法については、次のいずれかの記事をご覧ください。
+Azure Virtual Desktop に接続する方法については、次のいずれかの記事をご覧ください。
 
-- [Windows 10 または Windows 7 を使用して接続する](connect-windows-7-10.md)
-- [Web ブラウザーを使用して接続する](connect-web.md)
-- [Android クライアントに接続する](connect-android.md)
-- [macOS クライアントに接続する](connect-macos.md)
-- [iOS クライアントに接続する](connect-ios.md)
+- [Windows 10 または Windows 7 を使用して接続する](./user-documentation/connect-windows-7-10.md)
+- [Web ブラウザーを使用して接続する](./user-documentation/connect-web.md)
+- [Android クライアントに接続する](./user-documentation/connect-android.md)
+- [macOS クライアントに接続する](./user-documentation/connect-macos.md)
+- [iOS クライアントに接続する](./user-documentation/connect-ios.md)

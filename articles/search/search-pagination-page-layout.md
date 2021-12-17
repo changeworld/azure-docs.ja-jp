@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 92db62622c37241a76d7847931df030162de8f00
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: e810a5d3a94ad4e356d0b44a422b757b5710a781
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504228"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182277"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Cognitive Search での検索結果の操作方法
 
@@ -157,4 +157,4 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 + [アプリケーション ジェネレーター](search-create-app-portal.md)。ポータルで、検索バー、ファセット ナビゲーション、画像を含む結果領域を備えた HTML ページを作成します。
 + [C# での最初のアプリの作成](tutorial-csharp-create-first-app.md)に関するページは、機能するクライアントを構築するチュートリアルです。 サンプル コードは、ページ分割されたクエリ、検索結果の強調表示、並べ替えを示しています。
 
-複数のコード サンプルに Web フロントエンド インターフェイスが含まれており、次でも見つけることができます: [ニューヨーク市のジョブ デモ アプリ](https://aka.ms/azjobsdemo)、[ライブ デモ サイトを使用した JavaScript サンプル コード](https://github.com/liamca/azure-search-javascript-samples)、および [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+複数のコード サンプルに Web フロントエンド インターフェイスが含まれており、[ニューヨーク市のジョブ デモ アプリ](https://aka.ms/azjobsdemo)または[ライブ デモ サイトを使用した JavaScript サンプル コード](https://github.com/liamca/azure-search-javascript-samples)でも見つけることができます。

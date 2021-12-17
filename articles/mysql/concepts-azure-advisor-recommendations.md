@@ -6,14 +6,17 @@ ms.author: alau
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 4b3d750c930defbfcb7db6d4d67210e001e3ce8b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 97f4e55b1d1888de00502d70c911f0bf24d31782
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315329"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653101"
 ---
 # <a name="azure-advisor-for-mysql"></a>Azure Advisor for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 Azure Advisor が Azure Database for MySQL にどのように適用されるかを説明します。また、よく寄せられる質問に対する回答も示します。
 ## <a name="what-is-azure-advisor-for-mysql"></a>Azure Advisor for MySQL とは
 Azure Advisor システムは、テレメトリを使用して、MySQL データベースのパフォーマンスと信頼性に関する推奨事項を発行します。 Advisor による推奨事項は、MySQL データベース オファリングに分割されます。
@@ -29,7 +32,7 @@ Azure Advisor システムは、テレメトリを使用して、MySQL データ
 ## <a name="recommendation-types"></a>推奨事項の種類
 Azure Database for MySQL は、次の種類の推奨事項に優先順位を付けます。
 * **パフォーマンス**: 目的は、MySQL サーバーの処理速度を向上することです。 これには、CPU 使用率、メモリの不足度、接続プール、ディスク使用率、製品固有のサーバー パラメーターが含まれます。 詳細については、「[Advisor のパフォーマンスに関する推奨事項](../advisor/advisor-performance-recommendations.md)」を参照してください。
-* **信頼性**: 目的は、ビジネスに不可欠なデータベースの継続稼働を保証し、さらに向上することです。 これには、ストレージの上限値や、接続数の制限に関する推奨事項が含まれます。 詳細については、「[Advisor の信頼性に関する推奨事項](../advisor/advisor-high-availability-recommendations.md)」を参照してください。
+* **信頼性**: 目的は、ビジネスに不可欠なデータベースの継続稼働を保証し、さらに向上させることです。 これには、ストレージの上限値や、接続数の制限に関する推奨事項が含まれます。 詳細については、「[Advisor の信頼性に関する推奨事項](../advisor/advisor-high-availability-recommendations.md)」を参照してください。
 * **コスト**: Azure の全体的な支出を最適化し、削減します。 これには、サーバーの適切なサイズ設定に関する推奨事項が含まれます。 詳細については、「[Advisor のコストに関する推奨事項](../advisor/advisor-cost-recommendations.md)」を参照してください。
 
 ## <a name="understanding-your-recommendations"></a>推奨事項の内容を理解する

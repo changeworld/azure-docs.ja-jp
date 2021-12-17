@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/25/2020
+ms.date: 05/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 34365a8bd7a15f502aa89a966adb14807e802cc4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c76e4b2c463e309be637cc8a0dd5e5ea2e3efc2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737001"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132280652"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Confluence SAML SSO by Microsoft の統合
 
@@ -62,7 +62,7 @@ Confluence SAML SSO by Microsoft と Azure AD の統合を構成するには、�
 
 - Confluence: 5.0 から 5.10
 - Confluence: 6.0.1 から 6.15.9
-- Confluence: 7.0.1 から 7.9.3
+- Confluence: 7.0.1 から 7.10.0
 
 > [!NOTE]
 > Confluence プラグインは、Ubuntu Version 16.04 でも動作することに注意してください
@@ -71,7 +71,7 @@ Confluence SAML SSO by Microsoft と Azure AD の統合を構成するには、�
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Confluence SAML SSO by Microsoft では、**SP** によって開始される SSO がサポートされます
+* Confluence SAML SSO by Microsoft では、**SP** Initiated SSO がサポートされます。
 
 ## <a name="adding-confluence-saml-sso-by-microsoft-from-the-gallery"></a>ギャラリーからの Confluence SAML SSO by Microsoft の追加
 
@@ -109,11 +109,11 @@ Confluence SAML SSO by Microsoft で Azure AD シングル サインオンを構
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、`https://<domain:port>/plugins/servlet/saml/auth` という形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<DOMAIN:PORT>/` という形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、`https://<domain:port>/` という形式で URL を入力します。
-
-    c. **[応答 URL]** ボックスに、`https://<domain:port>/plugins/servlet/saml/auth` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://<DOMAIN:PORT>/plugins/servlet/saml/auth` のパターンを使用して URL を入力します
+    
+    c. **[サインオン URL]** ボックスに、`https://<DOMAIN:PORT>/plugins/servlet/saml/auth` という形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 名前付き URL である場合は、ポートは省略できます。 これらの値は Confluence プラグインの構成中に受け取ります (これについてはこのチュートリアルの後半で説明します)。
@@ -152,11 +152,11 @@ Confluence SAML SSO by Microsoft で Azure AD シングル サインオンを構
 
 1. 歯車をポイントし、 **[Add-ons]\(アドオン\)** をクリックします。
 
-    ![選択されている "歯車" アイコンと、ドロップダウン メニューで強調表示されている [Add-ons]\(アドオン\) を示すスクリーンショット。](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![選択されている "歯車" アイコンと、ドロップダウン メニューで強調表示されている [Add-ons]\(アドオン\) を示すスクリーンショット。](./media/confluencemicrosoft-tutorial/add-on-1.png)
 
 1. [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=56503)からプラグインをダウンロードします。 **[Upload add-on]\(アドオンのアップロード\)** メニューを使用して、Microsoft が提供しているプラグインを手動でアップロードします。 プラグインのダウンロードは、[Microsoft サービス規約](https://www.microsoft.com/servicesagreement/)の対象です。
 
-    ![[Upload add-on]\(アドオンのアップロード\) アクションが選択された [アドオンの管理] ページを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![[Upload add-on]\(アドオンのアップロード\) アクションが選択された [アドオンの管理] ページを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/add-on-12.png)
 
 1. Confluence のリバース プロキシ シナリオまたはロード バランサー シナリオを実行するには、次の手順を実行します。
 
@@ -167,19 +167,19 @@ Confluence SAML SSO by Microsoft で Azure AD シングル サインオンを構
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    !["connector" ポートに属性が追加された "server.xml" ファイルを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+    !["connector" ポートに属性が追加された "server.xml" ファイルを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/reverse-proxy-1.png)
 
     b. プロキシ/ロード バランサーに従って、 **[システム設定]** の **[ベース URL]** を変更します。
 
-    ![[ベース URL] が強調表示された [管理] - [設定] ページを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+    ![[ベース URL] が強調表示された [管理] - [設定] ページを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/reverse-proxy-2.png)
 
 1. プラグインがインストールされると、 **[アドオンの管理]** セクションの **[User Installed]\(ユーザー インストール\)** アドオン セクションに表示されます。 **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
 
-    ![[Configure]\(構成\) ボタンが強調表示された [User Installed]\(ユーザー インストール\) セクションを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/addon15.png)
+    ![[Configure]\(構成\) ボタンが強調表示された [User Installed]\(ユーザー インストール\) セクションを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/add-on-15.png)
 
 1. 構成ページで次の手順を実行します。
 
-    ![シングル サインオンの構成ページを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/addon54.png)
+    ![シングル サインオンの構成ページを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/add-on-53.png)
 
     > [!TIP]
     > メタデータの解決でエラーが発生しないように、アプリに対してマップされている証明書が 1 つしかないようにします。 証明書が複数ある場合は、メタデータの解決の際に管理者に対してエラーが表示されます。
@@ -209,7 +209,7 @@ Confluence SAML SSO by Microsoft で Azure AD シングル サインオンを構
 
        > [!Note]
        > Azure ログインの強制を有効にしたときにログイン ページで管理ログインの既定のログイン フォームを有効にするには、ブラウザー URL にクエリ パラメーターを追加します。
-       > `https://<domain:port>/login.action?force_azure_login=false`
+       > `https://<DOMAIN:PORT>/login.action?force_azure_login=false`
 
     1. **[Save (保存)]** ボタンをクリックして、設定を保存します。
 
@@ -226,11 +226,11 @@ Confluence SAML SSO by Microsoft で Azure AD シングル サインオンを構
 
 1. 歯車をポイントし、 **[User management]\(ユーザー管理\)** をクリックします。
 
-    ![従業員の追加](./media/confluencemicrosoft-tutorial/user1.png)
+    ![従業員の追加](./media/confluencemicrosoft-tutorial/user-1.png)
 
 1. [Users]\(ユーザー\) セクションで、 **[Add users]\(ユーザーの追加\)** タブをクリックします。 **[Add a User]\(ユーザーの追加\)** ダイアログ ページで、次の手順に従います。
 
-    ![[Add Users]\(ユーザーの追加\) タブが選択され、[Add a User]\(ユーザーの追加\) に情報が入力された [Confluence administration]\(Confluence の管理\) を示すスクリーンショット。](./media/confluencemicrosoft-tutorial/user2.png)
+    ![[Add Users]\(ユーザーの追加\) タブが選択され、[Add a User]\(ユーザーの追加\) に情報が入力された [Confluence administration]\(Confluence の管理\) を示すスクリーンショット。](./media/confluencemicrosoft-tutorial/user-2.png)
 
     a. **[Username]\(ユーザー名\)** ボックスに、ユーザー (B.Simon など) の電子メールを入力します。
 
@@ -252,9 +252,8 @@ Confluence SAML SSO by Microsoft で Azure AD シングル サインオンを構
 
 * Confluence SAML SSO by Microsoft のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリの [Confluence SAML SSO by Microsoft] タイルをクリックすると、Confluence SAML SSO by Microsoft のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリの [Confluence SAML SSO by Microsoft] タイルをクリックすると、Confluence SAML SSO by Microsoft のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Confluence SAML SSO by Microsoft を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Confluence SAML SSO by Microsoft を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

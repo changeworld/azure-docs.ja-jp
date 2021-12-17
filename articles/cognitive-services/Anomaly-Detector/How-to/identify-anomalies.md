@@ -10,18 +10,18 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 74f891ba7f5b400b5782565e670539167f4e2464
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae8759bd10096737b400fe672c3555ff5fd41585
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97703434"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296633"
 ---
-# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>方法:時系列データに Anomaly Detector API を使用する  
+# <a name="how-to-use-the-anomaly-detector-univariate-api-on-your-time-series-data"></a>方法: 時系列データで Anomaly Detector の一変量 API を使用する  
 
 [Anomaly Detector API](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) には、異常検出の方法が 2 つあります。 時系列全体でバッチとして異常を検出するか、最新のデータ ポイントの異常状態を検出することによりデータが生成されるときに異常を検出することができます。 検出モデルは、異常結果と共に、各データ ポイントの予期される値と異常検出の上限および下限値を返します。 これらの値を使用して、通常の値の範囲およびデータの異常を視覚化することができます。
 
-## <a name="anomaly-detection-modes"></a>異常検出モード 
+## <a name="anomaly-detection-modes"></a>異常検出モード
 
 Anomaly Detector API には、バッチとストリーミングの検出モードが用意されています。
 
@@ -41,7 +41,7 @@ Anomaly Detector API には、バッチとストリーミングの検出モー�
 
 ストリーミング データの異常を継続的に検出するには、最新のデータ ポイントと共に次の要求 URI を使用します。 
 
-`/timeseries/last/detect'`. 
+`/timeseries/last/detect`. 
 
 新しいデータ ポイントを生成するときにそれらを送信することによって、データをリアル タイムで監視できます。 モデルは、送信したデータ ポイントで生成され、API は、時系列の最新のポイントが異常であるかどうかを判断します。
 

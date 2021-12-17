@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-author: mingshen-ms
-ms.author: mingshen
-ms.openlocfilehash: e7bcfe1afc063d89bc6a5339bf62521cd644b8ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+author: saasguide
+ms.author: souchak
+ms.openlocfilehash: 78a66070c6bcf03f4a279163106048d87fe27f23
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048342"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061384"
 ---
 # <a name="register-a-saas-application"></a>SaaS アプリケーションを登録する
 
@@ -27,8 +27,8 @@ Azure AD (Active Directory) の詳細については、[認証の概要](../../a
 アプリケーションで Azure AD の機能を使用するには、まず Azure AD テナントにそのアプリケーションを登録する必要があります。 この登録プロセスでは、アプリケーションに関する詳細の一部を Azure AD に渡します。 Azure portal を使用して新しいアプリケーションを登録するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータルのセッションを目的のテナントに設定します。
-3. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスをクリックし、 **[アプリの登録]** 、 **[新しいアプリケーションの登録]** の順にクリックします。
+2. お使いのアカウントで複数のアプリケーションにアクセスできる場合は、右上隅で自分のアカウントを選択します。 その後、ポータル セッションを目的の Azure AD テナントに変更します。
+3. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選択してから、 **[アプリの登録]** 、 **[新規アプリケーションの登録]** の順に選択します。
 
     ![SaaS AD のアプリ登録](./media/saas-offer-app-registration-v1.png)
 
@@ -41,9 +41,9 @@ Azure AD (Active Directory) の詳細については、[認証の概要](../../a
 
         Web アプリケーションの具体的な例については、[Azure AD 開発者向けガイド](../../active-directory/develop/index.yml)の[開始](../../active-directory/develop/quickstart-create-new-tenant.md)セクションで利用できるクイックスタート ガイド付きセットアップを確認してください。
 
-5. 完了したら、 **[登録]** をクリックします。  Azure AD によって、新しいアプリケーションに一意の "*アプリケーション ID*" が割り当てられます。 API にアクセスする 1 つのアプリだけをシングル テナントとして登録することをお勧めします。
+5. 終了したら、 **[登録]** を選択します。  Azure AD によって、新しいアプリケーションに一意の "*アプリケーション ID*" が割り当てられます。 API にアクセスする 1 つのアプリだけをシングル テナントとして登録することをお勧めします。
 
-6. クライアント シークレットを作成するには、 **[証明書とシークレット]** ページに移動し、 **[+ 新しいクライアント シークレット]** をクリックします。  シークレット値は、コードで使用するため、必ずコピーしてください。
+6. クライアント シークレットを作成するには、 **[証明書とシークレット]** ページに移動し、 **[+ 新しいクライアント シークレット]** を選択します。  シークレット値は、コードで使用するため、必ずコピーしてください。
 
 **Azure AD アプリ ID** は自分の公開元 ID に関連付けられているため、自分のすべてのプランで同じ "*アプリ ID*" が使用されるようにしてください。
 
@@ -52,9 +52,9 @@ Azure AD (Active Directory) の詳細については、[認証の概要](../../a
 
 ## <a name="how-to-get-the-publishers-authorization-token"></a>公開元の承認トークンを取得する方法
 
-アプリケーションを登録したら、公開元の承認トークン (Azure AD アクセス トークン、Azure AD V1 エンドポイントを使用) をプログラムで要求できます。 公開元は、さまざまな SaaS Fulfillment API を呼び出すときに、このトークンを使用する必要があります。 このトークンは 1 時間だけ有効です。 
+アプリケーションを登録したら、公開元の承認トークン (Azure AD アクセス トークン、Azure AD V1 エンドポイントを使用) をプログラムで要求できます。 公開元は、さまざまな SaaS Fulfillment API を呼び出すときに、このトークンを使用する必要があります。 このトークンは 1 時間だけ有効です。
 
-これらのトークンの詳細については、「[Azure Active Directory アクセス トークン](../../active-directory/develop/access-tokens.md)」を参照してください。  下のフローでは、V1 エンド ポイント トークンが使用されていることに注意してください。
+これらのトークンの詳細については、「[Azure Active Directory アクセス トークン](../../active-directory/develop/access-tokens.md)」を参照してください。  下のフローでは、V1 エンドポイント トークンが使用されます。
 
 ### <a name="get-the-token-with-an-http-post"></a>HTTP POST を使用してトークンを取得する
 
@@ -109,8 +109,15 @@ Post<br>
   }
 ```
 
-応答の `"access_token"` フィールド値は、すべての SaaS Fulfillment API と Marketplace 計測 API を呼び出すときに承認パラメーターとして渡す `<access_token>` です。
+| 要素 | 説明 |
+| ------- | ----------- |
+| `access_token` | この要素は、すべての SaaS Fulfillment API と Marketplace 計測 API を呼び出すときに承認パラメーターとして渡す `<access_token>` です。 セキュリティで保護された REST API を呼び出すとき、トークンは `Authorization` 要求ヘッダー フィールドに "ベアラー" トークンとして埋め込まれ、API が呼び出し元を認証できるようにします。 |
+| `expires_in` | アクセス トークンが発行されてから期限切れになるまでの有効継続時間 (秒単位)。 発行時刻はトークンの `iat` 要求で確認できます。 |
+| `expires_on` | アクセス トークンが期限切れになるまでの期間。 日付は "1970-01-01T0:0:0Z UTC" からの秒数として表されます (トークンの `exp` 要求に対応)。 |
+| `not_before` | アクセス トークンが有効になり、承認されるまでの期間。 日付は "1970-01-01T0:0:0Z UTC" からの秒数として表されます (トークンの `nbf` 要求に対応)。 |
+| `resource` | アクセス トークンの要求対象リソース。要求の `resource` クエリ文字列パラメーターと一致します。 |
+| `token_type` | トークンの種類。つまり "ベアラー" アクセス トークン。リソースが、このトークンのベアラーへのアクセスを提供できることを意味します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure AD で保護されたアプリで、[SaaS Fulfillment API バージョン 2](./pc-saas-fulfillment-api-v2.md) を使用できるようになりました。
+Azure AD で保護されたアプリで、[SaaS Fulfillment サブスクリプション API バージョン 2](pc-saas-fulfillment-subscription-api.md) および [SaaS Fulfillment 操作 API バージョン 2](pc-saas-fulfillment-operations-api.md) を使用できるようになりました。

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2018
+ms.date: 05/14/2021
 ms.author: genli
-ms.openlocfilehash: ed250e3f32965fc450102fb14b93b93d6753ab3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d793dddcfd51c9d9bd2527298d958482a9216b88
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222787"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110080621"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>ホスト名の表示と変更
 ロール インスタンスをホスト名で参照できるようにするには、各ロールのサービス構成ファイルでホスト名の値を設定する必要があります。 そのためには、使用するホスト名を **Role** 要素の **vmName** 属性に追加します。 **vmName** 属性の値は、各ロール インスタンスのホスト名に対するベースとして使用されます。 たとえば、**vmName** が *webrole* であり、そのロールに 3 つのインスタンスがある場合、インスタンスのホスト名は *webrole0*、*webrole1*、*webrole2* になります。 仮想マシンのホスト名は仮想マシン名に基づいて設定されるため、構成ファイルで仮想マシンのホスト名を指定する必要はありません。 Microsoft Azure サービスの構成の詳細については、「 [Azure Service Configuration Schema (.cscfg File) (Azure サービス構成スキーマ (.cscfg ファイル))](/previous-versions/azure/reference/ee758710(v=azure.100))
@@ -41,7 +41,7 @@ REST クライアントから次の手順を実行します。
 
 1. Azure ポータルに接続するためのクライアント証明書があることを確認します。 クライアント証明書を取得するには、「[How to: Download and Import Publish Settings and Subscription Information (方法: 発行の設定とサブスクリプション情報をダウンロードしてインポートする)](/previous-versions/dynamicsnav-2013/dn385850(v=nav.70))」の手順に従ってください。 
 2. x-ms-version という名前のヘッダー エントリの値を 2013-11-01 に設定します。
-3. 次の形式で要求を送信します: https:\//management.core.windows.net/\<subscrition-id\>/services/hostedservices/\<service-name\>?embed-detail=true
+3. 次の形式の要求を送信します。`https://management.core.windows.net/<subscription-id>/services/hostedservices/<service-name>?embed-detail=true`
 4. 各 **RoleInstance** 要素の **HostName** 要素を検索します。
 
 > [!WARNING]

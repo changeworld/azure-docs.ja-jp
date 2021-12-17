@@ -8,17 +8,19 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8f65ca9386963824f0cb740f587de83c9dec7f78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-js, devx-track-csharp, ignite-fall-2021
+ms.openlocfilehash: e38baa47d22ebb1fbdd5127cbd415afc3027d8a4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103017425"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016853"
 ---
 # <a name="filter-responses-with-metadata"></a>メタデータを使用して応答をフィルター処理する
 
 QnA Maker では、キーと値のペアの形式で、メタデータを質問と回答のペアに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 <a name="qna-entity"></a>
 
@@ -51,6 +53,29 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
     "strictFilters": [ { "name": "restaurant", "value": "paradise"}]
 }
 ```
+
+## <a name="filter-by-source"></a>ソースによるフィルター
+
+ナレッジ ベースに複数のコンテンツ ソースがあって、一部の特定のソースに結果を限定したい場合、下に示す方法で予約キーワード `source_name_metadata` を使用してこれを実行できます。
+
+```json
+"strictFilters": [
+    {
+        "name": "category",
+        "value": "api"
+    },
+   {
+        "name": "source_name_metadata",
+        "value": "boby_brown_docx"
+    },
+   {
+        "name": "source_name_metadata",
+        "value": "chitchat.tsv"
+   }
+]
+```
+
+---
 
 ### <a name="logical-and-by-default"></a>既定での論理 AND
 

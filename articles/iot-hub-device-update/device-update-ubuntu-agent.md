@@ -6,18 +6,18 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6464ad632251053ac481fbd1f6a3e1197aa470df
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 1cd4ea0d01299b8e361e65a1f8152c4222df3bf0
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121304"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372172"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Ubuntu Server 18.04 x64 上のパッケージ エージェントを使用した Device Update for Azure IoT Hub のチュートリアル
 
 Device Update for IoT Hub では、イメージベースとパッケージベースの 2 つの形式の更新がサポートされています。
 
-パッケージベースの更新は、デバイス上の特定のコンポーネントまたはアプリケーションのみを変更するターゲット指定の更新となります。 パッケージベースの更新により、帯域幅の消費量が少なくなるほか、更新のダウンロードとインストールにかかる時間が短縮されます。 通常、パッケージ更新プログラムを使用すると、更新プログラムを適用する際のデバイスのダウンタイムを短縮し、イメージ作成のオーバーヘッドを回避できます。
+パッケージベースの更新は、デバイス上の特定のコンポーネントまたはアプリケーションのみを変更するターゲット指定の更新となります。 これにより、帯域幅の消費量が少なくなるほか、更新のダウンロードとインストールにかかる時間が短縮されます。 また、通常、パッケージベースの更新プログラムを使用した場合も、更新プログラムを適用するときのデバイスのダウンタイムを短縮し、イメージ作成のオーバーヘッドを回避できます。 また、[APT マニフェスト](device-update-apt-manifest.md) ファイルで指定されたパッケージ (およびその依存関係) を指定されたリポジトリからダウンロードしてインストールするために必要な情報を、デバイス更新エージェントに提供する APT マニフェストが使用されています。
 
 このエンド ツー エンドのチュートリアルでは、Device Update パッケージ エージェントを使用して、Ubuntu Server 18.04 x64 の Azure IoT Edge を更新する手順について説明します。 このチュートリアルでは IoT Edge の更新を扱いますが、同様の手順を使用すれば、他のパッケージ、たとえば使用されているコンテナー エンジンを更新することもできます。
 
@@ -35,7 +35,7 @@ Device Update for IoT Hub では、イメージベースとパッケージベー
 ## <a name="prerequisites"></a>前提条件
 
 * まだ [Device Update アカウントとインスタンス](create-device-update-account.md)を作成していない場合は作成します (IoT ハブの構成も含む)。
-* [IoT Edge デバイスの接続文字列](../iot-edge/how-to-register-device.md?view=iotedge-2020-11&preserve-view=true#view-registered-devices-and-retrieve-connection-strings)。
+* [IoT Edge デバイスの接続文字列](../iot-edge/how-to-provision-single-device-linux-symmetric.md?view=iotedge-2020-11&preserve-view=true#view-registered-devices-and-retrieve-provisioning-information)。
 
 ## <a name="prepare-a-device"></a>デバイスを準備する
 ### <a name="using-the-automated-deploy-to-azure-button"></a>自動化された [Azure へのデプロイ] ボタンを使用する
@@ -59,7 +59,7 @@ Ubuntu 18.04 LTS 仮想マシンを短時間で設定しやすいように、こ
 
     **管理ユーザー名**: ユーザー名。デプロイ時にルート権限が与えられます。
 
-    **[デバイス接続文字列]** :目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの [デバイス接続文字列](../iot-edge/how-to-register-device.md)。
+    **[デバイス接続文字列]** :目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの [デバイス接続文字列](../iot-edge/how-to-provision-single-device-linux-symmetric.md#view-registered-devices-and-retrieve-provisioning-information)。
 
     **[VM サイズ]** :デプロイする仮想マシンの [サイズ](../cloud-services/cloud-services-sizes-specs.md)
 
@@ -88,11 +88,11 @@ Ubuntu 18.04 LTS 仮想マシンを短時間で設定しやすいように、こ
 ### <a name="optional-manually-prepare-a-device"></a>(省略可) デバイスを手動で準備する
 以下に示したのは、[cloud-init スクリプト](https://github.com/Azure/iotedge-vm-deploy/blob/1.2.0-rc4/cloud-init.txt)によって自動化される手順と同じようにデバイスのインストールと構成を手動で行う手順です。 これらの手順に従って物理デバイスを準備することができます。
 
-1. [Azure IoT Edge ランタイムのインストール](../iot-edge/how-to-install-iot-edge.md?view=iotedge-2020-11&preserve-view=true)手順に従います。
+1. [Azure IoT Edge ランタイムのインストール](../iot-edge/how-to-provision-single-device-linux-symmetric.md?view=iotedge-2020-11&preserve-view=true)手順に従います。
    > [!NOTE]
    > Device Update パッケージ エージェントは IoT Edge に依存しません。 ただし、ID を取得して IoT Hub に接続するために、IoT Edge (1.2.0 以上) と一緒にインストールされる IoT ID サービス デーモンに依存します。
    >
-   > このチュートリアルでは取り上げませんが、[IoT ID サービス デーモンは Linux ベースの IoT デバイスにスタンドアロンでインストールすることができます](https://azure.github.io/iot-identity-service/packaging.html)。 インストールの順序が重要です。 Device Update パッケージ エージェントは、IoT ID サービスの "_後に_" インストールする必要があります。 そうしないと、承認済みのコンポーネントとしてパッケージ エージェントが登録されず、IoT Hub との接続が確立されません。
+   > このチュートリアルでは取り上げませんが、[IoT ID サービス デーモンは Linux ベースの IoT デバイスにスタンドアロンでインストールすることができます](https://azure.github.io/iot-identity-service/installation.html)。 インストールの順序が重要です。 Device Update パッケージ エージェントは、IoT ID サービスの "_後に_" インストールする必要があります。 そうしないと、承認済みのコンポーネントとしてパッケージ エージェントが登録されず、IoT Hub との接続が確立されません。
 
 1. 次に、Device Update エージェントの .deb パッケージをインストールします。
 
@@ -128,7 +128,7 @@ Device Update for Azure IoT Hub ソフトウェア パッケージには、次�
 
 3. [`Edge.package.update.samples.zip`] をクリックしてダウンロードします。
 
-5. フォルダーの内容を抽出して、更新プログラムのサンプルとそれに対応するインポー トマニフェストを見つけます。 
+5. フォルダーの内容を抽出して、サンプルの [APT マニフェスト](device-update-apt-manifest.md)とそれに対応する[インポート マニフェスト](import-concepts.md)を見つけます。 
 
 2. Azure portal で、IoT Hub の左側のナビゲーション バーから [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
 

@@ -2,19 +2,18 @@
 title: モジュールによるデバイス上でのロジックの実行方法について - Azure IoT Edge | Microsoft Docs
 description: Azure IoT Edge モジュールは、IoT Edge デバイス上でビジネス ロジックを実行できるように、リモートでのデプロイと管理が可能なコンテナー化されたロジックの単位です。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/21/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9b1ffb2dbcbd6e81856277f4b672cf876cc75f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3076d73fe63536b7f3ceb8d4cda6e20bc33b5699
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492372"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731287"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Azure IoT Edge モジュールについて
 

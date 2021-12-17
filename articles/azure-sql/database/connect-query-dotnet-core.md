@@ -4,25 +4,25 @@ description: このトピックでは、.NET Core を使用して Azure SQL Data
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: development
+ms.subservice: connect
 ms.custom: sqldbrb=2, devx-track-csharp
 ms.devlang: dotnet
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma
 ms.date: 05/29/2020
-ms.openlocfilehash: 1d25f43ef5a694d8b94710055bf1be72a7fcb45c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a49fdf8cafd6fc5637546439fffb65a090c83b4c
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97705219"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699841"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database"></a>クイックスタート: .NET Core (C#) を使用してデータベースのクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-このクイックスタートでは、[.NET Core](https://www.microsoft.com/net/) と C# コードを使用してデータベースに接続します。 その後、Transact-SQL ステートメントを実行して、データの照会を行います。
+このクイックスタートでは、[.NET Core](https://dotnet.microsoft.com) と C# コードを使用してデータベースに接続します。 その後、Transact-SQL ステートメントを実行して、データの照会を行います。
 
 > [!TIP]
 > 次の Microsoft Learn モジュールは、[Azure SQL Database のデータベースに対してクエリを実行する ASP.NET アプリケーションを開発および構成する](/learn/modules/develop-app-that-queries-azure-sql/)方法を無料で学習する際に役立ちます
@@ -32,7 +32,7 @@ ms.locfileid: "97705219"
 このクイック スタートを完了するには、次のものが必要です。
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [お使いオペレーティング システム用の .NET Core](https://www.microsoft.com/net/core) がインストールされていること。
+- [お使いのオペレーティング システム用の .NET Core SDK](https://dotnet.microsoft.com/download) がインストールされていること。
 - クエリを実行できるデータベース。 
 
   [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]

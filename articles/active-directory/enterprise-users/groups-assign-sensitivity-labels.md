@@ -4,22 +4,22 @@ description: 秘密度ラベルをグループに割り当てる方法につい�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 09/28/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a78cf9b7d78078030ac0db8bd2f0fddb93a8dda4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b116a4b6a100f8b93d453b95b7c181cde97b572
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97881398"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401404"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory で Microsoft 365 グループに秘密度ラベルを割り当てる
 
@@ -35,7 +35,8 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 1. コンピューターで Windows PowerShell ウィンドウを開きます。 これは昇格された特権がなくても開くことができます。
 1. 次のコマンドを実行して、コマンドレットを実行する準備をします。
 
-    ```PowerShell
+    ```powershell
+    Install-Module AzureADPreview
     Import-Module AzureADPreview
     Connect-AzureAD
     ```
@@ -43,29 +44,37 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
     **[アカウントにサインインする]** ページで、管理者アカウントとパスワードを入力してサービスに接続し、 **[サインイン]** を選択します。
 1. Azure AD 組織の現在のグループ設定を取得します。
 
-    ```PowerShell
-    $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
+    ```powershell
+    $grpUnifiedSetting = (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ)
+    $template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+    $setting = $template.CreateDirectorySetting()
     ```
 
     > [!NOTE]
-    > この Azure AD 組織のグループ設定が作成されていない場合、上記のコマンドレットで、"引数が null であるため、パラメーター 'Id' にバインドできません" というエラーが表示されます。 この場合、まず設定を作成する必要があります。 「[グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)」の手順に従って、この Azure AD 組織のグループ設定を作成します。
+    > この Azure AD 組織のグループ設定が作成されていない場合、"引数が null であるため、パラメーター 'Id' にバインドできません" というエラーが表示されます。 この場合、まず設定を作成する必要があります。 「[グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)」の手順に従って、この Azure AD 組織のグループ設定を作成します。
 
 1. 次に、現在のグループ設定を表示します。
 
-    ```PowerShell
+    ```powershell
     $Setting.Values
     ```
 
-1. 次に、この機能を有効にします。
+1. 機能を有効にします。
 
-    ```PowerShell
+    ```powershell
     $Setting["EnableMIPLabels"] = "True"
     ```
+ 
+1. 新しく適用された値を確認します。
 
-1. 次に、変更を保存し、設定を適用します。
+    ```powershell
+    $Setting.Values
+    ```
+    
+1. 変更を保存して設定を適用します。
 
-    ```PowerShell
-    Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+    ```powershell
+    Set-AzureADDirectorySetting -Id $grpUnifiedSetting.Id -DirectorySetting $setting
     ```
 
 また、秘密度ラベルを Azure AD に同期する必要があります。 手順については、「[コンテナーの秘密度ラベルを有効化してラベルを同期する方法](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels)」を参照してください。
@@ -114,7 +123,7 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 
 1. ラベルは、この Azure AD 組織の Microsoft 365 コンプライアンス センターで公開されています。
 1. 機能が有効になっており、Azure AD PowerShell モジュールで EnableMIPLabels が True に設定されています。
-1. ラベルは、Security & Compliance PowerShell モジュールの Execute-AzureAdLabelSync コマンドレットで、Azure AD に同期されます。
+1. ラベルは、Security & Compliance PowerShell モジュールの Execute-AzureAdLabelSync コマンドレットで Azure AD に同期されます。
 1. グループは Microsoft 365 グループです。
 1. 組織に、アクティブな Azure Active Directory Premium P1 ライセンスがある。
 1. 現在サインインしているユーザーに、ラベルを割り当てるための十分な権限がある。 そのユーザーは、全体管理者、グループ管理者、またはグループの所有者のいずれかである必要があります。
@@ -138,9 +147,9 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 1. 選択したグループのページで **[プロパティ]** を選択し、一覧から新しい秘密度ラベルを選択します。
 1. **[保存]** を選択します。
 
-### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>公開されているラベルに加えたグループ設定変更が、グループに対して更新されない
+### <a name="group-setting-changes-to-published-labels-arent-updated-on-the-groups"></a>公開されているラベルに加えたグループ設定変更が、グループに対して更新されない
 
-ベスト プラクティスとして、ラベルをグループに適用した後で、そのラベルのグループ設定を変更することはお勧めしません。 公開されたラベルに関連付けられているグループ設定を [Microsoft 365 コンプライアンス センター](https://sip.protection.office.com/homepage)で変更しても、それらのポリシー変更は影響を受けるグループに自動的には適用されません。
+公開されたラベルのグループ設定を [Microsoft 365 コンプライアンス センター](https://sip.protection.office.com/homepage)で変更しても、それらのポリシー変更はラベルが付けられたグループに自動的には適用されません。 Microsoft は、秘密度ラベルが公開され、グループに適用された後に、Microsoft 365 コンプライアンス センターでラベルのグループ設定を変更しないことをお勧めします。
 
 変更が必要な場合は、[Azure AD PowerShell スクリプト](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)を使用して、影響を受けるグループに更新を手動で適用します。 この方法を使用すると、既存のすべてのグループに新しい設定が適用されます。
 

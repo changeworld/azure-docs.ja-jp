@@ -3,12 +3,12 @@ title: CAF 基盤ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む CAF Foundation ブループリント サンプルのデプロイ手順です。
 ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: a8d41364451bf2ebf1e48b90fad74f4b24c804e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: daa3d4a2c8f8abec3754680ddf9fb6115f88bf6b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470151"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678234"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルをデプロイする
 
@@ -86,7 +86,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      - **Organization**:組織名 (Contoso など) を入力します。一意である必要があります。
      - **Azure リージョン**: デプロイのための Azure リージョンを選択します。
      - **許可されている場所**: リソースを構築してよい Azure リージョンを指定します。
-     
+
    - アーティファクトのパラメーター
 
      このセクションで定義するパラメーターは、定義対象のアーティファクトに適用されます。 これらのパラメーターはブループリントの割り当て時に定義されるので、[動的パラメーター](../../concepts/parameters.md#dynamic-parameters)です。 アーティファクトのパラメーターとその説明を含む詳しい一覧については、「[アーティファクトのパラメーター表](#artifact-parameters-table)」を参照してください。
@@ -106,7 +106,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |許可される仮想マシンの SKU|ポリシー割り当て|Policy_Allowed-VM-SKUs|許可される仮想マシンの SKU|
 |Append CostCenter TAG to Resource Groups (リソース グループへの CostCenter タグの追加)|ポリシー割り当て|Policy_CostCenter_Tag|CostCenter タグと、リソース グループでのその値を追加します|
 |Resource Types that you do not want to allow in your environment (自分の環境で許可しないリソースの種類)|ポリシー割り当て|Policy _Allowed-Resource-Types|自分の環境でどのリソースの種類を許可するか|
-|Key Vault のデプロイ|Resource Manager テンプレート|KV-AccessPolicy|**ロック済み** - Key Vault でアクセス許可を付与する Azure AD グループまたはユーザー <Object ID>|
+|Key Vault のデプロイ|Resource Manager テンプレート|KV-AccessPolicy|**ロック済み** - Key Vault でアクセス許可を付与する Azure AD グループまたはユーザー \<Object ID\>|
 |Log Analytics のデプロイ|Resource Manager テンプレート|LogAnalytics_DataRetention|**ロック済み** - 日数データは Log Analytics に保持されます|
 |Log Analytics のデプロイ|Resource Manager テンプレート|LogAnalytics_Location|**ロック済み** - ワークスペースの確立時に使用されるリージョン|
 

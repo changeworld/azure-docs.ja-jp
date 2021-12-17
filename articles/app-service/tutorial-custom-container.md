@@ -2,17 +2,17 @@
 title: チュートリアル:カスタム イメージを作成して Azure App Service で実行する
 description: Linux または Windows のカスタム イメージを作成して Azure Container Registry にプッシュし、そのイメージを Azure App Service にデプロイするためのステップ バイ ステップ ガイドです。 カスタム ソフトウェアをカスタム コンテナー内の App Service に移行する方法について説明します。
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 08/04/2021
 ms.author: msangapu
 keywords: Azure App Service, Web アプリ, Linux, Windows, Docker, コンテナー
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 5d3a714230f0279bd68b39cd02624866b9b3bacf
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 169e25bd7fe5b77580652d4edf4beabb26abcf18
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180515"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031824"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>カスタム コンテナーを使用してカスタム ソフトウェアを Azure App Service に移行する
 
@@ -143,7 +143,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 | ----------------- | ------------ | ----|
 |**サブスクリプション**| 正しいサブスクリプションが選択されていることを確認します。 |  |
 |**リソース グループ**| **[新規作成]** を選択し、「**myResourceGroup**」と入力して、 **[OK]** をクリックします。 |  |
-|**名前**| 一意の名前を入力します。 | Web アプリの URL は `http://<app-name>.azurewebsites.net` です。`<app-name>` には自分のアプリの名前を指定します。 |
+|**名前**| 一意の名前を入力します。 | Web アプリの URL は `https://<app-name>.azurewebsites.net` です。`<app-name>` には自分のアプリの名前を指定します。 |
 |**発行**| Docker コンテナー | |
 |**オペレーティング システム**| Windows | |
 |**リージョン**| 西ヨーロッパ | |
@@ -211,17 +211,17 @@ https://<app-name>.scm.azurewebsites.net/api/logstream
 
 ::: zone pivot="container-linux"
 
-Azure App Service では、組み込みイメージとカスタム イメージのどちらも、Docker コンテナー テクノロジを使用してホストされます。 組み込みイメージを一覧表示するには、Azure CLI コマンド "[az webapp list-runtimes --linux](/cli/azure/webapp#az-webapp-list-runtimes)" を実行します。 それらのイメージでニーズが満たせない場合は、カスタム イメージを作成してデプロイすることができます。
+Azure App Service では、組み込みイメージとカスタム イメージのどちらも、Docker コンテナー テクノロジを使用してホストされます。 組み込みイメージを一覧表示するには、Azure CLI コマンド "[az webapp list-runtimes --linux](/cli/azure/webapp#az_webapp_list_runtimes)" を実行します。 それらのイメージでニーズが満たせない場合は、カスタム イメージを作成してデプロイすることができます。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * ニーズを満たす組み込みイメージがない場合にカスタム イメージを作成する
-> * Azure 上のプライベート コンテナー レジストリにカスタム イメージをプッシュする
-> * App Service 内でカスタム イメージを実行する
+> * カスタム Docker イメージを Azure Container Registry にプッシュする
+> * App Service にカスタム イメージをデプロイする
 > * 環境変数を構成する
-> * イメージを更新して再デプロイする
+> * マネージド ID を使用して App Service にイメージをプルする
 > * 診断ログにアクセスする
+> * Azure Container Registry から App Service への CI/CD を有効にする
 > * SSH を使用してコンテナーに接続する
 
 このチュートリアルが完了すると、わずかですがコンテナー レジストリの料金がお使いの Azure アカウントに発生します。また、そのコンテナーをホストする期間が 1 か月を超えると、さらにコストが発生します。
@@ -317,10 +317,10 @@ ENTRYPOINT ["init.sh"]
 1. Docker コンテナーをローカルで実行して、ビルドの動作をテストします。
 
     ```bash
-    docker run -p 8000:8000 appsvc-tutorial-custom-image
+    docker run -it -p 8000:8000 appsvc-tutorial-custom-image
     ```
     
-    この [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) コマンドに `-p` 引数でポートを指定し、続けてイメージの名前を指定します。 
+    この [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) コマンドに `-p` 引数でポートを指定し、続けてイメージの名前を指定します。 `-it` を指定すると、`Ctrl+C` を使用して停止できます。
     
     > [!TIP]
     > Windows を実行していて "*standard_init_linux.go:211: exec user process caused "no such file or directory" (standard_init_linux.go:211: exec ユーザー プロセスが原因で "ファイルまたはディレクトリの欠落" が発生しました)* " というエラーが表示された場合、LF であるはずの *init.sh* ファイルの行末が CR-LF になっています。 このエラーは、Git を使用してサンプル リポジトリをクローンした際、`--config core.autocrlf=input` パラメーターを省略した場合に発生します。 その場合は、`--config`` 引数を使用して、再度リポジトリをクローンしてください。 *init.sh* を編集し、行末に CRLF を使用して保存した場合にも、このエラーが表示される可能性があります。 この場合は、行末を LF のみにして再度ファイルを保存してください。
@@ -333,10 +333,10 @@ ENTRYPOINT ["init.sh"]
 
 このセクション以降では、イメージをプッシュして Azure App Service にコンテナーをデプロイするためのリソースを Azure にプロビジョニングします。 最初に、これらすべてのリソースを集約するリソース グループを作成します。
 
-[az group create](/cli/azure/group#az-group-create) コマンドを実行してリソース グループを作成します。
+[az group create](/cli/azure/group#az_group_create) コマンドを実行してリソース グループを作成します。
 
 ```azurecli-interactive
-az group create --name AppSvc-DockerTutorial-rg --location westus2
+az group create --name myResourceGroup --location westeurope
 ```
 
 `--location` の値を変更することで最寄りのリージョンを指定できます。
@@ -345,18 +345,18 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
 
 このセクションでは、Azure Container Registry にイメージをプッシュします。App Service は、そこからイメージをデプロイすることができます。
 
-1. [`az acr create`](/cli/azure/acr#az-acr-create) コマンドを実行して Azure Container Registry を作成します。
+1. [`az acr create`](/cli/azure/acr#az_acr_create) コマンドを実行して Azure Container Registry を作成します。
 
     ```azurecli-interactive
-    az acr create --name <registry-name> --resource-group AppSvc-DockerTutorial-rg --sku Basic --admin-enabled true
+    az acr create --name <registry-name> --resource-group myResourceGroup --sku Basic --admin-enabled true
     ```
     
     `<registry-name>` は、適切なレジストリ名に置き換えてください。 この名前は Azure 全体で一意である必要があり、使用できるのはアルファベットと数字のみです。
 
-1. [`az acr show`](/cli/azure/acr#az-acr-show) コマンドを実行して、レジストリの資格情報を取得します。
+1. [`az acr show`](/cli/azure/acr#az_acr_show) コマンドを実行して、レジストリの資格情報を取得します。
 
     ```azurecli-interactive
-    az acr credential show --resource-group AppSvc-DockerTutorial-rg --name <registry-name>
+    az acr credential show --resource-group myResourceGroup --name <registry-name>
     ```
     
     このコマンドの JSON 出力からは、レジストリのユーザー名と共に 2 つのパスワードが得られます。
@@ -374,7 +374,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
 1. ログインに成功したら、レジストリのローカル Docker イメージにタグを付けます。
 
     ```bash
-   docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
+    docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
     ```    
 
 1. `docker push` コマンドを使用してレジストリにイメージをプッシュします。
@@ -400,52 +400,52 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
 
 Azure App Service にコンテナーをデプロイするには、まず App Service に Web アプリを作成した後、その Web アプリをコンテナー レジストリに接続します。 Web アプリが起動すると、App Service によって自動的にレジストリからイメージがプルされます。
 
-1. [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) コマンドを使用して App Service プランを作成します。
+1. [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) コマンドを使用して App Service プランを作成します。
 
     ```azurecli-interactive
-    az appservice plan create --name AppSvc-DockerTutorial-plan --resource-group AppSvc-DockerTutorial-rg --is-linux
+    az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --is-linux
     ```
 
     App Service プランは、Web アプリのホストとなる仮想マシンに相当します。 前のコマンドでは、最初の月は無料で利用できる低コストの [B1 価格レベル](https://azure.microsoft.com/pricing/details/app-service/linux/)が既定で使用されます。 レベルは、`--sku` パラメーターで制御できます。
 
-1. [`az webpp create`](/cli/azure/webapp#az-webapp-create) コマンドを使用して Web アプリを作成します。
+1. [`az webpp create`](/cli/azure/webapp#az_webapp_create) コマンドを使用して Web アプリを作成します。
 
     ```azurecli-interactive
-    az webapp create --resource-group AppSvc-DockerTutorial-rg --plan AppSvc-DockerTutorial-plan --name <app-name> --deployment-container-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
+    az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
     ```
     
     `<app-name>` は Web アプリの名前に置き換えてください。この名前は Azure 全体で一意である必要があります。 また、`<registry-name>` は、前のセクションで指定したレジストリの名前に置き換えます。
 
-1. [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) を使用して、アプリのコードで想定されている値に `WEBSITES_PORT` 環境変数を設定します。 
+1. [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) を使用して、アプリのコードで想定されている値に `WEBSITES_PORT` 環境変数を設定します。 
 
     ```azurecli-interactive
-    az webapp config appsettings set --resource-group AppSvc-DockerTutorial-rg --name <app-name> --settings WEBSITES_PORT=8000
+    az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_PORT=8000
     ```
 
     `<app-name>` は、前のステップで使用した名前に置き換えてください。
     
     この環境変数の詳細については、[サンプルの GitHub リポジトリにある Readme](https://github.com/Azure-Samples/docker-django-webapp-linux) を参照してください。
 
-1. [`az webapp identity assign`](/cli/azure/webapp/identity#az-webapp-identity-assign) コマンドを使用して、Web アプリの[マネージド ID](./overview-managed-identity.md) を有効にします。
+1. [`az webapp identity assign`](/cli/azure/webapp/identity#az_webapp_identity-assign) コマンドを使用して、Web アプリの[システム割り当てマネージド ID](./overview-managed-identity.md) を有効にします。
 
     ```azurecli-interactive
-    az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
+    az webapp identity assign --resource-group myResourceGroup --name <app-name> --query principalId --output tsv
     ```
 
     `<app-name>` は、前のステップで使用した名前に置き換えてください。 コマンドからは、`--query` 引数と `--output` 引数のフィルターを通じて、割り当てられた ID のサービス プリンシパルが出力されます。このサービス プリンシパルは、この後すぐに使用します。
 
     マネージド ID を利用すれば、特定の資格情報なしに、他の Azure リソースへのアクセス許可を Web アプリに与えることができます。
 
-1. [`az account show`](/cli/azure/account#az-account-show) コマンドを使用してサブスクリプション ID を取得します。次の手順でサブスクリプション ID が必要になります。
+1. [`az account show`](/cli/azure/account#az_account_show) コマンドを使用してサブスクリプション ID を取得します。次の手順でサブスクリプション ID が必要になります。
 
     ```azurecli-interactive
     az account show --query id --output tsv
     ``` 
 
-1. コンテナー レジストリへのアクセス許可を Web アプリに与えます。
+1. コンテナー レジストリへのアクセス許可をマネージド ID に与えます。
 
     ```azurecli-interactive
-    az role assignment create --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourceGroups/AppSvc-DockerTutorial-rg/providers/Microsoft.ContainerRegistry/registries/<registry-name> --role "AcrPull"
+    az role assignment create --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/<registry-name> --role "AcrPull"
     ```
 
     次の値を置き換えます。
@@ -453,36 +453,106 @@ Azure App Service にコンテナーをデプロイするには、まず App Ser
     - `<registry-name>` を、コンテナー レジストリの名前に置き換えます。
     - `<subscription-id>` を、`az account show` コマンドから取得したサブスクリプション ID に置き換えます。
 
-これらのアクセス許可については、「[Azure ロールベースのアクセス制御とは](../role-based-access-control/overview.md)」を参照してください。 
+    これらのアクセス許可の詳細については、「[Azure ロールベースのアクセス制御とは](../role-based-access-control/overview.md)」を参照してください。
+
+1. マネージ ID を使用して Azure Container Registry からプルするようにアプリを構成します。
+
+    ```azurecli-interactive
+    az resource update --ids /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<app-name>/config/web --set properties.acrUseManagedIdentityCreds=True
+    ```
+    
+    次の値を置き換えます。
+    - `<subscription-id>`: `az account show` コマンドから取得したサブスクリプション ID。
+    - `<app-name>`: Web アプリの名前。
+
+    > [!TIP]
+    > アプリで[ユーザー割り当てマネージド ID](overview-managed-identity.md#add-a-user-assigned-identity) を使用する場合は、追加の `AcrUserManagedIdentityID` プロパティを設定してクライアント ID を指定します。
+    >
+    > ```azurecli-interactive
+    > clientId=$(az identity show --resource-group <group-name> --name <identity-name> --query clientId --output tsv)
+    > az resource update --ids /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<app-name>/config/web --set properties.AcrUserManagedIdentityID=$clientId
+    > ```
 
 ## <a name="deploy-the-image-and-test-the-app"></a>イメージをデプロイしてアプリをテストする
 
 これらの手順は、イメージがコンテナー レジストリにプッシュされ、App Service が完全にプロビジョニングされてから実行してください。
 
-1. [`az webapp config container set`](/cli/azure/webapp/config/container#az-webapp-config-container-set) コマンドを使用して、コンテナー レジストリと Web アプリ用にデプロイするイメージを指定します。
+1. [`az webapp config container set`](/cli/azure/webapp/config/container#az_webapp_config_container_set) コマンドを使用して、コンテナー レジストリと Web アプリ用にデプロイするイメージを指定します。
 
     ```azurecli-interactive
-    az webapp config container set --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-custom-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest --docker-registry-server-url https://<registry-name>.azurecr.io
+    az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest --docker-registry-server-url https://<registry-name>.azurecr.io
     ```
     
-    `<app_name>` を自分の Web アプリの名前に、また 2 か所ある `<registry-name>` を実際のレジストリの名前に置き換えてください。 
+    `<app-name>` を自分の Web アプリの名前に、また 2 か所ある `<registry-name>` を実際のレジストリの名前に置き換えてください。 
 
     - この例のように Docker Hub 以外のレジストリを使用する場合、`--docker-registry-server-url` は、`https://` の後にレジストリの完全修飾ドメイン名が続く形式にする必要があります。
-    - "No credential was provided to access Azure Container Registry. Trying to look up... (Azure Container Registry にアクセスするための資格情報が指定されませんでした。...を検索しています)" というメッセージは、Azure がコンテナー レジストリに対する認証で、ユーザー名とパスワードを求めるのではなく、アプリのマネージド ID を使用していることを表します。 Trying to look up..." tells you that Azure is using the app's managed identity to authenticate with the container registry rather than asking for a username and password.
+    - "No credential was provided to access Azure Container Registry. Trying to look up... (Azure Container Registry にアクセスするための資格情報が指定されませんでした。...を検索しています)" というメッセージは、Azure がコンテナー レジストリに対する認証で、ユーザー名とパスワードを求めるのではなく、アプリのマネージド ID を使用していることを表します。 検索しています...」というメッセージは、Azure ではコンテナー レジストリに対する認証で、ユーザー名とパスワードを求めるのではなく、アプリのマネージド ID が使用されていることを表します。
     - "AttributeError: 'NoneType' object has no attribute 'reserved' (AttributeError: 'NoneType' オブジェクトには 'reserved' という属性はありません)" というエラーが発生した場合は、指定した `<app-name>` が正しいことを確認してください。
 
     > [!TIP]
-    > Web アプリのコンテナー設定は、`az webapp config container show --name <app-name> --resource-group AppSvc-DockerTutorial-rg` というコマンドを使用していつでも取得できます。 イメージは、`DOCKER_CUSTOM_IMAGE_NAME` プロパティで指定されます。 Web アプリが Azure DevOps または Azure Resource Manager テンプレートを使用してデプロイされる場合、イメージが、`LinuxFxVersion` という名前のプロパティにも反映されることがあります。 どちらのプロパティも目的は同じです。 その両方が Web アプリの構成に存在する場合、`LinuxFxVersion` が優先されます。
+    > Web アプリのコンテナー設定は、`az webapp config container show --name <app-name> --resource-group myResourceGroup` というコマンドを使用していつでも取得できます。 イメージは、`DOCKER_CUSTOM_IMAGE_NAME` プロパティで指定されます。 Web アプリが Azure DevOps または Azure Resource Manager テンプレートを使用してデプロイされる場合、イメージが、`LinuxFxVersion` という名前のプロパティにも反映されることがあります。 どちらのプロパティも目的は同じです。 その両方が Web アプリの構成に存在する場合、`LinuxFxVersion` が優先されます。
 
 1. `az webapp config container set` コマンドが完了すると、App Service 上のコンテナーで Web アプリが実行されているはずです。
 
-    アプリをテストするために、ブラウザーで `http://<app-name>.azurewebsites.net` にアクセスします。`<app-name>` は、実際の Web アプリの名前に置き換えてください。 初回アクセス時は、App Service がイメージ全体をレジストリからプルする必要があるため、アプリが応答するまでに時間がかかる場合があります。 ブラウザーがタイムアウトした場合は、単にページを更新します。 最初のイメージがプルされた後、それ以降のテストははるかに高速に実行されます。
+    アプリをテストするために、ブラウザーで `https://<app-name>.azurewebsites.net` にアクセスします。`<app-name>` は、実際の Web アプリの名前に置き換えてください。 初回アクセス時は、App Service がイメージ全体をレジストリからプルする必要があるため、アプリが応答するまでに時間がかかる場合があります。 ブラウザーがタイムアウトした場合は、単にページを更新します。 最初のイメージがプルされた後、それ以降のテストははるかに高速に実行されます。
 
     ![Azure での Web アプリのテストが成功](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
+## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
+
+App Service によるイメージのプルを待っているときに、コンテナーのログをターミナルにストリーミングすると、App Service で実際に実行されていることを確認できます。
+
+1. コンテナーのログをオンにします。
+
+    ```azurecli-interactive
+    az webapp log config --name <app-name> --resource-group myResourceGroup --docker-container-logging filesystem
+    ```
+    
+1. ログのストリームを有効にします。
+
+    ```azurecli-interactive
+    az webapp log tail --name <app-name> --resource-group myResourceGroup
+    ```
+    
+    コンソール ログがすぐに表示されない場合は、30 秒以内にもう一度確認します。
+
+    `https://<app-name>.scm.azurewebsites.net/api/logs/docker` で、ブラウザーからログ ファイルを検査することもできます。
+
+1. 任意のタイミングでログのストリーミングを停止するには、`Ctrl+C` と入力します。
+
+## <a name="configure-continuous-deployment"></a>継続的なデプロイを構成する
+
+App Service アプリで、プライベート コンテナー レジストリからコンテナー イメージを安全にプルできるようになりました。 ただし、レジストリ内でそのイメージがいつ更新されるのかはわかりません。 更新されたイメージをレジストリにプッシュするたびに、App Service アプリを再起動して、イメージのプルを手動でトリガーする必要があります。 この手順では、CI/CD を有効にして、App Service で新しいイメージの通知が受信され、プルが自動的にトリガーされるようにします。
+
+1. App Service で CI/CD を有効にします。
+
+    ```azurecli-interactive
+    az webapp deployment container config --enable-cd true --name <app-name> --resource-group myResourceGroup --query CI_CD_URL --output tsv
+    ```
+
+    `CI_CD_URL` は、App Service によって生成される URL です。 レジストリでは、この URL を使用して、イメージのプッシュが発生したことを App Service に通知する必要があります。 Webhook は実際には作成されません。
+
+1. 前の手順で取得した CI_CD_URL を使用して、コンテナー レジストリに Webhook を作成します。
+
+    ```azurecli-interactive
+    az acr webhook create --name appserviceCD --registry <registry-name> --uri '<ci-cd-url>' --actions push --scope appsvc-tutorial-custom-image:latest
+    ```
+
+1. Webhook が正しく構成されているかどうかをテストするには、Webhook に対して ping を行い、200 OK の応答が取得されるかどうかを確認します。
+
+    ```azurecli-interactive
+    eventId=$(az acr webhook ping --name appserviceCD --registry <registry-name> --query id --output tsv)
+    az acr webhook list-events --name appserviceCD --registry <registry-name> --query "[?id=='$eventId'].eventResponseMessage"
+    ```
+
+    > [!TIP]
+    > すべての Webhook イベントに関するすべての情報を表示するには、`--query` パラメーターを削除します。
+    >
+    > コンテナーのログをストリーミングしている場合は、Webhook に対する ping の後に `Starting container for site` というメッセージが表示されます。これは、Webhook によってアプリの再起動がトリガーされるためです。 イメージに対して何も更新を行っていないため、App Service でプルするものはありません。
+
 ## <a name="modify-the-app-code-and-redeploy"></a>アプリのコードを変更して再デプロイする
 
-このセクションでは、Web アプリのコードに変更を加えてコンテナーをリビルドした後、そのコンテナーをレジストリにプッシュします。 すると、更新されたイメージを App Service が自動的にレジストリからプルして、実行中の Web アプリを更新します。
+このセクションでは、Web アプリのコードに変更を加えてイメージをリビルドした後、それをレジストリにプッシュします。 すると、更新されたイメージを App Service が自動的にレジストリからプルして、実行中の Web アプリを更新します。
 
 1. ローカル *docker-django-webapp-linux* フォルダーにあるファイル *app/templates/app/index.html* を開きます。
 
@@ -509,7 +579,7 @@ Azure App Service にコンテナーをデプロイするには、まず App Ser
 1. イメージのタグにあるバージョン番号を v1.0.1 に更新します。
 
     ```bash
-    docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
+    docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.io/appsvc-tutorial-custom-image:v1.0.1
     ```
 
     `<registry-name>` をレジストリの名前に置き換えます。
@@ -517,38 +587,10 @@ Azure App Service にコンテナーをデプロイするには、まず App Ser
 1. イメージをレジストリにプッシュします。
 
     ```bash
-    docker push <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
+    docker push <registry-name>.azurecr.io/appsvc-tutorial-custom-image:v1.0.1
     ```
 
-1. Web アプリを再起動します。
-
-    ```azurecli-interactive
-    az webapp restart --name <app_name> --resource-group AppSvc-DockerTutorial-rg
-    ```
-
-    `<app_name>` は、実際の Web アプリの名前に置き換えてください。 再起動すると、更新したイメージが App Service によってコンテナー レジストリからプルされます。
-
-1. ブラウザーで `http://<app-name>.azurewebsites.net` にアクセスして、更新がデプロイされていることを確認します。
-
-## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
-
-1. コンテナーのログをオンにします。
-
-    ```azurecli-interactive
-    az webapp log config --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-container-logging filesystem
-    ```
-    
-1. ログのストリームを有効にします。
-
-    ```azurecli-interactive
-    az webapp log tail --name <app-name> --resource-group AppSvc-DockerTutorial-rg
-    ```
-    
-    コンソール ログがすぐに表示されない場合は、30 秒以内にもう一度確認します。
-
-    `https://<app-name>.scm.azurewebsites.net/api/logs/docker` で、ブラウザーからログ ファイルを検査することもできます。
-
-1. 任意のタイミングでログのストリーミングを停止するには、**Ctrl**+**C** キーを押します。
+1. イメージのプッシュが完了すると、Webhook によって App Service にプッシュが行われたことが通知され、App Service では更新されたイメージのプルが試みられます。 数分待ってから、`https://<app-name>.azurewebsites.net` を参照して更新がデプロイされていることを確認します。
 
 ## <a name="connect-to-the-container-using-ssh"></a>SSH を使用してコンテナーに接続する
 
@@ -569,6 +611,7 @@ RUN apt-get update \
 
 > [!NOTE]
 > この構成は、コンテナーへの外部接続を許可しません。 SSH は Kudu/SCM サイトを通してのみ利用できます。 Kudu/SCM サイトは Azure アカウントにより認証されます。
+> root:Docker! では、 SSH を変更することはできません。 SCM または KUDU では、Azure portal の資格情報を使用します。 この値を変更すると、SSH の使用時にエラーが発生します。
 
 また、この *Dockerfile* は *sshd_config* ファイルを */etc/ssh/* フォルダーにコピーし、コンテナーのポート 2222 を公開します。
 
@@ -602,7 +645,7 @@ service ssh start
 この記事で作成したリソースによって、継続してコストが発生する可能性があります。 リソース グループを削除すれば、そこに含まれているリソースはクリーンアップされます。
 
 ```azurecli
-az group delete --name AppSvc-DockerTutorial-rg
+az group delete --name myResourceGroup
 ```
 
 ::: zone-end
@@ -611,16 +654,30 @@ az group delete --name AppSvc-DockerTutorial-rg
 
 ここで学習した内容は次のとおりです。
 
+::: zone pivot="container-windows"
+
 > [!div class="checklist"]
 > * カスタム イメージをプライベート コンテナー レジストリにデプロイする
 > * App Service にカスタム イメージをデプロイする
-::: zone pivot="container-linux"
 > * イメージを更新して再デプロイする
-::: zone-end
 > * 診断ログにアクセスする
-::: zone pivot="container-linux"
 > * SSH を使用してコンテナーに接続する
+
 ::: zone-end
+
+::: zone pivot="container-linux"
+
+> [!div class="checklist"]
+> * カスタム Docker イメージを Azure Container Registry にプッシュする
+> * App Service にカスタム イメージをデプロイする
+> * 環境変数を構成する
+> * マネージド ID を使用して App Service にイメージをプルする
+> * 診断ログにアクセスする
+> * Azure Container Registry から App Service への CI/CD を有効にする
+> * SSH を使用してコンテナーに接続する
+
+::: zone-end
+
 
 次のチュートリアルで、カスタム DNS 名をアプリにマップする方法を確認してください。
 

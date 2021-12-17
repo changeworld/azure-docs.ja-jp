@@ -1,21 +1,22 @@
 ---
 title: Azure Active Directory と SAP SuccessFactors の統合のリファレンス
-description: SAP SuccessFactors に関する技術的な詳細 - HR 主導のプロビジョニング
+description: Azure Active Directory 向け SAP SuccessFactors-HR 駆動のプロビジョニングに関する技術的な詳細を掘り下げます。
 services: active-directory
-author: cmmdesai
-manager: daveba
+author: kenwith
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/19/2021
-ms.author: chmutali
-ms.openlocfilehash: ed97600ca1802629f81f93f4f51c92ad4b1c9bd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/11/2021
+ms.author: kenwith
+ms.reviewer: chmutali
+ms.openlocfilehash: 8c215c8b032fb3981771d2091b449b1934e78533
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256223"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990832"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory のプロビジョニングと SAP SuccessFactors の統合方法 
 
@@ -71,6 +72,8 @@ SuccessFactors のすべてのユーザーについて、Azure AD プロビジ�
 | 22 | EmployeeClass 候補リスト                 | employmentNav/jobInfoNav/employeeClassNav | `employeeClass` がマップされている場合のみ |
 | 23 | EmplStatus 候補リスト                    | employmentNav/jobInfoNav/emplStatusNav | `emplStatus` がマップされている場合のみ |
 | 24 | AssignmentType 候補リスト                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | `assignmentType` がマップされている場合のみ |
+| 25 | 位置                               | employmentNav/jobInfoNav/positionNav | `positioNav` がマップされている場合のみ |
+| 26 | マネージャー ユーザー                           | employmentNav/jobInfoNav/managerUserNav | `managerUserNav` がマップされている場合のみ |
 
 ## <a name="how-full-sync-works"></a>完全同期のしくみ
 属性マッピングに基づいて、完全同期では、Azure AD プロビジョニング サービスにより、次の "GET" OData API クエリが送信されて、すべてのアクティブ ユーザーの有効なデータがフェッチされます。 
@@ -284,6 +287,16 @@ Employee Central のユーザーに複数の同時実行ジョブがある場合
 1. マッピングを保存します。 
 1. プロビジョニングを再開します。 
 
+### <a name="retrieving-position-details"></a>位置の詳細の取得
+
+SuccessFactors コネクタでは、位置オブジェクトの展開がサポートされています。 位置オブジェクトのジョブ レベルや位置名などの属性を特定の言語で展開または取得するには、次に示すように JSONPath 式を使用します。 
+
+| 属性名 | JSONPath 式 |
+| -------------- | ------------------- |
+| positionJobLevel | $.employmentNav.results[0].jobInfoNav.results[0].positionNav.jobLevel |
+| positionNameFR | $.employmentNav.results[0].jobInfoNav.results[0].positionNav.externalName_fr_FR |
+| positionNameDE | $.employmentNav.results[0].jobInfoNav.results[0].positionNav.externalName_de_DE |
+
 ## <a name="writeback-scenarios"></a>書き戻しのシナリオ
 
 このセクションでは、さまざまな書き戻しのシナリオについて説明します。 SuccessFactors でのメールと電話番号の設定方法に基づいた構成方法をお勧めします。
@@ -301,6 +314,36 @@ Employee Central のユーザーに複数の同時実行ジョブがある場合
 * 書き戻し属性マッピングに電話番号のマッピングがない場合は、メールのみが書き戻しに含まれます。
 * Employee Central での新規雇用オンボードの間に、勤務先のメールと電話番号を使用できない場合があります。 オンボードの間に勤務先メールと勤務先電話をプライマリとして設定する必要がある場合は、新規雇用の作成の間に勤務先の電話とメールにダミーの値を設定できます。これは、最終的に書き戻しアプリによって更新されます。
  
+### <a name="enabling-writeback-with-userid"></a>UserID での書き戻しの有効化
+
+SuccessFactors 書き戻しアプリでユーザー オブジェクトの属性を更新するには、次のロジックを使用します。 
+* 最初のステップとして、変更セットで *userId* 属性が検索されます。 存在する場合は、SuccessFactors API の呼び出しを行うために "UserId" が使用されます。 
+* *userId* が見つからない場合は、*personIdExternal* 属性の値が既定で使用されます。 
+
+通常、SuccessFactors の *personIdExternal* 属性の値は、*userId* 属性の値と一致します。 ただし、再雇用や作業者変換などのシナリオでは、SuccessFactors の従業員がアクティブと非アクティブの 2 つの雇用記録を持つ場合があります。 このようなシナリオで、書き戻しによってアクティブなユーザー プロファイルが更新されるようにするには、SuccessFactors プロビジョニング アプリの構成を以下の説明のように更新してください。 このように構成すると、コネクタによって認識される変更セットに *userId* が常に存在し、SuccessFactors API の呼び出しで使用されるようになります。
+
+1. Azure AD ユーザー プロビジョニング アプリに対する SuccessFactors、またはオンプレミス AD ユーザープ ロビジョニング アプリに対する SuccessFactors を開きます。 
+1. Azure AD の extensionAttribute *(extensionAttribute1-15)* に、すべての作業者のアクティブな雇用記録の *userId* が常に格納されるようにします。 これは、SuccessFactors の *userId* 属性を Azure AD の extensionAttribute にマップすることによって実現できます。 
+    > [!div class="mx-imgBorder"]
+    > ![インバウンド UserID 属性のマッピング](./media/sap-successfactors-integration-reference/inbound-userid-attribute-mapping.png)
+1. JSONPath の設定に関するガイダンスで、アクティブな雇用記録の *userId* の値が Azure AD に流れることを確保するには、「[再雇用シナリオの処理](#handling-rehire-scenario)」セクションを参照してください。 
+1. マッピングを保存します。 
+1. プロビジョニング ジョブを実行して、*userId* の値が Azure AD に流れるようにします。 
+    > [!NOTE]
+    > オンプレミスの Active Directory ユーザーのプロビジョニングに SuccessFactors を使用している場合は、*userId* 属性の値がオンプレミスの Active Directory から Azure AD に同期されるように AAD Connect を構成します。   
+1. Azure portal で SuccessFactors 書き戻しアプリを開きます。 
+1. userId の値が含まれる適切な *extensionAttribute* を、SuccessFactors の *userId* 属性にマップします。
+    > [!div class="mx-imgBorder"]
+    > ![買い戻し UserID 属性のマッピング](./media/sap-successfactors-integration-reference/userid-attribute-mapping.png)
+1. マッピングを保存します。 
+1. *[属性マッピング] > [詳細設定] > [Review Schema]\(スキーマの確認\)* に移動して、JSON スキーマ エディターを開きます。
+1. バックアップとしてスキーマのコピーをダウンロードします。 
+1. スキーマ エディターで Ctrl + F キーを押して、userId のマッピングが含まれる JSON ノードを検索します。これは、ソース Azure AD 属性にマップされます。 
+1. 次に示すように、flowBehavior 属性を "FlowWhenChanged" から "FlowAlways" に更新します。 
+    > [!div class="mx-imgBorder"]
+    > ![フロー動作更新のマッピング](./media/sap-successfactors-integration-reference/mapping-flow-behavior-update.png)
+1. マッピングを保存し、オンデマンド プロビジョニングで書き戻しのシナリオをテストします。 
+
 ### <a name="unsupported-scenarios-for-phone-and-email-write-back"></a>電話とメールの書き戻しに対してサポートされないシナリオ
 
 * Employee Central では、オンボードの間に、個人のメールと電話がプライマリとして設定されます。 書き戻しアプリでは、この設定を切り替えることができず、勤務先メールと勤務先電話をプライマリとして設定することはできません。

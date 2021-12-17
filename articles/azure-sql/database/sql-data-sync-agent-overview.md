@@ -3,20 +3,20 @@ title: SQL データ同期用のデータ同期エージェント
 description: Azure に SQL データ同期のデータ同期エージェントをインストールして実行し、SQL Server データベースとデータを同期する方法について説明します
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 12/20/2018
-ms.openlocfilehash: ed8d51adf5a93b470f287383a4d3eeb866b15236
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7323552250821f05d3e316bd7e1e2dedf566e9bc
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92791462"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707806"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL データ同期用のデータ同期エージェント
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -79,6 +79,14 @@ SQL データ同期サービスは、クライアント エージェントを使
 3. 新しいエージェントの UI を使って、新しいエージェント キーを送信します。
 4. 以前に登録されたオンプレミスのデータベースのリストをクライアント エージェントがダウンロードするまで待ちます。
 5. 到達不能と表示されるすべてのデータベースに対し、データベースの資格情報を指定します。 これらのデータベースには、エージェントをインストールした新しいコンピューターから到達可能でなければなりません。
+
+### <a name="how-do-i-delete-the-sync-metadata-database-if-the-sync-agent-is-still-associated-with-it"></a>同期エージェントがまだ関連付けられている同期メタデータ データベースを削除するにはどうすればよいですか
+
+同期エージェントが関連付けられている同期メタデータ データベースを削除するには、まず、その同期エージェントを削除する必要があります。 エージェントを削除するには、次の手順を実行します。 
+
+1. 同期データベースを選択します。 
+2. **[別のデータベースに同期]** ページに移動します。
+3. 同期エージェントを選択し、 **[削除]** をクリックします。 
 
 ## <a name="troubleshoot-data-sync-agent-issues"></a><a name="agent-tshoot"></a> データ同期エージェントの問題のトラブルシューティング
 

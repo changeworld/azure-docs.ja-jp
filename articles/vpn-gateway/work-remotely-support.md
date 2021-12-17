@@ -1,18 +1,19 @@
 ---
-title: P2S を使用したリモート作業:Azure VPN Gateway
-description: このページでは、COVID-19 の世界的流行により、VPN Gateway を利用してリモートで作業できるようにする方法について説明します。
+title: リモート ワークとポイント対サイト VPN ゲートウェイ
+titleSuffix: Azure VPN Gateway
+description: COVID-19 が流行しているなかリモートで作業するために VPN Gateway ポイント対サイト接続を使用する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/28/2021
 ms.author: alzam
-ms.openlocfilehash: eb0291b18952efc643de18e111154ebe58f041af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0988547105f953c0665ea753007c0725055fe61
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880086"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208712"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Azure VPN Gateway ポイント対サイトを使用したリモート作業
 
@@ -30,7 +31,7 @@ Azure ポイント対サイトのソリューションはクラウド ベース�
 
 次の表は、クライアント オペレーティング システムと、それらに使用できる認証オプションを示しています。 既に使用中のクライアント OS に基づいて認証方法を選択すると便利です。 たとえば、接続する必要があるクライアント オペレーティング システムが混在している場合は、証明書ベースの認証を使用する OpenVPN を選択します。 また、ポイント対サイト VPN は、ルート ベースの VPN ゲートウェイでのみサポートされていることに注意してください。
 
-![クライアントのオペレーティング システムと使用可能な認証オプションを示すスクリーンショット。](./media/working-remotely-support/ostable.png "OS")
+![クライアントのオペレーティング システムと使用可能な認証オプションを示すスクリーンショット。](./media/working-remotely-support/os-table.png "OS")
 
 ## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>シナリオ 1 - ユーザーが Azure のリソースにのみアクセスする必要がある
 

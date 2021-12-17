@@ -1,18 +1,19 @@
 ---
 title: Azure Data Lake Storage Gen2 にデータを読み込む
 description: Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータをコピーします
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 075778e2650d3b1f67447078eb6cb130849bbb35
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 07/22/2021
+ms.openlocfilehash: 4ed42f5ea6aa5acda8234aab31b26c99057ed6b9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593783"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819989"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータを読み込む
 
@@ -39,7 +40,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 1. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
    
-   ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="[新規] ペインでの Data Factory の選択":::
 
 2. **[新しいデータ ファクトリ]** ページで、次のフィールドの値を指定します。
  
@@ -53,76 +54,72 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。 
    
-   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[作成と監視] タイルが含まれた Azure Data Factory のホーム ページ。":::
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio] タイルを含む、Azure Data Factory のホーム ページ。":::
 
-   **[作成と監視]** タイルを選択して、別のタブでデータ統合アプリケーションを起動します。
+   **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブでデータ統合アプリケーションを起動します。
 
 ## <a name="load-data-into-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 にデータを読み込む
 
-1. **[Get started]\(開始\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。
+1. Azure Data Factory のホーム ページで、 **[取り込み]** タイルを選択し、データのコピー ツールを起動します。
 
-2. **[プロパティ]** ページで、 **[タスク名]** フィールドに「**CopyFromAmazonS3ToADLS**」と指定し、 **[次へ]** を選択します。
+2. **[プロパティ]** ページで、 **[タスクの種類]** の **[Built-in copy task]\(組み込みコピー タスク\)** を選択して、 **[Task cadence or task schedule]\(タスクの周期またはタスクのスケジュール\)** の **[Run once now]\(今すぐ 1 度だけ実行する\)** を選択し、 **[次へ]** を選択します。
 
-    ![[プロパティ] ページ](./media/load-azure-data-lake-storage-gen2/copy-data-tool-properties-page.png)
-3. **[ソース データ ストア]** ページで、 **[新しい接続の作成]** をクリックします。 コネクタ ギャラリーから **[Amazon S3]** を選択し、 **[続行]** を選択します。
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2/copy-data-tool-properties-page.png" alt-text="[プロパティ] ページ":::
+3. **[ソース データ ストア]** ページで、次の手順を実行します。
+    1. **[+ 新しい接続]** を選択します。 コネクタ ギャラリーから **[Amazon S3]** を選択し、 **[続行]** を選択します。
     
-    ![ソース データ ストアの S3 ページ](./media/load-azure-data-lake-storage-gen2/source-data-store-page-s3.png)
+        :::image type="content" source="./media/load-azure-data-lake-storage-gen2/source-data-store-page-s3.png" alt-text="ソース データ ストアの S3 ページ":::
     
-4. **[新しいリンクされたサービス (Amazon S3)]** ページで、次の手順を実行します。
+    1. **[New connection (Amazon S3)]\(新しい接続 (Amazon S3)\)** ページで、次の手順のようにします。
 
-   1. **[アクセス キー ID]** の値を指定します。
-   2. **[シークレット アクセス キー]** の値を指定します。
-   3. **[テスト接続]** をクリックして設定を検証し、 **[作成]** を選択します。
-
-      ![Amazon S3 アカウントの指定](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-   4. 新しい AmazonS3 接続が作成されたことを確認します。 **[次へ]** を選択します。 
-
-5. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、コピーするフォルダーとファイルを参照します。 フォルダー/ファイルを選択し、 **[選択]** を選択します。
-
-    ![入力ファイルまたはフォルダーの選択](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
-
-6. **[再帰的]** オプションと **[バイナリ コピー]** オプションをオンにすることで、コピーの動作を指定します。 **[次へ]** を選択します。
-
-    ![[入力ファイルまたはフォルダーの選択] を示すスクリーンショット。ここでは、[バイナリ コピー] と [再帰的] を選択できます。](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
+        1. **[アクセス キー ID]** の値を指定します。
+        1. **[シークレット アクセス キー]** の値を指定します。
+        1. **[テスト接続]** を選択して設定を検証し、 **[作成]** を選択します。
     
-7. **[配布先データ ストア]** ページで、 **[新しい接続の作成]** をクリックし、 **[Azure Data Lake Storage Gen2]** を選択して、 **[続行]** を選択します。
+          :::image type="content" source="./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png" alt-text="Amazon S3 アカウントの指定":::
 
-    ![[Destination data store]\(コピー先データ ストア\) ページ](./media/load-azure-data-lake-storage-gen2/destination-data-storage-page.png)
+    1. **[ソース データ ストア]** ページで、新しく作成した Amazon S3 接続が、 **[接続]** ブロックで選択されていることを確認します。 
+    1. **[ファイルまたはフォルダー]** セクションで、コピーするフォルダーとファイルを参照します。 フォルダーまたはファイルを選択して、 **[OK]** を選択します。
+    1. **[再帰的]** オプションと **[バイナリ コピー]** オプションをオンにすることで、コピーの動作を指定します。 **[次へ]** を選択します。
 
-8. **[新しいリンクされたサービス (Azure Data Lake Storage Gen2)]** ページで、次の手順を実行します。
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2/source-data-store.png" alt-text="[ソース データ ストア] ページを示すスクリーンショット。":::
+    
+4. **[Destination data store]\(コピー先データ ストア\)** ページで、次の手順のようにします。
+    1. **[+ 新しい接続]** を選択し、 **[Azure Data Lake Storage Gen2]** を選択して、 **[続行]** を選択します。
 
-   1. [ストレージ アカウント名] ボックスの一覧から目的の Data Lake Storage Gen2 に対応するアカウントを選択します。
-   2. **[作成]** を選択して接続を作成します。 **[次へ]** を選択します。   
+        :::image type="content" source="./media/load-azure-data-lake-storage-gen2/destination-data-storage-page.png" alt-text="[Destination data store]\(コピー先データ ストア\) ページ":::
+    
+    1. **[新しい接続 (Azure Data Lake Storage Gen2)]** ページで、[ストレージ アカウント名] ドロップダウンの一覧から Data Lake Storage Gen2 対応のアカウントを選択し、 **[作成]** を選択して接続を作成します。 
 
-        ![Azure Data Lake Storage Gen2 アカウントを指定する](./media/load-azure-data-lake-storage-gen2/specify-azure-data-lake-storage.png)
+        :::image type="content" source="./media/load-azure-data-lake-storage-gen2/specify-azure-data-lake-storage.png" alt-text="Azure Data Lake Storage Gen2 アカウントを指定する":::
 
-9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfroms3**」と入力し、 **[次へ]** を選択します。 対応する ADLS Gen2 ファイル システムとサブ フォルダーが存在しない場合は、コピー中に ADF によって作成されます。
+    1. **[Destination data store]\(コピー先データ ストア\)** ページの **[接続]** ブロックで、新しく作成した接続を選択します。 **[フォルダー パス]** で、出力フォルダー名として「**copyfroms3**」と入力し、 **[次へ]** を選択します。 対応する ADLS Gen2 ファイル システムとサブ フォルダーが存在しない場合は、コピー中に ADF によって作成されます。
 
-    ![入力したフォルダーのパスを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
+        :::image type="content" source="./media/load-azure-data-lake-storage-gen2/destiantion-data-store.png" alt-text="[Destination data store]\(コピー先データ ストア\) ページを示すスクリーンショット。":::   
+    
+5. **[設定]** ページで、 **[タスク名]** フィールドに「**CopyFromAmazonS3ToADLS**」と指定し、 **[次へ]** を選択して既定の設定を使用します。
 
-10. **[設定]** ページで、 **[次へ]** を選択して、既定の設定を使用します。
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2/copy-settings.png" alt-text="設定ページ":::
 
-    ![[設定] ページ](./media/load-azure-data-lake-storage-gen2/copy-settings.png)
+6. **[サマリー]** ページで設定を確認し、 **[次へ]** を選択します。
 
-11. **[サマリー]** ページで設定を確認し、 **[次へ]** を選択します。
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2/copy-summary.png" alt-text="[概要] ページ":::
 
-    ![概要ページ](./media/load-azure-data-lake-storage-gen2/copy-summary.png)
-
-12. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。 
+7. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。 
  
-13. パイプラインの実行が正常に完了すると、手動トリガーによってトリガーされたパイプラインの実行が表示されます。 **[パイプライン名]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
+8. パイプラインの実行が正常に完了すると、手動トリガーによってトリガーされたパイプラインの実行が表示されます。 **[パイプライン名]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
 
-    ![パイプラインの実行を監視する](./media/load-azure-data-lake-storage-gen2/monitor-pipeline-runs.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2/monitor-pipeline-runs.png" alt-text="パイプラインの実行を監視する":::
 
-14. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、[パイプライン名] 列の **[CopyFromAmazonS3ToADLS]** リンクを選択します。 コピー操作の詳細を確認するには、[アクティビティ名] 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 ソースからシンクにコピーされるデータのボリューム、データのスループット、実行ステップと対応する期間、使用される構成などの詳細を監視できます。
+9. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[パイプライン名]** 列の **CopyFromAmazonS3ToADLS** リンクを選択します。 コピー操作の詳細を確認するには、 **[アクティビティ名]** 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 ソースからシンクにコピーされるデータのボリューム、データのスループット、実行ステップと対応する期間、使用される構成などの詳細を監視できます。
  
-    ![アクティビティの実行を監視する](./media/load-azure-data-lake-storage-gen2/monitor-activity-runs.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2/monitor-activity-runs.png" alt-text="アクティビティの実行を監視する":::
     
-    ![アクティビティの実行状況の詳細の監視](./media/load-azure-data-lake-storage-gen2/monitor-activity-run-details.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2/monitor-activity-run-details.png" alt-text="アクティビティの実行状況の詳細の監視":::
 
-15. 表示を更新するには、[最新の情報に更新] を選択します。 再度パイプラインの実行ビューに移動するには、一番上にある **[すべてのパイプラインの実行]** を選択します。
+10. 表示を更新するには、 **[最新の情報に更新]** を選択します。 [パイプラインの実行] ビューに戻るには、一番上にある **[すべてのパイプラインの実行]** を選択します。
 
-16. データが Data Lake Storage Gen2 アカウントにコピーされたことを確認します。
+11. データが Data Lake Storage Gen2 アカウントにコピーされたことを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

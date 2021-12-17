@@ -4,15 +4,16 @@ description: オンプレミスとクラウドの間でデータを移動する�
 author: nabhishek
 ms.author: abnarain
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 robots: noindex
-ms.openlocfilehash: 53fce1744ccbf4289b2415e926e084c90d708a13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac9b0d0105ed28847fbf0db4d7ba8cc420fa2328
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380289"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059644"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]
@@ -50,10 +51,10 @@ ms.locfileid: "100380289"
 1. [Azure Portal](https://portal.azure.com) にログインします。
 2. **[リソースの作成]** 、 **[インテリジェンス + 分析]** 、 **[データ ファクトリ]** の順にクリックします。
 
-   ![New->DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
+   :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png" alt-text="[新規] -> [Data Factory]":::  
 3. **[新しいデータ ファクトリ]** ページで、[名前] に「**ADFTutorialOnPremDF**」と入力します。
 
-    ![スタート画面への追加](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png" alt-text="スタート画面への追加":::
 
    > [!IMPORTANT]
    > Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー **Data factory name "ADFTutorialOnPremDF" is not available (データ ファクトリ名 "ADFTutorialOnPremDF" は使用できません)** が発生した場合は、データ ファクトリの名前を変更して (例: yournameADFTutorialOnPremDF) 作成し直してください。 このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialOnPremDF の代わりに使用します。
@@ -71,18 +72,18 @@ ms.locfileid: "100380289"
    >
 7. 作成が完了すると、次の図に示すような **[Data Factory]** ページが表示されます。
 
-   ![Data Factory ホーム ページ](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDataFactoryHomePage.png)
+   :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremDataFactoryHomePage.png" alt-text="Data Factory ホーム ページ":::
 
 ## <a name="create-gateway"></a>ゲートウェイの作成
 1. **[Data Factory]** ページで、 **[作成およびデプロイ]** タイルをクリックして、データ ファクトリ用の **エディター** を起動します。
 
-    ![[作成とデプロイ] タイル](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png" alt-text="[作成とデプロイ] タイル":::
 2. Data Factory Editor のツール バーで **[...More (...詳細)]** をクリックし、 **[新しいデータ ゲートウェイ]** をクリックします。 または、ツリー ビューの **[データ ゲートウェイ]** を右クリックして、 **[新しいデータ ゲートウェイ]** をクリックします。
 
-   ![ツールバーでのデータ ゲートウェイの新規作成](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
+   :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png" alt-text="ツールバーでのデータ ゲートウェイの新規作成":::
 3. **[作成]** ページで、 **[名前]** に「**adftutorialgateway**」と入力し、 **[OK]** をクリックします。     
 
-    ![[ゲートウェイの作成] ページ](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png" alt-text="[ゲートウェイの作成] ページ":::
 
     > [!NOTE]
     > このチュートリアルでは、ノードが 1 つだけある論理ゲートウェイを作成します (ノードはオンプレミスの Windows マシン です)。 データ管理ゲートウェイは、複数のオンプレミス コンピューターをゲートウェイに関連付けることによって、スケールアウトできます。 1 つのノードで同時に実行できるデータ移動ジョブ数を増やすことで、スケールアップできます。 この機能は、単一のノードを持つ論理ゲートウェイでも使用できます。 詳細については、[Azure Data Factory でのデータ管理ゲートウェイのスケーリング](data-factory-data-management-gateway-high-availability-scalability.md)に関する記事をご覧ください。  
@@ -97,7 +98,7 @@ ms.locfileid: "100380289"
    >
    >
 
-    ![ゲートウェイ - [構成] ページ](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png" alt-text="ゲートウェイ - [構成] ページ":::
 
     これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。 **Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。 また、実行可能ファイル **ConfigManager.exe** は、**C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** フォルダー内にあります。
 
@@ -111,10 +112,10 @@ ms.locfileid: "100380289"
    >
 5. 2 ～ 3 分待つか、次のような通知メッセージが表示されるまで待ちます。
 
-    ![ゲートウェイのインストールが正常に完了しました](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png" alt-text="ゲートウェイのインストールが正常に完了しました":::
 6. コンピューターで **Data Management Gateway 構成マネージャー** アプリケーションを起動します。 **[検索]** ウィンドウに、このユーティリティにアクセスする **Data Management Gateway** を入力します。 また、実行可能ファイル **ConfigManager.exe** は、**C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** フォルダー内にあります
 
-    ![Gateway Configuration Manager](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png" alt-text="Gateway Configuration Manager":::
 7. "`adftutorialgateway is connected to the cloud service`" というメッセージが表示されていることを確認します。 下部のステータス バーに、**緑色のチェック マーク** と共に "**Connected to the cloud service (クラウド サービスに接続済み)** " と表示されます。
 
     **[ホーム]** タブで、次の操作を行うこともできます。
@@ -126,7 +127,7 @@ ms.locfileid: "100380289"
    * ゲートウェイへの更新プログラムをインストールできる時刻を指定します。
 8. **[設定]** タブに切り替えます。 **[証明書]** セクションに示されている証明書は、ポータルで指定したオンプレミス データ ストアの資格情報の暗号化/暗号化解除に使用されます。 独自の証明書を使用するには、 **[変更]** をクリックします (省略可能)。 既定では、ゲートウェイは Data Factory サービスによって自動生成される証明書を使用します。
 
-    ![ゲートウェイ証明書の構成](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png" alt-text="ゲートウェイ証明書の構成":::
 
     **[設定]** タブで、以下の操作を行うこともできます。
 
@@ -135,7 +136,7 @@ ms.locfileid: "100380289"
    * ゲートウェイで使用される HTTP プロキシを設定する。     
 9. (省略可能) **[診断]** タブに切り替え、ゲートウェイで発生した問題のトラブルシューティングに使用できる詳細なログ記録を有効にする場合は、 **[詳細なログ記録]** をオンにします。 ログ情報については、 **[アプリケーションとサービス ログ]**  ->  **[Data Management Gateway]** ノードの順に進み、 **[イベント ビューアー]** を参照してください。
 
-    ![[診断] タブ](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png" alt-text="[診断] タブ":::
 
     **[診断]** タブでは、次の操作を行うこともできます。
 
@@ -152,7 +153,7 @@ ms.locfileid: "100380289"
 #### <a name="add-a-linked-service-to-a-sql-server-database"></a>SQL Server Database にリンクされたサービスを追加する
 1. **Data Factory エディター** のツール バーにある **[新しいデータ ストア]** をクリックし、 **[SQL Server]** を選択します。
 
-   ![SQL Server のリンクされているサービス](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
+   :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png" alt-text="SQL Server のリンクされているサービス":::
 2. 右側の **JSON エディター** で、次の操作を実行します。
 
    1. **[gatewayName]** に **[adftutorialgateway]** を指定します。    
@@ -162,14 +163,14 @@ ms.locfileid: "100380289"
       2. **[databasename]** で、データベースの名前を入力します。
       3. ツール バーの **[暗号化]** をクリックします。 資格情報マネージャー アプリケーションが表示されます。
 
-         ![資格情報マネージャー アプリケーション](./media/data-factory-move-data-between-onprem-and-cloud/credentials-manager-application.png)
+         :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/credentials-manager-application.png" alt-text="資格情報マネージャー アプリケーション":::
       4. **[資格情報の設定]** ダイアログ ボックスで、認証の種類、ユーザー名、およびパスワードを指定し、 **[OK]** をクリックします。 接続が成功すると、暗号化された資格情報は JSON に格納され、ダイアログ ボックスが閉じられます。
       5. ダイアログ ボックスを起動した空のブラウザー タブが自動的に閉じられない場合は手動で閉じて、Azure Portal のタブに戻ります。
 
          ゲートウェイ コンピューターで、これらの資格情報は、Data Factory サービスが所有する証明書を使用して **暗号化** されます。 Data Management Gateway に関連付けられている証明書を使用する場合は、「Set credentials securely (資格情報を安全に設定する)」を参照してください。    
    3. コマンド バーの **[デプロイ]** をクリックして、SQL Server リンク サービスをデプロイします。 リンクされたサービスは、ツリー ビューに表示されます。
 
-      ![ツリー ビューでの SQL Server のリンクされたサービス](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
+      :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png" alt-text="ツリー ビューでの SQL Server のリンクされたサービス":::    
 
 #### <a name="add-a-linked-service-for-an-azure-storage-account"></a>Azure ストレージ アカウント用のリンクされたサービスを追加する
 1. **Data Factory エディター** で、コマンド バーの **[新しいデータ ストア]** をクリックし、 **[Azure ストレージ]** をクリックします。
@@ -186,7 +187,7 @@ ms.locfileid: "100380289"
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>チュートリアル用にオンプレミスの SQL Server を用意します。
 1. SQL Server リンク サービス (**SqlServerLinkedService**) 用に指定したデータベースで、次の SQL スクリプトを使用して、データベースに **emp** テーブルを作成します。
 
-    ```SQL   
+    ```sql
     CREATE TABLE dbo.emp
     (
         ID int IDENTITY(1,1) NOT NULL,
@@ -196,9 +197,10 @@ ms.locfileid: "100380289"
     )
     GO
     ```
+
 2. テーブルにサンプルをいくつか挿入します。
 
-    ```SQL
+    ```sql
     INSERT INTO emp VALUES ('John', 'Doe')
     INSERT INTO emp VALUES ('Jane', 'Doe')
     ```
@@ -206,10 +208,11 @@ ms.locfileid: "100380289"
 ### <a name="create-input-dataset"></a>入力データセットの作成
 
 1. **Data Factory エディター** のコマンド バーで **[...More (...詳細)]** をクリックし、 **[新しいデータセット]** 、 **[SQL Server テーブル]** の順にクリックします。
+
 2. 右側のウィンドウの JSON を次のテキストに置き換えます。
 
-    ```JSON   
-    {        
+    ```json
+    {
         "name": "EmpOnPremSQLTable",
         "properties": {
             "type": "SqlServerTable",
@@ -230,8 +233,9 @@ ms.locfileid: "100380289"
                 }
             }
         }
-    }     
-    ```       
+    }
+    ```
+
    以下の点に注意してください。
 
    * **type** は **SqlServerTable** に設定されています。
@@ -240,14 +244,15 @@ ms.locfileid: "100380289"
    * Azure Data Factory の別のパイプラインでは生成されない入力データセットの場合、**external** を **true** に設定する必要があります。 これは、入力データが Azure Data Factory サービスの外部で生成されることを意味します。 必要に応じて、**Policy** セクションの **externalData** 要素を使用して外部データ ポリシーを指定できます。    
 
    JSON プロパティの詳細については、[SQL Server に対するデータの移動](data-factory-sqlserver-connector.md)に関するページを参照してください。
-3. コマンド バーの **[デプロイ]** をクリックしてデータセットをデプロイします。  
+
+3. コマンド バーの **[デプロイ]** をクリックしてデータセットをデプロイします。
 
 ### <a name="create-output-dataset"></a>出力データセットの作成
 
 1. **Data Factory エディター** で、コマンド バーの **[新しいデータセット]** をクリックし、 **[Azure BLOB ストレージ]** をクリックします。
 2. 右側のウィンドウの JSON を次のテキストに置き換えます。
 
-    ```JSON   
+    ```json
     {
         "name": "OutputBlobTable",
         "properties": {
@@ -265,8 +270,9 @@ ms.locfileid: "100380289"
                 "interval": 1
             }
         }
-     }
-    ```   
+    }
+    ```
+
    以下の点に注意してください。
 
    * **type** は **AzureBlob** に設定されています。
@@ -343,11 +349,10 @@ ms.locfileid: "100380289"
          "isPaused": false
        }
      }
-    ```   
+    ```
+
    > [!IMPORTANT]
    > **start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。
-   >
-   >
 
    以下の点に注意してください。
 
@@ -371,10 +376,10 @@ ms.locfileid: "100380289"
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>ダイアグラム ビューでの Data Factory の表示
 1. **Azure Portal** の **ADFTutorialOnPremDF** データ ファクトリのホーム ページで、 **[ダイアグラム]** タイルをクリックします。 :
 
-    ![[ダイアグラム] リンク](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png" alt-text="[ダイアグラム] リンク":::
 2. 以下の図のようなダイアグラムが表示されるはずです。
 
-    ![Diagram view](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramView.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramView.png" alt-text="Diagram view":::
 
     パイプラインとデータセットは、拡大、縮小、100% に拡大、ウィンドウのサイズに合わせて大きさを変更、自動的に配置などの表示が可能です。また、系列情報を表示 (選択した項目の上位項目や下位項目を強調表示) することもできます。  オブジェクト (入力/出力データセットまたはパイプライン) をダブルクリックすると、そのオブジェクトのプロパティを表示できます。
 
@@ -383,19 +388,19 @@ ms.locfileid: "100380289"
 
 1. ダイアグラムで **EmpOnPremSQLTable** をダブルクリックします。  
 
-    ![EmpOnPremSQLTable slices](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png" alt-text="EmpOnPremSQLTable slices":::
 2. パイプラインの期間 (開始時刻から終了時刻まで) が過去であるため、すべてのデータ スライスが **[準備完了]** 状態になっていることに注意してください。 これは、SQL Server データベースに挿入したデータが、現在まで残っているためでもあります。 下部の **[問題のあるスライス]** セクションにスライスが表示されていないことを確認します。 すべてのスライスを表示するには、スライスの一覧の下部にある **[もっと見る]** をクリックします。
 3. **[データセット]** ページで、 **[OutputBlobTable]** をクリックします。
 
-    ![OputputBlobTable slices](./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png" alt-text="OputputBlobTable slices":::
 4. 一覧で任意のデータ スライスをクリックすると、 **[データ スライス]** ページが表示されます。 そのスライスのアクティビティの実行が表示されます。 通常は、1 つのアクティビティの実行のみが表示されます。  
 
-    ![Data Slice Blade](./media/data-factory-move-data-between-onprem-and-cloud/DataSlice.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/DataSlice.png" alt-text="Data Slice Blade":::
 
     スライスが **[準備完了]** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、 **[準備完了でない上位スライス]** の一覧に表示されます。
 5. 下部にある一覧の **[アクティビティの実行]** をクリックして、 **[アクティビティの実行の詳細]** を表示します。
 
-   ![[アクティビティ実行の詳細] ページ](./media/data-factory-move-data-between-onprem-and-cloud/ActivityRunDetailsBlade.png)
+   :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/ActivityRunDetailsBlade.png" alt-text="[アクティビティ実行の詳細] ページ":::
 
    スループット、期間、データの転送に使用されるゲートウェイなどの情報が表示されます。
 6. **[X]** をクリックしてすべてのページを閉じ、
@@ -403,7 +408,7 @@ ms.locfileid: "100380289"
 8. (省略可能) **[パイプライン]** をクリックし、 **[ADFTutorialOnPremDF]** をクリックして、入力テーブル (**Consumed**) または出力データセット (**Produced**) をドリル スルーします。
 9. [Microsoft ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用して、1 時間ごとに BLOB/ファイルが作成されることを確認します。
 
-   ![Azure ストレージ エクスプローラー](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
+   :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png" alt-text="Azure Storage Explorer":::
 
 ## <a name="next-steps"></a>次のステップ
 * Data Management Gateway の詳細については、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」をご覧ください。

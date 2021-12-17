@@ -8,20 +8,22 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: bc87b0ec9cf41b2ddc5746a9734463f544b0cc2a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c4dec92555d52a1e405c9d27c4242237add47619
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550690"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456463"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 Azure portal または PowerShell を使用して、Azure 管理 VM イメージから複数の仮想マシン (VM) を作成できます。 管理 VM イメージには、OS や データ ディスクなど、VM の作成に必要な情報が含まれています。 OS ディスクやデータ ディスクなど、イメージを構成する仮想ハード ディスク (VHD) は、マネージド ディスクとして保管されます。 
 
 新しい VM を作成する前に、ソース イメージとして使用する[マネージド VM イメージを作成](capture-image-resource.md)し、そのイメージにアクセスする必要があるすべてのユーザーに、イメージに対する読み取りアクセスを許可する必要があります。 
 
-1 つのマネージド イメージは、最大 20 個の同時デプロイをサポートします。 同じマネージド イメージから 20 個を超える VM を同時に作成しようとすると、1 つの VHD におけるストレージ パフォーマンスの制限によって、プロビジョニングのタイムアウトが発生する可能性があります。 20 個を超える VM を同時に作成するには、20 個の同時実行 VM デプロイごとに 1 つのレプリカで構成された[共有イメージ ギャラリー](../shared-image-galleries.md) イメージを使用します。
+1 つのマネージド イメージは、最大 20 個の同時デプロイをサポートします。 同じマネージド イメージから 20 個を超える VM を同時に作成しようとすると、1 つの VHD におけるストレージ パフォーマンスの制限によって、プロビジョニングのタイムアウトが発生する可能性があります。 20 個を超える VM を同時に作成するには、20 のコンカレント VM デプロイごとに 1 つのレプリカで構成された [Azure Compute Gallery](../shared-image-galleries.md) (旧称 Shared Image Gallery) イメージを使用します。
 
 ## <a name="use-the-portal"></a>ポータルの使用
 

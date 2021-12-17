@@ -1,23 +1,26 @@
 ---
-title: Azure Data Factory を使用して Google Cloud Storage からデータをコピーする
-description: Azure Data Factory を使用して、Google Cloud Storage からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
-author: linda33wj
+title: Google Cloud Storage からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics を使用して、Google Cloud Storage のデータを、サポートされているシンク データ ストアにコピーする方法について説明します。
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.author: jingwang
-ms.openlocfilehash: b8e518ba23c877ee80197ad94a6bc01b23b044a3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 09/09/2021
+ms.author: jianleishen
+ms.openlocfilehash: 64e8622380f94ff56833e295adf8fa67e49e1ae7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588991"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815096"
 ---
-# <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Google Cloud Storage からデータをコピーする
+# <a name="copy-data-from-google-cloud-storage-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して Google Cloud Storage のデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Google Cloud Storage (GCS) からデータをコピーする方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Google Cloud Storage (GCS) からデータをコピーする方法について説明します。 詳細については、[Azure Data Factory](introduction.md) および [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -39,19 +42,43 @@ Google Cloud Storage アカウントに対して次の設定が必要となり�
 3. GCP で Cloud IAM を使用して、サービス アカウントを作成し、適切なレベルのアクセス許可を定義します。 
 4. このサービス アカウントのアクセス キーを生成します。
 
-![Google Cloud Storage のアクセス キーを取得する](media/connector-google-cloud-storage/google-storage-cloud-settings.png)
+:::image type="content" source="media/connector-google-cloud-storage/google-storage-cloud-settings.png" alt-text="Google Cloud Storage のアクセス キーを取得する":::
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
 Google Cloud Storage からデータをコピーするには、オブジェクト操作に対する次のアクセス許可が付与されている必要があります: ` storage.objects.get` および ` storage.objects.list`。
 
-Data Factory UI を使用して作成する場合は、リンクされたサービスへの接続のテストやルートからの参照などの操作に対して、追加の ` storage.buckets.list` アクセス許可が必要です。 このアクセス許可を付与しない場合は、UI から [ファイル パスへの接続をテスト] または [指定されたパスから参照] オプションを選択できます。
+UI を使用して作成する場合は、リンクされたサービスへの接続のテストやルートからの参照などの操作に対して、追加の ` storage.buckets.list` アクセス許可が必要です。 このアクセス許可を付与しない場合は、UI から [ファイル パスへの接続をテスト] または [指定されたパスから参照] オプションを選択できます。
 
 Google Cloud Storage のロールと関連するアクセス許可の完全な一覧については、Google Cloud サイトの「[Cloud Storage に適用される IAM のロール](https://cloud.google.com/storage/docs/access-control/iam-roles)」を参照してください。
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)] 
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)] 
+
+## <a name="create-a-linked-service-to-google-cloud-storage-using-ui"></a>UI を使用して Google Cloud Storage のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Google Cloud Storage のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用して新しいリンク サービスを作成します。":::
+
+2. Google を検索し、Google Cloud Storage (S3 API) コネクタを選択します。
+
+    :::image type="content" source="media/connector-google-cloud-storage/google-cloud-storage-connector.png" alt-text="Google Cloud Storage (S3 API) コネクタを選択します。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-google-cloud-storage/configure-google-cloud-storage-linked-service.png" alt-text="Google Cloud Storage のリンク サービスを構成します。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 次のセクションでは、Google Cloud Storage に固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -63,7 +90,7 @@ Google Cloud Storage のリンクされたサービスでは、次のプロパ�
 |:--- |:--- |:--- |
 | type | **type** プロパティは、**GoogleCloudStorage** に設定する必要があります。 | はい |
 | accessKeyId | シークレット アクセス キーの ID。 アクセス キーとシークレットの見つけ方については、「[前提条件](#prerequisites)」を参照してください。 |はい |
-| secretAccessKey | シークレット アクセス キー自体。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
+| secretAccessKey | シークレット アクセス キー自体。 このフィールドを **SecureString** とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | serviceUrl | カスタムの GCS エンドポイントを `https://storage.googleapis.com` として指定します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
@@ -92,7 +119,7 @@ Google Cloud Storage のリンクされたサービスでは、次のプロパ�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Google Cloud Storage では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
@@ -136,7 +163,7 @@ Google Cloud Storage では、形式ベースのデータセットの `location`
 
 ### <a name="google-cloud-storage-as-a-source-type"></a>ソース タイプとしての Google Cloud Storage
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Google Cloud Storage では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
@@ -156,7 +183,7 @@ Google Cloud Storage では、形式ベースのコピー ソースの `storeSet
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                                          |
 | enablePartitionDiscovery | パーティション分割されているファイルの場合は、ファイル パスのパーティションを解析し、それを追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
 | partitionRootPath | パーティション検出が有効になっている場合は、パーティション分割されたフォルダーをデータ列として読み取るための絶対ルート パスを指定します。<br/><br/>これが指定されていない場合は、既定で次のようになります。<br/>- ソース上のデータセットまたはファイルの一覧内のファイル パスを使用する場合、パーティションのルート パスはそのデータセットで構成されているパスです。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティションのルート パスを "root/folder/year=2020" として指定した場合は、コピー アクティビティによって、ファイル内の列とは別に、それぞれ "08" と "27" の値を持つ `month` と `day` という 2 つの追加の列が生成されます。<br/>- パーティションのルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
-| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続数を制限する場合にのみ、値を指定します。| いいえ                                                          |
+| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ                                                          |
 
 **例:**
 
@@ -216,7 +243,7 @@ Google Cloud Storage では、形式ベースのコピー ソースの `storeSet
 
 次のソース フォルダー構造があり、太字のファイルをコピーするとします。
 
-| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | Data Factory の構成                                            |
+| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | 構成 |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | bucket<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadata<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **データセット内:**<br>- バケット: `bucket`<br>- フォルダー パス: `FolderA`<br><br>**コピー アクティビティ ソース内:**<br>- ファイル リストのパス: `bucket/Metadata/FileListToCopy.txt` <br><br>ファイル リストのパスは、コピーするファイルの一覧を含む同じデータ ストア内のテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスで 1 行につき 1 つのファイルを指定します。 |
 
@@ -234,7 +261,7 @@ Google Cloud Storage では、形式ベースのコピー ソースの `storeSet
 
 ## <a name="legacy-models"></a>レガシ モデル
 
-Amazon S3 コネクタを使用して Google Cloud Storage からデータをコピーした場合でも、これは下位互換性のために引き続きサポートされます。 前述の新しいモデルを使用することをお勧めします。 Data Factory 作成 UI は、新しいモデルの生成に切り替えられました。
+Amazon S3 コネクタを使用して Google Cloud Storage からデータをコピーした場合でも、これは下位互換性のために引き続きサポートされます。 前述の新しいモデルを使用することをお勧めします。 作成 UI は、新しいモデルの生成に切り替えられました。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページを参照してください。

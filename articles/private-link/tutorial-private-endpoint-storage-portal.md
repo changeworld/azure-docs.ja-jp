@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: eefef0eb61df9aa0597206b537f3d58e8b8b3213
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65874a66fd6e3843f7d1a3dc1e7d088d392df645
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96484823"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "114285000"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>チュートリアル:Azure プライベート エンドポイントを使用してストレージ アカウントに接続する
 
@@ -131,6 +131,8 @@ bastion ホストは、プライベート エンドポイントをテストす�
 5. **[Review + create]\(レビュー + 作成\)** を選択します。 
   
 6. 設定を確認し、 **[作成]** を選択します。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-storage-account-with-a-private-endpoint"></a>プライベート エンドポイントを備えたストレージ アカウントの作成
 

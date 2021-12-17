@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/01/2021
+ms.date: 06/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 4ac5bf2756b82361388ab9f2866b80c63395f90d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 925ed8e4461fb7c97ba4d29819862fe84c27d82a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591386"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132320661"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SolarWinds Orion の統合
 
@@ -98,6 +98,17 @@ SolarWinds Orion に対して Azure AD SSO を構成してテストするには�
     | FirstName | User.givenname |
     | LastName | User.surname |
     | Email |User.mail |
+
+1. **[ユーザー属性とクレーム]** セクションで、編集のために鉛筆アイコンをクリックし、 **[グループ要求を追加する]** をクリックします。
+
+    ![[ユーザー属性とクレーム] のスクリーンショット。](./media/solarwinds-orion-tutorial/group-claim.png)
+
+1. **[セキュリティ グループ]** を選択します。
+1. Azure AD をオンプレミスの AD と同期している場合は、 **[Source attribute]\(ソース属性\)** を **[sAMAccountName]** に変更します。 それ以外の場合は、[グループ ID] のままにします。
+
+1. **[Advanced options]\(詳細オプション\)** で、 **[グループ要求の名前をカスタマイズする]** をオンにし、名前として OrionGroups を指定します。
+
+1. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -199,8 +210,8 @@ SolarWinds Orion に対して Azure AD SSO を構成してテストするには�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した SolarWinds Orion に自動的にサインインされます 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [SolarWinds Orion] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した SolarWinds Orion に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [SolarWinds Orion] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した SolarWinds Orion に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-SolarWinds Orion を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SolarWinds Orion を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

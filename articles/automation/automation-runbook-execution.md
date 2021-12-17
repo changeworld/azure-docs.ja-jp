@@ -3,14 +3,15 @@ title: Azure Automation での Runbook の実行
 description: この記事では、Azure Automation における Runbook の処理の概要を示します。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/23/2021
+ms.date: 09/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 165c9ea721bec7fc7a1657f5dde5c19d9e254e20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 11a4892a6cd9a1ddda9cf5857165dd9b52e1392b
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954345"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371861"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -20,7 +21,7 @@ Runbook は、Automation によって、その内部で定義されているロ�
 
 Azure Automation で Runbook を開始すると、ジョブが作成されます。ジョブは Runbook の単一の実行インスタンスです。 ジョブごとに、Azure サブスクリプションに接続することによって Azure リソースにアクセスします。 ジョブでデータ センター内のリソースにアクセスできるのは、それらのリソースがパブリック クラウドからアクセスできる場合に限られます。
 
-Azure Automation では、Runbook の実行中に各ジョブを実行するための worker が割り当てられます。 ワーカーは多数の Azure アカウントで共有されますが、異なる Automation アカウントからのジョブは互いに分離されます。 どの worker がジョブの要求を処理するかを制御することはできません。
+Azure Automation では、Runbook の実行中に各ジョブを実行するための worker が割り当てられます。 worker は多数の Automation アカウントで共有されますが、異なる Automation アカウントからのジョブは互いに分離されます。 どの worker がジョブの要求を処理するかを制御することはできません。
 
 Azure portal で Runbook の一覧を表示すると、各 Runbook に対して開始された各ジョブの状態が示されます。 Azure Automation には、ジョブのログが最大 30 日間保存されます。
 
@@ -34,10 +35,11 @@ Azure portal で Runbook の一覧を表示すると、各 Runbook に対して�
 
 Azure Automation の Runbook は、Azure サンドボックスまたは [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) のいずれかで実行できます。 
 
-Runbook は、Azure のリソースに対して認証および実行されるように設計されている場合、複数のジョブで使用できる共有環境である Azure サンドボックスで実行されます。 同じサンドボックスを使用するジョブは、サンドボックスのリソース制限に縛られます。 Azure サンドボックス環境では、対話型操作はサポートされていません。 これにより、アウトプロセスのすべての COM サーバーにアクセスできなくなります。また、Runbook の Win32 プロバイダーに [WMI 呼び出し](/windows/win32/wmisdk/wmi-architecture)を行うことはできません。  これらのシナリオは、Windows Hybrid Runbook Worker で Runbook を実行することによってのみサポートされます。
-
+Azure のリソースに対して認証および実行されるように設計されている場合、Runbook は Azure サンドボックスで実行されます。 Azure Automation によって、サンドボックスでの Runbook の実行中に各ジョブを実行する worker が割り当てられます。 worker は多数の Automation アカウントで共有されますが、異なる Automation アカウントからのジョブは互いに分離されます。  同じサンドボックスを使用するジョブは、サンドボックスのリソース制限に縛られます。 Azure サンドボックス環境では、対話型操作はサポートされていません。 これにより、アウトプロセスのすべての COM サーバーにアクセスできなくなります。また、Runbook の Win32 プロバイダーに [WMI 呼び出し](/windows/win32/wmisdk/wmi-architecture)を行うことはできません。  これらのシナリオは、Windows Hybrid Runbook Worker で Runbook を実行することによってのみサポートされます。
 
 また、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) を使用すると、そのロールがホストされているコンピューターで、環境内のローカル リソースに対して Runbook を直接実行することができます。 Azure Automation によって Runbook が格納および管理された後、1 つ以上の割り当てられたコンピューターに配信されます。
+
+[Azure Storage](../storage/common/storage-network-security.md)、[Azure Key Vault](../key-vault/general/network-security.md)、または [Azure SQL](../azure-sql/database/firewall-configure.md) で Azure Firewall を有効にすると、それらのサービスに対する Azure Automation Runbook からのアクセスがブロックされます。 信頼される Microsoft サービスを許可するファイアウォール例外が有効になっている場合でも、Automation は信頼されるサービス一覧に含まれていないため、アクセスはブロックされます。 ファイアウォールが有効になっている場合は、Hybrid Runbook Worker と[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用しないとアクセスできません。
 
 >[!NOTE]
 >Linux Hybrid Runbook Worker 上で実行するには、スクリプトが署名されていること、またワーカーが適切に構成されていることが必要です。 または、[署名の検証をオフにする必要があります](automation-linux-hrw-install.md#turn-off-signature-validation)。
@@ -52,7 +54,7 @@ Runbook は、Azure のリソースに対して認証および実行されるよ
 |実行時間の長いスクリプトを実行する|Hybrid Runbook Worker|Azure サンドボックスには[リソースの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)があります。|
 |ローカル サービスと対話する|Hybrid Runbook Worker|ホスト コンピューター、他のクラウド環境内のリソース、またはオンプレミス環境内のリソースに直接アクセスします。 |
 |サードパーティのソフトウェアと実行可能ファイルが必要である|Hybrid Runbook Worker|自分でオペレーティング システムを管理し、ソフトウェアをインストールできます。|
-|Runbook でファイルまたはフォルダーを監視する|Hybrid Runbook Worker|Hybrid Runbook Worker で [Watcher タスク](automation-watchers-tutorial.md)を使用します。|
+|Runbook でファイルまたはフォルダーを監視する|Hybrid Runbook Worker|Hybrid Runbook Worker で [Watcher タスク](./automation-scenario-using-watcher-task.md)を使用します。|
 |リソースを大量に消費するスクリプトを実行する|Hybrid Runbook Worker| Azure サンドボックスには[リソースの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)があります。|
 |特定の要件を持つモジュールを使用する| Hybrid Runbook Worker|いくつかの例を次に示します。</br> WinSCP - winscp.exe への依存関係 </br> IIS administration - IIS の有効化または管理に対する依存関係|
 |インストーラでモジュールをインストールする|Hybrid Runbook Worker|サンドボックス用のモジュールでは、コピーがサポートされている必要があります。|
@@ -70,11 +72,11 @@ Runbook ロジックの一部として一時ファイルを作成する必要が
 
 Runbook には必ず、[リソース](/rest/api/resources/resources) (VM、ネットワーク、ネットワーク上のリソースなど) を扱うロジックが含まれています。 リソースは Azure サブスクリプションに関連付けられており、どのリソースにアクセスする場合でも Runbook に適切な資格情報が必要となります。 Runbook におけるリソースの処理の例については、「[リソースの処理](manage-runbooks.md#handle-resources)」を参照してください。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
-Azure Automation は、[Azure Security Center (ASC)](../security-center/security-center-introduction.md) を使用してリソースのセキュリティを確保し、Linux システムにおけるセキュリティ侵害を検出します。 リソースが Azure 内にあるかどうかにかかわらず、セキュリティはワークロード全体で確保されます。 [Azure Automation での認証の概要](automation-security-overview.md)に関するページを参照してください。
+Azure Automation では [Microsoft Defender for Cloud](../defender-for-cloud/defender-for-cloud-introduction.md) を利用してリソースを守り、Linux システムのリスクを検出します。 リソースが Azure 内にあるかどうかにかかわらず、セキュリティはワークロード全体で確保されます。 [Azure Automation での認証の概要](automation-security-overview.md)に関するページを参照してください。
 
-VM 上でスクリプトを実行できるユーザーには、ASC によって制約が課されます。スクリプトは、署名されている場合と署名されていない場合とがあります。 VM へのルート アクセスを持つユーザーは、明示的にデジタル署名を使用してマシンを構成するか、デジタル署名をオフにする必要があります。 それ以外のユーザーが、Automation アカウントを作成し、該当する機能を有効にした後で実行できるのは、オペレーティング システムの更新プログラムを適用するスクリプトだけです。
+VM 上でスクリプトを署名ありまたは署名なしで実行できるユーザーには、Defender for Cloud によって制約が課されます。 VM へのルート アクセスを持つユーザーは、明示的にデジタル署名を使用してマシンを構成するか、デジタル署名をオフにする必要があります。 それ以外のユーザーが、Automation アカウントを作成し、該当する機能を有効にした後で実行できるのは、オペレーティング システムの更新プログラムを適用するスクリプトだけです。
 
 ## <a name="subscriptions"></a>サブスクリプション
 
@@ -97,19 +99,9 @@ Azure Automation では、そのマシンの操作を監視するために [Azur
 
 ### <a name="log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェント
 
-[Linux 用 Log Analytics エージェント](../azure-monitor/agents/agent-linux.md)は、Windows 用のエージェントと同様に機能しますが、Linux コンピューターを Azure Monitor に接続します。 エージェントをインストールすると、Hybrid Runbook Worker などでルート アクセス許可が要求されるコマンドを実行できる、**nxautomation** というユーザー アカウントもインストールされます。 **nxautomation** アカウントは、パスワードを必要としないシステム アカウントです。
+[Linux 用 Log Analytics エージェント](../azure-monitor/agents/agent-linux.md)は、Windows 用のエージェントと同様に機能しますが、Linux コンピューターを Azure Monitor に接続します。 このエージェントは、ルート アクセス許可が必要なコマンドを実行する特定のサービス アカウントを使用してインストールされます。 詳細については、「[サービス アカウント](./automation-hrw-run-runbooks.md#service-accounts)」を参照してください。
 
-[Linux Hybrid Runbook Worker のインストール](automation-linux-hrw-install.md)中は、対応する sudo アクセス許可を持った **nxautomation** アカウントが存在していなければなりません。 そのアカウントが存在しない、または適切なアクセス許可がアカウントにない状態でワーカーをインストールしようとすると、インストールは失敗します。
-
-`sudoers.d` フォルダーまたはその所有権のアクセス許可は変更しないでください。 **nxautomation** アカウントには sudo アクセス許可が必要です。このアクセス許可は削除しないでください。 これを特定のフォルダーまたはコマンドに制限すると、破壊的変更が発生する可能性があります。
-
-Log Analytics エージェントと **nxautomation** アカウント向けに提供されるログは次のとおりです。
-
-* /var/opt/microsoft/omsagent/log/omsagent.log - Log Analytics エージェントのログ
-* /var/opt/microsoft/omsagent/run/automationworker/worker.log - Automation ワーカーのログ
-
->[!NOTE]
->Update Management の一環として有効にされた **nxautomation** ユーザーによって実行されるのは、署名済みの Runbook のみです。
+Log Analytics エージェント ログは、`/var/opt/microsoft/omsagent/log/omsagent.log` にあります。
 
 ## <a name="runbook-permissions"></a>Runbook のアクセス許可
 
@@ -117,7 +109,13 @@ Runbook には、資格情報を通じて Azure に対する認証を行うた�
 
 ## <a name="modules"></a>モジュール
 
-Azure Automation は、いくつかの AzureRM モジュール (AzureRM.Automation)、いくつかの内部コマンドレットを含むモジュールなど、多くの既定のモジュールをサポートしています。 また、AzureRM モジュールに優先して現在使用されている Az モジュール (Az.Automation) など、インストール可能なモジュールもサポートされています。 Runbook と DSC 構成で使用できるモジュールの詳細については、「[Azure Automation でモジュールを管理する](shared-resources/modules.md)」を参照してください。
+Azure Automation には、次の PowerShell モジュールが含まれています。
+
+* Orchestrator.AssetManagement.Cmdlets - Azure サンドボックス環境内または Windows Hybrid Runbook Worker 上で Runbook を実行する場合にのみ利用可能ないくつかの内部コマンドレットが含まれています。 これらのコマンドレットは、Automation アカウント リソースを操作するために Azure PowerShell コマンドレットの代わりに使用するように設計されています。
+* Az.Automation - AzureRM Automation モジュールを置き換える Azure Automation を操作するために推奨される PowerShell モジュールです。 Az.Automation モジュールは、Automation アカウントを作成するときに自動的に含められないため、手動でインポートする必要があります。 
+* AzureRM.Automation - Automation アカウントを作成するときに既定でインストールされます。 
+
+また、Runbook と DSC 構成に必要なコマンドレットに基づいて、インストール可能なモジュールもサポートされています。 Runbook と DSC 構成で使用できるモジュールの詳細については、「[Azure Automation でモジュールを管理する](shared-resources/modules.md)」を参照してください。
 
 ## <a name="certificates"></a>証明書
 
@@ -230,7 +228,7 @@ Azure DevOps Services や GitHub などの外部サービスを使用すると�
 
 クラウド内のすべての Runbook 間でリソースを共有するために、Azure では、"フェア シェア" と呼ばれる概念が使用されています。 3 時間以上実行されているジョブがあると、フェア シェアの下、Azure はそれらのジョブを一時的にアンロードまたは停止します。 [PowerShell の Runbook](automation-runbook-types.md#powershell-runbooks) と [Python の Runbook](automation-runbook-types.md#python-runbooks) のジョブは停止されて再起動されず、ジョブの状態は [停止済み] になります。
 
-長時間実行される Azure Automation タスクの場合は、Hybrid Runbook Worker の使用をお勧めします。 Hybrid Runbook Worker はフェア シェアによって制限されず、Runbook が実行できる時間に制限がありません。 その他のジョブの[制限](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)は、Azure サンドボックスと Hybrid Runbook Worker の両方に適用されます。 Hybrid Runbook Worker は 3 時間のフェア シェア制限を受けませんが、予期しないローカル インフラストラクチャの問題からの再起動がサポートされる worker で実行されるように Runbook を開発する必要があります。
+長時間実行される Azure Automation タスクの場合は、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) の使用をお勧めします。 Hybrid Runbook Worker はフェア シェアによって制限されず、Runbook が実行できる時間に制限がありません。 その他のジョブの[制限](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)は、Azure サンドボックスと Hybrid Runbook Worker の両方に適用されます。 Hybrid Runbook Worker は 3 時間のフェア シェア制限を受けませんが、予期しないローカル インフラストラクチャの問題からの再起動がサポートされる worker で実行されるように Runbook を開発する必要があります。
 
 もう 1 つのオプションは、子 Runbook を使用して Runbook を最適化することです。 たとえば、複数のデータベースに対するデータベース操作など、複数のリソースに対する同じ機能によって Runbook がループする可能性があります。 このような機能は、[子 Runbook](automation-child-runbooks.md) に移動し、[Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) を使用して親 Runbook でそれを呼び出すことができます。 子 Runbook は別々のプロセスで並列に実行されます。
 
@@ -238,7 +236,7 @@ Azure DevOps Services や GitHub などの外部サービスを使用すると�
 
 ## <a name="next-steps"></a>次のステップ
 
-* PowerShell Runbook の使用を開始するには、「[チュートリアル:PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
+* PowerShell Runbook の使用を開始するには、「[チュートリアル:PowerShell Runbook を作成する](./learn/powershell-runbook-managed-identity.md)」を参照してください。
 * Runbook を操作するには、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」を参照してください。
 * PowerShell の詳細については、[PowerShell のドキュメント](/powershell/scripting/overview)を参照してください。
 * PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation#automation)」をご覧ください。

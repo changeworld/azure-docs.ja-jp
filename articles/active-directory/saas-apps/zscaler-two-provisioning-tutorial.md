@@ -2,8 +2,8 @@
 title: チュートリアル:Zscaler Two を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: このチュートリアルでは、Azure Active Directory を構成して、ユーザー アカウントを Zscaler Two に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 1c63639321966cbb73f5c47524f408d17ba46c3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c03804ffa98104bda3e86c16d6b8343c50d97b5a
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936564"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760398"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>チュートリアル:Zscaler Two を構成し、自動ユーザー プロビジョニングに対応させる
 

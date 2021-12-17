@@ -1,31 +1,31 @@
 ---
 title: 機械学習における差分プライバシー (プレビュー)
 titleSuffix: Azure Machine Learning
-description: 差分プライバシーとは何かについて説明すると共に、データのプライバシーを維持する差分プライバシー システムを実装する方法について説明します。
+description: 差分プライバシーとは何かについて説明すると共に、差分プライバシー システムでどのようにデータのプライバシーが維持されるかについて説明します。
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/21/2020
+ms.date: 10/21/2021
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
-ms.custom: responsible-ml
-ms.openlocfilehash: de85c8184e05c9d662a2854e6138f3a61bfba8de
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.custom: responsible-ml, mktng-kw-nov2021
+ms.openlocfilehash: fc3606a4d893152b87fc5f5f47d987c16ce65724
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062456"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842559"
 ---
-# <a name="what-is-differential-privacy-in-machine-learning-preview"></a>機械学習における差分プライバシーについて (プレビュー)
+# <a name="what-is-differential-privacy-in-machine-learning-preview"></a>機械学習における差分プライバシーとは (プレビュー)
 
 機械学習における差分プライバシーとそのしくみについて説明します。
 
-組織では、分析用に収集/使用するデータの量が増えるにつれて、プライバシーとセキュリティについての懸念も増していきます。 分析にはデータが必要です。 通常、モデルのトレーニングに使用されるデータが多いほど、モデルの精度は高くなります。 これらの分析に個人情報が使用される場合には、データのプライバシーを維持したまま、それらのデータが使用されるようにすることが特に重要となります。
+組織では、分析用に収集/使用するデータの量が増えるにつれて、プライバシーとセキュリティについての懸念も増していきます。 分析にはデータが必要です。 通常、機械学習モデルのトレーニングに使用されるデータが多いほど、モデルの精度は高くなります。 これらの分析に個人情報が使用される場合には、データのプライバシーを維持したまま、それらのデータが使用されるようにすることが特に重要となります。
 
 ## <a name="how-differential-privacy-works"></a>差分プライバシーのしくみ
 
-差分プライバシーとは、個人のデータを安全かつプライベートに保つうえで役立つ、一連のシステムとプラクティスのことです。
+差分プライバシーとは、個人のデータを安全かつプライベートに保つうえで役立つ、一連のシステムとプラクティスのことです。 機械学習ソリューションでは、規制遵守のために差分プライバシーが必要になる場合があります。
 
 > [!div class="mx-imgBorder"]
 > ![差分プライバシーの機械学習プロセス](./media/concept-differential-privacy/differential-privacy-machine-learning.jpg)
@@ -38,7 +38,7 @@ ms.locfileid: "106062456"
 
 差分プライバシーでは、ユーザーによってレポートが無制限に生成され、最終的に機密データが漏洩するのを防ぐための措置が講じられます。 レポートのノイズがどの程度で、プライバシーがどの程度確保されるかという度合いは、**epsilon** という値によって測定されます。 epsilon は、ノイズやプライバシーの度合いに反比例します。 epsilon が低いほど、データはノイズが高く (プライベートに) なります。
 
-epsilon の値は、負以外の値となります。 1 未満の値を指定すると、完全な防御性が得られます。 1 より大きい値にすると、実際のデータが危険にさらされる可能性がより高くなります。 差分プライバシー システムを実装する際には、epsilon の値を 0 - 1 の範囲に設定してレポートを作成する必要があります。
+epsilon の値は、負以外の値となります。 1 未満の値を指定すると、完全な防御性が得られます。 1 より大きい値にすると、実際のデータが危険にさらされる可能性がより高くなります。 差分プライバシーを備えた機械学習ソリューションを実装する場合、データの epsilon 値は 0 から 1 の間である必要があります。
 
 epsilon に直接関連付けられているもう 1 つの値が、**delta** です。 delta は、レポートが完全にプライベートでない可能性を示す尺度です。 delta が高いほど、epsilon は大きくなります。 これらの値には相関関係があるため、epsilon のほうがより頻繁に使用されます。
 
@@ -52,7 +52,7 @@ epsilon に直接関連付けられているもう 1 つの値が、**delta** �
 
 ## <a name="open-source-differential-privacy-libraries"></a>オープンソースの差分プライバシー ライブラリ
 
-SmartNoise は、グローバルな差分プライバシー システムを構築するためのさまざまなコンポーネントを含んだ、オープンソース プロジェクトです。 SmartNoise を構成している最上位レベルのコンポーネントは次のとおりです。
+SmartNoise は、差分プライバシーを備えた機械学習ソリューションを構築するためのコンポーネントを含む、オープンソースのプロジェクトです。 SmartNoise を構成している最上位レベルのコンポーネントは次のとおりです。
 
 - SmartNoise コア ライブラリ
 - SmartNoise SDK ライブラリ
@@ -80,6 +80,8 @@ SmartNoise は、グローバルな差分プライバシー システムを構�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[差分プライバシー システム](how-to-differential-privacy.md)を構築する方法。
+機械学習における差分プライバシーについて学びます。 
 
-SmartNoise のコンポーネントの詳細については、[SmartNoise コア](https://github.com/opendifferentialprivacy/smartnoise-core)、[SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)、[SmartNoise サンプル](https://github.com/opendifferentialprivacy/smartnoise-samples)に関する GitHub リポジトリを参照してください。
+ - Azure Machine Learning で[差分プライバシー システム](how-to-differential-privacy.md)を構築する方法。
+
+ - SmartNoise のコンポーネントの詳細については、[SmartNoise コア](https://github.com/opendifferentialprivacy/smartnoise-core)、[SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)、[SmartNoise サンプル](https://github.com/opendifferentialprivacy/smartnoise-samples)に関する GitHub リポジトリを参照してください。

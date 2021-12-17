@@ -4,16 +4,17 @@ description: この記事では、Azure Automation アカウントの認証に�
 keywords: Automation のセキュリティ, セキュリティで保護された Automation; Automation の認証
 services: automation
 ms.subservice: process-automation
-ms.date: 02/26/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: c559a81b17b92f48b2d51b7c2d26325d6a1b1cca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 08f265d4e2af8fe985db3ceab78b535db2f73924
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708902"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470872"
 ---
-# <a name="automation-account-authentication-overview"></a>Automation アカウントの認証の概要
+# <a name="azure-automation-account-authentication-overview"></a>Azure Automation アカウントの認証の概要
 
 Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、Amazon Web Services (AWS) などの他のクラウド プロバイダーのリソースに対するタスクを自動化できます。 タスクの自動化には Runbook を使用できるほか、Azure 以外で管理する必要があるビジネスや運用プロセスがあれば Hybrid Runbook Worker を使用することもできます。 どの環境においても、必要な最低限の権限だけで操作対象のリソースに安全にアクセスするためのアクセス許可が必要です。
 
@@ -21,9 +22,9 @@ Azure Automation を使用すると、Azure 内のリソース、オンプレミ
 
 ## <a name="automation-account"></a>Automation アカウント
 
-Azure Automation を初めて開始するときに、少なくとも 1 つの Automation アカウントを作成する必要があります。 Automation アカウントを使用すると、他のアカウントのリソースから Automation のリソース、Runbook、資産、構成を分離できます。 Automation アカウントを使用して、リソースを個別の論理環境または委任された役割に分けることができます。 たとえば、開発環境用、本番環境用、オンプレミス環境用に、それぞれ異なるアカウントを使用できます。 または、[Update Management](update-management/overview.md) を使用して、すべてのコンピューターでオペレーティング システムの更新プログラムを管理するように 1 つの Automation アカウントを専用にすることもできます。 
+Azure Automation を初めて開始するときに、少なくとも 1 つの Automation アカウントを作成する必要があります。 Automation アカウントを使用すると、他のアカウントのリソースから Automation のリソース、Runbook、資産、構成を分離できます。 Automation アカウントを使用して、リソースを個別の論理環境または委任された役割に分けることができます。 たとえば、開発環境用、本番環境用、オンプレミス環境用に、それぞれ異なるアカウントを使用できます。 または、[Update Management](update-management/overview.md) を使用して、すべてのコンピューターでオペレーティング システムの更新プログラムを管理するように 1 つの Automation アカウントを専用にすることもできます。
 
-Azure Automation アカウントは、Microsoft アカウントや、Azure サブスクリプションで作成されたアカウントとは異なります。 Automation アカウントの作成の概要については、「[Automation アカウントを作成する](automation-quickstart-create-account.md)」を参照してください。
+Azure Automation アカウントは、Microsoft アカウントや、Azure サブスクリプションで作成されたアカウントとは異なります。 Automation アカウントの作成の概要については、「[Automation アカウントを作成する](./quickstarts/create-account-portal.md)」を参照してください。
 
 ## <a name="automation-resources"></a>Automation リソース
 
@@ -31,19 +32,81 @@ Azure Automation アカウントは、Microsoft アカウントや、Azure サ�
 
 Azure Automation で Azure Resource Manager と PowerShell コマンドレットを使用してリソースに対して作成するすべてのタスクは、Azure Active Directory (Azure AD) の組織 ID 資格情報に基づく認証を使用して、Azure に対する認証を行う必要があります。
 
+## <a name="managed-identities"></a>マネージド ID
+
+Azure Active Directory (Azure AD) のマネージド ID を使用すると、Runbook が Azure AD で保護された他のリソースに簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、シークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID の詳細については、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
+
+マネージド ID は、Runbook で認証を行うための推奨される方法であり、Automation アカウントの既定の認証方法です。
+
+以下に、マネージド ID を使用するベネフィットをいくつか紹介します。
+
+- Automation 実行アカウントの代わりにマネージド ID を使用すると、管理が簡単になる。 実行アカウントで使用される証明書を更新する必要がありません。
+
+- マネージド ID の使用に関して追加コストは一切かからない。
+
+- Runbook コードで実行接続オブジェクトを指定する必要がない。 証明書、接続、実行アカウントなどを作成せずに、Runbook から Automation アカウントのマネージド ID を使用してリソースにアクセスできます。
+
+Automation アカウントは、次の 2 種類のマネージド ID を使用して認証できます。
+
+- システム割り当て ID はアプリケーションに関連付けられているため、アプリが削除されると削除されます。 アプリは 1 つのシステム割り当て ID しか持つことはできません。
+
+- ユーザー割り当て ID は、アプリに割り当てることができるスタンドアロン Azure リソースです。 アプリは複数のユーザー割り当て ID を持つことができます。
+
+> [!NOTE]
+> ユーザー割り当て ID がサポートされているのはクラウド ジョブの場合だけです。 さまざまなマネージド ID の詳細については、「[ID の種類の管理](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)」を参照してください。
+
+マネージド ID の使用の詳細については、[Azure Automation のマネージド ID の有効化](enable-managed-identity-for-automation.md)に関するページを参照してください。
+
 ## <a name="run-as-accounts"></a>実行アカウント
 
 Azure Automation の実行アカウントを使用すると、Azure Resource Manager リソースまたはクラシック デプロイ モデルにデプロイされたリソースを管理するための認証を行うことができるようになります。 Azure Automation には、次の 2 種類の実行アカウントがあります。
 
-* Azure 実行アカウント: Azure リソースは、Azure の Azure Resource Manager デプロイと管理サービスに基づいて管理できます。
-* Azure クラシック実行アカウント:クラシック デプロイ モデルに基づいて Azure クラシック リソースを管理できます。
+実行アカウントを作成または更新するには、アクセス許可が 3 つのレベルで必要です。
+
+- サブスクリプション、
+- Azure Active Directory (Azure AD)、および
+- Automation アカウント
+
+> [!NOTE]
+> Azure Automation では、実行アカウントが自動的には作成されません。 これは、マネージド ID を使用して置き換えられました。
+
+### <a name="subscription-permissions"></a>サブスクリプションのアクセス許可
+
+`Microsoft.Authorization/*/Write` アクセス許可が必要です。 このアクセス許可は、次のいずれかの Azure 組み込みロールのメンバーシップを通じて取得されます。
+
+- [所有者](../role-based-access-control/built-in-roles.md#owner)
+- [User Access Administrator](../role-based-access-control/built-in-roles.md#user-access-administrator)
+
+クラシック実行アカウントを構成または更新するには、サブスクリプション レベルの共同管理者ロールが必要です。 クラシック サブスクリプション アクセス許可の詳細については、「[Azure の従来のサブスクリプション管理者](../role-based-access-control/classic-administrators.md#add-a-co-administrator)」を参照してください。
+
+### <a name="azure-ad-permissions"></a>Azure AD のアクセス許可
+
+サービス プリンシパルの作成や更新ができるようになるためには、次のいずれかの Azure AD 組み込みロールのメンバーになる必要があります。
+
+- [アプリケーション管理者](../active-directory/roles/permissions-reference.md#application-administrator)
+- [アプリケーション開発者](../active-directory/roles/permissions-reference.md#application-developer)
+
+メンバーシップは、テナント内の **すべての** ユーザーにディレクトリ レベルで割り当てることができます。これが既定の動作です。 メンバーシップをどちらのロールにも、ディレクトリ レベルで付与できます。 詳細については、「[Azure AD インスタンスにアプリケーションを追加する権限のあるユーザー](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)」を参照してください。
+
+### <a name="automation-account-permissions"></a>Automation アカウントのアクセス許可
+
+Automation アカウントの作成や更新ができるようになるためには、次のいずれかの Automation アカウント ロールのメンバーになる必要があります。
+
+- [[所有者]](./automation-role-based-access-control.md#owner)
+- [Contributor](./automation-role-based-access-control.md#contributor)
+- [カスタム Azure Automation 共同作成者](./automation-role-based-access-control.md#custom-azure-automation-contributor-role)
 
 Azure Resource Manager とクラシック デプロイ モデルの詳細については、[Azure Resource Manager とクラシック デプロイの比較](../azure-resource-manager/management/deployment-models.md)に関するページを参照してください。
 
 >[!NOTE]
 >Azure Cloud Solution Provider (CSP) サブスクリプションでは、Azure Resource Manager モデルのみがサポートされます。 Azure Resource Manager 以外のサービスは、プログラムでは使用できません。 CSP サブスクリプションを使用する場合、Azure クラシック実行アカウントは作成されませんが、Azure 実行アカウントは作成されます。 CSP サブスクリプションの詳細については、[CSP サブスクリプションで利用可能なサービス](/azure/cloud-solution-provider/overview/azure-csp-available-services)に関するページを参照してください。
 
-Automation アカウントを作成するとき、Azure 実行アカウントは既定では同時に作成されます。 Automation アカウントと共に作成しないことを選択した場合は、後で個別に作成できます。 Azure クラシック実行アカウントはオプションです。クラシック リソースを管理する必要がある場合は、個別に作成されます。
+Automation アカウントを作成するときに、既定では、実行アカウントが自己署名証明書を使用して同時に作成されます。 Automation アカウントと共に作成しないことを選択した場合は、後で個別に作成できます。 Azure クラシック実行アカウントはオプションです。クラシック リソースを管理する必要がある場合は、個別に作成されます。
+
+> [!NOTE]
+> Azure Automation では、実行アカウントが自動的には作成されません。 これは、マネージド ID を使用して置き換えられました。
+
+既定の自己署名証明書ではなく、エンタープライズまたはサードパーティの証明機関 (CA) によって発行された証明書を使用する場合、実行およびクラシック実行アカウントに対して [[実行アカウントを作成する PowerShell スクリプト]](create-run-as-account.md#powershell-script-to-create-a-run-as-account) オプションを使用できます。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 
@@ -94,20 +157,23 @@ Azure クラシック実行アカウントを作成すると、次のタスク�
 
 <sup>1</sup> **[ユーザー設定]** ページで Azure AD テナントの **[ユーザーはアプリケーションを登録できる]** オプションが **[はい]** に設定されている場合は、Azure AD テナントの管理者以外のユーザーが [AD アプリケーションを登録することができます](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。 アプリケーション登録設定が **[いいえ]** の場合は、この操作を行うユーザーがこの表で定義されている必要があります。
 
-サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの全体管理者ロールに追加された場合は、ゲストとして追加されます。 このような状況では、`You do not have permissions to create…` 警告が **[Add Automation Account]\(Automation アカウントの追加\)** ページに表示されます。
+サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの全体管理者ロールに追加された場合は、ゲストとして追加されます。 このような状況では、 **[Automation アカウントの追加]** ページに `You do not have permissions to create…` 警告が表示されます。
 
 エラー メッセージが生成される状況が解決されたことを確認するには、次のようにします。
 
 1. Azure portal の Azure Active Directory ペインで、 **[ユーザーとグループ]** を選択します。
 2. **[すべてのユーザー]** を選択します。
 3. ご自分の名前を選んでから、 **[プロファイル]** を選択します。
-4. ユーザーのプロファイルの下にある **[ユーザーの種類]** 属性の値が、確実に **[ゲスト]** には設定されていないようにします。
+4. ユーザーのプロファイルの下にある **[ユーザーの種類]** 属性の値が **[ゲスト]** に設定されていないことを確認します。
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
 ロールベースのアクセス制御は、Azure AD ユーザー アカウントおよび実行アカウントに対して許可されたアクションを付与し、そのサービス プリンシパルを認証するために、Azure Resource Manager で使用できます。 Automation アクセス許可を管理するためのモデルの開発に役立つ詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。
 
 リソース グループのアクセス許可の割り当てに対して厳密なセキュリティ制御がある場合は、実行アカウントのメンバーシップをリソース グループの **共同作成者** ロールに割り当てる必要があります。
+
+> [!NOTE]
+> **Log Analytics 共同作成者** ロールを利用して Automation ジョブを実行しないことをお勧めします。 代わりに、Azure Automation 共同作成者カスタム ロールを作成し、Automation アカウント関連のアクションに利用してください。 詳細については、[Azure Automation 共同作成者カスタム ロール](./automation-role-based-access-control.md#custom-azure-automation-contributor-role)に関するページを参照してください。
 
 ## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>Hybrid Runbook Worker を使用した Runbook の認証
 
@@ -120,3 +186,4 @@ Azure VM 上で Hybrid Runbook Worker を使用する Runbook の場合は、実
 * Azure portal からの Automation アカウントの作成については、「[スタンドアロン Azure Automation アカウントを作成する](automation-create-standalone-account.md)」を参照してください。
 * テンプレートを使用してアカウントを作成したい場合は、「[Azure Resource Manager テンプレートを使用して Automation アカウントを作成する](quickstart-create-automation-account-template.md)」を参照してください。
 * アマゾン ウェブ サービスを使用した認証については、[アマゾン ウェブ サービスによる Runbook の認証](automation-config-aws-account.md)に関するページを参照してください。
+* Azure リソースのマネージド ID 機能をサポートする Azure サービスの一覧については、「[Services that support managed identities for Azure resources (Azure リソースのマネージド ID をサポートするサービス)](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Learning でデータ ドリフト検出を設定する方法について説明します。 データセット監視 (プレビュー) を作成し、データ ドリフトを監視し、アラートを設定します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.reviewer: sgilley
-ms.author: copeters
-author: lostmygithubaccount
-ms.date: 06/25/2020
-ms.topic: conceptual
-ms.custom: how-to, data4ml, contperf-fy21q2
-ms.openlocfilehash: e7da81e896c0d59af966cca2760b1adb163762aa
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.author: wibuchan
+author: buchananwp
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: data4ml, contperf-fy21q2
+ms.openlocfilehash: f80489726617b05e4a4c025893fdb24ec1f2d05c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067505"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335711"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 
@@ -28,7 +28,7 @@ Azure Machine Learning データセット モニター (プレビュー) を使�
 * **新しいデータを監視** して、ベースライン データセットとターゲット データセットの違いを確認する。
 * **データの特徴をプロファイリング** して、時間の経過と共に統計的な特性がどのように変化するかを追跡する。
 * **データ ドリフトに関するアラートを設定** して、潜在的な問題を早期に警告する。 
-* 非常に多くのドリフトがデータに発生したと判断した場合に、**新しいバージョンのデータセットを作成する (how-to-version-track-datasets)** 。
+* 非常に多くのドリフトがデータに発生したと判断した場合に、 **[新しいバージョンのデータセットを作成](how-to-version-track-datasets.md)** する。
 
 モニターの作成には、[Azure Machine Learning のデータセット](how-to-create-register-datasets.md)が使用されます。 データセットには timestamp 列が含まれている必要があります。
 
@@ -41,7 +41,7 @@ Azure Machine Learning データセット モニター (プレビュー) を使�
 ## <a name="prerequisites"></a>前提条件
 
 データセット モニターを作成して使用するには、以下が必要です。
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 * [Azure Machine Learning SDK for Python がインストール済み](/python/api/overview/azure/ml/install) (これには azureml-datasets パッケージが含まれています)。
 * データのファイル パス、ファイル名、または列にタイムスタンプが指定された構造化 (表形式) データ。
@@ -102,7 +102,7 @@ Azure Machine Learning では、データセット モニターを使用し、�
 
 ## <a name="create-target-dataset"></a>ターゲット データセットを作成する
 
-ターゲット データセットには、データ内の列またはファイルのパス パターンから派生した仮想列のいずれかにタイムスタンプ列を指定することにより、`timeseries` 特性が設定されている必要があります。 [Python SDK](#sdk-dataset) または [Azure Machine Learning Studio](#studio-dataset) を使用して、タイムスタンプを持つデータセットを作成します。 `timeseries` 特性をデータセットに追加するには、"タイムスタンプ" を表す列を指定する必要があります。 データが "{yyyy/MM/dd}" などの時刻情報を含むフォルダー構造に分割されている場合は、パス パターン設定を使用して仮想列を作成して、"パーティションのタイムスタンプ" として設定し、時系列機能の重要度を向上させます。
+ターゲット データセットには、データ内の列またはファイルのパス パターンから派生した仮想列のいずれかにタイムスタンプ列を指定することにより、`timeseries` 特性が設定されている必要があります。 [Python SDK](#sdk-dataset) または [Azure Machine Learning Studio](#studio-dataset) を使用して、タイムスタンプを持つデータセットを作成します。 `timeseries` 特性をデータセットに追加するには、"タイムスタンプ" を表す列を指定する必要があります。 データが "{yyyy/MM/dd}" などの時刻情報を含むフォルダー構造にパーティション分割されている場合は、パス パターン設定を使用して仮想列を作成し、"パーティションのタイムスタンプ" として設定して、時系列 API 機能を有効にします。
 
 # <a name="python"></a>[Python](#tab/python)
 <a name="sdk-dataset"></a>
@@ -147,11 +147,11 @@ Azure Machine Learning Studio を使用してデータセットを作成する�
 
 [![パーティション形式](./media/how-to-monitor-datasets/partition-format.png)](media/how-to-monitor-datasets/partition-format-expand.png)
 
-**スキーマ** 設定では、指定されたデータセットの仮想または実際の列からタイムスタンプ列を指定します。
+**[スキーマ]** 設定では、指定されたデータセットの仮想または実際の列から **タイムスタンプ** 列を指定します。 この型は、データに時刻構成要素があることを示します。 
 
 :::image type="content" source="media/how-to-monitor-datasets/timestamp.png" alt-text="タイムスタンプを設定する":::
 
-この場合のように、データが日付でパーティション分割されている場合は、partition_timestamp も指定できます。  こうすることで、より効率的に日付を処理できます。
+この場合のように、データが日付または時刻で既にパーティション分割されている場合は、**パーティションのタイムスタンプ** も指定できます。 これにより、日付の効率的な処理が可能となり、トレーニング中に利用できる時系列 API を有効にできます。
 
 :::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="パーティションのタイムスタンプ":::
 
@@ -175,7 +175,7 @@ from datetime import datetime
 ws = Workspace.from_config()
 
 # get the target dataset
-dset = Dataset.get_by_name(ws, 'target')
+target = Dataset.get_by_name(ws, 'target')
 
 # set the baseline dataset
 baseline = target.time_before(datetime(2019, 2, 1))
@@ -274,7 +274,7 @@ monitor = monitor.enable_schedule()
 
 ターゲット データセットも時間の経過に沿ってプロファイリングされます。 各特徴のベースライン分布間の統計的な距離は、ターゲット データセットの時間の経過と比較されます。  概念的には、これはデータ ドリフトの規模と似ています。  ただし、この統計的な距離は、すべての特徴ではなく、個々の特徴に対するものです。 最小値、最大値、平均値も取得できます。
 
-Azure Machine Learning Studio で、グラフ内のバーをクリックすると、その日付の特徴レベルの詳細が表示されます。 既定では、同じ特徴について、ベースライン データセットの分布と最近の実行時の分布が表示されます。
+Azure Machine Learning Studio でグラフ内のバーをクリックすると、その日付の特徴レベルの詳細が表示されます。 既定では、同じ特徴について、ベースライン データセットの分布と最近の実行時の分布が表示されます。
 
 :::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="特徴ごとのドリフトの規模":::
 

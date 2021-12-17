@@ -19,18 +19,18 @@
 - name: チュートリアル
   items:
     - name: デプロイと構成
-      href: tutorial-firewall-deploy-portal.md
+      href: tutorial-firewall-deploy-portal-policy.md
     - name: ハイブリッド ネットワークでのデプロイ
-      href: tutorial-hybrid-portal.md
+      href: tutorial-hybrid-portal-policy.md
     - name: DNAT で受信トラフィックをフィルター処理する
-      href: tutorial-firewall-dnat.md
+      href: tutorial-firewall-dnat-policy.md
 - name: サンプル
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
 - name: 概念
   items:
-    - name: Azure Firewall の機能
+    - name: Azure Firewall 標準機能
       href: features.md
     - name: Azure Firewall Premium の機能
       href: premium-features.md
@@ -38,6 +38,8 @@
       href: premium-portal.md
     - name: Azure Firewall Premium の証明書
       href: premium-certificates.md
+    - name: Azure Firewall Web カテゴリ
+      href: web-categories.md
     - name: FQDN のタグ
       href: fqdn-tags.md
     - name: インフラストラクチャ FQDN
@@ -46,6 +48,8 @@
       href: logs-and-metrics.md
     - name: 脅威インテリジェンス
       href: threat-intel.md
+    - name: ポリシー規則セット
+      href: policy-rule-sets.md
     - name: ルール処理ロジック
       href: rule-processing.md
     - name: サービス タグ
@@ -62,14 +66,24 @@
       href: remote-work-support.md
     - name: ネットワーク規則内の FQDN
       href: fqdn-filtering-network-rules.md
+    - name: DNS プロキシの詳細
+      href: dns-details.md
     - name: セキュリティ ベースライン
-      href: security-baseline.md
-    - name: アクティブ FTP のサポート
-      href: active-ftp-support.md
+      href: /security/benchmark/azure/baselines/firewall-security-baseline?toc=/azure/firewall/toc.json
+    - name: FTP のサポート
+      href: ftp-support.md
 - name: 操作方法ガイド
   items:
+    - name: デプロイと構成 - クラシック
+      href: tutorial-firewall-deploy-portal.md
+    - name: ハイブリッド ネットワークでのデプロイ - クラシック
+      href: tutorial-hybrid-portal.md
+    - name: DNAT を使用した受信トラフィックのフィルター処理 - クラシック
+      href: tutorial-firewall-dnat.md
     - name: Azure PowerShell を使用したデプロイ
       href: deploy-ps.md
+    - name: Azure PowerShell を使用したポリシーのデプロイ
+      href: deploy-ps-policy.md
     - name: ハイブリッド ネットワークでのデプロイ - PowerShell
       href: tutorial-hybrid-ps.md
     - name: Azure CLI を使用したデプロイ
@@ -87,7 +101,7 @@
     - name: IP グループの作成
       href: create-ip-group.md
     - name: Windows Virtual Desktop の保護
-      href: protect-windows-virtual-desktop.md
+      href: protect-azure-virtual-desktop.md
     - name: Azure Kubernetes Service (AKS) の保護
       href: protect-azure-kubernetes-service.md
     - name: DNS の設定
@@ -103,10 +117,14 @@
       href: premium-deploy-certificates-enterprise-ca.md
     - name: Azure Firewall Premium への移行
       href: premium-migrate.md
+    - name: Terraform を使用した Premium への移行
+      href: /azure/developer/terraform/firewall-upgrade-premium?toc=/azure/firewall/toc.json&bc=/azure/firewall/breadcrumb/toc.json
+    - name: 送信 SNAT ポートのスケーリング
+      href: integrate-with-nat-gateway.md
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/azure-firewall/network/firewall
+      href: /cli/azure/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
     - name: .NET
@@ -126,7 +144,7 @@
     - name: よく寄せられる質問
       href: firewall-faq.yml
     - name: テンプレートの作成
-      href: ../azure-resource-manager/templates/template-syntax.md
+      href: ../azure-resource-manager/templates/syntax.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: コミュニティ テンプレート

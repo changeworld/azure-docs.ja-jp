@@ -1,6 +1,6 @@
 ---
 title: Azure CLI を使用して可用性セットに VM をデプロイする
-description: このチュートリアルでは、Azure CLI を使って、可用性セットに高可用性仮想マシンを展開する方法について説明します
+description: Azure CLI を使用して可用性セットに高可用性仮想マシンをデプロイする方法について説明します
 documentationcenter: ''
 services: virtual-machines
 author: mimckitt
@@ -10,14 +10,16 @@ ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 7c45f08a339ca8878bb9e2840faa8a412f3e60e0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 52256f000cd52577e2322b236b1047abd712265b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765973"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692046"
 ---
 # <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>Azure CLI を使用して可用性セットに仮想マシンを作成およびデプロイする
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 このチュートリアルでは、可用性セットと呼ばれる機能を使用して、Azure で仮想マシン ソリューションの可用性と信頼性を向上させる方法を学習します。 可用性セットは、Azure にデプロイする VM を、複数の分離されたハードウェア クラスターに分散します。 これにより、Azure 内でハードウェアまたはソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、ソリューション全体は引き続き利用可能であり、運用可能であることが保証されます。
 
@@ -104,5 +106,5 @@ az vm availability-set list-sizes \
 > [仮想マシン スケール セットを作成する](tutorial-create-vmss.md)
 
 * 可用性ゾーンの詳細については、[Availability Zones に関するドキュメント](../../availability-zones/az-overview.md)を参照してください。
-* また、可用性セットと可用性ゾーンの両方について取り上げたドキュメントも、[こちら](../availability.md)でご覧いただけます。
+* また、可用性セットと可用性ゾーンの両方については、「[Azure Virtual Machines の可用性オプション](../availability.md)」も参照してください。
 * 可用性ゾーンを試してみたい場合は「[Azure CLI を使用して可用性ゾーン内に Linux 仮想マシンを作成する](./create-cli-availability-zone.md)」をご覧ください。

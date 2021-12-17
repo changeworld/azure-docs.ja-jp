@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 2262290486047c225cec8e8f6bb73242df7258fa
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 8ae8608592ee540e227e0b23ef708b605647a667
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106271617"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593685"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
 次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
@@ -46,13 +46,14 @@ ms.locfileid: "106271617"
 | ユーザー定義ルート テーブル |200 |
 | ルート テーブルあたりのユーザー定義ルート |400 |
 | Azure VPN Gateway ごとのポイント対サイト ルート証明書 |20 |
+| Azure VPN Gateway ごとのポイント対サイト取り消し済みクライアント証明書 |300 |
 | 仮想ネットワーク TAP |100 |
 | 仮想ネットワーク TAP ごとのネットワーク インターフェイス TAP 構成数 |100 |
 
 #### <a name="public-ip-address-limits"></a><a name="publicip-address"></a>パブリック IP アドレスの制限
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
-| パブリック IP アドレス<sup>1</sup> | Basic で 10。 | サポートにお問い合せください。 |
+| パブリック IP アドレス<sup>1、2</sup> | Basic で 10。 | サポートにお問い合せください。 |
 | 静的パブリック IP アドレス<sup>1</sup> | Basic で 10。 | サポートにお問い合せください。 |
 | 標準パブリック IP アドレス<sup>1</sup> | 10 | サポートにお問い合せください。 |
 | [リソース グループあたりのパブリック IP アドレス数](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md#microsoftnetwork) | 800 | サポートにお問い合せください。 | 
@@ -60,6 +61,8 @@ ms.locfileid: "106271617"
 | パブリック IP プレフィックス長 | /28 | サポートにお問い合せください。 |
 
 <sup>1</sup> パブリック IP アドレスに対する既定の制限は、無料試用版や従量課金制、CSP などプラン カテゴリの種類によって異なります。 たとえば、Enterprise Agreement サブスクリプションの既定値は 1000 です。
+
+<sup>2</sup>パブリック IP アドレスの制限とは、パブリック IP アドレスの合計量を指します (Basic と Standard を含む)。 
 
 #### <a name="load-balancer-limits"></a><a name="load-balancer"></a>Load Balancer の制限
 次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
@@ -73,8 +76,8 @@ ms.locfileid: "106271617"
 | NIC あたりのルール数 (1 つの NIC のすべての IP にわたる) | 300                           |
 | フロントエンド IP 構成              | 600                           |
 | バックエンド プールのサイズ                       | 1,000 IP 構成、単一仮想ネットワーク |
-| ロード バランサーあたりのバックエンド リソース数 <sup>1<sup> | 1,200                   |
-| 高可用性ポート                 | 内部フロント エンドごとに 1 個       |
+| ロード バランサーあたりのバックエンド リソース数 <sup>1<sup> | 1,200                 |
+| 高可用性ポートのルール            | 内部フロント エンドごとに 1 個       |
 | Load Balancer あたりのアウトバウンド規則数        | 600                           |
 | VM ごとのロード バランサー                   | 2 (パブリックに 1 つおよび内部に 1 つ)   |
 

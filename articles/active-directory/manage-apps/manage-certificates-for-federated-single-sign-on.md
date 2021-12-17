@@ -1,25 +1,26 @@
 ---
-title: Azure AD でのフェデレーション証明書の管理 |Microsoft Docs
+title: フェデレーション証明書の管理
 description: フェデレーション証明書の有効期限をカスタマイズする方法と、有効期限が近づいている証明書を更新する方法について説明します。
+titleSuffix: Azure AD
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: iangithinji
-ms.reviewer: jeedes
+ms.author: davidmu
+ms.reviewer: saumadan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 594af54221dd242bd481fe3d2fc823f628c1f955
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: d67c54ceb5d99c19e862e9140223f98d20de2f5b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379453"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550327"
 ---
-# <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理
+# <a name="manage-certificates-for-federated-single-sign-on"></a>フェデレーション シングル サインオンのための証明書の管理
 
 この記事では、サービスとしてのソフトウェア (SaaS) アプリケーションにフェデレーション シングル サインオン (SSO) を確立するために Azure Active Directory (Azure AD) によって作成される証明書に関連する一般的な質問と情報について説明します。 アプリケーションは Azure AD アプリ ギャラリーから追加するか、ギャラリー以外のアプリケーション テンプレートを使用して追加します。 アプリケーションの構成には、フェデレーション SSO オプションを使用します。
 
@@ -60,7 +61,7 @@ ms.locfileid: "107379453"
 1. **[新しい証明書]** を選択します。 新しい行が証明書一覧の下に表示され、既定で有効期限が現在の日付からちょうど 3 年後に設定されます。 (変更はまだ保存されていないので、有効期限は依然として変更できます。)
 1. 新しい証明書の行で、有効期限列をポイントし、**[日付の選択]** アイコン (カレンダー) を選択します。 新しい行の現在の有効期限の日付が表示されたカレンダー コントロールが表示されます。
 1. カレンダー コントロールを使用して新しい日付を設定します。 現在の日付と現在の日付から 3 年後の間の任意の日付を設定できます。
-1. **[保存]** を選択します。 新しい証明書が表示され、そこに **[非アクティブ]** の状態、選択した有効期限、拇印が表示されます。
+1. **[保存]** を選択します。 新しい証明書が表示され、そこに **[非アクティブ]** の状態、選択した有効期限、拇印が表示されます。 **注** - 既に有効期限が切れている既存の証明書を持っていて、新しい証明書を生成した場合、まだ有効化していなくても、新しい証明書がトークンへの署名として考慮されます。
 1. **[X]** を選択して、**[SAML によるシングル サインオンのセットアップ - プレビュー]** ページに戻ります。
 
 ### <a name="upload-and-activate-a-certificate"></a>証明書のアップロードとアクティブ化
@@ -77,6 +78,8 @@ ms.locfileid: "107379453"
 1. 新しい証明書にロール オーバーする場合は、**[SAML 署名証明書]** ページに戻り、新しく保存した証明書の行で、省略記号 (**...**) を選択し、**[証明書をアクティブにする]** を選択します。 新しい証明書の状態が **[アクティブ]** に変わり、それまでアクティブだった証明書の状態が **[非アクティブ]** に変わります。
 1. 適切なエンコード形式の SAML 署名証明書をアップロードできるように、前に表示したアプリケーションの SAML サインオン構成手順に引き続き従います。
 
+アプリケーションで証明書の有効期限の検証が行われておらず、Azure Active Directory とアプリケーションの両方で証明書が一致している場合、証明書の有効期限が切れていても、アプリにアクセスすることができます。 アプリケーションで証明書の有効期限を検証できることを確認してください。
+
 ## <a name="add-email-notification-addresses-for-certificate-expiration"></a>証明書の有効期限のメール通知アドレスの追加
 
 Azure AD では、SAML 証明書の有効期限が切れる 60 日前、30 日前、7 日前に、通知がメールで送信されます。 通知を受信するメール アドレスを複数追加できます。 通知の送信先のメール アドレスを指定するには:
@@ -89,7 +92,7 @@ Azure AD では、SAML 証明書の有効期限が切れる 60 日前、30 日�
 
 通知一覧に最大 5 つのメールアドレスを追加できます (アプリケーションを追加した管理者のメール アドレスを含む)。 もっと多くのユーザーに通知する必要がある場合は、配布リストのメールアドレスを使用します。
 
-aadnotification@microsoft.com から通知メールを受け取ります。 メールがスパムの場所に入れられるのを避けるため、このメール アドレスをアドレス帳に追加します。
+azure-noreply@microsoft.com から通知メールを受け取ります。 メールがスパムの場所に入れられるのを避けるため、このメール アドレスをアドレス帳に追加します。
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>有効期限が近づいている証明書の更新
 
@@ -102,8 +105,10 @@ aadnotification@microsoft.com から通知メールを受け取ります。 メ�
    1. 次の 2 つの手順をスキップします。
 
 1. アプリで一度に 1 つの証明書しか処理できない場合は、ダウンタイムの間隔を選択して次の手順を実行します。 (または、アプリケーションが新しい証明書を自動的に取得しなくても、複数の署名証明書を処理できる場合は、いつでも次の手順を実行できます。)
-1. 古い証明書が期限切れになる前に、前の「[証明書のアップロードとアクティブ化](#upload-and-activate-a-certificate)」セクションの指示に従います。
+1. 古い証明書が期限切れになる前に、前の「[証明書のアップロードとアクティブ化](#upload-and-activate-a-certificate)」セクションの指示に従います。 Azure Active Directory で新しい証明書が更新された後にアプリケーション証明書が更新されなかった場合、アプリでの認証に失敗する可能性があります。
 1. アプリケーションにサインインして、証明書が正しく動作することを確認します。
+
+アプリケーションで Azure Active Directory で構成された証明書の有効期限の検証が行われておらず、Azure Active Directory とアプリケーションの両方で証明書が一致する場合、証明書の有効期限が切れていても、アプリにアクセスすることができます。 アプリケーションで証明書の有効期限を検証できることを確認してください。
 
 ## <a name="related-articles"></a>関連記事
 

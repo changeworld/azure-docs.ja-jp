@@ -4,12 +4,12 @@ description: Kubernetes の基本のクラスターおよびワークロード�
 services: container-service
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 5e505ed44d221b20178ea5ffb1d9125fb2bddd4c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 4db6ee6d117f7743147dad43dcfff98dd99fd76d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105937"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733650"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -72,10 +72,9 @@ AKS は、専用の API サーバーやスケジューラなどを備えたシ�
 
 | コンポーネント | 説明 |  
 | ----------------- | ------------- |  
-| `kubelet`                                                                                 | コントロール プレーンからのオーケストレーション要求と、要求されたコンテナーの実行のスケジュール設定を処理する Kubernetes エージェントです。                                                        |  
-| *kube-proxy* | 各ノード上で仮想ネットワークを処理します。 プロキシはネットワーク トラフィックをルーティングして、サービスとポッドの IP アドレスを管理します。                                      |  
-| *コンテナー ランタイム*                                                                            | コンテナー化されたアプリケーションが仮想ネットワークやストレージなどの追加リソースを実行して操作できるようにします。 Kubernetes バージョン 1.19 以降のノード プールを使用する AKS クラスターでは、コンテナー ランタイムとして `containerd` が使用されます。 Kubernetes バージョン 1.19 よりも前のノード プールを使用する AKS クラスターでは、コンテナー ランタイムとして [Moby](https://mobyproject.org/) (アップストリーム Docker) が使用されます。                                                                                    |  
-
+| `kubelet` | コントロール プレーンからのオーケストレーション要求と、要求されたコンテナーの実行のスケジュール設定を処理する Kubernetes エージェントです。 |  
+| *kube-proxy* | 各ノード上で仮想ネットワークを処理します。 プロキシはネットワーク トラフィックをルーティングして、サービスとポッドの IP アドレスを管理します。 |  
+| *コンテナー ランタイム* | コンテナー化されたアプリケーションが仮想ネットワークやストレージなどの追加リソースを実行して操作できるようにします。 Linux ノード プール用に Kubernetes バージョン 1.19 以降を使用する AKS クラスターでは、コンテナー ランタイムとして `containerd` が使用されます。 Windows ノード プール用の Kubernetes バージョン 1.20 以降では、コンテナー ランタイム用に `containerd` をプレビューとして使用できますが、既定のコンテナー ランタイムは引き続き Docker です。 ノード プール用に以前のバージョンの Kubernetes を使用する AKS クラスターでは、コンテナー ランタイムとして Docker が使用されます。 |  
 
 ![Kubernetes ノードの Azure 仮想マシンとサポート対象リソース](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
@@ -83,7 +82,7 @@ AKS は、専用の API サーバーやスケジューラなどを備えたシ�
 
 AKS では、クラスターのノードに対する VM イメージは Ubuntu Linux または Windows Server 2019 に基づいています。 AKS クラスターを作成したり、ノード数をスケールアウトしたりすると、Azure プラットフォームによって、要求された数の VM が作成され構成されます。 エージェント ノードは標準の VM として課金されるので、VM サイズの割引 ([Azure の予約][reservation-discounts]を含む) はすべて自動的に適用されます。
 
-別のホスト OS やコンテナー ランタイムを使用したり、さまざまなカスタム パッケージを含めたりする場合は、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイします。 アップストリームの `aks-engine` リリースでは構成オプションに注目し、AKS クラスターでのサポートに先立ってそれらを提供しています。 そのため、`containerd` または [Moby](https://mobyproject.org/) 以外のコンテナー ランタイムの使用を検討している場合は、`aks-engine` を実行して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
+別のホスト OS やコンテナー ランタイムを使用したり、さまざまなカスタム パッケージを含めたりする場合は、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイします。 アップストリームの `aks-engine` リリースでは構成オプションに注目し、AKS クラスターでのサポートに先立ってそれらを提供しています。 そのため、`containerd` または Docker 以外のコンテナー ランタイムを使用する場合は、`aks-engine` を実行して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
 
 ### <a name="resource-reservations"></a>リソース予約
 
@@ -166,7 +165,7 @@ spec:
     - name: myfrontend
       image: mcr.microsoft.com/oss/nginx/nginx:1.15.12-alpine
   nodeSelector:
-    "beta.kubernetes.io/os": linux
+    "kubernetes.io/os": linux
 ```
 
 ポッドがスケジュールされる場所を制御する方法の詳細については、「[Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス][operator-best-practices-advanced-scheduler]」を参照してください。

@@ -3,20 +3,20 @@ title: SQL データ同期でスキーマ変更のレプリケーションを自
 description: Azure SQL データ同期でスキーマ変更のレプリケートを自動化する方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 11/14/2018
-ms.openlocfilehash: f9997ea737b96185b31a7f51996a396fb5fc46c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29d7576514f77a8ac0693472fee6eab9cdcf0927
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92790187"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751268"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Azure SQL データ同期でスキーマ変更のレプリケートを自動化する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,23 +97,23 @@ CREATE TRIGGER SchemaChangesTrigger
 ON SchemaChanges
 AFTER INSERT
 AS
-DECLARE \@lastAppliedId bigint
-DECLARE \@id bigint
-DECLARE \@sqlStmt nvarchar(max)
-SELECT TOP 1 \@lastAppliedId=LastAppliedId FROM SchemaChangeHistory
-SELECT TOP 1 \@id = id, \@SqlStmt = SqlStmt FROM SchemaChanges WHERE id \> \@lastAppliedId ORDER BY id
-IF (\@id = \@lastAppliedId + 1)
+DECLARE @lastAppliedId bigint
+DECLARE @id bigint
+DECLARE @sqlStmt nvarchar(max)
+SELECT TOP 1 @lastAppliedId=LastAppliedId FROM SchemaChangeHistory
+SELECT TOP 1 @id = id, @SqlStmt = SqlStmt FROM SchemaChanges WHERE id > @lastAppliedId ORDER BY id
+IF (@id = @lastAppliedId + 1)
 BEGIN
-    EXEC sp_executesql \@SqlStmt
-        UPDATE SchemaChangeHistory SET LastAppliedId = \@id
+    EXEC sp_executesql @SqlStmt
+        UPDATE SchemaChangeHistory SET LastAppliedId = @id
     WHILE (1 = 1)
     BEGIN
-        SET \@id = \@id + 1
-        IF exists (SELECT id FROM SchemaChanges WHERE ID = \@id)
+        SET @id = @id + 1
+        IF exists (SELECT id FROM SchemaChanges WHERE ID = @id)
             BEGIN
-                SELECT \@sqlStmt = SqlStmt FROM SchemaChanges WHERE ID = \@id
-                EXEC sp_executesql \@SqlStmt
-                UPDATE SchemaChangeHistory SET LastAppliedId = \@id
+                SELECT @sqlStmt = SqlStmt FROM SchemaChanges WHERE ID = @id
+                EXEC sp_executesql @SqlStmt
+                UPDATE SchemaChangeHistory SET LastAppliedId = @id
             END
         ELSE
             BREAK;

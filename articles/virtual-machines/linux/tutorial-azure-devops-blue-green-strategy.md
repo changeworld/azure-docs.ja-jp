@@ -1,25 +1,26 @@
 ---
-title: チュートリアル - Azure Linux 仮想マシンのカナリア デプロイを構成する
-description: このチュートリアルでは、継続的デプロイ (CD) パイプラインを設定する方法について説明します。 このパイプラインは、ブルーグリーン デプロイ戦略を使用して Azure Linux 仮想マシンのグループを更新します。
+title: Azure Linux 仮想マシンのカナリア デプロイを構成する
+description: 継続的デプロイ (CD) パイプラインを設定する方法について説明します。 このパイプラインは、ブルーグリーン デプロイ戦略を使用して Azure Linux 仮想マシンのグループを更新します。
 author: moala
 tags: azure-devops-pipelines
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
-ms.topic: tutorial
+ms.topic: how-to
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 4545891cce926f049673cd2c2380a8309f2e71a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a455950e1637dbcef63acc52de139c5d0a9a2e10
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552589"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690968"
 ---
-# <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>チュートリアル - Azure Linux 仮想マシンのブルーグリーン デプロイ戦略を構成する
+# <a name="configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Azure Linux 仮想マシンのブルーグリーン デプロイ戦略を構成する
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 ## <a name="infrastructure-as-a-service-iaas---configure-cicd"></a>サービスとしてのインフラストラクチャ (IaaS) - CI/CD を構成する
 

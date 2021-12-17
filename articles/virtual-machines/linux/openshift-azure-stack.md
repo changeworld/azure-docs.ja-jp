@@ -10,14 +10,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: decc66d2d5abd16c084aa19443dbac54e87a9560
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ca662f2d6b0a03f6487e4c4e4452aaaade08151
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667235"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357173"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Azure Stack で OpenShift Container Platform または OKD をデプロイする
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 OpenShift は Azure Stack にデプロイできます。 Azure と Azure Stack の間には大きな違いがいくつかあるため、デプロイも機能も若干異なります。
 
@@ -47,9 +49,9 @@ Resource Manager テンプレートを使用している場合、適切なブラ
 
 OpenShift クラスターをデプロイするには、RHEL イメージ (OpenShift Container Platform) または CentOS イメージ (OKD) を Azure Stack 環境に追加する必要があります。 Azure Stack 管理者に連絡し、これらのイメージを追加してください。 手順は次の場所にあります。
 
-- https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image
-- https://docs.microsoft.com/azure/azure-stack/azure-stack-marketplace-azure-items
-- https://docs.microsoft.com/azure/azure-stack/azure-stack-redhat-create-upload-vhd
+- [Azure Stack Hub に対してカスタム VM イメージを追加または削除する](/azure-stack/operator/azure-stack-add-vm-image)
+- [Azure Stack Hub で使用できる Azure Marketplace 項目](/azure-stack/operator/azure-stack-marketplace-azure-items)
+- [Azure Stack Hub 用の Red Hat ベースの仮想マシンを提供する](/azure-stack/operator/azure-stack-redhat-create-upload-vhd)
 
 ## <a name="deploy-by-using-the-openshift-container-platform-or-okd-resource-manager-template"></a>OpenShift Container Platform または OKD Resource Manager テンプレートを使用したデプロイ
 

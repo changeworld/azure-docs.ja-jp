@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 10/23/2020
-ms.openlocfilehash: 9df5c63ef175d0cf736ce16036466158ab6565f9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 08/26/2021
+ms.openlocfilehash: ffd59ebcac1779c43222ea9a006888edd634bafa
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618306"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035909"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -20,13 +20,13 @@ ms.locfileid: "102618306"
 
 Azure Cosmos DB は、最新のアプリ開発に対応するフル マネージドの NoSQL データベースです。 数ミリ秒 (1 桁台) の応答時間と、自動および即時のスケーラビリティにより、あらゆるスケールで速度が保証されます。 [SLA に基づいた](https://azure.microsoft.com/support/legal/sla/cosmos-db)可用性とエンタープライズグレードのセキュリティにより、ビジネス継続性が保証されます。 世界中のあらゆる場所でのターンキー マルチ リージョン データ分散と、人気のある言語用のオープン ソース API シリーズと SDK により、アプリの開発をより速く、より生産的に行うことができるようになります。 Azure Cosmos DB では、フル マネージド サービスとして、管理、更新、およびパッチ適用が自動的に行われるため、ユーザー側でのデータベース管理が不要になります。 また、アプリケーションのニーズに対応して需要に容量を一致させるコスト効果の高いサーバーレスおよび自動スケーリング オプションにより、容量管理が処理されます。
 
-> [!NOTE]
-> Azure Cosmos DB のドキュメントの品質向上のためのユーザー調査にご協力ください。 こちらの 5 分間の[事前アンケート](https://aka.ms/cosmosdb-documentation-screener-survey)にご記入ください。 条件に一致した方は、スケジューラにリダイレクトされます。このスケジューラで、対話型の調査セッションに参加するスロットを予約できます。 Microsoft [プライバシー ステートメント](https://go.microsoft.com/fwlink/?LinkId=521839)に従い、この過程で個人データが収集されることはありません。
-
-Azure サブスクリプション、課金、契約がなくても [Azure Cosmos DB を無料でお試し](https://azure.microsoft.com/try/cosmosdb/)いただけます。または、[Azure Cosmos DB Free レベル](optimize-dev-test.md#azure-cosmos-db-free-tier)を使用してアカウントを取得し、最初の 400 RU/秒と 5 GB のストレージを無料でご利用いただけます。
+Azure サブスクリプション、課金、契約がなくても [Azure Cosmos DB を無料でお試し](https://azure.microsoft.com/try/cosmosdb/)いただけます。または、[Azure Cosmos DB Free レベル](free-tier.md)を使用してアカウントを取得し、最初の 1000 RU/秒と 25 GB のストレージを無料でご利用いただけます。
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)
+
+> [!TIP]
+> Azure Cosmos DB の詳細については、毎週木曜日の午後 1 時 (太平洋時間) に Azure Cosmos DB Live TV をご覧ください。 今後のセッション予定と過去のエピソードについては[こちら](https://gotcosmos.com/tv)でご確認いただけます。
 
 :::image type="content" source="./media/introduction/azure-cosmos-db.png" alt-text="Azure Cosmos DB は、最新のアプリ開発に対応するフル マネージドの NoSQL データベースです。" border="false":::
 
@@ -77,11 +77,16 @@ Azure サブスクリプション、課金、契約がなくても [Azure Cosmos
 
 以下のクイック スタートのいずれかに従って、実際に Azure Cosmos DB を使ってみましょう。
 
+- Azure Cosmos DB で API を選択する方法を[こちら](choose-api.md)でご確認ください
 - [Azure Cosmos DB SQL API を使ってみる](create-sql-api-dotnet.md)
-- [Azure Cosmos DB の MongoDB 用 API の概要](create-mongodb-nodejs.md)
-- [Azure Cosmos DB Cassandra API を使ってみる](create-cassandra-dotnet.md)
+- [Azure Cosmos DB の MongoDB 用 API の概要](mongodb/create-mongodb-nodejs.md)
+- [Azure Cosmos DB Cassandra API を使ってみる](cassandra/manage-data-dotnet.md)
 - [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
-- [Azure Cosmos DB Table API を使ってみる](create-table-dotnet.md)
+- [Azure Cosmos DB Table API を使ってみる](table/create-table-dotnet.md)
+- [Azure Cosmos DB を使用した次世代のアプリ開発に関するホワイトペーパー](https://azure.microsoft.com/resources/microsoft-azure-cosmos-db-flexible-reliable-cloud-nosql-at-any-scale/)
+- Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
+    - 既存のデータベース クラスターの仮想コアとサーバーの数のみを把握している場合は、[仮想コア数または vCPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)

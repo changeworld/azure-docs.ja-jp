@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
-ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: e4d1ed0c015b75cc058c7d6136069a8858d835e2
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 310085b26c75087d6e4e7f69bf5b4f7ad44a9904
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492530"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419359"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API に接続する - .NET
 

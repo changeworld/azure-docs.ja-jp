@@ -2,16 +2,17 @@
 title: Azure-SSIS Integration Runtime の Enterprise Edition をプロビジョニングする
 description: この記事では、Azure SSIS Integration Runtime の Enterprise Edition の機能およびそのプロビジョニング方法について説明します
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 10/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: f700729c2d059648b1c3a7e451526aefcb436818
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf8c6cd68262d07109fc51657720f77f6be4a3e6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387548"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843655"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime の Enterprise Edition をプロビジョニングする
 

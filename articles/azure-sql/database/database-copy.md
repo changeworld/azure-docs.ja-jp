@@ -4,19 +4,19 @@ description: トランザクション上一貫性のある Azure SQL Database �
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: sqldbrb=1, devx-track-azurecli
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sashan
-ms.reviewer: wiassaf
+author: rothja
+ms.author: jroth
+ms.reviewer: mathoma
 ms.date: 03/10/2021
-ms.openlocfilehash: 3ce07af74c3f01fd78ef15ab0e7d43b91361e556
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e425644b279b19b9ea6e894e7e81130742bbf60e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784481"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432208"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL Database のデータベースのコピーを作成する
 
@@ -30,6 +30,14 @@ Azure SQL Database では、同じサーバーまたは別のサーバーのい�
 
 > [!NOTE]
 > Azure SQL Database の [Configurable Backup Storage Redundancy]\(構成可能なバックアップ ストレージの冗長性\) は、ブラジル南部ではパブリック プレビューとして利用でき、一般公開されているのは東南アジアの Azure リージョンのみです。 プレビューでは、ソース データベースがローカル冗長またはゾーン冗長のバックアップ ストレージの冗長性を使用して作成されている場合、別の Azure リージョンのサーバーにデータベースをコピーすることはできません。 
+
+## <a name="database-copy-for-azure-sql-hyperscale"></a>Azure SQL Hyperscale のデータベース コピー
+
+Azure SQL Hyperscale では、ターゲット データベースによって、コピーが高速コピーかデータ コピーのサイズであるかが決定されます。
+
+高速コピー: コピーがソースと同じリージョンで行われると、BLOB のスナップショットからコピーが作成されます。このコピー操作は、データベースのサイズに関係なく高速に行われます。
+
+データ コピーのサイズ: ターゲット データベースがソースとは異なるリージョンにある場合、またはターゲットからのデータベースのバックアップのストレージ冗長性 (ローカル、ゾーン、Geo) がソース データベースと異なる場合、コピー操作はデータ操作のサイズになります。 コピー時間は、ページ サーバー BLOB が並列コピーされるときのように、サイズと直接比例しません。
 
 ## <a name="logins-in-the-database-copy"></a>データベースのコピーへのログイン
 
@@ -87,6 +95,7 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 > [!NOTE]
 > T-SQL ステートメントを終了しても、データベース コピー操作は終了しません。 操作を終了するには、ターゲット データベースを削除します。
 >
+> ソースやコピー先サーバーに[プライベート エンドポイント](private-endpoint-overview.md)が構成され、[パブリック ネットワーク アクセスが拒否されている](connectivity-settings.md#deny-public-network-access)場合、データベースはコピーできません。 プライベート エンドポイントが構成され、パブリック ネットワーク アクセスが許可されている場合、パブリック IP アドレスからコピー先サーバーに接続されているときに開始されたデータベース コピーはサポートされます。 コピー操作が完了したら、パブリック アクセスを拒否してください。
 
 > [!IMPORTANT]
 > T-SQL CREATE DATABASE ...AS COPY OF コマンドを使用する際に、バックアップ ストレージの冗長性を選択することはできません。 
@@ -129,7 +138,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 ```
 
 > [!IMPORTANT]
-> 両方のサーバーのファイアウォールは、T-SQL CREATE DATABASE ...AS COPY OF コマンドを発行するクライアントの IP からの受信接続を許可するように構成する必要があります。
+> 両方のサーバーのファイアウォールは、T-SQL CREATE DATABASE ...AS COPY OF コマンドを発行するクライアントの IP からの受信接続を許可するように構成する必要があります。 現在の接続の送信元 IP アドレスを確認するには、`SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id = @@SPID;` を実行します。
 
 ### <a name="copy-to-a-different-subscription"></a>別のサブスクリプションへのコピー
 
@@ -182,6 +191,7 @@ AS COPY OF source_server_name.source_database_name;
 
 > [!TIP]
 > T-SQL を使用するデータベースのコピーでは、異なる Azure テナント内のサブスクリプションからのデータベースのコピーがサポートされています。 これは、SQL 認証ログインを使用して対象サーバーにログインする場合にのみサポートされます。
+> ソースまたはターゲットのどちらかの論理サーバー上で [Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/support-for-azure-ad-user-creation-on-behalf-of-azure-ad/ba-p/2346849) 認証がアクティブ (有効) になっている場合、別の Azure テナント内の論理サーバー上でのデータベース コピーの作成はサポートされていません。
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>コピー操作の進行状況を監視する
 
@@ -218,7 +228,7 @@ Azure portal を使用してデータベースのコピーを管理するには�
 
    Microsoft.Resources/subscriptions/resources/read Microsoft.Resources/subscriptions/resources/write Microsoft.Resources/deployments/read Microsoft.Resources/deployments/write Microsoft.Resources/deployments/operationstatuses/read
 
-ポータルでリソース グループのデプロイの下の操作と、SQL 操作を含む、複数のリソースプロバイダーにまたがる操作を表示するには、以下の追加の Azure ロールが必要です。
+ポータルでリソース グループのデプロイの下の操作と、SQL 操作を含む、複数のリソースプロバイダーにまたがる操作を表示するには、これらの追加アクセス許可が必要です。
 
    Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read
 

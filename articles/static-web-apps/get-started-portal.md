@@ -4,17 +4,16 @@ description: Azure portal を使用して、静的サイトを Azure Static Web 
 services: static-web-apps
 author: craigshoemaker
 ms.author: cshoe
-ms.date: 09/03/2020
+ms.date: 05/07/2021
 ms.topic: quickstart
 ms.service: static-web-apps
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 78af2290a2e71d349303d3913f8a40510eb9c6a0
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mode-portal
+ms.openlocfilehash: a1f193ded9424361a0ee4afcdbd3566b6e990fe4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531580"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008885"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>クイックスタート: Azure portal で最初の静的サイトを構築する
 
@@ -33,64 +32,64 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
 リポジトリが作成されたので、Azure portal から静的 Web アプリを作成できます。
 
-1. [Azure Portal](https://portal.azure.com) に移動します
-1. **[リソースの作成]** を選択します
-1. **[Static Web Apps]** を探します
-1. **[Static Web Apps (プレビュー)]** を選択します
-1. **[作成]**
+1. [Azure Portal](https://portal.azure.com) に移動します。
+1. **[リソースの作成]** を選択します。
+1. **Static Web Apps** を検索します。
+1. **Static Web Apps** を選択します。
+1. **［作成］** を選択します
 
 _[基本]_ セクションで、新しいアプリを構成し、それを GitHub リポジトリにリンクすることから始めます。
 
-:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="[基本] セクション":::
+:::image type="content" source="media/getting-started-portal/quickstart-portal-basics.png" alt-text="[基本] セクション":::
 
-1. お使いの "_Azure サブスクリプション_" を選択します
-1. "_リソース グループ_" を選択するか、新しく作成します
-1. アプリに **my-first-static-web-app** という名前を設定します。
-      1. 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
-1. 最も近い "_リージョン_" を選択します
-1. **[Free]** _SKU_ を選択します
-1. **[GitHub アカウントでサインイン]** ボタンを選択し、GitHub で認証します
+1. _Azure サブスクリプション_ を選択します。
+1. _[リソース グループ]_ の横にある **[新規作成]** リンクを選択します。
+1. テキスト ボックスに「**static-web-apps-test**」と入力します。
+1. _[静的 Web アプリの詳細]_ で、テキスト ボックスに「**my-first-static-web-App**」と入力します。
+1. _[Azure Functions とステージングの詳細]_ で、最も近いリージョンを選択します。
+1. _[デプロイの詳細]_ で、 **[GitHub]** を選択します。
+1. **[GitHub アカウントでサインイン]** ボタンを選択し、GitHub で認証を行います。
 
 GitHub にサインインした後、リポジトリ情報を入力します。
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="リポジトリの詳細":::
+:::image type="content" source="media/getting-started-portal/quickstart-portal-source-control.png" alt-text="リポジトリの詳細":::
 
-1. 希望する "_組織_" を選択します
-1. _[リポジトリ]_ ドロップダウンから **my-first-web-static-app** を選択します
-1. _[ブランチ]_ ドロップダウンから **[main]** を選択します
+1. 希望する "_組織_" 名を選択します。
+1. _[リポジトリ]_ ドロップダウンから **my-first-web-static-app** を選択します。
+1. _[ブランチ]_ ドロップダウンから **main** を選択します。
 
-> [!NOTE]
-> リポジトリが表示されない場合は、GitHub で Azure Static Web Apps を承認しなければならない場合があります。 GitHub リポジトリを参照し、 **[設定]、[アプリケーション]、[認可された OAuth アプリ]** の順に移動して、 **[Azure Static Web Apps]** 、 **[許可]** の順に選択します。 組織リポジトリの場合は、アクセス許可を付与する組織の所有者である必要があります。
+   > [!NOTE]
+   > リポジトリが表示されない場合は、GitHub で Azure Static Web Apps を承認しなければならない場合があります。 GitHub リポジトリを参照し、 **[設定]、[アプリケーション]、[認可された OAuth アプリ]** の順に移動して、 **[Azure Static Web Apps]** 、 **[許可]** の順に選択します。 組織リポジトリの場合は、アクセス許可を付与する組織の所有者である必要があります。
 
 1. _[ビルドの詳細]_ セクションで、使用するフロントエンド フレームワークに固有の構成の詳細を追加します。
 
     # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
 
-    1. _[ビルドのプリセット]_ ドロップダウンから **[カスタム]** を選択します
-    1. _[App location]\(アプリの場所\)_ ボックスの既定値をそのままにします
-    1. _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
-    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスを空白のままにします
+    1. _[ビルドのプリセット]_ ドロップダウンから **[カスタム]** を選択します。
+    1. _[App location]\(アプリの場所\)_ ボックスに「 **./src**」と入力します。
+    1. _[Api location]\(API の場所\)_ ボックスはからのままにします。
+    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「 **./src**」と入力します。
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    1. _[ビルドのプリセット]_ ドロップダウンから **[Angular]** を選択します
-    1. _[App location]\(アプリの場所\)_ ボックスの既定値をそのままにします
-    1. _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
-    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「**dist/angular-basic**」と入力します
+    1. _[ビルドのプリセット]_ ドロップダウンから **[Angular]** を選択します。
+    1. _[App location]\(アプリの場所\)_ ボックスは既定値のままにします。
+    1. _[Api location]\(API の場所\)_ ボックスは空のままにします。
+    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「**dist/angular-basic**」と入力します。
 
     # <a name="react"></a>[React](#tab/react)
 
-    1. _[ビルドのプリセット]_ ドロップダウンから **[React]** を選択します
-    1. _[App location]\(アプリの場所\)_ ボックスの既定値をそのままにします
-    1. _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
-    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「**build**」と入力します
+    1. _[ビルドのプリセット]_ ドロップダウンから **[React]** を選択します。
+    1. _[App location]\(アプリの場所\)_ ボックスは既定値のままにします。
+    1. _[Api location]\(API の場所\)_ ボックスは空のままにします。
+    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「**build**」と入力します。
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    1. _[ビルドのプリセット]_ ドロップダウンから **[Vue.js]** を選択します
-    1. _[App location]\(アプリの場所\)_ ボックスの既定値をそのままにします
-    1. _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
-    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスの既定値をそのままにします
+    1. _[ビルドのプリセット]_ ドロップダウンから **[Vue.js]** を選択します。
+    1. _[App location]\(アプリの場所\)_ ボックスは既定値のままにします。
+    1. _[Api location]\(API の場所\)_ ボックスは空のままにします。
+    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスは既定値のままにします。
 
     ---
 
@@ -99,7 +98,7 @@ GitHub にサインインした後、リポジトリ情報を入力します。
     :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="[確認および作成] ボタン":::
 
     > [!NOTE]
-    > アプリを作成した後にこれらの値を変更するには、[ワークフロー ファイル](github-actions-workflow.md)を編集します。
+    > アプリを作成した後にこれらの値を変更するには、[ワークフロー ファイル](build-configuration.md)を編集します。
 
 1. **［作成］** を選択します
 
@@ -116,10 +115,10 @@ GitHub にサインインした後、リポジトリ情報を入力します。
 このアプリケーションを引き続き使用しない場合は、次の手順を使用して Azure Static Web Apps インスタンスを削除することができます。
 
 1. [Azure portal](https://portal.azure.com) を開きます。
-1. 上部の検索バーから **my-first-web-static-app** を検索します
-1. アプリの名前を選択します
-1. **[削除]** ボタンを選択します
-1. **[はい]** を選択して削除アクションを確定します (このアクションが完了するまでにしばらく時間がかかる場合があります)
+1. 上部の検索バーから **my-first-web-static-app** を検索します。
+1. アプリの名前を選択します。
+1. **[削除]** ボタンを選択します。
+1. **[はい]** を選択して削除アクションを確定します (このアクションが完了するまでにしばらく時間がかかる場合があります)。
 
 ## <a name="next-steps"></a>次のステップ
 

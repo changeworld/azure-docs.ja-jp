@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 4f0588667df6acb11a43e8c3469c67f65ed3cdd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: has-adal-ref
+ms.openlocfilehash: 43f66b7f44e7d30816da5ac59a9692807f257a2b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98165180"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787265"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>開発するモバイル アプリでシングル サインオンとアプリ保護ポリシーをサポートする
 
@@ -66,7 +67,7 @@ Apple では、iOS アプリケーションでこれを行うためのガイダ�
 
 アプリ保護ポリシーを有効にするには、[Microsoft Authentication Library (MSAL)](msal-overview.md) を使用します。 MSAL は Microsoft ID プラットフォームの認証および承認ライブラリであり、Intune SDK はこれと連動するように開発されています。
 
-また、認証にブローカー アプリを使用する必要があります。 ブローカーにより、アプリのコンプライアンスを確保するために、アプリケーションとデバイスの情報を提供するようアプリに要求されます。 [ブローカー認証](./msal-android-single-sign-on.md)に、iOS ユーザーは [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-sign-in.md)を使用し、Android ユーザーは Microsoft Authenticator アプリまたは[ポータル サイト アプリ](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)を使用します。 既定では、MSAL によって、認証要求を満たすための最初の選択肢としてブローカーが使用されます。したがって、既製の MSAL を使用する場合、認証のためのブローカーの使用がアプリに対して自動的に有効になります。
+また、認証にブローカー アプリを使用する必要があります。 ブローカーにより、アプリのコンプライアンスを確保するために、アプリケーションとデバイスの情報を提供するようアプリに要求されます。 [ブローカー認証](./msal-android-single-sign-on.md)に、iOS ユーザーは [Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/sign-in-to-your-accounts-using-the-microsoft-authenticator-app-582bdc07-4566-4c97-a7aa-56058122714c)を使用し、Android ユーザーは Microsoft Authenticator アプリまたは[ポータル サイト アプリ](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)を使用します。 既定では、MSAL によって、認証要求を満たすための最初の選択肢としてブローカーが使用されます。したがって、既製の MSAL を使用する場合、認証のためのブローカーの使用がアプリに対して自動的に有効になります。
 
 最後に、アプリ保護ポリシーを有効にするために、アプリに [Intune SDK を追加](/mem/intune/developer/app-sdk-get-started)します。 ほとんどの場合、SDK はインターセプト モデルに従い、アプリ保護ポリシーが自動的に適用されて、アプリで実行されているアクションが許可されるかどうかが判断されます。 特定のアクションに制限があるかどうかをアプリに通知するために、手動で呼び出すことができる API もあります。
 

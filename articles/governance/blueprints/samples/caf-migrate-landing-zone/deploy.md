@@ -3,12 +3,12 @@ title: CAF 移行ランディング ゾーン ブループリント サンプル
 description: ブループリント アーティファクト パラメーターの詳細を含む CAF 移行ランディング ゾーン ブループリント サンプルのデプロイ手順です。
 ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: d5aed1d492fea102598a22921d04ed8681c727cb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9c953c5ec7f6c8a9a9ae7a1ff784b5c0d0f8f877
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470117"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757819"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 移行ランディング ゾーン ブループリント サンプルのデプロイ
 
@@ -72,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      - Azure Blueprint は、この管理対象 ID を使用して、割り当てられたブループリント内にすべての成果物をデプロイします。
        詳細については、[Azure リソースの管理対象 ID の概要](../../../../active-directory/managed-identities-azure-resources/overview.md)に関するページをご覧ください。
      - **ブループリント定義ラベル**:ブループリント サンプルのコピーの **発行済み** バージョンを選択します。
-    
+
    - ロックの割り当て
 
      お使いの環境のブループリントのロック設定を選択します。 詳細については、[ブループリント リソースのロック](../../concepts/resource-locking.md)に関するページを参照してください。
@@ -85,9 +85,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
      このセクションで定義するパラメーターは、一貫性を維持するために、ブループリント定義のアーティファクトの多くで使用されます。
 
-       - **Organization**:組織名 (Contoso、Fabrikam など) を入力します。一意である必要があります。
-       - **AzureRegion**:デプロイのための 1 つの Azure リージョンを選択します。
-       
+     - **Organization**:組織名 (Contoso、Fabrikam など) を入力します。一意である必要があります。
+     - **AzureRegion**:デプロイのための 1 つの Azure リージョンを選択します。
+
    - アーティファクトのパラメーター
 
      このセクションで定義するパラメーターは、定義対象のアーティファクトに適用されます。 これらのパラメーターはブループリントの割り当て時に定義されるので、[動的パラメーター](../../concepts/parameters.md#dynamic-parameters)です。 アーティファクトのパラメーターとその説明を含む詳しい一覧については、「[アーティファクトのパラメーター表](#artifact-parameters-table)」を参照してください。

@@ -1,16 +1,16 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 03/10/2021
-ms.author: mikben
+ms.date: 06/30/2021
+ms.author: rifox
 ms.custom: private_preview
-ms.openlocfilehash: 96037e5aa0de62a2aecbcd5d95fd6aeb5c79980c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d32d701b706d50db54f704f5ca88cb62df769ea6
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105152811"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "123078523"
 ---
 > [!IMPORTANT]
 > このドキュメントで説明されている機能は、現在、プライベート プレビュー段階にあります。 プライベート プレビューには、一般提供されていない SDK やテスト用のドキュメントへのアクセスが含まれています。

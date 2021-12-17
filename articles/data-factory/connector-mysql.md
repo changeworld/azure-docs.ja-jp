@@ -1,26 +1,29 @@
 ---
-title: Azure Data Factory を使用して MySQL からデータをコピーする
-description: MySQL データベースからシンクとしてサポートされているデータ ストアに データをコピーできる Azure Data Factory の MySQL コネクタについて説明します。
-author: linda33wj
+title: MySQL からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
+description: MySQL データベースからシンクとしてサポートされているデータ ストアにデータをコピーできる Azure Data Factory および Synapse Analytics の MySQL コネクタについて説明します。
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.author: jingwang
-ms.openlocfilehash: b6a2253a4a124fe5e3725863c799f91714e66cab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.author: jianleishen
+ms.openlocfilehash: 98211fd52546f0301552641fc57badddc92fcae3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375257"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831703"
 ---
-# <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータをコピーする
+# <a name="copy-data-from-mysql-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して MySQL からデータをコピーする
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-mysql-connector.md)
 > * [現在のバージョン](connector-mysql.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、MySQL データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory および Synapse Analytics パイプラインでコピー アクティビティを使用して、MySQL データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 >[!NOTE]
 >[Azure Database for MySQL](../mysql/overview.md) サービスとの間でデータをコピーするには、専用の [Azure Database for MySQL コネクタ](connector-azure-database-for-mysql.md)を使用します。
@@ -38,13 +41,37 @@ MySQL データベースのデータを、サポートされているシンク �
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 Integration Runtime のバージョン 3.7 以降には MySQL ドライバーが組み込まれているため、ドライバーを手動でインストールする必要はありません。
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-mysql-using-ui"></a>UI を使用して MySQL のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で MySQL へのリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI で新しいリンク サービスを作成する。":::
+
+2. MySQL を検索し、MySQL コネクタを選択します。
+
+    :::image type="content" source="media/connector-mysql/mysql-connector.png" alt-text="MySQL コネクタを選択します。":::    
+
+1. サービスの詳細を設定し、接続をテストし、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-mysql/configure-mysql-linked-service.png" alt-text="MySQL のリンク サービスを構成します。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 次のセクションでは、MySQL コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -217,9 +244,9 @@ MySQL からデータをコピーする場合、コピー アクティビティ�
 
 ## <a name="data-type-mapping-for-mysql"></a>MySQL のデータ型マッピング
 
-MySQL からデータをコピーするとき、次の MySQL のデータ型から Azure Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+MySQL からデータをコピーするとき、MySQL のデータ型から、サービスによって内部的に使用される中間データ型への、以下のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| MySQL のデータ型 | Data Factory の中間データ型 |
+| MySQL のデータ型 | 中間サービス データ型 |
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
@@ -268,4 +295,4 @@ MySQL からデータをコピーするとき、次の MySQL のデータ型か�
 プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

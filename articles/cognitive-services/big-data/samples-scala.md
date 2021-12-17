@@ -6,14 +6,14 @@ author: mhamilton723
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: sample
-ms.date: 07/06/2020
+ms.date: 10/28/2021
 ms.author: marhamil
-ms.openlocfilehash: c47aa803774343b39efeabe3452f1b256cc64c0d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 154317217ce22196ddde1e4a3c04c39d5eafc0ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363274"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469808"
 ---
 # <a name="quick-examples"></a>簡単な例
 
@@ -21,7 +21,7 @@ ms.locfileid: "94363274"
 
 これらのサンプルでは、次の Cognitive Services が使用されています。
 
-- Text Analytics - 文のセットのセンチメント (またはムード) を取得します。
+- 言語サービス - 文のセットのセンチメント (またはムード) を取得します。
 - Computer Vision - 画像のセットに関連付けられたタグ (1 単語の描写) を取得します。
 - Bing Image Search - Web で自然言語クエリに関連する画像を検索します。
 - 音声テキスト変換 - 音声ファイルの書き起こしを行い、テキストベースのトランスクリプトを抽出します。
@@ -47,9 +47,9 @@ val serviceKey = "ADD-YOUR-SUBSCRIPTION-KEY"
 val location = "eastus"
 ```
 
-## <a name="text-analytics"></a>Text Analytics
+## <a name="language-service"></a>言語サービス
 
-[Text Analytics](../text-analytics/index.yml) サービスには、テキストからインテリジェントな分析情報を抽出するためのアルゴリズムがいくつか用意されています。 たとえば、指定された入力テキストのセンチメントを見つけることができます。 このサービスでは、`0.0` と `1.0` の間のスコアが返されます。低いスコアは否定的なセンチメントを示し、高いスコアは肯定的なセンチメントを示します。  次のサンプルでは、3 つの単純な文を使用し、それぞれのセンチメント スコアを返します。
+[言語サービス](../language-service/index.yml)には、テキストからインテリジェントな分析情報を抽出するためのアルゴリズムがいくつか用意されています。 たとえば、指定された入力テキストのセンチメントを見つけることができます。 このサービスでは、`0.0` と `1.0` の間のスコアが返されます。低いスコアは否定的なセンチメントを示し、高いスコアは肯定的なセンチメントを示します。  次のサンプルでは、3 つの単純な文を使用し、それぞれのセンチメント スコアを返します。
 
 ```scala
 import org.apache.spark.sql.functions.col

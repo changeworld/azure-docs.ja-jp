@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro デバイスを交換する | Microsoft Docs
-description: Azure Stack Edge Pro デバイスを交換する方法について説明します。
+title: Azure Stack Edge デバイスの交換
+description: Azure Stack Edge デバイスを交換する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 2196c9463569dc43092b38de58e0103104efed0c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 96b6b32a694e39a7e227a5b98949f8eb1d4891e4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443473"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475960"
 ---
-# <a name="replace-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスを交換する
+# <a name="replace-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスを交換する
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-この記事では、Azure Stack Edge Pro デバイスを交換する方法について説明します。 既存のデバイスにハードウェア障害があるかアップグレードが必要な場合、交換用デバイスが必要です。 
+この記事では、Azure Stack Edge デバイスを交換する方法について説明します。 既存のデバイスにハードウェア障害があるかアップグレードが必要な場合、交換用デバイスが必要です。 
 
 
 この記事では、次の方法について説明します。
@@ -35,7 +35,7 @@ ms.locfileid: "102443473"
 
 既存のデバイスでハードウェア障害が発生した場合は、次の手順に従ってサポート チケットを開きます。
 
-1. デバイスを返却したいことを示して、Microsoft サポートでサポート チケットを開きます。 **Azure Stack Edge Pro のハードウェア** の問題の種類を選択し、 **[ハードウェアの問題]** サブタイプを選択します。  
+1. デバイスを返却したいことを示して、Microsoft サポートでサポート チケットを開きます。 **Azure Stack Edge のハードウェア** の問題の種類を選択し、 **[ハードウェアの問題]** サブタイプを選択します。  
 
     ![サポート チケットを開く](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
@@ -62,9 +62,9 @@ ms.locfileid: "102443473"
 1. [デバイス上のデータを消去します](azure-stack-edge-return-device.md#erase-data-from-the-device)。
 2. 元のデバイスの[デバイス返却を開始します](azure-stack-edge-return-device.md#initiate-device-return)。
 3. [集荷をスケジュールします](azure-stack-edge-return-device.md#schedule-a-pickup)。
-4. デバイスを Microsoft が受け取ったら、[[リソースを削除する]](azure-stack-edge-return-device.md#delete-the-resource) で返却したデバイスに関連付けられているリリースを削除できます。
+4. デバイスを Microsoft が受け取ったら、[[リソースを削除する]](azure-stack-edge-return-device.md#complete-return) で返却したデバイスに関連付けられているリリースを削除できます。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge Pro デバイスを返却する](azure-stack-edge-return-device.md)方法を確認します。
+- [Azure Stack Edge デバイスを返却する](azure-stack-edge-return-device.md)方法について説明します。

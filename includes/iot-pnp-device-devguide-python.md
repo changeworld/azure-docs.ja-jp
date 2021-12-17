@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: f4eb312aff200389f59a3e342305b8eda98f213e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14522e6395e40e93c0eb558597ad090521a480a3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582780"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580480"
 ---
 ## <a name="model-id-announcement"></a>モデル ID のアナウンス
 
@@ -40,13 +40,13 @@ device_client = IoTHubDeviceClient.create_from_symmetric_key(
 }
 ```
 
-## <a name="implement-telemetry-properties-and-commands"></a>テレメトリ、プロパティ、およびコマンドを実装する
+## <a name="use-components"></a>コンポーネントを使う
 
-[IoT プラグ アンド プレイ モデルのコンポーネントの概要](../articles/iot-pnp/concepts-modeling-guide.md)に関するページで説明されているように、デバイス ビルダーは、コンポーネントを使用してデバイスを記述するかどうかを決定する必要があります。 コンポーネントを使用する場合、デバイスはこのセクションで説明されている規則に従う必要があります。
+[IoT プラグ アンド プレイ モデルのコンポーネントの概要](../articles/iot-develop/concepts-modeling-guide.md)に関するページで説明されているように、デバイス ビルダーは、コンポーネントを使用してデバイスを記述するかどうかを決定する必要があります。 コンポーネントを使用する場合、デバイスは次のセクションで説明されている規則に従う必要があります。
 
-### <a name="telemetry"></a>テレメトリ
+## <a name="telemetry"></a>テレメトリ
 
-既定のコンポーネントには、特別なプロパティは必要ありません。
+既定のコンポーネントを使用する場合、テレメトリ メッセージに特別なプロパティを追加する必要はありません。
 
 入れ子になったコンポーネントを使用する場合、デバイスでは、メッセージ プロパティにコンポーネント名を設定する必要があります。
 
@@ -61,7 +61,7 @@ async def send_telemetry_from_temp_controller(device_client, telemetry_msg, comp
 }
 ```
 
-### <a name="read-only-properties"></a>読み取り専用プロパティ
+## <a name="read-only-properties"></a>読み取り専用プロパティ
 
 既定のコンポーネントからのプロパティの報告には、特別なコンストラクトは必要ありません。
 
@@ -69,7 +69,7 @@ async def send_telemetry_from_temp_controller(device_client, telemetry_msg, comp
 await device_client.patch_twin_reported_properties({"maxTempSinceLastReboot": 38.7})
 ```
 
-デバイス ツインは、次の報告されるプロパティを使用して更新されます。
+デバイス ツインは、次の reported プロパティで更新されます。
 
 ```json
 {
@@ -79,7 +79,7 @@ await device_client.patch_twin_reported_properties({"maxTempSinceLastReboot": 38
 }
 ```
 
-入れ子になったコンポーネントを使用する場合、次のコンポーネントの名前内にプロパティを作成する必要があります。
+入れ子になったコンポーネントを使用する場合は、コンポーネントの名前内にプロパティを作成し、マーカーを含める必要があります。
 
 ```python
 inner_dict = {}
@@ -91,7 +91,7 @@ prop_dict["thermostat1"] = inner_dict
 await device_client.patch_twin_reported_properties(prop_dict)
 ```
 
-デバイス ツインは、次の報告されるプロパティを使用して更新されます。
+デバイス ツインは、次の reported プロパティで更新されます。
 
 ```json
 {
@@ -104,11 +104,13 @@ await device_client.patch_twin_reported_properties(prop_dict)
 }
 ```
 
-### <a name="writable-properties"></a>書き込み可能なプロパティ
+## <a name="writable-properties"></a>書き込み可能なプロパティ
 
 これらのプロパティは、デバイスから設定するか、ソリューションから更新することができます。 ソリューションからプロパティを更新すると、クライアントでは `IoTHubDeviceClient` または `IoTHubModuleClient` でコールバックとして通知を受け取ります。 IoT プラグ アンド プレイ規則に従うために、デバイスからサービスに対して、プロパティが正常に受信されたことを通知する必要があります。
 
-#### <a name="report-a-writable-property"></a>書き込み可能なプロパティを報告する
+プロパティの型が `Object` である場合、オブジェクトのフィールドのサブセットを更新するだけだとしても、サービスからは完全なオブジェクトをデバイスに送信する必要があります。 デバイスから送信する受信確認は、完全なオブジェクトとする必要があります。
+
+### <a name="report-a-writable-property"></a>書き込み可能なプロパティを報告する
 
 デバイスから書き込み可能なプロパティが報告された場合は、規則に定義されている `ack` 値を含める必要があります。
 
@@ -126,7 +128,7 @@ prop_dict["targetTemperature"] = {
 await device_client.patch_twin_reported_properties(prop_dict)
 ```
 
-デバイス ツインは、次の報告されるプロパティを使用して更新されます。
+デバイス ツインは、次の reported プロパティで更新されます。
 
 ```json
 {
@@ -158,7 +160,7 @@ prop_dict["thermostat1"] = inner_dict
 await device_client.patch_twin_reported_properties(prop_dict)
 ```
 
-デバイス ツインは、次の報告されるプロパティを使用して更新されます。
+デバイス ツインは、次の reported プロパティで更新されます。
 
 ```json
 {
@@ -176,9 +178,9 @@ await device_client.patch_twin_reported_properties(prop_dict)
 }
 ```
 
-#### <a name="subscribe-to-desired-property-updates"></a>必要なプロパティの更新をサブスクライブする
+### <a name="subscribe-to-desired-property-updates"></a>必要なプロパティの更新をサブスクライブする
 
-サービスでは、接続されたデバイスで通知をトリガーする目的のプロパティを更新できます。 この通知には、更新を識別するバージョン番号など、更新された目的のプロパティが含まれます。 デバイスでは、報告されたプロパティと同じ `ack` メッセージで応答する必要があります。
+サービスでは、接続されたデバイスで通知をトリガーする目的のプロパティを更新できます。 この通知には、更新を識別するバージョン番号など、更新された目的のプロパティが含まれます。 デバイスでは、サービスに返送される `ack` メッセージにこのバージョン番号を含める必要があります。
 
 既定のコンポーネントでは、1 つのプロパティを参照し、受け取ったバージョンで報告される `ack` を作成します。
 
@@ -205,7 +207,7 @@ async def execute_property_listener(device_client):
         await device_client.patch_twin_reported_properties(prop_dict)
 ```
 
-デバイス ツインでは、目的のセクションと報告されるセクションにプロパティが表示されます。
+入れ子になったコンポーネントのデバイス ツインは、目的のセクションと報告されたセクションを次のように示します。
 
 ```json
 {
@@ -286,7 +288,7 @@ async def execute_property_listener(device_client):
 }
 ```
 
-### <a name="commands"></a>コマンド
+## <a name="commands"></a>コマンド
 
 既定のコンポーネントは、サービスから呼び出されたときに、コマンド名を受け取ります。
 
@@ -296,7 +298,7 @@ async def execute_property_listener(device_client):
 command_request = await device_client.receive_method_request("thermostat1*reboot")
 ```
 
-#### <a name="request-and-response-payloads"></a>要求と応答のペイロード
+### <a name="request-and-response-payloads"></a>要求と応答のペイロード
 
 コマンドでは、型を使用して、要求と応答のペイロードを定義します。 デバイスでは、受け取った入力パラメーターを逆シリアル化し、応答をシリアル化する必要があります。 ペイロードで定義された複合型を使用してコマンドを実装する例を次に示します。
 

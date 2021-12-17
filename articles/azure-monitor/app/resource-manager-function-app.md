@@ -2,19 +2,17 @@
 title: Azure Function App + Application Insights リソース用の Resource Manager テンプレートのサンプル
 description: Azure Function App と Application Insights リソースをデプロイするためのサンプル Azure Resource Manager テンプレート。
 ms.topic: sample
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 08/06/2020
-ms.openlocfilehash: 783ab811c91ae52b51a8be516ad2ddd9f73d4410
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 9ddd693d6b3fccc7d1faa478ef6da52866e0a7c9
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383340"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132096"
 ---
 # <a name="resource-manager-template-sample-for-creating-azure-function-apps-with-application-insights-monitoring"></a>Application Insights 監視機能を備えた Azure Functions アプリを作成するための Resource Manager テンプレートのサンプル
 
-この記事には、Azure Function アプリと共に[クラシック Application Insights リソース](../app/create-new-resource.md)のデプロイと構成を行うためのサンプル [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+この記事には、Azure Function アプリと共に[クラシック Application Insights リソース](../app/create-new-resource.md)のデプロイと構成を行うためのサンプル [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)が含まれています。 サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

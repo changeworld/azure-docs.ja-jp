@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 01cca2f2233ed5cdfb3003bb44c40f481bcf9bda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a72eceba85e14e058fa7c8ba2b109009e46e6df3
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94699408"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357453"
 ---
 # <a name="azure-load-balancer-floating-ip-configuration"></a>Azure Load Balancer のフローティング IP の構成
 
@@ -24,15 +24,16 @@ ms.locfileid: "94699408"
 
 ## <a name="floating-ip"></a>フローティング IP
 
-一部のアプリケーション シナリオでは、バックエンド プール内の 1 つの VM で複数のアプリケーション インスタンスによって同じポートが使用されることを選択するまたは使用されることが求められる場合があります。 ポートを再利用する一般的な例としては、高可用性のためにクラスタリングする、ネットワークの仮想アプライアンス、再暗号化なしに複数の TLS エンドポイントを公開する場合などが挙げられます。 複数の規則でバックエンド ポートを再利用するには、規則の定義で Floating IP を有効にする必要があります。
+一部のアプリケーション シナリオでは、バックエンド プール内の 1 つの VM で複数のアプリケーション インスタンスによって同じポートが使用されることを選択するまたは使用されることが求められる場合があります。 ポート再利用の一般的な例を次に示します。 
+- 高可用性を実現するためのクラスタリング
+- ネットワーク仮想アプライアンス
+- 再暗号化によらない複数 TLS エンドポイントの公開。 
 
-"**Floating IP**" は、Direct Server Return (DSR) と呼ばれるものの一部に対する Azure の用語です。 DSR は次の 2 つの部分から構成されます。
+複数の規則でバックエンド ポートを再利用するには、規則の定義で Floating IP を有効にする必要があります。
 
-- フロー トポロジ
-- IP アドレスのマッピング スキーム
+Floating IP を有効にすると、IP アドレスのマッピングが、バックエンド インスタンスの IP ではなく Load Balancer のフロントエンド IP アドレスに変更されます。 
 
-プラットフォーム レベルでは、Azure Load Balancer は Floating IP が有効かどうかに関係なく、常に DSR フロー トポロジで動作します。 これは、フローの送信部分は常に起点に直接フローするように正しく書き換えられることを意味します。
-Floating IP なしでは、Azure は従来の負荷分散 IP アドレスのマッピング スキームを、簡単に使用できるように公開します (VM インスタンスの IP)。 Floating IP を有効にすると、IP アドレス マッピングがロード バランサーのフロントエンド IP に変更され、柔軟性が上がります。 [こちら](load-balancer-multivip-overview.md)をご覧ください。
+Floating IP がない場合は、VM インスタンスの IP が公開されます。 Floating IP を有効にすると、IP アドレス マッピングがロード バランサーのフロントエンド IP に変更され、柔軟性が上がります。 [こちら](load-balancer-multivip-overview.md)をご覧ください。
 
 ## <a name="limitations"></a><a name = "limitations"></a>制限事項
 

@@ -3,22 +3,22 @@ title: SQL Server から Azure SQL Managed Instance への移行に関する評�
 description: Azure SQL Managed Instance に移行する前に、対処する必要があるソース SQL Server インスタンスに関する問題を特定するための評価ルール。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
-ms.custom: ''
+ms.custom: ignite-fall-2021
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: MashaMSFT
+author: rajeshsetlem
+ms.author: rsetlem
+ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: fc8959d44fbacd90916a045d23db4bee872c4670
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92fee6cde8c7a98806db6084c413202eb2f153f7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026038"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069484"
 ---
 # <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>SQL Server から Azure SQL Managed Instance への移行に関する評価ルール
-[!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
+[!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
 
 移行ツールでは、SQL Server データベースを Azure SQL Managed Instance に移行する前に対処する必要がある問題を特定するためにいくつかの評価ルールを実行して、ソース SQL Server インスタンスを検証します。 
 
@@ -56,14 +56,13 @@ Azure Migrate の [影響を受けるオブジェクト] セクションを確�
 ## <a name="assembly-from-file"></a>ファイルからのアセンブリ<a id="AssemblyFromFile"></a>
 
 **タイトル: Azure SQL Managed Instance では、ファイル パラメーターが指定されている 'CREATE ASSEMBLY' および 'ALTER ASSEMBLY' はサポート対象外です。**    
-**カテゴリ**: 警告   
+**カテゴリ**: 問題   
 
 **説明**   
-Azure SQL Managed Instance では、ファイル共有または Windows フォルダーにアクセスできません。 Azure BLOB を参照しない BULK INSERT ステートメントの具体的な使用方法については、[影響を受けるオブジェクト] セクションを参照してください。 Azure Blob Storage をソースとしない 'BULK INSERT' 使用するオブジェクトは、Azure SQL Managed Instance への移行後は機能しません。
-
+Azure SQL Managed Instance は、ファイル パラメーターが指定されている 'CREATE ASSEMBLY' または 'ALTER ASSEMBLY' をサポートしていません。 バイナリ パラメーターはサポートされています。 ファイル パラメーターが使用されている特定のオブジェクトについては、[影響を受けるオブジェクト] セクションを参照してください。
 
 **推奨事項**   
-Azure SQL Managed Instance に移行するときには、BULK INSERT ステートメントでローカル ファイルまたはファイル共有を使用している場合、代わりに Azure Blob Storage のファイルを使用するように変換する必要があります。 または、Azure 仮想マシン上の SQL Server に移行します。 
+ファイル パラメーターが指定されている 'CREATE ASSEMBLY' または 'ALTER ASSEMBLY' を使用するオブジェクトを確認します。 このようなオブジェクトが必要な場合は、ファイル パラメーターをバイナリ パラメーターに変換します。 または、Azure 仮想マシン上の SQL Server に移行します。 
 
 詳細情報: [Azure SQL Managed Instance での CLR の相違点 ](../../managed-instance/transact-sql-tsql-differences-sql-server.md#clr)
 
@@ -85,7 +84,7 @@ Azure SQL Managed Instance に移行するときには、BULK INSERT ステー�
 ## <a name="clr-security"></a>CLR のセキュリティ<a id="ClrStrictSecurity"></a>
 
 **タイトル: SAFE または EXTERNAL_ACCESS とマークされた CLR アセンブリは UNSAFE と見なされる**   
-**カテゴリ**: 問題   
+**カテゴリ**: 警告   
 
 **説明**   
 Azure SQL Managed Instance には CLR Strict Security モードが適用されます。 このモードは既定で有効になり、SAFE または EXTERNAL_ACCESS のいずれかのマークが付けられたユーザー定義の CLR アセンブリを含むデータベースで破壊的変更が発生します。
@@ -203,7 +202,7 @@ FASTFIRSTROW クエリ ヒントの代わりに OPTION (FAST n) を使用しま�
 **推奨事項**   
 構造化されていないファイルを Azure Blob Storage にアップロードし、これらのファイルに関するメタデータ (名前、種類、URL の場所、ストレージ キーなど) を Azure SQL Managed Instance に格納します。 Azure SQL Managed Instance 間で BLOB をストリーミングできるように、アプリケーションを再設計する必要がある場合があります。 または、Azure 仮想マシン上の SQL Server に移行します。
 
-詳細情報: [SQL Azure 間での BLOB のストリーミングに関するブログ](https://azure.microsoft.com/en-in/blog/streaming-blobs-to-and-from-sql-azure/)
+詳細情報: [SQL Azure 間での BLOB のストリーミングに関するブログ](https://azure.microsoft.com/blog/streaming-blobs-to-and-from-sql-azure/)
 
 ## <a name="heterogeneous-ms-dtc"></a>異種 MS DTC<a id="MIHeterogeneousMSDTCTransactSQL"></a>
 
@@ -217,7 +216,7 @@ FASTFIRSTROW クエリ ヒントの代わりに OPTION (FAST n) を使用しま�
 **推奨事項**   
 Azure Migrate の [影響を受けるオブジェクト] セクションを確認し、BEGIN DISTRUBUTED TRANSACTION を使用するすべてのオブジェクトを確認します。 複数のインスタンス間での分散トランザクションがサポートされている (現在、プレビュー段階) Azure SQL Managed Instance に参加しているデータベースを移行することを検討してください。 または、Azure 仮想マシン上の SQL Server に移行します。
 
-詳細情報: [Azure SQL Managed Instance の複数のサーバーにまたがるトランザクション ](../../database/elastic-transactions-overview.md#transactions-across-multiple-servers-for-azure-sql-managed-instance)
+詳細情報: [Azure SQL Managed Instance の複数のサーバーにまたがるトランザクション ](../../database/elastic-transactions-overview.md#transactions-for-sql-managed-instance)
 
 ## <a name="homogenous-ms-dtc"></a>同種 MS DTC<a id="MIHomogeneousMSDTCTransactSQL"></a>
 
@@ -231,7 +230,7 @@ Transact SQL BEGIN DISTRIBUTED TRANSACTION によって開始され、Microsoft 
 **推奨事項**   
 Azure Migrate の [影響を受けるオブジェクト] セクションを確認し、BEGIN DISTRUBUTED TRANSACTION を使用するすべてのオブジェクトを確認します。 複数のインスタンス間での分散トランザクションがサポートされている (現在、プレビュー段階) Azure SQL Managed Instance に参加しているデータベースを移行することを検討してください。 または、Azure 仮想マシン上の SQL Server に移行します。 
 
-詳細情報: [Azure SQL Managed Instance の複数のサーバーにまたがるトランザクション](../../database/elastic-transactions-overview.md#transactions-across-multiple-servers-for-azure-sql-managed-instance)
+詳細情報: [Azure SQL Managed Instance の複数のサーバーにまたがるトランザクション](../../database/elastic-transactions-overview.md#transactions-for-sql-managed-instance)
 
 
 ## <a name="linked-server-non-sql-provider"></a>リンク サーバー (SQL 以外のプロバイダー)<a id="LinkedServerWithNonSQLProvider"></a>
@@ -386,10 +385,8 @@ ANSI 結合構文を使用してください。
 **説明**   
 OPENROWSET では組み込みの BULK プロバイダーによる一括操作がサポートされ、ファイルのデータを行セットとして読み取り、返すことができます。 Azure Blob Storage 以外のデータ ソースでの OPENROWSET は、Azure SQL Managed Instance ではサポートされていません。 
 
-
-
 **推奨事項**   
-OPENROWSET 関数は、SQL Server インスタンス (マネージド、オンプレミス、または Virtual Machines 内) でのみ、クエリを実行するために使用できます。 プロバイダーとしてサポートされるのは、SQLNCLI、SQLNCLI11、および SQLOLEDB 値のみです。 したがって、推奨されるアクションは、リモートの SQL 以外のサーバーから依存データベースを特定し、これらを移行するデータベースに移動することを検討することです。 または、Azure 仮想マシン上の SQL Server に移行します
+Azure SQL Managed Instance はファイル共有や Windows フォルダーにアクセスできないため、ファイルは Azure BLOB ストレージからインポートする必要があります。 そのため、OPENROWSET 関数でサポートされる BLOB の型は DATASOURCE のみとなります。 または、Azure 仮想マシン上の SQL Server に移行します。
 
 詳細情報: [Azure SQL Managed Instance での BULK INSERT と OPENROWSET の相違点 ](../../managed-instance/transact-sql-tsql-differences-sql-server.md#bulk-insert--openrowset)
 
@@ -454,19 +451,6 @@ Azure Migrate の [影響を受けるオブジェクト] セクションを確�
 
 詳細情報: [SQL Server で廃止されたデータベース エンジンの機能](/previous-versions/sql/2014/database-engine/discontinued-database-engine-functionality-in-sql-server-2016#Denali)
 
-## <a name="service-broker"></a>Service Broker<a id="ServiceBrokerWithNonLocalAddress"></a>
-
-**タイトル: Azure SQL Managed Instance では、Service Broker 機能は部分的にサポートされています。**    
-**カテゴリ**: 問題   
-
-**説明**   
-SQL Server Service Broker では、SQL Server データベース エンジンのメッセージングおよびキューイング アプリケーションをネイティブでサポートしています。 このデータベースでは、Azure SQL Managed Instance でサポートされていないクロスインスタンス Service Broker が有効になっています。 
-
-
-**推奨事項**   
-Azure SQL Managed Instance では、クロスインスタンス Service Broker はサポートされていません。つまり、アドレスがローカルではありません。 このデータベースを Azure に移行する前に、`ALTER DATABASE [database_name] SET DISABLE_BROKER` というコマンドを使用して Service Broker を無効にする必要があります。また、メッセージが SQL インスタンスに到着しないようにするために、Service Broker エンドポイントを削除または停止することが必要になる場合もあります。 データベースが Azure に移行されたら、Azure Service Bus の機能を調べ、Service Broker ではなく、クラウドベースの汎用メッセージング システムを実装できます。 または、Azure 仮想マシン上の SQL Server に移行します。 
-
-詳細情報: [Azure SQL Managed Instance での Service Broker の相違点 ](../../managed-instance/transact-sql-tsql-differences-sql-server.md#service-broker)
 
 ## <a name="sql-mail"></a>SQL Mail<a id="SqlMail"></a>
 

@@ -1,5 +1,5 @@
 ---
-title: Azure portal で検索インデックスを作成する
+title: 'クイック スタート: Azure portal で検索インデックスを作成する'
 titleSuffix: Azure Cognitive Search
 description: Azure portal でデータのインポート ウィザードを使用して初めての検索インデックスの作成、読み込み、クエリを実行します。 このクイックスタートでは、サンプル データとして架空のホテルのデータセットを使用します。
 manager: nitinme
@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/02/2021
-ms.openlocfilehash: 1be165bfe7cca44e8a928933c3c8fe926ad7d4c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/24/2021
+ms.openlocfilehash: 244b7070d73eb96f584a1a50b49e24b44ba41a7e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694837"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561406"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 
 架空のホテル データを含んだ組み込みのサンプル データ ソースと **データのインポート** ウィザードを使用して、初めての検索インデックスを作成します。 ウィザードの案内に従って検索インデックス (hotels-sample-index) を作成できるので、関心のあるクエリを数分で記述することができます。 
 
-このクイックスタートでは使用しませんが、このウィザードには、AI エンリッチメントのページも用意されているので、画像ファイルや非構造化テキストからテキストおよび構造を抽出することができます。 AI エンリッチメントを含む同様のチュートリアルについては、[コグニティブ スキルセットの作成](cognitive-search-quickstart-blob.md)に関するクイックスタートを参照してください。
+このクイックスタートでは使用しませんが、このウィザードには、AI エンリッチメントのページも用意されているので、画像ファイルや非構造化テキストからテキストおよび構造を抽出することができます。 AI エンリッチメントを含む同様のチュートリアルについては、[テキスト翻訳とエンティティのスキルセット](cognitive-search-quickstart-blob.md)または[OCR 画像スキルセット](cognitive-search-quickstart-ocr.md)に関するクイックスタートを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +47,7 @@ ms.locfileid: "101694837"
 
 1. [使用する検索サービスを探し](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)、[概要] ページ上で、コマンド バーの **[データのインポート]** をクリックして検索インデックスを作成し、設定します。
 
-   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="[データのインポート] コマンド":::
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd.png" alt-text="[データのインポート] コマンドのスクリーンショット" border="true":::
 
 1. ウィザードで **[データに接続します]**  >  **[サンプル]**  >  **[hotels-sample]** の順にクリックします。 このデータ ソースは組み込まれています。 独自のデータ ソースを作成する場合は、名前、型、接続情報を指定する必要があります。 作成すると、他のインポート操作で再度使用できる "既存のデータ ソース" になります。
 
@@ -135,10 +135,6 @@ ms.locfileid: "101694837"
 
 **Search エクスプローラー** は、[REST API 要求](/rest/api/searchservice/search-documents)を処理するためだけに装備されていますが、[単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)と [完全な Lucene クエリ パーサー](/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文を受け取ります。さらに、[Search Document REST API](/rest/api/searchservice/search-documents#bkmk_examples) 操作で使用できるすべての検索パラメーターも受け取ります。
 
-> [!TIP]
-> [Azure Cognitive Search の概要ビデオ](https://channel9.msdn.com/Events/Connect/2016/138)の 6 分 8 秒から次の手順のデモをご覧いただけます。
->
-
 1. コマンド バーの **[Search エクスプローラー]** をクリックします。
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="[Search エクスプローラー] コマンド":::
@@ -200,7 +196,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 + ファセットできるのは、フィルター可能なフィールドのみです。 結果として返されるのは、取得可能なフィールドのみです。
 
-+ *Rating* フィールドは倍精度浮動小数点数であり、グループ化は正確な値によります。 間隔によるグループ化 (たとえば、"三つ星評価"、"四つ星評価" など) について詳しくは、[Azure Cognitive Search でファセット ナビゲーションを実装する方法](./search-faceted-navigation.md#filter-based-on-a-range)に関するページを参照してください。
++ *Rating* フィールドは倍精度浮動小数点数であり、グループ化は正確な値によります。 間隔によるグループ化 (たとえば、"三つ星評価"、"四つ星評価" など) について詳しくは、[REST API の「クエリ パラメーター」](/rest/api/searchservice/search-documents#query-parameters)を参照してください。
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> 検索結果の強調表示
 
@@ -258,7 +254,7 @@ Azure portal の **Search エクスプローラー** を使って、フィルタ
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
+ポータルの左側のナビゲーション ウィンドウにある **[All resources]\(すべてのリソース\)** または **[Resource groups]\(リソース グループ\)** リンクを使って、リソースを検索および管理できます。
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 

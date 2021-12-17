@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 69bcc521b4cd00320a5fbecc5244e913ac16c68b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c9bfc12a1af68e56aacea5b73bd2b4ddc6f857c
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99593910"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221602"
 ---
 # <a name="graphics-binding"></a>グラフィックスのバインド
 
@@ -27,7 +27,7 @@ ms.locfileid: "99593910"
 
 Unity では、`RemoteManagerUnity.InitializeManager` に渡される `RemoteUnityClientInit` 構造体によってバインド全体が処理されます。 グラフィックス モードを設定するには、`GraphicsApiType` フィールドを、選択したバインドに設定する必要があります。 このフィールドは、XRDevice が存在するかどうかに応じて自動的に設定されます。 この動作は、次の動作で手動でオーバーライドできます。
 
-* **HoloLens 2**: [Windows Mixed Reality](#windows-mixed-reality) のグラフィックス バインドが常に使用されます。
+* **HoloLens 2**: アクティブな Unity XR プラグインに応じ、[OpenXR](#openxr) または [Windows Mixed Reality](#windows-mixed-reality) のグラフィックスのバインドが使用されます。
 * **フラットな UWP デスクトップ アプリ**:[シミュレーション](#simulation)が常に使用されます。
 * **Unity エディター**:WMR VR ヘッドセットが接続されていない限り、[シミュレーション](#simulation)が常に使用されます。この場合、ARR は無効になり、アプリケーションの ARR 関連以外の部分をデバッグできます。 [Holographic Remoting](../how-tos/unity/holographic-remoting.md) もご覧ください。
 
@@ -39,7 +39,7 @@ Unity の他の唯一の関連部分は[基本的なバインド](#access)にア
 
 ```cs
 RemoteRenderingInitialization managerInit = new RemoteRenderingInitialization();
-managerInit.GraphicsApi = GraphicsApiType.WmrD3D11;
+managerInit.GraphicsApi = GraphicsApiType.OpenXrD3D11;
 managerInit.ConnectionType = ConnectionType.General;
 managerInit.Right = ///...
 RemoteManagerStatic.StartupRemoteRendering(managerInit);
@@ -47,14 +47,15 @@ RemoteManagerStatic.StartupRemoteRendering(managerInit);
 
 ```cpp
 RemoteRenderingInitialization managerInit;
-managerInit.GraphicsApi = GraphicsApiType::WmrD3D11;
+managerInit.GraphicsApi = GraphicsApiType::OpenXrD3D11;
 managerInit.ConnectionType = ConnectionType::General;
 managerInit.Right = ///...
 StartupRemoteRendering(managerInit); // static function in namespace Microsoft::Azure::RemoteRendering
 
 ```
-
-上記の呼び出しは、Azure Remote Rendering を初期化して Holographic API に組み込むために必要です。 Holographic API が呼び出される前と他の Remote Rendering API がアクセスされる前に、この関数を呼び出す必要があります。 同様に、Holographic API がこれ以上呼び出されなくなった後に、対応する初期化解除関数 `RemoteManagerStatic.ShutdownRemoteRendering();` を呼び出す必要があります。
+他の Remote Rendering API にアクセスする前に、上記の呼び出しを呼び出す必要があります。
+同様に、他のすべての Remote Rendering オブジェクトの破棄後、対応する de-init 関数 `RemoteManagerStatic.ShutdownRemoteRendering();` を呼び出す必要があります。
+WMR では、任意のホログラフィック API が呼び出される前に `StartupRemoteRendering` も呼び出す必要があります。 OpenXR では、任意の OpenXR 関連の API にも同じことが当てはまります。
 
 ## <a name="span-idaccessaccessing-graphics-binding"></a><span id="access">グラフィックスのバインドへのアクセス
 
@@ -86,16 +87,78 @@ if (ApiHandle<GraphicsBinding> binding = currentSession->GetGraphicsBinding())
 
 ## <a name="graphic-apis"></a>グラフィックス API
 
-現在、選択できるグラフィックス API は、`WmrD3D11` と `SimD3D11` の 2 つあります。 3 つ目として `Headless` がありますが、クライアント側でまだサポートされていません。
+現在、`OpenXrD3D11`、`WmrD3D11` および `SimD3D11` の 3 つのグラフィック API を選択できます。 4 つ目として `Headless` がありますが、クライアント側でまだサポートされていません。
+
+### <a name="openxr"></a>OpenXR
+
+`GraphicsApiType.OpenXrD3D11` は、HoloLens 2 で実行される既定のバインドです。 これによって、`GraphicsBindingOpenXrD3d11` バインドが作成されます。 このモードでは Azure Remote Rendering によって OpenXR API レイヤーが作成され、それ自体が OpenXR ランタイムに統合されます。
+
+派生したグラフィックスのバインドにアクセスするには、ベースの `GraphicsBinding` をキャストする必要があります。
+OpenXR バインドを使用するには、次の 3 つを行う必要があります。
+
+#### <a name="package-custom-openxr-layer-json"></a>カスタム OpenXR レイヤー json をパッケージ化する
+
+OpenXR と共に Remote Rendering を使用するには、カスタム OpenXR API レイヤーをアクティブ化する必要があります。 これは、前のセクションで説明した `StartupRemoteRendering` を呼び出すことによって行われます。 ただし、前提条件として、`XrApiLayer_msft_holographic_remoting.json` をアプリケーションと一緒にパッケージ化して読み込む必要があります。 これは、 **"Microsoft.Azure.RemoteRendering.Cpp"** NuGet パッケージがプロジェクトに追加されている場合、自動的に行われます。
+
+#### <a name="inform-remote-rendering-of-the-used-xr-space"></a>使用されている XR Space を Remote Rendering に通知する
+
+これは、リモートとローカルでレンダリングされたコンテンツをアラインするために必要です。
+
+```cs
+RenderingSession currentSession = ...;
+ulong space = ...; // XrSpace cast to ulong
+GraphicsBindingOpenXrD3d11 openXrBinding = (currentSession.GraphicsBinding as GraphicsBindingOpenXrD3d11);
+if (openXrBinding.UpdateAppSpace(space) == Result.Success)
+{
+    ...
+}
+```
+
+```cpp
+ApiHandle<RenderingSession> currentSession = ...;
+XrSpace space = ...;
+ApiHandle<GraphicsBindingOpenXrD3d11> openXrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingOpenXrD3d11>();
+#ifdef _M_ARM64
+    if (openXrBinding->UpdateAppSpace(reinterpret_cast<uint64_t>(space)) == Result::Success)
+#else
+    if (openXrBinding->UpdateAppSpace(space) == Result::Success)
+#endif
+{
+    ...
+}
+```
+
+ここで、上記の `XrSpace` は、API の座標が表されるワールド空間座標系を定義する、アプリケーションで使用するものです。
+
+#### <a name="render-remote-image-openxr"></a>リモート イメージをレンダリングする (OpenXR)
+
+各フレームの開始時に、リモート フレームをバック バッファー内にレンダリングする必要があります。 これを行うには `BlitRemoteFrame` を呼び出します。これにより、現在バインドされているレンダー ターゲットに両眼の色と深度の情報が入力されます。 したがって、バック バッファーをレンダー ターゲットとしてバインドした後に、この操作を行うことが重要です。
+
+> [!WARNING]
+> リモート イメージがバック バッファーに転送された後、ローカル コンテンツは、たとえば **SV_RenderTargetArrayIndex** を使用するなど、シングルパス ステレオ レンダリング手法を利用してレンダリングされる必要があります。 別個のパスでそれぞれの眼をレンダリングするなど、他のステレオ レンダリング手法を使用すると、結果的にパフォーマンスが大幅に低下したり、グラフィックが乱れたりするため、使用を避けてください。
+
+```cs
+RenderingSession currentSession = ...;
+GraphicsBindingOpenXrD3d11 openXrBinding = (currentSession.GraphicsBinding as GraphicsBindingOpenXrD3d11);
+openXrBinding.BlitRemoteFrame();
+```
+
+```cpp
+ApiHandle<RenderingSession> currentSession = ...;
+ApiHandle<GraphicsBindingOpenXrD3d11> openXrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingOpenXrD3d11>();
+openXrBinding->BlitRemoteFrame();
+```
 
 ### <a name="windows-mixed-reality"></a>Windows Mixed Reality
 
-`GraphicsApiType.WmrD3D11` は、HoloLens 2 で実行される既定のバインドです。 これによって、`GraphicsBindingWmrD3d11` バインドが作成されます。 このモードでは、Azure Remote Rendering が Holographic API に直接フックされます。
+`GraphicsApiType.WmrD3D11` は、HoloLens 2 上で実行する、以前使用されていたグラフィックス バインドでした。 これによって、`GraphicsBindingWmrD3d11` バインドが作成されます。 このモードでは、Azure Remote Rendering が Holographic API に直接フックされます。
 
 派生したグラフィックスのバインドにアクセスするには、ベースの `GraphicsBinding` をキャストする必要があります。
 WMR のバインドを使用するには、次の 2 つの操作が必要です。
 
 #### <a name="inform-remote-rendering-of-the-used-coordinate-system"></a>使用されている座標系を Remote Rendering に通知する
+
+これは、リモートとローカルでレンダリングされたコンテンツをアラインするために必要です。
 
 ```cs
 RenderingSession currentSession = ...;
@@ -113,18 +176,15 @@ void* ptr = ...; // native pointer to ISpatialCoordinateSystem
 ApiHandle<GraphicsBindingWmrD3d11> wmrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingWmrD3d11>();
 if (wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
 {
-    //...
+    ...
 }
 ```
 
 ここで、上記の `ptr` は、API の座標が表されるワールド空間座標系を定義するネイティブな `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem` オブジェクトへのポインターである必要があります。
 
-#### <a name="render-remote-image"></a>リモート画像をレンダリングする
+#### <a name="render-remote-image-wmr"></a>リモート イメージをレンダリングする (WMR)
 
-各フレームの開始時に、リモート フレームをバック バッファー内にレンダリングする必要があります。 これを行うには `BlitRemoteFrame` を呼び出します。これにより、現在バインドされているレンダー ターゲットに両眼の色と深度の情報が入力されます。 したがって、バック バッファーをレンダー ターゲットとしてバインドした後に、この操作を行うことが重要です。
-
-> [!WARNING]
-> リモート イメージがバック バッファーに転送された後、ローカル コンテンツは、たとえば **SV_RenderTargetArrayIndex** を使用するなど、シングルパス ステレオ レンダリング手法を利用してレンダリングされる必要があります。 別個のパスでそれぞれの眼をレンダリングするなど、他のステレオ レンダリング手法を使用すると、結果的にパフォーマンスが大幅に低下したり、グラフィックが乱れたりするため、使用を避けてください。
+ここでも OpenXR の場合と同じことを考慮する必要があります。 API 呼び出しは次のようになります。
 
 ```cs
 RenderingSession currentSession = ...;

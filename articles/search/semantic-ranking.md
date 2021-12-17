@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: bf311eb2b2d0ff7a9c17380d2e384bc05c6f05f3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/17/2021
+ms.openlocfilehash: 61fb6de73567b7a83e2c4db2010c717a160aebe0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562037"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114473990"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Azure Cognitive Search でのセマンティック ランク付け
 
 > [!IMPORTANT]
-> セマンティック検索機能はパブリック プレビュー段階にあり、プレビュー REST API とポータルを介して利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。一般提供時に同じ実装があるとは限りません。 これらの機能は課金対象です。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
+> セマンティック検索はパブリック プレビュー段階にあり、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で提供されます。 Azure portal、プレビュー REST API、ベータ版 SDK から利用できます。 これらの機能は課金対象です。 詳細については、「[可用性と料金](semantic-search-overview.md#availability-and-pricing)」を参照してください。
 
 セマンティックの順位付けとは、クエリ実行パイプラインの拡張機能のことで、最初の結果セットの上位の一致を再ランク付けすることにより、精度を向上します。 セマンティックの順位付けは、大規模なトランスフォーマーベースのネットワークによって支えられており、キーワードでの言語的一致でなく、クエリ用語のセマンティックの意味をキャプチャするためにトレーニングされています。 [既定の類似性ランク付けアルゴリズム](index-ranking-similarity.md)とは対照的に、セマンティック ランカーでは単語のコンテキストと意味を使用して関連性を判断します。
 
@@ -40,8 +40,10 @@ ms.locfileid: "105562037"
 
 各ドキュメントは、1 つの長い文字列で表されるようになりました。
 
+文字列は、文字や単語ではなく、トークンで構成されます。 トークンの最大数は 128 個の一意のトークンです。 見積もりを目的とする場合、128 個のトークンは長さが 128 語の文字列とほぼ同じであると想定できます。 
+
 > [!NOTE]
-> 文字列は、文字や単語ではなく、トークンで構成されます。 トークン化は、検索可能なフィールドに対するアナライザーの割り当てによって部分的に決定されます。 特別なアナライザー (nGram、EdgeNGram など) を使用している場合は、そのフィールドを searchFields から除外できます。 文字列がトークン化される方法の詳細については、[REST API テスト アナライザー](/rest/api/searchservice/test-analyzer)を使用したアナライザーのトークン出力について確認してください。
+>トークン化は、検索可能なフィールドに対するアナライザーの割り当てによって部分的に決定されます。 特別なアナライザー (nGram、EdgeNGram など) を使用している場合は、そのフィールドを searchFields から除外できます。 文字列がトークン化される方法の詳細については、[REST API テスト アナライザー](/rest/api/searchservice/test-analyzer)を使用したアナライザーのトークン出力について確認してください。
 
 ## <a name="extraction"></a>抽出
 

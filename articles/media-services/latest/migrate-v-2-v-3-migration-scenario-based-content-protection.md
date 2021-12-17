@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 04/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: a481759da3f1e7d67accdca7b4322db53abbcb0c
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 59f74740117ba9f549133c4ca9bcb510928eb105
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490949"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138879"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>コンテンツ保護のシナリオベースの移行ガイダンス
 
@@ -51,7 +51,7 @@ v2 エンティティに格納されているコンテンツを更新、変更�
 
 v2 API を使用して作成および発行されたすべての資産には、v3 API では `ContentKeyPolicy` と `ContentKey` の両方が存在し、`StreamingPolicy` の既定のコンテンツ キー ポリシーは使用されません。
 
-詳細については、[コンテンツ キー ポリシー](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept)のドキュメントと [ストリーミング ポリシー](https://docs.microsoft.com/azure/media-services/latest/stream-streaming-policy-concept)のドキュメントをご覧ください。
+詳細については、[コンテンツ キー ポリシー](./drm-content-key-policy-concept.md)のドキュメントと [ストリーミング ポリシー](./stream-streaming-policy-concept.md)のドキュメントをご覧ください。
 
 ## <a name="use-azure-media-services-explorer-amse-v2-and-amse-v3-tools-side-by-side"></a>Azure Media Services Explorer (AMSE) v2 と AMSE v3 ツールをサイドバイサイドで使用する
 
@@ -63,15 +63,15 @@ Media Services コード サンプルでは、ContentProtection の下にある 
 
 ## <a name="list-the-streaming-locators"></a>ストリーミング ロケーターを一覧表示する
 
-v2 API で作成された資産に関連付けられた `StreamingLocators` は、Asset エンティティで新しい v3 メソッド [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) を使用してクエリできます。  また、[ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet&preserve-view=true) の .NET クライアント SDK バージョンを参照します。
+v2 API で作成された資産に関連付けられた `StreamingLocators` は、Asset エンティティで新しい v3 メソッド [ListStreamingLocators](/rest/api/media/assets/liststreaminglocators) を使用してクエリできます。  また、[ListStreamingLocatorsAsync](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?preserve-view=true&view=azure-dotnet) の .NET クライアント SDK バージョンを参照します。
 
 `ListStreamingLocators` メソッドの結果、`StreamingPolicyName` と共にロケーターの `Name` と `StreamingLocatorId` が提供されます。
 
 ## <a name="find-the-content-keys"></a>コンテンツ キーを検索する
 
-`StreamingLocators` ととも使用される `ContentKeys` を検索するには、[StreamingLocator.ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) メソッドを呼び出すことができます。  
+`StreamingLocators` ととも使用される `ContentKeys` を検索するには、[StreamingLocator.ListContentKeysAsync](/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?preserve-view=true&view=azure-dotnet) メソッドを呼び出すことができます。  
 
-v3 API でのコンテンツ保護の詳細については、「[Media Services 動的暗号化を使用してコンテンツを保護する](https://docs.microsoft.com/azure/media-services/latest/drm-content-protection-concept)」の記事を参照してください。
+v3 API でのコンテンツ保護の詳細については、「[Media Services 動的暗号化を使用してコンテンツを保護する](./drm-content-protection-concept.md)」の記事を参照してください。
 
 ## <a name="change-the-v2-contentkeypolicy-keeping-the-same-contentkey"></a>同じ ContentKey を維持したまま v2 ContentKeyPolicy を変更する
 

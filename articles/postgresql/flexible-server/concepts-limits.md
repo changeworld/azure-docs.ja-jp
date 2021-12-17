@@ -5,18 +5,16 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 351c959a4d3b6cc53064b9d1b65c1282647f308e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/26/2021
+ms.openlocfilehash: c28e3b84251c645ff690098950066b3bb653f3df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605401"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467533"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの制限
 
-> [!IMPORTANT]
-> Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
 
 次のセクションでは、データベース サービス容量と機能の制限について説明します。 リソース (コンピューティング、メモリ、ストレージ) レベルの詳細については、[コンピューティングとストレージ](concepts-compute-storage.md)の記事を参照してください。
 
@@ -30,27 +28,28 @@ ms.locfileid: "105605401"
 | B1ms                 | 1      | 2 GiB       | 50              | 47                   |
 | B2s                  | 2      | 4 GiB       | 100             | 97                   |
 | **汎用**  |        |             |                 |                      |
-| D2s_v3               | 2      | 8 GiB       | 214             | 211                  |
-| D4s_v3               | 4      | 16 GiB      | 429             | 426                  |
-| D8s_v3               | 8      | 32 GiB      | 859             | 856                  |
-| D16s_v3              | 16     | 64 GiB      | 1718            | 1715                 |
-| D32s_v3              | 32     | 128 GiB     | 3437            | 3434                 |
-| D48s_v3              | 48     | 192 GiB     | 5000            | 4997                 |
-| D64s_v3              | 64     | 256 GiB     | 5000            | 4997                 |
+| D2s_v3  / D2ds_v4    | 2      | 8 GiB       | 859             | 856                  |
+| D4s_v3  / D4ds_v4    | 4      | 16 GiB      | 1719            | 1716                 |
+| D8s_v3  / D8ds_V4    | 8      | 32 GiB      | 3438            | 3435                 |
+| D16s_v3 / D16ds_v4   | 16     | 64 GiB      | 5000            | 4997                 |
+| D32s_v3 / D32ds_v4   | 32     | 128 GiB     | 5000            | 4997                 |
+| D48s_v3 / D48ds_v4   | 48     | 192 GiB     | 5000            | 4997                 |
+| D64s_v3 / D64ds_v4   | 64     | 256 GiB     | 5000            | 4997                 |
 | **メモリ最適化** |        |             |                 |                      |
-| E2s_v3               | 2      | 16 GiB      | 1718            | 1715                 |
-| E4s_v3               | 4      | 32 GiB      | 3437            | 3434                 |
-| E8s_v3               | 8      | 64 GiB      | 5000            | 4997                 |
-| E16s_v3              | 16     | 128 GiB     | 5000            | 4997                 |
-| E32s_v3              | 32     | 256 GiB     | 5000            | 4997                 |
-| E48s_v3              | 48     | 384 GiB     | 5000            | 4997                 |
-| E64s_v3              | 64     | 432 GiB     | 5000            | 4997                 |
+| E2s_v3  / E2ds_v4    | 2      | 16 GiB      | 1719            | 1716                 |
+| E4s_v3  / E4ds_v4    | 4      | 32 GiB      | 3438            | 3433                 |
+| E8s_v3  / E8ds_v4    | 8      | 64 GiB      | 5000            | 4997                 |
+| E16s_v3 / E16ds_v4   | 16     | 128 GiB     | 5000            | 4997                 |
+| E20ds_v4             | 20     | 160 GiB     | 5000            | 4997                 |
+| E32s_v3 / E32ds_v4   | 32     | 256 GiB     | 5000            | 4997                 |
+| E48s_v3 / E48ds_v4   | 48     | 384 GiB     | 5000            | 4997                 |
+| E64s_v3 / E64ds_v4   | 64     | 432 GiB     | 5000            | 4997                 |
 
 接続数が制限を超えると、次のエラーが表示される場合があります。
-> FATAL:  sorry, too many clients already
+> FATAL:  sorry, too many clients already. (致命的: 申し訳ありません。クライアントが多すぎます。)
 
 > [!IMPORTANT]
-> 最適なエクスペリエンスを得るために、pgBouncer のような接続プーラーを使用して、接続を効率的に管理することをお勧めします。
+> 最適なエクスペリエンスを得るために、pgBouncer のような接続プール マネージャーを使用して、接続を効率的に管理することをお勧めします。 Azure Database for PostgreSQL - フレキシブル サーバーでは、[組み込みの接続プールの管理ソリューション](concepts-pgbouncer.md)として PgBouncer が提供されます。 
 
 PostgreSQL 接続はアイドル状態であっても、約 10 MB のメモリを占有する可能性があります。 また、新しい接続の作成には時間もかかります。 ほとんどのアプリケーションでは、短時間の接続を多数要求します。これにより、この状況が悪化します。 結果として、実際のワークロードに使用できるリソースが少なくなるため、パフォーマンスが低下します。 接続プールを使用すると、アイドル状態の接続の数を削減し、既存の接続を再利用して問題を回避できます。 詳細については、[ブログ投稿](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)を参照してください。
 
@@ -82,10 +81,7 @@ PostgreSQL 接続はアイドル状態であっても、約 10 MB のメモリ�
 
 ### <a name="high-availability-ha"></a>高可用性 (HA)
 
-- ゾーン冗長 HA は現在、バースト可能のサーバーについてはサポートされていません。
-- データベース サーバーの IP アドレスは、サーバーが HA スタンバイにフェールオーバーすると変更されます。 サーバーの IP アドレスではなく、DNS レコードを必ず使用してください。
-- 論理レプリケーションが HA で構成されたフレキシブル サーバーで構成されている場合、スタンバイ サーバーでのフェールオーバー発生時に、論理レプリケーション スロットがスタンバイ サーバーにコピーされることはありません。 
-- 制限事項を含むゾーン冗長 HA の詳細については、[HA の概念に関するドキュメント](concepts-high-availability.md)のページをご覧ください。
+- [ゾーン冗長 HA の制限事項に関するドキュメント](concepts-high-availability.md#zone-redundant-high-availability---limitations) ページを参照してください。
 
 ### <a name="availability-zones"></a>可用性ゾーン
 
@@ -96,7 +92,8 @@ PostgreSQL 接続はアイドル状態であっても、約 10 MB のメモリ�
 
 - Postgres 10 以前はサポートされていません。 以前のバージョンの Postgres が必要な場合は、 [単一サーバー](../overview-single-server.md) オプションを使用することをお勧めします。
 - 現時点では、拡張機能のサポートは Postgres `contrib` 拡張機能に限定されています。
-- 現時点では、VNET 内のデータベースサーバーや、バースト可能のサーバーには、組み込みの PgBouncer 接続プーラーを使用できません。
+- 現時点では、バースト可能のサーバーには、組み込みの PgBouncer 接続プーラーを使用できません。
+- 組み込みの PgBouncer を使用した接続では、SCRAM 認証はサポートされていません。
 
 ### <a name="stopstart-operation"></a>停止/開始操作
 

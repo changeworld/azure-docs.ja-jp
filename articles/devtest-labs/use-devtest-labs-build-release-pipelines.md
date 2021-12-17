@@ -1,14 +1,14 @@
 ---
 title: Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する
 description: Azure Pipelines のビルドとリリースのパイプライン内で Azure DevTest Labs を使用する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a47f61f7e94751c6e639de83a1748970f947a8a1
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88080336"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400378"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する
 この記事では、Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する方法について説明します。 
@@ -24,32 +24,32 @@ ms.locfileid: "88080336"
 
 ビルドが正常に完了すると、**リリース パイプライン** はビルド成果物を使用してステージングまたは運用環境をデプロイします。 
 
-必要な前提の 1 つは、テスト済みのエコシステムを再作成するために必要なすべての情報が、ビルド成果物 (Azure リソースの構成を含む) 内で利用できることです。 Azure リソースを使用するとコストが発生するため、企業はこれらのリソースの使用を制御または追跡したいと考えています。 場合によっては、リソースの作成と構成に使用される Azure Resource Manager テンプレートは、IT のような別の部門によって管理されることがあります。 また、これらのテンプレートが別のリポジトリに格納されている場合があります。 これは、ビルドを作成してテストし、運用環境でシステムを適切に再作成するには、コードと構成の両方をビルド成果物内に保存する必要があるという興味深い状況につながります。 
+必要な前提の 1 つは、テスト済みのエコシステムを再作成するために必要なすべての情報が、ビルド成果物 (Azure リソースの構成を含む) 内で利用できることです。 Azure リソースを使用するとコストが発生するため、企業はこれらのリソースの使用を制御または追跡したいと考えています。 場合によっては、リソースの作成と構成に使用される Azure Resource Manager テンプレートは、IT のような別の部門によって管理されることがあります。 また、これらのテンプレートが別のリポジトリに格納されている場合があります。 これは、ビルドを作成してテストする際に興味深い状況につながります。 運用環境でシステムを再作成するには、コードと構成の両方をビルド成果物内に保存する必要があります。 
 
-ビルド/テスト フェーズ中に DevTest Labs を使用すると、Azure Resource Manager テンプレートとサポート ファイルをビルド ソースに追加できます。これにより、リリース フェーズ中に、テストに使用される正確な構成が運用環境にデプロイされます。 適切な構成を使用した **Azure DevTest Labs 環境の作成** タスクでは、ビルド成果物内に Resource Manager テンプレートが保存されます。 この例では、「[チュートリアル: Azure App Service での .NET Core および SQL Database の Web アプリの作成](../app-service/tutorial-dotnetcore-sqldb-app.md)」のコードを使用して、Azure で Web アプリをデプロイしてテストします。
+ビルドとテスト フェーズ中に DevTest Labs を使用すると、Azure Resource Manager テンプレートとサポート ファイルをビルド ソースに追加できます。 テストに使用された厳密な構成が、リリース フェーズ中に運用環境にデプロイされます。 適切な構成を使用した **Azure DevTest Labs 環境の作成** タスクでは、ビルド成果物内に Resource Manager テンプレートが保存されます。 この例では、[Azure App Service における .NET Core および SQL Database の Web アプリ作成に関するチュートリアル](../app-service/tutorial-dotnetcore-sqldb-app.md)のコードを使用して、Azure に Web アプリをデプロイしてテストします。
 
-![全体的なフロー](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
+![フロー全体を示す図。](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
 ## <a name="set-up-azure-resources"></a>Azure リソースの設定
-事前に作成する必要がある項目がいくつかあります。
+事前に 2 つの項目を作成する必要があります。
 
 - 2 つのリポジトリ。 最初の 1 つには、チュートリアルからのコードと、2 つの VM が追加された Resource Manager テンプレートが含まれます。 2 つ目には、Azure Resource Manager の基本テンプレート (既存の構成) が含まれます。
 - 運用環境のコードと構成をデプロイするためのリソース グループ。
-- ラボは、ビルド パイプラインの[構成リポジトリへの接続](devtest-lab-create-environment-from-arm.md)を使用して設定する必要があります。 DevTest Labs がテンプレートを認識してデプロイできるようにするには、Resource Manager テンプレートを metadata.json とともに azuredeploy.json として構成リポジトリにチェックインさせる必要があります。
+- ビルド パイプラインの[構成リポジトリへの接続](devtest-lab-create-environment-from-arm.md)を使用して設定されたラボ。 Resource Manager テンプレートを metadata.json と共に azuredeploy.json として構成リポジトリにチェックインしてください。 この名前によって、DevTest Labs がテンプレートを認識してデプロイできるようになります。
 
 ビルド パイプラインにより、DevTest Labs 環境が作成され、テスト用のコードがデプロイされます。
 
 ## <a name="set-up-a-build-pipeline"></a>ビルド パイプラインの設定
 Azure Pipelines で、「[チュートリアル: Azure App Service での .NET Core および SQL Database の Web アプリの作成](../app-service/tutorial-dotnetcore-sqldb-app.md)」のコードを使用して、ビルド パイプラインを作成します。 **ASP.NET Core** テンプレートを使用します。これにより、コードをビルド、テスト、発行するために必要なタスクが設定されます。
 
-![ASP.NET テンプレートの選択](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
+![ASP.NET テンプレートの選択を示すスクリーンショット。](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 
-DevTest Labs で環境を作成し、環境にデプロイするには、3 つのタスクを追加する必要があります。
+DevTest Labs で環境を作成し、環境にデプロイするには、さらに 3 つのタスクを追加します。
 
-![3 つのタスクを含むパイプライン](./media/use-devtest-labs-build-release-pipelines/pipeline-tasks.png)
+![3 つのタスクを含むパイプラインを示すスクリーンショット。](./media/use-devtest-labs-build-release-pipelines/pipeline-tasks.png)
 
 ### <a name="create-environment-task"></a>環境の作成タスク
-環境の作成タスク (**Azure DevTest Labs 環境の作成** タスク) で、ドロップダウン リストを使用して次の値を選択します。
+**Azure DevTest Labs 環境の作成** タスクで、ドロップダウン リストを使用して次の値を選択します。
 
 - Azure サブスクリプション
 - ラボの名前
@@ -64,17 +64,17 @@ DevTest Labs で環境を作成し、環境にデプロイするには、3 つ�
 
 **[Create output variables based on the environment template output]\(環境テンプレートの出力に基づいて出力変数を作成する\)** オプションを選択し、参照名を入力します。 この例では、参照名として「**BaseEnv**」を入力します。 この BaseEnv は、次のタスクを構成するときに使用します。 
 
-![Azure DevTest Labs 環境の作成タスク](./media/use-devtest-labs-build-release-pipelines/create-environment.png)
+![Azure DevTest Labs 環境の作成タスクを示すスクリーンショット。](./media/use-devtest-labs-build-release-pipelines/create-environment.png)
 
 ### <a name="populate-environment-task"></a>環境設定タスク
 2 番目のタスク (**Azure DevTest Labs 環境の設定** タスク) は、既存の DevTest Labs 環境を更新することです。 環境の作成タスクでは、このタスクの環境名を構成するために使用される **BaseEnv.environmentResourceId** が出力されます。 この例の Resource Manager テンプレートには、**adminUserName** と **adminPassword** の 2 つのパラメーターがあります。 
 
-![Azure DevTest Labs 環境の設定タスク](./media/use-devtest-labs-build-release-pipelines/populate-environment.png)
+![Azure DevTest Labs 環境の設定タスクを示すスクリーンショット。](./media/use-devtest-labs-build-release-pipelines/populate-environment.png)
 
 ## <a name="app-service-deploy-task"></a>App Service のデプロイ タスク
 3 番目のタスクは、**App Service のデプロイ** タスクです。 アプリの種類が **Web アプリ** に設定され、App Service 名が **$(WebSite)** に設定されます。
 
-![App Service のデプロイ タスク](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
+![App Service のデプロイ タスクを示すスクリーンショット。](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
 
 ## <a name="set-up-release-pipeline"></a>リリース パイプラインの設定
 **Azure のデプロイ: リソース グループの作成または更新** と **Azure App Service のデプロイ** という 2 つのタスクを使用してリリース パイプラインを作成します。 

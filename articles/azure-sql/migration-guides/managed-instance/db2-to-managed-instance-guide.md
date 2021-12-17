@@ -8,21 +8,21 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
-ms.date: 11/06/2020
-ms.openlocfilehash: 15d94e17bea6a49bb5bf6fdb6c48252365676042
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.reviewer: cawrites
+ms.date: 05/14/2021
+ms.openlocfilehash: 445384b3b9886130d1865a3ece6601cc7055573d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228165"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746628"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-managed-instance"></a>移行ガイド: IBM Db2 から Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 このガイドでは、SQL Server Migration Assistant for Db2 を使用して、IBM Db2 データベースを Azure SQL Managed Instance に移行する方法について説明します。 
 
-その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。 
+その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -61,7 +61,7 @@ SQL Server Migration Assistant を使用して評価を作成します。
 
 1. HTML レポートを確認し、変換の統計情報とエラーまたは警告を把握します。 また、Excel でレポートを開き、Db2 オブジェクトのインベントリとスキーマ変換の実行に必要な作業量を確認することもできます。 このレポートの既定の場所は、*SSMAProjects* 内のレポート フォルダーです。
 
-   たとえば、`drive:\<username>\Documents\SSMAProjects\MyDb2Migration\report\report_<date>` です。 
+   (例: `drive:\<username>\Documents\SSMAProjects\MyDb2Migration\report\report_<date>`)。 
 
    :::image type="content" source="media/db2-to-managed-instance-guide/report.png" alt-text="エラーまたは警告を識別するために確認するレポートのスクリーンショット":::
 
@@ -98,9 +98,9 @@ SQL Server Migration Assistant を使用して評価を作成します。
 
 1. 変換が完了したら、スキーマの構造を比較、確認し、潜在的な問題を特定します。 推奨事項に基づいて問題に対処します。
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/compare-review-schema-structure.png" alt-text="スキーマの構造を比較、確認し、潜在的な問題を特定するスクリーンショット。":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/compare-review-schema-structure.png" alt-text="スキーマの構造を比較、確認し、潜在的な問題を特定する方法を示すスクリーンショット。":::
 
-1. **[出力]** ペインで、 **[結果の確認]** を選択します。 **[エラー一覧]** ウィンドウで、エラーを確認します。 
+1. **[出力]** ペインで、 **[結果の確認]** を選択します。 **[エラー一覧]** ペイン、エラーを確認します。 
 1. オフライン スキーマ修復の演習のために、プロジェクトをローカルに保存します。 **[ファイル]** メニューから **[プロジェクトの保存]** を選択します。 これにより、スキーマを SQL Managed Instance に発行する前に、ソースとターゲットのスキーマをオフラインで評価し、修復を実行する機会が得られます。
 
 ## <a name="migrate"></a>Migrate
@@ -109,7 +109,7 @@ SQL Server Migration Assistant を使用して評価を作成します。
 
 スキーマを発行し、データを移行するには、次の手順を行います。
 
-1. スキーマを公開します。 **Azure SQL Managed Instance メタデータ エクスプローラー** の **[データベース]** ノードで、データベースを右クリックします。 次に、 **[データベースと同期する]** を選択します。
+1. スキーマを発行します。 **Azure SQL Managed Instance メタデータ エクスプローラー** の **[データベース]** ノードで、データベースを右クリックします。 次に、 **[データベースと同期する]** を選択します。
 
    :::image type="content" source="media/db2-to-managed-instance-guide/synchronize-with-database.png" alt-text="データベースと同期するオプションを示すスクリーンショット。":::
 
@@ -142,7 +142,7 @@ SQL Server Migration Assistant を使用して評価を作成します。
 1. **検証テストを作成する**: データベースの移行をテストするには、SQL クエリを使用する必要があります。 ソース データベースとターゲット データベースの両方に対して実行する検証クエリを作成する必要があります。 検証クエリには、定義したスコープが含まれている必要があります。
 1. **テスト環境を設定する**: テスト環境には、ソース データベースとターゲット データベースのコピーが含まれている必要があります。 必ずテスト環境を分離してください。
 1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
-1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
+1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行した後、結果を分析および比較します。
 
 ## <a name="advanced-features"></a>高度な機能 
 
@@ -156,10 +156,10 @@ SQL Server の一部の機能は、[データベース互換レベル](/sql/rela
 
 |Asset  |説明  |
 |---------|---------|
-|[データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。|
-|[Db2 zOS データ資産の検出および評価パッケージ](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|データベース上で SQL スクリプトを実行した後、結果をファイル システム上のファイルにエクスポートできます。 スプレッドシートなど、外部ツールで結果をキャプチャできるように、*.csv などの複数のファイル形式がサポートされています。 この方法を使用すると、ワークベンチをインストールしていないチームと結果を簡単に共有することができます。|
-|[IBM Db2 LUW インベントリ スクリプトと成果物](https://github.com/microsoft/DataMigrationTeam/blob/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|この資産には、IBM Db2 LUW バージョン 11.1 システム テーブルを対象とする、スキーマおよびオブジェクトの種類ごとのオブジェクトの数、各スキーマの "生データ" の概算値、および各スキーマのテーブルのサイズを提供し、結果を CSV 形式で格納する SQL クエリが含まれます。|
-|[Azure 上の Db2 LUW pureScale - 設定ガイド](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/DB2%20PureScale%20on%20Azure.pdf)|このガイドは、Db2 の実装計画の開始点として役立ちます。 業務要件は違っても、同じ基本パターンが適用されます。 このアーキテクチャ パターンは、Azure 上の OLAP アプリケーションにも使用できます。|
+|[データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130)| このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。|
+|[Db2 zOS データ資産の検出および評価パッケージ](https://www.microsoft.com/download/details.aspx?id=103108)|データベース上で SQL スクリプトを実行した後、結果をファイル システム上のファイルにエクスポートできます。 スプレッドシートなど、外部ツールで結果を取り込めるように、\*.csv などの複数のファイル形式がサポートされています。 この方法を使用すると、ワークベンチをインストールしていないチームと結果を簡単に共有することができます。|
+|[IBM Db2 LUW インベントリ スクリプトと成果物](https://www.microsoft.com/download/details.aspx?id=103109)|この資産には、IBM Db2 LUW バージョン 11.1 システム テーブルを照会する SQL クエリが含まれます。このクエリでは、スキーマおよびオブジェクトの種類ごとのオブジェクトの数、各スキーマの "生データ" の概算値、および各スキーマのテーブルのサイズを取得し、結果を CSV 形式で格納します。|
+|[IBM Db2 から SQL MI へのデータベース比較ユーティリティ](https://www.microsoft.com/download/details.aspx?id=103016)|データベース比較ユーティリティは、ソースおよびターゲット プラットフォームの両方でデータが同一であることを確認するために使用できる Windows コンソール アプリケーションです。 このツールを使用すると、すべての、または選択したテーブル、行、および列内の行または列レベルまでデータを効率的に比較できます。|
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 

@@ -4,12 +4,12 @@ description: この記事では、Azure Automation を使用して Office 365 �
 services: automation
 ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 70c8892969a3b13175c60a4e20e0cf9086112abe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f61149fd9c35cc55a3ed55fa83e6031d895fb073
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93398047"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737729"
 ---
 # <a name="manage-office-365-services"></a>Office 365 サービスを管理する
 
@@ -33,7 +33,7 @@ Azure Automation で Office 365 を使用するには、Windows PowerShell 用 M
 
 ## <a name="create-an-azure-automation-account"></a>Azure Automation アカウントを作成する
 
-この記事の手順を完了するには、Azure Automation のアカウントが必要です。 「[Azure Automation アカウントを作成する](automation-quickstart-create-account.md)」を参照してください。
+この記事の手順を完了するには、Azure Automation のアカウントが必要です。 「[Azure Automation アカウントを作成する](./quickstarts/create-account-portal.md)」を参照してください。
  
 ## <a name="add-msonline-and-msonlineext-as-assets"></a>資産としての MSOnline および MSOnlineExt の追加
 
@@ -94,7 +94,7 @@ Send-MailMessage -Credential $credObject -From $emailFromAddress -To $emailToAdd
 
 お使いのスクリプトを Azure Automation Runbook で使用できます。 例として、PowerShell の Runbook の種類を使用します。
 
-1. 新しい PowerShell Runbook を作成します。 「[Azure Automation Runbook を作成する](./automation-quickstart-create-runbook.md)」を参照してください。
+1. 新しい PowerShell Runbook を作成します。 「[Azure Automation Runbook を作成する](./learn/powershell-runbook-managed-identity.md)」を参照してください。
 2. お使いの Automation アカウントから、 **[プロセスの自動化]** の下にある **[Runbook]** を選択します。
 3. 新しい Runbook を選択し、 **[編集]** をクリックします。
 4. お使いのスクリプトをコピーし、Runbook のテキストエディターに貼り付けます。

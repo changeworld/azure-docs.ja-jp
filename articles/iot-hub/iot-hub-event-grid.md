@@ -1,23 +1,22 @@
 ---
 title: Azure IoT Hub と Event Grid | Microsoft Docs
 description: Azure Event Grid を使い、IoT Hub で発生したアクションに基づいてプロセスをトリガーします。
-author: robinsh
-manager: philmea
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da56bb4818d46f9d68e1cb8beecf16d5e771b72e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92152136"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554657"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -194,11 +193,11 @@ Event Grid 経由でテレメトリ イベントをサブスクライブする�
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>デバイス接続イベントおよびデバイス切断イベントの制限事項
 
-デバイス接続状態イベントを受信するには、デバイスで IoT Hub を使用して "D2C テレメトリ送信" または "C2D メッセージ受信" 操作を実行する必要があります。 しかし、AMQP プロトコルを使用して IoT Hub に接続するデバイスについては、"C2D メッセージ受信" 操作を実行することが推奨されます。そうしないと、接続状態の通知が数分遅延することがあります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP では、Receive Async API (IoT Hub C# SDK) または[デバイス クライアント (AMQP)](iot-hub-amqp-support.md#device-client) を呼び出すことによって、C2D リンクを開くことができます。
+デバイス接続状態イベントを受信するには、デバイスで IoT Hub を使用して、*device-to-cloud send telemetry* または *cloud-to-device receive message* 操作を呼び出す必要があります。 ただし、デバイスが AMQP プロトコルを使用して IoT Hub に接続する場合は、デバイスで "*cloud-to-device メッセージ受信*" 操作を呼び出すことをお勧めします。そうしないと、接続状態の通知が数分遅延することがあります。 デバイスが MQTT プロトコルを使用して接続する場合、IoT Hub は cloud-to-device リンクを開いたままにします。 AMQP の cloud-to-device リンクを開くには、[Receive Async API](/rest/api/iothub/device/receivedeviceboundnotification) を呼び出します。
 
-テレメトリを送信する場合は、D2C リンクが開いています。 
+device-to-cloud リンクは、デバイスがテレメトリを送信する限り、開いたままになります。
 
-デバイスの接続状態が頻繁に変化する場合、つまりデバイスが頻繁に接続されたり切断されたりする場合は、1 つ 1 つの接続状態が送信されるのではなく、接続状態が変化し続ける間、定期的なスナップショットで取得される最新の接続状態が公開されます。 異なるシーケンス番号で同じ接続状態イベントを受信する場合も、異なる接続状態イベントを受信する場合も、デバイスの接続状態に変化が生じたことを意味します。
+デバイスの接続と切断が頻繁に発生する場合、IoT Hub から 1 つ 1 つの接続状態が送信されることはありませんが、60 秒間隔の定期的なスナップショットで取得された現在の接続状態が発行されます。 異なるシーケンス番号で同じ接続状態イベントを受信する場合も、異なる接続状態イベントを受信する場合も、デバイスの接続状態に変化が生じたことを意味します。
 
 ## <a name="tips-for-consuming-events"></a>イベントの使用に関するヒント
 

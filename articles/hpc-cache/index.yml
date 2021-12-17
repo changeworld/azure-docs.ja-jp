@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: ekpgh
   ms.author: v-erkel
-  ms.date: 11/07/2019
-  ms.openlocfilehash: a31fb7a2878766e960e602e5167df4f92a978f25
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 07/08/2021
+  ms.openlocfilehash: a125d73f0f0cac5e359df6eebf537ada004b0022
+  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "87061300"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129274863"
 landingContent:
 - title: Azure HPC Cache について
   linkLists:
@@ -23,6 +23,8 @@ landingContent:
     links:
     - text: Azure HPC Cache とは
       url: hpc-cache-overview.md
+    - text: HPC Cache ソリューションがワークフローに適しているかどうか
+      url: usage-scenarios.md
 - title: はじめに
   linkLists:
   - linkListType: how-to-guide
@@ -35,8 +37,10 @@ landingContent:
       url: hpc-cache-add-storage.md
     - text: クライアントをマウントする
       url: hpc-cache-mount.md
-    - text: キャッシュを管理および監視する
+    - text: キャッシュを管理する
       url: hpc-cache-manage.md
+    - text: キャッシュ メトリックを表示する
+      url: metrics.md
   - linkListType: concept
     links:
     - text: 集約された名前空間を計画する
@@ -47,10 +51,12 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: サポート チケットを開く
+    - text: サポートにお問い合せください
       url: hpc-cache-support-ticket.md
     - text: ストレージ ターゲットを編集する
       url: hpc-cache-edit-storage.md
+    - text: ストレージ ターゲットの表示と管理
+      url: manage-storage-targets.md
     - text: ファイアウォール設定を回避して BLOB ストレージ ターゲットを作成する
       url: hpc-cache-blob-firewall-fix.md
     - text: NFS ストレージ ターゲットの作成のトラブルシューティング

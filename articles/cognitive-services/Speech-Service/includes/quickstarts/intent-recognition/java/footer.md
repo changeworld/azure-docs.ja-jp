@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: eric-urban
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
-ms.author: trbye
-ms.openlocfilehash: 5fefea97bf658d665e4aa1b6bbd32be94dd7efae
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.author: eur
+ms.openlocfilehash: 9ab7002cb0d81f06fb6d575ef9cda6ffb9386034
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136223"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507495"
 ---
 > [!div class="nextstepaction"]
 > [GitHub で Java サンプルを探索する](https://aka.ms/speech/github-java)

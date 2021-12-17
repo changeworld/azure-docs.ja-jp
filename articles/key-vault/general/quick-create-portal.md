@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2d8bfdf3a4ad8b713fb6c937d61fa437fc7977f2
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 592d97c832f950bbf5a90e4c5b97c25598e71d58
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749674"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228614"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してキー コンテナーを作成する
 
@@ -52,7 +52,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 この時点で、使用している Azure アカウントが、この新しいコンテナーで操作を実行することを許可されている唯一のアカウントになります。
 
-![Key Vault の作成が完了した後の出力](../media/quick-create-portal/vault-properties.png)
+:::image type="content" source="../media/quick-create-portal/vault-properties.png" alt-text="Key Vault の作成が完了した後の出力":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -69,5 +69,5 @@ Key Vault に関する他のクイック スタートとチュートリアルは
 このクイックスタートでは、Azure portal を使用してキー コンテナーを作成しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](overview.md)を確認する
-- 「[Azure Key Vault のセキュリティの概要](security-overview.md)」を確認する
+- 「[Azure Key Vault のセキュリティの概要](security-features.md)」を確認する
 - 「[Azure Key Vault 開発者ガイド](developers-guide.md)」を参照する

@@ -1,19 +1,22 @@
 ---
-title: Azure Data Factory を使用して Teradata Vantage からデータをコピーする
-description: Data Factory サービスの Teradata コネクタを使用すると、Teradata Vantage から、Data Factory によってサポートされているデータ ストアに、シンクとしてデータをコピーすることができます。
-author: linda33wj
+title: Teradata Vantage からデータをコピーする
+description: Azure Data Factory および Synapse Analytics の Teradata コネクタを使用すると、Teradata Vantage からサポートされているシンク データ ストアにデータをコピーできます。
+titleSuffix: Azure Data Factory & Azure Synapse
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/22/2021
-ms.author: jingwang
-ms.openlocfilehash: c65b295dca16a3453b2ee5472b9a3ee5e8d62df7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.author: jianleishen
+ms.openlocfilehash: ab5fc46d558a68503c018fb35e53801f9e6ee282
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381768"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771690"
 ---
-# <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata Vantage からデータをコピーする
+# <a name="copy-data-from-teradata-vantage-using-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory および Synapse Analytics を使用して Teradata Vantage からデータをコピーする
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 >
@@ -22,7 +25,7 @@ ms.locfileid: "100381768"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Teradata Vantage からデータをコピーする方法について説明します。 これは、[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory および Synapse Analytics パイプラインの Copy アクティビティを使用して、Teradata Vantage からデータをコピーする方法について説明します。 これは、[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -41,13 +44,37 @@ Teradata Vantage から、サポートされている任意のシンク デー�
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 セルフホステッド統合ランタイムを使用している場合は、バージョン 3.18 以降、組み込みの Teradata ドライバーが用意されていることに注意してください。 ドライバーを手動でインストールする必要はありません。 このドライバーでは、セルフホステッド統合ランタイム マシンに "Visual C++ 再頒布可能パッケージ 2012 Update 4" が必要です。 まだインストールしていない場合は、[こちら](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)からダウンロードしてください。
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-teradata-using-ui"></a>UI を使用して Teradata のリンク サービスを作成する
+
+次の手順で、Azure portal の UI を使用して Teradata のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの Manage タブに移動して、[Linked Services]\(リンク サービス\)、[New]\(新規\) を順にクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI で新しいリンク サービスを作成する。":::
+
+2. Teradata を検索して Teradata コネクタを選択します。
+
+    :::image type="content" source="media/connector-teradata/teradata-connector.png" alt-text="Teradata コネクタを選択する。":::    
+
+1. サービスの詳細を設定し、接続をテストし、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-teradata/configure-teradata-linked-service.png" alt-text="Teradata のリンク サービスを設定する。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 次のセクションでは、Teradata コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -265,19 +292,19 @@ Teradata からデータをコピーするために、コピー アクティビ�
 
 ## <a name="parallel-copy-from-teradata"></a>Teradata からの並列コピー
 
-Data Factory の Teradata コネクタは、Teradata からデータを並列でコピーするために、組み込みのデータ パーティション分割を提供します。 データ パーティション分割オプションは、コピー アクティビティの **[ソース]** テーブルにあります。
+Teradata コネクタは、Teradata からデータを並列でコピーするために、組み込みのデータ パーティション分割を提供します。 データ パーティション分割オプションは、コピー アクティビティの **[ソース]** テーブルにあります。
 
-![パーティションのオプションのスクリーンショット](./media/connector-teradata/connector-teradata-partition-options.png)
+:::image type="content" source="./media/connector-teradata/connector-teradata-partition-options.png" alt-text="パーティションのオプションのスクリーンショット":::
 
-パーティション分割されたコピーを有効にすると、Data Factory によって Teradata ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリでは、Teradata からデータの一部が取得されます。
+パーティション分割されたコピーを有効にすると、サービスによって Teradata ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリでは、Teradata からデータの一部を取得します。
 
 特に、Teradata から大量のデータを読み込む場合は、データのパーティション分割を使用した並列コピーを有効にすることをお勧めします。 さまざまなシナリオの推奨構成を以下に示します。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) ことをお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
 
 | シナリオ                                                     | 推奨設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 大きなテーブル全体を読み込む。                                   | **パーティション オプション**: Hash。 <br><br/>実行中に、Data Factory によって自動的にプライマリ インデックス列が検出され、それにハッシュが適用されて、データがパーティションごとにコピーされます。 |
-| カスタム クエリを使用して大量のデータを読み込む。                 | **パーティション オプション**: Hash。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`<br>**パーティション列**: ハッシュ パーティションの適用に使用される列を指定します。 指定されていない場合は、Teradata データセットで指定したテーブルの PK 列が Data Factory によって自動検出されます。<br><br>実行中に、Data Factory によって `?AdfHashPartitionCondition` がハッシュ パーティション ロジックに置き換えられ、Teradata に送信されます。 |
-| カスタム クエリを使用して大量のデータを読み込む (範囲パーティション分割のために値が均等に分散されている整数列がある場合)。 | **パーティション オプション**: 動的範囲パーティション。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`<br>**パーティション列**: データのパーティション分割に使用される列を指定します。 整数データ型の列に対してパーティション分割を実行できます。<br>**パーティションの上限** と **パーティションの下限**: パーティション列に対してフィルター処理を実行して、下限から上限までの範囲内のデータのみを取得する場合に指定します。<br><br>実行中に、Data Factory によって `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound`、`?AdfRangePartitionLowbound` が各パーティションの実際の列名および値の範囲に置き換えられ、Teradata に送信されます。 <br>たとえば、パーティション列 "ID" で下限が 1、上限が 80 に設定され、並列コピーが 4 に設定されている場合、Data Factory は 4 つのパーティションでデータを取得します。 これらの ID の範囲はそれぞれ [1, 20]、[21, 40]、[41, 60]、[61, 80] です。 |
+| 大きなテーブル全体を読み込む。                                   | **パーティション オプション**: Hash。 <br><br/>実行中に、サービスによって自動的にプライマリ インデックス列が検出され、それにハッシュが適用されて、データがパーティションごとにコピーされます。 |
+| カスタム クエリを使用して大量のデータを読み込む。                 | **パーティション オプション**: Hash。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`<br>**パーティション列**: ハッシュ パーティションの適用に使用される列を指定します。 指定されていない場合は、Teradata データセットで指定したテーブルの PK 列がサービスによって自動検出されます。<br><br>実行中に、サービスによって `?AdfHashPartitionCondition` がハッシュ パーティション ロジックに置き換えられ、Teradata に送信されます。 |
+| カスタム クエリを使用して大量のデータを読み込む (範囲パーティション分割のために値が均等に分散されている整数列がある場合)。 | **パーティション オプション**: 動的範囲パーティション。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`<br>**パーティション列**: データのパーティション分割に使用される列を指定します。 整数データ型の列に対してパーティション分割を実行できます。<br>**パーティションの上限** と **パーティションの下限**: パーティション列に対してフィルター処理を実行して、下限から上限までの範囲内のデータのみを取得する場合に指定します。<br><br>実行中に、サービスによって `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound`、`?AdfRangePartitionLowbound` が各パーティションの実際の列名および値の範囲に置き換えられ、Teradata に送信されます。 <br>たとえば、パーティション列 "ID" で下限が 1、上限が 80 に設定され、並列コピーが 4 に設定されている場合、サービスは 4 つのパーティションでデータを取得します。 これらの ID の範囲はそれぞれ [1, 20]、[21, 40]、[41, 60]、[61, 80] です。 |
 
 **例: ハッシュ パーティションを使用してクエリを実行する**
 
@@ -309,9 +336,9 @@ Data Factory の Teradata コネクタは、Teradata からデータを並列で
 
 ## <a name="data-type-mapping-for-teradata"></a>Teradata のデータ型マッピング
 
-Teradata からデータをコピーするときには、次のマッピングが適用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+Teradata からデータをコピーするとき、Teradata のデータ型からサービスで使用される内部データ型に次のマッピングが適用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| Teradata データ型 | Data Factory の中間データ型 |
+| Teradata データ型 | 中間サービス データ型 |
 |:--- |:--- |
 | BigInt |Int64 |
 | BLOB |Byte[] |
@@ -360,4 +387,4 @@ Teradata からデータをコピーするときには、次のマッピング�
 
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+コピー アクティビティによってソース、シンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

@@ -8,16 +8,16 @@ ms.subservice: migration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: mokabiru
+ms.author: mokabiru
+ms.reviewer: mathoma
 ms.date: 02/11/2019
-ms.openlocfilehash: fab52fcea03a2f65c868cfac27f8a8cef115b2be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3073bce2587cf08c494a5d0524a17d551ebcfa17
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94917649"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688618"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server データベースの Azure SQL Database への移行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,7 +38,7 @@ SQL Server 2005 以降のデータベースを Azure SQL Database に移行す�
 
  ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、この方法を使用して、単一データベースまたはプールされたデータベースを移行します。 チュートリアルについては、[SQL Server データベースを移行する](../../dms/tutorial-sql-server-to-azure-sql.md)を参照してください。
 
-次の一覧は、単一データベースまたはプールされたデータベースの SQL Server データベースをこの方法で移行する場合の一般的なワークフローを示します。 SQL Managed Instance への移行に関する詳細については、[SQL Managed Instance に移行する](../managed-instance/migrate-to-instance-from-sql-server.md)方法に関するページを参照してください。
+次の一覧は、単一データベースまたはプールされたデータベースの SQL Server データベースをこの方法で移行する場合の一般的なワークフローを示します。 SQL Managed Instance への移行については、[SQL Server から Azure SQL Managed Instance へのガイド](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)に関する記事を参照してください。
 
   ![VSSSDT の移行ダイアグラム](./media/migrate-to-database-from-sql-server/azure-sql-migration-sql-db.png)
 

@@ -2,16 +2,17 @@
 title: Azure Kubernetes Service (AKS) でシステム ノード プールを使用する
 description: Azure Kubernetes Service (AKS) でシステム ノード プールを作成および管理する方法について学習します
 services: container-service
+author: georgewallace
 ms.topic: article
 ms.date: 06/18/2020
-ms.author: mlearned
+ms.author: gwallace
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: 8b41b43c70f72ab327de2f1d59415cc1f49e5a5b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c164323f6a181dd29e525e698cdbc55b5cb03892
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767405"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057558"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でシステム ノード プールを管理する
 

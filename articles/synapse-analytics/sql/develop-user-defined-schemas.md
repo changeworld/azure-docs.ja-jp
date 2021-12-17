@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6920d6cd190927747a69fc4dc0f0791278665abe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bbe3e3471101df5d147c5079d6cd4a7e5ce00cb
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96451701"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287555"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Synapse SQL 内のユーザー定義のスキーマ
 
@@ -118,7 +118,7 @@ FROM    [edw].customer
 > [!NOTE]
 > スキーマ戦略を変更する場合、データベースのセキュリティ モデルを見直す必要があります。 多くの場合、スキーマ レベルでアクセス許可を割り当てることで、セキュリティ モデルを簡素化できます。
 
-きめ細かいアクセス許可が必要な場合は、データベース ロールを使用します。 データベース ロールについて詳しくは、「[データベース ロールとユーザーの管理](../../analysis-services/analysis-services-database-users.md)」の記事をご覧ください。
+きめ細かいアクセス許可が必要な場合は、データベース ロールを使用します。 データベース ロールについて詳しくは、「[データベース ロールとユーザーの管理](/sql/relational-databases/security/authentication-access/database-level-roles)」の記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

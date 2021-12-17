@@ -5,19 +5,19 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
-ms.custom: sqldbrb=1, devx-track-azurecli
+ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: sstein
-ms.date: 06/17/2020
-ms.openlocfilehash: 200df14e7d18c4bdfb903bef46c169f6f7bf5ca5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.reviewer: mathoma
+ms.date: 07/14/2021
+ms.openlocfilehash: 86d4a032b914c56518f5106072eb7a6a1634b8ff
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781777"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550724"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database と Azure Synapse の IP ファイアウォール規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -28,6 +28,10 @@ ms.locfileid: "107781777"
 > この記事は、*Azure SQL Managed Instance* には適用され "*ません*"。 ネットワーク構成については、「[Azure SQL Managed Instance にアプリケーションを接続する](../managed-instance/connect-application-instance.md)」を参照してください。
 >
 > Azure Synapse では、サーバー レベルの IP ファイアウォール規則のみがサポートされます。 データベース レベルの IP ファイアウォール規則はサポートされていません。
+
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="how-the-firewall-works"></a>ファイアウォールのしくみ
 
@@ -103,7 +107,7 @@ ms.locfileid: "107781777"
 
 Azure 内でホストされているアプリケーションから SQL Server に接続を許可するには、Azure の接続を有効にする必要があります。 Azure 接続を有効にするには、開始 IP アドレスと終了 IP アドレスが 0.0.0.0 に設定されているファイアウォール規則が必要です。
 
-Azure のアプリケーションがサーバーに接続しようとすると、ファイアウォールは、このファイアウォール規則の存在を確認することで、Azure 接続が許可されていることを確認します。 これは、 **[ファイアウォールと仮想ネットワーク]** 設定で **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に切り替えることで Azure portal から直接オンにすることができます。 [オン] に設定すると、**AllowAllWindowsIP** という名前の IP 0.0.0.0 から 0.0.0.0 の受信ファイアウォール規則が作成されます。 ポータルを使用していない場合は、PowerShell または Azure CLI を使用して、開始 IP アドレスと終了 IP アドレスが 0.0.0.0 に設定されたファイアウォール規則を作成します。 
+Azure のアプリケーションがサーバーに接続しようとすると、ファイアウォールは、このファイアウォール規則の存在を確認することで、Azure 接続が許可されていることを確認します。 これは、 **[ファイアウォールと仮想ネットワーク]** 設定で **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に切り替えることで Azure portal から直接オンにすることができます。 設定を [オン] に切り替えることで、**AllowAllWindowsAzureIps** という名前の IP 0.0.0.0 から 0.0.0.0 の受信ファイアウォール規則が作成されます。 この規則は、マスター データベースの [sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database) ビューで表示できます。 ポータルを使用していない場合は、PowerShell または Azure CLI を使用して、開始 IP アドレスと終了 IP アドレスが 0.0.0.0 に設定されたファイアウォール規則を作成します。 
 
 > [!IMPORTANT]
 > このオプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。

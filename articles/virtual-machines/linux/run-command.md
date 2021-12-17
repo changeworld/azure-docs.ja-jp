@@ -1,28 +1,31 @@
 ---
-title: Azure 上の Linux VM でシェル スクリプトを実行する
+title: アクション実行コマンドを使用して Azure の Linux VM でスクリプトを実行する
 description: このトピックでは、実行コマンド機能を使用して Azure Linux 仮想マシン内でスクリプトを実行する方法について説明します
 services: automation
 ms.service: virtual-machines
 ms.collection: linux
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/26/2019
+author: cynthn
+ms.author: cynthn
+ms.date: 10/27/2021
 ms.topic: how-to
-manager: carmonm
-ms.openlocfilehash: 73dd15a5eed3e27d9b72bc0357e35901c04ba7a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: jushiman
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a608c252b806e4b6e538ab4849ca305de7602732
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552934"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424724"
 ---
-# <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
+# <a name="run-scripts-in-your-linux-vm-by-using-action-run-commands"></a>実行コマンド アクションを使用して Linux VM でスクリプトを実行する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 実行コマンド機能では、仮想マシン (VM) エージェントを使用して Azure Linux VM 内でシェル スクリプトが実行されます。 これらのスクリプトは、マシンやアプリケーションの一般的な管理に使用できます。 これらを使用すれば、VM のアクセスおよびネットワークの問題を迅速に診断して修正し、VM を良好な状態に戻すことができます。
 
 ## <a name="benefits"></a>メリット
 
-仮想マシンには複数の方法でアクセスできます。 実行コマンドは、VM エージェントを使用して、仮想マシン上でスクリプトをリモートで実行できます。 実行コマンドは、Azure portal、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、または Linux VM 用の [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) から使用します。
+仮想マシンには複数の方法でアクセスできます。 実行コマンドは、VM エージェントを使用して、仮想マシン上でスクリプトをリモートで実行できます。 実行コマンドは、Azure portal、[REST API](/rest/api/compute/virtual-machines-run-commands/run-command)、または Linux VM 用の [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) から使用します。
 
 この機能は、仮想マシン内でスクリプトを実行するすべてのシナリオで役立ちます。 これは、ネットワークまたは管理ユーザーの構成が正しくないために RDP または SSH ポートが開かれていない仮想マシンをトラブルシューティングして修正する、限られた方法の 1 つです。
 
@@ -68,7 +71,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 ## <a name="azure-portal"></a>Azure portal
 
-[Azure portal](https://portal.azure.com) 内の VM に移動し、 **[操作]** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
+[Azure portal](https://portal.azure.com) で VM に移動し、左側のメニューの **[Operations]\(操作\)** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
 
 ![コマンドの一覧](./media/run-command/run-command-list.png)
 

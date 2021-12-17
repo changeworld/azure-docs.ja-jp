@@ -11,6 +11,8 @@
       href: tutorial-enable-sspr.md
     - name: Azure AD の Multi-Factor Authentication を有効にする
       href: tutorial-enable-azure-mfa.md
+    - name: クラウド同期パスワード ライトバックを有効にする (プレビュー)
+      href: tutorial-enable-cloud-sync-sspr-writeback.md
     - name: オンプレミスへのパスワード ライトバックを有効にする
       href: tutorial-enable-sspr-writeback.md
     - name: カスタムの禁止パスワード リストを構成する
@@ -55,11 +57,15 @@
         - name: ライセンス
           href: concept-mfa-licensing.md
         - name: Office 365 での MFA
-          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication
+          href: /microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication
         - name: よく寄せられる質問
-          href: multi-factor-authentication-faq.md
+          href: multi-factor-authentication-faq.yml
+        - name: オペレーターのサポート
+          href: concept-authentication-operator-assistance.md
     - name: パスワード保護
       items:
+        - name: 統合されたパスワード ポリシー チェック
+          href: concept-password-ban-bad-combined-policy.md
         - name: クラウドで脆弱なパスワードを排除する
           href: concept-password-ban-bad.md
         - name: オンプレミスで脆弱なパスワードを排除する
@@ -88,6 +94,8 @@
           href: howto-mfa-mfasettings.md
         - name: ユーザーの構成
           href: howto-mfa-userdevicesettings.md
+        - name: カバレッジ ギャップの検索
+          href: how-to-authentication-find-coverage-gaps.md
         - name: ユーザーごとの MFA の有効化
           href: howto-mfa-userstates.md
         - name: 認証プロバイダーの構成
@@ -151,13 +159,23 @@
         - name: トラブルシューティング
           href: howto-password-ban-bad-on-premises-troubleshoot.md
         - name: FAQ
-          href: howto-password-ban-bad-on-premises-faq.md
+          href: howto-password-ban-bad-on-premises-faq.yml
         - name: エージェントのバージョン履歴
           href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: 登録キャンペーンを実行する
+      href: how-to-mfa-registration-campaign.md
+    - name: 数値の照合を使用する (プレビュー)
+      href: how-to-mfa-number-match.md
+    - name: 追加コンテキストを使用する (プレビュー)
+      href: how-to-mfa-additional-context.md
+    - name: Microsoft によって管理される設定を使用する
+      href: how-to-mfa-microsoft-managed.md
     - name: 一時アクセス パス (プレビュー) の使用
       href: howto-authentication-temporary-access-pass.md
     - name: SMS ベースの認証を使用する
       href: howto-authentication-sms-signin.md
+    - name: SMS ベースの認証でサポートされているアプリ
+      href: how-to-authentication-sms-supported-apps.md
     - name: 双方向 SMS のサポート終了
       href: how-to-authentication-two-way-sms-unsupported.md
     - name: メール アドレスのサインインを使用する
@@ -185,6 +203,14 @@
           href: howto-mfa-reporting-datacollection.md
     - name: MFA サーバー
       items:
+        - name: MFA サーバーを Azure AD MFA に移行する
+          items:
+            - name: 概要
+              href: how-to-migrate-mfa-server-to-azure-mfa.md
+            - name: Azure MFA とユーザー認証に移行する
+              href: how-to-migrate-mfa-server-to-azure-mfa-user-authentication.md
+            - name: フェデレーションを使用して Azure MFA に移行する
+              href: how-to-migrate-mfa-server-to-azure-mfa-with-federation.md
         - name: オンプレミスでの MFA のデプロイ
           href: howto-mfaserver-deploy.md
         - name: ユーザー ポータルのインストール
@@ -215,8 +241,8 @@
           items:
             - name: AD FS 2.0 を使用する
               href: howto-mfaserver-adfs-2.md
-            - name: Windows Server 2012 R2 AD FS を使用する
-              href: howto-mfaserver-adfs-2012.md
+            - name: Windows Server の AD FS を使用する
+              href: howto-mfaserver-adfs-windows-server.md
         - name: RADIUS 統合
           items:
             - name: リモート デスクトップ ゲートウェイ
@@ -232,17 +258,17 @@
         - name: SSPR の書き戻し
           href: troubleshoot-sspr-writeback.md
         - name: SSPR に関する FAQ
-          href: active-directory-passwords-faq.md
+          href: active-directory-passwords-faq.yml
         - name: MFA に関する FAQ
-          href: multi-factor-authentication-faq.md
+          href: multi-factor-authentication-faq.yml
         - name: NPS 拡張機能
           href: howto-mfa-nps-extension-errors.md
 - name: リファレンス
   items:
     - name: MFA ユーザー ガイド
-      href: ../user-help/multi-factor-authentication-end-user-first-time.md
+      href: 'https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc'
     - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
+      href: /samples/browse/?products=azure
     - name: Azure PowerShell コマンドレット
       href: /powershell/azure/
     - name: Microsoft Graph REST API ベータ版
@@ -251,14 +277,16 @@
       href: ../enterprise-users/directory-service-limits-restrictions.md
     - name: FIDO2 互換性
       href: fido2-compatibility.md
+    - name: FIDO2 プロバイダーになる
+      href: concept-fido2-hardware-vendor.md
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム
-      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+      href: 'https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789'
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-active-directory.html
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+      href: 'https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing'
     - name: サービスの更新情報
       href: ../fundamentals/whats-new.md
     - name: Stack Overflow

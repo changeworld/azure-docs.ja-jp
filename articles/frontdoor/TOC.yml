@@ -4,6 +4,8 @@
   items:
     - name: Azure Front Door とは
       href: front-door-overview.md
+    - name: 適切なロードバランサーを選択する
+      href: /azure/architecture/guide/technology-choices/load-balancing-overview?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
 - name: クイックスタート
   expanded: true
   items:
@@ -18,14 +20,6 @@
       href: quickstart-create-front-door-template.md
 - name: チュートリアル
   items:
-    - name: Front Door にカスタム ドメインを追加する
-      href: front-door-custom-domain.md
-    - name: カスタム ドメインに対する HTTPS の有効化
-      href: front-door-custom-domain-https.md
-    - name: フロント ドアに geo フィルタリング ポリシーを設定する
-      href: front-door-tutorial-geo-filtering.md
-    - name: ルール エンジンを設定する
-      href: front-door-tutorial-rules-engine.md
     - name: ルール エンジンを使用してセキュリティ ヘッダーを追加する
       href: front-door-security-headers.md
     - name: Web アプリケーション ファイアウォールと Front Door
@@ -36,70 +30,110 @@
       href: front-door-quickstart-template-samples.md
 - name: 概念
   items:
-    - name: Standard/Premium SKU
+    - name: Standard および Premium レベル
       href: standard-premium/overview.md
-    - name: Security
+    - name: キャッシュ
+      href: front-door-caching.md
+    - name: ルーティング
       items:
-        - name: セキュリティ ベースライン
-          href: security-baseline.md
+        - name: ルーティング アーキテクチャ
+          href: front-door-routing-architecture.md
+        - name: ルートの照合
+          href: front-door-route-matching.md
     - name: バック エンドとバックエンド プール
       href: front-door-backend-pool.md
-    - name: Front Door でのキャッシュ
-      href: front-door-caching.md
-    - name: DDoS 保護
-      href: front-door-ddos.md
-    - name: Front Door に関する FAQ
-      href: front-door-faq.md
-    - name: geo フィルタリング
-      href: front-door-geo-filtering.md
+    - name: 負荷分散方法
+      href: front-door-routing-methods.md
     - name: 正常性プローブ
       href: front-door-health-probes.md
-    - name: Front Door が要求のルーティングと一致する仕組み
-      href: front-door-route-matching.md
-    - name: HTTP/2 のサポート
-      href: front-door-http2.md
-    - name: HTTP ヘッダー プロトコルのサポート
-      href: front-door-http-headers-protocol.md
-    - name: Azure のアプリケーション配信スイートでの負荷分散
-      href: front-door-lb-with-azure-app-delivery-suite.md
-    - name: 監視
-      href: front-door-diagnostics.md
-    - name: ルーティング アーキテクチャ
-      href: front-door-routing-architecture.md
-    - name: トラフィックのルーティング方法
-      href: front-door-routing-methods.md
+    - name: ワイルドカード ドメイン
+      href: front-door-wildcard-domain.md
+    - name: ルール エンジン
+      items:
+        - name: ルール エンジンのアーキテクチャ
+          href: front-door-rules-engine.md
+        - name: ルール一致条件
+          href: rules-match-conditions.md
+        - name: ルール アクション
+          href: rules-actions.md
     - name: URL 書き換え
       href: front-door-url-rewrite.md
     - name: URL リダイレクト
       href: front-door-url-redirect.md
-    - name: ワイルドカード ドメイン
-      href: front-door-wildcard-domain.md
-    - name: ルール エンジン
-      href: front-door-rules-engine.md
-    - name: ルール エンジンの一致条件
-      href: front-door-rules-engine-match-conditions.md
-    - name: ルール エンジンのアクション
-      href: front-door-rules-engine-actions.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: /security/benchmark/azure/baselines/front-door-security-baseline?toc=/azure/frontdoor/TOC.json
+        - name: DDoS 保護
+          href: front-door-ddos.md
+        - name: エンド ツー エンド TLS 暗号化
+          href: concept-end-to-end-tls.md
+        - name: Web アプリケーション ファイアウォール
+          items:
+            - name: チューニング
+              href: ../web-application-firewall/afds/waf-front-door-tuning.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+            - name: マネージド ルール
+              href: ../web-application-firewall/afds/waf-front-door-drs.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+            - name: カスタム規則
+              href: ../web-application-firewall/afds/waf-front-door-custom-rules.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+            - name: 除外リスト
+              href: ../web-application-firewall/afds/waf-front-door-exclusion.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+            - name: ポリシー設定
+              href: ../web-application-firewall/afds/waf-front-door-policy-settings.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+            - name: geo フィルタリング
+              href: front-door-geo-filtering.md
+    - name: プロトコル
+      items:
+        - name: HTTP/2
+          href: front-door-http2.md
+    - name: Azure のアプリケーション配信での負荷分散
+      href: front-door-lb-with-azure-app-delivery-suite.md
+    - name: よく寄せられる質問
+      href: front-door-faq.yml
 - name: 操作方法ガイド
   items:
-    - name: トラフィックのリダイレクト
+    - name: 構成
       items:
-        - name: HTTP および HTTPS リダイレクトを使用したフロント ドアの構成
-          href: front-door-how-to-redirect-https.md
-    - name: カスタム ドメインのオンボード
-      items:
-        - name: ルートまたは頂点のドメインのオンボード
+        - name: カスタム ドメインの追加
+          href: front-door-custom-domain.md
+        - name: カスタム ドメインで HTTPS を構成する
+          href: front-door-custom-domain-https.md
+        - name: ルートまたは頂点のドメインの追加
           href: front-door-how-to-onboard-apex-domain.md
+        - name: ルール エンジンを設定する
+          href: front-door-tutorial-rules-engine.md
+        - name: HTTP から HTTPS へのリダイレクトの構成
+          href: front-door-how-to-redirect-https.md
+    - name: Web アプリケーション ファイアウォールを使ってセキュリティを保護する
+      items:
+        - name: セキュリティ ポリシーを構成する
+          href: ../web-application-firewall/afds/waf-front-door-create-portal.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+        - name: ジオフィルタリングの構成
+          href: front-door-tutorial-geo-filtering.md
+        - name: レート制限を構成する
+          href: ../web-application-firewall/afds/waf-front-door-rate-limit-powershell.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+        - name: IP 制限を構成する
+          href: ../web-application-firewall/afds/waf-front-door-configure-ip-restriction.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+    - name: 監視
+      href: front-door-diagnostics.md
     - name: トラブルシューティング
       items:
-        - name: ルーティングの問題のトラブルシューティング
-          href: front-door-troubleshoot-routing.md
+        - name: Front Door の問題のトラブルシューティング
+          href: troubleshoot-issues.md
         - name: 許可された証明機関
-          href: front-door-troubleshoot-allowed-ca.md
+          href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: リファレンス
   items:
+    - name: HTTP ヘッダー プロトコルのサポート
+      href: front-door-http-headers-protocol.md
+    - name: Azure Front Door のエッジ ロケーション
+      items:
+        - name: リージョン別のエッジ ロケーション
+          href: edge-locations-by-region.md
+        - name: 略称別の エッジ ロケーション
+          href: edge-locations-by-abbreviation.md
     - name: Azure CLI
-      href: /cli/azure/ext/front-door/
+      href: /cli/azure/afd/
     - name: Azure PowerShell
       href: /powershell/module/az.frontdoor
     - name: REST API

@@ -2,13 +2,13 @@
 title: 'クイックスタート: Go を使用してイベントを送受信する - Azure Event Hubs'
 description: 'クイックスタート: この記事では、Azure Event Hubs からイベントを送信する Go アプリケーションを作成するためのチュートリアルを提供します。'
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: ededd042dadd6059bd7b2d689cff78fe1bd6af0b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 11/11/2021
+ms.openlocfilehash: d70fdf86709257604d9176a760f0892dd9139420
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311092"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343346"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>クイックスタート: Go を使用して Event Hubs との間でイベントを送受信する
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
@@ -80,7 +80,7 @@ if err != nil {
 
 ```go
 hub, err := eventhubs.NewHub("namespaceName", "hubName", tokenProvider)
-ctx := context.WithTimeout(context.Background(), 10 * time.Second)
+ctx, cancel := context.WithTimeout(context.Background(), 10 * time.Second)
 defer hub.Close(ctx)
 if err != nil {
     log.Fatalf("failed to get hub %s\n", err)

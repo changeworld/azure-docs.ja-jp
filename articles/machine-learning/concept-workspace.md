@@ -1,5 +1,5 @@
 ---
-title: ワークスペースとは
+title: ワークスペースとは?
 titleSuffix: Azure Machine Learning
 description: ワークスペースは、Azure Machine Learning の最上位のリソースです。 スクリプトのログ、メトリック、出力、スナップショットとともに、すべてのトレーニング実行の履歴も保持されています。
 services: machine-learning
@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 09/22/2020
-ms.openlocfilehash: 2365e42c3c8b34eba1814ba683eaf1f878b674ce
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 10/21/2021
+ms.openlocfilehash: d5de2e9207b1dd84f97610937bb6f3adfc42a75a
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062405"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559791"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
 ワークスペースは、Azure Machine Learning の最上位のリソースで、Azure Machine Learning を使用するときに作成するすべての成果物を操作するための一元的な場所を提供します。  ワークスペースには、スクリプトのログ、メトリック、出力、スナップショットなど、すべてのトレーニング実行の履歴が保持されます。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します。  
 
-必要なモデルを作成したら、ワークスペースに登録します。 次に、登録済みモデルとスコアリング スクリプトを使用して、Azure Container Instances、Azure Kubernetes Service、または Field-Programmable Gate Array (FPGA) に REST ベースの HTTP エンドポイントとしてデプロイします。 モジュールとして Azure IoT Edge デバイスにモデルをデプロイすることもできます。
+必要なモデルを作成したら、ワークスペースに登録します。 次に、登録済みモデルとスコアリング スクリプトを使用して、Azure Container Instances、Azure Kubernetes Service、または Field-Programmable Gate Array (FPGA) に REST ベースの HTTP エンドポイントとしてデプロイします。
 
 ## <a name="taxonomy"></a>分類 
 
@@ -53,7 +53,6 @@ ms.locfileid: "106062405"
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Azure Machine Learning デザイナー](concept-designer.md) 
 + [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro) を使用したすべての Python 環境で。
-+ [Azure Machine Learning SDK for R (プレビュー)](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用したすべての R 環境で。
 + コマンド ラインでは Azure Machine Learning [CLI 拡張機能](./reference-azure-machine-learning-cli.md)を使用
 + [Azure Machine Learning VS Code 拡張機能](how-to-manage-resources-vscode.md#workspaces)
 
@@ -74,7 +73,7 @@ ms.locfileid: "106062405"
 
 次のワークスペース管理タスクを実行することもできます。
 
-| ワークスペース管理タスク   | ポータル              | スタジオ | Python SDK/R SDK       | CLI        | VS Code
+| ワークスペース管理タスク   | ポータル              | スタジオ | Python SDK      | Azure CLI        | VS Code
 |---------------------------|---------|---------|------------|------------|------------|
 | ワークスペースの作成        | **&check;**     | | **&check;** | **&check;** | **&check;** |
 | ワークスペース アクセスの管理    | **&check;**   || |  **&check;**    ||
@@ -96,6 +95,15 @@ ms.locfileid: "106062405"
 > [!NOTE]
 > ワークスペース名では、大文字と小文字は区別されません。
 
+## <a name="sub-resources"></a><a name="sub-resources"></a>サブ リソース
+
+これらのサブ リソースは、AML ワークスペースで作成される主要なリソースです。
+
+* VM: AML ワークスペースのコンピューティング能力を提供します。モデルのデプロイとトレーニングに不可欠な要素です。
+* ロード バランサー: コンピューティング インスタンスおよびクラスターが停止している場合でもトラフィックを管理するために、コンピューティング インスタンスとコンピューティング クラスターごとにネットワーク ロード バランサーが作成されます。
+* 仮想ネットワーク: これらは、Azure リソースが互いに通信したり、インターネットやその他のオンプレミス ネットワークと通信したりするために役立ちます。
+* 帯域幅: リージョン間のすべてのアウトバウンド データ転送をカプセル化します。
+
 ## <a name="associated-resources"></a><a name="resources"></a> 関連するリソース
 
 新しいワークスペースを作成すると、ワークスペースによって使用される複数の Azure リソースが自動的に作成されます。
@@ -105,16 +113,24 @@ ms.locfileid: "106062405"
   > [!IMPORTANT]
   > 既定では、ストレージ アカウントは汎用 v1 アカウントです。 ワークスペースの作成後に、[これを汎用 v2 にアップグレード](../storage/common/storage-account-upgrade.md)することができます。 汎用 v2 にアップグレードした後は、ストレージ アカウントで階層型名前空間を有効にしないでください。
 
-  既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) であってはいけません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの _既定の_ ストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
+  既存の Azure Storage アカウントを使用する場合は、種類 BlobStorage や Premium アカウント (Premium_LRS と Premium_GRS) であってはいけません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの "_既定の_" ストレージ アカウントでは、Premium Storage も階層型名前空間もサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
   
-+ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/):トレーニング中およびモデルのデプロイ時に使用する Docker コンテナーを登録します。 コストを最小限に抑えるために、ACR は、デプロイ イメージが作成されるまで **遅延読み込み** されます。
++ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): 以下のコンポーネントに対して使用される Docker コンテナーを登録します。
+    * モデルのトレーニングおよびデプロイ時には、[Azure Machine Learning 環境](concept-environments.md)
+    * デプロイ時には [AutoML](concept-automated-ml.md)
+    * [データ プロファイル](how-to-connect-data-ui.md#data-profile-and-preview)
+
+    コストを最小限に抑えるために、ACR は、イメージが必要になるまでは **遅延読み込み** されます。
+
+    > [!NOTE]
+    > サブスクリプションの設定で、配下のリソースにタグを追加することが要求されている場合、Azure Machine Learning によって作成される Azure Container Registry (ACR) でエラーが発生します。Microsoft が ACR にタグを設定することはできないためです。
 
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/):モデルに関する監視情報を格納します。
 
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/):コンピューティング先で使用されるシークレット、およびワークスペースで必要な他の機密情報を格納します。
 
 > [!NOTE]
-> 代わりに、[Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace)、[R SDK](https://azure.github.io/azureml-sdk-for-r/reference/create_workspace.html)、または Azure Machine Learning CLI ([ARM テンプレートを使用](how-to-create-workspace-template.md)) を使用してワークスペースを作成するときに、既存の Azure リソース インスタンスを使用することができます。
+> 代わりに、[ARM テンプレートを使用](how-to-create-workspace-template.md)して [Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace) または Azure Machine Learning CLI でワークスペースを作成するときに、既存の Azure リソース インスタンスを使用することができます。
 
 <a name="wheres-enterprise"></a>
 
@@ -128,11 +144,12 @@ ms.locfileid: "106062405"
 
 ## <a name="next-steps"></a>次のステップ
 
+組織の要件に合わせてワークスペースを計画する方法の詳細については、[Azure Machine Learning の整理とセットアップ](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-resource-organization)に関するページを参照してください。
+
 Azure Machine Learning の利用を開始するには、以下を参照してください。
 
-+ [Azure Machine Learning の概要](overview-what-is-azure-ml.md)
++ [Azure Machine Learning とは](overview-what-is-azure-machine-learning.md)
 + [ワークスペースの作成と管理](how-to-manage-workspace.md)
-+ [チュートリアル: ](tutorial-1st-experiment-sdk-setup-local.md)個人の開発環境で Azure Machine Learning の使用を開始する
-+ [チュートリアル: コンピューティング インスタンスで初めての ML 実験の作成を開始する](tutorial-1st-experiment-sdk-setup.md)
++ [チュートリアル: Azure Machine Learning の使用を開始する](quickstart-create-resources.md)
 + [チュートリアル:自動機械学習を使用して最初の分類モデルを作成する](tutorial-first-experiment-automated-ml.md) 
 + [チュートリアル:デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)

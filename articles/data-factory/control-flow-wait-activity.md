@@ -1,19 +1,22 @@
 ---
-title: Azure Data Factory の Wait アクティビティ
-description: Wait アクティビティは、指定した期間にわたってパイプラインの実行を停止します。
-author: dcstwh
-ms.author: weetok
+title: Wait アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Synapse Analytics の Wait アクティビティは、指定した期間にわたってパイプラインの実行を停止します。
+author: chez-charlie
+ms.author: chez
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/12/2018
-ms.openlocfilehash: 9271723e68e5edd6805f0197bca9cdefc3c5e921
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.openlocfilehash: dfc74e9ada7715f9c954123892a93611df7eca9d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100388330"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798923"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>Azure Data Factory での wait アクティビティの実行
+# <a name="execute-wait-activity-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory と Synapse Analytics で Wait アクティビティを実行する
 パイプラインで Wait アクティビティを使用すると、パイプラインは、指定した期間待った後、後続のアクティビティの実行を続行します。 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -43,7 +46,7 @@ waitTimeInSeconds | パイプラインが処理を続行するまでの待ち時
 ## <a name="example"></a>例
 
 > [!NOTE]
-> このセクションでは、パイプラインを実行するための JSON の定義とサンプル PowerShell コマンドを紹介しています。 Azure PowerShell と JSON 定義を使用して Data Factory パイプラインを作成するための詳細な手順が記載されているチュートリアルについては、[Azure PowerShell を使用したデータ ファクトリの作成に関するチュートリアル](quickstart-create-data-factory-powershell.md)を参照してください。
+> このセクションでは、パイプラインを実行するための JSON の定義とサンプル PowerShell コマンドを紹介しています。 Azure PowerShell と JSON 定義を使用してパイプラインを作成するための詳細な手順が記載されているチュートリアルについては、[Azure PowerShell を使用したデータ ファクトリの作成に関するチュートリアル](quickstart-create-data-factory-powershell.md)を参照してください。
 
 ### <a name="pipeline-with-wait-activity"></a>Wait アクティビティを含むパイプライン
 この例では、パイプラインに **Until** および **Wait** という 2 つのアクティビティが含まれています。 Wait アクティビティは、1 秒間待つように構成されています。 パイプラインは、実行の間の待ち時間が 1 秒に設定されたループ内で Web アクティビティを実行します。 
@@ -97,7 +100,7 @@ waitTimeInSeconds | パイプラインが処理を続行するまでの待ち時
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
+サポートされている他の制御フロー アクティビティを参照してください。 
 
 - [If Condition アクティビティ](control-flow-if-condition-activity.md)
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)

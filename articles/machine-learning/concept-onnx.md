@@ -1,5 +1,5 @@
 ---
-title: 'ONNX: 高パフォーマンスなクロス プラットフォームの推論'
+title: 'ONNX モデル: 推論を最適化する'
 titleSuffix: Azure Machine Learning
 description: Open Neural Network Exchange (ONNX) の使用が機械学習モデルの推論の最適化にどのように寄与するかについて説明します。
 services: machine-learning
@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: prasantp
 author: prasanthpul
-ms.date: 06/18/2020
+ms.date: 10/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 5a1ed6c43e4d3a96e0e19d7be50e1e16bcab780e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79127d816e84a0b6fa80d0288cbc928b0e6d7df8
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98071240"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555136"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX と Azure Machine Learning:ML モデルの作成と能率化
 
@@ -79,7 +79,7 @@ results = session.run(["output1", "output2"], {
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-完全な Python API リファレンスについては、[ONNX Runtime リファレンス ドキュメント](https://aka.ms/onnxruntime-python)を参照してください。    
+完全な Python API リファレンスについては、[ONNX Runtime リファレンス ドキュメント](https://onnxruntime.ai/docs/api/python/api_summary.html)を参照してください。  
 
 ## <a name="examples"></a>例
 ONNX モデルを作成してデプロイする Python ノートブックの例は、[how-to-use-azureml/deployment/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) を参照してください。

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 03/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b877ecbdca06ff73d152e1b491e993798a99f98a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd419902055758a089772a2ee99c40c4e66ff750
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103233516"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235214"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>PowerShell を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 
@@ -24,7 +24,7 @@ Azure Kubernetes Service (AKS) は、クラスターをすばやくデプロイ�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール][install-azure-powershell]」を参照してください。 また、Az.Aks PowerShell モジュールもインストールする必要があります。 
+ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール][install-azure-powershell]」を参照してください。 また、Az.Aks PowerShell モジュールもインストールする必要があります。
 
 ```azurepowershell-interactive
 Install-Module Az.Aks
@@ -77,7 +77,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 `ssh-keygen` コマンドライン ユーティリティを使用して、SSH キー ペアを生成します。 詳細については、「[簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する](../virtual-machines/linux/mac-create-ssh-keys.md)」を参照してください。
 
-Windows Server コンテナー用のノード プールをサポートする AKS クラスターを実行するには、[Azure CNI][azure-cni-about] の (高度な) ネットワーク プラグインを使用するネットワーク ポリシーを、ご利用のクラスターで使用する必要があります。 必要なサブネット範囲とネットワークに関する考慮事項を計画するのに役立つ詳細情報については、[Azure CNI ネットワークの構成][use-advanced-networking]に関するページを参照してください。 **myAKSCluster** という名前の AKS クラスターを作成するには、下の [New-AzAks][new-azaks] コマンドレットを使用します。 次の例では、必要なネットワーク リソースが存在しない場合、それらが作成されます。
+Windows Server コンテナー用のノード プールをサポートする AKS クラスターを実行するには、[Azure CNI][azure-cni-about] の (高度な) ネットワーク プラグインを使用するネットワーク ポリシーを、ご利用のクラスターで使用する必要があります。 必要なサブネット範囲とネットワークに関する考慮事項を計画するのに役立つ詳細情報については、[Azure CNI ネットワークの構成][use-advanced-networking]に関するページを参照してください。 **myAKSCluster** という名前の AKS クラスターを作成するには、下の [New-AzAksCluster][new-azakscluster] コマンドレットを使用します。 次の例では、必要なネットワーク リソースが存在しない場合、それらが作成されます。
 
 > [!NOTE]
 > クラスターが確実に動作するようにするには、既定のノード プールで少なくとも 2 つのノードを実行する必要があります。
@@ -101,7 +101,7 @@ New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCoun
 New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin
 ```
 
-上記のコマンドでは、**npwin** という名前の新しいノード プールが作成され、それが **myAKSCluster** に追加されます。 Windows Server コンテナーを実行するノード プールを作成する場合、**VmSize** の既定値は **Standard_D2s_v3** となります。 **VmSize** パラメーターを設定することを選択した場合は、[制限された VM サイズ][restricted-vm-sizes]の一覧を確認してください。 推奨される最小サイズは、**Standard_D2s_v3** です。 前記のコマンドではまた、`New-AzAks` の実行時に作成された既定の VNET 内の既定のサブネットが使用されます。
+上記のコマンドでは、**npwin** という名前の新しいノード プールが作成され、それが **myAKSCluster** に追加されます。 Windows Server コンテナーを実行するノード プールを作成する場合、**VmSize** の既定値は **Standard_D2s_v3** となります。 **VmSize** パラメーターを設定することを選択した場合は、[制限された VM サイズ][restricted-vm-sizes]の一覧を確認してください。 推奨される最小サイズは、**Standard_D2s_v3** です。 前記のコマンドではまた、`New-AzAksCluster` の実行時に作成された既定の VNET 内の既定のサブネットが使用されます。
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
@@ -155,7 +155,7 @@ spec:
         app: sample
     spec:
       nodeSelector:
-        "beta.kubernetes.io/os": windows
+        "kubernetes.io/os": windows
       containers:
       - name: sample
         image: mcr.microsoft.com/dotnet/framework/samples:aspnetapp
@@ -262,7 +262,7 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [new-azresourcegroup]: /powershell/module/az.resources/new-azresourcegroup
 [azure-cni-about]: concepts-network.md#azure-cni-advanced-networking
 [use-advanced-networking]: configure-azure-cni.md
-[new-azaks]: /powershell/module/az.aks/new-azaks
+[new-azakscluster]: /powershell/module/az.aks/new-azakscluster
 [restricted-vm-sizes]: quotas-skus-regions.md#restricted-vm-sizes
 [import-azakscredential]: /powershell/module/az.aks/import-azakscredential
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests

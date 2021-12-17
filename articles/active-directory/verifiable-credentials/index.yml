@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: Azure Active Directory の検証可能な資格情報のドキュメント (プレビュー)
+summary: 検証可能な資格情報は、顧客が自分自身のデータを管理できるようにするソリューションの構築に役立ちます。
+metadata:
+  author: barclayn
+  description: 検証可能な資格情報をソリューションに組み込んで、顧客が自分自身に関する情報を制御できるようにする方法について説明します
+  manager: karenh444
+  ms.author: barclayn
+  ms.collection: na
+  ms.date: 10/13/2021
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 8a69a36231d2eb47307537da0e39ab4306942669
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "130006795"
+landingContent:
+- title: 主要概念
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Active Directory の検証可能な資格情報の概要
+      url: decentralized-identifier-overview.md
+  - linkListType: overview
+    links:
+    - text: 分散化 ID の基本原則
+      url: https://www.microsoft.com/security/blog/2021/10/06/microsofts-5-guiding-principles-for-decentralized-identities/
+  - linkListType: video
+    links:
+    - text: リソースへのアクセスを管理する
+      url: https://www.youtube.com/watch?v=r20hCF9NbTo
+- title: Azure Active Directory の検証可能な資格情報サービスの詳細
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 検証可能な資格情報のスタート ガイド
+      url: enable-your-tenant-verifiable-credentials.md
+  - linkListType: tutorial
+    links:
+    - text: 検証可能な資格情報を発行する
+      url: verifiable-credentials-configure-issuer.md
+- title: 検証可能な資格情報ソリューションを構築する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: アーキテクチャを計画する
+      url: introduction-to-verifiable-credentials-architecture.md
+  - linkListType: how-to-guide
+    links:
+    - text: 発行者用の要求サービス API
+      url: issuance-request-api.md
+  - linkListType: how-to-guide
+    links:
+    - text: 検証者用の要求サービス API
+      url: presentation-request-api.md

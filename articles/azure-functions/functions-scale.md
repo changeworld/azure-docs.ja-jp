@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 079ac41f8b138bccbe4d435a79836d3acee71b7d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9deb2e40c081b776a8dfa5fc5fb96efcfc4c219f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728625"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252941"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions のホスティング オプション
 
@@ -22,7 +22,10 @@ Azure で Function App を作成するときは、アプリのホスティング
 * 各 Function App  インスタンスに利用できるリソース。
 * Azure Virtual Network 接続などの高度な機能のサポート。
 
-この記事では、さまざまなホスティング プランの詳しい比較を、Kubernetes ベースのホスティングと共に示します。
+この記事では、さまざまなホスティング プランの詳しい比較を、[Kubernetes ベースのホスティング](functions-kubernetes-keda.md)と共に示します。
+
+> [!NOTE]
+> Kubernetes クラスターで関数をホストする場合は、[Azure Arc 対応 Kubernetes クラスター](../azure-arc/kubernetes/overview.md)の使用を検討してください。 現在、Azure Arc 対応 Kubernetes クラスターでのホスティングはプレビュー段階です。 詳細は、「[Azure Arc の App Service、Functions、および Logic Apps](../app-service/overview-arc-integration.md)」をご覧ください。  
 
 ## <a name="overview-of-plans"></a>プランの概要
 
@@ -31,29 +34,30 @@ Azure で Function App を作成するときは、アプリのホスティング
 | プラン | メリット |
 | --- | --- |  
 |**[従量課金プラン](consumption-plan.md)**| 自動的にスケールし、関数が実行されている際のコンピューティング リソースに対してのみ課金されます。<br/><br/>従量課金プランでは、Functions ホストのインスタンスは、受信イベントの数に基づいて動的に追加および削除されます。<br/><br/> ✔ 既定のホスティング プランです。<br/>✔ 関数の実行中にのみ課金されます。<br/>✔ 負荷が高い期間中でも、自動的にスケーリングします。|  
-|**[Premium プラン](functions-premium-plan.md)**|需要に応じて自動的にスケーリングを行いながら、事前ウォーミングされたワーカーを使用して、アイドル状態になっても遅延なくアプリケーションを実行したり、より強力なインスタンスで実行したり、仮想ネットワークに接続したりすることができます。 <br/><br/>次のような状況では、Azure Functions の Premium プランを検討してください。 <br/><br/>✔ 関数を継続的に、またはほぼ継続的に実行したい。<br/>✔ 小規模な実行の回数が多く、実行料金が高いが、従量課金プランでの GB 秒は低い。<br/>✔ 従量課金プランで提供されるよりも多くの CPU またはメモリのオプションが必要である。<br/>✔ 従量課金プランで許可されている最大実行時間よりも長くコードを実行する必要がある。<br/>✔ 仮想ネットワーク接続など、従量課金プランでは利用できない機能が必要である。|  
-|**[専用プラン](dedicated-plan.md)** |App Service プラン内で、Functions を通常の [App Service プラン料金](https://azure.microsoft.com/pricing/details/app-service/windows/)で実行します。<br/><br/>[Durable Functions](durable/durable-functions-overview.md) を使用できない、実行時間の長いシナリオに最適です。 次のような状況では、App Service プランを検討してください。<br/><br/>✔ 既に他の App Service インスタンスを実行している、使用率の低い既存の VM がある。<br/>✔ 関数を実行するカスタム イメージを提供したい。 <br/>✔ スケーリングとコストを予測できることが必要である。|  
+|**[Premium プラン](functions-premium-plan.md)**|需要に応じて自動的にスケーリングを行いながら、事前ウォーミングされたワーカーを使用して、アイドル状態になっても遅延なくアプリケーションを実行したり、より強力なインスタンスで実行したり、仮想ネットワークに接続したりすることができます。 <br/><br/>次のような状況では、Azure Functions の Premium プランを検討してください。 <br/><br/>✔ 関数を継続的に、またはほぼ継続的に実行したい。<br/>✔ 小規模な実行の回数が多く、実行料金が高いが、従量課金プランでの GB 秒は低い。<br/>✔ 従量課金プランで提供されるよりも多くの CPU またはメモリのオプションが必要である。<br/>✔ 従量課金プランで許可されている最大実行時間よりも長くコードを実行する必要がある。<br/>✔ 仮想ネットワーク接続など、従量課金プランでは利用できない機能が必要である。<br/>✔ 関数を実行するカスタム Linux イメージを提供したい。 |  
+|**[専用プラン](dedicated-plan.md)** |App Service プラン内で、Functions を通常の [App Service プラン料金](https://azure.microsoft.com/pricing/details/app-service/windows/)で実行します。<br/><br/>[Durable Functions](durable/durable-functions-overview.md) を使用できない、実行時間の長いシナリオに最適です。 次のような状況では、App Service プランを検討してください。<br/><br/>✔ 既に他の App Service インスタンスを実行している、使用率の低い既存の VM がある。<br/>✔ スケーリングとコストを予測できることが必要である。|  
 
 この記事の比較表には、Functions アプリを実行するための最大の制御性と分離性を実現する、次のホスト オプションも含まれています。  
 
 | ホスティング オプション | 詳細 |
 | --- | --- |  
 |**[ASE](dedicated-plan.md)** | App Service Environment (ASE) は、App Service アプリを大規模かつ安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の機能です。<br/><br/>ASE は、以下を必要とするアプリケーション ワークロードに最適です。 <br/><br/>✔ 高スケール。<br/>✔ コンピューティングの完全分離とセキュリティで保護されたネットワーク アクセス。<br/>✔ メモリ使用量が多い。|  
-| **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes は、Kubernetes プラットフォーム上で実行される完全に分離された専用の環境を提供します。<br/><br/> Kubernetes は、以下を必要とするアプリケーション ワークロードに最適です。 <br/>✔ ハードウェア要件のカスタマイズ。<br/>✔ 分離およびセキュリティで保護されたネットワーク アクセス。<br/>✔ ハイブリッド環境またはマルチクラウド環境で実行可能。<br/>✔ 既存の Kubernetes アプリケーションやサービスと並行して実行。|  
+| **Kubernetes**<br/>([ダイレクト](functions-kubernetes-keda.md)または<br/>[Azure Arc](../app-service/overview-arc-integration.md)) | Kubernetes は、Kubernetes プラットフォーム上で実行される完全に分離された専用の環境を提供します。<br/><br/> Kubernetes は、以下を必要とするアプリケーション ワークロードに最適です。 <br/>✔ ハードウェア要件のカスタマイズ。<br/>✔ 分離およびセキュリティで保護されたネットワーク アクセス。<br/>✔ ハイブリッド環境またはマルチクラウド環境で実行可能。<br/>✔ 既存の Kubernetes アプリケーションやサービスと並行して実行。|  
 
 この記事の残りの表では、さまざまな機能と動作のプランを比較します。 動的ホスティング プラン (従量課金と Premium) のコスト比較については、[Azure Functions の価格に関するページ](https://azure.microsoft.com/pricing/details/functions/)を参照してください。 さまざまな専用プラン オプションの価格については、[App Service の価格に関するページ](https://azure.microsoft.com/pricing/details/app-service/windows/)を参照してください。 
 
 ## <a name="operating-systemruntime"></a>オペレーティング システム/ランタイム
 
-次の表は、ホスティング プランでサポートされているオペレーティング システムと言語ランタイムのサポートを示しています。
+次の表では、ホスティング プランでのオペレーティング システムと言語のサポートを示します。
 
 | | Linux<sup>1</sup><br/>コードのみ | Windows<sup>2</sup><br/>コードのみ | Linux<sup>1、3</sup><br/>Docker コンテナー |
 | --- | --- | --- | --- |
-| **[従量課金プラン](consumption-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | サポートなし  |
-| **[Premium プラン](functions-premium-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
-| **[専用プラン](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
-| **[ASE](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
-| **[Kubernetes](functions-kubernetes-keda.md)** | 該当なし | 該当なし |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[従量課金プラン](consumption-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript | サポートなし  |
+| **[Premium プラン](functions-premium-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript |.NET Core<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript  | 
+| **[専用プラン](dedicated-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript |
+| **[ASE](dedicated-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript | 
+| **[Kubernetes (ダイレクト)](functions-kubernetes-keda.md)** | 該当なし | 該当なし |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript |
+| **[Azure Arc (プレビュー)](../app-service/overview-arc-integration.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript | 該当なし |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript |
 
 <sup>1</sup> Linux は、Python ランタイム スタックでサポートされている唯一のオペレーティング システムです。 <br/>
 <sup>2</sup> Windows は、PowerShell ランタイム スタックでサポートされている唯一のオペレーティング システムです。<br/>
@@ -99,7 +103,7 @@ Azure で Function App を作成するときは、アプリのホスティング
 | --- | --- |
 | **[従量課金プラン](consumption-plan.md)** | 関数が実行された時間に対してだけ支払います。 課金は、実行数、実行時間、およびメモリの使用量に基づいて行われ、 |
 | **[Premium プラン](functions-premium-plan.md)** | Premium プランは、必要なインスタンスや事前ウォーミングされたインスタンスで使用されたコア秒数とメモリに基づいています。 プランごとに少なくとも 1 つのインスタンスが常にウォーム状態である必要があります。 このプランでは、最も予測可能な価格が提供されます。 |
-| * *[専用プラン](dedicated-plan.md)* | App Service プランの Function App に対する支払いは、Web アプリなどの他の App Service リソースの場合と同じです。|
+| **[専用プラン](dedicated-plan.md)** | App Service プランの Function App に対する支払いは、Web アプリなどの他の App Service リソースの場合と同じです。|
 | **[App Service Environment (ASE)](dedicated-plan.md)** | インフラストラクチャの支払いを行うための ASE には一定の月額料金があり、ASE のサイズが変化しても料金は変わりません。 App Service プランの vCPU あたりのコストもあります。 ASE でホストされているすべてのアプリは、分離された価格 SKU に含まれます。 |
 | **[Kubernetes](functions-kubernetes-keda.md)**| お支払いは Kubernetes クラスターのコストだけです。関数に対する追加の課金はありません。  Function App は、通常のアプリと同じように、クラスターのアプリケーションのワークロードとして実行されます。 |
 

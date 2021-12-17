@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: c7826b09ef063d572a98fb344f6862cc8310aa86
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ccce8af20cb2acbfabe8f5e8efa1a46d29fcaef
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87495976"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571099"
 ---
 1. [Azure Portal](https://portal.azure.com) > **Recovery Services** にサインインします。
 2. **[リソースの作成]**  >  **[監視 + 管理]**  >  **[Backup and Site Recovery]** の順にクリックします。

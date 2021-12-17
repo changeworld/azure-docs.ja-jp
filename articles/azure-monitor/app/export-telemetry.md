@@ -4,12 +4,12 @@ description: 診断および利用状況データを Microsoft Azure のスト�
 ms.topic: conceptual
 ms.date: 02/19/2021
 ms.custom: references_regions
-ms.openlocfilehash: e7831123834df9186310453106c50261373160ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1d4a9a6e60d39b01ea1ebe99289c9bb3a1c50c2b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737037"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233528"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
@@ -68,7 +68,7 @@ ms.locfileid: "101737037"
 * 西日本
 
 > [!NOTE]
-> **西ヨーロッパ** と **米国東部** で既に構成されているアプリケーションはサポートされますが、これらのリージョンへの新しいアプリケーションのオンボードはサポートされていません。
+> エクスポートが 2021 年 2 月 23 日より前に構成されている場合、連続エクスポートは **米国東部** と **西ヨーロッパ** のアプリケーションで引き続き機能します。 アプリケーションの作成日に関わらず、**米国東部** または **西ヨーロッパ** のアプリケーションで新しい連続エクスポート規則を構成することはできません。
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>連続エクスポートの高度なストレージ構成
 
@@ -216,7 +216,7 @@ private IEnumerable<T> DeserializeMany<T>(string folderName)
 ## <a name="export-samples"></a>エクスポート サンプル
 
 * [Stream Analytics を使用して SQL にエクスポートする][exportasa]
-* [Stream Analytics のサンプル 2](export-stream-analytics.md)
+* [Stream Analytics のサンプル 2](../../stream-analytics/app-insights-export-stream-analytics.md)
 
 大規模な処理の場合は、 [HDInsight](https://azure.microsoft.com/services/hdinsight/) (クラウドの Hadoop クラスター) を検討してください。 HDInsight はビッグ データの管理と分析を行うためのさまざまなテクノロジを備えており、Application Insights からエクスポートされたデータの処理に使用できます。
 
@@ -249,7 +249,7 @@ private IEnumerable<T> DeserializeMany<T>(string folderName)
 
 ## <a name="code-samples"></a>コード サンプル
 
-* [Stream Analytics のサンプル](export-stream-analytics.md)
+* [Stream Analytics のサンプル](../../stream-analytics/app-insights-export-stream-analytics.md)
 * [Stream Analytics を使用して SQL にエクスポートする][exportasa]
 * [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](export-data-model.md)
 
@@ -268,6 +268,5 @@ private IEnumerable<T> DeserializeMany<T>(string folderName)
 
 <!--Link references-->
 
-[exportasa]: ./code-sample-export-sql-stream-analytics.md
+[exportasa]: ../../stream-analytics/app-insights-export-sql-stream-analytics.md
 [roles]: ./resources-roles-access-control.md
-

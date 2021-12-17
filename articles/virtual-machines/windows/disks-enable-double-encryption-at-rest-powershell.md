@@ -2,20 +2,22 @@
 title: Azure PowerShell - 保存時の二重暗号化を有効にする - マネージド ディスク
 description: Azure PowerShell を使用して、マネージド ディスク データに対して保存時の二重暗号化を有効にします。
 author: roygara
-ms.date: 08/24/2020
+ms.date: 06/29/2021
 ms.topic: how-to
 ms.author: rogarana
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: cfef3925152c0b94a59c662443cf202724dadc0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84f8b0971b7585b25cccec485ef15ad9876a60aa
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549551"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690839"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>Azure PowerShell モジュールを使用して、マネージド ディスクの保存時の二重暗号化を有効にします。
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 Azure Disk Storage は、マネージド ディスクに対する保存時の二重暗号化をサポートしています。 保存時の二重暗号化とその他のマネージド ディスクの暗号化の概念については、ディスクの暗号化の記事の[保存時の暗号化](../disk-encryption.md#double-encryption-at-rest)に関するセクションを参照してください。
 

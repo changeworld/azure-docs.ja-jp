@@ -2,30 +2,30 @@
 title: Azure Active Directory B2C のユーザー アカウントの概要
 description: Azure Active Directory B2C で使用できるユーザー アカウントの種類について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: mimart
+ms.date: 10/22/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 4b35cfeded13a50e5e27c240b0826f1d108ff7eb
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: fe6b7e334352630eb3797cb96b33422a84721813
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529445"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266108"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
-Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウントの種類がいくつかあります。 Azure Active Directory、Active Directory B2B、および Active Directory B2C は、使用できるユーザー アカウントの種類を共有します。
+Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウントの種類がいくつかあります。 Azure Active Directory (Azure AD)、Azure Active Directory B2B (Azure AD B2B)、Azure Active Directory B2C (Azure AD B2C) は、使用できるユーザー アカウントの種類を共有します。
 
 次の種類のアカウントを使用できます。
 
 - **職場アカウント** - 職場アカウントは、テナントのリソースにアクセスでき、管理者ロールを使用してテナントを管理できます。
-- **ゲスト アカウント** - ゲスト アカウントは、Microsoft アカウント、またはアプリケーションにアクセスするかテナントを管理するために使用できる Azure Active Directory ユーザーのみが可能です。
+- **ゲスト アカウント** - ゲスト アカウントにできるのは、[テナントの管理](tenant-management.md)などの管理責任を共有するために使用できる Microsoft アカウントまたは Azure AD ユーザーのみです。
 - **コンシューマー アカウント** - コンシューマー アカウントは、Azure AD B2C に登録したアプリケーションのユーザーによって使用されます。 コンシューマー アカウントは、次によって作成できます。
   - Azure AD B2C アプリケーションでサインアップ ユーザー フローを実行するユーザー
   - Microsoft Graph API の使用

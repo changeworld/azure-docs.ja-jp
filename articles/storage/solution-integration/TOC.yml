@@ -1,31 +1,45 @@
 - name: Azure Storage 検証済みパートナー ソリューション
-  href: /azure/storage/solution-integration
-- name: Azure Storage Analytics とビッグ データ パートナー
+  href: ./index.yml
+- name: 分析とビッグ データに関するパートナー
   items:
     - name: 検証済みパートナーの概要
       href: .\validated-partners\analytics\partner-overview.md
   expanded: false
-- name: Azure Storage アーカイブ、バックアップ、BCDR パートナー
+- name: アーカイブ、バックアップ、BCDR に関するパートナー
   items:
     - name: 検証済みパートナーの概要
       href: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
-    - name: Commvault クイックスタート ガイド
+    - name: Commvault ファースト ステップ ガイド
       href: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
-    - name: Veeam クイックスタート ガイド
+    - name: Veeam ファースト ステップ ガイド
       href: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
+    - name: DobiProtect ファースト ステップ ガイド
+      href: .\validated-partners\backup-archive-disaster-recovery\datadobi\datadobi-solution-guide.md
   expanded: false
-- name: Azure Storage コンテナー ソリューション パートナー
+- name: コンテナー ソリューションに関するパートナー
   items:
     - name: 検証済みパートナーの概要
       href: .\validated-partners\container-solutions\partner-overview.md
   expanded: false
-- name: Azure Storage データ管理と移行パートナー
+- name: データ管理と移行に関するパートナー
   items:
     - name: 検証済みパートナーの概要
       href: .\validated-partners\data-management\partner-overview.md
+    - name: 移行ツールの比較
+      href: ./validated-partners/data-management/migration-tools-comparison.md
+    - name: DobiMigrate ファースト ステップ ガイド
+      href: ./validated-partners/data-management/dobimigrate-quick-start-guide.md
+    - name: Komprise ファースト ステップ ガイド
+      href: ./validated-partners/data-management/komprise-quick-start-guide.md
+    - name: StorageX ファースト ステップ ガイド
+      href: ./validated-partners/data-management/storagex-quick-start-guide.md
+    - name: Cirrus Data ファースト ステップ ガイド
+      href: ./validated-partners/data-management/cirrus-data-migration-guide.md
   expanded: false
-- name: Azure Storage プライマリおよびセカンダリ ストレージ パートナー
+- name: プライマリおよびセカンダリ ストレージに関するパートナー
   items:
     - name: 検証済みパートナーの概要
       href: .\validated-partners\primary-secondary-storage\partner-overview.md
+    - name: ISV ファイル サービス
+      href: .\validated-partners\primary-secondary-storage\isv-file-services.md
   expanded: false

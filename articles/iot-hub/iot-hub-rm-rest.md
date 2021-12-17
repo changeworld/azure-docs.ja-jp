@@ -1,20 +1,20 @@
 ---
 title: リソース プロバイダー REST API を使用して Azure IoT Hnb を作成する | Microsoft Docs
 description: リソース プロバイダー C# REST API を使用して、IoT ハブをプログラム的に作成および管理する方法について説明します。
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2f393701b97be76acab49a627a195b337018fa29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0943ef05ab57dc66e03bed2fbe22d0551892a85
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92144436"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549388"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>リソース プロバイダー REST API を使用して IoT Hub を作成する (.NET)
 

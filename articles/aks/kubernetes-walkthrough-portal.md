@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Kubernetes クラスターの作成、アプリケーションのデプロイ、および Azure Kubernetes Service (AKS) でのパフォーマンスの監視を、Azure portal を使用して迅速に行う方法について説明します。
 services: container-service
 ms.topic: quickstart
-ms.date: 03/15/2021
+ms.date: 07/01/2021
 ms.custom: mvc, seo-javascript-october2019, contperf-fy21q3
-ms.openlocfilehash: 28ba2ffd2007aeb45081cf66b05395a2b8456bf7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 165afe5da4177ab95a77e30fe031a78c4674ce94
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779707"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724727"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -41,13 +41,17 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
         * Azure の **サブスクリプション** を選択します
         * Azure **リソース グループ** を選択または作成します (*myResourceGroup* など)。
     - **クラスターの詳細**: 
+        * **プリセットの構成** が *Standard ($$)* であることを確認します。 プリセットの構成の詳細については、[Azure portal の「クラスター構成プリセット」][preset-config]を参照してください。
         * **Kubernetes クラスター名** (たとえば、*myAKSCluster*) を入力します。 
         * AKS クラスターの **リージョン** と **Kubernetes バージョン** を選択します。
     - **プライマリ ノード プール**: 
-        * AKS ノードの VM **[ノード サイズ]** を選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは *できません*。
-        * クラスターにデプロイするノードの数を選択します。 このクイック スタートでは、 **[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整 *できます*。
+        * 既定値を選択したままにします。
     
     ![AKS クラスターの作成 - 基本情報を入力する](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
+
+    > [!NOTE]
+    > クラスターを作成するときにプリセットの構成を変更するには、 *[すべてのプリセット構成を表示]* を選択し、別のオプションを選択します。
+    > ![AKS クラスターの作成 - ポータルのプリセット オプション](media/kubernetes-walkthrough-portal/cluster-preset-options.png)
 
 4. **[Next:Node pools]\(次: ノード プール\)** を、完了したら選択します。
 
@@ -103,8 +107,9 @@ Kubernetes クラスターを管理するには、Kubernetes のコマンドラ�
     出力は、前の手順で作成した単一ノードを示しています。 ノードの状態が "*準備完了*" であることを確認します。
 
     ```output
-    NAME                       STATUS    ROLES     AGE       VERSION
-    aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
+    NAME                                STATUS   ROLES   AGE   VERSION
+    aks-agentpool-12345678-vmss000000   Ready    agent   23m   v1.19.11
+    aks-agentpool-12345678-vmss000001   Ready    agent   24m   v1.19.11
     ```
 
 ## <a name="run-the-application"></a>アプリケーションの実行
@@ -142,7 +147,7 @@ Kubernetes のマニフェスト ファイルでは、どのコンテナー イ�
             app: azure-vote-back
         spec:
           nodeSelector:
-            "beta.kubernetes.io/os": linux
+            "kubernetes.io/os": linux
           containers:
           - name: azure-vote-back
             image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
@@ -185,7 +190,7 @@ Kubernetes のマニフェスト ファイルでは、どのコンテナー イ�
             app: azure-vote-front
         spec:
           nodeSelector:
-            "beta.kubernetes.io/os": linux
+            "kubernetes.io/os": linux
           containers:
           - name: azure-vote-front
             image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
@@ -273,7 +278,7 @@ Azure Vote アプリが動作していることを確認するには、Web ブ�
 
 ![AKS で実行中のコンテナーの正常性を表示する](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-`azure-vote-front` ポッドのログを表示するには、コンテナーの一覧のドロップダウンで **[View container logs]\(コンテナー ログの表示\)** を選択します。 これらのログには、コンテナーからの *stdout* ストリームと *stderr* ストリームが含まれます。
+`azure-vote-front` ポッドのログを表示するには、 **[Log Analytics で表示]** を右側の *azure-vote-front | [概要]* 領域から選択します。 これらのログには、コンテナーからの *stdout* ストリームと *stderr* ストリームが含まれます。
 
 ![AKS のコンテナー ログを表示する](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
@@ -318,4 +323,5 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 [aks-network]: ./concepts-network.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
+[preset-config]: ./quotas-skus-regions.md#cluster-configuration-presets-in-the-azure-portal
 [sp-delete]: kubernetes-service-principal.md#additional-considerations

@@ -1,14 +1,14 @@
 ---
 title: パターン:ポリシー定義の論理演算子
 description: この Azure Policy のパターンでは、ポリシー定義の論理演算子を使用する方法の例を示します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: sample
-ms.openlocfilehash: feb9e50b0c73c19027b747cf0f95fa1cb6fbd47c
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 433087bbd9d96d50e5e0cfa477b2ba7f335b8f96
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093352"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324120"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Policy パターン: 論理演算子
 

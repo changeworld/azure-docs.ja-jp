@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: aab856b1e1d2d991cc4964d061a990dbedbeddb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/11/2021
+ms.openlocfilehash: a852e32da49bca8711a191677cb76ea8b911568f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98876513"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724997"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>Azure アプリケーション オファーのソリューション テンプレートを計画する
 
@@ -26,7 +26,7 @@ ms.locfileid: "98876513"
 | 必要条件 | 詳細 |
 | ------------ | ------------- |
 | 請求/メータリング | ソリューション テンプレート プランは取引可能ではありませんが、Microsoft のコマーシャル マーケットプレースを通じて課金される有料 VM プランをデプロイするために利用できます。 ソリューションの Resource Manager テンプレートによってデプロイされるリソースは、顧客の Azure サブスクリプション内に設定されます。 従量課金制の仮想マシンが Microsoft 経由で顧客とトランザクション処理され、顧客の Azure サブスクリプションにより課金されます。 <br><br> ライセンス持ち込み (BYOL) 請求の場合、顧客サブスクリプションで発生するインフラストラクチャ コストについては Microsoft が請求しますが、ソフトウェア ライセンス料金についてはユーザーが顧客に対して直接処理します。 |
-| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 詳細については、次を参照してください。<ul><li>[Azure VM の技術資産を作成する](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 用)</li><li>[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 用)。</li></ul> |
+| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 詳細については、次を参照してください。<ul><li>[Azure VM の技術資産を作成する](./azure-vm-certification-faq.yml#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 用)</li><li>[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 用)。</li></ul> |
 | 顧客の利用状況属性 | Azure Marketplace に発行されるすべてのソリューション テンプレートで、顧客の利用状況属性を有効にする必要があります。 顧客の利用状況属性とそれを有効にする方法の詳細については、「[Azure パートナーの顧客の使用状況の属性](azure-partner-customer-usage-attribution.md)」をご覧ください。 |
 | マネージド ディスクの使用 | [マネージド ディスク](../virtual-machines/managed-disks-overview.md)は、Azure のサービスとしてのインフラストラクチャ (IaaS) VM の永続化ディスクの既定オプションです。 ソリューション テンプレートではマネージド ディスクを使用する必要があります。<ul><li>ソリューション テンプレートを更新するには、「[Azure Resource Manager テンプレートでの管理ディスクの使用](../virtual-machines/using-managed-disks-template-deployments.md)」のガイダンスに従って、提供されている[サンプル](https://github.com/Azure/azure-quickstart-templates)を使用します。</li><li>VHD をイメージとして Azure Marketplace に発行するには、[Azure PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd) または [Azure CLI](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd) のいずれかを使用して、マネージド ディスクの基になっている VHD をストレージ アカウントにインポートします</ul> |
 | 展開パッケージ | お客様がプランをデプロイできるようにするデプロイ パッケージが必要になります。 同じ技術的構成が必要なプランを複数作成する場合は、同じプラン パッケージを使用できます。 詳細については、次のセクションの「デプロイ パッケージ」を参照してください。 |
@@ -38,7 +38,7 @@ ms.locfileid: "98876513"
 
 すべての Azure アプリケーションで、.zip アーカイブのルート フォルダーに次の 2 つのファイルが含まれている必要があります。
 
-- [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template) という名前の Resource Manager テンプレート ファイル。 このテンプレートでは、顧客の Azure サブスクリプションにデプロイするリソースが定義されます。 Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)または対応する [GitHub: Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
+- [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template) という名前の Resource Manager テンプレート ファイル。 このテンプレートでは、顧客の Azure サブスクリプションにデプロイするリソースが定義されます。 Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/)または対応する [GitHub: Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
 - [createUiDefinition.json](../azure-resource-manager/managed-applications/create-uidefinition-overview.md) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。 ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
 
 サポートされる最大ファイル サイズは次のとおりです。
@@ -76,4 +76,4 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コマーシャル マーケットプレースで Azure アプリケーション オファーを作成する方法](create-new-azure-apps-offer.md)
+- [Azure アプリケーション オファーを作成する](azure-app-offer-setup.md)

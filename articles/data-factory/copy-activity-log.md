@@ -3,15 +3,16 @@ title: コピー アクティビティのセッション ログ
 description: Azure Data Factory でコピー アクティビティのセッション ログを有効にする方法について説明します。
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: 7cb00d62556babbd8e43e2fac2faa815a63943ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3bca6ba77ac90b0320d3f479ed32c007147fdded
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385270"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637901"
 ---
 #  <a name="session-log-in-copy-activity"></a>コピー アクティビティのセッション ログ
 
@@ -20,6 +21,11 @@ ms.locfileid: "100385270"
 コピー アクティビティでは、コピーされたファイル名をログに記録することができます。これにより、コピー アクティビティのセッション ログでコピーされたファイルを参照することで、データがコピー元ストアからコピー先ストアに正常にコピーされるとともに、コピー元ストアとコピー先ストアの間で一貫していることを確認できます。  
 
 コピー アクティビティでフォールト トレランス設定を有効にして、問題のあるデータをスキップした場合は、スキップされたファイルとスキップされた行もログに記録されます。  詳細については、[コピー アクティビティのフォールト トレランス](copy-activity-fault-tolerance.md)に関するページを参照してください。 
+
+セッション ログを有効にすることで、ADF コピー アクティビティによってコピーされたすべてのファイル名を取得する機会がある場合、これは次のシナリオで役立ちます。
+-   ADF コピー アクティビティを使用してストレージ間でファイルをコピーすると、コピー先ストアに、表示されるはずのない一部のファイルが表示されます。 コピー アクティビティのセッション ログをスキャンすると、それらのファイルがどのコピー アクティビティによって実際にコピーされたか、また、いつコピーされるかを確認できます。 これにより、ADF 内で簡単に根本原因を見つけて、ご自身の構成を修正できます。   
+-   ADF コピー アクティビティを使用してストレージ間でファイルをコピーすると、コピー先にコピーされたファイルが、コピー元ストアのファイルと同じではないように感じることがあります。 コピー アクティビティのセッション ログをスキャンすると、コピー ジョブのタイムスタンプと、ADF コピー アクティビティがコピー元ストアからファイルを読み取ったときのファイルのメタデータを取得できます。  これにより、それらのファイルが、ADF によってコピーされた後に、コピー元ストア上の他のアプリケーションによって更新されたかどうかを確認できます。  
+
 
 ## <a name="configuration"></a>構成
 次の例では、コピー アクティビティでセッション ログを有効にする JSON 定義を示します。 
@@ -67,7 +73,7 @@ ms.locfileid: "100385270"
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
 enableCopyActivityLog | true に設定すると、コピーされたファイル、スキップされたファイル、またはスキップされた行をログに記録できます。  | True<br/>False (既定値) | いいえ
-logLevel | "Info" により、コピーされたファイル、スキップされたファイル、スキップされた行がすべてログに記録されます。 "Warning" により、スキップされたファイルおよびスキップされた行のみがログに記録されます。  | ［情報］<br/>警告 (既定値) | いいえ
+logLevel | "Info" により、コピーされたファイル、スキップされたファイル、スキップされた行がすべてログに記録されます。 "Warning" により、スキップされたファイルおよびスキップされた行のみがログに記録されます。  | Info<br/>警告 (既定値) | いいえ
 enableReliableLogging | true の場合、リライアブル モードのコピー アクティビティにより、各ファイルがコピー先にコピーされると直ちにログがフラッシュされます。  コピー アクティビティでリライアブル ログ モードを有効にして大量のファイルをコピーする場合は、ファイルをコピーするたびに二重書き込み操作が必要になるため、コピー スループットが影響を受けることが予想されます。 1 つの要求は、コピー先ストアに対する要求であり、もう 1 つの要求はログ ストレージ ストアに対する要求です。  ベスト エフォート モードのコピー アクティビティでは、一定期間内のレコードのバッチを使用してログがフラッシュされます。この場合、コピー スループットは影響を受けにくくなります。 コピー アクティビティが失敗したときにログ イベントの最後のバッチがログ ファイルにフラッシュされていない可能性があるため、このモードではログ記録の完全性と適時性は保証されません。 この時点で、コピー先にコピーされたいくつかのファイルはログに記録されません。  | True<br/>False (既定値) | いいえ
 logLocationSettings | セッション ログを格納する場所を指定するために使用できるプロパティのグループ。 | | いいえ
 linkedServiceName | セッション ログ ファイルを格納するための、[Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービスです。 | `AzureBlobStorage` または `AzureBlobFS` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ
@@ -77,7 +83,7 @@ path | ログ ファイルのパス。 | ログ ファイルを格納するパ�
 ## <a name="monitoring"></a>監視
 
 ### <a name="output-from-copy-activity"></a>コピー アクティビティからの出力
-コピー アクティビティが完全に実行された後、各コピー アクティビティの実行の出力からログ ファイルのパスを確認できます。 ログ ファイルは、パス: `https://[your-blob-account].blob.core.windows.net/[logFilePath]/copyactivity-logs/[copy-activity-name]/[copy-activity-run-id]/[auto-generated-GUID].csv` から見つけることができます。  ログ ファイルは csv ファイルになります。 
+コピー アクティビティが完全に実行された後、各コピー アクティビティの実行の出力からログ ファイルのパスを確認できます。 ログ ファイルは、パス: `https://[your-blob-account].blob.core.windows.net/[logFilePath]/copyactivity-logs/[copy-activity-name]/[copy-activity-run-id]/[auto-generated-GUID].txt` から見つけることができます。  生成されたログ ファイルの拡張子は .txt であり、そのデータは CSV 形式です。
 
 ```json
 "output": {

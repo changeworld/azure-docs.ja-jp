@@ -3,12 +3,12 @@ title: アプリケーションでマネージド ID を使用する
 description: Azure Service Fabric アプリケーション コードでマネージド ID を使用して Azure サービスにアクセスする方法。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: e26a29020f26583f7e4aa16434c7e8647ba9a5a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc7eff8119e6b79ca991543cdc09cfe106989fd3
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98871063"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867059"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Service Fabric アプリケーションのマネージド ID を活用して Azure サービスにアクセスする方法
 
@@ -427,7 +427,8 @@ HTTP 応答ヘッダーの "状態コード" フィールドは、要求の成�
 Azure AD をサポートするサービスの一覧と、それぞれのリソース ID については、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [システム割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [ユーザー割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Azure Service Fabric アプリケーションに他の Azure リソースへのアクセス権を付与する](./how-to-grant-access-other-resources.md)
+* [マネージド ID を持つ Microsoft Azure Service Fabric アプリケーションをマネージド クラスターにデプロイする](how-to-managed-cluster-application-managed-identity.md)
+* [システム割り当てマネージド ID を持つ Microsoft Azure Service Fabric アプリケーションをクラシック クラスターにデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [ユーザー割り当てマネージド ID を持つ Microsoft Azure Service Fabric アプリケーションをクラシック クラスターにデプロイする](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+* [Service Fabric アプリケーションのマネージド ID に Azure リソースへのアクセス権を付与する](./how-to-grant-access-other-resources.md)
 * [Service Fabric マネージド ID を使用してサンプル アプリケーションを探索する](https://github.com/Azure-Samples/service-fabric-managed-identity)

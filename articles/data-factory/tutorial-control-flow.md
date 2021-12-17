@@ -1,19 +1,19 @@
 ---
 title: Azure Data Factory パイプラインでの分岐
 description: アクティビティの分岐と連鎖によって Azure Data Factory 内のデータのフローを制御する方法を説明します。
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 83bc90ca251fddd498dd365f1a4b00689a471475
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b1eaa9e7a7c35c659156cfd4bc2541cb3ca39173
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785667"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805790"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -23,7 +23,7 @@ ms.locfileid: "104785667"
 
 次の図は、シナリオの概要を示しています。
 
-![コピー対象の Azure Blob Storage を示す図。成功した場合は詳細を含む電子メールを送信し、失敗した場合はエラーの詳細を含む電子メールを送信する。](media/tutorial-control-flow/overview.png)
+:::image type="content" source="media/tutorial-control-flow/overview.png" alt-text="コピー対象の Azure Blob Storage を示す図。成功した場合は詳細を含む電子メールを送信し、失敗した場合はエラーの詳細を含む電子メールを送信する。":::
 
 このチュートリアルでは、以下のタスクの実行方法を説明します。
 
@@ -329,13 +329,13 @@ C# プロジェクトで、`EmailRequest` という名前のクラスを作成�
 
 ワークフローは次の例のようになります。
 
-![成功電子メールのワークフロー](media/tutorial-control-flow/success-email-workflow-trigger.png)
+:::image type="content" source="media/tutorial-control-flow/success-email-workflow-trigger.png" alt-text="成功電子メールのワークフロー":::
 
 この JSON コンテンツは、前のセクションで作成した `EmailRequest` クラスに合わせたものです。
 
 `Office 365 Outlook – Send an email` のアクションを追加します。 **[Send an email]\(メールの送信\)** アクションでは、要求 **本文** の JSON スキーマで渡されるプロパティを使用して、メールの書式設定方法をカスタマイズします。 次に例を示します。
 
-![ロジック アプリ デザイナー - メールの送信アクション](media/tutorial-control-flow/customize-send-email-action.png)
+:::image type="content" source="media/tutorial-control-flow/customize-send-email-action.png" alt-text="ロジック アプリ デザイナー - メールの送信アクション":::
 
 ワークフローを保存した後、トリガーの **[HTTP POST の URL]** の値をコピーして保存します。
 
@@ -343,7 +343,7 @@ C# プロジェクトで、`EmailRequest` という名前のクラスを作成�
 
 **CopySuccessEmail** を、別の Logic Apps ワークフローとして *CopyFailEmail* という名前で複製します。 要求トリガー内の `Request Body JSON schema` は同じです。 `Subject` のように電子メールの書式を変更し、失敗電子メールになるように調整します。 たとえば次のようになります。
 
-![ロジック アプリ デザイナー - 失敗メールのワークフロー](media/tutorial-control-flow/fail-email-workflow.png)
+:::image type="content" source="media/tutorial-control-flow/fail-email-workflow.png" alt-text="ロジック アプリ デザイナー - 失敗メールのワークフロー":::
 
 ワークフローを保存した後、トリガーの **[HTTP POST の URL]** の値をコピーして保存します。
 

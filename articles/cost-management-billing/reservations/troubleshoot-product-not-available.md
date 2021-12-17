@@ -5,15 +5,15 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.author: banders
-ms.reviewer: yashar
+ms.reviewer: primittal
 ms.topic: troubleshooting
-ms.date: 10/27/2020
-ms.openlocfilehash: 8575d9d86d8e720122a295cf92fa571ef33d5b4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 09/20/2021
+ms.openlocfilehash: 51d30767c3e084ade041d22bac8a246aa5d1f502
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92798204"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631136"
 ---
 # <a name="troubleshoot-reservation-type-not-available"></a>利用できない予約タイプのトラブルシューティング
 
@@ -28,7 +28,7 @@ ms.locfileid: "92798204"
     - `Product unavailable for the selected subscription or region. Contact support.`  
         :::image type="content" source="./media/troubleshoot-product-not-available/product-unavailable-message.png" alt-text="選択されたサブスクリプションまたはリージョンでは利用できない製品であることを示すメッセージの例" lightbox="./media/troubleshoot-product-not-available/product-unavailable-message.png" :::
     - `The selected subscription does not have enough core quota remaining to purchase this product. Request quota increase`  
-        :::image type="content" source="./media/troubleshoot-product-not-available/not-enough-core-quota-message.png" alt-text="選択されたサブスクリプションまたはリージョンでは利用できない製品であることを示すメッセージの例" lightbox="./media/troubleshoot-product-not-available/not-enough-core-quota-message.png" :::
+        :::image type="content" source="./media/troubleshoot-product-not-available/not-enough-core-quota-message.png" alt-text="コア クォータが不十分であることを示すメッセージの例" lightbox="./media/troubleshoot-product-not-available/not-enough-core-quota-message.png" :::
 
 ## <a name="cause"></a>原因
 
@@ -51,9 +51,9 @@ ms.locfileid: "92798204"
 
 お客様がカートに特定の製品を追加し、予約を購入できるかどうかを判定するしくみはシンプルです。 Azure では、お客様のサブスクリプションで利用可能な CPU コアの合計数を算出し、選択された項目に必要なコアの数よりも多いかどうかを確認します。
 
-Azure では、範囲が **[共有]** の予約インスタンスについては、クォータの確認を実施しません。 範囲が [共有] の予約インスタンスによるメリットは、加入契約内のあらゆるサブスクリプションに適用されます。 Azure では、リソースをデプロイできるだけの十分な未使用コアがあるかどうかについて、お客様がお持ちのサブスクリプションすべてを考慮して判断を下すことができません。 Azure では、範囲として [共有] が選択された場合には、常に VM サイズを選択できます。
+Azure では、 **[共有]** 範囲または **管理グループ** 範囲の予約インスタンスについては、クォータの確認を実施しません。 範囲が [共有] の予約インスタンスによるメリットは、加入契約内のあらゆるサブスクリプションに適用されます。 管理グループ範囲の予約インスタンス特典は、管理グループと課金スコープの両方の一部であるすべてのサブスクリプションに適用されます。 Azure では、リソースをデプロイできるだけの十分な未使用コアがあるかどうかについて、お客様がお持ちのサブスクリプションすべてを考慮して判断を下すことができません。 Azure では、クォータが何であっても、選択した範囲が共有または管理グループに設定された場合は、常に VM サイズを選択できます。
 
-また、 **おすすめ候補** として提示された購入については、Azure によるクォータ確認が実施されません。 おすすめ候補は、アクティブな使用量に基づいて提示されます。 Azure では、おすすめ候補の提示に必要な使用量を既に満たしていることを根拠に、特定のサイズの VM を稼働させることができるだけのコア数があると判断します。
+また、**おすすめ候補** として提示された購入については、Azure によるクォータ確認が実施されません。 おすすめ候補は、アクティブな使用量に基づいて提示されます。 Azure では、おすすめ候補の提示に必要な使用量を既に満たしていることを根拠に、特定のサイズの VM を稼働させることができるだけのコア数があると判断します。
 
 ## <a name="solution"></a>解決策
 
@@ -61,11 +61,11 @@ Azure では、範囲が **[共有]** の予約インスタンスについては
 
 ### <a name="solution-1"></a>解決策 1
 
-" _製品が利用できない_ " 旨のメッセージが表示された場合には、そのエラー メッセージにある **[サポートにお問い合わせ]** のリンクを選択し、ご自分のサブスクリプションを対象とした例外を追加するよう依頼します。 例外は常に認められるわけではありません。
+"_製品が利用できない_" 旨のメッセージが表示された場合には、そのエラー メッセージにある **[サポートにお問い合わせ]** のリンクを選択し、ご自分のサブスクリプションを対象とした例外を追加するよう依頼します。 例外は常に認められるわけではありません。
 
 ### <a name="solution-2"></a>解決策 2
 
-" _コア クォータが十分でない_ " 旨のメッセージが表示された場合には、範囲を **[共有]** に変更します。 予約を購入した後に、予約範囲を **[共有]** から **[シングル]** に変更できます。
+"_コア クォータが十分でない_" 旨のメッセージが表示された場合には、範囲を **[共有]** に変更します。 予約を購入した後に、予約範囲を **[共有]** から **[シングル]** に変更できます。
 
 このほか、エラー メッセージにある **[クォータの増加を要求]** というリンクを選択し、サブスクリプションの CPU コア クォータの追加を依頼することもできます。
 

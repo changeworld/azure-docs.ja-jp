@@ -3,15 +3,13 @@ title: Apache Hadoop のコンポーネントとバージョン - Azure HDInsigh
 description: Azure HDInsight 3.6 での Apache Hadoop のコンポーネントとバージョンについて説明します。
 ms.service: hdinsight
 ms.topic: conceptual
-author: deshriva
-ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: 32b287c3d7b1974db5a079d1ee84aaafad3faed7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f9e040c596d9335dcf1027aa96ad671a77ac88c0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727690"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722300"
 ---
 # <a name="hdinsight-36-component-versions"></a>HDInsight 3.6 のコンポーネントのバージョン
 

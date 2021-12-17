@@ -6,15 +6,18 @@ ms.author: andbrown
 ms.date: 2/10/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 4cd5e0c016b98a3dc9336237a5c1b14e6b0f5789
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 07e5b78b5ae9029ed4ab33f37e35105dfb5e5f26
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040585"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358404"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub"></a>Device Update for IoT Hub への更新プログラムのインポート
 Device Update for IoT Hub からデバイスに更新プログラムを展開するには、まず、その更新プログラムをデバイス更新サービスに "_インポート_" する必要があります。 ここでは、更新プログラムをインポートするときに理解しておくべき重要な概念の概要を示します。
+
+## <a name="limits-on-importing-updates"></a>更新プログラムのインポートの制限
+各 Device Update for IoT Hub インスタンスには、一定の制約が適用されます。 まだ確認していない場合は、[Device Update の制約](./device-update-limits.md)に関するページを参照してください。
 
 ## <a name="import-manifest"></a>インポート マニフェスト
 

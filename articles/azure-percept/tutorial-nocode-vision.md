@@ -1,18 +1,18 @@
 ---
 title: Azure Percept Studio でコードなしのビジョン ソリューションを作成する
 description: Azure Percept Studio でコードなしのビジョン ソリューションを作成し、それを Azure Percept DK にデプロイする方法について説明します
-author: elqu20
-ms.author: v-elqu
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 49e5db729dab7abaa440b1adf6a61e9e52a1efbc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8d1ce721c1bd67895661be25ac0bab3c230839b
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023131"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227202"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Azure Percept Studio でコードなしのビジョン ソリューションを作成する
 

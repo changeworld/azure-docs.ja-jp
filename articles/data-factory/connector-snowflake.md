@@ -1,24 +1,26 @@
 ---
 title: Snowflake のデータをコピーして変換する
-description: Data Factory を使用して、Snowflake のデータをコピーして変換する方法について説明します。
-ms.author: jingwang
-author: linda33wj
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Data Factory または Azure Synapse Analytics を使用して、Snowflake のデータをコピーして変換する方法について説明します。
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/16/2021
-ms.openlocfilehash: c18a48f8e72c28fd39f839566b18528806e7245d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 09/09/2021
+ms.openlocfilehash: c4a6c17bd16a4a2ba005cb28757e341afaff120b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561585"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763882"
 ---
-# <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Snowflake のデータをコピーして変換する
+# <a name="copy-and-transform-data-in-snowflake-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して、Snowflake のデータをコピーして変換します。
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Snowflake との間でデータをコピーし合い、Data Flow を使用してSnowflake のデータを変換する方法について説明します。 Data Factory の詳細については、[概要の記事](introduction.md)を参照してください。
+この記事では、Azure Data Factory および Azure Synapse パイプラインのコピー アクティビティを使用して、Snowflake との間でデータをコピーし合い、Data Flow を使用して Snowflake のデータを変換する方法について説明します。 詳細については、[Data Factory](introduction.md) または [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -31,13 +33,38 @@ ms.locfileid: "103561585"
 コピー アクティビティの場合、この Snowflake コネクタは次の機能をサポートします。
 
 - Snowflake からのデータのコピー。Snowflake の [COPY into [location]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html) コマンドを利用して、最適なパフォーマンスを実現します。
-- Snowflake へのデータのコピー。Snowflake の [COPY into [table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) コマンドを利用して、最適なパフォーマンスを実現します。 Azure 上の Snowflake がサポートされています。 
+- Snowflake へのデータのコピー。Snowflake の [COPY into [table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) コマンドを利用して、最適なパフォーマンスを実現します。 Azure 上の Snowflake がサポートされています。
+- セルフホステッド Integration Runtime から Snowflake に接続するためにプロキシが必要な場合は、Integration Runtime ホストで HTTP_PROXY と HTTPS_PROXY の環境変数を設定する必要があります。 
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-次のセクションでは、Snowflake コネクタに固有の Data Factory エンティティを定義するプロパティについて詳しく説明します。
+## <a name="create-a-linked-service-to-snowflake-using-ui"></a>UI を使用して Snowflake のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Snowflake のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. Snowflake を検索し、Snowflake コネクタを選択します。
+
+    :::image type="content" source="media/connector-snowflake/snowflake-connector.png" alt-text="Snowflake コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-snowflake/configure-snowflake-linked-service.png" alt-text="Snowflake のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+次のセクションでは、Snowflake コネクタに固有のエンティティを定義するプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -102,8 +129,8 @@ Snowflake データセットでは、次のプロパティがサポートされ�
 | プロパティ  | 説明                                                  | 必須                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | データセットの type プロパティは **SnowflakeTable** に設定する必要があります。 | はい                         |
-| schema | スキーマの名前。 スキーマ名は、ADF では大文字と小文字が区別される点に注意してください。 |ソースの場合はいいえ、シンクの場合ははい  |
-| table | テーブル/ビューの名前。 テーブル名は、ADF では大文字と小文字が区別される点に注意してください。 |ソースの場合はいいえ、シンクの場合ははい  |
+| schema | スキーマの名前。 スキーマ名は、大文字と小文字が区別されることに注意してください。 |ソースの場合はいいえ、シンクの場合ははい  |
+| table | テーブル/ビューの名前。 テーブル名は、大文字と小文字が区別されることに注意してください。 |ソースの場合はいいえ、シンクの場合ははい  |
 
 **例:**
 
@@ -141,7 +168,7 @@ Snowflake からデータをコピーするために、コピー アクティビ
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | コピー アクティビティのソースの type プロパティは **SnowflakeSource** に設定する必要があります。 | はい      |
 | query          | Snowflake からデータを読み取る SQL クエリを指定します。 スキーマ、テーブル、および列の名前に小文字が含まれている場合は、クエリでオブジェクト識別子を引用符で囲みます (例: `select * from "schema"."myTable"`)。<br>ストアド プロシージャの実行はサポートされていません。 | いいえ       |
-| exportSettings | Snowflake からデータを取得するために使用される詳細設定。 COPY into コマンドでサポートされるものを構成できます。これは、ステートメントを呼び出すときに Data Factory によって渡されます。 | いいえ       |
+| exportSettings | Snowflake からデータを取得するために使用される詳細設定。 COPY into コマンドでサポートされるものを構成できます。これは、ステートメントを呼び出すときにこのサービスによって渡されます。 | いいえ       |
 | ***`exportSettings` の下:*** |  |  |
 | type | エクスポート コマンドの type を **SnowflakeExportCopyCommand** に設定します。 | はい |
 | additionalCopyOptions | 追加のコピー オプション。キーと値のペアのディクショナリとして指定されます。 例 :MAX_FILE_SIZE、OVERWRITE。 詳細については、「[Snowflake コピー オプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)」を参照してください。 | いいえ |
@@ -149,7 +176,7 @@ Snowflake からデータをコピーするために、コピー アクティビ
 
 #### <a name="direct-copy-from-snowflake"></a>Snowflake から直接コピーする
 
-シンクのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、Snowflake からシンクに直接コピーできます。 Data Factory によって設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
+シンクのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、Snowflake からシンクに直接コピーできます。 設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
 - **シンクのリンクされたサービス** が、**Shared Access Signature** 認証を使用する [**Azure Blob Storage**](connector-azure-blob-storage.md) です。 サポートされている次の形式で Azure Data Lake Storage Gen2 にデータを直接コピーする場合は、ADLS Gen2 アカウントに対する SAS 認証を使用して Azure BLOB のリンクされたサービスを作成し、[Snowflake からのステージング コピー](#staged-copy-from-snowflake)を使用しないようにすることができます。
 
@@ -212,7 +239,7 @@ Snowflake からデータをコピーするために、コピー アクティビ
 
 #### <a name="staged-copy-from-snowflake"></a>Snowflake からのステージング コピー
 
-シンクのデータ ストアまたは形式が、前のセクションで説明したように Snowflake COPY コマンドとネイティブの互換性がない場合は、中間の Azure Blob Storage インスタンスを使用して組み込みのステージング コピーを有効にします。 ステージング コピー機能はスループットも優れています。 Data Factory が、Snowflake のデータをステージング ストレージにエクスポートしてから、データをシンクにコピーし、最後にステージング ストレージの一時データをクリーンアップします。 ステージングを使用したデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
+シンクのデータ ストアまたは形式が、前のセクションで説明したように Snowflake COPY コマンドとネイティブの互換性がない場合は、中間の Azure Blob Storage インスタンスを使用して組み込みのステージング コピーを有効にします。 ステージング コピー機能はスループットも優れています。 Snowflake のデータをステージング ストレージにエクスポートしてから、データをシンクにコピーし、最後にステージング ストレージの一時データをクリーンアップします。 ステージングを使用したデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
 
 この機能を使うには、中間ステージとして、Azure ストレージ アカウントを参照する [Azure Blob Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)を作成します。 次に、コピー アクティビティに `enableStaging` プロパティと `stagingSettings` プロパティを指定します。
 
@@ -271,7 +298,7 @@ Snowflake にデータをコピーするために、コピー アクティビテ
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | コピー アクティビティの sink の type プロパティは、**SnowflakeSink** に設定します。 | はい                                           |
 | preCopyScript     | コピー アクティビティの毎回の実行で、データを Snowflake に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ                                            |
-| importSettings | Snowflake にデータを書き込むために使用される詳細設定。 COPY into コマンドでサポートされるものを構成できます。これは、ステートメントを呼び出すときに Data Factory によって渡されます。 | いいえ |
+| importSettings | Snowflake にデータを書き込むために使用される詳細設定。 COPY into コマンドでサポートされるものを構成できます。これは、ステートメントを呼び出すときにこのサービスによって渡されます。 | いいえ |
 | ***`importSettings` の下:*** |                                                              |  |
 | type | インポート コマンドの type を **SnowflakeImportCopyCommand** に設定します。 | はい |
 | additionalCopyOptions | 追加のコピー オプション。キーと値のペアのディクショナリとして指定されます。 例 :ON_ERROR、FORCE、LOAD_UNCERTAIN_FILES。 詳細については、「[Snowflake コピー オプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)」を参照してください。 | いいえ |
@@ -279,7 +306,7 @@ Snowflake にデータをコピーするために、コピー アクティビテ
 
 #### <a name="direct-copy-to-snowflake"></a>Snowflake に直接コピーする
 
-ソースのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、ソースから Snowflake に直接コピーできます。 Azure Data Factory によって設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
+ソースのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、ソースから Snowflake に直接コピーできます。 設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
 - **ソースのリンクされたサービス** が、**Shared Access Signature** 認証を使用する [**Azure Blob Storage**](connector-azure-blob-storage.md) です。 サポートされている次の形式で Azure Data Lake Storage Gen2 からデータを直接コピーする場合は、ADLS Gen2 アカウントに対する SAS 認証を使用して Azure BLOB のリンクされたサービスを作成し、[Snowflake へのステージング コピー](#staged-copy-to-snowflake)を使用しないようにすることができます。
 
@@ -346,7 +373,7 @@ Snowflake にデータをコピーするために、コピー アクティビテ
 
 #### <a name="staged-copy-to-snowflake"></a>Snowflake へのステージング コピー
 
-ソース データ ストアまたは形式が、前のセクションで説明したように、Snowflake COPY コマンドとネイティブに互換性がない場合は、中間の Azure Blob Storage インスタンスを使用して、組み込みのステージング コピーを有効にします。 ステージング コピー機能はスループットも優れています。 Data Factory は、Snowflake のデータ形式要件を満たすようにデータを自動的に変換します。 次に、COPY コマンドを呼び出して、Snowflake にデータを読み込みます。 最後に、BLOB ストレージから一時データをクリーンアップします。 ステージングを使用したデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
+ソース データ ストアまたは形式が、前のセクションで説明したように、Snowflake COPY コマンドとネイティブに互換性がない場合は、中間の Azure Blob Storage インスタンスを使用して、組み込みのステージング コピーを有効にします。 ステージング コピー機能はスループットも優れています。 Snowflake のデータ形式要件を満たすようにデータを自動的に変換します。 次に、COPY コマンドを呼び出して、Snowflake にデータを読み込みます。 最後に、BLOB ストレージから一時データをクリーンアップします。 ステージングを使用したデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
 
 この機能を使うには、中間ステージとして、Azure ストレージ アカウントを参照する [Azure Blob Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)を作成します。 次に、コピー アクティビティに `enableStaging` プロパティと `stagingSettings` プロパティを指定します。
 
@@ -476,4 +503,4 @@ IncomingStream sink(allowSchemaDrift: true,
 
 ## <a name="next-steps"></a>次のステップ
 
-Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+コピー アクティビティによってソース、シンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)の表を参照してください。

@@ -7,15 +7,15 @@ metadata:
   ms.service: storsimple
   services: storsimple
   ms.topic: landing-page
-  author: twooley
-  ms.author: twooley
+  author: alkohli
+  ms.author: alkohli
   ms.date: 03/11/2020
-  ms.openlocfilehash: 7744e0fecadbdbcc7af82645b58bb86a9e0bbe18
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 0771ef081201bf98100a324df1a6c9c819f6f96c
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "79540308"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128603450"
 landingContent:
 - title: StorSimple について
   linkLists:

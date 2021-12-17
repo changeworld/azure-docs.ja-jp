@@ -1,17 +1,20 @@
 ---
 title: コピー アクティビティでのスキーマとデータ型のマッピング
-description: Azure Data Factory のコピー アクティビティによって、スキーマとデータ型が、ソース データからシンク データにどのようにマップされるかについて説明します。
-author: linda33wj
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプライン内のコピー アクティビティによって、スキーマとデータ型が、ソース データからシンク データにどのようにマップされるかについて説明します。
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.author: jingwang
-ms.openlocfilehash: 68d90fa56d5dce902a44a32b322e582a81e419d5
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 09/09/2021
+ms.author: jianleishen
+ms.openlocfilehash: af22c23184da4163deb07b2b9d5fa470bd35042d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011640"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760500"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマとデータ型のマッピング
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,14 +43,14 @@ ms.locfileid: "107011640"
 - [階層構造のソースから表形式のシンクへ](#hierarchical-source-to-tabular-sink)
 - [表形式または階層構造のソースから階層構造のシンクへ](#tabularhierarchical-source-to-hierarchical-sink)
 
-Data Factory 作成 UI -> コピー アクティビティ -> [マッピング] タブでマッピングを構成するか、コピー アクティビティ -> `translator` プロパティのマッピングをプログラムで指定します。 `translator` -> `mappings` array -> objects -> `source` と、データをマップする特定の列とフィールドを指す `sink` では、次のプロパティがサポートされています。
+作成 UI -> コピー アクティビティ -> [マッピング] タブでマッピングを構成するか、コピー アクティビティ -> `translator` プロパティのマッピングをプログラムで指定します。 `translator` -> `mappings` array -> objects -> `source` と、データをマップする特定の列とフィールドを指す `sink` では、次のプロパティがサポートされています。
 
 | プロパティ | 説明                                                  | 必須 |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | ソースまたはシンクの列とフィードの名前。 表形式のソースおよびシンクに適用します。 | はい      |
 | ordinal  | 列のインデックス。 1 から開始します。 <br>ヘッダー行がない区切りテキストを使用するときに適用され、必須です。 | いいえ       |
 | path     | 抽出またはマップする各フィールドの JSON パス式。 階層構造のソースおよびシンク (Cosmos DB、MongoDB、REST コネクタなど) に適用します。<br>ルート オブジェクトの下のフィールドでは、JSON パスはルート `$` で始まり、`collectionReference` プロパティにより選択された配列内のフィールドでは、JSON パスは配列要素で始まり、`$` は付きません。 | いいえ       |
-| type     | ソースまたはシンク列の Data Factory 中間データ型。 一般に、このプロパティを指定または変更する必要はありません。 詳細については、「[データ型のマッピング](#data-type-mapping)」を参照してください。 | いいえ       |
+| type     | ソースまたはシンク列の中間データ型。 一般に、このプロパティを指定または変更する必要はありません。 詳細については、「[データ型のマッピング](#data-type-mapping)」を参照してください。 | いいえ       |
 | culture  | ソースまたはシンク列のカルチャ。 型が `Datetime` または `Datetimeoffset` の場合に適用します。 既定では、 `en-us`です。<br>一般に、このプロパティを指定または変更する必要はありません。 詳細については、「[データ型のマッピング](#data-type-mapping)」を参照してください。 | いいえ       |
 | format   | 種類が `Datetime` または `Datetimeoffset` のときに使用される書式文字列。 日時の書式を設定する方法については、「[カスタム日時書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 一般に、このプロパティを指定または変更する必要はありません。 詳細については、「[データ型のマッピング](#data-type-mapping)」を参照してください。 | いいえ       |
 
@@ -65,7 +68,7 @@ Data Factory 作成 UI -> コピー アクティビティ -> [マッピング] �
 
 2. 必要なフィールドをマップし、残りを除外または削除します。
 
-![表形式を表形式にマップする](media/copy-activity-schema-and-type-mapping/map-tabular-to-tabular.png)
+:::image type="content" source="media/copy-activity-schema-and-type-mapping/map-tabular-to-tabular.png" alt-text="表形式を表形式にマップする":::
 
 コピー アクティビティ ペイロードでは、同じマッピングを次のように構成できます (`translator` を参照してください)。
 
@@ -175,20 +178,20 @@ Data Factory 作成 UI -> コピー アクティビティ -> [マッピング] �
 
 このようなマッピングは Data Factory 作成 UI で定義できます。
 
-1. コピー アクティビティ -> [マッピング] タブで、 **[スキーマのインポート]** ボタンをクリックして、ソースおよびシンク スキーマの両方をインポートします。 スキーマのインポート時に、Data Factory により、上位のいくつかのオブジェクトがサンプリングされるので、フィールドが表示されない場合は、階層内の適切なレイヤーに追加できます。既存のフィールド名をポイントし、ノード、オブジェクト、または配列の追加を選択します。
+1. コピー アクティビティ -> [マッピング] タブで、 **[スキーマのインポート]** ボタンをクリックして、ソースおよびシンク スキーマの両方をインポートします。 スキーマのインポート時に、サービスにより、上位のいくつかのオブジェクトがサンプリングされるので、フィールドが表示されない場合は、階層内の適切なレイヤーに追加できます。既存のフィールド名をポイントし、ノード、オブジェクト、または配列の追加を選択します。
 
 2. データの反復処理と抽出を行う配列を選択します。 **コレクション参照** として自動的に設定されます。 この操作では、1 つの配列のみがサポートされることにご注意ください。
 
-3. 必要なフィールドをシンクにマップします。 Data Factory によって、階層側の対応する JSON パスが自動的に決定されます。
+3. 必要なフィールドをシンクにマップします。 サービスによって、階層側の対応する JSON パスが自動的に決定されます。
 
 > [!NOTE]
 > コレクション参照としてマークされた配列が空で、チェック ボックスがオンになっているレコードの場合、レコード全体がスキップされます。
 
-![UI を使用して階層構造から表形式にマップする](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
+:::image type="content" source="media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png" alt-text="UI を使用して階層構造から表形式にマップする":::
 
 また、**詳細エディター** に切り替えることもでき、ここで、フィールドの JSON パスを直接表示および編集できます。 このビューに新しいマッピングを追加することを選択する場合は、JSON パスを指定します。
 
-![詳細エディターを使用して階層構造から表形式にマップする](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png)
+:::image type="content" source="media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png" alt-text="詳細エディターを使用して階層構造から表形式にマップする":::
 
 コピー アクティビティ ペイロードでは、同じマッピングを次のように構成できます (`translator` を参照してください)。
 
@@ -273,9 +276,9 @@ Data Factory 作成 UI -> コピー アクティビティ -> [マッピング] �
 
 コピー アクティビティでは、次のフローを使用してソースの型からシンクの型へのマッピングを実行します。 
 
-1. ソースのネイティブなデータ型から Azure Data Factory の中間データ型に変換します。
+1. ソース ネイティブ データ型を、Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプラインで使用される中間データ型に変換します。
 2. 必要に応じて、中間データ型を自動的に変換して、対応するシンクの型に一致させます。[既定のマッピング](#default-mapping)と[明示的なマッピング](#explicit-mapping)の両方に適用できます。
-3. Azure Data Factory の中間データ型からシンクのネイティブなデータ型に変換します。
+3. 中間データ型からシンクのネイティブなデータ型に変換します。
 
 現在、コピー アクティビティによりサポートされている中間データ型は、Boolean、Byte、Byte 配列、Datetime、DatetimeOffset、Decimal、Double、GUID、Int16、Int32、Int64、SByte、Single、String、Timespan、UInt16、UInt32、UInt64 です。
 
@@ -307,7 +310,7 @@ Data Factory 作成 UI -> コピー アクティビティ -> [マッピング] �
 
 | プロパティ                         | 説明                                                  | 必須 |
 | -------------------------------- | ------------------------------------------------------------ | -------- |
-| typeConversion                   | 新しいデータ型変換エクスペリエンスを有効にします。 <br>下位互換性のため、既定値は false です。<br><br>2020 年 6 月下旬以降に Data Factory 作成 UI を使用して作成された新しいコピー アクティビティについては、このデータ型変換が、最善のエクスペリエンスを実現するために既定で有効になっています。また、該当するシナリオのコピー アクティビティ -> [マッピング] タブで次の型変換設定を確認できます。 <br>プログラムを使ってパイプラインを作成するには、`typeConversion` プロパティを明示的に true に設定して有効にする必要があります。<br>この機能がリリースされる前に作成された既存のコピー アクティビティについては、下位互換性のため、型変換オプションが Data Factory 作成 UI に表示されません。 | いいえ       |
+| typeConversion                   | 新しいデータ型変換エクスペリエンスを有効にします。 <br>下位互換性のため、既定値は false です。<br><br>2020 年 6 月下旬以降に Data Factory 作成 UI を使用して作成された新しいコピー アクティビティについては、このデータ型変換が、最善のエクスペリエンスを実現するために既定で有効になっています。また、該当するシナリオのコピー アクティビティ -> [マッピング] タブで次の型変換設定を確認できます。 <br>プログラムを使ってパイプラインを作成するには、`typeConversion` プロパティを明示的に true に設定して有効にする必要があります。<br>この機能がリリースされる前に作成された既存のコピー アクティビティについては、下位互換性のため、型変換オプションが作成 UI に表示されません。 | いいえ       |
 | typeConversionSettings           | 型変換設定のグループ。 `typeConversion` が `true` に設定されている場合に適用します。 次のプロパティはすべてこのグループの下にあります。 | いいえ       |
 | `typeConversionSettings` の "*下*" |                                                              |          |
 | allowDataTruncation              | コピー中に異なる型のシンクにソース データを変換するときのデータの切り捨てを許可します。たとえば、10 進から整数への変換では、DatetimeOffset から Datetime になります。 <br>既定値は true です。 | いいえ       |
@@ -350,7 +353,7 @@ Data Factory 作成 UI -> コピー アクティビティ -> [マッピング] �
 ## <a name="legacy-models"></a>レガシ モデル
 
 > [!NOTE]
-> ソース列とフィールドをシンクにマップする次のモデルは、下位互換性のために引き続きサポートされています。 「[スキーマ マッピング](#schema-mapping)」に記載されている新しいモデルを使用することをお勧めします。 Data Factory 作成 UI は、新しいモデルの生成に切り替えられました。
+> ソース列とフィールドをシンクにマップする次のモデルは、下位互換性のために引き続きサポートされています。 「[スキーマ マッピング](#schema-mapping)」に記載されている新しいモデルを使用することをお勧めします。 作成 UI は、新しいモデルの生成に切り替えられました。
 
 ### <a name="alternative-column-mapping-legacy-model"></a>代替の列マッピング (レガシ モデル)
 

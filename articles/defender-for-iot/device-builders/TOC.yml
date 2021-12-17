@@ -1,0 +1,197 @@
+- name: デバイス ビルダー向け Microsoft Defender for IoT
+  href: index.yml
+  items: null
+- name: 概要
+  displayName: 'IoT, OT, getting started'
+  href: overview.md
+  items:
+    - name: 新機能
+      displayName: 'version, versions, servicing, information, timeline, support, support date, dates, versioning, policy'
+      href: release-notes.md
+    - name: エージェントベースのソリューション アーキテクチャとは
+      href: architecture-agent-based.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: Defender for IoT エージェントベースのソリューションにオンボードする
+      displayName: 'IoT Hub, existing, enable'
+      href: quickstart-onboard-iot-hub.md
+    - name: Defender for IoT マイクロ エージェントをインストールする (プレビュー)
+      displayName: 'package, authentication, methods, certificate, authenticate, version'
+      href: quickstart-standalone-agent-binary-installation.md
+    - name: Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)
+      href: quickstart-create-micro-agent-module-twin.md
+    - name: Azure RTOS 用の Defender-IoT-micro-agent を構成する
+      href: quickstart-azure-rtos-security-module.md
+    - name: IoT ソリューションへの Azure リソースの追加
+      displayName: 'resources, monitored, resource'
+      href: quickstart-configure-your-solution.md
+    - name: セキュリティに関する推奨事項の調査
+      href: quickstart-investigate-security-recommendations.md
+    - name: セキュリティ アラートについて調査する
+      href: quickstart-investigate-security-alerts.md
+    - name: クラシック
+      items:
+        - name: セキュリティ エージェントの概要
+          displayName: 'platforms, C, C#, agent'
+          href: security-agent-architecture.md
+        - name: azureiotsecurity モジュール ツインを作成する
+          displayName: 'module twin, security module'
+          href: quickstart-create-security-twin.md
+- name: 概念
+  items:
+    - name: エージェント ポートフォリオの概要と OS サポート (プレビュー)
+      displayName: 'standalone agent, micro agent, RTOS'
+      href: concept-agent-portfolio-overview-os-support.md
+    - name: スタンドアロンのマイクロ エージェントの概要 (プレビュー)
+      displayName: 'endpoint, posture, distribution, flexible, model'
+      href: concept-standalone-micro-agent-overview.md
+    - name: セキュリティ エージェントの認証 (プレビュー)
+      displayName: 'connection string, certificate, authentication'
+      href: concept-security-agent-authentication.md
+    - name: セキュリティ体制 - CIS ベンチマーク
+      href: concept-security-posture.md
+    - name: マイクロ エージェントの構成 (プレビュー)
+      displayNAme: 'collectors, configuration, configurations, event-based, trigger, general'
+      href: concept-micro-agent-configuration.md
+    - name: マイクロ エージェントのイベント コレクション (プレビュー)
+      displayName: 'process events, network connection'
+      href: concept-event-aggregation.md
+    - name: マイクロ エージェントの Linux の依存関係
+      displayName: 'linux, micro agent, agent'
+      href: concept-micro-agent-linux-dependencies.md
+    - name: セキュリティのアラート
+      items:
+        - name: マイクロ エージェントのセキュリティ アラート (プレビュー)
+          href: concept-agent-based-security-alerts.md
+        - name: IoT Hub 用の組み込みアラート
+          displayName: 'binary command line, disable firewall, port forwarding detection, possible attempt to disable auditd logging detected, reverse shells, successful bruteforce attempt, successful local login, web shell, Behavior similar, Crypto coin, suspicious, Exposed Docker,'
+          href: concept-security-alerts.md
+        - name: IoT Hub のカスタム セキュリティ アラート
+          href: concept-customizable-security-alerts.md
+    - name: IoT Hub のセキュリティに関する推奨事項
+      href: concept-recommendations.md
+    - name: クラシック
+      items:
+        - name: Defender for IoT マイクロ エージェント
+          displayName: 'device twins, Defender-IoT-micro-agent twin'
+          href: concept-security-module.md
+        - name: Edge azureiotsecurity
+          href: security-edge-architecture.md
+        - name: セキュリティ エージェント
+          href: overview-security-agents.md
+        - name: セキュリティ エージェントの認証
+          displayName: 'method, C, C#, module, device, installation, authentication'
+          href: concept-security-agent-authentication-methods.md
+        - name: ベースライン
+          displayName: 'custom, setting, properties'
+          href: concept-baseline.md
+        - name: Microsoft Defender for IoT の Azure セキュリティ ベースライン
+          displayName: 'identity management, active directory, privileged access, data protection, incident response, posture, vulnerability, governance'
+          href: /security/benchmark/azure/baselines/defender-for-iot-security-baseline?toc=/azure/defender-for-iot/TOC.json
+        - name: Defender-IoT-micro-agent クラシック イベントの集計
+          displayName: 'twin, default, configuration, alerts'
+          href: event-aggregation.md
+        - name: クラシック エージェント ベースのセキュリティ アラート
+          href: agent-based-security-alerts.md
+        - name: エージェント ベースのセキュリティのカスタム アラート
+          href: agent-based-security-custom-alerts.md
+        - name: エージェント ベースの推奨事項
+          href: agent-based-recommendations.md
+- name: 操作方法ガイド
+  items:
+    - name: Microsoft Sentinel に接続する
+      displayName: 'log analytics, service notes'
+      href: how-to-configure-with-sentinel.md
+    - name: Microsoft Defender for IoT エージェントベースのソリューションを構成する
+      displayName: 'data, collection, geolocation, log analytics, raw events'
+      href: how-to-configure-agent-based-solution.md
+    - name: CIS ベンチマークの推奨事項を調査する
+      href: how-to-investigate-cis-benchmark.md
+    - name: カスタム アラートの作成
+      displayName: security group
+      href: quickstart-create-custom-alerts.md
+    - name: Azure RTOS 用の Defender-IoT-micro-agent
+      href: iot-security-azure-rtos.md
+      items:
+        - name: Azure RTOS 用の Defender-IoT-micro-agent を操作する
+          href: how-to-azure-rtos-security-module.md
+        - name: Azure RTOS 用の Defender-IoT-micro-agent について理解する
+          href: concept-rtos-security-module.md
+        - name: Azure RTOS 用の Defender-IoT-micro-agent のアラートと推奨事項
+          href: concept-rtos-security-alerts-recommendations.md
+    - name: クラシック
+      items:
+        - name: デプロイが推奨されるエージェント
+          items:
+            - name: デプロイするエージェントを選択する
+              href: how-to-deploy-agent.md
+            - name: C# ベースのセキュリティ エージェントを Windows デバイスにデプロイする
+              href: how-to-deploy-windows-cs.md
+            - name: C# ベースのセキュリティ エージェントを Linux デバイスにデプロイする
+              href: how-to-deploy-linux-cs.md
+            - name: C ベースのセキュリティ エージェントを Linux デバイスにデプロイする
+              href: how-to-deploy-linux-c.md
+        - name: セキュリティ エージェントのトラブルシューティングを行う
+          items:
+            - name: Microsoft Defender for IoT の Linux セキュリティ エージェントのトラブルシューティングを行う
+              href: troubleshoot-agent.md
+            - name: ローカル構成 C
+              href: azure-iot-security-local-configuration-c.md
+            - name: ローカル構成 C#
+              href: azure-iot-security-local-configuration-csharp.md
+        - name: Edge azureiotsecurity をデプロイする
+          href: how-to-deploy-edge.md
+        - name: セキュリティ エージェントを構成する
+          displayName: property
+          href: how-to-agent-configuration.md
+        - name: 独自のセキュリティ メッセージを送信する
+          href: how-to-send-security-messages.md
+        - name: 未加工のセキュリティ データにアクセスする
+          displayName: 'log analytics, alerts,'
+          href: how-to-security-data-access.md
+        - name: デバイスを調査する
+          displayName: 'access, data, kql, ports, logins, process'
+          href: how-to-investigate-device.md
+    - name: トラブルシューティング
+      items:
+        - name: Defender for IoT マイクロ エージェントのトラブルシューティング (プレビュー)
+          displayName: 'service status, review logs'
+          href: troubleshoot-defender-micro-agent.md
+- name: リファレンス
+  items:
+    - name: Azure RTOS 用の Defender for IoT マイクロ エージェント API
+      displayNAme: 'prototype, disable'
+      href: azure-rtos-security-module-api.md
+    - name: よく寄せられる質問
+      displayName: 'FAQ, embedded, dependencies, data, quota, internet,'
+      href: resources-agent-frequently-asked-questions.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Defender for IoT の用語集
+      href: references-defender-for-iot-glossary.md
+    - name: 機能のサポートと廃止
+      items:
+        - name: 機能のサポートと廃止
+          displayName: 'C, C#, deprecation, support'
+          href: edge-security-module-deprecation.md
+- name: リソース
+  items:
+    - name: Microsoft Learn でセキュリティ スキルを身に付ける
+      href: /learn/browse/?term=securityS&terms=securityS
+    - name: Microsoft Defender for Cloud のドキュメント
+      href: ../../defender-for-cloud/
+    - name: Azure のセキュリティのドキュメント
+      href: ../../security/index.yml
+    - name: Azure IoT のセキュリティ、プライバシー、コンプライアンスのブログ
+      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'
+    - name: デバイス ビルダー向けのエージェントベースのソリューション
+      items: null
+    - name: Stack Overflow 上の Azure RTOS Defender-IoT-micro-agent
+      href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'

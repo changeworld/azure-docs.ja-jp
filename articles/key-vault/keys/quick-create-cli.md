@@ -1,7 +1,6 @@
 ---
 title: Azure Key Vault でキーの属性を作成し、取得する - Azure CLI
 description: Azure CLI を使用して Azure Key Vault との間でキーの設定と取得を行う方法を紹介するクイック スタート
-services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
@@ -10,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4141e60370b397e799664b7d42384bbeb096bd05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 620ddefc6a51f1910d97d9b38f94f1e246f2159c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071179"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619441"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault との間でキーの設定と取得を行う
 
@@ -45,7 +44,7 @@ ms.locfileid: "99071179"
 az keyvault key create --vault-name "<your-unique-keyvault-name>" -n ExampleKey --protection software
 ```
 
-これで、Azure Key Vault に追加したキーは、その URI を使用すると参照できます。 現在のバージョンを取得するには、 **"https://<your-unique-keyvault-name>.vault.azure.net/keys/ExampleKey"** を使用します。 
+これで、Azure Key Vault に追加したキーは、その URI を使用すると参照できます。 **`https://<your-unique-keyvault-name>.vault.azure.net/keys/ExampleKey`** を使用して、現在のバージョンを取得します。 
 
 以前に格納したキーを表示するには:
 
@@ -66,4 +65,4 @@ az keyvault key show --name "ExampleKey" --vault-name "<your-unique-keyvault-nam
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure CLI az keyvault コマンド](/cli/azure/keyvault)のリファレンスを参照する
-- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-features.md)を確認する

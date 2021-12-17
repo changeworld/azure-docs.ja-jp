@@ -3,12 +3,13 @@ title: お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止
 description: この記事では、コンテナー分析情報による Azure Red Hat OpenShift クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6a278898942e40d3347791d31a3c38341df01f7c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 915d4ada1980a5440f0942a401e01a6e66e60f86
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731818"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319812"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止する方法
 

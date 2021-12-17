@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 3a7e75641f6bb84b490231fcd06e04c3cbad06d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7c9caf5bbfd842c635b0cb887540457f15c081f
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99063469"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "114297039"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>チュートリアル:Azure プライベート エンドポイントを使用して Azure Cosmos アカウントに接続する
 
@@ -130,6 +130,8 @@ bastion ホストは、プライベート エンドポイントをテストす�
 5. **[Review + create]\(レビュー + 作成\)** を選択します。 
   
 6. 設定を確認し、 **[作成]** を選択します。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-a-cosmos-db-account-with-a-private-endpoint"></a>プライベート エンドポイントを備えた Cosmos DB アカウントの作成
 

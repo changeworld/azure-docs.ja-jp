@@ -4,23 +4,23 @@ description: Azure Functions の拡張機能である Durable Functions のオ�
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5625bc2ddfa4b6f527ca16f19f33d257a1834d4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f27b19b101c997e002f6cf60b7cab988e3cbed4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85340820"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457715"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) でのサブオーケストレーション
 
 オーケストレーター関数はアクティビティ関数を呼び出すだけでなく、別のオーケストレーター関数を呼び出すことができます。 たとえば、小規模なオーケストレーター関数のライブラリから大規模なオーケストレーションを作成できます。 またはオーケストレーター関数の複数のインスタンスを並列で実行できます。
 
-オーケストレーター関数からは、.NET の `CallSubOrchestratorAsync` または `CallSubOrchestratorWithRetryAsync` メソッド、または JavaScript の `callSubOrchestrator` または `callSubOrchestratorWithRetry` メソッドを使用して、別のオーケストレーター関数を呼び出すことができます。 [エラー処理と補正](durable-functions-error-handling.md#automatic-retry-on-failure)の記事で自動再試行の詳細について説明しています。
+オーケストレーター関数は、.NET 内では `CallSubOrchestratorAsync` または `CallSubOrchestratorWithRetryAsync` メソッド、JavaScript 内では `callSubOrchestrator` または `callSubOrchestratorWithRetry` メソッド、Python 内では `call_sub_orchestrator` または `call_sub_orchestrator_with_retry` メソッドを使用して、別のオーケストレーター関数を呼び出すことができます。 [エラー処理と補正](durable-functions-error-handling.md#automatic-retry-on-failure)の記事で自動再試行の詳細について説明しています。
 
 呼び出し元から見ると、サブオーケストレーター関数はアクティビティ関数と同じように動作します。 それらは値を返したり、例外をスローしたり、親のオーケストレーター関数によって待機させたりすることができます。 
 
 > [!NOTE]
-> サブオーケストレーションは現在、.NET と JavaScript でサポートされています。
+> サブオーケストレーションは現在、.NET、JavaScript、Python 内でサポートされています。
 
 ## <a name="example"></a>例
 
@@ -68,9 +68,30 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    device_id = context.get_input()
+
+    # Step 1: Create an installation package in blob storage and return a SAS URL.
+    sas_url = yield context.call_activity("CreateInstallationPackage", device_id)
+
+    # Step 2: Notify the device that the installation package is ready.
+    yield context.call_activity("SendPackageUrlToDevice", { "id": device_id, "url": sas_url })
+
+    # Step 3: Wait for the device to acknowledge that it has downloaded the new package.
+    yield context.call_activity("DownloadCompletedAck")
+
+    # Step 4: ...
+```
+
 ---
 
-このオーケストレーター関数は、そのまま一回限りのデバイス プロビジョニングに使用するか、または大規模なオーケストレーションに組み込むことができます。 後者の場合、親のオーケストレーター関数は `CallSubOrchestratorAsync` (.NET) または `callSubOrchestrator` (JavaScript) API を使用して `DeviceProvisioningOrchestration` のインスタンスをスケジュールできます。
+このオーケストレーター関数は、そのまま一回限りのデバイス プロビジョニングに使用するか、または大規模なオーケストレーションに組み込むことができます。 後者の場合、親のオーケストレーター関数は `CallSubOrchestratorAsync` (.NET)、`callSubOrchestrator` (JavaScript)、`call_sub_orchestrator` (Python) のいずれかの API を使用して、`DeviceProvisioningOrchestration` のインスタンスをスケジュールできます。
 
 複数のオーケストレーター関数を並列で実行する方法を次に示します。
 
@@ -124,6 +145,30 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+
+    device_IDs = yield context.call_activity("GetNewDeviceIds")
+
+    # Run multiple device provisioning flows in parallel
+    provisioning_tasks = []
+    id_ = 0
+    for device_id in device_IDs:
+        child_id = f"{context.instance_id}:{id_}"
+        provision_task = context.call_sub_orchestrator("DeviceProvisioningOrchestration", device_id, child_id)
+        provisioning_tasks.append(provision_task)
+        id_ += 1
+
+    yield context.task_all(provisioning_tasks)
+
+    # ...
+```
 ---
 
 > [!NOTE]

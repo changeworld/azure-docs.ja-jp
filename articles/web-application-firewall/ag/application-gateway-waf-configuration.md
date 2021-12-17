@@ -4,15 +4,16 @@ description: この記事では、Azure portal を使用した Application Gatew
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 02/20/2020
+ms.date: 07/06/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2d34641fdecfe334e84347efe1a2f64482cae74b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3b6042ec28e7b774f57be19809c585ad919b25b0
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93040257"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432520"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web アプリケーション ファイアウォールの要求サイズの制限と除外リスト
 
@@ -96,7 +97,12 @@ Web アプリケーション ファイアウォールでは、下限と上限の
    - V1 大型 WAF ゲートウェイ - 500 MB
    - V2 WAF ゲートウェイ - 750 MB 
 
- ファイル アップロード制限の既定値は 100 MB です。
+ファイル アップロード制限の既定値は 100 MB です。
+
+(WAF_v2 SKU 上の) CRS 3.2 以降では、これらの制限は以下のようになります。
+   
+   - 要求本文サイズの上限は 2MB
+   - ファイル アップロードの上限は 4 GB 
 
 WAF には、要求本文の検査を有効または無効にするための構成可能なノブも用意されています。 既定では、要求本文の検査は有効になっています。 要求本文の検査を無効にした場合、HTTP メッセージ本文の内容は WAF によって評価されません。 そのような場合、WAF ではヘッダー、cookie、および URI には WAF 規則が引き続き適用されます。 要求本文の検査を無効にすると、最大要求本文サイズ フィールドは適用できなくなり、設定することもできません。 要求本文の検査をオフにすると、128 KB を超えるメッセージを WAF に送信できるようになりますが、メッセージ本文の脆弱性が検査されません。
 

@@ -4,38 +4,37 @@ description: Azure Arc 対応 SQL Managed Instance に接続する
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: dnethi
+ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: abd27e15ccf5b421e69e78b2b726d192ffdecacb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62442749ccff4a588daef57c7e3ecbc374ff5fde
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92372363"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061734"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance に接続する
 
 この記事では、Azure Arc 対応 SQL Managed Instance に接続する方法について説明します。 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="view-azure-arc-enabled-sql-managed-instances"></a>Azure Arc 対応 SQL Managed Instance を表示する
 
 Azure Arc 対応 SQL Managed Instance と外部エンドポイントを表示するには、次のコマンドを使用します。
 
-```console
-azdata arc sql mi list
+```azurecli
+az sql mi-arc list --k8s-namespace <namespace> --use-k8s -o table
 ```
 
 出力は次のようになります。
 
 ```console
-Name    Replicas    ExternalEndpoint    State
-------  ----------  ----------------  -------
-sqldemo 1/1         10.240.0.4:32023  Ready
+Name       PrimaryEndpoint      Replicas    State
+---------  -------------------  ----------  -------
+sqldemo    10.240.0.107,1433    1/1         Ready
 ```
 
 AKS、kubeadm、OpenShift などを使用している場合は、ここから外部 IP とポート番号をコピーし、Azure Data Studio や SQL Server Management Studio などの SQL Server/Azure SQL インスタンスに接続するためのお気に入りのツールを使用して接続できます。  ただし、クイック スタート VM を使用している場合は、Azure の外部からその VM に接続する方法に関する特別な情報について、以下を参照してください。 
@@ -57,6 +56,9 @@ Azure Data Studio を開き、上記の外部エンドポイント IP アドレ�
 
 > [!NOTE]
 > Azure Data Studio を使用して、[SQL Managed Instance ダッシュボードを表示](azure-data-studio-dashboards.md#view-the-sql-managed-instance-dashboards)することができます。
+
+> [!NOTE]
+> Kubernetes マニフェストを使用して作成されたマネージド インスタンスに接続するには、ユーザー名とパスワードを base64 のエンコード形式で sqlcmd に提供する必要があります。
 
 SQLCMD、Linux、または Windows を使用して接続するには、次のようなコマンドを使用できます。 SQL パスワードの入力を求められたら、入力します。
 
@@ -84,7 +86,7 @@ az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 
 NSG の名前を取得したら、次のコマンドを使用してファイアウォール規則を追加できます。 この例の値は、ポート 30913 に対する NSG 規則を作成し、**任意の** ソース IP アドレスからの接続を許可します。  これは、セキュリティ上、ベスト プラクティスとはいえません。  クライアントの IP アドレスや、チームまたは組織の IP アドレスが含まれる IP アドレス範囲に固有の -source-address-prefixes 値を指定すると、適切にロックダウンできます。
 
-次の `--destination-port-ranges` パラメーターの値を、上記の `azdata sql instance list`F コマンドから受け取ったポート番号に置き換えます。
+次の `--destination-port-ranges` パラメーターの値を、上記の `az sql mi-arc list` コマンドから受け取ったポート番号に置き換えます。
 
 ```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30913 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'

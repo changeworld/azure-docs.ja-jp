@@ -1,30 +1,37 @@
 ---
 title: マッピング データ フローのフラット化変換
-description: フラット化変換を使用して階層データを非正規化します
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory および Synapse Analytics パイプラインのフラット化変換を使用して階層データを非正規化します。
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/29/2021
+ms.openlocfilehash: 4fb8d5ea1bfaa9534f7db27296d3cb7f61d0c4fb
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81413675"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274957"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>マッピング データ フローのフラット化変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
+
 フラット化変換を使用して、JSON などの階層構造内の配列値を取得し、それらを個々の行にアンロールします。 このプロセスは非正規化と呼ばれるものです。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWLX9j]
 
 ## <a name="configuration"></a>構成
 
 フラット化変換には、次の構成設定が含まれます
 
-![フラット化の設定](media/data-flow/flatten1.png "フラット化の設定")
+:::image type="content" source="media/data-flow/flatten1.png" alt-text="フラット化の設定":::
 
 ### <a name="unroll-by"></a>アンロール
 
@@ -39,6 +46,28 @@ ms.locfileid: "81413675"
 選択変換と同様に、入力フィールドと正規化されていない配列から新しい構造のプロジェクションを選択します。 正規化されていない配列がマップされている場合、出力列は配列と同じデータ型になります。 アンロール配列が、サブ配列を含む複合オブジェクトの配列である場合、そのサブ配列の項目をマッピングすると、配列が出力されます。
 
 マッピングの出力を確認するには、検査タブとデータのプレビューを参照してください。
+
+## <a name="rule-based-mapping"></a>ルールベースのマッピング
+
+フラット化変換では、ルールベースのマッピングがサポートされており、ルールに基づいて配列をフラット化し、階層レベルに基づいて構造体をフラット化する、動的で柔軟な変換を作成できます。
+
+:::image type="content" source="media/data-flow/flatten-pattern.png" alt-text="パターンのフラット化":::
+
+### <a name="matching-condition"></a>Matching condition (一致条件)
+
+完全一致またはパターンを使用してフラット化する列に対するパターン マッチング条件を入力します。 例: ```like(name,'cust%')```
+
+### <a name="deep-column-traversal"></a>Deep column traversal (ディープ列トラバーサル)
+
+複合オブジェクト全体を列として処理するのではなく、複合オブジェクトのすべてのサブ列を個別に処理するようサービスに指示するオプションの設定。
+
+### <a name="hierarchy-level"></a>階層レベル
+
+展開する階層のレベルを選択します。
+
+### <a name="name-matches-regex"></a>Name matches (名前一致) (正規表現)
+
+必要に応じて、上の一致条件を使用するのではなく、正規表現として名前の一致を表すには、このボックスを使用します。
 
 ## <a name="examples"></a>例
 

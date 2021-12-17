@@ -5,6 +5,7 @@
     - name: Microsoft Azure Attestation について
       href: overview.md
 - name: クイックスタート
+  expanded: true
   items:
     - name: ARM テンプレート
       displayName: Resource Manager
@@ -50,13 +51,13 @@
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
     - name: よく寄せられる質問
-      href: faq.md
+      href: faq.yml
     - name: REST
       href: /rest/api/attestation/
     - name: Azure PowerShell
       href: /powershell/module/az.attestation/#attestation
     - name: Azure CLI
-      href: /cli/azure/ext/attestation/attestation
+      href: /cli/azure/attestation
     - name: Windows 向け Azure DCAP ライブラリ
       href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
     - name: Linux 向け Azure DCAP ライブラリ

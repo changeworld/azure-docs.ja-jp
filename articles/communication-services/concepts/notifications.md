@@ -2,19 +2,19 @@
 title: Azure Communication Services での通知
 titleSuffix: An Azure Communication Services concept document
 description: Azure Communication Services に基づいて構築されたアプリのユーザーに通知を送信します。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
-ms.date: 03/10/2021
-ms.topic: overview
+ms.author: rifox
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: e1b7e091fe09bc2c093cc84473bd07917347f26d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 831aa049d6426eeb23e4f227321a79359ed852af
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220796"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255365"
 ---
 # <a name="communication-services-notifications"></a>Communication Services の通知
 
@@ -28,7 +28,7 @@ Azure Communication Services は [Azure Event Grid](https://azure.microsoft.com/
 
 :::image type="content" source="./media/notifications/acs-events-int.png" alt-text="Communication Services が Event Grid とどのように統合されるかを示す図。":::
 
-[Azure Communication Services でのイベント処理](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)の詳細を確認してください。
+[Azure Communication Services でのイベント処理](../../event-grid/event-schema-communication-services.md)の詳細を確認してください。
 
 ## <a name="deliver-push-notifications-via-azure-notification-hubs"></a>Azure Notification Hubs 経由でプッシュ通知を配信する
 

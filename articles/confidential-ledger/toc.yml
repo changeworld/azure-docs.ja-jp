@@ -1,0 +1,50 @@
+- name: Azure Confidential Ledger
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Confidential Ledger について
+      href: overview.md
+- name: クイックスタート
+  items:
+    - name: ポータル
+      href: quickstart-portal.md
+    - name: Python
+      href: quickstart-python.md
+    - name: ARM テンプレート
+      href: quickstart-template.md
+- name: 概念
+  items:
+    - name: アーキテクチャ
+      href: architecture.md
+    - name: Ledger ノードの認証
+      href: authenticate-ledger-nodes.md
+- name: ハウツー ガイド
+  items:
+    - name: クライアント証明書を作成する
+      href: create-client-certificate.md
+    - name: Ledger サービス プリンシパルを登録する
+      href: register-ledger-service-principal.md
+    - name: Confidential Ledger リソース プロバイダーを登録する
+      href: register-ledger-resource-provider.md
+- name: 参考資料
+  items:
+    - name: よく寄せられる質問
+      href: faq.md
+    - name: .NET クライアント ライブラリ
+      href: /dotnet/api/overview/azure/storage.confidentialledger-readme-pre
+    - name: Java プレビュー クライアント ライブラリ
+      href: /java/api/overview/azure/data-confidentialledger-readme?view=azure-java-preview
+- name: リソース
+  items:
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/browse/
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: サービス レベル アグリーメント (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/'
+    - name: サービスの状態
+      href: 'https://azure.microsoft.com/status/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/'

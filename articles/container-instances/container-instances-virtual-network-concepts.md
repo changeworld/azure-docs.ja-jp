@@ -3,12 +3,12 @@ title: 仮想ネットワークを使用するシナリオ
 description: コンテナー グループを Azure 仮想ネットワークにデプロイするシナリオ、リソース、制限。
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 6de99c68c3f05e4734dd46a579d28a6f1a3b824e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7f0e2719d6949037e2268f66bf1dce8904530992
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763777"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247496"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>仮想ネットワークのシナリオとリソース
 
@@ -45,9 +45,9 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 * 仮想ネットワークにデプロイされたコンテナー グループ内で[マネージド ID](container-instances-managed-identity.md) を使用することはできません。
 * 仮想ネットワークにデプロイされているコンテナー グループ内の [liveness probe](container-instances-liveness-probe.md) または [readiness probe](container-instances-readiness-probe.md) を有効にすることはできません。
 * 追加のネットワーク リソースが関係しているため、通常、仮想ネットワークへのデプロイには標準のコンテナー インスタンスをデプロイするよりも時間がかかります。
+* ポート 25 への送信接続は、現時点ではサポートされていません。
 * コンテナー グループを Azure Storage アカウントに接続する場合は、そのリソースに[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を追加する必要があります。
-
-[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
+* [IPv6 アドレス](../virtual-network/ip-services/ipv6-overview.md)は、現時点ではサポートされていません。 
 
 ## <a name="required-network-resources"></a>必要なネットワーク リソース
 
@@ -67,7 +67,7 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 
 ネットワーク プロファイルは、Azure リソース用のネットワーク構成テンプレートです。 このプロファイルでは、リソースのネットワーク プロパティが指定されます (たとえば、リソースのデプロイ先となるサブネットなど)。 最初に [az container create][az-container-create] コマンドを使用してコンテナー グループをサブネット (および仮想ネットワーク) にデプロイすると、Azure により、ネットワーク プロファイルが自動的に作成されます。 その後は、そのネットワーク プロファイルを使ってサブネットにリソースをデプロイしていくことができます。 
 
-Resource Manager テンプレート、YAML ファイル、またはプログラムのメソッドを使用して、コンテナー グループをサブネットにデプロイするには、ネットワーク プロファイルの完全な Resource Manager リソース ID を指定する必要があります。 以前 [az container create][az-container-create] を使用して作成したプロファイルを使用することも、Resource Manager テンプレート ([テンプレートの例](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet)と[リファレンス](/azure/templates/microsoft.network/networkprofiles)を参照) を使用してプロファイルを作成することもできます。 以前作成したプロファイルの ID を取得するには、[az network profile list][az-network-profile-list] コマンドを使用します。 
+Resource Manager テンプレート、YAML ファイル、またはプログラムのメソッドを使用して、コンテナー グループをサブネットにデプロイするには、ネットワーク プロファイルの完全な Resource Manager リソース ID を指定する必要があります。 以前 [az container create][az-container-create] を使用して作成したプロファイルを使用することも、Resource Manager テンプレート ([テンプレートの例](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet)と[リファレンス](/azure/templates/microsoft.network/networkprofiles)を参照) を使用してプロファイルを作成することもできます。 以前作成したプロファイルの ID を取得するには、[az network profile list][az-network-profile-list] コマンドを使用します。 
 
 次の図では、Azure Container Instances へ委任されたサブネットに、複数のコンテナー グループがデプロイされています。 サブネットにコンテナー グループを 1 つデプロイしたら、同じネットワーク プロファイルを指定して追加のコンテナー グループをデプロイしていくことができます。
 
@@ -76,7 +76,7 @@ Resource Manager テンプレート、YAML ファイル、またはプログラ�
 ## <a name="next-steps"></a>次のステップ
 
 * Azure CLI を使用したデプロイの例については、「[コンテナー インスタンスを Azure 仮想ネットワークにデプロイする](container-instances-vnet.md)」を参照してください。
-* 新しい仮想ネットワーク、サブネット、ネットワーク プロファイル、およびコンテナー グループを Resource Manager テンプレートを使用してデプロイするには、「[Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+* 新しい仮想ネットワーク、サブネット、ネットワーク プロファイル、およびコンテナー グループを Resource Manager テンプレートを使用してデプロイするには、「[Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet
 )」(VNet 内に Azure コンテナー グループを作成する) を参照してください。
 * [Azure portal](container-instances-quickstart-portal.md) を使用してコンテナー インスタンスを作成する場合は、 **[ネットワーク]** タブで、新しい仮想ネットワークまたは既存の仮想ネットワークの設定を指定することもできます。
 

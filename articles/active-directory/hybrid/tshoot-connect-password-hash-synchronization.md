@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c6ec162ceb51c3bf19be42219b054d8371ff221
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a796aff2c0882bd07b12a2f6fa6c0ab3eb793834
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98247354"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746127"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード ハッシュ同期のトラブルシューティング
 
@@ -256,7 +256,7 @@ Azure AD テナントに対応するオブジェクトがないため、この�
 3. この機能が Azure AD で有効ではない場合、または同期チャネルの状態が有効ではない場合は、Connect のインストール ウィザードを実行してください。 **[同期オプションのカスタマイズ]** を選択し、パスワード同期の選択を解除します。この変更により、一時的に機能が無効になります。 その後、もう一度ウィザードを実行し、パスワード同期を再度有効にします。スクリプトを再実行して、構成が正しいことを確認します。
 
 4. イベント ログでエラーを調べます。 問題を示す次のイベントを探します。
-    * ソース:"Directory synchronization" ID: 0, 611, 652, 655" イベントが表示されている場合は、接続に問題があります。 イベント ログ メッセージに、問題のあるフォレストの情報が含まれています。 詳細については、「[接続に関する問題](#connectivity problem)」を参照してください。
+    * ソース:"Directory synchronization" ID: 0, 611, 652, 655" イベントが表示されている場合は、接続に問題があります。 イベント ログ メッセージに、問題のあるフォレストの情報が含まれています。
 
 5. ハートビートが表示されない場合、または他に何も動作していない場合は、「[すべてのパスワードの完全同期の開始](#trigger-a-full-sync-of-all-passwords)」を実行します。 スクリプトは 1 回のみ実行してください。
 

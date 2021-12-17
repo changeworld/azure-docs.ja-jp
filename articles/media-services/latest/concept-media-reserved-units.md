@@ -3,7 +3,7 @@ title: メディア占有ユニット - Azure
 description: メディア占有ユニットを使用すると、メディア プロセスをスケーリングし、メディア処理タスクの速度を決定することができます。
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali-ms
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,49 +11,30 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 4b3a06d2d441c918c4c109d9dc624ebfa1cd4c97
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 3fc68505712bc5cae0defd216b30a3c5913c3c77
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120828"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866438"
 ---
 # <a name="media-reserved-units"></a>メディア占有ユニット
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Azure Media Services を使用してメディア占有ユニット (MRU) を管理することで、実行されるメディア処理をスケーリングできます。 MRU には、メディアのエンコードに必要な追加のコンピューティング容量が用意されています。 MRU の数によって、メディア タスクの処理速度と、アカウントで同時に処理できるメディア タスク数が決まります。 たとえば、アカウントに 5 つの MRU があり、処理するタスクがある場合、5 つのメディア タスクを同時に実行できます。 残りのタスクはすべてキューに格納され、実行中のタスクが完了したときに、順番に処理する対象として選択できます。 プロビジョニングした MRU ごとに容量は予約されますが、専用のリソースは提供されません。 需要が非常に高い時間帯には、すべての MRU の処理がすぐに開始されない場合があります。
+以前は Azure Media Services v2 のメディア占有ユニット (MRU) を使用して、エンコードの同時実行性とパフォーマンスを制御していました。 システムが負荷に基づいて自動的にスケール アップおよびスケール ダウンするため、メディア サービス アカウントの MRU 管理や、クォータの増加要求を行う必要がなくなりました。 また、MRU 使用時と比較して、パフォーマンスが同等、または向上しているのもあります。 
 
-タスクとは、アダプティブ ストリーミング エンコードなど、資産に対する作業の個別の操作です。 ジョブを送信すると、Media Services によってジョブは個々の操作 (つまり、タスク) に分割され、個別の MRU に関連付けられます。
-
-## <a name="choosing-between-different-reserved-unit-types"></a>さまざまな予約ユニットの種類の選択
-
-次の表は、さまざまなエンコーディングの速度を選択して決定するときに役立ちます。  使用する MRU に応じて、7 分間、1080p のビデオのエンコード期間が表示されます。
-
-|RU の種類|シナリオ|7 分間の 1080p ビデオに関するサンプル結果 |
-|---|---|---|
-| **S1**|シングル ビットレート エンコード。 <br/>解像度が SD 以下であり、時間的制約がなく、低コストなファイル。|"H264 Single Bitrate SD 16x9" を使用したシングル ビットレート SD 解像度 MP4 ファイルへのエンコードには約 7 分かかります。|
-| **S2**|シングル ビットレート エンコードと複数ビットレート エンコード。<br/>通常は SD と HD 両方のエンコードに使用されます。|"H264 Single Bitrate 720p" プリセットでのエンコードには約 6 分かかります。<br/><br/>"H264 Single Bitrate 720p" プリセットでのエンコードには約 12 分かかります。|
-| **S3**|シングル ビットレート エンコードと複数ビットレート エンコード。<br/>解像度がフル HD および 4K であるビデオ。 時間に依存しない高速ターンアラウンド エンコード。|"H264 Single Bitrate 1080p" プリセットでのエンコードは約 3 分かかります。<br/><br/>"H264 Multiple Bitrate 1080p" プリセットでのエンコードは約 8 分かかります。|
-
-> [!NOTE]
-> アカウントに対して MRU をプロビジョニングしない場合、メディア タスクは S1 MRU のパフォーマンスで処理され、タスクは順番に取得されます。 処理容量は予約されていないため、あるタスクが終了してから次のタスクが開始するまでの待機時間は、システム内のリソースの可用性によって変わります。
-
-## <a name="considerations"></a>考慮事項
-
-* Media Services v3 または Video Indexer によってトリガーされる音声分析とビデオ分析ジョブの場合は、アカウントに 10 個の S3 ユニットをプロビジョニングすることを強くお勧めします。 10 個を超える S3 の MRU が必要な場合は、[Azure portal](https://portal.azure.com/) を使用してサポート チケットを開いてください。
-* MRU のないエンコード タスクの場合、タスクがキューに格納された状態で費やすことができる時間に上限はなく、一度に 1 つのタスクしか実行されません。
+2020-05-01 API より前のバージョンで作成されたアカウントがある場合でも、MRU を管理するため API にアクセスできます。ただし、設定した MRU 構成は、エンコードの同時実行やパフォーマンス制御には使用されません。 Azure portal で MRU を管理するオプションが表示されない場合は、2020-05-01 API 以降で作成されたアカウントを使用しています。 
 
 ## <a name="billing"></a>課金
 
-実行中のジョブがあるかどうかに関係なく、アカウントでメディア占有ユニットがプロビジョニングされた時間 (分単位) に基づいて課金されます。 詳しくは、[Media Services の価格詳細](https://azure.microsoft.com/pricing/details/media-services/)ページの FAQ のセクションをご覧ください。
+以前はメディア占有ユニットに対して料金が発生しましたが、2021 年 4 月 17 日時点では、メディア占有ユニット用に構成されているアカウントには料金がかかりません。 エンコード ジョブの課金の詳細は、[Media Services を使用したビデオとオーディオのエンコード](encoding-concept.md)に関する記述を参照してください
 
-## <a name="next-step"></a>次のステップ
-[CLI を使用してメディア占有ユニットをスケーリングする](media-reserved-units-cli-how-to.md)
-[ビデオを分析する](analyze-videos-tutorial.md)
+**2020-05-01** バージョンの API (v3 バージョンなど) または Azure portal を使用して作成されたアカウントの場合、スケーリングとメディア占有ユニットは不要になりました。 スケーリングはサービスによって自動的に内部処理されます。 Azure Media Services アカウントでは、メディア占有ユニットが不要になり、サポートされなくなりました。 その他の情報については、「[メディア占有ユニット (レガシ)](concept-media-reserved-units.md)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
 
-* [クォータと制限](limits-quotas-constraints-reference.md)
+* [Media Services v2 から v3 への移行](migrate-v-2-v-3-migration-introduction.md)
+* [CLI を使用してメディア占有ユニットをスケーリングする](media-reserved-units-cli-how-to.md)

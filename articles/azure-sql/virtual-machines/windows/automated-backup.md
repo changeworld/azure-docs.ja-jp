@@ -3,7 +3,7 @@ title: SQL Server 2016/2017 Azure VM の自動バックアップ v2 | Microsoft 
 description: この記事では、Azure 上で実行されている SQL Server 2016/2017 VM の自動バックアップ機能について説明します。 この記事は、Resource Manager を使用する VM のみにあてはまります。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
@@ -12,14 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: f41614d54dc4320f683f406b2882a7b388bb4c3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: pamela
+ms.reviewer: mathoma
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5910a432f2dce0afe43506fe8d66cc2c0f09a599
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358420"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550705"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines の自動バックアップ v2 (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,8 +30,6 @@ ms.locfileid: "97358420"
 > * [SQL Server 2016 以降](automated-backup.md)
 
 自動バックアップ v2 では、SQL Server 2016 以降の Standard、Enterprise、または Developer エディションを実行している Azure VM 上のすべての既存および新規データベースのための [Microsoft Azure へのマネージド バックアップ](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)が自動的に構成されます。 これにより、永続的な Azure BLOB ストレージを利用した日常的なデータベース バックアップを構成できます。 自動バックアップ v2 は、[SQL Server IaaS (サービスとしてのインフラストラクチャ) Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に依存します。
-
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
 ## <a name="prerequisites"></a>前提条件
 自動バックアップ v2 を使用するには、次の前提条件を参照してください。
@@ -111,8 +110,9 @@ ms.locfileid: "97358420"
 
 その後、火曜日の午後 10 時からの 6 時間、すべてのデータベースの完全バックアップが再び開始されます。
 
+
 > [!IMPORTANT]
-> 毎日のバックアップをスケジュールする場合は、すべてのデータベースが設定された時間内に確実にバックアップされるよう、時間枠に余裕を持たせることをお勧めします。 これは、大量のデータをバックアップする場合に特に重要です。
+> バックアップは各間隔で順番に行われます。 多数のデータベースがあるインスタンスの場合は、すべてのバックアップに対応する十分な時間でバックアップ間隔をスケジュールします。 指定された間隔内にバックアップを完了できない場合、一部のバックアップがスキップされ、1 つのデータベースのバックアップ間の時間が構成されたバックアップ間隔時間より長くなり、回復ポイントの目標 (RPO) に悪影響を与える可能性があります。 
 
 ## <a name="configure-new-vms"></a>新しい VM を構成する
 
@@ -127,9 +127,7 @@ Resource Manager デプロイ モデルで新しい SQL Server 2016 または 20
 
 ## <a name="configure-existing-vms"></a>既存の VM を構成する
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
-既存の SQL Server 仮想マシンの場合、[SQL 仮想マシン リソース](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)に移動してから **[バックアップ]** を選択し、自動バックアップを構成します。
+既存の SQL Server 仮想マシンの場合、[SQL 仮想マシン リソース](manage-sql-vm-portal.md#access-the-resource)に移動してから **[バックアップ]** を選択し、自動バックアップを構成します。
 
 ![既存の VM の SQL 自動バックアップ](./media/automated-backup/sql-server-configuration.png)
 
@@ -316,7 +314,7 @@ SQL Server 2016/2017 上で自動バックアップを監視するには、主�
 もう 1 つのオプションは、通知に組み込みのデータベース メール機能を利用する方法です。
 
 1. [msdb.managed_backup.sp_set_parameter](/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) ストアド プロシージャを呼び出して、**SSMBackup2WANotificationEmailIds** パラメーターにメール アドレスを割り当てます。 
-1. [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md) が Azure VM から電子メールを送信できるようにします。
+1. [SendGrid](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-twilio-sendgrid-accountcreate-a-twilio-sendgrid-account) が Azure VM から電子メールを送信できるようにします。
 1. SMTP サーバーとユーザー名を使用してデータベース メールを構成します。 データベース メールは、SQL Server Management Studio または Transact-SQL コマンドで構成できます。 詳細については、「[データベース メール](/sql/relational-databases/database-mail/database-mail)」を参照してください。
 1. [データベース メールを使用するように SQL Server エージェントを構成します](/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail)。
 1. SMTP ポートがローカルの VM ファイアウォールと、その VM のネットワーク セキュリティ グループの両方で許可されていることを確認します。

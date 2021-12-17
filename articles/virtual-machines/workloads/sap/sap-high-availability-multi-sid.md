@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 079ac273f7b2aa91b61ad2cdbcfe62cd989bb2f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: H1Hack27Feb2017, devx-track-azurepowershell
+ms.openlocfilehash: 858bf092084a30424ff5916219b672068d8cbbfb
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675262"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676010"
 ---
 # <a name="create-a-high-availability-sap-netweaver-multi-sid-configuration"></a>高可用性 SAP NetWeaver マルチ SID の構成を作成する
 

@@ -1,7 +1,7 @@
 - name: 概要
   items:
     - name: Azure のネットワークについて
-      href: networking-overview.md
+      href: fundamentals/networking-overview.md
     - name: Architecture
       items:
         - name: ネットワーク エンジニア向けの Azure
@@ -50,7 +50,7 @@
             - name: Azure のネットワーク待ち時間
               href: azure-network-latency.md
             - name: Azure でのインターネット ルーティング設定
-              href: ../virtual-network/routing-preference-overview.md
+              href: ../virtual-network/ip-services/routing-preference-overview.md
         - name: セキュリティ
           items:
             - name: Azure Policy によるセキュリティ制御
@@ -146,7 +146,7 @@
 - name: リソース
   items:
     - name: テンプレートの作成
-      href: ../azure-resource-manager/templates/template-syntax.md?toc=%2fazure%2fnetworking%2ftoc.json
+      href: ../azure-resource-manager/templates/syntax.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: プロバイダー
       href: networking-partners-msp.md
     - name: Azure のロードマップ

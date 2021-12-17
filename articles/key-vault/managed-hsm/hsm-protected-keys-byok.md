@@ -2,18 +2,18 @@
 title: Azure Key Vault Managed HSM の HSM 保護キーを生成し、転送する方法 - Azure Key Vault | Microsoft Docs
 description: この記事は、Managed HSM と共に使用する独自の HSM で保護されたキーを計画、生成、転送する場合に役立ちます。 これは、BYOK (Bring Your Own Key) とも呼ばれます。
 services: key-vault
-author: amitbapat
+author: mbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.author: ambapat
-ms.openlocfilehash: cc9037db3289d7fb3287a8994a8ff6a68fc0583a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.author: mbaldwin
+ms.openlocfilehash: 3afe9135c620b808ad6853705c5886aa3628ab7a
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790583"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370311"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>HSM で保護されたキーを Managed HSM にインポートする (BYOK)
 
@@ -62,14 +62,14 @@ CLI を使用したログイン オプションの詳細については、「[Az
 
 |ベンダー名|ベンダーの種類|サポートされている HSM モデル|詳細情報|
 |---|---|---|---|
-|nCipher|製造元、<br/>サービスとしての HSM|<ul><li>HSM の nShield ファミリ</li><li>サービスとしての nShield</ul>|[nCipher の新しい BYOK ツールとドキュメント](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|
-|Thales|Manufacturer|<ul><li>ファームウェア バージョンが 7.3 以降の Luna HSM 7 ファミリ</li></ul>| [Luna の BYOK ツールとドキュメント](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
-|Fortanix|製造元、<br/>サービスとしての HSM|<ul><li>Self-Defending Key Management Service (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS キーを BYOK 用クラウド プロバイダーにエクスポートする - Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
-|Marvell|Manufacturer|以下を含む LiquidSecurity のすべての HSM<ul><li>ファームウェア バージョン 2.0.4 以降</li><li>ファームウェア バージョン 3.2 以降</li></ul>|[Marvell の BYOK ツールとドキュメント](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (エンタープライズ キー管理システム)|以下を含む複数の HSM ブランドおよびモデル<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>詳細については、[Cryptomathic のサイト](https://www.cryptomathic.com/azurebyok)を参照してください|[Cryptomathic の BYOK ツールとドキュメント](https://www.cryptomathic.com/azurebyok)|
+|Entrust|製造元、<br/>サービスとしての HSM|<ul><li>HSM の nShield ファミリ</li><li>サービスとしての nShield</ul>|[nCipher の新しい BYOK ツールとドキュメント](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|
+|Fortanix|製造元、<br/>サービスとしての HSM|<ul><li>Self-Defending Key Management Service (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS キーを BYOK 用クラウド プロバイダーにエクスポートする - Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
+|IBM|製造元|IBM 476x、CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|Marvell|Manufacturer|以下を含む LiquidSecurity のすべての HSM<ul><li>ファームウェア バージョン 2.0.4 以降</li><li>ファームウェア バージョン 3.2 以降</li></ul>|[Marvell の BYOK ツールとドキュメント](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Securosys SA|製造元、サービスとしての HSM|Primus HSM ファミリ、Securosys Clouds HSM|[Primus の BYOK ツールとドキュメント](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV (エンタープライズ キー管理システム)|以下を含む複数の HSM ブランドおよびモデル<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>[詳細については、StorMagic のサイト](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)を参照してください|[SvKMS と Azure Key Vault の BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
-|IBM|製造元|IBM 476x、CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|Thales|Manufacturer|<ul><li>ファームウェア バージョンが 7.3 以降の Luna HSM 7 ファミリ</li></ul>| [Luna の BYOK ツールとドキュメント](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 |Utimaco|製造元、<br/>サービスとしての HSM|u.trust Anchor、CryptoServer|[Utimaco BYOK ツールと統合ガイド](https://support.hsm.utimaco.com/support/downloads/byok)|
 ||||
 
@@ -78,21 +78,21 @@ CLI を使用したログイン オプションの詳細については、「[Az
 
 |キー名|キーの種類|キー サイズまたは曲線|出発地|説明|
 |---|---|---|---|---|
-|キー交換キー (KEK)|RSA| 2,048 ビット<br />3,072 ビット<br />4,096 ビット|Managed HSM|Managed HSM で生成される、HSM で保護された RSA キー ペア|
+|キー交換キー (KEK)|RSA-HSM| 2,048 ビット<br />3,072 ビット<br />4,096 ビット|Managed HSM|Managed HSM で生成される、HSM で保護された RSA キー ペア|
 |ターゲット キー|
-||RSA|2,048 ビット<br />3,072 ビット<br />4,096 ビット|ベンダー HSM|Managed HSM に転送されるキー|
-||EC|P-256<br />P-384<br />P-521|ベンダー HSM|Managed HSM に転送されるキー|
-||対称キー (oct-HSM)|128 ビット<br />192 ビット<br />256 ビット|ベンダー HSM|Managed HSM に転送されるキー|
+||RSA-HSM|2,048 ビット<br />3,072 ビット<br />4,096 ビット|ベンダー HSM|Managed HSM に転送されるキー|
+||EC-HSM|P-256<br />P-384<br />P-521|ベンダー HSM|Managed HSM に転送されるキー|
+||対称キー (oct-hsm)|128 ビット<br />192 ビット<br />256 ビット|ベンダー HSM|Managed HSM に転送されるキー|
 ||||
 ## <a name="generate-and-transfer-your-key-to-the-managed-hsm"></a>キーを生成して Managed HSM に転送する
 
 キーを生成して Managed HSM に転送するには、次の操作を行います。
 
-* [ステップ 1:KEK を生成する](#step-1-generate-a-kek)
-* [手順 2:KEK 公開キーをダウンロードする](#step-2-download-the-kek-public-key)
-* [ステップ 3:キーを生成して転送用に準備をする](#step-3-generate-and-prepare-your-key-for-transfer)
-* [手順 4:キーを Managed HSM に転送する](#step-4-transfer-your-key-to-managed-hsm)
-
+  - [ステップ 1:KEK を生成する](#step-1-generate-a-kek)
+  - [手順 2:KEK 公開キーをダウンロードする](#step-2-download-the-kek-public-key)
+  - [ステップ 3:キーを生成して転送用に準備をする](#step-3-generate-and-prepare-your-key-for-transfer)
+  - [手順 4:キーを Managed HSM に転送する](#step-4-transfer-your-key-to-managed-hsm) 
+   
 ### <a name="step-1-generate-a-kek"></a>手順 1:KEK を生成する
 
 KEK は、Managed HSM で生成される RSA キーです。 KEK は、インポートするキー (*ターゲット* キー) を暗号化するために使用されます。

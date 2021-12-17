@@ -1,128 +1,76 @@
 ---
-title: Storage Explorer を使用して Azure DevTest Labs に VHD ファイルをアップロードする
-description: Microsoft Azure Storage Explorer を使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
-ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+title: Storage Explorer を使用して VHD ファイルをアップロードする
+description: Microsoft Azure Storage Explorer を使用して、VHD ファイルを DevTest Labs ラボ ストレージ アカウントにアップロードします。
+ms.topic: how-to
+ms.date: 11/05/2021
+ms.openlocfilehash: 2531964c056ddbed38da435e16bde3e0f5e1eff9
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91282529"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054052"
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer を使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
+# <a name="upload-a-vhd-file-to-a-labs-storage-account-by-using-storage-explorer"></a>Storage Explorer を使用して、VHD ファイルをラボのストレージ アカウントにアップロードします
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Azure DevTest Labs では、VHD ファイルを使用してカスタム イメージを作成でき、そのイメージを使用して仮想マシンをプロビジョニングできます。 この記事では、[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用して、VHD ファイルをラボのストレージ アカウントにアップロードする方法を示します。 VHD ファイルをアップロードしたら、[「次のステップ」セクション](#next-steps)の記事に従って、アップロードした VHD ファイルからカスタム イメージを作成できます。 Azure のディスクと VHD の詳細については、「[マネージド ディスクの概要](../virtual-machines/managed-disks-overview.md)」を参照してください。
+Azure DevTest Labs では、VHD ファイルを使用して、仮想マシンをプロビジョニングするためのカスタム イメージを作成できます。 この記事では、[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用して、VHD ファイルをラボのストレージ アカウントにアップロードする方法を示します。 VHD ファイルを DevTest Labs にアップロードすると、アップロードしたファイルから[カスタム イメージを作成](devtest-lab-create-custom-image-from-vhd-using-powershell.md)できます。 Azure のディスクと VHD の詳細については、「[マネージド ディスクの概要](../virtual-machines/managed-disks-overview.md)」を参照してください。
+
+Storage Explorer では、複数の接続オプションがサポートされます。 この記事では、Azure サブスクリプションに関連付けられているストレージ アカウントへの接続を示します。 その他の Storage Explorer 接続オプションの詳細については、「[Storage Explorer の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)」を参照してください。
+
+## <a name="prerequisites"></a>必須コンポーネント
+
+- [最新バージョンの Microsoft Azure Storage Explorer をダウンロードしてインストールします](https://www.storageexplorer.com)。
+
+- Azure portal を使用して、ラボのストレージ アカウントの名前を取得します。
+
+  1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) で、 **[DevTest Labs]** を検索して選択し、一覧からラボを選択します。
+  1. ラボのページで、左側のナビゲーションから **[構成とポリシー]** を選択します。 
+  1. **[構成とポリシー]** ページの **[仮想マシンのベース]** の下で **[カスタム イメージ]** を選択します。
+  1. **[カスタム イメージ]** ページで、 **[追加]** を選択します。 
+  1. **[カスタム イメージ]** ページの **[VHD]** の下で、 **[PowerShell を使用して VHD ファイルをアップロードする]** を選択します。
+     ![PowerShell リンクを使用した VHD のアップロードを示すスクリーンショット。](media/devtest-lab-upload-vhd-using-storage-explorer/upload-image-using-psh.png)
+  1. **[PowerShell を使用したイメージのアップロード]** ページの、**Add-AzureVhd** コマンドレットへの呼び出しで、`Destination` パラメーターは、ラボのストレージ アカウント名を次の形式で表示します: `https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/`。
+  1. 次の手順で使用するストレージ アカウント名をコピーします。
 
 ## <a name="step-by-step-instructions"></a>詳細な手順
 
-次の手順は、[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用して VHD ファイルを Azure DevTest Labs にアップロードする方法を示しています。
+1. Storage Explorer を開くと、左側の **[Explorer]** ウィンドウに、サインインしているすべての Azure サブスクリプションが表示されます。
 
-1. [最新バージョンの Microsoft Azure Storage Explorer](https://www.storageexplorer.com) をダウンロードしてインストールします。
+   別のアカウントを追加する必要がある場合は、 **[アカウント管理]** アイコンを選択し、 **[アカウント管理]** ウィンドウで **[アカウントの追加]** を選択します。
 
-1. Azure Portal を使用して、ラボのストレージ アカウントを取得します。
+   ![[アカウント管理] ウィンドウに [アカウントの追加] と表示されているスクリーンショット。](media/devtest-lab-upload-vhd-using-storage-explorer/add-account-link.png)
 
-    1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
-    
-    1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
-    
-    1. ラボの一覧で目的のラボを選択します。  
-    
-    1. ラボのブレードで、 **[構成]** を選択します。 
-    
-    1. ラボの **[構成]** ブレードで、 **[カスタム イメージ (VHD)]** を選択します。
-    
-    1. **[カスタム イメージ]** ブレードで、 **[+追加]** を選択します。 
-    
-    1. **[カスタム イメージ]** ブレードで、 **[VHD]** を選択します。
-    
-    1. **[VHD]** ブレードで、 **[Upload a VHD file using PowerShell (PowerShell を使用して VHD ファイルをアップロードする)]** を選択します。
-    
-        ![PowerShell を使用した VHD のアップロード][0]
-    
-    1. **[PowerShell を使用したイメージのアップロード]** ブレードに、**Add-AzureVhd** コマンドレットへの呼び出しが表示されます。 最初のパラメーター ("*Destination*") には、ラボのストレージ アカウント名が、次の形式で指定されます。
-    
-        `https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...`
+   プロンプトに従って、Azure サブスクリプションに関連付けられている Microsoft アカウントでサインインします。
 
-    1. 後の手順で使用するため、このストレージ アカウントをメモしておきます。
-    
-1. Storage Explorer を使用する Azure サブスクリプション アカウントに接続します。
+1. サインインすると、 **[Explorer]** ウィンドウに、アカウントに関連付けられている Azure サブスクリプションが表示されます。 使用する Azure サブスクリプションの横にあるドロップダウン矢印を選択します。 左側のウィンドウに、選択した Azure サブスクリプションに関連付けられているストレージ アカウントが表示されます。
 
-    > [!TIP] 
-    > 
-    > Storage Explorer では、複数の接続オプションがサポートされます。 このセクションでは、Azure サブスクリプションに関連付けられているストレージ アカウントへの接続を示します。 Storage Explorer でサポートされるその他の接続オプションについては、「[Storage Explorer の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)」を参照してください。
- 
-    1. ストレージ エクスプローラーを開きます。
-    
-    1. Storage Explorer で、 **[Azure アカウントの設定]** を選択します。 
-    
-        ![[Azure アカウントの設定]][1]
-    
-    1. 左側のウィンドウに、ログインしている Microsoft アカウントが表示されます。 別のアカウントに接続するには、 **[アカウントの追加]** を選択し、ダイアログに従って、少なくとも 1 つのアクティブな Azure サブスクリプションと関連付けられている Microsoft アカウントでサインインします。
-    
-        ![[アカウントの追加]][2]
-    
-    1. Microsoft アカウントでのサインインに成功すると、左側のウィンドウに、そのアカウントに関連付けられた Azure サブスクリプションが表示されます。 操作する Azure サブスクリプションを選択してから、 **[適用]** を選択します ( **[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure サブスクリプションがすべて選択された状態と、1 つも選択されていない状態を切り替えることができます)。
-    
-        ![Azure サブスクリプションの選択][3]
-    
-    1. 左側のウィンドウに、選択した Azure サブスクリプションに関連付けられているストレージ アカウントが表示されます。
-    
-        ![選択された Azure サブスクリプション][4]
+   ![選択した Azure サブスクリプションのストレージ アカウントを示すスクリーンショット。](media/devtest-lab-upload-vhd-using-storage-explorer/storage-accounts-list.png)
 
-1. ラボのストレージ アカウントを見つけます。
+1. 前の手順で保存したラボ ストレージ アカウント名の横にあるドロップダウン矢印を選択します。
 
-    1. Storage Explorer の左側のウィンドウで、ラボを所有している Azure サブスクリプションのノードを見つけて展開します。
-    
-    1. サブスクリプションのノードで、 **[ストレージ アカウント]** を展開します。
+1. **[BLOB コンテナー]** ノードを展開し、 **[アップロード]** を選択します。
 
-    1. ラボの [ストレージ アカウント] ノードを展開して、 **[BLOB コンテナー]** 、 **[ファイル共有]** **[キュー]** 、および **[テーブル]** の各ノードを表示します。
-    
-    1. **[BLOB コンテナー]** ノードを展開します。
-    
-    1. uploads BLOB コンテナーを選択して、その内容を右側のウィンドウに表示します。
-        
-        ![アップロード ディレクトリ][5]
+   ![アップロード ディレクトリと共に展開された [BLOB コンテナー] ノードを示すスクリーンショット。](media/devtest-lab-upload-vhd-using-storage-explorer/upload-dir.png)
 
-1. Storage Explorer を使用して、VHD ファイルをアップロードします。
+1. Storage Explorer の右ペインの BLOB エディター ツールバーで、 **[アップロード]** を選択し、 **[ファイルのアップロード]** を選択します。 
 
-    1. Storage Explorer の右側のウィンドウに、ラボのストレージ アカウントの **uploads** BLOB コンテナー内の BLOB が一覧表示されます。 BLOB エディター ツールバーで、 **[アップロード]** を選択します。 
-        
-        ![[アップロード] ボタンが選択された状態の Storage Explorer の右ウィンドウを示すスクリーンショット。][6]
-    
-    1. **[アップロード]** ドロップダウン メニューから、 **[ファイルのアップロード...]** を選択します。
-    
-    1. **[ファイルのアップロード]** ダイアログで、省略記号を選択します。
-        
-        ![省略記号が選択された [ファイルのアップロード] ダイアログを示すスクリーンショット。][8]  
+   ![[アップロード] ボタンと [ファイルのアップロード] を示すスクリーンショット。](media/devtest-lab-upload-vhd-using-storage-explorer/upload-button.png)
 
-    1. **[アップロードするファイルの選択]** ダイアログで、目的の VHD ファイルを参照して選択してから **[開く]** を選択します。
-    
-    1. **[ファイルのアップロード]** ダイアログに戻ったら、 **[BLOB の種類]** を **[ページ BLOB]** に変更します。
-    
-    1. **[アップロード]** を選択します。
+1. **[ファイルのアップロード]** ダイアログ ボックスで、 **[選択したファイル]** フィールドの横にある **[...]** を選択し、マシン上の VHD ファイルを参照して選択し、 **[開く]** を選択します。
 
-        ![ファイルの選択][9]  
-    
-    1. Storage Explorer の **[アクティビティ ログ]** ウィンドウに、ダウンロード ステータスが表示されます (アップロードをキャンセルするためのリンクも表示されます)。 VHD ファイルのアップロードは、VHD ファイルのサイズと接続速度によっては、時間がかかる場合があります。 
+1. **[BLOB の種類]** で、 **[ブロック BLOB]** を **[ページ BLOB]** に変更します。
 
-        ![ファイルのアップロードの状態][10]  
+1. **[アップロード]** を選択します。
+
+   ![[ファイルのアップロード] ダイアログボックスを示すスクリーンショット。](media/devtest-lab-upload-vhd-using-storage-explorer/upload-file.png)
+
+下部にある **[アクティビティ]** ウィンドウには、アップロードの状態が表示されます。 VHD ファイルのサイズと接続速度によっては、VHD ファイルのアップロードに時間がかかることがあります。
+
+![[アクティビティ] ウィンドウにアップロード状態が表示されているスクリーンショット。](media/devtest-lab-upload-vhd-using-storage-explorer/upload-status.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Portal を使用して VHD ファイルから Azure DevTest Labs にカスタム イメージを作成する](devtest-lab-create-template.md)
 - [PowerShell を使用して VHD ファイルから Azure DevTest Labs にカスタム イメージを作成する](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 
-[0]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-image-using-psh.png
-[1]: ./media/devtest-lab-upload-vhd-using-storage-explorer/settings-icon.png
-[2]: ./media/devtest-lab-upload-vhd-using-storage-explorer/add-account-link.png
-[3]: ./media/devtest-lab-upload-vhd-using-storage-explorer/subscriptions-list.png
-[4]: ./media/devtest-lab-upload-vhd-using-storage-explorer/storage-accounts-list.png
-[5]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-dir.png
-[6]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-button.png
-[7]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-files.png
-[8]: ./media/devtest-lab-upload-vhd-using-storage-explorer/select-file.png
-[9]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-file.png
-[10]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-status.png

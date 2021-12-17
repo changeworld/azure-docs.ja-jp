@@ -5,16 +5,16 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 07/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: be8a8dbe94404141781af4abf6cc8ec5bb9c2712
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0252305167f0f77d310810af0a147106fae9e0c6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060620"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730883"
 ---
-# <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure Virtual WAN ハブでネットワーク仮想アプライアンスを作成する方法 (プレビュー)
+# <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub"></a>Azure Virtual WAN ハブでネットワーク仮想アプライアンスを作成する方法
 
 この記事では、Azure の **Network Virtual Appliance** (NVA) を使用して、Azure のリソースに接続する方法を示します。 この種類の接続では、外部接続用パブリック IP アドレスが割り当てられていてるオンプレミスの VPN デバイスが必要です。 Virtual WAN の詳細については、「[Virtual WAN とは](virtual-wan-about.md)」を参照してください。
 
@@ -22,7 +22,7 @@ ms.locfileid: "106060620"
 
 Azure Virtual WAN 内の **Cisco SD-WAN** のデプロイに関するドキュメントについては、「[Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)」を参照してください。 
 
-Azure Virtual WAN 内の **VMware SD-WAN** のデプロイ ドキュメントの場合 - 「[Deployment Guide for VMware SD-WAN in Virtual WAN Hub](https://kb.vmware.com/s/article/82746)」 (仮想 WAN ハブの VMware SD-WAN 向けデプロイ ガイド) を参照してください。
+Azure Virtual WAN 内の **VMware SD-WAN** のデプロイ ドキュメントの場合 - 「[仮想 WAN ハブの VMware SD-WAN 向けデプロイ ガイド](https://kb.vmware.com/s/article/82746)」を参照してください
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -94,9 +94,11 @@ Azure Virtual WAN 内の **VMware SD-WAN** のデプロイ ドキュメントの
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>VNet をハブに接続する
 
+このセクションでは、ハブと VNet の間に接続を作成します。
+
 [!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
 * Virtual WAN の詳細については、「[Virtual WAN とは](virtual-wan-about.md)」ページを参照してください。
-* Virtual WAN ハブでの NVA の詳細については、「[Virtual WAN ハブのネットワーク仮想アプライアンスについて (プレビュー)](about-nva-hub.md)」を参照してください。
+* Virtual WAN ハブでの NVA の詳細については、「[Virtual WAN ハブのネットワーク仮想アプライアンスについて](about-nva-hub.md)」を参照してください。

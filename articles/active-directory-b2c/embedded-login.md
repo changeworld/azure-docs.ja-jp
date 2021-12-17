@@ -8,19 +8,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/21/2021
+ms.date: 08/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ccad323c1834894367cca0ef0d3f98eb1b1b1ec3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 164e6060f9f317dfec02028d02552f82d196cdf8
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639915"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545022"
 ---
-# <a name="embedded-sign-in-experience"></a>埋め込みサインイン エクスペリエンス
+# <a name="embedded-sign-up-or-sign-in-experience"></a>埋め込みのサインアップまたはサインイン エクスペリエンス
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -32,7 +32,10 @@ ms.locfileid: "105639915"
 
 ::: zone pivot="b2c-custom-policy"
 
-より簡単なサインイン エクスペリエンスを実現するために、ユーザーを別のサインイン ページにリダイレクトしたり、ポップアップ ウィンドウを生成したりすることを回避できます。 インライン フレーム要素 `<iframe>` を使用すると、Azure AD B2C サインイン ユーザー インターフェイスを Web アプリケーションに直接埋め込むことができます。
+より簡単なサインアップまたはサインイン エクスペリエンスを実現するために、ユーザーを別のサインアップまたはサインイン ページにリダイレクトしたり、ポップアップ ウィンドウを生成したりすることを回避できます。 インライン フレーム &lt;iframe&gt; HTML 要素を使用すると、Azure AD B2C サインイン ユーザー インターフェイスを Web アプリケーションに直接埋め込むことができます。 
+
+> [!TIP]
+> &lt;iframe&gt; HTML 要素を使用して、[サインアップまたはサインイン](add-sign-up-and-sign-in-policy.md)、[プロファイルの編集](add-profile-editing-policy.md)、または[パスワードの変更](add-password-change-policy.md)のカスタム ポリシーを Web またはシングルページ アプリに埋め込みます。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -44,12 +47,12 @@ ms.locfileid: "105639915"
 
 iframe を使用する場合は、次の点を考慮してください。
 
-- 埋め込みサインインでサポートされるのは、ローカル アカウントのみです。 ほとんどのソーシャル ID プロバイダー (Google や Facebook など) は、サインイン ページがインライン フレーム内にレンダリングされるのをブロックします。
+- 埋め込みサインアップまたはサインインでサポートされるのは、ローカル アカウントのみです。 ほとんどのソーシャル ID プロバイダー (Google や Facebook など) は、サインイン ページがインライン フレーム内にレンダリングされるのをブロックします。
 - iframe 内の Azure AD B2C セッション Cookie はサードパーティの Cookie と見なされるため、特定のブラウザー (シークレット モードの Safari や Chrome など) はこれらの Cookie をブロックまたはクリアし、結果的に望ましくないユーザー エクスペリエンスになります。 この問題を回避するには、アプリケーション ドメイン名と Azure AD B2C ドメインが "*同じオリジン*" を持つようにします。 同じオリジンを使用するには Azure AD B2C テナントの[カスタム ドメインを有効にし](custom-domain.md)、同じオリジンで Web アプリを構成します。 たとえば、'https://app.contoso.com ' でホストされているアプリケーションは、'https://login.contoso.com ' で実行されている Azure AD B2C と同じオリジンを持ちます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」にある手順を完了する。
+* 「[Active Directory B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)」にある手順を完了する。
 * ポリシーの[カスタム ドメインを有効にする](custom-domain.md)。
 
 ## <a name="configure-your-policy"></a>ポリシーを構成する
@@ -107,7 +110,7 @@ window.parent.postMessage("signUp", '*');
 
 ## <a name="configure-a-web-application"></a>Web アプリケーションを構成する
 
-ユーザーがサインイン ボタンを選択すると、ユーザーを Azure AD B2C サインイン操作に移動する認可要求が [Web アプリ](code-samples.md#web-apps-and-apis)によって生成されます。 サインインが完了すると、Azure AD B2C から、アプリケーション内の構成済みリダイレクト URI に ID トークン (認証コード) が返されます。
+ユーザーがサインイン ボタンを選択すると、ユーザーを Azure AD B2C サインイン操作に移動する認可要求が [Web アプリ](integrate-with-app-code-samples.md#web-apps-and-apis)によって生成されます。 サインインが完了すると、Azure AD B2C から、アプリケーション内の構成済みリダイレクト URI に ID トークン (認証コード) が返されます。
 
 埋め込みログインをサポートするため、iframe **src** プロパティは、`/account/SignUpSignIn` などのサインイン コ ントローラーを指します。これにより、認可要求が生成され、ユーザーが Azure AD B2C ポリシーにリダイレクトされます。
 
@@ -168,6 +171,6 @@ function logOut()
 - [ユーザー インターフェイスのカスタマイズ](customize-ui.md)
 - [RelyingParty](relyingparty.md) 要素のリファレンス
 - [JavaScript のポリシーを有効にする](./javascript-and-page-layout.md)
-- [コード サンプル](code-samples.md)
+- [コード サンプル](integrate-with-app-code-samples.md)
 
 ::: zone-end

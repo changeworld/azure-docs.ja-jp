@@ -6,18 +6,18 @@ manager: arjmands
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 09/18/2017
+ms.date: 07/13/2021
 ms.author: eustacea
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 455f1f3e1c8181646fbe165d0f1aea6a2fb2fb13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd8576994f47eb370c4e396253d9b8594fb43145
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92150698"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287184"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>X.509 CA 証明書を使用したデバイス認証
 
@@ -36,7 +36,7 @@ X.509 CA 機能により、証明機関 (CA) を使用した IoT Hub に対す�
 
 ## <a name="prerequisite"></a>前提条件
 
-X.509 CA 機能を使用するには、IoT Hub アカウントを持っている必要があります。  まだ持っていない場合は、[IoT Hub インスタンスの作成方法](quickstart-send-telemetry-dotnet.md)を参照してください。
+X.509 CA 機能を使用するには、IoT Hub アカウントを持っている必要があります。  まだ持っていない場合は、[IoT Hub インスタンスの作成方法](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)を参照してください。
 
 ## <a name="how-to-get-an-x509-ca-certificate"></a>X.509 CA 証明書の入手方法
 
@@ -68,13 +68,13 @@ X.509 CA 証明書を IoT Hub に登録します。この証明書は、登録�
 
 所有の証明ステップには、ユーザーと IoT Hub 間で暗号のチャレンジと応答のプロセスが含まれます。  デジタル証明書の内容がパブリックであるために傍受されやすい場合、IoT Hub は、ユーザーが実際に CA 証明書を所有していることを確かめようとします。  IoT Hub はこれを、ランダム チャレンジを生成することによって行います。このチャレンジには、CA 証明書の対応する秘密キーで署名する必要があります。  前述のように秘密キー シークレットを保存して保護している場合、このステップを完了するための情報を持っているのは当該ユーザーのみです。 秘密キーの秘密性が、この方法における信頼の源です。  チャレンジに署名後、結果を含むファイルをアップロードすることによってこのステップを完了します。
 
-[CA 証明書の登録](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)方法については、こちらをご覧ください。
+[CA 証明書の登録](./tutorial-x509-scripts.md)方法については、こちらをご覧ください。
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>IoT Hub 上にデバイスを作成する方法
 
 デバイス偽装を防ぐために、IoT Hub は、どのようなデバイスが必要であるかを指定するようユーザーに要求します。  これは、IoT Hub のデバイス レジストリにデバイス エントリを作成することによって行います。  このプロセスは、IoT Hub [Device Provisioning Service](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) を使用している場合は自動化されます。 
 
-手動で IoT Hub にデバイスを作成する方法については、[ここ](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub)を参照してください。
+手動で IoT Hub にデバイスを作成する方法については、[ここ](./tutorial-x509-scripts.md)を参照してください。
 
 IoT ハブの X.509 デバイスを作成する
 
@@ -82,9 +82,9 @@ IoT ハブの X.509 デバイスを作成する
 
 X.509 CA 証明書を登録し、デバイスに署名して証明書の信頼チェーンに入れたので、後はデバイス接続時 (初回でも同様) にデバイス認証を行います。  X.509 CA 署名デバイスの接続時、デバイスは検証のためにその証明書チェーンをアップロードします。 チェーンには、中間 CA とデバイス証明書がすべて含まれています。  この情報を使用して、IoT Hub は 2 段階のプロセスでデバイスを認証します。  IoT Hub は、証明書チェーンの内部一貫性を暗号によって検証し、続いて所有証明チャレンジをデバイスに対して発行します。  IoT Hub は、デバイスから正常な所有証明応答を受け取ると、デバイスの認証を宣言します。  この宣言は、デバイスの秘密キーが保護されていること、またこのデバイスのみがこのチャレンジに対して正常に応答できることを前提としています。  秘密キーを保護するために、デバイスではハードウェア セキュア モジュール (HSM) のようなセキュアなチップの使用をお勧めします。
 
-IoT Hub へのデバイス接続が正常に行われると、認証プロセスは完了です。これはまた、セットアップが正しいことも示しています。
+IoT Hub へのデバイス接続が正常に行われると、認証プロセスは完了です。これはまた、セットアップが正しいことも示しています。 デバイスが接続されるたびに、IoT Hub によって TLS セッションが再ネゴシエートされ、そのデバイスの X.509 証明書が検証されます。 
 
-このデバイス接続手順を完了する方法については、[ここ](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)を参照してください。
+このデバイス接続手順を完了する方法については、[ここ](./tutorial-x509-scripts.md)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

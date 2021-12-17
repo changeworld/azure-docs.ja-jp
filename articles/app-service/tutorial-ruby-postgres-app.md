@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: 63194ab87e0f2228b8585e962394aa1ebfff48d6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0b92ff0b8e7bc6421e40e439deb44c8c8454b8db
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767254"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224320"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres のアプリを構築する
 
@@ -47,21 +47,21 @@ ms.locfileid: "107767254"
 
 ### <a name="connect-to-local-postgres-server"></a>ローカル Postgres サーバーに接続する
 
-ターミナル ウィンドウを開き、`psql` を実行してローカル Postgres サーバーに接続します。
+1. ターミナル ウィンドウを開き、`psql` を実行してローカル Postgres サーバーに接続します。
 
-```bash
-sudo -u postgres psql
-```
+    ```bash
+    sudo -u postgres psql
+    ```
 
-接続に成功すれば、Postgres データベースは実行されています。 接続されない場合は、「[Downloads - PostgreSQL Core Distribution (ダウンロード - PostgreSQL コア ディストリビューション)](https://www.postgresql.org/download/)」の手順に従って、ローカル Postgres データベースが開始されていることを確認します。
+    接続に成功すれば、Postgres データベースは実行されています。 接続されない場合は、「[Downloads - PostgreSQL Core Distribution (ダウンロード - PostgreSQL コア ディストリビューション)](https://www.postgresql.org/download/)」の手順に従って、ローカル Postgres データベースが開始されていることを確認します。
 
-「`\q`」を入力して Postgres クライアントを終了します。 
+1. 「`\q`」を入力して Postgres クライアントを終了します。 
 
-ご自身のサインイン済み Linux ユーザー名を使用して次のコマンドを実行し、データベースを作成できる Postgres ユーザーを作成します。
+1. ご自身のサインイン済み Linux ユーザー名を使用して次のコマンドを実行し、データベースを作成できる Postgres ユーザーを作成します。
 
-```bash
-sudo -u postgres createuser -d <signed-in-user>
-```
+    ```bash
+    sudo -u postgres createuser -d <signed-in-user>
+    ```
 
 <a name="step2"></a>
 
@@ -70,41 +70,50 @@ sudo -u postgres createuser -d <signed-in-user>
 
 ### <a name="clone-the-sample"></a>サンプルを複製する
 
-ターミナル ウィンドウから、`cd` コマンドで作業ディレクトリに移動します。
+1. ターミナル ウィンドウから、`cd` コマンドで作業ディレクトリに移動します。
 
-次のコマンドを実行して、サンプル レポジトリを複製します。
+1. サンプル リポジトリをクローンし、リポジトリ ルートに変更します。
 
-```bash
-git clone https://github.com/Azure-Samples/rubyrails-tasks.git
-```
+    ```bash
+    git clone https://github.com/Azure-Samples/rubyrails-tasks.git
+    cd rubyrails-tasks
+    ```
 
-`cd` コマンドで複製したディレクトリに移動します。 必要なパッケージをインストールします。
+1. 既定のブランチが `main` であることを確認します。
 
-```bash
-cd rubyrails-tasks
-bundle install --path vendor/bundle
-```
+    ```bash
+    git branch -m main
+    ```
+    
+    > [!TIP]
+    > App Service では、ブランチ名の変更は必要ありません。 ただし、多くのリポジトリで既定のブランチが `main` に変更されているため、このチュートリアルでは、`main` からリポジトリをデプロイする方法も示します。 詳細については、「[デプロイ ブランチを変更する](deploy-local-git.md#change-deployment-branch)」を参照してください。
+
+1. 必要なパッケージをインストールします。
+
+    ```bash
+    bundle install --path vendor/bundle
+    ```
 
 ### <a name="run-the-sample-locally"></a>ローカルでサンプルを実行する
 
-[Rails の移行](https://guides.rubyonrails.org/active_record_migrations.html#running-migrations)を実行して、アプリケーションで必要なテーブルを作成します。 移行で作成されるテーブルを確認するには、Git レポジトリの _db/migrate_ ディレクトリを調べます。
+1. [Rails の移行](https://guides.rubyonrails.org/active_record_migrations.html#running-migrations)を実行して、アプリケーションで必要なテーブルを作成します。 移行で作成されるテーブルを確認するには、Git レポジトリの _db/migrate_ ディレクトリを調べます。
 
-```bash
-rake db:create
-rake db:migrate
-```
+    ```bash
+    rake db:create
+    rake db:migrate
+    ```
 
-アプリケーションを実行します。
+1. アプリケーションを実行します。
 
-```bash
-rails server
-```
+    ```bash
+    rails server
+    ```
 
-ブラウザーで `http://localhost:3000` にアクセスします。 ページで、いくつかのタスクを追加します。
+1. ブラウザーで `http://localhost:3000` にアクセスします。 ページで、いくつかのタスクを追加します。
 
-![Postgres に正常に接続された Ruby on Rails](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
+    ![Postgres に正常に接続された Ruby on Rails](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
 
-Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と入力します。
+1. Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と入力します。
 
 ## <a name="create-postgres-in-azure"></a>Azure で Postgres を作成する
 
@@ -119,36 +128,36 @@ Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と�
 <!-- > [!NOTE]
 > Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
 
-このセクションでは、Azure Database for PostgreSQL サーバーとデータベースを作成します。 まず、次のコマンドを使用して `db-up` 拡張機能をインストールします。
+1. 次のコマンドを使用して `db-up` 拡張機能をインストールします。
 
-```azurecli
-az extension add --name db-up
-```
+    ```azurecli
+    az extension add --name db-up
+    ```
 
-次の例に示すように、[`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) コマンドを使用して、Azure に Postgres データベースを作成します。 *\<postgresql-name>* は、"*一意*" の名前に置き換えてください (サーバー エンドポイントは *https://\<postgresql-name>.postgres.database.azure.com*)。 *\<admin-username>* と *\<admin-password>* には、この Postgres サーバーの管理者ユーザーを作成するための資格情報を指定します。
+1. 次の例に示すように、[`az postgres up`](/cli/azure/postgres#az_postgres_up) コマンドを使用して、Azure に Postgres データベースを作成します。 *\<postgresql-name>* は、"*一意*" の名前に置き換えてください (サーバー エンドポイントは *https://\<postgresql-name>.postgres.database.azure.com*)。 *\<admin-username>* と *\<admin-password>* には、この Postgres サーバーの管理者ユーザーを作成するための資格情報を指定します。
 
-<!-- Issue: without --location -->
-```azurecli
-az postgres up --resource-group myResourceGroup --location westeurope --server-name <postgresql-name> --database-name sampledb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
-```
+    <!-- Issue: without --location -->
+    ```azurecli
+    az postgres up --resource-group myResourceGroup --location westeurope --server-name <postgresql-name> --database-name sampledb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
+    ```
 
-このコマンドは、次の処理を行うため、しばらく時間がかかります。
-
-- `myResourceGroup` という[リソース グループ](../azure-resource-manager/management/overview.md#terminology)がない場合は、作成します。 すべての Azure リソースは、そのいずれか 1 つに存在する必要があります。 `--resource-group` はオプションです。
-- 管理ユーザーとして Postgres サーバーを作成します。
-- `sampledb` データベースを作成します。
-- ローカル IP アドレスからのアクセスを許可します。
-- Azure サービスからのアクセスを許可します。
-- `sampledb` データベースへのアクセス権を持ったデータベース ユーザーを作成します。
-
-すべての手順は、他の `az postgres` コマンドと `psql` を使用して個別に実行することもできますが、`az postgres up` を使用すれば、そのすべての手順を 1 回で実行することができます。
-
-コマンドが完了したら、`Ran Database Query:` で始まる出力行を探してください。 これらは、ユーザー名 `root` およびパスワード `Sampledb1` で自動的に作成されたデータベース ユーザーを示しています。 後でデータベースにアプリを接続する際に使用することになります。
-
-<!-- not all locations support az postgres up -->
-> [!TIP]
-> `--location <location-name>` は、いずれかの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)に設定することができます。 ご利用のサブスクリプションから使用できるリージョンは、[`az account list-locations`](/cli/azure/account#az_account_list_locations) コマンドを使用して取得できます。 運用アプリの場合は、データベースとアプリを同じ場所に配置してください。
-
+    このコマンドは、次の処理を行うため、しばらく時間がかかります。
+    
+    - `myResourceGroup` という[リソース グループ](../azure-resource-manager/management/overview.md#terminology)がない場合は、作成します。 すべての Azure リソースは、そのいずれか 1 つに存在する必要があります。 `--resource-group` はオプションです。
+    - 管理ユーザーとして Postgres サーバーを作成します。
+    - `sampledb` データベースを作成します。
+    - ローカル IP アドレスからのアクセスを許可します。
+    - Azure サービスからのアクセスを許可します。
+    - `sampledb` データベースへのアクセス権を持ったデータベース ユーザーを作成します。
+    
+    すべての手順は、他の `az postgres` コマンドと `psql` を使用して個別に実行することもできますが、`az postgres up` を使用すれば、そのすべての手順を 1 回で実行することができます。
+    
+    コマンドが完了したら、`Ran Database Query:` で始まる出力行を探してください。 これらは、ユーザー名 `root` およびパスワード `Sampledb1` で自動的に作成されたデータベース ユーザーを示しています。 後でデータベースにアプリを接続する際に使用することになります。
+    
+    <!-- not all locations support az postgres up -->
+    > [!TIP]
+    > `--location <location-name>` は、いずれかの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)に設定することができます。 ご利用のサブスクリプションから使用できるリージョンは、[`az account list-locations`](/cli/azure/account#az_account_list_locations) コマンドを使用して取得できます。 運用アプリの場合は、データベースとアプリを同じ場所に配置してください。
+    
 ## <a name="connect-app-to-azure-postgres"></a>アプリを Azure Postgres に接続する
 
 この手順では、Azure Database for PostgreSQL に作成した Postgres データベースに Ruby on Rails アプリケーションを接続します。
@@ -172,68 +181,68 @@ production:
 
 ### <a name="test-the-application-locally"></a>ローカルでアプリケーションをテストする
 
-ローカル ターミナルに戻って、次の環境変数を設定します。
+1. ローカル ターミナルに戻って、次の環境変数を設定します。
 
-```bash
-export DB_HOST=<postgres-server-name>.postgres.database.azure.com
-export DB_DATABASE=sampledb 
-export DB_USERNAME=root@<postgres-server-name>
-export DB_PASSWORD=Sampledb1
-```
+    ```bash
+    export DB_HOST=<postgres-server-name>.postgres.database.azure.com
+    export DB_DATABASE=sampledb 
+    export DB_USERNAME=root@<postgres-server-name>
+    export DB_PASSWORD=Sampledb1
+    ```
 
-構成した運用環境の値で Rails データベース移行を実行して、Azure Database for PostgreSQL 内の Postgres データベースにテーブルを作成します。
+1. 構成した運用環境の値で Rails データベース移行を実行して、Azure Database for PostgreSQL 内の Postgres データベースにテーブルを作成します。
 
-```bash
-rake db:migrate RAILS_ENV=production
-```
+    ```bash
+    rake db:migrate RAILS_ENV=production
+    ```
 
-Rails アプリケーションを運用環境で実行するときは、プリコンパイル済みのアセットが必要です。 次のコマンドで必要なアセットを生成します。
+1. Rails アプリケーションを運用環境で実行するときは、プリコンパイル済みのアセットが必要です。 次のコマンドで必要なアセットを生成します。
 
-```bash
-rake assets:precompile
-```
+    ```bash
+    rake assets:precompile
+    ```
 
-Rails の運用環境では、セキュリティを管理するためにシークレットも使われます。 秘密鍵を生成します。
+1. Rails の運用環境では、セキュリティを管理するためにシークレットも使われます。 秘密鍵を生成します。
 
-```bash
-rails secret
-```
+    ```bash
+    rails secret
+    ```
 
-Rails の運用環境で使われる対応する変数に、秘密鍵を保存します。 便宜上、両方の変数に同じ鍵を使います。
+1. Rails の運用環境で使われる対応する変数に、秘密鍵を保存します。 便宜上、両方の変数に同じ鍵を使います。
 
-```bash
-export RAILS_MASTER_KEY=<output-of-rails-secret>
-export SECRET_KEY_BASE=<output-of-rails-secret>
-```
+    ```bash
+    export RAILS_MASTER_KEY=<output-of-rails-secret>
+    export SECRET_KEY_BASE=<output-of-rails-secret>
+    ```
 
-Rails 運用環境で JavaScript ファイルと CSS ファイルを提供できるようにします。
+1. Rails 運用環境で JavaScript ファイルと CSS ファイルを提供できるようにします。
 
-```bash
-export RAILS_SERVE_STATIC_FILES=true
-```
+    ```bash
+    export RAILS_SERVE_STATIC_FILES=true
+    ```
 
-運用環境でサンプル アプリケーションを実行します。
+1. 運用環境でサンプル アプリケーションを実行します。
 
-```bash
-rails server -e production
-```
+    ```bash
+    rails server -e production
+    ```
 
-`http://localhost:3000` に移動します。 エラーなしでページが読み込まれれば、Ruby on Rails アプリケーションは Azure の Postgres データベースに接続しています。
+1. `http://localhost:3000` に移動します。 エラーなしでページが読み込まれれば、Ruby on Rails アプリケーションは Azure の Postgres データベースに接続しています。
 
-ページで、いくつかのタスクを追加します。
+1. ページで、いくつかのタスクを追加します。
 
-![Azure Database for PostgreSQL に正常に接続された Ruby on Rails](./media/tutorial-ruby-postgres-app/azure-postgres-connect-success.png)
+    ![Azure Database for PostgreSQL に正常に接続された Ruby on Rails](./media/tutorial-ruby-postgres-app/azure-postgres-connect-success.png)
 
-Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と入力します。
+1. Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と入力します。
 
 ### <a name="commit-your-changes"></a>変更をコミットする
 
-次の Git コマンドを実行して、変更をコミットします。
+1. 次の Git コマンドを実行して、変更をコミットします。
 
-```bash
-git add .
-git commit -m "database.yml updates"
-```
+    ```bash
+    git add .
+    git commit -m "database.yml updates"
+    ```
 
 アプリをデプロイする準備ができました。
 
@@ -265,53 +274,57 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ### <a name="configure-rails-environment-variables"></a>Rails 環境変数を構成する
 
-ローカル ターミナルで、Azure の Rails 運用環境用の[新しいシークレット](configure-language-ruby.md#set-secret_key_base-manually)を生成します。
+1. ローカル ターミナルで、Azure の Rails 運用環境用の[新しいシークレット](configure-language-ruby.md#set-secret_key_base-manually)を生成します。
 
-```bash
-rails secret
-```
+    ```bash
+    rails secret
+    ```
 
-Rails 運用環境で必要な変数を構成します。
+1. 次の Cloud Shell では、2 つの _&lt;output-of-rails-secret>_ プレースホルダーをローカル ターミナルで生成した新しい秘密鍵に置き換えます。
 
-次の Cloud Shell では、2 つの _&lt;output-of-rails-secret>_ プレースホルダーをローカル ターミナルで生成した新しい秘密鍵に置き換えます。
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
+    ```
 
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
-```
-
-`ASSETS_PRECOMPILE="true"` は、Git の各デプロイでアセットをプリコンパイルするように既定の Ruby コンテナーに指示します。 詳細については、「[アセットをプリコンパイルする](configure-language-ruby.md#precompile-assets)」および「[静的アセットを提供する](configure-language-ruby.md#serve-static-assets)」を参照してください。
+    `ASSETS_PRECOMPILE="true"` は、Git の各デプロイでアセットをプリコンパイルするように既定の Ruby コンテナーに指示します。 詳細については、「[アセットをプリコンパイルする](configure-language-ruby.md#precompile-assets)」および「[静的アセットを提供する](configure-language-ruby.md#serve-static-assets)」を参照してください。
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
-ローカル ターミナルで、ローカル Git リポジトリに Azure リモートを追加します。
+1. `main` ブランチをデプロイするため、App Service アプリの既定のデプロイ ブランチを `main` に設定する必要があります (「[デプロイ ブランチを変更する](deploy-local-git.md#change-deployment-branch)」を参照してください)。 Cloud Shell で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して `DEPLOYMENT_BRANCH` アプリ設定を指定します。 
 
-```bash
-git remote add azure <paste-copied-url-here>
-```
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DEPLOYMENT_BRANCH='main'
+    ```
 
-Azure リモートにプッシュして、Ruby on Rails アプリケーションをデプロイします。 デプロイ ユーザーの作成時に指定したパスワードを入力するように求めるメッセージが表示されます。
+1. ローカル ターミナルで、ローカル Git リポジトリに Azure リモートを追加します。
 
-```bash
-git push azure main
-```
+    ```bash
+    git remote add azure <paste-copied-url-here>
+    ```
 
-デプロイ中、Azure App Service は進行状況について Git と通信します。
+1. Azure リモートにプッシュして、Ruby on Rails アプリケーションをデプロイします。 デプロイ ユーザーの作成時に指定したパスワードを入力するように求めるメッセージが表示されます。
 
-<pre>
-Counting objects: 3, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
-Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'main'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'a5e076db9c'.
-remote: Running custom deployment command...
-remote: Running deployment command...
-...
-&lt; Output has been truncated for readability &gt;
-</pre>
+    ```bash
+    git push azure main
+    ```
 
+    デプロイ中、Azure App Service は進行状況について Git と通信します。
+
+    <pre>
+    Counting objects: 3, done.
+    Delta compression using up to 8 threads.
+    Compressing objects: 100% (3/3), done.
+    Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
+    Total 3 (delta 2), reused 0 (delta 0)
+    remote: Updating branch 'main'.
+    remote: Updating submodules.
+    remote: Preparing deployment for commit id 'a5e076db9c'.
+    remote: Running custom deployment command...
+    remote: Running deployment command...
+    ...
+    &lt; Output has been truncated for readability &gt;
+    </pre>
+    
 ### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
 
 `http://<app-name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
@@ -328,108 +341,107 @@ remote: Running deployment command...
 
 ### <a name="add-a-column"></a>列を追加する
 
-ターミナルで、Git リポジトリのルートに移動します。
+1. ターミナルで、Git リポジトリのルートに移動します。
 
-`Done` というブール型の列を `Tasks` テーブルに追加する新しい移行を生成します。
+1. `Done` というブール型の列を `Tasks` テーブルに追加する新しい移行を生成します。
 
-```bash
-rails generate migration AddDoneToTasks Done:boolean
-```
+    ```bash
+    rails generate migration AddDoneToTasks Done:boolean
+    ```
 
-このコマンドは、_db/migrate_ ディレクトリに新しい移行ファイルを生成します。
+    このコマンドは、_db/migrate_ ディレクトリに新しい移行ファイルを生成します。
 
+1. ターミナルで、Rails データベースの移行を実行して、ローカル データベースを変更します。
 
-ターミナルで、Rails データベースの移行を実行して、ローカル データベースを変更します。
-
-```bash
-rake db:migrate
-```
+    ```bash
+    rake db:migrate
+    ```
 
 ### <a name="update-application-logic"></a>アプリケーション ロジックを更新する
 
-*app/controllers/tasks_controller.rb* ファイルを開きます。 ファイルの末尾にある次の行を探します。
+1. *app/controllers/tasks_controller.rb* ファイルを開きます。 ファイルの末尾にある次の行を探します。
 
-```rb
-params.require(:task).permit(:Description)
-```
+    ```rb
+    params.require(:task).permit(:Description)
+    ```
 
-この行を変更して、新しい `Done` パラメーターを追加します。
+1. この行を変更して、新しい `Done` パラメーターを追加します。
 
-```rb
-params.require(:task).permit(:Description, :Done)
-```
+    ```rb
+    params.require(:task).permit(:Description, :Done)
+    ```
 
 ### <a name="update-the-views"></a>ビューを更新する
 
-編集フォームである *app/views/tasks/_form.html.erb* ファイルを開きます。
+1. 編集フォームである *app/views/tasks/_form.html.erb* ファイルを開きます。
 
-`<%=f.error_span(:Description) %>` という行を探し、その直後に次のコードを挿入します。
+1. `<%=f.error_span(:Description) %>` という行を探し、その直後に次のコードを挿入します。
 
-```erb
-<%= f.label :Done, :class => 'control-label col-lg-2' %>
-<div class="col-lg-10">
-  <%= f.check_box :Done, :class => 'form-control' %>
-</div>
-```
+    ```erb
+    <%= f.label :Done, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.check_box :Done, :class => 'form-control' %>
+    </div>
+    ```
 
-単一レコードのビュー ページである *app/views/tasks/show.html.erb* ファイルを開きます。 
+1. 単一レコードのビュー ページである *app/views/tasks/show.html.erb* ファイルを開きます。 
 
-`<dd><%= @task.Description %></dd>` という行を探し、その直後に次のコードを挿入します。
+    `<dd><%= @task.Description %></dd>` という行を探し、その直後に次のコードを挿入します。
 
-```erb
-  <dt><strong><%= model_class.human_attribute_name(:Done) %>:</strong></dt>
-  <dd><%= check_box "task", "Done", {:checked => @task.Done, :disabled => true}%></dd>
-```
+    ```erb
+      <dt><strong><%= model_class.human_attribute_name(:Done) %>:</strong></dt>
+      <dd><%= check_box "task", "Done", {:checked => @task.Done, :disabled => true}%></dd>
+    ```
 
-すべてのレコードのインデックス ページである *app/views/tasks/index.html.erb* ファイルを開きます。
+    すべてのレコードのインデックス ページである *app/views/tasks/index.html.erb* ファイルを開きます。
 
-`<th><%= model_class.human_attribute_name(:Description) %></th>` という行を探し、その直後に次のコードを挿入します。
+    `<th><%= model_class.human_attribute_name(:Description) %></th>` という行を探し、その直後に次のコードを挿入します。
 
-```erb
-<th><%= model_class.human_attribute_name(:Done) %></th>
-```
+    ```erb
+    <th><%= model_class.human_attribute_name(:Done) %></th>
+    ```
 
-同じファイルで、`<td><%= task.Description %></td>` という行を探し、その直後に次のコードを挿入します。
+1. 同じファイルで、`<td><%= task.Description %></td>` という行を探し、その直後に次のコードを挿入します。
 
-```erb
-<td><%= check_box "task", "Done", {:checked => task.Done, :disabled => true} %></td>
-```
+    ```erb
+    <td><%= check_box "task", "Done", {:checked => task.Done, :disabled => true} %></td>
+    ```
 
 ### <a name="test-the-changes-locally"></a>変更をローカルでテストする
 
-ローカル ターミナルで、Rails サーバーを実行します。
+1. ローカル ターミナルで、Rails サーバーを実行します。
 
-```bash
-rails server
-```
+    ```bash
+    rails server
+    ```
 
-タスクの状態の変化を確認するには、`http://localhost:3000` に移動して、項目を追加または編集します。
+1. タスクの状態の変化を確認するには、`http://localhost:3000` に移動して、項目を追加または編集します。
 
-![タスクに追加されたチェック ボックス](./media/tutorial-ruby-postgres-app/complete-checkbox.png)
+    ![タスクに追加されたチェック ボックス](./media/tutorial-ruby-postgres-app/complete-checkbox.png)
 
-Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と入力します。
+1. Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と入力します。
 
 ### <a name="publish-changes-to-azure"></a>Azure に変更を発行する
 
-ターミナルで、運用環境に対して Rails データベース移行を実行し、Azure データベースで変更を行います。
+1. ターミナルで、運用環境に対して Rails データベース移行を実行し、Azure データベースで変更を行います。
 
-```bash
-rake db:migrate RAILS_ENV=production
-```
+    ```bash
+    rake db:migrate RAILS_ENV=production
+    ```
 
-すべての変更を Git にコミットした後、コードの変更を Azure にプッシュします。
+1. すべての変更を Git にコミットした後、コードの変更を Azure にプッシュします。
 
-```bash
-git add .
-git commit -m "added complete checkbox"
-git push azure main
-```
+    ```bash
+    git add .
+    git commit -m "added complete checkbox"
+    git push azure main
+    ```
 
-`git push` が完了したら、Azure アプリに移動し、新機能を試します。
+1. `git push` が完了したら、Azure アプリに移動し、新機能を試します。
 
-![Azure に発行されたモデルとデータベースの変更](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
+    ![Azure に発行されたモデルとデータベースの変更](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
-タスクを追加した場合は、そのタスクがデータベースに保持されます。 データ スキーマに対する更新では、既存のデータはそのまま残ります。
+    タスクを追加した場合は、そのタスクがデータベースに保持されます。 データ スキーマに対する更新では、既存のデータはそのまま残ります。
 
 ## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 
@@ -437,17 +449,17 @@ git push azure main
 
 ## <a name="manage-the-azure-app"></a>Azure アプリの管理
 
-[Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを管理します。
+1. [Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを管理します。
 
-左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
+1. 左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
-![Azure アプリへのポータル ナビゲーション](./media/tutorial-php-mysql-app/access-portal.png)
+    ![Azure アプリへのポータル ナビゲーション](./media/tutorial-php-mysql-app/access-portal.png)
 
-お客様のアプリの [概要] ページを確認します。 ここでは、停止、開始、再開、参照、削除のような基本的な管理タスクを行うことができます。
+    お客様のアプリの [概要] ページを確認します。 ここでは、停止、開始、再開、参照、削除のような基本的な管理タスクを行うことができます。
 
-左側のメニューは、アプリを構成するためのページを示しています。
+    左側のメニューは、アプリを構成するためのページを示しています。
 
-![Azure Portal の [App Service] ページ](./media/tutorial-php-mysql-app/web-app-blade.png)
+    ![Azure Portal の [App Service] ページ](./media/tutorial-php-mysql-app/web-app-blade.png)
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

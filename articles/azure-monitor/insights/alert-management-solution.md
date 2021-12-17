@@ -5,24 +5,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: 6f3761b1c933d113bf65c70370c29bcfa7950eea
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b9bd43591c64d1b83ba8bf8f5400c0273141d735
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728656"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180342"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
 ![Alert Management icon](media/alert-management-solution/icon.png)
 
-Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があり、[Log Analytics によって作成された](../alerts/alerts-overview.md)ものや、[Nagios や Zabbix からインポートされた](../vm/quick-collect-linux-computer.md)モノが含まれます。 アラートは、[接続された System Center Operations Manager 管理グループ](../agents/om-agents.md)からもインポートされます。
+Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があり、[Log Analytics によって作成された](../alerts/alerts-overview.md)ものや、[Nagios や Zabbix からインポートされた](../vm/monitor-virtual-machine.md)モノが含まれます。 アラートは、[接続された System Center Operations Manager 管理グループ](../agents/om-agents.md)からもインポートされます。
 
 ## <a name="prerequisites"></a>前提条件
 このソリューションでは、Log Analytics リポジトリ内の **Alert** タイプのすべてのレコードが分析されます。そのため、これらのレコードを収集するために必要な構成をすべて行う必要があります。
 
 - Log Analytics のアラートの場合は、[アラート ルールを作成](../alerts/alerts-overview.md)して、リポジトリに直接アラート レコードを作成します。
-- Nagios と Zabbix のアラートの場合は、[これらのサーバーを構成](../vm/quick-collect-linux-computer.md)して、Log Analytics にアラートを送信します。
+- Nagios と Zabbix のアラートの場合は、[これらのサーバーを構成](../vm/monitor-virtual-machine.md)して、Log Analytics にアラートを送信します。
 - System Center Operations Manager のアラートの場合は、[Log Analytics ワークスペースに Operations Manager 管理グループを接続](../agents/om-agents.md)します。  System Center Operations Manager で作成されたすべてのアラートが Log Analytics にインポートされます。  
 
 ## <a name="configuration"></a>構成
@@ -42,7 +42,7 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 | 接続先ソース | サポート | 説明 |
 |:--- |:--- |:--- |
 | [Windows エージェント](../agents/agent-windows.md) | いいえ |直接の Windows エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
-| [Linux エージェント](../vm/quick-collect-linux-computer.md) | いいえ |直接の Linux エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。  Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
+| [Linux エージェント](../vm/monitor-virtual-machine.md) | いいえ |直接の Linux エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。  Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
 | [System Center Operations Manager 管理グループ](../agents/om-agents.md) |はい |Operations Manager エージェントで生成されたアラートは管理グループに配信された後、Log Analytics に転送されます。<br><br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 アラート データは管理グループから Log Analytics リポジトリに転送されます。 |
 
 

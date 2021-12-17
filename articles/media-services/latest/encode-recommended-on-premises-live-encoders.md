@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 8210efe9c17a6edcb18fe114b7f6165d8cbd8360
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 6b5bec7006fa7bea7c887286d9cdc1a7b51a3d5c
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281452"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389857"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>検証済みのオンプレミス ライブ ストリーミング エンコーダー
 
@@ -28,6 +28,7 @@ Azure Media Services では、[ライブ イベント](/rest/api/media/liveevent
 
   > [!TIP]
   > パススルー方式を使用することが、ライブ ストリーミングを行う最も経済的な方法です。
+  > このサービスでは、取り込み要件に応じて、基本および標準のパススルー モードがサポートされます。 基本パススルーが最も経済的ですが、機能には制限があります。 
  
 * オンプレミスのライブ エンコーダーでは、次のいずれかの形式で、Media Services によるライブ エンコードが有効な Live Event にシングル ビットレート ストリームが送信されます。RTMP またはスムーズ ストリーミング (フラグメント化 MP4)。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードが Live Event で実行されます。
 

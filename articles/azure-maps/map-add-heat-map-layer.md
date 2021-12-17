@@ -1,24 +1,22 @@
 ---
 title: マップにヒート マップ レイヤーを追加する | Microsoft Azure Maps
 description: ヒート マップを作成する方法について説明します。 Azure Maps Web SDK を使用し、ヒート マップ レイヤーをマップに追加する方法について説明します。 ヒート マップ レイヤーをカスタマイズする方法について説明します。
-author: rbrundritt
-ms.author: richbrun
-ms.date: 07/29/2019
-ms.topic: conceptual
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/06/2021
+ms.topic: how-to
 ms.service: azure-maps
-services: azure-maps
-manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: b15ee7091a68f7fcc79c71877c4af28b511b84de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3827deeb1b87471f215028ac7479a83c24231fb
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680144"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992638"
 ---
-# <a name="add-a-heat-map-layer"></a>ヒート マップ レイヤーを追加する
+# <a name="add-a-heat-map-layer-to-a-map"></a>マップにヒート マップ レイヤーを追加する
 
-点密度マップとも呼ばれるヒート マップは、データ視覚化の 1 つの種類です。 一定の範囲の色を使用して、データの密度を表すために使用され、マップ上にデータの "ホット スポット" を示します。 ヒート マップは、多数の点によってデータセットをレンダリングする優れた方法です。 
+点密度マップとも呼ばれるヒート マップは、データ視覚化の 1 つの種類です。 一定の範囲の色を使用して、データの密度を表すために使用され、マップ上にデータの "ホット スポット" を示します。 ヒート マップは、多数の点によってデータセットをレンダリングする優れた方法です。
 
 数万個の点を記号としてレンダリングすると、マップのほとんどの領域が覆われてしまう場合があります。 この場合、多くの記号が重なり合う傾向にあります。 より適正にデータを理解することは、難しくなります。 ただし、これと同じデータセットをヒート マップとして視覚化すると、データの各点の密度と相対密度を簡単に把握できます。
 
@@ -60,27 +58,27 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='単純なヒート マップ レイヤー' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/gQqdQB/'>Simple Heat Map Layer</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='単純なヒート マップ レイヤー' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/gQqdQB/'>Simple Heat Map Layer</a>」Pen を表示します。
 </iframe>
 
 ## <a name="customize-the-heat-map-layer"></a>ヒート マップ レイヤーをカスタマイズする
 
 前の例では、半径と不透明度のオプションを設定してヒート マップをカスタマイズしました。 ヒート マップ レイヤーには、次のようなカスタマイズのためのオプションがいくつか用意されています。
 
-* `radius`:各データ ポイントをレンダリングするときのピクセルの半径を定義します。 この半径は、固定数または式として設定できます。 式を使用することにより、ズーム レベルに基づいて半径をスケーリングし、マップ上の一貫した空間領域 (たとえば、5 マイルの半径) を表すことができます。
-* `color`:ヒート マップの配色方法を指定します。 色のグラデーションは、ヒート マップの一般的な機能です。 `interpolate` 式を利用して、その効果を実現できます。 また、`step` 式を使用してヒート マップを色分けし、密度を、等高線またはレーダー スタイル マップのような範囲に視覚的に分割することもできます。 このようなカラー パレットでは、最小濃度値から最大濃度値の色を定義します。 
+- `radius`:各データ ポイントをレンダリングするときのピクセルの半径を定義します。 この半径は、固定数または式として設定できます。 式を使用することにより、ズーム レベルに基づいて半径をスケーリングし、マップ上の一貫した空間領域 (たとえば、5 マイルの半径) を表すことができます。
+- `color`:ヒート マップの配色方法を指定します。 色のグラデーションは、ヒート マップの一般的な機能です。 `interpolate` 式を利用して、その効果を実現できます。 また、`step` 式を使用してヒート マップを色分けし、密度を、等高線またはレーダー スタイル マップのような範囲に視覚的に分割することもできます。 このようなカラー パレットでは、最小濃度値から最大濃度値の色を定義します。
 
-  ヒート マップの色の値は、`heatmap-density` 値に対する式として指定します。 "補間" 式のインデックス 0 または "段階" 式の既定の色では、データのない領域の色が定義されます。 この値を使用して、背景色を定義することができます。 多くの場合、この値は透明、または半透明の黒に設定されます。 
-   
+  ヒート マップの色の値は、`heatmap-density` 値に対する式として指定します。 "補間" 式のインデックス 0 または "段階" 式の既定の色では、データのない領域の色が定義されます。 この値を使用して、背景色を定義することができます。 多くの場合、この値は透明、または半透明の黒に設定されます。
+
   色の式の例を次に示します。
 
-  | 補間色の式 | 段階的な色の式 | 
+  | 補間色の式 | 段階的な色の式 |
   |--------------------------------|--------------------------|
-  | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'interpolate',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['linear'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, 'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'purple',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5, '#fb00fb',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, '#00c3ff'<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'step',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'navy',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25, 'green',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50, 'yellow',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75, 'red'<br/>\] |   
+  | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'interpolate',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['linear'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, 'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'purple',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5, '#fb00fb',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, '#00c3ff'<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'step',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'navy',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25, 'green',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50, 'yellow',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75, 'red'<br/>\] |
 
 - `opacity`:ヒート マップ レイヤーの不透明度または透明度を指定します。
 - `intensity`:ヒート マップの全体的な強度を高めるために、各データ ポイントの重みに乗数を適用します。 これにより、データ ポイントの重みの違いが示され、視覚化しやすくなります。
-- `weight`:既定では、データ ポイントはすべて、重みが 1 となり、均等に重み付けされています。 weight オプションは乗数として機能し、数値または式として設定できます。 数値を重みとして設定した場合、各データ ポイントをマップ上に 2 回配置することに相当します。 たとえば、重みが 2 の場合、密度は 2 倍になります。 weight オプションを数値に設定すると、intensity オプションを使用する場合と同様にヒート マップがレンダリングされます。 
+- `weight`:既定では、データ ポイントはすべて、重みが 1 となり、均等に重み付けされています。 weight オプションは乗数として機能し、数値または式として設定できます。 数値を重みとして設定した場合、各データ ポイントをマップ上に 2 回配置することに相当します。 たとえば、重みが 2 の場合、密度は 2 倍になります。 weight オプションを数値に設定すると、intensity オプションを使用する場合と同様にヒート マップがレンダリングされます。
 
   ただし、式を使用する場合は、各データ ポイントの重みを、各データ ポイントのプロパティに基づいて決めることができます。 たとえば、各データ ポイントが地震を表しているとします。 マグニチュード値は、各地震データ ポイントの重要なメトリックです。 地震は常に発生していますが、多くはマグニチュードが低く、体感することはありません。 各データ ポイントに重みを割り当てるには、式にマグニチュード値を使用します。 マグニチュード値を使用して重みを割り当てると、地震の深刻さをヒート マップ内でよりわかりやすく表すことができます。
 - `source` および `source-layer`:データ ソースを更新することができます。
@@ -89,30 +87,44 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='ヒート マップ レイヤーのオプション' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Heat Map Layer Options</a>」Pen を表示します。
+<iframe height='700' scrolling='no' title='ヒート マップ レイヤーのオプション' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Heat Map Layer Options</a>」Pen を表示します。
 </iframe>
 
 ## <a name="consistent-zoomable-heat-map"></a>一貫性のあるズーム可能なヒート マップ
 
-既定では、ヒート マップ レイヤーにレンダリングされるデータ ポイントの半径には、すべてのズーム レベルの固定ピクセル半径が含まれます。 マップをズームすると、データがまとめて集計され、ヒート マップ レイヤーの外観が変化します。 
+既定では、ヒート マップ レイヤーにレンダリングされるデータ ポイントの半径には、すべてのズーム レベルの固定ピクセル半径が含まれます。 マップをズームすると、データがまとめて集計され、ヒート マップ レイヤーの外観が変化します。
 
-`zoom` 式を使用すると、各データ ポイントによってマップの同じ物理領域がカバーされるように、各ズーム レベルの半径をスケーリングできます。 この式により、ヒート マップ レイヤーの外観は、より静的かつ一貫性の高いものになります。 マップの各ズーム レベルは、垂直方向および水平方向のピクセル数がすぐ下のズーム レベルの 2 倍になっています。 
+`zoom` 式を使用すると、各データ ポイントによってマップの同じ物理領域がカバーされるように、各ズーム レベルの半径をスケーリングできます。 この式により、ヒート マップ レイヤーの外観は、より静的かつ一貫性の高いものになります。 マップの各ズーム レベルは、垂直方向および水平方向のピクセル数がすぐ下のズーム レベルの 2 倍になっています。
 
 ズーム レベルごとに半径が 2 倍になるようにスケーリングすると、すべてのズーム レベルで外観に一貫性のあるヒート マップが作成されます。 このスケーリングを適用するには、次の例に示すように、最小ズーム レベルに設定されたピクセル半径と、最大ズーム レベルでスケーリングされた半径が `2 * Math.pow(2, minZoom - maxZoom)` として計算された、基数 2 の `exponential interpolation` 式で `zoom` を使用します。 マップをズームして、ヒート マップがズーム レベルに応じてどのように変化するかを確認してください。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="一貫性のあるズーム可能なヒート マップ" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="一貫性のあるズーム可能なヒート マップ" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上で、Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) によるペンの<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>一貫性のあるズーム可能なヒート マップ</a>をご覧ください。
 </iframe>
 
+`zoom` 式は、`step` 式と `interpolate` 式でのみ使用できます。 次の式を使用して、半径をメートル単位で見積もることができます。 この式では、プレースホルダー `radiusMeters` を使用します。これは、必要な半径に置き換える必要があります。 この式では、ズーム レベル 0 および 24 の赤道でズーム レベルのおおよそのピクセル半径を計算し、`exponential interpolation` 式を使用して、マップ内のタイル システムが機能するのと同じように、これらの値の間でスケールします。
+
+```json
+[
+    `'interpolate', 
+    ['exponential', 2],
+    ['zoom'],
+    0, ['*', radiusMeters, 0.000012776039596366526],
+    24, [`'*', radiusMeters, 214.34637593279402]
+]
+```
+
 > [!TIP]
-> データ ソースに対するクラスタリングを有効にすると、相互に近いポイントはクラスター化されたポイントとしてグループ化されます。 各クラスターのポイント数をヒート マップの重み式として使用できます。 これにより、レンダリングされる点の数を大幅に減らすことができます。 クラスターのポイント数は、ポイント フィーチャーの `point_count` プロパティに格納されています。 
+> データ ソースに対するクラスタリングを有効にすると、相互に近いポイントはクラスター化されたポイントとしてグループ化されます。 各クラスターのポイント数をヒート マップの重み式として使用できます。 これにより、レンダリングされる点の数を大幅に減らすことができます。 クラスターのポイント数は、ポイント フィーチャーの `point_count` プロパティに格納されています。
+>
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
+>
 > クラスタリングの半径がわずか数ピクセルの場合、レンダリングによる視覚的な違いは小さくなります。 半径が大きいほど各クラスター内でグループ化されるポイントが増えるので、ヒート マップのパフォーマンスは向上します。
 
 ## <a name="next-steps"></a>次のステップ
@@ -120,7 +132,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [HeatMapLayer](/javascript/api/azure-maps-control/atlas.htmlmarker)
+> [HeatMapLayer](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
 
 > [!div class="nextstepaction"]
 > [HeatMapLayerOptions](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)

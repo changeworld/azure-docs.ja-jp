@@ -11,20 +11,20 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 2695b34745ff02d55f18cebbe87a468f807ca77a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2a5df40dd16ea7f996caf34b2e0cad7b0a60900
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831690"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195422"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>チュートリアル:Azure IoT Central からデータをエクスポートし、Power BI で分析情報を視覚化する
-
 
 前の 2 つのチュートリアルでは、**ストア内の分析 - チェックアウト** アプリケーション テンプレートを使用して、IoT Central アプリケーションを作成し、カスタマイズしました。 このチュートリアルでは、デバイスから収集されたテレメトリをエクスポートするように、IoT Central アプリケーションを構成します。 その後、Power BI を使用して、店のマネージャーがテレメトリから得られた分析情報を視覚化するためのカスタム ダッシュボードを作成します。
 
 このチュートリアルでは、次の内容を学習します。
 > [!div class="checklist"]
+
 > * テレメトリをイベント ハブにエクスポートするように IoT Central アプリケーションを構成します。
 > * Logic Apps を使用して、イベント ハブから Power BI ストリーミング データセットにデータを送信します。
 > * ストリーミング データセットのデータを視覚化するための Power BI ダッシュボードを作成します。
@@ -33,7 +33,7 @@ ms.locfileid: "99831690"
 
 このチュートリアルを完了するには、次のものが必要です。
 
-* 前の 2 つのチュートリアル「[Azure IoT Central でストア内分析アプリケーションを作成する](./tutorial-in-store-analytics-create-app.md)」と「[Azure IoT Central でのオペレーター ダッシュボードのカスタマイズと、デバイスの管理](./tutorial-in-store-analytics-customize-dashboard.md)」を完了していること。
+* 前の 2 つのチュートリアル「[Azure IoT Central でストア内分析アプリケーションを作成する](./tutorial-in-store-analytics-create-app.md)」と「[Azure IoT Central でのダッシュボードのカスタマイズと、デバイスの管理](./tutorial-in-store-analytics-customize-dashboard.md)」を完了していること。
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 * Power BI アカウント Power BI アカウントを持っていない場合は、始める前に[無料の Power BI Pro 試用版](https://app.powerbi.com/signupredirect?pbi_source=web)にサインアップしてください。
 
@@ -75,7 +75,7 @@ ms.locfileid: "99831690"
 
 これで、IoT Central アプリケーションからのデータ エクスポートを構成するときに使用できるイベント ハブが作成されました。
 
-![イベント ハブ](./media/tutorial-in-store-analytics-visualize-insights/event-hub.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/event-hub.png" alt-text="イベント ハブ。":::
 
 ## <a name="configure-data-export"></a>データのエクスポートを構成する
 
@@ -92,7 +92,7 @@ ms.locfileid: "99831690"
 
 データのエクスポートでイベント ハブへのテレメトリの送信が開始されるまで、数分かかる場合があります。 **[データのエクスポート]** ページで、エクスポートの状態を確認できます。
 
-![継続的データ エクスポート構成](./media/tutorial-in-store-analytics-visualize-insights/export-configuration.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/export-configuration.png" alt-text="継続的データ エクスポート構成。":::
 
 ## <a name="create-the-power-bi-datasets"></a>Power BI のデータセットを作成する
 
@@ -119,7 +119,8 @@ Power BI ダッシュボードには、リテール監視アプリケーショ�
 
 これで、2 つのストリーミング データセットが作成されます。 ロジック アプリでは、**ストア内の分析 - チェックアウト** アプリケーションに接続された 2 つの環境センサーからのテレメトリが、これら 2 つのデータセットにルーティングされます。
 
-![ゾーン データセット](./media/tutorial-in-store-analytics-visualize-insights/dataset-1.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/dataset-1.png" alt-text="ゾーン データセット。":::
+
 
 Power BI ではストリーミング データにフィルターを適用できないため、このソリューションでは、センサーごとに 1 つのストリーミング データセットを使用します。
 
@@ -143,7 +144,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
 
 これで、シミュレートされた混雑状況センサーの値を格納する 3 番目のストリーミング データセットが作成されました。 このセンサーでは、店内の 2 つのレジの待ち行列の長さと、これらの列で客が待っている時間の長さが報告されます。
 
-![混雑状況データセット](./media/tutorial-in-store-analytics-visualize-insights/dataset-2.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/dataset-2.png" alt-text="混雑状況データセット。":::
 
 ## <a name="create-a-logic-app"></a>ロジック アプリを作成します
 
@@ -155,7 +156,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
 1. 左側のウィンドウで **[デバイス]** を選択します。 次に、**RuuviTag** を選択します。
 1. **[デバイス ID]** を記録しておきます。 次のスクリーンショットでは、ID は **f5dcf4ac32e8** と **e29ffc8d5326** です。
 
-    ![デバイス ID](./media/tutorial-in-store-analytics-visualize-insights/device-ids.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/device-ids.png" alt-text="デバイス ID。":::
 
 次の手順では、Azure portal でロジック アプリを作成する方法を示します。
 
@@ -369,7 +370,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
 
 1. **[保存]** を選択した後 **[デザイナー]** を選択して、追加したロジックのビジュアル バージョンを表示します。
 
-    ![ロジック アプリの設計](./media/tutorial-in-store-analytics-visualize-insights/logic-app.png)
+    :::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/logic-app.png" alt-text="ロジック アプリの設計。":::
 
 1. **[Switch by DeviceID]\(DeviceID で切り替え\)** を選択して、アクションを展開します。 次に、 **[Zone 1 environment]\(ゾーン 1 の環境\)** を選択し、 **[アクションの追加]** を選択します。
 1. **[コネクタとアクションを検索する]** に「**Power BI**」と入力して、**Enter** キーを押します。
@@ -383,7 +384,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
     * **Timestamp** フィールドを選択し、 **[動的なコンテンツ]** の一覧から **x-opt-enqueuedtime** を選択します。
     * **Humidity** フィールドを選択し、 **[Parse Telemetry]\(テレメトリの解析\)** の横にある **[See more]\(詳細\)** を選択します。 次に、**humidity** を選択します。
     * **Temperature** フィールドを選択し、 **[Parse Telemetry]\(テレメトリの解析\)** の横にある **[See more]\(詳細\)** を選択します。 次に、**temperature** を選択します。
-    * **[保存]** を選択して変更を保存します。 **[Zone 1 environment]\(ゾーン 1 の環境\)** アクションは、次のスクリーンショットのようになります。![ゾーン 1 の環境](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
+    * **[保存]** を選択して変更を保存します。 **[Zone 1 environment]\(ゾーン 1 の環境\)** アクションは、次のスクリーンショットのようになります。:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png" alt-text="ゾーン 1 の環境。":::
 1. **[Zone 2 environment]\(ゾーン 2 の環境\)** アクションを選択し、 **[アクションの追加]** を選択します。
 1. **[コネクタとアクションを検索する]** に「**Power BI**」と入力して、**Enter** キーを押します。
 1. **[Add rows to a dataset (preview)]\(データセットに行を追加する (プレビュー)\)** アクションを選択します。
@@ -395,7 +396,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
     * **Timestamp** フィールドを選択し、 **[動的なコンテンツ]** の一覧から **x-opt-enqueuedtime** を選択します。
     * **Humidity** フィールドを選択し、 **[Parse Telemetry]\(テレメトリの解析\)** の横にある **[See more]\(詳細\)** を選択します。 次に、**humidity** を選択します。
     * **Temperature** フィールドを選択し、 **[Parse Telemetry]\(テレメトリの解析\)** の横にある **[See more]\(詳細\)** を選択します。 次に、**temperature** を選択します。
-    **[保存]** を選択して変更を保存します。  **[Zone 2 environment]\(ゾーン 2 の環境\)** アクションは、次のスクリーンショットのようになります。![ゾーン 2 の環境](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
+    **[保存]** を選択して変更を保存します。  **[Zone 2 environment]\(ゾーン 2 の環境\)** アクションは、次のスクリーンショットのようになります。:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png" alt-text="ゾーン 2 の環境。":::
 1. **[Occupancy]\(混雑状況\)** アクションを選択し、 **[Switch by Interface ID]\(インターフェイス ID で切り替え\)** アクションを選択します。
 1. **[Dwell Time interface]\(待ち時間インターフェイス\)** アクションを選択し、 **[アクションの追加]** を選択します。
 1. **[コネクタとアクションを検索する]** に「**Power BI**」と入力して、**Enter** キーを押します。
@@ -408,7 +409,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
     * **Timestamp** フィールドを選択し、 **[動的なコンテンツ]** の一覧から **x-opt-enqueuedtime** を選択します。
     * **Dwell Time 1** フィールドを選択し、 **[Parse Telemetry]\(テレメトリの解析\)** の横にある **[See more]\(詳細\)** を選択します。 次に、**DwellTime1** を選択します。
     * **Dwell Time 2** フィールドを選択し、 **[Parse Telemetry]\(テレメトリの解析\)** の横にある **[See more]\(詳細\)** を選択します。 次に、**DwellTime2** を選択します。
-    * **[保存]** を選択して変更を保存します。 **[Dwell Time interface]\(待ち時間インターフェイス\)** アクションは、次のスクリーンショットのようになります。![[Dwell Time interface]\(待ち時間インターフェイス\) アクションを表示する画面のスクリーンショット。](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * **[保存]** を選択して変更を保存します。 **[Dwell Time interface]\(待ち時間インターフェイス\)** アクションは、次のスクリーンショットのようになります。:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png" alt-text="待ち時間インターフェイス。":::
 1. **[People Count interface]\(客数インターフェイス\)** アクションを選択し、 **[アクションの追加]** を選択します。
 1. **[コネクタとアクションを検索する]** に「**Power BI**」と入力して、**Enter** キーを押します。
 1. **[Add rows to a dataset (preview)]\(データセットに行を追加する (プレビュー)\)** アクションを選択します。
@@ -420,7 +421,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
     * **Timestamp** フィールドを選択し、 **[動的なコンテンツ]** の一覧から **x-opt-enqueuedtime** を選択します。
     * **Queue Length 1** フィールドを選択し、 **[Parse Telemetry]\(テレメトリの解析\)** の横にある **[See more]\(詳細\)** を選択します。 **count1** を選択します。
     * **Queue Length 2** フィールドを選択し、 **[Parse Telemetry]\(テレメトリの解析\)** の横にある **[See more]\(詳細\)** を選択します。 **count2** を選択します。
-    * **[保存]** を選択して変更を保存します。 **[People Count interface]\(客数インターフェイス\)** アクションは、次のスクリーンショットのようになります。![待ち時間アクション](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
+    * **[保存]** を選択して変更を保存します。 **[People Count interface]\(客数インターフェイス\)** アクションは、次のスクリーンショットのようになります。:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png" alt-text="混雑状況アクション。":::
 
 ロジック アプリは自動的に実行されます。 各実行の状態を確認するには、Azure portal でロジック アプリの **[概要]** ページに移動します。
 
@@ -449,7 +450,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
 
 次のスクリーンショットで示すのは、1 つ目のグラフの設定です。
 
-![折れ線グラフの設定](./media/tutorial-in-store-analytics-visualize-insights/line-chart.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/line-chart.png" alt-text="折れ線グラフの設定。":::
 
 ### <a name="add-cards-to-show-environmental-data"></a>環境データを表示するカードを追加する
 
@@ -465,7 +466,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
 
 次のスクリーンショットで示すのは、1 つ目のカードの設定です。
 
-![カードの設定](./media/tutorial-in-store-analytics-visualize-insights/card-settings.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/card-settings.png" alt-text="カードの設定。":::
 
 ### <a name="add-tiles-to-show-checkout-occupancy-data"></a>レジの混雑状況データを表示するタイルを追加する
 
@@ -483,11 +484,11 @@ Power BI ではストリーミング データにフィルターを適用でき�
 
 次のスクリーンショットのように、ダッシュボード上のタイルのサイズと配置を変更します。
 
-![タイルのサイズと配置が変更された Power BI ダッシュボードのスクリーンショット。](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png" alt-text="タイルのサイズと配置が変更された Power BI ダッシュボードのスクリーンショット。":::
 
 他のグラフィックス リソースを追加して、ダッシュボードをさらにカスタマイズしてかまいません。
 
-![Power BI ダッシュボード](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard-graphics.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard-graphics.png" alt-text="Power BI ダッシュボード。":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

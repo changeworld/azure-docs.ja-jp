@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: fc5bcc7f0cd11160b33bb6501526fce9f29d710b
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: c9130b83d0d4491152e05157c9cb52dfb89231a1
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366387"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105743"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>接続モニター (クラシック) から接続モニターに移行する
 
@@ -67,8 +67,23 @@ ms.locfileid: "107366387"
 * 移行された接続モニターは、古い接続モニター ソリューションとしては表示されなくなります。 それらは、接続モニターでのみ使用できるようになります。
 * Power BI や Grafana のダッシュボードなどの外部統合やセキュリティ情報イベント管理 (SIEM) システムとの統合は、手動で移行する必要があります。 これは、ユーザーがセットアップを移行するために実行する必要がある唯一の手順です。
 
+## <a name="common-errors-encountered"></a>よく発生するエラー
+
+移行中に発生する一般的なエラーの例を次に示します。 
+
+| エラー  |    理由   |
+|---|---|
+|次の接続モニターは、1 つ以上のサブスクリプションとリージョンの組み合わせで Network Watcher が有効になっていないため、インポートできません。 Network Watcher を有効にし、[最新の情報に更新] をクリックしてインポートしてください。 接続モニターの一覧 - {0}   |  このエラーは、ユーザーがテストを CM (クラシック) から接続モニターに移行しているとき、Network Watcher 拡張機能が有効になっていない CM (クラシック) のリージョンやサブスクリプションが 1 つでもあると発生します。 ユーザーはサブスクリプションの NW 拡張機能を有効にし、最新の情報に更新してそれらをインポートしてからもう一度移行する必要があります。   |
+|次のテストを含む接続モニターは、1 つ以上の Azure 仮想マシンに Network Watcher 拡張機能がインストールされていないため、インポートできません。 Network Watcher 拡張機能をインストールし、[最新の情報に更新] をクリックしてインポートしてください。 テストの一覧 - {0} |    このエラーは、ユーザーがテストを CM (クラシック) から接続モニターに移行しているとき、Network Watcher 拡張機能がインストールされていない CM (クラシック) の Azure VM が 1 つでもあると発生します。 ユーザーは、Azure VM に NW 拡張機能をインストールし、最新の情報に更新してからもう一度移行を実行する必要があります。 |
+|表示する行がありません   |  このエラーは、ユーザーが CM (クラシック) から CM にサブスクリプションの移行を試みているとき、サブスクリプションに作成された CM (クラシック) が 1 つもない場合に発生します。 |
+
 ## <a name="next-steps"></a>次の手順
 
 接続モニターの詳細については、以下を参照してください。
 * [Network Performance Monitor から接続モニターに移行する](./migrate-to-connection-monitor-from-network-performance-monitor.md)
 * [Azure portal を使用して接続モニターを作成する](./connection-monitor-create-using-portal.md)
+
+
+    
+ 
+    

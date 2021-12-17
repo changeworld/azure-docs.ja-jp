@@ -2,19 +2,18 @@
 title: チュートリアル - IoT Edge デバイスの階層を作成する - Azure IoT Edge
 description: このチュートリアルでは、ゲートウェイを使用する IoT Edge デバイスの階層構造を作成する方法について説明します。
 author: v-tcassi
-manager: philmea
 ms.author: v-tcassi
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 44fe6bb3787e1fe0df7ccf83200497b46c473568
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 5c204a07a0457852d2faefacdd77740f147b9d88
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728502"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225993"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>チュートリアル:IoT Edge デバイスの階層を作成する
 
@@ -66,7 +65,7 @@ IoT Edge デバイスの階層を作成するには、以下のものが必要�
 
    次のコマンドのプレースホルダー テキストを置き換えて 2 回 (仮想マシンごとに 1 回) 実行してください。 それぞれの仮想マシンには、その名前としても使用される一意の DNS プレフィックスが必要です。 この DNS プレフィックスは、`[a-z][a-z0-9-]{1,61}[a-z0-9]` という正規表現に従う必要があります。
 
-   ```bash
+   ```azurecli
    az deployment group create \
     --resource-group <REPLACE_WITH_YOUR_RESOURCE_GROUP> \
     --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0/edgeDeploy.json" \
@@ -77,9 +76,9 @@ IoT Edge デバイスの階層を作成するには、以下のものが必要�
     --query "properties.outputs.[publicFQDN.value, publicSSH.value]" -o tsv
    ```
 
-   この仮想マシンでは、ユーザーの認証に SSH キーが使用されます。 SSH キーの作成と使用に慣れていない場合は、[Azure の Linux VM に使用する SSH の公開キーと秘密キーの組に関する手順](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)に従ってください。
+   この仮想マシンでは、ユーザーの認証に SSH キーが使用されます。 SSH キーの作成と使用に慣れていない場合は、[Azure の Linux VM に使用する SSH の公開キーと秘密キーの組に関する手順](../virtual-machines/linux/mac-create-ssh-keys.md)に従ってください。
 
-   IoT Edge バージョン 1.2 はこの ARM テンプレートと共にプレインストールされるため、そのアセットを仮想マシンに手動でインストールする必要はありません。 IoT Edge を自分のデバイスにインストールする場合は、[Azure IoT Edge for Linux (バージョン 1.2) のインストール](how-to-install-iot-edge.md)に関するページまたは [IoT Edge のバージョン 1.2 への更新](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)に関するページを参照してください。
+   IoT Edge バージョン 1.2 はこの ARM テンプレートと共にプレインストールされるため、そのアセットを仮想マシンに手動でインストールする必要はありません。 IoT Edge を自分のデバイスにインストールする場合は、[Azure IoT Edge for Linux (バージョン 1.2) のインストール](how-to-provision-single-device-linux-symmetric.md)に関するページまたは [IoT Edge のバージョン 1.2 への更新](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)に関するページを参照してください。
 
    この ARM テンプレートを使用して正常に仮想マシンが作成されると、仮想マシンの `SSH` ハンドルと完全修飾ドメイン名 (`FQDN`) が出力されます。 各仮想マシンの SSH ハンドルと FQDN (または IP アドレス) は、この後の手順の構成で使用するため、この情報を記録しておいてください。 サンプル出力を下の図に示します。
 
@@ -88,9 +87,8 @@ IoT Edge デバイスの階層を作成するには、以下のものが必要�
 
    ![仮想マシンが作成されるときに、その SSH ハンドルを含んだ JSON が出力される](./media/tutorial-nested-iot-edge/virtual-machine-outputs.png)
 
-* 最下位レイヤー デバイスを除くすべてのデバイスで、8000、443、5671、8883 の各ポートが受信用に開放されていることを確認します。
-  * 8000: API プロキシを介して Docker コンテナー イメージをプルする際に使用されます。
-  * 443:親エッジ ハブと子エッジ ハブ間で REST API 呼び出しに使用されます。
+* 最下位レイヤー デバイスを除くすべてのデバイスで、443、5671、8883 の各ポートが受信用に開放されていることを確認します。
+  * 443: REST API の呼び出しと Docker コンテナー イメージのプルのために、親と子のエッジ ハブの間で使用されます。
   * 5671、8883: AMQP と MQTT に使用されます。
 
   詳細については、「[Azure portal を使用して仮想マシンへのポートを開く方法](../virtual-machines/windows/nsg-quickstart-portal.md)」を参照してください。
@@ -153,7 +151,7 @@ IoT Edge デバイスの階層を作成して構成するには、`iotedge-confi
 
    運用環境のシナリオでは、**edgedevices** セクションで階層ツリーを編集して必要な構造を反映することができます。 このチュートリアルの目的では、既定のツリーをそのまま使用します。 デバイスごとに `device_id` フィールドが存在し、そこでデバイスに名前を付けることができます。 また、そのデバイスのデプロイ JSON のパスを指定する `deployment` フィールドもあります。
 
-   IoT Edge デバイスは、Azure portal または Azure Cloud Shell から手動で IoT ハブに登録することもできます。 その方法については、[IoT Edge デバイスの登録方法に関するガイド](how-to-register-device.md)を参照してください。
+   IoT Edge デバイスは、Azure portal、Azure Cloud Shell、または Visual Studio Code を使用して手動で IoT Hub に登録することもできます。 方法については、[Linux IoT Edge デバイスを手動でプロビジョニングする方法に関するエンドツーエンド ガイドの冒頭](how-to-provision-single-device-linux-symmetric.md#register-your-device)を参照してください。
 
    親子関係は手動で定義することもできます。 詳細については、使用法ガイドの「[ゲートウェイ階層を作成する](how-to-connect-downstream-iot-edge-device.md#create-a-gateway-hierarchy)」セクションを参照してください。
 
@@ -236,7 +234,7 @@ IoT Edge ランタイムを構成するには、セットアップ スクリプ�
 **下位レイヤー デバイス** の場合は、診断イメージを手動でコマンドに渡す必要があります。
 
    ```bash
-   sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2
+   sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:443/azureiotedge-diagnostics:1.2
    ```
 
 **最上位レイヤー デバイス** では、出力には複数の合格した評価が表示されることが予想されます。 ログ ポリシーに関する警告のほか、ご利用のネットワークによっては DNS ポリシーに関する警告が表示されることもあります。
@@ -260,9 +258,9 @@ IoT Edge ランタイムを構成するには、セットアップ スクリプ�
 
 **最上位レイヤー デバイス** は、ランタイム モジュールである **IoT Edge エージェント** と **IoT Edge ハブ** に加え、**Docker レジストリ** モジュールと **IoT Edge API プロキシ** モジュールを受け取ります。
 
-**Docker レジストリ** モジュールは、既存の Azure Container Registry を参照します。 この場合、`REGISTRY_PROXY_REMOTEURL` の参照先は Microsoft Container Registry です。 `createOptions` では、通信はポート 5000 で行われることがわかります。
+**Docker レジストリ** モジュールは、既存の Azure Container Registry を参照します。 この場合、`REGISTRY_PROXY_REMOTEURL` の参照先は Microsoft Container Registry です。 既定では、**Docker レジストリ** はポート 5000 でリッスンします。
 
-**IoT Edge API プロキシ** モジュールは、HTTP 要求を他のモジュールにルーティングします。これによって下位レイヤー デバイスはストレージに対してコンテナー イメージをプルしたり、BLOB をプッシュしたりできるようになります。 このチュートリアルでは、その通信にポート 8000 を使用しています。さらに、Docker コンテナー イメージ pull request を、ポート 5000 で **Docker レジストリ** モジュールにルーティングするように構成されています。 また、Blob Storage のアップロード要求は、ポート 11002 で AzureBlobStorageonIoTEdge モジュールにルーティングされます。 **IoT Edge API プロキシ** モジュールとその構成方法の詳細については、モジュールの [使用法ガイド](how-to-configure-api-proxy-module.md)を参照してください。
+**IoT Edge API プロキシ** モジュールは、HTTP 要求を他のモジュールにルーティングします。これによって下位レイヤー デバイスはストレージに対してコンテナー イメージをプルしたり、BLOB をプッシュしたりできるようになります。 このチュートリアルでは、その通信にポート 443 を使用しています。さらに、Docker コンテナー イメージのプル要求を、ポート 5000 で **Docker レジストリ** モジュールにルーティングするように構成されています。 また、Blob Storage のアップロード要求は、ポート 11002 で AzureBlobStorageonIoTEdge モジュールにルーティングされます。 **IoT Edge API プロキシ** モジュールとその構成方法の詳細については、モジュールの [使用法ガイド](how-to-configure-api-proxy-module.md)を参照してください。
 
 このようなデプロイを Azure portal または Azure Cloud Shell で作成する方法については、[使用法ガイドの最上位レイヤー デバイスに関するセクション](how-to-connect-downstream-iot-edge-device.md#deploy-modules-to-top-layer-devices)を参照してください。
 
@@ -272,13 +270,13 @@ IoT Edge ランタイムを構成するには、セットアップ スクリプ�
    cat ~/nestedIotEdgeTutorial/iotedge_config_cli_release/templates/tutorial/deploymentLowerLayer.json
    ```
 
-`systemModules` では、**下位レイヤー デバイス** のランタイム モジュールが、**最上位レイヤー デバイス** のように `mcr.microsoft.com` からではなく、`$upstream:8000` からプルするように設定されていることがわかります。 **下位レイヤー デバイス** は、クラウドから直接イメージをプルすることができないため、ポート 8000 で Docker イメージ要求を **IoT Edge API プロキシ** モジュールに送信します。 **下位レイヤー デバイス** にデプロイされたもう 1 つのモジュール、**Simulated Temperature Sensor** モジュールも、そのイメージ要求を `$upstream:8000` に対して行います。
+`systemModules` では、**下位レイヤー デバイス** のランタイム モジュールが、**最上位レイヤー デバイス** のように `mcr.microsoft.com` からではなく、`$upstream:443` からプルするように設定されていることがわかります。 **下位レイヤー デバイス** は、クラウドから直接イメージをプルすることができないため、ポート 443 で Docker イメージ要求を **IoT Edge API プロキシ** モジュールに送信します。 **下位レイヤー デバイス** にデプロイされたもう 1 つのモジュール、**Simulated Temperature Sensor** モジュールも、そのイメージ要求を `$upstream:443` に対して行います。
 
 このようなデプロイを Azure portal または Azure Cloud Shell で作成する方法については、[使用法ガイドの下位レイヤー デバイスに関するセクション](how-to-connect-downstream-iot-edge-device.md#deploy-modules-to-lower-layer-devices)を参照してください。
 
 モジュールの状態は、次のコマンドを使用して確認できます。
 
-   ```bash
+   ```azurecli
    az iot hub module-twin show --device-id <edge_device_id> --module-id '$edgeAgent' --hub-name <iot_hub_name> --query "properties.reported.[systemModules, modules]"
    ```
 
@@ -306,10 +304,8 @@ IoT Edge ランタイムを構成するには、セットアップ スクリプ�
 
 下位レイヤーから `iotedge check` を実行すると、このプログラムは、ポート 443 を使用して親からイメージをプルしようとします。
 
-このチュートリアルではポート 8000 を使用しているため、それを指定する必要があります。
-
 ```bash
-sudo iotedge check --diagnostics-image-name $upstream:8000/azureiotedge-diagnostics:1.2
+sudo iotedge check --diagnostics-image-name $upstream:443/azureiotedge-diagnostics:1.2
 ```
 
 `azureiotedge-diagnostics` の値は、レジストリ モジュールにリンクされたコンテナー レジストリからプルされます。 このチュートリアルでは、既定値の https://mcr.microsoft.com: に設定しています。

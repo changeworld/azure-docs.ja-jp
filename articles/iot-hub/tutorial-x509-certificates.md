@@ -1,23 +1,22 @@
 ---
 title: チュートリアル - Azure IoT Hub の X.509 公開キー証明書について理解する | Microsoft Docs
 description: チュートリアル - Azure IoT Hub の X.509 公開キー証明書について理解する
-author: v-gpettibone
-manager: philmea
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 02/26/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 5503f9ad57180146c25a01c133a27b34e643496c
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 718ed8c89fbd5bccaff94b41e80b9b462faba1ee
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378348"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555662"
 ---
 # <a name="tutorial-understanding-x509-public-key-certificates"></a>チュートリアル: X.509 公開キー証明書について理解する
 
@@ -111,7 +110,7 @@ base64 でエンコードされた DER キーが含まれます。さらに、�
 詳細については、次のトピックを参照してください。
 
 * [門外漢のための X.509 証明書用語ガイド](https://techcommunity.microsoft.com/t5/internet-of-things/the-layman-s-guide-to-x-509-certificate-jargon/ba-p/2203540)
-* [IoT 業界における X.509 CA 証明書の概念理解](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-concept)
+* [IoT 業界における X.509 CA 証明書の概念理解](./iot-hub-x509ca-concept.md)
 
 ## <a name="next-steps"></a>次のステップ
 

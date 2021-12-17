@@ -1,24 +1,24 @@
 ---
-title: データの読み込みのベスト プラクティス
-description: 専用 SQL プール Azure Synapse Analytics にデータを読み込むための、推奨事項とパフォーマンスの最適化について説明します。
+title: 専用 SQL プールのデータ読み込みのベスト プラクティス
+description: Azure Synapse Analytics の専用 SQL プールにデータを読み込むための、推奨事項とパフォーマンスの最適化について説明します。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 08/26/2021
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9fe7ef8e6ccbadd5e78de5bfd5f137132dbe6319
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: ee3be53c6a52f0bc0a8ceab0424a7a6c99a0f441
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567946"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539589"
 ---
-# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>専用 SQL プール Azure Synapse Analytics にデータを読み込むためのベスト プラクティス
+# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールにデータを読み込むためのベスト プラクティス
 
 この記事では、データの読み込みに関する推奨事項とパフォーマンスの最適化について説明します。
 
@@ -40,27 +40,46 @@ PolyBase には、1,000,000 バイトを超えるデータを含む行を読み�
 
 適切なコンピューティング リソースで読み込みを実行するには、読み込みを実行するように指定された読み込みユーザーを作成します。 特定のリソース クラスまたはワークロード グループに各読み込みユーザーを割り当てます。 読み込みを実行するには、いずれかの読み込みユーザーとしてサインインし、読み込みを実行します。 読み込みは、ユーザーのリソース クラスで実行されます。  この方法は、現在のリソース クラスのニーズに合わせてユーザーのリソース クラスを変更しようとするより簡単です。
 
+
 ### <a name="create-a-loading-user"></a>読み込みユーザーを作成する
 
-この例では、staticrc20 リソース クラスの読み込みユーザーを作成します。 まず、**マスターに接続** し、ログインを作成します。
+この例では、特定のワークロード グループに分類された読み込みユーザーを作成します。 まず、**マスターに接続** し、ログインを作成します。
 
 ```sql
    -- Connect to master
-   CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+   CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-データ ウェアハウスに接続し、ユーザーを作成します。 次のコードは、mySampleDataWarehouse という名前のデータベースに接続していることを前提としています。 LoaderRC20 という名前のユーザーを作成し、そのユーザーにデータベースに対するアクセス許可の制御を与える方法を示します。 その後、ユーザーを staticrc20 データベース ロールのメンバーとして追加します。  
+専用 SQL プールに接続し、ユーザーを作成します。 次のコードは、mySampleDataWarehouse という名前のデータベースに接続していることを前提としています。 これは、loader と呼ばれるユーザーを作成し、テーブルを作成するためのユーザーのアクセス許可を付与した後、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)を使用して読み込む方法を示しています。 次に、このユーザーを最大のリソースを含む DataLoads ワークロード グループに分類します。 
 
 ```sql
-   -- Connect to the database
-   CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
-   GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
-   EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+   -- Connect to the dedicated SQL pool
+   CREATE USER loader FOR LOGIN loader;
+   GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
+   GRANT INSERT ON <yourtablename> TO loader;
+   GRANT SELECT ON <yourtablename> TO loader;
+   GRANT CREATE TABLE TO loader;
+   GRANT ALTER ON SCHEMA::dbo TO loader;
+   
+   CREATE WORKLOAD GROUP DataLoads
+   WITH ( 
+       MIN_PERCENTAGE_RESOURCE = 0
+       ,CAP_PERCENTAGE_RESOURCE = 100
+       ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 100
+    );
+
+   CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
+   WITH (
+         WORKLOAD_GROUP = 'DataLoads'
+       ,MEMBERNAME = 'loader'
+   );
 ```
 
-staticRC20 リソース クラスのリソースで読み込みを実行するには、LoaderRC20 としてサインインし、読み込みを実行します。
+<br><br>
+>[!IMPORTANT] 
+>これは、SQL プールの 100% のリソースを単一の読み込みに割り当てる極端な例です。 これにより、最大コンカレンシーが 1 になります。 これを使用する必要があるのは、ワークロード間でリソースのバランスをとるために独自の構成で追加のワークロード グループを作成する必要がある初期読み込みに対してのみであることに注意してください。 
 
-動的リソース クラスではなく、静的リソース クラスで読み込みを実行します。 静的リソース クラスを使用すると、[Data Warehouse ユニット](resource-consumption-models.md)に関係なく、必ず同じリソースが使用されます。 動的リソース クラスを使用すると、サービス レベルによってリソースが変わります。 動的クラスの場合、サービス レベルが低いと、おそらく読み込みユーザー用により大きなリソース クラスを使用する必要があります。
+読み込みワークロード グループのリソースを使用して読み込みを実行するには、loader としてサインインし、読み込みを実行します。 
 
 ## <a name="allow-multiple-users-to-load"></a>複数のユーザーが読み込みを実行できるようにする
 
@@ -90,13 +109,17 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>SQLBulkCopy API または BCP を使用するときはバッチ サイズを増やす
 
-前述のとおり、PolyBase を使用して読み込むと、Synapse SQL プールで最高のスループットが得られます。 PolyBase を使用して読み込みを行うことができず、SQLBulkCopy API (または BCP) を使用する必要がある場合は、スループットを向上させるためにバッチ サイズを増やすことを検討してください。バッチ サイズの目安としては、10 万から 100 万行の間です。
+
+COPY ステートメントを使用して読み込むと、専用 SQL プールで最大のスループットが得られます。 COPY を使用して読み込むことができず、[SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用する必要がある場合は、スループットを向上させるためにバッチ サイズを増やすことを検討してください。
+
+> [!TIP]
+> 最適なバッチ サイズの容量を決定するために推奨されるベースラインは、10 万行から 100 万行のバッチ サイズです。 
 
 ## <a name="manage-loading-failures"></a>読み込みエラーの管理
 
 外部テーブルを使用した読み込みが、"*クエリは中止されました。外部ソースの読み取り中に最大拒否しきい値に達しました*" というエラーで失敗する場合があります。 このメッセージは、外部データにダーティなレコードが含まれていることを示します。 データ レコードは、列のデータの種類と数値が外部テーブルの列定義と一致しない場合、またはデータが指定された外部ファイルの形式に従っていない場合に「ダーティ」であるとみなされます。
 
-ダーティなレコードを修正するには、外部テーブルと外部ファイルの形式の定義が正しいこと、および外部データがこれらの定義に従っていることを確認します。 外部データ レコードのサブセットがダーティである場合は、CREATE EXTERNAL TABLE の中で拒否オプションを使用することで、クエリでこれらのレコードを拒否することを選択できます。
+ダーティなレコードを修正するには、外部テーブルと外部ファイルの形式の定義が正しいこと、および外部データがこれらの定義に従っていることを確認します。 外部データ レコードのサブセットがダーティである場合は、['CREATE EXTERNAL TABLE'](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) の中で拒否オプションを使用することで、クエリでこれらのレコードを拒否することを選択できます。
 
 ## <a name="insert-data-into-a-production-table"></a>運用テーブルへのデータの挿入
 
@@ -106,7 +129,7 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 ## <a name="create-statistics-after-the-load"></a>読み込み後に統計を作成する
 
-クエリ パフォーマンスを向上させるには、最初に読み込んだ後またはデータに大きな変更が加えられた後に、すべてのテーブルのすべての列で統計を作成することが重要です。 統計の作成は手動で行うか、[auto-create statistics](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を有効にして行うことができます。
+クエリ パフォーマンスを向上させるには、最初に読み込んだ後またはデータに大きな変更が加えられた後に、すべてのテーブルのすべての列で統計を作成することが重要です。 統計の作成は手動で行うか、[auto-create statistics](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?context=/azure/synapse-analytics/context/context) を有効にして行うことができます。
 
 統計の詳細については、 [統計](develop-tables-statistics.md)に関する記事を参照してください。 次の例では、Customer_Speed テーブルの 5 つの列に関する統計を手動で作成する方法を示しています。
 
@@ -144,6 +167,10 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 ## <a name="next-steps"></a>次のステップ
 
-- PolyBase と、ELT (抽出、読み込み、および変換) 処理の設計の詳細については、[Azure Synapse Analytics の ELT の設計](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページをご覧ください。
+- PolyBase と、ELT (抽出、読み込み、および変換) 処理の設計の詳細については、[Azure Synapse Analytics の ELT の設計](../sql-data-warehouse/design-elt-data-loading.md?context=/azure/synapse-analytics/context/context)に関するページをご覧ください。
 - 読み込みのチュートリアルについては、[PolyBase を使用した Azure Blob Storage から Azure Synapse Analytics へのデータの読み込み](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)に関するページをご覧ください。
+<<<<<<< HEAD
 - データの読み込みの監視については、「[DMV を利用してワークロードを監視する](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+=======
+- データの読み込みの監視については、「[DMV を利用してワークロードを監視する](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?context=/azure/synapse-analytics/context/context)」を参照してください。
+>>>>>>> repo_sync_working_branch

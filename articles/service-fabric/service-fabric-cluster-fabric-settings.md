@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 65ae2337ac7dbe4370411a154463a6ddc37f83b2
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 28355bfac8d052c847cf2f08770f5aa869c5a786
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107255973"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130237949"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -65,6 +65,7 @@ ms.locfileid: "107255973"
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |DeployedState |wstring、既定値は L"Disabled" |静的 |CSS の 2 段階削除。 |
+|UpdateEncryptionCertificateTimeout |TimeSpan。既定値は Common::TimeSpan::MaxValue |静的 |timespan を秒単位で指定します。 既定値は TimeSpan::MaxValue に変更されました。ただし、オーバーライドは引き維持されます。 今後非推奨となる場合があります。 |
 
 ## <a name="clustermanager"></a>ClusterManager
 
@@ -102,6 +103,7 @@ ms.locfileid: "107255973"
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |AllowCreateUpdateMultiInstancePerNodeServices |ブール値、既定値は false |動的|ノードごとに 1 つのサービスの複数のステートレス インスタンスを作成できます。 現在、この機能はプレビュー段階にあります。 |
+|EnableAuxiliaryReplicas |ブール値、既定値は false |動的|サービスでの補助レプリカの作成または更新を有効にします。 true の場合、SF バージョン 8.1 以降から下位の targetVersion へのアップグレードはブロックされます。 |
 |PerfMonitorInterval |時間 (秒単位)、既定値は 1 |動的|timespan を秒単位で指定します。 パフォーマンスの監視間隔。 0 または負の値に設定すると、監視が無効になります。 |
 
 ## <a name="defragmentationemptynodedistributionpolicy"></a>DefragmentationEmptyNodeDistributionPolicy
@@ -144,11 +146,14 @@ ms.locfileid: "107255973"
 | **パラメーター** | **使用できる値** |**アップグレード ポリシー**| **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |EnablePartitionedQuery|ブール値、既定値は FALSE|静的|パーティション分割されたサービスに対する DNS クエリのサポートを有効にするためのフラグ。 この機能は既定でオフになっています。 詳細については、[Service Fabric の DNS サービス](service-fabric-dnsservice.md)に関するページを参照してください。|
+|ForwarderPoolSize|int、既定値は 20|静的|転送プールにあるフォワーダーの数。|
+|ForwarderPoolStartPort|int。既定値は 16700|スタティック|再帰クエリに使用される転送プールの開始アドレス。|
 |InstanceCount|int、既定値は -1|静的|既定値は -1。つまり、DnsService はすべてのノードで実行されています。 DnsService は既知のポート 53 を使用するので、OneBox はこの値を 1 に設定する必要があります。そのため、同じマシン上に複数のインスタンスを持つことはできません。|
 |IsEnabled|ブール値、既定値は FALSE|静的|DnsService を有効または無効にします。 DnsService は既定で無効になっています。有効にするには、この構成を設定する必要があります。 |
 |PartitionPrefix|string、既定値は "--"|静的|パーティション分割されたサービスの DNS クエリのパーティション プレフィックス文字列値を制御します。 値には次の条件があります。 <ul><li>DNS クエリの一部なので、RFC に準拠している必要があります。</li><li>ドット '.' は DNS サフィックスの動作を妨げるため、使用しないでください。</li><li>長さの上限は 5 文字です。</li><li>空の文字列にすることはできません。</li><li>PartitionPrefix 設定がオーバーライドされている場合は、PartitionSuffix もオーバーライドされる必要があります。その逆も同様です。</li></ul>詳細については、「[Azure Service Fabric の DNS サービス](service-fabric-dnsservice.md)」を参照してください。|
 |PartitionSuffix|string、既定値は ""|静的|パーティション分割されたサービスの DNS クエリのパーティション サフィックス文字列値を制御します。値には次の条件があります。 <ul><li>DNS クエリの一部なので、RFC に準拠している必要があります。</li><li>ドット '.' は DNS サフィックスの動作を妨げるため、使用しないでください。</li><li>長さの上限は 5 文字です。</li><li>PartitionPrefix 設定がオーバーライドされている場合は、PartitionSuffix もオーバーライドされる必要があります。その逆も同様です。</li></ul>詳細については、「[Azure Service Fabric の DNS サービス](service-fabric-dnsservice.md)」を参照してください。 |
-|RetryTransientFabricErrors|ブール値、既定値は true|静的|この設定を使用すると、DnsService から Service Fabric API を呼び出すときに、再試行機能を制御することができます。 有効にすると、一時的なエラーが発生した場合に最大 3 回再試行します。|
+|TransientErrorMaxRetryCount|int、既定値は 3|静的|SF API の呼び出し中に (名前およびエンドポイントの取得時) 一時的なエラーが発生したとき、SF DNS に再試行させる回数を制御します。|
+|TransientErrorRetryIntervalInMillis|int、既定値は 0|静的|SF DNS で SF API を呼び出すタイミングについて再試行の間隔をミリ秒で設定します。|
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
@@ -356,6 +361,8 @@ ms.locfileid: "107255973"
 |DeploymentRetryBackoffInterval| TimeSpan、既定値は Common::TimeSpan::FromSeconds(10)|動的|timespan を秒単位で指定します。 デプロイ エラーのバックオフ間隔。 継続的なデプロイ エラーのたびに、システムによってデプロイが最大 MaxDeploymentFailureCount 回、再試行されます。 再試行間隔は、継続的なデプロイ エラーとデプロイ バックオフ間隔の積です。 |
 |DisableContainers|ブール値、既定値は FALSE|静的|コンテナーを無効にするための構成 - 使用されなくなった構成である DisableContainerServiceStartOnContainerActivatorOpen の代わりに使用します |
 |DisableDockerRequestRetry|ブール値、既定値は FALSE |動的| 既定では、SF は、送信される各 http 要求のタイムアウトを "DockerRequestTimeout" として DD (docker デーモン) と通信します。 DD がこの期間内に応答しない場合、SF は、最上位レベルの操作にまだ残り時間があれば要求を再送信します。  hyperv コンテナーと共に使用します。DD がコンテナーを起動または非アクティブ化するのに時間がかかることがあります。 そのような場合、DD 要求が SF パースペクティブからタイムアウトし、SF は操作を再試行します。 これは DD にさらに圧力をかけるように見えることがあります。 この構成により、この再試行が無効になり、DD が応答するまで待機します。 |
+|DisableLivenessProbes | wstring、既定値は L"" | スタティック | クラスター内で Liveness プローブを無効にする構成。 SF に空でない任意の値を指定して、プローブを無効にできます。 |
+|DisableReadinessProbes | wstring、既定値は L"" | スタティック | クラスター内で readiness probe を無効にする構成。 SF に空でない任意の値を指定して、プローブを無効にできます。 |
 |DnsServerListTwoIps | ブール値、既定値は FALSE | 静的 | このフラグは、断続的な解決の問題を軽減するために、ローカル DNS サーバーを 2 回追加します。 |
 | DockerTerminateOnLastHandleClosed | ブール値、既定値は TRUE | 静的 | 既定では、FabricHost が (SkipDockerProcessManagement == false に基づいて) 'dockerd' を管理している場合、この設定は、FabricHost または dockerd のいずれかがクラッシュしたときの動作を構成します。 `true` に設定すると、いずれかのプロセスがクラッシュした場合に、実行中のすべてのコンテナーが HCS によって強制的に終了されます。 `false` に設定すると、コンテナーは引き続き実行されます。 注: 8.0 より前のバージョンでは、この動作は意図せず `false` と同じでした。 ここでの既定の設定の `true` は、クリーンアップ ロジックがこれらのプロセスの再起動時に有効になるように、既定で行われると予測されるものです。 |
 | DoNotInjectLocalDnsServer | ブール値、既定値は FALSE | 静的 | ランタイムがコンテナーの DNS サーバーとしてローカル IP を挿入しないようにします。 |
@@ -490,7 +497,7 @@ ms.locfileid: "107255973"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodeCapacityCollectionMap |静的|さまざまなメトリックのノード容量のコレクション。 |
+|PropertyGroup |NodeCapacityCollectionMap | 動的 |さまざまなメトリックのノード容量のコレクション。 Service Fabric 8.1 では動的、それ以前のバージョンでは "*静的*" となっています。 |
 
 ## <a name="nodedomainids"></a>NodeDomainIds
 
@@ -503,7 +510,7 @@ ms.locfileid: "107255973"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodePropertyCollectionMap |静的|ノードのプロパティの文字列キーと値のペアのコレクション。 |
+|PropertyGroup |NodePropertyCollectionMap | 動的 |ノードのプロパティの文字列キーと値のペアのコレクション。 Service Fabric 8.1 では動的、それ以前のバージョンでは "*静的*" となっています。 |
 
 ## <a name="paas"></a>Paas
 
@@ -536,6 +543,7 @@ ms.locfileid: "107255973"
 |ConstraintFixPartialDelayAfterNewNode | 時間 (秒単位)、既定値は 120 |動的| timespan を秒単位で指定します。 新しいノードの追加後、この期間内に FaultDomain および UpgradeDomain の制約違反を修正しないでください。 |
 |ConstraintFixPartialDelayAfterNodeDown | 時間 (秒単位)、既定値は 120 |動的| timespan を秒単位で指定します。 ノード ダウン イベント後、この期間内に FaultDomain および UpgradeDomain の制約違反を修正しないでください。 |
 |ConstraintViolationHealthReportLimit | int、既定値は 50 |動的| 制約に違反しているレプリカが永続的に未修正の状態になった回数がここで定義した回数に達すると、診断が行われ、正常性レポートが出力されます。 |
+|DecisionOperationalTracingEnabled | ブール値、既定値は FALSE |動的| イベント ストア内で CRM Decision の運用上の構造トレースを有効にする構成。 |
 |DetailedConstraintViolationHealthReportLimit | int、既定値は 200 |動的| 制約に違反しているレプリカが永続的に未修正の状態になった回数がここで定義した回数に達すると、診断が行われ、詳細な正常性レポートが出力されます。 |
 |DetailedDiagnosticsInfoListLimit | int、既定値は 15 |動的| 診断での切り捨て前に含める、制約ごとの (詳細情報を含む) 診断エントリの数を定義します。|
 |DetailedNodeListLimit | int、既定値は 15 |動的| 未配置レプリカ レポートでの切り捨て前に含める、制約ごとのノードの数を定義します。 |
@@ -559,7 +567,7 @@ ms.locfileid: "107255973"
 |MoveExistingReplicaForPlacement | ブール値、既定値は true |動的|配置中に既存のレプリカを移動するかどうかを指定します。 |
 |MovementPerPartitionThrottleCountingInterval | 時間 (秒単位)、既定値は 600 |静的| timespan を秒単位で指定します。 各パーティションのレプリカの移動を追跡する、過去の間隔の長さを示します (MovementPerPartitionThrottleThreshold と共に使用)。 |
 |MovementPerPartitionThrottleThreshold | uint、既定値は 50 |動的| パーティションのレプリカの均衡化に関連する移動数が、MovementPerPartitionThrottleCountingInterval で示されている過去の間隔で MovementPerFailoverUnitThrottleThreshold の値に達するか、この値を超えると、そのパーティションで均衡化に関連する移動は発生しなくなります。 |
-|MoveParentToFixAffinityViolation | ブール値、既定値は false |動的| アフィニティの制約を修正するために親レプリカを移動できるかどうかを指定します。|
+|MoveParentToFixAffinityViolation | ブール値、既定値は true |動的| アフィニティの制約を修正するために親レプリカを移動できるかどうかを指定します。|
 |NodeTaggingEnabled | ブール値、既定値は false |動的| true の場合、NodeTagging 機能が有効になります。 |
 |NodeTaggingConstraintPriority | int、既定値は 0 |動的| ノード タグ付けの構成可能な優先順位。 |
 |PartiallyPlaceServices | ブール値、既定値は true |動的| サービス レプリカに適したノードの数が限られている場合に、クラスター内のすべてのサービス レプリカを "全部かゼロか" 方式で配置するかどうかを指定します。|
@@ -581,6 +589,8 @@ ms.locfileid: "107255973"
 |TraceCRMReasons |ブール値、既定値は true |動的|CRM が発行した、操作イベント チャネルへの移動の理由をトレースするかどうかを指定します。 |
 |UpgradeDomainConstraintPriority | int、既定値は 1| 動的|アップグレード ドメインの制約の優先順位を指定します:0:ハード、1:ソフト、負の値:無視。 |
 |UseMoveCostReports | ブール値、既定値は false | 動的|よりバランスの取れた配置を実現するために多数の移動が発生する可能性のある、スコア付け関数のコスト要素を無視するよう LB に指示します。 |
+|UseSeparateAuxiliaryLoad | ブール値、既定値は true | 動的|PLB で各ノード上の補助に対してそれぞれ異なる負荷を使用する必要があるかどうかを決定する設定。UseSeparateAuxiliaryLoad がオフになっている場合: - 1 つのノード上の補助に対して報告された負荷によって、(他のすべてのノード上の) 各補助の負荷が上書きされます。UseSeparateAuxiliaryLoad がオンになっている場合: - 1 つのノード上の補助に対して報告された負荷は、その補助でのみ有効になります (他のノード上の補助には影響しません) - レプリカのクラッシュが発生した場合 - 残りの補助の平均負荷によって新しいレプリカが作成されます - PLB によって既存のレプリカが移動された場合 - それに伴って負荷も移動されます。 |
+|UseSeparateAuxiliaryMoveCost | ブール値、既定値は false | 動的|PLB で各ノード上の補助に対して異なる移動コストを使用する必要があるかどうかを決定する設定: UseSeparateAuxiliaryMoveCost がオフになっている場合 - 1 つのノード上の補助に対してレポートされた移動コストによって (他のすべてのノードの) 各補助の移動コストが上書きされます。UseSeparateAuxiliaryMoveCost がオンになっている場合 - 1 つのノード上の補助に対してレポートされた移動コストはその補助のみで有効になります (他のノードのセカンダリには影響しません) - レプリカのクラッシュが発生した場合 - 新しいレプリカがサービス レベルで指定されている既定の移動コストで作成されます - PLB によって既存のレプリカが移動される場合、移動コストもそれに伴って移動されます。 |
 |UseSeparateSecondaryLoad | ブール値、既定値は true | 動的|セカンダリ レプリカに個別の負荷を使用する必要があるかどうかを決定する設定。 |
 |UseSeparateSecondaryMoveCost | ブール値、既定値は true | 動的|PLB が各ノードのセカンダリに異なる移動コストを使用する必要があるかどうかを決定する設定。 UseSeparateSecondaryMoveCost がオフになっている場合 - 1 つのノード上のセカンダリに対してレポートされた移動コストが(他のすべてのノードの) 各セカンダリの移動コストを上書きします。UseSeparateSecondaryMoveCost がオンになっている場合 - 1 つのノード上のセカンダリに対してレポートされた移動コストはそのセカンダリのみで有効になります (他のノードのセカンダリには影響しません) - レプリカのクラッシュが発生した場合 - 新しいレプリカがサービス レベルで指定されている既定の移動コストで作成されます - PLB が既存のレプリカを移動する場合、移動コストはそれに伴って移動します。 |
 |ValidatePlacementConstraint | ブール値、既定値は true |動的| サービスの ServiceDescription が更新されたときに、サービスの PlacementConstraint 式を検証するかどうかを指定します。 |
@@ -883,6 +893,7 @@ ms.locfileid: "107255973"
 |MaxSecondaryReplicationQueueMemorySize |uint、既定値は 0 | 静的 |セカンダリ レプリケーション キューの最大値 (バイト単位)。 |
 |MaxSecondaryReplicationQueueSize |uint、既定値は 16384 | 静的 |セカンダリ レプリケーション キューに存在する可能性がある操作の最大数。 この値は 2 の累乗にする必要があります。 |
 |ReplicatorAddress |string、既定値は "localhost:0" | 静的 | 文字列 "IP:Port" の形式のエンドポイント。この文字列は、Windows Fabric Replicator が操作を送受信するために、他のレプリカとの接続を確立する際に使用されます。 |
+|ShouldAbortCopyForTruncation |ブール値、既定値は FALSE | 静的 | コピー中に保留中のログの切り捨てが実行されるようにします。 これを有効にすると、ログがいっぱいになり、ブロックが切り捨てられた場合にビルドのコピー ステージを取り消すことができます。 |
 
 ## <a name="transport"></a>トランスポート
 | **パラメーター** | **使用できる値** |**アップグレード ポリシー** |**ガイダンスまたは簡単な説明** |

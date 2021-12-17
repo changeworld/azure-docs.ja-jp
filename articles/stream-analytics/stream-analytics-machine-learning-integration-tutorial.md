@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics と Azure Machine Learning Studio (classic) の統合
+title: Azure Stream Analytics Machine Learning Studio (クラシック) との統合
 description: この記事では、ユーザー定義関数を使用して、Azure Machine Learning Studio (classic) を統合する単純な Azure Stream Analytics ジョブをすばやく設定する方法について説明します。
 ms.service: stream-analytics
 author: sidramadoss
@@ -7,19 +7,19 @@ ms.author: sidram
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1ebe62c1b90e09b36dd75b5bda4054cca08d5759
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 32031960a928a10395b217524256f1d342d08b03
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102441212"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063767"
 ---
-# <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics と Azure Machine Learning Studio (classic) を使用した感情分析の実行
+# <a name="do-sentiment-analysis-with-azure-stream-analytics-and-machine-learning-studio-classic"></a>Azure Stream Analytics と Azure Machine Learning Studio (classic) を使用した感情分析の実行
 
 この記事では、感情分析に Azure Machine Learning Studio (classic) を使用する単純な Azure Stream Analytics ジョブを設定する方法について説明します。 Cortana Intelligence Gallery の Studio (classic) の感情分析モデルを利用して、ストリーミング テキスト データを分析し、センチメント スコアを決定します。
 
 > [!TIP]
-> パフォーマンスと信頼性を向上させるために、Azure Machine Learning Studio (classic) UDF の代わりに [Azure Machine Learning UDF](machine-learning-udf.md) を使用することを強くお勧めします。
+> パフォーマンスと信頼性を向上させるために、Machine Learning Studio (クラシック) UDF ではなく[Azure Machine Learning udf](machine-learning-udf.md)を使用することを強くお勧めします。
 
 この記事で学ぶ内容は、次のようなシナリオに適用できます。
 
@@ -78,7 +78,7 @@ ms.locfileid: "102441212"
 
 2. **[Open in Studio (classic)]\(Studio (classic) で開く\)** を選択します。  
    
-   ![Stream Analytics Azure Machine Learning Studio (classic)、Studio (classic) を開く](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
+   ![Stream Analytics Machine Learning studio (クラシック)、studio を開く (クラシック)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
 3. サインインしてワークスペースを開きます。 場所を選択します。
 
@@ -100,7 +100,7 @@ ms.locfileid: "102441212"
 
 7. **[アプリ]** 列で、 **[Excel 2010 or earlier workbook]\(Excel 2010 以前のブック\)** リンクを選択して、Excel ブックをダウンロードします。 このブックには、後で Stream Analytics ジョブをセットアップする際に必要になる API キーと URL が含まれています。
 
-    ![Stream Analytics Azure Machine Learning Studio (classic)、概要](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+    ![Stream Analytics Machine Learning Studio (クラシック)、概要](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
 ## <a name="create-a-stream-analytics-job-that-uses-the-studio-classic-model"></a>Studio (classic) モデルを使用する Stream Analytics ジョブを作成する
 
@@ -214,7 +214,7 @@ Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力�
 
 3. 生成された CSV ファイルを開きます。 次の例のように表示されます。  
 
-   ![Stream Analytics Azure Machine Learning Studio (classic)、CSV ビュー](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
+   ![Stream Analytics Machine Learning Studio (クラシック)、CSV ビュー](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 ### <a name="view-metrics"></a>メトリックを表示する
 

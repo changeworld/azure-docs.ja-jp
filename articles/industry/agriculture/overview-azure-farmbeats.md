@@ -1,16 +1,16 @@
 ---
 title: Azure FarmBeats の概要
 description: Azure FarmBeats の概要について説明します
-author: uhabiba04
+author: RiyazPishori
 ms.topic: overview
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.openlocfilehash: f173dfb055f3d9c75ee63570cd413276ffb6ba37
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.openlocfilehash: 571c10dc44922f98c28e1f536a9eb965733bf30d
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182827"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422554"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats (プレビュー) の概要
 
@@ -33,7 +33,7 @@ Azure FarmBeats プレビューでは、次のことができます。
 ## <a name="datahub"></a>データ ハブ
 
 Azure FarmBeats Datahub は、プロバイダー間でのさまざまな農業データセットの集計、正規化、コンテキスト化を可能にする API レイヤーです。 Azure FarmBeats を使用すると、次のものを取得できます。
-- 2 つのセンサー プロバイダー ([Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/)、[Teralytic](https://teralytic.com/)、[Pessl Instruments](https://metos.at/)) からの **センサー データ**
+- 2 つのセンサー プロバイダー ([Davis Instruments](https://www.davisinstruments.com/products/enviromonitor-gateway-us-lte)、[Teralytic](https://teralytic.com/)、[Pessl Instruments](https://metos.at/)) からの **センサー データ**
 - 欧州宇宙機関の [Sentinel-2](https://sentinel.esa.int/web/sentinel/home) 衛星ミッションからの **衛星画像**
 - 3 つのドローン映像プロバイダー ([senseFly](https://www.sensefly.com/)、[SlantRange](https://slantrange.com/)、[DJI](https://dji.com/)) からの **ドローン映像**
 

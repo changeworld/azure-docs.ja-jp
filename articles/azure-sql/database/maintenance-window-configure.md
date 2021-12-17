@@ -3,18 +3,18 @@ title: メンテナンス期間の構成 (プレビュー)
 description: Azure SQL データベース、エラスティック プール、マネージド インスタンス データベースで計画メンテナンスを実行する必要がある時間の設定方法を学習します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: deployment-configuration
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: scott-kim-sql
+ms.author: scottkim
+ms.reviewer: mathoma
 ms.date: 03/23/2021
-ms.openlocfilehash: 8688458d85084f3d3dab4678fa91ed827a337739
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f2f12238d5c75b2d36d09efa2fddd76bf6b1ec1d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047353"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694379"
 ---
 # <a name="configure-maintenance-window-preview"></a>メンテナンス期間の構成 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -178,7 +178,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>SQL Database とエラスティック プールのメンテナンス期間を検出する
 
-次の例では、[az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) コマンドを使用して、*eastus2* リージョンに使用できるメンテナンス期間を返します。 データベースおよびエラスティック プールの場合は、`maintenanceScope` を `SQLDB` に設定します。
+次の例では、[az maintenance public-configuration list](/cli/azure/maintenance/public-configuration#az_maintenance_public_configuration_list) コマンドを使用して、*eastus2* リージョンに使用できるメンテナンス期間を返します。 データベースおよびエラスティック プールの場合は、`maintenanceScope` を `SQLDB` に設定します。
 
    ```azurecli
    location="eastus2"
@@ -188,7 +188,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ### <a name="discover-sql-managed-instance-maintenance-windows"></a>SQL Managed Instance のメンテナンス期間を検出する
 
-次の例では、[az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) コマンドを使用して、*eastus2* リージョンに使用できるメンテナンス期間を返します。 マネージド インスタンスの場合は、`maintenanceScope` を `SQLManagedInstance` に設定します。
+次の例では、[az maintenance public-configuration list](/cli/azure/maintenance/public-configuration#az_maintenance_public_configuration_list) コマンドを使用して、*eastus2* リージョンに使用できるメンテナンス期間を返します。 マネージド インスタンスの場合は、`maintenanceScope` を `SQLManagedInstance` に設定します。
 
    ```azurecli
    az maintenance public-configuration list --query "[?location=='eastus2'&&contains(maintenanceScope,'SQLManagedInstance')]"

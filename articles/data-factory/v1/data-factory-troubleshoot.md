@@ -2,18 +2,20 @@
 title: Azure Data Factory のトラブルシューティング
 description: Azure Data Factory の使用に関する問題のトラブルシューティングを行う方法について説明します。
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
+ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: 70c1aecd358b52a7b5b62ba7cb8f3badffef2998
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6bfb9c4df7a7fc402a9fa06172d224b550d1fe38
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779921"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242824"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
 > [!NOTE]
@@ -127,7 +129,7 @@ Failed to create cluster. Exception: Unable to complete the cluster create opera
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
 [developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
-[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
+[cmdlet-reference]: /powershell/resourcemanager/Azurerm.DataFactories/v2.2.0/Azurerm.DataFactories
 [json-scripting-reference]: /previous-versions/azure/dn835050(v=azure.100)
 
 [azure-portal]: https://portal.azure.com/

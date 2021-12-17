@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa1b92e34def30f276b50d4f19e3a4ed4ae3922a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93392335"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017865"
 ---
 # <a name="configure-azure-sql-edge"></a>Azure SQL Edge の構成
 
@@ -64,7 +64,7 @@ Azure SQL Edge では、SQL Edge コンテナーの構成に使用できるい�
 > [!NOTE]
 > 切断されたデプロイ モードでは、`-e` または `--env`、または `docker run` コマンドの `--env-file` オプションを使用して環境変数を指定できます。
 
-## <a name="configure-by-using-an-mssqlconf-file"></a>mssql.conf ファイルを使用して構成する
+## <a name="configure-by-using-an-mssqlconf-file"></a>ファイルを使用して構成 `mssql.conf` する
 
 Azure SQL Edge には、SQL Server on Linux に含まれているような [mssql-conf 構成ユーティリティ](/sql/linux/sql-server-linux-configure-mssql-conf/)は含まれていません。 mssql.conf ファイルを手動で構成し、SQL Edge モジュールの /var/opt/mssql/ フォルダーにマップされている永続的なストレージ ドライブに配置する必要があります。 Azure Marketplace から SQL Edge をデプロイする場合、このマッピングは **[コンテナー作成オプション]** で **[マウント]** オプションとして指定されます。
 
@@ -99,7 +99,7 @@ Azure SQL Edge には、SQL Server on Linux に含まれているような [mssq
 |**ML サービスの EULA** | Azure Machine Learning パッケージ用の R および Python の EULA に同意します。 これは SQL Server 2019 のみに適用されます。|
 |**outboundnetworkaccess** |[Machine Learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) の R、Python、および Java 拡張機能の送信ネットワーク アクセスを有効にします。|
 
-SQL Edge では次の例の mssql.conf ファイルが機能します。 mssql.conf ファイルの形式の詳細については、「[mssql.conf の書式](/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format)」をご覧ください。
+SQL Edge では次の例の mssql.conf ファイルが機能します。 ファイルの形式の詳細については `mssql.conf`[、mssql.conf 形式に関するページを参照してください](/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format)。
 
 ```ini
 [EULA]

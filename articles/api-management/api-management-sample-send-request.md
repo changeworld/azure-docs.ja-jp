@@ -3,7 +3,7 @@ title: HTTP 要求を生成するための API Management サービスの使用
 description: API で外部サービスを呼び出すための API Management での要求と応答ポリシーの使用方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 4539c0fa-21ef-4b1c-a1d4-d89a38c242fa
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
-ms.author: apimpm
-ms.openlocfilehash: 2f4bd040d7e5858fd561444f56dbce7b3f940d9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: f4ba8ee0d9ce4f874023472520052119f7fa54bf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92742395"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678993"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management サービスからの外部サービスの使用
 Azure API Management サービスに含まれるポリシーでは、着信要求、送信応答、および基本的な構成情報のみを使用した有用なさまざまな処理を実行できます。 一方、API Management ポリシーでは外部サービスと通信することもできるため、さらに可能性が広がります。
@@ -69,7 +69,7 @@ Slack には、着信 Web フックの概念があります。 着信 Web フッ
 `send-request` ポリシーは、外部サービスを使用し複雑な処理機能を実行したり、さらにポリシーを処理したりするために API Management サービスにデータを返すことに使用できます。
 
 ### <a name="authorizing-reference-tokens"></a>参照トークンの承認
-API Management の主な機能には、バックエンド リソースの保護があります。 API によって使用される承認サーバーで、[Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) のように、その OAuth2 フローの一部として [JWT トークン](https://jwt.io/)が作成される場合、`validate-jwt` ポリシーを使用すると、そのトークンの有効性を検証できます。 一部の承認サーバーでは、承認サーバーへのコールバックを行わなければ検証できない[参照トークン](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)と呼ばれるものが作成されます。
+API Management の主な機能には、バックエンド リソースの保護があります。 API によって使用される承認サーバーで、[Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) のように、その OAuth2 フローの一部として [JWT トークン](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)が作成される場合、`validate-jwt` ポリシーを使用すると、そのトークンの有効性を検証できます。 一部の承認サーバーでは、承認サーバーへのコールバックを行わなければ検証できない[参照トークン](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)と呼ばれるものが作成されます。
 
 ### <a name="standardized-introspection"></a>標準化されたイントロスペクション
 これまで、承認サーバーで参照トークンを検証するための標準的な方法はありませんでした。 ただし、最近 IETF から、トークンの有効性をリソース サーバーが検証する方法を定義した標準 [RFC 7662](https://tools.ietf.org/html/rfc7662) の提案が公開されました。
@@ -105,7 +105,10 @@ API Management の主な機能には、バックエンド リソースの保護�
 
 または、承認サーバーにトークンが有効であるかどうかを示す "アクティブ" フィールドが含まれていない場合は、Postman などのツールを使用して、有効なトークンに設定されているプロパティを確認します。 たとえば、有効なトークン応答に "expires_in" というプロパティが含まれている場合は、次のように、このプロパティ名が承認サーバーの応答に存在するかどうかを確認します。
 
+```xml
 <when condition="@(((IResponse)context.Variables["tokenstate"]).Body.As<JObject>().Property("expires_in") == null)">
+```
+
 
 ### <a name="reporting-failure"></a>レポートのエラー
 `<choose>` ポリシーを使用すると、トークンの有効性を検出できます。無効である場合は、401 応答が返されます。

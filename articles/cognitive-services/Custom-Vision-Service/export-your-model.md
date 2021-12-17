@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: be28a10f8a96d21d64d08cfacee4543c065168ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b17ae73eb923e55d9bc1ffbbd8b66c16cec8010
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "85391759"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461325"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>モバイル デバイスで使用するためにモデルをエクスポートする
 
@@ -26,8 +26,9 @@ Custom Vision Service では、分類子をエクスポートし、オフライ�
 Custom Vision Service は次のエクスポートに対応しています。
 
 * __Android__ 向け __Tensorflow__。
+* React、Angular、Vue などの JavaScript フレームワーク向けの **TensorflowJS**。 これは **Android** デバイスと **iOS** デバイスの両方で実行されます。
 * __iOS11__ 向け __CoreML__。
-* __Windows ML__ 向け __ONNX__。
+* __Windows ML__、**Android**、**iOS** 用の __ONNX__。
 * __[Vision AI Developer Kit](https://azure.github.io/Vision-AI-DevKit-Pages/)__ 。
 * Windows、Linux、または ARM アーキテクチャ用の __Docker コンテナー__。 コンテナーには、Tensorflow モデルと、Custom Vision API を使用するためのサービス コードが含まれています。
 

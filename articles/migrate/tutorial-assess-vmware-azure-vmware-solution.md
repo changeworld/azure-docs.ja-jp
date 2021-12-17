@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 31bf3909012231996bd340cfa4d388f0fe20a4f5
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: a2637fbfcaf1e30b1df9f0739630ea2883eba3fa
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782141"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994208"
 ---
 # <a name="tutorial-assess-vmware-servers-for-migration-to-avs"></a>チュートリアル: AVS への移行のために VMware サーバーを評価する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルに従って AVS への移行についてサーバーを評価する前に、必ず評価対象のサーバーを検出しておきます。
 
 - Azure Migrate アプライアンスを使用してサーバーを検出する場合は、[こちらのチュートリアルに従います](tutorial-discover-vmware.md)。 
-- インポートした CSV ファイルを使用してサーバーを検出する場合は、[こちらのチュートリアルに従います](tutorial-discover-import.md)。
+- インポートした CSV ファイルを使用してサーバーを検出する場合は、[こちら](tutorial-discover-import.md)のチュートリアルに従ってください。
 
 
 ## <a name="decide-which-assessment-to-run"></a>実行する評価を決定する
@@ -127,11 +127,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 AVS の評価には以下が記述されています。
 
-- AVS 対応性: オンプレミスのサーバーが Azure VMware Solution (AVS) への移行に適しているかどうか。
-- AVS ノード数: サーバーの実行に必要な AVS ノードの予測数。
-- すべての AVS ノードの使用率: すべてのノードにおける CPU、メモリ、および記憶域の使用率の予測。
-    - 使用率では、vCenter Server、NSX Manager (大規模)、NSX Edge など、クラスター管理オーバーヘッドが事前に考慮されます。HCX がデプロイされている場合は、HCX Manager と IX アプライアンスによる消費 (圧縮と重複除去の前の 44vCPU (11 CPU)、75 GB の RAM、722 GB のストレージ) も考慮されます。 
-- 月間コスト見積もり: すべての Azure VMware Solution (AVS) ノードでオンプレミスのサーバーを実行するための月間推定コスト。
+- **Azure VMware Solution (AVS) 対応性**: オンプレミスのサーバーが Azure VMware Solution (AVS) への移行に適しているかどうか。
+- **Azure VMware Solution ノードの数**: サーバーを実行するために必要な Azure VMware Solution ノードの推定数。
+- **すべての AVS ノードの使用率**: すべてのノードにおける CPU、メモリ、および記憶域の使用率の予測。
+    - 使用率では、vCenter Server、NSX Manager (大規模)、NSX Edge など、クラスター管理オーバーヘッドが事前に考慮されます。HCX がデプロイされている場合は、HCX Manager と IX アプライアンスによる消費 (圧縮と重複除去の前の最大 44vCPU (11 CPU)、75 GB の RAM、722 GB のストレージ) も考慮されます。
+    - 制限要因により、リソースに対応するために必要なホストとノードの数が決まります。
+- **月間コスト見積もり**: オンプレミスの VM を実行しているすべての Azure VMware Solution (AVS) ノードの月間推定コスト。
 
 ## <a name="view-an-assessment"></a>評価を表示する
 
@@ -143,7 +144,7 @@ AVS の評価には以下が記述されています。
 
     :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-assessment-summary.png" alt-text="AVS 評価の概要":::
 
-1. 評価の概要を確認します。 評価のプロパティを編集して、評価を再計算することもできます。
+1. 評価の概要を確認します。 **[Sizing assumptions]\(サイズ決定の前提\)** をクリックすると、ノードのサイズ設定とリソース使用率の計算で使用された前提を確認できます。 評価のプロパティを編集して、評価を再計算することもできます。
  
 
 ### <a name="review-readiness"></a>対応性を確認する
@@ -178,8 +179,6 @@ AVS の評価には以下が記述されています。
 ### <a name="review-confidence-rating"></a>信頼度レーティングを確認する
 
 パフォーマンスベースの評価には、Server Assessment によって信頼度レーティングが割り当てられます。 レーティングの範囲は、星 1 つ (最も低い) から星 5 つ (最も高い) までです。
-
-![信頼度レーティング](./media/tutorial-assess-vmware-azure-vmware-solution/confidence-rating.png)
 
 信頼度レーティングを使うと、評価の推奨サイズの信頼性を見積もることができます。 このレーティングは、評価の計算に必要なデータ ポイントの有効性に基づいています。
 

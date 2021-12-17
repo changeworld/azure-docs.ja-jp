@@ -1,52 +1,49 @@
 ---
-title: Windows Virtual Desktop の RDP Shortpath (プレビュー)
+title: Azure Virtual Desktop マネージド ネットワーク用 RDP Shortpath
 titleSuffix: Azure
-description: Windows Virtual Desktop の RDP Shortpath (プレビュー) を設定する方法。
+description: Azure Virtual Desktop にマネージド ネットワーク用 RDP Shortpath を設定する方法。
 author: gundarev
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 10/18/2021
 ms.author: denisgun
-ms.openlocfilehash: 295a46f6d1074ddf8422233ea3ccfa4d65c28fd8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6f41f52b224603d32586ca6e260eaae54466f80
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571583"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709325"
 ---
-# <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop の RDP Shortpath (プレビュー)
+# <a name="azure-virtual-desktop-rdp-shortpath-for-managed-networks"></a>Azure Virtual Desktop マネージド ネットワーク用 RDP Shortpath
 
-> [!IMPORTANT]
-> RDP Shortpath は、現在パブリック プレビュー段階にあります。
-> このプレビューはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-RDP Shortpath は、リモート デスクトップ クライアントとセッション ホストとの間に直接的な UDP ベースのトランスポートを確立する Windows Virtual Desktop の機能です。 RDP では、このトランスポートを使用して、より高い信頼性と一貫した待機時間で、リモート デスクトップと RemoteApp を提供します。
+マネージド ネットワーク用 RDP Shortpath は、リモート デスクトップ クライアントとセッション ホストとの間に直接的な UDP ベースのトランスポートを確立する Azure Virtual Desktop の機能です。 RDP では、このトランスポートを使用して、より高い信頼性と一貫した待機時間で、リモート デスクトップと RemoteApp を提供します。
 
 ## <a name="key-benefits"></a>主な利点
 
 * RDP Shortpath トランスポートは、非常に効率的な [Universal Rate Control Protocol (URCP)](https://www.microsoft.com/en-us/research/publication/urcp-universal-rate-control-protocol-for-real-time-communication-applications/) に基づいています。 URCP では、ネットワークの状態をアクティブに監視することで UDP を強化し、公平で完全なリンク使用率を実現します。 URCP は、リモート デスクトップの必要に応じて、低遅延および低損失レベルで動作します。 URCP を使用すると、ネットワーク パラメーターを動的に学習し、レート制御メカニズムを備えたプロトコルを提供することにより、最高のパフォーマンスが達成されます。
-* RDP Shortpath は、リモート デスクトップ クライアントとセッション ホストとの間に直接接続を確立します。 直接接続により、Windows Virtual Desktop ゲートウェイ上の依存関係が軽減され、接続の信頼性が向上し、各ユーザー セッションに使用できる帯域幅が増加します。
-* 追加のリレーを削除すると、ラウンド トリップ時間が短縮され、待機時間の影響を受けやすいアプリケーションと入力方式のユーザー エクスペリエンスが向上します。
+* RDP Shortpath は、リモート デスクトップ クライアントとセッション ホストとの間に直接接続を確立します。 直接接続により、Azure Virtual Desktop ゲートウェイ上の依存関係が軽減され、接続の信頼性が向上し、各ユーザー セッションに使用できる帯域幅が増加します。
+* 余分なリレーを削除すると、ラウンド トリップ時間が短縮され、待機時間の影響を受けやすいアプリケーションと入力方式のユーザー エクスペリエンスが向上します。
 * RDP Shortpath では、DSCP (Differentiated Services Code Point) マークを使用した RDP 接続の [サービスの品質 (QoS) 優先度の構成](./rdp-quality-of-service-qos.md)がサポートされます
 * RDP Shortpath トランスポートを使用することにより、各セッションのスロットル率を指定することで、[送信ネットワーク トラフィックを制限する](./rdp-bandwidth.md#limit-network-bandwidth-use-with-throttle-rate)ことができます。
 
 ## <a name="connection-security"></a>接続のセキュリティ
 
-RDP Shortpath により、RDP マルチトランスポート機能が拡張されます。 逆方向接続トランスポートは置き換えられませんが、補完されます。 初期セッション ブローカリングはすべて、Windows Virtual Desktop インフラストラクチャを介して管理されます。
+RDP Shortpath により、RDP マルチトランスポート機能が拡張されます。 逆方向接続トランスポートは置き換えられませんが、補完されます。 初期セッション ブローカリングはすべて、Azure Virtual Desktop インフラストラクチャを介して管理されます。
 
-UDP ポート 3390 は、逆方向接続トランスポートを介して認証される受信 Shortpath トラフィックにのみ使用されます。 RDP Shortpath リスナーでは、逆方向接続セッションと一致しない限り、リスナーへの接続試行はすべて無視されます。
+デプロイでは、リバース接続トランスポートで認証された着信 Shortpath トラフィックに対して、ユーザーが構成した UDP ポートのみが使用されます。 RDP Shortpath リスナーでは、リバース接続セッションと一致するものを除き、接続試行はすべて無視されます。
 
 RDP Shortpath では、セッション ホストの証明書を使用して、クライアントとセッション ホスト間の TLS 接続を使用します。 既定では、RDP 暗号化に使用される証明書は、デプロイ中に OS によって自己生成されます。 必要に応じて、顧客は企業の証明機関によって発行され、一元管理された証明書を展開できます。 証明書の構成の詳細については、[Windows Server ドキュメント](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations)を参照してください。
 
 ## <a name="rdp-shortpath-connection-sequence"></a>RDP Shortpath の接続シーケンス
 
-[逆方向接続トランスポート](./network-connectivity.md)をインストールすると、クライアントとセッション ホストにより、RDP 接続が確立され、マルチトランスポート機能がネゴシエートされます。 以下では、追加の手順について説明します。
+[リバース接続トランスポート](./network-connectivity.md)を確立すると、クライアントとセッション ホストによって RDP 接続が開始され、マルチトランスポート機能がネゴシエートされます。
+
+セッション ホストによってマルチトランスポート機能がネゴシエートされる方法を次に示します。
 
 1. セッション ホストにより、プライベートおよびパブリックの IPv4 と IPv6 のアドレスの一覧がクライアントに送信されます。
 2. クライアントでは、バックグラウンド スレッドが開始され、ホストの IP アドレスの 1 つに対して、UDP ベースの並列トランスポートが直接確立されます。
 3. クライアントは、指定された IP アドレスを調査している間、逆方向接続トランスポートを介して初期接続の確立を続行し、ユーザー接続の遅延が発生しないようにします。
-4. クライアントに直接の通信経路があり、ファイアウォールの構成が正しい場合、クライアントによって、セッション ホストとの安全な TLS 接続が確立されます。
-5. RDP は、Shortpath トランスポートを確立した後、リモート グラフィックス、入力、デバイス リダイレクトを含むすべての動的仮想チャネル (DVC) を新しいトランスポートに移動します。
+4. クライアントに直接の通信経路がある場合、クライアントによって、そのセッション ホストとの安全な TLS 接続が確立されます。
+5. Shortpath トランスポートを確立すると、RDP によってリモート グラフィックス、入力、デバイス リダイレクトを含むすべての動的仮想チャネル (DVC) が新しいトランスポートに移動されます。
 6. ファイアウォールまたはネットワーク トポロジにより、クライアントが直接 UDP 接続を確立できない場合、RDP は逆方向接続トランスポートを続行します。
 
 次の図は、RDP Shortpath ネットワーク接続の概要を示しています。
@@ -55,54 +52,38 @@ RDP Shortpath では、セッション ホストの証明書を使用して、�
 
 ## <a name="requirements"></a>必要条件
 
-RDP Shortpath をサポートするには、Windows Virtual Desktop クライアントに、セッション ホストへの直接の通信経路が必要です。 直接の通信経路を取得するには、次のテクノロジのいずれかを使用します。
+RDP Shortpath をサポートするには、Azure Virtual Desktop クライアントに、セッション ホストへの直接の通信経路が必要です。 直接の通信経路を取得するには、これらのいずれかの方法を使用します。
 
-* [ExpressRoute プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md)
-* [サイト間 VPN (IPsec ベース)](../vpn-gateway/tutorial-site-to-site-portal.md)
-* [ポイント間 VPN (IPsec ベース)](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-* [パブリック IP アドレスの割り当て](../virtual-network/virtual-network-public-ip-address.md)
+- リモート クライアント コンピューターで Windows 10 または Windows 7 のいずれかが実行されていて、[Windows デスクトップ クライアント](/windows-server/remote/remote-desktop-services/clients/windowsdesktop)がインストールされていることを確認する。 現時点では、Windows 以外のクライアントはサポートされていません。
+- [ExpressRoute プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md)を使用する
+- [サイト間仮想プライベート ネットワーク (VPN) (IPsec ベース)](../vpn-gateway/tutorial-site-to-site-portal.md) を使用する
+- [ポイント対サイト VPN (IPsec ベース)](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) を使用する
+- [パブリック IP アドレスの割り当て](../virtual-network/ip-services/virtual-network-public-ip-address.md)を使用する
 
-他の VPN の種類を使用して Azure 仮想ネットワークに接続する場合、最善の結果を得るには、UDP ベースの VPN を使用することをお勧めします。 多くの TCP ベースの VPN ソリューションでは、UDP を含むすべての IP パケットがカプセル化されますが、TCP 輻輳制御の継承されたオーバーヘッドが追加され、RDP のパフォーマンスを低下させます。
+他の VPN の種類を使用して Azure に接続する場合は、ユーザー データグラム プロトコル (UDP) ベースの VPN を使用することをお勧めします。 ほとんどの伝送制御プロトコル (TCP) ベースの VPN ソリューションでは、入れ子になった UDP がサポートされていますが、TCP 輻輳制御の継承されたオーバーヘッドが追加されるため、RDP のパフォーマンスが低下します。
 
-直接の通信経路とは、ファイアウォールによって UDP ポート 3390 がブロックされず、クライアントがセッション ホストに直接接続できることを意味します。
+直接の通信経路を持つことは、クライアントがファイアウォールにブロックされることなく、セッション ホストに直接接続できることを意味します。
 
-## <a name="enabling-rdp-shortpath-preview"></a>RDP Shortpath プレビューの有効化
+## <a name="configure-rdp-shortpath-for-managed-networks"></a>マネージド ネットワーク用 RDP Shortpath を構成する
 
-RDP Shortpath のプレビューに参加するには、セッション ホストで RDP Shortpath リスナーを有効にする必要があります。 ご利用の環境内で使用されている任意の数のセッション ホストで RDP Shortpath を有効にすることができます。 プール内のすべてのホストで RDP Shortpath を有効にする必要はありません。
-Shortpath リスナーを有効にするには、次のレジストリ値を構成する必要があります。
+マネージド ネットワーク用 RDP Shortpath を有効にするには、セッション ホストで RDP Shortpath リスナーを有効にする必要があります。 ご利用の環境内で使用されている任意の数のセッション ホストで RDP Shortpath を有効にすることができます。 ただし、ホスト プール内のすべてのホストで RDP Shortpath を有効にする必要はありません。
 
-> [!WARNING]
-> レジストリ エディターまたは別の方法を使用してレジストリを誤って変更すると、重大な問題が発生する場合があります。 このような問題が発生した場合、オペレーティング システムの再インストールが必要になることがあります。 Microsoft はそのような問題が解決できることを保証できません。 レジストリを変更する場合は、ご自分の責任で行ってください。
+RDP Shortpath リスナーを有効にするには、次のようにします。
 
-1. セッション ホストでは、Regedit.exe を起動し、次の場所に移動します。
+1. まず、Azure Virtual Desktop の規則と設定を追加する管理用テンプレートをインストールします。 [Azure Virtual Desktop ポリシー テンプレート ファイル](https://aka.ms/avdgpo) (AVDGPTemplate.cab) をダウンロードして、.cab ファイルと .zip アーカイブの内容を抽出します。
+2. **terminalserver-avd.admx** ファイルをコピーして、それを **%windir%\PolicyDefinitions** フォルダーに貼り付けます。
+3. **en-us\terminalserver-avd.adml** ファイルをコピーして、それを **%windir%\PolicyDefinitions\en-us** フォルダーに貼り付けます。
+4. ファイルが正しくコピーされたかを確認するために、**グループ ポリシー エディター** を開き、**[コンピューターの構成]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[リモート デスクトップ サービス]** > **[リモート デスクトップ セッション ホスト]** > **[Azure Virtual Desktop]** の順に移動します。
+5. 次のスクリーンショットに示されているように、1 つまたは複数の Azure Virtual Desktop ポリシーが表示されます
 
-    ```cmd
-    HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations
-    ```
+   :::image type="content" source="media/azure-virtual-desktop-gpo.png" alt-text="グループ ポリシー エディターのスクリーンショット" lightbox="media/azure-virtual-desktop-gpo.png":::
 
-2. **fUseUdpPortRedirector** という名前の新しい **DWORD** 値を作成し、**1** (10 進) に設定します
-3. **UdpPortNumber** という名前の新しい **DWORD** 値を作成し、**3390** (10 進) に設定します。
-4. レジストリ エディターを終了します。
-5. セッション ホストを再起動します
+   > [!NOTE]
+   > Active Directory ドメインのグループ ポリシー セントラル ストアに管理用テンプレートをインストールすることもできます。
+   > グループ ポリシー管理用テンプレートのセントラル ストアについて詳しくは、「[Windows でグループ ポリシー管理用テンプレート用のセントラル ストアを作成および管理する方法](/troubleshoot/windows-client/group-policy/create-and-manage-central-store)」を参照してください。
 
-また、管理者特権での PowerShell ウィンドウで次のコマンドレットを実行して、これらのレジストリ値を設定できます。
-
-```powershell
-$WinstationsKey = 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations'
-New-ItemProperty -Path $WinstationsKey -Name 'fUseUdpPortRedirector' -ErrorAction:SilentlyContinue -PropertyType:dword -Value 1 -Force
-New-ItemProperty -Path $WinstationsKey -Name 'UdpPortNumber' -ErrorAction:SilentlyContinue -PropertyType:dword -Value 3390 -Force
-```
-
-さらに、PowerShell を使用してグループ ポリシーを構成することもできます
-
-```powershell
-# Replace $domainName value with the name of your Active Directory domain
-# Replace $policyName value with the name of existing Group Policy Object
-$domainName = "contoso.com"
-$policyName = "RDP Shortpath Policy"
-Set-GPPrefRegistryValue -Key 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations' -ValueName 'fUseUdpPortRedirector' -Value 1 -Type:DWord  -Action:Create -Context:Computer -Name $policyName -Domain $domainName
-Set-GPPrefRegistryValue -Key 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations' -ValueName 'UdpPortNumber' -Value 3390 -Type:DWord  -Action:Create -Context:Computer -Name $policyName -Domain $domainName
-```
+6. **[Enable RDP Shortpath for managed networks]\(マネージド ネットワーク用 RDP Shortpath を有効にする\)** ポリシーを開き、**"有効"** に設定します。 このポリシー設定を有効にすると、Azure Virtual Desktop セッション ホストが着信接続をリッスンするために使用するポート番号を構成することもできます。 既定のポートは 3390 です。
+7. 変更を適用するために、セッション ホストを再起動します。
 
 ## <a name="configure-windows-defender-firewall-with-advanced-security"></a>[セキュリティが強化された Windows ファイアウォール] を構成する
 
@@ -112,18 +93,19 @@ RDP Shortpath の受信ネットワーク トラフィックを許可するに�
 2. ナビゲーション ウィンドウで、 **[受信規則]** をクリックします。
 3. **[操作]** 、 **[新しい規則]** の順に選択します。
 4. 新規の受信の規則ウィザードの **[規則の種類]** ページで、 **[カスタム]** 、 **[次へ]** の順に選択します。
-5. **[プログラム]** ページで、 **[このプログラムのパス]** を選択し、「%SystemRoot%\system32\svchost.exe」と入力して、 **[次へ]** を選択します。
-6. **[プロトコルおよびポート]** ページで、UDP プロトコルの種類を選択します。 **[ローカル ポート]** で、[特定のポート] を選択し、「3390」と入力します。
+5. **[プログラム]** ページで、 **[このプログラムのパス]** を選択し、「%SystemRoot%\system32\svchost.exe」と入力してから、 **[次へ]** を選択します。
+6. **[プロトコルおよびポート]** ページで、UDP プロトコルの種類を選択します。 **[ローカル ポート]** で、[特定のポート] を選択し、構成済みの UDP ポートを入力します。 既定の設定のままにした場合、ポート番号は 3390 になります。
 7. [**スコープ**] ページでは、このページで入力した IP アドレスに対する送受信ネットワーク トラフィックにのみ規則が適用されるよう指定できます。 設計に適した構成を行い、 **[次へ]** を選択します。
 8. **[操作]** ページで、 **[接続を許可する]** を選択し、 **[次へ]** を選択します。
 9. **[プロファイル]** ページで、この規則を適用するネットワークの場所の種類を選択し、 **[次へ]** をクリックします。
-10. **[名前]** ページで、規則の名前と説明を入力して、 **[完了]** をクリックします。
+10. **[名前]** ページで、規則の名前と説明を入力して、**[完了]** を選択します。
 
-新しい規則が次のスクリーンショットと一致していることを確認できます。:::image type="content" source="media/rdp-shortpath-firewall-general-tab.png" alt-text="RDP Shortpath ネットワーク接続のファイアウォールを構成するための [全般] タブのスクリーンショット" lightbox="media/rdp-shortpath-firewall-general-tab.png":::
+完了したら、新しい規則が次のスクリーンショットの形式と一致していることを確認します。
+:::image type="content" source="media/rdp-shortpath-firewall-general-tab.png" alt-text="RDP Shortpath ネットワーク接続のファイアウォールを構成するための [全般] タブのスクリーンショット。[接続を許可する] オプションが選択されています" lightbox="media/rdp-shortpath-firewall-general-tab.png":::
 
-:::image type="content" source="media/rdp-shortpath-firewall-service-settings.png" alt-text="RDP Shortpath ネットワーク接続のファイアウォールを構成するための [プログラムおよびサービス] タブのスクリーンショット" lightbox="media/rdp-shortpath-firewall-service-settings.png":::
+:::image type="content" source="media/rdp-shortpath-firewall-service-settings.png" alt-text="RDP Shortpath ネットワーク接続のファイアウォールを構成するための [プログラムおよびサービス] タブのスクリーンショット。[リモート デスクトップ サービス] が選択されています" lightbox="media/rdp-shortpath-firewall-service-settings.png":::
 
-:::image type="content" source="media/rdp-shortpath-firewall-protocol-and-ports.png" alt-text="RDP Shortpath ネットワーク接続のファイアウォールを構成するための [プロトコルおよびポート] タブのスクリーンショット" lightbox="media/rdp-shortpath-firewall-protocol-and-ports.png":::
+:::image type="content" source="media/rdp-shortpath-firewall-protocol-and-ports.png" alt-text="RDP Shortpath ネットワーク接続のファイアウォールを構成するための [プロトコルおよびポート] タブのスクリーンショット。UDP ポート 3390 が構成されています" lightbox="media/rdp-shortpath-firewall-protocol-and-ports.png":::
 
 また、PowerShell を使用して Windows ファイアウォールを構成することができます。
 
@@ -133,7 +115,7 @@ New-NetFirewallRule -DisplayName 'Remote Desktop - Shortpath (UDP-In)'  -Action 
 
 ### <a name="using-powershell-to-configure-windows-defender-firewall"></a>PowerShell を使用した Windows Defender ファイアウォールの構成
 
-さらに、PowerShell を使用してグループ ポリシーを構成することもできます
+PowerShell を使用して、次のコマンドレットを実行してグループ ポリシーを構成することもできます。
 
 ```powershell
 # Replace $domainName value with the name of your Active Directory domain
@@ -161,13 +143,15 @@ Save-NetGPO -GPOSession $gpoSession
 
 ### <a name="disabling-rdp-shortpath-for-a-specific-subnet"></a>特定のサブネットに対して RDP Shortpath を無効にする
 
-特定のサブネットが RDP Shortpath トランスポートを使用できないようにする必要がある場合、発信元 IP 範囲を指定して追加のネットワーク セキュリティ グループを構成できます。
+特定のサブネットが RDP Shortpath トランスポートを使用できないようにする必要がある場合、正しい発信元 IP 範囲を指定する別のネットワーク セキュリティ グループを構成できます。
 
-## <a name="verifying-the-connectivity"></a>接続の検証
+## <a name="verify-your-network-connectivity"></a>ネットワーク接続を確認します。
 
-### <a name="using-connection-information-dialog"></a>[接続情報] ダイアログの使用
+次に、ネットワークで RDP Shortpath が使用されていることを確認する必要があります。 これを行うには、[接続情報] ダイアログまたは Log Analytics のいずれかを使用します。
 
-接続で RDP Shortpath が使用されていることを確認するには、接続ツールバーのアンテナ アイコンをクリックして、[接続情報] ダイアログを開きます。
+### <a name="connection-information-dialog"></a>[接続情報] ダイアログ
+
+接続で RDP Shortpath が使用されていることを確認します。次のスクリーンショットに示されているように、画面の上部にある **接続** ツール バーに移動し、アンテナ アイコンを選択して [接続情報] ダイアログを開きます。
 
 :::image type="content" source="media/rdp-shortpath-connection-bar.png" alt-text="リモート デスクトップ接続バーの画像":::
 
@@ -175,19 +159,19 @@ Save-NetGPO -GPOSession $gpoSession
 
 ### <a name="using-event-logs"></a>イベント ログの使用
 
-セッションで RDP Shortpath トランスポートが使用されていることを確認するには、次の手順を実行します。
+セッションで RDP Shortpath トランスポートが使用されていることを確認するには、次のようにします。
 
-1. Windows Virtual Desktop クライアントを使って VM のデスクトップに接続します。
-2. イベント ビューアーを起動し、次のノードに移動します。 **[アプリケーションとサービス ログ] > Microsoft > Windows > RemoteDesktopServices-RdpCoreCDV > Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV/Operational**
-3. RDP Shortpath トランスポートが使用されているかどうかを判断するには、イベント ID 131 を探します。
+1. 任意の Azure Virtual Desktop クライアントを使用して、VM デスクトップに接続します。
+2. **イベント ビューアー** を開き、**[アプリケーションとサービス ログ]** > **[Microsoft]** > **[Windows]** > **[RemoteDesktopServices-RdpCoreCDV]** > **[Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV/Operational]** の順に移動します。
+3. イベント ID 131 が表示されたら、ネットワークで RDP Shortpath トランスポートが使用されています。
 
-### <a name="using-log-analytics-to-verify-shortpath-connectivity"></a>Log Analytics を使用した Shortpath 接続の検証
+### <a name="use-log-analytics"></a>Log Analytics の使用
 
-[Azure Log Analytics](./diagnostics-log-analytics.md) を使用する場合、[WVDConnections テーブル](/azure/azure-monitor/reference/tables/wvdconnections)に対してクエリを実行することで接続を監視できます。 UdpUse という名前の列は、Windows Virtual Desktop RDP スタックにより、現在のユーザー接続で UDP プロトコルが使用されているかどうかを示します。
-次の値を指定できます。
+[Azure Log Analytics](./diagnostics-log-analytics.md) を使用している場合、[WVDConnections テーブル](/azure/azure-monitor/reference/tables/wvdconnections)に対してクエリを実行することで接続を監視できます。 UdpUse という名前の列は、Azure Virtual Desktop RDP スタックが現在のユーザー接続で UDP プロトコルを使用しているかどうかを示します。
+設定できる値は次のとおりです。
 
 * **0** - ユーザー接続で RDP Shortpath は使用されていない
-* **1** - ユーザー接続で RDP Shortpath が使用されている
+- **1** - ユーザー接続でマネージド ネットワーク用 RDP Shortpath が使用されている
   
 次のクエリ一覧では、接続情報を確認できます。 このクエリは、[Log Analytics クエリ エディター](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query)で実行できます。 クエリごとに、`userupn` を検索するユーザーの UPN に置き換えます。
 
@@ -223,7 +207,7 @@ LocalAddress                             LocalPort
 0.0.0.0                                  3390
 ```
 
-競合が発生した場合、次のコマンドを使用して、ポートを専有しているプロセスを特定できます
+競合がある場合は、次のコマンドを実行して、ポートをブロックしているプロセスを特定できます。
 
 ```powershell
 Get-Process -id (Get-NetUDPEndpoint  -LocalPort 3390 -LocalAddress 0.0.0.0).OwningProcess
@@ -238,23 +222,18 @@ Get-Process -id (Get-NetUDPEndpoint  -LocalPort 3390 -LocalAddress 0.0.0.0).Owni
 特定のクライアントに対して RDP Shortpath を無効にするには、次のグループ ポリシーを使用して UDP のサポートを無効にすることができます。
 
 1. クライアントで、**gpedit.msc** を実行します。
-2. **[コンピューターの構成] > [管理テンプレート] > [Windows コンポーネント] > [リモート デスクトップ サービス] > [リモート デスクトップ接続のクライアント]** の順に移動します。
+2. **[コンピューターの構成]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[リモート デスクトップ サービス]** > **[リモート デスクトップ接続のクライアント]** の順に移動します。
 3. **[クライアントの UDP を無効にする]** 設定を **[有効]** に設定します
 
-### <a name="disabling-rdp-shortpath-on-the-session-host"></a>セッション ホストで RDP Shortpath を無効にする
+### <a name="disable-rdp-shortpath-on-the-session-host"></a>セッション ホストで RDP Shortpath を無効にする
 
 特定のセッション ホストに対して RDP Shortpath を無効にするには、次のグループ ポリシーを使用して UDP のサポートを無効にすることができます。
 
 1. セッション ホストで **gpedit.msc** を実行します。
-2. **[コンピューターの構成] > [管理テンプレート] > [Windows コンポーネント] > [リモート デスクトップ サービス] > [リモート デスクトップ接続ホスト] > [接続]** の順に移動します。
-3. **[RDP トランスポート プロトコルの選択]** 設定を **[TCP のみ]** に設定します
-
-## <a name="public-preview-feedback"></a>パブリック プレビューのフィードバック
-
-このパブリック プレビューを使用したお客様からのご意見をお待ちしております。
-* 質問、要望、コメント、その他のフィードバックについては、[このフィードバック フォームを使用してください](https://aka.ms/RDPShortpathFeedback)。
+2. **[コンピューターの構成] > [管理テンプレート] > [Windows コンポーネント] > [リモート デスクトップ サービス] > [リモート デスクトップ セッション ホスト] > [接続]** の順に移動します。
+3. **[RDP トランスポート プロトコルの選択]** 設定を **[TCP のみ]** に設定します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* Windows Virtual Desktop のネットワーク接続の詳細については、「[Windows Virtual Desktop のネットワーク接続について](network-connectivity.md)」を参照してください。
-* Windows Virtual Desktop のサービス品質 (QoS) の使用を開始するには、「[Windows Virtual Desktop のサービス品質 (QoS) を実装する](rdp-quality-of-service-qos.md)」を参照してください。
+* Azure Virtual Desktop のネットワーク接続の詳細については、「[Azure Virtual Desktop のネットワーク接続について](network-connectivity.md)」を参照してください。
+* Azure Virtual Desktop 用サービス品質 (QoS) の使用を開始するには、[Azure Virtual Desktop 用サービス品質 (QoS) の実装](rdp-quality-of-service-qos.md)に関するページをご覧ください。

@@ -1,0 +1,61 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Cache for Redis に関する FAQ
+  description: Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
+  author: curib
+  ms.author: cauribeg
+  ms.service: cache
+  ms.topic: conceptual
+  ms.date: 04/29/2019
+  ms.openlocfilehash: ed5cc61a437cbaeccdf379a467755afb64e5b2e5
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131440205"
+title: Azure Cache for Redis に関する FAQ
+summary: >
+  Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
+
+
+  * [計画に関する FAQ](cache-planning-faq.yml)
+
+  * [開発に関する FAQ](cache-development-faq.yml)
+
+  * [管理に関する FAQ](cache-management-faq.yml)
+
+  * [監視とトラブルシューティングに関する FAQ](cache-monitor-troubleshoot-faq.yml)
+sections:
+- name: 無視
+  questions:
+  - question: 非推奨のキャッシュ サービス
+    answer: >
+      ### <a name="managed-cache-service"></a>Managed Cache Service
+
+
+      [Managed Cache Service は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+
+
+      アーカイブされたドキュメントを参照するには、[アーカイブされた Managed Cache Service に関するドキュメント](/previous-versions/azure/azure-services/dn386094(v=azure.100))を参照してください。
+
+
+      ### <a name="in-role-cache"></a>In-Role Cache
+
+
+      [In-Role Cache は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+
+
+      アーカイブされたドキュメントを参照するには、[アーカイブされた In-Role Cache に関するドキュメント](/previous-versions/azure/azure-services/dn386103(v=azure.100))を参照してください。
+
+
+      ["minIoThreads" configuration setting]: /previous-versions/dotnet/netframework-4.0/7w2sway1(v=vs.100)
+  - question: ここに質問の答えがない場合はどうすればいいですか。
+    answer: >-
+      質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
+
+
+      * さらに多くの人と情報交換する場合は、[Azure Cache に関する Microsoft Q&A 質問ページ](/answers/topics/azure-cache-redis.html)に質問を投稿すれば、Azure Cache チームや他のコミュニティ メンバーとやり取りすることができます。
+
+      * 機能要求を作成する場合は、要求とアイデアを [Azure Redis Cache のユーザーの声](https://feedback.azure.com/d365community/forum/a96a82f3-0c25-ec11-b6e6-000d3a4f07b8)に送信することができます。
+
+      * また、[azurecache@microsoft.com](mailto:azurecache@microsoft.com) にご質問をお送りいただくこともできます。

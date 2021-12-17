@@ -1,21 +1,19 @@
 ---
-title: セルフホステッド ゲートウェイの概要| Microsoft Docs
+title: 自己ホスト型ゲートウェイの概要 |Azure API Management
 description: 組織がハイブリッド環境やマルチクラウド環境で API を管理するのに、Azure API Management のセルフホステッド ゲートウェイ機能がどのように役立つかを説明します。
 services: api-management
 documentationcenter: ''
-author: vlvinogr
-manager: gwallace
-editor: ''
+author: dlepow
 ms.service: api-management
 ms.topic: article
-ms.date: 01/25/2021
-ms.author: apimpm
-ms.openlocfilehash: 48abce693ca22163c0a1742ba71faf36fc6156a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.author: danlep
+ms.openlocfilehash: 802dd143accbd993eb0903797def7f1710a00033
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99989093"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129716212"
 ---
 # <a name="self-hosted-gateway-overview"></a>セルフホステッド ゲートウェイの概要
 
@@ -43,13 +41,13 @@ ms.locfileid: "99989093"
 
 ## <a name="packaging-and-features"></a>パッケージと機能
 
-セルフホステッド ゲートウェイは、すべての API Management サービスの一部として Azure にデプロイされるマネージド ゲートウェイと機能的に同等の、コンテナー化されたバージョンです。 セルフホステッド ゲートウェイは、Microsoft Container Registry から Linux ベースの Docker [コンテナー](https://aka.ms/apim/sputnik/dhub)として入手できます。 オンプレミスのサーバー クラスターで実行されている Docker、Kubernetes などのコンテナー オーケストレーション ソリューション、クラウド インフラストラクチャ、または評価と開発が目的の場合はパーソナル コンピューター上にデプロイできます。
+セルフホステッド ゲートウェイは、すべての API Management サービスの一部として Azure にデプロイされるマネージド ゲートウェイと機能的に同等の、コンテナー化されたバージョンです。 セルフホステッド ゲートウェイは、Microsoft Container Registry から Linux ベースの Docker [コンテナー](https://aka.ms/apim/sputnik/dhub)として入手できます。 オンプレミスのサーバー クラスターで実行されている Docker、Kubernetes などのコンテナー オーケストレーション ソリューション、クラウド インフラストラクチャ、または評価と開発が目的の場合はパーソナル コンピューター上にデプロイできます。 また、セルフホステッド ゲートウェイをクラスター拡張機能として、[Azure Arc 対応 Kubernetes クラスター](./how-to-deploy-self-hosted-gateway-azure-arc.md)にデプロイすることもできます。
 
 マネージ ゲートウェイにある次の機能は、セルフホステッド ゲートウェイでは **使用できません**。
 
 - Azure Monitor ログ
 - アップストリーム (バックエンド側) の TLS バージョンと暗号管理
-- API Management サービスにアップロードされた [CA ルート証明書](api-management-howto-ca-certificates.md)を使用した、サーバーとクライアントの証明書の検証。 詳細については、「[セルフホステッド ゲートウェイでの証明書の検証](api-management-howto-mutual-certificates-for-clients.md#certificate-validation-in-self-hosted-gateway)」を参照してください。
+- API Management サービスにアップロードされた [CA ルート証明書](api-management-howto-ca-certificates.md)を使用した、サーバーとクライアントの証明書の検証。 自己ホスト型ゲートウェイと[クライアント証明書検証](api-management-access-restriction-policies.md#validate-client-certificate)ポリシーの[カスタム証明機関](api-management-howto-ca-certificates.md#create-custom-ca-for-self-hosted-gateway)を構成して、それらを強制的に適用することができます。
 - [Service Fabric](../service-fabric/service-fabric-api-management-overview.md) との統合
 - TLS セッションの再開
 - クライアント証明書の再ネゴシエーション。 これは、[クライアント証明書の認証](api-management-howto-mutual-certificates-for-clients.md)が動作するには、API コンシューマーが初期 TLS ハンドシェイクの一部として証明書を提示する必要があることを意味します。 これを保証するには、セルフホステッド ゲートウェイのカスタム ホスト名を構成するときに、クライアント証明書のネゴシエート設定を有効にします。
@@ -85,3 +83,4 @@ Azure への接続性が失われると、セルフホステッド ゲートウ�
 -   [このトピックの追加の背景情報についてのホワイトペーパーを読む](https://aka.ms/hybrid-and-multi-cloud-api-management)
 -   [Docker にセルフホステッド ゲートウェイをデプロイする](how-to-deploy-self-hosted-gateway-docker.md)
 -   [Kubernetes にセルフホステッド ゲートウェイをデプロイする](how-to-deploy-self-hosted-gateway-kubernetes.md)
+-   [Azure Arc 対応 Kubernetes クラスターにセルフホステッド ゲートウェイをデプロイする](how-to-deploy-self-hosted-gateway-azure-arc.md)

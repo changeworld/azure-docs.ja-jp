@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 10/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35d2bf33b4a22c14abfb61a87a3697b05188ed31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 997b3ec9b784b8b52b826b526102a97bce7d3286
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579095"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301057"
 ---
 # <a name="building-a-conditional-access-policy"></a>条件付きアクセス ポリシーの構築
 
@@ -26,7 +26,9 @@ ms.locfileid: "104579095"
 
 ![条件付きアクセス (シグナル + 決定 + 適用 = ポリシー)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
 
-複数の条件付きアクセス ポリシーは、いつでも個々のユーザーに適用される可能性があります。 この場合、適用されるすべてのポリシーを満たす必要があります。 たとえば、あるポリシーで多要素認証（MFA）が必要で、別のポリシーで準拠デバイスが必要な場合、MFAを完了し、準拠デバイスを使用する必要があります。 すべての割り当ては、論理的に **AND** 処理されます。 複数の割り当てを構成した場合、ポリシーをトリガーするには、すべての割り当てが満たされている必要があります。
+複数の条件付きアクセス ポリシーは、いつでも個々のユーザーに適用される可能性があります。 この場合、適用されるすべてのポリシーを満たす必要があります。 たとえば、あるポリシーで多要素認証（MFA）が必要で、別のポリシーで準拠デバイスが必要な場合、MFAを完了し、準拠デバイスを使用する必要があります。 すべての割り当ては、論理的に **AND** 処理されます。 複数の割り当てを構成している場合は、ポリシーをトリガーするためにすべての割り当てが満たされている必要があります。
+
+"選択したコントロールのいずれかが必要です" というポリシーが選択されている場合は、定義された順序で、ポリシーの要件が満たされるとすぐにアクセスが許可されることを示すメッセージが表示されます。
 
 すべてのポリシーは 2 つのフェーズで適用されます。
 
@@ -34,15 +36,15 @@ ms.locfileid: "104579095"
    - ポリシーの評価に必要なネットワークの場所やデバイス ID などのセッションの詳細を収集します。 
    - ポリシー評価のフェーズ 1 は、有効になっているポリシーと [レポート専用モード](concept-conditional-access-report-only.md) のポリシーで発生します。
 - フェーズ 2:適用 
-   - フェーズ 1 で収集されたセッション詳細を使用して、満たされていない要件を特定します。 
-   - ブロック許可の制御によってアクセスをブロックするように構成されているポリシーがある場合、適用はここで中止され、ユーザーはブロックされます。 
-   - ユーザーは、ポリシーが満たされるまで、フェーズ 1 で満たされなかった追加の許可制御要件を次の順序で完了するように求められます。  
+   - フェーズ1で収集したセッションの詳細を使用して、満たされていない要件を特定します。 
+   - アクセスをブロックするように構成されているポリシーがブロックの許可を持つ場合、強制はここで停止し、ユーザーはブロックされます。 
+   - ユーザーは、ポリシーが満たされるまで、フェーズ1で満たされなかった付与制御要件を次の順序で完了するように求められます。  
       - 多要素認証 
       - 承認されたクライアント アプリ/アプリ保護ポリシー 
       - マネージド デバイス (準拠または Hybrid Azure AD Join) 
       - 使用条件 
       - カスタム コントロール  
-   - すべての許可の制御が満たされたら、セッション制御を適用します (アプリによって適用、Microsoft Cloud App Security、トークンの有効期間) 
+   - すべての許可の制御が満たされたら、セッション制御を適用します (アプリによって適用、Microsoft Defender for Cloud Apps、トークンの有効期間) 
    - ポリシー評価のフェーズ 2 は、すべての有効になっているポリシーで発生します。 
 
 ## <a name="assignments"></a>代入
@@ -55,7 +57,7 @@ ms.locfileid: "104579095"
 
 ### <a name="cloud-apps-or-actions"></a>クラウド アプリまたはアクション
 
-[クラウド アプリまたはアクション](concept-conditional-access-cloud-apps.md)では、ポリシーの対象となるクラウド アプリケーションやユーザー アクションを含めたり除外したりすることができます。
+[クラウド アプリまたはアクション](concept-conditional-access-cloud-apps.md)では、ポリシーの対象となるクラウド アプリケーション、ユーザー アクション、または認証コンテキストを含めたり除外したりすることができます。
 
 ### <a name="conditions"></a>条件
 
@@ -77,13 +79,17 @@ ms.locfileid: "104579095"
 
 #### <a name="client-apps"></a>クライアント アプリ
 
-既定では、条件付きアクセス ポリシーは、ブラウザー アプリ、モバイル アプリ、および先進認証をサポートするデスクトップ クライアントに適用されます。 
+既定では、新しく作成されたすべての条件付きアクセスポリシーは、クライアントアプリの条件が構成されていない場合でも、すべてのクライアントアプリの種類に適用されます。
 
-この割り当て条件により、先進認証を使用しない特定のクライアント アプリケーションを条件付きアクセス ポリシーの対象とすることができます。 これらのアプリケーションには、Exchange ActiveSync クライアント、先進認証を使用しない古い Office アプリケーション、および IMAP、MAPI、POP、SMTP などのメール プロトコルが含まれます。
+クライアント アプリの条件の動作は、2020 年 8 月に更新されました。 既存の条件付きアクセスポリシーがある場合は、変更されません。 ただし、[既存のポリシーを使用する] を選択すると、[構成の切り替え] が削除され、ポリシーが適用されるクライアントアプリが選択されます。
 
 #### <a name="device-state"></a>デバイスの状態
 
 このコントロールは、ハイブリッド Azure AD 参加済みであるか、Intune で準拠としてマークされているデバイスを除外するために使用されます。 この除外は、アンマネージド デバイスをブロックするために行うことができます。 
+
+#### <a name="filters-for-devices-preview"></a>デバイスのフィルター (プレビュー)
+
+このコントロールを使用すると、ポリシー内の属性に基づいて特定のデバイスを対象にすることができます。
 
 ## <a name="access-controls"></a>アクセス制御
 
@@ -122,7 +128,7 @@ ms.locfileid: "104579095"
    - 現在、Exchange Online と SharePoint Online でのみ機能します。
       - デバイス情報を渡して、フル アクセスまたは制限付きアクセスを許可するエクスペリエンスを制御できるようにします。
 - アプリの条件付きアクセス制御を使用する
-   - Microsoft Cloud App Security からのシグナルを使用して、次のようなことを行います。 
+   - Microsoft Defender for Cloud Apps からのシグナルを使用して、次のようなことを行います。 
       - 機密ドキュメントのダウンロード、切り取り、コピー、および印刷をブロックする。
       - 危険なセッションの動作を監視する。
       - 機密ファイルのラベル付けを必要とする。
@@ -156,4 +162,4 @@ ms.locfileid: "104579095"
 
 [Intune でのデバイス コンプライアンスの管理](/intune/device-compliance-get-started)
 
-[Microsoft Cloud App Security と条件付きアクセス](/cloud-app-security/proxy-intro-aad)
+[Microsoft Defender for Cloud Apps と条件付きアクセス](/cloud-app-security/proxy-intro-aad)

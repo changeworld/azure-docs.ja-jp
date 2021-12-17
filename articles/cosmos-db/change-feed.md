@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB での Change Feed サポートの使用
 description: Azure Cosmos DB の変更フィード サポートを使用して、ドキュメントの変更、トリガーなどのイベント ベースの処理を追跡し、キャッシュや分析システムを最新の状態に維持します。
-author: TheovanKraay
-ms.author: thvankra
+author: timsander1
+ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2020
+ms.date: 06/07/2021
 ms.reviewer: sngun
 ms.custom: seodec18, "seo-nov-2020"
-ms.openlocfilehash: c6856a0cb70123f1a3570b611c81660a592fdc1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26c5ce853776c111122eb184d042a414eb5f5acc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98027775"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745511"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード
 [!INCLUDE[appliesto-all-apis-except-table](includes/appliesto-all-apis-except-table.md)]
@@ -78,9 +78,9 @@ _etag は内部形式であり、いつでも変更され得るため、これ�
 
 * 変更フィードには、コンテナー内の項目に対して行われた挿入操作と更新操作が含まれています。 削除の代わりに、ドキュメントなどの項目内で "論理的な削除" フラグを設定することで削除をキャプチャできます。 または、[TTL 機能](time-to-live.md)を使用して項目の有効期間を設定することもできます。 たとえば、24 時間に設定し、そのプロパティの値を使用して削除をキャプチャします。 この場合は、TTL の有効期限よりも短い期間に含まれる変更を処理する必要があります。
 
-* 項目に加えられた変更はそれぞれ変更フィード内に 1 回だけ出現し、クライアントがそれらのチェックポイント処理ロジックを管理しなければなりません。 チェックポイントの管理の複雑さを回避する必要がある場合は、変更フィード プロセッサによって、自動チェックポイント処理と "最低 1 回" というセマンティクスが提供されます。 [変更フィードと変更フィード プロセッサの併用](change-feed-processor.md)に関するページを参照してください。
-
 * 変更ログには、特定の項目の最新の変更のみが含まれます。 途中の変更は利用できない場合があります。
+
+* 変更ログに含まれる各変更はそれぞれ変更フィード内に 1 回だけ出現し、クライアントがそれらのチェックポイント処理ロジックを管理しなければなりません。 チェックポイントの管理の複雑さを回避する必要がある場合は、変更フィード プロセッサによって、自動チェックポイント処理と "最低 1 回" というセマンティクスが提供されます。 [変更フィードと変更フィード プロセッサの併用](change-feed-processor.md)
 
 * 変更フィードは論理パーティション キーの値ごとに変更日時順に並べ替えられます。 パーティション キーの値が異なる場合、順序は保証されません。
 
@@ -92,9 +92,9 @@ _etag は内部形式であり、いつでも変更され得るため、これ�
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Cassandra と MongoDB の API の変更フィード
 
-変更フィード機能は、MongoDB API では変更ストリームとして表示され、Cassandra API では述語を含むクエリとして表示されます。 MongoDB API の実装の詳細については、[MongoDB 用の Azure Cosmos DB API の変更ストリーム](mongodb-change-streams.md)に関するページを参照してください。
+変更フィード機能は、MongoDB API では変更ストリームとして表示され、Cassandra API では述語を含むクエリとして表示されます。 MongoDB API の実装の詳細については、[MongoDB 用の Azure Cosmos DB API の変更ストリーム](mongodb/change-streams.md)に関するページを参照してください。
 
-ネイティブ Apache Cassandra には、変更データ キャプチャ (CDC) が用意されています。CDC は、特定のテーブルに対してアーカイブのフラグを設定し、CDC ログ用に構成可能なディスク上のサイズに達すると、そのテーブルへの書き込みを拒否するメカニズムです。 Azure Cosmos DB API for Cassandra の変更フィード機能により、CQL を介して述語を使用して変更をクエリする機能が向上します。 実装の詳細については、[Cassandra 用の Azure Cosmos DB API の変更フィード](cassandra-change-feed.md)に関するページを参照してください。
+ネイティブ Apache Cassandra には、変更データ キャプチャ (CDC) が用意されています。CDC は、特定のテーブルに対してアーカイブのフラグを設定し、CDC ログ用に構成可能なディスク上のサイズに達すると、そのテーブルへの書き込みを拒否するメカニズムです。 Azure Cosmos DB API for Cassandra の変更フィード機能により、CQL を介して述語を使用して変更をクエリする機能が向上します。 実装の詳細については、[Cassandra 用の Azure Cosmos DB API の変更フィード](cassandra/cassandra-change-feed.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

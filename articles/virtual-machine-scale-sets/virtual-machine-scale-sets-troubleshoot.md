@@ -9,15 +9,18 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 11302c301bee466f678d544d0c4838c39cec9c8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f625f1b179d36f1326397adfb5e99d8707b03d1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91818534"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691233"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットの自動スケールに関するトラブルシューティング
-**問題** – Azure Resource Manager で仮想マシン スケール セットを使って自動スケール インフラストラクチャを作成しました。このとき、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
+
+**問題** – Azure Resource Manager で仮想マシン スケール セットを使って自動スケール インフラストラクチャを作成しました。このとき、 https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/python/vmss-bottle-autoscale/azuredeploy.json のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 次のような点を検討します。
@@ -34,19 +37,19 @@ ms.locfileid: "91818534"
     ![[監査ログ]][audit]
 * スケールインとスケールアウトのしきい値の間に十分な差を確保していますか。
   
-    たとえば、平均 CPU 使用率が 5 分間にわたって 50% を超えた場合にスケールアウトし、平均 CPU 使用率が 50% を割り込んだときにスケールインする規則を設定したとします。 この設定は、CPU 使用率がこのしきい値に近付くと、スケール アクションによってセットのサイズが絶え間なく増減される "フラッピング" 問題をよく引き起こします。 この設定が原因で、自動スケール サービスはこの "フラッピング" を防止しようとするため、自動スケールが実行されなくなる場合があります。 そのため、スケールアウトとスケールインのしきい値の間に十分な差を付けて、自動スケーリングが実行される余裕を確保する必要があります。
+    たとえば、平均 CPU 使用率が 5 分間にわたって 50% を超えた場合にスケールアウトし、平均 CPU 使用率が 50% を割り込んだときにスケールインする規則を設定したとします。 この設定は、CPU 使用率がこのしきい値に近付くと、スケール アクションによってセットのサイズが絶え間なく増減される "フラッピング" 問題をよく引き起こします。 この設定が原因で、自動スケーリング サービスはこの "フラッピング" を防止しようとするため、自動スケーリングが実行されなくなる場合があります。 そのため、スケールアウトとスケールインのしきい値の間に十分な差を付けて、自動スケーリングが実行される余裕を確保する必要があります。
 * 独自の JSON テンプレートを作成しましたか。
   
     JSON テンプレートは間違いが起きやすいため、最初のうちは上の例のような確実に機能するテンプレートを基にして、少しずつ変更を加えるようにしてください。 
 * 手動でスケールインまたはスケールアウトできますか。
   
-    "capacity" 設定を変えた仮想マシン スケール セット リソースを再デプロイして、VM 数を手動で変更してみてください。 テンプレートの例については、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing をご覧ください。必要に応じてテンプレートを編集し、スケール セットで使われている仮想マシン サイズと同じにしてください。 VM 数を手動で変更できた場合、問題の原因が自動スケールに限定されます。
+    "capacity" 設定を変えた仮想マシン スケール セット リソースを再デプロイして、VM 数を手動で変更してみてください。 テンプレートの例については、 https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-scale-existing をご覧ください。必要に応じてテンプレートを編集し、スケール セットで使われている仮想マシン サイズと同じにしてください。 VM 数を手動で変更できた場合、問題の原因が自動スケールに限定されます。
 * Microsoft.Compute/virtualMachineScaleSet を確認してください。また、[Azure リソース エクスプローラー](https://resources.azure.com/)で Microsoft.Insights リソースを確認してください。
   
     Azure Resource Explorer は Azure Resource Manager リソースの状態を表示できるため、トラブルシューティングには欠かせません。 サブスクリプションをクリックし、トラブルシューティングを行うリソース グループを表示します。 Compute リソース プロバイダーの下で、作成した仮想マシン スケール セットを探し、インスタンス ビューでデプロイの状態を確認します。 また、仮想マシン スケール セット内の VM のインスタンス ビューも確認します。 次に Microsoft.Insights リソース プロバイダーに移動し、自動スケール規則が適切かどうかを確認します。
 * 診断拡張機能が動作し、パフォーマンス データを出力していますか。
   
-    **更新:** Azure の自動スケーリングはホストベースのメトリック パイプラインを使用するように強化されており、診断拡張機能のインストールは必須ではなくなりました。 つまり、新しいパイプラインを使用する自動スケール アプリケーションを作成する場合、この後のいくつかの段落の説明はもう適用されません。 ホスト パイプラインを使用するように変換された Azure テンプレートの例は、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale にあります。 
+    **更新:** Azure の自動スケーリングはホストベースのメトリック パイプラインを使用するように強化されており、診断拡張機能のインストールは必須ではなくなりました。 つまり、新しいパイプラインを使用する自動スケール アプリケーションを作成する場合、この後のいくつかの段落の説明はもう適用されません。 ホスト パイプラインを使用するように変換された Azure テンプレートの例は、 https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/python/vmss-bottle-autoscale/azuredeploy.json にあります。 
   
     次の理由により、自動スケールにはホストベースのメトリックを使用することをお勧めします。
   

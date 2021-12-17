@@ -8,19 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d36bae57a9e1609e053326cf7288b5b1bc470cef
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 774b118c1aa74c7de561e7b54843183ac4fc0afb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166889"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229873"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Azure SDK を使用して Cloud Services (延長サポート) をデプロイする
 
 この記事では、複数のロール (Web ロールおよび worker ロール) を備え、かつ、リモート デスクトップ拡張機能を追加した Cloud Services (延長サポート) インスタンスを、[Azure SDK](https://azure.microsoft.com/downloads/) を使ってデプロイする方法を説明します。 Cloud Services (延長サポート) は、Azure Resource Manager に基づく Azure Cloud Services のデプロイ モデルです。
-
-> [!IMPORTANT]
-> Cloud Services (延長サポート) は現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="before-you-begin"></a>始める前に
 
@@ -31,18 +28,18 @@ ms.locfileid: "106166889"
 
     ```csharp
         public class CustomLoginCredentials : ServiceClientCredentials
-    {
-        private string AuthenticationToken { get; set; }
-        public override void InitializeServiceClient<T>(ServiceClient<T> client)
-           {
-               var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenantID}");
-               var credential = new ClientCredential(clientId: "{clientID}", clientSecret: "{clientSecret}");
-               var result = authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-               if (result == null) throw new InvalidOperationException("Failed to obtain the JWT token");
-               AuthenticationToken = result.Result.AccessToken;
-           }
-        public override async Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-           {
+        {
+            private string AuthenticationToken { get; set; }
+            public override void InitializeServiceClient<T>(ServiceClient<T> client)
+            {
+                var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenantID}");
+                var credential = new ClientCredential(clientId: "{clientID}", clientSecret: "{clientSecret}");
+                var result = authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+                if (result == null) throw new InvalidOperationException("Failed to obtain the JWT token");
+                AuthenticationToken = result.Result.AccessToken;
+            }
+            public override async Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
                 if (request == null) throw new ArgumentNullException("request");
                 if (AuthenticationToken == null) throw new InvalidOperationException("Token Provider Cannot Be Null");
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", AuthenticationToken);
@@ -50,6 +47,7 @@ ms.locfileid: "106166889"
                 //request.Version = new Version(apiVersion);
                 await base.ProcessHttpRequestAsync(request, cancellationToken);
             }
+        }
     
         var creds = new CustomLoginCredentials();
         m_subId = Environment.GetEnvironmentVariable("AZURE_SUBSCRIPTION_ID");
@@ -156,7 +154,7 @@ ms.locfileid: "106166889"
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. パブリック IP アドレスを作成し、そのパブリック IP アドレスの DNS ラベル プロパティを設定します。 Cloud Services (延長サポート) では、[Basic](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU のパブリック IP アドレスのみをサポートしています。 Standard SKU のパブリック IP は、Cloud Services では機能しません。
+7. パブリック IP アドレスを作成し、そのパブリック IP アドレスの DNS ラベル プロパティを設定します。 Cloud Services (延長サポート) では、[Basic](../virtual-network/ip-services/public-ip-addresses.md#basic) SKU のパブリック IP アドレスのみをサポートしています。 Standard SKU のパブリック IP は、Cloud Services では機能しません。
 静的 IP を使用する場合は、サービス構成 (.cscfg) ファイルで予約済み IP として参照する必要があります
 
     ```csharp
@@ -339,6 +337,6 @@ ms.locfileid: "106166889"
     ```
 
 ## <a name="next-steps"></a>次のステップ
-- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
+- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.yml)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用して、Cloud Services (延長サポート) をデプロイします。
 - [Cloud Services (延長サポート) のサンプル リポジトリ](https://github.com/Azure-Samples/cloud-services-extended-support)にアクセスします

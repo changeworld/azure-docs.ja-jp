@@ -1,24 +1,24 @@
 ---
-title: Workday 属性のリファレンス
-description: XPATH クエリを使用して Workday からフェッチできる属性について説明します。
+title: Azure Active Directory の Workday 属性リファレンス
+description: Azure Active Directory で XPATH クエリを使用して Workday からフェッチできる属性について説明します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 05/25/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: celested
-ms.openlocfilehash: 0ff9b3d4cc3bee28c8e5e95d8854f64eaa546b0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: 7ab95bc97f76ac58009ad5f31a793cce8522100d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255476"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990541"
 ---
-# <a name="workday-attribute-reference"></a>Workday 属性のリファレンス
+# <a name="workday-attribute-reference-for-azure-active-directory"></a>Azure Active Directory の Workday 属性リファレンス
 
 このセクションでは、XPATH クエリを使用して Workday からフェッチできる属性の一覧を示します。 使用する予定の Workday Web サービス API バージョンに基づいて、該当するセクションを参照してください。 
 
@@ -205,7 +205,7 @@ ms.locfileid: "99255476"
 | 76 | UserID                                | wd:Worker/wd:Worker\_Data/wd:User\_ID/text\(\)                                                                                                                                                                                                                                                                                                                                         |
 | 77 | WID                                   | wd:Worker/wd:Worker\_Reference/wd:ID\[@wd:type='WID'\]/text\(\)                                                                                                                                                                                                                                                                                                                        |
 | 78 | WorkerID                              | wd:Worker/wd:Worker\_Data/wd:Worker\_ID/text\(\)                                                                                                                                                                                                                                                                                                                                       |
-| 79 | WorkerType                            | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Worker\_Type\_Reference/wd:ID\[@wd:type="Employee\_Type\_ID"\]/text\(\)                                                                                                                                                                                                 |
+| 79 | WorkerType                            | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary\_Job=1]/wd:Position\_Data/wd:Worker\_Type\_Reference\[wd:ID/@wd:type="Contingent\_Worker\_Type\_ID" または wd:ID/@wd:type="Employee\_Type\_ID"]/@wd:Descriptor                                                                                                                                                                                                 |
 | 80 | WorkSpaceReference                    | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Work\_Space\_\_Reference/@wd:Descriptor                                                                                                                                                                                                                                  |
 
 ## <a name="custom-xpath-values"></a>カスタム XPATH 値

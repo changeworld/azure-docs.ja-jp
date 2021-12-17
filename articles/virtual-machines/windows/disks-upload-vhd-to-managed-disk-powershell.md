@@ -3,19 +3,22 @@ title: VHD を Azure にアップロードするか、リージョン間でデ�
 description: Azure PowerShell を使用して、直接アップロード経由で、Azure マネージド ディスクに VHD をアップロードし、リージョン間でマネージド ディスクをコピーする方法を説明します。
 author: roygara
 ms.author: rogarana
-ms.date: 06/15/2020
+ms.date: 09/07/2021
 ms.topic: how-to
-ms.service: virtual-machines
+ms.service: storage
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 675e99797a507cdcf96ad33ab13c4f386f6f372c
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 937834010065cbd243c5b7c2a4b19d16275c52b7
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169030"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130068990"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure PowerShell
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
@@ -77,7 +80,7 @@ $disk = Get-AzDisk -ResourceGroupName '<yourresourcegroupname>' -DiskName '<your
 
 AzCopy v10 を使用して、生成した SAS URI を指定してローカルの VHD ファイルをマネージド ディスクにアップロードします。
 
-このアップロードのスループットは、同等の [Standard HDD](../disks-types.md#standard-hdd) と同じです。 たとえば、S4 と同等のサイズの場合、最大 60 MiB/秒のスループットが得られます。 ただし、S70 と同等のサイズの場合、最大 500 MiB/秒のスループットが得られます。
+このアップロードのスループットは、同等の [Standard HDD](../disks-types.md#standard-hdds) と同じです。 たとえば、S4 と同等のサイズの場合、最大 60 MiB/秒のスループットが得られます。 ただし、S70 と同等のサイズの場合、最大 500 MiB/秒のスループットが得られます。
 
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
@@ -103,7 +106,7 @@ Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<you
 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>`、`<yourOSTypeHere>`、および `<yourTargetLocationHere>` (場所の値の例: uswest2) を実際の値に置き換えたら、次のスクリプトを実行してマネージド ディスクをコピーします。
 
 > [!TIP]
-> OS ディスクを作成する場合は、-HyperVGeneration '<yourGeneration>' を `New-AzDiskConfig` に追加します。
+> OS ディスクを作成する場合は、`-HyperVGeneration '<yourGeneration>'` を `New-AzDiskConfig` に追加します。
 
 ```powershell
 

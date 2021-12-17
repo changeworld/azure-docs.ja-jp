@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: c6d51210867e83c6acc74ca890ab65b195dc64fc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4e788d84e7f030b4b3067203434061ad017d1468
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176673"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045541"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config または .xml を使った Application Insights SDK の構成
 Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。 [コア パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights) は、テレメトリを Application Insights に送信するための API を提供します。 [その他のパッケージ](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、アプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ *モジュール* と *初期化子* を提供します。 構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかに対してパラメーターを設定したりできます。
@@ -71,20 +71,20 @@ HTTP 要求の [応答時間と結果コード](../../azure-monitor/app/asp-net.
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet パッケージ
 * `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` - 監視されていないタスクの例外を追跡します
-* `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` - worker ロール、Windows サービス、コンソール アプリケーションの未処理例外を追跡します。
+* `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` - worker ロール、Windows サービス、コンソール アプリケーションのハンドルされない例外を追跡します。
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet パッケージ
 
 ### <a name="eventsource-tracking"></a>EventSource の追跡
 `EventSourceTelemetryModule` を使用すると、Application Insights にトレースとして送信される EventSource イベントを構成できます。 EventSource イベントの追跡については、「[EventSource イベントを使用する](./asp-net-trace-logs.md#use-eventsource-events)」をご覧ください。
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
-* [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
+* [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener)
 
 ### <a name="etw-event-tracking"></a>ETW イベントの追跡
 `EtwCollectorTelemetryModule` を使用すると、Application Insights にトレースとして送信される ETW プロバイダーを構成できます。 ETW イベントの追跡については、「[ETW イベントを使用する](../../azure-monitor/app/asp-net-trace-logs.md#use-etw-events)」をご覧ください。
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
-* [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
+* [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector)
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
 Microsoft.ApplicationInsights パッケージには、SDK の[コア API](/dotnet/api/microsoft.applicationinsights) が含まれています。 その他のテレメトリ モジュールではこれが使用されると共に、[独自のテレメトリを定義するために使用する](./api-custom-events-metrics.md)ことも可能です。
@@ -96,7 +96,7 @@ Microsoft.ApplicationInsights パッケージには、SDK の[コア API](/dotne
 [テレメトリ チャネル](telemetry-channels.md)では、テレメトリのバッファリングと Application Insights サービスへの送信が管理されます。
 
 * `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` は Web アプリケーション用の既定のチャネルです。 メモリ内にデータをバッファーし、より信頼性の高いテレメトリ配信のために、再試行のメカニズムとローカル ディスク ストレージを採用しています。
-* `Microsoft.ApplicationInsights.InMemoryChannel` は軽量なテレメトリ チャネルであり、他のチャネルが構成されていない場合に使用されます。 
+* `Microsoft.ApplicationInsights.InMemoryChannel` は軽量なテレメトリ チャネルであり、他のチャネルが構成されていない場合に使用されます。
 
 ## <a name="telemetry-initializers-aspnet"></a>テレメトリの初期化子 (ASP.NET)
 テレメトリの初期化子は、テレメトリのあらゆる項目と共に送信されるコンテキスト プロパティを設定します。
@@ -155,7 +155,7 @@ Service Fabric で実行されている .NET アプリケーションの場合�
 #### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>固定レート サンプリング テレメトリ プロセッサー (2.0.0-beta1 以降)
 標準的な[サンプリング テレメトリ プロセッサ](./api-filtering-sampling.md)も用意されています (2.0.1 以降)。
 
-```XML
+```xml
 
     <TelemetryProcessors>
      <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
@@ -184,7 +184,7 @@ using Microsoft.ApplicationInsights;
         TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
         configuration.InstrumentationKey = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
         var telemetryClient = new TelemetryClient(configuration);
-   
+
 ```
 
 特定のイベント セットを異なるリソースに送信する場合、特定の TelemetryClient のキーを設定できます。
@@ -199,8 +199,6 @@ using Microsoft.ApplicationInsights;
 ```
 
 新しいキーを取得するには、[Application Insights ポータルで新しいリソースを作成][new]します。
-
-
 
 ## <a name="applicationid-provider"></a>ApplicationId プロバイダー
 
@@ -218,7 +216,6 @@ public interface IApplicationIdProvider
     bool TryGetApplicationId(string instrumentationKey, out string applicationId);
 }
 ```
-
 
 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) SDK 内に次の 2 つの実装が用意されています。`ApplicationInsightsApplicationIdProvider` と `DictionaryApplicationIdProvider`。
 
@@ -282,9 +279,6 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationI
 };
 ```
 
-
-
-
 ## <a name="next-steps"></a>次のステップ
 API の詳細については、[こちら][api]をご覧ください。
 
@@ -296,6 +290,5 @@ API の詳細については、[こちら][api]をご覧ください。
 [exceptions]: ./asp-net-exceptions.md
 [netlogs]: ./asp-net-trace-logs.md
 [new]: ./create-new-resource.md
-[redfield]: ./monitor-performance-live-website-now.md
+[redfield]: ./status-monitor-v2-overview.md
 [start]: ./app-insights-overview.md
-

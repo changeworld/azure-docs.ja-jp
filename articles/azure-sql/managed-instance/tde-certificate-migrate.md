@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: sstein, jovanpop
-ms.date: 07/21/2020
-ms.openlocfilehash: c465da3d5d812ea7e811cbe59318122700c6e786
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mathoma, jovanpop
+ms.date: 06/01/2021
+ms.openlocfilehash: f168dca243ae09ccdf39eb7630b350cd2b928628
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97824675"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733334"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>TDE で保護されたデータベースの証明書を Azure SQL Managed Instance に移行する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -149,7 +149,10 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 2. すべての準備手順が完了したら、次のコマンドを実行して、Base-64 でエンコードされた証明書をターゲットのマネージド インスタンスにアップロードします。
 
    ```azurepowershell
+   # If you are using PowerShell 6.0 or higher, run this command:
    $fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -AsByteStream
+   # If you are using PowerShell 5.x, uncomment and run this command instead of the one above:
+   # $fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -Encoding Byte
    $base64EncodedCert = [System.Convert]::ToBase64String($fileContentBytes)
    $securePrivateBlob = $base64EncodedCert  | ConvertTo-SecureString -AsPlainText -Force
    $password = "<password>"

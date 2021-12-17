@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 136ea5fcb8dd446cfff6400616df058722fa2827
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c30dc859a7cfc139d1402eadc3b4e0ae812125c2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075374"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603469"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング:Azure ポイント対サイト接続の問題
 
@@ -341,9 +341,9 @@ NIC ドライバーを更新します。
 4. Windows によって新しいドライバーが検出されない場合、デバイス製造元の Web サイト上にあるドライバーを探してその手順に従うことができます。
 5. コンピューターを再起動して、もう一度接続を試してみてください。
 
-## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN クライアント エラー:Dialing VPN connection <VPN Connection Name>, Status = VPN Platform did not trigger connection (VPN 接続 <VPN Connection Name> にダイヤルしています、状況 = VPN プラットフォームでは接続がトリガーされませんでした)
+## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN クライアント エラー:Dialing VPN connection \<VPN Connection Name\>, Status = VPN Platform did not trigger connection (VPN 接続 \<VPN Connection Name\> にダイヤルしています、状況 = VPN プラットフォームでは接続がトリガーされませんでした)
 
-また、RasClient からイベント ビューアーに次のエラーが表示されることがあります: "ユーザー <User> は <VPN Connection Name> という接続にダイヤルし、失敗しました。 失敗時に返された理由コードは 1460 です。"
+また、RasClient からイベント ビューアーに次のエラーが表示されることがあります: "ユーザー \<User\> は \<VPN Connection Name\> という接続にダイヤルし、失敗しました。 失敗時に返された理由コードは 1460 です。"
 
 ### <a name="cause"></a>原因
 

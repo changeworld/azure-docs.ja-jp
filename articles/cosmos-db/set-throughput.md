@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/25/2021
-ms.openlocfilehash: 1d5fba12ce9b1ce8d30c59a08aa36e1222abe3c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 09/16/2021
+ms.openlocfilehash: aa10c93b63fd621397318c701deef8c3912b05da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433932"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601723"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB におけるスループットのプロビジョニングの概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -110,7 +110,7 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 
 * 400 RU/秒 
 * 現在のストレージ (GB * 10 RU/秒) (この制約は、場合によっては緩和できます。「[高ストレージ/低スループット プログラム](#high-storage-low-throughput-program)」を参照してください)
-* データベースまたはコンテナーでプロビジョニングされた最高 RU ÷ 100
+* データベースまたはコンテナーでこれまでにプロビジョニングされた最高 RU ÷ 100
 
 ### <a name="changing-the-provisioned-throughput"></a>プロビジョニング済みのスループットの変更
 
@@ -122,6 +122,8 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 **プロビジョニング済みのスループットを低くする** 場合は、[最低値](#current-provisioned-throughput)までそれを行うことができます。
 
 **プロビジョニング済みのスループットを高くする** 場合、多くは、その操作は瞬時に行われます。 ただし、必要なリソースをプロビジョニングするシステム タスクが原因で、操作により長い時間がかかる場合があります。 この場合、その操作の実行中にプロビジョニング済みのスループットを変更しようとすると、別のスケーリング操作が進行中であることを示すエラーメッセージを含む HTTP 423 応答が返されます。
+
+詳細については、[プロビジョニングされたスループット (RU/秒) のスケーリングに関するベスト プラクティス](scaling-provisioned-throughput-best-practices.md)に関する記事を参照してください。
 
 > [!NOTE]
 > プロビジョニング済みスループットの大幅な増大を必要とする非常に大きなインジェスト ワークロードを計画している場合、スケーリング操作には SLA がなく、前の段落で説明したように、増大度が大きいと長い時間がかかる可能性があることに注意してください。 事前に計画を立て、ワークロードが開始される前にスケーリングを開始し、以下の方法を使用して進行状況を確認することをお勧めします。
@@ -160,3 +162,6 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 * [Azure Cosmos コンテナーで標準 (手動) のスループットをプロビジョニングする](how-to-provision-container-throughput.md)方法について学習する。
 * [Azure Cosmos データベースで標準 (手動) のスループットをプロビジョニングする](how-to-provision-database-throughput.md)方法について学習する。
 * [Azure Cosmos データベースまたはコンテナー上で自動スケーリングのスループットをプロビジョニングする](how-to-provision-autoscale-throughput.md)方法を確認する。
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

@@ -1,26 +1,30 @@
 ---
 title: Azure Data Factory での Excel 形式
-description: このトピックでは、Azure Data Factory で Excel 形式を処理する方法について説明します。
-author: linda33wj
+titleSuffix: Azure Data Factory & Azure Synapse
+description: このトピックでは、Azure Data Factory および Azure Synapse Analytics で Excel 形式を処理する方法について説明します。
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 12/08/2020
-ms.author: jingwang
-ms.openlocfilehash: bef29bc958253be0498442f842dda67105ce799b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/18/2021
+ms.author: jianleishen
+ms.openlocfilehash: c1a84fb149ebfaa39fc6704602782c0f872476e2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386528"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238814"
 ---
-# <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory での Excel 形式
+# <a name="excel-file-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での Excel ファイル形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-**Excel ファイルを解析する場合** は、この記事に従ってください。 Azure Data Factory は ".xls" と ".xlsx" の両方をサポートしています。
+**Excel ファイルを解析する場合** は、この記事に従ってください。 このサービスは ".xls" と ".xlsx" の両方に対応しています。
 
-Excel 形式は、以下のコネクタでサポートされています。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。 これはソースとしてはサポートされますが、シンクとしてはサポートされません。 
+Excel 形式は、[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure Files](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle Cloud Storage](connector-oracle-cloud-storage.md)、[SFTP](connector-sftp.md) の各コネクタでサポートされます。 これはソースとしてはサポートされますが、シンクとしてはサポートされません。 
 
-**注**: [HTTP](connector-http.md) の使用中は、".xls" 形式はサポートされません。 
+>[!NOTE]
+>[HTTP](connector-http.md) の使用中は、".xls" 形式はサポートされません。
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -100,7 +104,7 @@ Azure Blob Storage 上の Excel データセットの例を次に示します。
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-マッピング データ フローでは、次のデータ ストアで Excel 形式での読み取りを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。 Excel ファイルは、Excel データセットまたは[インライン データセット](data-flow-source.md#inline-datasets)を使用して参照できます。
+マッピング データ フローでは、次のデータ ストアで Excel 形式を読み取ることができます: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)、[Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties)。 Excel ファイルは、Excel データセットまたは[インライン データセット](data-flow-source.md#inline-datasets)を使用して参照できます。
 
 ### <a name="source-properties"></a>ソースのプロパティ
 
@@ -120,7 +124,7 @@ Azure Blob Storage 上の Excel データセットの例を次に示します。
 
 次の図は、データセット モードを使用したマッピング データ フローにおける Excel ソースの構成例です。
 
-![Excel ソース](media/data-flow/excel-source.png)
+:::image type="content" source="media/data-flow/excel-source.png" alt-text="Excel ソース":::
 
 関連付けられているデータ フロー スクリプトは次のとおりです。
 
@@ -132,7 +136,7 @@ source(allowSchemaDrift: true,
 
 インライン データセットを使用する場合、マッピング データ フローに次のソース オプションが表示されます。
 
-![Excel ソースのインライン データセット](media/data-flow/excel-source-inline-dataset.png)
+:::image type="content" source="media/data-flow/excel-source-inline-dataset.png" alt-text="Excel ソースのインライン データセット":::
 
 関連付けられているデータ フロー スクリプトは次のとおりです。
 

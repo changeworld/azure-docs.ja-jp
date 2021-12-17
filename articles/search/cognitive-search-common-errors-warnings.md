@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 3ba0abe8510291351c10ba085ba7e42b8197d886
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/16/2021
+ms.openlocfilehash: abb67c59c32fe1eb41f9fe4c31a03d67fcfafa85
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553240"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622514"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -228,7 +228,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 | 理由 | 詳細/例 | 解像度 |
 | --- | --- | --- |
-| スキルの入力タイプが正しくありません。 | "必須のスキルの入力が予期された型 `String` ではありませんでした。 名前: `text`、ソース: `/document/merged_content`。"  "必須のスキルの入力が予期された形式ではありませんでした。 名前: `text`、ソース: `/document/merged_content`。"  "非配列 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` で反復処理できません。"  "非配列 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` で `0` を選択できません" | 特定のスキルでは、入力が特定の型であることを想定しています。たとえば[センチメント スキル](cognitive-search-skill-sentiment.md)では、`text` が文字列である必要があります。 入力に文字列以外の値が指定されている場合、そのスキルは実行されず、出力は生成されません。 データ セットの型が統一されていることを確認するか、[カスタム Web API スキル](cognitive-search-custom-skill-web-api.md)を使用して入力を前処理します。 配列に対してスキルを反復する場合は、スキル コンテキストをチェックし、入力の正しい位置に `*` があることを確認します。 通常、コンテキストと入力ソースの両方が配列の `*` で終わる必要があります。 |
+| スキルの入力タイプが正しくありません。 | "必須のスキルの入力が予期された型 `String` ではありませんでした。 名前: `text`、ソース: `/document/merged_content`。"  "必須のスキルの入力が予期された形式ではありませんでした。 名前: `text`、ソース: `/document/merged_content`。"  "非配列 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` で反復処理できません。"  "非配列 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` で `0` を選択できません" | 特定のスキルでは、入力が特定の型であることを想定しています。たとえば[センチメント スキル](cognitive-search-skill-sentiment-v3.md)では、`text` が文字列である必要があります。 入力に文字列以外の値が指定されている場合、そのスキルは実行されず、出力は生成されません。 データ セットの型が統一されていることを確認するか、[カスタム Web API スキル](cognitive-search-custom-skill-web-api.md)を使用して入力を前処理します。 配列に対してスキルを反復する場合は、スキル コンテキストをチェックし、入力の正しい位置に `*` があることを確認します。 通常、コンテキストと入力ソースの両方が配列の `*` で終わる必要があります。 |
 | スキルの入力がありません | "必須のスキルの入力がありません。 名前: `text`、ソース: `/document/merged_content`" "不足値 `/document/normalized_images/0/imageTags`。"  "長さ `0` の非配列 `/document/pages` で `0` を選択できません。" | すべてのドキュメントでこの警告が表示される場合は、入力したパスに入力ミスがある可能性が高いので、プロパティ名の大文字と小文字の区別、パス内の `*` が余分に追加されているか欠落しているかを確認し、データ ソースのドキュメントから必要な入力が与えられることを確認します。 |
 | スキル言語コードの入力が無効です | スキルの入力 `languageCode` に次の言語コード `X,Y,Z` が含まれており、その少なくとも 1 つが無効です。 | 詳しくは、[以下](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid)をご覧ください |
 
@@ -257,7 +257,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 ```
 
 このエラー メッセージを生成する可能性のある各スキルについて、現在サポートされている言語の参考資料を次に示します。
-* [Text Analytics のサポートされる言語](../cognitive-services/text-analytics/language-support.md) ([KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)、[EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)、[SentimentSkill](cognitive-search-skill-sentiment.md)、[PIIDetectionSkill](cognitive-search-skill-pii-detection.md) の場合)
+* [Text Analytics のサポートされる言語](../cognitive-services/text-analytics/language-support.md) ([KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)、[EntityRecognitionSkill](cognitive-search-skill-entity-recognition-v3.md)、[EntityLinkingSkill](cognitive-search-skill-entity-linking-v3.md)、[SentimentSkill](cognitive-search-skill-sentiment-v3.md) および [PIIDetectionSkill](cognitive-search-skill-pii-detection.md) の場合)
 * [Translator のサポートされる言語](../cognitive-services/translator/language-support.md) ([Text TranslationSkill](cognitive-search-skill-text-translation.md) の場合)
 * [Text SplitSkill](cognitive-search-skill-textsplit.md) のサポートされる言語: `da, de, en, es, fi, fr, it, ko, pt`
 

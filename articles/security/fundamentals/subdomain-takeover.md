@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: c3a821156074727d02ab36cf88f3e998756b8cc4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 665cb2c8db360f061023294d563082321aae70e8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389452"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305809"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>未解決の DNS エントリを防ぎ、サブドメインの乗っ取りを回避する
 
@@ -144,15 +144,15 @@ DNS ゾーンをレビューし、未解決の CNAME レコードまたは乗っ
 
 一部の Azure サービスでは、予防策の作成に役立つ機能が提供されています。詳細については、以下で説明します。 この問題を防止するための他の方法は、組織のベスト プラクティスまたは標準の操作手順に従って確立する必要があります。
 
-### <a name="enable-azure-defender-for-app-service"></a>Azure Defender for App Service を有効にする
+### <a name="enable-microsoft-defender-for-app-service"></a>Microsoft Defender for App Service を有効にする
 
-Azure Security Center の統合クラウド ワークロード保護プラットフォーム (CWPP) である Azure Defender には、Azure、ハイブリッド、およびマルチクラウドのリソースとワークロードを保護するためのさまざまなプランが用意されています。
+Microsoft Defender for Cloud の統合クラウド ワークロード保護プラットフォーム (CWPP) である Microsoft Defender for Cloud には、Azure、ハイブリッド、およびマルチクラウドのリソースとワークロードを保護するためのさまざまなプランが用意されています。
 
-**Azure Defender for App Service** プランには、未解決の DNS の検出が含まれています。 このプランを有効にすると、App Service Web サイトを使用停止にしても、そのカスタム ドメインを DNS レジストラーから削除しない場合にセキュリティ アラートを受け取ります。
+**Microsoft Defender for App Service** プランには、未解決の DNS の検出が含まれています。 このプランを有効にすると、App Service Web サイトを使用停止にしても、そのカスタム ドメインを DNS レジストラーから削除しない場合にセキュリティ アラートを受け取ります。
 
-Azure Defender による未解決の DNS の保護は、ドメイン管理に Azure DNS を使用しているか、外部のドメイン レジストラーを使用しているかに関係なく利用でき、Windows 上の App Service と Linux 上の App Service の両方に適用されます。
+Microsoft Defender for Cloud による未解決の DNS の保護は、ドメイン管理に Azure DNS を使用しているか、外部のドメイン レジストラーを使用しているかに関係なく利用でき、Windows 上の App Service と Linux 上の App Service の両方に適用されます。
 
-この Azure Defender プランのその他の特典については、「[Azure Defender for App Service の概要](../../security-center/defender-for-app-service-introduction.md)」を参照してください。
+この Microsoft Defender プランのその他の特典については、「[Microsoft Defender for App Service の概要](../../security-center/defender-for-app-service-introduction.md)」を参照してください。
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS エイリアス レコードの使用
 
@@ -211,10 +211,10 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
 
 サブドメインの乗っ取りを防ぐために使用できる関連のサービスと Azure の機能の詳細については、以下のページを参照してください。
 
-- [Azure Defender for App Service を有効にする](../../security-center/defender-for-app-service-introduction.md) - 未解決の DNS エントリを検出すると、アラートを受け取ります
+- [Microsoft Defender for App Service を有効にする](../../security-center/defender-for-app-service-introduction.md) - 未解決の DNS エントリを検出すると、アラートを受け取ります
 
 - [Azure DNS で未解決の DNS レコードを防ぐ](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [Azure App Service でカスタム ドメインを追加するときにドメイン検証 ID を使用する](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
+- [Azure App Service でカスタム ドメインを追加するときにドメイン検証 ID を使用する](../../app-service/app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id)
 
 - [クイック スタート: Azure PowerShell を使用して最初の Resource Graph クエリを実行します](../../governance/resource-graph/first-query-powershell.md)

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2437c5b3272163b3931d7417c84e761c591aec85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ac8015403ffa64271990363b7a95a18ae6f57a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90088818"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626800"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>.NET を使用してパブリックのコンテナーと BLOB に匿名でアクセスする
 
@@ -46,7 +46,7 @@ public static void CreateAnonymousBlobClient()
     // Get a reference to a container that's available for anonymous access.
     CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
 
-    // Read the container's properties. 
+    // Read the container's properties.
     // Note this is only possible when the container supports full public read access.
     container.FetchAttributes();
     Console.WriteLine(container.Properties.LastModified);
@@ -109,4 +109,4 @@ public static void DownloadBlobAnonymously()
 
 - [コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する](anonymous-read-access-configure.md)
 - [コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ](anonymous-read-access-prevent.md)
-- [Azure Storage へのアクセスを承認する](../common/storage-auth.md)
+- [Azure Storage へのアクセスを承認する](../common/authorize-data-access.md)

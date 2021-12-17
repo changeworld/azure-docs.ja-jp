@@ -3,20 +3,21 @@ title: Azure AD B2C サービスの制限と制約
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C サービスのサービスの制限と制約に関するリファレンス。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/02/2021
-ms.author: mimart
+ms.date: 06/02/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 190d88e62069a34b61017a0079f75696d67f6c82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: b2c-support
+ms.openlocfilehash: 8e3ceab429f92340a080a6a42afd095375ce51b1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99979914"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266089"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Azure Active Directory B2C サービスの制限と制約
 
@@ -46,8 +47,8 @@ ms.locfileid: "99979914"
 |属性あたりの文字列制限      |250 文字          |
 |サブスクリプションあたりの B2C テナントの数      |20         |
 |カスタム ポリシーでの[継承](custom-policy-overview.md#inheritance-model)のレベル     |10         |
-|Azure AD B2C テナントあたりのポリシーの数      |200          |
-|ポリシー ファイルの最大サイズ      |400 KB          |
+|Azure AD B2C テナントあたりのポリシーの数 (ユーザー フロー + カスタム ポリシー)     |200          |
+|ポリシー ファイルの最大サイズ      |1024 KB          |
 
 <sup>1</sup> 「[Azure AD サービスの制限と制約](../active-directory/enterprise-users/directory-service-limits-restrictions.md)」も参照してください。
 
@@ -55,16 +56,3 @@ ms.locfileid: "99979914"
 
 - [Microsoft Graph の調整ガイダンス](/graph/throttling)について学習します 
 - [Azure AD B2C アプリケーションの検証の相違点](../active-directory/develop/supported-accounts-validation.md)について学習します
-
-
-
-
-
-
-
-
-
-
-
-
-

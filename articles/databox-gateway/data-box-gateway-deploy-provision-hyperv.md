@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/01/2021
+ms.date: 05/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 2e54b8e58e8139c46639187957906790ffb0fe54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1852ed997faa3c2410f6938d2ab409940c2904b
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727687"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577260"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>チュートリアル:Hyper-V で Azure Data Box Gateway をプロビジョニングする
 
@@ -76,7 +76,7 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 * 仮想デバイスを作成している基盤となるハードウェア (ホスト システム) で、次のリソースを仮想デバイス専用に使用できることを確認します。
 
   * 少なくとも 4 つの仮想プロセッサ。
-  * 少なくとも 8 GB の RAM。
+  * 少なくとも 8 GB の RAM。 RAM を 16 GB 以上にすることを強くお勧めします。
   * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。
   * 250 GB の OS ディスク。
   * システム データ用の 2 TB の仮想ディスク。

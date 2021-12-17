@@ -1,21 +1,21 @@
 ---
-title: チュートリアル:Azure portal を使用して Azure Firewall のデプロイと構成を行う
-description: このチュートリアルでは、Azure portal を使用して Azure Firewall をデプロイおよび構成する方法を学習します。
+title: Azure portal を使用して Azure Firewall のデプロイと構成を行う
+description: この記事では、Azure portal を使用して Azure Firewall をデプロイおよび構成する方法について説明します。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
-ms.date: 02/19/2021
+ms.topic: how-to
+ms.date: 11/10/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 54900b7b9089d4a4c6cbc742ecf09aa19ff2a550
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 99b7d27ef16414df161b7d6e120084f2b8220f46
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741958"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297527"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
+# <a name="deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Azure portal を使用して Azure Firewall をデプロイして構成する
 
 アウトバウンド ネットワーク アクセスを制御することは、ネットワーク セキュリティ プラン全体の重要な要素です。 たとえば、Web サイトへのアクセスを制限することができます。 また、アクセスできるアウトバウンドの IP アドレスとポートを制限することもできます。
 
@@ -26,16 +26,16 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 
 ネットワーク トラフィックは、サブネットの既定ゲートウェイとしてのファイアウォールにルーティングしたときに、構成されているファイアウォール ルールに制約されます。
 
-このチュートリアルでは、デプロイしやすいように、2 つのサブネットを含む簡単な VNet を 1 つ作成します。
+この記事では、簡単にデプロイできるように、2 つのサブネットを含む単純な単一の VNet を作成します。
 
 運用環境のデプロイでは、[ハブとスポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)を採用して、独自の VNet にファイアウォールを配置することをお勧めします。 ワークロード サーバーは、1 つ以上のサブネットを含む同じリージョンのピアリングされた VNet に配置されます。
 
 * **AzureFirewallSubnet** - このサブネットにファイアウォールが存在します。
 * **Workload-SN** - このサブネットにはワークロード サーバーがあります。 このサブネットのネットワーク トラフィックは、ファイアウォールを通過します。
 
-![チュートリアルのネットワーク インフラストラクチャ](media/tutorial-firewall-deploy-portal/tutorial-network.png)
+![ネットワーク インフラストラクチャ](media/tutorial-firewall-deploy-portal/tutorial-network.png)
 
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * テスト ネットワーク環境を設定する
@@ -46,7 +46,10 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 > * テスト サーバーへのリモート デスクトップ接続を許可するように NAT 規則を構成する
 > * ファイアウォールをテストする
 
-必要に応じて、[Azure PowerShell](deploy-ps.md) を使ってこのチュートリアルの手順を完了できます。
+> [!NOTE]
+> この記事では、従来のファイアウォール規則を使用してファイアウォールを管理します。 推奨される方法は、[ファイアウォール ポリシー](../firewall-manager/policy-overview.md)を使用することです。 ファイアウォール ポリシーを使用してこの手順を実行するには、「[チュートリアル: Azure portal を使用して Azure Firewall とポリシーをデプロイおよび構成する](tutorial-firewall-deploy-portal-policy.md)」をご覧ください。
+
+好みに応じて、[Azure PowerShell](deploy-ps.md) を使ってこの手順を実行することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-このリソース グループには、このチュートリアルのすべてのリソースが含まれます。
+このリソース グループには、この手順で使用するすべてのリソースが含まれます。
 
 1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. Azure portal メニューで **[リソース グループ]** を選択するか、または任意のページから *[リソース グループ]* を検索して選択します。 その後、 **[追加]** を選択します。
@@ -111,7 +114,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    |Resource group     |**Test-FW-RG**|
    |仮想マシン名     |**Srv-Work**|
    |リージョン     |前と同じ|
-   |Image|Windows Server 2019 Datacenter|
+   |Image|Windows Server 2016 Datacenter|
    |管理者のユーザー名     |ユーザー名を入力します|
    |Password     |パスワードを入力します|
 
@@ -123,6 +126,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 11. 他の既定値をそのまま使用し、 **[次へ:管理]** を選択します。
 12. **[無効]** を選択して、ブート診断を無効にします。 他の既定値をそのまま使用し、 **[確認および作成]** を選択します。
 13. 概要ページの設定を確認して、 **[作成]** を選択します。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="deploy-the-firewall"></a>ファイアウォールをデプロイする
 
@@ -151,6 +156,10 @@ VNet にファイアウォールをデプロイします。
 8. ファイアウォールのプライベートおよびパブリック IP アドレスをメモします。 これらのアドレスは後ほど使用します。
 
 ## <a name="create-a-default-route"></a>既定のルートを作成する
+
+ファイアウォール経由で発信および受信接続のルートを作成する場合は、仮想アプライアンスのプライベート IP をネクスト ホップとした 0.0.0.0/0 への既定のルートがあれば十分です。 これにより、ファイアウォールを通過する発信および着信接続が処理されます。 たとえば、ファイアウォールで TCP ハンドシェイクが実行され、受信要求への応答が行われる場合、応答はトラフィックの送信元の IP アドレスに送信されます。 これは仕様です。 
+
+このため、AzureFirewallSubnet の IP 範囲を含めるための追加の UDR を作成する必要はありません。 これにより、接続が切断される可能性があります。 元の既定のルートで十分です。
 
 **Workload-SN** サブネットでは、アウトバウンドの既定ルートがファイアウォールを通過するように構成します。
 
@@ -241,7 +250,7 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>**Srv-Work** ネットワーク インターフェイスのプライマリおよびセカンダリ DNS アドレスを変更する
 
-このチュートリアルのテスト目的で、サーバーのプライマリおよびセカンダリ DNS アドレスを構成します。 これは、一般的な Azure Firewall 要件ではありません。
+テストのために、サーバーのプライマリおよびセカンダリ DNS アドレスを構成します。 これは、一般的な Azure Firewall 要件ではありません。
 
 1. Azure portal メニューで **[リソース グループ]** を選択するか、または任意のページから *[リソース グループ]* を検索して選択します。 **[Test-FW-RG]** リソース グループを選択します。
 2. **Srv-Work** 仮想マシンのネットワーク インターフェイスを選択します。
@@ -272,9 +281,13 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-ファイアウォール リソースは、次のチュートリアルのために残しておいてもかまいませんが、不要であれば、**Test-FW-RG** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除してください。
+引き続きテストを行うために、ファイアウォール リソースを残しておいてもかまいませんが、不要であれば、**Test-FW-RG** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 
+<<<<<<< HEAD
 > [!div class="nextstepaction"]
 > [チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)
+=======
+[チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)
+>>>>>>> repo_sync_working_branch

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 07/07/2021
 ms.author: alkohli
-ms.openlocfilehash: dfef9b3078b17e4758d5fd886ecd1b3fbefc5794
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3c3b2bc20481da45bd9345f7668382521642a074
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055231"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221284"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用のネットワークを構成する
 
@@ -67,12 +67,13 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
     ネットワーク設定を構成するときは、次のことに注意してください。
 
-   * ご利用の環境内で DHCP が有効になっている場合は、ネットワーク インターフェイスが自動的に構成されます。 IP アドレス、サブネット、ゲートウェイ、DNS は自動的に割り当てられます。
-   * DHCP が有効になっていない場合は、必要に応じて、静的 IP アドレスを割り当てることができます。
-   * 使用するネットワーク インターフェイスは、IPv4 として構成できます。
-   * 25 Gbps インターフェイスでは、RDMA (Remote Direct Access Memory) モードを iWarp または RoCE (RDMA over Converged Ethernet) に設定できます。 低待機時間が主な要件であり、スケーラビリティが問題にならない場合は、RoCE を使用します。 待機時間が重要な要件であり、使いやすさとスケーラビリティも優先度が高い場合は、iWARP が最適な候補です。
-   * ネットワーク インターフェイス カード (NIC) のチーミングまたはリンク アグリゲーションは、Azure Stack Edge ではサポートされていません。 
-   * ポートのシリアル番号は、ノードのシリアル番号に対応しています。
+    * ネットワーク機能マネージャーのデプロイ用に、ポート 5 とポート 6 が接続されていることを確認します。 詳細については、[チュートリアル: Azure Stack Edge にネットワーク機能をデプロイする (プレビュー)](../network-function-manager/deploy-functions.md) に関するページを参照してください。
+    * ご利用の環境内で DHCP が有効になっている場合は、ネットワーク インターフェイスが自動的に構成されます。 IP アドレス、サブネット、ゲートウェイ、DNS は自動的に割り当てられます。
+    * DHCP が有効になっていない場合は、必要に応じて、静的 IP アドレスを割り当てることができます。
+    * 使用するネットワーク インターフェイスは、IPv4 として構成できます。
+    * 25 Gbps インターフェイスでは、RDMA (Remote Direct Access Memory) モードを iWarp または RoCE (RDMA over Converged Ethernet) に設定できます。 低待機時間が主な要件であり、スケーラビリティが問題にならない場合は、RoCE を使用します。 待機時間が重要な要件であり、使いやすさとスケーラビリティも優先度が高い場合は、iWARP が最適な候補です。
+    * ネットワーク インターフェイス カード (NIC) のチーミングまたはリンク アグリゲーションは、Azure Stack Edge ではサポートされていません。 
+    * ポートのシリアル番号は、ノードのシリアル番号に対応しています。
 
     デバイス ネットワークが構成されると、ページは以下のように更新されます。
 
@@ -110,7 +111,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 1. **Kubernetes 外部サービス IP** を割り当てます。 これらは、負荷分散 IP アドレスでもあります。 これらの連続した IP アドレスは、Kubernetes クラスターの外部に公開するサービス用であり、公開するサービスの数に応じて静的 IP 範囲を指定します。 
     
     > [!IMPORTANT]
-    > Azure Stack Edge Pro Hub サービスからコンピューティング モジュールにアクセスするには、最低 1 つの IP アドレスを指定することを強くお勧めします。 必要に応じて、クラスターの外部からアクセスする必要がある他のサービスまたは IoT Edge モジュールに追加の IP アドレス (サービスやモジュールごとに 1 つ) を指定することもできます。 サービス IP アドレスは後で更新できます。 
+    > Azure Stack Edge Hub サービスからコンピューティング モジュールにアクセスするには、最低 1 つの IP アドレスを指定することを強くお勧めします。 必要に応じて、クラスターの外部からアクセスする必要がある他のサービスまたは IoT Edge モジュールに追加の IP アドレス (サービスやモジュールごとに 1 つ) を指定することもできます。 サービス IP アドレスは後で更新できます。 
     
 1. **[適用]** を選択します。
 
@@ -128,7 +129,6 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 これはオプション構成です。
 
 > [!IMPORTANT]
-> * Azure Stack Edge Pro デバイスでコンピューティングを有効にして IoT Edge モジュールを使用する場合は、Web プロキシ認証を **[なし]** に設定しておくことをお勧めします。 NTLM はサポートされていません。
 > * プロキシ自動構成 (PAC) ファイルはサポートされていません。 PAC ファイルは、Web ブラウザーやその他のユーザー エージェントが、特定の URL をフェッチするための適切なプロキシ サーバー (アクセス方法) を自動的に選択する方法を定義します。 
 > * 透過プロキシは、Azure Stack Edge Pro で適切に動作します。 プロキシ サーバーにインストールされている独自の証明書を通じて、すべてのトラフィックをインターセプトして読み取る非透過的プロキシの場合は、プロキシの証明書の公開キーを Azure Stack Edge Pro デバイスの署名チェーンとしてアップロードします。 その後、Azure Stack Edge デバイスのプロキシ サーバー設定を構成できます。 詳細については、[独自の証明書の持ち込みとローカル UI によるアップロード](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)に関するセクションを参照してください。  
 
@@ -139,15 +139,11 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
 1. **[Web プロキシの設定]** ページで、次の手順を実行します。
 
-    1. **[Web プロキシ URL]**  ボックスに、`http://host-IP address or FQDN:Port number` という形式の URL を入力します。 HTTPS URL はサポートされていません。
+   1. **[Web プロキシ URL]**  ボックスに、`http://host-IP address or FQDN:Port number` という形式の URL を入力します。 HTTPS URL はサポートされていません。
 
-    2. **[認証]** で、 **[なし]** または **[NTLM]** を選択します。 Azure Stack Edge Pro デバイスでコンピューティングを有効にして IoT Edge モジュールを使用する場合は、Web プロキシ認証を **[なし]** に設定しておくことをお勧めします。 **NTLM** はサポートされていません。
+   2. 構成された Web プロキシ設定を検証して適用するには、 **[適用]** を選択します。
 
-    3. 認証を使用している場合は、ユーザー名とパスワードを入力します。
-
-    4. 構成された Web プロキシ設定を検証して適用するには、 **[適用]** を選択します。
-    
-   ![ローカル Web UI の [Web プロキシ設定] ページ 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
+   ![ローカル Web UI の [Web プロキシ設定] ページ 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)<!--UI text update for instruction text is needed.-->
 
 2. 設定が適用されたら、 **[次へ: デバイス]** を選択します。
 

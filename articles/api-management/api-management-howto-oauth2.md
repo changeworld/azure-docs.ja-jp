@@ -4,7 +4,7 @@ titleSuffix: Azure API Management
 description: API Management で OAuth 2.0 を使用してユーザーを承認する方法について説明します。 OAuth 2.0 では、ユーザーが利用資格のあるリソースにアクセスできるように、API をセキュリティで保護します。
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/14/2020
-ms.author: apimpm
-ms.openlocfilehash: fae4e349d46425c0c2b2b923d6a61e2e588708c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 1d1e75f16c2431a5fad475233510e2c220a06d57
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93077253"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065724"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
 
@@ -118,7 +118,7 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 **[認証コード]** が選択されると、OAuth 2.0 プロバイダーのサインイン フォームがあるポップアップ ウィンドウが表示されます。 この例では、サインイン フォームは Azure Active Directory によって提供されています。
 
 > [!NOTE]
-> ポップアップが無効になっている場合は、それを有効にするように伝えるプロンプトがブラウザーによって出されます。 ポップアップを有効にした後に、再び **[認証コード]** を選択すると、サインイン フォームが表示されます。
+> ポップアップが無効になっている場合は、有効にするようブラウザーから求められます。 ポップアップを有効にした後に、再び **[認証コード]** を選択すると、サインイン フォームが表示されます。
 
 ![サインイン][api-management-oauth2-signin]
 

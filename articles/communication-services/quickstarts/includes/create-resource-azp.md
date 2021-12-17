@@ -1,21 +1,21 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 03/10/2021
-ms.author: mikben
-ms.openlocfilehash: b602cbfde22cc87b42a32b007c19b626814d1660
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.date: 06/30/2021
+ms.author: rifox
+ms.openlocfilehash: 4f56b8dd22c51b6ae3908491afd08bbab1b065ae
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554554"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966482"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/dotnet/)。
 
-## <a name="create-azure-communication-resource"></a>Azure Communication のリソースを作成する
+## <a name="create-azure-communication-services-resource"></a>Azure Communication Services のリソースを作成する
 
 Azure Communication Services のリソースを作成するには、まず [Azure portal](https://portal.azure.com) にサインインします。 ページの左上にある **[+ リソースの作成]** を選択します。 
 

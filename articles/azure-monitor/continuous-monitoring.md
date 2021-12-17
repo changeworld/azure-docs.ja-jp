@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 2fe9d7e4da8950cee2dcb2fbcfb26355ace7285d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 550e3bf40a8b1ebb65fc351c4f3a049638b4ebfd
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044019"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110080468"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -27,7 +27,7 @@ ms.locfileid: "102044019"
 - [Azure DevOps Projects](../devops-project/overview.md) により、お客様の既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
 - [お客様の DevOps リリース パイプラインに継続的監視](./app/continuous-monitoring.md)を取り入れると、監視データに基づいてお客様のデプロイをゲート管理したりロールバックしたりできます。
 - [Status Monitor](./app/monitor-performance-live-website-now.md) では、Azure Application Insights を使用して Windows 上のライブ .NET アプリをインストルメント化できます。お客様のコードに変更を加えたり、再デプロイしたりする必要はありません。
-- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](./app/asp-net.md) 向け、[.NET Core](./app/asp-net-core.md) 向け、[Java](./app/java-get-started.md) 向け、[Node.js](./app/nodejs-quick-start.md) 向け、または[その他のプログラミング言語](./app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](./app/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
+- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](./app/asp-net.md) 向け、[.NET Core](./app/asp-net-core.md) 向け、[Java](./app/java-in-process-agent.md) 向け、[Node.js](./app/nodejs-quick-start.md) 向け、または[その他のプログラミング言語](./app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](./app/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
 
 
 
@@ -36,7 +36,7 @@ ms.locfileid: "102044019"
 
 - お客様のほとんどの Azure リソースから[プラットフォーム メトリック、アクティビティ ログ、診断ログ](agents/data-sources.md)が構成なしで自動的に得られます。
 - [VM insights](vm/vminsights-overview.md) を使用して、VM に対してより高度な監視を有効にします。
--  [コンテナー用 Azure Monitor](containers/container-insights-overview.md) を使用して、AKS クラスターに対してより高度な監視を有効にします。
+-  [Container insights](containers/container-insights-overview.md) を使用して、AKS クラスターを対象としたより詳細な監視を行います。
 - お客様の環境内のさまざまなアプリケーションおよびサービス用に[監視ソリューション](./monitor-reference.md)を追加します。
 
 
@@ -49,7 +49,7 @@ ms.locfileid: "102044019"
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Azure リソース グループでリソースをまとめる
 今日、Azure 上の標準的なアプリケーションには、さまざまなリソース (VM やアプリ サービスのほか、Cloud Services、AKS クラスター、Service Fabric でホストされるマイクロサービスなど) が含まれています。 これらのアプリケーションでは、Event Hubs、Storage、SQL、Service Bus などの依存関係がよく利用されます。
 
-- Azure リソース グループでリソースをまとめることで、お客様のさまざまなアプリケーションを構成するすべてのリソースについて完全な可視性を得ることができます。 [リソース グループ用 Azure Monitor](./insights/resource-group-insights.md) を使用すると、フルスタックのアプリケーション全体の正常性とパフォーマンスを簡単な方法で追跡できます。また、各コンポーネントをドリルダウンして調査やデバッグを行うことができます。
+- Azure リソース グループでリソースをまとめることで、お客様のさまざまなアプリケーションを構成するすべてのリソースについて完全な可視性を得ることができます。 [Resource Group insights](./insights/resource-group-insights.md) を使用すると、フルスタックのアプリケーション全体の正常性とパフォーマンスを簡単な方法で追跡できます。また、各コンポーネントをドリルダウンして調査やデバッグを行うことができます。
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>継続的デプロイによって品質を確保する
 継続的インテグレーションと継続的デプロイでは、自動化されたテストの結果に基づいて、お客様のアプリケーションに対するコードの変更を自動的に統合してデプロイできます。 これにより、デプロイ プロセスが効率化されるほか、運用への移行前にあらゆる変更の品質が確保されます。

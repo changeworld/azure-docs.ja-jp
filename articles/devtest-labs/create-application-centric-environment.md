@@ -1,44 +1,41 @@
 ---
-title: アプリケーション中心の環境を作成 - Azure
-description: この記事では、CloudShell Colony と Microsoft Azure を使用して、アプリケーション中心の環境を作成する方法について説明します。
+title: Colony を使用してアプリケーション中心の環境を作成する
+description: この記事では、Colony と Azure を使用して、アプリケーション中心の環境を作成する方法について説明します。
 ms.topic: how-to
-ms.date: 11/26/2020
-ms.openlocfilehash: 88244f268d5ed038e9bb7082d3d5cc1179e5ec4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/09/2021
+ms.openlocfilehash: 9ce80a7467ac94a69227cc9616c72c622a6f575f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94918017"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347245"
 ---
-# <a name="create-an-application-centric-environment"></a>アプリケーション中心の環境を作成
+# <a name="create-an-application-centric-environment-with-colony"></a>Colony を使用してアプリケーション中心の環境を作成する
 
-[Quali の CloudShell Colony](https://azuremarketplace.microsoft.com/marketplace/apps/quali_systems.cloudshell_colony?tab=Overview) は、Azure や Kubernetes などのクラウド テクノロジーに基づく複雑なアプリケーション中心の環境のための大規模なインフラストラクチャ自動化を実現する SaaS プラットフォームです。 CloudShell Colony は、Azure DevTest Labs を補完して、開発チームが、実稼働までの価値ストリーム全体に複雑なアプリケーションをデプロイできるようにします。
+[Quali CloudShell Colony](https://azuremarketplace.microsoft.com/marketplace/apps/quali_systems.cloudshell_colony?tab=Overview) は、インフラストラクチャの自動化を大規模に提供する SaaS (サービスとしてのソフトウェア) プラットフォームです。 Colony を利用することで、Azure や Kubernetes のような複雑なクラウド環境に開発者が効率よくアプリケーションをデプロイすることができます。 アプリケーションの運用までのデプロイ プロセス全体にわたって、Azure DevTest Labs が Colony によって補完されます。 この記事では、Colony と Azure を使用して、アプリケーション中心の環境を作成する方法について説明します。
 
-この記事では、CloudShell Colony と Microsoft Azure を使用して、アプリケーション中心の環境を作成する方法について説明します。
-
-## <a name="set-up-the-environment-with-cloudshell-colony-and-microsoft-azure"></a>CloudShell Colony と Microsoft Azure を使用して環境を設定する
+## <a name="set-up-the-environment-with-colony-and-microsoft-azure"></a>Colony と Microsoft Azure を使用して環境を設定する
 
 1. [Colony](https://azuremarketplace.microsoft.com/marketplace/apps/quali_systems.cloudshell_colony?tab=Overview) の無料試用版にサインアップします。
 
-    :::image type="content" source="./media/create-application-centric-environment/free-trial.png" alt-text="無料試用版にサインアップ":::    
-1. Azure アカウントをリンクします ([こちらの手順を参照](https://colonysupport.quali.com/hc/articles/360008222234))。
+    :::image type="content" source="./media/create-application-centric-environment/free-trial.png" alt-text="Colony の無料試用版サインアップ画面のスクリーンショット。":::
+1. [Azure アカウントをリンク](https://colonysupport.quali.com/hc/articles/360008222234)させます。
 
-    :::image type="content" source="./media/create-application-centric-environment/welcome.png" alt-text="Colony へようこそ":::     
+    :::image type="content" source="./media/create-application-centric-environment/welcome.png" alt-text="Colony のウェルカム画面のスクリーンショット。":::
 1. 自分のスペースにユーザーを招待します。
-1. YAML ファイルを使用して、初めてのブループリントを作成します ([こちらの手順を参照](https://colonysupport.quali.com/hc/articles/360001680807-Steps-to-Developing-a-Blueprint))。
-    1. GitHub または BitBucket のブループリント リポジトリを Colony にリンクします。
-    1. Colony のサンプル ブループリントを基盤として使用し、必要に応じて変更します。
+1. [初めてのブループリントを YAML ファイルを使用して作成](https://colonysupport.quali.com/hc/articles/360001680807-Steps-to-Developing-a-Blueprint)します。
+    1. GitHub または BitBucket のブループリント リポジトリを Colony にリンクさせます。
+    1. Colony のサンプル ブループリントをひな形として適宜変更を加えます。
 
-        :::image type="content" source="./media/create-application-centric-environment/performance-stress-tests.png" alt-text="ストレス テスト":::    
+        :::image type="content" source="./media/create-application-centric-environment/performance-stress-tests.png" alt-text="ストレス テストを示すスクリーンショット。":::
     1. 他のユーザーが使用できるようにブループリントを公開します。
 1. Colony を使用して、サンドボックスでアプリケーション環境を起動します。
 
-    :::image type="content" source="./media/create-application-centric-environment/blueprints.png" alt-text="Colony を使用して、サンドボックスでアプリケーション環境を起動する":::    
+    :::image type="content" source="./media/create-application-centric-environment/blueprints.png" alt-text="Colony を使用して、サンドボックスでアプリケーション環境を起動する画面のスクリーンショット。":::
 
-> [!NOTE]
-> このブループリントを、Azure DevOps の CI/CD ワークフローの一部として統合することもできます ([こちらの手順を参照](https://colonysupport.quali.com/hc/articles/360008464234))。
+Azure Pipelines の継続的インテグレーションと継続的デリバリー (CI/CD) ワークフローの一部としてブループリントを統合することもできます。 手順については、「[Azure DevOps (VSTS) からサンドボックスを起動する](https://colonysupport.quali.com/hc/articles/360008464234)」を参照してください。
 
-:::image type="content" source="./media/create-application-centric-environment/devops-pipeline.png" alt-text="Azure DevOps パイプラインに接続する":::    
+:::image type="content" source="./media/create-application-centric-environment/devops-pipeline.png" alt-text="Azure Pipelines パイプラインへの接続を示すスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

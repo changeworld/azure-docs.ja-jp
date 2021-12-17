@@ -8,16 +8,16 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
 ms.date: 08/25/2020
-ms.openlocfilehash: 4eacc1c4e863ad1a278a4974bb0f6c101aafe7e0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6473eeee350299ba98460f3f4f022e0514f90e69
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055392"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112255042"
 ---
 ### <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
 
-Azure portal で、Personalizer リソースの **[構成]** ページで、 **[モデルの更新頻度]** を 10 秒に変更します。 この短い時間でサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
+Azure portal の、Personalizer リソースの **[構成]** ページで、 **[モデルの更新頻度]** を 30 秒に変更します。 この短い時間でサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
 
 ![モデルの更新頻度を変更する](../media/settings/configure-model-update-frequency-settings.png)
 

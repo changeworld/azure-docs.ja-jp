@@ -3,20 +3,20 @@ title: Speech SDK for C# を使用して音声の意図を認識する方法
 titleSuffix: Azure Cognitive Services
 description: このガイドでは、Speech SDK for C# を使用して、音声から意図を認識する方法を学習します。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.author: trbye
+ms.author: eur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 93a3adf00203e317be912e3e72de7a3f7ca666c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b831d1e6c945528b917d7a0b21955e33be52f6d
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96001102"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484324"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Speech SDK for C# を使用して音声の意図を認識する方法
 
@@ -158,14 +158,14 @@ recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 
 ## <a name="start-recognition"></a>認識を開始する
 
-認識エンジンを作成して意図を追加したら、認識を開始できます。 Speech SDK は、単発の認識および継続的な認識の両方をサポートしています。
+認識エンジンを作成して意図を追加したら、認識を開始できます。 Speech SDK は、開始時の認識および継続的な認識の両方をサポートしています。
 
 | 認識モード | 呼び出すメソッド | 結果 |
 | ---------------- | --------------- | ------ |
-| 単発 | `RecognizeOnceAsync()` | 1 回の発話後に認識された意図を返します (ある場合)。 |
+| 開始時 | `RecognizeOnceAsync()` | 1 回の発話後に認識された意図を返します (ある場合)。 |
 | 継続的 | `StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()` | 複数の発話を認識し、結果が得られた場合はイベント (例: `IntermediateResultReceived`) を出力します。 |
 
-このアプリケーションでは単発モードが使用されるため、`RecognizeOnceAsync()` を呼び出して認識を開始します。 結果は、認識された意図に関する情報を含む `IntentRecognitionResult` オブジェクトです。 LUIS の JSON 応答は、次の式を使用して抽出します。
+このアプリケーションでは開始時モードが使用されるため、`RecognizeOnceAsync()` を呼び出して認識を開始します。 結果は、認識された意図に関する情報を含む `IntentRecognitionResult` オブジェクトです。 LUIS の JSON 応答は、次の式を使用して抽出します。
 
 ```csharp
 result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult)

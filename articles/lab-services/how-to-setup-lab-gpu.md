@@ -2,15 +2,15 @@
 title: Azure Lab Services で GPU を使用してラボを設定する | Microsoft Docs
 description: グラフィックス処理装置 (GPU) 仮想マシンを使用してラボを設定する方法について説明します。
 author: nicolela
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 8293ed1bfb53895b9631d9730fb75a2364457180
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e79038f7e05fe2605f9a861e7599fc942fdf9fff
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96452374"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180079"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>GPU 仮想マシンを使用してラボを設定する
 
@@ -47,16 +47,19 @@ ms.locfileid: "96452374"
 
 ![[新しいラボ] の [GPU ドライバーをインストールする] オプションのスクリーンショット](./media/how-to-setup-gpu/lab-gpu-drivers.png)
 
-上の図に示すように、このオプションは既定で有効になっており、選択した GPU とイメージの種類に対する "*最新の*" ドライバーが確実にインストールされます。
+上の図に示すように、このオプションは既定で有効になっており、選択した GPU とイメージの種類に対する最近リリースされたドライバーが確実にインストールされます。
 - "*コンピューティング*" GPU サイズを選択すると、ラボ VM は [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU によって増強されます。  この場合、最新の [Compute Unified Device Architecture (CUDA)](http://developer.download.nvidia.com/compute/cuda/2_0/docs/CudaReferenceManual_2.0.pdf) ドライバーがインストールされ、ハイパフォーマンス コンピューティングが可能になります。
 - "*視覚化*" GPU サイズを選択すると、ラボの VM は [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU と [GRID テクノロジ](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf)によって増強されます。  この場合、最新の GRID ドライバーがインストールされ、グラフィックス集約型アプリケーションを使用できるようになります。
 
+> [!IMPORTANT]
+> **[GPU ドライバーのインストール]** オプションでは、ラボのイメージにドライバーが存在しない場合にのみ、ドライバーがインストールされます。  たとえば、GPU ドライバーは、Azure Marketplace の [Data Science イメージ](../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm)に既にインストールされています。  データ サイエンス イメージを使用してラボを作成し、**GPU ドライバーのインストール** を選択した場合、ドライバーは最新バージョンに更新されません。  ドライバーを更新するには、次のセクションで説明するように、ドライバーを手動でインストールする必要があります。  
+
 ### <a name="install-the-drivers-manually"></a>ドライバーを手動でインストールする
-最新バージョン以外のドライバーのバージョンをインストールすることが必要になる場合があります。  このセクションでは、"*コンピューティング*" GPU または "*視覚化*" GPU のどちらを使用しているかに応じて、適切なドライバーを手動でインストールする方法を示します。
+Azure Lab Services がインストールするバージョンとは異なるバージョンのドライバーをインストールする必要がある場合があります。  このセクションでは、"*コンピューティング*" GPU または "*視覚化*" GPU のどちらを使用しているかに応じて、適切なドライバーを手動でインストールする方法を示します。
 
 #### <a name="install-the-compute-gpu-drivers"></a>コンピューティング GPU ドライバーをインストールする
 
-コンピューティング GPU サイズのドライバーを手動でインストールするには、次のようにします。
+*コンピューティング* GPU サイズのドライバーを手動でインストールするには、次のようにします。
 
 1. ラボ作成ウィザードで、[ラボを作成する](./how-to-manage-classroom-labs.md)ときに、 **[GPU ドライバーをインストールする]** の設定を無効にします。
 
@@ -80,7 +83,7 @@ ms.locfileid: "96452374"
 
 #### <a name="install-the-visualization-gpu-drivers"></a>視覚化 GPU ドライバーをインストールする
 
-視覚化 GPU サイズのドライバーを手動でインストールするには、次のようにします。
+*視覚化* GPU サイズのドライバーを手動でインストールするには、次のようにします。
 
 1. ラボ作成ウィザードで、[ラボを作成する](./how-to-manage-classroom-labs.md)ときに、 **[GPU ドライバーをインストールする]** の設定を無効にします。
 1. ラボが作成された後、テンプレート VM に接続して、適切なドライバーをインストールします。
@@ -108,6 +111,8 @@ ms.locfileid: "96452374"
 
       > [!IMPORTANT]
       > NVIDIA コントロール パネルの設定には、"*視覚化*" GPU の場合にのみアクセスできます。  コンピューティング GPU の場合に NVIDIA コントロール パネルを開こうとすると、次のエラーが表示されます。"NVIDIA Display settings are not available.  You are not currently using a display attached to an NVIDIA GPU." (NVIDIA ディスプレイの設定は使用できません。現在、NVIDIA GPU に接続されているディスプレイは使用されていません。)  同様に、タスク マネージャーの GPU パフォーマンス情報は、視覚化 GPU に対してのみ提供されます。
+
+ シナリオによっては、GPU が正しく構成されていることを確認するために、追加の検証を行う必要がある場合があります。  特定のバージョンのドライバーが必要な例を説明している [Python と Jupyter Notebooks](./class-type-jupyter-notebook.md#template-virtual-machine) に関するクラス型を参照してください。
 
 #### <a name="linux-images"></a>Linux イメージ
 「[Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](../virtual-machines/linux/n-series-driver-setup.md#verify-driver-installation)」の「ドライバーのインストールの確認」セクションの手順に従います。

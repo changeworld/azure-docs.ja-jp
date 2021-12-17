@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/03/2021
+ms.date: 09/10/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 802307a21873d15242c2e387ec0defe35f50bb20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a696b7c95129f14182e0b0e59161ce49c00566c8
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99576432"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892288"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>内部ユーザーを B2B コラボレーションに招待する
 
@@ -31,10 +31,12 @@ Azure AD B2B コラボレーションが利用できるようになる前は、�
 
 - **招待は一方向**:B2B コラボレーションを使用するように内部ユーザーを招待することはできますが、B2B 資格情報を追加した後に削除することはできません。 ユーザーを内部専用ユーザーに戻すよう変更するには、ユーザー オブジェクトを削除して、新しいものを作成する必要があります。
 
-- **Teams**:ユーザーが外部資格情報を使用して Teams にアクセスしたとき、初期状態では Teams テナント ピッカーでそのテナントを使用できません。 ユーザーは、テナント コンテキストを含む URL (例: `https://team.microsoft.com/?tenantId=<TenantId>`) を使用して Teams にアクセスできます。 その後は、Teams テナント ピッカーでテナントを使用できるようになります。
+- **Teams**:ユーザーが外部資格情報を使用して Teams にアクセスしたとき、初期状態では Teams テナント ピッカーでそのテナントを使用できません。 ユーザーは、テナント コンテキストを含む URL (例: `https://teams.microsoft.com/?tenantId=<TenantId>`) を使用して Teams にアクセスできます。 その後は、Teams テナント ピッカーでテナントを使用できるようになります。
 
 - **オンプレミスの同期されたユーザー**:オンプレミスとクラウドの間で同期されたユーザー アカウントの場合、B2B コラボレーションを使用するように招待された後も、オンプレミス ディレクトリが引き続き権限ソースとなります。 アカウントの無効化や削除を含む、オンプレミスのアカウントに対して行ったすべての変更は、クラウド アカウントに同期されます。 そのため、単にオンプレミスのアカウントを削除するだけでは、ユーザーがクラウド アカウントを維持しながらオンプレミスのアカウントにサインインできないようにすることはできません。 その代わりに、オンプレミスのアカウントのパスワードをランダムな GUID またはその他の不明な値に設定することができます。
 
+> [!NOTE]
+> Azure AD Connect 同期では、[onPremisesUserPrincipalName 属性](../hybrid/reference-connect-sync-attributes-synchronized.md#notes)を user オブジェクトに書き込む既定の規則があります。 この属性が存在すると、ユーザーが外部資格情報を使用してサインインできなくなる可能性があるため、この属性を使用するユーザー オブジェクトの内部から外部への変換をブロックします。 Azure AD Connect を使用している場合に、B2B コラボレーションに内部ユーザーを招待できるようにするには、onPremisesUserPrincipalName 属性が user オブジェクトに書き込まれないように、[既定の規則を変更](../hybrid/how-to-connect-sync-change-the-configuration.md)する必要があります。
 ## <a name="how-to-invite-internal-users-to-b2b-collaboration"></a>B2B コラボレーションに内部ユーザーを招待する方法
 
 PowerShell または招待 API を使用して、B2B 招待を内部ユーザーに送信できます。 招待に使用する電子メール アドレスが、内部ユーザー オブジェクトで外部電子メール アドレスとして設定されていることを確認します。

@@ -12,23 +12,25 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/07/2021
+ms.date: 08/26/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fabb8bbdb42212dffd3781f4e98204abb518e6b
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 91728bfee6b8e303de2e7199e703a8acaa5139d8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105580"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773590"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
 
 ソリューションを構成するさまざまなコンポーネント間の通信のセキュリティを確保するために使用されるシークレットと資格情報の管理は、開発者にとって共通の課題です。 マネージド ID により、開発者は資格情報を管理する必要がなくなります。 マネージド ID は、Azure Active Directory (Azure AD) 認証をサポートするリソースに接続するときに使用する ID をアプリケーションに提供します。 アプリケーションは、マネージド ID を使用して Azure AD トークンを取得できます。 たとえば、アプリケーションはマネージド ID を使用することで、開発者が安全に資格情報を格納できる [Azure キー コンテナー](../../key-vault/general/overview.md)などのリソースにアクセスしたり、ストレージ アカウントにアクセスしたりできるようになります。
 
-マネージド ID の用途</br>
+マネージド ID をどのように使用できるかをご覧ください</br>
 
-> [!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
+> [!VIDEO https://channel9.msdn.com/Shows/On-NET/Using-Azure-Managed-identities/player?format=ny]
+
+
 
 以下に、マネージド ID を使用する利点をいくつか紹介します。
 
@@ -46,7 +48,6 @@ ms.locfileid: "107105580"
 - **システム割り当て** Azure サービスによっては、サービス インスタンスに対して直接マネージド ID を有効にすることができます。 システム割り当てマネージド ID を有効にすると、そのサービス インスタンスのライフサイクルに関連付けられた ID が Azure AD に作成されます。 したがって、リソースが削除されると、その ID も Azure によって自動的に削除されます。 その ID を使用して Azure AD にトークンを要求できるのは、必然的に、その Azure リソースのみとなります。
 - **ユーザー割り当て** スタンドアロンの Azure リソースとしてマネージド ID を自分で作成することもできます。 [ユーザー割り当てマネージド ID を作成](how-to-manage-ua-identity-portal.md)して、それを Azure サービスの 1 つまたは複数のインスタンスに割り当てることができます。 ユーザー割り当てマネージド ID の場合、ID は、それを使用するリソースとは別に管理されます。 </br></br>
 
-> [!VIDEO https://www.youtube.com/embed/OzqpxeD3fG0]
 
 次の表は、2 種類のマネージド ID の違いを示しています。
 
@@ -74,7 +75,7 @@ Azure リソースのマネージド ID は、Azure AD 認証をサポートす�
 
 - リソース レベルでマネージド ID を有効または無効にする。
 - RBAC ロールを使用して[アクセス許可を付与する](howto-assign-access-portal.md)。
-- [Azure アクティビティ ログ](../../azure-resource-manager/management/view-activity-logs.md)内の作成、読み取り、更新、削除 (CRUD) 操作を表示する。
+- [Azure アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)内の作成、読み取り、更新、削除 (CRUD) 操作を表示する。
 - Azure AD [サインイン ログ](../reports-monitoring/concept-sign-ins.md)内のサインイン アクティビティを表示する。
 
 代わりにユーザー割り当てマネージド ID を選択した場合:
@@ -82,10 +83,10 @@ Azure リソースのマネージド ID は、Azure AD 認証をサポートす�
 - ID の[作成、読み取り、更新、削除](how-to-manage-ua-identity-portal.md)操作を実行できます。
 - RBAC のロールの割り当てを使用して[アクセス許可を付与する](howto-assign-access-portal.md)ことができます。
 - ユーザー割り当てマネージド ID は、複数のリソースで使用できます。
-- CRUD 操作は、[Azure アクティビティ ログ](../../azure-resource-manager/management/view-activity-logs.md)内で確認できます。
+- CRUD 操作は、[Azure アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)内で確認できます。
 - Azure AD [サインイン ログ](../reports-monitoring/concept-sign-ins.md)内のサインイン アクティビティを表示する。
 
-マネージド ID に対する操作は、Azure Resource Manager (ARM) テンプレート、Azure portal、Azure CLI、PowerShell、および REST API シリーズを使用して実行できます。
+マネージド ID に対する操作は、Azure Resource Manager (ARM) テンプレート、Azure portal、Azure CLI、PowerShell、および REST API を使用して実行できます。
 
 ## <a name="next-steps"></a>次のステップ
 

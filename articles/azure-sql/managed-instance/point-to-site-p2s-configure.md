@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: SQL Server Management Studio (SSMS) を使用して Azure SQL Managed Instance に接続します。オンプレミスのクライアント コンピューターからポイント対サイト接続を行います。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, jovanpop
+ms.reviewer: mathoma, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e99dbfdf482abfe0b7ccab3b7b5c805ba186419b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92788368"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752201"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>クイック スタート:オンプレミスから Azure SQL Managed Instance へのポイント対サイト接続を構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

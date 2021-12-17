@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 8562d63bf227fff665c70674c7fe66922bce9992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1208beab46a9ceb29abd75eec587dc7628e07801
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98882282"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435386"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 の Azure File Sync への移行
 
@@ -20,10 +20,14 @@ StorSimple 1200 シリーズは、オンプレミスのデータ センターで
 
 StorSimple 1200 シリーズは 2022 年 12 月に[サポート終了](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%201200%20Series)となります。  できるだけ早く移行の計画を開始することが重要です。 この記事では、Azure File Sync への移行を成功させるために必要な背景知識と移行手順について説明します。 
 
-## <a name="azure-file-sync"></a>Azure File Sync
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
-> [!IMPORTANT]
-> Microsoft はお客様の移行を支援できるよう取り組んでいます。 カスタマイズした移行計画について、および移行中のサポートについては、AzureFilesMigration@microsoft .com にメールをお送りください。
+## <a name="azure-file-sync&quot;></a>Azure File Sync
 
 Azure File Sync は、次の 2 つの主要なコンポーネントに基づく Microsoft のクラウド サービスです。
 
@@ -32,8 +36,8 @@ Azure File Sync は、次の 2 つの主要なコンポーネントに基づく 
 
 この記事では、移行手順を中心に説明します。 移行前に Azure File Sync について詳しく知りたい場合は、次の記事をお勧めします。
 
-* [Azure File Sync - 概要](./storage-sync-files-planning.md "概要")
-* [Azure File Sync - デプロイ ガイド](storage-sync-files-deployment-guide.md)
+* [Azure File Sync - 概要](../file-sync/file-sync-planning.md &quot;概要")
+* [Azure File Sync - デプロイ ガイド](../file-sync/file-sync-deployment-guide.md)
 
 ## <a name="migration-goals"></a>移行の目標
 
@@ -78,6 +82,15 @@ Azure File Sync の構成後にファイルとフォルダーの構造を変更�
 
 [!INCLUDE [storage-files-migration-provision-azfs](../../../includes/storage-files-migration-provision-azure-file-share.md)]
 
+#### <a name="storage-account-settings"></a>Storage アカウントの設定
+
+ストレージ アカウントには多くの構成を行います。 ストレージ アカウントの構成には、次のチェックリストを使用する必要があります。 たとえば、移行の完了後にネットワーク構成を変更できます。 
+
+> [!div class="checklist"]
+> * 大型ファイルの共有: 有効 - 大きなファイルを共有すると、パフォーマンスが向上し、共有に最大 100 TiB を格納できます。
+> * ファイアウォールと仮想ネットワーク: 無効 - IP 制限を構成したり、ストレージ アカウントの特定の VNET へのアクセスに制限したりしません。 ストレージ アカウントのパブリック エンドポイントは、移行中に使用されます。 Azure VM からのすべての IP アドレスを許可する必要があります。 移行後は、ストレージ アカウントでファイアウォール規則を構成するのが最善です。
+> * プライベート エンドポイント: サポートされている - プライベート エンドポイントを有効にできますが、パブリック エンドポイントは移行に使用され、引き続き使用できる必要があります。
+
 ### <a name="step-6-configure-windows-server-target-folders"></a>手順 6:Windows Server のターゲット フォルダーを構成する
 
 前の手順では、同期トポロジのコンポーネントを決定するすべての側面を検討しました。 この時点で、アップロード用のファイルを受信するようにサーバーを準備します。
@@ -112,76 +125,7 @@ Windows Server ターゲット フォルダーへの最初のローカル コピ
 
 次の RoboCopy コマンドを実行すると、StorSimple Azure Storage からローカル StorSimple にファイルが呼び出された後、Windows Server のターゲット フォルダーに移動されます。 Windows Server によってそれが Azure ファイル共有に同期されます。 ローカル環境の Windows Server ボリュームがいっぱいになると、クラウドを使った階層化により、既に正常に同期されているファイルの階層化が開始されます。 クラウドを使った階層化により、StorSimple 仮想アプライアンスからのコピーを続けるのに十分な領域が生成されます。 クラウドを使った階層化では、1 時間に 1 回、同期されたものが確認されて、ボリューム空き領域 99% になるようにディスク領域が解放されます。
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-背景:
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      RoboCopy でマルチスレッドを実行できるようにします。 既定値は 8 です。最大値は 128 です。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:<file name>
-   :::column-end:::
-   :::column span="1":::
-      状態を UNICODE 形式でログ ファイルに出力します (既存のログを上書きします)。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      コンソール ウィンドウに出力します。 ログ ファイルへの出力と組み合わせて使用されます。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      バックアップ アプリケーションが使用するのと同じモードで RoboCopy を実行します。 これにより、現在のユーザーがアクセス許可を持っていないファイルを、RoboCopy で移動できます。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      同じターゲットつまりコピー先に対して、この RoboCopy コマンドを複数回順番に実行できます。 前にコピーされたものが識別されて、省略されます。 前回の実行以降に発生した変更、追加、"*削除*" だけが処理されます。 コマンドが以前に実行されていない場合は、何も省略されません。 これは、まだアクティブに使用および変更されているソースの場所に適したオプションです。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY:copyflag[s]
-   :::column-end:::
-   :::column span="1":::
-      ファイル コピーの忠実性 (既定値は /COPY:DAT)、コピー フラグ: D = データ、A = 属性、T = タイムスタンプ、S = セキュリティ = NTFS ACL、O = 所有者情報、U = 監査情報
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      すべてのファイル情報をコピーします (/COPY:DATSOU と同等)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY:copyflag[s]
-   :::column-end:::
-   :::column span="1":::
-      ディレクトリのコピーの忠実性 (既定値は /DCOPY:DA)、コピー フラグ: D = データ、A = 属性、T = タイムスタンプ
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 RoboCopy コマンドを初めて実行するときは、ユーザーとアプリケーションがまだ StorSimple のファイルとフォルダーにアクセスしていて、それを変更する場合があります。 RoboCopy があるディレクトリを処理し、次のディレクトリに移動した後、ソースの場所 (StorSimple) のユーザーがファイルを追加、変更、または削除し、現在の RoboCopy の実行では処理されない可能性があります。 問題はありません。
 
@@ -225,6 +169,14 @@ Windows Server に十分な空き容量がある場合は、コマンドを再�
 他の Azure File Sync の問題が発生することもあります。
 可能性は低いですが発生した場合は、**Azure File Sync のトラブルシューティング ガイド** を参照してください。
 
+[!INCLUDE [storage-files-migration-robocopy-optimize](../../../includes/storage-files-migration-robocopy-optimize.md)]
+
+---
+
+> [!NOTE]
+> まだ質問があるか、問題が発生していますか。</br>
+> その場合は、:::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-migration-email.png" alt-text="スペースなしの電子メールアドレス: Azure Files migration at microsoft dot com"::: にご連絡ください。
+
 ## <a name="relevant-links"></a>関連するリンク
 
 移行に関するコンテンツ:
@@ -233,6 +185,6 @@ Windows Server に十分な空き容量がある場合は、コマンドを再�
 
 Azure File Sync のコンテンツ:
 
-* [AFS の概要](./storage-sync-files-planning.md)
-* [AFS デプロイ ガイド](./storage-how-to-create-file-share.md)
-* [AFS のトラブルシューティング](storage-sync-files-troubleshoot.md)
+* [Azure File Sync の概要](../file-sync/file-sync-planning.md)
+* [Azure File Sync をデプロイする](../file-sync/file-sync-deployment-guide.md)
+* [Azure File Sync のトラブルシューティング ガイド](../file-sync/file-sync-troubleshoot.md)

@@ -2,18 +2,18 @@
 title: クイック スタート:Azure Storage アカウントと Azure CDN との統合
 description: このクイックスタートでは、Azure Content Delivery Network (CDN) を使用して、Azure Storage から BLOB をキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: quickstart
 ms.date: 04/30/2020
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 444639d9e36b67f25ed9b82bd68102273c66ae00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a420432e52e584fbcac85d8801d025ac1fee80e0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951234"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439331"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>クイック スタート:Azure Storage アカウントと Azure CDN との統合
 
@@ -78,7 +78,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 ストレージ アカウントの **[Azure CDN]** ページで、一覧から CDN エンドポイントを選んで、CDN エンドポイント構成ページを開きます。
 
-このページから、[圧縮](cdn-improve-performance.md)、[クエリ文字列キャッシュ](cdn-query-string.md)、[geo フィルタリング](cdn-restrict-access-by-country.md)など、配信のその他の CDN 機能を有効にすることができます。 
+このページから、[圧縮](cdn-improve-performance.md)、[クエリ文字列キャッシュ](cdn-query-string.md)、[geo フィルタリング](cdn-restrict-access-by-country-region.md)など、配信のその他の CDN 機能を有効にすることができます。 
     
 ## <a name="enable-sas"></a>SAS を有効にする
 

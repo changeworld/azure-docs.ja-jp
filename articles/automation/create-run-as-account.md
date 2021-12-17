@@ -1,20 +1,22 @@
 ---
 title: Azure Automation の実行アカウントを作成する
-description: この記事では、PowerShell または Azure portal を使用して、実行アカウントを作成する方法について説明します。
+description: この記事では、PowerShell で、または Azure portal から、Azure Automation 実行アカウントを作成する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/06/2021
+ms.date: 05/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: ef6afff30da48b79b42e5fb4b3c72c3500f22dd1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4c66a06d9ee54a590f83c026604d72e3933b21fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172305"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836874"
 ---
 # <a name="how-to-create-an-azure-automation-run-as-account"></a>Azure Automation の実行アカウントを作成する方法
 
 Azure Automation の実行アカウントでは、Automation の Runbook やその他の自動化機能を使用し、Azure Resource Manager または Azure クラシック デプロイ モデルのリソースを管理する認証を提供します。 この記事では、Azure portal または Azure PowerShell から実行またはクラシック実行アカウントを作成する方法について説明します。
+
+Azure portal で実行アカウントまたはクラシック実行アカウントを作成すると、既定で自己署名証明書が使われます。 企業またはサードパーティの証明機関 (CA) によって発行された証明書を使用する場合は、[PowerShell スクリプトを使用して実行アカウントを作成](#powershell-script-to-create-a-run-as-account)できます。
 
 ## <a name="create-account-in-azure-portal"></a>Azure portal でアカウントを作成する
 
@@ -45,6 +47,13 @@ Azure Automation の実行アカウントでは、Automation の Runbook やそ�
 * Automation アカウント。`AutomationAccountName` および `ApplicationDisplayName` パラメーターの値として参照されます。
 * [実行アカウントを構成するために必要なアクセス許可](automation-security-overview.md#permissions)に関する記述で一覧表示されているものに相当するアクセス許可。
 
+エンタープライズまたはサードパーティの証明機関 (CA) の証明書を使用する予定の場合、Automation では証明書に次の構成が必要です。
+
+   * **Microsoft Enhanced RSA and AES Cryptographic Provider** プロバイダーを指定する
+   * エクスポート可能としてマークされている
+   * SHA256 アルゴリズムを使用するように構成されている
+   * `*.pfx` または `*.cer` 形式で保存されている
+
 PowerShell スクリプトの必須パラメーターである `AutomationAccountName`、`SubscriptionId` および `ResourceGroupName`を取得するには、次の手順を行います。
 
 1. Azure portal にサインインします。
@@ -63,9 +72,8 @@ PowerShell スクリプトの必須パラメーターである `AutomationAccoun
 
 PowerShell スクリプトでは、いくつかの構成をサポートしています。
 
-* 自己署名証明書を使用して実行アカウントを作成する。
 * 自己署名証明書を使用して実行アカウントやクラシック実行アカウントを作成する。
-* エンタープライズ証明機関 (CA) によって発行された証明書を使用して実行アカウントやクラシック実行アカウントを作成する。
+* 企業またはサードパーティの証明機関 (CA) によって発行された証明書を使用して実行アカウントやクラシック実行アカウントを作成する。
 * Azure Government クラウドで自己署名証明書を使用して実行アカウントやクラシック実行アカウントを作成する。
 
 1. 次のコマンドを使用して、スクリプトをダウンロードし、ローカル フォルダーに保存します。
@@ -108,6 +116,6 @@ PowerShell スクリプトでは、いくつかの構成をサポートしてい
 
 ## <a name="next-steps"></a>次のステップ
 
-* グラフィック作成の詳細については、[Azure Automation でのグラフィカル Runbook の作成](automation-graphical-authoring-intro.md)に関する記事を参照してください。
-* PowerShell Runbook の使用を開始するには、「[チュートリアル:PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
+* PowerShell Runbook の使用を開始するには、「[チュートリアル:PowerShell Runbook を作成する](./learn/powershell-runbook-managed-identity.md)」を参照してください。
+
 * Python 3 runbook の使用を開始するには、「[チュートリアル: Python 3 Runbook を作成する](learn/automation-tutorial-runbook-textual-python-3.md)」を参照してください。

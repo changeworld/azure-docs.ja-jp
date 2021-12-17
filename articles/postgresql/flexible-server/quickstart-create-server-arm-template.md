@@ -4,15 +4,15 @@ description: このクイックスタートでは、ARM テンプレートを使
 author: mksuni
 ms.service: postgresql
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: sumuth
 ms.date: 2/11/2021
-ms.openlocfilehash: 1f6abb62086bf92be8ae2fe50abbfa5300185fd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35b64c3998180b6a051d5ed4dd8c27f36b213131
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384267"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693643"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---flexible-server"></a>クイック スタート:ARM テンプレートを使用して Azure Database for PostgreSQL - フレキシブル サーバーを作成する
 

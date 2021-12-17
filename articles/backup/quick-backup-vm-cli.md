@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 521f9332590eca5cdf94fadc4b59ab4d482eb658
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 46e4eb1392345f4b0ccd8cdcedc30a75e2123877
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768561"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599907"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-azure-cli"></a>Azure CLI を使用した Azure での仮想マシンのバックアップ
 
@@ -91,6 +91,7 @@ az backup protection backup-now \
     --vault-name myRecoveryServicesVault \
     --container-name myVM \
     --item-name myVM \
+    --backup-management-type AzureIaaSVM
     --retain-until 18-10-2017
 ```
 
@@ -128,6 +129,7 @@ az backup protection disable \
     --vault-name myRecoveryServicesVault \
     --container-name myVM \
     --item-name myVM \
+    --backup-management-type AzureIaaSVM
     --delete-backup-data true
 az backup vault delete \
     --resource-group myResourceGroup \

@@ -3,14 +3,14 @@ title: チュートリアル:Azure HDInsight でエンドツーエンドの ETL 
 description: Azure HDInsight を使用して ETL パイプラインを作成し、Spark のオンデマンド クラスターと Power BI を使用して売上データから分析情報を導き出す方法を説明します。
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive, devx-track-azurecli
+ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 140709a0ddb548c126ceca208fdeef2db77616bf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8fc2654dfb41ef4b9e1e2491f6c130229b856682
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761801"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091704"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight でエンドツーエンドのデータ パイプラインを作成して売上の分析情報を導き出す
 
@@ -168,7 +168,7 @@ ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.out
 このスクリプトでは、次のことが行われます。
 
 1. Data Lake Storage Gen2 ストレージ アカウントに対する `Storage Blob Data Contributor` アクセス許可を持つサービス プリンシパルを作成します。
-1. [Data Lake Storage Gen2 ファイル システム REST API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/filesystem/create) に対する POST 要求を承認するための認証トークンを取得します。
+1. [Data Lake Storage Gen2 ファイル システム REST API](/rest/api/storageservices/datalakestoragegen2/filesystem/create) に対する POST 要求を承認するための認証トークンを取得します。
 1. `sparktransform.py` および `query.hql` ファイルに、Data Lake Storage Gen2 ストレージ アカウントの実際の名前を入力します。
 1. Data Lake Storage Gen2 および Blob Storage アカウントのストレージ キーを取得します。
 1. 別のリソース デプロイを作成して、Azure Data Factory パイプラインとそれに関連付けられているリンクされたサービスやアクティビティを作成します。 これによって、リンクされたサービスがストレージ アカウントに正しくアクセスできるように、ストレージ キーがパラメーターとしてテンプレート ファイルに渡されます。
@@ -265,8 +265,8 @@ HDInsight を使用してデータを変換する他の方法については、[
 
 1. **[ナビゲーター]** から `sales` または `sales_raw` を選択して、データをプレビューします。 データが読み込まれたら、作成したいダッシュボードを試すことができます。 Power BI ダッシュボードの概要については、以下のリンクを参照してください。
 
-* [Power BI デザイナーのダッシュボードの概要](https://docs.microsoft.com/power-bi/service-dashboards)
-* [チュートリアル:Power BI サービスの概要](https://docs.microsoft.com/power-bi/service-get-started)
+* [Power BI デザイナーのダッシュボードの概要](/power-bi/service-dashboards)
+* [チュートリアル:Power BI サービスの概要](/power-bi/service-get-started)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

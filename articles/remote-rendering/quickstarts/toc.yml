@@ -8,7 +8,9 @@
       href: deploy-to-desktop.md
 - name: ネイティブ C++
   items:
-    - name: ネイティブ C++ サンプルを HoloLens にデプロイする
+    - name: OpenXR ベースのネイティブ C++ サンプルを HoloLens にデプロイする
+      href: native-cpp/hololens/deploy-native-cpp-openxr-tutorial.md
+    - name: WMR ベースのネイティブ C++ サンプルを HoloLens にデプロイする
       href: native-cpp/hololens/deploy-native-cpp-tutorial.md
 - name: モデルをレンダリング用に変換する
   href: convert-model.md

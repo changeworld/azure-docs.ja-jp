@@ -5,16 +5,18 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 6/24/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: db7ffabae785a589bacf349356079f6046039f9c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 6/24/2020
+ms.openlocfilehash: 249fdc83e42384e4d989293078e842a8bb2a8583
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94541999"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652590"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Azure CLI での監査ログの構成とアクセス
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure CLI を使用して、[Azure Database for MySQL の監査ログ](concepts-audit-logs.md)を構成することができます。
 
@@ -24,13 +26,13 @@ Azure CLI を使用して、[Azure Database for MySQL の監査ログ](concepts-
 
 - [Azure Database for MySQL サーバー](quickstart-create-mysql-server-database-using-azure-portal.md)が必要です。
 
-[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+[!INCLUDE[azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 - この記事では、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="configure-audit-logging"></a>監査ログを構成する
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > サーバーのパフォーマンスに大きな影響を与えないように、監査のために必要なイベントの種類とユーザーのみをログに記録することをお勧めします。
 
 次の手順に従って、監査ログを有効にし、構成します。
@@ -40,17 +42,18 @@ Azure CLI を使用して、[Azure Database for MySQL の監査ログ](concepts-
     az mysql server configuration set --name audit_log_enabled --resource-group myresourcegroup --server mydemoserver --value ON
     ```
 
-1. **audit_log_events** パラメーターを更新して、ログに記録する [イベントの種類](concepts-audit-logs.md#configure-audit-logging)を選択します。
+2. **audit_log_events** パラメーターを更新して、ログに記録する [イベントの種類](concepts-audit-logs.md#configure-audit-logging)を選択します。
     ```azurecli-interactive
     az mysql server configuration set --name audit_log_events --resource-group myresourcegroup --server mydemoserver --value "ADMIN,CONNECTION"
     ```
 
-1. **audit_log_exclude_users** パラメーターを更新して、ログから除外する MySQL ユーザーを追加します。 ユーザーは MySQL ユーザー名で指定します。
+3. **audit_log_exclude_users** パラメーターを更新して、ログから除外する MySQL ユーザーを追加します。 ユーザーは MySQL ユーザー名で指定します。
     ```azurecli-interactive
     az mysql server configuration set --name audit_log_exclude_users --resource-group myresourcegroup --server mydemoserver --value "azure_superuser"
     ```
 
-1. **audit_log_include_users** パラメーターを更新して、ログに含める特定の MySQL ユーザーを追加します。 ユーザーは MySQL ユーザー名で指定します。
+4. **audit_log_include_users** パラメーターを更新して、ログに含める特定の MySQL ユーザーを追加します。 ユーザーは MySQL ユーザー名で指定します。
+
     ```azurecli-interactive
     az mysql server configuration set --name audit_log_include_users --resource-group myresourcegroup --server mydemoserver --value "sampleuser"
     ```

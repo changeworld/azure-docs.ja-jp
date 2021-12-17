@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d8784bc4744e2d4beb6a72fdc0df0fd0b32346f9
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 4cded3a765cf42e17890a2f0181d38ea918fee33
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605010"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408499"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>チュートリアル:リモートでレンダリングされたモデルの表示
 
@@ -126,6 +126,9 @@ Azure Remote Rendering パッケージを Unity プロジェクトに追加す�
 
     ![Unity エディターのプロジェクトの確認](./media/remote-render-unity-validation.png)
 
+> [!NOTE]
+> プロジェクトで MRTK を使用し、カメラ サブシステムを有効にすると、MRTK によって、カメラに適用した手動による変更が上書きされます。 これには、ValidateProject ツールによる修正が含まれます。
+
 ## <a name="create-a-script-to-coordinate-azure-remote-rendering-connection-and-state"></a>Azure Remote Rendering の接続と状態を調整するスクリプトを作成する
 
 リモートでレンダリングされるモデルを表示するには、4 つの基本的なステージがあります。次のフローチャートにその概要を示します。 各ステージは順番に実行する必要があります。 次の手順では、アプリケーションの状態を管理し、必要な各ステージを進めるスクリプトを作成します。
@@ -182,14 +185,15 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     public static RemoteRenderingCoordinator instance;
 
-    // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
-    // The list of regions is available at https://docs.microsoft.com/azure/remote-rendering/reference/regions
+    // Account
+    // RemoteRenderingDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
+    // For most people '<region>' is either 'westus2' or 'westeurope'
     [SerializeField]
-    private string accountDomain = "westus2.mixedreality.azure.com";
-    public string AccountDomain
+    private string remoteRenderingDomain = "westus2.mixedreality.azure.com";
+    public string RemoteRenderingDomain
     {
-        get => accountDomain.Trim();
-        set => accountDomain = value;
+        get => remoteRenderingDomain.Trim();
+        set => remoteRenderingDomain = value;
     }
 
     [Header("Development Account Credentials")]
@@ -201,12 +205,12 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     }
 
     [SerializeField]
-    private string accountAuthenticationDomain = "<enter your account authentication domain here>";
-    public string AccountAuthenticationDomain
+    private string accountDomain = "<enter your account domain here>";
+    public string AccountDomain
     {
-        get => accountAuthenticationDomain.Trim();
-        set => accountAuthenticationDomain = value;
-    }   
+        get => accountDomain.Trim();
+        set => accountDomain = value;
+    }    
 
     [SerializeField]
     private string accountKey = "<enter your account key here>";
@@ -272,7 +276,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
             if (currentCoordinatorState != value)
             {
                 currentCoordinatorState = value;
-                Debug.Log($"State changed to: {currentCoordinatorState}");
+                Debug.LogFormat(LogType.Log, LogOption.NoStacktrace, null, "{0}", $"State changed to: {currentCoordinatorState}");
                 CoordinatorStateChange?.Invoke(currentCoordinatorState);
             }
         }
@@ -297,7 +301,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     private async Task<SessionConfiguration> GetDevelopmentCredentials()
     {
         Debug.LogWarning("Using development credentials! Not recommended for production.");
-        return await Task.FromResult(new SessionConfiguration(AccountAuthenticationDomain, AccountDomain, AccountId, AccountKey));
+        return await Task.FromResult(new SessionConfiguration(AccountDomain, RemoteRenderingDomain, AccountId, AccountKey));
     }
 
     /// <summary>
@@ -531,7 +535,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 1. *RemoteRenderingCoordinator* スクリプトを **RemoteRenderingCoordinator** GameObject に追加します。\
 ![RemoteRenderingCoordinator コンポーネントを追加する](./media/add-coordinator-script.png)
 1. インスペクターで "*サービス*" として表示される *ARRServiceUnity* スクリプトが、自動的に GameObject に追加されていることを確認します。 判然としない場合は、**RemoteRenderingCoordinator** スクリプトの先頭に `[RequireComponent(typeof(ARRServiceUnity))]` が含まれていることを確認してください。
-1. Azure Remote Rendering の資格情報、アカウント認証ドメイン、アカウント ドメインをコーディネーター スクリプトに追加します。\
+1. Azure Remote Rendering の資格情報、アカウント ドメイン、リモート レンダリング ドメインをコーディネーター スクリプトに追加します。
 ![資格情報を追加する](./media/configure-coordinator-script.png)
 
 ## <a name="initialize-azure-remote-rendering"></a>Azure Remote Rendering を初期化する
@@ -570,11 +574,21 @@ public async void InitializeSessionService()
     if (ARRCredentialGetter == null)
         ARRCredentialGetter = GetDevelopmentCredentials;
 
-    var accountInfo = await ARRCredentialGetter.Invoke();
+    var sessionConfiguration = await ARRCredentialGetter.Invoke();
 
     ARRSessionService.OnSessionStatusChanged += OnRemoteSessionStatusChanged;
 
-    ARRSessionService.Initialize(accountInfo);
+    try
+    {
+        ARRSessionService.Initialize(sessionConfiguration);
+    }
+    catch (ArgumentException argumentException)
+    {
+        NotificationBar.Message("InitializeSessionService failed: SessionConfiguration is invalid.");
+        Debug.LogError(argumentException.Message);
+        CurrentCoordinatorState = RemoteRenderingState.NotAuthorized;
+        return;
+    }
 
     CurrentCoordinatorState = RemoteRenderingState.NoSession;
 }
@@ -748,18 +762,6 @@ private void LateUpdate()
             modelGameObject.name = parent.name + "_Entity";
         }
 
-    #if UNITY_WSA
-        //Anchor the model in the world, prefer anchoring parent if there is one
-        if (parent != null)
-        {
-            parent.gameObject.AddComponent<WorldAnchor>();
-        }
-        else
-        {
-            modelGameObject.AddComponent<WorldAnchor>();
-        }
-    #endif
-
         //Load a model that will be parented to the entity
         var loadModelParams = new LoadModelFromSasOptions(modelPath, modelEntity);
         var loadModelAsync = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams, progress);
@@ -773,7 +775,6 @@ private void LateUpdate()
 1. [リモート エンティティ](../../../concepts/entities.md)を作成します。
 1. リモート エンティティを表すローカル GameObject を作成します。
 1. ローカル GameObject を構成して、その状態 (すなわち変換) を、リモート エンティティのすべてのフレームに同期させます。
-1. 名前を設定し、[**WorldAnchor**](https://docs.unity3d.com/550/Documentation/ScriptReference/VR.WSA.WorldAnchor.html) を追加して、安定化を支援します。
 1. Blob Storage からリモート エンティティにモデル データを読み込みます。
 1. 後で参照できるように、親エンティティを返します。
 

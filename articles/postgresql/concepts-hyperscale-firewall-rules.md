@@ -1,26 +1,32 @@
 ---
-title: ファイアウォール規則 - Hyperscale (Citus) - Azure Database for PostgreSQL
-description: この記事では、Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則について説明します。
+title: パブリック アクセス - Hyperscale (Citus) - Azure Database for PostgreSQL
+description: この記事では、Azure Database for PostgreSQL - Hyperscale (Citus) のパブリック アクセスについて説明します。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 9/12/2019
-ms.openlocfilehash: 559c5eca6fa8a6eceb37ade003d4f1983c0a1a1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/15/2021
+ms.openlocfilehash: cb695514fe4fd1b3d0ed72dd70aeb8b5d6ca4253
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90902097"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072189"
 ---
-# <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則
+# <a name="public-access-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) のパブリック アクセス
+
+[!INCLUDE [azure-postgresql-hyperscale-access](../../includes/azure-postgresql-hyperscale-access.md)]
+
+このページでは、パブリック アクセス オプションについて説明します。 プライベート アクセスについては、[こちら](concepts-hyperscale-private-access.md)を参照してください。
+
+## <a name="firewall-overview"></a>ファイアウォールの概要
+
 Azure Database for PostgreSQL サーバーのファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、Hyperscale (Citus) コーディネーター ノードへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
 ファイアウォールを構成するには、受け入れ可能な IP アドレスの範囲を指定するファイアウォール規則を作成します。 ファイアウォール規則はサーバー レベルで作成できます。
 
 **ファイアウォール規則**: これらの規則により、クライアントは、Hyperscale (Citus) コーディネーター ノード、つまり、同じ論理サーバー内のすべてのデータベースにアクセスできるようになります。 サーバー レベルのファイアウォール規則を構成するには、Azure portal を使用します。 サーバー レベルのファイアウォール規則を作成するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。
 
-## <a name="firewall-overview"></a>ファイアウォールの概要
 既定では、コーディネーター ノードへのすべてのデータベース アクセスが、ファイアウォールによってブロックされます。 他のコンピューターからサーバーの使用を開始するには、サーバー レベルのファイアウォール規則を 1 つ以上指定して、サーバーへのアクセスを有効にする必要があります。 ファイアウォール規則を使用して、インターネットからのアクセスを許可する IP アドレス範囲を指定します。 Azure Portal Web サイト自体へのアクセスは、ファイアウォール規則の影響は受けません。
 インターネットおよび Azure からの接続の試行は、次の図に示されるように、PostgreSQL データベースに到達する前にファイアウォールを通過する必要があります。
 

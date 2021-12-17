@@ -4,27 +4,29 @@ description: このクイックスタートでは、Azure Front Door を使用�
 services: front-door
 documentationcenter: na
 author: duongau
-manager: KumudD
-ms.assetid: ''
-ms.service: frontdoor
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: a3ecb8cacd8fa47709432e26243bd754511658d2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: KumudD
+ms.date: 04/19/2021
+ms.topic: quickstart
+ms.service: frontdoor
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom: devx-track-azurepowershell, mode-api
+ms.openlocfilehash: 29c0718f048358867f78ef58f2d0a688240d08a0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057917"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086267"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-powershell"></a>クイックスタート:Azure PowerShell を使用して高可用性のグローバル Web アプリケーション向けの Front Door を作成する
 
 Azure PowerShell を使用して、高可用性でハイ パフォーマンスのグローバル Web アプリケーションを作成することにより、Azure Front Door の使用を開始します。
 
 Front Door により、バックエンド プール内の特定のリソースに Web トラフィックが送信されます。 フロントエンド ドメインを定義し、バックエンド プールにリソースを追加して、ルーティング規則を作成します。 この記事では、1 つのバックエンド プールに 2 つの Web アプリ リソースがある単純な構成と、"/*" に一致する既定のパスを使用する 1 つのルーティング規則を使用します。
+
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="PowerShell を使用した Front Door 環境の図。" border="false":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,17 +56,17 @@ New-AzResourceGroup -Name myResourceGroupFD -Location centralus
 ```azurepowershell-interactive
 # Create first web app in Central US region.
 $webapp1 = New-AzWebApp `
--Name "WebAppContoso-$(Get-Random)" `
+-Name "WebAppContoso-1" `
 -Location centralus `
 -ResourceGroupName myResourceGroupFD `
 -AppServicePlan myAppServicePlanCentralUS
 
 # Create second web app in South Central US region.
 $webapp2 = New-AzWebApp `
--Name "WebAppContoso-$(Get-Random)" `
+-Name "WebAppContoso-2" `
 -Location southcentralus `
 -ResourceGroupName myResourceGroupFD `
--AppServicePlan myAppServicePlanSouthCentralUS
+-AppServicePlan myAppServicePlanEastUS
 ```
 
 ## <a name="create-a-front-door"></a>Front Door を作成する

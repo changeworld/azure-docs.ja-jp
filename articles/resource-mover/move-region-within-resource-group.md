@@ -7,20 +7,16 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8eb4dc8ee58d9ced141c7c4e4404596ace727f0c
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97797280"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459168"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>(リソース グループ) のリソースをリージョン間で移動する
 
 この記事では、特定のリソース グループのリソースを別の Azure リージョンに移動する方法について説明します。 リソース グループで、移動するリソースを選択します。 次に、[Azure Resource Mover](overview.md) を使用してそれらを移動します。
-
-> [!IMPORTANT]
-> Azure Resource Mover は現在、パブリックプレビュー段階にあります。
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -119,7 +115,7 @@ ms.locfileid: "97797280"
 
 1. **[Across regions]\(リージョン間\)** で、ソース リソース グループ、 **[準備]** の順に選択します。
 2. **[リソースの準備]** で、 **[準備]** を選択します。
-1. 
+
     ![ソース リソース グループを準備するためのボタン](./media/move-region-within-resource-group/prepare-source-resource-group.png)
 
     準備プロセス中に、Resource Mover によって、リソース グループの設定を使用して Azure Resource Manager (ARM) テンプレートが生成されます。 リソース グループ内のリソースは影響を受けません。
@@ -137,7 +133,7 @@ ms.locfileid: "97797280"
 2. **[リソースの移動]** で、 **[移動の開始]** を選択します。 リソース グループは、"*移動の開始が進行中*" の状態に移ります。
 3. 移動を開始した後、生成された ARM テンプレートに基づいて、ターゲット リソース グループが作成されます。 ソース リソース グループは、"*移動のコミットが保留中*" の状態に移ります。
 
-![移動のコミットを示すステータス](./media/move-region-availability-zone/commit-move-pending.png)
+    ![移動のコミットを示すステータス](./media/move-region-availability-zone/commit-move-pending.png)
 
 移動プロセスをコミットして完了するには、次のようにします。
 

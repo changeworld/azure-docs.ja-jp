@@ -2,13 +2,13 @@
 title: Azure Batch でのジョブとタスク
 description: ジョブとタスク、および Azure Batch ワークフローでのそれらの使用方法について、開発の観点から説明します。
 ms.topic: conceptual
-ms.date: 11/23/2020
-ms.openlocfilehash: e1ca721ec7527d9d042c129c22cf0266e57c32e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: faedb912b0c21acdec977fe7651f0a5daddb2c6f
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95808589"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004171"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Azure Batch でのジョブとタスク
 
@@ -24,7 +24,7 @@ Azure Batch では、*タスク* は計算の単位を表します。 *ジョブ
 
 作成するジョブには、オプションの優先順位を割り当てることができます。 Batch サービスは、ジョブの優先順位を使用して、各プール内の (ジョブ内のすべてのタスクの) スケジューリングの順序を決定します。
 
-ジョブの優先順位を更新するには、[ジョブのプロパティの更新](/rest/api/batchservice/job/update)操作 (Batch REST) を呼び出すか、[CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) (Batch .NET) を変更します。 優先順位の値の範囲は、-1,000 (最も低い優先順位) から 1,000 (最も高い優先順位) までです。
+ジョブの優先順位を更新するには、[ジョブのプロパティの更新](/rest/api/batchservice/job/update)操作 (Batch REST) を呼び出すか、[CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob.priority) (Batch .NET) を変更します。 優先順位の値の範囲は、-1,000 (最も低い優先順位) から 1,000 (最も高い優先順位) までです。
 
 同じプール内で、優先順位の高いジョブは優先順位の低いジョブよりも優先的にスケジュールされます。 すでに実行中の優先順位の低いジョブのタスクが、優先順位の高いジョブのタスクによって割りこまれることはありません。 ジョブは、優先順位が同じであれば、スケジュールされる可能性は等しくなり、タスクの実行順序は定義されていません。
 
@@ -91,7 +91,7 @@ Batch サービスには、ノードで計算を実行するために定義す�
 
 ただし、開始タスクにはコンピューティング ノードで実行されるすべてのタスク用の参照データを含めることもできます。 たとえば、開始タスクのコマンド ラインで `robocopy` 操作を実行し、(リソース ファイルとして指定され、ノードにダウンロードされた) アプリケーション ファイルを開始タスクの [作業ディレクトリ](files-and-directories.md)から **共有フォルダー** にコピーしたうえで、MSI または `setup.exe` を実行することができます。
 
-一般的には、Batch サービスが開始タスクの完了まで待ってから、タスクを割り当てられる状態になっているノードを判断することが望ましいものの、これは構成可能です。
+一般的には、Batch サービスが開始タスクの完了まで待ってから、タスクを割り当てられる状態になっているノードを判断することが望ましいものの、 これは、必要に応じて、さまざまな方法で構成することができます。
 
 コンピューティング ノードで開始タスクが失敗した場合、そのノードはエラーを表す状態に更新され、そのノードには一切タスクが割り当てられなくなります。 ストレージからのリソース ファイルのコピーに問題があったり、コマンド ラインで実行されたプロセスからゼロ以外の終了コードが返されたりした場合に、開始タスクは失敗することがあります。
 
@@ -155,13 +155,13 @@ Batch .NET ライブラリを使用して MPI ジョブを Batch で実行する
 
 ### <a name="environment-settings-for-tasks"></a>タスクの環境設定
 
-Batch サービスによって実行されるすべてのタスクは、コンピューティング ノード上に設定されている環境変数を利用することができます。 これには、Batch サービスによって定義された ([サービス定義](./batch-compute-node-environment-variables.md)) 環境変数のほか、ユーザーがタスクに対して定義するカスタム環境変数が含まれます。 これらの環境変数は、タスクによって実行されるアプリケーションやスクリプトから実行中に利用することができます。
+Batch サービスによって実行されるすべてのタスクは、コンピューティング ノード上に設定されている環境変数を利用することができます。 これには、[Batch サービスによって定義された環境変数](./batch-compute-node-environment-variables.md)のほか、ユーザーがタスクに対して定義するカスタム環境変数が含まれます。 これらの環境変数は、タスクによって実行されるアプリケーションやスクリプトから実行中に利用することができます。
 
-カスタム環境変数は、タスクまたはジョブの *環境設定* プロパティを設定することで、タスク レベルまたはジョブ レベルで設定できます。 詳細については、[ジョブへのタスクの追加](/rest/api/batchservice/task/add?)操作 (Batch REST API) に関するページ、または [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) プロパティと [CloudJob.CommonEnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudjob) プロパティ (Batch .NET) に関するページをご覧ください。
+カスタム環境変数は、タスクまたはジョブの *環境設定* プロパティを設定することで、タスク レベルまたはジョブ レベルで設定できます。 詳細については、[ジョブへのタスクの追加](/rest/api/batchservice/task/add?)操作 (Batch REST) に関するページ、または [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask.environmentsettings) プロパティと [CloudJob.CommonEnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudjob.commonenvironmentsettings) プロパティ (Batch .NET) に関するページをご覧ください。
 
-クライアント アプリケーションまたはサービスからタスクのサービス定義またはカスタムの環境変数を取得するには、[タスクに関する情報の取得](/rest/api/batchservice/task/get)操作 (Batch REST) を使用するか、[CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) プロパティ (Batch .NET) にアクセスします。 コンピューティング ノードで実行されるプロセスは、たとえば `%VARIABLE_NAME%` (Windows) や `$VARIABLE_NAME` (Linux) という一般的な構文を使用して、ノード上のこうしたさまざまな環境変数を利用することができます。
+クライアント アプリケーションまたはサービスからタスクのサービス定義またはカスタムの環境変数を取得するには、[タスクに関する情報の取得](/rest/api/batchservice/task/get)操作 (Batch REST) を使用するか、[CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask.environmentsettings) プロパティ (Batch .NET) にアクセスします。 コンピューティング ノードで実行されるプロセスは、たとえば `%VARIABLE_NAME%` (Windows) や `$VARIABLE_NAME` (Linux) という一般的な構文を使用して、ノード上のこうしたさまざまな環境変数を利用することができます。
 
-サービス定義の環境変数をすべて網羅した一覧を、[コンピューティング ノードの環境変数](batch-compute-node-environment-variables.md)に関するページで確認できます。
+サービス定義の環境変数をすべて網羅したリストを、[コンピューティング ノードの環境変数](batch-compute-node-environment-variables.md)に関するページで確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

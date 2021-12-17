@@ -1,22 +1,25 @@
 ---
-title: Azure Data Factory で Azure Integration Runtime を作成する
-description: データのコピーや変換操作のディスパッチに使用される Azure 統合ランタイムを Azure Data Factory で作成する方法を説明します。
+title: Azure Integration Runtime の作成
+titleSuffix: Azure Data Factory & Azure Synapse
+description: データのコピーや変換操作のディスパッチに使用される Azure 統合ランタイムを Azure Data Factory と Azure Synapse Analytics で作成する方法を説明します。
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
-ms.date: 06/09/2020
-author: nabhishek
-ms.author: abnarain
-ms.openlocfilehash: ecf2a74a16234084fbac4d1c26157d1703b56a13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+author: lrtoyou1223
+ms.author: lle
+ms.custom: devx-track-azurepowershell, synapse
+ms.openlocfilehash: 063d4138a86fb5235562ebb0d2592640f370806e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373064"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760329"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure 統合ランタイムを作成して構成する方法
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、「[Integration runtime (統合ランタイム)](concepts-integration-runtime.md)」を参照してください。
+Integration Runtime (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory と Synapse のパイプラインによって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、「[Integration runtime (統合ランタイム)](concepts-integration-runtime.md)」を参照してください。
 
 Azure IR は、ネイティブにデータ移動を実行したり、HDInsight などのコンピューティング サービスにデータ変換操作をディスパッチしたりするための、フル マネージドのコンピューティングを提供します。 Azure IR は Azure 環境でホストされます。また、パブリック ネットワーク環境内にあってパブリック アクセス可能なエンドポイントを持つリソースへの接続をサポートします。
 
@@ -25,7 +28,7 @@ Azure IR は、ネイティブにデータ移動を実行したり、HDInsight �
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="default-azure-ir"></a>既定の Azure IR
-既定では、個々のデータ ファクトリは、パブリック ネットワーク内のクラウド データ ストアおよびコンピューティング サービスに対する操作をサポートする Azure IR をバックエンドに備えます。 その Azure IR の場所は自動解決されます。 リンクされたサービス定義で **connectVia** プロパティが指定されていない場合、既定の Azure IR が使用されます。 IR の場所を明示的に定義したい場合、または、管理上の目的から、異なる IR でのアクティビティ実行を仮想的にグループ化したい場合に限り、Azure IR を明示的に作成する必要があります。 
+既定では、個々のデータ ファクトリまたは Synapse ワークスペースは、パブリック ネットワーク内のクラウド データ ストアおよびコンピューティング サービスに対する操作をサポートする Azure IR をバックエンドに備えます。 その Azure IR の場所は自動解決されます。 リンクされたサービス定義で **connectVia** プロパティが指定されていない場合、既定の Azure IR が使用されます。 IR の場所を明示的に定義したい場合、または、管理上の目的から、異なる IR でのアクティビティ実行を仮想的にグループ化したい場合に限り、Azure IR を明示的に作成する必要があります。 
 
 ## <a name="create-azure-ir"></a>Azure IR を作成する
 
@@ -41,24 +44,36 @@ Azure IR の場合、タイプを **Managed** に設定する必要がありま�
 
 Set-AzDataFactoryV2IntegrationRuntime PowerShell コマンドレットを使用して、既存の Azure IR を構成し、その場所を変更することができます。 Azure IR の場所の詳細については、「[Introduction to integration runtime (統合ランタイムの概要)](concepts-integration-runtime.md)」を参照してください。
 
-### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Azure Data Factory UI を使用して Azure IR を作成する
-Azure Data Factory UI を使用して Azure IR を作成するには、次の手順を使用します。
+### <a name="create-an-azure-ir-via-ui"></a>UI を使用して Azure IR を作成する
+UI を使用して Azure IR を作成するには、次の手順を使用します。
 
-1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの [[管理] タブ](./author-management-hub.md)を選択します。
+1. サービスのホーム ページの一番左にあるウィンドウで [[管理] タブ](./author-management-hub.md)を選択します。
 
-   ![ホーム ページの [管理] ボタン](media/doc-common-process/get-started-page-manage-button.png)
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+    
+    :::image type="content" source="media/doc-common-process/get-started-page-manage-button.png" alt-text="ホーム ページの [管理] ボタン":::
 
-1. 左ペインの **[統合ランタイム]** を選択し、 **[+ 新規]** を選択します。
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
-   ![左側のウィンドウの統合ランタイムと [+ 新規] ボタンが強調表示されているスクリーンショット。](media/doc-common-process/manage-new-integration-runtime.png)
+    :::image type="content" source="media/doc-common-process/get-started-page-manage-button-synapse.png" alt-text="ホーム ページの [管理] ボタン":::
 
-1. **[統合ランタイムのセットアップ]** ページで、 **[Azure, Self-Hosted] (Azure、セルフホステッド)** を選択してから、 **[続行]** を選択します。 
+2. 左ペインの **[統合ランタイム]** を選択し、 **[+ 新規]** を選択します。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/manage-new-integration-runtime.png" alt-text="左側のウィンドウの統合ランタイムと [+ 新規] ボタンが強調表示されているスクリーンショット。":::
+   
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/manage-new-integration-runtime-synapse.png" alt-text="左側のウィンドウの統合ランタイムと [+ 新規] ボタンが強調表示されているスクリーンショット。":::
+
+3. **[統合ランタイムのセットアップ]** ページで、 **[Azure, Self-Hosted] (Azure、セルフホステッド)** を選択してから、 **[続行]** を選択します。 
 
 1. 次のページで、Azure IR を作成する **[Azure]** を選択してから、 **[続行]** を選択します。
-   ![統合ランタイムを作成する](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
+   :::image type="content" source="media/create-azure-integration-runtime/new-azure-integration-runtime.png" alt-text="統合ランタイムの作成":::
 
 1. Azure IR の名前を入力し、 **[作成]** を選択します。
-   ![Azure IR を作成する](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
+   :::image type="content" source="media/create-azure-integration-runtime/create-azure-integration-runtime.png" alt-text="Azure IR を作成する":::
 
 1. 作成が完了すると、ポップアップ通知が表示されます。 **[統合ランタイム]** ページで、新しく作成された IR が一覧に表示されていることを確認します。
 

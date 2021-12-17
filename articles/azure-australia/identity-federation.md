@@ -1,17 +1,17 @@
 ---
 title: Azure オーストラリアにおける ID フェデレーション
 description: オーストラリアのリージョン内で、オーストラリア政府のポリシー、規制、法令に固有の要件を満たすように ID フェデレーションを構成するためのガイダンス。
-author: galey801
+author: emilyre
 ms.service: azure-australia
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.author: grgale
-ms.openlocfilehash: e161e36ee7b403381b65f52a6f416be09025d0a2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: yvettep
+ms.openlocfilehash: c0f3628ad5934905d73cc38a25a2fd52a9a68c1f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570979"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348052"
 ---
 # <a name="identity-federation-in-azure-australia"></a>Azure オーストラリアにおける ID フェデレーション
 
@@ -29,30 +29,30 @@ Azure Active Directory 内に格納されている情報の分類は、その設
 
 ### <a name="user-synchronisation"></a>ユーザーの同期
 
-Azure AD Connect をデプロイする場合は、同期するデータに関していくつかの決定を行う必要があります。 Azure AD Connect は Microsoft Identity Manager を基盤としており、ディレクトリ間でデータを[変換](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-best-practices-changing-default-configuration)するための堅牢な機能セットを提供します。
+Azure AD Connect をデプロイする場合は、同期するデータに関していくつかの決定を行う必要があります。 Azure AD Connect は Microsoft Identity Manager を基盤としており、ディレクトリ間でデータを[変換](../active-directory/hybrid/how-to-connect-sync-best-practices-changing-default-configuration.md)するための堅牢な機能セットを提供します。
 
 Microsoft コンサルティング サービスは、お客様の既存の Windows Server Active Directory の ADRAP 評価を実施できます。 ADRAP は、Azure Active Directory と同期する前に修正する必要のある問題を特定するのに役立ちます。 通常、Microsoft Premier サポート契約には、このサービスが含まれます。
 
-[IDFix ツール](https://docs.microsoft.com/office365/enterprise/install-and-run-idfix)は、Azure AD と同期する前に、お客様のオンプレミス Active Directory ドメインに問題がないかをスキャンします。 IDFix は Azure AD Connect を実装する前の重要な最初の手順です。 IDFix スキャンでは多数の問題を特定できますが、そうした問題の多くは、スクリプトを使用してすばやく解決するか、Azure AD Connect のデータ変換を使用して回避することができます。
+[IDFix ツール](/office365/enterprise/install-and-run-idfix)は、Azure AD と同期する前に、お客様のオンプレミス Active Directory ドメインに問題がないかをスキャンします。 IDFix は Azure AD Connect を実装する前の重要な最初の手順です。 IDFix スキャンでは多数の問題を特定できますが、そうした問題の多くは、スクリプトを使用してすばやく解決するか、Azure AD Connect のデータ変換を使用して回避することができます。
 
-Azure AD には、認証を有効にするために、外部にルーティングできるトップレベル ドメインが関連付けられているユーザーが必要です。 外部にルーティングできない UPN サフィックスがお客様のドメインにある場合は、AD Connect の[代替サインイン ID](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-userprincipalname) をユーザーのメール属性に設定する必要があります。 その後、ユーザーは、ドメイン サインインではなく、自分のメール アドレスを使用して Azure サービスにサインインします。
+Azure AD には、認証を有効にするために、外部にルーティングできるトップレベル ドメインが関連付けられているユーザーが必要です。 外部にルーティングできない UPN サフィックスがお客様のドメインにある場合は、AD Connect の[代替サインイン ID](../active-directory/hybrid/plan-connect-userprincipalname.md) をユーザーのメール属性に設定する必要があります。 その後、ユーザーは、ドメイン サインインではなく、自分のメール アドレスを使用して Azure サービスにサインインします。
 
 ユーザー アカウントの UPN サフィックスは、PowerShell などのツールを使用して変更することもできます。ただし、接続されている他のシステムに予期しない結果が生じる可能性があり、ベスト プラクティスとは見なされなくなっています。
 
-Azure Active Directory に同期する属性を決定する際は、すべての属性が必要であると想定するのが最も安全です。 ディレクトリに実際の PROTECTED データが含まれていることはめったにありませんが、監査を実施することをお勧めします。 PROTECTED データがディレクトリ内に見つかった場合は、属性を省略または変換した場合の影響を評価してください。 役に立つガイドとして、Microsoft クラウド サービスに[必要](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized)な属性の一覧があります。
+Azure Active Directory に同期する属性を決定する際は、すべての属性が必要であると想定するのが最も安全です。 ディレクトリに実際の PROTECTED データが含まれていることはめったにありませんが、監査を実施することをお勧めします。 PROTECTED データがディレクトリ内に見つかった場合は、属性を省略または変換した場合の影響を評価してください。 役に立つガイドとして、Microsoft クラウド サービスに[必要](../active-directory/hybrid/reference-connect-sync-attributes-synchronized.md)な属性の一覧があります。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>認証
 
 使用可能なオプションと、それらを使用してエンドユーザーをセキュリティで保護し続ける方法について理解しておくことが重要です。
-Microsoft は、Azure Active Directory に対してユーザーを認証するための [3 つのネイティブ ソリューション](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin)を提供しています。
+Microsoft は、Azure Active Directory に対してユーザーを認証するための [3 つのネイティブ ソリューション](../active-directory/hybrid/plan-connect-user-signin.md)を提供しています。
 
 * パスワード ハッシュ同期 - Azure Active Directory Domain Services からハッシュ化されたパスワードが Azure AD Connect によって Azure Active Directory に同期されます。
-* [パススルー認証](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) - パスワードは Active Directory Domain Services 内にとどまります。 ユーザーは、エージェントを介して Active Directory Domain Services に対して認証されます。 パスワードは Azure AD 内に格納されません。
-* [フェデレーション SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-whatis) - Azure Active Directory は Active Directory フェデレーション サービス (AD FS) とフェデレーションされ、サインイン時に、Azure はユーザーを認証のために Active Directory フェデレーション サービス (AD FS) に転送します。 パスワードは Azure AD 内に格納されません。
+* [パススルー認証](../active-directory/hybrid/how-to-connect-pta.md) - パスワードは Active Directory Domain Services 内にとどまります。 ユーザーは、エージェントを介して Active Directory Domain Services に対して認証されます。 パスワードは Azure AD 内に格納されません。
+* [フェデレーション SSO](../active-directory/hybrid/how-to-connect-fed-whatis.md) - Azure Active Directory は Active Directory フェデレーション サービス (AD FS) とフェデレーションされ、サインイン時に、Azure はユーザーを認証のために Active Directory フェデレーション サービス (AD FS) に転送します。 パスワードは Azure AD 内に格納されません。
 
 パスワード ハッシュ同期は、OFFICIAL:Sensitive 以下のデータがディレクトリ内に格納されるシナリオで使用できます。 PROTECTED データが格納されるシナリオでは、残りの 2 つのオプションのいずれかが必要です。
 
-これら 3 つのオプションはすべて、[パスワード ライトバック](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)をサポートしています。『[ACSC コンシューマー ガイド](https://aka.ms/au-irap)』では、これを無効にすることをお勧めしています。 ただし、組織は、パスワード リセットのセルフサービスを使用する場合の生産性の向上およびサポート作業量の軽減と照らして、パスワード ライトバックを無効にするリスクを評価する必要があります。
+これら 3 つのオプションはすべて、[パスワード ライトバック](../active-directory/authentication/concept-sspr-writeback.md)をサポートしています。『[ACSC コンシューマー ガイド](https://aka.ms/au-irap)』では、これを無効にすることをお勧めしています。 ただし、組織は、セルフサービス パスワード リセット を使用する場合の生産性の向上およびサポート作業量の軽減と照らして、パスワード ライトバックを無効にするリスクを評価する必要があります。
 
 #### <a name="pass-through-authentication-pta"></a>パススルー認証 (PTA)
 
@@ -90,7 +90,7 @@ Multi-Factor Authentication の ISM セクションでは、お客様のリス�
 
 Azure Active Directory が提供する Multi-Factor Authentication は、すべてのユーザーまたはユーザーのサブセット (たとえば、特権アカウントのみ) に対して有効にできます。 Microsoft では、条件付きアクセスと呼ばれるソリューションも提供しています。これにより、Multi-Factor Authentication の適用方法をより細かく制御できます (ユーザーがリモート IP アドレス範囲からサインインする場合のみなど)。
 
-Azure Multi-Factor Authentication では、次の ISM 対応形式の検証をサポートしています。
+Azure Active Directory Multifactor Authentication では、次の ISM 対応形式の検証をサポートしています。
 
 * 音声通話
 * SMS メッセージ
@@ -99,6 +99,6 @@ Azure Multi-Factor Authentication では、次の ISM 対応形式の検証を�
 
 Azure Active Directory のコンポーネントである Privileged Identity Management を使用すると、ユーザーが 4 番目の推奨事項を満たすために自分のアクセス許可を昇格した場合に、Multi-Factor Authentication の使用を強制できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[ロールベースのアクセス制御と Privileged Identity Management](role-privileged.md) に関する記事を確認してください。
+[Azure ロールベースのアクセス制御 (Azure RBAC) と Privileged Identity Management](role-privileged.md) に関する記事を確認してください。

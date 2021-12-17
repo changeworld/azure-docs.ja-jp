@@ -1,55 +1,39 @@
 ---
-title: Azure Machine Learning Studio (classic) で IoT Hub データを使用して行う天気予報
-description: Azure Machine Learning Studio (classic) を使用して、IoT Hub がセンサーから収集した気温と湿度のデータに基づき、降水確率を予測します。
-author: robinsh
-manager: philmea
+title: Machine Learning Studio (クラシック) で IoT Hub データを使用して行う天気予報
+description: ML Studio (クラシック) を使用して、IoT ハブがセンサーから収集した気温と湿度のデータに基づき、降水確率を予測します。
+author: eross-msft
 keywords: 機械学習を使用した天気予報
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
-ms.date: 09/16/2020
-ms.author: robinsh
-ms.openlocfilehash: ab9e122ba0b2b50203a2d66ae14f03f3b6300f96
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/26/2021
+ms.author: lizross
+ms.openlocfilehash: 1656e055316ecde439793fe4afdd25933db476ce
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96452335"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554619"
 ---
-# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) で IoT ハブからのセンサー データを使用して天気予報を行う
+# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) で IoT ハブからのセンサー データを使用して天気予報を行う
 
 ![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-機械学習は、将来の動き、結果、傾向を予測するためにコンピューターで既存のデータからの学習を行う、データ サイエンスの手法の 1 つ です。 Azure Machine Learning Studio (クラシック) は、クラウドの予測分析サービスであり、分析ソリューションとして予測モデルを迅速に作成し、デプロイできるようにします。
+機械学習は、将来の動き、結果、傾向を予測するためにコンピューターで既存のデータからの学習を行う、データ サイエンスの手法の 1 つ です。 ML Studio (クラシック) は、クラウドの予測分析サービスであり、分析ソリューションとして予測モデルを迅速に作成し、デプロイできるようにします。 この記事では、ML Studio (クラシック) で Azure IoT Hub から取得した気温と湿度のデータを使用して、天気 (降水確率) を予測する方法について説明します。 降水確率は、準備された天気予報モデルから出力されます。 このモデルは、気温と湿度に基づいて降水確率を予測するための履歴データを基に構築されています。
 
-## <a name="what-you-learn"></a>学習内容
+## <a name="prerequisites"></a>前提条件
 
-Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気温と湿度のデータを使用して、天気 (降水確率) を予測する方法を学びます。 降水確率は、準備された天気予報モデルから出力されます。 このモデルは、気温と湿度に基づいて降水確率を予測するための履歴データを基に構築されています。
-
-## <a name="what-you-do"></a>作業内容
-
-- 天気予報モデルを Web サービスとしてデプロイする。
-- コンシューマー グループを追加して、データにアクセスできるよう IoT ハブを準備する。
-- Stream Analytics ジョブを作成し、ジョブが以下を行うように構成する。
-  - IoT Hub から取得した気温と湿度のデータを読み取る。
-  - Web サービスを呼び出して降水確率を取得する。
-  - Azure Blob Storage に結果を保存する。
-- Microsoft Azure Storage Explorer を使用して、天気予報を表示する。
-
-## <a name="what-you-need"></a>必要なもの
-
-- [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 次の要件について取り上げられています。
+- [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)に関するページや、[テレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
-- [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/) アカウント。
+- [ML Studio (クラシック)](https://studio.azureml.net/) アカウント。
 - [Azure Storage アカウント](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts)、**汎用 v2** アカウントが推奨されていますが、Azure Blob Storage をサポートするすべての Azure Storage アカウントも機能します。
 
 > [!Note]
-> この記事では、Azure Stream Analytics と他のいくつかの有料サービスを使用します。 Azure リージョン間でデータを転送する必要がある場合、Azure Stream Analytics に追加料金が発生します。 このため、リソース グループ、IoT Hub、Azure Storage アカウント、およびこのチュートリアルの後半で追加した Machine Learning Studio (classic) ワークスペースと Azure Stream Analytics ジョブがすべて同じ Azure リージョンにあることを確認することをお勧めします。 Azure Machine Learning Studio (classic) とその他の Azure サービスの地域サポートは、 「[Azure product availability by region (リージョン別の Azure 製品の可用性)」ページ](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)で確認できます。
+> この記事では、Azure Stream Analytics と他のいくつかの有料サービスを使用します。 Azure リージョン間でデータを転送する必要がある場合、Azure Stream Analytics に追加料金が発生します。 このため、リソース グループ、IoT Hub、Azure Storage アカウント、およびこのチュートリアルの後半で追加した Machine Learning Studio (classic) ワークスペースと Azure Stream Analytics ジョブがすべて同じ Azure リージョンにあることを確認することをお勧めします。 ML Studio (クラシック) とその他の Azure サービスのリージョン サポートについては、[リージョン別の Azure 製品の可用性](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)に関するページで確認できます。
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>天気予報モデルを Web サービスとしてデプロイする
 
@@ -57,21 +41,21 @@ Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気�
 
 ### <a name="get-the-weather-prediction-model"></a>天気予報モデルを取得する
 
-このセクションでは、Azure AI Gallery から天気予報モデルを取得し、Azure Machine Learning Studio (classic) で開きます。
+このセクションでは、Azure AI Gallery から天気予報モデルを取得し、ML Studio (クラシック) で開きます。
 
 1. [[weather prediction model] \(天気予報モデル) ページ](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1)に移動します。
 
    ![Azure AI Gallery の [Weather prediction model]\(天気予報モデル\) ページを開く](media/iot-hub-weather-forecast-machine-learning/weather-prediction-model-in-azure-ai-gallery.png)
 
-1. **[Open in Studio (classic)\]\(Studio で開く (classic))** をクリックして、Microsoft Azure Machine Learning Studio (classic) でモデルを開きます。 IoT ハブの近くのリージョンを選択し、[ **Azure product availability by region (ギャラリーからコピーする)\]** ポップアップから、適切なワークスペースを選択します。
+1. **[Studio (クラシック) で開く]** をクリックして、Microsoft ML Studio (クラシック) でモデルを開きます。 IoT ハブの近くのリージョンを選択し、[ **Azure product availability by region (ギャラリーからコピーする)\]** ポップアップから、適切なワークスペースを選択します。
 
-   ![Azure Machine Learning Studio (classic) で天気予報モデルを開く](media/iot-hub-weather-forecast-machine-learning/open-ml-studio.png)
+   ![ML Studio (クラシック) で天気予報モデルを開く](media/iot-hub-weather-forecast-machine-learning/open-ml-studio.png)
 
 ### <a name="add-an-r-script-module-to-clean-temperature-and-humidity-data"></a>R スクリプト モジュールを追加して、気温と湿度のデータをクリーニングする
 
 モデルを正しく動作させるには、気温と湿度のデータが数値データに変換可能である必要があります。 このセクションでは、R スクリプト モジュールを天気予報モデルに追加して、数値に変換できない気温または湿度のデータ値のある行を削除します。
 
-1. [Azure Machine Learning Studio (classic)] ウィンドウの左側にある矢印をクリックして、ツール パネルを展開します。 検索ボックスに「実行」と入力します。 **R スクリプトの実行** モジュールを選択します。
+1. [ML Studio (クラシック)] ウィンドウの左側にある矢印をクリックして、ツール パネルを展開します。 検索ボックスに「実行」と入力します。 **R スクリプトの実行** モジュールを選択します。
 
    ![R スクリプトの実行モジュールを選択する](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
 
@@ -108,11 +92,11 @@ Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気�
 
 1. **[SET UP WEB SERVICE (Web サービスの設定)]**  >  **[Predictive Web Service (予測 Web サービス)]** の順にクリックします。 予測実験のダイアグラムが開きます。
 
-   ![Azure Machine Learning Studio (classic) に天気予報モデルをデプロイする](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
+   ![ML Studio (クラシック) で天気予報モデルを展開する](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
 
 1. 予測実験のダイアグラムで、**Web service input (Web サービス入力)** モジュールと上部にある **[Select Columns in Dataset (データセットの列を選択する)]** の間の接続を削除します。 次に、**Web サービスの入力** モジュールを **モデルのスコア付け** モジュールの近くにドラッグし、次のように接続します。
 
-   ![Azure Machine Learning Studio (classic) で 2 つのモジュールを接続する](media/iot-hub-weather-forecast-machine-learning/connect-modules-azure-machine-learning-studio.png)
+   ![ML Studio (クラシック) で 2 つのモジュールを接続する](media/iot-hub-weather-forecast-machine-learning/connect-modules-azure-machine-learning-studio.png)
 
 1. **[Run (実行)\]** をクリックしてモデルの手順を検証します。
 
@@ -246,10 +230,10 @@ Stream Analytics (ストリーム解析) ジョブで、左ペインの **Overvi
 1. Azure サブスクリプション > **[Storage Accounts (ストレージ アカウント)]** > 自分のストレージ アカウント > **[Blob Containers (BLOB コンテナー)]** > 自分のコンテナーの順に選択します。
 1. .csv ファイルをダウンロードして結果を表示します。 降水確率は最後の列に記録されています。
 
-   ![Azure Machine Learning Studio (classic) で天気予報の結果を取得します。](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
+   ![ML Studio (クラシック) で天気予報の結果を取得する](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
 ## <a name="summary"></a>まとめ
 
-Azure Machine Learning Studio (classic) を正しく使用して、IoT Hub が受信した気温と湿度のデータに基づく降水確率が生成されました。
+ML Studio (クラシック) を正しく使用して、IoT ハブが受信した気温と湿度のデータに基づく降水確率が生成されました。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

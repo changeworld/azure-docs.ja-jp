@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 082b0fd4d3324502516dcd2b45b9ad16a919c773
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b2eeca4bb6f5d8af01aa283446961b56d27918d7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749224"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761671"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault の証明書の更新
 
@@ -28,7 +28,7 @@ Azure Key Vault を使用すると、自社ネットワーク用のデジタル�
 証明書の有効期限を知らせる通知を受け取るには、証明書の連絡先を追加する必要があります。 証明書の連絡先には、証明書有効期間イベントによってトリガーされる通知を送信する連絡先情報が含まれています。 連絡先情報は、キー コンテナー内のすべての証明書によって共有されます。 通知は、キー コンテナー内の任意の証明書のイベントに指定されているすべての連絡先に送信されます。
 
 ### <a name="steps-to-set-certificate-notifications"></a>証明書の通知を設定する手順
-まず、キー コンテナーに証明書の連絡先を追加します。 Azure portal または PowerShell コマンドレット [`Add-AzureKeyVaultCertificateContact`](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact) を使用して追加できます。
+まず、キー コンテナーに証明書の連絡先を追加します。 Azure portal または PowerShell コマンドレット [Add-AzKeyVaultCertificateContact](/powershell/module/az.keyvault/add-azkeyvaultcertificatecontact) を使用して追加できます。
 
 次に、証明書の有効期限を知らせる通知を受け取るタイミングを構成します。 証明書のライフサイクル属性の構成については、[Key Vault における証明書の自動ローテーションの構成](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate)に関する記事を参照してください。
 
@@ -65,7 +65,7 @@ Azure Key Vault を使用すると、任意の CA から証明書をインポー
 > [!NOTE]
 > 署名した CSR を、自分が作成したのと同じ CSR 要求にマージすることが重要です。 そうしないと、キーが一致しません。
 
-新しい CSR の作成の詳細については、[Key Vault での CSR の作成とマージ]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal)に関するページを参照してください。
+新しい CSR の作成の詳細については、[Key Vault での CSR の作成とマージ](create-certificate-signing-request.md)に関するページを参照してください。
 
 ## <a name="renew-a-self-signed-certificate"></a>自己署名証明書を更新する
 

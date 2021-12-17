@@ -7,16 +7,15 @@ author: cjgronlund
 ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
-ms.subservice: core
-ms.date: 11/06/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 5bd938fce347d439c2acb4e3fcace04d5b27d770
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: mlops
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.openlocfilehash: a02bea7b16c6c0899681df8f7e0d0499415f450e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94447461"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562620"
 ---
 # <a name="configure-authentication-for-models-deployed-as-web-services"></a>Web サービスとしてデプロイされたモデルの認証を構成する
 

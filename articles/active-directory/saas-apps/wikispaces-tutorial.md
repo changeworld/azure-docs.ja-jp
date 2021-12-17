@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 877f589c19663503b9bb0b1627f1dffe0eba1a23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a8ae39e565b2b0c29cf44a8ad3559fc8ad2bff6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96302737"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124745867"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>チュートリアル: Azure Active Directory と Wikispaces の統合
 
@@ -176,17 +176,17 @@ Wikispaces で Azure AD シングル サインオンを構成するには、次�
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-### <a name="create-wikispaces-test-user&quot;></a>Wikispaces テスト ユーザーの作成
+### <a name="create-wikispaces-test-user"></a>Wikispaces テスト ユーザーの作成
 
 Azure AD ユーザーが Wikispaces にサインインできるようにするには、そのユーザーを Wikispaces にプロビジョニングする必要があります。 Wikispaces の場合、プロビジョニングは手動で行います。
 
-### <a name=&quot;to-provision-a-user-accounts-perform-the-following-steps&quot;></a>ユーザー アカウントをプロビジョニングするには、次の手順に従います。
+### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
 1. **Wikispaces** 企業サイトに管理者としてサインインします。
 
 2. **[メンバー]** に移動します。
    
-    ![[メンバー]](./media/wikispaces-tutorial/ic787193.png &quot;メンバー")
+    ![[メンバー]](./media/wikispaces-tutorial/ic787193.png "メンバー")
 
 3. **[ユーザーの招待]** をクリックします。
    
@@ -210,7 +210,7 @@ Azure AD ユーザーが Wikispaces にサインインできるようにする�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Wikispaces] タイルをクリックすると、SSO を設定した Wikispaces に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Wikispaces] タイルをクリックすると、SSO を設定した Wikispaces に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

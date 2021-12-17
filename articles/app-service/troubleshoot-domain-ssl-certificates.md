@@ -7,13 +7,13 @@ tags: top-support-issue
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
-ms.custom: seodec18
-ms.openlocfilehash: 691cbd79e82432c8e919dcbb51642a76000296dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: aca2e73b6abbdce6447034e14d0457958f1b800e
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97607611"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964502"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと TLS/SSL 証明書に関する問題のトラブルシューティング
 
@@ -35,14 +35,14 @@ TLS バインディングを追加するときに、次のエラー メッセー
 
 #### <a name="cause"></a>原因
 
-この問題は、複数のアプリにわたって、同じ IP アドレスへの IP ベースの SSL バインディングが複数ある場合に発生することがあります。 たとえば、アプリ A に、古い証明書を持つ IP ベースの SSL があり、 アプリ B に、同じ IP アドレスの新しい証明書を持つ IP ベースの SSL がある場合です。 新しい証明書でアプリの TLS バインディングを更新すると、別のアプリで同じ IP アドレスが使われているため、このエラーで更新が失敗します。 
+この問題は、複数のアプリにわたって、同じ IP アドレスへの IP ベースの TLS/SSL バインドが複数ある場合に発生する可能性があります。 たとえば、アプリ A に、古い証明書にバインドされた IP ベースの TLS/SSL があるとします。 アプリ B に、同じ IP アドレスの新しい証明書にバインドされた IP ベースの TLS/SSL があるとします。 新しい証明書でアプリの TLS バインディングを更新すると、別のアプリで同じ IP アドレスが使われているため、このエラーで更新が失敗します。 
 
 #### <a name="solution"></a>解決策 
 
 この問題を解決するには、次のいずれかの方法を使用します。
 
-- アプリで、古い証明書を使用している IP ベースの SSL バインディングを削除します。 
-- 新しい証明書を使用する、新しい IP ベースの SSL バインディングを作成します。
+- 古い証明書を使用しているアプリで、IP ベースの TLS/SSL のバインドを削除します。 
+- 新しい証明書を使用する、新しい IP ベースの TLS/SSL バインドを作成します。
 
 ### <a name="you-cant-delete-a-certificate"></a>証明書を削除できない 
 
@@ -109,7 +109,7 @@ Azure Portal から [Azure App Service 証明書](./configure-ssl-certificate.md
 
 **原因 1 の解決策**
 
-- A レコードを追加した場合は、必ず TXT レコードも追加するようにします。 詳細については、「[A レコードを作成する](./app-service-web-tutorial-custom-domain.md#create-the-a-record)」を参照してください。
+- A レコードを追加した場合は、必ず TXT レコードも追加するようにします。 詳細については、「[A レコードを作成する](./app-service-web-tutorial-custom-domain.md#4-create-the-dns-records)」を参照してください。
 - アプリのためにルート ドメインを使用する必要がない場合は、A レコードではなく CNAME レコードを使用することをお勧めします。
 - 同じドメインのために CNAME レコードと A レコードの両方を使用しないでください。 この問題によって競合が発生し、ドメインの解決が妨げられる場合があります。 
 
@@ -315,7 +315,7 @@ Azure Portal 経由でドメインを購入した場合は、追加コストな�
 
 App Service Web Apps がない場合でも、ドメインを管理できます。 ドメインは、仮想マシン、ストレージなどの Azure サービスのために使用できます。ドメインを App Service Web Apps のために使用する場合は、そのドメインを Web アプリにバインドするために、Free App Service プランにない Web アプリを含める必要があります。
 
-**カスタム ドメインを含む Web アプリを別のサブスクリプションに、または App Service Environment v1 から V2 に移動できますか**
+**カスタム ドメインを含む Web アプリを別のサブスクリプションに、または App Service 環境 v1 から V2 に移動できますか**
 
 はい。Web アプリはサブスクリプション間で移動できます。 [Azure でリソースを移動する方法](../azure-resource-manager/management/move-resource-group-and-subscription.md)に関するページにあるガイダンスに従ってください。 Web アプリを移動する場合は、いくつかの制限があります。 詳細については、[App Service リソースを移動するための制限](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)に関するページを参照してください。
 

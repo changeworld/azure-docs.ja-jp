@@ -2,13 +2,13 @@
 title: Azure Event Grid でのカスタム トピック
 description: Azure Event Grid でのカスタム トピックについて説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 8f48824989c8ec51b766385188ad99e9e59cf621
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/27/2021
+ms.openlocfilehash: 54d331d2080d8adf96bf39c9250e7d6888723c1d
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86113787"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727754"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Azure Event Grid でのカスタム トピック
 Event Grid のトピックには、ソースがイベントを送信するエンドポイントが含まれます。 発行元は、イベント グリッド トピックを作成し、イベント ソースにトピックが 1 つ必要か、あるいは複数のイベント ソースが必要かを決定します。 トピックは、関連するイベントのコレクションに使用されます。 サブスクライバーは、特定の種類のイベントに応答するために、どのトピックをサブスクライブするかを決定します。
@@ -65,8 +65,11 @@ Event Grid のトピックには、ソースがイベントを送信するエン
 ## <a name="arm-template-tutorials"></a>ARM テンプレートのチュートリアル
 |タイトル  |説明  |
 |---------|---------|
-| [Resource Manager テンプレート: カスタム トピックと Webhook エンドポイント](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | カスタム トピックとそのカスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Webhook にイベントを送信します。 |
-| [Resource Manager テンプレート: カスタム トピックと Event Hubs エンドポイント](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| カスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Azure Event Hubs にイベントを送信します。 |
+| [Resource Manager テンプレート: カスタム トピックと Webhook エンドポイント](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid) | カスタム トピックとそのカスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Webhook にイベントを送信します。 |
+| [Resource Manager テンプレート: カスタム トピックと Event Hubs エンドポイント](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid-event-hubs-handler)| カスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Azure Event Hubs にイベントを送信します。 |
+
+> [!NOTE]
+> Azure Digital Twins では、Event Grid で作成するカスタム トピックにイベント通知をルーティングできます。 詳細については、「[Azure Digital Twins でのエンドポイントとルートの管理](../digital-twins/how-to-manage-routes.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。 

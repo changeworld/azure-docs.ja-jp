@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 23615daf4a07e02b01bbd5a9cdf57ec9a81a2b76
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 241b7c0c07d1fbaa6a43c6be4b264424612f538a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347411"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869043"
 ---
 ::: zone target="docs"
 
@@ -52,11 +52,11 @@ Azure Portal [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredatab
 
 > [!div class="checklist"]
 >
-> - **前提条件を確認する** : ディスクとケーブル、オペレーティング システム、その他ソフトウェアの数を確認します。
-> - **接続してロックを解除する** : デバイスを接続し、データのコピー先となるディスクのロックを解除します。
-> - **データをディスクにコピーして検証する** : ディスク上のあらかじめ作成されたフォルダーにデータをコピーします。
-> - **ディスクを返送する** : データのアップロード先となるストレージ アカウントがある Azure データセンターにディスクを返送します。
-> - **Azure 内のデータを検証する** : コピー元のデータ サーバーからデータを削除する前に、ストレージ アカウントにデータがアップロードされたことを確認します。
+> - **前提条件を確認する**: ディスクとケーブル、オペレーティング システム、その他ソフトウェアの数を確認します。
+> - **接続してロックを解除する**: デバイスを接続し、データのコピー先となるディスクのロックを解除します。
+> - **データをディスクにコピーして検証する**: ディスク上のあらかじめ作成されたフォルダーにデータをコピーします。
+> - **ディスクを返送する**: データのアップロード先となるストレージ アカウントがある Azure データセンターにディスクを返送します。
+> - **Azure 内のデータを検証する**: コピー元のデータ サーバーからデータを削除する前に、ストレージ アカウントにデータがアップロードされたことを確認します。
 
 ::: zone-end
 
@@ -94,7 +94,7 @@ Data Box Disk ジョブを作成するには、以下の Azure CLI コマンド�
    az storage account create --resource-group databox-rg --name databoxtestsa
    ```
 
-1. [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) コマンドを実行して、DataBoxDisk という SKU の Data Box ジョブを作成します。
+1. [az databox job create](/cli/azure/databox/job#az_databox_job_create) コマンドを実行して、DataBoxDisk という SKU の Data Box ジョブを作成します。
 
    ```azurecli
    az databox job create --resource-group databox-rg --name databoxdisk-job \
@@ -104,37 +104,37 @@ Data Box Disk ジョブを作成するには、以下の Azure CLI コマンド�
        --storage-account databoxtestsa --expected-data-size 1
    ```
 
-1. 次の例のように、[az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) を実行してジョブを更新します。連絡先の名前とメールは変更してください。
+1. 次の例のように、[az databox job update](/cli/azure/databox/job#az_databox_job_update) を実行してジョブを更新します。連絡先の名前とメールは変更してください。
 
    ```azurecli
    az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
    ```
 
-   [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) コマンドを実行して、ジョブに関する情報を取得します。
+   [az databox job show](/cli/azure/databox/job#az_databox_job_show) コマンドを実行して、ジョブに関する情報を取得します。
 
    ```azurecli
    az databox job show --resource-group databox-rg --name databox-job
    ```
 
-   [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) コマンドを使用して、リソース グループのすべての Data Box ジョブを表示します。
+   [az databox job list]( /cli/azure/databox/job#az_databox_job_list) コマンドを使用して、リソース グループのすべての Data Box ジョブを表示します。
 
    ```azurecli
    az databox job list --resource-group databox-rg
    ```
 
-   [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) コマンドを実行してジョブをキャンセルします。
+   [az databox job cancel](/cli/azure/databox/job#az_databox_job_cancel) コマンドを実行してジョブをキャンセルします。
 
    ```azurecli
    az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
    ```
 
-   [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) コマンドを実行してジョブを削除します。
+   [az databox job delete](/cli/azure/databox/job#az_databox_job_delete) コマンドを実行してジョブを削除します。
 
    ```azurecli
    az databox job delete –resource-group databox-rg --name databox-job
    ```
 
-1. [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) コマンドを使用して、Data Box ジョブの資格情報を一覧表示します。
+1. [az databox job list-credentials]( /cli/azure/databox/job#az_databox_job_list_credentials) コマンドを使用して、Data Box ジョブの資格情報を一覧表示します。
 
    ```azurecli
    az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
@@ -170,9 +170,9 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
 
 この工程にかかる時間は、実際のデータのサイズによって異なります。
 
-1. ドライブには、 *PageBlob* 、 *BlockBlob* 、 *AzureFile* 、 *ManagedDisk* 、 *DataBoxDiskImport* の各フォルダーが格納されています。 ブロック BLOB としてインポートするデータは、 *BlockBlob* フォルダーにドラッグ アンド ドロップでコピーします。 同様に、VHD/VHDX などのデータは、 *PageBlob* フォルダーに、適切なデータは *AzureFile* にドラッグ アンド ドロップします。 マネージド ディスクとしてアップロードする VHD を *ManagedDisk* 以下のフォルダーにコピーします。
+1. ドライブには、*PageBlob*、*BlockBlob*、*AzureFile*、*ManagedDisk*、*DataBoxDiskImport* の各フォルダーが格納されています。 ブロック BLOB としてインポートするデータは、*BlockBlob* フォルダーにドラッグ アンド ドロップでコピーします。 同様に、VHD/VHDX などのデータは、*PageBlob* フォルダーに、適切なデータは *AzureFile* にドラッグ アンド ドロップします。 マネージド ディスクとしてアップロードする VHD を *ManagedDisk* 以下のフォルダーにコピーします。
 
-    Azure Storage アカウントには、 *BlockBlob* フォルダー下および *PageBlob* フォルダー下のサブフォルダーごとにコンテナーが 1 つ作成されます。 ファイル共有が *AzureFile* 以下のサブフォルダーに作成されます。
+    Azure Storage アカウントには、*BlockBlob* フォルダー下および *PageBlob* フォルダー下のサブフォルダーごとにコンテナーが 1 つ作成されます。 ファイル共有が *AzureFile* 以下のサブフォルダーに作成されます。
 
     *BlockBlob* フォルダー下のファイルと *PageBlob* フォルダー下のファイルはすべて、Azure Storage アカウントの既定のコンテナー `$root` にコピーされます。 ファイルを *AzureFile* 内のフォルダーにコピーします。 *AzureFile* フォルダーに直接コピーされたファイルはすべて失敗し、ブロック BLOB としてアップロードされます。
 

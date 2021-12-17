@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) での証明書のローテーション
 description: Azure Kubernetes Service (AKS) クラスターで証明書をローテーションする方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 11/15/2019
-ms.openlocfilehash: 6baad681a9d629c397c53ab90057cc5746fc3b85
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 11/03/2021
+ms.openlocfilehash: 7651af1bc1b3229fa206dbb507a918d611b2eafc
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776017"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131575771"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での証明書のローテーション
 
@@ -33,17 +33,54 @@ AKS では、次の証明書、証明機関、およびサービス アカウン
 * `kubectl` クライアントには、AKS クラスターと通信するための証明書があります。
 
 > [!NOTE]
-> 2019 年 3 月より前に作成された AKS クラスターには、2 年後に期限切れになる証明書があります。 2019 年 3 月以降に作成されたすべてのクラスター、またはその証明書がローテーションされているすべてのクラスターには、30 年後に期限切れになるクラスター CA 証明書があります。 他のすべての証明書は 2 年後に有効期限が切れます。 クラスターがいつ作成されたかを確認するには、`kubectl get nodes` を使用して、ノード プールの *Age* を確認します。
+> 2019 年 5 月より前に作成された AKS クラスターには、2 年後に期限切れになる証明書があります。 2019 年 5 月以降に作成されたすべてのクラスター、またはその証明書がローテーションされているすべてのクラスターには、30 年後に期限切れになるクラスター CA 証明書があります。 署名にクラスター CA を使用する他のすべての AKS 証明書は、2 年後に有効期限が切れ、AKS バージョンのアップグレード中に自動的にローテーションされます。 クラスターがいつ作成されたかを確認するには、`kubectl get nodes` を使用して、ノード プールの *Age* を確認します。
 > 
-> また、クラスターの証明書の有効期限を確認することもできます。 たとえば、次の Bash コマンドを使用すると、*myAKSCluster* クラスターの証明書の詳細が表示されます。
+> また、クラスターの証明書の有効期限を確認することもできます。 たとえば、次の bash コマンドを使用すると、リソース グループ *rg* 内の *myAKSCluster* クラスターのクライアント証明書の詳細が表示されます
 > ```console
-> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
+> kubectl config view --raw -o jsonpath="{.users[?(@.name == 'clusterUser_rg_myAKSCluster')].user.client-certificate-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```
+
+* apiserver 証明書の有効期限を確認する
+```console
+curl https://{apiserver-fqdn} -k -v 2>&1 |grep expire
+```
+
+* VMAS エージェント ノードで証明書の有効期限を確認する
+```console
+az vm run-command invoke -g MC_rg_myAKSCluster_region -n vm-name --command-id RunShellScript --query 'value[0].message' -otsv --scripts "openssl x509 -in /etc/kubernetes/certs/apiserver.crt -noout -enddate"
+```
+
+* VMSS エージェント ノードで証明書の有効期限を確認する
+```console
+az vmss run-command invoke -g MC_rg_myAKSCluster_region -n vmss-name --instance-id 0 --command-id RunShellScript --query 'value[0].message' -otsv --scripts "openssl x509 -in /etc/kubernetes/certs/apiserver.crt -noout -enddate"
+```
+
+## <a name="certificate-auto-rotation"></a>証明書の自動ローテーション
+
+Azure Kubernetes Service では、非 CA 証明書の有効期限が切れてダウンタイムが発生する前に、コントロール プレーンとエージェント ノードの両方でそれらを自動的にローテーションします。
+
+AKS で非 CA 証明書を自動的にローテーションするには、クラスターに [TLS ブートストラップ](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/)が必要です。 TLS ブートストラップは現在、次のリージョンでご利用いただけます。
+
+* eastus2euap
+* centraluseuap
+* westcentralus
+* uksouth
+* eastus
+* australiacentral
+* australiaest
+
+> [!IMPORTANT]
+>リージョンが構成されたら、新しいクラスターを作成するか、"az aks upgrade -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME" を使用して既存のクラスターにアップグレードし、そのクラスターに証明書の自動ローテーションを設定します。 
+
+### <a name="limititation"></a>制限事項
+
+証明書の自動ローテーションは、非 RBAC クラスターでは有効にできません。
+
 
 ## <a name="rotate-your-cluster-certificates"></a>クラスター証明書をローテーションする
 
 > [!WARNING]
-> `az aks rotate-certs` を使用して証明書をローテーションすると、AKS クラスターに最大 30 分間のダウンタイムが生じる可能性があります。
+> `az aks rotate-certs` を使用して証明書をローテーションすると、すべてのノードが再作成され、AKS クラスターに最大 30 分間のダウンタイムが生じる可能性があります。
 
 [az aks get-credentials][az-aks-get-credentials] を使用して、AKS クラスターにサインインします。 また、このコマンドにより、ご使用のローカル コンピューターに `kubectl` クライアント証明書がダウンロードされて構成されます。
 
@@ -80,7 +117,7 @@ kubectl get no
 ```
 
 > [!NOTE]
-> [Azure Dev Spaces][dev-spaces] など、AKS 上で実行されるサービスがある場合は、[それらのサービスに関連する証明書の更新][dev-spaces-rotate]も必要になることがあります。
+> AKS 上で実行されるサービスがある場合は、それらのサービスに関連する証明書の更新も必要になることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -92,5 +129,3 @@ kubectl get no
 [az-extension-add]: /cli/azure/extension#az_extension_add
 [az-extension-update]: /cli/azure/extension#az_extension_update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md
-[dev-spaces]: ../dev-spaces/index.yml
-[dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates

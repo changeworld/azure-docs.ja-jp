@@ -5,18 +5,18 @@ description: Azure Machine Learning を使用して新しい Azure Kubernetes Se
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 04/08/2021
-ms.openlocfilehash: 075b02e3e5f2e409298bf31eb0b6720e64af68a0
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 11/05/2021
+ms.openlocfilehash: 40652feccd86c5c88ab4624d2eeaad012851ed0a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210830"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719321"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -26,7 +26,7 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
 
 - Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 
-- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
+- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-setup-vs-code.md)。
 
 - Azure ML ワークスペースと AKS クラスター間の通信をセキュリティで保護するために Azure Virtual Network の使用を計画している場合は、[トレーニング中や推論中のネットワークの分離](./how-to-network-security-overview.md)に関する記事をご覧ください。
 
@@ -44,9 +44,11 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
 
     承認済みの IP 範囲は、Standard Load Balancer でのみ機能します。
 
-- AKS クラスターを **アタッチする** 場合、これは Azure Machine Learning ワークスペースと同じ Azure サブスクリプションに含まれている必要があります。
+- __別の Azure サブスクリプション__ から AKS クラスターをアタッチするには、AKS クラスター上で、ご自身 (ご自身の Azure AD アカウント) に **共同作成者** ロールが許可されている必要があります。 [Azure portal](https://ms.portal.azure.com/) でご自身のアクセス権を確認してください。
 
 - (Azure Private Link を使用して) プライベート AKS クラスターを使用する場合は、最初にクラスターを作成してから、ワークスペースにそれを **アタッチ** する必要があります。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](../aks/private-clusters.md)」を参照してください。
+
+- [パブリックの完全修飾ドメイン名 (FQDN) とプライベート AKS クラスター](../aks/private-clusters.md#create-a-private-aks-cluster-with-a-public-fqdn)を使用することは Azure Machine Learning では __サポートされていません__。 
 
 - AKS クラスターのコンピューティング名は、Azure ML ワークスペース内で一意である必要があります。 アルファベット文字、数字、ダッシュを含めることができます。 先頭にはアルファベット文字、末尾にはアルファベット文字または数字を使用する必要があり、長さは 3 ～ 24 文字にする必要があります。
  
@@ -57,9 +59,7 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
     > [!IMPORTANT]
     > __開発テスト__ クラスターは、運用レベルのトラフィックに適していないため、推論時間が長くなる可能性があります。 開発/テスト クラスターでは、フォールト トレランスも保証されません。
 
-- クラスターを __運用__ に使用する場合は、クラスターを作成またはアタッチするときに、少なくとも 12 個の __仮想 CPU__ が含まれている必要があります。 仮想 CPU の数は、クラスター内の __ノード数__ に、選択した VM サイズで提供される __コア数__ を掛けることで計算できます。 たとえば、4 個の仮想コアを持つ "Standard_D3_v2" の VM サイズを使用する場合は、ノードの数として 3 以上を選択する必要があります。
-
-    __開発テスト__ クラスターの場合は、少なくとも 2 つの仮想 CPU を使用することをお勧めします。
+- クラスターを __運用__ に使用する場合は、クラスターを作成またはアタッチするときに、少なくとも __3 つのノード__ が含まれている必要があります。 __dev-test__ クラスターの場合は、少なくとも 1 つのノードを含める必要があります。
 
 - Azure Machine Learning SDK では、AKS クラスターのスケーリングのサポートは提供されません。 クラスター内のノードをスケーリングするには、Azure Machine Learning Studio 内でご自分の AKS クラスターの UI を使用します。 クラスターの VM サイズではなく、ノード数のみを変更できます。 AKS クラスターにおけるノードのスケーリングの詳細については、次の記事を参照してください。
 
@@ -85,6 +85,9 @@ Azure Kubernetes Service では、さまざまな Kubernetes バージョンを�
 これらの方法で AKS クラスターを作成するには、クラスターの __既定の__ バージョンを使用します。 Kubernetes の新しいバージョンが利用可能になると、"*既定のバージョンは時間とともに変化します*"。
 
 既存の AKS クラスターを **アタッチする** 場合、現在サポートされているすべての AKS バージョンがサポートされています。
+
+> [!IMPORTANT]
+> Azure Kubernetes Service では、[Blobfuse FlexVolume ドライバー](https://github.com/Azure/kubernetes-volume-drivers/blob/master/flexvolume/blobfuse/README.md) (バージョン 1.16 以下の場合) および [Blob CSI ドライバー](https://github.com/kubernetes-sigs/blob-csi-driver/blob/master/README.md) (バージョン 1.17 以上の場合) が使用されます。 そのため、クラスターのバージョンに合った正しい blobfuse 方式にデプロイするためには、クラスターのアップグレード後、[Web サービスを更新](how-to-deploy-update-web-service.md)または再デプロイすることが重要です。
 
 > [!NOTE]
 > サポートが終了した古いクラスターがあるエッジ ケースがある場合があります。 この場合、アタッチ操作を行うとエラーが返され、現在サポートされているバージョンが一覧表示されます。
@@ -128,7 +131,7 @@ Result
 1.16.13
 ```
 
-**利用可能なバージョンをプログラムで確認する** には、[Container Service Client - List Orchestrators](/rest/api/container-service/container%20service%20client/listorchestrators) REST API を使用します。 使用可能なバージョンを見つけるには、`orchestratorType` が `Kubernetes` になっているエントリを確認します。 関連付けられている `orchestrationVersion` エントリには、ワークスペースに **アタッチ** できるバージョンが含まれています。
+**利用可能なバージョンをプログラムで確認する** には、Container Service Client - List Orchestrators REST API を使用します。 使用可能なバージョンを見つけるには、`orchestratorType` が `Kubernetes` になっているエントリを確認します。 関連付けられている `orchestrationVersion` エントリには、ワークスペースに **アタッチ** できるバージョンが含まれています。
 
 Azure Machine Learning を使用してクラスターを **作成** するときに使用される既定のバージョンを見つけるには、`orchestratorType` が `Kubernetes`、`default` が `true` になっているエントリを見つけます。 関連付けられている `orchestratorVersion` 値が既定のバージョンです。 次の JSON スニペットは、エントリの例を示しています。
 
@@ -198,7 +201,7 @@ aks_target.wait_for_completion(show_output = True)
 az ml computetarget create aks -n myaks
 ```
 
-詳細については、[az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスを参照してください。
+詳細については、[az ml computetarget create aks](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_aks) に関するリファレンスを参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -223,9 +226,9 @@ Azure サブスクリプションに AKS クラスターが既にある場合は
 
 Azure CLI または portal を使用した AKS クラスターの作成の詳細については、次の記事をご覧ください。
 
-* [AKS クラスターの作成 (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az-aks-create)
+* [AKS クラスターの作成 (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az_aks_create)
 * [AKS クラスターの作成 (ポータル)](../aks/kubernetes-walkthrough-portal.md)
-* [AKS クラスターの作成 (Azure クイックスタート テンプレートでの ARM テンプレート)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
+* [AKS クラスターの作成 (Azure クイックスタート テンプレートでの ARM テンプレート)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aks-azml-targetcompute)
 
 次の例では、既存の AKS クラスターをワークスペースにアタッチする方法を示します。
 
@@ -275,7 +278,7 @@ az aks show -n myexistingcluster -g myresourcegroup --query id
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-詳細については、[az ml computetarget attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks) に関するリファレンスをご覧ください。
+詳細については、[az ml computetarget attach aks](/cli/azure/ml(v1)/computetarget/attach#az_ml_computetarget_attach_aks) に関するリファレンスをご覧ください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 

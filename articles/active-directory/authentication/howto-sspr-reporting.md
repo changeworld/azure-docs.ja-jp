@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/01/2019
+ms.date: 10/25/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad1b8318e261c7dfef7fc125716736087a84bdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: dc56bcf1407180aefa5ac888669f1eb2db37fbad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579180"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032194"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -118,6 +119,10 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 * **アクティビティの状態**:
   * _成功_:管理者がユーザーのパスワードのリセットに成功したことを示します。
   * _失敗_:管理者がユーザーのパスワードの変更に失敗したことを示します。 この行を選択すると、 **[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
+- **アクティビティの追加詳細 OnPremisesAgent**:
+  - _None_: クラウドのみのリセットを示します。
+  - _AAD Connect_: Azure AD Connect 書き戻しエージェントを介してオンプレミスでパスワードがリセットされたことを示します。
+  - _cloudsync_: Azure AD cloudsync 書き戻しエージェントを介してオンプレミスでパスワードがリセットされたことを示します。
 
 ### <a name="activity-type-reset-password-self-service"></a>アクティビティの種類: パスワードのリセット (セルフサービス)
 
@@ -173,8 +178,8 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 
 * [SSPR と MFA の使用状況と分析情報のレポート](./howto-authentication-methods-activity.md)
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
-* [パスワードのリセットと変更。](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービス パスワード リセットの登録。](../user-help/active-directory-passwords-reset-register.md)
+* [パスワードのリセットと変更。](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)
+* [セルフサービス パスワード リセットの登録。](https://support.microsoft.com/account-billing/register-the-password-reset-verification-method-for-a-work-or-school-account-47a55d4a-05b0-4f67-9a63-f39a43dbe20a)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
@@ -182,6 +187,6 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 * [パスワード ライトバックの概要とその必要性](./tutorial-enable-sspr-writeback.md)
 * [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
 * [不具合が発生していると思われるSSPR のトラブルシューティング方法](./troubleshoot-sspr.md)
-* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
+* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.yml)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Azure AD の SSPR アクティビティ監査ログの例"

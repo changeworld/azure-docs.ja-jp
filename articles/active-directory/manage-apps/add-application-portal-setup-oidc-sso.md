@@ -1,81 +1,55 @@
 ---
-title: 'クイックスタート: Azure Active Directory (Azure AD) テナント内のアプリケーションへの OIDC ベースのシングル サインオン (SSO) を設定する'
-description: このクイックスタートでは、Azure Active Directory (Azure AD) テナント内のアプリケーションへの OIDC ベースのシングル サインオン (SSO) を設定するプロセスについて説明します。
+title: OpenID Connect ベースのシングル サインオン アプリケーションを追加する
+description: Azure Active Directory で OpenID Connect ベースのシングル サインオン アプリケーションを追加する方法について説明します。
+titleSuffix: Azure AD
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: quickstart
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/01/2020
-ms.author: iangithinji
-ms.openlocfilehash: 2e0b49a73422a2f71af37e103e9d4fd6a18a1f61
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.date: 09/22/2021
+ms.author: davidmu
+ms.reviewer: ergreenl
+ms.openlocfilehash: 02bbc4d6b0cc6f346111a8cd0145ef099dd33feb
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378943"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552016"
 ---
-# <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイックスタート: Azure Active Directory (Azure AD) テナント内のアプリケーションへの OIDC ベースのシングル サインオン (SSO) を設定する
+# <a name="add-an-openid-connect-based-single-sign-on-application"></a>OpenID Connect ベースのシングル サインオン アプリケーションを追加する
 
-Azure Active Directory (Azure AD) テナントに追加したアプリケーションへのシングル サインオン (SSO) を設定することで、簡略化されたユーザー ログインの利用を開始します。 SSO を設定すると、ユーザーが自分の Azure AD の資格情報を使用してアプリケーションにサインインできるようになります。 SSO は Azure AD の Free Edition に含まれています。
+Azure Active Directory (Azure AD) テナントに対する [OpenID Connect (OIDC)](../develop/active-directory-v2-protocols.md) ベースのシングル サインオン (SSO) をサポートするアプリケーションを追加します。
 
-OIDC ベースの SSO の詳細については、「[OIDC ベースのシングル サインオンについて理解する](configure-oidc-single-sign-on.md)」を参照してください。
+このページの手順をテストするには、非運用環境を使用することをお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD テナントに追加したアプリケーションへの SSO を設定するには、以下が必要です。
+OIDC ベースの SSO を構成するには、次が必要です。
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 次のいずれかのロール: グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者。
-- 既に事前構成済みで Azure AD ギャラリーに追加されている、SSO をサポートするアプリケーション。 ほとんどのアプリでは、SSO に Azure AD を使用できます。 Azure AD ギャラリー内のアプリは事前構成されています。 ご自分のアプリが一覧に表示されていない場合、またはカスタム開発されたアプリの場合でも、Azure AD で使用できます。 目次にあるチュートリアルやその他のドキュメントを確認してください。 このクイックスタートは、SSO 用に事前構成され、アプリ開発者によって Azure AD ギャラリーに追加されたアプリに重点を置いています。
-- 省略可能:[アプリの表示](view-applications-portal.md)の完了。
-- 省略可能:[アプリの追加](add-application-portal.md)の完了。
-- 省略可能:[アプリの構成](add-application-portal-configure.md)の完了。
-- 省略可能:[アプリへのユーザーの割り当て](add-application-portal-assign-users.md)の完了。
 
->[!IMPORTANT]
->このクイックスタートの手順をテストする場合は、非運用環境を使用してください。
+## <a name="add-the-application"></a>アプリケーションを追加する
 
-## <a name="enable-single-sign-on-for-an-app"></a>アプリへのシングル サインオンを有効にする
+SSO 向けの OIDC 標準を使用するエンタープライズ アプリケーションを追加するときに、セットアップ ボタンを選択します。 このボタンを選択すると、アプリケーションのサインアップ プロセスが完了します。
 
-SSO に OIDC 標準を使用するアプリを追加すると、セットアップ ボタンが表示されます。 このボタンを選択すると、アプリケーションのサイトに移動するので、アプリに対するサインアップ プロセスを完了させます。 アプリを追加するプロセスについては、このシリーズで前に説明したアプリの追加に関するクイックスタートを参照してください。 既に追加されているアプリケーションを構成する場合は、最初のクイックスタートを参照してください。 テナント内に既に存在するアプリケーションを表示する手順が説明されています。 
+OIDC ベースの SSO をアプリケーション用に構成するには、次のようにします。
 
-アプリケーションへのシングル サインオンを設定するには、次を行います。
+1. [Azure Active Directory 管理センター](https://aad.portal.azure.com)に移動し、前提条件の一覧で示されているロールのいずれかを使用してサインインします。
+1. 左側のメニューで、 **[エンタープライズ アプリケーション]** を選択します。 **[すべてのアプリケーション]** ペインが開き、Azure AD テナントのアプリケーションの一覧が表示されます。 
+1. **[エンタープライズ アプリケーション]** ペインで、 **[新しいアプリケーション]** を選択します。
+1. **[Azure AD ギャラリーの参照]** ペインが開き、クラウド プラットフォーム、オンプレミス アプリケーション、および注目のアプリケーションのタイルが表示されます。 **[注目のアプリケーション]** セクションに一覧表示されているアプリケーションには、フェデレーション SSO とプロビジョニングをサポートしているかどうかを示すアイコンがあります。 アプリケーションを検索して選択します。 この例では、**SmartSheet** が使用されています。
+1. **[サインアップ]** を選択します。 Azure Active Directory から、ユーザー アカウントの資格情報でサインインします。 アプリケーションのサブスクリプションを既に持っている場合は、ユーザーの詳細およびテナント情報が検証されます。 アプリケーションがユーザーを確認できない場合は、アプリケーション サービスへのサインアップにリダイレクトされます。
 
-1. このシリーズの前のクイックスタートでは、ID 管理に Azure AD テナントを使用するアプリを追加する方法を学習しました。 アプリ開発者が OIDC 標準を使用して SSO を実装してある場合は、アプリを追加するときにサインアップ ボタンが表示されます。 
+    :::image type="content" source="media/add-application-portal-setup-oidc-sso/oidc-sso-configuration.png" alt-text="アプリケーションの同意画面を完了します。":::
 
-    :::image type="content" source="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png" alt-text="[シングルサインオン] オプションと [サインアップ] ボタンが表示されているスクリーンショット。" lightbox="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png":::
-
-
-2. **[サインアップ]** を選択すると、アプリ開発者のサインオン ページが表示されます。 Azure Active Directory サインイン資格情報を使用してサインインします。 
-
-   > [!IMPORTANT]
-    > アプリケーションのサブスクリプションを既に持っている場合は、ユーザーの詳細およびテナントまたはディレクトリ情報の検証が行われます。 アプリケーションがユーザーを確認できない場合は、アプリケーション サービスへのサインアップまたはエラー ページにリダイレクトされます。
-
-3. 認証が成功すると、管理者の同意を求めるダイアログが表示されます。 **[組織の代理として同意する]** を選択して、 **[同意する]** を選択します。 ユーザーおよび管理者の同意の詳細については、「[ユーザーおよび管理者の同意について](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)」を参照してください。
-
-    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="アプリの同意画面が表示されているスクリーンショット。" lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
-
-4. アプリケーションがテナントに追加され、アプリケーションのホーム ページが表示されます。
-
-
-> [!TIP]
-> Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](/graph/application-saml-sso-configure-api)に関するページを参照してください。
-
-これは、OIDC ベースのアプリを Azure AD に追加する方法の詳細を説明するビデオです。
-
-Azure Active Directory で OIDC ベースのアプリを追加する
-
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
-
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-このクイックスタート シリーズを完了したら、アプリを削除してテスト テナントをクリーンアップすることを検討してください。 アプリの削除については、このシリーズの最後のクイックスタートである[アプリの削除](delete-application-portal.md)に関する記事で説明されています。
+1. **[組織の代理として同意する]** を選択して、 **[同意する]** を選択します。 アプリケーションがテナントに追加され、アプリケーションのホーム ページが表示されます。 ユーザーおよび管理者の同意の詳細については、「[ユーザーおよび管理者の同意について](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-次の記事に進み、アプリを削除する方法を学習してください。
+シングル サインオン デプロイの計画について詳しく学習します。
 > [!div class="nextstepaction"]
-> [アプリを削除する](delete-application-portal.md)
+> [シングル サインオンのデプロイの計画](plan-sso-deployment.md)

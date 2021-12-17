@@ -1,22 +1,22 @@
 ---
 title: Azure Cognitive Search 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Cognitive Search に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 04/14/2021
+ms.date: 09/17/2021
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 807201d5626bcdbc421d182f06b888c5775dcc48
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: eb1a7e25022c1e3c15387dfb11fb972016a67046
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497416"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612866"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>Azure Cognitive Search 用の Azure Policy 規制コンプライアンス コントロール
 
-[Azure Policy](../governance/policy/overview.md) を使用して [Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)の推奨事項を適用している場合は、準拠していないサービスを識別して修正するためにポリシーを作成できることは、既にご存じかもしれません。 このようなポリシーは、カスタムの場合もあれば、よく知られたベスト プラクティスのためのコンプライアンス条件と適切なソリューションを提供する組み込み定義に基づく場合もあります。
+[Azure Policy](../governance/policy/overview.md) を使用して [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/introduction)の推奨事項を適用している場合は、準拠していないサービスを識別して修正するためにポリシーを作成できることは、既にご存じかもしれません。 このようなポリシーは、カスタムの場合もあれば、よく知られたベスト プラクティスのためのコンプライアンス条件と適切なソリューションを提供する組み込み定義に基づく場合もあります。
 
 Azure Cognitive Search の場合は、現在、次に示す組み込み定義が 1 つあり、ポリシーの割り当てで使用できます。 組み込みは、ログ記録と監視のためのものです。 [作成するポリシー](../governance/policy/assign-policy-portal.md)でこの組み込み定義を使用すると、システムによって[診断ログ](search-monitor-logs.md)のない検索サービスがスキャンされ、それに応じて有効にされます。
 

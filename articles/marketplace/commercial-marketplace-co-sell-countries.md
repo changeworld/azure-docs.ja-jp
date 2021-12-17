@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 08/27/2019
-ms.openlocfilehash: d361744ffe66a1ea91849149d05c6741eff600f5
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: d480f400bfd5a8d1ad59c9e4bcf1e8425171cc4a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077314"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123323"
 ---
 # <a name="co-sell-country-and-region-codes"></a>共同販売国とリージョン コード
 
-[オファーの共同販売ページに連絡先情報を提供する](commercial-marketplace-co-sell.md)ときに、これら 2 文字の国/地域コードを使用してください。
+[オファーの共同販売ページに連絡先情報を提供する](./co-sell-configure.md)ときに、これら 2 文字の国/地域コードを使用してください。
 
 連絡先がすべての国/地域を対象としている場合は、3 文字のコード "OOO" を使用します。
 
@@ -276,4 +276,4 @@ ms.locfileid: "106077314"
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[コマーシャル マーケットプレースでの共同販売オプション](./commercial-marketplace-co-sell.md)」について学習します。
+- 「[コマーシャル マーケットプレースでの共同販売オプション](./co-sell-configure.md)」について学習します。

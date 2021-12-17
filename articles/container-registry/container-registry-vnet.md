@@ -3,18 +3,20 @@ title: サービス エンドポイントを使用してアクセスを制限す
 description: Azure 仮想ネットワークのサービス エンドポイントを使用して Azure Container Registry へのアクセスを制限します。 サービス エンドポイント アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 8a67a011c75a192df9ad3460458fd766b5ec1ec1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6c76e7e98f049a46c161c5f4ff00b5282ba52c1a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773471"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043473"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Azure 仮想ネットワークのサービス エンドポイントを使用してコンテナー レジストリへのアクセスを制限する
 
 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) では、Azure リソースやオンプレミス リソースのセキュアなプライベート ネットワーキングが提供されます。 [サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用すると、コンテナー レジストリのパブリック IP アドレスへのアクセスを仮想ネットワークのみに制限することで保護できます。 このエンドポイントでは、Azure バックボーン ネットワーク上のリソースへの最適なルートがトラフィックに提供されます。 仮想ネットワークとサブネットの ID も、各要求と一緒に転送されます。
 
 この記事では、仮想ネットワークでコンテナー レジストリのサービス エンドポイント (プレビュー) を構成する方法について説明します。 
+
+各レジストリでは、最大 100 個の仮想ネットワーク規則がサポートされます。
 
 > [!IMPORTANT]
 > Azure Container Registry で [Azure Private Link](container-registry-private-link.md) がサポートされ、仮想ネットワークからプライベート エンドポイントをレジストリにデプロイできるようになりました。 プライベート エンドポイントには、プライベート IP アドレスを使用して仮想ネットワーク内からアクセスできます。 ほとんどのネットワーク シナリオでは、サービス エンドポイントの代わりにプライベート エンドポイントを使用することをお勧めします。
@@ -110,7 +112,7 @@ az acr update --name myContainerRegistry --default-action Deny
 
 [az acr network-rule add][az-acr-network-rule-add] コマンドを使用して、VM のサブネットからのアクセスを許可するネットワーク規則をレジストリに追加します。 次のコマンドでは、コンテナー レジストリの名前とサブネットのリソース ID に置き換えます。 
 
- ```azurecli
+```azurecli
 az acr network-rule add \
   --name mycontainerregistry \
   --subnet <subnet-resource-id>

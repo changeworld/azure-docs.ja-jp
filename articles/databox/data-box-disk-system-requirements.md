@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/22/2021
+ms.date: 10/07/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 750ed8f65db04199ea284e69693bced65a1dc8d9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 171297be3e0e8e5215c5c551e984a45d0516507e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703135"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003158"
 ---
 ::: zone target="docs"
 
@@ -74,11 +74,16 @@ Linux クライアントでは、Data Box Disk のツールセットが次の必
 
 Data Box Disk でサポートされるストレージの種類の一覧を次に示します。
 
-| **ストレージ アカウント** | **メモ** |
+| **ストレージ アカウント** | **サポートされているアクセス層** |
 | --- | --- |
-| クラシック | Standard |
-| General Purpose  |標準。V1 と V2 の両方がサポートされます。 また、ホット層とクール層の両方がサポートされます。 |
+| クラシック Standard | |
+| 汎用 v1 Standard  | ホット、クール |
+| 汎用 v1 Premium   |  |
+| 汎用 v2 Standard<sup>*</sup> | ホット、クール |
+| 汎用 v2 Premium   |  |
 | BLOB ストレージ アカウント | |
+
+<sup>*</sup> *"Azure Data Lake Storage Gen2 (ADLS Gen2) がサポートされています。"*
 
 > [!IMPORTANT]
 > Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポートは、Data Box Disk ではサポートされていません。

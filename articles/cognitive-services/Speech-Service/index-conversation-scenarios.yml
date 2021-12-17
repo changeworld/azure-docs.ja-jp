@@ -5,24 +5,24 @@ metadata:
   title: 会話のシナリオのドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: trevorbye
+  author: eric-urban
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/16/2020
-  ms.author: trbye
-  ms.openlocfilehash: 9cb8c769074dea9ed75a9282c41c24437d17d5ab
-  ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+  ms.author: eur
+  ms.openlocfilehash: eb3dc09228b375ae6774ae400bdb5ea1f5fd6ee0
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/30/2021
-  ms.locfileid: "92756996"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132550648"
 landingContent:
 - title: 会話の文字起こしについて (会議のシナリオ)
   linkLists:
   - linkListType: overview
     links:
-    - text: 会議での会話の文字起こしとは
+    - text: 会話の文字起こしとは
       url: conversation-transcription.md
   - linkListType: quickstart
     links:

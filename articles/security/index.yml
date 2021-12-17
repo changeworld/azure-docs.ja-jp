@@ -4,7 +4,7 @@ summary: セキュリティは、Azure のすべての要素に統合されて�
 brand: azure
 metadata:
   title: Azure のセキュリティのドキュメント
-  description: Azure のセキュリティについて説明します。 セキュリティの基礎、ベスト プラクティスとパターン、Azure Security Center についての情報をご覧ください。
+  description: Azure のセキュリティについて説明します。 セキュリティの基礎、ベスト プラクティスとパターン、Microsoft Defender for Cloud についての情報をご覧ください。
   services: security
   ms.service: security
   ms.subservice: na
@@ -14,228 +14,225 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 02/05/2021
-  ms.openlocfilehash: 2e50e273841b93d2ecc742f26069c0e3017b3692
-  ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/07/2021
-  ms.locfileid: "99807786"
 highlightedContent:
   items:
-  - title: Azure のセキュリティの概要
-    itemType: overview
-    url: ./fundamentals/overview.md
-  - title: セキュリティのベスト プラクティスとパターン
-    itemType: concept
-    url: ./fundamentals/best-practices-and-patterns.md
-  - title: Azure Security Center とは
-    itemType: overview
-    url: ../security-center/security-center-introduction.md
+    - title: セキュリティに関する取り組みを開始する
+      itemType: get-started
+      url: ./journey/index.yml
+    - title: ビジネス ニーズに合ったセキュリティ サービスを見つける
+      itemType: overview
+      url: ./fundamentals/end-to-end.md
+    - title: ベスト プラクティスとレコメンデーションを使用してクラウド デプロイをセキュリティで保護する
+      itemType: concept
+      url: ./benchmarks/introduction.md
 conceptualContent:
   items:
-  - title: 基礎
-    links:
-    - url: ./fundamentals/technical-capabilities.md
-      itemType: overview
-      text: Azure セキュリティの技術的な機能
-    - url: https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91
-      itemType: concept
-      text: クラウド コンピューティングについての責任共有
-    - url: ./fundamentals/security-controls.md
-      itemType: concept
-      text: Azure サービスのセキュリティ コントロール
-    footerLink:
-      url: ./fundamentals/index.yml
-      text: 詳細情報
-  - title: 開発者
-    links:
-    - url: ./develop/secure-dev-overview.md
-      itemType: overview
-      text: 安全な開発のベスト プラクティス
-    - url: ./develop/secure-develop.md
-      itemType: tutorial
-      text: セキュリティで保護されたアプリケーションの開発
-    - url: ./develop/threat-modeling-tool.md
-      itemType: concept
-      text: Microsoft Threat Modeling Tool
-    footerLink:
-      url: ./develop/index.yml
-      text: 詳細情報
-  - title: ベンチマークと推奨事項
-    links:
-    - url: ./benchmarks/introduction.md
-      itemType: download
-      text: Azure クラウドのセキュリティ ベンチマーク
-    - url: ../security-center/security-center-using-recommendations.md
-      itemType: overview
-      text: Azure Security Center の推奨事項
-    footerLink:
-      url: ./benchmarks/index.yml
-      text: 詳細情報
-  - title: シークレットとキー
-    links:
-    - url: ../key-vault/general/overview.md
-      itemType: overview
-      text: Azure Key Vault とは?
-    - url: ../key-vault/secrets/quick-create-cli.md
-      itemType: quickstart
-      text: シークレットの設定と取得
-    - url: ../dedicated-hsm/overview.md
-      itemType: overview
-      text: Azure Dedicated HSM とは何か
-    footerLink:
-      url: ../key-vault/index.yml
-      text: 詳細情報
-  - title: データ保護
-    links:
-    - url: ./fundamentals/encryption-atrest.md
-      itemType: concept
-      text: 保存時のデータ暗号化
-    - url: ./fundamentals/data-encryption-best-practices.md
-      itemType: concept
-      text: データ セキュリティと暗号化のベスト プラクティス
-    - url: ../storage/blobs/security-recommendations.md
-      itemType: concept
-      text: ストレージのセキュリティ
-    footerLink:
-      url: ./fundamentals/encryption-overview.md
-      text: 詳細情報
-  - title: ID 管理
-    links:
-    - url: ../active-directory/hybrid/choose-ad-authn.md
-      itemType: concept
-      text: 適切な認証方法の選択
-    - url: ./fundamentals/steps-secure-identity.md
-      itemType: concept
-      text: ID インフラストラクチャのセキュリティ保護
-    - url: ./fundamentals/identity-management-best-practices.md
-      itemType: concept
-      text: セキュリティの運用方法
-    footerLink:
-      url: ./fundamentals/identity-management-overview.md
-      text: 詳細情報
-  - title: セキュリティの監視
-    links:
-    - url: ../security-center/security-center-get-started.md
-      itemType: quickstart
-      text: サブスクリプションでの Security Center の利用開始
-    - url: ../security-center/security-center-just-in-time.md
-      itemType: how-to-guide
-      text: Just-In-Time 仮想マシン アクセス
-    - url: ../security-center/tutorial-security-policy.md
-      itemType: how-to-guide
-      text: セキュリティ ポリシーの操作
-    footerLink:
-      url: ../security-center/index.yml
-      text: 詳細情報
-  - title: IoT セキュリティの監視
-    links:
-    - url: ../defender-for-iot/overview.md
-      itemType: overview
-      text: Azure Security Center for IoT の概要
-    - url: ../defender-for-iot/architecture.md
-      itemType: how-to-guide
-      text: Azure Security Center for IoT のアーキテクチャ
-    - url: ../defender-for-iot/getting-started.md
-      itemType: how-to-guide
-      text: Azure Security Center for IoT の使用を開始する
-    footerLink:
-      url: /azure/asc-for-iot/
-      text: 詳細情報
-  - title: セキュリティ分析
-    links:
-    - url: ../sentinel/overview.md
-      itemType: overview
-      text: Azure Sentinel プレビューの概要
-    - url: ../sentinel/quickstart-onboard.md
-      itemType: quickstart
-      text: Azure Sentinel プレビューのオンボード
-    - url: ../sentinel/quickstart-get-visibility.md
-      itemType: quickstart
-      text: Azure Sentinel プレビューでの作業の開始
-    footerLink:
-      url: ../sentinel/index.yml
-      text: 詳細情報
-  - title: 脅威の防止
-    links:
-    - url: ../security-center/security-center-alerts-overview.md
-      itemType: concept
-      text: Azure Security Center のセキュリティ アラート
-    - url: ../storage/common/azure-defender-storage-configure.md
-      itemType: concept
-      text: Azure Defender for Storage
-    - url: ../azure-sql/database/threat-detection-overview.md
-      itemType: concept
-      text: Azure Defender for SQL
-    footerLink:
-      url: ./fundamentals/threat-detection.md
-      text: 詳細情報
-  - title: ログ記録と監査
-    links:
-    - url: ./fundamentals/log-audit.md
-      itemType: concept
-      text: Azure のログと監査
-    - url: ./fundamentals/management-monitoring-overview.md
-      itemType: overview
-      text: 管理と監視の概要
-    footerLink:
-      url: /search/?category=Documentation&scope=azure&search=security%2baudit%2blog
-      text: さらに検索
-  - title: ネットワークのセキュリティ
-    links:
-    - url: ./fundamentals/network-overview.md
-      itemType: overview
-      text: セキュリティの概要
-    - url: ./fundamentals/network-best-practices.md
-      itemType: concept
-      text: セキュリティの運用方法
-    - url: ../ddos-protection/fundamental-best-practices.md
-      itemType: concept
-      text: DDoS Protection
-  - title: インフラストラクチャのセキュリティ
-    links:
-    - url: ./fundamentals/physical-security.md
-      itemType: concept
-      text: Azure の施設、建物、および物理上のセキュリティ
-    - url: ./fundamentals/infrastructure-network.md
-      itemType: concept
-      text: ネットワーク アーキテクチャ
-    - url: ./fundamentals/protection-customer-data.md
-      itemType: concept
-      text: 顧客データの保護
-    footerLink:
-      url: ./fundamentals/infrastructure.md
-      text: 詳細情報
-  - title: 仮想マシンのセキュリティ
-    links:
-    - url: ./fundamentals/virtual-machines-overview.md
-      itemType: overview
-      text: セキュリティの概要
-    - url: ./fundamentals/iaas.md
-      itemType: concept
-      text: IaaS ワークロードのベスト プラクティス
-    - url: ./fundamentals/azure-marketplace-images.md
-      itemType: concept
-      text: セキュリティ構成に関する推奨事項
-  - title: データベースのセキュリティ
-    links:
-    - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
-      itemType: overview
-      text: データのセキュリティ
-    - url: ./fundamentals/paas-applications-using-sql.md
-      itemType: concept
-      text: PaaS データベースのベスト プラクティス
-    - url: ./fundamentals/database-security-checklist.md
-      itemType: concept
-      text: セキュリティ チェックリスト
-  - title: ガバナンスとコンプライアンス
-    links:
-    - url: ../governance/policy/overview.md
-      itemType: overview
-      text: Azure Policy サービス
-    - url: ../governance/blueprints/overview.md
-      itemType: overview
-      text: Azure Blueprints サービス
-    footerLink:
-      url: ../governance/index.yml
-      text: 詳細情報
+    - title: Fundamentals
+      links:
+        - url: ./fundamentals/overview.md
+          itemType: overview
+          text: Azure のセキュリティの概要
+        - url: 'https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91'
+          itemType: concept
+          text: クラウド コンピューティングについての責任共有
+        - url: ./benchmarks/index.yml
+          itemType: concept
+          text: Azure サービスのセキュリティ コントロール
+      footerLink:
+        url: ./fundamentals/index.yml
+        text: 詳細情報
+    - title: 開発者
+      links:
+        - url: ./develop/secure-dev-overview.md
+          itemType: overview
+          text: 安全な開発のベスト プラクティス
+        - url: ./develop/secure-develop.md
+          itemType: tutorial
+          text: セキュリティで保護されたアプリケーションの開発
+        - url: ./develop/threat-modeling-tool.md
+          itemType: concept
+          text: Microsoft Threat Modeling Tool
+      footerLink:
+        url: ./develop/index.yml
+        text: 詳細情報
+    - title: セキュリティのベスト プラクティスとパターン
+      links:
+        - url: ./fundamentals/identity-management-best-practices.md
+          itemType: concept
+          text: ID 管理
+        - url: ./fundamentals/network-best-practices.md
+          itemType: concept
+          text: ネットワークのセキュリティ
+        - url: ./fundamentals/paas-deployments.md
+          itemType: concept
+          text: PaaS デプロイをセキュリティで保護する
+      footerLink:
+        url: ./fundamentals/best-practices-and-patterns.md
+        text: 詳細情報
+    - title: シークレットとキー
+      links:
+        - url: ../key-vault/general/overview.md
+          itemType: overview
+          text: Azure Key Vault とは?
+        - url: ../key-vault/secrets/quick-create-cli.md
+          itemType: quickstart
+          text: シークレットの設定と取得
+        - url: ../dedicated-hsm/overview.md
+          itemType: overview
+          text: Azure Dedicated HSM とは何か
+      footerLink:
+        url: ../key-vault/index.yml
+        text: 詳細情報
+    - title: データ保護
+      links:
+        - url: ./fundamentals/encryption-atrest.md
+          itemType: concept
+          text: 保存時のデータ暗号化
+        - url: ./fundamentals/data-encryption-best-practices.md
+          itemType: concept
+          text: データ セキュリティと暗号化のベスト プラクティス
+        - url: ../storage/blobs/security-recommendations.md
+          itemType: concept
+          text: ストレージのセキュリティ
+      footerLink:
+        url: ./fundamentals/encryption-overview.md
+        text: 詳細情報
+    - title: ID 管理
+      links:
+        - url: ../active-directory/hybrid/choose-ad-authn.md
+          itemType: concept
+          text: 適切な認証方法の選択
+        - url: ./fundamentals/steps-secure-identity.md
+          itemType: concept
+          text: ID インフラストラクチャのセキュリティ保護
+        - url: ./fundamentals/identity-management-best-practices.md
+          itemType: concept
+          text: セキュリティの運用方法
+      footerLink:
+        url: ./fundamentals/identity-management-overview.md
+        text: 詳細情報
+    - title: セキュリティの監視
+      links:
+        - url: ../security-center/security-center-get-started.md
+          itemType: quickstart
+          text: サブスクリプションを Defender for Cloud へオンボードする
+        - url: ../security-center/security-center-just-in-time.md
+          itemType: how-to-guide
+          text: Just-In-Time 仮想マシン アクセス
+        - url: ../security-center/tutorial-security-policy.md
+          itemType: how-to-guide
+          text: セキュリティ ポリシーの操作
+      footerLink:
+        url: ../security-center/index.yml
+        text: 詳細情報
+    - title: IoT セキュリティの監視
+      links:
+        - url: ../defender-for-iot/overview.md
+          itemType: overview
+          text: Microsoft Defender for IoT の概要
+        - url: ../defender-for-iot/architecture.md
+          itemType: how-to-guide
+          text: Microsoft Defender for IoT のアーキテクチャ
+        - url: ../defender-for-iot/getting-started.md
+          itemType: how-to-guide
+          text: Microsoft Defender for IoT での作業を開始する
+      footerLink:
+        url: /azure/asc-for-iot/
+        text: 詳細情報
+    - title: セキュリティ分析
+      links:
+        - url: ../sentinel/overview.md
+          itemType: overview
+          text: Microsoft Sentinel とは
+        - url: ../sentinel/quickstart-onboard.md
+          itemType: quickstart
+          text: Microsoft Sentinel のオンボード
+        - url: ../sentinel/get-visibility.md
+          itemType: quickstart
+          text: Microsoft Quantum の概要
+      footerLink:
+        url: ../sentinel/index.yml
+        text: 詳細情報
+    - title: 脅威の防止
+      links:
+        - url: ../security-center/security-center-alerts-overview.md
+          itemType: concept
+          text: Microsoft Defender for Cloud のセキュリティアラート
+        - url: ../storage/common/azure-defender-storage-configure.md
+          itemType: concept
+          text: Microsoft Defender for Storage
+        - url: ../azure-sql/database/threat-detection-overview.md
+          itemType: concept
+          text: Microsoft Defender for SQL
+      footerLink:
+        url: ./fundamentals/threat-detection.md
+        text: 詳細情報
+    - title: ログ記録と監査
+      links:
+        - url: ./fundamentals/log-audit.md
+          itemType: concept
+          text: Azure のログと監査
+        - url: ./fundamentals/management-monitoring-overview.md
+          itemType: overview
+          text: 管理と監視の概要
+      footerLink:
+        url: /search/?category=Documentation&scope=azure&search=security%2baudit%2blog
+        text: さらに検索
+    - title: ネットワークのセキュリティ
+      links:
+        - url: ./fundamentals/network-overview.md
+          itemType: overview
+          text: セキュリティの概要
+        - url: ./fundamentals/network-best-practices.md
+          itemType: concept
+          text: セキュリティの運用方法
+        - url: ../ddos-protection/fundamental-best-practices.md
+          itemType: concept
+          text: DDoS Protection
+    - title: インフラストラクチャのセキュリティ
+      links:
+        - url: ./fundamentals/physical-security.md
+          itemType: concept
+          text: Azure の施設、建物、および物理上のセキュリティ
+        - url: ./fundamentals/infrastructure-network.md
+          itemType: concept
+          text: ネットワーク アーキテクチャ
+        - url: ./fundamentals/protection-customer-data.md
+          itemType: concept
+          text: 顧客データの保護
+      footerLink:
+        url: ./fundamentals/infrastructure.md
+        text: 詳細情報
+    - title: 仮想マシンのセキュリティ
+      links:
+        - url: ./fundamentals/virtual-machines-overview.md
+          itemType: overview
+          text: セキュリティの概要
+        - url: ./fundamentals/iaas.md
+          itemType: concept
+          text: IaaS ワークロードのベスト プラクティス
+        - url: ./fundamentals/azure-marketplace-images.md
+          itemType: concept
+          text: セキュリティ構成に関する推奨事項
+    - title: データベースのセキュリティ
+      links:
+        - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
+          itemType: overview
+          text: データのセキュリティ
+        - url: ./fundamentals/paas-applications-using-sql.md
+          itemType: concept
+          text: PaaS データベースのベスト プラクティス
+        - url: ./fundamentals/database-security-checklist.md
+          itemType: concept
+          text: セキュリティ チェックリスト
+    - title: ガバナンスとコンプライアンス
+      links:
+        - url: ../governance/policy/overview.md
+          itemType: overview
+          text: Azure Policy サービス
+        - url: ../governance/blueprints/overview.md
+          itemType: overview
+          text: Azure Blueprints サービス
+      footerLink:
+        url: ../governance/index.yml
+        text: 詳細情報

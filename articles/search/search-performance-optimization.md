@@ -6,14 +6,14 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 10/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 493f6759f63f023572f38647076e04425acf9d6a
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 22f037751c913e05dde84395ed18252b16d01a6e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581533"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554376"
 ---
 # <a name="availability-and-business-continuity-in-azure-cognitive-search"></a>Azure Cognitive Search の可用性とビジネス継続性
 
@@ -33,6 +33,10 @@ Microsoft は、個々の検索サービスについて、次の条件を満た�
 
 Free レベルに対して、SLA は提供されません。 詳細については、「[Azure Cognitive Search の SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)」を参照してください。
 
+## <a name="data-residency"></a>データ所在地
+
+Azure Cognitive Search は、お客様の許可なく、お客様が指定したリージョン外にお客様のデータを保存することはありません。
+
 <a name="availability-zones"></a>
 
 ## <a name="availability-zones"></a>可用性ゾーン
@@ -44,15 +48,19 @@ Free レベルに対して、SLA は提供されません。 詳細について�
 現在、Azure Cognitive Search では、次のいずれかのリージョンで作成された Standard レベル以上の検索サービスの Availability Zones がサポートされます。
 
 + オーストラリア東部 (2021 年 1 月 30 日以降に作成)
++ ブラジル南部 (2021 年 5 月 2 日以降に作成)
 + カナダ中部 (2021 年 1 月 30 日以降に作成)
 + 米国中部 (2020 年 12 月 4 日以降に作成)
 + 米国東部 (2021 年 1 月 27 日以降に作成)
 + 米国東部 2 (2021 年 1 月 30 日以降に作成)
 + フランス中部 (2020 年 10 月 23 日以降に作成)
++ ドイツ中西部 (2021 年 5 月 3 日以降に作成)
 + 東日本 (2021 年 1 月 30 日以降に作成)
 + 北ヨーロッパ (2021 年 1 月 28 日以降に作成)
++ 米国中南部 (2021 年 4 月 30 日以降に作成)
 + 東南アジア (2021 年 1 月 31 日以降に作成)
 + 英国南部 (2021 年 1 月 30 日以降に作成)
++ US Gov バージニア (2021 年 4 月 30 日以降に作成)
 + 西ヨーロッパ (2021 年 1 月 29 日以降に作成)
 + 米国西部 2 (2021 年 1 月 30 日以降に作成)
 
@@ -102,9 +110,7 @@ Azure Cognitive Search では、リージョン間で検索インデックスを
 
 ## <a name="disaster-recovery-and-service-outages"></a>障害復旧とサービスの停止
 
-Microsoft はユーザーのデータを回収できますが、Azure Cognitive Search では、クラスターまたはデータ センターのレベルで障害が発生した場合のサービスの即時フェールオーバーは提供されません。 データ センターでクラスターの障害が発生した場合、運用チームは障害を検出してサービスの復元を行います。 サービスの復元中にダウンタイムが発生しますが、[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) に従い、サービス使用不可に対する補償としてサービス クレジットを要求できます。 
-
-Microsoft の管理が及ばない外部の壊滅的災害の際にサービスを継続する必要がある場合は、異なるリージョンに[追加のサービスをプロビジョニング](search-create-service-portal.md)し、geo レプリケーション戦略を導入して、インデックスがすべてのサービスで完全に冗長になるようにする必要があります。
+[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) のページで説明されているように、Azure Cognitive Search サービス インスタンスが 2 つ以上のレプリカで構成されている場合はインデックス クエリ要求の可用性が高くなり、Azure Cognitive Search サービス インスタンスが 3 つ以上のレプリカで構成されている場合はインデックス更新要求の可用性が高くなります。 ただし、ディザスター リカバリーのための組み込みのメカニズムはありません。 Microsoft の管理が及ばない外部の壊滅的災害の際にサービスを継続する必要がある場合は、異なるリージョンに 2 番目のサービスをプロビジョニングし、geo レプリケーション戦略を導入して、インデックスがすべてのサービスで完全に冗長になるようにすることをお勧めします。
 
 インデックスの作成と更新に[インデクサー](search-indexer-overview.md)を使っているお客様は、同じデータ ソースを利用する geo 固有のインデクサーによってディザスター リカバリーを処理できます。 異なるリージョンにある 2 つのサービスそれぞれでインデクサーを実行し、同じデータ ソースのインデックスを作成すると、geo 冗長性を実現できます。 geo 冗長性も備えたデータ ソースからインデックスを作成する場合、Azure Cognitive Search インデクサーは、プライマリ レプリカからの (新規、変更、または削除されたドキュメントの更新をマージする) 増分インデックスの作成のみを実行できることに注意してください。 フェールオーバー イベントでは、新しいプライマリ レプリカをポイントするように再度インデクサーを設定してください。 
 
@@ -118,12 +124,7 @@ Azure Cognitive Search は主要なデータ ストレージ ソリューショ�
 
 ## <a name="next-steps"></a>次のステップ
 
-価格レベルと各レベルのサービスの制限の詳細については、[サービスの制限](search-limits-quotas-capacity.md)に関するページをご覧ください。 パーティションとレプリカの組み合わせの詳細については、[キャパシティ プランニング](search-capacity-planning.md)に関する記事をご覧ください。
-
-この記事で説明された手法のパフォーマンスとデモについて、次の動画をご覧ください。
-
-> [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
-> 
+価格レベルと各レベルのサービスの制限の詳細については、[サービスの制限](search-limits-quotas-capacity.md)に関するページをご覧ください。 パーティションとレプリカの組み合わせの詳細については、[キャパシティ プランニング](search-capacity-planning.md)に関する記事をご覧ください。また、実践で使えるヒントについては、[ケース スタディ: Cognitive Search を使用して複雑な AI シナリオに対応する](https://techcommunity.microsoft.com/t5/azure-ai/case-study-effectively-using-cognitive-search-to-support-complex/ba-p/2804078)方法に関するページを参照してください。
 
 <!--Image references-->
 [1]: ./media/search-performance-optimization/geo-redundancy.png

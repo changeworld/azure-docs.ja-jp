@@ -2,13 +2,13 @@
 title: Azure Service Bus での AMQP 1.0 要求/応答操作
 description: この記事では、Microsoft Azure Service Bus での AMQP 要求および応答ベースの操作の一覧を定義します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: b845f4086ee1ac4fe868571c1754caf6d29b9021
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: bb7b3ea90678be8a462f59d700f4c18feac300e5
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88064416"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153560"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作
 
@@ -17,11 +17,7 @@ ms.locfileid: "88064416"
 OASIS AMQP 技術仕様に基づいて Service Bus が実装および構築される方法について説明している、詳細な回線レベルの AMQP 1.0 プロトコル ガイドについては、「[Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド][AMQP 1.0 プロトコル ガイド]」を参照してください。  
   
 ## <a name="concepts"></a>概念  
-  
-### <a name="entity-description"></a>エンティティの説明  
-
-エンティティの説明は、Service Bus の [QueueDescription クラス](/dotnet/api/microsoft.servicebus.messaging.queuedescription)、[TopicDescription クラス](/dotnet/api/microsoft.servicebus.messaging.topicdescription)、または [SubscriptionDescription クラス](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription)のオブジェクトを指します。  
-  
+    
 ### <a name="brokered-message"></a>ブローカー メッセージ  
 
 AMQP メッセージにマップされている Service Bus のメッセージを表します。 マッピングは、[Service Bus AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)で定義されています。  
@@ -115,7 +111,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 ### <a name="message-renew-lock"></a>メッセージ更新ロック  
 
-エンティティの説明で指定された時間までメッセージのロックを延長します。  
+キューまたはサブスクリプションに設定されているロック期間によって、メッセージのロックを拡張します。  
   
 #### <a name="request"></a>要求  
 
@@ -133,7 +129,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |`lock-tokens`|UUID の配列|はい|更新するメッセージ ロック トークン。|  
 
 > [!NOTE]
-> ロック トークンは、受信メッセージの　`DeliveryTag`　プロパティです。 [.NET SDK](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) で、それらを取得する次の例を参照してください。 トークンは 'DeliveryAnnotations' に 'x-opt-lock-token' と表示されることもありますが、これは確実ではないため、`DeliveryTag` を使用することをお勧めします。 
+> ここでのロック トークンは、受信した AMQP メッセージの `delivery-tag` プロパティを参照します。 遅延メッセージを受信し、そのロックを更新する場合は、`delivery-tag` ではなく、メッセージの `lock-token` プロパティを使用します。 
 > 
   
 #### <a name="response"></a>Response  
@@ -268,7 +264,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 ### <a name="session-renew-lock"></a>セッション更新ロック  
 
-エンティティの説明で指定された時間までメッセージのロックを延長します。  
+キューまたはサブスクリプションに設定されているロック期間によって、メッセージのロックを拡張します。  
   
 #### <a name="request"></a>要求  
 

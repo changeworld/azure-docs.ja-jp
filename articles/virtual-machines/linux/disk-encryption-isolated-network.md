@@ -7,16 +7,18 @@ ms.subservice: disks
 ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
-ms.date: 02/27/2020
+ms.date: 05/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: 8d8d2b88251f837a23c4e82a90eb4d4eb0043702
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fac7da74ee31f1bd775daa5446f4dec9b9bc2b79
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553053"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695659"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>分離されたネットワークでの Azure Disk Encryption
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 ファイアウォール、プロキシ要件、またはネットワーク セキュリティ グループ (NSG) 設定によって接続が制限されていると、必要なタスクを実行するための拡張機能が中断することがあります。 この中断によって、"拡張機能の状態が VM で取得できません" などのステータス メッセージが表示される可能性があります。
 
@@ -27,9 +29,9 @@ Azure Disk Encryption は多数のコンポーネントに依存しており、�
 各ディストリビューションに必要なパッケージを次に示します。 サポートされているディストリビューションとボリュームの種類の完全な一覧については、「[サポートされている VM とオペレーティング システム](disk-encryption-overview.md#supported-vms-and-operating-systems)」を参照してください。
 
 - **Ubuntu 14.04、16.04、18.04**: lsscsi、psmisc、at、cryptsetup-bin、python-parted、python-six、procps、grub-pc-bin
-- **CentOS 7.2 - 7.7**: lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、pyparted、procps-ng、util-linux
+- **CentOS 7.2 - 7.9、8.1、8.2**: lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、pyparted、procps-ng、util-linux
 - **CentOS 6.8**: lsscsi、psmisc、lvm2、uuid、at、cryptsetup-reencrypt、pyparted、python-six
-- **RedHat 7.2 - 7.7**: lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、procps-ng、util-linux
+- **RedHat 7.2 - 7.9、8.1、8.2**: lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、procps-ng、util-linux
 - **RedHat 6.8**: lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup-reencrypt
 - **openSUSE 42.3、SLES 12-SP4、12-SP3**: lsscsi、cryptsetup
 

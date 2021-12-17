@@ -4,7 +4,7 @@ description: Azure Active Directory を使用してオンプレミスのアプ�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb088d56879ebdf5d439c913ac47a701db5c4a60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acd544027c21fb2bd185454d486edc5c13d1b960
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96576249"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985145"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 
@@ -61,7 +61,7 @@ Azure AD では、あらゆる種類のパスワード シングル サインオ
 * カスタム パスワード アプリケーション
 * [アプリケーションの使用状況に関するダッシュボード/レポート](../authentication/howto-sspr-reporting.md)
 * エンド ユーザー アクセス ポータル
-* [アプリケーション プロキシ](../manage-apps/application-proxy.md)
+* [アプリケーション プロキシ](../app-proxy/application-proxy.md)
 * [Active Directory マーケットプレース](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
 
 ## <a name="sharing-an-account"></a>アカウントの共有

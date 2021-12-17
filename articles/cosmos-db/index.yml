@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: 0dda9cb110592c9fd9325f607b455d16c32da7f3
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 272b23b326aa98d57558425a8cd2c09745b4fbf3
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101658014"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121745457"
 landingContent:
 - title: Azure Cosmos DB について
   linkLists:
@@ -81,85 +81,85 @@ landingContent:
   - linkListType: overview
     links:
     - text: Azure Cosmos DB の MongoDB 用 API とは
-      url: mongodb-introduction.md
+      url: mongodb/mongodb-introduction.md
   - linkListType: quickstart
     links:
     - text: .NET アプリを使用してデータを管理する
-      url: create-mongodb-dotnet.md
+      url: mongodb/create-mongodb-dotnet.md
     - text: GoLang アプリを使用してデータを管理する
-      url: create-mongodb-go.md
+      url: mongodb/create-mongodb-go.md
   - linkListType: concept
     links:
     - text: MongoDB とのワイヤ プロトコルの互換性
-      url: mongodb-feature-support-40.md
+      url: mongodb/feature-support-40.md
     - text: MongoDB 拡張コマンド
-      url: mongodb-custom-commands.md
+      url: mongodb/custom-commands.md
     - text: ストリームを変更する
-      url: mongodb-change-streams.md
+      url: mongodb/change-streams.md
   - linkListType: tutorial
     links:
     - text: MongoDB シェルを使用してデータのクエリを実行する
-      url: tutorial-query-mongodb.md
+      url: mongodb/tutorial-query-mongodb.md
   - linkListType: how-to-guide
     links:
     - text: データのインデックス作成を管理する
-      url: mongodb-indexing.md
+      url: mongodb/mongodb-indexing.md
     - text: Robo 3T を使用して接続する
-      url: mongodb-robomongo.md
+      url: mongodb/connect-using-robomongo.md
 - title: Azure Cosmos DB Gremlin API を使用する
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Cosmos Gremlin API とは
-      url: graph-introduction.md
+      url: graph/graph-introduction.md
   - linkListType: quickstart
     links:
     - text: Gremlin コンソールを使用してデータを管理する
-      url: create-graph-gremlin-console.md
+      url: graph/create-graph-console.md
     - text: .NET アプリを使用してデータを管理する
-      url: create-graph-dotnet.md
+      url: graph/create-graph-dotnet.md
   - linkListType: concept
     links:
     - text: Tinkerpop の Gremlin とのワイヤ プロトコルの互換性
-      url: gremlin-support.md
+      url: graph/gremlin-support.md
     - text: Gremlin API サービスの制限
-      url: gremlin-limits.md
+      url: graph/gremlin-limits.md
   - linkListType: how-to-guide
     links:
     - text: グラフ データのモデリング
-      url: graph-modeling.md
+      url: graph/graph-modeling.md
     - text: グラフ データのパーティション分割のベスト プラクティス
-      url: graph-partitioning.md
+      url: graph/graph-partitioning.md
     - text: Gremlin クエリの最適化
-      url: graph-execution-profile.md
+      url: graph/graph-execution-profile.md
 - title: Azure Cosmos DB Cassandra API を使用する
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Cosmos DB の Cassandra API とは
-      url: cassandra-introduction.md
+      url: cassandra/cassandra-introduction.md
   - linkListType: quickstart
     links:
     - text: .NET Core アプリを使用してデータを管理する
-      url: create-cassandra-dotnet-core.md
+      url: cassandra/manage-data-dotnet-core.md
     - text: Java アプリを使用してデータを管理する
-      url: create-cassandra-java-v4.md
+      url: cassandra/manage-data-java-v4-sdk.md
   - linkListType: concept
     links:
     - text: Apache Cassandra とのワイヤ プロトコルの互換性
-      url: cassandra-support.md
+      url: cassandra/cassandra-support.md
     - text: エラスティック スケーリング
-      url: manage-scale-cassandra.md
+      url: cassandra/scale-account-throughput.md
     - text: セカンダリ インデックス
-      url: cassandra-secondary-index.md
+      url: cassandra/secondary-indexing.md
     - text: パーティション分割
-      url: cassandra-partitioning.md
+      url: cassandra/cassandra-partitioning.md
   - linkListType: how-to-guide
     links:
     - text: Spark から Cassandra API に接続する
-      url: cassandra-spark-generic.md
+      url: cassandra/connect-spark-configuration.md
     - text: クエリ述語を使用した変更フィードのサポート
-      url: cassandra-change-feed.md?tabs=java
+      url: cassandra/cassandra-change-feed.md?tabs=java
 - title: Cosmos DB にデータを移行する
   linkLists:
   - linkListType: tutorial
@@ -167,21 +167,21 @@ landingContent:
     - text: データ移行ツール – SQL API
       url: import-data.md
     - text: CQL シェル、Spark – Cassandra API
-      url: cassandra-import-data.md
+      url: cassandra/migrate-data.md
     - text: Azure Database Migration Service – MongoDB API
       url: ../dms/tutorial-mongodb-cosmos-db.md
     - text: AzCopy、データ移行ツール – Table API
-      url: table-import.md
+      url: table/table-import.md
   - linkListType: how-to-guide
     links:
     - text: Oracle DB から Cosmos DB SQL API (Striim を使用)
       url: cosmosdb-sql-api-migrate-data-striim.md
     - text: Oracle DB から Cosmos DB Cassandra API (Striim を使用)
-      url: cosmosdb-cassandra-api-migrate-data-striim.md
+      url: cassandra/migrate-data-striim.md
     - text: Oracle DB から Cosmos DB Cassandra API (Blitzz を使用)
-      url: oracle-migrate-cosmos-db-blitzz.md
+      url: cassandra/oracle-migrate-cosmos-db-blitzz.md
     - text: Apache Cassandra から Cosmos DB (Blitzz を使用)
-      url: cassandra-migrate-cosmos-db-blitzz.md
+      url: cassandra/migrate-data-blitzz.md
     - text: 100 TB のデータを移行する
       url: migrate-cosmosdb-data.md
 - title: Azure Synapse Link を使用した分析
@@ -203,10 +203,10 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: .NET アプリを使用してデータを管理する
-      url: create-table-dotnet.md
+      url: table/create-table-dotnet.md
     - text: Java アプリを使用してデータを管理する
-      url: create-table-java.md
+      url: table/create-table-java.md
   - linkListType: concept
     links:
     - text: Table API と Azure Table Storage の違い
-      url: table-support.md
+      url: table/table-support.md

@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: b5a9d1781bd0498ac6ad74439b1572c52e3c345a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.openlocfilehash: c3033798b601f88bbb744b70ef0103d80db1edb2
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96459262"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679169"
 ---
 # <a name="optimize-performance-by-upgrading-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) をアップグレードしてパフォーマンスを最適化する
 
@@ -94,7 +94,7 @@ ms.locfileid: "96459262"
 
    元の Gen1 T-SQL コマンド:
 
-   ```SQL
+   ```sql
    ALTER DATABASE mySampleDataWarehouse MODIFY (SERVICE_OBJECTIVE = 'DW300') ;
    ```
 
@@ -222,7 +222,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 5. Gen2 ServiceObjectiveName を指定して、データベースの復旧要求を作成します。
 6. geo リストアされたデータベースの状態を確認します。
 
-```Powershell
+```powershell
 Connect-AzAccount
 Get-AzSubscription
 Select-AzSubscription -SubscriptionName "<Subscription_name>"

@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bd83367ae073e03f03188cdf62cb60faaad7ac97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ae4a7d070419aae974742802ec5b6b3ae958c87
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026455"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355511"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションで Application Insights スナップショット デバッガーを有効にしても、例外のスナップショットが表示されない場合は、こちらの手順を使用してトラブルシューティングを行うことができます。
@@ -92,7 +92,7 @@ ASP.NET アプリケーションが、Azure App Service または仮想マシン
    ```
 
 > [!NOTE]
-> httpRuntime targetFramework の値を変更すると、アプリケーションに適用されるランタイムの特性が変更され、その他の微妙な動作の変更が発生する可能性があります。 この変更を行った後は、アプリケーションを十分にテストするようにしてください。 互換性の変更の完全な一覧については、 https://docs.microsoft.com/dotnet/framework/migration-guide/application-compatibility#retargeting-changes を参照してください。
+> httpRuntime targetFramework の値を変更すると、アプリケーションに適用されるランタイムの特性が変更され、その他の微妙な動作の変更が発生する可能性があります。 この変更を行った後は、アプリケーションを十分にテストするようにしてください。 互換性の変更点のすべての一覧については、「[変更の再ターゲット](/dotnet/framework/migration-guide/application-compatibility#retargeting-changes)」を参照してください。
 
 > [!NOTE]
 > targetFramework が 4.7 以上の場合、使用可能なプロトコルは Windows によって決定されます。 Azure App Service では、TLS 1.2 を使用できます。 ただし、独自の仮想マシンを使用している場合は、OS で TLS 1.2 を有効にすることが必要になる場合があります。
@@ -135,7 +135,7 @@ App Service の Kudu 管理サイトを使用して、この状態ページの�
 
 ## <a name="check-the-uploader-logs"></a>アップローダー ログの確認
 
-スナップショットの作成後、ミニダンプ ファイル (.dmp) がディスク上に作成されます。 個別アップローダー プロセスでは、そのミニダンプ ファイルを作成し、これを関連する PDB と共に Application Insights のスナップショット デバッガーのストレージにアップロードします。 ミニダンプは、正常にアップロードされた後、ディスクから削除されます。 アップローダー プロセスのログ ファイルは、ディスク上に保持されます。 App Service Environment では、これらのログは `D:\Home\LogFiles` にあります。 App Service の Kudu 管理サイトを使用すると、これらのログ ファイルを検索できます。
+スナップショットの作成後、ミニダンプ ファイル (.dmp) がディスク上に作成されます。 個別アップローダー プロセスでは、そのミニダンプ ファイルを作成し、これを関連する PDB と共に Application Insights のスナップショット デバッガーのストレージにアップロードします。 ミニダンプは、正常にアップロードされた後、ディスクから削除されます。 アップローダー プロセスのログ ファイルは、ディスク上に保持されます。 App Service 環境では、これらのログは `D:\Home\LogFiles` にあります。 App Service の Kudu 管理サイトを使用すると、これらのログ ファイルを検索できます。
 
 1. Azure Portal で App Service アプリケーションを開きます。
 2. **[高度なツール]** を選択するか、「**Kudu**」を検索します。

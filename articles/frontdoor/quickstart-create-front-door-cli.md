@@ -10,20 +10,22 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/21/2020
+ms.date: 4/19/2021
 ms.author: duau
-ms.openlocfilehash: a64c91910ba65901a6d1374df9633062398a90e4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3567d5af31b0c7bc2443e3d02426a5bb7aba06f7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067658"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862005"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>クイックスタート:Azure CLI を使用して高可用性を実現するグローバル Web アプリケーションのための Front Door を作成する
 
 Azure CLI によって Azure Front Door の使用を開始し、高可用性を実現するハイ パフォーマンスなグローバル Web アプリケーションを作成しましょう。
 
 Front Door により、バックエンド プール内の特定のリソースに Web トラフィックが送信されます。 フロントエンド ドメインを定義し、バックエンド プールにリソースを追加して、ルーティング規則を作成します。 この記事では、1 つのバックエンド プールに 2 つの Web アプリ リソースがある単純な構成と、"/*" に一致する既定のパスを使用する 1 つのルーティング規則を使用します。
+
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="Azure CLI を使用した Front Door デプロイ環境の図。" border="false":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +47,7 @@ Azure で、関連するリソースをリソース グループに割り当て�
 
 このクイックスタートでは、2 つのリソース グループが必要です。 1 つは *米国中部*、もう 1 つは *米国中南部* に必要です。
 
-[az group create](/cli/azure/group#az-group-create) を使用して、次のようにリソース グループを作成します。
+[az group create](/cli/azure/group#az_group_create) を使用して、次のようにリソース グループを作成します。
 
 ```azurecli-interactive
 az group create \
@@ -53,8 +55,8 @@ az group create \
     --location centralus
 
 az group create \
-    --name myRGFDSouthCentral \
-    --location southcentralus
+    --name myRGFDEast \
+    --location eastus
 ```
 
 ## <a name="create-two-instances-of-a-web-app"></a>Web アプリの 2 つのインスタンスを作成する
@@ -65,7 +67,7 @@ az group create \
 
 ### <a name="create-app-service-plans"></a>App Service プランを作成する
 
-Web アプリを作成する前に、2 つの App Service プランを、1 つは *米国中部* に、もう 1 つは *米国中南部* に作成する必要があります。
+Web アプリを作成する前に、2 つの App Service プランを、1 つは *米国中部* に、もう 1 つは *米国東部* に作成する必要があります。
 
 [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create&preserve-view=true) を使用して App Service プランを作成します。
 
@@ -75,8 +77,8 @@ az appservice plan create \
 --resource-group myRGFDCentral
 
 az appservice plan create \
---name myAppServicePlanSouthCentralUS \
---resource-group myRGFDSouthCentral
+--name myAppServicePlanEastUS \
+--resource-group myRGFDEast
 ```
 
 ### <a name="create-web-apps"></a>Web アプリを作成する
@@ -87,14 +89,14 @@ az appservice plan create \
 
 ```azurecli-interactive
 az webapp create \
---name WebAppContoso1 \
+--name WebAppContoso-1 \
 --resource-group myRGFDCentral \
 --plan myAppServicePlanCentralUS 
 
 az webapp create \
---name WebAppContoso2 \
---resource-group myRGFDSouthCentral \
---plan myAppServicePlanSouthCentralUS
+--name WebAppContoso-2 \
+--resource-group myRGFDEast \
+--plan myAppServicePlanEastUS
 ```
 
 次のステップで Front Door をデプロイするときにバックエンド アドレスを定義できるように、各 Web アプリの既定のホスト名をメモしておきます。
@@ -103,14 +105,14 @@ az webapp create \
 
 次のように実行して、既定の負荷分散設定、正常性プローブ、およびルーティング規則を持つ基本的な Front Door を作成します。
 
-[az network front-door create](/cli/azure/ext/front-door/network/front-door#ext_front_door_az_network_front_door_create&preserve-view=true) を使用して Front Door を作成します。
+[az network front-door create](/cli/azure/network/front-door#az_network_front_door_create&preserve-view=true) を使用して Front Door を作成します。
 
 ```azurecli-interactive
 az network front-door create \
 --resource-group myRGFDCentral \
 --name contoso-frontend \
 --accepted-protocols http https \
---backend-address webappcontoso1.azurewebsites.net webappcontoso2.azurewebsites.net 
+--backend-address webappcontoso-1.azurewebsites.net webappcontoso-2.azurewebsites.net 
 ```
 
 **--resource-group:** Front Door をデプロイするリソース グループを指定します。
@@ -140,7 +142,7 @@ az group delete \
 --name myRGFDCentral 
 
 az group delete \
---name myRGFDSouthCentral
+--name myRGFDEast
 ```
 
 ## <a name="next-steps"></a>次のステップ

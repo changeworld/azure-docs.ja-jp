@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 95cecd66f4d0164594eb4e8da9efe765b5833e5e
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 0b763f9f6c83f6255a460fc4441f8cfdb74193f0
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120777"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399373"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Device Update for IoT Hub (プレビュー) の概要
 
@@ -24,12 +24,12 @@ IoT に対応したデジタル トランスフォーメーションのベネフ
 ## <a name="support-for-a-wide-range-of-iot-devices"></a>広範な IoT デバイスのサポート
 
 
-Device Update for IoT Hub は、[Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/) との統合を通じて、更新のデプロイを最適化し、運用を能率化するために設計されています。 この統合により、既存のどのソリューションでも Device Update を容易に導入できます。 これにより、ほとんどすべてのデバイスを接続するためのクラウドでホストされたソリューションが提供されます。 Device Update は、Linux や [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/) (リアルタイム オペレーティング システム) を含む広範な IoT オペレーティング システムをサポートしており、オープンソースを通じて拡張できます。 Device Update for IoT Hub オファリングを、STMicroelectronics、NXP、Renesas、Microchip などの半導体パートナーと共同で開発しています。 主要な半導体評価ボードの[サンプル](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU)をご覧ください。MCU クラスのデバイスへの無線 (OTA) での更新を構成、構築、デプロイする方法のファースト ステップ ガイドが含まれています。 
+Device Update for IoT Hub は、[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) との統合を通じて、更新のデプロイを最適化し、運用を能率化するために設計されています。 この統合により、既存のどのソリューションでも Device Update を容易に導入できます。 これにより、ほとんどすべてのデバイスを接続するためのクラウドでホストされたソリューションが提供されます。 Device Update は、Linux や [Azure RTOS](https://azure.microsoft.com/services/rtos/) (リアルタイム オペレーティング システム) を含む広範な IoT オペレーティング システムをサポートしており、オープンソースを通じて拡張できます。 Device Update for IoT Hub オファリングを、STMicroelectronics、NXP、Renesas、Microchip などの半導体パートナーと共同で開発しています。 主要な半導体評価ボードの[サンプル](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU)をご覧ください。MCU クラスのデバイスへの無線 (OTA) での更新を構成、構築、デプロイする方法のファースト ステップ ガイドが含まれています。 
 
 Device Update Agent Simulator バイナリと Raspberry Pi リファレンス Yocto イメージの両方が提供されます。
 Device Update for IoT Hub では、Azure IoT Edge デバイスの更新もサポートしています。 Device Update Agent は、Ubuntu Server 18.04 amd64 プラットフォーム用に提供されます。 上記のどのプラットフォームも実行していない場合、Device Update for IoT Hub では、オープンソースのコードも提供しています。 実行中のディストリビューションにエージェントを移植することができます。
 
-Device Update は IoT プラグ アンド プレイ (PnP) と連携し、必要な PnP インターフェイスをサポートする任意のデバイスを管理できます。 詳細については、[Device Update for IoT Hub と IoT プラグ アンド プレイ](device-update-plug-and-play.md)に関するページを参照してください。
+Device Update は IoT プラグ アンド プレイと連携し、必要な IoT プラグ アンド プレイ インターフェイスをサポートする任意のデバイスを管理できます。 詳細については、[Device Update for IoT Hub と IoT プラグ アンド プレイ](device-update-plug-and-play.md)に関するページを参照してください。
 
 ## <a name="support-for-a-wide-range-of-update-artifacts"></a>広範な更新成果物のサポート
 
@@ -52,7 +52,7 @@ Device Update for IoT Hub の機能により、次のような強力で柔軟な
 * 更新のコンプライアンスとステータスを異種デバイス フリート全体にわたって一目で把握できるビュー
 * 回復性があるデバイス更新 (A/B) のサポートによってシームレスなロールバックを実現
 * Azure.com ポータルから利用可能なサブスクリプションおよびロールベースのアクセス制御
-* オンプレミス コンテンツ キャッシュと Nested Edge のサポートによってクラウドから切断されたデバイスの更新を可能に
+* オンプレミス コンテンツ キャッシュと入れ子になったエッジのサポートによってクラウドから切断されたデバイスの更新が可能に
 * 詳細な更新管理およびレポート ツール 
 
 Device Update for IoT Hub の管理およびデプロイ制御によって、ユーザーは生産性を最大化し、貴重な時間を節約することができます。 Device Update for IoT Hub には、デバイスをグループ化したり、更新をデプロイするデバイスを指定したりする機能が含まれています。 ユーザーは、更新のデプロイのステータスを表示し、各デバイスで更新が正常に適用されていることを確認することもできます。
@@ -80,7 +80,7 @@ Device Update の機能は、エージェント統合、インポート、管理
 
 ### <a name="importing"></a>インポート
 
-インポートとは、更新を Device Update に取り込んで、デバイスに展開する仕組みです。 Device Update では、デバイスごとに 1 つの更新のロールアウトをサポートしています。 これは、OS パーティション全体を一度に更新するフルイメージ更新や、デバイス上で更新するすべてのパッケージを記述する apt マニフェストに最適です。 更新を Device Update にインポートするには、まず、更新を記述したインポート マニフェストを作成し、次に更新ファイルとインポート マニフェストをインターネットからアクセス可能な場所にアップロードします。 その後、Azure portal または [Device Update REST API](https://docs.microsoft.com/rest/api/deviceupdate/) を使用して、更新インポートの非同期プロセスを開始できます。 Device Update によってファイルがアップロードされて処理され、IoT デバイスへの配布に使用できるようになります。
+インポートとは、更新を Device Update に取り込んで、デバイスに展開する仕組みです。 Device Update では、デバイスごとに 1 つの更新のロールアウトをサポートしています。 これは、OS パーティション全体を一度に更新するフルイメージ更新や、指定リポジトリからデバイス上で更新するすべてのパッケージを記述する [APT マニフェスト](device-update-apt-manifest.md)に最適です。 更新を Device Update にインポートするには、まず、更新を記述したインポート マニフェストを作成し、次に更新ファイルとインポート マニフェストをインターネットからアクセス可能な場所にアップロードします。 その後、Azure portal または [Device Update REST API](/rest/api/deviceupdate/) を使用して、更新インポートの非同期プロセスを開始できます。 Device Update によってファイルがアップロードされて処理され、IoT デバイスへの配布に使用できるようになります。
 
 機密性の高いコンテンツの場合、Azure Blob Storage のアドホック SAS などの共有アクセス署名 (SAS) を使用してダウンロードを保護します。 [SAS の詳細](../storage/common/storage-sas-overview.md)
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: duau
-ms.openlocfilehash: 7f14f43fa341df40ecd35340b7311e1acd18004c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41035593a31a854e8bb2bb325c51ba5abb8e3f72
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92204709"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069940"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS の要件
 Skype for Business には、特化した QoS 処理を必要とするさまざまなワークロードがあります。 ExpressRoute で音声サービスを使用する場合、以下の要件に従う必要があります。
@@ -20,7 +20,7 @@ Skype for Business には、特化した QoS 処理を必要とするさまざ�
 ![ExpressRoute を通過する音声サービス示す図。](./media/expressroute-qos/expressroute-qos.png)
 
 > [!NOTE]
-> QoS 要件は Microsoft ピアリングにのみ適用されます。 Azure パブリック ピアリングと Azure プライベート ピアリングで受信されたネットワーク トラフィックの DSCP 値は、0 にリセットされます。 
+> QoS 要件は Microsoft ピアリングにのみ適用されます。 Azure プライベート ピアリングで受信したネットワーク トラフィックの DSCP 値は、そのまま維持されますが、Microsoft のネットワーク上のトラフィックの優先順位付けには使用されません。 
 > 
 > 
 

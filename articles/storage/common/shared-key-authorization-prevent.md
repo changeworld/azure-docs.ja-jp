@@ -1,31 +1,29 @@
 ---
-title: 共有キーによる承認を禁止する (プレビュー)
+title: 共有キーによる承認の防止
 titleSuffix: Azure Storage
-description: 要求の承認に Azure AD を使用するようクライアントに要求するため、共有キーで承認されるストレージ アカウントへの要求を許可しないようにすることができます (プレビュー)。
+description: Azure AD を使用してクライアントに要求の認証を要求するには、共有キーで認証されたストレージ アカウントへの要求を許可しないようにします。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/11/2021
+ms.date: 10/01/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: b7290abe102d22bb87c87c3c9d13ee99c127b942
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 566c538e0864f11dad0a642dd18f711c7cf00886
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199911"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532857"
 ---
-# <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure ストレージ アカウントの共有キーによる承認を禁止する (プレビュー)
+# <a name="prevent-shared-key-authorization-for-an-azure-storage-account"></a>Azure Storage アカウントの共有キーによる承認を禁止する
 
-Azure ストレージ アカウントに対するセキュリティで保護されたすべての要求を承認する必要があります。 既定では、Azure Active Directory (Azure AD) の資格情報、または共有キーによる承認用のアカウント アクセス キーを使用して、要求を承認することができます。 これら 2 種類の承認では、Azure AD の方がセキュリティが優れ、共有キーより使いやすいので、Microsoft ではそちらをお勧めします。 要求の承認に Azure AD を使用するようクライアントに要求するため、共有キーで承認されるストレージ アカウントへの要求を許可しないようにすることができます (プレビュー)。
+Azure ストレージ アカウントに対するセキュリティで保護されたすべての要求を承認する必要があります。 既定では、Azure Active Directory (Azure AD) の資格情報、または共有キーによる承認用のアカウント アクセス キーを使用して、要求を承認することができます。 これら 2 種類の承認では、Azure AD の方がセキュリティが優れ、共有キーより使いやすいので、Microsoft ではそちらをお勧めします。 Azure AD を使用してクライアントに要求の認証を要求するには、共有キーで認証されたストレージ アカウントへの要求を許可しないようにします。
 
-ストレージ アカウントの共有キーによる承認を禁止すると、それ以降、そのアカウントに対するアカウント アクセスキーによる承認の要求はすべて、Azure Storage によって拒否されます。 Azure AD によって承認されるセキュリティで保護された要求のみが成功します。 Azure AD の使用に関する詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](storage-auth-aad.md)」を参照してください。
+ストレージ アカウントの共有キーによる承認を禁止すると、それ以降、そのアカウントに対するアカウント アクセスキーによる承認の要求はすべて、Azure Storage によって拒否されます。 Azure AD によって承認されるセキュリティで保護された要求のみが成功します。 Azure AD の使用に関する詳細については、「[Azure Storage 内のデータへのアクセスを認可する](authorize-data-access.md)」を参照してください。
 
-> [!IMPORTANT]
-> 共有キーによる承認の禁止は、現在 "**プレビュー**" 段階にあります。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
-この記事では、共有キーによる承認を使用して送信された要求を検出する方法と、ストレージ アカウントの共有キーによる承認を修正する方法について説明します。 プレビューに登録する方法については、「[プレビューについて](#about-the-preview)」を参照してください。
+この記事では、共有キーによる承認を使用して送信された要求を検出する方法と、ストレージ アカウントの共有キーによる承認を修正する方法について説明します。
 
 ## <a name="detect-the-type-of-authorization-used-by-client-applications"></a>クライアント アプリケーションによって使用されている承認の種類を検出する
 
@@ -33,7 +31,7 @@ Azure ストレージ アカウントに対するセキュリティで保護さ�
 
 ストレージ アカウントが受信している要求のうち、共有キーまたは Shared Access Signature (SAS) で承認されているものの数を確認するには、メトリックを使用します。 それらの要求を送信しているクライアントを特定するには、ログを使用します。
 
-プレビュー期間中に Shared Access Signature を使用して行われた要求を解釈する方法の詳細については、「[プレビューについて](#about-the-preview)」を参照してください。
+SAS は、共有キーまたは Azure AD のいずれかで認証されます。 共有アクセス署名で行われた要求の解釈については、「[Understand how disallowing Shared Key affects SAS tokens](#understand-how-disallowing-shared-key-affects-sas-tokens) (共有キーを禁止すると SAS トークンに与える影響について)」を参照してください。
 
 ### <a name="monitor-how-many-requests-are-authorized-with-shared-key"></a>共有キーを使用して承認された要求の数を監視する
 
@@ -77,7 +75,6 @@ Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用�
 
 Azure Monitor で Azure Storage のデータをログに記録し、Azure Log Analytics で分析するには、まず、データをログに記録する要求の種類とストレージ サービスを指示する診断設定を作成する必要があります。 Azure portal で診断設定を作成するには、これらの手順に従います。
 
-1. [Azure Monitor の Azure Storage ログ記録 (プレビュー)](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u) に登録します。
 1. Azure ストレージ アカウントが含まれるサブスクリプションに新しい Log Analytics ワークスペースを作成するか、既存の Log Analytics ワークスペースを使用します。 ストレージ アカウントのログ記録を構成した後、Log Analytics ワークスペースでログを使用できるようになります。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../azure-monitor/logs/quick-create-workspace.md)」を参照してください。
 1. Azure Portal のストレージ アカウントに移動します。
 1. [監視] セクションで、 **[診断設定 (プレビュー)]** を選択します。
@@ -110,7 +107,7 @@ StorageBlobLogs
 
 ## <a name="remediate-authorization-via-shared-key"></a>共有キーによる承認を修正する
 
-ストレージ アカウントへの要求がどのように承認されているかを分析したら、共有キーによるアクセスを禁止するアクションを実行できます。 ただし、まず、共有キーによる承認を使用しているアプリケーションを、代わりに Azure AD を使用するように更新する必要があります。 「[クライアント アプリケーションによって使用されている承認の種類を検出する](#detect-the-type-of-authorization-used-by-client-applications)」の説明に従って、ログとメトリックを監視し、移行を追跡することができます。 BLOB とキューのデータでの Azure AD の使用に関する詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](storage-auth-aad.md)」を参照してください。
+ストレージ アカウントへの要求がどのように承認されているかを分析したら、共有キーによるアクセスを禁止するアクションを実行できます。 ただし、まず、共有キーによる承認を使用しているアプリケーションを、代わりに Azure AD を使用するように更新する必要があります。 「[クライアント アプリケーションによって使用されている承認の種類を検出する](#detect-the-type-of-authorization-used-by-client-applications)」の説明に従って、ログとメトリックを監視し、移行を追跡することができます。 Azure AD を使用してストレージ アカウント内のデータにアクセスすることについて詳しくは、「[Azure Storage 内のデータへのアクセスを認可する](authorize-data-access.md)」を参照してください。
 
 共有キーを使用して承認される要求を安全に拒否できることを確信したら、ストレージ アカウントの **AllowSharedKeyAccess** プロパティを **false** に設定できます。
 
@@ -125,7 +122,7 @@ Azure portal でストレージ アカウントに対する共有キーによる
 
 1. Azure Portal のストレージ アカウントに移動します。
 1. **[設定]** から **[構成]** 設定を探します。
-1. **[Allow shared key access]\(共有キーによるアクセスを許可する\)** を **[無効]** に設定します。
+1. **[Allow storage account key access]\(ストレージ アカウント キーのアクセスを許可する\)** を **[無効]** に設定します。
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="アカウントに対する共有キーによるアクセスを禁止する方法を示すスクリーンショット":::
 
@@ -157,6 +154,8 @@ az storage account update \
 ---
 
 共有キーによる承認を無効にした後は、共有キーによる承認を使用してストレージ アカウントに要求を行うと、エラー コード 403 (許可されていません) で失敗します。 そのストレージ アカウントではキーに基づく承認が許可されていないことを示すエラーが、Azure Storage から返されます。
+
+**AllowSharedKeyAccess** プロパティは、Azure Resource Manager デプロイ モデルを使用するストレージ アカウントのみでサポートされています。 Azure Resource Manager デプロイ モデルを使用しているストレージ アカウントの詳細については、「[ストレージ アカウントの種類](storage-account-overview.md#types-of-storage-accounts)」を参照してください。
 
 ### <a name="verify-that-shared-key-access-is-not-allowed"></a>共有キーによるアクセスが許可されないことを確認する
 
@@ -213,6 +212,13 @@ resources
 | サービス SAS | 共有キー | すべての Azure Storage サービスの要求が拒否されます。 |
 | アカウント SAS | 共有キー | すべての Azure Storage サービスの要求が拒否されます。 |
 
+Azure Monitor での Azure のメトリックとログでは、さまざまな種類の共有アクセス署名は区別されません。 Azure メトリックス エクスプローラーの **[SAS]** フィルター、および Azure Monitor の Azure Storage ログでの **[SAS]** フィールドのどちらでも、すべての種類の SAS で承認された要求が報告されます。 ただし、共有アクセス署名の種類が異なると、承認方法が異なり、共有キー アクセスが禁止されたときの動作が異なります。
+
+- サービス SAS トークンまたはアカウント SAS トークンは、共有キーを使用して承認されるので、**AllowSharedKeyAccess** プロパティが **false** に設定されていると、Blob Storage への要求では許可されません。
+- ユーザー委任 SAS は、Azure AD を使用して承認されるので、**AllowSharedKeyAccess** プロパティが **false** に設定されていても、Blob Storage への要求で許可されます。
+
+ストレージ アカウントへのトラフィックを評価するときは、「[クライアント アプリケーションによって使用されている承認の種類を検出する](#detect-the-type-of-authorization-used-by-client-applications)」で説明されているメトリックとログに、ユーザー委任 SAS を使用して行われた要求が含まれている可能性があることに注意してください。
+
 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](storage-sas-overview.md)」を参照してください。
 
 ## <a name="consider-compatibility-with-other-azure-tools-and-services"></a>Azure の他のツールおよびサービスとの互換性を検討する
@@ -239,23 +245,8 @@ Azure Storage では、Azure AD の承認は、Blob Storage と Queue storage �
 
 ストレージ アカウントに対する共有キー アクセスを禁止しても、Azure Files への SMB 接続には影響しません。
 
-## <a name="about-the-preview"></a>プレビューについて
-
-共有キーによる認証の禁止に関するプレビューは、Azure パブリック クラウドで利用できます。 Azure Resource Manager デプロイ モデルを使用するストレージ アカウントのみでサポートされています。 Azure Resource Manager デプロイ モデルを使用しているストレージ アカウントの詳細については、「[ストレージ アカウントの種類](storage-account-overview.md#types-of-storage-accounts)」を参照してください。
-
-プレビューには、次のセクションで説明する制限が含まれています。
-
-### <a name="metrics-and-logging-report-all-requests-made-with-a-sas-regardless-of-how-they-are-authorized"></a>承認方法に関係なく、SAS を使用して行われたすべての要求をメトリックとログで報告する
-
-Azure Monitor での Azure のメトリックとログでは、プレビュー段階のさまざまな種類の共有アクセス署名は区別されません。 Azure メトリックス エクスプローラーの **[SAS]** フィルター、および Azure Monitor の Azure Storage ログでの **[SAS]** フィールドのどちらでも、すべての種類の SAS で承認された要求が報告されます。 ただし、共有アクセス署名の種類が異なると、承認方法が異なり、共有キー アクセスが禁止されたときの動作が異なります。
-
-- サービス SAS トークンまたはアカウント SAS トークンは、共有キーを使用して承認されるので、**AllowSharedKeyAccess** プロパティが **false** に設定されていると、Blob Storage への要求では許可されません。
-- ユーザー委任 SAS は、Azure AD を使用して承認されるので、**AllowSharedKeyAccess** プロパティが **false** に設定されていても、Blob Storage への要求で許可されます。
-
-ストレージ アカウントへのトラフィックを評価するときは、「[クライアント アプリケーションによって使用されている承認の種類を検出する](#detect-the-type-of-authorization-used-by-client-applications)」で説明されているメトリックとログに、ユーザー委任 SAS を使用して行われた要求が含まれている可能性があることに注意してください。 **AllowSharedKeyAccess** プロパティが **false** に設定されているときの、SAS に対する Azure Storage の応答方法の詳細については、「[共有キーを禁止したときの SAS トークンに対する影響を理解する](#understand-how-disallowing-shared-key-affects-sas-tokens)」を参照してください。
-
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Storage 内のデータへのアクセスの承認](storage-auth.md)
-- [Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](storage-auth-aad.md)
+- [Azure Storage 内のデータへのアクセスを認可する](./authorize-data-access.md)
+- [Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](authorize-data-access.md)
 - [共有キーを使用して承認する](/rest/api/storageservices/authorize-with-shared-key)

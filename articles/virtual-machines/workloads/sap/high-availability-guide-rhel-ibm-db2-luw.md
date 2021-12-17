@@ -1,25 +1,22 @@
 ---
 title: RHEL 上の Azure 仮想マシン (VM) 上で IBM Db2 HADR を設定する | Microsoft Docs
 description: Azure 仮想マシン (VM) RHEL 上で IBM Db2 LUW の高可用性を実現します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: msjuergent
 manager: bburns
-editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 04/27/2021
 ms.author: juergent
-ms.openlocfilehash: 979de230655b4804fa65a4bddb678e21b59c4ea2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99ea40f7fcfe0a5d3f34c9c9a9a7bbee58fd1186
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674446"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562404"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上の Azure VM での IBM Db2 LUW の高可用性
 
@@ -384,7 +381,7 @@ Azure Load Balancer を構成する場合は、[Azure Standard Load Balancer SKU
 
 **[A]** プローブ ポートのファイアウォール規則を追加します。
 
-<pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent
+<pre><code>sudo firewall-cmd --add-port=<b>&lt;probe-port&gt;</b>/tcp --permanent
 sudo firewall-cmd --reload</code></pre>
 
 ## <a name="create-the-pacemaker-cluster"></a>Pacemaker クラスターを作成する
@@ -655,10 +652,10 @@ sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 sudo pcs resource move Db2_HADR_<b>ID2</b>-clone --master
 sudo pcs resource clear Db2_HADR_<b>ID2</b>-clone</code></pre>
 
-- **RHEL 7.x の場合: pcs resource move \<res_name> <host>:** 場所の制約を作成します。引き継ぎで問題が生じる場合があります
-- **RHEL 8.x の場合: pcs resource move \<res_name> --master:** 場所の制約を作成します。引き継ぎで問題が生じる場合があります
-- **pcs resource clear \<res_name>** :場所の制約をクリアします
-- **pcs resource cleanup \<res_name>** :リソースのすべてのエラーをクリアします
+- **RHEL 7.x の場合: pcs resource move \<res_name\> \<host\>:** 場所の制約を作成します。引き継ぎで問題が生じる場合があります
+- **RHEL 8.x の場合: pcs resource move \<res_name\> --master:** 場所の制約を作成します。引き継ぎで問題が生じる場合があります
+- **pcs resource clear \<res_name\>** :場所の制約をクリアします
+- **pcs resource cleanup \<res_name\>** :リソースのすべてのエラーをクリアします
 
 ### <a name="test-a-manual-takeover"></a>手動での引き継ぎをテストする
 
@@ -876,7 +873,7 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
 
 [db2-hadr-11.1]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
 [db2-hadr-10.5]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
-[dbms-db2]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm
+[dbms-db2]:dbms_guide_ibm.md
 
 [sap-instfind]:https://help.sap.com/viewer/9e41ead9f54e44c1ae1a1094b0f80712/ALL/en-US/576f5c1808de4d1abecbd6e503c9ba42.html
 [rhel-ha-addon]:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index
@@ -885,12 +882,12 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
 [rhel-azr-supp]:https://access.redhat.com/articles/3131341
 [rhel-azr-inst]:https://access.redhat.com/articles/3252491
 [rhel-db2-supp]:https://access.redhat.com/articles/3144221
-[ascs-ha-rhel]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel
-[glusterfs]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs
-[rhel-pcs-azr]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker
-[anf-rhel]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files
+[ascs-ha-rhel]:high-availability-guide-rhel.md
+[glusterfs]:high-availability-guide-rhel-glusterfs.md
+[rhel-pcs-azr]:high-availability-guide-rhel-pacemaker.md
+[anf-rhel]:high-availability-guide-rhel-netapp-files.md
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
-[azr-sap-plancheck]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist
+[azr-sap-plancheck]:sap-deployment-checklist.md

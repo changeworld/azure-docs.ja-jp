@@ -2,17 +2,17 @@
 title: Advisor によるアプリケーションの信頼性の向上
 description: Azure Advisor を使用すると、Bus Critical な Azure デプロイの信頼性を確認し、向上させることができます。
 ms.topic: article
-ms.date: 09/27/2020
-ms.openlocfilehash: c96b47f1ee145129f4c14c6646f93abeb8a5aac9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/26/2021
+ms.openlocfilehash: f7ea986424271315843af9557555aa82a708a12c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579971"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045864"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Azure Advisor を使用してアプリケーションの信頼性を向上させる
 
-Azure Advisor を使用して、ビジネスに不可欠なアプリケーションの継続稼働を保証し、さらに向上させることができます。 Advisor からの信頼性に関する推奨事項は、Advisor ダッシュボードの **[信頼性]** タブで確認できます。
+Azure Advisor を使用して、ビジネスに不可欠なアプリケーションの継続稼働を保証し、さらに向上させることができます。 信頼性に関する推奨事項は、[Azure Advisor](https://aka.ms/azureadvisordashboard)の [**信頼性**] タブで取得できます。
 
 ## <a name="check-the-version-of-your-check-point-network-virtual-appliance-image"></a>Check Point ネットワーク仮想アプライアンス イメージのバージョンを確認する
 
@@ -59,6 +59,9 @@ Azure Advisor では、Basic SKU を使用するすべての VPN ゲートウェ
 - カスタム IPsec/IKE ポリシー。 
 - 高い安定性と可用性。
 
+## <a name="ensure-reliable-outbound-connectivity-with-vnet-nat"></a>VNet NATを使用して信頼性の高い送信接続を確保する
+Standard Load Balancerやその他のAzureリソースが提供するデフォルトのアウトバウンド接続を使用すると、接続障害（SNATポートの枯渇とも呼ばれる）が発生するため、本番環境のワークロードでは推奨されません。 推奨される方法は、この点で接続の失敗を防ぐ VNet NAT を使用する方法です。 NAT をシームレスにスケーリングして、アプリケーションがポートをアウトしたことがないことを確認できます。 [VNet NAT の詳細を確認してください](../virtual-network/nat-gateway/nat-overview.md)。
+
 ## <a name="ensure-virtual-machine-fault-tolerance-temporarily-disabled"></a>仮想マシンのフォールト トレランスを確保する (一時的に無効)
 
 アプリケーションに冗長性を持たすために、1 つの可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。 Advisor は、可用性セットの一部ではない仮想マシンを識別し、それらをその 1 つに移動することを推奨します。 このような構成により、計画済みまたは計画外のメンテナンスにおいて、少なくとも 1 台の仮想マシンが利用可能となり、Azure 仮想マシンの SLA が満たされます。 仮想マシンの可用性セットを作成するか、既存の可用性セットに仮想マシンを追加するかを選択できます。
@@ -70,9 +73,9 @@ Azure Advisor では、Basic SKU を使用するすべての VPN ゲートウェ
 
 アプリケーションに冗長性を持たすために、1 つの可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。 Advisor は、1 台の仮想マシンのみを含む可用性セットを識別し、そのセットにさらに仮想マシンを追加することを推奨します。  このような構成により、計画済みまたは計画外のメンテナンスにおいて、少なくとも 1 台の仮想マシンが利用可能となり、Azure 仮想マシンの SLA が満たされます。  仮想マシンを作成するか、既存の仮想マシンを可用性セットに追加するかを選択できます。  
 
-## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>データの信頼性の向上にマネージド ディスクを使用する (一時的に無効)
+## <a name="use-managed-disks-to-improve-data-reliability"></a>データの信頼性を向上させるためにマネージド ディスクを使用する
 
-ストレージ アカウントまたはストレージ スケール ユニットを共有するディスクが含まれる、可用性セット内の仮想マシンは、停止時の単一ストレージ スケール ユニットの障害に対する回復性がありません。 Advisor では、このような可用性セットが識別され、Azure マネージド ディスクへの移行が推奨されます。 この移行により、可用性セット内の仮想マシンのディスクが十分に分離され、単一障害点を避けることができます。 
+ストレージアカウントまたはストレージスケールユニットを共有するディスクを使用する可用性セット内の仮想マシンは、障害発生時の単一の記憶域スケールユニット障害に対する回復力がありません。 Azure managed disks に移行して、可用性セット内の異なる VMのディスクが、単一障害点を回避するために十分に分離されていることを確認します。
 
 ## <a name="repair-invalid-log-alert-rules"></a>無効なログ アラート ルールを修復する
 
@@ -96,7 +99,7 @@ Azure Advisor は、古いバージョンの Java SDK を使用している Azur
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Azure Cosmos DB Spark コネクタを Maven からの最新バージョンにアップグレードする
 
-Azure Advisor は、古いバージョンの Azure Cosmos DB Spark コネクタを使用している Azure Cosmos DB アカウントを識別します。 最新の修正、パフォーマンスの向上、機能を入手するため、Maven から最新バージョンにアップグレードすることが推奨されます。 [Azure Cosmos DB Spark コネクタ](../cosmos-db/spark-connector.md)の詳細を確認してください。
+Azure Advisor は、古いバージョンの Azure Cosmos DB Spark コネクタを使用している Azure Cosmos DB アカウントを識別します。 最新の修正、パフォーマンスの向上、機能を入手するため、Maven から最新バージョンにアップグレードすることが推奨されます。 [Azure Cosmos DB Spark コネクタ](../cosmos-db/create-sql-api-spark.md)の詳細を確認してください。
 
 ## <a name="consider-moving-to-kafka-21-on-hdinsight-40"></a>HDInsight 4.0 で Kafka 2.1 への移行を検討する
 
@@ -113,13 +116,7 @@ Azure Advisor は、古いバージョンの Azure Cosmos DB Spark コネクタ�
 [Azure Connected Machine エージェント](../azure-arc/servers/manage-agent.md)は、バグの修正、安定性の向上、および新機能を伴って定期的に更新されます。 最新バージョンのマシン エージェントで動作していないリソースを特定しました。この Advisor の推奨事項では、最適な Azure Arc エクスペリエンスを実現するために、エージェントを最新バージョンにアップグレードすることが推奨されています。
 
 ## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Web サイトの整合性を確保するためにホスト名を上書きしないでください
-Advisor では、Application Gateway を構成する際、ホスト名を上書きしないようにすることが推奨されています。 Application Gateway のフロントエンドのドメインが、バックエンドへのアクセスに使用されるものと異なっていると、Cookie やリダイレクト URL が破損する可能性があります。 これはすべての状況に当てはまることではなく、一般にバックエンドの特定のカテゴリ (REST API など) はそれほど大きな影響を受けません。 バックエンドがこれに対応できることを確認するか、バックエンドに対してホスト名を上書きする必要がないように Application Gateway の構成を更新してください。 App Service と共に使用するときは、カスタム ドメイン名を Web アプリにアタッチし、*バックエンドに対して .azurewebsites.net ホスト名* を使用しないようにします。 [カスタム ドメインの詳細を確認](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md)してください。
-
-## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Advisor の高可用性に関する推奨事項にアクセスする方法
-
-1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
-
-2.  Advisor ダッシュボードの **[高可用性]** タブを選択します。
+Advisor では、Application Gateway を構成する際、ホスト名を上書きしないようにすることが推奨されています。 Application Gateway のフロントエンドに、バックエンドへのアクセスに使用されるドメインとは異なるドメインを使用すると、Cookie やリダイレクト URL が壊れる可能性があります。 これはすべての状況に当てはまることではなく、一般にバックエンドの特定のカテゴリ (REST API など) はそれほど大きな影響を受けません。 バックエンドがこれに対応できることを確認するか、バックエンドに対してホスト名を上書きする必要がないように Application Gateway の構成を更新してください。 App Serviceで使用する場合は、Web アプリにカスタム ドメイン名をアタッチし、バックエンドにホスト名を `*.azurewebsites.net` 使用しないようにします。 [カスタム ドメインの詳細を確認](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md)してください。
 
 ## <a name="next-steps"></a>次のステップ
 

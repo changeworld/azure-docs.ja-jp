@@ -6,18 +6,19 @@ ms.subservice: language-understanding
 author: aahill
 ms.author: aahi
 ms.topic: reference
-ms.date: 04/07/2021
+ms.date: 05/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: fd02bf5c3291569b71416392b651967e0da701d9
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 7dc91bf74cf342d882a978c6e7b3a8e39d401644
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226669"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576243"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>作成と公開のリージョンと関連付けられているキー
 
 LUIS オーサリング リージョンは、LUIS ポータルによってサポートされます。 LUIS アプリを複数のリージョンに公開するには、リージョンごとに少なくとも 1 つのキーが必要です。
+
 
 <a name="luis-website"></a>
 
@@ -25,9 +26,15 @@ LUIS オーサリング リージョンは、LUIS ポータルによってサポ
 
 [!INCLUDE [portal consolidation](includes/portal-consolidation.md)]
 
-LUIS には、リージョンに関係なく使用できる 1 つのポータル [www.luis.ai](https://www.luis.ai) があります。 それでも、作成と公開は同じリージョンで行う必要があります。
+LUIS では、次の作成リージョンを使用できます。
+    
+* オーストラリア東部
+* 西ヨーロッパ
+* 米国西部
+* スイス北部
 
-オーサリング リージョンには、[ペアになったフェールオーバー リージョン](../../best-practices-availability-paired-regions.md)があります
+
+LUIS には、リージョンに関係なく使用できる 1 つのポータル [www.luis.ai](https://www.luis.ai) があります。 それでも、作成と公開は同じリージョンで行う必要があります。 オーサリング リージョンには、[ペア フェールオーバー リージョン](../../best-practices-availability-paired-regions.md)があります。
 
 <a name="regions-and-azure-resources"></a>
 
@@ -56,6 +63,7 @@ LUIS には、リージョンに関係なく使用できる 1 つのポータル
 | ヨーロッパ | `westeurope`| 西ヨーロッパ<br>`westeurope`    |  `https://westeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | ヨーロッパ | `westeurope`| 英国南部<br>`uksouth`    |  `https://uksouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | ヨーロッパ | `westeurope`| スイス北部<br>`switzerlandnorth`    |  `https://switzerlandnorth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| ヨーロッパ | `westeurope`| ノルウェー東部<br>`norwayeast`    |  `https://norwayeast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 
 ## <a name="publishing-to-australia"></a>オーストラリアへの公開
 
@@ -84,6 +92,7 @@ LUIS には、リージョンに関係なく使用できる 1 つのポータル
 | 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | 米国中西部<br>`westcentralus`    |  `https://westcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 北米 | `westus`<br>[www.luis.ai][www.luis.ai] | 米国西部<br>`westus`  |   `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | 米国西部 2<br>`westus2`    |  `https://westus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
+| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | 米国西部 3<br>`westus3`    |  `https://westus3.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 南アメリカ | `westus`<br>[www.luis.ai][www.luis.ai] | ブラジル南部<br>`brazilsouth`    |  `https://brazilsouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 
 ## <a name="endpoints"></a>エンドポイント

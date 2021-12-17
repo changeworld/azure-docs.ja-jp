@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: d7c4f1853ff8dcb9249ab6ec4f536e1f8cfa10e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b96275653c46f587d5b910bd020d494f4b3fe99f
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018226"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032035"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>Traffic Analytics スキーマに新しいフィールドを使用したサンプル クエリ (2019 年 8 月のスキーマ更新)
 
@@ -122,5 +122,5 @@ NSG 全体でデータを集約しないので、**FlowCount_d** は単純に次
 
 ## <a name="next-steps"></a>次のステップ
 
-- よく寄せられる質問とその回答については、[Traffic Analytics に関する FAQ](traffic-analytics-faq.md) のページをご覧ください。
+- よく寄せられる質問とその回答については、[Traffic Analytics に関する FAQ](traffic-analytics-faq.yml) のページをご覧ください。
 - 機能の詳細については、[Traffic Analytics のドキュメント](traffic-analytics.md)を参照してください。

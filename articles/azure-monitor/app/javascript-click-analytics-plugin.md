@@ -2,18 +2,18 @@
 title: Application Insights JavaScript SDK 用のクリック分析自動収集プラグイン
 description: Application Insights JavaScript SDK 用のクリック分析自動収集プラグインをインストールして使用する方法。
 services: azure-monitor
-author: lgayhardt
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
-ms.author: lagayhar
-ms.openlocfilehash: e48d669321ad8c58681e8a92e68f2089962bdc17
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: e1a0ab71ce8d5970b1239f70a058ee7a663117da
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102429852"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132704"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK 用のクリック分析自動収集プラグイン
 
@@ -23,7 +23,7 @@ ms.locfileid: "102429852"
 
 ユーザーは、npm を使用してクリック分析自動収集プラグインを設定できます。
 
-### <a name="npm-setup"></a>npm の設定
+### <a name="npm-setup"></a>NPM セットアップ
 
 npm パッケージをインストールします。
 
@@ -54,12 +54,44 @@ const appInsights = new ApplicationInsights({ config: configObj });
 appInsights.loadAppInsights();
 ```
 
+## <a name="snippet-setup-ignore-if-using-npm-setup"></a>スニペット セットアップ (NPM セットアップを使用している場合は無視)
+
+```html
+<script type="text/javascript" src="https://js.monitor.azure.com/scripts/b/ext/ai.clck.2.6.2.min.js"></script>
+<script type="text/javascript">
+  var clickPluginInstance = new Microsoft.ApplicationInsights.ClickAnalyticsPlugin();
+  // Click Analytics configuration
+  var clickPluginConfig = {
+    autoCapture : true,
+    dataTags: {
+      useDefaultContentNameOrId: true
+    }
+  }
+  // Application Insights Configuration
+  var configObj = {
+    instrumentationKey: "YOUR INSTRUMENTATION KEY",
+    extensions: [
+      clickPluginInstance
+    ],
+    extensionConfig: {
+      [clickPluginInstance.identifier] : clickPluginConfig
+    },
+  };
+  // Application Insights Snippet code
+  !function(T,l,y){<!-- Removed the Snippet code for brevity -->}(window,document,{
+    src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js",
+    crossOrigin: "anonymous",
+    cfg: configObj
+  });
+</script>
+```
+
 ## <a name="how-to-effectively-use-the-plugin"></a>このプラグインを効果的に使用する方法
 
 1. クリック イベントから生成されたテレメトリ データは、Azure portal の [Application Insights] セクションに `customEvents` として格納されます。
 2. customEvent の `name` は、次の規則に基づいて設定されます。
     1.  `data-*-id` で指定された `id` は customEvent 名として使用されます。 たとえば、クリックされた HTML 要素に属性 "data-sample-id"="button1" が含まれている場合は、"button1" が customEvent 名になります。
-    2. このような属性が存在せず、構成で `useDefaultContentNameOrId` が `true` に設定されている場合は、クリックされた要素の HTML 属性 `id` またはその要素のコンテンツ名が customEvent 名として使用されます。
+    2. このような属性が存在せず、構成で `useDefaultContentNameOrId` が `true` に設定されている場合は、クリックされた要素の HTML 属性 `id` またはその要素のコンテンツ名が customEvent 名として使用されます。 `id` とコンテンツ名の両方がある場合、`id` が優先されます。
     3. `useDefaultContentNameOrId` が false である場合、customEvent 名は "not_specified" になります。
 
     > [!TIP]
@@ -77,16 +109,42 @@ appInsights.loadAppInsights();
     - この名前にセミコロン (U+003A) を含めることはできません。
     - この名前に大文字を含めることはできません。
 
+## <a name="what-data-does-the-plugin-collect"></a>プラグインによって収集されるデータ
+
+プラグインが有効になっている場合に、既定でキャプチャされる主なプロパティを次に示します。
+
+### <a name="custom-event-properties"></a>カスタム イベントのプロパティ
+| 名前                  | 説明                            | サンプル          |
+| --------------------- | ---------------------------------------|-----------------|
+| name                  | customEvent の `name`。 これが設定される方法の詳細については、[こちら](#how-to-effectively-use-the-plugin)を参照してください。| 詳細              |
+| itemType              | イベントの種類。                                      | customEvent      |
+|sdkVersion             | Application Insights SDK とクリック プラグインのバージョン|javascript:2.6.2_ClickPlugin2.6.2|
+
+### <a name="custom-dimensions"></a>カスタム ディメンション
+| 名前                  | 説明                            | サンプル          |
+| --------------------- | ---------------------------------------|-----------------|
+| actionType            | クリック イベントを発生させたアクションの種類。 左クリックまたは右クリックの場合があります。 | CL              |
+| baseTypeSource        | カスタム イベントの基本型のソース。                                      | ClickEvent      |
+| clickCoordinates      | クリック イベントがトリガーされた座標。                            | 659X47          |
+| コンテンツ               | 追加の `data-*` 属性と値を格納するためのプレースホルダー。            | [{sample1:value1, sample2:value2}] |
+| pageName              | クリック イベントがトリガーされたページのタイトル。                      | サンプル タイトル    |
+| parentId              | 親要素の ID または名前                                           | navbarContainer |
+
+### <a name="custom-measurements"></a>カスタム測定値
+| 名前                  | 説明                            | サンプル          |
+| --------------------- | ---------------------------------------|-----------------|
+| timeToAction          | 初期ページの読み込み後、ユーザーが要素をクリックするまでにかかった時間 (ミリ秒) | 87407              |
+
 ## <a name="configuration"></a>構成
 
 | 名前                  | Type                               | Default | 説明                                                                                                                              |
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
-| autoCapture           | boolean                            | true    | 自動キャプチャの構成。                                                                                                         |
-| コールバック (callback)              | [IValueCallback](#ivaluecallback)  | null    | コールバックの構成。                                                                                                                 |
-| pageTags              | string                             | null    | ページ タグ。                                                                                                                               |
-| dataTags              | [ICustomDataTags](#icustomdatatags)| null    | クリック データのキャプチャに使用される既定のタグをオーバーライドするために指定されるカスタム データ タグ。                                                           |
-| urlCollectHash        | boolean                            | false   | URL の "#" 文字の後の値のログ記録を有効にします。                                                                          |
-| urlCollectQuery       | boolean                            | false   | URL のクエリ文字列のログ記録を有効にします。                                                                                      |
+| autoCapture           | boolean                            | true    | 自動キャプチャの構成。                                |
+| コールバック (callback)              | [IValueCallback](#ivaluecallback)  | null    | コールバックの構成。                               |
+| pageTags              | string                             | null    | ページ タグ。                                             |
+| dataTags              | [ICustomDataTags](#icustomdatatags)| null    | クリック データのキャプチャに使用される既定のタグをオーバーライドするために指定されるカスタム データ タグ。 |
+| urlCollectHash        | boolean                            | false   | URL の "#" 文字の後の値のログ記録を有効にします。                |
+| urlCollectQuery       | boolean                            | false   | URL のクエリ文字列のログ記録を有効にします。                            |
 | behaviorValidator     | 機能                           | null  | `data-*-bhvr` 値の検証に使用するコールバック関数。 詳細については、[behaviorValidator のセクション](#behaviorvalidator)に移動してください。|
 | defaultRightClickBhvr | 文字列 (または) 数値                 | ''      | [右クリック] イベントが発生したときの [既定の動作] 値。 この値は、要素に `data-*-bhvr` 属性が含まれている場合にオーバーライドされます。 |
 | dropInvalidEvents     | boolean                            | false   | 有効なクリック データがないイベントを削除するためのフラグ。                                                                                   |

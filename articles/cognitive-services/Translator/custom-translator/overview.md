@@ -9,20 +9,20 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: lajanuar
 ms.topic: overview
-ms.openlocfilehash: 89ab25f45cd35a86d2ff4416ceb851ae6cd5e115
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b40aaea15515d29a7cff6fd34c246b29ef9401dd
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657163"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114361786"
 ---
 # <a name="what-is-custom-translator"></a>Custom Translator とは
 
 [Custom Translator](https://portal.customtranslator.azure.ai) は、翻訳会社、アプリ開発者、および言語サービス プロバイダーがカスタマイズされたニューラル機械翻訳 (NMT) システムを構築できるようにする Microsoft Translator サービスの一機能です。 カスタマイズされた翻訳システムは、既存のアプリケーション、ワークフロー、および Web サイトにシームレスに統合されます。
 
-[Custom Translator](https://portal.customtranslator.azure.ai) を使用して構築された翻訳システムは、[安全性](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高パフォーマンス、高いスケーラビリティを備えた、同じクラウドベースの Microsoft Translator [Text API V3](../reference/v3-0-translate.md?tabs=curl) を介して利用できます。この API は、毎日何十億件もの翻訳に利用されています。
+[カスタム翻訳ツール](https://portal.customtranslator.azure.ai)を使用して構築された翻訳システムは、安全性、ハイ パフォーマンス、高いスケーラビリティを備えた、同じクラウドベースの Microsoft 翻訳ツール [Text API V3](../reference/v3-0-translate.md?tabs=curl) を介して利用できます。この API は、毎日何十億件もの翻訳に利用されています。
 
-Custom Translator は、36 を超える言語をサポートし、NMT で利用可能な言語に直接マップされています。 完全な一覧については、[Microsoft Translator の言語](../language-support.md#customization)に関するページを参照してください。
+Custom Translator は、36 を超える言語をサポートし、NMT で利用可能な言語に直接マップされています。 完全な一覧については、[Microsoft Translator の言語](../language-support.md)に関するページを参照してください。
 
 このドキュメントには、次の種類の記事が含まれています。
 

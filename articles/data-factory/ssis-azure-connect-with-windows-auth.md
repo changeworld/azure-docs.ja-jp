@@ -1,21 +1,19 @@
 ---
 title: Windows 認証でデータ ストアとファイル共有にアクセスする
 description: Windows 認証を使用してデータ ストアとファイル共有にアクセスするパッケージを実行するように、Azure SQL Database の SSIS カタログと Azure Data Factory の Azure-SSIS Integration Runtime を構成する方法について説明します。
-ms.date: 10/27/2020
+ms.date: 10/22/2021
 ms.topic: conceptual
-ms.prod: sql
-ms.prod_service: integration-services
-ms.custom: ''
-ms.technology: integration-services
+ms.service: data-factory
+ms.subservice: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: jburchel
-ms.openlocfilehash: 8cb92407954ab5376850e57b0ee91d934480b025
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5d1ced9c1c867a45a56b684515db53aaf9a73848
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786891"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850358"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Azure の SSIS パッケージから Windows 認証を使用してデータ ストアとファイル共有にアクセスする
 

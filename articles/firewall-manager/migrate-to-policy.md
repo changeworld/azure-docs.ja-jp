@@ -7,12 +7,13 @@ services: firewall-manager
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 68e3035ad4e48df7e615fc3b7161fb8e046032b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c02d775a41c9eb45861ac315529049cd8b2eccf1
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104669816"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110700611"
 ---
 # <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-using-powershell"></a>PowerShell を使用して Azure Firewall の構成を Azure Firewall ポリシーに移行する
 

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: c16764d1ce985755b6a3042873cc18b09b697bcf
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 47acffc242973e70f9fe89db9304d193307c5695
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551613"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335748"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -576,7 +576,7 @@ SQL Managed Instance の場合:
 
 - 単純な Web アプリの場合、パブリック エンドポイント経由で接続するには、 **[Azure サービスを許可する]** を [オン] に設定する必要があります。
 
-- マネージド インスタンスへのプライベート データ パスの接続のために、[アプリを Azure Virtual Network に統合](../../app-service/web-sites-integrate-with-vnet.md)します。 必要に応じて、[App Service Environment (ASE)](../../app-service/environment/intro.md) を使用して Web アプリをデプロイすることもできます。
+- マネージド インスタンスへのプライベート データ パスの接続のために、[アプリを Azure Virtual Network に統合](../../app-service/overview-vnet-integration.md)します。 必要に応じて、[App Service Environment (ASE)](../../app-service/environment/intro.md) を使用して Web アプリをデプロイすることもできます。
 
 - ASE を使用する Web アプリ、または SQL Database 内のデータベースに接続する仮想ネットワークに統合された Web アプリの場合、[仮想ネットワーク サービス エンドポイントと仮想ネットワーク ファイアウォール規則](vnet-service-endpoint-rule-overview.md)を使用して特定の仮想ネットワークとサブネットからのアクセスを制限することができます。 次に、 **[Azure サービスを許可する]** を [オフ] に設定します。 また、プライベート データ パス経由で ASE を SQL Managed Instance のマネージド インスタンスに接続することもできます。  
 
@@ -625,7 +625,7 @@ DDoS 保護は、Azure プラットフォームの一部として自動的に有
 - Advanced Threat Protection の **Brute force SQL credentials (SQL 資格情報に対するブルート フォース攻撃)** アラートは、ブルート フォース攻撃の検出に役立ちます。 場合によって、アラートは侵入テストのワークロードを区別することもできます。
 
 - SQL Database に接続する Azure VM ホスティング アプリケーションの場合:
-  - Azure Security Center でインターネットに接続するエンドポイント経由のアクセスを制限するための推奨事項に従ってください。
+  - Microsoft Defender for Cloud でインターネットに接続するエンドポイント経由のアクセスを制限するための推奨事項に従ってください。
   - Azure VM でアプリケーションの複数インスタンスを実行するには、仮想マシン スケール セットを使用します。
   - ブルート フォース攻撃を防ぐために、インターネットからの RDP と SSH を無効にします。
 
@@ -647,7 +647,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 **ベスト プラクティス**:
 
-- 特定のサーバーまたはマネージド インスタンス用に [Azure Defender for SQL](azure-defender-for-sql.md)  を構成します。 [Azure Security Center の Standard レベル](../../security-center/security-center-pricing.md)に切り替えて、サブスクリプション内のすべてのサーバーおよびマネージド インスタンス用に Azure Defender for SQL を構成することもできます。
+- 特定のサーバーまたはマネージド インスタンス用に [Microsoft Defender for SQL](azure-defender-for-sql.md)  を構成します。 [[Microsoft Defender for Cloud]](../../security-center/security-center-pricing.md) を有効にすることで、サブスクリプションのすべてのサーバーとマネージド インスタンスに対して Microsoft Defender for SQL を構成することもできます。
 
 - 完全な調査エクスペリエンスを実現するには、 [SQL Database Auditing](../../azure-sql/database/auditing-overview.md) を有効にすることをお勧めします。 監査を使用すると、データベース イベントを追跡し、Azure Storage アカウントまたは Azure Log Analytics ワークスペースの監査ログに書き込むことができます。
 
@@ -682,7 +682,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 **実装方法**:
 
 - 監査ログを Azure Storage に保存するときは、ストレージ アカウントへのアクセスが最小限のセキュリティ原則に合わせて制限されていることを確認します。 ストレージ アカウントにアクセスできるユーザーを制御します。
-- 詳細については、[Azure Storage へのアクセスの承認](../../storage/common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関する記事を参照してください。
+- 詳細については、[Azure Storage へのアクセスの承認](../../storage/common/authorize-data-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関する記事を参照してください。
 
 **ベスト プラクティス**:
 
@@ -734,7 +734,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 - SQL 脆弱性評価で推奨される機密データの状態を継続的に監視します。 機密データの検出規則を追跡し、分類のための推奨列にドリフトがないか特定します。  
 
-- 組織の特定のニーズに合った方法で分類を使用します。 Azure Security Center の [SQL Information Protection](../../security-center/security-center-info-protection-policy.md) ポリシーで Information Protection ポリシー (機密ラベル、情報の種類、検出ロジック) をカスタマイズします。
+- 組織の特定のニーズに合った方法で分類を使用します。 Microsoft Defender for Cloud の [SQL Information Protection](../../security-center/security-center-info-protection-policy.md) ポリシーで Information Protection ポリシー (機密ラベル、情報の種類、検出ロジック) をカスタマイズします。
 
 ### <a name="track-access-to-sensitive-data"></a>機密データへのアクセスを追跡する
 
@@ -757,7 +757,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 **実装方法**:
 
-- [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) で、SQL に関連したセキュリティの推奨事項とアクティブな脅威を監視します。
+- [Microsoft Defender for Cloud](https://azure.microsoft.com/documentation/services/security-center/) で、SQL に関連したセキュリティの推奨事項とアクティブな脅威を監視します。
 
 ## <a name="common-security-threats-and-potential-mitigations"></a>一般的なセキュリティ上の脅威と考えられる軽減策
 

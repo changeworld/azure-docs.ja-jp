@@ -1,19 +1,19 @@
 ---
 title: Azure Monitor を使用して監視とメトリックを構成する
 titleSuffix: Azure Bastion
-description: Azure 全体のすべてのメトリック、アラート、診断ログ用のソリューションである Azure Monitor を使用した、Azure Bastion の監視、メトリクス、およびアラートについて説明します。
+description: Azure Monitor を使用した Azure Bastion の監視とメトリックについて説明します。
 services: bastion
 author: mialdrid
 ms.service: bastion
 ms.topic: how-to
 ms.date: 03/12/2021
 ms.author: mialdrid
-ms.openlocfilehash: c4e03318fae8d8d3a8b4d29538cad49f9ef39593
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: bed26390a2a64b7bbb39f1df014d0d63ccce6a5f
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259117"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534775"
 ---
 # <a name="how-to-configure-monitoring-and-metrics-for-azure-bastion-using-azure-monitor"></a>Azure Monitor を使用して Azure Bastion の監視とメトリックを構成する方法
 

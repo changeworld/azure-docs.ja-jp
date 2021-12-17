@@ -1,23 +1,17 @@
 ---
 title: Azure API Management の高度なポリシー | Microsoft Docs
 description: Azure API Management で使用できる高度なポリシーについて説明します。 例を参照し、使用可能なその他のリソースを確認します。
-services: api-management
-documentationcenter: ''
-author: vladvino
-manager: erikre
-editor: ''
-ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
+author: dlepow
 ms.topic: article
-ms.date: 11/13/2020
-ms.author: apimpm
-ms.openlocfilehash: 03529fd3c0231617c477f4f16773039a02386683
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 07/19/2021
+ms.service: api-management
+ms.author: danlep
+ms.openlocfilehash: 056b757b2902889d94ba380dffdd1668de95f892
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562486"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643367"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
@@ -29,6 +23,7 @@ ms.locfileid: "103562486"
 -   [要求を転送する](#ForwardRequest) - バックエンド サービスに要求を転送します。
 -   [コンカレンシーを制限する](#LimitConcurrency) - 含まれているポリシーが指定された数を超える要求によって同時に実行されないようにします。
 -   [イベント ハブにログを記録する](#log-to-eventhub) - 指定された形式のメッセージを Logger エンティティによって定義されたイベント ハブに送信します。
+-   [メトリックを送信する](#emit-metrics) - 実行時にカスタム メトリックを Application Insights に送信します。
 -   [Mock response (モック応答)](#mock-response) - パイプラインの実行を中止し、モック応答を呼び出し元に直接返します。
 -   [再試行](#Retry) - 条件が満たされるまで、囲まれたポリシー ステートメントの実行を再試行します。 実行は、指定された間隔で、指定された最大試行回数まで繰り返されます。
 -   [応答を返す](#ReturnResponse) - パイプラインの実行を中止し、指定された応答を呼び出し元に直接返します。
@@ -361,6 +356,80 @@ ms.locfileid: "103562486"
 | logger-id     | API Management サービスに登録されているロガーの ID。         | Yes                                                                  |
 | partition-id  | メッセージが送信されるパーティションのインデックスを指定します。             | 省略可能。 `partition-key` を使用する場合はこの属性を使用できません。 |
 | partition-key | メッセージの送信時にパーティション割り当てに使用される値を指定します。 | 省略可能。 `partition-id` を使用する場合はこの属性を使用できません。  |
+
+### <a name="usage"></a>使用法
+
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
+
+-   **ポリシー セクション:** inbound、outbound、backend、on-error
+
+-   **ポリシー スコープ:** すべてのスコープ
+
+## <a name="emit-metrics"></a>メトリックを送信する
+
+`emit-metric` ポリシーにより、指定された形式のカスタム メトリックが Application Insights に送信されます。
+
+> [!NOTE]
+> * カスタム メトリックは、Azure Monitor の[プレビュー機能](../azure-monitor/essentials/metrics-custom-overview.md)であり、[制限](../azure-monitor/essentials/metrics-custom-overview.md#design-limitations-and-considerations)が適用されます。
+> * Application Insights に追加された API Management データの詳細については、「[Azure API Management と Azure Application Insights を統合する方法](./api-management-howto-app-insights.md#what-data-is-added-to-application-insights)」を参照してください。
+
+### <a name="policy-statement"></a>ポリシー ステートメント
+
+```xml
+<emit-metric name="name of custom metric" value="value of custom metric" namespace="metric namespace"> 
+    <dimension name="dimension name" value="dimension value" /> 
+</emit-metric> 
+```
+
+### <a name="example"></a>例
+
+次の例では、ユーザー ID、クライアント IP、API ID をカスタム ディメンションとして、API 要求数をカウントするカスタム メトリックを送信します。
+
+```xml
+<policies>
+  <inbound>
+    <emit-metric name="Request" value="1" namespace="my-metrics"> 
+        <dimension name="User ID" /> 
+        <dimension name="Client IP" value="@(context.Request.IpAddress)" /> 
+        <dimension name="API ID" /> 
+    </emit-metric> 
+  </inbound>
+  <outbound>
+  </outbound>
+</policies>
+```
+
+### <a name="elements"></a>要素
+
+| 要素     | 説明                                                                       | 必須 |
+| ----------- | --------------------------------------------------------------------------------- | -------- |
+| emit-metric | ルート要素。 この要素の値は、カスタム メトリックを送信するための文字列です。 | はい      |
+| ディメンション   | サブ要素。 カスタム メトリックに含まれるディメンションごとに、これらの要素を 1 つ以上追加します。  | はい      |
+
+### <a name="attributes"></a>属性
+
+#### <a name="emit-metric"></a>emit-metric
+| 属性 | 説明                | 必須 | 種類               | 既定値  |
+| --------- | -------------------------- | -------- | ------------------ | -------------- |
+| name      | カスタム メトリックの名前。      | はい      | 文字列、式 | 該当なし            |
+| namespace | カスタム メトリックの名前空間。 | いいえ       | 文字列、式 | API Management |
+| 値     | カスタム メトリックの値。    | いいえ       | 整数、式    | 1              |
+
+#### <a name="dimension"></a>ディメンション
+| 属性 | 説明                | 必須 | 種類               | 既定値  |
+| --------- | -------------------------- | -------- | ------------------ | -------------- |
+| name      | ディメンションの名前。      | はい      | 文字列、式 | 該当なし            |
+| value     | ディメンションの値。 省略できるのは、`name` が既定のディメンションのいずれかと一致する場合のみです。 その場合、ディメンション名に従って値が指定されます。 | いいえ       | 文字列、式 | 該当なし |
+
+**値なしで使用できる既定のディメンション名:**
+
+* API ID
+* 操作 ID
+* Product ID
+* User ID
+* サブスクリプション ID
+* 場所 ID
+* ゲートウェイ ID
 
 ### <a name="usage"></a>使用法
 

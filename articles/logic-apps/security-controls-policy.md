@@ -1,18 +1,18 @@
 ---
 title: Azure Logic Apps 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Logic Apps に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 04/14/2021
+ms.date: 09/17/2021
 ms.topic: sample
 author: ecfan
 ms.author: estfan
 ms.service: logic-apps
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: b608148d04f33929357f7449af43bd4171ec2e0c
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 116dc4b717eb87c794701006a7507de507177ec9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500901"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598207"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-logic-apps"></a>Azure Logic Apps 用の Azure Policy 規制コンプライアンス コントロール
 

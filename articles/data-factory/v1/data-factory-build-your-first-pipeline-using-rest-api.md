@@ -5,14 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: tutorial
-ms.date: 11/01/2017
-ms.openlocfilehash: eb9ce65985521fb3f82032f04aec62538a157639
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/22/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 16d1356403daf7e148a6259c127b766b52f157ca
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785464"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040739"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -324,10 +326,12 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
-      Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
+    Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
+
     ```powershell
     Get-AzResourceProvider
     ```
+
   * Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com) にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
 
 パイプラインを作成する前に、まず、Data Factory エンティティをいくつか作成する必要があります。 まずはデータ ストアやコンピューティングを自分のデータ ストアにリンクするリンクされたサービスを作成し、リンクされたデータ ストア内のデータを表す入力データセットと出力データセットを定義します。
@@ -341,13 +345,15 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 1. コマンドを **cmd** という名前の変数に割り当てます。
 
     ```powershell
-    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azurestoragelinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
+    $cmd = { .\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azurestoragelinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01 };
     ```
+
 2. **Invoke-Command** を使用して、コマンドを実行します。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
+
 3. 結果を表示します。 リンクされたサービスが正常に作成された場合は、**results** に、リンクされたサービスの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
 
     ```powershell
@@ -362,11 +368,13 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@hdinsightondemandlinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/hdinsightondemandlinkedservice?api-version=2015-10-01};
     ```
+
 2. **Invoke-Command** を使用して、コマンドを実行します。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
+
 3. 結果を表示します。 リンクされたサービスが正常に作成された場合は、**results** に、リンクされたサービスの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
 
     ```powershell
@@ -460,7 +468,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 
 **準備完了** 状態または **失敗** 状態のスライスが見つかるまで、順番に Invoke-Command を実行します。 スライスが準備完了状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  オンデマンド HDInsight クラスターの作成には、通常はしばらく時間がかかります。
 
-![output data](./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png)
+:::image type="content" source="./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png" alt-text="output data":::
 
 > [!IMPORTANT]
 > 入力ファイルは、スライスが正常に処理された時点で削除されます。 そのためスライスを取得したり、このチュートリアルをもう一度行ったりする場合は、adfgetstarted コンテナーの inputdata フォルダーに入力ファイル (input.log) をアップロードしてください。

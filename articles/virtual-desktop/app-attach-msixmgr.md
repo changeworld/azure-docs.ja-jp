@@ -1,24 +1,24 @@
 ---
 title: MSIXMGR ツールの使用 - Azure
-description: Windows Virtual Desktop 用の MSIXMGR ツールを使用する方法。
+description: Azure Virtual Desktop 用の MSIXMGR ツールを使用する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b2cab56fb99bda7da361cc2068396e53e794501d
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 7b997f817e8e430d6f2985f73e4005da86dcda10
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448340"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745531"
 ---
 # <a name="using-the-msixmgr-tool"></a>MSIXMGR ツールの使用
 
-MSIXMGR ツールは、MSIX でパッケージ化されたアプリケーションを MSIX イメージに展開するためのものです。 このツールは、MSIX でパッケージ化されたアプリケーション (.MSIX) を取り込み、VHD、VHDx、または CIM ファイルに展開します。 結果の MSIX イメージは、Windows Virtual Desktop のデプロイで使用される Azure ストレージ アカウントに格納されます。この記事では、MSIXMGR ツールの使用方法について説明します。
+MSIXMGR ツールは、MSIX でパッケージ化されたアプリケーションを MSIX イメージに展開するためのものです。 このツールは、MSIX でパッケージ化されたアプリケーション (.MSIX) を取り込み、VHD、VHDx、または CIM ファイルに展開します。 結果の MSIX イメージは、Azure Virtual Desktop のデプロイで使用される Azure ストレージ アカウントに格納されます。この記事では、MSIXMGR ツールの使用方法について説明します。
 
 >[!NOTE]
->互換性を確保するため、MSIX イメージを格納する CIM が、Windows Virtual Desktop ホスト プールで実行されている OS バージョンで生成されていることを確認してください。 MSIXMGR で CIM ファイルを作成することはできますが、それらのファイルを使用できるのは、Windows 10 20H2 が実行されているホスト プールのみです。
+>互換性を確保するため、MSIX イメージを格納する CIM が、Azure Virtual Desktop ホスト プールで実行されている OS バージョンで生成されていることを確認してください。 MSIXMGR で CIM ファイルを作成することはできますが、それらのファイルを使用できるのは、Windows 10 20H2 が実行されているホスト プールのみです。
 
 ## <a name="requirements"></a>要件
 
@@ -81,7 +81,7 @@ MSIX アプリのアタッチの詳細については、「[MSIX アプリのア
 - [Azure portal で MSIX アプリのアタッチを設定する](app-attach-azure-portal.md)
 - [PowerShell を使用して MSIX アプリのアタッチを設定する](app-attach-powershell.md)
 - [MSIX アプリのアタッチ用の PowerShell スクリプトを作成する](app-attach.md)
-- [Windows Virtual Desktop 用の MSIX イメージを準備する](app-attach-image-prep.md)
+- [Azure Virtual Desktop 用の MSIX イメージを準備する](app-attach-image-prep.md)
 - [MSIX アプリのアタッチ用にファイル共有を設定する](app-attach-file-share.md)
 
 MSIX アプリのアタッチについて不明な点がある場合は、[アプリのアタッチのよくあるご質問](app-attach-faq.md)および[アプリのアタッチの用語集](app-attach-glossary.md)に関する記事を参照してください。

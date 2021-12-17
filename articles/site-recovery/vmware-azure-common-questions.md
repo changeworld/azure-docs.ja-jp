@@ -3,18 +3,38 @@ title: Azure Site Recovery を使用した VMware のディザスター リカ�
 description: Azure Site Recovery を使用してオンプレミスの VMware VM を Azure にディザスター リカバリーする場合のよくある質問に対する回答を確認します。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02e903c876a2e4cdec29006090ed8ddfbe9e4b45
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587794"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452606"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
 この記事では、オンプレミスの VMware 仮想マシン (VM) の Azure へのディザスター リカバリーをデプロイするときに生じる可能性があるよくある質問に回答します。
 
 ## <a name="general"></a>全般
+
+### <a name="how-do-i-use-the-classic-experience-in-the-recovery-services-vault-rather-than-the-preview-experience"></a>Recovery Services コンテナーで、プレビュー エクスペリエンスではなくクラシック エクスペリエンスを使用するにはどうすればよいですか? 
+
+Azure Site Recovery レプリケーション アプライアンスを使用して VMware 仮想マシンを保護するための信頼性の高い新たな方法は、現在[パブリック プレビュー](https://support.microsoft.com/topic/update-rollup-57-for-azure-site-recovery-kb5006172-9fccc879-6e0c-4dc8-9fec-e0600cf94094)段階にあります。 新しい Recovery Services コンテナーが作成されると、既定でプレビュー エクスペリエンスが選択されます。 
+
+エクスペリエンスを変更するには、次の手順に従います。 
+
+1. Azure portal でコンテナーを開きます。 
+2. **[作業の開始]** セクションで、 **[Site Recovery]** を選択します。 
+3. このページの上部にあるバナーをクリックします。 
+    
+    [![VMware スタックの変更手順 1](./media/vmware-azure-common-questions/change-stack-step-1.png)](./media/vmware-azure-common-questions/change-stack-step-1.png#lightbox)
+
+4. エクスペリエンス セレクション ブレードが表示されます。 構成サーバーを使用する場合はクラシック エクスペリエンスを選択して、 **[OK]** をクリックします。 そうでない場合は、ペインを閉じます。 
+
+    [![VMware スタックの変更手順 2](./media/vmware-azure-common-questions/change-stack-step-2.png)](./media/vmware-azure-common-questions/change-stack-step-2.png#lightbox)
+
+> [!NOTE]
+> 一度エクスペリエンスの種類をプレビューからクラシックに切り替えると、同じ Recovery Services コンテナーで再び切り替えることはできない点に注意してください。 この変更を保存する前に、目的のエクスペリエンスが選択されていることを確認してください。
+
 
 ### <a name="what-do-i-need-for-vmware-vm-disaster-recovery"></a>VMware VM のディザスター リカバリーには何が必要ですか?
 
@@ -96,7 +116,7 @@ Azure Site Recovery のトランザクションは大量にあるため、通常
 レプリケートする各 VM で、次の複数の方法のいずれかでサービスをインストールします。
 
 - [プッシュ インストール](vmware-physical-mobility-service-overview.md#push-installation)
-- UI または PowerShell からの[手動インストール](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui)
+- UI または PowerShell からの[手動インストール](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui-classic)
 - [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) などのデプロイ ツールを使用したデプロイ
 
 ## <a name="managed-disks"></a>マネージド ディスク
@@ -145,7 +165,7 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 
 ### <a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
 
-拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。
+拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/d365community/forum/3ccca344-2d25-ec11-b6e6-000d3a4f0f84)でこの機能を要求してください。
 
 ### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>どのようにすれば初期レプリケーションまたは同期の進捗状況を追跡できますか?
 
@@ -153,7 +173,7 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>オフラインの初期レプリケーションを行うことはできますか?
 
-オフライン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
+オフライン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/d365community/idea/7c09c396-2e25-ec11-b6e6-000d3a4f0f84)でこの機能を要求してください。
 
 ### <a name="what-is-asrseeddisk"></a>asrseeddisk とは何ですか?
 

@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 793b4da8fcf46ba4d5618f8ada86f9c3c8026ffd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: df292fc59d46d59c94f43dae0b1827c068b3e057
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104865266"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929869"
 ---
-# <a name="restore-using-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールを使用して復元する (プレビュー)
+# <a name="restore-using-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールを使用して復元する
 
 この記事では、Azure NetApp Files で使用できる Azure アプリケーション整合性スナップショット ツールの restore コマンドを実行する方法について説明します。
 

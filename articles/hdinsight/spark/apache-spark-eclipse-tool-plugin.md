@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
-ms.openlocfilehash: e4f19afc0edf0f43b64548ae1c93ed5ff8dfa8a1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 61f4ee43f89e4b0dffe626be84b135e6dc8e3a29
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866575"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286468"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -24,7 +24,7 @@ Azure Toolkit for [Eclipse](https://www.eclipse.org/) の HDInsight Tools を使
 
 * HDInsight 上の Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 
-* [Java Developer キット](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK) バージョン 8
+* [Java Developer キット](/azure/developer/java/fundamentals/java-support-on-azure) (JDK) バージョン 8
 
 * [Eclipse IDE](https://www.eclipse.org/downloads/)。 この記事では、Java 開発者向けの Eclipse IDE を使用します。
 
@@ -326,7 +326,7 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
 ## <a name="see-also"></a>関連項目
 
-* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
 

@@ -4,12 +4,12 @@ description: Azure HDInsight で InvalidNetworkConfigurationErrorCode を使用�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/12/2021
-ms.openlocfilehash: 83d4819ecb1da91bda5fb4f1cb445bbc34fd007f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b8b5cba0e25e3be6b668054c9f3d2afaa87925d
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98927004"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064181"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Azure HDInsight で InvalidNetworkConfigurationErrorCode を使用したクラスターの作成が失敗する
 
@@ -31,9 +31,9 @@ ms.locfileid: "98927004"
 
 1. クラスターの一部である VM に SSH で接続し、コマンド `hostname -f` を実行します。 これにより、ホストの完全修飾ドメイン名が返されます (以下の手順では `<host_fqdn>` と呼ばれます)。
 
-1. 次に、コマンド `nslookup <host_fqdn>` を実行します (たとえば `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`)。 このコマンドによって名前が IP アドレスに解決される場合は、DNS サーバーが正常に動作していることを意味します。 この場合は、HDInsight でサポート ケースを送信してください。Microsoft がお客様の問題を調査します。 サポート ケースには、実行したトラブルシューティングの手順が含めてください。 こうすることで、より迅速に問題を解決できます。
+1. 次に、コマンド `nslookup <host_fqdn>` を実行します (たとえば `nslookup hn*.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`)。 このコマンドによって名前が IP アドレスに解決される場合は、DNS サーバーが正常に動作していることを意味します。 この場合は、HDInsight でサポート ケースを送信してください。Microsoft がお客様の問題を調査します。 サポート ケースには、実行したトラブルシューティングの手順が含めてください。 こうすることで、より迅速に問題を解決できます。
 
-1. 上記のコマンドで IP アドレスが返されない場合は、`nslookup <host_fqdn> 168.63.129.16` を実行します(たとえば `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`)。 このコマンドで IP を解決できる場合は、ご利用の DNS サーバーからクエリが Azure の DNS に転送されていないか、クラスターと同じ仮想ネットワークに属する VM ではないことを意味します。
+1. 上記のコマンドで IP アドレスが返されない場合は、`nslookup <host_fqdn> 168.63.129.16` を実行します(たとえば `nslookup hn*.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`)。 このコマンドで IP を解決できる場合は、ご利用の DNS サーバーからクエリが Azure の DNS に転送されていないか、クラスターと同じ仮想ネットワークに属する VM ではないことを意味します。
 
 1. クラスターの仮想ネットワークでカスタム DNS サーバーとして機能できる Azure VM がない場合は、まずそれを追加する必要があります。 仮想ネットワークに VM を作成します。これは、DNS フォワーダーとして構成されます。
 
@@ -141,8 +141,8 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 ```bash
 hostname -f
-nslookup <headnode_fqdn> (e.g.nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
-dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
+nslookup <headnode_fqdn> (e.g.nslookup hn*.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
+dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn*.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
 ```
 ### <a name="cause"></a>原因
 

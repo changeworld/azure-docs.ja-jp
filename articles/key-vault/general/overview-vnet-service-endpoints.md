@@ -2,18 +2,18 @@
 title: Azure Key Vault の仮想ネットワーク サービス エンドポイント
 description: Azure Key Vault の仮想ネットワーク サービス エンドポイントを使用すると、使用シナリオなど、指定した仮想ネットワークに対するアクセスを制限できます。その方法について説明します。
 services: key-vault
-author: amitbapat
-ms.author: ambapat
+author: mbaldwin
+ms.author: mbaldwin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 985cbe1128d1dd64fda86ef062750dc5dd068ffe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 134e73dc93e46e6af0d12ef1e52facb305d868a5
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751735"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893483"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -26,7 +26,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 既定で (インターネット トラフィックを含む) すべてのネットワークからのトラフィックに対するアクセスを拒否するように [Key Vault ファイアウォールと仮想ネットワーク](network-security.md)を構成することができます。 特定の Azure 仮想ネットワークやパブリック インターネット IP アドレスの範囲からのトラフィックにアクセスを許可できるため、アプリケーションに対してセキュリティで保護されたネットワーク境界を構築することができます。
 
 > [!NOTE]
-> Key Vault ファイアウォールと仮想ネットワーク規則は、Key Vault の[データ プレーン](security-overview.md#privileged-access)にのみ適用されます。 Key Vault のコントロール プレーン操作 (作成、削除、変更操作、アクセス ポリシーの設定、ファイアウォールと仮想ネットワーク規則の設定、ARM テンプレートによるシークレットまたはキーのデプロイなど) は、ファイアウォールや仮想ネットワーク規則の影響を受けません。
+> Key Vault ファイアウォールと仮想ネットワーク規則は、Key Vault の[データ プレーン](security-features.md#privileged-access)にのみ適用されます。 Key Vault のコントロール プレーン操作 (作成、削除、変更操作、アクセス ポリシーの設定、ファイアウォールと仮想ネットワーク規則の設定、ARM テンプレートによるシークレットまたはキーのデプロイなど) は、ファイアウォールや仮想ネットワーク規則の影響を受けません。
 
 サービス エンドポイントの使用方法の例をいくつか次に示します。
 
@@ -46,7 +46,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 |Azure Backup|[Azure Backup](../../backup/backup-overview.md) を使用して、Azure 仮想マシンのバックアップ中に関連するキーとシークレットのバックアップと復元を許可する。|
 |Exchange Online と SharePoint Online|[カスタマー キー](/microsoft-365/compliance/customer-key-overview)を使用する Azure Storage サービス暗号化のためにカスタマー キーへのアクセスを許可する。|
 |Azure Information Protection|[Azure Information Protection](/azure/information-protection/what-is-information-protection) のテナント キーへのアクセスを許可する。|
-|Azure App Service|[Key Vault を介して Azure Web アプリ証明書をデプロイする](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
+|Azure App Service|App Service は、[Azure Web アプリ証明書をキー コンテナー経由でデプロイする](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)場合にのみ信頼されます。個別アプリ自体については、キー コンテナーの IP ベース ルールに送信 IP を追加できます。|
 |Azure SQL データベース|[Azure SQL Database と Azure Synapse Analytics に対する Transparent Data Encryption での Bring Your Own Key のサポート](../../azure-sql/database/transparent-data-encryption-byok-overview.md)。|
 |Azure Storage|[Azure Key Vault で顧客が管理するキーを Storage Service Encryption に使用する](../../storage/common/customer-managed-keys-configure-key-vault.md)。|
 |Azure Data Lake Store|顧客が管理するキーによる [Azure Data Lake Store 内のデータの暗号化](../../data-lake-store/data-lake-store-encryption.md)。|
@@ -59,6 +59,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 |Azure Import/Export| [Azure Key Vault でユーザーが管理するキーを Import/Export サービスのために使用する](../../import-export/storage-import-export-encryption-key-portal.md)
 |Azure Container Registry|[カスタマー マネージド キーを使用したレジストリの暗号化](../../container-registry/container-registry-customer-managed-keys.md)
 |Azure Application Gateway |[HTTPS 対応リスナーに Key Vault 証明書を使用する](../../application-gateway/key-vault-certs.md)
+|Azure Front Door|[HTTPS に Key Vault 証明書を使用する](../../frontdoor/front-door-custom-domain-https.md#prepare-your-azure-key-vault-account-and-certificate)
 
 > [!NOTE]
 > 対応するサービスがキー コンテナーにアクセスできるように、関連するキー コンテナー アクセス ポリシーを設定する必要があります。
@@ -66,4 +67,4 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 ## <a name="next-steps"></a>次のステップ
 
 - 詳しい手順については、「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](network-security.md)」を参照してください。
-- 「[Azure Key Vault のセキュリティの概要](security-overview.md)」を参照してください。
+- 「[Azure Key Vault のセキュリティの概要](security-features.md)」を参照してください。

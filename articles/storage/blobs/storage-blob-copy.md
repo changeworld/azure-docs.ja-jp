@@ -2,19 +2,19 @@
 title: Azure Storage API を使用して BLOB をコピーする
 description: Azure Storage クライアント ライブラリを使用して BLOB をコピーする方法について説明します。
 services: storage
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 01/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: bfd471a880e167bb2cc92bc87925b4aac91f66af
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 39969e5e1767bbd2a84a27bb5cbbea6d51c9a4eb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278475"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674568"
 ---
 # <a name="copy-a-blob-with-azure-storage-client-libraries"></a>Azure Storage クライアント ライブラリを使用して BLOB をコピーする
 
@@ -42,7 +42,7 @@ BLOB がコピーされると、そのシステム プロパティが同じ値�
 
 ## <a name="copy-a-blob"></a>BLOB をコピーする
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 BLOB をコピーするには、次のいずれかのメソッドを呼び出します。
 
@@ -55,7 +55,7 @@ BLOB をコピーするには、次のいずれかのメソッドを呼び出し
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CopyBlob.cs" id="Snippet_CopyBlob":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 BLOB をコピーするには、次のいずれかのメソッドを呼び出します。
 
@@ -123,7 +123,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 }
 ```
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 BLOB をコピーするには、[start_copy_from_url](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#start-copy-from-url-source-url--metadata-none--incremental-copy-false----kwargs-) メソッドを呼び出します。 `start_copy_from_url` メソッドは、コピー操作に関する情報を含むディクショナリを返します。
 
@@ -137,7 +137,7 @@ BLOB をコピーするには、[start_copy_from_url](/azure/developer/python/sd
 
 コピー操作を中止すると、コピー先 BLOB の長さは 0 になります。 ただし、コピー先 BLOB のメタデータは、コピー元 BLOB からコピーされた値、またはコピー操作中に明示的に設定された値に変わります。 コピー前のメタデータを元のまま維持するには、いずれかのコピー方法を呼び出す前に、コピー先 BLOB のスナップショットを作成します。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 コピー先 BLOB の [BlobProperties.CopyStatus](/dotnet/api/azure.storage.blobs.models.blobproperties.copystatus) プロパティをチェックして、コピー操作の状態を取得します。 コピーが完了すると、最終 BLOB がコミットされます。
 
@@ -147,7 +147,7 @@ BLOB をコピーするには、[start_copy_from_url](/azure/developer/python/sd
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CopyBlob.cs" id="Snippet_StopBlobCopy":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 コピー先 BLOB の [CopyState.Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status) プロパティをチェックして、コピー操作の状態を取得します。 コピーが完了すると、最終 BLOB がコミットされます。
 
@@ -167,7 +167,7 @@ if (destBlob.CopyState.Status == CopyStatus.Pending)
 }
 ```
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 [get_blob_properties](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#get-blob-properties---kwargs-) メソッドによって返された [CopyProperties](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.copyproperties) ディクショナリで "status" エントリを調べて、コピー操作の状態を取得します。 コピーが完了すると、最終 BLOB がコミットされます。
 
@@ -183,10 +183,10 @@ if (destBlob.CopyState.Status == CopyStatus.Pending)
 
 Azure SDK に関する詳細を確認します。
 
- - [Azure SDK for .NET](https://github.com/azure/azure-sdk-for-net)
- - [Azure SDK for Java](https://github.com/azure/azure-sdk-for-java)
- - [Azure SDK for Python](https://github.com/azure/azure-sdk-for-python)
- - [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js)
+- [Azure SDK for .NET](https://github.com/azure/azure-sdk-for-net)
+- [Azure SDK for Java](https://github.com/azure/azure-sdk-for-java)
+- [Azure SDK for Python](https://github.com/azure/azure-sdk-for-python)
+- [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: f76f036e2101fb1dbb4483ba417f5cf10f3e37f4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6beaafe19184e9c7b27c4e533f20c023948e9209
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782395"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736120"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>CLI を使った App Service アプリと Cosmos DB の接続
 
@@ -43,7 +43,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 | [`az webapp create`](/cli/azure/webapp#az_webapp_create) | App Service アプリを作成します。 |
 | [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) | Cosmos DB アカウントを作成します。 |
 | [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb#az_cosmosdb_list_connection_strings) | 指定された Cosmos DB アカウントの接続文字列を一覧表示します。 |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | App Service アプリのアプリ設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | App Service アプリのアプリ設定を作成または更新します。 アプリ設定は、アプリの環境変数として公開されます (「[環境変数とアプリ設定のリファレンス](../reference-app-settings.md)」を参照)。 |
 
 ## <a name="next-steps"></a>次のステップ
 

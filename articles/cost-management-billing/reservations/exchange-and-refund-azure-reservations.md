@@ -1,18 +1,19 @@
 ---
 title: Azure の予約のセルフサービスによる交換と払戻
 description: Azure の予約を交換または払い戻す方法について説明します。 予約の交換または払戻を行うには、予約注文の所有者アクセス権を持っている必要があります。
-author: yashesvi
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3a750e41ec5d422107dc091fb0965ed07da6a88b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035995"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469485"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
@@ -27,8 +28,6 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 予約は払い戻しも可能ですが、ご自分の請求範囲 (EA、Microsoft 顧客契約、Microsoft Partner Agreement など) のすべての予約コミットメントのキャンセル額合計が、12 か月間のローリング ウィンドウで 50,000 米国ドルを超えることはできません。
 
 Azure Databricks の予約容量、Azure VMware Solution by CloudSimple の予約、Azure Red Hat Open Shift の予約、Red Hat プラン、SUSE Linux プランは払い戻しの対象外となります。
-
-セルフ サービスの交換およびキャンセルの機能は、米国政府のエンタープライズ契約のお客様は利用できません。 従量課金制やクラウド ソリューション プロバイダー (CSP) などの他の種類の米国政府機関向けサブスクリプションがサポートされています。
 
 > [!NOTE]
 > - **既存の予約を交換または払い戻しするには、予約注文の所有者のアクセス許可を持っている必要があります**。 [予約を管理できるユーザーを追加または変更する](./manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)ことができます。
@@ -67,6 +66,7 @@ Azure Databricks の予約容量、Azure VMware Solution by CloudSimple の予�
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium Storage 以外のストレージを Premium Storage と交換する
 
 Premium Storage をサポートしない VM サイズの購入済み予約を、Premium Storage をサポートする対応する VM サイズと交換できます。 たとえば、_F1_ を _F1s_ と交換できます。 交換を行う場合は、[予約の詳細] に移動し、 **[交換]** を選択します。 交換により、予約済みインスタンスの期間のリセットや、新しいトランザクションの作成が行われることはありません。
+別のサイズ、シリーズ、リージョン、または支払いの頻度に交換する場合、新しい予約の期間はリセットされます。 
 
 ## <a name="how-transactions-are-processed"></a>トランザクションの処理方法
 
@@ -81,6 +81,7 @@ Premium Storage をサポートしない VM サイズの購入済み予約を、
 ### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>従量課金制の請求書支払いと CSP プログラム
 
 元の予約購入請求書がキャンセルされ、払戻用の新しい請求書が作成されます。 交換の場合、新しい請求書には払戻と新しい購入が示されます。 払戻額は購入に対して調整されます。 予約の払戻のみの場合は、日割り金額が保持され、今後の予約購入に対して調整されます。 従量課金制料金で予約を購入し、その後 CSP に移動した場合、予約を返上して再購入できます。ペナルティはありません。
+CSP ではセルフサービスでの払戻はできないため、払戻をご希望の場合は CSP のサポートにお問い合わせください。
 
 ### <a name="pay-as-you-go-credit-card-customers"></a>従量課金制クレジット カードのお客様
 
@@ -105,6 +106,7 @@ Azure には、キャンセル、交換、払戻に関して次のポリシー�
 - 現在、中途解約料は課金していませんが、将来的には 12% の解約料が発生する可能性があります。
 - 1 つの請求プロファイルまたは 1 回の加入契約のすべての予約コミットメントのキャンセル額合計は、12 か月間のローリング ウィンドウにおいて 50,000 米国ドルを超えることはできません。 たとえば、1 か月あたり 100 米国ドルの 3 年間の予約を 18 か月目に払い戻した場合、取り消したコミットメント額は 1,800 米国ドルとなります。 この払い戻し後は、48,200 米国ドルが、払い戻し可能な新しい限度額となります。 この払い戻しから 365 日以内に、48,200 米国ドルの上限が 1,800 米国ドル増やされ、ご自分の新しいプールは 50,000 米国ドルとなります。 その請求プロファイルまたは EA 加入契約のその他のすべての予約取り消しは同じプールから減額され、同じ補充ロジックが適用されます。
 - 1 つの請求プロファイルまたは 1 回の EA 加入契約の 12 か月間の上限 50,000 米国ドルを超える払い戻しは、Azure では処理できません。
+    - 交換に起因する払い戻しは、払い戻しの上限に対してカウントされません。
 - 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいて計算されます。
 - 払戻を処理できるのは、予約注文の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)方法を参照してください。
 

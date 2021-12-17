@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: a9a1788473cb31f8e78aac0bbd5979b3d681ad32
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 31c6195ac83d2b1fb9cfadf30876cca4cc41a57f
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867595"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005863"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure 仮想ネットワーク内の HDInsight 上に Apache HBase クラスターを作成する
 
@@ -42,9 +42,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 >
 > `CLUSTERNAME` は、テンプレートを使用する際に指定するクラスター名に置き換えられます。
 
-1. 次の画像を選択して Azure Portal でテンプレートを開きます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)にあります。
+1. 次の画像を選択して Azure Portal でテンプレートを開きます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/hdinsight-hbase-linux-vnet/)にあります。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.hdinsight%2Fhdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 1. **[カスタム デプロイ]** ダイアログで **[テンプレートの編集]** を選択します。
 
@@ -105,14 +105,14 @@ Java アプリケーションを使用して HBase にリモートで接続す�
 返された JavaScript Object Notation (JSON) データで、"host_name" エントリを見つけます。 これには、クラスターのノードの FQDN が含まれています。 次に例を示します。
 
 ```json
-"host_name" : "hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net"
+"host_name" : "hn*.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net"
 ```
 
 クラスター名で始まるドメイン名の部分は、DNS サフィックスです。 たとえば、「 `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net` 」のように入力します。
 
 ### <a name="verify-communication-inside-virtual-network"></a>仮想ネットワーク内の通信を確認する
 
-仮想マシンが HBase クラスターと通信できることを確認するには、仮想マシンからコマンド `ping headnode0.<dns suffix>` を使用します。 たとえば、「 `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net` 」のように入力します。
+仮想マシンが HBase クラスターと通信できることを確認するには、仮想マシンからコマンド `ping headnode0.<dns suffix>` を使用します。 たとえば、「 `ping hn*.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net` 」のように入力します。
 
 Java アプリケーションでこの情報を使用するには、[HDInsight (Hadoop) で Apache HBase を使用する Java アプリケーションを構築するための Apache Maven の使用](./apache-hbase-build-java-maven-linux.md)に関する記事の手順に従って、アプリケーションを作成します。 アプリケーションをリモート HBase サーバーに接続するには、Zookeeper の FQDN を使用するように、この例の **hbase-site.xml** ファイルを変更します。 次に例を示します。
 

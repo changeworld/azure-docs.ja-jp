@@ -2,31 +2,32 @@
 author: craigktreasure
 ms.service: azure-object-anchors
 ms.topic: include
-ms.date: 03/02/2021
+ms.date: 08/02/2021
 ms.author: crtreasu
-ms.openlocfilehash: d06a6ecd8af16da3e6df21e984fbf6a727fbc27e
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: ce942908ffa068b0502bdac7f9472543355dbbce
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105328"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254202"
 ---
-### <a name="upload-your-model"></a>モデルをアップロードする
+## <a name="upload-your-model"></a>モデルをアップロードする
 
+アプリを実行する前に、モデルをアプリで使用できるようにする必要があります。
 Object Anchors モデルをまだお持ちでない場合は、[モデルの作成](../articles/object-anchors/quickstarts/get-started-model-conversion.md)の手順に従ってモデルを作成します。 その後、ここに戻ります。
 
-HoloLens を Windows デバイス ポータルに接続した状態で、次の手順に従って、アプリに使用するモデルをアップロードします。
+HoloLens をオンにして開発デバイス (PC) に接続したら、次の手順に従って、HoloLens の **3D Objects** フォルダーにモデルをアップロードします。
 
-1. Windows デバイス ポータルで、 **[システム] > [エクスプローラー] > [LocalAppData]** に移動します。 アプリの一覧にアプリケーションが表示されます。
+1. Ctrl キーと C キー (Ctrl + C) を押しながら、操作するモデルを選択してコピーします。
 
-    :::image type="content" source="./media/object-anchors-quickstarts-unity/portal-localappdata.png" alt-text="エクスプローラー":::
+2. Windows ロゴ キーと E キー (Win + E) を押して、エクスプローラーを起動します。 HoloLens が他のドライブやフォルダーと共に、左側のウィンドウに表示されます。
 
-2. アプリケーションを開き、`LocalState` フォルダーをクリックします。
+    :::image type="content" source="./media/object-anchors-quickstarts-unity/file-explorer-launch.png" alt-text="エクスプローラー":::
 
-    :::image type="content" source="./media/object-anchors-quickstarts-unity/portal-localstate.png" alt-text="LocalState フォルダーを開く":::
+3. HoloLens のリンクをタップすると、HoloLens デバイスのストレージが右側のペインに表示されます。
 
-3. モデル ファイルを `LocalState` フォルダーにアップロードします。
+    :::image type="content" source="./media/object-anchors-quickstarts-unity/file-explorer-internal-storage.png" alt-text="HoloLens の内部ストレージを開く":::
 
-    :::image type="content" source="./media/object-anchors-quickstarts/portal-upload-model.png" alt-text="ポータルでモデルをアップロードする":::
+4. エクスプローラーで、 **[Internal Storage] > [3D Objects]** にアクセスします。 これで、Ctrl キーを押しながら V キー (Ctrl + V) を押すことで、**3D Objects** フォルダーにモデルを貼り付けることができます。
 
-    HoloLens からアプリケーションを再起動します。 これで、モデルに一致するオブジェクトを検出できるようになりました。
+    :::image type="content" source="./media/object-anchors-quickstarts-unity/file-explorer-open-3d-objects.png" alt-text="3D Objects フォルダーにモデルを貼り付ける":::

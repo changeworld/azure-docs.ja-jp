@@ -1,14 +1,14 @@
 ---
 title: Azure リソースの探索
 description: Resource Graph クエリ言語を使用してリソースを探索し、それらがどのように接続されているかを確認する方法について説明します。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: a76ce2bb34fd6e99fedf5030c4723b6dd5acbb91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37650c3da17de5cbe3ae8c37da31d0975ea0cdf0
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98917726"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323932"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Resource Graph を使用してご利用の Azure リソースを探索する
 
@@ -20,7 +20,7 @@ Azure の一般的なリソースは仮想マシンです。 リソースの一�
 
 ### <a name="virtual-machine-discovery"></a>仮想マシンの確認
 
-まずは、環境から 1 つの VM を取得し、返されるプロパティを確認する簡単なクエリを実行してみましょう。
+まずは、環境から 1 つの仮想マシンを取得し、返されるプロパティを確認する簡単なクエリを実行してみましょう。
 
 ```kusto
 Resources
@@ -33,11 +33,11 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | limit 1" | ConvertTo-Json -Depth 100
+(Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | limit 1").Data | ConvertTo-Json -Depth 100
 ```
 
 > [!NOTE]
-> Azure PowerShell `Search-AzGraph` コマンドレットは、既定で **PSCustomObject** を返します。 Azure CLI から返される内容と同様の出力にするには、`ConvertTo-Json` コマンドレットを使用します。 **Depth** の既定値は _2_ です。 _100_ に設定すると、返されたすべてのレベルが変換されます。
+> Azure PowerShell `Search-AzGraph` コマンドレットは、既定で **PSResourceGraphResponse** を返します。 Azure CLI から返される内容と同様の出力にするには、**Data** プロパティに対して `ConvertTo-Json` コマンドレットを使用します。 **Depth** の既定値は _2_ です。 _100_ に設定すると、返されたすべてのレベルが変換されます。
 
 JSON 結果は次の例のように構成されます。
 
@@ -121,7 +121,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
+(Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location").Data | ConvertTo-Json
 ```
 
 JSON 結果は次の例のように構成されます。
@@ -160,7 +160,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
+(Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup").Data | ConvertTo-Json
 ```
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>プレミアム マネージド ディスクに接続された仮想マシン
@@ -180,7 +180,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualmachines'
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
+(Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id").Data | ConvertTo-Json
 ```
 
 結果は、ディスク ID の一覧です。
@@ -215,7 +215,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/disks' and id ==
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
+(Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'").Data | ConvertTo-Json
 ```
 
 JSON 結果は次の例のように構成されます。
@@ -266,7 +266,7 @@ cat nics.txt
 
 ```azurepowershell-interactive
 # Use Resource Graph to get all NICs and store in the $nics variable
-$nics = Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20"
+$nics = (Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20").Data
 
 # Review the output of the query stored in the variable
 $nics.nic
@@ -284,7 +284,7 @@ cat ips.txt
 
 ```azurepowershell-interactive
 # Use Resource Graph  with the $nics variable to get all related public IP addresses and store in $ips variable
-$ips = Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/networkInterfaces' | where id in ('$($nics.nic -join "','")') | project publicIp = tostring(properties['ipConfigurations'][0]['properties']['publicIPAddress']['id']) | where isnotempty(publicIp) | distinct publicIp"
+$ips = (Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/networkInterfaces' | where id in ('$($nics.nic -join "','")') | project publicIp = tostring(properties['ipConfigurations'][0]['properties']['publicIPAddress']['id']) | where isnotempty(publicIp) | distinct publicIp").Data
 
 # Review the output of the query stored in the variable
 $ips.publicIp
@@ -299,7 +299,7 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresse
 
 ```azurepowershell-interactive
 # Use Resource Graph with the $ips variable to get the IP address of the public IP address resources
-Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
+(Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip").Data | ConvertTo-Json
 ```
 
 `join` 演算子を使用して 1 つのクエリでこれらの手順を行う方法については、[仮想マシン、ネットワーク インターフェイス、パブリック IP を一覧表示するサンプル](../samples/advanced.md#join-vmpip)を参照してください。

@@ -4,28 +4,27 @@ description: Azure Marketplace に公開されたオファーのすべての使�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: 765f4f358d593cd5fcc021fbf4ec2276c422c4d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 10/11/2021
+ms.openlocfilehash: 767b25e6578c051b4d4e7ea0a95d927be29db5c7
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555127"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724959"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [使用量] ダッシュボード
 
 この記事では、パートナー センターの 使用量 ダッシュボードについて説明します。 このダッシュボードには、すべての仮想マシン (VM) オファーの正規化された使用状況、未調整の使用状況、従量制課金メトリックが 3 つのタブに表示されます。VM の正規化された使用状況、VM の未調整の使用状況、従量制課金使用量です。
 
-パートナー センターの [使用状況] ダッシュボードにアクセスするには、**コマーシャル マーケットプレース** で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[使用状況]** を選択します。
-
 >[!NOTE]
-> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。
 
 ## <a name="usage-dashboard"></a>[使用状況] ダッシュボード
 
-**[分析]** メニューの **[使用状況]** ダッシュボードには、すべてのサービスとしてのソフトウェア (SaaS) オファーの現在の注文が表示されます。 次の項目のグラフィカル表示を見ることができます。
+<bpt id="p1">[</bpt>[使用状況] ダッシュボード<ept id="p1">](https://go.microsoft.com/fwlink/?linkid=2166106)</ept>には、すべてのサービスとしてのソフトウェア (SaaS) オファーの現在の注文が表示されます。 次の項目のグラフィカル表示を見ることができます。
 
 - 使用状況の傾向
 - オファー別の正規化された使用状況
@@ -37,15 +36,45 @@ ms.locfileid: "102555127"
 > [!NOTE]
 > 使用状況イベントの生成からパートナー センターで報告されるまでの最大待ち時間は、48 時間です。
 
+## <a name="access-the-usage-dashboard"></a>使用状況ダッシュボードにアクセスする
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. ホーム ページで、 **[分析情報]** タイルを選択します。
+
+    [ ![パートナー センター ホーム ページの [分析情報] タイルの画像。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 左側のメニューで、 **[使用]** を選択します。
+
+#### <a name="current-view"></a><bpt id="p1">[</bpt>現在のビュー<ept id="p1">](#tab/current-view)</ept>
+
+1. <bpt id="p1">[</bpt>パートナー センター<ept id="p1">](https://partner.microsoft.com/dashboard/home)</ept>にサインインします。
+1. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[分析]**  >  **[使用状況]** を選択します。
+
+---
+
 ## <a name="elements-of-the-usage-dashboard"></a>[使用状況] ダッシュボードの要素
 
 次のセクションでは、[使用状況] ダッシュボードの使用方法とデータの読み取り方法について説明します。
 
 ### <a name="month-range"></a>月範囲
 
-各ページの右上隅には、月範囲の選択が表示されます。 過去 6 か月または 12 か月を基準として月範囲を選択するか、カスタムの月範囲 (最大 12 か月間) を選択して、 **[使用状況]** ページのグラフの出力をカスタマイズします。 既定の月範囲 (計算期間) は 6 か月です。
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
 
-:::image type="content" source="./media/usage-dashboard/month-filter.png" alt-text="[使用状況] ダッシュボードの月フィルターの画像。":::
+各ページの右上隅には、月範囲の選択が表示されます。 過去 6 か月または 12 か月を基準として月範囲を選択するか、カスタムの月範囲 (最大 12 か月間) を選択して、 <bpt id="p1">**</bpt>[使用状況]<ept id="p1">**</ept> ページのグラフの出力をカスタマイズします。 既定の月範囲 (計算期間) は 6 か月です。
+
+[ ![[使用状況] ダッシュボードの月フィルターの画像。](./media/usage-dashboard/usage-dashboard-filters.png) ](./media/usage-dashboard/usage-dashboard-filters.png#lightbox)
+
+#### <a name="current-view"></a><bpt id="p1">[</bpt>現在のビュー<ept id="p1">](#tab/current-view)</ept>
+
+各ページの右上隅には、月範囲の選択が表示されます。 過去 6 か月または 12 か月を基準として月範囲を選択するか、カスタムの月範囲 (最大 12 か月間) を選択して、 <bpt id="p1">**</bpt>[使用状況]<ept id="p1">**</ept> ページのグラフの出力をカスタマイズします。 既定の月範囲 (計算期間) は 6 か月です。
+
+<bpt id="p1">:::image type="content" source="./media/usage-dashboard/month-filter.png" alt-text="</bpt>[使用状況] ダッシュボードの月フィルターの画像。<ept id=&quot;p1&quot;>":::</ept>
+
+---
 
 ### <a name="usage-trend"></a>使用状況の傾向
 
@@ -56,48 +85,48 @@ ms.locfileid: "102555127"
 - 正規化された使用時間は、VM コアの数を考慮するように正規化された使用時間として定義されます ([VM コアの数] x [未調整の使用時間])。 VM は "SHAREDCORE" として指定され、[VM コアの数] の乗数として 1/6 (または 0.1666) を使用します。
 - 未調整の使用時間は、VM が実行されている時間量 (時間数単位) として定義されます。
 
-[![[使用状況] ダッシュボードの正規化された使用状況および未調整の使用状況データの画像。](./media/usage-dashboard/normalized-usage.png)](./media/usage-dashboard/normalized-usage.png#lightbox)
+<bpt id="p1">[</bpt><ph id="ph1">![</ph>[使用状況] ダッシュボードの正規化された使用状況および未調整の使用状況データの画像。<ept id="p1">](./media/usage-dashboard/normalized-usage.png)](./media/usage-dashboard/normalized-usage.png#lightbox)</ept>
 
 ### <a name="normalized-usage-by-offers"></a>オファー別の正規化された使用状況
 
 このセクションでは、Azure Marketplace の使用状況ベースのオファーの総使用時間と傾向を確認します。 オファー別の正規化された使用状況は、以下のとおりです。
 
-- **オファー別の正規化された使用状況** の積み上げ縦棒グラフには、選択された計算範囲に従って上位 5 個のオファーの正規化された使用時間の内訳が表示されます。 上位 5 個のオファーがグラフに表示され、残りは **[残りすべて]** カテゴリにグループ化されます。
+- <bpt id="p1">**</bpt>オファー別の正規化された使用状況<ept id="p1">**</ept>の積み上げ縦棒グラフには、選択された計算範囲に従って上位 5 個のオファーの正規化された使用時間の内訳が表示されます。 上位 5 個のオファーがグラフに表示され、残りは <bpt id="p1">**</bpt>[残りすべて]<ept id="p1">**</ept> カテゴリにグループ化されます。
 - 積み上げ縦棒グラフは、選択した日付範囲の月ごとの増加傾向を示します。 [Month]\(月\) 列は、それぞれの月で使用時間が最も多いオファーの使用時間を示しています。 折れ線グラフでは、増加率の傾向を 2 番目の Y 軸にプロットして示します。
 - 凡例で特定のオファーを選択し、それらのオファーのみをグラフに表示することができます。
 
-:::image type="content" source="./media/usage-dashboard/normalized-usage-offers.png" alt-text="[使用状況] ダッシュボードの正規化された使用状況オファー データの画像。":::
+<bpt id="p1">:::image type="content" source="./media/usage-dashboard/normalized-usage-offers.png" alt-text="</bpt>[使用状況] ダッシュボードの正規化された使用状況オファー データの画像。<ept id=&quot;p1&quot;>":::</ept>
 
 オファーを選択し、そのオファーの SKU を最大 3 つ選択して、オファーと選択した SKU の月ごとの使用状況傾向を表示できます。
 
-:::image type="content" source="./media/usage-dashboard/normalized-usage-offers-sku.png" alt-text="[使用状況] ダッシュボードの正規化された使用状況オファーおよび SKU データの画像。":::
+<bpt id="p1">:::image type="content" source="./media/usage-dashboard/normalized-usage-offers-sku.png" alt-text="</bpt>[使用状況] ダッシュボードの正規化された使用状況オファーおよび SKU データの画像。<ept id=&quot;p1&quot;>":::</ept>
 
 ### <a name="orders-by-offers-and-skus"></a>オファーと SKU ごとの注文
 
-**オファーと SKU ごとの注文** グラフには、すべてのオファーのメジャーと傾向が示されます。 次のことを考慮してください。
+<bpt id="p1">**</bpt>オファーと SKU ごとの注文<ept id="p1">**</ept>グラフには、すべてのオファーのメジャーと傾向が示されます。 次のことを考慮してください。
 
-- 上位のオファーがグラフに表示され、残りのオファーは **[残りすべて]** としてグループ化されます。
+- 上位のオファーがグラフに表示され、残りのオファーは <bpt id="p1">**</bpt>[残りすべて]<ept id="p1">**</ept> としてグループ化されます。
 - 凡例で特定のオファーを選択し、それらのオファーのみをグラフに表示することができます。
 - グラフのスライスにポインターを合わせると、注文数とそのオファーの割合が、すべてのオファーの合計注文数と比較して表示されます。
-- **オファーごとの注文の傾向** には、月単位での増加傾向が表示されます。 月の列はオファー名別の注文数を表します。 折れ線グラフには、増加率の傾向が Z 軸にプロットされて表示されます。
+- <bpt id="p1">**</bpt>オファーごとの注文の傾向<ept id="p1">**</ept>には、月単位での増加傾向が表示されます。 月の列はオファー名別の注文数を表します。 折れ線グラフには、増加率の傾向が Z 軸にプロットされて表示されます。
 
-:::image type="content" source="./media/usage-dashboard/orders-by-offers-and-skus.png" alt-text="[使用状況] ダッシュボードのオファーと SKU ごとの注文グラフの画像。":::
+<bpt id="p1">:::image type="content" source="./media/usage-dashboard/orders-by-offers-and-skus.png" alt-text="</bpt>[使用状況] ダッシュボードのオファーと SKU ごとの注文グラフの画像。<ept id=&quot;p1&quot;>":::</ept>
 
 オファーを選択し、そのオファーの SKU を最大 3 つ選択して、オファー、SKU、およびシートの月ごとの傾向を表示できます。
 
-:::image type="content" source="./media/usage-dashboard/orders-by-offers-and-skus-2.png" alt-text="[使用状況] ダッシュボードのオファーと SKU ごとの注文グラフの画像。オファーの傾向、SKU の傾向、およびシートの傾向が表示されています。":::
+<bpt id="p1">:::image type="content" source="./media/usage-dashboard/orders-by-offers-and-skus-2.png" alt-text="</bpt>[使用状況] ダッシュボードのオファーと SKU ごとの注文グラフの画像。オファーの傾向、SKU の傾向、およびシートの傾向が表示されています。<ept id=&quot;p1&quot;>":::</ept>
 
 #### <a name="normalized-usage-by-other-dimensions-vm-size-sales-channels-and-offer-type"></a>他のディメンションによる正規化された使用状況:VM サイズ、販売チャネル、オファーの種類
 
 ディメンションには、3 つのタブがあります。VM サイズ、販売チャネル、オファーの種類です。 これらの各ディメンションに対して、使用状況メトリックおよび月ごとの傾向を確認できます。
 
-:::image type="content" source="./media/usage-dashboard/normalized-usage-other-dimensions.png" alt-text="[使用状況] ダッシュボードの正規化された使用状況のその他のディメンション グラフの画像。":::
+<bpt id="p1">:::image type="content" source="./media/usage-dashboard/normalized-usage-other-dimensions.png" alt-text="</bpt>[使用状況] ダッシュボードの正規化された使用状況のその他のディメンション グラフの画像。<ept id=&quot;p1&quot;>":::</ept>
 
 ### <a name="usage-by-geography"></a>地域ごとの使用量
 
 選択した計算期間について、ヒートマップは地域ディメンションに対する総使用量を表示します。 マップ上の明るい色は顧客数が少ないことを表し、暗い色は顧客数が多いことを表します。 テーブル内のレコードを選択すると、1 つの国や地域が拡大されます。
 
-:::image type="content" source="./media/usage-dashboard/normalized-usage-country.png" alt-text="[使用状況] ダッシュボードの正規化された使用状況の国グラフの画像。":::
+<bpt id="p1">:::image type="content" source="./media/usage-dashboard/normalized-usage-country.png" alt-text="</bpt>[使用状況] ダッシュボードの正規化された使用状況の国グラフの画像。<ept id=&quot;p1&quot;>":::</ept>
 
 次のことを考慮してください。
 
@@ -108,12 +137,12 @@ ms.locfileid: "102555127"
 
 ### <a name="usage-details-table"></a>使用状況の詳細テーブル
 
-**使用状況の詳細** テーブルには、上位 1,000 個の使用状況レコードの番号付きリストが使用量順に表示されます。 次のことを考慮してください。
+<bpt id="p1">**</bpt>使用状況の詳細<ept id="p1">**</ept>テーブルには、上位 1,000 個の使用状況レコードの番号付きリストが使用量順に表示されます。 次のことを考慮してください。
 
 - グリッドの各列で並べ替えることができます。
 - レコード数が 1,000 未満の場合、.TSV または .CSV ファイルにデータを抽出できます。
 - レコード数が 1,000 を超える場合は、エクスポート データがダウンロード ページに非同期で配置され、今後 30 日間使用可能になります。
-- 関心のあるデータのみを表示するには、**詳細な使用状況データ** にフィルターを適用します。 国/地域、販売チャネル、Marketplace のライセンスの種類、使用法の種類、オファーの名前、オファーの種類、無料評価版、Marketplace のサブスクリプション ID、顧客 ID、および会社名によって、データにフィルターを適用します。
+- 関心のあるデータのみを表示するには、<bpt id="p1">**</bpt>詳細な使用状況データ<ept id="p1">**</ept>にフィルターを適用します。 国/地域、販売チャネル、Marketplace のライセンスの種類、使用法の種類、オファーの名前、オファーの種類、無料評価版、Marketplace のサブスクリプション ID、顧客 ID、および会社名によって、データにフィルターを適用します。
 
 _**表 1: データ用語の辞書**_
 
@@ -122,7 +151,7 @@ _**表 1: データ用語の辞書**_
 | Marketplace サブスクリプション ID | Marketplace サブスクリプション ID | 顧客がコマーシャル マーケットプレース オファーを購入するときに使用した Azure サブスクリプションに関連付けられている一意識別子。 ID は以前は Azure サブスクリプション GUID でした。 | MarketplaceSubscriptionId |
 | MonthStartDate | 月の開始日 | 月の開始日は、購入の月を表します。 | MonthStartDate |
 | プランの種類 | プランの種類 | コマーシャル マーケットプレース オファリングの種類。 | OfferType |
-| Azure ライセンスの種類 | Azure ライセンスの種類 | Azure を購入した顧客が使用するライセンス契約の種類。 チャネルとも呼ばれます。 設定できる値は次のとおりです。<ui><li>クラウド ソリューション プロバイダー</li><li>エンタープライズ</li><li>リセラーを通じたエンタープライズ</li><li>従量課金制</li></ul> | AzureLicenseType |
+| Azure ライセンスの種類 | Azure ライセンスの種類 | Azure を購入した顧客が使用するライセンス契約の種類。 チャネルとも呼ばれます。 設定できる値は次のとおりです。<ul><li>クラウド ソリューション プロバイダー</li><li>エンタープライズ</li><li>リセラーを通じたエンタープライズ</li><li>従量課金制</li></ul> | AzureLicenseType |
 | Marketplace ライセンスの種類 | Marketplace ライセンスの種類 | コマーシャル マーケットプレース オファーの課金方法。 設定できる値は次のとおりです。<ul><li>Azure から請求</li><li>ライセンス持ち込み</li><li>Free</li><li>Microsoft がリセラー</li></ul> | MarketplaceLicenseType |
 | SKU | SKU | オファーに関連付けられたプラン。 | SKU |
 | 顧客の国 | 顧客の国および地域 | 顧客が指定した国や地域の名前。 国または地域は、顧客の Azure サブスクリプションの国またはリージョン地域とは異なる場合があります。 | CustomerCountry |
@@ -155,11 +184,20 @@ _**表 1: データ用語の辞書**_
 | RawUsage | 生の使用 | 顧客によってデプロイされた資産によって消費された生の総使用量単位。<br>未調整の使用時間は、VM が実行されている時間量 (使用量単位) として定義されます。 | RawUsage |
 | 見積拡張価格 (CC) | 顧客通貨での推定の拡張料金 | 使用量に関連する料金を示します。 この列は、価格 (CC) と使用数量の積です。 | EstimatedExtendedChargeCC |
 | 見積拡張価格 (PC) | 支払い通貨での推定の拡張料金 | 使用量に関連する料金を示します。 この列は、推定価格 (PC) と使用数量の積です。 | EstimatedExtended ChargePC |
+| Meter Id | Meter Id | オファーの測定 ID を示します。 | MeterId |
+| パートナー センターで検出された異常 | パートナー センターで検出された異常 | <bpt id="p1">**</bpt>カスタム測定ディメンションを持つオファーに適用されます<ept id="p1">**</ept>。<br>公開元が、パートナー センターで異常としてフラグが立てられたオファーのカスタム測定ディメンションの超過分の使用量を報告したかどうかを示します。値は次のとおりです。 <ul><li>0 (異常ではない)</li><li>1 (異常)</li></ul><bpt id="p1">_</bpt>公開元にカスタム測定ディメンションを持つオファーがない場合、プログラムによるアクセスによってこの列をエクスポートすると、値は null になります。<ept id="p1">_</ept> | PartnerCenterDetectedAnomaly |
+| 公開元によってマークされた異常 | 公開元によってマークされた異常 | <bpt id="p1">**</bpt>カスタム測定ディメンションを持つオファーに適用されます<ept id="p1">**</ept>。<br>公開元が、オファーのカスタム測定ディメンションの顧客による超過分の使用量を正規または誤りのどちらとして認めたかどうかを示します。 指定できる値は、<ul><li>0 (公開元が異常ではないとマークしています)</li><li>1 (公開元が異常としてマークしています)</li></ul><bpt id="p1">_</bpt>公開元にカスタム測定ディメンションを持つオファーがない場合、プログラムによるアクセスによってこの列をエクスポートすると、値は null になります。<ept id="p1">_</ept> | PublisherMarkedAnomaly |
+| 報告された新しい使用状況 | 報告された新しい使用状況 | <bpt id="p1">**</bpt>カスタム測定ディメンションを持つオファーに適用されます<ept id="p1">**</ept>。<br>公開元によって異常と認識されたオファーのカスタム測定ディメンションの、顧客による超過分の使用量。 このフィールドは、公開元によって報告された新規の超過分の使用量を指定します。<br><bpt id="p1">_</bpt>公開元にカスタム測定ディメンションを持つオファーがない場合、プログラムによるアクセスによってこの列をエクスポートすると、値は null になります。<ept id="p1">_</ept> | NewReportedUsage |
+| 実行した操作 | 実行した操作 | <bpt id="p1">**</bpt>カスタム測定ディメンションを持つオファーに適用されます<ept id="p1">**</ept>。<br>公開元が、オファーのカスタム測定ディメンションの顧客による超過分の使用量を正規または誤りと認めた時間を指定します。<br><bpt id="p1">_</bpt>公開元にカスタム測定ディメンションを持つオファーがない場合、プログラムによるアクセスによってこの列をエクスポートすると、値は null になります。<ept id="p1">_</ept> | ActionTakenAt |
+| 操作の実行者 | 操作の実行者 | <bpt id="p1">**</bpt>カスタム測定ディメンションを持つオファーに適用されます<ept id="p1">**</ept>。<br>オファーのカスタム測定ディメンションの顧客による超過分の使用量を正規または誤りと認めたユーザーを指定します。<br><bpt id="p1">_</bpt>公開元にカスタム測定ディメンションを持つオファーがない場合、プログラムによるアクセスによってこの列をエクスポートすると、値は null になります。<ept id="p1">_</ept> | ActionTakenBy |
+| 推定される財務上の影響 (米国ドル) | 推定される財務上の影響 (米国ドル) | <bpt id="p1">**</bpt>カスタム測定ディメンションを持つオファーに適用されます<ept id="p1">**</ept>。<br>パートナー センターでオファーのカスタム測定ディメンションの顧客による超過分の使用量が異常としてフラグされた場合、このフィールドではこの異常な超過分の使用量による財務上の影響 (USD) の推定を指定します。<br><bpt id="p1">_</bpt>公開元がカスタム測定ディメンションを持つオファーを持っていない場合、プログラムによってこの列をエクスポートすると、値は null になります。<ept id="p1">_</ept> | EstimatedFinancialImpactUSD |
+| 資産 ID | 資産 ID | コマーシャル マーケットプレース サービスの顧客の注文の一意識別子。 仮想マシンの使用量ベースのプランは、注文に関連付けられていません。 | 資産 ID |
+| 該当なし | リソース ID | リソースの完全修飾 ID。リソース名とリソースの種類が含まれます。 これは、ダウンロード レポートでのみ使用できるデータ フィールドであることに注意してください。<br>次の形式を使用します。<br> /subscriptions/<GUID>/resourceGroups/<リソース グループ名>/<リソース プロバイダー名前空間>/<リソースの種類>/<リソース名><br>**注**: このフィールドは 2021 年 10 月 20 日に非推奨になります。 | 該当なし |
 |||||
 
 ### <a name="usage-page-filters"></a>使用量ページ フィルター
 
-**使用量** ページ フィルターは、注文ページ レベルで適用されます。 1 つ以上のフィルターを選択して、選択した表示条件に合うグラフを表示することや、使用量注文データのグリッドまたはエクスポートで目的のデータを表示することができます。 フィルターは、[使用量] ページの右上隅で選択した月範囲に対して抽出されたデータに適用されます。
+<bpt id="p1">**</bpt>使用量<ept id="p1">**</ept>ページ フィルターは、注文ページ レベルで適用されます。 1 つ以上のフィルターを選択して、選択した表示条件に合うグラフを表示することや、使用量注文データのグリッドまたはエクスポートで目的のデータを表示することができます。 フィルターは、[使用量] ページの右上隅で選択した月範囲に対して抽出されたデータに適用されます。
 
 VM の未調整の使用状況に関するウィジェットとエクスポート レポートは、VM の正規化された使用状況に似ていますが、次の違いがあります。
 
@@ -168,17 +206,17 @@ VM の未調整の使用状況に関するウィジェットとエクスポー�
 
 ### <a name="metered-billing-usage"></a>従量制課金使用量
 
-**[従量制課金使用量]** タブには、使用量が測定ディメンションごとに測定される、オファーの種類の使用量情報が表示されます。 SaaS オファーの種類の超過分が現在表示されています。 このタブには、SaaS の従量制課金使用量の超過分の傾向がグラフィックで表示されます。
+<bpt id="p1">**</bpt>[従量制課金使用量]<ept id="p1">**</ept> タブには、使用量が測定ディメンションごとに測定される、オファーの種類の使用量情報が表示されます。 SaaS オファーの種類の超過分が現在表示されています。 このタブには、SaaS の従量制課金使用量の超過分の傾向がグラフィックで表示されます。
 
-- **Overage trend by meter dimension (測定ディメンションごとの超過分の傾向)** :選択されたオファーの測定ディメンションに対する月単位の超過分の傾向を表示します。 X 軸は月を表し、Y 軸は超過分使用数量を表します。 カスタム測定の測定単位も、Y 軸に表示されます。
+- <bpt id="p1">**</bpt>Overage trend by meter dimension (測定ディメンションごとの超過分の傾向)<ept id="p1">**</ept> :選択されたオファーの測定ディメンションに対する月単位の超過分の傾向を表示します。 X 軸は月を表し、Y 軸は超過分使用数量を表します。 カスタム測定の測定単位も、Y 軸に表示されます。
 
-    :::image type="content" source="./media/usage-dashboard/metered-usage.png" alt-text="[使用状況] ダッシュボードの VM の正規化された使用状況のグラフの画像。":::
+    <bpt id="p1">:::image type="content" source="./media/usage-dashboard/metered-usage.png" alt-text="</bpt>[使用状況] ダッシュボードの VM の正規化された使用状況のグラフの画像。<ept id=&quot;p1&quot;>":::</ept>
 
-- **SKU ごとの超過分の傾向**:選択された測定ディメンションの使用数量の傾向を SKU またはプラン別に表します。 選択したオファーの使用量が最も多い上位 5 つのプランが表示されます。
+- <bpt id="p1">**</bpt>SKU ごとの超過分の傾向<ept id="p1">**</ept>:選択された測定ディメンションの使用数量の傾向を SKU またはプラン別に表します。 選択したオファーの使用量が最も多い上位 5 つのプランが表示されます。
 
-- **顧客ごとの超過分の傾向**:顧客リーダー ボードは、使用時間が最も多い顧客の積み上げリストを示します。"_リーダー ボード_" に表示され、カスタム メーターの最大使用量によって順位付けされます。 リーダー ボードで顧客を選択すると、選択した測定ディメンションの超過分使用量の傾向が表示されます。
+- <bpt id="p1">**</bpt>顧客ごとの超過分の傾向<ept id="p1">**</ept>:顧客リーダー ボードは、使用時間が最も多い顧客の積み上げリストを示します。"<bpt id="p2">_</bpt>リーダー ボード<ept id="p2">_</ept>" に表示され、カスタム メーターの最大使用量によって順位付けされます。 リーダー ボードで顧客を選択すると、選択した測定ディメンションの超過分使用量の傾向が表示されます。
 
-    :::image type="content" source="./media/usage-dashboard/metered-usage-by-customers.png" alt-text="[使用状況] ダッシュボードの顧客ごとの従量制課金使用量グラフの画像。":::
+    <bpt id="p1">:::image type="content" source="./media/usage-dashboard/metered-usage-by-customers.png" alt-text="</bpt>[使用状況] ダッシュボードの顧客ごとの従量制課金使用量グラフの画像。<ept id=&quot;p1&quot;>":::</ept>
 
 カスタム メーターを使用するオファーが複数ある場合、従量制課金の使用状況レポートには、カスタム メーター ディメンションに従って、すべてのオファーの使用状況に関する情報が表示されます。
 
@@ -187,10 +225,10 @@ VM の未調整の使用状況に関するウィジェットとエクスポー�
 
 ## <a name="next-steps"></a>次のステップ
 
-- コマーシャル マーケットプレースで利用可能な分析レポートの概要については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](./partner-center-portal/analytics.md)」を参照してください。
+- コマーシャル マーケットプレースで利用可能な分析レポートの概要については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](analytics.md)」を参照してください。
 - オファーのマーケットプレース アクティビティを要約した集計データのグラフ、傾向、値については、「[コマーシャル マーケットプレース分析の概要ダッシュボード](./summary-dashboard.md)」を参照してください。
-- グラフィカルでダウンロード可能な形式での注文の詳細については、「[コマーシャル マーケットプレース分析の [注文] ダッシュボード](./orders-dashboard.md)」を参照してください。
+- グラフィカルでダウンロード可能な形式での注文の詳細については、「<bpt id="p1">[</bpt>コマーシャル マーケットプレース分析の [注文] ダッシュボード<ept id="p1">](./orders-dashboard.md)</ept>」を参照してください。
 - 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](usage-dashboard.md)」を参照してください。
-- 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](./partner-center-portal/downloads-dashboard.md)」を参照してください。
-- Azure Marketplace と Microsoft AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[パートナー センターの評価とレビューの分析ダッシュボード](./partner-center-portal/ratings-reviews.md)」を参照してください。
-- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+- 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](downloads-dashboard.md)」を参照してください。
+- Azure Marketplace と Microsoft AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[パートナー センターの評価とレビューの分析ダッシュボード](ratings-reviews.md)」を参照してください。
+- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。

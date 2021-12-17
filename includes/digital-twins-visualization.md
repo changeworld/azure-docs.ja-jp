@@ -1,32 +1,21 @@
 ---
 author: baanders
-description: Azure Digital Twins のインクルード ファイル - Azure Digital Twins エクスプローラーを使用した視覚化
+description: Azure Digital Twins のインクルード ファイル - Azure Digital Twins Explorer を使用した視覚化
 ms.service: digital-twins
 ms.topic: include
-ms.date: 7/10/2020
+ms.date: 4/28/2021
 ms.author: baanders
-ms.openlocfilehash: 37bccbcd92f627fd45a7f786725afe5b2e475f3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 685a02b5001fc06e2bee2ba28f067fb9117614c9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94533883"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114437656"
 ---
 ## <a name="visualization"></a>グラフ
 
-自分の Azure Digital Twins インスタンスは主に、[API と SDK](../articles/digital-twins/how-to-use-apis-sdks.md) を使用して操作しますが、自分のインスタンスで作成しているツインとグラフの視覚化を確認できると便利な場合があります。
+**Azure Digital Twins Explorer** は、Azure Digital Twins グラフ内のデータを探索するためのビジュアル ツールです。 エクスプローラーを使用して、モデル、ツイン、リレーションシップを表示、クエリ、編集できます。
 
-[**Azure Digital Twins (ADT) エクスプローラー**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)は、Azure Digital Twins を視覚化して操作するためのサンプル アプリケーションです。 サンプルにある手順に従って、アプリケーション コードをダウンロードして実行します。 
+Azure Digital Twins Explorer ツールについて詳しくは、[Azure Digital Twins Explorer](../articles/digital-twins/concepts-azure-digital-twins-explorer.md) に関するページを参照してください。 その機能を使用する方法の詳細な手順については、[Azure Digital Twins Explorer を使用する](../articles/digital-twins/how-to-use-azure-digital-twins-explorer.md)に関するページを参照してください。
 
-このサンプルでは、他に作成および管理アクティビティがある中、ご自分のデジタル ツインとそれによって作成されるグラフを視覚的に表示できます。
-
-次に、視覚化の例を示します。
-
-:::image type="content" source="../articles/digital-twins/media/includes/azure-digital-twins-explorer.png" alt-text="デジタル ツインを表すノードのグラフを示す Azure Digital Twins エクスプローラーのサンプル アプリケーションのスクリーンショット" lightbox="../articles/digital-twins/media/includes/azure-digital-twins-explorer.png":::
-
-サンプルは次に使用できます。
-* モデルのアップロードおよび確認
-* ツイン グラフのアップロードと編集
-* さまざまなレイアウト手法を使用したツイン グラフの視覚化
-* ツインのプロパティの編集
-* ツイン グラフに対するクエリの実行
+視覚化は次のように表示されます。

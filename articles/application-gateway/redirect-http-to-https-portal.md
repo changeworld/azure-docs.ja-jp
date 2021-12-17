@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 67153fa750fee765dcaa1072eec87a2f6169b918
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5192a740667217741b20d6bd335ca5662f3fc6aa
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397282"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690605"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトするアプリケーション ゲートウェイを作成する
 
@@ -34,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
-実際の運用では、信頼できるプロバイダーによって署名された有効な証明書をインポートする必要があります。 このチュートリアルでは、[New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を使用して、自己署名証明書を作成します。 [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) と返されたサムプリントを使用して、pfx ファイルを証明書からエクスポートできます。
+実際の運用では、信頼できるプロバイダーによって署名された有効な証明書をインポートする必要があります。 このチュートリアルでは、[New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) を使用して、自己署名証明書を作成します。 [Export-PfxCertificate](/powershell/module/pki/export-pfxcertificate) と返されたサムプリントを使用して、pfx ファイルを証明書からエクスポートできます。
 
 ```powershell
 New-SelfSignedCertificate `
@@ -136,7 +137,7 @@ Export-PfxCertificate `
 3. 検索ボックスに、「*スケール セット*」と入力し、Enter キーを押します。
 4. **[仮想マシン スケール セット]** 、 **[作成]** の順に選択します。
 5. **[仮想マシン スケール セットの名前]** に、「*myvmss*」と入力します。
-6. オペレーティング システムのディスク イメージとして、** **[Windows Server 2016 Datacenter]** が確実に選択されているようにします。
+6. **[オペレーティング システムのディスク イメージ]** で、 **[Windows Server 2016 Datacenter]** が選択されていることを確認します。
 7. **[リソース グループ]** では、 **[myResourceGroupAG]** を選択します。
 8. **[ユーザー名]** では、「*azureuser*」と入力します。
 9. **[パスワード]** では、「*Azure123456!* 」と入力し、 パスワードを確認します。

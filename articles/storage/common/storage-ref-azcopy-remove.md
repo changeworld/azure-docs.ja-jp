@@ -4,16 +4,16 @@ description: この記事では、azcopy remove コマンドに関する参照�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 09/21/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d28a20a6afc78939491e56f46a32782b4c0844cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ea7c1afd57fa566f9dcc5f92760f8350b978783
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879005"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605413"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -30,7 +30,6 @@ azcopy remove [resourceURL] [flags]
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
 - [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
-- [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>例
 
@@ -41,7 +40,7 @@ azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[S
 ```
 
 SAS トークンを使用して仮想ディレクトリ全体を削除します。
- 
+
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
 ```
@@ -73,6 +72,7 @@ azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/d
     blob1
     blob2
 ```
+
 階層型名前空間がある BLOB ストレージ アカウントから 1 つのファイルを削除します (include/exclude はサポートされていません)。
 
 ```azcopy
@@ -89,11 +89,15 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--delete-snapshots** string   既定では、BLOB にスナップショットがある場合、削除操作は失敗します。 ルート BLOB とそのすべてのスナップショットを削除する場合は `include` を指定します。一方、スナップショットだけを削除し、ルート BLOB は保持する場合は `only` を指定します。
 
+**--dry-run**                   コマンドによって削除されるはずのパス ファイルを出力します。 このフラグでは、ファイルの削除はトリガーされません。
+
 **--exclude-path** string   削除時にこれらのパスを除外します。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します。 例: `myFolder;myFolder/subDirName/file.pdf`
 
 **--exclude-pattern** string   名前がパターンの一覧と一致するファイルを除外します。 例: `*.jpg`、`*.pdf`、`exactName`
 
 **--force-if-read-only**   Azure Files のファイルまたはフォルダーを削除するときに、既存のオブジェクトに読み取り専用属性が設定されている場合でも削除を強制的に実行します。
+
+**--from-to** string            必要に応じて、コピー元とコピー先の組み合わせを指定します。 例: BlobTrash、FileTrash、BlobFSTrash
 
 **--help**   remove のヘルプ。
 
@@ -101,9 +105,9 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--include-pattern** string  名前がパターンの一覧と一致するファイルをのみを含めます。 例: *`.jpg`、* `.pdf`、`exactName`
 
-**--list-of-files** string  削除するファイルとディレクトリの一覧を含むファイルの場所を定義します。 相対パスは改行で区切る必要があり、パスを URL エンコードすることはできません。 
+**--list-of-files** string  削除するファイルとディレクトリの一覧を含むファイルの場所を定義します。 相対パスは改行で区切る必要があり、パスを URL エンコードすることはできません。
 
-**--list-of-versions** string   各バージョン ID が個別の行に一覧表示されているファイルを指定します。 ソースが 1 つの BLOB をポイントしている必要があり、このフラグを使用してファイルで指定されたすべてのバージョン ID がソース BLOB のみに属している必要があることを確認します。 その特定の BLOB の指定されたバージョン ID は、Azure Storage から削除されます。 
+**--list-of-versions** string   各バージョン ID が個別の行に一覧表示されているファイルを指定します。 ソースが 1 つの BLOB を指している必要があり、このフラグを使用してファイルで指定されたすべてのバージョン ID がソース BLOB のみに属している必要があるため、これを徹底します。 その特定の BLOB の指定されたバージョン ID は、Azure Storage から削除されます。
 
 **--log-level** string   ログ ファイルのログ詳細度を定義します。 指定できるレベルには、`INFO` (すべての要求/応答)、`WARNING` (低速な応答)、`ERROR` (失敗した要求のみ)、`NONE` (出力ログなし) が含まれます。 (既定値は `INFO`) (既定値は `INFO`)
 

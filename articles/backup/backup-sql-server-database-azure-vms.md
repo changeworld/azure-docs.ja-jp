@@ -2,13 +2,16 @@
 title: コンテナーから複数の SQL Server VM をバックアップする
 description: この記事では、Recovery Services コンテナーから Azure Backup を使用して Azure 仮想マシン上の SQL Server データベースをバックアップする方法について説明します
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: c03b833be6c5e4c352125f31ad8c5ed072674b49
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 9cb45718d9e54e54d1154de5d3b19daeb707c52f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258471"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714506"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Recovery Services コンテナーから複数の SQL Server VM をバックアップする
 
@@ -30,10 +33,12 @@ SQL Server データベースをバックアップする前に、次の基準を
 
 1. SQL Server インスタンスをホストする VM として、同じリージョンおよびサブスクリプションの [Recovery Services コンテナー](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)を特定または作成する。
 1. VM が[ネットワーク接続](backup-sql-server-database-azure-vms.md#establish-network-connectivity)を備えていることを確認する。
+1. VM に [Azure 仮想マシン エージェント](../virtual-machines/extensions/agent-windows.md)がインストールされていることを確認します。
+1. VM に .NET 4.5.2 バージョン以降がインストールされていることを確認します。
 1. SQL Server データベースが、[Azure Backup のためのデータベースの命名に関するガイドライン](#database-naming-guidelines-for-azure-backup)に従っていることを確認する。
 1. SQL Server VM 名とリソース グループ名とを組み合わせた長さが、Azure Resource Manager VM の場合は 84 文字、クラシック VM の場合は 77 文字を超えないようにしてください。 この制限は、一部の文字がサービスによって予約されていることに起因します。
 1. データベースに対して有効になっているバックアップ ソリューションが他にないことをチェックする。 データベースをバックアップする前に、他のすべての SQL Server バックアップを無効にします。
-1. SQL Server 2008 R2 または SQL Server 2012 を使用している場合は、[こちら](https://support.microsoft.com/help/2697983/kb2697983-fix-an-incorrect-value-is-stored-in-the-time-zone-column-of)に記載されているバックアップのタイム ゾーンの問題が発生する場合があります。 上記のタイム ゾーンに関連する問題を回避するために、最新の累積的な更新プログラムを使用していることを確認してください。 Azure VM の SQL Server インスタンスに更新プログラムの適用が不可能な場合は、仮想マシン上のタイム ゾーンの夏時間 (DST) を無効にします。
+1. SQL Server 2008 R2 または SQL Server 2012 を使用している場合は、[こちら](https://support.microsoft.com/help/2697983/kb2697983-fix-an-incorrect-value-is-stored-in-the-time-zone-column-of)に記載されているバックアップのタイム ゾーンの問題が発生する場合があります。 上記のタイム ゾーンに関連する問題を回避するために、最新の累積的な更新プログラムを適用していることを確認してください。 Azure VM の SQL Server インスタンスに更新プログラムの適用が不可能な場合は、仮想マシン上のタイム ゾーンの夏時間 (DST) を無効にします。
 
 > [!NOTE]
 > Azure VM に対してだけでなく、VM 上で稼働している SQL Server データベースに対しても、競合を発生させることなく Azure Backup を有効にすることができます。
@@ -46,7 +51,7 @@ SQL Server データベースをバックアップする前に、次の基準を
 
 | **オプション**                        | **長所**                                               | **短所**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| プライベート エンドポイント                 | 仮想ネットワーク内のプライベート IP 経由でのバックアップを可能にする  <br><br>   ネットワークとコンテナーの側で詳細な制御を提供する | 標準のプライベート エンドポイント [コスト](https://azure.microsoft.com/pricing/details/private-link/)が発生する |
+| プライベート エンドポイント                 | 仮想ネットワーク内のプライベート IP 経由でのバックアップを可能にする  <br><br>   ネットワークとコンテナーの側で詳細な制御を提供する | 標準のプライベート エンドポイント <bpt id="p1">[</bpt>コスト<ept id="p1">](https://azure.microsoft.com/pricing/details/private-link/)</ept>が発生する |
 | NSG サービス タグ                  | 範囲の変更が自動的にマージされるため管理しやすい   <br><br>   追加のコストが発生しない | NSG でのみ使用可能  <br><br>    サービス全体へのアクセスを提供する |
 | Azure Firewall の FQDN タグ          | 必要な FQDN が自動的に管理されるため管理しやすい | Azure Firewall でのみ使用可能                         |
 | サービスの FQDN/IP へのアクセスを許可する | 追加のコストが発生しない   <br><br>  すべてのネットワーク セキュリティ アプライアンスとファイアウォールで動作する | 広範な IP または FQDN のセットへのアクセスが必要になる場合がある   |
@@ -56,17 +61,17 @@ SQL Server データベースをバックアップする前に、次の基準を
 
 #### <a name="private-endpoints"></a>プライベート エンドポイント
 
-プライベート エンドポイントを使用すると、仮想ネットワーク内のサーバーから Recovery Services コンテナーに安全に接続できます。 プライベート エンドポイントでは、お使いのコンテナーの VNET アドレス空間からの IP アドレスが使用されます。 仮想ネットワーク内のリソースとコンテナー間のネットワーク トラフィックは、仮想ネットワークと Microsoft のバックボーン ネットワーク上のプライベート リンクを経由します。 これにより、パブリック インターネットへの露出が排除されます。 [こちら](./private-endpoints.md)から、Azure Backup のプライベート エンドポイントの詳細を参照してください。
+プライベート エンドポイントを使用すると、仮想ネットワーク内のサーバーから Recovery Services コンテナーに安全に接続できます。 プライベート エンドポイントでは、お使いのコンテナーの VNET アドレス空間からの IP アドレスが使用されます。 仮想ネットワーク内のリソースとコンテナー間のネットワーク トラフィックは、仮想ネットワークと Microsoft のバックボーン ネットワーク上のプライベート リンクを経由します。 これにより、パブリック インターネットへの露出が排除されます。 <bpt id="p1">[</bpt>こちら<ept id="p1">](./private-endpoints.md)</ept>から、Azure Backup のプライベート エンドポイントの詳細を参照してください。
 
 #### <a name="nsg-tags"></a>NSG タグ
 
-ネットワーク セキュリティ グループ (NSG) を使用する場合は、*AzureBackup* サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、Azure AD (*AzureActiveDirectory*) および Azure Storage (*Storage*) に対して同様の [NSG 規則](../virtual-network/network-security-groups-overview.md#service-tags)を作成することによって、認証とデータ転送のための接続を許可する必要もあります。  次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
+ネットワーク セキュリティ グループ (NSG) を使用する場合は、<bpt id="p1">*</bpt>AzureBackup<ept id="p1">*</ept> サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、Azure AD (<bpt id="p2">*</bpt>AzureActiveDirectory<ept id="p2">*</ept>) および Azure Storage (<bpt id="p3">*</bpt>Storage<ept id="p3">*</ept>) に対して同様の <bpt id="p1">[</bpt>NSG 規則<ept id="p1">](../virtual-network/network-security-groups-overview.md#service-tags)</ept>を作成することによって、認証とデータ転送のための接続を許可する必要もあります。  次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
 
 1. **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
 
-1. **[設定]** で **[送信セキュリティ規則]** を選択します。
+1. <bpt id="p2">**</bpt>[設定]<ept id="p2">**</ept> で <bpt id="p1">**</bpt>[送信セキュリティ規則]<ept id="p1">**</ept> を選択します。
 
-1. **[追加]** を選択します。 [セキュリティ規則の設定](../virtual-network/manage-network-security-group.md#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が *[サービス タグ]* に、 **[宛先サービス タグ]** が *[AzureBackup]* に設定されていることを確認します。
+1. **[追加]** を選択します。 <bpt id="p1">[</bpt>セキュリティ規則の設定<ept id="p1">](../virtual-network/manage-network-security-group.md#security-rule-settings)</ept>の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション <bpt id="p1">**</bpt>[宛先]<ept id="p1">**</ept> が <bpt id="p2">*</bpt>[サービス タグ]<ept id="p2">*</ept> に、 <bpt id="p3">**</bpt>[宛先サービス タグ]<ept id="p3">**</ept> が <bpt id="p4">*</bpt>[AzureBackup]<ept id="p4">*</ept> に設定されていることを確認します。
 
 1. **[追加]** を選択して、新しく作成した送信セキュリティ規則を保存します。
 
@@ -74,11 +79,11 @@ Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、
 
 #### <a name="azure-firewall-tags"></a>Azure Firewall タグ
 
-Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQDN タグ](../firewall/fqdn-tags.md)を使用してアプリケーション規則を作成します。 これにより、Azure Backup へのすべての発信アクセスが許可されます。
+Azure Firewall を使用している場合は、<bpt id="p1">*</bpt>AzureBackup<ept id="p1">*</ept> <bpt id="p2">[</bpt>Azure Firewall FQDN タグ<ept id="p2">](../firewall/fqdn-tags.md)</ept>を使用してアプリケーション規則を作成します。 これにより、Azure Backup へのすべての発信アクセスが許可されます。
 
 #### <a name="allow-access-to-service-ip-ranges"></a>サービスの IP 範囲へのアクセスを許可する
 
-サービスの IP へのアクセスを許可することを選択した場合は、[こちら](https://www.microsoft.com/download/confirmation.aspx?id=56519)から利用可能な IP 範囲の JSON ファイルを参照してください。 Azure Backup、Azure Storage、および Azure Active Directory に対応する IP へのアクセスを許可する必要があります。
+サービスの IP へのアクセスを許可することを選択した場合は、<bpt id="p1">[</bpt>こちら<ept id="p1">](https://www.microsoft.com/download/confirmation.aspx?id=56519)</ept>から利用可能な IP 範囲の JSON ファイルを参照してください。 Azure Backup、Azure Storage、および Azure Active Directory に対応する IP へのアクセスを許可する必要があります。
 
 #### <a name="allow-access-to-service-fqdns"></a>サービスの FQDN へのアクセスを許可する
 
@@ -87,27 +92,34 @@ Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQ
 | サービス    | アクセスするドメイン名                             | ポート
 | -------------- | ------------------------------------------------------------ | ---
 | Azure Backup  | `*.backup.windowsazure.com`                             | 443
-| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` | 443
+| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` <br><br> `*.blob.storage.azure.net` | 443
 | Azure AD      | [この記事](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)に従って、セクション 56 および 59 の FQDN へのアクセスを許可します | 該当する場合
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>トラフィックをルーティングするために HTTP プロキシ サーバーを使用する
 
 Azure VM 上の SQL Server データベースをバックアップする場合、VM 上のバックアップ拡張機能によって HTTPS API が使用され、管理コマンドが Azure Backup に送信されてデータが Azure Storage に送信されます。 また、バックアップ拡張機能では、認証に Azure AD を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 必要なサービスへのアクセスを許可するには、上記で説明した IP と FQDN の一覧を使用します。 認証済みプロキシ サーバーはサポートされません。
 
+> [!NOTE]
+> VM 内の localhost 通信のプロキシを無効にします。 プロキシは、SQL VM からの送信方向の通信に使用されます。
+
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Azure Backup のためのデータベースの命名に関するガイドライン
 
-データベースの名前に次の要素を使用しないでください。
+- データベースの名前に次の要素を使用しないでください。
 
-* 末尾および先頭のスペース
-* 末尾の感嘆符 (!)
-* 終わり角かっこ (])
-* セミコロン ';'
-* スラッシュ '/'
+  - 末尾および先頭のスペース
+  - 末尾の感嘆符 (!)
+  - 終わり角かっこ (])
+  - セミコロン (;)
+  - スラッシュ (/)
 
-サポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 詳細については、「 [Table サービス データ モデルについて](/rest/api/storageservices/understanding-the-table-service-data-model)」を参照してください。
+- サポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 詳細については、「 [Table サービス データ モデルについて](/rest/api/storageservices/understanding-the-table-service-data-model)」を参照してください。
+
+- 同じ SQL インスタンス上の大文字と小文字が異なる複数のデータベースはサポートされません。
+
+-   保護の構成後の SQL データベースの大文字と小文字の変更はサポートされません。
 
 >[!NOTE]
->名前に "+" や "&" などの特殊文字が含まれるデータベースに対する **保護の構成** 操作はサポートされていません。 データベース名を変更するか、これらのデータベースを適切に保護できる **自動保護** を有効にできます。
+>名前に '+' や '&' などの特殊文字が含まれるデータベースに対する **保護の構成** 操作はサポートされていません。 データベース名を変更するか、これらのデータベースを適切に保護できる **自動保護** を有効にできます。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -115,19 +127,13 @@ Azure VM 上の SQL Server データベースをバックアップする場合�
 
 VM 上で稼働しているデータベースを検出する方法:
 
-1. [Azure portal](https://portal.azure.com) で、データベースをバックアップするために使用する Recovery Services コンテナーを開きます。
+1. [Azure portal](https://portal.azure.com) で、 **[バックアップ センター]** に移動し、 **[バックアップ]** をクリックします。
 
-2. **[Recovery Services コンテナー]** ダッシュボードで **[バックアップ]** を選択します。
+1. [データソースの種類] として **[Azure VM の SQL]** を選択し、作成した Recovery Services コンテナーを選択して、 **[続行]** をクリックします。
 
-   ![[バックアップ] を選択して [バックアップの目標] メニューを開く](./media/backup-azure-sql-database/open-backup-menu.png)
+   :::image type="content" source="./media/backup-azure-sql-database/configure-sql-backup.png" alt-text="[バックアップ] を選択して VM で実行されているデータベースを表示することを示すスクリーンショット。":::
 
-3. **[バックアップの目標]** で、 **[ワークロードはどこで実行されていますか?]** を **[Azure]** に設定します。
-
-4. **[何をバックアップしますか?]** で、 **[Azure VM 内の SQL Server]** を選択します。
-
-    ![バックアップ対象として [Azure VM 内の SQL Server] を選択する](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
-
-5. **[バックアップの目標]**  >  **[VM 内のデータベースを検出]** で、 **[検出の開始]** を選択して、サブスクリプション内にある保護されていない VM を検索します。 サブスクリプション内にある保護されていない VM の数によっては、この検索に少し時間がかかる場合があります。
+1. **[バックアップの目標]**  >  **[VM 内のデータベースを検出]** で、 **[検出の開始]** を選択して、サブスクリプション内にある保護されていない VM を検索します。 サブスクリプション内にある保護されていない VM の数によっては、この検索に少し時間がかかる場合があります。
 
    * 保護されていない VM は検出後、名前およびリソース グループ別に一覧に表示されます。
    * VM が予想どおりに一覧表示されない場合、それが既にコンテナーにバックアップされていないかを確認してください。
@@ -135,13 +141,13 @@ VM 上で稼働しているデータベースを検出する方法:
 
      ![VM 内にある DB の検索中はバックアップが保留される](./media/backup-azure-sql-database/discovering-sql-databases.png)
 
-6. VM の一覧で、SQL Server データベースを稼働している VM を選択し、 **[Discover DBs]\(DB の検出\)** を選択します。
+1. VM の一覧で、SQL Server データベースを稼働している VM を選択し、 **[Discover DBs]\(DB の検出\)** を選択します。
 
-7. **[通知]** でデータベース検出を追跡します。 この操作に必要な時間は、VM のデータベースの数によって異なります。 選択したデータベースが検出されたら、成功のメッセージが表示されます。
+1. **[通知]** でデータベース検出を追跡します。 この操作に必要な時間は、VM のデータベースの数によって異なります。 選択したデータベースが検出されたら、成功のメッセージが表示されます。
 
     ![デプロイの成功メッセージ](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-8. Azure Backup によって、VM 上のすべての SQL Server データベースが検出されます。 検出中、バックグラウンドで以下の要素が発生します。
+1. Azure Backup によって、VM 上のすべての SQL Server データベースが検出されます。 検出中、バックグラウンドで以下の要素が発生します。
 
     * Azure Backup によって、ワークロード バックアップ用のコンテナーに VM が登録されます。 登録された VM 上のすべてのデータベースは、このコンテナーのみに対してバックアップできます。
     * Azure Backup によって、AzureBackupWindowsWorkload 拡張機能が VM にインストールされます。 エージェントは SQL データベースにインストールされません。
@@ -202,21 +208,22 @@ VM 上で稼働しているデータベースを検出する方法:
 
 バックアップ ポリシーを作成するには:
 
-1. コンテナーで、 **[バックアップ ポリシー]**  >  **[追加]** の順に選択します。
-1. **[追加]** で、 **[Azure VM 内の SQL Server]** を選択してポリシーの種類を定義します。
+1. **[バックアップ センター]** に移動し、 **[ポリシー]** をクリックします。
 
-   ![新しいバックアップ ポリシーのポリシーの種類を選択する](./media/backup-azure-sql-database/policy-type-details.png)
+1. [データソースの種類] として **[Azure VM の SQL Server]** を選択し、ポリシーを作成するコンテナーを選択して、 **[続行]** をクリックします。
+
+   :::image type="content" source="./media/backup-azure-sql-database/create-sql-policy.png" alt-text="新しいバックアップ ポリシーのポリシーの種類の選択を示すスクリーンショット。":::
 
 1. **[ポリシー名]** に新しいポリシーの名前を入力します。
 
-    ![ポリシー名を入力する](./media/backup-azure-sql-database/policy-name.png)
+   :::image type="content" source="./media/backup-azure-sql-database/sql-policy-summary.png" alt-text="ポリシー名の入力を示すスクリーンショット。":::
 
 1. 既定の設定を変更するには、 **[完全バックアップ]** に対応する **[編集]** リンクを選択します。
 
    * **[バックアップ頻度]** を選択します。 **[毎日]** または **[毎週]** を選択します。
    * **[毎日]** を選択する場合は、バックアップ ジョブが開始されるときに、時刻とタイム ゾーンを選択します。 日次の完全バックアップを選択する場合は、差分バックアップを作成できません。
 
-     ![バックアップ ポリシーの新しいフィールド](./media/backup-azure-sql-database/full-backup-policy.png)  
+   :::image type="content" source="./media/backup-azure-sql-database/sql-backup-schedule-inline.png" alt-text="新しいバックアップ ポリシーのフィールドを示すスクリーンショット。" lightbox="./media/backup-azure-sql-database/sql-backup-schedule-expanded.png":::
 
 1. **[リテンション期間]** では、すべてのオプションが既定で選択されています。 使用しないリテンション期間の制限を解除してから、使用する間隔を設定します。
 
@@ -225,7 +232,7 @@ VM 上で稼働しているデータベースを検出する方法:
     * 特定の曜日のバックアップがタグ付けされ、週次でのリテンション期間の範囲と週次でのリテンション期間の設定に基づいて保持されます。
     * 月次および年次のリテンション期間の範囲でも、同様の動作になります。
 
-       ![[リテンション期間] の間隔の設定](./media/backup-azure-sql-database/retention-range-interval.png)
+    :::image type="content" source="./media/backup-azure-sql-database/sql-retention-range-inline.png" alt-text="保有期間の範囲の設定を示すスクリーンショット。" lightbox="./media/backup-azure-sql-database/sql-retention-range-expanded.png":::
 
 1. **[OK]** を選択して、完全バックアップの設定を受け入れます。
 1. 既定の設定を変更するには、 **[差分バックアップ]** に対応する **[編集]** リンクを選択します。
@@ -233,9 +240,10 @@ VM 上で稼働しているデータベースを検出する方法:
     * **差分バックアップのポリシー** で、 **[有効]** を選択して頻度とリテンション期間の制御を開きます。
     * 差分バックアップは 1 日に 1 回のみトリガーできます。 完全バックアップと同じ日に差分バックアップをトリガーすることはできません。
     * 差分バックアップは、最大 180 日間保持できます。
+    * 差分バックアップの保有期間は、完全バックアップの保有期間よりも長くすることはできません (差分バックアップは復旧時に完全バックアップに依存しているため)。
     * マスター データベースでは、差分バックアップはサポートされていません。
 
-      ![差分バックアップ ポリシー](./media/backup-azure-sql-database/differential-backup-policy.png)
+    :::image type="content" source="./media/backup-azure-sql-database/sql-differential-backup-inline.png" alt-text="差分バックアップ ポリシーを示すスクリーンショット。" lightbox="./media/backup-azure-sql-database/sql-differential-backup-expanded.png":::
 
 1. 既定の設定を変更するには、 **[ログ バックアップ]** に対応する **[編集]** リンクを選択します
 
@@ -244,7 +252,7 @@ VM 上で稼働しているデータベースを検出する方法:
     * データベースが[単純復旧モデル](/sql/relational-databases/backup-restore/recovery-models-sql-server)である場合、そのデータベースのログ バックアップ スケジュールは一時停止されるため、ログ バックアップはトリガーされません。
     * データベースの復旧モデルが **[完全]** から **[単純]** に変更された場合、復旧モデルが変更されてから 24 時間以内にログ バックアップが一時停止されます。 同様に、復旧モデルが **[単純]** から変更された場合、データベースでログ バックアップがサポートされるようになったので、復旧モデルの変更から 24 時間以内にログ バックアップ スケジュールが有効になります。
 
-      ![ログ バックアップのポリシー](./media/backup-azure-sql-database/log-backup-policy.png)
+    :::image type="content" source="./media/backup-azure-sql-database/sql-log-backup-inline.png" alt-text="バックアップ ポリシーを示すスクリーンショット。" lightbox="./media/backup-azure-sql-database/sql-log-backup-expanded.png":::
 
 1. **[バックアップ ポリシー]** メニューで、 **[SQL バックアップの圧縮]** を有効にするかどうかを選択します。 既定では、このオプションは無効になっています。 有効にすると、圧縮されたバックアップストリームが SQL Server によって VDI に送信されます。 Azure Backup は、このコントロールの値に応じて、COMPRESSION / NO_COMPRESSION 句を使用して、インスタンス レベルの既定値をオーバーライドします。
 

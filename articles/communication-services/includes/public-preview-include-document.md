@@ -1,16 +1,16 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 03/10/2021
-ms.author: mikben
+ms.date: 06/30/2021
+ms.author: rifox
 ms.custom: private_preview
-ms.openlocfilehash: e8cd18fe854ae1cba7d902e0e63b591e98081409
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 68d67df596d8eabc5df4dfc180beef567a32e6e2
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961875"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "123078414"
 ---
 > [!IMPORTANT]
 > このドキュメントで説明されている機能は、現在、パブリック プレビュー段階にあります。

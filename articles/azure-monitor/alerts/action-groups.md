@@ -3,17 +3,17 @@ title: Azure Portal でのアクション グループの作成および管理
 description: Azure Portal でアクション グループを作成および管理する方法について説明します。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 04/07/2021
+ms.date: 10/18/2021
 ms.author: dukek
-ms.openlocfilehash: 7010e20b65142cf0ab85c29d6b22c925c977f1f8
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: af5742cc4b6c6fc218b1fd5597d5ff2c1e5ef3fd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104985"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440072"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
-アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
+アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 アクション グループは、アラートがトリガーされたことをユーザーに通知するために Azure Monitor、Service Health、Azure Advisor のアラートで使用されます。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
 
 この記事では、Azure Portal でアクション グループを作成および管理する方法について説明します。
 
@@ -24,6 +24,8 @@ ms.locfileid: "107104985"
 * **[詳細]** :*種類* によって異なる対応する詳細。
 
 Azure Resource Manager テンプレートを使用したアクション グループの構成に関する詳細については、「[アクション グループの Resource Manager テンプレート](./action-groups-create-resource-manager-template.md)」を参照してください。
+
+アクション グループは **グローバル** サービスです。したがって、特定の Azure リージョンンに依存することはありません。 クライアントからの要求は、どのリージョンのアクション グループ サービスでも処理できます。つまり、あるリージョンのサービスがダウンしても、トラフィックは自動的に他のリージョンによってルーティングされ、処理されます。 "*グローバル サービス*" であるため、クライアントは **ディザスター リカバリー** について心配する必要がありません。 
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Azure Portal を使用したアクション グループの作成
 
@@ -148,8 +150,27 @@ Azure mobile app の構成時にアカウント ID として使用するメー�
 
 アクション グループには、電子メールに関する限られた数のアクションを持つことができます。 [レート制限情報](./alerts-rate-limiting.md)の記事を参照してください。
 
+"*電子メールの ARM のロール*" を設定するときは、下の 3 つの条件が満たされていることを確認する必要があります。
+
+1. ロールに割り当てられているエンティティの種類は、"**ユーザー**" である必要があります。
+2. 割り当ては、**サブスクリプション** レベルで実行する必要があります。
+3. ユーザーは、**AAD プロファイル** に構成された電子メールを持っている必要があります。 
+
+> [!NOTE]
+> 顧客が新しい ARM ロールをサブスクリプションに追加してから通知の受信が開始されるまでに、最大で **24 時間** かかる場合があります。
+
+### <a name="event-hub-preview"></a>イベント ハブ (プレビュー)
+> [!NOTE]
+> イベントハブアクションの種類は、現在 *プレビュー* です。 プレビュー期間中に、機能の可用性がバグによって中断されている可能性があります。
+
+Event Hub アクションは、[Azure Event Hub](~/articles/event-hubs/event-hubs-about.md) に通知を発行します。 その後、イベントレシーバーからアラート通知ストリームをサブスクライブできます。
+
+現在、イベントハブのアクションは、 [Azure Resource Manager テンプレート](./action-groups-create-resource-manager-template.md)を使用してのみ定義できます。
+
 ### <a name="function"></a>機能
 [Azure Functions](../../azure-functions/functions-get-started.md) で既存の HTTP トリガー エンドポイントを呼び出します。 要求を処理するには、エンドポイントで HTTP POST 動詞を処理する必要があります。
+
+Function アクションを定義する際に、Function の httptrigger エンドポイントとアクセス キーがアクション定義に保存されます。 (例: `https://azfunctionurl.azurewebsites.net/api/httptrigger?code=this_is_access_key`)。 関数のアクセス キーを変更する場合は、アクション グループで Function アクションを削除してから再作成する必要があります。
 
 アクション グループには、限られた数の Function アクションを保持できます。
 
@@ -259,7 +280,7 @@ Write-Host $myApp.AppRoles
 アクション グループには、限られた数の SMS アクションを保持できます。
 
 > [!NOTE]
-> Azure portal アクション グループのユーザー インターフェイスで国/地域コードを選択できない場合、SMS はお住まいの国/地域ではサポートされていません。  国/地域コードが利用できない場合は、[ユーザーの声](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)でお住まいの国/地域を追加するように投票できます。 当面の回避策としては、お住まいの国/地域でサポートされているサードパーティの SMS プロバイダーに対して、アクション グループで Webhook を呼び出します。  
+> Azure portal アクション グループのユーザー インターフェイスで国/地域コードを選択できない場合、SMS はお住まいの国/地域ではサポートされていません。  国/地域コードが利用できない場合は、[ユーザーの声](https://feedback.azure.com/d365community/idea/e527eaa6-2025-ec11-b6e6-000d3a4f09d0)でお住まいの国/地域を追加するように投票できます。 当面の回避策としては、お住まいの国/地域でサポートされているサードパーティの SMS プロバイダーに対して、アクション グループで Webhook を呼び出します。  
 
 サポートされている国/地域における価格については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。
 
@@ -295,12 +316,14 @@ Write-Host $myApp.AppRoles
 | 351 | ポルトガル |
 | 1 | プエルトリコ |
 | 40 | ルーマニア |
+| 7  | ロシア  |
 | 65 | シンガポール |
 | 27 | 南アフリカ |
 | 82 | 韓国 |
 | 34 | スペイン |
 | 41 | スイス |
 | 886 | 台湾 |
+| 971 | UAE    |
 | 44 | イギリス |
 | 1 | アメリカ合衆国 |
 
@@ -310,7 +333,7 @@ Write-Host $myApp.AppRoles
 アクション グループには、限られた数の音声アクションを保持できます。
 
 > [!NOTE]
-> Azure portal アクション グループのユーザー インターフェイスで国/地域コードを選択できない場合、音声通話はお住まいの国/地域ではサポートされていません。 国/地域コードが利用できない場合は、[ユーザーの声](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)でお住まいの国/地域を追加するように投票できます。  当面の回避策としては、お住まいの国/地域でサポートされているサードパーティの音声通話プロバイダーに対して、アクション グループで Webhook を呼び出します。  
+> Azure portal アクション グループのユーザー インターフェイスで国/地域コードを選択できない場合、音声通話はお住まいの国/地域ではサポートされていません。 国/地域コードが利用できない場合は、[ユーザーの声](https://feedback.azure.com/d365community/idea/e527eaa6-2025-ec11-b6e6-000d3a4f09d0)でお住まいの国/地域を追加するように投票できます。  当面の回避策としては、お住まいの国/地域でサポートされているサードパーティの音声通話プロバイダーに対して、アクション グループで Webhook を呼び出します。  
 > 音声通知について Azure portal アクション グループで現在サポートされている国番号は +1 (米国) のみです。 
 
 サポートされている国/地域における価格については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。

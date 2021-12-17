@@ -10,9 +10,11 @@ ms.service: media-services ms.workload: ms.topic: conceptual ms.date:10/23/2020 
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-開発者は、Media Services の [REST API](/rest/api/media/) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API は、OpenAPI 仕様 (旧称 Swagger) に基づいています。
+開発者は、(.NET、Python、Node.js、Java、Go、Ruby) 用のクライアント ライブラリを使用して、REST API と対話し、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API は、OpenAPI 仕様 (旧称 Swagger) に基づいています。
 
 この記事では、Media Services v3 を使用して開発を行うときにエンティティと API に適用される規則について説明します。
+
+[!INCLUDE [warning-rest-api-retry-policy.md](./includes/warning-rest-api-retry-policy.md)]
 
 ## <a name="accessing-the-azure-media-services-api"></a>Azure Media Services API へのアクセス
 
@@ -51,12 +53,11 @@ Azure AD アプリを作成するためのアクセス許可を自分が持っ�
 ### <a name="samples"></a>サンプル
 
 Azure AD サービス プリンシパルを使った接続方法を示す次のサンプルを参照してください。
-
-* [REST を使用して接続する](setup-postman-rest-how-to.md)  
-* [Java を使用して接続する](configure-connect-java-howto.md)
 * [.NET を使用して接続する](configure-connect-dotnet-howto.md)
 * [Node.js を使用して接続する](configure-connect-nodejs-howto.md)
 * [Python を使用して接続する](configure-connect-python-howto.md)
+* [Java を使用して接続する](configure-connect-java-howto.md)
+* [REST を使用して接続する](setup-postman-rest-how-to.md)  
 
 ## <a name="naming-conventions"></a>名前付け規則
 
@@ -128,7 +129,7 @@ AMSE はオープン ソース プロジェクトであり、サポートはコ�
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、ページング
 
-[Azure Media Services エンティティのフィルター処理、順序付け、ページング](filter-order-page-entitites-how-to.md)に関するページを参照してください。
+[Azure Media Services エンティティのフィルター処理、順序付け、ページング](filter-order-page-entities-how-to.md)に関するページを参照してください。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 

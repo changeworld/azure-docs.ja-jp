@@ -7,19 +7,20 @@ ms.service: postgresql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/06/2021
-ms.openlocfilehash: 7526644e02b0ed4d0522ad00a27b691ece98754a
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 99fee3db3c970e71aa4a979113d7508ecad3bd1e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479238"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463708"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-postgresql---flexible-server"></a>クイックスタート: Azure CLI から Azure Database for PostgreSQL - フレキシブル サーバーに接続してクエリを実行する
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - フレキシブル サーバーは現在パブリック プレビュー段階です。
 
-このクイックスタートでは、Azure CLI と ```az postgres flexible-server connect``` コマンドを使用して Azure Database for PostgreSQL フレキシブル サーバーに接続する方法を紹介します。 このコマンドを使用すると、データベース サーバーとの接続をテストしたり、クエリを実行したりすることができます。 対話モードを使用して、複数のクエリを実行することもできます。 
+このクイックスタートでは、Azure CLI で ```az postgres flexible-server connect``` を使用して Azure Database for PostgreSQL フレキシブル サーバーに接続し、```az postgres flexible-server execute``` コマンドで単一のクエリまたは SQL ファイルを実行する方法を示します。 このコマンドを使用すると、データベース サーバーとの接続をテストしたり、クエリを実行したりすることができます。 対話モードを使用して、複数のクエリを実行することもできます。 
+
 
 ## <a name="prerequisites"></a>前提条件
 - Azure アカウント。 所有していない場合は、[無料試用版を入手](https://azure.microsoft.com/free/)してください。
@@ -67,16 +68,47 @@ Your preference of  are now saved to local context. To learn more, type in `az l
 - クライアント マシンにファイアウォール規則が構成されているかどうかを確認します。
 - 仮想ネットワークにプライベート アクセスを使用してサーバーを構成した場合、クライアント マシンが同じ仮想ネットワークに存在することを確認します。
 
+## <a name="run-multiple-queries-using-interactive-mode"></a>対話モードを使用して複数のクエリを実行する
+対話 (**interactive**) モードを使用して、複数のクエリを実行することができます。 対話モードを有効にするには、次のコマンドを実行します。
+
+```azurecli
+az postgres flexible-server connect -n <servername> -u <username> -p "<password>" -d <databasename>
+```
+
+**例:**
+
+```azurecli
+az postgres flexible-server connect -n postgresdemoserver -u dbuser -p "dbpassword" -d flexibleserverdb --interactive
+```
+
+次に示すように、**psql** シェルのエクスペリエンスが表示されます。
+
+```bash
+Command group 'postgres flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+Password for earthyTurtle7:
+Server: PostgreSQL 12.5
+Version: 3.0.0
+Chat: https://gitter.im/dbcli/pgcli
+Home: http://pgcli.com
+postgres> create database pollsdb;
+CREATE DATABASE
+Time: 0.308s
+postgres> exit
+Goodbye!
+Local context is turned on. Its information is saved in working directory C:\sunitha. You can run `az local-context off` to turn it off.
+Your preference of  are now saved to local context. To learn more, type in `az local-context --help`
+```
+
 ## <a name="run-single-query"></a>単一のクエリを実行する
 単一のクエリを実行するには、```--querytext``` 引数 (```-q```) を使用してコマンドを実行します。
 
 ```azurecli
-az postgres flexible-server connect -n <server-name> -u <username> -p "<password>" -d <database-name> -q "<query-text>"
+az postgres flexible-server execute -n <server-name> -u <username> -p "<password>" -d <database-name> -q "<query-text>"
 ```
 
 **例:** 
 ```azurecli
-az postgresql flexible-server connect -n postgresdemoserver -u dbuser -p "dbpassword" -d flexibleserverdb -q "select * from table1;" --output table
+az postgres flexible-server execute -n postgresdemoserver -u dbuser -p "dbpassword" -d flexibleserverdb -q "select * from table1;" --output table
 ```
 
 出力は次のようになります。
@@ -100,37 +132,26 @@ test   200
 test   200
 ```
 
-## <a name="run-multiple-queries-using-interactive-mode"></a>対話モードを使用して複数のクエリを実行する
-対話 (**interactive**) モードを使用して、複数のクエリを実行することができます。 対話モードを有効にするには、次のコマンドを実行します。
+## <a name="run-sql-file"></a>SQL ファイルを実行する
+SQL ファイルを実行するには、コマンドで ```--file-path``` 引数 (```-f```) を使用します。
 
 ```azurecli
-az postgres flexible-server connect -n <servername> -u <username> -p "<password>" -d <databasename>
+az postgres flexible-server execute -n <server-name> -u <username> -p "<password>" -d <database-name> --file-path "<file-path>"
 ```
 
-**例:**
-
+**例:** 
 ```azurecli
-az postgresql flexible-server connect -n postgresdemoserver -u dbuser -p "dbpassword" -d flexibleserverdb --interactive
+az postgres flexible-server execute -n postgresdemoserver -u dbuser -p "dbpassword" -d flexibleserverdb -f "./test.sql"
 ```
 
-次に示すように、**psql** シェルのエクスペリエンスが表示されます。
+出力は次のようになります。
 
-```bash
+```output
 Command group 'postgres flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-Password for earthyTurtle7:
-Server: PostgreSQL 12.5
-Version: 3.0.0
-Chat: https://gitter.im/dbcli/pgcli
-Home: http://pgcli.com
-postgres> create database pollsdb;
-CREATE DATABASE
-Time: 0.308s
-postgres> exit
-Goodbye!
-Local context is turned on. Its information is saved in working directory C:\sunitha. You can run `az local-context off` to turn it off.
-Your preference of  are now saved to local context. To learn more, type in `az local-context --help`
+Running sql file '.\test.sql'...
+Successfully executed the file.
+Closed the connection to postgresdemoserver.
 ```
-
 
 ## <a name="next-steps"></a>次の手順
 

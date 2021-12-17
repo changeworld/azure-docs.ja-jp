@@ -2,23 +2,23 @@
 title: Azure BLOB で AI を使用する C# チュートリアル
 titleSuffix: Azure Cognitive Search
 description: C# と Azure Cognitive Search .NET SDK を使用した、Blob Storage のコンテンツに対するテキスト抽出と自然言語処理の例を、順を追って説明します。
+author: gmndrg
+ms.author: gimondra
 manager: nitinme
-author: MarkHeff
-ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cbfa01788f1897264b4197798aa5879cf724db3
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: a50f367d39b990a6bf30cf4b7f85ad53b4d784b0
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104770956"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131891947"
 ---
 # <a name="tutorial-use-net-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル: .NET と AI を使用して Azure BLOB から検索可能なコンテンツを生成する
 
-Azure Blob Storage に非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオ向けに新しいコンテンツを作成することができます。 
+Azure Blob Storage に非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオ向けに新しいコンテンツを作成できます。 
 
 このチュートリアルでは、次の内容を学習します。
 
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="download-sample-data"></a>サンプル データをダウンロードする
 
-このサンプル データは、コンテンツの種類が異なる 14 個のファイルで構成されます。これらのファイルは、後続の手順で Azure Blob Storage にアップロードします。
+このサンプル データは、コンテンツの種類が異なる 14 個のファイルで構成されます。これらは、後続の手順で Azure Blob Storage にアップロードされます。
 
 1. こちらの [OneDrive フォルダー](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)を開き、左上隅の **[ダウンロード]** をクリックして、コンピューターにファイルをコピーします。 
 
@@ -297,7 +297,7 @@ SearchIndexerDataSourceConnection dataSource = CreateOrUpdateDataSource(indexerC
 
 * [テキスト分割](cognitive-search-skill-textsplit.md)。キー フレーズ抽出スキルとエンティティ認識スキルを呼び出す前に、大きいコンテンツを小さいチャンクに分割します。 キー フレーズ抽出およびエンティティ認識では、50,000 字以内の入力を受け取ります。 いくつかのサンプル ファイルは、分割してこの制限内に収める必要があります。
 
-* [エンティティの認識](cognitive-search-skill-entity-recognition.md)。BLOB コンテナーのコンテンツから組織の名前を抽出します。
+* [エンティティの認識](cognitive-search-skill-entity-recognition-v3.md)。BLOB コンテナーのコンテンツから組織の名前を抽出します。
 
 * [キー フレーズ抽出](cognitive-search-skill-keyphrases.md)。上位のキー フレーズを抜き出します。
 
@@ -309,7 +309,7 @@ SearchIndexerDataSourceConnection dataSource = CreateOrUpdateDataSource(indexerC
 
 ### <a name="ocr-skill"></a>OCR スキル
 
-**OCR** スキルはイメージからテキストを抽出します。 このスキルは、normalized-images フィールドが存在していることを前提としています。 このフィールドを生成するために、このチュートリアルの後半で、```"generateNormalizedImages"``` に対するインデクサー定義で ```"imageAction"``` 構成を設定します。
+[`OcrSkill`](/dotnet/api/azure.search.documents.indexes.models.ocrskill) は画像からテキストを抽出します。 このスキルは、normalized-images フィールドが存在していることを前提としています。 このフィールドを生成するために、このチュートリアルの後半で、```"generateNormalizedImages"``` に対するインデクサー定義で ```"imageAction"``` 構成を設定します。
 
 ```csharp
 private static OcrSkill CreateOcrSkill()
@@ -340,7 +340,7 @@ private static OcrSkill CreateOcrSkill()
 
 ### <a name="merge-skill"></a>マージ スキル
 
-このセクションでは、ドキュメント コンテンツ フィールドを、OCR スキルで生成されたテキストとマージする **マージ** スキルを作成します。
+このセクションでは、ドキュメント コンテンツ フィールドを、OCR スキルで生成されたテキストとマージする [`MergeSkill`](/dotnet/api/azure.search.documents.indexes.models.mergeskill) を作成します。
 
 ```csharp
 private static MergeSkill CreateMergeSkill()
@@ -379,7 +379,7 @@ private static MergeSkill CreateMergeSkill()
 
 ### <a name="language-detection-skill"></a>言語検出スキル
 
-**言語検出** スキルは、入力テキストの言語を検出し、要求で送信されたすべてのドキュメントごとに 1 つの言語コードを報告します。 **言語検出** スキルの出力を、**テキスト分割** スキルに対する入力の一部として使用します。
+[`LanguageDetectionSkill`](/dotnet/api/azure.search.documents.indexes.models.languagedetectionskill) は、入力テキストの言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 **言語検出** スキルの出力を、**テキスト分割** スキルに対する入力の一部として使用します。
 
 ```csharp
 private static LanguageDetectionSkill CreateLanguageDetectionSkill()
@@ -408,7 +408,7 @@ private static LanguageDetectionSkill CreateLanguageDetectionSkill()
 
 ### <a name="text-split-skill"></a>テキスト分割スキル
 
-以下の **分割** スキルは、ページごとにテキストを分割し、`String.Length` で測定してページ サイズを 4,000 文字に制限します。 このアルゴリズムは、テキストを最大でサイズが `maximumPageLength` のチャンクに分割しようとします。 この場合、アルゴリズムはできる限り文の境界で文を区切ろうとするため、チャンクのサイズは `maximumPageLength` よりも少し小さくなることがあります。
+下記の [`SplitSkill`](/dotnet/api/azure.search.documents.indexes.models.splitskill) は、ページごとにテキストを分割し、`String.Length` で測定してページ サイズを 4,000 文字に制限します。 このアルゴリズムは、テキストを最大でサイズが `maximumPageLength` のチャンクに分割しようとします。 この場合、アルゴリズムはできる限り文の境界で文を区切ろうとするため、チャンクのサイズは `maximumPageLength` よりも少し小さくなることがあります。
 
 ```csharp
 private static SplitSkill CreateSplitSkill()
@@ -444,7 +444,7 @@ private static SplitSkill CreateSplitSkill()
 
 ### <a name="entity-recognition-skill"></a>エンティティ認識スキル
 
-この `EntityRecognitionSkill` インスタンスは、カテゴリの種類 `organization` を認識するように設定されています。 **エンティティ認識** スキルでは、カテゴリの種類 `person` および `location` も認識できます。
+この `EntityRecognitionSkill` インスタンスは、カテゴリの種類 `organization` を認識するように設定されています。 [`EntityRecognitionSkill`](/dotnet/api/azure.search.documents.indexes.models.entityrecognitionskill) は、カテゴリの種類 `person` と `location` も認識できます。
 
 "context" フィールドが、アスタリスク付きで ```"/document/pages/*"``` に設定されていることに注目してください。これは、エンリッチメント ステップが ```"/document/pages"``` の下にある各ページごとに呼び出されることを意味します。
 
@@ -477,7 +477,7 @@ private static EntityRecognitionSkill CreateEntityRecognitionSkill()
 
 ### <a name="key-phrase-extraction-skill"></a>キー フレーズ抽出スキル
 
-先ほど作成した `EntityRecognitionSkill` インスタンスと同様に、**キー フレーズ抽出** スキルもドキュメントのページごとに呼び出されます。
+先ほど作成した `EntityRecognitionSkill` インスタンスと同様に、[`KeyPhraseExtractionSkill`](/dotnet/api/azure.search.documents.indexes.models.keyphraseextractionskill) もドキュメントのページごとに呼び出されます。
 
 ```csharp
 private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
@@ -511,7 +511,7 @@ private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
 
 ### <a name="build-and-create-the-skillset"></a>スキルセットを構築および作成する
 
-作成したスキルを使用して `Skillset` を構築します。
+作成したスキルを使用して [`SearchIndexerSkillset`](/dotnet/api/azure.search.documents.indexes.models.searchindexerskillset) を構築します。
 
 ```csharp
 private static SearchIndexerSkillset CreateOrUpdateDemoSkillSet(SearchIndexerClient indexerClient, IList<SearchIndexerSkill> skills,string cognitiveServicesKey)

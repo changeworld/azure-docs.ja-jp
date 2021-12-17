@@ -5,12 +5,13 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 74b808b941c00c9c47fbff31223274318ebeb2a0
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: dcfa748de4df7a51e665d020357357dfebf41ef5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169387"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348467"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Automation で変数を管理する
 
@@ -26,7 +27,7 @@ Automation 変数は、次のシナリオで役立ちます。
 
 Azure Automation では、変数が保存されるので、Runbook または DSC 構成が失敗した場合でも使用できます。 この動作により、ある Runbook または DSC 構成で設定した値を、別の Runbook で使用したり、次の実行時に同じ Runbook または DSC 構成で使用したりすることができます。
 
-Azure Automation では、暗号化された各変数を安全に保存します。 変数の作成時に、Azure Automation を使用して、セキュリティで保護された資産となるようにその変数の暗号化とストレージを指定できます。 変数を作成した後は、変数を再作成せずにその暗号化の状態を変更することはできません。 まだ暗号化されていない機密データが格納されている Automation アカウントの変数がある場合は、それらを削除し、暗号化された変数として再作成する必要があります。 Azure Security Center の推奨事項は、「[Automation アカウント変数は、暗号化する必要がある](../../security-center/recommendations-reference.md#recs-compute)」で説明されているように、すべての Azure Automation 変数を暗号化することです。 このセキュリティ推奨事項から除外する暗号化されていない変数がある場合は、「[推奨事項とセキュリティ スコアからリソースを除外する](../../security-center/exempt-resource.md)」を参照して、除外規則を作成してください。
+Azure Automation では、暗号化された各変数を安全に保存します。 変数の作成時に、Azure Automation を使用して、セキュリティで保護された資産となるようにその変数の暗号化とストレージを指定できます。 変数を作成した後は、変数を再作成せずにその暗号化の状態を変更することはできません。 まだ暗号化されていない機密データが格納されている Automation アカウントの変数がある場合は、それらを削除し、暗号化された変数として再作成する必要があります。 Microsoft Defender for Cloud の推奨事項は、「[Automation アカウント変数は、暗号化する必要がある](../../security-center/recommendations-reference.md#recs-compute)」で説明されているように、すべての Azure Automation 変数を暗号化することです。 このセキュリティ推奨事項から除外する暗号化されていない変数がある場合は、「[推奨事項とセキュリティ スコアからリソースを除外する](../../security-center/exempt-resource.md)」を参照して、除外規則を作成してください。
 
 >[!NOTE]
 >Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 Azure Automation では、キーはシステムによって管理される Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、Automation によって Key Vault からキーが読み込まれ、それを使用して資産が暗号化されます。
@@ -52,7 +53,7 @@ Azure portal を使用して、複合型の変数の値を作成したり変更�
 
 ## <a name="powershell-cmdlets-to-access-variables"></a>変数にアクセスするための PowerShell コマンドレット
 
-PowerShell を使用して Automation 変数を作成および管理するためのコマンドレットを次の表に示します。 これらは、[Az モジュール](modules.md#az-modules)の一部として出荷されます。
+PowerShell を使用して Automation 変数を作成および管理するためのコマンドレットを次の表に示します。 これらは、Az モジュールの一部として出荷されます。
 
 | コマンドレット | 説明 |
 |:---|:---|

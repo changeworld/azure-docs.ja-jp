@@ -1,18 +1,19 @@
 ---
 title: カスタマー マネージド キーを使用した Azure Data Factory の暗号化
 description: Bring Your Own Key (BYOK) を使用して Data Factory セキュリティを強化する
-author: chez-charlie
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
+ms.subservice: security
 ms.topic: quickstart
-ms.date: 05/08/2020
-ms.author: chez
+ms.date: 10/22/2021
 ms.reviewer: mariozi
-ms.openlocfilehash: a18d06e3a0324889a4cb9936fb339fd9d8f9b816
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: b2af772d4f61f933fc6801827233038f8c8919ad
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222695"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849335"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>カスタマー マネージド キーを使用した Azure Data Factory の暗号化
 
@@ -148,7 +149,7 @@ Data Factory の暗号化に使用するキーを変更するには、Data Facto
 
   :::image type="content" source="media/enable-customer-managed-key/07-include-in-template.png" alt-text="ARM テンプレートにカスタマー マネージド キーを含める設定のスクリーンショット。":::
 
-次の設定が ARM テンプレートに追加されます。 これらのプロパティは、[Azure Resource Manager のパラメーターの構成](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template)を編集することによって、継続的インテグレーションと継続的デリバリー パイプラインでパラメーター化できます
+次の設定が ARM テンプレートに追加されます。 これらのプロパティは、[Azure Resource Manager のパラメーターの構成](continuous-integration-delivery-resource-manager-custom-parameters.md)を編集することによって、継続的インテグレーションと継続的デリバリー パイプラインでパラメーター化できます
 
   :::image type="content" source="media/enable-customer-managed-key/08-template-with-customer-managed-key.png" alt-text="Azure Resource Manager テンプレートにカスタマー マネージド キーを含める設定のスクリーンショット。":::
 

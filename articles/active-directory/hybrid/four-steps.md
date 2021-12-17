@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 795f5ede382e561ee810e54e1f8897c5d806e8b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e06b908ed34f4edbdc85ab105a983cc32fbecc0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94412376"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305429"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -65,7 +65,7 @@ Active Directory フェデレーション サービス (ADFS) から Azure AD �
 
 ### <a name="enable-secure-remote-access-to-apps"></a>アプリへの安全なリモート アクセスを有効にする
 
-[Azure AD アプリケーション プロキシ](../manage-apps/what-is-application-proxy.md)には、安全な方法で内部アプリにアクセスする必要があるリモート ユーザーのために、組織がオンプレミス アプリをクラウドに発行するためのシンプルなソリューションが用意されています。 Azure AD にシングル サインオンした後、ユーザーは、外部の URL または内部アプリケーション ポータルから、クラウドとオンプレミス両方のアプリケーションにアクセスできます。
+[Azure AD アプリケーション プロキシ](../app-proxy/what-is-application-proxy.md)には、安全な方法で内部アプリにアクセスする必要があるリモート ユーザーのために、組織がオンプレミス アプリをクラウドに発行するためのシンプルなソリューションが用意されています。 Azure AD にシングル サインオンした後、ユーザーは、外部の URL または内部アプリケーション ポータルから、クラウドとオンプレミス両方のアプリケーションにアクセスできます。
 
 Azure AD アプリケーション プロキシには、次のような利点があります。
 
@@ -77,15 +77,15 @@ Azure AD アプリケーション プロキシには、次のような利点が�
 * クラウドとオンプレミスのデバイス、リソース、アプリ全体でのシングル サインオン (SSO)
 * 場所や時間を問わず、エンド ユーザーが生産性を高められるようにする
 
-### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Microsoft Cloud App Security を使ってシャドウ IT を検出する
+### <a name="discover-shadow-it-with-microsoft-defender-for-cloud-apps"></a>Microsoft Defender for Cloud Apps を使ってシャドウ IT を検出する
 
 現代の企業では、ユーザーが作業を行うために使用しているすべてのクラウド アプリケーションを IT 部門が認識していないことがよくあります。 IT 管理者は、従業員が使用しているクラウド アプリの数はどのくらいだと思うかと尋ねられたとき、平均で 30 または 40 と答えています。 実際には、平均 1,000 個を超える個別のアプリが組織内の従業員によって使用されています。 従業員の 80% が、誰も確認しておらず、セキュリティ ポリシーとコンプライアンス ポリシーに準拠していない未承認のアプリを使用しています。
 
-[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) は、ユーザーが SSO や条件付きアクセスなどの機能の恩恵を受けられるように、IT が承認してエンタープライズ アプリケーション ギャラリーに追加できる、ユーザーに人気のある便利なアプリを特定するのに役立ちます。
+[Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security) は、ユーザーが SSO や条件付きアクセスなどの機能のベネフィットを受けられるように、IT が承認してエンタープライズ アプリケーション ギャラリーに追加できる、ユーザーに人気のある便利なアプリを特定するのに役立ちます。
 
-<em>"**Cloud App Security** を使用すると、従業員が、Accenture を保護するのに役立つ基本的なセキュリティ ポリシーをサポートする方法でクラウドと SaaS のアプリケーションを正しく使用していることを確認できます。"</em> --- [Accenture 社、情報セキュリティ部門マネージング ディレクター、John Blasi 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>"**Defender for Cloud Apps** を使用すると、従業員が、Accenture を保護するのに役立つ基本的なセキュリティ ポリシーをサポートする方法でクラウドと SaaS のアプリケーションを正しく使用していることを確認できます。"</em> --- [Accenture 社、情報セキュリティ部門マネージング ディレクター、John Blasi 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-シャドウ IT を検出することに加え、MCAS は、アプリのリスク レベルを判別し、会社のデータへの未承認アクセス、データ漏洩の可能性、およびアプリケーションに固有のその他のセキュリティ リスクを防止することもできます。
+シャドウ IT を検出することに加え、Defender for Cloud Apps は、アプリのリスク レベルを判別し、会社のデータへの未承認アクセス、データ漏洩の可能性、およびアプリケーションに固有のその他のセキュリティ リスクを防止することもできます。
 
 ## <a name="step-2---establish-one-identity-for-every-user-automatically"></a>ステップ 2 - すべてのユーザーに対して 1 つの ID を自動的に確立する
 
@@ -117,7 +117,7 @@ Azure AD でオンプレミス ディレクトリ オブジェクトのクラウ
 
 PHS または PTA のどちらを選択する場合も、[シームレス シングル サインオン](./how-to-connect-sso.md)を忘れずに有効にしてください。これにより、社内のネットワークで Windows 7 と 8 のデバイスを使用しているときに、ユーザーがアプリにユーザー名とパスワードを繰り返し入力せずにクラウド アプリにアクセスできるようになります。 シングル サインオンを使用しない場合、ユーザーはアプリケーション固有のパスワードを覚えて、各アプリケーションにサインインする必要があります。 同様に、IT スタッフは、Microsoft 365、Box、Salesforce などのアプリケーションごとにユーザー アカウントを作成し、更新する必要があります。 ユーザーはパスワードを覚えておくことに加え、各アプリケーションにサインインするのに時間を費やす必要があります。 標準化されたシングル サインオンのメカニズムを社内全体に提供することは、最良のユーザー エクスペリエンス、リスクの削減、報告する能力、およびガバナンスにとって不可欠です。
 
-既に AD FS または別のオンプレミス認証プロバイダーを使用している組織では、ID プロバイダーを Azure AD に移行することで、複雑さが軽減されて、可用性が向上します。 フェデレーションを使用する具体的なユース ケースがない限りは、フェデレーション認証から、PHS とシームレス SSO または PTA とシームレス SSO のいずれかに移行して、オンプレミスのフットプリントの削減と、向上したユーザー エクスペリエンスと共にクラウドで提供される柔軟性の利点を得られるようにすることをお勧めします。 詳細については、「[Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する](./plan-migrate-adfs-password-hash-sync.md)」を参照してください。
+既に AD FS または別のオンプレミス認証プロバイダーを使用している組織では、ID プロバイダーを Azure AD に移行することで、複雑さが軽減されて、可用性が向上します。 フェデレーションを使用する具体的なユース ケースがない限りは、フェデレーション認証から、PHS とシームレス SSO または PTA とシームレス SSO のいずれかに移行して、オンプレミスのフットプリントの削減と、向上したユーザー エクスペリエンスと共にクラウドで提供される柔軟性の利点を得られるようにすることをお勧めします。 詳細については、「[Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する](./migrate-from-federation-to-cloud-authentication.md)」を参照してください。
 
 ### <a name="enable-automatic-deprovisioning-of-accounts"></a>アカウントの自動プロビジョニング解除を有効にする
 
@@ -204,13 +204,13 @@ SIEM ソリューションを持たない組織は、Azure AD 用の [Power BI �
 
 ### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>分析情報を活用するためにアプリの使用状況を監視する
 
-シャドウ IT を検出することに加え、[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) を使用して組織全体でアプリの使用状況を監視することは、組織が、クラウド アプリケーションの可能性をフルに活用するために移行するときに役立ちます。 これにより、アクティビティの可視性を高めて資産を制御し、クラウド アプリケーション全体で重要なデータの保護を強化できます。 MCAS を使って組織内のアプリの使用状況を監視することは、次の項目を確認するのに役立ちます。
+シャドウ IT を検出することに加え、[Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security) を使用して組織全体でアプリの使用状況を監視することは、組織が、クラウド アプリケーションの可能性をフルに活用するために移行するときに役立ちます。 これにより、アクティビティの可視性を高めて資産を制御し、クラウド アプリケーション全体で重要なデータの保護を強化できます。 Defender for Cloud Apps を使って組織内のアプリの使用状況を監視することは、次の項目を確認するのに役立ちます。
 
 * 従業員がどのような未承認アプリを使用してデータを格納しているか。
 * 機密データは、いつどこでクラウドに格納されているか。
 * 誰がクラウド内の機密データにアクセスしているか。
 
-*"Cloud App Security により、異常を素早く特定して、対策を講じることができます。"* --- [Accenture 社、情報セキュリティ部門シニア マネージャー、Eric LePenske 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*"Defender for Cloud Apps により、異常を素早く特定して、対策を講じることができます。"* --- [Accenture 社、情報セキュリティ部門シニア マネージャー、Eric LePenske 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 ## <a name="summary"></a>まとめ
 
@@ -234,7 +234,7 @@ SIEM ソリューションを持たない組織は、Azure AD 用の [Power BI �
 ||セルフサービスによるパスワードのリセット (SSPR) をグループでパイロット運用する|
 ||Azure AD Connect Health を使用してハイブリッド コンポーネントを監視する|
 ||操作に対して最小特権管理ロールを割り当てる|
-||Microsoft Cloud App Security を使ってシャドウ IT を検出する|
+||Microsoft Defender for Cloud Apps を使ってシャドウ IT を検出する|
 ||Azure Monitor を使って、分析用のデータ ログを収集する|
 
 ### <a name="next-two-weeks"></a>今後 2 週間

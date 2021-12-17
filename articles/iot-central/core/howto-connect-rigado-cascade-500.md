@@ -9,31 +9,31 @@ ms.custom:
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
-ms.date: 11/27/2019
-ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/18/2021
+ms.openlocfilehash: 1a255336d958ea4d4d027d533c80bfb493d88f8b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96014764"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435487"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Rigado Cascade 500 ゲートウェイ デバイスを Azure IoT Central アプリケーションに接続する
 
-*この記事は、ソリューション ビルダーを対象としています。*
-
-この記事では、ソリューション ビルダーとして、Rigado Cascade 500 ゲートウェイ デバイスを、お使いの Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。 
+この記事では、Rigado Cascade 500 ゲートウェイ デバイスを、ご利用の Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
 
 ## <a name="what-is-cascade-500"></a>Cascade 500 とは
 
 Cascade 500 IoT ゲートウェイは Rigado 社のハードウェア製品であり、同社の Cascade Edge-as-a-Service ソリューションの一部として含まれています。 商用 IoT プロジェクトおよび製品チーム向けに、柔軟なエッジ コンピューティング能力、コンテナー化された堅牢なアプリケーション環境、Bluetooth 5、LTE、Wi-Fi などのさまざまなワイヤレス デバイス接続オプションを提供します。
 
-Cascade 500 は Azure IoT プラグ アンド プレイ (プレビュー) の事前認定を受けており、ソリューション ビルダーはデバイスをエンド ツー エンド ソリューションに簡単にオンボードできます。 Cascade ゲートウェイを使用すると、ゲートウェイ デバイスに近接しているさまざまな状態監視センサーにワイヤレスで接続できます。 これらのセンサーは、ゲートウェイ デバイス経由で IoT Central にオンボードできます。
+Cascade 500 は Azure IoT プラグ アンド プレイの認定を受けていて、お客様はデバイスを自分のエンド ツー エンド ソリューションに簡単にオンボードできます。 Cascade ゲートウェイを使用すると、ゲートウェイ デバイスに近接しているさまざまな状態監視センサーにワイヤレスで接続できます。 これらのセンサーは、ゲートウェイ デバイス経由で IoT Central にオンボードできます。
 
 ## <a name="prerequisites"></a>前提条件
-このハウツー ガイドの手順を実行するには、次のリソースが必要です。
 
-* Rigado Cascade 500 デバイス。 詳細については、[Rigado](https://www.rigado.com/) に関するページをご覧ください。
-* Azure IoT Central アプリケーション。 詳細については、[新しいアプリケーションの作成](./quick-deploy-iot-central.md)に関するページをご覧ください。
+この攻略ガイドの手順を完了するには、次が必要です。
+
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+- Rigado Cascade 500 デバイス。 詳細については、[Rigado](https://www.rigado.com/) に関するページをご覧ください。
 
 ## <a name="add-a-device-template"></a>デバイス テンプレートの追加
 
@@ -71,7 +71,7 @@ Cascade 500 デバイスを IoT Central アプリケーションに接続する�
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者にお勧めする次の手順は以下です。
+推奨される次のステップは以下のとおりです。
 
 - [Azure IoT Central のデバイス接続](./concepts-get-connected.md)について確認する
 - [Azure CLI を使用してデバイスの接続性を監視する](./howto-monitor-devices-azure-cli.md)方法を確認する

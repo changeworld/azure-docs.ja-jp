@@ -4,17 +4,17 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) での Kubernetes 認可に対して Azure RBAC を使用する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
+ms.date: 02/09/2021
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c708a577a1c2e4bb8f7ddff90f458afd0d9e566f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b6cd1bce4528d35cf0f7f897e6032079cae6cdea
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783001"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579238"
 ---
-# <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes 認可に Azure RBAC を使用する (プレビュー)
+# <a name="use-azure-rbac-for-kubernetes-authorization"></a>Kubernetes 認可に Azure RBAC を使用する
 
 現時点で既に、[Azure Active Directory (Azure AD) と AKS の間で統合認証](managed-aad.md)を利用できます。 この統合を有効にすると、お客様は、Kubernetes RBAC の対象として Azure AD のユーザー、グループ、またはサービス プリンシパルを使用できます。詳細については、[こちら](azure-ad-rbac.md)を参照してください。
 この機能を使用すると、Kubernetes に対するユーザーの ID と資格情報を個別に管理する必要がなくなります。 ただし、それでも Azure RBAC と Kubernetes RBAC を個別に設定および管理する必要があります。 AKS で RBAC を使用した認証と認可の詳細については、[こちら](concepts-identity.md)をご覧ください。
@@ -23,54 +23,16 @@ ms.locfileid: "107783001"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure から Kubernetes のリソースに対する RBAC を管理する機能では、クラスター リソースの RBAC を管理するために、Azure または Kubernetes のネイティブ メカニズムのどちらを使用するかを選択できます。 有効にすると、Azure AD プリンシパルは Azure RBAC だけで検証されますが、Kubernetes の通常のユーザーとサービス アカウントは Kubernetes RBAC だけで検証されます。 AKS で RBAC を使用した認証と認可の詳細については、[こちら](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)をご覧ください。
+Azure から Kubernetes のリソースに対する RBAC を管理する機能では、クラスター リソースの RBAC を管理するために、Azure または Kubernetes のネイティブ メカニズムのどちらを使用するかを選択できます。 有効にすると、Azure AD プリンシパルは Azure RBAC だけで検証されますが、Kubernetes の通常のユーザーとサービス アカウントは Kubernetes RBAC だけで検証されます。 AKS で RBAC を使用した認証と認可の詳細については、[こちら](concepts-identity.md#azure-rbac-for-kubernetes-authorization)をご覧ください。
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+### <a name="prerequisites"></a>前提条件
 
-### <a name="prerequisites"></a>前提条件 
-- Azure CLI バージョン 2.9.0 以降があることを確認します
-- `EnableAzureRBACPreview` 機能フラグが有効になっていることを確認します。
-- `aks-preview` [CLI 拡張機能][az-extension-add] v0.4.55 以降がインストールされていることを確認します
+- Azure CLI バージョン 2.24.0 以降があることを確認します
 - [kubectl v1.18.3 以降][az-aks-install-cli]がインストールされていることを確認します。
-
-#### <a name="register-enableazurerbacpreview-preview-feature"></a>`EnableAzureRBACPreview` プレビュー機能を登録します
-
-Kubernetes 承認に Azure RBAC を使用する AKS クラスターを作成するには、サブスクリプションで `EnableAzureRBACPreview` 機能フラグを有効にする必要があります。
-
-次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`EnableAzureRBACPreview` 機能フラグを登録します。
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
-```
-
- 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-#### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
-
-Azure RBAC を使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.55 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールするか、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムをインストールします。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ### <a name="limitations"></a>制限事項
 
 - [マネージド Azure AD 統合](managed-aad.md)が必要です。
-- プレビュー期間中は Kubernetes 認可用の Azure RBAC を既存のクラスターに統合することはできませんが、一般提供 (GA) になるとできます。
 - [kubectl v1.18.3 以降][az-aks-install-cli]を使用します。
 - CRD を使用していて、カスタム ロール定義を作成している場合、現時点では、CRD をカバーする唯一の方法は `Microsoft.ContainerService/managedClusters/*/read` を提供することです。 AKS では、CRD にさらに詳細なアクセス許可を提供するように取り組んでいます。 残りのオブジェクトについては、特定の API グループを使用できます (例: `Microsoft.ContainerService/apps/deployments/read`)。
 - 新しいロールの割り当ては、承認サーバーに伝達されて更新されるまでに最大で 5 分かかることがあります。
@@ -108,6 +70,22 @@ Azure AD 統合と Kubernetes 認可用の Azure RBAC を使用してクラス�
   }
 ```
 
+## <a name="integrate-azure-rbac-into-an-existing-cluster"></a>Azure RBAC を既存のクラスターに統合する
+
+> [!NOTE]
+> Kubernetes 認可用の Azure RBAC を使用するには、Azure Active Directory 統合を有効にする必要があります。 詳細については、[Azure Active Directory の統合][managed-aad]に関するページを参照してください。
+
+既存の AKS クラスターに Kubernetes 認可用の Azure RBAC を追加するには、[az aks update][az-aks-update] コマンドをフラグ `enable-azure-rbac` と共に使用します。
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myAKSCluster --enable-azure-rbac
+```
+既存の AKS クラスターから Kubernetes 認可用の Azure RBAC を削除するには、[az aks update][az-aks-update] コマンドをフラグ `disable-azure-rbac` と共に使用します。
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myAKSCluster --disable-azure-rbac
+```
+
 ## <a name="create-role-assignments-for-users-to-access-cluster"></a>ユーザーがクラスターにアクセスするためのロールの割り当てを作成する
 
 AKS には、次の 4 つの組み込みロールがあります。
@@ -137,7 +115,7 @@ az role assignment create --role "Azure Kubernetes Service RBAC Admin" --assigne
 また、クラスター内の特定の **名前空間** を対象とするロールの割り当てを作成することもできます。
 
 ```azurecli-interactive
-az role assignment create --role "Azure Kubernetes Service RBAC Viewer" --assignee <AAD-ENTITY-ID> --scope $AKS_ID/namespaces/<namespace-name>
+az role assignment create --role "Azure Kubernetes Service RBAC Reader" --assignee <AAD-ENTITY-ID> --scope $AKS_ID/namespaces/<namespace-name>
 ```
 
 現在、名前空間を対象とするロールの割り当ては、Azure CLI を使用して構成する必要があります。
@@ -154,7 +132,7 @@ az role assignment create --role "Azure Kubernetes Service RBAC Viewer" --assign
 
 ```json
 {
-    "Name": "AKS Deployment Viewer",
+    "Name": "AKS Deployment Reader",
     "Description": "Lets you view all deployments in cluster/namespace.",
     "Actions": [],
     "NotActions": [],
@@ -174,7 +152,6 @@ az role assignment create --role "Azure Kubernetes Service RBAC Viewer" --assign
 az account show --query id -o tsv
 ```
 
-
 ここで、`deploy-view.json` を保存したフォルダーから次のコマンドを実行することで、ロールの定義を作成できます。
 
 ```azurecli-interactive
@@ -184,7 +161,7 @@ az role definition create --role-definition @deploy-view.json
 ロールの定義ができたので、次を実行して、ユーザーまたは他の ID にそれを割り当てることができます。
 
 ```azurecli-interactive
-az role assignment create --role "AKS Deployment Viewer" --assignee <AAD-ENTITY-ID> --scope $AKS_ID
+az role assignment create --role "AKS Deployment Reader" --assignee <AAD-ENTITY-ID> --scope $AKS_ID
 ```
 
 ## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubectl"></a>`kubectl` で Kubernetes 認可に Azure RBAC を使用する
@@ -195,7 +172,8 @@ az role assignment create --role "AKS Deployment Viewer" --assignee <AAD-ENTITY-
 > ```azurecli-interactive
 > az aks install-cli
 > ```
-> `sudo` 特権で実行することが必要な場合があります。 
+>
+> `sudo` 特権で実行することが必要な場合があります。
 
 これで、必要なロールとアクセス許可が割り当てられました。 たとえば `kubectl` から、Kubernetes API の呼び出しを始めることができます。
 
@@ -244,7 +222,6 @@ aks-nodepool1-93451573-vmss000001   Ready    agent   3h6m   v1.15.11
 aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
-
 ## <a name="clean-up"></a>クリーンアップ
 
 ### <a name="clean-role-assignment"></a>ロールの割り当てをクリーンアップする
@@ -252,6 +229,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```azurecli-interactive
 az role assignment list --scope $AKS_ID --query [].id -o tsv
 ```
+
 作成したすべての割り当てから ID をコピーします。
 
 ```azurecli-interactive
@@ -261,7 +239,7 @@ az role assignment delete --ids <LIST OF ASSIGNMENT IDS>
 ### <a name="clean-up-role-definition"></a>ロールの定義をクリーンアップする
 
 ```azurecli-interactive
-az role definition delete -n "AKS Deployment Viewer"
+az role definition delete -n "AKS Deployment Reader"
 ```
 
 ### <a name="delete-cluster-and-resource-group"></a>クラスターとリソース グループを削除する
@@ -286,3 +264,5 @@ az group delete -n MyResourceGroup
 [az-feature-register]: /cli/azure/feature#az_feature_register
 [az-aks-install-cli]: /cli/azure/aks#az_aks_install_cli
 [az-provider-register]: /cli/azure/provider#az_provider_register
+[az-aks-update]: /cli/azure/aks#az_aks_update
+[managed-aad]: ./managed-aad.md

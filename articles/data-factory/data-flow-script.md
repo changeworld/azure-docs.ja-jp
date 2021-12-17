@@ -4,23 +4,26 @@ description: Data Factory のデータ フロー スクリプトのコードビ�
 author: kromerm
 ms.author: nimoolen
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/15/2021
-ms.openlocfilehash: 7dd58a7d4a94b832e52930f8ac6507cdd8f7a20e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/22/2021
+ms.openlocfilehash: b599fbd2d41eacceed29d0d72432809507d3a7bc
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100534823"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707998"
 ---
 # <a name="data-flow-script-dfs"></a>データ フロー スクリプト (DFS)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
+
 データ フロー スクリプト (DFS) とは、マッピング データ フローに含まれている変換を実行するために使用される、コーディング言語に似た基礎になっているメタデータです。 すべての変換は、ジョブを正しく実行するために必要な情報を提供する一連のプロパティによって表されます。 スクリプトは、ブラウザー UI の上部のリボンにある [スクリプト] ボタンをクリックして、ADF から表示および編集できます。
 
-![[スクリプト] ボタン](media/data-flow/scriptbutton.png "[スクリプト] ボタン")
+:::image type="content" source="media/data-flow/scriptbutton.png" alt-text="[スクリプト] ボタン":::
 
 たとえば、ソース変換の `allowSchemaDrift: true,` は、それがスキーマ プロジェクションに含まれていない場合でも、データ フロー内のソース データセットのすべての列を含めるようにサービスに指示します。
 
@@ -34,7 +37,7 @@ DFS は、ユーザー インターフェイスによって自動的に生成さ
 
 PowerShell または API で使用するデータ フロー スクリプトを作成する場合は、書式設定されたテキストを 1 行に折りたたむ必要があります。 これらのタブと改行はエスケープ文字として保持できます。 ただし、テキストは JSON プロパティ内に収まるように書式設定する必要があります。 下部のスクリプト エディターの UI には、スクリプトを 1 行に書式設定するボタンがあります。
 
-![コピー ボタン](media/data-flow/copybutton.png "コピー ボタン")
+:::image type="content" source="media/data-flow/copybutton.png" alt-text="コピー ボタン":::
 
 ## <a name="how-to-add-transforms"></a>変換を追加する方法
 変換を追加するには、主な変換データを追加し、入力ストリームを再ルーティングし、出力ストリームを再ルーティングするという 3 つの基本的な手順を行う必要があります。 これは、例で簡単に確認できます。
@@ -269,6 +272,26 @@ window(over(stocksymbol),
     startRowOffset: -7L,
     endRowOffset: 7L,
     FifteenDayMovingAvg = round(avg(Close),2)) ~> Window1
+```
+
+### <a name="distinct-count-of-all-column-values"></a>すべての列の値の個別のカウント
+このスクリプトを使用すると、1 つのスクリプト スニペットを使用してストリーム内で、キー列を識別し、すべての列のカーディナリティを表示できます。 このスクリプトをデータ フローに集計変換として追加すると、すべての列の個別のカウントが自動的に提供されます。
+
+```
+aggregate(each(match(true()), $$ = countDistinct($$))) ~> KeyPattern
+```
+
+### <a name="compare-previous-or-next-row-values"></a>前の行または次の行の値を比較する
+このサンプル スニペットは、ウィンドウ変換を使用して、現在の行コンテキストの列と、現在の行の前後の行の列の値を比較する方法を示しています。 この例では、、データセット全体のウィンドウ パーティションを有効にするために、派生列を使用してダミー値が生成されます。 各行には、代理キー変換を使って一意のキー値が割り当てられます。 このパターンをデータ変換に適用すると、並べ替える列がある場合は代理キーを削除できます。また、データのパーティション分割に使用する列がある場合は、派生列を削除することができます。
+
+```
+source1 keyGenerate(output(sk as long),
+    startAt: 1L) ~> SurrogateKey1
+SurrogateKey1 derive(dummy = 1) ~> DerivedColumn1
+DerivedColumn1 window(over(dummy),
+    asc(sk, true),
+    prevAndCurr = lag(title,1)+'-'+last(title),
+        nextAndCurr = lead(title,1)+'-'+last(title)) ~> leadAndLag
 ```
 
 ## <a name="next-steps"></a>次のステップ

@@ -7,16 +7,16 @@ ms.author: nibaccam
 ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.date: 03/08/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, automl, references_regions
-ms.openlocfilehash: 2e6e4e468adec76d50242b31922e4db1c7e910ab
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.subservice: automl
+ms.date: 10/21/2021
+ms.topic: troubleshooting
+ms.custom: devx-track-python, automl, references_regions
+ms.openlocfilehash: 4916f65ef70e6df04a1dfacb690450da20e35386
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210484"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561974"
 ---
 # <a name="troubleshoot-automated-ml-experiments-in-python"></a>Python での自動 ML 実験のトラブルシューティング
 
@@ -148,8 +148,16 @@ PyJWT のバージョンは次のようにして確認できます。
     1. コマンド シェルで `pip uninstall PyJWT` を実行し、確認のために「`y`」を入力します。
     1. `pip install 'PyJWT<2.0.0'` を使用してインストールします。
   
+
+## <a name="data-access"></a>データ アクセス
+ 
+自動 ML の実行では、AzureFile ストレージに接続するファイル データストアに適切な認証資格情報があることを確認する必要があります。 それ以外の場合、次のメッセージが表示されます。 [データ アクセス認証の資格情報を更新する](how-to-train-with-datasets.md#azurefile-storage)方法について説明します。
+
+エラー メッセージ: `Could not create a connection to the AzureFileService due to missing credentials. Either an Account Key or SAS token needs to be linked the default workspace blob store.`
+
 ## <a name="databricks"></a>Databricks
 [Databricks を使用して自動 ML 実験を構成する方法](how-to-configure-databricks-automl-environment.md#troubleshooting)に関する記事を参照してください。
+
 
 ## <a name="forecasting-r2-score-is-always-zero"></a>R2 スコアの予測が常にゼロになる
 
@@ -189,6 +197,6 @@ PyJWT のバージョンは次のようにして確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-+ [自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](how-to-auto-train-remote.md)についてさらに詳しく学習する。
++ [自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](concept-automated-ml.md#local-remote)についてさらに詳しく学習する。
 
 + [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。

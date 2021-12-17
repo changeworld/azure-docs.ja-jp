@@ -4,12 +4,12 @@ description: Azure HDInsight クラスターにアクセスしようとした場
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/05/2019
-ms.openlocfilehash: 750232b19bd5ef0674a9df79fdf3972a679eda7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da396873fe91777130c407c2b679b0192141cae1
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946781"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291423"
 ---
 # <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>シナリオ: Azure HDInsight における Apache Ambari UI の 502 エラー
 
@@ -64,4 +64,4 @@ Error Processing URI: /api/v1/clusters/xxxxxx/host_components - (java.lang.OutOf
 
 ## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

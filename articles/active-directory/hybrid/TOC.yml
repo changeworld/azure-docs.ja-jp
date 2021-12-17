@@ -30,6 +30,8 @@
       items:
         - name: Azure AD Connect と Connect Health とは
           href: whatis-azure-ad-connect.md
+        - name: Azure AD Connect V2.0 とは
+          href: whatis-azure-ad-connect-v2.md
         - name: 適切な認証の選択
           href: ./choose-ad-authn.md
         - name: ID 同期と重複属性の回復性
@@ -40,6 +42,8 @@
           href: whatis-phs.md
         - name: パスワード ハッシュ同期のしくみ
           href: how-to-connect-password-hash-synchronization.md
+        - name: 選択的なパスワード ハッシュ同期
+          href: how-to-connect-selective-password-hash-synchronization.md
     - name: パススルー認証
       items:
         - name: パススルー認証とは
@@ -150,10 +154,8 @@
           href: reference-connect-instances.md
         - name: 移行
           items:
-            - name: フェデレーションから PHS への移行
-              href: plan-migrate-adfs-password-hash-sync.md
-            - name: フェデレーションから PTA への移行
-              href: plan-migrate-adfs-pass-through-authentication.md
+            - name: フェデレーションからクラウド認証に移行する
+              href: migrate-from-federation-to-cloud-authentication.md
             - name: あるフォレストから別のフォレストにグループを移動する
               href: how-to-connect-migrate-groups.md
             - name: 段階的なロールアウトを使用してクラウド認証に移行する
@@ -215,7 +217,7 @@
         - name: パススルー認証の概要
           href: how-to-connect-pta-quick-start.md
         - name: パススルー認証に関する FAQ
-          href: how-to-connect-pta-faq.md
+          href: how-to-connect-pta-faq.yml
         - name: Azure AD Connect "構成しない" による PTA の無効化
           href: how-to-connect-pta-disable-do-not-configure.md
     - name: フェデレーション サービスを管理する
@@ -240,12 +242,16 @@
           href: how-to-connect-fed-saml-idp.md
         - name: ハイブリッド Azure AD 参加の構成後のタスク
           href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
+        - name: AD FS 証明書の緊急ローテーション
+          href: how-to-connect-emergency-ad-fs-certificate-rotation.md
+        - name: フェデレーション構成の変更を監視する
+          href: how-to-connect-monitor-federation-changes.md
     - name: シングル サインオンの管理
       items:
         - name: シングル サインオンの概要
           href: how-to-connect-sso-quick-start.md
         - name: シングル サインオンに関する FAQ
-          href: how-to-connect-sso-faq.md
+          href: how-to-connect-sso-faq.yml
     - name: Azure AD Connect Health を管理する
       items:
         - name: Azure AD Connect Health の操作
@@ -254,6 +260,10 @@
           href: how-to-connect-health-adfs.md
         - name: AD FS での Azure AD Connect Health の危険な IP のレポート
           href: how-to-connect-health-adfs-risky-ip.md
+        - name: Azure AD Connect Health の危険な IP レポート ブック
+          href: how-to-connect-health-adfs-risky-ip-workbook.md
+        - name: Connect Health を使用した Azure AD での AD FS サインイン
+          href: how-to-connect-health-ad-fs-sign-in.md
         - name: Azure AD Connect Health for Sync の使用
           href: how-to-connect-health-sync.md
         - name: AD DS での Azure AD Connect Health の使用
@@ -304,6 +314,8 @@
           href: whatis-aadc-admin-agent.md
         - name: ADConnectivityTools PowerShell モジュールとは
           href: how-to-connect-adconnectivitytools.md
+        - name: Azure AD Connect 単一オブジェクト同期
+          href: how-to-connect-single-object-sync.md
         - name: 接続
           href: tshoot-connect-connectivity.md
         - name: 同期中のエラー
@@ -332,6 +344,8 @@
           href: tshoot-connect-install-issues.md
         - name: UPN の変更
           href: howto-troubleshoot-upn-changes.md
+        - name: オブジェクトおよび属性のエンドツーエンド トラブルシューティング
+          href: /troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes
 - name: リファレンス
   items:
     - name: ハイブリッド ID で必要なポートとプロトコル
@@ -347,9 +361,9 @@
     - name: アカウントとアクセス許可
       href: reference-connect-accounts-permissions.md
     - name: Azure AD Connect の FAQ
-      href: reference-connect-faq.md
+      href: reference-connect-faq.yml
     - name: Azure AD Connect Health の FAQ
-      href: reference-connect-health-faq.md
+      href: reference-connect-health-faq.yml
     - name: Azure Government のハイブリッド ID に関する考慮事項
       href: reference-connect-government-cloud.md
     - name: Azure AD Connect のユーザー プライバシー
@@ -368,6 +382,8 @@
       href: how-to-connect-fed-compatibility.md
     - name: TLS 1.2 の適用
       href: reference-connect-tls-enforcement.md
+    - name: ADSync リファレンス
+      href: reference-connect-adsync.md
     - name: ADSyncConfig リファレンス
       href: reference-connect-adsyncconfig.md
     - name: ADSyncTools リファレンス
@@ -376,7 +392,5 @@
       href: reference-connect-adconnectivitytools.md
     - name: msExchUserHoldPolicies と cloudMSExchUserHoldPolicies
       href: reference-connect-msexchuserholdpolicies.md
-    - name: Azure AD Connect 1.4.xx.x デバイスの消失について
-      href: reference-connect-device-disappearance.md
     - name: Azure AD Connect のバージョン履歴アーカイブ
       href: reference-connect-version-history-archive.md

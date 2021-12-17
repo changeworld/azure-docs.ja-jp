@@ -2,21 +2,21 @@
 title: チュートリアル:Dialpad を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Dialpad に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/28/2019
-ms.author: zhchia
-ms.openlocfilehash: b88e618da3f8a23c0517aaeb251e54bf559fc468
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: e559ff8f99a8cc5869ff200a95d527681bd4774c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96014518"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764050"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>チュートリアル:Dialpad を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -1,21 +1,21 @@
 ---
-title: Microsoft パートナー センターでマネージド サービス オファー登録情報の詳細を構成する方法
-description: パートナー センターを使用して、Azure Marketplace のマネージド サービス オファー登録情報の詳細を構成する方法について説明します。
+title: Microsoft パートナー センターでマネージド サービス オファー登録情報の詳細を構成する
+description: Azure Marketplace でマネージド サービス オファー登録情報の詳細を構成します。
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 12/23/2020
-ms.openlocfilehash: 5ab831ae6ab761804fc7a4665000a13ab61acadc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/12/2021
+ms.openlocfilehash: c8b18179af70788d7dea385224b02d7dddeb5ad6
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97918047"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072995"
 ---
-# <a name="how-to-configure-your-managed-service-offer-listing-details"></a>マネージド サービス オファー登録情報の詳細を構成する方法
+# <a name="configure-managed-service-offer-listing-details"></a>マネージド サービス オファー登録情報の詳細を構成する
 
 パートナー センターの **[オファー登録情報]** ページで入力した情報は、Azure Marketplace に表示されます。 これには、オファーの名前、説明、メディア、その他のマーケティング資産が含まれます。
 
@@ -32,7 +32,7 @@ ms.locfileid: "97918047"
 4. **[説明]** フィールドに、マネージド サービス オファーの説明を入力します。 このボックスには、HTML のタグとスペースを含めて、最大 2,000 文字のテキストを入力できます。 HTML 書式設定の詳細については、[オファー説明でサポートされている HTML タグ](./supported-html-tags.md)に関する記事をご覧ください。
 5. **[プライバシー ポリシーの リンク]** ボックスに、組織のプライバシー ポリシーへの (https から始まる) リンクを入力します。 オファーがプライバシーに関する法律および規制に準拠していることを保証し、有効なプライバシー ポリシーを提供する責任があります。
 
-## <a name="useful-links"></a>便利なリンク
+## <a name="product-information-links"></a>製品情報のリンク
 
 ソリューションに関する補足のオンライン ドキュメントを提供することもできます。
 
@@ -43,7 +43,7 @@ ms.locfileid: "97918047"
 
 社内の 2 人の担当者 (サポートの連絡先とエンジニアリングの連絡先) の名前、メール アドレス、電話番号を入力します (登録者自身がどちらかの担当者になることができます)。 Microsoft は、オファーに関するパートナーとの連絡にこの情報を使用します。 この情報はお客様には表示されませんが、クラウド ソリューション プロバイダー (CSP) パートナーには提供される場合があります。
 
-## <a name="support-urls"></a>サポート URL
+## <a name="support-link"></a>サポート リンク
 
 Azure グローバルの顧客や Azure Government の顧客向けのサポート Web サイトがある場合は、https で始まる URL を入力します。
 
@@ -54,15 +54,15 @@ Azure グローバルの顧客や Azure Government の顧客向けのサポー�
 
 ### <a name="add-logos"></a>ロゴを追加する
 
-**[ロゴ]** で、**大** (216 x 216 から 350 x 350 ピクセル) のロゴを .PNG 形式でアップロードします。 パートナー センターでは、**中** と **小** のロゴが自動的に作成されます。ロゴは後で置き換えることができます。
+**[ロゴ]** で **大** のロゴを .PNG 形式で、216 x 216 から 350 x 350 ピクセルまでの範囲でアップロードします。 パートナー センターでは、**中** と **小** のロゴが自動的に作成されます。ロゴは後で置き換えることができます。
 
-* 大のロゴ (216 x 216 から 350 x 350 ピクセル) は、Azure Marketplace のオファー登録情報に表示されます。
-* 新しいリソースが作成されると、中のロゴ (90 x 90 ピクセル) が表示されます。
-* 小のロゴ (48 x 48 ピクセル) は、Azure Marketplace での検索結果で使用されます。
+- 大のロゴ (216 x 216 ピクセルから 350 x 350 ピクセルまで) は、Azure Marketplace のオファー登録情報に表示されます。
+- 新しいリソースが作成されると、中のロゴ (90 x 90 ピクセル) が表示されます。
+- 小のロゴ (48 x 48 ピクセル) は Azure Marketplace での検索結果で使用されます。
 
 ### <a name="add-screenshots-optional"></a>スクリーンショットを追加する (省略可能)
 
-オファーを示す画像を最大 5 つ追加します。 イメージはすべて、1280 x 720 ピクセルのサイズで PNG 形式である必要があります。
+オファーを示す画像を最大 5 つ追加します。 イメージはすべて、1280 x 720 ピクセルのサイズで PNG 形式にする必要があります。
 
 1. **[スクリーンショット]** で、PNG ファイルを **[スクリーンショット]** ボックスにドラッグ アンド ドロップします。
 2. **[イメージの字幕の追加]** を選択します。
@@ -82,4 +82,4 @@ Azure グローバルの顧客や Azure Government の顧客向けのサポー�
 
 ## <a name="next-steps"></a>次の手順
 
-* [プレビュー対象ユーザーの追加](create-managed-service-offer-preview.md)
+- [プレビュー対象ユーザーの追加](create-managed-service-offer-preview.md)

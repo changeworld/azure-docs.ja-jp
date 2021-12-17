@@ -3,22 +3,22 @@ title: HTML テンプレートを使用したユーザー インターフェイ�
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C を使用するアプリケーションのユーザー インターフェイスを、HTML テンプレートを使用してカスタマイズする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 10/14/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e694a5f6144cee65be074d05ce0015d31bfdf65e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f662b1a1a47dba27457c4c5754d600bb920c7b2f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104675827"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222668"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で HTML テンプレートを使用してユーザー インターフェイスをカスタマイズする
 
@@ -75,7 +75,8 @@ Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https:/
 
 - メディア、CSS、JavaScript ファイルなどの外部リソースを HTML ファイルに含める場合は、絶対 URL を使用します。
 - [ページ レイアウト バージョン](page-layout.md) 1.2.0 以降を使用すると、HTML タグに `data-preload="true"` 属性を追加して、CSS と JavaScript の読み込み順序を制御できます。 `data-preload="true"` では、ページはユーザーに表示される前に構築されます。 この属性は、スタイルが設定されていない HTML がユーザーに表示されることなく、CSS ファイルをプリロードすることでページが "ちらつく" のを防ぐのに役立ちます。 次の HTML コード スニペットは、`data-preload` タグの使用方法を示しています。
-  ```HTML
+
+  ```html
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
 - 既定のページ コンテンツから開始し、その上に構築することをお勧めします。
@@ -90,7 +91,41 @@ Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https:/
 
 ## <a name="localize-content"></a>コンテンツのローカライズ
 
-Azure AD B2C テナントで [[言語のカスタマイズ]](language-customization.md) を有効にすることで HTML コンテンツをローカライズします。 この機能を有効にすると、Azure AD B2C で OpenID Connect パラメーター `ui_locales` をエンドポイントに転送できるようになります。 コンテンツ サーバーではこのパラメーターを使用し、言語固有の HTML ページを提供できます。
+Azure AD B2C テナントで [[言語のカスタマイズ]](language-customization.md) を有効にすることで HTML コンテンツをローカライズします。 この機能を有効にすると、Azure AD B2C は HTML ページの言語属性を設定し、OpenID Connect パラメーター `ui_locales` をエンドポイントに渡すことができます。
+
+#### <a name="single-template-approach"></a>単一テンプレートの方法
+
+ページの読み込み中に、Azure AD B2C で HTML ページの言語属性が現在の言語に設定されます。 たとえば、「 `<html lang="en">` 」のように入力します。 現在の言語ごとに異なるスタイルを表示するには、CSS `:lang` セレクターを CSS 定義と共に使用します。
+
+次の例では、以下に示すクラスを定義します。
+
+* `imprint-en` - 現在の言語が英語の場合に使用します。
+* `imprint-de` - 現在の言語がドイツ語の場合に使用します。
+* `imprint` - 現在の言語が英語でもドイツ語でもない場合に使用される既定のクラスです。
+
+```css
+.imprint-en:lang(en),
+.imprint-de:lang(de) {
+    display: inherit !important;
+}
+.imprint {
+    display: none;
+}
+```
+
+次の HTML 要素は、ページの言語に応じて表示または非表示になります。
+
+```html
+<a class="imprint imprint-en" href="Link EN">Imprint</a>
+<a class="imprint imprint-de" href="Link DE">Impressum</a>
+```
+
+#### <a name="multi-template-approach"></a>複数テンプレートの方法
+
+言語カスタマイズ機能を有効にすると、Azure AD B2C で OpenID Connect パラメーター `ui_locales` がエンドポイントに渡されるようになります。 コンテンツ サーバーではこのパラメーターを使用し、言語固有の HTML ページを提供できます。
+
+> [!NOTE]
+> Azure AD B2C では、OpenID Connect のパラメーター (`ui_locales` など) が[例外ページ](page-layout.md#exception-page-globalexception)に渡されません。
 
 使用されているロケールに基づき、さまざまな場所からコンテンツを取得できます。 CORS 対応エンドポイントでは、特定の言語のコンテンツをホストするようにフォルダー構造を設定します。 ワイルドカード値 `{Culture:RFC5646}` を使うと、適切な言語が呼び出されます。
 
@@ -173,30 +208,34 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 
 この記事では、Azure Blob Storage を使用してコンテンツをホストします。 コンテンツを Web サーバーにホストすることもできますが、[Web サーバーで CORS を有効にする](https://enable-cors.org/server.html)必要があります。
 
+> [!NOTE]
+> Azure AD B2C テナントでは、BLOB ストレージをプロビジョニングできません。 これらのリソースは、Azure AD テナントで作成する必要があります。
+
 HTML コンテンツを Blob Storage でホストするには、次の手順を行います。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. **ハブ** メニューで、 **[新規]**  >  **[ストレージ]**  >  **[ストレージ アカウント]** の順にクリックします。
+1. サブスクリプションを持つご自分の Azure AD テナントが含まれるディレクトリを必ず使用してください。 
+    1. ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+    1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを [ディレクトリ名] リストで見つけ、 **[スイッチ]** を選択します。
+1. Azure portal で、 **[ストレージ アカウント]** を検索して選択します。
+1. **[+ 作成]** を選択します。
 1. ストレージ アカウントの **サブスクリプション** を選択します。
 1. **リソース グループ** を作成するか、既存のリソース グループを選択します。
-1. ストレージ アカウント用に一意の **名前** を入力します。
-1. ストレージ アカウントの **地理的な場所** を選択します。
-1. **[デプロイ モデル]** は **[リソース マネージャー]** のまま残してかまいません。
+1. ストレージ アカウントの一意の **[ストレージ アカウント名]** を入力します。
+1. ストレージ アカウントの地理的な **[リージョン]** を選択します。
 1. **[パフォーマンス]** は **[標準]** のまま残してかまいません。
-1. **[Account Kind]** (アカウントの種類) を **[Blob Storage]** に変更します。
-1. **[レプリケーション]** は **[RA-GRS]** のまま残してかまいません。
-1. **[アクセス レベル]** は **[ホット]** のまま残してかまいません。
-1. **[確認および作成]** を選択して、ストレージ アカウントを作成します。
-    デプロイが完了したら、**ストレージ アカウント** のページが自動的に開きます。
-
+1. **[冗長性]** は **[Geo 冗長ストレージ (GRS)]** のままにすることができます。
+1. **[レビューと作成]** を選択し、Azure AD で検証が実行されるのを数秒間待ちます。 
+1. **[作成]** をクリックしてストレージ アカウントを作成します。 デプロイが完了すると、ストレージ アカウントのページが自動的に開きます。または、 **[リソースに移動]** を選択します。
 #### <a name="21-create-a-container"></a>2.1 コンテナーを作成する
 
 Blob ストレージ内にパブリック コンテナーを作成するには、次の手順を実行します。
 
-1. 左側のメニューの **[Blob service]** で **[BLOB]** を選択します。
+1. 左側のメニューの **[データ ストレージ]** で、 **[コンテナー]** を選択します。
 1. **[+ コンテナー]** を選択します。
 1. **[名前]** に「*root*」と入力します。 名前には任意の名前 (*contoso* など) を指定できますが、この例ではわかりやすくするために *root* を使用します。
-1. **[パブリック アクセス レベル]** で **[BLOB]** を選択し、 **[OK]** を選択します。
+1. **[パブリック アクセス レベル]** で **[BLOB]** を選択します。
+1. **[作成]** を選択して、コンテナーを作成します。
 1. **[root]** を選択して、新しいコンテナーを開きます。
 
 #### <a name="22-upload-your-custom-page-content-files"></a>2.2 カスタム ページ コンテンツ ファイルをアップロードする
@@ -214,13 +253,14 @@ Blob ストレージ内にパブリック コンテナーを作成するには�
 
 次の手順を実行して、クロス オリジン リソース共有用に Blob ストレージを構成します。
 
-1. メニューで **[CORS]** を選択します。
+1. ストレージ アカウントに移動します。 
+1. 左側のメニューの **[設定]** で、 **[リソースの共有 (CORS)]** を選択します。
 1. **[許可されるオリジン]** には、`https://your-tenant-name.b2clogin.com` を入力します。 `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「 `https://fabrikam.b2clogin.com` 」のように入力します。 テナント名を入力するときは、すべて小文字を使用します。
 1. **[許可されたメソッド]** に、`GET` と `OPTIONS` を両方選択します。
 1. **[許可されたヘッダー]** に、アスタリスク (*) を入力します。
 1. **[公開されるヘッダー]** に、アスタリスク (*) を入力します。
 1. **[最長有効期間]** には「200」と入力します。
-1. **[保存]** を選択します。
+1. ページの最上部で **[保存]** を選択します。
 
 #### <a name="31-test-cors"></a>3.1 CORS をテストする
 
@@ -233,21 +273,26 @@ Blob ストレージ内にパブリック コンテナーを作成するには�
     結果は `XHR status: 200` となるはずです。 
     エラーが発生した場合は、CORS の設定が正しいことを確認します。 場合によっては、ブラウザーのキャッシュをクリアするか、Ctrl + Shift + P キーを押してプライベート ブラウズ セッションを開く必要もあります。
 
+[Azure ストレージ アカウントを作成および管理する方法](../storage/common/storage-account-create.md)を確認してください。
+
 ::: zone pivot="b2c-user-flow"
 
 ### <a name="4-update-the-user-flow"></a>4.ユーザー フローを更新する
 
-1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-1. **[ユーザー フロー]** を選択し、*B2C_1_signupsignin1* ユーザー フローを選択します。
-1. **[ページ レイアウト]** を選択し、 **[統合されたサインアップまたはサインイン ページ]** の下で、 **[カスタム コンテンツの使用]** に対して **[はい]** を選択します。
+1. ご利用の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 
+    1. ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+    1. **[ポータルの設定] | [ディレクトリ + サブスクリプション]** ページのディレクトリ名の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. 左側のメニューで、 **[ユーザー フロー]** を選択し、 *[B2C_1_signupsignin1]* ユーザー フローを選択します。
+1. **[ページ レイアウト]** を選択し、 **[統合されたサインアップまたはサインイン ページ]** の下で、 **[カスタム ページ コンテンツの使用]** に対して **[はい]** を選択します。
 1. **[カスタム ページ URI]** に、先に記録しておいた *custom-ui.html* ファイルの URL を入力します。
 1. ページの最上部で **[保存]** を選択します。
 
 ### <a name="5-test-the-user-flow"></a>5.ユーザー フローをテストする
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択し、*B2C_1_signupsignin1* ユーザー フローを選択します。
-1. ページの上部にある **[ユーザー フローを実行します]** をクリックします。
-1. **[ユーザー フローを実行します]** ボタンをクリックします。
+1. ページの上部にある **[ユーザー フローの実行]** を選択します。
+1. 右側のペインで、 **[ユーザー フローの実行]** ボタンを選択します。
 
 次の例のような、作成した CSS ファイルに基づいて要素が配置されているページが表示されるはずです。
 
@@ -261,7 +306,7 @@ Blob ストレージ内にパブリック コンテナーを作成するには�
 
 UI のカスタマイズを構成するには、**ContentDefinition** とその子要素を基本ファイルから拡張ファイルにコピーします。
 
-1. ポリシーの基本ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em>です。 この基本ファイルは、カスタム ポリシー スターター パックに含まれているポリシー ファイルの 1 つであり、[カスタム ポリシーの概要](./custom-policy-get-started.md)に関するページの前提条件の中で、取得済みになっている必要があります。
+1. ポリシーの基本ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em>です。 この基本ファイルは、カスタム ポリシー スターター パックに含まれているポリシー ファイルの 1 つであり、[カスタム ポリシーの概要](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)に関するページの前提条件の中で、取得済みになっている必要があります。
 1. **ContentDefinitions** 要素を検索し、その内容全体をコピーします。
 1. 拡張ファイルを開きます。 たとえば、*TrustFrameworkExtensions.xml* です。 **BuildingBlocks** 要素を検索します。 要素が存在しない場合は追加します。
 1. コピーした **ContentDefinitions** 要素の内容全体を **BuildingBlocks** 要素の子として貼り付けます。
@@ -291,7 +336,8 @@ UI のカスタマイズを構成するには、**ContentDefinition** とその�
 
 #### <a name="51-upload-the-custom-policy"></a>5.1 カスタム ポリシーをアップロードする
 
-1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **Azure AD B2C** を検索して選択します。
 1. **[ポリシー]** で **[Identity Experience Framework]** を選択します。
 1. **[カスタム ポリシーのアップロード]** を選択します。
@@ -390,7 +436,7 @@ git clone https://github.com/azure-ad-b2c/html-templates
     
 1. `\*.html` ファイルを保存し、それらを Blob Storage にアップロードします。
 1. ここで、前述のように、HTML ファイルを指すようにポリシーを変更します。
-1. 欠落しているフォント、イメージ、または CSS がある場合は、拡張ポリシーおよび \*.html ファイルでお使いの参照を確認してください。
+1. 欠落しているフォント、イメージ、または CSS がある場合は、拡張ポリシーおよび `\*.html` ファイルでお使いの参照を確認してください。
 
 ## <a name="use-company-branding-assets-in-custom-html"></a>カスタム HTML で会社のブランド資産を使用する
 

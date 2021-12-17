@@ -6,17 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 660e87e0c09d1bf052b20f60276a30e572ab825b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4cc2230856690477597d147a9600b22194823318
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110476"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442230"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>組み込みのメトリックを使用して Azure Database for MySQL フレキシブル サーバーを監視する
 
-> [!IMPORTANT] 
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Azure Database for MySQL フレキシブル サーバーでは、Azure Monitor を通してサーバーを監視できます。 メトリックは、サーバーのリソースの特定の時点における何らかの側面を表す数値です。 サーバーのリソースを監視すると、ユーザーにとって最も重要なものを監視できるため、ワークロードのトラブルシューティングと最適化に役立ちます。 適切なメトリックを監視すると、サーバーとアプリケーションのパフォーマンス、信頼性、可用性を維持するのに役立ちます。
 

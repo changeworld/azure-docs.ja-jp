@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 28007b4e17bd698e4aaa2bddbf0c8f9ffaaa8351
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b1f56e2982afc8767ee1addaa2e47ac26cf29c0
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606455"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072911"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:Azure CLI コマンドの az postgres up (プレビュー) を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
 
 > [!IMPORTANT]
-> [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) という Azure CLI コマンドはプレビュー段階です。
+> [az postgres up](/cli/azure/postgres#az_postgres_up) という Azure CLI コマンドはプレビュー段階です。
 
-Azure Database for PostgreSQL は、高可用性 PostgreSQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、[az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) コマンドを使用し、Azure CLI を使って Azure Database for PostgreSQL サーバーを作成する方法を示します。 サーバーの作成に加え、`az postgres up` コマンドではサンプル データベース、データベースのルート ユーザーを作成し、Azure サービスのファイアウォールを開き、クライアント コンピューターの既定のファイアウォール規則を作成します。 これらの既定値は、開発プロセスを促進するために役立ちます。
+Azure Database for PostgreSQL は、高可用性 PostgreSQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、[az postgres up](/cli/azure/postgres#az_postgres_up) コマンドを使用し、Azure CLI を使って Azure Database for PostgreSQL サーバーを作成する方法を示します。 サーバーの作成に加え、`az postgres up` コマンドではサンプル データベース、データベースのルート ユーザーを作成し、Azure サービスのファイアウォールを開き、クライアント コンピューターの既定のファイアウォール規則を作成します。 これらの既定値は、開発プロセスを促進するために役立ちます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +42,7 @@ az account set --subscription <subscription id>
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーの作成
 
-コマンドを使用するには、[db-up](/cli/azure/ext/db-up) 拡張機能をインストールします。 エラーが返された場合は、最新バージョンの Azure CLI がインストールされていることを確認してください。 [Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+コマンドを使用するには、[db-up](/cli/azure/ext/db-up/mysql) 拡張機能をインストールします。 エラーが返された場合は、最新バージョンの Azure CLI がインストールされていることを確認してください。 [Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ```azurecli
 az extension add --name db-up
@@ -71,7 +71,7 @@ admin-user | システム生成 | 管理者のユーザー名。
 admin-password | システム生成 | 管理者ユーザーのパスワード。
 
 > [!NOTE]
-> `az postgres up` コマンドとその追加パラメーターの詳細については、[Azure CLI のドキュメント](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up)を参照してください。
+> `az postgres up` コマンドとその追加パラメーターの詳細については、[Azure CLI のドキュメント](/cli/azure/postgres#az_postgres_up)を参照してください。
 
 サーバーが作成されると、設定は次のようになります。
 
@@ -87,7 +87,7 @@ admin-password | システム生成 | 管理者ユーザーのパスワード。
 
 `az postgres up` コマンドが完了した後、一般的なプログラミング言語の接続文字列のリストが返されます。 これらの接続文字列は、新しく作成した Azure Database for PostgreSQL サーバーの特定の属性で事前に構成されています。
 
-[az postgres show-connection-string](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-show-connection-string) コマンドを使用して、これらの接続文字列をもう一度リストすることができます。
+[az postgres show-connection-string](/cli/azure/postgres#az_postgres_show_connection_string) コマンドを使用して、これらの接続文字列をもう一度リストすることができます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -97,7 +97,7 @@ admin-password | システム生成 | 管理者ユーザーのパスワード。
 az postgres down --delete-group
 ```
 
-新しく作成したサーバーを削除するだけの場合は、[az postgres down](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-down) コマンドを実行できます。
+新しく作成したサーバーを削除するだけの場合は、[az postgres down](/cli/azure/postgres#az_postgres_down) コマンドを実行できます。
 
 ```azurecli
 az postgres down

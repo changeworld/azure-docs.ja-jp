@@ -2,13 +2,13 @@
 title: Azure Service Bus でサブスクリプション フィルターを設定する| Microsoft Docs
 description: この記事では、Azure Service Bus トピック サブスクリプションでフィルターとアクションを定義する例を示します。
 ms.topic: how-to
-ms.date: 02/17/2021
-ms.openlocfilehash: bcbb72901ed8e2dfe0932163ee18683e0011ce70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/07/2021
+ms.openlocfilehash: d73a8cdade8600a793911acfefc54a8e1e1530b6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100656391"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754961"
 ---
 # <a name="set-subscription-filters-azure-service-bus"></a>サブスクリプション フィルターを設定する (Azure Service Bus)
 この記事では Service Bus トピック サブスクリプションでフィルターを設定する例をいくつか紹介します。 フィルターに関する概念情報については、[フィルター](topic-filters.md)に関する記事を参照してください。
@@ -62,7 +62,7 @@ DateTimeMp2-DateTimeMp1 <= @timespan
 ## <a name="using-in-and-not-in"></a>IN と NOT IN の使用
 
 ```csharp
-StoreId IN('Store1', 'Store2', 'Store3')"
+StoreId IN('Store1', 'Store2', 'Store3')
 
 sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
 
@@ -72,7 +72,9 @@ sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','S
 C# のサンプルについては、[GitHub のトピック フィルターのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)を参照してください。
 
 
-## <a name="correlation-filter-using-correlationid"></a>CorrelationID を使用した相関関係フィルター
+## <a name="correlation-filters"></a>相関関係フィルター
+
+### <a name="correlation-filter-using-correlationid"></a>CorrelationID を使用した相関関係フィルター
 
 ```csharp
 new CorrelationFilter("Contoso");
@@ -80,16 +82,24 @@ new CorrelationFilter("Contoso");
 
 `CorrelationID` が `Contoso` に設定されたメッセージをフィルター処理します。 
 
-## <a name="correlation-filter-using-system-and-user-properties"></a>システムおよびユーザーのプロパティを使用した相関関係フィルター
+> [!NOTE]
+> .NET の [CorrelationRuleFilter](/dotnet/api/azure.messaging.servicebus.administration.correlationrulefilter) クラスは、[Azure.Messaging.ServiceBus.Administration](/dotnet/api/azure.messaging.servicebus.administration) 名前空間にあります。 .NET を使用して一般的にフィルターを作成する方法を示すサンプル コードについては、[GitHub のこのコード](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters/Program.cs#L179)をご覧ください。
+
+
+### <a name="correlation-filter-using-system-and-user-properties"></a>システムおよびユーザーのプロパティを使用した相関関係フィルター
 
 ```csharp
-var filter = new CorrelationFilter();
+var filter = new CorrelationRuleFilter();
 filter.Label = "Important";
 filter.ReplyTo = "johndoe@contoso.com";
 filter.Properties["color"] = "Red";
 ```
 
 これは `sys.ReplyTo = 'johndoe@contoso.com' AND sys.Label = 'Important' AND color = 'Red'` と同等です。
+
+
+
+
 
 ## <a name="next-steps"></a>次のステップ
 次のサンプルを参照してください。 

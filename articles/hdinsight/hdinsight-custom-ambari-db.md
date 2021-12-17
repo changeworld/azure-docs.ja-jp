@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: fe38ddc594060c78a2d26e9b25476e38736b4cf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2ab2609338daff846797834be7694a8b1f220e6
+ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946053"
+ms.lasthandoff: 07/11/2021
+ms.locfileid: "113600941"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>カスタム Ambari DB を使用して HDInsight クラスターを設定する
 
@@ -49,7 +49,7 @@ Apache Ambari DB を外部データベースでホストする場合は、次の
 
 ## <a name="deploy-clusters-with-a-custom-ambari-db"></a>カスタム Ambari DB を使用するクラスターをデプロイする
 
-独自の外部 Ambari データベースを使用する HDInsight クラスターを作成するには、[カスタム Ambari DB クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-custom-ambari-db)を使用します。
+独自の外部 Ambari データベースを使用する HDInsight クラスターを作成するには、[カスタム Ambari DB クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-custom-ambari-db)を使用します。
 
 `azuredeploy.parameters.json` 内のパラメーターを編集して、新しいクラスターと、Ambari を保持するデータベースに関する情報を指定します。
 
@@ -62,19 +62,25 @@ az deployment group create --name HDInsightAmbariDBDeployment \
     --parameters azuredeploy.parameters.json
 ```
 
-## <a name="database-sizing"></a>データベースのサイズ設定
+
+> [!WARNING]
+> HDInsight クラスターには、以下に示した推奨 SQL DB およびヘッド ノード VM を使用してください。 運用環境では既定の Ambari DB (S0) を使用しないでください。 
+>
+
+
+## <a name="database-and-headnode-sizing"></a>データベースとヘッドノードのサイズ設定
 
 次の表は、HDInsight クラスターのサイズに基づいて、どの Azure SQL DB 層を選択すべきかに関するガイドラインを示しています。
 
-| ワーカー ノードの数 | 必要な DB 層 |
-|---|---|
-| <=4 | S0 |
-| >4 かつ <=8 | S1 |
-| >8 かつ <=16 | S2 |
-| >16 かつ <=32 | S3 |
-| >32 かつ <=64 | S4 |
-| >64 かつ <=128 | P2 |
-| >128 | サポートに問い合わせる |
+| ワーカー ノードの数 | 必要な DB 層 | 必要なヘッドノード VM |
+|---|---|---|
+| <=4 | S0 | 4 コア、28 GB RAM 以上 |
+| >4 かつ <=8 | S1 | 4 コア、28 GB RAM 以上 |
+| >8 かつ <=16 | S2 | 4 コア、28 GB RAM 以上 |
+| >16 かつ <=32 | S3 | 8 コア、56 GB RAM 以上 |
+| >32 かつ <=64 | S4 | 8 コア、56 GB RAM 以上 |
+| >64 かつ <=128 | P2 | 16 コア、112 GB RAM 以上 |
+| >128 | サポートに問い合わせる | サポートに問い合わせる |
 
 ## <a name="next-steps"></a>次のステップ
 

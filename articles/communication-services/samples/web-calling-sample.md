@@ -2,19 +2,20 @@
 title: Azure Communication Services - Web 通話サンプル
 titleSuffix: An Azure Communication Services sample
 description: Communication Services の Web 通話サンプルについて説明します。
-author: chriswhilar
+author: mariusu-msft
 manager: mariusu-msft
 services: azure-communication-services
 ms.author: mariusu
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 35c3bd0213b6d895a81605f5858f924182e1e307
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.subservice: calling
+ms.openlocfilehash: 394181c73b2282dfa5b4cada49a0ba31cedc5ae9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168860"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255738"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 通話サンプルの概要
 
@@ -83,7 +84,7 @@ PSTN 電話番号に電話をかける際は、代替の発信者番号を指定
 
 詳細については、次の記事を参照してください。
 
-- [Calling SDK の使用法](../quickstarts/voice-video-calling/calling-client-samples.md)について理解する
+- [Calling SDK の使用法](../quickstarts/voice-video-calling/getting-started-with-calling.md)について理解する
 - [通話のしくみ](../concepts/voice-video-calling/about-call-types.md)の詳細について確認する
 - [API リファレンス ドキュメント](/javascript/api/azure-communication-services/@azure/communication-calling/)を確認する
 - [Contoso Med App](https://github.com/Azure-Samples/communication-services-contoso-med-app) サンプルを確認する

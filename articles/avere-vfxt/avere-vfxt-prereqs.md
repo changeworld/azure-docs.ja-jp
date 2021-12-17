@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: d87f57873a4bb84b20df3da3880017d9ef2484a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36ff2aadaf579403603dcf920050e52c0a8bf600
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008414"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807692"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Avere vFXT の作成を準備する
 
@@ -42,7 +42,7 @@ Azure portal で新しい Azure サブスクリプションを作成するには
 
 ## <a name="quota-for-the-vfxt-cluster"></a>vFXT クラスターのクォータ
 
-次の Azure コンポーネントに対する十分なクォータがあることを確認します。 必要な場合は、[クォータの増量を要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)します。
+次の Azure コンポーネントに対する十分なクォータがあることを確認します。 必要な場合は、[クォータの増量を要求](../azure-portal/supportability/regional-quota-requests.md)します。
 
 > [!NOTE]
 > ここで示す仮想マシンと SSD コンポーネントは、vFXT クラスター自体のためのものです。 自分の計算ファーム用に使用する VM と SSD にも追加のクォータが必要であることに注意してください。

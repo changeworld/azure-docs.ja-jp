@@ -2,25 +2,24 @@
 title: OCR コグニティブ スキル
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search のエンリッチメント パイプラインで光学式文字認識 (OCR) を使用して、イメージ ファイルからテキストを抽出します。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: aa9c8e1d5579538df11358edc08eb7e2043cea74
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 08/12/2021
+ms.openlocfilehash: b0ed1860abe3d8a85e87e2bf2746812e1ca67d2e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285843"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860304"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR コグニティブ スキル
 
 **光学式文字認識 (OCR)** スキルでは、画像ファイルに印字された手書きテキストが認識されます。 このスキルでは、Cognitive Services の [Computer Vision](../cognitive-services/computer-vision/overview.md) API [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) によって提供される機械学習モデルが使用されます。 **OCR** スキルは、次の機能にマップします。
 
 + 英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、およびオランダ語については、新しい["Read"](../cognitive-services/computer-vision/overview-ocr.md#read-api) API が使用されます。
-+ その他のすべての言語については、[レガシ OCR](../cognitive-services/computer-vision/overview-ocr.md#ocr-api) API が使用されます。
++ その他のすべての言語については、[レガシ OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f20d) API が使用されます。
 
 **OCR** スキルはイメージファイルからテキストを抽出します｡ サポートされているファイル形式は以下の通りです｡
 
@@ -32,10 +31,10 @@ ms.locfileid: "106285843"
 + .TIFF
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> このスキルは Cognitive Services にバインドされており、1 日にインデクサーあたり 20 ドキュメントを超えるトランザクションには[課金対象リソース](cognitive-search-attach-cognitive-services.md)が必要です。 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。
+> 
+> さらに、画像抽出は [Azure Cognitive Search による課金対象](https://azure.microsoft.com/pricing/details/search/)になります。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://azure.microsoft.com/pricing/details/search/)に関するページで説明されています。
-
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
@@ -209,6 +208,8 @@ Text Merger の一般的なユース ケースとしては､ドキュメント�
 ```
 
 ## <a name="see-also"></a>関連項目
+
++ [光学式文字認識とは](../cognitive-services/computer-vision/overview-ocr.md)
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [TextMerger スキル](cognitive-search-skill-textmerger.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

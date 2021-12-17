@@ -2,18 +2,21 @@
 title: Azure Application Insights を使用して ASP.NET に監視を構成する | Microsoft Docs
 description: オンプレミスまたは Azure でホストされている ASP.NET Web サイトのパフォーマンス、可用性、およびユーザー動作の分析ツールを構成します。
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/12/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f9cb5370dcddf783e533664c4c141779402103f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1609e40d83e7064f7a840e178333a229d12083f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97028990"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070016"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を構成する
 
-この手順では、[Azure Application Insights](./app-insights-overview.md) サービスにテレメトリを送信するように ASP.NET Web アプリを構成します。 これは、オンプレミスの独自の IIS サーバーまたはクラウドでホストされている ASP.NET アプリに対して機能します。 
+この手順では、Azure Monitor サービスの [Application Insights](./app-insights-overview.md) 機能にテレメトリを送信するように、ASP.NET Web アプリを構成します。 これは、オンプレミスの独自の IIS サーバーまたはクラウドでホストされている ASP.NET アプリに対して機能します。 
+
+> [!NOTE]
+> プレビューの [OpenTelemetry ベースの .NET オファリングを](opentelemetry-enable.md?tabs=net) 利用できます。 [詳細については、こちらを参照してください](opentelemetry-overview.md)。
 
 ## <a name="prerequisites"></a>前提条件
 ASP.NET Web サイトに Application Insights を追加するうえで必要なことは次のとおりです。
@@ -22,39 +25,42 @@ ASP.NET Web サイトに Application Insights を追加するうえで必要な�
     - ASP.NET および Web の開発
     - Azure の開発
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+- Azure サブスクリプションをまだ持っていない場合は、[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成します。
 
 - [Application Insights のワークスペースベースのリソース](create-workspace-resource.md)を作成します。
 
 > [!IMPORTANT]
-> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=net)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+> インストルメンテーション キーに対して[接続文字列](./sdk-connection-string.md?tabs=net)をお勧めします。 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する *必要* があります。
+>
+> 接続文字列により、テレメトリ データと関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 
 ## <a name="create-a-basic-aspnet-web-app"></a>基本的な ASP.NET Web アプリを作成する
 
-1. Visual Studio 2019 を起動します。
+1. Visual Studio 2019 を開きます。
 2. **[File]**  >  **[New]**  >  **[Project]** の順に選択します。
 3. **[ASP.NET Web アプリケーション (.NET Framework) C#]** を選択します。
-4. プロジェクト名を入力し、 **[作成]** を選択します。
+4. プロジェクト名を入力して、 **[作成]** を選択します。
 5. **[MVC]**  >  **[作成]** を選択します。 
 
 ## <a name="add-application-insights-automatically"></a>Application Insights を自動的に追加する
 
 このセクションでは、テンプレートベースの ASP.NET Web アプリに Application Insights を自動的に追加する手順について説明します。 Visual Studio の ASP.NET Web アプリ プロジェクト内から:
 
-1. **[Application Insights Telemetry の追加]**  >  **[Application Insights SDK (ローカル)]**  >  **[次へ]**  >  **[完了]**  >  **[閉じる]** の順に選択します。
-2. `ApplicationInsights.config` ファイルを開きます。 
-3. 終了タグ `</ApplicationInsights>` の前に、ご自分の Application Insights リソースのインストルメンテーション キーを含む行を追加します。  インストルメンテーション キーは、この記事の前提条件の一部として新しく作成した、Application Insights リソースの [概要] ペインにあります。
+1. **[プロジェクト]**  >  **[Application Insights Telemetry の追加]**  >  **[Application Insights SDK (ローカル)]**  >  **[次へ]**  >  **[完了]**  >  **[閉じる]** の順に選択します。
+2. *ApplicationInsights.config* ファイルを開きます。 
+3. 終了タグ `</ApplicationInsights>` の前に、自分の Application Insights リソースのインストルメンテーション キーを含む行を追加します。  インストルメンテーション キーは、この記事の前提条件の一部として新しく作成した、Application Insights リソースの [概要] ペインで確認できます。
 
     ```xml
     <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
     ```
-4. **[プロジェクト]**  >  **[NuGet パッケージの管理]**  >  **[更新]** を選択し、各 `Microsoft.ApplicationInsights` NuGet パッケージを最新の安定版リリースに更新します。   
-5. **[IIS Express]** を選択してアプリケーションを実行します。 基本的な ASP.NET アプリが起動します。 サイトでページを移動すると、テレメトリが Application Insights に送信されます。
+
+4. **[プロジェクト]**  >  **[NuGet パッケージの管理]**  >  **[更新]** を選択します。 次に、各 `Microsoft.ApplicationInsights` NuGet パッケージを最新の安定版リリースに更新します。   
+5. **[IIS Express]** を選択してアプリケーションを実行します。 基本的な ASP.NET アプリが開きます。 サイトでページを移動して閲覧すると、テレメトリが Application Insights に送信されます。
 
 ## <a name="add-application-insights-manually"></a>Application Insights を手動で追加する
 
-このセクションでは、テンプレートベースの ASP.NET Web アプリに Application Insights を手動で追加する手順について説明します。 このセクションでは、標準の ASP.NET Framework MVC Web アプリ テンプレートに基づく Web アプリを使用していることを前提としています。
+このセクションでは、テンプレートベースの ASP.NET Web アプリに Application Insights を手動で追加する手順について説明します。 このセクションでは、ASP.NET Framework 用の標準の MVC Web アプリ テンプレートに基づく Web アプリを使用していることを前提としています。
 
 1. 次の NuGet パッケージとその依存関係をプロジェクトに追加します。
 
@@ -62,7 +68,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - [`Microsoft.ApplicationInsights.Web`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web)
     - [`Microsoft.AspNet.TelemetryCorrelation`](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation)
 
-2. 場合によっては、`ApplicationInsights.config` ファイルが自動的に作成されます。 ファイルが既に存在する場合は、手順 #4 に進みます。 自動的に作成されない場合は、自分で作成する必要があります。 プロジェクト内の `Global.asax` ファイルと同じレベルで、`ApplicationInsights.config` という名前の新しいファイルを作成します。
+2. 場合によっては、*ApplicationInsights.config* ファイルが自動的に作成されます。 ファイルが既に存在する場合は、手順 4 に進みます。 
+
+   自動的に作成されない場合は、自分で作成する必要があります。 プロジェクト内の *Global.asax* ファイルと同じレベルに、*ApplicationInsights.config* という名前の新しいファイルを作成します。
 
 3. 次の XML 構成を新しく作成したファイルにコピーします。
 
@@ -208,13 +216,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     </ApplicationInsights>
      ```
 
-4. 終了タグ `</ApplicationInsights>` の前に、ご自分の Application Insights リソースのインストルメンテーション キーを追加します。  インストルメンテーション キーは、この記事の前提条件の一部として新しく作成した、Application Insights リソースの [概要] ペインにあります。
+4. 終了タグ `</ApplicationInsights>` の前に、ご自分の Application Insights リソースのインストルメンテーション キーを追加します。  インストルメンテーション キーは、この記事の前提条件の一部として新しく作成した、Application Insights リソースの [概要] ペインで確認できます。
 
     ```xml
     <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
     ```
 
-5. `ApplicationInsights.config` ファイルと同じレベルのプロジェクトで、`AiHandleErrorAttribute.cs` という名前の新しい C# ファイルを含む `ErrorHandler` という名前のフォルダーを作成します。 ファイルの内容は次のようになります。
+5. プロジェクトの *ApplicationInsights.config* ファイルと同じレベルに、*AiHandleErrorAttribute.cs* という名前の新しい C# ファイルが含まれる *ErrorHandler* という名前のフォルダーを作成します。 ファイルの内容は次のようになります。
 
     ```csharp
     using System;
@@ -244,7 +252,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     ```
 
-6. `App_Start` フォルダーで `FilterConfig.cs` ファイルを開き、次のサンプルに一致するように変更します。
+6. *App_Start* フォルダーで *FilterConfig.cs* ファイルを開き、次のサンプルに一致するように変更します。
 
     ```csharp
     using System.Web;
@@ -262,8 +270,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     }
     ```
 
-7. Web.config ファイルを次のように更新します。
-
+7. *Web.config* が既に更新されている場合は、この手順をスキップします。 そうでない場合は、ファイルを次のように更新します。
+    
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <!--
@@ -280,10 +288,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
       <system.web>
         <compilation debug="true" targetFramework="4.7.2" />
         <httpRuntime targetFramework="4.7.2" />
+        <!-- Code added for Application Insights start -->
         <httpModules>
           <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" />
           <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" />
         </httpModules>
+        <!-- Code added for Application Insights end -->
       </system.web>
       <runtime>
         <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
@@ -315,10 +325,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
             <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
             <bindingRedirect oldVersion="1.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
           </dependentAssembly>
+          <!-- Code added for Application Insights start -->
           <dependentAssembly>
             <assemblyIdentity name="System.Memory" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" />
             <bindingRedirect oldVersion="0.0.0.0-4.0.1.1" newVersion="4.0.1.1" />
           </dependentAssembly>
+          <!-- Code added for Application Insights end -->
         </assemblyBinding>
       </runtime>
       <system.codedom>
@@ -329,34 +341,36 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
       </system.codedom>
       <system.webServer>
         <validation validateIntegratedModeConfiguration="false" />
+        <!-- Code added for Application Insights start -->
         <modules>
           <remove name="TelemetryCorrelationHttpModule" />
           <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" preCondition="managedHandler" />
           <remove name="ApplicationInsightsWebTracking" />
           <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" preCondition="managedHandler" />
         </modules>
+        <!-- Code added for Application Insights end -->
       </system.webServer>
     </configuration>
     
     ```
 
-これで、サーバー側アプリケーションの監視が正常に構成されました。 Web アプリを実行すると、テレメトリが Application Insights 内に表示されることを確認できます。
+これで、サーバー側アプリケーションの監視が正常に構成されました。 Web アプリを実行すると、Application Insights にテレメトリが表示され始めます。
 
 ## <a name="add-client-side-monitoring"></a>クライアント側の監視を追加します。
 
-前のセクションでは、サーバー側の監視を自動および手動で構成する方法に関するガイダンスを提供しました。 クライアント側の監視を追加するには、Microsoft の [クライアント側 JavaScript SDK](javascript.md) を使用する必要があります。 ページの HTML の終了タグ `</head>` の前に [JavaScript スニペット](javascript.md#snippet-based-setup)を追加することで、任意の Web ページのクライアント側トランザクションを監視できます。 
+前のセクションでは、サーバー側の監視を自動および手動で構成する方法に関するガイダンスを提供しました。 クライアント側の監視を追加するには、Microsoft の [クライアント側 JavaScript SDK](javascript.md) を使用します。 ページの HTML の終了タグ `</head>` の前に [JavaScript スニペット](javascript.md#snippet-based-setup)を追加することで、任意の Web ページのクライアント側トランザクションを監視できます。 
 
-各 HTML ページのヘッダーにスニペットを手動で追加することもできますが、代わりにそのスニペットをプライマリ ページに追加することをお勧めします。これにより、スニペットがサイトのすべてのページに挿入されます。 この記事のテンプレートベースの ASP.NET MVC アプリの場合、編集する必要があるファイルは `_Layout.cshtml` と呼ばれ、 **[ビュー]**  >  **[共有]** の下にあります。
+各 HTML ページのヘッダーにスニペットを手動で追加することもできますが、代わりにそのスニペットをプライマリ ページに追加することをお勧めします。 その操作により、スニペットがサイトのすべてのページに挿入されます。 
 
-クライアント側の監視を追加するには、`_Layout.cshtml` ファイルを開き、クライアント側の JavaScript SDK の構成に関する記事の[スニペット ベースのセットアップの指示](javascript.md#snippet-based-setup)に従います。
+この記事のテンプレートベースの ASP.NET MVC アプリの場合、編集する必要があるファイルは *_Layout.cshtml* です。 それは、 **[ビュー]**  >  **[共有]** の下にあります。 クライアント側の監視を追加するには、 *_Layout.cshtml* を開き、クライアント側の JavaScript SDK の構成に関する記事の [スニペット ベースのセットアップの指示](javascript.md#snippet-based-setup)に従います。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-Visual Studio 2019 の現在のバージョンには、インストルメンテーション キーをユーザー シークレットに格納すると、.NET Framework ベースのアプリで壊れるという既知の問題があり、これを回避するには、最終的にキーを applicationinsights.config ファイルにハードコードする必要があります。 この記事は、ユーザー シークレットを使用しないことで、この問題を完全に回避することを目的としています。  
+Visual Studio 2019 の現在のバージョンには、インストルメンテーション キーをユーザー シークレットに格納すると、.NET Framework ベースのアプリで壊れるという既知の問題があります。 このバグを回避するには、最終的にキーを *applicationinsights.config* ファイルにハードコードする必要があります。 この記事は、ユーザー シークレットを使用しないことで、この問題を完全に回避することを目的としています。  
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 
-* [コードを読んで協力してください。](https://github.com/microsoft/ApplicationInsights-dotnet)
+[コードを読んで協力してください。](https://github.com/microsoft/ApplicationInsights-dotnet)
 
 最新の更新プログラムとバグ修正については、[リリース ノートを参照してください](./release-notes.md)。
 

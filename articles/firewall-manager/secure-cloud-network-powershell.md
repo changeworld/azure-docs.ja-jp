@@ -7,12 +7,13 @@ ms.topic: tutorial
 ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
-ms.openlocfilehash: 5ef39118d16d47aeb46294658adf616515547ea6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0a8973887f179f2b05f2694e932f50cafa26c69c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729526"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469401"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して仮想ハブをセキュリティで保護する
 
@@ -32,9 +33,6 @@ ms.locfileid: "105729526"
 - PowerShell 7
 
    このチュートリアルでは、Azure PowerShell をローカルの PowerShell 7 上で実行する必要があります。 PowerShell 7 のインストールについては、「[Windows PowerShell 5.1 から PowerShell 7 への移行](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7&preserve-view=true)」を参照してください。
-- Az.Network バージョン 3.2.0
-
-    Az.Network バージョン 3.4.0 以降を使用している場合は、このチュートリアルのいくつかのコマンドを使用するためにダウングレードする必要があります。 ご使用の Az.Network モジュールのバージョンは、`Get-InstalledModule -Name Az.Network` というコマンドで確認できます。 Az.Network モジュールをアンインストールするには、`Uninstall-Module -name az.network` を実行します。 Az.Network 3.2.0 モジュールをインストールするには、`Install-Module az.network -RequiredVersion 3.2.0 -force` を実行します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -66,8 +64,8 @@ $Hub = New-AzVirtualHub -Name $HubName -ResourceGroupName $RG -VirtualWan $Vwan 
 $Spoke1 = New-AzVirtualNetwork -Name "spoke1" -ResourceGroupName $RG -Location $Location -AddressPrefix "10.1.1.0/24"
 $Spoke2 = New-AzVirtualNetwork -Name "spoke2" -ResourceGroupName $RG -Location $Location -AddressPrefix "10.1.2.0/24"
 # Connect Virtual Network to Virtual WAN
-$Spoke1Connection = New-AzVirtualHubVnetConnection -ResourceGroupName $RG -ParentResourceName  $HubName -Name "spoke1" -RemoteVirtualNetwork $Spoke1
-$Spoke2Connection = New-AzVirtualHubVnetConnection -ResourceGroupName $RG -ParentResourceName  $HubName -Name "spoke2" -RemoteVirtualNetwork $Spoke2
+$Spoke1Connection = New-AzVirtualHubVnetConnection -ResourceGroupName $RG -ParentResourceName  $HubName -Name "spoke1" -RemoteVirtualNetwork $Spoke1 -EnableInternetSecurityFlag $True
+$Spoke2Connection = New-AzVirtualHubVnetConnection -ResourceGroupName $RG -ParentResourceName  $HubName -Name "spoke2" -RemoteVirtualNetwork $Spoke2 -EnableInternetSecurityFlag $True
 ```
 
 この時点で、Virtual WAN は完全に機能するようになり、Any-to-Any 接続が提供されます。 そのセキュリティを強化するためには、それぞれの仮想ハブに Azure ファイアウォールをデプロイする必要があります。 Virtual WAN の Azure Firewall インスタンスは、ファイアウォール ポリシーを使用して効率的に管理することができます。 そこで、この例ではファイアウォール ポリシーも作成します。
@@ -124,9 +122,11 @@ $Spoke2Connection = Update-AzVirtualHubVnetConnection -ResourceGroupName $RG -Pa
 ```azurepowershell
 # Create static routes in default Route table
 $AzFWId = $(Get-AzVirtualHub -ResourceGroupName $RG -name  $HubName).AzureFirewall.Id
-$AzFWRoute = New-AzVHubRoute -Name "private-traffic" -Destination @("0.0.0.0/0", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16") -DestinationType "CIDR" -NextHop $AzFWId -NextHopType "ResourceId"
+$AzFWRoute = New-AzVHubRoute -Name "all_traffic" -Destination @("0.0.0.0/0", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16") -DestinationType "CIDR" -NextHop $AzFWId -NextHopType "ResourceId"
 $DefaultRT = Update-AzVHubRouteTable -Name "defaultRouteTable" -ResourceGroupName $RG -VirtualHubName  $HubName -Route @($AzFWRoute)
 ```
+> [!NOTE]
+> 上記の New-AzVHubRoute コマンドでパラメーター "-Name" の値が文字列 "***all_traffic***" になっていることに特別な意味があります。この正確な文字列を使用すると、この記事で適用されている構成が Azure portal で正しく反映されます (ファイアウォール マネージャー --> 仮想ハブ --> [お使いのハブ] --> セキュリティ構成)。 異なる名前が使用されている場合、希望する構成が適用されますが、Azure portal では反映されません。 
 
 ## <a name="test-connectivity"></a>接続をテストする
 

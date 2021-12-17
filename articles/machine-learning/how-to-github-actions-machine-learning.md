@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning でモデルをトレーニングするための GitHub Actions ワークフローを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: juliakm
 ms.author: jukullam
-ms.date: 10/19/2020
-ms.topic: conceptual
+ms.date: 10/21/2021
+ms.topic: how-to
 ms.custom: github-actions-azure
-ms.openlocfilehash: 6505523aa367eaf202ece81a4253429e864e169a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e8648cb302da6c4659276d36dad4120b3a01c1f1
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780373"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553401"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Azure Machine Learning で GitHub Actions を使用する
 
@@ -83,7 +83,7 @@ az ad sp create-for-rbac --name "myML" --role contributor \
 
 ## <a name="connect-to-the-workspace"></a>ワークスペースに接続する
 
-[Azure Machine Learning ワークスペース アクション](https://github.com/marketplace/actions/azure-machine-learning-workspace)を使用して、Azure Machine Learning ワークスペースに接続します。 
+**Azure Machine Learning ワークスペース アクション** を使用して、Azure Machine Learning ワークスペースに接続します。 
 
 ```yaml
     - name: Connect/Create Azure Machine Learning Workspace

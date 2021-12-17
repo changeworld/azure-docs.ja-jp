@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: 39c0877b96a3e8c6c716c1ab9ae7ba11575990a0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 64b57c814c99d7a792a198d300df27e821fe3cf5
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765595"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577139"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -23,7 +23,7 @@ AKS クラスターは仮想ネットワークにデプロイされます。 こ
 
 管理と運用上の目的から、AKS クラスター内のノードは特定のポートと完全修飾ドメイン名 (FQDN) にアクセスする必要があります。 これらのエンドポイントは、ノードが API サーバーと通信するため、またはコア Kubernetes クラスター コンポーネントとノードのセキュリティ更新プログラムをダウンロードしてからインストールするために必要です。 たとえば、クラスターでは Microsoft Container Registry (MCR) から基本システムのコンテナー イメージをプルする必要があります。
 
-AKS の送信依存関係は、ほぼすべて、背後に静的アドレスがない FQDN を使用して定義されています。 静的アドレスがないということは、ネットワーク セキュリティ グループを使用して AKS クラスターからの送信トラフィックをロック ダウンできないことを意味します。 
+AKS の送信依存関係は、ほぼすべて、背後に静的アドレスがない FQDN を使用して定義されています。 静的アドレスがないということは、ネットワーク セキュリティ グループを使用して AKS クラスターからの送信トラフィックをロック ダウンできないことを意味します。
 
 既定で、AKS クラスターは、送信 (エグレス) インターネット アクセスが無制限です。 このレベルのネットワーク アクセスでは、実行しているノードやサービスから必要に応じて外部リソースにアクセスできます。 エグレス トラフィックを制限する場合は、正常なクラスター メンテナンス タスクを維持するために、アクセスできるポートとアドレスの数を制限する必要があります。 送信アドレスをセキュリティで保護する最も簡単なソリューションは、ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスを使用することです。 たとえば、Azure Firewall では、送信先の FQDN に基づいて HTTP と HTTPS の送信トラフィックを制限できます。 また、適切なファイアウォール規則とセキュリティ規則を構成し、これらの必要なポートとアドレスを許可することができます。
 
@@ -37,10 +37,9 @@ AKS クラスターには、次のネットワーク規則と FQDN およびア�
 * IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP トラフィックと UDP トラフィックの両方) に対応しています
 * FQDN HTTP/HTTPS エンドポイントは、ファイアウォール デバイスに配置することができます。
 * HTTP と HTTPS のワイルドカード エンドポイントは、いくつかの修飾子に基づき、AKS クラスターによって異なる場合がある依存関係です。
-* AKS では、アドミッション コントローラーを使用して、kube-system と gatekeeper-system の下にあるすべてのデプロイに対し、FQDN が環境変数として挿入されます。これにより、ノードと API サーバー間のすべてのシステム通信において、API サーバーの IP ではなく、API サーバーの FQDN が使用されるようになります。 
+* AKS では、アドミッション コントローラーを使用して、kube-system と gatekeeper-system の下にあるすべてのデプロイに対し、FQDN が環境変数として挿入されます。これにより、ノードと API サーバー間のすべてのシステム通信において、API サーバーの IP ではなく、API サーバーの FQDN が使用されるようになります。
 * API サーバーと通信する必要があるアプリまたはソリューションがある場合は、ネットワーク規則を **追加** して、"*API サーバーの IP のポート 443 への TCP 通信* を許可する必要があります。
 * まれに、メンテナンスが行われると、API サーバーの IP が変わる可能性があります。 API サーバーの IP が変わる可能性がある計画メンテナンス操作は、常に事前に通知されます。
-
 
 ### <a name="azure-global-required-network-rules"></a>Azure Global に必要なネットワーク規則
 
@@ -54,7 +53,7 @@ AKS クラスターには、次のネットワーク規則と FQDN およびア�
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | カスタム DNS サーバーを使用している場合は、クラスター ノードからそれらにアクセスできることを確認する必要があります。 |
 | **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | API サーバーにアクセスするポッドとデプロイを実行する場合に必要です。それらのポッドとデプロイでは API IP が使用されます。 これは、[プライベート クラスター](private-clusters.md)では必要ありません  |
 
-### <a name="azure-global-required-fqdn--application-rules"></a>Azure Global に必要な FQDN とアプリケーションの規則 
+### <a name="azure-global-required-fqdn--application-rules"></a>Azure Global に必要な FQDN とアプリケーションの規則
 
 次の FQDN/アプリケーション規則が必要です。
 
@@ -108,7 +107,7 @@ AKS クラスターには、次のネットワーク規則と FQDN およびア�
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | カスタム DNS サーバーを使用している場合は、クラスター ノードからそれらにアクセスできることを確認する必要があります。 |
 | **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | API サーバーにアクセスするポッドとデプロイを実行する場合に必要です。それらのポッドとデプロイでは API IP が使用されます。  |
 
-### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure US Government に必要な FQDN とアプリケーションの規則 
+### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure US Government に必要な FQDN とアプリケーションの規則
 
 次の FQDN/アプリケーション規則が必要です。
 
@@ -144,7 +143,7 @@ GPU が有効になっている AKS クラスターの場合、次の FQDN/ア�
 | **`us.download.nvidia.com`**            | **`HTTPS:443`** | このアドレスは、GPU ベースのノード上のドライバーの適切なインストールと操作に使用されます。 |
 | **`apt.dockerproject.org`**             | **`HTTPS:443`** | このアドレスは、GPU ベースのノード上のドライバーの適切なインストールと操作に使用されます。 |
 
-## <a name="windows-server-based-node-pools"></a>Windows Server ベースのノード プール 
+## <a name="windows-server-based-node-pools"></a>Windows Server ベースのノード プール
 
 ### <a name="required-fqdn--application-rules"></a>必要な FQDN とアプリケーションの規則
 
@@ -180,30 +179,9 @@ Azure Monitor for containers 有効になっている AKS クラスターの場�
 | *.oms.opinsights.azure.com | **`HTTPS:443`** | このエンドポイントは、ログ分析サービスの認証に使用される omsagent によって使用されます。 |
 | *.monitoring.azure.com | **`HTTPS:443`** | このエンドポイントは、メトリック データを Azure Monitor に送信するために使用されます。 |
 
-### <a name="azure-dev-spaces"></a>Azure Dev Spaces
-
-以下のすべての FQDN と [Azure Dev Spaces インフラストラクチャ サービス][dev-spaces-service-tags]との間のネットワーク トラフィックを許可するように、ファイアウォールまたはセキュリティ構成を更新します。
-
-#### <a name="required-network-rules"></a>必要なネットワーク規則
-
-| 送信先エンドポイント                                                             | Protocol | Port    | 用途  |
-|----------------------------------------------------------------------------------|----------|---------|------|
-| [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureDevSpaces`**  | TCP           | 443      | このエンドポイントは、メトリック データとログを Azure Monitor および Log Analytics に送信するために使用されます。 |
-
-#### <a name="required-fqdn--application-rules"></a>必要な FQDN とアプリケーションの規則 
-
-Azure Dev Spaces が有効になっている AKS クラスターの場合、次の FQDN/アプリケーション規則が必要です。
-
-| FQDN                                    | Port      | 用途      |
-|-----------------------------------------|-----------|----------|
-| `cloudflare.docker.com` | **`HTTPS:443`** | このアドレスは、linux alpine やその他の Azure Dev Spaces イメージをプルするために使用されます。 |
-| `gcr.io` | **`HTTPS:443`** | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
-| `storage.googleapis.com` | **`HTTPS:443`** | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
-
-
 ### <a name="azure-policy"></a>Azure Policy
 
-#### <a name="required-fqdn--application-rules"></a>必要な FQDN とアプリケーションの規則 
+#### <a name="required-fqdn--application-rules"></a>必要な FQDN とアプリケーションの規則
 
 Azure Policy が有効になっている AKS クラスターの場合、次の FQDN/アプリケーション規則が必要です。
 
@@ -211,11 +189,9 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 |-----------------------------------------------|-----------|----------|
 | **`data.policy.core.windows.net`** | **`HTTPS:443`** | このアドレスは、Kubernetes ポリシーをプルし、クラスターのコンプライアンス状態をポリシー サービスにレポートするために使用されます。 |
 | **`store.policy.core.windows.net`** | **`HTTPS:443`** | このアドレスは、組み込みポリシーの Gatekeeper アーティファクトをプルするために使用されます。 |
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | このアドレスは、Azure Policy の適切な操作のために使用されます。  |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | このアドレスは、Azure Policy の正しい動作のために組み込みポリシーを GitHub から取得するために使用されます。 |
-| **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | テレメトリ データを Application Insights エンドポイントに送信するAzure Policy アドオン。 |
+| **`dc.services.visualstudio.com`** | **`HTTPS:443`** | テレメトリ データを Application Insights エンドポイントに送信するAzure Policy アドオン。 |
 
-#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure China 21Vianet に必要な FQDN とアプリケーションの規則 
+#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure China 21Vianet に必要な FQDN とアプリケーションの規則
 
 Azure Policy が有効になっている AKS クラスターの場合、次の FQDN/アプリケーション規則が必要です。
 
@@ -233,9 +209,29 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 | **`data.policy.azure.us`** | **`HTTPS:443`** | このアドレスは、Kubernetes ポリシーをプルし、クラスターのコンプライアンス状態をポリシー サービスにレポートするために使用されます。 |
 | **`store.policy.azure.us`** | **`HTTPS:443`** | このアドレスは、組み込みポリシーの Gatekeeper アーティファクトをプルするために使用されます。 |
 
+## <a name="cluster-extensions"></a>クラスター拡張機能
+
+### <a name="required-fqdn--application-rules"></a>必要な FQDN とアプリケーションの規則
+
+AKS クラスターでクラスター拡張機能を使用するには、次の FQDN/アプリケーションルールが必要です。
+
+| FQDN | Port | 用途 |
+|-----------------------------------------------|-----------|----------|
+| **`<region>.dp.kubernetesconfiguration.azure.com`** | **`HTTPS:443`** | このアドレスは、クラスター拡張機能サービスから構成情報を取得し、サービスに拡張状態をレポートするために使用されます。|
+| **`mcr.microsoft.com, *.data.mcr.microsoft.com`** | **`HTTPS:443`** | このアドレスは、クラスター拡張機能エージェントを AKS クラスターにインストールするためにコンテナーイメージをプルするために必要です。|
+
+#### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure US Government に必要な FQDN とアプリケーションの規則
+
+AKS クラスターでクラスター拡張機能を使用するには、次の FQDN/アプリケーションルールが必要です。
+
+| FQDN | Port | 用途 |
+|-----------------------------------------------|-----------|----------|
+| **`<region>.dp.kubernetesconfiguration.azure.us`** | **`HTTPS:443`** | このアドレスは、クラスター拡張機能サービスから構成情報を取得し、サービスに拡張状態をレポートするために使用されます。 |
+| **`mcr.microsoft.com, *.data.mcr.microsoft.com`** | **`HTTPS:443`** | このアドレスは、クラスター拡張機能エージェントを AKS クラスターにインストールするためにコンテナーイメージをプルするために必要です。|
+
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Azure Firewall を使用してエグレス トラフィックを制限する
 
-Azure Firewall では、この構成を簡略化するための Azure Kubernetes Service (`AzureKubernetesService`) FQDN タグが提供されています。 
+Azure Firewall では、この構成を簡略化するための Azure Kubernetes Service (`AzureKubernetesService`) FQDN タグが提供されています。
 
 > [!NOTE]
 > FQDN タグには上記の FQDN がすべて含まれており、自動的に最新の状態に維持されます。
@@ -258,9 +254,7 @@ Azure Firewall では、この構成を簡略化するための Azure Kubernetes
 * 内部トラフィック
   * 必要に応じて、[パブリック ロード バランサー](load-balancer-standard.md)の代わりに、またはそれに加えて、内部トラフィックに[内部ロード バランサー](internal-lb.md)を使用することもできます。これも、独自のサブネットで分離できます。
 
-
 以下の手順では、Azure Firewall の `AzureKubernetesService` FQDN タグを使用して、AKS クラスターからの送信トラフィックを制限し、ファイアウォール経由のパブリック受信トラフィックを構成する方法の例を示します。
-
 
 ### <a name="set-configuration-via-environment-variables"></a>環境変数を使用して構成を設定する
 
@@ -326,7 +320,6 @@ Azure Firewall の受信および送信規則を構成する必要がありま�
 
 ![ファイアウォールと UDR](media/limit-egress-traffic/firewall-udr.png)
 
-
 > [!IMPORTANT]
 > クラスターまたはアプリケーションにより、同じ送信先または送信先の小さいサブセットに対して多数の送信接続が作成される場合、フロントエンド IP あたりのポート数の上限に達するのを防ぐため、より多くのファイアウォール フロントエンド IP が必要になることがあります。
 > 複数の IP を持つ Azure ファイアウォールを作成する方法の詳細については、「[**こちら**](../firewall/quick-create-multiple-ip-template.md)」を参照してください
@@ -338,6 +331,7 @@ az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
 Azure ファイアウォールを作成するには、プレビューの cli 拡張機能を登録します。
+
 ```azurecli
 # Install Azure Firewall preview CLI extension
 
@@ -347,6 +341,7 @@ az extension add --name azure-firewall
 
 az network firewall create -g $RG -n $FWNAME -l $LOC --enable-dns-proxy true
 ```
+
 これで、以前に作成した IP アドレスをファイアウォール フロントエンドに割り当てることができるようになります。
 
 > [!NOTE]
@@ -381,7 +376,7 @@ Azure では、Azure のサブネット、仮想ネットワーク、および�
 # Create UDR and add a route for Azure Firewall
 
 az network route-table create -g $RG -l $LOC --name $FWROUTE_TABLE_NAME
-az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
+az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
 
@@ -448,7 +443,7 @@ az role assignment create --assignee $APPID --scope $VNETID --role "Network Cont
 必要なアクセス許可の詳細については、[こちら](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)で確認できます。
 
 > [!NOTE]
-> Kubernet ネットワーク プラグインを使用している場合、Kubernet では必要なルーティング規則を追加するためにルート テーブルが必要であるため、事前に作成されているルート テーブルへのアクセス許可を、AKS サービス プリンシパルまたはマネージド ID に付与する必要があります。 
+> Kubernet ネットワーク プラグインを使用している場合、Kubernet では必要なルーティング規則を追加するためにルート テーブルが必要であるため、事前に作成されているルート テーブルへのアクセス許可を、AKS サービス プリンシパルまたはマネージド ID に付与する必要があります。
 > ```azurecli-interactive
 > RTID=$(az network route-table show -g $RG -n $FWROUTE_TABLE_NAME --query id -o tsv)
 > az role assignment create --assignee $APPID --scope $RTID --role "Network Contributor"
@@ -466,7 +461,6 @@ SUBNETID=$(az network vnet subnet show -g $RG --vnet-name $VNET_NAME --name $AKS
 
 > [!IMPORTANT]
 > 制限など、送信の種類 UDR の詳細については、[**エグレス送信の種類 UDR**](egress-outboundtype.md#limitations)に関する記事を参照してください。
-
 
 > [!TIP]
 > [**プライベート クラスター**](private-clusters.md)などの新しい機能をクラスターのデプロイに追加できます。 
@@ -499,16 +493,16 @@ CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 
 # Add to AKS approved list
 az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
-
 ```
 
- 新しく作成された Kubernetes クラスターに接続するように、[az aks get-credentials][az-aks-get-credentials] コマンドを使用して `kubectl` を構成します。 
+新しく作成された Kubernetes クラスターに接続するように、[az aks get-credentials][az-aks-get-credentials] コマンドを使用して `kubectl` を構成します。
 
- ```azurecli
- az aks get-credentials -g $RG -n $AKSNAME
- ```
+```azurecli
+az aks get-credentials -g $RG -n $AKSNAME
+```
 
 ### <a name="deploy-a-public-service"></a>パブリック サービスをデプロイする
+
 サービスの公開と、このクラスターへのアプリケーションのデプロイを始めることができます。 この例では、パブリック サービスを公開しますが、[内部ロード バランサー](internal-lb.md)を介して内部サービスを公開することもできます。
 
 ![パブリック サービスの DNAT](media/limit-egress-traffic/aks-create-svc.png)
@@ -740,7 +734,6 @@ kubectl apply -f example.yaml
 > [!IMPORTANT]
 > Azure Firewall を使用してエグレス トラフィックを制限し、すべてのエグレス トラフィックを強制するユーザー定義ルート (UDR) を作成するときは、イグレス トラフィックを正しく許可するために、ファイアウォールで適切な DNAT 規則を作成する必要があります。 UDR で Azure Firewall を使用すると、非対称ルーティングによってイングレス設定が機能しなくなります (AKS サブネットにファイアウォールのプライベート IP アドレスに送信される既定のルートがあるのに、種類が LoadBalancer であるイングレスまたは Kubernetes サービスのパブリック ロード バランサーを使用している場合、この問題が発生します)。 この場合、ロード バランサーの受信トラフィックはパブリック IP アドレス経由で受信されますが、復路のパスはファイアウォールのプライベート IP アドレスを通過します。 ファイアウォールはステートフルであり、確立済みのセッションを認識しないため、返されるパケットは破棄されます。 Azure Firewall をイングレスまたはサービスのロード バランサーと統合する方法については、「[Azure Firewall と Azure Standard Load Balancer を統合する](../firewall/integrate-lb.md)」を参照してください。
 
-
 受信接続を構成するには、DNAT 規則を Azure ファイアウォールに書き込む必要があります。 クラスターへの接続をテストするために、内部サービスによって公開されている内部 IP にルーティングされるように、ファイアウォール フロントエンド パブリック IP アドレスの規則を定義します。
 
 送信先アドレスは、アクセス先のファイアウォールのポートなので、カスタマイズできます。 変換されたアドレスは、内部ロード バランサーの IP アドレスである必要があります。 変換されたポートは、Kubernetes サービスの公開ポートである必要があります。
@@ -762,11 +755,13 @@ voting-storage     ClusterIP      10.41.221.201   <none>        3306/TCP       9
 ```
 
 以下を実行して、サービス IP を取得します。
+
 ```bash
 SERVICE_IP=$(kubectl get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
 ```
 
 以下を実行して、NAT 規則を追加します。
+
 ```azurecli
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address $SERVICE_IP
 ```
@@ -777,9 +772,7 @@ az network firewall nat-rule create --collection-name exampleset --destination-a
 
 AKS 投票アプリが表示されます。 この例では、ファイアウォールのパブリック IP は `52.253.228.132` でした。
 
-
 ![[Cats]、[Dogs]、[Reset] のボタンと合計値が表示されている A K S 投票アプリを示すスクリーンショット。](media/limit-egress-traffic/aks-vote.png)
-
 
 ### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -791,7 +784,7 @@ az group delete -g $RG
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、クラスターのエグレス トラフィックを制限する場合に許可するポートとアドレスについて学習しました。 また、Azure Firewall を使用して送信トラフィックをセキュリティで保護する方法についても説明しました。 
+この記事では、クラスターのエグレス トラフィックを制限する場合に許可するポートとアドレスについて学習しました。 また、Azure Firewall を使用して送信トラフィックをセキュリティで保護する方法についても説明しました。
 
 必要な場合は、[送信の種類 `userDefinedRoute` のドキュメント](egress-outboundtype.md)に従い、上記の手順を一般化して、好みのエグレス ソリューションにトラフィックを転送できます。
 
@@ -809,4 +802,3 @@ az group delete -g $RG
 [aks-upgrade]: upgrade-cluster.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[dev-spaces-service-tags]: ../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations

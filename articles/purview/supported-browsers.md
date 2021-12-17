@@ -3,16 +3,15 @@ title: サポートされているブラウザー
 description: この記事では、Azure Purview でサポートされているブラウザーの一覧を示します。
 author: nayenama
 ms.author: nayenama
-ms.service: data-catalog
-ms.subservice: data-catalog-gen2
+ms.service: purview
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: f60c91d31b7a97d2a17414cf42e85c27451ad4ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 032aad75a2d553fc5d8ff6181b6a994aaaa6db72
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97372027"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213935"
 ---
 # <a name="supported-browsers"></a>サポートされているブラウザー 
 

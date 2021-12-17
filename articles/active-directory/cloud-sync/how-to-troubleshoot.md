@@ -4,16 +4,16 @@ description: この記事では、クラウド プロビジョニング エー�
 author: billmath
 ms.author: billmath
 manager: daveba
-ms.date: 01/19/2021
+ms.date: 10/13/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 65022d98c7ee7e90d8f1fe5b6854605c841ad05b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4fa397505d7bb98235a97e5818409baee9c9c9e4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530312"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451865"
 ---
 # <a name="cloud-sync-troubleshooting"></a>クラウド同期のトラブルシューティング
 
@@ -27,6 +27,7 @@ ms.locfileid: "107530312"
 |[エージェントに関する問題](#agent-problems)|エージェントが正しくインストールされていること、および Azure Active Directory (Azure AD) と通信していることを確認します。|
 |[オブジェクトの同期に関する問題](#object-synchronization-problems)|プロビジョニング ログを使用して、オブジェクトの同期に関する問題をトラブルシューティングします。|
 |[プロビジョニングの検疫に関する問題](#provisioning-quarantined-problems)|プロビジョニングの検疫に関する問題とその解決方法を理解します。|
+|[パスワードの書き戻し](#password-writeback)|パスワードの書き戻しに関する一般的な問題とその解決方法について説明します。|
 
 
 ## <a name="agent-problems"></a>エージェントに関する問題
@@ -167,21 +168,22 @@ Azure portal では、プロビジョニング ログを使用して、オブジ
 ![検疫に関する詳細を示すスクリーンショット。](media/how-to-troubleshoot/quarantine-2.png)
 
 状態を右クリックすると、追加のオプションが表示されます。
-    
-   - プロビジョニング ログの表示
-   - エージェントの表示
-   - 検疫のクリア
+
+- プロビジョニング ログの表示
+- エージェントの表示
+- 検疫のクリア
 
 ![右クリック メニュー オプションを示すスクリーンショット。](media/how-to-troubleshoot/quarantine-4.png)
 
-
 ### <a name="resolve-a-quarantine"></a>検疫を解決する
-検疫を解決するには、2 つの異なる方法があります。  これらは次のとおりです。
 
-  - 検疫のクリア - 透かしをクリアし、差分同期を実行します
-  - プロビジョニング ジョブを再起動する - 透かしをクリアし、初期同期を実行します
+検疫を解決するには、2 つの異なる方法があります。 これらは次のとおりです。
+
+- 検疫のクリア - 透かしをクリアし、差分同期を実行します
+- プロビジョニング ジョブを再起動する - 透かしをクリアし、初期同期を実行します
 
 #### <a name="clear-quarantine"></a>検疫のクリア
+
 透かしをクリアし、確認後にプロビジョニング ジョブで差分同期を実行するには、状態を右クリックし、 **[clear quarantine]\(検疫のクリア\)** を選択します。
 
 検疫がクリアされていることを示す通知が表示されます。
@@ -193,11 +195,13 @@ Azure portal では、プロビジョニング ログを使用して、オブジ
 ![検疫状態の情報](media/how-to-troubleshoot/quarantine-6.png)
 
 #### <a name="restart-the-provisioning-job"></a>プロビジョニング ジョブを再起動する
+
 Azure portal を使用して、プロビジョニング ジョブを再起動します。 エージェントの構成ページで **[プロビジョニングを再開する]** を選択します。
 
   ![プロビジョニングを再開する](media/how-to-troubleshoot/quarantine-3.png)
 
 - Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)。 再起動する対象は完全に制御できます。 次のものをクリアすることを選択できます。
+
   - エスクロー。検疫状態を発生させるエスクロー カウンターを再起動します。
   - 検疫。アプリケーションを検疫から削除します。
   - ウォーターマーク。 
@@ -207,20 +211,39 @@ Azure portal を使用して、プロビジョニング ジョブを再起動し
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
 
 ## <a name="repairing-the-the-cloud-sync-service-account"></a>クラウド同期サービス アカウントの修復
-クラウド同期サービス アカウントを修復する必要がある場合は、`Repair-AADCloudSyncToolsAccount` を使用できます。  
 
+クラウド同期サービス アカウントを修復する必要がある場合は、`Repair-AADCloudSyncToolsAccount` を使用できます。
 
-   1.  [こちら](reference-powershell.md#install-the-aadcloudsynctools-powershell-module)に記載されているインストール手順を使用して開始し、残りの手順を続行します。
-   2.  管理者特権を持つ Windows PowerShell セッションから、次を入力するかコピーして貼り付けます。 
-    ```
-    Connect-AADCloudSyncTools
-    ```  
-   3. ご自分の Azure AD グローバル管理者の資格情報を入力します。
-   4. 次を入力するか、コピーして貼り付けます。 
-    ```
-    Repair-AADCloudSyncToolsAccount
-    ```  
+   1. [こちら](reference-powershell.md#install-the-aadcloudsynctools-powershell-module)に記載されているインストール手順を使用して開始し、残りの手順を続行します。
+
+   2. 管理者特権を持つPowerShell セッションから、次のように入力するかコピーして貼り付けます。
+
+      ```powershell
+      Connect-AADCloudSyncTools
+      ```
+
+   3. AzureADのグローバル管理者の資格情報を入力します。
+
+   4. 次を入力するか、コピーして貼り付けます。
+
+      ```powershell
+      Repair-AADCloudSyncToolsAccount
+      ```
+
    5. これを完了すると、アカウントが正常に修復されたことが示されます。
+
+## <a name="password-writeback"></a>パスワードの書き戻し
+クラウド同期でパスワードの書き戻しを有効にして使用するとき、次の情報を念頭に置くことが重要です。
+
+- [gMSA アクセス許可](how-to-gmsa-cmdlets.md#using-set-aadcloudsyncpermissions)を更新する必要がある場合、ディレクトリ内のすべてのオブジェクトにこれらのアクセス許可がレプリケートされるまで最大で 1 時間以上かかる場合があります。 これらのアクセス許可を割り当てないと、ライトバックが正しく構成されているように見えても、ユーザーがクラウドからオンプレミスのパスワードを更新するときにエラーが発生することがあります。 **期限切れではないパスワード** が表示されるためには、"このオブジェクトとすべての子オブジェクト" にアクセス許可が割り当てられている必要があります。 
+- 一部のユーザー アカウントのパスワードがオンプレミスのディレクトリに書き戻されない場合は、オンプレミスの AD DS 環境でそのアカウントの継承が無効になっていないことを確認してください。 この機能を正常に動作させるには、パスワードの書き込みアクセス許可を子孫オブジェクトに適用する必要があります。 
+- オンプレミスの AD DS 環境のパスワード ポリシーによって、パスワードのリセットが正しく処理されない場合があります。 この機能をテストしていて、ユーザーのパスワードを 1 日に複数回リセットする場合は、[パスワードの変更禁止期間] のグループ ポリシーを 0 に設定する必要があります。 この設定は、 **[コンピューターの構成] > [ポリシー] > [Windows の設定] > [セキュリティの設定] > [アカウント ポリシー]** の下の **gpmc.msc** にあります。 
+     - グループ ポリシーを更新する場合は、更新されたポリシーがレプリケートされるまで待つか、gpupdate /force コマンドを使用します。 
+     - パスワードがすぐに変更されるようにするには、 [パスワードの変更禁止期間] を 0 に設定する必要があります。 ただし、ユーザーがオンプレミスのポリシーに準拠していて、[パスワードの変更禁止期間] が 0 より大きい値に設定されている場合は、オンプレミスのポリシーが評価された後にパスワード ライトバックが機能しません。 
+
+
+
+
 
 ## <a name="next-steps"></a>次のステップ 
 

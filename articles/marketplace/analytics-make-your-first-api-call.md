@@ -4,15 +4,16 @@ description: コマーシャル マーケットプレース分析データにア
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 9e5fbdfca80d19f026a014a89ffbf137bacb521c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f4437782f46e3144b3917a16fec14c9e92dfd303
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639582"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748285"
 ---
 # <a name="make-your-first-api-call-to-access-commercial-marketplace-analytics-data"></a>最初の API 呼び出しを行って、コマーシャル マーケットプレース分析データにアクセスする
 
@@ -337,5 +338,5 @@ Curl
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Swagger API URL](https://swagger.io/docs/specification/api-host-and-base-path/) を使用して API を試すことができます
+- [Swagger API URL](https://api.partnercenter.microsoft.com/insights/v1/cmp/swagger/index.html) を使用して API を試すことができます
 - [プログラムによるアクセスのパラダイム](analytics-programmatic-access.md)

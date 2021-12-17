@@ -10,16 +10,13 @@ ms.date: 11/23/2020
 ms.topic: quickstart
 ms.service: synapse-analytics
 ms.subservice: sql-dw
-ms.custom:
-- seo-lt-2019
-- azure-synapse
-- mode-portal
-ms.openlocfilehash: 27587f436013bcaccbacd668ce62f1d939f89e48
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.custom: seo-lt-2019, azure-synapse, mode-portal
+ms.openlocfilehash: a24c0327d2f19888de483c5b5f48c05d28f215c2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566819"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022248"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>クイックスタート: Azure portal を使用して専用 SQL プールのコンピューティングを一時停止および再開する
 

@@ -3,15 +3,15 @@ title: オンプレミスのデータ ソースにアクセスする
 description: Azure でデータ ゲートウェイ リソースを作成することにより、Azure Logic Apps からオンプレミスのデータ ソースに接続します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: arthii, logicappspm
+ms.reviewer: arthii, azla
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: 49da5d7f045ed06ba16696ebd16ad212b9d140d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/14/2021
+ms.openlocfilehash: 30fa05a4aad2108ac96de820ac2ea86357cd17b6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763311"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457527"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
@@ -35,18 +35,20 @@ ms.locfileid: "107763311"
 
 Azure Logic Apps では、オンプレミス データ ゲートウェイで、これらのデータ ソースの[オンプレミス コネクタ](../connectors/managed.md#on-premises-connectors)がサポートされます。
 
-* BizTalk Server 2016
-* ファイル システム
-* IBM DB2  
-* IBM Informix
-* IBM MQ
-* MySQL
-* Oracle Database
-* PostgreSQL
-* SAP
-* SharePoint Server
-* SQL Server
-* Teradata
+* [Apache Impala](/connectors/impala)
+* [BizTalk Server](/connectors/biztalk)
+* [ファイル システム](/connectors/filesystem)
+* [HTTP with Azure AD](/connectors/webcontents)
+* [IBM DB2](/connectors/db2)
+* [IBM Informix](/connectors/informix)
+* [IBM MQ](/connectors/mq)
+* [MySQL](/connectors/mysql)
+* [Oracle データベース](/connectors/oracle)
+* [PostgreSQL](/connectors/postgresql)
+* [SAP](/connectors/sap)
+* [SharePoint Server](/connectors/sharepointonline)
+* [SQL Server](/connectors/sql)
+* [Teradata](/connectors/teradata)
 
 REST または SOAP を使用すると、HTTP または HTTPS 経由でデータ ソースに接続する[カスタム コネクタ](../logic-apps/custom-connector-overview.md)を作成することもできます。 ゲートウェイ自体では追加コストは発生しませんが、これらのコネクタや Azure Logic Apps のその他の操作に [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)が適用されます。
 
@@ -61,7 +63,7 @@ REST または SOAP を使用すると、HTTP または HTTPS 経由でデータ
   * ロジック アプリとゲートウェイ リソースは、同じ Azure サブスクリプション内に存在する必要はありません。 ゲートウェイ リソースを使用できるトリガーとアクションでは、ゲートウェイ リソースがある別の Azure サブスクリプションを選択できます。ただし、そのサブスクリプションがロジック アプリと同じ Azure AD テナントまたはディレクトリに存在する場合に限ります。 また、別の管理者が設定できるゲートウェイに対する管理者権限も必要です。 詳細については、[データ ゲートウェイ: PowerShell を使用した Automation - パート 1](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330) および [PowerShell: データ ゲートウェイ - Add-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser) に関する記事を参照してください。
 
     > [!NOTE]
-    > 現時点では、複数のサブスクリプション間でゲートウェイ リソースやインストールを共有することはできません。 製品のフィードバックを送信するには、[Microsoft Azure フィードバック フォーラム](https://feedback.azure.com/forums/34192--general-feedback)を参照してください。
+    > 現時点では、複数のサブスクリプション間でゲートウェイ リソースやインストールを共有することはできません。 製品のフィードバックを送信するには、[Microsoft Azure フィードバック フォーラム](https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4)を参照してください。
 
 <a name="create-gateway-resource"></a>
 
@@ -170,7 +172,7 @@ Azure サブスクリプションに関連付けられているすべての API 
 
 * お使いの Azure アカウントは、1 つの [Azure AD テナントまたはディレクトリ](../active-directory/fundamentals/active-directory-whatis.md#terminology)だけに属していません。 ゲートウェイのインストール時に使用したものと同じ Azure AD テナントまたはディレクトリを使用していることを確認してください。
 
-* ゲートウェイ リソースとゲートウェイのインストールが、同じリージョンに存在していません。 ただし、ロジック アプリの場所は、ゲートウェイ リソースの場所と異なっていてもかまいません。
+* ゲートウェイ リソースとゲートウェイのインストールが、同じリージョンに存在していません。 ゲートウェイのインストールで、Azure でゲートウェイ リソースを作成するリージョンと同じリージョンが使用されている必要があります。 ただし、ロジック アプリの場所は、ゲートウェイ リソースの場所と異なっていてもかまいません。
 
 * ゲートウェイのインストールは、別のゲートウェイ リソースに既に関連付けられています。 各ゲートウェイ リソースは、1 つの Azure アカウントおよびサブスクリプションのみリンクできる、1 つのゲートウェイ インストールにだけリンクできます。 そのため、別のゲートウェイ リソースと既に関連付けられているゲートウェイ インストールを選択することはできません。 これらのインストールは、 **[インストール名]** の一覧に表示されません。
 

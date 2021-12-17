@@ -10,15 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 04/06/2021
+ms.date: 11/12/2021
 ms.author: rolyon
-ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: b4a3f7f613f75f2f285437b7ae6f816adf56d999
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.custom: seohack1, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: e0ce4f4b0408b63c12c023ad56d473cc50a44027
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580098"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398309"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC のトラブルシューティング
 
@@ -26,10 +26,10 @@ ms.locfileid: "106580098"
 
 ## <a name="azure-role-assignments-limit"></a>Azure でのロールの割り当て制限
 
-Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。 この制限には、サブスクリプション、リソース グループ、およびリソースのスコープでのロールの割り当てが含まれます。 エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、サブスクリプションのロールの割り当て数を減らしてみます。
+Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。 この制限には、サブスクリプション、リソース グループ、リソースのスコープでのロールの割り当てが含まれます。管理グループのスコープではありません。 エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、サブスクリプションのロールの割り当て数を減らしてみます。
 
 > [!NOTE]
-> **2,000** のサブスクリプション当たりのロール割り当ての制限は固定されており、増やすことはできません。
+> サブスクリプションごとのロールの割り当て制限は、2021 年 11 月以降、数か月掛けて **2000** から **4000** に増やされます。 制限に近づいているサブスクリプションが最優先となります。 その他のサブスクリプションについては、徐々に制限が増やされます。
 
 この制限に近づいている場合は、次の方法でロールの割り当ての数を減らすことができます。
 
@@ -46,6 +46,13 @@ $scope = "/subscriptions/<subscriptionId>"
 $ras = Get-AzRoleAssignment -Scope $scope | Where-Object {$_.scope.StartsWith($scope)}
 $ras.Count
 ```
+
+## <a name="azure-role-assignments-limit-for-management-groups"></a>管理グループに対する Azure ロールの割り当ての制限
+
+Azure では、管理グループあたり最大 **500** 個のロールの割り当てをサポートしています。 この制限は、サブスクリプションごとのロール割り当ての制限とは異なります。
+
+> [!NOTE]
+> **500** の管理グループあたりのロール割り当ての制限は固定されており、増やすことはできません。
 
 ## <a name="problems-with-azure-role-assignments"></a>Azure のロールの割り当てに関する問題
 
@@ -138,7 +145,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-同様に、Azure CLI を使用してこのロールの割り当てを一覧表示すると、空の `principalName` が表示される場合があります。 たとえば、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) では、次の出力のようなロールの割り当てが返されます。
+同様に、Azure CLI を使用してこのロールの割り当てを一覧表示すると、空の `principalName` が表示される場合があります。 たとえば、[az role assignment list](/cli/azure/role/assignment#az_role_assignment_list) では、次の出力のようなロールの割り当てが返されます。
 
 ```
 {

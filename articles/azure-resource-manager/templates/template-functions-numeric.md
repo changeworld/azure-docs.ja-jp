@@ -2,13 +2,13 @@
 title: テンプレート関数 - 数値
 description: Azure Resource Manager テンプレート (ARM テンプレート) で数値の操作に使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.openlocfilehash: ccfed6794b81b7910310cc5a9fd02dcf0cdb0e0f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359712"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820426"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM テンプレート用の数値関数
 
@@ -25,17 +25,17 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 * [mul](#mul)
 * [sub](#sub)
 
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
-
 ## <a name="add"></a>add
 
 `add(operand1, operand2)`
 
-指定された 2 つ整数の合計を返します。 `add` 関数は、Bicep ではサポートされていません。 代わりに、`+` 演算子を使用してください。
+指定された 2 つ整数の合計を返します。
+
+`add` 関数は、Bicep ではサポートされていません。 代わりに、[`+` 演算子](../bicep/operators-numeric.md#add-)を使用してください。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 |operand1 |はい |INT |加算する最初の整数。 |
 |operand2 |はい |INT |加算する 2 つ目の整数。 |
@@ -46,55 +46,13 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json)では、2 つのパラメーターを加算します。
+次の例では、2 つのパラメーターを加算します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "first": {
-      "type": "int",
-      "defaultValue": 5,
-      "metadata": {
-        "description": "First integer to add"
-      }
-    },
-    "second": {
-      "type": "int",
-      "defaultValue": 3,
-      "metadata": {
-        "description": "Second integer to add"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "addResult": {
-      "type": "int",
-      "value": "[add(parameters('first'), parameters('second'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param first int = 5
-param second int = 3
-
-output addResult int = first + second
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/add.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | addResult | int | 8 |
 
@@ -106,7 +64,7 @@ output addResult int = first + second
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | loopName | いいえ | string | 反復処理の取得対象となるループの名前。 |
 | offset |いいえ |INT |0 から始まる反復値に追加する整数。 |
@@ -128,45 +86,7 @@ copy の使い方の詳細については、次を参照してください。
 
 次の例では、コピー ループと、名前に含まれるインデックス値を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageCount": {
-      "type": "int",
-      "defaultValue": 2
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
-      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {},
-      "copy": {
-        "name": "storagecopy",
-        "count": "[parameters('storageCount')]"
-      }
-    }
-  ],
-  "outputs": {}
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-> [!NOTE]
-> ループと `copyIndex` は、Bicep にはまだ実装されていません。  「[Loops](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md)」(ループ) を参照してください。
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/copyindex.json":::
 
 ### <a name="return-value"></a>戻り値
 
@@ -176,11 +96,13 @@ copy の使い方の詳細については、次を参照してください。
 
 `div(operand1, operand2)`
 
-指定された 2 つの整数の整数除算を返します。 `div` 関数は、Bicep ではサポートされていません。 代わりに、`/` 演算子を使用してください。
+指定された 2 つの整数の整数除算を返します。
+
+`div` 関数は、Bicep ではサポートされていません。 代わりに、[`/` 演算子](../bicep/operators-numeric.md#divide-)を使用してください。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |INT |除算される整数。 |
 | operand2 |はい |INT |除算に使用される整数。 0 にすることはできません。 |
@@ -191,55 +113,13 @@ copy の使い方の詳細については、次を参照してください。
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json)では、一方のパラメーターをもう一方のパラメーターで除算します。
+次の例では、一方のパラメーターをもう一方のパラメーターで除算します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "first": {
-      "type": "int",
-      "defaultValue": 8,
-      "metadata": {
-        "description": "Integer being divided"
-      }
-    },
-    "second": {
-      "type": "int",
-      "defaultValue": 3,
-      "metadata": {
-        "description": "Integer used to divide"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "divResult": {
-      "type": "int",
-      "value": "[div(parameters('first'), parameters('second'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param first int = 8
-param second int = 3
-
-output addResult int = first / second
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/div.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | divResult | int | 2 |
 
@@ -247,11 +127,13 @@ output addResult int = first / second
 
 `float(arg1)`
 
-値を浮動小数点数に変換します。 この関数は、ロジック アプリなどのアプリケーションにカスタム パラメーターを渡す場合にのみ使用します。 `float` 関数は、Bicep ではサポートされていません。  「[Support numeric types other than 32bit integers](https://github.com/Azure/bicep/issues/486)」(32 ビット整数以外の数値型のサポート) を参照してください。
+値を浮動小数点数に変換します。 この関数は、ロジック アプリなどのアプリケーションにカスタム パラメーターを渡す場合にのみ使用します。
+
+`float` 関数は、Bicep ではサポートされていません。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または整数 |浮動小数点数に変換する値。 |
 
@@ -263,28 +145,7 @@ output addResult int = first / second
 
 次の例では、ロジック アプリにパラメーターを渡すために浮動小数点数を使用する方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "type": "Microsoft.Logic/workflows",
-  "properties": {
-    ...
-    "parameters": {
-      "custom1": {
-        "value": "[float('3.0')]"
-      },
-      "custom2": {
-        "value": "[float(3)]"
-      },
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-> [!NOTE]
-> `float` 関数は、Bicep ではサポートされていません。  「[Support numeric types other than 32bit integers](https://github.com/Azure/bicep/issues/486)」(32 ビット整数以外の数値型のサポート) を参照してください。
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/float.json":::
 
 ## <a name="int"></a>INT
 
@@ -294,7 +155,7 @@ output addResult int = first / second
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |はい |文字列または整数 |整数に変換する値。 |
 
@@ -304,44 +165,13 @@ output addResult int = first / second
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json)では、ユーザー指定のパラメーター値を整数に変換します。
+次のテンプレート例では、ユーザー指定のパラメーター値を整数に変換します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToConvert": {
-      "type": "string",
-      "defaultValue": "4"
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "intResult": {
-      "type": "int",
-      "value": "[int(parameters('stringToConvert'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param stringToConvert string = '4'
-
-output inResult int = int(stringToConvert)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/int.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | intResult | int | 4 |
 
@@ -353,7 +183,7 @@ output inResult int = int(stringToConvert)
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
@@ -363,54 +193,13 @@ output inResult int = int(stringToConvert)
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json)では、max を配列および整数のリストと共に使用する方法を示します。
+次の例では、max を配列および整数のリストと共に使用する方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ 0, 3, 2, 5, 4 ]
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "int",
-      "value": "[max(parameters('arrayToTest'))]"
-    },
-    "intOutput": {
-      "type": "int",
-      "value": "[max(0,3,2,5,4)]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param arrayToTest array = [
-  0
-  3
-  2
-  5
-  4
-]
-
-output arrayOutPut int = max(arrayToTest)
-output intOutput int = max(0,3,2,5,4)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/max.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
@@ -423,7 +212,7 @@ output intOutput int = max(0,3,2,5,4)
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
 
@@ -433,54 +222,13 @@ output intOutput int = max(0,3,2,5,4)
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json)では、min を配列および整数のリストと共に使用する方法を示します。
+次の例では、min を配列および整数のリストと共に使用する方法を示します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ 0, 3, 2, 5, 4 ]
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "int",
-      "value": "[min(parameters('arrayToTest'))]"
-    },
-    "intOutput": {
-      "type": "int",
-      "value": "[min(0,3,2,5,4)]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param arrayToTest array = [
-  0
-  3
-  2
-  5
-  4
-]
-
-output arrayOutPut int = min(arrayToTest)
-output intOutput int = min(0,3,2,5,4)
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/min.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 0 |
 | intOutput | int | 0 |
@@ -489,11 +237,13 @@ output intOutput int = min(0,3,2,5,4)
 
 `mod(operand1, operand2)`
 
-指定された 2 つの整数を使用した整数除算の剰余を返します。 `mod` 関数は、Bicep ではサポートされていません。 代わりに、`%` 演算子を使用してください。
+指定された 2 つの整数を使用した整数除算の剰余を返します。
+
+`mod` 関数は、Bicep ではサポートされていません。 代わりに、[% 演算子](../bicep/operators-numeric.md#modulo-)を使用してください。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |INT |除算される整数。 |
 | operand2 |はい |INT |除算に使用される整数。0 にすることはできません。 |
@@ -504,55 +254,13 @@ output intOutput int = min(0,3,2,5,4)
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json)では、一方のパラメーターをもう一方のパラメーターで除算した剰余を返します。
+次の例では、一方のパラメーターをもう一方のパラメーターで除算した剰余を返します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "first": {
-      "type": "int",
-      "defaultValue": 7,
-      "metadata": {
-        "description": "Integer being divided"
-      }
-    },
-    "second": {
-      "type": "int",
-      "defaultValue": 3,
-      "metadata": {
-        "description": "Integer used to divide"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "modResult": {
-      "type": "int",
-      "value": "[mod(parameters('first'), parameters('second'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param first int = 7
-param second int = 3
-
-output modResult int = first % second
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/mod.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | modResult | int | 1 |
 
@@ -560,11 +268,13 @@ output modResult int = first % second
 
 `mul(operand1, operand2)`
 
-指定された 2 つの整数の乗算を返します。 `mul` 関数は、Bicep ではサポートされていません。 代わりに、`*` 演算子を使用してください。
+指定された 2 つの整数の乗算を返します。
+
+`mul` 関数は、Bicep ではサポートされていません。 代わりに、[* 演算子](../bicep/operators-numeric.md#multiply-)を使用してください。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |INT |乗算する最初の整数。 |
 | operand2 |はい |INT |乗算する 2 つ目の整数。 |
@@ -575,55 +285,13 @@ output modResult int = first % second
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json)では、一方のパラメーターをもう一方のパラメーターで乗算します。
+次の例では、一方のパラメーターをもう一方のパラメーターで乗算します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "first": {
-      "type": "int",
-      "defaultValue": 5,
-      "metadata": {
-        "description": "First integer to multiply"
-      }
-    },
-    "second": {
-      "type": "int",
-      "defaultValue": 3,
-      "metadata": {
-        "description": "Second integer to multiply"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "mulResult": {
-      "type": "int",
-      "value": "[mul(parameters('first'), parameters('second'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param first int = 5
-param second int = 3
-
-output mulResult int = first * second
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/mul.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | mulResult | int | 15 |
 
@@ -631,11 +299,11 @@ output mulResult int = first * second
 
 `sub(operand1, operand2)`
 
-指定された 2 つの整数の減算を返します。 `sub` 関数は、Bicep ではサポートされていません。 代わりに、`-` 演算子を使用してください。
+指定された 2 つの整数の減算を返します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |INT |減算される整数。 |
 | operand2 |はい |INT |減算する整数。 |
@@ -646,59 +314,17 @@ output mulResult int = first * second
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json)では、一方のパラメーターをもう一方のパラメーターで減算します。
+次の例では、一方のパラメーターからもう一方のパラメーターを減算します。
 
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "first": {
-      "type": "int",
-      "defaultValue": 7,
-      "metadata": {
-        "description": "Integer subtracted from"
-      }
-    },
-    "second": {
-      "type": "int",
-      "defaultValue": 3,
-      "metadata": {
-        "description": "Integer to subtract"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "subResult": {
-      "type": "int",
-      "value": "[sub(parameters('first'), parameters('second'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param first int = 7
-param second int = 3
-
-output subResult int = first - second
-```
-
----
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/sub.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | subResult | int | 4 |
 
 ## <a name="next-steps"></a>次のステップ
 
-* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](./syntax.md)」を参照してください。
 * ある種類のリソースを作成するときに、指定した回数だけ反復するには、「[ARM テンプレートでのリソースの反復](copy-resources.md)」を参照してください。

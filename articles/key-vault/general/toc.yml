@@ -30,7 +30,7 @@
     - name: Azure Kubernetes Service
       items:
         - name: Azure Key Vault と Kubernetes の統合
-          href: key-vault-integrate-kubernetes.md
+          href: ../../aks/csi-secrets-store-driver.md
     - name: Azure Databricks
       items:
         - name: Azure Databricks と Azure Key Vault を使用して Azure Blob Storage にアクセスする
@@ -39,6 +39,8 @@
   items:
     - name: Key Vault のコード サンプル
       href: /samples/browse/?expanded=azure&products=azure-key-vault
+    - name: Azure Resource Graph クエリ
+      href: ../resource-graph-samples.md
 - name: 概念
   items:
     - name: 基本的な概念
@@ -47,21 +49,19 @@
       href: best-practices.md
     - name: セキュリティ
       items:
-        - name: 概要
-          href: security-overview.md
-        - name: キー コンテナーへのアクセスをセキュリティで保護する
-          href: secure-your-key-vault.md
-        - name: Key Vault 認証の基礎
-          href: authentication-fundamentals.md
-        - name: セキュリティ ワールドと地理的境界
+        - name: セキュリティ機能
+          href: security-features.md
+        - name: Key Vault の認証
+          href: authentication.md
+        - name: セキュリティ ワールドと地域
           href: overview-security-worlds.md
         - name: ネットワークのセキュリティ
           href: network-security.md
-        - name: Key Vault 用の Azure セキュリティ ベースライン
-          href: security-baseline.md
+        - name: セキュリティ ベースライン
+          href: /security/benchmark/azure/baselines/key-vault-security-baseline?context=/azure/key-vault/general/context/context
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
-          href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+          href: ../security-controls-policy.md?context=/azure/key-vault/general/context/context
     - name: Azure Key Vault のログ記録
       href: logging.md
     - name: 通知
@@ -84,18 +84,10 @@
       href: overview-vnet-service-endpoints.md
 - name: 操作方法ガイド
   items:
-    - name: 認証と承認
+    - name: アクセスを承認する
       items:
-        - name: Key Vault に対する認証
-          href: authentication.md
         - name: アクセス ポリシーの割り当て
-          items:
-            - name: CLI
-              href: assign-access-policy-cli.md
-            - name: PowerShell
-              href: assign-access-policy-powershell.md
-            - name: ポータル
-              href: assign-access-policy-portal.md
+          href: assign-access-policy.md
         - name: Azure RBAC アクセス許可モデル
           items:
             - name: キー、シークレット、証明書へのアクセスを管理するための Azure RBAC の使用
@@ -114,6 +106,8 @@
           href: vs-key-vault-add-connected-service.md
     - name: 監視とガバナンス
       items:
+        - name: Key Vault の監視
+          href: monitor-key-vault.md
         - name: Event Grid の通知
           items:
             - name: Logic Apps を使用した通知の受信
@@ -122,24 +116,30 @@
               href: event-grid-tutorial.md
         - name: ログの有効化
           href: howto-logging.md
-        - name: Azure Monitor を使用して Azure Key Vault の監視とアラートを構成する
+        - name: Azure Key Vault の監視
+          href: monitor-key-vault.md
+        - name: Azure Key Vault 用アラートを構成する
           href: alert.md
         - name: 論理的な削除と消去保護を使用した回復の管理
           href: key-vault-recovery.md
         - name: Azure Key Vault と Azure Policy を統合する
           href: azure-policy.md
-        - name: 個々の Key Vault オブジェクトのバックアップ
+        - name: Azure Policy を使用した Azure Key Vault の実装に関する問題のトラブルシューティング
+          href: troubleshoot-azure-policy-for-key-vault.md
+        - name: オブジェクトのバックアップと復元
           href: backup.md
     - name: セキュリティで保護
       items:
+        - name: キー コンテナーのネットワーク設定を構成する
+          href: how-to-azure-key-vault-network-security.md
+        - name: ファイアウォールの内側にある Key Vault にアクセスする
+          href: access-behind-firewall.md
         - name: Azure Private Link
           items:
             - name: Azure Private Link サービスと統合する
               href: private-link-service.md
             - name: プライベート リンクの構成の問題を診断する
               href: private-link-diagnostics.md
-        - name: ファイアウォールの内側にある Key Vault にアクセスする
-          href: access-behind-firewall.md
     - name: キー コンテナーを移動する
       items:
         - name: キー コンテナーを別のリソース グループに移動する
@@ -152,6 +152,8 @@
   items:
     - name: 新機能
       href: whats-new.md
+    - name: Key Vault データ参照の監視
+      href: monitor-key-vault-reference.md
     - name: クライアント ライブラリ
       href: client-libraries.md
     - name: REST API のエラー コード
@@ -181,7 +183,7 @@
       displayName: ARM
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
-      href: ../policy-reference.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+      href: ../policy-reference.md?context=/azure/key-vault/general/context/context
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける
@@ -201,4 +203,4 @@
     - name: ブログ
       href: /archive/blogs/kv/
     - name: 製品フィードバック
-      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'
+      href: 'https://feedback.azure.com/d365community/forum/285c5ae0-f524-ec11-b6e6-000d3a4f0da0'

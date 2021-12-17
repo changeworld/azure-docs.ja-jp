@@ -1,0 +1,380 @@
+### YamlMime:FAQ
+metadata:
+  title: よく寄せられる質問 (FAQ)
+  titleSuffix: Azure SQL Managed Instance
+  description: Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
+  services: sql-database
+  ms.service: sql-managed-instance
+  ms.subservice: service-overview
+  ms.custom: sqldbrb=1
+  ms.devlang: 
+  ms.topic: conceptual
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: urmilano, danil, nnikolic
+  ms.date: 09/21/2020
+  ms.openlocfilehash: 81b28084d63a01f6ceeba57d128f389a5e767259
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132315845"
+title: Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
+summary: >
+  [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
+
+
+  この記事では、[Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) について特によく寄せられる質問を取り上げます。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      サポートされている機能
+    answer: >
+      ### <a name="where-can-i-find-a-list-of-features-supported-on-sql-managed-instance"></a>SQL Managed Instance でサポートされている機能の一覧はどこで確認できますか?
+
+
+      SQL Managed Instance でサポートされている機能の一覧については、[Azure SQL Managed Instance の機能](../database/features-comparison.md)に関するページを参照してください。
+
+
+      Azure SQL Managed Instance と SQL Server 間での構文と動作の違いについては、[T-SQL と SQL Server の相違点](transact-sql-tsql-differences-sql-server.md)に関するページを参照してください。
+  - question: >
+      技術仕様、リソース制限、およびその他の制限事項
+    answer: "### <a name=\"where-can-i-find-technical-characteristics-and-resource-limits-for-sql-managed-instance\"></a>SQL Managed Instance の技術的特性とリソース制限はどこで確認できますか?\n\n使用可能なハードウェアの世代の特性については、[ハードウェアの世代間の技術的相違点](resource-limits.md#hardware-generation-characteristics)に関するページを参照してください。\n使用可能なサービス レベルとその特性については、[サービス レベル間の技術的相違点](resource-limits.md#service-tier-characteristics)に関するページを参照してください。\n\n### <a name=\"what-service-tier-am-i-eligible-for\"></a>対象となるサービス レベルはどれですか?\n\nすべてのお客様は、任意のサービス レベルを利用できます。 ただし、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、既存のライセンスを Azure SQL Managed Instance の割引料金で交換する場合は、ソフトウェア アシュアランスをお持ちの SQL Server Enterprise Edition のお客様は [General Purpose](../database/service-tier-general-purpose.md) または [Business Critical](../database/service-tier-business-critical.md) パフォーマンス レベルの対象で、ソフトウェア アシュアランスをお持ちの SQL Server Standard Edition のお客様は General Purpose パフォーマンス レベルのみ対象になることに注意してください。 詳細については、[AHB の具体的な権利](../azure-hybrid-benefit.md?tabs=azure-powershell#what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server)に関する記事を参照してください。\n\n### <a name=\"what-subscription-types-are-supported-for-sql-managed-instance\"></a>SQL Managed Instance ではどのような種類のサブスクリプションがサポートされていますか?\n\nサポートされているサブスクリプションの種類の一覧については、「[サポートされているサブスクリプションの種類](resource-limits.md#supported-subscription-types)」を参照してください。 \n\n### <a name=\"which-azure-regions-are-supported\"></a>どの Azure リージョンがサポートされていますか?\n\nマネージド インスタンスは、ほとんどの Azure リージョンで作成できます。詳細については、[SQL Managed Instance でサポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)に関する記事を参照してください。 現在サポートされていないリージョンでマネージド インスタンスが必要な場合には、[Azure portal 経由でサポート リクエストを送信](../database/quota-increase-request.md)してください。\n\n### <a name=\"are-there-any-quota-limitations-for-sql-managed-instance-deployments\"></a>SQL Managed Instance のデプロイにクォータの制限はありますか?\n\nマネージド インスタンスには、使用できるサブネットの数と、プロビジョニングできる仮想コアの数という 2 つの規定の制限があります。 制限は、サブスクリプションの種類とリージョンによって異なります。 サブスクリプションの種類ごとの、リージョン別のリソースの制限の一覧については、[リージョン別のリソースの制限](resource-limits.md#regional-resource-limitations)に関する記事を参照してください。 これらは、要求に応じて増やすことができるソフト制限です。 現在のリージョンでより多くのマネージド インスタンスをプロビジョニングする必要がある場合、Azure portal を使用してクォータを増やすためのサポート リクエストを送信します。 詳細については、「[Azure SQL Database のクォータの増加を要求する](../database/quota-increase-request.md)」を参照してください。\n\n### <a name=\"can-i-increase-the-number-of-databases-limit-100-on-my-managed-instance-on-demand\"></a>必要に応じて、マネージド インスタンスのデータベース数の上限 (100) を増やすことはできますか?\n\nいいえ。現時点では、SQL Managed Instance 上のデータベースの数を増やすための専用プランはありません。 \n\n### <a name=\"where-can-i-migrate-if-i-have-more-than-8tb-of-data\"></a>8TB を超えるデータがある場合、どこへ移行できますか?\nワークロードに合う、以下のような他の Azure フレーバーに移行することをご検討ください。[Azure SQL Database Hyperscale](../database/service-tier-hyperscale.md) または [Azure Virtual Machines 上の SQL Server](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) があります。\n\n### <a name=\"where-can-i-migrate-if-i-have-specific-hardware-requirements-such-as-larger-ram-to-vcore-ratio-or-more-cpus\"></a>よい大きい RAM と仮想コアの比率や、より多くの CPU など、特定のハードウェア要件がある場合は、どこに移行できますか?\n[Azure Virtual Machines 上の SQL Server](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) またはメモリおよび CPU 最適化された [Azure SQL Database](../database/sql-database-paas-overview.md) への移行をご検討ください。\n"
+  - question: >
+      既知の問題と欠陥
+    answer: >
+      ### <a name="where-can-i-find-known-issues-and-defects"></a>既知の問題や欠陥はどこで確認できますか?
+
+
+      製品の欠陥や既知の問題については、「[既知の問題](doc-changes-updates-known issues.md)」を参照してください。
+  - question: >
+      新機能
+    answer: >
+      ### <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>最新の機能とパブリック プレビュー段階の機能はどこにありますか。
+
+
+      新機能とプレビュー機能については、[リリース ノート](doc-changes-updates-release-notes-whats-new.md)を参照してください。
+  - question: >
+      SQL Managed Instance の作成、更新、削除、または移動
+    answer: >
+      ### <a name="how-can-i-provision-sql-managed-instance"></a>SQL Managed Instance をプロビジョニングするにはどうすればよいですか?
+
+
+      インスタンスは、[Azure portal](instance-create-quickstart.md)、[PowerShell](scripts/create-configure-managed-instance-powershell.md)、[Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281)、および [ARM テンプレート](/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)からプロビジョニングできます。
+
+
+      ### <a name="can-i-provision-managed-instances-in-an-existing-subscription"></a>既存のサブスクリプションで Managed Instance をプロビジョニングすることはできますか?
+
+
+      はい。サブスクリプションが[サポートされているサブスクリプションの種類](resource-limits.md#supported-subscription-types)に属している場合、既存のサブスクリプションで Managed Instance をプロビジョニングできます。
+
+
+      ### <a name="why-couldnt-i-provision-a-managed-instance-in-the-subnet-which-name-starts-with-a-digit"></a>名前が数字で始まるサブネットで Managed Instance をプロビジョニングできないのはなぜですか?
+
+
+      これは、サブネット名を正規表現 ^[a-zA-Z_][^\\\/\:\*\?\"\<\>\|\`\'\^]*(?<![\.\s])$ と照合して検証する、基になるコンポーネントによる現在の制限です。 正規表現および有効なサブネット名を渡すすべての名前は、現在サポートされています。
+
+
+      ### <a name="how-can-i-scale-my-managed-instance"></a>マネージド インスタンスをスケーリングするにはどうすればよいですか?
+
+
+      マネージド インスタンスは、[Azure portal](../database/service-tiers-vcore.md?tabs=azure-portal)、[PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、[Azure CLI](/cli/azure/sql/mi#az_sql_mi_update) または [ARM テンプレート](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)からスケーリングできます。
+
+
+      ### <a name="can-i-move-my-managed-instance-from-one-region-to-another"></a>Managed Instance をあるリージョンから別のリージョンに移動することはできますか?
+
+
+      はい、できます。 手順については、[リージョン間でリソースを移動する](../database/move-resources-across-regions.md)方法に関する記事を参照してください。
+
+
+      ### <a name="how-can-i-delete-my-managed-instance"></a>Managed Instance を削除するにはどうすればよいですか?
+
+
+      Managed Instance は、Azure portal、[PowerShell](/powershell/module/az.sql/remove-azsqlinstance)、[Azure CLI](/cli/azure/sql/mi#az_sql_mi_delete) または [Resource Manager REST API](/rest/api/sql/managedinstances/delete) を使用して削除できます。
+
+
+      ### <a name="how-much-time-does-it-take-to-create-or-update-an-instance-or-to-restore-a-database"></a>インスタンスを作成または更新したり、データベースを復元したりするのにどれくらいの時間がかかりますか?
+
+
+      新しいマネージド インスタンスの作成やサービス レベル (仮想コア、ストレージ) の変更にかかると予想される時間は、いくつかの要因に左右されます。 詳細については、「[管理操作](sql-managed-instance-paas-overview.md#management-operations)」を参照してください。
+  - question: >
+      データベースの作成、更新、削除、または移動
+    answer: "### <a name=\"can-i-drop-and-recreate-a-database-on-a-managed-instance-using-the-same-database-name\"></a>マネージド インスタンスでデータベースを削除し、同じデータベース名を使用して再作成することはできますか?\n\n定義された保持期間全体にわたって、各データベースの復元が保証されています。 これは、作成後わずか数秒で削除されたデータベースにも適用されます。 データベースが作成、削除、または復元されると、データを保持するために異なる間隔でバックアップが作成されるため、特定の保持期間にわたって復元できます。 バックアップ操作が完了する前にデータベースが削除された場合、次のエラーで削除操作がブロックされることがあります。\n\n`Message database 'backup_restore_db_lkg_native_restore' already exists. Choose a different database name.`          \n          \nこのエラーを回避するには、データベースを同じ名前で作成する前に、削除操作の状態を確認します (詳細については、「[sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azuresqldb-current&preserve-view=true)」を参照してください)。 操作の状態が **[完了]** と表示されると、同じ名前のデータベースを復元または作成できます。 \n\n次の一般的なユースケースにおいて、このエラーが発生する可能性があります。 \n\n*   複数のデータベースが削除され、短い時間に連続して同じ名前で再作成された場合。\n  データベースが削除されると、次の図に示されているように、削除操作が完了する前に、トランザクション ログの残りの末尾が同期的にバックアップされます。 \n\n    ![ログ末尾のバックアップ](./media/frequently-asked-questions-faq/tail-log-backup.png)  \n\n    [ログ末尾がバックアップされ](/sql/relational-databases/backup-restore/tail-log-backups-sql-server)、削除操作が完了するまで、同じ名前でデータベースを作成することはできません。 削除操作の順次の性質により、短い間に連続して削除されたデータベースはキューに格納され、データベース削除のプロセスが長引き、同じ名前での作成が遅延する可能性があります。\n          \n\n*   データベースが復元され、完全バックアップが作成される前に削除された場合。\n  データベースを復元する場合、復元プロセスの最初の手順は、データベースの新しい完全バックアップを作成することです。  データベースを復元した後、完全バックアップが完了する前にデータベースをすぐに削除しようとすると、完全バックアップが作成されてデータベースの削除操作が完了するまで、データベースを削除して、同じ名前で別のデータベースを作成することはできません。 データベースのサイズによっては、完全バックアップに数時間かかることがあります。 \n"
+  - question: >
+      名前付け規則
+    answer: "### <a name=\"can-a-managed-instance-have-the-same-name-as-a-sql-server-on-premises-instance\"></a>マネージド インスタンスに SQL Server のオンプレミス インスタンスと同じ名前を付けることはできますか?\n\nマネージド インスタンス名の変更はサポートされていません。\n\n### <a name=\"can-i-change-dns-zone-prefix\"></a>DNS ゾーンのプレフィックスは変更できますか?\n\nはい。Managed Instance の既定の DNS ゾーン *.database.windows.net* は変更できます。 \n\n既定値の代わりに別の DNS ゾーン、たとえば *.contoso.com* などを使用するには、次のようにします。 \n- CliConfig を使用して別名を定義する。 このツールは単なるレジストリ設定ラッパーなので、グループ ポリシーやスクリプトを使用して行うことも可能です。\n- *TrustServerCertificate=true* オプションを指定した *CNAME* を使用する。\n"
+  - question: >
+      移行オプション
+    answer: "### <a name=\"how-can-i-migrate-from-azure-sql-database-single-or-elastic-pool-to-sql-managed-instance\"></a>Azure SQL Database の単体またはエラスティック プールから SQL Managed Instance に移行するには、どうすればよいですか?\n\nマネージド インスタンスで提供されるコンピューティングおよびストレージ サイズあたりのパフォーマンス レベルは、Azure SQL Database の他のデプロイ オプションと同じです。 単一インスタンスでデータを統合する場合または単にマネージド インスタンスでのみサポートされている機能が必要な場合は、エクスポートおよびインポート (BACPAC) 機能を使用してデータを移行できます。 SQL Database の SQL Managed Instance への移行に関して検討可能な他の方法を、次に示します。 \n- [Data Source External](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210) を使用する\n- [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182) を使用する\n- [BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7) を使用する\n\n### <a name=\"how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database\"></a>インスタンス データベースを単一の Azure SQL データベースに移行するには、どうすればよいですか?\n\n1 つの方法として、[データベースを BACPAC にエクスポート](../database/database-export.md)し、その [BACPAC ファイルをインポート](../database/database-import.md)します。 データベースが 100 GB 未満の場合は、これが推奨される方法です。\n\nデータベース内のすべてのテーブルに *主* キーがあり、データベース内にインメモリ OLTP オブジェクトが一切ない場合は、[トランザクション レプリケーション](replication-two-instances-and-sql-server-configure-tutorial.md)を使用できます。\n\nマネージド インスタンスから取得したネイティブの COPY_ONLY バックアップを SQL Server に復元することはできません。マネージド インスタンスには、SQL Server と比較して新しいバージョンのデータベースがあるためです。 詳細については、「[コピーのみのバックアップ](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15)」を参照してください。\n\n### <a name=\"how-can-i-migrate-my-sql-server-instance-to-sql-managed-instance\"></a>自分の SQL Server インスタンスを SQL Managed Instance に移行するには、どうすればよいですか?\n\nSQL Server インスタンスを移行するには、[SQL Server から Azure SQL Managed Instance へのガイド](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)に関する記事を参照してください。\n\n### <a name=\"how-can-i-migrate-from-other-platforms-to-sql-managed-instance\"></a>他のプラットフォームから SQL Managed Instance に移行するには、どうすればよいですか?\n\n他のプラットフォームからの移行に関する移行の情報については、[Azure データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。\n"
+  - question: "ハードウェアの世代の切り替え \n"
+    answer: >
+      ### <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen4-and-gen5-online"></a>マネージド インスタンスのハードウェアの世代の Gen4 と Gen5 をオンラインで切り替えることはできますか?
+
+
+      マネージド インスタンスがプロビジョニングされているリージョンで Gen5 ハードウェアが利用可能になっている場合は、Gen4 から Gen5 へのオンライン切り替えを自動で行うことができます。 この場合は、「[仮想コア モデルの概要](../database/service-tiers-vcore.md)」ページでハードウェアの世代間を切り替える方法を参照してください。
+
+
+      これは、新しいマネージド インスタンスがバックグラウンドでプロビジョニングされ、データベースがプロセスの最後の迅速なフェールオーバーによって古いインスタンスと新しいインスタンスの間で自動的に転送されるため、時間のかかる操作です。
+
+
+      注:Gen4 ハードウェアは段階的に廃止中であり、新しいデプロイでは利用できなくなりました。 新しいデータベースはすべて、それより後のハードウェア世代に展開する必要があります。 Gen5 から Gen4 への切り替えもできません。
+  - question: "パフォーマンス \n"
+    answer: "### <a name=\"how-can-i-compare-managed-instance-performance-to-sql-server-performance\"></a>Managed Instance のパフォーマンスを SQL Server のパフォーマンスと比較するにはどうすればよいですか?\n\nマネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL Managed Instance と SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)」の記事をご覧ください。\n\n### <a name=\"what-causes-performance-differences-between-managed-instance-and-sql-server\"></a>Managed Instance と SQL Server の間でパフォーマンスの差が生じる原因は何ですか?\n\n「[SQL Managed Instance と SQL Server の間でパフォーマンスの差が生じる主な原因](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)」を参照してください。 General Purpose Managed Instance のパフォーマンスに対するログ ファイルのサイズの影響の詳細については、「[General Purpose のログ ファイルのサイズの影響](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)」を参照してください。\n\n### <a name=\"how-do-i-tune-performance-of-my-managed-instance\"></a>マネージド インスタンスのパフォーマンスを調整するには、どうすればよいですか?\n\n次の方法で、マネージド インスタンスのパフォーマンスを最適化することができます。\n- [自動チューニング](../database/automatic-tuning-overview.md)では、AI と機械学習に基づく継続的なパフォーマンス チューニングによって、最大限のパフォーマンスと安定したワークロードが実現されます。\n- [インメモリ OLTP](../in-memory-oltp-overview.md) では、トランザクション処理ワークロードのスループットと待機時間が改善され、ビジネスの分析情報がより迅速に提供されます。 \n- [アプリケーションとデータベース チューニングのベスト プラクティス](../database/performance-guidance.md#tune-your-database)のいくつかを適用します。\n- ワークロードが多数の小さなトランザクションで構成されている場合は、待機時間を短縮しスループットを向上させるために[接続の種類をプロキシからリダイレクト モードに切り替えます](connection-types-overview.md#changing-connection-type)。\n\n### <a name=\"how-can-i-further-tune-performance-of-my-general-purpose-managed-instance\"></a>General Purpose マネージド インスタンスのパフォーマンスをさらに調整する方法はありますか?\n\nGeneral Purpose インスタンスのパフォーマンスを向上させるには、[データ ファイルのサイズを大きくする](https://techcommunity.microsoft.com/t5/azure-sql/increase-data-file-size-to-improve-hammerdb-workload-performance/ba-p/823337)することを検討してください。 General Purpose インスタンスでストレージ パフォーマンスを最適化するには、[General Purpose レベルのストレージ ベスト プラクティス ガイドライン](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525)に関するページを参照してください。\n\n### <a name=\"my-query-duration-is-too-long-how-can-i-analyze-wait-statistics-on-my-managed-instance\"></a>クエリ時間が長すぎます。 マネージド インスタンスの待機統計値を分析する方法はありますか?\n\n「[SQL Managed Instance の待機統計値を分析する](/archive/blogs/sqlserverstorageengine/analyzing-wait-statistics-on-managed-instance)」を参照してください。 待機統計値は、クエリ時間が長い理由を理解し、待機中のクエリをデータベース エンジンの中から特定する目的で役立つ情報です。\n     \n"
+  - question: >
+      監視、メトリック、およびアラート
+    answer: >
+      ### <a name="what-are-the-options-for-monitoring-and-alerting-for-my-managed-instance"></a>マネージ インスタンスの監視とアラートにはどのようなオプションがありますか?
+
+
+      SQL Managed Instance の使用状況とパフォーマンスを監視してアラートを生成するためのすべてのオプションについては、「[Azure SQL Managed Instance の監視オプションに関するブログ投稿](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416)」を参照してください。 SQL MI のリアルタイムのパフォーマンス監視については、「[Azure SQL DB Managed Instance のリアルタイムによるパフォーマンスの監視](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)」を参照してください。
+
+
+      ### <a name="how-can-i-monitor-performance-of-my-managed-instance"></a>マネージド インスタンスのパフォーマンスを監視する方法はありますか?
+
+
+      「[SQL Insights を使用して SQL のデプロイを監視する](../../azure-monitor/insights/sql-insights-overview.md)」を参照してください。
+
+
+      ### <a name="how-can-i-monitor-the-real-time-performance-of-my-managed-instance"></a>マネージド インスタンスのリアルタイム パフォーマンスを監視する方法はありますか?
+
+
+      「[Azure SQL DB Managed Instance のリアルタイム パフォーマンス監視](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)」を参照してください。
+
+
+      ### <a name="can-i-use-sql-profiler-for-performance-tracking"></a>パフォーマンスの追跡に SQL Profiler を使用できますか?
+
+
+      はい。SQL Profiler は SQL Managed Instance でサポートされています。 詳細については、[SQL Profiler](/sql/tools/sql-server-profiler/sql-server-profiler?preserve-view=true&view=sql-server-ver15) に関する記事を参照してください。
+
+
+      ### <a name="are-database-advisor-and-query-performance-insight-supported-for-managed-instance-databases"></a>Database Advisor と Query Performance Insight は Managed Instance データベースでサポートされていますか?
+
+
+      いいえ。サポートされていません。 [DMV](../database/monitoring-with-dmvs.md) と [クエリ ストア](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?preserve-view=true&view=sql-server-ver15)を [SQL Profiler](/sql/tools/sql-server-profiler/sql-server-profiler?preserve-view=true&view=sql-server-ver15) と [XEvent](/sql/relational-databases/extended-events/extended-events?preserve-view=true&view=sql-server-ver15) と共に使用して、データベースを監視できます。
+
+
+      ### <a name="how-can-i-monitor-cpu-usage-on-my-managed-instance"></a>マネージド インスタンスの CPU 使用率を監視する方法はありますか?
+
+
+      「[SQL Server と Azure SQL で CPU 使用率を監視する](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131)」を参照してください。
+
+
+      ### <a name="can-i-create-metric-alerts-on-sql-managed-instance"></a>SQL Managed Instance でメトリック アラートを作成できますか?
+
+
+      はい。 詳細については、[SQL Managed Instance のアラートの作成](./alerts-create.md)に関する記事を参照してください。 ヒントとテクニックについては、[ブログ](https://techcommunity.microsoft.com/t5/azure-database-support-blog/tips-amp-tricks-1-creating-alerts-for-azure-sql-managed-instance/ba-p/2396044)を参照してください。
+
+
+      ### <a name="can-i-create-metric-alerts-on-a-database-in-managed-instance"></a>マネージド インスタンス内のデータベースでメトリック アラートを作成できますか?
+
+
+      できません。アラート メトリックは、マネージド インスタンスでのみ使用できます。 マネージド インスタンス内の個々のデータベースのアラート メトリックは使用できません。
+  - question: >
+      ストレージ サイズ
+    answer: >
+      ### <a name="what-is-the-maximum-storage-size-for-sql-managed-instance"></a>SQL Managed Instance の最大ストレージ サイズはどうなっていますか?
+
+
+      SQL Managed Instance のストレージ サイズは選択したサービス レベル (General Purpose または Business Critical) に応じて異なります。 これらのサービス レベルのストレージ制限については、[サービス レベルの特性](../database/service-tiers-general-purpose-business-critical.md)に関するページを参照してください。
+
+
+      ### <a name="what-is-the-minimum-storage-size-available-for-a-managed-instance"></a>マネージド インスタンスで使用可能な最小ストレージ サイズは?
+
+
+      インスタンスで使用可能なストレージの最小量は 32 GB です。 ストレージは、最大ストレージ サイズになるまで、32 GB ずつ追加できます。 最初の 32 GB は無料です。
+
+
+      ### <a name="can-i-increase-storage-space-assigned-to-an-instance-independently-from-compute-resources"></a>インスタンスに割り当てられたストレージ スペースは、コンピューティング リソースとは別に増やすことができますか?
+
+
+      はい。コンピューティングとは別に、アドオン ストレージをある程度まで購入できます。 この *表* にある "[インスタンスの予約済み最大ストレージ](resource-limits.md#hardware-generation-characteristics)" を参照してください。
+
+
+      ### <a name="how-can-i-optimize-my-storage-performance-in-general-purpose-service-tier"></a>General Purpose サービス レベルでストレージのパフォーマンスを最適化するにはどうすればよいですか?
+
+
+      ストレージのパフォーマンスを最適化するには、「[General Purpose でのストレージのベスト プラクティス](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)」を参照してください。
+  - question: >
+      バックアップと復元
+    answer: >
+      ### <a name="is-the-backup-storage-deducted-from-my-managed-instance-storage"></a>バックアップ ストレージは、マネージド インスタンス ストレージから差し引かれますか?
+
+
+      いいえ。バックアップ ストレージがマネージド インスタンス ストレージ領域から差し引かれることはありません。 バックアップ ストレージはインスタンス ストレージ領域から独立しており、サイズは制限されていません。 バックアップ ストレージは、インスタンス データベースのバックアップを保持する期間に制限があり、35 日まで構成可能です。 詳細については、「[自動バックアップ](../database/automated-backups-overview.md)」を参照してください。
+
+
+      ### <a name="how-can-i-see-when-automated-backups-are-made-on-my-managed-instance"></a>マネージド インスタンスで自動バックアップが行われたタイミングを確認するにはどうすればよいですか?
+
+
+      Managed Instance で自動バックアップが実行された時間を追跡するには、「[Azure SQL Managed Instance の自動バックアップの追跡方法](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355)」を参照してください。
+
+
+      ### <a name="is-on-demand-backup-supported"></a>オンデマンド バックアップはサポートされていますか?
+
+
+      はい。Azure Blob Storage にコピーのみの完全バックアップを作成できます。ただし、これは Managed Instance でのみ復元できます。 詳細については、「[コピーのみのバックアップ](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15)」を参照してください。 ただし、暗号化に使用される証明書にアクセスできないため、データベースがサービス マネージド TDE によって暗号化されている場合、コピーのみのバックアップは不可能です。 このような場合、ポイントインタイム リストア機能を使用して、データベースを別の SQL Managed Instance に移動するか、カスタマー マネージド キーに切り替えてください。
+
+
+      ### <a name="is-native-restore-from-bak-files-to-managed-instance-supported"></a>Managed Instance への (.bak ファイルからの) ネイティブ復元はサポートされていますか?
+
+
+      はい。SQL Server 2005 以降のバージョンでサポートされており、使用可能です。  ネイティブ復元を使用するには、.bak ファイルを Azure Blob Storage にアップロードし、T-SQL コマンドを実行します。 詳細については、「[URL からのネイティブ復元](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)」を参照してください。
+  - question: >
+      ビジネス継続性
+    answer: >
+      ### <a name="are-my-system-databases-replicated-to-the-secondary-instance-in-a-failover-group"></a>システム データベースは、フェールオーバー グループのセカンダリ インスタンスにレプリケートされますか?
+
+
+      システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 そのため、オブジェクトがセカンダリに手動で作成されていない限り、セカンダリ インスタンスではシステム データベースのオブジェクトに依存するシナリオは実現できません。 回避策については、「[システム データベースのオブジェクトに依存するシナリオを実現させる](../database/auto-failover-group-overview.md?tabs=azure-powershell#enable-scenarios-dependent-on-objects-from-the-system-databases)」を参照してください。
+
+       
+  - question: "ネットワーク要件 \n"
+    answer: "### <a name=\"what-are-the-current-inboundoutbound-nsg-constraints-on-the-managed-instance-subnet\"></a>Managed Instance サブネットでの現在の受信/送信 NSG の制約はどのようなものですか?\n\n必要な NSG と UDR のルールは[こちら](connectivity-architecture-overview.md#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)に記載されており、サービスによって自動的に設定されます。\nこれらのルールは、あくまでもサービスを維持するために必要なものであることに注意してください。 マネージド インスタンスに接続してさまざまな機能を使用するには、管理が必要な、機能固有のルールを追加で設定する必要があります。\n\n### <a name=\"how-can-i-set-inbound-nsg-rules-on-management-ports\"></a>管理ポートでインバウンド NSG 規則を設定するには、どうすればよいですか?\n\nSQL Managed Instance は、管理ポートにルールを設定する役割を担います。 これは、[サービス支援サブネット構成](connectivity-architecture-overview.md#service-aided-subnet-configuration)という機能によって実現されます。\nこれは、SLA を満たすために、管理トラフィックが中断されないようにするためです。\n\n### <a name=\"can-i-get-the-source-ip-ranges-that-are-used-for-the-inbound-management-traffic\"></a>受信管理トラフィックに使用される発信元 IP 範囲は取得できますか?\n\nはい。 [Network Watcher フロー ログを構成する](../../network-watcher/network-watcher-monitoring-overview.md#analyze-traffic-to-or-from-a-network-security-group)ことで、ネットワーク セキュリティ グループを介して送信されるトラフィックを分析できます。\n\n### <a name=\"can-i-set-nsg-to-control-access-to-the-data-endpoint-port-1433\"></a>データ エンドポイント (ポート 1433) へのアクセスを制御するように NSG を設定できますか?\n\nはい。 Managed Instance がプロビジョニングされた後、ポート 1433 への受信アクセスを制御する NSG を設定できます。 IP 範囲をできるだけ絞り込むことをお勧めします。\n\n### <a name=\"can-i-set-the-nva-or-on-premises-firewall-to-filter-the-outbound-management-traffic-based-on-fqdns\"></a>NVA またはオンプレミスのファイアウォールを設定して、FQDN に基づいて送信管理トラフィックをフィルター処理できますか?\n\nいいえ。 これは、いくつかの理由によりサポートされていません。\n-    受信した管理要求への応答を表すトラフィックのルーティングは非対称であり、機能しない可能性があります。\n-    ストレージにルーティングされるトラフィックは、スループットの制約と待機時間の影響を受けるため、期待されるサービスの品質と可用性は提供できません。\n-    経験則に基づくと、これらの構成はエラーが発生しやすく、サポートすることは困難です。\n\n### <a name=\"can-i-set-the-nva-or-firewall-for-the-outbound-non-management-traffic\"></a>送信する管理以外のトラフィック用に NVA またはファイアウォールを設定できますか。\n\nはい。 これを実現する最も簡単な方法は、NVA 経由でトラフィックをルーティングするために、マネージド インスタンス サブネットに関連付けられている UDR に 0/0 ルールを追加することです。\n \n### <a name=\"how-many-ip-addresses-do-i-need-for-a-managed-instance\"></a>Managed Instance に必要な IP アドレスの数はいくつですか?\n\nサブネットには、十分な数の利用可能な [IP アドレス](connectivity-architecture-overview.md#network-requirements)が含まれている必要があります。 SQL Managed Instance の VNet サブネットのサイズを決定するには、[Managed Instance に必要なサブネットのサイズと範囲の決定](./vnet-subnet-determine-size.md)に関する記事を参照してください。 \n\n### <a name=\"what-if-there-are-not-enough-ip-addresses-for-performing-instance-update-operation\"></a>インスタンス更新操作を実行できるだけの十分な IP アドレスが存在しない場合はどうなりますか?\n\nマネージド インスタンスのプロビジョニング先となるサブネットに十分な [IP アドレス](connectivity-architecture-overview.md#network-requirements)が存在しない場合は、新しいサブネットを作成したうえで、その中に新しいマネージド インスタンスを作成する必要があります。 また、新しいサブネットを作成するにあたっては、将来の更新操作で同様の問題が生じないよう、より多くの IP アドレスを確保することをお勧めします。 新しいインスタンスのプロビジョニング後、古いインスタンスと新しいインスタンスとの間で、データのバックアップと復元を手動で行うことができるほか、インスタンス間の[ポイントインタイム リストア](point-in-time-restore.md?tabs=azure-powershell)を実行することができます。\n\n### <a name=\"do-i-need-an-empty-subnet-to-create-a-managed-instance\"></a>Managed Instance を作成するには、空のサブネットが必要ですか?\n\nいいえ。 空のサブネット、または既に Managed Instance が含まれているサブネットのいずれかを使用できます。 \n\n### <a name=\"can-i-change-the-subnet-address-range\"></a>サブネットのアドレス範囲を変更できますか?\n\nManaged Instances が含まれている場合は、できません。 これは、Azure のネットワーク インフラストラクチャの制限です。 アドレス空間は、[空のサブネットにしか追加できません](../../virtual-network/virtual-network-manage-subnet.md#change-subnet-settings)。 \n\n### <a name=\"can-i-move-my-managed-instance-to-another-subnet\"></a>マネージド インスタンスを別のサブネットに移動できますか?\n\nいいえ。 これは、現在の Managed Instance の設計上の制限です。 ただし、他のサブネットで新しいインスタンスをプロビジョニングし、古いインスタンスと新しいインスタンスとの間で、データのバックアップと復元を手動で行うことができるほか、インスタンス間の[ポイントインタイム リストア](point-in-time-restore.md?tabs=azure-powershell)を実行することができます。\n\n### <a name=\"do-i-need-an-empty-virtual-network-to-create-a-managed-instance\"></a>Managed Instance を作成するには、空の仮想ネットワークが必要ですか?\n\nこれは必要ありません。 [Azure SQL Managed Instance 用の仮想ネットワークを作成する](./virtual-network-subnet-create-arm-template.md)か、または [Azure SQL Managed Instance の既存の仮想ネットワークを構成する](./vnet-existing-add-subnet.md)ことができます。\n\n### <a name=\"can-i-place-a-managed-instance-with-other-services-in-a-subnet\"></a>Managed Instance を他のサービスと一緒にサブネットに配置することはできますか?\n\nいいえ。 現時点では、他のリソースの種類が既に含まれているサブネットに Managed Instance を配置することはサポートされていません。\n"
+  - question: "接続 \n"
+    answer: "### <a name=\"can-i-connect-to-my-managed-instance-using-ip-address\"></a>IP アドレスを使用してマネージド インスタンスに接続できますか?\n\nいいえ、これはサポートされていません。 Managed Instance のホスト名は、Managed Instance の仮想クラスターの前にあるロード バランサーにマップされます。 1 つの仮想クラスターが複数の Managed Instance をホストすることが可能なため、名前を指定しないで適切な Managed Instance に接続をルーティングすることはできません。\nSQL Managed Instance 仮想クラスターのアーキテクチャの詳細については、「[仮想クラスターの接続アーキテクチャ](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)」を参照してください。\n\n### <a name=\"can-my-managed-instance-have-a-static-ip-address\"></a>マネージド インスタンスに静的 IP アドレスを付与することはできますか?\n\n現在これはサポートされていません。\n\nまれではあるものの不可欠な状況として、マネージド インスタンスを新しい仮想クラスターにオンラインで移行することが必要になる場合があります。 必要な場合、この移行を行うのは、サービスのセキュリティおよび信頼性の向上を目指してテクノロジ スタックに変更を加えるためです。 新しい仮想クラスターに移行すると、マネージド インスタンスのホスト名にマップされている IP アドレスが変更されます。 マネージド インスタンス サービスは、静的 IP アドレスのサポートを要求することはなく、定期的なメンテナンス サイクルの一環として、そのアドレスを予告なしに変更する権限を有しています。\n\nこのような理由から、IP アドレスの不変性を当てにすると不要なダウンタイムの発生につながるので、変更を想定しておくことを強くお勧めします。\n\n### <a name=\"does-managed-instance-have-a-public-endpoint\"></a>Managed Instance にはパブリック エンドポイントがありますか?\n\nはい。 Managed Instance には、既定でサービス管理にのみ使用されるパブリック エンドポイントがありますが、お客様はデータ アクセスに対してもそれを有効にすることができます。 詳細については、[パブリック エンドポイントを使用した SQL Managed Instance の使用](./public-endpoint-overview.md)に関する記事を参照してください。 パブリック エンドポイントを構成するには、[SQL Managed Instance のパブリック エンドポイントの構成](public-endpoint-configure.md)に関する記事を参照してください。\n\n### <a name=\"how-does-managed-instance-control-access-to-the-public-endpoint\"></a>パブリック エンドポイントは Managed Instance コントロールからどのようにアクセスされるのですか?\n\nManaged Instance コントロールからパブリック エンドポイントへのアクセスは、ネットワークとアプリケーションの両方のレベルで行われます。\n\n管理およびデプロイ サービスでは、外部ロード バランサーにマッピングされる[管理エンドポイント](./connectivity-architecture-overview.md#management-endpoint)を使用して、マネージド インスタンスに接続します。 トラフィックは、マネージド インスタンスの管理コンポーネントだけが使用する定義済みの一連のポートで受信された場合のみ、ノードにルーティングされます。 ノード上の組み込みのファイアウォールは、Microsoft の IP 範囲からのトラフィックのみを許可するように設定されています。 証明書によって、管理コンポーネントと管理プレーンとの間のすべての通信が互いに認証されます。 詳細については、[SQL Managed Instance の接続アーキテクチャ](./connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)に関する記事を参照してください。\n\n### <a name=\"could-i-use-the-public-endpoint-to-access-the-data-in-managed-instance-databases\"></a>パブリック エンドポイントを使用して Managed Instance データベースのデータにアクセスすることはできますか?\n\nはい。 お客様は [Azure portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal) / [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell)、または ARM からパブリック エンドポイント データ アクセスを有効にして、データ ポート (ポート番号 3342) へのアクセスをロック ダウンするよう NSG を構成する必要があります。 詳細については、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](public-endpoint-configure.md)」と「[パブリック エンドポイントで安全に Azure SQL Managed Instance を使用する](public-endpoint-overview.md)」を参照してください。 \n\n### <a name=\"can-i-specify-a-custom-port-for-sql-data-endpoints\"></a>SQL データ エンドポイントのカスタム ポートを指定できますか?\n\nいいえ。このオプションは使用できません。  プライベート データ エンドポイントの場合、Managed Instance では既定のポート番号 1433 が使用され、パブリック データ エンドポイントの場合、Managed Instance では既定のポート番号 3342 が使用されます。\n\n### <a name=\"what-is-the-recommended-way-to-connect-managed-instances-placed-in-different-regions\"></a>異なるリージョンに配置されている Managed Instance に接続するには、どのような方法がお勧めですか?\n\nこれを行うには、Express Route 回線のピアリングがお勧めの方法です。 グローバル仮想ネットワーク ピアリングはサポート対象ですが、次の注記で説明する制限事項があります。  \n\n> [!IMPORTANT]\n> [2020 年 9 月 22 日、Microsoft は、新しく作成された仮想クラスターのグローバル仮想ネットワーク ピアリングを発表しました](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 これは、グローバル仮想ネットワーク ピアリングが、発表日以降に空のサブネットに作成された SQL Managed Instance に加え、それらのサブネットに作成された後続のすべてのマネージド インスタンスに対してサポートされることを意味します。 SQL Managed Instance のその他すべてのピアリングについては、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 \n\nExpress Route 回線のピアリングおよびグローバル仮想ネットワーク ピアリングが不可能な場合、サイト間 VPN 接続 ([Azure portal](../../vpn-gateway/tutorial-site-to-site-portal.md)、[PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)、[Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) を作成することが、他の唯一のオプションとなります。\n"
+  - question: "データ窃盗リスクを軽減する  \n"
+    answer: >
+      ### <a name="how-can-i-mitigate-data-exfiltration-risks"></a>データ窃盗リスクを軽減するにはどうすればいいですか?
+
+
+      データ窃盗リスクを軽減するために、以下に示す一連のセキュリティ設定および制御を適用することをお勧めします。
+
+
+      - すべてのデータベースで [Transparent Data Encryption (TDE)](../database/transparent-data-encryption-tde-overview.md) を有効にする。
+
+      - 共通言語ランタイム (CLR) を無効にする。 これは、オンプレミスでも推奨される設定です。
+
+      - Azure Active Directory (Azure AD) 認証のみを使用する。
+
+      - 低特権の DBA アカウントでインスタンスにアクセスする。
+
+      - sysadmin アカウント用に Jumpbox への JIT アクセスを構成する。
+
+      - [SQL 監査](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)を有効にしてアラート メカニズムと統合する。
+
+      - [Microsoft Defender for SQL](../database/azure-defender-for-sql.md) スイートから[脅威検出](../database/threat-detection-configure.md)を有効にする。
+  - question: >
+      DNS
+    answer: >
+      ### <a name="can-i-configure-a-custom-dns-for-sql-managed-instance"></a>SQL Managed Instance 用にカスタム DNS を構成できますか?
+
+
+      はい。 詳細については、[Azure SQL Managed Instance 用にカスタム DNS を構成する](./custom-dns-configure.md)方法に関する記事を参照してください。
+
+
+      ### <a name="can-i-do-dns-refresh"></a>DNS の更新はできますか?
+
+
+      はい。 「[SQL Managed Instance 仮想クラスター上で仮想ネットワーク DNS サーバーの設定を同期する](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md)」を参照してください。
+  - question: >
+      タイムゾーンの変更
+    answer: >
+      ### <a name="can-i-change-the-time-zone-for-an-existing-managed-instance"></a>既存のマネージド インスタンスのタイム ゾーンは変更できますか?
+
+
+      タイム ゾーン構成は、マネージド インスタンスの初回プロビジョニング時に設定できます。 既存のマネージド インスタンスのタイム ゾーンの変更はサポートされていません。 詳細については、[タイム ゾーンの制限](timezones-overview.md#limitations)に関する記事を参照してください。
+
+
+      対処方法としては、適切なタイム ゾーンで新しいマネージド インスタンスを作成し、手動バックアップおよび復元を実行するか、[クロスインスタンスのポイントインタイム リストア](/archive/blogs/sqlserverstorageengine/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance) (推奨) を実行します。
+  - question: >
+      セキュリティとデータベースの暗号化
+    answer: "### <a name=\"is-the-sysadmin-server-role-available-for-sql-managed-instance\"></a>Sysadmin サーバー ロールは SQL Managed Instance で使用できますか?\n\nはい。お客様は、sysadmin ロールのメンバーであるログインを作成できます。  sysadmin 権限を持つお客様は、インスタンスを運用する責任を負うことになり、これは SLA コミットメントに悪影響を与える可能性があります。 sysadmin サーバー ロールにログインを追加するには、「[Azure AD 認証](./aad-security-configure-tutorial.md#azure-ad-authentication)」を参照してください。\n\n### <a name=\"is-transparent-data-encryption-supported-for-sql-managed-instance\"></a>SQL Managed Instance では Transparent Data Encryption サポートされていますか?\n\nはい。SQL Managed Instance では Transparent Data Encryption がサポートされています。 詳細については、[SQL Managed Instance の Transparent Data Encryption](../database/transparent-data-encryption-tde-overview.md?tabs=azure-portal) に関する記事を参照してください。\n\n### <a name=\"can-i-leverage-the-bring-your-own-key-model-for-tde\"></a>TDE の \"Bring Your Own Key\" モデルは活用できますか?\n\nはい。BYOK シナリオの Azure Key Vault は、Azure SQL Managed Instance で使用できます。 詳細については、[カスタマー マネージド キーを使用した Transparent Data Encryption](../database/transparent-data-encryption-tde-overview.md?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key) に関する記事を参照してください。\n\n### <a name=\"can-i-migrate-an-encrypted-sql-server-database\"></a>暗号化された SQL Server データベースを移行できますか?\n\nはい、できます。 暗号化された SQL Server データベースを移行するには、既存の証明書をエクスポートして Managed Instance にインポートした後、データベースの完全バックアップを実行して Managed Instance に復元する必要があります。 \n\nまた、[Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) を使用して、TDE で暗号化されたデータベースを移行することもできます。\n\n### <a name=\"how-can-i-configure-tde-protector-rotation-for-sql-managed-instance\"></a>SQL Managed Instance の TDE プロテクターのローテーションを構成する方法について教えてください。\n\nAzure Cloud Shell を使用して Managed Instance の TDE プロテクターをローテーションできます。 手順については、「[Azure Key Vault の独自のキーを使用した SQL Managed Instance での Transparent Data Encryption](scripts/transparent-data-encryption-byok-powershell.md)」を参照してください。\n\n### <a name=\"can-i-restore-my-encrypted-database-to-sql-managed-instance\"></a>暗号化されたデータベースを SQL Managed Instance に復元できますか?\n\nはい。SQL Managed Instance に復元するために、データベースを復号化する必要はありません。 暗号化されたバックアップ ファイルからデータを読み取れるように、ソース システム上で暗号化キーの保護機能として使用される証明書またはキーを SQL Managed Instance に提供する必要があります。 その方法は次の 2 つです。\n\n- *SQL Managed Instance に証明書の保護機能をアップロードする。* これを実行できるのは、PowerShell を使用した場合のみです。 この[サンプル スクリプト](./tde-certificate-migrate.md)にプロセス全体が記述されています。\n- *非対称キーの保護機能を Azure Key Vault にアップロードし、SQL Managed Instance がその保護機能を指すように指定する。* この方法は、暗号化キーの格納にも Key Vault 統合を使用する Bring Your Own Key (BYOK) TDE のユース ケースに似ています。 キーを暗号化キーの保護機能として使用せず、SQL Managed Instance によって暗号化されたデータベースが復元される際にキーを利用できるようにするだけの場合は、[BYOK TDE の設定](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)手順を実行し、 **[選択したキーを既定の TDE 保護機能にします]** チェック ボックスはオフにしてください。\n\n暗号化保護機能を SQL Managed Instance で利用できるようにしたら、標準のデータベース復元手順を進めることができます。\n"
+  - question: >
+      購入モデルと特典
+    answer: "### <a name=\"what-purchasing-models-are-available-for-sql-managed-instance\"></a>SQL Managed Instance では、どのような購入モデルを使用できますか?\n\nSQL Managed Instance には、[仮想コアベースの購入モデル](sql-managed-instance-paas-overview.md#vcore-based-purchasing-model)が用意されています。\n\n### <a name=\"what-cost-benefits-are-available-for-sql-managed-instance\"></a>SQL Managed Instance では、どのようなコスト面での利点を受けられますか?\n\nAzure SQL の特典を活用して、次の方法でコストを削減できます。\n-    オンプレミスのライセンスに対する既存の投資を最大化し、[Azure ハイブリッド特典](../azure-hybrid-benefit.md?tabs=azure-powershell)で最大 55% 節約できます。 \n-    コンピューティング リソースを予約して、[予約インスタンス特典](../database/reserved-capacity-overview.md)で最大 33% 節約できます。 これと Azure ハイブリッド特典を組み合わせて、最大 82% の節約を実現できます。 \n-    [Azure Dev/Test の価格特典](https://azure.microsoft.com/pricing/dev-test/)を利用して、進行中の開発とテストのワークロードを割引料金により、定価よりも最大 55% お得になります。\n\n### <a name=\"who-is-eligible-for-reserved-instance-benefit\"></a>予約インスタンスの特典の対象となるのはだれですか?\n\n予約インスタンス特典の利用資格を得るには、お客様のサブスクリプションの種類がエンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制料金の個々の契約 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 予約の詳細については、[予約インスタンスの特典](../database/reserved-capacity-overview.md)に関する記事を参照してください。 \n\n### <a name=\"is-it-possible-to-cancel-exchange-or-refund-reservations\"></a>予約を取り消したり、交換したり、返金したりすることはできますか?\n\n一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。\n"
+  - question: >
+      Managed Instance およびバックアップ ストレージの課金
+    answer: "### <a name=\"what-are-the-sql-managed-instance-pricing-options\"></a>SQL Managed Instance の価格オプションについて教えてください。\n\nManaged Instance の価格オプションの詳細については、「[価格ページ](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)」を参照してください。\n\n### <a name=\"how-can-i-track-billing-cost-for-my-managed-instance\"></a>マネージド インスタンスの課金コストを追跡するにはどうすればよいですか?\n\nこれを行うには、[Azure Cost Management ソリューション](../../cost-management-billing/index.yml)を使用します。 [Azure portal](https://portal.azure.com) で **[サブスクリプション]** に移動し、 **[コスト分析]** を選択します。 \n\n**[累積コスト]** オプションを使用し、その後 **[リソースの種類]** を `microsoft.sql/managedinstances` としてフィルター処理します。\n\n### <a name=\"how-much-automated-backups-cost\"></a>自動バックアップのコストはどれくらいですか?\n\n設定されているバックアップの保有期間にかかわらず、購入した予約済みのデータ ストレージ スペースと同じ量のバックアップ ストレージが無料で確保されます。 バックアップ ストレージの使用量が、割り当てられている無料のバックアップ ストレージ スペース以内であれば、マネージド インスタンスの自動バックアップには追加のコストはかかりません。そのため、無料で利用できます。 無料の容量を超えてバックアップ ストレージを使用すると、米国リージョンでは 1 GB あたり約 $0.20 から $0.24 のコストがかかります。お客様のリージョンでの詳細については、価格ページを参照してください。 詳細については、[バックアップ ストレージの使用量の説明](https://techcommunity.microsoft.com/t5/azure-sql-database/backup-storage-consumption-on-managed-instance-explained/ba-p/1390923)に関する記事を参照してください。\n\n### <a name=\"how-can-i-monitor-billing-cost-for-my-backup-storage-consumption\"></a>バックアップ ストレージの使用量の課金コストを監視するにはどうすればよいですか?\n\nバックアップ ストレージのコストは、Azure portal を使用して監視できます。 手順については、[自動バックアップのコストを監視する](../database/automated-backups-overview.md?tabs=managed-instance#monitor-costs)方法に関する記事を参照してください。 \n\n### <a name=\"how-can-i-optimize-my-backup-storage-costs-on-the-managed-instance\"></a>マネージド インスタンスのバックアップ ストレージのコストを最適化するにはどうすればよいですか?\n\nバックアップ ストレージのコストを最適化するには、[SQL Managed Instance でのバックアップの微調整](https://techcommunity.microsoft.com/t5/azure-sql-database/fine-tuning-backup-storage-costs-on-managed-instance/ba-p/1390935)に関する記事を参照してください。\n"
+  - question: >
+      コストを節約するユース ケース
+    answer: >
+      ### <a name="where-can-i-find-use-cases-and-resulting-cost-savings-with-sql-managed-instance"></a>SQL Managed Instance のユース ケースやコスト削減の成果はどこで確認できますか?
+
+
+      SQL Managed Instance のケース スタディ:
+
+
+      - [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
+
+      - [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+
+      - [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+
+      - [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
+
+
+      Azure SQL Managed Instance のデプロイに関連する利点、コスト、およびリスクについて理解を深めるには、次の Forrester 社による調査も参考になります。[Microsoft Azure SQL Database Managed Instance の Total Economic Impact](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)
+  - question: "パスワード ポリシー \n"
+    answer: >
+      ### <a name="what-password-policies-are-applied-for-sql-managed-instance-sql-logins"></a>SQL Managed Instance の SQL ログインには、どのようなパスワード ポリシーが適用されますか?
+
+
+      SQL Managed Instance の SQL ログイン用のパスワード ポリシーは、マネージド インスタンスを保持する仮想クラスターを形成している VM に適用された Azure プラットフォーム ポリシーを継承します。 現時点では、これらの設定は Azure によって定義され、マネージド インスタンスによって継承されるため、変更することはできません。
+
+       > [!IMPORTANT]
+       > Azure プラットフォームでは、そのポリシーに依存するサービスに通知することなく、ポリシー要件を変更することが可能です。
+
+      ### <a name="what-are-current-azure-platform-policies"></a>現在の Azure プラットフォーム ポリシーはどうなっていますか?
+
+
+      各ログインでは、ログイン時にパスワードを設定し、有効期間の上限に達したらそのパスワードを変更する必要があります。
+
+
+      | **ポリシー** | **セキュリティ設定** |
+
+      | --- | --- |
+
+      | パスワードの有効期間 | 42 日 |
+
+      | パスワードの変更禁止期間 | 1 日 |
+
+      | パスワードの最小文字数 | 10 文字 |
+
+      | パスワードでは、複雑さの要件を満たす必要がある | Enabled |
+
+
+      ### <a name="is-it-possible-to-disable-password-complexity-and-expiration-in-sql-managed-instance-on-login-level"></a>ログイン レベルで SQL Managed Instance のパスワードの複雑さと有効期限を無効にすることはできますか?
+
+
+      はい。CHECK_POLICY および CHECK_EXPIRATION フィールドをログイン レベルで制御することが可能です。 現在の設定を確認するには、以下の T-SQL コマンドを実行します。
+
+
+      ```sql
+
+      SELECT *
+
+      FROM sys.sql_logins
+
+      ```
+
+
+      その後、以下を実行して、指定されているログイン設定を変更できます。
+
+
+      ```sql
+
+      ALTER LOGIN <login_name> WITH CHECK_POLICY = OFF;
+
+      ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
+
+      ```
+
+
+      (' test ' を目的のログイン名に置き換え、ポリシーと有効期限の値を調整してください)
+  - question: >
+      サービスの更新情報
+    answer: "### <a name=\"what-is-the-root-ca-change-for-azure-sql-database--sql-managed-instance\"></a>Azure SQL Database と SQL Managed Instance に対するルート CA とは何ですか?\n\n[Azure SQL Database と SQL Managed Instance のための証明書ローテーション](../updates/ssl-root-certificate-expiring.md)に関する記事を参照してください。 \n\n### <a name=\"what-is-a-planned-maintenance-event-for-sql-managed-instance\"></a>SQL Managed Instance の計画メンテナンス イベントとは何ですか。\n\n[SQL Managed Instance での Azure メンテナンス イベントの計画](../database/planned-maintenance.md)に関するページを参照してください。 \n"
+  - question: >
+      Azure のフィードバックとサポート
+    answer: >-
+      ### <a name="where-can-i-leave-my-ideas-for-sql-managed-instance-improvements"></a>SQL Managed Instance の改善案はどこに提出すればよいですか?
+
+
+      新しい Managed Instance 機能に投票したり、[SQL Managed Instance フィードバック フォーラム](https://feedback.azure.com/d365community/forum/a99f7006-3425-ec11-b6e6-000d3a4f0f84)で新しい改善案を投票にかけることができます。 これにより、製品開発に貢献いただくことができ、これは今後の改善の優先順位を決める上で役立ちます。
+
+
+      ### <a name="how-can-i-create-azure-support-request"></a>Azure サポート リクエストを作成するにはどうすればよいですか?
+
+
+      Azure サポート リクエストを作成する方法については、[Azure サポート リクエストを作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)に関する記事を参照してください。

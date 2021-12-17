@@ -1,37 +1,38 @@
 ---
 title: Synapse ワークスペースのアクセス制御を設定する方法
-description: この記事では、Azure ロール、Synapse ロール、SQL アクセス許可、および Git アクセス許可を使用して Synapse ワークスペースへのアクセスを制御する方法について説明します。
+description: この記事では、Azure ロール、Synapse ロール、SQL アクセス許可、および Git アクセス許可を使用して Azure Synapse ワークスペースへのアクセスを制御する方法について説明します。
 services: synapse-analytics
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
-ms.date: 12/03/2020
+ms.date: 8/05/2021
 ms.author: ronytho
-ms.reviewer: jrasnick
-ms.openlocfilehash: 97f9d0e0037090a8c058eb6e2393451d975e79c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: jrasnick, wiassaf
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: d80b12e807e6c6f0999927bc373fe64c1feb1b40
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103472260"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846598"
 ---
-# <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Synapse ワークスペースのアクセス制御を設定する方法 
+# <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>Azure Synapse ワークスペースのアクセス制御を設定する方法 
 
-この記事では、Azure ロール、Synapse ロール、SQL アクセス許可、および Git アクセス許可を使用して Synapse ワークスペースへのアクセスを制御する方法について説明します。   
+この記事では、Azure ロール、Azure Synapse ロール、SQL アクセス許可、および Git アクセス許可を使用して Microsoft Azure Synapse ワークスペースへのアクセスを制御する方法について説明します。   
 
-このガイドでは、ワークスペースを設定し、多くの Synapse プロジェクトに適した基本的なアクセス制御システムを構成します。  きめ細かな制御が必要な場合のために、より高度なオプションについても説明します。  
+このガイドでは、ワークスペースを設定し、多くの Azure Synapse プロジェクトに適した基本的なアクセス制御システムを構成します。  きめ細かな制御が必要な場合のために、より高度なオプションについても説明します。  
 
-Synapse アクセス制御は、組織内のロールとペルソナに合ったセキュリティ グループを使用することで簡素化できます。  アクセスを管理するには、セキュリティ グループのユーザーを追加するか削除するだけで済みます。
+Azure Synapse のアクセス制御は、組織内のロールとペルソナに合ったセキュリティ グループを使用することで簡素化できます。  アクセスを管理するには、セキュリティ グループのユーザーを追加するか削除するだけで済みます。
 
-このチュートリアルを開始する前に、[Synapse アクセス制御の概要](./synapse-workspace-access-control-overview.md)に関するページを参照して、Synapse で使用されるアクセス制御メカニズムについて理解してください。   
+このチュートリアルを開始する前に、[Azure Synapse アクセス制御の概要](./synapse-workspace-access-control-overview.md)に関するページを参照して、Azure Synapse Analytics で使用されるアクセス制御メカニズムについて理解してください。   
 
 ## <a name="access-control-mechanisms"></a>アクセス制御メカニズム
 
 > [!NOTE]
 > このガイドで採用するアプローチでは、複数のセキュリティ グループを作成してから、それらのグループにロールを割り当てます。 グループの設定後、セキュリティ グループ内のメンバーシップを管理するだけで、ワークスペースへのアクセスを制御できます。
 
-Synapse ワークスペースをセキュリティで保護するには、次の項目を構成するパターンに従います。
+Azure Synapse ワークスペースをセキュリティで保護するには、次の項目を構成するパターンに従います。
 
 - **セキュリティ グループ**。類似のアクセス要件を持つユーザーをグループ化します。
 - **Azure ロール**。SQL プール、Apache Spark プールと統合ランタイムを作成および管理でき、ADLS Gen2 ストレージにアクセスできるユーザーを制御します。
@@ -39,13 +40,13 @@ Synapse ワークスペースをセキュリティで保護するには、次の
 - **SQL アクセス許可**。SQL プールへの管理アクセスとデータ プレーン アクセスを制御します。 
 - **Git アクセス許可**。 ワークスペースの Git サポートを構成した場合に、ソース管理のコード成果物にアクセスできるユーザーを制御します 
  
-## <a name="steps-to-secure-a-synapse-workspace"></a>Synapse ワークスペースをセキュリティ保護する手順
+## <a name="steps-to-secure-an-azure-synapse-workspace"></a>Azure Synapse ワークスペースをセキュリティ保護する手順
 
 このドキュメントでは、手順を簡素化するために、標準名を使用しています。 それらを任意の名前に置き換えてください。
 
 |設定 | 標準名 | 説明 |
 | :------ | :-------------- | :---------- |
-| **Synapse ワークスペース** | `workspace1` |  Synapse ワークスペースに使用される名前。 |
+| **Synapse ワークスペース** | `workspace1` |  Azure Synapse ワークスペースに使用される名前。 |
 | **ADLSGEN2 アカウント** | `storage1` | ワークスペースで使用する ADLS アカウント。 |
 | **コンテナー** | `container1` | ワークスペースで既定で使用される STG1 内のコンテナー。 |
 | **Active Directory テナント** | `contoso` | Active Directory テナント名。|
@@ -54,7 +55,7 @@ Synapse ワークスペースをセキュリティで保護するには、次の
 ## <a name="step-1-set-up-security-groups"></a>手順 1: セキュリティ グループを設定する
 
 >[!Note] 
->プレビュー期間中は、Synapse の "**Synapse SQL 管理者**" および "**Synapse Apache Spark 管理者**" ロールにマップされるセキュリティ グループを作成することをお勧めします。  きめ細かな Synapse RBAC ロールとスコープが新たに導入されたため、これらの新しい機能を使用してワークスペースへのアクセスを制御することをお勧めします。  これらの新しいロールとスコープでは、構成の柔軟性が向上するほか、開発者が分析アプリケーションを作成する際に多くの場合は SQL と Spark を組み合わせて使用し、ワークスペース全体ではなく特定のリソースへのアクセスを必要とすることが認識されています。 [Synapse RBAC](./synapse-workspace-synapse-rbac.md) の詳細を確認してください。
+>プレビュー期間中は、Azure Synapse の "**Synapse SQL 管理者**" および "**Synapse Apache Spark 管理者**" ロールにマップされるセキュリティ グループを作成することが推奨されていました。  きめ細かな Synapse RBAC ロールとスコープが新たに導入されたため、これらの新しい機能を使用してワークスペースへのアクセスを制御することをお勧めします。  これらの新しいロールとスコープでは、構成の柔軟性が向上するほか、開発者が分析アプリケーションを作成する際に多くの場合は SQL と Spark を組み合わせて使用し、ワークスペース全体ではなく特定のリソースへのアクセスを必要とすることが認識されています。 [Synapse RBAC](./synapse-workspace-synapse-rbac.md) の詳細を確認してください。
 
 ワークスペースに以下のセキュリティ グループを作成します。
 
@@ -81,7 +82,7 @@ Synapse ワークスペースをセキュリティで保護するには、次の
 
 ## <a name="step-2-prepare-your-adls-gen2-storage-account"></a>手順 2: ADLS Gen2 ストレージ アカウントを準備する
 
-Synapse ワークスペースでは、既定のストレージ コンテナーを次のことに使用します。
+Azure Synapse ワークスペースでは、既定のストレージ コンテナーが次のことに使用されます。
   - Spark テーブル用のバッキング データ ファイルの格納
   - Spark ジョブの実行ログ
   - インストールすることにしたライブラリの管理
@@ -90,23 +91,37 @@ Synapse ワークスペースでは、既定のストレージ コンテナー�
 
 - ワークスペースに使用する ADLS Gen2 アカウント。 このドキュメントでは、それを `storage1` と呼びます。 `storage1` は、ワークスペースの "プライマリ" ストレージ アカウントと見なされます。
 - Synapse ワークスペースで既定で使用される `workspace1` 内のコンテナー。 このドキュメントでは、それを `container1` と呼びます。 
+ 
+- **[アクセス制御 (IAM)]** を選択します。
 
-- Azure portal を使用して、セキュリティ グループに、`container1` に対する次の Azure ロールを割り当てます 
+- **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
 
-  - "**ストレージ BLOB データ共同作成者**" ロールを `workspace1_SynapseAdmins` に割り当てます 
-  - "**ストレージ BLOB データ共同作成者**" ロールを `workspace1_SynapseContributors` に割り当てます
-  - "**ストレージ BLOB データ共同作成者**" ロールを `workspace1_SynapseComputeOperators` に割り当てます
+- 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | ストレージ BLOB データ共同作成者 |
+    | アクセスの割り当て先 |サービス プリンシパル |
+    | メンバー |workspace1_SynapseAdmins、workspace1_SynapseContributors、およびworkspace1_SynapseComputeOperators|
 
-## <a name="step-3-create-and-configure-your-synapse-workspace"></a>手順 3:Synapse ワークスペースを作成して構成する
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
-Azure portal で、Synapse ワークスペースを作成します。
+## <a name="step-3-create-and-configure-your-azure-synapse-workspace"></a>手順 3: Azure Synapse ワークスペースを作成して構成する
+
+Azure portal で、Azure Synapse ワークスペースを作成します。
 
 - サブスクリプションを選択します
+
 - Azure "**所有者**" ロールを持っているリソース グループを選択または作成します。
+
 - ワークスペースに `workspace1` という名前を指定します
+
 - ストレージ アカウントとして `storage1` を選択します
+
 - "Filesystem" として使用されているコンテナーに `container1` を選択します。
+
 - Synapse Studio で WS1 を開きます
+
 - **[管理]**  >  **[アクセス制御]** に移動して、次のようにセキュリティ グループに Synapse ロールを *ワークスペース スコープ* で割り当てます。
   - "**Synapse 管理者**" ロールを `workspace1_SynapseAdministrators` に割り当てます 
   - "**Synapse 共同作成者**" ロールを `workspace1_SynapseContributors` に割り当てます 
@@ -114,13 +129,25 @@ Azure portal で、Synapse ワークスペースを作成します。
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>手順 4:既定のストレージ コンテナーに対するワークスペース MSI アクセスを許可する
 
-Synapse では、パイプラインを実行してシステム タスクを実行するために、ワークスペース マネージド サービス ID (MSI) に既定の ADLS Gen2 アカウントの `container1` に対するアクセス権が必要です。
+Azure Synapse では、パイプラインを実行してシステム タスクを実行するために、ワークスペース マネージド サービス ID (MSI) に既定の ADLS Gen2 アカウントの `container1` に対するアクセス権が必要です。 詳細については、「[Azure Synapse ワークスペース マネージド ID](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics)」を参照してください。
 
 - Azure ポータルを開きます
 - ストレージ アカウント `storage1`、次に `container1` を見つけます
-- **アクセス制御 (IAM)** を使用して、"**ストレージ BLOB データ共同作成者**" ロールがワークスペース MSI に割り当てられていることを確認します。
-  - 割り当てられていない場合は、割り当てます。
-  - MSI には、ワークスペースと同じ名前が付けられます。 この記事では、`workspace1` です。
+- **[アクセス制御 (IAM)]** を選択します。
+- **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
+- 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | ストレージ BLOB データ共同作成者 |
+    | アクセスの割り当て先 | マネージド ID |
+    | メンバー | マネージド ID 名  |
+
+    > [!NOTE]
+    > マネージド ID の名前は、ワークスペース名でもあります。
+
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
+
 
 ## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>手順 5:ワークスペースの "Azure 共同作成者" ロールを Synapse 管理者に付与する 
 
@@ -128,7 +155,17 @@ SQL プール、Apache Spark プールと統合ランタイムを作成するに
 
 - Azure ポータルを開きます
 - ワークスペース `workspace1` を見つけます
-- `workspace1` の "**Azure 共同作成者**" ロールを `workspace1_SynapseAdministrators` に割り当てます。 
+- **[アクセス制御 (IAM)]** を選択します。
+- **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
+- 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | 共同作成者 |
+    | アクセスの割り当て先 | サービス プリンシパル |
+    | メンバー | workspace1_SynapseAdministrators  |
+
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png) 
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>手順 6:"SQL Active Directory 管理者" ロールを割り当てる
 
@@ -144,16 +181,15 @@ SQL プール、Apache Spark プールと統合ランタイムを作成するに
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>手順 7:SQL プールへのアクセス権を付与する
 
-既定では、"Synapse 管理者" ロールが割り当てられているすべてのユーザーには、サーバーレス SQL プール (組み込み) およびそのすべてのデータベースに対する SQL `db_owner` ロールも割り当てられます。
+既定では、Synapse 管理者ロールが割り当てられているすべてのユーザーには、ワークスペース内のサーバーレス SQL プールに対する SQL `db_owner` ロールも割り当てられます。
 
-他のユーザーおよびワークスペース MSI については、SQL プールへのアクセスは SQL アクセス許可を使用して制御されます。  SQL アクセス許可を割り当てるには、作成後に各 SQL データベースで SQL スクリプトを実行する必要があります。  これらのスクリプトを実行する必要があるケースは 3 つあります。
+他のユーザーの SQLプールへのアクセスは、SQLアクセス許可を使用されます。  SQL アクセス許可を割り当てるには、作成後に各 SQL データベースで SQL スクリプトを実行する必要があります。  これらのスクリプトを実行する必要があるケースは 3 つあります。
 1. サーバーレス SQL プール (組み込み) およびそのデータベースへのアクセス権を他のユーザーに付与する
-2. 専用プール データベースへのアクセス権を任意のユーザーに付与する
-3. 正常な実行に SQL プールへのアクセスを必要とするパイプラインを有効にするために、SQL プール データベースへのアクセス権をワークスペース MSI に付与する。
+2. 専用 SQL プール データベースへのアクセス権を任意のユーザーに付与する
 
 SQL スクリプトの例を以下に示します。
 
-専用 SQL プール データベースへのアクセス権を付与するには、ワークスペースの作成者または `workspace1_SQLAdmins` グループの任意のメンバーがスクリプトを実行できます。  
+専用 SQL プール データベースへのアクセス権を付与するには、ワークスペースの作成者または `workspace1_SynapseAdministrators` グループの任意のメンバーがスクリプトを実行できます。  
 
 サーバーレス SQL プール (組み込み) へのアクセス権を付与するには、 `workspace1_SQLAdmins` グループまたは `workspace1_SynapseAdministrators` グループの任意のメンバーがスクリプトを実行できます。 
 
@@ -209,7 +245,7 @@ ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 
 ### <a name="step-72-dedicated-sql-pools"></a>手順 7.2:専用 SQL プール
 
-**単一の** 専用 SQL プール データベースへのアクセス権を付与するには、Synapse SQL スクリプト エディターで次の手順を実行します。
+**単一の** 専用 SQL プール データベースへのアクセス権を付与するには、Azure Synapse SQL スクリプト エディターで次の手順を実行します。
 
 1. *[接続先]* ドロップダウンを使用して選択したターゲット データベースで次のコマンドを実行して、データベースにユーザーを作成します。
 
@@ -231,49 +267,19 @@ ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 
 ユーザーを作成した後、クエリを実行して、サーバーレス SQL プールでストレージ アカウントにクエリを実行できることを検証します。
 
-### <a name="step-73-sql-access-control-for-synapse-pipeline-runs"></a>手順 7.3:Synapse のパイプラインの実行に対する SQL アクセス制御
-
-### <a name="workspace-managed-identity"></a>ワークスペースのマネージド ID
-
-> [!IMPORTANT]
-> SQL プールを参照するデータセットまたはアクティビティを含むパイプラインを正常に実行するには、ワークスペース ID に SQL プールへのアクセス権が付与されている必要があります。
-
-各 SQL プールで次のコマンドを実行して、ワークスペース マネージド システム ID が SQL プール データベースでパイプラインを実行できるようにします。  
-
->[!note]
->次のスクリプトでは、専用の SQL プール データベースの場合、databasename はプール名と同じです。  サーバーレス SQL プール (組み込み) 内のデータベースの場合、databasename はデータベースの名前です。
-
-```sql
---Create a SQL user for the workspace MSI in database
-CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
-
---Granting permission to the identity
-GRANT CONTROL ON DATABASE::<databasename> TO <workspacename>;
-```
-
-このアクセス許可を削除するには、同じ SQL プールで次のスクリプトを実行します。
-
-```sql
---Revoke permission granted to the workspace MSI
-REVOKE CONTROL ON DATABASE::<databasename> TO <workspacename>;
-
---Delete the workspace MSI user in the database
-DROP USER [<workspacename>];
-```
-
 ## <a name="step-8-add-users-to-security-groups"></a>手順 8:セキュリティ グループにユーザーを追加する
 
 アクセス制御システムの初期構成が完了しました。
 
-アクセスを管理するために、設定したセキュリティ グループにユーザーを追加したり、削除したりできます。  ユーザーに Synapse ロールを手動で割り当てることもできますが、そうすると、アクセス許可の構成の整合性が取れなくなります。 代わりに、セキュリティ グループに対してユーザーを追加または削除するだけにしてください。
+アクセスを管理するために、設定したセキュリティ グループにユーザーを追加したり、削除したりできます。  ユーザーを Azure Synapse ロールに手動で割り当てることもできますが、そうすると、アクセス許可の構成の整合性が取れなくなります。 代わりに、セキュリティ グループに対してユーザーを追加または削除するだけにしてください。
 
-## <a name="step-9-network-security"></a>手順 9:ネットワークのセキュリティ
+## <a name="step-9-network-security"></a>手順 9: ネットワークのセキュリティ
 
-ワークスペースをセキュリティで保護するための最後の手順として、次のものを使用してネットワーク アクセスをセキュリティで保護する必要があります。
-- [ワークスペースのファイアウォール](./synapse-workspace-ip-firewall.md)
-- [マネージド仮想ネットワーク](./synapse-workspace-managed-vnet.md) 
-- [プライベート エンドポイント](./synapse-workspace-managed-private-endpoints.md)
-- [Private Link](../../azure-sql/database/private-endpoint-overview.md)
+ワークスペースをセキュリティで保護するための最後の手順として、[ワークスペース ファイアウォール](./synapse-workspace-ip-firewall.md)を使用してネットワーク アクセスをセキュリティで保護する必要があります。
+
+- [マネージド仮想ネットワーク](./synapse-workspace-managed-vnet.md)を使用しても、または使用しなくても、公衆ネットワークからワークスペースに接続できます。 詳細については、[接続設定](connectivity-settings.md)に関するページを参照してください。
+- 公衆ネットワークからのアクセスは、[公衆ネットワーク アクセス機能](connectivity-settings.md#public-network-access)または[ワークスペース ファイアウォール](./synapse-workspace-ip-firewall.md)を有効にすることで制御できます。
+- または、[マネージド プライベート エンドポイント](synapse-workspace-managed-private-endpoints.md)および[プライベート リンク](../../azure-sql/database/private-endpoint-overview.md)を使用してワークスペースに接続できます。 [Azure Synapse Analytics マネージド仮想ネットワーク](synapse-workspace-managed-vnet.md)のない Azure Synapse ワークスペースは、マネージド プライベート エンドポイントを介して接続する能力を持ちません。
 
 ## <a name="step-10-completion"></a>手順 10:Completion
 
@@ -283,12 +289,13 @@ DROP USER [<workspacename>];
 
 このガイドでは、基本的なアクセス制御システムのセットアップに重点を置いてきました。 より高度なシナリオをサポートするには、追加のセキュリティ グループを作成し、よりきめ細かいロールをより具体的なスコープでそれらのグループに割り当てます。 次のケースについて考えてみましょう。
 
-CI/CD を含む高度な開発シナリオのためにワークスペースの **Git サポートを有効にする**。  Git モードでは、Git アクセス許可によって、ユーザーが各自の作業ブランチに変更をコミットできるかどうかが決定されます。  サービスへの発行は、コラボレーション ブランチからのみ行われます。  作業ブランチで更新プログラムの開発とデバッグを行う必要はあっても、ライブ サービスに変更を発行する必要はない開発者向けに、セキュリティ グループの作成を検討してください。
+CI/CD を含む高度な開発シナリオのためにワークスペースの **Git サポートを有効にする**。  Git モードでは、Git のアクセス許可と Synapse RBAC によって、ユーザーが作業ブランチに変更をコミットできるかどうかが決定されます。  サービスへの発行は、コラボレーション ブランチからのみ行われます。  作業ブランチで更新プログラムの開発とデバッグを行う必要はあっても、ライブ サービスに変更を発行する必要はない開発者向けに、セキュリティ グループの作成を検討してください。
 
-**開発者のアクセスを特定のリソースに限定する**。  特定のリソースへのアクセスのみを必要とする開発者向けに、より細分化されたセキュリティ グループを作成してください。  これらのグループに、特定の Spark プール、統合ランタイム、または資格情報をスコープとする適切な Synapse ロールを割り当てます。
+**開発者のアクセスを特定のリソースに限定する**。  特定のリソースへのアクセスのみを必要とする開発者向けに、より細分化されたセキュリティ グループを作成してください。  これらのグループに、特定の Spark プール、統合ランタイム、または資格情報をスコープとする適切な Azure Synapse ロールを割り当てます。
 
 **オペレーターによるコード成果物へのアクセスを制限する**。  Synapse コンピューティング リソースの動作状態を監視し、ログを表示する必要はあっても、コードにアクセスしたりサービスに更新を発行したりする必要はないオペレーター向けに、セキュリティ グループを作成してください。 これらのグループに、特定の Spark プールと統合ランタイムをスコープとする "コンピューティング オペレーター" ロールを割り当てます。  
 
 ## <a name="next-steps"></a>次のステップ
 
-[Synapse RBAC ロールの割り当てを管理する方法](./how-to-manage-synapse-rbac-role-assignments.md)方法を学習する。[Synapse ワークスペース](../quickstart-create-workspace.md)を作成する
+ - [Azure Synapse RBAC ロールの割り当てを管理する方法](./how-to-manage-synapse-rbac-role-assignments.md)について学習する
+ - [Synapse ワークスペース](../quickstart-create-workspace.md)を作成する

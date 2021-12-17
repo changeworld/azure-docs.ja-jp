@@ -1,24 +1,24 @@
 ---
 title: Azure Migrate の検出および評価を使用して VMware 環境で実行されているサーバーを検出する
-description: Azure Migrate の検出および評価ツールを使用して VMware 環境で実行されているオンプレミス サーバーを検出する方法について説明します
-author: vineetvikram
-ms.author: vivikram
+description: Azure Migrate の検出および評価ツールを使用して、VMware 環境のオンプレミス サーバー、アプリケーション、依存関係を検出する方法について説明します。
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 11/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 09b04c67519bfa920a3781612823c5755cbc6d2d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7eb6aea743176bb4cdaf313d392320378bc016d1
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627797"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397500"
 ---
-# <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate の検出および評価を使用して VMware 環境で実行されているサーバーを検出する
+# <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>チュートリアル: Azure Migrate を使用して VMware 環境で実行されているサーバーを検出する
 
 Azure への移行の一環として、オンプレミスのインベントリとワークロードを検出します。
 
-このチュートリアルでは、Azure Migrate の検出および評価ツールで軽量の Azure Migrate アプライアンスを使用して、VMware 環境で実行されているサーバーを検出する方法について説明します。 このアプライアンスを vCenter Server で実行されるサーバーとしてデプロイして、サーバーとそのパフォーマンス メタデータ、サーバー上で実行されているアプリケーション、サーバーの依存関係、SQL Server インスタンスおよびデータベースを継続的に検出します。
+このチュートリアルでは、Azure Migrate の検出および評価ツール、軽量の Azure Migrate アプライアンスを使用して、VMware 環境で実行されているサーバーを検出する方法について説明します。 このアプライアンスを vCenter Server インスタンスで実行されるサーバーとしてデプロイして、サーバーとそのパフォーマンス メタデータ、サーバー上で実行されているアプリケーション、サーバーの依存関係、ASP.NET Web アプリ、SQL Server インスタンスおよびデータベースを継続的に検出します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -30,275 +30,310 @@ Azure への移行の一環として、オンプレミスのインベントリ�
 > * 継続的な検出を開始します。
 
 > [!NOTE]
-> 各チュートリアルでは、シナリオを試すための最も簡単な方法を紹介し、可能であれば既定のオプションを使用します。  
+> チュートリアルではシナリオを試すためのごく簡単な方法を紹介します。 可能な場合は既定のオプションが使用されます。  
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを開始する前に、次の前提条件を満たしていることを確認してください。
+このチュートリアルを開始する前に、これらの前提条件を満たしていることを確認してください。
 
-**要件** | **詳細**
+要件 | 詳細
 --- | ---
-**vCenter Server/ESXi ホスト** | バージョン 5.5、6.0、6.5、または 6.7 を実行している vCenter Server が必要です。<br/><br/> サーバーは、バージョン 5.5 以降が実行されている ESXi ホストでホストされている必要があります。<br/><br/> vCenter Server で、TCP ポート 443 での受信接続を許可して、アプライアンスが構成とパフォーマンスのメタデータを収集できるようにします。<br/><br/> 既定では、アプライアンスはポート 443 で vCenter Server に接続します。 vCenter Server が別のポートでリッスンする場合は、アプライアンス構成マネージャーで vCenter Server の詳細を指定するときにポートを変更できます。<br/><br/> ESXi ホストでは、サーバーでインストールされているアプリケーションの検出とエージェントレスの依存関係の分析を実行するために、TCP ポート 443 で受信アクセスが許可されていることを確認します。
-**アプライアンス** | vCenter Server には、Azure Migrate アプライアンスのサーバーを割り当てるためのリソースが必要です。<br/><br/> - 32 GB の RAM、8 個の vCPU、約 80 GB のディスク記憶域。<br/><br/> - 外部仮想スイッチと、アプライアンス サーバー上のインターネット アクセス (直接またはプロキシ経由)。
-**サーバー** | 構成とパフォーマンス メタデータの検出では、Windows および Linux OS のすべてのバージョンがサポートされています。 <br/><br/> サーバー上でアプリケーションの検出を実行するために、Windows および Linux OS のすべてのバージョンがサポートされています。 エージェントレスの依存関係分析でサポートされている OS バージョンについては、[こちら](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)を確認してください。<br/><br/> インストールされているアプリケーションの検出とエージェントレスの依存関係の分析を実行するには、VMware Tools (10.2.0 以降) がサーバーにインストールされ、実行されている必要があります。 Windows サーバーには、PowerShell バージョン 2.0 以降がインストールされている必要があります。<br/><br/> SQL Server インスタンスおよびデータベースを検出するには、[こちら](migrate-support-matrix-vmware.md#requirements-for-discovery-of-sql-server-instances-and-databases)で、サポート対象の SQL Server のバージョンとエディション、サポート対象の Windows OS バージョン、および認証メカニズムを確認してください。
+**vCenter Server/ESXi ホスト** | vCenter Server バージョン 6.7、6.5、6.0 または 5.5 を実行しているサーバーが必要です。<br /><br /> サーバーは、バージョン 5.5 以降が実行されている ESXi ホストでホストされている必要があります。<br /><br /> vCenter Server で、TCP ポート 443 での受信接続を許可して、アプライアンスが構成とパフォーマンスのメタデータを収集できるようにします。<br /><br /> 既定では、アプライアンスはポート 443 で vCenter Server に接続します。 vCenter Server を実行するサーバーが別のポートでリッスンする場合は、アプライアンス構成マネージャーで vCenter Server の詳細を指定するときにポートを変更できます。<br /><br /> ESXi ホストでは、インストールされているアプリケーションの検出とエージェントレスの依存関係分析をサーバーで実行するために、TCP ポート 443 で受信アクセスが許可されていることを確認します。
+**Azure Migrate アプライアンス** | vCenter Server では、Azure Migrate アプライアンスをホストするサーバーにこれらのリソースを割り当てる必要があります。<br /><br /> - 32 GB の RAM、8 vCPU、約 80 GB のディスク ストレージ。<br /><br /> - 外部仮想スイッチと、アプライアンス サーバー上のインターネット アクセス (直接またはプロキシ経由)。
+**サーバー** | 構成とパフォーマンス メタデータの検出では、Windows および Linux OS のすべてのバージョンがサポートされています。 <br /><br /> サーバー上でアプリケーションを検出するために、Windows および Linux OS のすべてのバージョンがサポートされています。 [エージェントレスの依存関係分析でサポートされている OS バージョン](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)をご確認ください。<br /><br /> インストールされているアプリケーションを検出してエージェントレスの依存関係を分析するには、VMware Tools (バージョン 10.2.1 以降) がサーバーにインストールされ、実行されている必要があります。 Windows サーバーには、PowerShell バージョン 2.0 以降がインストールされている必要があります。<br /><br /> SQL Server インスタンスおよびデータベースを検出するには、[サポート対象の SQL Server および Windows OS のバージョンとエディション](migrate-support-matrix-vmware.md#sql-server-instance-and-database-discovery-requirements)のほか、Windows の認証メカニズムを確認してください。<br /><br /> IIS Web サーバーで実行されている ASP.NET Web アプリを検出するには、[サポートされている Windows OS と IIS バージョン](migrate-support-matrix-vmware.md#aspnet-web-apps-discovery-requirements)を確認してください。
 
 ## <a name="prepare-an-azure-user-account"></a>Azure ユーザー アカウントを準備する
 
-プロジェクトを作成し、Azure Migrate アプライアンスを登録するには、次を備えたアカウントが必要です。
+プロジェクトを作成して Azure Migrate アプライアンスを登録するには、これらのアクセス許可を備えた Azure アカウントを用意する必要があります。
 
-- Azure サブスクリプションに対する共同作成者または所有者のアクセス許可
-- Azure Active Directory (AAD) アプリを登録するためのアクセス許可
-- エージェントレスのサーバー移行時に使用されるキー コンテナーを作成するための、Azure サブスクリプションに対する所有者または共同作成者とユーザー アクセス管理者のアクセス許可
+- Azure サブスクリプションにおける共同作成者または所有者のアクセス許可。
+- Azure Active Directory (Azure AD) アプリを登録するためのアクセス許可。
+- エージェントレスのサーバー移行時に使用される Azure Key Vault インスタンスを作成するための、Azure サブスクリプションにおける所有者または共同作成者とユーザー アクセス管理者のアクセス許可。
 
-無料の Azure アカウントを作成したばかりであれば、自分のサブスクリプションの所有者になっています。 サブスクリプションの所有者でない場合は、所有者と協力して、次のようにアクセス許可を割り当てます。
+Azure の無料アカウントを作成した場合、既定では自分が Azure サブスクリプションの所有者になります。 サブスクリプションの所有者でない場合は、所有者と協力してアクセス許可を割り当てます。
 
-1. Azure portal で "サブスクリプション" を検索し、 **[サービス]** で **[サブスクリプション]** を選択します。
+Azure サブスクリプションにおける共同作成者または所有者のアクセス許可を設定するには:
 
-    :::image type="content" source="./media/tutorial-discover-vmware/search-subscription.png" alt-text="Azure サブスクリプションを検索するための検索ボックス":::
+1. Azure portal で「サブスクリプション」と検索します。 検索結果の **[サービス]** で **[サブスクリプション]** を選択します。
 
+    :::image type="content" source="./media/tutorial-discover-vmware/search-subscription.png" alt-text="検索ボックスで Azure サブスクリプションを検索する方法を示すスクリーンショット。":::
 
-2. **[サブスクリプション]** ページで、プロジェクトを作成するサブスクリプションを選択します。
-3. サブスクリプションで、 **[アクセス制御 (IAM)]**  >  **[アクセスの確認]** の順に選択します。
-4. **[アクセスの確認]** で、適切なユーザー アカウントを検索します。
-5. **[ロールの割り当てを追加する]** で、 **[追加]** をクリックします。
-:::image type="content" source="./media/tutorial-discover-vmware/azure-account-access.png" alt-text="ユーザー アカウントを検索してアクセスを確認し、ロールを割り当てる":::
+1. **[サブスクリプション]** で、プロジェクトを作成するサブスクリプションを選択します。
+1. 左側のメニューで **[アクセス制御 (IAM)]** を選択します。
+1. **[アクセスの確認]** タブの **[アクセスの確認]** で、使用したいユーザー アカウントを検索します。
+1. **[ロールの割り当てを追加する]** ペインで **[追加]** を選択します。
+
+    :::image type="content" source="./media/tutorial-discover-vmware/azure-account-access.png" alt-text="ユーザー アカウントを検索してアクセスの確認とロールの割り当ての追加を行う方法を示すスクリーンショット。":::
     
-6. **[ロールの割り当ての追加]** で、共同作成者または所有者ロールを選択し、アカウント (この例では azmigrateuser) を選択します。 **[保存]** をクリックします。
+1. **[ロールの割り当てを追加する]** で、共同作成者または所有者のロールを選択してから、アカウントを選択します。 **[保存]** を選択します。
 
-    :::image type="content" source="./media/tutorial-discover-vmware/assign-role.png" alt-text="[ロールの割り当ての追加] ページを開いて、アカウントにロールを割り当てる":::
+    :::image type="content" source="./media/tutorial-discover-vmware/assign-role.png" alt-text="アカウントにロールを割り当てるための [ロールの割り当ての追加] ページを示すスクリーンショット。":::
 
-1. アプライアンスを登録するには、お使いの Azure アカウントに **AAD アプリを登録するためのアクセス許可** が必要です。
-1. Azure portal で、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[ユーザー設定]** に移動します。
+Azure AD アプリを登録するために必要なアクセス許可をアカウントに付与するには:
+
+1. ポータルで、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[ユーザー設定]** の順に移動します。
 1. **[ユーザー設定]** で、Azure AD ユーザーがアプリケーションを登録できることを確認します (既定で **[はい]** に設定されています)。
 
-    :::image type="content" source="./media/tutorial-discover-vmware/register-apps.png" alt-text="[ユーザー設定] で、ユーザーが Active Directory アプリを登録できることを確認する":::
+    :::image type="content" source="./media/tutorial-discover-vmware/register-apps.png" alt-text="アプリを登録するためのユーザー設定を確認する方法を示すスクリーンショット。":::
 
-9. [アプリの登録] 設定が [いいえ] に設定されている場合は、テナントまたはグローバル管理者に、必要なアクセス許可を割り当てるよう依頼してください。 テナントまたはグローバル管理者は、AAD アプリの登録を許可するために、**アプリケーション開発者** ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+9. **[アプリの登録]** が **[いいえ]** に設定されている場合は、テナントまたはグローバル管理者に、必要なアクセス許可を割り当てるよう依頼します。 テナントまたはグローバル管理者は、ユーザーによる Azure AD アプリの登録を許可する目的でアプリケーション開発者ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-vmware"></a>VMware を準備する
 
-vCenter Server で、OVA ファイルを使用して VM を作成するためのアクセス許可がお使いのアカウントにあることを確認します。 これは、OVA ファイルを使用して Azure Migrate アプライアンスを VMware VM としてデプロイする場合に必要です。
+vCenter Server で、VMware Open Virtualization Appliance (OVA) 仮想マシン (VM) インストール ファイルを使用して VM を作成するためのアクセス許可が自分のアカウントにあることを確認します。 これらのアクセス許可は、OVA ファイルを使用して Azure Migrate アプライアンスを VMware VM としてデプロイするときに必要です。
 
-Azure Migrate では、実際の VMware 環境で実行されているサーバーの検出および評価のために vCenter Server 読み取り専用アカウントが必要です。 さらに、インストールされているアプリケーションの検出とエージェントレスの依存関係の分析も実行する場合は、 **[Virtual Machines]\(仮想マシン\) > [Guest Operations]\(ゲスト操作\)** でそのアカウントの特権が有効になっている必要があります。
+Azure Migrate では、実際の VMware 環境で実行されているサーバーの検出および評価のために vCenter Server 読み取り専用アカウントが必要です。 インストールされているアプリケーションの検出とエージェントレスの依存関係分析も実行したい場合は、アカウントで VMware のアクセス許可が有効で、VM ゲスト操作が可能である必要があります。
 
-### <a name="create-an-account-to-access-vcenter"></a>vCenter にアクセスするためのアカウントを作成する
+### <a name="create-an-account-to-access-vcenter-server"></a>vCenter Server にアクセスするためのアカウントを作成する
 
-vSphere Web Client で、次のようにアカウントを設定します。
+VMware vSphere Web Client で、vCenter Server に使用する読み取り専用アカウントを設定します。
 
-1. 管理者特権を備えたアカウントを使用して、vSphere Web Client で **[Administration]\(管理\)** を選択します。
-2. **[Access]\(アクセス\)** 、 **[SSO Users and Groups]\(SSO ユーザーとグループ\)** の順に選択します。
-3. **[Users]\(ユーザー\)** で、新しいユーザーを追加します。
-4. **[New User]\(新しいユーザー\)** で、アカウントの詳細を入力します。 次に、 **[OK]** をクリックします
-5. **[Global Permissions]\(グローバル アクセス許可\)** でユーザー アカウントを選択し、アカウントに **[Read-only]\(読み取り専用\)** ロールを割り当てます。 次に、 **[OK]** をクリックします
-6. インストールされているアプリケーションの検出とエージェントレスの依存関係の分析も実行する場合は、 **[Roles]\(ロール\)** に移動して、 **[Read-only]\(読み取り専用\)** ロールを選択し、 **[Privileges]\(特権\)** で **[Guest Operations]\(ゲスト操作\)** を選択します。 [Propagate to children]\(子に反映する\) チェック ボックスをオンにすると、vCenter Server のすべてのオブジェクトに特権を反映できます。
+1. 管理特権があるアカウントを使用し、vSphere Web Client の **[Home]\(ホーム\)** メニューで **[Administration]\(管理\)** を選択します。
+1. **[Single Sign-On]\(シングル サインオン\)** で **[Users and Groups]\(ユーザーとグループ\)** を選択します。
+1. **[Users]\(ユーザー\)** で **[New User]\(新しいユーザー\)** を選択します。
+1. アカウントの詳細情報を入力し、 **[OK]** を選択します。
+1. **[Administration]\(管理\)** のメニューにある **[Access Control]\(アクセス制御\)** で、 **[Global Permissions]\(グローバル アクセス許可\)** を選択します。
+1. ユーザー アカウントを選択してから **[Read-only]\(読み取り専用\)** を選択し、ロールをアカウントに割り当てます。 **[OK]** を選択します。
+1. インストールされているアプリケーションの検出とエージェントレスの依存関係分析を開始できるようにするために、 **[Access Control]\(アクセス制御\)** のメニューで **[Roles]\(ロール\)** を選択します。 **[Roles]\(ロール\)** ペインの **[Roles]\(ロール\)** で **[Read-only]\(読み取り専用\)** を選択します。 **[Privileges]\(特権\)** で **[Guest operations]\(ゲスト操作\)** を選択します。 vCenter Server インスタンスのすべてのオブジェクトに特権が反映されるように、 **[Propagate to children]\(子に反映する\)** チェック ボックスをオンにします。
 
-    :::image type="content" source="./media/tutorial-discover-vmware/guest-operations.png" alt-text="読み取り専用ロールでのゲスト操作を許可するチェック ボックス":::
+    :::image type="content" source="./media/tutorial-discover-vmware/guest-operations.png" alt-text="vSphere Web Client と、新しいアカウントを作成してユーザー ロールと特権を選択する方法を示すスクリーンショット。":::
 
 > [!NOTE]
-> vCenter Server アカウントのスコープを設定することにより、検出を特定の vCenter Server データセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々のサーバーに制限することができます。 vCenter Server ユーザー アカウントのスコープを設定する方法の [**詳細を確認**](set-discovery-scope.md)してください。
+> vCenter Server アカウントのスコープを設定して、検出を特定の vCenter Server データセンター、クラスター、ホスト、クラスターまたはホストのフォルダー、個々のサーバーに制限できます。 [vCenter Server ユーザー アカウントのスコープを設定](set-discovery-scope.md)する方法をご確認ください。
+
+> [!NOTE]
+> 検出用に指定された vCenter サーバーにリンク モードを使用して接続されている vCenter 資産は、Azure Migrate によって検出されません。 検出する各 vCenter 環境に、Azure Migrate アプライアンスをデプロイする必要があります。
 
 ### <a name="create-an-account-to-access-servers"></a>サーバーにアクセスするためのアカウントを作成する
 
-インストールされているアプリケーションの検出、エージェントレスの依存関係の分析、SQL Server インスタンスおよびデータベースの検出を実行するには、サーバーに対して必要な特権を備えるユーザー アカウントが必要です。 このユーザー アカウントは、アプライアンス構成マネージャーで指定できます。 アプライアンスによってサーバーにエージェントがインストールされることはありません。
+サーバー上の自分のユーザー アカウントには、インストールされているアプリケーションの検出、エージェントレスの依存関係分析、Web アプリと SQL Server インスタンスおよびデータベースの検出を開始するために必要なアクセス許可が付与されていなければなりません。 このユーザー アカウント情報は、アプライアンス構成マネージャーで指定できます。 アプライアンスは、サーバーにエージェントをインストールしません。
 
-1. Windows サーバーの場合は、サーバーに対する管理アクセス許可が付与されたアカウント (ローカルまたはドメイン) を作成します。 SQL Server インスタンスおよびデータベースを検出するには、Windows または SQL Server アカウントが sysadmin サーバー ロールのメンバーである必要があります。 ユーザー アカウントに必要なロールを割り当てる方法の[詳細を確認](/sql/relational-databases/security/authentication-access/server-level-roles)してください。
-2. Linux サーバーの場合は、root 権限が付与されたアカウントを作成します。 または、/bin/netstat および /bin/ls のファイルに対する次のアクセス許可が付与されたアカウントを作成することもできます: CAP_DAC_READ_SEARCH と CAP_SYS_PTRACE。
+* Windows サーバーおよび Web アプリの検出の場合は、サーバーに対する管理者アクセス許可が付与されたアカウント (ローカルまたはドメイン) を作成します。 SQL Server インスタンスおよびデータベースを検出するには、Windows または SQL Server アカウントが sysadmin サーバー ロールのメンバーである必要があります。 [必要なロールをユーザー アカウントに割り当てる](/sql/relational-databases/security/authentication-access/server-level-roles)方法をご確認ください。
+* Linux サーバーの場合は、ルート ユーザー アカウントの詳細を指定するか、/bin/netstat および /bin/ls ファイルに CAP_DAC_READ_SEARCH および CAP_SYS_PTRACE アクセス許可があるアカウントを作成します。
 
 > [!NOTE]
-> 構成マネージャーに複数のサーバー資格情報を追加して、インストールされているアプリケーションの検出、エージェントレスの依存関係の分析、および SQL Server インスタンスおよびデータベースの検出を実行できるようになりました。複数のドメイン、Windows (ドメイン以外)、Linux (ドメイン以外)、または SQL Server の認証資格情報を追加できます。 [**詳細情報**](add-server-credentials.md)
+> Azure Migrate アプライアンス構成マネージャーに複数のサーバー資格情報を追加して、インストールされているアプリケーションの検出、エージェントレスの依存関係分析、Web アプリと SQL Server インスタンスおよびデータベースの検出を実行できます。 複数のドメイン、Windows (ドメイン以外)、Linux (ドメイン以外)、または SQL Server の認証資格情報を追加できます。 [サーバーの資格情報を追加する](add-server-credentials.md)方法をご確認ください。
 
 ## <a name="set-up-a-project"></a>プロジェクトの設定
 
-新しいプロジェクトを設定します。
+新しいプロジェクトを設定するには:
 
-1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。
-2. **[サービス]** で **[Azure Migrate]** を選択します。
-3. **[概要]** で、移行の目的に応じて **[Windows, Linux and SQL Server]\(Windows、Linux、SQL Server\)** または **[SQL Server (only)]\(SQL Server (のみ)\)** を選択するか、または **[その他のシナリオを探索する]** を選択し、 **[プロジェクトの作成]** を選択します。
-5. **[プロジェクトの作成]** で、Azure サブスクリプションとリソース グループを選択します。 リソース グループがない場合は作成します。
-6. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
+1. Azure portal で、 **[すべてのサービス]** を選択し、**Azure Migrate** を探します。
+1. **[サービス]** で **[Azure Migrate]** を選択します。
+1. **[概要]** で、移行の目標に応じて次のいずれかのオプションを選択します: **[Servers, databases and web apps]\(サーバー、データベース、および Web アプリ\)** 、 **[SQL Server (only)]\(SQL Server (のみ)\)** 、または **[その他のシナリオを探索する]** 。
+1. **[プロジェクトの作成]** を選択します。
+1. **[プロジェクトの作成]** で、Azure サブスクリプションとリソース グループを選択します。 リソース グループがない場合は作成します。
+1. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成する地理的な場所を指定します。 [パブリック クラウドのサポート対象地域](migrate-support-matrix.md#supported-geographies-public-cloud)と[政府機関向けクラウドのサポート対象地域](migrate-support-matrix.md#supported-geographies-azure-government)をご確認ください。
 
-    :::image type="content" source="./media/tutorial-discover-vmware/new-project.png" alt-text="プロジェクト名とリージョンのボックス":::
+    :::image type="content" source="./media/tutorial-discover-vmware/new-project.png" alt-text="新しい Azure Migrate プロジェクトのプロジェクト詳細を追加する方法を示すスクリーンショット。":::
 
-7. **［作成］** を選択します
-8. プロジェクトがデプロイされるまで数分待ちます。 **Azure Migrate の検出および評価** ツールは、新しいプロジェクトに既定で追加されます。
+1. **［作成］** を選択します
+1. プロジェクトがデプロイされるまで数分待ちます。 **Azure Migrate の検出および評価** ツールは、新しいプロジェクトに既定で追加されます。
 
 > [!NOTE]
-> プロジェクトを既に作成している場合は、その同じプロジェクトを使用して追加のアプライアンスを登録することで、より多くのサーバーを検出して評価できます。 [**詳細をご覧ください**](create-manage-projects.md#find-a-project)
+> プロジェクトを既に作成してある場合は、そのプロジェクトを使用し、より多くのアプライアンスを登録してより多くのサーバーの検出と評価を行えます。 [プロジェクトを管理](create-manage-projects.md#find-a-project)する方法をご確認ください。
 
 ## <a name="set-up-the-appliance"></a>アプライアンスを設定する
 
-Azure Migrate の検出および評価では、軽量の Azure Migrate アプライアンスを使用します。 このアプライアンスによって、サーバー検出が実行され、サーバーの構成とパフォーマンス メタデータが Azure Migrate に送信されます。 このアプライアンスは、プロジェクトからダウンロードできる OVA テンプレートをデプロイすることで設定できます。
+Azure Migrate の検出および評価ツールでは、軽量の Azure Migrate アプライアンスを使用します。 このアプライアンスによってサーバー検出が実行され、サーバーの構成とパフォーマンス メタデータが Azure Migrate に送信されます。 アプライアンスは、プロジェクトからダウンロードできる OVA テンプレートをデプロイすることで設定します。
 
 > [!NOTE]
-> なんらかの理由で、テンプレートを使用してアプライアンスを設定できない場合は、既存の Windows Server 2016 サーバー上で PowerShell スクリプトを使用して設定できます。 [**詳細情報**](deploy-appliance-script.md#set-up-the-appliance-for-vmware)。
+> OVA テンプレートを使用してアプライアンスを設定できない場合は、Windows Server 2016 を実行している既存のサーバーで PowerShell スクリプトを実行して設定できます。 [PowerShell を使用して Azure Migrate アプライアンスを設定する](deploy-appliance-script.md#set-up-the-appliance-for-vmware)方法をご確認ください。 <br/>
+> OVA テンプレートを使用してアプライアンスをデプロイする方法は、Azure Government クラウドではサポートされません。 Azure Government クラウド用のアプライアンスをデプロイする方法について[詳細をご覧ください](./deploy-appliance-script-government.md)。
 
-### <a name="deploy-with-ova"></a>OVA を使用してデプロイする
+### <a name="deploy-by-using-an-ova-template"></a>OVA テンプレートを使用してデプロイする
 
-OVA テンプレートを使用してアプライアンスを設定するには:
+OVA テンプレートを使用してアプライアンスを設定するには、このセクションで詳しく説明されているこれらの手順を完了します。
 
 1. ポータルで、アプライアンス名を指定してプロジェクト キーを生成します。
-1. OVA テンプレート ファイルをダウンロードし、それを vCenter Server にインポートします。 OVA がセキュリティで保護されていることを確認します。
-1. OVA ファイルからアプライアンスを作成し、それが Azure Migrate に接続できることを確認します。
-1. 初回のアプライアンス構成を行い、プロジェクト キーを使用してプロジェクトに登録します。
+1. OVA テンプレート ファイルをダウンロードし、それを vCenter Server にインポートします。 OVA が安全であることを確認します。
+1. OVA ファイルからアプライアンスを作成します。 アプライアンスが Azure Migrate に接続できることを確認します。
+1. アプライアンスを初めて構成します。 
+1. プロジェクト キーを使用して、プロジェクトにアプライアンスを登録します。
 
-### <a name="1-generate-the-project-key"></a>1.プロジェクト キーを生成する
+#### <a name="generate-the-project-key"></a>プロジェクト キーを生成する
 
-1. **[移行の目標]**  >  **[Windows、Linux、SQL Server]**  >  **[Azure Migrate: Discovery and Assessment]\(Azure Migrate: 検出および評価\)** で、 **[検出]** を選択します。
-2. **[Discover Servers]\(サーバーの検出\)**  >  **[お使いのサーバーは仮想化されていますか?]** で、 **[はい。VMware vSphere Hypervisor を使用します]** を選択します。
-3. **[1: プロジェクト キーを生成します]** で、VMware 環境でサーバーの検出用に設定する Azure Migrate アプライアンスの名前を指定します。 名前は、14 文字以下の英数字にする必要があります。
-1. **[キーの生成]** をクリックして、必要な Azure リソースの作成を開始します。 リソースの作成中に [検出] ページを閉じないでください。
-1. Azure リソースが正常に作成されると、**プロジェクト キー** が生成されます。
-1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
+1. **[移行の目標]** で、 **[Servers, databases and web apps]\(サーバー、データベース、および Web アプリ\)**  >  **[Azure Migrate: Discovery and Assessment]**  >  **[検出]** の順に選択します。
+1. **[Discover servers]\(サーバーの検出\)** で、 **[お使いのサーバーは仮想化されていますか?]** >  **[はい。VMware vSphere Hypervisor を使用します]** の順に選択します。
+1. **[1: プロジェクト キーを生成します]** で、VMware 環境内のサーバーを検出するために設定する Azure Migrate アプライアンスの名前を指定します。 名前は、14 文字以下の英数字にする必要があります。
+1. 必要な Azure リソースの作成を開始するには、 **[キーの生成]** を選択します。 リソースの作成中は、 **[検出]** ペインを閉じないようにしてください。
+1. Azure リソースが正常に作成された後、"*プロジェクト キー*" が生成されます。
+1. キーをコピーします。 キーは、アプライアンスの構成時にアプライアンスの登録を完了するために使用します。
 
-### <a name="2-download-the-ova-template"></a>2. OVA テンプレートをダウンロードする
+#### <a name="download-the-ova-template"></a>OVA テンプレートをダウンロードする
 
-**[2:Azure Migrate アプライアンスをダウンロードする]** で、.OVA ファイルを選択し、 **[ダウンロード]** をクリックします。
+**[2: Azure Migrate アプライアンスをダウンロードする]** で、OVA ファイルを選択してから **[ダウンロード]** を選択します。
 
-### <a name="verify-security"></a>セキュリティを確認する
+##### <a name="verify-security"></a>セキュリティを確認する
 
-OVA ファイルをデプロイする前に、それが安全であることを確認します。
+OVA ファイルをデプロイする前に、ファイルが安全であることを確認します。
 
-1. ファイルをダウンロードしたサーバーで、管理者用のコマンド ウィンドウを開きます。
-2. OVA ファイルのハッシュを生成するには、次のコマンドを実行します。
+1. ファイルをダウンロードしたサーバーで、 **[管理者として実行]** オプションを使用してコマンド プロンプト ウィンドウを開きます。
+1. OVA ファイルのハッシュを生成するには、次のコマンドを実行します。
   
-   ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    ```bash
+    C:\>CertUtil -HashFile <file_location> <hashing_agorithm>
+    ```
    
-   使用例: ```C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256```
+    例: `C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256`
 
-3. 最新のアプライアンス バージョンとハッシュ値を確認します。
+1. 最新のアプライアンス バージョンとハッシュ値を確認します。
 
     - Azure パブリック クラウドの場合:
     
         **アルゴリズム** | **ダウンロード** | **SHA256**
         --- | --- | ---
-        VMware (11.9 GB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+        VMware (11.9 GB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140333) | 08e4fa3aa827a88b68d3b56306926773f75c3a8a47ba4296871cfcb6c9830ea8
 
     - Azure Government の場合:
     
         **アルゴリズム** | **ダウンロード** | **SHA256**
         --- | --- | ---
-        VMware (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
+        VMware (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140337) | 3C00F9EB54CC6C55E127EDE47DFA28CCCF752697377EB1C9F3435E75DA5AA029
 
-### <a name="3-create-the-appliance-server"></a>3.アプライアンス サーバーを作成する
+#### <a name="create-the-appliance-server"></a>アプライアンス サーバーを作成する
 
-ダウンロードしたファイルをインポートし、VMware 環境にサーバーを作成します
+ダウンロードしたファイルをインポートして、VMware 環境にサーバーを作成します。
 
-1. vSphere Client コンソールで、 **[File]\(ファイル\)**  >  **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** の順にクリックします。
-2. [Deploy OVF Template]\(OVF テンプレートのデプロイ\) ウィザードで **[Source]\(ソース\)** を選択し、OVA ファイルの場所を指定します。
-3. **[名前]** と **[場所]** で、サーバーのフレンドリ名を指定します。 サーバーがホストされるインベントリ オブジェクトを選択します。
-5. **[Host/Cluster]\(ホスト/クラスター\)** で、サーバーが実行されるホストまたはクラスターを指定します。
-6. **[ストレージ]** で、サーバーの保存先を指定します。
-7. **[Disk Format]\(ディスク フォーマット\)** で、ディスクの種類とサイズを指定します。
-8. **[ネットワーク マッピング]** で、サーバーの接続先となるネットワークを指定します。 そのネットワークには、Azure Migrate にメタデータを送信するためのインターネット接続が必要です。
-9. 設定を再確認したら、 **[Finish]\(完了\)** をクリックします。
+1. vSphere Client コンソールで、 **[File]\(ファイル\)**  >  **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** の順に選択します。
+1. OVF テンプレートのデプロイ ウィザードで、 **[ソース]** を選択して OVA ファイルの場所を入力します。
+1. **[Name]\(名前\)** にサーバーの名前を入力します。 **[Location]\(場所\)** で、サーバーがホストされるインベントリ オブジェクトを選択します。
+1. **[Host/Cluster]\(ホスト/クラスター\)** で、サーバーが実行されるホストまたはクラスターを選択します。
+1. **[Storage]\(ストレージ\)** で、サーバーの保存先を指定します。
+1. **[Disk Format]\(ディスク フォーマット\)** で、ディスクの種類とサイズを選択します。
+1. **[Network Mapping]\(ネットワーク マッピング\)** で、サーバーの接続先となるネットワークを選択します。 ネットワークには、Azure Migrate にメタデータを送信するためのインターネット接続が必要です。
+1. 設定を確認し、 **[Finish]\(完了\)** を選択します。
 
-### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
+#### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
-[パブリック](migrate-appliance.md#public-cloud-urls)および[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンス サーバーから接続できることを確認します。
+[パブリック クラウド](migrate-appliance.md#public-cloud-urls)および[政府機関向けクラウド](migrate-appliance.md#government-cloud-urls)の Azure URL にアプライアンス サーバーから接続できることを確認します。
 
-### <a name="4-configure-the-appliance"></a>4. アプライアンスを構成する
+### <a name="configure-the-appliance"></a>アプライアンスを構成する
 
-アプライアンスを初めて設定します。
+アプライアンスを初めて設定するには:
 
 > [!NOTE]
-> ダウンロードした OVA でなく、[**PowerShell スクリプト**](deploy-appliance-script.md)を使用してアプライアンスを設定する場合、この手順の最初の 2 つは関係ありません。
+> ダウンロードした OVA テンプレートではなく [PowerShell スクリプト](deploy-appliance-script.md)を使用してアプライアンスを設定する場合、最初の 2 つの手順はスキップしてかまいません。
 
-1. vSphere クライアント コンソールで、サーバーを右クリックしてから、 **[コンソールを開く]** を選択します。
-2. アプライアンスの言語、タイム ゾーン、パスワードを指定します。
-3. アプライアンスに接続できる任意のマシン上でブラウザーを開き、アプライアンス構成マネージャーの URL (`https://appliance name or IP address: 44368`) を開きます。
+1. vSphere Client で、サーバーを右クリックしてから **[Open Console]\(コンソールを開く\)** を選択します。
+1. アプライアンスの言語、タイム ゾーン、パスワードを選択または入力します。
+1. アプライアンスに接続できる任意のコンピューター上でブラウザーを開きます。 次に、アプライアンス構成マネージャーの URL (`https://appliance name or IP address: 44368`) を開きます。
 
-   または、構成マネージャーのショートカットを選択し、アプライアンス サーバーのデスクトップから構成マネージャーを開くこともできます。
-1. **ライセンス条項** に同意し、サード パーティの情報を確認します。
-1. 構成マネージャー > **[前提条件のセットアップ]** で、以下を実行します。
-   - **接続**:サーバーがインターネットにアクセスできることが、アプライアンスによって確認されます。 サーバーでプロキシを使用する場合は、次の操作を行います。
-     - **[プロキシを設定する]** をクリックし、プロキシ アドレス `http://ProxyIPAddress` または `http://ProxyFQDN` とリッスン ポートを指定します。
-     - プロキシで認証が必要な場合は、資格情報を指定します。
-     - サポートされるのは HTTP プロキシのみです。
-     - プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
-   - **時刻同期**:検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
-   - **更新プログラムのインストール**:アプライアンスでは、最新の更新プログラムがインストールされることが保証されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンス サーバーで実行されているサービスの状態とバージョンを確認できます。
-   - **Install VDDK\(VDDK のインストール\)** :アプライアンスでは、VMware vSphere Virtual Disk Development Kit (VDDK) がインストールされていることが確認されます。 インストールされていない場合は、**インストール手順** に記載されているとおりに、VMware から VDDK 6.7 をダウンロードし、ダウンロードした zip コンテンツをアプライアンス上の指定された場所に抽出します。
+     または、アプライアンス サーバーのデスクトップから構成マネージャーへのショートカットを選択して、構成マネージャーを開くこともできます。
+1. ライセンス条項に同意し、サードパーティの情報に目を通します。
+1. 構成マネージャーで、 **[前提条件のセットアップ]** を選択し、これらの手順を完了します。
+    1. **接続**:サーバーがインターネットにアクセスできることが、アプライアンスによって確認されます。 サーバーでプロキシを使用する場合は、次の操作を行います。
+        1. **[プロキシを設定する]** を選択して、プロキシのアドレス (`http://ProxyIPAddress` または `http://ProxyFQDN` の形式。*FQDN* は "*完全修飾ドメイン名*" を指す) とリスニング ポートを指定します。
+        1.  プロキシで認証が必要な場合は資格情報を入力します。
+        1. プロキシの詳細を追加した場合、あるいはプロキシまたは認証を無効にした場合は、 **[保存]** を選択し、接続をトリガーしてもう一度接続を確認します。
 
-     Azure Migrate Server Migration では、Azure への移行時に VDDK を使用してサーバーがレプリケートされます。 
-1. 必要に応じて、アプライアンス構成中ならいつでも、**前提条件の再実行** を行って、アプライアンスがすべての前提条件を満たしているかどうかを確認できます。
+            サポートされるのは HTTP プロキシのみです。
+    1. **時刻同期**: 検出が正常に機能するように、アプライアンス上の時刻がインターネットの時刻と同期していることを確認します。
+    1. **更新プログラムのインストール**:アプライアンスでは、最新の更新プログラムがインストールされることが保証されます。 確認が完了すると、 **[View appliance services]\(アプライアンス サービスを表示\)** を選択して、アプライアンス サーバーで実行されているサービスの状態とバージョンを確認できます。
+    1. **Install VDDK (VDDK のインストール)** : VMware vSphere Virtual Disk Development Kit (VDDK) がインストールされていることがアプライアンスによって確認されます。 VDDK がインストールされていない場合は、VMware から VDDK 6.7 をダウンロードします。 "*インストール手順*" に記載されているとおりに、ダウンロードした zip ファイルの内容をアプライアンス上の指定された場所に抽出します。
 
-    :::image type="content" source="./media/tutorial-discover-vmware/appliance-prerequisites.png" alt-text="アプライアンス構成マネージャーのパネル 1":::
+        Azure Migrate Server Migration では、Azure への移行時に VDDK を使用してサーバーがレプリケートされます。 
+1. アプライアンスの構成中ならいつでも "*前提条件を再実行*" して、アプライアンスがすべての前提条件を満たしているかどうかを確認できます。
 
-### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
+    :::image type="content" source="./media/tutorial-discover-vmware/appliance-prerequisites.png" alt-text="アプライアンス構成マネージャーでの前提条件の設定方法を示すスクリーンショット。":::
 
-1. ポータルからコピーした **プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Azure Migrate: Discovery and Assessment]\(Azure Migrate: 検出および評価\) > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
-1. Azure で認証するには、デバイス コードが必要です。 **[ログイン]** をクリックすると、次に示すように、デバイス コードを含むモーダルが開きます。
+#### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-    :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="デバイス コードを示すモーダル":::
+1. ポータルからコピーしたプロジェクト キーを貼り付けます。 キーがない場合は、 **[Azure Migrate: Discovery and Assessment]\(Azure Migrate: 検出および評価\)**  >  **[検出]**  >  **[既存のアプライアンスの管理]** の順に移動します。 プロジェクト キーを生成したときに指定したアプライアンスの名前を選択して、表示されたキーをコピーします。
+1. Azure による認証にはデバイス コードが必要です。 **[ログイン]** を選択します。 **[Azure ログインの続行]** で、 **[Copy code & Login]\(コードのコピーとログイン\)** を選択してデバイス コードをコピーし、新しいブラウザー タブで Azure ログイン プロンプトを開きます。プロンプトが表示されるように、ブラウザーでポップアップ ブロックを無効にしておいてください。
 
-1. **[Copy code & Login]\(コードのコピーとログイン\)** をクリックしてデバイス コードをコピーし、新しいブラウザー タブで Azure ログイン プロンプトを開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
-1. 新しいタブで、デバイス コードを貼り付け、Azure のユーザー名とパスワードを使用してサインインします。
-   
-   PIN を使用したサインインはサポートされていません。
-3. ログインせずにログイン タブを誤って閉じた場合は、アプライアンス構成マネージャーのブラウザー タブを最新の情報に更新して、[ログイン] ボタンを再度有効にする必要があります。
-1. 正常にログインしたら、アプライアンス構成マネージャーで前のタブに戻ります。
-1. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しいアクセス許可が付与されている場合、アプライアンスの登録が開始されます。
-1. アプライアンスが正常に登録された後は、 **[詳細の表示]** をクリックすることで登録の詳細を確認できるようになります。
+    :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="デバイス コードをコピーしてログインする場所を示すスクリーンショット。":::
 
-    :::image type="content" source="./media/tutorial-discover-vmware/appliance-registration.png" alt-text="アプライアンス構成マネージャーのパネル 2":::
+1. ブラウザーの新しいタブで、デバイス コードを貼り付け、自分の Azure ユーザー名とパスワードを使用してサインインします。 PIN を使用したサインインはサポートされていません。
+
+    ログインせずにログイン タブを誤って閉じた場合は、アプライアンス構成マネージャーのブラウザー タブを最新の情報に更新して、デバイス コードと **[Copy code & Login]\(コードのコピーとログイン\)** ボタンを表示します。
+1. 正常にログインしたら、アプライアンス構成マネージャーが表示されているブラウザー タブに戻ります。 ログインに使用した Azure ユーザー アカウントに、キーの生成時に作成された Azure リソースに対する必要なアクセス許可がある場合は、アプライアンスの登録が開始されます。
+1. アプライアンスが正常に登録された後は、 **[詳細の表示]** を選択して、登録の詳細を確認できます。
+
+    :::image type="content" source="./media/tutorial-discover-vmware/appliance-registration.png" alt-text="アプライアンスが正常に登録されたことを示す [Azure Migrate への登録] ペインのスクリーンショット。":::
 
 ## <a name="start-continuous-discovery"></a>継続的な検出を開始する
 
+アプライアンス構成マネージャーでの設定手順を完了し、検出を準備して開始します。
+
 ### <a name="provide-vcenter-server-details"></a>vCenter Server の詳細を指定する
 
-サーバーの構成およびパフォーマンス データを検出するには、アプライアンスを vCenter Server に接続する必要があります。
+サーバーの構成およびパフォーマンス データを検出するには、アプライアンスから vCenter Server に接続する必要があります。
 
-1. **[Step 1: Provide vCenter Server credentials]\(ステップ 1: vCenter Server の資格情報を指定する\)** で、 **[資格情報の追加]** をクリックして資格情報のフレンドリ名を指定し、vCenter Server で実行されているサーバーの検出にアプライアンスによって使用される vCenter Server アカウントの **[ユーザー名]** と **[パスワード]** を追加します。
-    - この記事の前述のとおり、必要なアクセス許可があるアカウントを設定する必要があります。
-    - 検出のスコープを特定の VMware オブジェクト (vCenter Server データセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々のサーバー) に設定する場合は、[こちらの記事](set-discovery-scope.md)の手順を参照し、Azure Migrate によって使用されるアカウントを制限してください。
-1. **[Step 2: Provide vCenter Server details]\(ステップ 2: VCenter Server の詳細を指定する\)** で、 **[Add discovery source]\(検出ソースの追加\)** をクリックして、ドロップダウンから資格情報のフレンドリ名を選択し、vCenter Server の **IP アドレスまたは FQDN** を指定します。 **[ポート]** を既定 (443) のまま使用することも、vCenter Server でリッスンするカスタム ポートを指定して **[保存]** をクリックしることもできます。
-1. **[保存]** をクリックすると、アプライアンスにより、指定された資格情報を使用して vCenter Server への接続の検証が試行され、vCenter Server の IP アドレスまたは FQDN に対して **検証状態** がテーブルに示されます。
-1. 検出を開始する前に、vCenter Server への接続はいつでも **再検証** できます。
+1. **[Step 1: Provide vCenter Server credentials]\(手順 1: vCenter Server の資格情報を指定する\)** で、 **[資格情報の追加]** を選択して資格情報の名前を入力します。 vCenter Server で実行中のサーバーを検出するためにアプライアンスで使用される vCenter Server アカウントのユーザー名とパスワードを追加します。
+    - この記事で前に述べたように、必要なアクセス許可を備えたアカウントを設定する必要があります。
+    - 検出のスコープを特定の VMware オブジェクト (vCenter Server データセンター、クラスター、ホスト、クラスターまたはホストのフォルダー、あるいは個々のサーバー) に設定する場合は、[検出のスコープを設定](set-discovery-scope.md)する手順を参照し、Azure Migrate によって使用されるアカウントを制限してください。
+1. **[Step 2: Provide vCenter Server details]\(手順 2: vCenter Server の詳細を指定する\)** で、 **[Add discovery source]\(検出ソースの追加\)** を選択して、ドロップダウン リストから資格情報の名前を選択します。 vCenter Server の IP アドレスまたは FQDN を選択します。 ポートを既定値 (443) のままにしておくことも、vCenter Server でリッスンするカスタム ポートを指定することもできます。 **[保存]** を選択します。
+1. アプライアンスでは、資格情報を使用して、vCenter Server を実行しているサーバーへの接続の検証を試行します。 資格情報テーブルに vCenter Server の IP アドレスまたは FQDN の検証状態が表示されます。
+1. 検出を開始する前に、vCenter Server への接続はいつでも "*再検証*" できます。
 
-    :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="vCenter Server の詳細に関するアプライアンス構成マネージャーのパネル 3":::
+    :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="アプライアンス構成マネージャーで vCenter Server の資格情報と検出ソースを管理する方法を示すスクリーンショット。":::
 
 ### <a name="provide-server-credentials"></a>サーバーの資格情報を指定する
 
-**[Step 3: Provide server credentials to perform software inventory, agentless dependency analysis and discovery of SQL Server instances and databases]\(ステップ 3: サーバーの資格情報を指定して、ソフトウェア インベントリ、エージェントレスの依存関係分析、SQL Server インスタンスとデータベースの検出を実行する\)** では、複数のサーバー資格情報を指定するか、これらの機能を使用しない場合は、ステップをスキップして vCenter Server 検出を続行するかを選択できます。 この意図は後からいつでも変更できます。
+「**手順 3: ソフトウェア インベントリ、エージェントレスの依存関係の分析、SQL Server インスタンスとデータベースの検出、VMware 環境での ASP.NET Web アプリの検出を実行するためのサーバー資格情報を指定する**」で、複数のサーバー資格情報を指定できます。 これらのアプライアンス機能を使用しない場合は、この手順をスキップして、vCenter Server の検出に進むことができます。 このオプションはいつでも変更できます。
 
-:::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="サーバーの詳細に関するアプライアンス構成マネージャーのパネル 3":::
+:::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="ソフトウェア インベントリ、依存関係分析、S Q L サーバー検出を行うための資格情報を指定する方法を示すスクリーンショット。":::
 
-これらの機能を使用する場合、次の手順を実行して、サーバーの資格情報を提供することができます。 アプライアンスは自動的に資格情報をサーバーにマップして、検出機能の実行を試みます。
+これらの機能を使用する場合、次の手順を実行して、サーバーの資格情報を指定します。 検出機能を実行するために、サーバーへの資格情報の自動マップがアプライアンスによって試行されます。
 
-- サーバーの資格情報を追加するには、 **[資格情報の追加]** ボタンをクリックします。 これにより、モーダルが開き、ドロップダウンから **[資格情報の種類]** を選択できます。
-- ドメイン、Windows (ドメイン以外)、Linux (ドメイン以外) または SQL Server の認証資格情報を指定できます。 資格情報の指定方法とそれらの処理方法の詳細については、[こちら](add-server-credentials.md)を参照してください。
-- 資格情報の種類ごとに、資格情報のフレンドリ名を指定し、 **[ユーザー名]** と **[パスワード]** を追加して、 **[保存]** をクリックする必要があります。
-- ドメイン資格情報を選択する場合は、ドメインの FQDN も指定する必要があります。 この FQDN は、そのドメインの Active Directory で資格情報の信頼性を検証するために必要です。
-- インストールされているアプリケーションの検出、エージェントレスの依存関係分析または SQL Server インスタンスとデータベースの検出のために、アカウントに[必要なアクセス許可](add-server-credentials.md#required-permissions)があることを確認します。
-- 複数の資格情報を一度に追加するには、 **[さらに追加]** をクリックして資格情報を保存して追加します。
-- **[保存]** または **[さらに追加]** をクリックすると、アプライアンスによって、ドメインの Active Directory でドメインの資格情報の信頼性が検証されます。 これは、アプライアンスによって複数回反復処理され、それぞれのサーバーに資格情報がマップされるときにアカウントのロックアウトを回避するために行われます。
-- 資格情報テーブル内のすべてのドメイン資格情報の **検証状態** を確認できます。 ドメイン資格情報のみが検証されます。
-- 検証に失敗した場合は、 **[失敗]** 状態をクリックして発生したエラーを確認し、問題を修正した後に **[資格情報の再検証]** をクリックして、失敗と示されたドメイン資格情報をもう一度検証できます。
+サーバーの資格情報を追加するには:
 
-     :::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="複数の資格情報を提供するためのアプライアンス構成マネージャーのパネル 3":::
+1. **[Add Credentials]\(資格情報の追加\)** を選択します。
+1. ドロップダウン メニューで、 **[資格情報の種類]** を選択します。
+    
+    ドメイン、Windows (ドメイン以外)、Linux (ドメイン以外)、SQL Server の認証資格情報を指定できます。 [資格情報を指定する](add-server-credentials.md)方法とそれらを処理する方法を確認してください。
+1. それぞれの種類の資格情報について、以下を入力します。
+    * フレンドリ名。
+    * "ユーザー名"。
+    * パスワード。
+    **[保存]** を選択します。
+
+    ドメイン資格情報を使用することにした場合は、ドメインの FQDN の入力も必要です。 FQDN は、そのドメイン内の Active Directory インスタンスと共に資格情報の信頼性を検証するために必要です。
+1. インストールされているアプリケーションの検出、エージェントレスの依存関係分析、Web アプリと SQL Server インスタンスおよびデータベースの検出のために、アカウントで[必要なアクセス許可](add-server-credentials.md#required-permissions)を確認します。
+1. 一度に複数の資格情報を追加するには、 **[さらに追加]** を選択して資格情報を保存し、さらに資格情報を追加します。
+    **[保存]** または **[さらに追加]** を選択すると、アプライアンスによって、認証のためにドメインの Active Directory インスタンスと共にドメイン資格情報が検証されます。 検証は、アカウントのロックアウトを避けるため、追加が行われるたびに実行されます。これは、各サーバーへの資格情報のマップがアプライアンスによって繰り返されるためです。
+
+ドメイン資格情報の検証を確認するには:
+
+構成マネージャーの資格情報テーブルで、ドメイン資格情報の **検証状態** を確認します。 ドメイン資格情報のみ検証されます。
+
+検証が失敗した場合は、**失敗** の状態を選択して検証エラーを確認できます。 問題を修正し、 **[資格情報の再検証]** を選択して資格情報の検証を再試行します。
+
+:::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="複数の資格情報の指定と検証を示すスクリーンショット。":::
 
 ### <a name="start-discovery"></a>検出を開始する
 
-1. vCenter Server の検出を開始するには、 **[検出の開始]** をクリックします。 検出が正常に開始された後、vCenter Server の IP アドレスまたは FQDN に対する検出状態をソース テーブルで確認できます。
-1. サーバーの資格情報を指定した場合は、vCenter Server の検出が完了した後に、ソフトウェア インベントリ (インストールされているアプリケーションの検出) が自動的に開始されます。 ソフトウェア インベントリは 12 時間ごとに実行されます。
-1. [ソフトウェア インベントリ](how-to-discover-applications.md)では、サーバー上で実行されている SQL Server インスタンスを特定し、その情報を使用して、アプライアンスに指定された Windows 認証または SQL Server 認証資格情報でインスタンスへの接続がそのアプライアンスによって試行され、SQL Server データベースとそれらのプロパティに関するデータが収集されます。 SQL 検出は 24 時間ごとに実行されます。
-1. ソフトウェア インベントリ時には、追加されたサーバーの資格情報がサーバーに対して反復処理され、エージェントレスの依存関係の分析のために検証されます。 サーバーに対するエージェントレスの依存関係の分析は、ポータルから有効にすることができます。 検証に成功したサーバーのみを選択し、エージェントレスの依存関係の分析を有効にすることができます。
+vCenter Server の検出を開始するには、 **[検出の開始]** を選択します。 検出が正常に開始された後、ソース テーブルで vCenter Server の IP アドレスまたは FQDN を見て検出状態を確認できます。
 
-> [!Note]
->Azure Migrate により、Azure Migrate アプライアンスとソース SQL Server インスタンスの間の通信が暗号化されます (Encrypt 接続プロパティが TRUE に設定されている場合)。 これらの接続は、[**TrustServerCertificate**](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) で暗号化されます (TRUE に設定時)。トランスポート層は、SSL を使用してチャネルを暗号化し、証明書チェーンをバイパスして信頼を検証します。 アプライアンス サーバーは、[**証明書のルート証明機関を信頼**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)するように設定する必要があります。<br/>
-サーバーの起動時に証明書がサーバーにプロビジョニングされていない場合、SQL Server は、ログイン パケットの暗号化に使用される自己署名証明書を生成します。 [**詳細情報**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
+## <a name="how-discovery-works"></a>検出のしくみ
 
-検出は次のように行われます。
+* 検出されたサーバーのインベントリが Azure portal に表示されるには、約 15 分かかります。
+* サーバーの資格情報を指定してある場合、vCenter Server を実行しているサーバーの検出が完了したときに、ソフトウェア インベントリ (インストールされているアプリケーションの検出) は自動的に開始されます。 ソフトウェア インベントリは、12 時間ごとに実行されます。
+* [ソフトウェア インベントリ](how-to-discover-applications.md)では、サーバー上で実行されている SQL Server インスタンスを特定します。 そこで収集された情報を使用し、アプライアンスで指定された Windows 認証資格情報または SQL Server 認証資格情報を介して、アプライアンスから SQL Server インスタンスへの接続が試行されます。 次に、SQL Server データベースとそのプロパティに関するデータが収集されます。 SQL Server の検出は 24 時間ごとに実行されます。
+* アプライアンスは、ネットワークの見通しがある SQL Server インスタンスのみに接続できますが、ソフトウェア インベントリ単体ではネットワークの見通しが必要ない場合があります。
+* インストールされているアプリケーションの検出には、15 分以上かかることがあります。 期間は検出されたサーバーの数によって異なります。 500 台のサーバーでは、検出されたインベントリがポータルの Azure Migrate プロジェクトに表示されるまで約 1 時間かかります。
+* [ソフトウェア インベントリ](how-to-discover-applications.md)は、検出されたサーバーに存在する Web サーバーの役割を識別します。 サーバーで Web サーバーの役割が有効になっている場合、Azure Migrate により、サーバーで Web アプリの検出が実行されます。 Web アプリ構成データは 24 時間に 1 回更新されます。
+* ソフトウェア インベントリの間、エージェントレスの依存関係分析のために、追加されたサーバー資格情報がサーバーに対して繰り返され、検証されます。 サーバーの検出が完了すると、ポータルでサーバーに対するエージェントレスの依存関係分析を有効にできます。 [エージェントレスの依存関係分析](how-to-create-group-machine-dependencies-agentless.md)を有効にするように選択できるのは、検証が成功したサーバーだけです。
+* 検出を開始してから 24 時間以内に、ASP.NET Web アプリと、SQL Server インスタンスおよびデータベースのデータがポータルに表示され始めます。
+* Azure Migrate の既定では、SQL インスタンスに接続する最も安全な方法が使用されます。つまり、Azure Migrate により、TrustServerCertificate プロパティが `true` に設定され、Azure Migrate アプライアンスとソース SQL Server インスタンス間の通信が暗号化されます。 さらに、トランスポート層で SSL を使用してチャネルが暗号化され、証明書チェーンによる信頼性の検証がバイパスされます。 そのため、証明書のルート証明機関を信頼するようにアプライアンス サーバーを設定する必要があります。 ただし、アプライアンス上で **[Edit SQL Server connection properties]\(SQL Server の接続プロパティの編集\)** を選択して、接続設定を変更することができます。 選択内容の詳細については、[こちら](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)を参照してください。
 
-- 検出されたサーバーのインベントリがポータルに表示されるまでに、約 15 分かかります。
-- インストールされているアプリケーションの検出には時間がかかることがあります。 期間は検出されたサーバーの数によって異なります。 500 台のサーバーがある場合、検出されたインベントリが Azure Migrate ポータルに表示されるまでに約 1 時間かかります。
-- サーバーの検出が完了した後、ポータルからサーバーでエージェントレスの依存関係分析を有効にすることができます。
-- SQL Server インスタンスおよびデータベース データは、検出開始から 24 時間以内にポータルに表示され始めます。
+    :::image type="content" source="./media/tutorial-discover-vmware/sql-connection-properties.png" alt-text="SQL Server の接続プロパティを編集する方法を示すスクリーンショット。":::
 
-## <a name="next-steps"></a>次のステップ
+vCenter Server の検出を開始するには、 **[検出の開始]** を選択します。 検出が正常に開始された後、ソース テーブルで vCenter Server の IP アドレスまたは FQDN を見て検出状態を確認できます。
 
-- Azure VM への移行のために[サーバーを評価](./tutorial-assess-vmware-azure-vm.md)します。
-- Azure SQL への移行のために [SQL Server を評価](./tutorial-assess-sql.md)します。
-- 検出中にアプライアンスによって収集される[データを確認](migrate-appliance.md#collected-data---vmware)します。
+### <a name="view-discovered-data"></a>検出されたデータを表示する
+
+1. Azure portal で、Azure Migrate に戻ります。
+1. **[更新]** を選択して、検出されたデータを表示します。
+
+   :::image type="content" source="./media/tutorial-discover-vmware/discovery-assessment-tile.png" alt-text="検出および評価タイルでの更新方法を示すスクリーンショット。":::
+
+## <a name="next-steps"></a>次の手順
+
+- [Azure VM に移行するためにサーバーを評価](./tutorial-assess-vmware-azure-vm.md)する方法について学習します。
+- [Azure SQL に移行するために、SQL Server を実行しているサーバーを評価](./tutorial-assess-sql.md)する方法について学習します。
+- [Azure App Service に移行するために Web アプリを評価](./tutorial-assess-webapps.md)する方法について学習します。
+- 検出中に [Azure Migrate アプライアンスによって収集されるデータ](migrate-appliance.md#collected-data---vmware)を確認します。

@@ -2,60 +2,27 @@
 title: Azure portal でテンプレートをエクスポートする
 description: Azure portal を使用して、サブスクリプション内のリソースから Azure Resource Manager テンプレートをエクスポートします。
 ms.topic: conceptual
-ms.date: 07/29/2020
-ms.openlocfilehash: 3cc790b67b6076236a550c1fa202e0d173fb360e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/01/2021
+ms.openlocfilehash: c6987f95f2ccb953977244d8ff70b2f925f35f2e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731940"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436250"
 ---
-# <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal のテンプレートへの単一および複数リソースのエクスポート
+# <a name="use-azure-portal-to-export-a-template"></a>Azure portal を使用してテンプレートをエクスポートする
 
-Azure Resource Manager テンプレートの作成に役立てるために、既存のリソースからテンプレートをエクスポートできます。 エクスポートされたテンプレートを使用すると、リソースをデプロイする JSON の構文とプロパティを理解できます。 今後のデプロイを自動化するには、まずエクスポートされたテンプレートから始めて、シナリオに合わせて変更します。
+[!INCLUDE [Export template intro](../../../includes/resource-manager-export-template-intro.md)]
 
-Resource Manager では、テンプレートにエクスポートするリソースを 1 つまたは複数選択できます。 テンプレートに必要なリソースにのみ集中することができます。
+この記事では、**ポータル** を使用してテンプレートをエクスポートする方法について説明します。 その他のオプションについては、以下を参照してください。
 
-この記事では、ポータルを使用してテンプレートをエクスポートする方法を示します。 [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)、または [REST API](/rest/api/resources/resources/resourcegroups/exporttemplate) を使用することもできます。
+* [Azure CLI でテンプレートをエクスポートする](export-template-cli.md)
+* [Azure PowerShell でテンプレートをエクスポートする](export-template-powershell.md)
+* [リソース グループからの REST API エクスポート](/rest/api/resources/resourcegroups/exporttemplate)および[デプロイ履歴からの REST API エクスポート](/rest/api/resources/deployments/export-template)
 
-## <a name="choose-the-right-export-option"></a>適切なエクスポート オプションを選択する
+[!INCLUDE [Export template choose option](../../../includes/resource-manager-export-template-choose-option.md)]
 
-テンプレートをエクスポートするには、次の 2 とおりの方法があります。
-
-* **リソース グループまたはリソースからのエクスポート**。 このオプションでは、既存のリソースから新しいテンプレートを生成します。 エクスポートされたテンプレートは、リソース グループの現在の状態の "スナップショット" です。 リソース グループ全体、またはそのリソース グループ内の特定のリソースをエクスポートできます。
-
-* **デプロイ前または履歴からのエクスポート**。 このオプションでは、デプロイに使用されたテンプレートのそのままのコピーを取得します。
-
-選択したオプションに応じて、エクスポートされたテンプレートの品質は異なります。
-
-| リソース グループまたはリソースから | デプロイ前または履歴から |
-| --------------------- | ----------------- |
-| テンプレートは、リソースの現在の状態のスナップショットです。 デプロイ後に手動で行った変更も含まれます。 | テンプレートにはデプロイ時点のリソースの状態のみが表示されます。 デプロイ後に手動で行った変更は含まれません。 |
-| リソース グループからエクスポートするリソースを選択できます。 | 特定のデプロイに関するすべてのリソースが含まれます。 これらのリソースのサブセットを選択したり、別の時点で追加されたリソースを追加したりすることはできません。 |
-| テンプレートには、通常はデプロイ中に設定しない一部のプロパティを含め、リソースのすべてのプロパティが含まれています。 テンプレートを再利用する前に、このようなプロパティを削除またはクリーンアップすることをお勧めします。 | テンプレートには、デプロイに必要なプロパティのみが含まれています。 テンプレートはすぐに使用できます。 |
-| テンプレートには、再利用に必要なすべてのパラメーターが含まれていない場合もあります。 ほとんどのプロパティ値は、テンプレートにハードコーディングされています。 他の環境でテンプレートを再デプロイするには、リソースを構成する機能を高めるパラメーターを追加する必要があります。  独自のパラメーターを作成できるように、 **[パラメーターを含める]** を選択解除できます。 | テンプレートには、さまざまな環境での再デプロイが簡単になるパラメーターが含まれています。 |
-
-次の場合に、リソース グループまたはリソースからテンプレートをエクスポートします。
-
-* 元のデプロイ後に行われたリソースへの変更をキャプチャする必要がある。
-* エクスポートするリソースを選択したい。
-
-次の場合に、以前のデプロイまたは履歴からテンプレートをエクスポートします。
-
-* 再利用しやすいテンプレートがほしい。
-* 元のデプロイ後に行った変更を含める必要はない。
-
-## <a name="limitations"></a>制限事項
-
-リソースグループまたはリソースからエクスポートする場合、エクスポートされたテンプレートは、リソースの種類ごとに [パブリッシュされたスキーマ](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) から生成されます。 場合によっては、スキーマにリソースの種類に対する最新バージョンがないことがあります。 エクスポートしたテンプレートに必要なプロパティが含まれていることを確認してください。 必要に応じて、エクスポートされたテンプレートを編集し、必要な API バージョンを使用します。
-
-テンプレートのエクスポート機能は、Azure Data Factory リソースのエクスポートをサポートしていません。 Data Factory リソースをエクスポートする方法については、「[Azure Data Factory のデータ ファクトリをコピーまたは複製する](../../data-factory/copy-clone-data-factory.md)」を参照してください。
-
-クラシック デプロイ モデルを使用して作成されたリソースをエクスポートするには、[Resource Manager デプロイ モデルに移行する](../../virtual-machines/migration-classic-resource-manager-overview.md)必要があります。
-
-テンプレートをエクスポートしたとき、リソースの種類がエクスポートされなかったという警告が表示された場合でも、そのリソースのプロパティを検出できます。 リソース プロパティを表示するためのさまざまなオプションに関する詳細について、「[リソースのプロパティ](view-resources.md)」についてを参照してください。 リソースの種類については、[Azure REST API](/rest/api/azure/) も参照できます。
-
-エクスポートされたテンプレートを作成するリソース グループには、200 リソースという制限があります。 200 を超えるリソースを持つリソース グループをエクスポートしようとすると、エラー メッセージ `Export template is not supported for resource groups more than 200 resources` が表示されます。
+[!INCLUDE [Export template limitations](../../../includes/resource-manager-export-template-limitations.md)]
 
 ## <a name="export-template-from-a-resource-group"></a>リソース グループからテンプレートをエクスポートする
 
@@ -90,7 +57,9 @@ Resource Manager では、テンプレートにエクスポートするリソー
 
 1. エクスポートされたテンプレートが表示され、ダウンロードおよびデプロイできるようになります。 このテンプレートには、1 つのリソースのみが含まれています。 **[パラメーターを含める]** は、既定で選択されています。  選択すると、テンプレートの生成時にすべてのテンプレート パラメーターが含められます。 独自のパラメーターを作成する場合は、パラメーターを含めないようにこのチェックボックスを切り替えます。
 
-## <a name="export-template-before-deployment"></a>デプロイ前にテンプレートをエクスポートする
+## <a name="download-template-before-deployment"></a>デプロイ前にテンプレートをダウンロードする
+
+ポータルには、テンプレートをデプロイする前にダウンロードするオプションがあります。 このオプションは、PowerShell や Azure CLI では使用できません。
 
 1. デプロイする Azure サービスを選択します。
 
@@ -101,7 +70,6 @@ Resource Manager では、テンプレートにエクスポートするリソー
    ![テンプレートのダウンロード](./media/export-template-portal/download-before-deployment.png)
 
 1. テンプレートが表示され、ダウンロードおよびデプロイできるようになります。
-
 
 ## <a name="export-template-after-deployment"></a>デプロイ後にテンプレートをエクスポートする
 
@@ -123,7 +91,6 @@ Resource Manager では、テンプレートにエクスポートするリソー
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)、または [REST API](/rest/api/resources/resources/resourcegroups/exporttemplate) を使用してテンプレートをエクスポートする方法を学びます。
-- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+- [Azure CLI](export-template-cli.md)、[Azure PowerShell](export-template-powershell.md)、または [REST API](/rest/api/resources/resourcegroups/exporttemplate) を使用してテンプレートをエクスポートする方法を学びます。
+- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./syntax.md)」を参照してください。
 - テンプレートを開発する方法については、[ステップバイステップのチュートリアル](../index.yml)のページをご覧ください。
-- Azure Resource Manager テンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)のページをご覧ください。

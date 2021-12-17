@@ -1,39 +1,47 @@
 ---
-title: Azure Data Factory のデータのコピー ツール
-description: Azure Data Factory の UI にあるデータのコピー ツールについて説明します
+title: データのコピー ツール
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Synapse Analytics UI のデータのコピー ツールについて説明します。
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 09/09/2021
 ms.author: yexu
-ms.openlocfilehash: 18d61c7f51547a524e64fc44c98e70e0f5bc2752
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4ae44d3c3121ff5cc0240ea9dac0ed11e1580ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100372996"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760308"
 ---
-# <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory のデータのコピー ツール
+# <a name="copy-data-tool-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory と Synapse Analytics のデータのコピー ツール
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory のデータのコピー ツールを使うと、通常はエンド ツー エンドのデータ統合シナリオの最初の手順である、Data Lake へのデータの取り込みプロセスが容易になり、最適化されます。  時間が短縮され、Azure Data Factory を使って初めてデータ ソースからデータを取り込むときに特に効果があります。 このツールには次のような利点があります。
+データのコピー ツールを使うと、通常はエンド ツー エンドのデータ統合シナリオの最初の手順である、Data Lake へのデータの取り込みプロセスが容易になり、最適化されます。  時間が短縮され、サービスを使って初めてデータ ソースからデータを取り込むときに特に効果があります。 このツールには次のような利点があります。
 
-- Azure Data Factory のデータのコピー ツールを使うときに、リンクされたサービス、データセット、パイプライン、アクティビティ、トリガーの Data Factory での定義を理解している必要はありません。 
-- データのコピー ツールでは、直感的にわかるフローでデータを Data Lake に読み込むことができます。 ツールでは、選んだコピー元データ ストアから選んだコピー先/シンク データ ストアにデータをコピーするために必要なすべての Data Factory リソースが自動的に作成されます。 
+- データのコピー ツールを使うときに、リンクされたサービス、データセット、パイプライン、アクティビティ、トリガーのサービスでの定義を理解している必要はありません。 
+- データのコピー ツールでは、直感的にわかるフローでデータを Data Lake に読み込むことができます。 ツールでは、選んだコピー元データ ストアから選んだコピー先/シンク データ ストアにデータをコピーするために必要なすべてのリソースが自動的に作成されます。 
 - データのコピー ツールでは、作成時に取り込まれるデータを検証できるので、データ自体に最初からエラーが存在する可能性を回避するのに役立ちます。
-- Data Lake にデータを読み込むために複雑なビジネス ロジックを実装する必要がある場合でも、Data Factory UI でのアクティビティごとの作成を使って、データのコピー ツールによって作成される Data Factory リソースを編集できます。 
+- Data Lake にデータを読み込むために複雑なビジネス ロジックを実装する必要がある場合でも、UI でのアクティビティごとの作成を使って、データのコピー ツールによって作成されるリソースを編集できます。 
 
-次の表では、データのコピー ツールを使う場合と、Data Factory UI のアクティビティごとの作成を使う場合の指針を示します。 
+次の表では、データのコピー ツールを使う場合と、UI のアクティビティごとの作成を使う場合の指針を示します。 
 
 | データのコピー ツール | アクティビティごと (コピー アクティビティ) の作成 |
 | -------------- | -------------------------------------- |
-| Azure Data Factory のエンティティ (リンクされたサービス、データセット、パイプラインなど) について理解することなく、データ読み込みタスクを簡単に作成したい場合。 | Lake にデータを読み込むための複雑で柔軟性の高いロジックを実装したい場合。 |
+| エンティティ (リンクされたサービス、データセット、パイプラインなど) について理解することなく、データ読み込みタスクを簡単に作成したい場合。 | Lake にデータを読み込むための複雑で柔軟性の高いロジックを実装したい場合。 |
 | 大量のデータ アーティファクトを Data lake にすばやく読み込みたい場合。 | データのクレンジングや処理のためにコピー アクティビティを後続のアクティビティと連鎖させたい場合。 |
 
-データのコピー ツールを起動するには、Data Factory のホーム ページで **[データのコピー]** タイルをクリックします。
+データのコピー ツールを起動するには、お使いの Data Factory または Synapse Studio UI のホーム ページで **[取り込み]** タイルをクリックします。
 
-![開始ページ - データのコピー ツールへのリンク](./media/doc-common-process/get-started-page.png)
+# <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+:::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="ホーム ページを示すスクリーンショット - データのコピー ツールへのリンク。":::
+# <a name="synapse-analytics"></a>[Synapse Analytics](#tab/synapse-analytics)
+:::image type="content" source="./media/doc-common-process/get-started-page-synapse.png" alt-text="ホーム ページを示すスクリーンショット - データのコピー ツールへのリンク。":::
 
+---
+データのコピー ツールを起動すると、2 種類のタスクが表示されます。1 つは **組み込みのコピー タスク** で、もう 1 つは **メタデータ駆動のコピー タスク** です。 組み込みのコピー タスクを使用すると、5 分以内にパイプラインが作成され、エンティティについて学習しなくてもデータをレプリケートできます。  大量のオブジェクト (数千のテーブルなど) の大規模なコピーを管理するための、パラメーター化されたパイプラインと外部制御テーブルを簡単に作成できる、メタデータ駆動のコピー タスク。 詳細については、[メタデータ駆動のデータのコピー](copy-data-tool-metadata-driven.md)に関する記事を参照してください。
 
 ## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Data lake にデータを読み込むための直感的なフロー
 このツールを使うと、直感的なフローに従って、さまざまなコピー元からコピー先にデータを数分以内で簡単に移動することができます。  
@@ -42,21 +50,21 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 2. **コピー先** の設定を構成します。 
 3. 列のマッピング、パフォーマンスの設定、フォールト トレランスの設定など、コピー操作の **詳細な設定** を構成します。 
 4. データ読み込みタスクの **スケジュール** を指定します。 
-5. 作成される Data Factory のエンティティの **概要** を確認します。 
+5. 作成されるエンティティの **概要** を確認します。 
 6. 必要に応じてパイプラインを **編集** し、コピー アクティビティの設定を更新します。 
 
    このツールは最初からビッグ データを考慮して設計されており、さまざまな種類のデータとオブジェクトをサポートしています。 何百ものフォルダー、ファイル、テーブルの移動に使うことができます。 このツールは、自動データ プレビュー、スキーマのキャプチャと自動マッピング、およびデータのフィルター処理にも対応しています。
 
-![データのコピー ツール](./media/copy-data-tool/copy-data-tool.png)
+:::image type="content" source="./media/copy-data-tool/copy-data-tool.png" alt-text="データのコピー ツール":::
 
 ## <a name="automatic-data-preview"></a>自動データ プレビュー
 選んだコピー元データ ストアのデータの一部をプレビューすることができ、コピーされているデータを検証できます。 さらに、コピー元データがテキスト ファイル内にある場合は、データのコピー ツールによってテキスト ファイルが解析され、行および列の区切り記号とスキーマが自動的に検出されます。
 
-![ファイルの設定](./media/copy-data-tool/file-format-settings.png)
+:::image type="content" source="./media/copy-data-tool/file-format-settings.png" alt-text="ファイルの設定":::
 
-検出後:
+検出が完了したら、 **[Preview data (データのプレビュー)]** を選択します。
 
-![検出されたファイルの設定とプレビュー](./media/copy-data-tool/after-detection.png)
+:::image type="content" source="./media/copy-data-tool/after-detection.png" alt-text="検出されたファイルの設定とプレビュー":::
 
 ## <a name="schema-capture-and-automatic-mapping"></a>スキーマのキャプチャと自動マッピング
 データ コピー元のスキーマがデータ コピー先のスキーマと異なることがよくあります。 このシナリオでは、ソース スキーマの列を宛先スキーマの列にマップする必要があります。
@@ -72,7 +80,7 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 ### <a name="filter-data-in-a-database"></a>データベース内のデータのフィルター処理
 次のスクリーンショットでは、データをフィルター処理する SQL クエリを示します。
 
-![データベース内のデータのフィルター処理](./media/copy-data-tool/filter-data-in-database.png)
+:::image type="content" source="./media/copy-data-tool/filter-data-in-database.png" alt-text="データベース内のデータのフィルター処理":::
 
 ### <a name="filter-data-in-an-azure-blob-folder"></a>Azure Blob フォルダー内のデータのフィルター処理
 フォルダー パスに変数を使って、フォルダーからデータをコピーできます。 サポートされている変数は、 **{year}** 、 **{month}** 、 **{day}** 、 **{hour}** 、 **{minute}** です。 例: inputfolder/{year}/{month}/{day}。 
@@ -88,9 +96,9 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 
 **[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、 **[選択]** をクリックします。 テキスト ボックスに 2016/03/01/02 と表示されます。 
 
-次に、**2016** を **{year}** 、**03** を **{month}** 、**01** を **{day}** 、**02** を **{hour}** にそれぞれ置き換え、**Tab** キーを押します。 この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
+次に、**2016** を **{year}** 、**03** を **{month}** 、**01** を **{day}** 、**02** を **{hour}** にそれぞれ置き換え、**Tab** キーを押します。 **ファイル読み込みの動作** のセクションで **増分読み込み: 時間的に分割されたフォルダ/ファイル名** を選択し、**プロパティ** ページで **スケジュール** または **タンブリング ウィンドウ** を選択すると、これら4つの変数の形式を選択するドロップダウン リストが表示されます。
 
-![ファイルまたはフォルダーのフィルター処理](./media/copy-data-tool/filter-file-or-folder.png)
+:::image type="content" source="./media/copy-data-tool/filter-file-or-folder.png" alt-text="ファイルまたはフォルダーのフィルター処理":::
 
 データのコピー ツールでは、式、関数、システム変数でパラメーターを生成し、パイプラインを作成するときにそれを使って {year}、{month}、{day}、{hour}、{minute} を表すことができます。
 
@@ -99,7 +107,7 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 
 1 回限りのコピー操作では、ソースからコピー先に 1 回だけデータを移動できます。 これは、サポートされている形式のあらゆるサイズのデータに適用されます。 スケジュールされたコピーでは、指定した繰り返しでデータをコピーできます。 豊富な設定 (再試行、タイムアウト、アラートなど) を使用して、スケジュールされたコピーを構成できます。
 
-![スケジュール オプション](./media/copy-data-tool/scheduling-options.png)
+:::image type="content" source="./media/copy-data-tool/scheduling-options.png" alt-text="スケジュール オプション":::
 
 
 ## <a name="next-steps"></a>次のステップ

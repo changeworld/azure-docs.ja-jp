@@ -3,30 +3,37 @@ title: Azure Kubernetes Service (AKS) で Azure ディスク用の Container Sto
 description: Azure Kubernetes Service (AKS) クラスターで Azure ディスク用の Container Storage Interface (CSI) ドライバーを使用する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 10/15/2021
 author: palma21
-ms.openlocfilehash: c3421b767f465a4a705bdeb4882fd261c5cf914f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 687bc761d870b92f7cf753b55722fc749daaf37d
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776233"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063946"
 ---
-# <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure ディスクの Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
+# <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクの Container Storage Interface (CSI) ドライバーを使用する
 Azure ディスクの Container Storage Interface (CSI) ドライバーは、Azure ディスクのライフサイクルを管理するために Azure Kubernetes Service (AKS) によって使用される [CSI 仕様](https://github.com/container-storage-interface/spec/blob/master/spec.md)準拠のドライバーです。
 
 CSI は、Kubernetes のコンテナー化されたワークロードに任意のブロックおよびファイル ストレージ システムを公開する標準です。 CSI を採用および使用すると、Kubernetes のコア コードに触れたり、そのリリース サイクルを待つことなく、AKS が Kubernetes で新しいストレージ システムを公開したり、既存のストレージ システムを改良したりするプラグインを記述、デプロイ、反復処理できるようになります。
 
 CSI ドライバーがサポートされる AKS クラスターを作成するには、[AKS で Azure ディスクおよび Azure Files 用の CSI ドライバーを有効にする方法](csi-storage-drivers.md)に関する記事を参照してください。
 
->[!NOTE]
+> [!NOTE]
 > "*ツリー内ドライバー*" とは、プラグインの新しい CSI ドライバーに対し、コア Kubernetes コードの一部である現在のストレージ ドライバーを指します。
+
+## <a name="azure-disk-csi-driver-new-features"></a>Azure Disk CSI ドライバーの新機能
+本来のインツリー ドライバー機能に加えて、Azure Disk CSI ドライバーには次の新機能が既に用意されています。
+- ディスクを並列でアタッチまたはデタッチする場合のパフォーマンスの向上
+  - インツリー ドライバーではディスクがシリアルでアタッチまたはデタッチされますが、CSI ドライバーではディスクがバッチでアタッチまたはデタッチされます。1 つのノードに複数のディスクが接続される場合は大幅な向上が実現します。
+- ZRS ディスクのサポート
+  - ディスクの種類として `Premium_ZRS` と `StandardSSD_ZRS` がサポートされています。詳細については、[マネージド ディスクのゾーン冗長ストレージ](../virtual-machines/disks-redundancy.md)に関する記事を参照してください。
+- [スナップショット](#volume-snapshots)
+- [ボリュームの複製](#clone-volumes)
 
 ## <a name="use-csi-persistent-volumes-with-azure-disks"></a>Azure ディスクを含む CSI 永続ボリュームを使用する
 
 [永続ボリューム](concepts-storage.md#persistent-volumes) (PV) とは、Kubernetes ポッドで使用するためにプロビジョニングされているストレージの一部です。 PV は 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 この記事では、AKS クラスター内の単一のポッドによって使用するために Azure ディスクの PV を動的に作成する方法を説明します。 静的プロビジョニングの場合は、[Azure ディスクを含むボリュームを手動で作成して使用する方法](azure-disk-volume.md)に関する記事を参照してください。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 Kubernetes ボリュームの詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
 
@@ -117,7 +124,6 @@ volumesnapshotclass.snapshot.storage.k8s.io/csi-azuredisk-vsc created
 
 次に、[このチュートリアルの始めに動的に作成した](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) PVC (`pvc-azuredisk`) から、[ボリューム スナップショット](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/azuredisk-volume-snapshot.yaml)を作成しましょう。
 
-
 ```bash
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/snapshot/azuredisk-volume-snapshot.yaml
 
@@ -186,7 +192,6 @@ test.txt
 
 Azure ディスク用の CSI ドライバーでは、ボリュームの複製がサポートされています。 デモンストレーションのため、[前に作成した](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) `azuredisk-pvc` の[複製されたボリューム](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml)と、[それを使用するために新しいポッド](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml)を作成します。
 
-
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/cloning/pvc-azuredisk-cloning.yaml
 
@@ -215,7 +220,7 @@ test.txt
 
 AKS では、組み込みの `managed-csi` ストレージ クラスは既に拡張に対応しているので、[このストレージ クラスで前に作成した PVC](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) を使用します。 PVC では、10 Gi の永続ボリュームが要求されました。 これを確認するには、次のコマンドを実行します。
 
-```console 
+```console
 $ kubectl exec -it nginx-azuredisk -- df -h /mnt/azuredisk
 
 Filesystem      Size  Used Avail Use% Mounted on
@@ -263,6 +268,7 @@ pod/nginx-azuredisk created
 ```
 
 最後に、PVC のサイズとポッドの内容を確認します。
+
 ```console
 $ kubectl get pvc pvc-azuredisk
 NAME            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -277,7 +283,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 [Azure 共有ディスク](../virtual-machines/disks-shared.md)は、Azure ディスクをエージェント ノードに同時に接続できるようにする Azure マネージド ディスク機能です。 マネージド ディスクを複数のエージェント ノードに接続すると、たとえば、新規にデプロイしたり、既存のクラスター化されたアプリケーションを Azure に移行したりできます。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 現在のところ、生のブロック デバイス (`volumeMode: Block`) のみ、Azure ディスク CSI ドライバーでサポートされています。 アプリケーションでは、生のブロック デバイスとして露出する共有ディスクでの書き込み、読み取り、ロック、キャッシュ、マウント、フェンスの調整と制御を管理する必要があります。
 
 共有ディスク ストレージ クラスと PVC が含まれる次のコマンドをコピーし、`shared-disk.yaml` という名前のファイルを作成してみましょう。
@@ -315,7 +321,7 @@ $ kubectl apply -f shared-disk.yaml
 
 storageclass.storage.k8s.io/managed-csi-shared created
 persistentvolumeclaim/pvc-azuredisk-shared created
-``` 
+```
 
 それでは、次のコマンドをコピーし、`deployment-shared.yml` という名前のファイルを作成しましょう。
 
@@ -372,7 +378,7 @@ Azure ディスクの CSI ドライバーでは、Windows のノードとコン�
 
 Windows ノード プールを追加した後は、`managed-csi` などの組み込みストレージ クラスを使用できます。 [kubectl apply][kubectl-apply] コマンドを使用して次のコマンドをデプロイすることにより、タイムスタンプをファイル `data.txt` に保存する [Windows ベースのステートフル セット](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/windows/statefulset.yaml)の例をデプロイできます。
 
- ```console
+```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/windows/statefulset.yaml
 
 statefulset.apps/busybox-azuredisk created
@@ -394,7 +400,6 @@ $ kubectl exec -it busybox-azuredisk-0 -- cat c:\mnt\azuredisk\data.txt # on Win
 
 - Azure Files で CSI ドライバーを使用する方法を学習するには、[Azure Files での CSI ドライバーの使用](azure-files-csi.md)に関するページを参照してください。
 - ストレージのベスト プラクティスの詳細については、「[Azure Kubernetes Service のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]」を参照してください。
-
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes

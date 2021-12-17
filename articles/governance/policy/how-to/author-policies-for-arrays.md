@@ -1,14 +1,14 @@
 ---
 title: リソースの配列プロパティのポリシーを作成する
 description: Azure Policy 定義ルールを使用して、配列パラメーターおよび配列の言語式を処理し、[*] エイリアスを評価し、要素を付加する方法について説明します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 18afbee0ca8b1c488e3bd3ce50dacc726bd2ef25
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: aefa5439e7176457494d6c21ffb9aa79acc4fd3c
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305193"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323868"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 
@@ -147,7 +147,7 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 
 上記の条件をより汎用的にするには、リテラル配列ではなく、パラメーター参照を使用します。
 
- ```json
+```json
 {
     "count": {
         "value": "[parameters('patterns')]",
@@ -236,7 +236,7 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 
 ### <a name="referencing-array-fields"></a>配列フィールドの参照
 
-配列リソース プロパティは、通常、2 つの異なる種類のエイリアスによって表されます。 1 つの "標準" エイリアスと、それに `[*]` が付いた[配列のエイリアス](../concepts/definition-structure.md#understanding-the--alias)です。
+配列リソース プロパティは、2 つの異なる種類のエイリアスによって表されます。 1 つの "標準" エイリアスと、それに `[*]` が付いた[配列のエイリアス](../concepts/definition-structure.md#understanding-the--alias)です。
 
 - `Microsoft.Test/resourceType/stringArray`
 - `Microsoft.Test/resourceType/stringArray[*]`

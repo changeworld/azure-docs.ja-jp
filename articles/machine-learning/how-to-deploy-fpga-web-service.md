@@ -4,25 +4,26 @@ titleSuffix: Azure Machine Learning
 description: フィールド プログラマブル ゲート アレイについて説明します。 Azure Machine Learning を使用して FPGA に Web サービスをデプロイし、待機時間が非常に短い推論を行うことができます。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
-ms.date: 09/24/2020
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: e6a58a6555602af2494683037721a1f83e7ea33c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/21/2021
+ms.topic: how-to
+ms.custom: contperf-fy21q2, devx-track-python, deploy
+ms.openlocfilehash: 14ec567af96b06eca86d4fb086c29bd6ca554dae
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519318"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557625"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Azure Machine Learning を使用して ML モデルをフィールド プログラマブル ゲート アレイ (FPGA) にデプロイする 
 
-この記事では、FPGA と、[Azure Machine Learning](overview-what-is-azure-ml.md) の[Hardware Accelerated Models Python パッケージ](/python/api/azureml-accel-models/azureml.accel)を使用して ML モデルを Azure FPGA にデプロイする方法について説明します。
+この記事では、FPGA と、[Azure Machine Learning](overview-what-is-azure-machine-learning.md) の[Hardware Accelerated Models Python パッケージ](/python/api/azureml-accel-models/azureml.accel)を使用して ML モデルを Azure FPGA にデプロイする方法について説明します。
 
 ## <a name="what-are-fpgas"></a>FPGA とは
+
 FPGA には、プログラミング可能なロジック ブロックの配列と、再構成可能な相互接続の階層が含まれています。 相互接続を使用して、製造後にさまざまな方法でこれらのブロックを構成できます。 他のチップと比較して、FPGA はプログラミング可能であることとパフォーマンスを兼ね備えています。 
 
 FPGA によって、リアルタイムの推論 (つまりモデルのスコアリング) 要求に対して短い待機時間を達成できるようになります。 非同期の要求 (バッチ処理) は必要ありません。 バッチ処理では、処理の必要なデータが多くなるため待機時間は長くなる場合があります。 ニューラル処理ユニットの実装にバッチ処理は必要ないので、待機時間は CPU および GPU プロセッサと比較して何倍も短くなる場合があります。

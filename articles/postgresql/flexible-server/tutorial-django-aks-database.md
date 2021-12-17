@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9315e6fd7dd9880d20108e3f0ed28cd32904f1a3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a1c19100cad65c965c567c93c67db1033a4bba10
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791537"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136845"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>チュートリアル:Azure Database for PostgreSQL - フレキシブル サーバーを使用して Django アプリを AKS にデプロイする
 
@@ -27,20 +27,12 @@ ms.locfileid: "107791537"
 ## <a name="pre-requisites"></a>前提条件
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-- Bash 環境で [Azure Cloud Shell](../../cloud-shell/quickstart.md) を使用します。
-
-   [![埋め込みの起動](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)  
-- 必要に応じて、Azure CLI を[インストール](/cli/azure/install-azure-cli)して、CLI リファレンス コマンドを実行します。
-  - ローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az_login) コマンドを使用して Azure CLI でサインインします。  認証プロセスを完了するには、ターミナルに表示される手順に従います。  追加のサインイン オプションについては、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください。
-  - 初回使用時にインストールを求められたら、Azure CLI 拡張機能をインストールします。  拡張機能の詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
-  - [az version](/cli/azure/reference-index?#az_version) を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 最新バージョンにアップグレードするには、[az upgrade](/cli/azure/reference-index?#az_upgrade) を実行します。 この記事では、Azure CLI の最新バージョンが必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
-
-> [!NOTE]
-> このクイックスタートのコマンドを (Azure Cloud Shell ではなく) ローカルで実行する場合は、必ず管理者としてコマンドを実行してください。
+- 新しいブラウザー ウィンドウで [Azure Cloud Shell](https://shell.azure.com) を起動します。 [Azure CLI](/cli/azure/install-azure-cli#install) をローカル コンピューターにインストールすることもできます。 ローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az_login) コマンドを使用して Azure CLI でログインします。  認証プロセスを完了するには、ターミナルに表示される手順に従います。 
+- [az version](/cli/azure/reference-index?#az_version) を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 最新バージョンにアップグレードするには、[az upgrade](/cli/azure/reference-index?#az_upgrade) を実行します。 この記事では、Azure CLI の最新バージョンが必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 [az group create][az-group-create] コマンドを使用して、*eastus* に *django-project* というリソース グループを作成しましょう。
+Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 [az-group-create](/cli/azure/group#az_group_create) コマンドを使用して、*eastus* の場所に *django-project* というリソース グループを作成しましょう。
 
 ```azurecli-interactive
 az group create --name django-project --location eastus
@@ -67,7 +59,7 @@ az group create --name django-project --location eastus
 
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
 
-AKS クラスターを作成するには、[az aks create](/cli/azure/aks#az_aks_create) コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 これは完了までに数分かかる場合があります。
+AKS クラスターを作成するには、[az aks create](/cli/azure/aks#az_aks_create) コマンドを使用します。 次の例では、*djangoappcluster* という名前のクラスターを 1 つのノードで作成します。 これは完了までに数分かかる場合があります。
 
 ```azurecli-interactive
 az aks create --resource-group django-project --name djangoappcluster --node-count 1 --generate-ssh-keys
@@ -80,20 +72,16 @@ az aks create --resource-group django-project --name djangoappcluster --node-cou
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
-Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) を使用します。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 `kubectl` をローカルにインストールするには、[az aks install-cli](/cli/azure/aks#az_aks_install_cli) コマンドを使用します。
+Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) を使用します。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 
 
-```azurecli-interactive
-az aks install-cli
-```
+> [!NOTE] 
+> Azure CLI をローカルで実行している場合は、[az aks install-cli](/cli/azure/aks#az_aks_install_cli) コマンドを実行して `kubectl` をインストールしてください。
 
 Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) コマンドを使用します。 このコマンドは、資格情報をダウンロードし、それを使用するように Kubernetes CLI を構成します。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group django-project --name djangoappcluster
 ```
-
-> [!NOTE]
-> 上記のコマンドは、[Kubernetes 構成ファイル](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)の既定の場所 (`~/.kube/config`) を使用します。 *--file* を使用すると、Kubernetes 構成ファイルに対して別の場所を指定できます。
 
 クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get]( https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを使用します。
 
@@ -112,20 +100,22 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 [az postgreSQL flexible-server create](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create) コマンドを使用して、フレキシブル サーバーを作成します。 次のコマンドでは、サービスの既定値と Azure CLI のローカル コンテキストからの値を使用してサーバーを作成します。
 
 ```azurecli-interactive
-az postgres flexible-server create --public-access <YOUR-IP-ADDRESS>
+az postgres flexible-server create --public-access all
 ```
 
 作成されたサーバーには、次の属性があります。
 - サーバーが最初にプロビジョニングされたときに、新しい空のデータベース ```postgres``` が作成されます。 このクイックスタートでは、このデータベースを使用します。
 - 自動生成されたサーバー名、管理者ユーザー名、管理者パスワード、リソース グループ名 (ローカル コンテキストでまだ指定されていない場合)、およびリソース グループと同じ場所
-- 残りのサーバー構成のサービスの既定値: コンピューティング レベル (汎用)、コンピューティング サイズ/SKU (2 つの仮想コアを使用する Standard_D2s_v3)、バックアップの保持期間 (7 日間)、PostgreSQL のバージョン (12)
-- public-access 引数を使用すると、パブリック アクセスがファイアウォール規則で保護されたサーバーを作成できます。 IP アドレスを指定して、クライアント マシンからのアクセスを許可するファイアウォール規則を追加します。
+- public-access 引数を使用すると、正しいユーザー名とパスワードを使用して、任意のクライアントへのパブリック アクセス権を持つサーバーを作成できます。
 - このコマンドはローカル コンテキストを使用しているため、```eastus``` リージョンの ```django-project``` リソース グループにサーバーが作成されます。
 
 
 ## <a name="build-your-django-docker-image"></a>Django Docker イメージを作成する
 
-新しい [Django アプリケーション](https://docs.djangoproject.com/en/3.1/intro/)を作成するか、既存の Django プロジェクトを使用します。 コードが次のフォルダー構造であることを確認します。
+新しい [Django アプリケーション](https://docs.djangoproject.com/en/3.1/intro/)を作成するか、既存の Django プロジェクトを使用します。 コードが次のフォルダー構造であることを確認します。 
+
+> [!NOTE] 
+> アプリケーションがない場合は、「[**Kubernetes マニフェスト ファイルを作成する**](./tutorial-django-aks-database.md#create-kubernetes-manifest-file)」に直接進み、サンプル イメージである [mksuni/django-aks-app:latest](https://hub.docker.com/r/mksuni/django-aks-app) を使用することができます。 
 
 ```
 └───my-djangoapp
@@ -217,18 +207,17 @@ docker build --tag myblog:latest .
 >Azure Container Registry (ACR) を使用している場合は、```az aks update``` コマンドを実行して ACR アカウントを AKS クラスターに接続します。
 >
 >```azurecli-interactive
->az aks update -n myAKSCluster -g django-project --attach-acr <your-acr-name>
+>az aks update -n djangoappcluster -g django-project --attach-acr <your-acr-name>
 > ```
 >
 
 ## <a name="create-kubernetes-manifest-file"></a>Kubernetes マニフェスト ファイルを作成する
 
-Kubernetes のマニフェスト ファイルでは、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 ```djangoapp.yaml``` という名前のマニフェスト ファイルを作成し、次の YAML 定義をコピーしましょう。
+Kubernetes のマニフェスト ファイルでは、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 ```djangoapp.yaml``` という名前のマニフェスト ファイルを作成し、次の YAML 定義をコピーしましょう。 
 
 >[!IMPORTANT]
-> - ```[DOCKER-HUB-USER/ACR ACCOUNT]/[YOUR-IMAGE-NAME]:[TAG]``` を、実際の Django Docker イメージ名とタグに置き換えます (例: ```docker-hub-user/myblog:latest```)。
+> - ```[DOCKER-HUB-USER/ACR ACCOUNT]/[YOUR-IMAGE-NAME]:[TAG]``` を、実際の Django Docker イメージ名とタグに置き換えます (例: ```docker-hub-user/myblog:latest```)。  マニフェスト ファイルでデモ サンプル アプリ ```mksuni/django-aks-app:latest``` を使用できます。
 > - postgres フレキシブル サーバーの ```SERVERNAME```、```YOUR-DATABASE-USERNAME```、```YOUR-DATABASE-PASSWORD``` で下記の ```env``` セクションを更新します。
-
 
 ```yaml
 apiVersion: apps/v1
@@ -253,7 +242,7 @@ spec:
         env:
         - name: DATABASE_HOST
           value: "SERVERNAME.postgres.database.azure.com"
-        - name: DATABASE_USERNAME
+        - name: DATABASE_USER
           value: "YOUR-DATABASE-USERNAME"
         - name: DATABASE_PASSWORD
           value: "YOUR-DATABASE-PASSWORD"
@@ -305,7 +294,7 @@ service "python-svc" created
 進行状況を監視するには、[kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを `--watch` 引数と一緒に使用します。
 
 ```azurecli-interactive
-kubectl get service django-app --watch
+kubectl get service python-svc --watch
 ```
 
 最初は、*django-app* サービスの *EXTERNAL-IP* が *pending* (保留中) として表示されます。

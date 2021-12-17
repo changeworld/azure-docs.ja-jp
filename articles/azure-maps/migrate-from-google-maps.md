@@ -1,20 +1,20 @@
 ---
 title: チュートリアル - Google Maps から Azure Maps に移行する | Microsoft Azure Maps
 description: Google Maps から Microsoft Azure Maps に移行する方法に関するチュートリアルです。 ガイダンスでは、Azure Maps の API と SDK への切り替え方法について説明します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 09/23/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6241f6156b01c3c90f00578ae5416e4e77270930
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2903925ec475094795a069ea07596f02c638407
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386800"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717400"
 ---
 # <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>チュートリアル:Google マップから Azure Maps に移行する
 
@@ -34,7 +34,7 @@ ms.locfileid: "100386800"
 
 ## <a name="azure-maps-platform-overview"></a>Azure Maps プラットフォームの概要
 
-Azure Maps は、あらゆる業界の開発者に強力な地理空間機能を提供します。 それらの機能には、Web およびモバイル アプリケーションに地理的コンテキストを提供するために、定期的に更新されるマップ データが搭載されています。 Azure Maps は、Azure One API に準拠した REST API のセットです。 REST API は、Maps のレンダリング、検索、ルート指定、トラフィック、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、天気、モビリティ、空間演算を提供します。 演算は、Web と Android の両方の SDK によって実現されているため、開発が簡単になり、柔軟性が高く、複数のプラットフォーム間で移植性が確保されます。
+Azure Maps は、あらゆる業界の開発者に強力な地理空間機能を提供します。 それらの機能には、Web およびモバイル アプリケーションに地理的コンテキストを提供するために、定期的に更新されるマップ データが搭載されています。 Azure Maps は、Azure One API に準拠した REST API のセットです。 REST API は、Maps のレンダリング、検索、ルート指定、トラフィック、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、天気、空間の演算を提供します。 演算は、Web と Android の両方の SDK によって実現されているため、開発が簡単になり、柔軟性が高く、複数のプラットフォーム間で移植性が確保されます。
 
 ## <a name="high-level-platform-comparison"></a>プラットフォームのおおまかな比較
 
@@ -112,7 +112,7 @@ Azure Maps に関する役に立つ技術リソースの一覧を次に示しま
 - ビデオ: [https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
 - ブログ: [https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
 - 技術ブログ: [https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
-- Azure Maps のフィードバック (UserVoice): [https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
+- Azure Maps のフィードバック (UserVoice): [https://aka.ms/AzureMapsFeedback](/answers/topics/25319/azure-maps.html)
 - [Azure Maps Jupyter Notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)
 
 ## <a name="migration-support"></a>移行サポート

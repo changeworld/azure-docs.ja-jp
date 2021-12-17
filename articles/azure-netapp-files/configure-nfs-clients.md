@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 09/22/2021
 ms.author: b-juche
-ms.openlocfilehash: e0b86a7014af42f2ffb067c2de797f270a5b1855
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 6c946ed17d08a24e41f304c268c874ed7082691c
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967474"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130062711"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Azure NetApp Files 用に NFS クライアントを構成する
 
@@ -69,7 +69,7 @@ ms.locfileid: "105967474"
 
 5.  NTP クライアントを構成します。  
 
-    RHEL 8 では、既定で chrony が使用されます。 「[`Chrony` スイートを使用した NTP の設定](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/using-chrony-to-configure-ntp)」の構成ガイドラインに従います。
+    RHEL 8 では、既定で chrony が使用されます。 「[`Chrony` スイートを使用した NTP の設定](https://access.redhat.com/documentation/en-us/red-hat-enterprise-linux/8/guide/6c230de2-39f1-455a-902d-737eea31ad34)」の構成ガイドラインに従います。
 
 6.  Active Directory ドメインに参加します。  
 
@@ -81,7 +81,26 @@ ms.locfileid: "105967474"
     
     `/etc/krb5.conf` 内の指定された領域に `default_realm` が確実に設定されていようにします。  そうでない場合は、次の例に示すように、ファイル内の `[libdefaults]` セクションの下に追加します。
     
-    `default_realm = CONTOSO.COM`
+    ```
+    [libdefaults]
+        default_realm = CONTOSO.COM
+        default_tkt_enctypes = aes256-cts-hmac-sha1-96
+        default_tgs_enctypes = aes256-cts-hmac-sha1-96
+        permitted_enctypes = aes256-cts-hmac-sha1-96
+    [realms]
+        CONTOSO.COM = {
+            kdc = dc01.contoso.com
+            admin_server = dc01.contoso.com
+            master_kdc = dc01.contoso.com
+            default_domain = contoso.com
+        }
+    [domain_realm]
+        .contoso.com = CONTOSO.COM
+        contoso.com = CONTOSO.COM
+    [logging]
+        kdc = SYSLOG:INFO
+        admin_server = FILE=/var/kadm5.log
+    ```
 
 7. すべての NFS サービスを再起動します。  
  
@@ -138,6 +157,15 @@ ms.locfileid: "105967474"
     `krb5_realm = CONTOSO.COM (domain name in caps)`   
     `krb5_kpasswd = winad2016.contoso.com (same as AD address which is added in /etc/hosts)`   
     `use_fully_qualified_names = false`   
+    
+    上記の `[domain/contoso-ldap]` 構成では、次のようになります。
+    * `id_provider` は `ad` ではなく、`ldap` に設定されています。
+    * 構成では、検索ベースと、検索用のユーザー クラスおよびグループ クラスを指定しています。
+    * `ldap_sasl_authid` は、`klist -kte` からのコンピューター アカウント名です。
+    * `use_fully_qualified_names` は `false` に設定されます。  この設定は、短い名前の使用時に、この構成が使用されることを意味します。
+    * `ldap_id_mapping` は指定されていません。その既定値は `false` です。
+
+    `realm join` 構成はクライアントによって生成され、次のようになります。
  
     `[domain/contoso.com]  (Do not edit or remove any of the following information. This information is automatically generated during the realm join process.)`   
     `ad_domain = contoso.com`   
@@ -151,6 +179,11 @@ ms.locfileid: "105967474"
     `use_fully_qualified_names = True`   
     `fallback_homedir = /home/%u@%d`   
     `access_provider = ad`   
+    
+    上記の `[domain/contoso.com]` 構成では、次のようになります。
+    * `id_provider` が `ad` に設定されます。
+    * `ldap_id_mapping` が `true` に設定されます。 SSSD によって生成された ID が使用されます。 あるいは、すべてのスタイルのユーザー名に POSIX UID を使用する場合は、この値を `false` に設定することもできます。 値は、クライアント構成に基づいて決定できます。 
+    * `use_fully_qualified_names` は `true` です。 この設定は、`user@CONTOSO.COM` で、この構成が使用されることを意味しています。
 
 4. `/etc/nsswitch.conf` に `sss` エントリがあることを確認します。   
 
@@ -230,7 +263,11 @@ ms.locfileid: "105967474"
 
     `base dc=contoso,dc=com uri ldap://10.20.0.4:389/ ldap_version 3 rootbinddn cn=admin,cn=Users,dc=contoso,dc=com pam_password ad`   
 
-2. 次のコマンドを実行して、サービスを再起動して有効にします。
+2. `/etc/nsswitch.conf` ファイルに次の `ldap` エントリが含まれていることを確認します。   
+    `passwd:    compat systemd ldap`   
+    `group:     compat systemd ldap`
+
+3. 次のコマンドを実行して、サービスを再起動して有効にします。
 
     `sudo systemctl restart nscd && sudo systemctl enable nscd`   
 
@@ -239,9 +276,42 @@ ms.locfileid: "105967474"
 `root@cbs-k8s-varun4-04:/home/cbs# getent passwd hari1`   
 `hari1:*:1237:1237:hari1:/home/hari1:/bin/bash`   
 
+## <a name="configure-two-vms-with-the-same-hostname-to-access-nfsv41-volumes"></a>ホスト名が同じ 2 つの VM が NFSv 4.1 ボリュームにアクセスするように構成する 
+
+このセクションでは、ホスト名が同じ 2 つの VM が Azure NetApp Files NFSv 4.1 ボリュームにアクセスするように構成する方法について説明します。 この手順は、ディザスター リカバリー (DR) テストを実施するとき、テスト システムのホスト名をプライマリ DR システムのホスト名と同じにする必要がある場合に役立ちます。 この手順は、同じ Azure NetApp Files ボリュームにアクセスしている 2 つの VM 上のホスト名が同じときにのみ必要です。  
+
+NFSv4. x では、各クライアントが "*一意*" の文字列を使用して、サーバーに対して自身を特定する必要があります。 1 つのクライアントと 1 つのサーバーの間で共有されるファイルのオープンおよびロック状態は、この ID に関連付けられています。 堅牢な NFSv4. x 状態回復と透過的な状態移行をサポートするには、この ID 文字列が、クライアントの再起動後も変更されないようにする必要があります。
+
+1. 次のコマンドを使用して、VM クライアント上に `nfs4_unique_id` 文字列を表示します。
+    
+    `# systool -v -m nfs | grep -i nfs4_unique`     
+    `    nfs4_unique_id      = ""`
+
+    DR システムなど、ホスト名が同じ追加 VM 上で同じボリュームをマウントするには、`nfs4_unique_id` を作成して、Azure NetApp Files NFS サービスに対して自身を一意に特定できるようにします。  この手順を使用すると、サービスが、同じホスト名の 2 つの VM を区別して、両方の VM 上で NFSv 4.1 ボリュームのマウントを有効にできます。  
+
+    この手順は、テスト DR システム上でのみ実行する必要があります。 一貫性を確保するために、関連する各仮想マシン上で一意の設定の適用を検討することができます。
+
+2. テスト DR システム上で、次の行を `nfsclient.conf` ファイルに追加します。このファイルは通常、`/etc/modprobe.d/` 内にあります。
+
+    `options nfs nfs4_unique_id=uniquenfs4-1`  
+
+    文字列 `uniquenfs4-1` は、サービスに接続する VM 全体で一意である限り、任意の英数字の文字列にできます。
+
+    NFS クライアント設定の構成方法については、ディストリビューションのドキュメントをご確認ください。
+
+    変更を有効にするために VM を再起動します。
+
+3. テスト DR システム上で、`nfs4_unique_id` が、VM が再起動された後も設定されていることを確認します。       
+
+    `# systool -v -m nfs | grep -i nfs4_unique`   
+    `   nfs4_unique_id      = "uniquenfs4-1"`   
+
+4. 通常どおり、両方の VM 上に [NFSv 4.1 ボリュームをマウント](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)します。
+
+    これでホスト名が同じ両方の VM が NFSv 4.1 ボリュームをマウントし、アクセスできるようになります。  
 
 ## <a name="next-steps"></a>次のステップ  
 
 * [Azure NetApp Files の NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)
 * [Azure NetApp Files のデュアルプロトコル ボリュームを作成する](create-volumes-dual-protocol.md)
-
+* [Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) 

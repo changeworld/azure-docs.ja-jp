@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: c70ecc4fc5469d728bc12d47024585ccf00ff98e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 952e0b325fe37345db42d1dcd8d6c521f8235366
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098708"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225400"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用の Scala および Java パッケージを管理する
 
@@ -45,7 +45,7 @@ Azure Synapse Analytics の Apache Spark には、一般的なデータ エン�
 ## <a name="pool-libraries"></a>プール ライブラリ
 Spark アプリケーションで使用したい Scala および Java パッケージを見つけたら、Spark プールにインストールすることができます。 プール レベルのライブラリは、プールで実行されているすべてのノートブックおよびジョブで使用できます。
 
-Spark プール ライブラリを更新するには、Azure Synapse Studio または Azure portal に移動します。 ここでは、インストールするワークスペース ライブラリを選択できます。 
+Spark プール ライブラリを更新するには、Synapse Studio または Azure portal に移動します。 ここでは、インストールするワークスペース ライブラリを選択できます。 
 
 変更が保存された後、Spark ジョブによってインストールが実行され、結果として得られた環境は後で再利用するためにキャッシュされます。 ジョブが完了すると、新しい Spark ジョブまたはノートブック セッションで、更新されたプール ライブラリが使用されます。 
 
@@ -53,8 +53,8 @@ Spark プール ライブラリを更新するには、Azure Synapse Studio ま�
 > - インストールするパッケージが大きいか、インストールに時間がかかる場合、これは Spark インスタンスのアップタイムに影響します。
 > - PySpark、Python、Scala/Java、.NET、または Spark のバージョンの変更はサポートされていません。
 
-#### <a name="manage-packages-from-azure-synapse-studio-or-azure-portal"></a>Azure Synapse Studio または Azure portal からパッケージを管理する
-Spark プール ライブラリは、Azure Synapse Studio または Azure portal から管理できます。 
+#### <a name="manage-packages-from-synapse-studio-or-azure-portal"></a>Synapse Studio または Azure portal からパッケージを管理する
+Spark プール ライブラリは、Synapse Studio または Azure portal から管理できます。 
 
 Spark プールのライブラリを更新または追加するには:
 1. Azure portal から Azure Synapse Analytics ワークスペースに移動します。
@@ -82,7 +82,7 @@ Spark プールのライブラリを更新または追加するには:
 >
 > この設定をオフにした場合は、現在の Spark セッションが終了するまで待つか、手動で停止する必要があります。 セッションが終了したら、プールが再起動されるようにする必要があります。
 
-#### <a name="track-installation-progress-preview"></a>インストールの進行状況の追跡 (プレビュー)
+#### <a name="track-installation-progress"></a>インストールの進行状況の追跡 
 システム予約 Spark ジョブは、新しい一連のライブラリを使用してプールが更新されるたびに開始されます。 この Spark ジョブは、ライブラリのインストールの状態を監視するために役立ちます。 ライブラリの競合またはその他の問題のためインストールが失敗した場合、Spark プールは以前の、または既定の状態に戻ります。 
 
 さらに、ユーザーはインストール ログを調査することで、依存関係の競合を特定したり、プールの更新中にインストールされたライブラリを確認したりすることもできます。

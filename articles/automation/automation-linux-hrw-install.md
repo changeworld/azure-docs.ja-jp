@@ -1,22 +1,23 @@
 ---
-title: Azure Automation への Linux Hybrid Runbook Worker のデプロイ
-description: この記事では、Azure Automation Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのマシン上で Runbook を実行する方法について説明します。
+title: Automation でエージェントベースの Linux Hybrid Runbook Worker をデプロイする
+description: この記事では、エージェントベースの Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのマシン上で Runbook を実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/06/2021
+ms.date: 09/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: 21bb3a353874e401d86741584d102b5c217e69cc
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9eff8a0605f3cebce7f85f9c6edb2a3009ec4901
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030051"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240397"
 ---
-# <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
+# <a name="deploy-an-agent-based-linux-hybrid-runbook-worker-in-automation"></a>Automation でエージェントベースの Linux Hybrid Runbook Worker をデプロイする
 
 Azure Automation のユーザー Hybrid Runbook Worker 機能を使用すると、Azure または Azure 以外のマシン ([Azure Arc 対応サーバー](../azure-arc/servers/overview.md)に登録されているサーバーを含む) 上で Runbook を直接実行することができます。 ロールをホストしているマシンまたはサーバーからは、環境内のリソースに対して Runbook を直接実行して、それらのローカル リソースを管理することができます。
 
-Linux Hybrid Runbook Worker は、昇格が必要なコマンドを実行するために昇格させることができる特殊なユーザーとして Runbook を実行します。 Azure Automation によって Runbook が格納および管理された後、1 つ以上の指定されたマシンに配信されます。 この記事では、Linux マシンに Hybrid Runbook Worker をインストールする方法、worker を削除する方法、および Hybrid Runbook Worker グループを削除する方法について説明します。
+Linux Hybrid Runbook Worker は、昇格が必要なコマンドを実行するために昇格させることができる特殊なユーザーとして Runbook を実行します。 Azure Automation によって Runbook が格納および管理された後、1 つ以上の選択されたマシンに配信されます。 この記事では、Linux マシンに Hybrid Runbook Worker をインストールする方法、worker を削除する方法、および Hybrid Runbook Worker グループを削除する方法について説明します。 ユーザー Hybrid Runbook Worker については、「[Automation で拡張機能ベースの Windows または Linux ユーザー Hybrid Runbook Worker をデプロイする](./extension-based-hybrid-runbook-worker-install.md)」も参照してください
 
 Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照して、オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を確認します。
 
@@ -26,17 +27,13 @@ Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker 
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics ワークスペース
 
-Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)、[Azure portal](../azure-monitor/logs/quick-create-workspace.md) のいずれかを使用して作成できます。
+Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../azure-monitor/logs/quick-create-workspace.md) のいずれかを使用して作成できます。
 
 Azure Monitor Log Analytics ワークスペースがない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/logs/design-logs-deployment.md)を確認してください。
 
 ### <a name="log-analytics-agent"></a>Log Analytics エージェント
 
-Hybrid Runbook Worker ロールには、サポートされている Linux オペレーティング システム用の [Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)が必要です。 Azure の外部でホストされているサーバーまたはマシンの場合、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用すれば Log Analytics エージェントをインストールできます。
-
->[!NOTE]
->Linux 用 Log Analytics エージェントをインストールした後は、`sudoers.d` フォルダーまたはその所有権のアクセス許可を変更しないでください。 sudo アクセス許可は **nxautomation** アカウントに必要です。これは Hybrid Runbook Worker を実行するユーザー コンテキストです。 アクセス許可は削除しないでください。 これを特定のフォルダーまたはコマンドに制限すると、破壊的変更が発生する可能性があります。
->
+Hybrid Runbook Worker ロールには、サポートされている Linux オペレーティング システム用の [Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)が必要です。 Azure の外部でホストされているサーバーまたはマシンの場合、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用すれば Log Analytics エージェントをインストールできます。 このエージェントは、ルート アクセス許可が必要なコマンドを実行する特定のサービス アカウントを使用してインストールされます。 詳細については、「[サービス アカウント](./automation-hrw-run-runbooks.md#service-accounts)」を参照してください。
 
 ### <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
 
@@ -44,14 +41,14 @@ Hybrid Runbook Worker 機能では、次のディストリビューションが�
 
 * Amazon Linux 2012.09 から 2015.09
 * CentOS Linux 5、6、7、8
-* Oracle Linux 5、6、7
+* Oracle Linux 6、7、8
 * Red Hat Enterprise Linux Server 5、6、7、8
 * Debian GNU/Linux 6、7、8
-* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS、および 18.04 LTS
-* SUSE Linux Enterprise Server 12 および 15 (SUSE ではバージョン 13 と 14 はなし)
+* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS、18.04、20.04 LTS
+* SUSE Linux Enterprise Server 12、15、および 15.1 (SUSE のバージョン 13 と 14 はリリースされませんでした)
 
 > [!IMPORTANT]
-> システムの Hybrid Runbook Worker ロールに依存する Update Management 機能を有効にする前に、[ここ](update-management/overview.md#supported-operating-systems)でサポート対象の配布を確認してください。
+> システムの Hybrid Runbook Worker ロールに依存する Update Management 機能を有効にする前に、[ここ](update-management/operating-system-requirements.md)でサポート対象の配布を確認してください。
 
 ### <a name="minimum-requirements"></a>最小要件
 
@@ -66,21 +63,23 @@ Linux システムおよびユーザー Hybrid Runbook Worker の最小要件は
 |Glibc |GNU C ライブラリ| 2.5-12 |
 |Openssl| OpenSSL ライブラリ | 1.0 (TLS 1.1 と TLS 1.2 がサポートされます)|
 |Curl | cURL Web クライアント | 7.15.5|
-|Python-ctypes | Python 2.x または Python 3.x が必要 |
+|Python-ctypes | Python 用の外部関数ライブラリ| Python 2.x または Python 3.x が必要 |
 |PAM | Pluggable Authentication Module (プラグ可能な認証モジュール)|
+
 | **オプション パッケージ** | **説明** | **最小バージョン**|
+|--------------------- | --------------------- | -------------------|
 | PowerShell Core | PowerShell Runbook を実行するには、PowerShell Core をインストールする必要があります。 インストール方法については、「[Linux への PowerShell Core のインストール](/powershell/scripting/install/installing-powershell-core-on-linux)」をご覧ください。 | 6.0.0 |
 
 ### <a name="adding-a-machine-to-a-hybrid-runbook-worker-group"></a>Hybrid Runbook Worker グループへのマシンの追加
 
 ご利用の Automation アカウントのいずれか 1 つの Hybrid Runbook Worker グループに worker マシンを追加できます。 Update Management によって管理されているシステム Hybrid Runbook Worker をホストしているマシンの場合は、Hybrid Runbook Worker グループに追加できます。 しかし、Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じ Automation アカウントを使用する必要があります。
 
->[!NOTE]
->Azure Automation [Update Management](./update-management/overview.md) を使用すると、Update Management に対して有効になっている Azure または Azure 以外のマシンに、システム Hybrid Runbook Worker が自動的にインストールされます。 ただし、この worker は、Automation アカウント内の Hybrid Runbook Worker グループには登録されません。 これらのマシン上で Runbook を実行するには、それを Hybrid Runbook Worker グループに追加する必要があります。 それをグループに追加するには、「[Linux Hybrid Runbook Worker をインストールする](#install-a-linux-hybrid-runbook-worker)」セクションの手順 4 に従ってください。
+> [!NOTE]
+> Azure Automation [Update Management](./update-management/overview.md) を使用すると、Update Management に対して有効になっている Azure または Azure 以外のマシンに、システム Hybrid Runbook Worker が自動的にインストールされます。 ただし、この worker は、Automation アカウント内の Hybrid Runbook Worker グループには登録されません。 これらのマシン上で Runbook を実行するには、それを Hybrid Runbook Worker グループに追加する必要があります。 それをグループに追加するには、「[Linux Hybrid Runbook Worker をインストールする](#install-a-linux-hybrid-runbook-worker)」セクションの手順 4 に従ってください。
 
 ## <a name="supported-linux-hardening"></a>Linux のセキュリティ強化のサポート
 
-次はまだサポートされていません。
+次の要素はまだサポートされていません。
 
 * CIS
 
@@ -90,7 +89,7 @@ Linux Hybrid Runbook Worker でサポートされている Azure Automation の 
 
 |Runbook の種類 | サポートされています |
 |-------------|-----------|
-|Python 3 (プレビュー)|はい (SUSE LES 15、RHEL 8、CentOS 8 の配布でのみ必要)|
+|Python 3 (プレビュー)|はい (SUSE LES 15、RHEL 8、CentOS 8 のディストリビューションでのみ必要)|
 |Python 2 |はい (Python 3<sup>1</sup> を必要としない配布用) |
 |PowerShell |はい<sup>2</sup> |
 |PowerShell ワークフロー |いいえ |
@@ -107,9 +106,9 @@ Hybrid Runbook Worker のネットワーク要件については、[ネットワ
 
 ## <a name="install-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker をインストールする
 
-Hybrid Runbook Worker をデプロイするには、2 つの方法があります。 Azure portal の Runbook ギャラリーから Runbook をインポートして実行するか、一連の PowerShell コマンドを手動で実行して同じタスクを実行することができます。
+Hybrid Runbook Worker をデプロイするには、2 つの方法があります。 Azure portal の Runbook ギャラリーから Runbook をインポートして実行するか、一連の PowerShell コマンドを手動で実行することができます。
 
-### <a name="importing-a-runbook-from-the-runbook-gallery"></a>Runbook ギャラリーから Runbook をインポートするには
+### <a name="importing-a-runbook-from-the-runbook-gallery"></a>Runbook ギャラリーから Runbook をインポートする
 
 インポートの手順の詳細については、「[Azure portal を使用して GitHub から Runbook をインポートする](automation-runbook-gallery.md#import-runbooks-from-github-with-the-azure-portal)」をご覧ください。 インポートする Runbook の名前は、**Create Automation Linux HybridWorker** です。
 
@@ -123,11 +122,11 @@ Runbook では、次のパラメーターが使用されます。
 | `CreateLA` | Mandatory | true の場合、`WorkspaceName` の値を使用して Log Analytics ワークスペースを作成します。 false の場合、`WorkspaceName` の値は既存のワークスペースを参照する必要があります。 |
 | `LAlocation` | オプション | Log Analytics ワークスペースが作成される場所、または既に存在する場所。 |
 | `WorkspaceName` | オプション | 作成または使用する Log Analytics ワークスペースの名前。 |
-| `CreateVM` | Mandatory | true の場合、新しい VM の名前として `VMName` の値を使用します。 false の場合は、`VMName` を使用して既存の VM を検索し、登録します。 |
-| `VMName` | オプション | `CreateVM` の値に応じて、作成または登録された仮想マシンの名前。 |
-| `VMImage` | オプション | 作成する VM イメージの名前。 |
-| `VMlocation` | オプション | 作成または登録されている VM の場所。 この場所が指定されていない場合、`LAlocation` の値が使用されます。 |
-| `RegisterHW` | Mandatory | true の場合は、ハイブリッド worker として VM を登録します。 |
+| `CreateVM` | Mandatory | true の場合、新しい VM の名前として `VMName` の値を使用します。 false の場合、`VMName` を使用して既存の VM を検索し、登録します。 |
+| `VMName` | オプション | `CreateVM` の値に応じて作成または登録される仮想マシンの名前。 |
+| `VMImage` | オプション | 作成される VM イメージの名前。 |
+| `VMlocation` | オプション | 作成または登録される VM の場所。 この場所が指定されていない場合、`LAlocation` の値が使用されます。 |
+| `RegisterHW` | Mandatory | true の場合、ハイブリッド worker として VM を登録します。 |
 | `WorkerGroupName` | Mandatory | ハイブリッド worker グループの名前。 |
 
 ### <a name="manually-run-powershell-commands"></a>PowerShell コマンドを手動で実行する
@@ -142,24 +141,24 @@ Linux Hybrid Runbook Worker をインストールして構成するには、次�
 
 2. ターゲット マシンに Log Analytics エージェントをデプロイします。
 
-    * Azure VM の場合、[Linux 用仮想マシン拡張機能](../virtual-machines/extensions/oms-linux.md)を使用して、Linux 用 Log Analytics エージェントをインストールします。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 Azure Resource Manager テンプレート、Azure CLI、または Azure Policy を使用すれば、組み込みポリシーである [*Linux* または *Windows* VM 用の Log Analytics エージェントのデプロイ](../governance/policy/samples/built-in-policies.md#monitoring)を割り当てることができます。 エージェントがインストールされたら、Automation アカウントの Hybrid Runbook Worker グループにマシンを追加できます。
+    - Azure VM の場合、[Linux 用仮想マシン拡張機能](../virtual-machines/extensions/oms-linux.md)を使用して、Linux 用 Log Analytics エージェントをインストールします。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 Azure Resource Manager テンプレート、Azure CLI、または Azure Policy を使用すれば、"[*Linux* または *Windows* VM 用の Log Analytics エージェントのデプロイ](../governance/policy/samples/built-in-policies.md#monitoring)" という組み込みポリシー定義を割り当てることができます。 エージェントがインストールされたら、Automation アカウントの Hybrid Runbook Worker グループにマシンを追加できます。
 
-    * Azure 以外のマシンの場合は、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用して Log Analytics エージェントをインストールできます。 Arc 対応サーバーでは、以下の方法を使用した Log Analytics エージェントのデプロイがサポートされています。
+    - Azure 以外のマシンの場合は、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用して Log Analytics エージェントをインストールできます。 Azure Arc 対応サーバーは、以下の方法を使用した Log Analytics エージェントのデプロイをサポートしています。
 
-        - VM 拡張機能フレームワークの使用。
+      - VM 拡張機能フレームワークの使用。
 
-            Azure Arc 対応サーバーのこの機能を使用すると、Azure 以外の Windows や Linux のサーバーに、Log Analytics エージェントの VM 拡張機能をデプロイできます。 VM 拡張機能は、ハイブリッド コンピューターまたは Arc 対応サーバーで管理されているサーバーで、次の方法を使用して管理できます。
+        Azure Arc 対応サーバーのこの機能を使用すると、Azure 以外の Windows や Linux のサーバーに、Log Analytics エージェントの VM 拡張機能をデプロイできます。 VM 拡張機能は、ハイブリッド コンピューターまたは Azure Arc 対応サーバーで管理されているサーバーで、次の方法を使用して管理できます。
 
-            - [Azure Portal](../azure-arc/servers/manage-vm-extensions-portal.md)
-            - [Azure CLI](../azure-arc/servers/manage-vm-extensions-cli.md)
-            - [Azure PowerShell](../azure-arc/servers/manage-vm-extensions-powershell.md)
-            - Azure [Resource Manager テンプレート](../azure-arc/servers/manage-vm-extensions-template.md)
+        - [Azure Portal](../azure-arc/servers/manage-vm-extensions-portal.md)
+        - [Azure CLI](../azure-arc/servers/manage-vm-extensions-cli.md)
+        - [Azure PowerShell](../azure-arc/servers/manage-vm-extensions-powershell.md)
+        - Azure [Resource Manager テンプレート](../azure-arc/servers/manage-vm-extensions-template.md)
 
-        - Azure Policy の使用。
+      - Azure Policy の使用。
 
-            この方法を利用し、Azure Policy の "[Log Analytics エージェントを Linux または Windows Azure Arc マシンにデプロイする](../governance/policy/samples/built-in-policies.md#monitoring)" という組み込みポリシーを使用して、Arc 対応サーバーに Log Analytics エージェントがインストールされているかどうかを監査します。 エージェントがインストールされていない場合は、修復タスクを使用して自動的にそれがデプロイされます。 または、Azure Monitor for VMs を使用してマシンを監視する予定の場合は、代わりに "[Azure Monitor for VMs を有効にする](../governance/policy/samples/built-in-initiatives.md#monitoring)" というイニシアティブを使用して Log Analytics エージェントのインストールと構成を行います。
+        この方法を利用し、Azure Policy の "[Log Analytics エージェントを Linux または Windows Azure Arc マシンにデプロイする](../governance/policy/samples/built-in-policies.md#monitoring)" という組み込みポリシー定義を使用して、Arc 対応サーバーに Log Analytics エージェントがインストールされているかどうかを監査します。 エージェントがインストールされていない場合は、修復タスクを使用して自動的にそれがデプロイされます。 Azure Monitor for VMs を使用してマシンを監視する予定の場合は、代わりに [Azure Monitor for VMs を有効にする](../governance/policy/samples/built-in-initiatives.md#monitoring)というイニシアティブを使用して Log Analytics エージェントのインストールと構成を行います。
 
-        Azure Policy を使用して、Windows または Linux 用の Log Analytics エージェントをインストールすることをお勧めします。
+      Azure Policy を使用して、Windows または Linux 用の Log Analytics エージェントをインストールすることをお勧めします。
 
     > [!NOTE]
     > Hybrid Runbook Worker ロールをサポートするマシンの構成を Desired State Configuration (DSC) を使用して管理するには、マシンを DSC ノードとして追加する必要があります。
@@ -171,7 +170,7 @@ Linux Hybrid Runbook Worker をインストールして構成するには、次�
 
     Linux 用 Log Analytics エージェントにより、マシンが Azure Monitor Log Analytics ワークスペースに接続されます。 マシンにエージェントをインストールし、ワークスペースに接続すると、Hybrid Runbook Worker に必要なコンポーネントが自動的にダウンロードされます。
 
-    エージェントが Log Analytics ワークスペースに正常に接続されたら、数分後に次のクエリを実行して、ワークスペースにハートビート データが送信されていることを確認できます。
+    エージェントがお使いの Log Analytics ワークスペースに正常に接続されたら、数分後に次のクエリを実行して、ワークスペースにハートビート データが送信されていることを確認できます。
 
     ```kusto
     Heartbeat
@@ -208,9 +207,9 @@ Linux Hybrid Runbook Worker をインストールして構成するには、次�
 
 既定では、Linux Hybrid Runbook Worker は、署名の検証を必要とします。 worker に対して署名されていない Runbook を実行すると、`Signature validation failed` エラーが表示されます。 署名の検証をオフにするには、次のコマンドを実行します。 2 番目のパラメーターは Log Analytics のワークスペース ID に置き換えます。
 
- ```bash
- sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <logAnalyticsworkspaceId>
- ```
+```bash
+sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <logAnalyticsworkspaceId>
+```
 
 ## <a name="remove-the-hybrid-runbook-worker"></a><a name="remove-linux-hybrid-runbook-worker"></a>Hybrid Runbook Worker を削除します。
 

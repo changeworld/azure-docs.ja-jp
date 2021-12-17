@@ -4,19 +4,26 @@ description: この記事では、Azure Cognitive Services Language Understandin
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 04/07/2021
-ms.openlocfilehash: f6c6f2ba20a67cd39d4142ffadddc803927c936c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.date: 11/08/2021
+ms.openlocfilehash: e7ad62bde9a8b14ca31a84d2bb2907eb2a6db0af
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227060"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028764"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
 サービス内の新機能について説明します。 これらの項目には、リリース ノート、ビデオ、ブログ記事、およびその他の種類の情報が含まれています。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="november-2021"></a>2021 年 11 月
+* [Azure ロールベースのアクセス制御 (RBAC) の記事](role-based-access-control.md)
+
+### <a name="august-2021"></a>2021 年 8 月
+* ノルウェー東部[公開リージョン](luis-reference-regions.md#publishing-to-europe)。
+* 米国西部 3 [公開リージョン](luis-reference-regions.md#other-publishing-regions)。
 
 ### <a name="april-2021"></a>2021 年 4 月
 
@@ -43,7 +50,7 @@ ms.locfileid: "107227060"
         * [LUIS DevOps の継続的インテグレーションと継続的デリバリーのワークフロー](luis-concept-devops-automation.md)
         * [LUIS DevOps のテスト](luis-concept-devops-testing.md)
     * 操作方法
-        * [GitHub Actions を使用して LUIS アプリ開発に DevOps を適用する](luis-how-to-devops-with-github.md)
+        * [GitHub Actions を使用して LUIS アプリ開発に DevOps を適用する](./luis-concept-devops-automation.md)
     * [完成したコードの GitHub リポジトリ](https://github.com/Azure-Samples/LUIS-DevOps-Template)
 
 ### <a name="may-2020---build"></a>2020 年 5 月 - //Build

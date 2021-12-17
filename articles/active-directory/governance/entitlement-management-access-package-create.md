@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb0312d905284f8c5a9817e9550d340bf6135032
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: aa81fdb68e13f7898df060a6d85d8ff05f6d2528
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532199"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714064"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理で新しいアクセス パッケージを作成する
 
@@ -55,7 +55,7 @@ ms.locfileid: "107532199"
 
 ## <a name="start-new-access-package"></a>新しいアクセス パッケージを開始する
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**必要なロール:** グローバル管理者、ID ガバナンス管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
@@ -75,11 +75,11 @@ ms.locfileid: "107532199"
 
 1. **[カタログ]** ドロップダウン リストで、アクセス パッケージを作成するカタログを選択します。 たとえば、要求できるすべてのマーケティング リソースを管理するカタログ所有者が存在するとします。 この場合、マーケティング カタログを選択できます。
 
-    アクセス パッケージを作成する権限を持つカタログのみが表示されます。 アクセス パッケージを既存のカタログ内に作成するには、グローバル管理者またはユーザー管理者、あるいはそのカタログ内のカタログ所有者またはアクセス パッケージ マネージャーである必要があります。
+    アクセス パッケージを作成する権限を持つカタログのみが表示されます。 アクセス パッケージを既存のカタログ内に作成するには、グローバル管理者、ID ガバナンス管理者、またはユーザー管理者、あるいはそのカタログ内のカタログ所有者またはアクセス パッケージ マネージャーである必要があります。
 
     ![[アクセス パッケージ] - [基本]](./media/entitlement-management-access-package-create/basics.png)
 
-    グローバル管理者、ユーザー管理者、カタログ作成者が、一覧表示されていない新しいカタログにアクセス パッケージを作成する場合は、 **[新規作成]** をクリックします。 カタログの名前と説明を入力し、 **[作成]** をクリックします。
+    グローバル管理者、ID ガバナンス管理者、ユーザー管理者、カタログ作成者が、一覧表示されていない新しいカタログにアクセス パッケージを作成する場合は、 **[新規作成]** をクリックします。 カタログの名前と説明を入力し、 **[作成]** をクリックします。
 
     作成するアクセス パッケージとそれに含まれるすべてのリソースが、新しいカタログに追加されます。 後でカタログ所有者をさらに追加することもできます。
 
@@ -140,7 +140,7 @@ Microsoft Graph を使用して、アクセス パッケージを作成するこ
 
 1. [カタログ内の accessPackageResources を一覧表示し](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta&preserve-view=true)、カタログにまだ存在しないすべてのリソースに対して [accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta&preserve-view=true) を作成します。
 1. accessPackageCatalog 内の各 accessPackageResource の [accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true) を一覧表示します。 このロールの一覧は、後で accessPackageResourceRoleScope を作成するときにロールを選択するために使用されます。
-1. [accessPackage を作成します](/graph/tutorial-access-package-api&view=graph-rest-beta&preserve-view=true)。
+1. [accessPackage を作成します](/graph/tutorial-access-package-api)。
 1. [accessPackageAssignmentPolicy を作成します](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta&preserve-view=true)。
 1. アクセス パッケージ内で必要なリソース ロールごとに [accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true) を作成します。
 

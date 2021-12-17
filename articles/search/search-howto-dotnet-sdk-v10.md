@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 11102d95bc2aba65e6bc3cba71805a67f195947b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c58e6ffd9b3b74ee465c5e2e5c05f688252d1173
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92681362"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467550"
 ---
 # <a name="how-to-use-microsoftazuresearch-in-a-c-net-application"></a>C# .NET アプリケーションで Microsoft.Azure.Search を使用する方法
 
@@ -43,7 +43,7 @@ SDK のその他の NuGet パッケージとしては以下があります｡
 * [Microsoft.Azure.Search](/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](/dotnet/api/microsoft.azure.search.models)
 
-SDK の今後の更新プログラムについてフィードバックを提供する場合は、[フィードバック ページ](https://feedback.azure.com/forums/263029-azure-search/) を参照するか、[GitHub](https://github.com/azure/azure-sdk-for-net/issues) でイシューを作成し、イシューのタイトルに "Azure Cognitive Search" を含めます。
+SDK の今後の更新プログラムについてフィードバックを提供する場合は、[フィードバック ページ](https://feedback.azure.com/d365community/forum/9325d19e-0225-ec11-b6e6-000d3a4f07b8) を参照するか、[GitHub](https://github.com/azure/azure-sdk-for-net/issues) でイシューを作成し、イシューのタイトルに "Azure Cognitive Search" を含めます。
 
 .NET SDK は、バージョン [ の `2019-05-06`Azure Cognitive Search REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/data-plane/Microsoft.Azure.Search.Data/stable/2019-05-06) を対象としています。 このバージョンには、Azure BLOB にインデックスを付ける際の、[複合型](search-howto-complex-data-types.md)、[AI エンリッチメント](cognitive-search-concept-intro.md)、[オートコンプリート](/rest/api/searchservice/autocomplete)、[JsonLines 分析モード](search-howto-index-json-blobs.md)に対するサポートが含まれます。 
 

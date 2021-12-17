@@ -3,36 +3,69 @@ title: Speech SDK を使用してコーデック圧縮オーディオをスト�
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用して圧縮オーディオを Speech Service にストリーミングする方法について学習します。 Linux の場合は C++、C#、Java で、Android の場合は Java で、iOS の場合は Objective-C で使用できます。
 services: cognitive-services
-author: amitkumarshukla
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.author: amishu
 ms.custom: devx-track-csharp
-zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: 1e08203076de2073e39c5b5f5eb40b66c88490d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+zone_pivot_groups: programming-languages-set-twenty-eight
+ms.openlocfilehash: 1f04c8c525e094d5e0980c1683632d34f3372580
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103417708"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551921"
 ---
-# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Speech SDK でコーデック圧縮オーディオを使用する
+# <a name="use-codec-compressed-audio-input"></a>コーデック圧縮音声入力の使用
 
-Speech サービス SDK の **圧縮オーディオ入力ストリーム** API では、`PullStream` または `PushStream` を使用して、圧縮オーディオを Speech Services にストリーミングする方法を提供します。
+Speech SDK と Speech CLI では、GStreamer を使用して圧縮されたオーディオ形式を受け入れることもできます。 GStreamer によってオーディオの圧縮が解除された後、ネットワークを介して RAW PCM として Speech サービスに送信されます。
 
 プラットフォーム | 言語 | サポートされている GStreamer のバージョン
 | :--- | ---: | :---:
-Windows (UWP を除く)  | C++、C#、Java、Python | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/windows/1.18.3/)
-Linux  | C++、C#、Java、Python | [サポートされている Linux ディストリビューションとターゲット アーキテクチャ](~/articles/cognitive-services/speech-service/speech-sdk.md)
-Android  | Java | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/android/1.18.3/)
+Linux  | C++、C#、Java、Python、Go | [サポートされている Linux ディストリビューションとターゲット アーキテクチャ](~/articles/cognitive-services/speech-service/speech-sdk.md) 
+Windows (UWP を除く) | C++、C#、Java、Python | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/windows/1.18.3/msvc/gstreamer-1.0-msvc-x86_64-1.18.3.msi) 
+Android  | Java | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/android/1.18.3/) 
+
+## <a name="installing-gstreamer-on-linux"></a>Linux への GStreamer のインストール
+
+詳細については、[Linux へのインストール手順](https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c)に関するページを参照してください。  
+
+```sh
+sudo apt install libgstreamer1.0-0 \
+gstreamer1.0-plugins-base \
+gstreamer1.0-plugins-good \
+gstreamer1.0-plugins-bad \
+gstreamer1.0-plugins-ugly
+```
+## <a name="installing-gstreamer-on-windows"></a>Windows への GStreamer のインストール
+
+詳細については、[Windows へのインストール手順](https://gstreamer.freedesktop.org/documentation/installing/on-windows.html?gi-language=c)に関するページを参照してください。 
+
+* c:\gstreamer フォルダーを作成します。
+* [インストーラー](https://gstreamer.freedesktop.org/data/pkg/windows/1.18.3/msvc/gstreamer-1.0-msvc-x86_64-1.18.3.msi)をダウンロードします。 
+* インストーラーを c:\gstreamer にコピーします。
+* PowerShell を管理者として開きます。
+* PowerShell で次のコマンドを実行します。
+
+```powershell
+cd c:\gstreamer
+msiexec /passive INSTALLLEVEL=1000 INSTALLDIR=C:\gstreamer /i gstreamer-1.0-msvc-x86_64-1.18.3.msi
+```
+* システム変数 GST_PLUGIN_PATH を追加し、値を C:\gstreamer\1.0\msvc_x86_64\lib\gstreamer-1.0 に設定します。
+* システム変数 GSTREAMER_ROOT_X86_64 を追加し、値を C:\gstreamer\1.0\msvc_x86_64 に設定します。
+* パス変数に別のエントリを追加し、C:\gstreamer\1.0\msvc_x86_64\bin に設定します。
+* コンピューターを再起動します。
+
+## <a name="using-gstreamer-in-android"></a>Android での GStreamer の使用
+libgstreamer_android.so のビルドの詳細については、上記の [Java] タブを参照してください。 
+
+詳細については、[Android へのインストール手順](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)に関するページを参照してください。 
 
 ## <a name="speech-sdk-version-required-for-compressed-audio-input"></a>圧縮されたオーディオ入力に必要な Speech SDK バージョン
 * RHEL 8 と CentOS 8 では、Speech SDK バージョン 1.10.0 以降が必要です
 * Windows では、Speech SDK バージョン 1.11.0 以降が必要です。
-* Windows と Android 上の最新の gstreamer には、Speech SDK バージョン 1.16.0 以降。
+* Windows と Android の最新の GStreamer には、Speech SDK バージョン 1.16.0 以降。
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
@@ -54,6 +87,10 @@ Android  | Java | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/android/1.
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/prerequisites.md)]
 ::: zone-end
 
+::: zone pivot="programming-language-go"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/go/prerequisites.md)]
+::: zone-end
+
 ## <a name="example-code-using-codec-compressed-audio-input"></a>コーデック圧縮オーディオ入力を使用するコード例
 
 ::: zone pivot="programming-language-csharp"
@@ -70,6 +107,10 @@ Android  | Java | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/android/1.
 
 ::: zone pivot="programming-language-python"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/examples.md)]
+::: zone-end
+
+::: zone pivot="programming-language-go"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/go/examples.md)]
 ::: zone-end
 
 ## <a name="next-steps"></a>次のステップ

@@ -16,14 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8e3a56e4a6eb1fb6eb633021178ef78f8ac7287d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30b506b9577fd2dda3c75711d648b6f1b6d0a45c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96014790"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758881"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク TAP の作業を行う
+
+> [!IMPORTANT]
+> 仮想ネットワーク TAP プレビューは、現在、すべての Azure リージョンで保留にされています。 サブスクリプション ID を記入して <azurevnettap@microsoft.com> にメールを送信していただけば、プレビューに関する今後の更新についてお知らせします。 その間は、エージェント ベースの ソリューションまたは NVA ソリューションを使用できます。これらは、[Azure Marketplace オファリング](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners)で入手できる[パケット ブローカー パートナー ソリューション](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)を通して TAP/ネットワーク可視性機能を提供します。
 
 Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) を使用すると、仮想マシン ネットワークのトラフィックをネットワーク パケット コレクターまたは分析ツールに連続してストリーミングできます。 コレクターまたは分析ツールは、[ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/) パートナーから提供されています。 仮想ネットワーク TAP を使用できることが検証されたパートナー ソリューションの一覧については、[パートナー ソリューション](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)に関するページを参照してください。 
 

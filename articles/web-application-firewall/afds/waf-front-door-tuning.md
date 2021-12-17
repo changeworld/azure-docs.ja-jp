@@ -7,13 +7,14 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
-ms.reviewer: tyao
-ms.openlocfilehash: b2f551257fb6869d5dec47014be3a8522b61b9fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: victorh
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 17bf4c75d9db989a9556808c4bcf6c080fbbbd38
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506635"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063091"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Azure Front Door 用に Web Application Firewall (WAF) を調整する
  
@@ -42,7 +43,7 @@ UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
 
 ```kusto
 AzureDiagnostics
-| where Category == 'FrontdoorWebApplicationFirewallLog'
+| where Category == 'FrontDoorWebApplicationFirewallLog'
 | where TimeGenerated > ago(1d)
 | where action_s == 'Block'
 
@@ -144,7 +145,7 @@ AzureDiagnostics
  
 除外はグローバルな設定であることを考慮することが重要です。 これは、構成されている除外は、特定の Web アプリや URI だけでなく、WAF を通過するすべてのトラフィックに適用されることを意味します。 たとえば、*1=1* が特定の Web アプリの本文では有効な要求であっても、同じ WAF ポリシーで他のアプリに対しては無効である場合、これが問題になる可能性があります。 異なるアプリケーションに異なる除外リストを使用することに意味がある場合は、アプリケーションごとに異なる WAF ポリシーを使用し、各アプリケーションのフロントエンドにそれを適用することを検討します。
  
-マネージド ルールの除外リストを構成するときは、ルール セット内のすべてのルール、ルール グループ内のすべてのルール、または個別のルールを除外することを選択できます。 除外リストは、[PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject)、[Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add)、[Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)、または Azure portal を使用して構成できます。
+マネージド ルールの除外リストを構成するときは、ルール セット内のすべてのルール、ルール グループ内のすべてのルール、または個別のルールを除外することを選択できます。 除外リストは、[PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject)、[Azure CLI](/cli/azure/network/front-door/waf-policy/managed-rules/exclusion#az_network_front_door_waf_policy_managed_rules_exclusion_add)、[Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)、または Azure portal を使用して構成できます。
 
 * ルール レベルでの除外
   * ルール レベルで除外を適用すると、指定した除外は、その個々のルールに対してだけは分析されませんが、ルール セット内の他のすべてのルールでは分析されます。 これは除外の最も小さいレベルであり、イベントのトラブルシューティングを行うときに、WAF ログで検出された情報に基づいてマネージド ルール セットを微調整するために使用できます。
@@ -201,7 +202,7 @@ WAF 規則の一致の原因になっているものが明らかになったら�
  
 ただし、ルールを無効にすることは、WAF ポリシーに関連付けられているすべてのフロントエンド ホストに適用されるグローバルな設定です。 ルールを無効にすると、WAF ポリシーに関連付けられている他のフロントエンド ホストに対し、保護や検出が行われずに脆弱性がさらされたままになるおそれがあります。
  
-Azure PowerShell を使用してマネージド ルールを無効にする場合は、[`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject) オブジェクトのドキュメントを参照してください。 Azure CLI を使用する場合は、[`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override) のドキュメントを参照してください。
+Azure PowerShell を使用してマネージド ルールを無効にする場合は、[`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject) オブジェクトのドキュメントを参照してください。 Azure CLI を使用する場合は、[`az network front-door waf-policy managed-rules override`](/cli/azure/network/front-door/waf-policy/managed-rules/override) のドキュメントを参照してください。
 
 ![WAF の規則](../media/waf-front-door-tuning/waf-rules.png)
 

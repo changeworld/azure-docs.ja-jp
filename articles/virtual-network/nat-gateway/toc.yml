@@ -1,0 +1,82 @@
+items:
+  - name: Virtual Network NAT のドキュメント
+    href: index.yml
+  - name: 概要
+    items:
+      - name: Virtual Network NAT とは
+        href: nat-overview.md
+  - name: チュートリアル
+    items:
+      - name: NAT ゲートウェイの作成と検証 - Azure portal
+        href: tutorial-create-nat-gateway-portal.md
+      - name: NAT ゲートウェイの作成と検証 - PowerShell
+        href: tutorial-create-nat-gateway-powershell.md
+      - name: NAT ゲートウェイの作成と検証 - Azure CLI
+        href: tutorial-create-nat-gateway-cli.md
+      - name: NAT ゲートウェイの作成 - ARM テンプレート
+        displayName: Resource Manager
+        href: quickstart-create-nat-gateway-template.md
+      - name: NAT ゲートウェイ パブリック ロード バランサーを統合する
+        href: tutorial-nat-gateway-load-balancer-public-portal.md
+      - name: NAT ゲートウェイ内部ロード バランサーを統合する
+        href: tutorial-nat-gateway-load-balancer-internal-portal.md
+    expanded: true
+  - name: 概念
+    items:
+      - name: リソース
+        href: nat-gateway-resource.md
+      - name: メトリックとアラート
+        href: nat-metrics.md
+      - name: セキュリティ
+        items:
+          - name: Virtual Network NAT のセキュリティ ベースライン
+            href: /security/benchmark/azure/baselines/virtual-network-nat-security-baseline
+  - name: 操作方法
+    items:
+      - name: トラブルシューティング
+        items:
+          - name: NAT ゲートウェイのトラブルシューティング
+            href: troubleshoot-nat.md
+  - name: リファレンス
+    items:
+      - name: Azure CLI
+        href: /cli/azure/azure-cli-reference-for-network
+      - name: Azure PowerShell
+        href: /powershell/module/az.network
+      - name: .NET
+        href: /dotnet/api/overview/azure/virtual-network
+      - name: Java
+        href: /java/api/
+      - name: Node.js
+        href: /javascript/azure#azure-sdk
+      - name: Python
+        href: 'https://azure.microsoft.com/develop/python/'
+      - name: REST
+        href: /rest/api/virtualnetwork/nat-gateways
+      - name: Resource Manager テンプレート
+        href: /azure/templates/microsoft.network/allversions
+      - name: コード サンプル
+        href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+      - name: Azure Policy の組み込み
+        displayName: 'samples, policies, definitions'
+        href: ../policy-reference.md
+  - name: リソース
+    items:
+      - name: Microsoft Learn でスキルを身に付ける
+        href: /learn/browse/
+      - name: Azure のロードマップ
+        href: 'https://azure.microsoft.com/roadmap/?category=networking'
+      - name: ネットワークのブログ
+        href: 'https://azure.microsoft.com/blog/topics/networking'
+      - name: ネットワークに関する Microsoft Q&A 質問ページ
+        href: /answers/topics/azure-virtual-network.html
+      - name: ネットワークに関するフィードバック
+        href: 'https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789'
+      - name: 価格
+        href: 'https://azure.microsoft.com/pricing/details/virtual-network'
+      - name: 料金計算ツール
+        href: 'https://azure.microsoft.com/pricing/calculator/'
+      - name: Stack Overflow
+        href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
+      - name: よく寄せられる質問
+        href: faq.yml

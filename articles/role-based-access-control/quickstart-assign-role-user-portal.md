@@ -11,14 +11,15 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/22/2019
+ms.date: 10/15/2021
 ms.author: rolyon
-ms.openlocfilehash: fcba9cad208c2ac170f91cc06a6db22e271f2a70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 96064811bf0d82ab37a338adf3ed2ac4568c57f1
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100559311"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069173"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する
 
@@ -40,55 +41,54 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. ナビゲーション リストで、 **[リソース グループ]** をクリックします。
 
-1. **[追加]** を選択して **[リソース グループ]** ブレードを開きます。
+1. **[新規]** を クリックして、 **[リソース グループの作成]** ページを開 きます。
 
-   ![新しいリソース グループの追加](./media/quickstart-assign-role-user-portal/resource-group.png)
+   ![新しいリソース グループを作成するページ。](./media/quickstart-assign-role-user-portal/resource-group.png)
 
-1. **[リソース グループ名]** に **rbac-resource-group** と入力します。
+1. サブスクリプションを選択します。
 
-1. サブスクリプションと場所を選択します。
+1. **[リソース グループ]** の名前フィールドに「**example-group**」または別の名前を入力します。
 
-1. **[作成]** をクリックしてリソース グループを作成します。
+1. **[確認と作成]** をクリックし、 **[作成 ]** をクリックしてリソース グループを作成します。
 
 1. **[更新]** をクリックしてリソース グループの一覧を更新します。
 
    新しいリソース グループがリソース グループの一覧に表示されます。
 
-   ![リソース グループの一覧](./media/quickstart-assign-role-user-portal/resource-group-list.png)
-
 ## <a name="grant-access"></a>アクセス権の付与
 
 Azure RBAC でアクセス権を付与するには、Azure ロールを割り当てます。
 
-1. **[リソース グループ]** の一覧で、新しい **rbac-resource-group** リソース グループをクリックします。
+1. **[リソース グループ]** の一覧で、新しい **example-group** リソース グループをクリックします。
 
-1. **[アクセス制御 (IAM)]** をクリックします。
+1. ナビゲーション メニューで **[アクセス制御 (IAM)]** をクリックします。
 
 1. **[ロールの割り当て]** タブをクリックして、ロールの割り当ての現在の一覧を表示します。
 
-   ![リソース グループの [アクセス制御 (IAM)] ブレード](./media/quickstart-assign-role-user-portal/access-control.png)
+   ![リソース グループの [アクセス制御 (IAM)] ページ。](./media/shared/rg-role-assignments.png)
 
-1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、[ロールの割り当ての追加] ウィンドウを開きます。
+
+1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックします。
 
    ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
-   ![[ロールの割り当ての追加] メニュー](./media/shared/add-role-assignment-menu.png)
+   ![[ロールの割り当ての追加] メニューが開いている [アクセス制御 (IAM)] ページ。](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
 
-    [ロールの割り当ての追加] ウィンドウが開きます。
+1. **[ロール]** タブ で、**Virtual Machine Contributor** ロールを選択 します。
 
-   ![[ロールの割り当ての追加] ウィンドウ](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
+    ![[ロール] タブが選択された [ロールの割り当ての追加] ページ。](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
 
-1. **[ロール]** ドロップダウン リストで、 **[仮想マシン共同作成者]** を選択します。
+1. **[メンバー]** タブで、自分または別のユーザーを選択します。
 
-1. **[選択]** 一覧で、自分または別のユーザーを選択します。
+1. **[Review + assign]\(確認と割り当て\)** タブで、ロールの割り当ての設定を確認します。
 
-1. **[保存]** をクリックしてロールを割り当てます。
+1. **[Review + assign]\(確認と割り当て\)** をクリックしてロールを割り当てます。
 
-   しばらくすると、rbac-resource-group リソース グループ スコープにおける仮想マシン共同作成者ロールがユーザーに割り当てられます。
+   しばらくすると、example-group リソース グループ スコープにおける仮想マシン共同作成者ロールがユーザーに割り当てられます。
 
-   ![仮想マシン共同作成者ロールの割り当て](./media/quickstart-assign-role-user-portal/vm-contributor-assignment.png)
+   ![仮想マシン共同作成者ロールの割り当て。](./media/quickstart-assign-role-user-portal/vm-contributor-assignment.png)
 
-## <a name="remove-access"></a>アクセス権の削除
+## <a name="remove-access"></a>アクセス権を削除する
 
 Azure RBAC でアクセス権を削除するには、ロールの割り当てを削除します。
 
@@ -96,7 +96,7 @@ Azure RBAC でアクセス権を削除するには、ロールの割り当てを
 
 1. **[削除]** をクリックします。
 
-   ![ロールの割り当ての削除メッセージ](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
+   ![ロールの割り当ての削除メッセージ。](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
 1. ロールの割り当ての削除メッセージが表示されたら、 **[はい]** をクリックします。
 
@@ -104,15 +104,11 @@ Azure RBAC でアクセス権を削除するには、ロールの割り当てを
 
 1. ナビゲーション リストで、 **[リソース グループ]** をクリックします。
 
-1. **rbac-resource-group** をクリックしてリソース グループを開きます。
+1. **example-group** をクリックしてリソース グループを開きます。
 
 1. **[リソース グループの削除]** をクリックしてリソース グループを削除します。
 
-   ![リソース グループの削除](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
-
-1. **[削除しますか]** ブレードにリソース グループ名 **rbac-resource-group** を入力します。
-
-1. **[削除する]** をクリックしてリソース グループを削除します。
+1. **[削除しますか]** ペインにリソース グループ名 を入力して **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

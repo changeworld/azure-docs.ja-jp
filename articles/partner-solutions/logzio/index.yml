@@ -1,0 +1,51 @@
+### YamlMime:Landing
+title: Azure との Logz.io の統合
+summary: ログ、メトリック、およびトレース分析を一元化します。
+metadata:
+  title: Logz.io と Azure のドキュメント
+  description: Logz.io は Azure と統合され、監視ソリューションを提供します。
+  ms.service: partner-services
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 11/02/2021
+  ms.openlocfilehash: 391ab30266c962b55fb067a2d43ba6dab4847930
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131422712"
+landingContent:
+- title: Logz.io と Azure について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure との Logz.io の統合とは
+      url: overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure で Logz.io の統合を管理する
+      url: manage.md
+- title: Logz.io リソースの作成
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portal で Logz.io リソースを作成する
+      url: create.md
+  - linkListType: how-to-guide
+    links:
+    - text: Logz.io のシングル サインオンをセットアップする
+      url: setup-sso.md
+    - text: Azure と Logz.io の統合のトラブルシューティング
+      url: troubleshoot.md
+- title: リファレンス コンテンツの確認
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.logz/get-azlogzmonitor
+    - text: Java
+      url: /java/api/overview/azure/resourcemanager-logz-readme
+    - text: Python
+      url: /python/api/overview/azure/mgmt-logz-readme

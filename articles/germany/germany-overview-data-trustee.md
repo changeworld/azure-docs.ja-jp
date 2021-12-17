@@ -1,27 +1,22 @@
 ---
 title: Azure Germany データ トラスティ | Microsoft Docs
-description: この記事では、データ トラスティ モデルについて説明します。
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
+description: この記事では、データ トラスティ モデルについて説明します。 関連するリンクも見つかります。
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/07/2017
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 6513e0fc9a1576cd3c856ca5e8ea76c34e6ae832
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: 333b15293b81295a603f3df3af46a27560bb4a20
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685183"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "117029180"
 ---
 # <a name="data-trustee-principle"></a>データ トラスティの原則
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 Microsoft は、欧州連合 (EU)、欧州自由貿易連合 (EFTA)、イギリスの顧客と潜在顧客のニーズを満たす目的で Azure Germany を開発しました。 そのニーズには、オンライン データのセキュリティとプライバシーに関する懸念への対処が含まれます。 Azure Germany は、*ドイツで特別なセキュリティ対策の下でホストされ、運営されている*、業界をリードするクラウド サービスで構成されます。
 
@@ -34,8 +29,6 @@ Azure Germany では、ドイツのデータセンター内から Microsoft Azur
 Microsoft は、Azure Germany サービスの運用とプロビジョニングに関して、顧客データへのアクセスを必要としないあらゆる側面を管理します。 他の Microsoft グローバル クラウド サービスと接続がないことを確保します。 サービス レベル契約 (SLA) について、また、顧客データへのアクセスを有効にしないほとんどの運用面において、Microsoft がその顧客に対する責任を負うことには変わりません。
 
 対照的に、ドイツ データ トラスティは、顧客データを格納するドイツ内のインフラストラクチャへの物理的または論理的なアクセスを必要とするあらゆるタスクとプロセスに対して責任を負います。 データ トラスティは、顧客またはエンドユーザーが開始したアクセスを除き、顧客データへのあらゆるアクセスを制御します。 
-
-
 
 Azure Germany の特徴:
 

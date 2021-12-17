@@ -1,21 +1,23 @@
 ---
 title: Azure Spring Cloud で分散トレースを使用する
 description: Azure Application Insights を通じて Spring Cloud の分散トレースを使用する方法について説明します
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/06/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 6bcb020b14952541c673592c1040fca211ed4edf
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: b796ddccbc561c81d08c0f967c866f7a2ddc65a9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011853"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484777"
 ---
-# <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud で分散トレースを使用する
+# <a name="use-distributed-tracing-with-azure-spring-cloud-deprecated"></a>Azure Spring Cloud で分散トレースを使用する (非推奨)
+> [!NOTE]
+> 分散トレースは非推奨になっています。 詳しくは、「[Azure Spring Cloud での Application Insights Java In-Process Agent](./how-to-application-insights.md)」をご覧ください。
 
 Azure Spring Cloud の分散トレース ツールを使用すると、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud は、[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](../azure-monitor/app/app-insights-overview.md) を統合します。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
 
@@ -92,7 +94,7 @@ Steeltoe 3.0.0 の場合は、次の NuGet パッケージを追加します。
   }
 ```
 
-.NET Core Steeltoe アプリでの分散トレースの詳細については、Steeltoe ドキュメントの[分散トレース](https://steeltoe.io/docs/3/tracing/distributed-tracing)に関するページを参照してください。
+.NET Core Steeltoe アプリでの分散トレースの詳細については、Steeltoe ドキュメントの[分散トレース](https://docs.steeltoe.io/api/v3/tracing/)に関するページを参照してください。
 ::: zone-end
 ::: zone pivot="programming-language-java"
 この記事では、次の方法について説明します。
@@ -105,7 +107,7 @@ Steeltoe 3.0.0 の場合は、次の NuGet パッケージを追加します。
 
 ## <a name="prerequisites"></a>前提条件
 
-ここで説明する手順の実行には、既にプロビジョニングされ、運用されている Azure Spring Cloud サービスが必要です。 「[初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)」クイックスタートを完了して、Azure Spring Cloud サービスをプロビジョニングして実行します。
+ここで説明する手順の実行には、既にプロビジョニングされ、運用されている Azure Spring Cloud サービスが必要です。 [Azure Spring Cloud への初めての Spring Boot アプリのデプロイ](./quickstart.md)に関するクイックスタートを完了し、Azure Spring Cloud サービスをプロビジョニングして実行します。
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 
@@ -117,7 +119,7 @@ Steeltoe 3.0.0 の場合は、次の NuGet パッケージを追加します。
 
    この変更が完了すると、Zipkin センダーは Web に送信できるようになります。
 
-1. [Azure Spring Cloud アプリケーションの準備ガイド](how-to-prepare-app-deployment.md)に従っている場合は、この手順をスキップします。 それ以外の場合は、ローカルの開発環境にアクセスし、次の Spring Cloud Sleuth 依存関係を含むように pom.xml ファイルを編集します。
+1. [Azure Spring Cloud のアプリケーションの準備ガイド](how-to-prepare-app-deployment.md)に従っている場合は、この手順をスキップします。 それ以外の場合は、ローカルの開発環境にアクセスし、次の Spring Cloud Sleuth 依存関係を含むように pom.xml ファイルを編集します。
 
     * Spring Boot バージョン 2.4.x 以前
 
@@ -171,7 +173,6 @@ Steeltoe 3.0.0 の場合は、次の NuGet パッケージを追加します。
       </dependencies>
       ```
 
-
 1. これらの変更を反映するために、Azure Spring Cloud サービスをもう一度ビルドしてデプロイします。
 
 ## <a name="modify-the-sample-rate"></a>サンプル レートを変更する
@@ -214,4 +215,4 @@ Application Insights では、アプリケーション マップと検索機能�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Spring Cloud で分散トレースを有効にして理解する方法を学習しました。 サービスをアプリケーションにバインドする方法については、[Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする方法](spring-cloud-howto-bind-cosmos.md)に関する記事を参照してください。
+この記事では、Azure Spring Cloud で分散トレースを有効にして理解する方法を学習しました。 アプリケーションへのサービスのバインドについては、[Azure Cosmos DB データベースを Azure Spring Cloud のアプリケーションにバインドする](./how-to-bind-cosmos.md)方法に関するページを参照してください。

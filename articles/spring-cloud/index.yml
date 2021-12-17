@@ -8,74 +8,74 @@ metadata:
   ms.service: spring-cloud
   ms.topic: landing-page
   ms.collection: collection
-  author: bmitchell287
-  ms.author: brendm
+  author: karlerickson
+  ms.author: karler
   ms.date: 09/26/2019
-  ms.openlocfilehash: 7598345ca1d687b8148b41454077ab5fca91e8f1
-  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+  ms.openlocfilehash: e184eae50cf7aaecbb5a9713652776319ec0a461
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96903949"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131463280"
 landingContent:
 - title: Azure Spring Cloud について
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Spring Cloud とは
-      url: spring-cloud-overview.md
+      url: overview.md
     - text: Azure Spring Cloud のクォータと制限について
-      url: spring-cloud-quotas.md
+      url: quotas.md
 - title: 作業開始
   linkLists:
   - linkListType: quickstart
     links:
-    - text: クイックスタート - 初めての Azure Spring Cloud アプリケーションをデプロイする
-      url: spring-cloud-quickstart.md
+    - text: クイック スタート - 初めての Spring Boot アプリを Azure Spring Cloud にデプロイする
+      url: quickstart.md
     - text: PiggyMetrics サンプル アプリの概要
-      url: spring-cloud-quickstart-sample-app-introduction.md
+      url: quickstart-sample-app-introduction.md
   - linkListType: tutorial
     links:
     - text: Spring または Steeltoe アプリをデプロイするための準備を行う
-      url: spring-cloud-tutorial-prepare-app-deployment.md
+      url: how-to-prepare-app-deployment.md
 - title: サービスを構成する
   linkLists:
   - linkListType: tutorial
     links:
     - text: 構成サーバーを使用してアプリケーションの構成を維持する
-      url: spring-cloud-tutorial-config-server.md
+      url: how-to-config-server.md
     - text: アプリケーションを手動でスケーリングする
-      url: spring-cloud-tutorial-scale-manual.md
+      url: how-to-scale-manual.md
   - linkListType: how-to-guide
     links:
     - text: Azure Spring Cloud で CI/CD パイプラインを自動化する
-      url: spring-cloud-howto-cicd.md
+      url: how-to-cicd.md
     - text: Azure Spring Cloud を使用してブルー グリーン デプロイを有効にする
-      url: spring-cloud-howto-staging-environment.md
-    - text: Azure Spring Cloud で永続ストレージを使用する
-      url: spring-cloud-howto-persistent-storage.md
+      url: how-to-staging-environment.md
+    - text: 組み込みの永続的ストレージを使用する
+      url: how-to-built-in-persistent-storage.md
 - title: アプリケーションを監視する
   linkLists:
   - linkListType: tutorial
     links:
     - text: 分散トレースと App Insights を使用してアプリケーションを監視する
-      url: spring-cloud-tutorial-distributed-tracing.md
+      url: how-to-distributed-tracing.md
     - text: Java Spring アプリケーションで診断サービスを有効にする
       url: diagnostic-services.md
   - linkListType: concept
     links:
     - text: Azure Monitor Metrics for Spring Cloud について
-      url: spring-cloud-concept-metrics.md
+      url: concept-metrics.md
 - title: 他のサービスとバインドする
   linkLists:
   - linkListType: tutorial
     links:
     - text: アプリケーションを Azure Cache for Redis にバインドする
-      url: spring-cloud-tutorial-bind-redis.md
+      url: how-to-bind-redis.md
     - text: アプリケーションを Azure MySQL DB にバインドする
-      url: spring-cloud-tutorial-bind-mysql.md
+      url: how-to-bind-mysql.md
     - text: アプリケーションを Azure CosmosDB にバインドする
-      url: spring-cloud-tutorial-bind-cosmos.md
+      url: how-to-bind-cosmos.md
 - title: API リファレンス
   linkLists:
   - linkListType: reference

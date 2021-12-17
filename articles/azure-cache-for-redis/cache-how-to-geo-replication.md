@@ -1,17 +1,17 @@
 ---
 title: Premium Azure Cache for Redis インスタンスの geo レプリケーションを構成する
 description: Azure リージョンをまたいで Azure Cache for Redis Premium インスタンスをレプリケートする方法について説明します。
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.author: yegu
-ms.openlocfilehash: 8701f7bcb2e7ff705e4f1d1b401f4eb3e680f28b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: cauribeg
+ms.openlocfilehash: 989284bd10fc5d452a738d027c693a15f7871b9b
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501041"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730010"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Premium Azure Cache for Redis インスタンスの geo レプリケーションを構成する
 
@@ -33,16 +33,20 @@ geo レプリケーションによって 2 つの Premium Azure Cache for Redis 
 - セカンダリ リンク キャッシュがプライマリ リンク キャッシュと同じキャッシュ サイズであるか、またはそれより大きいキャッシュ サイズである。
 - 両方のキャッシュが作成され、実行状態になっている。
 
+> [!NOTE]
+> Azure リージョン間のデータ転送は、標準の[帯域幅レート](https://azure.microsoft.com/pricing/details/bandwidth/)で課金されます。
+
 geo レプリケーションでは一部の機能がサポートされていません。
 
+- ゾーン冗長は geo レプリケーションではサポートされていません。
 - 永続化は geo レプリケーションではサポートされていません。
 - クラスタリングは、両方のキャッシュでクラスタリングが有効になっており、かつ同じ数のシャードが存在する場合にサポートされます。
-- 同じ VNET 内のキャッシュはサポートされています。
-- 異なる VNET 内のキャッシュは、注意事項付きでサポートされています。 詳細については、「[VNET 内の自分のキャッシュで geo レプリケーションを使用することはできますか](#can-i-use-geo-replication-with-my-caches-in-a-vnet)」を参照してください。
+- 同じ仮想ネットワーク (VNet) 内のキャッシュはサポートされています。
+- 異なる VNet 内のキャッシュは、注意事項付きでサポートされています。 詳細については、「[VNet 内の自分のキャッシュで geo レプリケーションを使用することはできますか](#can-i-use-geo-replication-with-my-caches-in-a-vnet)」を参照してください。
 
 geo レプリケーションを構成した後、次の制限が、リンク キャッシュ ペアに適用されます。
 
-- セカンダリ リンク キャッシュは読み取り専用です。読み取ることはできますが、データを書き込むことはできません。 
+- セカンダリ リンク キャッシュは読み取り専用です。読み取ることはできますが、データを書き込むことはできません。 geo セカンダリ インスタンスからの読み取りを選択した場合は、次の点に注意することが重要です。geo プライマリと geo セカンダリの間で完全データ同期 (geo プライマリまたは geo セカンダリが更新されたときと、一部の再起動シナリオで発生) が実行されているときは必ず、geo プライマリと geo セカンダリの間の完全データ同期が完了するまで、geo セカンダリ インスタンスはそれに対する Redis 操作で (完全データ同期が進行中であることを示す) エラーをスローします。 geo セカンダリから読み取るアプリケーションは、geo セカンダリがこのようなエラーをスローするたびに geo プライマリにフォールバックするように構築する必要があります。
 - リンクが追加される前にセカンダリ リンク キャッシュにあったデータはすべて削除されます。 ただし、geo レプリケーションが後で削除された場合、レプリケートされたデータはセカンダリ リンク キャッシュに残ります。
 - キャッシュがリンクされている間は、どちらのキャッシュも[スケーリング](cache-how-to-scale.md)できません。
 - キャッシュでクラスタリングが有効になっている場合は、[シャードの数を変更](cache-how-to-premium-clustering.md)できません。
@@ -55,41 +59,41 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 
 ## <a name="add-a-geo-replication-link"></a>geo レプリケーション リンクの追加
 
-1. geo レプリケーションのために 2 つのキャッシュをリンクするには、まずプライマリ リンク キャッシュにするキャッシュのリソース メニューの **[geo レプリケーション]** をクリックします。 次に、 **[geo レプリケーション]** ブレードの **[キャッシュ レプリケーション リンクの追加]** をクリックします。
+1. geo レプリケーションのために 2 つのキャッシュをリンクするには、まずプライマリ リンク キャッシュにするキャッシュのリソース メニューの **[geo レプリケーション]** をクリックします。 次に、左側の **[geo レプリケーション]** の **[キャッシュ レプリケーション リンクの追加]** をクリックします。
 
-    ![リンクの追加](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-menu.png" alt-text="キャッシュ geo レプリケーションのメニュー":::
 
-2. **[互換性のあるキャッシュ]** の一覧で目的のセカンダリ キャッシュの名前をクリックします。 そのセカンダリ キャッシュが一覧に表示されていない場合は、セカンダリ キャッシュの [geo レプリケーションの前提条件](#geo-replication-prerequisites)が満たされていることを確認します。 キャッシュをリージョンでフィルター処理するには、マップ内のリージョンをクリックして、 **[互換性のあるキャッシュ]** の一覧にあるキャッシュのみを表示します。
+1. **[互換性のあるキャッシュ]** の一覧で目的のセカンダリ キャッシュの名前を選択します。 そのセカンダリ キャッシュが一覧に表示されていない場合は、セカンダリ キャッシュの [geo レプリケーションの前提条件](#geo-replication-prerequisites)が満たされていることを確認します。 キャッシュをリージョンでフィルター処理するには、マップ内のリージョンを選択して、 **[互換性のあるキャッシュ]** の一覧にあるキャッシュのみを表示します。
 
-    ![geo レプリケーションの互換性のあるキャッシュ](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
-    
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-select-link.png" alt-text="互換性のあるキャッシュの選択":::
+
     また、コンテキスト メニューを使用してリンク プロセスを開始したり、セカンダリ キャッシュに関する詳細を表示したりすることもできます。
 
-    ![geo レプリケーションのコンテキスト メニュー](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png" alt-text="geo レプリケーションのコンテキスト メニュー":::
 
-3. **[リンク]** をクリックして、2 つのキャッシュをリンクし、レプリケーション プロセスを開始します。
+1. **[リンク]** を選択して、2 つのキャッシュをリンクし、レプリケーション プロセスを開始します。
 
-    ![キャッシュのリンク](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png" alt-text="キャッシュのリンク":::
 
-4. **[geo レプリケーション]** ブレードで、レプリケーション プロセスの進行状況を表示できます。
+1. 左側の **[geo レプリケーション]** を使用して、レプリケーション プロセスの進行状況を表示できます。
 
-    ![リンクの状態](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-linking.png" alt-text="リンクの状態":::
 
-    プライマリ キャッシュとセカンダリ キャッシュの両方の **[概要]** ブレードで、リンクの状態を表示することもできます。
+    プライマリ キャッシュとセカンダリ キャッシュの両方の **[概要]** を使用して、左側にリンクの状態を表示することもできます。
 
-    ![プライマリ キャッシュとセカンダリ キャッシュのリンク状態を表示する方法を強調表示するスクリーンショット。](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-link-status.png" alt-text="プライマリ キャッシュとセカンダリ キャッシュのリンク状態を表示する方法を強調表示するスクリーンショット。":::
 
     レプリケーション プロセスが完了すると、 **[リンクの状態]** が「**成功**」に変わります。
 
-    ![キャッシュの状態](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-link-successful.png" alt-text="キャッシュの状態":::
 
     プライマリ リンク キャッシュは、リンク プロセス中も引き続き使用できます。 セカンダリ リンク キャッシュは、リンク プロセスが完了するまで使用できません。
 
 ## <a name="remove-a-geo-replication-link"></a>geo レプリケーション リンクの削除
 
-1. 2 つのキャッシュ間のリンクを削除し、geo レプリケーションを停止するには、 **[geo レプリケーション]** ブレードで **[Unlink caches]\(キャッシュのリンク解除\)** をクリックします。
-    
-    ![[Unlink caches]\(キャッシュのリンク解除\)](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
+1. 2 つのキャッシュ間のリンクを削除し、geo レプリケーションを停止するには、左側の **[geo レプリケーション]** で **[Unlink caches](キャッシュのリンク解除)** をクリックします。
+
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-unlink.png" alt-text="[Unlink caches]\(キャッシュのリンク解除\)":::
 
     リンク解除プロセスが完了すると、セカンダリ キャッシュが読み取りと書き込みの両方に対して使用可能になります。
 
@@ -106,7 +110,7 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 - [異なる Azure サブスクリプションからの 2 つのキャッシュをリンクすることはできますか](#can-i-link-two-caches-from-different-azure-subscriptions)
 - [サイズが異なる 2 つのキャッシュをリンクすることはできますか](#can-i-link-two-caches-with-different-sizes)
 - [クラスタリングを有効にして geo レプリケーションを使用することはできますか](#can-i-use-geo-replication-with-clustering-enabled)
-- [VNET 内の自分のキャッシュで geo レプリケーションを使用することはできますか](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
+- [VNet 内の自分のキャッシュで geo レプリケーションを使用することはできますか](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
 - [Redis の geo レプリケーションのレプリケーション スケジュールとは何ですか](#what-is-the-replication-schedule-for-redis-geo-replication)
 - [geo レプリケーションのレプリケーションにはどのくらいの時間が必要ですか](#how-long-does-geo-replication-replication-take)
 - [レプリケーションの回復ポイントは保証されますか](#is-the-replication-recovery-point-guaranteed)
@@ -143,20 +147,20 @@ geo レプリケーションは、Premium レベルのキャッシュにのみ�
 
 両方のキャッシュのシャード数が同じ場合は可能です。
 
-### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>VNET 内の自分のキャッシュで geo レプリケーションを使用することはできますか
+### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>VNet 内の自分のキャッシュで geo レプリケーションを使用することはできますか
 
-はい。VNET 内のキャッシュの geo レプリケーションは注意事項付きでサポートされています。
+はい。VNet 内のキャッシュの geo レプリケーションは注意事項付きでサポートされています。
 
-- 同じ VNET 内のキャッシュ間の geo レプリケーションがサポートされています。
-- 異なる VNET 内のキャッシュ間の geo レプリケーションもサポートされています。
-  - VNET が同じリージョンに存在する場合は、[VNET ピアリング](../virtual-network/virtual-network-peering-overview.md)または [VPN Gateway VNET 間接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を使用してそれらを接続できます。
-  - VNET がさまざまなリージョンに存在する場合は、VNET ピアリングを使用した geo レプリケーションがサポートされますが、Basic 内部ロード バランサーの制約のため、VNET 1 (リージョン 1) のクライアント VM で DNS 名を使用して VNET 2 (リージョン 2) のキャッシュにアクセスすることはできなくなります。 VNET ピアリングの制約の詳細については、[Virtual Network - ピアリングの要件と制約](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)に関するページを参照してください。 推奨されるソリューションは、VPN Gateway VNET 間接続の使用です。
+- 同じ VNet 内のキャッシュ間の geo レプリケーションがサポートされています。
+- 異なる VNet 内のキャッシュ間の geo レプリケーションもサポートされています。
+  - VNet が同じリージョンに存在する場合は、[VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)または [VPN Gateway VNet 間接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を使用してそれらを接続できます。
+  - VNet がさまざまなリージョンに存在する場合は、VNet ピアリングを使用した geo レプリケーションがサポートされますが、Basic 内部ロード バランサーの制約のため、VNet 1 (リージョン 1) のクライアント VM で DNS 名を使用して VNet 2 (リージョン 2) のキャッシュにアクセスすることはできなくなります。 VNet ピアリングの制約の詳細については、[Virtual Network - ピアリングの要件と制約](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)に関するページを参照してください。 VPN Gateway による VNet 間接続を使用することをお勧めします。
   
-[この Azure テンプレート](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)を使用すると、2 つの geo レプリケートされたキャッシュを VPN Gateway VNET 間接続で接続された VNET にすばやくデプロイできます。
+[この Azure テンプレート](https://azure.microsoft.com/resources/templates/redis-vnet-geo-replication/)を使用すると、2 つの geo レプリケートされたキャッシュを VPN Gateway VNet 間接続で接続された VNet にすばやくデプロイできます。
 
 ### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Redis の geo レプリケーションのレプリケーション スケジュールは何ですか
 
-レプリケーションは継続的かつ非同期であるため、特定のスケジュールでは実行されません。 プライマリに対して実行された書き込みはすべて、セカンダリに瞬時にかつ非同期的にレプリケートされます。
+レプリケーションは継続的かつ非同期に行われます。 特定のスケジュールで実行されるわけではありません。 プライマリに対して実行された書き込みはすべて、セカンダリに瞬時にかつ非同期的にレプリケートされます。
 
 ### <a name="how-long-does-geo-replication-replication-take"></a>geo レプリケーションのレプリケーションにはどのくらいの時間が必要ですか
 
@@ -186,7 +190,9 @@ geo レプリケートされたキャッシュとそのリソース グループ
 
 ### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>セカンダリ リンク キャッシュへのフェールオーバーはどのように動作しますか
 
-geo レプリケートされたキャッシュでは、Azure リージョン間の自動フェールオーバーはサポートされていません。 ディザスター リカバリー シナリオでは、顧客がアプリケーション スタック全体をバックアップ リージョンで調整された方法で復旧する必要があります。 バックアップに切り替えるタイミングを個々のアプリケーション コンポーネントに個別に判定させるようにすると、パフォーマンスに悪影響を与える可能性があります。 Redis の主な利点の 1 つは、それが非常に待機時間の短いストアであることです。 顧客の主要なアプリケーションがそのキャッシュとは別のリージョンに存在する場合は、追加されるラウンド トリップ時間がパフォーマンスに大きな影響を与えます。 このため、一時的な可用性の問題から、自動的なフェールオーバーを回避しています。
+geo レプリケートされたキャッシュでは、Azure リージョン間の自動フェールオーバーはサポートされていません。 ディザスター リカバリー シナリオでは、顧客がアプリケーション スタック全体をバックアップ リージョンで調整された方法で復旧する必要があります。 バックアップに切り替えるタイミングを個々のアプリケーション コンポーネントに個別に判定させるようにすると、パフォーマンスに悪影響を与える可能性があります。 
+
+Redis の主な利点の 1 つは、それが非常に待機時間の短いストアであることです。 顧客の主要なアプリケーションがそのキャッシュとは別のリージョンに存在する場合は、追加されるラウンド トリップ時間がパフォーマンスに大きな影響を与えます。 このため、一時的な可用性の問題から、自動的なフェールオーバーを回避しています。
 
 顧客始動のフェールオーバーを開始するには、まずキャッシュをリンク解除します。 次に、(以前にリンクされた) セカンダリ キャッシュの接続エンドポイントを使用するように Redis クライアントを変更します。 2 つのキャッシュがリンク解除されると、セカンダリ キャッシュが再び通常の読み取り/書き込みキャッシュになり、Redis クライアントから直接要求を受け付けます。
 
@@ -198,5 +204,5 @@ geo レプリケートされたキャッシュでは、Azure リージョン間�
 
 Azure Cache for Redis の機能について
 
-* [Azure Cache for Redis サービス レベル](cache-overview.md#service-tiers)
-* [Azure Cache for Redis の高可用性](cache-high-availability.md)
+- [Azure Cache for Redis サービス レベル](cache-overview.md#service-tiers)
+- [Azure Cache for Redis の高可用性](cache-high-availability.md)

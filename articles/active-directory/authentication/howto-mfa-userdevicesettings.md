@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc0be7e50c5cce511fafd7d8b407626bd57659bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abd69e65f5c280eaac8acb41138cf265be0af113
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98183134"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763027"
 ---
 # <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-factor Authentication のユーザー認証方法を管理する
 
@@ -118,4 +118,4 @@ Remove-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -PhoneAuthentic
 
 この記事では、個々のユーザー設定を構成する方法について説明しました。 Azure AD Multi-Factor Authentication サービスの全体的な設定を構成するには、「[Azure AD Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。
 
-ユーザーがヘルプを必要とする場合は、[Azure AD Multi-Factor Authentication のユーザー ガイド](../user-help/multi-factor-authentication-end-user-first-time.md)を参照してください。
+ユーザーがヘルプを必要とする場合は、[Azure AD Multi-Factor Authentication のユーザー ガイド](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)を参照してください。

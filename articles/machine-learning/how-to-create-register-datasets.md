@@ -4,20 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 機械学習の実験を実行するために Azure Machine Learning データセットを作成してデータにアクセスする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, data4ml
-ms.author: sihhu
-author: MayMSFT
-manager: cgronlun
+ms.subservice: mldata
+ms.topic: how-to
+ms.custom: contperf-fy21q1, data4ml
+ms.author: yogipandey
+author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 07/31/2020
-ms.openlocfilehash: 592c128a05b66b268c954ccd32b06863df5b25d1
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 10/21/2021
+ms.openlocfilehash: 2916b7c8042a96e35ad138ae5ae20c389c62e751
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029116"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866641"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -39,7 +38,7 @@ Azure Machine Learning データセットを使用すると、次のことを実
 
 データセットを作成して操作するには、以下が必要です。
 
-* Azure サブスクリプション。 まだ持っていない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* Azure サブスクリプション。 まだ持っていない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
@@ -49,10 +48,13 @@ Azure Machine Learning データセットを使用すると、次のことを実
 
     **OR**
 
-    * ご自分の Jupyter Notebook で作業し、 [こちらの手順](/python/api/overview/azure/ml/install)に従って SDK をご自身でインストールします。
+    * 独自の Jupyter ノートブックで作業し、[自分で SDK をインストールします](/python/api/overview/azure/ml/install)。
 
 > [!NOTE]
-> 一部の Dataset クラスは、[azureml-dataprep](https://pypi.org/project/azureml-dataprep/) パッケージに依存しています。これは、64 ビットの Python とのみ互換性があります。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux (7、8)、Ubuntu (14.04、16.04、18.04)、Fedora (27、28)、Debian (8、9)、および CentOS (7) サポートされていないディストリビューションを使用している場合は、[こちらのガイド](/dotnet/core/install/linux)に従って、.NET Core 2.1 をインストールして続行してください。 
+> 一部の Dataset クラスは、[azureml-dataprep](https://pypi.org/project/azureml-dataprep/) パッケージに依存しています。これは、64 ビットの Python とのみ互換性があります。 __Linux__ で開発している場合、それらのクラスは .NET Core 2.1 に依存し、特定のディストリビューションでのみサポートされます。 サポートされているディストリビューションの詳細については、「[Linux に .NET をインストールする](/dotnet/core/install/linux)」という記事の .NET Core 2.1 列を参照してください。
+
+> [!IMPORTANT]
+> パッケージは旧バージョンの Linux ディストリビューションで動作することがありますが、メインストリーム サポートから外れているディストリビューションの使用は推奨していません。 メインストリーム サポートがないディストリビューションは、最新の更新プログラムを受信しないため、セキュリティ上の脆弱性が含まれている可能性があります。 サポートされており、互換性のある最新のディストリビューション バージョンの使用が推奨されます。
 
 ## <a name="compute-size-guidance"></a>コンピューティング サイズのガイダンス
 
@@ -86,7 +88,7 @@ TabularDataset は、[Python SDK](#create-a-tabulardataset) または [Azure Mac
 
 ## <a name="access-datasets-in-a-virtual-network"></a>仮想ネットワーク内のデータセットにアクセスする
 
-ワークスペースが仮想ネットワーク内にある場合は、検証をスキップするようにデータセットを構成する必要があります。 仮想ネットワークでデータストアとデータセットを使用する方法の詳細については、[ワークスペースと関連付けられているリソースをセキュリティで保護する](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)方法に関するページを参照してください。
+ワークスペースが仮想ネットワーク内にある場合は、検証をスキップするようにデータセットを構成する必要があります。 仮想ネットワークでデータストアとデータセットを使用する方法の詳細については、[ワークスペースと関連付けられているリソースをセキュリティで保護する](how-to-secure-workspace-vnet.md#datastores-and-datasets)方法に関するページを参照してください。
 
 <a name="datasets-sdk"></a>
 
@@ -95,8 +97,7 @@ TabularDataset は、[Python SDK](#create-a-tabulardataset) または [Azure Mac
 データを Azure Machine Learning からアクセスできるようにするには、[Azure Machine Learning データストア](how-to-access-data.md)または Web URL のパスからデータセットを作成する必要があります。 
 
 > [!TIP] 
-> ID ベースのデータ アクセスを使用して、ストレージ URL からデータセットを直接作成できます。 詳細については、[ID ベースのデータ アクセスを使用したストレージへの接続 (プレビュー)](how-to-identity-based-data-access.md) に関するページを参照してください。<br><br>
-この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。 
+> ID ベースのデータ アクセスを使用して、ストレージ URL からデータセットを直接作成できます。 詳細については、「[ID ベースのデータ アクセスを使用したストレージへの接続](how-to-identity-based-data-access.md)」を参照してください。
 
  
 Python SDK を使用してデータストアからデータセットを作成するには、次の手順を実行します。
@@ -112,9 +113,11 @@ Python SDK を使用してデータストアからデータセットを作成す
 
 任意の形式のファイルを読み込み、登録されていない FileDataset を作成するには、`FileDatasetFactory` クラスの [`from_files()`](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true-) メソッドを使用します。 
 
-ストレージが仮想ネットワークまたはファイアウォールの内側にある場合は、`from_files()` メソッドでパラメーター `validate=False` を設定します。 これにより、最初の検証手順がバイパスされ、セキュリティで保護されたこれらのファイルからデータセットを作成できるようになります。 [仮想ネットワークでデータストアとデータセットを使用する](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)方法に関する詳細を確認してください。
+ストレージが仮想ネットワークまたはファイアウォールの内側にある場合は、`from_files()` メソッドでパラメーター `validate=False` を設定します。 これにより、最初の検証手順がバイパスされ、セキュリティで保護されたこれらのファイルからデータセットを作成できるようになります。 [仮想ネットワークでデータストアとデータセットを使用する](how-to-secure-workspace-vnet.md#datastores-and-datasets)方法に関する詳細を確認してください。
 
 ```Python
+from azureml.core import Workspace, Datastore, Dataset
+
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
 datastore_paths = [(datastore, 'animals')]
 animal_ds = Dataset.File.from_files(path=datastore_paths)
@@ -124,20 +127,30 @@ web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-ima
              'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
-ワークスペースの実験間でデータセットを再利用および共有するには、[データセットを登録](#register-datasets)します。 
 
-> [!TIP] 
-> ローカル ディレクトリからファイルをアップロードし、パブリック プレビュー メソッドの [upload_directory()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-) を使用して 1 つのメソッドで FileDataset を作成します。 このメソッドは[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、いつでも変更される可能性があります。 
-> 
->  このメソッドでは基になるストレージにデータがアップロードされるため、ストレージ コストが発生します。 
+ローカル ディレクトリからすべてのファイルをアップロードする場合は、[upload_directory()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-) を使用して 1 つのメソッドで FileDataset を作成します。 このメソッドでは基になるストレージにデータがアップロードされるため、ストレージ コストが発生します。 
+
+```Python
+from azureml.core import Workspace, Datastore, Dataset
+from azureml.data.datapath import DataPath
+
+ws = Workspace.from_config()
+datastore = Datastore.get(ws, '<name of your datastore>')
+ds = Dataset.File.upload_directory(src_dir='<path to you data>',
+           target=DataPath(datastore,  '<path on the datastore>'),
+           show_progress=True)
+
+```
+
+ワークスペースの実験間でデータセットを再利用および共有するには、[データセットを登録](#register-datasets)します。 
 
 ### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
 
-.csv 形式または .tsv 形式のファイルを読み取り、登録されていない TabularDataset を作成するには、`TabularDatasetFactory` クラスの [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) メソッドを使用します。 .parquet 形式のファイルを読み込むには、[`from_parquet_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) メソッドを使用します。 複数のファイルから読み取る場合、結果は 1 つの表形式に集計されます。 
+.csv 形式または .tsv 形式のファイルを読み取り、登録されていない TabularDataset を作成するには、`TabularDatasetFactory` クラスの [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--) メソッドを使用します。 .parquet 形式のファイルを読み込むには、[`from_parquet_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) メソッドを使用します。 複数のファイルから読み取る場合、結果は 1 つの表形式に集計されます。 
 
-サポートされているファイル形式、構文、設計パターンの詳細については、[TabularDatasetFactory のリファレンス ドキュメント](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)を参照してください。 
+[マルチライン サポート](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--)など、サポートされているファイル形式、構文、設計パターンの詳細については、[TabularDatasetFactory のリファレンス ドキュメント](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)を参照してください。 
 
-ストレージが仮想ネットワークまたはファイアウォールの内側にある場合は、`from_delimited_files()` メソッドでパラメーター `validate=False` を設定します。 これにより、最初の検証手順がバイパスされ、セキュリティで保護されたこれらのファイルからデータセットを作成できるようになります。 [仮想ネットワークでデータストアとデータセット](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)を使用する方法に関する詳細を確認してください。
+ストレージが仮想ネットワークまたはファイアウォールの内側にある場合は、`from_delimited_files()` メソッドでパラメーター `validate=False` を設定します。 これにより、最初の検証手順がバイパスされ、セキュリティで保護されたこれらのファイルからデータセットを作成できるようになります。 [仮想ネットワークでデータストアとデータセット](how-to-secure-workspace-vnet.md#datastores-and-datasets)を使用する方法に関する詳細を確認してください。
 
 次のコードでは、既存のワークスペースと必要なデータストアを名前で取得します。 次に、データストアとファイルの場所を `path` パラメーターに渡して、新しい TabularDataset である `weather_ds` を作成します。
 
@@ -190,9 +203,10 @@ titanic_ds.take(3).to_pandas_dataframe()
 データ ラングリングや探索を実行する必要がない場合は、[データセットを使用したトレーニング](how-to-train-with-datasets.md)に関する記事に記載されている、ML 実験の送信用のトレーニング スクリプトでデータセットを使用する方法について参照してください。
 
 ### <a name="filter-datasets-preview"></a>データセットのフィルター処理 (プレビュー)
+
 フィルター処理機能は、使用しているデータセットの種類によって異なります。 
 > [!IMPORTANT]
-> パブリック プレビュー メソッド [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) を使用したデータセットのフィルター処理は、[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、いつでも変更される可能性があります。 
+> プレビュー メソッド [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) を使用したデータセットのフィルター処理は、[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、いつでも変更される可能性があります。 
 > 
 **TabularDatasets** の場合は、[keep_columns()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) と [drop_columns()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) メソッドを使用して、列を保持または削除できます。
 
@@ -220,7 +234,7 @@ file_dataset = file_dataset.filter(file_dataset.file_metadata['Size'] < 100000)
 file_dataset = file_dataset.filter((file_dataset.file_metadata['CreatedTime'] < datetime(2020,1,1)) | (file_dataset.file_metadata['CanSeek'] == False))
 ```
 
-[データのラベル付けプロジェクト](how-to-create-labeling-projects.md)から作成された **ラベル付きデータセット** は特殊なケースです。 これらのデータセットは、イメージ ファイルで構成される TabularDataset の一種です。 これらのデータセットの種類には、メタデータ、および `label` や `image_details` などの列の値によって、イメージを [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) でフィルター処理できます。
+[画像のラベル付けプロジェクト](how-to-create-image-labeling-projects.md)から作成された **ラベル付きデータセット** は特殊なケースです。 これらのデータセットは、イメージ ファイルで構成される TabularDataset の一種です。 これらのデータセットの種類には、メタデータ、および `label` や `image_details` などの列の値によって、イメージを [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) でフィルター処理できます。
 
 ```python
 # Dataset that only contains records where the label column value is dog
@@ -228,6 +242,53 @@ labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
 
 # Dataset that only contains records where the label and isCrowd columns are True and where the file size is larger than 100000
 labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
+```
+
+### <a name="partition-data"></a>データのパーティション分割
+
+TabularDataset または FileDataset を作成するときに、`partitions_format` パラメーターを含めることにより、データセットをパーティション分割できます。 
+
+データセットをパーティション分割すると、各ファイル パスのパーティション情報が、指定された形式に基づいて列に抽出されます。 形式は、最初のパーティション キーの位置から始まり、ファイル パスの末尾までになります。 
+
+たとえば、部署名と時刻でパーティション分割されるパス `../Accounts/2019/01/01/data.jsonl` がある場合、`partition_format='/{Department}/{PartitionDate:yyyy/MM/dd}/data.jsonl'` によって、値 'Accounts' を持つ文字列の列 'Department' と、値 `2019-01-01` を持つ datetime 列 'PartitionDate' が作成されます。
+
+データに既存のパーティションが既に存在し、その形式を保持する場合は、[`from_files()`](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true--partition-format-none-) メソッドに `partitioned_format` パラメーターを含めて、FileDataset を作成します。 
+
+既存のパーティションを保持する TabularDataset を作成するには、[from_parquet_files()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) または [from_delimited_files()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--) のメソッドに `partitioned_format` パラメーターを含めます。
+
+次に例を示します。
+* パーティション分割されたファイルから FileDataset を作成する
+* パーティション キーを取得する
+* 新しいインデックス付き FileDataset を作成する
+ 
+```Python
+
+file_dataset = Dataset.File.from_files(data_paths, partition_format = '{userid}/*.wav')
+ds.register(name='speech_dataset')
+
+# access partition_keys
+indexes = file_dataset.partition_keys # ['userid']
+
+# get all partition key value pairs should return [{'userid': 'user1'}, {'userid': 'user2'}]
+partitions = file_dataset.get_partition_key_values()
+
+
+partitions = file_dataset.get_partition_key_values(['userid'])
+# return [{'userid': 'user1'}, {'userid': 'user2'}]
+
+# filter API, this will only download data from user1/ folder
+new_file_dataset = file_dataset.filter(ds['userid'] == 'user1').download()
+```
+
+[partitions_by()](/python/api/azureml-core/azureml.data.tabulardataset#partition-by-partition-keys--target--name-none--show-progress-true--partition-as-file-dataset-false-) メソッドを使用して、TabularDatasets の新しいパーティション構造を作成することもできます。
+
+```Python
+
+ dataset = Dataset.get_by_name('test') # indexed by country, state, partition_date
+
+# call partition_by locally
+new_dataset = ds.partition_by(name="repartitioned_ds", partition_keys=['country'], target=DataPath(datastore, "repartition"))
+partition_keys = new_dataset.partition_keys # ['country']
 ```
 
 ## <a name="explore-data"></a>データの探索
@@ -264,36 +325,20 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 ## <a name="create-a-dataset-from-pandas-dataframe"></a>Pandas データフレーム からデータセットを作成する
 
-メモリ内の Pandas データ フレームから TabularDataset を作成するには、csv などのローカル ファイルにデータを書き込み、そのファイルからデータセットを作成します。 次のコードはこのワークフローを示しています。
+インメモリの pandas データフレームから TabularDataset を作成するには、[`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#register-pandas-dataframe-dataframe--target--name--description-none--tags-none--show-progress-true-) メソッドを使用します。 このメソッドは、TabularDataset をワークスペースに登録し、基になるストレージにデータをアップロードするため、ストレージ コストが発生します。 
 
 ```python
-# azureml-core of version 1.0.72 or higher is required
-# azureml-dataprep[pandas] of version 1.1.34 or higher is required
+from azureml.core import Workspace, Datastore, Dataset
+import pandas as pd
 
-from azureml.core import Workspace, Dataset
-local_path = 'data/prepared.csv'
-dataframe.to_csv(local_path)
+pandas_df = pd.read_csv('<path to your csv file>')
+ws = Workspace.from_config()
+datastore = Datastore.get(ws, '<name of your datastore>')
+dataset = Dataset.Tabular.register_pandas_dataframe(pandas_df, datastore, "dataset_from_pandas_df", show_progress=True)
 
-# upload the local file to a datastore on the cloud
-
-subscription_id = 'xxxxxxxxxxxxxxxxxxxxx'
-resource_group = 'xxxxxx'
-workspace_name = 'xxxxxxxxxxxxxxxx'
-
-workspace = Workspace(subscription_id, resource_group, workspace_name)
-
-# get the datastore to upload prepared data
-datastore = workspace.get_default_datastore()
-
-# upload the local file from src_dir to the target_path in datastore
-datastore.upload(src_dir='data', target_path='data')
-
-# create a dataset referencing the cloud location
-dataset = Dataset.Tabular.from_delimited_files(path = [(datastore, ('data/prepared.csv'))])
 ```
-
 > [!TIP]
-> 1 つのメソッドで、[`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#methods) と [`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#methods) のパブリック プレビュー メソッドを使用して、メモリ内のスパークや Pandas データフレームから TabularDataset を作成して登録します。 これらの登録メソッドは[試験段階の](/python/api/overview/azure/ml/#stable-vs-experimental)プレビュー機能であり、いつでも変更される可能性があります。 
+> パブリック プレビュー メソッド [`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory##register-spark-dataframe-dataframe--target--name--description-none--tags-none--show-progress-true-) および [`register_dask_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#register-dask-dataframe-dataframe--target--name--description-none--tags-none--show-progress-true-) を使用して、インメモリのスパークや pandas データフレームから TabularDataset を作成して登録します。 これらのメソッドは[試験段階の](/python/api/overview/azure/ml/#stable-vs-experimental)プレビュー機能であり、いつでも変更される可能性があります。 
 > 
 >  これらのメソッドでは基になるストレージにデータがアップロードされるため、ストレージ コストが発生します。 
 
@@ -309,16 +354,10 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-using-azure-resource-manager"></a>Azure Resource Manager を使用してデータセットを作成する
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-dataset-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) には、データセットの作成に使用できる多数のテンプレートがあります。
+[https://github.com/Azure/azure-quickstart-templates/tree/master//quickstarts/microsoft.machinelearningservices](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices) には、データセットの作成に使用できる多数のテンプレートがあります。
 
 これらのテンプレートの使用に関する詳細については、「[Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します](how-to-create-workspace-template.md)」を参照してください。
-
-
-## <a name="create-datasets-from-azure-open-datasets"></a>Azure Open Datasets からデータセットを作成する
-
-[Azure オープン データセット](https://azure.microsoft.com/services/open-datasets/)は選別されたパブリック データセットであり、機械学習ソリューションにシナリオ固有の機能を追加してモデルの精度を上げるために使用できます。 データセットには、機械学習モデルのトレーニングと予測ソリューションのエンリッチメントに役立つ天気、国勢調査、祝日、公共の安全、場所に関するパブリック ドメイン データが含まれます。 Open Datasets は Microsoft Azure 上のクラウドにあり、SDK と Studio の両方に含まれています。
-
-[Azure Open Datasets から Azure Machine Learning データセット](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)を作成する方法を確認してください。 
+ 
 
 ## <a name="train-with-datasets"></a>データセットを使用したトレーニング
 

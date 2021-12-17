@@ -3,35 +3,35 @@ title: Long Audio API - Speech Service
 titleSuffix: Azure Cognitive Services
 description: 長い形式のテキスト読み上げ (オーディオ ブックなど) の非同期合成のために Long Audio API がどのように設計されているか説明します。
 services: cognitive-services
-author: trevorbye
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.author: trbye
-ms.openlocfilehash: 65c0d80394317c2b2bfbf621d3cc2ad0c2e3448a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: eur
+ms.openlocfilehash: e7c96a7468eddaab84c1395ee1ba161f9d0bed75
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618408"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506279"
 ---
 # <a name="long-audio-api"></a>Long Audio API
 
-Long Audio API は、長い形式のテキスト読み上げ (オーディオ ブック、ニュース記事、ドキュメントなど) の非同期合成のために設計されています。 この API は、合成された音声をリアルタイムで返しません。代わりに、応答をポーリングし、サービスから提供されている出力を使用することを想定しています。 Speech SDK によって使用されるテキスト読み上げ API とは異なり、Long Audio API は、10 分よりも長い合成された音声を作成できるため、バッチ内にオーディオ ブックなどの長い音声コンテンツを作成する出版業者や音声コンテンツ プラットフォームに最適です。
+Long Audio API は、長い形式のテキスト読み上げ (オーディオ ブック、ニュース記事、ドキュメントなど) の非同期合成を提供します。 この API は、合成された音声をリアルタイムで返すものではありません。 代わりに、応答をポーリングし、サービスから出力が返されたらその出力を使用します。 Speech SDK によって使用されるテキスト読み上げ API とは異なり、Long Audio API では、10 分よりも長い合成された音声を作成できます。 そのため、オーディオ ブックなどの長い音声コンテンツをバッチで作成する出版業者や音声コンテンツ プラットフォームに最適です。
 
 Long Audio API のその他の利点は次のとおりです。
 
 * サービスによって返される合成音声では、最適なニューラル音声が使用されます。
-* リアルタイム バッチ モードによる音声合成は行われないため、音声エンドポイントをデプロイする必要はありません。
+* 音声エンドポイントをデプロイする必要はありません。
 
 > [!NOTE]
-> Long Audio API で、[パブリック ニューラル音声](./language-support.md#neural-voices)と[カスタム ニューラル音声](./how-to-custom-voice.md#custom-neural-voices)の両方がサポートされるようになりました。
+> Long Audio API では、[パブリック ニューラル音声](./language-support.md#neural-voices)と[カスタム ニューラル音声](./how-to-custom-voice.md)の両方をサポートします。
 
 ## <a name="workflow"></a>ワークフロー
 
-通常、Long Audio API を使用する場合は、合成するテキスト ファイルを送信し、状態をポーリングして、状態が正常である場合は音声出力をダウンロードできます。
+Long Audio API を使用するときは、通常、合成するテキスト ファイルを送信し、状態をポーリングして、状態が成功を示したら音声出力をダウンロードします。
 
 次の図は、ワークフローの概要を示しています。
 
@@ -41,14 +41,15 @@ Long Audio API のその他の利点は次のとおりです。
 
 テキスト ファイルを準備するときは、次のことを確認してください。
 
-* プレーンテキスト (.txt) または SSML テキスト (.txt) のいずれかである
-* [バイト オーダー マーク (BOM) 付きの UTF-8](https://www.w3.org/International/questions/qa-utf8-bom.en#bom) としてエンコードされている
-* 単一のファイルであり、zip ではない
-* プレーンテキストの場合は 400 文字以上、または SSML テキストの場合は 400 文字以上の[課金対象文字](./text-to-speech.md#pricing-note)を含み、1 万段落未満である
-  * プレーンテキストの場合は、**Enter/Return** を押すことで各段落が区切られます - [プレーンテキストの入力例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)を参照してください
-  * SSML テキストの場合、SSML の各要素は段落と見なされます。 SSML の要素は、異なる段落で区切る必要があります - [SSML テキスト入力の例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)を参照してください
+* プレーンテキスト (.txt) または SSML テキスト (.txt) のいずれかである。
+* [バイト オーダー マーク (BOM) 付きの UTF-8](https://www.w3.org/International/questions/qa-utf8-bom.en#bom) としてエンコードされている。
+* 単一のファイルであり、zip ではない。
+* プレーンテキストの場合は 400 文字以上、または SSML テキストの場合は 400 文字以上の[課金対象文字](./text-to-speech.md#pricing-note)を含み、1 万段落未満である。
+  * プレーンテキストの場合は、**Enter/Return** を押すことで各段落が区切られます。 [プレーンテキストの入力例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)を参照してください。
+  * SSML テキストの場合、SSML の各要素は段落と見なされます。 異なる段落によって SSML 要素を分割します。 [SSML テキストの入力例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)を参照してください。
 
 ## <a name="sample-code"></a>サンプル コード
+
 このページの残りの部分では Python に焦点を当てていますが、Long Audio API のサンプル コードは、次のプログラミング言語用のものを GitHub から入手できます。
 
 * [サンプル コード: Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
@@ -71,8 +72,8 @@ import requests
 
 サポートされている音声の一覧を取得するには、GET 要求を `https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/voices` に送信します。
 
+このコードは、特定のリージョンまたはエンドポイントで使用できる音声の完全な一覧を取得します。
 
-このコードを使用すると、使用できる特定のリージョンまたはエンドポイントの音声の完全な一覧を取得できます。
 ```python
 def get_voices():
     region = '<region>'
@@ -95,7 +96,7 @@ get_voices()
 
 次のような出力が表示されます。
 
-```console
+```json
 {
   "values": [
     {
@@ -130,8 +131,8 @@ get_voices()
 プレーンテキストまたは SSML テキストで入力テキスト ファイルを準備してから、次のコードを `long_audio_synthesis_client.py` に追加します。
 
 > [!NOTE]
-> `concatenateResult` は省略可能なパラメーターです。 このパラメーターを設定しなかった場合、オーディオ出力が段落ごとに生成されます。 このパラメーターを設定することで、複数の音声を 1 つの出力に連結することもできます。 
-> `outputFormat` も省略可能です。 既定では、オーディオ出力は riff-16khz-16bit-mono-pcm に設定されています。 サポートされているオーディオ出力形式の詳細については、「[音声出力形式](#audio-output-formats)」を参照してください。
+> `concatenateResult` は省略可能なパラメーターです。 このパラメーターを設定しなかった場合、オーディオ出力が段落ごとに生成されます。 このパラメーターを含めることで、複数の音声を 1 つの出力に連結することもできます。 
+> `outputFormat` も省略可能です。 既定では、オーディオ出力は `riff-16khz-16bit-mono-pcm` に設定されています。 サポートされているオーディオ出力形式の詳細については、「[音声出力形式](#audio-output-formats)」を参照してください。
 
 ```python
 def submit_synthesis():
@@ -198,15 +199,16 @@ https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/<guid>
 ```
 
 > [!NOTE]
-> 複数の入力ファイルがある場合は、複数の要求を送信する必要があります。 注意すべきいくつかの制限事項があります。
-> * クライアントは、各 Azure サブスクリプション アカウントに対して 1 秒あたり最大 **5** 個の要求をサーバーに送信できます。 制限を超えると、クライアントはエラー コード 429 (要求が多すぎます) を受け取ります。 1 秒あたりの要求の数を減らしてください
-> * サーバーは、各 Azure サブスクリプション アカウントに対して最大 **120** 個の要求を実行およびキューに登録できます。 制限を超えた場合、サーバーはエラー コード 429 (要求が多すぎます) を返します。 いくつかの要求が完了するまで、新しい要求を送信しないでお待ちください。
+> 複数の入力ファイルがある場合は、複数の要求を送信する必要があり、考慮すべきいくつかの制限があります。
+> * クライアントは、Azure サブスクリプション アカウントごとに 1 秒あたり最大 **5** 個の要求を送信できます。 制限を超えた場合、**429 エラー コード (要求が多すぎます)** が返されます。 この制限を回避するには、送信の頻度を下げます。
+> * サーバーは、Azure サブスクリプション アカウントごとに最大 **120** 個の要求をキューに入れることができます。 キューがこの制限を超えた場合、サーバーは **429 エラー コード (要求が多すぎます)** を返します。 要求が完了するのを待ってから、次の要求を送信します。
 
-出力の URL は、要求の状態を取得するために使用できます。
+出力内の URL を使用して、要求の状態を取得できます。
 
-### <a name="get-information-of-a-submitted-request"></a>送信された要求の情報の取得
+### <a name="get-details-about-a-submitted-request"></a>送信された要求の詳細を取得する
 
-送信された合成要求の状態を取得するには、前の手順で返された URL に GET 要求を送信するだけです。
+送信された合成要求の状態を取得するには、前の手順で返された URL に GET 要求を送信します。
+
 ```Python
 
 def get_synthesis():
@@ -220,8 +222,10 @@ def get_synthesis():
 
 get_synthesis()
 ```
+
 出力は次のようになります。
-```console
+
+```json
 response.status_code: 200
 {
   "models": [
@@ -245,7 +249,7 @@ response.status_code: 200
 }
 ```
 
-`status` プロパティから、この要求の状態を読み取ることができます。 要求は `NotStarted` 状態から開始され、`Running` に変わり、最終的に `Succeeded` または `Failed`になります。 ループを使用すると、状態が `Succeeded` になるまでこの API をポーリングできます。
+`status` プロパティは、`NotStarted` 状態から `Running` に、最終的には `Succeeded` または `Failed` に変化します。 状態が `Succeeded` または `Failed` になるまで、ループでこの API をポーリングできます。
 
 ### <a name="download-audio-result"></a>オーディオ結果のダウンロード
 
@@ -267,10 +271,12 @@ def get_files():
 
 get_files()
 ```
+
 `<request_id>` を、結果をダウンロードする要求の ID に置き換えます。 これは、前の手順の応答にあります。
 
 出力は次のようになります。
-```console
+
+```json
 response.status_code: 200
 {
   "values": [
@@ -299,14 +305,15 @@ response.status_code: 200
   ]
 }
 ```
-出力には、2 つのファイルの情報が含まれています。 `"kind": "LongAudioSynthesisScript"` がある 1 つは、送信された入力スクリプトです。 `"kind": "LongAudioSynthesisResult"` があるもう 1 つは、この要求の結果です。
+この例の出力には、2 つのファイルの情報が含まれています。 `"kind": "LongAudioSynthesisScript"` がある 1 つは、送信された入力スクリプトです。 `"kind": "LongAudioSynthesisResult"` があるもう 1 つは、この要求の結果です。
+
 この結果は、生成されたオーディオ出力ファイルと入力テキストのコピーが含まれている zip です。
 
 両方のファイルは、`links.contentUrl` プロパティの URL からダウンロードできます。
 
 ### <a name="get-all-synthesis-requests"></a>すべての合成要求の取得
 
-次のコードを使用して、送信されたすべての要求の一覧を取得できます。
+次のコードは、すべての送信された要求の一覧を出力します。
 
 ```python
 def get_synthesis():
@@ -325,7 +332,8 @@ get_synthesis()
 ```
 
 出力は次のようになります。
-```console
+
+```json
 response.status_code: 200
 {
   "values": [
@@ -374,7 +382,7 @@ response.status_code: 200
 }
 ```
 
-`values` プロパティには、合成要求の一覧が含まれています。 一覧は改ページ調整され、最大ページ サイズは 100 です。 100 個を超える要求がある場合は、ページ分割されたリストの次のページを取得するために、`"@nextLink"` プロパティが提供されます。
+`values` プロパティは、合成要求の一覧を出力します。 一覧は改ページ調整され、最大ページ サイズは 100 です。 100 個を超える要求がある場合は、ページ分割されたリストの次のページを取得するために、`"@nextLink"` プロパティが提供されます。
 
 ```console
   "@nextLink": "https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/?top=100&skip=100"
@@ -384,9 +392,10 @@ response.status_code: 200
 
 ### <a name="remove-previous-requests"></a>前の要求を削除する
 
-このサービスは、Azure サブスクリプション アカウントごとに最大 **20,000** 個の要求を保持します。 この制限を要求の量が超える場合は、新しい要求を送信する前に、以前の要求を削除してください。 既存の要求を削除しない場合、エラー通知が返されます。
+このサービスは、Azure サブスクリプション アカウントごとに最大 **20,000** 個の要求を保持します。 この制限を要求の量が超える場合は、新しい要求を送信する前に、以前の要求を削除します。 既存の要求を削除しない場合、エラー通知が返されます。
 
 次のコードは、特定の合成要求を削除する方法を示しています。
+
 ```python
 def delete_synthesis():
     id = '<request_id>'
@@ -421,7 +430,7 @@ response.status_code: 204
 | 作成 | 400 | 音声合成はこのリージョンでは有効になっていません。 | 音声サブスクリプション キーをサポートされているリージョンに変更してください。 |
 |        | 400 | このリージョンでは **Standard** 音声サブスクリプションのみが有効です。 | 音声サブスクリプション キーを "Standard" 価格レベルに変更してください。 |
 |        | 400 | Azure アカウントの要求数の上限である 20,000 個を超えています。 新しい要求を送信する前に、いくつかの要求を削除してください。 | サーバーでは、Azure アカウントごとに最大 20,000 個の要求が保持されます。 新しい要求を送信する前に、いくつかの要求を削除してください。 |
-|        | 400 | 音声合成ではこのモデルを使用することはできません : {modelID}。 | {modelID} の状態が正しいことを確認してください。 |
+|        | 400 | 音声合成ではこのモデルを使用することはできません: {modelID}。 | {modelID} の状態が正しいことを確認してください。 |
 |        | 400 | 要求のリージョンがこのモデルのリージョンと一致しません: {modelID}。 | {modelID} のリージョンが要求のリージョンと一致することを確認してください。 |
 |        | 400 | 音声合成では、バイト順マーカー付きのUTF-8 エンコードのテキスト ファイルのみがサポートされます。 | 入力ファイルが、バイト順マーカー付きの UTF-8 エンコードになっていることを確認します。 |
 |        | 400 | 音声合成要求では、有効な SSML 入力のみが許可されます。 | 入力 SSML 式が正しいことを確認してください。 |
@@ -429,8 +438,8 @@ response.status_code: 204
 |        | 400 | 入力ファイル内の段落数は 10,000 未満である必要があります。 | ファイル内の段落数が 10,000 未満であることを確認してください。 |
 |        | 400 | 入力ファイルの文字数は 400 文字を越えている必要があります。 | 入力ファイルが 400 文字を超えていることを確認してください。 |
 |        | 404 | 音声合成定義内に宣言されたモデルが見つかりません: {modelID}。 | {modelID} が正しいことを確認してください。 |
-|        | 429 | アクティブな音声合成の制限を超えています。 いくつかの要求が完了するまでお待ちください。 | サーバーでは、Azure アカウントごとに最大 120 個の要求を実行およびキューに登録できます。 いくつかの要求が完了するまで、新しい要求を送信しないでお待ちください。 |
-| All       | 429 | 要求が多すぎます。 | クライアントでは、Azure アカウントごとに 1 秒あたり最大 5 個の要求をサーバーに送信することが許可されています。 1 秒あたりの要求の数を減らしてください |
+|        | 429 | アクティブな音声合成の制限を超えています。 いくつかの要求が完了するまで待ちます。 | サーバーでは、Azure アカウントごとに最大 120 個の要求を実行およびキューに登録できます。 いくつかの要求が完了するまで、新しい要求を送信せずに待ちます。 |
+| All       | 429 | 要求が多すぎます。 | クライアントでは、Azure アカウントごとに 1 秒あたり最大 5 個の要求をサーバーに送信することが許可されています。 1 秒あたりの要求の数を減らします。 |
 | 削除    | 400 | その音声合成タスクはまだ使用中です。 | 削除できるのは、**完了した** 要求、または **失敗した要求** のみです。 |
 | GetByID   | 404 | 指定されたエンティティが見つかりません。 | 合成 ID が正しいことを確認してください。 |
 
@@ -448,7 +457,7 @@ Long Audio API は、一意のエンドポイントを持つ複数のリージ�
 
 ## <a name="audio-output-formats"></a>音声出力形式
 
-柔軟なオーディオ出力形式をサポートしています。 段落ごとにオーディオ出力を生成したり、'concatenateResult' パラメーターを設定して複数のオーディオ出力を単一の出力に連結したりできます。 Long Audio API では、次の音声出力形式がサポートされています。
+柔軟なオーディオ出力形式をサポートしています。 段落ごとにオーディオ出力を生成したり、`concatenateResult` パラメーターを設定して複数のオーディオ出力を単一の出力に連結したりできます。 Long Audio API では、次の音声出力形式がサポートされています。
 
 > [!NOTE]
 > 既定の音声形式は、riff-16khz-16bit-mono-pcm です。

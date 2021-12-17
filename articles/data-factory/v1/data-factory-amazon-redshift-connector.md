@@ -3,16 +3,17 @@ title: Azure Data Factory を使用して Amazon Redshift からデータを移�
 description: Azure Data Factory のコピー アクティビティを使用して Amazon Redshift からデータを移動する方法について説明します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 025250f47bf0630be5ae988140a5feeecfd0eaf0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a854b75dd9ad6cf84b17d8ed86327629f49ef17
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377552"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226567"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -102,7 +103,7 @@ Amazon Redshift の [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/
 
 このサンプル ユース ケースでは、コピー アクティビティを使用して、**redshiftUnloadSettings** オプションで構成されているように、最初に Amazon Redshift から Amazon S3 にデータをアンロードします。 次に、**stagingSettings** オプションの指定に従って、Amazon S3 から Azure Blob Storage にデータをコピーします。 最後に、PolyBase によってデータが Azure Synapse Analytics に読み込まれます。 すべての中間形式は、コピー アクティビティによって処理されます。
 
-![Amazon Redshift から Azure Synapse Analytics へのコピーのワークフロー](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+:::image type="content" source="media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png" alt-text="Amazon Redshift から Azure Synapse Analytics へのコピーのワークフロー":::
 
 ```json
 {

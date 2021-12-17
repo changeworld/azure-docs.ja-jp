@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 430ece58bd3dc1651ac391ba0e29515085ee507b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 453bb3a0a6d37d7053644b8cd6419abcdf271ed9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878191"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343080"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -31,7 +31,7 @@ ms.locfileid: "98878191"
 > * レプリケーション アプライアンスを設定し、構成サーバーをデプロイします。
 > * 移行したい AWS VM に Mobility Service をインストールします。
 > * VM のレプリケーションを有効にします。
-> * レプリケーションの状態を追跡して監視します。 
+> * レプリケーションの状態を追跡して監視します。
 > * すべてが想定どおりに動作していることを確認するためにテスト移行を実行します。
 > * Azure への完全な移行を実行します。
 
@@ -64,7 +64,7 @@ Azure に移行する前に、VM の検出と移行の評価を行うことが�
 
 
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
 - 移行する AWS VM で、サポートされている OS バージョンが実行されていることを確認します。 AWS VM は、移行目的では物理マシンのように処理されます。 物理サーバーの移行ワークフローについては、[サポートされているオペレーティング システムおよびカーネル バージョン](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)に関するページを参照してください。 *hostnamectl* や *uname -a* のような標準コマンドを使用して、Linux VM の OS とカーネル バージョンを確認できます。  実際の移行を進める前に、テスト移行 (テスト フェールオーバー) を実行し、VM が想定どおりに動作するかどうかを検証することをお勧めします。
 - AWS VM が、Azure への移行で[サポートされる構成](./migrate-support-matrix-physical-migration.md#physical-server-requirements)に準拠していることを確認します。
@@ -97,7 +97,7 @@ Azure Migrate: Server Migration ツールを使用した移行のために Azure
 
 - 選択したリソース グループ内に VM を作成する。
 - 選択した仮想ネットワーク内に VM を作成する。
-- Azure マネージド ディスクに書き込む。 
+- Azure マネージド ディスクに書き込む。
 
 ### <a name="create-an-azure-network"></a>Azure ネットワークを作成する
 
@@ -122,8 +122,8 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 - ソース AWS VM は、レプリケーション管理とレプリケーション データ転送のために、HTTPS 443 (コントロール チャネルのオーケストレーション) および TCP 9443 (データ転送) の受信ポートでレプリケーション アプライアンスと通信します。 レプリケーション アプライアンスは次に、HTTPS 443 送信ポート経由でレプリケーション データを Azure に送信します。 これらの規則を構成するには、ポートとソース IP の適切な情報を使用して、セキュリティ グループのインバウンド/アウトバウンド規則を編集します。
 
    ![AWS セキュリティ グループ ](./media/tutorial-migrate-aws-virtual-machines/aws-security-groups.png)
-     
- 
+
+
    ![セキュリティ設定を編集する ](./media/tutorial-migrate-aws-virtual-machines/edit-security-settings.png)
 
 - レプリケーション アプライアンスでは MySQL が使用されます。 アプライアンスに MySQL をインストールするためのいくつかの[方法](migrate-replication-appliance.md#mysql-installation)を確認します。
@@ -141,11 +141,13 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** をクリックします。
 3. **[ターゲット リージョン]** で、マシンの移行先にする Azure リージョンを選択します。
-4. **[移行先のリージョンが <リージョン名> であることを確認してください]** を選択します。
+4. **[移行先のリージョンが \<region-name\> であることを確認してください]** を選択します。
 5. **[リソースの作成]** をクリックします。 これで、Azure Site Recovery コンテナーがバックグラウンドで作成されます。
     - Azure Migrate Server Migration を使用した移行を既に設定してある場合は、リソースが以前に設定されているため、ターゲット オプションを構成できません。
     - このボタンのクリック後は、このプロジェクトのターゲット リージョンを変更することはできません。
-    - VM を別のリージョンに移行するには、Azure Migrate の新しいプロジェクトや別のプロジェクトを作成する必要があります。
+    - VM を別のリージョンに移行するには、Azure Migrate の新しいプロジェクトや別のプロジェクトを作成する必要があります。  
+    > [!NOTE]
+    > Azure Migrate プロジェクトの作成時に、その接続方法としてプライベート エンドポイントを選択した場合、Recovery Services コンテナーも、プライベート エンドポイント接続用に構成されます。 レプリケーション アプライアンスからプライベート エンドポイントに到達できることを確認してください。 [**詳細情報**](troubleshoot-network-connectivity.md)
 
 6. **[新しいレプリケーション アプライアンスをインストールしますか?]** で、 **[レプリケーション アプライアンスのインストール]** を選択します。
 7. **[レプリケーション アプライアンス ソフトウェアをダウンロードしてインストールする]** で、アプライアンスのインストーラーと登録キーをダウンロードします。 このキーは、アプライアンスを登録するために必要です。 キーは、ダウンロード後 5 日間有効です。
@@ -166,7 +168,9 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
     9.10 **[サマリー]** で **[インストール]** を選択します。   
     9.11 **[インストールの進行状況]** に、インストール プロセスに関する情報が表示されます。 完了したら、 **[完了]** を選択します。 ウィンドウに再起動に関するメッセージが表示されます。 **[OK]** を選択します。   
     9.12 次に、構成サーバーの接続パスフレーズに関するメッセージがウィンドウに表示されます。 パスフレーズをクリップボードにコピーし、そのパスフレーズをソース VM の一時テキスト ファイルに保存します。 このパスフレーズは後で、Mobility Service のインストール プロセス中に必要になります。
-10. インストールが完了すると、アプライアンス構成ウィザードが自動的に起動します (アプライアンスのデスクトップに作成された cspsconfigtool ショートカットを使用して、ウィザードを手動で起動することもできます)。 ウィザードの [アカウントの管理] タブを使用して、モビリティ サービスのプッシュ インストールに使用するアカウントの詳細を追加します。 このチュートリアルでは、レプリケートされるソース VM にMobility Service を手動でインストールします。そのため、この手順でダミー アカウントを作成し、続行します。 ダミー アカウントを作成するための詳細情報には、"ゲスト" としてフレンドリ名、"ユーザー名" としてユーザー名、"パスワード" としてアカウントのパスワードを指定できます。 このダミー アカウントは、レプリケーションの有効化ステージで使用します。 
+
+10. インストールが完了すると、アプライアンス構成ウィザードが自動的に起動します (アプライアンスのデスクトップに作成された cspsconfigtool ショートカットを使用して、ウィザードを手動で起動することもできます)。 このチュートリアルでは、レプリケートされるソース VM にMobility Service を手動でインストールします。そのため、この手順でダミー アカウントを作成し、続行します。 ダミー アカウントを作成するための詳細情報には、"ゲスト" としてフレンドリ名、"ユーザー名" としてユーザー名、"パスワード" としてアカウントのパスワードを指定できます。 このダミー アカウントは、レプリケーションの有効化ステージで使用します。
+
 11. アプライアンスが設定後に再起動されたら、 **[マシンの検出]** の **[構成サーバーの選択]** で新しいアプライアンスを選択し、 **[Finalize registration]\(登録の終了処理\)** をクリックします。 登録の終了処理では、レプリケーション アプライアンスを準備するための終了タスクがいくつか実行されます。
 
     ![登録の終了処理](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
@@ -234,9 +238,9 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 2. **[レプリケート]** で、 **[ソースの設定]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** を選択します。
 3. **[オンプレミスのアプライアンス]** で、自分が設定した Azure Migrate アプライアンスの名前を選択します。
-4. **[プロセス サーバー]** で、レプリケーション アプライアンスの名前を選択します。 
+4. **[プロセス サーバー]** で、レプリケーション アプライアンスの名前を選択します。
 5. **[ゲストの資格情報]** では、前の [レプリケーション インストーラーのセットアップ](#download-the-replication-appliance-installer)の間に作成したダミー アカウントを選択して、Mobility Service を手動でインストールしてください (プッシュ インストールはサポートされていません)。 その後、 **[次へ:仮想マシン]** をクリックします。   
- 
+
     ![[レプリケート] 設定](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. **[仮想マシン]** の **[評価から移行設定をインポートしますか?]** は、既定の設定である **[いいえ。移行設定を手動で指定します]** のままにしておきます。
 7. 移行したい各 VM を確認します。 その後、 **[次へ:ターゲット設定]** をクリックします。
@@ -244,28 +248,33 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
     ![VM を選択する](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
 8. **[ターゲット設定]** で、サブスクリプションと、移行先となるターゲット リージョンを選択し、移行後に Azure VM が配置されるリソース グループを指定します。
-9. **[仮想ネットワーク]** で、移行後に Azure VM の参加先となる Azure VNet およびサブネットを選択します。
-10. **[可用性オプション]** で、以下を選択します。
+9. **[仮想ネットワーク]** で、移行後に Azure VM の参加先となる Azure VNet およびサブネットを選択します。  
+10. プロジェクト用に自動的に作成されたキャッシュ ストレージ アカウントを使用する場合、 **[キャッシュ ストレージ アカウント]** のオプションは既定のままにします。 レプリケーションのキャッシュ ストレージ アカウントとして別のストレージ アカウントを指定したい場合は、ドロップ ダウンを使用してください。 <br/>
+    > [!NOTE]
+    >
+    > - Azure Migrate プロジェクトの接続方法としてプライベート エンドポイントを選択した場合、Recovery Services コンテナーに、キャッシュ ストレージ アカウントへのアクセス権を付与します。 [**詳細情報**](how-to-use-azure-migrate-with-private-endpoints.md#grant-access-permissions-to-the-recovery-services-vault)
+    > - プライベート ピアリングによる ExpressRoute を使用してレプリケートするには、キャッシュ ストレージ アカウント用のプライベート エンドポイントを作成します。 [**詳細情報**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional)
+11. **[可用性オプション]** で、以下を選択します。
     -  可用性ゾーン。移行されたマシンをリージョン内の特定の可用性ゾーンにピン留めします。 このオプションを使用して、複数ノードのアプリケーション層を形成するサーバーを可用性ゾーン間で分散させます。 このオプションを選択した場合は、[コンピューティング] タブで選択した各マシンに使用する可用性ゾーンを指定する必要があります。このオプションは、移行用に選択したターゲット リージョンで Availability Zones がサポートされている場合にのみ使用できます。
     -  可用性セット。移行されたマシンを可用性セットに配置します。 このオプションを使用するには、選択されたターゲット リソース グループに 1 つ以上の可用性セットが必要です。
     - [インフラストラクチャ冗長は必要ありません] オプション (移行されたマシンに対してこれらの可用性構成がいずれも不要な場合)。
-    
-11. **[Disk encryption type]\(ディスク暗号化の種類\)** で、以下を選択します。
+
+12. **[Disk encryption type]\(ディスク暗号化の種類\)** で、以下を選択します。
     - プラットフォーム マネージド キーを使用した保存時の暗号化
     - カスタマー マネージド キーを使用した保存時の暗号化
     - プラットフォーム マネージド キーとカスタマー マネージド キーを使用した二重暗号化
 
    > [!NOTE]
    > CMK を使用して VM をレプリケートするには、ターゲット リソース グループに[ディスク暗号化セットを作成する](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)必要があります。 ディスク暗号化セット オブジェクトによって、SSE に使用する CMK を含む Key Vault にマネージド ディスクがマップされます。
-  
-12. **[Azure ハイブリッド特典]** で、
+
+13. **[Azure ハイブリッド特典]** で、
 
     - Azure ハイブリッド特典を適用しない場合は、 **[いいえ]** を選択します。 続けて、 **[次へ]** をクリックします。
     - アクティブなソフトウェア アシュアランスまたは Windows Server のサブスクリプションの対象となっている Windows Server マシンがあり、移行中のマシンにその特典を適用する場合は、 **[はい]** を選択します。 続けて、 **[次へ]** をクリックします。
 
     ![ターゲットの設定](./media/tutorial-migrate-vmware/target-settings.png)
 
-13. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
+14. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
 
     - **VM サイズ**: 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。
     - **OS ディスク**:VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。
@@ -274,13 +283,13 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 ![コンピューティングの設定](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-14. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
+15. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
     - レプリケーションからディスクを除外できます。
-    - ディスクは除外すると、移行後に Azure VM 上に存在しなくなります。 
+    - ディスクは除外すると、移行後に Azure VM 上に存在しなくなります。
 
     ![ディスクの設定](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-15. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
+16. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
 
 > [!NOTE]
 > レプリケーションが開始される前であれば、 **[管理]**  >  **[マシンのレプリケート]** でレプリケーションの設定をいつでも更新できます。 レプリケーションの開始後は、設定を変更することができません。
@@ -320,8 +329,12 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 5. 移行の完了後、Azure portal の **[仮想マシン]** で、移行された Azure VM を確認します。 マシン名には、サフィックス **-Test** が含まれています。
 6. テストが完了したら、 **[マシンのレプリケート]** で Azure VM を右クリックし、 **[テスト移行をクリーンアップ]** をクリックします。
 
-    ![移行のクリーンアップ](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/clean-up-inline.png" alt-text="テスト移行のクリーンアップ後の結果を示すスクリーンショット。" lightbox="./media/tutorial-migrate-physical-virtual-machines/clean-up-expanded.png":::
 
+    > [!NOTE]
+    > SQL Server を実行しているサーバーを SQL VM RP に登録できるようになりました。これにより、SQL IaaS Agent 拡張機能を使用した自動修正、自動バックアップ、簡略化されたライセンス管理を利用できるようになります。
+    >- **[管理]**  >  **[Replicating servers]\(レプリケートしているサーバー\)**  >  **[Machine containing SQL server]\(SQL サーバーを含むマシン\)**  >  **[コンピューティングとネットワーク]** を選択し、 **[はい]** を選択して SQL VM RP に登録します。
+    >- アクティブなソフトウェア アシュアランスまたは SQL Server サブスクリプションの対象となっている SQL Server インスタンスがあり、移行するマシンに特典を適用する場合は、[SQL Server の Azure ハイブリッド特典] を選択します。
 
 ## <a name="migrate-aws-vms"></a>AWS VM を移行する
 
@@ -343,13 +356,11 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
     - AWS VM のレプリケーションが停止されます。
     - Azure Migrate: Server Migration の **[サーバーをレプリケートしています]** のカウントから AWS VM を削除します。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
     - VM のレプリケーション状態情報をクリーンアップします。
-2. 移行されたマシンに [Linux](../virtual-machines/extensions/agent-linux.md) エージェントをインストールします。 Azure VM の Windows エージェントは、移行プロセス中に事前にインストールされています。
-3. データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
-4. Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
-5. 移行された Azure VM インスタンスにトラフィックを切り替えます。
-6. Azure VM の新しい場所と IP アドレスを示すように内部ドキュメントを更新します。 
-
-
+1. [Azure VM での Windows のライセンス認証に関する問題を確認し、トラブルシューティングします。](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)
+1. ホスト名、データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
+1. Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
+1. 移行された Azure VM インスタンスにトラフィックを切り替えます。
+1. Azure VM の新しい場所と IP アドレスを示すように内部ドキュメントを更新します。
 
 
 ## <a name="post-migration-best-practices"></a>移行後のベスト プラクティス
@@ -358,12 +369,12 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
     - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細については、こちらを参照してください](../backup/quick-backup-vm-portal.md)。
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
-    - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
+    - [Microsoft Defender for Cloud のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用し、インバウンド トラフィック アクセスをロックダウンし、制限します。
     - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
-    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
+    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
-    - [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) をデプロイして、リソースの使用率と消費量を監視します。
+    - [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) をデプロイして、リソースの使用率と消費量を監視します。
 
 
 
@@ -377,7 +388,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 **質問:** 以前に作成した Server Assessment の結果から、移行用の VM をインポートできない   
 **回答:** 現時点では、このワークフローのために評価のインポートがサポートされていません。 回避策として、評価をエクスポートしてから手動で、「レプリケーションを有効にする」の手順の間に VM の推奨事項を選択できます。
-  
+
 **質問:** AWS VM の検出を試みているときに "Failed to fetch BIOS GUID (BIOS GUID をフェッチできませんでした)" というエラーが発生する   
 **回答:** 認証には、擬似ユーザーではなく、常にルート ログインを使用してください。 また、AWS VM でサポートされているオペレーティング システムを確認してください。  
 
@@ -390,7 +401,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 **質問:** AWS VM を Azure に移行する前に、何か変更を加える必要がありますか   
 **回答:** EC2 VM を Azure に移行する前に、これらの変更を行うことが必要になる場合があります。
 
-- VM のプロビジョニングに cloud-init を使用している場合は、Azure にレプリケートする前に、VM の cloud-init を無効にすることをお勧めします。 VM の cloud-init によって実行されるプロビジョニング手順は、AWS に固有のものである可能性があり、Azure への移行後には有効ではありません。 
+- VM のプロビジョニングに cloud-init を使用している場合は、Azure にレプリケートする前に、VM の cloud-init を無効にすることをお勧めします。 VM の cloud-init によって実行されるプロビジョニング手順は、AWS に固有のものである可能性があり、Azure への移行後には有効ではありません。 
 - VM が PV VM (準仮想化) であり HVM VM ではない場合、準仮想化された VM は AWS のカスタム ブート シーケンスを使用するため、Azure 上ではそのままでは実行できない可能性があります。 Azure への移行を実行する前に、PV ドライバーをアンインストールすることで、この課題を解決できる場合もあります。  
 - 最終的な移行の前に、必ずテスト移行を実行することをお勧めします。  
 

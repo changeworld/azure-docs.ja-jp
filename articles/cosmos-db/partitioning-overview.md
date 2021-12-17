@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 099c65143f29f4fdf341b52e5d80731f1bdb0808
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 08/26/2021
+ms.openlocfilehash: 43f722bf102566cf737e43732bf1ab3c39fdecc1
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031003"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032575"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割と水平スケーリング
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -71,7 +71,7 @@ Azure Cosmos DB は、ハッシュベースのパーティション分割を使�
 
 小さなコンテナーは通常、1 つの物理パーティションのみを必要としますが、少なくとも 4 つのレプリカが保持されます。
 
-次の図は、グローバルに分散されている物理パーティションに論理パーティションがどのようにマップされているかを示しています。
+次の画像は、世界中に分散する物理パーティションに対する論理パーティテョンのマッピングを表しています。 画像の [[Partition set]\(パーティション セット\)](global-dist-under-the-hood.md#partition-sets) は、複数のリージョンにまたがって同じ論理パーティション キーを管理している物理パーティションのグループを表しています。
 
 :::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="Azure Cosmos DB パーティション分割を示す図" border="false":::
 
@@ -135,3 +135,7 @@ Azure Cosmos DB で[複数項目の ACID トランザクション](database-tran
 * [Azure Cosmos DB の世界規模での分散](distribute-data-globally.md)について理解します。
 * [Azure Cosmos コンテナーのスループットをプロビジョニングする](how-to-provision-container-throughput.md)方法を確認する。
 * [Azure Cosmos データベースのスループットをプロビジョニングする](how-to-provision-database-throughput.md)方法を確認する。
+* [Azure Cosmos DB でデータのモデル化とパーティショニングを行う](/learn/modules/model-partition-data-azure-cosmos-db/)方法の学習モジュールを見る。
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

@@ -1,0 +1,137 @@
+- name: Video Analyzer for Media のドキュメント
+  href: ./index.yml
+- name: 概要
+  items:
+    - name: Video Analyzer for Media とは
+      href: video-indexer-overview.md
+    - name: Video Analyzer について
+      href: ../video-analyzer-docs/overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: はじめに
+      href: video-indexer-get-started.md
+    - name: ユーザーの招待
+      href: invite-users.md
+- name: チュートリアル
+  items:
+    - name: 新しい ARM アカウントを作成する (プレビュー)
+      href: create-video-analyzer-for-media-account.md
+    - name: 新しいアカウントを作成する
+      href: connect-to-azure.md
+    - name: Video Analyzer for Media API を使用する
+      href: video-indexer-use-apis.md
+    - name: Logic Apps コネクタ
+      href: logic-apps-connector-tutorial.md
+- name: サンプル
+  items:
+    - name: Video Analyzer for Media のサンプル
+      href: 'https://github.com/Azure-Samples/media-services-video-indexer'
+- name: 概念
+  items:
+    - name: 概要
+      href: concepts-overview.md
+    - name: Video Analyzer for Media と Media Services プリセットを比較する
+      href: compare-video-indexer-with-media-services-presets.md
+    - name: 複数のテナントの管理
+      href: manage-multiple-tenants.md
+    - name: 言語識別モデル
+      href: language-identification-model.md
+    - name: ライブ ストリーム分析
+      href: live-stream-analysis.md
+    - name: ビデオで観察される人々
+      href: observed-people-tracing.md
+    - name: 検出された人物の衣服
+      href: detected-clothing.md
+    - name: オーディオ効果検出
+      href: audio-effects-detection.md
+    - name: コンテンツ モデルのカスタマイズ
+      items:
+        - name: 概要
+          href: customize-content-models-overview.md
+        - name: アニメーション化された文字
+          href: animated-characters-recognition.md
+        - name: ブランド
+          href: customize-brands-model-overview.md
+        - name: Language
+          href: customize-language-model-overview.md
+        - name: Person
+          href: customize-person-model-overview.md
+- name: ハウツー ガイド
+  items:
+    - name: 既存のアカウントを ARM に接続する (プレビュー)
+      href: connect-classic-account-to-arm.md
+    - name: Azure に接続されたアカウントの管理
+      href: manage-account-connected-to-azure.md
+    - name: ビデオのアップロードとインデックス作成
+      href: upload-index-videos.md
+    - name: Video Analyzer for Media の出力を調べる
+      href: video-indexer-output-json-v2.md
+    - name: ビデオ内の正確な場面の検出
+      displayName: search
+      href: video-indexer-search.md
+    - name: シーン、ショット、キーフレームの検出
+      href: scenes-shots-keyframes.md
+    - name: 複数言語のコンテンツの識別と文字起こし
+      href: multi-language-identification-transcription.md
+    - name: 分析情報を表示および編集する
+      href: video-indexer-view-edit.md
+    - name: エディターを使用したプロジェクトの作成
+      href: use-editor-create-project.md
+    - name: アプリケーションへのウィジェットの埋め込み
+      href: video-indexer-embed-widgets.md
+    - name: Video Analyzer for Media を大規模に使用する場合の考慮事項
+      href: considerations-when-use-at-scale.md
+    - name: 障害復旧
+      href: video-indexer-disaster-recovery.md
+    - name: コンテンツ モデルのカスタマイズ
+      items:
+        - name: アニメーション化された文字
+          href: animated-characters-recognition-how-to.md
+        - name: Person
+          items:
+            - name: 使用 (Web サイトを)
+              href: customize-person-model-with-website.md
+            - name: 使用 (API を)
+              href: customize-person-model-with-api.md
+        - name: ブランド
+          items:
+            - name: 使用 (Web サイトを)
+              href: customize-brands-model-with-website.md
+            - name: 使用 (API を)
+              href: customize-brands-model-with-api.md
+        - name: 言語
+          items:
+            - name: 使用 (Web サイトを)
+              href: customize-language-model-with-website.md
+            - name: 使用 (API を)
+              href: customize-language-model-with-api.md
+- name: リファレンス
+  items:
+    - name: Video Analyzer for Media API
+      href: 'https://api-portal.videoindexer.ai/'
+    - name: Video Analyzer for Media ARM REST API
+      href: /rest/api/videoindexer/accounts?branch=videoindex
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: リージョン
+      displayName: location
+      href: regions.md
+    - name: よくあるご質問
+      href: faq.yml
+    - name: コンプライアンス
+      href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
+    - name: リリース ノート
+      href: release-notes.md
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=video-indexer'
+    - name: ユーザーの声
+      href: 'https://aka.ms/UserVoiceVI'
+    - name: ブログ
+      href: 'https://azure.microsoft.com/blog/tag/video-indexer/'

@@ -8,15 +8,15 @@ ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbf936370b401a76479c7679499103d083e0752a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 633d7ae014ed5778483958266268a702b730e911
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551749"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052752"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング 
 
@@ -106,4 +106,4 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
 ## <a name="next-steps"></a>次のステップ
 
-ご不明な点がある場合は、[デバイス管理の FAQ](faq.yml) をご覧ください。  
+- [Microsoft エラー ルックアップ ツール](/windows/win32/debug/system-error-code-lookup-tool)

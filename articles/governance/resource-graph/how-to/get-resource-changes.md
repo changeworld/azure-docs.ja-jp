@@ -1,14 +1,14 @@
 ---
 title: リソースの変更の取得
 description: リソースがいつ変更されたかを見つけ、変更されたプロパティの一覧を取得し、それらの差分を評価する方法について説明します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 500a2d58c5fc9e1b63a544978c4b583eba60a63e
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: ff82a5c3d2f58ade8637d2f44308f9eeda11d09a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219078"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324581"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
 
@@ -41,7 +41,7 @@ ms.locfileid: "106219078"
 
 - **resourceId** \[必須\]:変更を検索する対象の Azure リソース。
 - **interval** \[必須\]:**Zulu タイム ゾーン (Z)** を使用して変更イベントを確認する期間の _start_ 日付と _end_ 日付を持つプロパティ。
-- **fetchPropertyChanges** (省略可能):応答オブジェクトにプロパティの変更が含まれている場合に設定するブール型プロパティ。
+- **fetchPropertyChanges** (省略可能): 応答オブジェクトにプロパティの変更を含める場合に設定するブール型プロパティ。
 
 要求本文の例
 

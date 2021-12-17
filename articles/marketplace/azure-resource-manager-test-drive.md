@@ -4,29 +4,32 @@ description: コマーシャル マーケットプレースでの体験版の種
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 10/26/2021
+ms.openlocfilehash: 3bcd8b99ea7361e0af05cd55f96741b0d5ab5db8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730373"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847434"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
 この種類は、Azure Marketplace または AppSource にオファーがあっても、体験版は Azure リソースだけでビルドさせたい場合に使用します。 Azure Resource Manager (ARM) テンプレートは、ソリューションが最適に表現されるように設計する Azure リソースのコード化されたコンテナーです。 体験版では、提供された ARM テンプレートが取得されて、必要なすべてのリソースがリソース グループにデプロイされます。 これは、仮想マシンまたは Azure アプリのオファーの唯一の体験版オプションです。
 
-ARM テンプレートについてよく知らない場合は、「[Azure Resource Manager とは](../azure-resource-manager/management/overview.md)」および「[ARM テンプレートの構造と構文について](../azure-resource-manager/templates/template-syntax.md)」を読み、独自のテンプレートをビルドしてテストする方法をよく理解してください。
+ARM テンプレートについてよく知らない場合は、「[Azure Resource Manager とは](../azure-resource-manager/management/overview.md)」および「[ARM テンプレートの構造と構文について](../azure-resource-manager/templates/syntax.md)」を読み、独自のテンプレートをビルドしてテストする方法をよく理解してください。
 
 **ホストされた** 体験版または **ロジック アプリ** の体験版については、「[体験版とは](what-is-test-drive.md)」を参照してください。
+
+> [!TIP]
+> コマーシャル マーケットプレースでの体験版の顧客のビューを表示するには、「[Azure Marketplace とは](/marketplace/azure-marketplace-overview#take-action-on-a-listing)」や「[Microsoft AppSource とは](/marketplace/appsource-overview)」を参照してください。
 
 ## <a name="technical-configuration"></a>技術的な構成
 
 デプロイ テンプレートには、ソリューションを構成しているすべての Azure リソースが含まれています。 このシナリオに適合するのは、Azure リソースしか使用されていない製品です。 パートナー センターで次のプロパティを設定します。
 
-- **リージョン** (必須) – 現在、体験版を利用可能にできるサポート対象の Azure リージョンは 26 か所です。 通常、顧客が最も近いリージョンを選択して最高のパフォーマンスを実現できるように、顧客の数が最も多いと予測されるリージョンで体験版を利用可能にする必要があります。 選択中の各リージョンで必要なすべてのリソースのデプロイが自分のサブスクリプションで許可されていることを確認する必要があります。
+- **リージョン** (必須) – 現在、体験版を利用可能にできるサポート対象の Azure リージョンは 26 か所です。 最適なパフォーマンスを得るために、顧客の数が最も多いと思われるリージョンを選択することをお勧めします。 選択中の各リージョンで必要なすべてのリソースのデプロイが自分のサブスクリプションで許可されていることを確認する必要があります。
 
 - **インスタンス** – 使用可能なインスタンスの種類 (ホットまたはコールド) と数を選択します。この数に、ご自身のオファーが利用可能なリージョンの数が乗算されます。
 
@@ -194,9 +197,9 @@ ARM テンプレートについてよく知らない場合は、「[Azure Resour
 
 ### <a name="deployment-location"></a>デプロイの場所
 
-体験版を異なる Azure リージョンで使用できるようにすることができます。 このようにすると、ユーザーは最も近いリージョンを選択でき、ユーザー エクスペリエンスが最適になります。
+体験版を異なる Azure リージョンで使用できるようにすることができます。
 
-体験版では、ラボのインスタンスが作成されるとき常に、ユーザーが選択したリージョンにリソース グループが作成され、このグループのコンテキストでデプロイ テンプレートが実行されます。 そのため、テンプレートでは、リソース グループからデプロイの場所を選択する必要があります。
+体験版でラボのインスタンスが作成されると必ず、ユーザーが選択したリージョンのいずれかにリソース グループが作成され、そのグループのコンテキストでデプロイ テンプレートが実行されます。 そのため、テンプレートでは、リソース グループからデプロイの場所を選択する必要があります。
 
 ```JSON
 "variables": {
@@ -306,39 +309,46 @@ ARM テンプレートについてよく知らない場合は、「[Azure Resour
 
    テナント ID を持っていない場合は、Azure Active Directory で新しく作成します。 テナントの設定については、「[クイック スタート: テナントを設定する](../active-directory/develop/quickstart-create-new-tenant.md)」を参照してください。
 
-3. **Azure AD アプリ ID** – 新しいアプリケーションを作成して登録します。 このアプリケーションを使用して、体験版インスタンスでの操作を実行します。
+3. Microsoft Test-Drive アプリケーションをテナントにプロビジョニングします。 このアプリケーションを使用して、体験版リソースでの操作を実行します。
+    1. [Azure Az PowerShell モジュール](/powershell/azure/install-az-ps)をまだお持ちではない場合はインストールしてください。
+    1. Microsoft Test-Drive アプリケーションのサービス プリンシパルを追加します。
+        1. `Connect-AzAccount` を実行して、Azure アカウントにサインインするための資格情報を指定します。これには、Azure Active Directory の **グローバル管理者**[組み込みロール](../active-directory/roles/permissions-reference.md#global-administrator)が必要です。 
+        1. 新しいサービス プリンシパルを作成します: `New-AzADServicePrincipal -ApplicationId d7e39695-0b24-441c-a140-047800a05ede -DisplayName 'Microsoft TestDrive' -SkipAssignment`。
+        1. サービス プリンシパルが作成されたことを確認します: `Get-AzADServicePrincipal -DisplayName 'Microsoft TestDrive'`。
+      ![サービス プリンシパルを確認するコードを示す](media/test-drive/commands-to-verify-service-principal.png)
 
-   1. 新しく作成したディレクトリまたは既存のディレクトリに移動し、フィルター ペインで Azure Active Directory を選択します。
-   2. **[アプリの登録]** を探して、 **[追加]** を選択します。
-   3. アプリケーション名を指定します。
-   4. **[種類]** として **[Web アプリ/API]** を選択します。
-   5. [サインオン URL] の値は何でもかまいません。このフィールドは使用されません。
-   6. **［作成］** を選択します
-   7. アプリケーションが作成された後、 **[プロパティ]**  >  **[Set the application as multi-tenant]\(アプリケーションをマルチテナントとして設定する\)** を選択して、 **[保存]** を選択します。
+4. **[Azure AD アプリ ID]** には次のアプリケーション ID を貼り付けます: `d7e39695-0b24-441c-a140-047800a05ede`。
+5. **[Azure AD アプリ キー]** には、シークレットが不要なため、"no-secret" などのダミー シークレットを挿入します。
+6. サブスクリプションにデプロイするためにこのアプリケーションを使用しているので、Azure portal か PowerShell から、そのアプリケーションをサブスクリプションでの共同作成者として追加する必要があります。
 
-4. **[保存]** を選択します。
+   1. Azure ポータルで次の手順を実行します。
 
-5. この登録済みアプリのアプリケーション ID をコピーして、体験版のフィールドに貼り付けます。
+       1. 体験版に使用している **サブスクリプション** を選択します。
+       1. **[アクセス制御 (IAM)]** を選択します。<br>
 
-   ![Azure AD アプリケーション ID の詳細](media/test-drive/azure-ad-application-id-detail.png)
+          ![新しいアクセス制御 (IAM) 共同作成者の追加](media/test-drive/access-control-principal.png)
 
-6. アプリケーションを使用してサブスクリプションにデプロイするので、サブスクリプションで共同作成者としてアプリケーションを追加する必要があります。
+       1. **[ロールの割り当て]** タブ、次いで **[+ ロールの割り当ての追加]** を選択します。
 
-   1. 体験版に使用している **[サブスクリプション]** の種類を選択します。
-   1. **[アクセス制御 (IAM)]** を選択します。
-   1. **[ロールの割り当て]** タブを選択して、 **[ロールの割り当ての追加]** を選択します。
+          ![[アクセス制御 (IAM)] ウィンドウの選択で、[ロールの割り当て] タブを選択し、[+ ロールの割り当ての追加] を選択する方法を示す。](media/test-drive/access-control-principal-add-assignments.jpg)
 
-      ![新しいアクセス制御プリンシパルを追加する](media/test-drive/access-control-principal.jpg)
+       1. 次の Azure AD アプリケーション名を入力します: `Microsoft TestDrive`。 **共同作成者** ロールを割り当てるアプリケーションを選択します。
 
-   1. 示されているように、 **[ロール]** および **[アクセスの割り当て先]** を設定します。 **[選択]** フィールドに、Azure AD アプリケーションの名前を入力します。 **共同作成者** ロールを割り当てるアプリケーションを選択します。
+          ![共同作成者ロールの割り当て方法を示します](media/test-drive/access-control-permissions.jpg)
 
-      ![アクセス許可を追加する](media/test-drive/access-control-permissions.jpg)
+       1. **[保存]** を選択します。
+   1. PowerShell を使用する場合:
+      1. 次を実行して、ServicePrincipal object-id を取得します: `(Get-AzADServicePrincipal -DisplayName 'Microsoft TestDrive').id`。
+      1. その ObjectId とサブスクリプション ID を指定して、次を実行します: `New-AzRoleAssignment -ObjectId <objectId> -RoleDefinitionName Contributor -Scope /subscriptions/<subscriptionId>`。
 
-   1. **[保存]** を選択します。
-
-7. **[Azure AD アプリ]** の認証キーを生成します。 **[キー]** で、 **[キーの説明]** を追加し、期間を **[期限なし]** (キーの有効期限が切れると、運用環境の体験版を使用できなくなります) を設定して、 **[保存]** を選択します。 この値をコピーし、必要な体験版のフィールドに貼り付けます。
-
-![Azure AD アプリケーションのキーを表示する](media/test-drive/azure-ad-app-keys.png)
+> [!NOTE]
+> 元の appID を削除する前に、Azure portal に移動し、 **[リソース グループ]** に移動して、`CloudTry_` を検索します。 **[イベント開始者]** 列を確認します。
+>
+> :::image type="content" source="media/test-drive/event-initiated-by-field.png" lightbox="media/test-drive/event-initiated-by-field.png" alt-text="&quot;イベント開始者&quot; フィールドを示す":::
+>
+> 少なくとも 1 つのリソース ( **[操作の名前]** ) が **Microsoft TestDrive** に設定されていない限り、元の appID を削除しないでください。
+>
+> appID を削除するには、左側のナビゲーション メニューで **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択し、次に **[すべてのアプリケーション]** タブを選択します。アプリケーションを選択し、 **[削除]** を選択します。
 
 ## <a name="republish"></a>再発行
 

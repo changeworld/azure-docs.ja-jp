@@ -13,18 +13,18 @@ ms.date: 03/11/2021
 ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 1a380c8a3d766c3c11d8cba1148383d924f65a1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7f05973f7d609ab3f4dc0f2f567ede4ce0d0f64
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224998"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830926"
 ---
 # <a name="manage-your-users-with-my-staff"></a>マイ スタッフを使用してユーザーを管理する
 
 マイ スタッフを使用すると、ストア マネージャーやチーム リーダーなどの権限のある人に、スタッフ メンバーが Azure AD アカウントにアクセスできるようにするためのアクセス許可を委任することができます。 組織では、パスワードのリセットや電話番号の変更などの一般的なタスクを、中央のヘルプデスクに頼るのではなく、現場のチーム マネージャーに任せることができます。 マイ スタッフを使用すると、自分のアカウントにアクセスできないユーザーは、数回のクリックでアクセスを回復することができ、ヘルプデスクや IT スタッフは必要ありません。
 
-組織のためにマイ スタッフを構成する前に、このドキュメントと[ユーザー ドキュメント](../user-help/my-staff-team-manager.md)を確認し、この機能と、それがユーザーに及ぼす影響を、理解することをお勧めします。 ユーザーのドキュメントを利用して、新しいエクスペリエンスに備えてユーザーを訓練し、準備することで、ロールアウトを成功させることができます。
+組織のためにマイ スタッフを構成する前に、このドキュメントと[ユーザー ドキュメント](https://support.microsoft.com/account-billing/manage-front-line-users-with-my-staff-c65b9673-7e1c-4ad6-812b-1a31ce4460bd)を確認し、この機能と、それがユーザーに及ぼす影響を、理解することをお勧めします。 ユーザーのドキュメントを利用して、新しいエクスペリエンスに備えてユーザーを訓練し、準備することで、ロールアウトを成功させることができます。
 
 ## <a name="how-my-staff-works"></a>マイ スタッフのしくみ
 
@@ -43,17 +43,19 @@ ms.locfileid: "103224998"
 * SMS ベース認証を有効にするには、Azure AD テナントでの "*グローバル管理者*" 特権が必要です。
 * テキスト メッセージ認証方法ポリシーで有効になっている各ユーザーは、その方法を使用しない場合でも、ライセンスを取得している必要があります。 有効な各ユーザーは、次の Azure AD または Microsoft 365 ライセンスのいずれかを保持している必要があります。
 
-  * [Azure AD Premium P1 または P2](https://azure.microsoft.com/pricing/details/active-directory/)
-  * [Microsoft 365 (M365) F1 または F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
-  * [Enterprise Mobility + Security (EMS) E3 または E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) または [Microsoft 365 (M365) E3 または E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
+  * [Azure AD Premium P1 または P2](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)
+  * [Microsoft 365 F1 または F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
+  * [Enterprise Mobility + Security (EMS) E3 または E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) または [Microsoft 365 E3 または E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
 ## <a name="how-to-enable-my-staff"></a>マイ スタッフを有効にする方法
 
 管理単位を構成した後は、マイ スタッフにアクセスするユーザーにこのスコープを適用できます。 管理者ロールを割り当てられたユーザーだけが、マイ スタッフにアクセスできます。 マイ スタッフを有効にするには、次の手順のようにします。
 
-1. ユーザー管理者として Azure portal にサインインします。
-2. **[Azure Active Directory]**  >  **[ユーザー設定]**  >  **[ユーザー機能プレビュー]**  >  **[ユーザー機能プレビュー設定の管理]** に移動します。
-3. **[管理者はマイ スタッフにアクセスできます]** では、すべてのユーザーまたは選択したユーザーにアクセスを許可したり、すべてのユーザーにアクセスを禁止したりできます。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にユーザー管理者としてサインインします。
+
+1. **[Azure Active Directory]**  >  **[ユーザー設定]**  >  **[ユーザー機能プレビュー]**  >  **[ユーザー機能プレビュー設定の管理]** の順に選択します。
+
+1. **[管理者はマイ スタッフにアクセスできます]** では、すべてのユーザーまたは選択したユーザーにアクセスを許可したり、すべてのユーザーにアクセスを禁止したりできます。
 
 > [!Note]
 > 管理者ロールを割り当てられたユーザーだけが、マイ スタッフにアクセスできます。 管理者ロールが割り当てられていないユーザーに対してマイ スタッフを有効にすると、そのユーザーはマイ スタッフにアクセスできなくなります。
@@ -70,7 +72,7 @@ Microsoft では、[Azure AD 条件付きアクセス ポリシー](../condition
 
 ## <a name="using-my-staff"></a>マイ スタッフの使用
 
-ユーザーがマイ スタッフに移動すると、自分が管理者アクセス許可を持つ[管理単位](administrative-units.md)の名前が表示されます。 [マイ スタッフのユーザー ドキュメント](../user-help/my-staff-team-manager.md)では、"場所" という用語を使用して管理単位が示されています。 管理者のアクセス許可に管理単位スコープがない場合、アクセス許可は組織全体に適用されます。 マイ スタッフが有効にされた後、有効にされて管理者ロールが割り当てられているユーザーは、[https://mystaff.microsoft.com](https://mystaff.microsoft.com) を使用してマイ スタッフにアクセスできます。 管理単位を選択してその管理単位内のユーザーを表示したり、ユーザーを選択してプロファイルを開いたりすることができます。
+ユーザーがマイ スタッフに移動すると、自分が管理者アクセス許可を持つ[管理単位](administrative-units.md)の名前が表示されます。 [マイ スタッフのユーザー ドキュメント](https://support.microsoft.com/account-billing/manage-front-line-users-with-my-staff-c65b9673-7e1c-4ad6-812b-1a31ce4460bd)では、"場所" という用語を使用して管理単位が示されています。 管理者のアクセス許可に管理単位スコープがない場合、アクセス許可は組織全体に適用されます。 マイ スタッフが有効にされた後、有効にされて管理者ロールが割り当てられているユーザーは、[https://mystaff.microsoft.com](https://mystaff.microsoft.com) を使用してマイ スタッフにアクセスできます。 管理単位を選択してその管理単位内のユーザーを表示したり、ユーザーを選択してプロファイルを開いたりすることができます。
 
 ## <a name="reset-a-users-password"></a>ユーザーのパスワードのリセット
 
@@ -84,7 +86,7 @@ Microsoft では、[Azure AD 条件付きアクセス ポリシー](../condition
 
 * [認証管理者](permissions-reference.md#authentication-administrator)
 * [特権認証管理者](permissions-reference.md#privileged-authentication-administrator)
-* [グローバル管理者](permissions-reference.md#global-administrator)
+* [全体管理者](permissions-reference.md#global-administrator)
 * [ヘルプデスク管理者](permissions-reference.md#helpdesk-administrator)
 * [ユーザー管理者](permissions-reference.md#user-administrator)
 * [パスワード管理者](permissions-reference.md#password-administrator)
@@ -112,7 +114,7 @@ Microsoft では、[Azure AD 条件付きアクセス ポリシー](../condition
 
 * [認証管理者](permissions-reference.md#authentication-administrator)
 * [特権認証管理者](permissions-reference.md#privileged-authentication-administrator)
-* [グローバル管理者](permissions-reference.md#global-administrator)
+* [全体管理者](permissions-reference.md#global-administrator)
 
 ## <a name="search"></a>検索
 
@@ -126,5 +128,5 @@ Azure Active Directory ポータルでは、マイ スタッフにおいて行�
 
 ## <a name="next-steps"></a>次のステップ
 
-[マイ スタッフのユーザー ドキュメント](../user-help/my-staff-team-manager.md)
+[マイ スタッフのユーザー ドキュメント](https://support.microsoft.com/account-billing/manage-front-line-users-with-my-staff-c65b9673-7e1c-4ad6-812b-1a31ce4460bd)
 [管理単位のドキュメント](administrative-units.md)

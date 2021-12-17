@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 06/29/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2e8bf2ccbf7a53563013c7ba653a6f6e8905337
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a91010f100aa0a464ec61f763b38150ebb4efcf4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97881312"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090351"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>チュートリアル:Azure AD Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する
 
@@ -41,7 +41,7 @@ Azure AD Multi-Factor Authentication と条件付きアクセス ポリシーを
 
 * 少なくとも Azure AD Premium P1 または試用版ライセンスが有効になっている、動作している Azure AD テナント。
     * 必要に応じて、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* "*グローバル管理者*" 特権を持つアカウント。
+* "*グローバル管理者*" 特権を持つアカウント。 一部の MFA 設定は、認証ポリシー管理者が管理することもできます。 詳細については、[認証ポリシー管理者](../roles/permissions-reference.md#authentication-policy-administrator)をご覧ください。
 * パスワードがわかっている管理者以外のユーザー (*testuser* など)。 このチュートリアルでは、このアカウントを使用してエンドユーザーの Azure AD Multi-Factor Authentication エクスペリエンスをテストします。
     * ユーザーを作成する必要がある場合は、「[クイックスタート: Azure Active Directory に新しいユーザーを追加する](../fundamentals/add-users-azure-active-directory.md)」を参照してください。
 * 管理者以外のユーザーが所属するグループ (*MFA-Test-Group* など)。 このチュートリアルでは、このグループに対して Azure AD Multi-Factor Authentication を有効にします。

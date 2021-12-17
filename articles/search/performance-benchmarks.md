@@ -3,17 +3,16 @@ title: パフォーマンス ベンチマーク
 titleSuffix: Azure Cognitive Search
 description: さまざまなパフォーマンス ベンチマークによる Azure Cognitive Search のパフォーマンスについて説明します
 author: dereklegenzoff
-manager: luisca
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 9f4473d6c8a584bf60e5c8fe2d69d6a56a55e71d
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 03276e72224c8ddefa80358c4214893fd3363c96
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107956"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178135"
 ---
 # <a name="azure-cognitive-search-performance-benchmarks"></a>Azure Cognitive Search のパフォーマンス ベンチマーク
 
@@ -22,7 +21,7 @@ Azure Cognitive Search のパフォーマンスは、検索サービスのサイ
 さまざまなユース ケースに対応するために、次の 2 つの主要なシナリオでベンチマークを実行しました。
 
 * **eコマース検索** - このベンチマークは、eコマースの実際のシナリオをエミュレートしたもので、北欧の eコマース企業 [CDON](https://cdon.com) に基づいています。
-* **ドキュメント検索** - このシナリオは、[Semantic Scholar](http://s2-public-api-prod.us-west-2.elasticbeanstalk.com/corpus/download/) のドキュメント全文に対するキーワード検索で構成されています。 これは、一般的なドキュメント検索ソリューションをエミュレートします。
+* **ドキュメント検索** - このシナリオは、[Semantic Scholar](https://www.aclweb.org/anthology/2020.acl-main.447/) のドキュメント全文に対するキーワード検索で構成されています。 これは、一般的なドキュメント検索ソリューションをエミュレートします。
 
 これらのシナリオにはさまざまなユース ケースが反映されていますが、どのシナリオも異なるため、常に個々のワークロードのパフォーマンスをテストすることをお勧めします。 Microsoft は [JMeter を使用したパフォーマンス テスト ソリューション](https://github.com/Azure-Samples/azure-search-performance-testing)を公開し、独自のサービスに対して同様のテストを実行できるようにしました。
 
@@ -182,6 +181,24 @@ Azure Cognitive Search のパフォーマンスにベンチマークを設定す
 | 20%  | 45 ms  | 31 ms  | 55 ミリ秒   | 73 ミリ秒 | 84 ms | 109 ms |
 | 50%  | 63 ms  | 39 ms  | 81 ms   | 106 ミリ秒 | 123 ms | 163 ms |
 | 80%  | 115 ms  | 73 ミリ秒  | 145 ms   | 191 ms | 224 ms | 291 ms |
+
+### <a name="s3-performance"></a>S3 のパフォーマンス
+
+#### <a name="queries-per-second"></a>秒間クエリ
+
+次のグラフは、サービスが長時間にわたって処理できる最高のクエリ負荷を、1 秒あたりのクエリ数 (QPS) で示しています。
+
+![最も保守がしやすい QPS ドキュメント検索 S3](./media/performance-benchmarks/s3-docsearch-qps.png)
+
+#### <a name="query-latency"></a>クエリの待機時間
+
+クエリの待機時間は、サービスの負荷によって異なり、高い負荷の下にあるサービスでは、クエリの平均待機時間が長くなります。 次の表は、3 つの異なる使用レベルのクエリ待機時間の 25、50、75、90、95、99 番目のパーセンタイルを示しています。
+
+| 最大 QPS の割合  | 平均待機時間 | 25% | 75% | 90% | 95% | 99%|
+|---|---|---|---| --- | --- | --- |
+| 20%  | 43 ms  | 29 ms  | 53 ms   | 74 ミリ秒 | 86 ms | 111 ms |
+| 50%  | 65 ms  | 37 ms  | 85 ms   | 111 ms | 128 ms | 164 ms |
+| 80%  | 126 ms  | 83 ms  | 162 ms   | 205 ms | 233 ms | 281 ms |
 
 ## <a name="takeaways"></a>重要なポイント
 

@@ -1,22 +1,22 @@
 ---
-title: アクセス トークンの要求 - Azure Active Directory B2C | Microsoft Docs
+title: アクセス トークンの要求 - Azure Active Directory B2C
 description: Azure Active Directory B2C にアクセス トークンを要求する方法を説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 05/26/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: a633a7656a287c0b8df050b6d14afb73c27a7460
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 2d6aeddaaf2efc039150d7060f76f46045bd0efe
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382141"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008315"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのアクセス トークンの要求
 
@@ -25,7 +25,7 @@ ms.locfileid: "106382141"
 この記事では、Web アプリケーションと Web API に対してアクセス トークンを要求する方法を示します。 Azure AD B2C でのトークンの詳細については、「[Overview of tokens in Azure Active Directory B2C (Azure Active Directory B2C でのトークンの概要)](tokens-overview.md)」を参照してください。
 
 > [!NOTE]
-> **Web API チェーン (On-Behalf-Of) は Azure AD B2C でサポートされていません。** 多くのアーキテクチャには、別のダウンストリーム Web API を呼び出す必要がある Web API が含まれており、どちらも、Azure AD B2C によってセキュリティ保護されています。 このシナリオは、Web API バック エンドのある (つまり、別のサービスを呼び出す) クライアントで一般的なものです。 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 JWT Bearer Credential Grant (On-Behalf-Of フロー) を使用してサポートできます。 ただし、現時点では、Azure AD B2C に On-Behalf-Of フローは実装されていません。
+> **Web API チェーン (On-Behalf-Of) は Azure AD B2C でサポートされていません。** 多くのアーキテクチャには、別のダウンストリーム Web API を呼び出す必要がある Web API が含まれており、どちらも、Azure AD B2C によってセキュリティ保護されています。 このシナリオは、Web API バック エンドのある (つまり、別のサービスを呼び出す) クライアントで一般的なものです。 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 JWT Bearer Credential Grant (On-Behalf-Of フロー) を使用してサポートできます。 ただし、現時点では、Azure AD B2C に On-Behalf-Of フローは実装されていません。 On-Behalf-Of は Azure AD に登録しているアプリケーションで使用するサービスですが、Azure AD B2C に登録しているアプリケーションでは、トークンを発行しているテナントの種類 (Azure AD または Azure AD B2C) を問わず、使用できません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,7 +66,7 @@ OpenID Connect 標準では、いくつかの特別な scope 値が指定され�
 
 アクセス トークンを要求するには、承認コードが必要です。 `/authorize` エンドポイントに対する承認コード要求の例を次に示します。 カスタム ドメインとアクセス トークンの併用はサポートされていません。 要求 URL には、tenant-name.onmicrosoft.com ドメインを使用します。
 
-次の例では、これらの値を置き換えます。
+次の例では、クエリ文字列内のこれらの値を置き換えます。
 
 - `<tenant-name>` - Azure AD B2C テナントの名前。
 - `<policy-name>` - カスタム ポリシーまたはユーザー フローの名前。
@@ -90,7 +90,7 @@ client_id=<application-ID>
 https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 ```
 
-承認コードを正常に受信したら、それを使用してアクセス トークンを要求できます。
+承認コードを正常に受信したら、それを使用してアクセス トークンを要求できます。 パラメーターは、HTTP POST 要求の本文にあることに注意してください。
 
 ```http
 POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
@@ -104,7 +104,7 @@ grant_type=authorization_code
 &redirect_uri=https://jwt.ms
 &client_secret=2hMG2-_:y12n10vwH...
 ```
-
+ 
 次の応答に似た内容が表示されます。
 
 ```json

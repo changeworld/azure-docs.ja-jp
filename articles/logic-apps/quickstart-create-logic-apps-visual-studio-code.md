@@ -1,22 +1,22 @@
 ---
-title: Visual Studio Code を使用してタスクとワークフローを自動化する
-description: Visual Studio Code (VS Code) を使用して、ロジック アプリ ワークフロー定義を作成または編集します
+title: クイックスタート - Visual Studio Codel で Azure Logic Apps を使用して統合ワークフローを作成する
+description: Visual Studio Code のマルチテナント Azure Logic Apps を使用して、ワークフロー定義を作成および管理します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, deli, logicappspm
+ms.reviewer: azla
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/24/2021
-ms.openlocfilehash: 03cfb49dabd5039453f84ef0e636d3948af70d8d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/25/2021
+ms.openlocfilehash: 15f3481e42c543bead8ccf5f01654912cce5085f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764839"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078429"
 ---
-# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用してロジック アプリ ワークフローの定義を作成、管理する
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-with-multi-tenant-azure-logic-apps-and-visual-studio-code"></a>クイックスタート - Visual Studio Code のマルチテナント Azure Logic Apps を使用して、ワークフロー定義を作成および管理する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio Code を使用して、ロジック アプリを作成し、管理できます。ロジック アプリを使用すると、組織や企業間でアプリ、データ、システム、サービスを統合するためのタスク、ワークフロー、プロセスを自動化できます。 このクイックスタートでは、コードベースのエクスペリエンスを通じて、ロジック アプリの JavaScript Object Notation (JSON) を使用する、基になるワークフロー定義を作成および編集する方法を示します。 Azure に既にデプロイされている既存のロジック アプリを使用することもできます。
+このクイックスタートでは、マルチテナント [Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio Code を使用して、組織と企業間でアプリ、データ、システム、サービスを統合するタスクとプロセスを自動化するために役立つロジック アプリ ワークフローを作成および管理する方法を示します。 コードベースのエクスペリエンスを通じて、ロジック アプリの JavaScript Object Notation (JSON) を使用する、基になるワークフロー定義を作成および編集します。 Azure に既にデプロイされている既存のロジック アプリを使用することもできます。 マルチテナントとシングルテナントのモデルの比較の詳細については、「[シングルテナントとマルチテナント、および統合サービス環境](single-tenant-overview-compare.md)」を参照してください。
 
 これらのタスクは [Azure portal](https://portal.azure.com) と Visual Studio でも実行できますが、既にロジック アプリ定義を使い慣れていて、コードで直接作業する場合は、Visual Studio Code の方が迅速に作業を開始できます。 たとえば、既に作成されているロジック アプリを無効化、有効化、削除、更新することができます。 また、Visual Studio Code が実行されている開発プラットフォーム (Linux、Windows、Mac など) からロジック アプリと統合アカウントを操作することもできます。
 
@@ -56,7 +56,7 @@ ms.locfileid: "107764839"
 
 <a name="access-azure"></a>
 
-## <a name="access-azure-from-visual-studio"></a>Visual Studio から Azure にアクセスする
+## <a name="access-azure-from-visual-studio-code"></a>Visual Studio Code から Azure にアクセスする
 
 1. Visual Studio Code を開きます。 Visual Studio Code ツール バーで、Azure アイコンを選択します。
 
@@ -224,24 +224,6 @@ Azure portal でロジック アプリを確認するには、次の手順を実
 
    ![Azure portal での新しいロジック アプリ](./media/quickstart-create-logic-apps-visual-studio-code/published-logic-app-in-azure.png)
 
-<a name="disable-enable-logic-app"></a>
-
-## <a name="disable-or-enable-logic-app"></a>ロジック アプリを無効または有効にする
-
-Visual Studio Code では、発行されたロジック アプリを編集して変更を保存すると、既にデプロイされているアプリを *上書き* します。 運用環境でのロジック アプリの中断を回避し、中断を最小限に抑えるには、ロジック アプリを最初に非アクティブ化します。 ロジック アプリが引き続き動作することを確認した後で、ロジック アプリを再度アクティブにすることができます。
-
-1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#access-azure)します。
-
-1. サブスクリプション内のすべてのロジック アプリを表示できるように、Azure ウィンドウの **[ロジック アプリ]** で、Azure サブスクリプションを展開します。
-
-   1. ロジック アプリを無効にするには、ロジック アプリのメニューを開き、 **[Disable] (無効化)** を選択します。
-
-      ![ロジック アプリを無効にする](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
-
-   1. ロジック アプリを再アクティブ化する準備ができたら、ロジック アプリのメニューを開き、 **[Enable] (有効化)** を選択します。
-
-      ![ロジック アプリを有効にする](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
-
 <a name="edit-logic-app"></a>
 
 ## <a name="edit-deployed-logic-app"></a>デプロイされたロジック アプリの編集
@@ -249,7 +231,7 @@ Visual Studio Code では、発行されたロジック アプリを編集して
 Visual Studio Code では、既に Azure にデプロイされているロジック アプリのワークフロー定義を開いて編集することができます。
 
 > [!IMPORTANT] 
-> 実稼働環境でアクティブに実行されているロジック アプリを編集する前に、[まずロジック アプリを無効化する](#disable-enable-logic-app)ことで、ロジック アプリが破損するリスクを回避し、中断を最小限に抑えることができます。
+> 実稼働環境でアクティブに実行されているロジック アプリを編集する前に、[まずロジック アプリを無効化する](#disable-enable-logic-apps)ことで、ロジック アプリが破損するリスクを回避し、中断を最小限に抑えることができます。
 
 1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#access-azure)します。
 
@@ -278,7 +260,7 @@ Visual Studio Code では、既に Azure にデプロイされているロジッ
 Visual Studio Code では、以前のバージョンのロジック アプリを開いて確認することができます。 また、以前のバージョンを現在のバージョンに昇格させることもできます。
 
 > [!IMPORTANT] 
-> 実稼働環境でアクティブに実行されているロジック アプリを変更する前に、[まずロジック アプリを無効化する](#disable-enable-logic-app)ことで、ロジック アプリが破損するリスクを回避し、中断を最小限に抑えることができます。
+> 実稼働環境でアクティブに実行されているロジック アプリを変更する前に、[まずロジック アプリを無効化する](#disable-enable-logic-apps)ことで、ロジック アプリが破損するリスクを回避し、中断を最小限に抑えることができます。
 
 1. サブスクリプション内のすべてのロジック アプリを表示できるように、Azure ウィンドウの **[ロジック アプリ]** で、Azure サブスクリプションを展開します。
 
@@ -308,7 +290,62 @@ Visual Studio Code では、以前のバージョンのロジック アプリを
 
       Visual Studio Code は選択したバージョンを現在のバージョンに昇格させ、昇格したバージョンに新しい番号を割り当てます。 以前のバージョンは、昇格されたバージョンの下に表示されます。
 
+<a name="disable-enable-logic-apps"></a>
+
+## <a name="disable-or-enable-logic-apps"></a>ロジック アプリを無効または有効にする
+
+Visual Studio Code では、発行されたロジック アプリを編集して変更を保存すると、既にデプロイされているアプリを *上書き* します。 運用環境でのロジック アプリの中断を回避し、中断を最小限に抑えるには、ロジック アプリを最初に無効にします。 ロジック アプリが引き続き動作することを確認した後で、ロジック アプリを再度有効にすることができます。
+
+> [!NOTE]
+> ロジック アプリを無効にすると、ワークフロー インスタンスに次のような影響が生じます。
+>
+> * Logic Apps サービスは、進行中および保留中の実行をすべてその完了まで続行します。 このプロセスは、ボリュームやバックログによっては、完了までに時間がかかる場合があります。
+>
+> * Logic Apps サービスは、新しいワークフロー インスタンスを作成することも実行することもありません。
+>
+> * トリガーは、次にその条件が満たされたときに起動されません。 ただし、トリガーの状態には、ロジック アプリが停止したポイントが記憶されます。 そのため、ロジック アプリを再度有効にすると、前回の実行以降のすべての未処理の項目に対してトリガーが起動されます。
+>
+>   前回の実行以降の未処理の項目に対してトリガーが起動しないようにするには、ロジック アプリを再度有効にする前に、トリガーの状態をクリアします。
+>
+>   1. ロジック アプリで、ワークフローのトリガーをどこでもかまわないので編集します。
+>   1. 変更を保存します。 この手順により、トリガーの現在の状態がリセットされます。
+>   1. ロジックアプリを再度有効にします。
+
+1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#access-azure)します。
+
+1. サブスクリプション内のすべてのロジック アプリを表示できるように、Azure ウィンドウの **[ロジック アプリ]** で、Azure サブスクリプションを展開します。
+
+   1. ロジック アプリを無効にするには、ロジック アプリのメニューを開き、 **[Disable]\(無効化\)** を選択します。
+
+      ![ロジック アプリを無効にする](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
+
+   1. ロジック アプリを再度有効にする準備ができたら、ロジック アプリのメニューを開き、 **[Enable]\(有効化\)** を選択します。
+
+      ![ロジック アプリを有効にする](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
+
+<a name="delete-logic-apps"></a>
+
+## <a name="delete-logic-apps"></a>ロジック アプリを削除する
+
+ロジック アプリを削除すると、ワークフロー インスタンスに次のような影響が生じます。
+
+* 進行中および保留中の実行があれば、それらのキャンセルを Logic Apps サービスがベスト エフォートで試みます。
+
+  大量のボリュームやバックログがあったとしても、ほとんどの実行は完了前または開始前にキャンセルされます。 ただし、キャンセル プロセスは完了までに時間がかかる場合があります。 その間、サービスによってキャンセル プロセスが処理される一方、いくつかの実行が実行対象として取り上げられてしまう可能性があります。
+
+* Logic Apps サービスは、新しいワークフロー インスタンスを作成することも実行することもありません。
+
+* ワークフローを削除してから同じワークフローを再作成しても、再作成されたワークフローに、削除したワークフローと同じメタデータが割り当てられることはありません。 削除したワークフローの呼び出し元となったワークフローを再保存する必要があります。 これにより、呼び出し元は、再作成されたワークフローの正しい情報を取得します。 それ以外の場合、再作成したワークフローの呼び出しは、`Unauthorized` エラーで失敗します。 この動作は、統合アカウントのアーティファクトを使用するワークフローや、Azure 関数を呼び出すワークフローにも当てはまります。
+
+1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#access-azure)します。
+
+1. サブスクリプション内のすべてのロジック アプリを表示できるように、Azure ウィンドウの **[ロジック アプリ]** で、Azure サブスクリプションを展開します。
+
+1. 削除したいロジック アプリを見つけてそのメニューを開き、 **[削除]** を選択します。
+
+   ![ロジック アプリを削除する](./media/quickstart-create-logic-apps-visual-studio-code/delete-logic-app.png)
+
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Visual Studio Code でステートフルおよびステートレスなロジック アプリを作成する (プレビュー)](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)
+> [Visual Studio Code でシングルテナント ベースのロジック アプリ ワークフローを作成する](../logic-apps/create-single-tenant-workflows-visual-studio-code.md)

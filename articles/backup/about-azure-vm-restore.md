@@ -3,12 +3,12 @@ title: Azure 仮想マシン復元プロセスについて
 description: Azure Backup サービスで Azure Virtual Machines を復元する方法を説明します
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 62d1ff7973693f29c77c77fe2ad4fbbb598a5fa4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c81a2c227214643678f0a82bac29b7d573b9994e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738414"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262149"
 ---
 # <a name="about-azure-vm-restore"></a>Azure VM の復元について
 
@@ -45,11 +45,11 @@ ms.locfileid: "101738414"
 | [復元して新しい仮想マシンを作成する](./backup-azure-arm-restore-vms.md) | VM 全体を OLR (ソース VM がまだ存在する場合) または ALR に復元します | <li> ソース VM が失われるか、破損した場合、VM 全体を復元できます  <li> VM のコピーを作成できます  <li> 監査またはコンプライアンスの復元ドリルを実行できます  <li> このオプションは、Marketplace イメージから作成された Azure VM では機能しません (つまり、ライセンスの有効期限が切れたために使用できない場合)。 |
 | [VM のディスクを復元する](./backup-azure-arm-restore-vms.md#restore-disks) | VM に接続されているディスクを復元します                             |  すべてのディスク:このオプションでは、テンプレートが作成され、ディスクが復元されます。 このテンプレートは、要件に合わせて特別な構成 (可用性セットなど) で編集でき、さらにテンプレートを使用し、ディスクを復元して VM を再作成できます。 |
 | [VM 内の特定のファイルを復元する](./backup-azure-restore-files-from-vm.md) | 復元ポイントを選択し、ファイルを参照して選択し、バックアップされた VM と同じ (または互換性のある) OS に復元します。 |  復元する特定のファイルがわかっている場合は、VM 全体を復元するのではなく、このオプションを使用します。 |
-| [暗号化された VM を復元する](./backup-azure-vms-encryption.md) | ポータルからディスクを復元し、次に PowerShell を使用して VM を作成します | <li> [Azure Active Directory を使用した暗号化された VM](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [Azure AD を使用しない暗号化された VM](../virtual-machines/windows/disk-encryption-windows.md) <li> ["*Azure AD 使用なし*" に移行される "*Azure AD を使用した*" 暗号化された VM](../virtual-machines/windows/disk-encryption-faq.md#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app) |
+| [暗号化された VM を復元する](./backup-azure-vms-encryption.md) | ポータルからディスクを復元し、次に PowerShell を使用して VM を作成します | <li> [Azure Active Directory を使用した暗号化された VM](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [Azure AD を使用しない暗号化された VM](../virtual-machines/windows/disk-encryption-windows.md) <li> ["*Azure AD 使用なし*" に移行される "*Azure AD を使用した*" 暗号化された VM](../virtual-machines/windows/disk-encryption-faq.yml#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app-) |
 | [リージョンをまたがる復元](./backup-azure-arm-restore-vms.md#cross-region-restore) | 新しい VM を作成するか、セカンダリ リージョン (Azure のペアになっているリージョン) にディスクを復元します | <li> **完全な停止**:リージョンをまたがる復元機能では、セカンダリ リージョンでデータの復旧を待つ時間がありません。 Azure で停止が宣言される前でも、セカンダリ リージョンで復元を開始できます。 <li> **部分的な停止**:ダウンタイムは、Azure Backup によって、バックアップしたデータが格納されている特定のストレージ クラスターで、または Azure Backup と、バックアップしたデータに関連付けられているストレージ クラスターを接続しているネットワークでも、発生する可能性があります。 リージョンをまたがる復元では、セカンダリ リージョンでバックアップされたデータのレプリカを使用して、セカンダリ リージョンで復元を実行できます。 <li> **停止なし**:セカンダリ リージョンのデータを使用して、ビジネス継続性とディザスター リカバリー (BCDR) ドリルを監査またはコンプライアンス目的で実施することができます。 これにより、プライマリ リージョンでビジネス継続性とディザスター リカバリー ドリルのための完全な停止や部分的な停止が発生していない場合でも、セカンダリ リージョンで、バックアップされたデータの復元を実行できます。  |
 
 ## <a name="next-steps"></a>次のステップ
 
-- [VM の復元に関してよく寄せられる質問](/azure/backup/backup-azure-vm-backup-faq#restore)
+- [VM の復元に関してよく寄せられる質問](./backup-azure-vm-backup-faq.yml)
 - [サポートされる復元方法](./backup-support-matrix-iaas.md#supported-restore-methods)
 - [復元の問題のトラブルシューティング](./backup-azure-vms-troubleshoot.md#restore)

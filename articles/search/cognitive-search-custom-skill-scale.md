@@ -2,18 +2,17 @@
 title: カスタム スキルの拡張と管理
 titleSuffix: Azure Cognitive Search
 description: カスタム スキルを効率的にスケールアウトしてスループットを最大限に高めるためのツールと手法について説明します。 カスタム スキルでは、Azure Cognitive Search で AI によって強化されたインデックス作成パイプラインに追加できるカスタム AI モデルまたはロジックが呼び出されます。
-manager: luisca
-author: vkurpad
-ms.author: vikurpad
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 4fdc222fa20aef6639bf6d5d485f7dcf6b6ca535
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6b44cc3bde1a2e36cdd902a7366df8841795891a
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641139"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114728435"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>カスタム スキルを効率的にスケールアウトする
 
@@ -26,7 +25,7 @@ ms.locfileid: "105641139"
 
 + カスタム スキルで実装する必要がある入出力インターフェイスの概要については、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)に関する記事を参照してください。
 
-+ 環境を設定します。 初めに、[このチュートリアルを最初から最後まで](/azure/azure-functions/create-first-function-vs-code-python)実行することで、Visual Studio Code と Python の拡張機能を使用してサーバーレス Azure Functions を設定できます。
++ 環境を設定します。 初めに、[このチュートリアルを最初から最後まで](../azure-functions/create-first-function-vs-code-python.md)実行することで、Visual Studio Code と Python の拡張機能を使用してサーバーレス Azure Functions を設定できます。
 
 ## <a name="skillset-configuration"></a>スキルセットの構成
 

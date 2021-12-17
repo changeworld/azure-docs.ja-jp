@@ -1,19 +1,19 @@
 ---
 title: Azure 予約を使用して SAP HANA Large Instances に保存する
 description: HANA Large Instances 予約を購入する前に知っておくべきことと、その購入方法について説明します。
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 03/19/2021
 ms.author: banders
-ms.openlocfilehash: ea1ee2311d8655ce17017c73309bc69e89f4b5f4
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a7e5838ca79c3f90bf7dd75d2300f346b65588a6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599112"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457869"
 ---
 # <a name="save-on-sap-hana-large-instances-with-an-azure-reservation"></a>Azure 予約を使用して SAP HANA Large Instances に保存する
 
@@ -45,7 +45,7 @@ Azure 予約を 1 年分または 3 年分事前に購入すると、SAP HANA La
 次の例では [armclient](https://github.com/projectkudu/ARMClient) を使用して、PowerShell で REST API 呼び出しを行っています。 予約注文、そして価格計算 API の要求と要求本文は次のようになります。
 
 ```azurepowershell-interactive
-armclient post /providers/Microsoft.Capacity/calculatePrice?api-version=2018-06-01 "{
+armclient post /providers/Microsoft.Capacity/calculatePrice?api-version=2019-04-01  "{
     'sku': {
         'name': 'SAP_HANA_On_Azure_S224om'
     },
@@ -55,6 +55,7 @@ armclient post /providers/Microsoft.Capacity/calculatePrice?api-version=2018-06-
         'billingScopeId': '/subscriptions/11111111-1111-1111-111111111111',
         'term': 'P1Y',
         'quantity': '1',
+        'billingplan': 'Monthly'
         'displayName': 'testreservation_S224om',
         'appliedScopes': ['/subscriptions/11111111-1111-1111-111111111111'],
         'appliedScopeType': 'Single',
@@ -114,16 +115,18 @@ armclient post /providers/Microsoft.Capacity/calculatePrice?api-version=2018-06-
 次が要求の例です。
 
 ```azurepowershell-interactive
-armclient put /providers/Microsoft.Capacity/reservationOrders/22222222-2222-2222-2222-222222222222?api-version=2018-06-01 "{
+armclient put /providers/Microsoft.Capacity/reservationOrders/22222222-2222-2222-2222-222222222222?api-version=2019-04-01  "{
     'sku': {
         'name': 'SAP_HANA_On_Azure_S224om'
     },
     'location': 'eastus',
     'properties': {
-        'reservedResourceType': 'SapHana',
+       'reservedResourceType': 'SapHana',
         'billingScopeId': '/subscriptions/11111111-1111-1111-111111111111',
         'term': 'P1Y',
         'quantity': '1',
+               'billingplan': 'Monthly'
+
         'displayName': ' testreservation_S224om',
         'appliedScopes': ['/subscriptions/11111111-1111-1111-111111111111/resourcegroups/123'],
         'appliedScopeType': 'Single',

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 5d73c02b7fd5e40f3cc23f5b0eba1945cf3c8a40
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 8f520d74f8b3ccac8c31fce6fbf4af2016cb51ac
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258437"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217717"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 
@@ -25,20 +25,7 @@ Windows 開発コンピューターで [Azure Service Fabric アプリケーシ�
 
 ## <a name="prerequisites"></a>前提条件
 
-### <a name="supported-operating-system-versions"></a>サポートされるオペレーティング システムのバージョン
-
-開発では、次のオペレーティング システムのバージョンがサポートされます。
-
-* Windows 7
-* Windows 8/Windows 8.1
-* Windows Server 2012 R2
-* Windows Server 2016
-* Windows 10
-
-> [!NOTE]
-> Windows 7 のサポート:
-> - Windows 7 には、既定では Windows PowerShell 2.0 のみが含まれます。 Service Fabric PowerShell のコマンドレットには PowerShell 3.0 以降が必要です。 Microsoft ダウンロード センターから [Windows PowerShell 5.1][powershell5-download] をダウンロードできます。
-> - Service Fabric リバース プロキシは、Windows 7 で使用できません。
+サポートされている [Windows バージョン](service-fabric-versions.md#supported-windows-versions-and-support-end-date)を使用していることを確認します。
 
 ## <a name="install-the-sdk-and-tools"></a>SDK とツールのインストール
 
@@ -49,7 +36,7 @@ SDK とツールをインストールするには、Web Platform Installer (Web 
 
 ### <a name="to-use-visual-studio-2017-or-2019"></a>Visual Studio 2017 または 2019 を使用するには
 
-Service Fabric ツールは、Visual Studio 2017 および 2019 の Azure 開発ワークロードに含まれています。 このワークロードを Visual Studio のインストールの一環として有効にします。
+Service Fabric ツールは、Visual Studio 2019 および 2017 の Azure 開発ワークロードに含まれています。 このワークロードを Visual Studio のインストールの一環として有効にします。
 さらに、Web Platform Installer を使用して Microsoft Azure Service Fabric SDK とランタイムをインストールする必要があります。
 
 * [Microsoft Azure Service Fabric SDK をインストールする][core-sdk]
@@ -62,8 +49,8 @@ SDK のみが必要な場合は、次のパッケージをインストールす�
 
 現在のバージョンは次のとおりです。
 
-* Service Fabric SDK および Tools 5.0.514
-* Service Fabric ランタイム 8.0.514
+* Service Fabric SDK および Tools 5.2.1235
+* Service Fabric ランタイム 8.2.1235
 
 サポートされているバージョンの一覧については、[Service Fabric のバージョン](service-fabric-versions.md)に関するページを参照してください
 

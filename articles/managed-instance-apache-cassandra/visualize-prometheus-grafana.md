@@ -4,28 +4,26 @@ description: Azure Managed Instance for Apache Cassandra クラスターから�
 author: TheovanKraay
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 11/16/2021
 ms.author: thvankra
-ms.openlocfilehash: ed0ff343595429a4cb81fef280203f1180eeb098
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3b74d168f37391bf89bc7591b7263ba40f3d1074
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743797"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723252"
 ---
 # <a name="configure-grafana-to-visualize-metrics-emitted-from-the-managed-instance-cluster"></a>マネージド インスタンス クラスターから生成されたメトリックを視覚化するように Grafana を構成する
 
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+Azure Managed Instance for Apache Cassandra クラスターをデプロイすると、サービスによって各データ ノードに [Metric Collector for Apache Cassandra](https://github.com/datastax/metric-collector-for-apache-cassandra) エージェント ソフトウェアがプロビジョニングされます。 メトリックは [Prometheus](https://prometheus.io/) によって使用され、Grafana で視覚化されます。 この記事では、マネージド インスタンス クラスターから生成されたメトリックを視覚化するように Prometheus と Grafana を構成する方法について説明します。 
 
-Azure Managed Instance for Apache Cassandra クラスターをデプロイすると、さまざまなクライアント ツールで利用できる [Prometheus](https://prometheus.io/) をホストするサーバーがこのサービスによってプロビジョニングされます。 Prometheus は、オープンソースの監視ソリューションです。 マネージド インスタンスはメトリックを生成し、データが 10 GB に達するか 10 分が経過するまで (どちらかのしきい値に達するまで) それらを保持します。 この記事では、マネージド インスタンス クラスターから生成されたメトリックを視覚化するように Grafana を構成する方法について説明します。 メトリックを視覚化するには、次のタスクが必要となります。
+メトリックを視覚化するには、次のタスクが必要となります。
 
 * マネージド インスタンスが存在する Azure 仮想ネットワーク内に Ubuntu 仮想マシンをデプロイします。
-* ダッシュボードを作成し、Prometheus から生成されたメトリックを視覚化するためのオープンソースの [Grafana ツール](https://grafana.com/grafana/)をインストールします。
+* [Prometheus ダッシュボード](https://github.com/datastax/metric-collector-for-apache-cassandra#installing-the-prometheus-dashboards)を VM にインストールします。
 
-## <a name="deploy-a-ubuntu-server"></a>Ubuntu サーバーをデプロイする
+## <a name="deploy-an-ubuntu-server"></a>Ubuntu サーバーをデプロイする
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -46,75 +44,108 @@ Azure Managed Instance for Apache Cassandra クラスターをデプロイする
 
    :::image type="content" source="./media/visualize-prometheus-grafana/configure-networking-details.png" alt-text="Ubuntu サーバーのネットワーク設定を構成する。" border="true":::
 
-1. 最後に **[確認と作成]** を選択して Grafana サーバーを作成します。
+1. 最後に **[確認と作成]** を選択して、メトリック サーバーを作成します。
 
-## <a name="install-grafana"></a>Grafana のインストール
+## <a name="install-prometheus-dashboards"></a>Prometheus ダッシュボードをインストールする
 
-1. Azure portal から、マネージド インスタンスと Grafana サーバーをデプロイした仮想ネットワークを開きます。 **cassandra-jump (instance 0)** という名前の仮想マシン スケール セット インスタンスが表示されます。 この Prometheus のメトリックは、この仮想マシン スケール セット内でホストされます。 このインスタンスの IP アドレスを書き留めておいてください。
+1. 最初に、新しくデプロイされた Ubuntu サーバーのネットワーク設定に、ポート `9090` と `3000` を許可する受信ポート規則があることを確認します。 これらは後で Prometheus と Grafana のそれぞれで必要になります。 
 
-   :::image type="content" source="./media/visualize-prometheus-grafana/prometheus-instance-address.png" alt-text="Prometheus インスタンスの IP アドレスを入手する。" border="true":::
+   :::image type="content" source="./media/visualize-prometheus-grafana/networking.png" alt-text="ポートを許可する" border="true":::
 
-1. [Azure CLI](../virtual-machines/linux/ssh-from-windows.md#ssh-clients) や任意のクライアント ツールを使用して、新しく作成した Ubuntu サーバーに SSH で接続します。
+1. [Azure CLI](../virtual-machines/linux/ssh-from-windows.md#ssh-clients) や任意のクライアント ツールを使用して、Ubuntu サーバーに SSH で接続します。
 
-1. VM に接続した後、Grafana をインストールし、メトリックのホストとなる仮想マシン スケール セットに接続するための構成を行う必要があります。 コマンド プロンプトを開き、`nano` コマンドを入力して Nano テキスト エディターを開きます。 次のスクリプトをテキスト エディターに貼り付けます。`<prometheus IP address>` は、前の手順で記録した IP アドレスに置き換えてください。
+1. VM に接続した後、メトリック コレクター ソフトウェアをインストールする必要があります。 まず、ファイルをダウンロードして解凍します。
 
    ```bash
-   #!/bin/bash
-   
-   echo "Installing Grafana..."
-   
-   if ! $SSH dpkg -s grafana prometheus > /dev/null; then
-       echo "Installing packages."
-       echo 'deb https://packages.grafana.com/oss/deb stable main' | $SSH sudo tee /etc/apt/sources.list.d/grafana.list > /dev/null
-       curl https://packages.grafana.com/gpg.key | $SSH sudo apt-key add -
-       $SSH sudo apt-get update
-       $SSH sudo apt-get install -y grafana prometheus
-   else
-       echo "Skipping package installation"
-   fi
-   
-   echo "Configuring grafana"
-   cat <<EOF | $SSH sudo tee /etc/grafana/provisioning/datasources/prometheus.yml
-   apiVersion: 1
-   datasources:
-     - name: Prometheus
-       type: prometheus
-       url: https://<prometheus IP address>:9443
-       jsonData:
-         tlsSkipVerify: true
-   EOF
-   
-   echo "Restarting Grafana"
-   $SSH sudo systemctl enable grafana-server
-   $SSH sudo systemctl restart grafana-server
-   
-   echo "Installing Grafana plugins"
-   $SSH sudo grafana-cli plugins install natel-discrete-panel
-   $SSH sudo grafana-cli plugins install grafana-polystat-panel
-   $SSH sudo systemctl restart grafana-server
+    #install unzip utility (if not already installed)
+    sudo apt install unzip
+    
+    #get dashboards
+    wget https://github.com/datastax/metric-collector-for-apache-cassandra/releases/download/v0.3.0/datastax-mcac-dashboards-0.3.0.zip -O temp.zip
+    unzip temp.zip
    ```
 
-1. 「`ctrl + X`」と入力してファイルを保存します。 このファイルには、`grafana.sh` という名前を付けます。
+1. 次に、prometheus ディレクトリに移動し、vi を使用して `tg_mcac.json` ファイルを編集します。
 
-1. コマンド プロンプトに `./grafana.sh` コマンドを入力して Grafana をインストールします。
+   ```bash
+    cd */prometheus
+    vi tg_mcac.json    
+   ```
 
-1. インストールが完了すると、次のスクリーンショットに示すように、サーバーの IP アドレスの **ポート 3000** で Grafana を利用できるようになります。
 
-   :::image type="content" source="./media/visualize-prometheus-grafana/open-grafana-port.png" alt-text="ポート 3000 で Grafana を実行する。" border="true":::
+1. クラスター内の各ノードの IP アドレスを、それぞれポート 9443 で `targets` に追加します。 `tg_mcac.json` ファイルは以下のようになります。
 
-1. Grafana では、Apache Cassandra 向けに作成されたオープンソースのダッシュボード ([cluster-overview](https://github.com/TheovanKraay/cassandra-exporter/blob/master/grafana/instaclustr/cluster-overview.json) JSON ファイルなど) を選択できます。 ダッシュボードの JSON 定義をダウンロードして Grafana にインポートします。
+   ```bash
+    [
+      {
+        "targets": [
+          "10.9.0.6:9443","10.9.0.7:9443","10.9.0.8:9443"
+        ],
+        "labels": {
+    
+        }
+      }
+    ]  
+   ```
 
-   :::image type="content" source="./media/visualize-prometheus-grafana/grafana-import.png" alt-text="Grafana の JSON 定義をインポートする。" border="true":::
+1. ファイルを保存します。 次に、同じディレクトリで `prometheus.yaml` ファイルを編集します。 以下のセクションを見つけてください。
 
-   :::image type="content" source="./media/visualize-prometheus-grafana/grafana-upload-json.png" alt-text="Grafana の JSON 定義をアップロードする。" border="true":::
+   ```bash
+    file_sd_configs:
+      - files:
+        - 'tg_mcac.json'
+   ```
 
-1. その後、選択したダッシュボードを使用して、Cassandra マネージド インスタンス クラスターを監視することができます。
+1. このセクションの直下に、以下を追加します。 メトリックは https 経由で公開されるため、これが必要です。
 
-   :::image type="content" source="./media/visualize-prometheus-grafana/monitor-cassandra-metrics.gif" alt-text="Cassandra マネージド インスタンスのメトリックをダッシュボードで表示する。" border="true":::
+   ```bash
+    scheme: https
+    tls_config:
+            insecure_skip_verify: true
+   ```
+
+1. ファイルは次のようになるはずです。 各行のタブが以下の通りであることを確認してください。 
+
+   ```bash
+    file_sd_configs:
+      - files:
+        - 'tg_mcac.json'
+    scheme: https
+    tls_config:
+            insecure_skip_verify: true
+   ```
+
+1. ファイルを保存します。 Prometheus と Grafana を起動する準備ができました。 まず、Docker をインストールします。
+
+    ```bash
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu `lsb_release -cs` test"
+    sudo apt update
+    sudo apt install docker-ce
+    ```
+
+1. 次に、docker compose をインストールします。
+
+    ```bash
+    sudo apt install docker-compose
+    ```
+
+1. そして、`docker-compose.yaml` が存在する最上位のディレクトリに移動し、アプリケーションを起動します。
+
+    ```bash
+    cd ..
+    sudo docker-compose up
+    ```
+
+1. Prometheus はメトリック サーバーのポート `9090` で、Grafana ダッシュボードはポート `3000` で利用できるはずです。
+
+   :::image type="content" source="./media/visualize-prometheus-grafana/monitor-cassandra-metrics.png" alt-text="Cassandra マネージド インスタンスのメトリックをダッシュボードで表示する。" border="true":::
+
 
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、Grafana を使用してダッシュボードを構成し、Prometheus のメトリックを視覚化する方法について説明しました。 Azure Managed Instance for Apache Cassandra の詳細については、次の記事を参照してください。
 
 * [Azure Managed Instance for Apache Cassandra の概要](introduction.md)
-* [Azure Databricks でマネージド Apache Spark クラスターをデプロイする (プレビュー)](deploy-cluster-databricks.md)
+* [Azure Databricks でマネージド Apache Spark クラスターをデプロイする](deploy-cluster-databricks.md)

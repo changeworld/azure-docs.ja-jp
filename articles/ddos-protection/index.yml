@@ -4,18 +4,18 @@ summary: Azure DDoS Protection Standard をアプリケーション設計のベ�
 metadata:
   description: Azure DDoS Protection Standard をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御を提供する方法について説明します。
   keywords: azure ddos protection standard
-  author: yitoh
+  author: aletheatoh
   ms.author: yitoh
-  ms.date: 09/04/2019
+  ms.date: 06/30/2021
   ms.service: ddos-protection
   ms.topic: landing-page
   ms.custom: azure-ddos-protection
-  ms.openlocfilehash: 50f871b08e2a945c599f7217ce680669da39af40
-  ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+  ms.openlocfilehash: f3ebe21893d090116b5302278998862ee24a9350
+  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/30/2020
-  ms.locfileid: "97813974"
+  ms.lasthandoff: 07/07/2021
+  ms.locfileid: "113436066"
 landingContent:
 - title: Azure DDoS Protection Standard について
   linkLists:
@@ -23,6 +23,10 @@ landingContent:
     links:
     - text: Azure DDoS Protection Standard とは
       url: ddos-protection-overview.md
+  - linkListType: learn
+    links:
+    - text: Azure DDoS Protection の概要
+      url: /learn/modules/introduction-azure-ddos-protection/
   - linkListType: architecture
     links:
     - text: Azure DDoS Protection Standard の機能

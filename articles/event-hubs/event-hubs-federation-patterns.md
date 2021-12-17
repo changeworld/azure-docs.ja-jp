@@ -2,13 +2,13 @@
 title: イベント レプリケーション タスクのパターン - Azure Event Hubs | Microsoft Docs
 description: この記事では、特定のイベント レプリケーション タスクのパターンを実装するための詳細なガイダンスを提供します
 ms.topic: article
-ms.date: 12/12/2020
-ms.openlocfilehash: 438964c228f060dede93abf582c9504b698db8b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: f4fb2a166a5dfd50f3035e5efe5462313716daef
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934613"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217412"
 ---
 # <a name="event-replication-tasks-patterns"></a>イベント レプリケーション タスクのパターン
 
@@ -78,7 +78,7 @@ SRV レコードには、一般的な規則に従って、先頭に `_azure_even
 
 | CNAME レコード                | エイリアス                    |
 | --------------------------- | ------------------------ |
-| `eventhub.test.example.com` | `test1.test.example.com` |
+| `eventhub.test.example.com` | `eh1.test.example.com`   |
 
 その後、明示的な CNAME および SRV レコードに対するクエリの実行を許可する DNS クライアントを使用して (Java および .NET の組み込みクライアントで許可されるのは、IP アドレスへの名前のシンプルな解決のみ)、目的のエンドポイントを解決できます。 たとえば、[DnsClient.NET](https://dnsclient.michaco.net/) の場合、参照関数は次のようになります。
 
@@ -124,7 +124,7 @@ DNS (具体的には [Azure DNS](../dns/dns-overview.md)) を使用する利点�
 
 切り替え元のイベント ハブのチェックポイント ストアに引き続きアクセスできる場合は、既に処理されているイベントをスキップし、最後に中断した場所から正確に再開するのに、前述の[伝達されたメタデータ](#service-assigned-metadata)が役立ちます。
 
-## <a name="merge"></a>マージする
+## <a name="merge"></a>Merge
 
 マージ パターンには、1 つのターゲットを指す 1 つまたは複数のレプリケーション タスクがあります。また、通常のプロデューサーと同時に、同じターゲットにイベントが送信される場合もあります。
 
@@ -195,7 +195,7 @@ select * into dest2Output from inputSource where Info = 2
 
 ## <a name="log-projection"></a>ログ プロジェクション
 
-ログ プロジェクション パターンでは、イベント ストリームがインデックス付きデータベースにフラット化され、イベントはデータベース内のレコードになります。 通常、イベントは同じコレクションまたはテーブルに追加され、イベント ハブ パーティション キーは、レコードを一意にするための主キーのパーティになります。
+ログ プロジェクション パターンでは、イベント ストリームがインデックス付きデータベースにフラット化され、イベントはデータベース内のレコードになります。 通常、イベントは同じコレクションまたはテーブルに追加され、イベント ハブ パーティション キーは、レコードを一意にするために主キーの一部になります。
 
 ログ プロジェクションでは、イベント データの時系列ヒストリアンまたは圧縮されたビューを生成できます。これにより、パーティション キーごとに最新のイベントのみが保持されます。 ターゲット データベースのシェイプは、最終的にはユーザーとユーザーのアプリケーションのニーズによって決まります。 このパターンは "イベント ソーシング" とも呼ばれます。
 

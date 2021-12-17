@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure Synapse Analytics の使用を開始する - Power BI でワークスペース データを視覚化する
-description: このチュートリアルでは、Power BI ワークスペースの作成方法、Azure Synapse ワークスペースのリンク方法、Azure Synapse ワークスペースのデータを利用する Power BI データ セットの作成方法について説明します。
+description: このチュートリアルでは、Power BI を使用して Azure Synapse Analytics でデータを視覚化する方法について学習します。
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: business-intelligence
 ms.topic: tutorial
 ms.date: 03/25/2021
-ms.openlocfilehash: 829daaa9c739657528a9085201c61c88635931d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fe830d277fa2e2ff57661500c3c56c0927637ab4
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608444"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516905"
 ---
 # <a name="visualize-data-with-power-bi"></a>Power BI でデータを視覚化する
 

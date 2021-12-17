@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c47f91d9aed9af4c4fbb1a16c27d59b5a5da5d94
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96012563"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136263"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 上で自動バキュームを最適化する
 
@@ -96,7 +96,7 @@ PostgreSQL では、テーブル レベルまたはインスタンス レベル�
 
 バキューム プロセスは、物理ページを読み取り、使用不能タプルがないか調べます。 shared_buffers 内のページはそれぞれ、コスト 1 (vacuum_cost_page_hit) であると見なされます。 その他のページはすべて、使用不能タプルが存在する場合はコスト 20 (vacuum_cost_page_dirty)、使用不能タプルが存在しない場合はコスト 10 (vacuum_cost_page_miss) と見なされます。 プロセスが autovacuum_vacuum_cost_limit を超過するとバキューム操作は停止されます。
 
-上限に達すると、プロセスは autovacuum_vacuum_cost_delay パラメーターで指定された期間の間、スリープ状態になり、その後再度開始されます。 上限に達しない場合、自動バキュームは、autovacuum_nap_time パラメーターで指定された値の後に開始されます。
+上限に達すると、プロセスは autovacuum_vacuum_cost_delay パラメーターで指定された期間の間、スリープ状態になり、その後再度開始されます。 上限に達しない場合、自動バキュームは、autovacuum_naptime パラメーターで指定された値の後に開始されます。
 
 要約すると、autovacuum_vacuum_cost_delay パラメーターと autovacuum_vacuum_cost_limit パラメーターによって、単位時間あたりにクリーンアップが許可されるデータ量が制御されます。 既定値は、ほとんどの価格レベルに対して小さすぎることに注意してください。 これらのパラメーターの最適値は、価格レベルに左右されるので、それに応じて構成する必要があります。
 

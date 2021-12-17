@@ -1,7 +1,6 @@
 ---
 title: クイックスタート - Azure CLI を使用して Azure Key Vault 証明書の設定と表示を行う
 description: Azure CLI を使用して Azure Key Vault との間で証明書の設定と取得を行う方法を紹介したクイックスタート
-services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
@@ -10,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 56e51d74358bcda96a6859a481e53710a6f78ec3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 265a66b6aa80dddb6ca4d8da8567ded8c7a380ba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99072423"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663784"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault から証明書の設定と取得を行う
 
@@ -45,7 +44,7 @@ ms.locfileid: "99072423"
 az keyvault certificate create --vault-name "<your-unique-keyvault-name>" -n ExampleCertificate -p "$(az keyvault certificate get-default-policy)"
 ```
 
-これで、URI を使用して、Azure Key Vault に追加したこの証明書を参照できるようになりました。 現在のバージョンを取得するには、 **"https://<your-unique-keyvault-name>.vault.azure.net/certificates/ExampleCertificate"** を使用します。 
+これで、URI を使用して、Azure Key Vault に追加したこの証明書を参照できるようになりました。 **`https://<your-unique-keyvault-name>.vault.azure.net/certificates/ExampleCertificate`** を使用して、現在のバージョンを取得します。 
 
 以前に格納した証明書を表示するには:
 
@@ -66,4 +65,4 @@ az keyvault certificate show --name "ExampleCertificate" --vault-name "<your-uni
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure CLI az keyvault コマンド](/cli/azure/keyvault)のリファレンスを参照する
-- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-features.md)を確認する

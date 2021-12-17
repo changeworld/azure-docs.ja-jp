@@ -1,25 +1,22 @@
 ---
 title: Azure Kinect DK のハードウェアの仕様
 description: Azure Kinect DK のコンポーネント、仕様、機能について説明します。
-author: tesych
-ms.author: tesych
-ms.reviewer: jarrettr
+author: qm13
+ms.author: quentinm
 ms.prod: kinect-dk
-ms.date: 02/14/2020
+ms.date: 03/18/2021
 ms.topic: article
 keywords: Azure, Kinect, 仕様, ハードウェア, DK, 機能, 深度, 色, RGB, IMU, マイク, 配列, 深度
-ms.custom:
-- CI 114092
-- CSSTroubleshooting
+ms.custom: CI 114092, CSSTroubleshooting
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: e0d42a3ce1dd9deb5e73500371c367134ca852e1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 45941395864bde4442748671c6b5c33da81b319d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619960"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082495"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK のハードウェアの仕様
 
@@ -42,16 +39,18 @@ ms.locfileid: "77619960"
 
 Azure Kinect デバイスのサイズと重量は次のとおりです。
 
-- **寸法**: 103 x 39 x 126 mm
-- **重み**:440 g
+- **ディメンション**: 103 x 39 x 126 mm
+- **重量**: 440 g
 
 ![Azure Kinect DK の寸法](./media/resources/hardware-specs-media/dimensions.png)
 
-## <a name="operating-environment"></a>動作環境
+Azure Kinect デバイスの STEP ファイルについては、[こちら](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/assets)を参照してください。 
+
+## <a name="operating-environment"></a>運用環境
 
 Azure Kinect DK は、次の環境条件下で活動する開発者および営利企業を対象としています。
 
-- **温度**:10 から 25°C
+- **温度**: 10 から 25 <sup>0</sup>C
 - **湿度**: 8 から 90% の相対湿度 (結露がないこと)
 
 > [!NOTE]
@@ -61,9 +60,9 @@ Azure Kinect DK は、次の環境条件下で活動する開発者および営�
 
 ## <a name="depth-camera-supported-operating-modes"></a>深度カメラでサポートされる動作モード
 
-Azure Kinect DK には、Microsoft が設計した 1 メガピクセルの ToF (Time-of-Flight) 深度カメラが内蔵されています。これには、[ISSCC 2018 で発表された画像センサー](https://docs.microsoft.com/windows/mixed-reality/ISSCC-2018)が使用されています。 この深度カメラは、以下に示すモードをサポートしています。
+Azure Kinect DK には、Microsoft が設計した 1 メガピクセルの ToF (Time-of-Flight) 深度カメラが内蔵されています。これには、[ISSCC 2018 で発表された画像センサー](/windows/mixed-reality/ISSCC-2018)が使用されています。 この深度カメラは、以下に示すモードをサポートしています。
 
- | モード            | 解像度 | FoI       | FPS                | 動作範囲* | 露出時間 |
+ | モード            | 解決方法 | FoI       | FPS                | 動作範囲* | 露出時間 |
 |-----------------|------------|-----------|--------------------|------------------|---------------|
 | NFOV Unbinned   | 640 x 576    | 75° x 65°   | 0、5、15、30       | 0.5 から 3.86 m       | 12.8 ミリ秒        |
 | NFOV 2x2 Binned (SW) | 320 x 288    | 75° x 65°   | 0、5、15、30       | 0.5 から 5.46 m       | 12.8 ミリ秒        |
@@ -77,16 +76,16 @@ Azure Kinect DK には、Microsoft が設計した 1 メガピクセルの ToF (
 
 Azure Kinect DK には、OV12A10 12MP CMOS センサー ローリング シャッター センサーが内蔵されています。 ネイティブの動作モードは次のとおりです。
 
-|             RGB カメラ解像度 (H x V)  |          縦横比  |          形式のオプション   |          フレーム レート (FPS)  |          公称 FOV (HxV) (後処理済み)  |
+|             RGB カメラ解像度 (H x V)  |          アスペクト比  |          形式のオプション   |          フレーム レート (FPS)  |          公称 FOV (HxV) (後処理済み)  |
 |------------------------------------------|------------------------|---------------------------|-----------------------------|---------------------------------------------|
 |       3,840 x 2,160                          |          16:9          |          MJPEG            |          0、5、15、30       |          90° x 59°                              |
-|       2,560 x 1,440                          |          16:9          |          MJPEG            |          0、5、15、30       |          90° x 59°                              |
+|       2560 x 1440                          |          16:9          |          MJPEG            |          0、5、15、30       |          90° x 59°                              |
 |       1,920 x 1,080                          |          16:9          |          MJPEG            |          0、5、15、30       |          90° x 59°                              |
 |       1,280 x 720                           |          16:9          |          MJPEG、YUY2、NV12  |          0、5、15、30       |          90° x 59°                              |
 |       4,096 x 3,072                          |          4:3           |          MJPEG             |          0、5、15           |          90° x 74.3°                            |
-|       2,048 x 1,536                          |          4:3           |          MJPEG             |          0、5、15、30       |          90° x 74.3°                            |
+|       2048 x 1536                          |          4:3           |          MJPEG             |          0、5、15、30       |          90° x 74.3°                            |
 
-RGB カメラは、USB ビデオ クラスと互換性があり、Sensor SDK なしで使用できます。 RGB カメラの色空間: BT.601 フル レンジ [0..255]。 
+RGB カメラは、USB ビデオ クラスと互換性があり、Sensor SDK なしで使用できます。 RGB カメラの色空間: BT.601 の全範囲 [0..255]。 MJPEG [彩度サブサンプリング](https://en.wikipedia.org/wiki/Chroma_subsampling)は 4:2:2 です。
 
 > [!NOTE]
 > Sensor SDK は、BGRA ピクセル形式のカラー画像を提供できます。 これはデバイスでサポートされているネイティブ モードではないため、使用すると CPU の負荷が増加します。 ホスト CPU は、デバイスから受信した MJPEG 画像を変換するために使用されます。
@@ -113,7 +112,7 @@ RGB カメラは、USB ビデオ クラスと互換性があり、Sensor SDK な
 
 ## <a name="depth-sensor-raw-timing"></a>深度センサーの生タイミング
 
-深度モード | IR <br>パルス | パルス <br>幅  | アイドル <br>期間| アイドル時間 | 露出 <br> Time
+深度モード | IR <br>パルス | パルス <br>幅  | アイドル <br>ピリオド| アイドル時間 | 露出 <br> Time
 -|-|-|-|-|-
 NFOV Unbinned <br>  NFOV 2xx Binned <br> WFOV 2x2 Binned | 9 | 125 マイクロ秒 | 8 | 1,450 マイクロ秒 | 12.8 ミリ秒 
 WFOV Unbinned                                            | 9 | 125 マイクロ秒 | 8 | 2,390 マイクロ秒 | 20.3 ミリ秒
@@ -136,13 +135,13 @@ WFOV Unbinned                                            | 9 | 125 マイクロ�
 
 内蔵の慣性測定装置 (IMU) は LSM6DSMUS で、加速度計とジャイロスコープの両方が含まれています。 加速度計とジャイロスコープは、1.6 kHz で同時にサンプリングされます。 サンプルは、208 Hz でホストにレポートされます。
 
-## <a name="microphone-array"></a>マイク配列
+## <a name="microphone-array"></a>マイクロフォン アレイ
 
 Azure Kinect DK には、標準の USB オーディオ クラス 2.0 デバイスとして識別される、高品質な 7 台のマイクが円形配列で内蔵されています。 7 つのチャネルすべてにアクセスできます。 パフォーマンス仕様は次のとおりです。
 
 - 感度: -22 dBFS (94 dB SPL、1 kHz)
 - 信号対雑音比 > 65 dB
-- アコースティック オーバーロード ポイント: 116 dB
+- Acoustic Overload Point (AOP: アコースティック オーバーロード ポイント): 116 dB
 
 ![マイク バブル](./media/resources/hardware-specs-media/mic-bubble.png)
 
@@ -150,11 +149,11 @@ Azure Kinect DK には、標準の USB オーディオ クラス 2.0 デバイ�
 
 Azure Kinect DK は、次のハードウェア エンドポイントをオペレーティング システムに公開する USB3 複合デバイスです。
 
-ベンダー ID は 0x045E (Microsoft) です。製品 ID の表を次に示します。
+ベンダー ID は 0x045E (Microsoft) です。 製品 ID の表を次に示します。
 
 |    USB インターフェイス        |    PNP IP    |     Notes            |
 |-------------------------|--------------|----------------------|
-|    USB 3.1 Gen1 ハブ    |    0x097A    |    メイン ハブ    |
+|    USB 3.1 Gen2 ハブ    |    0x097A    |    メイン ハブ    |
 |    USB 2.0 ハブ         |    0x097B    |    HS USB          |
 |    深度カメラ       |    0x097C    |    USB 3.0            |
 |    カラー カメラ       |    0x097D    |    USB 3.0            |
@@ -177,7 +176,7 @@ Azure Kinect DK は、次のハードウェア エンドポイントをオペレ
 
 このデバイスには、次の 2 つの方法で電力を供給できます。
 
-1. 付属の電源装置を使用します。 データは、別の USB Type-C to Type-A ケーブルで接続されます。
+1. 付属の電源装置を使用します。 電源コネクタは 4.5mm OD、ID は 3.0mm、ピンの直径は 0.6mm です。
 2. 電源とデータの両方に Type-C to Type-C ケーブルを使用します。
 
 Azure Kinect DK には、Type-C to Type-C ケーブルは付属しません。
@@ -190,7 +189,7 @@ Azure Kinect DK には、Type-C to Type-C ケーブルは付属しません。
 > 適切な Type-C to Type-C ケーブルを選ぶには:
 > - [USB 認定ケーブル](https://www.usb.org/products)は、電源とデータの両方をサポートする必要があります。
 > - パッシブ ケーブルの長さは 1.5 m 未満でなければなりません。 それよりも長くするには、アクティブ ケーブルを使用してください。 
-> - ケーブルでは、1.5 A 以上をサポートする必要があります。 それ以外の場合は、外部電源装置を接続する必要があります。
+> - ケーブルは、少なくとも 1.5A をサポートする必要があります。 それ以外の場合は、外部電源装置を接続する必要があります。
 
 ケーブルを確認する:
 
@@ -201,7 +200,7 @@ Azure Kinect DK には、Type-C to Type-C ケーブルは付属しません。
 
 - 次の設定を使用して、Azure Kinect ビューアーのすべてのセンサーでケーブルから確実にストリーム配信できることを確認します。
 
-  - 深度カメラ: NFOV Unbinned
+  - 深度カメラ: バインドされていない NFOV
   - RGB カメラ: 2160p
   - マイクと IMU が有効
 
@@ -231,11 +230,11 @@ Azure Kinect DK には、Type-C to Type-C ケーブルは付属しません。
 
 Azure Kinect DK は最大 5.9 W を消費します。電力消費はユースケースによって変わります。
 
-## <a name="calibration"></a>較正
+## <a name="calibration"></a>調整
 
 Azure Kinect DK は工場で較正されています。 ビジュアル センサーと慣性センサーの較正パラメーターは、Sensor SDK を使用してプログラムで照会することができます。
 
-## <a name="device-recovery"></a>デバイスの復旧
+## <a name="device-recovery"></a>デバイスの回復
 
 ロック ピンの下にあるボタンを使用して、デバイスのファームウェアを元のファームウェアにリセットできます。
 

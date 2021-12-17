@@ -8,15 +8,17 @@ ms.collection: linux
 ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: bdd897e76df941130e3acdf9c30ea8edd41147e9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: e769e5a8e35854d0b871ed8ecd9bc343cdcc04b6
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104601926"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697033"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>暗号化されたデバイスで LVM と RAID を構成する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 この記事では、暗号化されたデバイスで論理ボリューム管理 (LVM) と RAID を実行する方法について、手順を追って説明します。 このプロセスは、次の環境に適用されます。
 

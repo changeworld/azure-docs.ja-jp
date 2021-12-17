@@ -5,12 +5,13 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8f732cd8c588ffc08dbe48f6a92add65c2bc2e9f
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 012380b98987bc09440d025b6533b62cc1a4c043
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963242"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271652"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Azure Automation のスケジュールを管理する
 
@@ -24,7 +25,7 @@ ms.locfileid: "105963242"
 
 ## <a name="powershell-cmdlets-used-to-access-schedules"></a>スケジュールへのアクセスに使用する PowerShell コマンドレット
 
-PowerShell を使用して Automation スケジュールを作成して管理するためのコマンドレットを次の表に示します。 これらは、[Az モジュール](modules.md#az-modules)の一部として出荷されています。
+PowerShell を使用して Automation スケジュールを作成して管理するためのコマンドレットを次の表に示します。 これらは、Az モジュールの一部として出荷されています。
 
 | コマンドレット | 説明 |
 |:--- |:--- |

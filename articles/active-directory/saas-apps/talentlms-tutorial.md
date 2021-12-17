@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と TalentLMS の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と TalentLMS の統合'
 description: Azure Active Directory と TalentLMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/25/2021
+ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 84d50d19a8356418a5cbf1f93784e5b8816d4be5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d9d9adec6c8b9db9429cebba29fdf4a7e5a304f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101689353"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282691"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>チュートリアル: Azure Active Directory と TalentLMS の統合
+# <a name="tutorial-azure-ad-sso-integration-with-talentlms"></a>チュートリアル: Azure AD SSO と TalentLMS の統合
 
 このチュートリアルでは、TalentLMS と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と TalentLMS を統合すると、次のことができます。
 
@@ -37,7 +37,7 @@ TalentLMS と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* TalentLMS では、**SP** によって開始される SSO がサポートされます
+* TalentLMS では、**SP** によって開始される SSO がサポートされます。
 
 ## <a name="add-talentlms-from-the-gallery"></a>ギャラリーからの TalentLMS の追加
 
@@ -63,7 +63,7 @@ TalentLMS に対する Azure AD SSO を構成してテストするには、次�
     1. **[TalentLMS のテスト ユーザーの作成](#create-talentlms-test-user)** - TalentLMS で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
@@ -75,14 +75,12 @@ TalentLMS に対する Azure AD SSO を構成してテストするには、次�
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![[TalentLMS ドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`http://<tenant-name>.talentlms.com`
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<tenant-name>.TalentLMSapp.com`
-
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`http://<tenant-name>.talentlms.com`
+    b. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<tenant-name>.TalentLMSapp.com`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[TalentLMS クライアント サポート チーム](https://www.talentlms.com/contact)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値を実際の識別子とサインオン URL で更新してください。 これらの値を取得するには、[TalentLMS クライアント サポート チーム](https://www.talentlms.com/contact)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、 **[SAML 署名証明書]** ダイアログを開きます。
 
@@ -120,19 +118,19 @@ TalentLMS に対する Azure AD SSO を構成してテストするには、次�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="configure-talentlms-sso"></a>TalentLMS の SSO の構成
+## <a name="configure-talentlms-sso"></a>TalentLMS の SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、TalentLMS 企業サイトに管理者としてサインインします。
 
 1. **[Account & Settings]** セクションで、**[Users]** タブをクリックします。
 
-    ![[Account & Settings]\(アカウントと設定\)](./media/talentlms-tutorial/IC777296.png "アカウントと設定")
+    ![[Account & Settings]\(アカウントと設定\)](./media/talentlms-tutorial/user.png "アカウントと設定")
 
 1. **[Single Sign-On (SSO)]** をクリックします。
 
 1. [Single Sign-On] セクションで、次の手順に従います。
 
-    ![シングル サインオン](./media/talentlms-tutorial/saml.png "シングル サインオン")
+    ![シングル サインオン](./media/talentlms-tutorial/certificate.png "シングル サインオン")
 
     a. **[SSO integration type]** 一覧から、**[SAML 2.0]** を選択します。
 
@@ -168,7 +166,7 @@ Azure AD ユーザーが TalentLMS にサインインできるようにするに
 
 1. **[Add user]** ダイアログ ページで、以下の手順を実行します。
 
-    ![ユーザーの追加](./media/talentlms-tutorial/IC777299.png "ユーザーの追加")  
+    ![ユーザーの追加](./media/talentlms-tutorial/account.png "ユーザーの追加")  
 
     a. **[名]** テキストボックスに、`Britta` のようにユーザーの名を入力します。
 
@@ -181,7 +179,7 @@ Azure AD ユーザーが TalentLMS にサインインできるようにするに
 > [!NOTE]
 > 他の TalentLMS ユーザー アカウント作成ツールや、TalentLMS から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
@@ -189,8 +187,8 @@ Azure AD ユーザーが TalentLMS にサインインできるようにするに
 
 * TalentLMS のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [TalentLMS] タイルをクリックすると、TalentLMS サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [TalentLMS] タイルをクリックすると、TalentLMS サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-TalentLMS を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+TalentLMS を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

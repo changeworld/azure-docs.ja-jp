@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/24/2020
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: ec35917ca18064d58279d8ed2b3fb1f0e83a88fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df92ea58544a35c157ba91ad95412d557eabdb05
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736936"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313942"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と InVision の統合
 
@@ -37,7 +37,8 @@ ms.locfileid: "98736936"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* InVision では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* InVision では、**SP と IDP** Initiated SSO がサポートされています。
+* InVision では、[自動化されたユーザー プロビジョニング](invision-provisioning-tutorial.md)がサポートされています。
 
 ## <a name="adding-invision-from-the-gallery"></a>ギャラリーからの InVision の追加
 
@@ -69,7 +70,7 @@ InVision に対して Azure AD SSO を構成してテストするには、次の
 
 1. Azure portal の **InVision** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -154,7 +155,7 @@ InVision に対して Azure AD SSO を構成してテストするには、次の
 
     e. ダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容をコピーして **[SAML Certificate]\(SAML 証明書\)** ボックスに貼り付けます。
 
-    f. **[Name ID Format]\(名前 ID の形式\)** ボックスで、**名前 ID の形式** に `Unspecified` を使用します。
+    f. **[Name ID Format]\(名前 ID の形式\)** ボックスで、**名前 ID の形式** に `urn:oasis:names:tc:SAML:1.1:nameid-format:Unspecified` を使用します。
 
     g. **[HASH Algorithm]\(ハッシュ アルゴリズム\)** のドロップダウンで **[SHA-256]** を選択します。
 
@@ -184,6 +185,9 @@ InVision に対して Azure AD SSO を構成してテストするには、次の
 
     ![処理する招待を選択できる [Invite]\(招待\) ダイアログを示すスクリーンショット。](./media/invision-tutorial/user3.png)
 
+> [!NOTE]
+> InVision では、自動ユーザー プロビジョニングもサポートされています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./invision-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
@@ -198,8 +202,8 @@ InVision に対して Azure AD SSO を構成してテストするには、次の
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した InVision に自動的にサインインされます
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [InVision] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した InVision に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [InVision] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した InVision に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-InVision を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+InVision を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

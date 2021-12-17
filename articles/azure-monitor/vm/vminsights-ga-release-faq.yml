@@ -1,0 +1,67 @@
+### YamlMime:FAQ
+metadata:
+  title: VM Insights (GA) についてよく寄せられる質問 | Microsoft Docs
+  description: VM Insights は、Azure VM オペレーティング システムの正常性およびパフォーマンスの監視と、アプリケーション コンポーネントおよび他のリソースとの依存関係の自動検出を組み合わせ、それらの間の通信をマップする Azure のソリューションです。 この記事では、GA リリースに関する一般的な質問への回答を示します。
+  ms.topic: article
+  author: bwren
+  ms.author: bwren
+  ms.date: 01/31/2020
+  ms.service: azure-monitor
+  ms.openlocfilehash: 230bac590e4506593cc0cb6cce0aba89ed289ad3
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253867"
+title: VM Insights の一般提供 (GA) についてよく寄せられる質問
+summary: この一般提供に関する FAQ では、GA に向けた準備の過程で 2019 年第 4 四半期から 2020 年第 1 四半期までの間に行われた変更について説明しています。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      VM Insights の更新プログラム
+    answer: "GA の発表に先立ち、VM Insights の新しいバージョンが 2020 年 1 月にリリースされました。 VM Insights を有効にしたお客様は、GA バージョンを自動的に受信しますが、2019 年第 4 四半期以前のバージョンの VM Insights を使用している既存のお客様はアップグレードするように求められます。 この FAQ では、複数のワークスペースとの間で大規模なデプロイを行っている場合に、アップグレードを広範囲に実行するためのガイダンスを提供します。\n\n\nこのアップグレードを使用すると、VM Insights のパフォーマンス データは、[Container Insights](../containers/container-insights-overview.md) と同じ *InsightsMetrics* テーブルに格納されるため、2 つのデータ セットのクエリを簡単に実行することができます。 また、以前に使用したテーブルには格納できなかったより多様なデータ セットを格納することもできます。 \n\nパフォーマンス ビューでは、*InsightsMetrics* テーブルに格納しているデータが使用されています。  ワークスペースで最新の VMInsights ソリューションを使用するようにアップグレードしていない場合は、グラフに情報が表示されなくなります。  次に示すように、 **[Get Started]\\(開始\\)** ページからアップグレードすることができます。\n"
+  - question: >
+      何が変わるのですか?
+    answer: "VMInsights という名前の新しいソリューションがリリースされました。これには、データ収集のための追加機能と、ご利用の Log Analytics ワークスペースにこのデータを格納するための新しい場所が含まれています。 \n\n以前は、ワークスペースで ServiceMap ソリューションを有効にし、Log Analytics ワークスペースでパフォーマンス　カウンターを設定して、*Perf* テーブルにデータを送信していました。 この新しいソリューションでは、Container Insights によっても使用される *InsightsMetrics* という名前のテーブルにデータが送信されます。 このテーブル スキーマを使用すると、*Perf* テーブル形式と互換性のない追加のメトリックとサービス データ セットを格納できます。\n\nパフォーマンス グラフは、*InsightsMetrics* テーブルに格納されているデータを使用するように更新されました。 次に示すように、 **[Get Started]\\(開始\\)** ページから *InsightsMetrics* テーブルを使用するようにアップグレードできます。\n"
+  - question: >
+      アップグレード方法を教えてください。
+    answer: "Log Analytics ワークスペースが Azure Monitor for VMs の最新バージョンにアップグレードされると、そのワークスペースに接続されている各 VM の依存関係エージェントがアップグレードされます。 アップグレードが必要な各 VM は、Azure portal の VM Insights の **[はじめに]** タブで確認できます。 VM のアップグレードを選択した場合、その VM 用のワークスペースと、そのワークスペースに接続されている他のすべての VM がアップグレードされます。 1 つの VM、複数の VM、リソース グループまたはサブスクリプションを選択することが可能です。 \n\nPowerShell を使用してワークスペースをアップグレードするには、次のコマンドを使用します。\n\n```PowerShell\nSet-AzOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName \"VMInsights\" -Enabled $True\n```\n"
+  - question: >
+      VMInsights ソリューションをインストールした場合、自分のワークスペース内のパフォーマンス カウンターには何が必要ですか?
+    answer: "VM Insights を有効にする以前のメソッドでは、ご利用のワークスペースでパフォーマンス カウンターを使用していました。 現在のバージョンでは、このデータは `InsightsMetrics` という名前のテーブルに格納されます。 これらのパフォーマンス カウンターを使用する必要がなくなった場合は、ご利用のワークスペースで無効にすることができます。 \n\n>[!NOTE]\n>`Perf` テーブル内にこれらのカウンターを参照するアラート ルールがある場合は、`InsightsMetrics` テーブルに格納された新しいデータを参照するようにそれらのルールを更新する必要があります。 このテーブルを参照する使用可能なログ クエリの例については、Microsoft のドキュメントを参照してください。\n>\n\nパフォーマンス カウンターを有効にしたままにする場合は、[Log Analytics の価格](https://azure.microsoft.com/pricing/details/monitor/)に基づいて `Perf` テーブルに取り込まれ格納されたデータに対して課金されます。\n"
+  - question: "この変更はアラート ルールにどのように影響しますか? \n"
+    answer: >
+      ワークスペース内で有効にされているパフォーマンス カウンターをターゲットにする `Perf` テーブルをクエリする[ログ アラート](../alerts/alerts-unified-log.md)を作成した場合、代わりに `InsightsMetrics` テーブルを参照するように、これらのルールを更新する必要があります。 これらのデータ セットは `VMComputer` テーブルと `VMProcess` テーブルに移動するため、このガイダンスは `ServiceMapComputer_CL` と `ServiceMapProcess_CL` を使用したログ検索規則にも適用されます。
+
+
+      この FAQ とドキュメントを更新して、収集するデータ セットに対するログ検索のアラート ルールの例を含めます。
+  - question: >
+      この変更は請求書にどのように影響しますか。
+    answer: >
+      課金は引き続き、Log Analytics ワークスペースに取り込まれ保持されるデータに基づいて行われます。
+
+
+      Microsoft が収集するマシン レベルのパフォーマンス データは同じであり、`Perf` テーブルに格納されたデータと同様のサイズで、ほぼ同じ額のコストがかかります。
+  - question: "Service Map のみを使用する場合はどうなりますか? \n"
+    answer: "問題はありません。 VM Insights で今後の更新プログラムについて表示するときに、Azure portal にプロンプトが表示されます。 リリースされると、新しいバージョンへの更新を要求するプロンプトが表示されます。 [Maps](vminsights-maps.md) 機能のみを使用する場合は、アップグレードしないことを選択して、VM Insights の Maps 機能と、ご利用のワークスペースまたはダッシュボード タイルからアクセスする Service Map ソリューションを使用し続けることができます。\n\nワークスペースでパフォーマンス カウンターを手動で有効にすることを選択した場合は、Azure Monitor から表示されたパフォーマンス グラフの一部にデータが表示されることがあります。 新しいソリューションがリリースされたら、`InsightsMetrics` テーブルの格納データのクエリを実行するようにパフォーマンス グラフを更新します。 これらのグラフにそのテーブルからのデータを表示したい場合は、新しいバージョンの VM Insights にアップグレードする必要があります。\n\n`ServiceMapComputer_CL` と `ServiceMapProcess_CL` からデータを移動するための変更は、Service Map と VM Insights の両方に影響するため、この更新について引き続き計画する必要があります。\n\n**VMInsights** ソリューションにアップグレードしないことを選択した場合は、`Perf` テーブルのデータを参照するレガシ バージョンのパフォーマンス ブックを引き続き提供します。  \n"
+  - question: "Service Map データ セットも InsightsMetrics に格納されますか? \n"
+    answer: "両方のソリューションを使用する場合、データ セットは複製されません。 両方のオファリングでは、`VMComputer` (以前の ServiceMapComputer_CL)、`VMProcess` (以前の ServiceMapProcess_CL)、`VMConnection`、`VMBoundPort` テーブルに格納されるデータ セットを共有して、収集するマップ データ セットを格納します。  \n\n`InsightsMetrics` テーブルには、収集された VM、プロセス、およびサービス データ セットが格納されます。このテーブルは、VM Insights と VM Insights ソリューションを使用している場合にのみ設定されます。 Service Map ソリューションでは、データの収集も `InsightsMetrics` テーブルへのデータの格納も行われません。\n"
+  - question: "ワークスペースに Service Map と VMInsights のソリューションがある場合、二重に課金されますか? \n"
+    answer: >
+      いいえ、2 つのソリューションでは、`VMComputer` (以前の ServiceMapComputer_CL)、`VMProcess` (以前の ServiceMapProcess_CL)、`VMConnection`、`VMBoundPort` に格納されているマップ データ セットを共有しています。 ワークスペースに両方のソリューションがある場合、このデータに対して二重に課金されることはありません。
+  - question: >
+      Service Map または VMInsights ソリューションのいずれかを削除した場合、自分のデータは削除されますか。
+    answer: >
+      いいえ、2 つのソリューションでは、`VMComputer` (以前の ServiceMapComputer_CL)、`VMProcess` (以前の ServiceMapProcess_CL)、`VMConnection`、`VMBoundPort` に格納されているマップ データ セットを共有しています。 ソリューションのいずれかを削除すると、これらのデータ セットでは、データを使用するソリューションが配置されたままで、Log Analytics ワークスペースに保持されていることがわかります。 ご利用のワークスペースからデータを削除する場合は、ワークスペースから両方のソリューションを削除する必要があります。
+  - question: >
+      正常性機能は、制限付きのパブリック プレビュー段階にあります。
+    answer: "VM 正常性の機能セットに関して、お客様から多くのすばらしいフィードバックを受け取りました。 この機能には大きな関心が寄せられており、監視ワークフローをサポートする可能性にご期待いただいています。 Microsoft では、機能を追加するための一連の変更を行い、お客様からお寄せいただいたフィードバックに対処する予定です。 \n\nこれらの変更が新規のお客様に与える影響を最小限に抑えるために、この機能を **制限付きパブリック プレビュー** に移行しました。 この更新は 2019 年 10 月に行われました。\n\nVM Insights が GA になった後、2020 年にこの正常性機能を再開する予定です。\n"
+  - question: >
+      既存のお客様が正常性機能にアクセスする方法
+    answer: "正常性機能を使用している既存のお客様は引き続きアクセスできますが、新しいお客様には提供されません。  \n\nこの機能にアクセスするには、次の機能フラグ `feature.vmhealth=true` を Azure portal URL [https://portal.azure.com](https://portal.azure.com) に追加します。 例: `https://portal.azure.com/?feature.vmhealth=true`。\n\n次の短い URL を使用することもできます。これにより、機能フラグが自動的に設定されます: [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview)。\n\n既存のお客様は、正常性機能を備えた既存のワークスペースのセットアップに接続されている VM 上で、正常性機能を使用し続けることができます。  \n"
+  - question: >
+      現在、1 つの環境で VM の正常性を使用していますが、これを新しい環境にデプロイしたいと考えています
+    answer: >
+      正常性機能を使用している既存のお客様であり、新しいロール アウトに使用する場合は、vminsights@microsoft.com にお問い合わせの上、指示を依頼してください。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nご利用の仮想マシンを監視する上で役立つ要件と方法については、[VM Insights のデプロイ](./vminsights-enable-overview.md)に関するページをご覧ください。"

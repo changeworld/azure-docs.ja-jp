@@ -3,17 +3,17 @@ title: Azure API Management レベルの機能に基づく比較 | Microsoft Doc
 description: 提供される機能に基づいて API Management レベルを比較します。 各価格レベルで使用できる主な機能をまとめた表を参照してください。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: article
-ms.date: 04/13/2021
-ms.author: apimpm
-ms.openlocfilehash: f111729d7d7707ed4f40ce8f89ce76975fb47400
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.date: 11/15/2021
+ms.author: danlep
+ms.openlocfilehash: 6159b5c5d677dd66dda12573feeb3aad9faa9764
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536447"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556536"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API Management レベルの機能に基づく比較
 
@@ -41,6 +41,8 @@ ms.locfileid: "107536447"
 | ダイレクト管理 API                                                                        | いいえ          | はい       | はい   | はい      | はい     |
 | Azure Monitor のログとメトリック                                                               | いいえ          | はい       | はい   | はい      | はい     |
 | 静的 IP                                                                                    | いいえ          | はい       | はい   | はい      | はい     |
+| [WebSocket API](websocket-api.md)                                                                                    | いいえ          | はい       | はい   | はい      | はい     |
+| [GraphQL API (プレビュー)](graphql-api.md)                                                                               | はい          | はい       | はい   | はい      | はい     |
 
 <sup>1</sup> ユーザーが開発者ポータルにサインインする際に、ID プロバイダーとして Azure AD (および Azure AD B2C) を使用できます。<br/>
 <sup>2</sup> 関連機能 (例: ユーザー、グループ、問題、アプリケーション、電子メール テンプレートと通知) を含みます。<br/>

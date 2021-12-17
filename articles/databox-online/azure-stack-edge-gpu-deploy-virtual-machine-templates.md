@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: cf236396f080af9676f211c42178ddda6a794420
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ef505a5215f4ce7b6e324bd9899f13dafc7a7395
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568343"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110493549"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>テンプレートを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -35,7 +35,7 @@ ms.locfileid: "105568343"
 
     1. **デバイスに関する前提条件**
 
-        1. デバイス上の Azure Resource Manager に接続します。
+        1. デバイス上の [Azure Resource Manager に接続](azure-stack-edge-gpu-connect-resource-manager.md)します。
         2. ローカル UI を使用するコンピューティングを有効にします。
 
     2. **クライアントに関する前提条件**

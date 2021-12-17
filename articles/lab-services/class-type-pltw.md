@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services を使用して Project Lead The Way ラボを設定する
 description: Project Lead The Way クラスの授業用ラボを設定する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: ca4fdae2372895c17c4a98dd3959935108846744
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ee9c0dfdd9174691c27ee007c1dc0070249afbe
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95024621"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176778"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>Project Lead The Way クラス用ラボを設定する
 
@@ -48,7 +48,7 @@ ms.locfileid: "95024621"
 
 - **コンピューター サイエンス A**
 
-    学生は、モバイル アプリの開発を学ぶことで、このクラスでプログラミングの能力を高めます。  このクラスでは、[Microsoft の Visual Studio Code 開発環境](https://code.visualstudio.com/)を使用して、[Java](https://www.java.com/) を学習します。  学生はさらに、モバイル アプリ コードの実行とテストを可能にするエミュレーターも使用します。  Azure Lab Services でエミュレーターを設定する方法の詳細については、[Azure Lab Services にお問い合わせください](mailto:AzLabsCOVIDSupport@microsoft.com)。
+    学生は、モバイル アプリの開発を学ぶことで、このクラスでプログラミングの能力を高めます。  このクラスでは、[Microsoft の Visual Studio Code 開発環境](https://code.visualstudio.com/)を使用して、[Java](https://www.java.com/) を学習します。  学生はさらに、モバイル アプリ コードの実行とテストを可能にするエミュレーターも使用します。  Azure Lab Services でエミュレーターを設定する方法の詳細については、[Azure Lab Services のフォーラム](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices)からお問い合わせください。
 
 クラスのソフトウェアの完全な一覧については、各クラスの [PLTW サイト](https://www.pltw.org/pltw-software)を参照してください。
 
@@ -75,15 +75,15 @@ PLTW クラスに使用する仮想マシン (VM) の推奨サイズは、学生
 
 | ラボの設定 | 値と説明 | 使用が推奨されるクラス |
 | ------------ | ------------------ | --- |
-| 仮想マシンのサイズ | **Small GPU (視覚化)**<br>OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 | 次の PLTW クラスには、このサイズを使用することをお勧めします: 土木工学とアーキテクチャ、デジタル エレクトロニクス、コンピューター統合製造、エンジニアリング設計と開発。
-| 仮想マシンのサイズ | **Large**<br>高速の CPU、ローカル ディスクのより優れたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 | 次の PLTW クラスには、このサイズを使用することをお勧めします: エンジニアリング設計の概要、エンジニアリングの原則、コンピューター サイエンスの基本、コンピューター サイエンスの原則、コンピューター サイエンス A。 |
+| 仮想マシンのサイズ | **Small GPU (視覚化)**<br>OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 | 次の PLTW クラスには、このサイズを使用することをお勧めします: 土木工学とアーキテクチャ、デジタル エレクトロニクス、コンピューター統合製造、エンジニアリング設計と開発、エンジニアリング設計の概要。
+| 仮想マシンのサイズ | **Large**<br>高速の CPU、ローカル ディスクのより優れたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 | 次の PLTW クラスには、このサイズを使用することをお勧めします: エンジニアリングの原則、コンピューター サイエンスの基本、コンピューター サイエンスの原則、コンピューター サイエンス A。 |
 
 <br>
 
 ### <a name="license-server"></a>ライセンス サーバー
 前述の PLTW クラスで使用されるソフトウェアの多くでは、ライセンス サーバーへのアクセスは必要と "*なりません*"。  ただし、次のソフトウェアに Autodesk のネットワーク ライセンス モデルを使用する予定がある場合は、ライセンス サーバーにアクセスする必要があります。
 -   Revit
--   Inventor
+-   Inventor CAD
 -   Inventor CAM
 
 Autodesk のソフトウェアでネットワーク ライセンスを使用するために、PLTW は、Autodesk の Network License Manager をライセンス サーバーにインストールするための[詳細な手順](https://www.pltw.org/pltw-software)を提供しています。  通常、このライセンス サーバーは、オンプレミスのネットワークに配置されているか、Azure 仮想ネットワーク内の Azure 仮想マシン (VM) でホストされています。
@@ -100,7 +100,7 @@ Autodesk によって生成されたライセンス ファイルには、ライ�
 ### <a name="template-machine"></a>テンプレート マシン
 PLTW に必要なインストール ファイルが大きいファイルである場合があります。 ラボのテンプレート VM にファイルをダウンロードするときに、コピーに時間がかかることがあります。
 
-インストール ファイルをテンプレート マシンにダウンロードして、そこにすべてをインストールするのではなく、物理環境で PLTW イメージを作成することをお勧めします。  その後、カスタム イメージを Shared Image Gallery にインポートし、これらのイメージを使用してラボを作成することができます。  詳細については、「[カスタム イメージを Shared Image Gallery にアップロードする](./upload-custom-image-shared-image-gallery.md)」を参照してください。
+インストール ファイルをテンプレート マシンにダウンロードして、そこにすべてをインストールするのではなく、物理環境で PLTW イメージを作成することをお勧めします。  その後、カスタム イメージを共有イメージ ギャラリーにインポートして、ラボの作成にそれらを使用できるようにすることができます。  詳細については、「[カスタム イメージを作成するための推奨される方法](approaches-for-custom-image-creation.md)」を参照してください。
 
 この推奨事項に従ってラボを設定するための主なタスクは、次のとおりです。
 
@@ -122,6 +122,9 @@ PLTW に必要なインストール ファイルが大きいファイルであ�
 1.  ラボが作成されたら、起動し、テンプレート VM に接続して、イメージが想定どおりに動作することを検証します。
 
 1.  最後に、テンプレート VM を発行して、学生の VM を作成します。
+
+> [!NOTE]
+> [子供のインターネット保護法 (CIPA)](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act) に準拠するためなど、学校でコンテンツのフィルター処理を実行する必要がある場合は、サードパーティ製ソフトウェアを使用する必要があります。  詳細については、[Lab Services を使用したコンテンツ フィルタリング](./administrator-guide.md#content-filtering)に関するガイダンスを参照してください。
 
 ## <a name="student-devices"></a>学生用デバイス
 学生は、Windows コンピューター、Mac、Chromebook から自分のラボ VM に接続できます。 手順については、次の項目を参照してください。

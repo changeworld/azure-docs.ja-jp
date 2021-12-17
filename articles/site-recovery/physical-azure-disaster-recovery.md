@@ -3,13 +3,13 @@ title: Azure Site Recovery を使用してオンプレミスの物理サーバ�
 description: Azure Site Recovery サービスを使用して Azure にオンプレミス Windows/Linux サーバーのディザスター リカバリーを設定する方法について説明します。
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/12/2019
-ms.openlocfilehash: 5775f8ed9b657502f4865f3c4f311ea0dcd269ea
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 07/14/2021
+ms.openlocfilehash: 33b8df96dc4ad8272b158f73e4243b5b1cb1e706
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581552"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075108"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -19,7 +19,7 @@ ms.locfileid: "106581552"
 
 > [!div class="checklist"]
 > * Azure とオンプレミスの前提条件を設定する
-> * Site Recovery の Recovery Services コンテナーを作成する 
+> * Site Recovery の Recovery Services コンテナーを作成する
 > * ソース レプリケーション環境とターゲット レプリケーション環境を設定する
 > * レプリケーション ポリシーを作成する
 > * サーバーのレプリケーションを有効にする
@@ -36,7 +36,7 @@ ms.locfileid: "106581552"
 
 開始する前に、次のことに注意してください。
 
-- Azure にフェールオーバーした後は、物理サーバーをオンプレミスの物理コンピューターにフェールバックできません。 フェールバックできるのは VMware VM に対してだけです。 
+- Azure にフェールオーバーした後は、物理サーバーをオンプレミスの物理コンピューターにフェールバックできません。 フェールバックできるのは VMware VM に対してだけです。
 - このチュートリアルでは、最も簡単な設定で Azure に物理サーバーのディザスター リカバリーを設定します。 その他のオプションについて知りたい場合は、次のハウツー ガイドをご覧ください。
     - Site Recovery 構成サーバーなどの[レプリケーション ソース](physical-azure-set-up-source.md)を設定する。
     - [レプリケーション ターゲット](physical-azure-set-up-target.md)を設定する。
@@ -48,7 +48,7 @@ ms.locfileid: "106581552"
 Microsoft [Azure アカウント](https://azure.microsoft.com/)を取得します。
 
 - アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。
-- [Site Recovery の価格](site-recovery-faq.md#pricing)について理解し、[価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)を確認します。
+- [Site Recovery の価格](./site-recovery-faq.yml)について理解し、[価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)を確認します。
 - Site Recovery の[サポート対象のリージョン](https://azure.microsoft.com/pricing/details/site-recovery/)を見つけます。
 
 ### <a name="verify-azure-account-permissions"></a>Azure アカウントのアクセス許可を確認する
@@ -56,7 +56,7 @@ Microsoft [Azure アカウント](https://azure.microsoft.com/)を取得しま�
 VM を Azure にレプリケートするアクセス許可がお使いの Azure アカウントに与えられていることを確認します。
 
 - Azure にマシンをレプリケートするために必要な[アクセス許可](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)を確認します。
-- [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) のアクセス許可を確認して変更します。 
+- [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) のアクセス許可を確認して変更します。
 
 
 
@@ -82,7 +82,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 - ドメイン アカウントまたはローカル アカウントを使用できます。
 - Windows VM の場合、ドメイン アカウントを使用していなければ、次のようにしてローカル マシンでのリモート ユーザー アクセス制御を無効にします。 無効にするには、レジスタで、**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** の下に、値 1 を指定した DWORD エントリの **LocalAccountTokenFilterPolicy** を追加します。
-- CLI からレジストリ エントリを追加し、設定を無効にするには、次のように入力します。       ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- CLI からレジストリ エントリを追加して、設定を無効にするには、次のように入力します: `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.`
 - Linux の場合、アカウントは、ソース Linux サーバーの root である必要があります。
 
 
@@ -102,24 +102,25 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 構成サーバーをセットアップし、コンテナーに登録して、VM を検出します。
 
-1. **[Site Recovery]**  >  **[インフラストラクチャを準備する]**  >  **[ソース]** の順にクリックします。
-2. 構成サーバーがない場合は **[+ 構成サーバー]** をクリックします。
-3. **[サーバーの追加]** で、**[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
-4. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
-5. コンテナー登録キーをダウンロードします。 このキーは、統合セットアップを実行するときに必要になります。 キーは生成後 5 日間有効です。
+1. **[Site Recovery]**  >  **[インフラストラクチャの準備]** の順にクリックします。
+2. ご自身のデプロイの計画が完了していることを確認し、Deployment Planner を実行してさまざまな要件を見積もります。 **[次へ]** をクリックします。
+3. **[マシンは仮想化されていますか?]** オプション内で、お使いのマシンが仮想マシンか物理マシンかを選択します。
+4. 構成サーバーがない場合は **[+ 構成サーバー]** をクリックします。
+5. 仮想マシンの保護を有効にする場合は、構成サーバーの仮想マシン テンプレートをダウンロードします。
+6. 物理マシンの保護を有効にする場合は、Site Recovery 統合セットアップ インストール ファイルをダウンロードします。 また、コンテナー登録キーをダウンロードする必要もあります。 これは、統合セットアップを実行するときに必要です。 キーは生成後 5 日間有効です。
 
    ![インストール ファイルと登録キーをダウンロードするためのオプションを示すスクリーンショット。](./media/physical-azure-disaster-recovery/source-environment.png)
 
 
 ### <a name="register-the-configuration-server-in-the-vault"></a>構成サーバーのコンテナーへの登録
 
-開始する前に次の作業を行います。 
+開始する前に次の作業を行います。
 
 #### <a name="verify-time-accuracy"></a>時間の精度を検証する
 構成サーバー マシンのシステム クロックが[タイム サーバー](/windows-server/networking/windows-time-service/windows-time-service-top)と同期していることを確認します。 これは一致している必要があります。 15 分進んでいるか遅れている場合は、セットアップが失敗する可能性があります。
 
 #### <a name="verify-connectivity"></a>接続を検証する
-コンピューターが、環境に基づいて次の URL にアクセスできることを確認します。 
+コンピューターが、環境に基づいて次の URL にアクセスできることを確認します。
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
@@ -170,12 +171,12 @@ IP アドレス ベースのファイアウォール規則では、HTTPS (443) �
 3. **[マシンの種類]** で、 **[物理マシン]** を選択します。
 4. プロセス サーバー (構成サーバー) を選択します。 次に、 **[OK]** をクリックします
 5. **[ターゲット]** で、サブスクリプションと、フェールオーバー後に Azure VM を作成するリソース グループを選択します。 Azure で使用するデプロイ モデル (クラシックまたはリソース管理) を選択します。
-6. データのレプリケーションに使用する Azure Storage アカウントを選択します。 
+6. データのレプリケーションに使用する Azure Storage アカウントを選択します。
 7. フェールオーバー後に作成された Azure VM が接続する Azure ネットワークとサブネットを選択します。
-8. 保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、 **[選択したマシン用に今すぐ構成します。]** を選択します。 マシンごとに Azure ネットワークを選択する場合は、 **[後で構成する]** を選択します。 
-9. **[物理マシン]** で **[+物理マシン]** をクリックします。 名前と IP アドレスを指定します。 レプリケートするマシンのオペレーティング システムを選択します。 サーバーを検出し、一覧表示するのに数分かかります。 
+8. 保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、 **[選択したマシン用に今すぐ構成します。]** を選択します。 マシンごとに Azure ネットワークを選択する場合は、 **[後で構成する]** を選択します。
+9. **[物理マシン]** で **[+物理マシン]** をクリックします。 名前と IP アドレスを指定します。 レプリケートするマシンのオペレーティング システムを選択します。 サーバーを検出し、一覧表示するのに数分かかります。
 10. **[プロパティ]**  >  **[プロパティの構成]** で、プロセス サーバーがモビリティ サービスのマシンへの自動インストールで使用するアカウントを選択します。
-11. **[レプリケーション設定]**  >  **[レプリケーション設定の構成]** で、正しいレプリケーション ポリシーが選択されていることを確認します。 
+11. **[レプリケーション設定]**  >  **[レプリケーション設定の構成]** で、正しいレプリケーション ポリシーが選択されていることを確認します。
 12. **[レプリケーションを有効にする]** をクリックします。 **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化** ジョブの進行状況を追跡できます。 **保護の最終処理** ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
 

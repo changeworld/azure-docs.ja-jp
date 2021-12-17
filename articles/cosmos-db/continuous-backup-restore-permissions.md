@@ -4,25 +4,20 @@ description: 継続的バックアップ アカウントの復元アクセス許
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 07/29/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 8b3ce2c195dc2fa3dd703306e731aa5b807b78b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d566a2ee66df4adb810cb5908da3c47657fab418
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100648605"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733184"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを復元するためのアクセス許可を管理する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-> [!IMPORTANT]
-> Azure Cosmos DB のポイントインタイム リストア機能 (継続的バックアップ モード) は、現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-Azure Cosmos DB を使用すると、継続的バックアップ (プレビュー) アカウントの復元のアクセス許可を切り分けて、特定のロールまたはプリンシパルに制限することができます。 アカウントの所有者は復元をトリガーし、他のプリンシパルにロールを割り当てて復元操作を実行できます。 これらのアクセス許可は、次の図に示すように、サブスクリプション スコープで、またはソース アカウント スコープでよりきめ細かく適用できます。
+Azure Cosmos DB を使用すると、継続的バックアップ アカウントの復元のアクセス許可を切り分けて、特定のロールまたはプリンシパルに制限することができます。 アカウントの所有者は復元をトリガーし、他のプリンシパルにロールを割り当てて復元操作を実行できます。 これらのアクセス許可は、次の図に示すように、サブスクリプション スコープで、またはソース アカウント スコープでよりきめ細かく適用できます。
 
 :::image type="content" source="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" alt-text="復元操作を実行するために必要なロールの一覧。" lightbox="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" border="false":::
 
@@ -52,19 +47,22 @@ Azure Cosmos DB を使用すると、継続的バックアップ (プレビュ�
 |Resource group | /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-cosmosdb-rg |
 |CosmosDB 復元可能アカウント リソース | /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/23e99a35-cd36-4df4-9614-f767a03b9995|
 
-復元可能アカウント リソースは、CLI では `az cosmosdb restorable-database-account list --name <accountname>` コマンド、または PowerShell では `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` コマンドレットの出力から抽出できます。 出力の name 属性は、復元可能アカウントの `instanceID` を表します。 詳細については、[PowerShell](continuous-backup-restore-powershell.md) または [CLI](continuous-backup-restore-command-line.md) に関する記事を参照してください。
+復元可能アカウント リソースは、CLI では `az cosmosdb restorable-database-account list --name <accountname>` コマンド、または PowerShell では `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` コマンドレットの出力から抽出できます。 出力の name 属性は、復元可能アカウントの `instanceID` を表します。 
 
 ## <a name="permissions"></a>アクセス許可
 
 次のアクセス許可は、継続的バックアップ モードのアカウントの復元に関連するさまざまなアクティビティの実行に必要です。
 
+> [!NOTE]
+> アクセス許可は、アカウント スコープまたはサブスクリプション スコープで、復元可能なデータベース アカウントに割り当てることができます。 リソース グループのスコープにアクセス許可を割り当てることはできません。
+
 |権限  |影響  |最小スコープ  |最大スコープ  |
 |---------|---------|---------|---------|
 |`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | これらのアクセス許可は、ARM テンプレートのデプロイで、復元されたアカウントを作成するために必要です。 このロールを設定する方法については、次のサンプルのアクセス許可 [RestorableAction](#custom-restorable-action) を参照してください。 | 適用できません | 該当なし  |
 |`Microsoft.DocumentDB/databaseAccounts/write` | このアクセス許可は、アカウントをリソース グループに復元するために必要です。 | 復元されたアカウントが作成されるリソース グループ。 | 復元されたアカウントが作成されるサブスクリプション。 |
-|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |このアクセス許可は、ソースの復元可能データベース アカウント スコープで、それに対して復元操作を実行できるようにするために必要です。  | 復元するソース アカウントに属する *RestorableDatabaseAccount* リソース。 この値は、復元可能データベース アカウント リソースの `ID` プロパティによっても示されます。 復元可能なアカウントの例: */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>* | 復元可能データベース アカウントを含むサブスクリプション。 リソース グループをスコープとして選択することはできません。  |
-|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |このアクセス許可は、ソースの復元可能データベース アカウント スコープで、復元できるデータベース アカウントを一覧表示するために必要です。  | 復元するソース アカウントに属する *RestorableDatabaseAccount* リソース。 この値は、復元可能データベース アカウント リソースの `ID` プロパティによっても示されます。 復元可能なアカウントの例: */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>*| 復元可能データベース アカウントを含むサブスクリプション。 リソース グループをスコープとして選択することはできません。  |
-|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | このアクセス許可は、ソースの復元可能アカウント スコープで、復元可能アカウントのデータベースとコンテナーの一覧などの復元可能リソースを読み取ることができるようにするために必要です。  | 復元するソース アカウントに属する *RestorableDatabaseAccount* リソース。 この値は、復元可能データベース アカウント リソースの `ID` プロパティによっても示されます。 復元可能なアカウントの例: */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>*| 復元可能データベース アカウントを含むサブスクリプション。 リソース グループをスコープとして選択することはできません。 |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` </br> リソース グループは、アクセス許可のスコープとして選択できません。 |このアクセス許可は、ソースの復元可能データベース アカウント スコープで、それに対して復元操作を実行できるようにするために必要です。  | 復元するソース アカウントに属する *RestorableDatabaseAccount* リソース。 この値は、復元可能データベース アカウント リソースの `ID` プロパティによっても示されます。 復元可能なアカウントの例は、 */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/\<guid-instanceid\>* です。 | 復元可能データベース アカウントを含むサブスクリプション。  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` </br> リソース グループは、アクセス許可のスコープとして選択できません。 |このアクセス許可は、ソースの復元可能データベース アカウント スコープで、復元できるデータベース アカウントを一覧表示するために必要です。  | 復元するソース アカウントに属する *RestorableDatabaseAccount* リソース。 この値は、復元可能データベース アカウント リソースの `ID` プロパティによっても示されます。 復元可能なアカウントの例は、 */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/\<guid-instanceid\>* です。| 復元可能データベース アカウントを含むサブスクリプション。 |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` </br> リソース グループは、アクセス許可のスコープとして選択できません。 | このアクセス許可は、ソースの復元可能アカウント スコープで、復元可能アカウントのデータベースとコンテナーの一覧などの復元可能リソースを読み取ることができるようにするために必要です。  | 復元するソース アカウントに属する *RestorableDatabaseAccount* リソース。 この値は、復元可能データベース アカウント リソースの `ID` プロパティによっても示されます。 復元可能なアカウントの例は、 */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/\<guid-instanceid\>* です。| 復元可能データベース アカウントを含むサブスクリプション。 |
 
 ## <a name="azure-cli-role-assignment-scenarios-to-restore-at-different-scopes"></a>さまざまなスコープで復元するための Azure CLI でのロールの割り当てのシナリオ
 
@@ -131,5 +129,7 @@ az role definition create --role-definition <JSON_Role_Definition_Path>
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure portal](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md)、[CLI](continuous-backup-restore-command-line.md)、または [Azure Resource Manager](continuous-backup-restore-template.md) を使用して、継続的バックアップを構成および管理する
+* [Azure portal](provision-account-continuous-backup.md#provision-portal)、[PowerShell](provision-account-continuous-backup.md#provision-powershell)、[CLI](provision-account-continuous-backup.md#provision-cli)、または [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template) を使用して継続的バックアップをプロビジョニングします。
+* [Azure portal](restore-account-continuous-backup.md#restore-account-portal)、[PowerShell](restore-account-continuous-backup.md#restore-account-powershell)、[CLI](restore-account-continuous-backup.md#restore-account-cli)、または [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template) を使用してアカウントを復元します。
+* [定期的なバックアップから継続的バックアップにアカウントを移行します](migrate-continuous-backup.md)。
 * [継続的バックアップ モードのリソース モデル](continuous-backup-restore-resource-model.md)

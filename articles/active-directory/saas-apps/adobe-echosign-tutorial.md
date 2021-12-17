@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Adobe Sign の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と Adobe Sign の統合 | Microsoft Docs'
 description: Azure Active Directory と Adobe Sign の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/19/2021
+ms.date: 09/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 7162c38aae2fec4ea21aae56fa8c3649f7a55425
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14e978d554cf970c545b4108ac4baaa12836c131
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649969"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132280970"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>チュートリアル: Azure Active Directory と Adobe Sign の統合
+# <a name="tutorial-azure-ad-sso-integration-with-adobe-sign"></a>チュートリアル: Azure AD SSO と Adobe Sign の統合
 
 このチュートリアルでは、Adobe Sign と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Adobe Sign を統合すると、次のことができます。
 
@@ -37,7 +37,7 @@ ms.locfileid: "101649969"
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Adobe Sign では、**SP** によって開始される SSO がサポートされます
+* Adobe Sign では、**SP** Initiated SSO がサポートされます。
 
 ## <a name="add-adobe-sign-from-the-gallery"></a>ギャラリーからの Adobe Sign の追加
 
@@ -64,7 +64,7 @@ Adobe Sign で Azure AD のシングル サインオンを構成してテスト�
     1. **[Adobe Sign のテスト ユーザーの作成](#create-adobe-sign-test-user)** - Adobe Sign で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
@@ -119,9 +119,9 @@ Adobe Sign で Azure AD シングル サインオンを構成するには、次�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="configure-adobe-sign-sso"></a>Adobe Sign の SSO の構成
+## <a name="configure-adobe-sign-sso"></a>Adobe Sign の SSO の構成
 
-1. Adobe Sign 許可リストに自分のドメインを追加するには、構成する前に、[Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)に連絡してください。 ドメインの追加方法は次のとおりです。
+1. Adobe Sign 許可リストに自分のドメインを追加するために、構成する前に、[Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)に連絡してください。 ドメインの追加方法は次のとおりです。
 
     a. [Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)からランダムに生成されたトークンが送信されます。 ドメインの場合、トークンは **adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx** のようになります。
 
@@ -144,13 +144,13 @@ Adobe Sign で Azure AD シングル サインオンを構成するには、次�
 
 1. [SAML] メニューで、 **[アカウント設定]**  >  **[SAML 設定]** を選択します。
 
-    ![Adobe Sign の [SAML 設定] ページのスクリーンショット](./media/adobe-echosign-tutorial/settings.png "Account")
+    ![Adobe Sign の [SAML 設定] ページのスクリーンショット。](./media/adobe-echosign-tutorial/settings.png "Account")
 
 1. **[SAML 設定]** セクションで、次の手順に従います。
 
-    ![[SAML Mandatory] を含む SAML の設定が強調表示されているスクリーンショット。](./media/adobe-echosign-tutorial/saml1.png "SAML 設定")
+    ![[SAML Mandatory] を含む SAML の設定が強調表示されているスクリーンショット。](./media/adobe-echosign-tutorial/profile.png "SAML 設定")
 
-   ![[SAML 設定] のスクリーンショット](./media/adobe-echosign-tutorial/saml.png "SAML 設定")
+   ![[SAML 設定] のスクリーンショット。](./media/adobe-echosign-tutorial/certificate.png "SAML 設定")
 
    a. **[SAML モード]** で **[SAML Mandatory]** を選択します。
 
@@ -200,8 +200,8 @@ Azure AD ユーザーが Adobe Sign にサインインできるようにする�
 
 * Adobe Sign のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Adobe Sign] タイルをクリックすると、SSO を設定した Adobe Sign に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Adobe Sign] タイルをクリックすると、SSO を設定した Adobe Sign に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Adobe Sign を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Adobe Sign を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

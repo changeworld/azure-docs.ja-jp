@@ -1,0 +1,780 @@
+items:
+  - name: Azure Cognitive Service for Language のドキュメント
+    href: index.yml
+  - name: 概要
+    expanded: true
+    items:
+      - name: Azure Cognitive Service for Language とは
+        href: overview.md
+      - name: 新機能
+        href: whats-new.md
+      - name: LUIS、QnA Maker、Text Analytics からの移行
+        href: concepts/migrate.md
+      - name: 価格
+        href: 'https://aka.ms/unifiedLanguagePricing'
+      - name: Language Studio のクイックスタート
+        href: language-studio.md
+  - name: AI の責任ある使用
+    items:
+      - name: Azure Cognitive Service for Language の透明性に関するメモ
+        href: /legal/cognitive-services/language-service/transparency-note?context=/azure/cognitive-services/language-service/context/context
+        displayName: 'Transparency note for language service, Language service Transparency, Responsible AI, Responsible use of AI'
+      - name: 統合と責任ある使用
+        href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
+        displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
+      - name: データ、プライバシー、セキュリティ
+        href: /legal/cognitive-services/language-service/data-privacy?context=/azure/cognitive-services/language-service/context/context
+        displayName: 'Data privacy, logging, data retention'
+  - name: カスタム テキスト分類 (プレビュー)
+    items:
+      - name: 概要
+        href: custom-classification/overview.md
+      - name: クイック スタート
+        href: custom-classification/quickstart.md
+      - name: 言語のサポート
+        href: custom-classification/language-support.md
+      - name: よく寄せられる質問
+        href: custom-classification/faq.md
+      - name: 操作方法ガイド
+        items:
+          - name: プロジェクトを作成する
+            href: custom-classification/how-to/create-project.md
+          - name: データの選択とスキーマの設計
+            href: custom-classification/how-to/design-schema.md
+            displayName: Best practices
+          - name: タグ データ
+            href: custom-classification/how-to/tag-data.md
+          - name: モデルをトレーニングする
+            href: custom-classification/how-to/train-model.md
+          - name: モデルの評価を表示する
+            href: custom-classification/how-to/view-model-evaluation.md
+          - name: モデルを改善する
+            href: custom-classification/how-to/improve-model.md
+          - name: モデルをデプロイし、ランタイム API を呼び出してテキストを分類する
+            href: custom-classification/how-to/call-api.md
+      - name: 概念
+        items:
+          - name: 評価メトリック
+            href: custom-classification/concepts/evaluation.md
+          - name: 許容されるデータ タグ形式
+            href: custom-classification/concepts/data-formats.md
+            displayName: Data representation
+      - name: リファレンス
+        items:
+          - name: 用語集
+            href: custom-classification/glossary.md
+            displayName: 'Model, Project, Class'
+          - name: サービスの制限
+            href: custom-classification/service-limits.md
+          - name: REST API (v3.2 プレビュー 2)
+            items:
+              - name: オーサリング API
+                href: 'https://aka.ms/ct-authoring-swagger'
+              - name: ランタイム予測 API
+                href: 'https://aka.ms/ct-runtime-swagger'
+          - name: SDK (v3.2 プレビュー 2)
+            items:
+              - name: .NET
+                href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+              - name: Python
+                href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+              - name: Java
+                href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+              - name: Node.js
+                href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
+  - name: カスタム固有表現認識 (NER) (プレビュー)
+    items:
+      - name: 概要
+        href: custom-named-entity-recognition/overview.md
+      - name: クイック スタート
+        href: custom-named-entity-recognition/quickstart.md
+      - name: 言語のサポート
+        href: custom-named-entity-recognition/language-support.md
+      - name: よく寄せられる質問
+        href: custom-named-entity-recognition/faq.md
+      - name: 操作方法ガイド
+        items:
+          - name: プロジェクトを作成する
+            href: custom-named-entity-recognition/how-to/create-project.md
+          - name: データの選択とスキーマの設計
+            href: custom-named-entity-recognition/how-to/design-schema.md
+          - name: タグ データ
+            href: custom-named-entity-recognition/how-to/tag-data.md
+          - name: モデルをトレーニングする
+            href: custom-named-entity-recognition/how-to/train-model.md
+          - name: モデルの評価を表示する
+            href: custom-named-entity-recognition/how-to/view-model-evaluation.md
+          - name: モデルを改善する
+            href: custom-named-entity-recognition/how-to/improve-model.md
+          - name: モデルをデプロイし、ランタイム API を呼び出してエンティティを抽出する
+            href: custom-named-entity-recognition/how-to/call-api.md
+      - name: チュートリアル
+        items:
+          - name: カスタム エンティティで Cognitive Search のインデックスをエンリッチする
+            href: custom-named-entity-recognition/tutorials/cognitive-search.md
+      - name: 概念
+        items:
+          - name: 評価メトリック
+            href: custom-named-entity-recognition/concepts/evaluation-metrics.md
+          - name: 許容されるデータ タグ形式
+            href: custom-named-entity-recognition/concepts/data-formats.md
+      - name: リファレンス
+        items:
+          - name: 用語集
+            href: custom-named-entity-recognition/glossary.md
+          - name: サービスの制限
+            href: custom-named-entity-recognition/service-limits.md
+          - name: REST API (v3.2 プレビュー 2)
+            items:
+              - name: オーサリング API
+                href: 'https://aka.ms/ct-authoring-swagger'
+              - name: ランタイム予測 API
+                href: 'https://aka.ms/ct-runtime-swagger'
+          - name: SDK (v3.2 プレビュー 2)
+            items:
+              - name: .NET
+                href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+              - name: Python
+                href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+              - name: Java
+                href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+              - name: Node.js
+                href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
+  - name: Conversational Language Understanding (プレビュー)
+    items:
+      - name: 概要
+        href: conversational-language-understanding/overview.md
+      - name: クイック スタート
+        href: conversational-language-understanding/quickstart.md
+      - name: 言語のサポート
+        href: conversational-language-understanding/language-support.md
+      - name: よく寄せられる質問
+        href: conversational-language-understanding/faq.md
+      - name: 操作方法ガイド
+        items:
+          - name: プロジェクトを作成する
+            href: conversational-language-understanding/how-to/create-project.md
+          - name: スキーマを作成する
+            href: conversational-language-understanding/how-to/build-schema.md
+          - name: 発話にタグ付けする
+            href: conversational-language-understanding/how-to/tag-utterances.md
+          - name: モデルをトレーニングする
+            href: conversational-language-understanding/how-to/train-model.md
+          - name: モデルをデプロイし、ランタイム API に対してクエリを実行する
+            href: conversational-language-understanding/how-to/deploy-query-model.md
+      - name: 概念
+        items:
+          - name: 下位互換性
+            href: conversational-language-understanding/concepts/backwards-compatibility.md
+          - name: エンティティ コンポーネント
+            href: conversational-language-understanding/concepts/entity-components.md
+          - name: 評価メトリック
+            href: conversational-language-understanding/concepts/evaluation-metrics.md
+          - name: 複数の言語を使用する
+            href: conversational-language-understanding/concepts/multiple-languages.md
+      - name: 関連項目
+        items:
+          - name: 事前構築済みコンポーネント リファレンス
+            href: conversational-language-understanding/prebuilt-component-reference.md
+          - name: サービスの制限
+            href: conversational-language-understanding/service-limits.md
+          - name: REST API
+            items:
+              - name: Authoring
+                href: 'https://aka.ms/clu-authoring-apis'
+              - name: ランタイム API
+                href: 'https://aka.ms/clu-apis'
+          - name: SDK
+            items:
+              - name: .NET
+                href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+              - name: Python
+                href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+  - name: エンティティ リンク設定
+    items:
+      - name: 概要
+        href: entity-linking/overview.md
+      - name: クイック スタート
+        href: entity-linking/quickstart.md
+      - name: 言語のサポート
+        href: entity-linking/language-support.md
+      - name: AI の責任ある使用
+        items:
+          - name: 統合と責任ある使用
+            href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
+          - name: データ、プライバシー、セキュリティ
+            href: /legal/cognitive-services/language-service/data-privacy?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Data privacy, logging, data retention'
+      - name: 操作方法ガイド
+        items:
+          - name: API を呼び出す方法
+            href: entity-linking/how-to/call-api.md
+      - name: リファレンス
+        items:
+          - name: REST API
+            items:
+              - name: v3.2 プレビュー 2
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-2-Preview-2/operations/EntitiesLinking'
+              - name: v3.1
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/EntitiesLinking'
+          - name: SDK
+            items:
+              - name: v3.2 プレビュー 2
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
+              - name: v3.1
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-latest&preserve-view=true
+  - name: 言語検出
+    items:
+      - name: 概要
+        href: language-detection/overview.md
+      - name: クイック スタート
+        href: language-detection/quickstart.md
+      - name: 言語のサポート
+        href: language-detection/language-support.md
+      - name: AI の責任ある使用
+        items:
+          - name: 言語検出の透明性に関するメモ
+            href: /legal/cognitive-services/language-service/transparency-note-language-detection?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Transparency note for language detection, language detection transparency, Responsible AI, Responsible use of AI'
+          - name: 統合と責任ある使用
+            href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
+          - name: データ、プライバシー、セキュリティ
+            href: /legal/cognitive-services/language-service/data-privacy?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Data privacy, logging, data retention'
+      - name: 操作方法ガイド
+        items:
+          - name: API を呼び出す
+            href: language-detection/how-to/call-api.md
+          - name: コンテナーの使用
+            items:
+              - name: Docker コンテナーを使用する
+                href: language-detection/how-to/use-containers.md
+              - name: コンテナーを構成する
+                href: concepts/configure-containers.md
+              - name: Container Instances の使用
+                href: ../containers/azure-container-instance-recipe.md?context=/azure/cognitive-services/language-service/context/context
+              - name: Cognitive Services コンテナーのドキュメント
+                href: ../containers/index.yml
+      - name: リファレンス
+        items:
+          - name: REST API
+            items:
+              - name: v3.2 プレビュー 2
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-2-Preview-2/operations/Languages'
+              - name: v3.1
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages'
+          - name: SDK
+            items:
+              - name: v3.2 プレビュー 2
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
+              - name: v3.1
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-latest&preserve-view=true
+  - name: キー フレーズの抽出
+    items:
+      - name: 概要
+        href: key-phrase-extraction/overview.md
+      - name: クイック スタート
+        href: key-phrase-extraction/quickstart.md
+      - name: 言語のサポート
+        href: key-phrase-extraction/language-support.md
+      - name: AI の責任ある使用
+        items:
+          - name: キー フレーズ抽出の透明性に関するメモ
+            href: /legal/cognitive-services/language-service/transparency-note-key-phrase-extraction?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Transparency note for key phrase extraction, key phrase extraction transparency, Responsible AI, Responsible use of AI'
+          - name: 統合と責任ある使用
+            href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
+          - name: データ、プライバシー、セキュリティ
+            href: /legal/cognitive-services/language-service/data-privacy?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Data privacy, logging, data retention'
+      - name: 操作方法ガイド
+        items:
+          - name: キー フレーズ分析の呼び出し
+            href: key-phrase-extraction/how-to/call-api.md
+          - name: コンテナーの使用
+            items:
+              - name: Docker コンテナーを使用する
+                href: key-phrase-extraction/how-to/use-containers.md
+              - name: コンテナーを構成する
+                href: concepts/configure-containers.md
+              - name: Container Instances の使用
+                href: ../containers/azure-container-instance-recipe.md?context=/azure/cognitive-services/language-service/context/context
+              - name: Cognitive Services コンテナーのドキュメント
+                href: ../containers/index.yml
+      - name: チュートリアル
+        items:
+          - name: Power BI の統合
+            href: key-phrase-extraction/tutorials/integrate-power-bi.md
+      - name: リファレンス
+        items:
+          - name: REST API
+            items:
+              - name: v3.2 プレビュー 2
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-2-Preview-2/operations/KeyPhrases'
+              - name: v3.1
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/KeyPhrases'
+          - name: SDK
+            items:
+              - name: v3.2 プレビュー 2
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
+              - name: v3.1
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-latest&preserve-view=true
+  - name: 名前付きエンティティの認識 (NER)
+    items:
+      - name: 概要
+        href: named-entity-recognition/overview.md
+      - name: クイック スタート
+        href: named-entity-recognition/quickstart.md
+      - name: 言語のサポート
+        href: named-entity-recognition/language-support.md
+      - name: AI の責任ある使用
+        items:
+          - name: NER の透明性に関するメモ
+            href: /legal/cognitive-services/language-service/transparency-note-named-entity-recognition?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Transparency note for NER, Named Entity Recognition transparency, Responsible AI, Responsible use of AI'
+          - name: 統合と責任ある使用
+            href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
+          - name: データ、プライバシー、セキュリティ
+            href: /legal/cognitive-services/language-service/data-privacy?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Data privacy, logging, data retention'
+      - name: 操作方法ガイド
+        items:
+          - name: NER を呼び出す
+            href: named-entity-recognition/how-to-call.md
+      - name: 概念
+        items:
+          - name: 認識されたエンティティのカテゴリ
+            href: named-entity-recognition/concepts/named-entity-categories.md
+      - name: チュートリアル
+        items:
+          - name: Power Automate を使用して Excel に情報を抽出する
+            href: named-entity-recognition/tutorials/extract-excel-information.md
+      - name: リファレンス
+        items:
+          - name: REST API
+            items:
+              - name: v3.2 プレビュー 2
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-2-Preview-2/operations/EntitiesRecognitionGeneral'
+              - name: v3.1
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/EntitiesRecognitionGeneral'
+          - name: SDK
+            items:
+              - name: v3.2 プレビュー 2
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
+              - name: v3.1
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-latest&preserve-view=true
+  - name: 個人を特定できる情報 (PII) の検出
+    items:
+      - name: 概要
+        href: personally-identifiable-information/overview.md
+      - name: クイック スタート
+        href: personally-identifiable-information/quickstart.md
+      - name: 言語のサポート
+        href: personally-identifiable-information/language-support.md
+      - name: AI の責任ある使用
+        items:
+          - name: PII の透明性に関する注意
+            href: /legal/cognitive-services/language-service/transparency-note-personally-identifiable-information?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Transparency note for PII, Personally Identifiable Information transparency, Responsible AI, Responsible use of AI'
+          - name: 統合と責任ある使用
+            href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
+          - name: データ、プライバシー、セキュリティ
+            href: /legal/cognitive-services/language-service/data-privacy?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Data privacy, logging, data retention'
+      - name: 操作方法ガイド
+        items:
+          - name: PII を呼び出す
+            href: personally-identifiable-information/how-to-call.md
+      - name: 概念
+        items:
+          - name: 認識されたエンティティのカテゴリ
+            href: personally-identifiable-information/concepts/entity-categories.md
+      - name: リファレンス
+        items:
+          - name: REST API
+            items:
+              - name: v3.2 プレビュー 2
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-2-Preview-2/operations/EntitiesRecognitionPii'
+              - name: v3.1
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/EntitiesRecognitionPii'
+          - name: SDK
+            items:
+              - name: v3.2 プレビュー 2
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
+              - name: v3.1
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-latest&preserve-view=true
+  - name: 質問応答
+    items:
+      - name: 概要
+        href: question-answering/overview.md
+      - name: クイック スタート
+        href: question-answering/quickstart/sdk.md
+      - name: 言語のサポート
+        href: question-answering/language-support.md
+      - name: AI の責任ある使用
+        items:
+          - name: 質問応答の透明性に関するメモ
+            href: /legal/cognitive-services/language-service/transparency-note-question-answering?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Transparency note for question answering, question answering transparency, Responsible AI, Responsible use of AI'
+          - name: 統合と責任ある使用
+            href: /legal/cognitive-services/language-service/guidance-integration-responsible-use-question-answering?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
+          - name: データ、プライバシー、セキュリティ
+            href: /legal/cognitive-services/language-service/data-privacy-security-question-answering?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Data privacy, logging, data retention'
+      - name: 操作方法ガイド
+        items:
+          - name: QnA Maker から移行する
+            href: question-answering/how-to/migrate-qnamaker.md
+          - name: 質問応答の使用を開始する
+            href: question-answering/how-to/create-test-deploy.md
+          - name: 保存データを暗号化
+            href: question-answering/how-to/encrypt-data-at-rest.md
+          - name: ナレッジ ベースの移行
+            href: question-answering/how-to/migrate-knowledge-base.md
+          - name: おしゃべりの追加
+            href: question-answering/how-to/chit-chat.md
+          - name: 既定の回答の変更
+            href: question-answering/how-to/change-default-answer.md
+          - name: Configure resources
+            href: question-answering/how-to/configure-resources.md
+          - name: Analytics
+            href: question-answering/how-to/analytics.md
+          - name: ナレッジ ベースの管理
+            href: question-answering/how-to/manage-knowledge-base.md
+          - name: ネットワーク分離とプライベート エンドポイント
+            href: question-answering/how-to/network-isolation.md
+          - name: オーサリング API
+            href: question-answering/how-to/authoring.md
+          - name: 事前構築済み API
+            href: question-answering/how-to/prebuilt.md
+          - name: トラブルシューティング
+            href: question-answering/how-to/troubleshooting.md
+      - name: 概念
+        items:
+          - name: 開発ライフサイクル
+            href: question-answering/concepts/project-development-lifecycle.md
+          - name: リソースの計画
+            href: question-answering/concepts/azure-resources.md
+          - name: アプリの計画
+            href: question-answering/concepts/plan.md
+          - name: 正確な回答
+            href: question-answering/concepts/precise-answering.md
+          - name: 信頼度スコア
+            href: question-answering/concepts/confidence-score.md
+          - name: ベスト プラクティス
+            href: question-answering/concepts/best-practices.md
+          - name: 制限
+            href: question-answering/concepts/limits.md
+      - name: チュートリアル
+        items:
+          - name: FAQ ボットを作成する
+            href: question-answering/tutorials/bot-service.md
+          - name: ガイド付き会話
+            href: question-answering/tutorials/guided-conversations.md
+          - name: アクティブ ラーニング
+            href: question-answering/tutorials/active-learning.md
+          - name: 同意語の追加
+            href: question-answering/tutorials/adding-synonyms.md
+          - name: 複数言語
+            href: question-answering/tutorials/multiple-languages.md
+          - name: 複数のドメイン
+            href: question-answering/tutorials/multiple-domains.md
+      - name: リファレンス
+        items:
+          - name: REST API
+            items:
+              - name: 回答 API
+                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering/get-answers'
+              - name: 事前構築済み API
+                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering/get-answers-from-text'
+              - name: オーサリング API
+                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering-projects'
+  - name: 感情分析とオピニオン マイニング
+    items:
+      - name: 概要
+        href: sentiment-opinion-mining/overview.md
+      - name: クイック スタート
+        href: sentiment-opinion-mining/quickstart.md
+      - name: 言語のサポート
+        href: sentiment-opinion-mining/language-support.md
+      - name: AI の責任ある使用
+        items:
+          - name: 感情分析とオピニオン マイニングの透明性に関するメモ
+            href: /legal/cognitive-services/language-service/transparency-note-sentiment-analysis?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Transparency note for sentiment analysis, opinion mining transparency, Responsible AI, Responsible use of AI'
+          - name: 統合と責任ある使用
+            href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
+          - name: データ、プライバシー、セキュリティ
+            href: /legal/cognitive-services/language-service/data-privacy?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Data privacy, logging, data retention'
+      - name: 操作方法ガイド
+        items:
+          - name: 感情分析とオピニオン マイニングを呼び出す
+            href: sentiment-opinion-mining/how-to/call-api.md
+          - name: コンテナーの使用
+            items:
+              - name: Docker コンテナーを使用する
+                href: sentiment-opinion-mining/how-to/use-containers.md
+              - name: コンテナーを構成する
+                href: concepts/configure-containers.md
+              - name: Container Instances の使用
+                href: ../containers/azure-container-instance-recipe.md?context=/azure/cognitive-services/language-service/context/context
+              - name: Cognitive Services コンテナーのドキュメント
+                href: ../containers/index.yml
+      - name: チュートリアル
+        items:
+          - name: Azure Databricks を使用した、ストリーミング データに対する感情分析
+            href: /azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?context=/azure/cognitive-services/language-service/context/context
+          - name: Flask によるテキストの翻訳、センチメントの分析、音声の合成
+            href: /azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?context=/azure/cognitive-services/language-service/context/context
+      - name: リファレンス
+        items:
+          - name: REST API
+            items:
+              - name: v3.2 プレビュー 2
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-2-Preview-2/operations/Sentiment'
+              - name: v3.1
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Sentiment'
+          - name: SDK
+            items:
+              - name: v3.2 プレビュー 2
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
+              - name: v3.1
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-latest&preserve-view=true
+  - name: Text Analytics for Health
+    items:
+      - name: 概要
+        href: text-analytics-for-health/overview.md
+      - name: クイック スタート
+        href: text-analytics-for-health/quickstart.md
+      - name: 言語のサポート
+        href: text-analytics-for-health/language-support.md
+      - name: AI の責任ある使用
+        items:
+          - name: 正常性についての Text Analytics の透明性に関する注意
+            href: /legal/cognitive-services/language-service/transparency-note-health?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Transparency note for Text Analytics health, Text Analytics for health transparency, Responsible AI, Responsible use of AI'
+          - name: 統合と責任ある使用
+            href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
+          - name: データ、プライバシー、セキュリティ
+            href: /legal/cognitive-services/language-service/data-privacy?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Data privacy, logging, data retention'
+      - name: 操作方法ガイド
+        items:
+          - name: API を呼び出す方法
+            href: text-analytics-for-health/how-to/call-api.md
+          - name: コンテナーの使用
+            items:
+              - name: Docker コンテナーを使用する
+                href: text-analytics-for-health/how-to/use-containers.md
+              - name: Docker コンテナーの構成
+                href: text-analytics-for-health/how-to/configure-containers.md
+              - name: Container Instances の使用
+                href: ../containers/azure-container-instance-recipe.md?context=/azure/cognitive-services/language-service/context/context
+              - name: Cognitive Services コンテナーのドキュメント
+                href: ../containers/index.yml
+      - name: 概念
+        items:
+          - name: 認識されたエンティティのカテゴリ
+            href: text-analytics-for-health/concepts/health-entity-categories.md
+          - name: 関係抽出
+            href: text-analytics-for-health/concepts/relation-extraction.md
+          - name: アサーションの検出
+            href: text-analytics-for-health/concepts/assertion-detection.md
+      - name: リファレンス
+        items:
+          - name: REST API
+            items:
+              - name: v3.2 プレビュー 2
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-2-Preview-2/operations/Health'
+              - name: v3.1
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Health'
+          - name: SDK
+            items:
+              - name: v3.2 プレビュー 2
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
+              - name: v3.1
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-latest&preserve-view=true
+  - name: テキストの概要作成 (プレビュー)
+    items:
+      - name: 概要
+        href: text-summarization/overview.md
+      - name: クイック スタート
+        href: text-summarization/quickstart.md
+      - name: 言語のサポート
+        href: text-summarization/language-support.md
+      - name: AI の責任ある使用
+        items:
+          - name: テキストの概要作成の透明性に関するメモ
+            href: /legal/cognitive-services/language-service/transparency-note-extractive-summarization?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Transparency note for text summarization, text summarization transparency, Responsible AI, Responsible use of AI'
+          - name: 統合と責任ある使用
+            href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
+          - name: データ、プライバシー、セキュリティ
+            href: /legal/cognitive-services/language-service/data-privacy?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Data privacy, logging, data retention'
+      - name: 操作方法ガイド
+        items:
+          - name: テキスト概要 API を呼び出す
+            href: text-summarization/how-to/call-api.md
+      - name: リファレンス
+        items:
+          - name: REST API
+            items:
+              - name: v3.2 プレビュー 2
+                href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-2-Preview-2/operations/Analyze'
+          - name: SDK
+            items:
+              - name: v3.2 プレビュー 2
+                items:
+                  - name: .NET
+                    href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+                  - name: Python
+                    href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+                  - name: Java
+                    href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+                  - name: Node.js
+                    href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
+  - name: 概念
+    items:
+      - name: 多言語と絵文字のサポート
+        href: concepts/multilingual-emoji-support.md
+  - name: チュートリアル
+    items:
+      - name: キャンバス アプリで Cognitive Services を使用する
+        href: /powerapps/maker/canvas-apps/cognitive-services-api?context=/azure/cognitive-services/language-service/context/context
+      - name: Azure Kubernetes Service を使用する
+        href: tutorials/use-kubernetes-service.md
+  - name: エンタープライズ対応
+    items:
+      - name: リージョンのサポート
+        href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+      - name: コンプライアンスと認定資格
+        href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+  - name: リソース
+    items:
+      - name: サポート オプションとヘルプ オプション
+        href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/language-service/context/context
+      - name: Text Analytics v2 からの移行
+        href: concepts/migrate-from-text-analytics-v2.md

@@ -7,20 +7,20 @@ author: yahnoosh
 ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: b070cc197de1a3e4390d3957cda5b2bd65c754f3
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96002750"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210423"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Azure Cognitive Search でのフルテキスト検索
 
 この記事は、Azure Cognitive Search における Lucene のフルテキスト検索のしくみについて理解を深める必要がある開発者を対象としています。 テキスト クエリに関して、Azure Cognitive Search はほとんどの状況で速やかに適切な結果を返します。しかし一見、間違っているのではないか、と思うような結果が返されることも皆無ではありません。 このような状況では、Lucene による 4 段階から成るクエリ実行 (クエリ解析、字句解析、文書のマッチング、スコア付け) についての背景知識があると、具体的にどのような変更をクエリ パラメーターやインデックス構成に加えれば目的の結果が得られるかが特定しやすくなります。 
 
 > [!Note] 
-> Azure Cognitive Search では、フルテキスト検索に Lucene が使われていますが、Lucene の機能がそのままの形で統合されているわけではありません。 Microsoft は、Azure Cognitive Search にとって重要なシナリオを実現する Lucene の機能を選んで公開、拡張しています。 
+> Azure Cognitive Search では、フルテキスト検索に [Apache Lucene](https://lucene.apache.org/) が使われていますが、Lucene の機能がそのままの形で統合されているわけではありません。 Microsoft は、Azure Cognitive Search にとって重要なシナリオを実現する Lucene の機能を選んで公開、拡張しています。 
 
 ## <a name="architecture-overview-and-diagram"></a>アーキテクチャの概要と図
 

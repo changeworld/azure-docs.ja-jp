@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: c804e13029dcec42a43885cbf0d9b227b3d0338f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fe27d14e7ad1399d48e1a5175665c31b0cb78e1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96750804"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013766"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V から Azure へのレプリケーションおよびフェールオーバーをトラブルシューティングする
 
@@ -130,7 +130,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
         - このデータ チャーン レートは、VM またはそのアプリがどれだけビジー状態にあるかに応じて、上昇するか、または高いレベルにとどまります。
         - ソース ディスクの平均データ チャーンは、Site Recovery の標準ストレージで 2 MB/秒です。 [詳細情報](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - さらに、[ストレージのスケーラビリティ ターゲットを確認](../storage/common/scalability-targets-standard-account.md)できます。
-8. Linux ベースのサーバーを使用する場合は、アプリの整合性が有効になっていることを確認してください。 [詳細情報](./site-recovery-faq.md#replication)
+8. Linux ベースのサーバーを使用する場合は、アプリの整合性が有効になっていることを確認してください。 [詳細情報](./site-recovery-faq.yml)
 9. [Deployment Planner](hyper-v-deployment-planner-run.md) を実行します。
 10. [ネットワーク](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)と[ストレージ](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)の推奨事項を確認してください。
 

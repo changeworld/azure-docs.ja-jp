@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 012a49762596adee39988614ed0c1020cd8bc104
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d15f8a139a63845470c26048c043d574064e2aa1
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791106"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034015"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric のリバース プロキシ
 Azure Service Fabric に組み込まれたリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
@@ -41,7 +41,7 @@ Service Fabric のマイクロサービスは、クラスター内のノード �
 >
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>クラスターの外部からのマイクロサービスへの到達
-マイクロサービスの既定の外部通信モデルは、外部クライアントから各サービスに直接アクセスできないオプトイン モデルです。 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) は、マイクロサービスと外部クライアントの間のネットワーク境界であり、ネットワーク アドレス変換を実行して、外部要求を内部の IP:port エンドポイントに転送します。 マイクロサービスのエンドポイントが外部クライアントに直接アクセスできるようにするには、クラスター内のサービスで使用される各ポートにトラフィックを転送するように Load Balancer を構成しておく必要があります。 さらに、ほとんどのマイクロサービス (特にステートフル マイクロサービス) は、クラスターのすべてのノードに存在するわけではありません。 マイクロサービスは、フェールオーバー時にノード間を移動する可能性があります。 このような場合、Load Balancer はトラフィックの転送先となるレプリカのターゲット ノードの場所を実際には特定できません。
+マイクロサービスの既定の外部通信モデルは、外部クライアントから各サービスに直接アクセスできないオプトイン モデルです。 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) は、マイクロサービスと外部クライアントの間のネットワーク境界であり、ネットワーク アドレス変換を実行して、外部要求を内部の IP:port エンドポイントに転送します。 マイクロサービスのエンドポイントが外部クライアントに直接アクセスできるようにするには、クラスター内のサービスで使用される各ポートにトラフィックを転送するように Load Balancer を構成しておく必要があります。 ただし、ほとんどのマイクロサービス (特にステートフル マイクロサービス) は、クラスターのすべてのノードに存在するわけではありません。 マイクロサービスは、フェールオーバー時にノード間を移動する可能性があります。 このような場合、Load Balancer はトラフィックの転送先となるレプリカのターゲット ノードの場所を実際には特定できません。
 
 ### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>クラスターの外部からのリバース プロキシ経由でのマイクロサービスへの到達
 Load Balancer で個々のサービスのポートを構成するのではなく、リバース プロキシのポートだけを構成できます。 この構成では、クラスターの外部のクライアントは、追加構成なしにリバース プロキシを使用してクラスター内のサービスに到達できます。

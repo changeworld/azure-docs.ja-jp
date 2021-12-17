@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 631fdba451f69e44a675d396a42e1cddaea50a3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/30/2021
+ms.openlocfilehash: 67919f89167fbdb09bfed8e67dfda5fb49bb9bb0
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98013959"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592396"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Azure SQL Database 出力
 
@@ -47,6 +47,10 @@ Azure Stream Analytics から Azure Synapse Analytics への出力を可能に�
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 
 最大メッセージ サイズを構成するには、**最大バッチ カウント** を使用します。 既定の最大値は 10,000 で、既定の最小値は、1 回の一括挿入あたり 100 行です。 詳細については、[Azure SQL の制限](../azure-sql/database/resource-limits-logical-server.md)に関する記事を参照してください。 すべてのバッチは、最初に最大バッチ カウントを使用して一括挿入されます。 バッチは、SQL の再試行可能なエラーに基づいて (最小バッチ カウントに達するまで) 半分に分割されます。
+
+## <a name="limitation"></a>制限事項
+
+自己署名 ssl 証明書は、ASA ジョブを VM 上の SQL に接続する場合にサポートされません
 
 ## <a name="next-steps"></a>次のステップ
 

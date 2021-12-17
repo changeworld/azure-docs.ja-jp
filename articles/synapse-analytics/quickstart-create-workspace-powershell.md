@@ -2,20 +2,20 @@
 title: 'クイックスタート: Azure PowerShell を使用して Synapse ワークスペースを作成する'
 description: このガイドの手順に従い、Azure PowerShell を使用して、Azure Synapse ワークスペースを作成します。
 services: synapse-analytics
-author: alehall
+author: rothja
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: workspace
 ms.date: 10/19/2020
-ms.author: alehall
+ms.author: jroth
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1f02833ef7497c34b72db6b858a51c6046bbf3df
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: ee02f650ad20eb9f6673875823090ea3d242b7cd
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567572"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093005"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して Azure Synapse ワークスペースを作成する
 
@@ -91,8 +91,8 @@ Install-Module -Name Az.Synapse
 1. Azure Synapse ワークスペースの Web URL と開発 URL を取得します。
 
    ```azurepowershell-interactive
-   $WorkspaceWeb = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.Web
-   $WorkspaceDev = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.Dev
+   $WorkspaceWeb = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.web
+   $WorkspaceDev = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.dev
    ```
 
 1. ご使用のマシンから Azure Synapse ワークスペースへのアクセスを許可するファイアウォール規則を作成します。

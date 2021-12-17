@@ -1,18 +1,19 @@
 ---
 title: PowerShell を使用してデータを一括コピーする
 description: Azure Data Factory とコピー アクティビティを使用して、ソース データ ストアからコピー先データ ストアにデータを一括コピーします。
-author: linda33wj
-ms.author: jingwang
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: fc539ababf4cb240fbe78de0d87b1f127807f604
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f09d05d5b3dab08aab0aa55a5b25e3bebbc1e8f7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740431"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067586"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>PowerShell を使用し、Azure Data Factory を使用して複数のテーブルを一括コピーする
 
@@ -35,7 +36,7 @@ ms.locfileid: "101740431"
 ## <a name="end-to-end-workflow"></a>エンド ツー エンド ワークフロー
 このシナリオでは、Azure Synapse Analytics にコピーする必要のあるテーブルが Azure SQL Database に多数存在します。 以下の図は、パイプラインのワークフロー ステップを論理的な発生順に並べたものです。
 
-![ワークフロー](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
+:::image type="content" source="media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png" alt-text="Workflow":::
 
 * 1 つ目のパイプラインでは、シンク データ ストアにコピーするテーブルの一覧が検索されます。  代わりに、シンク データ ストアにコピーするすべてのテーブルが列挙されたメタデータ テーブルを用意する方法もあります。 次に、1 つ目のパイプラインによって 2 つ目のパイプラインがトリガーされ、データベース内の各テーブルを反復処理しながらデータのコピー操作が実行されます。
 * 実際のコピーは 2 つ目のパイプラインによって実行されます。 このパイプラインは、テーブルの一覧をパラメーターとして受け取ります。 その一覧の各テーブルについて、Azure SQL Database 内の特定のテーブルを Azure Synapse Analytics 内の該当するテーブルにコピーします。この処理には、パフォーマンスを最大限に高めるために、[Blob Storage と PolyBase によるステージング コピー](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)が使用されます。 この例では、1 つ目のパイプラインからパラメーターの値としてテーブルの一覧が渡されます。 
@@ -487,25 +488,25 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 
         if ($run) {
             if ($run.Status -ne 'InProgress') {
-                Write-Host "Pipeline run finished. The status is: " $run.Status -foregroundcolor "Yellow"
-                Write-Host "Pipeline run details:" -foregroundcolor "Yellow"
+                Write-Host "Pipeline run finished. The status is: " $run.Status -ForegroundColor "Yellow"
+                Write-Host "Pipeline run details:" -ForegroundColor "Yellow"
                 $run
                 break
             }
-            Write-Host  "Pipeline is running...status: InProgress" -foregroundcolor "Yellow"
+            Write-Host  "Pipeline is running...status: InProgress" -ForegroundColor "Yellow"
         }
 
         Start-Sleep -Seconds 15
     }
 
     $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
-    Write-Host "Activity run details:" -foregroundcolor "Yellow"
+    Write-Host "Activity run details:" -ForegroundColor "Yellow"
     $result
     ```
 
     サンプル実行の出力結果を次に示します。
 
-    ```console
+    ```output
     Pipeline run details:
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -552,7 +553,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 3. 次のようにして、パイプライン "**IterateAndCopySQLTables**" の実行 ID を取得し、詳細なアクティビティの実行結果をチェックすることができます。
 
     ```powershell
-    Write-Host "Pipeline 'IterateAndCopySQLTables' run result:" -foregroundcolor "Yellow"
+    Write-Host "Pipeline 'IterateAndCopySQLTables' run result:" -ForegroundColor "Yellow"
     ($result | Where-Object {$_.ActivityName -eq "TriggerCopy"}).Output.ToString()
     ```
 
@@ -572,6 +573,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 3. シンク Azure Synapse Analytics に接続し、Azure SQL Database から正しくデータがコピーされていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
+
 このチュートリアルでは、以下の手順を実行しました。 
 
 > [!div class="checklist"]
@@ -583,5 +585,6 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 > * パイプラインとアクティビティの実行を監視します。
 
 次のチュートリアルに進んで、ソースからコピー先にデータを増分コピーする方法について学習しましょう。
+
 > [!div class="nextstepaction"]
->[データを増分コピーする](tutorial-incremental-copy-powershell.md)
+> [データを増分コピーする](tutorial-incremental-copy-powershell.md)

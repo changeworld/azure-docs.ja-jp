@@ -4,7 +4,7 @@ description: 使われなくなった Azure AD のユーザー アカウント�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
@@ -13,22 +13,25 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 01/21/2021
+ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ea62a8d602cc472269b52c230529aa3f9b86ed4
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: efc82f409c6d05ea6441747e718ec2ea3c1429a6
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535101"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131994974"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>方法:Azure AD で非アクティブなユーザー アカウントを管理する
 
 大規模な環境では、従業員が退職したときに、ユーザー アカウントが必ず削除されるとは限りません。 こうした使われなくなったユーザー アカウントはセキュリティ上のリスクとなるため、IT 管理者はそれらを検出して処理する必要があります。
 
 この記事では、Azure AD で不使用になったユーザー アカウントを処理する方法について説明します。 
+
+> [!IMPORTANT]
+> Microsoft Graph 内の `/beta` 版の API は変更されることがあります。 実稼働アプリケーションにおけるこれらの API の使用はサポートされていません。 v1.0 で API を使用できるかどうかを確認するには、**バージョン** セレクターを使用します。
 
 ## <a name="what-are-inactive-user-accounts"></a>非アクティブなユーザーアカウントとは
 
@@ -41,7 +44,7 @@ ms.locfileid: "107535101"
     
 ## <a name="how-to-detect-inactive-user-accounts"></a>非アクティブなユーザー アカウントの検出方法
 
-非アクティブなアカウントを検出するには、**Microsoft Graph** API のリソースの種類 **signInActivity** によって表示される **lastSignInDateTime** プロパティを評価します。 このプロパティを使用すると、次のシナリオの解決策を実行できます。
+非アクティブなアカウントを検出するには、**Microsoft Graph** API のリソースの種類 **signInActivity** によって表示される **lastSignInDateTime** プロパティを評価します。 **lastSignInDateTime** プロパティは、ユーザーが Azure AD への対話型サインインを正常に実行した最終時刻を表示します。 このプロパティを使用すると、次のシナリオの解決策を実行できます。
 
 - **名前別のユーザー**:このシナリオでは、特定のユーザーを名前で検索することで、lastSignInDateTime を評価できます。`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
@@ -59,20 +62,23 @@ ms.locfileid: "107535101"
 
 [Microsoft Graph](/graph/overview#whats-in-microsoft-graph) API のリソースの種類 [signInActivity](/graph/api/resources/signinactivity?view=graph-rest-beta&preserve-view=true) によって **lastSignInDateTime** プロパティが表示されます。   
 
+> [!NOTE]
+> signInActivity Graph API エンドポイントは、米国政府機関 GCC High 環境ではまだサポートされていません。
+
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Get-AzureAdUser コマンドレットで LastSignInDateTime プロパティを使用できますか?
 
 いいえ。
 
 ### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>このプロパティにアクセスするために必要な Azure AD のエディションは何ですか?
 
-このプロパティには、Azure AD のすべてのエディションでアクセスできます。
+このプロパティにアクセスするには、Azure Active Directory Premium エディションが必要です。
 
 ### <a name="what-permission-do-i-need-to-read-the-property"></a>このプロパティを読み取るために必要な権限は何ですか?
 
 このプロパティを読み取るには、次の権限を付与する必要があります。 
 
 - AuditLogs.Read.All
-- Organisation.Read.All  
+- Organization.Read.All  
 
 
 ### <a name="when-does-azure-ad-update-the-property"></a>このプロパティが Azure AD で更新されるのはいつですか?
@@ -92,3 +98,4 @@ LastSignInDateTime タイムスタンプを生成するには、サインイン�
 * [Azure Active Directory レポート API と証明書を使用してデータを取得します](tutorial-access-api-with-certificates.md)
 * [監査 API リファレンス](/graph/api/resources/directoryaudit) 
 * [サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin)
+

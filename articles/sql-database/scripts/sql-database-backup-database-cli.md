@@ -3,19 +3,20 @@ title: Azure CLI:Azure SQL Database にデータベースをバックアップ�
 description: Azure SQL の単一データベースを Azure Storage コンテナーにバックアップする Azure CLI サンプル スクリプト
 services: sql-database
 ms.service: sql-database
+ms.subservice: backup-restore
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: mashamsft
-ms.author: mathoma
-ms.reviewer: carlrab
+author: SQLSourabh
+ms.author: sourabha
+ms.reviewer: mathoma
 ms.date: 03/27/2019
-ms.openlocfilehash: 33ac44f4910c858dd4d5cfc9d4288ce4970f7f4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9ced8d027455e11a402968afda632369dac3b82
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87501986"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737491"
 ---
 # <a name="use-cli-to-backup-an-azure-sql-single-database-to-an-azure-storage-container"></a>CLI を使用して Azure SQL の単一データベースを Azure Storage コンテナーにバックアップする
 

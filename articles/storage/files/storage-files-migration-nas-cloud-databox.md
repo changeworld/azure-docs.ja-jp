@@ -4,15 +4,15 @@ description: オンプレミスのネットワーク接続ストレージ (NAS) 
 author: fauhse
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 04/02/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: a8420d23c8bda29290722975ada2acca6733f0e7
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 75387c4309283fc1e3df543bd1dced5f4fa792bf
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491682"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462328"
 ---
 # <a name="use-databox-to-migrate-from-network-attached-storage-nas-to-azure-file-shares"></a>DataBox を使用してネットワーク接続ストレージ (NAS) から Azure ファイル共有に移行する
 
@@ -27,13 +27,20 @@ ms.locfileid: "106491682"
 
 この記事では、NAS アプライアンスから機能している Azure ファイル共有に移行するために必要な計画、デプロイ、およびネットワークの構成について詳しく説明します。 このガイドでは、一括データ転送 (オフライン データ転送) に Azure DataBox を使用します。
 
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+
 ## <a name="migration-goals"></a>移行の目標
 
-目標は、お使いの NAS アプライアンス上の共有を Azure に移行し、Windows Server を必要とせずに使用できるネイティブの Azure ファイル共有にすることです。 この移行は、運用データの整合性と、移行中の可用性が保証される方法で行う必要があります。 後者については、ダウンタイムを最小限に抑えて、通常のメンテナンス期間に収まるか、わずかに超えるだけで済むようにする必要があります。
+目標は、お使いの NAS アプライアンス上の共有を Azure に移行し、ネイティブの Azure ファイル共有にすることです。 Windows Server を必要とせずに、ネイティブの Azure ファイル共有を使用できます。 この移行は、運用データの整合性と、移行中の可用性が保証される方法で行う必要があります。 後者については、ダウンタイムを最小限に抑えて、通常のメンテナンス期間に収まるか、わずかに超えるだけで済むようにする必要があります。
 
 ## <a name="migration-overview"></a>移行の概要
 
-移行プロセスは、いくつかのフェーズで構成されます。 Azure ストレージ アカウントとファイル共有をデプロイし、ネットワークを構成し、Azure DataBox を使用して移行し、RoboCopy を使用して変更をキャッチアップし、最後に新しく作成された Azure ファイル共有にユーザーをカットオーバーする必要があります。 以下のセクションでは、移行プロセスの各フェーズについて詳しく説明します。
+移行プロセスは、いくつかのフェーズで構成されます。 Azure ストレージ アカウントとファイル共有をデプロイし、ネットワークを構成する必要があります。 次に、Azure DataBox と RoboCopy を使用してファイルを移行し、変更内容でキャッチアップします。 最後に、新しく作成された Azure ファイル共有にユーザーとアプリをカットオーバーします。 以下のセクションでは、移行プロセスの各フェーズについて詳しく説明します。
 
 > [!TIP]
 > この記事に戻った場合は、右側にあるナビゲーションを使用して、中断した移行フェーズに移動してください。
@@ -110,7 +117,7 @@ RoboCopy ジョブが動作する速度は主に次の要因に依存します�
 * [Windows P2S VPN を構成する方法](storage-files-configure-p2s-vpn-windows.md)
 * [Linux P2S VPN を構成する方法](storage-files-configure-p2s-vpn-linux.md)
 * [DNS 転送を構成する方法](storage-files-networking-dns.md)
-* [DFS-N を構成する](/windows-server/storage/dfs-namespaces/dfs-overview)
+* [DFS-N を構成する](files-manage-namespaces.md)
    :::column-end:::
 :::row-end:::
 

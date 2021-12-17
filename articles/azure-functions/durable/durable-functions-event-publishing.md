@@ -1,16 +1,16 @@
 ---
-title: Azure Event Grid への Durable Functions の発行 (プレビュー)
+title: Azure Event Grid への Durable Functions の発行
 description: Durable Functions の Azure Event Grid 自動発行を構成する方法を説明します。
 ms.topic: conceptual
-ms.date: 04/25/2020
-ms.openlocfilehash: 44df100a5c794abf918a09dea0f94d30ddf916d3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/11/2020
+ms.openlocfilehash: 51069504bef29d9761d5c36be77fef33fd3d1ca6
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175959"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377555"
 ---
-# <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
+# <a name="durable-functions-publishing-to-azure-event-grid"></a>Azure Event Grid への Durable Functions の発行
 
 この記事では、オーケストレーション ライフサイクル イベント (作成、完了、失敗など) をカスタムの [Azure Event Grid トピック](../../event-grid/overview.md)に発行するように Durable Functions を設定する方法を示します。
 
@@ -25,7 +25,7 @@ ms.locfileid: "102175959"
 ## <a name="prerequisites"></a>前提条件
 
 * [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) を Durable Functions プロジェクトにインストールします。
-* [Azure ストレージ エミュレーター](../../storage/common/storage-use-emulator.md) (Windows のみ) をインストールするか、既存の Azure Storage アカウントを使用します。
+* [Azure Storage エミュレーター](../../storage/common/storage-use-emulator.md)をインストールするか、既存の Azure Storage アカウントを使用します。
 * [Azure CLI](/cli/azure/) をインストールするか、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用します
 
 ## <a name="create-a-custom-event-grid-topic"></a>カスタムの Event Grid トピックの作成
@@ -103,22 +103,21 @@ Durable Functions プロジェクトで、`host.json` ファイルを検索し�
 
 使用できる Azure Event Grid の構成プロパティについては、[host.json のドキュメント](../functions-host-json.md#durabletask)を参照してください。 `host.json` ファイルを構成すると、関数アプリから Event Grid トピックにライフサイクル イベントが送信されます。 ローカルと Azure のどちらで関数アプリを実行しても、この処理が開始されます。
 
-Function App と `local.settings.json` で、トピック キーのアプリ設定を設定します。 次の JSON は、ローカル デバッグ用の `local.settings.json` のサンプルです。 `<topic_key>` はトピック キーで置き換えます。  
+Function App と `local.settings.json` で、トピック キーのアプリ設定を設定します。 次の JSON は、Azure Storage エミュレーターを使用したローカル デバッグ用の `local.settings.json` のサンプルです。 `<topic_key>` はトピック キーで置き換えます。  
 
 ```json
 {
     "IsEncrypted": false,
     "Values": {
         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-        "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
         "EventGridKey": "<topic_key>"
     }
 }
 ```
 
-[ストレージ エミュレーター](../../storage/common/storage-use-emulator.md) (Windows のみ) を使用している場合は、それが動作していることを確認します。 実行する前に `AzureStorageEmulator.exe clear all` コマンドを実行することをお勧めします。
+実際の Azure Storage アカウントではなく [Storage エミュレーター](../../storage/common/storage-use-emulator.md)を使用している場合は、これが実行されていることを確認してください。 実行する前に、既存のストレージ データをクリアすることをお勧めします。
 
-既存の Azure Storage アカウントを使用している場合は、`local.settings.json` の `UseDevelopmentStorage=true` をその接続文字列に置き換えます。
+実際の Azure Storage アカウントを使用している場合は、`local.settings.json` の `UseDevelopmentStorage=true` をその接続文字列に置き換えます。
 
 ## <a name="create-functions-that-listen-for-events"></a>イベントをリッスンする関数の作成
 

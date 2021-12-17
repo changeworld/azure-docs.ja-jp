@@ -1,18 +1,18 @@
 ---
 title: 仮想ハブの有効なルートを表示する:Azure Virtual WAN | Microsoft Docs
-description: Azure Virtual WAN の仮想ハブの有効なルートを表示する方法
+description: Azure Virtual WAN の仮想ハブの有効なルートを表示する方法について説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 955bf9fb9881fcf5fb37b75352c25d2d639bfb3c
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90983658"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579840"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>仮想ハブの有効なルートを表示する
 
@@ -51,7 +51,7 @@ AS パスを表示するには、テーブルの下部にあるスクロール�
 
 * VM NIC 上で有効なルートを表示しているとき、次のホップが "仮想ネットワーク ゲートウェイ" であれば、それは、仮想 WAN ハブに接続されているスポークに VM があるとき、仮想ハブ ルーターを意味します。
 
-* 仮想ハブ ルート テーブルの有効なルートのビューは、仮想ハブに少なくとも 1 つの種類の接続 (VPN、ER、または VNET) が接続されている場合にのみ入力されます。
+* 仮想ハブ ルート テーブルの **有効なルートの表示** には、仮想ハブに少なくとも 1 つの種類の接続 (VPN、ER、または VNET) が接続されている場合にのみ表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 

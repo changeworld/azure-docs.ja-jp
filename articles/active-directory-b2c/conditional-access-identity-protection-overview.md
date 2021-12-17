@@ -5,21 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 03/03/2021
-ms.author: mimart
-author: msmimart
-manager: celested
+ms.date: 05/28/2021
+ms.author: kengaderdus
+author: kengaderdus
+manager: CelesteDG
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2ec8af824d573493d1da743923956e587ded62e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6c5c7b8ed515fc3148f42b06c3c81f6060816e79
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033828"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281383"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C における Identity Protection と条件付きアクセス
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 Azure AD Identity Protection と条件付きアクセスを使用して、Azure Active Directory B2C (Azure AD B2C) のセキュリティを強化しましょう。 Azure AD B2C テナントには、危険なユーザーや危険なサインインなど、Identity Protection のリスク検出機能が自動的に検出されて表示されます。 それらのリスク検出を使用してアクションを決定したり組織のポリシーを適用したりする条件付きアクセス ポリシーを作成することができます。 Azure AD B2C アプリケーションの所有者は、こうした機能を組み合わせて、危険な認証やアクセス ポリシーをより厳しく管理することができます。
   
@@ -28,9 +26,9 @@ Azure AD Identity Protection と条件付きアクセスを使用して、Azure 
 ![B2C テナントにおける条件付きアクセス](media/conditional-access-identity-protection-overview/conditional-access-b2c.png)
 
 > [!NOTE]
-> 条件付きアクセスを使用するには、Azure AD B2C Premium P2 が必要です。
+> 危険なサインインのポリシーを作成するには、Azure AD B2C **Premium 2** が必要です。 **Premium P1** のテナントでは、場所、アプリケーション、ユーザーベース、またはグループベースのポリシーに基づいてポリシーを作成できます。 詳細については、「[Azure AD B2C 価格レベルを変更する](billing.md#change-your-azure-ad-pricing-tier)」を参照してください。
 
-## <a name="benefits-of-identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C における Identity Protection と条件付きアクセスの利点  
+## <a name="benefits-of-identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C における Identity Protection と条件付きアクセスの利点
 
 条件付きアクセス ポリシーと Identity Protection のリスク検出とを組み合わせると、危険な認証に対して適切なポリシー アクションで対応することができます。
 
@@ -43,7 +41,7 @@ Azure AD Identity Protection と条件付きアクセスを使用して、Azure 
 
 通常、Azure AD B2C における Identity Protection と条件付きアクセスは、Azure AD での場合と同じように機能しますが、次の例外があります。
 
-- Azure AD B2C では Security Center が利用できません。
+- Microsoft Defender for Cloud は、Azure AD B2C では使用できません。
 
 - Azure AD B2C テナントの ROPC サーバー間フローでは、Identity Protection と条件付きアクセスはサポートされません。
 
@@ -52,7 +50,6 @@ Azure AD Identity Protection と条件付きアクセスを使用して、Azure 
 - Azure AD B2C テナントで利用できるのは、Identity Protection のリスク検出のサブセットです。 [ID 保護によるリスクの調査](identity-protection-investigate-risk.md)および[ユーザー フローへの条件付きアクセスの追加](conditional-access-user-flow.md)に関する記事をご覧ください。
 
 - Azure AD B2C テナントでは、条件付きアクセスのデバイス コンプライアンス機能は利用できません。
-
 
 ## <a name="integrate-conditional-access-with-user-flows-and-custom-policies"></a>ユーザー フローやカスタム ポリシーに条件付きアクセスを統合する
 

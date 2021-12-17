@@ -1,26 +1,25 @@
 ---
-title: 新しい更新プログラムのインポート方法 | Microsoft Docs
-description: 新しい更新プログラムを IoT Hub の Device Update for IoT Hub にインポートするための How-To ガイド。
+title: 新しい更新プログラムの追加方法 | Microsoft Docs
+description: 新しい更新プログラムを Device Update for IoT Hub に追加するための攻略ガイド。
 author: andrewbrownmsft
 ms.author: andbrown
-ms.date: 2/11/2021
+ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ede0d279b8769f49afcdae1cb9352c1b47fb59b5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: caa58c1affc9e4a9cc9d3ec5b63e0b396e289144
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932405"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370424"
 ---
-# <a name="import-new-update"></a>新しい更新プログラムのインポート
-新しい更新プログラムを Device Update for IoT Hub にインポートする方法について説明します。 基本的な[インポートの概念](import-concepts.md)をまだ理解していない場合は、理解しておいてください。
+# <a name="add-an-update-to-device-update-for-iot-hub"></a>Device Update for IoT Hub に更新プログラムを追加する
+新しい更新プログラムを Device Update for IoT Hub に追加する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Device Update for IoT Hub が有効になっている IoT ハブにアクセスできること](create-device-update-account.md)。 
-* Device Update 用にプロビジョニングされている、IoT Hub 内の IoT デバイス (またはシミュレーター)。
-   * 実際のデバイスを使用する場合は、イメージ更新用の更新イメージ ファイル、またはパッケージの更新用の [APT マニフェスト ファイル](device-update-apt-manifest.md)が必要です。
+* [Device Update 用にプロビジョニングされている](device-update-agent-provisioning.md)、IoT Hub 内の IoT デバイス (またはシミュレーター)。
 * [PowerShell 5](/powershell/scripting/install/installing-powershell) 以降 (Linux、macOS、Windows のインストールを含む)
 * サポートされているブラウザー:
   * [Microsoft Edge](https://www.microsoft.com/edge)
@@ -29,9 +28,19 @@ ms.locfileid: "105932405"
 > [!NOTE]
 > このサービスに送信された一部のデータは、このインスタンスが作成されたリージョン外のリージョンで処理される可能性があります。
 
-## <a name="create-device-update-import-manifest"></a>Device Update のインポート マニフェストを作成する
+## <a name="obtain-an-update-for-your-devices"></a>デバイスの更新プログラムを入手する
 
-1. 更新イメージ ファイルまたは APT マニフェスト ファイルが、PowerShell からアクセスできるディレクトリに配置されていることを確認します。
+Device Update を設定し、デバイスをプロビジョニングしたので、これらのデバイスに配置する更新ファイルが必要になります。
+
+OEM またはソリューション インテグレーターからデバイスを購入した場合、その組織によって更新ファイルが提供される可能性が高いため、更新プログラムを作成する必要はありません。 OEM またはソリューション インテグレーターに問い合わせて、更新プログラムの入手方法を確認してください。
+
+使用するデバイス用のソフトウェアが組織で既に作成されている場合は、その同じグループによって、そのソフトウェア用の更新プログラムが作成されます。 Device Update for IoT Hub を使用して配置される更新プログラムを作成する場合は、シナリオに応じて、[イメージベースまたはパッケージベースの方法](understand-device-update.md#support-for-a-wide-range-of-update-artifacts)のいずれかで開始します。 注: 独自の更新プログラムを作成しようとしていますが、まだ着手したばかりの場合、GitHub が、開発を管理するための優れたオプションになります。 [GitHub Actions](https://docs.github.com/en/actions/guides/about-continuous-integration) を使用すると、ソース コードを格納して管理し、継続的インテグレーション (CI) と継続的配置 (CD) を実施できます。
+
+## <a name="create-a-device-update-import-manifest"></a>Device Update のインポート マニフェストを作成する
+
+基本的な[インポートの概念](import-concepts.md)をまだ理解していない場合は、それを理解し、まず、[イメージベース](device-update-raspberry-pi.md)か[パッケージベース](device-update-ubuntu-agent.md)をお試しください。
+
+1. 更新ファイルが、PowerShell からアクセスできるディレクトリに配置されていることを確認します。
 
 2. 更新イメージファイルまたは APT マニフェスト ファイルが配置されているディレクトリに、 **AduUpdate.psm1** という名前のテキスト ファイルを作成します。 次に、 [AduUpdate.psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) PowerShell コマンドレットを開き、内容をテキスト ファイルにコピーして、テキスト ファイルを保存します。
 
@@ -53,7 +62,7 @@ ms.locfileid: "105932405"
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    参考として、次に前述のパラメーター値の例を示します。 完成した[インポート マニフェスト スキーマ](import-schema.md)で詳細を確認することもできます。
+    次の表は、上記のパラメーターを設定する方法に関するクイック リファレンスです。 さらに詳しい情報が必要な場合は、完全な「[インポート マニフェスト スキーマ](import-schema.md)」も参照してください。
 
     | パラメーター | 説明 |
     | --------- | ----------- |
@@ -63,13 +72,13 @@ ms.locfileid: "105932405"
     | updateName | 更新プログラムのクラスの識別子。 クラスには、任意のものを選択できます。 多くの場合、デバイス名またはモデル名になります。
     | updateVersion | 同じプロバイダーと名前を持つ他の更新プログラムとこの更新プログラムを区別するためのバージョン番号。 デバイス上の個々のソフトウェア コンポーネントのバージョンと一致しない場合があります (選択した場合は可能です)。
     | updateType | <ul><li>イメージの更新には `microsoft/swupdate:1` を指定します</li><li>パッケージの更新には `microsoft/apt:1` を指定します</li></ul>
-    | installedCriteria | <ul><li>更新の種類 `microsoft/swupdate:1` には SWVersion の値を指定します</li><li>**name-version** を指定します。_name_ は APT マニフェストの名前で、_version_ は APT マニフェストのバージョンです。 例: contoso-iot-edge-1.0.0.0。
-    | updateFilePath(s) | コンピューター上の更新プログラム ファイルへのパス
+    | installedCriteria | デプロイ時に、既にデバイスにインストールされているバージョンと更新プログラムのバージョンを比較するために使用されます。 installedCriteria の値がデバイス上のバージョンと一致しない場合、更新プログラムをデバイスにデプロイすると、"failed" という結果が返されます。<ul><li>更新の種類が `microsoft/swupdate:1` の場合は、SWVersion の値を指定します </li><li>更新の種類が `microsoft/apt:1` の場合は、**name-version** を指定します。この _name_ は APT マニフェストの名前で、_version_ は APT マニフェストのバージョンです。 例: contoso-iot-edge-1.0.0.0。
+    | updateFilePath(s) | コンピューター上の更新プログラム ファイルへのパス。
 
 
-## <a name="review-generated-import-manifest"></a>生成されたインポート マニフェストを確認する
+## <a name="review-the-generated-import-manifest"></a>生成されたインポート マニフェストを確認する
 
-例:
+マニフェストの出力例を以下に示します。 この例では、この更新プログラムを構成するファイルとして、.json ファイルと .zip ファイルの 2 つのファイルがあります。 いずれかの項目について不明な点がある場合は、完全な「[インポート マニフェスト スキーマ](import-schema.md)」を参照してください。 
 ```json
 {
   "updateId": {
@@ -110,10 +119,10 @@ ms.locfileid: "105932405"
 }
 ```
 
-## <a name="import-update"></a>更新プログラムのインポート
+## <a name="import-an-update"></a>更新プログラムをインポートする
 
-[!NOTE]
-次の手順は、Azure portal ユーザー インターフェイスを使用して更新プログラムをインポートする方法を示しています。 [IoT Hub API のデバイス更新](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) プログラムを使用して、更新プログラムをインポートすることもできます。 
+> [!NOTE]
+> 次の手順は、Azure portal ユーザー インターフェイスを使用して更新プログラムをインポートする方法を示しています。 代わりに、[Device Update for IoT Hub の API](#if-youre-importing-via-apis-instead) を使用して、更新プログラムをインポートすることもできます。
 
 1. [Azure portal](https://portal.azure.com) にログインし、Device Update がある IoT Hub に移動します。
 
@@ -129,7 +138,7 @@ ms.locfileid: "105932405"
 
    :::image type="content" source="media/import-update/import-new-update-2.png" alt-text="新しい更新プログラムをインポートします" lightbox="media/import-update/import-new-update-2.png":::
 
-5. [インポート マニフェスト ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 PowerShell コマンドレットを使用して、さきほど作成したインポート マニフェストを選択します。 次に、[1 つまたは複数の更新プログラム ファイルの選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 更新プログラム ファイルを選択します。
+5. [インポート マニフェスト ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 PowerShell コマンドレットを使用して、さきほど作成したインポート マニフェストを選択します。 次に、[1 つまたは複数の更新プログラム ファイルの選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 インポート マニフェストの作成時に含めたものと同じ更新プログラム ファイルを選択します。
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="更新プログラム ファイルを選択します" lightbox="media/import-update/select-update-files.png":::
 
@@ -158,3 +167,10 @@ ms.locfileid: "105932405"
 [グループを作成する](create-update-group.md)
 
 [インポートの概念について学習する](import-concepts.md)
+
+## <a name="if-youre-importing-via-apis-instead"></a>代わりに API を使用してインポートしている場合
+
+Azure portal 経由でインポートするのではなく、[Device Update for IoT Hub の更新 API](/rest/api/deviceupdate/updates) を使用して更新プログラムをインポートする場合は、次の点にご注意ください。
+  - 更新 API を呼び出す前に、更新プログラム ファイルを Azure Blob Storage の場所にアップロードする必要があります。
+  - 先ほど作成したインポート マニフェストを使用する、この[サンプル API 呼び出し](import-schema.md#example-import-request-body)を参照できます。
+  - テスト中に同じ SAS URL を再利用すると、トークンの有効期限が切れたときにエラーが発生することがあります。 これは、更新プログラムのコンテンツ自体だけでなくインポート マニフェストも送信する場合に当てはまります。

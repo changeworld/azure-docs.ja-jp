@@ -1,22 +1,22 @@
 ---
 title: 新しいセッション ホストで既存のホスト プールを拡張する - Azure
-description: Windows Virtual Desktop で新しいセッション ホストを使用して既存のホスト プールを拡張する方法。
+description: Azure Virtual Desktop で新しいセッション ホストを使用して既存のホスト プールを拡張する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 9c73d7434a002a5efc7d058095eb9743a7f3ebf8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f37e7e18fd32c3ad0b06f1189c57f44d72dced7a
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446827"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760855"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>新しいセッション ホストで既存のホスト プールを拡張する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)を参照してください。
 
 ホスト プール内の使用率を上げた場合、新しいセッション ホストで既存のホスト プールを拡張して、新しい負荷を処理する必要がある場合があります。
 
@@ -41,7 +41,7 @@ ms.locfileid: "106446827"
 
 1. Azure portal にサインインします。
 
-2. **[Windows Virtual Desktop]** を検索して選択します。
+2. **[Azure Virtual Desktop]** を検索して選択します。
 
 3. 画面の左側にあるメニューで、 **[ホスト プール]** を選択し、仮想マシンを追加するホスト プールの名前を選択します。
 
@@ -60,21 +60,25 @@ ms.locfileid: "106446827"
 
 9. **[virtual network information]\(仮想ネットワークの情報\)** で、仮想マシンを参加させる仮想ネットワークとサブネットを選択します。 既存のマシンで現在使用しているのと同じ仮想ネットワークを選択することも、手順 7 で選択したリージョンに適した別の仮想ネットワークを選択することもできます。
 
-10. **[管理者アカウント]** に、選択した仮想ネットワークに関連付けられている Active Directory ドメインのユーザー名とパスワードを入力します。 これらの資格情報は、仮想マシンを仮想ネットワークに参加させるために使用されます。
+10. **ドメインを参加** させるために、Active Directory または [Azure Active Directory](deploy-azure-ad-joined-vm.md) に仮想マシンを参加させるかを選択します。 **[Intune で VM を登録する]** を選択すると、Intune に仮想マシンが自動的に登録されます。 ホスト プール内のすべての仮想マシンは、同じドメインまたは Azure AD テナントに参加する必要があります。
+
+11. **[AD ドメイン参加 UPN]** に、選択したドメインに関連付けられている Active Directory ドメインのユーザー名とパスワードを入力します。 これらの資格情報は、仮想マシンを Active Directory ドメインに参加させるために使用されます。
 
       >[!NOTE]
       >管理者名がここに記載されている情報に準拠していることを確認してください。 また、アカウントで MFA が有効になっていないことを確認してください。
 
-11. 仮想マシンをグループ化するためのタグがある場合は、 **[タグ]** タブを選択します。 それ以外の場合は、このタブをスキップしてください。
+12. **[仮想マシン管理者アカウント]** に、すべての仮想マシンに使用するローカル管理者アカウント情報を入力します。
 
-12. **[確認および作成]** タブを選択します。選択内容を確認し、問題がなければ **[作成]** を選択します。
+13. 仮想マシンをグループ化するためのタグがある場合は、 **[タグ]** タブを選択します。 それ以外の場合は、このタブをスキップしてください。
+
+14. **[確認および作成]** タブを選択します。選択内容を確認し、問題がなければ **[作成]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-既存のホスト プールを拡張したので、Windows Virtual Desktop クライアントにサインインして、ユーザー セッションの一部としてそれらをテストできるようになりました。 次のいずれかのクライアントとのセッションに接続できます。
+既存のホスト プールを拡張したので、Azure Virtual Desktop クライアントにサインインして、ユーザー セッションの一部としてそれらをテストできるようになりました。 次のいずれかのクライアントとのセッションに接続できます。
 
-- [Windows デスクトップ クライアントを使用して接続する](./connect-windows-7-10.md)
-- [Web クライアントに接続する](./connect-web.md)
-- [Android クライアントに接続する](./connect-android.md)
-- [macOS クライアントに接続する](./connect-macos.md)
-- [iOS クライアントに接続する](./connect-ios.md)
+- [Windows デスクトップ クライアントを使用して接続する](./user-documentation/connect-windows-7-10.md)
+- [Web クライアントに接続する](./user-documentation/connect-web.md)
+- [Android クライアントに接続する](./user-documentation/connect-android.md)
+- [macOS クライアントに接続する](./user-documentation/connect-macos.md)
+- [iOS クライアントに接続する](./user-documentation/connect-ios.md)

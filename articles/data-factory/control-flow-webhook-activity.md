@@ -1,24 +1,27 @@
 ---
-title: Azure Data Factory の Webhook アクティビティ
-description: Webhook アクティビティは、ユーザーが指定する特定の条件で接続されたデータセットを検証するまで、パイプラインの実行を継続しません。
-author: dcstwh
-ms.author: weetok
+title: Webhook アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
+description: カスタム コードを使用して Azure Data Factory と Synapse Analytics の実行を制御する webhook アクティビティ。
+author: nabhishek
+ms.author: abnarain
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.openlocfilehash: 4c3ff5d7139f4167769f78aa858c7d7a693539a3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/09/2021
+ms.openlocfilehash: 8b0443cd44dffeec1ea9a70e460ca0f72e05b24d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785939"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798828"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory の Webhook アクティビティ
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Webhook アクティビティを使用すると、カスタム コードでパイプラインの実行を制御できます。 Webhook アクティビティを使用すると、顧客のコードでエンドポイントを呼び出して、コールバック URL を渡すことができます。 パイプラインでは、次のアクティビティに進む前に、コールバックが呼び出されるまで実行が待機されます。
+Webhook アクティビティを使用すると、カスタム コードでパイプラインの実行を制御できます。 Webhook アクティビティを使用すると、コードでエンドポイントを呼び出して、コールバック URL を渡すことができます。 パイプラインでは、次のアクティビティに進む前に、コールバックが呼び出されるまで実行が待機されます。
 
 > [!IMPORTANT]
 > Webhook アクティビティでは、エラー状態とカスタム メッセージをアクティビティとパイプラインに戻すことができるようになりました。 _reportStatusOnCallBack_ を true に設定し、コールバック ペイロードに _StatusCode_ と _Error_ を含めます。 詳細については、「[その他のメモ](#additional-notes)」セクションを参照してください。
@@ -99,7 +102,7 @@ PFX ファイルの Base64 でエンコードされたコンテンツとパス�
 
 ### <a name="managed-identity"></a>マネージド ID
 
-データ ファクトリのマネージド ID を使用してアクセス トークンの要求対象となるリソース URI を指定します。 Azure Resource Management API を呼び出すには、`https://management.azure.com/` を使用します。 マネージド ID が機能する方法について詳しくは、[Azure リソースのマネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
+データ ファクトリまたは Synapse ワークスペースのマネージド ID を使用して、アクセス トークンの要求対象となるリソース URI を指定します。 Azure Resource Management API を呼び出すには、`https://management.azure.com/` を使用します。 マネージド ID が機能する方法について詳しくは、[Azure リソースのマネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
 
 ```json
 "authentication": {
@@ -109,11 +112,11 @@ PFX ファイルの Base64 でエンコードされたコンテンツとパス�
 ```
 
 > [!NOTE]
-> ご利用のデータ ファクトリが Git リポジトリを使用して構成されている場合、基本認証またはクライアント証明書認証を使用するには、ご自分の資格情報を Azure Key Vault に格納する必要があります。 Azure Data Factory では、Git にパスワードは保存されません。
+> ご利用のサービスが Git リポジトリを使用して構成されている場合、基本認証またはクライアント証明書認証を使用するには、ご自分の資格情報を Azure Key Vault に格納する必要があります。 このサービスでは、パスワードは Git に格納されません。
 
 ## <a name="additional-notes"></a>その他のメモ
 
-Data Factory では、URL エンドポイントに送信される本文に追加のプロパティ **callBackUri** が渡されます。 Data Factory は、指定されたタイムアウト値の前にこの URI が呼び出されることを想定しています。 この URI が呼び出されない場合、アクティビティは状態 'TimedOut' で失敗します。
+このサービスでは、URL エンドポイントに送信される本文に追加のプロパティ **callBackUri** が渡されます。 サービスは、指定されたタイムアウト値の前にこの URI が呼び出されることを想定しています。 この URI が呼び出されない場合、アクティビティは状態 'TimedOut' で失敗します。
 
 Webhook アクティビティが失敗するのは、カスタム エンドポイントへの呼び出しが失敗した場合です。 任意のエラー メッセージをコールバックの本文に追加して、その後のアクティビティで使用できます。
 
@@ -142,7 +145,7 @@ Webhook アクティビティが失敗するのは、カスタム エンドポ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Data Factory でサポートされている次の制御フロー アクティビティを参照してください。
+次のサポートされる制御フロー アクティビティを確認します。
 
 - [If Condition アクティビティ](control-flow-if-condition-activity.md)
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)

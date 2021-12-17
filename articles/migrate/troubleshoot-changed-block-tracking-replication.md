@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5487e51ad73ab903e7b61de266e2c28d282a56c1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d1654a195f694b9ef8ab8150380939c0e647bcd1
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568660"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580676"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>エージェントレスの VMware VM 移行におけるレプリケーションの問題のトラブルシューティング
 
@@ -240,7 +240,7 @@ Azure にデータをレプリケートしようとしているコンポーネ�
 - VM のレプリケーションをトリガーしたときに [はい] を選択して [レプリケーションの自動修復] を選択した場合は、ツールによって修復が試行されます。 VM を右クリックし、[レプリケーションの修復] を選択します。
 - [レプリケーションの自動修復] を選択しなかった場合、または上記の手順が機能しなかった場合は、仮想マシンのレプリケーションを停止し、仮想マシン上の[変更されたブロック追跡をリセット](https://go.microsoft.com/fwlink/?linkid=2139203)して、レプリケーションを再構成します。
 
-VMware vSphere 5.5 で仮想マシンの CBT のリセットが発生する可能性のある既知の問題の 1 つについて、「[VMware KB 2048201: Changed Block Tracking](https://go.microsoft.com/fwlink/?linkid=2138888) が vSphere 5.x でのストレージ vMotion 操作の後で変更ブロック追跡がリセットされる」で説明されています。 VMware vSphere 5.5 を使用している場合は、この KB で説明されている更新プログラムを適用してください。
+VMware vSphere 5.5 で仮想マシンの CBT のリセットが発生する可能性のある既知の問題の 1 つについて、「[VMware KB 1020128: Changed Block Tracking](https://kb.vmware.com/s/article/1020128) が vSphere 5.x でのストレージ vMotion 操作の後で変更ブロック追跡がリセットされる」で説明されています。 VMware vSphere 5.5 を使用している場合は、この KB で説明されている更新プログラムを適用してください。
 
 または、VMware PowerCLI を使用して、仮想マシンで VMware の変更ブロック追跡をリセットすることもできます。
 
@@ -297,6 +297,18 @@ _エラー メッセージ:An internal error occurred. [Error message] (内部�
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>エラー メッセージ:An internal error occurred. [Memory allocation failed. Out of memory.] (内部エラーが発生しました。[メモリの割り当てが失敗しました。 メモリ不足です。])
 
 これは、NFC ホスト バッファーのメモリが不足している場合に発生します。 この問題を解決するには、空きリソースがある別のホストに VM (コンピューティング vMotion) を移動する必要があります。
+
+### <a name="error-message-an-internal-error-occurred-file-is-larger-than-maximum-file-size-supported-1012384"></a>エラー メッセージ:An internal error occurred. [File is larger than maximum file size supported (1012384)] (内部エラーが発生しました。[サポートされている最大ファイル サイズを超えています (1012384)])
+これは、スナップショットの作成時に、サポートされる最大ファイル サイズを超えると発生します。 [VMware KB](https://kb.vmware.com/s/article/1012384) に示されている解決方法に従ってください
+
+### <a name="error-message-an-internal-error-occurred-cannot-connect-to-the-host-1004109"></a>エラー メッセージ:An internal error occurred. [Cannot connect to the host (1004109)] (内部エラーが発生しました。[ホストに接続できません (1004109)])
+これは、ESXi ホストがネットワークに接続できない場合に発生します。 [VMware KB](https://kb.vmware.com/s/article/1004109) に示されている解決方法に従ってください。
+
+### <a name="error-message-an-error-occurred-while-saving-the-snapshot-invalid-change-tracker-error-code"></a>エラー メッセージ: An error occurred while saving the snapshot: Invalid change tracker error code (スナップショットの保存中にエラーが発生しました: 変更トラッカーのエラー コードが無効です)
+このエラーは、スナップショットが格納されている基になるデータストアに問題がある場合に発生します。 [VMware KB](https://kb.vmware.com/s/article/2042742) に示されている解決方法に従ってください。
+
+### <a name="error-message-an-error-occurred-while-taking-a-snapshot-unable-to-open-the-snapshot-file"></a>エラー メッセージ: An error occurred while taking a snapshot: Unable to open the snapshot file. (スナップショットの取得中にエラーが発生しました: スナップショット ファイルを開くことができません。)
+このエラーは、作成されたスナップショット ファイルのサイズが、VM の置かれているデータストアで使用できる空き領域を超えると発生します。 こちらの[ドキュメント](https://go.microsoft.com/fwlink/?linkid=2166464)に示されている解決方法に従ってください。
 
 ## <a name="replication-cycle-failed"></a>レプリケーション サイクルが失敗した
 

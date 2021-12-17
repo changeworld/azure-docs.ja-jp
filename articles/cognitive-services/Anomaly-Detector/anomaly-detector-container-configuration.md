@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
-ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 99fe16fdc19d90a312b34a32f56229ef7f161ad1
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94363716"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113297462"
 ---
-# <a name="configure-anomaly-detector-containers"></a>Anomaly Detector コンテナーを構成する
+# <a name="configure-anomaly-detector-univariate-containers"></a>Anomaly Detector 一変量コンテナーを構成する
 
 **Anomaly Detector** コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、課金設定です。 
 

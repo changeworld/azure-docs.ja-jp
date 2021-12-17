@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: garyericson
 ms.author: garye
-ms.reviewer: sstein, davidph
+ms.reviewer: mathoma, davidph
 manager: cgronlun
 ms.date: 03/17/2021
-ms.openlocfilehash: 94495144c64b3770995a5f67e9129b3ba86e741e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0d24da8044cc4306f65f235a85092593610e33f7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599563"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751221"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance の Machine Learning Services
 

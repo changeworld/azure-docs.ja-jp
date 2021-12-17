@@ -1,18 +1,18 @@
 ---
-title: Azure Marketplace での IoT Edge モジュール オファーの認定前チェックリスト
-description: Azure Marketplace で IoT Edge モジュール オファーを発行するための特定の認定要件について説明します。
+title: Azure Marketplace の IoT Edge モジュール オファーの認定前チェックリスト
+description: Azure Marketplace で IoT Edge モジュール オファーを発行するための具体的な認定要件について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-author: keferna
-ms.author: keferna
-ms.date: 03/01/2021
-ms.openlocfilehash: 31c19f62f0328fca05562eaa2f19b7a79c0f3e15
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+author: aarathin
+ms.author: aarathin
+ms.date: 05/21/2021
+ms.openlocfilehash: 1f9ad2fd05e11d981dd374919e2cc43d1b8d1f97
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562700"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232311"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>IoT Edge モジュールの認定前チェックリスト
 
@@ -55,7 +55,7 @@ Edge モジュールが、Azure で作成された Edge デバイスにデプロ
 #### <a name="steps"></a>手順
 
 1. Putty を使用して、作成したデバイスと VM にアクセスできることを確認します。
-1. [IoT Edge ランタイム](../iot-edge/how-to-install-iot-edge.md)をデバイスにダウンロードします。
+1. [IoT Edge ランタイム](../iot-edge/how-to-provision-single-device-linux-symmetric.md)をデバイスにダウンロードします。
 1. 手順 5 でコピーした接続文字列を config.yaml ファイルに貼り付けて更新します。
 1. `sudo systemctl restart iotedge` を使用して Edge モジュールを再起動します。
 1. `sudo iotedge list` を使用して、モジュールがデバイスにデプロイされたかどうかを確認します。実行状態になっている必要があります。
@@ -79,5 +79,5 @@ Edge モジュールが、Azure で作成された Edge デバイスにデプロ
 ## <a name="next-steps"></a>次のステップ
 
 - [コマーシャル マーケットプレースからモジュールをデプロイする](../iot-edge/how-to-deploy-modules-portal.md#deploy-from-azure-marketplace)
-- [パートナー センターで Edge モジュールを公開する](./partner-center-portal/azure-iot-edge-module-creation.md)
+- [パートナー センターで Edge モジュールを公開する](./iot-edge-offer-setup.md)
 - [IoT Edge モジュールをデプロイする](../iot-edge/quickstart-linux.md)

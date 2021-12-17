@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: 9ade5a51e2251669daee6fbaca9aa4c50f7e9bfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95462d60a9c77b78f9674a41d6ca44801f3e5ac0
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101704363"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183903"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor の VMware Monitoring (非推奨) ソリューション
 
@@ -32,7 +32,7 @@ Azure Monitor の VMware Monitoring ソリューションは、大規模な VMwa
 vSphere ESXi Host 5.5、6.0、6.5
 
 #### <a name="prepare-a-linux-server"></a>Linux サーバーの準備
-ESXi ホストからのすべての syslog データを受信する Linux オペレーティング システムの VM を作成します。 [Log Analytics Linux エージェント](../vm/quick-collect-linux-computer.md)は、すべての ESXi ホスト syslog データの収集ポイントです。 次の例に示すように、複数の ESXi ホストを使用して 1 台の Linux サーバーにログを転送できます。
+ESXi ホストからのすべての syslog データを受信する Linux オペレーティング システムの VM を作成します。 [Log Analytics Linux エージェント](../vm/monitor-virtual-machine.md)は、すべての ESXi ホスト syslog データの収集ポイントです。 次の例に示すように、複数の ESXi ホストを使用して 1 台の Linux サーバーにログを転送できます。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -199,4 +199,3 @@ ESXi ホストに syslog タイムスタンプのバグがありました。 詳
 * Log Analytics の[ログ クエリ](../logs/log-query-overview.md)を使用して、VMware ホストの詳細データを表示します。
 * VMware ホストのデータを表示する[独自のダッシュ ボードを作成](../visualize/tutorial-logs-dashboards.md)します。
 * VMware ホストの特定のイベントが発生した場合の[アラートを作成](../alerts/alerts-overview.md)します。
-

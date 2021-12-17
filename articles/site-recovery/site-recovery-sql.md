@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: ab2eb8a43fc75eea61a03bc25b2b6afc850d30aa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 834caf50ca65fdbb4701ed3681546513785686c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644404"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749334"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server のためにディザスター リカバリーを設定する
 
@@ -48,7 +48,7 @@ Azure IaaS VM 上またはオンプレミスの SQL Server。| Azure Site Recove
 > * コンピューター上で観察されたデータ変化率が [Site Recovery の制限](vmware-physical-azure-support-matrix.md#churn-limits)内にあることを確認してください。 この変化率は、1 秒あたりの書き込みバイト数で測定されます。 Windows を実行しているコンピューターの場合、この変化率は、タスク マネージャーで **[パフォーマンス]** タブを選択することによって表示できます。 各ディスクの書き込み速度を観察します。
 > * Site Recovery は、記憶域スペース ダイレクトでのフェールオーバー クラスター インスタンスのレプリケーションをサポートしています。 詳細については、[記憶域スペース ダイレクト レプリケーションを有効にする方法](azure-to-azure-how-to-enable-replication-s2d-vms.md)に関するページを参照してください。
 > 
-> SQL ワークロードを Azure に移行する場合は、[SQL Server のパフォーマンス ガイドラインを Azure Virtual Machines](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) に適用することをお勧めします。
+> SQL ワークロードを Azure に移行する場合は、[SQL Server のパフォーマンス ガイドラインを Azure Virtual Machines](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md) に適用することをお勧めします。
 
 ## <a name="disaster-recovery-of-an-application"></a>アプリケーションのディザスター リカバリー
 
@@ -85,9 +85,9 @@ BCDR テクノロジの Always On、アクティブ geo レプリケーション
 
 アプリケーションおよび Web 層の仮想マシンを含む[復旧計画を作成](site-recovery-create-recovery-plans.md)します。 次の手順は、データベース層のフェールオーバーを追加する方法を示しています。
 
-1. SQL 可用性グループをフェールオーバーするスクリプトを [Resource Manager 仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)と[従来の仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)の両方にインポートします。 これらのスクリプトを Azure Automation アカウントにインポートします。
+1. SQL 可用性グループをフェールオーバーするスクリプトを [Resource Manager 仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/demos/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)と[従来の仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/demos/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)の両方にインポートします。 これらのスクリプトを Azure Automation アカウントにインポートします。
 
-    [!["Azure へのデプロイ" のロゴの画像](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [![Azure へのデプロイ ロゴ](../media/template-deployments/deploy-to-azure.svg)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. 復旧計画の最初のグループの事前アクションとして ASR-SQL-FailoverAG スクリプトを追加します。
 

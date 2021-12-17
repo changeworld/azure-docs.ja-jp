@@ -1,30 +1,30 @@
 ---
-title: REST API を使用して Azure Sentinel でのハンティングとライブストリームのクエリを管理する | Microsoft Docs
-description: この記事では、Azure Sentinel のハンティング機能を利用して、Log Analytics の REST API を活用してハンティングとライブストリームのクエリを管理する方法について説明します。
+title: REST API を使用して Microsoft Azure Sentinel でのハンティングとライブストリームのクエリを管理する | Microsoft Docs
+description: この記事では、Microsoft Azure Sentinel のハンティング機能を利用して、Log Analytics の REST API を活用してハンティングとライブストリームのクエリを管理する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: reference
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/06/2020
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 64f05e18ff757d9f086cf06d74109bf64e32a05c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b479fbe2782cb7316cee565f51d7b6170c17579
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98795696"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721026"
 ---
-# <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>REST API を使用して Azure Sentinel でのハンティングとライブストリームのクエリを管理する
+# <a name="manage-hunting-and-livestream-queries-in-microsoft-sentinel-using-rest-api"></a>REST API を使用して Microsoft Azure Sentinel でのハンティングとライブストリームのクエリを管理する
 
-Azure Sentinel は、一部分が Azure Monitor Log Analytics 上に構築されており、Log Analytics の REST API を使用してハンティングとライブストリームのクエリを管理することができます。 このドキュメントでは、REST API を使用して、ハンティング クエリを作成および管理する方法について説明します。  この方法で作成されたクエリは、Azure Sentinel UI に表示されます。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Microsoft Azure Sentinel は、一部分が Azure Monitor Log Analytics 上に構築されており、Log Analytics の REST API を使用してハンティングとライブストリームのクエリを管理することができます。 このドキュメントでは、REST API を使用して、ハンティング クエリを作成および管理する方法について説明します。  この方法で作成されたクエリは、Microsoft Azure Sentinel UI に表示されます。
 
 [保存された検索 API](/rest/api/loganalytics/savedsearches) の詳細については、最も信頼できる REST API リファレンスを参照してください。
 
@@ -46,7 +46,7 @@ Azure Sentinel は、一部分が Azure Monitor Log Analytics 上に構築され
 
 ### <a name="example-1"></a>例 1
 
-この例では、特定の Azure Sentinel ワークスペースに対してハンティング クエリを作成または更新する方法を示します。  ライブストリーム クエリの場合は、 *"Category":"Hunting Queries"* を *"Category":"Livestream Queries"* に **要求本文** で置き換えます。 
+この例では、特定の Microsoft Azure Sentinel ワークスペースに対してハンティング クエリを作成または更新する方法を示します。  ライブストリーム クエリの場合は、 *"Category":"Hunting Queries"* を *"Category":"Livestream Queries"* に **要求本文** で置き換えます。 
 
 #### <a name="request-header"></a>要求ヘッダー
 
@@ -81,7 +81,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId} _
 
 ### <a name="example-2"></a>例 2
 
-この例では、特定の Azure Sentinel ワークスペースに対してハンティングまたはライブストリームのクエリを削除する方法を示します。
+この例では、特定の Microsoft Azure Sentinel ワークスペースに対してハンティングまたはライブストリームのクエリを削除する方法を示します。
 
 ```http
 DELETE https://management.azure.com/subscriptions/{subscriptionId} _
@@ -103,7 +103,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId} _
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Log Analytics API を使用して Azure Sentinel でハンティングとライブストリームのクエリを管理する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+この記事では、Log Analytics API を使用して Microsoft Azure Sentinel でハンティングとライブストリームのクエリを管理する方法について学習しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 
 - [脅威を事前に検出する](hunting.md)
 - [ノートブックを使用して自動化された検出キャンペーンを実行する](notebooks.md)

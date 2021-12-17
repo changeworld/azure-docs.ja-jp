@@ -1,25 +1,27 @@
 ---
 title: オンデマンドのディスク バーストを有効にする
 description: マネージド ディスクでオンデマンドのディスク バーストを有効にします。
-author: albecker1
-ms.author: albecker
-ms.date: 03/02/2021
+author: roygara
+ms.author: rogarana
+ms.date: 11/09/2021
 ms.topic: conceptual
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 5110e580bada7bb1090b17d6df22a9354622e8e4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 27a832f7f02fd10cde7f3c9f603f38d0d5e466b6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483148"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136194"
 ---
 # <a name="enable-on-demand-bursting"></a>オンデマンドのバーストを有効にする
 
 Premium ソリッド ステート ドライブ (SSD) には、クレジット ベースのバーストとオンデマンドのバーストという、使用可能な 2 つのバースト モデルがあります。 この記事では、オンデマンドのバーストに切り替える方法を説明します。 オンデマンド モデルを使用するディスクは、プロビジョニングされた元のターゲットを超えてバーストできます。 オンデマンドのバーストは、ワークロードに必要な頻度で、最大バースト ターゲットまで発生します。 オンデマンドのバーストには追加料金が発生します。
 
-ディスク バーストの詳細については、「[マネージド ディスクのバースト](disk-bursting.md)」を参照してください。
+ディスク バーストの詳細については、「[マネージド ディスクのバースト](disk-bursting.md)」を参照してください。 
+
+サポートされている各ディスクの最大バースト ターゲットについては、「[VM ディスクのスケーラビリティおよびパフォーマンスの目標](disks-scalability-targets.md#premium-ssd-managed-disks-per-disk-limits)」を参照してください。
 
 > [!IMPORTANT]
 > クレジット ベースのバーストを使用する場合は、この記事の手順に従う必要はありません。 既定では、対象となるすべてのディスクでクレジット ベースのバーストが有効になっています。

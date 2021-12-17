@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 8d3f35a733a0f78fabc33df857d911ba3cd222f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a047350f8e91a5ce25d8fe8ee60ffd6aa12aaae7
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102244892"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516642"
 ---
 IoT プラグ アンド プレイを使用すると、基盤となるデバイスの実装に関する知識がなくてもデバイスの機能とやり取りできるので、IoT が簡略化されます。 このクイックスタートでは、Java を使用して、ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスに接続して制御する方法について説明します。
 
@@ -24,7 +24,7 @@ Windows でこのクイックスタートを完了するには、ご利用のロ
 
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>サンプル コードを使用して SDK リポジトリをクローンする
 
-「[クイックスタート: Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (Java)](../articles/iot-pnp/quickstart-connect-device.md)」を完了している場合は、リポジトリを既にクローンしています。
+「[チュートリアル: Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (Java)](../articles/iot-develop/tutorial-connect-device.md)」を完了している場合、リポジトリは既にクローンされています。
 
 任意のディレクトリでコマンド プロンプトを開きます。 次のコマンドを実行して、[Java 用 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-java) GitHub リポジトリをこの場所にクローンします。
 
@@ -36,7 +36,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 
 [!INCLUDE [iot-pnp-environment](iot-pnp-environment.md)]
 
-サンプル構成の詳細については、[サンプルの Readme](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md) を参照してください。
+サンプル構成の詳細については、[サンプルの Readme](https://github.com/Azure/azure-iot-sdk-java/blob/main/device/iot-device-samples/readme.md) を参照してください。
 
 このクイックスタートでは、IoT プラグ アンド プレイ デバイスとして、Java で記述されたサンプルのサーモスタット デバイスを使用します。 サンプル デバイスを実行するには、次のようにします。
 
@@ -60,7 +60,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 
 ## <a name="run-the-sample-solution"></a>サンプル ソリューションを実行する
 
-「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](../articles/iot-pnp/set-up-environment.md)」では、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
+「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](../articles/iot-develop/set-up-environment.md)」では、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
 
 * **IOTHUB_CONNECTION_STRING**: 先ほどメモした IoT ハブ接続文字列。
 * **IOTHUB_DEVICE_ID**: `"my-pnp-device"`。
@@ -68,7 +68,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 このクイックスタートでは、Java で記述されたサンプルの IoT ソリューションを使用して、先ほど設定したサンプル デバイスとやり取りします。
 
 > [!NOTE]
-> このサンプルでは、**IoT Hub サービス クライアント** の **com.microsoft.azure.sdk.iot.service** 名前空間を使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](../articles/iot-pnp/concepts-developer-guide-service.md)を参照してください。
+> このサンプルでは、**IoT Hub サービス クライアント** の **com.microsoft.azure.sdk.iot.service** 名前空間を使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](../articles/iot-develop/concepts-developer-guide-service.md)を参照してください。
 
 1. **サービス** ターミナルとして使用する別のターミナル ウィンドウを開きます。
 

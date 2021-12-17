@@ -2,13 +2,13 @@
 title: Microsoft Azure Recovery Services (MARS) エージェントをインストールする
 description: Windows マシンをバックアップする目的で Microsoft Azure Recovery Services (MARS) エージェントをインストールする方法について説明します。
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: 3ea48aaa6aad4a51463c4c028ead22f31163f810
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 06/04/2021
+ms.openlocfilehash: c52b65c06a4920020e4358c131870c0fe77b2584
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519223"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970635"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS エージェントをインストールする
 
@@ -63,51 +63,7 @@ Azure Backup では、オンプレミスのマシンや Azure VM からファイ
 
 ### <a name="verify-internet-access"></a>インターネット アクセスを確認する
 
-マシンのインターネットへのアクセスが制限されている場合、マシンまたはプロキシのファイアウォール設定によって次の URL と IP アドレスが許可されていることを確保してください。
-
-* URL
-  * `www.msftncsi.com`
-  * `*.Microsoft.com`
-  * `*.WindowsAzure.com`
-  * `*.microsoftonline.com`
-  * `*.windows.net`
-  * `www.msftconnecttest.com`
-* IP アドレス
-  * 20.190.128.0/18
-  * 40.126.0.0/18
-
-### <a name="use-azure-expressroute"></a>Azure ExpressRoute を使用する
-
-パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用し、Azure ExpressRoute 経由でデータをバックアップできます。 プライベート ピアリング経由のバックアップはサポートされていません。
-
-パブリック ピアリングを使用するには、まず次のドメインとアドレスへのアクセスを確保します。
-
-* `http://www.msftncsi.com/ncsi.txt`
-* `http://www.msftconnecttest.com/connecttest.txt`
-* `microsoft.com`
-* `.WindowsAzure.com`
-* `.microsoftonline.com`
-* `.windows.net`
-* IP アドレス
-  * 20.190.128.0/18
-  * 40.126.0.0/18
-
-Microsoft ピアリングを使用するには、次のサービス、リージョン、関連するコミュニティの値を選択します。
-
-* Azure Active Directory (12076:5060)
-* Azure リージョン、Recovery Services コンテナーの場所による
-* Azure Storage、Recovery Services コンテナーの場所による
-
-詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md)」を参照してください。
-
-> [!NOTE]
-> パブリック ピアリングは、新しい回線では非推奨です。
-
-前の URL と IP アドレスではすべて、ポート 443 で HTTPS プロトコルが使用されています。
-
-### <a name="private-endpoints"></a>プライベート エンドポイント
-
-[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
+[!INCLUDE [Configuring network connectivity](../../includes/backup-network-connectivity.md)]
 
 ## <a name="download-the-mars-agent"></a>MARS エージェントのダウンロード
 

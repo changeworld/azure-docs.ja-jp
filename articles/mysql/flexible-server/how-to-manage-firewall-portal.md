@@ -6,24 +6,24 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: b26ce91b005fc7bd4d5b89ccf5306dc03a040b0f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fa41da095b196f13c423b56a0411e6b67dab24a2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106753"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442231"
 ---
-# <a name="create-and-manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバーのファイアウォール規則を作成および管理する
+# <a name="manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバーのファイアウォール規則を管理する
 
-> [!IMPORTANT]
-> Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
 
 Azure Database for MySQL フレキシブル サーバーでは、フレキシブル サーバーに接続するために、2 種類の相互に排他的なネットワーク接続方法をサポートしています。 次の 2 つのオプションがあります。
 
 1. パブリック アクセス (許可された IP アドレス)
 2. プライベート アクセス (VNet 統合)
 
-この記事では、Azure portal を使用して **パブリック アクセス (許可された IP アドレス)** を使用して MySQL サーバーを作成する方法に焦点を当て、フレキシブル サーバーの作成後にファイアウォール規則を管理する方法の概要について説明します。 *パブリック アクセス (許可された IP アドレス)* では、MySQL サーバーへの接続は、許可された IP アドレスのみに制限されます。 クライアント IP アドレスは、ファイアウォール規則で許可されている必要があります。 詳細については、「[パブリック アクセス (許可された IP アドレス)](./concepts-networking.md#public-access-allowed-ip-addresses)」をご覧ください。 ファイアウォール規則は、サーバーの作成時に定義できます (推奨) が、後で追加することもできます。 この記事では、パブリック アクセス (許可された IP アドレス) を使用してファイアウォール規則を作成および管理する方法の概要について説明します。
+この記事では、Azure portal を使用して **パブリック アクセス (許可された IP アドレス)** を使用して MySQL サーバーを作成する方法に焦点を当て、フレキシブル サーバーの作成後にファイアウォール規則を管理する方法の概要について説明します。 *パブリック アクセス (許可された IP アドレス)* では、MySQL サーバーへの接続は、許可された IP アドレスのみに制限されます。 クライアント IP アドレスは、ファイアウォール規則で許可されている必要があります。 詳細については、「[パブリック アクセス (許可された IP アドレス)](./concepts-networking-public.md#public-access-allowed-ip-addresses)」をご覧ください。 ファイアウォール規則は、サーバーの作成時に定義できます (推奨) が、後で追加することもできます。 この記事では、パブリック アクセス (許可された IP アドレス) を使用してファイアウォール規則を作成および管理する方法の概要について説明します。
 
 ## <a name="create-a-firewall-rule-when-creating-a-server"></a>サーバーの作成時にファイアウォール規則を作成する
 
@@ -37,7 +37,7 @@ Azure Database for MySQL フレキシブル サーバーでは、フレキシブ
    > Azure Database for MySQL フレキシブル サーバーでは、サーバー レベルでファイアウォールが作成されます。 これにより、外部のアプリケーションやツールからの、サーバーとサーバー上のすべてのデータベースへの接続が禁止されます。接続を許可するには、特定の IP アドレスに対してファイアウォールを開放する規則を作成します。
 
 7. **[確認および作成]** を選択して、フレキシブル サーバーの構成を確認します。
-8.  **[作成]** を選択して、サーバーをプロビジョニングします。 プロビジョニングには数分かかる場合があります。
+8. **[作成]** を選択して、サーバーをプロビジョニングします。 プロビジョニングには数分かかる場合があります。
 
 ## <a name="create-a-firewall-rule-after-server-is-created"></a>サーバーを作成した後にファイアウォール規則を作成する
 
@@ -73,7 +73,7 @@ Azure 内のアプリケーションがサーバーに接続しようとした�
 ファイアウォール規則でこれらの接続を有効にするために、リソースが同じ仮想ネットワーク (VNet) またはリソース グループに存在する必要はありません。 接続試行が許可されていない場合、この要求は Azure Database for MySQL フレキシブル サーバーに到達しません。
 
 > [!IMPORTANT]
-> このオプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールを構成します。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
+>このオプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールを構成します。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
 >
 > フレキシブル サーバーに安全にアクセスするには、 **[Private access (VNet Integration)]\(プライベート アクセス (VNet 統合)\)** を選択することをお勧めします。
 >
@@ -88,6 +88,7 @@ Azure 内のアプリケーションがサーバーに接続しようとした�
 - 既存の規則を削除するには、省略記号 [...] をクリックし、 **[削除]** をクリックします。 **[保存]** をクリックして変更を保存します。
 
 ## <a name="next-steps"></a>次のステップ
+
 - [Azure Database for MySQL フレキシブル サーバーでのネットワーク](./concepts-networking.md)の詳細を確認する
-- [Azure Database for MySQL フレキシブル サーバーのファイアウォール規則](./concepts-networking.md#public-access-allowed-ip-addresses)の詳細を確認する
-- [Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理](./how-to-manage-firewall-cli.md)。
+- [Azure Database for MySQL フレキシブル サーバーのファイアウォール規則](./concepts-networking-public.md#public-access-allowed-ip-addresses)の詳細を確認する
+- [Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理](./how-to-manage-firewall-cli.md)

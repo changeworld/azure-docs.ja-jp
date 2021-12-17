@@ -16,16 +16,7 @@ Azure Media Services は、さまざまなプロトコルでビデオやオー�
 
 ## <a name="live-transcription-preview-regions-and-languages"></a>ライブ文字起こしプレビューのリージョンと言語
 
-ライブ文字起こしは、次のリージョンで使用できます。
-
-- 東南アジア
-- 西ヨーロッパ
-- 北ヨーロッパ
-- 米国東部
-- 米国中部
-- 米国中南部
-- 米国西部 2
-- ブラジル南部
+ライブ文字起こしは、[ここ](azure-clouds-regions.md)に記載されているリージョンで使用できます。
 
 次の一覧は、API で言語コードを使用して文字起こしを行うことができる言語です。
 
@@ -59,7 +50,7 @@ Azure Media Services は、さまざまなプロトコルでビデオやオー�
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-この操作には次の本文があります (取り込みプロトコルとしての RTMP によってパススルー ライブ イベントが作成されます)。 transcriptions プロパティが追加されていることに注目してください。
+この操作には次の本体が存在します (この本体では、RTMP を取り込み用のプロトコルに使用して、シンプルなパススルー Live Event を作成します)。 transcriptions プロパティが追加されていることに注目してください。
 
 ```
 {
@@ -93,7 +84,7 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
       }
     },
     "encoding": {
-      "encodingType": "None"
+      "encodingType": "PassthroughBasic"
     },
     "transcriptions": [
       {

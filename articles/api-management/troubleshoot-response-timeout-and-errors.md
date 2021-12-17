@@ -1,17 +1,17 @@
 ---
 title: API Management でのクライアント応答のタイムアウトとエラーのトラブルシューティング
 description: API Management での断続的な接続エラーとそれに関連した待ち時間の問題をトラブルシューティングする
-author: vladvino
+author: dlepow
 ms.topic: troubleshooting
 ms.date: 12/04/2020
-ms.author: apimpm
+ms.author: danlep
 ms.service: api-management
-ms.openlocfilehash: 6cace4a02c8d45cacbbc34e9778b5c4a78ada27f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18f117f64c6f97ee847f2e82d0e8fea509e17514
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576528"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253442"
 ---
 # <a name="troubleshooting-client-response-timeouts-and-errors-with-api-management"></a>API Management でのクライアント応答のタイムアウトとエラーのトラブルシューティング
 
@@ -61,7 +61,7 @@ APIM インスタンスからバックエンド サービスの同じ宛先 IP �
 
 バックエンド API が、App Service などの、"*サービス エンドポイント*" をサポートする Azure サービスでホストされている場合は、APIM インスタンスとバックエンド サービスを同じ仮想ネットワークに配置し、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)または [プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用して公開することにより、SNAT ポート枯渇の問題を回避できます。 共通の VNet を使用し、サービス エンドポイントを統合サブネットに配置すると、APIM インスタンスからこれらのサービスへの送信トラフィックがインターネットをバイパスするため、SNAT ポート制限が回避されます。 同様に、VNet とプライベート エンドポイントを使用する場合、その宛先には、送信 SNAT ポート問題が発生しません。
 
-詳細については、[仮想ネットワークで Azure API Management を使用する方法](api-management-using-with-vnet.md)と [App Service と Azure 仮想ネットワークの統合](../app-service/web-sites-integrate-with-vnet.md)に関する記事を参照してください。
+詳細については、[仮想ネットワークで Azure API Management を使用する方法](api-management-using-with-vnet.md)と [App Service と Azure 仮想ネットワークの統合](../app-service/overview-vnet-integration.md)に関する記事を参照してください。
 
 ### <a name="place-your-apim-in-a-virtual-network-and-route-outbound-calls-to-azure-firewall"></a>APIM を仮想ネットワークに配置し、送信呼び出しを Azure Firewall にルーティングする
 

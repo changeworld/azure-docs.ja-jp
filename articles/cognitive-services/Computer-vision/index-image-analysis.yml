@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 30/31/2021
-  ms.openlocfilehash: b9c4d44879c0988359d08c52e0383a03631a46c0
-  ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+  ms.openlocfilehash: a46a958fb70c046bd9ac3f54d66ad9b3f1a330d6
+  ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/03/2021
-  ms.locfileid: "106287487"
+  ms.lasthandoff: 04/27/2021
+  ms.locfileid: "108071367"
 landingContent:
 - title: 画像分析について
   linkLists:
@@ -65,7 +65,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: 画像分析 REST API
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

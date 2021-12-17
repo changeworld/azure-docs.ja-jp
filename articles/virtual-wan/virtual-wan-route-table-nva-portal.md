@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 08/19/2021
 ms.author: cherylmc
-ms.openlocfilehash: 409858b2a9005592d895f6044d028221769144cc
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e57f419daeb112be0925158109697bb2a9b399e8
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058512"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779981"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>NVA 用の Virtual WAN ハブ ルート テーブルを作成する:Azure portal
 
@@ -45,7 +45,7 @@ ms.locfileid: "106058512"
 
 ## <a name="2-create-a-virtual-wan"></a><a name="vwan"></a>2.仮想 WAN を作成する
 
-仮想 WAN を作成します。 次に示す値の例を使用してください。
+仮想 WAN を作成します。 次の例の値を使用するか、独自の値に置き換えます。
 
 * **Virtual WAN 名:** myVirtualWAN
 * **リソース グループ:** testRG
@@ -55,13 +55,13 @@ ms.locfileid: "106058512"
 
 ## <a name="3-create-a-hub"></a><a name="hub"></a>3.ハブを作成する
 
-ハブを作成します。 次に示す値の例を使用してください。
+ハブを作成します。 次の例の値を使用するか、独自の値に置き換えます。
 
 * **[場所]:** 米国西部
 * **名前:** westushub
 * **ハブのプライベート アドレス空間:** 10.0.1.0/24
 
-[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
+[!INCLUDE [Create a hub](../../includes/virtual-wan-empty-hub-include.md)]
 
 ## <a name="4-create-and-apply-a-hub-route-table"></a><a name="route"></a>4.ハブのルート テーブルの作成および適用
 

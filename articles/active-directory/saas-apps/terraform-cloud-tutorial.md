@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 06/01/2021
 ms.author: jeedes
-ms.openlocfilehash: c26224f388c09ec758373c877004f5485bb420df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2a29ebfc6bbe65494ab9eaf8a746f6cd0db96aa
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97725084"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132320397"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Terraform Cloud の統合
 
@@ -37,11 +37,10 @@ ms.locfileid: "97725084"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Terraform Cloud では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Terraform Cloud では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Terraform Cloud では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* Terraform Cloud では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
-
-## <a name="adding-terraform-cloud-from-the-gallery"></a>ギャラリーからの Terraform Cloud の追加
+## <a name="add-terraform-cloud-from-the-gallery"></a>ギャラリーからの Terraform Cloud の追加
 
 Azure AD への Terraform Cloud の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Terraform Cloud を追加する必要があります。
 
@@ -51,7 +50,6 @@ Azure AD への Terraform Cloud の統合を構成するには、ギャラリー
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Terraform Cloud**」と入力します。
 1. 結果のパネルから **[Terraform Cloud]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-terraform-cloud"></a>Terraform Cloud の Azure AD SSO の構成とテスト
 
@@ -72,24 +70,27 @@ Terraform Cloud に対して Azure AD SSO を構成してテストするには�
 
 1. Azure portal の **Terraform Cloud** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    **[識別子]** ボックスに、`https://app.terraform.io/sso/saml/samlconf-<ID>/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://app.terraform.io/sso/saml/samlconf-<ID>/metadata` の形式で URL を入力します。
+
+    b. **[応答 URL]** ボックスに、`https://app.terraform.io/sso/saml/samlconf-<ID>/acs` のパターンを使用して URL を入力します
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** テキスト ボックスに、URL として「`https://app.terraform.io/session`」と入力します。
 
     > [!NOTE]
-    > この識別子の値は実際のものではありません。 この値を実際の識別子で更新してください。 これらの値を取得するには、[Terraform Cloud クライアント サポート チーム](mailto:tf-cloud@hashicorp.support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Terraform Cloud クライアント サポート チーム](mailto:tf-cloud@hashicorp.support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -126,7 +127,7 @@ Terraform Cloud に対して Azure AD SSO を構成してテストするには�
 
 3. Terraform Cloud を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Terraform Cloud 企業サイトに管理者としてサインインします。
 
-2. **[Settings]\(設定\) > [SSO] > [Edit Settings]\(設定の編集\)** に移動します
+2. **[Settings]\(設定\) > [SSO] > [Edit Settings]\(設定の編集\)** に移動します。
 
     ![Terraform Cloud の設定](./media/terraform-cloud-tutorial/sso-settings.png)
 
@@ -158,11 +159,10 @@ Terraform Cloud に対して Azure AD SSO を構成してテストするには�
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Terraform Cloud に自動的にサインインされます 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Terraform Cloud に自動的にサインインされます。 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [Terraform Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Terraform Cloud に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
-
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Terraform Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Terraform Cloud に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Terraform Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Terraform Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

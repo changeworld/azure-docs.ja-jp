@@ -1,0 +1,53 @@
+### YamlMime:Landing
+title: Azure File Sync のドキュメント
+summary: Azure File Sync を使用すると、Windows ファイル サーバーの柔軟性、パフォーマンス、互換性を維持しながら、Azure Files に組織のファイル共有を一元化できます。
+metadata:
+  title: Azure File Sync のドキュメント
+  description: Windows、Linux、および macOS でクラウドまたはオンプレミスのファイル共有をマウントします。 Azure File Sync を使用して Azure ファイル共有を Windows Server でキャッシュし、ローカル アクセスを実現します。
+  services: storage
+  ms.service: storage
+  ms.subservice: files
+  ms.topic: landing-page
+  ms.collection: collection
+  author: roygara
+  ms.author: rogarana
+  ms.date: 04/19/2021
+  ms.openlocfilehash: 1a384985bbd58285ec1a556f2840f27994c4c40b
+  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/20/2021
+  ms.locfileid: "107795440"
+landingContent:
+- title: Azure Files Sync について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure File Sync 計画ガイド
+      url: file-sync-planning.md
+    - text: Azure File Sync とは
+      url: file-sync-introduction.md
+    - text: クラウドの階層化の概要
+      url: file-sync-cloud-tiering-overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: ファイル共有の作成と使用 - Windows
+      url: ../files/storage-files-quick-create-use-windows.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json
+    - text: Azure File Sync でのサーバーの管理
+      url: file-sync-server-registration.md
+  - linkListType: tutorial
+    links:
+    - text: Azure File Sync を使用して Windows ファイル サーバーを拡張する
+      url: file-sync-extend-servers.md
+- title: トラブルシューティング
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Files に関する Windows のトラブルシューティング
+      url: ../files/storage-troubleshoot-windows-file-connection-problems.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json
+    - text: Azure Files に関するパフォーマンスのトラブルシューティング
+      url: ../files/storage-troubleshooting-files-performance.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json
+    - text: Azure File Sync に関するトラブルシューティング
+      url: file-sync-troubleshoot.md

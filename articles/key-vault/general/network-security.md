@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault のファイアウォールと仮想ネットワークを構成する - Azure Key Vault
-description: Key Vault のファイアウォールと仮想ネットワークを構成する手順
+description: キー コンテナーのネットワーク設定について学習する
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8352deb00f6954d862b9e44646cce1604e2c5428
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b3e9332706c3bcc9d4f4cabd20d10fa099271d69
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749620"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285327"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault のファイアウォールと仮想ネットワークを構成する
 
-この記事では、Azure Key Vault ファイアウォールを構成する方法に関するガイダンスを示します。 このドキュメントでは Key Vault ファイアウォールのさまざまな構成について詳しく説明すると共に、他のアプリケーションや Azure サービスと連携するように Azure Key Vault を構成する手順について説明します。
+このドキュメントでは、Key Vault のファイアウォールのさまざまな構成について詳しく説明します。 これらの設定を構成する詳細な手順に従うには、[こちら](how-to-azure-key-vault-network-security.md)のガイドに従ってください。 
 
 詳細については、「[Azure Key Vault の仮想ネットワーク サービス エンドポイント](overview-vnet-service-endpoints.md)」を参照してください。
 
@@ -28,14 +28,14 @@ ms.locfileid: "107749620"
 
 ### <a name="key-vault-firewall-disabled-default"></a>Key Vault ファイアウォールを無効にする (既定値)
 
-既定では、新しいキー コンテナーを作成するとき、Azure Key Vault ファイアウォールは無効になります。 すべてのアプリケーションおよび Azure サービスから、キー コンテナーにアクセスし、キー コンテナーに要求を送信することができます。 なお、この構成は、お客様のキー コンテナー上で任意のユーザーが操作を行えるということを意味するものではありません。 キー コンテナーは、Azure Active Directory 認証およびアクセス ポリシーのアクセス許可を必要とすることで、キー コンテナーに格納されているシークレット、キー、および証明書に引き続き制限されます キー コンテナー認証の詳細については、[こちら](./authentication-fundamentals.md)のキー コンテナー認証の基礎に関するドキュメントを参照してください。 詳細については、「[ファイアウォールの向こう側にある Azure Key Vault へのアクセス](./access-behind-firewall.md)」を参照してください。
+既定では、新しいキー コンテナーを作成するとき、Azure Key Vault ファイアウォールは無効になります。 すべてのアプリケーションおよび Azure サービスから、キー コンテナーにアクセスし、キー コンテナーに要求を送信することができます。 なお、この構成は、お客様のキー コンテナー上で任意のユーザーが操作を行えるということを意味するものではありません。 キー コンテナーは、Azure Active Directory 認証およびアクセス ポリシーのアクセス許可を必要とすることで、キー コンテナーに格納されているシークレット、キー、および証明書に引き続き制限されます キー コンテナー認証の詳細については、[こちら](./authentication.md)のキー コンテナー認証の基礎に関するドキュメントを参照してください。 詳細については、「[ファイアウォールの向こう側にある Azure Key Vault へのアクセス](./access-behind-firewall.md)」を参照してください。
 
 ### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Key Vault ファイアウォールを有効にする (信頼されたサービスのみ)
 
 Key Vault ファイアウォールを有効にすると、[Allow trusted Microsoft services to bypass this firewall]\(信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する\) に対するオプションが表示されます。 信頼されたサービスのリストには、単一の Azure サービスがすべてが含まれるわけではありません。 たとえば、Azure DevOps は信頼されたサービスのリストに掲載されていません。 **これは、信頼されたサービスのリストに表示されないサービスが信頼されていない、またはセキュリティで保護されていないということを意味するものではありません。** 信頼されたサービスのリストには、サービス上で実行されるすべてのコードを Microsoft が制御するサービスが含まれます。 Azure DevOps などの Azure サービス内ではユーザーがカスタム コードを記述できるため、Microsoft はサービスの包括的承認を作成するオプションを提供していません。 さらに、サービスが、信頼されたサービスのリストに掲載されていたからといって、それがすべてのシナリオに対して許可されるわけではありません。 
 
 使おうとしているサービスが信頼されたサービスのリストにあるかどうかを判断するには、[こちら](./overview-vnet-service-endpoints.md#trusted-services)のドキュメントを参照してください。
-攻略ガイドについては、こちらの[ポータル、Azure CLI、PowerShell](https://docs.microsoft.com/azure/key-vault/general/network-security#use-the-azure-portal) 向けの手順に従ってください。
+攻略ガイドについては、こちらの[ポータル、Azure CLI、PowerShell](how-to-azure-key-vault-network-security.md) 向けの手順に従ってください。
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault ファイアウォールを有効にする (IPv4 アドレスおよび範囲 - 静的 IP)
 
@@ -68,104 +68,13 @@ Key Vault ファイアウォールを介して Azure サービス全体を許可
 ご利用のキー コンテナー上でプライベート リンク接続を構成する方法については、[こちら](./private-link-service.md)のドキュメントを参照してください。
 
 > [!IMPORTANT]
-> ファイアウォール ルールを有効にした後は、要求が許可された仮想ネットワークまたは IPv4 アドレス範囲から送信された場合にのみ、ユーザーは Key Vault [データ プレーン](security-overview.md#privileged-access)の操作を実行できます。 これは、Azure portal から Key Vault にアクセスする場合にも適用されます。 ユーザーは Azure portal からキー コンテナーを参照できますが、クライアント マシンが許可リストに登録されていない場合、キー/シークレット/証明書を一覧表示できない場合があります。 これは、他の Azure サービスによる Key Vault 選択機能にも影響します。 ファイアウォール ルールでクライアント マシンが許可されていない場合、ユーザーはキー コンテナーを一覧表示できても、キーは一覧表示できないことがあります。
+> ファイアウォール ルールを有効にした後は、要求が許可された仮想ネットワークまたは IPv4 アドレス範囲から送信された場合にのみ、ユーザーは Key Vault [データ プレーン](security-features.md#privileged-access)の操作を実行できます。 これは、Azure portal から Key Vault にアクセスする場合にも適用されます。 ユーザーは Azure portal からキー コンテナーを参照できますが、クライアント マシンが許可リストに登録されていない場合、キー/シークレット/証明書を一覧表示できない場合があります。 これは、他の Azure サービスによる Key Vault 選択機能にも影響します。 ファイアウォール ルールでクライアント マシンが許可されていない場合、ユーザーはキー コンテナーを一覧表示できても、キーは一覧表示できないことがあります。
 
 > [!NOTE]
 > 構成に関する次の制限事項に注意してください。
-> * 最大で 127 個の仮想ネットワーク規則と 127 個の IPv4 ルールを指定できます。 
+> * 最大で 200 個の仮想ネットワーク規則と 1000 個の IPv4 ルールを指定できます。 
 > * IP ネットワーク ルールは、パブリック IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 (RFC 1918 で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、**10.** 、**172.16-31**、および **192.168.** で始まるアドレスが含まれます。 
 > * 現時点でサポートされているのは、IPv4 アドレスのみです。
-
-## <a name="use-the-azure-portal"></a>Azure ポータルの使用
-
-Azure portal を使用して Key Vault ファイアウォールと仮想ネットワークを構成する方法を次に示します。
-
-1. セキュリティで保護するキー コンテナーに移動します。
-2. **[ネットワーク]** を選択してから、 **[ファイアウォールと仮想ネットワーク]** タブを選択します。
-3. **[許可するアクセス元]** の **[選択されたネットワーク]** を選択します。
-4. 既存の仮想ネットワークをファイアウォールと仮想ネットワークの規則に追加するには、 **[+ 既存の仮想ネットワークを追加]** を選択します。
-5. 表示される新しいブレードで、このキー コンテナーへのアクセスを許可するサブスクリプション、仮想ネットワーク、サブネットを選択します。 選択する仮想ネットワークとサブネットでサービス エンドポイントが有効になっていない場合は、サービス エンドポイントを有効にする必要があることを確認して、 **[有効]** を選択します。 有効になるまでに最大 15 分かかることがあります。
-6. **[IP ネットワーク]** では、[CIDR (Classless Inter-Domain Routing) 表記](https://tools.ietf.org/html/rfc4632)で IPv4 アドレスの範囲を入力して IPv4 アドレス範囲を追加するか、個々の IP アドレスを追加します。
-7. 信頼された Microsoft サービスが Key Vault ファイアウォールをバイパスすることを許可する場合には、[はい] を選択します。 Key Vault で現在信頼されているサービスの完全な一覧については、次のリンクを参照してください。 [Azure Key Vault の信頼済みサービス](./overview-vnet-service-endpoints.md#trusted-services)
-7. **[保存]** を選択します。
-
-**[+ 新しい仮想ネットワークを追加]** を選択し、新しい仮想ネットワークとサブネットを追加して、新しく作成した仮想ネットワークとサブネットのサービス エンドポイントを有効にすることもできます。 その後、プロンプトに従います。
-
-## <a name="use-the-azure-cli"></a>Azure CLI の使用 
-
-Azure CLI を使用して Key Vault ファイアウォールと仮想ネットワークを構成する方法を次に示します
-
-1. [Azure CLI をインストール](/cli/azure/install-azure-cli)して[サインイン](/cli/azure/authenticate-azure-cli)します。
-
-2. 使用可能な仮想ネットワーク規則の一覧を表示します。 このキー コンテナーに対してルールを何も設定していない場合、一覧は空になります。
-   ```azurecli
-   az keyvault network-rule list --resource-group myresourcegroup --name mykeyvault
-   ```
-
-3. 既存の仮想ネットワークとサブネット上の Key Vault のサービス エンドポイントを有効にします。
-   ```azurecli
-   az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.KeyVault"
-   ```
-
-4. 仮想ネットワークとサブネットに対するネットワーク ルールを追加します。
-   ```azurecli
-   subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
-   az keyvault network-rule add --resource-group "demo9311" --name "demo9311premium" --subnet $subnetid
-   ```
-
-5. そこから送信されたトラフィックを許可する IP アドレス範囲を追加します。
-   ```azurecli
-   az keyvault network-rule add --resource-group "myresourcegroup" --name "mykeyvault" --ip-address "191.10.18.0/24"
-   ```
-
-6. すべての信頼されたサービスでこのキー コンテナーにアクセスできるようにする必要がある場合は、`bypass` を `AzureServices` に設定します。
-   ```azurecli
-   az keyvault update --resource-group "myresourcegroup" --name "mykeyvault" --bypass AzureServices
-   ```
-
-7. 既定のアクションを `Deny` に設定することによって、ネットワーク ルールを有効にします。
-   ```azurecli
-   az keyvault update --resource-group "myresourcegroup" --name "mekeyvault" --default-action Deny
-   ```
-
-## <a name="use-azure-powershell"></a>Azure PowerShell の使用
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-PowerShell を使用して Key Vault ファイアウォールと仮想ネットワークを構成する方法を次に示します。
-
-1. 最新の [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして[サインイン](/powershell/azure/authenticate-azureps)します。
-
-2. 使用可能な仮想ネットワーク規則の一覧を表示します。 このキー コンテナーに対してルールを何も設定していない場合、一覧は空になります。
-   ```powershell
-   (Get-AzKeyVault -VaultName "mykeyvault").NetworkAcls
-   ```
-
-3. 既存の仮想ネットワークとサブネット上の Key Vault のサービス エンドポイントを有効にします。
-   ```powershell
-   Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
-   ```
-
-4. 仮想ネットワークとサブネットに対するネットワーク ルールを追加します。
-   ```powershell
-   $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
-   Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
-   ```
-
-5. そこから送信されたトラフィックを許可する IP アドレス範囲を追加します。
-   ```powershell
-   Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
-   ```
-
-6. すべての信頼されたサービスでこのキー コンテナーにアクセスできるようにする必要がある場合は、`bypass` を `AzureServices` に設定します。
-   ```powershell
-   Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
-   ```
-
-7. 既定のアクションを `Deny` に設定することによって、ネットワーク ルールを有効にします。
-   ```powershell
-   Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
-   ```
 
 ## <a name="references"></a>References
 * ARM テンプレート リファレンス: [Azure Key Vault ARM テンプレート リファレンス](/azure/templates/Microsoft.KeyVault/vaults)
@@ -175,4 +84,4 @@ PowerShell を使用して Key Vault ファイアウォールと仮想ネット�
 ## <a name="next-steps"></a>次のステップ
 
 * [Key Vault の仮想ネットワーク サービス エンドポイント](overview-vnet-service-endpoints.md)
-* [Azure Key Vault のセキュリティの概要](security-overview.md)
+* [Azure Key Vault のセキュリティの概要](security-features.md)

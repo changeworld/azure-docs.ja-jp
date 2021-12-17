@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs でラボのアクティビティ ログ アラートを作成する
+title: ラボのアクティビティ ログ アラートを作成する
 description: この記事では、Azure DevTest Labs でラボのアクティビティ ログ アラートを作成する手順について説明します。
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: f774e3291961c58f55a9ed24026535e076235b98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ebb5ae118d6485afd697ff9b5db7113a101b358
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588772"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628168"
 ---
 # <a name="create-activity-log-alerts-for-labs-in-azure-devtest-labs"></a>Azure DevTest Labs でラボのアクティビティ ログ アラートを作成する
 この記事では Azure DevTest Labs でラボのアクティビティ ログ アラート (VM が作成されたとき、VM が削除されたときなど) を作成する方法について説明します。
@@ -79,4 +79,3 @@ ms.locfileid: "100588772"
 - さまざまなアクションの種類を使用したアクション グループの作成の詳細については、「[Azure Portal でのアクション グループの作成および管理](../azure-monitor/alerts/action-groups.md)」を参照してください。
 - アクティビティ ログの詳細については、「[Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)」を参照してください。
 - アクティビティ ログ アラートの設定の詳細については、「[アクティビティ ログ アラート](../azure-monitor/alerts/activity-log-alerts.md)」を参照してください。
-

@@ -1,19 +1,19 @@
 ---
 title: クイックスタート - サンプル アプリの概要 - Azure Spring Cloud
 description: この一連のクイックスタートでは、サンプル アプリを使用して Azure Spring Cloud にデプロイする方法について説明します。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/08/2020
+ms.date: 10/12/2021
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: dd36bb18e84ea299195b77286887a3b279f81469
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2966f77bb070269e11a01303204362d3b6950207
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877578"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005864"
 ---
 # <a name="introduction-to-the-sample-app"></a>サンプル アプリの概要
 
@@ -26,30 +26,30 @@ ms.locfileid: "104877578"
 
 * `planet-weather-provider` サービスは、惑星名を指定する HTTP 要求に応答して、気象のテキストを返します。 たとえば、彗星について "非常に暖かい" と返される場合があります。 気象データは、構成サーバーから取得します。 構成サーバーは、次の例のように、Git リポジトリの YAML ファイルから気象データを取得します。
 
-  ```yaml
-  MercuryWeather: very warm
-  VenusWeather: quite unpleasant
-  MarsWeather: very cool
-  SaturnWeather: a little bit sandy
-  ```
+   ```yaml
+   MercuryWeather: very warm
+   VenusWeather: quite unpleasant
+   MarsWeather: very cool
+   SaturnWeather: a little bit sandy
+   ```
 
 * `solar-system-weather` サービスは、HTTP 要求に応答して 4 つの惑星のデータを返します。 `planet-weather-provider` に 4 つの HTTP 要求を行って、データを取得します。 `planet-weather-provider` の呼び出しには、Eureka サーバーの検出サービスを使用します。 次のような JSON が返されます。
 
-  ```json
-  [{
-      "Key": "Mercury",
-      "Value": "very warm"
-  }, {
-      "Key": "Venus",
-      "Value": "quite unpleasant"
-  }, {
-      "Key": "Mars",
-      "Value": "very cool"
-  }, {
-      "Key": "Saturn",
-      "Value": "a little bit sandy"
-  }]
-  ```
+   ```json
+   [{
+       "Key": "Mercury",
+       "Value": "very warm"
+   }, {
+       "Key": "Venus",
+       "Value": "quite unpleasant"
+   }, {
+       "Key": "Mars",
+       "Value": "very cool"
+   }, {
+       "Key": "Saturn",
+       "Value": "a little bit sandy"
+   }]
+   ```
 
 次の図に、このサンプル アプリのアーキテクチャを示します。
 
@@ -64,33 +64,39 @@ ms.locfileid: "104877578"
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-このクイックスタートでは、PiggyMetrics と呼ばれる個人財務サンプルを使用して、Azure Spring Cloud サービスにアプリをデプロイする方法を示します。 PiggyMetrics は、マイクロサービス アーキテクチャ パターンを示し、サービスの内訳を強調します。 サービス検出、構成サーバー、ログ、メトリック、分散トレースなどの強力な Azure Spring Cloud 機能を使用すると、どのように Azure にデプロイされているかがわかります。
+このクイックスタートでは、既知のサンプル アプリである [PetClinic](https://github.com/spring-petclinic/spring-petclinic-microservices) のマイクロサービス バージョンを使用して、Azure Spring Cloud サービスにアプリをデプロイする方法を説明します。 **PetClinic** サンプルは、マイクロサービス アーキテクチャ パターンを示し、サービスの内訳を明確に示しています。 サービス検出、構成サーバー、ログ、メトリック、分散トレース、開発者フレンドリなツールのサポートなど、Azure Spring Cloud の機能を使用して、サービスを Azure にデプロイする方法を確認します。
 
 Azure Spring Cloud のデプロイの例を使用するには、ソース コードの場所だけが必要です。これは、必要に応じて提供されます。
 
-## <a name="functional-services"></a>機能サービス
+![PetClinic のアーキテクチャ](media/build-and-deploy/microservices-architecture-diagram.jpg)
 
-PiggyMetrics は、3 つのコア マイクロサービスに分解されます。 これらのすべては、個別にデプロイできるアプリケーションであり、ビジネス ドメイン別に整理されています。
+## <a name="functional-services-to-be-deployed"></a>デプロイされる機能サービス
 
-* **アカウント サービス (デプロイされる)** : 一般的なユーザー入力ロジックと検証が含まれます。収入と支出の項目、貯蓄、アカウント設定などです。
-* **統計サービス (このクイックスタートでは使用しません)** : 主要な統計パラメーターを計算し、各アカウントの時系列をキャプチャします。 データポイントには、基本通貨と期間に正規化された値が含まれます。 このデータは、アカウントの有効期間中のキャッシュ フロー ダイナミクスを追跡するために使用されます。
-* **通知サービス (このクイックスタートでは使用しません)** : ユーザーの連絡先情報と通知設定 (リマインダーやバックアップの頻度など) を格納します。 スケジュールされたワーカーは、他のサービスから必要な情報を収集し、サブスクライブした顧客に電子メール メッセージを送信します。
+PetClinic は、4 つのコア マイクロサービスに分解されます。 これらのすべては、個別にデプロイできるアプリケーションであり、ビジネス ドメイン別に整理されています。
 
-## <a name="infrastructure-services"></a>インフラストラクチャ サービス
+* **顧客サービス**: 一般的なユーザー入力ロジックと検証が含まれています。ペットと飼い主の情報 (名前、住所、市区町村、電話番号) が含まれます。
+* **訪問サービス**: 各ペットのコメントの訪問情報を保存および表示します。
+* **獣医サービス**: 名前や専門分野など、獣医の情報を保存および表示します。
+* **API ゲートウェイ**: API ゲートウェイは、システムへの単一のエントリ ポイントです。要求を処理し、適切なサービスにルーティングしたり、複数のサービスを呼び出し、結果を集計したりするために使用されます。  3 つのコア サービスは、外部 API をクライアントに公開します。 実際のシステムでは、システムの複雑さによって関数の数が急速に増加する可能性があります。 1 つの複雑な Web ページのレンダリングには、数百のサービスが関係していることがあります。
 
-コア サービスの動作を支援するために、分散システムにはいくつかの一般的なパターンがあります。 Azure Spring Cloud には、Spring Boot アプリケーションの動作を拡張してこれらのパターンを実装する、強力なツールが用意されています。 
+## <a name="infrastructure-services-hosted-by-azure-spring-cloud"></a>Azure Spring Cloud でホストされるインフラストラクチャ サービス
 
-* **構成サービス (Azure Spring Cloud によってホストされます)** : Azure Spring Cloud Config は、水平方向にスケーラブルな、分散システムのための一元化された構成サービスです。 現時点でローカル ストレージ、Git、および Subversion をサポートしている、プラグ可能なリポジトリを使用します。
-* **サービス検出 (Azure Spring Cloud によってホストされます)** : これにより、自動スケーリング、障害、およびアップグレードのために動的にアドレスを割り当てられた可能性があるサービス インスタンスのネットワークの場所を自動的に検出できます。
-* **承認サービス (デプロイされます)** : 承認責任は、別のサーバーに完全に抽出されます。そのサーバーによって、バックエンド リソース サービスに OAuth2 トークンが付与されます。 承認サーバーはユーザーの承認を行い、境界内のマシン間の通信をセキュリティで保護します。
-* **API ゲートウェイ (デプロイされます)** : 3 つのコア サービスは、外部 API をクライアントに公開します。 実際のシステムでは、システムの複雑さによって関数の数が急速に増加する可能性があります。 1 つの複雑な Web ページのレンダリングには、数百のサービスが関係していることがあります。 API ゲートウェイは、システムへの単一のエントリ ポイントです。要求を処理し、適切なバックエンド サービスにルーティングしたり、複数のバックエンド サービスを呼び出したりするために使用され、結果を集計します。 
+コア サービスを支援するために、分散システムにはいくつかの一般的なパターンがあります。 Azure Spring Cloud には、Spring Boot アプリケーションを拡張して次のパターンを実装するツールが用意されています。
 
-## <a name="sample-usage-of-piggymetrics"></a>PiggyMetrics の使用例
+* **構成サービス**: Azure Spring Cloud Config は、水平方向にスケーラブルな、分散システムのための一元化された構成サービスです。 現時点でローカル ストレージ、Git、および Subversion をサポートしている、プラグ可能なリポジトリを使用します。
+* **サービス検出**: 自動スケーリング、障害、アップグレードのために、アドレスが動的に割り当てられた可能性があるサービス インスタンスのネットワークの場所を自動的に検出できます。
 
-実装の詳細については、「[PiggyMetrics](https://github.com/Azure-Samples/piggymetrics)」を参照してください。 このサンプルでは、必要に応じてソース コードを参照します。
+## <a name="database-configuration"></a>データベース構成
+
+**PetClinic** の既定の構成では、起動時にデータが入力されるメモリ内データベース (HSQLDB) が使用されます。 永続的なデータベース構成が必要な場合は、MySql 用に同様のセットアップが提供されます。 MySQL JDBC ドライバーである Connector/J の依存関係は、pom.xml ファイルに既に含まれています。
+
+## <a name="sample-usage-of-petclinic"></a>PetClinic の使用例
+
+完全な実装の詳細については、[PetClinic](https://github.com/Azure-Samples/spring-petclinic-microservices) のフォークを参照してください。 このサンプルでは、必要に応じてソース コードを参照します。
+
 ::: zone-end
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure Spring Cloud インスタンスをプロビジョニングする](spring-cloud-quickstart-provision-service-instance.md)
+> [Azure Spring Cloud インスタンスをプロビジョニングする](./quickstart-provision-service-instance.md)

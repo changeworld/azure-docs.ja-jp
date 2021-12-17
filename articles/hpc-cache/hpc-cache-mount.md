@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache をマウントする
 description: Azure HPC Cache サービスにクライアントを接続する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
-ms.author: v-erkel
-ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.author: femila
+ms.openlocfilehash: 45c84008705ef47bd64301e262e878d0308123af
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91651430"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032964"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Azure HPC Cache をマウントする
 
@@ -85,11 +85,13 @@ mount コマンドを作成するには、次の手順に従います。
 
    Azure HPC Cache の集約された名前空間の機能の詳細については、「[集約された名前空間を計画する](hpc-cache-namespace.md)」を参照してください。
 
-1. 手順 3 の **[Mount command]\(mount コマンド\)** フィールドには、前のフィールドで設定したマウント アドレス、仮想名前空間のパス、クライアント パスを使用する、カスタマイズされた mount コマンドが自動的に入力されます。
+1. **[Mount command]\(mount コマンド\)** フィールドには、前のフィールドで設定したマウント アドレス、仮想名前空間のパス、クライアント パスを使用する、カスタマイズされた mount コマンドが自動的に入力されます。
 
    フィールドの右側にあるコピー記号をクリックすると、自動的にクリップボードにコピーされます。
 
    ![[クリップボードにコピー] ボタンのホバー テキストが表示されているプロトタイプ マウント コマンド フィールドのスクリーンショット](media/mount-command-copy.png)
+
+   その下に、同じクライアント パスと名前空間パスが含まれているが、異なるキャッシュ マウント アドレスを使用する代替のマウント コマンドが表示されます。 最高のパフォーマンスを得るには、HPC Cache 上の使用可能なすべてのアドレス間で均等にクライアントをマウントする必要があります。
 
 1. コピーした mount コマンドをクライアント マシンで使用して、それを Azure HPC Cache に接続します。 コマンドをクライアントのコマンド ラインから直接発行することも、クライアントのセットアップ スクリプトまたはテンプレートに mount コマンドを含めることもできます。
 
@@ -135,6 +137,13 @@ root@test-client:/tmp#
 
 ![テーブルの以下の最初の列に強調のボックスが表示されている、ポータルの [設定] > [名前空間] ページのスクリーンショット: "名前空間のパス"](media/view-namespace-paths.png)
 
+## <a name="use-all-available-mount-addresses"></a>使用可能なすべてのマウント アドレスを使用する
+
+キャッシュ用に一覧表示されているすべての IP アドレス間でクライアント トラフィックを分散させる必要があります。 すべてのクライアントを 1 つのアドレスにのみマウントすると、キャッシュのパフォーマンスが低下します。
+
+クライアントごとに異なるマウント アドレスを手動で、またはスクリプトを作成することによって選択できます。 また、ラウンドロビン DNS (RRDNS) 用に構成された DNS サーバーを使用して、使用可能なすべてのアドレス間でクライアント マウントを自動的にローテーションすることもできます。 詳細については、[HPC Cache トラフィックの負荷分散](client-load-balancing.md)に関するページを参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
+* [クライアントの負荷を分散する](client-load-balancing.md)ことによってキャッシュのすべてのスループットを使用する方法の詳細について学習します。
 * キャッシュのストレージ ターゲットを移動する方法については、[新しい Azure Blob Storage へのデータの事前設定](hpc-cache-ingest.md)に関するページを参照してください。

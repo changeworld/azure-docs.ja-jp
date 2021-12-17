@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/04/2021
 ms.topic: how-to
-ms.openlocfilehash: 7170044af58a508ff5a43751cc376f8b8d498444
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8ea126637679974035d62cc415c4fd07f597d53f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435547"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961864"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure Pipelines を使用する HPC ソリューションの構築とデプロイ
 
@@ -22,7 +22,7 @@ Azure DevOps によって提供されるツールを、ハイ パフォーマン
 
 この記事の手順を実行するには、[Azure DevOps 組織](/azure/devops/organizations/accounts/create-organization)が必要です。 また、[Azure DevOps でプロジェクトを作成する](/azure/devops/organizations/projects/create-project)必要もあります。
 
-開始する前に、[ソース管理](/azure/devops/user-guide/source-control)と [Azure Resource Manager テンプレートの構文](../azure-resource-manager/templates/template-syntax.md)の基本を理解しておくと役立ちます。
+開始する前に、[ソース管理](/azure/devops/user-guide/source-control)と [Azure Resource Manager テンプレートの構文](../azure-resource-manager/templates/syntax.md)の基本を理解しておくと役立ちます。
 
 ## <a name="create-an-azure-pipeline"></a>Azure Pipelines を作成する
 

@@ -1,22 +1,19 @@
 ---
 title: クイック スタート - レジストリを作成する - PowerShell
 description: Azure Container Registry で PowerShell を使用してプライベート Docker レジストリを作成する方法を簡単に説明します
-ms.date: 01/22/2019
+ms.date: 06/03/2021
 ms.topic: quickstart
-ms.custom:
-- mvc
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: bd9b93e22081c43dfa3fd934f13da3713120aadb
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell, mvc, mode-api
+ms.openlocfilehash: 448b692adb603c884f1034bf5d7234e459ce5f66
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537384"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043492"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してプライベート コンテナー レジストリを作成する
 
-Azure Container Registry は、Docker コンテナー イメージのビルド、保管、サポートをするための、管理されたプライベート Docker コンテナー レジストリ サービスです。 このクイックスタートでは、PowerShell を使用して Azure Container Registry を作成する方法を簡単に説明します。 次に、Docker コマンドを使用してコンテナー イメージをレジストリにプッシュし、最後にレジストリからイメージをプルして実行します。
+Azure Container Registry は、コンテナー イメージおよび関連アーティクルのビルド、保管、管理をするための、プライベート レジストリ サービスです。 このクイックスタートでは、Azure PowerShell を使用して Azure コンテナー レジストリ インスタンスを作成します。 次に、Docker コマンドを使用してコンテナー イメージをレジストリにプッシュし、最後にレジストリからイメージをプルして実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,27 +51,20 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-このクイック スタートでは、*Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベルの詳細については、[コンテナー レジストリのサービス レベル][container-registry-skus]に関するページを参照してください。
+[!INCLUDE [container-registry-quickstart-sku](../../includes/container-registry-quickstart-sku.md)]
 
 ## <a name="log-in-to-registry"></a>レジストリへのログイン
 
-コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリにログインしておく必要があります。 このクイックスタートでは、作業を簡略化するために、[Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] コマンドを使用して、レジストリ上の管理者ユーザーを有効にします。 運用環境のシナリオでは、レジストリ アクセス用に別の[認証方法](container-registry-authentication.md) (サービス プリンシパルなど) を使用する必要があります。 
+コンテナー イメージをプッシュしたりプルしたりするには、[Connect-AzContainerRegistry][connect-azcontainerregistry] コマンドレットを使用してあらかじめレジストリにログインしておく必要があります。 次の例では、`Connect-AzAccount` コマンドレットを使用して Azure に認証する際、ログインで使用したのと同じ資格情報を使用しています。
+
+> [!NOTE]
+> 次の例で、`$registry.Name` の値はリソース名です。完全修飾レジストリ名ではありません。
 
 ```powershell
-$creds = Get-AzContainerRegistryCredential -Registry $registry
-```
-
-次に、[docker login][docker-login] を実行してログインします。
-
-```powershell
-$creds.Password | docker login $registry.LoginServer -u $creds.Username --password-stdin
+Connect-AzContainerRegistry -Name $registry.Name
 ```
 
 このコマンドは、完了すると `Login Succeeded` を返します。
-
-> [!TIP]
-> Azure CLI には、`az acr login` コマンドが用意されています。このコマンドは、docker 資格情報を渡さずに[個別の ID](container-registry-authentication.md#individual-login-with-azure-ad) を使用してコンテナー レジストリにログインするための便利な方法です。
-
 
 [!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
 
@@ -108,7 +98,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 <!-- Links - internal -->
 [Connect-AzAccount]: /powershell/module/az.accounts/connect-azaccount
-[Get-AzContainerRegistryCredential]: /powershell/module/az.containerregistry/get-azcontainerregistrycredential
 [Get-Module]: /powershell/module/microsoft.powershell.core/get-module
 [New-AzContainerRegistry]: /powershell/module/az.containerregistry/New-AzContainerRegistry
 [New-AzResourceGroup]: /powershell/module/az.resources/new-azresourcegroup
@@ -116,3 +105,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
 [container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md
+[connect-azcontainerregistry]: /powershell/module/az.containerregistry/connect-azcontainerregistry

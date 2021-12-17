@@ -3,32 +3,36 @@ title: Azure API Management のセルフホステッド ゲートウェイにロ
 description: Kubernetes クラスター上の Azure API Management のセルフホステッド ゲートウェイにローカル メトリックとログを構成する方法について説明します
 services: api-management
 documentationcenter: ''
-author: miaojiang
+author: dlepow
 manager: gwallace
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/01/2021
-ms.author: apimpm
-ms.openlocfilehash: 2b66663c9ee8033bcb12bfac57964ea0eafecdac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.author: danlep
+ms.openlocfilehash: 421111e289ffba14b792af5cf810ac562164c846
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594164"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660839"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Azure API Management のセルフホステッド ゲートウェイにローカル メトリックとログを構成する
 
-この記事では、Kubernetes クラスターに展開された[セルフホステッド ゲートウェイ](./self-hosted-gateway-overview.md)に、ローカル メトリックとログを構成する方法について詳しく説明します。 クラウド メトリックとログを構成する方法については、[この記事](how-to-configure-cloud-metrics-logs.md)を参照してください。 
+この記事では、Kubernetes クラスターに展開された[セルフホステッド ゲートウェイ](./self-hosted-gateway-overview.md)に、ローカル メトリックとログを構成する方法について詳しく説明します。 クラウド メトリックとログを構成する方法については、[この記事](how-to-configure-cloud-metrics-logs.md)を参照してください。
 
 ## <a name="metrics"></a>メトリック
-セルフホステッド ゲートウェイでは、メトリックの収集と集計のための統一プロトコルとなっている、[StatsD](https://github.com/statsd/statsd) がサポートされています。 このセクションでは、StatsD を Kubernetes にデプロイし、StatsD を使用してメトリックを出力するようにゲートウェイを構成し、[Prometheus](https://prometheus.io/) を使用してメトリックを監視する手順について説明します。 
+
+セルフホステッド ゲートウェイでは、メトリックの収集と集計のための統一プロトコルとなっている、[StatsD](https://github.com/statsd/statsd) がサポートされています。 このセクションでは、StatsD を Kubernetes にデプロイし、StatsD を使用してメトリックを出力するようにゲートウェイを構成し、[Prometheus](https://prometheus.io/) を使用してメトリックを監視する手順について説明します。
 
 ### <a name="deploy-statsd-and-prometheus-to-the-cluster"></a>StatsD と Prometheus をクラスターにデプロイする
 
-次に示すのは、セルフホステッド ゲートウェイがデプロイされている Kubernetes クラスターに StatsD と Prometheus をデプロイするための YAML 構成のサンプルです。 また、それぞれに対して [サービス](https://kubernetes.io/docs/concepts/services-networking/service/)も作成します。 セルフホステッド ゲートウェイにより、StatsD サービスにメトリックが公開されます。 そのサービスを介して Prometheus ダッシュボードにアクセスします。   
+次に示すのは、セルフホステッド ゲートウェイがデプロイされている Kubernetes クラスターに StatsD と Prometheus をデプロイするための YAML 構成のサンプルです。 また、それぞれに対して [サービス](https://kubernetes.io/docs/concepts/services-networking/service/)も作成します。 セルフホステッド ゲートウェイにより、StatsD サービスにメトリックが公開されます。 そのサービスを介して Prometheus ダッシュボードにアクセスします。
+
+> [!NOTE]
+> 次の例では、パブリック コンテナー イメージを Docker Hub からプルします。 匿名の pull request を行うのではなく、Docker Hub アカウントを使用して認証するようにプル シークレットを設定することをお勧めします。 パブリック コンテンツを操作するときの信頼性を向上させるために、プライベートの Azure コンテナー レジストリにイメージをインポートして管理します。 [パブリック イメージの操作に関する詳細を参照してください](../container-registry/buffer-gate-public-content.md)。
 
 ```yaml
 apiVersion: v1
@@ -65,7 +69,7 @@ spec:
     spec:
       containers:
       - name: sputnik-metrics-statsd
-        image: mcr.microsoft.com/aks/hcp/prom/statsd-exporter
+        image: prom/statsd-exporter
         ports:
         - name: tcp
           containerPort: 9102
@@ -80,7 +84,7 @@ spec:
           - mountPath: /tmp
             name: sputnik-metrics-config-files
       - name: sputnik-metrics-prometheus
-        image: mcr.microsoft.com/oss/prometheus/prometheus
+        image: prom/prometheus
         ports:
         - name: tcp
           containerPort: 9090
@@ -128,7 +132,7 @@ spec:
 kubectl apply -f metrics.yaml
 ```
 
-デプロイが完了したら、次のコマンドを実行してポッドが実行されていることを確認します。 使用するポッド名は異なることに注意してください。 
+デプロイが完了したら、次のコマンドを実行してポッドが実行されていることを確認します。 使用するポッド名は異なることに注意してください。
 
 ```console
 kubectl get pods
@@ -171,11 +175,11 @@ StatsD と Prometheus の両方がデプロイされたので、StatsD を使用
         telemetry.metrics.local.statsd.tag-format: "dogStatsD"
 ```
 
-上記の構成でセルフホステッド ゲートウェイのデプロイの YAML ファイルを更新し、次のコマンドを使用して変更を適用します。 
+上記の構成でセルフホステッド ゲートウェイのデプロイの YAML ファイルを更新し、次のコマンドを使用して変更を適用します。
 
 ```console
 kubectl apply -f <file-name>.yaml
- ```
+```
 
 最新の構成変更を取得するには、次のコマンドを使用してゲートウェイのデプロイを再開します。
 
@@ -185,7 +189,7 @@ kubectl rollout restart deployment/<deployment-name>
 
 ### <a name="view-the-metrics"></a>メトリックを表示する
 
-すべてのデプロイと構成が完了したので、セルフホステッド ゲートウェイで StatsD を通じてメトリックが報告されるはずです。 Prometheus により StatsD からメトリックが取得されます。 Prometheus サービスの `EXTERNAL-IP` と `PORT` を使用して、Prometheus ダッシュボードにアクセスします。 
+すべてのデプロイと構成が完了したので、セルフホステッド ゲートウェイで StatsD を通じてメトリックが報告されるはずです。 Prometheus により StatsD からメトリックが取得されます。 Prometheus サービスの `EXTERNAL-IP` と `PORT` を使用して、Prometheus ダッシュボードにアクセスします。
 
 セルフホステッド ゲートウェイを使用していくつか API 呼び出しを行います。すべてが正しく構成されている場合は、以下のメトリックが表示されるはずです。
 
@@ -204,19 +208,20 @@ kubectl rollout restart deployment/<deployment-name>
 kubectl logs <pod-name>
 ```
 
-セルフホステッド ゲートウェイが Azure Kubernetes Service にデプロイされている場合は、[コンテナーに対する Azure Monitor](../azure-monitor/containers/container-insights-overview.md) を有効にして、ワークロードから `stdout` と `stderr` を収集し、Log Analytics でログを表示することができます。 
+セルフホステッド ゲートウェイが Azure Kubernetes Service にデプロイされている場合は、[コンテナーに対する Azure Monitor](../azure-monitor/containers/container-insights-overview.md) を有効にして、ワークロードから `stdout` と `stderr` を収集し、Log Analytics でログを表示することができます。
 
-セルフホステッド ゲートウェイでは、`localsyslog`、`rfc5424`、`journal` などの多数のプロトコルもサポートされています。 次の表に、サポートされているすべてのオプションの概要を示します。 
+セルフホステッド ゲートウェイでは、`localsyslog`、`rfc5424`、`journal` などの多数のプロトコルもサポートされています。 次の表に、サポートされているすべてのオプションの概要を示します。
 
 | フィールド  | Default | 説明 |
 | ------------- | ------------- | ------------- |
 | telemetry.logs.std  | `text` | 標準ストリームへのログ記録を有効にします。 値は `none`、`text`、`json` が可能です。 |
-| telemetry.logs.local  | `none` | ローカル ログ記録を有効にします。 値は `none`、`auto`、`localsyslog`、`rfc5424`、`journal` が可能です。  |
+| telemetry.logs.local  | `auto` | ローカル ログ記録を有効にします。 値は `none`、`auto`、`localsyslog`、`rfc5424`、`journal`、`json` が可能です。  |
 | telemetry.logs.local.localsyslog.endpoint  | 該当なし | localsyslog エンドポイントを指定します。  |
-| telemetry.logs.local.localsyslog.facility  | 該当なし | localsyslog [ファシリティ コード](https://en.wikipedia.org/wiki/Syslog#Facility)を指定します。 例: `7` 
+| telemetry.logs.local.localsyslog.facility  | 該当なし | localsyslog [ファシリティ コード](https://en.wikipedia.org/wiki/Syslog#Facility)を指定します。 例: `7`
 | telemetry.logs.local.rfc5424.endpoint  | 該当なし | rfc5424 エンドポイントを指定します。  |
 | telemetry.logs.local.rfc5424.facility  | 該当なし | [rfc5424](https://tools.ietf.org/html/rfc5424) あたりのファシリティ コードを指定します。 例: `7`  |
 | telemetry.logs.local.journal.endpoint  | 該当なし | ジャーナル エンドポイントを指定します。  |
+| telemetry.logs.local.json.endpoint | 127.0.0.1:8888 | JSON データを受け付ける UDP エンドポイントを指定します (<ファイル パス>、<IP>:<ポート>、<ホスト名>:<ポート> のいずれか)。
 
 ローカル ログのサンプル構成を次に示します。
 
@@ -231,7 +236,7 @@ kubectl logs <pod-name>
         telemetry.logs.local.localsyslog.endpoint: "/dev/log"
         telemetry.logs.local.localsyslog.facility: "7"
 ```
- 
+
 ## <a name="next-steps"></a>次のステップ
 
 * セルフホステッド ゲートウェイの詳細については、[Azure API Management のセルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md)に関する記事を参照してください

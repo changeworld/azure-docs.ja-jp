@@ -4,12 +4,12 @@ description: App Service または Azure Functions アプリ用の ID プロバ�
 ms.topic: article
 ms.date: 11/19/2020
 ms.reviewer: mikarmar
-ms.openlocfilehash: b77e0613f502d003b5e4651e34be4cadbd4209a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0da83a20440fabcf5f149c8acbf49077eb91a07
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96603004"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657160"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-sign-in-using-a-sign-in-with-apple-provider-preview"></a>Sign in with Apple プロバイダーを使用してサインインするように、App Service または Azure Functions アプリを構成する (プレビュー)
 
@@ -72,7 +72,7 @@ Apple では、クライアント シークレットが JWT トークンの base
 - **aud**: Apple でトークンが受信されるため、それらが対象ユーザーとなります
 - **exp**:**nbf** から 6 か月以内
 
-上記のペイロードの base64 エンコード バージョンはこのようになります。```eyJhbGciOiJFUzI1NiIsImtpZCI6IlVSS0VZSUQwMDEifQ.eyJzdWIiOiJjb20ueW91cmNvbXBhbnkuYXBwMSIsIm5iZiI6MTU2MDIwMzIwNywiZXhwIjoxNTYwMjg5NjA3LCJpc3MiOiJBQkMxMjNERUZHIiwiYXVkIjoiaHR0cHM6Ly9hcHBsZWlkLmFwcGxlLmNvbSJ9.ABSXELWuTbgqfrIUz7bLi6nXvkXAz5O8vt0jB2dSHTQTib1x1DSP4__4UrlKI-pdzNg1sgeocolPNTmDKazO8-BHAZCsdeeTNlgFEzBytIpMKFfVEQbEtGRkam5IeclUK7S9oOva4EK4jV4VmgDrr-LGWWO3TaAxAvy3_ZoKohvFFkVG```
+上記のペイロードの base64 エンコード バージョンはこのようになります。`eyJhbGciOiJFUzI1NiIsImtpZCI6IlVSS0VZSUQwMDEifQ.eyJzdWIiOiJjb20ueW91cmNvbXBhbnkuYXBwMSIsIm5iZiI6MTU2MDIwMzIwNywiZXhwIjoxNTYwMjg5NjA3LCJpc3MiOiJBQkMxMjNERUZHIiwiYXVkIjoiaHR0cHM6Ly9hcHBsZWlkLmFwcGxlLmNvbSJ9.ABSXELWuTbgqfrIUz7bLi6nXvkXAz5O8vt0jB2dSHTQTib1x1DSP4__4UrlKI-pdzNg1sgeocolPNTmDKazO8-BHAZCsdeeTNlgFEzBytIpMKFfVEQbEtGRkam5IeclUK7S9oOva4EK4jV4VmgDrr-LGWWO3TaAxAvy3_ZoKohvFFkVG`
 
 _注: Apple では、有効期限が作成 (または nbf) 日から 6 か月を超えるクライアント シークレット JWT は受け入れられません。つまり、クライアント シークレットは、少なくとも 6 か月ごとにローテーションする必要があります。_
 
@@ -81,7 +81,7 @@ _注: Apple では、有効期限が作成 (または nbf) 日から 6 か月を
 ### <a name="sign-the-client-secret-jwt"></a>クライアント シークレット JWT に署名する
 前にダウンロードした `.p8` ファイルを使用して、クライアント シークレット JWT に署名します。 このファイルは [PCKS#8 ファイル](https://en.wikipedia.org/wiki/PKCS_8)であり、PEM 形式の秘密署名キーが含まれています。 JWT の作成と署名に使用できるライブラリは多数あります。 
 
-JWT トークンの作成と署名のためにオンラインで利用可能なさまざまな種類のオープンソース ライブラリがあります。 JWT トークンの生成の詳細については、jwt.io を参照してください。 たとえば、クライアント シークレットを生成する方法の 1 つとして、[NuGet の Microsoft.IdentityModel.Tokens パッケージ](https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/)をインポートし、以下に示す少量の C# コードを実行する方法があります。
+JWT トークンの作成と署名のためにオンラインで利用可能なさまざまな種類のオープンソース ライブラリがあります。 JWT トークン生成の詳細は、[JSON Web Token (JWT)](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) に関する記事をご覧ください。 たとえば、クライアント シークレットを生成する方法の 1 つとして、[NuGet の Microsoft.IdentityModel.Tokens パッケージ](https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/)をインポートし、以下に示す少量の C# コードを実行する方法があります。
 
 ```csharp
 using Microsoft.IdentityModel.Tokens;
@@ -137,7 +137,7 @@ public static string GetAppleClientSecret(string teamId, string clientId, string
 ## <a name="add-provider-information-to-your-application"></a><a name="configure"> </a>アプリケーションにプロバイダー情報を追加する
 
 > [!NOTE]
-> 必要な構成は新しい API 形式ですが、現時点では [ファイルベースの構成 (プレビュー)](.\app-service-authentication-how-to.md#config-file) でのみサポートされています。 このようなファイルを使用して、以下の手順を行う必要があります。
+> 必要な構成は新しい API 形式ですが、現時点では [ファイルベースの構成 (プレビュー)](configure-authentication-file-based.md) でのみサポートされています。 このようなファイルを使用して、以下の手順を行う必要があります。
 
 このセクションでは、新しい IDP を含めるように構成を更新する手順について説明します。 構成の例を次に示します。
 
@@ -147,7 +147,7 @@ public static string GetAppleClientSecret(string teamId, string clientId, string
     ```json
     "apple" : {
        "registration" : {
-            "clientId": "<client id>",
+            "clientId": "<client ID>",
             "clientSecretSettingName": "APP_SETTING_CONTAINING_APPLE_CLIENT_SECRET" 
         },
        "login": {

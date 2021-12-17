@@ -1,24 +1,27 @@
 ---
-title: Azure Data Factory を使用して Office 365 からデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Office 365 のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-author: linda33wj
+title: Office 365 からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Synapse Analytics パイプラインで Copy アクティビティを使用して、Office 365 からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 10/20/2019
-ms.author: jingwang
-ms.openlocfilehash: a7df69e7c5701074b40d6fa8340d8a0e247f00de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/09/2021
+ms.author: jianleishen
+ms.openlocfilehash: 45f4f771d2cb289b9893bb8243add86df36ac915
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393005"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815024"
 ---
-# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 から Azure にデータをコピーする
+# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Office 365 から Azure にデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory は [Microsoft Graph データ接続](/graph/data-connect-concept-overview)と統合されており、Office 365 テナント内にある高機能な組織データを Azure へとスケーラブルに取り込み、分析アプリケーションを構築して、それらの貴重なデータ資産に基づくインサイトを抽出することができます。 Privileged Access Management との統合により、Office 365 内の貴重な選別済みデータをセキュリティで保護することができます。  Microsoft Graph データ接続の概要については[こちらのリンク](/graph/data-connect-concept-overview)を、ライセンス情報については[こちらのリンク](/graph/data-connect-policies#licensing)を参照してください。
+Azure Data Factory および Synapse Analytics パイプラインは [Microsoft Graph データ接続](/graph/data-connect-concept-overview)と統合されており、Office 365 テナント内にある高機能な組織データを Azure へとスケーラブルに取り込み、分析アプリケーションを構築して、それらの貴重なデータ資産に基づくインサイトを抽出することができます。 Privileged Access Management との統合により、Office 365 内の貴重な選別済みデータをセキュリティで保護することができます。  Microsoft Graph データ接続の概要については[こちらのリンク](/graph/data-connect-concept-overview)を、ライセンス情報については[こちらのリンク](/graph/data-connect-policies#licensing)を参照してください。
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Office 365 からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Copy アクティビティを使用して、Office 365 からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 ADF Office 365 コネクタと Microsoft Graph データ接続を使用すると、アドレス帳の連絡先、予定表イベント、メール メッセージ、ユーザー情報、メールボックスの設定など、Exchange Email 対応のメールボックスからさまざまな種類のデータセットを大量に取り込むことができます。  使用できるデータセットの詳細な一覧については、[こちら](/graph/data-connect-datasets)を参照してください。
@@ -26,7 +29,7 @@ ADF Office 365 コネクタと Microsoft Graph データ接続を使用すると
 現在、1 回のコピー操作の中で実行できるのは、**Office 365 から [Azure Blob Storage](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2 への、](connector-azure-data-lake-storage.md)JSON 形式** (setOfObjects 型) でのデータ コピーのみとなっています。 Office 365 を他の種類のデータ ストアに読み込んだり、他の形式で読み込む必要がある場合は、最初のコピー アクティビティを後続のコピー アクティビティに連結して、[サポートされている ADF 変換先ストアに関する記事に記載されている、任意のストアにデータを読み込むことができます ](copy-activity-overview.md#supported-data-stores-and-formats) (「サポートされるデータ ストアと形式」表の "シンクとしてサポート" 列をご覧ください)。
 
 >[!IMPORTANT]
->- データ ファクトリとシンク データ ストアを含んだ Azure サブスクリプションは、Office 365 テナントと同じ Azure Active Directory (Azure AD) テナントの下に配置する必要があります。
+>- データ ファクトリまたは Synapse ワークスペースとシンク データ ストアを含んだ Azure サブスクリプションは、Office 365 テナントと同じ Azure Active Directory (Azure AD) テナントの下に配置する必要があります。
 >- コピー アクティビティに使用されるリージョンとコピー先が、Office 365 テナント ユーザーのメールボックスの場所と同じリージョン内であることを確認してください。 Azure IR の場所がどのように決定されるかについては、[こちら](concepts-integration-runtime.md#integration-runtime-location)をご覧ください。 サポートされている Office リージョンと、対応する Azure リージョンの一覧については、[こちらの表](/graph/data-connect-datasets#regions)をご覧ください。
 >- サービス プリンシパルの認証は、Azure Blob Storage、Azure Data Lake Storage Gen1、および Azure Data Lake Storage Gen2 で宛先ストアとしてサポートされている唯一の認証メカニズムです。
 
@@ -34,7 +37,7 @@ ADF Office 365 コネクタと Microsoft Graph データ接続を使用すると
 
 Office 365 から Azure にデータをコピーするには、前提条件として次の手順を完了する必要があります。
 
-- Office 365 テナントの管理者は、[こちら](/graph/data-connect-get-started)の説明に従って、オンボーディング アクションを完了する必要があります。
+- Office 365 テナントの管理者は、[こちら](/events/build-may-2021/microsoft-365-teams/breakouts/od483/)の説明に従って、オンボーディング アクションを完了する必要があります。
 - Azure Active Directory で Azure AD Web アプリケーションを作成し、構成します。  手順については、[Microsoft Azure での Ruby アプリケーションの作成](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)に関するページを参照してください。
 - 次の値を記録しておきます。Office 365 用のリンク済みサービスを定義するときに使います。
     - テナント ID。 手順については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」をご覧ください。
@@ -46,7 +49,7 @@ Office 365 から Azure にデータをコピーするには、前提条件と�
 
 このコンテキスト (アクセスされようとしているデータ テーブル、データが読み込まれようとしている宛先アカウント、データ アクセス要求を行っているユーザー ID の組み合わせ) のデータを要求するのはこれが初めてである場合は、コピー アクティビティの状態が "In Progress (進行中)" として表示されます。[[アクション] の下にある [詳細]](copy-activity-overview.md#monitoring) リンクをクリックしたときにのみ、状態は "RequestingConsent" と表示されます。  データの抽出を進めるには、データ アクセス承認者グループのメンバーが、Privileged Access Management で要求を承認する必要があります。
 
-承認者がデータ アクセス要求を承認する方法については[こちら](/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal)を、Privileged Access Management との統合に関する概要 (データ アクセス承認者グループの設定を含む) については[こちら](/graph/data-connect-pam)をご覧ください。
+承認者がデータ アクセス要求を承認する方法については[こちら](/graph/data-connect-faq#how-can-i-approve-pam-requests-via-microsoft-365-admin-portal)を、Privileged Access Management との統合に関する概要 (データ アクセス承認者グループの設定を含む) については[こちら](/graph/data-connect-pam)をご覧ください。
 
 ## <a name="policy-validation"></a>ポリシー検証
 
@@ -66,6 +69,30 @@ ADF がマネージド アプリの一部として作成され、管理リソー
 - [REST API](quickstart-create-data-factory-rest-api.md)
 - [Azure Resource Manager テンプレート](quickstart-create-data-factory-resource-manager-template.md) 
 
+## <a name="create-a-linked-service-to-office-365-using-ui"></a>UI を使用して Office 365 のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Office 365 のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. Office を検索し、Office 365 コネクタを選択します。
+
+    :::image type="content" source="media/connector-office-365/office-365-connector.png" alt-text="Office 365 コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-office-365/configure-office-365-linked-service.png" alt-text="Office 365 のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
 次のセクションでは、Office 365 コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
@@ -78,7 +105,7 @@ Office 365 のリンクされたサービスでは、次のプロパティがサ
 | office365TenantId | Office 365 アカウントが属している Azure テナント ID です。 | はい |
 | servicePrincipalTenantId | Azure AD Web アプリケーションが存在するテナントの情報を指定します。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
-| servicePrincipalKey | アプリケーションのキーを取得します。 Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 安全に格納するには、このフィールドを SecureString とマークします。 | はい |
 | connectVia | データ ストアに接続するために使用される統合ランタイム。  指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ |
 
 >[!NOTE]
@@ -299,4 +326,4 @@ Office 365 からデータをコピーする場合、コピー アクティビ�
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

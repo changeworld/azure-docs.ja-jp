@@ -3,16 +3,17 @@ title: コピー アクティビティを使用したデータの移動
 description: Data Factory パイプラインでのデータの移動 (クラウド ストア間、およびオンプレミスのストアとクラウド ストアの間でのデータ移行) について説明します。 コピー アクティビティの使用。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8a3fe99896ff244d2e35737919e6797141095acb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d138cab93d9cd9b1c4c44e92e6fcfb583103fb70
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100364020"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629410"
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -25,7 +26,7 @@ ms.locfileid: "100364020"
 ## <a name="overview"></a>概要
 Azure Data Factory では、コピー アクティビティを使用して、オンプレミスとクラウド データ ストア間でデータをコピーできます。 コピーされたデータをさらに変換して分析することができます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
 
-![コピー アクティビティの役割](media/data-factory-data-movement-activities/copy-activity.png)
+:::image type="content" source="media/data-factory-data-movement-activities/copy-activity.png" alt-text="コピー アクティビティの役割":::
 
 コピー アクティビティは、安全性、信頼性、拡張性に優れた [グローバルに利用可能なサービス](#global)によって動作します。 この記事では、Data Factory でのコピー アクティビティによるデータの移動について詳しく説明します。
 
@@ -45,14 +46,14 @@ Azure Data Factory では、コピー アクティビティを使用して、オ
 
 このサービスでは、データ移動の実行に適したリージョンが自動的に選択されます。 選択されるのは、通常、シンク データ ストアに最も近いリージョンです。
 
-![クラウド間のコピー](./media/data-factory-data-movement-activities/cloud-to-cloud.png)
+:::image type="content" source="./media/data-factory-data-movement-activities/cloud-to-cloud.png" alt-text="クラウド間のコピー":::
 
 ### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>オンプレミス データ ストアとクラウド データ ストア間でのデータのコピー
 オンプレミス データ ストアと、クラウド データ ストアの間でデータを安全に移動するには、Data Management Gateway を、オンプレミスのコンピューターにインストールする必要があります。 Data Management Gateway は、ハイブリッド データの移動と処理を可能にするエージェントです。 この Data Management Gateway は、データ ストア自体と同じコンピューター、またはデータ ストアにアクセスできる別のコンピューターにインストールできます。
 
 このシナリオでは、Data Management Gateway によって、シリアル化/逆シリアル化、圧縮/圧縮解除、列マッピング、型変換が実行されます。 データは Azure Data Factory サービスを経由せず、 Data Management Gateway によって、直接目的のストアに書き込まれます。
 
-![オンプレミスとクラウドの間のコピー](./media/data-factory-data-movement-activities/onprem-to-cloud.png)
+:::image type="content" source="./media/data-factory-data-movement-activities/onprem-to-cloud.png" alt-text="オンプレミスとクラウドの間のコピー":::
 
 概要とチュートリアルについては、 [オンプレミスのデータ ストアとクラウド データ ストアの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md) に関する記事をご覧ください。 このエージェントの詳細については、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」をご覧ください。
 
@@ -64,7 +65,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 > [!NOTE] 
 > コピー アクティビティでサポートされていないデータ ストアとの間でデータを移動する必要がある場合は、データのコピーと移動に独自のロジックを使用した、Data Factory の **カスタム アクティビティ** を使用します。 カスタム アクティビティの作成と使用の詳細については、「 [Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md)」をご覧ください。
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
 > \* が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。

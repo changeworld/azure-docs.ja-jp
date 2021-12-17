@@ -6,12 +6,12 @@ ms.author: rywinter
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 01/11/2021
-ms.openlocfilehash: dd4e53eebe6593db457798f009d3d05ddcbd77b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 128bea34a2e391a44b4dba68d844c68f7331cb06
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100654766"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994539"
 ---
 # <a name="what-is-azure-iot-device-and-application-development"></a>Azure IoT デバイスとアプリケーションの開発とは
 
@@ -33,10 +33,10 @@ Azure IoT は、IoT デバイスを接続、監視、制御するマネージド
 ### <a name="device-application-development"></a>デバイス アプリケーション開発
 デバイス アプリケーション開発者は、既存のデバイスを、クラウドに接続し、自身の IoT ソリューションに統合できるように適合させます。 これらのデバイスは、C# や Python などの高位言語をサポートできるほか、多くの場合、Windows や Linux などの堅牢な汎用オペレーティング システムをサポート可能です。 一般的なターゲット デバイスとしては、PC、コンテナー、Raspberry Pi、モバイル デバイスなどがあります。 
 
-これらの開発者は、制約のあるデバイスを大規模に開発するのではなく、自身のクラウド ソリューションに必要な特定の IoT シナリオを実現することに重点を置いています。 これらの開発者の中には、自身のクラウド ソリューションに対応した、制約のあるデバイスの開発に携わっている人もいます。 制約のあるデバイスの開発に携わる開発者の方は、下の[組み込みデバイス開発](#embedded-device-development)のパスを参照してください。
+これらの開発者は、制約のあるデバイスを大規模に開発するのではなく、自身のクラウド ソリューションに必要な特定の IoT シナリオを実現することに重点を置いています。 これらの開発者の中には、自身のクラウド ソリューションに対応した、制約のあるデバイスの開発に携わっている人もいます。 リソースに制約のあるデバイスの開発に携わる開発者の方は、下の[組み込みデバイス開発](#embedded-device-development)のパスを参照してください。
 
-> [!TIP]
-> 作業を開始するには、「[制約のないデバイスの SDK](about-iot-sdks.md#unconstrained-device-sdks)」を参照してください。
+> [!IMPORTANT]
+> 作業を開始するには、[device SDK](about-iot-sdks.md#device-sdks) に関する記事を参照してください。
 
 ### <a name="embedded-device-development"></a>組み込みデバイス開発
 組み込み開発は、メモリと処理が制限されている、制約のあるデバイスを対象としています。 制約のあるデバイスでは、従来の開発プラットフォームと比べて達成できる内容が制限されます。
@@ -47,8 +47,8 @@ Azure IoT は、IoT デバイスを接続、監視、制御するマネージド
 
 デバイスで汎用オペレーティング システムを実行できる場合は、[デバイス アプリケーション開発](#device-application-development)のパスに従うことをお勧めします。 こちらにはより豊富な開発オプションが用意されています。
 
-> [!TIP]
-> 作業を開始するには、「[制約のあるデバイスの SDK](about-iot-sdks.md#constrained-device-sdks)」を参照してください。
+> [!IMPORTANT]
+> 作業を開始するには、[組み込みデバイスの SDK](about-iot-sdks.md#embedded-device-sdks) に関する記事を参照してください。
 
 ## <a name="choosing-your-hardware"></a>ハードウェアの選択
 Azure IoT デバイスは、IoT ソリューションの基本的な構成要素であり、環境の監視および環境との対話を担います。 IoT デバイスにはさまざまな種類があり、既存のデバイスの種類と、それらが開発プロセスに与える影響について理解しておくことが有益です。
@@ -73,6 +73,5 @@ Azure IoT デバイスまたはサービス SDK の選択方法の詳細につ�
 アプリケーション プラットフォームとツールの選択方法の詳細については、「[概要: Azure IoT デバイス開発者向けの接続オプション](concepts-overview-connection-options.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-次のクイックスタート シリーズのうち、自分の開発上の役割に最も関係の深いものを選択します。 これらの記事には、デバイスをホストする Azure IoT アプリケーションの作成、SDK の使用、デバイスの接続、テレメトリの送信について、基本事項が示されています。  
-- デバイス アプリケーション開発の場合: [デバイスから Azure IoT Central へのテレメトリの送信に関するクイックスタート](quickstart-send-telemetry-python.md)
-- 組み込みデバイス開発の場合: 「[Azure IoT 組み込みデバイス開発の概要](quickstart-device-development.md)」
+組み込み開発またはアプリケーション開発のクイックスタート シリーズの中から、自分の開発上の役割に最も関係の深いものを選択します。 これらの記事には、デバイスをホストする Azure IoT アプリケーションの作成、SDK の使用、デバイスの接続、テレメトリの送信について、基本事項が示されています。  
+- [Azure IoT デバイスの開発](index.yml)

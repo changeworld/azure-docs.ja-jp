@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 03/24/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 32cd2760eadc94466cdf55883611c78ac0cf24e6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2e880a3f38a1341123bec8309f5a80dcefcdb4e7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608121"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603127"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -99,9 +99,9 @@ namespace MyNamespace
         private readonly HttpClient _client;
         private readonly IMyService _service;
 
-        public MyHttpTrigger(HttpClient httpClient, IMyService service)
+        public MyHttpTrigger(IHttpClientFactory httpClientFactory, IMyService service)
         {
-            this._client = httpClient;
+            this._client = httpClientFactory.CreateClient();
             this._service = service;
         }
 
@@ -141,7 +141,7 @@ Azure Functions によって Application Insights が自動的に追加されま
 > - 環境によって提供されるサービスと競合するサービスが登録されるため、サービス コレクションに `AddApplicationInsightsTelemetry()` を追加しないでください。
 > - 組み込みの Application Insights 機能を使用している場合、独自の `TelemetryConfiguration` または `TelemetryClient` を登録しないでください。 独自の `TelemetryClient` インスタンスを構成する必要がある場合は、[C# 関数でカスタム テレメトリをログに記録する](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions)方法に関するセクションに示されているように、挿入された `TelemetryConfiguration` を使用して作成します。
 
-### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> および ILoggerFactory
+### <a name="iloggert-and-iloggerfactory"></a>ILogger\<T\> および ILoggerFactory
 
 ホストでは、`ILogger<T>` サービスと `ILoggerFactory` サービスがコンストラクターに挿入されます。  ただし、既定では、これらの新しいログ フィルターは関数のログから除外されます。  追加のフィルターおよびカテゴリを選択するには、`host.json` ファイルを変更する必要があります。
 

@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 5fda7ebb5a72dd9bbfab0ba72511540cf141563f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 11/18/2021
+ms.openlocfilehash: f2e72a0861e40f538ef6e6861c185411bd28e9e0
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608852"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132713309"
 ---
 # <a name="supported-postgresql-major-versions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでサポートされる Postgres のメジャー バージョン
 
@@ -20,13 +20,17 @@ ms.locfileid: "105608852"
 
 Azure Database for PostgreSQL - フレキシブル サーバーでは、現在、以下のメジャー バージョンがサポートされています。
 
+## <a name="postgresql-version-13"></a>PostgreSQL バージョン 13
+
+現在のマイナー リリースは **13.4** です。 このリリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/13/static/release-13-4.html)を参照してください。 新しいサーバーは、このマイナー バージョンで作成されます。 
+
 ## <a name="postgresql-version-12"></a>PostgreSQL バージョン 12
 
-現在のマイナー リリースは 12.5 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/12/static/release-12-4.html)を参照してください。
+現在のマイナー リリースは **12.8** です。 このリリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/12/static/release-12-8.html)を参照してください。 新しいサーバーは、このマイナー バージョンで作成されます。 既存のサーバーは、今後予定されているメンテナンス期間中に、サポートされている最新のマイナー バージョンに自動的にアップグレードされます。
 
 ## <a name="postgresql-version-11"></a>PostgreSQL バージョン 11
 
-現在のマイナー リリースは 11.10 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/11/static/release-11-9.html)を参照してください。
+現在のマイナー リリースは **11.13** です。 このリリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/11/static/release-11-13.html)を参照してください。 新しいサーバーは、このマイナー バージョンで作成されます。 既存のサーバーは、今後予定されているメンテナンス期間中に、サポートされている最新のマイナー バージョンに自動的にアップグレードされます。
 
 ## <a name="postgresql-version-10-and-older"></a>PostgreSQL バージョン 10 以前
 

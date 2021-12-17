@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Files のドキュメント
-summary: Azure Files はクラウドで、サーバー メッセージ ブロック (SMB) プロトコルを介してアクセスできるフル マネージドのクロスプラットフォーム ファイル共有を提供します。
+summary: シンプルかつ安全な、エンタープライズレベルのサーバーレス クラウド ファイル共有。
 metadata:
   title: Azure Files のドキュメント
   description: Windows、Linux、および macOS でクラウドまたはオンプレミスのファイル共有をマウントします。 Azure File Sync を使用して Azure ファイル共有を Windows Server でキャッシュし、ローカル アクセスを実現します。
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: roygara
   ms.author: rogarana
-  ms.date: 08/27/2019
-  ms.openlocfilehash: 1ede53a8e288b14696ca2c30088486478a13a3af
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.date: 08/31/2021
+  ms.openlocfilehash: b5fb9f3419c4aa54fc7c614da84c62d31d760641
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101724202"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123427590"
 landingContent:
 - title: Azure Files について
   linkLists:
@@ -25,24 +25,16 @@ landingContent:
     links:
     - text: Azure Files 計画ガイド
       url: storage-files-planning.md
-    - text: Azure File Sync 計画ガイド
-      url: storage-sync-files-planning.md
     - text: Azure Files とは
       url: storage-files-introduction.md
-- title: 作業開始
+    - text: ID ベースの認証
+      url: storage-files-active-directory-overview.md
+- title: はじめに
   linkLists:
   - linkListType: get-started
     links:
     - text: ファイル共有の作成と使用 - Windows
       url: storage-files-quick-create-use-windows.md
-    - text: Premium ファイル共有の作成
-      url: ./storage-how-to-create-file-share.md
-    - text: Azure File Sync でのサーバーの管理
-      url: storage-sync-files-server-registration.md
-  - linkListType: tutorial
-    links:
-    - text: Azure File Sync を使用して Windows ファイル サーバーを拡張する
-      url: storage-sync-files-extend-servers.md
 - title: トラブルシューティング
   linkLists:
   - linkListType: reference
@@ -53,5 +45,3 @@ landingContent:
       url: storage-troubleshoot-linux-file-connection-problems.md
     - text: Azure Files に関するパフォーマンスのトラブルシューティング
       url: storage-troubleshooting-files-performance.md
-    - text: Azure File Sync に関するトラブルシューティング
-      url: storage-sync-files-troubleshoot.md

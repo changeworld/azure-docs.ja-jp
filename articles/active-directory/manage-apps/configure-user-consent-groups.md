@@ -1,27 +1,36 @@
 ---
-title: Azure AD を使用し、グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
+title: グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
+titleSuffix: Azure AD
 description: グループまたはチームのデータにアクセスするアプリケーションにグループ所有者とチーム所有者が同意できるかどうかを管理する方法について説明します。
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.author: iangithinji
+ms.date: 08/31/2021
+ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: be28148aacf270f2f3cfabad4cbd5f03afa05d3b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 5195b32c05b5f7f8e10e22200c2a345248e43490
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374422"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550762"
 ---
-# <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
+# <a name="configure-group-owner-consent-to-applications"></a>アプリケーションに対するグループ所有者の同意を構成する
 
 グループ所有者とチーム所有者は、アプリケーション (たとえば、サードパーティ ベンダーによって発行されたアプリケーション) が、グループに関連付けられている組織のデータにアクセスすることを承認できます。 たとえば、Microsoft Teams のチーム所有者は、アプリがチーム内のすべての Teams メッセージを読み取ること、またはグループのメンバーの基本プロファイルを一覧表示することを許可できます。 詳細については、「[Microsoft Teams でのリソース固有の同意](/microsoftteams/resource-specific-consent)」を参照してください。
+
+## <a name="prerequisites"></a>前提条件
+
+このガイドのタスクを完了するには、次のものが必要です。
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- グローバル管理者ロール。
+- Azure AD PowerShell を設定します。 [Azure AD PowerShell](/powershell/azure/) に関するページを参照してください。
 
 ## <a name="manage-group-owner-consent-to-apps"></a>アプリに対するグループ所有者の同意を管理する
 
@@ -113,6 +122,9 @@ Azure AD PowerShell プレビュー モジュールである [AzureADPreview](/p
 
 ---
 
+> [!NOTE]
+> “ユーザーに代わってアプリが会社のデータにアクセスすることに、ユーザーが同意できる” の設定を無効にしても、“ユーザーが所有するグループに代わってアプリが会社のデータにアクセスすることに、ユーザーが同意できる” の設定は無効になりません
+
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、以下を参照してください。
@@ -124,4 +136,5 @@ Azure AD PowerShell プレビュー モジュールである [AzureADPreview](/p
 * [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
+
 * [Microsoft Q&A の Azure AD](/answers/topics/azure-active-directory.html)

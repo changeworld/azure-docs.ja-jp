@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: acbe535d740eb527d165be1675f31e759851a987
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b26cd01c125b18727ec3176b6c1ea932083be86
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101717827"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318543"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights のログベースのメトリックと事前に集計されたメトリック
 
@@ -47,7 +47,7 @@ ms.locfileid: "101717827"
 |------------------------------|-----------------------------------|----------------------------------------------|---------------------------------------|
 | .NET Core と .NET Framework | サポート対象 (V2.13.1 以降)| [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| [GetMetric](get-metric.md) を介してサポート対象 (V 2.7.2 以降) |
 | Java                         | サポートされていません       | [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| サポートされていません                           |
-| Node.js                      | サポートされていません       | [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| サポートされていません                           |
+| Node.js                      | サポート対象 (V2.0.0 以降) | [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| サポートされていません                           |
 | Python                       | サポートされていません       | サポートされています                                 | [OpenCensus.stats](opencensus-python.md#metrics) を介して部分的にサポート対象 |  
 
 > [!NOTE]
@@ -77,6 +77,13 @@ ms.locfileid: "101717827"
 
 ![使用量と推定コスト](./media/pre-aggregated-metrics-log-metrics/001-cost.png)
 
+## <a name="quotas"></a>Quotas (クォータ)
+
+事前に集計されたメトリックは、Azure Monitor に時系列として格納され、[カスタム メトリックの Azure Monitor クォータ](../essentials/metrics-custom-overview.md#quotas-and-limits)が適用されます。
+
+> [!NOTE]
+> クォータを超えると、意図しない結果になることがあります。 サブスクリプションまたはリージョンで Azure Monitor の信頼性が低下する可能性があります。 クォータを超えないようにする方法については、「[設計の制限と考慮事項](../essentials/metrics-custom-overview.md#design-limitations-and-considerations)」を参照してください。
+  
 ## <a name="why-is-collection-of-custom-metrics-dimensions-turned-off-by-default"></a>既定でカスタム メトリック ディメンションの収集が無効になる理由
 
 カスタム メトリック ディメンションの収集は既定で無効になります。今後、ディメンションがあるカスタム メトリックを格納する場合に、Application Insights とは別に課金されますが、ディメンションのないカスタム メトリックを格納する場合は (クォータに達するまで) 無料のままであるためです。 今後の価格モデル変更の詳細については、Microsoft の公式の[価格ページ](https://azure.microsoft.com/pricing/details/monitor/)で確認できます。

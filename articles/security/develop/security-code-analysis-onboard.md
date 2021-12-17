@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c827dc81c1ef1ab03dd6c9178a609b512e59ef15
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e5d9f30f2c5fad33f597ea3b977996ee75d4d1a1
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801216"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115936"
 ---
 # <a name="onboarding-and-installing"></a>オンボードとインストール
 
@@ -99,4 +99,4 @@ Microsoft Security Code Analysis チームでは、パートナー向け Premier
 
 ビルド タスクの構成の詳細については、[構成ガイド](security-code-analysis-customize.md)または [YAML の構成ガイド](yaml-configuration.md)を参照してください。
 
-この拡張機能と提供されるツールにさらに質問がある場合は、[FAQ ページ](security-code-analysis-faq.md)を参照してください。
+この拡張機能と提供されるツールにさらに質問がある場合は、[FAQ ページ](security-code-analysis-faq.yml)を参照してください。

@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 03/15/2021
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ba28d003f359af12de6242c6d2444fb8adab0d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87d3518b59bd5297bed4af25b11d7a47b7021a58
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562757"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692463"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure Portal で Windows 仮想マシンを作成する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 Azure 仮想マシン (VM) は、Azure Portal で作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスを使用して、VM とその関連リソースを作成できます。 このクイック スタートでは、Azure Portal を使用して、Windows Server 2019 を実行する仮想マシン (VM) を Azure にデプロイする方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
 
@@ -30,7 +32,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. 検索に「**virtual machines**」と入力します。
 1. **[サービス]** で、 **[仮想マシン]** を選択します。
-1. **[仮想マシン]** ページで、 **[追加]** を選択してから **[仮想マシン]** を選択します。 
+1. **[仮想マシン]** ページで、 **[作成]** を選択してから **[仮想マシン]** を選択します。 
 1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、リソース グループの **[新規作成]** を選択します。 名前として「*myResourceGroup*」と入力します。 
 
     ![仮想マシンの Azure サブスクリプションとリソース グループを選択する場所が示されている [プロジェクトの詳細] セクションのスクリーンショット](./media/quick-create-portal/project-details.png)
@@ -39,7 +41,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     ![仮想マシンの名前を指定し、そのリージョン、イメージ、サイズを選択する [インスタンスの詳細] セクションのスクリーンショット](./media/quick-create-portal/instance-details.png)
 
-1. **[Administrator account] (管理者アカウント)** で、ユーザー名 (*azureuser* など) とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
+1. **[Administrator account] (管理者アカウント)** で、ユーザー名 (*azureuser* など) とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.yml#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。
 
     ![管理者のユーザー名とパスワードを入力する [管理者アカウント] セクションのスクリーンショット](./media/quick-create-portal/administrator-account.png)
 
@@ -56,6 +58,8 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 1. デプロイが完了したら、 **[リソースに移動]** を選択します。
 
     ![リソースに移動する、次のステップを示すスクリーンショット](./media/quick-create-portal/next-steps.png)
+
+[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 

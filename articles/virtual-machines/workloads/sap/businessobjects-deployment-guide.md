@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 3b3c313df5704e49481c66ad682faccd48d180ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 946fe1e1700cfa90af6f329dc6786c5801e526a6
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505904"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073945"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Azure の SAP BusinessObjects BI プラットフォームの計画および実装ガイド
 
@@ -80,13 +80,13 @@ SAP BI プラットフォームは、1 つまたは複数のホストで実行�
   Azure では、ファイル リポジトリ サーバーに [Azure Premium Files](../../../storage/files/storage-files-introduction.md) または [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) を使用できます。 どちらの Azure サービスにも、冗長性が組み込まれています。
 
   > [!Important]
-  > Azure Files の SMB プロトコルは一般公開されていますが、Azure Files の NFS プロトコル サポートは現在プレビューの段階です。 詳細については、「[Azure Files での NFS 4.1 サポートのプレビューが開始されました](https://azure.microsoft.com/en-us/blog/nfs-41-support-for-azure-files-is-now-in-preview/)」を参照してください
+  > Azure Files の SMB プロトコルは一般公開されていますが、Azure Files の NFS プロトコル サポートは現在プレビューの段階です。 詳細については、「[Azure Files での NFS 4.1 サポートのプレビューが開始されました](https://azure.microsoft.com/blog/nfs-41-support-for-azure-files-is-now-in-preview/)」を参照してください
 
 - CMS および監査データベース
   
   SAP BOBI プラットフォームには、システムデータを格納するデータベースが必要です。これは、CMS データベースと呼ばれます。 これは、ユーザー、サーバー、フォルダー、ドキュメント、構成、認証の詳細などの BI プラットフォーム情報を格納するために使用されます。
 
-  Azure では、CMS データベースと監査データベースに使用できる DBaaS (サービスとしてのデータベース) オファリングとして、[MySQL Database](https://azure.microsoft.com/en-us/services/mysql/) と [Azure SQL Database](https://azure.microsoft.com/en-us/services/sql-database/) を提供しています。 これは PaaS オファリングなので、お客様はデータベースの操作、可用性、およびメンテナンスについて心配する必要はありません。 また、お客様のビジネス ニーズに基づいて、CMS および監査リポジトリ用に独自のデータベースを選択することもできます。
+  Azure では、CMS データベースと監査データベースに使用できる DBaaS (サービスとしてのデータベース) オファリングとして、[MySQL Database](https://azure.microsoft.com/services/mysql/) と [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) を提供しています。 これは PaaS オファリングなので、お客様はデータベースの操作、可用性、およびメンテナンスについて心配する必要はありません。 また、お客様のビジネス ニーズに基づいて、CMS および監査リポジトリ用に独自のデータベースを選択することもできます。
 
 ## <a name="support-matrix"></a>サポート マトリックス
 
@@ -119,11 +119,11 @@ BI プラットフォームには、[SAP 製品の可用性マトリックス](h
 
 - Microsoft SQL Server
 
-- [Azure SQL Database](https://azure.microsoft.com/en-us/services/sql-database/) (Windows 上の SAP BOBI プラットフォームに対してのみサポートされるデータベース)
+- [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) (Windows 上の SAP BOBI プラットフォームに対してのみサポートされるデータベース)
 
   最新の安定した SQL Server Enterprise Edition に基づいた、フル マネージドの SQL Server データベース エンジンです。 Azure SQL Database では、アップグレード、修正プログラムの適用、監視などのほとんどのデータベース管理機能がユーザーの介入なしで処理されます。 Azure SQL Database を使用すると、Azure のアプリケーションやソリューションのための高可用性かつ高パフォーマンスのデータ ストレージ層を作成できます。 詳細については、[Azure SQL Database](../../../azure-sql/azure-sql-iaas-vs-paas-what-is-overview.md) のドキュメントを確認してください。
 
-- [Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql/) (SAP PAM の MySQL AB に対して指定されているのと同じ互換性ガイドラインに従います)
+- [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/) (SAP PAM の MySQL AB に対して指定されているのと同じ互換性ガイドラインに従います)
 
   MySQL Community Edition を基盤としたリレーショナル データベース サービスです。 フルフル マネージドの DBaaS (サービスとしてのデータベース) オファリングであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッション クリティカルなワークロードを処理できます。 高可用性、自動バックアップ、ソフトウェア修正プログラムの適用、自動障害検出、および最大 35 日間のポイントインタイム リストアが組み込まれており、操作タスクが大幅に削減されます。 詳細については、[Azure Database for MySQL](../../../mysql/overview.md) のドキュメントを確認してください。
 
@@ -145,7 +145,7 @@ BI プラットフォームには、[SAP 製品の可用性マトリックス](h
 
 SAP BOBI プラットフォームのストレージ ニーズに応じて、Azure ではさまざまな種類の[マネージド ディスク](../../managed-disks-overview.md)が提供されています。 SAP BOBI インストール ディレクトリには、Premium マネージド ディスクを使用することをお勧めします。また、仮想マシン上で実行されるデータベースについては、[SAP ワークロードのための DBMS デプロイ](dbms_guide_general.md)に関するページに記載されているガイダンスに従ってください。
 
-Azure では、SAP BOBI プラットフォームのデータ層向けの DBaaS オファリングを 2 つサポートしています。[Azure SQL Database](https://azure.microsoft.com/en-us/services/sql-database) (Windows で実行される BI アプリケーション) と、[Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql) (Linux および Windows で実行される BI アプリケーション) です。 そのため、サイズ設定の結果に基づいて、ニーズに最も適した購入モデルを選択できます。
+Azure では、SAP BOBI プラットフォームのデータ層向けの DBaaS オファリングを 2 つサポートしています。[Azure SQL Database](https://azure.microsoft.com/services/sql-database) (Windows で実行される BI アプリケーション) と、[Azure Database for MySQL](https://azure.microsoft.com/services/mysql) (Linux および Windows で実行される BI アプリケーション) です。 そのため、サイズ設定の結果に基づいて、ニーズに最も適した購入モデルを選択できます。
 
 > [!Tip]
 > サイズ設定の簡単な参考として、SAP BOBI プラットフォームのデータベース層の SAPS 結果を Azure のサービスとしてのデータベース (Azure SQL Database または Azure Database for MySQL) にマップするときには、800 SAPS = 1 vCPU と見なしてください。
@@ -204,7 +204,7 @@ Azure Database for MySQL には、3 つの異なる価格レベルが用意さ�
 
 Azure リージョンとは、さまざまな Azure サービスを実行してホストするインフラストラクチャを含めた、1 か所または複数のデータセンターの集合です。 このインフラストラクチャには多数のノードが含まれており、それぞれのノードは、コンピューティング ノードやストレージ ノードとして機能したり、ネットワーク機能を実行したりします。 すべてのリージョンで同じサービスが提供されるわけではありません。
 
-SAP BI プラットフォームにはさまざまなコンポーネントが含まれており、それらに必要な特定の VM の種類、ストレージ (Azure Files、Azure NetApp Files など)、またはそのデータ層用の DBaaS (サービスとしてのデータベース) が、特定のリージョンでは利用できない場合もあります。 VM の種類、Azure Storage の種類、またはその他の Azure サービスについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/en-us/global-infrastructure/services/)」のサイトで正確な情報を確認できます。 Azure で SAP システムを既に実行している場合、リージョンはおそらく既に特定されています。 その場合は、SAP BI プラットフォームのアーキテクチャを決定するために、必要なサービスがこれらのリージョンで利用可能であることを最初に調査する必要があります。
+SAP BI プラットフォームにはさまざまなコンポーネントが含まれており、それらに必要な特定の VM の種類、ストレージ (Azure Files、Azure NetApp Files など)、またはそのデータ層用の DBaaS (サービスとしてのデータベース) が、特定のリージョンでは利用できない場合もあります。 VM の種類、Azure Storage の種類、またはその他の Azure サービスについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」のサイトで正確な情報を確認できます。 Azure で SAP システムを既に実行している場合、リージョンはおそらく既に特定されています。 その場合は、SAP BI プラットフォームのアーキテクチャを決定するために、必要なサービスがこれらのリージョンで利用可能であることを最初に調査する必要があります。
 
 ### <a name="availability-zones"></a>可用性ゾーン
 
@@ -243,13 +243,13 @@ Azure Storage には、お客様が使用できるさまざまなストレージ
 
 - Azure マネージド ディスク
 
-  Azure によって管理されるブロック レベルのストレージ ボリュームです。 このディスクは、Azure 仮想マシンにインストールされる場合、SAP BOBI プラットフォームのアプリケーション サーバーおよびデータベース用に使用できます。 さまざまな種類の [Azure マネージド ディスク](../../managed-disks-overview.md)が利用可能ですが、SAP BOBI プラットフォームのアプリケーションとデータベースには [Premium SSD](../../disks-types.md#premium-ssd) を使用することをお勧めします。
+  Azure によって管理されるブロック レベルのストレージ ボリュームです。 このディスクは、Azure 仮想マシンにインストールされる場合、SAP BOBI プラットフォームのアプリケーション サーバーおよびデータベース用に使用できます。 さまざまな種類の [Azure マネージド ディスク](../../managed-disks-overview.md)が利用可能ですが、SAP BOBI プラットフォームのアプリケーションとデータベースには [Premium SSD](../../disks-types.md#premium-ssds) を使用することをお勧めします。
 
   次の例では、BOBI プラットフォームのインストール ディレクトリに Premium SSD が使用されています。 仮想マシンにインストールされているデータベースの場合、ガイドラインに従って、データとログのボリュームにマネージド ディスクを使用できます。 通常、CMS および監査データベースは小さく、そのストレージ パフォーマンス要件は他の SAP OLTP/OLAP データベースのものとは異なります。
 
 - Azure Premium Files または Azure NetApp Files
 
-  SAP BOBI プラットフォームでは、ファイル リポジトリ サーバー (FRS) とは、レポート、ユニバース、接続などのコンテンツが格納されている、そのシステムのすべてのアプリケーション サーバーによって使用されるディスク ディレクトリを指します。 [Azure Premium Files](../../../storage/files/storage-files-introduction.md) または [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) ストレージは、SAP BOBI アプリケーションの FRS 用共有ファイル システムとして使用できます。 このストレージ オファリングはすべてのリージョンで使用できるわけではないため、最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/en-us/global-infrastructure/services/)」のサイトを参照してください。
+  SAP BOBI プラットフォームでは、ファイル リポジトリ サーバー (FRS) とは、レポート、ユニバース、接続などのコンテンツが格納されている、そのシステムのすべてのアプリケーション サーバーによって使用されるディスク ディレクトリを指します。 [Azure Premium Files](../../../storage/files/storage-files-introduction.md) または [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) ストレージは、SAP BOBI アプリケーションの FRS 用共有ファイル システムとして使用できます。 このストレージ オファリングはすべてのリージョンで使用できるわけではないため、最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」のサイトを参照してください。
 
   お客様のリージョンでサービスを利用できない場合は、NFS サーバーを作成し、そのファイル システムを SAP BOBI アプリケーションと共有できます。 ただし、高可用性を考慮する必要もあります。
 

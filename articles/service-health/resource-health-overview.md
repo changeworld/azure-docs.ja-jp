@@ -3,12 +3,12 @@ title: Azure Resource Health の概要
 description: Azure Resource Health が、Azure のリソースに影響を及ぼしているサービスの問題を診断したり、サポートを受けたりするときにどのように役立つかについて説明します。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 532c7001b12efb2917c906f7607fef33bac194ff
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90967868"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728581"
 ---
 # <a name="resource-health-overview"></a>Resource Health の概要
  
@@ -52,7 +52,7 @@ Resource Health は、イベントと復旧プロセスについてさらに詳�
 
 ### <a name="unknown"></a>Unknown
 
-*不明* は、Resource Health がリソースに関する情報を 10 分以上受け取っていないことを意味します。 この状態はリソースの状態を明確に示すものではありませんが、トラブルシューティングにとって重要なデータ ポイントです。
+*不明* は、Resource Health がリソースに関する情報を 10 分以上受け取っていないことを意味します。 これは一般的に、仮想マシンの割り当てが解除されている場合に発生します。 この状態はリソースの状態を明確に示すものではありませんが、トラブルシューティングにとって重要なデータ ポイントである可能性がありまあす。
 
 リソースが予期した通りに実行されている場合、リソースの状態は数分後に *使用可能* に変更されます。
 
@@ -68,17 +68,15 @@ Resource Health は、イベントと復旧プロセスについてさらに詳�
 
 ![*低下* 状態の仮想マシン](./media/resource-health-overview/degraded.png)
 
-## <a name="reporting-an-incorrect-status"></a>正しくない状態の報告
-
-現在の正常性状態が正しくないと思われる場合は、 **[Report incorrect health status]\(正しくない正常性状態を報告\)** を選択して Microsoft に報告できます。 Azure の問題の影響を受けている場合は、Resource Health からサポートにお問い合わせください。
-
-![正しくない状態に関する情報を送信するためのフォーム](./media/resource-health-overview/incorrect-status.png)
-
 ## <a name="history-information"></a>履歴情報
 
 Resource Health の **[正常性の履歴]** セクションで、最大 30 日間の履歴にアクセスできます。
 
 ![過去 2 週間の Resource Health イベントの一覧](./media/resource-health-overview/history-blade.png)
+
+## <a name="root-cause-information"></a>根本原因に関する情報
+
+プラットフォームによって開始された使用不可の根本原因に関する詳細情報が Azure にある場合、その情報は、最初に使用不可になってから最大 72 時間は Resource Health に表示されている可能性があります。 この情報は、現在、仮想マシンについてのみ利用できます。 
 
 ## <a name="get-started"></a>はじめに
 
@@ -98,4 +96,4 @@ Resource Health には、 **[すべてのサービス]** を選択し、フィ�
 
 Resource Health について詳しくは、次のリファレンスをご覧ください。
 -  [Azure Resource Health で利用できるリソースの種類と正常性チェック](resource-health-checks-resource-types.md)
--  [Azure Resource Health に関してよく寄せられる質問](resource-health-faq.md)
+-  [Azure Resource Health に関してよく寄せられる質問](resource-health-faq.yml)

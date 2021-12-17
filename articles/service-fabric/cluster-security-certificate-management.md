@@ -3,13 +3,13 @@ title: Service Fabric クラスターでの証明書管理
 description: X.509 証明書で保護された Service Fabric クラスターでの証明書の管理について説明します。
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.custom: sfrev
-ms.openlocfilehash: 7976d1419aeb0dda3ec2f94a32e9b185a6c14be7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: sfrev, devx-track-azurepowershell
+ms.openlocfilehash: 768fe83a0ce4bc0507f21b72e1c917e60c7ec971
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304870"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075127"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric クラスターでの証明書管理
 
@@ -90,10 +90,10 @@ Service Fabric クラスターのコンテキストで、証明書の発行か�
 ### <a name="certificate-provisioning"></a>証明書のプロビジョニング
 "プロビジョニング エージェント" について触れました。これは、秘密キーを含む証明書をコンテナーから取得し、それをクラスターの各ホストにインストールするエンティティです (Service Fabric によって証明書がプロビジョニングされないことを思い出してください)。このコンテキストでは、クラスターは Azure VM や仮想マシン スケール セットのコレクションでホストされます。 Azure では、以下のメカニズムを使用してコンテナーから VM または VMSS に証明書をプロビジョニングできます。ただし、前述のように、コンテナーの所有者からプロビジョニング エージェントに対して、コンテナーの "取得" アクセス許可が以前に付与されていることを前提とします。 
   - アドホック: オペレーターは (pfx/PKCS#12 または pem として) コンテナーから証明書を取得し、それを各ノードにインストールします
-  - デプロイ中に仮想マシン スケール セットの "シークレット" として: Compute Service によって、オペレーターの代理でファースト パーティ ID が使用され、テンプレートのデプロイが有効なコンテナーから証明書が取得され、仮想マシン スケール セットの各ノードに ([このように](/virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#certificates)) インストールされます。これにより、バージョン管理されたシークレットのプロビジョニングのみが可能になることに注意してください
-  - [Key Vault VM 拡張機能](../virtual-machines/extensions/key-vault-windows.md)の使用: これにより、監視対象の証明書を定期的に更新しながら、バージョンなしの宣言を使用して証明書をプロビジョニングできます。 この場合、VM または VMSS には、監視対象の証明書を含むコンテナーへのアクセス権が付与された ID である[マネージド ID](/virtual-machines/security-policy.md#managed-identities-for-azure-resources) が必要です。
+  - デプロイ中に仮想マシン スケール セットの "シークレット" として: Compute Service によって、オペレーターの代理でファースト パーティ ID が使用され、テンプレートのデプロイが有効なコンテナーから証明書が取得され、仮想マシン スケール セットの各ノードに ([このように](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml)) インストールされます。これにより、バージョン管理されたシークレットのプロビジョニングのみが可能になることに注意してください
+  - [Key Vault VM 拡張機能](../virtual-machines/extensions/key-vault-windows.md)の使用: これにより、監視対象の証明書を定期的に更新しながら、バージョンなしの宣言を使用して証明書をプロビジョニングできます。 この場合、VM または VMSS には、監視対象の証明書を含むコンテナーへのアクセス権が付与された ID である[マネージド ID](../virtual-machines/security-policy.md#managed-identities-for-azure-resources) が必要です。
 
-アドホック メカニズムは、セキュリティから可用性までさまざまな理由からお勧めできません。また、ここではこれ以上詳しく説明しません。詳細については、[仮想マシン スケール セットの証明書](/virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#certificates)に関するページを参照してください。
+アドホック メカニズムは、セキュリティから可用性までさまざまな理由からお勧めできません。また、ここではこれ以上詳しく説明しません。詳細については、[仮想マシン スケール セットの証明書](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml)に関するページを参照してください。
 
 VMSS ベースまたはコンピューティングベースのプロビジョニングには、セキュリティと可用性の利点がありますが、制限もあります。 設計上、証明書をバージョン管理されたシークレットとして宣言する必要があるため、拇印で宣言された証明書で保護されたクラスターにのみ適しています。 対照的に、Key Vault VM 拡張機能ベースのプロビジョニングでは、監視対象の各証明書の最新バージョンが常にインストールされるため、サブジェクトの共通名で宣言された証明書で保護されたクラスターにのみ適しています。 特に注意が必要な点として、インスタンスによって (つまり、拇印によって) 宣言された証明書には、自動更新プロビジョニング メカニズム (KVVM 拡張など) を使用しないでください。可用性を失うリスクがかなり大きくなります。
 
@@ -449,7 +449,7 @@ A の SAN リストは C に完全に含まれているため、A.renewal = C.th
 
 このようなインシデントを軽減するには、次の推奨事項があります。
   - 異なるコンテナー証明書の SAN を混在させないでください。各コンテナー証明書で個別の目的を果たし、サブジェクトと SAN はそれを具体的に反映するようにします
-  - SAN リストにサブジェクトの共通名を含めます (文字どおり "CN=<subject common name>")  
+  - SAN リストにサブジェクトの共通名を含めます (文字どおり `CN=<subject common name>`)  
   - 不明な場合は、KVVM 拡張機能でプロビジョニングされた証明書の更新時にリンクを無効にします 
 
 #### <a name="why-use-a-user-assigned-managed-identity-what-are-the-implications-of-using-it"></a>ユーザー割り当てマネージド ID を使用する理由と 使用する意味

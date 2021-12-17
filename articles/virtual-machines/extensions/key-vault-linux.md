@@ -10,12 +10,13 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9032bfca30ead56c91d7904e18b76753cf3b6dfc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4fe44c7880420d7f2bc89f479e152a23f22909e8
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104582172"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670216"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
@@ -27,10 +28,14 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
 
 - Ubuntu-1804
 - Suse-15 
+- [CBL-Mariner](https://github.com/microsoft/CBL-Mariner)
 
 > [!NOTE]
 > 拡張セキュリティ機能を利用するには、Ubuntu-1604 および Debian-9 システムをアップグレードする準備をしてください。これらのバージョンは、指定されたサポート期間の終わりに近づいています。
 > 
+
+> [!NOTE]
+> Key Vault VM 拡張機能は、既定の場所または VM 拡張機能の設定の "certStoreLocation" プロパティによって指定される場所に証明書をダウンロードします。 KeyValut VM 拡張機能によって、フォルダーのアクセス許可が 700 (drwx------) に更新され、読み取り、書き込み、および実行のアクセス許可がフォルダーの所有者にのみ付与されます
 
 ### <a name="supported-certificate-content-types"></a>サポートされている証明書の内容の種類
 
@@ -263,13 +268,8 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
   - デプロイ時に存在している必要があります 
   - マネージド ID を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されている必要があります。 [Key Vault に対して認証を行う方法](../../key-vault/general/authentication.md)に関するページと「[Key Vault アクセス ポリシーを割り当てる](../../key-vault/general/assign-access-policy-cli.md)」を参照してください。
 
-### <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-* 設定できる observedCertificates の数に制限はありますか?
-  いいえ。Key Vault VM 拡張機能には、observedCertificates の数に制限はありません。
-
-
-### <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal または Azure PowerShell を使用します。 特定の VM での拡張機能のデプロイ状態を確認するには、Azure PowerShell を使用して次のコマンドを実行します。
 
@@ -282,13 +282,17 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
-#### <a name="logs-and-configuration"></a>ログと構成
+### <a name="logs-and-configuration"></a>ログと構成
 
-```
-/var/log/waagent.log
-/var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
-/var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
-```
+Key Vault VM 拡張機能のログは、VM 上のローカルにのみ存在し、トラブルシューティングの際に大変役に立ちます。
+
+|場所|説明|
+|--|--|
+| /var/log/waagent.log  | 拡張機能の更新が発生した時間を示します。 |
+| /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*    | akvvm_service サービスと証明書のダウンロードの状態を確認するには、Key Vault VM 拡張機能のサービス ログを調べます。 これらのファイルには、certificate file name (証明書ファイル名) というエントリで、PEM ファイルのダウンロード場所も記録されます。 certificateStoreLocation が指定されていない場合の既定値は /var/lib/waagent/Microsoft.Azure.KeyVault.Store/ になります。 |
+| /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-\<most recent version\>/config/*   | Key Vault VM 拡張機能サービスの構成とバイナリ。 |
+|||
+  
 ### <a name="using-symlink"></a>シンボリック リンクの使用
 
 シンボリック リンク (Symlink) は基本的に、高度なショートカットです。 フォルダーの監視を回避し、最新の証明書を自動的に取得するには、このシンボリック リンク `([VaultName].[CertificateName])` を使用して、Linux 上の最新バージョンの証明書を取得します。
@@ -297,6 +301,7 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 * 設定できる observedCertificates の数に制限はありますか?
   いいえ。Key Vault VM 拡張機能には、observedCertificates の数に制限はありません。
+  
 
 ### <a name="support"></a>サポート
 

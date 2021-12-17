@@ -5,15 +5,15 @@ services: virtual-machines
 author: rishabv90
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/05/2020
+ms.date: 10/20/2021
 ms.author: risverma
 ms.custom: include file
-ms.openlocfilehash: 83a19dea56693a1caff2c982b9f772543fe1cf2e
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: b5d51a00a35fa34236a62c48f1ee01402ca2f1c9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073426"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520101"
 ---
 Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。 分離されたサイズは、特定のハードウェア世代上に存続して動作し、そのハードウェア世代が廃止されると非推奨となります。
 
@@ -25,12 +25,12 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 現在の分離された仮想マシンのプランには、以下が含まれます。
 * Standard_E80ids_v4
 * Standard_E80is_v4
+* Standard_E104i_v5
+* Standard_E104is_v5
+* Standard_E104id_v5
+* Standard_E104ids_v5
 * Standard_F72s_v2
-* Standard_E64is_v3
-* Standard_E64i_v3
 * Standard_M128ms
-* Standard_GS5
-* Standard_G5
 * Standard_DC8_v2
 
 
@@ -43,13 +43,13 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 
 | サイズ | 分離の廃止日 | 
 | --- | --- |
-| Standard_DS15_v2 | 2021 年 5 月 15 日 |
-| Standard_D15_v2  | 2021 年 5 月 15 日 |
-| Standard_G5  | 2022 年 2 月 15 日 |
-| Standard_GS5  | 2022 年 2 月 15 日 |
+| Standard_DS15_v2  | 2021 年 5 月 15 日      |
+| Standard_D15_v2   | 2021 年 5 月 15 日      |
+| Standard_G5       | 2022 年 2 月 15 日 |
+| Standard_GS5      | 2022 年 2 月 15 日 |
 | Standard_E64i_v3  | 2022 年 2 月 15 日 |
-| Standard_E64is_v3  | 2022 年 2 月 15 日 |
-| Standard_DC8_v2 | 2022 年 2 月 15 日 |
+| Standard_E64is_v3 | 2022 年 2 月 15 日 |
+| Standard_DC8_v2   | 2022 年 2 月 15 日 |
 
 
 ## <a name="faq"></a>よく寄せられる質問

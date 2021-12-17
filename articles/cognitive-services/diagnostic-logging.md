@@ -3,22 +3,22 @@ title: 診断ログ
 titleSuffix: Azure Cognitive Services
 description: このガイドでは、Azure Cognitive Service の診断ログを有効にするための詳細な手順について説明します。 これらのログでは、問題の識別やデバッグに使用されるリソースの操作に関する豊富で頻繁なデータが提供されます。
 services: cognitive-services
-author: erhopf
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 06/14/2019
-ms.author: erhopf
-ms.openlocfilehash: a2005ca7b32136ff0032d27e04035c46b2e4e904
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: conceptual
+ms.date: 07/19/2021
+ms.author: pafarley
+ms.openlocfilehash: 4c621fb7abc494247c9d736639766e6b7c095d8e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100595361"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080500"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Azure Cognitive Services の診断ログを有効にする
 
-このガイドでは、Azure Cognitive Service の診断ログを有効にするための詳細な手順について説明します。 これらのログでは、問題の識別やデバッグに使用されるリソースの操作に関する豊富で頻繁なデータが提供されます。 続行する前に、少なくとも 1 つの Cognitive Service ([Bing Web Search](./bing-web-search/overview.md)、[Speech Services](./speech-service/overview.md)、[LUIS](./luis/what-is-luis.md) など) へのサブスクリプションを持つ Azure アカウントが必要です。
+このガイドでは、Azure Cognitive Service の診断ログを有効にするための詳細な手順について説明します。 これらのログでは、問題の識別やデバッグに使用されるリソースの操作に関する豊富で頻繁なデータが提供されます。 続行する前に、少なくとも 1 つの Cognitive Service ([音声サービス](./speech-service/overview.md)や [LUIS](./luis/what-is-luis.md) など) へのサブスクリプションを持つ Azure アカウントが必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,8 @@ ms.locfileid: "100595361"
 * [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) - Azure リソースによって生成された生ログの分析を可能にする柔軟なログ検索および分析ツール。
 
 > [!NOTE]
-> その他の構成オプションも使用できます。 詳細については、[Azure リソースからのログ データの収集と使用](../azure-monitor/essentials/platform-logs-overview.md)に関するページを参照してください。
+> * その他の構成オプションも使用できます。 詳細については、[Azure リソースからのログ データの収集と使用](../azure-monitor/essentials/platform-logs-overview.md)に関するページを参照してください。
+> * 診断ログの "トレース" は、[カスタムの質問と回答](./qnamaker/how-to/get-analytics-knowledge-base.md?tabs=v2)にのみ使用できます。
 
 ## <a name="enable-diagnostic-log-collection"></a>診断ログの収集を有効にする  
 
@@ -37,7 +38,7 @@ ms.locfileid: "100595361"
 > [!NOTE]
 > PowerShell または Azure CLI を使用してこの機能を有効にするには、[Azure リソースからのログ データの収集と使用](../azure-monitor/essentials/platform-logs-overview.md)に関するページに示されている手順を使用します。
 
-1. Azure Portal に移動します。 次に、Cognitive Services リソースを見つけて選択します。 たとえば、Bing Web Search へのサブスクリプションを選択します。   
+1. Azure Portal に移動します。 次に、Cognitive Services リソースを見つけて選択します。 たとえば、音声サービスのサブスクリプションです。   
 2. 次に、左側のナビゲーション メニューから、 **[監視]** を見つけて **[診断設定]** を選択します。 この画面には、このリソースに対して前に作成したすべての診断設定が含まれています。
 3. 前に作成したリソースで使用したいものが存在する場合は、ここでそれを選択できます。 それ以外の場合は、 **[+ Add diagnostic setting] (+ 診断設定の追加)** を選択します。
 4. 設定の名前を入力します。 次に、 **[ストレージ アカウントへのアーカイブ]** および **[Log Analytics への送信]** を選択します。
@@ -117,5 +118,4 @@ by bin(TimeGenerated, 10s), OperationName
 * Event Hubs については次の記事をご覧ください。
   * [Azure Event Hubs とは](../event-hubs/event-hubs-about.md)
   * [Event Hubs の使用](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
-* [Azure Storage からメトリックとログをダウンロードする方法](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs)に関する記事をご覧ください。
 * 「[Azure Monitor ログでのログ検索について](../azure-monitor/logs/log-query-overview.md)」をお読みください。

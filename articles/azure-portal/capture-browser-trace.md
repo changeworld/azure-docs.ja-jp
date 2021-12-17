@@ -1,24 +1,27 @@
 ---
 title: トラブルシューティングのためにブラウザー トレースをキャプチャする
 description: Azure portal での問題のトラブルシューティングに役立つように、ブラウザー トレースからネットワーク情報をキャプチャします。
-ms.date: 03/25/2021
+ms.date: 08/16/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 63bc3e93187274db607b5f60216de461729801dc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d1db82c9671879c435a6dba73929d9a4eb183f7f
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563491"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228877"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>トラブルシューティングのためにブラウザー トレースをキャプチャする
 
 Azure portal での問題のトラブルシューティングを行っていて、Microsoft サポートに問い合わせる必要がある場合は、最初にブラウザー トレースといくつかの追加情報をキャプチャすることをお勧めします。 収集した情報で、問題が発生したときのポータルに関する重要な詳細情報を提供できます。 使用しているブラウザーの開発者ツールに対応するこの記事の手順に従ってください: Google Chrome または Microsoft Edge (Chromium)、Microsoft Edge (EdgeHTML)、Apple Safari、または Firefox。
 
+> [!IMPORTANT]
+> Microsoft サポートではこれらのトレースを、トラブルシューティングの目的に限って使用します。 トレースを共有する相手には注意してください。これらには、あなたの環境に関する機密情報が含まれている場合があるからです。
+
 ## <a name="google-chrome-and-microsoft-edge-chromium"></a>Google Chrome と Microsoft Edge (Chromium)
 
 Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オープンソース プロジェクト](https://www.chromium.org/Home)が基になっています。 次の手順では、開発者ツールを使用する方法について説明します。これらのツールは、2 つのブラウザーで非常によく似ています。 詳細については、「[Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)」および「[Microsoft Edge (Chromium) 開発者ツール](/microsoft-edge/devtools-guide-chromium)」を参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。
 
 1. [ステップ記録ツール](https://support.microsoft.com/help/22878/windows-10-record-steps)を使用して、ポータルで実行した手順の記録を始めます。
 
@@ -164,7 +167,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
 次の手順では、Firefox の開発者ツールを使用する方法について説明します。 詳細については、[Firefox の開発者ツール](https://developer.mozilla.org/docs/Tools)に関するページを参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。
 
 1. ポータルで実行した手順の記録を始めます。 Windows で [ステップ記録ツール](https://support.microsoft.com/help/22878/windows-10-record-steps)を使用するか、「[Mac で画面を収録する方法](https://support.apple.com/HT208721)」を参照してください。
 
@@ -204,4 +207,5 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Portal の概要](azure-portal-overview.md)
+- [Azure portal](azure-portal-overview.md) の詳細を読む。
+- Azure portal で[サポート リクエストをオープン](supportability/how-to-create-azure-support-request.md)する方法を学習する。

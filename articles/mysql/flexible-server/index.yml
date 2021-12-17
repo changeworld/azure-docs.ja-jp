@@ -5,22 +5,24 @@ metadata:
   description: Azure Database for MySQL - フレキシブル サーバーは、MySQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。
   author: mksuni
   ms.author: sumuth
-  ms.date: 09/21/2020
+  ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 63dfa9e9087f30a479df9b1ae3d0a654c956f902
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.openlocfilehash: cbeaf765156d98b80d29b2f6b25e047ec5ea561c
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102043032"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132546806"
 landingContent:
-- title: フレキシブル サーバー (プレビュー) について
+- title: フレキシブル サーバーについて
   linkLists:
   - linkListType: overview
     links:
     - text: フレキシブル サーバーとは
       url: overview.md
+    - text: フレキシブル サーバーを無料で試す
+      url: how-to-deploy-on-azure-free-account.md
   - linkListType: quickstart
     links:
     - text: フレキシブル サーバーを作成する
@@ -29,10 +31,12 @@ landingContent:
     links:
     - text: フレキシブル サーバーを使用して PHP アプリを作成する
       url: tutorial-php-database-app.md
+    - text: フレキシブル サーバーを使用して AKS に Spring Boot アプリをデプロイする
+      url: tutorial-deploy-springboot-on-aks-vnet.md
   - linkListType: whats-new
     links:
-    - text: ブログを確認する
-      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+    - text: フレキシブル サーバーの新機能
+      url: whats-new.md
 - title: 管理する
   linkLists:
   - linkListType: concept
@@ -41,7 +45,9 @@ landingContent:
       url: concepts-compute-storage.md
     - text: MySQL のバージョン
       url: ./../concepts-supported-versions.md
-    - text: ネットワーキング
+    - text: サーバーの復元
+      url: how-to-restore-server-portal.md
+    - text: ネットワークと接続性
       url: concepts-networking.md
     - text: Monitor
       url: concepts-monitoring.md
@@ -71,6 +77,24 @@ landingContent:
     links:
     - text: サーバーの復元
       url: how-to-restore-server-portal.md
+    - text: 削除済みサーバーを復元する
+      url: how-to-restore-dropped-server.md
+- title: ネットワークと接続性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ネットワーク
+      url: concepts-networking.md
+    - text: プライベート アクセス
+      url: concepts-networking-vnet.md
+    - text: パブリック アクセス
+      url: concepts-networking-public.md
+  - linkListType: how-to-guide
+    links:
+    - text: プライベート アクセスを構成する
+      url: how-to-manage-virtual-network-portal.md
+    - text: パブリック アクセスを構成する
+      url: how-to-manage-firewall-portal.md
 - title: 接続する
   linkLists:
   - linkListType: quickstart
@@ -89,10 +113,20 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Azure Database for MySQL への移行に使用する適切なツールを選択する
+      url: ../how-to-decide-on-right-migration-tools.md
+    - text: 単一サーバーからフレキシブル サーバーに移行する
+      url: ../howto-migrate-single-flexible-minimum-downtime.md
     - text: オンラインで移行する
       url: ../howto-migrate-online.md
-- title: 関連項目
+    - text: データイン レプリケーションを使用して RDS for MySQL を移行する
+      url: ../how-to-migrate-rds-mysql-data-in-replication.md
+- title: リファレンス
   linkLists:
+  - linkListType: sample
+    links:
+    - text: Azure CLI のサンプル
+      url: sample-scripts-azure-cli.md
   - linkListType: reference
     links:
     - text: Azure CLI の開発者用リファレンス

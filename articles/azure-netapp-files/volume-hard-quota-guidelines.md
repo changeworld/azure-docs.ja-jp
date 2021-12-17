@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 5e7f71f91e5778b4f096bb760bfe5a0a89b5cbcb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a0080687d65c7165b0c2a463229a9a817fb045e0
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764281"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288180"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>ボリューム ハード クォータへの変更が Azure NetApp Files サービスに対して何を意味するかについて
 
@@ -160,7 +160,7 @@ ANFCapacityManager のインストール後は、次の動作を期待できま�
 
 ##### <a name="portal"></a>ポータル 
 
-必要に応じて[ボリュームのサイズを変更](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-volume)できます。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。
+必要に応じて[ボリュームのサイズを変更](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-volume-using-the-azure-portal)できます。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。
 
 1. [Manage NetApp Account]\(NetApp アカウントの管理\) ブレードで、 **[ボリューム]** をクリックします。  
 2. サイズを変更するボリュームの名前を右クリックするか、ボリュームの行の最後にある `…` アイコンをクリックして、コンテキスト メニューを表示します。 
@@ -170,7 +170,7 @@ ANFCapacityManager のインストール後は、次の動作を期待できま�
 
    ![[ボリュームのクォータを更新] ウィンドウを示すスクリーンショット。](../media/azure-netapp-files/hard-quota-update-volume-quota.png) 
 
-場合によっては、ホスティング容量プールにボリュームのサイズを変更するための十分な容量がないことがあります。 ただし、[容量プールのサイズ変更](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-the-capacity-pool)は、1 TiB 単位で増減して行うことができます。 容量プールのサイズは 4 TiB 未満にすることはできません。 *容量プールをサイズ変更すると、購入した Azure NetApp Files の容量が変更されます。*
+場合によっては、ホスティング容量プールにボリュームのサイズを変更するための十分な容量がないことがあります。 ただし、[容量プールのサイズ変更](azure-netapp-files-resize-capacity-pools-or-volumes.md#resizing-the-capacity-pool-or-a-volume-using-azure-cli)は、1 TiB 単位で増減して行うことができます。 容量プールのサイズは 4 TiB 未満にすることはできません。 *容量プールをサイズ変更すると、購入した Azure NetApp Files の容量が変更されます。*
 
 1. [Manage NetApp Account]\(NetApp アカウントの管理\) ブレードで、サイズ変更する容量プールをクリックします。
 2. 容量プールの名前を右クリックするか、容量プールの行の最後にある `…` アイコンをクリックして、コンテキスト メニューを表示します。

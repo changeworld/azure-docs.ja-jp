@@ -10,13 +10,13 @@ ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
-ms.date: 11/14/2019
-ms.openlocfilehash: 67e807e948caf1fec014457814c1b7f105630f9f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/26/2021
+ms.openlocfilehash: b1748de761ad5180e2ddb670f31874620e4c5ae8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784427"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971993"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL Database のサーバー用の仮想ネットワーク サービス エンドポイントと規則の使用
 
@@ -182,7 +182,7 @@ PolyBase と COPY ステートメントは、高スループットのデータ �
 
 ### <a name="sql-database-blob-auditing"></a>SQL Database BLOB の監査
 
-BLOB 監査では、監査ログをユーザー独自のストレージ アカウントにプッシュします。 このストレージ アカウントで仮想ネットワーク サービス エンドポイント機能が使用される場合、SQL Database からストレージ アカウントへの接続は切断されます。
+Azure SQL 監査では、SQL 監査ログを独自のストレージ アカウントに書き込むことができます。 このストレージ アカウントで仮想ネットワーク サービス エンドポイント機能を使用する場合は、[VNet とファイアウォールの背後にあるストレージ アカウントに監査を書き込む](./audit-write-storage-account-behind-vnet-firewall.md)方法を参照してください。
 
 ## <a name="add-a-virtual-network-firewall-rule-to-your-server"></a>仮想ネットワーク ファイアウォール規則をサーバーに追加する
 

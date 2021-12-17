@@ -1,55 +1,395 @@
 ---
-title: Azure Data Lake Storage Gen2 (プレビュー) の検索
+title: Azure Data Lake Storage Gen2 からのデータのインデックスを作成する
 titleSuffix: Azure Cognitive Search
-description: Azure Data Lake Storage Gen2 でコンテンツとメタデータのインデックスを作成する方法について説明します。 現在、この機能はパブリック プレビュー段階にあります。
+description: Azure Cognitive Search でのフルテキスト検索用にコンテンツとメタデータのインデックス作成を自動化するように Azure Data Lake Storage Gen2 インデクサーを設定します。
+author: gmndrg
+ms.author: gimondra
 manager: nitinme
-author: markheff
-ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.openlocfilehash: 51c32501015a16819ba9316272ed0d522e1083d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/01/2021
+ms.openlocfilehash: 59b3d06af79d1b2c6f12f7dbb843ae31f203cab6
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545566"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894148"
 ---
-# <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のドキュメントのインデックス作成
+# <a name="index-data-from-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 からのデータのインデックスを作成する
 
-> [!IMPORTANT] 
-> Azure Data Lake Storage Gen2 のサポートは、現在パブリック プレビュー段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能に対するアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に必要事項を入力して行うことができます。 [REST API バージョン 2020-06-30-Preview](search-api-preview.md) とポータルで、この機能が提供されます。 現在、.NET SDK によるサポートはありません。
+この記事では、コンテンツを抽出して Azure Cognitive Search で検索できるようにするために、Azure Data Lake Storage Gen2 インデクサーを構成する方法について説明します。 このワークフローでは、Azure Cognitive Search に検索インデックスを作成し、Azure Data Lake Storage Gen2 から抽出された既存のコンテンツと共にその検索インデックスを読み込みます。
 
+Azure Data Lake Storage Gen2 は Azure Storage を通じて入手できます。 Azure ストレージ アカウントを設定するときに、[階層型名前空間](../storage/blobs/data-lake-storage-namespace.md)を有効にするオプションがあります。 これにより、アカウント内のコンテンツのコレクションを、ディレクトリと入れ子になったサブディレクトリの階層にまとめることができます。 階層型名前空間を有効にすることによって、[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) を有効にすることができます。
 
-Azure ストレージ アカウントを設定するときに、[階層型名前空間](../storage/blobs/data-lake-storage-namespace.md)を有効にするオプションがあります。 これにより、アカウント内のコンテンツのコレクションを、ディレクトリと入れ子になったサブディレクトリの階層にまとめることができます。 階層型名前空間を有効にすることによって、[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) を有効にすることができます。
+この記事の例では、ポータルと REST API を使用します。 C# の例については、GitHub の「[Index Data Lake Gen2 using Azure AD](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md)」 (Azure AD を使用して Lake Gen2 でデータのインデックスを作成する) を参照してください。
 
-この記事では、Azure Data Lake Storage Gen2 に含まれるドキュメントのインデックス作成を開始する方法について説明します。
+## <a name="supported-access-tiers"></a>サポートされているアクセス層
 
-## <a name="set-up-azure-data-lake-storage-gen2-indexer"></a>Azure Data Lake Storage Gen2 インデクサーの設定
-
-Data Lake Storage Gen2 のコンテンツにインデックスを作成するには、いくつかの手順を実行する必要があります。
-
-### <a name="step-1-sign-up-for-the-preview"></a>手順 1:プレビューのサインアップ
-
-[このフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)を入力して、Data Lake Storage Gen2 インデクサーのプレビューにサインアップしてください。 プレビューへの参加が承認されると、確認メールが届きます。
-
-### <a name="step-2-follow-the-azure-blob-storage-indexing-setup-steps"></a>手順 2:Azure Blob Storage のインデックス作成セットアップ手順の実行
-
-プレビューのサインアップが正常に完了したことを示すメッセージが表示されたら、インデックス作成パイプラインを作成する準備ができています。
-
-[REST API バージョン 2020-06-30-Preview](search-api-preview.md) またはポータルを使用して、Data Lake Storage Gen2 のコンテンツとメタデータのインデックスを作成できます。 現時点で .NET SDK のサポートはありません。
-
-Data Lake Storage Gen2 でのコンテンツのインデックス作成は、Azure Blob Storage でのコンテンツのインデックス作成と同じです。 そのため、Data Lake Storage Gen2 のデータソース、インデックス、およびインデクサーを設定する方法を理解するには、「[Azure Blob Storage 内ドキュメントのインデックスを Azure Cognitive Search で作成する方法](search-howto-indexing-azure-blob-storage.md)」を参照してください。 Blob Storage の記事では、サポートされているドキュメント形式、抽出される Blob メタデータ プロパティ、増分インデックス作成などに関する情報も提供されています。 この情報は、Data Lake Storage Gen2 についても同じです。
+Data Lake Storage Gen2 の[アクセス層](../storage/blobs/access-tiers-overview.md)には、ホット、クール、アーカイブがあります。 インデクサーがアクセスできるのは、ホットとクールのみです。
 
 ## <a name="access-control"></a>アクセス制御
 
-Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制御 (Azure RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートする[アクセス制御モデル](../storage/blobs/data-lake-storage-access-control.md)が実装されています。 Data Lake Storage Gen2 からコンテンツのインデックスを作成する場合、Azure Cognitive Search はコンテンツから Azure RBAC と ACL の情報を抽出しません。 このため、この情報は Azure Cognitive Search インデックスには含められません。
+Data Lake Storage Gen2 では、Azure ロールベースのアクセス制御 (Azure RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートする[アクセス制御モデル](../storage/blobs/data-lake-storage-access-control.md)が実装されています。 Azure Cognitive Search シナリオでは、アクセス制御リストが部分的にサポートされています。
+
++ Data Lake Storage Gen2 のコンテンツへのインデクサー アクセスでは、アクセス制御のサポートが有効になっています。 システムまたはユーザーが割り当てるマネージド ID が与えられている検索サービスの場合、Azure Storage で特定のファイルまたはフォルダーへのインデクサー アクセスを決定するロール割り当てを定義できます。
+
++ インデックスでのドキュメントレベルのアクセス許可はサポートされません。 アクセス制御によってユーザーごとにアクセス レベルが変わる場合、それらのアクセス許可は検索サービスの検索インデックスに継承できません。 インデックスで検索と取得が可能なあらゆるコンテンツに対して、すべてのユーザーに同じアクセス レベルが与えられます。
 
 インデックス内の各ドキュメントのアクセス制御を維持することが重要な場合は、アプリケーション開発者が[セキュリティによるトリミング](./search-security-trimming-for-azure-search.md)を実装する必要があります。
 
-## <a name="change-detection"></a>変更の検出
+<a name="SupportedFormats"></a>
 
-Data Lake Storage Gen2 インデクサーは、変更の検出をサポートしています。 これは、インデクサーの実行時に、BLOB の `LastModified` タイムスタンプによって判断された変更済みの BLOB のみ再インデックス作成を行うことを意味します。
+## <a name="supported-document-formats"></a>サポートされるドキュメントの形式
 
-> [!NOTE] 
-> Data Lake Storage Gen2 では、ディレクトリの名前を変更できます。 ディレクトリの名前を変更しても、そのディレクトリ内の BLOB のタイムスタンプは更新されません。 その結果、インデクサーはこれらの BLOB の再インデックス作成を行いません。 ディレクトリの名前を変更した後、ディレクトリの BLOB が新しい URL を持つことから再インデックス作成を行う必要がある場合は、ディレクトリ内のすべての BLOB の `LastModified` タイムスタンプを更新する必要があります。これにより、インデクサーが将来の実行中に再インデックス作成の必要性を認識できるようになります。
+Azure Cognitive Search の BLOB インデクサーは、次の形式のドキュメントからテキストを抽出できます。
+
+[!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
+
+## <a name="indexing-through-the-azure-portal"></a>Azure portal でインデックスを作成する
+
+Azure portal では、Azure Data Lake Storage Gen2 からのデータのインポートがサポートされています。 Data Lake Storage Gen2 からデータをインポートするには、Azure portal の Azure Cognitive Search サービス ページに移動し、 **[データのインポート]** 、 **[Azure Data Lake Storage Gen2]** の順に選択します。引き続き、データのインポート フローに従って、データ ソース、スキルセット、インデックス、インデクサーを作成します。
+
+## <a name="indexing-with-the-rest-api"></a>REST API でインデックスを作成する
+
+Data Lake Storage Gen2 インデクサーは、REST API でサポートされています。 以下の手順に従って、データ ソース、インデックス、インデクサーを設定します。
+
+### <a name="step-1---create-the-data-source"></a>手順 1 - データ ソースを作成する
+
+データ ソース定義では、データ ソースの種類のほか、インデックスを作成するコンテンツに対する認証と接続のための他のプロパティを指定します。
+
+Data Lake Storage Gen2 のデータ ソース定義は、次の例のようになります。
+
+```http
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
+    Content-Type: application/json
+    api-key: [Search service admin key]
+    {
+        "name" : "adlsgen2-datasource",
+        "type" : "adlsgen2",
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
+        "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
+    }
+```
+
+`"credentials"` プロパティは、上の例に示すような接続文字列か、次のセクションで説明する別の方法のいずれかで指定できます。 `"container"` プロパティは Azure Storage 内のコンテンツの場所を指定し、`"query"` を使用してコンテナー内のサブフォルダーを指定します。 データ ソース定義の詳細については、「[データ ソースの作成 (REST)](/rest/api/searchservice/create-data-source)」を参照してください。
+
+<a name="Credentials"></a>
+
+#### <a name="credentials"></a>資格情報
+
+次のいずれかの方法で、コンテナーの資格情報を指定できます。
+
+**マネージド ID の接続文字列**: `{ "connectionString" : "ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;" }`
+
+この接続文字列にはアカウント キーは必要ありませんが、[マネージド ID を使用して、Azure Storage アカウントへの接続を設定する](search-howto-managed-identities-storage.md)方法に関する指示に従う必要があります。
+
+**フル アクセス ストレージ アカウントの接続文字列**: `{ "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>;" }`
+
+この接続文字列は、ストレージ アカウント ブレードに移動し、[設定]、[キー] と選択する (クラシック ストレージ アカウントの場合) か、[設定]、[アクセス キー] と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure Portal から取得できます。
+
+**ストレージ アカウントの Shared Access Signature** (SAS) の接続文字列: `{ "connectionString" : "BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl;" }`
+
+SAS にはコンテナー上およびオブジェクト (この場合は BLOB) にリストおよび読み取りアクセス許可が必要です。
+
+**コンテナーの Shared Access Signature**: `{ "connectionString" : "ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl;" }`
+
+SAS にはコンテナー上にリストおよび読み取りアクセス許可が必要です。 ストレージの共有アクセス署名の詳細については、「[Shared Access Signature (SAS) の使用](../storage/common/storage-sas-overview.md)」を参照してください。
+
+> [!NOTE]
+> SAS の資格情報を使用する場合は、その有効期限が切れないように、データ ソースの資格情報を更新された署名で定期的に更新する必要があります。 SAS の資格情報の有効期限が切れた場合、インデクサーは失敗し、「接続文字列で指定された資格情報が無効か期限が切れています」のようなエラー メッセージが表示されます。  
+
+### <a name="step-2---create-an-index"></a>手順 2 - インデックスを作成する
+
+インデックスでは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。 すべてのインデクサーでは、検索インデックスの定義を変換先として指定する必要があります。 次の例では、[Create Index (REST API)](/rest/api/searchservice/create-index) を使用します。 
+
+```http
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
+    Content-Type: application/json
+    api-key: [admin key]
+    
+    {
+        "name" : "my-target-index",
+        "fields": [
+          { "name": "id", "type": "Edm.String", "key": true, "searchable": false },
+          { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
+        ]
+    }
+```
+
+インデックス定義には、ドキュメント キーとして機能する 1 つのフィールドが `"fields"` コレクションに必要です。 インデックス定義には、コンテンツとメタデータのフィールドも含める必要があります。
+
+**`content`** フィールドは、BLOB コンテンツに共通です。 これには、BLOB から抽出されたテキストが含まれます。 このフィールドの定義は上記のようになります。 この名前を使用する必要はありませんが、そうすることで暗黙的なフィールド マッピングを利用できます。 BLOB インデクサーは、BLOB のコンテンツをインデックス内のコンテンツ Edm.String フィールドに送信できます。フィールド マッピングは必要ありません。
+
+インデックスに必要な任意の BLOB メタデータ用のフィールドを追加することもできます。 インデクサーは、カスタム メタデータ プロパティ、[標準メタデータ](#indexing-blob-metadata) プロパティ、[コンテンツ固有メタデータ](search-blob-metadata-properties.md) プロパティを読み取ることができます。 インデックスの詳細については、「[インデックスを作成する](search-what-is-an-index.md)」を参照してください。
+
+### <a name="step-3---configure-and-run-the-indexer"></a>手順 3 - インデクサーを構成して実行する
+
+インデックスとデータ ソースを作成したら、[インデクサーを作成](/rest/api/searchservice/create-indexer)できます。
+
+```http
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      "name" : "adlsgen2-indexer",
+      "dataSourceName" : "adlsgen2-datasource",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { 
+        "interval" : "PT2H"
+      }
+    }
+```
+
+このインデクサーはすぐに実行され、その後、[スケジュールに基づき](search-howto-schedule-indexers.md) 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。
+
+<a name="DocumentKeys"></a>
+
+## <a name="defining-document-keys-and-field-mappings"></a>ドキュメント キーとフィールド マッピングの定義
+
+検索インデックスでは、各ドキュメントがそのキーによって一意に識別されます。 選択するフィールドは `Edm.String` 型である必要があります。 BLOB コンテンツの場合、ドキュメントキーの候補として最適なのは、BLOB のメタデータ プロパティです。
+
++ **`metadata_storage_name`** - このプロパティは候補ですが、インデックスを作成しているすべてのコンテナーおよびフォルダー間で名前が一意である場合に限られます。 BLOB の場所に関係なく、最終的な結果としては、すべてのコンテンツのインデックスが作成された後に、検索インデックス内でドキュメント キー (名前) が一意である必要があります。 
+
+  ストレージ名に関するもう 1 つの潜在的な問題は、ドキュメント キーでは無効なダッシュなどの文字が含まれている可能性があることです。 無効な文字を処理するには、`base64Encode` [フィールド マッピング関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用します。 これを行う場合は、[Lookup Document (REST)](/rest/api/searchservice/lookup-document) などの API 呼び出しでドキュメント キーを渡すときにそれらのキーをエンコードすることも忘れないでください。 .NET では、[UrlTokenEncode メソッド](/dotnet/api/system.web.httpserverutility.urltokenencode)を使用して文字をエンコードできます。
+
++ **`metadata_storage_path`** - 完全パスであれば一意性は保証されます。ただし、パスに使われる `/` 文字は、[ドキュメント キーでは無効](/rest/api/searchservice/naming-rules)です。 前述のように、`base64Encode` [関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用して文字をエンコードできます。
+
++ 3 番目のオプションは、カスタム メタデータ プロパティを BLOB に追加する方法です。 この方法を選んだ場合、BLOB のアップロード プロセスで、該当するメタデータのプロパティをすべての BLOB に追加する必要があります。 キーは必須のプロパティであるため、値が欠落している BLOB については、インデックスが一切作成されません。
+
+> [!IMPORTANT]
+> インデックス内のキー フィールドに対して明示的なマッピングが存在しない場合、Azure Cognitive Search は自動的に `metadata_storage_path` をキーおよび Base-64 エンコード キー値として使用します (上記の 2 つ目の選択肢)。
+>
+> カスタム メタデータ プロパティをキーとして使用する場合は、そのプロパティを変更しないでください。 キー プロパティが変更されると、インデクサーでは同じ BLOB に対して重複したドキュメントを追加します。
+
+### <a name="example"></a>例
+
+次の例では、ドキュメント キーとして `metadata_storage_name` を示しています。 `key` という名前のキー フィールドと、ドキュメントのサイズを格納するための `fileSize` という名前の別のフィールドがインデックスに存在するものとします。 インデクサー定義の[フィールド マッピング](search-indexer-field-mappings.md)はフィールドの関連付けを確立し、`metadata_storage_name` には、サポートされていない文字を処理するための [ `base64Encode`フィールド マッピング関数](search-indexer-field-mappings.md#base64EncodeFunction)があります。
+
+```http
+    PUT https://[service name].search.windows.net/indexers/adlsgen2-indexer?api-version=2020-06-30
+    Content-Type: application/json
+    api-key: [admin key]
+    
+    {
+      "dataSourceName" : "adlsgen2-datasource",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "fieldMappings" : [
+        { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
+        { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
+      ]
+    }
+```
+
+### <a name="how-to-make-an-encoded-field-searchable"></a>エンコードされたフィールドを "検索可能" にする方法
+
+`metadata_storage_path` のようなフィールドのエンコードされたバージョンをキーとして使用する必要がある一方、そのフィールドを検索インデックスで (エンコードせずに) 検索可能にする必要もある場合があります。 両方のユース ケースをサポートするために、`metadata_storage_path` を 2 つのフィールドにマップできます。(エンコードされた) キー用のフィールドと、インデックス スキーマで "検索可能" に属すると想定できるパス フィールド用のフィールドです。 次の例は、`metadata_storage_path` の 2 つのフィールド マッピングを示しています。
+
+```http
+    PUT https://[service name].search.windows.net/indexers/adlsgen2-indexer?api-version=2020-06-30
+    Content-Type: application/json
+    api-key: [admin key]
+    
+    {
+      "dataSourceName" : " adlsgen2-datasource",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "fieldMappings" : [
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "path" }
+      ]
+    }
+```
+
+<a name="PartsOfBlobToIndex"></a>
+
+## <a name="index-content-and-metadata"></a>インデックスのコンテンツとメタデータ
+
+Data Lake Storage Gen2 の BLOB には、コンテンツとメタデータが含まれます。 BLOB のどの部分にインデックスを作成するかは、`dataToExtract` 構成パラメーターを使用して制御できます。 次の値を使用できます。
+
++ `contentAndMetadata` - すべてのメタデータと、BLOB から抽出されたテキスト コンテンツにインデックスを作成するように指定します。 これが既定値です。
+
++ `storageMetadata` - [標準的な BLOB のプロパティおよびユーザー指定のメタデータ](../storage/blobs/storage-blob-container-properties-metadata.md)のみにインデックスを作成するように指定します。
+
++ `allMetadata` - 標準の BLOB プロパティと、[見つかったコンテンツの種類に対するメタデータ](search-blob-metadata-properties.md)を BLOB のコンテンツから抽出し、インデックスを作成するように指定します。
+
+たとえば、ストレージ メタデータのみにインデックスを作成するには、次のように使用します。
+
+```http
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
+
+{
+  ... other parts of indexer definition
+  "parameters" : { "configuration" : { "dataToExtract" : "storageMetadata" } }
+}
+```
+
+## <a name="indexing-blob-content"></a>BLOB コンテンツのインデックス作成
+
+既定では、JSON や CSV などの構造化コンテンツを持つ BLOB には、1 つのテキスト チャンクとしてインデックスが作成されます。 ただし、JSON または CSV ドキュメントに内部構造 (区切り記号) がある場合は、解析モードを割り当てて、行または要素ごとに個別の検索ドキュメントを生成できます。 詳細については、「[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)」および「[CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)」を参照してください。
+
+複合ドキュメントや埋め込みドキュメント (ZIP アーカイブ、添付ファイルを含む Outlook メールが埋め込まれた Word 文書、添付ファイルを含む .MSG ファイルなど) も、1 つのドキュメントとしてインデックスが作成されます。 例えば、.MSG ファイルの添付ファイルから抽出されたすべての画像が normalized_images フィールドに返されます。
+
+ドキュメントのテキスト コンテンツが、`content` という名前の文字列フィールドに抽出されます。
+
+  > [!NOTE]
+  > どれだけのテキストが抽出されるかは、価格レベルに応じて Azure Cognitive Search によって制限されます。 現在の[サービスの制限](search-limits-quotas-capacity.md#indexer-limits)は、Free レベルの場合は 32,000 文字、Basic の場合は 64,000 文字、Standard の場合は 400 万文字、Standard S2 の場合は 800 万文字、Standard S3 の場合は 1,600 万文字です。 切り捨てられたドキュメントについては、インデクサーの状態の応答に警告が含められます。  
+
+<a name="indexing-blob-metadata"></a>
+
+### <a name="indexing-blob-metadata"></a>BLOB メタデータのインデックス作成
+
+インデクサーでは、BLOB メタデータのインデックスを作成することもできます。 まず、ユーザーが指定したメタデータ プロパティは、そのまま抽出できます。 値を受け取るには、`Edm.String` 型の検索インデックスに、BLOB のメタデータ キーと同じ名前のフィールドを定義する必要があります。 たとえば、BLOB に値が `High` のメタデータ キー `Sensitivity` がある場合、検索インデックスで `Sensitivity` という名前のフィールドが定義されている必要があり、値 `High` が設定されます。
+
+次に、標準的な BLOB メタデータ プロパティを下記のフィールドに抽出できます。 BLOB インデクサーにより、これらの BLOB メタデータ プロパティの内部フィールド マッピングが自動的に作成されます。 なお、インデックス定義を使用するには、必要なフィールドを追加する必要がありますが、インデクサーでのフィールド マッピングの作成は省略できます。
+
+  + **metadata_storage_name** (`Edm.String`) - BLOB のファイル名。 たとえば、/my-container/my-folder/subfolder/resume.pdf という BLOB がある場合、このフィールドの値は `resume.pdf` になります。
+
+  + **metadata_storage_path** (`Edm.String`) - ストレージ アカウントを含む、BLOB の完全な URI。 たとえば、`https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
+
+  + **metadata_storage_content_type** (`Edm.String`) - BLOB をアップロードするためのコードで指定したコンテンツ タイプ。 たとえば、「 `application/octet-stream` 」のように入力します。
+
+  + **metadata_storage_last_modified** (`Edm.DateTimeOffset`) - 前回変更時の BLOB のタイムスタンプ。 インデックスの初回作成後に最初から作成し直さなくても済むよう、変更された BLOB を Azure Cognitive Search が特定するために、このタイムスタンプが使用されます。
+
+  + **metadata_storage_size** (`Edm.Int64`) - BLOB のサイズ (バイト単位)。
+
+  + **metadata_storage_content_md5** (`Edm.String`) - BLOB コンテンツの MD5 ハッシュ (利用可能な場合)。
+
+  + **metadata_storage_sas_token** (`Edm.String`) - BLOB に対してアクセスするために、[カスタム スキル](cognitive-search-custom-skill-interface.md)で使用できる一時的な SAS トークン。 このトークンは、有効期限が切れる可能性があるため、後で使用するために保存しないでください。
+
+最後に、インデックスを作成している BLOB のドキュメント形式に固有のメタデータ プロパティも、インデックス スキーマで表すことができます。 コンテンツ固有のメタデータの詳細については、[コンテンツのメタデータ プロパティ](search-blob-metadata-properties.md)に関するページを参照してください。
+
+重要な指摘点としては、検索インデックスに対し、ここに挙げたすべてのプロパティのフィールドを定義する必要はありません。実際のアプリケーションで必要となるプロパティだけを取り込んでください。
+
+<a name="WhichBlobsAreIndexed"></a>
+
+## <a name="how-to-control-which-blobs-are-indexed"></a>インデックスが作成される BLOB の制御方法
+
+インデックスを作成する BLOB とスキップする BLOB は、ロール割り当てを設定することで、BLOB のファイルの種類によって、または BLOB 自体にプロパティを設定してインデクサーに BLOB をスキップさせることによって制御できます。
+
+### <a name="use-access-controls-and-role-assignments"></a>アクセス制御とロール割り当てを使用する
+
+システムまたはユーザーによって割り当てられたマネージド ID の下で実行されるインデクサーには、特定のファイルやフォルダーで読み取りアクセス許可を与える Reader または Storage Blob Data Reader ロールのメンバーシップを与えることができます。
+
+### <a name="include-specific-file-extensions"></a>特定のファイル拡張子を含める
+
+`indexedFileNameExtensions` を使用して、インデックスを作成するファイル拡張子のコンマ区切りリストを指定します (先頭にドットを付けます)。 たとえば、.PDF や .DOCX の BLOB のみのインデックスを作成する場合は、この操作を行います。
+
+```http
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
+
+{
+  ... other parts of indexer definition
+  "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
+}
+```
+
+### <a name="exclude-specific-file-extensions"></a>特定のファイル拡張子を除外する
+
+`excludedFileNameExtensions` を使用して、スキップするファイル拡張子のコンマ区切りリストを指定します (同じく、先頭にドットを付けます)。 たとえば、.PNG と .JPEG の拡張子を持つ BLOB を除くすべての BLOB のインデックスを作成する場合は、この操作を行います。
+
+```http
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
+
+{
+  ... other parts of indexer definition
+  "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
+}
+```
+
+`indexedFileNameExtensions` と `excludedFileNameExtensions` の両方のパラメーターがある場合、インデクサーでは最初に `indexedFileNameExtensions` を調べ、次に `excludedFileNameExtensions` を調べます。 同じファイル拡張子が両方の一覧にある場合、インデックス作成から除外されます。
+
+### <a name="add-skip-metadata-the-blob"></a>"スキップ" メタデータを BLOB に追加する
+
+インデクサーの構成パラメーターは、コンテナーまたはフォルダー内のすべての BLOB に適用されます。 ときには、"*個々の BLOB*" のインデックスの作成方法を制御することが必要です。 これを行うには、次のメタデータのプロパティと値を BLOB ストレージ内の BLOB に追加します。 インデクサーでこのプロパティが検出されると、インデックス作成の実行において BLOB またはそのコンテンツがスキップされます。
+
+| プロパティ名 | プロパティ値 | 説明 |
+| ------------- | -------------- | ----------- |
+| `AzureSearch_Skip` |`"true"` |BLOB を完全にスキップするように BLOB インデクサーに指示します。 メタデータとコンテンツのどちらの抽出も行われません。 特定の BLOB で何度もエラーが発生し、インデックス作成プロセスが中断されるときに利用できます。 |
+| `AzureSearch_SkipContent` |`"true"` |これは、[前](#PartsOfBlobToIndex)に説明した、特定の BLOB を対象とする `"dataToExtract" : "allMetadata"` 設定と同じです。 |
+
+## <a name="index-large-datasets"></a>大規模なデータセットにインデックスを付ける
+
+BLOB のインデックス作成プロセスは、時間がかかる場合があります。 インデックスを作成する BLOB が数百万ある場合は、データをパーティション分割し、複数のインデクサーを使用して[データを並列で処理](search-howto-large-index.md#parallel-indexing)することで、インデックス作成を高速に処理できます。 設定方法は次のとおりです。
+
+1. データを複数の BLOB コンテナーまたは仮想フォルダーにパーティション分割します。
+
+1. コンテナーまたはフォルダーごとに 1 つずつ、データ ソースを設定します。 BLOB フォルダーをポイントするには、`query` パラメーターを使用します。
+
+    ```json
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : "my-folder" }
+    }
+    ```
+
+1. データ ソースごとに対応するインデクサーを作成します。 すべてのインデクサーから、同じターゲット検索インデックスをポイントする必要があります。  
+
+サービス内の 1 つの検索単位は、特定の時点で 1 つのインデクサーを実行できます。 上記のように、複数のインデクサーの作成は、これらを実際に並行して実行する場合のみ有用です。
+
+複数のインデクサーを並行して実行するには、適切な数のパーティションとレプリカを作成して、検索サービスをスケールアウトします。 たとえば、検索サービスに 6 つの検索単位がある場合 (たとえば、2 つのパーティション x 3 つのレプリカ)、6 つのインデクサーを同時に実行でき、インデックス作成のスループットが 6 倍になります。 スケーリングと容量計画の詳細については、[Azure Cognitive Search サービスの容量を調整する](search-capacity-planning.md)方法に関するページを参照してください。
+
+<a name="DealingWithErrors"></a>
+
+## <a name="handling-errors"></a>エラーの処理
+
+インデックス作成中に通常発生するエラーには、サポートされていないコンテンツの種類、コンテンツの欠落、BLOB のサイズ超過などがあります。
+
+既定では、BLOB インデクサーは、サポートされていないコンテンツの種類 (画像など) が含まれる BLOB を検出するとすぐに停止されます。 `excludedFileNameExtensions` パラメーターを使用して特定のコンテンツの種類をスキップできます。 ただし、エラーが発生した場合でもインデックスの作成を継続し、後から個々のドキュメントをデバッグすることができます。 インデクサーのエラーの詳細については、[インデクサーのトラブルシューティング ガイド](search-indexer-troubleshooting.md)および[インデクサーのエラーと警告](cognitive-search-common-errors-warnings.md)に関するページを参照してください。
+
+### <a name="respond-to-errors"></a>エラーに応答する
+
+エラーが発生したときのインデクサーの応答を制御する 4 つのインデクサー プロパティがあります。 次の例は、インデクサー定義でこれらのプロパティを設定する方法を示しています。 インデクサーが既に存在する場合は、ポータルで定義を編集することによって、これらのプロパティを追加できます。
+
+#### <a name="maxfaileditems-and-maxfaileditemsperbatch"></a>`"maxFailedItems"` および `"maxFailedItemsPerBatch"`
+
+BLOB の解析中またはインデックスへのドキュメントの追加中、処理のどこかの時点でエラーが発生した場合に、インデックス付けを続行します。 これらのプロパティには、許容できるエラーの数を設定します。 値を `-1` に設定すると、どれだけエラーが発生しても処理を継続します。 それ以外の場合、値は正の整数です。
+
+```http
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
+
+{
+  ... other parts of indexer definition
+  "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
+}
+```
+
+#### <a name="failonunsupportedcontenttype-and-failonunprocessabledocument"></a>`"failOnUnsupportedContentType"` および `"failOnUnprocessableDocument"` 
+
+一部の BLOB では、Azure Cognitive Search でコンテンツの種類を判別できないか、他の種類ではサポートされているコンテンツの種類のドキュメントを処理できない場合があります。 これらのエラー状態を無視するには、構成パラメーターを `false` に設定します。
+
+```http
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
+
+{
+  ... other parts of indexer definition
+  "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false, "failOnUnprocessableDocument" : false } }
+}
+```
+
+### <a name="relax-indexer-constraints"></a>インデクサーの制約を緩和する
+
+エラー状態が存在するかどうかを効果的に判別する [BLOB 構成プロパティ](/rest/api/searchservice/create-indexer#blob-configuration-parameters)を設定することもできます。 次のプロパティによって、制約を緩和し、緩和しなければ発生するエラーを抑制することができます。
+
++ `"indexStorageMetadataOnlyForOversizedDocuments"` は、大きすぎて処理できない BLOB コンテンツのストレージ メタデータに対してインデックスを作成します。 サイズが大きい BLOB は、既定ではエラーとして扱われます。 BLOB サイズの制限については、「[サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
+
+## <a name="see-also"></a>関連項目
+
++ [C# サンプル: Azure AD を使用して Lake Gen2 のデータにインデックスを作成する](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md)
++ [Azure Cognitive Search のインデクサー](search-indexer-overview.md)
++ [インデクサーの作成](search-howto-create-indexers.md)
++ [BLOB での AI エンリッチメントの概要](search-blob-ai-integration.md)
++ [BLOB 検索の概要](search-blob-storage-integration.md)

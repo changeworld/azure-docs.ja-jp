@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure SQL Database および SQL managed Instance の予約容量を購入して計算コストを節約する方法について説明します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: sstein
+author: emlisa
+ms.author: emlisa
+ms.reviewer: mathoma
 ms.date: 10/13/2020
-ms.openlocfilehash: cacd43502a01352c24f8fcfd85b12aac781dccbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab1baffe32add88e855d800ffe93652d5356c704
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98602509"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167740"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>予約容量を使用してリソースのコストを節約する - Azure SQL Database および SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -58,7 +58,7 @@ ms.locfileid: "98602509"
     | フィールド      | 説明|
     |------------|--------------|
     |サブスクリプション|容量予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約の初期コストが課金されます。 サブスクリプションの種類は、Enterprise Agreement (オファー番号: MS-AZR-0017P または MS-AZR-0148P) または従量課金制料金 (オファー番号: MS-AZR-0003P または MS-AZR-0023P) の個別の契約である必要があります。 Enterprise サブスクリプションの場合、登録の Azure 前払い (旧称: 年額コミットメント) の残高から料金が差し引かれるか、超過分として課金されます。 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|
-    |Scope       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を仮想コアの予約のスコープにすることができます。 以下を選択した場合 <br/><br/>**共有** - 仮想コアの予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されているデータベースまたはマネージド インスタンスに適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。<br/><br/>**単一サブスクリプション** - 仮想コアの予約割引は、このサブスクリプションのデータベースまたはマネージド インスタンスに適用されます。 <br/><br/>**単一のリソース グループ** - 予約割引は、選択したサブスクリプションおよびそのサブスクリプション内の選択したリソース グループ内のデータベースまたはマネージド インスタンスに適用されます。|
+    |Scope       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を仮想コアの予約のスコープにすることができます。 以下を選択した場合 <br/><br/>**共有** - 仮想コアの予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されているデータベースまたはマネージド インスタンスに適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。<br/><br/>**単一サブスクリプション** - 仮想コアの予約割引は、このサブスクリプションのデータベースまたはマネージド インスタンスに適用されます。 <br/><br/>**単一のリソース グループ** - 予約割引は、選択したサブスクリプションおよびそのサブスクリプション内の選択したリソース グループ内のデータベースまたはマネージド インスタンスに適用されます。</br></br>**管理グループ** - 管理グループと課金スコープの両方の一部となっているサブスクリプションの一覧で、一致するリソースに予約割引が適用されます。|
     |リージョン      |容量予約の対象となる Azure リージョン。|
     |デプロイの種類|予約を購入する SQL リソースの種類。|
     |パフォーマンス レベル|データベースまたはマネージド インスタンスのサービス レベル。 |
@@ -79,7 +79,7 @@ ms.locfileid: "98602509"
 
 ## <a name="limitation"></a>制限事項
 
-SQL Database で DTU ベース (Basic、Standard、または Premium) のデータベースを予約することはできません。
+SQL Database で DTU ベース (Basic、Standard、または Premium) のデータベースを予約することはできません。 予約容量の価格がサポートされるのは、一般公開の状態にある機能と製品についてのみです。 
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 
@@ -88,6 +88,9 @@ SQL Database で DTU ベース (Basic、Standard、または Premium) のデー�
 ## <a name="next-steps"></a>次のステップ
 
 仮想コアの予約割引は、容量予約の範囲と属性に一致するデータベースまたはマネージド インスタンスの数に自動的に適用されます。 容量予約のスコープは、[Azure portal](https://portal.azure.com)、PowerShell、Azure CLI、または API で更新できます。
+
+- 仮想コア モデルの Azure SQL Database の詳細については、「[仮想コア モデルの概要 - Azure SQL Database](service-tiers-sql-database-vcore.md)」を参照してください。
+- 仮想コア モデルの Azure SQL Managed Instance サービス レベルの詳細については、「[仮想コア モデルの概要 - Azure SQL Managed Instance](../managed-instance/service-tiers-managed-instance-vcore.md)」 を参照してください。
 
 容量予約を管理する方法については、[予約容量の管理](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)に関するページを参照してください。
 

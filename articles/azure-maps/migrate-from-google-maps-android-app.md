@@ -1,20 +1,20 @@
 ---
 title: チュートリアル - Android アプリを移行する | Microsoft Azure Maps
 description: Google Maps から Microsoft Azure Maps に Android アプリを移行する方法についてのチュートリアルです。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 3d160649008199233fa0b676d938470569a27853
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 50958765e0ff582e630d5a78b3d17f871a0c41aa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101496"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072486"
 ---
 # <a name="tutorial-migrate-an-android-app-from-google-maps"></a>チュートリアル:Google Maps から Android アプリを移行する
 
@@ -258,17 +258,17 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
     3. 依存関係ブロックを更新します。 最新の Azure Maps Android SDK の新しい実装の依存関係の行を追加します。
 
         ```gradel
-        implementation "com.microsoft.azure.maps:mapcontrol:0.7"
+        implementation "com.azure.android:azure-maps-control:1.0.0"
         ```
 
-        > [!Note]
+        > [!NOTE]
         > バージョン番号を "0+" に設定して、コードが常に最新バージョンを指すようにすることができます。
 
     4. ツール バーの **[ファイル]** に移動し、 **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** をクリックします。
 
 3. メイン アクティビティにマップ フラグメントを追加します (resources pwd\> layout \> activity\_main.xml)。
 
-    ```XML
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -277,7 +277,7 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
         android:layout_height="match_parent"
         >
 
-        <com.microsoft.azure.maps.mapcontrol.MapControl
+        <com.azure.android.maps.control.MapControl
             android:id="@+id/mapcontrol"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -312,11 +312,11 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
     package com.example.myapplication;
     
     import androidx.appcompat.app.AppCompatActivity;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
-    import com.microsoft.azure.maps.mapcontrol.options.MapStyle;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
+    import com.azure.android.maps.control.AzureMaps;
+    import com.azure.android.maps.control.MapControl;
+    import com.azure.android.maps.control.layer.SymbolLayer;
+    import com.azure.android.maps.control.options.MapStyle;
+    import com.azure.android.maps.control.source.DataSource;
     
     public class MainActivity extends AppCompatActivity {
     
@@ -418,10 +418,10 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
 
     import androidx.appcompat.app.AppCompatActivity
     import android.os.Bundle
-    import com.microsoft.azure.maps.mapcontrol.AzureMap
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps
-    import com.microsoft.azure.maps.mapcontrol.MapControl
-    import com.microsoft.azure.maps.mapcontrol.events.OnReady
+    import com.azure.android.maps.control.AzureMap
+    import com.azure.android.maps.control.AzureMaps
+    import com.azure.android.maps.control.MapControl
+    import com.azure.android.maps.control.events.OnReady
     
     class MainActivity : AppCompatActivity() {
     
@@ -542,16 +542,16 @@ baseContext.resources.updateConfiguration(
 
 ![Google Maps のローカライズ](media/migrate-google-maps-android-app/google-maps-localization.png)
 
-### <a name="after-azure-maps"></a>後: Azure Maps
+### <a name="after-azure-maps&quot;></a>後: Azure Maps
 
-Azure Maps には、マップの言語と地域ビューを設定するための 3 つの異なる方法が用意されています。 1 つ目は、言語と地域ビューの情報を `AzureMaps` クラスに渡す方法です。 この方法では、静的な `setLanguage` メソッドと `setView` メソッドをグローバルに使用します。 つまり、アプリに読み込まれたすべての Azure Maps コントロールに対して、既定の言語と地域のビューが設定されます。 この例では、"fr-FR" 言語コードを使用してフランス語を設定しています。
+Azure Maps には、マップの言語と地域ビューを設定するための 3 つの異なる方法が用意されています。 1 つ目は、言語と地域ビューの情報を `AzureMaps` クラスに渡す方法です。 この方法では、静的な `setLanguage` メソッドと `setView` メソッドをグローバルに使用します。 つまり、アプリに読み込まれたすべての Azure Maps コントロールに対して、既定の言語と地域のビューが設定されます。 この例では、&quot;fr-FR&quot; 言語コードを使用してフランス語を設定しています。
 
 ::: zone pivot="programming-language-java-android"
 
 ```java
 static {
     //Set your Azure Maps Key.
-    AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+    AzureMaps.setSubscriptionKey(&quot;<Your Azure Maps Key>");
 
     //Set the language to be used by Azure Maps.
     AzureMaps.setLanguage("fr-FR");
@@ -585,12 +585,12 @@ companion object {
 2 つ目は、言語とビュー情報をマップ コントロール XML コードに渡す方法です。
 
 ```xml
-<com.microsoft.azure.maps.mapcontrol.MapControl
+<com.azure.android.maps.control.MapControl
     android:id="@+id/myMap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:mapcontrol_language="fr-FR"
-    app:mapcontrol_view="Auto"
+    app:azure_maps_language="fr-FR"
+    app:azure_maps_view="Auto"
     />
 ```
 
@@ -675,14 +675,14 @@ public override fun onMapReady(googleMap: GoogleMap) {
 初期マップ ビューは、マップ コントロールの XML 属性で設定できます。
 
 ```xml
-<com.microsoft.azure.maps.mapcontrol.MapControl
+<com.azure.android.maps.control.MapControl
     android:id="@+id/myMap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:mapcontrol_cameraLat="35.0272"
-    app:mapcontrol_cameraLng="-111.0225"
-    app:mapcontrol_zoom="14"
-    app:mapcontrol_style="satellite"
+    app:azure_maps_cameraLat="35.0272"
+    app:azure_maps_cameraLng="-111.0225"
+    app:azure_maps_zoom="14"
+    app:azure_maps_style="satellite"
     />
 ```
 
@@ -1326,7 +1326,7 @@ mapControl!!.onReady { map: AzureMap ->
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Maps の移行について理解を深めます。
+Azure Maps Android SDK の詳細について学習します。
 
 > [!div class="nextstepaction"]
-> [Android アプリを移行する](migrate-from-google-maps-android-app.md)
+> [Azure Maps Android SDK の概要](how-to-use-android-map-control-library.md)

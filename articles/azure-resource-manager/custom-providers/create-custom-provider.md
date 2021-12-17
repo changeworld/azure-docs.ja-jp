@@ -5,12 +5,13 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 721fe31f514cb948c93dc2a779a92ef3b2775ef9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: cddf266d9457f81e5aa11a3dc91ea7a5fb9756ab
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779239"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845980"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>クイック スタート:カスタム プロバイダーの作成とカスタム リソースのデプロイ
 
@@ -265,7 +266,7 @@ armclient PUT $addURI $requestBody
 
 ## <a name="custom-resource-provider-commands"></a>カスタム リソース プロバイダーのコマンド
 
-カスタム リソース プロバイダーを操作するには、[custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) コマンドを使用します。
+カスタム リソース プロバイダーを操作するには、[custom-providers](/cli/azure/custom-providers/resource-provider) コマンドを使用します。
 
 ### <a name="list-custom-resource-providers"></a>カスタム リソース プロバイダーの一覧表示
 
@@ -319,7 +320,7 @@ az custom-providers resource-provider show --resource-group $rgName --name $func
 ```azurecli-interactive
 az custom-providers resource-provider create --resource-group $rgName --name $funcName \
 --action name=ping endpoint=https://myTestSite.azurewebsites.net/api/{requestPath} routing_type=Proxy \
---resource-type name=users endpoint=https://myTestSite.azurewebsites.net/api{requestPath} routing_type="Proxy, Cache"
+--resource-type name=users endpoint=https://myTestSite.azurewebsites.net/api/{requestPath} routing_type="Proxy, Cache"
 ```
 
 ```json
@@ -333,7 +334,7 @@ az custom-providers resource-provider create --resource-group $rgName --name $fu
 
 "resourceTypes": [
   {
-    "endpoint": "https://myTestSite.azurewebsites.net/api{requestPath}",
+    "endpoint": "https://myTestSite.azurewebsites.net/api/{requestPath}",
     "name": "users",
     "routingType": "Proxy, Cache"
   }

@@ -2,21 +2,21 @@
 author: tfitzmac
 ms.service: azure-app-configuration
 ms.topic: include
-ms.date: 09/02/2020
+ms.date: 08/19/2021
 ms.author: tomfitz
-ms.openlocfilehash: ba42b60ce1e168cbf07daf0c302e6f11e2ff2532
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b04007ef7329231da7de31ec465de2c1585c7e4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89421197"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122752764"
 ---
-| リソース | 制限 |
-| --- | --- |
-| 構成ストア - Free レベル | サブスクリプションあたり 1 |
-| 構成ストア - Standard レベル | サブスクリプションあたり無制限 |
-| 構成ストア要求 - Free レベル | 1 日あたり 1,000 個の要求  |
-| 構成ストア要求 - Standard レベル | 調整は 1 時間あたり 20,000 個の要求で開始されます  |
-| ストレージ - Free レベル | 10 MB |
-| ストレージ - Standard レベル | 1 GB |
-| キーと値 | 単一のキーと値の項目に対して 10 KB |
+| リソース | 制限 | 解説 |
+| --- | --- | ---|
+| Free レベルの構成ストア | サブスクリプションあたり 1 つのストア |
+| Standard レベルの構成ストア | サブスクリプションあたり無制限のストア | 
+| Free レベルの構成ストア要求 | 1 日あたり 1,000 個の要求  | クォータを使い果たした後は、その日の終わりまで、すべての要求に対して HTTP 状態コード 429 が返されます |
+| Standard レベルの構成ストア要求 | 1 時間あたり 30,000 件  |クォータを使い果たした後は、1 時間が終わるまで、要求数が多すぎることを示す HTTP 状態コード 429 が要求に対して返される場合があります。|  
+| Free レベルのストレージ | 10 MB |
+| Standard レベルのストレージ | 1 GB |
+| キーと値 | 10 KB  | 単一のキーと値項目に対して (すべてのメタデータを含む)
